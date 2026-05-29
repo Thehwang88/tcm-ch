@@ -18455,56 +18455,6 @@ band.appendChild(el);
 });
 });
 })();
-// ── BTS MINHWA TIGER + KOREAN DRAGON ──
-(function(){
-var stage = document.querySelector('.hero-bg');
-if(!stage) return;
-var TIGER = '<svg width="{w}" height="{h}" viewBox="0 0 58 60" fill="none" xmlns="http://www.w3.org/2000/svg">'
-+ '<ellipse cx="29" cy="44" rx="16" ry="13" fill="#2D9B6F" opacity=".18"/>'
-+ '<ellipse cx="29" cy="44" rx="16" ry="13" stroke="#2D9B6F" stroke-width=".9" opacity=".38" fill="none"/>'
-+ '<circle cx="29" cy="24" r="17" fill="#2D9B6F" opacity=".17"/>'
-+ '<circle cx="29" cy="24" r="17" stroke="#2D9B6F" stroke-width=".9" opacity=".38" fill="none"/>'
-+ '<path d="M14 12 Q12 5 18 7 Q17 13 14 12Z" fill="#2D9B6F" opacity=".25"/>'
-+ '<path d="M44 12 Q46 5 40 7 Q41 13 44 12Z" fill="#2D9B6F" opacity=".25"/>'
-+ '<path d="M14 12 Q12 5 18 7 Q17 13 14 12Z" stroke="#2D9B6F" stroke-width=".8" opacity=".4" fill="none"/>'
-+ '<path d="M44 12 Q46 5 40 7 Q41 13 44 12Z" stroke="#2D9B6F" stroke-width=".8" opacity=".4" fill="none"/>'
-+ '<line x1="24" y1="9" x2="34" y2="9" stroke="#2D9B6F" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>'
-+ '<line x1="29" y1="7" x2="29" y2="14" stroke="#2D9B6F" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>'
-+ '<line x1="23" y1="13" x2="35" y2="13" stroke="#2D9B6F" stroke-width="1" stroke-linecap="round" opacity=".35"/>'
-+ '<circle cx="21" cy="22" r="5.5" fill="white" opacity=".55"/>'
-+ '<circle cx="37" cy="22" r="5.5" fill="white" opacity=".55"/>'
-+ '<circle cx="21" cy="22" r="5.5" stroke="#2D9B6F" stroke-width=".9" opacity=".4" fill="none"/>'
-+ '<circle cx="37" cy="22" r="5.5" stroke="#2D9B6F" stroke-width=".9" opacity=".4" fill="none"/>'
-+ '<circle cx="22" cy="23" r="3" fill="#2D9B6F" opacity=".5"/>'
-+ '<circle cx="38" cy="23" r="3" fill="#2D9B6F" opacity=".5"/>'
-+ '<circle cx="23" cy="22" r="1.1" fill="white" opacity=".7"/>'
-+ '<circle cx="39" cy="22" r="1.1" fill="white" opacity=".7"/>'
-+ '<ellipse cx="29" cy="28" rx="3" ry="2" fill="#2D9B6F" opacity=".38"/>'
-+ '<path d="M20 31 Q25 37 29 34 Q33 37 38 31" stroke="#2D9B6F" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".5"/>'
-+ '<line x1="18" y1="27" x2="9" y2="25" stroke="#2D9B6F" stroke-width=".9" stroke-linecap="round" opacity=".3"/>'
-+ '<line x1="18" y1="30" x2="9" y2="30" stroke="#2D9B6F" stroke-width=".9" stroke-linecap="round" opacity=".3"/>'
-+ '<line x1="40" y1="27" x2="49" y2="25" stroke="#2D9B6F" stroke-width=".9" stroke-linecap="round" opacity=".3"/>'
-+ '<line x1="40" y1="30" x2="49" y2="30" stroke="#2D9B6F" stroke-width=".9" stroke-linecap="round" opacity=".3"/>'
-+ '<path d="M16 38 Q20 44 16 50" stroke="#2D9B6F" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '<path d="M29 36 Q33 43 29 50" stroke="#2D9B6F" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '<path d="M42 38 Q38 44 42 50" stroke="#2D9B6F" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '<path d="M18 53 Q14 58 11 55 Q9 52 13 50" stroke="#2D9B6F" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '<path d="M40 53 Q44 58 47 55 Q49 52 45 50" stroke="#2D9B6F" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '<path d="M45 40 Q54 34 56 40 Q58 47 52 50 Q48 52 50 47" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" fill="none" opacity=".28"/>'
-+ '</svg>';
-var DRAGON = '';
-var items = [
-{ svg: TIGER,  left:'1%',   top:'12%', w:52, h:54, path:'bfp3', delay:'0s',   cls:'tiger'  },
-];
-items.forEach(function(it){
-var d = document.createElement('div');
-d.className = 'bfly ' + it.cls;
-d.setAttribute('aria-hidden','true');
-d.style.cssText = 'left:'+it.left+';top:'+it.top+';animation:'+it.path+' 10s ease-in-out '+it.delay+' infinite';
-d.innerHTML = it.svg.replace('{w}',it.w).replace('{h}',it.h);
-stage.appendChild(d);
-});
-})();
 (function(){
 var items = document.querySelectorAll('#waRotatorWrap .wa-rotator-item');
 if(!items.length) return;
