@@ -15658,7 +15658,7 @@ function goToRoute(page, id) {
 id = id || '';
 try {
 var route = buildRoute(page, id);
-var url = page === 'home' ? location.pathname + location.search : '#' + route;
+var url = page === 'home' ? location.pathname + location.search : route;
 history.pushState({ page: page, id: id }, '', url);
 } catch(e) {
 // file:// URL or restricted env — URL won't update but navigation still works
