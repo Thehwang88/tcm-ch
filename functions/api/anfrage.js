@@ -1,13 +1,20 @@
 // Cloudflare Pages Function — POST /api/anfrage
-// Receives the TCM.ch intake form and emails it to termine@tcm.ch via Resend.
-// Env var required (Cloudflare Pages → Settings → Environment variables): RESEND_API_KEY
+// Emails the TCM.ch intake form to termine@tcm.ch via Resend.
+// Required env var (Pages → Settings → Variables): RESEND_API_KEY
 
 const TO = 'termine@tcm.ch';
-const FROM = 'TCM.ch Anfrage <onboarding@resend.dev>'; // domain must be verified in Resend
+const FROM = 'TCM.ch Anfrage <onboarding@resend.dev>'; // test mode; switch to anfrage@tcm.ch after domain verify
 
 function esc(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 
 export async function onRequestPost({ request, env }) {
@@ -18,11 +25,10 @@ export async function onRequestPost({ request, env }) {
     return json({ error: 'invalid_json' }, 400);
   }
 
-  // Honeypot (optional) + minimal validation
-  if (d.website) return json({ ok: true }); // bot trap
-  if (!d.vorname || !d.telefon) {
-    return json({ error: 'missing_fields' }, 422);
-  }
+  if (d.website) return json({ ok: true }); // honeypot
+  if (!d.vorname || !d.telefon) return json({ error: 'missing_fields' }, 422);
+
+  if (!env.RESEND_API_KEY) return json({ error: 'no_api_key' }, 500);
 
   const rows = [
     ['Anliegen', d.anliegen],
@@ -44,44 +50,33 @@ export async function onRequestPost({ request, env }) {
       .filter(([, v]) => v != null && String(v).trim() !== '')
       .map(
         ([k, v]) =>
-          `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>${esc(
-            k
-          )}</strong></td><td style="padding:4px 0">${esc(v).replace(/\n/g, '<br>')}</td></tr>`
+          `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>${esc(k)}</strong></td><td style="padding:4px 0">${esc(v).replace(/\n/g, '<br>')}</td></tr>`
       )
       .join('') +
     '</table>';
 
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: FROM,
-      to: [TO],
-      reply_to: d.telefon ? undefined : undefined, // phone-only lead; no email to reply to
-      subject: `Neue Anfrage — ${d.ort || 'Standort offen'} (${d.vorname})`,
-      html,
-    }),
-  });
+  let res;
+  try {
+    res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: FROM,
+        to: [TO],
+        subject: `Neue Anfrage — ${d.ort || 'Standort offen'} (${d.vorname})`,
+        html,
+      }),
+    });
+  } catch (err) {
+    return json({ error: 'fetch_failed', detail: String(err) }, 502);
+  }
 
   if (!res.ok) {
     const detail = await res.text();
     return json({ error: 'resend_failed', detail }, 502);
   }
   return json({ ok: true });
-}
-
-// Optional: respond to non-POST politely
-export async function onRequest({ request }) {
-  if (request.method === 'POST') return; // handled by onRequestPost
-  return json({ error: 'method_not_allowed' }, 405);
-}
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), {
-    status,
-    headers: { 'Content-Type': 'application/json' },
-  });
 }
