@@ -16,13 +16,12 @@ export async function onRequestPost({ request, env }) {
     try { d = await request.json(); } catch (e) {}
 
     if (d.website) return J({ ok: true });                 // honeypot
-    if (!d.vorname || !d.telefon) return J({ error: 'missing_fields' }, 422);
+    if (!d.name || !d.telefon) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
     const rows = [
-      ['Anliegen', d.anliegen], ['Beschwerden', d.beschwerden], ['Ort', d.ort],
-      ['Wie schnell', d.timing], ['Zusatzversicherung', d.versicherung],
-      ['Vorname', d.vorname], ['Telefon', d.telefon], ['Bevorzugter Kontakt', d.kontakt],
+      ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
+      ['Standort', d.standort], ['Anliegen', d.anliegen],
       ['Quelle', d.quelle], ['Zeit', d.zeit],
     ];
     const html =
@@ -34,15 +33,18 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table>';
 
+    const body = {
+      from: FROM,
+      to: [TO],
+      subject: 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')',
+      html,
+    };
+    if (d.email && String(d.email).includes('@')) body.reply_to = d.email;
+
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: FROM,
-        to: [TO],
-        subject: 'Neue Anfrage — ' + (d.ort || 'Standort offen') + ' (' + d.vorname + ')',
-        html,
-      }),
+      body: JSON.stringify(body),
     });
 
     const text = await res.text();
