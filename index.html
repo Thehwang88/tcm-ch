@@ -17591,7 +17591,7 @@ return `<div class="sidebar-row" style="display:flex;align-items:center;gap:10px
 document.getElementById('symptom-rev-section').innerHTML = buildReviewsSection(id, 'Erfahrungen mit ' + s.name + ' Behandlung.');
 // Locations — render entire section conditionally (no empty heading ever shown)
 var citiesHtml = s.locations
-.map(lid => { const l = getLoc(lid); return l ? cityCard(l, `nav('symptomStandort','${id}__${l.id}')`) : ''; })
+.map(lid => { const l = getLoc(lid); return l ? cityCard(l, `nav('standort','${l.id}')`) : ''; })
 .filter(Boolean).join('');
 if (citiesHtml) {
 citiesHtml += `<div class="city-card location-card location-card--finder" onclick="openContactForm()" style="cursor:pointer"><div class="location-plz loc-plz-dots">···</div><div class="location-city">Standort nicht dabei?</div><div class="location-canton">&nbsp;</div><div class="location-desc">Wir buchen dich in die nächste TCM.ch-Klinik ein.</div><span class="location-link">Standort finden →</span></div>`;
@@ -17780,7 +17780,7 @@ return `<div class="sidebar-row" style="display:flex;align-items:center;gap:10px
 document.getElementById('therapie-rev-section').innerHTML = buildReviewsSection(id, 'Erfahrungen mit ' + t.name + '.');
 // Locations — conditional (no empty heading)
 var tCities = t.locations
-.map(lid => { const l = getLoc(lid); return l ? cityCard(l, `nav('therapieStandort','${id}__${l.id}')`) : ''; })
+.map(lid => { const l = getLoc(lid); return l ? cityCard(l, `nav('standort','${l.id}')`) : ''; })
 .filter(Boolean).join('');
 if (tCities) tCities += `<div class="city-card location-card location-card--finder" onclick="openContactForm()" style="cursor:pointer"><div class="location-plz loc-plz-dots">···</div><div class="location-city">Standort nicht dabei?</div><div class="location-canton">&nbsp;</div><div class="location-desc">Wir buchen dich in die nächste TCM.ch-Klinik ein.</div><span class="location-link">Standort finden →</span></div>`;
 setHTML('therapie-cities-section', tCities

@@ -1,0 +1,10 @@
+import fs from 'fs';
+const f = 'index.html';
+let c = fs.readFileSync(f, 'utf8');
+fs.writeFileSync(f + '.backup2', c);
+const from = "nav('therapieStandort','${id}__${l.id}')";
+const to = "nav('standort','${l.id}')";
+const n = c.split(from).length - 1;
+c = c.split(from).join(to);
+fs.writeFileSync(f, c);
+console.log(`Replaced ${n} occurrence(s). Backup saved as index.html.backup2`);
