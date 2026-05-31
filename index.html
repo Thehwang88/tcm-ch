@@ -17606,7 +17606,6 @@ var citiesHtml = s.locations
 .map(lid => { const l = getLoc(lid); return l ? cityCard(l, `nav('standort','${l.id}')`) : ''; })
 .filter(Boolean).join('');
 if (citiesHtml) {
-citiesHtml += `<div class="city-card location-card location-card--finder" onclick="openContactForm()" style="cursor:pointer"><div class="location-plz loc-plz-dots">···</div><div class="location-city">Standort nicht dabei?</div><div class="location-canton">&nbsp;</div><div class="location-desc">Wir buchen dich in die nächste TCM.ch-Klinik ein.</div><span class="location-link">Standort finden →</span></div>`;
 setHTML('symptom-cities-section', `<section class="related-section"><div class="wrap"><div class="section-label">Standorte</div><h2 class="section-title">Praxen <em>in deiner Nähe</em></h2><div class="city-grid reveal">${citiesHtml}</div></div></section>`);
 } else {
 setHTML('symptom-cities-section', '');
