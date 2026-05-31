@@ -16094,9 +16094,9 @@ return `<section class="usp-grid-section" style="background:#fff;padding:48px 0;
   </div>
 </div></div></section>`;
 }
-function buildFallbackCTA(question, subtext) {
+function buildFallbackCTA(question, subtext, hideFinder) {
 subtext = subtext || 'Beschreibe kurz deine Beschwerden – wir helfen dir, den passenden nächsten Schritt zu finden.';
-return `<section class="fallback-cta-section"><div class="wrap"><div class="fallback-cta-inner"> <div class="fallback-cta-text"> <h3>${question}</h3> <p>${subtext}</p> </div> <div class="fallback-cta-btns"> <a href="${WA_LINK}" class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg>Per WhatsApp</a> <button class="btn-secondary" onclick="conciergeOpen()">Praxis Finder</button> </div> </div></div></section>`;
+return `<section class="fallback-cta-section"><div class="wrap"><div class="fallback-cta-inner"> <div class="fallback-cta-text"> <h3>${question}</h3> <p>${subtext}</p> </div> <div class="fallback-cta-btns"> <a href="${WA_LINK}" class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg>Per WhatsApp</a> ${hideFinder ? '' : '<button class="btn-secondary" onclick="conciergeOpen()">Praxis Finder</button>'} </div> </div></div></section>`;
 }
 function buildAlsoFor(items, sectionLabel, sectionTitle, onclickFn) {
 if (!items || !items.length) return '';
@@ -17629,7 +17629,8 @@ function(t){ return "nav('therapie','" + t.id + "')"; }
 // Fallback CTA
 setHTML('symptom-fallback-cta', buildFallbackCTA(
 'Nicht sicher, was du brauchst?',
-'Beschreibe kurz deine Situation – wir empfehlen dir die passende Therapie und Praxis.'
+'Beschreibe kurz deine Situation – wir empfehlen dir die passende Therapie und Praxis.',
+true
 ));
 injectBackBtn('symptom-hero', 'beschwerden', 'Zurück zu Beschwerden');
 }
