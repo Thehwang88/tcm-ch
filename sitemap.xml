@@ -49,8 +49,14 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/standorte/winterthur</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://tcm.ch/standorte/winterthur-muenzgasse</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/standorte/winterthur-marktgasse</loc>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
