@@ -16636,6 +16636,30 @@ return `<section class="usp-grid-section" style="background:#fff;padding:48px 0;
   </div>
 </div></div></section>`;
 }
+function buildStandortUsp() {
+return `<section class="usp-grid-section" style="background:#fff;padding:48px 0;border-bottom:1px solid var(--border)"><div class="wrap"><div class="usp-grid">
+  <div class="usp-card">
+    <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg></div>
+    <div class="usp-title">Krankenkassen-anerkannt</div>
+    <div class="usp-sub">Abrechnung &uuml;ber die Zusatzversicherung.</div>
+  </div>
+  <div class="usp-card">
+    <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+    <div class="usp-title">&Uuml;ber 2000 zufriedene Patienten</div>
+    <div class="usp-sub">4,9&#9733; bewertet.</div>
+  </div>
+  <div class="usp-card">
+    <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+    <div class="usp-title">Termin innerhalb 48 Stunden</div>
+    <div class="usp-sub">Keine wochenlange Wartezeit.</div>
+  </div>
+  <div class="usp-card">
+    <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <div class="usp-title">Keine &Uuml;berweisung n&ouml;tig</div>
+    <div class="usp-sub">Direkt per WhatsApp buchen.</div>
+  </div>
+</div></div></section>`;
+}
 function buildFallbackCTA(question, subtext, hideFinder) {
 subtext = subtext || 'Beschreibe kurz deine Beschwerden – wir helfen dir, den passenden nächsten Schritt zu finden.';
 return `<section class="fallback-cta-section"><div class="wrap"><div class="fallback-cta-inner"> <div class="fallback-cta-text"> <h3>${question}</h3> <p>${subtext}</p> </div> <div class="fallback-cta-btns"> <a href="${WA_LINK}" class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg>Per WhatsApp</a> ${hideFinder ? '' : '<button class="btn-secondary" onclick="openContactForm()">Praxis Finder</button>'} </div> </div></div></section>`;
@@ -18620,7 +18644,7 @@ const ctaBand = `<section class="cta-band"><div class="wrap"> <div style="displa
 // ── 3. ASSEMBLE in master order ───────────────────────────────────────────
 var isFlagship = true;
 setHTML('standort-content', `
-${buildTrustStrip()}
+${buildStandortUsp()}
 <section class="section"><div class="wrap"> <div class="subpage-content-grid" style="display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:start"> <div>
 ${flagshipBanner}
 <div class="content-body">${l.intro || ''}</div> </div> <div>${sidebarHTML}</div> </div> </div></section>
