@@ -19181,9 +19181,21 @@ if (true) {
 
 // 11. Nearby
 if (nearbySection) { var nbEl = document.createElement('div'); nbEl.innerHTML = nearbySection; while(nbEl.firstChild) dst.appendChild(nbEl.firstChild); }
-// 11b. Contact form
+// 11b. Termin form (embedded) — convert the general intake clone into the dedicated Termin form, prefilled
 var cf = document.querySelector('#page-standorte .contact-section-inline');
-if (cf) dst.appendChild(cf.cloneNode(true));
+if (cf) {
+  var cfClone = cf.cloneNode(true);
+  var tCard = cfClone.querySelector('.inline-form-card');
+  if (tCard && typeof terminInlineCardHTML === 'function') {
+    tCard.innerHTML = terminInlineCardHTML();
+    terminPrefillSelect(tCard.querySelector('select[name="standort"]'), l.name);
+    var tHead = cfClone.querySelector('.section-title');
+    if (tHead) tHead.innerHTML = 'Termin in <em>' + l.name + '</em> anfragen.';
+    var tSub = cfClone.querySelector('.section-sub');
+    if (tSub) tSub.textContent = 'Sag uns kurz Wunschtage und Tageszeit — wir melden uns mit einem Terminvorschlag.';
+  }
+  dst.appendChild(cfClone);
+}
 // 12. Final CTA — Barbara & Corinna B&C section (all standorte)
 if (true) {
 var sgmHeadline, sgmWaText;
@@ -19526,7 +19538,6 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeContactFor
 // ════════════════════════════════════════════════
 var TERMIN_WA = 'https://wa.me/41798374681';
 (function(){
-  var STANDORTE = ['Zürich City','Zürich Oerlikon','Zürich Höngg','Winterthur','Volketswil','Frauenfeld','Kreuzlingen','St. Gallen','Wil','Rorschach','Basel'];
   var css = '.termin-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto}'
     + '.termin-modal.open{display:flex}'
     + '.termin-modal-bg{position:fixed;inset:0;background:rgba(13,13,13,.55);backdrop-filter:blur(3px)}'
@@ -19547,13 +19558,6 @@ var TERMIN_WA = 'https://wa.me/41798374681';
     + '@media(max-width:520px){.termin-modal-card{padding:22px 18px}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
-  var opts = '<option value="">Standort auswählen</option>'
-    + STANDORTE.map(function(s){ return '<option>' + s + '</option>'; }).join('')
-    + '<option>Andere / in meiner Nähe</option>';
-  var wochentage = ['Mo','Di','Mi','Do','Fr','Sa'];
-  var tageszeiten = ['Vormittags','Nachmittags','Abends'];
-  var waSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
-
   var wrap = document.createElement('div');
   wrap.id = 'terminModal';
   wrap.className = 'termin-modal';
@@ -19567,7 +19571,21 @@ var TERMIN_WA = 'https://wa.me/41798374681';
     + '<div class="termin-modal-eyebrow">TCM.ch Termin</div>'
     + '<h3 class="termin-modal-title">Termin anfragen</h3>'
     + '<p class="termin-modal-sub">Wir schlagen dir passende Zeiten vor — keine Online-Buchung, die Bestätigung erfolgt persönlich.</p>'
-    + '<form class="inline-form" onsubmit="submitTerminForm(event, this)" novalidate>'
+    + terminFormFields()
+    + '</div>';
+  function add(){ (document.body || document.documentElement).appendChild(wrap); }
+  if (document.body) add(); else document.addEventListener('DOMContentLoaded', add);
+})();
+// Shared Termin form markup (used by modal + embedded standort form)
+function terminFormFields(){
+  var STANDORTE = ['Zürich City','Zürich Oerlikon','Zürich Höngg','Winterthur','Volketswil','Frauenfeld','Kreuzlingen','St. Gallen','Wil','Rorschach','Basel'];
+  var opts = '<option value="">Standort auswählen</option>'
+    + STANDORTE.map(function(s){ return '<option>' + s + '</option>'; }).join('')
+    + '<option>Andere / in meiner Nähe</option>';
+  var wochentage = ['Mo','Di','Mi','Do','Fr','Sa'];
+  var tageszeiten = ['Vormittags','Nachmittags','Abends'];
+  var waSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+  return '<form class="inline-form" onsubmit="submitTerminForm(event, this)" novalidate>'
     + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">'
     + '<div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required></div>'
     + '<div class="form-row-2">'
@@ -19587,29 +19605,30 @@ var TERMIN_WA = 'https://wa.me/41798374681';
     + '<p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag.</p>'
     + '<div class="form-divider-quiet">Lieber direkt per WhatsApp?</div>'
     + '<a href="' + TERMIN_WA + '" class="form-wa-alt-new" target="_blank" rel="noopener">' + waSvg + 'Per WhatsApp anfragen</a>'
-    + '</form>'
-    + '</div>';
-  function add(){ (document.body || document.documentElement).appendChild(wrap); }
-  if (document.body) add(); else document.addEventListener('DOMContentLoaded', add);
-})();
+    + '</form>';
+}
+function terminInlineCardHTML(){
+  return '<div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Telefon oder E-Mail genügt — wir melden uns mit einem Terminvorschlag.</div></div>'
+    + terminFormFields();
+}
+function terminPrefillSelect(sel, loc){
+  if(!sel) return;
+  sel.selectedIndex = 0;
+  if(!loc) return;
+  var ll = loc.toLowerCase(), hit = -1, pfx = -1;
+  for(var i=0;i<sel.options.length;i++){
+    var ot = sel.options[i].text; if(!ot) continue;
+    var lt = ot.toLowerCase();
+    if(lt === ll){ hit = i; break; }
+    if(pfx < 0 && (ll.indexOf(lt) === 0 || lt.indexOf(ll) === 0)) pfx = i;
+  }
+  sel.selectedIndex = hit >= 0 ? hit : (pfx >= 0 ? pfx : 0);
+}
 function openTerminForm(standortName){
   var modal = document.getElementById('terminModal');
   if(!modal) return;
   var loc = standortName || window._curStandort || '';
-  var sel = modal.querySelector('select[name="standort"]');
-  if(sel){
-    sel.selectedIndex = 0;
-    if(loc){
-      var ll = loc.toLowerCase(), hit = -1, pfx = -1;
-      for(var i=0;i<sel.options.length;i++){
-        var ot = sel.options[i].text; if(!ot) continue;
-        var lt = ot.toLowerCase();
-        if(lt === ll){ hit = i; break; }
-        if(pfx < 0 && (ll.indexOf(lt) === 0 || lt.indexOf(ll) === 0)) pfx = i;
-      }
-      sel.selectedIndex = hit >= 0 ? hit : (pfx >= 0 ? pfx : 0);
-    }
-  }
+  terminPrefillSelect(modal.querySelector('select[name="standort"]'), loc);
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   setTimeout(function(){ var n=modal.querySelector('input[name="name"]'); if(n) n.focus(); }, 80);
@@ -19643,13 +19662,14 @@ function submitTerminForm(e, form){
   fetch('/api/anfrage', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
     .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
     .then(function(){
-      var card = document.querySelector('#terminModal .termin-modal-card');
-      if(card){ card.innerHTML = '<button class="termin-modal-x" type="button" onclick="closeTerminForm()" aria-label="Schliessen">&times;</button>'
+      var isModal = !!form.closest('#terminModal');
+      var box = form.closest('.termin-modal-card') || form.closest('.inline-form-card') || form.parentNode;
+      if(box){ box.innerHTML = (isModal ? '<button class="termin-modal-x" type="button" onclick="closeTerminForm()" aria-label="Schliessen">&times;</button>' : '')
         + '<div style="text-align:center;padding:30px 10px">'
         + '<div style="width:54px;height:54px;border-radius:50%;background:var(--blue-light,#E8F5EE);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
         + '<h3 style="font-family:Figtree,sans-serif;font-size:21px;font-weight:800;color:#0d0d0d;margin:0 0 8px">Terminanfrage gesendet</h3>'
         + '<p style="font-size:14px;color:#545e6b;line-height:1.6;margin:0">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag' + (data.standort ? (' für ' + data.standort) : '') + '.</p>'
-        + '<button class="btn-secondary" type="button" onclick="closeTerminForm()" style="margin-top:16px">Schliessen</button>'
+        + (isModal ? '<button class="btn-secondary" type="button" onclick="closeTerminForm()" style="margin-top:16px">Schliessen</button>' : '')
         + '</div>'; }
     })
     .catch(function(){
