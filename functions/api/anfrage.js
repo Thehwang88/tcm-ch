@@ -16,12 +16,14 @@ export async function onRequestPost({ request, env }) {
     try { d = await request.json(); } catch (e) {}
 
     if (d.website) return J({ ok: true });                 // honeypot
-    if (!d.name || !d.telefon) return J({ error: 'missing_fields' }, 422);
+    if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
     const rows = [
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
-      ['Standort', d.standort], ['Anliegen', d.anliegen],
+      ['Standort', d.standort],
+      ['Behandlung / Anliegen', d.behandlung || d.anliegen],
+      ['Wunsch-Wochentage', d.wochentage], ['Wunsch-Tageszeit', d.tageszeit],
       ['Quelle', d.quelle], ['Zeit', d.zeit],
     ];
     const html =
@@ -33,10 +35,13 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table>';
 
+    const subject = d.typ === 'termin'
+      ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
+      : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')';
     const body = {
       from: FROM,
       to: [TO],
-      subject: 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')',
+      subject,
       html,
     };
     if (d.email && String(d.email).includes('@')) body.reply_to = d.email;

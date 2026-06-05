@@ -17074,7 +17074,7 @@ return `<section class="usp-grid-section" style="background:#fff;padding:48px 0;
   <div class="usp-card">
     <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
     <div class="usp-title">Keine &Uuml;berweisung n&ouml;tig</div>
-    <div class="usp-sub">Direkt per WhatsApp buchen.</div>
+    <div class="usp-sub">Direkt per WhatsApp anfragen.</div>
   </div>
 </div></div></section>`;
 }
@@ -19028,21 +19028,21 @@ document.getElementById('standort-title').innerHTML = `TCM-Praxis <em>${l.name}<
 document.getElementById('standort-desc').textContent = l.desc || ('TCM-Praxis in ' + l.name + ' – Akupunktur, Tuina und weitere Methoden. Termine oft innert 24h.');
 // Hero CTA row — real phone link
 setHTML('standort-hero-cta', `
-<a href="${waHref}" class="btn-primary" target="_blank" rel="noopener"> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg>
+<button type="button" class="btn-primary" onclick="openTerminForm()"> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
 Termin in ${l.name} anfragen
-</a> <a href="tel:${phoneClean}" class="btn-secondary">Anrufen</a>`);
+</button> <a href="tel:${phoneClean}" class="btn-secondary">Anrufen</a>`);
 // Meta row
 setHTML('standort-meta', `
 <div class="sub-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${l.address}</div> <div class="sub-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Termine oft innert 24h</div> <div class="sub-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Krankenkassenanerkannt (Zusatz)</div>`);
 // Mobile CTA bar — real links
 setHTML('standort-mobile-cta', `
-<a href="${waHref}" class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg> Per WhatsApp</a> <button class="btn-secondary" onclick="openContactForm()">Standort finden</button> <a href="tel:${phoneClean}" class="btn-call" title="Anrufen"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg></a>`);
+<a href="${waHref}" class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg> Per WhatsApp</a> <button class="btn-secondary" onclick="openTerminForm()">Termin anfragen</button> <a href="tel:${phoneClean}" class="btn-call" title="Anrufen"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg></a>`);
 // ── 2. BUILD CONTENT ───────────────────────────────────────────────────────
 const flagshipBanner = l.id === 'zuerich-city' ? `
 <div class="standort-flagship-banner"> <div class="standort-flagship-banner-tag">★ Flagship-Praxis</div> <div class="standort-flagship-banner-title">TCM.ch Zürich City — Unsere Flagship-Praxis in Zürich</div> <div class="standort-flagship-banner-bullets"> <span class="standort-flagship-banner-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Zentral gelegen, optimal erreichbar</span> <span class="standort-flagship-banner-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ideal für Ersttermine</span> <span class="standort-flagship-banner-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Moderne TCM.ch Care Experience</span> <span class="standort-flagship-banner-bullet"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Besonders geeignet für komplexe oder akute Fälle</span> </div> </div>
 <div role="link" tabindex="0" onclick="nav('zuerich-longevity')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();nav('zuerich-longevity')}" style="cursor:pointer;background:linear-gradient(135deg,#0a1d12 0%,#122922 100%);border:1px solid rgba(201,169,110,.28);border-radius:16px;padding:26px 32px;margin-bottom:24px;color:#e8e2d4;position:relative;overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease,transform .35s ease;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap" onmouseover="this.style.borderColor='rgba(201,169,110,.55)';this.style.boxShadow='0 16px 56px rgba(0,0,0,.28)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(201,169,110,.28)';this.style.boxShadow='none';this.style.transform='translateY(0)'"> <div style="flex:1;min-width:240px"> <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.28);border-radius:999px;padding:5px 13px;font-family:'Figtree',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c9a96e;margin-bottom:14px"><span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:#c9a96e"></span>Zürich City Flagship</div> <div style="font-family:'Figtree',sans-serif;font-size:clamp(20px,2.4vw,26px);font-weight:400;letter-spacing:-.02em;line-height:1.2;color:#fff;margin-bottom:10px">Neu in Zürich City: <em style="font-style:italic;color:#c9a96e;font-weight:400">Private Longevity Care</em></div> <div style="font-size:14px;line-height:1.65;color:rgba(232,226,212,.65);font-weight:300;max-width:560px">Für Schlaf, Energie, Stressregulation, Schmerzen und langfristige Gesundheit — mit 90-minütiger BODYMAP™ Erstdiagnostik und persönlichem Behandlungsprotokoll.</div> </div> <div style="display:inline-flex;align-items:center;gap:9px;background:#c9a96e;color:#1a1a1a;padding:14px 24px;border-radius:999px;font-family:'Figtree',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 20px rgba(201,169,110,.22)">Longevity Programme ansehen<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div> </div>` : '';
 const sidebarHTML = `
-<div class="subpage-sidebar" style="background:var(--blue-light);border:1px solid rgba(45,155,111,.2);border-radius:20px;padding:24px;margin-bottom:16px;position:sticky;top:80px"> <div style="font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">TCM-Praxis ${l.name}</div> <div style="font-size:13px;color:var(--mid);margin-bottom:18px">${l.address}</div> <a href="${waHref}" class="btn-primary" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-bottom:10px;display:flex"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg> Termin per WhatsApp</a> <a href="tel:${phoneClean}" class="btn-secondary" style="width:100%;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg> Anrufen</a> <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(45,155,111,.15)"> <div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:500">ÖFFNUNGSZEITEN</div> <div style="font-size:13px;color:var(--mid);line-height:1.8">${(l.hours || '').replace(', ','<br>')}</div> </div> </div>`;
+<div class="subpage-sidebar" style="background:var(--blue-light);border:1px solid rgba(45,155,111,.2);border-radius:20px;padding:24px;margin-bottom:16px;position:sticky;top:80px"> <div style="font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px">TCM-Praxis ${l.name}</div> <div style="font-size:13px;color:var(--mid);margin-bottom:18px">${l.address}</div> <button type="button" class="btn-primary" onclick="openTerminForm()" style="width:100%;justify-content:center;margin-bottom:10px;display:flex"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Termin anfragen</button> <a href="tel:${phoneClean}" class="btn-secondary" style="width:100%;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg> Anrufen</a> <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(45,155,111,.15)"> <div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:500">ÖFFNUNGSZEITEN</div> <div style="font-size:13px;color:var(--mid);line-height:1.8">${(l.hours || '').replace(', ','<br>')}</div> </div> </div>`;
 // Therapies — all therapies available at this practice
 const therapiesHTML = THERAPIES.map(t => therapyCard(t, `nav('therapie','${t.id}')`)).join('');
 // Complaints — all symptoms
@@ -19057,8 +19057,8 @@ const nearbySection = nearbyCards
 ? `<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">${nearbyCards}</div></div></section>`
 : '';
 // Final CTA band — location-specific headline + real links
-const ctaTitle = l.id === 'zuerich-city' ? 'Flagship-Termin in Zürich City anfragen' : `Termin in ${l.name} buchen`;
-const ctaBand = `<section class="cta-band"><div class="wrap"> <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:14px;padding:6px 14px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.3);border-radius:999px"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#FFC107;animation:pulse 2s infinite"></span>Letzte verfügbare Termine diese Woche</div><h2>${ctaTitle}</h2> <p>Antwort meist innert 30 Minuten – oft schon morgen ein Termin frei.</p> <div class="cta-band-btns"> <a href="${waHref}" class="btn-white" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"/></svg> Per WhatsApp buchen</a> <a href="tel:${phoneClean}" class="btn-outline-white">Anrufen</a> </div> </div></section>`;
+const ctaTitle = l.id === 'zuerich-city' ? 'Flagship-Termin in Zürich City anfragen' : `Termin in ${l.name} anfragen`;
+const ctaBand = `<section class="cta-band"><div class="wrap"> <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:14px;padding:6px 14px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.3);border-radius:999px"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#FFC107;animation:pulse 2s infinite"></span>Letzte verfügbare Termine diese Woche</div><h2>${ctaTitle}</h2> <p>Antwort meist innert 30 Minuten – oft schon morgen ein Termin frei.</p> <div class="cta-band-btns"> <button type="button" class="btn-white" onclick="openTerminForm()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Termin anfragen</button> <a href="tel:${phoneClean}" class="btn-outline-white">Anrufen</a> </div> </div></section>`;
 // ── 3. ASSEMBLE in master order ───────────────────────────────────────────
 var isFlagship = true;
 setHTML('standort-content', `
@@ -19092,7 +19092,7 @@ el.innerHTML = '<div class="wrap" style="text-align:center">'
 + '<p style="display:inline-flex;align-items:center;gap:8px;font-family:Figtree,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:14px;padding:6px 14px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.3);border-radius:999px"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#FFC107;animation:pulse 2s infinite"></span>Nur noch wenige Termine diese Woche</p>'
 + '<h2 style="font-family:Figtree,sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Bereit für deinen ersten Termin?</h2>'
 + '<p style="font-size:15px;color:rgba(255,255,255,.75);margin:0 0 28px">Oft schon morgen verfügbar. Kostenlos und unverbindlich.</p>'
-+ '<a href="' + waHref + '" class="btn-white" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin sichern</a>'
++ '<button type="button" class="btn-white" onclick="openTerminForm()" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</button>'
 + '</div>';
 dst.appendChild(el);
 }
@@ -19521,6 +19521,143 @@ if(card){ card.innerHTML = '<div style="text-align:center;padding:32px 0"><div s
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeContactForm(); });
 // Prevent body scroll on iOS when modal open
 (function(){ var cm=document.getElementById('contactModal'); if(cm) cm.addEventListener('touchmove', function(e){e.stopPropagation();},{passive:false}); })();
+// ════════════════════════════════════════════════
+// TERMIN ANFRAGEN — dediziertes Terminformular (Modal)
+// ════════════════════════════════════════════════
+var TERMIN_WA = 'https://wa.me/41798374681';
+(function(){
+  var STANDORTE = ['Zürich City','Zürich Oerlikon','Zürich Höngg','Winterthur','Volketswil','Frauenfeld','Kreuzlingen','St. Gallen','Wil','Rorschach','Basel'];
+  var css = '.termin-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto}'
+    + '.termin-modal.open{display:flex}'
+    + '.termin-modal-bg{position:fixed;inset:0;background:rgba(13,13,13,.55);backdrop-filter:blur(3px)}'
+    + '.termin-modal-card{position:relative;z-index:1;background:#fff;border-radius:20px;max-width:480px;width:100%;padding:28px 26px;box-shadow:0 24px 64px rgba(0,0,0,.28);margin:auto}'
+    + '.termin-modal-x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:26px;line-height:1;color:#8a9299;cursor:pointer;padding:4px}'
+    + '.termin-modal-eyebrow{font-family:Figtree,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2D9B6F;margin-bottom:6px}'
+    + '.termin-modal-title{font-family:Figtree,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:#0d0d0d;margin:0 0 6px}'
+    + '.termin-modal-sub{font-size:13.5px;color:#545e6b;line-height:1.5;margin:0 0 18px}'
+    + '.termin-hint-min{font-size:12px;color:#8a9299;margin:-6px 0 6px}'
+    + '.termin-opt{color:#8a9299;font-weight:400}'
+    + '.termin-chips{display:flex;flex-wrap:wrap;gap:8px}'
+    + '.termin-chip{position:relative;cursor:pointer;display:inline-block}'
+    + '.termin-chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}'
+    + '.termin-chip span{display:inline-block;padding:8px 14px;border:1px solid var(--border,#e3e6ea);border-radius:100px;font-size:13.5px;color:#545e6b;font-family:Figtree,sans-serif;transition:all .15s ease;user-select:none}'
+    + '.termin-chip input:checked + span{background:var(--blue-light,#E8F5EE);border-color:#2D9B6F;color:#1F7A54;font-weight:600}'
+    + '.termin-chip input:focus-visible + span{outline:2px solid #2D9B6F;outline-offset:2px}'
+    + '.termin-under-btn{font-size:12.5px;color:#545e6b;text-align:center;margin:10px 0 0;line-height:1.5}'
+    + '@media(max-width:520px){.termin-modal-card{padding:22px 18px}}';
+  var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+
+  var opts = '<option value="">Standort auswählen</option>'
+    + STANDORTE.map(function(s){ return '<option>' + s + '</option>'; }).join('')
+    + '<option>Andere / in meiner Nähe</option>';
+  var wochentage = ['Mo','Di','Mi','Do','Fr','Sa'];
+  var tageszeiten = ['Vormittags','Nachmittags','Abends'];
+  var waSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>';
+
+  var wrap = document.createElement('div');
+  wrap.id = 'terminModal';
+  wrap.className = 'termin-modal';
+  wrap.setAttribute('role','dialog');
+  wrap.setAttribute('aria-modal','true');
+  wrap.setAttribute('aria-label','Termin anfragen');
+  wrap.innerHTML =
+    '<div class="termin-modal-bg" onclick="closeTerminForm()"></div>'
+    + '<div class="termin-modal-card">'
+    + '<button class="termin-modal-x" type="button" onclick="closeTerminForm()" aria-label="Schliessen">&times;</button>'
+    + '<div class="termin-modal-eyebrow">TCM.ch Termin</div>'
+    + '<h3 class="termin-modal-title">Termin anfragen</h3>'
+    + '<p class="termin-modal-sub">Wir schlagen dir passende Zeiten vor — keine Online-Buchung, die Bestätigung erfolgt persönlich.</p>'
+    + '<form class="inline-form" onsubmit="submitTerminForm(event, this)" novalidate>'
+    + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">'
+    + '<div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required></div>'
+    + '<div class="form-row-2">'
+    + '<div class="form-group"><label class="form-label">Telefon</label><input class="form-input" name="telefon" type="tel" autocomplete="tel"></div>'
+    + '<div class="form-group"><label class="form-label">E-Mail</label><input class="form-input" name="email" type="email" autocomplete="email"></div>'
+    + '</div>'
+    + '<p class="termin-hint-min">Telefon oder E-Mail — mindestens eines, damit wir dich erreichen.</p>'
+    + '<div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort">' + opts + '</select></div>'
+    + '<div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="2" placeholder="z. B. Akupunktur bei Rückenschmerzen"></textarea></div>'
+    + '<div class="form-group"><label class="form-label">Wunsch-Wochentage</label><div class="termin-chips">'
+    + wochentage.map(function(d){ return '<label class="termin-chip"><input type="checkbox" name="wochentag" value="' + d + '"><span>' + d + '</span></label>'; }).join('')
+    + '</div></div>'
+    + '<div class="form-group"><label class="form-label">Wunsch-Tageszeit</label><div class="termin-chips">'
+    + tageszeiten.map(function(d){ return '<label class="termin-chip"><input type="checkbox" name="tageszeit" value="' + d + '"><span>' + d + '</span></label>'; }).join('')
+    + '</div></div>'
+    + '<button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Termin anfragen</button>'
+    + '<p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag.</p>'
+    + '<div class="form-divider-quiet">Lieber direkt per WhatsApp?</div>'
+    + '<a href="' + TERMIN_WA + '" class="form-wa-alt-new" target="_blank" rel="noopener">' + waSvg + 'Per WhatsApp anfragen</a>'
+    + '</form>'
+    + '</div>';
+  function add(){ (document.body || document.documentElement).appendChild(wrap); }
+  if (document.body) add(); else document.addEventListener('DOMContentLoaded', add);
+})();
+function openTerminForm(standortName){
+  var modal = document.getElementById('terminModal');
+  if(!modal) return;
+  var loc = standortName || window._curStandort || '';
+  var sel = modal.querySelector('select[name="standort"]');
+  if(sel){
+    sel.selectedIndex = 0;
+    if(loc){
+      var ll = loc.toLowerCase(), hit = -1, pfx = -1;
+      for(var i=0;i<sel.options.length;i++){
+        var ot = sel.options[i].text; if(!ot) continue;
+        var lt = ot.toLowerCase();
+        if(lt === ll){ hit = i; break; }
+        if(pfx < 0 && (ll.indexOf(lt) === 0 || lt.indexOf(ll) === 0)) pfx = i;
+      }
+      sel.selectedIndex = hit >= 0 ? hit : (pfx >= 0 ? pfx : 0);
+    }
+  }
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ var n=modal.querySelector('input[name="name"]'); if(n) n.focus(); }, 80);
+}
+function closeTerminForm(){
+  var modal = document.getElementById('terminModal');
+  if(modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitTerminForm(e, form){
+  e.preventDefault();
+  var get = function(n){ var el=form.querySelector('[name="'+n+'"]'); return el ? (el.value||'').trim() : ''; };
+  var name = get('name'), tel = get('telefon'), mail = get('email');
+  var err = form.querySelector('.termin-form-err');
+  function showErr(msg){
+    if(!err){ err=document.createElement('p'); err.className='termin-form-err'; err.style.cssText='font-size:13px;color:#c0392b;margin:10px 0 0;line-height:1.5'; var b=form.querySelector('.form-submit'); b.insertAdjacentElement('afterend', err); }
+    err.textContent=msg;
+  }
+  if(!name){ showErr('Bitte gib deinen Namen an.'); return; }
+  if(!tel && !mail){ showErr('Bitte Telefon oder E-Mail angeben, damit wir dich erreichen können.'); return; }
+  if(err){ err.remove(); }
+  var collect = function(n){ return Array.prototype.slice.call(form.querySelectorAll('input[name="'+n+'"]:checked')).map(function(c){return c.value;}).join(', '); };
+  var data = {
+    typ:'termin', name:name, telefon:tel, email:mail,
+    standort:get('standort'), behandlung:get('behandlung'),
+    wochentage:collect('wochentag'), tageszeit:collect('tageszeit'),
+    website:get('website'), quelle: location.pathname || '/', zeit: new Date().toISOString()
+  };
+  var btn = form.querySelector('.form-submit');
+  if(btn){ btn.disabled=true; btn.dataset.label=btn.innerHTML; btn.innerHTML='Wird gesendet…'; }
+  fetch('/api/anfrage', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
+    .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
+    .then(function(){
+      var card = document.querySelector('#terminModal .termin-modal-card');
+      if(card){ card.innerHTML = '<button class="termin-modal-x" type="button" onclick="closeTerminForm()" aria-label="Schliessen">&times;</button>'
+        + '<div style="text-align:center;padding:30px 10px">'
+        + '<div style="width:54px;height:54px;border-radius:50%;background:var(--blue-light,#E8F5EE);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+        + '<h3 style="font-family:Figtree,sans-serif;font-size:21px;font-weight:800;color:#0d0d0d;margin:0 0 8px">Terminanfrage gesendet</h3>'
+        + '<p style="font-size:14px;color:#545e6b;line-height:1.6;margin:0">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag' + (data.standort ? (' für ' + data.standort) : '') + '.</p>'
+        + '<button class="btn-secondary" type="button" onclick="closeTerminForm()" style="margin-top:16px">Schliessen</button>'
+        + '</div>'; }
+    })
+    .catch(function(){
+      if(btn){ btn.disabled=false; btn.innerHTML=btn.dataset.label||'Termin anfragen'; }
+      showErr('Senden fehlgeschlagen. Bitte versuche es erneut oder schreib uns per WhatsApp.');
+    });
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeTerminForm(); });
 // ════════════════════════════════════════════════
 // NAV SCROLL + MOBILE
 // ════════════════════════════════════════════════
