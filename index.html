@@ -19589,10 +19589,9 @@ function terminFormFields(){
     + '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">'
     + '<div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required></div>'
     + '<div class="form-row-2">'
-    + '<div class="form-group"><label class="form-label">Telefon</label><input class="form-input" name="telefon" type="tel" autocomplete="tel"></div>'
-    + '<div class="form-group"><label class="form-label">E-Mail</label><input class="form-input" name="email" type="email" autocomplete="email"></div>'
+    + '<div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required></div>'
+    + '<div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required></div>'
     + '</div>'
-    + '<p class="termin-hint-min">Telefon oder E-Mail — mindestens eines, damit wir dich erreichen.</p>'
     + '<div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort">' + opts + '</select></div>'
     + '<div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="2" placeholder="z. B. Akupunktur bei Rückenschmerzen"></textarea></div>'
     + '<div class="form-group"><label class="form-label">Wunsch-Wochentage</label><div class="termin-chips">'
@@ -19608,7 +19607,7 @@ function terminFormFields(){
     + '</form>';
 }
 function terminInlineCardHTML(){
-  return '<div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Telefon oder E-Mail genügt — wir melden uns mit einem Terminvorschlag.</div></div>'
+  return '<div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Wir melden uns mit einem Terminvorschlag.</div></div>'
     + terminFormFields();
 }
 function terminPrefillSelect(sel, loc){
@@ -19648,7 +19647,7 @@ function submitTerminForm(e, form){
     err.textContent=msg;
   }
   if(!name){ showErr('Bitte gib deinen Namen an.'); return; }
-  if(!tel && !mail){ showErr('Bitte Telefon oder E-Mail angeben, damit wir dich erreichen können.'); return; }
+  if(!tel || !mail){ showErr('Bitte Telefon und E-Mail angeben.'); return; }
   if(err){ err.remove(); }
   var collect = function(n){ return Array.prototype.slice.call(form.querySelectorAll('input[name="'+n+'"]:checked')).map(function(c){return c.value;}).join(', '); };
   var data = {

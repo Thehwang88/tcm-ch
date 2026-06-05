@@ -16,7 +16,7 @@ export async function onRequestPost({ request, env }) {
     try { d = await request.json(); } catch (e) {}
 
     if (d.website) return J({ ok: true });                 // honeypot
-    if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
+    if (!d.name || !d.telefon || !d.email) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
     const rows = [
