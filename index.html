@@ -18835,7 +18835,7 @@ setHTML('therapie-fallback-cta', buildFallbackCTA(
 'Nicht sicher, ob das das Richtige ist?',
 'Beschreibe kurz deine Beschwerden – wir empfehlen dir die optimale Therapie und passende Praxis.'
 ));
-injectBackBtn('therapie-hero', 'therapien', 'Zurück zu Therapien'); window._curBehandlung = t.name; (function(){ var pg = document.getElementById('page-therapie'); if(!pg) return; pg.querySelectorAll('[onclick*="openContactForm"],[onclick*="conciergeOpen"]').forEach(function(el){ el.setAttribute('onclick','openTerminForm()'); }); var _card = pg.querySelector('.contact-section-inline .inline-form-card'); if(_card && typeof terminInlineCardHTML==='function'){ _card.innerHTML = terminInlineCardHTML(); terminPrefillSelect(_card.querySelector('select[name="standort"]'), window._curStandort||''); var _bf = _card.querySelector('textarea[name="behandlung"]'); if(_bf) _bf.value = t.name; } })();
+injectBackBtn('therapie-hero', 'therapien', 'Zurück zu Therapien'); window._curBehandlung = t.name; (function(){ var pg = document.getElementById('page-therapie'); if(!pg) return; pg.querySelectorAll('[onclick*="openContactForm"],[onclick*="conciergeOpen"]').forEach(function(el){ el.setAttribute('onclick','therapieScrollToForm()'); }); var _card = pg.querySelector('.contact-section-inline .inline-form-card'); if(_card && typeof terminInlineCardHTML==='function'){ _card.innerHTML = terminInlineCardHTML(); terminPrefillSelect(_card.querySelector('select[name="standort"]'), window._curStandort||''); var _bf = _card.querySelector('textarea[name="behandlung"]'); if(_bf) _bf.value = t.name; } })();
 }
 
 function renderTherapieStandort(tid, lid){
@@ -19638,6 +19638,7 @@ function terminPrefillSelect(sel, loc){
   }
   sel.selectedIndex = hit >= 0 ? hit : (pfx >= 0 ? pfx : 0);
 }
+function therapieScrollToForm(){ var el = document.querySelector('#page-therapie .contact-section-inline .inline-form-card') || document.querySelector('#page-therapie .contact-section-inline'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
 function openTerminForm(standortName, behandlung){
   var modal = document.getElementById('terminModal');
   if(!modal) return;
