@@ -18649,9 +18649,9 @@ const THERAPY_IMGS = {
 function renderTherapien(){
 const therRevSection = document.getElementById('therapien-rev-section');
 if(therRevSection) therRevSection.innerHTML = buildReviewsSection('therapien','Erfahrungen mit TCM-Therapien.');
-document.getElementById('therapien-grid').innerHTML =
+var _tg=document.getElementById('therapien-grid'); if(_tg) _tg.innerHTML =
 THERAPIES.map(t=>therapyCard(t,`nav('therapie','${t.id}')`)).join('');
-document.getElementById('therapien-symptom-preview').innerHTML =
+var _tsp=document.getElementById('therapien-symptom-preview'); if(_tsp) _tsp.innerHTML =
 SYMPTOMS.slice(0,4).map(s=>symptomCard(s,`nav('symptom','${s.id}')`)).join('');
 injectBackBtn('therapien-premium-hero', 'home', 'Zurück');
 }
