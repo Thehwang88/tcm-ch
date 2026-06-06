@@ -19,6 +19,18 @@ export async function onRequestPost({ request, env }) {
     if (!d.name || !d.telefon || !d.email) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
+    const tsVerify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: env.TURNSTILE_SECRET,
+        response: d.turnstileToken,
+        remoteip: request.headers.get('CF-Connecting-IP'),
+      }),
+    });
+    const tsResult = await tsVerify.json().catch(() => ({}));
+    if (!tsResult.success) return J({ error: 'turnstile_failed' }, 403);
+
     const rows = [
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
       ['Standort', d.standort],
