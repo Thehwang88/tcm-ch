@@ -19713,7 +19713,7 @@ document.getElementById('formSuccess').style.display = 'block';
     if(!window.turnstile || !el) return;
     if(el.dataset.tsRendered === '1' || el.querySelector('iframe')) return;
     el.dataset.tsRendered = '1';
-    try { window.turnstile.render(el, { sitekey: el.getAttribute('data-sitekey') }); }
+    try { var wid = window.turnstile.render(el, { sitekey: el.getAttribute('data-sitekey') }); if(wid != null) el.dataset.tsWidgetId = wid; }
     catch(_){ el.dataset.tsRendered = ''; }
   }
   function scan(root){
@@ -19723,6 +19723,18 @@ document.getElementById('formSuccess').style.display = 'block';
     Array.prototype.forEach.call(scope.querySelectorAll('.cf-turnstile'), renderEl);
   }
   window.tcmMountTurnstile = scan;
+  // Token des zum Formular gehörenden Widgets robust auslesen (getResponse statt DOM-Query)
+  window.tcmTsToken = function(form){
+    var el = form && form.querySelector('.cf-turnstile');
+    var token = '';
+    if(el && window.turnstile){
+      try { if(el.dataset.tsWidgetId) token = window.turnstile.getResponse(el.dataset.tsWidgetId) || ''; } catch(_){}
+      if(!token){ try { token = window.turnstile.getResponse(el) || ''; } catch(_){} }
+    }
+    if(!token && el){ token = (el.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
+    if(!token){ token = (document.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
+    return { el: el, token: token };
+  };
   function start(){
     try {
       new MutationObserver(function(muts){
@@ -19748,8 +19760,7 @@ form.querySelectorAll('input,textarea,select').forEach(function(el){
 });
 data.quelle = location.pathname || '/';
 data.zeit = new Date().toISOString();
-var tsEl = form.querySelector('.cf-turnstile');
-var tsToken = (form.querySelector('[name="cf-turnstile-response"]') || {}).value || '';
+var _ts = window.tcmTsToken(form); var tsEl = _ts.el, tsToken = _ts.token;
 if(tsEl && !tsToken){
   var te = form.querySelector('.form-send-err');
   if(!te){ te = document.createElement('p'); te.className='form-send-err'; te.style.cssText='font-size:13px;color:#c0392b;margin-top:10px;line-height:1.5'; form.appendChild(te); }
@@ -19901,8 +19912,7 @@ function submitTerminForm(e, form){
   if(!name){ showErr('Bitte gib deinen Namen an.'); return; }
   if(!tel || !mail){ showErr('Bitte Telefon und E-Mail angeben.'); return; }
   if(err){ err.remove(); }
-  var tsEl = form.querySelector('.cf-turnstile');
-  var tsToken = (form.querySelector('[name="cf-turnstile-response"]') || {}).value || '';
+  var _ts = window.tcmTsToken(form); var tsEl = _ts.el, tsToken = _ts.token;
   if(tsEl && !tsToken){ showErr('Bitte bestätige kurz, dass du kein Roboter bist.'); return; }
   var collect = function(n){ return Array.prototype.slice.call(form.querySelectorAll('input[name="'+n+'"]:checked')).map(function(c){return c.value;}).join(', '); };
   var data = {
