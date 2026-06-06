@@ -16674,7 +16674,7 @@ wissen: 'page-wissen'
 };
 // Show/hide home content — after fixHomeContentDOM() all home sections are inside #home-content
 var isHome = (page === 'home');
-if(page!=='standort') window._curStandort='';
+if(page!=='standort') window._curStandort=''; if(page!=='therapie' && page!=='therapieStandort') window._curBehandlung='';
 document.body.classList.toggle('on-subpage', !isHome);
 var hc = document.getElementById('home-content');
 if (hc) hc.style.display = isHome ? '' : 'none';
@@ -18835,14 +18835,14 @@ setHTML('therapie-fallback-cta', buildFallbackCTA(
 'Nicht sicher, ob das das Richtige ist?',
 'Beschreibe kurz deine Beschwerden – wir empfehlen dir die optimale Therapie und passende Praxis.'
 ));
-injectBackBtn('therapie-hero', 'therapien', 'Zurück zu Therapien');
+injectBackBtn('therapie-hero', 'therapien', 'Zurück zu Therapien'); window._curBehandlung = t.name; (function(){ var pg = document.getElementById('page-therapie'); if(!pg) return; pg.querySelectorAll('[onclick*="openContactForm"],[onclick*="conciergeOpen"]').forEach(function(el){ el.setAttribute('onclick','openTerminForm()'); }); var _card = pg.querySelector('.contact-section-inline .inline-form-card'); if(_card && typeof terminInlineCardHTML==='function'){ _card.innerHTML = terminInlineCardHTML(); terminPrefillSelect(_card.querySelector('select[name="standort"]'), window._curStandort||''); var _bf = _card.querySelector('textarea[name="behandlung"]'); if(_bf) _bf.value = t.name; } })();
 }
 
 function renderTherapieStandort(tid, lid){
   var t = getTher(tid), l = getLoc(lid);
   if(!t || !l){ renderTherapien(); return; }
   // Render base therapy page first
-  renderTherapie(tid);
+  renderTherapie(tid); window._curStandort = l.name; (function(){ var _tc = document.querySelector('#page-therapie .contact-section-inline .inline-form-card'); if(_tc) terminPrefillSelect(_tc.querySelector('select[name="standort"]'), l.name); })();
   // Overlay city-specific content
   var cityH1 = t.name + ' ' + l.name;
   var citySub = t.name + ' in ' + l.name + ' – geprüfte TCM-Praxis im TCM.ch Netzwerk. EMR/ASCA anerkannt, Krankenkasse 80–100% (Zusatzversicherung). ' + t.hint + '.';
@@ -19638,11 +19638,11 @@ function terminPrefillSelect(sel, loc){
   }
   sel.selectedIndex = hit >= 0 ? hit : (pfx >= 0 ? pfx : 0);
 }
-function openTerminForm(standortName){
+function openTerminForm(standortName, behandlung){
   var modal = document.getElementById('terminModal');
   if(!modal) return;
   var loc = standortName || window._curStandort || '';
-  terminPrefillSelect(modal.querySelector('select[name="standort"]'), loc);
+  terminPrefillSelect(modal.querySelector('select[name="standort"]'), loc); var _beh = behandlung || window._curBehandlung || ''; var _bt = modal.querySelector('textarea[name="behandlung"]'); if(_bt) _bt.value = _beh;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   setTimeout(function(){ var n=modal.querySelector('input[name="name"]'); if(n) n.focus(); }, 80);
