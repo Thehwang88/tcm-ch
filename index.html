@@ -19687,11 +19687,11 @@ if(sel && loc){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].text===
 }
 var cards = Array.prototype.slice.call(document.querySelectorAll('.inline-form-card'));
 var visible = cards.filter(function(c){ return c.offsetParent !== null; });
-if(visible.length){ fill(visible[0]); visible[0].scrollIntoView({behavior:'smooth',block:'start'}); return; }
+if(visible.length){ fill(visible[0]); try { var _w = visible[0].querySelector('.cf-turnstile'); if(_w && window.tcmRenderTurnstile) window.tcmRenderTurnstile(_w); } catch(_){} visible[0].scrollIntoView({behavior:'smooth',block:'start'}); return; }
 if(typeof nav==='function') nav('home');
 setTimeout(function(){
 var t = document.getElementById('home-contact-form');
-if(t){ fill(t); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+if(t){ fill(t); try { var _w = t.querySelector('.cf-turnstile'); if(_w && window.tcmRenderTurnstile) window.tcmRenderTurnstile(_w); } catch(_){} t.scrollIntoView({behavior:'smooth',block:'start'}); }
 },120);
 }
 function closeContactForm(){
@@ -19755,6 +19755,32 @@ document.getElementById('formSuccess').style.display = 'block';
       if(!token){ token = (document.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
       return { el: el, token: token };
     };
+    // Direkt-Render eines bestimmten Widgets (openContactForm: Ziel sofort warmlaufen lassen)
+    window.tcmRenderTurnstile = function(el){ try { renderEl(el); } catch(_){} };
+    // Vorwaermen: nach window load + Idle alle Widgets gestaffelt (~1s Abstand) rendern,
+    // damit die Challenge geloest ist bevor der Nutzer ankommt, ohne den initialen Load zu blockieren
+    function prewarmAll(){
+      try {
+        var els = Array.prototype.slice.call(document.querySelectorAll('.cf-turnstile'));
+        var i = 0;
+        (function next(){
+          if(i >= els.length) return;
+          try { renderEl(els[i]); } catch(_){}
+          i++;
+          setTimeout(next, 1000);
+        })();
+      } catch(_){}
+    }
+    function schedulePrewarm(){
+      try {
+        var go = function(){
+          if('requestIdleCallback' in window){ try { requestIdleCallback(prewarmAll, { timeout: 4000 }); return; } catch(_){} }
+          setTimeout(prewarmAll, 3000);
+        };
+        if(document.readyState === 'complete'){ go(); }
+        else { window.addEventListener('load', go, { once: true }); }
+      } catch(_){}
+    }
     function start(){
       try {
         try {
@@ -19766,6 +19792,7 @@ document.getElementById('formSuccess').style.display = 'block';
       } catch(_){}
     }
     if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+    schedulePrewarm();
   } catch(e){ try { window.console && console.warn && console.warn('[turnstile init]', e); } catch(_){} }
 })();
 function submitInlineFormGeneric(e, form){
