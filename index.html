@@ -9301,6 +9301,43 @@ Jetzt bewerben
 </button> <a href="https://wa.me/41775236122?text=Hallo%20TCM.ch%2C%20ich%20m%C3%B6chte%20mich%20unverbindlich%20melden." class="kar-btn-outline-white" target="_blank" rel="noopener">
 Unverbindlich melden
 </a> </div> <div class="kar-final-micro kar-reveal" style="transition-delay:.2s">TCM Jobs Schweiz · TCM Stelle Zürich · TCM Stelle Winterthur · Karriere TCM Schweiz</div> </div> </div> </div> </div> </div>
+<style id="kk-hub-sty">
+.kk-page{max-width:var(--max);margin:0 auto;padding:24px 32px 80px}
+.kk-page .breadcrumb{margin:18px 0 8px}
+.kk-page .sub-eyebrow{margin-top:14px}
+.kk-page .sub-title{margin:6px 0 0;font-size:32px}
+.kk-tldr{font-size:17px;line-height:1.6;color:var(--mid);background:var(--blue-light);border-radius:14px;padding:18px 20px;margin:18px 0}
+.kk-sec{margin-top:40px}
+.kk-sec h2{font-family:'Figtree',sans-serif;font-size:24px;font-weight:800;color:#0d0d0d;letter-spacing:-.02em;margin:0 0 12px}
+.kk-sec>p{color:var(--mid);line-height:1.6}
+.kk-list{margin:10px 0 0 20px;line-height:1.7;color:var(--mid)}
+.kk-list li{margin-bottom:6px}
+.kk-hint{font-size:14px;color:var(--mid);font-style:italic;margin-top:12px}
+.kk-link{color:var(--blue);font-weight:600;text-decoration:none}
+.kk-link:hover{color:var(--blue-dark)}
+.kk-table-wrap{overflow-x:auto;margin:16px 0}
+.kk-table{width:100%;border-collapse:collapse;font-family:'Figtree',sans-serif;font-size:15px;min-width:560px}
+.kk-table th,.kk-table td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--mid)}
+.kk-table th{font-weight:700;color:#0d0d0d;background:var(--blue-light);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.kk-table tr.kk-row{cursor:pointer;transition:background var(--t-base)}
+.kk-table tr.kk-row:hover{background:rgba(45,155,111,.06)}
+.kk-table a{color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap}
+.kk-faq{margin-top:8px}
+.kk-faq-item{border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.kk-faq-item summary{cursor:pointer;font-family:'Figtree',sans-serif;font-weight:700;color:#0d0d0d;list-style:none}
+.kk-faq-item summary::-webkit-details-marker{display:none}
+.kk-faq-item[open] summary{margin-bottom:8px}
+.kk-faq-a{color:var(--mid);line-height:1.6}
+.kk-hero{position:relative}
+.kk-hero img{width:100%;height:auto;display:block;border-radius:16px}
+.kk-hero__copy{position:absolute;top:50%;left:5%;transform:translateY(-50%);max-width:42%}
+.kk-hero__copy h1{font-family:'Figtree',sans-serif;font-size:34px;font-weight:800;letter-spacing:-.02em;color:#0d0d0d;margin:0 0 10px;line-height:1.12}
+.kk-hero__copy p{font-size:18px;color:var(--mid);margin:0 0 18px}
+.kk-hero .cta{display:inline-flex;align-items:center;background:var(--blue);color:#fff;font-family:'Figtree',sans-serif;font-weight:700;font-size:15px;padding:12px 24px;border-radius:100px;text-decoration:none;transition:background var(--t-base)}
+.kk-hero .cta:hover{background:var(--blue-dark)}
+@media(max-width:640px){.kk-hero__copy{position:static;transform:none;max-width:100%;padding:1rem 0}.kk-hero__copy h1{font-size:26px}}
+</style>
+<div class="page" id="page-kkhub"><div class="kk-page" id="kkhub-content"></div></div>
 <div class="page" id="page-partnerpraxen"> <section class="hero"> <div class="wrap"> <div class="hero-in"> <div class="hero-l"> <div class="hero-tag"> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
 Exklusive Stadtpartnerschaft · 1 Praxis pro Region
 </div> <h1 class="hero-h1">Qualifizierte Neupatienten –<br>ohne Fixkosten, ohne Risiko,<br><em>ohne Werbebudget.</em></h1> <p class="hero-sub">TCM.ch erfasst aktive Patientennachfrage national und vermittelt sie exklusiv an eine einzige Partnerpraxis pro Stadt. Du behandelst – wir liefern die Nachfrage.</p> <div class="hero-core">
@@ -17084,6 +17121,8 @@ if (page === 'symptomStandort' && id) { var _ss = id.split('__'); return '/besch
 if (page === 'therapie' && id) return '/therapien/'   + id;
 if (page === 'therapieStandort' && id) { var _ts = id.split('__'); return '/therapien/' + (_ts[0]||'') + '/' + (_ts[1]||''); }
 if (page === 'standort' && id) return '/standorte/'   + id;
+if (page === 'kkhub' && id)    return '/krankenkassen/' + id;
+if (page === 'kkhub')          return '/krankenkassen';
 if (page === 'krankenkasse')   return '/krankenkasse';
 if (page === 'agb')            return '/agb';
 if (page === 'impressum')      return '/impressum';
@@ -17108,6 +17147,8 @@ if (parts[0] === 'therapien'   && parts[1]) return { page: 'therapie',    id: pa
 if (parts[0] === 'therapien')               return { page: 'therapien',   id: '' };
 if (parts[0] === 'standorte'   && parts[1]) return { page: 'standort',    id: parts[1] };
 if (parts[0] === 'standorte')               return { page: 'standorte',   id: '' };
+if (parts[0] === 'krankenkassen' && parts[1]) return { page: 'kkhub', id: parts[1] };
+if (parts[0] === 'krankenkassen')           return { page: 'kkhub', id: '' };
 if (parts[0] === 'krankenkasse')            return { page: 'krankenkasse', id: '' };
 if (parts[0] === 'agb')                     return { page: 'agb', id: '' };
 if (parts[0] === 'impressum')               return { page: 'impressum', id: '' };
@@ -17131,6 +17172,7 @@ home: 'page-home', beschwerden: 'page-beschwerden',
 therapien: 'page-therapien', standorte: 'page-standorte',
 symptom: 'page-symptom', symptomStandort: 'page-symptom', therapie: 'page-therapie', therapieStandort: 'page-therapie', standort: 'page-standort',
 krankenkasse: 'page-krankenkasse',
+kkhub: 'page-kkhub',
 agb: 'page-agb',
 impressum: 'page-impressum',
 datenschutz: 'page-datenschutz',
@@ -17168,6 +17210,7 @@ else if (page === 'therapie')    renderTherapie(id);
 else if (page === 'therapieStandort') { var _ts = (id||'').split('__'); renderTherapieStandort(_ts[0]||'', _ts[1]||''); }
 else if (page === 'standort')    renderStandort(id);
 else if (page === 'krankenkasse') renderKrankenkasse();
+else if (page === 'kkhub')       renderKrankenkassenHub(id);
 else if (page === 'partnerpraxen') renderPartnerpraxen();
 else if (page === 'wissen')      renderWissen(id);
 } catch(e) { console.error('[TCM] render error on page "' + page + '":', e); }
@@ -17485,6 +17528,23 @@ if(page==='standort' && id){ var l=getLoc(id); if(l){
 if(page==='standorte'){ ld = {"@context":"https://schema.org","@type":"CollectionPage","name":"TCM-Praxen in der Schweiz","url":SITE+path,"breadcrumb":crumb([{n:'TCM.ch',p:'/'},{n:'Standorte',p:path}])};}
 if(page==='therapien'){ ld = {"@context":"https://schema.org","@type":"CollectionPage","name":"TCM-Therapien","url":SITE+path,"breadcrumb":crumb([{n:'TCM.ch',p:'/'},{n:'Therapien',p:path}])};}
 if(page==='beschwerden'){ ld = {"@context":"https://schema.org","@type":"CollectionPage","name":"Beschwerden A–Z","url":SITE+path,"breadcrumb":crumb([{n:'TCM.ch',p:'/'},{n:'Beschwerden',p:path}])};}
+if(page==='kkhub'){
+  var _k = id ? getKK(id) : null;
+  function _kkFaqLd(arr){ return {"@type":"FAQPage","mainEntity":(arr||[]).map(function(f){return {"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}};})}; }
+  if(id && _k){
+    title='Akupunktur & TCM mit '+_k.name+' – Rückerstattung | TCM.ch';
+    desc='So rechnest du Akupunktur und TCM über die '+_k.name+'-Zusatzversicherung ab: Tarife, Deckung und Ablauf. EMR-anerkannt, Voraussetzung erfüllt.';
+    path='/krankenkassen/'+_k.slug;
+    var _gk=[crumb([{n:'TCM.ch',p:'/'},{n:'Krankenkassen',p:'/krankenkassen'},{n:_k.name,p:path}])];
+    if(_k.faq&&_k.faq.length) _gk.push(_kkFaqLd(_k.faq));
+    ld={"@context":"https://schema.org","@graph":_gk};
+  } else {
+    title='Akupunktur & TCM: Kosten und Krankenkasse | TCM.ch';
+    desc='So wird Akupunktur und TCM über die Zusatzversicherung für Komplementärmedizin rückerstattet. Voraussetzung EMR/ASCA – Krankenkassen im Vergleich.';
+    path='/krankenkassen';
+    ld={"@context":"https://schema.org","@graph":[crumb([{n:'TCM.ch',p:'/'},{n:'Krankenkassen',p:path}]), _kkFaqLd(KK_PILLAR_FAQ)]};
+  }
+}
 var url = SITE + path;
 document.getElementById('pageTitle').textContent = title;
 document.getElementById('pageDesc').setAttribute('content', desc);
@@ -20318,6 +20378,83 @@ var e = document.getElementById('pp-f-email').value.trim();
 if (!p || !n || !c || !e) { alert('Bitte füllen Sie alle Pflichtfelder aus (*).'); return; }
 document.getElementById('ppFForm').style.display = 'none';
 document.getElementById('ppFOk').classList.add('vis');
+}
+// ════════════════════════════════════════════════
+// KRANKENKASSEN-HUB  (pillar /krankenkassen/ + insurer spokes /krankenkassen/<slug>/)
+// ════════════════════════════════════════════════
+var KRANKENKASSEN = [
+  { slug:'css', name:'CSS',
+    produkte:['Alternativ-Versicherung myFlex (Economy/Balance/Premium)','Gesundheitsversicherung Livo Smart/Top'],
+    register:'EMR',
+    deckung:"Anteilige Rückerstattung bis CHF 10'000/Jahr je nach Tarif, nach CSS-Höchstpreis pro 5 Min.",
+    verordnung:false,
+    faq:[
+      {q:'Erstattet die CSS Akupunktur und TCM?', a:'Ja. Über die CSS-Zusatzversicherung für Komplementärmedizin (z.B. myFlex Alternativ) wird Akupunktur und TCM bei EMR-anerkannten Therapeut:innen anteilig zurückerstattet. Der genaue Satz richtet sich nach deinem Tarif.'},
+      {q:'Wie hoch ist die Rückerstattung bei der CSS?', a:"Je nach Tarif erstattet die CSS anteilig bis zu CHF 10'000 pro Jahr, abgerechnet nach dem CSS-Höchstpreis pro 5 Minuten. Verbindlich ist deine Police."},
+      {q:'Brauche ich bei der CSS eine ärztliche Verordnung?', a:'Für die Rückerstattung über die Zusatzversicherung ist bei der CSS in der Regel keine ärztliche Verordnung nötig. Kläre die Details vor dem Termin anhand deiner Police.'}
+    ] }
+];
+function getKK(slug){ return KRANKENKASSEN.find(function(k){ return k.slug===slug; }); }
+var KK_PILLAR_FAQ = [
+  {q:'Zahlt die Krankenkasse Akupunktur und TCM?', a:'Über die Zusatzversicherung für Komplementärmedizin erstatten die meisten Schweizer Kassen Akupunktur und TCM anteilig zurück, sofern die Behandlung bei einer EMR- oder ASCA-anerkannten Therapeutin erfolgt. Die Grundversicherung übernimmt nur Akupunktur durch ärztliche Leistungserbringer.'},
+  {q:'Was bedeutet EMR- bzw. ASCA-anerkannt?', a:'EMR (ErfahrungsMedizinisches Register) und ASCA sind Schweizer Register für qualifizierte Komplementärtherapeut:innen. Nur Behandlungen bei registrierten Therapeut:innen werden von den Zusatzversicherungen rückerstattet. Unsere Therapeut:innen sind anerkannt.'},
+  {q:'Wie viel bekomme ich zurück?', a:'Das hängt von deiner Police ab: Üblich sind 70 bis 90 Prozent pro Sitzung bis zu einem jährlichen Maximalbetrag. Den genauen Satz und das Jahreslimit findest du in deiner Zusatzversicherung. Wir helfen dir bei der Abklärung vor dem ersten Termin.'},
+  {q:'Brauche ich eine ärztliche Verordnung?', a:'Für die Rückerstattung über die Zusatzversicherung ist meist keine ärztliche Verordnung nötig. Einzelne Kassen oder Tarife verlangen sie dennoch – verbindlich ist deine Police.'}
+];
+function kkFaqHTML(arr){
+  return '<div class="kk-faq">'+(arr||[]).map(function(f){
+    return '<details class="kk-faq-item"><summary>'+f.q+'</summary><div class="kk-faq-a">'+f.a+'</div></details>';
+  }).join('')+'</div>';
+}
+function kkCtaRow(){
+  return '<div class="sub-cta-row" style="margin-top:14px">'
+    +'<button type="button" class="btn-primary" onclick="openTerminForm()">Termin anfragen</button>'
+    +'<a class="kk-link" href="/standorte" onclick="event.preventDefault();nav(\'standorte\')" style="align-self:center">Alle Standorte ansehen &rarr;</a>'
+    +'</div>';
+}
+function kkTableHTML(){
+  var rows = KRANKENKASSEN.map(function(k){
+    return '<tr class="kk-row" onclick="nav(\'kkhub\',\''+k.slug+'\')">'
+      +'<td><strong>'+k.name+'</strong></td>'
+      +'<td>'+k.produkte.join('<br>')+'</td>'
+      +'<td>'+k.deckung+'</td>'
+      +'<td><a href="/krankenkassen/'+k.slug+'" onclick="event.preventDefault();nav(\'kkhub\',\''+k.slug+'\')">Details &rarr;</a></td>'
+      +'</tr>';
+  }).join('');
+  return '<div class="kk-table-wrap"><table class="kk-table"><thead><tr>'
+    +'<th>Krankenkasse</th><th>Tarife</th><th>Deckung</th><th>Link</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+function kkPillarHTML(){
+  return ''
+  +'<section class="kk-hero">'
+  +  '<img src="/images/krankenkasse-hero.png" alt="Helle Schweizer TCM-Praxis mit Akupunkturnadeln und Tablet – Akupunktur über die Krankenkasse abrechnen" width="1600" height="900" loading="eager" decoding="async">'
+  +  '<div class="kk-hero__copy"><h1>Akupunktur &amp; TCM: Kosten und Krankenkasse</h1><p>So wird deine Behandlung über die Zusatzversicherung rückerstattet.</p><a href="#kassen" class="cta">Krankenkassen vergleichen</a></div>'
+  +'</section>'
+  +'<div class="breadcrumb"><button onclick="nav(\'home\')">TCM.ch</button><span class="breadcrumb-sep">›</span><span>Krankenkassen</span></div>'
+  +'<p class="kk-tldr"><strong>Kurz erklärt:</strong> Akupunktur und TCM werden in der Schweiz über die <strong>Zusatzversicherung für Komplementärmedizin</strong> anteilig rückerstattet – nicht über die Grundversicherung. Voraussetzung ist, dass deine Therapeutin <strong>EMR- oder ASCA-anerkannt</strong> ist. Unsere Therapeut:innen erfüllen diese Voraussetzung.</p>'
+  +'<section id="kassen" class="kk-sec"><h2>Krankenkassen im Vergleich</h2><p>Wähle deine Kasse für die Details zu Tarifen, Deckung und Ablauf.</p>'
+  +  kkTableHTML()
+  +  '<p class="kk-hint">Stand 2026, tarifabhängig. Verbindlich ist deine Police – wir helfen bei der Abklärung.</p></section>'
+  +'<section class="kk-sec"><h2>Häufige Fragen</h2>'+kkFaqHTML(KK_PILLAR_FAQ)+'</section>'
+  +'<section class="kk-sec"><h2>Behandlung in deiner Nähe</h2><p>Unsere TCM-Praxen findest du an mehreren Standorten in der Schweiz.</p>'+kkCtaRow()+'</section>';
+}
+function kkSpokeHTML(k){
+  return ''
+  +'<div class="breadcrumb"><button onclick="nav(\'home\')">TCM.ch</button><span class="breadcrumb-sep">›</span><button onclick="nav(\'kkhub\')">Krankenkassen</button><span class="breadcrumb-sep">›</span><span>'+k.name+'</span></div>'
+  +'<div class="sub-eyebrow">Krankenkasse</div>'
+  +'<h1 class="sub-title">Akupunktur &amp; TCM mit '+k.name+' – Rückerstattung</h1>'
+  +'<p class="kk-tldr"><strong>Kurz erklärt:</strong> Über die '+k.name+'-Zusatzversicherung für Komplementärmedizin wird Akupunktur und TCM bei einer anerkannten Therapeutin anteilig rückerstattet. Unsere Therapeut:innen sind <strong>'+k.register+'-anerkannt</strong> – die Voraussetzung ist erfüllt.</p>'
+  +'<section class="kk-sec"><h2>Tarife</h2><ul class="kk-list">'+k.produkte.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul>'
+  +  '<p>'+k.deckung+'</p>'
+  +  '<p class="kk-hint">Stand 2026, tarifabhängig. Verbindlich ist deine Police – wir helfen bei der Abklärung.</p></section>'
+  +'<section class="kk-sec"><h2>Voraussetzungen</h2><ul class="kk-list"><li>Bestehende Zusatzversicherung für Komplementärmedizin bei der '+k.name+'</li><li>Behandlung bei einer '+k.register+'-anerkannten Therapeutin – bei uns erfüllt</li><li>'+(k.verordnung?'Ärztliche Verordnung erforderlich':'In der Regel keine ärztliche Verordnung nötig')+'</li></ul></section>'
+  +'<section class="kk-sec"><h2>Ablauf</h2><ol class="kk-list"><li><strong>Termin:</strong> Du vereinbarst deinen Behandlungstermin.</li><li><strong>Rechnung:</strong> Du erhältst nach der Sitzung eine EMR-konforme Rechnung.</li><li><strong>Einreichen:</strong> Du reichst die Rechnung bei der '+k.name+' ein.</li><li><strong>Rückerstattung:</strong> Die '+k.name+' erstattet den tariflich vorgesehenen Anteil zurück.</li></ol></section>'
+  +'<section class="kk-sec"><h2>Häufige Fragen</h2>'+kkFaqHTML(k.faq)+'</section>'
+  +'<section class="kk-sec"><h2>Behandlung in deiner Nähe</h2><p>Unsere TCM-Praxen findest du an mehreren Standorten in der Schweiz.</p>'+kkCtaRow()+'</section>';
+}
+function renderKrankenkassenHub(id){
+  var k = id ? getKK(id) : null;
+  setHTML('kkhub-content', (id && k) ? kkSpokeHTML(k) : kkPillarHTML());
 }
 function renderKrankenkasse() {
 // Init scroll reveal for KK page
