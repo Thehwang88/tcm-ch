@@ -9244,6 +9244,7 @@ Unverbindlich melden
 .kk-table th{font-weight:700;color:#0d0d0d;background:var(--blue-light);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
 .kk-table tr.kk-row{cursor:pointer;transition:background var(--t-base)}
 .kk-table tr.kk-row:hover{background:rgba(45,155,111,.06)}
+.kk-table tr.kk-grouprow td{background:#f2f7f4;font-family:'Figtree',sans-serif;font-weight:800;color:var(--blue-dark);font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:11px 16px}
 .kk-table a{color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap}
 .kk-faq{margin-top:8px}
 .kk-faq-item{border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
@@ -20366,16 +20367,23 @@ function kkCtaRow(){
     +'</div>';
 }
 function kkTableHTML(){
-  var rows = KRANKENKASSEN.map(function(k){
-    return '<tr class="kk-row" onclick="nav(\'kkhub\',\''+k.slug+'\')">'
-      +'<td><strong>'+k.name+'</strong></td>'
-      +'<td>'+k.produkte.join('<br>')+'</td>'
-      +'<td>'+k.deckung+'</td>'
-      +'<td><a href="/krankenkassen/'+k.slug+'" onclick="event.preventDefault();nav(\'kkhub\',\''+k.slug+'\')">Details &rarr;</a></td>'
-      +'</tr>';
-  }).join('');
+  function rowsFor(list){
+    return list.map(function(k){
+      return '<tr class="kk-row" onclick="nav(\'kkhub\',\''+k.slug+'\')">'
+        +'<td><strong>'+k.name+'</strong></td>'
+        +'<td>'+k.produkte.join('<br>')+'</td>'
+        +'<td>'+k.deckung+'</td>'
+        +'<td><a href="/krankenkassen/'+k.slug+'" onclick="event.preventDefault();nav(\'kkhub\',\''+k.slug+'\')">Details &rarr;</a></td>'
+        +'</tr>';
+    }).join('');
+  }
+  function grpHead(label){ return '<tr class="kk-grouprow"><td colspan="4">'+label+'</td></tr>'; }
+  var gruppe = KRANKENKASSEN.filter(function(k){ return /gehört zur/.test(k.deckung); });
+  var eigen  = KRANKENKASSEN.filter(function(k){ return !/gehört zur/.test(k.deckung); });
+  var body = grpHead('Krankenkassen') + rowsFor(eigen)
+    + (gruppe.length ? grpHead('Gruppenmarken') + rowsFor(gruppe) : '');
   return '<div class="kk-table-wrap"><table class="kk-table"><thead><tr>'
-    +'<th>Krankenkasse</th><th>Tarife</th><th>Deckung</th><th>Link</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+    +'<th>Krankenkasse</th><th>Tarife</th><th>Deckung</th><th>Link</th></tr></thead><tbody>'+body+'</tbody></table></div>';
 }
 function kkPillarHTML(){
   return ''
