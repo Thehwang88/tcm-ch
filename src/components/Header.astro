@@ -1,9 +1,19 @@
 ---
-import { PAIR_MAP_EN } from '../data/site';
+import { PAIR_MAP_EN, site } from '../data/site';
 interface Props { currentPath: string; }
 const { currentPath } = Astro.props;
 // Language switcher: from this EN page to its DE counterpart (or DE home).
 const deTarget = PAIR_MAP_EN[currentPath] ?? '/';
+
+// Single source of truth for nav links — desktop bar + mobile drawer stay in sync.
+const navLinks = [
+  { href: '/beschwerden', label: 'Conditions' },
+  { href: '/therapien', label: 'Therapies' },
+  { href: '/standorte', label: 'Locations' },
+  { href: '/wissen', label: 'Knowledge' },
+  { href: '/en/health-insurance-acupuncture', label: 'Insurance & costs' },
+];
+const arrow = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
 ---
 <header class="site-nav">
   <div class="site-nav__in">
@@ -15,30 +25,148 @@ const deTarget = PAIR_MAP_EN[currentPath] ?? '/';
       </div>
     </a>
     <nav class="site-nav__links" aria-label="Primary">
-      <!-- EN nav points to DE equivalents for now (no dead links). -->
-      <a href="/beschwerden">Conditions</a>
-      <a href="/therapien">Therapies</a>
-      <a href="/standorte">Locations</a>
-      <a href="/wissen">Knowledge</a>
-      <a href="/en/health-insurance-acupuncture">Insurance &amp; costs</a>
+      {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
     </nav>
     <div class="site-nav__actions">
       <a class="lang-switch" href={deTarget} hreflang="de-CH" aria-label="Zur deutschen Seite wechseln">DE</a>
       <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+      <button id="enBurger" class="nav-burger" aria-label="Open menu" aria-controls="enDrawer" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
+<!-- Mobile drawer — replicates the DE SPA #siteDrawer (right slide-in, overlay, header + plain links + CTA) -->
+<div id="enDrawerOverlay" class="drw-overlay" aria-hidden="true"></div>
+<aside id="enDrawer" class="drw" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drw-header">
+    <div class="logo-text-group">
+      <div class="logo-wm" style="font-size:19px">TCM<span class="ch" style="font-size:14px">.ch</span></div>
+      <span class="logo-sub" style="text-transform:uppercase;letter-spacing:.18em;font-weight:600">Kliniken<svg viewBox="0 0 32 32" width="1.15em" height="1.15em" style="display:inline-block;vertical-align:middle;margin-left:3px" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#DA291C"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span>
+    </div>
+    <button class="drw-close" aria-label="Close menu">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="drw-body">
+    <div class="drw-section">
+      <ul class="drw-plain-links">
+        {navLinks.map((l) => (
+          <li><a href={l.href}>{l.label}<span class="drw-link-arrow" set:html={arrow} /></a></li>
+        ))}
+        <li><a href={deTarget} hreflang="de-CH">Deutsch / DE<span class="drw-link-arrow" set:html={arrow} /></a></li>
+      </ul>
+    </div>
+    <div class="drw-group--cta">
+      <a class="drw-cta-primary" href="/en/contact">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Request an appointment
+      </a>
+      <div class="drw-cta-row">
+        <a class="drw-cta-secondary" href={`tel:+${site.whatsapp}`}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.59 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.08 6.08l1.62-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
+          Call
+        </a>
+        <a class="drw-cta-secondary drw-cta-wa" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  (function () {
+    var panel = document.getElementById('enDrawer');
+    var overlay = document.getElementById('enDrawerOverlay');
+    var burger = document.getElementById('enBurger');
+    if (!panel || !overlay || !burger) return;
+    var closeBtn = panel.querySelector('.drw-close');
+    var scrollY = 0;
+    function open() {
+      panel.classList.add('open');
+      overlay.classList.add('open');
+      scrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollY + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      burger.setAttribute('aria-expanded', 'true');
+      if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 320);
+    }
+    function close() {
+      panel.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+      burger.setAttribute('aria-expanded', 'false');
+    }
+    burger.addEventListener('click', open);
+    overlay.addEventListener('click', close);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) close();
+    });
+  })();
+</script>
+
 <style>
-  /* Copied verbatim from the DE SPA header (effective desktop values + mobile breakpoint). */
+  /* Logo: copied verbatim from the DE SPA header (effective desktop values + mobile breakpoint). */
   .logo { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; cursor: pointer; }
   .logo-text-group { display: flex; flex-direction: column; gap: 4px; }
-  .logo-wm { font-family: 'Nunito', sans-serif; font-weight: 900; font-style: italic; font-size: 24px; letter-spacing: -.5px; color: #0d0d0d; line-height: 1; display: flex; align-items: baseline; }
+  .logo-wm { font-family: var(--font-accent); font-weight: 900; font-style: italic; font-size: 24px; letter-spacing: -.5px; color: var(--black); line-height: 1; display: flex; align-items: baseline; }
   .logo-wm .ch { font-size: 19px; }
-  .logo-sub { font-family: 'Figtree', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: .06em; color: #666; line-height: 1; white-space: nowrap; }
+  .logo-sub { font-family: var(--font-sans); font-size: 10px; font-weight: 400; letter-spacing: .06em; color: #666; line-height: 1; white-space: nowrap; }
   @media (max-width: 520px) {
     .logo-wm { font-size: 20px; }
     .logo-wm .ch { font-size: 15px; }
     .logo-sub { font-size: 9px; letter-spacing: .14em; }
+  }
+
+  /* Burger — DE SPA .nav-menu-btn: 42px, green-outlined, hidden on desktop. */
+  .nav-burger { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--white); border: 1.5px solid var(--blue); color: var(--blue); cursor: pointer; padding: 0; flex-shrink: 0; transition: background var(--t-fast) ease; }
+  .nav-burger:hover { background: var(--blue-light); }
+
+  /* Drawer overlay + panel — replicates DE #drawerOverlay / #siteDrawer. */
+  .drw-overlay { position: fixed; inset: 0; z-index: 900; background: rgba(8,8,8,.48); opacity: 0; pointer-events: none; transition: opacity var(--t-slow) var(--ease-in-out); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .drw-overlay.open { opacity: 1; pointer-events: all; }
+  .drw { position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(420px, 100vw); z-index: 901; background: var(--surface); box-shadow: -1px 0 0 rgba(0,0,0,.05), -20px 0 60px rgba(0,0,0,.12); transform: translateX(102%); transition: transform var(--t-slow) var(--ease-in-out); display: flex; flex-direction: column; }
+  .drw.open { transform: translateX(0); }
+
+  .drw-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 18px; border-bottom: 1px solid rgba(0,0,0,.07); flex-shrink: 0; background: var(--white); }
+  .drw-close { width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.08); color: var(--charcoal); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background var(--t-fast) ease; }
+  .drw-close:hover { background: rgba(0,0,0,.08); }
+
+  .drw-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 4px 0 0; -webkit-overflow-scrolling: touch; }
+  .drw-section { border-bottom: 1px solid rgba(0,0,0,.06); }
+  .drw-plain-links { list-style: none; padding: 6px 0; margin: 0; }
+  .drw-plain-links a { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 24px; background: none; border: none; text-align: left; text-decoration: none; font-family: var(--font-sans); font-size: var(--fs-small); font-weight: 500; color: #2a2a2a; transition: color var(--t-base) ease, background var(--t-base) ease; }
+  .drw-plain-links a:hover { color: var(--blue); background: rgba(45,155,111,.05); }
+  .drw-link-arrow { margin-left: auto; display: inline-flex; opacity: 0; color: var(--blue); transition: opacity var(--t-fast) ease, transform var(--t-fast) var(--ease-out); }
+  .drw-plain-links a:hover .drw-link-arrow { opacity: 1; transform: translateX(3px); }
+
+  .drw-group--cta { padding: 16px 18px 18px; }
+  .drw-cta-primary { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: #fff; padding: 13px 20px; border-radius: 9px; font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none; box-shadow: var(--sh-btn); transition: background var(--t-base) ease; }
+  .drw-cta-primary:hover { background: var(--blue-dark); }
+  .drw-cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 7px; }
+  .drw-cta-secondary { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 14px; border-radius: 9px; font-family: var(--font-sans); font-size: 12.5px; font-weight: 500; text-decoration: none; color: var(--charcoal); border: 1px solid var(--border); background: var(--white); transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .drw-cta-secondary:hover { border-color: var(--blue); color: var(--blue); }
+  .drw-cta-wa { color: var(--blue); border-color: rgba(37,211,102,.25); }
+
+  /* Swap desktop nav for the burger at the existing breakpoint. */
+  @media (max-width: 820px) {
+    .nav-burger { display: inline-flex; }
+    .site-nav__actions .lang-switch,
+    .site-nav__actions .btn--primary { display: none; }
   }
 </style>
