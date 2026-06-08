@@ -19,6 +19,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/en/health-insurance-acupuncture</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>

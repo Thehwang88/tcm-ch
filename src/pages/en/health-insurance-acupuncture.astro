@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const path = '/en/health-insurance-acupuncture';
+const url = `https://tcm.ch${path}`;
+
+const faqs = [
+  {
+    q: 'I just moved to Switzerland — am I covered for acupuncture?',
+    a: 'Your mandatory basic insurance only covers acupuncture when a doctor with complementary-medicine training performs it. Therapist-led TCM, like ours, is covered through optional supplementary insurance for complementary medicine. If you only have basic cover, you likely need to add that supplementary product first.',
+  },
+  {
+    q: 'Do I need supplementary insurance for TCM?',
+    a: 'For therapist-delivered TCM, yes in practice. Basic insurance does not reimburse it. A complementary-medicine supplementary policy (Zusatzversicherung) is what covers treatments at our clinics — and only when the practitioner is EMR- or ASCA-recognised, which ours are.',
+  },
+  {
+    q: 'How do I claim reimbursement?',
+    a: 'You pay the clinic, receive an itemised invoice listing the EMR/ASCA registration, and submit it to your insurer — usually by app, post or online portal. Your insurer reimburses a share according to your policy. How much and how fast depends entirely on your tariff.',
+  },
+  {
+    q: 'Are your practitioners recognised by my insurer?',
+    a: 'Our practitioners hold EMR and/or ASCA recognition, which nearly all Swiss supplementary insurers reference for complementary medicine. Recognition is the key requirement, but each policy sets its own terms. We are happy to help you check your specific cover before you book.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Health insurance & acupuncture', item: url },
+  ],
+};
+
+const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', 'Groupe Mutuel', 'Sympany', 'KPT', 'AXA'];
+---
+<Layout
+  title="Does Swiss Health Insurance Cover Acupuncture & TCM? | TCM.ch"
+  description="A plain-English guide for expats: how Swiss basic and supplementary insurance cover acupuncture and TCM, what EMR/ASCA means, and how to claim reimbursement."
+  path={path}
+  schema={[faqSchema, breadcrumbSchema]}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — for expats in Switzerland</div>
+      <h1>Does Swiss health insurance cover acupuncture and TCM?</h1>
+      <p class="lead">The Swiss system has two layers, and which one pays for acupuncture depends on who treats you. Here's the honest version.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <div class="tldr">
+        <strong>In short:</strong> Basic insurance (<em>Grundversicherung</em>) only covers acupuncture and TCM when a
+        doctor with complementary-medicine training performs it. Therapist-delivered TCM — like at our clinics — is
+        covered through supplementary insurance (<em>Zusatzversicherung</em>) for complementary medicine. Our
+        practitioners are EMR-/ASCA-recognised, which is the key requirement. How much you get back depends on your policy.
+      </div>
+
+      <h2>Basic vs. supplementary insurance</h2>
+      <p>
+        Almost everything that confuses newcomers comes down to this split. Swiss health cover is two separate things:
+      </p>
+      <ul>
+        <li>
+          <strong>Basic insurance (Grundversicherung)</strong> — mandatory for everyone, identical benefits by law.
+          It covers acupuncture only when delivered by a <em>physician</em> who has complementary-medicine training.
+          It does <em>not</em> cover treatment by a non-physician TCM therapist.
+        </li>
+        <li>
+          <strong>Supplementary insurance (Zusatzversicherung)</strong> — optional, and you choose it separately.
+          The complementary-medicine product is the one that reimburses therapist-led TCM, acupuncture, Tuina,
+          cupping and herbal medicine at clinics like ours.
+        </li>
+      </ul>
+      <p>
+        So if you've only ever signed the mandatory policy, you're probably not yet covered for our treatments. The fix
+        is usually adding a complementary-medicine supplementary policy — ideally before you start treatment.
+      </p>
+
+      <h2>What is EMR / ASCA?</h2>
+      <p>
+        These are the two main Swiss recognition registers for complementary-medicine practitioners:
+      </p>
+      <ul>
+        <li><strong>EMR</strong> (ErfahrungsMedizinisches Register) — a quality register insurers rely on.</li>
+        <li><strong>ASCA</strong> — a second, widely accepted recognition body.</li>
+      </ul>
+      <p>
+        Supplementary insurers reimburse treatment only when the practitioner is recognised by a register they accept.
+        Our practitioners are EMR- and/or ASCA-recognised, so their invoices meet that requirement. It's the single most
+        important box to tick — without it, even a good policy won't pay out.
+      </p>
+
+      <h2>How reimbursement works</h2>
+      <p>You're not billed through your insurer up front. The flow is simple:</p>
+      <ol>
+        <li><strong>Book</strong> an appointment at one of our clinics.</li>
+        <li><strong>Pay</strong> the practitioner directly after treatment.</li>
+        <li><strong>Submit the invoice</strong> to your insurer — it shows the EMR/ASCA registration they look for.</li>
+        <li><strong>Get reimbursed</strong> a share of the cost, per your supplementary tariff.</li>
+      </ol>
+      <p>
+        Reimbursement rates, annual ceilings and per-session caps are set by your individual policy — there's no single
+        national rate. Check your tariff, or let us help you read it.
+      </p>
+
+      <h2>Which insurers cover it?</h2>
+      <p>
+        Most major Swiss insurers offer a complementary-medicine supplementary product, among them
+        {insurers.map((n, i) => (<>{i > 0 ? ', ' : ''}<strong>{n}</strong></>))} and others.
+        What differs is the fine print: the percentage reimbursed, the annual cap and which registers they accept. We
+        deliberately don't quote fixed percentages here, because they're tariff-dependent and change between products.
+      </p>
+      <p>
+        <a class="inline-link" href="/krankenkassen/">See per-insurer details (German) →</a>
+      </p>
+
+      <h2>FAQ</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+      </div>
+
+      <p class="disclaimer">
+        This is general information, not insurance or medical advice. Your policy is what counts — we're happy to help
+        you check.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose { max-width: 760px; }
+  .prose h2 { font-size: 26px; font-weight: 800; margin: 38px 0 14px; }
+  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
+  .prose ul, .prose ol { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .prose li { margin: 0 0 10px; }
+  .prose strong { color: var(--ink); }
+  .tldr {
+    background: var(--blue-light);
+    border: 1px solid rgba(45, 155, 111, .25);
+    border-radius: var(--r-card);
+    padding: 20px 22px;
+    font-size: 17px;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .tldr strong { color: var(--blue-dark); }
+  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+  .inline-link:hover { text-decoration: underline; }
+  .faq details {
+    border: 1px solid var(--border);
+    border-radius: var(--r-btn);
+    padding: 4px 18px;
+    margin: 0 0 12px;
+  }
+  .faq summary {
+    font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 14px 0;
+    list-style: none;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details[open] summary { padding-bottom: 4px; }
+  .faq p { margin: 0 0 16px; }
+  .cta-row { margin: 32px 0 24px; }
+  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
+</style>

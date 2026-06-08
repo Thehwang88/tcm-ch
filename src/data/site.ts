@@ -30,6 +30,7 @@ export const standorte = [
 export const PAIR_MAP: Record<string, string> = {
   '/': '/en/',
   '/kontakt': '/en/contact',
+  '/krankenkassen/': '/en/health-insurance-acupuncture',
 };
 
 // Reverse lookup (EN -> DE) derived from PAIR_MAP.
