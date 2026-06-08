@@ -2,6 +2,7 @@ node_modules/
 prerendered/
 dist/
 .astro/
+.wrangler/
 *.mjs
 !astro.config.mjs
 *.backup
