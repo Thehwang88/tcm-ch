@@ -1,5 +1,8 @@
 node_modules/
 prerendered/
+dist/
+.astro/
 *.mjs
+!astro.config.mjs
 *.backup
 *.backup2

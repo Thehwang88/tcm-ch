@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { site } from '../../data/site';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalOrganization',
+  name: 'TCM.ch',
+  url: 'https://tcm.ch/en/',
+  logo: 'https://tcm.ch/icon-512.png',
+  medicalSpecialty: 'TraditionalChineseMedicine',
+  areaServed: { '@type': 'Country', name: 'Switzerland' },
+  availableLanguage: ['de-CH', 'en'],
+};
+
+const pillars = [
+  { h: 'Conditions', p: 'Back pain, migraine, sleep, fertility and more — what TCM can realistically help with.', href: '/beschwerden' },
+  { h: 'Therapies', p: 'Acupuncture, Tuina, cupping, Chinese herbal medicine — methods and when they fit.', href: '/therapien' },
+  { h: 'Locations', p: '12 clinics across Zürich, Winterthur, St. Gallen, Basel and the wider region.', href: '/standorte' },
+  { h: 'Knowledge', p: 'Evidence-based articles from the practitioners who do these treatments daily.', href: '/wissen' },
+];
+---
+<Layout
+  title="Traditional Chinese Medicine across Switzerland"
+  description="TCM.ch is Switzerland's leading network for Traditional Chinese Medicine — 12 clinics, vetted EMR-/ASCA-recognised practitioners. Request an appointment, usually answered within ~1h."
+  path="/en/"
+  schema={schema}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — Swiss TCM network</div>
+      <h1>Traditional Chinese Medicine across Switzerland</h1>
+      <p class="lead">TCM.ch is Switzerland's leading network for Traditional Chinese Medicine — 12 clinics, vetted EMR-/ASCA-recognised practitioners.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+        <a class="btn btn--ghost" href="/standorte">Find a clinic</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Explore TCM.ch</h2>
+      <div class="cards">
+        {pillars.map((c) => (
+          <a class="card" href={c.href}>
+            <h3>{c.h}</h3>
+            <p>{c.p}</p>
+          </a>
+        ))}
+      </div>
+      <p style="color:var(--mid);font-size:14px;margin-top:18px">
+        These sections are currently in German. An English contact form is available — <a href="/en/contact" style="color:var(--blue);font-weight:600">request an appointment in English</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Why TCM.ch</div>
+      <div class="cards">
+        <div class="card"><h3>EMR / ASCA recognised</h3><p>Our practitioners are vetted and recognised — the prerequisite for reimbursement through supplementary insurance.</p></div>
+        <div class="card"><h3>Insurance 70–90%</h3><p>Complementary-medicine supplementary insurance typically covers most of the cost. We help you check your policy.</p></div>
+        <div class="card"><h3>Appointments within ~1h reply</h3><p>Tell us briefly what's going on — we usually get back to you within about an hour.</p></div>
+      </div>
+    </div>
+  </section>
+</Layout>

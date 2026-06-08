@@ -1,0 +1,23 @@
+---
+import { PAIR_MAP_EN } from '../data/site';
+interface Props { currentPath: string; }
+const { currentPath } = Astro.props;
+// Language switcher: from this EN page to its DE counterpart (or DE home).
+const deTarget = PAIR_MAP_EN[currentPath] ?? '/';
+---
+<header class="site-nav">
+  <div class="site-nav__in">
+    <a href="/en/" class="site-logo" aria-label="TCM.ch — home">TCM<span>.ch</span></a>
+    <nav class="site-nav__links" aria-label="Primary">
+      <!-- EN nav points to DE equivalents for now (no dead links). -->
+      <a href="/beschwerden">Conditions</a>
+      <a href="/therapien">Therapies</a>
+      <a href="/standorte">Locations</a>
+      <a href="/wissen">Knowledge</a>
+    </nav>
+    <div class="site-nav__actions">
+      <a class="lang-switch" href={deTarget} hreflang="de-CH" aria-label="Zur deutschen Seite wechseln">DE</a>
+      <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+    </div>
+  </div>
+</header>
