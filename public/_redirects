@@ -1,5 +1,4 @@
 /standorte/winterthur  /standorte/winterthur-muenzgasse  301
 /krankenkasse              /krankenkassen/        301
 /krankenkasse/*            /krankenkassen/:splat  301
-/en/*    /en/404/    404
 /*    /index.html   200
