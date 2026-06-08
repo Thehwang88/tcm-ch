@@ -20326,7 +20326,26 @@ var KRANKENKASSEN = [
   { slug:'kpt', name:'KPT', produkte:['Pulse Top','Pulse Premium'], register:'both', deckung:'Rückerstattung ohne ärztliche Verordnung; tarifabhängige Limiten.', verordnung:false },
   { slug:'axa', name:'AXA', produkte:['ACTIF','COMPLET'], register:'both', deckung:'75%; ACTIF max CHF 1\'000/Jahr, COMPLET max CHF 3\'000/Jahr.', verordnung:false },
   { slug:'egk', name:'EGK', produkte:['SUN (Stufen)'], register:'both', deckung:'ca. 80% (tarifabhängig), teils Franchise.', verordnung:false },
-  { slug:'atupri', name:'Atupri', produkte:['Mivita / Diversa'], register:'EMR', deckung:'tarifabhängige anteilige Rückerstattung — Police prüfen.', verordnung:false }
+  { slug:'atupri', name:'Atupri', produkte:['Mivita / Diversa'], register:'EMR', deckung:'tarifabhängige anteilige Rückerstattung — Police prüfen.', verordnung:false },
+  // --- eigenständige Kassen (Deckung tarifabhängig, vor Publikation prüfen) ---
+  { slug:'assura', name:'Assura', produkte:['Komplementärmedizin-Zusatz (paketabhängig)'], register:'EMR', deckung:'Eingeschränkte Deckung: nur über bestimmte Zusatzpakete und oft begrenzt. Tarif genau prüfen — viele Assura-Modelle decken Komplementärmedizin nur minimal. Wir helfen bei der Abklärung oder Tarifwahl.', verordnung:false },
+  { slug:'oekk', name:'ÖKK', produkte:['ambulante Komplementärmedizin-Zusatzversicherung'], register:'EMR', deckung:'Anteilige Rückerstattung über die ambulante Zusatzversicherung; tarifabhängig — Police prüfen.', verordnung:false },
+  { slug:'agrisano', name:'Agrisano', produkte:['ambulante Zusatzversicherung Komplementärmedizin'], register:'EMR', deckung:'Anteilige Rückerstattung tarifabhängig; Police prüfen.', verordnung:false },
+  { slug:'aquilana', name:'Aquilana', produkte:['ambulante Zusatzversicherung Komplementärmedizin'], register:'EMR', deckung:'Anteilige Rückerstattung tarifabhängig; Police prüfen.', verordnung:false },
+  // --- Gruppenmarken: gleiche Bedingungen wie Muttergesellschaft ---
+  { slug:'progres', name:'Progrès', produkte:['Helsana-Gruppe: SANA / COMPLETA'], register:'both', deckung:'Progrès gehört zur Helsana-Gruppe. Es gelten die Helsana-Bedingungen: 75% der ambulanten Behandlungskosten.', verordnung:false },
+  { slug:'sansan', name:'Sansan', produkte:['Helsana-Gruppe: SANA / COMPLETA'], register:'both', deckung:'Sansan gehört zur Helsana-Gruppe. Es gelten die Helsana-Bedingungen: 75% der ambulanten Behandlungskosten.', verordnung:false },
+  { slug:'avanex', name:'Avanex', produkte:['Helsana-Gruppe: SANA / COMPLETA'], register:'both', deckung:'Avanex gehört zur Helsana-Gruppe. Es gelten die Helsana-Bedingungen: 75% der ambulanten Behandlungskosten.', verordnung:false },
+  { slug:'avenir', name:'Avenir', produkte:['Groupe Mutuel: Bonus / Global'], register:'both', deckung:'Avenir gehört zur Groupe Mutuel. Es gelten die Groupe-Mutuel-Bedingungen: bis 90% tarifabhängig.', verordnung:false },
+  { slug:'easy-sana', name:'Easy Sana', produkte:['Groupe Mutuel: Bonus / Global'], register:'both', deckung:'Easy Sana gehört zur Groupe Mutuel. Es gelten die Groupe-Mutuel-Bedingungen: bis 90% tarifabhängig.', verordnung:false },
+  { slug:'philos', name:'Philos', produkte:['Groupe Mutuel: Bonus / Global'], register:'both', deckung:'Philos gehört zur Groupe Mutuel. Es gelten die Groupe-Mutuel-Bedingungen: bis 90% tarifabhängig.', verordnung:false },
+  { slug:'mutuel', name:'Mutuel', produkte:['Groupe Mutuel: Bonus / Global'], register:'both', deckung:'Mutuel gehört zur Groupe Mutuel. Es gelten die Groupe-Mutuel-Bedingungen: bis 90% tarifabhängig.', verordnung:false },
+  { slug:'arcosana', name:'Arcosana', produkte:['CSS-Gruppe: Alternativ-Versicherung myFlex'], register:'EMR', deckung:'Arcosana gehört zur CSS-Gruppe. Es gelten die CSS-Bedingungen: anteilige Rückerstattung nach Höchstpreis, tarifabhängig.', verordnung:false },
+  { slug:'intras', name:'Intras', produkte:['CSS-Gruppe: Alternativ-Versicherung myFlex'], register:'EMR', deckung:'Intras gehört zur CSS-Gruppe. Es gelten die CSS-Bedingungen: anteilige Rückerstattung nach Höchstpreis, tarifabhängig.', verordnung:false },
+  { slug:'sanagate', name:'Sanagate', produkte:['CSS-Gruppe (digital)'], register:'EMR', deckung:'Sanagate gehört zur CSS-Gruppe. Komplementärmedizin nur über CSS-Zusatzversicherung möglich — Sanagate selbst ist ein reines Grundversicherungs-Digitalmodell. Deckung prüfen.', verordnung:false },
+  { slug:'vivacare', name:'vivacare', produkte:['Visana-Gruppe: Komplementär I–III'], register:'EMR', deckung:'vivacare gehört zur Visana-Gruppe. Es gelten die Visana-Bedingungen: 90% tarifabhängig; tiefste Stufe mit Hausarztverordnung.', verordnung:true },
+  { slug:'sana24', name:'sana24', produkte:['Visana-Gruppe: Komplementär I–III'], register:'EMR', deckung:'sana24 gehört zur Visana-Gruppe. Es gelten die Visana-Bedingungen: 90% tarifabhängig; tiefste Stufe mit Hausarztverordnung.', verordnung:true },
+  { slug:'kolping', name:'Kolping', produkte:['Sympany-Gruppe'], register:'EMR', deckung:'Kolping gehört zur Sympany-Gruppe. Es gelten Sympany-ähnliche Bedingungen: 50–80% je nach Tarif. Police prüfen.', verordnung:false }
 ];
 function getKK(slug){ return KRANKENKASSEN.find(function(k){ return k.slug===slug; }); }
 var KK_PILLAR_FAQ = [
