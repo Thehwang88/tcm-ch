@@ -9283,7 +9283,12 @@ Unverbindlich melden
 .kkr-out--emph .kkr-out-val{color:var(--blue);font-size:28px}
 .kkr-disclaimer{font-size:12.5px;color:var(--mid);font-style:italic;line-height:1.5;margin:14px 0 16px}
 .kkr-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-@media(max-width:760px){.kk-rechner__grid{grid-template-columns:1fr}.kk-rechner{padding:20px}}
+.kkr-field-label{font-family:'Figtree',sans-serif;font-weight:700;font-size:14px;color:#0d0d0d;margin-bottom:6px}
+.kkr-fixed{font-family:'Figtree',sans-serif;font-size:16px;font-weight:800;color:#0d0d0d;padding:11px 13px;border:1px dashed var(--blue);border-radius:10px;background:#fafbfa}
+.kkr-fixed span{font-weight:500;font-size:13px;color:var(--mid)}
+.kkr-headline{font-family:'Figtree',sans-serif;font-size:17px;font-weight:700;color:#0d0d0d;line-height:1.45;margin:0 0 16px}
+.kkr-note{font-size:13px;color:#8a5a00;background:#fff6e6;border:1px solid #f0d9a8;border-radius:10px;padding:11px 13px;margin:12px 0 0;line-height:1.5}
+@media(max-width:760px){.kk-rechner__grid{grid-template-columns:1fr}.kk-rechner{padding:20px}.kkr-field input,.kkr-field select{padding:13px}}
 </style>
 <div class="page" id="page-kkhub"><div class="kk-page" id="kkhub-content"></div></div>
 <div class="page" id="page-partnerpraxen"> <section class="hero"> <div class="wrap"> <div class="hero-in"> <div class="hero-l"> <div class="hero-tag"> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -20409,55 +20414,68 @@ function kkTableHTML(){
   return '<div class="kk-table-wrap"><table class="kk-table"><thead><tr>'
     +'<th>Krankenkasse</th><th>Tarife</th><th>Deckung</th><th>Link</th></tr></thead><tbody>'+body+'</tbody></table></div>';
 }
+var KK_TCM_PREIS = 130; // Sitzungspreis bei TCM.ch (Anker), zentral anpassbar
+var KK_QUOTE = { // % der Behandlungskosten, Schätzung — vor Verlass prüfen
+  css:70, helsana:75, swica:75, sanitas:80, concordia:75, visana:90, 'groupe-mutuel':90,
+  sympany:75, kpt:75, axa:75, egk:80, atupri:75,
+  assura:30, oekk:75, agrisano:75, aquilana:75,
+  progres:75, sansan:75, avanex:75, avenir:90, 'easy-sana':90, philos:90, mutuel:90,
+  arcosana:70, intras:70, sanagate:0, vivacare:90, sana24:90, kolping:75
+};
 function kkrFmt(n){ n=Math.round(n); if(!isFinite(n)||n<0) n=0; return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"'"); }
 function kkRechnerHTML(){
   var opts = '<option value="">Bitte wählen</option>' + KRANKENKASSEN.map(function(k){
     return '<option value="'+k.slug+'">'+k.name+'</option>';
   }).join('');
-  var g=10*120, e=Math.round(g*75/100), eig=g-e;
+  var g=10*KK_TCM_PREIS, e=Math.round(g*75/100), eig=g-e;
   return '<section class="kk-rechner" id="rechner" aria-labelledby="kkr-title">'
-    +'<div class="kk-rechner__head"><h2 id="kkr-title">Rückerstattung berechnen</h2>'
-    +'<p>Schätze, wie viel deine Zusatzversicherung übernimmt und was dein Eigenanteil ist. Alle Werte sind anpassbar – das Ergebnis ist eine unverbindliche Schätzung.</p></div>'
+    +'<div class="kk-rechner__head"><h2 id="kkr-title">Was zahlt deine Krankenkasse an deine TCM.ch-Behandlung?</h2>'
+    +'<p>Unsere Therapeut:innen sind EMR-/ASCA-anerkannt — die Grundvoraussetzung für die Rückerstattung erfüllen wir. Wähl deine Kasse und sieh deinen geschätzten Eigenanteil.</p></div>'
     +'<div class="kk-rechner__grid">'
     +'<div class="kk-rechner__form">'
     +'<div class="kkr-field"><label for="kkr-kasse">Deine Krankenkasse</label>'
-    +'<select id="kkr-kasse" onchange="kkRechnerUpdate()">'+opts+'</select>'
+    +'<select id="kkr-kasse" onchange="kkRechnerKasse()">'+opts+'</select>'
     +'<p class="kkr-hint" id="kkr-hint" hidden></p></div>'
     +'<div class="kkr-field"><label for="kkr-anzahl">Behandlungen pro Jahr</label>'
     +'<input id="kkr-anzahl" type="number" inputmode="numeric" min="1" value="10" oninput="kkRechnerUpdate()"></div>'
-    +'<div class="kkr-field"><label for="kkr-preis">Preis pro Sitzung (CHF)</label>'
-    +'<input id="kkr-preis" type="number" inputmode="numeric" min="0" value="120" oninput="kkRechnerUpdate()"></div>'
-    +'<div class="kkr-field"><label for="kkr-satz">Geschätzter Rückerstattungssatz (%)</label>'
+    +'<div class="kkr-field"><span class="kkr-field-label">Sitzungspreis bei TCM.ch</span>'
+    +'<div class="kkr-fixed">CHF '+KK_TCM_PREIS+' <span>pro Sitzung</span></div></div>'
+    +'<div class="kkr-field"><label for="kkr-satz">Rückerstattungssatz (%)</label>'
     +'<input id="kkr-satz" type="number" inputmode="numeric" min="0" max="100" value="75" oninput="kkRechnerUpdate()">'
-    +'<p class="kkr-help">Typischer Satz vieler Zusatzversicherungen. Verbindlich ist dein Tarif.</p></div>'
+    +'<p class="kkr-help">Schätzung — verbindlich ist dein Tarif. Hier anpassbar.</p></div>'
     +'<div class="kkr-field"><label for="kkr-limit">Jahreslimit (CHF)</label>'
     +'<input id="kkr-limit" type="number" inputmode="numeric" min="0" placeholder="optional" oninput="kkRechnerUpdate()">'
     +'<p class="kkr-help">Falls dein Tarif eine Obergrenze hat.</p></div>'
     +'</div>'
     +'<div class="kk-rechner__result" aria-live="polite">'
-    +'<div class="kkr-out"><span class="kkr-out-label">Gesamtkosten pro Jahr</span><span class="kkr-out-val">CHF <strong id="kkr-gesamt">'+kkrFmt(g)+'</strong></span></div>'
+    +'<p class="kkr-headline" id="kkr-headline">Wähl oben deine Krankenkasse, um deine geschätzte Rückerstattung pro Sitzung zu sehen.</p>'
+    +'<div class="kkr-out"><span class="kkr-out-label">Behandlungskosten pro Jahr</span><span class="kkr-out-val">CHF <strong id="kkr-gesamt">'+kkrFmt(g)+'</strong></span></div>'
     +'<div class="kkr-out"><span class="kkr-out-label">Geschätzte Rückerstattung</span><span class="kkr-out-val">CHF <strong id="kkr-erstattung">'+kkrFmt(e)+'</strong></span></div>'
     +'<div class="kkr-out kkr-out--emph"><span class="kkr-out-label">Dein Eigenanteil</span><span class="kkr-out-val">CHF <strong id="kkr-eigen">'+kkrFmt(eig)+'</strong></span></div>'
-    +'<p class="kkr-disclaimer">Das ist eine unverbindliche Schätzung. Massgebend ist deine Police – wir helfen dir bei der Abklärung.</p>'
+    +'<p class="kkr-note" id="kkr-note" hidden>Diese Kasse/dieser Tarif deckt Komplementärmedizin kaum — frag uns nach einer geeigneten Zusatzversicherung.</p>'
+    +'<p class="kkr-disclaimer">Unverbindliche Schätzung. Massgebend ist deine Police — wir klären das gern für dich ab.</p>'
     +'<div class="kkr-cta"><button type="button" class="btn-primary" onclick="openTerminForm()">Termin anfragen</button>'
     +'<a class="kk-link" id="kkr-detail" href="#" hidden>Deine Krankenkasse im Detail &rarr;</a></div>'
     +'</div></div></section>';
 }
+function kkRechnerKasse(){
+  var sel=document.getElementById('kkr-kasse'); var slug=sel?sel.value:'';
+  var satzEl=document.getElementById('kkr-satz');
+  if(satzEl){ satzEl.value = (slug && KK_QUOTE[slug]!=null) ? KK_QUOTE[slug] : 75; }
+  kkRechnerUpdate();
+}
 function kkRechnerUpdate(){
   function num(id){ var el=document.getElementById(id); if(!el) return 0; var v=parseFloat(el.value); return isNaN(v)?0:v; }
-  var sel=document.getElementById('kkr-kasse');
-  var slug=sel?sel.value:'';
+  var sel=document.getElementById('kkr-kasse'); var slug=sel?sel.value:'';
+  var k=slug?getKK(slug):null;
+  var kasseName=k?k.name:'';
   var hint=document.getElementById('kkr-hint');
   if(hint){
-    var k=slug?getKK(slug):null;
-    if(k){
-      var txt=k.deckung;
-      if(k.register!=='EMR') txt+=' EMR/ASCA-anerkannt nötig – erfüllen wir.';
-      hint.textContent=txt; hint.hidden=false;
-    } else { hint.textContent=''; hint.hidden=true; }
+    if(k){ var txt=k.deckung; if(k.register!=='EMR') txt+=' EMR/ASCA-anerkannt nötig – erfüllen wir.'; hint.textContent=txt; hint.hidden=false; }
+    else { hint.textContent=''; hint.hidden=true; }
   }
+  var preis=KK_TCM_PREIS;
   var anzahl=Math.max(0,num('kkr-anzahl'));
-  var preis=Math.max(0,num('kkr-preis'));
   var satz=Math.max(0,num('kkr-satz'));
   var limit=Math.max(0,num('kkr-limit'));
   var gesamt=anzahl*preis;
@@ -20466,11 +20484,19 @@ function kkRechnerUpdate(){
   if(erstattung>gesamt) erstattung=gesamt;
   var eigen=gesamt-erstattung;
   if(gesamt<0)gesamt=0; if(erstattung<0)erstattung=0; if(eigen<0)eigen=0;
+  var proSitzung=anzahl>0?Math.round(erstattung/anzahl):Math.round(preis*satz/100);
+  if(!isFinite(proSitzung)||proSitzung<0)proSitzung=0;
   function set(id,v){ var el=document.getElementById(id); if(el) el.textContent=kkrFmt(v); }
   set('kkr-gesamt',gesamt); set('kkr-erstattung',erstattung); set('kkr-eigen',eigen);
+  var hl=document.getElementById('kkr-headline');
+  if(hl){ hl.textContent = kasseName
+      ? ('Bei einer Behandlung in einer TCM.ch-Praxis erstattet dir '+kasseName+' ca. CHF '+kkrFmt(proSitzung)+' pro Sitzung.')
+      : 'Wähl oben deine Krankenkasse, um deine geschätzte Rückerstattung pro Sitzung zu sehen.'; }
+  var note=document.getElementById('kkr-note');
+  if(note){ var q=(slug && KK_QUOTE[slug]!=null)?KK_QUOTE[slug]:null; note.hidden = !(q!=null && q<=30); }
   var det=document.getElementById('kkr-detail');
   if(det){
-    if(slug){ det.setAttribute('href','/krankenkassen/'+slug); det.onclick=function(ev){ev.preventDefault();nav('kkhub',slug);}; det.hidden=false; }
+    if(slug){ det.textContent=kasseName+' im Detail →'; det.setAttribute('href','/krankenkassen/'+slug); det.onclick=function(ev){ev.preventDefault();nav('kkhub',slug);}; det.hidden=false; }
     else { det.hidden=true; det.onclick=null; }
   }
 }
