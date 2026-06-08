@@ -133,8 +133,9 @@ const arrow = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" strok
     .logo-sub { font-size: 9px; letter-spacing: .14em; }
   }
 
-  /* Burger — DE SPA .nav-menu-btn: 42px, green-outlined, hidden on desktop. */
-  .nav-burger { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--white); border: 1.5px solid var(--blue); color: var(--blue); cursor: pointer; padding: 0; flex-shrink: 0; transition: background var(--t-fast) ease; }
+  /* Burger — DE SPA .nav-menu-btn: 42px, green-outlined.
+     Mobile-first: visible by default, hidden only on desktop (below). */
+  .nav-burger { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--white); border: 1.5px solid var(--blue); color: var(--blue); cursor: pointer; padding: 0; flex-shrink: 0; transition: background var(--t-fast) ease; }
   .nav-burger:hover { background: var(--blue-light); }
 
   /* Drawer overlay + panel — replicates DE #drawerOverlay / #siteDrawer. */
@@ -163,9 +164,12 @@ const arrow = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" strok
   .drw-cta-secondary:hover { border-color: var(--blue); color: var(--blue); }
   .drw-cta-wa { color: var(--blue); border-color: rgba(37,211,102,.25); }
 
-  /* Swap desktop nav for the burger at the existing breakpoint. */
+  /* Desktop: hide the burger, show the inline links + actions. */
+  @media (min-width: 821px) {
+    .nav-burger { display: none; }
+  }
+  /* Mobile: hide the desktop-only actions; burger (default-visible) takes over. */
   @media (max-width: 820px) {
-    .nav-burger { display: inline-flex; }
     .site-nav__actions .lang-switch,
     .site-nav__actions .btn--primary { display: none; }
   }
