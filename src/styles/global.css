@@ -25,11 +25,11 @@ h1, h2, h3 {
 
 /* Header */
 .site-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-.site-nav__in { max-width: var(--max); margin: 0 auto; padding: 14px var(--pad-x); display: flex; align-items: center; gap: 20px; }
+.site-nav__in { max-width: var(--max); margin: 0 auto; padding: 14px var(--pad-x); display: flex; align-items: center; gap: 16px; }
 .site-logo { font-weight: 800; font-size: 20px; text-decoration: none; color: var(--ink); }
 .site-logo span { color: var(--blue); }
-.site-nav__links { display: flex; gap: 22px; margin-left: 8px; flex: 1; flex-wrap: wrap; }
-.site-nav__links a { text-decoration: none; color: var(--text-soft); font-weight: 600; font-size: var(--fs-small); transition: color var(--t-fast) ease; }
+.site-nav__links { display: flex; gap: 18px; flex: 1; min-width: 0; }
+.site-nav__links a { text-decoration: none; color: var(--text-soft); font-weight: 600; font-size: var(--fs-small); white-space: nowrap; transition: color var(--t-fast) ease; }
 .site-nav__links a:hover { color: var(--blue); }
 .site-nav__actions { display: flex; align-items: center; gap: 14px; }
 .lang-switch { font-weight: 700; font-size: 13px; color: var(--text-soft); text-decoration: none; border: 1px solid var(--border); border-radius: var(--r-pill); padding: 6px 12px; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
