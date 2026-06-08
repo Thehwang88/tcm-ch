@@ -2522,6 +2522,8 @@ Gespräch anfragen
 .wissen-article-body{padding:24px;display:flex;flex-direction:column;flex:1}
 .wissen-article-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:#8a9299;margin-bottom:12px;font-family:'Figtree',sans-serif;flex-wrap:wrap}
 .wissen-article-meta-dot{width:3px;height:3px;border-radius:50%;background:#c0c5cc}
+.wissen-article-date{color:var(--blue);font-weight:600}
+.wa-pubdate{color:#2a2a2a;font-weight:600}
 .wissen-article-title{font-family:'Figtree',sans-serif;font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:#0d0d0d;margin:0 0 12px}
 .wissen-article-excerpt{font-size:14.5px;line-height:1.55;color:#545e6b;margin:0 0 18px;font-family:'Figtree',sans-serif;flex:1}
 .wissen-article-cta{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:#2D9B6F;font-family:'Figtree',sans-serif;letter-spacing:.01em}
@@ -23600,6 +23602,70 @@ function setRobotsMeta(noindex){
     if(m) m.parentNode.removeChild(m);
   }
 }
+// --- Wissen Veröffentlichungsdatum: einzige Quelle = datePublished im JSON-LD jedes Artikels ---
+var WISSEN_DATES = null;
+function wissenDateMap(){
+  if(WISSEN_DATES) return WISSEN_DATES;
+  WISSEN_DATES = {};
+  var secs = document.querySelectorAll('#page-wissen .wissen-article-page');
+  for(var i=0;i<secs.length;i++){
+    var sec = secs[i];
+    var slug = sec.id.replace('wissen-article-','');
+    var sc = sec.querySelector('script[id^="wa-article-schema-"]');
+    if(sc){
+      var mm = sc.textContent.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"/);
+      if(mm) WISSEN_DATES[slug] = mm[1];
+    }
+  }
+  return WISSEN_DATES;
+}
+var WISSEN_MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+function wissenFmtDate(iso){
+  var p = (iso||'').split('-');
+  if(p.length!==3) return '';
+  return parseInt(p[2],10)+'. '+WISSEN_MONTHS[parseInt(p[1],10)-1]+' '+p[0];
+}
+function wissenDecorateCards(){
+  var cont = document.querySelector('#page-wissen .wissen-articles');
+  if(!cont) return;
+  var map = wissenDateMap();
+  var cards = Array.prototype.slice.call(cont.children).filter(function(el){ return el.classList && el.classList.contains('wissen-article'); });
+  cards.forEach(function(card){
+    var oc = card.getAttribute('onclick')||'';
+    var sm = oc.match(/nav\('wissen','([a-z0-9-]+)'\)/);
+    var iso = (sm && map[sm[1]]) || '';
+    card.setAttribute('data-date', iso);
+    if(iso && !card.querySelector('.wissen-article-date')){
+      var meta = card.querySelector('.wissen-article-meta');
+      if(meta){
+        var dot = document.createElement('span'); dot.className = 'wissen-article-meta-dot';
+        var ds = document.createElement('span'); ds.className = 'wissen-article-date'; ds.textContent = wissenFmtDate(iso);
+        meta.insertBefore(dot, meta.firstChild);
+        meta.insertBefore(ds, meta.firstChild);
+      }
+    }
+  });
+  cards.sort(function(a,b){
+    var da = a.getAttribute('data-date')||'', db = b.getAttribute('data-date')||'';
+    if(da===db) return 0;
+    if(!da) return 1; if(!db) return -1;
+    return da < db ? 1 : -1; // descending: neuester zuerst
+  });
+  cards.forEach(function(c){ cont.appendChild(c); });
+}
+function wissenSetArticleDate(id){
+  var iso = wissenDateMap()[id];
+  if(!iso) return;
+  var sec = document.getElementById('wissen-article-'+id);
+  if(!sec) return;
+  var row = sec.querySelector('.wa-meta-row');
+  if(!row) return;
+  var spans = row.querySelectorAll('span'), target = null;
+  for(var i=0;i<spans.length;i++){ if(/Aktualisiert|Stand|Veröffentlicht|20\d\d/.test(spans[i].textContent)){ target = spans[i]; break; } }
+  if(!target){ target = document.createElement('span'); row.appendChild(target); }
+  target.className = 'wa-pubdate';
+  target.textContent = 'Veröffentlicht '+wissenFmtDate(iso);
+}
 function renderWissen(id){
   var hubHero = document.querySelector('#page-wissen .wissen-hero');
   var hubSections = document.querySelectorAll('#page-wissen > .wissen-section, #page-wissen > section.wissen-section');
@@ -23610,6 +23676,7 @@ function renderWissen(id){
   articles.forEach(function(a){ a.style.display = 'none'; });
 
   var _ldA = document.getElementById('ldArticle');
+  wissenDecorateCards();
   if(!id){
     // Hub view, make sure hub is visible (default state)
     if(_ldA) _ldA.textContent = '';
@@ -23622,6 +23689,7 @@ function renderWissen(id){
   var target = document.getElementById('wissen-article-' + id);
   if(target){
     target.style.display = 'block';
+    wissenSetArticleDate(id);
     // Promote THIS article's schema to the one live JSON-LD block (sources are inert text/plain). Handles both id forms.
     if(_ldA){
       var _sc = document.getElementById('wa-article-schema-' + id + '-full') || document.getElementById('wa-article-schema-' + id);
