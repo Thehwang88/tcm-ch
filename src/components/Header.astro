@@ -7,7 +7,13 @@ const deTarget = PAIR_MAP_EN[currentPath] ?? '/';
 ---
 <header class="site-nav">
   <div class="site-nav__in">
-    <a href="/en/" class="site-logo" aria-label="TCM.ch — home">TCM<span>.ch</span></a>
+    <!-- Logo: identical to the DE SPA header (Nunito 900 italic wordmark + KLINIKEN + Swiss cross) -->
+    <a class="logo" href="/en/" aria-label="TCM.ch — home">
+      <div class="logo-text-group">
+        <div class="logo-wm">TCM<span class="ch">.ch</span></div>
+        <span class="logo-sub" style="text-transform:uppercase;letter-spacing:.18em;font-weight:600">Kliniken<svg viewBox="0 0 32 32" width="1.15em" height="1.15em" style="display:inline-block;vertical-align:middle;margin-left:3px" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#DA291C"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg></span>
+      </div>
+    </a>
     <nav class="site-nav__links" aria-label="Primary">
       <!-- EN nav points to DE equivalents for now (no dead links). -->
       <a href="/beschwerden">Conditions</a>
@@ -21,3 +27,17 @@ const deTarget = PAIR_MAP_EN[currentPath] ?? '/';
     </div>
   </div>
 </header>
+
+<style>
+  /* Copied verbatim from the DE SPA header (effective desktop values + mobile breakpoint). */
+  .logo { display: flex; align-items: flex-start; gap: 10px; text-decoration: none; cursor: pointer; }
+  .logo-text-group { display: flex; flex-direction: column; gap: 4px; }
+  .logo-wm { font-family: 'Nunito', sans-serif; font-weight: 900; font-style: italic; font-size: 24px; letter-spacing: -.5px; color: #0d0d0d; line-height: 1; display: flex; align-items: baseline; }
+  .logo-wm .ch { font-size: 19px; }
+  .logo-sub { font-family: 'Figtree', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: .06em; color: #666; line-height: 1; white-space: nowrap; }
+  @media (max-width: 520px) {
+    .logo-wm { font-size: 20px; }
+    .logo-wm .ch { font-size: 15px; }
+    .logo-sub { font-size: 9px; letter-spacing: .14em; }
+  }
+</style>
