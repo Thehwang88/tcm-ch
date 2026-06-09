@@ -14,7 +14,7 @@ const path = `/beschwerden/${data.slug}`;
 const url = new URL(path, site.url).href;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich interessiere mich für ${data.name}.`)}`;
 
-// ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
+// ── JSON-LD: MedicalWebPage + (FAQPage if any) + BreadcrumbList ──
 const medicalLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -32,12 +32,12 @@ const medicalLd = {
     logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' },
   },
 };
-const faqLd = {
+const faqLd = data.faqs.length > 0 ? {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   inLanguage: 'de-CH',
   mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-};
+} : null;
 const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -47,7 +47,7 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: data.name, item: url },
   ],
 };
-const schema = [medicalLd, faqLd, breadcrumbLd];
+const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 ---
 <LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
   <section class="hero">
@@ -72,28 +72,21 @@ const schema = [medicalLd, faqLd, breadcrumbLd];
   <section class="section" style="padding-top:0">
     <div class="wrap">
       <article class="prose">
-        {data.intro.map((p) => <p>{p}</p>)}
+        <div class="kb-body" set:html={data.bodyHtml} />
 
-        {data.sections.map((s) => (
+        {data.faqs.length > 0 && (
           <>
-            <h2>{s.h}</h2>
-            {s.p.map((p) => <p>{p}</p>)}
-            {s.list && <ul>{s.list.map((li) => <li>{li}</li>)}</ul>}
+            <h2>Häufige Fragen</h2>
+            <div class="faq">
+              {data.faqs.map((f) => (
+                <details>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
           </>
-        ))}
-
-        <h2>Wann du ärztlich abklären solltest</h2>
-        <ul>{data.redFlags.map((r) => <li>{r}</li>)}</ul>
-
-        <h2>Häufige Fragen</h2>
-        <div class="faq">
-          {data.faqs.map((f) => (
-            <details>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
-        </div>
+        )}
 
         <div class="cta-card">
           <div class="cta-card-title">{data.name} gezielt angehen?</div>
@@ -105,14 +98,18 @@ const schema = [medicalLd, faqLd, breadcrumbLd];
         </div>
 
         <div class="xlinks">
-          <div class="xlink-group">
-            <strong>Ähnliche Beschwerden</strong>
-            {data.related.map((r) => <a href={`/beschwerden/${r.slug}`}>{r.label}</a>)}
-          </div>
-          <div class="xlink-group">
-            <strong>Passende Therapien</strong>
-            {data.therapies.map((t) => <a href={`/therapien/${t.slug}`}>{t.label}</a>)}
-          </div>
+          {data.related.length > 0 && (
+            <div class="xlink-group">
+              <strong>Ähnliche Beschwerden</strong>
+              {data.related.map((r) => <a href={`/beschwerden/${r.slug}`}>{r.label}</a>)}
+            </div>
+          )}
+          {data.therapies.length > 0 && (
+            <div class="xlink-group">
+              <strong>Passende Therapien</strong>
+              {data.therapies.map((t) => <a href={`/therapien/${t.slug}`}>{t.label}</a>)}
+            </div>
+          )}
           <div class="xlink-group">
             <strong>Praxen</strong>
             <a href="/standorte">Standort in deiner Nähe finden →</a>
@@ -140,24 +137,37 @@ const schema = [medicalLd, faqLd, breadcrumbLd];
   .trust svg { color: var(--blue); flex-shrink: 0; }
 
   .prose { max-width: 760px; }
-  .prose h2 { font-size: 26px; font-weight: 800; color: var(--ink); margin: 40px 0 14px; letter-spacing: var(--tracking-heading); }
-  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .prose li { margin: 0 0 10px; }
-  .prose strong { color: var(--ink); }
 
+  /* Rendered article body (set:html from beschwerden.ts). */
+  .kb-body :global(h2) { font-size: 26px; font-weight: 800; color: var(--ink); margin: 40px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body :global(h2:first-child) { margin-top: 0; }
+  .kb-body :global(h3) { font-size: 20px; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
+  .kb-body :global(p) { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
+  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body :global(li) { margin: 0 0 10px; }
+  .kb-body :global(strong) { color: var(--ink); }
+  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+  .kb-body :global(em) { font-style: italic; }
+  /* "Häufige Symptome" checklist (cp-sx-grid) carried over from the SPA content. */
+  .kb-body :global(.cp-sx-grid) { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0 0 18px; list-style: none; padding: 0; }
+  .kb-body :global(.cp-sx-item) { display: flex; align-items: flex-start; gap: 9px; font-size: 15.5px; color: var(--mid); }
+  .kb-body :global(.cp-sx-dot) { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); margin-top: 7px; flex-shrink: 0; }
+  @media (max-width: 600px) { .kb-body :global(.cp-sx-grid) { grid-template-columns: 1fr; } }
+
+  .faq { margin-top: 4px; }
   .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
   .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
   .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; }
+  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
 
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 32px 0; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 36px 0 0; }
   .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
   .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
 
-  .xlinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; }
+  .xlinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 36px; }
   .xlink-group { display: flex; flex-direction: column; gap: 8px; }
   .xlink-group strong { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
   .xlink-group a { color: var(--blue); font-weight: 600; font-size: 14.5px; text-decoration: none; }
