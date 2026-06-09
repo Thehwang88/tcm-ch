@@ -2,36 +2,51 @@
 import Layout from '../../../layouts/Layout.astro';
 import { site } from '../../../data/site';
 import {
-  conditions, INSURANCE_FAQ, REVIEWED_DATE, enConditionPath, conditionBySlug, type Condition,
-} from '../../../data/conditions';
-import { therapiesForCondition, enTherapyPath } from '../../../data/therapies';
+  therapies, INSURANCE_FAQ, REVIEWED_DATE, enTherapyPath, therapyBySlug, type Therapy,
+} from '../../../data/therapies';
+import { conditions, enConditionPath } from '../../../data/conditions';
 
 export function getStaticPaths() {
-  return conditions.map((c) => ({ params: { slug: c.slug }, props: { condition: c } }));
+  return therapies.map((t) => ({ params: { slug: t.slug }, props: { therapy: t } }));
 }
 
-interface Props { condition: Condition }
-const { condition } = Astro.props;
-const { slug, condition: name, keyword, lead, intro, howWeTreat, evidence, redFlags, related } = condition;
+interface Props { therapy: Therapy }
+const { therapy } = Astro.props;
+const {
+  slug, name, titleTerm, keyword, lead, whatItIs, whatToExpect, usedFor, evidence, related,
+} = therapy;
 
-const path = enConditionPath(slug);
+const path = enTherapyPath(slug);
 const url = new URL(path, site.url).href;
-const contactHref = `/en/contact?beschwerde=${encodeURIComponent(name)}`;
+const contactHref = `/en/contact?therapie=${encodeURIComponent(name)}`;
 
-const title = `Acupuncture for ${name} | TCM.ch`;
-const h1 = `Acupuncture & TCM for ${name}`;
-const description = `Acupuncture for ${keyword} in Switzerland: honest, evidence-aware information from English-speaking, EMR-/ASCA-recognised TCM practitioners at TCM.ch. How we treat ${keyword} and when to see a doctor first.`;
+const title = `${titleTerm} | TCM.ch`;
+const h1 = name;
+const description = `${titleTerm} in Switzerland: honest, evidence-aware information from English-speaking, EMR-/ASCA-recognised TCM practitioners at TCM.ch. What ${keyword} is, what to expect in a session, and what it is typically used for.`;
 
-// Condition-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
-const faqs = [...condition.faqs, INSURANCE_FAQ];
+// Therapy-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
+const faqs = [...therapy.faqs, INSURANCE_FAQ];
 
-// Related conditions for cross-linking (EN -> EN).
-const relatedConditions = related.map(conditionBySlug).filter(Boolean) as Condition[];
+// Conditions this therapy commonly supports (cross-link EN -> EN).
+const supportedConditions = therapy.conditions
+  .map((cs) => conditions.find((c) => c.slug === cs))
+  .filter(Boolean);
 
-// Therapies commonly used for this condition (cross-link back to therapy pages).
-const relevantTherapies = therapiesForCondition(slug);
+// Related therapies for cross-linking (EN -> EN).
+const relatedTherapies = related.map(therapyBySlug).filter(Boolean) as Therapy[];
 
-// ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
+// ── JSON-LD: MedicalProcedure + MedicalWebPage + FAQPage + BreadcrumbList ──
+const procedureLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: titleTerm,
+  url,
+  inLanguage: 'en',
+  description: lead,
+  howPerformed: whatToExpect.join(' '),
+  procedureType: { '@type': 'MedicalProcedureType', name: 'Complementary or alternative medicine' },
+};
+
 const medicalLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -40,7 +55,7 @@ const medicalLd = {
   inLanguage: 'en',
   description,
   lastReviewed: REVIEWED_DATE,
-  about: { '@type': 'MedicalCondition', name },
+  about: { '@type': 'MedicalProcedure', name: titleTerm },
   audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
   author: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/en/' },
   reviewedBy: {
@@ -67,15 +82,15 @@ const breadcrumbLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
-    { '@type': 'ListItem', position: 2, name: 'Conditions', item: 'https://tcm.ch/en/conditions/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapies', item: 'https://tcm.ch/en/therapies/' },
     { '@type': 'ListItem', position: 3, name: h1, item: url },
   ],
 };
 ---
-<Layout title={title} description={description} path={path} schema={[medicalLd, faqLd, breadcrumbLd]}>
+<Layout title={title} description={description} path={path} schema={[procedureLd, medicalLd, faqLd, breadcrumbLd]}>
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch — Conditions</div>
+      <div class="eyebrow">TCM.ch — Therapies</div>
       <h1>{h1}</h1>
       <p class="lead">{lead}</p>
       <div class="hero__cta">
@@ -87,23 +102,34 @@ const breadcrumbLd = {
 
   <section class="section">
     <div class="wrap prose">
-      {intro.map((p) => <p>{p}</p>)}
+      <h2>What it is</h2>
+      {whatItIs.map((p) => <p>{p}</p>)}
 
-      <h2>How we treat {name} at TCM.ch</h2>
-      {howWeTreat.map((p) => <p>{p}</p>)}
+      <h2>What to expect in a session</h2>
+      {whatToExpect.map((p) => <p>{p}</p>)}
+
+      <h2>What it is typically used for</h2>
+      <p>{usedFor}</p>
 
       <h2>What the evidence says</h2>
       <p>{evidence}</p>
       <p class="evidence-note">
         We base this on general clinical guidelines and systematic reviews (e.g. Cochrane, PubMed-indexed
         research). The honest summary: studies vary in quality and findings, and individual results differ.
+        We use {name} as a complement, not a substitute for medical assessment.
       </p>
 
-      <h2>When to see a doctor first</h2>
-      <p>Acupuncture is a complement, not a substitute for medical assessment. See a doctor first if you have:</p>
-      <ul class="redflags">
-        {redFlags.map((r) => <li>{r}</li>)}
-      </ul>
+      {supportedConditions.length > 0 && (
+        <>
+          <h2>Conditions it commonly supports</h2>
+          <p>People often try {name} as part of a wider approach for:</p>
+          <ul class="cond-links">
+            {supportedConditions.map((c) => (
+              <li><a class="inline-link" href={enConditionPath(c.slug)}>{c.condition} →</a></li>
+            ))}
+          </ul>
+        </>
+      )}
 
       <h2>FAQ</h2>
       <div class="faq">
@@ -115,19 +141,6 @@ const breadcrumbLd = {
         ))}
       </div>
 
-      {relevantTherapies.length > 0 && (
-        <>
-          <h2>Therapies we might use</h2>
-          <p>Depending on what we find, treatment for {name.toLowerCase()} may draw on:</p>
-          <ul class="therapy-links">
-            {relevantTherapies.map((t) => (
-              <li><a class="inline-link" href={enTherapyPath(t.slug)}>{t.name} →</a></li>
-            ))}
-          </ul>
-          <p><a class="inline-link" href="/en/therapies/">See all therapies →</a></p>
-        </>
-      )}
-
       <div class="xlinks">
         <strong>Next steps:</strong>
         <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
@@ -136,7 +149,7 @@ const breadcrumbLd = {
 
       <div class="cta-row">
         <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">← All conditions</a>
+        <a class="btn btn--ghost" href="/en/therapies/">← All therapies</a>
       </div>
 
       <p class="disclaimer">
@@ -146,15 +159,15 @@ const breadcrumbLd = {
     </div>
   </section>
 
-  {relatedConditions.length > 0 && (
+  {relatedTherapies.length > 0 && (
     <section class="section">
       <div class="wrap">
-        <h2>Related conditions</h2>
+        <h2>Related therapies</h2>
         <div class="cards">
-          {relatedConditions.map((c) => (
-            <a class="card" href={enConditionPath(c.slug)}>
-              <h3>{c.condition}</h3>
-              <p>{c.summary}</p>
+          {relatedTherapies.map((t) => (
+            <a class="card" href={enTherapyPath(t.slug)}>
+              <h3>{t.name}</h3>
+              <p>{t.summary}</p>
             </a>
           ))}
         </div>
@@ -171,11 +184,8 @@ const breadcrumbLd = {
   .prose li { margin: 0 0 10px; }
   .prose strong { color: var(--ink); }
   .evidence-note { font-size: 15px; color: var(--text-soft); border-left: 3px solid var(--blue); padding-left: 14px; }
-  .redflags { list-style: none; padding-left: 0; }
-  .redflags li { position: relative; padding-left: 26px; }
-  .redflags li::before { content: '!'; position: absolute; left: 0; top: -1px; width: 18px; height: 18px; line-height: 18px; text-align: center; font-weight: 800; font-size: 12px; color: #fff; background: #c0392b; border-radius: 50%; }
-  .therapy-links { list-style: none; padding-left: 0; }
-  .therapy-links li { margin: 0 0 8px; }
+  .cond-links { list-style: none; padding-left: 0; }
+  .cond-links li { margin: 0 0 8px; }
   .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
   .inline-link:hover { text-decoration: underline; }
   .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45, 155, 111, .25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }

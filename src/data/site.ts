@@ -27,6 +27,7 @@ export const standorte = [
 
 import { clinics, deStandortPath, enLocationPath } from './locations';
 import { conditions, deConditionPath, enConditionPath } from './conditions';
+import { therapies, deTherapyPath, enTherapyPath } from './therapies';
 
 // ── ONE shared route-pair map (DE path -> EN path). Used for hreflang on both
 // systems and for the DE/EN language switcher. Extend as routes get ported.
@@ -40,6 +41,9 @@ export const PAIR_MAP: Record<string, string> = {
   // Conditions: DE /beschwerden(/<slug>) <-> EN /en/conditions(/<slug>)
   '/beschwerden': '/en/conditions/',
   ...Object.fromEntries(conditions.map((c) => [deConditionPath(c.deSlug), enConditionPath(c.slug)])),
+  // Therapies: DE /therapien(/<slug>) <-> EN /en/therapies(/<slug>)
+  '/therapien': '/en/therapies/',
+  ...Object.fromEntries(therapies.map((t) => [deTherapyPath(t.deSlug), enTherapyPath(t.slug)])),
 };
 
 // Reverse lookup (EN -> DE) derived from PAIR_MAP.
