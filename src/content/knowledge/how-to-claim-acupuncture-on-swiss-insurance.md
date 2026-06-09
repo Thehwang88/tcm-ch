@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/krankenkasse-hero.png"
+heroImageAlt: "Bright Swiss TCM practice with acupuncture needles and a tablet"
 faq:
   - q: "Do I claim acupuncture from basic or supplementary insurance?"
     a: "Almost always supplementary insurance for complementary medicine, not basic insurance. Basic insurance only covers acupuncture in narrow, doctor-led situations. If you send the invoice to the wrong part of your insurer, it gets rejected, so check which policy your complementary cover sits under."

@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-c69a8f9ce7f8.webp"
+heroImageAlt: "Fine, single-use acupuncture needles"
 faq:
   - q: "Is acupuncture safe?"
     a: "When performed by a trained practitioner using sterile, single-use needles, acupuncture is considered low-risk and serious side effects are rare. Most reactions are minor and short-lived. The main thing within your control is choosing a properly qualified, recognised practitioner rather than an untrained one."

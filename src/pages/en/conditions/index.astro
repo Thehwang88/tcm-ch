@@ -1,6 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { conditions, enConditionPath } from '../../../data/conditions';
+import { conditions, enConditionPath, conditionImages } from '../../../data/conditions';
 
 const path = '/en/conditions/';
 
@@ -50,9 +50,14 @@ const itemListLd = {
     <div class="wrap">
       <div class="cards">
         {conditions.map((c) => (
-          <a class="card" href={enConditionPath(c.slug)}>
-            <h3>{c.condition}</h3>
-            <p>{c.summary}</p>
+          <a class="card card--media" href={enConditionPath(c.slug)}>
+            {conditionImages[c.slug] && (
+              <img class="card-thumb" src={conditionImages[c.slug].src} alt={conditionImages[c.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
+            )}
+            <div class="card-body">
+              <h3>{c.condition}</h3>
+              <p>{c.summary}</p>
+            </div>
           </a>
         ))}
       </div>

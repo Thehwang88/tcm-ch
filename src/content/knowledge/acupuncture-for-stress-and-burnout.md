@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-778d4dd19d39.webp"
+heroImageAlt: "A relaxing acupuncture session for stress and burnout"
 faq:
   - q: "Can acupuncture help with stress?"
     a: "Many people find the sessions genuinely calming and use them as part of managing stress. The research is mixed and modest, so we present it as a low-risk support rather than a proven treatment. For burnout, anxiety or depression, it should not replace therapy or medical care."

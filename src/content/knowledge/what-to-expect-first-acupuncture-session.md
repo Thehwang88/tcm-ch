@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-4357832d6bef.webp"
+heroImageAlt: "An acupuncture treatment at a TCM.ch clinic"
 faq:
   - q: "Does acupuncture hurt?"
     a: "For most people, no, not in the way you might fear. The needles are far thinner than the ones used for injections, and insertion usually feels like a quick tap or a dull, heavy ache rather than a sharp jab. Tell your practitioner if anything feels sharp and they will adjust it."

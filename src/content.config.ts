@@ -22,6 +22,8 @@ const knowledge = defineCollection({
     dateModified: z.string(),
     author: z.string(),
     reviewer: z.string(),            // shown with EMR/ASCA credential
+    heroImage: z.string().optional(),    // /images/... (reused DE SPA asset)
+    heroImageAlt: z.string().optional(), // English alt text
     deWissenUrl: z.string().url().optional(), // explicit DE twin, if one exists
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     relatedConditions: z.array(z.string()).default([]), // EN condition slugs

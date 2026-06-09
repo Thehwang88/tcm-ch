@@ -55,9 +55,14 @@ const itemListLd = {
     <div class="wrap">
       <div class="cards">
         {articles.map((a) => (
-          <a class="card" href={`/en/knowledge/${a.data.slug}`}>
-            <h3>{a.data.title}</h3>
-            <p>{a.data.description}</p>
+          <a class="card card--media" href={`/en/knowledge/${a.data.slug}`}>
+            {a.data.heroImage && (
+              <img class="card-thumb" src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async" />
+            )}
+            <div class="card-body">
+              <h3>{a.data.title}</h3>
+              <p>{a.data.description}</p>
+            </div>
           </a>
         ))}
       </div>

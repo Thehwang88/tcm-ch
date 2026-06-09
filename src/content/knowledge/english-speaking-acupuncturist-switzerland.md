@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-73bf15a4e741.webp"
+heroImageAlt: "A TCM.ch therapist in conversation with a patient"
 faq:
   - q: "Can I find an English-speaking acupuncturist in Zürich?"
     a: "Yes. Zürich has the largest concentration of English-speaking practitioners in Switzerland, and we run several clinics there. You can book and have your whole consultation in English, which matters when you are describing symptoms and giving consent for treatment."

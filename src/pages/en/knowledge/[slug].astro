@@ -93,6 +93,11 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
           Published {fmt(d.datePublished)}{d.dateModified !== d.datePublished && <> · Updated {fmt(d.dateModified)}</>}
         </span>
       </p>
+      {d.heroImage && (
+        <figure class="hero-figure">
+          <img src={d.heroImage} alt={d.heroImageAlt ?? d.title} width="1120" height="746" loading="eager" decoding="async" />
+        </figure>
+      )}
     </div>
   </section>
 

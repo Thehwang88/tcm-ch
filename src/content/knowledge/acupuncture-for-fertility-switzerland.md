@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-9f85d23c07b4.webp"
+heroImageAlt: "Supportive TCM care during a fertility journey"
 faq:
   - q: "Does acupuncture improve IVF success rates?"
     a: "The best current evidence does not show a reliable improvement in pregnancy or live-birth rates from acupuncture around IVF. Some studies hint at a small benefit and many people value the stress relief, but we will not claim it raises your chances. We offer it as supportive care alongside your fertility clinic."

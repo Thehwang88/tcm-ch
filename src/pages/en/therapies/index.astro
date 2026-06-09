@@ -1,6 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { therapies, enTherapyPath } from '../../../data/therapies';
+import { therapies, enTherapyPath, therapyImages } from '../../../data/therapies';
 
 const path = '/en/therapies/';
 
@@ -50,9 +50,14 @@ const itemListLd = {
     <div class="wrap">
       <div class="cards">
         {therapies.map((t) => (
-          <a class="card" href={enTherapyPath(t.slug)}>
-            <h3>{t.name}</h3>
-            <p>{t.summary}</p>
+          <a class="card card--media" href={enTherapyPath(t.slug)}>
+            {therapyImages[t.slug] && (
+              <img class="card-thumb" src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
+            )}
+            <div class="card-body">
+              <h3>{t.name}</h3>
+              <p>{t.summary}</p>
+            </div>
           </a>
         ))}
       </div>

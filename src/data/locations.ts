@@ -85,6 +85,27 @@ export const commonConditions: { id: string; label: string }[] = [
   { id: 'kinderwunsch', label: 'Fertility support' },
 ];
 
+// ── Shared images, keyed by clinic id. ──
+// st-gallen / rorschach / wil reuse the SAME asset as the DE Standort page
+// (LOCATIONS[].heroBg in public/index.html). The DE pages for the other 9
+// clinics have NO photo, so we assign the most relevant existing /images asset:
+// Zürich clinics get the Zürich interior shots; the rest a generic treatment
+// photo. No new files, no duplicates.
+export const locationImages: Record<string, { src: string; alt: string }> = {
+  'st-gallen':              { src: '/images/img-67b9921801f9.webp', alt: 'TCM.ch practitioners at the St. Gallen clinic' },
+  'rorschach':              { src: '/images/img-3fdfdee558f8.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Rorschach' },
+  'wil':                    { src: '/images/img-3fdfdee558f8.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Wil' },
+  'zuerich-city':           { src: '/images/img-376c0c830c84.webp', alt: 'TCM.ch treatment room with a view in Zürich' },
+  'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
+  'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
+  'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'frauenfeld':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'volketswil':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+  'basel':                  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+};
+
 // DE Standort URL for a given clinic id (used for hreflang pairing).
 export const deStandortPath = (id: string) => `/standorte/${id}`;
 export const enLocationPath = (id: string) => `/en/locations/${id}`;

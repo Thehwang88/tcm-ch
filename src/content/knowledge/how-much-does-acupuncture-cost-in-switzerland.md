@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/krankenkasse-hero.png"
+heroImageAlt: "Bright Swiss TCM practice with acupuncture needles and a tablet"
 faq:
   - q: "How much is one acupuncture session in Switzerland?"
     a: "Most sessions run somewhere between roughly CHF 120 and CHF 200, billed by the time used rather than a flat rate. The first appointment often costs more because it includes a longer assessment. Ask the clinic for its exact per-minute rate before you book."

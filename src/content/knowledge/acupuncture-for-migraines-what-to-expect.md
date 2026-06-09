@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-fce33d67fc98.webp"
+heroImageAlt: "Acupuncture used for migraine and headaches"
 faq:
   - q: "Is acupuncture proven for migraines?"
     a: "The evidence here is relatively good. Reviews suggest acupuncture can reduce how often episodic migraines occur, sometimes comparably to preventive medication for some people. That said, it does not help everyone and studies vary in quality. We use it as prevention alongside your medical care, not a replacement for it."

@@ -346,3 +346,21 @@ export const therapyBySlug = (slug: string): Therapy | undefined =>
 // Used by the condition pages to link back to relevant therapies.
 export const therapiesForCondition = (conditionSlug: string): Therapy[] =>
   therapies.filter((t) => t.conditions.includes(conditionSlug));
+
+// ── Shared images: SAME asset the DE therapy showcase uses (home grid in
+// public/index.html, matched by therapy), keyed by EN slug. English alt. ──
+// NOTE: the DE SPA has no dedicated electroacupuncture image, so it reuses the
+// acupuncture photo (electroacupuncture = acupuncture + a gentle current).
+export const therapyImages: Record<string, { src: string; alt: string }> = {
+  'acupuncture':             { src: '/images/img-c69a8f9ce7f8.webp', alt: 'Fine acupuncture needles placed at points on the body' },
+  'cupping':                 { src: '/images/img-a288825ba14a.webp', alt: 'Cupping therapy cups applied to the back' },
+  'tuina-massage':           { src: '/images/img-2a8cecc37898.webp', alt: 'Tuina, a firm therapeutic Chinese massage' },
+  'chinese-herbal-medicine': { src: '/images/img-14a8b7c52ade.webp', alt: 'Dried herbs used in Chinese herbal medicine' },
+  'moxibustion':             { src: '/images/moxibustion-hero.webp',  alt: 'Burning moxa (mugwort) used in moxibustion therapy' },
+  'electroacupuncture':      { src: '/images/img-c69a8f9ce7f8.webp', alt: 'Acupuncture needles, as used in electroacupuncture' },
+  'facial-acupuncture':      { src: '/images/img-f7c771cf39ed.webp', alt: 'Facial (cosmetic) acupuncture treatment' },
+  'acupressure':             { src: '/images/img-5bf9460e0ca5.webp', alt: 'Acupressure, needle-free finger-pressure point stimulation' },
+  'shiatsu':                 { src: '/images/img-7149f50cc917.webp', alt: 'Shiatsu, a Japanese pressure therapy' },
+  'gua-sha':                 { src: '/images/img-0e38a23a362e.webp', alt: 'Gua sha, scraping technique over the skin' },
+  'physiotherapy':           { src: '/images/img-6a11d6de445a.webp', alt: 'Physiotherapy, movement-based rehabilitation' },
+};

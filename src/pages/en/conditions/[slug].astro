@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { site } from '../../../data/site';
 import {
-  conditions, INSURANCE_FAQ, REVIEWED_DATE, enConditionPath, conditionBySlug, type Condition,
+  conditions, INSURANCE_FAQ, REVIEWED_DATE, enConditionPath, conditionBySlug, conditionImages, type Condition,
 } from '../../../data/conditions';
 import { therapiesForCondition, enTherapyPath } from '../../../data/therapies';
 
@@ -30,6 +30,9 @@ const relatedConditions = related.map(conditionBySlug).filter(Boolean) as Condit
 
 // Therapies commonly used for this condition (cross-link back to therapy pages).
 const relevantTherapies = therapiesForCondition(slug);
+
+// Hero image — same asset the DE Beschwerde page uses.
+const image = conditionImages[slug];
 
 // ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
 const medicalLd = {
@@ -82,6 +85,11 @@ const breadcrumbLd = {
         <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
         <a class="btn btn--ghost" href={`tel:+${site.whatsapp}`}>Call us</a>
       </div>
+      {image && (
+        <figure class="hero-figure">
+          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
+        </figure>
+      )}
     </div>
   </section>
 

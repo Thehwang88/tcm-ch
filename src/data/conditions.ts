@@ -282,3 +282,16 @@ export const deConditionPath = (deSlug: string) => `/beschwerden/${deSlug}`;
 // Lookup for cross-linking related conditions.
 export const conditionBySlug = (slug: string): Condition | undefined =>
   conditions.find((c) => c.slug === slug);
+
+// ── Shared images: SAME asset the DE Beschwerde page uses (SYMPTOMS[].img in
+// public/index.html), keyed by EN slug. English alt for EN SEO/accessibility. ──
+export const conditionImages: Record<string, { src: string; alt: string }> = {
+  'back-pain':          { src: '/images/img-f7f113048735.webp', alt: 'Patient receiving acupuncture for back pain at a TCM.ch clinic' },
+  'neck-pain':          { src: '/images/img-49abc5b4795f.webp', alt: 'Acupuncture and TCM treatment for neck and shoulder tension' },
+  'migraine-headaches': { src: '/images/img-fce33d67fc98.webp', alt: 'Acupuncture treatment used for migraine and headaches' },
+  'sleep-problems':     { src: '/images/img-a8a0f2e64199.webp', alt: 'Calm TCM treatment setting used for sleep problems' },
+  'stress-burnout':     { src: '/images/img-778d4dd19d39.webp', alt: 'Relaxing acupuncture session for stress and burnout' },
+  'digestive-issues':   { src: '/images/img-5db981915fc8.webp', alt: 'TCM treatment for functional digestive issues' },
+  'menstrual-issues':   { src: '/images/img-c225ce95a903.webp', alt: 'Acupuncture used for menstrual and cycle complaints' },
+  'fertility-support':  { src: '/images/img-9f85d23c07b4.webp', alt: 'Supportive TCM care during a fertility journey' },
+};

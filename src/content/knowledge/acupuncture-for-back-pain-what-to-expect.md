@@ -6,6 +6,8 @@ datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
 reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+heroImage: "/images/img-f7f113048735.webp"
+heroImageAlt: "Acupuncture for back pain at a TCM.ch clinic"
 faq:
   - q: "Does acupuncture work for back pain?"
     a: "For some people with chronic lower-back pain it offers short-term relief; for others it does little. Reviews of the evidence are mixed, and part of the benefit may be non-specific. It is reasonable to try as a complement to staying active, but we cannot promise it will work for you."

@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { site } from '../../../data/site';
 import {
-  clinics, commonConditions, deStandortPath, enLocationPath, formatHours, type Clinic,
+  clinics, commonConditions, deStandortPath, enLocationPath, formatHours, locationImages, type Clinic,
 } from '../../../data/locations';
 
 export function getStaticPaths() {
@@ -27,6 +27,9 @@ const description = openingSoon
   : `English-speaking acupuncture in ${city} at TCM.ch. EMR-/ASCA-recognised practitioners for back pain, migraine, sleep & more — Traditional Chinese Medicine ${city}, covered by supplementary insurance. Reply usually within ~1h.`;
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
+
+// Hero image — DE heroBg where the Standort page has one, else a relevant existing asset.
+const image = locationImages[id];
 
 // ── JSON-LD: MedicalClinic + BreadcrumbList ──
 const clinicLd: Record<string, unknown> = {
@@ -80,6 +83,11 @@ const breadcrumbLd = {
         <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
         <a class="btn btn--ghost" href={telHref}>Call {phone}</a>
       </div>
+      {image && (
+        <figure class="hero-figure">
+          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
+        </figure>
+      )}
     </div>
   </section>
 
