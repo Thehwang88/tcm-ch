@@ -20010,6 +20010,16 @@ var t = document.getElementById('home-contact-form');
 if(t){ fill(t); try { var _w = t.querySelector('.cf-turnstile'); if(_w && window.tcmRenderTurnstile) window.tcmRenderTurnstile(_w); } catch(_){} t.scrollIntoView({behavior:'smooth',block:'start'}); }
 },120);
 }
+// ── Astro→SPA standort prefill bridge: /?standort=<slug> opens the inline contact form pre-selected ──
+window.addEventListener('load', function(){
+try {
+var sp = new URLSearchParams(window.location.search).get('standort');
+if(!sp) return;
+var l = (typeof getLoc==='function') ? getLoc(sp) : null;
+var nm = l ? l.name : sp;
+if(typeof openContactForm==='function') setTimeout(function(){ openContactForm(null, nm); }, 400);
+} catch(e){}
+});
 function closeContactForm(){
 var m=document.getElementById('contactModal'); if(m) m.classList.remove('open');
 document.body.style.overflow = '';
