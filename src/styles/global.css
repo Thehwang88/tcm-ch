@@ -113,3 +113,10 @@ h1, h2, h3 {
   .form-row { grid-template-columns: 1fr; }
   .site-nav__links { display: none; }
 }
+
+/* Mobile form fields (/zuweisen, EN contact): >=16px prevents iOS focus-zoom,
+   >=44px touch height. box-sizing/width:100% already set above. */
+@media (max-width: 640px) {
+  .field input, .field select, .field textarea { font-size: 16px; }
+  .field input, .field select { min-height: 46px; }
+}

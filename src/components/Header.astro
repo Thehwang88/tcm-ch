@@ -199,8 +199,11 @@ const waHref = `https://wa.me/${site.whatsapp}`;
   /* ── Drawer: 1:1 with the DE SPA #siteDrawer / #drawerOverlay. ── */
   #drawerOverlay { position: fixed; inset: 0; z-index: 900; background: rgba(8,8,8,.48); opacity: 0; pointer-events: none; transition: opacity var(--t-slow) var(--ease-in-out); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   #drawerOverlay.open { opacity: 1; pointer-events: all; }
-  #siteDrawer { position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(420px, 100vw); z-index: 901; background: #f9f9f9; box-shadow: -1px 0 0 rgba(0,0,0,.05), -20px 0 60px rgba(0,0,0,.12); transform: translateX(102%); transition: transform var(--t-slow) var(--ease-out); display: flex; flex-direction: column; }
-  #siteDrawer.open { transform: translateX(0); }
+  /* Closed: exactly translateX(100%) (left edge == viewport edge, no horizontal overflow;
+     a position:fixed element peeking past 100% is NOT clipped by body overflow-x:hidden).
+     Shadow only when open, so no sliver leaks at the right edge when closed. */
+  #siteDrawer { position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(420px, 100vw); z-index: 901; background: #f9f9f9; box-shadow: none; transform: translateX(100%); transition: transform var(--t-slow) var(--ease-out); display: flex; flex-direction: column; }
+  #siteDrawer.open { transform: translateX(0); box-shadow: -1px 0 0 rgba(0,0,0,.05), -20px 0 60px rgba(0,0,0,.12); }
 
   .drw-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 18px; border-bottom: 1px solid rgba(0,0,0,.07); flex-shrink: 0; background: var(--white); }
   .drw-logo-text { display: flex; flex-direction: column; gap: 4px; }
