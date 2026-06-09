@@ -1668,6 +1668,19 @@ p{color:#374151;line-height:1.6}
 })();
 </script>
 <style id="home-cities-equal">#home-cities .location-desc{display:-webkit-box!important;-webkit-line-clamp:1!important;-webkit-box-orient:vertical!important;overflow:hidden!important;white-space:normal!important;text-overflow:ellipsis!important;min-height:1.35em}#home-cities .location-city{flex:0 0 100%!important;width:100%!important}#home-cities .loc-flagship-badge,#home-cities .city-flagship-badge{display:none!important}</style>
+<style id="loc-card-fix">/* Standorte cards (home #home-cities + #standorte-grid): identical size, aligned CTAs, all breakpoints. */
+#home-cities,#standorte-grid{grid-auto-rows:1fr!important}
+#home-cities .city-card,#standorte-grid .city-card{display:flex!important;flex-direction:column!important;height:100%!important;padding:18px 16px!important;box-sizing:border-box}
+#home-cities .location-plz,#standorte-grid .location-plz{display:block!important;font-size:13px!important;font-weight:600!important;color:var(--muted)!important;line-height:1.2!important;margin:0 0 6px!important;font-variant-numeric:tabular-nums}
+#home-cities .location-city,#standorte-grid .location-city{display:block!important;width:100%!important;flex:none!important;font-size:16px!important;font-weight:700!important;color:var(--black)!important;line-height:1.25!important;min-height:2.5em!important;margin:0!important}
+#home-cities .location-canton,#standorte-grid .location-canton{display:none!important}
+#home-cities .location-desc,#standorte-grid .location-desc{display:block!important;-webkit-line-clamp:unset!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;min-height:0!important;font-size:13px!important;color:var(--mid)!important;line-height:1.3!important;margin:4px 0 0!important}
+#home-cities .location-link,#standorte-grid .location-link{margin-top:auto!important;padding-top:12px!important;font-size:13.5px!important;font-weight:700!important;color:var(--blue)!important}
+@media(max-width:600px){#home-cities.city-grid,#standorte-grid.city-grid{grid-template-columns:1fr 1fr!important}}</style>
+<style id="kt-img-fix">/* Kräutertherapie feature card: show the FULL seed (no crop). object-fit:contain +
+   the image's own dark-maroon frame bg so any letterbox blends seamlessly. */
+.kt-feature-img{background:#2c0f1c!important}
+.kt-feature-img img{object-fit:contain!important;object-position:center!important}</style>
 <style id="kennst-mobile">
 @media(max-width:768px){
   .kennst-section{padding:96px 18px !important;}
@@ -17056,13 +17069,13 @@ const PLZ_MAP = {
 'kreuzlingen':'8280','frauenfeld':'8500','winterthur-muenzgasse':'8400',
 'volketswil':'8604','zuerich-hoengg':'8049','zuerich-oerlikon':'8050',
 'zuerich-city':'8001','basel':'4051','st-gallen':'9000',
-'rorschach':'9400','wil':'9500'
+'rorschach':'9400','wil':'9500','winterthur-marktgasse':'8400'
 };
 const DESC_MAP = {
 'kreuzlingen':'Am Bodensee','frauenfeld':'Kanton Thurgau',
 'winterthur-muenzgasse':'Nahe Zürich','volketswil':'Zürich Glattal',
 'zuerich-hoengg':'Zürich West','zuerich-oerlikon':'Zürich Nord',
-'zuerich-city':'Zentral in Zürich',
+'zuerich-city':'Zentral in Zürich','winterthur-marktgasse':'Altstadt',
 'basel':'Innenstadt','st-gallen':'Ostschweiz',
 'rorschach':'Bodenseeregion','wil':'Fürstenland'
 };
@@ -17074,9 +17087,7 @@ const cardClass = isflagship ? ' featured' : '';
 const flagshipBadge = isflagship ? '<span class="loc-flagship-badge">Empfohlen</span>' : '';
 const cta = isflagship ? 'Jetzt Termin starten →' : 'Verfügbarkeit prüfen →';
 const metaLine = isflagship ? '<div class="location-meta">Meistgewählt in Zürich</div>' : '';
-return `<div class="city-card location-card${cardClass}" onclick="${onclick}" style="cursor:pointer"> <div class="location-row"><svg class="location-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="location-plz">${plz}</span><span class="location-city">${NAME_MAP[l.id]||l.name}</span>${flagshipBadge}</div> <div class="location-canton">${l.canton}</div>
-${metaLine}
-<div class="location-desc">${desc}</div> <span class="location-link">${cta}</span> </div>`;
+return `<div class="city-card location-card${cardClass}" onclick="${onclick}" style="cursor:pointer"><span class="location-plz">${plz}</span><div class="location-city">${NAME_MAP[l.id]||l.name}</div><div class="location-desc">${desc}</div><span class="location-link">Termin prüfen →</span></div>`;
 }
 function tagBtn(label, onclick, type=''){
 return `<button class="tag ${type}" onclick="${onclick}">${label}</button>`;
