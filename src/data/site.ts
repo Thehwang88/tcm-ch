@@ -25,12 +25,17 @@ export const standorte = [
   { id: 'basel', label: 'Basel' },
 ];
 
+import { clinics, deStandortPath, enLocationPath } from './locations';
+
 // ── ONE shared route-pair map (DE path -> EN path). Used for hreflang on both
 // systems and for the DE/EN language switcher. Extend as routes get ported.
 export const PAIR_MAP: Record<string, string> = {
   '/': '/en/',
   '/kontakt': '/en/contact',
   '/krankenkassen/': '/en/health-insurance-acupuncture',
+  // Locations: DE /standorte(/<slug>) <-> EN /en/locations(/<slug>)
+  '/standorte': '/en/locations/',
+  ...Object.fromEntries(clinics.map((c) => [deStandortPath(c.id), enLocationPath(c.id)])),
 };
 
 // Reverse lookup (EN -> DE) derived from PAIR_MAP.

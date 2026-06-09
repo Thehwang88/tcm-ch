@@ -1,0 +1,53 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { clinics, enLocationPath } from '../../../data/locations';
+
+const path = '/en/locations/';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://tcm.ch/en/locations/' },
+  ],
+};
+---
+<Layout
+  title="Acupuncture & TCM Clinics in Switzerland | 12 Locations | TCM.ch"
+  description="Find acupuncture & Traditional Chinese Medicine near you in Switzerland — 12 TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance."
+  path={path}
+  schema={breadcrumbLd}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — Swiss TCM network</div>
+      <h1>Our acupuncture & TCM clinics across Switzerland</h1>
+      <p class="lead">
+        12 clinics with English-speaking, EMR-/ASCA-recognised practitioners — acupuncture, Tuina,
+        cupping and Chinese herbal medicine, covered by supplementary insurance. Pick the location nearest you.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+        <a class="btn btn--ghost" href="/en/health-insurance-acupuncture">Is acupuncture covered by insurance? →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cards">
+        {clinics.map((c) => (
+          <a class="card" href={enLocationPath(c.id)}>
+            <h3>{c.name}</h3>
+            <p>
+              {c.openingSoon
+                ? `${c.city} — opening 2028`
+                : `${c.street}, ${c.postalCode} ${c.city}`}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
