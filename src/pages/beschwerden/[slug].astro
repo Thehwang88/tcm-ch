@@ -1,0 +1,169 @@
+---
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { beschwerden, beschwerdeBySlug, REVIEWED_DATE } from '../../data/beschwerden';
+
+export function getStaticPaths() {
+  return beschwerden.map((b) => ({ params: { slug: b.slug }, props: { b } }));
+}
+
+const { b } = Astro.props;
+const data = b ?? beschwerdeBySlug(Astro.params.slug as string)!;
+
+const path = `/beschwerden/${data.slug}`;
+const url = new URL(path, site.url).href;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich interessiere mich für ${data.name}.`)}`;
+
+// ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
+const medicalLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: data.title,
+  description: data.metaDesc,
+  url,
+  inLanguage: 'de-CH',
+  lastReviewed: REVIEWED_DATE,
+  about: { '@type': 'MedicalCondition', name: data.conditionName },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  publisher: {
+    '@type': 'MedicalOrganization',
+    name: 'TCM.ch',
+    url: 'https://tcm.ch/',
+    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' },
+  },
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'de-CH',
+  mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Beschwerden', item: 'https://tcm.ch/beschwerden' },
+    { '@type': 'ListItem', position: 3, name: data.name, item: url },
+  ],
+};
+const schema = [medicalLd, faqLd, breadcrumbLd];
+---
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">TCM.ch</a> <span>/</span> <a href="/beschwerden">Beschwerden</a> <span>/</span> <span>{data.name}</span>
+      </nav>
+      <div class="eyebrow">Beschwerde · TCM.ch</div>
+      <h1>{data.name}</h1>
+      <p class="lead">{data.lead}</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
+        <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp schildern</a>
+      </div>
+      <div class="trust">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        EMR-/ASCA-anerkannte Therapeut:innen · in der Regel über die Zusatzversicherung abrechenbar
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <article class="prose">
+        {data.intro.map((p) => <p>{p}</p>)}
+
+        {data.sections.map((s) => (
+          <>
+            <h2>{s.h}</h2>
+            {s.p.map((p) => <p>{p}</p>)}
+            {s.list && <ul>{s.list.map((li) => <li>{li}</li>)}</ul>}
+          </>
+        ))}
+
+        <h2>Wann du ärztlich abklären solltest</h2>
+        <ul>{data.redFlags.map((r) => <li>{r}</li>)}</ul>
+
+        <h2>Häufige Fragen</h2>
+        <div class="faq">
+          {data.faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+
+        <div class="cta-card">
+          <div class="cta-card-title">{data.name} gezielt angehen?</div>
+          <p>Schildere uns kurz dein Anliegen — wir empfehlen dir die passende Praxis und Methode. Ehrlich, ohne Druck.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte">Standort in deiner Nähe</a>
+          </div>
+        </div>
+
+        <div class="xlinks">
+          <div class="xlink-group">
+            <strong>Ähnliche Beschwerden</strong>
+            {data.related.map((r) => <a href={`/beschwerden/${r.slug}`}>{r.label}</a>)}
+          </div>
+          <div class="xlink-group">
+            <strong>Passende Therapien</strong>
+            {data.therapies.map((t) => <a href={`/therapien/${t.slug}`}>{t.label}</a>)}
+          </div>
+          <div class="xlink-group">
+            <strong>Praxen</strong>
+            <a href="/standorte">Standort in deiner Nähe finden →</a>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          Dieser Beitrag dient der Information und ersetzt keine ärztliche Beratung. Verläufe sind individuell,
+          eine Heilung wird nicht versprochen. Bei starken, plötzlichen oder zunehmenden Beschwerden suche eine
+          Ärztin oder einen Arzt auf.
+        </p>
+      </article>
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .crumbs { font-size: 13.5px; color: var(--muted); margin: 0 0 14px; }
+  .crumbs a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span { margin: 0 2px; }
+  .hero .lead { max-width: 660px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
+  .trust { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 13.5px; color: var(--mid); }
+  .trust svg { color: var(--blue); flex-shrink: 0; }
+
+  .prose { max-width: 760px; }
+  .prose h2 { font-size: 26px; font-weight: 800; color: var(--ink); margin: 40px 0 14px; letter-spacing: var(--tracking-heading); }
+  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
+  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .prose li { margin: 0 0 10px; }
+  .prose strong { color: var(--ink); }
+
+  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
+  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 0 0 16px; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 32px 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+
+  .xlinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; }
+  .xlink-group { display: flex; flex-direction: column; gap: 8px; }
+  .xlink-group strong { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  .xlink-group a { color: var(--blue); font-weight: 600; font-size: 14.5px; text-decoration: none; }
+  .xlink-group a:hover { text-decoration: underline; }
+
+  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; margin-top: 24px; }
+
+  @media (max-width: 700px) { .xlinks { grid-template-columns: 1fr; gap: 22px; } }
+</style>
