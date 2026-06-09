@@ -1,0 +1,177 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { site } from '../../../data/site';
+import { conditionBySlug, enConditionPath } from '../../../data/conditions';
+import { therapyBySlug, enTherapyPath } from '../../../data/therapies';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('knowledge');
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const path = `/en/knowledge/${d.slug}`;
+const url = new URL(path, site.url).href;
+
+// Resolve related EN slugs -> live pages for cross-linking.
+const relatedConditions = d.relatedConditions.map(conditionBySlug).filter(Boolean);
+const relatedTherapies = d.relatedTherapies.map(therapyBySlug).filter(Boolean);
+
+// Pretty date for display (datePublished/dateModified are static ISO strings).
+const fmt = (iso: string) =>
+  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+// ── JSON-LD: MedicalArticle + FAQPage + BreadcrumbList ──
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalArticle',
+  headline: d.title,
+  description: d.description,
+  url,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  inLanguage: 'en',
+  datePublished: d.datePublished,
+  dateModified: d.dateModified,
+  author: { '@type': 'Organization', name: d.author, url: 'https://tcm.ch/en/' },
+  reviewedBy: {
+    '@type': 'Organization',
+    name: d.reviewer,
+    url: 'https://tcm.ch/en/',
+    description: 'EMR-/ASCA-recognised practitioners of Traditional Chinese Medicine in Switzerland.',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'TCM.ch',
+    url: 'https://tcm.ch/en/',
+    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' },
+  },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+};
+
+const faqLd = d.faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: d.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Knowledge', item: 'https://tcm.ch/en/knowledge/' },
+    { '@type': 'ListItem', position: 3, name: d.title, item: url },
+  ],
+};
+
+const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+---
+<Layout
+  title={`${d.title} | TCM.ch`}
+  description={d.description}
+  path={path}
+  schema={schema}
+  enOnly={!d.deWissenUrl}
+  deHref={d.deWissenUrl}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — Knowledge</div>
+      <h1>{d.title}</h1>
+      <p class="byline">
+        By {d.author} · Medically reviewed by {d.reviewer}<br />
+        <span class="dates">
+          Published {fmt(d.datePublished)}{d.dateModified !== d.datePublished && <> · Updated {fmt(d.dateModified)}</>}
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <article class="kb-body prose">
+        <Content />
+      </article>
+
+      {d.faq.length > 0 && (
+        <div class="prose" style="margin-top:8px">
+          <h2>Frequently asked questions</h2>
+          <div class="faq">
+            {d.faq.map((f) => (
+              <details>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {(relatedConditions.length > 0 || relatedTherapies.length > 0) && (
+        <div class="prose" style="margin-top:8px">
+          <div class="xlinks">
+            <strong>Read next:</strong>
+            {relatedConditions.map((c) => (
+              <a class="inline-link" href={enConditionPath(c.slug)}>{c.condition} →</a>
+            ))}
+            {relatedTherapies.map((t) => (
+              <a class="inline-link" href={enTherapyPath(t.slug)}>{t.name} →</a>
+            ))}
+            <a class="inline-link" href="/en/health-insurance-acupuncture">Insurance & costs →</a>
+            <a class="inline-link" href="/en/locations/">Find a clinic →</a>
+          </div>
+        </div>
+      )}
+
+      <div class="prose">
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+          <a class="btn btn--ghost" href="/en/knowledge/">← All articles</a>
+        </div>
+        <p class="disclaimer">
+          This article is general information, not medical advice, and does not promise any cure or specific
+          outcome. If symptoms are severe, sudden or worsening, see a doctor.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .byline { font-size: 14.5px; color: var(--text-soft); line-height: 1.5; max-width: 660px; margin: 6px 0 0; }
+  .byline .dates { color: var(--muted); }
+  .prose { max-width: 760px; }
+  .cta-row { margin: 32px 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
+  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+  .inline-link:hover { text-decoration: underline; }
+  .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }
+  .xlinks strong { color: var(--blue-dark); }
+  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
+  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 0 0 16px; }
+
+  /* Rendered markdown (Content) — scoped to the article body. */
+  .kb-body :global(h2) { font-size: 26px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body :global(h3) { font-size: 20px; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
+  .kb-body :global(p) { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
+  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body :global(li) { margin: 0 0 10px; }
+  .kb-body :global(strong) { color: var(--ink); }
+  .kb-body :global(a) { color: var(--blue); font-weight: 700; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+  .kb-body :global(blockquote) { border-left: 3px solid var(--blue); padding-left: 16px; margin: 0 0 18px; color: var(--text-soft); }
+  .kb-body :global(h2:first-child), .kb-body :global(p:first-child) { margin-top: 0; }
+</style>

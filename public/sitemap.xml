@@ -229,6 +229,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/en/knowledge/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/en/knowledge/how-much-does-acupuncture-cost-in-switzerland</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/en/knowledge/what-to-expect-first-acupuncture-session</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/en/knowledge/acupuncture-for-back-pain-what-to-expect</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>

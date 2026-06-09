@@ -11,16 +11,18 @@ interface Props {
   path: string; // EN path, e.g. "/en/" or "/en/contact"
   schema?: object;
   noindex?: boolean;
+  enOnly?: boolean;   // EN-only page (no DE twin): self-canonical, x-default=en
+  deHref?: string;    // explicit DE twin URL (overrides the pair map)
 }
 
-const { title, description = '', path, schema, noindex = false } = Astro.props;
+const { title, description = '', path, schema, noindex = false, enOnly = false, deHref: deHrefProp } = Astro.props;
 const canonical = new URL(path, site.url).href;
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 
-// hreflang via the shared route-pair map. DE is x-default.
-const dePath = PAIR_MAP_EN[path] ?? '/';
-const deHref = new URL(dePath, site.url).href;
+// hreflang. Default: DE twin via the shared route-pair map (DE = x-default).
+// EN-only pages (enOnly) are self-canonical with x-default=en and no DE alternate.
 const enHref = canonical;
+const deHref = enOnly ? null : (deHrefProp ?? new URL(PAIR_MAP_EN[path] ?? '/', site.url).href);
 ---
 
 <!doctype html>
@@ -33,10 +35,10 @@ const enHref = canonical;
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
 
-    <!-- hreflang (shared pair map; DE = x-default) -->
+    <!-- hreflang: DE twin via pair map (DE = x-default), or self-canonical EN for EN-only pages -->
     <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="de-CH" href={deHref} />
-    <link rel="alternate" hreflang="x-default" href={deHref} />
+    {deHref && <link rel="alternate" hreflang="de-CH" href={deHref} />}
+    <link rel="alternate" hreflang="x-default" href={deHref ?? enHref} />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
