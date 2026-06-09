@@ -1,7 +1,7 @@
 ---
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import { site } from '../../data/site';
-import { standorte, standortBySlug, REVIEWED_DATE } from '../../data/standorte';
+import { standorte, standortBySlug } from '../../data/standorte';
 
 export function getStaticPaths() {
   return standorte.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -9,51 +9,45 @@ export function getStaticPaths() {
 
 const { s } = Astro.props;
 const data = s ?? standortBySlug(Astro.params.slug as string)!;
+const isOpen = data.open;
 
 const path = `/standorte/${data.slug}`;
 const url = new URL(path, site.url).href;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich möchte einen Termin in ${data.name}.`)}`;
 const prefillHref = `/?standort=${data.slug}`; // SPA bridge pre-selects this standort in the contact form
-const mapSrc = `https://maps.google.com/maps?q=${data.geo.lat},${data.geo.lng}&z=15&output=embed`;
+const mapSrc = data.geo ? `https://maps.google.com/maps?q=${data.geo.lat},${data.geo.lng}&z=15&output=embed` : '';
 
-// ── NAP parsing (1:1 with the SPA renderStandort schema logic) ──
-const addrParts = data.address.split(',').map((p) => p.trim());
-const street = addrParts[0] || '';
-const cityPart = (addrParts[1] || '').match(/(\d{4})\s+(.+)/);
-const postalCode = cityPart ? cityPart[1] : '';
-const locality = cityPart ? cityPart[2] : data.name;
+// ── NAP + openingHours parsing (1:1 with the SPA), only for OPEN locations ──
+let clinicLd: Record<string, any> | null = null;
+if (isOpen && data.geo) {
+  const addrParts = data.address.split(',').map((p) => p.trim());
+  const street = addrParts[0] || '';
+  const cityPart = (addrParts[1] || '').match(/(\d{4})\s+(.+)/);
+  const postalCode = cityPart ? cityPart[1] : '';
+  const locality = cityPart ? cityPart[2] : data.name;
+  const dayMap: Record<string, string> = { Mo: 'Monday', Di: 'Tuesday', Mi: 'Wednesday', Do: 'Thursday', Fr: 'Friday', Sa: 'Saturday', So: 'Sunday' };
+  const dayKeys = Object.keys(dayMap);
+  const openSpec = data.hoursISO.map((h) => {
+    const m = h.match(/^([A-Za-z]+)(?:-([A-Za-z]+))?\s+(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+    if (!m) return null;
+    let days: string[] = [];
+    if (m[2]) { const a = dayKeys.indexOf(m[1]); const b = dayKeys.indexOf(m[2]); for (let i = a; i <= b; i++) days.push(dayMap[dayKeys[i]]); }
+    else days = [dayMap[m[1]]];
+    return { '@type': 'OpeningHoursSpecification', dayOfWeek: days, opens: `${m[3]}:${m[4]}`, closes: `${m[5]}:${m[6]}` };
+  }).filter(Boolean);
+  clinicLd = {
+    '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': `${url}#clinic`,
+    name: `TCM.ch ${data.name}`, url, telephone: data.phone.replace(/\s+/g, ''), email: 'termine@tcm.ch',
+    image: 'https://tcm.ch/og-image.jpg', priceRange: 'CHF',
+    address: { '@type': 'PostalAddress', streetAddress: street, postalCode, addressLocality: locality, addressCountry: 'CH' },
+    medicalSpecialty: 'TraditionalChineseMedicine', availableLanguage: ['de-CH', 'en'],
+    parentOrganization: { '@id': 'https://tcm.ch/#org' },
+    geo: { '@type': 'GeoCoordinates', latitude: data.geo.lat, longitude: data.geo.lng },
+  };
+  if (openSpec.length) clinicLd.openingHoursSpecification = openSpec;
+}
 
-const dayMap: Record<string, string> = { Mo: 'Monday', Di: 'Tuesday', Mi: 'Wednesday', Do: 'Thursday', Fr: 'Friday', Sa: 'Saturday', So: 'Sunday' };
-const dayKeys = Object.keys(dayMap);
-const openSpec = data.hoursISO.map((h) => {
-  const m = h.match(/^([A-Za-z]+)(?:-([A-Za-z]+))?\s+(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
-  if (!m) return null;
-  let days: string[] = [];
-  if (m[2]) { const a = dayKeys.indexOf(m[1]); const b = dayKeys.indexOf(m[2]); for (let i = a; i <= b; i++) days.push(dayMap[dayKeys[i]]); }
-  else days = [dayMap[m[1]]];
-  return { '@type': 'OpeningHoursSpecification', dayOfWeek: days, opens: `${m[3]}:${m[4]}`, closes: `${m[5]}:${m[6]}` };
-}).filter(Boolean);
-
-// ── JSON-LD: MedicalClinic (full NAP/geo/hours) + FAQPage + BreadcrumbList ──
-const clinicLd: Record<string, any> = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalClinic',
-  '@id': `${url}#clinic`,
-  name: `TCM.ch ${data.name}`,
-  url,
-  telephone: data.phone.replace(/\s+/g, ''),
-  email: 'termine@tcm.ch',
-  image: 'https://tcm.ch/og-image.jpg',
-  priceRange: 'CHF',
-  address: { '@type': 'PostalAddress', streetAddress: street, postalCode, addressLocality: locality, addressCountry: 'CH' },
-  medicalSpecialty: 'TraditionalChineseMedicine',
-  availableLanguage: ['de-CH', 'en'],
-  parentOrganization: { '@id': 'https://tcm.ch/#org' },
-  geo: { '@type': 'GeoCoordinates', latitude: data.geo.lat, longitude: data.geo.lng },
-};
-if (openSpec.length) clinicLd.openingHoursSpecification = openSpec;
-
-const faqLd = data.faqs.length > 0 ? {
+const faqLd = (isOpen && data.faqs.length > 0) ? {
   '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${url}#faq`,
   mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 } : null;
@@ -66,9 +60,10 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: data.name, item: url },
   ],
 };
-const schema = [clinicLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+// Placeholder locations: NO MedicalClinic (no fake NAP), noindex.
+const schema = [breadcrumbLd, ...(clinicLd ? [clinicLd] : []), ...(faqLd ? [faqLd] : [])];
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} noindex={!isOpen}>
   <section class="hero">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb">
@@ -76,83 +71,113 @@ const schema = [clinicLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       </nav>
       <div class="eyebrow">TCM.ch Klinik · {data.region}</div>
       <h1>TCM {data.name}</h1>
-      <p class="lead">{data.lead}</p>
-      <p class="addr-line">{data.address} · {data.phone}</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href={prefillHref}>Termin anfragen</a>
-        <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp</a>
-      </div>
+      {isOpen ? (
+        <>
+          <p class="lead">{data.lead}</p>
+          <p class="addr-line">{data.address} · {data.phone}</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href={prefillHref}>Termin anfragen</a>
+            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp</a>
+          </div>
+        </>
+      ) : (
+        <>
+          <span class="badge">In Planung · {data.openingNote}</span>
+          <p class="lead">{data.lead}</p>
+        </>
+      )}
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="layout">
-        <article class="prose">
-          <div class="kb-body" set:html={data.bodyHtml} />
+  {isOpen ? (
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="layout">
+          <article class="prose">
+            <div class="kb-body" set:html={data.bodyHtml} />
+            <h2>Behandlungen vor Ort</h2>
+            <div class="chips">
+              {data.therapies.map((t) => <a class="chip" href={`/therapien/${t.slug}`}>{t.label}</a>)}
+            </div>
+            {data.faqs.length > 0 && (
+              <>
+                <h2>Häufige Fragen</h2>
+                <div class="faq">
+                  {data.faqs.map((f) => (
+                    <details><summary>{f.q}</summary><p>{f.a}</p></details>
+                  ))}
+                </div>
+              </>
+            )}
+          </article>
 
-          <h2>Behandlungen vor Ort</h2>
-          <div class="chips">
-            {data.therapies.map((t) => <a class="chip" href={`/therapien/${t.slug}`}>{t.label}</a>)}
-          </div>
-
-          {data.faqs.length > 0 && (
-            <>
-              <h2>Häufige Fragen</h2>
-              <div class="faq">
-                {data.faqs.map((f) => (
-                  <details>
-                    <summary>{f.q}</summary>
-                    <p>{f.a}</p>
-                  </details>
-                ))}
+          <aside class="nap">
+            <div class="nap-card">
+              <h2 class="nap-h">Kontakt &amp; Anfahrt</h2>
+              <dl>
+                <dt>Adresse</dt><dd>{data.address}</dd>
+                <dt>Telefon</dt><dd><a href={`tel:${data.phone.replace(/\s+/g, '')}`}>{data.phone}</a></dd>
+                <dt>Öffnungszeiten</dt><dd>{data.hours}</dd>
+              </dl>
+              <a class="btn btn--primary nap-cta" href={prefillHref}>Termin anfragen</a>
+            </div>
+            {mapSrc && (
+              <div class="map">
+                <iframe title={`Karte ${data.name}`} src={mapSrc} loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="240" style="border:0;display:block"></iframe>
               </div>
-            </>
-          )}
+            )}
+          </aside>
+        </div>
+
+        <div class="xlinks">
+          <div class="xlink-group">
+            <strong>Standorte in der Nähe</strong>
+            {data.nearby.map((n) => <a href={`/standorte/${n.slug}`}>{n.label}</a>)}
+          </div>
+          <div class="xlink-group">
+            <strong>Häufig behandelt</strong>
+            {data.beschwerden.map((b) => <a href={`/beschwerden/${b.slug}`}>{b.label}</a>)}
+          </div>
+          <div class="xlink-group">
+            <strong>Alle Standorte</strong>
+            <a href="/standorte">Alle 12 TCM.ch-Kliniken →</a>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          TCM.ch — EMR-/ASCA-anerkannte Therapeut:innen. Behandlungen werden in der Regel über die
+          Zusatzversicherung für Komplementärmedizin abgerechnet; kläre die Deckung vorab mit deiner Kasse.
+        </p>
+      </div>
+    </section>
+  ) : (
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <article class="prose" style="max-width:680px">
+          <p class="planned-note">
+            Dieser TCM.ch-Standort ist in Planung. Bis zur Eröffnung betreuen dich unsere bestehenden
+            Kliniken in der Nähe — EMR-/ASCA-anerkannt und in der Regel über die Zusatzversicherung abrechenbar.
+          </p>
+          <a class="btn btn--primary" href="/standorte">Standort in deiner Nähe finden</a>
+
+          <div class="xlinks" style="margin-top:36px">
+            <div class="xlink-group">
+              <strong>Kliniken in der Nähe</strong>
+              {data.nearby.map((n) => <a href={`/standorte/${n.slug}`}>{n.label}</a>)}
+            </div>
+            <div class="xlink-group">
+              <strong>Häufig behandelt</strong>
+              {data.beschwerden.map((b) => <a href={`/beschwerden/${b.slug}`}>{b.label}</a>)}
+            </div>
+            <div class="xlink-group">
+              <strong>Alle Standorte</strong>
+              <a href="/standorte">Alle 12 TCM.ch-Kliniken →</a>
+            </div>
+          </div>
         </article>
-
-        <aside class="nap">
-          <div class="nap-card">
-            <h2 class="nap-h">Kontakt &amp; Anfahrt</h2>
-            <dl>
-              <dt>Adresse</dt><dd>{data.address}</dd>
-              <dt>Telefon</dt><dd><a href={`tel:${data.phone.replace(/\s+/g, '')}`}>{data.phone}</a></dd>
-              <dt>Öffnungszeiten</dt><dd>{data.hours}</dd>
-            </dl>
-            <a class="btn btn--primary nap-cta" href={prefillHref}>Termin anfragen</a>
-          </div>
-          <div class="map">
-            <iframe
-              title={`Karte ${data.name}`}
-              src={mapSrc}
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              width="100%" height="240" style="border:0;display:block"></iframe>
-          </div>
-        </aside>
       </div>
-
-      <div class="xlinks">
-        <div class="xlink-group">
-          <strong>Standorte in der Nähe</strong>
-          {data.nearby.map((n) => <a href={`/standorte/${n.slug}`}>{n.label}</a>)}
-        </div>
-        <div class="xlink-group">
-          <strong>Häufig behandelt</strong>
-          {data.beschwerden.map((b) => <a href={`/beschwerden/${b.slug}`}>{b.label}</a>)}
-        </div>
-        <div class="xlink-group">
-          <strong>Alle Standorte</strong>
-          <a href="/standorte">Alle 12 TCM.ch-Kliniken →</a>
-        </div>
-      </div>
-
-      <p class="disclaimer">
-        TCM.ch — EMR-/ASCA-anerkannte Therapeut:innen. Behandlungen werden in der Regel über die
-        Zusatzversicherung für Komplementärmedizin abgerechnet; kläre die Deckung vorab mit deiner Kasse.
-      </p>
-    </div>
-  </section>
+    </section>
+  )}
 </LayoutDe>
 
 <style>
@@ -162,17 +187,18 @@ const schema = [clinicLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .crumbs span { margin: 0 2px; }
   .hero .lead { max-width: 620px; }
   .addr-line { font-size: 14.5px; color: var(--mid); margin-top: 10px; font-weight: 600; }
+  .badge { display: inline-block; background: var(--blue-light); color: var(--blue-dark); font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: var(--r-pill); margin: 4px 0 14px; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 0; }
+  .planned-note { font-size: 17px; color: var(--mid); margin: 0 0 22px; }
 
   .layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 36px; align-items: start; }
   .prose { max-width: 100%; min-width: 0; }
-
   .kb-body :global(h2) { font-size: 24px; font-weight: 800; color: var(--ink); margin: 36px 0 12px; letter-spacing: var(--tracking-heading); }
   .kb-body :global(h2:first-child) { margin-top: 0; }
   .kb-body :global(h3) { font-size: 18px; font-weight: 700; color: var(--ink); margin: 22px 0 8px; }
   .kb-body :global(p) { font-size: 16.5px; color: var(--mid); margin: 0 0 15px; }
   .kb-body :global(strong) { color: var(--ink); }
-
+  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
   .prose > h2 { font-size: 24px; font-weight: 800; color: var(--ink); margin: 36px 0 12px; letter-spacing: var(--tracking-heading); }
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
