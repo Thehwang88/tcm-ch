@@ -716,6 +716,9 @@ a.up-val:hover{color:var(--blue)}
 <meta name="apple-mobile-web-app-title" content="TCM.ch">
 <meta name="application-name" content="TCM.ch">
 
+<!-- Single source of truth for the kept /beschwerden slugs (shared with functions/beschwerden/[[path]].js). Classic script: sets window.BESCHWERDEN_KEEP before the SPA renders. -->
+<script src="/beschwerden-keep.js"></script>
+
 <!-- Root structured data: Organization + WebSite -->
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalBusiness","@id":"https://tcm.ch/#org","name":"TCM.ch","url":"https://tcm.ch/","logo":"https://tcm.ch/logo.png","areaServed":{"@type":"Country","name":"Switzerland"},"medicalSpecialty":"TraditionalChineseMedicine","availableLanguage":["de-CH"]},{"@type":"WebSite","@id":"https://tcm.ch/#website","url":"https://tcm.ch/","name":"TCM.ch","inLanguage":"de-CH","publisher":{"@id":"https://tcm.ch/#org"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://tcm.ch/suche?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
 <script type="application/ld+json" id="ldRoute">{}</script>
@@ -17665,7 +17668,7 @@ const descRevSection = document.getElementById('beschwerden-rev-section');
 if(descRevSection) descRevSection.innerHTML = buildReviewsSection('beschwerden','Was Patienten über TCM sagen.');
 // Full extended complaint list for A-Z directory
 // symId: maps to SYMPTOMS id for routing, null = future page
-const BX_ALL = [
+const BX_ALL_RAW = [
 // ── 1) Schmerzen & Bewegungsapparat ──
 {name:'Rückenschmerzen',         symId:'rueckenschmerzen', cats:['schmerzen'], featured:true},
 {name:'Nackenschmerzen',         symId:'nackenschmerzen',  cats:['schmerzen'], featured:true},
@@ -18873,6 +18876,12 @@ const BX_ALL = [
 {name:'Hiatushernie Sodbrennen',    symId:'zwerchfellbruch',        cats:['verdauung']},
 {name:'Sodbrennen Zwerchfell',      symId:'zwerchfellbruch',        cats:['verdauung']},
 ];
+// ── Index prune: show ONLY the curated KEEP slugs. Single source of truth is
+// window.BESCHWERDEN_KEEP (/beschwerden-keep.js), shared with the 410 function.
+// Dedupe by symId so each kept slug renders exactly once; alias cards pointing to
+// 410'd slugs are dropped, so no internal link targets a removed page.
+const _BX_KEEP = (typeof window !== 'undefined' && Array.isArray(window.BESCHWERDEN_KEEP)) ? window.BESCHWERDEN_KEEP : [];
+const BX_ALL = (function(){ var seen = {}; return BX_ALL_RAW.filter(function(i){ if(_BX_KEEP.indexOf(i.symId) < 0) return false; if(seen[i.symId]) return false; seen[i.symId] = 1; return true; }); })();
 // Categories
 const BX_CATS = [
 {id:'schmerzen', label:'Schmerzen & Bewegungsapparat', desc:'Rücken, Gelenke, Verspannungen, Sportverletzungen', icon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'},

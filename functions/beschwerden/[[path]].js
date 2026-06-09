@@ -4,18 +4,13 @@
 //   /beschwerden/<slug>        (1 seg)   -> 410 unless <slug> is in KEEP
 //   /beschwerden/<slug>/<...>  (2+ segs) -> ALWAYS 410 (no nested combo survives)
 //
-// KEEP is the only set of single-symptom pages that stay live. Slugs MUST match
-// the SPA SYMPTOMS[] ids exactly (public/index.html). Keep this in sync with the
-// /beschwerden entries left in public/sitemap.xml.
+// KEEP is the only set of single-symptom pages that stay live. The slug list is
+// the single source of truth in public/beschwerden-keep.js, shared with the SPA
+// index (renderBeschwerden) so both never diverge. Slugs MUST match the SPA
+// SYMPTOMS[] ids and the /beschwerden entries in public/sitemap.xml.
+import "../../public/beschwerden-keep.js";
 
-const KEEP = new Set([
-  "rueckenschmerzen", "nackenschmerzen", "migraene", "kopfschmerzen",
-  "knieschmerzen", "schulterschmerzen", "ischias", "arthrose",
-  "sehnenscheidenentzuendung", "fibromyalgie",
-  "kinderwunsch", "menstruationsbeschwerden", "pms", "wechseljahre", "schwangerschaftsbeschwerden",
-  "stress-burnout", "burnout", "schlafstoerungen", "angststoerungen", "erschoepfung",
-  "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "tinnitus", "gewichtsmanagement",
-]);
+const KEEP = new Set(globalThis.BESCHWERDEN_KEEP);
 
 function gone() {
   return new Response(
