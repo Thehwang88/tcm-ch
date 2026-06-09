@@ -14,8 +14,6 @@ const path = `/ergebnisse/${r.slug}`;
 const url = new URL(path, site.url).href;
 const isDraft = r.status === 'draft';
 
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich möchte einen Termin bei ${r.condition} anfragen.`)}`;
-
 const fmt = (iso: string) =>
   new Date(iso + 'T00:00:00Z').toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
@@ -63,15 +61,21 @@ const breadcrumbLd = {
 const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 ---
 <LayoutDe title={`${r.title} | TCM.ch`} description={r.description} path={path} schema={schema} noindex={isDraft}>
+  {r.sampleNotice && (
+    <div class="muster-bar" role="note">
+      <strong>{r.sampleNotice}</strong>
+    </div>
+  )}
+
   <section class="hero">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/ergebnisse/">Ergebnisse &amp; Transparenz</a> <span>/</span> <span>{r.condition}</span>
       </nav>
-      <div class="eyebrow">TCM.ch — Ergebnisbericht</div>
+      <div class="eyebrow">TCM.ch · Ergebnisbericht</div>
       <h1>{r.title}</h1>
-      {isDraft && (
-        <p class="draft-badge">In Vorbereitung — noch keine Zahlen</p>
+      {isDraft && !r.sampleNotice && (
+        <p class="draft-badge">In Vorbereitung, noch keine Zahlen</p>
       )}
       <p class="lead">{r.lead}</p>
     </div>
@@ -80,7 +84,24 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   <section class="section" style="padding-top:0">
     <div class="wrap">
       <article class="prose">
-        <div class="note">{r.dataNote}</div>
+        {!r.sampleNotice && <div class="note">{r.dataNote}</div>}
+
+        {(r.keyFindingsIntro || (r.keyFindings && r.keyFindings.length > 0)) && (
+          <>
+            <h2>Das Wichtigste in Kürze</h2>
+            {r.keyFindingsIntro && <p>{r.keyFindingsIntro}</p>}
+            {r.keyFindings && r.keyFindings.length > 0 && (
+              <ul>{r.keyFindings.map((p) => <li>{p}</li>)}</ul>
+            )}
+          </>
+        )}
+
+        {r.whyTransparent && (
+          <>
+            <h2>Warum wir das zeigen</h2>
+            <p>{r.whyTransparent}</p>
+          </>
+        )}
 
         <h2>Methodik</h2>
         {r.methodik.map((p) => <p>{p}</p>)}
@@ -102,26 +123,53 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         </div>
 
         <h2>Ergebnisse</h2>
-        <p>
-          Die folgenden Kennzahlen werden befüllt, sobald genügend anonymisierte Verläufe vorliegen.
-          Bis dahin bleiben sie bewusst leer. Wir tragen hier keine erfundenen Werte ein.
-        </p>
-        <div class="placeholders">
-          {r.instruments.map((i) => (
-            <div class="ph-card">
-              <div class="ph-label">Mittlere Veränderung {i.name}{i.abbr && ` (${i.abbr})`}</div>
-              <div class="ph-value" aria-label="Noch keine Daten">— noch keine Daten —</div>
+        {r.resultsTable && r.resultsTable.length > 0 ? (
+          <>
+            {r.resultsIntro && <p>{r.resultsIntro}</p>}
+            <div class="table-wrap">
+              <table class="results">
+                <thead>
+                  <tr><th>Kennzahl</th><th>Vor der Behandlung</th><th>Nach der Behandlungsserie</th></tr>
+                </thead>
+                <tbody>
+                  {r.resultsTable.map((row) => (
+                    <tr>
+                      <td><strong>{row.label}</strong></td>
+                      <td>{row.before}</td>
+                      <td>{row.after}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          ))}
-          <div class="ph-card">
-            <div class="ph-label">Ausgewertete Behandlungsverläufe</div>
-            <div class="ph-value" aria-label="Noch keine Daten">— noch keine Daten —</div>
-          </div>
-          <div class="ph-card">
-            <div class="ph-label">Erhebungszeitraum</div>
-            <div class="ph-value" aria-label="Noch keine Daten">— noch keine Daten —</div>
-          </div>
-        </div>
+            {r.resultsHighlights && r.resultsHighlights.length > 0 && (
+              <ul>{r.resultsHighlights.map((p) => <li>{p}</li>)}</ul>
+            )}
+          </>
+        ) : (
+          <>
+            <p>
+              Die folgenden Kennzahlen werden befüllt, sobald genügend anonymisierte Verläufe vorliegen.
+              Bis dahin bleiben sie bewusst leer. Wir tragen hier keine erfundenen Werte ein.
+            </p>
+            <div class="placeholders">
+              {r.instruments.map((i) => (
+                <div class="ph-card">
+                  <div class="ph-label">Mittlere Veränderung {i.name}{i.abbr && ` (${i.abbr})`}</div>
+                  <div class="ph-value" aria-label="Noch keine Daten">noch keine Daten</div>
+                </div>
+              ))}
+              <div class="ph-card">
+                <div class="ph-label">Ausgewertete Behandlungsverläufe</div>
+                <div class="ph-value" aria-label="Noch keine Daten">noch keine Daten</div>
+              </div>
+              <div class="ph-card">
+                <div class="ph-label">Erhebungszeitraum</div>
+                <div class="ph-value" aria-label="Noch keine Daten">noch keine Daten</div>
+              </div>
+            </div>
+          </>
+        )}
 
         <h2>Was nicht funktioniert hat</h2>
         <ul>
@@ -135,7 +183,7 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
           ))}
         </ol>
 
-        <h2>Red Flags — wann zuerst zur Ärztin oder zum Arzt</h2>
+        <h2>Red Flags: wann du zuerst zur Ärztin oder zum Arzt solltest</h2>
         <ul>
           {r.redFlags.map((p) => <li>{p}</li>)}
         </ul>
@@ -160,9 +208,10 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         )}
 
         <div class="cta-row">
-          <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener">Termin buchen</a>
+          <a class="btn btn--primary" href="/kontakt">Termin buchen</a>
           <a class="btn btn--ghost" href="/ergebnisse/">← Alle Berichte</a>
         </div>
+        {r.therapist && <p class="byline">Behandelnde:r Therapeut:in: {r.therapist}</p>}
         <p class="disclaimer">
           Dieser Bericht ist allgemeine Information, keine medizinische Beratung, und verspricht keine Heilung
           oder ein bestimmtes Ergebnis. Bei starken, plötzlichen oder zunehmenden Beschwerden suche eine Ärztin
@@ -175,6 +224,10 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 </LayoutDe>
 
 <style>
+  /* MUSTER preview banner — amber notice bar, full width at the very top. */
+  .muster-bar { background: #FEF3C7; border-bottom: 1px solid #FDE68A; color: #92400E; text-align: center; padding: 11px 20px; font-size: 14px; letter-spacing: .01em; }
+  .muster-bar strong { font-weight: 800; }
+
   .crumbs { font-size: 13.5px; color: var(--muted); margin: 0 0 14px; }
   .crumbs a { color: var(--blue); text-decoration: none; font-weight: 600; }
   .crumbs a:hover { text-decoration: underline; }
@@ -189,11 +242,12 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 18px 22px; margin: 0 0 8px; color: var(--mid); font-size: 16px; }
 
   .table-wrap { overflow-x: auto; margin: 8px 0 4px; }
-  .instruments { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .instruments th, .instruments td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .instruments th { color: var(--ink); font-weight: 700; background: var(--surface); }
-  .instruments td { color: var(--mid); }
+  .instruments, .results { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .instruments th, .instruments td, .results th, .results td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .instruments th, .results th { color: var(--ink); font-weight: 700; background: var(--surface); }
+  .instruments td, .results td { color: var(--mid); }
   .abbr { color: var(--muted); font-weight: 400; }
+  .byline { font-size: 14px; color: var(--muted); margin: 8px 0 18px; }
 
   .placeholders { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 6px 0 4px; }
   .ph-card { border: 1px dashed var(--border); border-radius: var(--r-card); padding: 18px 20px; background: var(--surface); }

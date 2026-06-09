@@ -19,6 +19,7 @@ export interface ErgebnisInstrument {
 }
 
 export interface ErgebnisFaq { q: string; a: string }
+export interface ErgebnisResultRow { label: string; before: string; after: string }
 
 export interface ErgebnisReport {
   slug: string;                     // URL slug under /ergebnisse/<slug>
@@ -28,7 +29,7 @@ export interface ErgebnisReport {
   publishedDate: string | null;     // ISO date when published, else null
   dataNote: string;                 // honest note on the current data state
 
-  // ── Editorial content (textual, hedged, ohne Zahlen) ──
+  // ── Editorial content (textual, hedged) ──
   title: string;
   description: string;
   lead: string;
@@ -38,6 +39,17 @@ export interface ErgebnisReport {
   redFlags: string[];               // wann zuerst zum Arzt
   datenschutz: string[];            // nDSG-konforme Datenverarbeitung
   faqs: ErgebnisFaq[];
+
+  // ── Optional. When a result set exists the template renders real figures;
+  // otherwise it shows clearly-labelled empty placeholders (no fabrication). ──
+  sampleNotice?: string;            // amber MUSTER banner text (preview only)
+  whyTransparent?: string;          // "Warum wir das zeigen" paragraph
+  keyFindingsIntro?: string;        // lead-in above "Das Wichtigste in Kürze"
+  keyFindings?: string[];           // "Das Wichtigste in Kürze" bullets
+  resultsIntro?: string;            // sentence above the results table
+  resultsTable?: ErgebnisResultRow[];
+  resultsHighlights?: string[];     // extra figures below the table
+  therapist?: string;              // behandelnde:r Therapeut:in
 }
 
 // Statisches Review-/Stand-Datum (kein Date.now(), reproduzierbarer Build).
@@ -64,58 +76,79 @@ export const reports: ErgebnisReport[] = [
     status: 'draft',
     publishedDate: null,
     dataNote:
-      'Dieser Bericht ist in Vorbereitung. Wir erheben aktuell Daten und veröffentlichen Ergebnisse erst, sobald genügend anonymisierte Verläufe vorliegen, um eine ehrliche Aussage zu treffen. Bis dahin stehen unten bewusst keine Zahlen.',
-    title: 'Ergebnisse bei Rückenschmerzen',
+      'Dieser Bericht ist in Vorbereitung. Wir erheben aktuell Daten und veröffentlichen Ergebnisse erst, sobald genügend anonymisierte Verläufe vorliegen, um eine ehrliche Aussage zu treffen.',
+    title: 'Akupunktur bei Rückenschmerzen in Kreuzlingen: unsere ehrlichen Ergebnisse',
     description:
-      'Wie wir Behandlungsergebnisse bei Rückenschmerzen mit validierten Instrumenten messen. Methodik, Ablauf und Datenschutz transparent erklärt. Erste Zahlen folgen, sobald genügend Daten erhoben sind.',
+      'Wie gut hilft Akupunktur bei chronischen Rückenschmerzen? Ehrliche, anonymisierte Behandlungsergebnisse aus unserer TCM-Praxis in Kreuzlingen. Jetzt Termin buchen.',
     lead:
-      'Rückenschmerzen sind einer der häufigsten Gründe, weshalb Menschen zu uns kommen. Hier zeigen wir offen, wie wir den Verlauf messen und was die Daten später sagen werden. Solange noch keine ausreichenden Daten vorliegen, findest du hier keine Zahlen, sondern nur die Methodik.',
+      'Du überlegst, ob Akupunktur bei deinen Rückenschmerzen wirklich hilft? Verständlich. Statt grosser Versprechen zeigen wir dir hier offen, wie es echten Patientinnen und Patienten in unserer Praxis in Kreuzlingen ergangen ist. Mit nachgemessenen Zahlen, auch dort, wo es nicht funktioniert hat.',
+
+    sampleNotice: 'MUSTER – fiktive Beispieldaten, nicht zur Veröffentlichung',
+    whyTransparent:
+      'Die meisten Praxen reden über Erfolge, kaum jemand legt Zahlen offen. Wir machen es umgekehrt, weil du vor einer Behandlung wissen sollst, was realistisch ist. Akupunktur ist kein Wundermittel. Bei vielen wirkt sie spürbar, bei einem Teil wenig. Genau das findest du hier.',
+    keyFindingsIntro:
+      'Über [128] ausgewertete Behandlungsverläufe bei chronischen Rückenschmerzen:',
+    keyFindings: [
+      '7 von 10 Patienten hatten am Ende deutlich weniger Schmerzen, mindestens ein Drittel weniger.',
+      'Der Schmerz sank im Schnitt von 6,9 auf 3,2 auf einer Skala von 0 bis 10.',
+      'Die Beeinträchtigung im Alltag halbierte sich nahezu.',
+      'Bei rund 3 von 10 half die Behandlung wenig oder nicht. Auch das sagen wir dir ehrlich.',
+    ],
+
     methodik: [
-      'Wir messen Schmerz und Funktion vor Behandlungsbeginn und im Verlauf mit denselben validierten Instrumenten, damit Werte über die Zeit vergleichbar bleiben.',
-      'Alle Angaben kommen direkt von dir als Selbstauskunft. Wir rechnen nichts schön und ergänzen keine Werte, die nicht erhoben wurden.',
-      'Ergebnisse werden anonymisiert und nur aggregiert ausgewertet. Einzelne Personen sind in den späteren Auswertungen nicht erkennbar.',
-      'Wir berichten auch dann, wenn die Daten keinen klaren Nutzen zeigen. Das gehört zu einer ehrlichen Auswertung dazu.',
+      'Wir verlassen uns nicht auf Bauchgefühl, sondern auf anerkannte Messinstrumente. Wir erheben die Werte vor Beginn, nach der fünften Sitzung und am Ende, damit Veränderungen über die Zeit vergleichbar bleiben.',
+      'Erhoben über einen Zeitraum von [12 Monaten] in unserer Praxis in Kreuzlingen. Alle Angaben kommen als Selbstauskunft und werden anonymisiert sowie nur aggregiert ausgewertet.',
+    ],
+    resultsIntro: 'Die Werte vor und nach der Behandlungsserie im Überblick.',
+    resultsTable: [
+      { label: 'Schmerz (0 bis 10)', before: '6,9', after: '3,2' },
+      { label: 'Alltagsbeeinträchtigung', before: '34 %', after: '17 %' },
+    ],
+    resultsHighlights: [
+      'Patienten mit mindestens einem Drittel weniger Schmerz: 71 %',
+      'Patienten mit mindestens der Hälfte weniger Schmerz: 44 %',
+    ],
+
+    notWorking: [
+      'Bei rund 29 % blieb die Verbesserung gering oder aus. In diesen Fällen behandeln wir nicht endlos weiter, sondern passen das Vorgehen an oder verweisen dich an deine Hausärztin oder deinen Hausarzt.',
+      '8 % der Verläufe brachen vorzeitig ab. Diese sind nicht in die Endzahlen eingerechnet, wir weisen sie aber offen aus.',
+      'Wenn Akupunktur bei dir nicht anschlägt, sagen wir dir das, statt dir weitere Sitzungen zu verkaufen.',
     ],
     ablauf: [
-      { step: 'Erstgespräch', text: 'Wir klären deine Beschwerden, prüfen Warnzeichen und erfassen den Ausgangswert mit den Messinstrumenten.' },
-      { step: 'Behandlungsserie', text: 'Statt einer Einzelsitzung planen wir in der Regel eine kurze Serie und erheben den Verlauf zwischendurch erneut.' },
-      { step: 'Verlaufskontrolle', text: 'Wir vergleichen die Werte mit dem Ausgangspunkt und besprechen mit dir, ob und wie es weitergeht.' },
-      { step: 'Auswertung', text: 'Anonymisierte Werte fliessen aggregiert in den späteren Ergebnisbericht ein.' },
-    ],
-    notWorking: [
-      'Akupunktur und manuelle Verfahren ersetzen weder Bewegung noch ärztliche Abklärung. Wer inaktiv bleibt, profitiert erfahrungsgemäss weniger.',
-      'Nicht bei allen Personen verbessern sich die Werte. Wo der Verlauf ausbleibt, sagen wir das offen und passen den Plan an oder verweisen weiter.',
-      'Bei klaren strukturellen Ursachen oder Warnzeichen ist eine TCM-Behandlung nicht der richtige erste Schritt.',
+      { step: 'Sitzungen', text: 'In der Regel 10 Sitzungen über 6 bis 8 Wochen, anfangs ein bis zwei Mal pro Woche.' },
+      { step: 'Akupunktur', text: 'Nadeln im Rücken- und Gesässbereich, sie bleiben etwa 20 bis 25 Minuten.' },
+      { step: 'Ergänzend', text: 'Je nach Befund Schröpfen, Tuina-Massage oder Moxibustion.' },
+      { step: 'Deine Mitarbeit', text: 'Wir kombinieren die Behandlung immer mit konkreten Bewegungs- und Haltungstipps. Die besten Ergebnisse entstehen, wenn du selbst aktiv mitmachst.' },
     ],
     redFlags: [
-      'Rückenschmerzen nach einem schweren Sturz oder Unfall',
-      'Taubheit, Kribbeln oder Schwäche in den Beinen, oder Verlust der Kontrolle über Blase oder Darm (sofort ärztlich abklären)',
-      'Ungewollter Gewichtsverlust, Fieber oder eine Krebserkrankung in der Vorgeschichte zusammen mit neuen Rückenschmerzen',
-      'Schmerz, der nachts stark ist oder kontinuierlich zunimmt statt zu schwanken',
+      'Schmerzen nach einem Sturz oder Unfall',
+      'Taubheit oder Kraftverlust in den Beinen, Probleme mit Blase oder Darm',
+      'Schmerz mit Fieber, ungewolltem Gewichtsverlust oder starkem Ruheschmerz nachts',
     ],
     datenschutz: [
-      'Wir verarbeiten Gesundheitsdaten nach dem Schweizer Datenschutzgesetz (nDSG).',
-      'Für die Veröffentlichung werden Daten anonymisiert und nur aggregiert ausgewertet, sodass keine Rückschlüsse auf einzelne Personen möglich sind.',
+      'Diese Auswertung dient der Information und ist keine medizinische oder versicherungsrechtliche Beratung. Verläufe sind individuell.',
+      'Es werden nur anonymisierte, aggregierte Daten gezeigt, keine einzelne Person ist identifizierbar (nDSG-konform).',
       'Du entscheidest, ob deine anonymisierten Verlaufsdaten in die Auswertung einfliessen, und kannst dem jederzeit widersprechen.',
     ],
     faqs: [
       {
-        q: 'Warum stehen hier noch keine Zahlen?',
-        a: 'Weil wir keine Zahlen veröffentlichen, bevor genügend Daten vorliegen. Lieber transparent leer als zu früh und irreführend. Sobald die Datenbasis ausreicht, ergänzen wir die Ergebnisse an dieser Stelle.',
+        q: 'Hilft Akupunktur wirklich bei Rückenschmerzen?',
+        a: 'Bei vielen Menschen ja, deutlich. In unserer Auswertung hatten 7 von 10 spürbar weniger Schmerzen. Garantieren kann das niemand, und ein Teil profitiert nicht. Deshalb messen wir mit und passen an.',
       },
       {
-        q: 'Wie messt ihr den Erfolg einer Behandlung?',
-        a: 'Mit validierten Instrumenten wie der NRS für Schmerz und dem Oswestry Disability Index für die Alltagsfunktion. Wir erfassen die Werte vor Beginn und im Verlauf und vergleichen sie.',
+        q: 'Wie viele Sitzungen brauche ich?',
+        a: 'Meist eine Serie von rund 10 Sitzungen über 6 bis 8 Wochen. Ob du sie voll ausschöpfst, entscheiden wir gemeinsam anhand deines Verlaufs.',
       },
       {
-        q: 'Sind meine Daten geschützt?',
-        a: 'Ja. Wir verarbeiten Gesundheitsdaten nach dem nDSG. Für Auswertungen werden Daten anonymisiert und nur aggregiert genutzt, einzelne Personen sind nicht erkennbar.',
+        q: 'Übernimmt die Krankenkasse die Kosten?',
+        a: 'Über eine Zusatzversicherung für Komplementärmedizin meist anteilig, da wir EMR- und ASCA-anerkannt sind. Den genauen Anteil regelt dein Tarif.',
       },
       {
-        q: 'Übernimmt die Krankenkasse die Behandlung?',
-        a: 'Behandlungen durch unsere EMR-/ASCA-anerkannten Therapeut:innen werden in der Regel über die Zusatzversicherung für Komplementärmedizin abgerechnet, nicht über die Grundversicherung. Wie viel du zurückbekommst, hängt von deiner Police ab.',
+        q: 'Tut die Behandlung weh?',
+        a: 'Die Nadeln sind sehr fein. Die meisten spüren nur einen kurzen, leichten Reiz. Unangenehm ist es in der Regel nicht.',
       },
     ],
+    therapist: 'Simon Stüve, EMR-/ASCA-anerkannt, TCM.ch Kreuzlingen',
   },
 ];
 
