@@ -1,0 +1,172 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { site } from '../../../data/site';
+import {
+  conditions, INSURANCE_FAQ, REVIEWED_DATE, enConditionPath, conditionBySlug, type Condition,
+} from '../../../data/conditions';
+
+export function getStaticPaths() {
+  return conditions.map((c) => ({ params: { slug: c.slug }, props: { condition: c } }));
+}
+
+interface Props { condition: Condition }
+const { condition } = Astro.props;
+const { slug, condition: name, keyword, lead, intro, howWeTreat, evidence, redFlags, related } = condition;
+
+const path = enConditionPath(slug);
+const url = new URL(path, site.url).href;
+const contactHref = `/en/contact?beschwerde=${encodeURIComponent(name)}`;
+
+const title = `Acupuncture for ${name} | TCM.ch`;
+const h1 = `Acupuncture & TCM for ${name}`;
+const description = `Acupuncture for ${keyword} in Switzerland: honest, evidence-aware information from English-speaking, EMR-/ASCA-recognised TCM practitioners at TCM.ch. How we treat ${keyword} and when to see a doctor first.`;
+
+// Condition-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
+const faqs = [...condition.faqs, INSURANCE_FAQ];
+
+// Related conditions for cross-linking (EN -> EN).
+const relatedConditions = related.map(conditionBySlug).filter(Boolean) as Condition[];
+
+// ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
+const medicalLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: h1,
+  url,
+  inLanguage: 'en',
+  description,
+  lastReviewed: REVIEWED_DATE,
+  about: { '@type': 'MedicalCondition', name },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  author: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/en/' },
+  reviewedBy: {
+    '@type': 'Organization',
+    name: 'TCM.ch',
+    url: 'https://tcm.ch/en/',
+    description: 'EMR-/ASCA-recognised practitioners of Traditional Chinese Medicine in Switzerland.',
+  },
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'en',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Conditions', item: 'https://tcm.ch/en/conditions/' },
+    { '@type': 'ListItem', position: 3, name: h1, item: url },
+  ],
+};
+---
+<Layout title={title} description={description} path={path} schema={[medicalLd, faqLd, breadcrumbLd]}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — Conditions</div>
+      <h1>{h1}</h1>
+      <p class="lead">{lead}</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
+        <a class="btn btn--ghost" href={`tel:+${site.whatsapp}`}>Call us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      {intro.map((p) => <p>{p}</p>)}
+
+      <h2>How we treat {name} at TCM.ch</h2>
+      {howWeTreat.map((p) => <p>{p}</p>)}
+
+      <h2>What the evidence says</h2>
+      <p>{evidence}</p>
+      <p class="evidence-note">
+        We base this on general clinical guidelines and systematic reviews (e.g. Cochrane, PubMed-indexed
+        research). The honest summary: studies vary in quality and findings, and individual results differ.
+      </p>
+
+      <h2>When to see a doctor first</h2>
+      <p>Acupuncture is a complement, not a substitute for medical assessment. See a doctor first if you have:</p>
+      <ul class="redflags">
+        {redFlags.map((r) => <li>{r}</li>)}
+      </ul>
+
+      <h2>FAQ</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="xlinks">
+        <strong>Next steps:</strong>
+        <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
+        <a class="inline-link" href="/en/health-insurance-acupuncture">Is this covered by insurance? →</a>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
+        <a class="btn btn--ghost" href="/en/conditions/">← All conditions</a>
+      </div>
+
+      <p class="disclaimer">
+        This page is general information, not medical advice, and does not promise any cure or specific
+        outcome. If symptoms are severe, sudden or worsening, see a doctor.
+      </p>
+    </div>
+  </section>
+
+  {relatedConditions.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <h2>Related conditions</h2>
+        <div class="cards">
+          {relatedConditions.map((c) => (
+            <a class="card" href={enConditionPath(c.slug)}>
+              <h3>{c.condition}</h3>
+              <p>{c.summary}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  .prose { max-width: 760px; }
+  .prose h2 { font-size: 26px; font-weight: 800; margin: 38px 0 14px; }
+  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
+  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .prose li { margin: 0 0 10px; }
+  .prose strong { color: var(--ink); }
+  .evidence-note { font-size: 15px; color: var(--text-soft); border-left: 3px solid var(--blue); padding-left: 14px; }
+  .redflags { list-style: none; padding-left: 0; }
+  .redflags li { position: relative; padding-left: 26px; }
+  .redflags li::before { content: '!'; position: absolute; left: 0; top: -1px; width: 18px; height: 18px; line-height: 18px; text-align: center; font-weight: 800; font-size: 12px; color: #fff; background: #c0392b; border-radius: 50%; }
+  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+  .inline-link:hover { text-decoration: underline; }
+  .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45, 155, 111, .25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }
+  .xlinks strong { color: var(--blue-dark); }
+  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
+  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 0 0 16px; }
+  .cta-row { margin: 32px 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
+</style>

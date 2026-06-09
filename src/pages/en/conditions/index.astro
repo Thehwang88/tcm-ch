@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { conditions, enConditionPath } from '../../../data/conditions';
+
+const path = '/en/conditions/';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Conditions', item: 'https://tcm.ch/en/conditions/' },
+  ],
+};
+
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: conditions.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.condition,
+    url: new URL(enConditionPath(c.slug), 'https://tcm.ch').href,
+  })),
+};
+---
+<Layout
+  title="Conditions We Treat with Acupuncture & TCM | TCM.ch"
+  description="What we treat with acupuncture and Traditional Chinese Medicine in Switzerland — back pain, neck pain, migraine, sleep, stress, digestive, menstrual and fertility support. English-speaking, EMR-/ASCA-recognised practitioners. Honest and evidence-aware."
+  path={path}
+  schema={[breadcrumbLd, itemListLd]}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch — Conditions</div>
+      <h1>Conditions we treat with acupuncture & TCM</h1>
+      <p class="lead">
+        The conditions people most often come to us for. We are honest and evidence-aware: acupuncture and
+        Traditional Chinese Medicine are used as a complementary approach, results vary, and we flag when to
+        see a doctor first. English-speaking, EMR-/ASCA-recognised practitioners across Switzerland.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+        <a class="btn btn--ghost" href="/en/locations/">Find a clinic near you →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cards">
+        {conditions.map((c) => (
+          <a class="card" href={enConditionPath(c.slug)}>
+            <h3>{c.condition}</h3>
+            <p>{c.summary}</p>
+          </a>
+        ))}
+      </div>
+      <p style="color:var(--mid);font-size:14px;margin-top:18px">
+        Wondering about cost? <a href="/en/health-insurance-acupuncture" style="color:var(--blue);font-weight:600">Is acupuncture covered by insurance? →</a>
+      </p>
+    </div>
+  </section>
+</Layout>
