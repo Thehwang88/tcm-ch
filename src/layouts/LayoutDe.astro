@@ -2,7 +2,6 @@
 // DE Astro layout for ported/standalone German pages (e.g. /ergebnisse/*).
 // Mirrors the DE SPA header/footer style and the shared design tokens.
 // lang="de-CH". noindex prop drives the robots meta for draft pages.
-import '../styles/tokens.css';
 import '../styles/global.css';
 import { site } from '../data/site';
 import Header from '../components/Header.astro';
@@ -26,6 +25,8 @@ const year = 2026;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}

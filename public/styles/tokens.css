@@ -1,9 +1,10 @@
 /* ============================================================
-   TCM.ch — Design Tokens (single source of truth)
-   Extracted 1:1 from the embedded DE SPA (public/index.html
-   ":root" design-system v2). Every /en/ Astro page inherits
-   these via Layout.astro. This file is the foundation for the
-   eventual DE → Astro migration — extend here, don't hardcode.
+   TCM.ch — Design Tokens · SINGLE SOURCE OF TRUTH
+   Loaded by BOTH the DE SPA (public/index.html) and every Astro
+   page (Layout.astro / LayoutDe.astro) via:
+       <link rel="stylesheet" href="/styles/tokens.css">
+   Values are the DE SPA's canonical look. Change a token HERE
+   only — never redefine these in a component or page.
    ============================================================ */
 :root {
   /* ── Brand greens ──────────────────────────────────────── */
@@ -18,34 +19,35 @@
   --mid: #4a4a4a;           /* soft text */
   --muted: #888;            /* muted text */
   --border: #e5e5e5;
-  --surface: #f8f8f8;       /* soft section background */
+  --surface: #F7F8F9;       /* soft section background (SPA canonical) */
   --white: #fff;
 
   /* ── Semantic aliases (mirror the SPA names) ───────────── */
   --green: var(--blue);
   --green-light: var(--blue-light);
   --green-dark: var(--blue-dark);
-  --ink: var(--black);          /* heading colour */
-  --text: var(--charcoal);      /* body colour */
+  --ink: var(--black);
+  --text: var(--charcoal);
   --text-soft: var(--mid);
   --text-muted: var(--muted);
   --bg: var(--white);
   --bg-soft: var(--surface);
+  --radius: var(--r);
 
   /* ── Typography ────────────────────────────────────────── */
   --font-sans: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-accent: 'Nunito', sans-serif;   /* 900 italic — wordmark + accents */
 
-  --fs-hero: clamp(32px, 3.8vw, 50px);   /* .hero-headline */
+  --fs-hero: clamp(32px, 3.8vw, 50px);
   --fs-h1: clamp(32px, 3.8vw, 50px);
-  --fs-h2: clamp(26px, 3.5vw, 40px);     /* .section-title */
+  --fs-h2: clamp(26px, 3.5vw, 40px);
   --fs-h3: 20px;
-  --fs-sub: 18px;                        /* hero / section sub */
+  --fs-sub: 18px;
   --fs-body: 16px;
   --fs-small: 14.5px;
 
-  --lh-tight: 1.05;                      /* hero headline */
-  --lh-heading: 1.15;                    /* section titles */
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
   --lh-body: 1.6;
   --tracking-heading: -0.03em;
   --tracking-hero: -0.02em;
@@ -55,6 +57,7 @@
   --pad-x: 40px;
   --section-y: 96px;
   --section-y-sm: 48px;
+  --section-py: 112px;      /* unified inter-section rhythm (responsive below) */
 
   /* ── Radius scale ──────────────────────────────────────── */
   --r-pill: 999px;
@@ -70,6 +73,10 @@
   --sh-btn: 0 6px 18px rgba(45,155,111,.22), 0 1px 3px rgba(0,0,0,.08);
   --sh-btn-hover: 0 10px 28px rgba(45,155,111,.32), 0 2px 4px rgba(0,0,0,.10);
   --sh-elevated: 0 12px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.05);
+  /* SPA card-shadow scale */
+  --sh-sm: 0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.05);
+  --sh-md: 0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --sh-lg: 0 8px 48px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06);
 
   /* ── Motion ────────────────────────────────────────────── */
   --t-fast: 150ms;
@@ -79,3 +86,6 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* Responsive section rhythm (from the spacing pass) */
+@media (max-width: 900px) { :root { --section-py: 80px; } }
+@media (max-width: 600px) { :root { --section-py: 56px; } }
