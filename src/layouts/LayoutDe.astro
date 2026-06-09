@@ -12,9 +12,10 @@ interface Props {
   path: string;          // DE path, e.g. "/ergebnisse/"
   schema?: object;
   noindex?: boolean;
+  turnstile?: boolean;   // load Cloudflare Turnstile (pages with a protected form)
 }
 
-const { title, description = '', path, schema, noindex = false } = Astro.props;
+const { title, description = '', path, schema, noindex = false, turnstile = false } = Astro.props;
 const canonical = new URL(path, site.url).href;
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich suche eine TCM-Praxis.')}`;
@@ -49,6 +50,13 @@ const year = 2026;
       rel="stylesheet"
     />
 
+    {turnstile && (
+      <>
+        <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+      </>
+    )}
+
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
   <body>
@@ -61,6 +69,7 @@ const year = 2026;
           </div>
         </a>
         <div class="site-nav__actions">
+          <a class="nav-util" href="/zuweisen">Für Fachpersonen</a>
           <a class="btn btn--primary" href={waHref} target="_blank" rel="noopener">Termin anfragen</a>
         </div>
       </div>
@@ -96,7 +105,11 @@ const year = 2026;
   .logo-wm .ch { font-size: 19px; }
   .logo-sub { font-family: var(--font-sans); font-size: 10px; font-weight: 400; letter-spacing: .06em; color: #666; line-height: 1; white-space: nowrap; text-transform: uppercase; }
   .site-nav__in { justify-content: space-between; }
-  .site-nav__actions { margin-left: auto; }
+  .site-nav__actions { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+  /* Secondary utility link (referrers / professionals) — not part of the patient nav. */
+  .nav-util { font-size: 13.5px; font-weight: 600; color: var(--text-soft); text-decoration: none; white-space: nowrap; transition: color var(--t-fast) ease; }
+  .nav-util:hover { color: var(--blue); }
+  @media (max-width: 600px) { .nav-util { display: none; } }
   @media (max-width: 520px) {
     .logo-wm { font-size: 20px; }
     .logo-wm .ch { font-size: 15px; }

@@ -1,0 +1,234 @@
+---
+import LayoutDe from '../layouts/LayoutDe.astro';
+import { site, standorte } from '../data/site';
+
+const path = '/zuweisen';
+const url = new URL(path, site.url).href;
+const title = 'Online-Zuweisung';
+const description =
+  'Weisen Sie Ihre Patient:innen online der TCM.ch zu: strukturiertes Formular mit Dokumenten-Upload, Bestätigung und Rückmeldung zum Behandlungsverlauf. Für Fachpersonen.';
+
+const indikationen = [
+  'Schmerz & Bewegungsapparat',
+  'Migräne & Kopfschmerzen',
+  'Stress, Schlaf & Erschöpfung',
+  'Gynäkologie & Kinderwunsch',
+  'Ergänzende Begleitung (z. B. onkologische Begleittherapie)',
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Online-Zuweisung – TCM.ch',
+  description,
+  url,
+  inLanguage: 'de-CH',
+  audience: { '@type': 'Audience', audienceType: 'Medical professionals' },
+};
+---
+<LayoutDe title={`${title} | TCM.ch`} description={description} path={path} schema={schema} turnstile={true}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">TCM.ch · Für Fachpersonen</div>
+      <h1>Online-Zuweisung</h1>
+      <p class="lead">
+        Weisen Sie Ihre Patient:innen direkt online zu. Sie erhalten eine Bestätigung und eine kurze
+        Rückmeldung zum Behandlungsverlauf.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap zw-grid">
+      <aside class="zw-aside">
+        <h2>Wann zuweisen</h2>
+        <ul class="zw-ind">
+          {indikationen.map((i) => <li>{i}</li>)}
+        </ul>
+        <div class="zw-note">
+          <strong>EMR-/ASCA-anerkannt.</strong> Behandlung durch geprüfte Therapeut:innen an 12 Standorten,
+          in der Regel über die Zusatzversicherung für Komplementärmedizin abrechenbar.
+        </div>
+      </aside>
+
+      <form class="form-card zw-form" id="zw-form" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <fieldset class="zw-fieldset">
+          <legend>Zuweiser:in</legend>
+          <div class="form-row">
+            <div class="field"><label for="zuName">Name <span class="req">*</span></label>
+              <input id="zuName" name="zuName" type="text" required autocomplete="name" placeholder="Dr. med. …" /></div>
+            <div class="field"><label for="zuPraxis">Praxis / Institution</label>
+              <input id="zuPraxis" name="zuPraxis" type="text" autocomplete="organization" /></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="zuEmail">E-Mail <span class="req">*</span></label>
+              <input id="zuEmail" name="zuEmail" type="email" required autocomplete="email" inputmode="email" placeholder="praxis@example.ch" /></div>
+            <div class="field"><label for="zuTel">Telefon</label>
+              <input id="zuTel" name="zuTel" type="tel" autocomplete="tel" inputmode="tel" placeholder="+41 …" /></div>
+          </div>
+          <div class="field"><label for="zsr">ZSR / GLN <span class="opt">(optional)</span></label>
+            <input id="zsr" name="zsr" type="text" placeholder="z. B. GLN 7601…" /></div>
+        </fieldset>
+
+        <fieldset class="zw-fieldset">
+          <legend>Patient:in</legend>
+          <div class="form-row">
+            <div class="field"><label for="patName">Name <span class="req">*</span></label>
+              <input id="patName" name="patName" type="text" required /></div>
+            <div class="field"><label for="patDob">Geburtsdatum</label>
+              <input id="patDob" name="patDob" type="date" /></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="zw-fieldset">
+          <legend>Zuweisung</legend>
+          <div class="field"><label for="grund">Grund / Diagnose <span class="req">*</span></label>
+            <textarea id="grund" name="grund" required placeholder="Kurze Angabe zu Diagnose, Fragestellung und bisheriger Behandlung"></textarea></div>
+          <div class="form-row">
+            <div class="field"><label for="dringlichkeit">Dringlichkeit</label>
+              <select id="dringlichkeit" name="dringlichkeit">
+                <option value="normal">Normal</option>
+                <option value="dringend">Dringend</option>
+              </select></div>
+            <div class="field"><label for="standort">Wunsch-Standort</label>
+              <select id="standort" name="standort">
+                <option value="">Keine Präferenz</option>
+                {standorte.map((s) => <option value={s.label}>{s.label}</option>)}
+              </select></div>
+          </div>
+          <div class="field"><label for="bemerkungen">Bemerkungen <span class="opt">(optional)</span></label>
+            <textarea id="bemerkungen" name="bemerkungen" placeholder="Weitere Hinweise"></textarea></div>
+        </fieldset>
+
+        <fieldset class="zw-fieldset">
+          <legend>Dokumente</legend>
+          <label class="zw-upload" for="files">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span><strong>Überweisung / Berichte hochladen</strong><br />PDF, JPG oder PNG · max. 10 MB gesamt</span>
+            <input id="files" name="files" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple />
+          </label>
+          <ul class="zw-filelist" id="zw-filelist" hidden></ul>
+          <div class="zw-fileerr" id="zw-fileerr" role="alert" hidden></div>
+        </fieldset>
+
+        <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
+
+        <button class="btn btn--primary" type="submit"><span class="btn-label">Zuweisung senden</span></button>
+        <div class="form-status" role="status" aria-live="polite" hidden></div>
+        <p class="zw-privacy">
+          Übermittlung verschlüsselt, vertraulich und nDSG-konform. Daten werden ausschliesslich zur
+          Bearbeitung der Zuweisung verwendet. <a href="/datenschutz">Datenschutz</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var MAX_TOTAL = 10 * 1024 * 1024;
+      var OK_EXT = /\.(pdf|jpe?g|png)$/i;
+      var form = document.getElementById('zw-form');
+      if (!form) return;
+      var input = document.getElementById('files');
+      var listEl = document.getElementById('zw-filelist');
+      var errEl = document.getElementById('zw-fileerr');
+      var status = form.querySelector('.form-status');
+      var label = form.querySelector('.btn-label');
+
+      function fmt(b) { return b < 1048576 ? Math.round(b / 1024) + ' KB' : (b / 1048576).toFixed(1) + ' MB'; }
+      function showErr(msg) { errEl.hidden = !msg; errEl.textContent = msg || ''; }
+      function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+
+      function validateFiles() {
+        var files = input.files ? Array.prototype.slice.call(input.files) : [];
+        listEl.innerHTML = '';
+        listEl.hidden = files.length === 0;
+        var total = 0, bad = '';
+        files.forEach(function (f) {
+          total += f.size;
+          var typeOk = OK_EXT.test(f.name) || ['application/pdf', 'image/jpeg', 'image/png'].indexOf(f.type) !== -1;
+          if (!typeOk) bad = 'Nicht unterstützter Dateityp: ' + f.name + ' (nur PDF, JPG, PNG).';
+          var li = document.createElement('li');
+          li.textContent = f.name + ' · ' + fmt(f.size);
+          listEl.appendChild(li);
+        });
+        if (bad) { showErr(bad); return false; }
+        if (files.length > 8) { showErr('Maximal 8 Dateien.'); return false; }
+        if (total > MAX_TOTAL) { showErr('Dateien zusammen zu gross (' + fmt(total) + '). Maximal 10 MB.'); return false; }
+        showErr('');
+        return true;
+      }
+      input.addEventListener('change', validateFiles);
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (form.querySelector('[name="website"]').value.trim() !== '') return; // honeypot
+        // native required check
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (!validateFiles()) return;
+        var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+        var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+        if (!token) { show('error', 'Bitte bestätigen Sie, dass Sie kein Roboter sind, und versuchen Sie es erneut.'); return; }
+
+        var fd = new FormData(form);            // includes all fields + files + cf-turnstile-response
+        fd.set('turnstileToken', token);
+
+        form.classList.add('is-sending');
+        if (label) { label.dataset.orig = label.textContent; label.textContent = 'Wird gesendet…'; }
+        try {
+          var res = await fetch('/api/zuweisen', { method: 'POST', body: fd }); // browser sets multipart boundary
+          var data = null; try { data = await res.json(); } catch (_) {}
+          if (res.ok && data && data.ok) {
+            form.reset(); listEl.hidden = true; listEl.innerHTML = ''; showErr('');
+            show('success', 'Vielen Dank. Ihre Zuweisung ist eingegangen — Sie erhalten eine Bestätigung per E-Mail und eine Rückmeldung zum Behandlungsverlauf.');
+            form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
+          } else {
+            var map = { missing_fields: 'Bitte füllen Sie die Pflichtfelder aus.', too_large: 'Dateien zusammen zu gross (max. 10 MB).', bad_file_type: 'Nicht unterstützter Dateityp (nur PDF, JPG, PNG).', too_many_files: 'Maximal 8 Dateien.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut versuchen.' };
+            show('error', map[data && data.error] || 'Zuweisung konnte nicht gesendet werden. Bitte erneut versuchen oder anrufen.');
+          }
+        } catch (err) {
+          show('error', 'Verbindungsfehler. Bitte erneut versuchen.');
+        } finally {
+          form.classList.remove('is-sending');
+          if (label && label.dataset.orig) label.textContent = label.dataset.orig;
+          if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+        }
+      });
+    })();
+  </script>
+</LayoutDe>
+
+<style>
+  .zw-grid { display: grid; grid-template-columns: 300px 1fr; gap: 32px; align-items: start; }
+  .zw-aside h2 { font-size: 18px; font-weight: 800; color: var(--ink); margin: 0 0 12px; letter-spacing: var(--tracking-heading); }
+  .zw-ind { list-style: none; padding: 0; margin: 0 0 20px; }
+  .zw-ind li { position: relative; padding: 7px 0 7px 22px; font-size: 14.5px; color: var(--mid); border-bottom: 1px solid var(--border); }
+  .zw-ind li::before { content: ''; position: absolute; left: 0; top: 14px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+  .zw-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 16px 18px; font-size: 13.5px; color: var(--mid); line-height: 1.55; }
+  .zw-note strong { color: var(--blue-dark); }
+
+  .zw-form { max-width: none; }
+  .zw-fieldset { border: none; padding: 0; margin: 0 0 22px; }
+  .zw-fieldset legend { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); padding: 0; margin-bottom: 12px; }
+  .opt { color: var(--muted); font-weight: 400; font-size: 13px; }
+
+  .zw-upload { display: flex; align-items: center; gap: 14px; padding: 18px; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); background: var(--surface); cursor: pointer; color: var(--mid); transition: border-color var(--t-fast) ease, background var(--t-fast) ease; }
+  .zw-upload:hover { border-color: var(--blue); background: var(--blue-light); }
+  .zw-upload svg { color: var(--blue); flex-shrink: 0; }
+  .zw-upload span { font-size: 14px; line-height: 1.4; }
+  .zw-upload strong { color: var(--ink); }
+  .zw-upload input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+  .zw-filelist { list-style: none; padding: 0; margin: 12px 0 0; }
+  .zw-filelist li { font-size: 13.5px; color: var(--mid); padding: 7px 12px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 6px; }
+  .zw-fileerr { margin-top: 10px; font-size: 13.5px; color: #B91C1C; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--radius-sm); padding: 10px 12px; }
+  .zw-privacy { font-size: 13px; color: var(--mid); margin-top: 14px; }
+  .zw-privacy a { color: var(--blue); }
+
+  @media (max-width: 820px) {
+    .zw-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
