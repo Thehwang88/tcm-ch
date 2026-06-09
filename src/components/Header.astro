@@ -31,7 +31,7 @@ const waHref = `https://wa.me/${site.whatsapp}`;
       {navLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
     </ul>
     <div class="nav-right">
-      <a class="nav-util" href="/zuweisen">For professionals</a>
+      <a class="nav-util" href="/zuweisen" title="Online referral form (in German)">For professionals <span class="nav-util-lang">(DE)</span></a>
       <a class="nav-lang" href={deTarget} hreflang="de-CH" aria-label="Zur deutschen Seite wechseln">DE</a>
       <a class="nav-cta" href="/en/contact">Request an appointment</a>
       <button class="nav-menu-btn" id="enMenuBtn" aria-label="Open menu" aria-controls="siteDrawer" aria-expanded="false">
@@ -63,7 +63,7 @@ const waHref = `https://wa.me/${site.whatsapp}`;
             <li><a href={l.href}>{l.label}<span class="drw-link-arrow" set:html={arrow} /></a></li>
           ))}
           <li><a href={deTarget} hreflang="de-CH">Deutsch / DE<span class="drw-link-arrow" set:html={arrow} /></a></li>
-          <li><a href="/zuweisen">For professionals<span class="drw-link-arrow" set:html={arrow} /></a></li>
+          <li><a href="/zuweisen">For professionals — referral form in German<span class="drw-link-arrow" set:html={arrow} /></a></li>
         </ul>
       </div>
     </div>
@@ -152,6 +152,7 @@ const waHref = `https://wa.me/${site.whatsapp}`;
   /* Secondary utility link (referrers / professionals) — not part of the 5-item patient nav. */
   .nav-util { font-size: 13px; font-weight: 600; color: var(--mid); text-decoration: none; white-space: nowrap; margin-right: 12px; transition: color .15s ease; }
   .nav-util:hover { color: var(--blue); }
+  .nav-util-lang { color: var(--muted); font-weight: 500; }
   @media (max-width: 640px) { .nav-util { display: none; } }
   .nav-lang { font-size: 13px; font-weight: 700; line-height: normal; color: var(--mid); text-decoration: none; border: 1px solid var(--border); border-radius: 100px; padding: 5px 11px; margin-right: 4px; transition: color .15s ease, border-color .15s ease; }
   .nav-lang:hover { color: var(--blue); border-color: var(--blue); }
