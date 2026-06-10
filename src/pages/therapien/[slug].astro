@@ -1,158 +1,30 @@
 ---
-import LayoutDe from '../../layouts/LayoutDe.astro';
-import { site } from '../../data/site';
-import { therapien, therapieBySlug } from '../../data/therapien';
+// /therapien/[slug] — faithful 1:1 reproduction of each live SPA therapie leaf.
+// Each leaf was captured from the SPA render (#page-therapie) into
+// src/data/therapie-leaves/<slug>.html — full rich page: hero+image, trust cards,
+// sticky sidebar (Termin widget + "Hilft bei"), standort cards, reviews, symptom pills,
+// "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
+// baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
+import SpaPage from '../../layouts/SpaPage.astro';
 
 export function getStaticPaths() {
-  return therapien.map((t) => ({ params: { slug: t.slug }, props: { t } }));
+  const leaves = import.meta.glob('../../data/therapie-leaves/*.html', { query: '?raw', import: 'default', eager: true });
+  return Object.keys(leaves).map((p) => {
+    const slug = p.split('/').pop()!.replace('.html', '');
+    return { params: { slug }, props: { body: leaves[p] as string } };
+  });
 }
 
-const { t } = Astro.props;
-const data = t ?? therapieBySlug(Astro.params.slug as string)!;
-
-const path = `/therapien/${data.slug}`;
-const url = new URL(path, site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich interessiere mich für ${data.name}.`)}`;
-
-// ── JSON-LD: MedicalTherapy + FAQPage + BreadcrumbList ──
-const therapyLd = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalTherapy',
-  '@id': `${url}#therapy`,
-  name: data.name,
-  description: data.metaDesc,
-  url,
-  inLanguage: 'de-CH',
-  medicineSystem: 'TraditionalChineseMedicine',
-  recognizingAuthority: { '@type': 'Organization', name: 'EMR / ASCA' },
-  provider: {
-    '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
-    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' },
-  },
+const { slug } = Astro.params;
+const body = Astro.props.body as string;
+const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+const name = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/\s+/g, ' ').trim() : slug;
+const title = `${name} – TCM-Behandlung bei TCM.ch`;
+const description = `${name} bei TCM.ch: medizinische TCM, EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title,
+  url: `https://tcm.ch/therapien/${slug}`, inLanguage: 'de-CH',
+  isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
-const faqLd = data.faqs.length > 0 ? {
-  '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${url}#faq`,
-  mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-} : null;
-const breadcrumbLd = {
-  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
-    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien' },
-    { '@type': 'ListItem', position: 3, name: data.name, item: url },
-  ],
-};
-const schema = [therapyLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
-  <section class="hero">
-    <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">TCM.ch</a> <span>/</span> <a href="/therapien">Therapien</a> <span>/</span> <span>{data.name}</span>
-      </nav>
-      <div class="eyebrow">Behandlungsmethode · TCM.ch</div>
-      <h1>{data.name}</h1>
-      <p class="lead">{data.lead}</p>
-      <div class="meta-row">
-        <span class="m"><strong>Dauer</strong> {data.duration}</span>
-        <span class="m"><strong>Sitzungen</strong> {data.sessions}</span>
-        <span class="m"><strong>Kasse</strong> {data.insurance}</span>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="/kontakt">Behandlung anfragen</a>
-        <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <article class="prose">
-        <div class="kb-body" set:html={data.bodyHtml} />
-
-        {data.faqs.length > 0 && (
-          <>
-            <h2>Häufige Fragen</h2>
-            <div class="faq">
-              {data.faqs.map((f) => (
-                <details><summary>{f.q}</summary><p>{f.a}</p></details>
-              ))}
-            </div>
-          </>
-        )}
-
-        <div class="cta-card">
-          <div class="cta-card-title">{data.name} – Termin anfragen</div>
-          <p>Schildere uns kurz dein Anliegen. Wir prüfen die Kassendeckung kostenlos und finden die passende Praxis in deiner Nähe.</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt">Behandlung anfragen</a>
-            <a class="btn btn--ghost" href="/standorte">Standort in deiner Nähe</a>
-          </div>
-        </div>
-
-        <div class="xlinks">
-          <div class="xlink-group">
-            <strong>Hilft bei</strong>
-            {data.beschwerden.map((b) => <a href={`/beschwerden/${b.slug}`}>{b.label}</a>)}
-          </div>
-          <div class="xlink-group">
-            <strong>Verwandte Methoden</strong>
-            {data.therapies.map((x) => <a href={`/therapien/${x.slug}`}>{x.label}</a>)}
-          </div>
-          <div class="xlink-group">
-            <strong>Praxen</strong>
-            <a href="/standorte">Standort in deiner Nähe finden →</a>
-          </div>
-        </div>
-
-        <p class="disclaimer">
-          Dieser Beitrag dient der Information und ersetzt keine ärztliche Beratung. Verläufe sind individuell,
-          eine Heilung wird nicht versprochen. Behandlungen werden in der Regel über die Zusatzversicherung für
-          Komplementärmedizin abgerechnet; kläre die Deckung vorab mit deiner Kasse.
-        </p>
-      </article>
-    </div>
-  </section>
-</LayoutDe>
-
-<style>
-  .crumbs { font-size: 13.5px; color: var(--muted); margin: 0 0 14px; }
-  .crumbs a { color: var(--blue); text-decoration: none; font-weight: 600; }
-  .crumbs a:hover { text-decoration: underline; }
-  .crumbs span { margin: 0 2px; }
-  .hero .lead { max-width: 640px; }
-  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .meta-row .m { font-size: 13.5px; color: var(--mid); background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 7px 14px; }
-  .meta-row strong { color: var(--ink); font-weight: 700; margin-right: 4px; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
-
-  .prose { max-width: 760px; }
-  .kb-body :global(h2) { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
-  .kb-body :global(h2:first-child) { margin-top: 0; }
-  .kb-body :global(p) { font-size: 17px; line-height: 1.65; color: var(--mid); margin: 0 0 16px; }
-  .kb-body :global(ul) { font-size: 17px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .kb-body :global(li) { margin: 0 0 10px; }
-  .kb-body :global(strong) { color: var(--ink); }
-
-  .faq { margin-top: 4px; }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
-
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 36px 0 0; }
-  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
-
-  .xlinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 36px; }
-  .xlink-group { display: flex; flex-direction: column; gap: 8px; }
-  .xlink-group strong { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .xlink-group a { color: var(--blue); font-weight: 600; font-size: 14.5px; text-decoration: none; }
-  .xlink-group a:hover { text-decoration: underline; }
-
-  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; margin-top: 24px; }
-
-  @media (max-width: 700px) { .xlinks { grid-template-columns: 1fr; gap: 22px; } }
-</style>
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={body} schema={schema} />
