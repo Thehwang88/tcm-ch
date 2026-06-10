@@ -95,4 +95,8 @@ border-bottom:1px solid rgba(0,0,0,.06);
   .nav-mobile-btn { display: none !important; }}
 /* clear the fixed 68px nav */
 body > main, body > #home-content{padding-top:68px}
+
+/* System rollout: demote header CTA to ghost on every DE subpage (matches home) */
+#navCtaBtn.nav-cta{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;font-weight:600!important;box-shadow:none!important;transition:background .2s ease,border-color .2s ease}
+#navCtaBtn.nav-cta:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important}
 @media(max-width:768px){body > main, body > #home-content{padding-top:60px}}

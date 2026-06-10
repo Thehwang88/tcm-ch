@@ -4206,3 +4206,52 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 #home-content .wa-pill{background:var(--surface)!important;border:1px solid var(--border)!important;color:#374151!important}
 #home-content .wa-pill:hover{border-color:#2D9B6F!important;color:#1F7A54!important}
 #home-content .wa-concierge-wa-alt{color:#1F7A54!important}
+
+/* ════════════ SITE-WIDE ROLLOUT: SPA hub/leaf pages (#page-* roots; longevity premium excluded) ════════════ */
+/* One selector covers every SPA page container. Dark sections keep their inline white (we only touch size/tracking, not H2 color). */
+[id^="page-"]:not(#page-longevity) .section-label,
+[id^="page-"]:not(#page-longevity) .offer-eyebrow,
+[id^="page-"]:not(#page-longevity) .eyebrow{font-family:var(--font-sans)!important;font-size:11.5px!important;font-weight:600!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:#2D9B6F!important;margin-bottom:14px!important;background:none!important;border:none!important;padding:0!important;display:block!important;width:auto!important}
+[id^="page-"]:not(#page-longevity) .section-title{font-size:clamp(28px,3.4vw,42px)!important;letter-spacing:-.02em!important;font-weight:800!important;line-height:1.12!important}
+[id^="page-"]:not(#page-longevity) .review-text,
+[id^="page-"]:not(#page-longevity) .svc-tagline,
+[id^="page-"]:not(#page-longevity) .kk-a p,
+[id^="page-"]:not(#page-longevity) .kk-intro,
+[id^="page-"]:not(#page-longevity) .offer-sub,
+[id^="page-"]:not(#page-longevity) .location-desc,
+[id^="page-"]:not(#page-longevity) .location-intro{color:#374151!important}
+[id^="page-"]:not(#page-longevity) .review-text{font-style:normal!important;font-weight:400!important;line-height:1.6!important}
+[id^="page-"]:not(#page-longevity) .offer-card,
+[id^="page-"]:not(#page-longevity) .review-card,
+[id^="page-"]:not(#page-longevity) .svc-card,
+[id^="page-"]:not(#page-longevity) .usp-card,
+[id^="page-"]:not(#page-longevity) .city-card,
+[id^="page-"]:not(#page-longevity) .location-card,
+[id^="page-"]:not(#page-longevity) .cp-review-card,
+[id^="page-"]:not(#page-longevity) .inline-form-card,
+[id^="page-"]:not(#page-longevity) .kk-faq{background:#fff!important;border:1px solid var(--border)!important;border-radius:var(--r-card)!important;box-shadow:var(--sh-md)!important;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out),border-color .2s!important}
+[id^="page-"]:not(#page-longevity) .offer-card:hover,
+[id^="page-"]:not(#page-longevity) .review-card:hover,
+[id^="page-"]:not(#page-longevity) .svc-card:hover,
+[id^="page-"]:not(#page-longevity) .usp-card:hover,
+[id^="page-"]:not(#page-longevity) .city-card:hover,
+[id^="page-"]:not(#page-longevity) .location-card:hover{transform:translateY(-2px)!important;box-shadow:var(--sh-lg)!important;border-color:rgba(45,155,111,.25)!important}
+[id^="page-"]:not(#page-longevity) .review-card,
+[id^="page-"]:not(#page-longevity) .cp-review-card{padding:24px!important}
+[id^="page-"]:not(#page-longevity) .btn-primary,
+[id^="page-"]:not(#page-longevity) .offer-cta,
+[id^="page-"]:not(#page-longevity) .hcd-primary{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;padding:15px 26px!important;border-radius:14px!important;background:var(--blue)!important;color:#fff!important;border:none!important;font-size:15.5px!important;font-weight:700!important;font-family:var(--font-sans)!important;letter-spacing:-.01em!important;box-shadow:0 8px 24px rgba(45,155,111,.32)!important;transition:transform .2s,box-shadow .2s,background .2s!important}
+[id^="page-"]:not(#page-longevity) .btn-primary:hover,
+[id^="page-"]:not(#page-longevity) .offer-cta:hover,
+[id^="page-"]:not(#page-longevity) .hcd-primary:hover{transform:translateY(-1px)!important;background:var(--blue-dark)!important;box-shadow:0 10px 28px rgba(45,155,111,.42)!important}
+[id^="page-"]:not(#page-longevity) .btn-secondary{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;border-radius:14px!important;padding:14px 24px!important;font-weight:600!important;font-size:15px!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important}
+[id^="page-"]:not(#page-longevity) .btn-secondary:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important;transform:none!important}
+[id^="page-"]:not(#page-longevity) .form-input:focus,
+[id^="page-"]:not(#page-longevity) .form-select:focus,
+[id^="page-"]:not(#page-longevity) .form-textarea:focus{border-color:#2D9B6F!important;box-shadow:0 0 0 3px rgba(45,155,111,.12)!important;outline:none!important}
+[id^="page-"]:not(#page-longevity) .kk-q,
+[id^="page-"]:not(#page-longevity) .kk-item,
+[id^="page-"]:not(#page-longevity) .svc-cta{border-color:var(--border)!important}
+[id^="page-"] .reveal{transform:translateY(10px)!important;transition:opacity .4s var(--ease-out),transform .4s var(--ease-out)!important}
+[id^="page-"] .reveal.visible{transform:none!important;opacity:1!important}
+@media(prefers-reduced-motion:reduce){[id^="page-"] .reveal{transform:none!important;transition:none!important}}
