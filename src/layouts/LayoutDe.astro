@@ -4,7 +4,7 @@
 // lang="de-CH". noindex prop drives the robots meta for draft pages.
 import '../styles/global.css';
 import { site } from '../data/site';
-import Header from '../components/Header.astro';
+import DeHeader from '../components/DeHeader.astro';
 
 interface Props {
   title: string;
@@ -27,6 +27,8 @@ const year = 2026;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
     <link rel="stylesheet" href="/styles/tokens.css" />
+    <!-- Shared DE header styling (the rich SPA burger), used on every DE page. -->
+    <link rel="stylesheet" href="/header.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -61,7 +63,7 @@ const year = 2026;
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
   <body>
-    <Header currentPath={path} lang="de" />
+    <DeHeader />
 
     <main>
       <slot />
@@ -82,5 +84,8 @@ const year = 2026;
       </div>
       <div class="wrap" style="margin-top:14px;font-size:13px;color:var(--muted)">© {year} TCM.ch</div>
     </footer>
+
+    <!-- Shared DE header behaviour (nav routing + burger drawer), used on every DE page. -->
+    <script src="/header.js" is:inline defer></script>
   </body>
 </html>

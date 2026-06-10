@@ -6,6 +6,7 @@
 // Astro pages). Only functional adaptations: value=slug select, stats baked, Turnstile
 // env-gated. NO voice cleanup, NO trimming — wording/layout identical to live.
 import { site } from '../data/site';
+import DeHeader from '../components/DeHeader.astro';
 import homeBody from '../data/home-body.html?raw';
 
 const title = 'TCM.ch – Medizinische TCM & Akupunktur in der Schweiz';
@@ -60,7 +61,9 @@ const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
     <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
   </head>
   <body>
+    <DeHeader />
     <Fragment set:html={homeHtml} />
+    <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>
 </html>

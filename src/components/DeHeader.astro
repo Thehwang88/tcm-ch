@@ -1,0 +1,9 @@
+---
+// Single DE header used by EVERY German page (home + all LayoutDe subpages + longevity).
+// Markup = the live SPA DE header verbatim: #mainNav (DE desktop nav via nav()) + the full
+// rich #siteDrawer burger (grouped, DE sub-items) + #drawerOverlay. Styling lives in
+// /header.css (subpages) or /home.css (home); behaviour in /header.js (nav + drawer + CTA).
+// The EN header (Header.astro) is used ONLY by Layout.astro for /en/ pages.
+import header from '../data/header.html?raw';
+---
+<Fragment set:html={header} />
