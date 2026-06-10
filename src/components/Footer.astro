@@ -1,19 +1,8 @@
 ---
-import { site } from '../data/site';
-const year = 2026;
+// Single rich dark footer used on EVERY page (like DeHeader): TCM.ch branding + tagline,
+// 3 link columns (Beschwerden / Therapien / Standorte), social + legal. Captured from the
+// live SPA. Styling via /home.css (home/SpaPage) or /footer.css (LayoutDe); links route
+// DE via nav() in /header.js.
+import footer from '../data/footer.html?raw';
 ---
-<footer class="site-foot">
-  <div class="wrap site-foot__row">
-    <div>
-      <strong>TCM<span style="color:var(--blue)">.ch</span></strong> — Traditional Chinese Medicine across Switzerland.<br />
-      EMR-/ASCA-recognised practitioners · 12 clinics.
-    </div>
-    <div>
-      <a href="/en/knowledge/">Knowledge</a> ·
-      <a href="/en/contact">Contact</a> ·
-      <a href="/" hreflang="de-CH">Deutsch</a> ·
-      <a href={`mailto:${site.email}`}>{site.email}</a>
-    </div>
-  </div>
-  <div class="wrap" style="margin-top:14px;font-size:13px;color:var(--muted)">© {year} TCM.ch</div>
-</footer>
+<Fragment set:html={footer} />

@@ -5,6 +5,7 @@
 import '../styles/global.css';
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -27,8 +28,9 @@ const year = 2026;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
     <link rel="stylesheet" href="/styles/tokens.css" />
-    <!-- Shared DE header styling (the rich SPA burger), used on every DE page. -->
+    <!-- Shared DE header + footer styling (the rich SPA chrome), used on every DE page. -->
     <link rel="stylesheet" href="/header.css" />
+    <link rel="stylesheet" href="/footer.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -69,21 +71,7 @@ const year = 2026;
       <slot />
     </main>
 
-    <footer class="site-foot">
-      <div class="wrap site-foot__row">
-        <div>
-          <strong>TCM<span style="color:var(--blue)">.ch</span></strong> · Traditionelle Chinesische Medizin in der ganzen Schweiz.<br />
-          EMR-/ASCA-anerkannte Therapeut:innen · 12 Kliniken.
-        </div>
-        <div>
-          <a href="/ergebnisse/">Ergebnisse &amp; Transparenz</a> ·
-          <a href="/wissen">Wissen</a> ·
-          <a href="/krankenkassen/">Krankenkassen</a> ·
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </div>
-      </div>
-      <div class="wrap" style="margin-top:14px;font-size:13px;color:var(--muted)">© {year} TCM.ch</div>
-    </footer>
+    <Footer />
 
     <!-- Shared DE header behaviour (nav routing + burger drawer), used on every DE page. -->
     <script src="/header.js" is:inline defer></script>

@@ -3,6 +3,7 @@
 // Renders: shared DeHeader + the captured SPA page body (verbatim) + shared header.js/home.js.
 // Full SPA CSS via /home.css; Turnstile env-gated. Used for the rich hub/leaf pages.
 import DeHeader from '../components/DeHeader.astro';
+import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -53,6 +54,7 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <body>
     <DeHeader />
     <Fragment set:html={html} />
+    <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>

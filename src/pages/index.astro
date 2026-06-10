@@ -7,6 +7,7 @@
 // env-gated. NO voice cleanup, NO trimming — wording/layout identical to live.
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
+import Footer from '../components/Footer.astro';
 import homeBody from '../data/home-body.html?raw';
 
 const title = 'TCM.ch – Medizinische TCM & Akupunktur in der Schweiz';
@@ -63,6 +64,7 @@ const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <body>
     <DeHeader />
     <Fragment set:html={homeHtml} />
+    <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>

@@ -3,6 +3,7 @@
 // header (#mainNav) + footer + burger (#siteDrawer). Same chrome/CSS/JS as the home.
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
+import Footer from '../components/Footer.astro';
 import body from '../data/longevity-body.html?raw';
 
 const title = 'Longevity Schweiz – Medizinische TCM für Vitalität & Prävention';
@@ -48,6 +49,7 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <body>
     <DeHeader />
     <Fragment set:html={html} />
+    <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
   </body>
