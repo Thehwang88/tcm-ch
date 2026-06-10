@@ -178,3 +178,102 @@ if(!isOpen){a.classList.add('open');btn.classList.add('open');btn.setAttribute('
   }
   try{ var sp=new URLSearchParams(location.search).get('standort'); if(sp){ setTimeout(function(){openContactForm(null,sp);},250); } }catch(e){}
 })();
+
+/* ── SPA header drawer + Kräutertherapie modal (ported verbatim) ── */
+// drawerOpen
+function drawerOpen(){
+document.getElementById('siteDrawer').classList.add('open');
+document.getElementById('drawerOverlay').classList.add('open');
+window.__drawerScrollY=window.scrollY||window.pageYOffset||0;
+document.body.style.position='fixed';
+document.body.style.top='-'+window.__drawerScrollY+'px';
+document.body.style.left='0';
+document.body.style.right='0';
+document.body.style.width='100%';
+document.body.style.overflow='hidden';
+var btn=document.getElementById('navMenuBtn');
+if(btn) btn.setAttribute('aria-expanded','true');
+// focus trap
+setTimeout(function(){
+var first=document.querySelector('#siteDrawer .drw-close');
+if(first) first.focus();
+},340);
+}
+
+// drawerClose
+function drawerClose(){
+document.getElementById('siteDrawer').classList.remove('open');
+document.getElementById('drawerOverlay').classList.remove('open');
+document.body.style.position='';
+document.body.style.top='';
+document.body.style.left='';
+document.body.style.right='';
+document.body.style.width='';
+document.body.style.overflow='';
+if(typeof window.__drawerScrollY==='number'){window.scrollTo(0,window.__drawerScrollY);window.__drawerScrollY=null;}
+var btn=document.getElementById('navMenuBtn');
+if(btn) btn.setAttribute('aria-expanded','false');
+}
+
+// openDrawer
+function openDrawer(page, id)   { nav(page, id); }
+
+// closeDrawer
+function closeDrawer()          { history.back(); }
+
+// drawerToggle
+function drawerToggle(btn){
+var section=btn.closest('.drw-section');
+var body=btn.nextElementSibling;
+var isOpen=btn.classList.contains('open');
+var drawerBody=document.querySelector('.drw-body');
+// Close all others
+document.querySelectorAll('#siteDrawer .drw-acc-btn.open').forEach(function(b){
+b.classList.remove('open');
+b.setAttribute('aria-expanded','false');
+b.nextElementSibling.classList.remove('open');
+b.closest('.drw-section').classList.remove('is-open');
+});
+if(!isOpen){
+btn.classList.add('open');
+btn.setAttribute('aria-expanded','true');
+body.classList.add('open');
+section.classList.add('is-open');
+drawerBody.classList.add('has-open');
+} else {
+drawerBody.classList.remove('has-open');
+}
+}
+
+// drawerNav
+function drawerNav(page,id){
+drawerClose();
+// small delay so drawer animates out first
+setTimeout(function(){
+if(typeof nav==='function'){
+if(id) nav(page,id);
+else nav(page);
+}
+},80);
+}
+
+// karOpen
+function karOpen(){
+var el = document.getElementById('kar-overlay');
+if(!el) return;
+el.classList.add('open');
+el.scrollTop = 0;
+document.body._karSY = window.scrollY;
+document.body.style.overflow = 'hidden';
+setTimeout(initKarReveal, 140);
+el.addEventListener('scroll', initKarReveal, {passive:true});
+}
+
+// karClose
+function karClose(){
+var el = document.getElementById('kar-overlay');
+if(!el) return;
+el.classList.remove('open');
+document.body.style.overflow = '';
+setTimeout(function(){ window.scrollTo(0, document.body._karSY || 0); }, 460);
+}
