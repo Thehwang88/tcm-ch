@@ -14,6 +14,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "knieschmerzen", "schulterschmerzen", "ischias", "arthrose",
   "sehnenscheidenentzuendung", "fibromyalgie",
   "kinderwunsch", "menstruationsbeschwerden", "pms", "wechseljahre", "schwangerschaftsbeschwerden",
-  "stress-burnout", "burnout", "schlafstoerungen", "angststoerungen", "erschoepfung",
-  "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "tinnitus", "gewichtsmanagement"
+  "stress-burnout", "burnout", "schlafstoerungen", "schlafprobleme", "angststoerungen", "erschoepfung",
+  "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement"
 ];

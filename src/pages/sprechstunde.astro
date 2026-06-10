@@ -1,0 +1,10 @@
+---
+// /sprechstunde — faithful 1:1 reproduction of the live SPA #page-sprechstunde
+// ("Ärztliche Sprechstunde – schnell zum Arzt"). Linked from the burger.
+import SpaPage from '../layouts/SpaPage.astro';
+import body from '../data/sprechstunde-body.html?raw';
+const title = 'Ärztliche Sprechstunde – schnell zum Arzt | TCM.ch';
+const description = 'Schnell zum Arzt, ohne wochenlange Wartezeit – die ärztliche Sprechstunde bei TCM.ch. EMR-/ASCA-anerkannt, an unseren Standorten in der Deutschschweiz.';
+const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, url: 'https://tcm.ch/sprechstunde/', inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } };
+---
+<SpaPage title={title} description={description} path="/sprechstunde" body={body} schema={schema} />
