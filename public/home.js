@@ -182,8 +182,8 @@ if(!isOpen){a.classList.add('open');btn.classList.add('open');btn.setAttribute('
 /* ── SPA header drawer + Kräutertherapie modal (ported verbatim) ── */
 // drawerOpen
 function drawerOpen(){
-document.getElementById('siteDrawer').classList.add('open');
-document.getElementById('drawerOverlay').classList.add('open');
+var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.add('open');
+var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.add('open');
 window.__drawerScrollY=window.scrollY||window.pageYOffset||0;
 document.body.style.position='fixed';
 document.body.style.top='-'+window.__drawerScrollY+'px';
@@ -202,8 +202,8 @@ if(first) first.focus();
 
 // drawerClose
 function drawerClose(){
-document.getElementById('siteDrawer').classList.remove('open');
-document.getElementById('drawerOverlay').classList.remove('open');
+var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.remove('open');
+var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.remove('open');
 document.body.style.position='';
 document.body.style.top='';
 document.body.style.left='';
