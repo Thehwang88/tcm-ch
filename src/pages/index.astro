@@ -1,0 +1,83 @@
+---
+// Home — faithful static Astro port of the SPA home (#home-content).
+// Full SPA CSS bundled (public/home.css, header rules excluded — Header.astro owns it);
+// interactivity ported to public/home.js. Voice cleaned, stats baked to real values,
+// standort select uses value=slug (prefill fix incl. both Winterthur).
+import Header from '../components/Header.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+import homeBody from '../data/home-body.html?raw';
+
+const title = 'TCM.ch – Medizinische TCM & Akupunktur in der Schweiz';
+const description =
+  'Das Schweizer Netzwerk für medizinische TCM: Akupunktur, Tuina und mehr an 12 EMR-/ASCA-anerkannten Standorten. Krankenkasse 80–100 % über die Zusatzversicherung, Termin oft in 24 Stunden.';
+const canonical = 'https://tcm.ch/';
+const year = 2026;
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalOrganization', '@id': 'https://tcm.ch/#org', name: 'TCM.ch', url: 'https://tcm.ch/', logo: 'https://tcm.ch/icon-512.png', medicalSpecialty: 'TraditionalChineseMedicine', areaServed: 'CH', availableLanguage: ['de-CH', 'en'] },
+  { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://tcm.ch/#website', name: 'TCM.ch', url: 'https://tcm.ch/', inLanguage: 'de-CH', publisher: { '@id': 'https://tcm.ch/#org' } },
+];
+---
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/home.css" />
+    <!-- progressive enhancement: reveal animations require JS; no-JS/crawlers see content -->
+    <script is:inline>document.documentElement.classList.add('js','ready');</script>
+    <!-- static page: never hide content from no-JS/crawlers (SPA anti-FOUC + reveal are JS-only enhancements) -->
+    <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}</style>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={site.ogImage} />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </head>
+  <body>
+    <Header currentPath="/" lang="de" />
+
+    <main set:html={homeBody} />
+
+    <footer class="site-foot">
+      <div class="wrap site-foot__row">
+        <div>
+          <strong>TCM<span style="color:var(--blue)">.ch</span></strong> · Traditionelle Chinesische Medizin in der ganzen Schweiz.<br />
+          EMR-/ASCA-anerkannte Therapeut:innen · 12 Kliniken.
+        </div>
+        <div>
+          <a href="/ergebnisse/">Ergebnisse &amp; Transparenz</a> ·
+          <a href="/wissen">Wissen</a> ·
+          <a href="/krankenkassen">Krankenkassen</a> ·
+          <a href="/impressum">Impressum</a> ·
+          <a href="/datenschutz">Datenschutz</a> ·
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      </div>
+      <div class="wrap" style="margin-top:14px;font-size:13px;color:var(--muted)">© {year} TCM.ch</div>
+    </footer>
+
+    <script src="/home.js" is:inline defer></script>
+  </body>
+</html>
