@@ -4076,3 +4076,29 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 .usp-sub{font-size:13.5px;color:#6B7280;line-height:1.55;font-weight:400}
 @media(max-width:980px){.usp-grid{grid-template-columns:repeat(2,1fr);gap:14px}.usp-card{padding:20px 18px}}
 @media(max-width:560px){.usp-grid-section{padding:32px 0!important}.usp-grid{grid-template-columns:1fr;gap:12px}.usp-card{padding:18px 16px;gap:8px}.usp-title{font-size:14.5px}.usp-sub{font-size:13px}}
+
+/* ════════ HERO CONVERSION UPGRADE (action unit · trust row · sub-headline · review badge · header-CTA demote) ════════ */
+#home-content .hero-subhead{font-family:var(--font-sans);font-size:clamp(16px,1.6vw,20px);font-weight:600;color:#374151;letter-spacing:-.01em;line-height:1.35;margin:2px 0 18px}
+#home-content .hero-action{display:flex;flex-direction:column;gap:14px;margin-top:24px;max-width:520px;width:100%}
+#home-content .hero-action-label{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#8a9299}
+#home-content .hero-action-row{display:flex;align-items:stretch;gap:12px}
+#home-content .hero-standort{position:relative;flex:1 1 auto;min-width:0}
+#home-content .hero-action-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex:0 0 auto;white-space:nowrap;padding:15px 26px;border-radius:14px;background:var(--blue);color:#fff;border:none;font-size:15.5px;font-weight:700;font-family:var(--font-sans);letter-spacing:-.01em;cursor:pointer;box-shadow:0 8px 24px rgba(45,155,111,.32);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+#home-content .hero-action-cta:hover{transform:translateY(-1px);background:var(--blue-dark);box-shadow:0 10px 28px rgba(45,155,111,.42)}
+#home-content .hero-action-cta:active{transform:translateY(0)}
+#home-content .hero-action-cta .hac-sub{opacity:.85;font-weight:500}
+#home-content .hero-action-cta svg{flex-shrink:0}
+#home-content .hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:6px 9px;font-family:var(--font-sans);font-size:13px;font-weight:500;color:#374151;line-height:1.4}
+#home-content .hero-trust-star{color:#c9a96e;font-size:14px;line-height:1}
+#home-content .hero-trust-dot{color:var(--border)}
+#home-content .hero-action-secondary button{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#545e6b;font-family:var(--font-sans);font-weight:500;padding:0}
+#home-content .hero-action-secondary button span{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+#home-content .hero-right-picker{position:relative}
+#home-content .hero-review-badge{position:absolute;left:18px;bottom:18px;z-index:2;display:flex;align-items:center;gap:11px;background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-md);padding:13px 16px}
+#home-content .hero-review-badge .hrb-stars{color:#c9a96e;font-size:18px;line-height:1;flex-shrink:0}
+#home-content .hero-review-badge .hrb-main{font-family:var(--font-sans);font-size:14px;font-weight:700;color:#0d0d0d;line-height:1.2}
+#home-content .hero-review-badge .hrb-label{font-family:var(--font-sans);font-size:11px;font-weight:600;color:#8a9299;letter-spacing:.02em;margin-top:1px}
+@media(max-width:680px){#home-content .hero-action{max-width:none}#home-content .hero-action-row{flex-direction:column;align-items:stretch}#home-content .hero-action-cta{width:100%;padding:15px 20px}}
+@media(max-width:479px){#home-content .hero-review-badge{display:none}}
+#navCtaBtn.nav-cta{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;font-weight:600!important;box-shadow:none!important;transition:background .2s ease,border-color .2s ease}
+#navCtaBtn.nav-cta:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important}
