@@ -717,7 +717,7 @@ a.up-val:hover{color:var(--blue)}
 <meta name="application-name" content="TCM.ch">
 
 <!-- Single source of truth for the kept /beschwerden slugs (shared with functions/beschwerden/[[path]].js). Classic script: sets window.BESCHWERDEN_KEEP before the SPA renders. -->
-<script src="/beschwerden-keep.js"></script>
+<script src="/beschwerden-keep.js"></script> <script src="/wissen-kill.js"></script>
 
 <!-- Root structured data: Organization + WebSite -->
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MedicalBusiness","@id":"https://tcm.ch/#org","name":"TCM.ch","url":"https://tcm.ch/","logo":"https://tcm.ch/logo.png","areaServed":{"@type":"Country","name":"Switzerland"},"medicalSpecialty":"TraditionalChineseMedicine","availableLanguage":["de-CH"]},{"@type":"WebSite","@id":"https://tcm.ch/#website","url":"https://tcm.ch/","name":"TCM.ch","inLanguage":"de-CH","publisher":{"@id":"https://tcm.ch/#org"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://tcm.ch/suche?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
@@ -23901,6 +23901,9 @@ function wissenDecorateCards(){
   cards.forEach(function(card){
     var oc = card.getAttribute('onclick')||'';
     var sm = oc.match(/nav\('wissen','([a-z0-9-]+)'\)/);
+    // Hub filter: hide cards for 410'd doorway articles (single source: /wissen-kill.js).
+    if(sm && (window.WISSEN_KILL||[]).indexOf(sm[1])!==-1){ card.style.display='none'; return; }
+    card.style.display='';
     var iso = (sm && map[sm[1]]) || '';
     card.setAttribute('data-date', iso);
     if(iso && !card.querySelector('.wissen-article-date')){
