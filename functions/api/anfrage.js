@@ -46,13 +46,14 @@ export async function onRequestPost({ request, env }) {
       ['Quelle', d.quelle], ['Zeit', d.zeit],
     ];
     const html =
+      '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
       '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage</h2>' +
       '<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">' +
       rows.filter(([, v]) => v != null && String(v).trim() !== '')
         .map(([k, v]) => '<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>' +
           esc(k) + '</strong></td><td style="padding:4px 0">' + esc(v).replace(/\n/g, '<br>') + '</td></tr>')
         .join('') +
-      '</table>';
+      '</table></body></html>';
 
     const subject = d.typ === 'termin'
       ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
@@ -67,7 +68,7 @@ export async function onRequestPost({ request, env }) {
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json' },
+      headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify(body),
     });
 
