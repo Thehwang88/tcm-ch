@@ -6,6 +6,7 @@ import '../styles/global.css';
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
+import HeadAnalytics from '../components/HeadAnalytics.astro';
 
 interface Props {
   title: string;
@@ -26,6 +27,7 @@ const year = 2026;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <HeadAnalytics />
     <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
     <link rel="stylesheet" href="/styles/tokens.css" />
     <!-- Shared DE header + footer styling (the rich SPA chrome), used on every DE page. -->

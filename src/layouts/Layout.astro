@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import HeadAnalytics from '../components/HeadAnalytics.astro';
 import { site, PAIR_MAP_EN } from '../data/site';
 
 interface Props {
@@ -30,6 +31,7 @@ const deHref = enOnly ? null : (deHrefProp ?? new URL(PAIR_MAP_EN[path] ?? '/', 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
+    <HeadAnalytics />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

@@ -4,6 +4,7 @@
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
+import HeadAnalytics from '../components/HeadAnalytics.astro';
 import body from '../data/longevity-body.html?raw';
 
 const title = 'Longevity Schweiz – Medizinische TCM für Vitalität & Prävention';
@@ -24,6 +25,7 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <HeadAnalytics />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/home.css" />
     <script is:inline>document.documentElement.classList.add('js','ready');</script>

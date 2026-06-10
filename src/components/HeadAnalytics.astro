@@ -1,0 +1,11 @@
+---
+// Marketing/analytics — MUST match the live SPA <head> on EVERY page.
+// Google Ads / GA4 conversions run through GTM-PZ92Q3KJ; the contact-form conversion
+// fires via the GTM container's form-submit trigger (the live SPA has no inline
+// dataLayer.push either — GTM handles it). CookieYes provides consent (DSG).
+---
+<!-- CookieYes consent banner -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/d4d6fd72baf6e0325c859ebee7667525/script.js" is:inline></script>
+<!-- Google Tag Manager -->
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PZ92Q3KJ');</script>
+<!-- End Google Tag Manager -->
