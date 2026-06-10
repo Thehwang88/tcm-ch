@@ -20,7 +20,7 @@ const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
 const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/TCM\.ch CARE.*?Akupunktur\s*/i, '').replace(/\s+/g, ' ').trim().slice(0, 40) : slug;
 const name = clinic ? clinic.name : hName;
 const url = `https://tcm.ch/standorte/${slug}/`;
-const title = `TCM & Akupunktur ${name} – TCM.ch Klinik`;
+const title = `TCM & Akupunktur ${name}. Schneller weniger Schmerzen | TCM.ch`;
 const description = `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden. Anfahrt, Therapien und Team vor Ort.`;
 
 // MedicalClinic with the clinic's real NAP (address/geo/phone/hours) from locations.ts.
