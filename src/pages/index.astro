@@ -18,6 +18,13 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalOrganization', '@id': 'https://tcm.ch/#org', name: 'TCM.ch', url: 'https://tcm.ch/', logo: 'https://tcm.ch/icon-512.png', medicalSpecialty: 'TraditionalChineseMedicine', areaServed: 'CH', availableLanguage: ['de-CH', 'en'] },
   { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://tcm.ch/#website', name: 'TCM.ch', url: 'https://tcm.ch/', inLanguage: 'de-CH', publisher: { '@id': 'https://tcm.ch/#org' } },
 ];
+
+// Turnstile sitekey: preview branches use Cloudflare's always-pass TEST key; production
+// (main, served on tcm.ch) keeps the real key. Fail-safe: only an explicit non-main
+// CF_PAGES_BRANCH switches to the test key, so prod is never accidentally on test.
+const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
+const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -58,7 +65,7 @@ const schema = [
   <body>
     <Header currentPath="/" lang="de" />
 
-    <main set:html={homeBody} />
+    <main set:html={homeHtml} />
 
     <footer class="site-foot">
       <div class="wrap site-foot__row">

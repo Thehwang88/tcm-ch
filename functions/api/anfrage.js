@@ -19,11 +19,18 @@ export async function onRequestPost({ request, env }) {
     if (!d.name || !d.telefon || !d.email) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
+    // Turnstile secret: production (tcm.ch) uses the real secret; previews (*.pages.dev)
+    // use Cloudflare's always-pass TEST secret so the full pipeline can be verified there.
+    // Fail-safe: only an explicit *.pages.dev host switches to the test secret.
+    const _host = (() => { try { return new URL(request.url).hostname; } catch (_) { return ''; } })();
+    const _isPreview = _host.endsWith('.pages.dev');
+    const turnstileSecret = _isPreview ? '1x0000000000000000000000000000000AA' : env.TURNSTILE_SECRET;
+
     const tsVerify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        secret: env.TURNSTILE_SECRET,
+        secret: turnstileSecret,
         response: d.turnstileToken,
         remoteip: request.headers.get('CF-Connecting-IP'),
       }),
