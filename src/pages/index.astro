@@ -35,7 +35,9 @@ const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
     <link rel="stylesheet" href="/home.css" />
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
-    <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}</style>
+    <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
+    /* restore the SPA #app{padding-top:68px} offset so the full-bleed hero clears the fixed 68px header */
+    #home-content{padding-top:68px}</style>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
