@@ -218,3 +218,21 @@ setTimeout(function(){ window.scrollTo(0, document.body._karSY || 0); }, 460);
 
 /* therapie-leaf hero CTA -> scroll to the inline contact form */
 function therapieScrollToForm(){ var el = document.querySelector("#page-therapie .contact-section-inline .inline-form-card") || document.querySelector("#page-therapie .contact-section-inline") || document.querySelector(".inline-form-card"); if(el) el.scrollIntoView({behavior:"smooth", block:"center"}); }
+
+/* Compact trust checklist directly above the contact form — non-home pages only.
+   Single source: every SPA leaf/hub form inherits it (home keeps the full offer section). */
+(function(){
+  if (document.getElementById('home-content')) return;            // skip the home
+  var card = document.querySelector('.contact-section-inline .inline-form-card') || document.querySelector('.inline-form-card');
+  if (!card || document.querySelector('.form-trust-checklist')) return;
+  var items = ['Kassendeckung vorab geprüft', 'Termin in 24–48h', 'Ärztlich begleitet', 'Ehrlichkeits-Garantie'];
+  var chk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  var wrap = document.createElement('div');
+  wrap.className = 'form-trust-checklist';
+  wrap.innerHTML = items.map(function(t){ return '<span class="ftc-item">' + chk + t + '</span>'; }).join('');
+  var scar = document.createElement('div');
+  scar.className = 'form-trust-scarcity';
+  scar.textContent = 'Ersttermin-Slots pro Woche und Standort sind begrenzt. Anfragen werden in der Reihenfolge des Eingangs vergeben.';
+  card.parentNode.insertBefore(wrap, card);
+  card.parentNode.insertBefore(scar, card);
+})();
