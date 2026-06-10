@@ -3,7 +3,7 @@
 // Mirrors the DE SPA header/footer style and the shared design tokens.
 // lang="de-CH". noindex prop drives the robots meta for draft pages.
 import '../styles/global.css';
-import { site } from '../data/site';
+import { site, enTwinPath } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
@@ -19,6 +19,7 @@ interface Props {
 
 const { title, description = '', path, schema, noindex = false, turnstile = false } = Astro.props;
 const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
+const enTwin = noindex ? null : enTwinPath(path);
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const year = 2026;
 ---
@@ -37,6 +38,9 @@ const year = 2026;
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
+    {enTwin && <link rel="alternate" hreflang="de-CH" href={canonical} />}
+    {enTwin && <link rel="alternate" hreflang="en" href={new URL(enTwin, site.url).href} />}
+    {enTwin && <link rel="alternate" hreflang="x-default" href={canonical} />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />

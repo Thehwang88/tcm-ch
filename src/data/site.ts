@@ -50,3 +50,12 @@ export const PAIR_MAP: Record<string, string> = {
 export const PAIR_MAP_EN: Record<string, string> = Object.fromEntries(
   Object.entries(PAIR_MAP).map(([de, en]) => [en, de]),
 );
+
+// EN twin for a DE path (trailing-slash tolerant). Returns the EN path with a trailing
+// slash (canonical form), or null when the DE page has no built EN equivalent.
+export function enTwinPath(dePath: string): string | null {
+  const bare = dePath.replace(/\/$/, '');
+  const en = PAIR_MAP[dePath] ?? PAIR_MAP[bare] ?? PAIR_MAP[bare + '/'];
+  if (!en) return null;
+  return en.endsWith('/') ? en : en + '/';
+}

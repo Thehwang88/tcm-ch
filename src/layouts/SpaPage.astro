@@ -5,7 +5,7 @@
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
-import { site } from '../data/site';
+import { site, enTwinPath } from '../data/site';
 
 interface Props {
   title: string;
@@ -17,6 +17,7 @@ interface Props {
 }
 const { title, description, path, body, schema, noindex = false } = Astro.props;
 const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
+const enTwin = enTwinPath(path); // EN alternate (null if no built EN twin)
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
@@ -38,6 +39,9 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
+    {enTwin && <link rel="alternate" hreflang="de-CH" href={canonical} />}
+    {enTwin && <link rel="alternate" hreflang="en" href={new URL(enTwin, site.url).href} />}
+    {enTwin && <link rel="alternate" hreflang="x-default" href={canonical} />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
