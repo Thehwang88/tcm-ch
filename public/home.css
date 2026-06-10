@@ -4102,3 +4102,107 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 @media(max-width:479px){#home-content .hero-review-badge{display:none}}
 #navCtaBtn.nav-cta{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;font-weight:600!important;box-shadow:none!important;transition:background .2s ease,border-color .2s ease}
 #navCtaBtn.nav-cta:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important}
+
+/* ════════════════════ HOME DESIGN-SYSTEM NORMALIZATION (polish pass) ════════════════════ */
+/* Scoped to #home-content; !important to beat minified base rules + inline styles. Hero + dark bands left intact. */
+
+/* 1. EYEBROWS → one style (hero eyebrow: 11.5/600/.18em/uppercase/green/mb14) */
+#home-content .section-label,
+#home-content .offer-eyebrow,
+#home-content .eyebrow{font-family:var(--font-sans)!important;font-size:11.5px!important;font-weight:600!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:#2D9B6F!important;margin-bottom:14px!important;background:none!important;border:none!important;padding:0!important;display:block!important;width:auto!important}
+#home-content .kennst-section .reveal>div:first-child{font-size:11.5px!important;font-weight:600!important;letter-spacing:.18em!important;margin-bottom:14px!important;color:#2D9B6F!important}
+
+/* 2. SECTION H2 → one scale + tracking; slate em accent (green = action layer only) */
+#home-content .section-title,
+#home-content .offer-h2,
+#home-content .kennst-section h2{font-size:clamp(28px,3.4vw,42px)!important;letter-spacing:-.02em!important;font-weight:800!important;line-height:1.12!important}
+#home-content section:not(.wa-section) .section-title,
+#home-content .offer-h2,
+#home-content .kennst-section h2{color:#0D0D0D!important}
+#home-content .offer-h2 em,
+#home-content .kennst-section h2 em{color:#2F3A45!important;font-weight:650!important;font-style:italic!important}
+
+/* 3. BODY GRAY → #374151 everywhere (dark wa-section excluded) */
+#home-content section:not(.wa-section) .section-sub,
+#home-content .offer-sub,
+#home-content .offer-bullets li,
+#home-content .review-text,
+#home-content .svc-tagline,
+#home-content .svc-sub,
+#home-content .kennst-section p,
+#home-content .kk-a p,
+#home-content .kk-intro,
+#home-content .location-desc,
+#home-content .location-intro{color:#374151!important}
+#home-content .review-text{font-style:normal!important;font-weight:400!important;line-height:1.6!important}
+
+/* 4. CARDS → one style (16px / --border / --sh-md / hover -2px) */
+#home-content .offer-card,
+#home-content .kennst-grid>div,
+#home-content .review-card,
+#home-content .svc-card,
+#home-content .usp-card,
+#home-content .city-card,
+#home-content .location-card,
+#home-content .cp-review-card,
+#home-content .inline-form-card,
+#home-content .wa-concierge,
+#home-content .kk-faq{background:#fff!important;border:1px solid var(--border)!important;border-radius:var(--r-card)!important;box-shadow:var(--sh-md)!important;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out),border-color .2s!important}
+#home-content .offer-card:hover,
+#home-content .kennst-grid>div:hover,
+#home-content .review-card:hover,
+#home-content .svc-card:hover,
+#home-content .usp-card:hover,
+#home-content .city-card:hover,
+#home-content .location-card:hover{transform:translateY(-2px)!important;box-shadow:var(--sh-lg)!important;border-color:rgba(45,155,111,.25)!important}
+#home-content .kennst-grid>div,
+#home-content .review-card,
+#home-content .cp-review-card{padding:24px!important}
+
+/* 5. CTAs → one green primary (hero CTA) + one ghost secondary */
+#home-content .offer-cta,
+#home-content .wa-concierge-submit,
+#home-content .btn-primary,
+#home-content .hcd-primary{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;padding:15px 26px!important;border-radius:14px!important;background:var(--blue)!important;color:#fff!important;border:none!important;font-size:15.5px!important;font-weight:700!important;font-family:var(--font-sans)!important;letter-spacing:-.01em!important;box-shadow:0 8px 24px rgba(45,155,111,.32)!important;transition:transform .2s,box-shadow .2s,background .2s!important}
+#home-content .offer-cta:hover,
+#home-content .wa-concierge-submit:hover,
+#home-content .btn-primary:hover,
+#home-content .hcd-primary:hover{transform:translateY(-1px)!important;background:var(--blue-dark)!important;box-shadow:0 10px 28px rgba(45,155,111,.42)!important}
+#home-content .btn-secondary{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;border-radius:14px!important;padding:14px 24px!important;font-weight:600!important;font-size:15px!important;font-family:var(--font-sans)!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;transition:background .2s,border-color .2s!important}
+#home-content .btn-secondary:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important;transform:none!important}
+
+/* 6. FORM focus ring → brand green */
+#home-content .form-input:focus,
+#home-content .form-select:focus,
+#home-content .form-textarea:focus{border-color:#2D9B6F!important;box-shadow:0 0 0 3px rgba(45,155,111,.12)!important;outline:none!important}
+
+/* 7. DIVIDERS → one 1px --border hairline */
+#home-content .svc-cta,
+#home-content .kk-item,
+#home-content .kk-q,
+#home-content .next-steps,
+#home-content .form-divider-quiet,
+#home-content #stats-bar .stat-cell{border-color:var(--border)!important}
+
+/* 8. REVEAL motion → 10px rise / 400ms ease-out (count-up + hover lifts kept) */
+#home-content .reveal{transform:translateY(10px)!important;transition:opacity .4s var(--ease-out),transform .4s var(--ease-out)!important}
+#home-content .reveal.visible{transform:none!important;opacity:1!important}
+@media(prefers-reduced-motion:reduce){#home-content .reveal{transform:none!important;transition:none!important}}
+
+/* 9. SECTION rhythm → --section-py token on sections that override it */
+#home-content #s-offer,
+#home-content .kennst-section,
+#home-content .wa-section{padding-top:var(--section-py)!important;padding-bottom:var(--section-py)!important}
+
+/* wa-concierge: dark glass → light standard card on the dark band; inner text flipped to dark */
+#home-content .wa-concierge{padding:24px!important}
+#home-content .wa-concierge-head{border-bottom-color:var(--border)!important}
+#home-content .wa-concierge-label{color:#8a9299!important}
+#home-content .wa-concierge-sub{color:#374151!important}
+#home-content .wa-concierge-textarea{background:#fff!important;border:1.5px solid var(--border)!important;color:#0d0d0d!important;border-radius:14px!important}
+#home-content .wa-concierge-textarea:focus{border-color:#2D9B6F!important;box-shadow:0 0 0 3px rgba(45,155,111,.12)!important}
+#home-content .wa-chat-name{color:#0d0d0d!important}
+#home-content .wa-chat-status{color:#8a9299!important}
+#home-content .wa-pill{background:var(--surface)!important;border:1px solid var(--border)!important;color:#374151!important}
+#home-content .wa-pill:hover{border-color:#2D9B6F!important;color:#1F7A54!important}
+#home-content .wa-concierge-wa-alt{color:#1F7A54!important}
