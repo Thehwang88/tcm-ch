@@ -20,7 +20,7 @@ export const wissen: Wissen[] = [
       "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
       "bio": "Barbara behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
     },
-    "reviewerName": "Dr. med. TCM",
+    "reviewerName": "Dr. med. Barbara Hainich",
     "datePublished": "2026-05-26",
     "dateModified": "2026-05-26",
     "lastReviewed": "2026-05-26",
@@ -78,7 +78,7 @@ export const wissen: Wissen[] = [
       "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
       "bio": "Corinna behandelt seit über zehn Jahren Patientinnen und Patienten mit Akupunktur, Tuina und chinesischer Kräutertherapie. Sie kennt die Abrechnungssysteme aller grossen Schweizer Zusatzversicherungen aus dem Praxisalltag und ist bei TCM.ch für die Schulung neuer Therapeutinnen im Bereich EMR-Compliance verantwortlich."
     },
-    "reviewerName": "Dr. med. TCM",
+    "reviewerName": "Dr. med. Barbara Hainich",
     "datePublished": "2026-05-27",
     "dateModified": "2026-05-27",
     "lastReviewed": "2026-05-27",
@@ -136,7 +136,7 @@ export const wissen: Wissen[] = [
       "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Mitgründerin TCM.ch",
       "bio": "Corinna ist Mitgründerin von TCM.ch und hat die meisten Standorte mit aufgebaut. Sie behandelt seit über zehn Jahren in der Deutschschweiz mit Schwerpunkten in Frauengesundheit, Kinderwunsch und chronischen Schmerzen. Ausbildung in der Schweiz, klinische Vertiefung in Hangzhou und Peking."
     },
-    "reviewerName": "Dr. med. TCM",
+    "reviewerName": "Dr. med. Barbara Hainich",
     "datePublished": "2026-05-27",
     "dateModified": "2026-05-27",
     "lastReviewed": "2026-05-27",
