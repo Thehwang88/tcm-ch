@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { title, description = '', path, schema, noindex = false, enOnly = false, deHref: deHrefProp } = Astro.props;
-const canonical = new URL(path, site.url).href;
+const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 
 // hreflang. Default: DE twin via the shared route-pair map (DE = x-default).

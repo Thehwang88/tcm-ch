@@ -5,7 +5,9 @@
 function nav(page, id){
   var direct={home:'/',beschwerden:'/beschwerden',therapien:'/therapien',standorte:'/standorte',wissen:'/wissen',kkhub:'/krankenkassen',krankenkassen:'/krankenkassen',partnerpraxen:'/partnerpraxen',kontakt:'/kontakt'};
   var sub={therapie:'/therapien/',symptom:'/beschwerden/',standort:'/standorte/',wissen:'/wissen/'};
-  window.location.href = (id && sub[page]) ? sub[page]+id : (direct[page] || '/'+page);
+  var url = (id && sub[page]) ? sub[page]+id : (direct[page] || '/'+page);
+  if(url.indexOf('/')===0 && !url.endsWith('/')) url += '/'; // canonical trailing-slash form
+  window.location.href = url;
 }
 
 function drawerOpen(){

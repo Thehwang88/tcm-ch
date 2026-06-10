@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { title, description = '', path, schema, noindex = false, turnstile = false } = Astro.props;
-const canonical = new URL(path, site.url).href;
+const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const year = 2026;
 ---

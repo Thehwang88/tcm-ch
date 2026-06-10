@@ -1,6 +1,12 @@
-/standorte/winterthur  /standorte/winterthur-muenzgasse  301
+# --- 301s (must stay ABOVE the catch-all) ---
+/standorte/winterthur      /standorte/winterthur-muenzgasse/  301
 /krankenkasse              /krankenkassen/        301
 /krankenkasse/*            /krankenkassen/:splat  301
 /zuerich-longevity         /                      301
 /zuerich-longevity/*       /                      301
-/*    /index.html   200
+
+# 410 doorway prunes (beschwerden/therapien/wissen × city combos) are handled by the
+# scoped Pages Functions in functions/*/[[path]].js — independent of this file.
+
+# --- catch-all: real 404 (MUST be last; static routes + 301s + 410 functions win first) ---
+/*    /404.html   404

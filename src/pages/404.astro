@@ -1,0 +1,25 @@
+---
+// Real 404 page — served (HTTP 404) for unmatched routes via _redirects "/* /404.html 404".
+// Branded with the shared DE header + footer; noindex.
+import LayoutDe from '../layouts/LayoutDe.astro';
+---
+<LayoutDe
+  title="Seite nicht gefunden – TCM.ch"
+  description="Diese Seite existiert nicht (mehr). Finde Beschwerden, Behandlungen und unsere TCM.ch Kliniken über die Navigation."
+  path="/404/"
+  noindex={true}
+>
+  <section style="max-width:680px;margin:0 auto;padding:96px 24px;text-align:center">
+    <div style="font-family:var(--font-sans,sans-serif);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue,#2D9B6F)">Fehler 404</div>
+    <h1 style="font-family:var(--font-sans,sans-serif);font-size:34px;font-weight:800;color:var(--ink,#0a0a0a);margin:12px 0 14px;line-height:1.15">Diese Seite gibt es nicht (mehr).</h1>
+    <p style="font-size:16px;line-height:1.6;color:var(--mid,#555);margin:0 0 28px">
+      Der Link ist veraltet oder falsch. Hier geht es weiter:
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="/" style="display:inline-flex;align-items:center;justify-content:center;background:var(--blue,#2D9B6F);color:#fff;font-weight:600;text-decoration:none;padding:13px 24px;border-radius:50px">Zur Startseite</a>
+      <a href="/beschwerden/" style="display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border,#e5e5e5);color:var(--ink,#0a0a0a);font-weight:600;text-decoration:none;padding:13px 24px;border-radius:50px">Beschwerden</a>
+      <a href="/standorte/" style="display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border,#e5e5e5);color:var(--ink,#0a0a0a);font-weight:600;text-decoration:none;padding:13px 24px;border-radius:50px">Standorte</a>
+      <a href="/kontakt/" style="display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border,#e5e5e5);color:var(--ink,#0a0a0a);font-weight:600;text-decoration:none;padding:13px 24px;border-radius:50px">Kontakt</a>
+    </div>
+  </section>
+</LayoutDe>

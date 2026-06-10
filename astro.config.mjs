@@ -1,12 +1,11 @@
 import { defineConfig } from 'astro/config';
 
-// Staged migration shell:
-// - Astro owns /en/* (and future ported routes), built to dist/.
-// - The DE SPA lives verbatim in public/ (public/index.html -> dist/index.html).
-// - No src/pages/index.astro => Astro never emits dist/index.html, so the SPA root survives.
-// - Sitemap stays manual (public/sitemap.xml) — no @astrojs/sitemap integration.
+// Astro now owns the whole site (DE + EN). Canonical URL form is trailing-slash
+// (matches Cloudflare Pages, which 308-redirects no-slash -> slash). Sitemap is
+// generated from the built routes (scripts/gen-sitemap.mjs) to match exactly.
 export default defineConfig({
   site: 'https://tcm.ch',
   output: 'static',
+  trailingSlash: 'always',
   build: { format: 'directory' },
 });

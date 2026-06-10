@@ -16,7 +16,7 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description, path, body, schema, noindex = false } = Astro.props;
-const canonical = new URL(path, site.url).href;
+const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
