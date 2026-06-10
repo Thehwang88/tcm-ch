@@ -1,179 +1,23 @@
 ---
-import LayoutDe from '../../layouts/LayoutDe.astro';
-import { site } from '../../data/site';
-import { beschwerden, beschwerdeBySlug, REVIEWED_DATE } from '../../data/beschwerden';
+// /beschwerden/[slug] — faithful 1:1 reproduction of each live SPA symptom leaf
+// (#page-symptom), captured per-slug. Per-slug content (sidebar "hilft bei", related
+// therapies, FAQ, "Behandlung in deiner Nähe") is baked into each captured file.
+import SpaPage from '../../layouts/SpaPage.astro';
 
 export function getStaticPaths() {
-  return beschwerden.map((b) => ({ params: { slug: b.slug }, props: { b } }));
+  const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
+  return Object.keys(leaves).map((p) => {
+    const slug = p.split('/').pop().replace('.html', '');
+    return { params: { slug }, props: { body: leaves[p] } };
+  });
 }
 
-const { b } = Astro.props;
-const data = b ?? beschwerdeBySlug(Astro.params.slug as string)!;
-
-const path = `/beschwerden/${data.slug}`;
-const url = new URL(path, site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich interessiere mich für ${data.name}.`)}`;
-
-// ── JSON-LD: MedicalWebPage + (FAQPage if any) + BreadcrumbList ──
-const medicalLd = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalWebPage',
-  name: data.title,
-  description: data.metaDesc,
-  url,
-  inLanguage: 'de-CH',
-  lastReviewed: REVIEWED_DATE,
-  about: { '@type': 'MedicalCondition', name: data.conditionName },
-  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
-  publisher: {
-    '@type': 'MedicalOrganization',
-    name: 'TCM.ch',
-    url: 'https://tcm.ch/',
-    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' },
-  },
-};
-const faqLd = data.faqs.length > 0 ? {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  inLanguage: 'de-CH',
-  mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-} : null;
-const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
-    { '@type': 'ListItem', position: 2, name: 'Beschwerden', item: 'https://tcm.ch/beschwerden' },
-    { '@type': 'ListItem', position: 3, name: data.name, item: url },
-  ],
-};
-const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+const { slug } = Astro.params;
+const body = Astro.props.body;
+const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+const name = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/\s+/g, ' ').trim() : slug;
+const title = `${name} – TCM-Behandlung bei TCM.ch`;
+const description = `${name} mit TCM behandeln: Ursachen, Symptome und passende Behandlung. EMR-/ASCA-anerkannt, an 12 Standorten. Krankenkasse 80–100 % über die Zusatzversicherung.`;
+const schema = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url: `https://tcm.ch/beschwerden/${slug}`, inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } };
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
-  <section class="hero">
-    <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">TCM.ch</a> <span>/</span> <a href="/beschwerden">Beschwerden</a> <span>/</span> <span>{data.name}</span>
-      </nav>
-      <div class="eyebrow">Beschwerde · TCM.ch</div>
-      <h1>{data.name}</h1>
-      <p class="lead">{data.lead}</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
-        <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp schildern</a>
-      </div>
-      <div class="trust">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-        EMR-/ASCA-anerkannte Therapeut:innen · in der Regel über die Zusatzversicherung abrechenbar
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <article class="prose">
-        <div class="kb-body" set:html={data.bodyHtml} />
-
-        {data.faqs.length > 0 && (
-          <>
-            <h2>Häufige Fragen</h2>
-            <div class="faq">
-              {data.faqs.map((f) => (
-                <details>
-                  <summary>{f.q}</summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </>
-        )}
-
-        <div class="cta-card">
-          <div class="cta-card-title">{data.name} gezielt angehen?</div>
-          <p>Schildere uns kurz dein Anliegen — wir empfehlen dir die passende Praxis und Methode. Ehrlich, ohne Druck.</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
-            <a class="btn btn--ghost" href="/standorte">Standort in deiner Nähe</a>
-          </div>
-        </div>
-
-        <div class="xlinks">
-          {data.related.length > 0 && (
-            <div class="xlink-group">
-              <strong>Ähnliche Beschwerden</strong>
-              {data.related.map((r) => <a href={`/beschwerden/${r.slug}`}>{r.label}</a>)}
-            </div>
-          )}
-          {data.therapies.length > 0 && (
-            <div class="xlink-group">
-              <strong>Passende Therapien</strong>
-              {data.therapies.map((t) => <a href={`/therapien/${t.slug}`}>{t.label}</a>)}
-            </div>
-          )}
-          <div class="xlink-group">
-            <strong>Praxen</strong>
-            <a href="/standorte">Standort in deiner Nähe finden →</a>
-          </div>
-        </div>
-
-        <p class="disclaimer">
-          Dieser Beitrag dient der Information und ersetzt keine ärztliche Beratung. Verläufe sind individuell,
-          eine Heilung wird nicht versprochen. Bei starken, plötzlichen oder zunehmenden Beschwerden suche eine
-          Ärztin oder einen Arzt auf.
-        </p>
-      </article>
-    </div>
-  </section>
-</LayoutDe>
-
-<style>
-  .crumbs { font-size: 13.5px; color: var(--muted); margin: 0 0 14px; }
-  .crumbs a { color: var(--blue); text-decoration: none; font-weight: 600; }
-  .crumbs a:hover { text-decoration: underline; }
-  .crumbs span { margin: 0 2px; }
-  .hero .lead { max-width: 660px; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
-  .trust { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 13.5px; color: var(--mid); }
-  .trust svg { color: var(--blue); flex-shrink: 0; }
-
-  .prose { max-width: 760px; }
-
-  /* Rendered article body (set:html from beschwerden.ts). */
-  .kb-body :global(h2) { font-size: 26px; font-weight: 800; color: var(--ink); margin: 40px 0 14px; letter-spacing: var(--tracking-heading); }
-  .kb-body :global(h2:first-child) { margin-top: 0; }
-  .kb-body :global(h3) { font-size: 20px; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
-  .kb-body :global(p) { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .kb-body :global(li) { margin: 0 0 10px; }
-  .kb-body :global(strong) { color: var(--ink); }
-  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
-  .kb-body :global(a:hover) { text-decoration: underline; }
-  .kb-body :global(em) { font-style: italic; }
-  /* "Häufige Symptome" checklist (cp-sx-grid) carried over from the SPA content. */
-  .kb-body :global(.cp-sx-grid) { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0 0 18px; list-style: none; padding: 0; }
-  .kb-body :global(.cp-sx-item) { display: flex; align-items: flex-start; gap: 9px; font-size: 15.5px; color: var(--mid); }
-  .kb-body :global(.cp-sx-dot) { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); margin-top: 7px; flex-shrink: 0; }
-  @media (max-width: 600px) { .kb-body :global(.cp-sx-grid) { grid-template-columns: 1fr; } }
-
-  .faq { margin-top: 4px; }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
-
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 36px 0 0; }
-  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
-
-  .xlinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border); padding-top: 24px; margin-top: 36px; }
-  .xlink-group { display: flex; flex-direction: column; gap: 8px; }
-  .xlink-group strong { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .xlink-group a { color: var(--blue); font-weight: 600; font-size: 14.5px; text-decoration: none; }
-  .xlink-group a:hover { text-decoration: underline; }
-
-  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; margin-top: 24px; }
-
-  @media (max-width: 700px) { .xlinks { grid-template-columns: 1fr; gap: 22px; } }
-</style>
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={body} schema={schema} />
