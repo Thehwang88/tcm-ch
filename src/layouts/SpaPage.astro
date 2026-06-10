@@ -1,0 +1,59 @@
+---
+// Reusable layout for faithful 1:1 reproductions of live SPA pages.
+// Renders: shared DeHeader + the captured SPA page body (verbatim) + shared header.js/home.js.
+// Full SPA CSS via /home.css; Turnstile env-gated. Used for the rich hub/leaf pages.
+import DeHeader from '../components/DeHeader.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  body: string;       // captured SPA page HTML (with __TURNSTILE_SITEKEY__ tokens)
+  schema?: object;
+  noindex?: boolean;
+}
+const { title, description, path, body, schema, noindex = false } = Astro.props;
+const canonical = new URL(path, site.url).href;
+
+const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
+const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+---
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/home.css" />
+    <script is:inline>document.documentElement.classList.add('js','ready');</script>
+    <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}</style>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={site.ogImage} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
+  </head>
+  <body>
+    <DeHeader />
+    <Fragment set:html={html} />
+    <script src="/header.js" is:inline defer></script>
+    <script src="/home.js" is:inline defer></script>
+  </body>
+</html>
