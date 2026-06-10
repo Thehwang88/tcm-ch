@@ -1,0 +1,134 @@
+---
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { beschwerden } from '../../data/beschwerden';
+
+const path = '/beschwerden';
+const url = new URL(path, site.url).href;
+const title = 'Beschwerden – TCM-Behandlung in der Schweiz';
+const description =
+  'Die häufigsten Beschwerden, die wir mit TCM behandeln – von Rückenschmerzen über Migräne bis Kinderwunsch. EMR-/ASCA-anerkannt, an 12 Standorten in der Deutschschweiz.';
+
+// stable alphabetical order
+const items = [...beschwerden].sort((a, b) => a.name.localeCompare(b.name, 'de'));
+
+const collectionLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Beschwerden',
+  description,
+  url,
+  inLanguage: 'de-CH',
+  isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: items.length,
+    itemListElement: items.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: b.name,
+      url: new URL(`/beschwerden/${b.slug}`, site.url).href,
+    })),
+  },
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Beschwerden', item: url },
+  ],
+};
+const schema = [collectionLd, breadcrumbLd];
+---
+<LayoutDe title={`${title} | TCM.ch`} description={description} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap hub-hero">
+      <div class="eyebrow">Beschwerden · TCM.ch</div>
+      <h1>Beschwerden, die wir behandeln</h1>
+      <p class="lead">{description}</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
+        <a class="btn btn--ghost" href="/standorte">Standorte ansehen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="hub-grid">
+        {items.map((b) => (
+          <a class="hub-card" href={`/beschwerden/${b.slug}`}>
+            <span class="hub-name">{b.name}</span>
+            <span class="hub-go">Mehr erfahren <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+
+      <p class="hub-foot">
+        Nicht sicher, was zu dir passt? <a href="/kontakt">Schildere uns kurz deine Situation</a> –
+        wir empfehlen dir die passende Praxis und Methode.
+      </p>
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .hub-hero { max-width: 720px; }
+  .hero .lead { max-width: 640px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
+
+  /* Equal-height, aligned card grid (standort-card treatment). */
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    grid-auto-rows: 1fr;
+  }
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 18px 18px 16px;
+    text-decoration: none;
+    background: var(--white);
+    transition: border-color var(--t-fast) ease, box-shadow var(--t-fast) ease, transform var(--t-fast) ease;
+  }
+  .hub-card:hover {
+    border-color: var(--blue);
+    box-shadow: var(--sh-card);
+    transform: translateY(-2px);
+  }
+  .hub-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    min-height: 2.5em; /* reserve 2 lines so 1- and 2-line names align */
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .hub-go {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  .hub-foot {
+    margin-top: 32px;
+    font-size: 15px;
+    color: var(--mid);
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  .hub-foot a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .hub-foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 980px) { .hub-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+</style>
