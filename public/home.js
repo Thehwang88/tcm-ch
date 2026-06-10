@@ -214,3 +214,7 @@ el.classList.remove('open');
 document.body.style.overflow = '';
 setTimeout(function(){ window.scrollTo(0, document.body._karSY || 0); }, 460);
 }
+
+
+/* therapie-leaf hero CTA -> scroll to the inline contact form */
+function therapieScrollToForm(){ var el = document.querySelector("#page-therapie .contact-section-inline .inline-form-card") || document.querySelector("#page-therapie .contact-section-inline") || document.querySelector(".inline-form-card"); if(el) el.scrollIntoView({behavior:"smooth", block:"center"}); }
