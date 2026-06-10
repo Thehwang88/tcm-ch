@@ -1,0 +1,8 @@
+---
+import DocPage from '../components/DocPage.astro';
+import html from '../data/legal/agb.html?raw';
+const schema = {
+  '@context': 'https://schema.org', '@type': 'WebPage', name: 'Allgemeine Geschäftsbedingungen', url: 'https://tcm.ch/agb', inLanguage: 'de-CH',
+};
+---
+<DocPage title="AGB – Allgemeine Geschäftsbedingungen | TCM.ch" description="Allgemeine Geschäftsbedingungen von TCM.ch." path="/agb" html={html} schema={schema} />

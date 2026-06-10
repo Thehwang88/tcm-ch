@@ -1,0 +1,8 @@
+---
+import DocPage from '../components/DocPage.astro';
+import html from '../data/legal/partnerpraxen.html?raw';
+const schema = {
+  '@context': 'https://schema.org', '@type': 'WebPage', name: 'Partnerpraxen', url: 'https://tcm.ch/partnerpraxen', inLanguage: 'de-CH',
+};
+---
+<DocPage title="Partnerpraxen – Qualifizierte Neupatienten für deine TCM-Praxis | TCM.ch" description="TCM.ch baut Stadt für Stadt ein selektives Partnernetzwerk auf – eine Praxis pro Region. Qualifizierte Neupatienten ohne Fixkosten und ohne Werbebudget." path="/partnerpraxen" html={html} schema={schema} />

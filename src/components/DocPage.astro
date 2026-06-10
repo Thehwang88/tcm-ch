@@ -1,0 +1,41 @@
+---
+// Reusable document page: shared header/footer/tokens + verbatim HTML content via set:html.
+// Used for the legal pages (Impressum/AGB/Datenschutz, byte-exact) and Partnerpraxen.
+import LayoutDe from '../layouts/LayoutDe.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  html: string;
+  schema?: object;
+  noindex?: boolean;
+}
+const { title, description = '', path, html, schema, noindex = false } = Astro.props;
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} noindex={noindex}>
+  <section class="section">
+    <div class="wrap">
+      <article class="doc-prose" set:html={html} />
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .doc-prose { max-width: 820px; }
+  .doc-prose :global(h1) { font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.15; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 24px; }
+  .doc-prose :global(h2) { font-size: 24px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .doc-prose :global(h3) { font-size: 19px; font-weight: 700; color: var(--ink); margin: 26px 0 10px; }
+  .doc-prose :global(h4) { font-size: 16px; font-weight: 700; color: var(--ink); margin: 20px 0 8px; }
+  .doc-prose :global(p) { font-size: 16.5px; line-height: 1.65; color: var(--mid); margin: 0 0 16px; }
+  .doc-prose :global(ul), .doc-prose :global(ol) { font-size: 16.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .doc-prose :global(li) { margin: 0 0 9px; }
+  .doc-prose :global(strong) { color: var(--ink); }
+  .doc-prose :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .doc-prose :global(a:hover) { text-decoration: underline; }
+  .doc-prose :global(em) { font-style: italic; }
+  .doc-prose :global(table) { width: 100%; border-collapse: collapse; margin: 0 0 18px; font-size: 15px; }
+  .doc-prose :global(th), .doc-prose :global(td) { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
+  .doc-prose :global(th) { background: var(--surface); font-weight: 700; color: var(--ink); }
+  .doc-prose :global(hr) { border: 0; border-top: 1px solid var(--border); margin: 28px 0; }
+</style>
