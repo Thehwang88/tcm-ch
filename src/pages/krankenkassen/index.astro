@@ -1,123 +1,16 @@
 ---
-import LayoutDe from '../../layouts/LayoutDe.astro';
-import { site } from '../../data/site';
-import { krankenkassen, pillarFaq } from '../../data/krankenkassen';
+// /krankenkassen — faithful 1:1 reproduction of the live SPA #page-kkhub:
+// "Was zahlt deine Krankenkasse", "Krankenkassen im Vergleich", FAQ, "Behandlung in deiner Nähe".
+import SpaPage from '../../layouts/SpaPage.astro';
+import body from '../../data/krankenkassen-body.html?raw';
 
-const path = '/krankenkassen';
-const url = new URL(path, site.url).href;
-const title = 'Krankenkasse & TCM – was die Zusatzversicherung übernimmt';
+const title = 'Akupunktur & TCM: Kosten und Krankenkasse | TCM.ch';
 const description =
-  'Welche Schweizer Zusatzversicherungen Akupunktur und TCM übernehmen – Überblick über 29 Kassen, Deckung, Produkte und ob eine ärztliche Verordnung nötig ist. EMR-/ASCA-anerkannt.';
-
-const items = [...krankenkassen].sort((a, b) => a.name.localeCompare(b.name, 'de'));
-const registerLabel = (r: string) => (r === 'both' ? 'EMR + ASCA' : r === 'ASCA' ? 'ASCA' : 'EMR');
-
-const faqLd = pillarFaq.length > 0 ? {
-  '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${url}#faq`,
-  mainEntity: pillarFaq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-} : null;
-const collectionLd = {
-  '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Krankenkassen & TCM', description, url, inLanguage: 'de-CH',
+  'Was die Schweizer Zusatzversicherung an Akupunktur und TCM übernimmt – Vergleich der Krankenkassen, Deckung und ob eine ärztliche Verordnung nötig ist. EMR-/ASCA-anerkannt.';
+const schema = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description,
+  url: 'https://tcm.ch/krankenkassen', inLanguage: 'de-CH',
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
-  mainEntity: { '@type': 'ItemList', numberOfItems: items.length, itemListElement: items.map((k, i) => ({ '@type': 'ListItem', position: i + 1, name: k.name })) },
 };
-const breadcrumbLd = {
-  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
-    { '@type': 'ListItem', position: 2, name: 'Krankenkassen', item: url },
-  ],
-};
-const schema = [collectionLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 ---
-<LayoutDe title={`${title} | TCM.ch`} description={description} path={path} schema={schema}>
-  <section class="hero">
-    <div class="wrap kk-hero">
-      <div class="eyebrow">Krankenkasse · TCM.ch</div>
-      <h1>Zahlt deine Krankenkasse Akupunktur und TCM?</h1>
-      <p class="lead">In der Regel ja – über die <strong>Zusatzversicherung für Komplementärmedizin</strong>. Alle TCM.ch-Therapeut:innen sind EMR- und ASCA-anerkannt. Hier findest du, was die einzelnen Kassen übernehmen.</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="/kontakt">Deckung prüfen lassen</a>
-        <a class="btn btn--ghost" href="/standorte">Standorte ansehen</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="kk-grid">
-        {items.map((k) => (
-          <article class="kk-card">
-            <div class="kk-head">
-              <h2 class="kk-name">{k.name}</h2>
-              <span class="kk-reg">{registerLabel(k.register)}</span>
-            </div>
-            <p class="kk-deckung">{k.deckung}</p>
-            {k.produkte && k.produkte.length > 0 && (
-              <div class="kk-prod">
-                <span class="kk-prod-label">Produkte</span>
-                <ul>{k.produkte.map((p) => <li>{p}</li>)}</ul>
-              </div>
-            )}
-            <div class="kk-verordnung" data-need={k.verordnung ? 'yes' : 'no'}>
-              {k.verordnung ? 'Ärztliche Verordnung nötig' : 'Keine ärztliche Verordnung nötig'}
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {pillarFaq.length > 0 && (
-        <div class="kk-faq-block">
-          <h2>Häufige Fragen</h2>
-          <div class="faq">
-            {pillarFaq.map((f) => (
-              <details><summary>{f.q}</summary><p>{f.a}</p></details>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <p class="kk-foot">
-        Angaben ohne Gewähr – verbindlich ist immer deine Police. <a href="/kontakt">Wir prüfen deine Deckung kostenlos</a>,
-        bevor du startest.
-      </p>
-    </div>
-  </section>
-</LayoutDe>
-
-<style>
-  .kk-hero { max-width: 720px; }
-  .hero .lead { max-width: 660px; }
-  .hero .lead strong { color: var(--ink); }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
-
-  .kk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; grid-auto-rows: 1fr; }
-  .kk-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; background: var(--white); }
-  .kk-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
-  .kk-name { font-size: 18px; font-weight: 800; color: var(--ink); margin: 0; }
-  .kk-reg { flex-shrink: 0; background: var(--blue-light); color: var(--blue-dark); font-size: 11px; font-weight: 700; letter-spacing: .03em; padding: 4px 9px; border-radius: var(--r-pill); }
-  .kk-deckung { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 14px; }
-  .kk-prod { margin: 0 0 14px; }
-  .kk-prod-label { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .kk-prod ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--mid); }
-  .kk-prod li { margin: 0 0 4px; }
-  .kk-verordnung { margin-top: auto; font-size: 13px; font-weight: 600; padding-top: 12px; border-top: 1px solid var(--border); }
-  .kk-verordnung[data-need='no'] { color: var(--blue-dark); }
-  .kk-verordnung[data-need='yes'] { color: var(--mid); }
-
-  .kk-faq-block { margin-top: 48px; max-width: 760px; }
-  .kk-faq-block h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 0 0 16px; letter-spacing: var(--tracking-heading); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
-
-  .kk-foot { margin-top: 36px; font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
-  .kk-foot a { color: var(--blue); font-weight: 600; text-decoration: none; }
-  .kk-foot a:hover { text-decoration: underline; }
-
-  @media (max-width: 980px) { .kk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 640px) { .kk-grid { grid-template-columns: 1fr; } }
-</style>
+<SpaPage title={title} description={description} path="/krankenkassen" body={body} schema={schema} />
