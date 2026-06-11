@@ -25,6 +25,8 @@ const WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-P
     .wa-fab { width: 48px; height: 48px; right: 24px; bottom: 24px; }
     .wa-fab svg { width: 25px; height: 25px; }
   }
+  /* Mobile uses the sticky bottom CTA bar instead (no collision) */
+  @media (max-width: 767px) { .wa-fab { display: none; } }
   @media (prefers-reduced-motion: reduce) {
     .wa-fab { transition: opacity .2s ease; }
     .wa-fab.is-hidden { transform: none; }

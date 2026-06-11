@@ -4286,3 +4286,8 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   #home-content .hero-action{margin-top:14px !important}
   #home-content .hero-mobile-img{order:2;margin-top:22px}
 }
+/* Hero standort selector: hidden on mobile (home hero only; Standort pages keep their own intent) */
+@media(max-width:767px){
+  #home-content .hero-action-label,
+  #home-content .hero-standort{display:none !important}
+}
