@@ -4292,6 +4292,6 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   #home-content .hero-standort{display:none !important}
   /* tighten the top offset above the headline (mobile only) — shift hero up, reveal image */
   #home-content .hero-bg{padding-top:0 !important}
-  #home-content .hero{padding-top:8px !important}
+  #home-content .hero{padding-top:18px !important}
   #home-content .hero-left{padding-top:0 !important}
 }
