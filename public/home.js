@@ -219,6 +219,11 @@ setTimeout(function(){ window.scrollTo(0, document.body._karSY || 0); }, 460);
 /* therapie-leaf hero CTA -> scroll to the inline contact form */
 function therapieScrollToForm(){ var el = document.querySelector("#page-therapie .contact-section-inline .inline-form-card") || document.querySelector("#page-therapie .contact-section-inline") || document.querySelector(".inline-form-card"); if(el) el.scrollIntoView({behavior:"smooth", block:"center"}); }
 
+/* "Tag der offenen Tür" event modal (St. Gallen RSVP banner). Modal markup lives on the page; no-ops elsewhere. */
+function sgEventOpen(){ var m = document.getElementById('sg-event-modal'); if(!m) return; m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+function sgEventClose(){ var m = document.getElementById('sg-event-modal'); if(!m) return; m.style.display = 'none'; document.body.style.overflow = ''; }
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') sgEventClose(); });
+
 /* Compact trust checklist directly above the contact form — non-home pages only.
    Single source: every SPA leaf/hub form inherits it (home keeps the full offer section). */
 (function(){
