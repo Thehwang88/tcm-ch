@@ -58,7 +58,7 @@
   --pad-x: 40px;
   --section-y: 96px;
   --section-y-sm: 48px;
-  --section-py: 112px;      /* unified inter-section rhythm (responsive below) */
+  --section-py: 80px;       /* unified inter-section rhythm (responsive below) — tightened ~28% */
 
   /* ── Radius scale ──────────────────────────────────────── */
   --r-pill: 999px;
@@ -88,5 +88,5 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Responsive section rhythm (from the spacing pass) */
-@media (max-width: 900px) { :root { --section-py: 80px; } }
-@media (max-width: 600px) { :root { --section-py: 56px; } }
+@media (max-width: 900px) { :root { --section-py: 58px; } }
+@media (max-width: 600px) { :root { --section-py: 40px; } }
