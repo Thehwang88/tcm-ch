@@ -4295,3 +4295,26 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   #home-content .hero{padding-top:18px !important}
   #home-content .hero-left{padding-top:0 !important}
 }
+
+/* Pain section cards (kennst) only — compact, consistent type, single shared card scale */
+#home-content .kennst-section .kennst-grid{max-width:980px;margin:0 auto;align-items:stretch}
+#home-content .kennst-section .kennst-grid>div{
+  height:100% !important;                   /* equal height across all 3 */
+  padding:22px !important;
+  gap:10px !important;
+  border:1px solid var(--border) !important;
+  box-shadow:var(--sh-sm) !important;       /* subtle: light shadow + hairline border, neither heavy */
+  border-radius:var(--r-card) !important;
+}
+#home-content .kennst-section .kennst-grid>div h3{
+  font-family:var(--font-sans) !important;  /* Figtree, heading font */
+  font-weight:700 !important;
+  letter-spacing:normal !important;
+  color:#0d0d0d !important;
+}
+#home-content .kennst-section .kennst-grid>div p{
+  font-family:var(--font-sans) !important;  /* standard body font/weight */
+  font-weight:400 !important;
+  letter-spacing:normal !important;
+  color:#374151 !important;
+}
