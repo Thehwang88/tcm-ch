@@ -4496,3 +4496,6 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 .nav-lang{min-height:44px;display:inline-flex;align-items:center;box-sizing:border-box;padding:0 14px !important}
 .drw-close{width:44px;height:44px}
 .drw-links a,.drw-links button{min-height:44px;display:flex;align-items:center}
+
+/* /krankenkassen hero: clear the 68px sticky mobile header (page lacks the header offset) */
+@media(max-width:768px){.kk-hero{padding-top:64px}}
