@@ -93,8 +93,8 @@ export const commonConditions: { id: string; label: string }[] = [
 // photo. No new files, no duplicates.
 export const locationImages: Record<string, { src: string; alt: string }> = {
   'st-gallen':              { src: '/images/img-67b9921801f9.webp', alt: 'TCM.ch practitioners at the St. Gallen clinic' },
-  'rorschach':              { src: '/images/img-3fdfdee558f8.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Rorschach' },
-  'wil':                    { src: '/images/img-3fdfdee558f8.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Wil' },
+  'rorschach':              { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Rorschach' },
+  'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Wil' },
   'zuerich-city':           { src: '/images/img-376c0c830c84.webp', alt: 'TCM.ch treatment room with a view in Zürich' },
   'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
   'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
