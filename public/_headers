@@ -10,6 +10,22 @@
 /
   Cache-Control: no-cache
 
+# Non-hashed CSS/JS change often (unlike content-hashed /_astro/*), so revalidate
+# every load — ETag still yields cheap 304s, but edits show on a normal refresh
+# instead of being stuck behind the default 4h browser cache.
+/home.css
+  Cache-Control: no-cache
+/header.css
+  Cache-Control: no-cache
+/footer.css
+  Cache-Control: no-cache
+/home.js
+  Cache-Control: no-cache
+/header.js
+  Cache-Control: no-cache
+/styles/tokens.css
+  Cache-Control: no-cache
+
 # Preview-Deploys (*.pages.dev) nicht indexieren
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
