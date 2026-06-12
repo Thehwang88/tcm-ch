@@ -100,3 +100,8 @@ body > main, body > #home-content{padding-top:68px}
 #navCtaBtn.nav-cta{background:transparent!important;color:#0d0d0d!important;border:1.5px solid rgba(13,13,13,.22)!important;font-weight:600!important;box-shadow:none!important;transition:background .2s ease,border-color .2s ease}
 #navCtaBtn.nav-cta:hover{background:rgba(13,13,13,.06)!important;border-color:rgba(13,13,13,.4)!important}
 @media(max-width:768px){body > main, body > #home-content{padding-top:60px}}
+/* ── Mobile audit B1: touch targets >=44px tap area ── */
+.nav-menu-btn{width:44px;height:44px;min-width:44px;min-height:44px}
+.nav-lang{min-height:44px;display:inline-flex;align-items:center;box-sizing:border-box;padding:0 14px !important}
+.drw-close{width:44px;height:44px}
+.drw-links a,.drw-links button{min-height:44px;display:flex;align-items:center}

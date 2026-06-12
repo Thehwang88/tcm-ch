@@ -90,3 +90,16 @@ function closeDrawer()          { history.back(); }
     else { window.location.href = '/kontakt'; }
   });
 })();
+/* Mobile audit B2: flag wide tables that actually overflow so CSS can show a
+   horizontal-scroll hint (fade + chevron). Toggles on load and resize. */
+(function(){
+  function update(){
+    document.querySelectorAll('.kk-table-wrap, .table-wrap').forEach(function(w){
+      w.classList.toggle('is-scrollx', w.scrollWidth - w.clientWidth > 2);
+    });
+  }
+  if (document.readyState !== 'loading') update();
+  else document.addEventListener('DOMContentLoaded', update);
+  window.addEventListener('load', update);
+  window.addEventListener('resize', update);
+})();

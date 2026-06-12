@@ -241,7 +241,19 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   .prose strong { color: var(--ink); }
   .note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 18px 22px; margin: 0 0 8px; color: var(--mid); font-size: 16px; }
 
-  .table-wrap { overflow-x: auto; margin: 8px 0 4px; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 4px; position: relative; }
+  /* Mobile audit B2: horizontal-scroll hint (header.js toggles .is-scrollx) */
+  .table-wrap.is-scrollx::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 40px;
+    background: linear-gradient(to right, rgba(255,255,255,0), #fff 80%);
+    pointer-events: none; z-index: 1;
+  }
+  .table-wrap.is-scrollx::before {
+    content: "\203A"; position: absolute; top: 6px; right: 7px; z-index: 2;
+    width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+    font: 700 18px/1 var(--font-sans); color: #fff; background: var(--blue);
+    border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,.18); pointer-events: none;
+  }
   .instruments, .results { width: 100%; border-collapse: collapse; font-size: 15px; }
   .instruments th, .instruments td, .results th, .results td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
   .instruments th, .results th { color: var(--ink); font-weight: 700; background: var(--surface); }
