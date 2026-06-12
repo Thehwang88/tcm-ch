@@ -4322,30 +4322,105 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   color:#374151 !important;
 }
 
-/* ── MOBILE HERO REDESIGN (≤1024px, mobile only — desktop ≥1025px untouched) ──
-   Headline-as-focal-point: no image above the fold, generous top spacing,
-   dominant headline owning the viewport, clear hierarchy below it. */
-@media(max-width:1024px){
-  /* 1. no hero image on mobile at all */
-  #home-content .hero-mobile-img{display:none !important}
-  /* 2. push the hero text block down from the nav (~2rem extra breathing room) */
-  #home-content .hero{padding-top:48px !important;align-items:start !important}
-  #home-content .hero-bg{align-items:flex-start !important}
-  #home-content .hero-left{padding-top:0 !important}
-  /* 3a. dominant headline line 1: +~15%, bold, dark navy, tight line-height */
-  #home-content .hero-left .hero-headline{
-    font-size:clamp(30px,8vw,39px) !important;
-    line-height:1.05 !important;
-    letter-spacing:-.025em !important;
-    color:#0F2438 !important;
-    font-weight:800 !important;
-    /* 4. bigger pause between headline block and supporting text */
-    margin-bottom:24px !important;
-  }
-  /* 3b. line 2: scales with line 1 (+~15%), italic, muted grey (= body text) */
-  #home-content .hero-left .hero-headline em{
-    font-style:italic !important;
-    color:#374151 !important;
-    line-height:1.05 !important;
-  }
+/* ── DE HOME HERO — matches the EN hero design system exactly ──
+   Single column, one uniform headline, one lead paragraph, stacked
+   primary+ghost CTAs, compact trust rows, image below. Values mirror
+   global.css .hero / .eyebrow / .btn / .hero-figure. Mobile + desktop. */
+
+/* containers: drop the two-column grid, bg image and full-viewport height */
+#home-content .hero-bg{
+  background:#fff !important;
+  background-image:none !important;
+  min-height:auto !important;
+  height:auto !important;
+  display:block !important;
+}
+#home-content .hero{
+  display:block !important;
+  grid-template-columns:none !important;
+  max-width:var(--max) !important;
+  margin:0 auto !important;
+  padding:64px 40px 56px !important;
+  min-height:auto !important;
+  height:auto !important;
+  width:100% !important;
+  background:transparent !important;
+}
+#home-content .hero-left{
+  display:block !important;
+  max-width:none !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  border:none !important;
+  box-shadow:none !important;
+  animation:none !important;
+}
+/* old right-column image is replaced by the figure below — hide everywhere */
+#home-content .hero-right,
+#home-content .hero-right-picker,
+#home-content .hero-right-img{display:none !important}
+
+/* eyebrow — EN .eyebrow (green, uppercase, letter-spaced) */
+#home-content .deh-eyebrow{
+  font-family:var(--font-sans);
+  font-size:11.5px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--blue);
+  margin:0 0 14px;display:block;
+}
+/* headline — EN .hero h1: one uniform block, no italic, no colour change */
+#home-content .deh-h1{
+  font-family:var(--font-sans);
+  font-size:var(--fs-hero);
+  font-weight:800;
+  line-height:var(--lh-tight);
+  letter-spacing:var(--tracking-hero);
+  color:#0D0D0D;
+  margin:0 0 16px;
+}
+/* body — EN .hero p.lead: one clean paragraph, single style */
+#home-content .deh-lead{
+  font-family:var(--font-sans);
+  font-size:var(--fs-sub);
+  color:#374151;
+  line-height:1.55;
+  max-width:660px;
+  margin:0 0 26px;
+  font-weight:400;
+}
+/* CTAs — EN .hero__cta + .btn / .btn--primary / .btn--ghost */
+#home-content .deh-cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
+#home-content .deh-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--font-sans);font-weight:700;font-size:15.5px;
+  padding:15px 26px;border-radius:14px;
+  text-decoration:none;cursor:pointer;border:none;letter-spacing:-.01em;
+  transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+#home-content .deh-btn--primary{background:var(--blue);color:#fff;box-shadow:var(--sh-btn)}
+#home-content .deh-btn--primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:var(--sh-btn-hover)}
+#home-content .deh-btn--primary:active{transform:translateY(0);box-shadow:var(--sh-btn)}
+#home-content .deh-btn--ghost{background:transparent;color:#0d0d0d;border:1.5px solid rgba(13,13,13,.22)}
+#home-content .deh-btn--ghost:hover{background:rgba(13,13,13,.06);border-color:rgba(13,13,13,.4)}
+/* compact trust rows under the buttons */
+#home-content .hero-checks{margin:0 0 10px !important}
+#home-content .hero-trust{margin:0 !important}
+/* image — EN .hero-figure */
+#home-content .deh-figure{
+  margin:30px 0 0;
+  border-radius:var(--r-hero);
+  overflow:hidden;
+  box-shadow:var(--sh-card);
+  background:var(--surface);
+}
+#home-content .deh-figure img{
+  display:block;width:100%;
+  height:clamp(220px,36vw,440px);
+  object-fit:cover;object-position:center;
+}
+
+/* responsive — EN reduces hero padding at its 820px breakpoint */
+@media(max-width:820px){
+  #home-content .hero{padding:40px 24px 40px !important}
 }
