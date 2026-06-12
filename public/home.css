@@ -4093,6 +4093,9 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 #home-content .hero-trust-dot{color:var(--border)}
 #home-content .hero-action-secondary button{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#545e6b;font-family:var(--font-sans);font-weight:500;padding:0}
 #home-content .hero-action-secondary button span{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+#home-content .hero-checks{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--font-sans);font-size:13px;font-weight:500;color:#374151;line-height:1.4}
+#home-content .hero-checks span{display:inline-flex;align-items:center;gap:6px}
+#home-content .hero-checks svg{flex-shrink:0}
 #home-content .hero-right-picker{position:relative}
 #home-content .hero-review-badge{position:absolute;left:18px;bottom:18px;z-index:2;display:flex;align-items:center;gap:11px;background:#fff;border-radius:var(--r-card);box-shadow:var(--sh-md);padding:13px 16px}
 #home-content .hero-review-badge .hrb-stars{color:#c9a96e;font-size:18px;line-height:1;flex-shrink:0}
