@@ -33,6 +33,8 @@ const deHref = enOnly ? null : (deHrefProp ?? new URL(PAIR_MAP_EN[path] ?? '/', 
     <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
     <HeadAnalytics />
     <link rel="stylesheet" href="/styles/tokens.css" />
+    <!-- Shared dark footer styles (Footer.astro renders SPA markup; LayoutDe loads this too). -->
+    <link rel="stylesheet" href="/footer.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
