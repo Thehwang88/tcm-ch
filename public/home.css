@@ -4456,3 +4456,17 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
     object-fit:cover !important;
   }
 }
+
+/* ── MOBILE AUDIT — category (a) fixes ─────────────────────────────────── */
+/* A1. iOS focus-zoom: every form control >=16px on phones so Safari doesn't
+   zoom the viewport when a field is focused (conversion forms sitewide). */
+@media(max-width:640px){
+  input, select, textarea{ font-size:16px !important; }
+}
+/* A2. Symptom-leaf "Auf einen Blick"/symptom grids are pinned to two columns
+   (line ~3952, 1fr 1fr !important) whose items can't shrink below their text,
+   forcing .content-body past the viewport so body text is clipped on the right
+   (body has overflow-x:hidden). Collapse them to one column on narrow phones. */
+@media(max-width:420px){
+  .cp-sx-grid, [class$="-sx-grid"], [class*="-sx-grid "]{ grid-template-columns:1fr !important; }
+}

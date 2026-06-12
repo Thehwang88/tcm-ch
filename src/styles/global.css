@@ -119,6 +119,8 @@ h1, h2, h3 {
 @media (max-width: 640px) {
   .field input, .field select, .field textarea { font-size: 16px; }
   .field input, .field select { min-height: 46px; }
+  /* catch any non-.field form control too (e.g. legal-page contact form) */
+  input, select, textarea { font-size: 16px; }
 }
 
 /* ── System rollout: EN article prose + FAQ accordions (override per-template scoped styles) ── */
