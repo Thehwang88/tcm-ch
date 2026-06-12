@@ -4434,7 +4434,7 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
     display:grid !important;
     grid-template-columns:1fr 1fr !important;
     gap:48px !important;
-    align-items:stretch !important;
+    align-items:center !important;   /* text + image vertically centered, balanced */
     padding:56px 40px !important;
   }
   #home-content .hero-left{
@@ -4444,11 +4444,15 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   }
   #home-content .deh-figure{
     margin:0 !important;
-    height:100% !important;
-    align-self:stretch;
+    /* fixed-height card that always fits the viewport under the 68px nav
+       (68 nav + 56 top + 56 bottom = 180); object-fit keeps it filled and
+       overflow:hidden + border-radius keep all 4 rounded corners visible */
+    height:clamp(420px, calc(100vh - 180px), 760px) !important;
+    align-self:center !important;
   }
   #home-content .deh-figure img{
     height:100% !important;
-    min-height:520px;
+    width:100% !important;
+    object-fit:cover !important;
   }
 }
