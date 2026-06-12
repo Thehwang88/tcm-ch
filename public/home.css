@@ -4321,3 +4321,31 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   letter-spacing:normal !important;
   color:#374151 !important;
 }
+
+/* ── MOBILE HERO REDESIGN (≤1024px, mobile only — desktop ≥1025px untouched) ──
+   Headline-as-focal-point: no image above the fold, generous top spacing,
+   dominant headline owning the viewport, clear hierarchy below it. */
+@media(max-width:1024px){
+  /* 1. no hero image on mobile at all */
+  #home-content .hero-mobile-img{display:none !important}
+  /* 2. push the hero text block down from the nav (~2rem extra breathing room) */
+  #home-content .hero{padding-top:48px !important;align-items:start !important}
+  #home-content .hero-bg{align-items:flex-start !important}
+  #home-content .hero-left{padding-top:0 !important}
+  /* 3a. dominant headline line 1: +~15%, bold, dark navy, tight line-height */
+  #home-content .hero-left .hero-headline{
+    font-size:clamp(30px,8vw,39px) !important;
+    line-height:1.05 !important;
+    letter-spacing:-.025em !important;
+    color:#0F2438 !important;
+    font-weight:800 !important;
+    /* 4. bigger pause between headline block and supporting text */
+    margin-bottom:24px !important;
+  }
+  /* 3b. line 2: scales with line 1 (+~15%), italic, muted grey (= body text) */
+  #home-content .hero-left .hero-headline em{
+    font-style:italic !important;
+    color:#374151 !important;
+    line-height:1.05 !important;
+  }
+}
