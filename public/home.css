@@ -4424,3 +4424,31 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 @media(max-width:820px){
   #home-content .hero{padding:40px 24px 40px !important}
 }
+
+/* desktop only — 50/50 split: text column left, image right at full hero
+   height. The figure is a direct child of .hero (sibling of .hero-left), so
+   it becomes the second grid column here, and on mobile (single column) it
+   still falls below the trust strip. */
+@media(min-width:1025px){
+  #home-content .hero{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:48px !important;
+    align-items:stretch !important;
+    padding:56px 40px !important;
+  }
+  #home-content .hero-left{
+    display:flex !important;
+    flex-direction:column;
+    justify-content:center;
+  }
+  #home-content .deh-figure{
+    margin:0 !important;
+    height:100% !important;
+    align-self:stretch;
+  }
+  #home-content .deh-figure img{
+    height:100% !important;
+    min-height:520px;
+  }
+}
