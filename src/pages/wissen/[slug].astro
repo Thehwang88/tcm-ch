@@ -75,8 +75,8 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         <div class="kb-body" set:html={data.bodyHtml} />
 
         <div class="cta-card">
-          <div class="cta-card-title">Migräne abklären lassen?</div>
-          <p>Schildere uns kurz deine Situation — wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.</p>
+          <div class="cta-card-title">{data.ctaTitle ?? 'Beschwerden abklären lassen?'}</div>
+          <p>Schildere uns kurz deine Situation – wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.</p>
           <div class="cta-row">
             <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
             <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
