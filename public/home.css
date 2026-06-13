@@ -1282,7 +1282,7 @@ p{color:#374151;line-height:1.6}
 /* Kräutertherapie feature card: show the FULL seed (no crop). object-fit:contain +
    the image's own dark-maroon frame bg so any letterbox blends seamlessly. */
 .kt-feature-img{background:#2c0f1c!important}
-.kt-feature-img img{object-fit:contain!important;object-position:center!important}
+.kt-feature-img img{object-fit:contain!important;object-position:center!important;height:100%!important}
 /* --- */
 
 @media(max-width:768px){
