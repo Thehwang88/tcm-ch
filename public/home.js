@@ -43,7 +43,7 @@ fetch('/api/anfrage', {
   headers:{'Content-Type':'application/json'},
   body: JSON.stringify(data)
 }).then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
-.then(function(){ if(card) card.innerHTML = okHTML; })
+.then(function(){ if(card){ card.innerHTML = okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
 .catch(function(){
   if(btn){ btn.disabled = false; btn.innerHTML = btn.dataset.label || 'Anfrage senden'; }
   if(window.turnstile && tsEl){ try{ window.turnstile.reset(tsEl); }catch(_){} }
