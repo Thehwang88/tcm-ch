@@ -4499,3 +4499,6 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 
 /* /krankenkassen hero: clear the 68px sticky mobile header (page lacks the header offset) */
 @media(max-width:768px){.kk-hero{padding-top:64px}}
+
+/* Standort hero (all 12, shared .sg-active): clear the 68px sticky mobile header so the heading is not cut off */
+@media(max-width:768px){#generic-premium-hero.sg-active,#zh-premium-hero.sg-active{padding-top:64px !important}}
