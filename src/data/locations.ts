@@ -48,7 +48,7 @@ export const clinics: Clinic[] = [
   { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
     street: 'Lindenstrasse 2/1', postalCode: '8604', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3923, lng: 8.6970 },
-    areaServed: ['Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
+    areaServed: ['Volketswil', 'Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
 
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
@@ -73,7 +73,7 @@ export const clinics: Clinic[] = [
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 },
-    areaServed: ['Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
+    areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 
   { id: 'rorschach', name: 'Rorschach', city: 'Rorschach', region: 'Lake Constance',
     street: 'Pestalozzistrasse 11', postalCode: '9400', phone: '+41 77 523 61 22',
