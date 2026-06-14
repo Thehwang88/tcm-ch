@@ -20,6 +20,8 @@ export interface Clinic {
   /** true = announced but not operating yet (no street / hours). */
   openingSoon?: boolean;
   openingNote?: string;
+  /** schema.org areaServed (cities/municipalities); only set where curated. */
+  areaServed?: string[];
 }
 
 export const clinics: Clinic[] = [
@@ -37,7 +39,8 @@ export const clinics: Clinic[] = [
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 } },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 },
+    areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
   { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
     street: 'Lindenstrasse 2/1', postalCode: '8604', phone: '+41 77 523 61 22',

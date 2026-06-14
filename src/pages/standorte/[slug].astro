@@ -33,6 +33,7 @@ if (clinic) {
   if (clinic.street) medClinic.address = { '@type': 'PostalAddress', streetAddress: clinic.street, postalCode: clinic.postalCode, addressLocality: clinic.city, addressCountry: 'CH' };
   if (clinic.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: clinic.geo.lat, longitude: clinic.geo.lng };
   if (clinic.openingHours?.length) medClinic.openingHours = clinic.openingHours;
+  if (clinic.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
 }
 const breadcrumb = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
