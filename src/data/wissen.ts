@@ -8,6 +8,129 @@ export interface WissenAuthor { name: string; role: string; bio: string }
 export interface Wissen { slug: string; title: string; metaDesc: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
 export const wissen: Wissen[] = [
   {
+    "slug": "akupunktur-bei-heuschnupfen",
+    "title": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
+    "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
+    "category": "Beschwerden verstehen",
+    "h1": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
+    "lead": "Die ehrliche Antwort: Es gibt für Heuschnupfen tatsächlich gute Studien zur Akupunktur, besser als bei vielen anderen Beschwerden. Sie zeigen einen messbaren, aber moderaten Effekt. Akupunktur ersetzt deine Notfallmedikation nicht, sie kann den Bedarf danach aber senken. Dieser Artikel erklärt dir, was die Forschung wirklich belegt, wann eine Behandlung Sinn ergibt und wann du besser zum Arzt gehst.",
+    "readingTime": "9 Min.",
+    "ctaTitle": "Heuschnupfen abklären lassen?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "lastReviewed": "2026-06-13",
+    "bodyHtml": "<p>Wenn im Frühling die Birken blühen oder im Sommer die Gräser, beginnt für viele dieselbe Routine: laufende Nase, juckende Augen, Niesattacken, ein dumpfer Kopf. Antihistaminika helfen, machen aber manche müde, und nicht jeder will sie über Wochen schlucken. Genau dann taucht oft die Frage auf, ob Akupunktur eine Alternative ist.</p><h2>Was bei Heuschnupfen im Körper passiert</h2><p>Heuschnupfen, medizinisch saisonale allergische Rhinitis, ist eine Überreaktion deines Immunsystems auf eigentlich harmlose Pollen. Dein Körper stuft Birken-, Gräser- oder Beifusspollen fälschlich als Bedrohung ein und schüttet Histamin aus. Die Folge kennst du: Die Schleimhäute in Nase und Augen schwellen an, jucken und sondern Sekret ab.</p><p>In der Schweiz ist etwa jede fünfte Person betroffen, und die Zahl steigt. Mit den wärmeren Jahren verlängert sich die Pollensaison, manche reagieren heute über Monate statt Wochen. Unbehandelt kann sich aus einem Heuschnupfen mit der Zeit ein allergisches Asthma entwickeln, der sogenannte Etagenwechsel. Das ist einer der Gründe, warum man die Beschwerden ernst nehmen und nicht nur wegdrücken sollte.</p><h2>Was die Forschung zeigt</h2><p>Die wichtigste Untersuchung ist die ACUSAR-Studie, geleitet von Benno Brinkhaus an der Charité Berlin und 2013 in den Annals of Internal Medicine veröffentlicht (Brinkhaus B et al., Ann Intern Med 2013;158:225-234). Es ist eine grosse, sauber gebaute Arbeit: 422 Patientinnen und Patienten mit nachgewiesener Pollenallergie wurden in drei Gruppen aufgeteilt. Eine erhielt echte Akupunktur plus Notfallmedikament bei Bedarf, eine eine Scheinakupunktur plus Medikament, die dritte nur das Medikament.</p><p>Das Ergebnis: Die echte Akupunktur-Gruppe berichtete über deutlich weniger Beschwerden und brauchte weniger Antihistaminika als beide Vergleichsgruppen. Eine spätere Auswertung bestätigte den geringeren Medikamentenbedarf (Adam D et al., Acupunct Med 2018). Bemerkenswert war auch, dass ein Teil des Effekts noch Monate nach der letzten Behandlung anhielt.</p><p>Wichtig ist die Einordnung, und hier bleibe ich ehrlich: Der Studienleiter selbst stufte die klinische Bedeutung als zurückhaltend ein, weil die Unterschiede zwischen den Gruppen zwar statistisch klar, in der Grösse aber moderat waren. Akupunktur macht aus einem starken Heuschnupfen also keinen verschwundenen, aber sie kann ihn spürbar erträglicher machen und den Griff zur Tablette reduzieren. Für jemanden, der Antihistaminika schlecht verträgt oder reduzieren möchte, ist das ein realer Gewinn. Wer eine Garantie auf Beschwerdefreiheit erwartet, wird enttäuscht.</p><h2>Der richtige Zeitpunkt entscheidet mit</h2><p>Ein Punkt, der in der Praxis oft den Unterschied macht: Wann du anfängst. Akupunktur bei Heuschnupfen wirkt am besten, wenn du nicht erst startest, wenn die Nase schon seit zwei Wochen läuft. Sinnvoll ist, einige Wochen vor deinem typischen Saisonbeginn zu beginnen, also bei einer Birkenpollen-Allergie etwa im Spätwinter, bei Gräsern im Frühling.</p><p>Über die Saison hinweg planen wir meist eine Serie von rund zehn bis zwölf Behandlungen, ähnlich wie es die ACUSAR-Studie aufgebaut hat. Eine einzelne Sitzung mitten im stärksten Pollenflug bringt erfahrungsgemäss wenig. Wenn du dich also für diesen Weg interessierst, lohnt sich die Planung im Voraus mehr als der spontane Versuch im Akutfall.</p><h2>Wann Akupunktur nicht reicht</h2><p>Akupunktur behandelt die Symptome und die Reaktionsbereitschaft, sie heilt die Allergie nicht. Bei diesen Situationen gehörst du ärztlich abgeklärt, nicht zuerst <a href=\"/standorte\">zu uns</a>:</p><ul><li>Atemnot, Engegefühl in der Brust oder pfeifendes Atmen. Das kann auf allergisches Asthma hinweisen und gehört rasch abgeklärt.</li><li>starke, plötzliche Schwellung von Lippen, Zunge oder Gesicht. Bei Verdacht auf eine schwere allergische Reaktion sofort den Notfall rufen.</li><li>Fieber, eitriges Nasensekret oder anhaltende einseitige Beschwerden. Das spricht eher für eine Nebenhöhlenentzündung als für Heuschnupfen.</li><li>Beschwerden, die das ganze Jahr bestehen. Dann steckt vielleicht keine reine Pollenallergie dahinter, sondern Hausstaubmilben, Schimmel oder anderes, was zuerst diagnostisch geklärt werden sollte.</li></ul><p>Und noch etwas Wichtiges: Wenn du an eine spezifische Immuntherapie denkst, also die Desensibilisierung beim Allergologen, ist das die einzige Behandlung, die ursächlich an der Allergie ansetzt. Akupunktur ist kein Ersatz dafür. Sie kann eine sinnvolle Ergänzung sein, gerade in der Symptomkontrolle, aber die Entscheidung über eine Immuntherapie triffst du mit deiner Ärztin.</p><h2>Kosten und Krankenkasse</h2><p>Akupunktur bei einer EMR- oder ASCA-anerkannten Therapeutin wird von den meisten Schweizer Zusatzversicherungen ganz oder teilweise rückerstattet. Wie viel pro Sitzung übernommen wird, hängt von deiner Police ab. Da bei Heuschnupfen eine ganze Serie über die Saison anfällt, lohnt sich der Blick auf deinen Jahresbeitrag besonders. Die Details, welche Versicherungen wie viel zahlen, findest du in unserem Artikel zu <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026\">Krankenkasse und TCM</a>. Kläre deinen Anteil am besten vor dem Start der Serie direkt mit deiner Versicherung.</p><p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei Atemnot, starker Schwellung oder Verdacht auf eine schwere allergische Reaktion wende dich sofort an den Notfall.</em></p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Brinkhaus B et al., Acupuncture in patients with seasonal allergic rhinitis: a randomized trial, Annals of Internal Medicine 2013;158:225-234 (ACUSAR). Adam D et al., Impact of acupuncture on antihistamine use, Acupuncture in Medicine 2018.</em></p>",
+    "faqs": [
+      {
+        "q": "Wann sollte ich mit der Akupunktur beginnen?",
+        "a": "Idealerweise einige Wochen vor deinem üblichen Saisonstart, also bei Birkenpollen im Spätwinter, bei Gräsern im Frühling. Der vorbeugende Aufbau wirkt besser als der Start mitten im stärksten Pollenflug. Sprich deinen Saisonbeginn beim ersten Termin an, dann planen wir die Serie passend."
+      },
+      {
+        "q": "Wie viele Sitzungen brauche ich bei Heuschnupfen?",
+        "a": "Üblich ist eine Serie von rund zehn bis zwölf Behandlungen über die Saison verteilt, oft ein bis zwei pro Woche zu Beginn. Dieser Rahmen orientiert sich an der Studienlage. Den genauen Verlauf legen wir nach dem ersten Termin gemeinsam fest und passen ihn an, wie du reagierst."
+      },
+      {
+        "q": "Kann ich meine Antihistaminika weiter nehmen?",
+        "a": "Ja. Akupunktur ersetzt deine Medikation nicht, sondern ergänzt sie. In Studien sank der Bedarf an Antihistaminika unter Akupunktur, viele kamen mit weniger aus. Setze deine Medikamente aber nicht eigenmächtig ab, sondern reduziere sie nur in Absprache mit deiner Ärztin oder deinem Arzt."
+      },
+      {
+        "q": "Ist Akupunktur ein Ersatz für eine Desensibilisierung?",
+        "a": "Nein. Die spezifische Immuntherapie beim Allergologen ist die einzige Behandlung, die ursächlich an der Allergie ansetzt. Akupunktur wirkt auf die Symptome und kann ergänzend entlasten, ersetzt die Immuntherapie aber nicht. Die Entscheidung darüber triffst du mit deiner Ärztin."
+      },
+      {
+        "q": "Übernimmt die Krankenkasse die Behandlung?",
+        "a": "Bei einer EMR- oder ASCA-anerkannten Therapeutin erstatten die meisten Zusatzversicherungen Akupunktur ganz oder teilweise. Die Höhe hängt von deiner Police ab. Aus der Grundversicherung wird sie in diesem Rahmen nicht gedeckt. Da bei Heuschnupfen eine ganze Serie anfällt, kläre deinen Anteil vor dem Start mit deiner Versicherung."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/heuschnupfen",
+        "label": "Heuschnupfen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/therapien/akupunktur",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-nackenschmerzen",
+        "label": "Akupunktur bei Nackenschmerzen",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "slug": "tcm-naturheilpraktiker-schweiz",
+    "title": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
+    "metaDesc": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte TCM-Praxis erkennst.",
+    "category": "TCM in der Schweiz",
+    "h1": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
+    "lead": "Viele tippen bei Google „TCM Heilpraktiker“ oder „Heilpraktiker Akupunktur“ ein, wenn sie eine Behandlung suchen. Verständlich, der Begriff ist geläufig. Nur stimmt er für die Schweiz nicht ganz. Wer hier nach der falschen Bezeichnung sucht, landet schnell bei verwirrenden oder unseriösen Angeboten. Dieser Artikel räumt mit der Begriffsverwirrung auf, erklärt, welche Qualifikation in der Schweiz wirklich zählt, und zeigt dir, woran du eine seriöse TCM-Praxis erkennst.",
+    "readingTime": "9 Min.",
+    "ctaTitle": "Passende Praxis finden?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "lastReviewed": "2026-06-13",
+    "bodyHtml": "<h2>„Heilpraktiker“ gibt es in der Schweiz so nicht</h2><p>Der Beruf „Heilpraktiker“ ist eine deutsche Sache. In Deutschland ist das eine eigene, staatlich geregelte Berufsbezeichnung mit eigener Prüfung beim Gesundheitsamt. In der Schweiz existiert dieser Titel in dieser Form nicht. Wer dir hierzulande als „Heilpraktiker“ begegnet, verwendet entweder einen aus Deutschland übernommenen Begriff oder eine unpräzise Eigenbezeichnung.</p><p>Das ist keine Wortklauberei. Es ist der erste Filter für Qualität. Denn in der Schweiz gibt es eine klar geregelte, geschützte Qualifikation für genau diese Arbeit, und die heisst anders.</p><h2>Die echte Schweizer Qualifikation: Naturheilpraktiker:in mit eidg. Diplom</h2><p>Seit 2015 gibt es in der Schweiz den eidgenössisch geschützten Titel „Naturheilpraktiker:in mit eidg. Diplom“. Man erreicht ihn über eine Höhere Fachprüfung, die von der OdA AM getragen wird, der Organisation der Arbeitswelt Alternativmedizin. Das Diplom stellt der Bund aus. Geschützt heisst: Den Titel darf nur tragen, wer die Prüfung bestanden hat.</p><p>Dieser Beruf gliedert sich in vier Fachrichtungen: Ayurveda-Medizin, Homöopathie, Traditionelle Chinesische Medizin und Traditionelle Europäische Naturheilkunde. Für dich relevant ist die Fachrichtung TCM. Eine Naturheilpraktikerin mit eidg. Diplom in TCM hat eine mehrjährige Ausbildung durchlaufen, die nicht nur Akupunktur und chinesische Arzneitherapie umfasst, sondern auch westliche Medizingrundlagen. Genau das ist entscheidend: Sie soll erkennen, wann eine Beschwerde in ärztliche Hände gehört und nicht in die Akupunkturpraxis.</p><p>Rund 2'500 Naturheilpraktikerinnen und Naturheilpraktiker arbeiten heute in der Schweiz, verteilt über alle Kantone. Der Beruf ist also etabliert, nicht exotisch.</p><p>Ein Hinweis zur Einordnung: Es gibt daneben noch das „Zertifikat OdA AM“, eine niedrigere Stufe, mit der man in manchen Kantonen befristet arbeiten darf. Und es gibt die „Komplementärtherapeut:innen mit eidg. Diplom“, ein eigener Titel über die OdA KT, der andere Methoden abdeckt. Für die klassische TCM-Behandlung ist der eidg. Diplom-Abschluss in der Fachrichtung TCM der aussagekräftigste Nachweis.</p><h2>EMR und ASCA: warum diese Kürzel über deine Rechnung entscheiden</h2><p>Für dich als Patient ist neben der Ausbildung ein zweiter Punkt praktisch wichtiger als jeder Titel: die Registrierung bei einer Qualitätsstelle. Die bekanntesten sind EMR und ASCA, daneben gibt es APTN und SPAK.</p><p>Diese Stellen prüfen Ausbildung, Berufserfahrung und Qualitätsstandards einer Therapeutin und führen sie in einem Register. Die Schweizer Krankenkassen stützen sich für die Rückerstattung aus der Zusatzversicherung auf genau diese Register. Anders gesagt: Wenn deine Therapeutin nicht bei EMR oder ASCA registriert ist, zahlt deine Zusatzversicherung deine Akupunktur in aller Regel nicht zurück, egal wie gut die Behandlung ist.</p><p>Das macht EMR/ASCA zum wohl wichtigsten praktischen Kriterium bei der Praxissuche. Es verbindet Qualitätsnachweis und Kassenfähigkeit in einem. Ob eine Praxis registriert ist, kannst du direkt auf den Websites von EMR und ASCA nachschlagen.</p><p>Wichtig zur Klarheit: Es geht hier immer um die Zusatzversicherung, nicht um die obligatorische Grundversicherung. Akupunktur durch eine nicht-ärztliche Therapeutin wird über die Zusatzversicherung gedeckt. Die Details dazu findest du in unserem Artikel zu <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026\">Krankenkasse und TCM</a>.</p><h2>Woran du eine seriöse TCM-Praxis erkennst</h2><p>Du musst keine Expertin für das Schweizer Bildungssystem sein, um Spreu von Weizen zu trennen. Diese Punkte reichen als Check:</p><ul><li><strong>EMR- oder ASCA-Registrierung vorhanden.</strong> Verbindet Qualität und Kassenfähigkeit. Steht meist auf der Website, sonst nachfragen oder im Register prüfen.</li><li><strong>Eidg. Diplom oder gleichwertige Anerkennung in TCM.</strong> Bei im Ausland ausgebildeten Therapeuten gibt es ein Gleichwertigkeitsverfahren über das Schweizerische Rote Kreuz. Eine seriöse Praxis nennt ihre Qualifikation offen.</li><li><strong>Eine medizinische Ersteinschätzung gehört dazu.</strong> Wer dich beim ersten Termin gründlich befragt und dich bei Warnzeichen zur Ärztin schickt, arbeitet richtig. Wer alles mit Nadeln lösen will, eher nicht.</li><li><strong>Keine Heilversprechen.</strong> Seriöse TCM verspricht keine Heilung von Krebs, keine Wunder, kein Ersatz für nötige schulmedizinische Behandlung. Solche Versprechen sind das deutlichste Warnsignal.</li><li><strong>Transparente Kosten.</strong> Preis pro Sitzung und Hinweis auf die Kassenabrechnung sollten klar kommuniziert sein, nicht erst auf Nachfrage hervorkommen.</li></ul><p>Stutzig werden solltest du bei vagen Selbstbezeichnungen ohne nachprüfbare Qualifikation, bei Druck zu langen Vorauszahlungspaketen und bei jeder Form von Heilversprechen. Eine gute Praxis hat es nicht nötig, dir etwas zu versprechen, das sie nicht halten kann.</p><h2>Wie es bei TCM.ch geregelt ist</h2><p>Bei TCM.ch arbeiten ausschliesslich qualifizierte, EMR- oder ASCA-anerkannte Therapeutinnen und Therapeuten. Das heisst für dich zweierlei: Die Behandlung erfüllt die Schweizer Qualitätsstandards, und deine Zusatzversicherung erstattet sie im Rahmen deiner Police. Welche Standorte in deiner Nähe liegen, findest du auf unserer <a href=\"/standorte\">Standortübersicht</a>. Wenn du unsicher bist, ob deine Versicherung deckt, klären wir das gern vorab mit dir.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: OdA AM (Organisation der Arbeitswelt Alternativmedizin), Berufsbild Naturheilpraktiker:in mit eidg. Diplom. EMR und ASCA, Registrierungsstellen für Komplementärmedizin und Tarif 590.</em></p>",
+    "faqs": [
+      {
+        "q": "Gibt es in der Schweiz überhaupt „Heilpraktiker“?",
+        "a": "Der Titel „Heilpraktiker“ stammt aus Deutschland und existiert in der Schweiz so nicht. Die geschützte Schweizer Qualifikation heisst „Naturheilpraktiker:in mit eidg. Diplom“ und umfasst vier Fachrichtungen, darunter TCM. Wenn du eine TCM-Behandlung suchst, ist das der relevante Abschluss, nicht der deutsche Begriff."
+      },
+      {
+        "q": "Worauf muss ich bei der Praxissuche am meisten achten?",
+        "a": "Auf die EMR- oder ASCA-Registrierung. Sie verbindet zwei Dinge: einen geprüften Qualitätsnachweis und die Voraussetzung, dass deine Zusatzversicherung die Behandlung zurückerstattet. Ist die Praxis nicht registriert, zahlt die Kasse in der Regel nicht. Den Status kannst du in den Registern von EMR und ASCA selbst nachschlagen."
+      },
+      {
+        "q": "Was bedeutet EMR und ASCA genau?",
+        "a": "Das sind unabhängige Schweizer Qualitätsstellen, die Ausbildung und Standards von Therapeutinnen prüfen und sie registrieren. Die Krankenkassen stützen sich auf diese Register, um zu entscheiden, welche Behandlungen sie aus der Zusatzversicherung rückerstatten. EMR und ASCA sind damit der Schlüssel zur Kassenfähigkeit."
+      },
+      {
+        "q": "Darf jede Naturheilpraktikerin Akupunktur anbieten?",
+        "a": "Massgeblich ist die Fachrichtung. Akupunktur gehört zur Fachrichtung TCM. Je nach Kanton gelten zudem unterschiedliche Bewilligungs- oder Meldepflichten für die Berufsausübung. Eine seriöse Praxis weist ihre TCM-Qualifikation und ihre kantonale Berechtigung transparent aus, frag im Zweifel einfach nach."
+      },
+      {
+        "q": "Zahlt die Grundversicherung eine TCM-Behandlung?",
+        "a": "Akupunktur durch eine nicht-ärztliche Therapeutin läuft über die Zusatzversicherung, nicht über die obligatorische Grundversicherung. Voraussetzung ist meist die EMR- oder ASCA-Anerkennung der Therapeutin. Wie viel deine konkrete Police übernimmt, hängt vom Versicherer ab und solltest du vor der ersten Behandlung klären."
+      }
+    ],
+    "related": [
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-nackenschmerzen",
+        "label": "Akupunktur bei Nackenschmerzen",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-heuschnupfen",
+        "label": "Akupunktur bei Heuschnupfen",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-nackenschmerzen",
     "title": "Akupunktur bei Nackenschmerzen: Was die Studienlage wirklich zeigt",
     "metaDesc": "Hilft Akupunktur bei Nackenschmerzen? Was die Studienlage wirklich zeigt, wie eine Behandlung abläuft und wann du zuerst ärztlich abklären solltest.",
@@ -58,6 +181,11 @@ export const wissen: Wissen[] = [
         "href": "/therapien/akupunktur",
         "label": "Akupunktur",
         "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-heuschnupfen",
+        "label": "Akupunktur bei Heuschnupfen",
+        "cat": "Artikel"
       },
       {
         "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
@@ -190,6 +318,11 @@ export const wissen: Wissen[] = [
         "href": "/therapien/akupunktur",
         "label": "Akupunktur",
         "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/tcm-naturheilpraktiker-schweiz",
+        "label": "TCM-Heilpraktiker oder Naturheilpraktiker?",
+        "cat": "Artikel"
       }
     ]
   },
