@@ -13,6 +13,20 @@ export function getStaticPaths() {
   });
 }
 
+// Valid leaf slugs (source of truth for real pages) — used to keep cross-links unbroken.
+const leafSlugs = new Set(
+  Object.keys(import.meta.glob('../../data/symptom-leaves/*.html')).map((p) => p.split('/').pop()!.replace('.html', '')),
+);
+// Fallback pool of top-demand complaints to pad sparse related[] up to a few links.
+const RELATED_POOL = [
+  { slug: 'rueckenschmerzen', label: 'Rückenschmerzen' },
+  { slug: 'nackenschmerzen', label: 'Nackenschmerzen' },
+  { slug: 'migraene', label: 'Migräne' },
+  { slug: 'schlafstoerungen', label: 'Schlafstörungen' },
+  { slug: 'stress-burnout', label: 'Stress & Burnout' },
+  { slug: 'verdauungsprobleme', label: 'Verdauungsprobleme' },
+];
+
 const { slug } = Astro.params;
 const body = Astro.props.body;
 const entry = beschwerden.find((b) => b.slug === slug);
@@ -40,5 +54,17 @@ if (entry?.faqs?.length) {
   schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: entry.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
 }
+// "Verwandte Beschwerden" cross-link block — interlinks the /beschwerden/ leaf pages
+// (SEO: lift them out of "discovered, not crawled"). Built from the real related[] data,
+// padded from RELATED_POOL, filtered to existing leaf slugs (no broken links), excl. self.
+const relSeen = new Set([slug]);
+const related: { slug: string; label: string }[] = [];
+for (const r of [...(entry?.related ?? []), ...RELATED_POOL]) {
+  if (related.length >= 4) break;
+  if (!relSeen.has(r.slug) && leafSlugs.has(r.slug)) { related.push({ slug: r.slug, label: r.label }); relSeen.add(r.slug); }
+}
+const relatedBlock = related.length
+  ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Verwandte Beschwerden</div><h2 class="section-title">Das könnte dich auch betreffen</h2><div class="cl-links">${related.map((r) => `<a href="/beschwerden/${r.slug}/" class="cl-chip">${r.label}</a>`).join('')}</div></div></section>`
+  : '';
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={body} schema={schema} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={body + relatedBlock} schema={schema} />
