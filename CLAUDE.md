@@ -62,8 +62,8 @@
 - Wire submitInlineFormGeneric() to real endpoint (Cloudflare Worker)
 - Upload favicons + og-image to repo root
 - Add GTM/GA4 + DSG consent banner
-- Generate sitemap.xml + robots.txt
-- Submit sitemap to Google Search Console
+- ~~Generate sitemap.xml + robots.txt~~ ✅ done (live at /sitemap.xml, 119 URLs; robots references it)
+- ~~Submit sitemap to Google Search Console~~ ✅ done 2026-06-15 (GSC: Success)
 
 ## What NOT to Do
 - No blog
