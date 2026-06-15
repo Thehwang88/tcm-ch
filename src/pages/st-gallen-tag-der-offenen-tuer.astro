@@ -1,0 +1,79 @@
+---
+// Ads-only event landing page (noindex). Reuses the existing design system via SpaPage
+// (home.css + home.js + DeHeader + Footer/StickyCtaBar + Turnstile). One goal: Slot-Anmeldung.
+// noindex => SpaPage emits robots noindex AND gen-sitemap.mjs skips it automatically.
+import SpaPage from '../layouts/SpaPage.astro';
+
+const PREFILL = 'Anmeldung Tag der offenen Tür – St. Gallen (08.08.26). Ich hätte gern einen 30-Min-Slot (Anamnese & Diagnose).';
+const waHref = 'https://wa.me/41775236122?text=' + encodeURIComponent(PREFILL);
+// Reuse the Standort map embed pattern (keyless Google Maps output=embed).
+const MAP = '<iframe src="https://www.google.com/maps?q=Oberer%20Graben%2022%2C%209000%20St.%20Gallen&output=embed" width="100%" height="320" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte: TCM.ch Kliniken St. Gallen, Oberer Graben 22"></iframe>';
+const check = '<div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>';
+
+const body = `
+<div style="padding-top:68px">
+
+<!-- 1) HERO -->
+<section class="section" style="text-align:center;padding-bottom:24px"><div class="wrap" style="max-width:780px">
+  <span style="display:inline-block;background:var(--blue-light);color:var(--blue-dark);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px">08. August 2026 · St. Gallen</span>
+  <h1 class="section-title" style="margin:18px 0 14px">Tag der offenen Tür</h1>
+  <p class="section-sub" style="margin:0 auto;max-width:620px">Lerne unser TCM-Team kennen – und sichere dir einen kostenlosen 30-Minuten-Slot mit Anamnese und erster Diagnose.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px">
+    <a href="#anmeldung" class="btn-primary">30-Min-Slot reservieren</a>
+    <a href="${waHref}" class="btn-secondary" target="_blank" rel="noopener">Per WhatsApp fragen</a>
+  </div>
+  <p style="margin-top:16px;color:var(--muted);font-size:14px">Oberer Graben 22, 9000 St. Gallen</p>
+</div></section>
+
+<!-- 2) ANGEBOT -->
+<section class="section" style="padding-top:0"><div class="wrap" style="max-width:780px">
+  <div style="background:var(--blue-light);border:1px solid rgba(45,155,111,.2);border-radius:18px;padding:28px 26px">
+    <div class="section-label">Angebot</div>
+    <h2 class="section-title" style="font-size:clamp(22px,3vw,30px);margin:6px 0 12px">Kostenlose TCM-Erstdiagnose – limitiert</h2>
+    <p style="color:var(--mid);line-height:1.7;margin:0">Am Tag der offenen Tür kannst du dir einen kostenlosen 30-Minuten-Slot sichern: persönliches Kennenlernen, kurze Anamnese und eine erste TCM-Diagnose mit Einschätzung deiner Beschwerden. Plätze sind begrenzt (<strong>first come, first served</strong>) – Anmeldung empfohlen.</p>
+  </div>
+</div></section>
+
+<!-- 3) WAS DICH ERWARTET -->
+<section class="section"><div class="wrap">
+  <div class="section-label" style="text-align:center">Was dich erwartet</div>
+  <h2 class="section-title" style="text-align:center;margin-bottom:28px">Dein Besuch in Kürze</h2>
+  <div class="usp-grid" style="grid-template-columns:repeat(3,1fr);max-width:980px">
+    <div class="usp-card">${check}<div class="usp-title">Kennenlernen</div><div class="usp-sub">Team &amp; Praxis unverbindlich kennenlernen.</div></div>
+    <div class="usp-card">${check}<div class="usp-title">Anamnese &amp; Diagnose</div><div class="usp-sub">Kurze TCM-Diagnose deiner Beschwerden.</div></div>
+    <div class="usp-card">${check}<div class="usp-title">Deine Fragen</div><div class="usp-sub">Akupunktur, Kräutertherapie, Krankenkasse geklärt.</div></div>
+  </div>
+</div></section>
+
+<!-- 4) STANDORT -->
+<section class="section" style="background:var(--surface)"><div class="wrap" style="max-width:780px">
+  <div class="section-label">Standort</div>
+  <h2 class="section-title" style="margin-bottom:16px">Oberer Graben 22, 9000 St. Gallen</h2>
+  <p style="color:var(--mid);margin:0 0 6px"><strong>Datum:</strong> 08. August 2026</p>
+  <p style="color:var(--mid);margin:0 0 8px"><strong>Uhrzeit:</strong> 9:30–15:00 Uhr</p>
+  <div class="up-map">${MAP}</div>
+</div></section>
+
+<!-- 5) ANMELDUNG -->
+<section id="anmeldung" class="section contact-section-inline" style="background:var(--surface)"> <div class="wrap"> <div class="contact-inline-grid"> <div> <div class="section-label">Anmeldung</div> <h2 class="section-title">30-Min-Slot in <em>St. Gallen</em> reservieren.</h2> <p class="section-sub" style="margin-bottom:0">Sag uns kurz Wunschtage und Tageszeit – wir bestätigen deinen Slot.</p> <div class="intake-trust-row"> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Kostenlos &amp; unverbindlich</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Anamnese &amp; erste TCM-Diagnose</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Plätze limitiert (first come, first served)</div> </div> </div> <div> <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">30-Min-Slot reservieren</div><div class="inline-form-sub">Wir bestätigen deinen Slot für den 08.08.</div></div><form class="inline-form" onsubmit="submitTerminForm(event, this)" novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich City</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Winterthur</option><option>Volketswil</option><option>Frauenfeld</option><option>Kreuzlingen</option><option selected>St. Gallen</option><option>Wil</option><option>Rorschach</option><option>Basel</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="3" placeholder="z. B. Akupunktur bei Rückenschmerzen">Anmeldung Tag der offenen Tür – St. Gallen (08.08.26). Ich hätte gern einen 30-Min-Slot (Anamnese &amp; Diagnose).</textarea></div><div class="form-group"><label class="form-label">Wunsch-Wochentage</label><div class="termin-chips"><label class="termin-chip"><input type="checkbox" name="wochentag" value="Mo"><span>Mo</span></label><label class="termin-chip"><input type="checkbox" name="wochentag" value="Di"><span>Di</span></label><label class="termin-chip"><input type="checkbox" name="wochentag" value="Mi"><span>Mi</span></label><label class="termin-chip"><input type="checkbox" name="wochentag" value="Do"><span>Do</span></label><label class="termin-chip"><input type="checkbox" name="wochentag" value="Fr"><span>Fr</span></label><label class="termin-chip"><input type="checkbox" name="wochentag" value="Sa"><span>Sa</span></label></div></div><div class="form-group"><label class="form-label">Wunsch-Tageszeit</label><div class="termin-chips"><label class="termin-chip"><input type="checkbox" name="tageszeit" value="Vormittags"><span>Vormittags</span></label><label class="termin-chip"><input type="checkbox" name="tageszeit" value="Nachmittags"><span>Nachmittags</span></label><label class="termin-chip"><input type="checkbox" name="tageszeit" value="Abends"><span>Abends</span></label></div></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">30-Min-Slot reservieren</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einer Bestätigung.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="${waHref}" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div> </div> </div> </div> </section>
+
+<!-- 6) MINI-TRUST -->
+<section class="section"><div class="wrap" style="max-width:780px;text-align:center">
+  <div class="section-label">Unser Team &amp; Krankenkasse</div>
+  <p style="font-size:16px;color:var(--black);font-weight:600;margin:8px 0 4px">Dr. Barbara Hainich · Corinna Reinhart</p>
+  <p style="color:var(--muted);font-size:14px;margin:0">Von der Zusatzversicherung anerkannt · EMR/ASCA-registriert</p>
+</div></section>
+
+</div>
+
+<!-- relabel the shared sticky bottom CTA for this event page (page-scoped, no component change) -->
+<script is:inline>document.addEventListener('DOMContentLoaded',function(){var p=document.querySelector('.sticky-cta-bar .scb-primary');if(p)p.textContent='30-Min-Slot reservieren';var w=document.querySelector('.sticky-cta-bar .scb-wa');if(w)w.setAttribute('href','${waHref}');});</script>
+`;
+---
+<SpaPage
+  title="Tag der offenen Tür – TCM.ch St. Gallen"
+  description="Tag der offenen Tür in St. Gallen am 08. August 2026: kostenloser 30-Minuten-Slot mit Anamnese und erster TCM-Diagnose. Plätze limitiert."
+  path="/st-gallen-tag-der-offenen-tuer"
+  noindex={true}
+  body={body}
+/>
