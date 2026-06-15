@@ -4319,11 +4319,11 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 /* mobile: compact pain-point cards as a tight divider-list (icon inline w/ title) */
 @media(max-width:768px){
   #home-content .kennst-section .kennst-grid{gap:0 !important}
-  #home-content .kennst-section .kennst-grid>div{flex-direction:row !important;flex-wrap:wrap !important;align-items:center !important;height:auto !important;padding:13px 2px !important;gap:7px 10px !important;background:transparent !important;border:none !important;border-bottom:1px solid rgba(0,0,0,.08) !important;border-radius:0 !important;box-shadow:none !important}
+  #home-content .kennst-section .kennst-grid>div{flex-direction:row !important;flex-wrap:wrap !important;align-items:flex-start !important;height:auto !important;padding:13px 2px !important;gap:7px 10px !important;background:transparent !important;border:none !important;border-bottom:1px solid rgba(0,0,0,.08) !important;border-radius:0 !important;box-shadow:none !important}
   #home-content .kennst-section .kennst-grid>div:last-child{border-bottom:none !important}
   #home-content .kennst-section .kennst-grid>div>div:first-child{width:22px !important;height:22px !important;border-radius:6px !important;margin:0 !important;flex-shrink:0 !important}
   #home-content .kennst-section .kennst-grid>div>div:first-child svg{width:13px !important;height:13px !important}
-  #home-content .kennst-section .kennst-grid>div h3{font-size:14.5px !important;line-height:1.3 !important;flex:1 1 auto !important;min-width:0 !important;margin:0 !important}
+  #home-content .kennst-section .kennst-grid>div h3{font-size:14.5px !important;line-height:1.3 !important;flex:1 1 0 !important;min-width:0 !important;margin:0 !important}
   #home-content .kennst-section .kennst-grid>div p{font-size:13.5px !important;line-height:1.45 !important;flex-basis:100% !important;box-sizing:border-box !important;padding-left:32px !important;margin:0 !important}
 }
 
