@@ -68,6 +68,7 @@ const body = `
       <div class="evt-row"><span class="evt-ck">✓</span><span class="evt-rtxt">Persönlicher Mini-Plan für die nächsten Schritte</span><span class="evt-rval">Wert [CHF 30]</span></div>
     </div>
     <div class="evt-total"><span class="evt-total-top">Gesamtwert <s>[CHF 220]</s> → am 8.8.</span><span class="evt-zero">CHF 0</span></div>
+    <div class="evt-bonus"><span class="evt-ck">✓</span><span><strong>Plus obendrauf:</strong> Schweizer Welcome-Apéro – TCM-Tee, Matcha &amp; Apéro-Häppchen, inklusive</span></div>
     <p class="evt-risk">Kein Haken. Keine Verpflichtung. Du gehst mit einer echten Behandlung und einem klaren Plan nach Hause – nicht nur mit einem Flyer.</p>
     <div class="evt-flags">
       <div class="evt-flag">🔥 <strong>Nur [12] Slots.</strong> Wenn sie weg sind, sind sie weg.</div>
@@ -101,6 +102,7 @@ ${sep('Das sagen Patient:innen')}
 <!-- 9) SO LÄUFT DER TAG AB — new (Tier 2) -->
 ${sep('So läuft der Tag ab')}
 <div class="evt-sec"><section class="section"><div class="wrap">
+  <p class="evt-apero-intro">Komm vorbei, lern unser Team bei einem entspannten Apéro kennen – Tee, Matcha und kleine Häppchen inklusive. Kein Stress, kein Termindruck.</p>
   <div class="evt-grid">
     <div class="usp-card"><div class="usp-icon evt-step">1</div><div class="usp-title">Anmelden</div><div class="usp-sub">Slot über das Formular sichern – dauert keine Minute.</div></div>
     <div class="usp-card"><div class="usp-icon evt-step">2</div><div class="usp-title">Vorbeikommen am 8.8.</div><div class="usp-sub">Oberer Graben 22, St. Gallen, zwischen 9:30 und 15:00 Uhr.</div></div>
@@ -158,6 +160,8 @@ ${sep('Häufige Fragen')}
 .evt-total-top s{color:var(--muted)}
 .evt-zero{display:inline-block;font-family:var(--font-sans);font-size:clamp(28px,9vw,40px);font-weight:800;color:#1F7A54;letter-spacing:-.02em;line-height:1.1}
 .evt-risk{font-size:14.5px;color:var(--mid);line-height:1.55;margin:14px 0 0}
+.evt-bonus{display:flex;align-items:flex-start;gap:10px;margin-top:12px;padding:11px 13px;background:var(--ey-soft);border:1px dashed var(--ey-bd);border-radius:12px;font-size:15px;line-height:1.45;color:var(--black)}
+.evt-apero-intro{text-align:center;max-width:620px;margin:0 auto 22px;color:var(--mid);font-size:16px;line-height:1.6}
 .evt-flags{margin-top:12px;display:flex;flex-direction:column;gap:6px}
 .evt-flag{font-size:14px;color:var(--mid);line-height:1.45}
 .evt-flag strong{color:var(--black)}
