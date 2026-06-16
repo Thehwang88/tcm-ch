@@ -42,7 +42,6 @@ export async function onRequestPost({ request, env }) {
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
       ['Standort', d.standort],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen],
-      ['Wunsch-Wochentage', d.wochentage], ['Wunsch-Tageszeit', d.tageszeit],
       ['Quelle', d.quelle], ['Zeit', d.zeit],
     ];
     const html =
