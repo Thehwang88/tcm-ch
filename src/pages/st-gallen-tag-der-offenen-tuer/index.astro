@@ -273,6 +273,9 @@ addEventListener('click',function(e){var t=e.target.closest('.evt-cta,.form-subm
 function init(){reveal();sticky();cd();burst(null,null,110);}
 if(document.readyState!=='loading')init();else addEventListener('DOMContentLoaded',init);
 })();</script>
+
+<style>/* header CTA -> yellow event CTA (event LP only) */#navCtaBtn.nav-cta{background:linear-gradient(90deg,#FFC107,#FFB300)!important;color:#1b2a4a!important;border:none!important}#navCtaBtn.nav-cta #navCtaLabel{color:#1b2a4a!important}</style>
+<script is:inline>(function(){function init(){var lbl=document.getElementById('navCtaLabel'),btn=document.getElementById('navCtaBtn');if(lbl)lbl.textContent='8.8. Slot sichern →';if(btn)btn.addEventListener('click',function(e){e.stopImmediatePropagation();e.preventDefault();var f=document.getElementById('anmeldung');if(f)f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});},true);}if(document.readyState!=='loading')init();else addEventListener('DOMContentLoaded',init);})();</script>
 `;
 ---
 <SpaPage
