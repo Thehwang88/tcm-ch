@@ -8,6 +8,67 @@ export interface WissenAuthor { name: string; role: string; bio: string }
 export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
 export const wissen: Wissen[] = [
   {
+    "slug": "dauernadeln-akupunktur",
+    "title": "Akupunktur mit Dauernadeln: Wirkung, Tragedauer und Ablauf",
+    "metaDesc": "Dauernadeln in der Akupunktur: was sie sind, wie lange sie bleiben, wo sie gesetzt werden und worauf du achten solltest. Ehrlich und verständlich erklärt.",
+    "region": "Schweizweit",
+    "excerpt": "Was Dauernadeln sind, wie lange sie bleiben, wo sie gesetzt werden und worauf du achten solltest. Der Überblick.",
+    "category": "TCM in der Schweiz",
+    "h1": "Akupunktur mit Dauernadeln: Wirkung, Tragedauer und Ablauf",
+    "lead": "Was Dauernadeln sind, wie lange sie bleiben, wo sie gesetzt werden und worauf du achten solltest. Der Überblick.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Dauernadeln in der Praxis besprechen?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-06-18",
+    "dateModified": "2026-06-18",
+    "lastReviewed": "2026-06-18",
+    "bodyHtml": "<h2>Was sind Dauernadeln?</h2><p>Dauernadeln sind sehr kleine Akupunkturnadeln, die nach dem Setzen mit einem kleinen Pflaster fixiert werden und mehrere Tage an Ort und Stelle bleiben. Sie reizen den Punkt durchgehend und verlängern so die Wirkung einer <a href=\"/therapien/akupunktur/\">Akupunktur</a> über die einzelne Sitzung hinaus. Wie wir sie in der Praxis einsetzen, liest du auf unserer Seite zu <a href=\"/therapien/dauernadeln/\">Akupunktur mit Dauernadeln</a>.</p><h2>Wie lange bleiben Dauernadeln drin?</h2><p>Üblich sind zwei bis sieben Tage. Im Ohr bleiben sie oft drei bis fünf Tage, an Körperpunkten je nach Beschwerde etwas kürzer oder länger. Die genaue Dauer legt deine Therapeutin fest. Länger als empfohlen solltest du sie nicht tragen, weil dann das Risiko für Reizungen steigt.</p><h2>Wo werden sie gesetzt? Ohr und Körper</h2><p>Am häufigsten kommen Dauernadeln im Ohr zum Einsatz, da dort viele Reflexpunkte auf engem Raum liegen. Daneben werden sie an Körperpunkten gesetzt, etwa am Rücken bei wiederkehrenden Verspannungen.</p><h2>Kann man Dauernadeln selbst setzen?</h2><p>Das Setzen gehört in die Hände einer ausgebildeten Fachperson. Die richtige Punktwahl und saubere Hygiene sind entscheidend, und beides lässt sich nicht zuverlässig selbst sicherstellen. Das Entfernen dagegen kannst du nach Anleitung deiner Therapeutin meist problemlos selbst übernehmen.</p><h2>Mögliche Nebenwirkungen</h2><p>Dauernadeln gelten bei fachgerechter Anwendung als risikoarm. Möglich sind leichte Rötung, ein leichtes Druckgefühl oder Juckreiz an der Stelle. Selten kommt es zu einer Reaktion auf das Pflaster. Bei Schmerzen, starker Rötung oder Anzeichen einer Entzündung entferne die Nadel und melde dich bei deiner Therapeutin. Nicht geeignet sind Dauernadeln bei bekannter Metall- oder Pflasterallergie sowie bei Blutgerinnungsstörungen.</p><h2>Worauf du während der Tragezeit achten solltest</h2><p>Halte die Stelle sauber und trocken und reibe nicht stark daran. Duschen ist in der Regel kein Problem. Wenn eine Nadel sich löst, entferne sie und entsorge sie sicher.</p><p>Dauernadeln werden im Rahmen einer Akupunkturbehandlung gesetzt. Wie die Kosten über die Zusatzversicherung laufen, liest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a>.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Wie lange kann man Dauernadeln drin lassen?",
+        "a": "Üblich sind zwei bis sieben Tage, im Ohr oft drei bis fünf. Länger als von der Therapeutin empfohlen sollte man sie nicht tragen."
+      },
+      {
+        "q": "Sind Dauernadeln gefährlich?",
+        "a": "Bei fachgerechtem Setzen mit sterilem Einwegmaterial gelten sie als risikoarm. Hauptrisiko ist eine lokale Reizung bei mangelnder Hygiene."
+      },
+      {
+        "q": "Kann man mit Dauernadeln im Ohr schlafen und duschen?",
+        "a": "Ja, beides ist normalerweise möglich. Die Stelle sollte sauber und trocken gehalten werden."
+      },
+      {
+        "q": "Wie entfernt man Dauernadeln?",
+        "a": "Meist nach Anleitung der Therapeutin selbst, indem man das Pflaster vorsichtig ablöst. Die Nadel danach sicher entsorgen."
+      },
+      {
+        "q": "Was kosten Dauernadeln?",
+        "a": "Sie werden im Rahmen einer Akupunkturbehandlung gesetzt. Bei EMR-/ASCA-Therapeuten beteiligen sich viele Zusatzversicherungen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/dauernadeln/",
+        "label": "Akupunktur mit Dauernadeln",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/akupunktur/",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/krankenkassen/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Info"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-rueckenschmerzen",
     "title": "Akupunktur bei Rückenschmerzen: Wirkung, Ablauf und was die Forschung zeigt",
     "metaDesc": "Hilft Akupunktur bei Rückenschmerzen? Wirkung, Ablauf einer TCM-Behandlung, die Studienlage und wann du ärztlich abklären solltest. EMR und ASCA anerkannt.",

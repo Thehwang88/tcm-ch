@@ -1,0 +1,39 @@
+---
+// /therapien/dauernadeln — therapy page (Akupunktur mit Dauernadeln). Same layout/
+// tokens/components as the other therapy pages (hero, trust strip, content+sidebar,
+// standort block, FAQ accordion, contact form, CTA band, mobile bar).
+import SpaPage from '../../../layouts/SpaPage.astro';
+import bodyRaw from '../../../data/dauernadeln-body.html?raw';
+import { prefillForm } from '../../../data/form-prefill';
+import { inlineBodyImage } from '../../../data/inline-body-image';
+import { appendSidebarAllLink } from '../../../data/cap-sidebar';
+const body = appendSidebarAllLink(
+  inlineBodyImage(prefillForm(bodyRaw, 'Ich interessiere mich für Akupunktur mit Dauernadeln.', 'Therapie: Dauernadeln')),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
+
+const url = 'https://tcm.ch/therapien/dauernadeln/';
+const title = 'Akupunktur mit Dauernadeln in der Schweiz | TCM.ch';
+const description = 'Dauernadeln (Dauerakupunkturnadeln) wirken kontinuierlich zwischen den Sitzungen. Gesetzt von geprüften TCM-Therapeuten an 12 Standorten. EMR-/ASCA-anerkannt.';
+
+const faqs = [
+  { q: 'Wie lange bleiben Dauernadeln drin?', a: 'Meist zwei bis sieben Tage, im Ohr oft drei bis fünf. Dein Therapeut legt es individuell fest.' },
+  { q: 'Tun Dauernadeln weh?', a: 'Das Setzen ist kurz spürbar. Danach merkst du die kleine Nadel im Alltag meist kaum.' },
+  { q: 'Kann ich Dauernadeln selbst setzen?', a: 'Das Setzen gehört wegen Punktwahl und Hygiene in die Hände einer ausgebildeten Fachperson. Das Entfernen kannst du nach Anleitung oft selbst übernehmen.' },
+  { q: 'Gibt es Nebenwirkungen?', a: 'Möglich sind leichte lokale Rötung oder Druckempfindlichkeit. Bei Entzündungszeichen Nadel entfernen und Therapeut kontaktieren.' },
+  { q: 'Wo werden Dauernadeln gesetzt?', a: 'Häufig im Ohr, ausserdem an Körperpunkten wie Rücken oder Schultern, je nach Beschwerde.' },
+  { q: 'Übernimmt die Krankenkasse Dauernadeln?', a: 'Bei EMR-/ASCA-Therapeuten beteiligen sich viele Zusatzversicherungen, die Grundversicherung nicht.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Dauernadeln', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/dauernadeln" body={body} schema={schema} />

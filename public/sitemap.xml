@@ -607,6 +607,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/therapien/dauernadeln/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/ear-seeds/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/therapien/elektroakupunktur/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -704,6 +716,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/wissen/akupunktur-in-meiner-naehe-schweiz/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/wissen/dauernadeln-akupunktur/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
