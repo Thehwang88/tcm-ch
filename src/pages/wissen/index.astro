@@ -3,7 +3,8 @@
 // hero, "Worüber wir schreiben" category pillars, "Lesenswertes aus der Praxis" article
 // cards with images/categories). Article bodies live on /wissen/[slug] (not embedded here).
 import SpaPage from '../../layouts/SpaPage.astro';
-import body from '../../data/wissen-body.html?raw';
+import rawBody from '../../data/wissen-body.html?raw';
+import { wissen } from '../../data/wissen';
 
 const title = 'Wissen & Magazin – TCM ehrlich eingeordnet | TCM.ch';
 const description =
@@ -13,5 +14,21 @@ const schema = {
   url: 'https://tcm.ch/wissen', inLanguage: 'de-CH',
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
+
+// Article cards generated from wissen.ts (single source of truth) into the <!--WISSEN_CARDS-->
+// marker in wissen-body.html. New wissen.ts entries auto-appear. Exact card markup/classes
+// preserved from the original hub; crawlable <a href> (replaces the old onclick nav()).
+const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const deDate = (d: string) => { const [y, mo, da] = d.split('-'); return `${parseInt(da, 10)}. ${MONTHS[parseInt(mo, 10) - 1]} ${y}`; };
+const esc = (x: unknown) => String(x == null ? '' : x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const GRAD = 'linear-gradient(135deg,rgba(45,155,111,.12) 0%,rgba(45,155,111,.04) 100%)';
+const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+
+const cards = [...wissen]
+  .sort((a, b) => (a.datePublished < b.datePublished ? 1 : a.datePublished > b.datePublished ? -1 : 0))
+  .map((w) => `<a class="wissen-article" href="/wissen/${w.slug}/" data-date="${w.datePublished}" style="text-decoration:none;color:inherit"><div class="wissen-article-img" style="background-image:${GRAD}"><div class="wissen-article-cat">${esc(w.category)}</div></div><div class="wissen-article-body"><div class="wissen-article-meta"><span>${esc(w.region || 'Schweizweit')}</span><span class="wissen-article-meta-dot"></span><span>${esc(w.readingTime)} Lesezeit</span><span class="wissen-article-meta-dot"></span><span class="wissen-article-date">${deDate(w.datePublished)}</span><span class="wissen-article-meta-dot"></span><span>${esc(w.author.name)}</span></div><h3 class="wissen-article-title">${esc(w.title)}</h3><p class="wissen-article-excerpt">${esc(w.excerpt || w.metaDesc)}</p><div class="wissen-article-cta">Artikel lesen ${ARROW}</div></div></a>`)
+  .join('');
+
+const body = rawBody.replace('<!--WISSEN_CARDS-->', cards);
 ---
 <SpaPage title={title} description={description} path="/wissen" body={body} schema={schema} />

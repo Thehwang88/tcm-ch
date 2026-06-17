@@ -5,12 +5,12 @@
 export interface WissenFaq { q: string; a: string }
 export interface WissenRelated { href: string; label: string; cat: string }
 export interface WissenAuthor { name: string; role: string; bio: string }
-export interface Wissen { slug: string; title: string; metaDesc: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
+export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
 export const wissen: Wissen[] = [
   {
     "slug": "tcm-st-gallen-erfahrungen-ablauf",
     "title": "TCM in St. Gallen: Ablauf, Erfahrungen und was dich erwartet",
-    "metaDesc": "Wie läuft eine TCM-Behandlung in St. Gallen ab? Anamnese, Diagnose, erste Behandlung und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
+    "metaDesc": "Wie läuft eine TCM-Behandlung in St. Gallen ab? Anamnese, Diagnose, erste Behandlung und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.", "region": "St. Gallen", "excerpt": "Wie läuft eine TCM-Behandlung in St. Gallen ab? Anamnese, Diagnose, erste Behandlung und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
     "category": "Standort & Erfahrungen",
     "h1": "TCM in St. Gallen: Ablauf, Erfahrungen und was dich erwartet",
     "lead": "Du überlegst, eine TCM-Praxis in St. Gallen zu besuchen, weisst aber nicht so recht, was dich dort erwartet. Diese Unsicherheit ist der häufigste Grund, warum Menschen den Schritt aufschieben. Darum erklären wir hier konkret, wie eine Behandlung bei uns abläuft, was du mitbringen solltest und was Patientinnen und Patienten nach den ersten Terminen berichten.",
@@ -69,7 +69,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "akupunktur-bei-heuschnupfen",
     "title": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
-    "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
+    "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
     "category": "Beschwerden verstehen",
     "h1": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
     "lead": "Die ehrliche Antwort: Es gibt für Heuschnupfen tatsächlich gute Studien zur Akupunktur, besser als bei vielen anderen Beschwerden. Sie zeigen einen messbaren, aber moderaten Effekt. Akupunktur ersetzt deine Notfallmedikation nicht, sie kann den Bedarf danach aber senken. Dieser Artikel erklärt dir, was die Forschung wirklich belegt, wann eine Behandlung Sinn ergibt und wann du besser zum Arzt gehst.",
@@ -133,7 +133,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "tcm-naturheilpraktiker-schweiz",
     "title": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
-    "metaDesc": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte TCM-Praxis erkennst.",
+    "metaDesc": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte TCM-Praxis erkennst.", "region": "Schweizweit", "excerpt": "Heilpraktiker, Naturheilpraktiker, TCM-Therapeutin? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte Praxis erkennst.",
     "category": "TCM in der Schweiz",
     "h1": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
     "lead": "Viele tippen bei Google „TCM Heilpraktiker“ oder „Heilpraktiker Akupunktur“ ein, wenn sie eine Behandlung suchen. Verständlich, der Begriff ist geläufig. Nur stimmt er für die Schweiz nicht ganz. Wer hier nach der falschen Bezeichnung sucht, landet schnell bei verwirrenden oder unseriösen Angeboten. Dieser Artikel räumt mit der Begriffsverwirrung auf, erklärt, welche Qualifikation in der Schweiz wirklich zählt, und zeigt dir, woran du eine seriöse TCM-Praxis erkennst.",
@@ -192,7 +192,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "akupunktur-bei-nackenschmerzen",
     "title": "Akupunktur bei Nackenschmerzen: Was die Studienlage wirklich zeigt",
-    "metaDesc": "Hilft Akupunktur bei Nackenschmerzen? Was die Studienlage wirklich zeigt, wie eine Behandlung abläuft und wann du zuerst ärztlich abklären solltest.",
+    "metaDesc": "Hilft Akupunktur bei Nackenschmerzen? Was die Studienlage wirklich zeigt, wie eine Behandlung abläuft und wann du zuerst ärztlich abklären solltest.", "region": "Schweizweit", "excerpt": "Akupunktur kann bei Nackenschmerzen helfen, ist aber kein Wundermittel. Was die Forschung zeigt und wann du zuerst ärztlich abklären solltest.",
     "category": "Beschwerden verstehen",
     "h1": "Akupunktur bei Nackenschmerzen: Was die Studienlage wirklich zeigt",
     "lead": "Die ehrliche Antwort vorweg: Akupunktur kann bei Nackenschmerzen helfen, aber sie ist kein Wundermittel und sie passt nicht zu jeder Ursache. Dieser Artikel zeigt dir, was die Forschung tatsächlich belegt, wann eine Behandlung sinnvoll ist und wann du besser zuerst zum Arzt gehst.",
@@ -256,7 +256,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "migraene-tcm-warum-akupunktur-nicht-fuer-jeden",
     "title": "Migräne und TCM: Warum Akupunktur nicht für jeden funktioniert",
-    "metaDesc": "Ein ehrlicher Bericht aus drei Jahren Migräne-Behandlung in unseren TCM-Kliniken: bei wem Akupunktur hilft, bei wem nicht – und was die Studienlage dazu sagt.",
+    "metaDesc": "Ein ehrlicher Bericht aus drei Jahren Migräne-Behandlung in unseren TCM-Kliniken: bei wem Akupunktur hilft, bei wem nicht – und was die Studienlage dazu sagt.", "region": "Schweizweit", "excerpt": "Ein ehrlicher Bericht aus drei Jahren Migräne-Behandlungen, und was wir Patientinnen heute anders sagen als früher.",
     "category": "Beschwerden verstehen",
     "h1": "Migräne und TCM: Warum Akupunktur nicht für jeden funktioniert.",
     "lead": "Ein ehrlicher Bericht aus drei Jahren Migräne-Behandlungen in unseren TCM-Kliniken. Bei wem es funktioniert. Bei wem nicht. Und was wir Patientinnen heute anders sagen als früher.",
@@ -320,7 +320,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
     "title": "Krankenkasse und TCM: Was wirklich übernommen wird (Stand 2026)",
-    "metaDesc": "Welche Schweizer Zusatzversicherungen TCM und Akupunktur übernehmen – mit konkreten Prozentsätzen, Jahreslimiten und Praxisbeispielen (Stand 2026).",
+    "metaDesc": "Welche Schweizer Zusatzversicherungen TCM und Akupunktur übernehmen – mit konkreten Prozentsätzen, Jahreslimiten und Praxisbeispielen (Stand 2026).", "region": "Schweizweit", "excerpt": "Welche Zusatzversicherungen zahlen. Wie viel pro Sitzung. Was unsere Patientinnen am häufigsten falsch verstehen.",
     "category": "TCM in der Schweiz",
     "h1": "Krankenkasse und TCM: Was wirklich übernommen wird (Stand 2026).",
     "lead": "Welche Zusatzversicherungen zahlen. Wie viel pro Sitzung. Was unsere Patientinnen am häufigsten falsch verstehen. Ein klarer Überblick, ohne Marketing-Sprech, mit echten Zahlen aus dem Praxisalltag.",
@@ -388,7 +388,7 @@ export const wissen: Wissen[] = [
   {
     "slug": "akupunktur-in-meiner-naehe-schweiz",
     "title": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz",
-    "metaDesc": "TCM-Praxen von Zürich bis St. Gallen: welche Praxis zu welcher Beschwerde passt, was es kostet und wie schnell du einen Termin in deiner Nähe bekommst.",
+    "metaDesc": "TCM-Praxen von Zürich bis St. Gallen: welche Praxis zu welcher Beschwerde passt, was es kostet und wie schnell du einen Termin in deiner Nähe bekommst.", "region": "Deutschschweiz", "excerpt": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du den nächsten Termin findest.",
     "category": "TCM in der Schweiz",
     "h1": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz.",
     "lead": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du in unter einer Minute den nächsten Termin in deiner Nähe findest.",
