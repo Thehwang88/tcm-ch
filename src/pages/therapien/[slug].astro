@@ -8,6 +8,7 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import { prefillForm } from '../../data/form-prefill';
 import { inlineBodyImage } from '../../data/inline-body-image';
+import { appendSidebarAllLink } from '../../data/cap-sidebar';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/therapie-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -39,6 +40,8 @@ const schema = [
 ];
 // Prefill the contact form with this therapy as the topic (editable; source in hidden quelle).
 // + move the orphaned sticky body image into the text flow (after the intro paragraph).
-const prefilledBody = inlineBodyImage(prefillForm(body, `Ich interessiere mich für ${name}.`, `Therapie: ${name}`));
+const prefilledBody = appendSidebarAllLink(
+  inlineBodyImage(prefillForm(body, `Ich interessiere mich für ${name}.`, `Therapie: ${name}`)),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
 ---
 <SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} />

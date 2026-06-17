@@ -5,6 +5,7 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import { beschwerden } from '../../data/beschwerden';
 import { prefillForm } from '../../data/form-prefill';
+import { appendSidebarAllLink } from '../../data/cap-sidebar';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -68,6 +69,8 @@ const relatedBlock = related.length
   ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Verwandte Beschwerden</div><h2 class="section-title">Das könnte dich auch betreffen</h2><div class="cl-links">${related.map((r) => `<a href="/beschwerden/${r.slug}/" class="cl-chip">${r.label}</a>`).join('')}</div></div></section>`
   : '';
 // Prefill the contact form with this complaint as the topic (editable; source in hidden quelle).
-const prefilledBody = prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`);
+const prefilledBody = appendSidebarAllLink(
+  prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`),
+  'symptom-therapies-sidebar', '/therapien/', 'Alle Therapien ansehen');
 ---
 <SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + relatedBlock} schema={schema} />

@@ -7,7 +7,10 @@ import SpaPage from '../../../../layouts/SpaPage.astro';
 import bodyRaw from '../../../../data/hijama-body.html?raw';
 import { prefillForm } from '../../../../data/form-prefill';
 import { inlineBodyImage } from '../../../../data/inline-body-image';
-const body = inlineBodyImage(prefillForm(bodyRaw, 'Ich interessiere mich für Hijama.', 'Therapie: Hijama'));
+import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
+const body = appendSidebarAllLink(
+  inlineBodyImage(prefillForm(bodyRaw, 'Ich interessiere mich für Hijama.', 'Therapie: Hijama')),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
 
 const url = 'https://tcm.ch/therapien/schroepfen/hijama/';
 const title = 'Hijama in der Schweiz | Traditionelles Schröpfen bei TCM.ch';

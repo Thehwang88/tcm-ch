@@ -2634,6 +2634,29 @@ height: 100%;
 object-fit: cover;
 display: block;
 }
+/* ── Secondary sidebar list: cap to 5 rows + "see all" link, desktop only (>=1025px, matches the sticky breakpoint). Mobile/tablet keep the full list, no link. ── */
+.sidebar-all-link { display: none; }
+@media (min-width: 1025px) {
+/* Desktop only: clip (not hidden) the horizontal overflow so html/body don't become a
+   non-scrolling scroll-container, which would disable the sidebar's position:sticky.
+   clip still prevents horizontal scroll; mobile/tablet keep the original overflow-x:hidden. */
+html, body { overflow-x: clip !important; }
+.subpage-sidebar { align-self: start; }
+#therapie-symptoms-sidebar .sidebar-row:nth-child(n+6),
+#symptom-therapies-sidebar .sidebar-row:nth-child(n+6) { display: none !important; }
+.sidebar-all-link {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+margin-top: 14px;
+font-family: var(--font-sans);
+font-size: 13.5px;
+font-weight: 600;
+color: var(--blue);
+text-decoration: none;
+}
+.sidebar-all-link:hover { color: var(--blue-dark); }
+}
 .therapie-img-wrap {
 position: sticky;
 top: 88px;
