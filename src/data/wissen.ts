@@ -318,6 +318,64 @@ export const wissen: Wissen[] = [
     ]
   },
   {
+    "slug": "akupunktur-in-meiner-naehe-schweiz",
+    "title": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz",
+    "metaDesc": "TCM-Praxen von Zürich bis St. Gallen: welche Praxis zu welcher Beschwerde passt, was es kostet und wie schnell du einen Termin in deiner Nähe bekommst.", "region": "Deutschschweiz", "excerpt": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du den nächsten Termin findest.",
+    "category": "TCM in der Schweiz",
+    "h1": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz.",
+    "lead": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du in unter einer Minute den nächsten Termin in deiner Nähe findest.",
+    "readingTime": "8 Min.",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Mitgründerin TCM.ch",
+      "bio": "Corinna ist Mitgründerin von TCM.ch und hat die meisten Standorte mit aufgebaut. Sie behandelt seit über zehn Jahren in der Deutschschweiz mit Schwerpunkten in Frauengesundheit, Kinderwunsch und chronischen Schmerzen. Ausbildung in der Schweiz, klinische Vertiefung in Hangzhou und Peking."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-05-27",
+    "dateModified": "2026-05-27",
+    "lastReviewed": "2026-05-27",
+    "bodyHtml": "<h2>„Akupunktur in meiner Nähe\", die häufigste Frage.</h2>\r\n  <p>Die häufigste Frage, die wir per WhatsApp bekommen: „Habt ihr eine Praxis bei mir in der Nähe?\" Hier ist die ehrliche Übersicht. Wir behandeln an elf Standorten in der Deutschschweiz. Wenn du in einer dieser Städte oder im Umkreis von etwa 20 Kilometern wohnst, gibt es eine Praxis, die für dich gut erreichbar ist.</p>\r\n\r\n  <div class=\"wa-callout\">\r\n    <div class=\"wa-callout-label\">In Kürze</div>\r\n    <p>Elf TCM.ch-Standorte: Zürich, Winterthur, Baden, Aarau, Luzern, Zug, St. Gallen, Frauenfeld, Kreuzlingen, Schaffhausen, Chur. Alle Therapeutinnen EMR/ASCA-zertifiziert. Sitzung CHF 130–160. Krankenkasse zahlt mit Zusatzversicherung meist 75–90%. Termin meist in 24–48 Stunden über WhatsApp.</p>\r\n  </div>\r\n\r\n  <h2>Standorte nach Region.</h2>\r\n\r\n  <h3>Region Zürich</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/zuerich\"><strong>Zürich</strong></a>, Stadt Zürich, alle Spezialgebiete, Mo–Sa, Abendtermine</li>\r\n    <li><a href=\"/standorte/winterthur-muenzgasse\"><strong>Winterthur</strong></a>, Westen Zürichs, Schwerpunkt Bürobeschwerden & Kinderwunsch</li>\r\n    <li><a href=\"/standorte/baden\"><strong>Baden</strong></a>, Aargau, gut erreichbar aus Limmattal und Brugg</li>\r\n  </ul>\r\n\r\n  <h3>Zentralschweiz</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/luzern\"><strong>Luzern</strong></a>, Stadt Luzern, alle Bereiche, Abendtermine</li>\r\n    <li><a href=\"/standorte/zug\"><strong>Zug</strong></a>, speziell für Berufstätige aus Banking, Crypto und Pharma</li>\r\n  </ul>\r\n\r\n  <h3>Aargau / Mittelland</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/aarau\"><strong>Aarau</strong></a>, Kanton Aargau, Schwerpunkt Schmerz und Stressmedizin</li>\r\n  </ul>\r\n\r\n  <h3>Ostschweiz</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/st-gallen\"><strong>St. Gallen</strong></a>, Stadt St. Gallen, breites Spektrum, HSG-Patientinnen</li>\r\n    <li><a href=\"/standorte/frauenfeld\"><strong>Frauenfeld</strong></a>, unsere Hauptpraxis, alle Bereiche, längste Öffnungszeiten</li>\r\n    <li><a href=\"/standorte/kreuzlingen\"><strong>Kreuzlingen</strong></a>, Bodensee, Schwerpunkt Frauengesundheit & Kinderwunsch</li>\r\n    <li><a href=\"/standorte/schaffhausen\"><strong>Schaffhausen</strong></a>, Region Schaffhausen, gut erreichbar aus dem Klettgau</li>\r\n  </ul>\r\n\r\n  <h3>Graubünden</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/chur\"><strong>Chur</strong></a>, Kanton Graubünden, einzige TCM-Praxis im Bündner Rheintal</li>\r\n  </ul>\r\n\r\n  <div class=\"wa-pullquote\">\"Wir sind bewusst nicht überall, sondern dort, wo wir Therapeutinnen mit echter Erfahrung haben. Eine Praxis ohne gute Therapeutin ist nur eine Adresse, kein Standort.\"</div>\r\n\r\n  <h2>Wie du den richtigen Standort findest.</h2>\r\n  <p>Drei einfache Regeln:</p>\r\n  <ul>\r\n    <li><strong>Wähle den Standort mit der kürzesten Strecke</strong>, nicht den prominentesten. Akupunktur funktioniert nur, wenn du regelmässig kommst. 30 Minuten Anfahrt mehr pro Sitzung bedeuten oft, dass nach drei Wochen Schluss ist.</li>\r\n    <li><strong>Wenn deine Beschwerde spezifisch ist, wähle nach Spezialgebiet.</strong> <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch</a> in Kreuzlingen, Migräne in St. Gallen, Stress in Zug oder Zürich, das macht einen Unterschied.</li>\r\n    <li><strong>Bei Unsicherheit: WhatsApp.</strong> Wir empfehlen ehrlich den passenden Standort, auch wenn das manchmal nicht der nächste ist.</li>\r\n  </ul>\r\n\r\n  <h2>Was an allen Standorten gleich ist.</h2>\r\n  <ul>\r\n    <li>Alle Therapeutinnen sind EMR- und ASCA-zertifiziert</li>\r\n    <li>Gleiche Preise: CHF 160 Erstanamnese (60 Min), CHF 130 Folgesitzung (45 Min)</li>\r\n    <li>Krankenkassen-Abrechnung über alle gängigen Zusatzversicherungen (Helsana, Swica, CSS, Sanitas, Concordia und andere)</li>\r\n    <li>Termine in der Regel 24–48 Stunden über WhatsApp</li>\r\n    <li>Akut-Slots täglich für Patientinnen mit Schmerzen, Migräne, Schlafstörungen</li>\r\n    <li>Ehrliche Zwischenbilanz nach 4 Sitzungen, wenn es nicht wirkt, sagen wir das</li>\r\n  </ul>\r\n\r\n  <h2>Standorte, an denen wir bewusst nicht sind, und warum.</h2>\r\n  <p>Wir haben uns lange überlegt, ob wir in Basel, Bern, Genf oder ins Tessin gehen. Bisher: nein. Der Grund ist einfach: wir hatten dort keine Therapeutin, die unserem Qualitätsanspruch genügt und die wir persönlich kennen. Lieber elf gute Standorte als zwanzig durchschnittliche.</p>\r\n  <p>Wenn du in Basel oder Bern wohnst und nach guter TCM suchst: ehrlicher Rat, frag bei der EMR-Therapeutendatenbank nach lokalen Empfehlungen. Wir können dort nicht für die Qualität bürgen.</p>\r\n\r\n  <h2>Was du bei der ersten Anfrage angeben solltest.</h2>\r\n  <ul>\r\n    <li>Deine Hauptbeschwerde (was bringt dich zu uns)</li>\r\n    <li>Wie lange das schon geht</li>\r\n    <li>Wo du wohnst (PLZ reicht)</li>\r\n    <li>Drei Tageszeiten, die für Termine passen würden</li>\r\n    <li>Falls relevant: bisherige Diagnosen oder Therapien</li>\r\n  </ul>\r\n  <p>Mit diesen Infos können wir dir innert ein bis zwei Stunden den passenden Standort, die passende Therapeutin und konkrete Slots vorschlagen.</p>\r\n\r\n  <p>Mehr zu unserer Methode auf der <a href=\"/therapien/akupunktur\">Akupunktur-Seite</a>. Wenn du nach Beschwerdebild suchst, hilft die <a href=\"/wissen\">Beschwerden-Übersicht</a>.</p>\r\n</div>",
+    "faqs": [
+      {
+        "q": "Habt ihr eine Praxis in meiner Stadt?+",
+        "a": "Wir sind in elf Städten der Deutschschweiz: Zürich, Winterthur, Baden, Aarau, Luzern, Zug, St. Gallen, Frauenfeld, Kreuzlingen, Schaffhausen, Chur. Wenn du im Umkreis von 20 km wohnst, gibt es eine Praxis, die gut erreichbar ist."
+      },
+      {
+        "q": "Habt ihr auch Praxen in Basel, Bern oder im Tessin?+",
+        "a": "Nein. Wir sind bewusst nicht überall. Wir gehen nur dorthin, wo wir Therapeutinnen mit echter Erfahrung haben. Für Basel/Bern empfehlen wir die EMR-Therapeutendatenbank."
+      },
+      {
+        "q": "Welche Krankenkassen-Zusatzversicherungen zahlen?+",
+        "a": "Alle gängigen Komplementärmedizin-Zusatzversicherungen, Helsana, Swica, CSS, Sanitas, Concordia und andere. Meist 75–90% Rückerstattung bei unseren EMR/ASCA-zertifizierten Therapeutinnen."
+      },
+      {
+        "q": "Wie wähle ich den richtigen Standort?+",
+        "a": "Drei Regeln: kürzeste Strecke gewinnt, bei spezifischer Beschwerde nach Spezialgebiet wählen, bei Unsicherheit über WhatsApp fragen. Wir empfehlen ehrlich."
+      },
+      {
+        "q": "Sind alle Praxen gleich gut?+",
+        "a": "Im Grundniveau ja, alle Therapeutinnen sind EMR/ASCA-zertifiziert, alle nutzen das gleiche Behandlungsprotokoll. Spezialisierungen unterscheiden sich. Frag uns bei spezifischen Beschwerden gezielt."
+      }
+    ],
+    "related": [
+      {
+        "href": "/standorte",
+        "label": "Alle Standorte",
+        "cat": "TCM.ch"
+      },
+      {
+        "href": "/standorte/zuerich-oerlikon",
+        "label": "Zürich Oerlikon",
+        "cat": "Standort"
+      },
+      {
+        "href": "/therapien/akupunktur",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      }
+    ]
+  },
+  {
     "slug": "krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
     "title": "Krankenkasse und TCM: Was wirklich übernommen wird (Stand 2026)",
     "metaDesc": "Welche Schweizer Zusatzversicherungen TCM und Akupunktur übernehmen – mit konkreten Prozentsätzen, Jahreslimiten und Praxisbeispielen (Stand 2026).", "region": "Schweizweit", "excerpt": "Welche Zusatzversicherungen zahlen. Wie viel pro Sitzung. Was unsere Patientinnen am häufigsten falsch verstehen.",
@@ -382,64 +440,6 @@ export const wissen: Wissen[] = [
         "href": "/wissen/tcm-naturheilpraktiker-schweiz",
         "label": "TCM-Heilpraktiker oder Naturheilpraktiker?",
         "cat": "Artikel"
-      }
-    ]
-  },
-  {
-    "slug": "akupunktur-in-meiner-naehe-schweiz",
-    "title": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz",
-    "metaDesc": "TCM-Praxen von Zürich bis St. Gallen: welche Praxis zu welcher Beschwerde passt, was es kostet und wie schnell du einen Termin in deiner Nähe bekommst.", "region": "Deutschschweiz", "excerpt": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du den nächsten Termin findest.",
-    "category": "TCM in der Schweiz",
-    "h1": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz.",
-    "lead": "Elf TCM-Praxen von Zürich bis St. Gallen. Wo wir behandeln, wer dort arbeitet, und wie du in unter einer Minute den nächsten Termin in deiner Nähe findest.",
-    "readingTime": "8 Min.",
-    "author": {
-      "name": "Corinna Reinhart",
-      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Mitgründerin TCM.ch",
-      "bio": "Corinna ist Mitgründerin von TCM.ch und hat die meisten Standorte mit aufgebaut. Sie behandelt seit über zehn Jahren in der Deutschschweiz mit Schwerpunkten in Frauengesundheit, Kinderwunsch und chronischen Schmerzen. Ausbildung in der Schweiz, klinische Vertiefung in Hangzhou und Peking."
-    },
-    "reviewerName": "Corinna Reinhart",
-    "datePublished": "2026-05-27",
-    "dateModified": "2026-05-27",
-    "lastReviewed": "2026-05-27",
-    "bodyHtml": "<h2>„Akupunktur in meiner Nähe\", die häufigste Frage.</h2>\r\n  <p>Die häufigste Frage, die wir per WhatsApp bekommen: „Habt ihr eine Praxis bei mir in der Nähe?\" Hier ist die ehrliche Übersicht. Wir behandeln an elf Standorten in der Deutschschweiz. Wenn du in einer dieser Städte oder im Umkreis von etwa 20 Kilometern wohnst, gibt es eine Praxis, die für dich gut erreichbar ist.</p>\r\n\r\n  <div class=\"wa-callout\">\r\n    <div class=\"wa-callout-label\">In Kürze</div>\r\n    <p>Elf TCM.ch-Standorte: Zürich, Winterthur, Baden, Aarau, Luzern, Zug, St. Gallen, Frauenfeld, Kreuzlingen, Schaffhausen, Chur. Alle Therapeutinnen EMR/ASCA-zertifiziert. Sitzung CHF 130–160. Krankenkasse zahlt mit Zusatzversicherung meist 75–90%. Termin meist in 24–48 Stunden über WhatsApp.</p>\r\n  </div>\r\n\r\n  <h2>Standorte nach Region.</h2>\r\n\r\n  <h3>Region Zürich</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/zuerich\"><strong>Zürich</strong></a>, Stadt Zürich, alle Spezialgebiete, Mo–Sa, Abendtermine</li>\r\n    <li><a href=\"/standorte/winterthur-muenzgasse\"><strong>Winterthur</strong></a>, Westen Zürichs, Schwerpunkt Bürobeschwerden & Kinderwunsch</li>\r\n    <li><a href=\"/standorte/baden\"><strong>Baden</strong></a>, Aargau, gut erreichbar aus Limmattal und Brugg</li>\r\n  </ul>\r\n\r\n  <h3>Zentralschweiz</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/luzern\"><strong>Luzern</strong></a>, Stadt Luzern, alle Bereiche, Abendtermine</li>\r\n    <li><a href=\"/standorte/zug\"><strong>Zug</strong></a>, speziell für Berufstätige aus Banking, Crypto und Pharma</li>\r\n  </ul>\r\n\r\n  <h3>Aargau / Mittelland</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/aarau\"><strong>Aarau</strong></a>, Kanton Aargau, Schwerpunkt Schmerz und Stressmedizin</li>\r\n  </ul>\r\n\r\n  <h3>Ostschweiz</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/st-gallen\"><strong>St. Gallen</strong></a>, Stadt St. Gallen, breites Spektrum, HSG-Patientinnen</li>\r\n    <li><a href=\"/standorte/frauenfeld\"><strong>Frauenfeld</strong></a>, unsere Hauptpraxis, alle Bereiche, längste Öffnungszeiten</li>\r\n    <li><a href=\"/standorte/kreuzlingen\"><strong>Kreuzlingen</strong></a>, Bodensee, Schwerpunkt Frauengesundheit & Kinderwunsch</li>\r\n    <li><a href=\"/standorte/schaffhausen\"><strong>Schaffhausen</strong></a>, Region Schaffhausen, gut erreichbar aus dem Klettgau</li>\r\n  </ul>\r\n\r\n  <h3>Graubünden</h3>\r\n  <ul>\r\n    <li><a href=\"/standorte/chur\"><strong>Chur</strong></a>, Kanton Graubünden, einzige TCM-Praxis im Bündner Rheintal</li>\r\n  </ul>\r\n\r\n  <div class=\"wa-pullquote\">\"Wir sind bewusst nicht überall, sondern dort, wo wir Therapeutinnen mit echter Erfahrung haben. Eine Praxis ohne gute Therapeutin ist nur eine Adresse, kein Standort.\"</div>\r\n\r\n  <h2>Wie du den richtigen Standort findest.</h2>\r\n  <p>Drei einfache Regeln:</p>\r\n  <ul>\r\n    <li><strong>Wähle den Standort mit der kürzesten Strecke</strong>, nicht den prominentesten. Akupunktur funktioniert nur, wenn du regelmässig kommst. 30 Minuten Anfahrt mehr pro Sitzung bedeuten oft, dass nach drei Wochen Schluss ist.</li>\r\n    <li><strong>Wenn deine Beschwerde spezifisch ist, wähle nach Spezialgebiet.</strong> <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch</a> in Kreuzlingen, Migräne in St. Gallen, Stress in Zug oder Zürich, das macht einen Unterschied.</li>\r\n    <li><strong>Bei Unsicherheit: WhatsApp.</strong> Wir empfehlen ehrlich den passenden Standort, auch wenn das manchmal nicht der nächste ist.</li>\r\n  </ul>\r\n\r\n  <h2>Was an allen Standorten gleich ist.</h2>\r\n  <ul>\r\n    <li>Alle Therapeutinnen sind EMR- und ASCA-zertifiziert</li>\r\n    <li>Gleiche Preise: CHF 160 Erstanamnese (60 Min), CHF 130 Folgesitzung (45 Min)</li>\r\n    <li>Krankenkassen-Abrechnung über alle gängigen Zusatzversicherungen (Helsana, Swica, CSS, Sanitas, Concordia und andere)</li>\r\n    <li>Termine in der Regel 24–48 Stunden über WhatsApp</li>\r\n    <li>Akut-Slots täglich für Patientinnen mit Schmerzen, Migräne, Schlafstörungen</li>\r\n    <li>Ehrliche Zwischenbilanz nach 4 Sitzungen, wenn es nicht wirkt, sagen wir das</li>\r\n  </ul>\r\n\r\n  <h2>Standorte, an denen wir bewusst nicht sind, und warum.</h2>\r\n  <p>Wir haben uns lange überlegt, ob wir in Basel, Bern, Genf oder ins Tessin gehen. Bisher: nein. Der Grund ist einfach: wir hatten dort keine Therapeutin, die unserem Qualitätsanspruch genügt und die wir persönlich kennen. Lieber elf gute Standorte als zwanzig durchschnittliche.</p>\r\n  <p>Wenn du in Basel oder Bern wohnst und nach guter TCM suchst: ehrlicher Rat, frag bei der EMR-Therapeutendatenbank nach lokalen Empfehlungen. Wir können dort nicht für die Qualität bürgen.</p>\r\n\r\n  <h2>Was du bei der ersten Anfrage angeben solltest.</h2>\r\n  <ul>\r\n    <li>Deine Hauptbeschwerde (was bringt dich zu uns)</li>\r\n    <li>Wie lange das schon geht</li>\r\n    <li>Wo du wohnst (PLZ reicht)</li>\r\n    <li>Drei Tageszeiten, die für Termine passen würden</li>\r\n    <li>Falls relevant: bisherige Diagnosen oder Therapien</li>\r\n  </ul>\r\n  <p>Mit diesen Infos können wir dir innert ein bis zwei Stunden den passenden Standort, die passende Therapeutin und konkrete Slots vorschlagen.</p>\r\n\r\n  <p>Mehr zu unserer Methode auf der <a href=\"/therapien/akupunktur\">Akupunktur-Seite</a>. Wenn du nach Beschwerdebild suchst, hilft die <a href=\"/wissen\">Beschwerden-Übersicht</a>.</p>\r\n</div>",
-    "faqs": [
-      {
-        "q": "Habt ihr eine Praxis in meiner Stadt?+",
-        "a": "Wir sind in elf Städten der Deutschschweiz: Zürich, Winterthur, Baden, Aarau, Luzern, Zug, St. Gallen, Frauenfeld, Kreuzlingen, Schaffhausen, Chur. Wenn du im Umkreis von 20 km wohnst, gibt es eine Praxis, die gut erreichbar ist."
-      },
-      {
-        "q": "Habt ihr auch Praxen in Basel, Bern oder im Tessin?+",
-        "a": "Nein. Wir sind bewusst nicht überall. Wir gehen nur dorthin, wo wir Therapeutinnen mit echter Erfahrung haben. Für Basel/Bern empfehlen wir die EMR-Therapeutendatenbank."
-      },
-      {
-        "q": "Welche Krankenkassen-Zusatzversicherungen zahlen?+",
-        "a": "Alle gängigen Komplementärmedizin-Zusatzversicherungen, Helsana, Swica, CSS, Sanitas, Concordia und andere. Meist 75–90% Rückerstattung bei unseren EMR/ASCA-zertifizierten Therapeutinnen."
-      },
-      {
-        "q": "Wie wähle ich den richtigen Standort?+",
-        "a": "Drei Regeln: kürzeste Strecke gewinnt, bei spezifischer Beschwerde nach Spezialgebiet wählen, bei Unsicherheit über WhatsApp fragen. Wir empfehlen ehrlich."
-      },
-      {
-        "q": "Sind alle Praxen gleich gut?+",
-        "a": "Im Grundniveau ja, alle Therapeutinnen sind EMR/ASCA-zertifiziert, alle nutzen das gleiche Behandlungsprotokoll. Spezialisierungen unterscheiden sich. Frag uns bei spezifischen Beschwerden gezielt."
-      }
-    ],
-    "related": [
-      {
-        "href": "/standorte",
-        "label": "Alle Standorte",
-        "cat": "TCM.ch"
-      },
-      {
-        "href": "/standorte/zuerich-oerlikon",
-        "label": "Zürich Oerlikon",
-        "cat": "Standort"
-      },
-      {
-        "href": "/therapien/akupunktur",
-        "label": "Akupunktur",
-        "cat": "Therapie"
       }
     ]
   }
