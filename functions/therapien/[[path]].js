@@ -3,8 +3,12 @@
 //   /therapien                 -> hub, kept (falls through to SPA, 200)
 //   /therapien/<slug>          -> kept (Astro static therapy page, else SPA)
 //   /therapien/<slug>/<stadt>  -> ALWAYS 410 (therapy x city doorway combos)
+//   except ALLOW-listed real sub-pages (e.g. schroepfen/blutiges-schroepfen)
 //
 // Same doorway logic as the beschwerden nested-combo prune.
+
+// Real nested therapy sub-pages that must stay live (not doorway combos).
+const ALLOW = new Set(["schroepfen/blutiges-schroepfen"]);
 
 function gone() {
   return new Response(
@@ -16,6 +20,9 @@ function gone() {
 export async function onRequest(context) {
   const raw = context.params.path;
   const segments = Array.isArray(raw) ? raw : (raw ? [raw] : []);
-  if (segments.length >= 2) return gone(); // /therapien/<t>/<stadt>(/...) -> gone
-  return context.next();                   // hub + single therapy pages
+  if (segments.length >= 2) {
+    if (ALLOW.has(segments.join("/"))) return context.next(); // real nested sub-page
+    return gone();                                            // /therapien/<t>/<stadt>(/...) -> gone
+  }
+  return context.next();                                      // hub + single therapy pages
 }

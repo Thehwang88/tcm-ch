@@ -1,0 +1,35 @@
+---
+// /therapien/schroepfen/blutiges-schroepfen — child page of the Schröpfen pillar.
+// Same layout/tokens/components as the pillar leaf (therapie-leaves/schroepfen.html):
+// hero, trust strip, content+sidebar, standort block, FAQ accordion, contact form,
+// CTA band, mobile sticky bar. Content/meta/schema swapped. Nested route is
+// allowlisted in functions/therapien/[[path]].js (otherwise 2-segment paths 410).
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import body from '../../../../data/blutiges-schroepfen-body.html?raw';
+
+const url = 'https://tcm.ch/therapien/schroepfen/blutiges-schroepfen/';
+const title = 'Blutiges Schröpfen (Hijama) in der Schweiz | TCM.ch';
+const description = 'Blutiges Schröpfen, auch Blutschröpfen oder Hijama. Erfahrene TCM-Therapeuten, steriles Einwegmaterial, EMR-/ASCA-anerkannt. 12 Standorte Deutschschweiz.';
+
+const faqs = [
+  { q: 'Was ist der Unterschied zwischen blutigem und trockenem Schröpfen?', a: 'Beim trockenen Schröpfen bleibt die Haut unverletzt. Beim blutigen Schröpfen wird sie leicht angeritzt, um eine kleine Menge Blut zu entziehen.' },
+  { q: 'Ist blutiges Schröpfen dasselbe wie Hijama?', a: 'Ja, Hijama ist der arabische Begriff für blutiges Schröpfen.' },
+  { q: 'Ist blutiges Schröpfen sicher?', a: 'Bei Anwendung durch geschultes Personal mit sterilem Einwegmaterial gilt die Methode als risikoarm. Vorerkrankungen werden vorab abgeklärt.' },
+  { q: 'Tut blutiges Schröpfen weh?', a: 'Das Anritzen ist kurz spürbar, aber meist gut auszuhalten.' },
+  { q: 'Übernimmt die Krankenkasse blutiges Schröpfen?', a: 'Bei EMR-/ASCA-registrierten Therapeuten beteiligen sich viele Zusatzversicherungen. Die Grundversicherung nicht.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Schröpfen', item: 'https://tcm.ch/therapien/schroepfen/' },
+    { '@type': 'ListItem', position: 4, name: 'Blutiges Schröpfen', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/schroepfen/blutiges-schroepfen" body={body} schema={schema} />
