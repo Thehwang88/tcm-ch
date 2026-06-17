@@ -1187,6 +1187,8 @@ p{color:#374151;line-height:1.6}
 /* City picker cards, pin before name */
 .location-card .location-plz{font-size:14px;font-weight:500;color:#6B7280;letter-spacing:0;font-variant-numeric:tabular-nums;line-height:1.2;margin:0;display:inline}
 .location-card .location-city{font-size:17px;font-weight:700;color:#0A0A0A;letter-spacing:-.01em;line-height:1.2;margin:0;display:inline}
+/* green location-pin before every standort-card city name (CSS-only so one change applies to all baked cards site-wide); finder card excluded */
+.location-card:not(.location-card--finder) .location-city::before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;flex-shrink:0;background-color:var(--green);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center/contain no-repeat}
 .location-card--finder .location-plz{color:#CACACA}
 .location-card--finder .location-city{color:#374151}
 
