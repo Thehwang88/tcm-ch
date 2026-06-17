@@ -4,6 +4,7 @@
 // therapies, FAQ, "Behandlung in deiner Nähe") is baked into each captured file.
 import SpaPage from '../../layouts/SpaPage.astro';
 import { beschwerden } from '../../data/beschwerden';
+import { prefillForm } from '../../data/form-prefill';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -66,5 +67,7 @@ for (const r of [...(entry?.related ?? []), ...RELATED_POOL]) {
 const relatedBlock = related.length
   ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Verwandte Beschwerden</div><h2 class="section-title">Das könnte dich auch betreffen</h2><div class="cl-links">${related.map((r) => `<a href="/beschwerden/${r.slug}/" class="cl-chip">${r.label}</a>`).join('')}</div></div></section>`
   : '';
+// Prefill the contact form with this complaint as the topic (editable; source in hidden quelle).
+const prefilledBody = prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`);
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={body + relatedBlock} schema={schema} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + relatedBlock} schema={schema} />

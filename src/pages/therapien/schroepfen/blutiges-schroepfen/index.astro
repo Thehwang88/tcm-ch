@@ -5,7 +5,9 @@
 // CTA band, mobile sticky bar. Content/meta/schema swapped. Nested route is
 // allowlisted in functions/therapien/[[path]].js (otherwise 2-segment paths 410).
 import SpaPage from '../../../../layouts/SpaPage.astro';
-import body from '../../../../data/blutiges-schroepfen-body.html?raw';
+import bodyRaw from '../../../../data/blutiges-schroepfen-body.html?raw';
+import { prefillForm } from '../../../../data/form-prefill';
+const body = prefillForm(bodyRaw, 'Ich interessiere mich für blutiges Schröpfen.', 'Therapie: Blutiges Schröpfen');
 
 const url = 'https://tcm.ch/therapien/schroepfen/blutiges-schroepfen/';
 const title = 'Blutiges Schröpfen (Hijama) in der Schweiz | TCM.ch';

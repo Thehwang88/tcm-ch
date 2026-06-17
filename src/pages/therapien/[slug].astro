@@ -6,6 +6,7 @@
 // "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
+import { prefillForm } from '../../data/form-prefill';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/therapie-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -35,5 +36,7 @@ const schema = [
     { '@type': 'ListItem', position: 3, name, item: url },
   ] },
 ];
+// Prefill the contact form with this therapy as the topic (editable; source in hidden quelle).
+const prefilledBody = prefillForm(body, `Ich interessiere mich für ${name}.`, `Therapie: ${name}`);
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={body} schema={schema} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} />

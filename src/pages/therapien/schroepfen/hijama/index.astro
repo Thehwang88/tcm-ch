@@ -4,7 +4,9 @@
 // blutiges-schroepfen sibling. Content/meta/schema swapped. Nested route is
 // allowlisted in functions/therapien/[[path]].js (else 2-segment paths 410).
 import SpaPage from '../../../../layouts/SpaPage.astro';
-import body from '../../../../data/hijama-body.html?raw';
+import bodyRaw from '../../../../data/hijama-body.html?raw';
+import { prefillForm } from '../../../../data/form-prefill';
+const body = prefillForm(bodyRaw, 'Ich interessiere mich für Hijama.', 'Therapie: Hijama');
 
 const url = 'https://tcm.ch/therapien/schroepfen/hijama/';
 const title = 'Hijama in der Schweiz | Traditionelles Schröpfen bei TCM.ch';

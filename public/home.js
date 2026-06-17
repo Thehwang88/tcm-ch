@@ -25,7 +25,7 @@ form.querySelectorAll('input,textarea,select').forEach(function(el){
   if(el.type==='checkbox'){ data[el.name||'consent'] = el.checked; return; }
   if(el.name) data[el.name] = (el.value||'').trim();
 });
-data.quelle = location.pathname || '/';
+if(!data.quelle) data.quelle = location.pathname || '/';
 data.zeit = new Date().toISOString();
 var _ss=form.querySelector('select[name="standort"]'); if(_ss && _ss.selectedIndex>0){ data.standort=_ss.options[_ss.selectedIndex].text; }
 var _ts = window.tcmTsToken(form); var tsEl = _ts.el, tsToken = _ts.token;
