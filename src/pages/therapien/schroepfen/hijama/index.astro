@@ -1,0 +1,35 @@
+---
+// /therapien/schroepfen/hijama — Hijama (traditional cupping) child page of the
+// Schröpfen pillar. Same leaf layout/tokens/components as schroepfen + the
+// blutiges-schroepfen sibling. Content/meta/schema swapped. Nested route is
+// allowlisted in functions/therapien/[[path]].js (else 2-segment paths 410).
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import body from '../../../../data/hijama-body.html?raw';
+
+const url = 'https://tcm.ch/therapien/schroepfen/hijama/';
+const title = 'Hijama in der Schweiz | Traditionelles Schröpfen bei TCM.ch';
+const description = 'Hijama, das traditionelle Schröpfen aus der arabischen und islamischen Heilkunde. Durchgeführt nach Schweizer Hygienestandards, steriles Einwegmaterial, EMR-/ASCA-anerkannt. 12 Standorte.';
+
+const faqs = [
+  { q: 'Ist Hijama dasselbe wie blutiges Schröpfen?', a: 'Ja. Hijama ist der arabische Begriff für blutiges Schröpfen, auch Blutschröpfen genannt.' },
+  { q: 'Wird Hijama bei euch traditionell durchgeführt?', a: 'Wir führen Hijama im Respekt vor der Tradition durch, gleichzeitig nach Schweizer Hygiene- und Qualitätsstandards mit sterilem Einwegmaterial.' },
+  { q: 'Kann ich Hijama nach dem Fasten machen?', a: 'Ja. Viele bevorzugen die Behandlung nach dem Fasten oder nach dem Ramadan. Sag uns einfach deinen Wunschtermin, wir richten uns danach.' },
+  { q: 'Kann ich von einer weiblichen Therapeutin behandelt werden?', a: 'Auf Wunsch organisieren wir das. Gib es einfach bei der Terminanfrage an.' },
+  { q: 'Ist das Material steril?', a: 'Ja, wir verwenden ausschliesslich steriles Einwegmaterial.' },
+  { q: 'Übernimmt die Krankenkasse Hijama?', a: 'Bei EMR-/ASCA-registrierten Therapeuten beteiligen sich viele Zusatzversicherungen. Die Grundversicherung nicht.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Schröpfen', item: 'https://tcm.ch/therapien/schroepfen/' },
+    { '@type': 'ListItem', position: 4, name: 'Hijama', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/schroepfen/hijama" body={body} schema={schema} />
