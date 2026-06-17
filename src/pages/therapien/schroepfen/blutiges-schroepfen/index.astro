@@ -7,7 +7,8 @@
 import SpaPage from '../../../../layouts/SpaPage.astro';
 import bodyRaw from '../../../../data/blutiges-schroepfen-body.html?raw';
 import { prefillForm } from '../../../../data/form-prefill';
-const body = prefillForm(bodyRaw, 'Ich interessiere mich für blutiges Schröpfen.', 'Therapie: Blutiges Schröpfen');
+import { inlineBodyImage } from '../../../../data/inline-body-image';
+const body = inlineBodyImage(prefillForm(bodyRaw, 'Ich interessiere mich für blutiges Schröpfen.', 'Therapie: Blutiges Schröpfen'));
 
 const url = 'https://tcm.ch/therapien/schroepfen/blutiges-schroepfen/';
 const title = 'Blutiges Schröpfen (Hijama) in der Schweiz | TCM.ch';
