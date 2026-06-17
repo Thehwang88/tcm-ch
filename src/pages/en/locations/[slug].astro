@@ -16,7 +16,7 @@ const { id, name, city, region, street, postalCode, phone, openingHours, geo, op
 const path = enLocationPath(id);
 const url = new URL(path, site.url).href;
 const telHref = 'tel:' + phone.replace(/\s+/g, '');
-const contactHref = `/en/contact?standort=${encodeURIComponent(name)}`;
+const contactHref = `/en/contact/?standort=${encodeURIComponent(name)}`;
 const mapsHref = street
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${street}, ${postalCode} ${city}`)}`
   : null;
@@ -119,7 +119,7 @@ const breadcrumbLd = {
           <h3>Insurance & costs</h3>
           <p>
             Our practitioners are EMR-/ASCA-recognised, so treatment is typically reimbursed through
-            supplementary insurance. <a href="/en/health-insurance-acupuncture" style="color:var(--blue);font-weight:600">Is acupuncture covered by insurance? →</a>
+            supplementary insurance. <a href="/en/health-insurance-acupuncture/" style="color:var(--blue);font-weight:600">Is acupuncture covered by insurance? →</a>
           </p>
         </div>
       </div>
@@ -134,7 +134,7 @@ const breadcrumbLd = {
       </p>
       <div class="cards">
         {commonConditions.map((c) => (
-          <a class="card" href={`/beschwerden/${c.id}`}>
+          <a class="card" href={`/beschwerden/${c.id}/`}>
             <h3>{c.label}</h3>
           </a>
         ))}

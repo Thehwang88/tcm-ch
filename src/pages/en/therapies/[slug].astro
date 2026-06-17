@@ -18,7 +18,7 @@ const {
 
 const path = enTherapyPath(slug);
 const url = new URL(path, site.url).href;
-const contactHref = `/en/contact?therapie=${encodeURIComponent(name)}`;
+const contactHref = `/en/contact/?therapie=${encodeURIComponent(name)}`;
 
 const title = `${titleTerm} | TCM.ch`;
 const h1 = name;
@@ -152,7 +152,7 @@ const breadcrumbLd = {
       <div class="xlinks">
         <strong>Next steps:</strong>
         <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture">Is this covered by insurance? →</a>
+        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
       </div>
 
       <div class="cta-row">

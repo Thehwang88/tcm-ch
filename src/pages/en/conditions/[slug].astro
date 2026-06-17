@@ -16,7 +16,7 @@ const { slug, condition: name, keyword, lead, intro, howWeTreat, evidence, redFl
 
 const path = enConditionPath(slug);
 const url = new URL(path, site.url).href;
-const contactHref = `/en/contact?beschwerde=${encodeURIComponent(name)}`;
+const contactHref = `/en/contact/?beschwerde=${encodeURIComponent(name)}`;
 
 const title = `Acupuncture for ${name} | TCM.ch`;
 const h1 = `Acupuncture & TCM for ${name}`;
@@ -139,7 +139,7 @@ const breadcrumbLd = {
       <div class="xlinks">
         <strong>Next steps:</strong>
         <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture">Is this covered by insurance? →</a>
+        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
       </div>
 
       <div class="cta-row">

@@ -24,7 +24,7 @@ const itemListLd = {
     '@type': 'ListItem',
     position: i + 1,
     name: a.data.title,
-    url: new URL(`/en/knowledge/${a.data.slug}`, 'https://tcm.ch').href,
+    url: new URL(`/en/knowledge/${a.data.slug}/`, 'https://tcm.ch').href,
   })),
 };
 ---
@@ -45,7 +45,7 @@ const itemListLd = {
         what it costs, and when to see a doctor first.
       </p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact">Request an appointment</a>
+        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
         <a class="btn btn--ghost" href="/en/conditions/">What we treat →</a>
       </div>
     </div>
@@ -55,7 +55,7 @@ const itemListLd = {
     <div class="wrap">
       <div class="cards">
         {articles.map((a) => (
-          <a class="card card--media" href={`/en/knowledge/${a.data.slug}`}>
+          <a class="card card--media" href={`/en/knowledge/${a.data.slug}/`}>
             {a.data.heroImage && (
               <img class="card-thumb" src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async" />
             )}
@@ -69,7 +69,7 @@ const itemListLd = {
       <div class="index-xlinks">
         <a class="inline-link" href="/en/conditions/">Conditions we treat →</a>
         <a class="inline-link" href="/en/therapies/">Our therapies →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture">Insurance & costs →</a>
+        <a class="inline-link" href="/en/health-insurance-acupuncture/">Insurance & costs →</a>
       </div>
     </div>
   </section>

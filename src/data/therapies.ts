@@ -335,7 +335,7 @@ export const therapies: Therapy[] = [
 ];
 
 // URL helpers (used by pages + the hreflang pair map in site.ts).
-export const enTherapyPath = (slug: string) => `/en/therapies/${slug}`;
+export const enTherapyPath = (slug: string) => `/en/therapies/${slug}/`;
 export const deTherapyPath = (deSlug: string) => `/therapien/${deSlug}`;
 
 // Lookup for cross-linking related therapies.

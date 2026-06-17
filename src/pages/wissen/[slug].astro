@@ -57,7 +57,7 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   <article>
     <section class="hero">
       <div class="wrap narrow">
-        <a class="back" href="/wissen">← Wissen</a>
+        <a class="back" href="/wissen/">← Wissen</a>
         <div class="cat">{data.category}</div>
         <h1>{data.h1}</h1>
         <p class="lead">{data.lead}</p>
@@ -78,7 +78,7 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
           <div class="cta-card-title">{data.ctaTitle ?? 'Beschwerden abklären lassen?'}</div>
           <p>Schildere uns kurz deine Situation – wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.</p>
           <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt">Termin anfragen</a>
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
             <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
           </div>
         </div>

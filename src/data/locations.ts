@@ -122,7 +122,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
 
 // DE Standort URL for a given clinic id (used for hreflang pairing).
 export const deStandortPath = (id: string) => `/standorte/${id}`;
-export const enLocationPath = (id: string) => `/en/locations/${id}`;
+export const enLocationPath = (id: string) => `/en/locations/${id}/`;
 
 // schema.org day code -> full English label, for human-readable hours display.
 const DAY_LABEL: Record<string, string> = {

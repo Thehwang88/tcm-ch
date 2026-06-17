@@ -1,3 +1,6 @@
+# --- Canonical host: force www -> non-www (https, non-www is canonical) ---
+https://www.tcm.ch/*       https://tcm.ch/:splat   301!
+
 # --- 301s (must stay ABOVE the catch-all) ---
 /standorte/winterthur      /standorte/winterthur-muenzgasse/  301
 /krankenkasse              /krankenkassen/        301
