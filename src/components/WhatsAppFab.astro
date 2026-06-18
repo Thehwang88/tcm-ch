@@ -27,6 +27,8 @@ const WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-P
   }
   /* Mobile uses the sticky bottom CTA bar instead (no collision) */
   @media (max-width: 767px) { .wa-fab { display: none; } }
+  /* Desktop (>=1024px) uses the WhatsApp concierge widget instead (no collision) */
+  @media (min-width: 1024px) { .wa-fab { display: none; } }
   @media (prefers-reduced-motion: reduce) {
     .wa-fab { transition: opacity .2s ease; }
     .wa-fab.is-hidden { transform: none; }
