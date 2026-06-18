@@ -8,6 +8,67 @@ export interface WissenAuthor { name: string; role: string; bio: string }
 export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
 export const wissen: Wissen[] = [
   {
+    "slug": "elektroakupunktur-wirkung",
+    "title": "Elektroakupunktur: Wirkung, Ablauf und für wen sie geeignet ist",
+    "metaDesc": "Wie Elektroakupunktur wirkt, wie sie sich anfühlt und wer sie besser meiden sollte, etwa mit Herzschrittmacher. Ehrlich und verständlich erklärt.",
+    "region": "Schweizweit",
+    "excerpt": "Wie Elektroakupunktur funktioniert, wie sie sich anfühlt und wer sie besser meiden sollte. Der Überblick.",
+    "category": "TCM in der Schweiz",
+    "h1": "Elektroakupunktur: Wirkung, Ablauf und für wen sie geeignet ist",
+    "lead": "Wie Elektroakupunktur funktioniert, wie sie sich anfühlt und wer sie besser meiden sollte. Der Überblick.",
+    "readingTime": "5 Min.",
+    "ctaTitle": "Elektroakupunktur in der Praxis besprechen?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-06-18",
+    "dateModified": "2026-06-18",
+    "lastReviewed": "2026-06-18",
+    "bodyHtml": "<h2>Was ist Elektroakupunktur?</h2><p>Bei der Elektroakupunktur werden gesetzte Akupunkturnadeln über ein Gerät mit schwachen elektrischen Impulsen verbunden. Statt den Reiz von Hand zu setzen, übernimmt das Gerät eine gleichmässige Stimulation über die ganze Sitzung. Wie wir das in der Praxis einsetzen, liest du auf unserer Seite zur <a href=\"/therapien/elektroakupunktur/\">Elektroakupunktur</a>.</p><h2>Wie wirkt der Strom?</h2><p>Die feinen Impulse reizen den Punkt kontinuierlich und gleichmässig. Der Reiz ist dadurch stärker und konstanter als bei der manuellen Akupunktur, was vor allem bei chronischen oder hartnäckigen Beschwerden genutzt wird.</p><h2>Wie fühlt sich Elektroakupunktur an?</h2><p>Spürbar ist meist ein leichtes Kribbeln, Pochen oder Vibrieren. Die Intensität wird langsam hochgeregelt und soll angenehm bleiben. Schmerzen sind kein Ziel und ein Zeichen, die Stärke zu reduzieren.</p><h2>Für wen ist sie geeignet, für wen nicht?</h2><p>Geeignet ist Elektroakupunktur für viele Schmerz- und Verspannungsbeschwerden. Nicht angewendet wird sie bei Trägern eines Herzschrittmachers oder elektronischer Implantate, in der Schwangerschaft und bei bestimmten Herzerkrankungen. Im Zweifel klärt die Therapeutin vorab ab.</p><h2>Unterschied zur klassischen Akupunktur</h2><p>Die klassische <a href=\"/therapien/akupunktur/\">Akupunktur</a> setzt den Reiz von Hand, die Elektroakupunktur über ein Gerät und konstant über die ganze Sitzung. Welche Variante passt, hängt von Beschwerde und Vorliebe ab.</p><p>Elektroakupunktur wird im Rahmen einer Akupunkturbehandlung abgerechnet. Wie die Kosten über die Zusatzversicherung laufen, liest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a>.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Wie wirkt Elektroakupunktur?",
+        "a": "Über schwache elektrische Impulse, die den Akupunkturpunkt gleichmässig und stärker reizen als die Handstimulation."
+      },
+      {
+        "q": "Hat Elektroakupunktur Nebenwirkungen?",
+        "a": "Selten leichte Reizung an der Einstichstelle. Bei korrekter Einstellung ist sie gut verträglich."
+      },
+      {
+        "q": "Ist Elektroakupunktur mit Herzschrittmacher möglich?",
+        "a": "Nein. Bei Herzschrittmacher oder elektronischen Implantaten wird sie nicht angewendet."
+      },
+      {
+        "q": "Wie oft sollte man Elektroakupunktur machen?",
+        "a": "Das hängt von der Beschwerde ab und wird individuell festgelegt."
+      },
+      {
+        "q": "Was kostet Elektroakupunktur?",
+        "a": "Sie wird im Rahmen einer Akupunkturbehandlung abgerechnet. Bei EMR-/ASCA-Therapeuten beteiligen sich viele Zusatzversicherungen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/elektroakupunktur/",
+        "label": "Elektroakupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/akupunktur/",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/krankenkassen/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Info"
+      }
+    ]
+  },
+  {
     "slug": "dauernadeln-akupunktur",
     "title": "Akupunktur mit Dauernadeln: Wirkung, Tragedauer und Ablauf",
     "metaDesc": "Dauernadeln in der Akupunktur: was sie sind, wie lange sie bleiben, wo sie gesetzt werden und worauf du achten solltest. Ehrlich und verständlich erklärt.",

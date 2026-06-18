@@ -23,10 +23,14 @@ const body = Astro.props.body as string;
 const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
 const name = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/\s+/g, ' ').trim() : slug;
 const url = `https://tcm.ch/therapien/${slug}/`;
-const title = `${name} – TCM-Behandlung bei TCM.ch`;
-// Per-slug meta override (default template otherwise).
+// Per-slug overrides (default templates otherwise).
+const TITLE_OVERRIDE: Record<string, string> = {
+  elektroakupunktur: 'Elektroakupunktur in der Schweiz | TCM.ch',
+};
+const title = TITLE_OVERRIDE[slug] ?? `${name} – TCM-Behandlung bei TCM.ch`;
 const DESC_OVERRIDE: Record<string, string> = {
   schroepfen: 'Schröpfen und blutiges Schröpfen (Hijama) bei TCM.ch: EMR-/ASCA-anerkannt, Zusatzversicherung 80–100 %. Geprüfte Therapeuten an 12 Standorten.',
+  elektroakupunktur: 'Elektroakupunktur kombiniert Akupunktur mit sanften elektrischen Impulsen für eine stärkere, gleichmässige Reizung. Von geprüften TCM-Therapeuten an 12 Standorten. EMR-/ASCA.',
 };
 const description = DESC_OVERRIDE[slug] ?? `${name} bei TCM.ch: medizinische TCM, EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden.`;
 const schema = [
@@ -38,6 +42,20 @@ const schema = [
     { '@type': 'ListItem', position: 3, name, item: url },
   ] },
 ];
+// Per-slug FAQ -> FAQPage schema (only where the leaf carries a matching FAQ accordion).
+const FAQ_OVERRIDE: Record<string, { q: string; a: string }[]> = {
+  elektroakupunktur: [
+    { q: 'Was ist Elektroakupunktur?', a: 'Akupunktur, bei der die Nadeln mit einem Gerät verbunden werden, das schwache elektrische Impulse abgibt und den Punkt gleichmässig stimuliert.' },
+    { q: 'Tut Elektroakupunktur weh?', a: 'Nein. Du spürst ein leichtes Kribbeln oder Pochen, das angenehm eingestellt wird.' },
+    { q: 'Was ist der Unterschied zur normalen Akupunktur?', a: 'Statt von Hand übernimmt ein Gerät die gleichmässige Stimulation über die ganze Sitzung, der Reiz ist stärker und konstanter.' },
+    { q: 'Ist Elektroakupunktur für jeden geeignet?', a: 'Nicht bei Herzschrittmacher, elektronischen Implantaten, in der Schwangerschaft oder bei bestimmten Herzerkrankungen. Vorab mit dem Therapeuten klären.' },
+    { q: 'Übernimmt die Krankenkasse Elektroakupunktur?', a: 'Bei EMR-/ASCA-Therapeuten beteiligen sich viele Zusatzversicherungen, die Grundversicherung nicht.' },
+  ],
+};
+if (FAQ_OVERRIDE[slug]) {
+  schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: FAQ_OVERRIDE[slug].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+}
 // Prefill the contact form with this therapy as the topic (editable; source in hidden quelle).
 // + move the orphaned sticky body image into the text flow (after the intro paragraph).
 const prefilledBody = appendSidebarAllLink(
