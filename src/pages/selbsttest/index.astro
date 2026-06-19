@@ -1,0 +1,342 @@
+---
+// /selbsttest — interaktiver TCM-Selbsttest (Funnel). Eigene Seite + Vanilla-Client-Island,
+// State nur im Speicher (kein localStorage). Ergebnis verlinkt die Therapie-Pages und
+// uebergibt die Antworten als URL-Parameter ans Home-Kontaktformular (quelle=Selbsttest);
+// das Lesen der Parameter passiert in public/home.js (gleicher quelle-Mechanismus).
+import { site } from '../../data/site';
+import DeHeader from '../../components/DeHeader.astro';
+import Footer from '../../components/Footer.astro';
+import HeadAnalytics from '../../components/HeadAnalytics.astro';
+
+const title = 'TCM Selbsttest | Passt TCM zu deinen Beschwerden? | TCM.ch';
+const description =
+  'Finde in unter einer Minute heraus, ob die TCM bei deinen Beschwerden infrage kommt. Unverbindlich, ohne Anmeldung, mit ehrlicher Einschätzung und passenden Methoden.';
+const canonical = 'https://tcm.ch/selbsttest/';
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, url: canonical, inLanguage: 'de-CH',
+    description, isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Selbsttest', item: canonical },
+  ] },
+];
+---
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <HeadAnalytics />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/home.css" />
+    <script is:inline>document.documentElement.classList.add('js','ready');</script>
+    <style is:inline>#st-content{padding-top:68px}</style>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={site.ogImage} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </head>
+  <body>
+    <DeHeader />
+    <main id="st-content">
+      <section class="st-section">
+        <div class="st-card" id="stCard">
+          <div class="st-top" id="stTop" hidden>
+            <button class="st-back" id="stBack" type="button" aria-label="Eine Frage zurück">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              Zurück
+            </button>
+            <div class="st-prog" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div class="st-prog-bar" id="stProgBar"></div></div>
+            <div class="st-step" id="stStep">1 / 5</div>
+          </div>
+
+          <div class="st-body">
+            <!-- Entry -->
+            <div class="st-screen is-active" id="scEntry">
+              <span class="st-eyebrow">TCM Selbsttest</span>
+              <h1 class="st-h1">Passt die TCM zu deinen Beschwerden?</h1>
+              <p class="st-lead">Finde in unter 1 Minute heraus, ob die TCM bei deinen Beschwerden helfen kann. Unverbindlich, ohne Anmeldung.</p>
+              <button class="st-cta" id="stStart" type="button">Test starten</button>
+              <p class="st-note">5 kurze Fragen, nur Antippen, keine Eingabe nötig.</p>
+            </div>
+
+            <!-- Question (dynamisch) -->
+            <div class="st-screen" id="scQ"><div id="qInner"></div></div>
+
+            <!-- Result (dynamisch) -->
+            <div class="st-screen" id="scResult"><div id="rInner"></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+
+    <style>
+      .st-section { max-width: 600px; margin: 0 auto; padding: 28px 18px 64px; }
+      .st-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); box-shadow: var(--sh-md); padding: 22px 20px 26px; }
+
+      /* Top bar: back + progress + step */
+      .st-top { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+      .st-back { display: inline-flex; align-items: center; gap: 4px; border: none; background: none; color: var(--mid); font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; cursor: pointer; padding: 4px 4px 4px 0; }
+      .st-back:hover { color: var(--black); }
+      .st-prog { flex: 1; height: 7px; background: var(--blue-light); border-radius: 999px; overflow: hidden; }
+      .st-prog-bar { height: 100%; width: 20%; background: var(--green); border-radius: 999px; transition: width .3s var(--ease-out); }
+      .st-step { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+
+      /* Screens + transition */
+      .st-screen { display: none; }
+      .st-screen.is-active { display: block; animation: stIn .28s var(--ease-out) both; }
+      @keyframes stIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+      .st-eyebrow { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+      .st-h1 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px, 6vw, 34px); line-height: 1.15; letter-spacing: -0.02em; color: var(--black); margin: 0 0 12px; }
+      .st-lead { font-size: 16px; line-height: 1.6; color: var(--mid); margin: 0 0 24px; }
+      .st-q { font-family: var(--font-sans); font-weight: 800; font-size: clamp(20px, 5vw, 25px); line-height: 1.25; color: var(--black); margin: 0 0 20px; }
+
+      /* CTA */
+      .st-cta { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; background: var(--green); color: #fff; border: none; font-family: var(--font-sans); font-weight: 700; font-size: 16px; padding: 15px; border-radius: var(--r-btn); cursor: pointer; box-shadow: var(--sh-btn); transition: background .2s ease, transform .15s ease, box-shadow .2s ease; }
+      .st-cta:hover { background: var(--green-dark); box-shadow: var(--sh-btn-hover); }
+      .st-cta:active { transform: scale(.99); }
+      .st-note { font-size: 13px; color: var(--muted); text-align: center; margin: 14px 0 0; }
+
+      /* Answer buttons */
+      .st-opts { display: flex; flex-direction: column; gap: 10px; }
+      .st-opt { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; box-sizing: border-box; text-align: left; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r-btn); padding: 15px 16px; font-family: var(--font-sans); font-size: 15.5px; font-weight: 600; color: var(--black); cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .1s ease; }
+      .st-opt:hover { border-color: var(--green); background: var(--green-mint); }
+      .st-opt:active { transform: scale(.99); }
+      .st-opt svg { color: var(--green); flex-shrink: 0; opacity: 0; transition: opacity .15s ease; }
+      .st-opt:hover svg { opacity: 1; }
+
+      /* Result */
+      .st-r-head { font-family: var(--font-sans); font-weight: 800; font-size: clamp(22px, 5.5vw, 28px); line-height: 1.2; color: var(--black); margin: 0 0 12px; }
+      .st-r-text { font-size: 16px; line-height: 1.6; color: var(--mid); margin: 0 0 22px; }
+      .st-r-label { font-size: 12.5px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+      .st-methods { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 22px; }
+      .st-method { display: inline-flex; align-items: center; gap: 7px; background: var(--blue-light); color: var(--blue-dark); text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 10px 14px; border-radius: 999px; transition: background .15s ease; }
+      .st-method:hover { background: var(--green-mid); }
+      .st-method svg { flex-shrink: 0; }
+      .st-kasse { font-size: 14px; line-height: 1.55; color: var(--mid); background: var(--surface); border-radius: 12px; padding: 13px 15px; margin: 0 0 22px; }
+
+      .st-offer { display: flex; flex-direction: column; gap: 10px; margin: 0 0 24px; }
+      .st-offer-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; line-height: 1.45; color: var(--black); }
+      .st-offer-item svg { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+      .st-r-ctas { display: flex; flex-direction: column; gap: 10px; }
+      .st-cta-secondary { display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; background: var(--white); color: var(--black); border: 1.5px solid var(--border); font-family: var(--font-sans); font-weight: 700; font-size: 15px; padding: 14px; border-radius: var(--r-btn); text-decoration: none; transition: border-color .15s ease, background .15s ease; }
+      .st-cta-secondary:hover { border-color: var(--green); background: var(--green-mint); }
+      .st-cta[href] { text-decoration: none; }
+      .st-restart { display: block; width: 100%; background: none; border: none; color: var(--muted); font-family: var(--font-sans); font-size: 13.5px; cursor: pointer; padding: 14px 0 0; text-align: center; }
+      .st-restart:hover { color: var(--black); }
+
+      @media (min-width: 560px) { .st-section { padding-top: 40px; } .st-card { padding: 30px 30px 34px; } }
+      @media (prefers-reduced-motion: reduce) { .st-screen.is-active { animation: none; } .st-prog-bar { transition: none; } }
+    </style>
+
+    <script src="/header.js" is:inline defer></script>
+    <script is:inline>
+      (function () {
+        var METHODS = {
+          'akupunktur': { l: 'Akupunktur', h: '/therapien/akupunktur/' },
+          'schroepfen': { l: 'Schröpfen', h: '/therapien/schroepfen/' },
+          'tuina': { l: 'Tuina', h: '/therapien/tuina/' },
+          'elektroakupunktur': { l: 'Elektroakupunktur', h: '/therapien/elektroakupunktur/' },
+          'ear-seeds': { l: 'Ear Seeds', h: '/therapien/ear-seeds/' },
+          'kraeutertherapie': { l: 'Kräutertherapie', h: '/therapien/kraeutertherapie/' }
+        };
+        var QUESTIONS = [
+          { key: 'f1', q: 'Was ist dein Hauptanliegen?', opts: [
+            { v: 'ruecken-nacken', l: 'Rücken / Nacken' },
+            { v: 'schlaf', l: 'Schlafprobleme' },
+            { v: 'stress', l: 'Stress / Burnout' },
+            { v: 'kopf', l: 'Kopfschmerzen / Migräne' },
+            { v: 'verdauung', l: 'Verdauung' },
+            { v: 'frauen', l: 'Frauenbeschwerden / Zyklus' },
+            { v: 'schmerzen', l: 'Schmerzen allgemein' },
+            { v: 'anderes', l: 'Etwas anderes' }
+          ] },
+          { key: 'f2', q: 'Wie lange bestehen die Beschwerden?', opts: [
+            { v: 'akut', l: 'Akut, seit wenigen Wochen' },
+            { v: 'monate', l: 'Seit einigen Monaten' },
+            { v: 'chronisch', l: 'Chronisch, über ein Jahr' }
+          ] },
+          { key: 'f3', q: 'Wie stark beeinträchtigt es deinen Alltag?', opts: [
+            { v: 'kaum', l: 'Kaum' },
+            { v: 'spuerbar', l: 'Spürbar' },
+            { v: 'stark', l: 'Stark' }
+          ] },
+          { key: 'f4', q: 'Was hast du bisher versucht?', opts: [
+            { v: 'nichts', l: 'Noch nichts' },
+            { v: 'medikamente', l: 'Medikamente' },
+            { v: 'physio', l: 'Physiotherapie' },
+            { v: 'andere', l: 'Andere Methoden' }
+          ] },
+          { key: 'f5', q: 'Hast du eine Zusatzversicherung?', opts: [
+            { v: 'ja', l: 'Ja' },
+            { v: 'nein', l: 'Nein' },
+            { v: 'weiss-nicht', l: 'Weiss nicht' }
+          ] }
+        ];
+        var MAP = {
+          'ruecken-nacken': ['akupunktur', 'schroepfen', 'tuina', 'elektroakupunktur'],
+          'schlaf': ['akupunktur', 'ear-seeds'],
+          'stress': ['akupunktur', 'ear-seeds', 'tuina'],
+          'kopf': ['akupunktur', 'schroepfen'],
+          'verdauung': ['akupunktur', 'kraeutertherapie'],
+          'frauen': ['akupunktur', 'kraeutertherapie'],
+          'schmerzen': ['akupunktur', 'elektroakupunktur', 'schroepfen'],
+          'anderes': ['akupunktur']
+        };
+        var PHRASE = {
+          'ruecken-nacken': 'Rücken- und Nackenbeschwerden',
+          'schlaf': 'Schlafproblemen',
+          'stress': 'Stress und Erschöpfung',
+          'kopf': 'Kopfschmerzen und Migräne',
+          'verdauung': 'Verdauungsbeschwerden',
+          'frauen': 'Frauenbeschwerden und Zyklusthemen',
+          'schmerzen': 'Schmerzen',
+          'anderes': 'deinem Anliegen'
+        };
+        var DUR = {
+          'akut': 'Da die Beschwerden noch recht frisch sind, lohnt sich ein früher Start oft besonders.',
+          'monate': 'Da sie schon einige Monate bestehen, ist meist eine Behandlung über mehrere Sitzungen sinnvoll.',
+          'chronisch': 'Bei länger bestehenden Beschwerden braucht es in der Regel etwas Geduld und mehrere Sitzungen.'
+        };
+        var KASSE = {
+          'ja': 'Mit einer Zusatzversicherung übernehmen viele Kassen einen grossen Teil der Kosten, sofern dein Therapeut EMR- oder ASCA-anerkannt ist.',
+          'nein': 'Ohne Zusatzversicherung zahlst du die Behandlung in der Regel selbst. Was möglich ist, klären wir gern vorab.',
+          'weiss-nicht': 'Ob deine Kasse mitzahlt, lässt sich vor dem ersten Termin in Ruhe klären.'
+        };
+
+        var ans = {};
+        var idx = 0;
+
+        var scEntry = document.getElementById('scEntry');
+        var scQ = document.getElementById('scQ');
+        var scResult = document.getElementById('scResult');
+        var qInner = document.getElementById('qInner');
+        var rInner = document.getElementById('rInner');
+        var top = document.getElementById('stTop');
+        var bar = document.getElementById('stProgBar');
+        var step = document.getElementById('stStep');
+        var prog = top.querySelector('.st-prog');
+
+        var CHEV = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>';
+        var CHECK = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        var DOT = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"></circle></svg>';
+
+        function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+        function show(el) {
+          [scEntry, scQ, scResult].forEach(function (s) { s.classList.remove('is-active'); });
+          el.classList.remove('is-active'); void el.offsetWidth; el.classList.add('is-active');
+        }
+
+        function renderQuestion(i) {
+          var Q = QUESTIONS[i];
+          var html = '<h2 class="st-q">' + esc(Q.q) + '</h2><div class="st-opts">';
+          for (var j = 0; j < Q.opts.length; j++) {
+            var o = Q.opts[j];
+            html += '<button class="st-opt" type="button" data-v="' + esc(o.v) + '" data-l="' + esc(o.l) + '"><span>' + esc(o.l) + '</span>' + CHEV + '</button>';
+          }
+          html += '</div>';
+          qInner.innerHTML = html;
+          top.hidden = false;
+          var pct = ((i + 1) / QUESTIONS.length) * 100;
+          bar.style.width = pct + '%';
+          step.textContent = (i + 1) + ' / ' + QUESTIONS.length;
+          prog.setAttribute('aria-valuenow', String(i + 1));
+          show(scQ);
+        }
+
+        function buildAnliegen() {
+          function L(k) { return ans[k] ? ans[k].l : '-'; }
+          return 'Anliegen: ' + L('f1') + '. Besteht seit: ' + L('f2') + '. Beeinträchtigung im Alltag: ' + L('f3') + '. Bereits versucht: ' + L('f4') + '. Zusatzversicherung: ' + L('f5') + '.';
+        }
+
+        function renderResult() {
+          top.hidden = true;
+          var f1 = ans.f1.v, f2 = ans.f2.v, f5 = ans.f5.v;
+          var slugs = MAP[f1] || ['akupunktur'];
+
+          var text;
+          if (f1 === 'anderes') {
+            text = 'Bei deinem Anliegen lässt sich pauschal wenig sagen. ' + (DUR[f2] || '') + ' Am besten klärst du in einem kurzen Erstgespräch, ob und wie die TCM unterstützen kann.';
+          } else {
+            text = 'Bei ' + PHRASE[f1] + ' wird die TCM häufig eingesetzt. ' + (DUR[f2] || '') + ' Ob sie in deinem Fall passt, klärt am besten ein kurzes Erstgespräch.';
+          }
+
+          var methodsHtml = '';
+          for (var k = 0; k < slugs.length; k++) {
+            var m = METHODS[slugs[k]];
+            if (!m) continue;
+            methodsHtml += '<a class="st-method" href="' + m.h + '">' + DOT + esc(m.l) + '</a>';
+          }
+          var methodsHint = (f1 === 'anderes') ? '<p class="st-r-text" style="margin-top:-8px">Als häufiger Einstieg kommt Akupunktur infrage.</p>' : '';
+
+          var offer = ''
+            + '<div class="st-offer-item">' + CHECK + '<span>Kassendeckung vorab geprüft (EMR-/ASCA-anerkannte Therapeuten)</span></div>'
+            + '<div class="st-offer-item">' + CHECK + '<span>Termin oft in 24 bis 48 Stunden</span></div>'
+            + '<div class="st-offer-item">' + CHECK + '<span>Ehrlichkeits-Garantie: Wir sagen dir auch, wenn die TCM nicht das Richtige ist</span></div>';
+
+          var anliegenHref = '/?quelle=Selbsttest&anliegen=' + encodeURIComponent(buildAnliegen()) + '#home-contact-form';
+
+          rInner.innerHTML = ''
+            + '<span class="st-eyebrow">Dein Ergebnis</span>'
+            + '<h2 class="st-r-head">Das könnte zu dir passen</h2>'
+            + '<p class="st-r-text">' + esc(text) + '</p>'
+            + '<div class="st-r-label">Häufig eingesetzte Methoden</div>'
+            + '<div class="st-methods">' + methodsHtml + '</div>'
+            + methodsHint
+            + '<div class="st-kasse">' + esc(KASSE[f5] || KASSE['weiss-nicht']) + '</div>'
+            + '<div class="st-offer">' + offer + '</div>'
+            + '<div class="st-r-ctas">'
+            + '<a class="st-cta" href="' + anliegenHref + '">Anliegen schildern</a>'
+            + '<a class="st-cta-secondary" href="/krankenkassen/">Kassendeckung prüfen</a>'
+            + '</div>'
+            + '<button class="st-restart" id="stRestart" type="button">Test neu starten</button>';
+
+          document.getElementById('stRestart').addEventListener('click', restart);
+          show(scResult);
+        }
+
+        function pick(v, l) {
+          var Q = QUESTIONS[idx];
+          ans[Q.key] = { v: v, l: l };
+          if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(idx); }
+          else { renderResult(); }
+        }
+
+        function back() {
+          if (scResult.classList.contains('is-active')) { renderQuestion(idx); return; }
+          if (idx > 0) { idx--; renderQuestion(idx); }
+          else { top.hidden = true; show(scEntry); }
+        }
+
+        function restart() { ans = {}; idx = 0; top.hidden = true; show(scEntry); }
+
+        document.getElementById('stStart').addEventListener('click', function () { idx = 0; renderQuestion(0); });
+        document.getElementById('stBack').addEventListener('click', back);
+        qInner.addEventListener('click', function (e) {
+          var btn = e.target.closest('.st-opt');
+          if (!btn) return;
+          pick(btn.getAttribute('data-v'), btn.getAttribute('data-l'));
+        });
+      })();
+    </script>
+  </body>
+</html>

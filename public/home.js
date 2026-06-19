@@ -173,6 +173,20 @@ if(!isOpen){a.classList.add('open');btn.classList.add('open');btn.setAttribute('
     so.observe(sb);
   }
   try{ var sp=new URLSearchParams(location.search).get('standort'); if(sp){ setTimeout(function(){openContactForm(null,sp);},250); } }catch(e){}
+  // Prefill handoff (e.g. from /selbsttest/): ?anliegen=...&quelle=... fills the Anliegen
+  // textarea + sets the hidden quelle field, then scrolls to the form. Same quelle path as submit.
+  try{
+    var _qp=new URLSearchParams(location.search);
+    var _anl=_qp.get('anliegen'); var _qz=_qp.get('quelle');
+    if(_anl||_qz){
+      var _form=document.querySelector('#home-contact-form form');
+      if(_form){
+        if(_anl){ var _ta=_form.querySelector('textarea[name="anliegen"]'); if(_ta){ _ta.value=_anl; } }
+        if(_qz){ var _h=_form.querySelector('input[name="quelle"]'); if(!_h){ _h=document.createElement('input'); _h.type='hidden'; _h.name='quelle'; _form.appendChild(_h); } _h.value=_qz; }
+        setTimeout(function(){ openContactForm(); },300);
+      }
+    }
+  }catch(e){}
 })();
 
 /* ── Kräutertherapie modal (ported) ── */
