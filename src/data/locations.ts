@@ -1,4 +1,4 @@
-// ── Single source of truth for the 12 TCM.ch clinics (EN Astro pages). ──
+// ── Single source of truth for the 13 TCM.ch clinics (EN Astro pages). ──
 // Values pulled verbatim from the DE SPA `LOCATIONS` array in public/index.html
 // (street, postal code, city, phone, opening hours, geo). Do NOT invent data.
 //
