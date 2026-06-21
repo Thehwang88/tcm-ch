@@ -331,6 +331,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/en/locations/bottighofen/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/en/locations/frauenfeld/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -530,6 +536,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/standorte/basel/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/standorte/bottighofen/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
