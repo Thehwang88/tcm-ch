@@ -63,16 +63,20 @@ const schema = [
 ---
 <LayoutDe title={title} description={description} path={path} schema={schema} turnstile={true}>
   <!-- 1. HERO -->
-  <section class="hero pt-hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch · Partner & Karriere</div>
-      <h1>Bauen Sie mit TCM.ch die nächste TCM-Klinik der Schweiz</h1>
-      <p class="lead">TCM.ch sucht qualifizierte TCM-Therapeutinnen, Akupunkteure und medizinische Fachpersonen, die als Behandler, Standortleiter oder lokale Partner Teil eines wachsenden Schweizer Kliniknetzwerks werden möchten.</p>
-      <div class="pt-cta-row">
-        <a class="btn btn--primary" href="#partnerprofil">Partnerprofil einreichen</a>
-        <a class="btn btn--ghost" href="#modell">Möglichkeiten prüfen</a>
+  <section class="pt-hero" aria-label="Partner und Karriere bei TCM.ch">
+    <img class="pt-hero-bg" src="/images/partner-hero.webp" alt="Team der TCM.ch Kliniken bei der gemeinsamen Standortplanung" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" />
+    <div class="pt-hero-overlay" aria-hidden="true"></div>
+    <div class="wrap pt-hero-inner">
+      <div class="pt-hero-text">
+        <div class="eyebrow">TCM.ch · Partner & Karriere</div>
+        <h1>Bauen Sie mit TCM.ch die nächste TCM-Klinik der Schweiz</h1>
+        <p class="lead">TCM.ch sucht qualifizierte TCM-Therapeutinnen, Akupunkteure und medizinische Fachpersonen, die als Behandler, Standortleiter oder lokale Partner Teil eines wachsenden Schweizer Kliniknetzwerks werden möchten.</p>
+        <div class="pt-cta-row">
+          <a class="btn btn--primary" href="#partnerprofil">Partnerprofil einreichen</a>
+          <a class="btn btn--ghost" href="#modell">Möglichkeiten prüfen</a>
+        </div>
+        <ul class="pt-trust">{trust.map((t) => <li>{t}</li>)}</ul>
       </div>
-      <ul class="pt-trust">{trust.map((t) => <li>{t}</li>)}</ul>
     </div>
   </section>
 
@@ -344,7 +348,23 @@ const schema = [
 </LayoutDe>
 
 <style>
-  .pt-hero { padding-bottom: 8px; }
+  .pt-hero { position: relative; display: flex; align-items: center; min-height: clamp(460px, 76vh, 760px); overflow: hidden; }
+  .pt-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% center; z-index: 0; }
+  .pt-hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(13,13,13,.78) 0%, rgba(13,13,13,.62) 28%, rgba(13,13,13,.30) 60%, rgba(13,13,13,0) 88%); }
+  .pt-hero-inner { position: relative; z-index: 2; width: 100%; padding-top: 36px; padding-bottom: 36px; }
+  .pt-hero-text { max-width: 620px; color: #fff; }
+  .pt-hero-text .eyebrow { color: #fff; opacity: .85; }
+  .pt-hero-text h1 { color: #fff; font-size: clamp(30px, 4vw, 46px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 16px; }
+  .pt-hero-text .lead { color: rgba(255,255,255,.92); }
+  .pt-hero .btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+  .pt-hero .btn--ghost:hover { background: rgba(255,255,255,.14); border-color: #fff; color: #fff; }
+  .pt-hero .pt-trust li { color: #fff; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.38); }
+  @media (max-width: 767px) {
+    .pt-hero { min-height: clamp(420px, 72vh, 560px); }
+    .pt-hero-bg { object-position: 66% center; }
+    .pt-hero-overlay { background: linear-gradient(180deg, rgba(13,13,13,.52) 0%, rgba(13,13,13,.64) 50%, rgba(13,13,13,.8) 100%); }
+    .pt-hero-text h1 { font-size: clamp(25px, 7.5vw, 32px); }
+  }
   .pt-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 22px; }
   .btn--ghost { background: var(--white); color: var(--ink); border: 1.5px solid var(--border); }
   .btn--ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
