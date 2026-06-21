@@ -30,6 +30,11 @@ export const clinics: Clinic[] = [
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 },
     areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Konstanz', 'Meersburg'] },
 
+  { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
+    street: 'Hauptstrasse 34', postalCode: '8598', phone: '+41 76 578 09 88',
+    openingHours: ['Mo 07:00-20:00', 'Tu-Fr 18:00-20:00', 'Sa 07:00-20:00'], geo: { lat: 47.6362, lng: 9.2167 },
+    areaServed: ['Bottighofen', 'Kreuzlingen', 'Münsterlingen', 'Tägerwilen', 'Altnau', 'Konstanz', 'Frauenfeld'] },
+
   { id: 'frauenfeld', name: 'Frauenfeld', city: 'Frauenfeld', region: 'Thurgau',
     street: 'Rheinstrasse 25', postalCode: '8500', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 },

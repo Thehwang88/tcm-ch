@@ -20,14 +20,21 @@ const clinic = clinics.find((c) => c.id === slug);
 const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
 const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/TCM\.ch CARE.*?Akupunktur\s*/i, '').replace(/\s+/g, ' ').trim().slice(0, 40) : slug;
 const name = clinic ? clinic.name : hName;
+// Partner standort (independent practice, NAP belongs to the partner) — branded as the
+// partner, not as an own TCM.ch clinic. Slug-gated; no other standort affected.
+const isPartner = slug === 'bottighofen';
 const url = `https://tcm.ch/standorte/${slug}/`;
-const title = `TCM & Akupunktur ${name}. Schneller weniger Schmerzen | TCM.ch`;
-const description = `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden. Anfahrt, Therapien und Team vor Ort.`;
+const title = isPartner
+  ? 'TCM Pelican Bottighofen: Akupunktur & TCM am Bodensee | TCM.ch'
+  : `TCM & Akupunktur ${name}. Schneller weniger Schmerzen | TCM.ch`;
+const description = isPartner
+  ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
+  : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden. Anfahrt, Therapien und Team vor Ort.`;
 
 // MedicalClinic with the clinic's real NAP (address/geo/phone/hours) from locations.ts.
 const medClinic: Record<string, unknown> = {
   '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
-  name: `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+  name: isPartner ? 'TCM Pelican' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
 };
 if (clinic) {
   medClinic.telephone = clinic.phone;
@@ -55,6 +62,15 @@ if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
   const cor0 = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
   if (teamGrid && cor0 >= 0) outBody = outBody.slice(0, cor0) + teamGrid + outBody.slice(endOfDiv(outBody, cor0));
 }
+// Bottighofen partner: inject ONLY Emanuela Pelican's card (single source: ueber-uns team
+// grid), replacing the leaf's placeholder. Not the full grid like St. Gallen.
+if (slug === 'bottighofen') {
+  const ei = ueberUns.indexOf('Emanuela Pelican');
+  const cs = ei >= 0 ? ueberUns.lastIndexOf('<div class="team-card', ei) : -1;
+  const card = cs >= 0 ? ueberUns.slice(cs, endOfDiv(ueberUns, cs)) : '';
+  const ph = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
+  if (card && ph >= 0) outBody = outBody.slice(0, ph) + '<div class="team-grid" style="max-width:360px;margin:20px 0">' + card + '</div>' + outBody.slice(endOfDiv(outBody, ph));
+}
 
 // Crawlable internal links to the top-demand /beschwerden/ leaf pages (SEO: these
 // are "discovered, not crawled" in GSC). Appended on the shared standort template
@@ -63,4 +79,4 @@ if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
 // in St. Gallen behandeln" section, so this chip row would be a duplicate.)
 const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={outBody + ((slug === 'st-gallen' || slug === 'winterthur-marktgasse') ? '' : beschwerdenLinks)} schema={schema} />
+<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={outBody + ((slug === 'st-gallen' || slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks)} schema={schema} />

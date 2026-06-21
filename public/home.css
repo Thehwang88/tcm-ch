@@ -4559,3 +4559,12 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 .cl-related .cl-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .cl-related .cl-chip{display:inline-flex;align-items:center;padding:9px 16px;border:1px solid var(--border);border-radius:100px;background:#fff;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--black);text-decoration:none;transition:border-color var(--t-base) ease,color var(--t-base) ease}
 .cl-related .cl-chip:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Partner standort (Bottighofen / TCM Pelican) — amber accent, visually distinct from own green clinics */
+.partner-badge{display:inline-flex;align-items:center;gap:6px;background:#FFF7E6;color:#8A5A00;border:1px solid #F0C36D;border-radius:999px;padding:5px 12px;font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.02em;margin:0 0 14px;width:fit-content}
+.partner-badge svg{flex-shrink:0}
+.partner-explain{display:flex;align-items:flex-start;gap:14px;max-width:760px}
+.partner-explain-icon{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:#FFF7E6;color:#B8860B;display:flex;align-items:center;justify-content:center}
+.partner-explain-title{font-family:var(--font-sans);font-weight:800;font-size:17px;color:var(--black);margin-bottom:4px}
+.partner-explain-text{font-size:14.5px;line-height:1.6;color:var(--mid);margin:0}
+.location-card .loc-partner-tag{display:inline-block;margin-top:6px;background:#FFF7E6;color:#8A5A00;border:1px solid #F0C36D;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700}
