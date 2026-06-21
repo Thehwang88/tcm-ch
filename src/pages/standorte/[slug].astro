@@ -49,7 +49,7 @@ const schema = [medClinic, breadcrumb];
 // Über uns page (single source of truth — extracted at build time, no data duplication).
 function endOfDiv(html: string, i: number) { const rx = /<div\b|<\/div>/g; rx.lastIndex = i; let d = 0; let m: RegExpExecArray | null; while ((m = rx.exec(html))) { if (m[0] === '</div>') { d--; if (d === 0) return m.index + 6; } else d++; } return html.length; }
 let outBody = body;
-if (slug === 'st-gallen') {
+if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
   const tg0 = ueberUns.indexOf('<div class="team-grid">');
   const teamGrid = tg0 >= 0 ? ueberUns.slice(tg0, endOfDiv(ueberUns, tg0)) : '';
   const cor0 = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
@@ -63,4 +63,4 @@ if (slug === 'st-gallen') {
 // in St. Gallen behandeln" section, so this chip row would be a duplicate.)
 const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={outBody + (slug === 'st-gallen' ? '' : beschwerdenLinks)} schema={schema} />
+<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={outBody + ((slug === 'st-gallen' || slug === 'winterthur-marktgasse') ? '' : beschwerdenLinks)} schema={schema} />
