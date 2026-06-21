@@ -8,7 +8,7 @@ const title = 'Partner & Karriere bei TCM.ch – Werden Sie Teil des führenden 
 const description =
   'TCM.ch sucht qualifizierte Therapeutinnen, Akupunkteure und medizinische Fachpersonen als Behandler, Standortleiter oder lokale Partner für neue Standorte in der ganzen Schweiz.';
 
-const trust = ['TCM', 'Akupunktur', 'Tuina', 'Kräutermedizin', 'Physiotherapie', 'medizinische Massage', 'Standortleitung', 'Praxispartnerschaft'];
+const trust = ['TCM', 'Akupunktur', 'Tuina', 'Kräutermedizin', 'Physiotherapie', 'medizinische Massage', 'Standortleitung', 'Klinikpartnerschaft'];
 
 const modelle = [
   { t: 'Therapeut:in an einem bestehenden Standort', d: 'Für qualifizierte Therapeuten, die ein stabiles, professionelles Klinikumfeld suchen.' },
@@ -23,18 +23,18 @@ const ablauf = [
   { t: 'Gemeinsame Perspektive entwickeln', d: 'Bei starkem Fit konkrete Möglichkeiten: bestehender Standort, neuer Standort, lokale Partnerschaft.' },
 ];
 
-const fuerWen = ['TCM-Therapeut:innen', 'Akupunkteur:innen', 'Ärzt:innen mit TCM-Hintergrund', 'Tuina & medizinische Massage', 'Kräutermedizin', 'Internationale Fachpersonen', 'Physiotherapie & integrative Medizin', 'Standortleiter-Persönlichkeiten', 'Lokale Praxispartner'];
+const fuerWen = ['TCM-Therapeut:innen', 'Akupunkteur:innen', 'Ärzt:innen mit TCM-Hintergrund', 'Tuina & medizinische Massage', 'Kräutermedizin', 'Internationale Fachpersonen', 'Physiotherapie & integrative Medizin', 'Standortleiter-Persönlichkeiten', 'Lokale Klinikpartner'];
 
 const nichtFuerWen = [
   'Nicht für reine Nebenjob-Suchende.',
   'Nicht für Therapeuten, denen Patientenerfahrung, Dokumentation oder Qualität gleichgültig sind.',
   'Nicht für Menschen, die volle Unabhängigkeit ohne Struktur wollen.',
-  'Nicht für Erwartungen an garantiertes Einkommen, Visa, Anerkennung oder sofortigen Praxisbesitz.',
+  'Nicht für Erwartungen an garantiertes Einkommen, Visa, Anerkennung oder sofortigen Klinikbesitz.',
 ];
 
 const anerkennungItems = ['EMR', 'ASCA', 'OdA AM', 'kantonale Berufsausübungsbewilligung (BAB)', 'ZSR', 'SRK wo relevant', 'Sprachkenntnisse', 'Aufenthalts- und Arbeitsbewilligung'];
 
-const warum = ['Echter Klinikbetreiber statt Jobbörse', 'Wachsendes Schweizer Netzwerk', 'Patientennachfrage durch starkes Marketing', 'Zentrale Website & Google-Sichtbarkeit', 'Strukturiertes Onboarding', 'Moderne Klinikstandards', 'Operative Unterstützung', 'Abrechnungs- und Administrations-Know-how', 'Verständnis für Anerkennung, Versicherung und Schweizer Praxisrealität', 'Langfristige Expansionsstrategie', 'Möglicher Weg vom Therapeuten zum Standortleiter zum lokalen Partner'];
+const warum = ['Echter Klinikbetreiber statt Jobbörse', 'Wachsendes Schweizer Netzwerk', 'Patientennachfrage durch starkes Marketing', 'Zentrale Website & Google-Sichtbarkeit', 'Strukturiertes Onboarding', 'Moderne Klinikstandards', 'Operative Unterstützung', 'Abrechnungs- und Administrations-Know-how', 'Verständnis für Anerkennung, Versicherung und Schweizer Klinikrealität', 'Langfristige Expansionsstrategie', 'Möglicher Weg vom Therapeuten zum Standortleiter zum lokalen Partner'];
 
 const methodenOpts = ['Akupunktur', 'Tuina', 'Kräuter', 'Schröpfen', 'Moxa', 'Physiotherapie', 'Massage', 'andere'];
 const anerkennungOpts = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'SRK', 'noch keine', 'in Bearbeitung'];
@@ -44,7 +44,7 @@ const faqs = [
   { q: 'Muss ich bereits EMR-anerkannt sein?', a: 'Nein, wir prüfen jeden Fall individuell, auch in Bearbeitung befindliche Anerkennungen.' },
   { q: 'Kann ich mich aus dem Ausland bewerben?', a: 'Ja, mit realistischer gemeinsamer Einschätzung, ohne Garantien.' },
   { q: 'Ist das eine normale Stellenbewerbung?', a: 'Nein, es ist eine kuratierte Partner- und Karriere-Pipeline.' },
-  { q: 'Kann ich mit TCM.ch eine neue Praxis eröffnen?', a: 'Bei starkem Fit möglich, je nach Standort und Prüfung.' },
+  { q: 'Kann ich mit TCM.ch eine neue Klinik eröffnen?', a: 'Bei starkem Fit möglich, je nach Standort und Prüfung.' },
   { q: 'Bedeutet Partner automatisch Franchise oder Selbstständigkeit?', a: 'Nein, die Ausgestaltung ist individuell.' },
   { q: 'Unterstützt TCM.ch bei BAB/EMR/ZSR?', a: 'Wir geben Orientierung, keine behördliche oder rechtliche Beratung.' },
   { q: 'Welche Standorte sind geplant?', a: 'Bestehende Standorte plus laufende Expansion, abhängig von passenden Profilen.' },
@@ -66,7 +66,7 @@ const schema = [
   <section class="hero pt-hero">
     <div class="wrap">
       <div class="eyebrow">TCM.ch · Partner & Karriere</div>
-      <h1>Bauen Sie mit TCM.ch die nächste TCM-Praxis der Schweiz</h1>
+      <h1>Bauen Sie mit TCM.ch die nächste TCM-Klinik der Schweiz</h1>
       <p class="lead">TCM.ch sucht qualifizierte TCM-Therapeutinnen, Akupunkteure und medizinische Fachpersonen, die als Behandler, Standortleiter oder lokale Partner Teil eines wachsenden Schweizer Kliniknetzwerks werden möchten.</p>
       <div class="pt-cta-row">
         <a class="btn btn--primary" href="#partnerprofil">Partnerprofil einreichen</a>
@@ -80,7 +80,7 @@ const schema = [
   <section class="section">
     <div class="wrap pt-narrow">
       <div class="section-label">Ausgangslage</div>
-      <p class="pt-body">Eine eigene TCM-Praxis aufzubauen ist anspruchsvoll. Patientengewinnung, Google-Sichtbarkeit, Website, Administration, Kassenanerkennung, Abrechnung, Standortsuche, Empfang und Schweizer Regulatorik kosten Zeit und binden Energie, die für die Behandlung fehlt. Gleichzeitig braucht die Schweiz mehr seriöse, moderne und qualitätsorientierte TCM-Praxen.</p>
+      <p class="pt-body">Eine eigene TCM-Klinik aufzubauen ist anspruchsvoll. Patientengewinnung, Google-Sichtbarkeit, Website, Administration, Kassenanerkennung, Abrechnung, Standortsuche, Empfang und Schweizer Regulatorik kosten Zeit und binden Energie, die für die Behandlung fehlt. Gleichzeitig braucht die Schweiz mehr seriöse, moderne und qualitätsorientierte TCM-Kliniken.</p>
       <div class="pt-solution">
         <strong>Die Lösung:</strong> TCM.ch verbindet starke Therapeuten mit zentraler Marke, Marketing, Systemen, Infrastruktur und nationaler Expansionsstrategie. Ihr Fokus bleibt die Behandlung, wir bauen die Klinik darum herum.
       </div>
@@ -226,7 +226,7 @@ const schema = [
           </div>
           <div class="form-row">
             <div class="field"><label for="patienten">Bestehende Patienten / lokales Netzwerk</label><select id="patienten" name="patienten"><option value="">Bitte wählen</option><option>Ja</option><option>Nein</option></select></div>
-            <div class="field"><label for="fuehrung">Erfahrung Praxis-/Teamführung</label><select id="fuehrung" name="fuehrung"><option value="">Bitte wählen</option><option>Ja</option><option>Nein</option></select></div>
+            <div class="field"><label for="fuehrung">Erfahrung Klinik-/Teamführung</label><select id="fuehrung" name="fuehrung"><option value="">Bitte wählen</option><option>Ja</option><option>Nein</option></select></div>
           </div>
           <div class="field"><label for="stadt">Stärkste Stadt + Begründung</label><textarea id="stadt" name="stadt" placeholder="In welcher Stadt sind Sie am stärksten, und warum?"></textarea></div>
         </fieldset>

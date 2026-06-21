@@ -78,7 +78,7 @@ export async function onRequestPost({ request, env }) {
       ['Wunsch-Standorte', multi('standorte')], ['Umzugsbereitschaft', f('umzug')],
       ['Wunschpensum', f('pensum')], ['Frühester Start', f('start')],
       ['Interesse an', f('interesse')], ['Bestehende Patienten / Netzwerk', f('patienten')],
-      ['Erfahrung Praxis-/Teamführung', f('fuehrung')], ['Stärkste Stadt + Begründung', f('stadt')],
+      ['Erfahrung Klinik-/Teamführung', f('fuehrung')], ['Stärkste Stadt + Begründung', f('stadt')],
       ['— Motivation —', ''],
       ['Warum TCM.ch', f('motivation')],
       ['Dokumente', rawFiles.length ? rawFiles.map((x) => x.name).join(', ') : 'keine'],
