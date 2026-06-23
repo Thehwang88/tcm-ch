@@ -255,3 +255,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') sgEvent
   card.parentNode.insertBefore(wrap, card);
   card.parentNode.insertBefore(scar, card);
 })();
+
+/* Contact forms (home + standorte): bind ONE AJAX submit handler by attribute, so every
+   form[data-contact-form] submits via fetch + inline confirmation instead of a native reload. */
+document.querySelectorAll('form[data-contact-form]').forEach(function(f){
+  f.addEventListener('submit', function(e){ submitInlineFormGeneric(e, f); });
+});
