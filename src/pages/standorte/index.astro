@@ -26,11 +26,26 @@ const schema = {
     /* drop the long sub paragraph + the secondary (WhatsApp) CTA; keep H1, eyebrow, primary CTA */
     #standorte-premium-hero .sg-sub { display: none !important; }
     #standorte-premium-hero .sg-ctas .btn-secondary { display: none !important; }
+
+    /* --- hero alignment + vertical rhythm --- */
+    /* 1. one shared left edge: drop the back-button wrapper's extra 20px inset so it
+          lines up with breadcrumb/eyebrow/H1/CTA at the hero's 20px container padding */
+    #standorte-premium-hero .back-btn-outer { padding-left: 0 !important; padding-right: 0 !important; }
+    /* 3. back button + breadcrumb = subordinate nav group: muted + tightly grouped, then a
+          clear 16px break to the H1 content block */
+    #standorte-premium-hero .back-btn { margin-bottom: 8px !important; opacity: .55 !important; }
+    #standorte-premium-hero .sg-crumb { margin-bottom: 16px !important; }
+    /* 2. uniform 8/16 rhythm: eyebrow -> H1 -> location tight (8), block breaks at 16 */
+    #standorte-premium-hero .sg-eyebrow { margin-bottom: 8px !important; }
+    #standorte-premium-hero .sg-title { margin-bottom: 8px !important; }
+    #standorte-premium-hero .sg-location { margin-top: 0 !important; margin-bottom: 16px !important; }
+    #standorte-premium-hero .sg-ctas { margin-bottom: 16px !important; }
+
     /* keep the trust strip, but compact (it is hidden by default on mobile in home.css) */
     #standorte-premium-hero .sg-trust {
       display: flex !important;
-      margin-top: 14px !important;
-      padding-top: 14px !important;
+      margin-top: 0 !important;
+      padding-top: 16px !important;
       gap: 8px 14px !important;
     }
     /* grid section (only the one holding #standorte-grid): kill the top-padding seam and
