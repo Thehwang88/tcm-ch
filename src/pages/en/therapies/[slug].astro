@@ -20,9 +20,10 @@ const path = enTherapyPath(slug);
 const url = new URL(path, site.url).href;
 const contactHref = `/en/contact/?therapie=${encodeURIComponent(name)}`;
 
-const title = `${titleTerm} | TCM.ch`;
+const _titleEmr = `${titleTerm} in Switzerland | EMR-recognised | TCM.ch`;
+const title = _titleEmr.length > 60 ? `${titleTerm} in Switzerland | TCM.ch` : _titleEmr;
 const h1 = name;
-const description = `${titleTerm} in Switzerland: honest, evidence-aware information from English-speaking, EMR-/ASCA-recognised TCM practitioners at TCM.ch. What ${keyword} is, what to expect in a session, and what it is typically used for.`;
+const description = `English-speaking ${titleTerm} in Switzerland: what ${keyword} is, what to expect, and typical uses. EMR-/ASCA-recognised.`;
 
 // Therapy-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
 const faqs = [...therapy.faqs, INSURANCE_FAQ];

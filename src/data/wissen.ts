@@ -131,7 +131,7 @@ export const wissen: Wissen[] = [
   },
   {
     "slug": "akupunktur-bei-rueckenschmerzen",
-    "title": "Akupunktur bei Rückenschmerzen: Wirkung, Ablauf und was die Forschung zeigt",
+    "title": "Akupunktur bei Rückenschmerzen: Wirkung & Ablauf",
     "metaDesc": "Hilft Akupunktur bei Rückenschmerzen? Wirkung, Ablauf einer TCM-Behandlung, die Studienlage und wann du ärztlich abklären solltest. EMR und ASCA anerkannt.",
     "region": "Schweizweit",
     "excerpt": "Akupunktur kann chronische Rückenschmerzen lindern, ist aber kein Ersatz für Bewegung. Was die Forschung zeigt, wie die Behandlung abläuft und wann du ärztlich abklären solltest.",
@@ -251,7 +251,7 @@ export const wissen: Wissen[] = [
   },
   {
     "slug": "akupunktur-bei-heuschnupfen",
-    "title": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
+    "title": "Akupunktur bei Heuschnupfen: Studienlage & Nutzen",
     "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
     "category": "Beschwerden verstehen",
     "h1": "Akupunktur bei Heuschnupfen: Was die Studienlage zeigt und für wen es sinnvoll ist",
@@ -315,7 +315,7 @@ export const wissen: Wissen[] = [
   },
   {
     "slug": "tcm-naturheilpraktiker-schweiz",
-    "title": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
+    "title": "TCM-Heilpraktiker oder Naturheilpraktiker?",
     "metaDesc": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte TCM-Praxis erkennst.", "region": "Schweizweit", "excerpt": "Heilpraktiker, Naturheilpraktiker, TCM-Therapeutin? Was die Begriffe in der Schweiz bedeuten und woran du eine seriöse, kassenanerkannte Praxis erkennst.",
     "category": "TCM in der Schweiz",
     "h1": "TCM-Heilpraktiker oder Naturheilpraktiker? Was die Begriffe in der Schweiz wirklich bedeuten",
@@ -374,7 +374,7 @@ export const wissen: Wissen[] = [
   },
   {
     "slug": "akupunktur-bei-nackenschmerzen",
-    "title": "Akupunktur bei Nackenschmerzen: Was die Studienlage wirklich zeigt",
+    "title": "Akupunktur bei Nackenschmerzen: Studienlage",
     "metaDesc": "Hilft Akupunktur bei Nackenschmerzen? Was die Studienlage wirklich zeigt, wie eine Behandlung abläuft und wann du zuerst ärztlich abklären solltest.", "region": "Schweizweit", "excerpt": "Akupunktur kann bei Nackenschmerzen helfen, ist aber kein Wundermittel. Was die Forschung zeigt und wann du zuerst ärztlich abklären solltest.",
     "category": "Beschwerden verstehen",
     "h1": "Akupunktur bei Nackenschmerzen: Was die Studienlage wirklich zeigt",

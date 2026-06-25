@@ -27,10 +27,10 @@ const isPartner = slug === 'bottighofen';
 const url = `https://tcm.ch/standorte/${slug}/`;
 const title = isPartner
   ? 'TCM Pelican Bottighofen: Akupunktur & TCM am Bodensee | TCM.ch'
-  : `TCM & Akupunktur ${name}. Schneller weniger Schmerzen | TCM.ch`;
+  : `TCM & Akupunktur ${name} | TCM.ch`;
 const description = isPartner
   ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
-  : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden. Anfahrt, Therapien und Team vor Ort.`;
+  : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
 
 // MedicalClinic with the clinic's real NAP (address/geo/phone/hours) from locations.ts.
 const medClinic: Record<string, unknown> = {

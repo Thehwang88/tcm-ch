@@ -21,10 +21,10 @@ const mapsHref = street
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${street}, ${postalCode} ${city}`)}`
   : null;
 
-const title = `Acupuncture & TCM in ${name} | EMR-recognised | TCM.ch`;
+const title = `Acupuncture & TCM in ${name} | TCM.ch`;
 const description = openingSoon
-  ? `Acupuncture & Traditional Chinese Medicine in ${city} (opening 2028). English-speaking, EMR-/ASCA-recognised practitioners across TCM.ch — covered by supplementary insurance.`
-  : `English-speaking acupuncture in ${city} at TCM.ch. EMR-/ASCA-recognised practitioners for back pain, migraine, sleep & more — Traditional Chinese Medicine ${city}, covered by supplementary insurance. Reply usually within ~1h.`;
+  ? `Acupuncture & TCM in ${name}, opening 2028. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
+  : `English-speaking acupuncture & TCM in ${name}. EMR-/ASCA-recognised, covered by insurance. Back pain, migraine, sleep and more.`;
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
 
