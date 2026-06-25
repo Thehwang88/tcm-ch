@@ -19,7 +19,8 @@ const schema = {
      first scroll. Every selector namespaced under #standorte-premium-hero so nothing
      leaks to other heroes/pages. Desktop (>768px) is untouched. */
   @media (max-width: 768px) {
-    #standorte-premium-hero { padding: var(--section-py) 20px !important; }
+    /* tighten hero, and kill the bottom half of the hero->section seam */
+    #standorte-premium-hero { padding: var(--section-py) 20px 12px !important; }
     /* image only adds scroll height on mobile */
     #standorte-premium-hero .sg-media { display: none !important; }
     /* drop the long sub paragraph + the secondary (WhatsApp) CTA; keep H1, eyebrow, primary CTA */
@@ -32,5 +33,11 @@ const schema = {
       padding-top: 14px !important;
       gap: 8px 14px !important;
     }
+    /* grid section (only the one holding #standorte-grid): kill the top-padding seam and
+       drop the duplicate eyebrow + subline that restate the hero; keep H2 as minimal label */
+    .section:has(#standorte-grid) { padding-top: 8px !important; }
+    .section:has(#standorte-grid) .section-label { display: none !important; }
+    .section:has(#standorte-grid) .location-intro { display: none !important; }
+    .section:has(#standorte-grid) .section-title { margin-bottom: 12px !important; }
   }
 </style>
