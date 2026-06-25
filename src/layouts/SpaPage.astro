@@ -33,8 +33,15 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
     <link rel="stylesheet" href="/home.css" />
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
-    /* restore the SPA #app{padding-top:68px} offset so full-bleed hub heroes clear the fixed 68px header (hub pages only; leaves clear on their own) */
-    #page-beschwerden,#page-standorte,#page-therapien{padding-top:68px}</style>
+    /* restore the SPA #app{padding-top:68px} offset so full-bleed hub heroes clear the fixed 68px header */
+    #page-beschwerden,#page-standorte,#page-therapien{padding-top:68px}
+    /* leaf heroes (therapie + symptom) sit full-bleed at y=0 with padding-top:48 < the 68px fixed
+       nav, so their breadcrumb was hidden behind it on mobile. Clear it so the crumb is fully
+       visible; overflow-wrap guards a long crumb chain from exceeding the container. */
+    @media (max-width:768px){
+      #therapie-premium-hero.sg-active,#symptom-premium-hero.sg-active{padding-top:84px !important}
+      #therapie-premium-hero .sg-crumb,#symptom-premium-hero .sg-crumb{overflow-wrap:anywhere}
+    }</style>
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
