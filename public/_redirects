@@ -9,6 +9,8 @@ https://www.tcm.ch/*       https://tcm.ch/:splat   301!
 /zuerich-longevity/*       /                      301
 /karriere                  /partner/             301
 /karriere/*                /partner/             301
+/partnerpraxen             /partner/             301
+/partnerpraxen/*           /partner/             301
 
 # 410 doorway prunes (beschwerden/therapien/wissen × city combos) are handled by the
 # scoped Pages Functions in functions/*/[[path]].js — independent of this file.
