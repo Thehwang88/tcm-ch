@@ -435,4 +435,13 @@ const schema = [
     .pt-cards-3 { grid-template-columns: 1fr; }
     .pt-check-list { grid-template-columns: 1fr; }
   }
+  @media (max-width: 480px) {
+    .pt-hero-inner { padding-top: 24px; padding-bottom: 24px; }
+    .pt-cta-row { gap: 10px; }
+    .pt-cta-row .btn,
+    .pt-teaser .btn,
+    .pt-form .btn--primary { width: 100%; }
+    .btn { min-height: 48px; justify-content: center; }
+    .form-card { padding: 20px; }
+  }
 </style>
