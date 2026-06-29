@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 
+import cloudflare from "@astrojs/cloudflare";
+
 // Astro now owns the whole site (DE + EN). Canonical URL form is trailing-slash
 // (matches Cloudflare Pages, which 308-redirects no-slash -> slash). Sitemap is
 // generated from the built routes (scripts/gen-sitemap.mjs) to match exactly.
@@ -8,4 +10,5 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
+  adapter: cloudflare()
 });
