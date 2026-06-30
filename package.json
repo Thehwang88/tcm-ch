@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && wrangler pages functions build --outdir=./worker/",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "puppeteer": "^25.1.0",
-    "purgecss": "^8.0.0"
+    "purgecss": "^8.0.0",
+    "wrangler": "^4.105.0"
   }
 }
