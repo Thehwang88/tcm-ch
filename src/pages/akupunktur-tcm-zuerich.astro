@@ -1,0 +1,62 @@
+---
+// /akupunktur-tcm-zuerich/ — kommerzielle Zürich-Hub-Landingpage (Hub & Spoke → die 3 Zürcher Standorte).
+export const prerender = true;
+import SpaPage from '../layouts/SpaPage.astro';
+import body from '../data/akupunktur-tcm-zuerich-body.html?raw';
+
+const title = 'Akupunktur & TCM in Zürich | Chinesische Medizin | TCM.ch';
+const description =
+  'Akupunktur und medizinische TCM in Zürich. EMR-/ASCA-anerkannte Praxen in Oerlikon, City und Höngg, über die Zusatzversicherung abrechenbar. Termin in deiner Nähe, Antwort in ~1h.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalClinic',
+    name: 'TCM.ch – Akupunktur & TCM Zürich',
+    url: 'https://tcm.ch/akupunktur-tcm-zuerich/',
+    image: 'https://tcm.ch/og-image.jpg',
+    medicalSpecialty: 'Acupuncture',
+    telephone: '+41775236122',
+    email: 'termine@tcm.ch',
+    priceRange: '$$',
+    areaServed: [
+      { '@type': 'City', name: 'Zürich' },
+      { '@type': 'AdministrativeArea', name: 'Kanton Zürich' },
+    ],
+    department: [
+      { '@type': 'MedicalClinic', name: 'TCM.ch Zürich City', url: 'https://tcm.ch/standorte/zuerich-city/', address: { '@type': 'PostalAddress', addressLocality: 'Zürich', postalCode: '8001', addressRegion: 'ZH', addressCountry: 'CH' } },
+      { '@type': 'MedicalClinic', name: 'TCM.ch Zürich Oerlikon', url: 'https://tcm.ch/standorte/zuerich-oerlikon/', address: { '@type': 'PostalAddress', addressLocality: 'Zürich Oerlikon', postalCode: '8050', addressRegion: 'ZH', addressCountry: 'CH' } },
+      { '@type': 'MedicalClinic', name: 'TCM.ch Zürich Höngg', url: 'https://tcm.ch/standorte/zuerich-hoengg/', address: { '@type': 'PostalAddress', addressLocality: 'Zürich Höngg', postalCode: '8049', addressRegion: 'ZH', addressCountry: 'CH' } },
+    ],
+    availableService: [
+      { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+      { '@type': 'MedicalProcedure', name: 'Traditionelle Chinesische Medizin' },
+      { '@type': 'MedicalProcedure', name: 'Tuina-Massage' },
+      { '@type': 'MedicalProcedure', name: 'Schröpfen' },
+      { '@type': 'MedicalProcedure', name: 'Moxibustion' },
+      { '@type': 'MedicalProcedure', name: 'Chinesische Kräutertherapie' },
+    ],
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '500' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Akupunktur & TCM Zürich', item: 'https://tcm.ch/akupunktur-tcm-zuerich/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'Wo finde ich Akupunktur in Zürich in meiner Nähe?', acceptedAnswer: { '@type': 'Answer', text: 'TCM.ch hat im Raum Zürich Standorte in der City, in Oerlikon und in Höngg. So findest du eine Praxis in deiner Nähe, ohne lange Anfahrt. Schildere kurz dein Anliegen, wir buchen dich in der nächsten passenden Klinik ein.' } },
+      { '@type': 'Question', name: 'Übernimmt die Krankenkasse die Akupunktur?', acceptedAnswer: { '@type': 'Answer', text: 'Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen. Wir prüfen das kostenlos vor deinem ersten Termin.' } },
+      { '@type': 'Question', name: 'Wie schnell bekomme ich einen Termin in Zürich?', acceptedAnswer: { '@type': 'Answer', text: 'Wir antworten auf deine Anfrage meist innerhalb einer Stunde. Ein Ersttermin ist je nach Standort und Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, an den Zürcher Standorten City, Oerlikon und Höngg.' } },
+      { '@type': 'Question', name: 'Tut Akupunktur weh?', acceptedAnswer: { '@type': 'Answer', text: 'Die Nadeln sind dünner als ein Haar. Die meisten spüren beim Setzen nur ein kurzes Ziehen oder Kribbeln, danach oft eine angenehme Schwere. Wenn etwas unangenehm ist, sag Bescheid, dann passen wir an.' } },
+      { '@type': 'Question', name: 'Bei welchen Beschwerden hilft TCM?', acceptedAnswer: { '@type': 'Answer', text: 'Häufige Gründe sind Rücken- und Nackenschmerzen, Migräne, Schlafprobleme, Stress und Erschöpfung, Zyklusbeschwerden sowie Kinderwunsch. Beim ersten Gespräch klären wir ehrlich, ob TCM in deinem Fall sinnvoll ist.' } },
+    ],
+  },
+];
+---
+<SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body} schema={schema} />
