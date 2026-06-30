@@ -1,353 +1,277 @@
 <style>
-  .zh-page{--green:#2D9B6F;--green-dark:#1F7A54;--green-mint:#EAF6F0;--ink:#16231D;--grey:#5B6B63;--line:#E3EAE6;--bg:#FFFFFF;--bg-soft:#F6F9F7;--radius:18px;--shadow:0 8px 30px rgba(31,122,84,.10);--maxw:1080px;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);line-height:1.65;padding-top:68px}
-  .zh-page h1,.zh-page h2,.zh-page h3{font-family:'Figtree',sans-serif;line-height:1.15;letter-spacing:-.01em}
-  .zh-page a{color:var(--green-dark);text-decoration:none}
-  .zh-page a:hover{text-decoration:underline}
-  .zh-page img{max-width:100%;display:block}
-  .zh-page .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .zh-page .eyebrow{font-family:'Figtree';font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
-  .zh-page section{padding:64px 0}
-  @media(max-width:640px){.zh-page section{padding:46px 0}}
-  .zh-page .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Figtree';font-weight:700;font-size:1.02rem;padding:15px 26px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
-  .zh-page .btn:hover{text-decoration:none;transform:translateY(-2px)}
-  .zh-page .btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow)}
-  .zh-page .btn-primary:hover{background:var(--green-dark);color:#fff}
-  .zh-page .btn-ghost{background:#fff;color:var(--green-dark);border-color:var(--line)}
-  .zh-page .btn-ghost:hover{border-color:var(--green)}
-  .zh-page .btn-wa{background:#25D366;color:#0b3d24}
-  .zh-page .btn-wa:hover{color:#0b3d24;filter:brightness(.97)}
-  .zh-page .zh-hero{background:linear-gradient(180deg,var(--green-mint),#fff 88%);padding:56px 0}
-  .zh-page .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
-  @media(max-width:860px){.zh-page .hero-grid{grid-template-columns:1fr;gap:30px}}
-  .zh-page .zh-hero h1{font-size:clamp(2.05rem,4.6vw,3.25rem);font-weight:800;max-width:16ch}
-  .zh-page .zh-hero .sub{font-size:clamp(1.06rem,2.1vw,1.28rem);color:var(--grey);margin:20px 0 28px;max-width:48ch}
-  .zh-page .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .zh-page .hero-img{border-radius:24px;box-shadow:var(--shadow);aspect-ratio:4/3;object-fit:cover;width:100%}
-  .zh-page .trust{display:flex;gap:24px;flex-wrap:wrap;align-items:center;margin-top:30px;font-family:'Figtree';font-weight:600;font-size:.93rem;color:var(--grey)}
-  .zh-page .trust b{color:var(--ink)}
-  .zh-page .stars{color:#F5A623;letter-spacing:1px}
-  .zh-page .subnote{font-size:.9rem;color:var(--grey);margin-top:16px}
-  .zh-page .lead{font-size:1.16rem;color:var(--grey);max-width:60ch}
-  .zh-page .grid{display:grid;gap:18px}
-  .zh-page .g3{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:820px){.zh-page .g3{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.zh-page .g3{grid-template-columns:1fr}}
-  .zh-page .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:border-color .15s,transform .15s,box-shadow .15s;display:block}
-  .zh-page .card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--shadow);text-decoration:none}
-  .zh-page .card h3{font-size:1.16rem;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .zh-page .card p{color:var(--grey);font-size:.97rem}
-  .zh-page .card .more{display:inline-block;margin-top:12px;font-family:'Figtree';font-weight:700;font-size:.92rem;color:var(--green-dark)}
-  .zh-page .pin{color:var(--green)}
-  .zh-page .icard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .15s,transform .15s,box-shadow .15s;display:flex;flex-direction:column}
-  .zh-page .icard:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--shadow);text-decoration:none}
-  .zh-page .icard img{aspect-ratio:16/10;object-fit:cover;width:100%}
-  .zh-page .icard .body{padding:20px 22px}
-  .zh-page .icard h3{font-size:1.12rem;font-weight:700;color:var(--ink);margin-bottom:6px}
-  .zh-page .icard p{color:var(--grey);font-size:.95rem}
-  .zh-page .icard .meta{margin-top:10px;font-family:'Figtree';font-weight:600;font-size:.84rem;color:var(--green-dark)}
-  .zh-page .soft{background:var(--bg-soft)}
-  .zh-page .center{text-align:center}
-  .zh-page .center .lead{margin-left:auto;margin-right:auto}
-  .zh-page h2.big{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;margin-bottom:14px}
-  .zh-page .split{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
-  @media(max-width:820px){.zh-page .split{grid-template-columns:1fr;gap:28px}}
-  .zh-page .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .zh-page .chip{background:var(--green-mint);color:var(--green-dark);font-family:'Figtree';font-weight:600;font-size:.9rem;padding:8px 15px;border-radius:999px}
-  .zh-page .txtlinks{margin-top:18px;font-family:'Figtree';font-weight:600;line-height:2}
-  .zh-page .txtlinks a{margin-right:18px;white-space:nowrap}
-  .zh-page .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:820px){.zh-page .quotes{grid-template-columns:1fr}}
-  .zh-page .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
-  .zh-page .quote p{font-size:1rem;color:var(--ink);margin-bottom:14px}
-  .zh-page .quote .who{display:flex;align-items:center;gap:11px;font-family:'Figtree';font-weight:600;font-size:.9rem;color:var(--grey)}
-  .zh-page .av{width:36px;height:36px;border-radius:50%;background:var(--green-mint);color:var(--green-dark);display:grid;place-items:center;font-weight:800;flex:0 0 auto}
-  .zh-page .offer{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:26px;padding:44px 40px}
-  .zh-page .offer h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
-  .zh-page .offer .lead{color:rgba(255,255,255,.92)}
-  .zh-page .offer ul{list-style:none;margin:22px 0 26px;display:grid;gap:12px}
-  .zh-page .offer li{display:flex;gap:11px;align-items:flex-start;font-size:1.04rem}
-  .zh-page .check{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:.8rem;margin-top:3px}
-  .zh-page .offer .btn-primary{background:#fff;color:var(--green-dark)}
-  .zh-page .offer .btn-primary:hover{background:#f1f1f1;color:var(--green-dark)}
-  .zh-page .steps{display:grid;gap:16px}
-  .zh-page .step{display:flex;gap:16px;align-items:flex-start}
-  .zh-page .step .num{flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-family:'Figtree';font-weight:800;display:grid;place-items:center}
-  .zh-page .step h3{font-size:1.05rem;font-weight:700;margin-bottom:2px;color:#fff}
-  .zh-page .step p{color:rgba(255,255,255,.82);font-size:.95rem}
-  .zh-page .contact-cta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
-  @media(max-width:720px){.zh-page .contact-cta{grid-template-columns:1fr}}
-  .zh-page .cc{border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:block;background:#fff;transition:border-color .15s;text-align:left}
-  .zh-page .cc:hover{border-color:var(--green);text-decoration:none}
-  .zh-page .cc b{display:block;font-family:'Figtree';color:var(--ink);font-size:1.02rem}
-  .zh-page .cc span{color:var(--grey);font-size:.92rem}
-  .zh-page .faq{text-align:left}
-  .zh-page .faq details{border-bottom:1px solid var(--line);padding:18px 0}
-  .zh-page .faq summary{font-family:'Figtree';font-weight:700;font-size:1.08rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-  .zh-page .faq summary::-webkit-details-marker{display:none}
-  .zh-page .faq summary::after{content:'+';color:var(--green);font-size:1.5rem;font-weight:600;transition:transform .2s}
-  .zh-page .faq details[open] summary::after{transform:rotate(45deg)}
-  .zh-page .faq p{color:var(--grey);margin-top:12px;max-width:64ch}
-  .zh-page .final{background:var(--ink);color:#fff;text-align:center}
-  .zh-page .final h2{color:#fff;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800}
-  .zh-page .final p{color:rgba(255,255,255,.8);max-width:52ch;margin:14px auto 26px}
-  .zh-page .final .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
-  .zh-page .final .btn-ghost:hover{border-color:#fff}
-  .zh-page .crumbs{position:static;height:auto;display:block;padding:0;background:none;border:none;box-shadow:none;z-index:auto;align-items:initial;font-size:.86rem;color:var(--grey)}
-  .zh-page .crumbs a{color:var(--grey)}
-  .zh-page .note{font-size:.9rem;color:var(--grey);margin-top:14px}
-  @media(prefers-reduced-motion:reduce){.zh-page *{transition:none!important}}
+  /* Layout-only helpers — design tokens only, no new colours/fonts/components. */
+  .akz{padding-top:68px}
+  .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
+  .akz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .akz-hero-img{width:100%;border-radius:var(--r-hero);box-shadow:var(--sh-md);aspect-ratio:4/3;object-fit:cover;display:block}
+  .akz-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .akz-img{width:100%;border-radius:var(--r-card);box-shadow:var(--sh-md);aspect-ratio:4/3;object-fit:cover;display:block}
+  .akz-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .akz-chip{background:var(--green-mint);color:var(--green-dark);font-family:var(--font-sans);font-weight:600;font-size:14px;padding:8px 15px;border-radius:var(--r-pill)}
+  .akz-trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:24px;font-family:var(--font-sans);font-weight:600;font-size:14.5px;color:var(--mid)}
+  .akz-trust b{color:var(--black)}
+  .akz-trust .akz-stars{color:#F5A623;letter-spacing:1px}
+  .akz-txtlinks{margin-top:20px;font-family:var(--font-sans);font-weight:600;line-height:2}
+  .akz-txtlinks a{margin-right:18px;white-space:nowrap;color:var(--blue-dark);text-decoration:none}
+  .akz-txtlinks a:hover{text-decoration:underline}
+  @media(max-width:820px){.akz-hero-grid,.akz-split{grid-template-columns:1fr;gap:28px}}
 </style>
 
-<div class="zh-page">
+<div class="akz">
 
   <!-- HERO -->
-  <header class="zh-hero">
+  <section class="section akz-hero">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb" style="margin-bottom:18px"><a href="/">Start</a> &rsaquo; Akupunktur &amp; TCM Z&uuml;rich</nav>
-      <div class="hero-grid">
+      <div class="akz-hero-grid">
         <div>
-          <p class="eyebrow">Akupunktur &middot; Medizinische TCM</p>
-          <h1>Akupunktur und TCM in Z&uuml;rich</h1>
-          <p class="sub">Chinesische Medizin in deiner N&auml;he. Erfahrene, &auml;rztlich begleitete Praxen in Z&uuml;rich City, Oerlikon und H&ouml;ngg. EMR-/ASCA-anerkannt und &uuml;ber deine Zusatzversicherung abrechenbar.</p>
-          <div class="hero-cta">
-            <a class="btn btn-wa" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." rel="nofollow">Termin anfragen &middot; Antwort in ~1h</a>
-            <a class="btn btn-ghost" href="#standorte">Praxis finden</a>
+          <div class="section-label">Akupunktur · Medizinische TCM</div>
+          <h1 class="section-title" style="margin-bottom:18px">Akupunktur und TCM in <em>Zürich</em></h1>
+          <p class="section-sub">Chinesische Medizin in deiner Nähe. Erfahrene, ärztlich begleitete Praxen in Zürich City, Oerlikon und Höngg. EMR-/ASCA-anerkannt und über deine Zusatzversicherung abrechenbar.</p>
+          <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+            <a class="btn-primary" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." rel="nofollow">Termin anfragen · Antwort in ~1h</a>
+            <a class="btn-secondary" href="#standorte">Praxis finden</a>
           </div>
-          <div class="trust">
-            <span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>4.9</b> Google &middot; 500+ Bewertungen</span>
+          <div class="akz-trust">
+            <span><span class="akz-stars">★★★★★</span> <b>4.9</b> Google · 500+ Bewertungen</span>
             <span><b>EMR/ASCA</b> anerkannt</span>
             <span><b>12'500+</b> Patienten</span>
           </div>
-          <p class="subnote">Keine Vorauszahlung &middot; Kassendeckung gepr&uuml;ft &middot; kostenlose Ersteinsch&auml;tzung per WhatsApp</p>
         </div>
         <div>
-          <img class="hero-img" src="/images/hero-home.webp" alt="Beratungsgespr&auml;ch in einer TCM.ch-Klinik in Z&uuml;rich" loading="eager" width="640" height="480">
+          <img class="akz-hero-img" src="/images/hero-home.webp" alt="Beratungsgespräch in einer TCM.ch-Klinik in Zürich" loading="eager" width="640" height="480">
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
   <!-- AKUPUNKTUR ZÜRICH -->
-  <section>
-    <div class="wrap split">
+  <section class="section">
+    <div class="wrap akz-split">
       <div>
-        <p class="eyebrow">Akupunktur Z&uuml;rich</p>
-        <h2 class="big">Akupunktur, die an der Ursache ansetzt</h2>
-        <p class="lead">Du suchst Akupunktur in Z&uuml;rich, weil andere Wege bisher wenig gebracht haben. Bei uns setzt eine ausgebildete Fachperson feine Nadeln gezielt dort, wo dein K&ouml;rper Unterst&uuml;tzung braucht. Kein Schnellverfahren, sondern eine Behandlung, die zu deinem Beschwerdebild passt, &auml;rztlich begleitet.</p>
-        <div class="chips">
-          <span class="chip">Akupunktur in deiner N&auml;he</span>
-          <span class="chip">Ohrakupunktur</span>
-          <span class="chip">Schmerztherapie</span>
-          <span class="chip">Dauernadeln</span>
+        <div class="section-label">Akupunktur Zürich</div>
+        <h2 class="section-title">Akupunktur, die an der <em>Ursache</em> ansetzt</h2>
+        <p class="section-sub">Du suchst Akupunktur in Zürich, weil andere Wege bisher wenig gebracht haben. Bei uns setzt eine ausgebildete Fachperson feine Nadeln gezielt dort, wo dein Körper Unterstützung braucht. Kein Schnellverfahren, sondern eine Behandlung, die zu deinem Beschwerdebild passt, ärztlich begleitet.</p>
+        <div class="akz-chips">
+          <span class="akz-chip">Akupunktur in deiner Nähe</span>
+          <span class="akz-chip">Ohrakupunktur</span>
+          <span class="akz-chip">Schmerztherapie</span>
+          <span class="akz-chip">Dauernadeln</span>
         </div>
       </div>
       <div>
-        <img src="/images/img-c69a8f9ce7f8.webp" alt="Akupunktur-Behandlung bei TCM.ch in Z&uuml;rich" style="border-radius:24px;box-shadow:var(--shadow);aspect-ratio:4/3;object-fit:cover;width:100%" loading="lazy">
+        <img class="akz-img" src="/images/img-c69a8f9ce7f8.webp" alt="Akupunktur-Behandlung bei TCM.ch in Zürich" loading="lazy" width="640" height="480">
       </div>
     </div>
   </section>
 
   <!-- BEHANDLUNGEN -->
-  <section class="soft">
+  <section class="section svc-section" style="background:var(--surface)">
     <div class="wrap">
-      <div class="center" style="max-width:62ch;margin:0 auto 36px">
-        <p class="eyebrow">Behandlungen</p>
-        <h2 class="big">Chinesische Medizin in Z&uuml;rich, mehr als nur Nadeln</h2>
-        <p class="lead">TCM schaut auf den ganzen Menschen und sucht die Ursache hinter den Beschwerden. In Z&uuml;rich kombinieren wir diese Erfahrung mit Schweizer Standards und ehrlicher Einsch&auml;tzung.</p>
+      <div class="svc-header">
+        <div>
+          <div class="section-label">Behandlungen</div>
+          <h2 class="section-title">Chinesische Medizin in Zürich, <em>mehr als nur Nadeln</em></h2>
+        </div>
+        <p class="svc-sub">TCM schaut auf den ganzen Menschen und sucht die Ursache hinter den Beschwerden. In Zürich kombinieren wir diese Erfahrung mit Schweizer Standards und ehrlicher Einschätzung.</p>
       </div>
-      <div class="grid g3">
-        <a class="icard" href="/therapien/akupunktur/">
-          <img src="/images/img-c69a8f9ce7f8.webp" alt="Akupunktur" loading="lazy">
-          <div class="body"><h3>Akupunktur</h3><p>Feine Nadeln aktivieren gezielt deine Selbstheilung.</p><div class="meta">45&ndash;60 Min &middot; Zusatzversicherung</div></div>
+      <div class="svc-grid">
+        <a class="svc-card" href="/therapien/akupunktur/">
+          <div class="svc-photo-wrap"><img width="1120" height="746" src="/images/img-c69a8f9ce7f8.webp" alt="Akupunktur" class="svc-photo" loading="lazy" style="object-position:center 30%"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Akupunktur</div><div class="svc-tagline">Feine Nadeln aktivieren gezielt deine Selbstheilung.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>45–60 Min</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
-        <a class="icard" href="/therapien/tuina/">
-          <img src="/images/img-2a8cecc37898.webp" alt="Tuina-Massage" loading="lazy">
-          <div class="body"><h3>Tuina-Massage</h3><p>Medizinische TCM-Massage entlang der Leitbahnen.</p><div class="meta">45&ndash;60 Min &middot; Zusatzversicherung</div></div>
+        <a class="svc-card" href="/therapien/tuina/">
+          <div class="svc-photo-wrap"><img width="1120" height="746" src="/images/img-2a8cecc37898.webp" alt="Tuina-Massage" class="svc-photo" loading="lazy" style="object-position:center 30%"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Tuina-Massage</div><div class="svc-tagline">Medizinische TCM-Massage entlang der Leitbahnen.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>45–60 Min</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
-        <a class="icard" href="/therapien/schroepfen/">
-          <img src="/images/img-a288825ba14a.webp" alt="Schr&ouml;pfen" loading="lazy">
-          <div class="body"><h3>Schr&ouml;pfen</h3><p>L&ouml;st tiefe Verspannungen, f&ouml;rdert die Durchblutung.</p><div class="meta">20&ndash;40 Min &middot; Zusatzversicherung</div></div>
+        <a class="svc-card" href="/therapien/schroepfen/">
+          <div class="svc-photo-wrap"><img width="1120" height="746" src="/images/img-a288825ba14a.webp" alt="Schröpfen" class="svc-photo" loading="lazy" style="object-position:center"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Schröpfen</div><div class="svc-tagline">Löst tiefe Verspannungen, fördert die Durchblutung.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>20–40 Min</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
-        <a class="icard" href="/therapien/moxibustion/">
-          <img src="/images/moxibustion-hero.webp" alt="Moxibustion" loading="lazy">
-          <div class="body"><h3>Moxibustion</h3><p>Heilsame W&auml;rme mit Beifu&szlig;, oft mit Akupunktur kombiniert.</p><div class="meta">30&ndash;45 Min &middot; Zusatzversicherung</div></div>
+        <a class="svc-card" href="/therapien/moxibustion/">
+          <div class="svc-photo-wrap"><img width="1120" height="746" src="/images/moxibustion-hero.webp" alt="Moxibustion" class="svc-photo" loading="lazy" style="object-position:center"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Moxibustion</div><div class="svc-tagline">Heilsame Wärme mit Beifuss, oft mit Akupunktur kombiniert.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>30–45 Min</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
-        <a class="icard" href="/therapien/gesichtsakupunktur/">
-          <img src="/images/img-f7c771cf39ed.webp" alt="Gesichtsakupunktur" loading="lazy">
-          <div class="body"><h3>Gesichtsakupunktur</h3><p>Wirkt bei Stress, Anspannung und f&uuml;r die Haut.</p><div class="meta">40&ndash;50 Min &middot; Zusatzversicherung</div></div>
+        <a class="svc-card" href="/therapien/gesichtsakupunktur/">
+          <div class="svc-photo-wrap"><img width="630" height="840" src="/images/img-f7c771cf39ed.webp" alt="Gesichtsakupunktur" class="svc-photo" loading="lazy" style="object-position:center 82%"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Gesichtsakupunktur</div><div class="svc-tagline">Wirkt bei Stress, Anspannung und für die Haut.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>40–50 Min</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
-        <a class="icard" href="/therapien/kraeutertherapie/">
-          <img src="/images/img-14a8b7c52ade.webp" alt="Chinesische Kr&auml;utertherapie" loading="lazy">
-          <div class="body"><h3>Kr&auml;utertherapie</h3><p>Individuell abgestimmte TCM-Kr&auml;uter als Begleitung.</p><div class="meta">Individuell &middot; Zusatzversicherung</div></div>
+        <a class="svc-card" href="/therapien/kraeutertherapie/">
+          <div class="svc-photo-wrap"><img width="630" height="840" src="/images/img-14a8b7c52ade.webp" alt="Chinesische Kräutertherapie" class="svc-photo" loading="lazy" style="object-position:center"><div class="svc-photo-top-bar"></div></div>
+          <div class="svc-body"><div class="svc-name">Kräutertherapie</div><div class="svc-tagline">Individuell abgestimmte TCM-Kräuter als Begleitung.</div><div class="svc-meta"><span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>Individuell</span> <span class="svc-badge svc-badge--ins">Zusatzversicherung</span></div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
         </a>
       </div>
-      <p class="txtlinks">Weitere Methoden: <a href="/therapien/akupressur/">Akupressur</a> <a href="/therapien/gua-sha/">Gua Sha</a> <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> <a href="/therapien/">Alle Behandlungen &rarr;</a></p>
+      <p class="akz-txtlinks">Weitere Methoden: <a href="/therapien/akupressur/">Akupressur</a> <a href="/therapien/gua-sha/">Gua Sha</a> <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> <a href="/therapien/">Alle Behandlungen →</a></p>
     </div>
   </section>
 
   <!-- STANDORTE ZÜRICH (HUB → SPOKES) -->
-  <section id="standorte">
+  <section class="section" id="standorte">
     <div class="wrap">
-      <div class="center" style="max-width:60ch;margin:0 auto 36px">
-        <p class="eyebrow">Standorte im Raum Z&uuml;rich</p>
-        <h2 class="big">Eine TCM-Praxis in deiner N&auml;he</h2>
-        <p class="lead">Als Netzwerk sind wir an mehreren Orten in Z&uuml;rich f&uuml;r dich da. So findest du eine Praxis in der N&auml;he, ohne quer durch die Stadt zu fahren. W&auml;hle deinen Standort, oft ist ein Termin noch am selben Tag m&ouml;glich.</p>
+      <div class="reveal" style="max-width:60ch;margin-bottom:36px">
+        <div class="section-label">Standorte im Raum Zürich</div>
+        <h2 class="section-title">Eine TCM-Praxis <em>in deiner Nähe</em></h2>
+        <p class="section-sub">Als Netzwerk sind wir an mehreren Orten in Zürich für dich da. So findest du eine Praxis in der Nähe, ohne quer durch die Stadt zu fahren. Wähle deinen Standort, oft ist ein Termin noch am selben Tag möglich.</p>
       </div>
-      <div class="grid g3">
-        <a class="card" href="/standorte/zuerich-city/">
-          <h3><span class="pin">&#9679;</span> TCM &amp; Akupunktur Z&uuml;rich City</h3>
-          <p>8001 &middot; Zentral in der Innenstadt. Ideal f&uuml;r einen Termin vor oder nach der Arbeit.</p>
-          <span class="more">Termin pr&uuml;fen &rarr;</span>
-        </a>
-        <a class="card" href="/standorte/zuerich-oerlikon/">
-          <h3><span class="pin">&#9679;</span> TCM &amp; Akupunktur Z&uuml;rich Oerlikon</h3>
-          <p>8050 &middot; Z&uuml;rich Nord, gut erreichbar beim Bahnhof Oerlikon.</p>
-          <span class="more">Termin pr&uuml;fen &rarr;</span>
-        </a>
-        <a class="card" href="/standorte/zuerich-hoengg/">
-          <h3><span class="pin">&#9679;</span> TCM &amp; Akupunktur Z&uuml;rich H&ouml;ngg</h3>
-          <p>8049 &middot; Z&uuml;rich West, pers&ouml;nliche Behandlung in ruhiger Lage.</p>
-          <span class="more">Termin pr&uuml;fen &rarr;</span>
-        </a>
+      <div class="city-grid">
+        <a class="city-card location-card" href="/standorte/zuerich-city/"><span class="location-plz">8001</span><div class="location-city">Zürich City</div><div class="location-desc">Zentral in der Innenstadt – ideal vor oder nach der Arbeit.</div><span class="location-link">Termin prüfen →</span></a>
+        <a class="city-card location-card" href="/standorte/zuerich-oerlikon/"><span class="location-plz">8050</span><div class="location-city">Zürich Oerlikon</div><div class="location-desc">Zürich Nord, gut erreichbar beim Bahnhof Oerlikon.</div><span class="location-link">Termin prüfen →</span></a>
+        <a class="city-card location-card" href="/standorte/zuerich-hoengg/"><span class="location-plz">8049</span><div class="location-city">Zürich Höngg</div><div class="location-desc">Zürich West, persönliche Behandlung in ruhiger Lage.</div><span class="location-link">Termin prüfen →</span></a>
       </div>
-      <p class="note">Au&szlig;erhalb von Z&uuml;rich? Sieh dir <a href="/standorte/">alle 13 Standorte</a> in der Deutschschweiz an, von Winterthur &uuml;ber Frauenfeld bis St. Gallen.</p>
+      <p class="section-sub" style="margin-top:22px">Ausserhalb von Zürich? Sieh dir <a href="/standorte/">alle 13 Standorte</a> in der Deutschschweiz an, von Winterthur über Frauenfeld bis St. Gallen.</p>
     </div>
   </section>
 
   <!-- BESCHWERDEN -->
-  <section class="soft">
+  <section class="section" style="background:var(--surface)">
     <div class="wrap">
-      <div class="center" style="max-width:60ch;margin:0 auto 36px">
-        <p class="eyebrow">Wobei wir helfen</p>
-        <h2 class="big">H&auml;ufige Gr&uuml;nde f&uuml;r einen Termin</h2>
-        <p class="lead">Viele kommen zu uns, wenn die Schulmedizin an ihre Grenzen st&ouml;&szlig;t. Wir sagen dir ehrlich, ob TCM in deinem Fall sinnvoll ist.</p>
+      <div class="reveal" style="max-width:60ch;margin-bottom:36px">
+        <div class="section-label">Wobei wir helfen</div>
+        <h2 class="section-title">Häufige Gründe für <em>einen Termin</em></h2>
+        <p class="section-sub">Viele kommen zu uns, wenn die Schulmedizin an ihre Grenzen stösst. Wir sagen dir ehrlich, ob TCM in deinem Fall sinnvoll ist.</p>
       </div>
-      <div class="grid g3">
-        <a class="card" href="/beschwerden/rueckenschmerzen/"><h3>R&uuml;ckenschmerzen</h3><p>Akut oder chronisch.</p></a>
-        <a class="card" href="/beschwerden/nackenschmerzen/"><h3>Nacken &amp; Verspannungen</h3><p>Auch bei Spannungskopfschmerz.</p></a>
-        <a class="card" href="/beschwerden/migraene/"><h3>Migr&auml;ne &amp; Kopfschmerzen</h3><p>Anf&auml;lle reduzieren.</p></a>
-        <a class="card" href="/beschwerden/schlafprobleme/"><h3>Schlafprobleme</h3><p>Besser ein- und durchschlafen.</p></a>
-        <a class="card" href="/beschwerden/stress-burnout/"><h3>Stress &amp; Burnout</h3><p>Wieder zur Ruhe kommen.</p></a>
-        <a class="card" href="/beschwerden/kinderwunsch/"><h3>Kinderwunsch</h3><p>Begleitung auf dem Weg.</p></a>
+      <div class="city-grid">
+        <a class="city-card location-card" href="/beschwerden/rueckenschmerzen/"><div class="location-city">Rückenschmerzen</div><div class="location-desc">Akut oder chronisch.</div><span class="location-link">Mehr erfahren →</span></a>
+        <a class="city-card location-card" href="/beschwerden/nackenschmerzen/"><div class="location-city">Nacken &amp; Verspannungen</div><div class="location-desc">Auch bei Spannungskopfschmerz.</div><span class="location-link">Mehr erfahren →</span></a>
+        <a class="city-card location-card" href="/beschwerden/migraene/"><div class="location-city">Migräne &amp; Kopfschmerzen</div><div class="location-desc">Anfälle reduzieren.</div><span class="location-link">Mehr erfahren →</span></a>
+        <a class="city-card location-card" href="/beschwerden/schlafprobleme/"><div class="location-city">Schlafprobleme</div><div class="location-desc">Besser ein- und durchschlafen.</div><span class="location-link">Mehr erfahren →</span></a>
+        <a class="city-card location-card" href="/beschwerden/stress-burnout/"><div class="location-city">Stress &amp; Burnout</div><div class="location-desc">Wieder zur Ruhe kommen.</div><span class="location-link">Mehr erfahren →</span></a>
+        <a class="city-card location-card" href="/beschwerden/kinderwunsch/"><div class="location-city">Kinderwunsch</div><div class="location-desc">Begleitung auf dem Weg.</div><span class="location-link">Mehr erfahren →</span></a>
       </div>
-      <p class="note"><a href="/beschwerden/">Alle Beschwerden ansehen &rarr;</a></p>
+      <p class="section-sub" style="margin-top:22px"><a href="/beschwerden/">Alle Beschwerden ansehen →</a></p>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section>
+  <section class="section">
     <div class="wrap">
-      <div class="center" style="margin-bottom:32px">
-        <p class="eyebrow">Erfahrungen aus Z&uuml;rich</p>
-        <h2 class="big">Was Patienten sagen</h2>
+      <div class="reveal">
+        <div class="section-label">Erfahrungen aus Zürich</div>
+        <h2 class="section-title">Was Patienten <em>sagen</em></h2>
       </div>
-      <div class="quotes">
-        <div class="quote">
-          <p>&laquo;Jahrelang Schlafprobleme, kein Arzt hat wirklich geholfen. TCM.ch hat mich in 10 Minuten mit der richtigen Praxis verbunden. Nach 4 Wochen schlafe ich wieder durch.&raquo;</p>
-          <div class="who"><span class="av">S</span><span>Sandra K. &middot; Z&uuml;rich Oerlikon &middot; Schlafprobleme</span></div>
-        </div>
-        <div class="quote">
-          <p>&laquo;Ich hatte Angst, ewig auf einen Termin warten zu m&uuml;ssen. &Uuml;ber TCM.ch hatte ich am gleichen Tag noch eine Praxis in Oerlikon gefunden. Unkomplizierter geht's nicht.&raquo;</p>
-          <div class="who"><span class="av">T</span><span>Thomas W. &middot; Oerlikon &middot; Stressbeschwerden</span></div>
-        </div>
-        <div class="quote">
-          <p>&laquo;H&ouml;ngg ist nicht gross, ich dachte, hier gibt's keine TCM-Praxis in der N&auml;he. TCM.ch hat mir eine Praxis 12 Minuten entfernt gefunden. Das war eine &Uuml;berraschung.&raquo;</p>
-          <div class="who"><span class="av">D</span><span>Daniela V. &middot; H&ouml;ngg &middot; Verdauung</span></div>
-        </div>
+      <div class="reviews-grid">
+        <div class="review-card"><div class="review-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><p class="review-text">«Jahrelang Schlafprobleme, kein Arzt hat wirklich geholfen. TCM.ch hat mich in 10 Minuten mit der richtigen Praxis verbunden. Nach 4 Wochen schlafe ich wieder durch.»</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sandra K.</div><div class="review-city">Zürich Oerlikon · Schlafprobleme</div></div></div></div>
+        <div class="review-card"><div class="review-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><p class="review-text">«Ich hatte Angst, ewig auf einen Termin warten zu müssen. Über TCM.ch hatte ich am gleichen Tag noch eine Praxis in Oerlikon gefunden. Unkomplizierter geht's nicht.»</p><div class="review-author"><div class="review-avatar">T</div><div><div class="review-name">Thomas W.</div><div class="review-city">Oerlikon · Stressbeschwerden</div></div></div></div>
+        <div class="review-card"><div class="review-stars"><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#2D9B6F" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><p class="review-text">«Höngg ist nicht gross, ich dachte, hier gibt's keine TCM-Praxis in der Nähe. TCM.ch hat mir eine Praxis 12 Minuten entfernt gefunden. Das war eine Überraschung.»</p><div class="review-author"><div class="review-avatar">D</div><div><div class="review-name">Daniela V.</div><div class="review-city">Höngg · Verdauung</div></div></div></div>
       </div>
     </div>
   </section>
 
   <!-- KRANKENKASSE -->
-  <section class="soft">
-    <div class="wrap split">
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap akz-split">
       <div>
-        <p class="eyebrow">Krankenkasse &amp; Kosten</p>
-        <h2 class="big">Meist zahlst du nichts selbst</h2>
-        <p class="lead">Akupunktur und TCM laufen &uuml;ber die Zusatzversicherung, nicht &uuml;ber die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent &uuml;bernommen.</p>
-        <div class="chips">
-          <span class="chip">Helsana</span><span class="chip">CSS</span><span class="chip">Swica</span><span class="chip">Sanitas</span><span class="chip">Concordia</span>
+        <div class="section-label">Krankenkasse &amp; Kosten</div>
+        <h2 class="section-title">Meist zahlst du <em>nichts selbst</em></h2>
+        <p class="section-sub">Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen.</p>
+        <div class="akz-chips">
+          <span class="akz-chip">Helsana</span><span class="akz-chip">CSS</span><span class="akz-chip">Swica</span><span class="akz-chip">Sanitas</span><span class="akz-chip">Concordia</span>
         </div>
-        <p class="note">Unsicher, was deine Kasse zahlt? Wir machen vor dem ersten Termin einen kostenlosen Kassen-Check.</p>
+        <p class="section-sub" style="margin-top:16px">Unsicher, was deine Kasse zahlt? Wir machen vor dem ersten Termin einen kostenlosen Kassen-Check.</p>
       </div>
       <div>
-        <a class="card" href="/krankenkassen/" style="background:var(--green-mint);border-color:transparent">
-          <h3>Kostenloser Kassen-Check</h3>
-          <p>Schick uns deinen Versicherer, wir sagen dir schwarz auf wei&szlig;, welcher Anteil &uuml;bernommen wird und was am Ende bei dir bleibt. Ohne Verpflichtung.</p>
-          <span class="more">Wird meine Kasse &uuml;bernommen? &rarr;</span>
+        <a class="city-card location-card" href="/krankenkassen/">
+          <div class="location-city">Kostenloser Kassen-Check</div>
+          <div class="location-desc">Schick uns deinen Versicherer, wir sagen dir schwarz auf weiss, welcher Anteil übernommen wird und was am Ende bei dir bleibt. Ohne Verpflichtung.</div>
+          <span class="location-link">Wird meine Kasse übernommen? →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- OFFER -->
-  <section id="termin">
+  <!-- OFFER: STARTE OHNE RISIKO -->
+  <section class="section" id="termin" style="background:var(--green-mint);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="wrap">
-      <div class="offer split" style="align-items:center">
-        <div>
-          <p class="eyebrow" style="color:rgba(255,255,255,.85)">Dein Behandlungsstart</p>
-          <h2>Starte ohne Risiko</h2>
-          <p class="lead">Du schilderst uns dein Anliegen, alles Weitere organisieren wir, bevor du dich festlegst. Erst nach dem Erstgespr&auml;ch entscheidest du, ob du eine Behandlung machst.</p>
-          <ul>
-            <li><span class="check">&#10003;</span> <span><b>Kassendeckung gepr&uuml;ft,</b> bevor du kommst</span></li>
-            <li><span class="check">&#10003;</span> <span><b>Termin innert 24 bis 48h,</b> Antwort in ~1h</span></li>
-            <li><span class="check">&#10003;</span> <span><b>Ehrlichkeits-Garantie:</b> wir behandeln nur, wenn es dir etwas bringt</span></li>
-          </ul>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow">Anliegen schildern</a>
-            <a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)" href="/krankenkassen/">Zuerst Kasse pr&uuml;fen</a>
-          </div>
+      <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 44px">
+        <div class="section-label">Dein Behandlungsstart</div>
+        <h2 class="section-title">Starte ohne Risiko. <em>Wir übernehmen den Rest.</em></h2>
+        <p class="section-sub" style="margin:0 auto">Du schilderst uns dein Anliegen. Alles Weitere organisieren wir, bevor du dich festlegst. Erst nach dem Erstgespräch entscheidest du, ob du eine Behandlung machst.</p>
+      </div>
+      <div class="usp-grid">
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg></div>
+          <div class="usp-title">Kassendeckung geprüft, bevor du kommst</div>
+          <div class="usp-sub">Bei den meisten Kassen werden 80 bis 100 Prozent übernommen.</div>
         </div>
-        <div>
-          <div class="steps" style="background:rgba(255,255,255,.08);padding:26px;border-radius:18px">
-            <div class="step"><span class="num">1</span><div><h3>Anliegen schildern</h3><p>1 bis 2 S&auml;tze gen&uuml;gen, per WhatsApp oder Telefon.</p></div></div>
-            <div class="step"><span class="num">2</span><div><h3>Passende Praxis in Z&uuml;rich</h3><p>Wir buchen dich in die n&auml;chste TCM.ch-Klinik ein.</p></div></div>
-            <div class="step"><span class="num">3</span><div><h3>Behandlung mit Plan</h3><p>Erstgespr&auml;ch, TCM-Diagnose und ein Plan, der passt.</p></div></div>
-          </div>
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <div class="usp-title">Termin innert 24 bis 48h</div>
+          <div class="usp-sub">Antwort auf deine Anfrage in rund einer Stunde.</div>
         </div>
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg></div>
+          <div class="usp-title">Ehrlichkeits-Garantie</div>
+          <div class="usp-sub">Wir behandeln nur, wenn es dir etwas bringt.</div>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+        <a class="btn-primary" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow">Anliegen schildern · Antwort in ~1h</a>
+        <a class="btn-secondary" href="/krankenkassen/">Zuerst Kasse prüfen</a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section>
-    <div class="wrap center" style="max-width:760px">
-      <p class="eyebrow">Passende Hilfe finden</p>
-      <h2 class="big">Jetzt Termin in Z&uuml;rich anfragen</h2>
-      <p class="lead" style="margin-bottom:26px">Kurz schildern, wir melden uns mit einem passenden Vorschlag. Kostenlos und unverbindlich.</p>
-      <div class="contact-cta">
-        <a class="cc" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." rel="nofollow"><b>WhatsApp</b><span>Antwort meist in wenigen Minuten</span></a>
-        <a class="cc" href="tel:+41775236122"><b>+41 77 523 61 22</b><span>Telefonisch, Mo&ndash;Fr</span></a>
-        <a class="cc" href="mailto:termine@tcm.ch"><b>termine@tcm.ch</b><span>Schreib uns dein Anliegen</span></a>
+  <section class="section contact-section-inline" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="contact-inline-grid">
+        <div class="reveal">
+          <div class="section-label">Passende Hilfe finden</div>
+          <h2 class="section-title">Termin in <em>Zürich</em> anfragen.</h2>
+          <p class="section-sub" style="margin-bottom:0">Kurz schildern, wir melden uns mit einem passenden Vorschlag. Kostenlos und unverbindlich.</p>
+          <div class="intake-trust-row">
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Passende Praxis statt langem Suchen</div>
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Standorte in Zürich City, Oerlikon und Höngg</div>
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Krankenkassenanerkannt (Zusatzversicherung)</div>
+          </div>
+          <div class="contact-methods-mini" style="gap:8px">
+            <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." class="contact-method-mini" target="_blank" rel="nofollow">
+              <div class="cm-icon-mini cm-wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></div>
+              <div><strong>WhatsApp, sofort starten</strong><span>Antwort meist in wenigen Minuten</span></div>
+            </a>
+            <a href="tel:+41775236122" class="contact-method-mini phone-quiet">
+              <div class="cm-icon-mini cm-phone"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"></path></svg></div>
+              <div><strong>Telefonisch (Mo–Fr)</strong><span>+41 77 523 61 22</span></div>
+            </a>
+            <a href="mailto:termine@tcm.ch" class="contact-method-mini">
+              <div class="cm-icon-mini cm-mail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg></div>
+              <div><strong>E-Mail</strong><span>termine@tcm.ch</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Wir melden uns mit einem Terminvorschlag.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich City</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="2" placeholder="z. B. Akupunktur bei Rückenschmerzen"></textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Termin anfragen</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="https://wa.me/41775236122" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="soft">
-    <div class="wrap" style="max-width:780px">
-      <div class="center" style="margin-bottom:30px">
-        <p class="eyebrow">H&auml;ufige Fragen</p>
-        <h2 class="big">Das Wichtigste in K&uuml;rze</h2>
-      </div>
-      <div class="faq">
-        <details open><summary>Wo finde ich Akupunktur in Z&uuml;rich in meiner N&auml;he?</summary><p>Wir haben im Raum Z&uuml;rich Standorte in der City, in Oerlikon und in H&ouml;ngg. So findest du eine Praxis in deiner N&auml;he, ohne lange Anfahrt. Schildere kurz dein Anliegen, wir buchen dich in der n&auml;chsten passenden Klinik ein.</p></details>
-        <details><summary>&Uuml;bernimmt die Krankenkasse die Akupunktur?</summary><p>Akupunktur und TCM laufen &uuml;ber die Zusatzversicherung, nicht &uuml;ber die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent &uuml;bernommen. Wir pr&uuml;fen das kostenlos vor deinem ersten Termin.</p></details>
-        <details><summary>Wie schnell bekomme ich einen Termin in Z&uuml;rich?</summary><p>Wir antworten auf deine Anfrage meist innerhalb einer Stunde. Ein Ersttermin ist je nach Standort und Verf&uuml;gbarkeit oft schon innert 24 bis 48 Stunden m&ouml;glich, an den Z&uuml;rcher Standorten City, Oerlikon und H&ouml;ngg.</p></details>
-        <details><summary>Tut Akupunktur weh?</summary><p>Die Nadeln sind d&uuml;nner als ein Haar. Die meisten sp&uuml;ren beim Setzen nur ein kurzes Ziehen oder Kribbeln, danach oft eine angenehme Schwere. Wenn etwas unangenehm ist, sag Bescheid, dann passen wir an.</p></details>
-        <details><summary>Bei welchen Beschwerden hilft TCM?</summary><p>H&auml;ufige Gr&uuml;nde sind R&uuml;cken- und Nackenschmerzen, Migr&auml;ne, Schlafprobleme, Stress und Ersch&ouml;pfung, Zyklusbeschwerden sowie Kinderwunsch. Beim ersten Gespr&auml;ch kl&auml;ren wir ehrlich, ob TCM in deinem Fall sinnvoll ist.</p></details>
+  <section class="kk-section">
+    <div class="wrap">
+      <div class="kk-inner">
+        <div class="kk-header" style="text-align:center">
+          <div class="section-label">Häufige Fragen</div>
+          <h2 class="section-title" style="margin:0 auto 14px">Das Wichtigste <em>in Kürze.</em></h2>
+        </div>
+        <div class="kk-faq">
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wo finde ich Akupunktur in Zürich in meiner Nähe?<span class="kk-ico">+</span></button><div class="kk-a"><p>Wir haben im Raum Zürich Standorte in der City, in Oerlikon und in Höngg. So findest du eine Praxis in deiner Nähe, ohne lange Anfahrt. Schildere kurz dein Anliegen, wir buchen dich in der nächsten passenden Klinik ein.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Übernimmt die Krankenkasse die Akupunktur?<span class="kk-ico">+</span></button><div class="kk-a"><p>Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen. Wir prüfen das kostenlos vor deinem ersten Termin.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wie schnell bekomme ich einen Termin in Zürich?<span class="kk-ico">+</span></button><div class="kk-a"><p>Wir antworten auf deine Anfrage meist innerhalb einer Stunde. Ein Ersttermin ist je nach Standort und Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, an den Zürcher Standorten City, Oerlikon und Höngg.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Tut Akupunktur weh?<span class="kk-ico">+</span></button><div class="kk-a"><p>Die Nadeln sind dünner als ein Haar. Die meisten spüren beim Setzen nur ein kurzes Ziehen oder Kribbeln, danach oft eine angenehme Schwere. Wenn etwas unangenehm ist, sag Bescheid, dann passen wir an.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Bei welchen Beschwerden hilft TCM?<span class="kk-ico">+</span></button><div class="kk-a"><p>Häufige Gründe sind Rücken- und Nackenschmerzen, Migräne, Schlafprobleme, Stress und Erschöpfung, Zyklusbeschwerden sowie Kinderwunsch. Beim ersten Gespräch klären wir ehrlich, ob TCM in deinem Fall sinnvoll ist.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section class="final">
-    <div class="wrap">
-      <h2>Bereit f&uuml;r deinen ersten Termin?</h2>
-      <p>Akupunktur und TCM in Z&uuml;rich, an einem Standort in deiner N&auml;he. Antwort auf deine Anfrage in rund einer Stunde.</p>
-      <div class="hero-cta" style="justify-content:center">
-        <a class="btn btn-primary" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow">Termin anfragen</a>
-        <a class="btn btn-ghost" href="tel:+41775236122">+41 77 523 61 22</a>
+  <section class="cta-band" style="background:var(--blue);padding:48px 0">
+    <div class="wrap" style="text-align:center">
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Bereit für deinen ersten Termin?</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Akupunktur und TCM in Zürich, an einem Standort in deiner Nähe. Antwort auf deine Anfrage in rund einer Stunde.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn-white" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>
+        <a href="tel:+41775236122" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">+41 77 523 61 22</a>
       </div>
     </div>
   </section>
