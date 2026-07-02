@@ -4577,3 +4577,6 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 
 /* St. Gallen hero: patch top-left on mobile so it doesn't cover the face */
 @media(max-width:767px){#sg-premium-hero .sg-patch{right:auto;left:10px}}
+
+/* St. Gallen: yellow top bar sticky below the fixed 68px header on desktop */
+@media(min-width:768px){#sg-premium-hero .sg-tdot-banner{position:sticky;top:68px;z-index:40}}
