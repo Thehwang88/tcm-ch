@@ -686,6 +686,67 @@ export const wissen: Wissen[] = [
         "cat": "Info"
       }
     ]
+  },
+  {
+    "slug": "kinderwunsch-akupunktur-tcm",
+    "title": "Kinderwunsch und TCM: Akupunktur, Zyklus und IVF-Begleitung",
+    "metaDesc": "Akupunktur und TCM bei Kinderwunsch: Erfahrungen, Akupunktur vor dem Embryotransfer, Zyklus begleiten und wie oft sinnvoll. Ehrlich und nüchtern erklärt.",
+    "region": "Schweizweit",
+    "excerpt": "Was Akupunktur und TCM bei Kinderwunsch leisten können, wie die Begleitung zu IVF und ICSI aussieht und wie oft eine Behandlung sinnvoll ist. Der Überblick.",
+    "category": "Beschwerden verstehen",
+    "h1": "Kinderwunsch und TCM: Akupunktur, Zyklus und IVF-Begleitung",
+    "lead": "Ein unerfüllter Kinderwunsch zehrt an den Nerven. Was Akupunktur und TCM realistisch beitragen können, wie die Begleitung rund um IVF und ICSI aussieht und wie oft eine Behandlung sinnvoll ist.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Kinderwunsch mit TCM begleiten?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-07-03",
+    "dateModified": "2026-07-03",
+    "lastReviewed": "2026-07-03",
+    "bodyHtml": "<h2>Kinderwunsch und TCM: der Überblick</h2><p>Ein unerfüllter Kinderwunsch belastet, und oft gibt es keine einzelne Ursache. Die TCM begleitet den Körper über mehrere Zyklen und setzt bei Zyklus, Eisprung, Durchblutung und Stress an. Was in der Praxis dazugehört, liest du auf unserer Seite zu <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch und TCM</a>.</p><h2>Akupunktur bei Kinderwunsch: Erfahrungen und Studienlage</h2><p>Viele Frauen berichten, dass sie sich unter regelmässiger <a href=\"/therapien/akupunktur/\">Akupunktur</a> ruhiger fühlen und ihr Zyklus regelmässiger wird. Die Studien dazu sind uneinheitlich und oft klein. Akupunktur kann begleiten und den Stress senken, ein Erfolg lässt sich daraus nicht ableiten und nicht versprechen.</p><h2>Akupunktur vor dem Embryotransfer</h2><p>Rund um den Embryotransfer wird Akupunktur häufig eingesetzt, auch um die Anspannung an diesem Tag zu senken. Ob sie die Erfolgsquote verbessert, ist wissenschaftlich nicht eindeutig geklärt. Sinnvoll ist sie als ergänzende Begleitung, abgestimmt mit deinem Kinderwunschzentrum, nicht als Ersatz für die medizinische Behandlung.</p><h2>Den Zyklus mit TCM begleiten</h2><p>Die TCM schaut auf den ganzen Rhythmus aus Schlaf, Verdauung, Stress und Bewegung. Behandelt wird mit Akupunktur und, wenn passend, mit individuell zusammengestellten chinesischen Kräutern. Ziel ist, einen unregelmässigen Zyklus über die Zeit zu stabilisieren. Steht PCOS im Hintergrund, findest du mehr auf unserer Seite zu <a href=\"/beschwerden/pcos/\">PCOS</a>.</p><h2>Wie oft Akupunktur bei Kinderwunsch?</h2><p>Üblich ist eine Begleitung über mehrere Zyklen, oft etwa einmal pro Woche, in IVF- oder ICSI-Phasen gezielt um die wichtigen Termine. Den genauen Rhythmus legt ihr gemeinsam fest, je nach Situation und Plan.</p><h2>Kosten und Krankenkasse</h2><p>Die Behandlung läuft über die Zusatzversicherung. Bei EMR-/ASCA-anerkannten Therapeutinnen beteiligen sich viele Kassen mit 80 bis 100 Prozent, die Grundversicherung nicht. Details findest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a>.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Wie sind die Erfahrungen mit Akupunktur bei Kinderwunsch?",
+        "a": "Viele empfinden die Behandlung als entlastend und den Zyklus als regelmässiger. Belege stammen aus kleinen Studien, ein Erfolg lässt sich nicht versprechen."
+      },
+      {
+        "q": "Ist Akupunktur vor dem Embryotransfer sinnvoll?",
+        "a": "Sie wird häufig ergänzend eingesetzt, auch zur Entspannung. Ein sicherer Effekt auf die Erfolgsquote ist nicht belegt. Das Timing stimmst du mit dem Kinderwunschzentrum ab."
+      },
+      {
+        "q": "Wie oft Akupunktur bei Kinderwunsch?",
+        "a": "Oft etwa einmal pro Woche über mehrere Zyklen, individuell angepasst und in IVF-Phasen um die wichtigen Termine getaktet."
+      },
+      {
+        "q": "Kann TCM den Zyklus bei Kinderwunsch verbessern?",
+        "a": "Die TCM kann einen unregelmässigen Zyklus über mehrere Zyklen begleiten und stabilisieren helfen. Wie stark, ist individuell."
+      },
+      {
+        "q": "Zahlt die Krankenkasse?",
+        "a": "Bei EMR-/ASCA-Therapeutinnen beteiligen sich viele Zusatzversicherungen. Die Grundversicherung deckt es nicht."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/kinderwunsch/",
+        "label": "Kinderwunsch mit TCM begleiten",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/pcos/",
+        "label": "PCOS & TCM",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/krankenkassen/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Info"
+      }
+    ]
   }
 ];
 export const wissenBySlug = (slug: string): Wissen | undefined => wissen.find((w) => w.slug === slug);
