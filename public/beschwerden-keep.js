@@ -15,5 +15,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "sehnenscheidenentzuendung", "fibromyalgie",
   "kinderwunsch", "menstruationsbeschwerden", "pms", "wechseljahre", "schwangerschaftsbeschwerden",
   "stress-burnout", "burnout", "schlafstoerungen", "schlafprobleme", "angststoerungen", "erschoepfung",
-  "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement"
+  "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement",
+  "pcos"
 ];

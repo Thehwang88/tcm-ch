@@ -625,6 +625,67 @@ export const wissen: Wissen[] = [
         "cat": "Artikel"
       }
     ]
+  },
+  {
+    "slug": "pcos-akupunktur-tcm",
+    "title": "PCOS und TCM: Akupunktur, Zyklus und Kinderwunsch",
+    "metaDesc": "Akupunktur und TCM bei PCOS: was Erfahrungen zeigen, wie sich der Zyklus regulieren lässt, PCOS und Kinderwunsch, und TCM ohne Pille. Ehrlich erklärt.",
+    "region": "Schweizweit",
+    "excerpt": "Was Akupunktur und TCM bei PCOS leisten können, wie sich der Zyklus begleiten lässt und was das für den Kinderwunsch bedeutet. Der Überblick.",
+    "category": "Beschwerden verstehen",
+    "h1": "PCOS und TCM: Akupunktur, Zyklus und Kinderwunsch",
+    "lead": "PCOS ist chronisch, aber du bist ihm nicht ausgeliefert. Wie Akupunktur und TCM den Zyklus begleiten können, was das für den Kinderwunsch heisst und warum es auch ohne Pille geht.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "PCOS mit TCM begleiten?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-07-03",
+    "dateModified": "2026-07-03",
+    "lastReviewed": "2026-07-03",
+    "bodyHtml": "<h2>Was PCOS für den Alltag bedeutet</h2><p>PCOS, das polyzystische Ovarialsyndrom, ist eine chronische hormonelle Störung. Der Zyklus wird unregelmässig, der Eisprung bleibt oft aus, dazu kommen Haut-, Gewichts- oder Stimmungsthemen. Heilbar ist PCOS nicht, begleiten lässt es sich aber gut. Was in der Praxis dazugehört, liest du auf unserer Seite zu <a href=\"/beschwerden/pcos/\">PCOS und TCM</a>.</p><h2>PCOS und Akupunktur: Erfahrungen und Studienlage</h2><p>Viele Frauen berichten, dass ihr Zyklus unter regelmässiger <a href=\"/therapien/akupunktur/\">Akupunktur</a> ruhiger und regelmässiger wird. Die Studienlage ist gemischt und stammt aus eher kleinen Untersuchungen. Akupunktur kann den Zyklus und den Stresspegel begleitend beeinflussen, ein sicheres Ergebnis lässt sich daraus nicht ableiten. Realistisch ist eine Begleitung über mehrere Zyklen, kein schneller Schalter.</p><h2>Den Zyklus regulieren mit TCM</h2><p>Die TCM schaut nicht nur auf die Eierstöcke, sondern auf den ganzen Rhythmus aus Schlaf, Verdauung, Stress und Bewegung. Behandelt wird mit Akupunktur und, wenn passend, mit individuell zusammengestellten chinesischen Kräutern. Dazu kommen Hinweise zu Essrhythmus und Alltag. Ziel ist, den Zyklus über die Zeit zu stabilisieren.</p><h2>PCOS und Kinderwunsch</h2><p>Ein häufiger Grund für den Weg in die Praxis ist der unerfüllte Kinderwunsch. Die TCM begleitet hier ergänzend zur gynäkologischen Behandlung, etwa vor oder während einer Kinderwunsch-Abklärung. Mehr dazu auf unserer Seite zu <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch</a>. Eine ärztliche Abklärung bleibt die Basis.</p><h2>TCM bei PCOS ohne Pille</h2><p>Manche Frauen möchten PCOS ohne oder nach der Pille angehen. Die TCM ist davon unabhängig und wird oft gerade dann gesucht. Ob und wann du die Pille absetzt, gehört mit deiner Ärztin besprochen. Die TCM ersetzt weder die Diagnose noch eine nötige schulmedizinische Behandlung.</p><h2>Kosten und Krankenkasse</h2><p>Die Behandlung läuft über die Zusatzversicherung. Bei EMR-/ASCA-anerkannten Therapeutinnen beteiligen sich viele Kassen mit 80 bis 100 Prozent, die Grundversicherung nicht. Details findest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a>.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Hilft Akupunktur bei PCOS?",
+        "a": "Akupunktur kann den Zyklus und stressbedingte Beschwerden begleitend beeinflussen. Die Studienlage ist begrenzt, ein Heilversprechen gibt es nicht."
+      },
+      {
+        "q": "Kann TCM den Zyklus bei PCOS regulieren?",
+        "a": "Die TCM kann den Zyklus über mehrere Zyklen begleiten und stabilisieren helfen. Wie stark, ist individuell."
+      },
+      {
+        "q": "Funktioniert TCM bei PCOS ohne Pille?",
+        "a": "Ja, die TCM ist unabhängig von der Pille. Das Absetzen selbst besprichst du mit deiner Ärztin."
+      },
+      {
+        "q": "Wie lange dauert es, bis sich etwas tut?",
+        "a": "PCOS wird über mehrere Zyklen begleitet. Veränderungen zeigen sich meist nicht sofort."
+      },
+      {
+        "q": "Zahlt die Krankenkasse?",
+        "a": "Bei EMR-/ASCA-Therapeutinnen beteiligen sich viele Zusatzversicherungen. Die Grundversicherung deckt es nicht."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/pcos/",
+        "label": "PCOS mit TCM begleiten",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/kinderwunsch/",
+        "label": "Kinderwunsch & TCM",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/krankenkassen/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Info"
+      }
+    ]
   }
 ];
 export const wissenBySlug = (slug: string): Wissen | undefined => wissen.find((w) => w.slug === slug);

@@ -1,0 +1,36 @@
+---
+// /beschwerden/pcos — dedicated symptom page (PCOS). Same layout/tokens/components as the
+// captured symptom leaves (hero, trust strip, content+sidebar, FAQ, contact form, CTA band).
+// Slug must be in public/beschwerden-keep.js so the /beschwerden doorway serves it (not 410).
+import SpaPage from '../../../layouts/SpaPage.astro';
+import bodyRaw from '../../../data/pcos-body.html?raw';
+import { prefillForm } from '../../../data/form-prefill';
+
+const body = prefillForm(bodyRaw, 'Ich interessiere mich für TCM-Begleitung bei PCOS.', 'Beschwerde: PCOS');
+
+const url = 'https://tcm.ch/beschwerden/pcos/';
+const title = 'Akupunktur & TCM bei PCOS in der Schweiz | TCM.ch';
+const description = 'PCOS mit TCM begleiten: Akupunktur, chinesische Kräuter, Zyklus- und Kinderwunsch-Unterstützung. Geprüfte Therapeuten an 12 Standorten. EMR-/ASCA-anerkannt.';
+
+const faqs = [
+  { q: 'Kann TCM PCOS heilen?', a: 'Nein. PCOS ist chronisch. Die TCM kann den Zyklus und die Beschwerden begleiten und mildern, ein Heilversprechen gibt es nicht.' },
+  { q: 'Hilft Akupunktur bei Kinderwunsch mit PCOS?', a: 'Akupunktur kann den Zyklus und den Eisprung begleitend unterstützen, ergänzend zur gynäkologischen Behandlung.' },
+  { q: 'Wie lange dauert eine TCM-Begleitung bei PCOS?', a: 'PCOS wird über mehrere Zyklen begleitet. Wie lange genau, hängt von deiner Situation ab und wird individuell festgelegt.' },
+  { q: 'Kann ich TCM bei PCOS ohne Pille machen?', a: 'Ja, die TCM ist unabhängig von der Pille. Ob und wann du die Pille absetzt, besprichst du mit deiner Ärztin.' },
+  { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Bei EMR-/ASCA-anerkannten Therapeutinnen beteiligen sich viele Zusatzversicherungen mit 80 bis 100 Prozent. Die Grundversicherung deckt es nicht.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    about: { '@type': 'MedicalCondition', name: 'Polyzystisches Ovarialsyndrom (PCOS)' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Beschwerden', item: 'https://tcm.ch/beschwerden/' },
+    { '@type': 'ListItem', position: 3, name: 'PCOS', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/beschwerden/pcos" body={body} schema={schema} />
