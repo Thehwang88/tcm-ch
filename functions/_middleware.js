@@ -8,5 +8,13 @@ export async function onRequest(context) {
     url.hostname = 'tcm.ch';
     return new Response(null, { status: 301, headers: { Location: url.toString() } });
   }
+  // Legacy junk paths outside the scoped section doorways -> 410 Gone (same body as those).
+  const GONE = new Set(['/SMS/online.html', '/Dhyana/Datenschutzerklaerung.pdf']);
+  if (GONE.has(url.pathname)) {
+    return new Response(
+      "<!doctype html><meta charset=utf-8><title>Seite entfernt</title><p>Diese Seite existiert nicht mehr.",
+      { status: 410, headers: { "content-type": "text/html; charset=utf-8" } }
+    );
+  }
   return context.next();
 }
