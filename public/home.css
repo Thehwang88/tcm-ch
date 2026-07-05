@@ -4585,3 +4585,6 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 #sg-premium-hero .sg-patch b{font-size:clamp(20px,2vw,24px)}
 #sg-premium-hero .sg-patch .sg-patch-sub{font-size:12px;font-weight:700;opacity:1;max-width:166px;line-height:1.3}
 @media(max-width:767px){#sg-premium-hero .sg-patch{width:155px;padding:13px;gap:3px}#sg-premium-hero .sg-patch .sg-patch-ey{font-size:9px}#sg-premium-hero .sg-patch b{font-size:14.5px}#sg-premium-hero .sg-patch .sg-patch-sub{display:block;font-size:9px;font-weight:700;opacity:1;max-width:124px;line-height:1.25}}
+
+/* onclick-stripped "Hilft bei" rows (410-pruned beschwerden targets) -> inert, not clickable */
+div.sidebar-row:not([onclick]){cursor:default;background:none}
