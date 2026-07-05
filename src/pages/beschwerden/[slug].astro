@@ -6,6 +6,7 @@ import SpaPage from '../../layouts/SpaPage.astro';
 import { beschwerden } from '../../data/beschwerden';
 import { prefillForm } from '../../data/form-prefill';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
+import { parseLeafFaqs, faqPageSchema } from '../../data/leaf-faq';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -54,9 +55,16 @@ const schema: object[] = [
     { '@type': 'ListItem', position: 3, name, item: url },
   ] },
 ];
-if (entry?.faqs?.length) {
+// schlafstoerungen: its entry.faqs are mismatched (IVF/pregnancy copy) and not rendered
+// on the page -> emit no FAQPage (drop the inverse mismatch), rather than schema for
+// invisible, off-topic Q&A.
+if (entry?.faqs?.length && slug !== 'schlafstoerungen') {
   schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: entry.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+} else if (!entry?.faqs?.length) {
+  // Visible FAQ baked into the leaf but no entry.faqs -> emit FAQPage from the accordion Google sees.
+  const leafFaqs = parseLeafFaqs(body);
+  if (leafFaqs.length) schema.push(faqPageSchema(leafFaqs));
 }
 // "Verwandte Beschwerden" cross-link block — interlinks the /beschwerden/ leaf pages
 // (SEO: lift them out of "discovered, not crawled"). Built from the real related[] data,
