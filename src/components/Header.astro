@@ -10,17 +10,17 @@ const logoHref = isDe ? '/' : '/en/';
 const logoAria = isDe ? 'TCM.ch — Startseite' : 'TCM.ch — home';
 
 const navLinks = isDe ? [
-  { href: '/beschwerden', label: 'Beschwerden' },
-  { href: '/therapien', label: 'Therapien' },
-  { href: '/standorte', label: 'Standorte' },
-  { href: '/wissen', label: 'Wissen' },
-  { href: '/krankenkassen', label: 'Krankenkasse' },
+  { href: '/beschwerden/', label: 'Beschwerden' },
+  { href: '/therapien/', label: 'Therapien' },
+  { href: '/standorte/', label: 'Standorte' },
+  { href: '/wissen/', label: 'Wissen' },
+  { href: '/krankenkassen/', label: 'Krankenkasse' },
 ] : [
   { href: '/en/conditions/', label: 'Conditions' },
   { href: '/en/therapies/', label: 'Therapies' },
   { href: '/en/locations/', label: 'Locations' },
   { href: '/en/knowledge/', label: 'Knowledge' },
-  { href: '/en/health-insurance-acupuncture', label: 'Insurance & costs' },
+  { href: '/en/health-insurance-acupuncture/', label: 'Insurance & costs' },
 ];
 
 // Language toggle: EN page → DE twin; DE page → EN twin (fallback to the other home).
@@ -30,7 +30,7 @@ const langAria = isDe ? 'Switch to English' : 'Zur deutschen Seite wechseln';
 const langHreflang = isDe ? 'en' : 'de-CH';
 const drawerLangLabel = isDe ? 'English / EN' : 'Deutsch / DE';
 
-const ctaHref = isDe ? '/kontakt' : '/en/contact';
+const ctaHref = isDe ? '/kontakt/' : '/en/contact/';
 const ctaLabel = isDe ? 'Jetzt Hilfe erhalten' : 'Request an appointment';
 const callLabel = isDe ? 'Anrufen' : 'Call';
 const drawerUtilLabel = isDe ? 'Für Fachpersonen / Zuweiser' : 'For professionals — referral form in German';
@@ -53,8 +53,8 @@ const waHref = `https://wa.me/${site.whatsapp}`;
     </ul>
     <div class="nav-right">
       {isDe
-        ? <a class="nav-util" href="/zuweisen">Für Fachpersonen</a>
-        : <a class="nav-util" href="/zuweisen" title="Online referral form (in German)">For professionals <span class="nav-util-lang">(DE)</span></a>}
+        ? <a class="nav-util" href="/zuweisen/">Für Fachpersonen</a>
+        : <a class="nav-util" href="/zuweisen/" title="Online referral form (in German)">For professionals <span class="nav-util-lang">(DE)</span></a>}
       <a class="nav-lang" href={langHref} hreflang={langHreflang} aria-label={langAria}>{langLabel}</a>
       <a class="nav-cta" href={ctaHref}>{ctaLabel}</a>
       <button class="nav-menu-btn" id="enMenuBtn" aria-label="Open menu" aria-controls="siteDrawer" aria-expanded="false">
@@ -86,7 +86,7 @@ const waHref = `https://wa.me/${site.whatsapp}`;
             <li><a href={l.href}>{l.label}<span class="drw-link-arrow" set:html={arrow} /></a></li>
           ))}
           <li><a href={langHref} hreflang={langHreflang}>{drawerLangLabel}<span class="drw-link-arrow" set:html={arrow} /></a></li>
-          <li><a href="/zuweisen">{drawerUtilLabel}<span class="drw-link-arrow" set:html={arrow} /></a></li>
+          <li><a href="/zuweisen/">{drawerUtilLabel}<span class="drw-link-arrow" set:html={arrow} /></a></li>
         </ul>
       </div>
     </div>
