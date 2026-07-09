@@ -85,6 +85,9 @@ if (slug === 'bottighofen') {
 // (St. Gallen is excluded below — its baked leaf already has a "Beschwerden, die wir
 // in St. Gallen behandeln" section, so this chip row would be a duplicate.)
 const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
-const filledBody = prefillStandort(outBody, name);
+const filledBody = prefillStandort(outBody, name).replace(
+  /<button type="button" class="btn-primary" onclick="openTerminForm\(\)" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">([\s\S]*?)<\/button>/,
+  `<a href="?standort=${encodeURIComponent(name)}" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">$1</a>`,
+);
 ---
 <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={filledBody + ((slug === 'st-gallen' || slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks)} schema={schema} />
