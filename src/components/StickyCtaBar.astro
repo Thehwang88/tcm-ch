@@ -35,7 +35,22 @@ const TEL = `tel:+${site.whatsapp}`;
     background: #2D9B6F; color: #fff; border-radius: 14px;
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
     text-decoration: none; box-shadow: 0 6px 18px rgba(45, 155, 111, .3);
+    position: relative; overflow: hidden; isolation: isolate;
     animation: scb-glow 2s ease-in-out infinite;
+  }
+  /* Shimmer sweep — a soft light band crosses the button every ~3.6s, then rests. */
+  .scb-primary::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 42%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .5), transparent);
+    transform: skewX(-18deg); pointer-events: none; z-index: 2;
+    animation: scb-shimmer 3.6s ease-in-out infinite;
+  }
+  /* Two tiny star twinkles, timed just after the sweep passes. */
+  .scb-primary::after {
+    content: ""; position: absolute; z-index: 2; pointer-events: none;
+    top: 9px; right: 22px; width: 3px; height: 3px; border-radius: 50%;
+    background: #fff; box-shadow: -13px 9px 0 -0.5px rgba(255, 255, 255, .95);
+    opacity: 0; animation: scb-twinkle 3.6s ease-in-out infinite;
   }
   .scb-row { display: flex; gap: 8px; }
   .scb-out {
@@ -49,10 +64,29 @@ const TEL = `tel:+${site.whatsapp}`;
     0%, 100% { box-shadow: 0 6px 18px rgba(45, 155, 111, .28); }
     50% { box-shadow: 0 6px 26px rgba(45, 155, 111, .55); }
   }
-  @media (prefers-reduced-motion: reduce) { .scb-primary { animation: none; } }
+  @keyframes scb-shimmer {
+    0% { left: -60%; }
+    55%, 100% { left: 150%; }
+  }
+  @keyframes scb-twinkle {
+    0%, 68%, 100% { opacity: 0; transform: scale(.4); }
+    76% { opacity: .95; transform: scale(1); }
+    88% { opacity: .15; transform: scale(.7); }
+  }
   @media (max-width: 768px) {
-    .scb-bar { display: flex; }
+    /* Hidden at top of page; JS toggles .is-visible once the hero scrolls out. */
+    .scb-bar {
+      display: flex;
+      transform: translateY(120%); opacity: 0; pointer-events: none;
+      transition: transform .35s cubic-bezier(.16, 1, .3, 1), opacity .3s ease;
+    }
+    .scb-bar.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
     body { padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scb-primary { animation: none; }
+    .scb-primary::before, .scb-primary::after { display: none; }
+    .scb-bar { transition: none; }
   }
 </style>
 <script is:inline>
@@ -60,8 +94,7 @@ const TEL = `tel:+${site.whatsapp}`;
     var bar = document.querySelector('.scb-bar');
     if (!bar) return;
     var primary = bar.querySelector('.scb-primary');
-    if (!primary) return;
-    primary.addEventListener('click', function (e) {
+    if (primary) primary.addEventListener('click', function (e) {
       // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.
       var form = document.querySelector('#home-contact-form, .inline-form-card');
       if (!form) return;
@@ -74,5 +107,18 @@ const TEL = `tel:+${site.whatsapp}`;
       h.value = location.pathname || '/';
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    // Reveal only after the hero scrolls out of view; hide again near the top.
+    // Priority-ordered so we observe the VISIBLE hero (leaves hide inactive hero
+    // variants, and a display:none element would never intersect -> always shown).
+    var hero = document.querySelector('.sg-active')          // therapie/symptom/standort leaf hero
+      || document.querySelector('.hero-bg')                  // home
+      || document.querySelector('.hero')                     // wissen + other LayoutDe pages
+      || document.querySelector('[class*="-hero"]')
+      || document.querySelector('main section, section');
+    if (!('IntersectionObserver' in window) || !hero) { bar.classList.add('is-visible'); return; }
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
   })();
 </script>
