@@ -45,13 +45,6 @@ const TEL = `tel:+${site.whatsapp}`;
     transform: skewX(-18deg); pointer-events: none; z-index: 2;
     animation: scb-shimmer 3.6s ease-in-out infinite;
   }
-  /* Two tiny star twinkles, timed just after the sweep passes. */
-  .scb-primary::after {
-    content: ""; position: absolute; z-index: 2; pointer-events: none;
-    top: 9px; right: 22px; width: 3px; height: 3px; border-radius: 50%;
-    background: #fff; box-shadow: -13px 9px 0 -0.5px rgba(255, 255, 255, .95);
-    opacity: 0; animation: scb-twinkle 3.6s ease-in-out infinite;
-  }
   .scb-row { display: flex; gap: 8px; }
   .scb-out {
     flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
@@ -68,11 +61,6 @@ const TEL = `tel:+${site.whatsapp}`;
     0% { left: -60%; }
     55%, 100% { left: 150%; }
   }
-  @keyframes scb-twinkle {
-    0%, 68%, 100% { opacity: 0; transform: scale(.4); }
-    76% { opacity: .95; transform: scale(1); }
-    88% { opacity: .15; transform: scale(.7); }
-  }
   @media (max-width: 768px) {
     /* Hidden at top of page; JS toggles .is-visible once the hero scrolls out. */
     .scb-bar {
@@ -85,7 +73,7 @@ const TEL = `tel:+${site.whatsapp}`;
   }
   @media (prefers-reduced-motion: reduce) {
     .scb-primary { animation: none; }
-    .scb-primary::before, .scb-primary::after { display: none; }
+    .scb-primary::before { display: none; }
     .scb-bar { transition: none; }
   }
 </style>
