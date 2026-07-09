@@ -35,15 +35,7 @@ const TEL = `tel:+${site.whatsapp}`;
     background: #2D9B6F; color: #fff; border-radius: 14px;
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
     text-decoration: none; box-shadow: 0 6px 18px rgba(45, 155, 111, .3);
-    position: relative; overflow: hidden; isolation: isolate;
     animation: scb-glow 2s ease-in-out infinite;
-  }
-  /* Shimmer sweep — a soft light band crosses the button every ~3.6s, then rests. */
-  .scb-primary::before {
-    content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 42%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .5), transparent);
-    transform: skewX(-18deg); pointer-events: none; z-index: 2;
-    animation: scb-shimmer 3.6s ease-in-out infinite;
   }
   .scb-row { display: flex; gap: 8px; }
   .scb-out {
@@ -57,10 +49,6 @@ const TEL = `tel:+${site.whatsapp}`;
     0%, 100% { box-shadow: 0 6px 18px rgba(45, 155, 111, .28); }
     50% { box-shadow: 0 6px 26px rgba(45, 155, 111, .55); }
   }
-  @keyframes scb-shimmer {
-    0% { left: -60%; }
-    55%, 100% { left: 150%; }
-  }
   @media (max-width: 768px) {
     /* Hidden at top of page; JS toggles .is-visible once the hero scrolls out. */
     .scb-bar {
@@ -73,7 +61,6 @@ const TEL = `tel:+${site.whatsapp}`;
   }
   @media (prefers-reduced-motion: reduce) {
     .scb-primary { animation: none; }
-    .scb-primary::before { display: none; }
     .scb-bar { transition: none; }
   }
 </style>
