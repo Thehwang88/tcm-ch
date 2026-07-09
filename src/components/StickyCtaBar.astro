@@ -1,67 +1,78 @@
 ---
-// Mobile-only sticky bottom CTA bar — shared sitewide (rendered once in Footer).
-// Appears after the hero scrolls out; hides while a contact form is in view.
-// Weighted: green primary (dominant ~64%) + lighter WhatsApp outline (~36%).
-const WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis.';
+// Mobile-only (≤768px) sticky bottom 3-CTA bar — shared sitewide (rendered once in Footer).
+// Layout (matches hwang.ch mobile): full-width green primary on top, two outline
+// buttons (WhatsApp + Anrufen) side by side below. Primary carries a gentle brand-green
+// glow pulse (disabled under prefers-reduced-motion).
+import { site } from '../data/site';
+const WA = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich suche eine TCM-Praxis.')}`;
+const TEL = `tel:+${site.whatsapp}`;
 ---
-<div class="sticky-cta-bar" aria-hidden="true">
-  <button class="scb-primary" type="button">Termin anfragen</button>
-  <a class="scb-wa" href={WA} target="_blank" rel="noopener" aria-label="Per WhatsApp anfragen">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>WhatsApp
+<div class="scb-bar" role="region" aria-label="Kontakt">
+  <a class="scb-primary" href="/kontakt/">
+    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Kostenlos anfragen
   </a>
+  <div class="scb-row">
+    <a class="scb-out" href={WA} target="_blank" rel="noopener" aria-label="Per WhatsApp anfragen">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>WhatsApp
+    </a>
+    <a class="scb-out" href={TEL} aria-label="Anrufen">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg>Anrufen
+    </a>
+  </div>
 </div>
 <style>
-  .sticky-cta-bar {
+  .scb-bar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 540;
-    display: flex; gap: 10px; padding: 10px 12px;
-    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    display: none; flex-direction: column; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
     background: rgba(255, 255, 255, .96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-    border-top: 1px solid var(--border);
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, .07);
-    transform: translateY(110%); transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+    border-top: 1px solid var(--border); box-shadow: 0 -4px 16px rgba(0, 0, 0, .07);
   }
-  .sticky-cta-bar.is-visible { transform: translateY(0); }
   .scb-primary {
-    flex: 0 0 64%; display: inline-flex; align-items: center; justify-content: center;
-    background: #2D9B6F; color: #fff; border: none; border-radius: 12px; padding: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; min-height: 48px; box-sizing: border-box; padding: 0 16px;
+    background: #2D9B6F; color: #fff; border-radius: 14px;
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
-    cursor: pointer; box-shadow: 0 6px 18px rgba(45, 155, 111, .3);
+    text-decoration: none; box-shadow: 0 6px 18px rgba(45, 155, 111, .3);
+    animation: scb-glow 2s ease-in-out infinite;
   }
-  .scb-wa {
-    flex: 1 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
-    background: #fff; color: #1F7A54; border: 1.5px solid rgba(45, 155, 111, .4); border-radius: 12px;
-    padding: 14px 8px; font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none;
+  .scb-row { display: flex; gap: 8px; }
+  .scb-out {
+    flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    min-height: 48px; box-sizing: border-box; padding: 0 8px;
+    background: #fff; color: #1F7A54; border: 1.5px solid rgba(45, 155, 111, .4); border-radius: 14px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none;
   }
-  @media (min-width: 768px) { .sticky-cta-bar { display: none; } }
-  @media (prefers-reduced-motion: reduce) { .sticky-cta-bar { transition: opacity .25s ease; } }
+  .scb-primary svg, .scb-out svg { flex-shrink: 0; }
+  @keyframes scb-glow {
+    0%, 100% { box-shadow: 0 6px 18px rgba(45, 155, 111, .28); }
+    50% { box-shadow: 0 6px 26px rgba(45, 155, 111, .55); }
+  }
+  @media (prefers-reduced-motion: reduce) { .scb-primary { animation: none; } }
+  @media (max-width: 768px) {
+    .scb-bar { display: flex; }
+    body { padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px)); }
+  }
 </style>
 <script is:inline>
   (function () {
-    var bar = document.querySelector('.sticky-cta-bar');
+    var bar = document.querySelector('.scb-bar');
     if (!bar) return;
-    var btn = bar.querySelector('.scb-primary');
-    if (btn) btn.addEventListener('click', function () {
-      if (typeof openContactForm === 'function') { openContactForm(); return; }
-      var f = document.querySelector('#home-contact-form, .contact-section-inline, .form-card');
-      if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var primary = bar.querySelector('.scb-primary');
+    if (!primary) return;
+    primary.addEventListener('click', function (e) {
+      // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.
+      var form = document.querySelector('#home-contact-form, .inline-form-card');
+      if (!form) return;
+      e.preventDefault();
+      var ta = form.querySelector('textarea[name="anliegen"], textarea[name="behandlung"], textarea');
+      if (ta && !ta.value.trim()) ta.value = 'Ich interessiere mich für einen Termin.';
+      var f = form.querySelector('form') || form;
+      var h = f.querySelector('input[name="quelle"]');
+      if (!h) { h = document.createElement('input'); h.type = 'hidden'; h.name = 'quelle'; f.appendChild(h); }
+      h.value = location.pathname || '/';
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    if (!('IntersectionObserver' in window)) return;
-    var hero = document.querySelector('#home-content .hero-bg, .hero, .bx-hero, .kk-hero, [class*="-hero"]');
-    var forms = document.querySelectorAll('#home-contact-form, .contact-section-inline, .form-card');
-    var pastHero = false, formInView = false, vis = new Set();
-    function update() { bar.classList.toggle('is-visible', pastHero && !formInView); }
-    if (hero) {
-      new IntersectionObserver(function (es) { pastHero = !es[0].isIntersecting; update(); }, { threshold: 0 }).observe(hero);
-    } else {
-      window.addEventListener('scroll', function () { pastHero = window.scrollY > 400; update(); }, { passive: true });
-    }
-    if (forms.length) {
-      var fo = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { e.isIntersecting ? vis.add(e.target) : vis.delete(e.target); });
-        formInView = vis.size > 0; update();
-      }, { threshold: 0.01 });
-      forms.forEach(function (f) { fo.observe(f); });
-    }
-    update();
   })();
 </script>
