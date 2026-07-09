@@ -8,7 +8,6 @@
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
-import HomeHero from '../components/HomeHero.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
 
@@ -27,14 +26,6 @@ const schema = [
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
-
-// Swap the captured SPA hero for the Astro-built green HomeHero, keeping the
-// #home-content wrapper (its padding-top:68px clears the fixed header) and the
-// rest of the page verbatim. Split at the hero-bg .. kennst-section boundary.
-const _heroStart = homeHtml.indexOf('<div class="hero-bg">');
-const _heroEnd = homeHtml.indexOf('<section class="kennst-section"');
-const homeBefore = homeHtml.slice(0, _heroStart); // "<div id="home-content">"
-const homeAfter = homeHtml.slice(_heroEnd);        // rest of #home-content + its </div>
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -80,9 +71,7 @@ const homeAfter = homeHtml.slice(_heroEnd);        // rest of #home-content + it
   </head>
   <body>
     <DeHeader />
-    <Fragment set:html={homeBefore} />
-    <HomeHero />
-    <Fragment set:html={homeAfter} />
+    <Fragment set:html={homeHtml} />
     <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
