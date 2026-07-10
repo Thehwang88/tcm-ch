@@ -16,7 +16,11 @@ export async function onRequestPost({ request, env }) {
     try { d = await request.json(); } catch (e) {}
 
     if (d.website) return J({ ok: true });                 // honeypot
-    if (!d.name || !d.telefon || !d.email) return J({ error: 'missing_fields' }, 422);
+    // Email is required for every source EXCEPT the St. Gallen launch hero
+    // (quelle=launch-hero-sg), which captures only name + phone. Name, telefon
+    // and a valid Turnstile token are always required.
+    const _launchSG = d.quelle === 'launch-hero-sg';
+    if (!d.name || !d.telefon || (!_launchSG && !d.email)) return J({ error: 'missing_fields' }, 422);
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
     // Turnstile secret: production (tcm.ch) uses the real secret; previews (*.pages.dev)

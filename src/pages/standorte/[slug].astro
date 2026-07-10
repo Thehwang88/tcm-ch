@@ -116,7 +116,12 @@ if (slug === 'st-gallen') {
 }
 const spaBody = (slug === 'st-gallen') ? sgBody
   : filledBody + ((slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks);
+
+// Turnstile sitekey for the SG hero form (same branch-gating as SpaPage): preview
+// branches use Cloudflare's always-pass TEST key; production keeps the real key.
+const _tsBranch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const turnstileSitekey = _tsBranch && _tsBranch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 ---
 <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
-  {slug === 'st-gallen' && <HeroLaunchSG />}
+  {slug === 'st-gallen' && <HeroLaunchSG sitekey={turnstileSitekey} />}
 </SpaPage>

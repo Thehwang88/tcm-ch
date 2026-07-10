@@ -2,9 +2,10 @@
 // Launch hero for the St. Gallen standort page only. Uses existing brand tokens
 // (green = --blue, green-deep = --blue-dark, ink = --charcoal, gold = #FFC107 as
 // already used on this page's cta-band). Renders via SpaPage's <slot/>, above the
-// (hero-stripped) standort body. The 3-field mini-form does NOT post on its own
-// (the /api/anfrage pipeline requires email + Turnstile); on submit it prefills and
-// scrolls to the existing #kontakt form, tagging quelle=launch-hero-sg.
+// (hero-stripped) standort body. The mini-form posts DIRECTLY to /api/anfrage with
+// quelle=launch-hero-sg (worker allows no-email for that source) via a managed,
+// interaction-only Turnstile widget, then shows an inline success/error state.
+const { sitekey } = Astro.props;
 ---
 <section class="hlsg">
   <div class="hlsg-bar">
@@ -40,8 +41,10 @@
           <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
           <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
           <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
+          <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
           <button type="submit">Gratis-Termin anfragen</button>
           <p class="hlsg-form-rule">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p>
+          <p class="hlsg-form-err" role="alert" hidden></p>
         </form>
       </div>
     </div>
@@ -137,6 +140,16 @@
   }
   .hlsg-form button:hover { background: var(--blue-dark); }
   .hlsg-form-rule { font-size: 12px; color: var(--mid); text-align: center; }
+  .hlsg-ts { min-height: 0; }
+  .hlsg-form-err { font-size: 13px; color: #c0392b; line-height: 1.5; margin-top: 2px; }
+  .hlsg-success { text-align: center; padding: 14px 4px; }
+  .hlsg-success-check {
+    width: 44px; height: 44px; margin: 0 auto 12px; border-radius: 50%;
+    background: var(--blue-light); color: var(--blue-dark);
+    display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800;
+  }
+  .hlsg-success h3 { font-size: 19px; font-weight: 800; color: var(--charcoal); margin: 0 0 8px; letter-spacing: -.01em; }
+  .hlsg-success p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
 
   @media (max-width: 767px) { .hlsg { padding-top: 60px; } }
   @media (prefers-reduced-motion: reduce) { .hlsg-pulse { animation: none; } .hlsg-btn-primary:hover { transform: none; } }
@@ -146,23 +159,40 @@
   (function () {
     var f = document.querySelector('[data-sg-hero-form]');
     if (!f) return;
+    var btn = f.querySelector('button[type="submit"]');
+    var errEl = f.querySelector('.hlsg-form-err');
+    var val = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+    var showErr = function (m) { if (errEl) { errEl.textContent = m; errEl.hidden = false; } };
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      var g = document.querySelector('#kontakt form[data-contact-form]');
-      var target = document.getElementById('kontakt');
-      if (!g) { if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
-      var val = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-      var set = function (n, v) { var el = g.querySelector('[name="' + n + '"]'); if (el && v) el.value = v; };
-      set('name', val('name'));
-      set('telefon', val('telefon'));
-      set('behandlung', val('wunschzeit'));
-      // carry the launch-hero source tag onto the form that actually submits
-      var srcEl = f.querySelector('input[name="quelle"]');
-      var q = g.querySelector('input[name="quelle"]');
-      if (q && srcEl) q.value = srcEl.value;
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      var em = g.querySelector('[name="email"]');
-      if (em) setTimeout(function () { try { em.focus({ preventScroll: true }); } catch (_) { em.focus(); } }, 480);
+      if (errEl) errEl.hidden = true;
+      var name = val('name'), telefon = val('telefon');
+      if (!name || !telefon) { showErr('Bitte Name und Handynummer angeben.'); return; }
+      // Turnstile token (managed/interaction-only widget; same reader as the site forms).
+      var ts = window.tcmTsToken ? window.tcmTsToken(f)
+        : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
+      if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
+      var data = {
+        name: name, telefon: telefon, behandlung: val('wunschzeit'),
+        standort: 'St. Gallen', quelle: 'launch-hero-sg',
+        zeit: new Date().toISOString(), turnstileToken: ts.token,
+      };
+      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Wird gesendet…'; }
+      fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
+        .then(function () {
+          var ok = document.createElement('div');
+          ok.className = 'hlsg-success';
+          ok.innerHTML = '<div class="hlsg-success-check" aria-hidden="true">✓</div>' +
+            '<h3>Danke, deine Anfrage ist da.</h3>' +
+            '<p>Wir melden uns in Kürze per WhatsApp oder Telefon und bestätigen deinen Gratis-Termin in St. Gallen.</p>';
+          f.replaceWith(ok); // inline success in the card; no scroll/redirect
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Gratis-Termin anfragen'; }
+          if (window.turnstile && ts.el) { try { window.turnstile.reset(ts.el); } catch (_) {} }
+          showErr('Senden fehlgeschlagen. Bitte per WhatsApp oder Telefon melden.');
+        });
     });
   })();
 </script>

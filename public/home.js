@@ -61,7 +61,10 @@ window.tcmTsToken=function(form){
         if(!token){ try { token = window.turnstile.getResponse(el) || ''; } catch(_){} }
       }
       if(!token && el){ token = (el.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
-      if(!token){ token = (document.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
+      // Global fallback ONLY on single-widget pages. With >1 .cf-turnstile (e.g. the SG
+      // launch page: hero + bottom form), grabbing document-wide would return the first
+      // widget's token for every form, so keep each form scoped to its own widget above.
+      if(!token && document.querySelectorAll('.cf-turnstile').length <= 1){ token = (document.querySelector('[name="cf-turnstile-response"]') || {}).value || ''; }
       return { el: el, token: token };
     }
 
