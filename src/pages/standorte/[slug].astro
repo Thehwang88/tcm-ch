@@ -3,6 +3,7 @@
 // (#page-standort), captured per-slug. Per-slug content (NAP/Anfahrt/ÖV/Parken, map,
 // "Unsere Therapien in X", "Beschwerden, die wir in X behandeln", reviews, team) baked in.
 import SpaPage from '../../layouts/SpaPage.astro';
+import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import ueberUns from '../../data/ueber-uns-body.html?raw';
@@ -101,5 +102,21 @@ const filledBody = prefillStandort(outBody, name)
     '<section class="section contact-section-inline" style="background:var(--surface)">',
     '<section id="kontakt" class="section contact-section-inline" style="scroll-margin-top:68px;background:var(--surface)">',
   );
+
+// St. Gallen launch variant (slug-gated; no other standort touched): strip the old
+// flagship hero from the leaf so <HeroLaunchSG/> (rendered in the SpaPage slot) fully
+// replaces it, and append one gratis-launch offer band above the footer.
+const sgOfferBand = `<section class="section" style="scroll-margin-top:68px;background:var(--blue);text-align:center"><div class="wrap"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:12px">Launch St. Gallen</div><h2 style="font-family:var(--font-sans);font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 20px">Erstbehandlung gratis, nur zum Launch.</h2><a href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue-dark);font-family:var(--font-sans);font-size:15px;font-weight:700;padding:14px 30px;border-radius:12px;text-decoration:none">Gratis-Termin anfragen</a></div></section>`;
+let sgBody = filledBody;
+if (slug === 'st-gallen') {
+  const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
+  const c0 = sgBody.indexOf('<div id="standort-content">');
+  if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
+  sgBody = sgBody + sgOfferBand;
+}
+const spaBody = (slug === 'st-gallen') ? sgBody
+  : filledBody + ((slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks);
 ---
-<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={filledBody + ((slug === 'st-gallen' || slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks)} schema={schema} />
+<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
+  {slug === 'st-gallen' && <HeroLaunchSG />}
+</SpaPage>

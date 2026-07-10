@@ -69,6 +69,7 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   </head>
   <body>
     <DeHeader />
+    <slot />
     <Fragment set:html={html} />
     <Footer />
     <script src="/header.js" is:inline defer></script>
