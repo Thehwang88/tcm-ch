@@ -1,127 +1,193 @@
 ---
-// /standorte/[slug] — faithful 1:1 reproduction of each live SPA standort leaf
-// (#page-standort), captured per-slug. Per-slug content (NAP/Anfahrt/ÖV/Parken, map,
-// "Unsere Therapien in X", "Beschwerden, die wir in X behandeln", reviews, team) baked in.
+// /standorte/[slug] — hybrid during the leaf → data-driven migration.
+//
+//   • Slugs present in src/data/standorte.ts render from the canonical component flow
+//     (src/components/standort/*). One template, one section order, per-slug data.
+//   • All other slugs still render from their captured leaf (src/data/standort-leaves/*.html)
+//     via the legacy path below — unchanged — so no standort is dropped mid-migration.
+//
+// getStaticPaths still globs the leaves so every existing page keeps building. As each
+// slug gains a standorte.ts entry it flips to the data-driven branch; when all are migrated
+// the leaves + legacy branch can be deleted.
 import SpaPage from '../../layouts/SpaPage.astro';
 import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import ueberUns from '../../data/ueber-uns-body.html?raw';
 import homeBody from '../../data/home-body.html?raw';
+import { getStandort, waHref, telHref } from '../../data/standorte';
+import type { Standort } from '../../data/standorte';
+import Hero from '../../components/standort/Hero.astro';
+import UspGrid from '../../components/standort/UspGrid.astro';
+import IntroNap from '../../components/standort/IntroNap.astro';
+import Therapien from '../../components/standort/Therapien.astro';
+import Kraeuter from '../../components/standort/Kraeuter.astro';
+import Beschwerden from '../../components/standort/Beschwerden.astro';
+import Ablauf from '../../components/standort/Ablauf.astro';
+import CtaBand from '../../components/standort/CtaBand.astro';
+import KrankenkassenTeam from '../../components/standort/KrankenkassenTeam.astro';
+import Reviews from '../../components/standort/Reviews.astro';
+import UeberPraxis from '../../components/standort/UeberPraxis.astro';
+import WeitereStandorte from '../../components/standort/WeitereStandorte.astro';
+import KontaktForm from '../../components/standort/KontaktForm.astro';
+import FinalCta from '../../components/standort/FinalCta.astro';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/standort-leaves/*.html', { query: '?raw', import: 'default', eager: true });
   return Object.keys(leaves).map((p) => {
-    const slug = p.split('/').pop().replace('.html', '');
-    return { params: { slug }, props: { body: leaves[p] } };
+    const slug = p.split('/').pop()!.replace('.html', '');
+    return { params: { slug }, props: { body: leaves[p] as string } };
   });
 }
 
 const { slug } = Astro.params;
-const body = Astro.props.body;
-const clinic = clinics.find((c) => c.id === slug);
-const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
-const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/TCM\.ch CARE.*?Akupunktur\s*/i, '').replace(/\s+/g, ' ').trim().slice(0, 40) : slug;
-const name = clinic ? clinic.name : hName;
-// Partner standort (independent practice, NAP belongs to the partner) — branded as the
-// partner, not as an own TCM.ch clinic. Slug-gated; no other standort affected.
-const isPartner = slug === 'bottighofen';
+const migrated = getStandort(slug!);
 const url = `https://tcm.ch/standorte/${slug}/`;
-const title = isPartner
-  ? 'TCM Pelican Bottighofen: Akupunktur & TCM am Bodensee | TCM.ch'
-  : `TCM & Akupunktur ${name} | TCM.ch`;
-const description = isPartner
-  ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
-  : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
 
-// MedicalClinic with the clinic's real NAP (address/geo/phone/hours) from locations.ts.
-const medClinic: Record<string, unknown> = {
-  '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
-  name: isPartner ? 'TCM Pelican' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
-};
-if (clinic) {
-  medClinic.telephone = clinic.phone;
-  if (clinic.street) medClinic.address = { '@type': 'PostalAddress', streetAddress: clinic.street, postalCode: clinic.postalCode, addressLocality: clinic.city, addressCountry: 'CH' };
-  if (clinic.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: clinic.geo.lat, longitude: clinic.geo.lng };
-  if (clinic.openingHours?.length) medClinic.openingHours = clinic.openingHours;
-  if (clinic.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
+const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
+
+let title: string;
+let description: string;
+let schema: object;
+let spaBody = '';
+
+if (migrated) {
+  // ── Data-driven branch ──────────────────────────────────────────────
+  const data = migrated;
+  const stadt = data.stadt;
+  const clinic = clinics.find((c) => c.id === slug);
+  title = `TCM & Akupunktur ${data.titelZusatz ?? stadt} | TCM.ch`;
+  description = `TCM & Akupunktur in ${stadt}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+  // MedicalClinic fed from nap/geo; opening hours + areaServed from the clinic NAP record.
+  const medClinic: Record<string, unknown> = {
+    '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
+    name: `TCM.ch ${stadt}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+    telephone: data.nap.telefon,
+  };
+  if (data.nap.strasse) medClinic.address = { '@type': 'PostalAddress', streetAddress: data.nap.strasse, postalCode: data.nap.plz, addressLocality: data.nap.ort, addressCountry: 'CH' };
+  if (data.nap.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: data.nap.geo.lat, longitude: data.nap.geo.lng };
+  if (clinic?.openingHours?.length) medClinic.openingHours = clinic.openingHours;
+  if (clinic?.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
+  const breadcrumb = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+      { '@type': 'ListItem', position: 3, name: stadt, item: url },
+    ],
+  };
+  schema = [medClinic, breadcrumb];
+} else {
+  // ── Legacy leaf branch (verbatim from the pre-refactor template) ─────
+  const body = Astro.props.body;
+  const clinic = clinics.find((c) => c.id === slug);
+  const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/TCM\.ch CARE.*?Akupunktur\s*/i, '').replace(/\s+/g, ' ').trim().slice(0, 40) : slug!;
+  const name = clinic ? clinic.name : hName;
+  const isPartner = slug === 'bottighofen';
+  title = isPartner
+    ? 'TCM Pelican Bottighofen: Akupunktur & TCM am Bodensee | TCM.ch'
+    : `TCM & Akupunktur ${name} | TCM.ch`;
+  description = isPartner
+    ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
+    : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+
+  const medClinic: Record<string, unknown> = {
+    '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
+    name: isPartner ? 'TCM Pelican' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+  };
+  if (clinic) {
+    medClinic.telephone = clinic.phone;
+    if (clinic.street) medClinic.address = { '@type': 'PostalAddress', streetAddress: clinic.street, postalCode: clinic.postalCode, addressLocality: clinic.city, addressCountry: 'CH' };
+    if (clinic.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: clinic.geo.lat, longitude: clinic.geo.lng };
+    if (clinic.openingHours?.length) medClinic.openingHours = clinic.openingHours;
+    if (clinic.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
+  }
+  const breadcrumb = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+      { '@type': 'ListItem', position: 3, name, item: url },
+    ],
+  };
+  schema = [medClinic, breadcrumb];
+
+  function endOfDiv(html: string, i: number) { const rx = /<div\b|<\/div>/g; rx.lastIndex = i; let d = 0; let m: RegExpExecArray | null; while ((m = rx.exec(html))) { if (m[0] === '</div>') { d--; if (d === 0) return m.index + 6; } else d++; } return html.length; }
+  let outBody = body;
+  if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
+    const tg0 = ueberUns.indexOf('<div class="team-grid">');
+    const teamGrid = tg0 >= 0 ? ueberUns.slice(tg0, endOfDiv(ueberUns, tg0)) : '';
+    const cor0 = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
+    if (teamGrid && cor0 >= 0) outBody = outBody.slice(0, cor0) + teamGrid + outBody.slice(endOfDiv(outBody, cor0));
+  }
+  if (slug === 'bottighofen') {
+    const ei = ueberUns.indexOf('Emanuela Pelican');
+    const cs = ei >= 0 ? ueberUns.lastIndexOf('<div class="team-card', ei) : -1;
+    const card = cs >= 0 ? ueberUns.slice(cs, endOfDiv(ueberUns, cs)) : '';
+    const ph = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
+    if (card && ph >= 0) outBody = outBody.slice(0, ph) + '<div class="team-grid bf-therapist" style="max-width:360px;margin:20px 0">' + card + '</div>' + outBody.slice(endOfDiv(outBody, ph));
+    const hg0 = homeBody.indexOf('<div class="svc-grid">');
+    const homeGrid = hg0 >= 0 ? homeBody.slice(hg0, endOfDiv(homeBody, hg0)) : '';
+    const lg0 = outBody.indexOf('<div class="svc-grid">');
+    if (homeGrid && lg0 >= 0) outBody = outBody.slice(0, lg0) + homeGrid + outBody.slice(endOfDiv(outBody, lg0));
+  }
+
+  const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
+  const filledBody = prefillStandort(outBody, name)
+    .replace(
+      /<button type="button" class="btn-primary" onclick="openTerminForm\(\)" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">([\s\S]*?)<\/button>/,
+      `<a href="?standort=${encodeURIComponent(name)}" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">$1</a>`,
+    )
+    .replace(
+      '<button type="button" class="btn-white" onclick="openTerminForm()" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</button>',
+      '<a href="#kontakt" class="btn-white" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>',
+    )
+    .replace(
+      '<section class="section contact-section-inline" style="background:var(--surface)">',
+      '<section id="kontakt" class="section contact-section-inline" style="scroll-margin-top:68px;background:var(--surface)">',
+    );
+
+  const sgOfferBand = `<section class="section" style="scroll-margin-top:68px;background:var(--blue);text-align:center"><div class="wrap"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:12px">Launch St. Gallen</div><h2 style="font-family:var(--font-sans);font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 20px">Erstbehandlung gratis, nur zum Launch.</h2><a href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue-dark);font-family:var(--font-sans);font-size:15px;font-weight:700;padding:14px 30px;border-radius:12px;text-decoration:none">Gratis-Termin sichern</a></div></section>`;
+  let sgBody = filledBody;
+  if (slug === 'st-gallen') {
+    const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
+    const c0 = sgBody.indexOf('<div id="standort-content">');
+    if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
+    sgBody = sgBody + sgOfferBand;
+  }
+  spaBody = (slug === 'st-gallen') ? sgBody
+    : filledBody + ((slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks);
 }
-const breadcrumb = {
-  '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
-    { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
-    { '@type': 'ListItem', position: 3, name, item: url },
-  ],
-};
-const schema = [medClinic, breadcrumb];
 
-// St. Gallen only: replace the single Corinna profile with the full team grid from the
-// Über uns page (single source of truth — extracted at build time, no data duplication).
-function endOfDiv(html: string, i: number) { const rx = /<div\b|<\/div>/g; rx.lastIndex = i; let d = 0; let m: RegExpExecArray | null; while ((m = rx.exec(html))) { if (m[0] === '</div>') { d--; if (d === 0) return m.index + 6; } else d++; } return html.length; }
-let outBody = body;
-if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
-  const tg0 = ueberUns.indexOf('<div class="team-grid">');
-  const teamGrid = tg0 >= 0 ? ueberUns.slice(tg0, endOfDiv(ueberUns, tg0)) : '';
-  const cor0 = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
-  if (teamGrid && cor0 >= 0) outBody = outBody.slice(0, cor0) + teamGrid + outBody.slice(endOfDiv(outBody, cor0));
-}
-// Bottighofen partner: inject ONLY Emanuela Pelican's card (single source: ueber-uns team
-// grid), replacing the leaf's placeholder. Not the full grid like St. Gallen.
-if (slug === 'bottighofen') {
-  const ei = ueberUns.indexOf('Emanuela Pelican');
-  const cs = ei >= 0 ? ueberUns.lastIndexOf('<div class="team-card', ei) : -1;
-  const card = cs >= 0 ? ueberUns.slice(cs, endOfDiv(ueberUns, cs)) : '';
-  const ph = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
-  if (card && ph >= 0) outBody = outBody.slice(0, ph) + '<div class="team-grid bf-therapist" style="max-width:360px;margin:20px 0">' + card + '</div>' + outBody.slice(endOfDiv(outBody, ph));
-  // Behandlungs-cards: show the same card grid as the Home page (single source = home-body, no duplicate).
-  const hg0 = homeBody.indexOf('<div class="svc-grid">');
-  const homeGrid = hg0 >= 0 ? homeBody.slice(hg0, endOfDiv(homeBody, hg0)) : '';
-  const lg0 = outBody.indexOf('<div class="svc-grid">');
-  if (homeGrid && lg0 >= 0) outBody = outBody.slice(0, lg0) + homeGrid + outBody.slice(endOfDiv(outBody, lg0));
-}
-
-// Crawlable internal links to the top-demand /beschwerden/ leaf pages (SEO: these
-// are "discovered, not crawled" in GSC). Appended on the shared standort template
-// so all 12 standorte link out to them with plain <a href> + trailing slash.
-// (St. Gallen is excluded below — its baked leaf already has a "Beschwerden, die wir
-// in St. Gallen behandeln" section, so this chip row would be a duplicate.)
-const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
-const filledBody = prefillStandort(outBody, name)
-  .replace(
-    /<button type="button" class="btn-primary" onclick="openTerminForm\(\)" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">([\s\S]*?)<\/button>/,
-    `<a href="?standort=${encodeURIComponent(name)}" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">$1</a>`,
-  )
-  // Final "Bereit für deinen ersten Termin?" CTA -> anchor to the on-page contact form
-  // (openTerminForm() was undefined, so the button did nothing).
-  .replace(
-    '<button type="button" class="btn-white" onclick="openTerminForm()" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</button>',
-    '<a href="#kontakt" class="btn-white" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>',
-  )
-  // Give the contact form section a stable anchor + offset it from the fixed 68px header.
-  .replace(
-    '<section class="section contact-section-inline" style="background:var(--surface)">',
-    '<section id="kontakt" class="section contact-section-inline" style="scroll-margin-top:68px;background:var(--surface)">',
-  );
-
-// St. Gallen launch variant (slug-gated; no other standort touched): strip the old
-// flagship hero from the leaf so <HeroLaunchSG/> (rendered in the SpaPage slot) fully
-// replaces it, and append one gratis-launch offer band above the footer.
-const sgOfferBand = `<section class="section" style="scroll-margin-top:68px;background:var(--blue);text-align:center"><div class="wrap"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC107;margin-bottom:12px">Launch St. Gallen</div><h2 style="font-family:var(--font-sans);font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 20px">Erstbehandlung gratis, nur zum Launch.</h2><a href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue-dark);font-family:var(--font-sans);font-size:15px;font-weight:700;padding:14px 30px;border-radius:12px;text-decoration:none">Gratis-Termin sichern</a></div></section>`;
-let sgBody = filledBody;
-if (slug === 'st-gallen') {
-  const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
-  const c0 = sgBody.indexOf('<div id="standort-content">');
-  if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
-  sgBody = sgBody + sgOfferBand;
-}
-const spaBody = (slug === 'st-gallen') ? sgBody
-  : filledBody + ((slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks);
-
-// Turnstile sitekey for the SG hero form (same branch-gating as SpaPage): preview
-// branches use Cloudflare's always-pass TEST key; production keeps the real key.
-const _tsBranch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
-const turnstileSitekey = _tsBranch && _tsBranch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
+const data = migrated as Standort;
+const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`) : '';
 ---
-<SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
-  {slug === 'st-gallen' && <HeroLaunchSG sitekey={turnstileSitekey} />}
-</SpaPage>
+{migrated ? (
+  <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema}>
+    <div class="page active" id="page-standort" style="display:block">
+      <Hero data={data} />
+      <div id="standort-content">
+        <UspGrid />
+        <IntroNap data={data} />
+        <Therapien data={data} />
+        <Kraeuter />
+        <Beschwerden data={data} />
+        {data.ablaufBlock && <Ablauf />}
+        <CtaBand />
+        <KrankenkassenTeam data={data} />
+        {data.reviews && <Reviews data={data} />}
+        <UeberPraxis data={data} />
+        <WeitereStandorte data={data} />
+        <KontaktForm data={data} sitekey={turnstileSitekey} />
+        <FinalCta data={data} />
+      </div>
+      <div class="mobile-cta-bar" id="standort-mobile-cta">
+        <a href={waTermin} class="btn-primary" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path d="M13 2L4.5 13H11.5L11 22L19.5 11H12.5L13 2z"></path></svg> Per WhatsApp</a> <button class="btn-secondary" onclick="openTerminForm()">Termin anfragen</button> <a href={telHref(data.nap.telefon)} class="btn-call" title="Anrufen"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"></path></svg></a>
+      </div>
+    </div>
+  </SpaPage>
+) : (
+  <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
+    {slug === 'st-gallen' && <HeroLaunchSG sitekey={turnstileSitekey} />}
+  </SpaPage>
+)}

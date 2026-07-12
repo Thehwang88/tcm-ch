@@ -1,0 +1,13 @@
+---
+import type { Standort } from '../../data/standorte';
+import { clinics } from '../../data/locations';
+const { data } = Astro.props as { data: Standort };
+const items = (data.nearby ?? [])
+  .map((n) => ({ ...n, clinic: clinics.find((c) => c.id === n.slug) }))
+  .filter((x) => x.clinic);
+---
+<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">
+{items.map(({ slug, desc, clinic }) => (
+  <div class="city-card location-card" onclick={`nav('standort','${slug}')`} style="cursor:pointer"><span class="location-plz">{clinic!.postalCode}</span><div class="location-city">{clinic!.name}</div><div class="location-desc">{desc}</div><span class="location-link">Termin prüfen →</span></div>
+))}
+</div></div></section>
