@@ -4465,10 +4465,11 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   overflow:hidden;
   box-shadow:var(--sh-card);
   background:var(--surface);
+  aspect-ratio:1/1;   /* match square kim-and-lee.png so cover never crops */
 }
 #home-content .deh-figure img{
   display:block;width:100%;
-  height:clamp(220px,36vw,440px);
+  height:100%;
   object-fit:cover;object-position:center;
 }
 
@@ -4496,10 +4497,10 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
   }
   #home-content .deh-figure{
     margin:0 !important;
-    /* fixed-height card that always fits the viewport under the 68px nav
-       (68 nav + 56 top + 56 bottom = 180); object-fit keeps it filled and
-       overflow:hidden + border-radius keep all 4 rounded corners visible */
-    height:clamp(420px, calc(100vh - 180px), 760px) !important;
+    /* square 1:1 card (base aspect-ratio drives height from the column width)
+       so the square kim-and-lee.png fills edge-to-edge with zero crop and no
+       letterbox; overflow:hidden + border-radius keep all 4 corners rounded */
+    height:auto !important;
     align-self:center !important;
   }
   #home-content .deh-figure img{

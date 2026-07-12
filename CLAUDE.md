@@ -1,9 +1,11 @@
 # TCM.ch — Project Context for Claude
 
 ## Repo
-- Single-file SPA: index.html (~6.6MB)
-- Hosted on Cloudflare Pages. Push to main = live in ~60 sec.
-- SPA routing via _redirects file
+- Astro 5 multi-page app (`.astro` pages under src/pages/, components in src/components/)
+- Build: `npm run build` → static `dist/` + Worker bundle. Deployed as Cloudflare Worker project **tcm-ch-2** (old single-file `index.html` SPA and the tcm-ch Pages project are dead)
+- Push to main = live in ~60 sec
+- Routing: Astro file-based + `_redirects`
+- Home hero markup lives in src/data/home-body.html (imported `?raw` into index.astro), styled by public/home.css
 
 ## Working Style — MANDATORY
 - Surgeon, not archaeologist. Smallest valid change.
@@ -52,10 +54,9 @@
 - REVIEWS{} — keyed by location/therapy ID
 
 ## File Layout
-- Everything in index.html, single file
-- 31 script blocks, JSON-LD in block #2 (index 1)
+- Astro pages in src/pages/; shared UI in src/components/; page data in src/data/
+- Standorte are becoming **data-driven** via src/data/standorte.ts — migrate slugs to the canonical data-driven flow rather than hand-authoring per-location `.astro` (see recent `refactor(standorte)` commits)
 - buildTherapyLd() helper exists — reuse, don't duplicate
-- Never break single-file architecture without explicit ask
 
 ## Pre-Launch Blockers
 - Replace +41000000000 placeholders
