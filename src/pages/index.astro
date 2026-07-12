@@ -25,22 +25,7 @@ const schema = [
 // (main, served on tcm.ch) keeps the real key. Fail-safe to the real key.
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
-
-// Reorder only: move the Kräutertherapie section (.kt-wrap) directly under the Therapien
-// ("Wie wir behandeln") section — i.e. above the Selbsttest banner (.st-home-banner) that
-// currently sits between them. Content is untouched; only the block position changes.
-const reordered = (() => {
-  const a = homeBody.indexOf('<section class="section kt-wrap"');
-  if (a < 0) return homeBody;
-  const end = homeBody.indexOf('</section>', a) + '</section>'.length;
-  const kt = homeBody.slice(a, end);
-  const without = homeBody.slice(0, a) + homeBody.slice(end);
-  const at = without.indexOf('<section class="section st-home-banner"');
-  if (at < 0) return homeBody;
-  return without.slice(0, at) + kt + without.slice(at);
-})();
-
-const homeHtml = reordered.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 ---
 <!doctype html>
 <html lang="de-CH">
