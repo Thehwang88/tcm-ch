@@ -32,11 +32,11 @@ var _ts = window.tcmTsToken(form); var tsEl = _ts.el, tsToken = _ts.token;
 if(tsEl && !tsToken){
   var te = form.querySelector('.form-send-err');
   if(!te){ te = document.createElement('p'); te.className='form-send-err'; te.style.cssText='font-size:13px;color:#c0392b;margin-top:10px;line-height:1.5'; form.appendChild(te); }
-  te.textContent = 'Bitte bestätige kurz, dass du kein Roboter bist.';
+  te.textContent = 'Kurz bestätigen, dass du kein Roboter bist, dann nochmal.';
   return;
 }
 data.turnstileToken = tsToken;
-const okHTML = '<div style="text-align:center;padding:32px 16px"><div style="font-size:44px;margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="7.5 12.5 10.5 15.5 16.5 9.5"/></svg></div><h3 style="font-family:var(--font-sans);font-size:20px;color:var(--black);margin-bottom:8px">Anfrage gesendet!</h3><p style="font-size:14px;color:var(--mid);line-height:1.6;margin-bottom:20px">Wir melden uns innert 24h mit passenden Terminvorschlägen.</p><a href="https://wa.me/41775236122" class="btn-primary" style="display:inline-flex;justify-content:center" target="_blank">Trotzdem per WhatsApp</a></div>';
+const okHTML = '<div style="text-align:center;padding:32px 16px"><div style="font-size:44px;margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="7.5 12.5 10.5 15.5 16.5 9.5"/></svg></div><h3 style="font-family:var(--font-sans);font-size:20px;color:var(--black);margin-bottom:8px">Das war\'s schon.</h3><p style="font-size:14px;color:var(--mid);line-height:1.6;margin-bottom:20px">Wir haben deine Anfrage. Lehn dich zurück, wir melden uns bei dir. Kein Stress, kein Papierkram.</p><a href="https://wa.me/41775236122" class="btn-primary" style="display:inline-flex;justify-content:center" target="_blank">Schreib uns per WhatsApp</a></div>';
 if(btn){ btn.disabled = true; btn.dataset.label = btn.innerHTML; btn.innerHTML = 'Wird gesendet…'; }
 fetch('/api/anfrage', {
   method:'POST',
@@ -45,11 +45,11 @@ fetch('/api/anfrage', {
 }).then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
 .then(function(){ if(card){ card.innerHTML = okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
 .catch(function(){
-  if(btn){ btn.disabled = false; btn.innerHTML = btn.dataset.label || 'Anfrage senden'; }
+  if(btn){ btn.disabled = false; btn.innerHTML = btn.dataset.label || 'Los geht\'s'; }
   if(window.turnstile && tsEl){ try{ window.turnstile.reset(tsEl); }catch(_){} }
   var err = form.querySelector('.form-send-err');
   if(!err){ err = document.createElement('p'); err.className='form-send-err'; err.style.cssText='font-size:13px;color:#c0392b;margin-top:10px;line-height:1.5'; form.appendChild(err); }
-  err.innerHTML = 'Senden fehlgeschlagen. Bitte versuche es erneut oder schreib uns direkt per <a href="https://wa.me/41775236122" target="_blank" style="color:var(--blue)">WhatsApp</a>.';
+  err.innerHTML = 'Das hat grad nicht geklappt. Probier\'s nochmal oder schreib uns per <a href="https://wa.me/41775236122" target="_blank" style="color:var(--blue)">WhatsApp</a>.';
 });
 }
 
