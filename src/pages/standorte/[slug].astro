@@ -18,13 +18,11 @@ import homeBody from '../../data/home-body.html?raw';
 import { getStandort, waHref, telHref } from '../../data/standorte';
 import type { Standort } from '../../data/standorte';
 import Hero from '../../components/standort/Hero.astro';
-import UspGrid from '../../components/standort/UspGrid.astro';
 import IntroNap from '../../components/standort/IntroNap.astro';
 import Therapien from '../../components/standort/Therapien.astro';
 import Kraeuter from '../../components/standort/Kraeuter.astro';
 import Beschwerden from '../../components/standort/Beschwerden.astro';
 import Ablauf from '../../components/standort/Ablauf.astro';
-import CtaBand from '../../components/standort/CtaBand.astro';
 import KrankenkassenTeam from '../../components/standort/KrankenkassenTeam.astro';
 import Reviews from '../../components/standort/Reviews.astro';
 import UeberPraxis from '../../components/standort/UeberPraxis.astro';
@@ -166,14 +164,23 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema}>
     <div class="page active" id="page-standort" style="display:block">
       <Hero data={data} />
+      <section class="section" style="padding:0;background:var(--bg)">
+        <div class="wrap" style="padding-top:12px;padding-bottom:4px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
+            <div>
+              <div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:4px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div>
+              <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. Komm vorbei, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
+            </div>
+            <button type="button" onclick="openContactForm()" class="btn-primary" style="flex-shrink:0">Termin anfragen <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </section>
       <div id="standort-content">
-        <UspGrid />
         <IntroNap data={data} />
         <Therapien data={data} />
         <Kraeuter />
         <Beschwerden data={data} />
         {data.ablaufBlock && <Ablauf />}
-        <CtaBand />
         <KrankenkassenTeam data={data} />
         {data.reviews && <Reviews data={data} />}
         <UeberPraxis data={data} />

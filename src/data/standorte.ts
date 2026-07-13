@@ -42,8 +42,8 @@ export const standorte: Record<string, Standort> = {
     stadt: 'Kreuzlingen',
     hero: {
       banner: 'Standort Kreuzlingen',
-      h1: 'TCM &amp; Akupunktur <em>Kreuzlingen</em>. <br>Schneller weniger Schmerzen.',
-      sub: 'Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Kreuzlingen. <em style="font-style:italic;opacity:.85">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>',
+      h1: 'Persönliche TCM mitten in <em>Kreuzlingen</em>.',
+      sub: 'Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.',
       image: '/images/hero-main.webp',
       locationHook: 'Romanshornerstrasse 1, 8280 Kreuzlingen',
     },
@@ -100,8 +100,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Frauenfeld",
     "hero": {
       "banner": "Standort Frauenfeld",
-      "h1": "TCM &amp; Akupunktur <em>Frauenfeld</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Frauenfeld. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Frauenfeld</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Rheinstrasse 25, 8500 Frauenfeld"
     },
@@ -271,8 +271,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Rorschach",
     "hero": {
       "banner": "Standort Rorschach",
-      "h1": "TCM &amp; Akupunktur <em>Rorschach</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Rorschach. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Rorschach</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Pestalozzistrasse 11, 9400 Rorschach"
     },
@@ -442,8 +442,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Volketswil",
     "hero": {
       "banner": "Standort Volketswil",
-      "h1": "TCM &amp; Akupunktur <em>Volketswil</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Volketswil. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Volketswil</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Lindenstrasse 2/1, 8604 Volketswil"
     },
@@ -613,8 +613,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Wil",
     "hero": {
       "banner": "Standort Wil",
-      "h1": "TCM &amp; Akupunktur <em>Wil</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Wil. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Wil</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Obere Bahnhofstrasse 35, 9500 Wil"
     },
@@ -784,8 +784,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Winterthur Münzgasse",
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
-      "h1": "TCM &amp; Akupunktur <em>Winterthur Münzgasse</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Winterthur Münzgasse. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Winterthur Münzgasse</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
     },
@@ -955,8 +955,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Zürich Höngg",
     "hero": {
       "banner": "Standort Zürich Höngg",
-      "h1": "TCM &amp; Akupunktur <em>Zürich Höngg</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Zürich Höngg. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Zürich Höngg</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Limmattalstrasse 340, 8049 Zürich"
     },
@@ -1126,8 +1126,8 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Zürich Oerlikon",
     "hero": {
       "banner": "Standort Zürich Oerlikon",
-      "h1": "TCM &amp; Akupunktur <em>Zürich Oerlikon</em>. <br>Schneller weniger Schmerzen.",
-      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Zürich Oerlikon. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "h1": "Persönliche TCM mitten in <em>Zürich Oerlikon</em>.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Schulstrasse 3, 8050 Zürich"
     },
