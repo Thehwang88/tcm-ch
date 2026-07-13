@@ -1,0 +1,11 @@
+---
+import type { Standort } from '../../data/standorte';
+import { symptomCards } from '../../data/symptom-cards';
+const { data } = Astro.props as { data: Standort };
+const cards = data.beschwerden.map((slug) => ({ slug, c: symptomCards[slug] })).filter((x) => x.c);
+---
+<section class="section" style="background: var(--surface);"><div class="wrap"><div class="reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Beschwerden, die wir in <em>{data.stadt}</em> behandeln</h2><p class="section-sub">Häufige Beschwerden, bei denen TCM in {data.stadt} wirksam hilft.</p></div><div class="card-grid reveal">
+{cards.map(({ slug, c }) => (
+  <div class="svc-card reveal" onclick={`nav('symptom','${slug}')`} role="button" tabindex="0"><div class="svc-photo-top-bar"></div><div class="svc-photo-wrap"><img loading="lazy" decoding="async" src={c.img} alt={c.name} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div><div class="svc-body"><div class="svc-name">{c.name}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></div>
+))}
+</div><div style="text-align:center;margin-top:24px"><button class="btn-secondary" onclick="nav('beschwerden')">Alle Beschwerden ansehen →</button></div></div></section>

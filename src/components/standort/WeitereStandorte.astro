@@ -1,0 +1,10 @@
+---
+import type { Standort } from '../../data/standorte';
+const { data } = Astro.props as { data: Standort };
+const items = data.nearby ?? [];
+---
+<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">
+{items.map((n) => (
+  <div class="city-card location-card" onclick={`nav('standort','${n.slug}')`} style="cursor:pointer"><span class="location-plz">{n.plz}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Termin prüfen →</span></div>
+))}
+</div></div></section>

@@ -8,3 +8,6 @@ worker/
 !astro.config.mjs
 *.backup
 *.backup2
+
+# Claude Code local session/config
+.claude/
