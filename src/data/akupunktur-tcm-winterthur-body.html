@@ -1,4 +1,21 @@
-<section class="section akz-hero">
+<style>
+  /* Layout-only helpers, design tokens only, no new colours/fonts/components.
+     Same akz-* helpers the Zuerich hub defines page-locally; only the subset this
+     page actually uses. Without these the hero/split grids fall back to display:block
+     and the image stacks under the text. */
+  .akz{padding-top:68px}
+  .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
+  .akz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .akz-hero-img{width:100%;border-radius:var(--r-hero);box-shadow:var(--sh-md);aspect-ratio:4/3;object-fit:cover;display:block}
+  .akz-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .akz-trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:24px;font-family:var(--font-sans);font-weight:600;font-size:14.5px;color:var(--mid)}
+  .akz-trust b{color:var(--black)}
+  @media(max-width:820px){.akz-hero-grid,.akz-split{grid-template-columns:1fr;gap:28px}}
+</style>
+
+<div class="akz">
+
+  <section class="section akz-hero">
     <div class="wrap">
       <div class="akz-hero-grid">
         <div>
@@ -326,3 +343,5 @@
       </div>
     </div>
   </section>
+
+</div>
