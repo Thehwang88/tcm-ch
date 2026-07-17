@@ -4556,6 +4556,12 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 /* Standort hero (all 12, shared .sg-active): clear the 68px sticky mobile header so the heading is not cut off */
 @media(max-width:768px){#generic-premium-hero.sg-active,#zh-premium-hero.sg-active{padding-top:64px !important}}
 
+/* inline prose links on home.css pages. Mirrors the canonical .kb-body a treatment in
+   src/pages/wissen/[slug].astro, which is astro-scoped and so unreachable from here.
+   Setting colour on the anchor itself also kills the UA :visited purple. */
+.body-link{color:var(--blue);font-weight:600;text-decoration:none}
+.body-link:hover{text-decoration:underline}
+
 /* internal-linking cross-link blocks (standort + beschwerden): crawlable chip links */
 .cl-related .cl-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .cl-related .cl-chip{display:inline-flex;align-items:center;padding:9px 16px;border:1px solid var(--border);border-radius:100px;background:#fff;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--black);text-decoration:none;transition:border-color var(--t-base) ease,color var(--t-base) ease}
