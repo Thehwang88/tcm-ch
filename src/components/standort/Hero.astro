@@ -3,6 +3,7 @@ import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
 const { data } = Astro.props as { data: Standort };
 const eyebrow = `TCM.ch Klinik · ${data.stadt}`;
+const heroH1 = `Akupunktur & TCM in <em>${data.stadt}</em>`;
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
@@ -12,9 +13,11 @@ const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${
     <div class="sg-text">
       <div class="sg-crumb"><button onclick="nav('home')">TCM.ch</button><span class="sg-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="sg-sep">›</span><span>{data.stadt}</span></div>
       <span class="sg-eyebrow">{eyebrow}</span>
-      <h1 class="sg-title" set:html={data.hero.h1}></h1>
+      <p class="sg-title" set:html={heroH1}></p>
+      <p class="sg-sub" set:html={data.hero.lead}></p>
       <span class="sg-m-eyebrow">{eyebrow.toUpperCase()}</span>
-      <h1 class="sg-m-title" set:html={data.hero.h1}></h1>
+      <h1 class="sg-m-title" set:html={heroH1}></h1>
+      <p class="sg-mobile-sub" set:html={data.hero.lead}></p>
       <p class="sg-mobile-sub" set:html={data.hero.sub}></p>
       <button class="sg-m-primary" onclick="openContactForm()">Termin anfragen</button>
       <div class="sg-mobile-wa"><div class="sg-mobile-wa-head"><div class="sg-mobile-wa-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="sg-mobile-wa-text"><strong>Fragen zur Behandlung?</strong><span>Yuna hilft dir direkt per WhatsApp weiter.</span></div></div><a href={waTermin} class="sg-mobile-wa-cta" target="_blank" rel="noopener">Schreib uns einfach</a></div>

@@ -15,7 +15,7 @@ export interface Standort {
   slug: string;
   stadt: string;
   titelZusatz?: string;
-  hero: { banner: string; h1: string; sub: string; image: string; locationHook: string };
+  hero: { banner: string; lead: string; sub: string; image: string; locationHook: string };
   nap: {
     strasse: string;
     plz: string;
@@ -42,7 +42,7 @@ export const standorte: Record<string, Standort> = {
     stadt: 'Kreuzlingen',
     hero: {
       banner: 'Standort Kreuzlingen',
-      h1: 'Persönliche TCM mitten in <em>Kreuzlingen</em>.',
+      lead: 'Persönliche TCM, die dich wirklich ernst nimmt.',
       sub: 'Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.',
       image: '/images/hero-main.webp',
       locationHook: 'Romanshornerstrasse 1, 8280 Kreuzlingen',
@@ -100,7 +100,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Frauenfeld",
     "hero": {
       "banner": "Standort Frauenfeld",
-      "h1": "Persönliche TCM mitten in <em>Frauenfeld</em>.",
+      "lead": "Zeit zum Zuhören, bevor wir behandeln.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Rheinstrasse 25, 8500 Frauenfeld"
@@ -271,7 +271,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Rorschach",
     "hero": {
       "banner": "Standort Rorschach",
-      "h1": "Persönliche TCM mitten in <em>Rorschach</em>.",
+      "lead": "Deine Praxis für TCM mit Ruhe und Erfahrung.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Pestalozzistrasse 11, 9400 Rorschach"
@@ -442,7 +442,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Volketswil",
     "hero": {
       "banner": "Standort Volketswil",
-      "h1": "Persönliche TCM mitten in <em>Volketswil</em>.",
+      "lead": "Hier bekommst du Zeit, keine Standardlösung.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Lindenstrasse 2/1, 8604 Volketswil"
@@ -613,7 +613,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Wil",
     "hero": {
       "banner": "Standort Wil",
-      "h1": "Persönliche TCM mitten in <em>Wil</em>.",
+      "lead": "Medizinische TCM, persönlich und ohne Hektik.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Obere Bahnhofstrasse 35, 9500 Wil"
@@ -784,7 +784,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Winterthur Münzgasse",
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
-      "h1": "Persönliche TCM mitten in <em>Winterthur Münzgasse</em>.",
+      "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
@@ -804,7 +804,11 @@ export const standorte: Record<string, Standort> = {
           "tag": "Sa",
           "zeit": "7:30–16:30 Uhr"
         }
-      ]
+      ],
+      "geo": {
+        "lat": 47.4998,
+        "lng": 8.729
+      }
     },
     "intro": {
       "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <strong>TCM-Praxis Winterthur</strong> an der Münzgasse 2 liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
@@ -950,12 +954,142 @@ export const standorte: Record<string, Standort> = {
       }
     ]
   },
+  "winterthur-marktgasse": {
+    "slug": "winterthur-marktgasse",
+    "stadt": "Winterthur Marktgasse",
+    "hero": {
+      "banner": "Standort Winterthur Marktgasse",
+      "lead": "Kurz vorbeikommen, in Ruhe klären, was dir hilft.",
+      "sub": "Geprüfte TCM-Partnerklinik mit Ärzt:innen &amp; erfahrenen Therapeut:innen – zentral in Winterthur Marktgasse. <em style=\"font-style:italic;opacity:.85\">Akupunktur, Kräuter und Prävention für ein länger gutes Leben.</em>",
+      "image": "/images/hero-main.webp",
+      "locationHook": "Marktgasse 78, 8400 Winterthur"
+    },
+    "nap": {
+      "strasse": "Marktgasse 78",
+      "plz": "8400",
+      "ort": "Winterthur",
+      "telefon": "+41 77 523 61 22",
+      "email": "termine@tcm.ch",
+      "mapEmbed": "https://www.google.com/maps?q=Marktgasse%2078%2C%208400%20Winterthur&output=embed",
+      "oeffnungszeiten": [
+        {
+          "tag": "Mo–Fr",
+          "zeit": "7:30–19:30 Uhr"
+        },
+        {
+          "tag": "Sa",
+          "zeit": "7:30–16:30 Uhr"
+        }
+      ],
+      "geo": {
+        "lat": 47.4992,
+        "lng": 8.7281
+      }
+    },
+    "intro": {
+      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere zweite <strong>TCM-Praxis in Winterthur</strong> liegt an der <strong>Marktgasse 78</strong>, direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende Praxis an der Münzgasse. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon kommen Patient:innen regelmässig zu uns. Die Lage an der Marktgasse macht uns aus der ganzen Region gut erreichbar.</p>"
+    },
+    "anfahrt": {
+      "oev": "<strong>Bahnhof Winterthur</strong> in 6 Gehminuten erreichbar, mit allen S-Bahn- und IC-Verbindungen. Der Stadtbus hält an der <strong>Haltestelle Stadthaus</strong>, 2 Gehminuten von der Praxis entfernt.",
+      "autoParken": "Parkmöglichkeiten in der Nähe: <strong>Parkhaus Altstadt</strong> und <strong>Parkhaus Untertor</strong>, je wenige Gehminuten entfernt."
+    },
+    "therapien": [
+      "akupunktur",
+      "gesichtsakupunktur",
+      "schroepfen",
+      "tuina",
+      "akupressur",
+      "shiatsu",
+      "gua-sha",
+      "physiotherapie"
+    ],
+    "beschwerden": [
+      "rueckenschmerzen",
+      "nackenschmerzen",
+      "migraene",
+      "schlafprobleme",
+      "stress-burnout",
+      "verdauungsprobleme",
+      "zyklusbeschwerden",
+      "kinderwunsch"
+    ],
+    "team": [
+      {
+        "name": "Corinna Reinhart",
+        "rolle": "TCM-Therapeutin & Pflegefachfrau",
+        "bild": "/images/img-440b0d6748dc.webp"
+      }
+    ],
+    "ablaufBlock": true,
+    "reviews": {
+      "heading": "Erfahrungen in Winterthur.",
+      "items": [
+        {
+          "autor": "Andreas L.",
+          "stern": 5,
+          "kontext": "TCM.ch · Akupunktur · Rückenschmerzen",
+          "text": "Nach Monaten mit chronischen Rückenschmerzen endlich eine Behandlung gefunden, die spürbar hilft. Nach einigen Sitzungen Akupunktur geht es mir deutlich besser."
+        },
+        {
+          "autor": "Julia D.",
+          "stern": 5,
+          "kontext": "TCM.ch · Migräne · TCM",
+          "text": "Meine Migräneanfälle sind seit der TCM-Behandlung seltener und milder geworden. Sehr fundierte Anamnese und eine ehrliche Einschätzung."
+        },
+        {
+          "autor": "Walter F.",
+          "stern": 5,
+          "kontext": "TCM.ch · Schlafprobleme · Akupunktur",
+          "text": "Schlaflose Nächte gehören für mich der Vergangenheit an. Kein Verkaufsdruck, dafür eine ruhige und sorgfältige Begleitung."
+        },
+        {
+          "autor": "Gabriela K.",
+          "stern": 5,
+          "kontext": "TCM.ch · Burnout · Tuina & Akupunktur",
+          "text": "Nach einem Burnout hat mir die Kombination aus Akupunktur und Tuina-Massage geholfen, wieder belastbarer zu werden."
+        },
+        {
+          "autor": "Roland N.",
+          "stern": 5,
+          "kontext": "TCM.ch · Nacken · Schröpfen",
+          "text": "Bürojob mit ständigen Nackenverspannungen. Das Schröpfen hat schnell Erleichterung gebracht, seither gehe ich regelmässig zur Erhaltung."
+        },
+        {
+          "autor": "Yvonne M.",
+          "stern": 5,
+          "kontext": "TCM.ch · Verdauung · Kräutertherapie",
+          "text": "Bei langjährigen Verdauungsproblemen hat die individuell abgestimmte Kräuterrezeptur als Erstes nachhaltig gewirkt. Kompetent und einfühlsam."
+        }
+      ]
+    },
+    "nearby": [
+      {
+        "slug": "winterthur-muenzgasse",
+        "plz": "8400",
+        "city": "Winterthur Münzgasse",
+        "desc": "Nahe Zürich"
+      },
+      {
+        "slug": "frauenfeld",
+        "plz": "8500",
+        "city": "Frauenfeld",
+        "desc": "Kanton Thurgau"
+      },
+      {
+        "slug": "zuerich-oerlikon",
+        "plz": "8050",
+        "city": "Oerlikon",
+        "desc": "Zürich Nord"
+      }
+    ]
+  },
   "zuerich-hoengg": {
     "slug": "zuerich-hoengg",
     "stadt": "Zürich Höngg",
     "hero": {
       "banner": "Standort Zürich Höngg",
-      "h1": "Persönliche TCM mitten in <em>Zürich Höngg</em>.",
+      "lead": "TCM mit Zeit, Ruhe und echtem Zuhören.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Limmattalstrasse 340, 8049 Zürich"
@@ -1126,7 +1260,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Zürich Oerlikon",
     "hero": {
       "banner": "Standort Zürich Oerlikon",
-      "h1": "Persönliche TCM mitten in <em>Zürich Oerlikon</em>.",
+      "lead": "Deine Beschwerden bekommen hier die Zeit, die sie brauchen.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
       "locationHook": "Schulstrasse 3, 8050 Zürich"
