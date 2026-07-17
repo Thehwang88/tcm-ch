@@ -311,6 +311,62 @@ export const wissen: Wissen[] = [
     ]
   },
   {
+    "slug": "haeufige-infekte-immunsystem",
+    "title": "Häufige Infekte und Immunsystem: Was TCM leisten kann",
+    "metaDesc": "Häufige Erkältungen und Infektanfälligkeit: Was Akupunktur und chinesische Kräuter ehrlich leisten, welche Hebel wirklich wirken und wann du ärztlich abklärst.",
+    "region": "Schweizweit",
+    "excerpt": "Häufige Erkältungen und Infektanfälligkeit: Was Akupunktur und chinesische Kräuter ehrlich leisten, welche Hebel wirklich wirken und wann du ärztlich abklärst.",
+    "category": "Beschwerden verstehen",
+    "h1": "Häufige Infekte und Immunsystem: Was TCM leisten kann",
+    "lead": "Wer mehrmals pro Jahr eine Erkältung nach der anderen hat, sucht oft nach einem Weg, das Immunsystem zu stärken. Die TCM sieht dahinter eine geschwächte äussere Abwehr. Was Akupunktur und chinesische Kräuter hier ehrlich leisten können, ist begrenzt. Die grössten Hebel sind Schlaf, Ernährung, Bewegung und Stress. Wann häufige Infekte ärztlich abgeklärt gehören, liest du weiter unten.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Infektanfälligkeit abklären lassen?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-08-25",
+    "dateModified": "2026-08-25",
+    "lastReviewed": "2026-08-25",
+    "bodyHtml": "<h2>Was «häufige Infekte» eigentlich heisst</h2><p>Erwachsene haben im Schnitt zwei bis vier Erkältungen pro Jahr, Kinder deutlich mehr. Das ist normal und kein Zeichen einer Schwäche. Wer allerdings in kurzer Zeit einen Infekt nach dem anderen durchmacht, sich zwischen den Erkältungen nie ganz erholt oder auffällig lange braucht, um wieder fit zu werden, spürt zu Recht, dass etwas aus dem Gleichgewicht ist.</p><p>Bevor du nach Nadeln oder Kräutern greifst, lohnt der ehrliche Blick auf die Ursachen. Sehr oft stecken dahinter nicht das Immunsystem selbst, sondern chronischer Schlafmangel, dauerhafter Stress, einseitige Ernährung oder ein Nährstoffmangel. Genau dort liegen auch die wirksamsten Ansätze.</p><h2>Wie die TCM häufige Infekte betrachtet</h2><p>Die Traditionelle Chinesische Medizin beschreibt eine äussere Abwehrschicht des Körpers. Ist sie geschwächt, dringen nach diesem Modell äussere Einflüsse wie Wind und Kälte leichter ein, und man wird anfälliger für Erkältungen. Wichtig: Das ist ein Erklärungsmodell der TCM, kein wissenschaftlich belegter Mechanismus. Wir nennen es so, weil es die Behandlungslogik der TCM verständlich macht, nicht weil es die Biologie deines Immunsystems beschreibt.</p><p>In der Praxis leiten wir daraus ab, worauf wir achten: stabiler Schlaf, warme statt kalter Nahrung in der kühlen Jahreszeit, ausreichend Erholung. Vieles davon deckt sich mit dem, was auch die Schulmedizin empfiehlt.</p><h2>Was Akupunktur und Kräuter hier ehrlich leisten</h2><p>Hier müssen wir klar sein: Für die Vorbeugung von Erkältungen durch Akupunktur oder chinesische Kräuter ist die Studienlage dünn. Eine Cochrane-Übersicht zu chinesischen Kräutern bei der gewöhnlichen Erkältung kam zum Schluss, dass die vorhandenen Studien für eine klare Empfehlung nicht ausreichen, weil die Qualität zu niedrig ist. Auch für Akupunktur gibt es keinen überzeugenden Nachweis, dass sie Erkältungen verhindert.</p><p>Für einzelne Kräuter wie Astragalus gibt es Hinweise auf immunmodulierende Effekte aus kleineren Studien, aber keine belastbaren grossen Belege beim Menschen. Wir setzen solche Kräuter deshalb unterstützend und individuell ein, nicht als Versprechen. Wenn dein Ziel ist, im Herbst weniger krank zu werden, ist die ehrliche Antwort: TCM kann begleitend sinnvoll sein, die verlässlicheren Effekte kommen aber aus deinem Alltag.</p><h2>Die eigentlichen Hebel: Schlaf, Ernährung, Bewegung, Stress</h2><p><strong>Schlaf.</strong> Schlafmangel erhöht nachweislich die Infektanfälligkeit. In einer bekannten Studie von Prather und Kollegen (2015) erkrankten Personen, die weniger als sechs Stunden schliefen, deutlich häufiger nach Kontakt mit einem Erkältungsvirus als jene mit sieben Stunden oder mehr. Regelmässiger, ausreichender Schlaf ist der wirksamste Einzelhebel, den du selbst in der Hand hast.</p><p><strong>Ernährung.</strong> Eine abwechslungsreiche Kost mit genügend Gemüse, Protein und wenig stark verarbeiteten Produkten unterstützt die normale Immunfunktion. Achte in der dunklen Jahreszeit auf deinen Vitamin-D-Status, ein Mangel ist in der Schweiz im Winter verbreitet und lässt sich einfach über das Blut abklären.</p><p><strong>Bewegung.</strong> Moderate, regelmässige Bewegung wirkt sich günstig auf die Abwehr aus. Übertreibe es nicht, denn sehr intensive Belastung ohne Erholung kann kurzfristig sogar das Gegenteil bewirken.</p><p><strong>Stress.</strong> Chronischer Stress schwächt die Immunantwort. Hier setzt auch die TCM an, weil Entspannung und ein ruhigerer Nervenzustand die Regeneration fördern. Ob über Akupunktur, Atemübungen oder schlicht mehr Pausen, ist zweitrangig, Hauptsache es passt in deinen Alltag.</p><h2>Wann du ärztlich abklären solltest</h2><p>Häufige Infekte sind meistens harmlos. Es gibt aber Warnzeichen, bei denen eine ärztliche Abklärung gehört, weil eine ernsthafte Ursache dahinterstecken kann:</p><ul><li>Mehr als vier bis sechs schwere Infekte pro Jahr beim Erwachsenen, die dich richtig aus der Bahn werfen</li><li>Infekte, die immer wieder an derselben Stelle auftreten, etwa wiederkehrende Lungenentzündungen oder Nebenhöhlenentzündungen</li><li>Infekte, die trotz Behandlung nicht abheilen oder mit ungewöhnlichen Erregern einhergehen</li><li>Begleitend ungewollter Gewichtsverlust, anhaltendes Fieber, Nachtschweiss oder auffällige Müdigkeit</li><li>Bekannte Grunderkrankung, Immunsuppression oder Chemotherapie</li></ul><p>Solche Muster können auf einen Immundefekt oder eine andere Erkrankung hinweisen und gehören in ärztliche Hände. TCM ersetzt diese Abklärung nicht, sie kann sie höchstens begleiten.</p><h2>So gehen wir vor</h2><p>In der Anamnese schauen wir zuerst auf deinen Alltag: Schlaf, Ernährung, Stress, Bewegung. Wenn wir vermeidbare Ursachen finden, sprechen wir sie an, bevor wir behandeln. Zeigen sich Warnzeichen, verweisen wir dich zur Abklärung. Passt der Rahmen, kann eine begleitende TCM-Behandlung mit Akupunktur und individuell abgestimmten Kräutern sinnvoll sein, ohne überzogene Versprechen. Eine Übersicht unserer Standorte findest du unter <a href=\"/wissen/akupunktur-in-meiner-naehe-schweiz/\">Akupunktur in meiner Nähe</a>. Was die Krankenkasse übernimmt, steht unter <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Krankenkasse und TCM</a>.</p>",
+    "faqs": [
+      {
+        "q": "Wie viele Erkältungen pro Jahr sind normal?",
+        "a": "Bei Erwachsenen gelten zwei bis vier Erkältungen pro Jahr als normal, bei kleinen Kindern deutlich mehr. Erst wenn Infekte auffällig häufig, schwer oder langwierig sind und du dich nie richtig erholst, lohnt ein genauerer Blick auf Ursachen und gegebenenfalls eine ärztliche Abklärung."
+      },
+      {
+        "q": "Kann TCM mein Immunsystem stärken?",
+        "a": "TCM kann begleitend unterstützen, vor allem indem sie Schlaf, Stress und Erholung in den Fokus rückt. Ein wissenschaftlich belegter Schutz vor Erkältungen durch Akupunktur oder Kräuter besteht aber nicht. Die verlässlichsten Effekte kommen aus deinem Alltag, nicht aus einer einzelnen Behandlung."
+      },
+      {
+        "q": "Welche Kräuter werden bei Infektanfälligkeit eingesetzt?",
+        "a": "In der TCM wird häufig Astragalus verwendet, meist in individuellen Rezepturen. Für einzelne Effekte gibt es Hinweise aus kleineren Studien, aber keine grossen belastbaren Belege. Kräuter setzen wir unterstützend und individuell ein, nie als Ersatz für eine ärztliche Abklärung."
+      },
+      {
+        "q": "Was hilft wirklich gegen häufige Erkältungen?",
+        "a": "Am meisten bringt ausreichend Schlaf, eine abwechslungsreiche Ernährung, moderate Bewegung und weniger Dauerstress. Ein Vitamin-D-Mangel sollte im Winter abgeklärt werden. Diese Grundlagen wirken stärker als jede einzelne Behandlung, und die TCM kann sie sinnvoll ergänzen."
+      },
+      {
+        "q": "Wann sollte ich zum Arzt statt zur TCM?",
+        "a": "Bei sehr häufigen oder schweren Infekten, wiederkehrenden Lungen- oder Nebenhöhlenentzündungen, Infekten die nicht abheilen, oder Begleitzeichen wie Gewichtsverlust, Fieber und Nachtschweiss gehörst du zuerst zum Arzt. Solche Muster können auf eine ernsthafte Ursache hinweisen, die abgeklärt werden muss."
+      }
+    ],
+    "related": [
+      {
+        "href": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
+        "label": "Akupunktur in meiner Nähe",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-heuschnupfen",
     "title": "Akupunktur bei Heuschnupfen: Studienlage & Nutzen",
     "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
