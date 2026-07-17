@@ -250,6 +250,67 @@ export const wissen: Wissen[] = [
     ]
   },
   {
+    "slug": "tcm-winterthur-erfahrungen-ablauf",
+    "title": "Akupunktur in Winterthur: Ablauf, Erfahrungen und was dich erwartet",
+    "metaDesc": "Wie eine TCM-Behandlung in Winterthur abläuft: Anamnese, Diagnose, erste Akupunktur und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
+    "region": "Winterthur",
+    "excerpt": "Wie eine TCM-Behandlung in Winterthur abläuft: Anamnese, Diagnose, erste Akupunktur und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
+    "category": "Standort & Erfahrungen",
+    "h1": "Akupunktur in Winterthur: Ablauf, Erfahrungen und was dich erwartet",
+    "lead": "In Winterthur behandeln wir an der Marktgasse mit Akupunktur und klassischer TCM, EMR- und ASCA-anerkannt. Der erste Termin dauert etwa 60 bis 75 Minuten und beginnt mit einer ausführlichen Anamnese, nicht mit der Nadel. Wobei Akupunktur nachweislich helfen kann, wobei sie es nicht kann, und wann du zuerst zum Arzt gehst, liest du hier ehrlich zusammengefasst.",
+    "readingTime": "7 Min.",
+    "ctaTitle": "Termin in Winterthur vereinbaren?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-07-17",
+    "dateModified": "2026-07-17",
+    "lastReviewed": "2026-07-17",
+    "bodyHtml": "<h2>Was TCM in Winterthur bei uns konkret heisst</h2><p>Traditionelle Chinesische Medizin ist mehr als Nadeln. Bei uns umfasst sie Akupunktur, bei Bedarf Schröpfen, Moxibustion und chinesische Kräuter, immer aufbauend auf einer individuellen Diagnose. In Winterthur arbeiten wir an der Marktgasse, mitten in der Altstadt und fussläufig vom Hauptbahnhof. Alle Therapeutinnen und Therapeuten sind EMR- und ASCA-registriert, das ist die Voraussetzung, damit deine Zusatzversicherung mitzahlt.</p><p>Wichtig vorweg: Wir machen keine Heilversprechen. Akupunktur ist bei einigen Beschwerden gut untersucht und wirksam, bei anderen ist die Datenlage dünn. Wir sagen dir vor der ersten Behandlung ehrlich, in welche Kategorie dein Anliegen fällt.</p><h2>Der erste Termin: Anamnese vor Nadel</h2><p>Der Ersttermin dauert bei uns 60 bis 75 Minuten. Die meiste Zeit davon reden wir. Wir fragen nach deinen Beschwerden, deinem Schlaf, deiner Verdauung, deinem Stresslevel und deinem Zyklus. Dazu kommen zwei Diagnosewerkzeuge, die dir aus der Schulmedizin vielleicht fremd sind: die Zungendiagnose und die Pulsdiagnose. Beide geben uns Hinweise auf Muster, nach denen wir die Behandlung ausrichten.</p><p>Danach folgt oft schon die erste Akupunktur. Du liegst dabei entspannt, meist 20 bis 25 Minuten mit gesetzten Nadeln. Viele nicken dabei weg, und das ist völlig in Ordnung.</p><h2>Wie sich Akupunktur anfühlt</h2><p>Die Nadeln sind haarfein, dünner als eine Injektionsnadel. Beim Setzen spürst du an manchen Punkten fast nichts, an anderen ein kurzes Ziehen oder ein dumpfes Schweregefühl. In der TCM gilt dieses Schweregefühl als erwünschtes Zeichen, dass der Punkt anspricht. Scharfer oder anhaltender Schmerz gehört nicht dazu. Wenn eine Nadel unangenehm bleibt, sag es, wir korrigieren sie sofort.</p><h2>Wobei Menschen in Winterthur zu uns kommen</h2><p>Die häufigsten Anliegen an der Marktgasse sind Rücken- und Nackenschmerzen, Kopfschmerzen, Schlafprobleme, Stress und Erschöpfung sowie Themen rund um Zyklus und Kinderwunsch.</p><p>Für chronische Schmerzen ist die Studienlage am besten. Eine grosse Analyse individueller Patientendaten von Vickers und Kollegen (2018) mit fast 21'000 Patientinnen und Patienten fand für chronische Rücken-, Nacken- und Kopfschmerzen sowie Kniearthrose einen messbaren Nutzen der Akupunktur gegenüber Scheinbehandlung und Standardversorgung. Der Effekt ist real, aber moderat, nicht magisch. Für Spannungskopfschmerz und Migräneprophylaxe stützen Cochrane-Übersichten den Einsatz ebenfalls, mit Wirkstärken vergleichbar mancher medikamentöser Prophylaxe.</p><p>Bei anderen Beschwerden ist die Evidenz schwächer, und dann sagen wir das. Mehr dazu, warum Akupunktur bei <a href=\"/wissen/akupunktur-bei-rueckenschmerzen/\">Rückenschmerzen</a> und <a href=\"/wissen/akupunktur-bei-nackenschmerzen/\">Nackenschmerzen</a> sinnvoll sein kann, findest du in den verlinkten Artikeln.</p><h2>Wie viele Sitzungen brauchst du?</h2><p>Für akute Beschwerden reichen oft wenige Behandlungen. Bei chronischen Themen planen wir in der Regel eine erste Serie von sechs bis zehn Sitzungen, meist ein- bis zweimal pro Woche zu Beginn. Nach etwa vier bis sechs Terminen sollte sich abzeichnen, ob Akupunktur bei dir anschlägt. Tut sie es nicht, hat es keinen Sinn, blind weiterzumachen, und wir sprechen offen über Alternativen.</p><h2>Kosten und Krankenkasse</h2><p>Eine Behandlung kostet bei uns nach dem anerkannten Tarif 590. Über die Zusatzversicherung übernehmen viele Kassen einen grossen Teil, oft 70 bis 90 Prozent bis zu einem Jahreslimit. Aus der Grundversicherung wird ambulante Akupunktur durch Naturheilpraktiker in der Regel nicht bezahlt. Was deine Kasse konkret übernimmt und welche Fehler dabei am häufigsten passieren, haben wir hier zusammengefasst: <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Krankenkasse und TCM</a>.</p><h2>Wann du zuerst ärztlich abklären solltest</h2><p>Akupunktur ergänzt die Schulmedizin, sie ersetzt sie nicht. Geh bitte zuerst zum Arzt oder in die Notaufnahme, wenn folgende Warnzeichen auftreten:</p><ul><li>Plötzliche, sehr starke Schmerzen ohne erkennbaren Auslöser</li><li>Rückenschmerzen mit Taubheit im Genital- oder Analbereich, Blasen- oder Darmschwäche</li><li>Neu aufgetretene Lähmungen, Sprach- oder Sehstörungen</li><li>Fieber, ungewollter Gewichtsverlust oder Nachtschweiss zusammen mit den Schmerzen</li><li>Der schlimmste Kopfschmerz deines Lebens, schlagartig einsetzend</li></ul><p>Diese Zeichen können auf ernsthafte Ursachen hinweisen, die rasch abgeklärt gehören. In solchen Fällen behandeln wir nicht, sondern schicken dich weiter.</p><h2>Unsere Praxis in Winterthur</h2><p>Du findest uns an der Marktgasse in der Winterthurer Altstadt, nur wenige Gehminuten vom Hauptbahnhof. Die Anreise mit dem ÖV ist unkompliziert, Parkhäuser gibt es in der Nähe. Termine kannst du online oder telefonisch vereinbaren. Alle Details zum Standort und zum Team findest du auf der <a href=\"/standorte/winterthur-marktgasse/\">Standortseite Winterthur</a>. Eine Übersicht aller elf Praxen von Zürich bis St. Gallen gibt es unter <a href=\"/wissen/akupunktur-in-meiner-naehe-schweiz/\">Akupunktur in meiner Nähe</a>.</p>",
+    "faqs": [
+      {
+        "q": "Muss ich für den ersten Termin etwas vorbereiten?",
+        "a": "Nein, viel braucht es nicht. Iss vorher etwas Leichtes, komm nicht nüchtern und trag bequeme Kleidung. Bring eine Liste deiner Medikamente mit und, falls vorhanden, relevante Arztberichte. Plane für den Ersttermin rund 75 Minuten ein."
+      },
+      {
+        "q": "Tut Akupunktur weh?",
+        "a": "In der Regel nicht. Die Nadeln sind haarfein, an vielen Punkten spürst du sie kaum. Manchmal entsteht ein kurzes Ziehen oder ein dumpfes Schweregefühl, das in der TCM erwünscht ist. Scharfer Schmerz gehört nicht dazu, und wir korrigieren jede unangenehme Nadel sofort."
+      },
+      {
+        "q": "Wie schnell wirkt Akupunktur?",
+        "a": "Das ist individuell. Manche spüren nach der ersten Sitzung eine Erleichterung, bei chronischen Beschwerden zeigt sich der Trend meist nach vier bis sechs Terminen. Bleibt bis dahin jede Wirkung aus, macht Weitermachen wenig Sinn, und wir besprechen offen Alternativen."
+      },
+      {
+        "q": "Zahlt meine Krankenkasse die Behandlung in Winterthur?",
+        "a": "Über die Zusatzversicherung übernehmen viele Kassen einen grossen Teil, weil wir EMR- und ASCA-anerkannt sind. Die genaue Höhe hängt von deinem Vertrag und deinem Jahreslimit ab. Prüfe deine Zusatzversicherung vor dem Termin, wir helfen dir dabei gern weiter."
+      },
+      {
+        "q": "Kann ich mit einer akuten Verletzung kommen?",
+        "a": "Bei frischen Verletzungen, starkem Fieber oder plötzlichen neurologischen Ausfällen gehörst du zuerst zum Arzt. Akupunktur ist eine Ergänzung, kein Ersatz für die Notfallversorgung. Bei unklaren oder alarmierenden Beschwerden klären wir das mit dir und verweisen dich weiter."
+      }
+    ],
+    "related": [
+      {
+        "href": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
+        "label": "Akupunktur in meiner Nähe",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-rueckenschmerzen/",
+        "label": "Akupunktur bei Rückenschmerzen",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-heuschnupfen",
     "title": "Akupunktur bei Heuschnupfen: Studienlage & Nutzen",
     "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
