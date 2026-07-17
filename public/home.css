@@ -4562,6 +4562,20 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 .body-link{color:var(--blue);font-weight:600;text-decoration:none}
 .body-link:hover{text-decoration:underline}
 
+/* Same treatment for prose links inside the body-copy containers, so inline links in
+   captured leaf HTML don't need a class on every anchor. :not([class]) keeps buttons,
+   chips and card wrappers inside these containers on their own styling. */
+.content-body a:not([class]),
+.therapie-text a:not([class]),
+.faq-item a:not([class]),
+.section-sub a:not([class]),
+.location-intro a:not([class]){color:var(--blue);font-weight:600;text-decoration:none}
+.content-body a:not([class]):hover,
+.therapie-text a:not([class]):hover,
+.faq-item a:not([class]):hover,
+.section-sub a:not([class]):hover,
+.location-intro a:not([class]):hover{text-decoration:underline}
+
 /* internal-linking cross-link blocks (standort + beschwerden): crawlable chip links */
 .cl-related .cl-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .cl-related .cl-chip{display:inline-flex;align-items:center;padding:9px 16px;border:1px solid var(--border);border-radius:100px;background:#fff;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--black);text-decoration:none;transition:border-color var(--t-base) ease,color var(--t-base) ease}
