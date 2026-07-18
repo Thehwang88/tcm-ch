@@ -367,6 +367,67 @@ export const wissen: Wissen[] = [
     ]
   },
   {
+    "slug": "akupunktur-winterthur-kosten",
+    "title": "Akupunktur Winterthur: Kosten, Tarif 590 und Krankenkasse",
+    "metaDesc": "Was Akupunktur in Winterthur kostet: Tarif 590, Erstkonsultation und Folgebehandlung, was die Zusatzversicherung übernimmt und wie du die Rechnung einreichst.",
+    "region": "Winterthur",
+    "excerpt": "Was Akupunktur in Winterthur kostet: Tarif 590, Erstkonsultation und Folgebehandlung, was die Zusatzversicherung übernimmt und wie du die Rechnung einreichst.",
+    "category": "TCM in der Schweiz",
+    "h1": "Akupunktur Winterthur: Kosten, Tarif 590 und Krankenkasse",
+    "lead": "Akupunktur in Winterthur rechnen wir nach dem anerkannten Tarif 590 ab, abgerechnet wird pro Fünf-Minuten-Einheit. Eine Erstkonsultation dauert 60 bis 75 Minuten, eine Folgebehandlung 30 bis 60 Minuten. Über die Zusatzversicherung übernehmen viele Kassen einen grossen Teil, weil wir EMR- und ASCA-anerkannt sind. Aus der Grundversicherung wird Akupunktur durch Naturheilpraktiker in der Regel nicht bezahlt. Was du konkret zahlst und wie du das vor dem Termin prüfst, steht hier.",
+    "readingTime": "7 Min.",
+    "ctaTitle": "Kosten vorab klären?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-07-18",
+    "dateModified": "2026-07-18",
+    "lastReviewed": "2026-07-18",
+    "bodyHtml": "<h2>Wie sich der Preis in Winterthur zusammensetzt</h2><p>Wir rechnen nach Tarif 590 ab, dem anerkannten Tarif für Komplementärmedizin in der Schweiz. Abgerechnet wird nicht pauschal pro Sitzung, sondern in Zeiteinheiten von fünf Minuten. Das klingt bürokratisch, ist für dich aber transparent: Du zahlst die Zeit, die tatsächlich für dich aufgewendet wird, und nicht mehr.</p><p>Was den Preis bestimmt, ist also vor allem die Dauer. Ein Ersttermin ist teurer als eine Folgebehandlung, weil die Anamnese Zeit braucht. Kommen chinesische Kräuter dazu, werden diese separat verrechnet, ebenso wie die Rezeptur selbst. Wir sagen dir vor der Behandlung, womit du rechnen musst. Überraschungen auf der Rechnung gehören nicht zu unserem Verständnis von Praxis.</p><h2>Erstkonsultation und Folgebehandlung</h2><p><strong>Erstkonsultation:</strong> 60 bis 75 Minuten. Enthalten sind die ausführliche Anamnese, Zungen- und Pulsdiagnose, das Behandlungskonzept und in der Regel die erste Akupunktur.</p><p><strong>Folgebehandlung:</strong> meist 30 bis 60 Minuten, je nach Beschwerdebild. Kurze Rücksprache, dann Behandlung.</p><p><strong>Kräutertherapie:</strong> Die Beratung läuft über den Zeittarif, die Rezeptur und die Kräuter kommen als Materialkosten dazu. Was das monatlich bedeutet, besprechen wir offen, bevor du dich entscheidest.</p><p>Den genauen Frankenbetrag für deine geplante Behandlungsdauer nennen wir dir gern telefonisch oder beim Ersttermin, bevor behandelt wird.</p><h2>Was die Krankenkasse übernimmt</h2><p>Der entscheidende Punkt: Akupunktur durch Naturheilpraktikerinnen und Naturheilpraktiker läuft in der Schweiz über die <strong>Zusatzversicherung</strong>, nicht über die Grundversicherung. Aus der Grundversicherung wird Akupunktur nur bezahlt, wenn sie von einer Ärztin oder einem Arzt mit entsprechender Weiterbildung durchgeführt wird.</p><p>Weil wir EMR- und ASCA-registriert sind, erfüllen wir die Voraussetzung, die praktisch alle Zusatzversicherungen verlangen. Viele Kassen übernehmen dann einen grossen Teil der Kosten, häufig 70 bis 90 Prozent, begrenzt durch ein Jahreslimit. Wie hoch dieses Limit ist, hängt komplett von deinem Vertrag ab und reicht je nach Modell von wenigen hundert bis zu mehreren tausend Franken pro Jahr.</p><p>Was dabei am häufigsten schiefgeht und worauf du bei deiner Police achten solltest, haben wir national zusammengefasst: <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Krankenkasse und TCM, Stand 2026</a>.</p><h2>In drei Schritten vorab klären</h2><ol><li><strong>Police prüfen.</strong> Schau nach, ob du eine Zusatzversicherung für Komplementär- oder Alternativmedizin hast. Steht dort nichts, zahlt die Kasse nichts.</li><li><strong>Bei der Kasse anrufen.</strong> Frag konkret nach: Prozentsatz der Übernahme, Jahreslimit, und ob EMR oder ASCA verlangt wird. Notier dir Datum und Name der Auskunft.</li><li><strong>Uns Bescheid geben.</strong> Nenn uns beim Termin deine Kasse. Wir stellen die Rechnung so aus, dass du sie direkt einreichen kannst.</li></ol><p>Wichtig: Verbindliche Auskunft gibt nur deine Krankenkasse. Wir kennen die üblichen Muster, aber nicht deinen Vertrag.</p><h2>Rechnung, Einreichen und Rückerstattung</h2><p>Du bekommst die Rechnung von uns und bezahlst sie zunächst selbst. Danach reichst du sie bei deiner Zusatzversicherung ein, die den vertraglich vereinbarten Anteil zurückerstattet. Unsere Rechnungen enthalten alle Angaben, die die Kassen verlangen, inklusive EMR- beziehungsweise ASCA-Nummer und Tarifpositionen. Ein Arztzeugnis oder eine Überweisung brauchst du bei uns nicht.</p><p>Wie lange die Rückerstattung dauert, ist von Kasse zu Kasse verschieden, meist einige Wochen.</p><h2>Wie viele Sitzungen musst du einplanen?</h2><p>Für die Budgetfrage ist die Anzahl entscheidender als der Einzelpreis. Bei akuten Beschwerden reichen oft wenige Termine. Bei chronischen Themen planen wir in der Regel eine erste Serie von sechs bis zehn Sitzungen. Nach vier bis sechs Behandlungen sollte sich zeigen, ob Akupunktur bei dir anschlägt. Tut sie es nicht, sagen wir das und behandeln nicht einfach weiter. Das ist auch für dein Budget die ehrlichere Variante.</p><p>Rechne für deine Planung also nicht mit einer Sitzung, sondern mit einer Serie, und leg dir dein Jahreslimit daneben.</p><h2>Kosten sind kein Grund, gar nicht anzufangen</h2><p>Wenn du unsicher bist, ob sich der Aufwand lohnt, ruf uns an. Wir sagen dir vorab ehrlich, ob dein Anliegen zu den Bereichen gehört, in denen Akupunktur gut untersucht ist, oder ob die Datenlage dünn ist. Wie eine Behandlung bei uns abläuft, liest du unter <a href=\"/wissen/tcm-winterthur-erfahrungen-ablauf/\">Akupunktur in Winterthur: Ablauf und Erfahrungen</a>. Unsere Praxis findest du an der Marktgasse in der Altstadt, wenige Gehminuten vom Hauptbahnhof: <a href=\"/standorte/winterthur-marktgasse/\">Standort Winterthur</a>.</p>",
+    "faqs": [
+      {
+        "q": "Was kostet eine Akupunktur-Sitzung in Winterthur?",
+        "a": "Wir rechnen nach Tarif 590 in Zeiteinheiten von fünf Minuten ab, der Preis richtet sich also nach der Dauer. Eine Erstkonsultation dauert 60 bis 75 Minuten, eine Folgebehandlung meist 30 bis 60 Minuten. Den konkreten Betrag für deine geplante Behandlung nennen wir dir vorab."
+      },
+      {
+        "q": "Zahlt die Grundversicherung Akupunktur?",
+        "a": "In der Regel nicht. Aus der Grundversicherung wird Akupunktur nur übernommen, wenn sie ärztlich mit entsprechender Weiterbildung durchgeführt wird. Bei Naturheilpraktikerinnen und Naturheilpraktikern läuft die Vergütung über die Zusatzversicherung für Komplementärmedizin."
+      },
+      {
+        "q": "Wie viel übernimmt die Zusatzversicherung?",
+        "a": "Das hängt von deinem Vertrag ab. Häufig sind 70 bis 90 Prozent bis zu einem jährlichen Limit, das je nach Modell stark variiert. Ruf vor dem Termin bei deiner Kasse an und frag nach Prozentsatz, Jahreslimit und ob EMR oder ASCA verlangt wird."
+      },
+      {
+        "q": "Brauche ich eine ärztliche Überweisung?",
+        "a": "Nein. Für eine Behandlung bei uns brauchst du weder Überweisung noch Arztzeugnis. Du kannst direkt einen Termin vereinbaren. Prüfe nur vorher, ob deine Zusatzversicherung eigene Bedingungen stellt, das ist von Kasse zu Kasse unterschiedlich."
+      },
+      {
+        "q": "Wie reiche ich die Rechnung ein?",
+        "a": "Du bezahlst die Rechnung zuerst selbst und reichst sie danach bei deiner Zusatzversicherung ein. Unsere Rechnungen enthalten alle nötigen Angaben inklusive EMR- oder ASCA-Nummer und Tarifpositionen. Die Rückerstattung dauert je nach Kasse meist einige Wochen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/tcm-winterthur-erfahrungen-ablauf/",
+        "label": "Akupunktur in Winterthur: Ablauf",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
+        "label": "Akupunktur in meiner Nähe",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-heuschnupfen",
     "title": "Akupunktur bei Heuschnupfen: Studienlage & Nutzen",
     "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
