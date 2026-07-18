@@ -6,9 +6,9 @@ import SpaPage from '../layouts/SpaPage.astro';
 import body from '../data/akupunktur-tcm-winterthur-body.html?raw';
 
 const url = 'https://tcm.ch/akupunktur-tcm-winterthur/';
-const title = 'TCM & Akupunktur Winterthur | Traditionelle Chinesische Medizin | TCM.ch';
+const title = 'TCM & Akupunktur Winterthur | Chinesische Medizin in der Altstadt';
 const description =
-  'Akupunktur und medizinische TCM in Winterthur. Zwei EMR-/ASCA-anerkannte Praxen an der Münzgasse und der Marktgasse, wenige Gehminuten vom Hauptbahnhof, über die Zusatzversicherung abrechenbar.';
+  'TCM und Akupunktur in Winterthur, zwei Praxen in der Altstadt beim Hauptbahnhof. EMR- und ASCA-anerkannt, über die Zusatzversicherung abrechenbar. Termin anfragen.';
 
 const faqs = [
   {
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Was kostet eine Behandlung?',
-    a: 'Eine Sitzung liegt in der Regel bei CHF 130 bis 160, je nach Dauer und Methode. Das Erstgespräch mit Anamnese dauert länger und liegt am oberen Ende. Mit Zusatzversicherung trägst du meist 0 bis 20 Prozent selbst. Chinesische Kräuter rechnen wir separat ab, weil die Rezeptur individuell ist.',
+    a: 'Wir rechnen nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten ab, der Preis richtet sich also nach der Dauer. Das Erstgespräch mit Anamnese dauert länger und liegt entsprechend höher. Mit Zusatzversicherung trägst du meist 0 bis 20 Prozent selbst. Chinesische Kräuter rechnen wir separat ab, weil die Rezeptur individuell ist.',
   },
   {
     q: 'Münzgasse oder Marktgasse, welche Praxis soll ich nehmen?',
@@ -70,19 +70,19 @@ const schema = [
     url,
     inLanguage: 'de-CH',
     datePublished: '2026-07-17',
-    dateModified: '2026-07-17',
+    dateModified: '2026-07-18',
     lastReviewed: '2026-07-17',
     about: [
       { '@type': 'MedicalProcedure', name: 'Akupunktur' },
       { '@type': 'MedicalProcedure', name: 'Traditionelle Chinesische Medizin' },
     ],
-    author: { '@type': 'Person', name: 'Corinna Reinhart', jobTitle: 'TCM-Therapeutin & Pflegefachfrau' },
-    reviewedBy: { '@type': 'Person', name: 'Corinna Reinhart', jobTitle: 'TCM-Therapeutin & Pflegefachfrau' },
+    author: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    reviewedBy: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
     publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
     citation: [
       { '@type': 'ScholarlyArticle', name: 'Acupuncture for Chronic Pain: Update of an Individual Patient Data Meta-Analysis', identifier: 'PMID:29198932', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/29198932/' },
       { '@type': 'ScholarlyArticle', name: 'Acupuncture for the prevention of episodic migraine', identifier: 'PMID:27351677', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/27351677/' },
-      { '@type': 'ScholarlyArticle', name: 'Stimulation of the wrist acupuncture point PC6 for preventing postoperative nausea and vomiting', identifier: 'PMID:26522652', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/26522652/' },
+      { '@type': 'ScholarlyArticle', name: 'Acupuncture for chronic nonspecific low back pain', identifier: 'PMID:33306198', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/33306198/' },
     ],
   },
   {
@@ -95,7 +95,6 @@ const schema = [
     medicalSpecialty: 'TraditionalChineseMedicine',
     telephone: '+41 77 523 61 22',
     email: 'termine@tcm.ch',
-    priceRange: 'CHF 130–160',
     areaServed: [
       { '@type': 'City', name: 'Winterthur' },
       { '@type': 'AdministrativeArea', name: 'Kanton Zürich' },
