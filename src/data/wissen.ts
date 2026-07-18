@@ -433,6 +433,67 @@ export const wissen: Wissen[] = [
     ]
   },
   {
+    "slug": "chinesische-kraeutertherapie-winterthur",
+    "title": "Chinesische Kräutertherapie in Winterthur: Ablauf, Kosten und Sicherheit",
+    "metaDesc": "Chinesische Kräuter in Winterthur: wie eine Rezeptur entsteht, wie die Einnahme abläuft, was sie kostet, was die Kasse übernimmt und worauf du bei Wechselwirkungen achten musst.",
+    "region": "Winterthur",
+    "excerpt": "Chinesische Kräuter in Winterthur: wie eine Rezeptur entsteht, wie die Einnahme abläuft, was sie kostet, was die Kasse übernimmt und worauf du bei Wechselwirkungen achten musst.",
+    "category": "TCM in der Schweiz",
+    "h1": "Chinesische Kräutertherapie in Winterthur: Ablauf, Kosten und Sicherheit",
+    "lead": "Chinesische Kräutertherapie ist neben der Akupunktur die zweite Säule der TCM und arbeitet mit individuell zusammengestellten Rezepturen statt mit Nadeln. In Winterthur beraten wir dazu an der Marktgasse. Eine Rezeptur wird nach Anamnese, Zungen- und Pulsdiagnose erstellt und im Verlauf angepasst. Was die Kräuter leisten können, wo die Evidenz dünn ist, was sie kosten und wann du die Finger davon lassen solltest, steht hier.",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Kräuterberatung in Winterthur?",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-07-18",
+    "dateModified": "2026-07-18",
+    "lastReviewed": "2026-07-18",
+    "bodyHtml": "<h2>Was chinesische Kräutertherapie ist</h2><p>In der Traditionellen Chinesischen Medizin steht die <a href=\"/therapien/kraeutertherapie/\">Kräutertherapie</a> gleichberechtigt neben der Akupunktur. In China gilt sie sogar als die wichtigere der beiden. Gearbeitet wird nicht mit einem einzelnen Mittel, sondern mit einer Rezeptur aus meist acht bis fünfzehn Einzelkräutern, die aufeinander abgestimmt sind. Ein Teil der Rezeptur zielt auf dein Hauptthema, andere Bestandteile stützen die Verträglichkeit oder gleichen Wirkungen aus.</p><p>Entscheidend ist: Es gibt kein Standardmittel gegen Schlafprobleme oder Verdauungsbeschwerden. Zwei Personen mit derselben Diagnose bekommen bei uns unterschiedliche Rezepturen, weil die TCM nicht das Symptom behandelt, sondern das Muster dahinter.</p><h2>Wie eine Beratung in Winterthur abläuft</h2><p>Der Ablauf ähnelt dem Ersttermin für Akupunktur. Wir nehmen uns 60 bis 75 Minuten, fragen ausführlich nach Beschwerden, Schlaf, Verdauung, Energie, Stress und Zyklus, und ergänzen das mit Zungen- und Pulsdiagnose. Erst danach stellen wir eine Rezeptur zusammen.</p><p>Du bekommst die Kräuter in der Regel als Granulat, das du in heissem Wasser auflöst und trinkst. Das ist unkomplizierter als der klassische Dekokt, bei dem Rohkräuter gekocht werden. Dekokte sind möglich, wenn du es traditionell willst, brauchen aber täglich Zeit.</p><p>Nach zwei bis vier Wochen sehen wir uns wieder und passen die Rezeptur an. Diese Anpassung ist kein Zeichen, dass etwas schiefgelaufen ist, sondern Teil der Methode.</p><h2>Wie es schmeckt, ehrlich gesagt</h2><p>Bitter, erdig, ungewohnt. Die meisten finden den Geschmack anfangs unangenehm und gewöhnen sich innerhalb einer Woche daran. Wer partout nicht mag, kann auf Kapseln oder Tabletten ausweichen, allerdings sind diese weniger flexibel anpassbar. Wir sagen dir das vorher, damit du dich nicht durch etwas quälst, das auch anders geht.</p><h2>Wobei Kräuter in unserer Praxis eingesetzt werden</h2><p>Am häufigsten kommen Menschen mit Verdauungsbeschwerden, Schlafproblemen, Erschöpfung, Hautthemen sowie Zyklus- und Wechseljahrbeschwerden zu uns. Bei Kinderwunsch begleiten wir häufig mit Kräutern zusätzlich zur Akupunktur.</p><p>Zur Evidenz müssen wir ehrlich sein. Für einzelne Anwendungsgebiete gibt es Hinweise aus klinischen Studien, etwa für bestimmte Rezepturen beim Reizdarmsyndrom. Insgesamt ist die Studienlage zur chinesischen Kräutertherapie aber uneinheitlich, viele Untersuchungen sind klein oder methodisch schwach, und Cochrane-Übersichten kommen für die meisten Indikationen zum Schluss, dass die Datenlage für klare Empfehlungen nicht ausreicht. Wir arbeiten mit Kräutern, weil wir in der Praxis regelmässig gute Verläufe sehen, nicht weil die Studienlage eindeutig wäre. Wer dir etwas anderes erzählt, verkauft dir etwas.</p><h2>Sicherheit, Qualität und Wechselwirkungen</h2><p>Der Punkt, an dem wir am wenigsten Kompromisse machen. Wir beziehen ausschliesslich von Schweizer Lieferanten, die ihre Chargen auf Schwermetalle, Pestizide und Verfälschungen prüfen lassen. Chinesische Kräuter aus unklarer Quelle, aus dem Internet oder aus dem Ferienkoffer solltest du nicht einnehmen. Verunreinigungen und falsch deklarierte Pflanzen sind ein reales Problem.</p><p>Kräuter sind wirksam, und damit können sie auch mit Medikamenten interagieren. Sag uns immer, was du sonst einnimmst, insbesondere bei Blutverdünnern, Immunsuppressiva, Schilddrüsen- oder Krebsmedikamenten. In Schwangerschaft und Stillzeit gilt besondere Vorsicht, hier verschreiben wir nur sehr zurückhaltend und nach klarer Abwägung. Bei bestehender Leber- oder Nierenerkrankung sprechen wir vorher mit dir über die Risiken.</p><p>Wenn dir während der Einnahme übel wird, du Hautreaktionen bekommst oder dich schlechter fühlst, setz ab und melde dich. Das ist selten, aber es kommt vor.</p><h2>Kosten und Krankenkasse</h2><p>Zwei Posten: die Beratung und die Kräuter selbst. Die Beratung rechnen wir nach Tarif 590 nach Behandlungsdauer ab, wie bei der Akupunktur auch. Die Kräuter kommen als Materialkosten dazu und laufen über die Rezeptur.</p><p>Bei der Zusatzversicherung ist wichtig zu wissen: Viele Kassen übernehmen die Konsultation, aber nicht oder nur teilweise die Kräuter selbst. Das überrascht Patientinnen und Patienten regelmässig. Frag deine Kasse vor dem Start konkret nach beiden Posten. Details zur Kostenlogik in Winterthur findest du unter <a href=\"/wissen/akupunktur-winterthur-kosten/\">Akupunktur Winterthur: Kosten und Krankenkasse</a>, die nationalen Regeln stehen unter <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Krankenkasse und TCM</a>.</p><h2>Wann du zuerst ärztlich abklären solltest</h2><p>Kräutertherapie ist eine Ergänzung, kein Ersatz für Diagnostik. Geh zuerst zum Arzt bei ungewolltem Gewichtsverlust, Blut im Stuhl oder Urin, anhaltendem Fieber, neu aufgetretenen starken Schmerzen oder wenn sich bestehende Beschwerden deutlich verschlechtern. Setz laufende Medikamente nie eigenmächtig ab, um Platz für Kräuter zu machen. Wenn wir bei dir Warnzeichen sehen, behandeln wir nicht, sondern verweisen weiter.</p><h2>Praxis Winterthur</h2><p>Du findest uns an der Marktgasse in der Winterthurer Altstadt, wenige Gehminuten vom Hauptbahnhof. Wie ein Ersttermin bei uns abläuft, liest du unter <a href=\"/wissen/tcm-winterthur-erfahrungen-ablauf/\">Akupunktur in Winterthur: Ablauf und Erfahrungen</a>. Alle Angaben zum Standort und zum Team stehen auf der <a href=\"/standorte/winterthur-marktgasse/\">Standortseite Winterthur</a>.</p>",
+    "faqs": [
+      {
+        "q": "Wie lange muss ich chinesische Kräuter nehmen?",
+        "a": "Das hängt vom Anliegen ab. Bei akuten Themen sind es oft zwei bis vier Wochen, bei chronischen Beschwerden planen wir eher zwei bis drei Monate mit regelmässiger Anpassung der Rezeptur. Nach etwa vier Wochen sollte sich abzeichnen, ob die Richtung stimmt."
+      },
+      {
+        "q": "Kann ich Kräuter zusammen mit meinen Medikamenten einnehmen?",
+        "a": "Nicht ohne Rücksprache. Chinesische Kräuter sind wirksam und können mit Medikamenten interagieren, besonders mit Blutverdünnern, Immunsuppressiva sowie Schilddrüsen- und Krebsmedikamenten. Bring eine vollständige Liste deiner Medikamente mit, wir klären das vor der ersten Rezeptur."
+      },
+      {
+        "q": "Schmecken chinesische Kräuter wirklich so schlecht?",
+        "a": "Sie schmecken bitter und erdig, das lässt sich nicht schönreden. Die meisten gewöhnen sich innerhalb einer Woche daran. Wenn es gar nicht geht, gibt es Kapseln oder Tabletten als Alternative, die allerdings weniger flexibel an deinen Verlauf angepasst werden können."
+      },
+      {
+        "q": "Zahlt die Krankenkasse die Kräuter?",
+        "a": "Häufig übernimmt die Zusatzversicherung die Konsultation, aber die Kräuter selbst nur teilweise oder gar nicht. Das ist von Vertrag zu Vertrag verschieden. Frag deine Kasse vor dem Start konkret nach beiden Posten, Beratung und Material, damit du nicht überrascht wirst."
+      },
+      {
+        "q": "Sind chinesische Kräuter sicher?",
+        "a": "Bei geprüfter Qualität und fachlicher Verschreibung sind sie in der Regel gut verträglich. Wir beziehen ausschliesslich von Schweizer Lieferanten mit Chargenprüfung. Finger weg von Kräutern aus unklarer Quelle oder aus dem Internet, dort sind Verunreinigungen und falsche Deklarationen ein reales Problem."
+      }
+    ],
+    "related": [
+      {
+        "href": "/wissen/tcm-winterthur-erfahrungen-ablauf/",
+        "label": "Akupunktur in Winterthur: Ablauf",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-winterthur-kosten/",
+        "label": "Akupunktur Winterthur: Kosten",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
     "slug": "akupunktur-bei-heuschnupfen",
     "title": "Akupunktur bei Heuschnupfen: Studienlage & Nutzen",
     "metaDesc": "Hilft Akupunktur bei Heuschnupfen? Was die Studienlage zeigt, wann du mit einer Behandlung beginnen solltest und wann du besser zum Arzt gehst.", "region": "Schweizweit", "excerpt": "Was die ACUSAR-Studie zur Akupunktur bei Heuschnupfen zeigt, wann du mit der Behandlung beginnen solltest und wann du besser zum Arzt gehst.",
