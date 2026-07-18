@@ -294,6 +294,11 @@ export const wissen: Wissen[] = [
     ],
     "related": [
       {
+        "href": "/wissen/akupunktur-winterthur-kosten/",
+        "label": "Akupunktur Winterthur: Kosten",
+        "cat": "Artikel"
+      },
+      {
         "href": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
         "label": "Akupunktur in meiner Nähe",
         "cat": "Artikel"
