@@ -7,7 +7,7 @@
 // interaction-only Turnstile widget, then shows an inline success/error state.
 const { sitekey } = Astro.props;
 ---
-<section class="hlsg">
+<section class="hlsg" id="offer-form">
   <div class="hlsg-bar">
     <span class="hlsg-pulse" aria-hidden="true"></span>
     <span>Neu in <b>St.&nbsp;Gallen</b>, Oberer Graben 22. <b>Erstbehandlung gratis</b> nur zum Launch.</span>
@@ -32,9 +32,17 @@ const { sitekey } = Astro.props;
     <div class="hlsg-visual">
       <div class="hlsg-card">
         <div class="hlsg-ribbon">NEU</div>
-        <span class="hlsg-offer-tag">Launch-Angebot</span>
-        <div class="hlsg-offer-big"><span class="hlsg-free">Erstbehandlung gratis</span></div>
-        <p class="hlsg-offer-note">Nur für Neupatient:innen in St. Gallen. Noch <strong class="hlsg-scarcity" data-sg-free>12</strong> von 20 Gratis-Terminen frei.</p>
+        <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Deine erste Behandlung ist <span class="hlsg-free">gratis</span></div>
+        <p class="hlsg-offer-note" style="margin-bottom:14px">60 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
+        <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 14px">
+          <div><span class="hlsg-check">✓</span> Ausführliches Erstgespräch, wir hören zuerst zu</div>
+          <div><span class="hlsg-check">✓</span> TCM-Diagnostik durch anerkannte Therapeut:innen</div>
+          <div><span class="hlsg-check">✓</span> Erste Behandlung noch in derselben Sitzung</div>
+          <div><span class="hlsg-check">✓</span> Eine ehrliche Einschätzung, ob TCM bei dir sinnvoll ist. Wenn nicht, sagen wir es dir.</div>
+        </div>
+        <p class="hlsg-offer-note" style="margin:0 0 4px">Kein Abo, keine Verpflichtung, kein Verkaufsgespräch.</p>
+        <p class="hlsg-offer-note" style="margin:0 0 10px"><strong>Termine diese Woche verfügbar.</strong></p>
+        <p class="hlsg-offer-note" style="margin:0">Noch <strong class="hlsg-scarcity" data-sg-free>14</strong> von 20 Gratis-Terminen frei.</p>
         <p class="hlsg-proof"><span class="hlsg-stars" aria-hidden="true">★★★★★</span> 4.9 bei Google, von Patient:innen weiterempfohlen.</p>
         <div class="hlsg-divider"></div>
         <form class="hlsg-form" data-sg-hero-form novalidate>
