@@ -7,7 +7,7 @@
 // interaction-only Turnstile widget, then shows an inline success/error state.
 const { sitekey } = Astro.props;
 ---
-<section class="hlsg" id="offer-form">
+<section class="hlsg">
   <div class="hlsg-bar">
     <span class="hlsg-pulse" aria-hidden="true"></span>
     <span>Neu in <b>St.&nbsp;Gallen</b>, Oberer Graben 22. <b>Erstbehandlung gratis</b> nur zum Launch.</span>
@@ -30,7 +30,7 @@ const { sitekey } = Astro.props;
     </div>
 
     <div class="hlsg-visual">
-      <div class="hlsg-card">
+      <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
         <div class="hlsg-ribbon">NEU</div>
         <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Deine erste Behandlung ist <span class="hlsg-free">gratis</span></div>
         <p class="hlsg-offer-note" style="margin-bottom:14px">60 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
