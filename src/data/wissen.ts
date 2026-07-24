@@ -429,6 +429,11 @@ export const wissen: Wissen[] = [
         "href": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
         "label": "Akupunktur in meiner Nähe",
         "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/chinesische-kraeutertherapie-winterthur/",
+        "label": "Chinesische Kräutertherapie in Winterthur",
+        "cat": "Artikel"
       }
     ]
   },
@@ -553,6 +558,11 @@ export const wissen: Wissen[] = [
       {
         "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026",
         "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/haeufige-infekte-immunsystem/",
+        "label": "Häufige Infekte und Immunsystem",
         "cat": "Artikel"
       }
     ]
