@@ -38,6 +38,61 @@ const drawerUtilLabel = isDe ? 'Für Fachpersonen / Zuweiser' : 'For professiona
 const arrow = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
 const cross = `<svg viewBox="0 0 32 32" width="1.15em" height="1.15em" style="display:inline-block;vertical-align:middle;margin-left:3px" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#DA291C"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg>`;
 const waHref = `https://wa.me/${site.whatsapp}`;
+
+// EN drawer leaf lists — crawlable <a> for every EN hub child so leaves sit at
+// depth 2 (drawer is on every page). DE uses its own header (DeHeader/header.html).
+const enDrawer = [
+  { label: 'Conditions', hubHref: '/en/conditions/', children: [
+    { href: '/en/conditions/back-pain/', label: 'Back Pain' },
+    { href: '/en/conditions/neck-pain/', label: 'Neck Pain' },
+    { href: '/en/conditions/migraine-headaches/', label: 'Migraine & Headaches' },
+    { href: '/en/conditions/sleep-problems/', label: 'Sleep Problems' },
+    { href: '/en/conditions/stress-burnout/', label: 'Stress & Burnout' },
+    { href: '/en/conditions/digestive-issues/', label: 'Digestive Issues' },
+    { href: '/en/conditions/menstrual-issues/', label: 'Menstrual & Cycle Issues' },
+    { href: '/en/conditions/fertility-support/', label: 'Fertility Support' },
+  ] },
+  { label: 'Therapies', hubHref: '/en/therapies/', children: [
+    { href: '/en/therapies/acupuncture/', label: 'Acupuncture' },
+    { href: '/en/therapies/acupressure/', label: 'Acupressure' },
+    { href: '/en/therapies/cupping/', label: 'Cupping' },
+    { href: '/en/therapies/tuina-massage/', label: 'Tuina Massage' },
+    { href: '/en/therapies/chinese-herbal-medicine/', label: 'Chinese Herbal Medicine' },
+    { href: '/en/therapies/moxibustion/', label: 'Moxibustion' },
+    { href: '/en/therapies/electroacupuncture/', label: 'Electroacupuncture' },
+    { href: '/en/therapies/facial-acupuncture/', label: 'Facial Acupuncture' },
+    { href: '/en/therapies/gua-sha/', label: 'Gua Sha' },
+    { href: '/en/therapies/shiatsu/', label: 'Shiatsu' },
+    { href: '/en/therapies/physiotherapy/', label: 'Physiotherapy' },
+  ] },
+  { label: 'Locations', hubHref: '/en/locations/', children: [
+    { href: '/en/locations/zuerich-oerlikon/', label: 'Zürich Oerlikon' },
+    { href: '/en/locations/zuerich-hoengg/', label: 'Zürich Höngg' },
+    { href: '/en/locations/zuerich-city/', label: 'Zürich City' },
+    { href: '/en/locations/winterthur-muenzgasse/', label: 'Winterthur Münzgasse' },
+    { href: '/en/locations/winterthur-marktgasse/', label: 'Winterthur Marktgasse' },
+    { href: '/en/locations/st-gallen/', label: 'St. Gallen' },
+    { href: '/en/locations/frauenfeld/', label: 'Frauenfeld' },
+    { href: '/en/locations/kreuzlingen/', label: 'Kreuzlingen' },
+    { href: '/en/locations/bottighofen/', label: 'Bottighofen' },
+    { href: '/en/locations/rorschach/', label: 'Rorschach' },
+    { href: '/en/locations/wil/', label: 'Wil' },
+    { href: '/en/locations/volketswil/', label: 'Volketswil' },
+    { href: '/en/locations/basel/', label: 'Basel' },
+  ] },
+  { label: 'Knowledge', hubHref: '/en/knowledge/', children: [
+    { href: '/en/knowledge/what-to-expect-first-acupuncture-session/', label: 'Your First Session' },
+    { href: '/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/', label: 'Cost in Switzerland' },
+    { href: '/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/', label: 'Claiming on Insurance' },
+    { href: '/en/knowledge/is-acupuncture-safe-side-effects-explained/', label: 'Is Acupuncture Safe?' },
+    { href: '/en/knowledge/english-speaking-acupuncturist-switzerland/', label: 'English-Speaking Acupuncturist' },
+    { href: '/en/knowledge/acupuncture-for-back-pain-what-to-expect/', label: 'For Back Pain' },
+    { href: '/en/knowledge/acupuncture-for-migraines-what-to-expect/', label: 'For Migraines' },
+    { href: '/en/knowledge/acupuncture-for-stress-and-burnout/', label: 'For Stress & Burnout' },
+    { href: '/en/knowledge/acupuncture-for-fertility-switzerland/', label: 'For Fertility' },
+  ] },
+];
+const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>`;
 ---
 <!-- Header bar — mirrors the DE SPA #mainNav exactly (classes, spacing, typography, CTA, burger). -->
 <nav id="mainNav">
@@ -80,11 +135,28 @@ const waHref = `https://wa.me/${site.whatsapp}`;
   </div>
   <div class="drw-body">
     <div class="drw-group">
+      {isDe ? (
+        <div class="drw-section">
+          <ul class="drw-plain-links">
+            {navLinks.map((l) => (
+              <li><a href={l.href}>{l.label}<span class="drw-link-arrow" set:html={arrow} /></a></li>
+            ))}
+          </ul>
+        </div>
+      ) : enDrawer.map((sec) => (
+        <div class="drw-section">
+          <details class="drw-en-acc">
+            <summary class="drw-en-sum">{sec.label}<span class="drw-en-chev" set:html={chev} /></summary>
+            <ul class="drw-en-sub">
+              <li><a class="drw-en-all" href={sec.hubHref}>All {sec.label.toLowerCase()}</a></li>
+              {sec.children.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+            </ul>
+          </details>
+        </div>
+      ))}
       <div class="drw-section">
         <ul class="drw-plain-links">
-          {navLinks.map((l) => (
-            <li><a href={l.href}>{l.label}<span class="drw-link-arrow" set:html={arrow} /></a></li>
-          ))}
+          {!isDe && <li><a href="/en/health-insurance-acupuncture/">Insurance &amp; costs<span class="drw-link-arrow" set:html={arrow} /></a></li>}
           <li><a href={langHref} hreflang={langHreflang}>{drawerLangLabel}<span class="drw-link-arrow" set:html={arrow} /></a></li>
           <li><a href="/zuweisen/">{drawerUtilLabel}<span class="drw-link-arrow" set:html={arrow} /></a></li>
         </ul>
@@ -229,4 +301,16 @@ const waHref = `https://wa.me/${site.whatsapp}`;
   .drw-cta-secondary { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 14px; line-height: normal; border-radius: 9px; font-family: var(--font-sans); font-size: 12.5px; font-weight: 500; text-decoration: none; color: #3a3a3a; border: 1px solid var(--border); background: var(--white); transition: border-color .15s ease, color .15s ease; }
   .drw-cta-secondary:hover { border-color: var(--blue); color: var(--blue); }
   .drw-cta-wa { color: var(--blue); border-color: rgba(37,211,102,.25); }
+
+  /* EN drawer accordions — native <details>, no JS. Every child is a crawlable <a>. */
+  .drw-en-acc { border: none; }
+  .drw-en-sum { display: flex; align-items: center; gap: 10px; padding: 11px 24px; line-height: normal; font-family: var(--font-sans); font-size: 14.5px; font-weight: 500; color: #1a1a1a; cursor: pointer; list-style: none; user-select: none; transition: color .2s ease, background .2s ease; }
+  .drw-en-sum::-webkit-details-marker { display: none; }
+  .drw-en-sum:hover { color: var(--blue); background: rgba(45,155,111,.05); }
+  .drw-en-chev { margin-left: auto; display: inline-flex; color: var(--muted); transition: transform var(--t-slow) var(--ease-out), color .2s ease; }
+  .drw-en-acc[open] .drw-en-chev { transform: rotate(180deg); color: var(--blue); }
+  .drw-en-sub { list-style: none; margin: 0; padding: 0 0 6px; }
+  .drw-en-sub a { display: block; padding: 8px 24px 8px 38px; line-height: normal; font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: rgba(26,26,26,.72); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .drw-en-sub a:hover { color: var(--blue); background: rgba(45,155,111,.05); }
+  .drw-en-sub .drw-en-all { font-size: 12.5px; font-weight: 600; color: var(--blue); }
 </style>
