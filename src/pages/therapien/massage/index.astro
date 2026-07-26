@@ -5,9 +5,11 @@
 import SpaPage from '../../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../../components/InsuranceBanner.astro';
 import MassageAnfrageForm from '../../../components/MassageAnfrageForm.astro';
+import WhatsAppContact from '../../../components/WhatsAppContact.astro';
 import bodyRaw from '../../../data/massage-body.html?raw';
 
-const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const [heroPart, afterBanner] = bodyRaw.split('<!--BANNER-->');
+const [beforeFaq, faqPart] = afterBanner.split('<!--WHATSAPP-->');
 
 const url = 'https://tcm.ch/therapien/massage/';
 const title = 'Massage Winterthur & St. Gallen | Medizinische Massage – TCM.ch';
@@ -48,7 +50,9 @@ const schema = [
 <SpaPage title={title} description={description} path="/therapien/massage" body="" schema={schema}>
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
-  <Fragment set:html={restPart} />
+  <Fragment set:html={beforeFaq} />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
+  <Fragment set:html={faqPart} />
   <MassageAnfrageForm anfrageTyp="massage" quelle="massage" />
   <InsuranceBanner variant="sticky" />
 </SpaPage>

@@ -1,0 +1,39 @@
+---
+// Wiederverwendbarer dunkler WhatsApp-Kontaktblock (extrahiert aus der "Frag direkt
+// Corinna"-Sektion der St.-Galler Standortseite). Nutzt die bestehenden sgm-*-Styles
+// aus home.css (dunkler Block, Badge, H2, Text, WhatsApp-Button, Portrait rechts).
+//
+// Props:
+//   name      -> Vorname (H2 "Frag direkt {name}." + WhatsApp-Vorbefüllung)
+//   image     -> Portrait-Pfad (gleiche Behandlung wie Corinna: 3:4, sgm-photo)
+//   badge?    -> Badge-Text (default: Massage-Termine-Hinweis, kein Scarcity-Claim)
+//   imageAlt? -> alt-Text (default: name)
+interface Props {
+  name: string;
+  image: string;
+  badge?: string;
+  imageAlt?: string;
+}
+const { name, image, badge = 'MASSAGE-TERMINE IN WINTERTHUR & ST. GALLEN', imageAlt } = Astro.props;
+const alt = imageAlt || name;
+const waHref = 'https://wa.me/41775236122?text=' + encodeURIComponent('Hallo ' + name + ', ich habe eine Frage zur Massage.');
+---
+<section class="sg-merged-cta">
+  <div class="sgm-wrap">
+    <div class="sgm-split">
+      <div class="sgm-text">
+        <div class="sgm-badge"><span class="sgm-badge-dot"></span>{badge}</div>
+        <h2 class="sgm-text-h">Noch unsicher? Frag direkt {name}.</h2>
+        <p class="sgm-text-p">Sie hilft dir per WhatsApp weiter, persönlich und kostenlos. Antwort meist innerhalb 1 Std.</p>
+        <a href={waHref} class="sgm-cta" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"></path></svg>
+          <span>Per WhatsApp fragen</span>
+        </a>
+        <p class="sgm-meta">Mo–Fr 8–19 Uhr · Antwort meist innert 1 Std.</p>
+      </div>
+      <div class="sgm-photo">
+        <img width="630" height="840" src={image} alt={alt} loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </div>
+</section>
