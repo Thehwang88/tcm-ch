@@ -709,6 +709,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/therapien/massage/lymphdrainage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/massage/medizinische-massage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/massage/schwangerschaftsmassage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/therapien/moxibustion/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>

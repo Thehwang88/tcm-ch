@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-lymphdrainage-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/lymphdrainage/';
+const title = 'Lymphdrainage Winterthur & St. Gallen | Manuelle Lymphdrainage – TCM.ch';
+const description = 'Manuelle Lymphdrainage in Winterthur & St. Gallen: sanfte Technik bei Schwellungen und Wassereinlagerungen. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Wie fühlt sich eine Lymphdrainage an?', a: 'Sehr sanft. Die Griffe sind leicht und rhythmisch, sie verschieben kaum mehr als die Haut. Viele empfinden die Behandlung als beruhigend und kommen dabei zur Ruhe. Kräftiger Druck wie bei einer Muskelmassage gehört bewusst nicht dazu.' },
+  { q: 'Wie oft sollte man eine Lymphdrainage machen?', a: 'Das richtet sich nach deinem Anliegen. Bei akuter Schwellung können in kurzer Folge mehrere Sitzungen sinnvoll sein, zur Entlastung zwischendurch reicht oft ein Termin nach Bedarf. Wir stimmen den Rhythmus mit dir ab.' },
+  { q: 'Gibt es Situationen, in denen ich keine Lymphdrainage machen sollte?', a: 'Ja. Bei akuten Infekten mit Fieber, einer bekannten Herzschwäche oder dem Verdacht auf eine Thrombose ist von einer Lymphdrainage abzusehen oder sie zuerst ärztlich abzuklären. Sag uns bei der Anfrage, wenn eines dieser Themen auf dich zutrifft, dann klären wir es gemeinsam.' },
+  { q: 'Übernimmt die Krankenkasse die Lymphdrainage?', a: 'Bei unseren anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt die Behandlung als Massageleistung nicht. Deine genaue Deckung prüfen wir vorab.' },
+  { q: 'Hilft Lymphdrainage bei geschwollenen Beinen in der Schwangerschaft?', a: 'Wassereinlagerungen sind in der Schwangerschaft häufig, und die sanfte Technik wird dabei oft als angenehm empfunden. Bei normalem Verlauf ist das gut möglich. Passend dazu ist unsere Schwangerschaftsmassage, im Zweifel sprich es kurz mit deiner Hebamme oder Ärztin ab.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Manuelle Lymphdrainage',
+    description: 'Sanfte manuelle Lymphdrainage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Lymphdrainage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/lymphdrainage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

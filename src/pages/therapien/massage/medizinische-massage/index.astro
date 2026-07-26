@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-medizinische-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/medizinische-massage/';
+const title = 'Medizinische Massage Winterthur & St. Gallen | TCM.ch';
+const description = 'Medizinische Massage in Winterthur & St. Gallen: befundbasiert gegen Verspannungen und Schmerzen, EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Was ist der Unterschied zwischen klassischer und medizinischer Massage?', a: 'Die klassische Massage folgt einem allgemeinen Ablauf zur Lockerung und Entspannung. Die medizinische Massage beginnt mit einem Befund und arbeitet gezielt an der Struktur, die deine Beschwerde verursacht. Nur die medizinische Massage ist bei anerkannten Therapeut:innen über die Zusatzversicherung abrechenbar.' },
+  { q: 'Wie viele Sitzungen brauche ich?', a: 'Das hängt von deiner Beschwerde ab. Bei einer akuten Verspannung reicht manchmal eine Sitzung, bei hartnäckigen oder länger bestehenden Problemen ist eine Serie über mehrere Wochen sinnvoller. Wir schätzen das nach dem ersten Befund gemeinsam mit dir ein.' },
+  { q: 'Brauche ich eine ärztliche Verordnung?', a: 'Nein. Für die Abrechnung über die Zusatzversicherung genügt, dass die Behandlung bei einer EMR- oder ASCA-anerkannten Fachperson stattfindet. Du kannst direkt einen Termin anfragen.' },
+  { q: 'Übernimmt die Krankenkasse die medizinische Massage?', a: 'In der Regel ja, über die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen. Wie viel bei dir zurückkommt, hängt von deiner Police ab, wir prüfen das gern vorab mit dir.' },
+  { q: 'Ist die Behandlung schmerzhaft?', a: 'Sie darf fordernd sein, gerade bei tiefer Arbeit an Triggerpunkten, soll aber nicht in scharfen Schmerz umschlagen. Du gibst das Tempo mit vor, wir passen den Druck jederzeit an dein Empfinden an.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Medizinische Massage',
+    description: 'Befundbasierte medizinische Massage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Medizinische Massage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/medizinische-massage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

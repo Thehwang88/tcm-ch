@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-schwangerschaft-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/schwangerschaftsmassage/';
+const title = 'Schwangerschaftsmassage Winterthur & St. Gallen | TCM.ch';
+const description = 'Schwangerschaftsmassage in Winterthur & St. Gallen: sanft und sicher gelagert ab dem 2. Trimester. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Ab wann ist eine Schwangerschaftsmassage möglich?', a: 'In der Regel ab dem zweiten Trimester. Im ersten Drittel raten wir zur Zurückhaltung und bieten die Massage nur nach Rücksprache mit deiner Ärztin oder Hebamme an. Sag uns bei der Anfrage einfach, in welcher Woche du bist.' },
+  { q: 'Ist eine Massage in der Schwangerschaft sicher?', a: 'Bei einer normal verlaufenden Schwangerschaft und ab dem zweiten Trimester ist eine angepasste Massage gut möglich. Entscheidend sind die sichere Lagerung und geschulte Therapeut:innen, die wissen, welche Regionen und Griffe sich eignen. Bei Unsicherheit klären wir das vorab.' },
+  { q: 'In welcher Position werde ich massiert?', a: 'Meist in stabiler Seitenlage, gut mit Kissen abgestützt, damit weder Bauch noch Rücken belastet werden. Diese Lagerung ist bequem und lässt sich jederzeit anpassen, wenn du sie ändern möchtest.' },
+  { q: 'Was gilt bei einer Risikoschwangerschaft?', a: 'Bei einer Risikoschwangerschaft, Komplikationen oder Beschwerden, die ärztlich beobachtet werden, halte bitte zuerst Rücksprache mit deiner Ärztin oder Hebamme. Wir behandeln in solchen Fällen nur, wenn das ärztlich in Ordnung ist.' },
+  { q: 'Übernimmt die Krankenkasse die Schwangerschaftsmassage?', a: 'Als Massage bei anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung übernimmt sie nicht. Wie viel bei dir zurückkommt, hängt von deiner Police ab.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Schwangerschaftsmassage',
+    description: 'Sanfte, sicher gelagerte Schwangerschaftsmassage ab dem zweiten Trimester bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Schwangerschaftsmassage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/schwangerschaftsmassage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>
