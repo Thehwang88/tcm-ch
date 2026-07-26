@@ -5,6 +5,7 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../components/InsuranceBanner.astro';
 import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
+import WhatsAppContact from '../../components/WhatsAppContact.astro';
 import bodyRaw from '../../data/massage-winterthur-body.html?raw';
 import css from '../../data/massage-city.css?raw';
 
@@ -51,5 +52,6 @@ const schema = [
   <InsuranceBanner variant="inline" location="Winterthur" />
   <Fragment set:html={restPart} />
   <MassageAnfrageForm anfrageTyp="massage" quelle="massage-winterthur" />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
 </SpaPage>

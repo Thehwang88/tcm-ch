@@ -6,8 +6,7 @@ import WhatsAppContact from '../../../../components/WhatsAppContact.astro';
 import bodyRaw from '../../../../data/massage-deeptissue-body.html?raw';
 import css from '../../../../data/massage-city.css?raw';
 
-const [heroPart, afterBanner] = bodyRaw.split('<!--BANNER-->');
-const [beforeFaq, faqPart] = afterBanner.split('<!--WHATSAPP-->');
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
 const url = 'https://tcm.ch/therapien/massage/deep-tissue-massage/';
 const title = 'Deep Tissue Massage Winterthur & St. Gallen | TCM.ch';
 const description = 'Deep Tissue Massage in Winterthur & St. Gallen: langsame, kräftige Arbeit in tiefen Muskelschichten gegen hartnäckige Verspannungen. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
@@ -41,9 +40,8 @@ const schema = [
   <style set:html={css} is:inline></style>
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
-  <Fragment set:html={beforeFaq} />
-  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
-  <Fragment set:html={faqPart} />
+  <Fragment set:html={restPart} />
   <MassageAnfrageForm anfrageTyp="massage" quelle="deep-tissue-massage" />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
 </SpaPage>
