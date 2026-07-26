@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-fussreflex-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/fussreflexzonenmassage/';
+const title = 'Fussreflexzonenmassage Winterthur & St. Gallen | TCM.ch';
+const description = 'Fussreflexzonenmassage in Winterthur & St. Gallen: ruhiger Druck auf Fusszonen, oft als tief entspannend empfunden. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Was spüre ich während der Behandlung?', a: 'Vor allem ruhigen, gleichmässigen Druck an den Füssen. An einzelnen Stellen kann er kurz intensiver sein. Die meisten empfinden die Behandlung als entspannend und werden dabei richtig ruhig.' },
+  { q: 'Ist es kitzlig oder schmerzhaft?', a: 'Kitzlig ist es in der Regel nicht, weil mit festem, flächigem Druck gearbeitet wird und nicht mit leichtem Streicheln. Schmerzhaft soll es ebenfalls nicht sein. Ist dir eine Stelle unangenehm, sag Bescheid, dann nehmen wir den Druck zurück.' },
+  { q: 'Wie oft ist eine Sitzung sinnvoll?', a: 'Das entscheidest du nach Bedürfnis. Manche kommen einmalig zum Abschalten, andere regelmässig als ruhigen Fixpunkt in stressigen Zeiten. Einen festen Rhythmus braucht es nicht.' },
+  { q: 'Übernimmt die Krankenkasse die Fussreflexzonenmassage?', a: 'Bei unseren anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt die Behandlung nicht. Deine genaue Deckung prüfen wir vorab.' },
+  { q: 'Für wen ist die Behandlung nicht geeignet?', a: 'Bei akuten Verletzungen oder Entzündungen am Fuss, offenen Wunden, Fieber oder dem Verdacht auf eine Thrombose ist von der Behandlung abzusehen. Melde solche Themen bei der Anfrage, dann klären wir gemeinsam, ob ein anderer Zeitpunkt oder eine andere Behandlung besser passt.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Fussreflexzonenmassage',
+    description: 'Fussreflexzonenmassage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen, als entspannende Behandlung über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Fussreflexzonenmassage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/fussreflexzonenmassage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

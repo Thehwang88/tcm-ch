@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-sport-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/sportmassage/';
+const title = 'Sportmassage Winterthur & St. Gallen | TCM.ch';
+const description = 'Sportmassage in Winterthur & St. Gallen: vor und nach der Belastung, für Regeneration und Vorbeugung. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Was ist der Unterschied zur klassischen Massage?', a: 'Die Sportmassage arbeitet kräftiger und gezielter auf die beim Training belasteten Muskelgruppen, mit dem Ziel von Regeneration und Vorbeugung. Die klassische Massage ist ruhiger und dient eher der allgemeinen Lockerung und Entspannung.' },
+  { q: 'Sollte ich vor oder nach dem Training kommen?', a: 'Beides ist möglich, mit unterschiedlichem Ziel. Vor der Belastung lockern und aktivieren wir, nach der Belastung steht die Erholung im Vordergrund. Direkt vor einem Wettkampf massieren wir eher sanft, kräftige Arbeit legen wir besser ein paar Tage davor oder danach.' },
+  { q: 'Kann ich mit einer akuten Verletzung kommen?', a: 'Bei einer frischen Verletzung wie Zerrung, Muskelriss oder Prellung gehört zuerst die ärztliche Abklärung. Massage kann den Zustand sonst verschlechtern. Sobald grünes Licht da ist, unterstützen wir gern die Rehabilitation.' },
+  { q: 'Wie oft ist eine Sportmassage sinnvoll?', a: 'Das hängt von deinem Trainingsumfang ab. Wer viel trainiert, profitiert oft von einer regelmässigen Sitzung, etwa im Wochen- bis Monatsrhythmus, ergänzend rund um intensive Trainingsphasen oder Wettkämpfe. Wir stimmen das mit dir ab.' },
+  { q: 'Übernimmt die Krankenkasse die Sportmassage?', a: 'Als medizinische Massage bei anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen. Wie viel bei dir zurückkommt, hängt von deiner Police ab.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Sportmassage',
+    description: 'Sportmassage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen, vor und nach der Belastung, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Sportmassage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/sportmassage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

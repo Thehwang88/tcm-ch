@@ -1,0 +1,43 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import bodyRaw from '../../../../data/massage-klassische-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/klassische-massage/';
+const title = 'Klassische Massage Winterthur & St. Gallen | TCM.ch';
+const description = 'Klassische Massage in Winterthur & St. Gallen: Streichen, Kneten, Zirkeln zum Lösen verspannter Muskeln. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Was ist der Unterschied zur medizinischen Massage?', a: 'Die klassische Massage dient der allgemeinen Lockerung und Entspannung, ohne festes Behandlungsziel. Die medizinische Massage beginnt mit einem Befund und arbeitet gezielt an der Ursache einer konkreten Beschwerde. Steht ein Schmerz im Vordergrund, ist die medizinische Variante gezielter.' },
+  { q: 'Ganzkörper oder nur einzelne Regionen?', a: 'Beides ist möglich. Du kannst eine Ganzkörpermassage buchen oder dich auf beanspruchte Bereiche wie Rücken, Nacken und Schultern konzentrieren. Sag uns bei der Anfrage, was du dir wünschst.' },
+  { q: 'Wie lange dauert eine klassische Massage?', a: 'Üblich sind 30, 45 oder 60 Minuten. Für eine Ganzkörpermassage plant man eher 60 Minuten ein, für einzelne Regionen genügt oft eine kürzere Sitzung. Die Dauer stimmen wir auf dein Anliegen ab.' },
+  { q: 'Übernimmt die Krankenkasse die klassische Massage?', a: 'Bei unseren EMR- und ASCA-anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Reine Wellness-Behandlungen ohne therapeutischen Bezug sind Selbstzahlerleistungen. Die Grundversicherung zahlt keine Massagen.' },
+  { q: 'Wie oft ist eine klassische Massage sinnvoll?', a: 'Das ist ganz dir überlassen. Manche kommen einmalig zum Entspannen, andere regelmässig als festen Ausgleich zum Alltag. Bei anhaltenden Verspannungen kann eine Serie über einige Wochen mehr bringen als eine einzelne Sitzung.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Klassische Massage',
+    description: 'Klassische Massage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen zur Lockerung verspannter Muskulatur, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Klassische Massage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/klassische-massage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

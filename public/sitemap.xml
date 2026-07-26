@@ -709,6 +709,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/therapien/massage/fussreflexzonenmassage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/massage/klassische-massage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/therapien/massage/lymphdrainage/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -722,6 +734,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/therapien/massage/schwangerschaftsmassage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/massage/sportmassage/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
