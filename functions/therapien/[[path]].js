@@ -22,6 +22,7 @@ export async function onRequest(context) {
   const segments = Array.isArray(raw) ? raw : (raw ? [raw] : []);
   if (segments.length >= 2) {
     if (ALLOW.has(segments.join("/"))) return context.next(); // real nested sub-page
+    if (segments[0] === "massage") return context.next();     // real /therapien/massage/* sub-pages (Astro static)
     return gone();                                            // /therapien/<t>/<stadt>(/...) -> gone
   }
   return context.next();                                      // hub + single therapy pages
