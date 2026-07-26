@@ -1,0 +1,45 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import MassageAnfrageForm from '../../../../components/MassageAnfrageForm.astro';
+import bodyRaw from '../../../../data/massage-bindegewebs-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/bindegewebsmassage/';
+const title = 'Bindegewebsmassage Winterthur & St. Gallen | TCM.ch';
+const description = 'Bindegewebsmassage in Winterthur & St. Gallen: ziehende Reize an der Unterhaut mit charakteristischer Empfindung. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Warum fühlt sich die Behandlung schneidend an?', a: 'Das schneidende oder kratzende Gefühl entsteht durch die ziehenden Reize an der Unterhaut und ist typisch für die Methode. Es ist gewollt und kein Zeichen, dass etwas falsch läuft. Wird es dir zu scharf, nehmen wir die Intensität jederzeit zurück.' },
+  { q: 'Ist die Rötung danach normal?', a: 'Ja. Entlang der bearbeiteten Bahnen zeigt sich häufig eine Rötung der Haut. Das ist eine normale Reaktion des Gewebes und klingt innerhalb einiger Stunden von selbst wieder ab.' },
+  { q: 'Wann sollte ich keine Bindegewebsmassage machen?', a: 'Bei akuten Hauterkrankungen oder Entzündungen im behandelten Bereich, frischen Narben und offenen Wunden, bei Fieber oder dem Verdacht auf eine Thrombose ist von der Behandlung abzusehen. Melde solche Themen bei der Anfrage, dann finden wir gemeinsam einen passenden Weg.' },
+  { q: 'Wie oft ist eine Sitzung sinnvoll?', a: 'Das hängt von deinem Anliegen ab. Oft wird eine Serie über mehrere Wochen gewählt, danach ein Termin nach Bedarf. Den Rhythmus stimmen wir mit dir ab.' },
+  { q: 'Übernimmt die Krankenkasse die Bindegewebsmassage?', a: 'Bei unseren anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen. Wie viel bei dir zurückkommt, hängt von deiner Police ab.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Bindegewebsmassage',
+    description: 'Bindegewebsmassage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen, ziehende Reize an der Unterhaut, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Bindegewebsmassage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/bindegewebsmassage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <MassageAnfrageForm anfrageTyp="massage" quelle="bindegewebsmassage" />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

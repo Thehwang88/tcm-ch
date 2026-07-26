@@ -58,9 +58,12 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table></body></html>';
 
-    const subject = d.typ === 'termin'
+    let subject = d.typ === 'termin'
       ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
       : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')';
+    // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
+    // als eigene Zeile im HTML-Body (rows oben).
+    if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
     const body = {
       from: FROM,
       to: [TO],

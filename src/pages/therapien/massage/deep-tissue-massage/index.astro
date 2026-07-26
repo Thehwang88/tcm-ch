@@ -1,0 +1,45 @@
+---
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import MassageAnfrageForm from '../../../../components/MassageAnfrageForm.astro';
+import bodyRaw from '../../../../data/massage-deeptissue-body.html?raw';
+import css from '../../../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+const url = 'https://tcm.ch/therapien/massage/deep-tissue-massage/';
+const title = 'Deep Tissue Massage Winterthur & St. Gallen | TCM.ch';
+const description = 'Deep Tissue Massage in Winterthur & St. Gallen: langsame, kräftige Arbeit in tiefen Muskelschichten gegen hartnäckige Verspannungen. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Tut eine Deep-Tissue-Massage weh?', a: 'Sie ist deutlich intensiver als eine klassische Massage. Ein kräftiges, gut auszuhaltendes Ziehen im Bereich eines Wohlwehs gehört dazu. Scharfer oder stechender Schmerz nicht. Du gibst die Grenze vor, wir arbeiten immer in einem Druck, den du bewusst zulassen kannst.' },
+  { q: 'Für wen ist Deep Tissue nicht geeignet?', a: 'Zurückhaltung ist geboten bei akuten Entzündungen, frischen Verletzungen, Thromboseverdacht, bestimmten Herz-Kreislauf-Erkrankungen oder wenn du blutverdünnende Medikamente nimmst. Nenne solche Themen bei der Anfrage, dann klären wir gemeinsam, ob Deep Tissue passt oder eine sanftere Technik besser ist.' },
+  { q: 'Was ist der Unterschied zur Sportmassage?', a: 'Die Sportmassage ist auf Training und Regeneration rund um sportliche Belastung ausgerichtet. Deep Tissue zielt auf tief sitzende, chronische Verspannungen, ganz unabhängig vom Sport. Die Grifftechnik überschneidet sich teils, der Zweck ist ein anderer.' },
+  { q: 'Wie oft ist Deep Tissue sinnvoll?', a: 'Bei hartnäckigen Verspannungen bringt eine Serie über einige Wochen meist mehr als eine einzelne Sitzung. Danach reicht oft ein Termin nach Bedarf, um den Zustand zu halten. Den Rhythmus stimmen wir auf deinen Verlauf ab.' },
+  { q: 'Übernimmt die Krankenkasse die Deep-Tissue-Massage?', a: 'Als medizinische Massage bei anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen. Wie viel bei dir zurückkommt, hängt von deiner Police ab.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalTherapy', name: 'Deep Tissue Massage',
+    description: 'Deep Tissue Massage bei EMR- und ASCA-anerkannten Therapeut:innen in Winterthur und St. Gallen gegen tief sitzende, chronische Verspannungen, über die Zusatzversicherung abrechenbar.',
+    url, relevantSpecialty: 'PhysicalTherapy',
+    areaServed: [{ '@type': 'City', name: 'Winterthur' }, { '@type': 'City', name: 'St. Gallen' }] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 4, name: 'Deep Tissue Massage', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/massage/deep-tissue-massage" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
+  <Fragment set:html={restPart} />
+  <MassageAnfrageForm anfrageTyp="massage" quelle="deep-tissue-massage" />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

@@ -1,6 +1,7 @@
 ---
 import SpaPage from '../../../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../../../components/InsuranceBanner.astro';
+import MassageAnfrageForm from '../../../../components/MassageAnfrageForm.astro';
 import bodyRaw from '../../../../data/massage-klassische-body.html?raw';
 import css from '../../../../data/massage-city.css?raw';
 
@@ -39,5 +40,6 @@ const schema = [
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
   <Fragment set:html={restPart} />
+  <MassageAnfrageForm anfrageTyp="massage" quelle="klassische-massage" />
   <InsuranceBanner variant="sticky" />
 </SpaPage>
