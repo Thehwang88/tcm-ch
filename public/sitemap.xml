@@ -691,6 +691,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/therapien/massage/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/therapien/moxibustion/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>

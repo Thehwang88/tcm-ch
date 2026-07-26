@@ -1,0 +1,178 @@
+---
+// InsuranceBanner — vertrauensbildender Hinweis auf EMR/ASCA + Zusatzversicherung.
+// Nur auf abrechenbaren (medizinischen) Massage-/Therapieseiten einsetzen, NIE auf
+// reinen Wellness-Seiten (dort wäre der Versicherungs-Claim falsch).
+//
+// variant 'inline'  → grüne Info-Band direkt unter dem Hero
+// variant 'sticky'  → mobile Bottom-Bar, erscheint nach 50% Scroll, dismissbar, 1x/Session
+// location          → optionaler Ortszusatz für den CTA-Kontext (nicht sichtbar gerendert)
+interface Props {
+  variant?: 'inline' | 'sticky';
+  location?: string;
+}
+const { variant = 'inline', location = '' } = Astro.props;
+const loc = location ? ` data-location={location}` : '';
+---
+{variant === 'inline' && (
+  <section class="ib-wrap" aria-label="Krankenkassen-Hinweis" data-ib-inline>
+    <div class="wrap">
+      <div class="ib-band">
+        <span class="ib-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path class="ib-shield-body" d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z" />
+            <path class="ib-shield-check" d="M8.5 12.2l2.4 2.4 4.6-4.8" />
+          </svg>
+        </span>
+        <p class="ib-text">
+          <strong>EMR/ASCA anerkannt.</strong> Je nach Zusatzversicherung bis zu 90% rückerstattet.
+          Keine ärztliche Verordnung nötig.
+        </p>
+        <div class="ib-actions">
+          <button type="button" class="ib-cta" onclick="openContactForm()">Termin vereinbaren</button>
+          <button type="button" class="ib-help" onclick="openContactForm()">Deckung unsicher? Wir prüfen das für dich.</button>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'sticky' && (
+  <div class="ib-sticky" role="region" aria-label="Krankenkassen-Hinweis" hidden data-ib-sticky>
+    <span class="ib-sticky-shield" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3z" />
+        <path d="M8.5 12.2l2.4 2.4 4.6-4.8" />
+      </svg>
+    </span>
+    <div class="ib-sticky-text"><strong>Bis zu 90% rückerstattet</strong><span>EMR/ASCA, ohne Verordnung</span></div>
+    <button type="button" class="ib-sticky-cta" onclick="openContactForm()">Termin</button>
+    <button type="button" class="ib-sticky-x" aria-label="Hinweis schliessen" data-ib-dismiss>&times;</button>
+  </div>
+)}
+
+<style>
+  /* ── Inline-Band ───────────────────────────────────────── */
+  .ib-wrap { padding: 18px 0 4px; }
+  .ib-band {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    background: var(--green-mint); border: 1px solid var(--green-mid);
+    border-radius: var(--r-card, 16px); padding: 18px 22px;
+    opacity: 0; transform: translateY(14px);
+  }
+  [data-ib-inline].is-in .ib-band {
+    opacity: 1; transform: none;
+    transition: opacity var(--t-slow, 300ms) var(--ease-out), transform var(--t-slow, 300ms) var(--ease-out);
+  }
+  .ib-shield { flex-shrink: 0; color: var(--green-dark); display: inline-flex; }
+  .ib-shield svg { width: 30px; height: 30px; }
+  .ib-shield-check {
+    stroke-dasharray: 14; stroke-dashoffset: 14;
+  }
+  [data-ib-inline].is-in .ib-shield-check {
+    animation: ib-draw var(--t-xl, 500ms) var(--ease-out) 220ms forwards;
+  }
+  @keyframes ib-draw { to { stroke-dashoffset: 0; } }
+  .ib-text {
+    flex: 1 1 300px; margin: 0; font-size: 15px; line-height: 1.5;
+    color: var(--black); font-family: var(--font-sans);
+  }
+  .ib-text strong { color: var(--green-dark); }
+  .ib-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; flex-shrink: 0; }
+  .ib-cta {
+    display: inline-flex; align-items: center; background: var(--green); color: #fff;
+    font-family: var(--font-sans); font-weight: 700; font-size: 14.5px; border: none;
+    padding: 11px 18px; border-radius: 12px; cursor: pointer;
+    transition: background var(--t-base, 200ms) var(--ease-out);
+  }
+  .ib-cta:hover { background: var(--green-dark); }
+  .ib-help {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font-family: var(--font-sans); font-size: 12.5px; color: var(--mid);
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .ib-help:hover { color: var(--green-dark); }
+  @media (max-width: 640px) {
+    .ib-band { gap: 12px; }
+    .ib-actions { width: 100%; }
+    .ib-cta { width: 100%; justify-content: center; }
+  }
+
+  /* ── Sticky Mobile-Bar ─────────────────────────────────── */
+  .ib-sticky {
+    position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 900;
+    display: none; align-items: center; gap: 12px;
+    background: var(--green-mint); border: 1px solid var(--green-mid);
+    border-radius: 14px; padding: 10px 12px; box-shadow: var(--sh-md, 0 6px 24px rgba(0,0,0,.12));
+    opacity: 0; transform: translateY(16px);
+  }
+  .ib-sticky.is-shown {
+    opacity: 1; transform: none;
+    transition: opacity var(--t-slow, 300ms) var(--ease-out), transform var(--t-slow, 300ms) var(--ease-out);
+  }
+  .ib-sticky-shield { flex-shrink: 0; color: var(--green-dark); display: inline-flex; }
+  .ib-sticky-shield svg { width: 26px; height: 26px; }
+  .ib-sticky-text { display: flex; flex-direction: column; line-height: 1.25; flex: 1 1 auto; min-width: 0; }
+  .ib-sticky-text strong { font-family: var(--font-sans); font-size: 14px; color: var(--black); }
+  .ib-sticky-text span { font-size: 11.5px; color: var(--mid); }
+  .ib-sticky-cta {
+    flex-shrink: 0; background: var(--green); color: #fff; border: none;
+    font-family: var(--font-sans); font-weight: 700; font-size: 13.5px;
+    padding: 9px 14px; border-radius: 10px; cursor: pointer;
+  }
+  .ib-sticky-x {
+    flex-shrink: 0; background: none; border: none; font-size: 22px; line-height: 1;
+    color: var(--mid); cursor: pointer; padding: 0 4px;
+  }
+  @media (max-width: 768px) { .ib-sticky:not([hidden]) { display: flex; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ib-band, .ib-sticky { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .ib-shield-check { stroke-dashoffset: 0 !important; animation: none !important; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // Inline: fade/slide + Checkmark-Draw beim Viewport-Eintritt (einmalig).
+    var inline = document.querySelector('[data-ib-inline]');
+    if (inline) {
+      if (!('IntersectionObserver' in window)) {
+        inline.classList.add('is-in');
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { inline.classList.add('is-in'); io.disconnect(); }
+          });
+        }, { threshold: 0.35 });
+        io.observe(inline);
+      }
+    }
+
+    // Sticky: nach 50% Scroll zeigen, dismissbar, max 1x pro Session.
+    var sticky = document.querySelector('[data-ib-sticky]');
+    if (sticky) {
+      var KEY = 'ib-sticky-dismissed';
+      var dismissed = false;
+      try { dismissed = sessionStorage.getItem(KEY) === '1'; } catch (_) {}
+      var shown = false;
+      function maybeShow() {
+        if (shown || dismissed) return;
+        var sc = window.scrollY || document.documentElement.scrollTop;
+        var max = (document.documentElement.scrollHeight - window.innerHeight);
+        if (max > 0 && sc / max >= 0.5) {
+          shown = true;
+          sticky.hidden = false;
+          requestAnimationFrame(function () { sticky.classList.add('is-shown'); });
+          window.removeEventListener('scroll', maybeShow);
+        }
+      }
+      var x = sticky.querySelector('[data-ib-dismiss]');
+      if (x) x.addEventListener('click', function () {
+        sticky.classList.remove('is-shown');
+        setTimeout(function () { sticky.hidden = true; }, 300);
+        try { sessionStorage.setItem(KEY, '1'); } catch (_) {}
+      });
+      if (!dismissed) window.addEventListener('scroll', maybeShow, { passive: true });
+    }
+  })();
+</script>

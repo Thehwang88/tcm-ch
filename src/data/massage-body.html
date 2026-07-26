@@ -1,0 +1,317 @@
+<style>
+  #page-massage{padding-top:68px}
+  .msg-hero{padding:38px 0 26px}
+  .msg-hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:38px;align-items:center}
+  .msg-crumb{font-family:var(--font-sans);font-size:13px;color:var(--muted);margin-bottom:16px}
+  .msg-crumb a{color:var(--muted);text-decoration:none}
+  .msg-crumb a:hover{color:var(--green-dark)}
+  .msg-crumb span{color:var(--mid)}
+  .msg-h1{font-family:var(--font-sans);font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-.02em;color:var(--black);margin:0 0 16px}
+  .msg-h1 em{font-style:italic;font-family:var(--font-serif,Nunito),serif;color:var(--green-dark);font-weight:900}
+  .msg-lead{font-size:clamp(16px,2.4vw,18px);line-height:1.6;color:var(--mid);margin:0 0 22px;max-width:56ch}
+  .msg-hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .msg-hero-trust{display:flex;gap:8px 18px;flex-wrap:wrap;font-family:var(--font-sans);font-size:13.5px;font-weight:600;color:#374151}
+  .msg-hero-trust span{display:inline-flex;align-items:center;gap:6px}
+  .msg-hero-trust svg{color:var(--green)}
+  .msg-hero-media{display:grid;grid-template-columns:1.35fr 1fr;gap:12px}
+  .msg-hero-media img{width:100%;height:100%;object-fit:cover;border-radius:var(--r-card,16px);box-shadow:var(--sh-md);display:block}
+  .msg-hero-media img:first-child{grid-row:span 2;aspect-ratio:4/5}
+  .msg-hero-media img:last-child{aspect-ratio:1/1}
+  @media(max-width:860px){.msg-hero-grid{grid-template-columns:1fr;gap:24px}.msg-hero-media{grid-template-columns:1.2fr 1fr;max-height:360px}}
+  @media(max-width:520px){.msg-hero-media img:first-child{aspect-ratio:3/4}}
+
+  .msg-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .msg-card{border:1px solid var(--border);border-radius:var(--r-card,16px);padding:26px 26px;background:#fff}
+  .msg-card.is-med{background:var(--green-mint);border-color:var(--green-mid)}
+  .msg-card h3{font-family:var(--font-sans);font-weight:800;font-size:20px;color:var(--black);margin:0 0 8px}
+  .msg-card .msg-tag{font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--green-dark);margin-bottom:10px;display:block}
+  .msg-card.is-well .msg-tag{color:var(--muted)}
+  .msg-card p{font-size:15px;line-height:1.6;color:var(--mid);margin:0}
+  @media(max-width:720px){.msg-two{grid-template-columns:1fr}}
+
+  .msg-group{margin-top:28px}
+  .msg-group-h{font-family:var(--font-sans);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--green-dark);margin:0 0 14px}
+  .msg-group.is-well .msg-group-h{color:var(--muted)}
+  .msg-arts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .msg-art{display:block;border:1px solid var(--border);border-radius:14px;padding:16px 18px;background:#fff;text-decoration:none}
+  a.msg-art{transition:border-color var(--t-base) var(--ease-out),transform var(--t-base) var(--ease-out)}
+  a.msg-art:hover{border-color:var(--green-mid);transform:translateY(-2px)}
+  .msg-art-t{font-family:var(--font-sans);font-weight:700;font-size:15.5px;color:var(--black);display:flex;align-items:center;justify-content:space-between;gap:8px}
+  a.msg-art .msg-art-t svg{color:var(--green);flex-shrink:0}
+  .msg-art-d{font-size:13px;line-height:1.5;color:var(--mid);margin-top:5px}
+
+  .msg-kk{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .msg-kk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
+  .msg-steps{list-style:none;padding:0;margin:14px 0 0;counter-reset:s}
+  .msg-steps li{position:relative;padding:0 0 16px 40px;counter-increment:s}
+  .msg-steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:27px;height:27px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .msg-steps strong{font-family:var(--font-sans);color:var(--black)}
+  .msg-steps span{display:block;font-size:14.5px;line-height:1.55;color:var(--mid);margin-top:2px}
+  .msg-kk-aside{background:var(--green-mint);border:1px solid var(--green-mid);border-radius:var(--r-card,16px);padding:24px}
+  .msg-kk-aside h3{font-family:var(--font-sans);font-weight:800;font-size:17px;margin:0 0 10px;color:var(--black)}
+  .msg-kk-aside ul{margin:0;padding-left:18px;font-size:14.5px;line-height:1.7;color:var(--mid)}
+  @media(max-width:820px){.msg-kk-grid{grid-template-columns:1fr;gap:22px}}
+
+  .msg-std{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .msg-std-card{border:1px solid var(--border);border-radius:var(--r-card,16px);padding:22px;background:#fff}
+  .msg-std-city{font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin:0 0 4px}
+  .msg-std-addr{font-size:14px;line-height:1.6;color:var(--mid);font-style:normal;margin:0 0 12px}
+  .msg-std-addr a{color:var(--green-dark);text-decoration:none}
+  .msg-std-meta{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px}
+  .msg-std-link{font-family:var(--font-sans);font-weight:700;font-size:14px;color:var(--green-dark);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  @media(max-width:820px){.msg-std{grid-template-columns:1fr}}
+
+  .msg-mech{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .msg-mech-card{padding:4px 2px}
+  .msg-mech-card h3{font-family:var(--font-sans);font-weight:800;font-size:17px;color:var(--black);margin:0 0 8px}
+  .msg-mech-card p{font-size:14.5px;line-height:1.6;color:var(--mid);margin:0}
+  .msg-refs{margin-top:22px;font-size:12.5px;line-height:1.6;color:var(--muted)}
+  .msg-refs a{color:var(--green-dark);word-break:break-word}
+  @media(max-width:820px){.msg-mech{grid-template-columns:1fr}}
+
+  .msg-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .msg-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);border-radius:var(--r-pill,100px);padding:9px 16px;font-family:var(--font-sans);font-weight:600;font-size:14.5px;color:var(--black);text-decoration:none;background:#fff;transition:border-color var(--t-base) var(--ease-out)}
+  .msg-pill:hover{border-color:var(--green-mid)}
+  .msg-pill svg{color:var(--green)}
+
+  .msg-faq{max-width:820px}
+  .msg-faq details{border-bottom:1px solid var(--border);padding:4px 0}
+  .msg-faq summary{list-style:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;font-size:16.5px;color:var(--black);padding:16px 40px 16px 0;position:relative}
+  .msg-faq summary::-webkit-details-marker{display:none}
+  .msg-faq summary::after{content:"+";position:absolute;right:6px;top:14px;font-size:22px;font-weight:400;color:var(--green);transition:transform var(--t-base) var(--ease-out)}
+  .msg-faq details[open] summary::after{content:"\2013"}
+  .msg-faq .msg-faq-a{font-size:15px;line-height:1.65;color:var(--mid);padding:0 40px 18px 0;margin:0}
+</style>
+
+<div id="page-massage">
+
+<!-- 1. HERO -->
+<section class="section msg-hero">
+  <div class="wrap">
+    <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/therapien/">Therapien</a> <span>&rsaquo;</span> <span>Massage</span></div>
+    <div class="msg-hero-grid">
+      <div>
+        <h1 class="msg-h1">Massage in Winterthur &amp; St. Gallen. <em>Medizinisch und entspannend.</em></h1>
+        <p class="msg-lead">Von der medizinischen Massage bei Verspannungen bis zur ruhigen Ganzkörpermassage: Bei uns arbeiten ausgebildete Therapeut:innen, EMR- und ASCA-anerkannt. Medizinische Behandlungen rechnest du je nach Zusatzversicherung direkt über die Krankenkasse ab, ganz ohne ärztliche Verordnung.</p>
+        <div class="msg-hero-ctas">
+          <button class="btn-primary" onclick="openContactForm()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Termin anfragen</button>
+          <a href="#krankenkasse" class="btn-secondary">Kassendeckung prüfen</a>
+        </div>
+        <div class="msg-hero-trust">
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>EMR &amp; ASCA anerkannt</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Zwei Standorte in Winterthur, einer in St. Gallen</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Termine oft innert 24 bis 48 Stunden</span>
+        </div>
+      </div>
+      <div class="msg-hero-media">
+        <img src="/images/massage-hero-ruecken.webp" width="1120" height="747" alt="Medizinische Rückenmassage in einer TCM.ch Praxis in Winterthur" fetchpriority="high" decoding="async">
+        <img src="/images/massage-hero-mobilisation.webp" width="1120" height="747" alt="Therapeut mobilisiert das Bein einer Patientin auf der Massageliege" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--BANNER-->
+
+<!-- 2. ZWEI WEGE -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Zwei Wege</div>
+    <h2 class="section-title">Medizinisch oder <em>zur Entspannung.</em></h2>
+    <p class="section-sub" style="margin-bottom:26px">Der Unterschied liegt im Ziel. Beide Wege finden bei uns statt, du entscheidest, worum es dir geht.</p>
+    <div class="msg-two">
+      <div class="msg-card is-med">
+        <span class="msg-tag">Medizinische Massage</span>
+        <h3>Gegen konkrete Beschwerden</h3>
+        <p>Wenn dich Verspannungen, Rücken- oder Nackenschmerzen im Alltag bremsen, arbeitet die medizinische Massage gezielt an Muskeln, Faszien und Triggerpunkten. Sie kann Schmerzen lindern und die Beweglichkeit verbessern. Durchgeführt von EMR- und ASCA-anerkannten Therapeut:innen, damit sich deine Zusatzversicherung beteiligt.</p>
+      </div>
+      <div class="msg-card is-well">
+        <span class="msg-tag">Wellness-Massage</span>
+        <h3>Zeit für dich, ganz ohne Anlass</h3>
+        <p>Manchmal braucht es keinen medizinischen Grund, sondern einfach eine Stunde Ruhe. Die Wellness-Massage senkt die Anspannung, löst müde Muskeln und hilft dir beim Abschalten. Sie ist eine Selbstzahlerleistung und wird nicht über die Krankenkasse abgerechnet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. MASSAGEARTEN -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Unser Angebot</div>
+    <h2 class="section-title">Welche Massage passt zu dir?</h2>
+    <p class="section-sub" style="margin-bottom:8px">Ein Überblick über die Techniken, die wir anbieten. Wenn du unsicher bist, hilft dir unser Team bei der Auswahl.</p>
+
+    <div class="msg-group">
+      <p class="msg-group-h">Medizinische Massagen (abrechenbar)</p>
+      <div class="msg-arts">
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Medizinische Massage</div><div class="msg-art-d">Gezielte Arbeit an schmerzenden, verspannten Regionen nach einem kurzen Befund.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Klassische Massage</div><div class="msg-art-d">Die bekannte Grundtechnik mit Streichungen und Knetungen für die grossen Muskelgruppen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Sportmassage</div><div class="msg-art-d">Vor oder nach Belastung, um Muskeln zu lockern und die Regeneration zu unterstützen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Lymphdrainage</div><div class="msg-art-d">Sanfte, rhythmische Griffe, die den Abtransport von Gewebeflüssigkeit anregen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Fussreflexzonenmassage</div><div class="msg-art-d">Druck auf definierte Zonen am Fuss, oft als angenehm entspannend empfunden.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Triggerpunktmassage</div><div class="msg-art-d">Gezielter Druck auf verhärtete Punkte, die Schmerzen in andere Regionen ausstrahlen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Deep Tissue</div><div class="msg-art-d">Kräftigere Arbeit in den tieferen Muskelschichten bei hartnäckigen Verspannungen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Bindegewebsmassage</div><div class="msg-art-d">Zugreize an der Unterhaut, die über das Bindegewebe wirken sollen.</div></a>
+        <a class="msg-art" href="#termin"><div class="msg-art-t">Schwangerschaftsmassage</div><div class="msg-art-d">Angepasste, schonende Massage in bequemer Lagerung, abgestimmt aufs jeweilige Trimester.</div></a>
+        <a class="msg-art" href="/therapien/schroepfen/"><div class="msg-art-t">Schröpfmassage<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div><div class="msg-art-d">Massage mit gleitenden Schröpfgläsern entlang der Muskulatur. Mehr dazu auf der Schröpfen-Seite.</div></a>
+      </div>
+    </div>
+
+    <div class="msg-group">
+      <p class="msg-group-h">Aus der TCM</p>
+      <div class="msg-arts">
+        <a class="msg-art" href="/therapien/tuina/"><div class="msg-art-t">Tuina<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div><div class="msg-art-d">Die manuelle Therapie der chinesischen Medizin mit Druck-, Schiebe- und Dehntechniken.</div></a>
+        <a class="msg-art" href="/therapien/akupressur/"><div class="msg-art-t">Akupressur<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div><div class="msg-art-d">Punktgenauer Druck mit den Fingern, verwandt mit der Akupunktur, aber ohne Nadeln.</div></a>
+        <a class="msg-art" href="/therapien/gua-sha/"><div class="msg-art-t">Gua Sha<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div><div class="msg-art-d">Sanftes Schaben der Haut mit einer Kante, traditionell bei Verspannungen eingesetzt.</div></a>
+      </div>
+    </div>
+
+    <div class="msg-group is-well">
+      <p class="msg-group-h">Wellness (Selbstzahler)</p>
+      <div class="msg-arts">
+        <div class="msg-art"><div class="msg-art-t">Entspannungs- und Ganzkörpermassage</div><div class="msg-art-d">Ruhiges Tempo, gleichmässige Griffe, gedacht zum Abschalten.</div></div>
+        <div class="msg-art"><div class="msg-art-t">Hot Stone</div><div class="msg-art-d">Warme Steine, deren Wärme die Muskulatur angenehm lockert.</div></div>
+        <div class="msg-art"><div class="msg-art-t">Lomi Lomi</div><div class="msg-art-d">Fliessende, grossflächige Massage aus Hawaii mit ruhigem Rhythmus.</div></div>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:12px">Detailseiten zu den Wellness-Massagen folgen. Für eine Buchung meldest du dich einfach direkt bei uns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. KRANKENKASSE -->
+<section class="section msg-kk" id="krankenkasse">
+  <div class="wrap">
+    <div class="section-label">Kostenübernahme</div>
+    <h2 class="section-title">Massage über die Krankenkasse <em>abrechnen.</em></h2>
+    <div class="msg-kk-grid">
+      <div>
+        <p class="section-sub" style="margin:0 0 6px">Medizinische Massagen bei ausgebildeten, EMR- oder ASCA-anerkannten Therapeut:innen sind in der Regel über die Zusatzversicherung abrechenbar. Wie hoch die Rückerstattung ausfällt, hängt von deiner Police ab, meist liegt sie zwischen 50 und 90 Prozent pro Sitzung, oft bis zu einem jährlichen Maximum.</p>
+        <ol class="msg-steps">
+          <li><strong>Du brauchst keine ärztliche Verordnung.</strong><span>Für die Abrechnung über die Zusatzversicherung genügt die Behandlung bei einer anerkannten Fachperson. Die Grundversicherung übernimmt Massagen dagegen nicht.</span></li>
+          <li><strong>Wir behandeln unter anerkannter ZSR-Nummer.</strong><span>Unsere Therapeut:innen sind EMR- und ASCA-registriert. Das ist die Voraussetzung, damit sich deine Zusatzversicherung beteiligt.</span></li>
+          <li><strong>Du reichst die Rechnung bei deiner Kasse ein.</strong><span>Du bezahlst die Sitzung und schickst die Quittung an deine Zusatzversicherung, die dir den vereinbarten Anteil zurückerstattet.</span></li>
+          <li><strong>Unsicher bei der Deckung? Wir prüfen das mit dir.</strong><span>Sag uns, wie du versichert bist, und wir schauen gemeinsam, was deine Police hergibt, bevor du dich festlegst.</span></li>
+        </ol>
+      </div>
+      <aside class="msg-kk-aside">
+        <h3>Kurz zusammengefasst</h3>
+        <ul>
+          <li>Zusatzversicherung statt Grundversicherung</li>
+          <li>Keine ärztliche Verordnung nötig</li>
+          <li>EMR- und ASCA-anerkannt</li>
+          <li>Meist 50 bis 90% Rückerstattung</li>
+          <li>Wellness-Massagen sind Selbstzahlerleistungen</li>
+        </ul>
+        <button class="btn-primary" style="margin-top:16px;width:100%;justify-content:center" onclick="openContactForm()">Deckung prüfen lassen</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 5. STANDORTE -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Wo du uns findest</div>
+    <h2 class="section-title">Deine Massage in <em>Winterthur &amp; St. Gallen.</em></h2>
+    <p class="section-sub" style="margin-bottom:24px">Zentral gelegen und gut erreichbar. Öffnungszeiten Mo bis Fr 7:30 bis 19:30 Uhr, Sa 7:30 bis 16:30 Uhr.</p>
+    <div class="msg-std">
+      <div class="msg-std-card">
+        <p class="msg-std-city">Winterthur Münzgasse</p>
+        <address class="msg-std-addr">Münzgasse 2, 8400 Winterthur<br><a href="tel:+41775236122">+41 77 523 61 22</a></address>
+        <p class="msg-std-meta">In der Altstadt, wenige Gehminuten vom Hauptbahnhof.</p>
+        <a class="msg-std-link" href="/standorte/winterthur-muenzgasse/">Standort ansehen<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="msg-std-card">
+        <p class="msg-std-city">Winterthur Marktgasse</p>
+        <address class="msg-std-addr">Marktgasse 78, 8400 Winterthur<br><a href="tel:+41775236122">+41 77 523 61 22</a></address>
+        <p class="msg-std-meta">Unsere zweite Adresse mitten in der Winterthurer Altstadt.</p>
+        <a class="msg-std-link" href="/standorte/winterthur-marktgasse/">Standort ansehen<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="msg-std-card">
+        <p class="msg-std-city">St. Gallen</p>
+        <address class="msg-std-addr">Oberer Graben 22, 9000 St. Gallen<br><a href="tel:+41775236122">+41 77 523 61 22</a></address>
+        <p class="msg-std-meta">Zentral in St. Gallen, gut mit ÖV und zu Fuss erreichbar.</p>
+        <a class="msg-std-link" href="/standorte/st-gallen/">Standort ansehen<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. WIRKUNG -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Was dabei passiert</div>
+    <h2 class="section-title">Wie Massage im Körper <em>wirkt.</em></h2>
+    <p class="section-sub" style="margin-bottom:20px">Massage ist mehr als ein gutes Gefühl. Drei Mechanismen sind gut nachvollziehbar.</p>
+    <div class="msg-mech">
+      <div class="msg-mech-card">
+        <h3>Mechanisch</h3>
+        <p>Druck und Zug lockern verklebte Muskel- und Faszienschichten. Verhärtete Stellen geben nach, das Gewebe wird geschmeidiger und die Beweglichkeit kann zunehmen.</p>
+      </div>
+      <div class="msg-mech-card">
+        <h3>Zirkulation</h3>
+        <p>Die Griffe fördern die lokale Durchblutung und den Abtransport von Gewebeflüssigkeit. Das kann müde, überlastete Muskulatur schneller zur Ruhe kommen lassen.</p>
+      </div>
+      <div class="msg-mech-card">
+        <h3>Vegetativ</h3>
+        <p>Ruhige, gleichmässige Berührung senkt die Anspannung im Nervensystem. Viele empfinden das als spürbare Entlastung von Stress und innerer Unruhe.</p>
+      </div>
+    </div>
+    <p class="msg-refs">
+      Zur Studienlage: Übersichtsarbeiten deuten darauf hin, dass Massage kurzfristig Schmerzen bei Rücken- und Nackenbeschwerden lindern kann, die Qualität der Studien ist allerdings unterschiedlich und die Langzeitwirkung nicht abschliessend belegt.
+      Quellen: Furlan AD et al., Massage for low-back pain, Cochrane Database of Systematic Reviews 2015, <a href="https://doi.org/10.1002/14651858.CD001929.pub3" target="_blank" rel="noopener">doi.org/10.1002/14651858.CD001929.pub3</a>.
+      Patel KC et al., Massage for mechanical neck disorders, Cochrane Database of Systematic Reviews 2012, <a href="https://doi.org/10.1002/14651858.CD004871.pub4" target="_blank" rel="noopener">doi.org/10.1002/14651858.CD004871.pub4</a>.
+    </p>
+  </div>
+</section>
+
+<!-- 7. FÜR WEN -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Für wen</div>
+    <h2 class="section-title">Häufige Gründe für eine <em>Massage.</em></h2>
+    <p class="section-sub" style="margin-bottom:6px">Wenn du unter einer dieser Beschwerden leidest, kann eine medizinische Massage Teil deiner Behandlung sein. Lies bei deinem Anliegen weiter:</p>
+    <div class="msg-pills">
+      <a class="msg-pill" href="/beschwerden/rueckenschmerzen/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Rückenschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/nackenschmerzen/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Nackenschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/schulterschmerzen/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Schulterschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/kopfschmerzen/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Kopfschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/stress-burnout/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Stress und Burnout</a>
+      <a class="msg-pill" href="/beschwerden/ischias/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Ischias</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">Gut zu wissen.</h2>
+    <div class="msg-faq" style="margin-top:10px">
+      <details open><summary>Übernimmt die Krankenkasse eine Massage?</summary><p class="msg-faq-a">Medizinische Massagen bei EMR- oder ASCA-anerkannten Therapeut:innen werden in der Regel über die Zusatzversicherung mitgetragen, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen. Wellness-Massagen sind reine Selbstzahlerleistungen.</p></details>
+      <details><summary>Brauche ich eine ärztliche Verordnung?</summary><p class="msg-faq-a">Nein. Für die Abrechnung über die Zusatzversicherung genügt, dass die Behandlung bei einer anerkannten Fachperson stattfindet. Du kannst also direkt einen Termin anfragen, ohne vorher zum Arzt zu gehen.</p></details>
+      <details><summary>Was ist der Unterschied zwischen medizinischer und klassischer Massage?</summary><p class="msg-faq-a">Die klassische Massage ist eine Grundtechnik zur allgemeinen Lockerung. Die medizinische Massage setzt gezielt bei einer konkreten Beschwerde an, nach einem kurzen Befund und mit dem Ziel, Schmerzen zu lindern oder die Beweglichkeit zu verbessern. Über die Zusatzversicherung abrechenbar sind medizinische Massagen bei anerkannten Therapeut:innen.</p></details>
+      <details><summary>Ist eine Massage schmerzhaft?</summary><p class="msg-faq-a">Sie soll es nicht sein. Bei tieferer Arbeit an Verspannungen kann der Druck kurz intensiv sein, bleibt aber im angenehmen Bereich. Sag deiner Therapeutin jederzeit Bescheid, wir passen die Intensität an.</p></details>
+      <details><summary>Ist Massage in der Schwangerschaft möglich?</summary><p class="msg-faq-a">Ja, mit angepasster Technik und Lagerung. Die Schwangerschaftsmassage ist schonend und wird auf das jeweilige Trimester abgestimmt. Sprich uns bei der Anfrage kurz darauf an, dann bereiten wir alles entsprechend vor.</p></details>
+      <details><summary>Wie lange dauert eine Sitzung und was kostet sie?</summary><p class="msg-faq-a">Üblich sind 30, 45 oder 60 Minuten, je nach Anliegen. Der Preis richtet sich nach Dauer und Aufwand. Über die Zusatzversicherung bekommst du bei medizinischen Massagen je nach Police einen grossen Teil zurück. Die genauen Konditionen sagen wir dir vorab.</p></details>
+      <details><summary>Welcher Standort passt für mich?</summary><p class="msg-faq-a">In Winterthur hast du die Wahl zwischen Münzgasse 2 und Marktgasse 78, beide in der Altstadt. In St. Gallen findest du uns am Oberen Graben 22. Nimm einfach den Standort, der für dich am bequemsten liegt, das Team ist an allen Adressen gleich ausgebildet.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ABSCHLUSS-CTA -->
+<section class="section" id="termin">
+  <div class="wrap">
+    <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:var(--r-card,16px);padding:34px 30px;text-align:center;max-width:760px;margin:0 auto">
+      <h2 class="section-title" style="margin-bottom:10px">Bereit für deine <em>Massage?</em></h2>
+      <p class="section-sub" style="margin:0 auto 20px">Schildere uns kurz dein Anliegen. Wir schlagen dir die passende Behandlung und einen Termin vor, meist innert 24 bis 48 Stunden.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-primary" onclick="openContactForm()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>Termin anfragen</button>
+        <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Massage%20anfragen." class="btn-secondary" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>Per WhatsApp</a>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:16px 0 0">Oder ruf uns an unter <a href="tel:+41775236122" style="color:var(--green-dark)">+41 77 523 61 22</a>.</p>
+    </div>
+  </div>
+</section>
+
+</div>
