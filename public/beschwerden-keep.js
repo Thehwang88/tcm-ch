@@ -17,5 +17,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "stress-burnout", "burnout", "schlafstoerungen", "schlafprobleme", "angststoerungen", "erschoepfung",
   "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement",
   "pcos",
-  "reizdarm", "blasenentzuendung", "neurodermitis"
+  "reizdarm", "blasenentzuendung", "neurodermitis",
+  "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz"
 ];

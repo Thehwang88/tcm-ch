@@ -36,7 +36,7 @@ const { slug } = Astro.params;
 const body = Astro.props.body;
 const entry = beschwerden.find((b) => b.slug === slug);
 const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
-const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/\s+/g, ' ').trim() : slug;
+const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim() : slug;
 const name = entry?.name || hName;
 const condName = entry?.conditionName || name;
 const url = `https://tcm.ch/beschwerden/${slug}/`;
