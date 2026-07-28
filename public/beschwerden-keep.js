@@ -16,5 +16,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "kinderwunsch", "menstruationsbeschwerden", "pms", "wechseljahre", "schwangerschaftsbeschwerden",
   "stress-burnout", "burnout", "schlafstoerungen", "schlafprobleme", "angststoerungen", "erschoepfung",
   "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement",
-  "pcos"
+  "pcos",
+  "reizdarm", "blasenentzuendung", "neurodermitis"
 ];
