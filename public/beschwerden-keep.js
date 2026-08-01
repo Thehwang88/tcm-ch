@@ -18,5 +18,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "heuschnupfen", "allergien-heuschnupfen", "verdauungsprobleme", "zyklusbeschwerden", "tinnitus", "gewichtsmanagement",
   "pcos",
   "reizdarm", "blasenentzuendung", "neurodermitis",
-  "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz"
+  "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz",
+  "prostata", "akne", "schuppenflechte", "hoersturz", "asthma"
 ];

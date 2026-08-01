@@ -41,7 +41,15 @@ const name = entry?.name || hName;
 const condName = entry?.conditionName || name;
 const url = `https://tcm.ch/beschwerden/${slug}/`;
 const title = `${name} – TCM-Behandlung | TCM.ch`;
-const description = `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
+// Per-slug meta descriptions from the content briefs; template default otherwise.
+const DESCRIPTIONS: Record<string, string> = {
+  prostata: 'Prostatabeschwerden mit TCM behandeln: Akupunktur und Kräuter bei häufigem Harndrang, schwachem Harnstrahl und chronischer Prostatitis. EMR/ASCA-anerkannt.',
+  akne: 'Akne mit TCM behandeln: Kräutertherapie und Akupunktur bei unreiner Haut, hormoneller Akne und Erwachsenenakne. Von innen ansetzen statt nur Cremes.',
+  schuppenflechte: 'Schuppenflechte (Psoriasis) mit TCM begleiten: Kräutertherapie und Akupunktur bei schuppenden Plaques und Juckreiz. Schübe reduzieren, Haut beruhigen.',
+  hoersturz: 'Hörsturz mit TCM begleiten: Akupunktur nach akuter Phase, bei bleibender Hörminderung, Ohrdruck und begleitendem Tinnitus. EMR/ASCA-anerkannt.',
+  asthma: 'Asthma mit TCM begleiten: Akupunktur und Kräutertherapie ergänzend zur ärztlichen Therapie, für freieres Atmen und weniger Beschwerden im Alltag.',
+};
+const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
 // MedicalWebPage about a MedicalCondition + breadcrumb (+ FAQPage where the data has FAQs).
 const schema: object[] = [

@@ -37,6 +37,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/akne/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden/allergien-heuschnupfen/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -51,6 +57,12 @@
   <url>
     <loc>https://tcm.ch/beschwerden/arthrose/</loc>
     <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/asthma/</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -99,6 +111,12 @@
   <url>
     <loc>https://tcm.ch/beschwerden/heuschnupfen/</loc>
     <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/hoersturz/</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -169,6 +187,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/prostata/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden/reizdarm/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -195,6 +219,12 @@
   <url>
     <loc>https://tcm.ch/beschwerden/schulterschmerzen/</loc>
     <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/schuppenflechte/</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
