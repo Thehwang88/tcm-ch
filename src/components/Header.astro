@@ -98,10 +98,7 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
 <nav id="mainNav">
   <div class="nav-inner">
     <a class="logo" href={logoHref} aria-label={logoAria}>
-      <div class="logo-text-group">
-        <div class="logo-wm">TCM<span class="ch">.ch</span></div>
-        <span class="logo-sub">Kliniken<Fragment set:html={cross} /></span>
-      </div>
+      <img src="/images/logo/tcm-kliniken-logo.svg" alt="TCM Kliniken – TCM.ch" width="56" height="56" style="display:block" />
     </a>
     <ul class="nav-links">
       {navLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
@@ -124,10 +121,7 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
 <aside id="siteDrawer" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="drw-header">
     <div class="drw-logo">
-      <div class="drw-logo-text">
-        <div class="drw-logo-wm">TCM<span style="font-size:14px">.ch</span></div>
-        <div class="drw-logo-sub">Kliniken<Fragment set:html={cross} /></div>
-      </div>
+      <img src="/images/logo/tcm-kliniken-logo.svg" alt="TCM Kliniken – TCM.ch" width="48" height="48" style="display:block" />
     </div>
     <button class="drw-close" aria-label="Close menu">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
