@@ -4,7 +4,7 @@ export const site = {
   url: 'https://tcm.ch',
   email: 'termine@tcm.ch',
   whatsapp: '41775236122',
-  ogImage: 'https://tcm.ch/og-image.jpg',
+  ogImage: 'https://tcm.ch/og-image.jpg?v=2',
   // Cloudflare Turnstile public sitekey (same as the DE SPA forms).
   turnstileSitekey: '0x4AAAAAADf8GZzWnvFzYvmx',
 };
