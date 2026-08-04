@@ -19,5 +19,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "pcos",
   "reizdarm", "blasenentzuendung", "neurodermitis",
   "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz",
-  "prostata", "akne", "schuppenflechte", "hoersturz", "asthma"
+  "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
+  "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen"
 ];
