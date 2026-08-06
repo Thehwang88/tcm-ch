@@ -4609,3 +4609,24 @@ body.on-subpage #page-ueber-uns.active .team-grid { display: grid !important; }
 
 /* onclick-stripped "Hilft bei" rows (410-pruned beschwerden targets) -> inert, not clickable */
 div.sidebar-row:not([onclick]){cursor:default;background:none}
+
+/* ── (11) HEADER: Burger darf nie abgeschnitten werden ────────────── */
+@media (max-width: 480px) {
+  .nav-cta {
+    min-width: 0 !important;
+    padding: 0 12px !important;
+    font-size: 13px !important;
+    flex: 0 1 auto !important;
+    white-space: nowrap;
+  }
+  .nav-menu-btn, #navMenuBtn {
+    flex: 0 0 auto !important;
+    margin-left: 4px;
+  }
+  .logo { flex: 0 1 auto !important; min-width: 0; }
+  .nav-inner { gap: 8px !important; padding-left: 12px; padding-right: 12px; }
+}
+@media (max-width: 380px) {
+  #navCtaLabel { display: none !important; }
+  .nav-cta { padding: 0 10px !important; }
+}
