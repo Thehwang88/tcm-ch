@@ -4612,21 +4612,23 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
 
 /* ── (11) HEADER: Burger darf nie abgeschnitten werden ────────────── */
 @media (max-width: 480px) {
+  .nav-lang { display: none !important; } /* EN bleibt im Burger erreichbar (English / EN) */
   .nav-cta {
     min-width: 0 !important;
-    padding: 0 12px !important;
-    font-size: 13px !important;
-    flex: 0 1 auto !important;
+    min-height: 0 !important;
+    padding: 8px 14px !important;
+    font-size: 14px !important;
+    flex: 0 0 auto !important;
     white-space: nowrap;
   }
   .nav-menu-btn, #navMenuBtn {
     flex: 0 0 auto !important;
-    margin-left: 4px;
+    margin-left: 8px !important;
   }
   .logo { flex: 0 1 auto !important; min-width: 0; }
   .nav-inner { gap: 8px !important; padding-left: 12px; padding-right: 12px; }
 }
-@media (max-width: 380px) {
-  #navCtaLabel { display: none !important; }
-  .nav-cta { padding: 0 10px !important; }
+@media (max-width: 360px) {
+  .nav-cta { padding: 8px 10px !important; font-size: 13px !important; }
+  .logo img { width: 88px; height: auto; }
 }
