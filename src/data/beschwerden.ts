@@ -35,6 +35,10 @@ export const beschwerden: Beschwerde[] = [
     ],
     "related": [
       {
+        "slug": "hexenschuss",
+        "label": "Hexenschuss"
+      },
+      {
         "slug": "nackenschmerzen",
         "label": "Nackenschmerzen"
       },
@@ -72,6 +76,10 @@ export const beschwerden: Beschwerde[] = [
     "bodyHtml": "<h2>Nackenschmerzen und Verspannungen</h2><p>Nackenschmerzen gehören zu den häufigsten Beschwerden im Arbeitsalltag. Langes Sitzen am Bildschirm, Stress und schlechte Körperhaltung führen zu chronischen Verspannungen, die sich bis in den Kopf und die Schultern ausbreiten können.</p><h2>TCM-Ansatz bei Nackenbeschwerden</h2><p>In der TCM werden Nackenschmerzen oft mit Blockierungen im Gallenblasen- und Dreifachen-Erwärmer-Meridian verbunden. Die Behandlung kombiniert Akupunktur, Schröpfen und Tuina-Massage gezielt in diesem Bereich.</p><ul><li>Akupunktur entspannt die Trapezius- und Nackenmuskulatur</li><li>Schröpfen löst tief sitzende Muskelverhärtungen</li><li>Tuina mobilisiert die Halswirbelsäule sanft und effektiv</li></ul><h2>Ergebnisse</h2><p>Patienten berichten oft schon nach der ersten Sitzung von deutlicher Erleichterung. Begleitende Kopfschmerzen verschwinden meist nach 3–4 Behandlungen.</p>",
     "faqs": [],
     "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
       {
         "slug": "rueckenschmerzen",
         "label": "Rückenschmerzen"
@@ -292,6 +300,10 @@ export const beschwerden: Beschwerde[] = [
     "bodyHtml": "<h2>Ischias – wenn der Schmerz ins Bein zieht</h2><p>Hinsetzen tut weh. Aufstehen auch. Beim Niesen fährt der Schmerz wie ein Blitz ins Bein. Der <strong>Ischiasschmerz</strong> ist unverkennbar – er folgt einer Linie, die präzise durch Gesäss, Oberschenkel und Unterschenkel zieht, manchmal bis in den Fuss.</p><p>TCM kann den Nerv nicht «heilen» und keinen Bandscheibenvorfall beheben. Was gut belegt begleitend möglich ist: Schmerzintensität reduzieren, Schutzspannungen in Gesäss- und Rückenmuskulatur entlasten und den Nachtschlaf verbessern – alles messbare Beiträge zur Erholung.</p><h2>Typische Beschwerden</h2><div class=\"cp-sx-grid\"><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Tiefer Rückenschmerz – lumbosakral oder Steissbein</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerz zieht durch Gesäss und Oberschenkel</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Kribbeln oder Taubheit im Bein oder Fuss</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerzverstärkung beim Sitzen – langer Stuhl unerträglich</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerz beim Husten, Niesen, Pressen</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Besserung beim Gehen – schlechter beim Stehen und Sitzen</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schlafprobleme durch Lagerungsschmerz</div><div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schonhaltung und Gangveränderung</div></div><h2>Häufige Ursachen</h2><ul><li><strong>Bandscheibenvorfall L4/L5 oder L5/S1:</strong> Häufigste Ursache beim Erwachsenen.</li><li><strong>Piriformis-Syndrom:</strong> M. piriformis komprimiert N. ischiadicus im Gesäss – oft ohne Bandscheibenbefund.</li><li><strong>Spinalstenose:</strong> Einengung des Spinalkanals – typisch bei Älteren, schleichend.</li><li><strong>ISG-Blockierung:</strong> Iliosakralgelenk als häufig übersehene Ischias-Quelle.</li></ul><h2>Orthopädische / neurologische Behandlung</h2><ul><li><strong>Konservativ:</strong> Bewegung, Physiotherapie, NSAID, Muskelrelaxantien.</li><li><strong>Epidurale Infiltration:</strong> Bei starker Radikulopathie.</li><li><strong>OP:</strong> Nur bei Cauda-equina oder therapieresistentem Verlauf über 6 Wochen.</li></ul><h2>TCM begleitend</h2><h3>TCM-Einordnung</h3><p>Ischiasschmerz hat zwei Komponenten: Nervenreizschmerz (radikulär) und sekundäre Muskelschutzspannung (Paravertebralmuskulatur, M. piriformis, Hamstrings). TCM setzt an der zweiten Komponente an: Akupunktur entlang des Nervenverlaufs, Piriformis-Triggerpunktnadelung, Gate-Control und opioidmedierte Schmerzhemmung.</p><h3>TCM-Diagnostik</h3><ul><li>Ausstrahlungsmuster: genau welche Linie?</li><li>Taubheit oder Schwäche im Bein?</li><li>Orthopädischer Befund (MRT vorhanden?)</li><li>Schmerzverhalten: beim Sitzen, Gehen, Liegen?</li><li>Stressniveau als Verstärker</li></ul><h3>Wie wir dich begleiten</h3><ul><li><strong>Akupunktur</strong> – entlang Ausstrahlungsmuster (GB 30, BL 36, BL 37, BL 40, BL 57); Piriformis-Triggerpunktnadelung; endogene Schmerzhemmung</li><li><strong>Tuina</strong> – Paravertebralmuskulatur L4–S1, Piriformis, Hamstrings</li><li><strong>Schröpfen</strong> – Rücken- und Gesässfaszie; Durchblutungsförderung</li></ul><h3>Wann TCM sinnvoll sein kann</h3><ul><li>Bei subakutem Ischias (ab Woche 2) als Ergänzung zur Physiotherapie</li><li>Bei Piriformis-Syndrom ohne Bandscheibenbefund</li><li>Bei Lagerungsschmerz und Schlafstörungen</li><li>Nie als Ersatz für neurologische Abklärung bei Lähmungszeichen</li></ul>",
     "faqs": [],
     "related": [
+      {
+        "slug": "hexenschuss",
+        "label": "Hexenschuss"
+      },
       {
         "slug": "bandscheibenvorfall",
         "label": "Bandscheibenvorfall"

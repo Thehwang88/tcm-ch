@@ -175,6 +175,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/polyneuropathie/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/hexenschuss/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/nesselsucht/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/gicht/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden/kinderwunsch/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>

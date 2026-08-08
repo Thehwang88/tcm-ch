@@ -21,5 +21,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz",
   "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
-  "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn"
+  "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
+  "polyneuropathie", "hexenschuss", "nesselsucht", "gicht"
 ];
