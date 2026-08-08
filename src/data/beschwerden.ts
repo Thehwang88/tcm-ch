@@ -293,6 +293,10 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [],
     "related": [
       {
+        "slug": "bandscheibenvorfall",
+        "label": "Bandscheibenvorfall"
+      },
+      {
         "slug": "rueckenschmerzen",
         "label": "Rückenschmerzen"
       },

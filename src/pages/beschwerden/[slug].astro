@@ -40,7 +40,11 @@ const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').r
 const name = entry?.name || hName;
 const condName = entry?.conditionName || name;
 const url = `https://tcm.ch/beschwerden/${slug}/`;
-const title = `${name} – TCM-Behandlung | TCM.ch`;
+// Per-slug title overrides from the content briefs; template default otherwise.
+const TITLES: Record<string, string> = {
+  guertelrose: 'Gürtelrose & Nervenschmerzen – TCM | TCM.ch',
+};
+const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
 const DESCRIPTIONS: Record<string, string> = {
   prostata: 'Prostatabeschwerden mit TCM behandeln: Akupunktur und Kräuter bei häufigem Harndrang, schwachem Harnstrahl und chronischer Prostatitis. EMR/ASCA-anerkannt.',
@@ -53,6 +57,11 @@ const DESCRIPTIONS: Record<string, string> = {
   immunschwaeche: 'Infektanfälligkeit mit TCM angehen: Akupunktur, Kräuter und Moxibustion bei ständigen Erkältungen und langer Erholung. Vorbeugen statt nur reagieren.',
   verstopfung: 'Verstopfung mit TCM behandeln: Akupunktur und Kräutertherapie bei chronischer Obstipation und träger Verdauung, statt Dauerabführmittel.',
   kieferschmerzen: 'Kieferschmerzen mit TCM behandeln: Akupunktur und Tuina bei CMD und Zähneknirschen. Kaumuskulatur entspannen, Schmerzen senken.',
+  guertelrose: 'Gürtelrose und Post-Zoster-Neuralgie mit TCM begleiten: Akupunktur bei anhaltenden Nervenschmerzen nach Herpes Zoster. EMR/ASCA-anerkannt, 13 Standorte.',
+  bandscheibenvorfall: 'Bandscheibenvorfall konservativ begleiten: Akupunktur, Schröpfen und Tuina bei Rückenschmerzen mit Ausstrahlung. EMR/ASCA-anerkannt, 13 Standorte.',
+  pcos: 'PCOS mit TCM begleiten: Akupunktur und Kräutertherapie bei unregelmässigem Zyklus, Kinderwunsch und hormonellen Beschwerden. EMR/ASCA-anerkannt.',
+  karpaltunnelsyndrom: 'Karpaltunnelsyndrom mit TCM behandeln: Akupunktur bei eingeschlafenen Händen, Kribbeln und nächtlichen Schmerzen. Konservativ, EMR/ASCA-anerkannt.',
+  fersensporn: 'Fersensporn und Plantarfasziitis mit TCM behandeln: Akupunktur bei stechenden Fersenschmerzen und Anlaufschmerz am Morgen. EMR/ASCA-anerkannt.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
