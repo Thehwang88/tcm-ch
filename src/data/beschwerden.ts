@@ -35,6 +35,10 @@ export const beschwerden: Beschwerde[] = [
     ],
     "related": [
       {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
+      {
         "slug": "hexenschuss",
         "label": "Hexenschuss"
       },
@@ -76,6 +80,10 @@ export const beschwerden: Beschwerde[] = [
     "bodyHtml": "<h2>Nackenschmerzen und Verspannungen</h2><p>Nackenschmerzen gehören zu den häufigsten Beschwerden im Arbeitsalltag. Langes Sitzen am Bildschirm, Stress und schlechte Körperhaltung führen zu chronischen Verspannungen, die sich bis in den Kopf und die Schultern ausbreiten können.</p><h2>TCM-Ansatz bei Nackenbeschwerden</h2><p>In der TCM werden Nackenschmerzen oft mit Blockierungen im Gallenblasen- und Dreifachen-Erwärmer-Meridian verbunden. Die Behandlung kombiniert Akupunktur, Schröpfen und Tuina-Massage gezielt in diesem Bereich.</p><ul><li>Akupunktur entspannt die Trapezius- und Nackenmuskulatur</li><li>Schröpfen löst tief sitzende Muskelverhärtungen</li><li>Tuina mobilisiert die Halswirbelsäule sanft und effektiv</li></ul><h2>Ergebnisse</h2><p>Patienten berichten oft schon nach der ersten Sitzung von deutlicher Erleichterung. Begleitende Kopfschmerzen verschwinden meist nach 3–4 Behandlungen.</p>",
     "faqs": [],
     "related": [
+      {
+        "slug": "kieferschmerzen",
+        "label": "Kieferschmerzen"
+      },
       {
         "slug": "schwindel",
         "label": "Schwindel"
@@ -140,6 +148,10 @@ export const beschwerden: Beschwerde[] = [
     ],
     "related": [
       {
+        "slug": "trigeminusneuralgie",
+        "label": "Trigeminusneuralgie"
+      },
+      {
         "slug": "nackenschmerzen",
         "label": "Nackenschmerzen"
       },
@@ -190,6 +202,10 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "related": [
+      {
+        "slug": "kieferschmerzen",
+        "label": "Kieferschmerzen"
+      },
       {
         "slug": "migraene",
         "label": "Migräne"
@@ -301,6 +317,10 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [],
     "related": [
       {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
+      {
         "slug": "hexenschuss",
         "label": "Hexenschuss"
       },
@@ -367,6 +387,10 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "related": [
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
       {
         "slug": "rueckenschmerzen",
         "label": "Rückenschmerzen"
@@ -647,6 +671,10 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [],
     "related": [
       {
+        "slug": "hyperhidrose",
+        "label": "Starkes Schwitzen"
+      },
+      {
         "slug": "schlafstoerungen",
         "label": "Schlafstörungen"
       },
@@ -884,6 +912,10 @@ export const beschwerden: Beschwerde[] = [
     ],
     "related": [
       {
+        "slug": "hyperhidrose",
+        "label": "Starkes Schwitzen"
+      },
+      {
         "slug": "stress-burnout",
         "label": "Stress & Burnout"
       },
@@ -1049,6 +1081,10 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [],
     "related": [
       {
+        "slug": "morbus-crohn",
+        "label": "Morbus Crohn"
+      },
+      {
         "slug": "stress-burnout",
         "label": "Stress & Burnout"
       },
@@ -1107,6 +1143,10 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "related": [
+      {
+        "slug": "kieferschmerzen",
+        "label": "Kieferschmerzen"
+      },
       {
         "slug": "stress-burnout",
         "label": "Stress & Burnout"

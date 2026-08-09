@@ -43,6 +43,9 @@ const url = `https://tcm.ch/beschwerden/${slug}/`;
 // Per-slug title overrides from the content briefs; template default otherwise.
 const TITLES: Record<string, string> = {
   guertelrose: 'Gürtelrose & Nervenschmerzen – TCM | TCM.ch',
+  kieferschmerzen: 'Kieferschmerzen & CMD – TCM-Behandlung | TCM.ch',
+  'morbus-crohn': 'Morbus Crohn – begleitende TCM | TCM.ch',
+  hyperhidrose: 'Starkes Schwitzen (Hyperhidrose) – TCM | TCM.ch',
 };
 const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
@@ -56,7 +59,7 @@ const DESCRIPTIONS: Record<string, string> = {
   schwindel: 'Schwindel mit TCM behandeln: Akupunktur bei Drehschwindel, Schwankschwindel und Benommenheit nach ärztlicher Abklärung. EMR/ASCA-anerkannt, 13 Standorte.',
   immunschwaeche: 'Infektanfälligkeit mit TCM angehen: Akupunktur, Kräuter und Moxibustion bei ständigen Erkältungen und langer Erholung. Vorbeugen statt nur reagieren.',
   verstopfung: 'Verstopfung mit TCM behandeln: Akupunktur und Kräutertherapie bei chronischer Obstipation und träger Verdauung, statt Dauerabführmittel.',
-  kieferschmerzen: 'Kieferschmerzen mit TCM behandeln: Akupunktur und Tuina bei CMD und Zähneknirschen. Kaumuskulatur entspannen, Schmerzen senken.',
+  kieferschmerzen: 'Kieferschmerzen, Zähneknirschen und CMD mit TCM behandeln: Akupunktur löst die verspannte Kiefermuskulatur. EMR/ASCA-anerkannt, 13 Standorte.',
   guertelrose: 'Gürtelrose und Post-Zoster-Neuralgie mit TCM begleiten: Akupunktur bei anhaltenden Nervenschmerzen nach Herpes Zoster. EMR/ASCA-anerkannt, 13 Standorte.',
   bandscheibenvorfall: 'Bandscheibenvorfall konservativ begleiten: Akupunktur, Schröpfen und Tuina bei Rückenschmerzen mit Ausstrahlung. EMR/ASCA-anerkannt, 13 Standorte.',
   pcos: 'PCOS mit TCM begleiten: Akupunktur und Kräutertherapie bei unregelmässigem Zyklus, Kinderwunsch und hormonellen Beschwerden. EMR/ASCA-anerkannt.',
@@ -66,6 +69,10 @@ const DESCRIPTIONS: Record<string, string> = {
   hexenschuss: 'Hexenschuss: Akute Rückenschmerzen mit TCM behandeln. Akupunktur und Schröpfen lösen die Blockade, schnell wieder beweglich. EMR/ASCA-anerkannt.',
   nesselsucht: 'Chronische Nesselsucht (Urtikaria) mit TCM behandeln: Kräutertherapie und Akupunktur bei Quaddeln und Juckreiz ohne Auslöser. EMR/ASCA-anerkannt.',
   gicht: 'Gicht mit TCM begleiten: Akupunktur und Ernährung nach TCM bei erhöhter Harnsäure und wiederkehrenden Gichtanfällen. EMR/ASCA-anerkannt, 13 Standorte.',
+  'morbus-crohn': 'Morbus Crohn mit TCM begleiten: Akupunktur und Kräutertherapie ergänzend zur Gastroenterologie, für ruhigere Phasen und Lebensqualität. EMR/ASCA-anerkannt.',
+  spinalkanalstenose: 'Spinalkanalstenose konservativ begleiten: Akupunktur bei Rückenschmerzen und schweren Beinen beim Gehen. EMR/ASCA-anerkannt, 13 Standorte.',
+  trigeminusneuralgie: 'Trigeminusneuralgie mit TCM begleiten: Akupunktur bei blitzartigen Gesichtsschmerzen, ergänzend zur neurologischen Therapie. EMR/ASCA-anerkannt.',
+  hyperhidrose: 'Hyperhidrose mit TCM behandeln: Akupunktur und Kräutertherapie bei übermässigem Schwitzen an Händen, Achseln und Füssen. EMR/ASCA-anerkannt.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 

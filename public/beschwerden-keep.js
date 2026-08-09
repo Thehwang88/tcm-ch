@@ -22,5 +22,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
-  "polyneuropathie", "hexenschuss", "nesselsucht", "gicht"
+  "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
+  "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose"
 ];
