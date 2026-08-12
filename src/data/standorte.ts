@@ -790,6 +790,12 @@ export const standorte: Record<string, Standort> = {
   "winterthur-muenzgasse": {
     "slug": "winterthur-muenzgasse",
     "stadt": "Winterthur Münzgasse",
+    "seo": {
+      "title": "TCM Praxis Winterthur Münzgasse – Akupunktur & Massage | TCM.ch",
+      "description": "TCM-Praxis an der Münzgasse 2 in Winterthur: Akupunktur, Tuina-Massage und Chinesische Medizin. EMR-/ASCA-anerkannt, zentral in der Altstadt.",
+      "h1": "TCM Praxis an der <em>Münzgasse</em>: Akupunktur & Massage",
+      "schemaName": "TCM Praxis Winterthur Münzgasse – TCM.ch"
+    },
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
       "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
@@ -819,7 +825,7 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <a href='/akupunktur-tcm-winterthur/' style='color:inherit;text-decoration:none'><strong>TCM-Praxis Winterthur</strong></a> an der Münzgasse 2 liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
+      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <strong>TCM-Praxis an der Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Unseren zweiten Standort für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> findest du an der Marktgasse. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Oberwinterthur</strong>, <strong>Töss</strong>, <strong>Wülflingen</strong>, <strong>Seen</strong>, <strong>Veltheim</strong> und <strong>Mattenbach</strong>. Aus umliegenden Gemeinden wie Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon und Brütten kommen Patient:innen regelmässig zu uns. Die zentrale Lage an der Münzgasse macht uns für die ganze Region erreichbar.</p>"
     },
     "anfahrt": {
@@ -965,6 +971,12 @@ export const standorte: Record<string, Standort> = {
   "winterthur-marktgasse": {
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
+    "seo": {
+      "title": "TCM Winterthur – Akupunktur an der Marktgasse | TCM.ch",
+      "description": "TCM Winterthur, Marktgasse 78: Akupunktur & Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo–Sa geöffnet.",
+      "h1": "TCM <em>Winterthur</em>: Akupunktur an der Marktgasse",
+      "schemaName": "TCM Winterthur – TCM.ch"
+    },
     "hero": {
       "banner": "Standort Winterthur Marktgasse",
       "lead": "Kurz vorbeikommen, in Ruhe klären, was dir hilft.",
@@ -995,7 +1007,7 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere zweite <a href='/akupunktur-tcm-winterthur/' style='color:inherit;text-decoration:none'><strong>TCM-Praxis in Winterthur</strong></a> liegt an der <strong>Marktgasse 78</strong>, direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende Praxis an der Münzgasse. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
+      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende <a href='/standorte/winterthur-muenzgasse/'>Praxis an der Münzgasse</a>. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon kommen Patient:innen regelmässig zu uns. Die Lage an der Marktgasse macht uns aus der ganzen Region gut erreichbar.</p>"
     },
     "anfahrt": {
@@ -1120,7 +1132,7 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Höngg</strong> liegt im ruhigen Kreis 10, gut erreichbar mit Tram und Bus aus der ganzen Stadt Zürich. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
+      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Höngg</strong> liegt im ruhigen Kreis 10, gut erreichbar mit Tram und Bus aus der ganzen Stadt Zürich. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus Höngg, Wipkingen und ganz Zürich</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Höngg</strong>, <strong>Wipkingen</strong>, <strong>Affoltern</strong>, <strong>Albisrieden</strong>, dem Kreis 5 und der Region Limmattal. Auch aus Schlieren, Dietikon, Regensdorf und Engstringen kommen Patient:innen regelmässig zu uns.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt.</p>"
     },
     "anfahrt": {
@@ -1266,6 +1278,12 @@ export const standorte: Record<string, Standort> = {
   "zuerich-oerlikon": {
     "slug": "zuerich-oerlikon",
     "stadt": "Zürich Oerlikon",
+    "seo": {
+      "title": "TCM Oerlikon – Akupunktur in Zürich Oerlikon | TCM.ch",
+      "description": "TCM Oerlikon, Schulstrasse 3: Akupunktur & Chinesische Medizin in Zürich Oerlikon. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.",
+      "h1": "TCM <em>Oerlikon</em>: Akupunktur in Zürich Oerlikon",
+      "schemaName": "TCM Oerlikon – TCM.ch"
+    },
     "hero": {
       "banner": "Standort Zürich Oerlikon",
       "lead": "Deine Beschwerden bekommen hier die Zeit, die sie brauchen.",
@@ -1291,7 +1309,7 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Oerlikon</strong> liegt im Kreis 11, direkt erreichbar vom <strong>Bahnhof Zürich Oerlikon</strong>, einem der grössten S-Bahn-Knoten der Schweiz. Ideal für Berufstätige und Pendler:innen. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
+      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Oerlikon</strong> liegt im Kreis 11, direkt erreichbar vom <strong>Bahnhof Zürich Oerlikon</strong>, einem der grössten S-Bahn-Knoten der Schweiz. Ideal für Berufstätige und Pendler:innen. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf, kommen Patient:innen regelmässig zu uns. Die zentrale Lage am Bahnhof Oerlikon macht uns für ganz Zürich Nord und das Zürcher Unterland erreichbar.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt.</p>"
     },
     "anfahrt": {

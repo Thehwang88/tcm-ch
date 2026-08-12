@@ -2,7 +2,8 @@
 # not here: _redirects cannot match on hostname.
 
 # --- 301s ---
-/standorte/winterthur      /standorte/winterthur-muenzgasse/  301
+/akupunktur-tcm-winterthur /standorte/winterthur-marktgasse/  301
+/standorte/winterthur      /standorte/winterthur-marktgasse/  301
 /krankenkasse              /krankenkassen/        301
 /krankenkasse/*            /krankenkassen/:splat  301
 /zuerich-longevity         /                      301
