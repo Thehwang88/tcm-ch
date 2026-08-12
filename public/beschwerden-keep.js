@@ -23,5 +23,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
-  "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose"
+  "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose",
+  "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs"
 ];

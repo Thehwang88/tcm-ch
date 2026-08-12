@@ -46,6 +46,11 @@ const TITLES: Record<string, string> = {
   kieferschmerzen: 'Kieferschmerzen & CMD – TCM-Behandlung | TCM.ch',
   'morbus-crohn': 'Morbus Crohn – begleitende TCM | TCM.ch',
   hyperhidrose: 'Starkes Schwitzen (Hyperhidrose) – TCM | TCM.ch',
+  'colitis-ulcerosa': 'Colitis ulcerosa – begleitende TCM | TCM.ch',
+  tennisarm: 'Tennisarm & Golferarm – TCM-Behandlung | TCM.ch',
+  'cluster-kopfschmerzen': 'Cluster-Kopfschmerzen – begleitende TCM | TCM.ch',
+  fettleber: 'Fettleber – TCM-Behandlung | TCM.ch',
+  'restless-legs': 'Restless Legs – TCM-Behandlung | TCM.ch',
 };
 const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
@@ -73,6 +78,11 @@ const DESCRIPTIONS: Record<string, string> = {
   spinalkanalstenose: 'Spinalkanalstenose konservativ begleiten: Akupunktur bei Rückenschmerzen und schweren Beinen beim Gehen. EMR/ASCA-anerkannt, 13 Standorte.',
   trigeminusneuralgie: 'Trigeminusneuralgie mit TCM begleiten: Akupunktur bei blitzartigen Gesichtsschmerzen, ergänzend zur neurologischen Therapie. EMR/ASCA-anerkannt.',
   hyperhidrose: 'Hyperhidrose mit TCM behandeln: Akupunktur und Kräutertherapie bei übermässigem Schwitzen an Händen, Achseln und Füssen. EMR/ASCA-anerkannt.',
+  'colitis-ulcerosa': 'Colitis ulcerosa mit TCM begleiten: Akupunktur und Kräutertherapie ergänzend zur Gastroenterologie, für stabilere Ruhephasen. EMR/ASCA-anerkannt.',
+  tennisarm: 'Tennisarm und Golferarm mit TCM behandeln: Akupunktur bei Schmerzen am Ellbogen, ohne Spritzen. Auch bei Mausarm. EMR/ASCA-anerkannt, 13 Standorte.',
+  'cluster-kopfschmerzen': 'Cluster-Kopfschmerzen mit TCM begleiten: Akupunktur zwischen den Episoden, ergänzend zur neurologischen Therapie. EMR/ASCA-anerkannt, 13 Standorte.',
+  fettleber: 'Fettleber mit TCM begleiten: Ernährung nach TCM, Akupunktur und Stoffwechsel-Begleitung. Die Fettleber ist umkehrbar. EMR/ASCA-anerkannt.',
+  'restless-legs': 'Restless-Legs-Syndrom mit TCM begleiten: Akupunktur bei unruhigen Beinen und gestörtem Schlaf, ergänzend zur ärztlichen Abklärung. EMR/ASCA-anerkannt.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
