@@ -55,12 +55,12 @@ if (migrated) {
   const data = migrated;
   const stadt = data.stadt;
   const clinic = clinics.find((c) => c.id === slug);
-  title = `TCM & Akupunktur ${data.titelZusatz ?? stadt} | TCM.ch`;
-  description = `TCM & Akupunktur in ${stadt}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+  title = data.seo?.title ?? `TCM & Akupunktur ${data.titelZusatz ?? stadt} | TCM.ch`;
+  description = data.seo?.description ?? `TCM & Akupunktur in ${stadt}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
   // MedicalClinic fed from nap/geo; opening hours + areaServed from the clinic NAP record.
   const medClinic: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
-    name: `TCM.ch ${stadt}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+    name: data.seo?.schemaName ?? `TCM.ch ${stadt}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
     telephone: data.nap.telefon,
   };
   if (data.nap.strasse) medClinic.address = { '@type': 'PostalAddress', streetAddress: data.nap.strasse, postalCode: data.nap.plz, addressLocality: data.nap.ort, addressCountry: 'CH' };

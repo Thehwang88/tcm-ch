@@ -15,6 +15,8 @@ export interface Standort {
   slug: string;
   stadt: string;
   titelZusatz?: string;
+  /** Per-slug SEO overrides; fallback is the generic pattern in [slug].astro / Hero.astro. */
+  seo?: { title?: string; description?: string; h1?: string; schemaName?: string };
   hero: { banner: string; lead: string; sub: string; image: string; locationHook: string };
   nap: {
     strasse: string;
@@ -40,12 +42,18 @@ export const standorte: Record<string, Standort> = {
   kreuzlingen: {
     slug: 'kreuzlingen',
     stadt: 'Kreuzlingen',
+    seo: {
+      title: 'TCM Kreuzlingen – Akupunktur & Chinesische Medizin | TCM.ch',
+      description: 'TCM Kreuzlingen, Romanshornerstrasse 1: Akupunktur & Chinesische Medizin am Bodensee. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.',
+      h1: 'TCM <em>Kreuzlingen</em>: Akupunktur & Chinesische Medizin an der Romanshornerstrasse',
+      schemaName: 'TCM Kreuzlingen – TCM.ch',
+    },
     hero: {
       banner: 'Standort Kreuzlingen',
       lead: 'Persönliche TCM, die dich wirklich ernst nimmt.',
       sub: 'Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.',
       image: '/images/hero-main.webp',
-      locationHook: 'Romanshornerstrasse 1, 8280 Kreuzlingen',
+      locationHook: 'Romanshornerstrasse 1, 8280 Kreuzlingen · Mo–Fr 7:30–19:30, Sa 7:30–16:30',
     },
     nap: {
       strasse: 'Romanshornerstrasse 1',

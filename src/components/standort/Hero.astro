@@ -3,7 +3,7 @@ import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
 const { data } = Astro.props as { data: Standort };
 const eyebrow = `TCM.ch Klinik · ${data.stadt}`;
-const heroH1 = `Akupunktur & TCM in <em>${data.stadt}</em>`;
+const heroH1 = data.seo?.h1 ?? `Akupunktur & TCM in <em>${data.stadt}</em>`;
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
