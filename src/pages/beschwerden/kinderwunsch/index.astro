@@ -15,13 +15,16 @@ const description = 'TCM bei unerfülltem Kinderwunsch, Akupunktur, chinesische 
 const faqs = [
   { q: 'Macht Akupunktur schwanger?', a: 'Nein, das kann und soll niemand versprechen. Akupunktur kann den Zyklus und die Stressbelastung begleitend unterstützen, ergänzend zur ärztlichen Behandlung.' },
   { q: 'Wann ist Akupunktur bei IVF oder ICSI sinnvoll?', a: 'Häufig rund um Punktion und Embryotransfer. Das genaue Timing legt ihr gemeinsam mit der Therapeutin und dem Kinderwunschzentrum fest.' },
-  { q: 'Wie oft sollte man Akupunktur bei Kinderwunsch machen?', a: 'Meist über mehrere Zyklen, oft etwa einmal pro Woche. Der genaue Rhythmus ist individuell.' },
+  { q: 'Wie oft sollte man Akupunktur bei Kinderwunsch machen?', a: 'Meist über mehrere Zyklen, oft etwa einmal pro Woche. Der genaue Rhythmus ist individuell und wird an deine Situation angepasst.' },
   { q: 'Ersetzt TCM die Kinderwunschbehandlung?', a: 'Nein. Die TCM ergänzt die gynäkologische und reproduktionsmedizinische Behandlung. Diagnostik und medizinische Therapie bleiben die Basis.' },
-  { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Bei EMR-/ASCA-anerkannten Therapeutinnen beteiligen sich viele Zusatzversicherungen mit 80 bis 100 Prozent. Die Grundversicherung deckt es nicht.' },
+  { q: 'Übernimmt die Krankenkasse Akupunktur bei Kinderwunsch?', a: 'Über die Zusatzversicherung Komplementärmedizin meist ja, typisch 70 bis 90 Prozent pro Sitzung bis zu einem Jahresmaximum. Voraussetzung ist eine EMR- oder ASCA-Registrierung der Therapeutin. Die Grundversicherung zahlt nur bei ärztlicher Akupunktur mit Fähigkeitsausweis.' },
+  { q: 'Was kostet Akupunktur bei Kinderwunsch ohne Zusatzversicherung?', a: 'Rechne mit den üblichen Sitzungskosten deiner Praxis, bei uns erfährst du den Tarif vor der ersten Behandlung. Ohne Zusatzversicherung trägst du die Kosten selbst. Wir prüfen mit dir vorab kostenlos, ob und wie viel deine Kasse übernimmt.' },
+  { q: 'Ab wann sollte ich ärztlich abklären lassen?', a: 'Nach zwölf Monaten regelmässigem ungeschütztem Verkehr ohne Schwangerschaft, ab 35 Jahren bereits nach sechs Monaten. Die gynäkologische und urologische Abklärung steht am Anfang. Akupunktur begleitet diesen Weg, ersetzt aber keine medizinische Diagnostik.' },
 ];
 
 const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    dateModified: '2026-08-12',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
     about: { '@type': 'MedicalCondition', name: 'Unerfüllter Kinderwunsch' } },
   { '@context': 'https://schema.org', '@type': 'FAQPage',

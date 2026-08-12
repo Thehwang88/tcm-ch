@@ -85,14 +85,16 @@ if (migrated) {
   const isPartner = slug === 'bottighofen';
   title = isPartner
     ? 'TCM Pelican Bottighofen: Akupunktur & TCM am Bodensee | TCM.ch'
-    : `TCM & Akupunktur ${name} | TCM.ch`;
+    : slug === 'st-gallen'
+      ? 'TCM St. Gallen beim Bahnhof: Akupunktur & TCM | TCM.ch'
+      : `TCM & Akupunktur ${name} | TCM.ch`;
   description = isPartner
     ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
     : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
 
   const medClinic: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
-    name: isPartner ? 'TCM Pelican' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+    name: isPartner ? 'TCM Pelican' : slug === 'st-gallen' ? 'TCM St. Gallen' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
   };
   if (clinic) {
     medClinic.telephone = clinic.phone;
