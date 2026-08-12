@@ -9,7 +9,7 @@ export interface Wissen { slug: string; title: string; metaDesc: string; region?
 export const wissen: Wissen[] = [
   {
     "slug": "akupunktur-schlafprobleme",
-    "title": "Akupunktur bei Schlafproblemen: Studienlage & Ablauf | TCM.ch",
+    "title": "Akupunktur bei Schlafproblemen: Studien & Ablauf",
     "metaDesc": "Was Akupunktur bei Ein- und Durchschlafproblemen realistisch leisten kann, was die Studien sagen und wo die Grenzen liegen. Ehrlich erklärt, in Du-Form.",
     "region": "Schweizweit",
     "excerpt": "Was Akupunktur bei Schlafproblemen realistisch bringt, was die Studien sagen und wo die Grenzen liegen.",
@@ -75,7 +75,7 @@ export const wissen: Wissen[] = [
   },
   {
     "slug": "tcm-stress-burnout",
-    "title": "TCM bei Stress & Burnout: Was Akupunktur leisten kann | TCM.ch",
+    "title": "TCM bei Stress & Burnout: Was Akupunktur bringt",
     "metaDesc": "Wo TCM bei Stress, Erschöpfung und Burnout ansetzt, was Akupunktur und Tuina beitragen, was die Studien sagen und wann professionelle Hilfe nötig ist.",
     "region": "Schweizweit",
     "excerpt": "Wo TCM bei Stress, Erschöpfung und Burnout ansetzt, und wo klar die Grenzen liegen.",
