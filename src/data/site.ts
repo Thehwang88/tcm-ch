@@ -35,6 +35,7 @@ export const PAIR_MAP: Record<string, string> = {
   '/': '/en/',
   '/kontakt': '/en/contact',
   '/krankenkassen/': '/en/health-insurance-acupuncture',
+  '/akupunktur-in-der-naehe/': '/en/acupuncture-near-me',
   // Locations: DE /standorte(/<slug>) <-> EN /en/locations(/<slug>)
   '/standorte': '/en/locations/',
   ...Object.fromEntries(clinics.map((c) => [deStandortPath(c.id), enLocationPath(c.id)])),

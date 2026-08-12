@@ -1090,8 +1090,8 @@ export const wissen: Wissen[] = [
     "excerpt": "Was Akupunktur und TCM bei PCOS leisten können, wie sich der Zyklus begleiten lässt und was das für den Kinderwunsch bedeutet. Der Überblick.",
     "category": "Beschwerden verstehen",
     "h1": "PCOS und TCM: Akupunktur, Zyklus und Kinderwunsch",
-    "lead": "PCOS ist chronisch, aber du bist ihm nicht ausgeliefert. Wie Akupunktur und TCM den Zyklus begleiten können, was das für den Kinderwunsch heisst und warum es auch ohne Pille geht.",
-    "readingTime": "6 Min.",
+    "lead": "PCOS ist die häufigste hormonelle Störung bei Frauen im gebärfähigen Alter. Was Akupunktur und TCM dabei realistisch leisten können, wo die Grenzen liegen und warum die Schulmedizin an den Anfang gehört, liest du hier ohne Schönfärberei.",
+    "readingTime": "8 Min.",
     "ctaTitle": "PCOS mit TCM begleiten?",
     "author": {
       "name": "Corinna Reinhart",
@@ -1100,46 +1100,51 @@ export const wissen: Wissen[] = [
     },
     "reviewerName": "Corinna Reinhart",
     "datePublished": "2026-07-03",
-    "dateModified": "2026-07-03",
-    "lastReviewed": "2026-07-03",
-    "bodyHtml": "<h2>Was PCOS für den Alltag bedeutet</h2><p>PCOS, das polyzystische Ovarialsyndrom, ist eine chronische hormonelle Störung. Der Zyklus wird unregelmässig, der Eisprung bleibt oft aus, dazu kommen Haut-, Gewichts- oder Stimmungsthemen. Heilbar ist PCOS nicht, begleiten lässt es sich aber gut. Was in der Praxis dazugehört, liest du auf unserer Seite zu <a href=\"/beschwerden/pcos/\">PCOS und TCM</a>.</p><h2>PCOS und Akupunktur: Erfahrungen und Studienlage</h2><p>Viele Frauen berichten, dass ihr Zyklus unter regelmässiger <a href=\"/therapien/akupunktur/\">Akupunktur</a> ruhiger und regelmässiger wird. Die Studienlage ist gemischt und stammt aus eher kleinen Untersuchungen. Akupunktur kann den Zyklus und den Stresspegel begleitend beeinflussen, ein sicheres Ergebnis lässt sich daraus nicht ableiten. Realistisch ist eine Begleitung über mehrere Zyklen, kein schneller Schalter.</p><h2>Den Zyklus regulieren mit TCM</h2><p>Die TCM schaut nicht nur auf die Eierstöcke, sondern auf den ganzen Rhythmus aus Schlaf, Verdauung, Stress und Bewegung. Behandelt wird mit Akupunktur und, wenn passend, mit individuell zusammengestellten chinesischen Kräutern. Dazu kommen Hinweise zu Essrhythmus und Alltag. Ziel ist, den Zyklus über die Zeit zu stabilisieren.</p><h2>PCOS und Kinderwunsch</h2><p>Ein häufiger Grund für den Weg in die Praxis ist der unerfüllte Kinderwunsch. Die TCM begleitet hier ergänzend zur gynäkologischen Behandlung, etwa vor oder während einer Kinderwunsch-Abklärung. Mehr dazu auf unserer Seite zu <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch</a>. Eine ärztliche Abklärung bleibt die Basis.</p><h2>TCM bei PCOS ohne Pille</h2><p>Manche Frauen möchten PCOS ohne oder nach der Pille angehen. Die TCM ist davon unabhängig und wird oft gerade dann gesucht. Ob und wann du die Pille absetzt, gehört mit deiner Ärztin besprochen. Die TCM ersetzt weder die Diagnose noch eine nötige schulmedizinische Behandlung.</p><h2>Kosten und Krankenkasse</h2><p>Die Behandlung läuft über die Zusatzversicherung. Bei EMR-/ASCA-anerkannten Therapeutinnen beteiligen sich viele Kassen mit 80 bis 100 Prozent, die Grundversicherung nicht. Details findest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a>.</p><p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "dateModified": "2026-08-12",
+    "lastReviewed": "2026-08-12",
+    "bodyHtml": "<h2>Was PCOS ist</h2>\n<p>Das polyzystische Ovarialsyndrom betrifft schätzungsweise 8 bis 13 Prozent aller Frauen im gebärfähigen Alter. Typische Zeichen: seltene oder ausbleibende Eisprünge mit unregelmässigem Zyklus, erhöhte männliche Hormone (sichtbar etwa als verstärkte Körperbehaarung, Akne oder Haarausfall) und im Ultraschall viele kleine Follikel an den Eierstöcken. Für die Diagnose müssen zwei dieser drei Kriterien erfüllt sein, andere Ursachen ausgeschlossen.</p>\n<p>Was viele nicht wissen: PCOS ist häufig auch ein Stoffwechselthema. Ein grosser Teil der Betroffenen hat eine Insulinresistenz, unabhängig vom Gewicht. Das erklärt, warum Ernährung und Bewegung bei PCOS keine Nebensache sind, sondern zu den wirksamsten Hebeln überhaupt gehören.</p>\n<div class=\"wa-callout\"><div class=\"wa-callout-label\">Bitte ärztlich abklären</div><p>Die Diagnose PCOS gehört in die gynäkologische Praxis: Hormonstatus, Ultraschall, Ausschluss anderer Ursachen wie Schilddrüsenstörungen. Erst mit gesicherter Diagnose ergibt eine begleitende TCM-Behandlung Sinn.</p></div>\n<h2>Was die Schulmedizin macht</h2>\n<p>Je nach Ziel unterscheidet sich die Behandlung. Steht kein Kinderwunsch an, wird der Zyklus oft hormonell reguliert und die Stoffwechsellage angegangen, bei Insulinresistenz teils mit Metformin. Bei Kinderwunsch sind Medikamente zur Auslösung des Eisprungs, Letrozol oder Clomifen, die Standardtherapie mit guter Studienlage. Dazu kommt in jedem Fall die Basis: Gewichtsmanagement, Bewegung, Ernährung. Schon 5 bis 10 Prozent Gewichtsreduktion können bei übergewichtigen Betroffenen den Eisprung zurückbringen.</p>\n<p>Das vorweg, weil es die Messlatte ist: Jede ergänzende Methode, auch Akupunktur, muss sich daran messen lassen und ersetzt diese Basis nicht.</p>\n<h2>Was Akupunktur bei PCOS realistisch kann und was nicht</h2>\n<p>Hier sind wir bewusst nüchtern, denn zu PCOS gibt es eine der besten Einzelstudien der ganzen Akupunkturforschung, und ihr Ergebnis ist unbequem.</p>\n<p>Die grosse randomisierte PCOSAct-Studie (Wu et al., JAMA 2017) mit rund 1000 Frauen mit PCOS und Kinderwunsch verglich Akupunktur, Clomifen, beides kombiniert und eine Kontrolle. Ergebnis: Clomifen erhöhte die Lebendgeburtenrate deutlich, Akupunktur nicht. Wer dir Akupunktur als Fruchtbarkeitsbooster bei PCOS verkauft, ignoriert diese Studie.</p>\n<p>Was kleinere Studien und Übersichtsarbeiten andeuten: Elektroakupunktur könnte die Häufigkeit von Eisprüngen erhöhen und Hinweise auf günstige Effekte bei Insulinresistenz und erhöhten männlichen Hormonen liefern. Die Qualität dieser Belege ist allerdings begrenzt, ein Cochrane-Review kam zum Schluss, dass die Evidenz für Akupunktur bei PCOS insgesamt unzureichend ist.</p>\n<p>Wofür sich <a href=\"/therapien/akupunktur/\">Akupunktur</a> in der Begleitung bewährt, unabhängig von der PCOS-Spezifik: Stressreduktion, besserer Schlaf, Linderung von Zyklusbeschwerden und Unterleibsverspannungen, Unterstützung beim Dranbleiben an Lebensstiländerungen. Das klingt unspektakulär, ist im Alltag mit PCOS aber genau das, woran viele scheitern.</p>\n<div class=\"wa-pullquote\">Akupunktur macht bei PCOS keinen Eisprung auf Bestellung. Sie kann den Rahmen verbessern, in dem dein Körper und deine Therapie arbeiten.</div>\n<h2>Wie eine TCM-Begleitung bei uns aussieht</h2>\n<p>Wir starten mit einer ausführlichen Anamnese: Zyklusverlauf, Beschwerden, bisherige Befunde und Therapien, Schlaf, Stress, Ernährung. Puls- und Zungendiagnostik ergänzen das Bild. Daraus entsteht ein Behandlungsplan, typischerweise mit wöchentlicher Akupunktur über zwei bis drei Zyklen, bei Bedarf kombiniert mit einer individuell zusammengestellten Kräuterrezeptur und konkreten Ernährungsempfehlungen, die zur Insulinresistenz-Thematik passen.</p>\n<p>Wichtig: Wir arbeiten neben deiner Gynäkologin, nicht gegen sie. Läuft eine Letrozol- oder Clomifen-Therapie oder eine Kinderwunschbehandlung, stimmen wir die Begleitung darauf ab. Und nach zwei bis drei Zyklen ziehen wir ehrlich Bilanz: Bringt es dir spürbar etwas? Wenn nicht, sagen wir dir das. Ein häufiger Grund für den Weg in die Praxis ist der unerfüllte <a href=\"/beschwerden/kinderwunsch/\">Kinderwunsch</a>; wie die TCM dabei begleitet, liest du im Artikel <a href=\"/wissen/kinderwunsch-akupunktur-tcm/\">Akupunktur und TCM bei Kinderwunsch</a>.</p>\n<h2>Krankenkasse</h2>\n<p>Die Behandlung läuft über die Zusatzversicherung Komplementärmedizin, die meisten Kassen übernehmen 70 bis 90 Prozent bei EMR- oder ASCA-registrierten Therapeutinnen. Alle unsere Therapeutinnen und Therapeuten sind registriert. Wir prüfen deine Deckung kostenlos, bevor Kosten entstehen. Wie die Abrechnung genau läuft, liest du auf unserer Seite zur <a href=\"/krankenkassen/\">Krankenkasse</a> und im Detail im Beitrag <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Krankenkasse und TCM</a>.</p>\n<h2>Wann du ärztlich abklären solltest</h2>\n<p>Zur Gynäkologin gehören: ausbleibende Perioden über drei Monate ohne bekannte Ursache, sehr starke oder sehr schmerzhafte Blutungen, rasche Zunahme von Körperbehaarung oder Haarausfall, unerfüllter Kinderwunsch nach zwölf Monaten (ab 35 nach sechs Monaten). PCOS erhöht langfristig das Risiko für Typ-2-Diabetes und Herz-Kreislauf-Erkrankungen, regelmässige Kontrollen gehören deshalb dazu, unabhängig von jeder TCM-Behandlung.</p>\n<p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
     "faqs": [
       {
-        "q": "Hilft Akupunktur bei PCOS?",
-        "a": "Akupunktur kann den Zyklus und stressbedingte Beschwerden begleitend beeinflussen. Die Studienlage ist begrenzt, ein Heilversprechen gibt es nicht."
+        "q": "Kann Akupunktur PCOS heilen?",
+        "a": "Nein. PCOS ist nicht heilbar, aber gut behandelbar. Akupunktur kann Beschwerden wie Stress, Schlafprobleme und Zyklusschmerzen lindern und eine schulmedizinische Therapie begleiten. Die Basis bleiben gynäkologische Behandlung, Ernährung und Bewegung."
       },
       {
-        "q": "Kann TCM den Zyklus bei PCOS regulieren?",
-        "a": "Die TCM kann den Zyklus über mehrere Zyklen begleiten und stabilisieren helfen. Wie stark, ist individuell."
+        "q": "Hilft Akupunktur beim Eisprung mit PCOS?",
+        "a": "Die grosse PCOSAct-Studie (JAMA 2017) zeigte keine Verbesserung der Lebendgeburtenrate durch Akupunktur, Clomifen wirkte deutlich besser. Kleinere Studien deuten auf häufigere Eisprünge unter Elektroakupunktur hin, die Beleglage ist aber schwach. Wir sagen dir das ehrlich vor Behandlungsbeginn."
       },
       {
-        "q": "Funktioniert TCM bei PCOS ohne Pille?",
-        "a": "Ja, die TCM ist unabhängig von der Pille. Das Absetzen selbst besprichst du mit deiner Ärztin."
+        "q": "Was bringt TCM bei PCOS konkret?",
+        "a": "Bewährt hat sich die Begleitung bei Stress, Schlaf, Zyklusbeschwerden und beim Umsetzen von Lebensstiländerungen. Dazu kommen individuelle Ernährungsempfehlungen, die zur häufigen Insulinresistenz bei PCOS passen, und bei Bedarf eine Kräuterrezeptur."
       },
       {
-        "q": "Wie lange dauert es, bis sich etwas tut?",
-        "a": "PCOS wird über mehrere Zyklen begleitet. Veränderungen zeigen sich meist nicht sofort."
+        "q": "Übernimmt die Krankenkasse Akupunktur bei PCOS?",
+        "a": "Über die Zusatzversicherung Komplementärmedizin meist ja, typisch 70 bis 90 Prozent bei EMR- oder ASCA-registrierten Therapeutinnen. Die Grundversicherung zahlt nur ärztliche Akupunktur. Wir prüfen deine Deckung kostenlos vor der ersten Behandlung."
       },
       {
-        "q": "Zahlt die Krankenkasse?",
-        "a": "Bei EMR-/ASCA-Therapeutinnen beteiligen sich viele Zusatzversicherungen. Die Grundversicherung deckt es nicht."
+        "q": "Wie lange dauert eine TCM-Begleitung bei PCOS?",
+        "a": "Üblich sind wöchentliche Sitzungen über zwei bis drei Zyklen, danach ziehen wir gemeinsam Bilanz. Spürst du keinen Nutzen, brechen wir ab statt endlos weiterzubehandeln. PCOS ist ein Langzeitthema, die Akupunktur-Begleitung muss es nicht sein."
       }
     ],
     "related": [
-      {
-        "href": "/beschwerden/pcos/",
-        "label": "PCOS mit TCM begleiten",
-        "cat": "Beschwerde"
-      },
       {
         "href": "/beschwerden/kinderwunsch/",
         "label": "Kinderwunsch & TCM",
         "cat": "Beschwerde"
       },
       {
-        "href": "/krankenkassen/",
+        "href": "/wissen/kinderwunsch-akupunktur-tcm/",
+        "label": "Akupunktur bei Kinderwunsch",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/therapien/akupunktur/",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
         "label": "Krankenkasse und TCM",
-        "cat": "Info"
+        "cat": "Artikel"
       }
     ]
   },
