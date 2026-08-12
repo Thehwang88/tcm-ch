@@ -24,5 +24,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
   "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose",
-  "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs"
+  "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs",
+  "gastritis", "rosacea", "hueftschmerzen"
 ];
