@@ -1,0 +1,127 @@
+---
+// /akupunktur-tcm-st-gallen/ — kommerzielle St.-Gallen-Landingpage (eine Praxis am Oberen Graben).
+// Generische Stadt-Intents landen hier, hyperlokale Intents auf der Standortseite /standorte/st-gallen/.
+export const prerender = true;
+import SpaPage from '../layouts/SpaPage.astro';
+import body from '../data/akupunktur-tcm-st-gallen-body.html?raw';
+
+const url = 'https://tcm.ch/akupunktur-tcm-st-gallen/';
+const title = 'Akupunktur & TCM St. Gallen | Krankenkasse anerkannt | TCM.ch';
+const description =
+  'Akupunktur & TCM in St. Gallen, zentral am Oberen Graben. EMR/ASCA-anerkannt, Zusatzversicherung zahlt 80–100%. Termin oft in 24h.';
+
+const faqs = [
+  {
+    q: 'Was kostet Akupunktur in St. Gallen?',
+    a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 nach Behandlungsdauer. Das Erstgespräch mit Anamnese dauert länger und liegt entsprechend höher. Mit einer Zusatzversicherung für Komplementärmedizin trägst du meist nur einen kleinen Teil selbst. Chinesische Kräuter rechnen wir separat ab, weil die Rezeptur individuell ist.',
+  },
+  {
+    q: 'Übernimmt die Krankenkasse Akupunktur in St. Gallen?',
+    a: 'Akupunktur und TCM laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt, das ist die Voraussetzung für eine Beteiligung. Bei den meisten Kassen werden 80 bis 100 Prozent des Sitzungspreises übernommen. Wir prüfen deine Deckung kostenlos, bevor du das erste Mal kommst.',
+  },
+  {
+    q: 'Wie schnell bekomme ich einen Termin in St. Gallen?',
+    a: 'Schildere uns kurz dein Anliegen, wir melden uns in der Regel am selben Arbeitstag. Ein Ersttermin am Oberen Graben ist je nach Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, auch früh am Morgen oder gegen Abend.',
+  },
+  {
+    q: 'Brauche ich eine Überweisung vom Arzt?',
+    a: 'Nein. Du kannst direkt einen Termin anfragen, eine ärztliche Überweisung ist für die Behandlung bei uns nicht nötig. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich.',
+  },
+  {
+    q: 'Wie komme ich zur Praxis, und wo kann ich parkieren?',
+    a: 'Die Praxis liegt zentral am Oberen Graben 22, wenige Gehminuten vom Hauptbahnhof St. Gallen. Mit dem Auto parkst du direkt im Parkhaus Oberer Graben vor der Praxis. Aus Gossau, Wittenbach, Herisau, Teufen und dem Appenzellerland bist du mit Bahn oder Bus schnell da.',
+  },
+  {
+    q: 'Bei welchen Beschwerden hilft TCM?',
+    a: 'Am häufigsten kommen Menschen mit Rücken- und Nackenschmerzen, Migräne, Schlafproblemen, Stress und Erschöpfung, Zyklusbeschwerden oder Kinderwunsch. Am besten dokumentiert ist die Wirkung bei chronischen Schmerzen und in der Migräneprophylaxe. Im Erstgespräch sagen wir dir ehrlich, ob TCM in deinem Fall sinnvoll ist.',
+  },
+];
+
+const stgallen = {
+  '@type': 'MedicalClinic',
+  '@id': 'https://tcm.ch/standorte/st-gallen/',
+  name: 'TCM.ch St. Gallen',
+  url: 'https://tcm.ch/standorte/st-gallen/',
+  telephone: '+41 77 523 61 22',
+  medicalSpecialty: 'TraditionalChineseMedicine',
+  address: { '@type': 'PostalAddress', streetAddress: 'Oberer Graben 22', postalCode: '9000', addressLocality: 'St. Gallen', addressRegion: 'SG', addressCountry: 'CH' },
+  geo: { '@type': 'GeoCoordinates', latitude: 47.4239, longitude: 9.3748 },
+  openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'],
+  areaServed: { '@type': 'City', name: 'St. Gallen' },
+};
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    '@id': url + '#article',
+    name: title,
+    headline: 'Akupunktur & TCM in St. Gallen',
+    description,
+    url,
+    inLanguage: 'de-CH',
+    datePublished: '2026-08-12',
+    dateModified: '2026-08-12',
+    lastReviewed: '2026-08-12',
+    about: [
+      { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+      { '@type': 'MedicalProcedure', name: 'Traditionelle Chinesische Medizin' },
+    ],
+    author: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    reviewedBy: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    citation: [
+      { '@type': 'ScholarlyArticle', name: 'Acupuncture for Chronic Pain: Update of an Individual Patient Data Meta-Analysis', identifier: 'PMID:29198932', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/29198932/' },
+      { '@type': 'ScholarlyArticle', name: 'Acupuncture for the prevention of episodic migraine', identifier: 'PMID:27351677', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/27351677/' },
+      { '@type': 'ScholarlyArticle', name: 'Acupuncture for chronic nonspecific low back pain', identifier: 'PMID:33306198', sameAs: 'https://pubmed.ncbi.nlm.nih.gov/33306198/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalClinic',
+    '@id': url + '#clinic',
+    name: 'TCM.ch – Akupunktur & TCM St. Gallen',
+    url,
+    image: 'https://tcm.ch/og-image.jpg',
+    medicalSpecialty: 'TraditionalChineseMedicine',
+    telephone: '+41 77 523 61 22',
+    email: 'termine@tcm.ch',
+    address: { '@type': 'PostalAddress', streetAddress: 'Oberer Graben 22', postalCode: '9000', addressLocality: 'St. Gallen', addressRegion: 'SG', addressCountry: 'CH' },
+    geo: { '@type': 'GeoCoordinates', latitude: 47.4239, longitude: 9.3748 },
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'],
+    areaServed: [
+      { '@type': 'City', name: 'St. Gallen' },
+      { '@type': 'AdministrativeArea', name: 'Kanton St. Gallen' },
+      { '@type': 'AdministrativeArea', name: 'Appenzellerland' },
+    ],
+    department: [stgallen],
+    availableService: [
+      { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+      { '@type': 'MedicalProcedure', name: 'Tuina-Massage' },
+      { '@type': 'MedicalProcedure', name: 'Schröpfen' },
+      { '@type': 'MedicalProcedure', name: 'Moxibustion' },
+      { '@type': 'MedicalProcedure', name: 'Elektroakupunktur' },
+      { '@type': 'MedicalProcedure', name: 'Chinesische Kräutertherapie' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Akupunktur & TCM St. Gallen', item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': url + '#faq',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<SpaPage title={title} description={description} path="/akupunktur-tcm-st-gallen" body={body} schema={schema} />

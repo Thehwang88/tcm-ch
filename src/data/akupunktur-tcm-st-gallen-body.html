@@ -1,0 +1,332 @@
+<style>
+  /* Layout-only helpers, design tokens only, no new colours/fonts/components.
+     Same akz-* helpers the Zuerich hub defines page-locally; only the subset this
+     page actually uses. Without these the hero/split grids fall back to display:block
+     and the image stacks under the text. */
+  .akz{padding-top:68px}
+  .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
+  .akz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .akz-hero-img{width:100%;border-radius:var(--r-hero);box-shadow:var(--sh-md);aspect-ratio:4/3;object-fit:cover;display:block}
+  .akz-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .akz-trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:24px;font-family:var(--font-sans);font-weight:600;font-size:14.5px;color:var(--mid)}
+  .akz-trust b{color:var(--black)}
+  @media(max-width:820px){.akz-hero-grid,.akz-split{grid-template-columns:1fr;gap:28px}}
+</style>
+
+<div class="akz">
+
+  <section class="section akz-hero">
+    <div class="wrap">
+      <div class="akz-hero-grid">
+        <div>
+          <div class="section-label">Akupunktur · Medizinische TCM</div>
+          <h1 class="section-title" style="margin-bottom:18px">TCM &amp; Akupunktur in <em>St. Gallen</em></h1>
+          <p class="section-sub">Chinesische Medizin zentral am Oberen Graben 22, wenige Gehminuten vom Hauptbahnhof St. Gallen. Parkhaus direkt vor der Praxis. EMR- und ASCA-anerkannt und über die Zusatzversicherung abrechenbar.</p>
+          <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+            <a class="btn-primary" href="#kontakt">Termin anfragen</a>
+            <a class="btn-secondary" href="#praxis">Standort ansehen</a>
+          </div>
+          <div class="akz-trust">
+            <span><b>EMR/ASCA</b> anerkannt</span>
+            <span><b>Zentral</b> am Oberen Graben</span>
+            <span><b>80 bis 100%</b> über die Zusatzversicherung</span>
+          </div>
+        </div>
+        <div>
+          <img class="akz-hero-img" src="/images/hero-home.webp" alt="Beratungsgespräch in einer TCM.ch-Klinik in St. Gallen" loading="eager" width="640" height="480">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TL;DR -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:24px 26px;max-width:820px">
+        <div class="section-label" style="margin-bottom:10px">Das Wichtigste in Kürze</div>
+        <ul style="margin:0;padding-left:20px;font-size:15.5px;line-height:1.75;color:var(--mid)">
+          <li><strong>TCM St. Gallen:</strong> TCM.ch behandelt zentral am Oberen Graben 22, wenige Gehminuten vom Hauptbahnhof und mit Parkhaus direkt vor der Praxis.</li>
+          <li>Behandelt wird das volle Spektrum: <strong>Akupunktur</strong>, Tuina, Schröpfen, chinesische Kräutertherapie, Moxibustion und Elektroakupunktur.</li>
+          <li>Akupunktur läuft über die <strong>Zusatzversicherung</strong>, nicht über die Grundversicherung. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen. Wir prüfen deine Deckung vor dem ersten Termin.</li>
+          <li>Abgerechnet wird nach dem anerkannten <strong>Tarif 590</strong> nach Behandlungsdauer. Was deine Kasse trägt, klären wir vorher.</li>
+          <li>Für Rückenschmerzen und Migräne ist die Studienlage am besten dokumentiert. Bei anderen Beschwerden sagen wir dir ehrlich, was realistisch ist.</li>
+        </ul>
+        <p style="font-size:13.5px;color:var(--muted);margin:18px 0 0;line-height:1.6">Fachlich geprüft von <strong>Corinna Reinhart</strong>, TCM-Therapeutin und Pflegefachfrau, EMR-anerkannt. Stand: 12. August 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="section-label">Ohne Risiko starten</div>
+        <h2 class="section-title" style="margin:0 auto 14px">Du schilderst dein Anliegen. <em>Den Rest übernehmen wir.</em></h2>
+        <p class="section-sub" style="margin:0 auto">Kein Abo, kein Paket, kein Druck. Du entscheidest erst nach dem Erstgespräch, ob du eine Behandlung machst.</p>
+      </div>
+      <div class="usp-grid">
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg></div>
+          <div class="usp-title">Kassendeckung geprüft, bevor du kommst</div>
+          <div class="usp-sub">Du weisst vorher, was deine Zusatzversicherung übernimmt.</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></div>
+          <div class="usp-title">Ehrliche Einschätzung statt Serie</div>
+          <div class="usp-sub">Wenn TCM bei dir wenig bringt, hörst du das von uns.</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+          <div class="usp-title">Zentral am Oberen Graben</div>
+          <div class="usp-sub">Parkhaus direkt vor der Praxis, Hauptbahnhof nah.</div>
+        </div>
+        <div class="usp-card">
+          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+          <div class="usp-title">Randzeiten am Morgen und Abend</div>
+          <div class="usp-sub">Ab 7:30 Uhr und bis 19:30 Uhr, sonntags ab 8:00 Uhr.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDORT -->
+  <section class="section" id="praxis" style="background:var(--bg);scroll-margin-top:68px">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="section-label">Standort</div>
+        <h2 class="section-title" style="margin:0 auto 14px">Unsere Praxis <em>in St. Gallen.</em></h2>
+        <p class="section-sub" style="margin:0 auto">Zentral am Oberen Graben, wenige Gehminuten vom Hauptbahnhof und mit Parkhaus direkt vor der Tür. Kurze Wege aus der Stadt und dem ganzen Appenzellerland.</p>
+      </div>
+      <div class="city-grid reveal" style="margin-top:28px;justify-content:center">
+        <a class="city-card location-card" href="/standorte/st-gallen/">
+          <span class="location-plz">9000</span>
+          <div class="location-city">St. Gallen</div>
+          <div class="location-desc">Oberer Graben 22, zentral in der Innenstadt. Wenige Gehminuten vom Hauptbahnhof St. Gallen, Bus- und Bahnanschluss aus der ganzen Region. Parkhaus Oberer Graben direkt vor der Praxis.</div>
+          <span class="location-link">Praxis ansehen →</span>
+        </a>
+      </div>
+      <p class="section-sub" style="text-align:center;margin:26px auto 0;max-width:60ch">Öffnungszeiten: Mo bis Sa 7:30 bis 19:30 Uhr, So 8:00 bis 17:00 Uhr. Telefon +41 77 523 61 22, E-Mail termine@tcm.ch.</p>
+    </div>
+  </section>
+
+  <!-- WAS IST TCM -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Einordnung</div>
+      <h2 class="section-title">Was TCM ist, <em>und wann sie hilft.</em></h2>
+      <p>Traditionelle Chinesische Medizin ist ein Sammelbegriff für mehrere Behandlungsformen, die in der Schweiz als Komplementärmedizin geführt werden. Dazu gehören Akupunktur, chinesische Kräuter, Tuina, Schröpfen und Moxibustion. In der Praxis heisst das, dass wir uns nicht nur die Stelle ansehen, die weh tut, sondern auch, was drumherum läuft: Schlaf, Verdauung, Belastung im Alltag. Sinnvoll ist das vor allem bei Beschwerden, die schon länger dauern, bei denen die Abklärung nichts Akutes ergeben hat, oder wenn du eine laufende ärztliche Behandlung ergänzen willst. Bei akuten Notfällen, Verdacht auf einen Bruch oder unklaren neurologischen Zeichen ist TCM der falsche erste Schritt, dann gehörst du zur Ärztin. Was in deinem Fall realistisch ist, klären wir im Erstgespräch, bevor du dich für irgendetwas entscheidest.</p>
+    </div>
+  </section>
+
+  <!-- WAS TCM IN ST. GALLEN BIETET -->
+  <section class="section">
+    <div class="wrap akz-split">
+      <div>
+        <div class="section-label">Chinesische Medizin St. Gallen</div>
+        <h2 class="section-title">Akupunktur, die <em>zum Alltag passt.</em></h2>
+        <p class="section-sub">St. Gallen ist eine Stadt, in der viele Menschen pendeln. Genau daran haben wir unsere Praxis ausgerichtet.</p>
+        <p>Die meisten, die zu uns kommen, haben schon einiges hinter sich. Physiotherapie, Schmerzmittel, ein paar Wochen Pause, dann kam es zurück. Chinesische Medizin ist in solchen Situationen kein Ersatz für die Schulmedizin, sondern eine Ergänzung. Wir arbeiten mit Akupunktur, Tuina-Massage, Schröpfen, Moxibustion, Elektroakupunktur und chinesischer Kräutertherapie. Welche Methode sinnvoll ist, entscheidet sich nach dem Erstgespräch, nicht vorher. Mehr zu unserem <a href="/therapien/massage/">Massage-Angebot</a> findest du auf der Massage-Seite.</p>
+        <p>Behandelt wirst du bei uns von einem eingespielten Team: <strong>Corinna Reinhart</strong> (TCM-Therapeutin), <strong>Seongsu Kim</strong> (Senior Clinical Lead) und <strong>Ken Uehara</strong>. Unsere Praxis am Oberen Graben liegt zentral in der Innenstadt. Du kommst mit dem Zug in wenigen Gehminuten hin, und wir haben früh und abends offen, damit du nicht extra freinehmen musst. Alle Therapeut:innen sind EMR- und ASCA-anerkannt, das ist die Voraussetzung dafür, dass deine Zusatzversicherung mitzahlt.</p>
+        <p>Was wir nicht machen: dir eine Behandlungsserie verkaufen, bevor wir wissen, woran wir sind. Wenn wir im Erstgespräch merken, dass dein Anliegen ärztlich abgeklärt gehört, sagen wir das. Und wenn TCM aus unserer Sicht wenig bringt, sagen wir das auch.</p>
+      </div>
+      <div>
+        <img class="akz-hero-img" src="/images/standort-stgallen.jpg" alt="TCM.ch Klinik St. Gallen am Oberen Graben" loading="lazy" width="640" height="480">
+      </div>
+    </div>
+  </section>
+
+  <!-- TCM-METHODEN -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Methoden</div>
+      <h2 class="section-title">TCM-Methoden <em>in St. Gallen.</em></h2>
+      <p class="section-sub">Bei uns steht dir das volle Spektrum offen. Was davon zum Einsatz kommt, entscheiden wir nach dem Erstgespräch, nicht vorher.</p>
+      <div class="kk-faq" style="margin-top:24px">
+      <div class="kk-item"><button class="kk-q open" onclick="kkToggle(this)" aria-expanded="true">Akupunktur<span class="kk-ico">+</span></button><div class="kk-a open"><p>Der häufigste Einstieg und die am besten untersuchte Methode. Dünne Nadeln an ausgewählten Punkten, danach liegst du rund 20 bis 30 Minuten ruhig. Am solidesten belegt ist die Wirkung bei chronischen Schmerzen und in der Migräneprophylaxe.</p><p><a class="body-link" href="/therapien/akupunktur/">Akupunktur</a> im Detail ansehen</p></div></div>
+      <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Chinesische Kräutertherapie<span class="kk-ico">+</span></button><div class="kk-a"><p>Eine individuell zusammengestellte Rezeptur, meist als Granulat, das du zuhause in Wasser auflöst. Kräutertherapie braucht eine eigene Ausbildung und eine verlässliche Bezugsquelle für die Rohstoffe. Wer ausschliesslich Akupunktur anbietet, kann diesen Teil nicht abdecken. Bei uns gehört er am Oberen Graben zum Standard, und wir kombinieren ihn mit Akupunktur, wo es passt.</p><p><a class="body-link" href="/therapien/kraeutertherapie/">Chinesische Kräutertherapie</a> im Detail ansehen</p></div></div>
+      <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Tuina-Massage<span class="kk-ico">+</span></button><div class="kk-a"><p>Manuelle Arbeit am Gewebe, kräftiger als eine klassische Entspannungsmassage. Wir setzen sie oft bei Verspannungen in Nacken und Schultern ein, häufig in derselben Sitzung wie die Nadeln.</p><p><a class="body-link" href="/therapien/tuina/">Tuina-Massage</a> im Detail ansehen</p></div></div>
+      <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Schröpfen<span class="kk-ico">+</span></button><div class="kk-a"><p>Gläser erzeugen einen Unterdruck auf der Haut. Das gibt bei festen Rückenpartien oft schnell spürbare Erleichterung. Die runden Male danach sind harmlos und verschwinden nach einigen Tagen von selbst.</p><p><a class="body-link" href="/therapien/schroepfen/">Schröpfen</a> im Detail ansehen</p></div></div>
+      <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Moxibustion<span class="kk-ico">+</span></button><div class="kk-a"><p>Erwärmen bestimmter Punkte mit getrocknetem Beifuss. Kommt meist ergänzend dazu, vor allem wenn Beschwerden bei Kälte schlimmer werden. Riecht kräftig, das sagen wir dir vorher.</p><p><a class="body-link" href="/therapien/moxibustion/">Moxibustion</a> im Detail ansehen</p></div></div>
+    </div>
+    </div>
+  </section>
+
+  <!-- BESCHWERDEN -->
+  <section class="section cl-related">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:8px">
+        <div class="section-label">Beschwerden</div>
+        <h2 class="section-title" style="margin:0 auto 14px">Weshalb Menschen aus St. Gallen <em>zu uns kommen.</em></h2>
+      </div>
+      <div class="cl-links" style="justify-content:center;margin-top:22px">
+        <a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a>
+        <a href="/beschwerden/migraene/" class="cl-chip">Migräne</a>
+        <a href="/beschwerden/schlafprobleme/" class="cl-chip">Schlafprobleme</a>
+        <a href="/beschwerden/kinderwunsch/" class="cl-chip">Kinderwunsch</a>
+        <a href="/beschwerden/stress-burnout/" class="cl-chip">Stress und Burnout</a>
+        <a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a>
+      </div>
+      <div class="kk-faq" style="margin-top:24px">
+        <div class="kk-item"><button class="kk-q open" onclick="kkToggle(this)" aria-expanded="true">Rücken und Nacken<span class="kk-ico">+</span></button><div class="kk-a open"><p>Der häufigste Grund, weit vor allem anderen. Meist geht es um Verspannungen aus dem Bürojob, manchmal um Ischiasbeschwerden, die bis ins Bein ziehen. Wir kombinieren Akupunktur oft mit Tuina oder Schröpfen und schauen nach zwei bis drei Sitzungen, ob sich etwas bewegt.</p></div></div>
+        <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Migräne und Kopfschmerzen<span class="kk-ico">+</span></button><div class="kk-a"><p>Hier ist die Datenlage vergleichsweise gut, siehe unten. Ziel ist nicht, den einzelnen Anfall zu stoppen, sondern die Häufigkeit über mehrere Wochen zu senken. Das braucht Geduld und eine Serie, kein einzelner Termin.</p></div></div>
+        <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Schlafprobleme<span class="kk-ico">+</span></button><div class="kk-a"><p>Einschlafen geht, Durchschlafen nicht. Oder umgekehrt. Wir schauen im Erstgespräch genau hin, weil Schlafprobleme selten allein kommen. Häufig hängen sie mit Stress, Schmerzen oder dem Zyklus zusammen, und dann behandeln wir zuerst das.</p></div></div>
+        <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Kinderwunsch<span class="kk-ico">+</span></button><div class="kk-a"><p>Viele kommen begleitend zu einer Kinderwunschbehandlung, manche vorher. Wir arbeiten hier bewusst zurückhaltend und stimmen uns mit deiner ärztlichen Behandlung ab. Versprechen machen wir keine, das wäre unseriös.</p></div></div>
+        <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Stress und Erschöpfung<span class="kk-ico">+</span></button><div class="kk-a"><p>Oft der Grund hinter dem Grund. Wer mit Nackenschmerzen kommt und 60 Stunden arbeitet, bekommt von uns beides angesprochen. Akupunktur kann die Anspannung senken, aber sie ersetzt keine Veränderung im Alltag, und das sagen wir auch so.</p></div></div>
+        <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Heuschnupfen<span class="kk-ico">+</span></button><div class="kk-a"><p>Saisonal, und am sinnvollsten, wenn du früh dran bist. Wer erst mitten in der Pollenzeit startet, hat weniger davon. Ideal ist ein Beginn einige Wochen vor deiner üblichen Saison.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIENLAGE -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Studienlage</div>
+      <h2 class="section-title">Was die Forschung <em>hergibt, und was nicht.</em></h2>
+      <p class="section-sub">Wir finden, du solltest das wissen, bevor du Geld ausgibst. Also ungeschönt.</p>
+      <p>Für <strong>chronische Schmerzen</strong> ist die Evidenz am solidesten. Eine Auswertung individueller Patientendaten aus 39 Studien mit rund 20'800 Personen kam zum Schluss, dass Akupunktur bei chronischen Rücken-, Nacken-, Schulter- und Kopfschmerzen sowie Kniearthrose wirksamer ist als keine Behandlung und auch besser abschneidet als eine Scheinbehandlung. Der Unterschied zur Scheinbehandlung ist dabei kleiner als der Unterschied zu gar keiner Behandlung. Die Effekte hielten über zwölf Monate weitgehend an (Vickers et al., <em>The Journal of Pain</em>, 2018, <a class="body-link" href="https://pubmed.ncbi.nlm.nih.gov/29198932/" target="_blank" rel="noopener">PMID 29198932</a>).</p>
+      <p>Für die <strong>Migräneprophylaxe</strong> kommt ein Cochrane-Review zum Ergebnis, dass Akupunktur die Anfallshäufigkeit senken kann und mindestens ähnlich wirksam sein dürfte wie eine medikamentöse Prophylaxe. Gegenüber einer Scheinbehandlung bleibt ein bescheidener Zusatznutzen (Linde et al., <em>Cochrane Database of Systematic Reviews</em>, 2016, CD001218, <a class="body-link" href="https://pubmed.ncbi.nlm.nih.gov/27351677/" target="_blank" rel="noopener">PMID 27351677</a>).</p>
+      <p>Bei <strong>Übelkeit und Erbrechen nach Operationen</strong> zeigt ein weiteres Cochrane-Review, dass die Stimulation des Punktes PC6 am Handgelenk etwa gleich gut wirkt wie gängige Medikamente gegen Übelkeit. Die Qualität der Evidenz gegenüber einer Scheinbehandlung stuften die Autor:innen allerdings als niedrig ein (Lee et al., <em>Cochrane Database of Systematic Reviews</em>, 2015, CD003281, <a class="body-link" href="https://pubmed.ncbi.nlm.nih.gov/26522652/" target="_blank" rel="noopener">PMID 26522652</a>).</p>
+      <p>Für viele andere Anwendungen ist die Studienlage dünn oder uneinheitlich. Das heisst nicht, dass nichts geht. Es heisst, dass wir dir keine Zahlen nennen, die es nicht gibt. Im Erstgespräch ordnen wir das für dein Anliegen ein.</p>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section class="section">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Ablauf</div>
+      <h2 class="section-title">Wie ein Termin bei uns <em>abläuft.</em></h2>
+      <p><strong>Erstgespräch und Anamnese, etwa 20 bis 30 Minuten.</strong> Wir fragen dich aus. Wann fing es an, was macht es besser, was schlechter, was hast du schon probiert, welche Medikamente nimmst du. Bring mit, was du an Befunden hast. Wenn du Bilder oder Berichte von der Ärztin hast, nimm sie mit.</p>
+      <p><strong>Untersuchung und Einschätzung.</strong> Wir schauen uns an, worum es körperlich geht, und sagen dir danach, ob und wie wir helfen können. An dieser Stelle entscheidet sich auch, ob wir dich zuerst zur ärztlichen Abklärung schicken.</p>
+      <p><strong>Behandlung, etwa 30 bis 45 Minuten.</strong> Die Nadeln sind dünner als ein Haar. Beim Setzen spüren die meisten ein kurzes Ziehen oder ein Kribbeln, danach oft eine angenehme Schwere. Dann liegst du eine Weile ruhig. Wenn etwas unangenehm ist, sag es, dann passen wir an.</p>
+      <p><strong>Danach.</strong> Manche sind direkt lockerer, andere merken erst am nächsten Tag etwas, und ein Teil spürt nach der ersten Sitzung noch wenig. Das ist normal. Nach zwei bis drei Sitzungen sollte sich abzeichnen, ob es in die richtige Richtung geht. Wenn nicht, besprechen wir das offen, statt einfach weiterzumachen.</p>
+    </div>
+  </section>
+
+  <!-- RED FLAGS -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap" style="max-width:820px">
+      <div style="background:#fff;border:1px solid var(--border);border-left:4px solid #E5484D;border-radius:14px;padding:24px 26px">
+        <div class="section-label" style="color:#E5484D">Bitte zuerst ärztlich abklären</div>
+        <h2 class="section-title" style="font-size:clamp(20px,2.4vw,28px);margin-bottom:12px">Wann TCM <em>nicht der erste Schritt ist.</em></h2>
+        <p style="margin-bottom:12px">Bei den folgenden Zeichen gehörst du zuerst in ärztliche Abklärung, nicht auf unsere Liege. Wir behandeln dich in diesen Fällen nicht, bevor das geklärt ist:</p>
+        <ul style="margin:0;padding-left:20px;font-size:15.5px;line-height:1.8;color:var(--mid)">
+          <li>Plötzlicher, sehr starker Kopfschmerz, der anders ist als alles, was du kennst</li>
+          <li>Schmerzen im Brustkorb, Atemnot, Lähmungen, Sprach- oder Sehstörungen</li>
+          <li>Taubheit im Schritt, Probleme beim Wasserlassen oder beim Stuhlgang zusammen mit Rückenschmerzen</li>
+          <li>Fieber zusammen mit starken Rücken- oder Kopfschmerzen</li>
+          <li>Ungewollter Gewichtsverlust, Nachtschweiss oder anhaltende Beschwerden nach einem Unfall</li>
+          <li>Verdacht auf einen Bruch, einen Infekt oder eine Blutungsneigung</li>
+        </ul>
+        <p style="margin:14px 0 0;font-size:14.5px;color:var(--muted)">Im Notfall wählst du 144. Alles hier ersetzt keine ärztliche Diagnose.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KRANKENKASSE -->
+  <section class="section">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Krankenkasse</div>
+      <h2 class="section-title">Akupunktur St. Gallen und die <em>Krankenkasse.</em></h2>
+      <p class="section-sub">Kurz zum Thema Akupunktur St. Gallen Krankenkasse: Die Behandlung läuft über die Zusatzversicherung, nicht über die Grundversicherung.</p>
+      <p>Der wichtigste Punkt zuerst: Akupunktur bei Therapeut:innen läuft über die <strong>Zusatzversicherung</strong> für Komplementärmedizin, nicht über die Grundversicherung. Ohne Zusatzversicherung zahlst du selbst. Das ist unabhängig davon, wie gut deine Praxis ist.</p>
+      <p>Damit deine Kasse zahlt, muss die behandelnde Person anerkannt sein. Die beiden gängigen Register sind <strong>EMR</strong> und <strong>ASCA</strong>. Alle Therapeut:innen an unserem St. Galler Standort sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden damit 80 bis 100 Prozent des Sitzungspreises übernommen, je nach Modell und Jahreslimite.</p>
+      <p>Wie viel es bei dir konkret ist, hängt an deinem Vertrag. Deshalb prüfen wir das kostenlos, bevor du das erste Mal kommst. Du sagst uns deine Kasse und dein Modell, wir sagen dir, womit du rechnen kannst. Ohne dass du dich zu etwas verpflichtest. Mehr dazu findest du auf unserer Seite zur <a class="body-link" href="/krankenkassen/">Krankenkasse</a>.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;margin-top:24px">
+        <div>
+          <div style="font-family:var(--font-sans);font-weight:800;font-size:17px;color:var(--black);margin-bottom:4px">Deckungscheck per WhatsApp</div>
+          <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:60ch">Schick uns Kasse und Modell, wir sagen dir vor dem Termin, was deine Zusatzversicherung übernimmt. Kostenlos, unverbindlich.</div>
+        </div>
+        <a class="btn-secondary" style="flex-shrink:0" href="https://wa.me/41775236122?text=Hallo%2C%20k%C3%B6nnt%20ihr%20meine%20Kassendeckung%20f%C3%BCr%20Akupunktur%20in%20St.%20Gallen%20pr%C3%BCfen%3F" target="_blank" rel="nofollow noopener">Deckung prüfen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOSTEN -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Kosten</div>
+      <h2 class="section-title">Was eine Behandlung <em>kostet.</em></h2>
+      <p class="section-sub">So setzen sich die Akupunktur St. Gallen Kosten zusammen: abgerechnet wird nach Behandlungsdauer, nicht als Pauschale.</p>
+      <p>Wir rechnen nach dem anerkannten <strong>Tarif 590</strong> für Komplementärmedizin ab, in Zeiteinheiten von fünf Minuten. Was du zahlst, richtet sich damit nach der Dauer der Behandlung. Eine Sitzung liegt bei rund 130 bis 160 Franken, das Erstgespräch mit Anamnese dauert länger als eine Folgesitzung und liegt entsprechend höher. Den konkreten Betrag für deine geplante Behandlung nennen wir dir vorab, bevor behandelt wird.</p>
+      <p>Mit einer Zusatzversicherung für Komplementärmedizin trägst du davon je nach Kasse und Modell meist nur einen kleinen Teil selbst. Ohne Zusatzversicherung zahlst du den vollen Betrag. Chinesische Kräuter werden separat verrechnet, weil die Rezeptur individuell zusammengestellt wird.</p>
+      <p>Wie viele Sitzungen es braucht, hängt vom Anliegen ab. Bei akuten Verspannungen sind es oft wenige, bei einer Migräneprophylaxe eher eine Serie über mehrere Wochen. Wir sagen dir nach dem Erstgespräch, womit du realistisch rechnen musst, und wir verkaufen dir keine Pakete im Voraus.</p>
+      <p>Details zur Kostenübernahme findest du auf unserer Seite zur <a class="body-link" href="/krankenkassen/">Krankenkasse</a>.</p>
+    </div>
+  </section>
+
+  <!-- ERREICHBARKEIT -->
+  <section class="section">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-label">Anfahrt</div>
+      <h2 class="section-title">Erreichbarkeit, <em>Bahnhof und Parkplatz.</em></h2>
+      <p><strong>Mit dem Zug.</strong> Die Praxis liegt zentral am Oberen Graben 22, wenige Gehminuten vom Hauptbahnhof St. Gallen. St. Gallen ist ein Verkehrsknoten, aus dem ganzen Kanton, dem Rheintal und dem Appenzellerland bist du schnell da. Vom Bahnhof gehst du zu Fuss oder nimmst den Bus in die Innenstadt.</p>
+      <p><strong>Mit dem Auto.</strong> Anfahrt über die A1, Ausfahrt St. Gallen. Parkieren kannst du direkt im Parkhaus Oberer Graben vor der Praxis, mitten in der Innenstadt.</p>
+      <p><strong>Aus der Region.</strong> Zu uns kommen Patient:innen aus der Stadt St. Gallen sowie aus Gossau, Wittenbach, Gaiserwald, Herisau, Teufen und dem übrigen Appenzellerland. Wer aus dem Umland anreist, ist mit Bahn oder Bus meist schneller als mit dem Auto.</p>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section contact-section-inline" id="kontakt" style="background:var(--bg);scroll-margin-top:68px">
+    <div class="wrap">
+      <div class="contact-inline-grid">
+        <div class="reveal">
+          <div class="section-label">Passende Hilfe finden</div>
+          <h2 class="section-title">Termin in <em>St. Gallen</em> anfragen.</h2>
+          <p class="section-sub" style="margin-bottom:0">Kurz schildern, wir melden uns mit einem passenden Vorschlag. Kostenlos und unverbindlich.</p>
+          <div class="intake-trust-row">
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Zentral am Oberen Graben in St. Gallen</div>
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Kassendeckung vorab geprüft</div>
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>EMR- und ASCA-anerkannt (Zusatzversicherung)</div>
+          </div>
+          <div class="contact-methods-mini" style="gap:8px">
+            <a href="tel:+41775236122" class="contact-method-mini phone-quiet">
+              <div class="cm-icon-mini cm-phone"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"></path></svg></div>
+              <div><strong>Telefonisch (Mo bis Sa)</strong><span>+41 77 523 61 22</span></div>
+            </a>
+            <a href="mailto:termine@tcm.ch" class="contact-method-mini">
+              <div class="cm-icon-mini cm-mail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg></div>
+              <div><strong>E-Mail</strong><span>termine@tcm.ch</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Wir melden uns mit einem Terminvorschlag.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>St. Gallen</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="anliegen" rows="2" placeholder="z. B. Akupunktur bei Rückenschmerzen"></textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Termin anfragen</button><p class="termin-under-btn">Wir melden uns mit einem Terminvorschlag für die Praxis in St. Gallen.</p></form></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="kk-section">
+    <div class="wrap">
+      <div class="kk-inner">
+        <div class="kk-header" style="text-align:center">
+          <div class="section-label">Häufige Fragen</div>
+          <h2 class="section-title" style="margin:0 auto 14px">Akupunktur St. Gallen, <em>kurz beantwortet.</em></h2>
+        </div>
+        <div class="kk-faq">
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Was kostet Akupunktur in St. Gallen?<span class="kk-ico">+</span></button><div class="kk-a"><p>Eine Sitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 nach Behandlungsdauer. Das Erstgespräch mit Anamnese dauert länger und liegt entsprechend höher. Mit einer Zusatzversicherung für Komplementärmedizin trägst du meist nur einen kleinen Teil selbst. Chinesische Kräuter rechnen wir separat ab, weil die Rezeptur individuell ist.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Übernimmt die Krankenkasse Akupunktur in St. Gallen?<span class="kk-ico">+</span></button><div class="kk-a"><p>Akupunktur und TCM laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt, das ist die Voraussetzung für eine Beteiligung. Bei den meisten Kassen werden 80 bis 100 Prozent des Sitzungspreises übernommen. Wir prüfen deine Deckung kostenlos, bevor du das erste Mal kommst.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wie schnell bekomme ich einen Termin in St. Gallen?<span class="kk-ico">+</span></button><div class="kk-a"><p>Schildere uns kurz dein Anliegen, wir melden uns in der Regel am selben Arbeitstag. Ein Ersttermin am Oberen Graben ist je nach Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, auch früh am Morgen oder gegen Abend.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Brauche ich eine Überweisung vom Arzt?<span class="kk-ico">+</span></button><div class="kk-a"><p>Nein. Du kannst direkt einen Termin anfragen, eine ärztliche Überweisung ist für die Behandlung bei uns nicht nötig. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wie komme ich zur Praxis, und wo kann ich parkieren?<span class="kk-ico">+</span></button><div class="kk-a"><p>Die Praxis liegt zentral am Oberen Graben 22, wenige Gehminuten vom Hauptbahnhof St. Gallen. Mit dem Auto parkst du direkt im Parkhaus Oberer Graben vor der Praxis. Aus Gossau, Wittenbach, Herisau, Teufen und dem Appenzellerland bist du mit Bahn oder Bus schnell da.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Bei welchen Beschwerden hilft TCM?<span class="kk-ico">+</span></button><div class="kk-a"><p>Am häufigsten kommen Menschen mit Rücken- und Nackenschmerzen, Migräne, Schlafproblemen, Stress und Erschöpfung, Zyklusbeschwerden oder Kinderwunsch. Am besten dokumentiert ist die Wirkung bei chronischen Schmerzen und in der Migräneprophylaxe. Im Erstgespräch sagen wir dir ehrlich, ob TCM in deinem Fall sinnvoll ist.</p></div></div>
+        </div>
+        <p style="text-align:center;margin:26px auto 0;font-size:14.5px;color:var(--mid)">Noch eine Frage offen? <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zu%20Akupunktur%20in%20St.%20Gallen." target="_blank" rel="nofollow noopener" style="color:var(--blue);font-weight:700">Frag uns kurz per WhatsApp</a>, wir antworten dir persönlich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-band" style="background:var(--blue);padding:48px 0">
+    <div class="wrap" style="text-align:center">
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Bereit für deinen ersten Termin?</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Akupunktur und TCM in St. Gallen, zentral am Oberen Graben. Schildere uns dein Anliegen, wir prüfen deine Kassendeckung und schlagen dir einen Termin vor.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn-white" href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>
+        <a href="tel:+41775236122" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">+41 77 523 61 22</a>
+      </div>
+    </div>
+  </section>
+
+</div>
