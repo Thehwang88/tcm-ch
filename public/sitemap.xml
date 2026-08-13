@@ -787,6 +787,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/aphten/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/raynaud-syndrom/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/long-covid/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/partner/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
