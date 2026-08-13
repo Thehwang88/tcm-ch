@@ -6,6 +6,7 @@
 // "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
+import homeBody from '../../data/home-body.html?raw';
 import { prefillForm } from '../../data/form-prefill';
 import { inlineBodyImage } from '../../data/inline-body-image';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
@@ -27,11 +28,13 @@ const url = `https://tcm.ch/therapien/${slug}/`;
 // Per-slug overrides (default templates otherwise).
 const TITLE_OVERRIDE: Record<string, string> = {
   elektroakupunktur: 'Elektroakupunktur in der Schweiz | TCM.ch',
+  shiatsu: 'Shiatsu – Behandlung, Wirkung & Kosten | TCM.ch',
 };
 const title = TITLE_OVERRIDE[slug] ?? `${name} – TCM-Behandlung | TCM.ch`;
 const DESC_OVERRIDE: Record<string, string> = {
   schroepfen: 'Schröpfen und blutiges Schröpfen (Hijama) bei TCM.ch: EMR-/ASCA-anerkannt, Zusatzversicherung 80–100 %. Geprüfte Therapeuten an 13 Standorten.',
   elektroakupunktur: 'Elektroakupunktur kombiniert Akupunktur mit sanften elektrischen Impulsen für eine gleichmässige Reizung. EMR-/ASCA-anerkannt, an 13 Standorten.',
+  shiatsu: 'Shiatsu-Behandlung in der Deutschschweiz: Ablauf, Wirkung, Kosten und Krankenkasse ehrlich erklärt. Termine an unseren Standorten anfragen.',
 };
 const description = DESC_OVERRIDE[slug] ?? `${name} bei TCM.ch: medizinische TCM, EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden.`;
 const schema = [
@@ -63,8 +66,14 @@ if (FAQ_OVERRIDE[slug]) {
 }
 // Prefill the contact form with this therapy as the topic (editable; source in hidden quelle).
 // + move the orphaned sticky body image into the text flow (after the intro paragraph).
-const prefilledBody = appendSidebarAllLink(
+let prefilledBody = appendSidebarAllLink(
   inlineBodyImage(prefillForm(body, `Ich interessiere mich für ${name}.`, `Therapie: ${name}`)),
   'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
+// Shiatsu: Standard-Offer-Block ("Starte ohne Risiko") 1:1 von Home wiederverwenden.
+if (slug === 'shiatsu') {
+  const os = homeBody.indexOf('<section id="s-offer"');
+  const offer = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', os) + '</section>'.length) : '';
+  prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', offer + '<div id="therapie-cities-section">');
+}
 ---
 <SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} />
