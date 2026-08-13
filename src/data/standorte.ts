@@ -33,6 +33,7 @@ export interface Standort {
   therapien: string[];
   beschwerden: string[];
   team: { name: string; rolle: string; bild: string; gln?: string }[];
+  faqs?: { q: string; a: string }[];
   reviews?: { heading?: string; items: { autor: string; text: string; stern: number; kontext?: string }[] };
   ablaufBlock?: boolean;
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
@@ -1275,24 +1276,28 @@ export const standorte: Record<string, Standort> = {
       }
     ]
   },
+  // TODO(2026-12-01): Nach der Eröffnung entfernen: Eröffnungs-Badge im hero.banner,
+  // "Eröffnung 1. Dezember 2026" im locationHook und den Überbrückungssatz (Partnerpraxis
+  // Hwang) im intro.body. Der permanente Partnersatz in anfahrt.autoParken bleibt.
+  // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten — vor Eröffnung für Ohmstrasse 14 bestätigen.
   "zuerich-oerlikon": {
     "slug": "zuerich-oerlikon",
     "stadt": "Zürich Oerlikon",
     "seo": {
       "title": "TCM Oerlikon – Akupunktur in Zürich Oerlikon | TCM.ch",
-      "description": "TCM Oerlikon, Schulstrasse 3: Akupunktur & Chinesische Medizin in Zürich Oerlikon. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.",
+      "description": "TCM Oerlikon, Ohmstrasse 14: Akupunktur & Chinesische Medizin in Zürich Oerlikon. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.",
       "h1": "TCM <em>Oerlikon</em>: Akupunktur in Zürich Oerlikon",
       "schemaName": "TCM Oerlikon – TCM.ch"
     },
     "hero": {
-      "banner": "Standort Zürich Oerlikon",
+      "banner": "Neu: Eröffnung 1. Dezember 2026",
       "lead": "Deine Beschwerden bekommen hier die Zeit, die sie brauchen.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
-      "locationHook": "Schulstrasse 3, 8050 Zürich"
+      "locationHook": "Ohmstrasse 14, 8050 Zürich · Eröffnung 1. Dezember 2026"
     },
     "nap": {
-      "strasse": "Schulstrasse 3",
+      "strasse": "Ohmstrasse 14",
       "plz": "8050",
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
@@ -1306,15 +1311,16 @@ export const standorte: Record<string, Standort> = {
           "tag": "Sa",
           "zeit": "7:30–16:30 Uhr"
         }
-      ]
+      ],
+      "geo": { "lat": 47.4112, "lng": 8.5459 }
     },
     "intro": {
-      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Oerlikon</strong> liegt im Kreis 11, direkt erreichbar vom <strong>Bahnhof Zürich Oerlikon</strong>, einem der grössten S-Bahn-Knoten der Schweiz. Ideal für Berufstätige und Pendler:innen. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf, kommen Patient:innen regelmässig zu uns. Die zentrale Lage am Bahnhof Oerlikon macht uns für ganz Zürich Nord und das Zürcher Unterland erreichbar.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt.</p>"
+      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p><strong>Neu ab 1. Dezember 2026:</strong> Unsere Praxis an der <strong>Ohmstrasse 14</strong> liegt wenige Gehminuten vom <strong>Bahnhof Oerlikon</strong>, einem der grössten ÖV-Knoten der Schweiz. Ob du mit der S-Bahn aus Zürich, dem Glattal oder von Winterthur kommst: Du bist in wenigen Minuten bei uns. Bis zur Eröffnung behandelt dich in Oerlikon unsere Partnerpraxis <a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener'>Hwang an der Schulstrasse 3</a>.</p><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>. Unsere Schwester-Standorte findest du in der <a href='/standorte/zuerich-city/'>Zürcher City</a> und in <a href='/standorte/zuerich-hoengg/'>Höngg</a>.</p><p>Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, TCM-Beratung, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt. Medizinische und entspannende Behandlungen findest du gesammelt unter <a href='/massage-oerlikon/'>Massage in Oerlikon</a>.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf, kommen Patient:innen regelmässig zu uns. Die zentrale Lage am Bahnhof Oerlikon macht uns für ganz Zürich Nord und das Zürcher Unterland erreichbar. Für <strong>Neu-Oerlikon</strong> und den <strong>Glattpark</strong> sind wir die nächstgelegene Praxis, und wer beim Hallenstadion oder der Messe arbeitet, erreicht uns in der Mittagspause.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt.</p>"
     },
     "anfahrt": {
       "oev": "<strong>Bahnhof Zürich Oerlikon</strong> in wenigen Gehminuten. S-Bahn S2, S5, S6, S7, S8, S9, S14, S15, S16, S19, S21, S24 sowie IC- und IR-Verbindungen halten in Oerlikon. <strong>Tram 10, 11, 14</strong> sowie zahlreiche Buslinien (Linie 32, 61, 62, 63, 75) ergänzen das Netz.",
-      "autoParken": "Anfahrt über A1 (Ausfahrt Zürich-Affoltern oder Zürich-Seebach). Parkmöglichkeiten: <strong>Parkhaus Hallenstadion</strong>, <strong>Parkhaus Oerlikon</strong>, Parkhaus Sternen Oerlikon."
+      "autoParken": "Anfahrt über A1 (Ausfahrt Zürich-Affoltern oder Zürich-Seebach). Parkmöglichkeiten: <strong>Parkhaus Hallenstadion</strong>, <strong>Parkhaus Oerlikon</strong>, Parkhaus Sternen Oerlikon. Teil des TCM.ch Gesundheitsnetzwerks. In Oerlikon ebenfalls vertreten: unsere Partnerpraxis <a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener'>Praxis Hwang an der Schulstrasse 3</a>."
     },
     "therapien": [
       "akupunktur",
@@ -1323,8 +1329,13 @@ export const standorte: Record<string, Standort> = {
       "tuina",
       "akupressur",
       "shiatsu",
-      "gua-sha",
-      "physiotherapie"
+      "gua-sha"
+    ],
+    "faqs": [
+      { "q": "Wo finde ich TCM in Oerlikon?", "a": "Unsere Praxis liegt an der Ohmstrasse 14, wenige Gehminuten vom Bahnhof Oerlikon, gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern und dem Glattpark. Die genaue Adresse und Öffnungszeiten findest du oben auf dieser Seite, Termine gibt es meist innert weniger Tage." },
+      { "q": "Welche Behandlungen bietet der Standort Oerlikon an?", "a": "Akupunktur und TCM-Beratung gehören fest zum Angebot, dazu je nach Team weitere Methoden wie Schröpfen oder Kräutertherapie. Was aktuell verfügbar ist, siehst du im Therapien-Block oben oder du fragst kurz per WhatsApp nach." },
+      { "q": "Zahlt die Krankenkasse die Behandlung in Oerlikon?", "a": "Über die Zusatzversicherung Komplementärmedizin beteiligen sich viele Kassen mit 80 bis 100 Prozent, unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
+      { "q": "Wie schnell bekomme ich in Oerlikon einen Termin?", "a": "Meist innert weniger Tage. Frag direkt über das Formular auf dieser Seite oder per WhatsApp an, wir melden uns in der Regel am gleichen Werktag mit einem Terminvorschlag." }
     ],
     "beschwerden": [
       "rueckenschmerzen",

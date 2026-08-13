@@ -61,8 +61,8 @@ export const clinics: Clinic[] = [
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
-    street: 'Schulstrasse 3', postalCode: '8050', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4117, lng: 8.5478 },
+    street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 },
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   { id: 'zuerich-city', name: 'Zürich City', city: 'Zürich', region: 'Zürich',
