@@ -25,5 +25,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
   "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose",
   "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs",
-  "gastritis", "rosacea", "hueftschmerzen"
+  "gastritis", "rosacea", "hueftschmerzen",
+  "aphten", "raynaud-syndrom", "long-covid"
 ];
