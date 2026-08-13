@@ -184,6 +184,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
       </section>
       <div id="standort-content">
         <IntroNap data={data} />
+        {data.extraBlock && <Fragment set:html={data.extraBlock} />}
         <Therapien data={data} />
         <Kraeuter />
         <Beschwerden data={data} />
