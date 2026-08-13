@@ -54,6 +54,13 @@ const TITLES: Record<string, string> = {
   gastritis: 'Gastritis – TCM-Behandlung | TCM.ch',
   rosacea: 'Rosacea – TCM-Behandlung | TCM.ch',
   hueftschmerzen: 'Hüftschmerzen – TCM-Behandlung | TCM.ch',
+  sehnenscheidenentzuendung: 'Sehnenscheidenentzündung: Behandlung, Dauer & was hilft | TCM.ch',
+  nesselsucht: 'Nesselsucht (Urtikaria): Behandlung & was wirklich hilft | TCM.ch',
+};
+// Per-slug dateModified for pages upgraded to article standard.
+const MODIFIED: Record<string, string> = {
+  sehnenscheidenentzuendung: '2026-08-13',
+  nesselsucht: '2026-08-13',
 };
 const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
@@ -96,7 +103,8 @@ const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen 
 const schema: object[] = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
-    about: { '@type': 'MedicalCondition', name: condName } },
+    about: { '@type': 'MedicalCondition', name: condName },
+    ...(MODIFIED[slug!] ? { dateModified: MODIFIED[slug!] } : {}) },
   { '@context': 'https://schema.org', '@type': 'MedicalCondition', name: condName, url },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
