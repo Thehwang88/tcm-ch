@@ -69,6 +69,13 @@ const TEL = `tel:+${site.whatsapp}`;
     var bar = document.querySelector('.scb-bar');
     if (!bar) return;
     var primary = bar.querySelector('.scb-primary');
+    // SG-Seiten: einheitliches Formular-CTA-Wording ("Gratis Erstgespräch" statt "Kostenlos anfragen"); Ziel-Link unverändert, alle anderen Seiten unberührt.
+    if (primary && /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname)) {
+      for (var i = 0; i < primary.childNodes.length; i++) {
+        var tn = primary.childNodes[i];
+        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Gratis Erstgespräch ';
+      }
+    }
     if (primary) primary.addEventListener('click', function (e) {
       // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.
       var form = document.querySelector('#home-contact-form, .inline-form-card');
