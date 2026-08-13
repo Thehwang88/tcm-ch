@@ -16,6 +16,7 @@ import { prefillStandort } from '../../data/form-prefill';
 import ueberUns from '../../data/ueber-uns-body.html?raw';
 import homeBody from '../../data/home-body.html?raw';
 import { getStandort, waHref, telHref } from '../../data/standorte';
+import { symptomCards } from '../../data/symptom-cards';
 import type { Standort } from '../../data/standorte';
 import Hero from '../../components/standort/Hero.astro';
 import IntroNap from '../../components/standort/IntroNap.astro';
@@ -137,7 +138,18 @@ if (migrated) {
     if (homeGrid && lg0 >= 0) outBody = outBody.slice(0, lg0) + homeGrid + outBody.slice(endOfDiv(outBody, lg0));
   }
 
-  const beschwerdenLinks = `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufig behandelte Beschwerden</h2><p class="section-sub">Diese Beschwerden behandeln wir in ${name} – und an allen TCM.ch-Standorten.</p><div class="cl-links"><a href="/beschwerden/rueckenschmerzen/" class="cl-chip">Rückenschmerzen</a><a href="/beschwerden/nackenschmerzen/" class="cl-chip">Nackenschmerzen</a><a href="/beschwerden/migraene/" class="cl-chip">Migräne</a><a href="/beschwerden/schlafstoerungen/" class="cl-chip">Schlafstörungen</a><a href="/beschwerden/burnout/" class="cl-chip">Burnout</a><a href="/beschwerden/menstruationsbeschwerden/" class="cl-chip">Menstruationsbeschwerden</a></div></div></section>`;
+  // "Häufige Beschwerden" für die Legacy-Leaves — gleiches Schema wie Beschwerden.astro
+  // (Basis-Set + Rotation, unique Listen, Anker-Mix), bis diese Slugs migriert sind.
+  const LEGACY_BESCHWERDEN: Record<string, { stadt: string; intro: string; slugs: string[] }> = {
+    'st-gallen': { stadt: 'St. Gallen', intro: 'Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in St. Gallen zu uns kommen.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'reizdarm', 'schulterschmerzen'] },
+    'zuerich-city': { stadt: 'Zürich', intro: 'Ein Überblick über die Beschwerden, die wir in Zürich am häufigsten behandeln. Details zu Ablauf und Kosten stehen auf den einzelnen Seiten.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'wechseljahre', 'endometriose', 'knieschmerzen'] },
+    basel: { stadt: 'Basel', intro: 'Diese Beschwerden sehen wir in unserer Praxis in Basel besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'heuschnupfen', 'nackenschmerzen'] },
+    bottighofen: { stadt: 'Bottighofen', intro: 'Womit kommen die Leute in Bottighofen zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'tinnitus', 'wechseljahre'] },
+  };
+  const lb = LEGACY_BESCHWERDEN[slug!];
+  const beschwerdenLinks = lb
+    ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufige Beschwerden in ${lb.stadt}</h2><p class="section-sub">${lb.intro}</p><div class="cl-links">${lb.slugs.map((s, i) => `<a href="/beschwerden/${s}/" class="cl-chip">${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${symptomCards[s]?.name ?? s}</a>`).join('')}</div></div></section>`
+    : '';
   const filledBody = prefillStandort(outBody, name)
     .replace(
       /<button type="button" class="btn-primary" onclick="openTerminForm\(\)" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">([\s\S]*?)<\/button>/,
@@ -158,10 +170,9 @@ if (migrated) {
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
     if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
-    sgBody = sgBody + sgOfferBand;
+    sgBody = sgBody + beschwerdenLinks + sgOfferBand;
   }
-  spaBody = (slug === 'st-gallen') ? sgBody
-    : filledBody + ((slug === 'winterthur-marktgasse' || slug === 'bottighofen') ? '' : beschwerdenLinks);
+  spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks;
 }
 
 const data = migrated as Standort;
