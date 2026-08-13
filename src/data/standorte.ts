@@ -34,6 +34,8 @@ export interface Standort {
   anfahrt: { oev: string; autoParken: string };
   therapien: string[];
   beschwerden: string[];
+  /** Intro sentence for the "Häufige Beschwerden" section; rotation variants so pages don't clone. */
+  beschwerdenIntro?: string;
   team: { name: string; rolle: string; bild: string; gln?: string }[];
   faqs?: { q: string; a: string }[];
   reviews?: { heading?: string; items: { autor: string; text: string; stern: number; kontext?: string }[] };
@@ -79,7 +81,8 @@ export const standorte: Record<string, Standort> = {
       autoParken: 'Anfahrt über A7 (Ausfahrt Kreuzlingen). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Stadthaus</strong>, <strong>Parkhaus Bärenplatz</strong>, Parkhaus Karussell.',
     },
     therapien: ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
-    beschwerden: ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'verdauungsprobleme', 'zyklusbeschwerden', 'kinderwunsch'],
+    beschwerdenIntro: 'Diese Beschwerden sehen wir in unserer Praxis in Kreuzlingen besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
+    beschwerden: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'nackenschmerzen', 'wechseljahre', 'reizdarm'],
     team: [],
     reviews: {
       items: [
@@ -151,15 +154,15 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in Frauenfeld zu uns kommen.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "ischias",
+      "heuschnupfen"
     ],
     "team": [],
     "reviews": {
@@ -322,15 +325,16 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Womit kommen die Leute in Rorschach zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "tinnitus",
+      "knieschmerzen",
+      "hexenschuss"
     ],
     "team": [],
     "reviews": {
@@ -493,15 +497,15 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Volketswil am häufigsten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "schulterschmerzen",
+      "endometriose"
     ],
     "team": [],
     "reviews": {
@@ -664,15 +668,16 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Ein Überblick über die Beschwerden, die wir in Wil am häufigsten behandeln. Details zu Ablauf und Kosten stehen auf den einzelnen Seiten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "nackenschmerzen",
+      "ischias",
+      "wechseljahre"
     ],
     "team": [],
     "reviews": {
@@ -845,15 +850,15 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Diese Beschwerden sehen wir in unserer Praxis an der Münzgasse in Winterthur besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "heuschnupfen",
+      "tinnitus"
     ],
     "team": [],
     "reviews": {
@@ -1010,7 +1015,7 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende <a href='/standorte/winterthur-muenzgasse/'>Praxis an der Münzgasse</a>. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
+      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt. Beide Winterthurer Adressen bieten auch <a href='/massage-winterthur/'>Massage in Winterthur</a> an, medizinisch oder zur Entspannung.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende <a href='/standorte/winterthur-muenzgasse/'>Praxis an der Münzgasse</a>. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon kommen Patient:innen regelmässig zu uns. Die Lage an der Marktgasse macht uns aus der ganzen Region gut erreichbar.</p>"
     },
     "anfahrt": {
@@ -1027,15 +1032,16 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Womit kommen die Leute an der Marktgasse in Winterthur zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "knieschmerzen",
+      "schulterschmerzen",
+      "hexenschuss"
     ],
     "team": [
       {
@@ -1152,15 +1158,15 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
+    "beschwerdenIntro": "Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in Zürich Höngg zu uns kommen.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "reizdarm",
+      "endometriose"
     ],
     "team": [],
     "reviews": {
@@ -1282,7 +1288,7 @@ export const standorte: Record<string, Standort> = {
   // "Eröffnung 1. Dezember 2026" im locationHook und den "Neu ab 1.12.2026"-Zusatz auf
   // Karte 1 im extraBlock ("Zwei Praxen in Oerlikon"). Der Block selbst und der permanente
   // Partnersatz in anfahrt.autoParken bleiben dauerhaft.
-  // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten — vor Eröffnung für Ohmstrasse 14 bestätigen.
+  // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten, vor Eröffnung für Ohmstrasse 14 bestätigen.
   "zuerich-oerlikon": {
     "slug": "zuerich-oerlikon",
     "stadt": "Zürich Oerlikon",
@@ -1341,15 +1347,16 @@ export const standorte: Record<string, Standort> = {
       { "q": "Zahlt die Krankenkasse die Behandlung in Oerlikon?", "a": "Über die Zusatzversicherung Komplementärmedizin beteiligen sich viele Kassen mit 80 bis 100 Prozent, unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
       { "q": "Wie schnell bekomme ich in Oerlikon einen Termin?", "a": "Meist innert weniger Tage. Frag direkt über das Formular auf dieser Seite oder per WhatsApp an, wir melden uns in der Regel am gleichen Werktag mit einem Terminvorschlag." }
     ],
+    "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Zürich Oerlikon am häufigsten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "nackenschmerzen",
       "migraene",
-      "schlafprobleme",
+      "schlafstoerungen",
       "stress-burnout",
-      "verdauungsprobleme",
-      "zyklusbeschwerden",
-      "kinderwunsch"
+      "kinderwunsch",
+      "nackenschmerzen",
+      "tinnitus",
+      "hexenschuss"
     ],
     "team": [],
     "reviews": {

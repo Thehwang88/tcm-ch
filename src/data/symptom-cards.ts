@@ -18,6 +18,16 @@ export const symptomCards: Record<string, SymptomCard> = {
   verdauungsprobleme: { name: 'Verdauungsprobleme', tagline: 'Reizdarm, Blähungen, Unverträglichkeiten ohne klare Ursache', img: '/images/img-5db981915fc8.webp' },
   zyklusbeschwerden: { name: 'Zyklusbeschwerden', tagline: 'Schmerzen, unregelmässiger Zyklus, Wechseljahre', img: '/images/img-c225ce95a903.webp' },
   kinderwunsch: { name: 'Kinderwunsch', tagline: 'Unterstützung der Fertilität – natürlich oder begleitend zur Behandlung', img: '/images/img-9f85d23c07b4.webp' },
+  schlafstoerungen: { name: 'Schlafstörungen', tagline: 'Einschlafen, Durchschlafen, erholt aufwachen', img: '/images/img-a8a0f2e64199.webp' },
+  ischias: { name: 'Ischias', tagline: 'Wenn es vom Rücken bis ins Bein zieht', img: '/images/img-f7f113048735.webp' },
+  wechseljahre: { name: 'Wechseljahre', tagline: 'Wallungen, Schlaf und Stimmung in Balance bringen', img: '/images/img-c225ce95a903.webp' },
+  heuschnupfen: { name: 'Heuschnupfen', tagline: 'Vorbeugend behandeln, bevor die Pollen fliegen', img: '/images/img-5db981915fc8.webp' },
+  reizdarm: { name: 'Reizdarm', tagline: 'Bauchschmerzen, Blähungen und unruhige Verdauung', img: '/images/img-5db981915fc8.webp' },
+  tinnitus: { name: 'Tinnitus', tagline: 'Wenn das Ohrgeräusch nicht mehr verschwindet', img: '/images/img-49abc5b4795f.webp' },
+  knieschmerzen: { name: 'Knieschmerzen', tagline: 'Von Arthrose bis Überlastung beim Sport', img: '/images/img-4357832d6bef.webp' },
+  endometriose: { name: 'Endometriose', tagline: 'Begleitung bei Schmerzen und Zyklusbeschwerden', img: '/images/img-c225ce95a903.webp' },
+  schulterschmerzen: { name: 'Schulterschmerzen', tagline: 'Frozen Shoulder, Verspannung und Überlastung', img: '/images/img-49abc5b4795f.webp' },
+  hexenschuss: { name: 'Hexenschuss', tagline: 'Akute Blockade, schnell wieder beweglich', img: '/images/img-f7f113048735.webp' },
 };
 
 export const symptomCard = (slug: string): SymptomCard | undefined => symptomCards[slug];
