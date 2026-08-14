@@ -8,7 +8,7 @@
 // Same doorway logic as the beschwerden nested-combo prune.
 
 // Real nested therapy sub-pages that must stay live (not doorway combos).
-const ALLOW = new Set(["schroepfen/blutiges-schroepfen", "schroepfen/hijama"]);
+const ALLOW = new Set(["schroepfen/blutiges-schroepfen", "schroepfen/hijama", "akupunktur/schwangerschaft"]);
 
 function gone() {
   return new Response(
