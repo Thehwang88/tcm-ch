@@ -43,7 +43,7 @@ fetch('/api/anfrage', {
   headers:{'Content-Type':'application/json'},
   body: JSON.stringify(data)
 }).then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
-.then(function(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'form_submit', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle || location.pathname }); if(card){ card.innerHTML = okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
+.then(function(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle || location.pathname }); if(card){ card.innerHTML = okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
 .catch(function(){
   if(btn){ btn.disabled = false; btn.innerHTML = btn.dataset.label || 'Los geht\'s'; }
   if(window.turnstile && tsEl){ try{ window.turnstile.reset(tsEl); }catch(_){} }
