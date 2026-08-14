@@ -804,7 +804,25 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
+    <loc>https://tcm.ch/beschwerden/lippenherpes/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/reizblase/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/spannungskopfschmerzen/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>  <url>
     <loc>https://tcm.ch/partner/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -1047,6 +1065,12 @@
   <url>
     <loc>https://tcm.ch/therapien/schroepfen/blutiges-schroepfen/</loc>
     <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/therapien/akupunktur/schwangerschaft/</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

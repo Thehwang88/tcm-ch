@@ -81,6 +81,10 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [],
     "related": [
       {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      },
+      {
         "slug": "kieferschmerzen",
         "label": "Kieferschmerzen"
       },
@@ -148,6 +152,10 @@ export const beschwerden: Beschwerde[] = [
     ],
     "related": [
       {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      },
+      {
         "slug": "trigeminusneuralgie",
         "label": "Trigeminusneuralgie"
       },
@@ -202,6 +210,10 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "related": [
+      {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      },
       {
         "slug": "kieferschmerzen",
         "label": "Kieferschmerzen"

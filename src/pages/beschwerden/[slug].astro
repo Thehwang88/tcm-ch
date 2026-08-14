@@ -43,9 +43,11 @@ const url = `https://tcm.ch/beschwerden/${slug}/`;
 // Per-slug title overrides from the content briefs; template default otherwise.
 const TITLES: Record<string, string> = {
   guertelrose: 'Gürtelrose & Nervenschmerzen – TCM | TCM.ch',
+  migraene: 'Akupunktur bei Migräne – TCM-Behandlung | TCM.ch',
   kieferschmerzen: 'Kieferschmerzen & CMD – TCM-Behandlung | TCM.ch',
   'morbus-crohn': 'Morbus Crohn – begleitende TCM | TCM.ch',
   hyperhidrose: 'Starkes Schwitzen (Hyperhidrose) – TCM | TCM.ch',
+  spannungskopfschmerzen: 'Spannungskopfschmerzen – TCM | TCM.ch',
   'colitis-ulcerosa': 'Colitis ulcerosa – begleitende TCM | TCM.ch',
   tennisarm: 'Tennisarm & Golferarm – TCM-Behandlung | TCM.ch',
   'cluster-kopfschmerzen': 'Cluster-Kopfschmerzen – begleitende TCM | TCM.ch',
@@ -68,6 +70,10 @@ const MODIFIED: Record<string, string> = {
 const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
 const DESCRIPTIONS: Record<string, string> = {
+  migraene: 'Akupunktur bei Migräne: Attacken seltener machen, Trigger verstehen, Medikamente ergänzen. TCM-Behandlung an 13 Standorten, EMR/ASCA-anerkannt.',
+  lippenherpes: 'Immer wieder Lippenherpes? TCM mit Kräutertherapie und Akupunktur bei häufigen Herpesschüben: Rezidive seltener machen. EMR/ASCA-anerkannt.',
+  reizblase: 'Reizblase mit TCM behandeln: Akupunktur bei ständigem Harndrang und überaktiver Blase, ohne Infekt. Diskret und krankenkassenanerkannt, 13 Standorte.',
+  spannungskopfschmerzen: 'Spannungskopfschmerzen mit TCM behandeln: Akupunktur bei drückenden Kopfschmerzen und verspanntem Nacken, weniger Schmerztage. EMR/ASCA-anerkannt.',
   prostata: 'Prostatabeschwerden mit TCM behandeln: Akupunktur und Kräuter bei häufigem Harndrang, schwachem Harnstrahl und chronischer Prostatitis. EMR/ASCA-anerkannt.',
   akne: 'Akne mit TCM behandeln: Kräutertherapie und Akupunktur bei unreiner Haut, hormoneller Akne und Erwachsenenakne. Von innen ansetzen statt nur Cremes.',
   schuppenflechte: 'Schuppenflechte (Psoriasis) mit TCM begleiten: Kräutertherapie und Akupunktur bei schuppenden Plaques und Juckreiz. Schübe reduzieren, Haut beruhigen.',

@@ -26,5 +26,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "morbus-crohn", "spinalkanalstenose", "trigeminusneuralgie", "hyperhidrose",
   "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs",
   "gastritis", "rosacea", "hueftschmerzen",
-  "aphten", "raynaud-syndrom", "long-covid"
+  "aphten", "raynaud-syndrom", "long-covid",
+  "lippenherpes", "reizblase", "spannungskopfschmerzen"
 ];
