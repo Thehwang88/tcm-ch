@@ -76,7 +76,17 @@ const TEL = `tel:+${site.whatsapp}`;
         if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Gratis Erstgespräch ';
       }
     }
-    if (primary) primary.addEventListener('click', function (e) {
+    // SG-Landingpages: Sticky-Primär direkt aufs OneDoc-Widget; der Formular-Scroll-Handler unten entfällt, damit er den Anchor nicht hijackt.
+    // Fällt das Widget mal weg, greift automatisch wieder das Standard-Verhalten (inkl. "Gratis Erstgespräch"-Label von oben).
+    var toOnedoc = /^\/(akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname) && document.getElementById('online-buchen');
+    if (primary && toOnedoc) {
+      primary.setAttribute('href', '#online-buchen');
+      for (var j = 0; j < primary.childNodes.length; j++) {
+        var tj = primary.childNodes[j];
+        if (tj.nodeType === 3 && tj.textContent.trim()) tj.textContent = ' Termin online buchen ';
+      }
+    }
+    if (primary && !toOnedoc) primary.addEventListener('click', function (e) {
       // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.
       var form = document.querySelector('#home-contact-form, .inline-form-card');
       if (!form) return;
