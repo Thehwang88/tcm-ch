@@ -112,6 +112,9 @@ export const standorte: Record<string, Standort> = {
   "frauenfeld": {
     "slug": "frauenfeld",
     "stadt": "Frauenfeld",
+    "seo": {
+      "title": "Akupunktur & TCM Frauenfeld | TCM.ch"
+    },
     "hero": {
       "banner": "Standort Frauenfeld",
       "lead": "Zeit zum Zuhören, bevor wir behandeln.",
@@ -799,15 +802,15 @@ export const standorte: Record<string, Standort> = {
     "slug": "winterthur-muenzgasse",
     "stadt": "Winterthur Münzgasse",
     "seo": {
-      "title": "TCM Praxis Winterthur Münzgasse – Akupunktur & Massage | TCM.ch",
-      "description": "TCM-Praxis an der Münzgasse 2 in Winterthur: Akupunktur, Tuina-Massage und Chinesische Medizin. EMR-/ASCA-anerkannt, zentral in der Altstadt.",
-      "h1": "TCM Praxis an der <em>Münzgasse</em>: Akupunktur & Massage",
+      "title": "TCM Winterthur Münzgasse – Massage & Akupunktur",
+      "description": "TCM Winterthur Münzgasse: Massage, Tuina und Akupunktur an der Münzgasse 2, EMR-/ASCA-anerkannt, zentral in der Altstadt. Hauptstandort für Akupunktur & TCM ist die Praxis Marktgasse.",
+      "h1": "TCM <em>Winterthur Münzgasse</em> – Massage & Akupunktur",
       "schemaName": "TCM Praxis Winterthur Münzgasse – TCM.ch"
     },
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
       "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
+      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht. Unser Hauptstandort für Akupunktur &amp; TCM in Winterthur ist die <a href=\"/standorte/winterthur-marktgasse/\" style=\"color:inherit;text-decoration:underline\">Praxis Marktgasse</a>.",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
     },
@@ -980,9 +983,9 @@ export const standorte: Record<string, Standort> = {
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
     "seo": {
-      "title": "TCM Winterthur – Akupunktur an der Marktgasse | TCM.ch",
-      "description": "TCM Winterthur, Marktgasse 78: Akupunktur & Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo–Sa geöffnet.",
-      "h1": "TCM <em>Winterthur</em>: Akupunktur an der Marktgasse",
+      "title": "Akupunktur & TCM Winterthur | Praxis Marktgasse | TCM.ch",
+      "description": "Akupunktur & TCM in Winterthur, Marktgasse 78: Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo–Sa geöffnet.",
+      "h1": "Akupunktur & TCM in <em>Winterthur – Marktgasse</em>",
       "schemaName": "TCM Winterthur – TCM.ch"
     },
     "hero": {
