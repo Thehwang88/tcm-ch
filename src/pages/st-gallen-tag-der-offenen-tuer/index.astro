@@ -8,8 +8,10 @@ import sgRaw from '../../data/standort-leaves/st-gallen.html?raw';
 
 const PREFILL = 'Anmeldung Tag der offenen Tür – St. Gallen (15.08.26). Ich hätte gern einen 30-Min-Slot (Anamnese & Diagnose).';
 const waHref = 'https://wa.me/41775236122?text=' + encodeURIComponent(PREFILL);
-const waSpontan = 'https://wa.me/41775236122?text=' + encodeURIComponent('Ich komme am 15.8. spontan zum Tag der offenen Tür in St. Gallen vorbei.');
+const waSpontan = 'https://wa.me/41775236122?text=' + encodeURIComponent('Ich komme heute spontan zum Tag der offenen Tür in St. Gallen vorbei.');
 const waFlyer = 'https://wa.me/41775236122?text=' + encodeURIComponent('Ich habe den Flyer mit Gutschein und möchte mein kostenloses Erstgespräch inkl. TCM-Kurzdiagnose in St. Gallen vereinbaren.');
+const waLater = 'https://wa.me/41775236122?text=' + encodeURIComponent('Ich schaffe es heute nicht zum Tag der offenen Tür und möchte mein kostenloses Erstgespräch inkl. TCM-Kurzdiagnose in St. Gallen vereinbaren (bis 30.9.).');
+const mapsHref = 'https://maps.google.com/?q=' + encodeURIComponent('TCM.ch St. Gallen, Oberer Graben 22, 9000 St. Gallen');
 
 // ── reuse: stack-based section extraction from the Standort leaf ──
 function secFromIdx(i) {
@@ -42,20 +44,21 @@ const body = `
 
 <!-- 1) HERO + COUNTDOWN -->
 <section class="section evt-reveal evt-hero" style="text-align:center;padding:24px 16px 16px"><div class="wrap" style="max-width:780px">
-  <span class="evt-badge">15. August 2026 · St. Gallen</span>
+  <span class="evt-badge" id="evtBadge">HEUTE · 15. August · 10–16 Uhr</span>
   <h1 class="section-title" style="margin:16px 0 12px">Tag der offenen Tür – St. Gallen</h1>
-  <p class="section-sub evt-lead" style="margin:0 auto;max-width:600px">Ein Tag. Begrenzte Plätze. Gratis, was sonst [CHF 150] kostet.</p>
-  <div class="evt-countdown" id="evt-cd" aria-live="polite" aria-label="Countdown bis zum Event">
-    <div class="evt-cd-box"><span data-cd="d">–</span><label>Tage</label></div>
+  <p class="section-sub evt-lead" id="evtLead" style="margin:0 auto;max-width:600px">Komm einfach vorbei – ohne Termin, ohne Anmeldung. Gratis, was sonst [CHF 150] kostet.</p>
+  <div class="evt-countdown" id="evt-cd" aria-live="polite" aria-label="Countdown: so lange ist heute noch geöffnet">
+    <div class="evt-cd-box" data-cd-box="d"><span data-cd="d">–</span><label>Tage</label></div>
     <div class="evt-cd-box"><span data-cd="h">–</span><label>Std</label></div>
     <div class="evt-cd-box"><span data-cd="m">–</span><label>Min</label></div>
     <div class="evt-cd-box"><span data-cd="s">–</span><label>Sek</label></div>
   </div>
+  <p id="evtCdNote" style="margin:6px 0 0;color:var(--muted);font-size:13px">So lange ist heute noch offen – bis 16:00 Uhr</p>
   <div class="evt-cta-row">
-    <a href="#anmeldung" class="evt-cta">Slot sichern – solange verfügbar →</a>
-    <a href="${waHref}" class="btn-secondary" target="_blank" rel="noopener" style="min-height:52px">Per WhatsApp fragen</a>
+    <a href="${mapsHref}" class="evt-cta" id="evtHeroCta" target="_blank" rel="noopener">Route öffnen – komm spontan vorbei →</a>
+    <a href="${waSpontan}" class="btn-secondary" target="_blank" rel="noopener" style="min-height:52px">Kurz Bescheid sagen (WhatsApp)</a>
   </div>
-  <p style="margin-top:14px;color:var(--muted);font-size:14px">📍 Oberer Graben 22, 9000 St. Gallen · 9:30–15:00 Uhr</p>
+  <p style="margin-top:14px;color:var(--muted);font-size:14px">📍 Oberer Graben 22, 9000 St. Gallen · heute 10–16 Uhr</p>
 </div></section>
 
 <!-- 1b) BARRIER REMOVAL -->
@@ -70,9 +73,9 @@ const body = `
       <li>Skeptisch und willst dir lieber selbst ein Bild machen?</li>
     </ul>
     <div class="evt-chips"><span class="evt-chips-lbl">Wir helfen u.a. bei:</span><span class="evt-chip">Rückenschmerzen</span><span class="evt-chip">Migräne</span><span class="evt-chip">Schlafstörungen</span><span class="evt-chip">Stress &amp; Burnout</span><span class="evt-chip">Nackenschmerzen</span><span class="evt-chip">Kinderwunsch</span><span class="evt-chip">Verdauung</span><span class="evt-chip">Wechseljahre</span></div>
-    <p class="evt-barrier-emph">Dann ist der 15.8. genau dein Tag.</p>
-    <p class="evt-barrier-p">Komm vorbei, lern uns kennen und probier TCM selbst aus. Kostenlos, unverbindlich, ohne Druck. Du gehst mit einer echten Behandlung und einem klaren Plan nach Hause und entscheidest danach in aller Ruhe, ob du weitermachst. Mehr riskierst du nicht als ein paar entspannte Minuten bei einem Apéro.</p>
-    <a href="#anmeldung" class="evt-cta" style="display:inline-flex;min-height:48px">Slot sichern →</a>
+    <p class="evt-barrier-emph">Dann ist heute genau dein Tag.</p>
+    <p class="evt-barrier-p">Komm vorbei, lern uns kennen und probier TCM selbst aus. Kostenlos, unverbindlich, ohne Druck, ohne Termin. Du gehst mit einer echten Behandlung und einem klaren Plan nach Hause und entscheidest danach in aller Ruhe, ob du weitermachst. Mehr riskierst du nicht als ein paar entspannte Minuten bei einem Apéro.</p>
+    <a href="${mapsHref}" class="evt-cta" target="_blank" rel="noopener" style="display:inline-flex;min-height:48px">Komm heute vorbei →</a>
   </div>
 </div></section>
 
@@ -83,20 +86,20 @@ ${sep('Dein Geschenk')}
   <div class="evt-offer" style="padding:26px 22px">
     <span class="evt-spark" aria-hidden="true">✨</span>
     <div class="section-label">Dein kostenloser TCM-Kennenlern-Termin</div>
-    <h2 class="section-title" style="font-size:clamp(22px,6vw,30px);margin:6px 0 8px">Das bekommst du am 15.8. – geschenkt</h2>
+    <h2 class="section-title" style="font-size:clamp(22px,6vw,30px);margin:6px 0 8px">Das bekommst du heute – geschenkt</h2>
     <div class="evt-stack">
       <div class="evt-row"><span class="evt-ck">✓</span><span class="evt-rtxt">30-Min-Konsultation mit unserem TCM-Team</span><span class="evt-rval">Wert [CHF 60]</span></div>
       <div class="evt-row"><span class="evt-ck">✓</span><span class="evt-rtxt">TCM-Diagnose (Puls &amp; Zunge), die deine Ursache zeigt</span><span class="evt-rval">Wert [CHF 50]</span></div>
       <div class="evt-row"><span class="evt-ck">✓</span><span class="evt-rtxt">EINE Behandlung deiner Wahl: Akupunktur, Schröpfen, Tuina oder Ohrakupunktur</span><span class="evt-rval">Wert [CHF 40]</span></div>
     </div>
-    <div class="evt-total"><span class="evt-total-top">Gesamtwert <s>[CHF 150]</s> → am 15.8.</span><span class="evt-zero">CHF 0</span></div>
+    <div class="evt-total"><span class="evt-total-top">Gesamtwert <s>[CHF 150]</s> → heute</span><span class="evt-zero">CHF 0</span></div>
     <div class="evt-bonus"><span class="evt-ck">✓</span><span><strong>Plus obendrauf:</strong> Schweizer Welcome-Apéro – TCM-Tee, Matcha &amp; Apéro-Häppchen, inklusive</span></div>
     <p class="evt-risk">Kein Haken. Keine Verpflichtung. Du gehst mit einer echten Behandlung und einem klaren Plan nach Hause – nicht nur mit einem Flyer.</p>
     <div class="evt-flags">
-      <div class="evt-flag">🔥 <strong>Nur [12] Slots.</strong> Wenn sie weg sind, sind sie weg.</div>
-      <div class="evt-flag">⏳ <strong>Nur am 15. August.</strong> Danach gilt der reguläre Preis.</div>
+      <div class="evt-flag">🚶 <strong>Ohne Termin, ohne Anmeldung.</strong> Kurz-Konsultationen laufen heute durchgehend, einfach reinschauen.</div>
+      <div class="evt-flag">⏳ <strong>Nur heute bis 16 Uhr.</strong> Danach gilt der reguläre Preis.</div>
     </div>
-    <a href="#anmeldung" class="evt-cta" style="width:100%;margin-top:18px">Slot sichern – solange verfügbar →</a>
+    <a href="${mapsHref}" class="evt-cta" target="_blank" rel="noopener" style="width:100%;margin-top:18px">Komm heute vorbei – 10–16 Uhr →</a>
   </div>
 </div></section>
 
@@ -114,16 +117,16 @@ ${sep('Dein Geschenk')}
   <h2 class="section-title" style="text-align:center;font-size:clamp(22px,6vw,30px);margin:0 0 4px">Zwei Wege, dabei zu sein</h2>
   <div class="evt-ways">
     <div class="evt-way evt-way-1">
-      <div class="evt-way-ico">🎟️</div>
-      <h3 class="evt-way-h">Die ersten 12: Gratis-Behandlungspaket</h3>
-      <p class="evt-way-t">30-Min-Slot mit Konsultation, TCM-Diagnose und einer Behandlung deiner Wahl. Limitiert, first come, first served. Wenn die [12] weg sind, sind sie weg.</p>
-      <a href="#anmeldung" class="evt-cta" style="width:100%">Slot sichern →</a>
+      <div class="evt-way-ico">🚶</div>
+      <h3 class="evt-way-h">Einfach spontan vorbeikommen</h3>
+      <p class="evt-way-t">Ohne Termin, ohne Anmeldung: Komm zwischen 10 und 16 Uhr vorbei, geniess den Apéro und sichere dir deine Gratis-Kurzkonsultation mit TCM-Diagnose und einer Behandlung deiner Wahl. Solange es freie Plätze hat, wer da ist, kommt dran.</p>
+      <a href="${mapsHref}" class="evt-cta" target="_blank" rel="noopener" style="width:100%">Route öffnen →</a>
     </div>
     <div class="evt-way evt-way-2">
-      <div class="evt-way-ico">☕</div>
-      <h3 class="evt-way-h">Alle anderen: Apéro &amp; offene Fragerunde</h3>
-      <p class="evt-way-t">Kein Slot mehr? Kein Problem. Komm einfach spontan vorbei, geniess den Apéro, lern unser Team kennen und stell deine Fragen direkt einem Therapeuten. Kein Termin, keine Anmeldung nötig.</p>
-      <a href="${waSpontan}" class="btn-secondary" target="_blank" rel="noopener" style="width:100%;justify-content:center;min-height:50px">Sag uns kurz Bescheid →</a>
+      <div class="evt-way-ico">🎟️</div>
+      <h3 class="evt-way-h">Bereits angemeldet? Dein Slot gilt.</h3>
+      <p class="evt-way-t">Du hast dir vorab einen 30-Min-Slot reserviert? Perfekt, komm einfach zur vereinbarten Zeit, dein Platz ist bereit. Fragen dazu beantworten wir dir sofort per WhatsApp.</p>
+      <a href="${waHref}" class="btn-secondary" target="_blank" rel="noopener" style="width:100%;justify-content:center;min-height:50px">Frage zum Slot? WhatsApp →</a>
     </div>
   </div>
 </div></section>
@@ -149,24 +152,24 @@ ${sep('So läuft der Tag ab')}
 <div class="evt-sec"><section class="section"><div class="wrap">
   <p class="evt-apero-intro">Komm vorbei, lern unser Team bei einem entspannten Apéro kennen – Tee, Matcha und kleine Häppchen inklusive. Kein Stress, kein Termindruck.</p>
   <div class="evt-grid">
-    <div class="usp-card"><div class="usp-icon evt-step">1</div><div class="usp-title">Anmelden</div><div class="usp-sub">Slot über das Formular sichern – dauert keine Minute.</div></div>
-    <div class="usp-card"><div class="usp-icon evt-step">2</div><div class="usp-title">Vorbeikommen am 15.8.</div><div class="usp-sub">Oberer Graben 22, St. Gallen, zwischen 9:30 und 15:00 Uhr.</div></div>
-    <div class="usp-card"><div class="usp-icon evt-step">3</div><div class="usp-title">Dein 30-Min-Slot</div><div class="usp-sub">Konsultation, Behandlung deiner Wahl und persönlicher Mini-Plan.</div></div>
+    <div class="usp-card"><div class="usp-icon evt-step">1</div><div class="usp-title">Vorbeikommen</div><div class="usp-sub">Oberer Graben 22, St. Gallen, heute zwischen 10 und 16 Uhr. Ohne Termin.</div></div>
+    <div class="usp-card"><div class="usp-icon evt-step">2</div><div class="usp-title">Ankommen &amp; Apéro</div><div class="usp-sub">Tee, Matcha und Häppchen, lern das Team in Ruhe kennen.</div></div>
+    <div class="usp-card"><div class="usp-icon evt-step">3</div><div class="usp-title">Deine Gratis-Kurzkonsultation</div><div class="usp-sub">Konsultation, TCM-Diagnose, Behandlung deiner Wahl und Mini-Plan.</div></div>
   </div>
-  <div style="text-align:center;margin-top:26px"><a href="#anmeldung" class="evt-cta" style="display:inline-flex">Slot sichern – solange verfügbar →</a></div>
+  <div style="text-align:center;margin-top:26px"><a href="${mapsHref}" class="evt-cta" target="_blank" rel="noopener" style="display:inline-flex">Komm heute vorbei – Route öffnen →</a></div>
 </div></section></div>
 
 <!-- 10) FAQ — new, objection handling (Tier 2) -->
 ${sep('Häufige Fragen')}
 <div class="evt-sec"><section class="section"><div class="wrap" style="max-width:760px">
-  <details class="evt-faq"><summary>Ist es wirklich gratis?</summary><p>Ja. Am Tag der offenen Tür ist dein 30-Minuten-Slot inkl. Konsultation, TCM-Diagnose, einer Behandlung deiner Wahl und Mini-Plan kostenlos. Kein Haken, keine versteckten Kosten.</p></details>
-  <details class="evt-faq"><summary>Muss ich vorher buchen?</summary><p>Empfohlen, ja. Die Plätze sind auf [12] Slots begrenzt und gehen zuerst an Anmeldungen. Spontan vorbeikommen klappt nur, solange noch Slots frei sind.</p></details>
-  <details class="evt-faq"><summary>Was, wenn alle Slots weg sind?</summary><p>Dann tragen wir dich für einen regulären Ersttermin ein – oder du kommst auf die Warteliste für kurzfristig frei werdende Slots am 15.8.</p></details>
-  <details class="evt-faq"><summary>Wird das von der Krankenkasse übernommen?</summary><p>Am 15.8. ist der Kennenlern-Slot gratis – du brauchst dafür keine Kasse. Reguläre TCM-Behandlungen danach sind bei den meisten Zusatzversicherungen anerkannt (EMR/ASCA).</p></details>
+  <details class="evt-faq"><summary>Ist es wirklich gratis?</summary><p>Ja. Am Tag der offenen Tür ist deine Kurzkonsultation inkl. TCM-Diagnose, einer Behandlung deiner Wahl und Mini-Plan kostenlos. Kein Haken, keine versteckten Kosten.</p></details>
+  <details class="evt-faq"><summary>Muss ich vorher buchen?</summary><p>Nein. Heute ist offene Tür im Wortsinn: Komm einfach zwischen 10 und 16 Uhr vorbei, ohne Termin und ohne Anmeldung. Wer da ist, kommt dran.</p></details>
+  <details class="evt-faq"><summary>Was, wenn gerade viel los ist?</summary><p>Dann geniesst du zuerst den Apéro, meist geht es schnell. Und falls es dir zu lange dauert: Wir tragen dich für dein kostenloses Erstgespräch an einem anderen Tag ein, einlösbar bis 30.9.2026.</p></details>
+  <details class="evt-faq"><summary>Wird das von der Krankenkasse übernommen?</summary><p>Heute ist die Kennenlern-Konsultation gratis – du brauchst dafür keine Kasse. Reguläre TCM-Behandlungen danach sind bei den meisten Zusatzversicherungen anerkannt (EMR/ASCA).</p></details>
 </div></section></div>
 
 <!-- 11) FINAL CTA + ANMELDUNG form (the single CTA) -->
-<section id="anmeldung" class="section contact-section-inline evt-reveal" style="background:var(--surface)"> <div class="wrap"> <div class="contact-inline-grid"> <div> <div class="section-label">Jetzt Slot sichern</div> <h2 class="section-title"><s style="color:var(--muted);font-weight:600">[CHF 150]</s> Wert – am 15.8. <em>CHF 0</em>.</h2> <p class="section-sub" style="margin-bottom:0">Nur [12] Slots. Wenn sie weg sind, sind sie weg. Sag uns kurz Wunschtage und Tageszeit – wir bestätigen deinen Slot.</p> <div class="intake-trust-row"> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Kostenlos &amp; unverbindlich</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Anamnese &amp; erste TCM-Diagnose</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Plätze limitiert (first come, first served)</div> </div> </div> <div> <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">30-Min-Slot reservieren</div><div class="inline-form-sub">Wir bestätigen deinen Slot für den 15.08.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" inputmode="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich City</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Winterthur</option><option>Volketswil</option><option>Frauenfeld</option><option>Kreuzlingen</option><option selected>St. Gallen</option><option>Wil</option><option>Rorschach</option><option>Basel</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="3" placeholder="z. B. Akupunktur bei Rückenschmerzen">Anmeldung Tag der offenen Tür – St. Gallen (15.08.26). Ich hätte gern einen 30-Min-Slot (Anamnese &amp; Diagnose).</textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Slot sichern – solange verfügbar →</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einer Bestätigung.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="${waHref}" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div> </div> </div> </div> </section>
+<section id="anmeldung" class="section contact-section-inline evt-reveal" style="background:var(--surface)"> <div class="wrap"> <div class="contact-inline-grid"> <div> <div class="section-label">Heute keine Zeit?</div> <h2 class="section-title">Schaffst du es heute nicht? <s style="color:var(--muted);font-weight:600">[CHF 150]</s> Wert – trotzdem <em>CHF 0</em>.</h2> <p class="section-sub" style="margin-bottom:0">Sichere dir dein kostenloses Erstgespräch inkl. TCM-Kurzdiagnose an einem anderen Tag, einlösbar bis 30.9.2026. Sag uns kurz Wunschtage und Tageszeit – wir melden uns mit Terminvorschlägen.</p> <div class="intake-trust-row"> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Kostenlos &amp; unverbindlich</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Anamnese &amp; erste TCM-Diagnose</div> <div class="intake-trust-item"><span class="intake-trust-dot"></span>Einlösbar bis 30.9.2026</div> </div> </div> <div> <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">Kostenloses Erstgespräch sichern</div><div class="inline-form-sub">Einlösbar bis 30.9.2026 – wir melden uns mit Terminvorschlägen.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" inputmode="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich City</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Winterthur</option><option>Volketswil</option><option>Frauenfeld</option><option>Kreuzlingen</option><option selected>St. Gallen</option><option>Wil</option><option>Rorschach</option><option>Basel</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="3" placeholder="z. B. Akupunktur bei Rückenschmerzen">Ich schaffe es heute nicht zum Tag der offenen Tür und möchte mein kostenloses Erstgespräch inkl. TCM-Kurzdiagnose in St. Gallen vereinbaren (bis 30.9.).</textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Kostenloses Erstgespräch sichern →</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit Terminvorschlägen.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="${waLater}" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div> </div> </div> </div> </section>
 
 </div>
 
@@ -278,20 +281,23 @@ var RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 window.evtToForm=function(){var f=document.getElementById('anmeldung');if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});};
 function burst(x,y,n){if(RM)return;n=n||90;var c=document.createElement('canvas'),W=innerWidth,H=innerHeight;c.width=W;c.height=H;c.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9999';document.body.appendChild(c);var g=c.getContext('2d'),CO=['#FFC107','#FFB300','#2D9B6F','#1F7A54','#FFD54F','#fff'],P=[],i;for(i=0;i<n;i++)P.push({x:x==null?Math.random()*W:x,y:y==null?H*0.16:y,vx:(Math.random()-.5)*7,vy:Math.random()*-8-3,gg:.22+Math.random()*.12,s:5+Math.random()*6,r:Math.random()*6.3,vr:(Math.random()-.5)*.35,co:CO[i%CO.length]});var t0;function f(t){t0=t0||t;var e=t-t0,a=Math.max(0,1-e/1500),k;g.clearRect(0,0,W,H);for(k=0;k<P.length;k++){var p=P[k];p.vy+=p.gg;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;g.save();g.globalAlpha=a;g.translate(p.x,p.y);g.rotate(p.r);g.fillStyle=p.co;g.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);g.restore();}if(e<1500){requestAnimationFrame(f);}else{c.remove();}}requestAnimationFrame(f);}
 function reveal(){var els=[].slice.call(document.querySelectorAll('.evt-reveal'));if(RM||!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in');});return;}var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});els.forEach(function(x){io.observe(x);});setTimeout(function(){els.forEach(function(x){x.classList.add('in');});},1600);}
-function sticky(){var p=document.querySelector('.sticky-cta-bar .scb-primary');if(p)p.textContent='Slot sichern →';var w=document.querySelector('.sticky-cta-bar .scb-wa');if(w)w.setAttribute('href','${waHref}');}
-function cd(){var el=document.getElementById('evt-cd');if(!el)return;var T=new Date('2026-08-15T09:30:00+02:00').getTime();function pad(n){return n<10?'0'+n:''+n;}function set(k,v){var n=el.querySelector('[data-cd="'+k+'"]');if(n)n.textContent=v;}function t(){var d=T-Date.now();if(d<0)d=0;set('d',Math.floor(d/864e5));set('h',pad(Math.floor(d%864e5/36e5)));set('m',pad(Math.floor(d%36e5/6e4)));set('s',pad(Math.floor(d%6e4/1e3)));}t();setInterval(t,1000);}
+function sticky(){var p=document.querySelector('.sticky-cta-bar .scb-primary');if(p){p.textContent='Heute vorbeikommen →';p.addEventListener('click',function(e){e.stopImmediatePropagation();e.preventDefault();window.open('${mapsHref}','_blank','noopener');},true);}var w=document.querySelector('.sticky-cta-bar .scb-wa');if(w)w.setAttribute('href','${waSpontan}');}
+// Countdown zaehlt bis Torschluss 16:00; Tage-Box verschwindet am Eventtag
+function cd(){var el=document.getElementById('evt-cd');if(!el)return;var T=new Date('2026-08-15T16:00:00+02:00').getTime();function pad(n){return n<10?'0'+n:''+n;}function set(k,v){var n=el.querySelector('[data-cd="'+k+'"]');if(n)n.textContent=v;}function t(){var d=T-Date.now();if(d<0)d=0;var days=Math.floor(d/864e5);var db=el.querySelector('[data-cd-box="d"]');if(db)db.style.display=days>0?'':'none';set('d',days);set('h',pad(Math.floor(d%864e5/36e5)));set('m',pad(Math.floor(d%36e5/6e4)));set('s',pad(Math.floor(d%6e4/1e3)));}t();setInterval(t,1000);}
+// Nach 16:00: Seite kippt selbst in den Gutschein-Modus (kein manueller Rueckbau noetig)
+function over(){if(Date.now()<=new Date('2026-08-15T16:00:00+02:00').getTime())return;var b=document.getElementById('evtBadge');if(b)b.textContent='Das war der Tag der offenen Tür';var l=document.getElementById('evtLead');if(l)l.textContent='Verpasst? Kein Problem: Dein kostenloses Erstgespräch inkl. TCM-Kurzdiagnose gilt bis 30.9.2026.';var c=document.getElementById('evt-cd');if(c)c.style.display='none';var n=document.getElementById('evtCdNote');if(n)n.style.display='none';var h=document.getElementById('evtHeroCta');if(h){h.textContent='Kostenloses Erstgespräch sichern →';h.setAttribute('href','#anmeldung');h.removeAttribute('target');}}
 addEventListener('click',function(e){var t=e.target.closest('.evt-cta,.form-submit,.scb-primary');if(t){var r=t.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,46);}},true);
-function init(){reveal();sticky();cd();burst(null,null,110);}
+function init(){reveal();sticky();cd();over();burst(null,null,110);}
 if(document.readyState!=='loading')init();else addEventListener('DOMContentLoaded',init);
 })();</script>
 
 <style>/* header CTA -> yellow event CTA (event LP only) */#navCtaBtn.nav-cta{background:linear-gradient(90deg,#FFC107,#FFB300)!important;color:#1b2a4a!important;border:none!important}#navCtaBtn.nav-cta #navCtaLabel{color:#1b2a4a!important}</style>
-<script is:inline>(function(){function init(){var lbl=document.getElementById('navCtaLabel'),btn=document.getElementById('navCtaBtn');if(lbl)lbl.textContent='15.8. Slot sichern →';if(btn)btn.addEventListener('click',function(e){e.stopImmediatePropagation();e.preventDefault();var f=document.getElementById('anmeldung');if(f)f.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});},true);}if(document.readyState!=='loading')init();else addEventListener('DOMContentLoaded',init);})();</script>
+<script is:inline>(function(){function init(){var lbl=document.getElementById('navCtaLabel'),btn=document.getElementById('navCtaBtn');if(lbl)lbl.textContent='HEUTE 10–16 Uhr →';if(btn)btn.addEventListener('click',function(e){e.stopImmediatePropagation();e.preventDefault();window.open('${mapsHref}','_blank','noopener');},true);}if(document.readyState!=='loading')init();else addEventListener('DOMContentLoaded',init);})();</script>
 `;
 ---
 <SpaPage
   title="Tag der offenen Tür – TCM.ch St. Gallen"
-  description="Tag der offenen Tür in St. Gallen am 15. August 2026: kostenloser 30-Minuten-Slot mit Anamnese und erster TCM-Diagnose. Plätze limitiert."
+  description="Tag der offenen Tür in St. Gallen, heute 10–16 Uhr: kostenlose Kurzkonsultation mit TCM-Diagnose und Behandlung deiner Wahl. Einfach vorbeikommen, ohne Termin."
   path="/st-gallen-tag-der-offenen-tuer"
   noindex={false}
   body={body}
