@@ -1705,7 +1705,6 @@ transform: translateY(0);
 #home-content .hero-headline{font-size:clamp(38px,3.6vw,54px) !important;letter-spacing:-.035em;line-height:1.02;margin-bottom:16px;font-weight:800}
 #home-content .hero-headline em{font-size:.92em;display:inline-block;margin-top:16px}
 #home-content .hero-sub{font-size:16.5px !important;line-height:1.5;max-width:420px;margin-bottom:16px;color:#374151}
-.hero-city-strip [aria-label*="Tag der offenen"]{display:none !important}
 }
 #home-content .hero-cta-desktop{display:flex !important;flex-direction:column;gap:10px;max-width:420px;width:100%}
 #home-content .hero-finder-cta{display:none !important}
