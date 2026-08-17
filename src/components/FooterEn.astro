@@ -1,0 +1,78 @@
+---
+// EN-Variante des Footers, eingebunden von Layout.astro (alle /en/*-Seiten).
+// Gleiche Markup-Struktur und Klassen wie der DE-Footer (src/data/footer.html), damit
+// /footer.css und /home.css unverändert greifen — nur die Spalten sind datengetrieben
+// aus conditions/therapies/clinics und zeigen auf die EN-Routen statt auf /beschwerden/,
+// /therapien/, /standorte/. Der DE-Footer bleibt unangetastet.
+//
+// Legal-Links zeigen bewusst weiter auf die DE-Seiten (nur die gibt es), die Labels
+// sind englisch.
+import { conditions, enConditionPath } from '../data/conditions';
+import { therapies, enTherapyPath } from '../data/therapies';
+import { clinics, enLocationPath } from '../data/locations';
+import { site } from '../data/site';
+import WhatsAppFab from './WhatsAppFab.astro';
+import WhatsAppConcierge from './WhatsAppConcierge.astro';
+import StickyCtaBar from './StickyCtaBar.astro';
+
+const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-right:6px;vertical-align:-1px;opacity:.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
+---
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <a href="/en/" class="footer-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;margin-bottom:10px">
+          <img src="/images/logo/tcm-kliniken-logo.svg" alt="TCM Kliniken – TCM.ch" width="128" height="128" style="display:block;border-radius:16px">
+        </a>
+        <p class="footer-tagline">The leading TCM network in Switzerland. 14 locations. Vetted practices.</p>
+        <a href={`mailto:${site.email}`} style="display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.55);text-decoration:none;font-size:13px;font-weight:500;margin-top:10px">✉️ {site.email}</a>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Conditions</h4>
+        <ul id="footer-conditions">
+          {conditions.map((c) => (
+            <li><a href={enConditionPath(c.slug)}>{c.condition}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Therapies</h4>
+        <ul id="footer-therapies">
+          {therapies.map((t) => (
+            <li><a href={enTherapyPath(t.slug)}>{t.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <ul id="footer-locations">
+          <li><a href="/en/acupuncture-near-me/">Acupuncture near me</a></li>
+          {clinics.map((c) => (
+            <li><a href={enLocationPath(c.id)}><Fragment set:html={pin} />{c.name}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 TCM.ch · All rights reserved · Switzerland &nbsp;·&nbsp; <span style="opacity:.5">Part of the TCM.ch CARE System</span></div>
+      <div class="footer-legal">
+        <a href="/datenschutz/">Privacy</a>
+        <a href="/impressum/">Legal notice</a>
+        <a href="/agb/">Terms</a>
+        <a href="#" data-cky-tag="revisit-consent" onclick="event.preventDefault();if(window.revisitCkyConsent)window.revisitCkyConsent();">Cookie settings</a>
+        <button onclick="location.href='/partner/'" style="background:none;border:none;cursor:pointer;font-family:var(--font-sans);font-size:12px;color:rgba(255,255,255,.3);transition:color var(--t-base);padding:6px 0;position:relative;z-index:2;pointer-events:auto" onmouseover="this.style.color='rgba(255,255,255,.8)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Careers</button>
+      </div>
+    </div>
+  </div>
+</footer>
+<WhatsAppFab />
+<WhatsAppConcierge />
+<StickyCtaBar />

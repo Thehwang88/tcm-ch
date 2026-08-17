@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import FooterEn from '../components/FooterEn.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import { site, PAIR_MAP_EN } from '../data/site';
 
@@ -21,8 +21,15 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 
 // hreflang. Default: DE twin via the shared route-pair map (DE = x-default).
 // EN-only pages (enOnly) are self-canonical with x-default=en and no DE alternate.
+//
+// Trailing slash ist hier nicht kosmetisch: PAIR_MAP speichert die DE-Pfade teils ohne
+// (deConditionPath/deTherapyPath/deStandortPath liefern "/beschwerden/<slug>"). Ohne
+// Normalisierung zeigt das EN-hreflang auf eine Redirect-URL, während die DE-Seite sich
+// selbst mit Slash als de-CH deklariert — die Paarung ist dann nicht reziprok und Google
+// verwirft den Cluster. Deshalb hier auf die kanonische Slash-Form bringen.
+const withSlash = (p: string) => (p.endsWith('/') ? p : p + '/');
 const enHref = canonical;
-const deHref = enOnly ? null : (deHrefProp ?? new URL(PAIR_MAP_EN[path] ?? '/', site.url).href);
+const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path] ?? '/'), site.url).href;
 ---
 
 <!doctype html>
@@ -78,6 +85,6 @@ const deHref = enOnly ? null : (deHrefProp ?? new URL(PAIR_MAP_EN[path] ?? '/', 
     <main>
       <slot />
     </main>
-    <Footer />
+    <FooterEn />
   </body>
 </html>
