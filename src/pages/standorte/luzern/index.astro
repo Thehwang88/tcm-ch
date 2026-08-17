@@ -28,18 +28,8 @@ const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM
 
 // Therapien-Grid: dieselben 8 Karten in derselben Reihenfolge wie /standorte/st-gallen/.
 // Kräutertherapie steht wie dort NICHT im Grid, sondern in der kt-wrap-Sektion darunter.
-// Einzelne Taglines sind überschrieben, weil die Altdaten in therapy-cards.ts
-// "Selbstheilungskräfte", "Meridiane", "Qi-Fluss" und "Heilung" enthalten — in der
-// TCM.ch-Copy nicht zulässig.
-const therapieTagline: Record<string, string> = {
-  akupunktur: 'Feine Nadeln an definierten Körperpunkten, die am besten untersuchte TCM-Methode',
-  gesichtsakupunktur: 'Feine Nadelung im Gesicht, eingesetzt bei Spannung und Hautbild',
-  tuina: 'Kräftige manuelle Behandlung aus der chinesischen Medizin',
-  'gua-sha': 'Schabetechnik für tiefsitzende Verspannungen und bessere Durchblutung',
-  physiotherapie: 'Gezielte Bewegungs- und Manualtherapie, auf Verordnung',
-};
 const therapien = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie']
-  .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapieTagline[slug] ?? therapyCards[slug]?.tagline }))
+  .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapyCards[slug]?.tagline }))
   .filter((x) => x.c);
 
 const faqs = [
