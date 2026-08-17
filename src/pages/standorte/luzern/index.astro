@@ -26,13 +26,26 @@ const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafs
 // Anchor-Texte alternieren "Akupunktur bei X" / "TCM bei X", wie in Beschwerden.astro.
 const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${name}`;
 
-// Bilder/Meta aus therapyCards, Tagline für Tuina überschrieben (Kartendaten sprechen
-// von "Meridianen", das kommt in der TCM.ch-Copy nicht vor).
-const therapieTagline: Record<string, string> = {
-  tuina: 'Kräftige manuelle Behandlung aus der chinesischen Medizin',
+// Vollständiges Therapien-Grid. Basis sind die Karten aus therapy-cards.ts; für
+// kraeutertherapie / gua-sha / moxibustion liegt dort keine Karte, deren Bild + Dauer +
+// Versicherungsbadge stammen aus den Leaf-Grids bzw. aus therapien.ts.
+// Einzelne Taglines sind überschrieben, weil die Altdaten "Meridiane", "Qi-Fluss" und
+// "Selbstheilungskräfte" enthalten — in der TCM.ch-Copy nicht zulässig.
+const extraCards: Record<string, typeof therapyCards[string]> = {
+  kraeutertherapie: { name: 'Kräutertherapie', tagline: 'Individuell zusammengestellte Rezepturen als Granulat, begleitend zur Behandlung', time: 'Tägl. Einnahme', ins: 'Teilweise anerkannt', img: '/images/img-14a8b7c52ade.webp', w: 630, h: 840, objectPos: 'center' },
+  moxibustion: { name: 'Moxibustion', tagline: 'Gezielte Wärme über Akupunkturpunkten, oft ergänzend zur Nadelung', time: '20–40 Min', ins: 'Je nach Versicherung', img: '/images/moxibustion-hero.webp', w: 1120, h: 746, objectPos: 'center 35%' },
 };
-const therapien = ['akupunktur', 'schroepfen', 'tuina']
-  .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapieTagline[slug] ?? therapyCards[slug]?.tagline }))
+const therapieTagline: Record<string, string> = {
+  akupunktur: 'Feine Nadeln an definierten Körperpunkten, die am besten untersuchte TCM-Methode',
+  tuina: 'Kräftige manuelle Behandlung aus der chinesischen Medizin',
+  gesichtsakupunktur: 'Feine Nadelung im Gesicht, eingesetzt bei Spannung und Hautbild',
+  'gua-sha': 'Schabetechnik für tiefsitzende Verspannungen und bessere Durchblutung',
+};
+const therapien = ['akupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'moxibustion', 'gesichtsakupunktur', 'akupressur', 'shiatsu', 'gua-sha']
+  .map((slug) => {
+    const c = therapyCards[slug] ?? extraCards[slug];
+    return { slug, c, tagline: therapieTagline[slug] ?? c?.tagline };
+  })
   .filter((x) => x.c);
 
 const faqs = [
