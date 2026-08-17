@@ -8,18 +8,19 @@ const path = '/en/acupuncture-near-me';
 const url = `https://tcm.ch${path}/`;
 const title = 'Acupuncture Near Me: 13 TCM Clinics in Switzerland | TCM.ch';
 const description =
-  'Find acupuncture near you in Switzerland: 13 TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners in Zurich, Winterthur, St. Gallen and beyond.';
+  'Find acupuncture near you in Switzerland: 14 TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners in Zurich, Winterthur, St. Gallen and beyond.';
 
 const groups = [
   { label: 'Zurich & Winterthur', ids: ['zuerich-city', 'zuerich-hoengg', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
   { label: 'Eastern Switzerland & Lake Constance', ids: ['st-gallen', 'frauenfeld', 'kreuzlingen', 'wil', 'rorschach', 'bottighofen'] },
   { label: 'Basel & Northwest', ids: ['basel'] },
+  { label: 'Central Switzerland', ids: ['luzern'] },
 ];
 const byId = (id: string) => clinics.find((c) => c.id === id);
 const allIds = groups.flatMap((g) => g.ids);
 
 const faqs = [
-  { q: 'Where can I find acupuncture near me in Switzerland?', a: 'TCM.ch runs 13 clinics across German-speaking Switzerland, including Zurich, Winterthur, St. Gallen, Frauenfeld and Kreuzlingen. This page lists every location with its address, so you can contact the clinic closest to you directly.' },
+  { q: 'Where can I find acupuncture near me in Switzerland?', a: 'TCM.ch runs 14 clinics across German-speaking Switzerland, including Zurich, Winterthur, St. Gallen, Frauenfeld and Kreuzlingen. This page lists every location with its address, so you can contact the clinic closest to you directly.' },
   { q: 'Do the practitioners speak English?', a: 'Yes. English-speaking practitioners are available at our locations, and appointments, intake and treatment can be done in English. Mention your language preference when booking and we will match you with the right therapist.' },
   { q: 'Does Swiss health insurance cover acupuncture?', a: 'Basic insurance only covers acupuncture performed by licensed physicians. Most supplementary plans for complementary medicine cover a large share, typically 80 to 100 percent, of treatments by EMR- or ASCA-registered therapists. All our practitioners are registered, and we check your coverage for free.' },
   { q: 'How quickly can I get an appointment?', a: 'Usually within a few days, sometimes sooner depending on the location. Contact the clinic directly through its page or by phone, and we typically reply the same working day.' },
@@ -45,7 +46,7 @@ const schema = [
     <div class="wrap">
       <div class="eyebrow">TCM.ch — Swiss TCM network</div>
       <h1>Acupuncture Near You in Switzerland</h1>
-      <p class="lead">Looking for acupuncture or TCM near you? We are a network of 13 clinics across German-speaking Switzerland, with English-speaking, EMR-/ASCA-recognised practitioners. One of them is likely a short trip away, and a first appointment is often possible within 24 hours.</p>
+      <p class="lead">Looking for acupuncture or TCM near you? We are a network of 14 clinics across German-speaking Switzerland, with English-speaking, EMR-/ASCA-recognised practitioners. One of them is likely a short trip away, and a first appointment is often possible within 24 hours.</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
         <a class="btn btn--ghost" href="#clinics">Find a clinic near you →</a>
@@ -56,7 +57,7 @@ const schema = [
   <section class="section" id="clinics">
     <div class="wrap">
       <div class="prose" style="margin-bottom:28px">
-        <h2>Our 13 clinics across Switzerland</h2>
+        <h2>Our 14 clinics across Switzerland</h2>
         <p>Pick the clinic closest to you. Every location is EMR-/ASCA-recognised and billable through supplementary insurance.</p>
       </div>
       {groups.map((g) => (
@@ -81,7 +82,7 @@ const schema = [
   <section class="section">
     <div class="wrap prose">
       <h2>Finding acupuncture near you as a newcomer</h2>
-      <p>When you search for acupuncture near you, you want two things: a short trip and a practice you can trust. At TCM.ch you get both. We are not a single studio but a network of 13 clinics across German-speaking Switzerland. In practice that means acupuncture near you in Zurich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach and Basel. Chances are one of them is only a few minutes away.</p>
+      <p>When you search for acupuncture near you, you want two things: a short trip and a practice you can trust. At TCM.ch you get both. We are not a single studio but a network of 14 clinics across German-speaking Switzerland. In practice that means acupuncture near you in Zurich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach and Basel. Chances are one of them is only a few minutes away.</p>
       <p>If you have recently moved to Switzerland, the insurance side is usually the part that feels unfamiliar, and it matters most. Swiss cover has two layers. Basic insurance is mandatory, but it only pays for acupuncture when a physician performs it. Therapist-led TCM, like ours, is reimbursed through optional supplementary insurance for complementary medicine. Most of these supplementary plans cover a large share of each session, typically 80 to 100 percent, as long as the practitioner is EMR- or ASCA-registered. All of ours are. We check your coverage for free before any costs arise, so there are no surprises. For many internationals that clarity is not a given elsewhere, and it is a good reason to sort out the paperwork before your first visit.</p>
       <p>The most common reason people come to us is classic <a href="/en/therapies/acupuncture/">acupuncture</a>, for example for back and neck pain, headaches, sleep problems or stress-related complaints. Many locations also offer Tuina massage, cupping and Chinese herbal medicine. Which methods your nearest team provides is listed on each location page.</p>
       <p>You do not need to know in advance which treatment is right. Tell us briefly what is going on and where you live. We suggest the location near you that fits, and, if you like, a first appointment. We usually reply within the same working day, and a first session is often possible within 24 to 48 hours.</p>

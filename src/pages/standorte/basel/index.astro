@@ -1,65 +1,79 @@
 ---
-// /standorte/luzern/ — vollwertige Standortseite auf dem St.-Gallen-Template,
-// im Pre-Opening-Modus (Eröffnung 2027, Adresse noch offen).
+// /standorte/basel/ — vollwertige Standortseite auf dem Luzern-Template (das seinerseits
+// auf St. Gallen basiert), im Pre-Opening-Modus (Eröffnung 2028, Adresse noch offen).
+//
+// Ersetzt den alten SPA-Leaf src/data/standort-leaves/basel.html (gelöscht), der einen
+// doppelten Hero/H1 hatte und eine Praxis "an der Freien Strasse" behauptete, obwohl
+// Basel erst 2028 eröffnet.
 //
 // Abweichungen zu St. Gallen, bewusst und nur wegen Pre-Opening:
-//   • Warteliste-Formular statt OneDoc-Widget / Buchungs-CTA (quelle=warteliste-luzern)
+//   • Warteliste-Formular statt Buchungs-CTA (quelle=warteliste-basel)
 //   • KEIN MedicalClinic-Schema (erst mit Adresse), nur BreadcrumbList + FAQPage
-//   • keine Adress-/Karten-Sektion, keine Öffnungszeiten, keine Team-Sektion
-// Statischer Pfad, deshalb greift standorte/[slug].astro hier nicht (Luzern ist nicht in standorte.ts).
+//   • keine Adress-/Anfahrts-Sektion, keine Öffnungszeiten, keine Team-Sektion
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 import { symptomCards } from '../../../data/symptom-cards';
 import { therapyCards } from '../../../data/therapy-cards';
 
-const url = 'https://tcm.ch/standorte/luzern/';
-const title = 'Akupunktur & TCM in Luzern | TCM.ch';
+const url = 'https://tcm.ch/standorte/basel/';
+const title = 'TCM & Akupunktur Basel | TCM.ch';
 const description =
-  'Akupunktur und TCM in Luzern: TCM.ch eröffnet 2027 in der Stadt Luzern. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt auf die Warteliste.';
+  'Akupunktur und TCM in Basel: TCM.ch eröffnet 2028 zentral in der Stadt. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt auf die Warteliste.';
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 
+// Kartendaten kommen aus symptomCards; der Heuschnupfen-Karte liegt die breitere
+// Zielseite /beschwerden/allergien-heuschnupfen/ zugrunde (nicht /beschwerden/heuschnupfen/).
+const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen' };
 const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'heuschnupfen']
-  .map((slug) => ({ slug, c: symptomCards[slug] }))
+  .map((slug) => ({ slug, href: beschwerdenHref[slug] ?? slug, c: symptomCards[slug] }))
   .filter((x) => x.c);
 // Anchor-Texte alternieren "Akupunktur bei X" / "TCM bei X", wie in Beschwerden.astro.
 const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${name}`;
 
-// Therapien-Grid: dieselben 8 Karten in derselben Reihenfolge wie /standorte/st-gallen/.
-// Kräutertherapie steht wie dort NICHT im Grid, sondern in der kt-wrap-Sektion darunter.
+// Therapien-Grid: dieselben 8 Karten in derselben Reihenfolge wie /standorte/luzern/
+// und /standorte/st-gallen/. Kräutertherapie steht wie dort NICHT im Grid, sondern in
+// der kt-wrap-Sektion darunter.
 const therapien = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie']
   .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapyCards[slug]?.tagline }))
   .filter((x) => x.c);
 
+// "Praxen in der Nähe": die nächstgelegenen bestehenden Standorte ab Basel.
+const nearby = [
+  { slug: 'zuerich-city', city: 'Zürich City', meta: 'Eröffnung 2028', desc: 'Zentral in Zürich, ebenfalls im Aufbau.' },
+  { slug: 'zuerich-oerlikon', city: 'Zürich Oerlikon', meta: '8050', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
+  { slug: 'winterthur-marktgasse', city: 'Winterthur Marktgasse', meta: '8400', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
+];
+
 const faqs = [
   {
-    q: 'Wann eröffnet ihr in Luzern?',
-    a: '2027. Ein genaues Datum können wir noch nicht nennen, weil die Räume gerade gesucht werden. Wer auf der Warteliste steht, erfährt den Termin als Erstes und kann sich vor der offiziellen Eröffnung einen Platz sichern.',
+    q: 'Wann eröffnet ihr in Basel?',
+    a: '2028. Ein genaues Datum können wir noch nicht nennen, weil die Räume gerade gesucht werden. Wer auf der Warteliste steht, erfährt den Termin als Erstes und kann sich vor der offiziellen Eröffnung einen Platz sichern.',
   },
   {
-    q: 'Was kostet Akupunktur in Luzern?',
-    a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Alle Zahlen stehen auf unserer Seite zu den Kosten in Luzern.',
+    q: 'Was kostet Akupunktur in Basel?',
+    a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Den konkreten Betrag nennen wir dir vor dem Termin.',
   },
   {
     q: 'Zahlt die Krankenkasse die Behandlung?',
     a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unsere Therapeut:innen EMR- und ASCA-anerkannt sind, beteiligen sich die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.',
   },
   {
-    q: 'Wo genau seid ihr in Luzern?',
-    a: 'Die Adresse steht noch nicht fest. Klar ist die Lage: zentral in der Stadt Luzern, zu Fuss vom Bahnhof erreichbar und mit dem Bus gut angebunden an Kriens, Emmen und Horw. Sobald der Mietvertrag unterschrieben ist, steht die Adresse hier.',
+    q: 'Behandelt ihr auch Grenzgänger aus Deutschland und Frankreich?',
+    a: 'Ja. Entscheidend ist nicht dein Wohnort, sondern deine Versicherung. Wer in der Schweiz arbeitet und hier grundversichert ist, kann eine Schweizer Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen. Bist du dagegen in Deutschland oder Frankreich versichert, zahlst du bei uns selbst und reichst die Rechnung bei deiner Kasse ein. Ob die etwas übernimmt, hängt von deinem Tarif ab. Schick uns vorher deine Angaben, dann sagen wir dir, was auf dich zukommt.',
+  },
+  {
+    q: 'Wo genau seid ihr in Basel?',
+    a: 'Die Adresse steht noch nicht fest. Klar ist die Lage: zentral in der Stadt, mit dem Bahnhof Basel SBB in Gehdistanz und guter Tramanbindung nach Kleinbasel, ins Gundeli und nach Riehen. Sobald der Mietvertrag unterschrieben ist, steht die Adresse hier.',
   },
   {
     q: 'Kann ich schon einen Termin reservieren?',
-    a: 'Fix buchen kannst du noch nicht. Auf die Warteliste eintragen schon. Wir melden uns, sobald die Terminvergabe für Luzern startet, und du kommst vor allen anderen dran. Wenn du früher etwas brauchst, behandeln wir dich gerne an einem unserer bestehenden Standorte.',
-  },
-  {
-    q: 'Behandelt ihr auch bei Kinderwunsch?',
-    a: 'Ja, das ist einer der häufigeren Gründe, warum Patientinnen zu uns kommen, oft begleitend zu einer Kinderwunschbehandlung in der Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende medizinische Behandlungen ab und sprechen offen darüber, was TCM dabei leisten kann und was nicht. In Luzern bieten wir das ab der Eröffnung an, bis dahin an unseren bestehenden Standorten.',
+    a: 'Fix buchen kannst du noch nicht. Auf die Warteliste eintragen schon. Wir melden uns, sobald die Terminvergabe für Basel startet, und du kommst vor allen anderen dran. Wenn du früher etwas brauchst, behandeln wir dich gerne an einem unserer bestehenden Standorte.',
   },
   {
     q: 'Gibt es Termine ausserhalb der Bürozeiten?',
-    a: 'Ja. An unseren bestehenden Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags. Für Luzern planen wir dieselben Zeiten, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Die definitiven Öffnungszeiten stehen hier, sobald die Praxis fix ist.',
+    a: 'Ja. An unseren bestehenden Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags. Für Basel planen wir dieselben Zeiten, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Die definitiven Öffnungszeiten stehen hier, sobald die Praxis fix ist.',
   },
 ];
 
@@ -70,7 +84,7 @@ const schema = [
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
       { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
-      { '@type': 'ListItem', position: 3, name: 'Luzern', item: url },
+      { '@type': 'ListItem', position: 3, name: 'Basel', item: url },
     ],
   },
   {
@@ -81,16 +95,16 @@ const schema = [
   },
 ];
 ---
-<SpaPage title={title} description={description} path="/standorte/luzern" body="" schema={schema}>
+<SpaPage title={title} description={description} path="/standorte/basel" body="" schema={schema}>
 
-  <!-- ── HERO (Struktur wie HeroLaunchSG: Copy links, Karte rechts) ── -->
+  <!-- ── HERO ── -->
   <section class="lu-hero">
     <div class="lu-hero-inner">
       <div class="lu-hero-copy">
-        <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Luzern</span></div>
-        <span class="lu-badge">Standort Luzern · Eröffnung 2027</span>
-        <h1 class="lu-h1">Akupunktur &amp; TCM in <span class="lu-accent">Luzern</span></h1>
-        <p class="lu-sub">Wir eröffnen 2027 eine Praxis in der Stadt Luzern, mit demselben Team und denselben Methoden wie an unseren zwölf bestehenden Standorten. Zentrale Lage, Bahnhof in Gehdistanz — die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
+        <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Basel</span></div>
+        <span class="lu-badge">Standort Basel · Eröffnung 2028</span>
+        <h1 class="lu-h1">TCM &amp; Akupunktur in <span class="lu-accent">Basel</span></h1>
+        <p class="lu-sub">Wir eröffnen 2028 eine Praxis in Basel, mit demselben Team und denselben Methoden wie an unseren dreizehn übrigen Standorten. Zentrale Lage, Bahnhof SBB in Gehdistanz geplant — die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
         <div class="lu-cta-row">
           <a href="#warteliste" class="lu-btn-primary">Auf die Warteliste</a>
           <a href="/standorte/" class="lu-btn-ghost">Bestehende Standorte</a>
@@ -104,9 +118,9 @@ const schema = [
 
       <div class="lu-hero-visual">
         <div class="lu-card" id="warteliste" style="scroll-margin-top:88px">
-          <div class="lu-ribbon">2027</div>
+          <div class="lu-ribbon">2028</div>
           <div class="lu-card-h">Sichere dir einen der <span class="lu-accent">ersten Termine</span></div>
-          <p class="lu-note" style="margin-bottom:14px">Eine E-Mail genügt. Wir melden uns, sobald die Terminvergabe in Luzern startet.</p>
+          <p class="lu-note" style="margin-bottom:14px">Eine E-Mail genügt. Wir melden uns, sobald die Terminvergabe in Basel startet.</p>
           <div class="lu-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
             <div><span class="lu-check">✓</span> Du hörst als Erstes vom Eröffnungstermin</div>
             <div><span class="lu-check">✓</span> Terminwahl vor der offiziellen Freigabe</div>
@@ -115,12 +129,12 @@ const schema = [
           <div class="lu-divider"></div>
           <form class="lu-wl-form" data-lu-waitlist novalidate>
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
-            <input type="hidden" name="quelle" value="warteliste-luzern" />
-            <input type="hidden" name="standort" value="Luzern" />
+            <input type="hidden" name="quelle" value="warteliste-basel" />
+            <input type="hidden" name="standort" value="Basel" />
             <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
             <div class="cf-turnstile lu-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
             <button type="submit">Auf die Warteliste</button>
-            <p class="lu-form-rule">Keine Werbung, keine Weitergabe. Nur eine Nachricht, wenn Luzern startet.</p>
+            <p class="lu-form-rule">Keine Werbung, keine Weitergabe. Nur eine Nachricht, wenn Basel startet.</p>
             <p class="lu-form-err" role="alert" hidden></p>
           </form>
         </div>
@@ -128,7 +142,7 @@ const schema = [
     </div>
   </section>
 
-  <!-- ── TRUST-BAND (usp-grid wie St. Gallen) ── -->
+  <!-- ── TRUST-BAND ── -->
   <section class="usp-grid-section" style="background:#fff;padding:48px 0;border-bottom:1px solid var(--border)">
     <div class="wrap"><div class="usp-grid">
       <div class="usp-card">
@@ -139,11 +153,11 @@ const schema = [
       <div class="usp-card">
         <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
         <div class="usp-title">Über 2000 zufriedene Patienten</div>
-        <div class="usp-sub">4,9★ bewertet, an zwölf Standorten.</div>
+        <div class="usp-sub">4,9★ bewertet, an dreizehn Standorten.</div>
       </div>
       <div class="usp-card">
         <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-        <div class="usp-title">Termine ab Eröffnung 2027</div>
+        <div class="usp-title">Termine ab Eröffnung 2028</div>
         <div class="usp-sub">Warteliste zuerst, danach die offizielle Freigabe.</div>
       </div>
       <div class="usp-card">
@@ -158,13 +172,13 @@ const schema = [
   <section class="section">
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Standort</div>
-      <h2 class="section-title">Deine <em>TCM-Praxis</em> in Luzern.</h2>
-      <p class="section-sub">Luzern ist unser nächster Standort, und wir bauen ihn genau so auf wie die bestehenden: kleine Teams, viel Zeit pro Termin, klare Diagnostik.</p>
-      <p style="margin-top:20px">Wenn du nach chinesischer Medizin in Luzern suchst, findest du bisher vor allem Einzelpraxen mit langen Wartezeiten. Wir wollen das ändern. Ab 2027 behandelt dich hier ein Team, das täglich mit denselben Krankheitsbildern arbeitet und sich untereinander abspricht, statt allein zu entscheiden.</p>
-      <p style="margin-top:16px">Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich dein Akupunkteur eine ganze Stunde Zeit, hört zu, schaut sich Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, ob Akupunktur, Schröpfen, Tuina oder eine Kräuterrezeptur sinnvoll ist, und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter. Wie ein Termin Schritt für Schritt abläuft, was er kostet und was die Studien zu Akupunktur hergeben, steht ausführlich unter <a href="/wissen/tcm-luzern-erfahrungen-ablauf/">Erfahrungen &amp; Ablauf</a>.</p>
-      <p style="margin-top:16px">Genauso wichtig ist uns, dass du nicht wochenlang auf einen Termin wartest. An unseren bestehenden Standorten bekommst du in der Regel innerhalb von zwei Tagen einen Platz, und dieselbe Planung übernehmen wir für Luzern. Wer auf der Warteliste steht, kommt vor der offiziellen Terminfreigabe dran.</p>
-      <p style="margin-top:16px">Unsere Therapeut:innen sind EMR- und ASCA-registriert, damit deine Zusatzversicherung mitzahlt. Was eine Sitzung kostet und was am Ende bei dir bleibt, rechnen wir dir vorher vor, siehe <a href="/standorte/luzern/kosten/">Kosten &amp; Krankenkasse in Luzern</a>.</p>
-      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof in Gehdistanz — Adresse folgt nach Mietvertrag.</p>
+      <h2 class="section-title">Deine <em>TCM-Praxis</em> in Basel.</h2>
+      <p class="section-sub">Basel steht auf unserer Liste, und wir bauen den Standort genau so auf wie die bestehenden: kleine Teams, viel Zeit pro Termin, klare Diagnostik.</p>
+      <p style="margin-top:20px">Wer heute nach chinesischer Medizin in Basel sucht, landet meist bei Einzelpraxen mit langen Wartezeiten. Das wollen wir ändern. Ab 2028 behandelt dich hier ein Team, das täglich mit denselben Krankheitsbildern arbeitet und schwierige Fälle untereinander bespricht, statt allein zu entscheiden.</p>
+      <p style="margin-top:16px">Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich dein Akupunkteur eine ganze Stunde Zeit, hört zu, schaut sich Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, ob Akupunktur, Schröpfen, Tuina oder eine Kräuterrezeptur sinnvoll ist, und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter. Wie ein Termin Schritt für Schritt abläuft, was er kostet und was die Studien zu Akupunktur hergeben, steht ausführlich unter <a href="/wissen/tcm-basel-erfahrungen-ablauf/">Erfahrungen &amp; Ablauf</a>.</p>
+      <p style="margin-top:16px">Behandelt wird auf Deutsch, Englisch, Französisch und Mandarin. In einer Stadt, in der viele für Pharma, Uni oder Chemie hergezogen sind, ist das keine Nebensache: Beschwerden zu schildern fällt in der eigenen Sprache deutlich leichter, und in der Anamnese hängt fast alles daran, wie genau du erzählen kannst.</p>
+      <p style="margin-top:16px">Unsere Therapeut:innen sind EMR- und ASCA-registriert, damit deine Zusatzversicherung mitzahlt. Was eine Sitzung kostet und was am Ende bei dir bleibt, rechnen wir dir vorher vor, mehr dazu unter <a href="/krankenkassen/">Krankenkasse</a>.</p>
+      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof Basel SBB in Gehdistanz geplant — Adresse folgt nach Mietvertrag.</p>
     </div>
   </section>
 
@@ -172,10 +186,10 @@ const schema = [
   <section class="section" style="background:var(--surface)">
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Einzugsgebiet</div>
-      <h2 class="section-title">Wo wir in Luzern <em>erreichbar sein werden.</em></h2>
-      <p class="section-sub">Die Praxis entsteht zentral in der Stadt, mit kurzen Wegen aus der Altstadt und der Neustadt. Der Bahnhof liegt in Gehdistanz, damit du nach der Arbeit nicht noch quer durch die Stadt musst.</p>
-      <p style="margin-top:16px">Von Kriens bist du in wenigen Minuten da. Wer Akupunktur in Kriens sucht, hat mit uns eine anerkannte Praxis vor der Haustür, ohne Umsteigen und ohne Fahrt nach Zürich. Für Horw und Ebikon gilt dasselbe: beide Gemeinden sind direkt ans Zentrum angebunden.</p>
-      <p style="margin-top:16px">Aus Emmen und Emmenbrücke fährt die S-Bahn im dichten Takt. TCM in Emmenbrücke heisst für die meisten ohnehin ein kurzer Weg in die Stadt, und genau dort sind wir ab 2027. Auch aus Littau und Meggen sind es keine weiten Strecken. Kurz: Wenn du im Raum Luzern wohnst, bist du in der Regel in einer Viertelstunde bei uns.</p>
+      <h2 class="section-title">Wo wir in Basel <em>erreichbar sein werden.</em></h2>
+      <p class="section-sub">Die Praxis entsteht zentral in der Stadt, mit kurzen Wegen aus Grossbasel und Kleinbasel. Der Bahnhof SBB soll in Gehdistanz liegen, damit du nach der Arbeit nicht noch quer durch die Stadt musst.</p>
+      <p style="margin-top:16px">Aus dem Gundeli, St. Johann, St. Alban und Bachletten bist du mit dem Tram in wenigen Minuten da. Für Riehen, Allschwil, Binningen, Münchenstein, Birsfelden und Reinach gilt dasselbe: alle sind direkt ans Zentrum angebunden, ohne Umsteigen.</p>
+      <p style="margin-top:16px">Ein Punkt, der Basel von anderen Städten unterscheidet: die Grenze. Aus Weil am Rhein, Lörrach und Grenzach-Wyhlen auf deutscher Seite und aus Saint-Louis, Hégenheim und Mulhouse auf französischer Seite ist die Basler Innenstadt oft schneller erreicht als das nächste grössere Zentrum im eigenen Land. Für Grenzgänger:innen, die ohnehin in Basel arbeiten, liegt ein Termin damit auf dem Arbeitsweg. Wie die Abrechnung in dem Fall läuft, steht weiter unten im FAQ.</p>
     </div>
   </section>
 
@@ -184,12 +198,12 @@ const schema = [
     <div class="wrap">
       <div class="reveal">
         <div class="section-label">Beschwerden</div>
-        <h2 class="section-title">Beschwerden, die wir in <em>Luzern</em> behandeln</h2>
-        <p class="section-sub">Das sind die Anliegen, mit denen Patient:innen an unseren Standorten am häufigsten kommen, und die wir ab 2027 auch in Luzern behandeln. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.</p>
+        <h2 class="section-title">Beschwerden, die wir in <em>Basel</em> behandeln</h2>
+        <p class="section-sub">Das sind die Anliegen, mit denen Patient:innen an unseren Standorten am häufigsten kommen, und die wir ab 2028 auch in Basel behandeln. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.</p>
       </div>
       <div class="card-grid reveal">
-        {beschwerden.map(({ slug, c }, i) => (
-          <a href={`/beschwerden/${slug}/`} class="svc-card reveal"><div class="svc-photo-top-bar"></div><div class="svc-photo-wrap"><img loading="lazy" decoding="async" src={c.img} alt={`${c.name} mit TCM behandeln in Luzern`} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div><div class="svc-body"><div class="svc-name">{anchor(i, c.name)}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
+        {beschwerden.map(({ href, c }, i) => (
+          <a href={`/beschwerden/${href}/`} class="svc-card reveal"><div class="svc-photo-top-bar"></div><div class="svc-photo-wrap"><img loading="lazy" decoding="async" src={c.img} alt={`${c.name} mit TCM behandeln in Basel`} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div><div class="svc-body"><div class="svc-name">{anchor(i, c.name)}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
         ))}
       </div>
       <div style="text-align:center;margin-top:24px"><a href="/beschwerden/" class="btn-secondary" style="display:inline-flex">Alle Beschwerden ansehen →</a></div>
@@ -202,9 +216,9 @@ const schema = [
       <div class="svc-header reveal">
         <div>
           <div class="section-label">Unsere Therapien</div>
-          <h2 class="section-title">Unsere <em>Therapien</em> in Luzern</h2>
+          <h2 class="section-title">Unsere <em>Therapien</em> in Basel</h2>
         </div>
-        <p class="svc-sub">Dasselbe Spektrum wie an unseren übrigen Standorten. Schröpfen in Luzern und Tuina in Luzern gehören von Anfang an dazu, ebenso die chinesische Kräutertherapie. Was bei dir sinnvoll ist, entscheiden wir nach dem Erstgespräch, nicht vorher.</p>
+        <p class="svc-sub">Dasselbe Spektrum wie an unseren übrigen Standorten. Schröpfen in Basel und Tuina in Basel gehören von Anfang an dazu, ebenso die chinesische Kräutertherapie. Was bei dir sinnvoll ist, entscheiden wir nach dem Erstgespräch, nicht vorher.</p>
       </div>
       <div class="svc-grid">
         {therapien.map(({ slug, c, tagline }) => (
@@ -214,7 +228,7 @@ const schema = [
     </div>
   </section>
 
-  <!-- ── KRÄUTERTHERAPIE (kt-feature wie St. Gallen) ── -->
+  <!-- ── KRÄUTERTHERAPIE ── -->
   <section class="section kt-wrap" style="background:var(--bg)">
     <div class="wrap">
       <span class="kt-intro-label">Ergänzende Therapie</span>
@@ -228,7 +242,7 @@ const schema = [
             <span class="kt-micro-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Ergänzende Therapie</span>
           </div>
           <h3 class="kt-headline">Kräutertherapie</h3>
-          <p class="kt-desc">Individuelle Rezepturen als Granulat, wenn eine Behandlung über längere Zeit begleitet werden soll. In Luzern ab Eröffnung verfügbar.</p>
+          <p class="kt-desc">Individuelle Rezepturen als Granulat, wenn eine Behandlung über längere Zeit begleitet werden soll. In Basel ab Eröffnung verfügbar.</p>
           <span class="kt-cta">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </div>
       </a>
@@ -240,7 +254,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Ablauf</div>
       <h2 class="section-title">Erstgespräch → Behandlungsplan → Folgetermine</h2>
-      <p class="section-sub">So läuft es an allen unseren Standorten ab, und so wird es auch in Luzern laufen.</p>
+      <p class="section-sub">So läuft es an allen unseren Standorten ab, und so wird es auch in Basel laufen.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
           <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">1</div>
@@ -266,8 +280,8 @@ const schema = [
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Krankenkasse</div>
       <h2 class="section-title">Was die <em>Zusatzversicherung</em> übernimmt.</h2>
-      <p>Akupunktur bei Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Damit deine Kasse mitzahlt, muss die behandelnde Person in den Registern <strong>EMR</strong> und <strong>ASCA</strong> anerkannt sein. Das trifft auf unser gesamtes Team zu, und daran ändert sich mit Luzern nichts.</p>
-      <p style="margin-top:16px">Bei den meisten Kassen sind damit <strong>80 bis 100 Prozent</strong> gedeckt, abhängig von Modell und Jahreslimite. Verbindlich ist immer deine Police. Schick uns Kasse und Modell, wir prüfen das kostenlos und sagen dir vorher, womit du rechnen musst. Mehr dazu steht auf der Seite <a href="/krankenkassen/">Krankenkasse</a>, die konkreten Zahlen für Luzern findest du unter <a href="/standorte/luzern/kosten/">Kosten &amp; Krankenkasse</a>.</p>
+      <p>Akupunktur bei Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Damit deine Kasse mitzahlt, muss die behandelnde Person in den Registern <strong>EMR</strong> und <strong>ASCA</strong> anerkannt sein. Das trifft auf unser gesamtes Team zu, und daran ändert sich mit Basel nichts.</p>
+      <p style="margin-top:16px">Bei den meisten Kassen sind damit <strong>80 bis 100 Prozent</strong> gedeckt, abhängig von Modell und Jahreslimite. Verbindlich ist immer deine Police. Schick uns Kasse und Modell, wir prüfen das kostenlos und sagen dir vorher, womit du rechnen musst. Mehr dazu steht auf der Seite <a href="/krankenkassen/">Krankenkasse</a>.</p>
     </div>
   </section>
 
@@ -276,7 +290,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Warum TCM.ch</div>
       <h2 class="section-title">Was du bei uns anders <em>bekommst.</em></h2>
-      <p class="section-sub">Luzern wird kein Einzelkämpfer-Standort, sondern Teil eines Netzes, das seit Jahren läuft.</p>
+      <p class="section-sub">Basel wird kein Einzelkämpfer-Standort, sondern Teil eines Netzes, das seit Jahren läuft.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
           <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
@@ -301,7 +315,7 @@ const schema = [
   <section class="section" style="background:var(--surface)">
     <div class="wrap reveal" style="max-width:820px">
       <div class="section-label">Häufige Fragen</div>
-      <h2 class="section-title" style="margin-bottom:24px">FAQ zu <em>Akupunktur &amp; TCM in Luzern</em></h2>
+      <h2 class="section-title" style="margin-bottom:24px">FAQ zu <em>TCM &amp; Akupunktur in Basel</em></h2>
       <div class="faq-list">
         {faqs.map((f) => (
           <details class="faq-item" style="border-bottom:1px solid var(--border);padding:18px 0">
@@ -313,10 +327,24 @@ const schema = [
     </div>
   </section>
 
+  <!-- ── PRAXEN IN DER NÄHE ── -->
+  <section class="related-section">
+    <div class="wrap">
+      <div class="section-label">Weitere Standorte</div>
+      <h2 class="section-title">Praxen <em>in der Nähe</em></h2>
+      <p class="section-sub">Bis Basel öffnet, sind das die nächstgelegenen Standorte. Zürich erreichst du ab Basel SBB in rund 55 Minuten.</p>
+      <div class="city-grid reveal">
+        {nearby.map((n) => (
+          <a href={`/standorte/${n.slug}/`} class="city-card location-card"><span class="location-plz">{n.meta}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Standort ansehen →</span></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ── END-CTA ── -->
   <section class="cta-band" style="background:var(--blue);padding:48px 0">
     <div class="wrap" style="text-align:center">
-      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Einer der ersten Termine in Luzern?</h2>
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Einer der ersten Termine in Basel?</h2>
       <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Trag dich mit deiner E-Mail ein. Wir melden uns, sobald die Terminvergabe startet, und du kommst vor allen anderen dran.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a class="btn-white" href="#warteliste" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Auf die Warteliste</a>
@@ -328,10 +356,10 @@ const schema = [
 <style>
   /* Karten sind <a> (crawlbar) statt div+onclick; Link-Default zurücksetzen,
      damit kein Blau/Unterstrich durchschlägt. */
-  .svc-card, .kt-feature { text-decoration: none; color: inherit; }
+  .svc-card, .kt-feature, .city-card { text-decoration: none; color: inherit; }
 
-  /* Hero-Styles 1:1 nach HeroLaunchSG.astro, eigener Prefix damit die SG-Komponente
-     unangetastet bleibt (Astro scoped diese Regeln auf diese Seite). */
+  /* Hero-Styles wie /standorte/luzern/ (dort 1:1 nach HeroLaunchSG.astro),
+     eigener Prefix, Astro scoped die Regeln auf diese Seite. */
   .lu-hero { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
   .lu-hero-inner {
     max-width: var(--max); margin: 0 auto;
@@ -430,7 +458,7 @@ const schema = [
           : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
         if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
         var data = {
-          email: email, standort: 'Luzern', quelle: 'warteliste-luzern',
+          email: email, standort: 'Basel', quelle: 'warteliste-basel',
           website: (f.querySelector('[name="website"]') || {}).value || '',
           zeit: new Date().toISOString(), turnstileToken: ts.token,
         };
@@ -439,14 +467,14 @@ const schema = [
           .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
           .then(function () {
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: 'formular_senden', form_type: 'warteliste', quelle: 'warteliste-luzern' });
+            window.dataLayer.push({ event: 'formular_senden', form_type: 'warteliste', quelle: 'warteliste-basel' });
             // Inline-Styles, weil die scoped Styles dieser Seite auf zur Laufzeit
             // erzeugte Elemente nicht greifen (kein data-astro-cid).
             var ok = document.createElement('div');
             ok.style.cssText = 'text-align:center;padding:14px 4px';
             ok.innerHTML = '<div aria-hidden="true" style="width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--blue-light);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">✓</div>' +
               '<h3 style="font-size:19px;font-weight:800;color:var(--charcoal);margin:0 0 8px;letter-spacing:-.01em">Danke, du stehst auf der Liste.</h3>' +
-              '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail, sobald die Termine in Luzern freigegeben sind.</p>';
+              '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail, sobald die Termine in Basel freigegeben sind.</p>';
             f.replaceWith(ok);
           })
           .catch(function () {

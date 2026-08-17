@@ -1,4 +1,4 @@
-// ── Single source of truth for the 13 TCM.ch clinics (EN Astro pages). ──
+// ── Single source of truth for the 14 TCM.ch clinics (EN Astro pages). ──
 // Values pulled verbatim from the DE SPA `LOCATIONS` array in public/index.html
 // (street, postal code, city, phone, opening hours, geo). Do NOT invent data.
 //
@@ -74,6 +74,11 @@ export const clinics: Clinic[] = [
     street: null, postalCode: null, phone: '+41 77 523 61 22',
     openingHours: [], geo: { lat: 47.5596, lng: 7.5886 }, openingSoon: true, openingNote: 'Opening 2028',
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
+
+  { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
+    street: null, postalCode: null, phone: '+41 77 523 61 22',
+    openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, openingSoon: true, openingNote: 'Opening 2027',
+    areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22',

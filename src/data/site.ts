@@ -9,7 +9,7 @@ export const site = {
   turnstileSitekey: '0x4AAAAAADf8GZzWnvFzYvmx',
 };
 
-// The 13 TCM.ch clinics (id = DE SPA standort slug, label = display name).
+// The 14 TCM.ch clinics (id = DE SPA standort slug, label = display name).
 export const standorte = [
   { id: 'zuerich-city', label: 'Zürich City' },
   { id: 'zuerich-hoengg', label: 'Zürich Höngg' },
