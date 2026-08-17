@@ -19,8 +19,14 @@ export async function onRequestPost({ request, env }) {
     // Email is required for every source EXCEPT the St. Gallen launch hero
     // (quelle=launch-hero-sg), which captures only name + phone. Name, telefon
     // and a valid Turnstile token are always required.
+    // Wartelisten (quelle=warteliste-*, z. B. Luzern) erfassen nur eine E-Mail.
     const _launchSG = d.quelle === 'launch-hero-sg';
-    if (!d.name || !d.telefon || (!_launchSG && !d.email)) return J({ error: 'missing_fields' }, 422);
+    const _warteliste = typeof d.quelle === 'string' && d.quelle.indexOf('warteliste-') === 0;
+    if (_warteliste) {
+      if (!d.email) return J({ error: 'missing_fields' }, 422);
+    } else if (!d.name || !d.telefon || (!_launchSG && !d.email)) {
+      return J({ error: 'missing_fields' }, 422);
+    }
     if (!env || !env.RESEND_API_KEY) return J({ error: 'no_api_key' }, 500);
 
     // Turnstile secret: production (tcm.ch) uses the real secret; previews (*.pages.dev)
@@ -58,9 +64,11 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table></body></html>';
 
-    let subject = d.typ === 'termin'
-      ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
-      : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')';
+    let subject = _warteliste
+      ? 'Warteliste – ' + (d.standort || 'Standort offen') + ' (' + d.email + ')'
+      : d.typ === 'termin'
+        ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
+        : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')';
     // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
     // als eigene Zeile im HTML-Body (rows oben).
     if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
