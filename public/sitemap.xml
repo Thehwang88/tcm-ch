@@ -1105,6 +1105,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/therapien/physiotherapie/dry-needling/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/therapien/physiotherapie/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>

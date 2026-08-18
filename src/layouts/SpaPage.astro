@@ -13,9 +13,11 @@ interface Props {
   path: string;
   body: string;       // captured SPA page HTML (with __TURNSTILE_SITEKEY__ tokens)
   schema?: object;
+  /** Optional per-page OG image (absolute URL); defaults to the site image. */
+  ogImage?: string;
   noindex?: boolean;
 }
-const { title, description, path, body, schema, noindex = false } = Astro.props;
+const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false } = Astro.props;
 const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const enTwin = enTwinPath(path); // EN alternate (null if no built EN twin)
 
@@ -54,9 +56,9 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={site.ogImage} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={site.ogImage} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />

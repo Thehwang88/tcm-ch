@@ -1,0 +1,42 @@
+---
+// /therapien/physiotherapie/dry-needling — child page of the Physiotherapie pillar.
+// Same pattern as /therapien/akupunktur/schwangerschaft (nested sub-page,
+// allowlisted in functions/therapien/[[path]].js — 2-segment paths otherwise 410).
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import bodyRaw from '../../../../data/dry-needling-body.html?raw';
+import { prefillForm } from '../../../../data/form-prefill';
+import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
+const body = appendSidebarAllLink(
+  prefillForm(bodyRaw, 'Ich interessiere mich für Dry Needling.', 'Therapie: Dry Needling'),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
+
+const url = 'https://tcm.ch/therapien/physiotherapie/dry-needling/';
+const title = 'Dry Needling – Triggerpunkte lösen | TCM.ch';
+const description = 'Dry Needling bei TCM.ch: verhärtete Triggerpunkte mit feiner Nadel lösen. Von Therapeuten mit Nadel-Erfahrung aus TCM und Physio. Termin in 24–48h.';
+
+const faqs = [
+  { q: 'Was ist der Unterschied zwischen Dry Needling und Akupunktur?', a: 'Gleiche feine Nadel, andere Logik: Dry Needling zielt punktgenau auf den verhärteten Triggerpunkt im Muskel, Akupunktur arbeitet mit einem Punktesystem am ganzen Körper und bezieht Schmerzverarbeitung, Anspannung und Schlaf ein. Bei uns bekommst du beides und eine ehrliche Empfehlung, was zu deinem Verlauf passt.' },
+  { q: 'Tut Dry Needling weh?', a: 'Der Einstich kaum, der Reiz im Triggerpunkt schon, ein kurzer, dumpfer Moment mit typischem Muskelzucken. Ein bis zwei Tage Muskelkatergefühl danach sind normal und ein gutes Zeichen.' },
+  { q: 'Wie viele Sitzungen brauche ich?', a: 'Meist 2 bis 6 Sitzungen im Wochenabstand. Frische, klar muskuläre Beschwerden reagieren schnell, chronische Verläufe brauchen länger und profitieren oft von der Kombination mit Akupunktur.' },
+  { q: 'Übernimmt die Krankenkasse Dry Needling?', a: 'Im Rahmen der Physiotherapie mit ärztlicher Verordnung ja, über die Grundversicherung. Als TCM-Behandlung beteiligen sich viele Zusatzversicherungen mit 80 bis 100 Prozent. Wir beraten dich zum passenden Weg.' },
+  { q: 'Wer darf Dry Needling durchführen?', a: 'Speziell dafür ausgebildete Therapeutinnen und Therapeuten. Bei uns kommt dazu, dass Nadelarbeit seit jeher Kernkompetenz des Hauses ist, aus TCM und Physiotherapie.' },
+  { q: 'Ich nehme Blutverdünner. Geht Dry Needling trotzdem?', a: 'Sag es uns vorab: Je nach Medikament passen wir die Technik an oder arbeiten mit manueller Triggerpunkt-Therapie als Alternative. Gleiches gilt für Schwangerschaft und Herzschrittmacher.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    about: { '@type': 'MedicalTherapy', name: 'Dry Needling',
+      alternateName: 'Triggerpunkt-Nadelung',
+      howPerformed: 'Eine feine, sterile Einmalnadel wird gezielt in den myofaszialen Triggerpunkt gesetzt, um die Daueranspannung der betroffenen Muskelfasern zu lösen.' },
+    lastReviewed: '2026-08-18' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 2, name: 'Physiotherapie', item: 'https://tcm.ch/therapien/physiotherapie/' },
+    { '@type': 'ListItem', position: 3, name: 'Dry Needling', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/physiotherapie/dry-needling" body={body} schema={schema} ogImage="https://tcm.ch/images/img-2a8cecc37898.webp" />
