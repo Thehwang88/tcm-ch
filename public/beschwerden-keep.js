@@ -27,5 +27,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "colitis-ulcerosa", "tennisarm", "cluster-kopfschmerzen", "fettleber", "restless-legs",
   "gastritis", "rosacea", "hueftschmerzen",
   "aphten", "raynaud-syndrom", "long-covid",
-  "lippenherpes", "reizblase", "spannungskopfschmerzen"
+  "lippenherpes", "reizblase", "spannungskopfschmerzen",
+  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen"
 ];
