@@ -1,0 +1,35 @@
+---
+// /akupunktur-kinder — Zielgruppen-Seite "Für Kinder", Gegenstück zu
+// /therapien/akupunktur/schwangerschaft/ (Familien-Cluster). Root-Pfad wie /longevity/.
+import SpaPage from '../layouts/SpaPage.astro';
+import bodyRaw from '../data/akupunktur-kinder-body.html?raw';
+
+const body = bodyRaw;
+const url = 'https://tcm.ch/akupunktur-kinder/';
+const title = 'Akupunktur für Kinder – ab welchem Alter & was möglich ist | TCM.ch';
+const description = 'Akupunktur für Kinder: ab welchem Alter Nadeln sinnvoll sind, nadelfreie Alternativen wie Akupressur und Ear Seeds, Kosten und Grenzen. EMR/ASCA.';
+
+const faqs = [
+  { q: 'Ab welchem Alter ist Akupunktur für Kinder möglich?', a: 'Mit Nadeln arbeiten wir in der Regel ab dem Schulalter, also etwa ab sechs bis sieben Jahren, und nur wenn das Kind einverstanden ist. Jüngere Kinder behandeln wir nadelfrei, Säuglinge gar nicht.' },
+  { q: 'Tut Akupunktur bei Kindern weh?', a: 'Die Nadeln sind sehr dünn, der Einstich fühlt sich meist wie ein kurzes Pieksen an, danach spüren die meisten Kinder nur ein Ziehen oder gar nichts. Wir setzen wenige Punkte, arbeiten schnell und hören sofort auf, wenn das Kind nicht mehr will.' },
+  { q: 'Geht das auch ohne Nadeln?', a: 'Ja, und bei jüngeren Kindern ist das der Normalfall: Akupressur mit Fingerdruck, Kindertuina, Ear Seeds am Ohr oder Laserakupunktur. Für zuhause zeigen wir dir passende Punkte, die du selbst anwenden kannst.' },
+  { q: 'Zahlt die Krankenkasse die Behandlung meines Kindes?', a: 'Über die Zusatzversicherung des Kindes, bei EMR- oder ASCA-anerkannten Therapeutinnen meist mit 80 bis 100 Prozent. Die Grundversicherung deckt es nicht. Ein kurzer Anruf bei deiner Kasse vor dem ersten Termin klärt den Rest.' },
+  { q: 'Muss der Kinderarzt einverstanden sein?', a: 'Eine Zustimmung brauchst du formal nicht, die Abklärung schon: Was ein Kind hat, gehört zuerst kinderärztlich eingeordnet. Danach behandeln wir begleitend, und laufende Therapien oder Medikamente werden nie ohne die Kinderärztin verändert.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    author: { '@type': 'Person', name: 'Corinna Reinhart', description: 'TCM-Therapeutin, EMR- und ASCA-zertifiziert' },
+    reviewedBy: { '@type': 'Person', name: 'Corinna Reinhart' },
+    lastReviewed: '2026-08-18' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Akupunktur für Kinder', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/akupunktur-kinder" body={body} schema={schema} />

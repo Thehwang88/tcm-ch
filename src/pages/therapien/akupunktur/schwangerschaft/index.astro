@@ -11,8 +11,8 @@ const body = appendSidebarAllLink(
   'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
 
 const url = 'https://tcm.ch/therapien/akupunktur/schwangerschaft/';
-const title = 'Akupunktur in der Schwangerschaft | TCM.ch';
-const description = 'Akupunktur in der Schwangerschaft: Geburtsvorbereitung ab SSW 36, Beckenendlage, Übelkeit, Rückenschmerzen. Erfahrene Therapeutinnen, EMR/ASCA-anerkannt.';
+const title = 'Akupunktur in der Schwangerschaft – Sicherheit, Nutzen & Kosten | TCM.ch';
+const description = 'Akupunktur in der Schwangerschaft: Sicherheit, Einsatzgebiete von Übelkeit bis Geburtsvorbereitung ab SSW 36, Ablauf und Kosten. EMR/ASCA-anerkannt.';
 
 const faqs = [
   { q: 'Ab wann kann ich mit Akupunktur in der Schwangerschaft beginnen?', a: 'Grundsätzlich in jedem Trimester, bei Übelkeit typischerweise früh im ersten. Wichtig ist, dass die Therapeutin von der Schwangerschaft weiss, die Punktwahl richtet sich danach.' },
@@ -21,11 +21,18 @@ const faqs = [
   { q: 'Ist Akupunktur in der Schwangerschaft gefährlich fürs Kind?', a: 'In erfahrenen Händen gilt sie als sicher, wehenanregende Punkte werden bis Woche 36 gemieden. Genau deshalb gehört Schwangerschaftsakupunktur zu Behandelnden mit Erfahrung, und deine Vorsorge läuft unverändert weiter.' },
   { q: 'Was kostet die Behandlung?', a: 'Die Behandlung läuft über die Zusatzversicherung. EMR- und ASCA-anerkannt, viele Kassen beteiligen sich mit 80 bis 100 Prozent.' },
   { q: 'Kann Akupunktur die Geburt einleiten?', a: 'Bei Übertragung kann Akupunktur wehenanregend eingesetzt werden, ausschliesslich in Absprache mit Hebamme und Klinik. Vor dem Termin werden diese Punkte bewusst gemieden.' },
+  { q: 'Welche Akupunkturpunkte sind in der Schwangerschaft tabu?', a: 'Vor der 36. Woche werden wehenwirksame Punkte gemieden, darunter SP 6, LI 4 sowie BL 60 und BL 67, dazu kräftige Stimulation an Unterbauch und Kreuzbein. Ab der Geburtsvorbereitung oder bei Übertragung werden genau diese Punkte gezielt eingesetzt, dann aber in Absprache mit Hebamme und Klinik.' },
+  { q: 'Hilft Akupunktur wirklich gegen Schwangerschaftsübelkeit?', a: 'Das ist das am besten untersuchte Einsatzgebiet. Die Cochrane-Übersicht zu Übelkeit in der Frühschwangerschaft sieht für Akupunktur und Akupressur Hinweise auf Linderung bei begrenzter Evidenzqualität (PMID 24659261). Viele Frauen kombinieren die Sitzung mit Akupressur am Punkt P6 für zuhause.' },
+  { q: 'Muss meine Gynäkologin zustimmen?', a: 'Formal brauchst du keine Zustimmung, sinnvoll ist die Absprache trotzdem, besonders bei Risikoschwangerschaften, Blutungen in der Vorgeschichte oder geplanter Geburtsvorbereitung. Wir informieren auf Wunsch deine Hebamme oder Gynäkologin und stimmen den Zeitpunkt ab.' },
 ];
+
 
 const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
-    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    author: { '@type': 'Person', name: 'Corinna Reinhart', description: 'TCM-Therapeutin, EMR- und ASCA-zertifiziert' },
+    reviewedBy: { '@type': 'Person', name: 'Corinna Reinhart' },
+    lastReviewed: '2026-08-18' },
   { '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
