@@ -28,17 +28,21 @@ const url = `https://tcm.ch/therapien/${slug}/`;
 // Per-slug overrides (default templates otherwise).
 const TITLE_OVERRIDE: Record<string, string> = {
   elektroakupunktur: 'Elektroakupunktur in der Schweiz | TCM.ch',
-  shiatsu: 'Shiatsu – Behandlung, Wirkung & Kosten | TCM.ch',
+  shiatsu: 'Shiatsu – Behandlung & Wirkung | TCM.ch',
   physiotherapie: 'Physiotherapie – Kliniken & Termine | TCM.ch',
 };
 const title = TITLE_OVERRIDE[slug] ?? `${name} – TCM-Behandlung | TCM.ch`;
 const DESC_OVERRIDE: Record<string, string> = {
   schroepfen: 'Schröpfen und blutiges Schröpfen (Hijama) bei TCM.ch: EMR-/ASCA-anerkannt, Zusatzversicherung 80–100 %. Geprüfte Therapeuten an 14 Standorten.',
   elektroakupunktur: 'Elektroakupunktur kombiniert Akupunktur mit sanften elektrischen Impulsen für eine gleichmässige Reizung. EMR-/ASCA-anerkannt, an 14 Standorten.',
-  shiatsu: 'Shiatsu-Behandlung in der Deutschschweiz: Ablauf, Wirkung, Kosten und Krankenkasse ehrlich erklärt. Termine an unseren Standorten anfragen.',
+  shiatsu: 'Shiatsu bei TCM.ch: japanische Drucktherapie bei Verspannungen, Stress und Schlafproblemen. Anerkannt von Zusatzversicherungen. Termin in 24–48h.',
   physiotherapie: 'Physiotherapie bei TCM.ch: manuelle Therapie, Triggerpunkt-Behandlung, Reha. Mit ärztlicher Verordnung über die Grundversicherung. Termin in 24 bis 48 h.',
 };
 const description = DESC_OVERRIDE[slug] ?? `${name} bei TCM.ch: medizinische TCM, EMR-/ASCA-anerkannt, Krankenkasse 80–100 % über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+// Per-Slug OG-Bild, wo das Standard-Motiv nicht passt (Default: site.ogImage).
+const OG_OVERRIDE: Record<string, string> = {
+  shiatsu: 'https://tcm.ch/images/img-7149f50cc917.webp',
+};
 const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
@@ -78,4 +82,4 @@ if (slug === 'shiatsu') {
   prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', offer + '<div id="therapie-cities-section">');
 }
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} ogImage={OG_OVERRIDE[slug]} />
