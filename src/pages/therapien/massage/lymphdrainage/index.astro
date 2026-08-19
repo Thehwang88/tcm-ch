@@ -6,18 +6,25 @@ import WhatsAppContact from '../../../../components/WhatsAppContact.astro';
 import bodyRaw from '../../../../data/massage-lymphdrainage-body.html?raw';
 import css from '../../../../data/massage-city.css?raw';
 
-const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
 const url = 'https://tcm.ch/therapien/massage/lymphdrainage/';
 const title = 'Lymphdrainage Winterthur & St. Gallen | Manuelle Lymphdrainage – TCM.ch';
 const description = 'Manuelle Lymphdrainage in Winterthur & St. Gallen: sanfte Technik bei Schwellungen und Wassereinlagerungen. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
 
+// Eine Quelle fuer sichtbare FAQ und FAQPage-Schema: faqs[] wird unten in den
+// <!--FAQ-->-Platzhalter im Body gerendert. Vorher lagen beide Kopien getrennt vor
+// und konnten auseinanderlaufen (Schema ohne passendes sichtbares FAQ = Snippet-Risiko).
 const faqs = [
-  { q: 'Wie fühlt sich eine Lymphdrainage an?', a: 'Sehr sanft. Die Griffe sind leicht und rhythmisch, sie verschieben kaum mehr als die Haut. Viele empfinden die Behandlung als beruhigend und kommen dabei zur Ruhe. Kräftiger Druck wie bei einer Muskelmassage gehört bewusst nicht dazu.' },
-  { q: 'Wie oft sollte man eine Lymphdrainage machen?', a: 'Das richtet sich nach deinem Anliegen. Bei akuter Schwellung können in kurzer Folge mehrere Sitzungen sinnvoll sein, zur Entlastung zwischendurch reicht oft ein Termin nach Bedarf. Wir stimmen den Rhythmus mit dir ab.' },
-  { q: 'Gibt es Situationen, in denen ich keine Lymphdrainage machen sollte?', a: 'Ja. Bei akuten Infekten mit Fieber, einer bekannten Herzschwäche oder dem Verdacht auf eine Thrombose ist von einer Lymphdrainage abzusehen oder sie zuerst ärztlich abzuklären. Sag uns bei der Anfrage, wenn eines dieser Themen auf dich zutrifft, dann klären wir es gemeinsam.' },
-  { q: 'Übernimmt die Krankenkasse die Lymphdrainage?', a: 'Bei unseren anerkannten Therapeut:innen beteiligt sich in der Regel die Zusatzversicherung, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt die Behandlung als Massageleistung nicht. Deine genaue Deckung prüfen wir vorab.' },
-  { q: 'Hilft Lymphdrainage bei geschwollenen Beinen in der Schwangerschaft?', a: 'Wassereinlagerungen sind in der Schwangerschaft häufig, und die sanfte Technik wird dabei oft als angenehm empfunden. Bei normalem Verlauf ist das gut möglich. Passend dazu ist unsere Schwangerschaftsmassage, im Zweifel sprich es kurz mit deiner Hebamme oder Ärztin ab.' },
+  { q: 'Was bringt manuelle Lymphdrainage?', a: 'Sie regt den Abfluss gestauter Gewebsflüssigkeit an: Schwellungen gehen zurück, Spannung und Schweregefühl lassen nach, nach Operationen kann die Erholung schneller laufen. Beim chronischen Lymphödem ist sie Teil der etablierten Standardbehandlung, immer zusammen mit Kompression.' },
+  { q: 'Wie oft braucht man Lymphdrainage?', a: 'Nach Operationen oft nur wenige Sitzungen, beim chronischen Lymphödem ein- bis zweimal wöchentlich in Serien als Langzeitbegleitung. Den Rahmen gibt die ärztliche Verordnung.' },
+  { q: 'Übernimmt die Krankenkasse die Lymphdrainage?', a: 'Als Massageleistung beteiligt sich die Zusatzversicherung, meist mit 50 bis 90 Prozent, ganz ohne Verordnung. Mit ärztlicher Verordnung als physiotherapeutische Leistung übernimmt die Grundversicherung nach Franchise und Selbstbehalt. Beim Lymphödem sind wiederholte Serien üblich.' },
+  { q: 'Ist Lymphdrainage wie eine Massage?', a: 'Nein, sie ist viel sanfter: rhythmische, kreisende Griffe an der Hautoberfläche statt Druck in die Muskulatur. Wer eine kräftige Massage erwartet, wundert sich, und schläft dann oft trotzdem ein.' },
+  { q: 'Hilft Lymphdrainage beim Lipödem?', a: 'Sie lindert Spannungsgefühl, Druckschmerz und Begleitschwellung, die Fettverteilungsstörung selbst behandelt sie nicht, das sagen wir ehrlich. Am wirksamsten ist sie im Paket mit Kompression und Bewegung.' },
+  { q: 'Kann ich mit einer Thrombose zur Lymphdrainage?', a: 'Nein, bei akuter unbehandelter Thrombose wird nicht drainiert. Eine plötzliche einseitige, schmerzhafte Beinschwellung gehört sofort ärztlich abgeklärt, vor jeder Behandlung.' },
 ];
+const faqHtml = '<div class="msg-faq" style="margin-top:10px">' + faqs
+  .map((f, n) => `<details${n === 0 ? ' open' : ''}><summary>${f.q}</summary><p class="msg-faq-a">${f.a}</p></details>`)
+  .join('') + '</div>';
+const [heroPart, restPart] = bodyRaw.replace('<!--FAQ-->', faqHtml).split('<!--BANNER-->');
 
 const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
