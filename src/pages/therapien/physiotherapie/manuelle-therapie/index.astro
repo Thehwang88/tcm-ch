@@ -1,0 +1,42 @@
+---
+// /therapien/physiotherapie/manuelle-therapie — child page of the Physiotherapie pillar.
+// Same pattern as physiotherapie/dry-needling (nested sub-page, allowlisted in
+// functions/therapien/[[path]].js — 2-segment paths otherwise 410).
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import bodyRaw from '../../../../data/manuelle-therapie-body.html?raw';
+import { prefillForm } from '../../../../data/form-prefill';
+import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
+const body = appendSidebarAllLink(
+  prefillForm(bodyRaw, 'Ich interessiere mich für Manuelle Therapie.', 'Therapie: Manuelle Therapie'),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
+
+const url = 'https://tcm.ch/therapien/physiotherapie/manuelle-therapie/';
+const title = 'Manuelle Therapie – Gelenke mobilisieren | TCM.ch';
+const description = 'Manuelle Therapie bei TCM.ch: blockierte Gelenke mobilisieren, Wirbelsäule und Extremitäten behandeln. Mit Verordnung über die Grundversicherung.';
+
+const faqs = [
+  { q: 'Was macht man bei manueller Therapie?', a: 'Nach einer genauen Bewegungs- und Gelenkuntersuchung werden eingeschränkte Gelenke mit dosierten Handgriffen mobilisiert: sanfter Zug, wiederholte Gleitbewegungen, ergänzt durch Weichteiltechniken und Übungen, die die Beweglichkeit stabilisieren.' },
+  { q: 'Ist manuelle Therapie das mit dem Einrenken?', a: 'Nein, die schnellen Impulstechniken mit Knacken sind das Feld der Chiropraktik. Die manuelle Therapie arbeitet mit wiederholten, dosierten Mobilisationen im schmerzfreien Bereich, unspektakulärer, dafür gut steuerbar.' },
+  { q: 'Wie viele Sitzungen brauche ich?', a: 'Den Rahmen gibt die ärztliche Verordnung, meist 9 Sitzungen. Frische Einschränkungen reagieren oft in wenigen Sitzungen, eingesteifte Schultern brauchen Monate und Geduld, das sagen wir vorab ehrlich.' },
+  { q: 'Übernimmt die Krankenkasse manuelle Therapie?', a: 'Mit ärztlicher Verordnung ja, als Physiotherapie über die Grundversicherung nach Franchise und Selbstbehalt.' },
+  { q: 'Was ist der Unterschied zwischen manueller Therapie und Massage?', a: 'Massage behandelt die Muskulatur, manuelle Therapie das Gelenkspiel, die kleinen Gleitbewegungen, die für volle Beweglichkeit nötig sind. Klemmt das Gelenk, hilft Kneten allein nicht weiter.' },
+  { q: 'Tut manuelle Therapie weh?', a: 'Gearbeitet wird überwiegend im schmerzfreien Bereich, ein Ziehen an der Bewegungsgrenze gehört dazu, scharfer Schmerz nicht. Nach der Behandlung kann sich das Gelenk für einen Tag bearbeitet anfühlen.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    about: { '@type': 'MedicalTherapy', name: 'Manuelle Therapie',
+      alternateName: 'Manualtherapie',
+      howPerformed: 'Nach einer Bewegungs- und Gelenkuntersuchung werden eingeschränkte Gelenke mit Traktion und dosierten Gleitmobilisationen behandelt, ergänzt durch Weichteiltechniken und aktive Übungen.' },
+    lastReviewed: '2026-08-19' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 2, name: 'Physiotherapie', item: 'https://tcm.ch/therapien/physiotherapie/' },
+    { '@type': 'ListItem', position: 3, name: 'Manuelle Therapie', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/physiotherapie/manuelle-therapie" body={body} schema={schema} ogImage="https://tcm.ch/images/img-2a8cecc37898.webp" />
