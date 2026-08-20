@@ -1,0 +1,52 @@
+---
+// /massage-luzern — City-Landingpage für "massage luzern". Template 1:1 von
+// /massage-frauenfeld/ und /massage-kreuzlingen/: SpaPage + InsuranceBanner +
+// geteilte .msg-* Styles.
+// Anti-Kannibalisierung: targetet ausschliesslich "massage luzern". Kein
+// "tcm luzern" / "akupunktur luzern" in Title, H1 oder H2s (gehört
+// /standorte/...), und "tuina" generisch bleibt bei /therapien/tuina/.
+// Pre-Opening-Variante: Warteliste statt Buchungs-CTA, kein MedicalBusiness-Schema
+// (es gibt noch keine Adresse), informationaler gewichtet, damit die Seite bis zur
+// Eröffnung 2027 Substanz hat.
+import SpaPage from '../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../components/InsuranceBanner.astro';
+import MassageWartelisteForm from '../../components/MassageWartelisteForm.astro';
+import WhatsAppContact from '../../components/WhatsAppContact.astro';
+import bodyRaw from '../../data/massage-luzern-body.html?raw';
+import css from '../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+
+const url = 'https://tcm.ch/massage-luzern/';
+const title = 'Massage Luzern – Medizinische Massage & Tuina | TCM.ch';
+const description = "Massage Luzern: medizinische Massage, Tuina, Schröpfen und Gua Sha ab Eröffnung 2027. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar. Jetzt auf die Warteliste.";
+
+const faqs = [
+  { q: "Wann kann ich in Luzern einen Termin buchen?", a: "Fix buchen kannst du noch nicht. Wir eröffnen 2027, ein genaues Datum steht noch nicht fest, weil die Räume gerade gesucht werden. Trag dich auf die Warteliste ein, dann melden wir uns, sobald die Terminvergabe startet, und du kommst vor der offiziellen Freigabe dran. Brauchst du früher eine Behandlung, sind unsere bestehenden Standorte offen." },
+  { q: "Was kostet eine Massage bei euch?", a: "Eine medizinische Massage oder eine Tuina-Behandlung dauert 45 bis 60 Minuten und kostet rund 130 bis 160 Franken. Kürzere Behandlungen wie Schröpfen oder Gua Sha liegen bei 30 bis 40 Minuten und rund 90 bis 120 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach tatsächlicher Dauer. Die Tarife sind an allen Standorten gleich, für Luzern rechnen wir mit demselben Rahmen." },
+  { q: "Zahlt die Krankenkasse eine Massage?", a: "Bei medizinisch indizierten Behandlungen durch EMR- und ASCA-anerkannte Therapeut:innen beteiligt sich die Zusatzversicherung für Komplementärmedizin, je nach Modell 50 bis 90 Prozent, bei guten Policen mehr. Die Grundversicherung übernimmt keine Massagen, und reine Entspannungsmassagen zahlst du selbst. Eine ärztliche Verordnung ist nicht nötig." },
+  { q: "Was ist der Unterschied zu einer Wellnessmassage?", a: "Der Ausgangspunkt. Im Wellnessbereich steht Erholung im Vordergrund, die Behandlung läuft flächig und gleichmässig ab. Bei uns beginnt jede Sitzung mit einer kurzen Befunderhebung, danach wird gezielt an den Strukturen gearbeitet, die Beschwerden machen. Das ist auf ein Ziel hin geplant statt auf ein Wohlgefühl im Moment, und nur diese Variante ist über die Zusatzversicherung abrechenbar." },
+  { q: "Kostet die Warteliste etwas?", a: "Nein. Es braucht nur eine E-Mail-Adresse, keine Anzahlung und keine Verpflichtung. Wir schreiben dir einmal, wenn die Termine in Luzern freigegeben sind. Keine Werbung, keine Weitergabe an Dritte." },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage Luzern', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/massage-luzern" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Luzern" />
+  <Fragment set:html={restPart} />
+  <MassageWartelisteForm stadt="Luzern" jahr="2027" quelle="warteliste-luzern-massage" />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

@@ -1,7 +1,13 @@
 ---
-// /massage-winterthur — City-Landingpage für "massage winterthur". Reuses SpaPage,
-// InsuranceBanner (abrechenbare Seite) und die geteilten .msg-* Styles. Lokale Entität
-// mit NAP-Schema (zwei Standorte) für Local SEO.
+// /massage-winterthur — City-Landingpage für "massage winterthur". Template 1:1 von
+// /massage-frauenfeld/ und /massage-kreuzlingen/: SpaPage + InsuranceBanner +
+// geteilte .msg-* Styles.
+// Anti-Kannibalisierung: targetet ausschliesslich "massage winterthur". Kein
+// "tcm winterthur" / "akupunktur winterthur" in Title, H1 oder H2s (gehört
+// /standorte/...), und "tuina" generisch bleibt bei /therapien/tuina/.
+// Ein MedicalBusiness-Eintrag, bewusst nur die Marktgasse als kanonisches Ziel.
+// Die Münzgasse steht im Fliesstext, damit die Seite nicht auf zwei Entitäten
+// aufgeteilt wird.
 import SpaPage from '../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../components/InsuranceBanner.astro';
 import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
@@ -12,31 +18,25 @@ import css from '../../data/massage-city.css?raw';
 const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
 
 const url = 'https://tcm.ch/massage-winterthur/';
-const title = 'Massage Winterthur | Medizinische Massage – TCM.ch';
-const description = 'Massage Winterthur: medizinisch oder zur Entspannung. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar. Zwei Standorte in der Altstadt.';
+const title = 'Massage Winterthur – Medizinische Massage & Tuina | TCM.ch';
+const description = "Massage Winterthur: medizinische Massage, Tuina, Schröpfen und Gua Sha an der Marktgasse 78. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.";
 
 const faqs = [
-  { q: 'An welchem Standort in Winterthur werde ich behandelt?', a: 'Du hast die Wahl zwischen Münzgasse 2 und Marktgasse 78, beide in der Altstadt und wenige Gehminuten vom Hauptbahnhof. Sag bei der Anfrage einfach, was dir besser passt, das Team ist an beiden Adressen gleich ausgebildet.' },
-  { q: 'Übernimmt die Krankenkasse die Massage in Winterthur?', a: 'Medizinische Massagen bei unseren EMR- und ASCA-anerkannten Therapeut:innen trägt die Zusatzversicherung in der Regel mit, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen, Wellness-Massagen sind Selbstzahlerleistungen.' },
-  { q: 'Brauche ich eine ärztliche Verordnung?', a: 'Nein. Für die Abrechnung über die Zusatzversicherung genügt die Behandlung bei einer anerkannten Fachperson. Du kannst direkt einen Termin anfragen, ohne vorher zum Arzt zu gehen.' },
-  { q: 'Wie schnell bekomme ich einen Termin?', a: 'Meist innert 24 bis 48 Stunden. Weil wir in Winterthur zwei Standorte haben, finden wir auch kurzfristig oft noch einen passenden Platz. Am schnellsten geht es per WhatsApp oder Telefon.' },
-  { q: 'Wie komme ich zu euch?', a: 'Beide Praxen liegen in der Winterthurer Altstadt, vom Hauptbahnhof aus in wenigen Gehminuten zu Fuss erreichbar. Auch aus den umliegenden Gemeinden bist du rasch da.' },
+  { q: "Zahlt die Krankenkasse eine Massage in Winterthur?", a: "Medizinisch indizierte Massagen bei unseren EMR- und ASCA-anerkannten Therapeut:innen trägt die Zusatzversicherung für Komplementärmedizin in der Regel mit, je nach Modell 50 bis 90 Prozent, oft bis zu einer Jahreslimite. Die Grundversicherung zahlt keine Massagen. Reine Entspannungsmassagen sind Selbstzahlerleistungen. Schick uns Kasse und Modell, wir prüfen die Deckung vorab." },
+  { q: "Was ist der Unterschied zu einer Wellnessmassage?", a: "Der Ausgangspunkt. Im Wellnessbereich steht Erholung im Vordergrund, die Behandlung läuft flächig und gleichmässig ab. Bei uns beginnt jede Sitzung mit einer kurzen Befunderhebung, danach wird gezielt an den Strukturen gearbeitet, die Beschwerden machen. Das kann phasenweise unangenehm sein und ist auf ein Ziel hin geplant statt auf ein Wohlgefühl im Moment." },
+  { q: "Welche Massage hilft bei Verspannungen im Nacken?", a: "Meist eine Kombination: medizinische Massage, um die Muskulatur zu lösen, dazu Tuina an den Übergängen zu Schulter und Hinterkopf, bei sehr festem Gewebe zusätzlich Schröpfen oder Gua Sha. Was in deinem Fall passt, entscheiden wir nach dem Abtasten, nicht vorher am Telefon." },
+  { q: "Wie lange dauert eine Sitzung und was kostet sie?", a: "Eine medizinische Massage oder eine Tuina-Behandlung dauert 45 bis 60 Minuten und kostet rund 130 bis 160 Franken. Kürzere, lokal begrenzte Behandlungen wie Schröpfen oder Gua Sha liegen bei 30 bis 40 Minuten und rund 90 bis 120 Franken. Abgerechnet wird nach Tarif 590 nach tatsächlicher Dauer, in Einheiten von fünf Minuten." },
+  { q: "An welcher Adresse werde ich behandelt?", a: "In der Regel an der Marktgasse 78. Ist dort gerade nichts frei, weichen wir auf die Münzgasse 2 aus, ein paar Schritte weiter in derselben Altstadt. Das Team ist an beiden Adressen gleich ausgebildet, sag bei der Anfrage einfach, was dir zeitlich besser passt." },
 ];
-
-const oh = ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'];
-const business = (name, strasse, lat, lng) => ({
-  '@context': 'https://schema.org', '@type': 'MedicalBusiness', name, url,
-  address: { '@type': 'PostalAddress', streetAddress: strasse, postalCode: '8400', addressLocality: 'Winterthur', addressCountry: 'CH' },
-  geo: { '@type': 'GeoCoordinates', latitude: lat, longitude: lng },
-  telephone: '+41775236122', openingHours: oh, areaServed: { '@type': 'City', name: 'Winterthur' },
-  medicalSpecialty: 'PhysicalTherapy',
-});
 
 const schema = [
   { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
-  business('TCM.ch Massage Winterthur Münzgasse', 'Münzgasse 2', 47.4998, 8.729),
-  business('TCM.ch Massage Winterthur Marktgasse', 'Marktgasse 78', 47.4992, 8.7281),
+  { '@context': 'https://schema.org', '@type': 'MedicalBusiness', name: 'TCM.ch Massage Winterthur', url,
+    address: { '@type': 'PostalAddress', streetAddress: 'Marktgasse 78', postalCode: '8400', addressLocality: 'Winterthur', addressCountry: 'CH' },
+    geo: { '@type': 'GeoCoordinates', latitude: 47.4992, longitude: 8.7281 },
+    telephone: '+41775236122', openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'],
+    areaServed: { '@type': 'City', name: 'Winterthur' }, medicalSpecialty: 'PhysicalTherapy' },
   { '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [

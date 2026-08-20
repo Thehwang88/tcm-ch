@@ -1131,6 +1131,7 @@ export const standorte: Record<string, Standort> = {
         }
       ]
     },
+    "massageLink": { "href": "/massage-winterthur/", "text": "Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Dann findest du Angebote, Dauer und Preise auf der Seite", "anchor": "Massage in Winterthur" },
     "nearby": [
       {
         "slug": "winterthur-muenzgasse",

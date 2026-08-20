@@ -847,6 +847,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/massage-basel/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/massage-frauenfeld/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -854,6 +860,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/massage-kreuzlingen/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/massage-luzern/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
