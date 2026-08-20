@@ -41,6 +41,10 @@ export interface Standort {
   reviews?: { heading?: string; items: { autor: string; text: string; stern: number; kontext?: string }[] };
   ablaufBlock?: boolean;
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
+  /** Optionaler Rücklink auf den Wissen-Artikel des Standorts (gerendert in UeberPraxis). */
+  wissenLink?: { href: string; label: string; sub: string };
+  /** Optionaler Hinweis auf die Massage-Stadtseite, gerendert unter dem Therapien-Grid. */
+  massageLink?: { href: string; text: string; anchor: string };
 }
 
 export const standorte: Record<string, Standort> = {
@@ -48,10 +52,10 @@ export const standorte: Record<string, Standort> = {
     slug: 'kreuzlingen',
     stadt: 'Kreuzlingen',
     seo: {
-      title: 'TCM Kreuzlingen – Akupunktur & Chinesische Medizin | TCM.ch',
-      description: 'TCM Kreuzlingen, Romanshornerstrasse 1: Akupunktur & Chinesische Medizin am Bodensee. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.',
-      h1: 'TCM <em>Kreuzlingen</em>: Akupunktur & Chinesische Medizin an der Romanshornerstrasse',
-      schemaName: 'TCM Kreuzlingen – TCM.ch',
+      title: 'TCM & Akupunktur Kreuzlingen | TCM.ch',
+      description: 'TCM & Akupunktur Kreuzlingen, Romanshornerstrasse 1: langjähriger Hauptstandort am Bodensee, EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100%. Auch für Patient:innen aus Konstanz.',
+      h1: 'TCM & Akupunktur <em>Kreuzlingen</em>',
+      schemaName: 'TCM.ch Kreuzlingen',
     },
     hero: {
       banner: 'Standort Kreuzlingen',
@@ -73,14 +77,14 @@ export const standorte: Record<string, Standort> = {
       geo: { lat: 47.65, lng: 9.175 },
     },
     intro: {
-      body: '<h2>TCM Kreuzlingen, Akupunktur, Tuina &amp; TCM-Klinik am Bodensee</h2><p>Unsere <strong>TCM-Praxis Kreuzlingen</strong> an der Hauptstrasse liegt im Zentrum der Bodenseeregion, grenznah zu Konstanz und mit guter Anbindung an den ganzen Thurgau. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>',
-      einzugsgebiet: '<h2>Einzugsgebiet – Patient:innen aus Kreuzlingen, Konstanz und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtteilen Kreuzlingens: <strong>Innenstadt</strong>, <strong>Egelshofen</strong>, <strong>Kurzrickenbach</strong> und <strong>Bernrain</strong>. Aus den umliegenden Thurgauer Gemeinden, Tägerwilen, Bottighofen, Münsterlingen, Lengwil, Altnau, sowie aus dem grenznahen <strong>Konstanz</strong>, Meersburg und der Region Bodensee kommen Patient:innen regelmässig zu uns.</p>',
+      body: '<h2>Deine TCM-Praxis in Kreuzlingen</h2><p>Kreuzlingen ist der langjährige Hauptstandort unseres Netzwerks. Hier hat TCM.ch angefangen, hier ist über die Jahre der grösste Teil unserer Erfahrung entstanden, und von hier aus sind die weiteren Praxen in der Ostschweiz gewachsen. Im Alltag merkst du das an eingespielten Abläufen, an einem Team, das sich kennt, und daran, dass sich auch kurzfristig noch ein Termin einrichten lässt.</p><p>Behandelt wird an der Romanshornerstrasse 1, wenige Gehminuten vom Bahnhof Kreuzlingen. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur und individuell zusammengestellte Kräuterrezepturen. Wer chinesische Medizin in Kreuzlingen sucht, bekommt bei uns das vollständige Spektrum unter einem Dach statt einer einzelnen Methode.</p><p>Eine <strong>TCM-Praxis</strong> ist am Ende so gut wie die Leute, die darin arbeiten. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt, dein Akupunkteur hat eine geprüfte Ausbildung und eine eigene ZSR-Nummer. Deshalb übernimmt die Zusatzversicherung je nach Modell 80 bis 100 Prozent der Kosten. Was dein Vertrag hergibt, prüfen wir kostenlos, bevor du das erste Mal kommst. Alle Zahlen im Detail stehen unter <a href="/standorte/kreuzlingen/kosten/">Akupunktur Kosten Kreuzlingen</a>.</p>',
+      einzugsgebiet: '<h2>Wer aus der Region zu uns kommt</h2><p>Der grösste Teil unserer Patient:innen wohnt in Kreuzlingen selbst, in der Innenstadt, in Egelshofen, Kurzrickenbach oder Bernrain. Dazu kommen Menschen aus <strong>Tägerwilen</strong>, <strong>Bottighofen</strong>, <strong>Münsterlingen</strong> und <strong>Ermatingen</strong>, für die wir schlicht die nächste Adresse mit vollem TCM-Angebot sind.</p><p>Ein eigenes Thema ist <strong>Konstanz</strong>. Von der Grenze bis zu uns sind es wenige Minuten, und wir behandeln seit Jahren regelmässig deutsche Patient:innen und Grenzgänger:innen. Behandelt wird in der Schweiz, abgerechnet über eine Schweizer Zusatzversicherung: Wer hier arbeitet und entsprechend versichert ist, reicht die Rechnung genauso ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen und ohne Aufschlag. Was in deinem Fall gilt, klären wir vor dem ersten Termin, damit du weisst, woran du bist.</p>'
     },
     anfahrt: {
       oev: '<strong>Bahnhof Kreuzlingen</strong> und <strong>Bahnhof Kreuzlingen Hafen</strong> in wenigen Gehminuten erreichbar. S-Bahn-Linie S14 sowie Verbindungen nach Konstanz, Romanshorn und Schaffhausen. Mehrere Buslinien (Stadtbus Kreuzlingen) halten in der Nähe.',
       autoParken: 'Anfahrt über A7 (Ausfahrt Kreuzlingen). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Stadthaus</strong>, <strong>Parkhaus Bärenplatz</strong>, Parkhaus Karussell.',
     },
-    therapien: ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
+    therapien: ['akupunktur', 'gesichtsakupunktur', 'elektroakupunktur', 'kraeutertherapie', 'moxibustion', 'schroepfen', 'tuina', 'massage', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
     beschwerdenIntro: 'Diese Beschwerden sehen wir in unserer Praxis in Kreuzlingen besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
     beschwerden: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'nackenschmerzen', 'wechseljahre', 'reizdarm'],
     team: [],
@@ -100,9 +104,21 @@ export const standorte: Record<string, Standort> = {
         { autor: 'Stefan O.', stern: 5, kontext: 'Kreuzlingen · Nacken · Schröpfen', text: 'Bürojob mit ständigen Nackenverspannungen. Das Schröpfen in Kreuzlingen hat sofort spürbare Erleichterung gebracht – seither gehe ich regelmässig zur Erhaltung.' },
         { autor: 'Karin Z.', stern: 5, kontext: 'Kreuzlingen · Angst · Akupunktur', text: 'Lehrerin mit Prüfungsängsten – die Akupunkturbehandlung in Kreuzlingen hat mich spürbar entspannt und die innere Ruhe gestärkt. Sehr empfehlenswert.' },
         { autor: 'Patrik G.', stern: 5, kontext: 'Kreuzlingen · Ischias · TCM', text: 'Hatte Ischias bis ins Bein – konnte kaum noch arbeiten. In Kreuzlingen wurde mit Akupunktur und Moxibustion behandelt, nach 4 Wochen war ich wieder voll einsatzfähig.' },
-        { autor: 'Monika E.', stern: 5, kontext: 'Kreuzlingen · Wechseljahre · TCM', text: 'Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Kreuzlingen hat mir mehr geholfen als jede Hormontherapie davor.' },
+        { autor: 'Monika E.', stern: 5, kontext: 'Kreuzlingen · Wechseljahre · TCM', text: 'Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Kreuzlingen hat mir mehr geholfen als jede Hormontherapie davor.' },
       ],
     },
+    ablaufBlock: true,
+    faqs: [
+      { q: 'Was kostet eine Behandlung in Kreuzlingen?', a: 'Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Das Erstgespräch dauert länger, bis zu 90 Minuten, und liegt entsprechend höher. Kräuterrezepturen werden separat nach Mischung verrechnet. Den Betrag nennen wir dir vorab, bevor behandelt wird.' },
+      { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Kreuzlingen EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos.' },
+      { q: 'Wie viele Sitzungen brauche ich?', a: 'Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir starten mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das, statt eine Serie weiterzuführen.' },
+      { q: 'Wie komme ich zu euch und wo kann ich parkieren?', a: 'Die Praxis liegt an der Romanshornerstrasse 1, wenige Gehminuten vom Bahnhof Kreuzlingen und vom Bahnhof Kreuzlingen Hafen. Mit dem Auto kommst du über die A7, Ausfahrt Kreuzlingen. Zum Parkieren stehen das Parkhaus Stadthaus, das Parkhaus Bärenplatz und das Parkhaus Karussell in wenigen Minuten Fussweg zur Verfügung.' },
+      { q: 'Bekomme ich kurzfristig einen Termin?', a: 'Meist ja. Weil Kreuzlingen unser grösster Standort ist, finden sich oft noch Plätze innert 24 bis 48 Stunden. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Vorschlag.' },
+      { q: 'Begleitet ihr auch bei Kinderwunsch?', a: 'Ja. Kinderwunsch ist eines der häufigeren Anliegen in Kreuzlingen, sowohl auf natürlichem Weg als auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten mit deiner Gynäkologin zusammen, wenn du das möchtest.' },
+      { q: 'Kann ich als Patient:in aus Konstanz zu euch kommen?', a: 'Ja, das machen viele. Von Konstanz sind es wenige Minuten über die Grenze. Behandelt wird in der Schweiz, abgerechnet wird über eine Schweizer Zusatzversicherung: Grenzgänger:innen mit Schweizer Zusatzversicherung reichen die Rechnung ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen. Eine deutsche gesetzliche Kasse erstattet die Behandlung in der Regel nicht, private Tarife teilweise. Frag vorher bei uns nach, wir sagen dir, was in deinem Fall realistisch ist.' },
+    ],
+    wissenLink: { href: '/wissen/tcm-kreuzlingen-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Kreuzlingen abläuft, was sie kostet und was die Studien hergeben.' },
+    massageLink: { href: '/massage-kreuzlingen/', text: 'Suchst du gezielt eine Behandlung gegen Verspannungen statt eine ganze TCM-Therapie? Dann findest du alle Angebote, Dauer und Preise auf der Seite', anchor: 'Massage in Kreuzlingen' },
     nearby: [
       { slug: 'frauenfeld', plz: '8500', city: 'Frauenfeld', desc: 'Kanton Thurgau' },
       { slug: 'wil', plz: '9500', city: 'Wil', desc: 'Fürstenland' },
@@ -113,14 +129,17 @@ export const standorte: Record<string, Standort> = {
     "slug": "frauenfeld",
     "stadt": "Frauenfeld",
     "seo": {
-      "title": "Akupunktur & TCM Frauenfeld | TCM.ch"
+      "title": "TCM & Akupunktur Frauenfeld | TCM.ch",
+      "description": "TCM & Akupunktur Frauenfeld, Rheinstrasse 25: Akupunktur, Tuina und chinesische Kräuter in der Kantonshauptstadt. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100%.",
+      "h1": "TCM & Akupunktur <em>Frauenfeld</em>",
+      "schemaName": "TCM.ch Frauenfeld"
     },
     "hero": {
       "banner": "Standort Frauenfeld",
       "lead": "Zeit zum Zuhören, bevor wir behandeln.",
       "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
       "image": "/images/hero-main.webp",
-      "locationHook": "Rheinstrasse 25, 8500 Frauenfeld"
+      "locationHook": "Rheinstrasse 25, 8500 Frauenfeld · Mo–Fr 7:30–19:30, Sa 7:30–16:30"
     },
     "nap": {
       "strasse": "Rheinstrasse 25",
@@ -137,11 +156,12 @@ export const standorte: Record<string, Standort> = {
           "tag": "Sa",
           "zeit": "7:30–16:30 Uhr"
         }
-      ]
+      ],
+      "geo": { "lat": 47.5567, "lng": 8.8983 }
     },
     "intro": {
-      "body": "<h2>TCM Frauenfeld, Akupunktur, Tuina &amp; TCM-Klinik in der Kantonshauptstadt</h2><p>Unsere <strong>TCM-Praxis Frauenfeld</strong> an der Bahnhofstrasse liegt im Herzen der Thurgauer Kantonshauptstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus Frauenfeld und dem ganzen Thurgau</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtteilen Frauenfelds: <strong>Innenstadt</strong>, <strong>Kurzdorf</strong>, <strong>Oberkirch</strong>, <strong>Herten</strong> und <strong>Erzenholz</strong>. Aus umliegenden Thurgauer Gemeinden wie Matzingen, Stettfurt, Felben-Wellhausen, Müllheim, Pfyn, Aadorf, Eschlikon, Weinfelden und Amriswil kommen Patient:innen regelmässig zu uns. Die zentrale Lage an der Bahnhofstrasse macht uns für den ganzen Kanton erreichbar.</p>"
+      "body": "<h2>Deine TCM-Praxis in Frauenfeld</h2><p>Frauenfeld gehört zu den älteren Adressen im TCM.ch Netzwerk. Der Standort ist aus der Arbeit am Bodensee herausgewachsen und versorgt heute den mittleren Thurgau, mit denselben Standards, demselben Behandlungsspektrum und derselben Abrechnung wie unsere übrigen Praxen. Wer schon einmal an einem anderen Standort war, findet sich hier sofort zurecht.</p><p>Behandelt wird an der Rheinstrasse 25, gut erreichbar aus der ganzen Kantonshauptstadt und wenige Minuten vom Bahnhof Frauenfeld. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage und individuell zusammengestellte Kräuterrezepturen. Wer chinesische Medizin in Frauenfeld sucht, muss dafür nicht nach Winterthur oder Zürich fahren.</p><p>Eine <strong>TCM-Praxis</strong> steht und fällt mit der Ausbildung der Behandelnden. Unser Team ist EMR- und ASCA-anerkannt, dein Akupunkteur arbeitet unter eigener ZSR-Nummer. Deshalb übernimmt die Zusatzversicherung je nach Modell 80 bis 100 Prozent der Kosten. Was dein Vertrag konkret hergibt, prüfen wir kostenlos, bevor du den ersten Termin nimmst. Alle Zahlen im Detail stehen unter <a href=\"/standorte/frauenfeld/kosten/\">Akupunktur Kosten Frauenfeld</a>.</p>",
+      "einzugsgebiet": "<h2>Wer aus der Region zu uns kommt</h2><p>Der grösste Teil unserer Patient:innen kommt aus Frauenfeld selbst, aus der Innenstadt, aus Kurzdorf, Oberkirch, Herten und Erzenholz. Dazu kommen <strong>Islikon</strong>, <strong>Matzingen</strong>, <strong>Müllheim</strong> und <strong>Aadorf</strong>, alles kurze Wege mit Auto oder Bus.</p><p>Entlang der Achse Richtung Osten sind wir für <strong>Weinfelden</strong> und die <strong>Region Wil</strong> die naheliegende Adresse. Von Weinfelden bist du mit der S-Bahn in gut einer Viertelstunde hier, aus dem Raum Wil führt die Frauenfeld-Wil-Bahn direkt an den Bahnhof. Wer es umgekehrt näher hat, findet unsere Praxis in Wil auf der Seite <a href=\"/standorte/wil/\">TCM Wil</a>.</p>"
     },
     "anfahrt": {
       "oev": "<strong>Hauptbahnhof Frauenfeld</strong> in wenigen Gehminuten erreichbar. S-Bahn-Linien S30 (Winterthur–Frauenfeld–Romanshorn) und S35 sowie IR-Verbindungen halten im HB Frauenfeld. Frauenfeld-Wil-Bahn (FWB) ergänzt das Netz.",
@@ -150,14 +170,18 @@ export const standorte: Record<string, Standort> = {
     "therapien": [
       "akupunktur",
       "gesichtsakupunktur",
+      "elektroakupunktur",
+      "kraeutertherapie",
+      "moxibustion",
       "schroepfen",
       "tuina",
+      "massage",
       "akupressur",
       "shiatsu",
       "gua-sha",
       "physiotherapie"
     ],
-    "beschwerdenIntro": "Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in Frauenfeld zu uns kommen.",
+    "beschwerdenIntro": "Das sind die Anliegen, mit denen Patient:innen in Frauenfeld am häufigsten zu uns kommen. Jede Seite erklärt Ablauf, Wirkung und was die TCM realistisch leisten kann.",
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
@@ -258,10 +282,22 @@ export const standorte: Record<string, Standort> = {
           "autor": "Beat H.",
           "stern": 5,
           "kontext": "Frauenfeld · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Frauenfeld hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Frauenfeld hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
+    "ablaufBlock": true,
+    "faqs": [
+      { "q": "Was kostet eine Behandlung in Frauenfeld?", "a": "Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Das Erstgespräch dauert länger, bis zu 90 Minuten, und liegt entsprechend höher. Kräuterrezepturen kommen separat nach Mischung dazu. Den Betrag nennen wir dir vorab, bevor behandelt wird." },
+      { "q": "Übernimmt die Krankenkasse die Behandlung?", "a": "Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Frauenfeld EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos." },
+      { "q": "Wie viele Sitzungen brauche ich?", "a": "Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir beginnen mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das." },
+      { "q": "Wie erreiche ich die Praxis mit dem ÖV?", "a": "Vom Bahnhof Frauenfeld sind es wenige Minuten. Es halten die S-Bahn-Linien S30 zwischen Winterthur, Frauenfeld und Romanshorn sowie die S35, dazu IR-Verbindungen und die Frauenfeld-Wil-Bahn. Aus Weinfelden, Wil, Aadorf und Müllheim bist du damit ohne Umsteigen da." },
+      { "q": "Bekomme ich kurzfristig einen Termin?", "a": "Meist innert 24 bis 48 Stunden. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Terminvorschlag. Wenn es in Frauenfeld eng wird, prüfen wir auch die Praxen in Wil und Kreuzlingen." },
+      { "q": "Begleitet ihr auch bei Kinderwunsch?", "a": "Ja, auf natürlichem Weg wie auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten auf Wunsch mit deiner Gynäkologin zusammen." },
+      { "q": "Gibt es Parkplätze in der Nähe der Praxis?", "a": "Ja. Mit dem Auto kommst du über die A7, Ausfahrt Frauenfeld-West oder Frauenfeld-Ost. Zum Parkieren stehen das Parkhaus Marktplatz, das Parkhaus Promenade und das Parkhaus Bahnhof zur Verfügung, alle wenige Gehminuten entfernt. Wenn du knapp dran bist, sag kurz Bescheid, wir halten den Termin." }
+    ],
+    "wissenLink": { "href": "/wissen/tcm-frauenfeld-erfahrungen-ablauf/", "label": "Erfahrungen & Ablauf", "sub": "Wie eine TCM-Behandlung in Frauenfeld abläuft, was sie kostet und was die Studien hergeben." },
+    "massageLink": { "href": "/massage-frauenfeld/", "text": "Geht es dir vor allem um Verspannungen und nicht um eine ganze TCM-Therapie? Dann findest du Angebote, Dauer und Preise auf der Seite", "anchor": "Massage in Frauenfeld" },
     "nearby": [
       {
         "slug": "kreuzlingen",

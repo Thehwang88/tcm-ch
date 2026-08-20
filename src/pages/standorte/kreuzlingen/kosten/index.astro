@@ -1,0 +1,77 @@
+---
+// /standorte/kreuzlingen/kosten/ — Kosten-/Krankenkassen-Spoke zu /standorte/kreuzlingen/.
+// Muster: /akupunktur-st-gallen-kosten/ und /standorte/luzern/kosten/, Preise identisch,
+// nur der Stadtbezug ist angepasst.
+export const prerender = true;
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import body from '../../../../data/kreuzlingen-kosten-body.html?raw';
+
+const url = 'https://tcm.ch/standorte/kreuzlingen/kosten/';
+const title = 'Akupunktur Kosten Kreuzlingen – Preise & Krankenkasse | TCM.ch';
+const description =
+  'Was kostet Akupunktur in Kreuzlingen? Rund CHF 130 bis 160 pro Sitzung, Tarif 590. Zusatzversicherung übernimmt meist 80 bis 100%. Deckung kostenlos prüfen.';
+
+const faqs = [
+  {
+    q: "Übernimmt die Grundversicherung Akupunktur in Kreuzlingen?",
+    a: "Nein. Akupunktur bei Therapeut:innen läuft ausschliesslich über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Ohne passende Zusatzversicherung zahlst du selbst. Wir prüfen deine Deckung kostenlos, bevor du das erste Mal kommst, damit du vorher weisst, woran du bist.",
+  },
+  {
+    q: "Wie prüfe ich meine Deckung?",
+    a: "Am einfachsten schickst du uns deine Krankenkasse und dein Versicherungsmodell, wir klären für dich, was deine Zusatzversicherung übernimmt. Das ist kostenlos und unverbindlich. Alternativ steht die Beteiligung in deiner Police, oder du fragst direkt bei deiner Kasse nach.",
+  },
+  {
+    q: "Was kostet die Erstbehandlung?",
+    a: "Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, oft bis zu 90 Minuten. Abgerechnet wird nach Tarif 590 nach Dauer, entsprechend liegt sie über einer Folgesitzung. Den konkreten Betrag nennen wir dir vorab, bevor behandelt wird.",
+  },
+  {
+    q: "Brauche ich eine Überweisung vom Arzt?",
+    a: "Nein. Du kannst direkt einen Termin anfragen, eine ärztliche Überweisung ist für die Behandlung nicht nötig. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.",
+  },
+  {
+    q: "Was zahle ich als Patient:in aus Konstanz?",
+    a: "Behandelt wird in der Schweiz, abgerechnet nach Schweizer Tarif. Wer als Grenzgänger:in eine Schweizer Zusatzversicherung hat, reicht die Rechnung ein wie alle anderen. Eine deutsche gesetzliche Kasse erstattet die Behandlung in der Regel nicht, private Tarife teilweise. Ohne Deckung zahlst du selbst, zu denselben Preisen und ohne Aufschlag.",
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    '@id': url + '#article',
+    name: title,
+    headline: 'Was kostet Akupunktur in Kreuzlingen?',
+    description,
+    url,
+    inLanguage: 'de-CH',
+    datePublished: '2026-08-20',
+    dateModified: '2026-08-20',
+    lastReviewed: '2026-08-20',
+    about: { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+    author: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    reviewedBy: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+      { '@type': 'ListItem', position: 3, name: 'Kreuzlingen', item: 'https://tcm.ch/standorte/kreuzlingen/' },
+      { '@type': 'ListItem', position: 4, name: 'Kosten & Krankenkasse', item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': url + '#faq',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<SpaPage title={title} description={description} path="/standorte/kreuzlingen/kosten" body={body} schema={schema} />

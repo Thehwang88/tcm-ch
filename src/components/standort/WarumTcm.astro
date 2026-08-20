@@ -1,0 +1,17 @@
+---
+// "Warum TCM.ch" — Trust-Band im kanonischen Standort-Flow. Statische Inhalte,
+// nur die Überschrift trägt die Stadt. Nutzt die bestehenden .usp-* Klassen.
+import type { Standort } from '../../data/standorte';
+const { data } = Astro.props as { data: Standort };
+const items = [
+  { t: 'EMR- und ASCA-anerkannt', s: 'Alle Therapeut:innen sind registriert. Die Zusatzversicherung übernimmt je nach Modell 80 bis 100 Prozent.' },
+  { t: 'Ein Netzwerk statt Einzelpraxis', s: 'Gleiche Standards an allen Standorten. Passt ein Termin hier nicht, findet sich einer in der Nachbarstadt.' },
+  { t: 'Eine Stunde für das Erstgespräch', s: 'Wir hören zuerst zu und behandeln danach. Keine Fliessbandtermine, keine Behandlungspakete im Voraus.' },
+  { t: 'Ehrliche Einschätzung', s: 'Wenn TCM bei deinem Anliegen wenig bringt oder eine ärztliche Abklärung ansteht, sagen wir dir das.' },
+];
+---
+<section class="section" style="background:#fff"><div class="wrap"><div class="reveal"><div class="section-label">Warum TCM.ch</div><h2 class="section-title">Warum Patient:innen in <em>{data.stadt}</em> zu uns kommen</h2></div><div class="usp-grid" style="margin-top:28px">
+{items.map((i) => (
+  <div class="usp-card"><div class="usp-title">{i.t}</div><div class="usp-sub">{i.s}</div></div>
+))}
+</div></div></section>

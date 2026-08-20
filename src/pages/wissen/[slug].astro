@@ -32,7 +32,15 @@ const articleLd = {
   datePublished: data.datePublished,
   dateModified: data.dateModified,
   lastReviewed: data.lastReviewed,
-  author: { '@type': 'Person', name: data.author.name, description: data.author.role },
+  author: {
+    '@type': 'Person', name: data.author.name, description: data.author.role,
+    jobTitle: 'TCM-Therapeut:in',
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Fachzertifikat', recognizedBy: { '@type': 'Organization', name: 'EMR ErfahrungsMedizinisches Register', url: 'https://www.emr.ch/' } },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Fachzertifikat', recognizedBy: { '@type': 'Organization', name: 'ASCA Stiftung', url: 'https://www.asca.ch/' } },
+    ],
+    worksFor: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
   reviewedBy: { '@type': 'Person', name: data.reviewerName },
   publisher: {
     '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',

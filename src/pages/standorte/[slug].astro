@@ -27,6 +27,7 @@ import Ablauf from '../../components/standort/Ablauf.astro';
 import KrankenkassenTeam from '../../components/standort/KrankenkassenTeam.astro';
 import Reviews from '../../components/standort/Reviews.astro';
 import UeberPraxis from '../../components/standort/UeberPraxis.astro';
+import WarumTcm from '../../components/standort/WarumTcm.astro';
 import WeitereStandorte from '../../components/standort/WeitereStandorte.astro';
 import KontaktForm from '../../components/standort/KontaktForm.astro';
 import FinalCta from '../../components/standort/FinalCta.astro';
@@ -207,6 +208,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
         <Kraeuter />
         <Beschwerden data={data} />
         {data.ablaufBlock && <Ablauf />}
+        <WarumTcm data={data} />
         <KrankenkassenTeam data={data} />
         {data.reviews && <Reviews data={data} />}
         {data.faqs?.length && (

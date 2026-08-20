@@ -23,6 +23,10 @@ export const therapyCards: Record<string, TherapyCard> = {
   shiatsu: { name: 'Shiatsu', tagline: 'Japanische Druckmassage für Körper und Geist im Gleichgewicht', time: '50–60 Min', ins: 'Zusatzversicherung', img: '/images/img-7149f50cc917.webp', w: 1120, h: 746, objectPos: 'center 20%' },
   'gua-sha': { name: 'Gua Sha', tagline: 'Schabetechnik für tiefsitzende Verspannungen und bessere Durchblutung', time: '30–40 Min', ins: 'Zusatzversicherung', img: '/images/img-0e38a23a362e.webp', w: 1120, h: 746, objectPos: 'center 20%' },
   physiotherapie: { name: 'Physiotherapie', tagline: 'Gezielte Bewegungs- und Manualtherapie, auf Verordnung', time: '40–60 Min', ins: 'Grundversicherung', img: '/images/img-6a11d6de445a.webp', w: 1120, h: 746, objectPos: 'center 25%' },
+  kraeutertherapie: { name: 'Kräutertherapie', tagline: 'Individuell zusammengestellte Rezepturen als Ergänzung zur Behandlung', time: 'Rezeptur', ins: 'Zusatzversicherung', img: '/images/img-14a8b7c52ade.webp', w: 630, h: 840, objectPos: 'center' },
+  moxibustion: { name: 'Moxibustion', tagline: 'Kontrollierte Wärme auf definierten Punkten, oft kombiniert mit Akupunktur', time: '20–40 Min', ins: 'Zusatzversicherung', img: '/images/moxibustion-hero.webp', w: 1120, h: 746, objectPos: 'center 40%' },
+  elektroakupunktur: { name: 'Elektroakupunktur', tagline: 'Akupunktur mit schwachem Reizstrom, eingesetzt bei hartnäckigen Schmerzen', time: '30–45 Min', ins: 'Zusatzversicherung', img: '/images/img-c69a8f9ce7f8.webp', w: 1120, h: 746, objectPos: 'center 55%' },
+  massage: { name: 'Medizinische Massage', tagline: 'Manuelle Behandlung bei Verspannungen, über die Zusatzversicherung abrechenbar', time: '30–60 Min', ins: 'Zusatzversicherung', img: '/images/massage-card-home.webp', w: 1120, h: 746, objectPos: 'center 40%' },
 };
 
 export const therapyCard = (slug: string): TherapyCard | undefined => therapyCards[slug];
