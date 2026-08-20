@@ -466,7 +466,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Verena B.",
           "stern": 5,
           "kontext": "Rorschach · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Rorschach hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Rorschach hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
@@ -637,7 +637,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Lukas R.",
           "stern": 5,
           "kontext": "Volketswil · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Volketswil hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Volketswil hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
@@ -809,7 +809,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Stefan O.",
           "stern": 5,
           "kontext": "Wil · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Wil hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Wil hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
@@ -990,7 +990,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Claudia W.",
           "stern": 5,
           "kontext": "Winterthur · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Winterthur hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Winterthur hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
@@ -1298,7 +1298,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Nadine H.",
           "stern": 5,
           "kontext": "Zürich-Höngg · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Zürich-Höngg hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Zürich-Höngg hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
@@ -1488,7 +1488,7 @@ export const standorte: Record<string, Standort> = {
           "autor": "Walter F.",
           "stern": 5,
           "kontext": "Zürich-Oerlikon · Wechseljahre · TCM",
-          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die ganzheitliche Begleitung in Zürich-Oerlikon hat mir mehr geholfen als jede Hormontherapie davor."
+          "text": "Hitzewallungen und Schlafstörungen in den Wechseljahren – die Begleitung in Zürich-Oerlikon hat mir mehr geholfen als jede Hormontherapie davor."
         }
       ]
     },
