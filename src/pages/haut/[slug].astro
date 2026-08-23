@@ -1,0 +1,189 @@
+---
+// /haut/<slug> — Artikelseite der Sektion Haut & Gesicht.
+// Aufbau wie /wissen/[slug].astro, aber mit eigener warmer Farbpalette
+// (Bronze statt Türkis), damit die Beauty-Sektion optisch eigenständig bleibt.
+// Alle Farben sind lokal auf .haut-scope begrenzt und berühren den Rest nicht.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { haut, hautBySlug } from '../../data/haut';
+
+export function getStaticPaths() {
+  return haut.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props;
+const data = a ?? hautBySlug(Astro.params.slug as string)!;
+
+const path = `/haut/${data.slug}`;
+const url = new URL(path, site.url).href;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich habe eine Frage zu ${data.h1}.`)}`;
+
+const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const fmtMonthYear = (iso: string) => { const d = iso.split('-'); return d.length >= 2 ? `${MONTHS[parseInt(d[1], 10) - 1]} ${d[0]}` : iso; };
+const authorInitials = data.author.name.split(' ').map((p) => p[0]).join('').slice(0, 2).toUpperCase();
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  '@id': `${url}#article`,
+  name: data.title,
+  headline: data.title,
+  description: data.metaDesc,
+  url,
+  inLanguage: 'de-CH',
+  datePublished: data.datePublished,
+  dateModified: data.dateModified,
+  lastReviewed: data.lastReviewed,
+  author: { '@type': 'Person', name: data.author.name, description: data.author.role },
+  reviewedBy: { '@type': 'Person', name: data.reviewerName },
+  publisher: {
+    '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+  },
+};
+const faqLd = data.faqs.length > 0 ? {
+  '@context': 'https://schema.org', '@type': 'FAQPage', '@id': `${url}#faq`,
+  mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+} : null;
+const breadcrumbLd = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Haut & Gesicht', item: 'https://tcm.ch/haut/' },
+    { '@type': 'ListItem', position: 3, name: data.h1, item: url },
+  ],
+};
+const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+---
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+  <article class="haut-scope">
+    <section class="hero">
+      <div class="wrap narrow">
+        <a class="back" href="/haut/">← Haut &amp; Gesicht</a>
+        <div class="cat">{data.category}</div>
+        <h1>{data.h1}</h1>
+        <p class="lead">{data.lead}</p>
+        <div class="meta-row">
+          <span class="m-author">{data.author.name}</span>
+          <span class="dot"></span><span>{data.readingTime} Lesezeit</span>
+          <span class="dot"></span><span>Aktualisiert {fmtMonthYear(data.dateModified)}</span>
+          <span class="dot"></span><span>Geprüft durch {data.reviewerName}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body" set:html={data.bodyHtml} />
+
+        <div class="cta-card">
+          <div class="cta-card-title">{data.ctaTitle ?? 'Haut abklären lassen?'}</div>
+          <p>{data.ctaText ?? 'Schildere uns kurz deine Situation, wir sagen dir ehrlich, was sinnvoll ist.'}</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href={data.ctaHref}>{data.ctaLabel}</a>
+            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
+          </div>
+        </div>
+
+        <aside class="author-card">
+          <div class="avatar">{authorInitials}</div>
+          <div>
+            <div class="a-label">Geschrieben von</div>
+            <div class="a-name">{data.author.name}</div>
+            <div class="a-role">{data.author.role}</div>
+            <p class="a-bio">{data.author.bio}</p>
+            <div class="a-review">Fachlich geprüft durch {data.reviewerName} · zuletzt aktualisiert {fmtMonthYear(data.lastReviewed)}</div>
+          </div>
+        </aside>
+
+        {data.faqs.length > 0 && (
+          <section class="faq-block">
+            <h2>Häufige Fragen</h2>
+            <div class="faq">
+              {data.faqs.map((f) => (
+                <details><summary>{f.q}</summary><p>{f.a}</p></details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div class="related">
+          <div class="rel-label">Weiterlesen</div>
+          <div class="rel-grid">
+            {data.related.map((r) => (
+              <a class="rel-card" href={r.href}>
+                <div class="rel-cat">{r.cat}</div>
+                <div class="rel-title">{r.label}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  /* Warmer Pocket, nur innerhalb der Haut-Sektion */
+  .haut-scope {
+    --h-bronze: #A8916A;
+    --h-bronze-dk: #7A663F;
+    --h-porcelain: #F6F2EA;
+    --h-line: #E2D9C9;
+  }
+  .haut-scope .wrap.narrow { max-width: 760px; }
+  .back { display: inline-block; font-size: 13.5px; font-weight: 600; color: var(--h-bronze-dk); text-decoration: none; margin-bottom: 16px; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .meta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; font-size: 13px; color: var(--muted); }
+  .m-author { font-weight: 700; color: var(--ink); }
+  .dot { width: 3px; height: 3px; border-radius: 50%; background: #cec5b4; }
+
+  .kb-body :global(h2) { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body :global(h3) { font-size: 19px; font-weight: 700; color: var(--ink); margin: 26px 0 10px; }
+  .kb-body :global(p) { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body :global(li) { margin: 0 0 10px; }
+  .kb-body :global(strong) { color: var(--ink); }
+  .kb-body :global(a) { color: var(--h-bronze-dk); font-weight: 600; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+  .kb-body :global(.wa-callout) { background: var(--h-porcelain); border-left: 3px solid var(--h-bronze); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body :global(.wa-callout-label) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 6px; }
+  .kb-body :global(.wa-callout p) { margin: 0; font-size: 16px; }
+  .kb-body :global(.wa-pullquote) { font-size: 22px; line-height: 1.4; font-weight: 700; color: var(--ink); border-top: 1px solid var(--h-line); border-bottom: 1px solid var(--h-line); padding: 22px 0; margin: 28px 0; }
+
+  .cta-card { background: var(--h-porcelain); border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .author-card { display: flex; gap: 16px; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 22px; margin: 32px 0; }
+  .avatar { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--h-bronze-dk); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+  .a-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .a-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-top: 2px; }
+  .a-role { font-size: 13.5px; color: var(--h-bronze-dk); font-weight: 600; margin: 2px 0 10px; }
+  .a-bio { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 10px; }
+  .a-review { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--h-line); padding-top: 10px; }
+
+  .faq-block h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 8px 0 16px; letter-spacing: var(--tracking-heading); }
+  .faq details { border: 1px solid var(--h-line); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
+  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--h-bronze-dk); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
+
+  .related { border-top: 1px solid var(--h-line); margin-top: 44px; padding-top: 24px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .rel-card { border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 16px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .rel-card:hover { border-color: var(--h-bronze); }
+  .rel-cat { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 6px; }
+  .rel-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  @media (max-width: 640px) {
+    .rel-grid { grid-template-columns: 1fr; }
+    .author-card { flex-direction: column; gap: 12px; }
+  }
+</style>

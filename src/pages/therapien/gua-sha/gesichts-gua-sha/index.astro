@@ -1,0 +1,43 @@
+---
+// /therapien/gua-sha/gesichts-gua-sha — child page of the Gua Sha pillar.
+// Same pattern as schroepfen/hijama (nested sub-page, allowlisted in
+// functions/therapien/[[path]].js — 2-segment paths otherwise 410).
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import bodyRaw from '../../../../data/gua-sha-gesicht-body.html?raw';
+import { prefillForm } from '../../../../data/form-prefill';
+import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
+const body = appendSidebarAllLink(
+  prefillForm(bodyRaw, 'Ich interessiere mich für Gua Sha im Gesicht.', 'Therapie: Gesichts-Gua-Sha'),
+  'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
+
+const url = 'https://tcm.ch/therapien/gua-sha/gesichts-gua-sha/';
+const title = 'Gua Sha fürs Gesicht – Anleitung und Behandlung | TCM.ch';
+const description = 'Gua Sha im Gesicht: wie die Technik wirkt, Schritt-für-Schritt-Anleitung für zu Hause und die Behandlung in unseren Praxen. Von TCM-Therapeutinnen erklärt.';
+
+const faqs = [
+  { q: 'Wie oft sollte ich Gua Sha im Gesicht machen?', a: 'Zwei- bis dreimal pro Woche reicht völlig. Täglich ist möglich, solange der Druck leicht bleibt. Mehr bringt nicht mehr.' },
+  { q: 'Hilft Gua Sha gegen Falten?', a: 'Gua Sha wirkt auf Lymphfluss, Muskelspannung und Durchblutung. Das Gesicht wirkt danach oft entspannter und weniger geschwollen. Eine dauerhafte Veränderung der Hautstruktur ist davon nicht zu erwarten, und wir behaupten das auch nicht.' },
+  { q: 'Darf im Gesicht eine Rötung entstehen?', a: 'Nein. Die typische Rötung, das Sha, gehört zur Anwendung am Körper. Im Gesicht ist sie ein Zeichen dafür, dass zu viel Druck im Spiel war.' },
+  { q: 'Morgens oder abends?', a: 'Beides möglich. Morgens gegen das Schwellungsgefühl, abends zur Entspannung des Kiefers. Wer nachts knirscht, profitiert eher abends.' },
+  { q: 'Kann ich Gua Sha mit Gesichtsakupunktur kombinieren?', a: 'Ja, das ergänzt sich gut. Viele kombinieren die Gesichtsakupunktur mit einer abschliessenden Gua-Sha-Massage in derselben Sitzung.' },
+  { q: 'Übernimmt die Krankenkasse Gesichts-Gua-Sha?', a: 'Nein, als kosmetische Anwendung ist es eine Selbstzahler-Leistung. Die klassische Gua-Sha-Behandlung am Körper wird bei EMR/ASCA-Anerkennung über die Zusatzversicherung mit 80 bis 100 Prozent übernommen.' },
+  { q: 'Welchen Stein empfiehlst du mir?', a: 'Rosenquarz für die meisten, er bleibt kühl, ist robust und gleitet gut. Entscheidend ist eine glatte, runde Kante, nicht das Material.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    about: { '@type': 'MedicalTherapy', name: 'Gua Sha im Gesicht',
+      alternateName: 'Gesichts-Gua-Sha',
+      howPerformed: 'Nach Reinigung und Auftragen eines Gleitöls wird mit einem glattkantigen Stein in ruhigen Zügen zuerst entlang von Hals und Schlüsselbein, danach entlang von Kiefer, Wangen, Augenpartie und Stirn gearbeitet, jeweils von der Mitte nach aussen und mit deutlich geringerem Druck als bei der Anwendung am Körper.' },
+    lastReviewed: '2026-08-23' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 2, name: 'Gua Sha', item: 'https://tcm.ch/therapien/gua-sha/' },
+    { '@type': 'ListItem', position: 3, name: 'Gua Sha fürs Gesicht', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/gua-sha/gesichts-gua-sha" body={body} schema={schema} ogImage="https://tcm.ch/images/img-f7c771cf39ed.webp" />
