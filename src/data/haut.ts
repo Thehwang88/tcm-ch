@@ -1780,6 +1780,629 @@ export const haut: HautArticle[] = [
       { href: '/haut/sonnencreme-gesicht/', label: 'Sonnencreme fürs Gesicht', cat: 'Wirkstoff' },
     ],
   },
+  // ──────────────────────────────────────────────── Welle 6 · Wirkstoffe & Hautthemen
+  {
+    slug: 'salicylsaeure',
+    title: 'Salicylsäure (BHA): Wirkung, Anwendung, Fehler',
+    metaDesc: 'Salicylsäure in der Hautpflege: wie BHA in der Pore wirkt, welche Konzentration sinnvoll ist, wie oft du sie anwendest und wann sie mehr schadet als nützt.',
+    excerpt: 'Der einzige gängige Säurewirkstoff, der in die Pore hineinkommt. Was das bringt, und warum die meisten ihn zu oft verwenden.',
+    category: 'Wirkstoffe',
+    h1: 'Salicylsäure',
+    lead: 'Salicylsäure ist fettlöslich. Das klingt nach einem Detail, ist aber der ganze Grund, warum sie bei verstopften Poren funktioniert, wo andere Säuren an der Oberfläche bleiben.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Unreinheiten, die immer wiederkommen?',
+    ctaText: 'Wenn äusserliche Pflege den Ausschlag nicht mehr macht, lohnt sich der Blick auf das, was von innen mitspielt.',
+    ctaHref: '/therapien/kraeutertherapie/',
+    ctaLabel: 'Kräutertherapie ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Salicylsäure gehört zu den Beta-Hydroxysäuren, kurz BHA. In der Hautpflege steht sie meist als <em>Salicylic Acid</em> auf der Liste, in Konzentrationen zwischen 0,5 und 2 Prozent.</p>
+
+<h2>Warum fettlöslich der entscheidende Punkt ist</h2>
+<p>Fruchtsäuren wie Glykolsäure sind wasserlöslich. Sie arbeiten auf der Hautoberfläche und lösen dort die Verbindungen zwischen abgestorbenen Hornzellen.</p>
+<p>Salicylsäure ist fettlöslich. Sie mischt sich mit dem Talg in der Pore und kommt so dorthin, wo die Verstopfung tatsächlich sitzt. Deshalb ist sie bei <a href="/haut/mitesser/">Mitessern</a> und <a href="/haut/unreine-haut/">unreiner Haut</a> das naheliegende Mittel und bei trockener Haut ohne Verstopfung meist die falsche Wahl.</p>
+<p>Dazu kommt eine entzündungshemmende Komponente. Salicylsäure ist chemisch mit Acetylsalicylsäure verwandt, und ein Teil der beruhigenden Wirkung bei entzündeten Stellen kommt daher.</p>
+
+<h2>Welche Konzentration</h2>
+<p><strong>0,5 bis 1 Prozent</strong> — für den täglichen oder fast täglichen Gebrauch, in Reinigungen oder leichten Tonern. Der beste Einstieg.</p>
+<p><strong>2 Prozent</strong> — die Obergrenze im frei verkäuflichen Bereich, meist als Leave-on-Produkt. Zwei- bis dreimal pro Woche reicht.</p>
+<p><strong>Höher konzentriert</strong> gehört in die Hand von Fachpersonen, siehe <a href="/haut/peeling/">Peeling</a>.</p>
+<div class="wa-pullquote">Mehr Prozent bringt nicht mehr Ergebnis. Es bringt schneller eine gestörte Hautbarriere.</div>
+
+<h2>Der häufigste Fehler: zu oft</h2>
+<p>Salicylsäure wirkt spürbar, und das verführt. Die Haut fühlt sich nach der Anwendung glatter an, also wird täglich angewendet, dann zweimal täglich, dazu ein Reinigungsgel mit BHA und ein Toner.</p>
+<p>Das Ergebnis ist eine Haut, die spannt, glänzt und trotzdem mehr Unreinheiten zeigt als vorher. Eine gestörte Barriere reagiert mit mehr Talgproduktion, nicht mit weniger.</p>
+<p>Wenn du das an dir erkennst: zwei Wochen alle Säuren weglassen, nur reinigen, Feuchtigkeit, Sonnenschutz. Danach mit zweimal pro Woche neu anfangen.</p>
+
+<h2>Womit du sie nicht kombinierst</h2>
+<p><strong>Nicht in derselben Anwendung mit <a href="/haut/retinol/">Retinol</a>.</strong> Beides beschleunigt die Zellerneuerung. Zusammen ist es zu viel. Wenn du beides nutzen willst: an unterschiedlichen Abenden.</p>
+<p><strong>Nicht mit Fruchtsäuren stapeln.</strong> AHA und BHA am selben Abend ist selten sinnvoll.</p>
+<p><strong>Kombinierbar</strong> ist sie gut mit <a href="/haut/niacinamid/">Niacinamid</a> und mit beruhigenden Wirkstoffen wie <a href="/haut/centella/">Centella</a>.</p>
+
+<h2>Sonnenschutz ist nicht optional</h2>
+<p>Säuren machen die Haut lichtempfindlicher. Ohne <a href="/haut/sonnencreme-gesicht/">täglichen Sonnenschutz</a> riskierst du bei Unreinheiten genau das, was du am wenigsten willst: dunkle Flecken an der Stelle, wo der Pickel war.</p>
+
+<h2>Wann Salicylsäure nicht das Richtige ist</h2>
+<p>Bei <a href="/haut/couperose/">Couperose</a> und geröteter, empfindlicher Haut ohne Verstopfung reizt sie meist mehr, als sie nützt. Bei entzündlicher Akne mit tiefen, schmerzhaften Knoten ist sie zu schwach — das gehört dermatologisch abgeklärt.</p>
+<p>Und wenn Unreinheiten in Schüben kommen, die sich an Zyklus, Schlaf oder Belastungsphasen koppeln, dann arbeitest du mit Pflege an einem Symptom, dessen Auslöser woanders liegt. Genau da setzen wir mit der Kräutertherapie an.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie oft sollte man Salicylsäure anwenden?', a: 'Bei 2 Prozent zwei- bis dreimal pro Woche. Produkte mit 0,5 bis 1 Prozent vertragen die meisten täglich. Mehr bringt kein besseres Ergebnis, sondern eine gestörte Barriere.' },
+      { q: 'Salicylsäure oder Fruchtsäure?', a: 'Salicylsäure bei verstopften Poren, Mitessern und öliger Haut, weil sie fettlöslich ist und in die Pore kommt. Fruchtsäure bei Rauheit, fahlem Teint und oberflächlicher Textur.' },
+      { q: 'Kann man Salicylsäure und Retinol zusammen verwenden?', a: 'Nicht in derselben Anwendung. Beides beschleunigt die Zellerneuerung, zusammen wird es schnell zu viel. Verwende sie an unterschiedlichen Abenden.' },
+      { q: 'Hilft Salicylsäure gegen Pickelmale?', a: 'Indirekt, indem sie neue Entzündungen reduziert. Bestehende dunkle Male verblassen eher mit Niacinamid, Vitamin C und konsequentem Sonnenschutz.' },
+      { q: 'Ist Salicylsäure in der Schwangerschaft erlaubt?', a: 'Äusserlich in niedriger Konzentration wird sie meist als unbedenklich eingestuft, grossflächige und hoch dosierte Anwendung nicht. Kläre das mit deiner Ärztin ab.' },
+      { q: 'Warum wird meine Haut mit Salicylsäure schlechter?', a: 'Meist Überanwendung. Eine gereizte Barriere produziert mehr Talg, nicht weniger. Zwei Wochen Säurepause, dann mit zweimal pro Woche neu beginnen.' },
+    ],
+    related: [
+      { href: '/haut/mitesser/', label: 'Mitesser', cat: 'Hautthema' },
+      { href: '/haut/unreine-haut/', label: 'Unreine Haut', cat: 'Hautthema' },
+      { href: '/haut/peeling/', label: 'Peeling', cat: 'Methode' },
+    ],
+  },
+
+  {
+    slug: 'azelainsaeure',
+    title: 'Azelainsäure: der unterschätzte Wirkstoff',
+    metaDesc: 'Azelainsäure bei Rötungen, Unreinheiten und Pigmentflecken: wie sie wirkt, welche Konzentration du brauchst, wie lange es dauert und was Apotheke von Kosmetik unterscheidet.',
+    excerpt: 'Wirkt gegen Rötung, Unreinheiten und Pigment gleichzeitig — und ist trotzdem einer der verträglichsten Wirkstoffe überhaupt.',
+    category: 'Wirkstoffe',
+    h1: 'Azelainsäure',
+    lead: 'Azelainsäure macht drei Dinge auf einmal, die sonst drei verschiedene Produkte brauchen. Sie ist gut verträglich, auch in der Schwangerschaft meist unproblematisch, und trotzdem kennt sie kaum jemand.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Rötung, die bleibt?',
+    ctaText: 'Wenn die Haut dauerhaft gerötet reagiert, schauen wir uns an, was den Schub auslöst — statt nur die Oberfläche zu behandeln.',
+    ctaHref: '/therapien/kraeutertherapie/',
+    ctaLabel: 'Kräutertherapie ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Azelainsäure kommt natürlich in Getreide vor und wird für die Hautpflege synthetisch hergestellt. Auf der Liste steht sie als <em>Azelaic Acid</em>.</p>
+
+<h2>Drei Wirkungen in einem Wirkstoff</h2>
+<p><strong>Entzündungshemmend.</strong> Sie beruhigt gerötete, reaktive Haut. Das ist der Grund, warum sie bei <a href="/haut/rosacea/">Rosacea</a> zu den etablierten Optionen gehört.</p>
+<p><strong>Antibakteriell und porenklärend.</strong> Sie wirkt auf die Bakterien, die bei <a href="/haut/unreine-haut/">unreiner Haut</a> beteiligt sind, und normalisiert die Verhornung.</p>
+<p><strong>Pigmenthemmend.</strong> Sie greift in die Melaninbildung ein, und zwar bevorzugt in überaktiven Zellen. Deshalb hellt sie <a href="/haut/pigmentflecken/">Flecken</a> auf, ohne die umgebende Haut mit aufzuhellen.</p>
+<p>Diese Kombination ist selten. Wer gleichzeitig Rötung, Unreinheiten und Pickelmale hat — eine sehr häufige Konstellation — bekommt hier alles in einem Produkt.</p>
+
+<h2>Welche Konzentration, und wo du sie bekommst</h2>
+<p><strong>10 Prozent</strong> ist die übliche Konzentration in frei verkäuflicher Kosmetik. Gut verträglich, sichtbare Ergebnisse nach acht bis zwölf Wochen.</p>
+<p><strong>15 und 20 Prozent</strong> sind in der Schweiz Arzneimittel und laufen über Rezept und Apotheke. Deutlich wirksamer bei ausgeprägter Rosacea, dafür in den ersten Wochen oft mit Brennen verbunden.</p>
+<div class="wa-pullquote">Der häufigste Grund, warum Azelainsäure «nicht wirkt»: zu früh aufgegeben. Vor acht Wochen passiert sichtbar wenig.</div>
+
+<h2>Wie du sie anwendest</h2>
+<p>Einmal täglich abends auf die trockene Haut, dünn, danach Feuchtigkeitspflege. Wer sie gut verträgt, kann auf zweimal täglich gehen.</p>
+<p>Ein leichtes Kribbeln in den ersten Minuten ist normal und lässt nach einigen Anwendungen nach. Anhaltendes Brennen ist es nicht — dann runter auf jeden zweiten Tag.</p>
+<p>Die Textur ist bei manchen Produkten körnig oder klebrig. Das ist unangenehm, aber kein Qualitätsmangel.</p>
+
+<h2>Kombinationen</h2>
+<p>Azelainsäure ist unkompliziert. Sie verträgt sich mit <a href="/haut/niacinamid/">Niacinamid</a>, mit <a href="/haut/vitamin-c-serum/">Vitamin C</a> und mit <a href="/haut/retinol/">Retinol</a> — letzteres besser abwechselnd, wenn die Haut empfindlich ist.</p>
+<p>Sie macht die Haut nicht lichtempfindlicher. <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> brauchst du trotzdem, sonst arbeitet die Sonne dem Pigmenteffekt entgegen.</p>
+
+<h2>Schwangerschaft und Stillzeit</h2>
+<p>Azelainsäure gilt äusserlich als eine der wenigen Optionen, die in dieser Zeit meist vertretbar sind — anders als Retinoide, die tabu sind. Sprich es trotzdem mit deiner Ärztin ab, insbesondere bei den verschreibungspflichtigen Konzentrationen.</p>
+<p>Das macht sie zur naheliegenden Wahl bei <a href="/haut/melasma/">Melasma</a>, das häufig in der Schwangerschaft auftritt.</p>
+
+<h2>Wo die Grenze liegt</h2>
+<p>Azelainsäure arbeitet an Entzündung und Pigment. Sie arbeitet nicht an sichtbaren Äderchen — die verschwinden nicht durch Creme, dafür braucht es <a href="/haut/couperose/">gefässbezogene Verfahren</a>. Und bei ausgeprägter Rosacea ist sie ein Baustein, nicht die ganze Behandlung.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie lange dauert es, bis Azelainsäure wirkt?', a: 'Bei Rötung und Unreinheiten oft nach vier bis sechs Wochen erste Veränderungen, bei Pigmentflecken acht bis zwölf Wochen. Wer früher aufgibt, sieht nichts.' },
+      { q: 'Azelainsäure 10 oder 20 Prozent?', a: '10 Prozent ist frei verkäuflich und für die meisten der richtige Einstieg. 15 und 20 Prozent sind in der Schweiz verschreibungspflichtig und kommen bei ausgeprägter Rosacea zum Einsatz.' },
+      { q: 'Ist Azelainsäure in der Schwangerschaft erlaubt?', a: 'Sie gilt äusserlich meist als vertretbar, im Gegensatz zu Retinoiden. Kläre die Anwendung mit deiner Ärztin ab, besonders bei rezeptpflichtiger Konzentration.' },
+      { q: 'Kann man Azelainsäure mit Retinol kombinieren?', a: 'Ja, bei robuster Haut auch in derselben Routine. Bei empfindlicher Haut besser abwechselnd an unterschiedlichen Abenden.' },
+      { q: 'Brennt Azelainsäure?', a: 'Ein leichtes Kribbeln in den ersten Minuten ist normal und lässt nach einigen Anwendungen nach. Anhaltendes Brennen bedeutet, dass du die Frequenz reduzieren solltest.' },
+      { q: 'Hilft Azelainsäure gegen Rosacea?', a: 'Sie gehört zu den etablierten äusserlichen Optionen bei entzündlichen Rosacea-Formen. Sichtbare Äderchen adressiert sie nicht.' },
+    ],
+    related: [
+      { href: '/haut/rosacea/', label: 'Rosacea', cat: 'Hautthema' },
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'hyaluronsaeure',
+    title: 'Hyaluronsäure: was sie kann und was nicht',
+    metaDesc: 'Hyaluronsäure in Serum und Creme: wie sie wirkt, warum Molekülgrösse zählt, warum sie bei trockener Luft schaden kann und wo der Unterschied zur Unterspritzung liegt.',
+    excerpt: 'Sie bindet Wasser. Mehr nicht — und genau darin liegt sowohl der Nutzen als auch das Missverständnis.',
+    category: 'Wirkstoffe',
+    h1: 'Hyaluronsäure',
+    lead: 'Hyaluronsäure ist der meistverkaufte Feuchtigkeitswirkstoff überhaupt und gleichzeitig der am häufigsten falsch verstandene. Sie polstert nichts auf. Sie bindet Wasser — und braucht dafür Bedingungen, die im Schweizer Winter oft nicht gegeben sind.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Haut, die trotz Pflege trocken bleibt?',
+    ctaText: 'Manchmal liegt es nicht am Produkt, sondern an der Barriere. Wir schauen es uns in Ruhe an.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Hyaluronsäure ist ein körpereigener Stoff, der im Bindegewebe Wasser bindet. In der Pflege steht sie als <em>Sodium Hyaluronate</em> oder <em>Hyaluronic Acid</em> auf der Liste.</p>
+
+<h2>Was sie tatsächlich tut</h2>
+<p>Sie ist ein Feuchthaltemittel. Sie zieht Wasser an und hält es in der obersten Hautschicht. Das Ergebnis ist eine Haut, die praller aussieht, weil die Hornschicht aufgequollen ist.</p>
+<p>Dieser Effekt ist real, sichtbar — und oberflächlich. Er hält, solange die Feuchtigkeit da ist. Sie baut kein Kollagen auf, sie füllt kein Volumen, sie verändert die Hautstruktur nicht.</p>
+<div class="wa-pullquote">Hyaluronsäure im Serum und Hyaluronsäure als Unterspritzung sind derselbe Stoff mit völlig verschiedenen Aufgaben. Das eine bindet Wasser in der Hornschicht, das andere füllt Volumen in der Tiefe.</div>
+
+<h2>Der Fehler, den fast alle machen</h2>
+<p>Hyaluronsäure zieht Wasser dorthin, wo es am wenigsten davon gibt. Ist die Luft feucht, holt sie es aus der Umgebung. Ist die Luft trocken — geheizte Räume im Winter, Flugzeug, Föhnlage — holt sie es aus den tieferen Hautschichten und gibt es nach aussen ab.</p>
+<p>Das Ergebnis: Die Haut fühlt sich nach dem Serum kurz gut an und danach trockener als vorher.</p>
+<p><strong>Die Lösung ist simpel.</strong> Serum auf die noch leicht feuchte Haut auftragen, und immer eine Creme darüber. Die Creme verschliesst und verhindert, dass das gebundene Wasser verdunstet. Ohne diesen Schritt arbeitet Hyaluronsäure im Winter gegen dich.</p>
+
+<h2>Molekülgrösse</h2>
+<p>Grosse Moleküle bleiben auf der Oberfläche und bilden einen Film, der Wasserverlust bremst. Kleine Moleküle dringen etwas tiefer in die Hornschicht ein und wirken dort.</p>
+<p>Gute Produkte mischen mehrere Grössen. Das ist der einzige Punkt, an dem sich ein Blick auf die Beschreibung lohnt — Angaben wie «multi-molecular» oder mehrere Hyaluron-Einträge in der Liste.</p>
+<p>Was sich nicht lohnt: mehr bezahlen für höhere Prozentzahlen. Über etwa 2 Prozent wird die Textur klebrig, ohne dass mehr passiert.</p>
+
+<h2>Wofür sie gut ist</h2>
+<p>Als Basis unter der Pflege, täglich, morgens und abends. Sie ist verträglich, reizt praktisch nie, passt zu jedem Hauttyp und lässt sich mit allem kombinieren — <a href="/haut/vitamin-c-serum/">Vitamin C</a>, <a href="/haut/niacinamid/">Niacinamid</a>, <a href="/haut/retinol/">Retinol</a>, Säuren.</p>
+<p>Besonders sinnvoll ist sie neben Wirkstoffen, die reizen können: Sie polstert die Hornschicht und macht die Anwendung angenehmer.</p>
+
+<h2>Was sie nicht leistet</h2>
+<p>Sie glättet keine <a href="/haut/falten-gesicht/">strukturellen Falten</a>. Feine Trockenheitsfältchen verschwinden, weil sie ein Feuchtigkeitsphänomen sind. Eine Nasolabialfalte bleibt, weil sie mit Volumen und Absinken zu tun hat, siehe <a href="/haut/nasolabialfalten/">Nasolabialfalten</a>.</p>
+<p>Und sie ersetzt keine <a href="/haut/sonnencreme-gesicht/">Sonnencreme</a>. Der grösste Teil dessen, was als Hautalterung sichtbar wird, ist Lichtschaden.</p>
+`.trim(),
+    faqs: [
+      { q: 'Kann Hyaluronsäure die Haut austrocknen?', a: 'Ja, bei trockener Umgebungsluft. Sie zieht dann Wasser aus tieferen Schichten nach aussen. Deshalb immer auf feuchte Haut auftragen und eine Creme darüber verwenden.' },
+      { q: 'Wie viel Prozent Hyaluronsäure ist sinnvoll?', a: 'Etwa 1 bis 2 Prozent. Darüber wird die Textur klebrig, ohne dass die Wirkung zunimmt. Wichtiger als die Konzentration ist die Mischung verschiedener Molekülgrössen.' },
+      { q: 'Was ist der Unterschied zwischen Hyaluronsäure im Serum und Unterspritzung?', a: 'Derselbe Stoff, verschiedene Ebenen. Das Serum bindet Wasser in der Hornschicht. Bei einer Unterspritzung wird vernetztes Hyaluron in die Tiefe eingebracht, um Volumen zu ersetzen. Das ist ein ärztlicher Eingriff und etwas völlig anderes.' },
+      { q: 'Hilft Hyaluronsäure gegen Falten?', a: 'Gegen feine Trockenheitsfältchen sichtbar, weil diese ein Feuchtigkeitsphänomen sind. Gegen strukturelle Falten nicht.' },
+      { q: 'Morgens oder abends?', a: 'Beides. Sie ist verträglich, reizt praktisch nie und lässt sich mit allen anderen Wirkstoffen kombinieren.' },
+      { q: 'Reicht Hyaluronsäure allein als Pflege?', a: 'Nein. Ohne Creme darüber verdunstet das gebundene Wasser. Sie ist eine Basis, keine vollständige Pflege.' },
+    ],
+    related: [
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/haut/glass-skin/', label: 'Glass Skin', cat: 'K-Beauty' },
+      { href: '/haut/falten-gesicht/', label: 'Falten im Gesicht', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'rosacea',
+    title: 'Rosacea: Formen, Auslöser, was hilft',
+    metaDesc: 'Rosacea erkennen und einordnen: die vier Formen, typische Auslöser, was dermatologisch behandelt wird, was Pflege leisten kann und wo die Abgrenzung zur Couperose liegt.',
+    excerpt: 'Erst die Form bestimmen, dann behandeln. Rötung, Äderchen und Pusteln brauchen unterschiedliche Wege.',
+    category: 'Hautthemen',
+    h1: 'Rosacea',
+    lead: 'Rosacea ist eine chronisch-entzündliche Hauterkrankung und gehört dermatologisch abgeklärt. Was du hier findest, ist die Einordnung: welche Form du wahrscheinlich hast, was dagegen etabliert ist, und was ergänzend sinnvoll sein kann.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Schübe, die sich an Stress und Schlaf koppeln?',
+    ctaText: 'Wenn die Auslöser im Alltag liegen, ist die dermatologische Behandlung die eine Hälfte. Über die andere sprechen wir gern.',
+    ctaHref: '/therapien/kraeutertherapie/',
+    ctaLabel: 'Kräutertherapie ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Rosacea betrifft vor allem die Gesichtsmitte: Wangen, Nase, Stirn, Kinn. Sie verläuft in Schüben, beginnt meist zwischen dem 30. und 50. Lebensjahr und ist chronisch — behandelbar, aber nicht heilbar.</p>
+<p><strong>Der wichtigste Satz zuerst:</strong> Rosacea gehört in dermatologische Abklärung. Sie wird häufig mit Akne, Kontaktekzem oder perioraler Dermatitis verwechselt, und die Behandlungen unterscheiden sich grundlegend.</p>
+
+<h2>Die vier Formen</h2>
+<p><strong>Erythematös-teleangiektatisch.</strong> Dauerhafte Rötung, sichtbare Äderchen, Brennen. Keine Pusteln. Das ist die Form, die der <a href="/haut/couperose/">Couperose</a> am nächsten kommt.</p>
+<p><strong>Papulopustulös.</strong> Rötung mit entzündlichen Knötchen und Pusteln. Sieht aus wie Akne, ist aber keine — es fehlen die <a href="/haut/mitesser/">Mitesser</a>. Genau daran unterscheidet man die beiden.</p>
+<p><strong>Phymatös.</strong> Verdickung des Gewebes, meist an der Nase. Betrifft überwiegend Männer und braucht eine eigene Behandlung.</p>
+<p><strong>Okulär.</strong> Betrifft die Augen: Trockenheit, Fremdkörpergefühl, gerötete Lidränder. Wird oft übersehen und gehört augenärztlich mitbehandelt.</p>
+<div class="wa-pullquote">Rosacea ohne Mitesser, Akne mit Mitessern. Dieses eine Merkmal trennt die beiden häufigsten Verwechslungen.</div>
+
+<h2>Auslöser</h2>
+<p>Die individuellen Trigger sind unterschiedlich, aber die Liste wiederholt sich: <strong>Sonne</strong> steht bei den meisten an erster Stelle. Dazu Hitze und Kälte, schnelle Temperaturwechsel, Alkohol — besonders Rotwein —, scharfes Essen, heisse Getränke, körperliche Anstrengung und Stress.</p>
+<p>Ein Trigger-Tagebuch über vier bis sechs Wochen ist unspektakulär, aber es ist die zuverlässigste Methode, das eigene Muster zu erkennen.</p>
+
+<h2>Was dermatologisch gemacht wird</h2>
+<p>Äusserlich kommen unter anderem <a href="/haut/azelainsaeure/">Azelainsäure</a>, Metronidazol und Ivermectin zum Einsatz, bei ausgeprägten Formen zusätzlich Tabletten. Sichtbare Äderchen sprechen auf äusserliche Mittel nicht an — dafür werden gefässbezogene Laser- und Lichtverfahren eingesetzt.</p>
+<p>Wir bieten diese Verfahren nicht an. Wir sagen dir trotzdem, dass sie bei diesem Befund das Mittel der Wahl sind.</p>
+
+<h2>Pflege: weniger ist hier tatsächlich mehr</h2>
+<p>Rosacea-Haut hat eine gestörte Barriere und reagiert auf fast alles. Die Regeln:</p>
+<p><strong>Lauwarm waschen</strong>, milde Reinigung ohne Tenside, die schäumen wie Spülmittel. <strong>Keine Peelings</strong>, weder mechanisch noch chemisch. <strong>Kein Retinol</strong> in der Selbstanwendung. <strong>Keine Duftstoffe, kein Alkohol denat., kein Menthol.</strong></p>
+<p>Was gut funktioniert: <a href="/haut/niacinamid/">Niacinamid</a> in niedriger Konzentration, <a href="/haut/centella/">Centella</a>, Panthenol, barrierestärkende Cremes mit Ceramiden.</p>
+<p><strong>Sonnenschutz ist bei Rosacea keine Empfehlung, sondern Behandlung.</strong> Mineralische Filter werden meist besser vertragen, siehe <a href="/haut/sonnencreme-gesicht/">Sonnencreme fürs Gesicht</a>.</p>
+
+<h2>Was wir tun und was nicht</h2>
+<p>Wir behandeln Rosacea nicht. Was wir sehen: Bei einem Teil der Betroffenen koppeln sich die Schübe erkennbar an Belastungsphasen, schlechten Schlaf und Verdauungsthemen. Wo dieses Muster besteht, ist die Kräutertherapie ein möglicher ergänzender Weg — parallel zur dermatologischen Behandlung, nicht statt ihr.</p>
+<p>Und ganz klar: Bei aktiver Rosacea ist <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> nicht geeignet. Reibung auf gereizter, gefässempfindlicher Haut verschlechtert das Bild.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Rosacea und Couperose?', a: 'Couperose bezeichnet sichtbare erweiterte Äderchen ohne entzündliches Geschehen. Rosacea ist eine chronisch-entzündliche Erkrankung, bei der Äderchen ein Teilaspekt sein können. Couperose kann eine Vorstufe sein.' },
+      { q: 'Ist Rosacea heilbar?', a: 'Nein, sie ist chronisch. Sie lässt sich aber gut kontrollieren, und schubfreie Phasen über lange Zeiträume sind möglich.' },
+      { q: 'Wie unterscheide ich Rosacea von Akne?', a: 'An den Mitessern. Akne hat sie, Rosacea nicht. Rosacea betrifft ausserdem typischerweise die Gesichtsmitte und beginnt später im Leben.' },
+      { q: 'Welche Pflege bei Rosacea?', a: 'Milde Reinigung, keine Peelings, kein Retinol, keine Duftstoffe. Barrierestärkende Pflege mit Ceramiden, Panthenol oder Niacinamid, und täglich mineralischer Sonnenschutz.' },
+      { q: 'Hilft Ernährung bei Rosacea?', a: 'Bestimmte Auslöser sind gut belegt — Alkohol, scharfes Essen, heisse Getränke. Eine allgemeingültige Rosacea-Diät gibt es nicht, das individuelle Muster findest du über ein Trigger-Tagebuch.' },
+      { q: 'Ist Gua Sha bei Rosacea sinnvoll?', a: 'Nein. Bei aktiver Rosacea ist Reibung auf gefässempfindlicher Haut kontraproduktiv.' },
+    ],
+    related: [
+      { href: '/haut/couperose/', label: 'Couperose', cat: 'Hautthema' },
+      { href: '/haut/azelainsaeure/', label: 'Azelainsäure', cat: 'Wirkstoff' },
+      { href: '/haut/sonnencreme-gesicht/', label: 'Sonnencreme fürs Gesicht', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'aknenarben',
+    title: 'Aknenarben: Typen und was dagegen wirkt',
+    metaDesc: 'Aknenarben unterscheiden: Boxcar, Rolling, Icepick und rote oder braune Male. Welche Behandlung zu welchem Typ passt, was realistisch möglich ist und was nicht.',
+    excerpt: 'Die meisten «Narben» sind gar keine. Und für echte Narben entscheidet der Typ, welche Behandlung überhaupt Sinn hat.',
+    category: 'Hautthemen',
+    h1: 'Aknenarben',
+    lead: 'Bevor irgendetwas behandelt wird, muss geklärt sein, was da überhaupt ist. Rote und braune Male verblassen von selbst. Echte Narben tun das nicht — und je nach Form hilft etwas völlig anderes.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Erst die aktive Akne, dann die Narben',
+    ctaText: 'Solange neue Entzündungen entstehen, entstehen neue Narben. Genau da setzen wir an.',
+    ctaHref: '/therapien/kraeutertherapie/',
+    ctaLabel: 'Kräutertherapie ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Das Wort «Aknenarbe» wird für drei sehr verschiedene Dinge verwendet. Die Unterscheidung ist der wichtigste Schritt, weil sie darüber entscheidet, ob überhaupt eine Behandlung nötig ist.</p>
+
+<h2>Erst prüfen: ist es überhaupt eine Narbe?</h2>
+<p><strong>Rote Male</strong> (postinflammatorisches Erythem) sind Gefässerweiterungen nach der Entzündung. Sie verblassen über Monate von selbst.</p>
+<p><strong>Braune Male</strong> (postinflammatorische Hyperpigmentierung) sind Pigmentablagerungen. Auch sie verblassen, langsamer, und deutlich schneller mit konsequentem <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a>, <a href="/haut/niacinamid/">Niacinamid</a>, <a href="/haut/azelainsaeure/">Azelainsäure</a> oder <a href="/haut/vitamin-c-serum/">Vitamin C</a>. Mehr dazu unter <a href="/haut/pigmentflecken/">Pigmentflecken</a>.</p>
+<p><strong>Echte Narben</strong> sind Veränderungen der Hautstruktur. Sie tasten sich als Delle oder Erhebung. Der Test ist einfach: Bei seitlichem Licht wirft eine Narbe einen Schatten, ein Mal nicht.</p>
+<div class="wa-pullquote">Wenn bei seitlichem Licht kein Schatten entsteht, ist es keine Narbe. Dann brauchst du Geduld und Sonnenschutz, keine Behandlung.</div>
+
+<h2>Die drei Narbentypen</h2>
+<p><strong>Icepick.</strong> Schmal, tief, steil — wie mit einer Nadel eingestochen. Am schwersten zu behandeln, weil die Tiefe von der Oberfläche her kaum erreichbar ist. Flächige Verfahren bringen hier wenig; eingesetzt wird meist eine punktuelle Technik durch Fachpersonen.</p>
+<p><strong>Boxcar.</strong> Kastenförmig, klare Kanten, mittlere Tiefe. Spricht auf abtragende und stimulierende Verfahren an.</p>
+<p><strong>Rolling.</strong> Flache, wellige Dellen, weiche Ränder. Entsteht durch bindegewebige Stränge, die die Haut nach unten ziehen. Spricht am besten an, weil man diese Stränge lösen kann.</p>
+<p>Die meisten Menschen haben eine Mischung. Das ist der Grund, warum ein einzelnes Verfahren selten reicht.</p>
+
+<h2>Was bei welchem Typ eingesetzt wird</h2>
+<p><a href="/haut/microneedling/">Microneedling</a> ist bei Rolling- und flachen Boxcar-Narben das gängigste Verfahren, meist in Serie von vier bis sechs Sitzungen. Kombiniert mit Radiofrequenz kommt es tiefer.</p>
+<p>Fraktionierte Laser arbeiten in vergleichbarer Tiefe mit anderer Technik. <a href="/haut/peeling/">Tiefe chemische Peelings</a> werden ebenfalls eingesetzt. Subzision — das Lösen der bindegewebigen Stränge — ist bei Rolling-Narben oft der wirksamste Einzelschritt und ein ärztlicher Eingriff.</p>
+<p>All das sind Verfahren, die wir nicht anbieten. Wir ordnen sie ein, damit du weisst, wonach du fragst.</p>
+
+<h2>Was realistisch möglich ist</h2>
+<p>Eine Verbesserung um 50 bis 70 Prozent über mehrere Sitzungen gilt bei geeigneten Narbentypen als gutes Ergebnis. Vollständig verschwinden Aknenarben nicht.</p>
+<p>Wer mit der Erwartung «weg» hineingeht, wird enttäuscht — auch bei technisch gelungener Behandlung.</p>
+
+<h2>Der Schritt, der zuerst kommt</h2>
+<p><strong>Solange aktive Entzündungen bestehen, entstehen neue Narben.</strong> Narbenbehandlung bei aktiver Akne ist deshalb die falsche Reihenfolge, und die meisten seriösen Behandler lehnen sie ab.</p>
+<p>Wenn <a href="/haut/unreine-haut/">unreine Haut</a> bei dir noch aktiv ist, ist das die eigentliche Baustelle. Wo Schübe sich an Zyklus, Belastung oder Verdauung koppeln, arbeiten wir mit der Kräutertherapie an dieser Ebene — und die dermatologische Behandlung läuft parallel weiter, wenn sie nötig ist.</p>
+<p>Und: nicht drücken. Der grösste vermeidbare Anteil an Aknenarben entsteht durch Manipulation.</p>
+`.trim(),
+    faqs: [
+      { q: 'Gehen Aknenarben von selbst weg?', a: 'Rote und braune Male ja, über Monate. Echte Narben, also Dellen in der Hautstruktur, nicht.' },
+      { q: 'Wie erkenne ich, ob es eine echte Narbe ist?', a: 'Bei seitlichem Licht wirft eine echte Narbe einen Schatten, weil sie eine Vertiefung ist. Ein Mal ist flach und wirft keinen.' },
+      { q: 'Was hilft am besten gegen Aknenarben?', a: 'Das hängt vom Typ ab. Rolling-Narben sprechen auf Subzision und Microneedling an, Boxcar auf abtragende Verfahren, Icepick am schlechtesten und nur punktuell.' },
+      { q: 'Wie viele Microneedling-Sitzungen braucht man bei Narben?', a: 'Üblich sind vier bis sechs Sitzungen im Abstand von vier bis sechs Wochen, das Ergebnis baut sich über Monate auf.' },
+      { q: 'Kann man Aknenarben komplett entfernen?', a: 'Nein. 50 bis 70 Prozent Verbesserung über mehrere Sitzungen gilt bei geeigneten Typen als gutes Ergebnis.' },
+      { q: 'Kann man Aknenarben bei aktiver Akne behandeln?', a: 'Nein, das ist die falsche Reihenfolge. Solange neue Entzündungen entstehen, entstehen neue Narben. Erst die aktive Akne, dann die Narben.' },
+    ],
+    related: [
+      { href: '/haut/unreine-haut/', label: 'Unreine Haut', cat: 'Hautthema' },
+      { href: '/haut/microneedling/', label: 'Microneedling', cat: 'Methode' },
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+    ],
+  },
+  // ──────────────────────────────────────────────── Welle 6 · Methoden
+  {
+    slug: 'skin-booster',
+    title: 'Skin Booster: was hinter dem Begriff steckt',
+    metaDesc: 'Skin Booster im Vergleich: Was unterscheidet sie von Filler und Botox, welche Präparate gibt es, wie viele Sitzungen braucht es und für wen lohnt sich das überhaupt.',
+    excerpt: 'Kein Filler, kein Botox, sondern eine dritte Kategorie. Was sie leistet — und die deutlich billigere Alternative, die vorher drankommt.',
+    category: 'Methoden',
+    h1: 'Skin Booster',
+    lead: 'Skin Booster ist ein Marketingbegriff für eine ganze Gruppe injizierbarer Präparate. Sie füllen kein Volumen und entspannen keine Muskeln, sondern zielen auf Hautqualität. Was daran hält, was nicht, und was du zuerst ausschöpfen solltest.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Bevor du zur Nadel greifst',
+    ctaText: 'Ein grosser Teil dessen, was Skin Booster verspricht, ist Durchblutung, Abfluss und Entspannung. Das bekommst du auch ohne Injektion.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Der Begriff Skin Booster ist nicht geschützt. Darunter fallen sehr unterschiedliche Präparate, die eines gemeinsam haben: Sie werden in die Haut injiziert, nicht darunter, und sie sollen die Hautqualität verbessern statt die Form zu verändern.</p>
+
+<h2>Die drei Kategorien auseinanderhalten</h2>
+<p><strong>Filler</strong> füllen Volumen. Vernetztes Hyaluron wird in die Tiefe eingebracht, um Struktur zu ersetzen. Das Ergebnis ist sofort sichtbar.</p>
+<p><strong>Muskelentspannende Injektionen</strong> reduzieren Mimikbewegung. Das ist ein verschreibungspflichtiges Arzneimittel und rein ärztliche Sache.</p>
+<p><strong>Skin Booster</strong> machen weder das eine noch das andere. Sie bringen einen Reiz in die Haut, der die Zellen zu mehr Eigenproduktion anregen soll. Das Ergebnis kommt langsam, über Wochen.</p>
+<div class="wa-pullquote">Wer nach einem Skin Booster sofort etwas sieht, sieht die Schwellung.</div>
+
+<h2>Welche Präparate es gibt</h2>
+<p><strong>Nicht vernetztes Hyaluron.</strong> Die klassische Variante. Bindet Wasser in der Haut, gibt einen milden Reiz. Hält wenige Monate.</p>
+<p><strong>Stabilisiertes Hyaluron in hoher Konzentration.</strong> Hier ist <a href="/haut/profhilo/">Profhilo</a> das bekannteste Präparat. Arbeitet mit Verteilung im Gewebe statt mit Volumen.</p>
+<p><strong><a href="/haut/polynukleotide/">Polynukleotide</a>.</strong> DNA-Fragmente, meist aus Lachs. <a href="/haut/rejuran-pdrn/">Rejuran</a> ist die bekannteste Marke aus Korea.</p>
+<p><strong>Vitamin- und Aminosäurecocktails</strong>, oft als Mesotherapie bezeichnet. Die Datenlage ist hier am dünnsten.</p>
+
+<h2>Was realistisch passiert</h2>
+<p>Beschrieben wird meist: etwas mehr Feuchtigkeit in der Haut, ein gleichmässigerer Ton, ein leichter Glanz. Feine Trockenheitsfältchen wirken weniger sichtbar.</p>
+<p>Was nicht passiert: Straffung von abgesunkenem Gewebe, Ausgleich von Volumenverlust, Glättung tiefer <a href="/haut/falten-gesicht/">Falten</a>. Wer eine Nasolabialfalte weghaben will, braucht etwas anderes, siehe <a href="/haut/nasolabialfalten/">Nasolabialfalten</a>.</p>
+<p>Üblich sind zwei bis drei Sitzungen im Abstand von drei bis vier Wochen, danach eine Auffrischung nach sechs bis zwölf Monaten. Rechne in der Schweiz mit mehreren hundert Franken pro Sitzung, je nach Präparat und Praxis.</p>
+
+<h2>Was danach kommt</h2>
+<p>Quaddeln an den Einstichstellen für wenige Stunden bis zwei Tage, gelegentlich kleine Blutergüsse. Ein bis zwei Tage ohne wichtige Termine sind realistisch geplant.</p>
+
+<h2>Wer das macht</h2>
+<p>Injektionen in die Haut gehören in ärztliche Hände. Wir bieten sie nicht an und verweisen dafür an Dermatologie oder ästhetische Medizin.</p>
+
+<h2>Was vorher drankommt</h2>
+<p>Das klingt unspektakulär, ist aber der ehrlichste Rat: Wer noch keinen täglichen <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> verwendet und noch nie konsequent <a href="/haut/retinol/">Retinol</a> über sechs Monate durchgezogen hat, holt aus diesen beiden Schritten mehr heraus als aus der ersten Skin-Booster-Serie — zu einem Bruchteil der Kosten.</p>
+<p>Und wenn es dir vor allem um ein wacheres, weniger geschwollenes Gesicht geht: Das ist Abfluss und Spannung, nicht Hautqualität. Dafür gibt es <a href="/therapien/hanbang/">Hanbang</a> und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a>.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Skin Booster und Filler?', a: 'Filler füllen Volumen und wirken sofort. Skin Booster werden in die Haut injiziert und zielen auf Hautqualität, das Ergebnis baut sich über Wochen auf.' },
+      { q: 'Wie lange hält ein Skin Booster?', a: 'Je nach Präparat sechs bis zwölf Monate. Üblich sind zwei bis drei Sitzungen zu Beginn, danach Auffrischungen.' },
+      { q: 'Was kostet ein Skin Booster in der Schweiz?', a: 'Mehrere hundert Franken pro Sitzung, abhängig von Präparat, Menge und Praxis. Die Anfangsserie umfasst meist zwei bis drei Sitzungen.' },
+      { q: 'Straffen Skin Booster die Haut?', a: 'Nicht im Sinne eines Liftings. Sie arbeiten an Feuchtigkeit und Hautqualität, nicht an abgesunkenem Gewebe.' },
+      { q: 'Wer darf Skin Booster spritzen?', a: 'Injektionen in die Haut gehören in ärztliche Hände. TCM.ch bietet sie nicht an.' },
+      { q: 'Was bringt mehr, Skin Booster oder gute Pflege?', a: 'Wer täglichen Sonnenschutz und ein konsequent durchgezogenes Retinol noch nicht ausgeschöpft hat, holt daraus mehr heraus als aus der ersten Serie — zu einem Bruchteil der Kosten.' },
+    ],
+    related: [
+      { href: '/haut/profhilo/', label: 'Profhilo', cat: 'Methode' },
+      { href: '/haut/polynukleotide/', label: 'Polynukleotide', cat: 'Methode' },
+      { href: '/haut/rejuran-pdrn/', label: 'Rejuran und PDRN', cat: 'Methode' },
+    ],
+  },
+
+  {
+    slug: 'polynukleotide',
+    title: 'Polynukleotide: Wirkprinzip, Präparate, Grenzen',
+    metaDesc: 'Polynukleotide und PDRN in der Ästhetik: woher sie kommen, was die Studienlage hergibt, welche Präparate es gibt, wie viele Sitzungen nötig sind und für wen es sich lohnt.',
+    excerpt: 'DNA-Fragmente aus Lachs, injiziert in die Haut. Was daran Substanz hat und wo die Studienlage endet.',
+    category: 'Methoden',
+    h1: 'Polynukleotide',
+    lead: 'Polynukleotide sind der Wirkstoff hinter einer ganzen Generation koreanischer Behandlungen. Das Prinzip ist plausibel und teilweise untersucht. Was fehlt, sind grosse, unabhängige Studien — und genau das sollte man wissen, bevor man mehrere hundert Franken pro Sitzung zahlt.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Erst einordnen, dann entscheiden',
+    ctaText: 'Wir bieten keine Injektionen an. Wir sagen dir, was wir von einem Verfahren halten und was bei dir zuerst sinnvoll wäre.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Polynukleotide sind Ketten aus DNA-Bausteinen. Gewonnen werden sie meist aus der Keimdrüse von Lachs oder Forelle, gereinigt und fragmentiert. Die kurzkettige Variante heisst PDRN, siehe <a href="/haut/rejuran-pdrn/">Rejuran und PDRN</a>.</p>
+
+<h2>Warum ausgerechnet Lachs</h2>
+<p>Die DNA-Sequenzen von Fisch und Mensch sind sich in diesen Abschnitten sehr ähnlich. Das Material ist gut verfügbar, gut zu reinigen und löst kaum Immunreaktionen aus. Es geht nicht um «Fisch für die Haut», sondern um eine biologisch kompatible Molekülquelle.</p>
+
+<h2>Das Wirkprinzip</h2>
+<p>Zwei Mechanismen werden beschrieben. Erstens ein Rezeptoreffekt: Die Fragmente docken an Rezeptoren an, die an Reparatur- und Entzündungsprozessen beteiligt sind. Zweitens ein physikalischer Effekt: Das Gel bindet Wasser und gibt ein Gerüst, an dem sich Zellen orientieren.</p>
+<p>Beides ist plausibel. Der Unterschied zu <a href="/haut/microneedling/">Microneedling</a> ist, dass dort ausschliesslich der Verletzungsreiz wirkt, während hier zusätzlich ein Material eingebracht wird.</p>
+<div class="wa-pullquote">Plausibles Wirkprinzip und belegter Nutzen sind zwei verschiedene Dinge. Bei Polynukleotiden ist das erste solide, das zweite dünn.</div>
+
+<h2>Was die Studienlage hergibt</h2>
+<p>Es gibt Untersuchungen zu Hautelastizität, Feuchtigkeit und Wundheilung, überwiegend aus Korea und Italien. Sie zeigen Verbesserungen.</p>
+<p>Die Einschränkungen: kleine Teilnehmerzahlen, kurze Beobachtungszeiträume, häufig Beteiligung der Hersteller, selten verblindete Kontrollgruppen. Für ein Verfahren, das seit Jahren breit vermarktet wird, ist das wenig.</p>
+<p>Am besten belegt ist die Anwendung nicht in der Ästhetik, sondern in der Wundheilung.</p>
+
+<h2>Präparate und Einsatzgebiete</h2>
+<p>Die bekanntesten Marken sind Rejuran aus Korea sowie Plinest und verwandte Produkte aus Italien. Sie unterscheiden sich in Kettenlänge und Konzentration.</p>
+<p>Eingesetzt werden sie vor allem bei dünner, trockener Haut, im Bereich der <a href="/haut/augenringe/">Augenpartie</a>, am Hals und ergänzend bei <a href="/haut/aknenarben/">Aknenarben</a>.</p>
+<p>Üblich sind drei bis vier Sitzungen im Abstand von zwei bis vier Wochen. Das Ergebnis baut sich über zwei bis drei Monate auf und hält bei den meisten sechs bis zwölf Monate.</p>
+
+<h2>Was danach kommt</h2>
+<p>Quaddeln, Rötung und gelegentlich kleine Blutergüsse. Um die Augen ist die Ausfallzeit erfahrungsgemäss am längsten, rechne dort mit zwei bis vier Tagen sichtbarer Spuren.</p>
+
+<h2>Wo die Grenze liegt</h2>
+<p>Polynukleotide arbeiten an Hautqualität. Sie ersetzen kein Volumen, straffen kein abgesunkenes Gewebe und glätten keine tiefen Falten. Wer das erwartet, ist bei einer anderen Kategorie richtig, siehe <a href="/haut/skin-booster/">Skin Booster</a>.</p>
+
+<h2>Unsere Position</h2>
+<p>Wir bieten keine Injektionen an. Wenn du dieses Verfahren erwägst, gehört es in ärztliche Hände, und die Frage nach dem konkreten Präparat und der Erfahrung des Behandlers ist berechtigt.</p>
+<p>Was wir sagen können: Bei dünner, müder Haut ohne strukturellen Substanzverlust lohnt es sich, zuerst <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> und <a href="/haut/retinol/">Retinol</a> über Monate konsequent auszuschöpfen. Das kostet fast nichts und ist besser belegt als jedes injizierbare Präparat in dieser Gruppe.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was sind Polynukleotide?', a: 'Ketten aus DNA-Bausteinen, meist aus Lachs gewonnen, gereinigt und in die Haut injiziert. Sie sollen Reparaturprozesse anregen und Wasser binden.' },
+      { q: 'Was ist der Unterschied zwischen PDRN und Polynukleotiden?', a: 'PDRN bezeichnet die kurzkettige Variante, Polynukleotide die längerkettige. Die Begriffe werden im Marketing oft synonym verwendet.' },
+      { q: 'Wie viele Sitzungen braucht man?', a: 'Üblich sind drei bis vier Sitzungen im Abstand von zwei bis vier Wochen. Das Ergebnis baut sich über zwei bis drei Monate auf.' },
+      { q: 'Wie gut ist die Studienlage?', a: 'Es gibt positive Untersuchungen, aber mit kleinen Teilnehmerzahlen, kurzen Zeiträumen und häufiger Herstellerbeteiligung. Am besten belegt ist der Einsatz in der Wundheilung, nicht in der Ästhetik.' },
+      { q: 'Sind Polynukleotide für Veganer geeignet?', a: 'Nein, das Ausgangsmaterial stammt von Fisch.' },
+      { q: 'Straffen Polynukleotide die Haut?', a: 'Nicht im Sinne eines Liftings. Sie arbeiten an Hautqualität, nicht an abgesunkenem Gewebe oder Volumenverlust.' },
+    ],
+    related: [
+      { href: '/haut/rejuran-pdrn/', label: 'Rejuran und PDRN', cat: 'Methode' },
+      { href: '/haut/skin-booster/', label: 'Skin Booster', cat: 'Methode' },
+      { href: '/haut/microneedling/', label: 'Microneedling', cat: 'Methode' },
+    ],
+  },
+
+  {
+    slug: 'fruchtsaeurepeeling',
+    title: 'Fruchtsäurepeeling: Wirkstoffe, Stärken, Ablauf',
+    metaDesc: 'Fruchtsäurepeeling mit AHA: welche Säure für welche Haut, welche Konzentration zu Hause und welche in der Praxis, wie oft, und was danach zu beachten ist.',
+    excerpt: 'Glykolsäure, Milchsäure, Mandelsäure — sie machen dasselbe, aber unterschiedlich schnell und unterschiedlich tief.',
+    category: 'Methoden',
+    h1: 'Fruchtsäurepeeling',
+    lead: 'AHA lösen die Verbindungen zwischen abgestorbenen Hornzellen. Welche Säure du nimmst, entscheidet über Eindringtiefe, Reizpotenzial und darüber, ob du danach eine Woche gerötet herumläufst.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Unsicher, was deine Haut verträgt?',
+    ctaText: 'Wir schauen sie uns an und sagen dir, was sinnvoll ist — auch wenn die Antwort «erst mal weniger» lautet.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Fruchtsäuren, fachlich Alpha-Hydroxysäuren oder AHA, sind wasserlöslich. Sie arbeiten auf der Hautoberfläche. Das ist der Unterschied zur fettlöslichen <a href="/haut/salicylsaeure/">Salicylsäure</a>, die in die Pore hineinkommt. Die Übersicht über alle Peeling-Arten steht unter <a href="/haut/peeling/">Peeling</a>.</p>
+
+<h2>Die vier gängigen Säuren</h2>
+<p><strong>Glykolsäure.</strong> Das kleinste Molekül, dringt am tiefsten ein, wirkt am stärksten — und reizt am meisten. Die Standardwahl bei robuster Haut, Rauheit und fahlem Teint.</p>
+<p><strong>Milchsäure.</strong> Grösser, dringt weniger tief ein, wirkt zusätzlich feuchtigkeitsbindend. Die verträglichere Alternative und der bessere Einstieg bei trockener Haut.</p>
+<p><strong>Mandelsäure.</strong> Das grösste Molekül, dringt am langsamsten ein. Die Wahl bei empfindlicher Haut und bei dunkleren Hauttypen, weil das Risiko für <a href="/haut/pigmentflecken/">Pigmentreaktionen</a> geringer ist.</p>
+<p><strong>Milde Säuren wie Gluconolacton</strong> (PHA) sind noch schonender und eignen sich für Haut, die auf alles andere reagiert.</p>
+<div class="wa-pullquote">Die richtige Säure ist nicht die stärkste, sondern die, die du sechs Monate durchhältst.</div>
+
+<h2>Zu Hause oder in der Praxis</h2>
+<p><strong>Zu Hause:</strong> bis etwa 10 Prozent AHA in Leave-on-Produkten, ein- bis zweimal pro Woche abends. Auf saubere, trockene Haut, danach Feuchtigkeitspflege. Nicht zusätzlich am selben Abend <a href="/haut/retinol/">Retinol</a> oder Salicylsäure.</p>
+<p><strong>In der Praxis:</strong> deutlich höhere Konzentrationen bei niedrigerem pH-Wert, in kurzer Einwirkzeit und mit Neutralisation. Das ist eine andere Kategorie und gehört in geschulte Hände.</p>
+<p>Ein oberflächliches Praxispeeling bedeutet meist ein bis drei Tage leichte Rötung und Schuppung, üblicherweise in Serie von vier bis sechs Behandlungen. Tiefere Peelings haben deutlich längere Ausfallzeiten und gehören dermatologisch begleitet.</p>
+
+<h2>Was es bringt</h2>
+<p>Glattere Oberfläche, gleichmässigerer Ton, weniger fahles Aussehen. Bei oberflächlichen <a href="/haut/pigmentflecken/">Pigmentflecken</a> und Pickelmalen in Serie eine sichtbare Aufhellung.</p>
+<p>Was es nicht bringt: Straffung, Volumen, echte Narbenkorrektur. Bei <a href="/haut/aknenarben/">Aknenarben</a> braucht es tiefer greifende Verfahren.</p>
+
+<h2>Danach</h2>
+<p><strong>Sonnenschutz ist Pflicht, nicht Empfehlung.</strong> Frisch gepeelte Haut reagiert stärker auf UV, und die häufigste Komplikation nach Peelings ist eine Pigmentverschiebung, siehe <a href="/haut/sonnencreme-gesicht/">Sonnencreme fürs Gesicht</a>. In den zwei Wochen danach: keine intensive Sonne, kein Solarium.</p>
+<p>Kein weiteres Peeling, kein Retinol und keine Bürsten in den Tagen danach. Nur Reinigung, Feuchtigkeit, Schutz.</p>
+
+<h2>Wann du die Finger davon lässt</h2>
+<p>Bei aktiver <a href="/haut/rosacea/">Rosacea</a> und bei ausgeprägter <a href="/haut/couperose/">Couperose</a>. Bei gestörter Barriere — spannende, brennende, schuppende Haut — zuerst zwei bis vier Wochen aufbauen. Bei <a href="/haut/melasma/">Melasma</a> nur mit Fachbegleitung, weil ein zu aggressives Peeling das Bild verschlechtern kann.</p>
+<p>Und in der Schwangerschaft: milde AHA äusserlich gelten meist als vertretbar, Praxispeelings bespricht man vorher ärztlich.</p>
+`.trim(),
+    faqs: [
+      { q: 'Welche Fruchtsäure ist die beste?', a: 'Glykolsäure wirkt am stärksten und reizt am meisten, Milchsäure ist verträglicher und feuchtigkeitsbindend, Mandelsäure die Wahl bei empfindlicher und dunklerer Haut.' },
+      { q: 'Wie oft Fruchtsäurepeeling zu Hause?', a: 'Ein- bis zweimal pro Woche abends bei Konzentrationen bis etwa 10 Prozent. Häufiger führt zu einer gestörten Barriere, nicht zu einem besseren Ergebnis.' },
+      { q: 'Wie lange ist die Haut nach einem Peeling gerötet?', a: 'Bei oberflächlichen Praxispeelings ein bis drei Tage mit leichter Rötung und Schuppung. Tiefere Peelings haben deutlich längere Ausfallzeiten.' },
+      { q: 'Fruchtsäure oder Salicylsäure?', a: 'Fruchtsäure bei Rauheit, fahlem Teint und oberflächlichen Pigmentflecken. Salicylsäure bei verstopften Poren und öliger Haut, weil sie fettlöslich ist.' },
+      { q: 'Hilft ein Fruchtsäurepeeling gegen Aknenarben?', a: 'Gegen die roten und braunen Male ja. Gegen echte Narben, also Dellen in der Hautstruktur, braucht es tiefer greifende Verfahren.' },
+      { q: 'Kann man im Sommer peelen?', a: 'Möglich, aber mit striktem täglichem Sonnenschutz und ohne intensive Sonne in den zwei Wochen danach. Die häufigste Komplikation ist eine Pigmentverschiebung.' },
+    ],
+    related: [
+      { href: '/haut/peeling/', label: 'Peeling', cat: 'Methode' },
+      { href: '/haut/salicylsaeure/', label: 'Salicylsäure', cat: 'Wirkstoff' },
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'nasolabialfalten',
+    title: 'Nasolabialfalten: warum sie entstehen, was hilft',
+    metaDesc: 'Nasolabialfalten verstehen: warum sie mit Volumenverlust und Absinken zu tun haben, was Cremes leisten können, welche Verfahren eingesetzt werden und was realistisch ist.',
+    excerpt: 'Keine Mimikfalte, sondern eine Strukturfalte. Das erklärt, warum die meisten Ansätze daran scheitern.',
+    category: 'Hautthemen',
+    h1: 'Nasolabialfalten',
+    lead: 'Die Linie zwischen Nasenflügel und Mundwinkel hat jeder. Tiefer wird sie nicht, weil die Haut dort altert, sondern weil darüber Volumen verloren geht und Gewebe absinkt. Das ändert alles daran, was hilft.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Was du tatsächlich beeinflussen kannst',
+    ctaText: 'Spannung, Abfluss und Hautqualität sind der Teil, an dem sich arbeiten lässt. Genau da setzen wir an.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Die Nasolabialfalte ist zunächst eine anatomische Grenze zwischen Wange und Oberlippenbereich. Sie ist bei jedem Menschen vorhanden, auch bei Kindern, und sie ist keine Alterserscheinung.</p>
+
+<h2>Warum sie tiefer wird</h2>
+<p><strong>Volumenverlust in der Wange.</strong> Die Fettkompartimente im Mittelgesicht verlieren über die Jahre an Substanz. Was oben fehlt, betont die Kante unten.</p>
+<p><strong>Absinken.</strong> Halteapparat und Bindegewebe geben nach, das Gewebe wandert nach unten und legt sich über die Falte.</p>
+<p><strong>Knöcherne Veränderung.</strong> Auch das Gesichtsskelett verändert sich, die Unterstützung von unten nimmt ab.</p>
+<p><strong>Hautqualität</strong> spielt mit, ist aber der kleinste Anteil.</p>
+<div class="wa-pullquote">Die Nasolabialfalte ist ein Schatten, den abgesunkenes Gewebe wirft. Deshalb kommt man an sie mit Pflege nicht heran.</div>
+
+<h2>Warum sie keine Mimikfalte ist</h2>
+<p>Eine <a href="/haut/falten-gesicht/">Zornesfalte</a> entsteht durch Muskelbewegung. Muskelentspannende Injektionen wirken dort, weil sie den Mechanismus ausschalten.</p>
+<p>Die Nasolabialfalte funktioniert anders. Muskelentspannung im Mittelgesicht ist dort nicht nur wirkungslos, sondern kann das Bild verschlechtern, weil die Muskulatur die Wange mitträgt. Das ist der Grund, warum seriöse Behandler hier abwinken.</p>
+<p>Und es ist auch der Grund, warum <a href="/haut/gesichtsyoga/">Gesichtsyoga</a> hier nichts ausrichtet: Mehr Muskelaktivität ist nicht das Thema.</p>
+
+<h2>Was Pflege leisten kann</h2>
+<p>Ehrlich: wenig an der Falte selbst. Über Jahre täglicher <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> und konsequentes <a href="/haut/retinol/">Retinol</a> verbessern die Hautqualität im Mittelgesicht messbar und verlangsamen den Prozess. Das ist Prävention, keine Korrektur.</p>
+<p><a href="/haut/hyaluronsaeure/">Hyaluronsäure</a> im Serum lässt feine Fältchen ringsum weniger sichtbar wirken. Die Nasolabialfalte selbst berührt sie nicht.</p>
+
+<h2>Was in der Praxis gemacht wird</h2>
+<p>Der etablierte Weg ist die Unterspritzung mit vernetztem Hyaluron — und zwar meist nicht in die Falte, sondern in die Wange darüber, um die verlorene Abstützung zu ersetzen. Wer nur die Falte auffüllt, bekommt oft ein schwerer wirkendes Mittelgesicht.</p>
+<p>Straffende Verfahren wie <a href="/haut/ultherapy-hifu/">Ultherapy und HIFU</a> oder Fadenlifting arbeiten am Absinken. Die Ergebnisse sind moderat und die Auswahl der geeigneten Kandidaten entscheidet.</p>
+<p>All das sind ärztliche Verfahren. Wir bieten sie nicht an.</p>
+
+<h2>Was wir tun können</h2>
+<p>Nicht die Falte. Was wir sehen: Ein Teil dessen, was Menschen an ihrem Mittelgesicht stört, ist Schwellung am Morgen, Dauerspannung im Kaumuskel und ein müder Gesamteindruck. Das ist Abfluss und Spannung, und daran lässt sich mit <a href="/therapien/hanbang/">Hanbang</a> und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> arbeiten.</p>
+<p>Was dabei nicht passiert: Die Nasolabialfalte verschwindet nicht. Wenn dir jemand das verspricht, geh woanders hin.</p>
+`.trim(),
+    faqs: [
+      { q: 'Warum werden Nasolabialfalten tiefer?', a: 'Vor allem durch Volumenverlust in der Wange und Absinken des Gewebes, nicht durch Hautalterung an der Falte selbst.' },
+      { q: 'Hilft Botox gegen Nasolabialfalten?', a: 'Nein. Es ist keine Mimikfalte. Muskelentspannung im Mittelgesicht kann das Bild sogar verschlechtern, weil die Muskulatur die Wange mitträgt.' },
+      { q: 'Welche Creme hilft gegen Nasolabialfalten?', a: 'Keine, im Sinne einer Korrektur. Täglicher Sonnenschutz und Retinol über Jahre verbessern die Hautqualität und verlangsamen den Prozess — das ist Prävention.' },
+      { q: 'Wird bei einer Unterspritzung in die Falte gespritzt?', a: 'Meist nicht. Üblich ist der Aufbau der Wange darüber, um die verlorene Abstützung zu ersetzen. Wer nur die Falte füllt, bekommt oft ein schwereres Mittelgesicht.' },
+      { q: 'Hilft Gesichtsyoga gegen Nasolabialfalten?', a: 'Nein. Das Problem ist Volumen und Absinken, nicht zu wenig Muskelaktivität.' },
+      { q: 'Kann Gua Sha Nasolabialfalten reduzieren?', a: 'Nein. Es arbeitet an Abfluss und Spannung, was das Gesicht wacher wirken lässt. Die Falte selbst bleibt.' },
+    ],
+    related: [
+      { href: '/haut/falten-gesicht/', label: 'Falten im Gesicht', cat: 'Hautthema' },
+      { href: '/haut/ultherapy-hifu/', label: 'Ultherapy und HIFU', cat: 'Methode' },
+      { href: '/haut/hyaluronsaeure/', label: 'Hyaluronsäure', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'gesichtsbehandlung',
+    title: 'Gesichtsbehandlung: welche passt zu deiner Haut',
+    metaDesc: 'Gesichtsbehandlungen im Vergleich: klassische Kosmetik, apparative Verfahren, Injektionen und manuelle Methoden. Was wofür geeignet ist, was es kostet und wie du wählst.',
+    excerpt: 'Ein Überblick über alle Kategorien — und eine Entscheidungshilfe, welche zu deinem Anliegen passt.',
+    category: 'Methoden',
+    h1: 'Gesichtsbehandlung',
+    lead: 'Unter «Gesichtsbehandlung» läuft alles von der Reinigung beim Kosmetikinstitut bis zur ärztlichen Injektion. Hier steht, welche Kategorien es gibt, was jede leistet, was sie kostet — und welche wir selbst anbieten.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Unsicher, was zu dir passt?',
+    ctaText: 'Schreib uns kurz, was dich stört. Wir sagen dir ehrlich, ob wir die richtige Adresse sind — oder wer es ist.',
+    ctaHref: '/therapien/hanbang/',
+    ctaLabel: 'Hanbang ansehen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Der Begriff ist nicht geschützt und deckt vier sehr verschiedene Kategorien ab. Wer weiss, in welche sein Anliegen fällt, spart sich Geld und Enttäuschung.</p>
+
+<h2>1 · Klassische kosmetische Behandlung</h2>
+<p>Reinigung, Ausreinigung, Maske, Massage, Pflege. Dauer meist 60 bis 90 Minuten, in der Schweiz üblicherweise CHF 120 bis 250.</p>
+<p><strong>Gut bei</strong> verstopften Poren und <a href="/haut/mitesser/">Mitessern</a>, weil die manuelle Ausreinigung etwas leistet, was zu Hause schlecht funktioniert.</p>
+<p><strong>Wenig geeignet bei</strong> Falten, Pigment und Struktur. Der Effekt ist angenehm und kurzfristig.</p>
+
+<h2>2 · Apparative Verfahren</h2>
+<p>Geräte, die die Haut mechanisch, thermisch oder mit Licht behandeln: <a href="/haut/hydrafacial/">HydraFacial</a>, <a href="/haut/microneedling/">Microneedling</a>, Laser, IPL, <a href="/haut/ultherapy-hifu/">HIFU</a>.</p>
+<p>Preisspanne CHF 200 bis 800 pro Sitzung, fast immer in Serie. <strong>Gut bei</strong> Struktur, Pigment, Gefässen, <a href="/haut/aknenarben/">Aknenarben</a> — je nach Gerät. <strong>Wichtig:</strong> Hier entscheidet nicht die Marke des Geräts, sondern wer es bedient.</p>
+
+<h2>3 · Injektionen</h2>
+<p><a href="/haut/skin-booster/">Skin Booster</a>, <a href="/haut/polynukleotide/">Polynukleotide</a>, Filler, muskelentspannende Mittel. Ärztliche Verfahren, CHF 300 bis 900 und mehr pro Sitzung.</p>
+<p><strong>Gut bei</strong> Volumenverlust, tiefen Falten und Hautqualität. <strong>Nicht sinnvoll,</strong> solange Grundlagen wie <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> und <a href="/haut/retinol/">Retinol</a> nicht ausgeschöpft sind.</p>
+
+<h2>4 · Manuelle und therapeutische Verfahren</h2>
+<p>Gesichtsakupunktur, <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha</a>, Lymphmassage. Arbeiten an Durchblutung, Abfluss und Spannung. CHF 140 bis 260 je nach Länge.</p>
+<p><strong>Gut bei</strong> müdem Hautbild, Schwellungsgefühl, Dauerspannung in Kiefer und Stirn. <strong>Nicht geeignet bei</strong> Pigment, Struktur oder Volumenverlust.</p>
+<div class="wa-pullquote">Die meisten Enttäuschungen entstehen nicht durch schlechte Behandlungen, sondern durch die falsche Kategorie für das eigene Anliegen.</div>
+
+<h2>Welche Kategorie für welches Anliegen</h2>
+<p><strong>Müde, fahle, gestresste Haut</strong> → manuell und therapeutisch. Hier liegt unser Angebot.</p>
+<p><strong>Verstopfte Poren, Unreinheiten</strong> → kosmetische Ausreinigung, dazu die passende Pflege mit <a href="/haut/salicylsaeure/">Salicylsäure</a>. Bei wiederkehrenden Schüben lohnt der Blick nach innen, siehe <a href="/haut/unreine-haut/">unreine Haut</a>.</p>
+<p><strong><a href="/haut/pigmentflecken/">Pigmentflecken</a>, <a href="/haut/melasma/">Melasma</a></strong> → erst die Form bestimmen, dann apparativ oder mit Wirkstoffen. Bei Melasma nie ungeprüft Laser.</p>
+<p><strong><a href="/haut/couperose/">Couperose</a>, <a href="/haut/rosacea/">Rosacea</a></strong> → dermatologisch, gefässbezogene Verfahren.</p>
+<p><strong>Falten, Volumenverlust</strong> → ärztlich, siehe <a href="/haut/falten-gesicht/">Falten im Gesicht</a>.</p>
+
+<h2>Was wir anbieten</h2>
+<p>Wir sind eine TCM-Klinikgruppe, keine ästhetische Praxis. Im Gesicht arbeiten wir mit drei Behandlungen: der <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a>, die bei medizinischer Indikation und EMR/ASCA-Anerkennung von der Zusatzversicherung übernommen werden kann, mit <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a>, und mit <a href="/therapien/hanbang/">Hanbang</a>, der 75-minütigen Kombination aus beidem.</p>
+<p>Was wir nicht machen: Laser, Injektionen, Filler, apparative Straffung. Wenn dein Anliegen dort liegt, sagen wir dir das — und schicken dich nicht in eine Serie, die daran nichts ändert.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was kostet eine Gesichtsbehandlung in der Schweiz?', a: 'Klassisch kosmetisch CHF 120 bis 250, apparative Verfahren CHF 200 bis 800 pro Sitzung, Injektionen ab CHF 300, manuelle und therapeutische Behandlungen CHF 140 bis 260.' },
+      { q: 'Wie oft sollte man eine Gesichtsbehandlung machen?', a: 'Bei kosmetischen und manuellen Behandlungen alle vier bis sechs Wochen. Apparative Verfahren laufen in Serien von vier bis sechs Sitzungen mit anschliessenden Auffrischungen.' },
+      { q: 'Welche Gesichtsbehandlung hilft gegen Falten?', a: 'Gegen strukturelle Falten wirken ärztliche Verfahren. Kosmetische und manuelle Behandlungen arbeiten an Hautbild und Spannung, nicht an Volumen.' },
+      { q: 'Übernimmt die Krankenkasse eine Gesichtsbehandlung?', a: 'Kosmetische Behandlungen nein. Die Gesichtsakupunktur kann bei medizinischer Indikation und EMR/ASCA-Anerkennung über die Zusatzversicherung laufen. Hanbang ist eine Selbstzahlerleistung.' },
+      { q: 'Was ist der Unterschied zwischen Kosmetikerin und Klinik?', a: 'Kosmetische Institute arbeiten an der Hautoberfläche und mit Pflege. Ärztliche Praxen arbeiten mit Injektionen und Geräten in der Tiefe. Wir arbeiten therapeutisch an Durchblutung, Abfluss und Spannung.' },
+      { q: 'Welche Gesichtsbehandlung vor einem Anlass?', a: 'Eine manuelle Behandlung ein bis zwei Tage vorher. Peelings, Microneedling und Injektionen brauchen mehr Abstand, weil Rötung und Schwellung dazugehören.' },
+    ],
+    related: [
+      { href: '/therapien/hanbang/', label: 'Hanbang', cat: 'Behandlung' },
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+      { href: '/haut/hydrafacial/', label: 'HydraFacial', cat: 'Methode' },
+    ],
+  },
 ];
 
 export const hautBySlug = (slug: string): HautArticle | undefined => haut.find((a) => a.slug === slug);

@@ -129,3 +129,11 @@ h1, h2, h3 {
 .prose p, .prose li { color: #374151 !important; }
 .faq details { border-radius: var(--r-card) !important; }
 .faq summary { color: #0D0D0D !important; }
+
+/* Lange deutsche Komposita (z. B. «Gesichtsakupunktur») sauber trennen
+   statt mitten im Wort hart umbrechen. Greift vor overflow-wrap:break-word. */
+h1, h2, .sg-title, .hero-h1, .a-title, .sec-label {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 8 4 4;
+}
