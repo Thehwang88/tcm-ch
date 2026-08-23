@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && wrangler pages functions build --outdir=./worker/",
+    "build": "astro build && node scripts/gen-sitemap.mjs && wrangler pages functions build --outdir=./worker/",
     "preview": "astro preview"
   },
   "dependencies": {

@@ -5,7 +5,7 @@ import path from 'path';
 
 const SITE = 'https://tcm.ch';
 const DIST = 'dist';
-const TODAY = '2026-06-10';
+const TODAY = new Date().toISOString().slice(0, 10);
 
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
