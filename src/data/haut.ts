@@ -1448,6 +1448,335 @@ export const haut: HautArticle[] = [
       { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
     ],
   },
+  {
+    slug: 'peeling',
+    title: 'Chemisches Peeling und Fruchtsäure: AHA, BHA, PHA erklärt',
+    metaDesc: 'Chemisches Peeling verstehen: Unterschied AHA, BHA und PHA, welche Säure zu welcher Haut passt, wie oft du peelen darfst und woran du Überpeeling erkennst.',
+    excerpt: 'Drei Säuregruppen für drei verschiedene Hautprobleme. Und die Frage, die wichtiger ist als die Auswahl: wie oft.',
+    category: 'Methoden',
+    h1: 'Chemisches Peeling',
+    lead: 'AHA, BHA, PHA. Drei Abkürzungen, drei Wirkprofile, und ein Fehler, den fast alle machen: zu häufig. Überpeelte Haut sieht schlechter aus als ungepeelte, und braucht Wochen zur Erholung.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Haut, die nach dem Peeling schlechter ist?',
+    ctaText: 'Dann ist die Barriere überfordert. Wir schauen uns die Routine an und sagen, was reduziert gehört.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Chemische Peelings lösen die Verbindungen zwischen abgestorbenen Hautzellen, statt sie mechanisch abzureiben. Das ist schonender und kontrollierbarer als jedes Körnchen-Peeling.</p>
+
+<h2>Die drei Säuregruppen</h2>
+<p><strong>AHA, Alpha-Hydroxysäuren.</strong> Wasserlöslich, wirken an der Oberfläche. Glykolsäure dringt am tiefsten ein, Milchsäure ist milder und feuchtigkeitsspendend, Mandelsäure hat grössere Moleküle und ist die verträglichste. Für Textur, Ebenmässigkeit und oberflächliche <a href="/haut/pigmentflecken/">Pigmentierung</a>.</p>
+<p><strong>BHA, Beta-Hydroxysäuren.</strong> Praktisch immer Salicylsäure. Fettlöslich, gelangt dadurch in die Pore hinein. Die Wahl bei <a href="/haut/mitesser/">Mitessern</a>, unreiner und öliger Haut.</p>
+<p><strong>PHA, Polyhydroxysäuren.</strong> Gluconolacton, Lactobionsäure. Grösste Moleküle, dringen am wenigsten ein, wirken am mildesten und binden zusätzlich Feuchtigkeit. Für empfindliche Haut und bei <a href="/haut/couperose/">Couperose</a>-Neigung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Kurzformel</div><p>Textur und Flecken: AHA. Poren und Unreinheiten: BHA. Empfindlich: PHA.</p></div>
+
+<h2>Wie oft?</h2>
+<p>Das ist die Frage, an der die meisten scheitern. <strong>Ein- bis zweimal pro Woche reicht.</strong> Bei empfindlicher Haut einmal, bei robuster Haut und niedrigen Konzentrationen bis dreimal.</p>
+<p>Nicht: täglich. Nicht: Toner mit Säure plus Serum mit Säure plus wöchentliche Maske. Das summiert sich, ohne dass es auffällt.</p>
+
+<h2>Woran du Überpeeling erkennst</h2>
+<ul>
+<li>Die Haut glänzt speckig, wirkt aber gleichzeitig gespannt</li>
+<li>Produkte, die vorher gut vertragen wurden, brennen plötzlich</li>
+<li>Anhaltende Rötung, die nicht abklingt</li>
+<li>Kleine, raue Stellen und ungewohnte Empfindlichkeit</li>
+<li>Neue Unreinheiten trotz konsequenter Reinigung</li>
+</ul>
+<p>Wenn das zutrifft: alle Säuren und Retinoide absetzen, zwei bis vier Wochen nur Reinigung, Feuchtigkeit, <a href="/haut/centella/">Centella</a> und <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a>. Danach vorsichtig neu aufbauen.</p>
+
+<h2>Peeling in der Praxis</h2>
+<p>Professionelle Peelings arbeiten mit höheren Konzentrationen und niedrigerem pH. Oberflächliche Peelings kosten in der Schweiz etwa <strong>CHF 150 bis 300</strong> pro Sitzung, üblich sind Serien von vier bis sechs im Abstand von zwei bis vier Wochen.</p>
+<p>Mitteltiefe und tiefe Peelings gehören ausschliesslich in ärztliche Hände, mit entsprechender Ausfallzeit und realem Risiko für Pigmentveränderungen.</p>
+
+<h2>Wann kein Peeling</h2>
+<p>Bei gereizter oder geschädigter Barriere, bei Sonnenbrand, bei aktivem Lippenherpes, bei <a href="/beschwerden/rosacea/">Rosacea</a> im Schub, in den Tagen um eine andere Behandlung herum, und bei <a href="/haut/melasma/">Melasma</a> nur sehr vorsichtig und dosiert.</p>
+<p>Nach jedem Peeling ist Sonnenschutz Pflicht. Frisch gepeelte Haut pigmentiert leicht nach, und dann hast du das Gegenteil von dem erreicht, was du wolltest.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen AHA und BHA?', a: 'AHA ist wasserlöslich und wirkt an der Hautoberfläche, gut für Textur und oberflächliche Pigmentierung. BHA ist fettlöslich und gelangt in die Pore hinein, deshalb die Wahl bei Mitessern und unreiner Haut.' },
+      { q: 'Wie oft darf ich chemisch peelen?', a: 'Ein- bis zweimal pro Woche reicht für die meisten. Wichtig ist, alle Säurequellen zusammenzuzählen: Toner, Serum und Maske summieren sich schneller als gedacht.' },
+      { q: 'Woran erkenne ich überpeelte Haut?', a: 'Speckiger Glanz bei gleichzeitigem Spannungsgefühl, plötzliches Brennen bei vertrauten Produkten, anhaltende Rötung und neue Unreinheiten. Dann alle Säuren zwei bis vier Wochen absetzen.' },
+      { q: 'Welche Säure bei empfindlicher Haut?', a: 'PHA, also Gluconolacton oder Lactobionsäure. Die Moleküle sind grösser, dringen weniger tief ein und binden zusätzlich Feuchtigkeit.' },
+      { q: 'Was kostet ein Peeling in der Schweiz?', a: 'Oberflächliche Peelings etwa CHF 150 bis 300 pro Sitzung, üblich sind Serien von vier bis sechs Sitzungen. Mitteltiefe Peelings gehören in ärztliche Hände.' },
+      { q: 'Kann ich Peeling und Retinol kombinieren?', a: 'Nicht in derselben Anwendung. Abwechselnde Abende funktionieren, wenn die Haut es trägt. Zusammen überfordert es die Barriere zuverlässig.' },
+    ],
+    related: [
+      { href: '/haut/mitesser/', label: 'Mitesser', cat: 'Hautthema' },
+      { href: '/haut/retinol/', label: 'Retinol', cat: 'Wirkstoff' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'unreine-haut',
+    title: 'Unreine Haut bei Erwachsenen: Ursachen und was hilft',
+    metaDesc: 'Unreine Haut mit 30 oder 40: warum sie anders ist als Teenager-Akne, welche Rolle Hormone und Stress spielen und welche Routine tatsächlich funktioniert.',
+    excerpt: 'Unreinheiten mit 35 sind kein zurückgekehrtes Teenager-Problem. Ursache, Hautzustand und Behandlung sind andere.',
+    category: 'Hautthemen',
+    h1: 'Unreine Haut bei Erwachsenen',
+    lead: 'Erwachsenenakne sitzt meist an Kinn und Kieferlinie, kommt in Schüben und trifft Haut, die gleichzeitig trocken sein kann. Wer sie mit den Mitteln von damals behandelt, macht sie schlimmer.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Unreinheiten, die im Takt kommen und gehen?',
+    ctaText: 'Wo Zyklus und Stress mitspielen, greift eine reine Pflegeroutine oft zu kurz. Wir schauen uns das Gesamtbild an.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Unreine Haut im Erwachsenenalter ist häufig, betrifft überwiegend Frauen und unterscheidet sich in mehreren Punkten deutlich von der Akne im Jugendalter.</p>
+
+<h2>Warum sie anders ist</h2>
+<p><strong>Anderes Muster.</strong> Statt T-Zone sind Kinn, Kieferlinie und Hals betroffen. Das ist das typische Verteilungsmuster bei hormoneller Mitbeteiligung.</p>
+<p><strong>Andere Beschaffenheit.</strong> Weniger Mitesser, mehr tiefsitzende, entzündete Knötchen, die lange brauchen und selten an die Oberfläche kommen.</p>
+<p><strong>Andere Haut drumherum.</strong> Die Haut kann gleichzeitig trocken, empfindlich und unrein sein. Genau deshalb scheitern austrocknende Produkte aus der Teenagerzeit.</p>
+<p><strong>Anderes Timing.</strong> Häufig in Schüben, oft in der zweiten Zyklushälfte, verstärkt unter Stress und Schlafmangel.</p>
+
+<h2>Was mitspielt</h2>
+<ul>
+<li><strong>Hormonelle Schwankungen.</strong> Zyklus, Absetzen der Pille, <a href="/beschwerden/pcos/">PCOS</a>, Perimenopause.</li>
+<li><strong>Stress.</strong> Erhöhtes Cortisol steigert die Talgproduktion und verzögert die Heilung.</li>
+<li><strong>Überpflegung.</strong> Der häufigste selbstgemachte Faktor: zu viel Reinigung, zu viele Säuren, geschädigte Barriere.</li>
+<li><strong>Komedogene Produkte</strong>, besonders reichhaltige Cremes und Öle.</li>
+</ul>
+
+<h2>Die Routine, die funktioniert</h2>
+<p><strong>Milde Reinigung, zweimal täglich.</strong> Nicht mehr. Wer dreimal wäscht, produziert mehr Talg, nicht weniger.</p>
+<p><strong>Salicylsäure</strong> zwei- bis dreimal pro Woche, siehe <a href="/haut/peeling/">chemisches Peeling</a>.</p>
+<p><strong><a href="/haut/niacinamid/">Niacinamid</a></strong> täglich, reduziert Talg und beruhigt gleichzeitig.</p>
+<p><strong>Azelainsäure</strong>, wirkt gegen Entzündung und gegen die Flecken danach.</p>
+<p><strong><a href="/haut/retinol/">Retinoide</a></strong>, wenn die Haut sie trägt. Der wirksamste Baustein, braucht Geduld.</p>
+<p><strong>Feuchtigkeit, nicht Austrocknung.</strong> Eine leichte, nicht-komedogene Pflege ist Teil der Behandlung, nicht das Gegenteil davon.</p>
+<p><strong><a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a></strong> täglich, damit aus abgeheilten Stellen keine dauerhaften Flecken werden.</p>
+
+<h2>Was schadet</h2>
+<p>Austrocknende Waschgels aus der Teenagerzeit. Alkoholhaltige Gesichtswasser. Ausdrücken. Mechanische Peelings auf entzündeter Haut. Und der Produktwechsel alle zwei Wochen, weil noch nichts sichtbar ist.</p>
+<p>Rechne mit <strong>acht bis zwölf Wochen</strong>, bis eine Routine zeigt, was sie kann.</p>
+
+<h2>Wann zum Arzt</h2>
+<p>Bei tiefen, schmerzhaften Knoten. Wenn Narben entstehen, dann eher früher als später. Wenn nach drei Monaten konsequenter Routine nichts besser wird. Und wenn zusätzlich starke Zyklusunregelmässigkeiten, vermehrte Körperbehaarung oder Haarausfall bestehen, dann Richtung hormonelle Abklärung.</p>
+<p>Mehr zur ausgeprägten Form findest du unter <a href="/beschwerden/akne/">Akne</a>.</p>
+
+<h2>Was wir beitragen</h2>
+<p>Wo Zyklus und Stress erkennbar mitspielen, arbeiten wir mit <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> und, wenn sinnvoll, mit <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> am Gesamtbild statt nur an der Hautoberfläche. Bei akut entzündeter Haut behandeln wir im Gesicht bewusst nicht, und eine dermatologische Behandlung ersetzen wir nicht.</p>
+`.trim(),
+    faqs: [
+      { q: 'Warum bekomme ich mit 35 noch Pickel?', a: 'Erwachsenenakne ist häufig und hat andere Auslöser als Teenager-Akne: hormonelle Schwankungen, Stress, Überpflegung. Sie sitzt typischerweise an Kinn und Kieferlinie und kommt in Schüben.' },
+      { q: 'Warum sitzen die Pickel immer am Kinn?', a: 'Kinn und Kieferlinie sind das typische Verteilungsmuster bei hormoneller Mitbeteiligung. Häufig verstärkt in der zweiten Zyklushälfte.' },
+      { q: 'Hilft häufigeres Waschen gegen unreine Haut?', a: 'Nein, im Gegenteil. Wer dreimal täglich wäscht, schädigt die Barriere, und die Haut produziert mehr Talg. Zweimal täglich mild reinigen reicht.' },
+      { q: 'Brauche ich Feuchtigkeitspflege bei unreiner Haut?', a: 'Ja. Erwachsenenakne trifft oft Haut, die gleichzeitig trocken und empfindlich ist. Eine leichte, nicht-komedogene Pflege ist Teil der Behandlung.' },
+      { q: 'Wie lange dauert es, bis eine Routine wirkt?', a: 'Acht bis zwölf Wochen. Der häufigste Fehler ist der Produktwechsel nach zwei Wochen, weil noch nichts sichtbar ist.' },
+      { q: 'Wann sollte ich ärztlich abklären lassen?', a: 'Bei tiefen schmerzhaften Knoten, wenn Narben entstehen, wenn nach drei Monaten nichts besser wird, oder wenn Zyklusunregelmässigkeiten, vermehrte Behaarung oder Haarausfall dazukommen.' },
+    ],
+    related: [
+      { href: '/haut/mitesser/', label: 'Mitesser', cat: 'Hautthema' },
+      { href: '/haut/peeling/', label: 'Chemisches Peeling', cat: 'Methode' },
+      { href: '/beschwerden/akne/', label: 'Akne', cat: 'Beschwerde' },
+    ],
+  },
+
+  {
+    slug: 'doppelkinn',
+    title: 'Doppelkinn: Ursachen und was tatsächlich hilft',
+    metaDesc: 'Doppelkinn loswerden: welche vier Ursachen es gibt, warum Übungen bei den meisten nichts bringen und welche Methoden bei welcher Ursache wirken.',
+    excerpt: 'Fett, Haltung, Wassereinlagerung oder Anatomie. Vier Ursachen, von denen nur eine auf Übungen reagiert.',
+    category: 'Hautthemen',
+    h1: 'Doppelkinn',
+    lead: 'Ein Doppelkinn kann vier sehr verschiedene Ursachen haben, und die meisten Ratschläge im Netz adressieren nur eine davon. Erst die Ursache klären, dann entscheiden.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Eher Schwellung als Fett?',
+    ctaText: 'Wenn die Kontur morgens deutlich weicher ist als abends, geht es um Abfluss. Daran lässt sich direkt arbeiten.',
+    ctaHref: '/therapien/gua-sha/gesichts-gua-sha/',
+    ctaLabel: 'Gua Sha fürs Gesicht',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Als Doppelkinn wird die Weichteilfülle unter dem Kinn bezeichnet. Der sichtbare Effekt ist derselbe, die Ursache dahinter aber nicht.</p>
+
+<h2>Die vier Ursachen</h2>
+<p><strong>Fettgewebe.</strong> Die häufigste Ursache, oft gewichtsabhängig, aber nicht immer. Manche Menschen lagern dort genetisch bedingt Fett ein, auch bei normalem Gewicht.</p>
+<p><strong>Hautelastizität.</strong> Mit den Jahren lässt das Bindegewebe nach, die Haut folgt der Kontur nicht mehr. Häufig auch nach deutlicher Gewichtsabnahme.</p>
+<p><strong>Wassereinlagerung.</strong> Die Lymphbahnen des Gesichts münden im Hals-Kiefer-Bereich. Ist der Abfluss träge, staut sich Flüssigkeit genau dort. Typisch: morgens deutlich, abends weniger.</p>
+<p><strong>Anatomie und Haltung.</strong> Ein zurückliegender Unterkiefer oder ein kurzer Kiefer-Hals-Winkel lässt ein Doppelkinn entstehen, unabhängig vom Gewicht. Dazu kommt die Kopfhaltung: Wer den Kopf dauerhaft nach vorne schiebt, verkürzt den Winkel zusätzlich.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einfacher Test</div><p>Morgens deutlich, abends besser: Wassereinlagerung. Unverändert über den Tag: Fett oder Anatomie. Deutlich sichtbar erst beim Nach-vorne-Schieben des Kopfes: Haltung.</p></div>
+
+<h2>Was bei welcher Ursache hilft</h2>
+<p><strong>Bei Wassereinlagerung.</strong> Der Bereich, in dem am meisten geht und der am seltensten adressiert wird. Lymphabfluss unterstützen, Salzkonsum prüfen, Schlafposition, ausreichend trinken. <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha</a> arbeitet genau entlang dieser Bahnen und lässt sich zu Hause weiterführen.</p>
+<p><strong>Bei Haltung.</strong> Bildschirmhöhe, Nackenmuskulatur, Kopfposition. Das gehört eher in den Bereich <a href="/beschwerden/nackenschmerzen/">Nackenbeschwerden</a> als in die Kosmetik, wirkt aber sichtbar.</p>
+<p><strong>Bei Fettgewebe.</strong> Gezielte Fettreduktion an einer Stelle funktioniert nicht. Was wirkt, ist eine Gewichtsveränderung insgesamt, oder apparative Verfahren wie Kryolipolyse, oder chirurgische Verfahren.</p>
+<p><strong>Bei nachlassender Elastizität.</strong> <a href="/haut/ultherapy-hifu/">HIFU</a> kann bei leichter Erschlaffung moderat straffen. Bei deutlicher Absenkung stösst jedes nicht-chirurgische Verfahren an eine Grenze.</p>
+
+<h2>Was Gesichtsübungen bringen</h2>
+<p>Wenig, und zwar aus einem einfachen Grund: Die Fülle unter dem Kinn ist meist Fett oder Flüssigkeit, kein untrainierter Muskel. Ein kräftigerer Platysma-Muskel verändert an einem Fettpolster nichts.</p>
+<p>Wo Übungen etwas bringen: bei haltungsbedingtem Anteil, weil sie die Kopfposition korrigieren. Das ist aber Haltungsarbeit, nicht Muskelaufbau im Kinn.</p>
+
+<h2>Was nicht hilft</h2>
+<p>Straffende Cremes für den Kinnbereich. Kinnbänder und Kompressionsmasken über Nacht. Kaugummi in grossen Mengen, was eher den Kaumuskel verstärkt und die Kieferpartie breiter wirken lässt.</p>
+
+<h2>Realistisch bleiben</h2>
+<p>Beim Wasseranteil sind schnelle, sichtbare Veränderungen möglich, allerdings nur solange man dranbleibt. Beim Fettanteil braucht es Zeit oder ein Verfahren. Bei der Anatomie ändert sich ohne Chirurgie nichts, und das ist keine Frage der Disziplin.</p>
+<p>Wer diese Anteile auseinanderhält, spart sich Enttäuschungen und Geld für Produkte, die am falschen Anteil ansetzen.</p>
+`.trim(),
+    faqs: [
+      { q: 'Helfen Gesichtsübungen gegen ein Doppelkinn?', a: 'Kaum. Die Fülle unter dem Kinn ist meist Fett oder Flüssigkeit, kein untrainierter Muskel. Wo Übungen wirken, ist beim haltungsbedingten Anteil, weil sie die Kopfposition korrigieren.' },
+      { q: 'Warum ist mein Doppelkinn morgens schlimmer?', a: 'Das spricht für Wassereinlagerung. Die Lymphbahnen des Gesichts münden im Hals-Kiefer-Bereich, und im Liegen arbeitet der Abfluss langsamer.' },
+      { q: 'Kann man gezielt am Kinn abnehmen?', a: 'Nein. Gezielte Fettreduktion an einer einzelnen Körperstelle funktioniert nicht. Was wirkt, ist eine Gewichtsveränderung insgesamt oder ein apparatives beziehungsweise chirurgisches Verfahren.' },
+      { q: 'Hilft Gua Sha gegen ein Doppelkinn?', a: 'Beim Anteil, der auf Wassereinlagerung beruht, ja. Die Arbeit entlang der Lymphbahnen unterstützt den Abfluss. Fettgewebe und Anatomie verändert es nicht.' },
+      { q: 'Bringen straffende Cremes etwas?', a: 'Für den Kinnbereich nicht. Weder Fettgewebe noch abgesunkene Struktur reagieren auf äusserliche Pflege.' },
+      { q: 'Kann ein Doppelkinn auch bei Normalgewicht auftreten?', a: 'Ja. Genetisch bedingte Fetteinlagerung, ein zurückliegender Unterkiefer oder ein kurzer Kiefer-Hals-Winkel führen unabhängig vom Gewicht dazu.' },
+    ],
+    related: [
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+      { href: '/haut/ultherapy-hifu/', label: 'Ultherapy und HIFU', cat: 'Methode' },
+      { href: '/haut/gesichtsyoga/', label: 'Gesichtsyoga', cat: 'K-Beauty' },
+    ],
+  },
+
+  {
+    slug: 'gesichtsyoga',
+    title: 'Gesichtsyoga: was die Studienlage hergibt',
+    metaDesc: 'Gesichtsyoga und Facial Yoga: was die Übungen bewirken können, was die Studien zeigen, wo die Grenzen liegen und wann sie sogar kontraproduktiv sind.',
+    excerpt: 'Es gibt Studien, sie sind klein, und das Ergebnis ist bescheidener als der Hype. Was daran trotzdem sinnvoll ist.',
+    category: 'K-Beauty',
+    h1: 'Gesichtsyoga',
+    lead: 'Gesichtsyoga verspricht Straffung durch Muskeltraining. Es gibt tatsächlich Studien dazu, die Ergebnisse sind real, aber deutlich kleiner als die Versprechen. Und bei manchen Falten ist mehr Muskelaktivität genau das Gegenteil von hilfreich.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Lieber etwas, das nachweislich entspannt?',
+    ctaText: 'In 30 Minuten zeigen wir dir eine Technik am eigenen Gesicht, die an Spannung und Abfluss ansetzt statt an Muskelaufbau.',
+    ctaHref: '/therapien/gua-sha/gesichts-gua-sha/',
+    ctaLabel: 'Gua Sha fürs Gesicht',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Gesichtsyoga bezeichnet gezielte Übungen für die mimische Muskulatur, meist kombiniert mit Massagegriffen. Die Idee: Wie am Körper soll Training das Gewebe straffen.</p>
+
+<h2>Was die Studien zeigen</h2>
+<p>Es gibt Untersuchungen dazu, die bekannteste über 20 Wochen mit täglichem beziehungsweise jeden zweiten Tag durchgeführtem Training. Beurteilende Fachpersonen schätzten die Teilnehmerinnen danach im Schnitt um wenige Jahre jünger ein, gemessen wurde eine leichte Zunahme der Wangenfülle.</p>
+<p>Einordnung ist hier wichtig: kleine Teilnehmerzahl, keine Kontrollgruppe im engeren Sinn, subjektive Bewertung. Das ist ein Hinweis, kein Beleg.</p>
+<p>Und der Aufwand ist erheblich: 30 Minuten täglich über Wochen, mit Ergebnissen, die im Alltag kaum jemand bemerkt.</p>
+
+<h2>Der Denkfehler mit dem Muskeltraining</h2>
+<p>Gesichtsmuskeln sind anders als Skelettmuskeln: Sie setzen überwiegend direkt an der Haut an, nicht an Knochen. Sie sind auch schon jetzt sehr aktiv, mehrere tausend Bewegungen am Tag.</p>
+<p>Das führt zu einem Problem: <strong>Mehr Muskelaktivität kann Mimikfalten vertiefen.</strong> Genau darum geht es bei muskelentspannenden Behandlungen, die in die Gegenrichtung arbeiten. Wer intensiv die Stirn trainiert, arbeitet der eigenen <a href="/haut/falten-gesicht/">Zornesfalte</a> zu.</p>
+<div class="wa-pullquote">Am Körper ist mehr Muskelaktivität fast immer gut. Im Gesicht ist sie der Grund, warum Mimikfalten entstehen.</div>
+
+<h2>Was trotzdem sinnvoll ist</h2>
+<p>Der Teil, der wahrscheinlich am meisten bewirkt, ist nicht das Training, sondern die begleitende Massage und die Aufmerksamkeit.</p>
+<p><strong>Durchblutung und Abfluss.</strong> Streichbewegungen entlang der Lymphbahnen wirken auf Schwellungsgefühl. Dafür braucht es aber keine Übungsroutine, sondern die richtige Richtung und wenig Druck.</p>
+<p><strong>Wahrnehmung für Spannung.</strong> Wer sich täglich mit dem Gesicht beschäftigt, merkt, wann Kiefer und Stirn dauerhaft angespannt sind. Diese Erkenntnis ist oft mehr wert als die Übung selbst.</p>
+<p><strong>Kiefer und Nacken.</strong> Lösende Arbeit am Kaumuskel ist bei Zähneknirschen sinnvoll, siehe <a href="/beschwerden/kieferschmerzen/">Kieferschmerzen</a>.</p>
+
+<h2>Was es nicht leistet</h2>
+<p>Abgesunkenes Gewebe anheben, Volumenverlust ausgleichen, Hautelastizität zurückbringen. Und es ersetzt keinen <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a>, der für das Hautbild über Jahre um ein Vielfaches mehr bewirkt als jede Übungsroutine.</p>
+
+<h2>Die Alternative, die am selben Punkt ansetzt</h2>
+<p>Wenn dich an Gesichtsyoga der Gedanke anspricht, täglich etwas fürs Gesicht zu tun, dann bekommst du den nützlichen Teil davon zielgerichteter.</p>
+<p><a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> arbeitet an Lymphfluss und Kieferspannung, also genau an dem, was bei Gesichtsyoga vermutlich wirkt, ohne die Mimikmuskulatur zusätzlich zu aktivieren. Fünf bis zehn Minuten, zwei- bis dreimal pro Woche.</p>
+`.trim(),
+    faqs: [
+      { q: 'Bringt Gesichtsyoga wirklich etwas?', a: 'Es gibt Studien mit messbaren, aber kleinen Effekten nach 20 Wochen täglichem Training. Die Untersuchungen sind klein und die Bewertung subjektiv. Der Aufwand ist hoch, das Ergebnis bescheiden.' },
+      { q: 'Kann Gesichtsyoga Falten verstärken?', a: 'Bei Mimikfalten ist das möglich. Gesichtsmuskeln setzen direkt an der Haut an, und wiederholte Bewegung ist genau der Mechanismus, durch den Mimikfalten entstehen.' },
+      { q: 'Wie oft muss man Gesichtsyoga machen?', a: 'In den Untersuchungen waren es etwa 30 Minuten täglich über Wochen. Das ist der Hauptgrund, warum die meisten es nicht durchhalten.' },
+      { q: 'Ist Gua Sha besser als Gesichtsyoga?', a: 'Für Lymphabfluss und Kieferspannung ist es zielgerichteter und aktiviert die Mimikmuskulatur nicht zusätzlich. Für Muskelaufbau ist es nicht gedacht, aber der ist im Gesicht ohnehin fraglich.' },
+      { q: 'Kann Gesichtsyoga ein Facelift ersetzen?', a: 'Nein. Abgesunkenes Gewebe und Volumenverlust adressiert es nicht. Es arbeitet an Muskulatur, nicht an Struktur.' },
+      { q: 'Was ist der nützlichste Teil von Gesichtsyoga?', a: 'Vermutlich die begleitende Massage und die Aufmerksamkeit für Dauerspannung in Kiefer und Stirn, nicht das Muskeltraining selbst.' },
+    ],
+    related: [
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+      { href: '/haut/falten-gesicht/', label: 'Falten im Gesicht', cat: 'Hautthema' },
+      { href: '/haut/doppelkinn/', label: 'Doppelkinn', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'korean-skincare',
+    title: 'Korean Skincare: Routine, Produkte, Kauf in der Schweiz',
+    metaDesc: 'Korean Skincare in der Schweiz: welche Routine sinnvoll ist, welche Produkte sich lohnen, worauf du beim Import achten musst und was du getrost weglässt.',
+    excerpt: 'Wie eine koreanische Routine praktisch aussieht, ohne zehn Produkte, und worauf du beim Kauf in der Schweiz achten solltest.',
+    category: 'K-Beauty',
+    h1: 'Korean Skincare',
+    lead: 'Eine koreanische Routine lässt sich auf fünf Schritte eindampfen, ohne dass etwas Wesentliches verloren geht. Hier steht, welche das sind, und was beim Kauf in der Schweiz zu beachten ist.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Routine steht, Ergebnis fehlt?',
+    ctaText: 'Dann liegt es oft nicht am nächsten Produkt. Wir schauen uns an, was tatsächlich dahintersteckt.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Koreanische Hautpflege hat ihren Ruf nicht wegen einzelner Wunderprodukte, sondern wegen einer Herangehensweise: Barriere zuerst, Feuchtigkeit in Schichten, Sonnenschutz als Selbstverständlichkeit, Konsequenz über Monate. Warum das funktioniert, steht ausführlich unter <a href="/haut/k-beauty/">K-Beauty</a>.</p>
+<p>Hier geht es um die Praxis.</p>
+
+<h2>Die Routine auf fünf Schritte gekürzt</h2>
+<p><strong>Abends</strong></p>
+<ol>
+<li><strong>Ölbasierte Reinigung.</strong> Löst Sonnenschutz, Make-up und Talg. Der Schritt, der in europäischen Routinen meist fehlt und am meisten ausmacht.</li>
+<li><strong>Wasserbasierte Reinigung.</strong> Mildes Gel oder Schaum, entfernt den Rest.</li>
+<li><strong>Feuchtigkeitsschritt.</strong> Toner oder Essence, auf leicht feuchte Haut. Siehe <a href="/haut/ampoule/">Ampoule, Essence, Serum</a>.</li>
+<li><strong>Ein Wirkstoff.</strong> <a href="/haut/retinol/">Retinol</a>, <a href="/haut/niacinamid/">Niacinamid</a> oder Säure, je nach Thema und Tag. Nicht alles gleichzeitig.</li>
+<li><strong>Feuchtigkeitscreme.</strong></li>
+</ol>
+<p><strong>Morgens</strong></p>
+<ol>
+<li>Wasser oder sehr milde Reinigung</li>
+<li>Feuchtigkeitsschritt</li>
+<li><a href="/haut/vitamin-c-serum/">Vitamin C</a>, wenn du es benutzt</li>
+<li>Feuchtigkeitscreme</li>
+<li><strong><a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a>.</strong> Nicht verhandelbar.</li>
+</ol>
+<div class="wa-callout"><div class="wa-callout-label">Der eigentliche Trick</div><p>Nicht die Anzahl der Produkte, sondern das Schichten auf <em>leicht feuchte</em> Haut. Zwei dünne Schichten auf feuchte Haut binden mehr Feuchtigkeit als eine dicke auf trockene. Das kostet nichts und ist der grösste Unterschied zur üblichen europäischen Routine.</p></div>
+
+<h2>Welche Produkte sich lohnen</h2>
+<p><strong>Sonnenschutz.</strong> Der stärkste Grund, koreanisch zu kaufen. Modernere Filter, leichtere Textur, kein Weissschleier, bei gleichem oder höherem Schutz.</p>
+<p><strong>Reinigungsöl.</strong> Gut gemacht, günstig, und die Kategorie ist dort ausgereifter.</p>
+<p><strong>Beruhigende Produkte mit <a href="/haut/centella/">Centella</a>.</strong> Breite Auswahl in allen Preisklassen.</p>
+<p><strong>Sheet Masks.</strong> Nette Feuchtigkeitskur, kein Wirkstoffwunder. Als gelegentliche Anwendung völlig in Ordnung.</p>
+<p>Was du dir sparen kannst: fermentierte Essenzen zu Luxuspreisen, Produkte mit zwölf exotischen Extrakten, und jedes Produkt, dessen Wirkstoff erst hinter den Konservierungsstoffen auftaucht.</p>
+
+<h2>Kauf in der Schweiz</h2>
+<p>Es gibt inzwischen mehrere Schweizer Onlineshops für koreanische Kosmetik, dazu europäische Händler mit Schweizer Versand. Direktimport aus Korea ist möglich, bringt aber Zollabwicklung und längere Wege mit sich.</p>
+<p>Worauf du achten solltest:</p>
+<ul>
+<li><strong>Verfallsdatum und Herstellungsdatum.</strong> Bei Direktimporten teils knapp.</li>
+<li><strong>Lagerung und Transport.</strong> Vitamin-C-Produkte und Sonnenschutz vertragen lange Transporte bei Hitze schlecht.</li>
+<li><strong>Deklaration.</strong> Bei Importware gilt europäisches Kosmetikrecht nicht. Die INCI-Liste sollte trotzdem vollständig lesbar sein.</li>
+<li><strong>Keine Aufhellungsprodukte aus unklarer Quelle.</strong> Präparate mit Hydrochinon oder unklaren Zusätzen sind ein reales Risiko, siehe <a href="/haut/pigmentflecken/">Pigmentflecken</a>.</li>
+</ul>
+
+<h2>Was eine Routine nicht leisten kann</h2>
+<p>Sie kann die Haut in gutem Zustand halten und über Monate sichtbar verbessern. Sie kann keine Pigmentstörung auflösen, keine <a href="/beschwerden/akne/">Akne</a> behandeln, keine Falte glätten und keine Struktur verändern.</p>
+<p>Wenn du seit Monaten konsequent pflegst und nichts passiert, ist das kein Grund für das nächste Produkt, sondern für eine Einordnung.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie sieht eine koreanische Routine minimal aus?', a: 'Abends: ölbasierte Reinigung, wasserbasierte Reinigung, Feuchtigkeitsschritt, ein Wirkstoff, Creme. Morgens: milde Reinigung, Feuchtigkeit, gegebenenfalls Vitamin C, Creme, Sonnenschutz.' },
+      { q: 'Was ist Double Cleansing und brauche ich das?', a: 'Erst ölbasiert, dann wasserbasiert reinigen. Sinnvoll abends, wenn du Sonnenschutz oder Make-up trägst, weil beides sich mit Wasser allein schlecht löst. Morgens nicht nötig.' },
+      { q: 'Welche koreanischen Produkte lohnen sich wirklich?', a: 'Sonnenschutz an erster Stelle, wegen modernerer Filter und leichterer Textur. Dazu Reinigungsöle und beruhigende Produkte mit Centella. Fermentierte Luxusessenzen bringen selten mehr.' },
+      { q: 'Wo kaufe ich koreanische Kosmetik in der Schweiz?', a: 'Über Schweizer Onlineshops oder europäische Händler mit Schweizer Versand. Bei Direktimport auf Verfallsdatum, Transportbedingungen und vollständige INCI-Liste achten.' },
+      { q: 'Sind koreanische Produkte in der Schweiz reguliert?', a: 'Importware unterliegt nicht automatisch europäischem Kosmetikrecht. Die Deklaration kann abweichen. Bei aufhellenden Produkten aus unklarer Quelle ist besondere Vorsicht angebracht.' },
+      { q: 'Wie lange dauert es, bis eine Routine wirkt?', a: 'Bei Feuchtigkeit und Barriere zwei bis vier Wochen, bei Textur und Pigment drei bis sechs Monate. Der häufigste Fehler ist der Produktwechsel, bevor etwas wirken konnte.' },
+    ],
+    related: [
+      { href: '/haut/k-beauty/', label: 'K-Beauty', cat: 'K-Beauty' },
+      { href: '/haut/ampoule/', label: 'Ampoule, Essence, Serum', cat: 'K-Beauty' },
+      { href: '/haut/sonnencreme-gesicht/', label: 'Sonnencreme fürs Gesicht', cat: 'Wirkstoff' },
+    ],
+  },
 ];
 
 export const hautBySlug = (slug: string): HautArticle | undefined => haut.find((a) => a.slug === slug);
