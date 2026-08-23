@@ -686,6 +686,428 @@ export const haut: HautArticle[] = [
       { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur', cat: 'Behandlung' },
     ],
   },
+  {
+    slug: 'niacinamid',
+    title: 'Niacinamid: Wirkung, Konzentration, Kombinationen',
+    metaDesc: 'Niacinamid in der Hautpflege: was Vitamin B3 in der Haut macht, welche Konzentration untersucht ist, womit du es kombinierst und wann es reizt statt hilft.',
+    excerpt: 'Der Allrounder, der fast alles ein bisschen kann. Welche Konzentration sinnvoll ist und warum mehr hier nicht mehr bedeutet.',
+    category: 'Wirkstoffe',
+    h1: 'Niacinamid in der Hautpflege',
+    lead: 'Niacinamid ist der vielleicht unaufgeregteste Wirkstoff der modernen Hautpflege: gut verträglich, breit einsetzbar, mit solider Datenlage. Genau deshalb steht er in fast jedem Produkt, und genau deshalb wird er auch überdosiert.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Haut, die trotz guter Pflege reagiert?',
+    ctaText: 'Wir schauen uns an, ob hinter wiederkehrenden Hautthemen mehr steckt als die Routine, und sagen ehrlich, was wir beitragen können.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Niacinamid ist die Amidform von Vitamin B3, auch Nicotinamid genannt. In der Haut greift es an mehreren Stellen gleichzeitig an, was es zum Allrounder macht, und gleichzeitig dazu führt, dass es für alles beworben wird.</p>
+
+<h2>Wie Niacinamid wirkt</h2>
+<p><strong>Hautbarriere.</strong> Niacinamid regt die Bildung von Ceramiden an, also der Fettstoffe, die die Zellen der obersten Hautschicht zusammenhalten. Eine intakte Barriere verliert weniger Feuchtigkeit und reagiert weniger empfindlich. Das ist der am besten belegte Effekt.</p>
+<p><strong>Talgproduktion.</strong> In höheren Konzentrationen reduziert es die Talgmenge. Deshalb steht es in vielen Produkten für unreine und ölige Haut.</p>
+<p><strong>Pigmentweitergabe.</strong> Niacinamid bremst nicht die Melaninbildung selbst, sondern dessen Weitergabe an die Hautzellen. Dadurch wirkt es bei <a href="/haut/pigmentflecken/">Pigmentflecken</a> ergänzend, langsamer als Vitamin C, dafür milder.</p>
+<p><strong>Rötungen.</strong> Entzündungshemmende Effekte machen es bei geröteter, reaktiver Haut interessant, etwa bei <a href="/haut/couperose/">Couperose</a>-Neigung.</p>
+<p><strong>Poren.</strong> Poren werden nicht kleiner. Sie fallen weniger auf, wenn weniger Talg und weniger Verhornung im Spiel sind. Der Unterschied ist wichtig.</p>
+
+<h2>Welche Konzentration?</h2>
+<p>Der untersuchte und sinnvolle Bereich liegt bei <strong>2 bis 5 Prozent</strong>. Dort passiert alles, was passieren soll.</p>
+<p>Produkte mit 10 Prozent und mehr sind ein Marketingargument. Der Zusatznutzen ist nicht belegt, das Reizrisiko steigt messbar. Wer bei einem 10-Prozent-Serum Brennen oder Rötung bekommt, hat kein Verträglichkeitsproblem mit Niacinamid, sondern ein Dosierungsproblem.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Ein 5-Prozent-Serum, das du täglich verträgst, wirkt mehr als ein 10-Prozent-Serum, das du nach zehn Tagen absetzt.</p></div>
+
+<h2>Wie du es anwendest</h2>
+<p>Morgens, abends oder beides, nach der Reinigung, vor der Feuchtigkeitspflege. Niacinamid ist stabil, lichtunempfindlich und unkompliziert in der Lagerung, anders als <a href="/haut/vitamin-c-serum/">Vitamin C</a>.</p>
+<p>Erste Effekte auf die Barriere zeigen sich nach zwei bis vier Wochen, auf Pigmentierung nach zwei bis drei Monaten.</p>
+
+<h2>Womit du es kombinierst</h2>
+<p><strong>Mit Vitamin C.</strong> Der Mythos, die beiden würden sich gegenseitig neutralisieren, hält sich hartnäckig. Er stammt aus Laborversuchen unter Hitze, die mit Hautpflege nichts zu tun haben. In modernen Formulierungen unproblematisch.</p>
+<p><strong>Mit Retinol.</strong> Eine der besten Kombinationen überhaupt. Niacinamid federt die typische Reizung beim Retinol-Einstieg ab.</p>
+<p><strong>Mit Säuren.</strong> Funktioniert, aber nicht in derselben Anwendung schichten. Lieber abwechselnde Tage.</p>
+<p><strong>Mit <a href="/haut/centella/">Centella</a>.</strong> Sinnvolle Ergänzung bei gereizter Haut, beide beruhigen über unterschiedliche Wege.</p>
+
+<h2>Nebenwirkungen und Grenzen</h2>
+<p>In üblicher Dosierung sehr gut verträglich. Bei hohen Konzentrationen kann ein kurzes Flush-Gefühl auftreten, also Wärme und Rötung. Harmlos, aber ein Hinweis, dass die Dosis zu hoch ist.</p>
+<p>Die Grenze: Niacinamid kann fast alles ein bisschen. Wenn ein Thema im Vordergrund steht, gibt es fast immer einen Wirkstoff, der es besser kann. Bei Pigment ist Vitamin C stärker, bei Textur sind Retinoide stärker. Niacinamid ist die gute Basis, nicht die Speerspitze.</p>
+
+<h2>Wenn Pflege nicht mehr reicht</h2>
+<p>Wenn die Haut trotz sinnvoller Routine immer wieder reagiert, in Schüben schlechter wird oder auf Stress reagiert, ist das kein Produktproblem. Bei anhaltenden Hautveränderungen gehört die dermatologische Abklärung an den Anfang. Ergänzend arbeiten wir mit <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a>.</p>
+`.trim(),
+    faqs: [
+      { q: 'Welche Niacinamid-Konzentration ist sinnvoll?', a: '2 bis 5 Prozent. Das ist der untersuchte Bereich, in dem alle beschriebenen Effekte auftreten. Höhere Konzentrationen bringen keinen belegten Zusatznutzen, erhöhen aber das Reizrisiko.' },
+      { q: 'Darf man Niacinamid und Vitamin C zusammen benutzen?', a: 'Ja. Der Mythos der gegenseitigen Neutralisierung stammt aus alten Laborversuchen unter Hitze. In modernen Formulierungen ist die Kombination unproblematisch.' },
+      { q: 'Macht Niacinamid die Poren kleiner?', a: 'Nein. Porengrösse ist genetisch festgelegt. Poren fallen weniger auf, wenn weniger Talg und weniger Verhornung im Spiel sind, aber sie schrumpfen nicht.' },
+      { q: 'Wann sieht man erste Ergebnisse?', a: 'Auf die Hautbarriere nach zwei bis vier Wochen. Auf Pigmentierung deutlich langsamer, rechne mit zwei bis drei Monaten.' },
+      { q: 'Warum brennt mein Niacinamid-Serum?', a: 'Meist ist die Konzentration zu hoch. Ein kurzes Wärmegefühl bei 10 Prozent und mehr ist typisch. Wechsle auf ein Produkt mit 5 Prozent.' },
+      { q: 'Morgens oder abends?', a: 'Beides möglich. Niacinamid ist stabil und lichtunempfindlich, anders als Vitamin C. Viele nutzen es abends, um morgens Vitamin C zu verwenden.' },
+    ],
+    related: [
+      { href: '/haut/vitamin-c-serum/', label: 'Vitamin-C-Serum', cat: 'Wirkstoff' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+      { href: '/haut/couperose/', label: 'Couperose', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'hydrafacial',
+    title: 'Hydrafacial: Ablauf, Kosten, was es wirklich bringt',
+    metaDesc: 'Hydrafacial in der Schweiz: wie die Behandlung abläuft, was sie kostet, wie lange der Effekt hält und für wen sie sich lohnt. Ehrlich eingeordnet.',
+    excerpt: 'Sofort sichtbares Ergebnis, keine Ausfallzeit, und ein Effekt, der kürzer hält als der Preis vermuten lässt.',
+    category: 'Methoden',
+    h1: 'Hydrafacial',
+    lead: 'Hydrafacial ist eine apparative Gesichtsreinigung, die Peeling, Ausreinigung per Unterdruck und Wirkstoffeinschleusung in einem Gerät kombiniert. Der Effekt ist sofort sichtbar, und genau darin liegt sowohl der Reiz als auch die Grenze.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Etwas, das länger hält als bis Sonntag?',
+    ctaText: 'Wenn dir die Wirkung einer Reinigungsbehandlung zu kurz greift, besprechen wir, was über die Zeit tatsächlich etwas verändert.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Hydrafacial ist ein Markenname, kein Verfahren. Das patentierte Gerät arbeitet mit einem Handstück, das gleichzeitig Flüssigkeit abgibt und per Unterdruck wieder absaugt. Dadurch werden Peeling, Ausreinigung und Wirkstoffauftrag in einem Schritt kombiniert.</p>
+<p class="wa-callout"><strong>Zur Einordnung:</strong> Wir bieten Hydrafacial nicht an. Der Artikel erklärt die Behandlung, weil sie oft gesucht und selten nüchtern beschrieben wird.</p>
+
+<h2>Wie eine Behandlung abläuft</h2>
+<p>Der Ablauf ist standardisiert und dauert 30 bis 60 Minuten.</p>
+<p><strong>Reinigung und Peeling.</strong> Eine milde Säurelösung löst abgestorbene Hautzellen.</p>
+<p><strong>Ausreinigung.</strong> Per Unterdruck wird der Inhalt verstopfter Poren abgesaugt. Das ist der Teil, der sich am deutlichsten anfühlt und den Anbieter gern im Auffangbehälter zeigen.</p>
+<p><strong>Einschleusung.</strong> Feuchtigkeitsspendende und antioxidative Wirkstoffe werden aufgetragen.</p>
+<p>Je nach Anbieter kommen LED-Licht, Lymphdrainage oder zusätzliche Wirkstoff-Booster dazu, was den Preis erhöht.</p>
+
+<h2>Was realistisch dabei herauskommt</h2>
+<p><strong>Direkt danach:</strong> die Haut ist sauberer, glatter, wirkt praller und rosiger. Der Effekt ist real und sofort sichtbar, deshalb ist die Behandlung als Vorbereitung auf einen Anlass beliebt.</p>
+<p><strong>Wie lange:</strong> etwa fünf bis sieben Tage. Danach ist die Haut da, wo sie vorher war.</p>
+<p><strong>Was nicht passiert:</strong> Kollagenaufbau, Faltenreduktion, dauerhafte Texturveränderung. Hydrafacial ist eine sehr gute Reinigung, keine Strukturbehandlung. Wer Letzteres sucht, ist bei <a href="/haut/microneedling/">Microneedling</a> richtiger.</p>
+<p>Poren werden nicht kleiner. Sie sind nach der Ausreinigung leerer und fallen deshalb weniger auf.</p>
+
+<h2>Wie oft?</h2>
+<p>Anbieter empfehlen meist monatlich. Das ist plausibel, wenn man den Effekt aufrechterhalten will, und es ist auch die Logik hinter Abo-Modellen.</p>
+<p>Für die meisten reicht die Behandlung anlassbezogen: vor einem Termin, nach dem Winter, bei akut verstopfter Haut. Wer die Haut langfristig verändern will, investiert das Geld besser in Sonnenschutz und einen Wirkstoff, den man täglich benutzt.</p>
+
+<h2>Was es in der Schweiz kostet</h2>
+<p>Eine Basisbehandlung liegt etwa bei <strong>CHF 170 bis 220</strong>, mit zusätzlichen Wirkstoff-Boostern oder LED zwischen <strong>CHF 250 und 350</strong>. Zusatzareale wie Hals und Dekolleté kosten extra.</p>
+<p>Keine Kassenleistung.</p>
+
+<h2>Ausfallzeit und Risiken</h2>
+<p>Praktisch keine Ausfallzeit, das ist das stärkste Argument der Methode. Eine leichte Rötung klingt innerhalb einer Stunde ab, Make-up ist am selben Tag möglich.</p>
+<p>Vorsicht bei aktiver, entzündlicher <a href="/beschwerden/akne/">Akne</a>, bei <a href="/beschwerden/rosacea/">Rosacea</a> im Schub und bei sehr empfindlicher Haut: Der Unterdruck und die Säurekomponente können reizen. Bei Sonnenbrand und offenen Stellen nicht behandeln.</p>
+
+<h2>Die Alternative mit längerer Wirkung</h2>
+<p>Hydrafacial löst ein Oberflächenproblem sehr gut und für eine Woche. Wenn das für dich passt, ist es eine ehrliche Behandlung mit einem klaren Nutzen.</p>
+<p>Wenn dein Thema aber Spannung, ein müdes Hautbild oder wiederkehrende Reaktionen sind, arbeitet <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> über Serien an etwas anderem, und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> lässt sich zu Hause weiterführen, was keine Gerätebehandlung leistet.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie lange hält ein Hydrafacial?', a: 'Etwa fünf bis sieben Tage. Der Effekt ist sofort sichtbar, aber nicht dauerhaft. Deshalb wird die Behandlung meist monatlich empfohlen.' },
+      { q: 'Was kostet Hydrafacial in der Schweiz?', a: 'Eine Basisbehandlung etwa CHF 170 bis 220, mit Wirkstoff-Boostern oder LED zwischen CHF 250 und 350. Hals und Dekolleté kosten extra.' },
+      { q: 'Hilft Hydrafacial gegen Falten?', a: 'Nein. Es ist eine apparative Reinigung mit Peeling und Wirkstoffauftrag, keine Strukturbehandlung. Kollagenaufbau und Faltenreduktion gehören nicht dazu.' },
+      { q: 'Werden Poren durch Hydrafacial kleiner?', a: 'Sie sind nach der Ausreinigung leerer und fallen weniger auf. Die Porengrösse selbst ändert sich nicht, sie ist genetisch festgelegt.' },
+      { q: 'Gibt es eine Ausfallzeit?', a: 'Praktisch keine. Eine leichte Rötung klingt innerhalb einer Stunde ab, Make-up ist am selben Tag möglich. Das ist der grösste Vorteil der Methode.' },
+      { q: 'Für wen ist Hydrafacial nicht geeignet?', a: 'Bei aktiver entzündlicher Akne, Rosacea im Schub, sehr empfindlicher Haut, Sonnenbrand und offenen Stellen. Unterdruck und Säurekomponente können dort reizen.' },
+    ],
+    related: [
+      { href: '/haut/microneedling/', label: 'Microneedling', cat: 'Methode' },
+      { href: '/haut/mitesser/', label: 'Mitesser entfernen', cat: 'Hautthema' },
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+    ],
+  },
+
+  {
+    slug: 'melasma',
+    title: 'Melasma: warum es anders ist als Altersflecken',
+    metaDesc: 'Melasma erkennen und behandeln: warum Hormone und Wärme eine Rolle spielen, welcher Sonnenschutz nötig ist, was hilft und welche Behandlung es verschlimmert.',
+    excerpt: 'Die Pigmentstörung, bei der die üblichen Mittel oft das Gegenteil bewirken. Wärme ist hier genauso ein Auslöser wie UV.',
+    category: 'Hautthemen',
+    h1: 'Melasma',
+    lead: 'Melasma ist grossflächig, unscharf begrenzt und meist symmetrisch. Es reagiert nicht wie ein Sonnenfleck, sondern oft genau umgekehrt: Was einen Altersfleck aufhellt, kann Melasma verschlimmern.',
+    readingTime: '9 Min.',
+    ctaTitle: 'Melasma, das nach jedem Sommer zurückkommt?',
+    ctaText: 'Wir ordnen ein und sagen dir ehrlich, was hier realistisch ist und wann die dermatologische Begleitung der richtige Weg ist.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Melasma ist eine erworbene Pigmentstörung, die typischerweise symmetrisch auf beiden Wangen, über der Oberlippe, an der Stirn oder am Kinn auftritt. Die Ränder sind unscharf, die Farbe hell- bis mittelbraun, manchmal graubraun.</p>
+<p>Es betrifft überwiegend Frauen, häufig zwischen 20 und 50, und tritt gehäuft in der Schwangerschaft oder unter hormoneller Verhütung auf. Der alte Begriff Schwangerschaftsmaske kommt daher.</p>
+
+<h2>Warum Melasma anders reagiert</h2>
+<p>Ein <a href="/haut/pigmentflecken/">Sonnenfleck</a> ist ein lokal begrenzter UV-Schaden. Melasma ist ein aktiver, hormonell mitgesteuerter Prozess, bei dem die pigmentbildenden Zellen dauerhaft überempfindlich reagieren.</p>
+<p>Der entscheidende Unterschied in der Praxis: <strong>Nicht nur UV triggert, sondern auch Wärme.</strong> Sauna, heisses Duschen, Kochen über dem Herd, intensiver Sport in der Sonne. Und Behandlungen, die mit Hitze arbeiten, allen voran Laser, können Melasma verschlimmern statt verbessern.</p>
+<div class="wa-callout"><div class="wa-callout-label">Die wichtigste Unterscheidung</div><p>Wer Melasma für Altersflecken hält und entsprechend behandeln lässt, riskiert eine deutliche Verschlechterung. Vor jeder Behandlung gehört die Einordnung, welche Art von Pigmentierung vorliegt.</p></div>
+
+<h2>Die drei Tiefen</h2>
+<p><strong>Epidermal.</strong> Das Pigment liegt in der Oberhaut, die Farbe ist eher hellbraun, die Ränder relativ deutlich. Beste Prognose.</p>
+<p><strong>Dermal.</strong> Das Pigment liegt tiefer, die Farbe wirkt graublau. Reagiert deutlich schlechter auf alles.</p>
+<p><strong>Gemischt.</strong> Der häufigste Fall.</p>
+<p>Welche Form vorliegt, entscheidet über die realistische Erwartung. Das gehört in eine dermatologische Beurteilung, nicht in eine Selbsteinschätzung vor dem Spiegel.</p>
+
+<h2>Was tatsächlich hilft</h2>
+<p><strong>Sonnenschutz, und zwar der richtige.</strong> Bei Melasma reicht klassischer UV-Schutz nicht: Auch sichtbares Licht, besonders blaues, triggert die Pigmentbildung. Nötig sind getönte Sonnenschutzprodukte mit Eisenoxid, weil die Pigmente sichtbares Licht mitblocken. Täglich, ganzjährig, konsequent. Ohne das ist alles Weitere verschenkt.</p>
+<p><strong>Azelainsäure.</strong> Eine der verträglichsten Optionen, auch in der Schwangerschaft üblicherweise vertretbar. Rücksprache mit der behandelnden Ärztin.</p>
+<p><strong>Tranexamsäure.</strong> Topisch und in manchen Fällen oral, dann ausschliesslich ärztlich verordnet und überwacht.</p>
+<p><strong><a href="/haut/niacinamid/">Niacinamid</a>.</strong> Mild, bremst die Pigmentweitergabe, gut kombinierbar.</p>
+<p><strong><a href="/haut/vitamin-c-serum/">Vitamin C</a>.</strong> Ergänzend sinnvoll, allein selten ausreichend.</p>
+<p>Rechne mit <strong>drei bis sechs Monaten</strong>, und rechne damit, dass es im Sommer zurückkommt.</p>
+
+<h2>Was schadet</h2>
+<ul>
+<li><strong>Hitze in jeder Form.</strong> Sauna, Dampfbad, heisse Duschen ins Gesicht.</li>
+<li><strong>Aggressive Peelings und mechanische Behandlungen.</strong> Entzündung führt zu mehr Pigment.</li>
+<li><strong>Laser ohne sichere Einordnung.</strong> Bei Melasma ein bekanntes Risiko für Verschlechterung.</li>
+<li><strong>Aufhellende Cremes aus unklarer Quelle.</strong> Teils mit Quecksilber oder Kortison belastet.</li>
+<li><strong>Sporadische Anwendung.</strong> Melasma verzeiht keine Lücken.</li>
+</ul>
+
+<h2>Was realistisch ist</h2>
+<p>Ehrlich: Melasma wird kontrolliert, nicht geheilt. Ziel ist eine deutliche Aufhellung und ein Zustand, der sich im Alltag halten lässt. Ein Rückfall nach einem Sonnensommer oder bei hormoneller Veränderung ist keine Behandlungsniederlage, sondern Teil des Verlaufs.</p>
+<p>Wer das vorher weiss, geht anders damit um als jemand, dem eine dauerhafte Lösung versprochen wurde.</p>
+
+<h2>Wann zum Arzt</h2>
+<p>Bei Melasma gehört die Erstbeurteilung dermatologisch, allein schon zur Abgrenzung von anderen Pigmentstörungen. Ausserdem, wenn eine Pigmentveränderung einseitig auftritt, sich schnell verändert, erhaben ist oder juckt.</p>
+<p>Wenn ein Zusammenhang mit hormoneller Verhütung besteht, lohnt das Gespräch mit der Gynäkologin über Alternativen.</p>
+
+<h2>Was wir machen</h2>
+<p>Wir behandeln Melasma nicht mit Geräten und stellen keine Diagnose. Was wir beitragen: die ehrliche Einordnung, und bei stressverstärkten oder hormonell mitbedingten Hautthemen die begleitende Arbeit mit <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a>. Hitzeintensive Anwendungen im Gesicht vermeiden wir bei Melasma bewusst.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Melasma und Altersflecken?', a: 'Altersflecken sind einzeln, scharf begrenzt und UV-bedingt. Melasma ist grossflächig, unscharf, meist symmetrisch und hormonell mitgesteuert. Melasma reagiert auf Wärme und verträgt aggressive Behandlung schlecht.' },
+      { q: 'Welcher Sonnenschutz bei Melasma?', a: 'Ein getöntes Produkt mit Eisenoxid, weil auch sichtbares Licht die Pigmentbildung triggert. Klassischer UV-Schutz allein reicht bei Melasma nicht. Täglich, ganzjährig.' },
+      { q: 'Kann Laser Melasma verschlimmern?', a: 'Ja, das ist ein bekanntes Risiko. Hitze ist bei Melasma ein Auslöser. Laserbehandlung gehört hier in sehr erfahrene Hände und nach klarer Einordnung.' },
+      { q: 'Geht Melasma nach der Schwangerschaft weg?', a: 'Bei manchen verblasst es nach der Geburt deutlich, bei anderen bleibt es. Ohne konsequenten Sonnenschutz ist ein Rückfall wahrscheinlich.' },
+      { q: 'Wie lange dauert die Behandlung?', a: 'Rechne mit drei bis sechs Monaten bis zu einer sichtbaren Aufhellung, und mit Erhaltung danach. Melasma wird kontrolliert, nicht geheilt.' },
+      { q: 'Darf ich bei Melasma in die Sauna?', a: 'Besser nicht. Wärme triggert die Pigmentbildung unabhängig von UV. Sauna, Dampfbad und heisses Duschen ins Gesicht gehören zu den vermeidbaren Auslösern.' },
+    ],
+    related: [
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/haut/vitamin-c-serum/', label: 'Vitamin-C-Serum', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'couperose',
+    title: 'Couperose: sichtbare Äderchen im Gesicht',
+    metaDesc: 'Couperose im Gesicht: was der Unterschied zu Rosacea ist, welche Auslöser zählen, was in der Pflege hilft und welche Behandlung bei erweiterten Äderchen wirkt.',
+    excerpt: 'Sichtbare Äderchen an Wangen und Nase. Was Pflege leisten kann, was nicht, und wo die Grenze zur Rosacea verläuft.',
+    category: 'Hautthemen',
+    h1: 'Couperose',
+    lead: 'Couperose bezeichnet dauerhaft erweiterte, sichtbare Äderchen im Gesicht, meist an Nasenflügeln und Wangen. Sie ist keine Krankheit, kann aber die Vorstufe oder Begleiterscheinung einer Rosacea sein. Die Unterscheidung entscheidet über das Vorgehen.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Haut, die auf alles rot reagiert?',
+    ctaText: 'Wir schauen uns die Auslöser an und besprechen, was sich beruhigen lässt und wann eine dermatologische Abklärung sinnvoll ist.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Couperose beschreibt feine, dauerhaft erweiterte Blutgefässe direkt unter der Hautoberfläche, sichtbar als rötliche Äderchen. Betroffen sind meist Nasenflügel, Wangen und Kinn.</p>
+<p>Die Gefässe haben ihre Elastizität verloren: Sie weiten sich bei einem Reiz und ziehen sich nicht mehr vollständig zusammen. Das ist ein mechanischer Vorgang, kein Entzündungsprozess.</p>
+
+<h2>Couperose oder Rosacea?</h2>
+<p><strong>Couperose</strong> ist ein rein kosmetischer Befund: sichtbare Äderchen, keine Entzündung, keine Papeln, kein Brennen.</p>
+<p><strong><a href="/beschwerden/rosacea/">Rosacea</a></strong> ist eine chronisch-entzündliche Hauterkrankung. Dazu gehören anfallsartige Rötungsschübe, Brennen, Papeln und Pusteln, in fortgeschrittenen Stadien Gewebeveränderungen.</p>
+<p>Die Übergänge sind fliessend, und Couperose ist bei einem Teil der Betroffenen ein frühes Zeichen einer Rosacea. Deshalb gilt: Wenn zu den Äderchen Brennen, Schübe oder Pusteln kommen, ist es kein kosmetisches Thema mehr, sondern gehört dermatologisch abgeklärt.</p>
+
+<h2>Was Couperose begünstigt</h2>
+<ul>
+<li>Genetische Veranlagung, besonders bei heller, dünner Haut</li>
+<li>Jahrelange UV-Belastung, der wichtigste beeinflussbare Faktor</li>
+<li>Starke Temperaturwechsel, Kälte und Wind</li>
+<li>Hitze: Sauna, heisse Bäder, heisse Getränke</li>
+<li>Alkohol und scharfes Essen</li>
+<li>Kortisonhaltige Cremes über längere Zeit im Gesicht</li>
+</ul>
+
+<h2>Was in der Pflege hilft</h2>
+<p>Vorweg, ehrlich: <strong>Bereits sichtbare Äderchen verschwinden durch Pflege nicht.</strong> Was Pflege leisten kann, ist Rötungsneigung zu reduzieren und zu verhindern, dass mehr Gefässe dazukommen.</p>
+<p><strong>Sonnenschutz täglich.</strong> Der stärkste Hebel überhaupt. UV schwächt das Bindegewebe um die Gefässe.</p>
+<p><strong><a href="/haut/niacinamid/">Niacinamid</a>.</strong> Stärkt die Barriere und wirkt der Rötungsneigung entgegen.</p>
+<p><strong>Azelainsäure.</strong> Bei Übergang zur Rosacea eine der wirksamsten Optionen.</p>
+<p><strong><a href="/haut/centella/">Centella</a>.</strong> Beruhigend, gut verträglich, sinnvoll als Basispflege.</p>
+<p><strong>Lauwarm statt heiss waschen</strong>, weich abtupfen statt reiben, keine alkoholhaltigen Gesichtswasser.</p>
+
+<h2>Was schadet</h2>
+<ul>
+<li>Mechanisches Peeling und Bürsten</li>
+<li>Sauna und Dampfbäder ins Gesicht</li>
+<li>Hochprozentige Säuren und hochdosiertes Retinol ohne Begleitung</li>
+<li>Duftstoffe und alkoholhaltige Tonics</li>
+<li>Kortisoncremes im Gesicht über längere Zeit, ohne ärztliche Anweisung</li>
+</ul>
+
+<h2>Behandlungen im Vergleich</h2>
+<p>Anders als bei den meisten Hautthemen gibt es hier eine klar überlegene Methode.</p>
+<p><strong>Gefässlaser und IPL.</strong> Mittel der Wahl bei sichtbaren Äderchen. Die Energie wird vom roten Blutfarbstoff aufgenommen, das Gefäss verschliesst sich und wird abgebaut. Meist braucht es zwei bis vier Sitzungen. Gehört in erfahrene Hände.</p>
+<p><strong>Was nicht funktioniert:</strong> Cremes, die versprechen, Äderchen zum Verschwinden zu bringen. Ein verschlossenes Gefäss lässt sich nicht wegcremen.</p>
+<p>Wichtig auch nach der Behandlung: Ohne konsequenten Sonnenschutz und Trigger-Vermeidung bilden sich neue Gefässe.</p>
+
+<h2>Wann zum Arzt</h2>
+<p>Wenn zu den Äderchen Brennen, Stechen, Schübe, Papeln oder Pusteln kommen. Wenn die Rötung sich schnell ausbreitet. Wenn die Nase sich verdickt. Und wenn eine Kortisoncreme im Gesicht länger als angewiesen benutzt wurde.</p>
+
+<h2>Was wir machen</h2>
+<p>Wir behandeln keine Gefässe mit Laser. Was wir beitragen: die Einordnung, die Arbeit an den Auslösern, und bei stressverstärkter Rötungsneigung <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a>. Hitzeintensive Anwendungen und kräftiges <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha</a> im betroffenen Bereich vermeiden wir dabei bewusst.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Couperose und Rosacea?', a: 'Couperose sind sichtbare erweiterte Äderchen ohne Entzündung, ein kosmetischer Befund. Rosacea ist eine chronisch-entzündliche Erkrankung mit Schüben, Brennen und Papeln. Kommen diese Zeichen dazu, gehört es dermatologisch abgeklärt.' },
+      { q: 'Kann man Couperose wegcremen?', a: 'Nein. Bereits sichtbare Äderchen verschwinden durch Pflege nicht. Pflege kann die Rötungsneigung reduzieren und verhindern, dass neue Gefässe dazukommen.' },
+      { q: 'Was hilft wirklich gegen sichtbare Äderchen?', a: 'Gefässlaser oder IPL. Die Energie wird vom Blutfarbstoff aufgenommen, das Gefäss verschliesst sich. Meist sind zwei bis vier Sitzungen nötig.' },
+      { q: 'Darf ich mit Couperose in die Sauna?', a: 'Besser nicht. Hitze weitet die Gefässe, und bei bereits geschwächter Gefässwand begünstigt das die Entstehung neuer sichtbarer Äderchen.' },
+      { q: 'Kommt Couperose nach der Laserbehandlung zurück?', a: 'Behandelte Gefässe kommen nicht zurück, neue können sich bilden. Ohne konsequenten Sonnenschutz und Trigger-Vermeidung ist das wahrscheinlich.' },
+      { q: 'Hilft Gua Sha bei Couperose?', a: 'Im betroffenen Bereich raten wir davon ab. Mechanischer Reiz und Durchblutungsanregung sind bei geschwächten Gefässen nicht das Ziel.' },
+    ],
+    related: [
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+      { href: '/beschwerden/rosacea/', label: 'Rosacea', cat: 'Beschwerde' },
+    ],
+  },
+
+  {
+    slug: 'augenringe',
+    title: 'Augenringe: die drei Typen und was jeweils hilft',
+    metaDesc: 'Augenringe entfernen: pigmentiert, durchscheinend oder Schatten? Wie du deinen Typ bestimmst, was jeweils hilft und warum die meisten Cremes am falschen Problem arbeiten.',
+    excerpt: 'Drei völlig verschiedene Ursachen sehen gleich aus. Wer den Typ nicht bestimmt, kauft jahrelang die falsche Creme.',
+    category: 'Hautthemen',
+    h1: 'Augenringe',
+    lead: 'Dunkle Augenringe haben drei mögliche Ursachen, und sie brauchen drei unterschiedliche Antworten. Ein einfacher Test vor dem Spiegel zeigt dir in einer Minute, welcher Typ bei dir vorliegt.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Müdes Gesicht, das ausgeschlafen nicht besser wird?',
+    ctaText: 'In 30 Minuten zeigen wir dir die Technik, die beim Entstauen tatsächlich etwas bringt, am eigenen Gesicht.',
+    ctaHref: '/therapien/gua-sha/gesichts-gua-sha/',
+    ctaLabel: 'Gua Sha fürs Gesicht',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Die Haut unter dem Auge ist mit etwa 0,5 Millimetern die dünnste des ganzen Körpers. Alles, was darunter liegt, schimmert leichter durch als anderswo. Das ist der gemeinsame Nenner aller Augenringe, aber der Grund für die Verfärbung ist dreimal ein anderer.</p>
+
+<h2>Die drei Typen unterscheiden</h2>
+<p><strong>Pigmentiert.</strong> Bräunliche Verfärbung durch vermehrtes Melanin. Häufiger bei dunkleren Hauttypen, oft familiär, kann durch Reiben und Sonne verstärkt werden.</p>
+<p><strong>Vaskulär.</strong> Bläulich-violette Verfärbung durch durchscheinende Gefässe. Verstärkt sich bei Müdigkeit, Flüssigkeitsmangel, Allergien und im Winter.</p>
+<p><strong>Strukturell.</strong> Keine Verfärbung, sondern ein Schatten. Entsteht durch eine Vertiefung zwischen Unterlid und Wange, oft altersbedingt durch Volumenverlust oder anatomisch bedingt.</p>
+<div class="wa-callout"><div class="wa-callout-label">Der Test vor dem Spiegel</div><p><strong>Dehntest:</strong> Zieh die Haut unter dem Auge sanft zur Seite. Bleibt die Farbe, ist es pigmentiert. Verschwindet sie, ist es vaskulär.<br><strong>Lichttest:</strong> Beleuchte das Gesicht von unten. Verschwindet der dunkle Bereich, war es ein Schatten, also strukturell.</p></div>
+
+<h2>Was bei welchem Typ hilft</h2>
+<p><strong>Pigmentiert.</strong> Konsequenter Sonnenschutz auch unter dem Auge, dazu <a href="/haut/vitamin-c-serum/">Vitamin C</a>, <a href="/haut/niacinamid/">Niacinamid</a> oder Azelainsäure. Nicht reiben, auch nicht beim Abschminken. Geduld: Monate.</p>
+<p><strong>Vaskulär.</strong> Schlaf, Flüssigkeit, Allergien behandeln lassen, Kälteanwendung am Morgen. Koffeinhaltige Augenprodukte verengen die Gefässe kurzfristig. Lymphabfluss unterstützen, hier hilft <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha</a> tatsächlich, aber sehr sanft und nur unterhalb des Knochens.</p>
+<p><strong>Strukturell.</strong> Pflege bringt hier nichts, und das ist der wichtigste Satz auf dieser Seite. Ein Schatten entsteht durch Geometrie, nicht durch Farbe. Wer den Typ nicht kennt, kauft jahrelang Cremes gegen ein Problem, das keine Creme lösen kann.</p>
+
+<h2>Was nicht hilft</h2>
+<ul>
+<li><strong>Gurkenscheiben und kalte Löffel.</strong> Kühlen kurzfristig, das war es. Beim vaskulären Typ am Morgen ein netter Effekt, sonst nichts.</li>
+<li><strong>Teure Augencremes gegen Schatten.</strong> Siehe oben.</li>
+<li><strong>Aggressives Reiben und Massieren.</strong> Verstärkt Pigmentierung und reizt die dünnste Haut des Körpers.</li>
+<li><strong>Hausmittel mit Zitrone.</strong> Reizend und in Augennähe schlicht gefährlich.</li>
+</ul>
+
+<h2>Behandlungen im Vergleich</h2>
+<p><strong>Bei pigmentiertem Typ:</strong> vorsichtige Peelings und aufhellende Wirkstoffe in ärztlicher Begleitung.</p>
+<p><strong>Bei vaskulärem Typ:</strong> begrenzte Optionen, der Fokus liegt auf Lebensstil und Abfluss.</p>
+<p><strong>Bei strukturellem Typ:</strong> Unterspritzung mit Hyaluronsäure ist die einzige Methode, die den Schatten wirklich adressiert. Das ist ein anspruchsvoller Bereich mit realem Komplikationsrisiko und gehört ausschliesslich in erfahrene ärztliche Hände.</p>
+
+<h2>Wann zum Arzt</h2>
+<p>Wenn Augenringe plötzlich und einseitig auftreten. Wenn zusätzlich Schwellungen, Juckreiz oder Atembeschwerden bestehen, dann Richtung Allergie abklären. Bei ausgeprägter Blässe und anhaltender Erschöpfung lohnt ein Blick auf Eisen- und Schilddrüsenwerte.</p>
+
+<h2>Was wir machen</h2>
+<p>Beim vaskulären Typ und bei allgemeinem Schwellungsgefühl arbeiten wir am Lymphabfluss, <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> ist dafür der direkteste Weg und lässt sich zu Hause weiterführen. Bei stressbedingter Erschöpfung ist <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> der ganzheitlichere Ansatz. Beim strukturellen Typ sagen wir ehrlich, dass wir nichts beitragen können.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie finde ich heraus, welchen Typ Augenringe ich habe?', a: 'Dehntest: Haut sanft zur Seite ziehen. Bleibt die Farbe, ist es pigmentiert, verschwindet sie, vaskulär. Lichttest: Gesicht von unten beleuchten. Verschwindet der dunkle Bereich, war es ein Schatten, also strukturell.' },
+      { q: 'Helfen Augencremes gegen Augenringe?', a: 'Beim pigmentierten Typ ja, mit Wirkstoffen wie Vitamin C oder Niacinamid und über Monate. Beim strukturellen Typ nicht, denn ein Schatten entsteht durch Geometrie, nicht durch Farbe.' },
+      { q: 'Warum sind Augenringe morgens schlimmer?', a: 'Über Nacht sammelt sich Flüssigkeit im Gewebe, das Lymphsystem arbeitet im Liegen langsamer. Beim vaskulären Typ ist der Effekt am deutlichsten.' },
+      { q: 'Hilft Schlaf gegen Augenringe?', a: 'Beim vaskulären Typ deutlich, weil Müdigkeit die Durchblutung und den Abfluss beeinflusst. Beim pigmentierten und strukturellen Typ kaum.' },
+      { q: 'Was bringt Gua Sha bei Augenringen?', a: 'Beim vaskulären Typ kann es den Lymphabfluss unterstützen. Sehr sanft arbeiten, ohne Druck, und nur unterhalb des Knochens. Bei pigmentierten Augenringen ist Reiben eher schädlich.' },
+      { q: 'Wann sollte ich Augenringe ärztlich abklären lassen?', a: 'Wenn sie plötzlich und einseitig auftreten, wenn Schwellung, Juckreiz oder Atembeschwerden dazukommen, oder wenn ausgeprägte Blässe und anhaltende Erschöpfung bestehen.' },
+    ],
+    related: [
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'mitesser',
+    title: 'Mitesser entfernen: was hilft und was die Haut schädigt',
+    metaDesc: 'Mitesser auf der Nase: der Unterschied zu Talgfilamenten, warum Ausdrücken und Porenstreifen schaden, welche Wirkstoffe wirken und was eine Ausreinigung bringt.',
+    excerpt: 'Das meiste, was auf der Nase als Mitesser gilt, sind normale Talgfilamente. Der Unterschied entscheidet über alles Weitere.',
+    category: 'Hautthemen',
+    h1: 'Mitesser',
+    lead: 'Bevor du etwas dagegen unternimmst, lohnt eine Unterscheidung: Die kleinen dunklen Punkte auf der Nase sind meist keine Mitesser, sondern Talgfilamente. Die gehören dorthin und kommen immer wieder.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Immer wieder verstopfte Haut?',
+    ctaText: 'Wir schauen uns an, ob dahinter mehr steckt als die Reinigungsroutine, und besprechen ehrlich, was sinnvoll ist.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Ein Mitesser entsteht, wenn eine Pore mit Talg und Hornmaterial verstopft. Bleibt die Pore offen, oxidiert der Inhalt an der Luft und wird dunkel: der offene Mitesser, umgangssprachlich Blackhead. Schliesst sich die Pore, bleibt er hell: der geschlossene Mitesser.</p>
+
+<h2>Mitesser oder Talgfilamente?</h2>
+<p>Das ist die wichtigste Unterscheidung, und sie erspart viel Frust.</p>
+<p><strong>Talgfilamente</strong> sind kleine, gleichmässig verteilte, hell- bis graubraune Punkte, fast immer auf Nase und Nasenflügeln. Sie sind ein <em>normaler</em> Bestandteil der Haut: Talg, der den Follikel auskleidet. Jeder Mensch hat sie. Drückt man sie aus, sind sie in zwei bis vier Wochen wieder da, weil sie dorthin gehören.</p>
+<p><strong>Mitesser</strong> sind einzeln, unregelmässig verteilt, dunkler und deutlich erhabener. Sie sind eine echte Verstopfung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Warum das zählt</div><p>Der grösste Teil dessen, was Menschen auf der Nase bekämpfen, sind Talgfilamente. Sie lassen sich nicht dauerhaft entfernen, nur weniger sichtbar halten. Wer das weiss, hört auf, dagegen anzukämpfen, und behandelt die Haut deutlich schonender.</p></div>
+
+<h2>Was tatsächlich hilft</h2>
+<p><strong>Salicylsäure (BHA).</strong> Der Wirkstoff der Wahl. Sie ist fettlöslich und gelangt dadurch in die Pore hinein, wo sie Talg und Hornmaterial löst. Zwei- bis dreimal pro Woche, 1 bis 2 Prozent.</p>
+<p><strong>Retinoide.</strong> Regulieren die Verhornung und verhindern, dass Poren überhaupt verstopfen. Wirken vorbeugend statt entfernend, brauchen Wochen.</p>
+<p><strong><a href="/haut/niacinamid/">Niacinamid</a>.</strong> Reduziert die Talgmenge, mild und gut kombinierbar.</p>
+<p><strong>Regelmässige Reinigung, abends doppelt</strong>, wenn du Sonnenschutz oder Make-up trägst. Erst ölbasiert, dann wasserbasiert.</p>
+<p><strong>Nicht-komedogene Produkte.</strong> Besonders bei reichhaltigen Cremes und Ölen lohnt der Blick.</p>
+
+<h2>Was schadet</h2>
+<ul>
+<li><strong>Ausdrücken mit den Fingern.</strong> Der Druck verlagert einen Teil des Inhalts nach unten, es entsteht eine Entzündung, und aus einem Mitesser wird ein Pickel mit anschliessendem <a href="/haut/pigmentflecken/">Pigmentfleck</a>.</li>
+<li><strong>Porenstreifen.</strong> Sie ziehen die Talgfilamente heraus, verletzen dabei aber die Poreneingänge und trocknen die Haut aus. Nach zwei Wochen ist alles wieder da, die Haut aber gereizt.</li>
+<li><strong>Backpulver, Zahnpasta, Zitrone.</strong> Zerstören den Säureschutzmantel, ohne irgendetwas zu lösen.</li>
+<li><strong>Gesichtsdampfbäder mehrmals pro Woche.</strong> Reizen und trocknen aus. Poren öffnen sich dabei nicht, sie haben keine Muskulatur.</li>
+<li><strong>Scharfe mechanische Peelings.</strong> Mikroverletzungen, die die Verhornung eher verstärken.</li>
+</ul>
+
+<h2>Professionelle Ausreinigung</h2>
+<p>Eine fachgerechte manuelle Ausreinigung nach Aufweichen der Haut ist die sichere Variante dessen, was viele zu Hause versuchen. Sinnvoll bei echten, hartnäckigen Mitessern, nicht bei Talgfilamenten.</p>
+<p>Apparative Verfahren wie <a href="/haut/hydrafacial/">Hydrafacial</a> arbeiten mit Unterdruck und leisten dasselbe schonender, ebenfalls mit begrenzter Haltbarkeit.</p>
+<p>Was für beides gilt: Ohne eine Routine, die die Verhornung reguliert, ist die Haut in wenigen Wochen wieder dort, wo sie war.</p>
+
+<h2>Wann zum Arzt</h2>
+<p>Wenn zu den Mitessern entzündete Papeln, Pusteln oder Knoten kommen, ist es keine Reinigungsfrage mehr, sondern <a href="/beschwerden/akne/">Akne</a>, und die gehört behandelt, bevor Narben entstehen. Auch wenn eine Routine über drei Monate konsequent durchgezogen wurde und nichts passiert, lohnt die dermatologische Abklärung.</p>
+
+<h2>Was wir machen</h2>
+<p>Wir führen keine kosmetische Ausreinigung durch. Was wir beitragen: die Einordnung, und bei hormonell oder stressbedingt schwankendem Hautbild die begleitende Arbeit mit <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a>. Bei akut entzündeter Haut behandeln wir im Gesicht bewusst nicht.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Mitessern und Talgfilamenten?', a: 'Talgfilamente sind kleine, gleichmässig verteilte Punkte auf der Nase und ein normaler Bestandteil der Haut. Sie kommen nach dem Entfernen immer wieder. Mitesser sind einzeln, unregelmässig, dunkler und erhabener, also eine echte Verstopfung.' },
+      { q: 'Was hilft wirklich gegen Mitesser?', a: 'Salicylsäure zwei- bis dreimal pro Woche, weil sie fettlöslich ist und in die Pore gelangt. Ergänzend Retinoide zur Regulierung der Verhornung und Niacinamid zur Talgreduktion.' },
+      { q: 'Sind Porenstreifen schädlich?', a: 'Sie entfernen Talgfilamente kurzfristig, verletzen dabei die Poreneingänge und trocknen die Haut aus. Nach etwa zwei Wochen ist alles wieder da, die Haut aber gereizt.' },
+      { q: 'Darf ich Mitesser ausdrücken?', a: 'Besser nicht. Der Druck verlagert einen Teil des Inhalts nach unten, es entsteht eine Entzündung, und daraus wird ein Pickel mit möglichem Pigmentfleck.' },
+      { q: 'Öffnen sich Poren durch Dampfbäder?', a: 'Nein. Poren haben keine Muskulatur und können sich nicht öffnen oder schliessen. Wärme weicht den Inhalt auf, mehr passiert nicht. Häufige Dampfbäder reizen und trocknen aus.' },
+      { q: 'Wie lange dauert es, bis sich etwas tut?', a: 'Bei konsequenter Routine sechs bis zwölf Wochen. Wenn nach drei Monaten nichts passiert oder entzündete Stellen dazukommen, gehört es dermatologisch abgeklärt.' },
+    ],
+    related: [
+      { href: '/haut/hydrafacial/', label: 'Hydrafacial', cat: 'Methode' },
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/beschwerden/akne/', label: 'Akne', cat: 'Beschwerde' },
+    ],
+  },
 ];
 
 export const hautBySlug = (slug: string): HautArticle | undefined => haut.find((a) => a.slug === slug);
