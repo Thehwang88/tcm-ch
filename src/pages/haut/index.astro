@@ -7,7 +7,7 @@ import { haut } from '../../data/haut';
 
 const path = '/haut';
 const title = 'Haut & Gesicht – Behandlungen und Wirkstoffe ehrlich erklärt | TCM.ch';
-const description = 'Gesichtsbehandlungen, Wirkstoffe und Hautthemen, fachlich eingeordnet von unseren TCM-Therapeutinnen. Ohne Versprechen, die niemand halten kann.';
+const description = 'Gesichtsbehandlungen, Wirkstoffe und Hautthemen, fachlich eingeordnet von TCM.ch. Ohne Versprechen, die niemand halten kann.';
 
 // Buchbare Behandlungen — die eigentlichen Zielseiten des Clusters.
 const behandlungen = [
@@ -35,6 +35,14 @@ const gruppen = REIHENFOLGE
 const rest = haut.filter((a) => !REIHENFOLGE.includes(a.category));
 if (rest.length) gruppen.push({ cat: 'Weitere Themen', items: rest });
 
+// Einleitungstexte pro Gruppe
+const INTRO: Record<string, string> = {
+  'Wirkstoffe': 'Was tatsächlich in den Produkten steckt, welche Konzentration untersucht ist und womit sich was kombinieren lässt.',
+  'Methoden': 'Apparative und injizierbare Verfahren, sachlich erklärt — auch die, die wir selbst nicht anbieten.',
+  'Hautthemen': 'Von Pigmentflecken bis Couperose: erst die Form bestimmen, dann behandeln.',
+  'K-Beauty': 'Koreanische Hautpflege stammt aus derselben Tradition, mit der wir arbeiten. Was daran Methode ist und was Marketing.',
+};
+
 const schema = [
   {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description,
@@ -50,14 +58,21 @@ const schema = [
   },
 ];
 ---
-<LayoutDe title={title} description={description} path={path} schema={schema}>
+<LayoutDe title={title} description={description} path={path} schema={schema} ogImage="https://tcm.ch/images/haut-hero.webp">
   <div class="haut-scope">
 
     <section class="hero">
       <div class="wrap">
-        <div class="eyebrow">Haut &amp; Gesicht</div>
-        <h1>Was der Haut wirklich hilft, und was nur auf der Verpackung steht.</h1>
-        <p class="lead">Wirkstoffe, Methoden und Behandlungen rund ums Gesicht, eingeordnet von unseren TCM-Therapeutinnen. Wir schreiben auch dann ehrlich, wenn die Antwort «bringt wenig» lautet.</p>
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="eyebrow">Haut &amp; Gesicht</div>
+            <h1>Was der Haut wirklich hilft, und was nur auf der Verpackung steht.</h1>
+            <p class="lead">Wirkstoffe, Methoden und Behandlungen rund ums Gesicht, eingeordnet von TCM.ch. Wir schreiben auch dann ehrlich, wenn die Antwort «bringt wenig» lautet.</p>
+          </div>
+          <div class="hero-img">
+            <img src="/images/haut-hero.webp" width="1536" height="1024" alt="Frau bei einer Gesichtsbehandlung, ruhig liegend im Tageslicht" loading="eager" fetchpriority="high" decoding="async">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -74,35 +89,57 @@ const schema = [
             </a>
           ))}
         </div>
+        <figure class="band">
+          <img src="/images/haut-raum.webp" width="1536" height="1024" alt="Heller Behandlungsraum mit Liege, Tageslicht und beleuchteter Wandnische" loading="lazy" decoding="async">
+          <figcaption>Behandelt wird in ruhigen, hellen Räumen an unseren Standorten in der Deutschschweiz.</figcaption>
+        </figure>
       </div>
     </section>
 
-    {gruppen.map((g) => (
-      <section class="section sec-tight">
-        <div class="wrap">
-          <div class="sec-label">{g.cat}</div>
-          <div class="art-grid">
-            {g.items.map((a) => (
-              <a class="art" href={`/haut/${a.slug}/`}>
-                <div class="a-cat">{a.category}</div>
-                <h3 class="a-title">{a.title}</h3>
-                <p class="a-excerpt">{a.excerpt}</p>
-                <div class="a-meta">{a.readingTime} Lesezeit</div>
-              </a>
-            ))}
+    {gruppen.map((g, i) => (
+      <>
+        {g.cat === 'K-Beauty' && (
+          <section class="section sec-tight">
+            <div class="wrap">
+              <figure class="band split">
+                <img src="/images/haut-najeon.webp" width="1400" height="933" alt="Handwerkliche Perlmutteinlage in schwarzem Lack, koreanische Najeon-Technik" loading="lazy" decoding="async">
+                <figcaption>Koreanische Hautpflege wurzelt in derselben Kräutertradition, mit der wir arbeiten — Hanbang, die Schwesterdisziplin der chinesischen Medizin.</figcaption>
+              </figure>
+            </div>
+          </section>
+        )}
+        <section class="section sec-tight">
+          <div class="wrap">
+            <div class="sec-label">{g.cat}</div>
+            {INTRO[g.cat] && <p class="sec-intro">{INTRO[g.cat]}</p>}
+            <div class="art-grid">
+              {g.items.map((a) => (
+                <a class="art" href={`/haut/${a.slug}/`}>
+                  <div class="a-cat">{a.category}</div>
+                  <h3 class="a-title">{a.title}</h3>
+                  <p class="a-excerpt">{a.excerpt}</p>
+                  <div class="a-meta">{a.readingTime} Lesezeit</div>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </>
     ))}
 
     <section class="section">
       <div class="wrap">
         <div class="closing">
-          <h2>Unsicher, was zu deiner Haut passt?</h2>
-          <p>Schildere uns kurz, worum es geht. Wir sagen dir ehrlich, ob eine Behandlung sinnvoll ist, und wann du besser dermatologisch abklären lässt.</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
-            <a class="btn btn--ghost" href="/standorte/">Standort finden</a>
+          <div class="closing-img">
+            <img src="/images/haut-perlmutt.webp" width="1536" height="1024" alt="Perlmutt, das Licht in Schichten zurückwirft" loading="lazy" decoding="async">
+          </div>
+          <div class="closing-text">
+            <h2>Unsicher, was zu deiner Haut passt?</h2>
+            <p>Schildere uns kurz, worum es geht. Wir sagen dir ehrlich, ob eine Behandlung sinnvoll ist, und wann du besser dermatologisch abklären lässt.</p>
+            <div class="cta-row">
+              <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+              <a class="btn btn--ghost" href="/standorte/">Standort finden</a>
+            </div>
           </div>
         </div>
       </div>
@@ -119,14 +156,28 @@ const schema = [
     --h-line: #E2D9C9;
   }
 
-  .hero { background: var(--h-porcelain); padding: 64px 0 56px; }
+  /* ---------- Hero ---------- */
+  .hero { background: var(--h-porcelain); padding: 56px 0; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .hero-img img { width: 100%; height: auto; display: block; border-radius: var(--r-card); }
   .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 14px; }
-  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 18px; max-width: 20ch; }
-  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 62ch; margin: 0; }
+  h1 { font-size: clamp(29px, 4.2vw, 44px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 18px; }
+  .hero .lead { font-size: 18px; line-height: 1.55; color: var(--mid); margin: 0; }
 
+  /* ---------- Abschnitte ---------- */
   .sec-tight { padding-top: 0; }
-  .sec-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 18px; }
+  .sec-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 10px; }
+  .sec-intro { font-size: 16px; line-height: 1.55; color: var(--mid); max-width: 62ch; margin: 0 0 20px; }
 
+  /* ---------- Bildbänder ---------- */
+  .band { margin: 40px 0 0; }
+  .band img { width: 100%; height: auto; display: block; border-radius: var(--r-card); aspect-ratio: 16 / 7; object-fit: cover; object-position: center; }
+  .band figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; max-width: 68ch; }
+  .band.split { margin: 0 0 30px; display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(20px, 4vw, 48px); align-items: center; }
+  .band.split img { aspect-ratio: 3 / 2; }
+  .band.split figcaption { margin-top: 0; }
+
+  /* ---------- Behandlungen ---------- */
   .treat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .treat { display: block; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 26px; text-decoration: none; background: #fff; transition: border-color var(--t-fast) ease; }
   .treat:hover { border-color: var(--h-bronze); }
@@ -135,6 +186,7 @@ const schema = [
   .t-text { font-size: 15.5px; line-height: 1.55; color: var(--mid); margin: 0 0 14px; }
   .t-kasse { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--h-line); padding-top: 10px; }
 
+  /* ---------- Artikel ---------- */
   .art-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .art { display: block; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 22px; text-decoration: none; transition: border-color var(--t-fast) ease; }
   .art:hover { border-color: var(--h-bronze); }
@@ -143,14 +195,24 @@ const schema = [
   .a-excerpt { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; }
   .a-meta { font-size: 12.5px; color: var(--muted); }
 
-  .closing { background: var(--h-porcelain); border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 34px; }
+  /* ---------- Abschluss ---------- */
+  .closing { background: var(--h-porcelain); border: 1px solid var(--h-line); border-radius: var(--r-card); overflow: hidden; display: grid; grid-template-columns: 1fr 1.1fr; align-items: stretch; }
+  .closing-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .closing-text { padding: clamp(26px, 4vw, 44px); }
   .closing h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 0 0 8px; letter-spacing: var(--tracking-heading); }
-  .closing p { font-size: 16px; color: var(--mid); margin: 0 0 18px; max-width: 60ch; }
+  .closing p { font-size: 16px; color: var(--mid); margin: 0 0 18px; max-width: 52ch; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-img { order: -1; }
+    .band.split { grid-template-columns: 1fr; }
+    .closing { grid-template-columns: 1fr; }
+    .closing-img img { aspect-ratio: 16 / 7; height: auto; }
+  }
   @media (max-width: 860px) { .art-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) {
     .treat-grid, .art-grid { grid-template-columns: 1fr; }
-    .hero { padding: 44px 0 36px; }
+    .hero { padding: 36px 0; }
   }
 </style>
