@@ -5,7 +5,7 @@
 //
 // TODO vor dem Livegang bestätigen:
 //   1. Welche Standorte bieten Hanbang tatsächlich an?
-//   2. Genauer Einzelpreis und Kurspreis (aktuell «ab CHF 320»)
+//   2. Genauer Einzelpreis und Kurspreis (aktuell «ab CHF 240»)
 //   3. Wer führt die Akupunktur innerhalb des Ablaufs durch (EMR/ASCA)?
 import SpaPage from '../../../layouts/SpaPage.astro';
 import bodyRaw from '../../../data/hanbang-body.html?raw';
@@ -17,12 +17,13 @@ const body = appendSidebarAllLink(
 
 const url = 'https://tcm.ch/therapien/hanbang/';
 const title = 'Hanbang – Koreanische Gesichtsbehandlung | TCM.ch';
-const description = 'Hanbang bei TCM.ch: die koreanische Gesichtsbehandlung in sechs Schritten. Reinigung, Peeling, Gesichtsakupunktur, Massage, Maske und LED in 90 Minuten.';
+const description = 'Hanbang bei TCM.ch: koreanische Gesichtsbehandlung aus Gesichtsakupunktur und Gua-Sha-Massage. 75 Minuten, ab CHF 240, Selbstzahlerleistung.';
 
 const faqs = [
-  { q: 'Was ist der Unterschied zwischen Hanbang und Gesichtsakupunktur?', a: 'Die Gesichtsakupunktur arbeitet mit Nadeln und dauert 40 bis 50 Minuten. Hanbang verbindet Akupunktur mit fünf weiteren Schritten zu einer 90-minütigen Behandlung. Die Gesichtsakupunktur ist medizinisch indiziert und kassenfähig, Hanbang ist kosmetisch und eine Selbstzahlerleistung.' },
+  { q: 'Was ist der Unterschied zwischen Hanbang und Gesichtsakupunktur?', a: 'Die Gesichtsakupunktur arbeitet mit Nadeln und dauert 40 bis 50 Minuten. Hanbang verbindet die Gesichtsakupunktur mit einer Gua-Sha- und Lymphmassage zu einer 75-minütigen Behandlung. Die Gesichtsakupunktur ist medizinisch indiziert und kassenfähig, Hanbang ist kosmetisch und eine Selbstzahlerleistung.' },
   { q: 'Übernimmt die Krankenkasse Hanbang?', a: 'Nein. Hanbang ist eine kosmetische Behandlung. Die medizinisch indizierte Gesichtsakupunktur wird bei EMR/ASCA-Anerkennung von der Zusatzversicherung mit 80 bis 100 Prozent übernommen.' },
   { q: 'Wie viele Sitzungen brauche ich?', a: 'Wir empfehlen sechs Sitzungen im Abstand von zwei bis vier Wochen, danach eine Erhaltungssitzung pro Monat.' },
+  { q: 'Was ist in der Behandlung nicht enthalten?', a: 'Peeling, Wirkstoffmaske und LED sind nicht Teil der Behandlung. Hanbang besteht aus Gespräch und Hautanalyse, Gesichtsakupunktur und Gua-Sha-Massage.' },
   { q: 'Tut die Behandlung weh?', a: 'Die Nadeln sind sehr fein. Die meisten empfinden das Setzen als kurzen, leichten Druck. Während der Ruhephase liegst du entspannt.' },
   { q: 'Kann ich danach direkt wieder unter Leute?', a: 'In der Regel ja. Eine leichte Rötung kann auftreten und klingt meist innerhalb von ein bis zwei Stunden ab. Vor einem wichtigen Anlass empfehlen wir einen Tag Abstand.' },
   { q: 'Hilft Hanbang gegen Falten oder Pigmentflecken?', a: 'Nein. Ziel der Behandlung ist ein entspanntes, gut versorgtes Hautbild. Pigmentflecken und Falten adressiert Hanbang nicht.' },
@@ -34,7 +35,7 @@ const schema = [
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
     about: { '@type': 'MedicalTherapy', name: 'Hanbang',
       alternateName: 'Koreanische Gesichtsbehandlung',
-      howPerformed: 'Sechs aufeinander abgestimmte Schritte in 90 Minuten: doppelte Reinigung, Enzympeeling, Gesichtsakupunktur mit Ruhephase, manuelle Gesichts- und Lymphmassage, Wirkstoffmaske mit LED-Licht und Abschlusspflege.' },
+      howPerformed: 'Vier aufeinander abgestimmte Schritte in 75 Minuten: Gespräch und Hautanalyse, Gesichtsakupunktur mit Ruhephase, manuelle Gua-Sha- und Lymphmassage, Abschlusspflege.' },
     lastReviewed: '2026-08-23' },
   { '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
