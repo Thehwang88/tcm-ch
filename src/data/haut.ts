@@ -334,6 +334,358 @@ export const haut: HautArticle[] = [
       { href: '/haut/vitamin-c-serum/', label: 'Vitamin-C-Serum', cat: 'Wirkstoff' },
     ],
   },
+  // ─────────────────────────────────────────────────────────── Methoden
+  {
+    slug: 'microneedling',
+    title: 'Microneedling: Ablauf, Kosten, was realistisch ist',
+    metaDesc: 'Microneedling im Gesicht: wie die Behandlung abläuft, was sie realistisch bringt, wie oft sie nötig ist, was sie in der Schweiz kostet und wann sie nicht in Frage kommt.',
+    excerpt: 'Die meistgesuchte Gesichtsbehandlung überhaupt. Was sie kann, was die Bilder im Netz verschweigen und wann eine sanftere Methode der bessere Weg ist.',
+    category: 'Methoden',
+    h1: 'Microneedling im Gesicht',
+    lead: 'Feine Nadeln setzen kontrollierte Mikroverletzungen, der Körper repariert und bildet dabei neues Kollagen. Das Prinzip ist gut belegt. Was daraus im Einzelfall wird, hängt an Nadellänge, Anzahl der Sitzungen und daran, wer es macht.',
+    readingTime: '10 Min.',
+    ctaTitle: 'Unsicher, ob Microneedling das Richtige ist?',
+    ctaText: 'Wir bieten kein Microneedling an. Wir sagen dir aber ehrlich, ob dein Thema eher eine Struktur- oder eine Spannungsfrage ist, und was in unserer Praxis dafür sinnvoll wäre.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Microneedling arbeitet mit einem einfachen Prinzip: Feine Nadeln erzeugen kontrollierte Mikroverletzungen in der Haut. Der Körper repariert diese Kanäle, und im Zuge dieser Reparatur bildet er neues Kollagen und Elastin. Nicht die Nadel wirkt, sondern die Heilung danach.</p>
+<p>Gearbeitet wird heute fast immer mit einem <strong>Dermapen</strong>, einem stiftförmigen Gerät mit oszillierenden Nadeln. Der klassische Dermaroller ist in professionellen Händen weitgehend abgelöst, weil er die Haut schräg einsticht und dabei stärker reisst.</p>
+
+<h2>Wie eine Behandlung abläuft</h2>
+<p>Zuerst Reinigung und eine Betäubungscreme, die 20 bis 30 Minuten einwirkt. Ohne sie ist die Behandlung an Stirn und Nase unangenehm.</p>
+<p>Danach wird das Gesicht in Bahnen abgefahren, mehrfach in unterschiedliche Richtungen. Die Nadellänge liegt in der Praxis meist zwischen 0,5 und 2,5 Millimetern, je nach Areal und Ziel: flacher an den Augenpartien, tiefer bei Narben.</p>
+<p>Zum Abschluss folgt ein beruhigendes Serum. Die eigentliche Behandlung dauert 20 bis 30 Minuten, mit Vorbereitung rechne mit gut einer Stunde.</p>
+
+<h2>Was realistisch dabei herauskommt</h2>
+<p>Hier weichen Erwartung und Ergebnis am weitesten auseinander, deshalb der Reihe nach.</p>
+<p><strong>Gut belegt:</strong> Verbesserung von Aknenarben, besonders bei eingesunkenen Narben. Das ist der Bereich mit der solidesten Studienlage.</p>
+<p><strong>Ordentlich belegt:</strong> feinere Hauttextur, kleiner wirkende Poren, gleichmässigeres Hautbild über mehrere Sitzungen.</p>
+<p><strong>Schwach belegt:</strong> deutliche Faltenreduktion. Feine Linien können weicher werden, tiefe Falten verschwinden nicht.</p>
+<p><strong>Nicht belegt:</strong> Straffung im Sinne einer Konturveränderung. Wer hängende Konturen adressieren will, ist mit Microneedling an der falschen Adresse.</p>
+<div class="wa-callout"><div class="wa-callout-label">Zu Vorher-Nachher-Bildern</div><p>Sie sind der meistgesuchte Begriff rund um diese Behandlung und der am wenigsten verlässliche. Licht, Winkel, Make-up und der Zeitpunkt im Heilungsverlauf verändern das Bild stärker als die Behandlung selbst. Wir zeigen keine, und du solltest denen im Netz mit Vorsicht begegnen.</p></div>
+
+<h2>Wie oft und wie viele Sitzungen</h2>
+<p>Üblich sind <strong>drei bis sechs Sitzungen im Abstand von vier bis sechs Wochen</strong>. Der Abstand ist nicht verhandelbar: Kollagenaufbau braucht Wochen, häufigeres Behandeln reizt nur.</p>
+<p>Bei Narben eher am oberen Ende, bei reiner Texturverbesserung reichen oft drei. Danach Erhaltungssitzungen zwei- bis dreimal jährlich.</p>
+<p>Das sichtbare Ergebnis kommt verzögert. Rechne mit <strong>zwei bis drei Monaten</strong> nach Abschluss der Serie, bis der Kollagenaufbau greift.</p>
+
+<h2>Was es in der Schweiz kostet</h2>
+<p>Eine Einzelsitzung liegt je nach Anbieter und Areal etwa zwischen <strong>CHF 250 und 450</strong>, Serienpreise entsprechend günstiger pro Sitzung. Kombinationen mit Wirkstoffinfusion oder Radiofrequenz liegen darüber.</p>
+<p>Kosmetische Behandlungen werden von der Krankenkasse nicht übernommen. Eine Ausnahme kann bei medizinisch indizierter Narbenbehandlung bestehen, das klärst du mit deiner Versicherung vorab, nicht danach.</p>
+
+<h2>Heilung und Ausfallzeit</h2>
+<p>Direkt nach der Behandlung ist die Haut deutlich gerötet, vergleichbar mit einem kräftigen Sonnenbrand. Am zweiten Tag lässt die Rötung nach, es kann leicht spannen und schuppen. Nach drei bis fünf Tagen ist die Haut in der Regel wieder unauffällig.</p>
+<p>In dieser Zeit: kein Make-up am Behandlungstag, keine Säuren, kein Retinol, keine Sauna, kein Sport am ersten Tag, und konsequent Sonnenschutz. Frisch behandelte Haut pigmentiert leicht nach, das ist der häufigste vermeidbare Fehler.</p>
+<p>Plane die Behandlung nicht kurz vor einem wichtigen Termin. Eine Woche Abstand ist realistisch.</p>
+
+<h2>Risiken und wann es nicht in Frage kommt</h2>
+<p>In geübten Händen ist Microneedling risikoarm. Es ist aber kein harmloses Verwöhnprogramm.</p>
+<ul>
+<li>Bei aktiver, entzündlicher <a href="/beschwerden/akne/">Akne</a> werden Bakterien verschleppt, das verschlimmert das Bild.</li>
+<li>Bei <a href="/beschwerden/rosacea/">Rosacea</a> im Schub und bei aktivem Lippenherpes nicht behandeln.</li>
+<li>Bei <a href="/haut/pigmentflecken/">Melasma</a> mit Vorsicht: Die Entzündungsreaktion kann nachpigmentieren lassen.</li>
+<li>Bei Neigung zu Keloiden, bei Blutgerinnungsstörungen und unter Isotretinoin gehört die Entscheidung in ärztliche Hände.</li>
+</ul>
+<p>Und der wichtigste Punkt: Wer es macht, entscheidet mehr als das Gerät. Unsaubere Technik hinterlässt Narben statt sie zu behandeln.</p>
+
+<h2>Microneedling zu Hause</h2>
+<p>Dermaroller für den Heimgebrauch gibt es überall, und sie sind etwas grundsätzlich anderes als die Behandlung in der Praxis. Was zu Hause sinnvoll ist, wo die Grenze verläuft und welche Nadellänge gefährlich wird, steht separat unter <a href="/haut/microneedling-zuhause/">Microneedling zu Hause</a>.</p>
+
+<h2>Die sanftere Alternative</h2>
+<p>Microneedling ist eine Strukturbehandlung. Wenn dein eigentliches Thema aber Spannung, Schwellungsgefühl oder ein müdes Hautbild ist, arbeitest du damit am falschen Problem, mit Ausfallzeit und Kosten obendrauf.</p>
+<p>Dafür ist <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> der ruhigere Weg, und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> der sanfteste. Beide ohne Ausfallzeit. Was sie nicht tun: eingesunkene Narben auffüllen. Da ist Microneedling die richtige Methode, und wir sagen dir das auch.</p>
+`.trim(),
+    faqs: [
+      { q: 'Wie oft muss man Microneedling machen?', a: 'Üblich sind drei bis sechs Sitzungen im Abstand von vier bis sechs Wochen, danach Erhaltungssitzungen zwei- bis dreimal jährlich. Der Abstand ist wichtig, weil Kollagenaufbau Wochen braucht.' },
+      { q: 'Was kostet Microneedling in der Schweiz?', a: 'Eine Einzelsitzung liegt je nach Anbieter und Areal etwa zwischen CHF 250 und 450. Serien sind pro Sitzung günstiger. Die Krankenkasse übernimmt kosmetische Behandlungen nicht.' },
+      { q: 'Wie lange dauert die Heilung nach Microneedling?', a: 'Am Behandlungstag ist die Haut deutlich gerötet, ab dem zweiten Tag lässt es nach, nach drei bis fünf Tagen ist sie in der Regel wieder unauffällig. Plane eine Woche Abstand vor wichtigen Terminen.' },
+      { q: 'Hilft Microneedling gegen Falten?', a: 'Bei feinen Linien kann sich die Textur verbessern. Tiefe Falten verschwinden nicht, und eine Straffung im Sinne einer Konturveränderung leistet Microneedling nicht. Am besten belegt ist die Wirkung bei eingesunkenen Aknenarben.' },
+      { q: 'Wann sieht man Ergebnisse?', a: 'Verzögert. Der Kollagenaufbau braucht Zeit, sichtbare Veränderungen zeigen sich meist zwei bis drei Monate nach Abschluss der Serie.' },
+      { q: 'Wann darf man kein Microneedling machen?', a: 'Bei aktiver entzündlicher Akne, Rosacea im Schub, aktivem Lippenherpes, Neigung zu Keloiden, Blutgerinnungsstörungen und unter Isotretinoin. Bei Melasma nur mit Vorsicht, weil die Entzündungsreaktion nachpigmentieren lassen kann.' },
+    ],
+    related: [
+      { href: '/haut/microneedling-zuhause/', label: 'Microneedling zu Hause', cat: 'Methode' },
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+      { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur', cat: 'Behandlung' },
+    ],
+  },
+
+  {
+    slug: 'microneedling-zuhause',
+    title: 'Microneedling zu Hause: was geht und wo die Grenze ist',
+    metaDesc: 'Dermaroller zu Hause: welche Nadellänge sicher ist, warum alles ab 0,5 mm in die Praxis gehört, wie Hygiene funktioniert und was realistisch dabei herauskommt.',
+    excerpt: 'Ein Dermaroller kostet zwanzig Franken und kann Narben hinterlassen. Die Nadellänge entscheidet, und die meisten wählen sie falsch.',
+    category: 'Methoden',
+    h1: 'Microneedling zu Hause',
+    lead: 'Heimgeräte und Praxisbehandlung teilen sich den Namen und sonst wenig. Bei 0,25 Millimetern geht es um bessere Wirkstoffaufnahme, ab 1,0 Millimetern um kontrollierte Verletzung. Wer den Unterschied nicht kennt, kauft sich ein Risiko.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Lieber einmal richtig zeigen lassen?',
+    ctaText: 'In 30 Minuten zeigen wir dir eine Technik, die zu Hause tatsächlich sicher ist: Druck, Richtung, Reihenfolge am eigenen Gesicht.',
+    ctaHref: '/therapien/gua-sha/gesichts-gua-sha/',
+    ctaLabel: 'Gua Sha fürs Gesicht',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Dermaroller für zu Hause kosten zwischen zwanzig und achtzig Franken und sind frei verkäuflich. Genau das ist das Problem: Die Geräte unterscheiden sich äusserlich kaum, in der Wirkung und im Risiko aber fundamental. Der Unterschied steht klein auf der Packung und heisst Nadellänge.</p>
+
+<h2>Die Nadellänge entscheidet alles</h2>
+<p><strong>0,2 bis 0,3 mm.</strong> Erreicht die oberste Hornschicht. Verletzt praktisch nichts, verbessert die Aufnahme von Wirkstoffen. Das ist der einzige Bereich, der zu Hause unbedenklich ist.</p>
+<p><strong>0,5 mm.</strong> Erreicht die obere Lederhaut, es kann punktuell bluten. Grenzbereich. Wird oft für zu Hause verkauft, gehört aus unserer Sicht schon nicht mehr dorthin.</p>
+<p><strong>1,0 mm und mehr.</strong> Echte Mikroverletzungen bis in die Lederhaut. Das ist Praxisterritorium, und zwar aus zwei Gründen: Sterilität und Technik. Ein unsauber geführter Roller reisst statt zu stechen, und aus einer Reissverletzung wird Narbengewebe.</p>
+<div class="wa-callout"><div class="wa-callout-label">Die klare Linie</div><p>Bis 0,3 mm: zu Hause vertretbar, Wirkung bescheiden. Ab 0,5 mm: in die Praxis. Es gibt keine Nadellänge, bei der ein Heimgerät dieselbe Wirkung wie eine Praxisbehandlung erzielt, ohne dasselbe Risiko mitzubringen.</p></div>
+
+<h2>Roller oder Stift?</h2>
+<p>Der Roller sticht durch die Rollbewegung schräg ein und zieht die Nadel schräg wieder heraus. Das erzeugt eine längliche Verletzung statt eines Kanals. Bei kurzen Nadeln ist das egal, bei langen nicht.</p>
+<p>Stiftgeräte für zu Hause stechen senkrecht und sind insofern schonender. Sie sind teurer, brauchen Wechselaufsätze, und sie verleiten dazu, tiefere Einstellungen zu wählen, weil es sich kontrollierter anfühlt. Es ist es nicht.</p>
+
+<h2>Hygiene, der unterschätzte Teil</h2>
+<p>Ein Heimgerät ist nach dem ersten Gebrauch nicht mehr steril, egal was auf der Packung steht.</p>
+<ul>
+<li>Vor und nach jeder Anwendung mindestens zehn Minuten in 70-prozentigem Isopropylalkohol.</li>
+<li>Vollständig trocknen lassen, in der mitgelieferten Box lagern, nie offen im Bad.</li>
+<li>Nach zehn bis fünfzehn Anwendungen ersetzen. Nadeln werden stumpf, und stumpfe Nadeln reissen.</li>
+<li>Niemals teilen. Auch nicht in der Familie.</li>
+</ul>
+<p>Wer diesen Aufwand nicht betreiben will, sollte kein Gerät kaufen. Eine Infektion in der Gesichtshaut ist deutlich unangenehmer als ein Serum, das etwas schlechter einzieht.</p>
+
+<h2>Was zu Hause realistisch dabei herauskommt</h2>
+<p>Bei 0,25 mm regelmässig angewendet: Wirkstoffe ziehen besser ein, die Haut wirkt kurzfristig etwas frischer. Das ist ehrlich gesagt der ganze Effekt.</p>
+<p>Was zu Hause nicht passiert: Narbenbehandlung, Kollagenaufbau in relevantem Umfang, Texturveränderung über Monate. Dafür braucht es Eindringtiefen, die zu Hause nicht sicher zu erreichen sind. Alles dazu steht unter <a href="/haut/microneedling/">Microneedling in der Praxis</a>.</p>
+
+<h2>Wann du besser die Finger davon lässt</h2>
+<ul>
+<li>Bei aktiver entzündlicher <a href="/beschwerden/akne/">Akne</a>. Du verteilst Bakterien über das ganze Gesicht.</li>
+<li>Bei <a href="/beschwerden/rosacea/">Rosacea</a>, gereizter Haut oder Sonnenbrand.</li>
+<li>Bei aktivem Lippenherpes.</li>
+<li>Bei Neigung zu <a href="/haut/pigmentflecken/">Pigmentflecken</a>. Jede Reizung kann nachpigmentieren.</li>
+<li>Unter Blutverdünnern oder Isotretinoin.</li>
+</ul>
+<p>Nach der Anwendung gilt dasselbe wie in der Praxis: keine Säuren, kein Retinol, kein Duft, und am nächsten Tag Sonnenschutz.</p>
+
+<h2>Die sinnvollere Heimroutine</h2>
+<p>Wenn es dir um frischere, entstautere Haut geht, ist ein Gua-Sha-Stein die risikoärmere Investition. Er verletzt nichts, kostet weniger und arbeitet an Lymphfluss und Kieferspannung, also genau an dem, was viele eigentlich meinen, wenn sie «müde Haut» sagen.</p>
+<p>Die Technik ist allerdings leichter falsch als richtig gemacht. Wir zeigen sie in 30 Minuten am eigenen Gesicht: <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha fürs Gesicht</a>.</p>
+`.trim(),
+    faqs: [
+      { q: 'Welche Nadellänge ist für zu Hause sicher?', a: 'Bis 0,3 mm. Das erreicht nur die oberste Hornschicht und verbessert die Wirkstoffaufnahme. Ab 0,5 mm entstehen echte Verletzungen, das gehört in die Praxis.' },
+      { q: 'Bringt Microneedling zu Hause überhaupt etwas?', a: 'Bei 0,25 mm ziehen Wirkstoffe besser ein und die Haut wirkt kurzfristig frischer. Kollagenaufbau, Narbenbehandlung oder Texturveränderung sind zu Hause nicht erreichbar.' },
+      { q: 'Wie reinige ich einen Dermaroller?', a: 'Vor und nach jeder Anwendung mindestens zehn Minuten in 70-prozentigem Isopropylalkohol, vollständig trocknen lassen, in der Box lagern. Nach zehn bis fünfzehn Anwendungen ersetzen.' },
+      { q: 'Wie oft darf ich zu Hause rollen?', a: 'Bei 0,25 mm ein- bis zweimal pro Woche. Häufiger reizt die Haut, ohne mehr zu bringen.' },
+      { q: 'Ist ein Dermapen besser als ein Dermaroller?', a: 'Stiftgeräte stechen senkrecht statt schräg und sind insofern schonender. Sie verleiten aber zu tieferen Einstellungen, weil sie sich kontrollierter anfühlen. Die Nadellängen-Grenze gilt trotzdem.' },
+      { q: 'Kann Microneedling zu Hause Narben verursachen?', a: 'Ja, bei zu langen Nadeln, schräger Führung oder stumpfen Nadeln. Aus einer Reissverletzung kann Narbengewebe entstehen. Das ist der Hauptgrund für die 0,3-mm-Grenze.' },
+    ],
+    related: [
+      { href: '/haut/microneedling/', label: 'Microneedling in der Praxis', cat: 'Methode' },
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'profhilo',
+    title: 'Profhilo: was es ist, was es kostet, was es nicht kann',
+    metaDesc: 'Profhilo ist kein Filler: stabilisierte Hyaluronsäure, fünf Injektionspunkte pro Seite, zwei Sitzungen. Ablauf, realistische Erwartung, Kosten in der Schweiz und Grenzen.',
+    excerpt: 'Wird oft mit Filler verwechselt und funktioniert völlig anders. Was es tatsächlich macht und für wen es sich lohnt.',
+    category: 'Methoden',
+    h1: 'Profhilo',
+    lead: 'Profhilo ist hochkonzentrierte, stabilisierte Hyaluronsäure, die sich im Gewebe verteilt statt Volumen aufzubauen. Es ist ausdrücklich kein Filler, und genau diese Verwechslung führt zu enttäuschten Erwartungen.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Nicht sicher, ob es an der Struktur liegt?',
+    ctaText: 'Wir bieten keine Injektionsbehandlungen an. Wir ordnen aber ein, ob dein Thema Struktur, Spannung oder Schwellung ist, und was davon wir sinnvoll behandeln können.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Profhilo ist ein Markenname für ein injizierbares Präparat aus stabilisierter Hyaluronsäure in sehr hoher Konzentration. Anders als ein Filler wird es nicht dort platziert, wo Volumen fehlt, sondern verteilt sich nach der Injektion im Gewebe.</p>
+<p class="wa-callout"><strong>Zur Einordnung:</strong> Wir bieten diese Behandlung nicht an und verdienen nichts daran. Dieser Artikel erklärt sie, weil sie häufig gesucht wird und weil die Abgrenzung zu Fillern selten sauber gemacht wird.</p>
+
+<h2>Kein Filler, und warum das wichtig ist</h2>
+<p><strong>Ein Filler</strong> ist quervernetzt und bleibt, wo er gesetzt wird. Er baut gezielt Volumen auf: Wange, Lippe, Nasolabialfalte.</p>
+<p><strong>Profhilo</strong> ist nicht quervernetzt. Es breitet sich nach der Injektion flächig aus und wirkt über die Feuchtigkeitsbindung im Gewebe. Es füllt keine einzelne Falte auf.</p>
+<p>Wer mit der Erwartung hingeht, eine bestimmte Falte verschwinden zu sehen, wird enttäuscht. Wer eine allgemein besser hydrierte, etwas straffere Hautqualität erwartet, liegt näher an dem, was das Präparat leistet.</p>
+
+<h2>Wie eine Behandlung abläuft</h2>
+<p>Injiziert wird an <strong>fünf definierten Punkten pro Gesichtshälfte</strong>, dem sogenannten BAP-Schema. Diese Punkte sind so gewählt, dass sich das Material gleichmässig verteilt und grössere Gefässe gemieden werden.</p>
+<p>Die Behandlung dauert 15 bis 20 Minuten. Betäubungscreme ist möglich, viele verzichten darauf. An den Einstichstellen bilden sich kurzfristig kleine Quaddeln, die innerhalb weniger Stunden verschwinden.</p>
+<p>Das Standardprotokoll sind <strong>zwei Sitzungen im Abstand von vier Wochen</strong>, danach Auffrischung nach etwa sechs Monaten.</p>
+
+<h2>Was realistisch dabei herauskommt</h2>
+<p>Beschrieben und in Studien gemessen wird eine Verbesserung der Hautqualität: mehr Feuchtigkeit, etwas mehr Elastizität, ein gleichmässigeres Hautbild. Die Effekte sind real, aber moderat.</p>
+<p>Nicht zu erwarten ist ein Lifting-Effekt, eine Konturveränderung oder das Verschwinden tiefer Falten. Wer das sucht, sucht eine andere Behandlung, und ehrliche Anbieter sagen das im Beratungsgespräch.</p>
+<p>Sichtbar wird das Ergebnis <strong>etwa vier Wochen nach der zweiten Sitzung</strong>, nicht sofort.</p>
+
+<h2>Was es in der Schweiz kostet</h2>
+<p>Eine Sitzung liegt üblicherweise zwischen <strong>CHF 500 und 800</strong>. Da zwei Sitzungen zum Protokoll gehören, plane für den Zyklus mit <strong>CHF 1'000 bis 1'600</strong>, plus Auffrischung nach etwa sechs Monaten.</p>
+<p>Keine Kassenleistung, es handelt sich um eine rein ästhetische Behandlung.</p>
+
+<h2>Risiken und wann es nicht in Frage kommt</h2>
+<p>Häufig und harmlos: kleine Blutergüsse an den Einstichstellen, kurzfristige Schwellung, Druckempfindlichkeit für ein bis zwei Tage.</p>
+<p>Selten, aber ernst: Gefässverschluss durch versehentliche intravasale Injektion. Genau deshalb ist die Wahl der behandelnden Person keine Preisfrage. Injektionen im Gesicht gehören in ärztliche Hände mit anatomischer Ausbildung.</p>
+<p>Nicht behandelt wird bei Schwangerschaft und Stillzeit, bei Autoimmunerkrankungen im aktiven Schub, bei Entzündungen im Behandlungsareal und bei bekannter Überempfindlichkeit gegen Hyaluronsäure-Präparate.</p>
+
+<h2>Die sanftere Alternative</h2>
+<p>Profhilo adressiert Hautqualität über Feuchtigkeitsbindung im Gewebe. Wenn dein Thema aber Spannung, ein müdes Hautbild oder ein Schwellungsgefühl am Morgen ist, liegt die Ursache woanders, und eine Injektion ist der aufwendigste denkbare Weg dorthin.</p>
+<p><a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> arbeitet ohne Präparat, <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> ohne Nadeln. Beide ohne Ausfallzeit. Was sie nicht leisten: die Feuchtigkeitsbindung im Gewebe verändern. Wenn es genau darum geht, ist Profhilo die passendere Methode.</p>
+`.trim(),
+    faqs: [
+      { q: 'Ist Profhilo ein Filler?', a: 'Nein. Ein Filler ist quervernetzt und baut gezielt Volumen auf. Profhilo ist nicht quervernetzt, verteilt sich flächig im Gewebe und wirkt über Feuchtigkeitsbindung. Es füllt keine einzelne Falte auf.' },
+      { q: 'Wie viele Sitzungen braucht Profhilo?', a: 'Das Standardprotokoll sind zwei Sitzungen im Abstand von vier Wochen, danach eine Auffrischung nach etwa sechs Monaten.' },
+      { q: 'Was kostet Profhilo in der Schweiz?', a: 'Eine Sitzung liegt üblicherweise zwischen CHF 500 und 800. Da zwei Sitzungen zum Protokoll gehören, plane für den Zyklus mit CHF 1000 bis 1600. Keine Kassenleistung.' },
+      { q: 'Wann sieht man das Ergebnis?', a: 'Etwa vier Wochen nach der zweiten Sitzung. Direkt danach sieht man nur die Quaddeln an den Einstichstellen, die innerhalb weniger Stunden verschwinden.' },
+      { q: 'Hilft Profhilo gegen tiefe Falten?', a: 'Nein. Erwartbar ist eine Verbesserung der Hautqualität, also Feuchtigkeit, Elastizität und Ebenmässigkeit. Ein Lifting-Effekt oder das Verschwinden tiefer Falten gehört nicht dazu.' },
+      { q: 'Bietet TCM.ch Profhilo an?', a: 'Nein. Wir führen keine Injektionsbehandlungen durch. Dieser Artikel dient der Einordnung, nicht der Bewerbung.' },
+    ],
+    related: [
+      { href: '/haut/ultherapy-hifu/', label: 'Ultherapy und HIFU', cat: 'Methode' },
+      { href: '/haut/rejuran-pdrn/', label: 'Rejuran und PDRN', cat: 'Methode' },
+      { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur', cat: 'Behandlung' },
+    ],
+  },
+
+  {
+    slug: 'rejuran-pdrn',
+    title: 'Rejuran und PDRN: der koreanische Hautbooster erklärt',
+    metaDesc: 'Rejuran und PDRN aus Lachs-DNA: wie das Prinzip funktioniert, was die Studienlage hergibt, wie der Zulassungsstatus in der Schweiz aussieht und worauf du achten musst.',
+    excerpt: 'Aus Korea, aus Lachs-DNA, und in der Schweiz regulatorisch nicht so klar wie oft dargestellt. Was du vor einer Behandlung wissen solltest.',
+    category: 'Methoden',
+    h1: 'Rejuran und PDRN',
+    lead: 'PDRN sind Polynukleotide, gewonnen aus Lachs-DNA. Rejuran ist die bekannteste koreanische Marke dafür. Das Prinzip ist interessant, die Studienlage überschaubar, und der Zulassungsstatus in der Schweiz ist der Punkt, über den am wenigsten gesprochen wird.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Fragen zu koreanischen Behandlungen?',
+    ctaText: 'Wir arbeiten mit koreanischen Methoden, aber ohne injizierbare Präparate. Wir sagen dir ehrlich, was davon in der Schweiz seriös verfügbar ist.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>PDRN steht für Polydesoxyribonukleotid, eine Kette von DNA-Bausteinen, die aus der Keimdrüse von Lachsen gewonnen wird. Der Gedanke dahinter: Diese Bausteine ähneln menschlicher DNA stark genug, dass sie im Gewebe Reparaturprozesse anstossen können.</p>
+<p><strong>Rejuran</strong> ist der bekannteste koreanische Markenname für ein solches Präparat und praktisch synonym mit der Behandlung geworden, ähnlich wie Tempo für Papiertaschentücher.</p>
+<p class="wa-callout"><strong>Zur Einordnung:</strong> Wir bieten diese Behandlung nicht an. Wir schreiben darüber, weil sie zunehmend gesucht wird und weil rund um die Verfügbarkeit in der Schweiz viel Unklares steht.</p>
+
+<h2>Wie das Prinzip funktioniert</h2>
+<p>PDRN wirkt nicht mechanisch wie ein Filler und nicht über Feuchtigkeitsbindung wie <a href="/haut/profhilo/">Profhilo</a>. Beschrieben wird ein biologischer Weg: Anregung der Fibroblasten, Förderung der Kollagenbildung, entzündungshemmende Effekte.</p>
+<p>In der Wundheilung und in der Behandlung von Verbrennungen wird PDRN seit längerem eingesetzt, dort gibt es eine belastbarere Datenbasis. Die ästhetische Anwendung im Gesicht ist die jüngere und deutlich schwächer untersuchte Verwendung.</p>
+
+<h2>Wie eine Behandlung abläuft</h2>
+<p>Injiziert wird oberflächlich in vielen kleinen Depots über das gesamte Gesicht, meist mit Betäubungscreme. Die Behandlung dauert 20 bis 30 Minuten.</p>
+<p>Typisch sind <strong>drei bis vier Sitzungen im Abstand von zwei bis vier Wochen</strong>. Direkt danach sind die Quaddeln sichtbar, dazu Rötung und häufig kleine Blutergüsse. Rechne mit zwei bis drei Tagen, in denen man es sieht.</p>
+
+<h2>Was die Studienlage hergibt</h2>
+<p>Hier ist Zurückhaltung angebracht. Es gibt Studien, die eine Verbesserung von Hautelastizität und Feuchtigkeit zeigen. Sie sind überwiegend klein, häufig in Korea durchgeführt und oft ohne unabhängige Finanzierung.</p>
+<p>Das heisst nicht, dass nichts passiert. Es heisst, dass die Evidenz nicht auf dem Niveau ist, das die Vermarktung nahelegt. Wer eine Behandlung mit dieser Preisklasse erwägt, sollte das wissen.</p>
+<div class="wa-pullquote">Interessantes Prinzip, dünne ästhetische Datenlage, und in der Schweiz ein Zulassungsthema, das man vor der Behandlung klären muss, nicht danach.</div>
+
+<h2>Der Punkt, über den kaum jemand spricht: Zulassung</h2>
+<p>Injizierbare Präparate unterliegen in der Schweiz der Heilmittelgesetzgebung. Ob ein bestimmtes PDRN-Produkt hier verkehrsfähig ist, hängt am konkreten Präparat und an seiner Klassifizierung, und die Lage ist nicht bei jedem Anbieter dieselbe.</p>
+<p>Was das für dich heisst, ganz praktisch: <strong>Frag vor der Behandlung nach dem konkreten Produktnamen und danach, auf welcher Grundlage es in der Schweiz eingesetzt wird.</strong> Eine seriöse Praxis beantwortet das ohne Zögern. Wer ausweicht oder auf «direkt aus Korea» verweist, ist die falsche Adresse.</p>
+<p>Bei Präparaten aus Grauimport hast du im Schadensfall zudem keine belastbare Haftungsgrundlage.</p>
+
+<h2>Risiken</h2>
+<p>Häufig: Quaddeln, Rötung, Blutergüsse, Druckempfindlichkeit über einige Tage.</p>
+<p>Zu beachten: Das Präparat stammt aus Fisch. Bei bekannter Fischallergie ist das ein Ausschlusskriterium, das im Beratungsgespräch aktiv angesprochen werden muss.</p>
+<p>Wie bei jeder Injektion im Gesicht gilt: Infektionen und Gefässkomplikationen sind selten, aber möglich, und die Qualifikation der behandelnden Person entscheidet mehr als das Präparat.</p>
+
+<h2>Was in der Schweiz kostet</h2>
+<p>Eine Sitzung liegt je nach Anbieter etwa zwischen <strong>CHF 450 und 750</strong>. Für die übliche Serie von drei bis vier Sitzungen kommst du auf <strong>CHF 1'400 bis 3'000</strong>. Keine Kassenleistung.</p>
+
+<h2>Die koreanische Alternative ohne Nadel</h2>
+<p>Wenn dich am koreanischen Ansatz die Systematik interessiert, das Schichten, die Regelmässigkeit, die Geduld über Wochen, dann bekommst du davon einen guten Teil ohne Injektion.</p>
+<p><a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> und <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> arbeiten beide mit dem Prinzip wiederholter, dosierter Reize über Zeit. Was sie nicht tun: Polynukleotide ins Gewebe bringen. Wenn es genau darum geht, führt kein Weg an der Injektion vorbei, und dann bitte mit geklärtem Präparat.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist PDRN?', a: 'Polydesoxyribonukleotid, eine Kette von DNA-Bausteinen aus der Keimdrüse von Lachsen. Sie soll im Gewebe Reparaturprozesse anstossen. In der Wundheilung ist der Einsatz besser untersucht als in der Ästhetik.' },
+      { q: 'Ist Rejuran dasselbe wie PDRN?', a: 'Rejuran ist der bekannteste koreanische Markenname für ein PDRN-Präparat und wird oft synonym verwendet. Es gibt weitere Produkte mit demselben Wirkprinzip.' },
+      { q: 'Ist Rejuran in der Schweiz zugelassen?', a: 'Das hängt am konkreten Präparat und seiner Klassifizierung. Frag vor der Behandlung nach dem Produktnamen und der Grundlage des Einsatzes in der Schweiz. Eine seriöse Praxis beantwortet das direkt.' },
+      { q: 'Wie viele Sitzungen braucht man?', a: 'Üblich sind drei bis vier Sitzungen im Abstand von zwei bis vier Wochen. Danach werden Auffrischungen empfohlen.' },
+      { q: 'Was kostet Rejuran in der Schweiz?', a: 'Eine Sitzung etwa CHF 450 bis 750, für die übliche Serie also CHF 1400 bis 3000. Keine Kassenleistung.' },
+      { q: 'Kann ich Rejuran bei einer Fischallergie machen lassen?', a: 'Nein. Das Präparat wird aus Lachs gewonnen. Eine bekannte Fischallergie ist ein Ausschlusskriterium und gehört zwingend ins Beratungsgespräch.' },
+    ],
+    related: [
+      { href: '/haut/profhilo/', label: 'Profhilo', cat: 'Methode' },
+      { href: '/haut/glass-skin/', label: 'Glass Skin', cat: 'K-Beauty' },
+      { href: '/therapien/gua-sha/gesichts-gua-sha/', label: 'Gua Sha fürs Gesicht', cat: 'Behandlung' },
+    ],
+  },
+
+  {
+    slug: 'ultherapy-hifu',
+    title: 'Ultherapy und HIFU: fokussierter Ultraschall erklärt',
+    metaDesc: 'HIFU und Ultherapy zur Hautstraffung: wie fokussierter Ultraschall arbeitet, wie schmerzhaft es ist, was realistisch herauskommt, Kosten in der Schweiz und Risiken.',
+    excerpt: 'Die Behandlung, die am häufigsten als Alternative zum Lifting verkauft wird. Was fokussierter Ultraschall kann und wo die Grenze zum Skalpell verläuft.',
+    category: 'Methoden',
+    h1: 'Ultherapy und HIFU',
+    lead: 'HIFU bündelt Ultraschall in einem Punkt tief im Gewebe und erzeugt dort gezielt Hitze. Das Gewebe zieht sich zusammen und bildet über Monate neues Kollagen. Ein Lifting ersetzt es nicht, auch wenn es oft so beworben wird.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Geht es um Kontur oder um Spannung?',
+    ctaText: 'Zwei sehr unterschiedliche Themen, die sich ähnlich anfühlen. Wir ordnen ein und sagen dir, was in unserer Praxis dafür sinnvoll ist und was nicht.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>HIFU steht für hochintensiven fokussierten Ultraschall. Die Schallwellen durchdringen die Hautoberfläche, ohne sie zu verletzen, und bündeln sich erst in einer definierten Tiefe. Dort entsteht punktuell Hitze von etwa 60 bis 70 Grad, das Gewebe zieht sich zusammen, und in den Wochen danach bildet der Körper an diesen Punkten neues Kollagen.</p>
+<p><strong>Ultherapy</strong> ist ein Markenname für ein HIFU-Gerät und das einzige System, das zusätzlich Ultraschall-Bildgebung nutzt: Die behandelnde Person sieht während der Behandlung, in welche Gewebeschicht sie zielt.</p>
+<p class="wa-callout"><strong>Zur Einordnung:</strong> Wir bieten HIFU nicht an. Dieser Artikel erklärt die Methode, weil sie häufig gesucht und häufig überversprochen wird.</p>
+
+<h2>Wie eine Behandlung abläuft</h2>
+<p>Nach der Reinigung wird Ultraschallgel aufgetragen und das Handstück in Bahnen über das Behandlungsareal geführt. Gearbeitet wird typischerweise in drei Tiefen: 4,5 mm für die tiefere Gewebeschicht, 3 mm für die Lederhaut, 1,5 mm für oberflächliche Feinheiten.</p>
+<p>Eine Gesichtsbehandlung dauert 45 bis 90 Minuten, je nach Areal und Anzahl der gesetzten Punkte.</p>
+
+<h2>Wie schmerzhaft ist es?</h2>
+<p>Ehrlich: deutlich unangenehmer als die meisten anderen Gesichtsbehandlungen. Beschrieben wird ein kurzes, tiefes Stechen oder Hitzegefühl bei jedem gesetzten Punkt, besonders über Knochen wie Kiefer und Stirn.</p>
+<p>Schmerzmittel vorab und eine reduzierte Energiestufe sind üblich. Eine niedrigere Energie ist aber auch eine geringere Wirkung, und dieser Zusammenhang wird im Verkaufsgespräch selten deutlich gemacht.</p>
+
+<h2>Was realistisch dabei herauskommt</h2>
+<p>Erwartbar ist eine <strong>moderate Straffung</strong> und eine etwas definiertere Kontur, vor allem entlang des Kieferbogens und am Hals. Bei guter Ausgangslage, also elastischer Haut und leichter Erschlaffung, sind die Ergebnisse am überzeugendsten.</p>
+<p>Nicht erwartbar: das Ergebnis eines chirurgischen Liftings. Bei deutlich erschlafftem Gewebe stösst HIFU an eine harte Grenze, und ein Anbieter, der dort trotzdem behandelt, nimmt dein Geld für ein absehbar enttäuschendes Ergebnis.</p>
+<p>Das Ergebnis entwickelt sich über <strong>zwei bis drei Monate</strong> und hält typischerweise ein bis anderthalb Jahre. Meist reicht eine Sitzung, Auffrischung nach etwa einem Jahr.</p>
+
+<h2>Was es in der Schweiz kostet</h2>
+<p>Je nach Areal und Anzahl der gesetzten Punkte liegt eine Behandlung etwa zwischen <strong>CHF 900 und 2'500</strong>. Nur Kinn und Kieferlinie deutlich darunter, ganzes Gesicht plus Hals am oberen Ende.</p>
+<p>Ein auffällig günstiges Angebot bedeutet in der Regel weniger gesetzte Punkte oder ein Gerät ohne Bildgebung. Bei dieser Methode ist der Preis ein Hinweis auf die Dosis.</p>
+
+<h2>Risiken und wann es nicht in Frage kommt</h2>
+<p>Häufig: Rötung, Schwellung, Druckempfindlichkeit und ein Gefühl von Muskelkater im Gesicht für einige Tage bis zwei Wochen.</p>
+<p>Selten: vorübergehende Nervenirritation mit Taubheitsgefühl, Verbrennungen bei falscher Energiewahl, und bei sehr schlanken Gesichtern ein unerwünschter Verlust von Wangenvolumen.</p>
+<p>Nicht behandelt wird bei aktiven Entzündungen im Areal, bei Implantaten oder Metall im Behandlungsgebiet, in Schwangerschaft und Stillzeit und bei schwerer <a href="/beschwerden/akne/">Akne</a> im Behandlungsbereich.</p>
+
+<h2>Die sanftere Alternative</h2>
+<p>HIFU adressiert Kontur und Gewebestraffung. Das ist ein anderes Thema als ein müdes, geschwollenes oder verspanntes Gesicht, auch wenn beides im Spiegel ähnlich aussehen kann.</p>
+<p>Wenn Spannung im Kiefer, Schwellungsgefühl am Morgen oder ein insgesamt erschöpftes Hautbild das eigentliche Thema sind, arbeiten <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> genau dort, ohne Schmerz und ohne Ausfallzeit. Was sie nicht tun: erschlafftes Gewebe straffen. Da ist HIFU die passende Methode, und wenn es darum geht, sagen wir das auch.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen HIFU und Ultherapy?', a: 'HIFU ist die Technologie, Ultherapy ein Markenname für ein bestimmtes Gerät. Ultherapy nutzt zusätzlich Ultraschall-Bildgebung, sodass die behandelnde Person die Zielschicht während der Behandlung sieht.' },
+      { q: 'Ist HIFU schmerzhaft?', a: 'Deutlich unangenehmer als die meisten Gesichtsbehandlungen. Bei jedem gesetzten Punkt entsteht ein kurzes, tiefes Stechen, besonders über Kiefer und Stirn. Schmerzmittel vorab sind üblich.' },
+      { q: 'Ersetzt HIFU ein Facelift?', a: 'Nein. Erwartbar ist eine moderate Straffung bei elastischer Haut und leichter Erschlaffung. Bei deutlich erschlafftem Gewebe stösst die Methode an eine harte Grenze.' },
+      { q: 'Wie lange hält das Ergebnis?', a: 'Das Ergebnis entwickelt sich über zwei bis drei Monate und hält typischerweise ein bis anderthalb Jahre. Meist reicht eine Sitzung, Auffrischung nach etwa einem Jahr.' },
+      { q: 'Was kostet HIFU in der Schweiz?', a: 'Je nach Areal etwa CHF 900 bis 2500. Auffällig günstige Angebote bedeuten meist weniger gesetzte Punkte oder ein Gerät ohne Bildgebung.' },
+      { q: 'Wie viele Sitzungen braucht man?', a: 'In der Regel eine, mit Auffrischung nach etwa einem Jahr. Das unterscheidet HIFU von Methoden wie Microneedling, die in Serien gemacht werden.' },
+    ],
+    related: [
+      { href: '/haut/profhilo/', label: 'Profhilo', cat: 'Methode' },
+      { href: '/haut/microneedling/', label: 'Microneedling', cat: 'Methode' },
+      { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur', cat: 'Behandlung' },
+    ],
+  },
 ];
 
 export const hautBySlug = (slug: string): HautArticle | undefined => haut.find((a) => a.slug === slug);
