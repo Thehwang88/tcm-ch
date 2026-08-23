@@ -1108,6 +1108,346 @@ export const haut: HautArticle[] = [
       { href: '/beschwerden/akne/', label: 'Akne', cat: 'Beschwerde' },
     ],
   },
+  {
+    slug: 'retinol',
+    title: 'Retinol: Einstieg, Dosierung, Nebenwirkungen',
+    metaDesc: 'Retinol richtig anwenden: welche Stärke für den Einstieg, wie du die Retinisierung übersteht, womit du es nicht kombinierst und wann es nicht in Frage kommt.',
+    excerpt: 'Der wirksamste frei verkäufliche Anti-Aging-Wirkstoff, und der, bei dem die meisten nach drei Wochen aufgeben. Meist wegen eines Dosierungsfehlers.',
+    category: 'Wirkstoffe',
+    h1: 'Retinol',
+    lead: 'Retinoide sind der einzige frei verkäufliche Wirkstoff mit belegter Wirkung auf Falten und Hauttextur. Sie sind auch der Wirkstoff, der am häufigsten falsch dosiert wird. Wer die ersten sechs Wochen übersteht, hat das Schwierigste hinter sich.',
+    readingTime: '9 Min.',
+    ctaTitle: 'Haut, die auf jeden Wirkstoff reagiert?',
+    ctaText: 'Wenn die Barriere dauerhaft überfordert ist, hilft kein weiteres Produkt. Wir schauen uns an, was dahintersteckt.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Retinoide sind Vitamin-A-Abkömmlinge. Sie beschleunigen die Zellerneuerung, regulieren die Verhornung und regen langfristig die Kollagenbildung an. Kein anderer frei verkäuflicher Wirkstoff hat eine vergleichbare Datenbasis.</p>
+
+<h2>Die Stärkestufen</h2>
+<p>Alle Retinoide müssen in der Haut zu Retinsäure umgewandelt werden. Je mehr Umwandlungsschritte nötig sind, desto milder und desto langsamer.</p>
+<p><strong>Retinylester.</strong> Die mildeste Stufe, drei Umwandlungsschritte. Für sehr empfindliche Haut, Wirkung entsprechend gering.</p>
+<p><strong>Retinol.</strong> Zwei Schritte. Der Standard in der Kosmetik, üblich sind 0,1 bis 1 Prozent.</p>
+<p><strong>Retinaldehyd.</strong> Ein Schritt. Deutlich wirksamer als Retinol bei ähnlicher Verträglichkeit, in der Schweiz noch wenig verbreitet.</p>
+<p><strong>Tretinoin.</strong> Die Säure selbst, keine Umwandlung nötig. Verschreibungspflichtig, ärztlich begleitet.</p>
+<div class="wa-callout"><div class="wa-callout-label">Für den Einstieg</div><p>0,2 bis 0,3 Prozent Retinol, zweimal pro Woche. Nicht 1 Prozent jeden Abend. Die häufigste Ursache für Abbrüche ist ein zu ambitionierter Start.</p></div>
+
+<h2>Die Retinisierung</h2>
+<p>In den ersten vier bis sechs Wochen reagiert die Haut fast immer: Rötung, Trockenheit, Schuppung, manchmal ein Aufflammen von Unreinheiten. Das ist die sogenannte Retinisierung, eine Anpassungsphase.</p>
+<p>Sie ist normal, sie geht vorbei, und sie ist kein Zeichen dafür, dass das Produkt wirkt. Sie ist auch kein Zeichen dafür, dass mehr besser wäre.</p>
+<p>Was durch die Phase hilft: Frequenz reduzieren statt absetzen, <a href="/haut/niacinamid/">Niacinamid</a> oder <a href="/haut/centella/">Centella</a> dazu, und die Sandwich-Methode, also Feuchtigkeitscreme vor und nach dem Retinol.</p>
+
+<h2>Wie du es anwendest</h2>
+<p>Abends, auf trockene Haut. Auf feuchter Haut dringt es stärker ein und reizt entsprechend mehr.</p>
+<p>Erbsengrosse Menge fürs ganze Gesicht. Aussparen: Augenlider, Nasenflügelfalten, Mundwinkel.</p>
+<p>Frequenz aufbauen: zwei Wochen zweimal pro Woche, dann jeden zweiten Abend, dann täglich, wenn die Haut es trägt. Manche bleiben dauerhaft bei dreimal pro Woche, das ist völlig in Ordnung.</p>
+<p><strong>Sonnenschutz am Morgen ist nicht optional.</strong> Retinoide machen die Haut lichtempfindlicher, und ohne UV-Schutz arbeitest du gegen dich selbst.</p>
+<p>Sichtbare Ergebnisse bei Textur nach etwa zwölf Wochen, bei feinen Linien nach sechs Monaten. Wer nach vier Wochen wechselt, sieht nie etwas.</p>
+
+<h2>Womit du es nicht kombinierst</h2>
+<p><strong>Nicht in derselben Anwendung mit Säuren.</strong> AHA, BHA und Retinol zusammen überfordern die Barriere zuverlässig.</p>
+<p><strong>Nicht zusammen mit <a href="/haut/vitamin-c-serum/">Vitamin C</a>.</strong> Nicht wegen einer chemischen Unverträglichkeit, sondern wegen der kumulierten Reizung. Vitamin C morgens, Retinol abends.</p>
+<p><strong>Gut kombinierbar:</strong> Niacinamid, Centella, Hyaluronsäure, reichhaltige Feuchtigkeitspflege.</p>
+
+<h2>Wann Retinol nicht in Frage kommt</h2>
+<ul>
+<li><strong>Schwangerschaft und Stillzeit.</strong> Vitamin-A-Abkömmlinge sind hier ausgeschlossen, auch topisch. Das ist keine Vorsichtsmassnahme, sondern eine klare Empfehlung.</li>
+<li>Bei stark geschädigter Hautbarriere, erst aufbauen, dann starten.</li>
+<li>Bei <a href="/beschwerden/rosacea/">Rosacea</a> im Schub.</li>
+<li>Rund um ein Peeling, eine Laserbehandlung oder <a href="/haut/microneedling/">Microneedling</a>, vorher und nachher pausieren.</li>
+</ul>
+<p>Bei <a href="/haut/melasma/">Melasma</a> und Pigmentierung kann Retinol helfen, aber die Reizung kann auch nachpigmentieren lassen. Vorsichtig einsteigen.</p>
+
+<h2>Was Retinol nicht kann</h2>
+<p>Tiefe Falten glätten, erschlafftes Gewebe straffen, Konturen verändern. Es verbessert Textur, feine Linien und Ebenmässigkeit, über Monate und bei konsequenter Anwendung. Das ist viel, aber es ist begrenzt.</p>
+<p>Wenn dein Thema Kontur ist, arbeitest du mit Retinol am falschen Problem. Was dafür in Frage kommt und wo dessen Grenzen liegen, steht unter <a href="/haut/ultherapy-hifu/">Ultherapy und HIFU</a>.</p>
+`.trim(),
+    faqs: [
+      { q: 'Mit welcher Retinol-Konzentration soll ich anfangen?', a: '0,2 bis 0,3 Prozent, zweimal pro Woche. Danach langsam steigern. Ein zu hoch dosierter Start ist der häufigste Grund, warum Menschen Retinol nach drei Wochen wieder absetzen.' },
+      { q: 'Wie lange dauert die Retinisierung?', a: 'Vier bis sechs Wochen. Rötung, Trockenheit und Schuppung sind in dieser Phase normal. Frequenz reduzieren hilft besser als absetzen.' },
+      { q: 'Darf ich Retinol in der Schwangerschaft benutzen?', a: 'Nein. Vitamin-A-Abkömmlinge sind in Schwangerschaft und Stillzeit ausgeschlossen, auch in der äusserlichen Anwendung. Azelainsäure ist eine übliche Alternative, Rücksprache mit der behandelnden Ärztin.' },
+      { q: 'Kann ich Retinol und Vitamin C kombinieren?', a: 'Nicht in derselben Anwendung, aber am selben Tag. Vitamin C morgens, Retinol abends. Zusammen aufgetragen steigt nur die Reizung.' },
+      { q: 'Wann sieht man Ergebnisse?', a: 'Bei der Hauttextur nach etwa zwölf Wochen, bei feinen Linien nach rund sechs Monaten. Retinol braucht Konsequenz über Monate.' },
+      { q: 'Muss ich bei Retinol Sonnenschutz benutzen?', a: 'Ja, zwingend. Retinoide machen die Haut lichtempfindlicher. Ohne täglichen UV-Schutz am Morgen arbeitest du gegen den eigenen Fortschritt.' },
+    ],
+    related: [
+      { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
+      { href: '/haut/sonnencreme-gesicht/', label: 'Sonnencreme fürs Gesicht', cat: 'Wirkstoff' },
+      { href: '/haut/falten-gesicht/', label: 'Falten im Gesicht', cat: 'Hautthema' },
+    ],
+  },
+
+  {
+    slug: 'sonnencreme-gesicht',
+    title: 'Sonnencreme fürs Gesicht: LSF, Filter, koreanische Texturen',
+    metaDesc: 'Sonnenschutz fürs Gesicht: welcher LSF nötig ist, Unterschied mineralisch und chemisch, warum koreanische Formulierungen angenehmer sind und wie viel du auftragen musst.',
+    excerpt: 'Der einzige Pflegeschritt, der langfristig über das Hautbild entscheidet. Und der, bei dem fast alle zu wenig auftragen.',
+    category: 'Wirkstoffe',
+    h1: 'Sonnencreme fürs Gesicht',
+    lead: 'Wenn du aus dieser ganzen Sektion nur eine Sache mitnimmst, dann diese: Täglicher Sonnenschutz verändert das Hautbild über Jahre mehr als jedes Serum. Und die meisten tragen weniger als die Hälfte der nötigen Menge auf.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Hautbild, das trotz Pflege nicht besser wird?',
+    ctaText: 'Wir schauen uns die ganze Routine an, nicht nur das eine Produkt, und sagen ehrlich, wo der Hebel liegt.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>UV-Strahlung ist für den grössten Teil dessen verantwortlich, was als Hautalterung sichtbar wird: <a href="/haut/pigmentflecken/">Pigmentflecken</a>, feine Linien, Elastizitätsverlust, erweiterte Äderchen. Der Anteil wird auf etwa 80 Prozent geschätzt.</p>
+<p>Daraus folgt eine unbequeme Rangfolge: Sonnenschutz vor jedem Wirkstoff. Ein 80-Franken-Serum ohne täglichen UV-Schutz ist eine schlechte Investition.</p>
+
+<h2>Welcher LSF?</h2>
+<p>Fürs Gesicht täglich <strong>LSF 30 bis 50</strong>. Der Unterschied zwischen 30 und 50 ist geringer als oft angenommen: 30 blockt etwa 97 Prozent der UVB-Strahlung, 50 etwa 98.</p>
+<p>Wichtiger als die Zahl ist, dass <strong>UVA-Schutz</strong> ausgewiesen ist. In Europa erkennst du ihn am eingekreisten UVA-Logo, bei koreanischen und japanischen Produkten am PA-System, wobei PA++++ der höchste Wert ist. UVA dringt tiefer ein und ist für Alterung und Pigment massgeblich.</p>
+<p>Bei <a href="/haut/melasma/">Melasma</a> reicht UV-Schutz allein nicht, dort braucht es zusätzlich getönte Produkte mit Eisenoxid gegen sichtbares Licht.</p>
+
+<h2>Mineralisch oder chemisch?</h2>
+<p><strong>Mineralische Filter</strong> (Zinkoxid, Titandioxid) legen sich auf die Haut und reflektieren. Sehr gut verträglich, hinterlassen aber häufig einen Weissschleier und wirken auf dunkleren Hauttönen grau.</p>
+<p><strong>Chemische Filter</strong> wandeln UV-Strahlung in Wärme um. Kosmetisch deutlich angenehmer, dünner, ohne Rückstand. Moderne Filter sind gut untersucht.</p>
+<p>Die meisten Menschen fahren mit einem angenehmen chemischen oder gemischten Filter besser, aus einem simplen Grund: Sie benutzen ihn tatsächlich täglich. Der beste Sonnenschutz ist der, der aufgetragen wird.</p>
+
+<h2>Warum koreanische und japanische Produkte oft angenehmer sind</h2>
+<p>In der EU und der Schweiz ist die Liste zugelassener UV-Filter kürzer und wird langsamer erweitert als in Korea und Japan. Dort sind modernere Filter zugelassen, die höheren Schutz bei leichterer Textur erlauben.</p>
+<p>Deshalb sind asiatische Formulierungen häufig dünner, ziehen schneller ein und hinterlassen keinen Film, bei gleichem oder höherem Schutz. Das ist einer der wenigen Bereiche, in denen der K-Beauty-Hype einen realen technischen Grund hat.</p>
+<p>Beim Kauf beachten: seriöse Bezugsquelle, Verfallsdatum, und die Kennzeichnung sollte lesbar sein. Bei Importprodukten gilt europäisches Recht nicht, die Deklaration kann abweichen.</p>
+
+<h2>Wie viel und wie oft</h2>
+<p>Für das Gesicht rechnet man mit etwa <strong>zwei Fingerlängen</strong> Produkt, also je ein Strang auf Zeige- und Mittelfinger. Das ist deutlich mehr, als die meisten auftragen.</p>
+<p>Wer nur die Hälfte aufträgt, erreicht nicht die Hälfte des Schutzes, sondern weniger. Der Zusammenhang ist nicht linear.</p>
+<p>Nachlegen alle zwei Stunden, sobald du längere Zeit draussen bist. An einem normalen Bürotag reicht die Morgenanwendung. Auch bei Bewölkung, auch im Winter, auch am Fenster: UVA durchdringt Fensterglas.</p>
+
+<h2>Häufige Fehler</h2>
+<ul>
+<li><strong>Zu wenig Produkt.</strong> Der mit Abstand häufigste Fehler.</li>
+<li><strong>Ohren, Hals und Nacken vergessen.</strong> Genau dort zeigt sich Sonnenschaden später deutlich.</li>
+<li><strong>Auf LSF im Make-up verlassen.</strong> Die Auftragsmenge liegt weit unter der nötigen Dosis.</li>
+<li><strong>Nur im Sommer.</strong> UVA ist ganzjährig relevant.</li>
+</ul>
+
+<h2>Was das für alles andere bedeutet</h2>
+<p>Sonnenschutz ist die Grundlage, auf der jede andere Massnahme aufbaut. <a href="/haut/vitamin-c-serum/">Vitamin C</a> gegen Pigment, <a href="/haut/retinol/">Retinol</a> gegen Textur, jede Behandlung gegen Flecken: alles verliert ohne UV-Schutz einen Grossteil seiner Wirkung, und bei Pigmentthemen praktisch die gesamte.</p>
+`.trim(),
+    faqs: [
+      { q: 'Welcher LSF fürs Gesicht im Alltag?', a: 'LSF 30 bis 50, täglich. Wichtiger als die Zahl ist ein ausgewiesener UVA-Schutz, erkennbar am eingekreisten UVA-Logo oder am PA-System bei asiatischen Produkten.' },
+      { q: 'Wie viel Sonnencreme brauche ich fürs Gesicht?', a: 'Etwa zwei Fingerlängen, also je ein Strang auf Zeige- und Mittelfinger. Wer die Hälfte aufträgt, erreicht deutlich weniger als die Hälfte des Schutzes.' },
+      { q: 'Mineralisch oder chemisch, was ist besser?', a: 'Mineralisch ist sehr gut verträglich, hinterlässt aber oft einen Weissschleier. Chemische Filter sind kosmetisch angenehmer. Der beste Sonnenschutz ist der, den du tatsächlich täglich benutzt.' },
+      { q: 'Warum sind koreanische Sonnencremes leichter?', a: 'In Korea und Japan sind modernere UV-Filter zugelassen als in der EU und der Schweiz. Sie erlauben hohen Schutz bei dünnerer Textur. Das ist ein realer technischer Vorteil.' },
+      { q: 'Brauche ich Sonnenschutz auch im Winter und drinnen?', a: 'UVA ist ganzjährig relevant und durchdringt Fensterglas. Wer viel am Fenster sitzt oder täglich draussen ist, profitiert auch im Winter.' },
+      { q: 'Reicht der LSF in meiner Tagescreme oder Foundation?', a: 'In der Regel nicht. Die aufgetragene Menge liegt weit unter der Dosis, mit der der Schutzfaktor gemessen wird.' },
+    ],
+    related: [
+      { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+      { href: '/haut/melasma/', label: 'Melasma', cat: 'Hautthema' },
+      { href: '/haut/retinol/', label: 'Retinol', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'ampoule',
+    title: 'Ampoule, Essence, Serum: was ist der Unterschied?',
+    metaDesc: 'Ampoule, Essence, Serum und Toner in der koreanischen Hautpflege: was die Begriffe bedeuten, welche Reihenfolge sinnvoll ist und welche Schritte du weglassen kannst.',
+    excerpt: 'Vier Produktkategorien, die sich überschneiden und deren Namen nicht geschützt sind. Was tatsächlich dahintersteckt.',
+    category: 'K-Beauty',
+    h1: 'Ampoule, Essence und Serum',
+    lead: 'Die koreanische Hautpflege kennt mehr Produktkategorien als die europäische, und keine davon ist rechtlich definiert. Was drinsteht, entscheidet der Hersteller. Hier steht, was die Begriffe üblicherweise meinen und was du weglassen kannst.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Zu viele Produkte, zu wenig Ergebnis?',
+    ctaText: 'Manchmal ist weniger Routine und mehr Behandlung der einfachere Weg. Wir ordnen ein, was bei dir sinnvoll wäre.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Vorweg das Wichtigste: <strong>Keiner dieser Begriffe ist geschützt.</strong> Ob ein Produkt als Essence, Serum oder Ampoule verkauft wird, entscheidet die Marketingabteilung. Die INCI-Liste sagt mehr als der Name auf der Flasche.</p>
+<p>Trotzdem gibt es eine gewachsene Konvention, und die ist nützlich zu kennen.</p>
+
+<h2>Die Kategorien</h2>
+<p><strong>Toner.</strong> In der koreanischen Logik kein Gesichtswasser zum Entfetten, sondern ein erster Feuchtigkeitsschritt direkt nach der Reinigung. Sehr dünnflüssig. Bereitet die Haut auf die folgenden Schichten vor.</p>
+<p><strong>Essence.</strong> Etwas dickflüssiger als Toner, niedrigere Wirkstoffkonzentration als ein Serum. Der Schritt, der in europäischen Routinen meist fehlt. Ziel ist Hydration, nicht gezielte Wirkstoffabgabe.</p>
+<p><strong>Serum.</strong> Höhere Wirkstoffkonzentration, gezielt auf ein Thema ausgerichtet: Pigment, Textur, Rötung.</p>
+<p><strong>Ampoule.</strong> Konventionell die konzentrierteste Stufe, oft in kleinen Flaschen, gedacht als Kur über einige Wochen. In der Praxis ist der Unterschied zum Serum häufig fliessend.</p>
+<div class="wa-callout"><div class="wa-callout-label">Praktisch</div><p>Wenn du wissen willst, ob eine Ampoule wirklich konzentrierter ist als das Serum daneben, vergleiche die INCI-Listen. Steht der Wirkstoff weiter vorne, ist mehr drin. Steht er an derselben Stelle, zahlst du für das Wort.</p></div>
+
+<h2>Die sinnvolle Reihenfolge</h2>
+<p>Die Regel ist einfach: <strong>von dünn nach dick.</strong> Ein dünnflüssiges Produkt dringt nicht durch eine Cremeschicht.</p>
+<ol>
+<li>Reinigung, abends doppelt</li>
+<li>Toner oder Essence</li>
+<li>Serum oder Ampoule</li>
+<li>Feuchtigkeitscreme</li>
+<li>Morgens: <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a> als letzter Schritt</li>
+</ol>
+<p>Zwischen den Schritten kurz warten, aber nicht bis zur völligen Trockenheit. Der eigentliche Trick der koreanischen Methode ist, auf <em>leicht feuchte</em> Haut zu schichten. Das ist wirksamer als jede zusätzliche Kategorie.</p>
+
+<h2>Was du weglassen kannst</h2>
+<p>Für die meisten Menschen reichen vier Schritte: Reinigung, ein Feuchtigkeitsschritt, ein Wirkstoff, Sonnenschutz.</p>
+<p>Toner <em>und</em> Essence <em>und</em> Serum <em>und</em> Ampoule übereinander ist selten sinnvoll. Jede zusätzliche Formulierung ist ein zusätzliches Reizrisiko, und die Wirkstoffe konkurrieren um dieselbe Aufnahmekapazität.</p>
+<p>Die berühmte Zehn-Schritte-Routine war nie als tägliche Pflicht gedacht. Sie ist eine Auswahl von Möglichkeiten, aus der man je nach Hautzustand kombiniert.</p>
+
+<h2>Woran du Qualität erkennst</h2>
+<ul>
+<li><strong>Wirkstoff weit vorne in der INCI-Liste.</strong> Alles nach den Konservierungsstoffen ist Dekoration.</li>
+<li><strong>Konzentration deklariert.</strong> Seriöse Marken schreiben, wie viel <a href="/haut/niacinamid/">Niacinamid</a> oder <a href="/haut/centella/">Centella</a> drin ist.</li>
+<li><strong>Sinnvolle Verpackung.</strong> Lichtempfindliche Wirkstoffe wie <a href="/haut/vitamin-c-serum/">Vitamin C</a> gehören in dunkle, luftdichte Behälter, nicht in Klarglas mit Pipette.</li>
+<li><strong>Kurze Zutatenliste bei empfindlicher Haut.</strong> Weniger Bestandteile heisst weniger mögliche Auslöser.</li>
+</ul>
+`.trim(),
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Ampoule und Serum?', a: 'Konventionell ist eine Ampoule konzentrierter und als Kur über einige Wochen gedacht. Beide Begriffe sind aber nicht geschützt, in der Praxis ist der Unterschied oft fliessend. Die INCI-Liste sagt mehr als der Name.' },
+      { q: 'Brauche ich Toner und Essence?', a: 'Nein. Für die meisten reichen Reinigung, ein Feuchtigkeitsschritt, ein Wirkstoff und Sonnenschutz. Mehrere Schichten übereinander erhöhen vor allem das Reizrisiko.' },
+      { q: 'In welcher Reihenfolge trage ich die Produkte auf?', a: 'Von dünn nach dick: Reinigung, Toner oder Essence, Serum oder Ampoule, Feuchtigkeitscreme, morgens zuletzt Sonnenschutz. Auf leicht feuchte Haut schichten wirkt besser als auf trockene.' },
+      { q: 'Ist die koreanische Zehn-Schritte-Routine nötig?', a: 'Nein, sie war nie als tägliche Pflicht gedacht. Sie beschreibt eine Auswahl von Möglichkeiten, aus der je nach Hautzustand kombiniert wird.' },
+      { q: 'Woran erkenne ich, ob ein Produkt genug Wirkstoff enthält?', a: 'An der Position in der INCI-Liste. Steht der Wirkstoff weit vorne, ist relevant viel drin. Alles hinter den Konservierungsstoffen ist in geringer Menge enthalten.' },
+      { q: 'Was ist ein Toner in der koreanischen Pflege?', a: 'Kein Gesichtswasser zum Entfetten, sondern ein erster dünnflüssiger Feuchtigkeitsschritt direkt nach der Reinigung, der die Haut auf die folgenden Schichten vorbereitet.' },
+    ],
+    related: [
+      { href: '/haut/glass-skin/', label: 'Glass Skin', cat: 'K-Beauty' },
+      { href: '/haut/k-beauty/', label: 'K-Beauty', cat: 'K-Beauty' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+    ],
+  },
+
+  {
+    slug: 'falten-gesicht',
+    title: 'Falten im Gesicht: Zornesfalte, Nasolabial, Marionettenfalten',
+    metaDesc: 'Falten im Gesicht verstehen: warum Mimikfalten, Volumenfalten und Schwerkraftfalten unterschiedlich behandelt werden und was bei welcher Falte realistisch möglich ist.',
+    excerpt: 'Drei Faltentypen, drei völlig verschiedene Ursachen. Was bei welcher Falte funktioniert und was nicht.',
+    category: 'Hautthemen',
+    h1: 'Falten im Gesicht',
+    lead: 'Eine Zornesfalte entsteht durch Muskelbewegung, eine Nasolabialfalte durch Volumenverlust, Marionettenfalten durch Schwerkraft und Gewebeabsenkung. Wer alle drei mit derselben Creme behandelt, wird bei mindestens zweien enttäuscht.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Mehr Spannung als Falte?',
+    ctaText: 'Bei vielen ist der Gesichtsausdruck angespannter als nötig. Daran lässt sich arbeiten, ohne Nadel und ohne Präparat.',
+    ctaHref: '/therapien/gesichtsakupunktur/',
+    ctaLabel: 'Gesichtsakupunktur ansehen',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>Falten haben nicht eine Ursache, sondern drei. Welcher Typ vorliegt, entscheidet darüber, was überhaupt möglich ist, und ersparen kann diese Unterscheidung viel Geld.</p>
+
+<h2>Die drei Faltentypen</h2>
+<p><strong>Mimikfalten.</strong> Entstehen durch wiederholte Muskelbewegung. Dazu gehören die <strong>Zornesfalte</strong> zwischen den Augenbrauen, Stirnfalten und Krähenfüsse. Anfangs nur bei Bewegung sichtbar, mit den Jahren auch in Ruhe.</p>
+<p><strong>Volumenfalten.</strong> Entstehen, wenn darunterliegendes Fettgewebe und Knochensubstanz abnehmen. Die <strong>Nasolabialfalte</strong> ist das bekannteste Beispiel. Sie ist keine Falte im eigentlichen Sinn, sondern eine Grenze zwischen zwei Gewebeabschnitten, die mit dem Volumenverlust deutlicher hervortritt.</p>
+<p><strong>Schwerkraftfalten.</strong> Entstehen durch Absinken des Gewebes. <strong>Marionettenfalten</strong> vom Mundwinkel abwärts gehören hierher, ebenso die weiche Kieferlinie.</p>
+<div class="wa-callout"><div class="wa-callout-label">Selbsttest</div><p>Sichtbar nur beim Stirnrunzeln oder Lächeln: Mimikfalte. Sichtbar auch in völliger Entspannung, verschwindet aber, wenn du dich hinlegst: eher Volumen und Schwerkraft. Sichtbar in jeder Position: strukturell verfestigt.</p></div>
+
+<h2>Was Pflege leisten kann</h2>
+<p>Ehrlich: Pflege verbessert die Hautqualität, nicht die Gesichtsstruktur. Sie wirkt auf feine Linien und Oberflächentextur, nicht auf Volumen und nicht auf Absenkung.</p>
+<p><strong><a href="/haut/retinol/">Retinoide</a></strong> sind der einzige frei verkäufliche Wirkstoff mit belegter Wirkung auf feine Linien. Monate, nicht Wochen.</p>
+<p><strong><a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a></strong> ist präventiv das Wirksamste überhaupt. Was nicht entsteht, muss nicht behandelt werden.</p>
+<p><strong><a href="/haut/vitamin-c-serum/">Vitamin C</a></strong> ergänzend, antioxidativ und als Kofaktor der Kollagensynthese.</p>
+<p>Was Pflege nicht kann: eine ausgeprägte Zornesfalte glätten, eine Nasolabialfalte auffüllen, Marionettenfalten anheben. Produkte, die das versprechen, halten es nicht.</p>
+
+<h2>Was bei welchem Typ in Frage kommt</h2>
+<p><strong>Mimikfalten.</strong> Muskelentspannende Injektionen sind hier das etablierte Verfahren. Es handelt sich um ein verschreibungspflichtiges Arzneimittel, das ausschliesslich ärztlich angewendet wird und über das wir aus rechtlichen Gründen nicht werbend informieren dürfen. Sprich darüber mit einer Fachärztin.</p>
+<p><strong>Volumenfalten.</strong> Hyaluronsäure-Filler bauen gezielt Volumen auf. <a href="/haut/profhilo/">Profhilo</a> gehört ausdrücklich nicht dazu, es füllt nicht.</p>
+<p><strong>Schwerkraftfalten.</strong> Hier stösst alles Nicht-Chirurgische an Grenzen. <a href="/haut/ultherapy-hifu/">HIFU</a> kann bei leichter Erschlaffung moderat straffen, bei deutlicher Absenkung nicht.</p>
+<p><strong>Textur und feine Linien.</strong> <a href="/haut/microneedling/">Microneedling</a> über mehrere Sitzungen.</p>
+
+<h2>Was wir beitragen können, und was nicht</h2>
+<p>Ein Punkt, der selten angesprochen wird: Viele Menschen tragen dauerhaft mehr Spannung im Gesicht, als der Ausdruck bräuchte. Zusammengezogene Brauen bei Bildschirmarbeit, angespannter Kiefer bei Stress, nächtliches Zähneknirschen. Diese Dauerspannung vertieft Mimikfalten schneller.</p>
+<p>An der Spannung lässt sich arbeiten. <a href="/therapien/gesichtsakupunktur/">Gesichtsakupunktur</a> und <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha im Gesicht</a> setzen genau dort an, ohne Präparat und ohne Ausfallzeit.</p>
+<p>Was sie nicht tun: Volumen aufbauen, abgesunkenes Gewebe anheben, eine tief eingegrabene Falte glätten. Wenn es darum geht, sagen wir das, statt eine Serie zu verkaufen, die das Thema nicht trifft.</p>
+`.trim(),
+    faqs: [
+      { q: 'Was hilft gegen die Zornesfalte?', a: 'Sie ist eine Mimikfalte, entstanden durch wiederholte Muskelbewegung. Pflege wirkt darauf kaum. Muskelentspannende Injektionen sind das etablierte ärztliche Verfahren. An der zugrunde liegenden Dauerspannung lässt sich zusätzlich arbeiten.' },
+      { q: 'Kann man Nasolabialfalten wegcremen?', a: 'Nein. Die Nasolabialfalte entsteht durch Volumenverlust im darunterliegenden Gewebe, nicht durch Hautqualität. Creme kann die Oberfläche verbessern, nicht das Volumen.' },
+      { q: 'Was ist der Unterschied zwischen Mimik- und Volumenfalten?', a: 'Mimikfalten entstehen durch Muskelbewegung und sind anfangs nur in Bewegung sichtbar. Volumenfalten entstehen durch Abnahme von Fett- und Knochensubstanz und sind auch in Ruhe da.' },
+      { q: 'Hilft Gesichtsakupunktur gegen Falten?', a: 'Sie arbeitet an Muskelspannung und Durchblutung. Wo Dauerspannung eine Mimikfalte mitverursacht, kann das etwas bewirken. Volumenverlust und abgesunkenes Gewebe adressiert sie nicht.' },
+      { q: 'Was ist die beste Vorbeugung gegen Falten?', a: 'Täglicher Sonnenschutz. UV-Strahlung ist für den Grossteil der sichtbaren Hautalterung verantwortlich. Alles andere kommt danach.' },
+      { q: 'Wirkt Retinol gegen tiefe Falten?', a: 'Auf feine Linien und Textur wirkt es belegt, über Monate. Tiefe Falten glättet es nicht, und erschlafftes Gewebe strafft es nicht.' },
+    ],
+    related: [
+      { href: '/haut/retinol/', label: 'Retinol', cat: 'Wirkstoff' },
+      { href: '/haut/ultherapy-hifu/', label: 'Ultherapy und HIFU', cat: 'Methode' },
+      { href: '/therapien/gesichtsakupunktur/', label: 'Gesichtsakupunktur', cat: 'Behandlung' },
+    ],
+  },
+
+  {
+    slug: 'k-beauty',
+    title: 'K-Beauty: was wirklich dahintersteckt',
+    metaDesc: 'K-Beauty jenseits des Hypes: welche Prinzipien der koreanischen Hautpflege tatsächlich etwas taugen, welche Wirkstoffe von dort kommen und was Marketing ist.',
+    excerpt: 'Weniger Zaubermittel, mehr Methode. Was die koreanische Hautpflege richtig macht und wo der Hype anfängt.',
+    category: 'K-Beauty',
+    h1: 'K-Beauty',
+    lead: 'Koreanische Hautpflege hat der Welt einige wirklich gute Ideen gebracht und eine Menge Produktkategorien, die niemand braucht. Hier trennen wir das eine vom anderen.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Koreanische Methode, Schweizer Praxis',
+    ctaText: 'Wir arbeiten mit Techniken, die aus derselben Tradition stammen. Sag uns, worum es bei dir geht.',
+    ctaHref: '/therapien/gua-sha/gesichts-gua-sha/',
+    ctaLabel: 'Gua Sha fürs Gesicht',
+    author: AUTOR,
+    reviewerName: 'NAME EINSETZEN',
+    datePublished: '2026-08-23',
+    dateModified: '2026-08-23',
+    lastReviewed: '2026-08-23',
+    bodyHtml: `
+<p>K-Beauty steht für koreanische Hautpflege, und der Begriff transportiert zwei sehr verschiedene Dinge: eine ernst zu nehmende Herangehensweise an Haut, und eine Marketingmaschine mit hoher Produkttaktung.</p>
+
+<h2>Die vier Prinzipien, die etwas taugen</h2>
+<p><strong>Pflege statt Korrektur.</strong> Der grundlegende Unterschied zur westlichen Tradition. Der Fokus liegt auf dem Erhalt gesunder Haut über Jahre statt auf der Behandlung von Problemen, wenn sie da sind. Das erklärt auch, warum Sonnenschutz dort selbstverständlicher ist.</p>
+<p><strong>Feuchtigkeit schichten.</strong> Mehrere dünne Schichten auf leicht feuchte Haut wirken besser als eine dicke Schicht auf trockene. Das ist der praktisch nützlichste Beitrag der koreanischen Methode und kostet nichts.</p>
+<p><strong>Hautbarriere zuerst.</strong> Wo westliche Routinen oft mit dem stärksten Wirkstoff beginnen, wird dort erst die Barriere aufgebaut. Ein Grund, warum beruhigende Wirkstoffe wie <a href="/haut/centella/">Centella</a> so präsent sind.</p>
+<p><strong>Konsequenz über Zeit.</strong> Nicht die Intensität einer Anwendung zählt, sondern dass sie über Monate stattfindet. Dieselbe Logik steht hinter jeder Behandlungsserie in unserer Praxis.</p>
+
+<h2>Die Wirkstoffe, die von dort kommen</h2>
+<p>K-Beauty hat mehrere Inhaltsstoffe in die westliche Hautpflege gebracht, lange bevor sie hier Standard wurden:</p>
+<ul>
+<li><strong><a href="/haut/centella/">Centella asiatica</a></strong>, als Cica bekannt. Beruhigend, gut belegt, und in der chinesischen Kräuterkunde als Jixuecao seit Jahrhunderten in Gebrauch.</li>
+<li><strong><a href="/haut/niacinamid/">Niacinamid</a></strong> in alltagstauglichen Konzentrationen, lange bevor es hier in jedem Serum stand.</li>
+<li><strong>Schneckensekret.</strong> Klingt nach Gimmick, hat aber Daten zur Barriereunterstützung. Kein Wundermittel.</li>
+<li><strong>Moderne UV-Filter.</strong> Der praktisch bedeutsamste Punkt. Mehr dazu unter <a href="/haut/sonnencreme-gesicht/">Sonnencreme fürs Gesicht</a>.</li>
+</ul>
+
+<h2>Wo der Hype anfängt</h2>
+<p><strong>Die Zehn-Schritte-Routine.</strong> Nie als tägliche Pflicht gedacht, sondern als Auswahl. Als Verkaufskonzept funktioniert sie hervorragend, für die Haut ist sie meist unnötig. Was die Kategorien tatsächlich bedeuten, steht unter <a href="/haut/ampoule/">Ampoule, Essence und Serum</a>.</p>
+<p><strong><a href="/haut/glass-skin/">Glass Skin</a> als Ziel.</strong> Ein Zustand, kein erreichbarer Dauerzustand, und zu einem guten Teil Licht und Kamera.</p>
+<p><strong>Produkttaktung.</strong> Der koreanische Markt bringt Neuheiten in einem Tempo heraus, dem keine Studienlage folgen kann. Neu heisst dort nicht besser untersucht, sondern nur neu.</p>
+<p><strong>Fermentierte Zutaten und exotische Extrakte.</strong> Klingen besonders, sind es selten. Die Wirkung steckt fast immer in den bekannten Wirkstoffen im selben Produkt.</p>
+<div class="wa-pullquote">Das Beste an K-Beauty ist die Methode, nicht das Produkt. Die Methode kostet nichts.</div>
+
+<h2>Und die koreanische Tradition dahinter</h2>
+<p>Hinter der modernen Kosmetikindustrie steht eine ältere Tradition: <strong>Hanbang</strong>, die koreanische traditionelle Medizin, eng verwandt mit der chinesischen. Viele Wirkstoffe, die heute in Seren stehen, sind dort seit Jahrhunderten in Gebrauch, nur meist innerlich statt äusserlich.</p>
+<p>Für uns ist das keine Randnotiz. Wir arbeiten mit derselben Kräutertradition, und Techniken wie <a href="/therapien/gua-sha/gesichts-gua-sha/">Gua Sha</a> stammen aus demselben Umfeld. Der Unterschied: Wir behaupten nicht, dass ein Tee dasselbe leistet wie ein Serum.</p>
+
+<h2>Was du praktisch mitnehmen kannst</h2>
+<ol>
+<li>Täglich <a href="/haut/sonnencreme-gesicht/">Sonnenschutz</a>, gern ein koreanisches Produkt wegen der Textur.</li>
+<li>Feuchtigkeit auf leicht feuchte Haut schichten, zwei dünne statt einer dicken.</li>
+<li>Barriere vor Wirkstoff. Erst beruhigen, dann behandeln.</li>
+<li>Ein Wirkstoff pro Thema, konsequent über Monate.</li>
+<li>Alles andere ist optional.</li>
+</ol>
+`.trim(),
+    faqs: [
+      { q: 'Was ist K-Beauty?', a: 'Koreanische Hautpflege. Der Begriff steht sowohl für eine Herangehensweise, die auf Erhalt statt Korrektur setzt, als auch für eine sehr aktive Kosmetikindustrie mit hoher Produkttaktung.' },
+      { q: 'Ist die Zehn-Schritte-Routine sinnvoll?', a: 'Für die meisten nicht als tägliche Pflicht. Sie war als Auswahl gedacht, aus der je nach Hautzustand kombiniert wird. Vier Schritte decken das Wesentliche ab.' },
+      { q: 'Was ist an koreanischer Hautpflege wirklich besser?', a: 'Vier Dinge: der Fokus auf Erhalt statt Korrektur, das Schichten auf leicht feuchte Haut, Barriere vor Wirkstoff, und modernere UV-Filter, die in Korea früher zugelassen wurden als in Europa.' },
+      { q: 'Sind koreanische Produkte für europäische Haut geeignet?', a: 'Ja. Hautbedürfnisse unterscheiden sich individuell mehr als geografisch. Zu beachten ist bei Importprodukten die Deklaration, weil europäisches Recht dort nicht gilt.' },
+      { q: 'Was ist Hanbang?', a: 'Die koreanische traditionelle Medizin, eng verwandt mit der chinesischen. Viele Wirkstoffe der modernen K-Beauty stammen aus dieser Tradition, dort allerdings meist in innerlicher Anwendung.' },
+      { q: 'Lohnt sich der Kauf teurer K-Beauty-Produkte?', a: 'Selten. Die Wirkung steckt in den bekannten Wirkstoffen, nicht in exotischen Extrakten oder Fermentation. Ein günstiges Produkt mit gut dosiertem Wirkstoff schlägt ein teures ohne.' },
+    ],
+    related: [
+      { href: '/haut/glass-skin/', label: 'Glass Skin', cat: 'K-Beauty' },
+      { href: '/haut/ampoule/', label: 'Ampoule, Essence, Serum', cat: 'K-Beauty' },
+      { href: '/haut/centella/', label: 'Centella (Cica)', cat: 'Wirkstoff' },
+    ],
+  },
 ];
 
 export const hautBySlug = (slug: string): HautArticle | undefined => haut.find((a) => a.slug === slug);
