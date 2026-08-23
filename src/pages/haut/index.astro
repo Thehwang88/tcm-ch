@@ -10,21 +10,52 @@ const title = 'Haut & Gesicht – Behandlungen und Wirkstoffe ehrlich erklärt |
 const description = 'Gesichtsbehandlungen, Wirkstoffe und Hautthemen, fachlich eingeordnet von TCM.ch. Ohne Versprechen, die niemand halten kann.';
 
 // Buchbare Behandlungen — die eigentlichen Zielseiten des Clusters.
+const WA = 'https://wa.me/41775236122';
+
 const behandlungen = [
   {
     href: '/therapien/gesichtsakupunktur/',
     name: 'Gesichtsakupunktur',
-    meta: '40–50 Min · CHF 140–180',
+    dauer: '40–50 Min',
+    preis: 'CHF 140–180',
     kasse: 'Zusatzversicherung 80–100 % bei medizinischer Indikation',
     text: 'Feine Nadeln an gezielten Punkten im Gesicht und am Körper. Die medizinisch indizierte Behandlung für Hautbild und Spannung.',
+    fuer: ['Müdes, unruhiges Hautbild', 'Rötungsneigung', 'Stressbedingte Hautthemen', 'Mimische Dauerspannung'],
+    serie: '6–10 Sitzungen empfohlen',
+  },
+  {
+    href: '/therapien/hanbang/',
+    name: 'Hanbang',
+    dauer: '90 Min',
+    preis: 'ab CHF 320',
+    kasse: 'Selbstzahler-Leistung, keine Kassenübernahme',
+    text: 'Die koreanische Gesichtsbehandlung: sechs Schritte in einer Sitzung, in fester Reihenfolge. Reinigung, Peeling, Gesichtsakupunktur, Massage, Wirkstoffmaske, LED.',
+    fuer: ['Wer die Gesichtsakupunktur kennt und mehr möchte', 'Trockene, müde oder unruhige Haut', 'Vor einem Anlass', 'Fester Rhythmus statt Einzeltermin'],
+    serie: '6er-Kurs empfohlen',
+    neu: true,
   },
   {
     href: '/therapien/gua-sha/gesichts-gua-sha/',
     name: 'Gua Sha fürs Gesicht',
-    meta: '30 Min · kosmetisch',
+    dauer: '30 Min',
+    preis: 'kosmetisch',
     kasse: 'Selbstzahler-Leistung',
-    text: 'Ruhige Züge mit dem Stein entlang von Lymphbahnen und Kiefer. Entstauend, entspannend, ohne Nadeln.',
+    text: 'Ruhige Züge mit dem Stein entlang von Lymphbahnen und Kiefer. Entstauend, entspannend, ohne Nadeln. Danach kannst du es zu Hause selbst.',
+    fuer: ['Schwellungsgefühl am Morgen', 'Kieferspannung, Zähneknirschen', 'Augenringe (vaskulär)', 'Einmal richtig zeigen lassen'],
+    serie: 'Einzeln oder alle 2–4 Wochen',
   },
+];
+
+// Zuordnung Thema -> Behandlung. Auch die Zeilen, wo wir NICHT die Antwort sind.
+const zuordnung = [
+  { thema: 'Schwellungsgefühl, Kieferspannung', href: '/therapien/gua-sha/gesichts-gua-sha/', ziel: 'Gua Sha fürs Gesicht', bei: true },
+  { thema: 'Müdes Hautbild, Rötungsneigung, Stress', href: '/therapien/gesichtsakupunktur/', ziel: 'Gesichtsakupunktur', bei: true },
+  { thema: 'Koreanisches Komplettprogramm', href: '/therapien/hanbang/', ziel: 'Hanbang, 90 Minuten', bei: true },
+  { thema: 'Augenringe, vaskulärer Typ', href: '/haut/augenringe/', ziel: 'Erst Typ bestimmen, dann Gua Sha', bei: true },
+  { thema: 'Pigmentflecken, Melasma', href: '/haut/pigmentflecken/', ziel: 'Dermatologisch abklären — wir ordnen ein', bei: false },
+  { thema: 'Sichtbare Äderchen (Couperose)', href: '/haut/couperose/', ziel: 'Gefässlaser, nicht bei uns', bei: false },
+  { thema: 'Aknenarben, Hautstruktur', href: '/haut/microneedling/', ziel: 'Microneedling, nicht bei uns', bei: false },
+  { thema: 'Falten, Volumen, Kontur', href: '/haut/falten-gesicht/', ziel: 'Ärztliche Verfahren, nicht bei uns', bei: false },
 ];
 
 // Artikel nach Kategorie gruppieren
@@ -68,6 +99,11 @@ const schema = [
             <div class="eyebrow">Haut &amp; Gesicht</div>
             <h1>Was der Haut wirklich hilft, und was nur auf der Verpackung steht.</h1>
             <p class="lead">Wirkstoffe, Methoden und Behandlungen rund ums Gesicht, eingeordnet von TCM.ch. Wir schreiben auch dann ehrlich, wenn die Antwort «bringt wenig» lautet.</p>
+            <div class="cta-row">
+              <a class="btn btn--primary" href={WA} target="_blank" rel="noopener">Per WhatsApp fragen</a>
+              <a class="btn btn--ghost" href="#behandlungen">Behandlungen ansehen</a>
+            </div>
+            <p class="cta-note">Kostenlos und unverbindlich. Wir sagen dir auch, wenn eine Behandlung bei uns nicht das Richtige ist.</p>
           </div>
           <div class="hero-img">
             <img src="/images/haut-hero.webp" width="1536" height="1024" alt="Frau bei einer Gesichtsbehandlung, ruhig liegend im Tageslicht" loading="eager" fetchpriority="high" decoding="async">
@@ -76,18 +112,42 @@ const schema = [
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="behandlungen">
       <div class="wrap">
-        <div class="sec-label">Behandlungen bei uns</div>
+        <div class="sec-label">Das bieten wir an</div>
+        <p class="sec-intro">Zwei Gesichtsbehandlungen, beide an unseren Standorten in der Deutschschweiz. Alles andere auf dieser Seite ist Einordnung, kein Angebot.</p>
         <div class="treat-grid">
           {behandlungen.map((b) => (
-            <a class="treat" href={b.href}>
-              <div class="t-name">{b.name}</div>
-              <div class="t-meta">{b.meta}</div>
+            <div class="treat">
+              <div class="t-head">
+                <div class="t-name">{b.name}{b.neu && <span class="t-badge">Neu</span>}</div>
+                <div class="t-meta">{b.dauer} · {b.preis}</div>
+              </div>
               <p class="t-text">{b.text}</p>
+              <ul class="t-fuer">
+                {b.fuer.map((f) => <li>{f}</li>)}
+              </ul>
+              <div class="t-serie">{b.serie}</div>
               <div class="t-kasse">{b.kasse}</div>
-            </a>
+              <div class="t-cta">
+                <a class="btn btn--primary" href={b.href}>Details ansehen</a>
+                <a class="btn btn--ghost" href={WA} target="_blank" rel="noopener">Termin per WhatsApp</a>
+              </div>
+            </div>
           ))}
+        </div>
+
+        <div class="matcher">
+          <div class="m-label">Welche Behandlung passt zu welchem Thema?</div>
+          <div class="m-rows">
+            {zuordnung.map((z) => (
+              <a class={z.bei ? 'm-row is-us' : 'm-row'} href={z.href}>
+                <span class="m-thema">{z.thema}</span>
+                <span class="m-ziel">{z.ziel}</span>
+              </a>
+            ))}
+          </div>
+          <p class="m-note">Bei den grau markierten Themen sind wir nicht die richtige Adresse. Wir sagen dir trotzdem, was wir wissen — die Artikel dahinter ordnen ein, wohin du gehörst.</p>
         </div>
         <figure class="band">
           <img src="/images/haut-raum.webp" width="1536" height="1024" alt="Heller Behandlungsraum mit Liege, Tageslicht und beleuchteter Wandnische" loading="lazy" decoding="async">
@@ -140,9 +200,10 @@ const schema = [
             <h2>Unsicher, was zu deiner Haut passt?</h2>
             <p>Schildere uns kurz, worum es geht. Wir sagen dir ehrlich, ob eine Behandlung sinnvoll ist, und wann du besser dermatologisch abklären lässt.</p>
             <div class="cta-row">
-              <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+              <a class="btn btn--primary" href={WA} target="_blank" rel="noopener">Per WhatsApp fragen</a>
               <a class="btn btn--ghost" href="/standorte/">Standort finden</a>
             </div>
+            <p class="cta-note">Antwort meist in wenigen Minuten. Oder <a href="/kontakt/">per Formular</a>.</p>
           </div>
         </div>
       </div>
@@ -182,14 +243,38 @@ const schema = [
   .band.craft figcaption { margin-top: 14px; max-width: 76ch; font-size: 15px; line-height: 1.6; }
   .band.craft figcaption strong { color: var(--h-bronze-dk); }
 
+  /* ---------- CTA ---------- */
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .cta-note { font-size: 13.5px; color: var(--muted); margin: 12px 0 0; max-width: 52ch; }
+  .cta-note a { color: var(--h-bronze-dk); }
+
   /* ---------- Behandlungen ---------- */
-  .treat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .treat { display: block; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 26px; text-decoration: none; background: #fff; transition: border-color var(--t-fast) ease; }
+  .treat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+  .treat { display: flex; flex-direction: column; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: 26px; background: #fff; transition: border-color var(--t-fast) ease; }
   .treat:hover { border-color: var(--h-bronze); }
-  .t-name { font-size: 20px; font-weight: 800; color: var(--ink); }
-  .t-meta { font-size: 13px; font-weight: 600; color: var(--h-bronze-dk); margin: 4px 0 12px; }
+  .t-head { margin-bottom: 12px; }
+  .t-name { font-size: 20px; font-weight: 800; color: var(--ink); display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .t-badge { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; background: var(--h-bronze-dk); padding: 3px 8px; border-radius: 3px; }
+  .t-meta { font-size: 13px; font-weight: 600; color: var(--h-bronze-dk); margin-top: 4px; }
   .t-text { font-size: 15.5px; line-height: 1.55; color: var(--mid); margin: 0 0 14px; }
-  .t-kasse { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--h-line); padding-top: 10px; }
+  .t-fuer { list-style: none; padding: 0; margin: 0 0 14px; }
+  .t-fuer li { font-size: 14px; line-height: 1.45; color: var(--mid); padding-left: 18px; position: relative; margin-bottom: 6px; }
+  .t-fuer li::before { content: '·'; position: absolute; left: 5px; color: var(--h-bronze); font-weight: 700; }
+  .t-serie { font-size: 13px; font-weight: 600; color: var(--h-bronze-dk); margin-bottom: 10px; }
+  .t-kasse { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--h-line); padding-top: 10px; margin-bottom: 16px; }
+  .t-cta { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+  .t-cta .btn { width: 100%; justify-content: center; }
+
+  /* ---------- Zuordnung ---------- */
+  .matcher { margin-top: 40px; border: 1px solid var(--h-line); border-radius: var(--r-card); padding: clamp(22px, 3vw, 32px); background: var(--h-porcelain); }
+  .m-label { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 16px; }
+  .m-rows { display: flex; flex-direction: column; border-top: 1px solid var(--h-line); }
+  .m-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--h-line); text-decoration: none; transition: padding-left var(--t-fast) ease; }
+  .m-row:hover { padding-left: 6px; }
+  .m-thema { font-size: 15.5px; color: var(--ink); font-weight: 600; }
+  .m-ziel { font-size: 14px; color: var(--muted); text-align: right; }
+  .m-row.is-us .m-ziel { color: var(--h-bronze-dk); font-weight: 600; }
+  .m-note { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 16px 0 0; max-width: 74ch; }
 
   /* ---------- Artikel ---------- */
   .art-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -206,7 +291,6 @@ const schema = [
   .closing-text { padding: clamp(26px, 4vw, 44px); }
   .closing h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 0 0 8px; letter-spacing: var(--tracking-heading); }
   .closing p { font-size: 16px; color: var(--mid); margin: 0 0 18px; max-width: 52ch; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; }
@@ -215,9 +299,11 @@ const schema = [
     .closing { grid-template-columns: 1fr; }
     .closing-img img { aspect-ratio: 16 / 7; height: auto; }
   }
+  @media (max-width: 980px) { .treat-grid { grid-template-columns: 1fr; } }
   @media (max-width: 860px) { .art-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .m-row { grid-template-columns: 1fr; gap: 3px; } .m-ziel { text-align: left; } }
   @media (max-width: 640px) {
-    .treat-grid, .art-grid { grid-template-columns: 1fr; }
+    .art-grid { grid-template-columns: 1fr; }
     .hero { padding: 36px 0; }
   }
 </style>
