@@ -21,6 +21,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz",
   "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
   "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma",
+  "copd", "piriformis-syndrom", "frozen-shoulder",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
@@ -29,6 +30,5 @@ globalThis.BESCHWERDEN_KEEP = [
   "gastritis", "rosacea", "hueftschmerzen",
   "aphten", "raynaud-syndrom", "long-covid",
   "lippenherpes", "reizblase", "spannungskopfschmerzen",
-  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen",
-  "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma"
+  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen"
 ];
