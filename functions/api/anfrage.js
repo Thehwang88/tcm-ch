@@ -52,7 +52,9 @@ export async function onRequestPost({ request, env }) {
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
       ['Standort', d.standort],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen],
-      ['Quelle', d.quelle], ['Zeit', d.zeit],
+      ['Angebot', d.angebot], ['Seite', d.seite],
+      ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
+      ['Formular', d.formular], ['Zeit', d.zeit],
     ];
     const html =
       '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
@@ -72,6 +74,9 @@ export async function onRequestPost({ request, env }) {
     // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
     // als eigene Zeile im HTML-Body (rows oben).
     if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
+    // Formularname (z. B. Hero-Gratis-30min-StGallen) vorne im Betreff, damit im
+    // Postfach sofort sichtbar ist, welches Formular gefeuert hat.
+    if (d.formular) subject = '[' + String(d.formular).replace(/[\r\n]+/g, ' ').slice(0, 60) + '] ' + subject;
     const body = {
       from: FROM,
       to: [TO],
