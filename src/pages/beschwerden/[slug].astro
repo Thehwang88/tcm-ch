@@ -37,15 +37,7 @@ const body = Astro.props.body;
 const entry = beschwerden.find((b) => b.slug === slug);
 const nm = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
 const hName = nm ? nm[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim() : slug;
-// Per-slug display name where the H1 carries a prefix ("Akupunktur bei X: ...").
-const NAMES: Record<string, string> = {
-  haemorrhoiden: 'Hämorrhoiden',
-  osteoporose: 'Osteoporose',
-  depressionen: 'Depressionen',
-  hashimoto: 'Hashimoto',
-  rheuma: 'Rheuma',
-};
-const name = entry?.name || NAMES[slug!] || hName;
+const name = entry?.name || hName;
 const condName = entry?.conditionName || name;
 const url = `https://tcm.ch/beschwerden/${slug}/`;
 // Per-slug title overrides from the content briefs; template default otherwise.
@@ -71,11 +63,7 @@ const TITLES: Record<string, string> = {
   'long-covid': 'Long Covid – begleitende TCM | TCM.ch',
   bluthochdruck: 'Bluthochdruck – begleitende TCM | TCM.ch',
   durchblutungsstoerungen: 'Durchblutungsstörungen – TCM | TCM.ch',
-  haemorrhoiden: 'Akupunktur bei Hämorrhoiden: TCM-Behandlung | TCM.ch',
-  osteoporose: 'TCM bei Osteoporose: Schmerzen lindern | TCM.ch',
-  depressionen: 'TCM bei Depressionen: begleitende Behandlung | TCM.ch',
-  hashimoto: 'TCM bei Hashimoto & Schilddrüsenunterfunktion | TCM.ch',
-  rheuma: 'Akupunktur bei Rheuma: TCM-Behandlung | TCM.ch',
+  depressionen: 'Depressionen – TCM-Begleitung | TCM.ch',
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -128,11 +116,11 @@ const DESCRIPTIONS: Record<string, string> = {
   blaehungen: 'Blähungen und Blähbauch mit TCM behandeln: Akupunktur, Kräuter und Ernährung bei aufgeblähtem Bauch und Völlegefühl. EMR/ASCA-anerkannt.',
   durchblutungsstoerungen: 'Kalte Hände und Füsse, funktionelle Durchblutungsstörungen: TCM mit Moxibustion, Akupunktur und Kräutern. Nach ärztlicher Abklärung. EMR/ASCA.',
   'long-covid': 'Long Covid mit TCM begleiten: Akupunktur und Kräutertherapie bei Fatigue, Brain Fog und Erschöpfung nach Infekt, Pacing-kompatibel. EMR/ASCA-anerkannt.',
-  haemorrhoiden: 'TCM bei Hämorrhoiden: Beschwerden lindern, Verdauung regulieren, Rückfällen vorbeugen. Behandlung an 14 Standorten, EMR/ASCA-anerkannt.',
-  osteoporose: 'TCM bei Osteoporose: Schmerzen lindern, Beweglichkeit erhalten, Therapie sinnvoll ergänzen. Behandlung an 14 Standorten, EMR/ASCA-anerkannt.',
-  depressionen: 'TCM bei Depressionen und depressiver Verstimmung: Energie und Schlaf verbessern, Therapie sinnvoll ergänzen. 14 Standorte, EMR/ASCA-anerkannt.',
-  hashimoto: 'TCM bei Hashimoto: Erschöpfung, Gewichtszunahme und Kältegefühl begleitend behandeln. TCM an 14 Standorten, EMR/ASCA-anerkannt.',
-  rheuma: 'TCM bei Rheuma und rheumatoider Arthritis: Schmerzen lindern, Beweglichkeit fördern, Therapie ergänzen. 14 Standorte, EMR/ASCA-anerkannt.',
+  haemorrhoiden: 'Hämorrhoiden mit TCM behandeln: Akupunktur, Kräuter und Ernährung bei Jucken, Brennen und wiederkehrenden Beschwerden. Diskret, EMR/ASCA-anerkannt.',
+  osteoporose: 'Osteoporose mit TCM begleiten: Akupunktur bei Rückenschmerzen, sanfte Behandlung für Beweglichkeit und Stabilität. Ergänzend zur ärztlichen Therapie.',
+  depressionen: 'Depressionen mit TCM begleiten: Akupunktur für besseren Schlaf, mehr Energie und weniger Anspannung. Ergänzend zu Psychotherapie und ärztlicher Behandlung.',
+  hashimoto: 'Hashimoto und Schilddrüsenunterfunktion mit TCM begleiten: mehr Energie, weniger Frieren, stabilere Verdauung. Ergänzend zur ärztlichen Hormontherapie.',
+  rheuma: 'Rheuma mit TCM begleiten: Akupunktur bei Gelenkschmerzen, Morgensteifigkeit und rheumatoider Arthritis. Ergänzend zur rheumatologischen Therapie.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
