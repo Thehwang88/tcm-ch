@@ -45,6 +45,7 @@ const { sitekey } = Astro.props;
           <input type="hidden" name="standort" value="St. Gallen">
           <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
           <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
+          <input type="email" name="email" placeholder="E-Mail (optional)" aria-label="E-Mail" autocomplete="email" inputmode="email">
           <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
           <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
           <input type="hidden" name="Angebot" value="GRATIS 30 Min Erstbehandlung (Hero St. Gallen)">
@@ -176,7 +177,7 @@ const { sitekey } = Astro.props;
         : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
       if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
       var data = {
-        name: name, telefon: telefon, behandlung: val('wunschzeit'),
+        name: name, telefon: telefon, email: val('email'), behandlung: val('wunschzeit'),
         standort: 'St. Gallen', quelle: 'launch-hero-sg',
         formular: f.getAttribute('name') || '', angebot: val('Angebot'),
         quelle_detail: val('Quelle'), seite: val('Seite'),
