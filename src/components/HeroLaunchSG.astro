@@ -11,8 +11,8 @@ const { sitekey } = Astro.props;
   <div class="hlsg-inner">
     <div class="hlsg-copy">
       <span class="hlsg-badge">Jetzt offen · St. Gallen · Neupatient:innen</span>
-      <h1 class="hlsg-h1">Akupunktur &amp; TCM in <span class="hlsg-accent">St. Gallen</span>: deine erste Behandlung ist gratis.</h1>
-      <p class="hlsg-sub">Unsere Praxis liegt wenige Gehminuten vom Bahnhof St. Gallen und ist seit dem 9. Juli offen. Lern uns unverbindlich kennen, deine erste Behandlung ist gratis. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht. Von den Krankenkassen anerkannt (EMR/ASCA).</p>
+      <h1 class="hlsg-h1">Akupunktur &amp; TCM in <span class="hlsg-accent">St. Gallen</span>: dein erster Termin ist gratis.</h1>
+      <p class="hlsg-sub">Unsere Praxis liegt wenige Gehminuten vom Bahnhof St. Gallen und ist seit dem 9. Juli offen. Lern uns unverbindlich kennen, dein erster Termin ist gratis. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht. Von den Krankenkassen anerkannt (EMR/ASCA).</p>
       <div class="hlsg-cta-row">
         <a href="#online-buchen" class="hlsg-btn-primary">Termin online buchen</a>
       </div>
@@ -27,26 +27,29 @@ const { sitekey } = Astro.props;
     <div class="hlsg-visual">
       <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
         <div class="hlsg-ribbon">NEU</div>
-        <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Deine erste Behandlung ist <span class="hlsg-free">gratis</span></div>
-        <p class="hlsg-offer-note" style="margin-bottom:14px">60 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
+        <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Dein erster Termin ist <span class="hlsg-free">gratis</span></div>
+        <p class="hlsg-offer-note" style="margin-bottom:14px">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
         <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 14px">
-          <div><span class="hlsg-check">✓</span> Ausführliches Erstgespräch, wir hören zuerst zu</div>
-          <div><span class="hlsg-check">✓</span> TCM-Diagnostik durch anerkannte Therapeut:innen</div>
-          <div><span class="hlsg-check">✓</span> Erste Behandlung noch in derselben Sitzung</div>
-          <div><span class="hlsg-check">✓</span> Eine ehrliche Einschätzung, ob TCM bei dir sinnvoll ist. Wenn nicht, sagen wir es dir.</div>
+          <div><span class="hlsg-check">✓</span> TCM-Check &amp; ausführliches Erstgespräch</div>
+          <div><span class="hlsg-check">✓</span> Diagnostik durch anerkannte Therapeut:innen</div>
+          <div><span class="hlsg-check">✓</span> Erste Akupunktur noch in derselben Sitzung</div>
+          <div><span class="hlsg-check">✓</span> Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</div>
         </div>
         <p class="hlsg-offer-note" style="margin:0 0 4px">Kein Abo, keine Verpflichtung, kein Verkaufsgespräch.</p>
         <p class="hlsg-offer-note" style="margin:0 0 10px"><strong>Termine diese Woche verfügbar.</strong></p>
         <p class="hlsg-offer-note" style="margin:0">Noch <strong class="hlsg-scarcity" data-sg-free>14</strong> von 20 Gratis-Erstgesprächen frei.</p>
         <p class="hlsg-proof"><span class="hlsg-stars" aria-hidden="true">★★★★★</span> 4.9 bei Google, von Patient:innen weiterempfohlen.</p>
         <div class="hlsg-divider"></div>
-        <form class="hlsg-form" data-sg-hero-form novalidate>
+        <form class="hlsg-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form novalidate>
           <input type="hidden" name="quelle" value="launch-hero-sg">
           <input type="hidden" name="standort" value="St. Gallen">
           <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
           <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
           <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
           <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
+          <input type="hidden" name="Angebot" value="GRATIS 30 Min Erstbehandlung (Hero St. Gallen)">
+          <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
+          <input type="hidden" name="Seite" value="/standort/st-gallen">
           <button type="submit">Gratis Erstgespräch anfragen</button>
           <p class="hlsg-form-rule">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p>
           <p class="hlsg-form-err" role="alert" hidden></p>
@@ -175,6 +178,8 @@ const { sitekey } = Astro.props;
       var data = {
         name: name, telefon: telefon, behandlung: val('wunschzeit'),
         standort: 'St. Gallen', quelle: 'launch-hero-sg',
+        formular: f.getAttribute('name') || '', angebot: val('Angebot'),
+        quelle_detail: val('Quelle'), seite: val('Seite'),
         zeit: new Date().toISOString(), turnstileToken: ts.token,
       };
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Wird gesendet…'; }
