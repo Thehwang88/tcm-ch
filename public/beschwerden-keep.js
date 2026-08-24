@@ -29,5 +29,6 @@ globalThis.BESCHWERDEN_KEEP = [
   "gastritis", "rosacea", "hueftschmerzen",
   "aphten", "raynaud-syndrom", "long-covid",
   "lippenherpes", "reizblase", "spannungskopfschmerzen",
-  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen"
+  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen",
+  "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma"
 ];
