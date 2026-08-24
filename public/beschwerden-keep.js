@@ -20,6 +20,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "reizdarm", "blasenentzuendung", "neurodermitis",
   "sinusitis", "sodbrennen", "haarausfall", "endometriose", "inkontinenz",
   "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
+  "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
