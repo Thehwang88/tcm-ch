@@ -6,24 +6,24 @@ const path = '/partner';
 const url = new URL(path + '/', site.url).href;
 const title = 'Partner & Karriere im TCM-Netzwerk Schweiz | TCM.ch';
 const description =
-  'TCM.ch sucht qualifizierte Therapeutinnen, Akupunkteure und Fachpersonen als Behandler, Standortleiter oder lokale Partner für neue Standorte.';
+  'TCM.ch sucht qualifizierte Therapeutinnen, Akupunkteure und Fachpersonen als Behandler, Senior oder Standortleitung für neue Standorte.';
 
-const trust = ['TCM', 'Akupunktur', 'Tuina', 'Kräutermedizin', 'Physiotherapie', 'medizinische Massage', 'Standortleitung', 'Klinikpartnerschaft'];
+const trust = ['TCM', 'Akupunktur', 'Tuina', 'Kräutermedizin', 'Physiotherapie', 'medizinische Massage', 'Standortleitung', 'Standortaufbau'];
 
 const modelle = [
   { t: 'Therapeut:in an einem bestehenden Standort', d: 'Für qualifizierte Therapeuten, die ein stabiles, professionelles Klinikumfeld suchen.' },
   { t: 'Senior / Standortleitung', d: 'Für erfahrene Therapeuten mit Wunsch nach Verantwortung, Teamführung und Entwicklung.' },
-  { t: 'Lokaler Standortpartner', d: 'Für herausragende Therapeuten, die einen neuen TCM.ch Standort in ihrer Stadt mitaufbauen wollen, ohne alles allein von null zu errichten.' },
+  { t: 'Standortleitung für einen neuen Standort', d: 'Für herausragende Therapeuten, die einen neuen TCM.ch Standort in ihrer Stadt aufbauen und führen wollen, ohne alles allein von null zu errichten.' },
 ];
 
 const ablauf = [
-  { t: 'Partnerprofil einreichen', d: 'Erfahrung, Ausbildung, Methoden, Sprachen, Standortwunsch, Anerkennungsstatus, Partnerschaftsinteresse.' },
+  { t: 'Bewerbung einreichen', d: 'Erfahrung, Ausbildung, Methoden, Sprachen, Standortwunsch, Anerkennungsstatus, Rolleninteresse.' },
   { t: 'Qualifikation & Anerkennung prüfen', d: 'Klinischer Hintergrund, EMR/ASCA/OdA/BAB/ZSR/Bewilligungssituation, fachlicher Fit.' },
-  { t: 'Standort- und Rollenfit besprechen', d: 'Passend als Therapeut, Standortleiter oder möglicher lokaler Partner.' },
-  { t: 'Gemeinsame Perspektive entwickeln', d: 'Bei starkem Fit konkrete Möglichkeiten: bestehender Standort, neuer Standort, lokale Partnerschaft.' },
+  { t: 'Standort- und Rollenfit besprechen', d: 'Passend als Therapeutin oder Therapeut, Senior oder als Standortleiterin oder Standortleiter.' },
+  { t: 'Gemeinsame Perspektive entwickeln', d: 'Bei starkem Fit konkrete Möglichkeiten: bestehender Standort, neuer Standort, Standortleitung.' },
 ];
 
-const fuerWen = ['TCM-Therapeut:innen', 'Akupunkteur:innen', 'Ärzt:innen mit TCM-Hintergrund', 'Tuina & medizinische Massage', 'Kräutermedizin', 'Internationale Fachpersonen', 'Physiotherapie & integrative Medizin', 'Standortleiter-Persönlichkeiten', 'Lokale Klinikpartner'];
+const fuerWen = ['TCM-Therapeut:innen', 'Akupunkteur:innen', 'Ärzt:innen mit TCM-Hintergrund', 'Tuina & medizinische Massage', 'Kräutermedizin', 'Internationale Fachpersonen', 'Physiotherapie & integrative Medizin', 'Standortleiter-Persönlichkeiten', 'Klinikerfahrene Führungspersonen'];
 
 const nichtFuerWen = [
   'Nicht für reine Nebenjob-Suchende.',
@@ -34,7 +34,7 @@ const nichtFuerWen = [
 
 const anerkennungItems = ['EMR', 'ASCA', 'OdA AM', 'kantonale Berufsausübungsbewilligung (BAB)', 'ZSR', 'SRK wo relevant', 'Sprachkenntnisse', 'Aufenthalts- und Arbeitsbewilligung'];
 
-const warum = ['Echter Klinikbetreiber statt Jobbörse', 'Wachsendes Schweizer Netzwerk', 'Patientennachfrage durch starkes Marketing', 'Zentrale Website & Google-Sichtbarkeit', 'Strukturiertes Onboarding', 'Moderne Klinikstandards', 'Operative Unterstützung', 'Abrechnungs- und Administrations-Know-how', 'Verständnis für Anerkennung, Versicherung und Schweizer Klinikrealität', 'Langfristige Expansionsstrategie', 'Möglicher Weg vom Therapeuten zum Standortleiter zum lokalen Partner'];
+const warum = ['Echter Klinikbetreiber statt Jobbörse', 'Wachsendes Schweizer Netzwerk', 'Patientennachfrage durch starkes Marketing', 'Zentrale Website & Google-Sichtbarkeit', 'Strukturiertes Onboarding', 'Moderne Klinikstandards', 'Operative Unterstützung', 'Abrechnungs- und Administrations-Know-how', 'Verständnis für Anerkennung, Versicherung und Schweizer Klinikrealität', 'Langfristige Expansionsstrategie', 'Möglicher Weg von der Therapie über die Senior-Rolle bis zur Standortleitung'];
 
 const methodenOpts = ['Akupunktur', 'Tuina', 'Kräuter', 'Schröpfen', 'Moxa', 'Physiotherapie', 'Massage', 'andere'];
 const anerkennungOpts = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'SRK', 'noch keine', 'in Bearbeitung'];
@@ -43,13 +43,13 @@ const standortOpts = ['Zürich', 'Winterthur', 'Frauenfeld', 'Kreuzlingen', 'St.
 const faqs = [
   { q: 'Muss ich bereits EMR-anerkannt sein?', a: 'Nein, wir prüfen jeden Fall individuell, auch in Bearbeitung befindliche Anerkennungen.' },
   { q: 'Kann ich mich aus dem Ausland bewerben?', a: 'Ja, mit realistischer gemeinsamer Einschätzung, ohne Garantien.' },
-  { q: 'Ist das eine normale Stellenbewerbung?', a: 'Nein, es ist eine kuratierte Partner- und Karriere-Pipeline.' },
+  { q: 'Ist das eine normale Stellenbewerbung?', a: 'Nein, es ist eine kuratierte Karriere- und Standortleitungs-Pipeline.' },
   { q: 'Kann ich mit TCM.ch eine neue Klinik eröffnen?', a: 'Bei starkem Fit möglich, je nach Standort und Prüfung.' },
-  { q: 'Bedeutet Partner automatisch Franchise oder Selbstständigkeit?', a: 'Nein, die Ausgestaltung ist individuell.' },
+  { q: 'Bedeutet Standortleitung Franchise, Beteiligung oder Selbstständigkeit?', a: 'Nein, die Standortleitung ist eine Anstellung bei TCM.ch.' },
   { q: 'Unterstützt TCM.ch bei BAB/EMR/ZSR?', a: 'Wir geben Orientierung, keine behördliche oder rechtliche Beratung.' },
   { q: 'Welche Standorte sind geplant?', a: 'Bestehende Standorte plus laufende Expansion, abhängig von passenden Profilen.' },
   { q: 'Ist mein Profil kostenlos?', a: 'Ja, die Einreichung ist unverbindlich und kostenlos.' },
-  { q: 'Gibt es garantierte Jobs oder Partnerschaften?', a: 'Nein, jeder Fall wird individuell geprüft.' },
+  { q: 'Gibt es garantierte Jobs oder Standortleitungen?', a: 'Nein, jeder Fall wird individuell geprüft.' },
 ];
 
 // FAQPage only, no JobPosting (would require invented job/salary/date data).
@@ -70,9 +70,9 @@ const schema = [
       <div class="pt-hero-text">
         <div class="eyebrow">TCM.ch · Partner & Karriere</div>
         <h1>Bauen Sie mit TCM.ch die nächste TCM-Klinik der Schweiz</h1>
-        <p class="lead">TCM.ch sucht qualifizierte TCM-Therapeutinnen, Akupunkteure und medizinische Fachpersonen, die als Behandler, Standortleiter oder lokale Partner Teil eines wachsenden Schweizer Kliniknetzwerks werden möchten.</p>
+        <p class="lead">TCM.ch sucht qualifizierte TCM-Therapeutinnen, Akupunkteure und medizinische Fachpersonen, die als Behandler, Senior oder Standortleitung Teil eines wachsenden Schweizer Kliniknetzwerks werden möchten.</p>
         <div class="pt-cta-row">
-          <a class="btn btn--primary" href="#partnerprofil">Partnerprofil einreichen</a>
+          <a class="btn btn--primary" href="#partnerprofil">Bewerbung starten</a>
           <a class="btn btn--ghost" href="#modell">Möglichkeiten prüfen</a>
         </div>
         <ul class="pt-trust">{trust.map((t) => <li>{t}</li>)}</ul>
@@ -94,7 +94,7 @@ const schema = [
   <!-- 3. PARTNER-MODELL -->
   <section class="section" id="modell" style="background:var(--surface)">
     <div class="wrap">
-      <div class="section-label">Partner-Modelle</div>
+      <div class="section-label">Standort-Modelle</div>
       <h2 class="section-title">Drei Wege, mit uns zu wachsen</h2>
       <div class="pt-cards pt-cards-3">
         {modelle.map((m) => (
@@ -194,53 +194,54 @@ const schema = [
           <div class="pt-st-city">Winterthur</div>
           <div class="pt-st-meta">2 Standorte</div>
         </div>
-        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Basel — Standortleitung offen, jetzt bewerben">
+        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Basel — Standortleitung offen, jetzt für die Standortleitung bewerben">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Offen</span>
           <div class="pt-st-city">Basel</div>
           <div class="pt-st-meta">Standortleitung gesucht</div>
-          <div class="pt-st-cta">Jetzt bewerben →</div>
+          <div class="pt-st-cta">Jetzt für die Standortleitung bewerben →</div>
         </a>
-        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Luzern — Standortleitung offen, jetzt bewerben">
+        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Luzern — Standortleitung offen, jetzt für die Standortleitung bewerben">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Offen</span>
           <div class="pt-st-city">Luzern</div>
           <div class="pt-st-meta">Standortleitung gesucht</div>
-          <div class="pt-st-cta">Jetzt bewerben →</div>
+          <div class="pt-st-cta">Jetzt für die Standortleitung bewerben →</div>
         </a>
         <div class="pt-st-box pt-st--live">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Live</span>
           <div class="pt-st-city">St. Gallen</div>
           <div class="pt-st-meta">1 Standort</div>
         </div>
-        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Bern — Standortleitung offen, jetzt bewerben">
+        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Bern — Standortleitung offen, jetzt für die Standortleitung bewerben">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Offen</span>
           <div class="pt-st-city">Bern</div>
           <div class="pt-st-meta">Standortleitung gesucht</div>
-          <div class="pt-st-cta">Jetzt bewerben →</div>
+          <div class="pt-st-cta">Jetzt für die Standortleitung bewerben →</div>
         </a>
-        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Lausanne — Standortleitung offen, jetzt bewerben">
+        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Lausanne — Standortleitung offen, jetzt für die Standortleitung bewerben">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Offen</span>
           <div class="pt-st-city">Lausanne</div>
           <div class="pt-st-meta">Standortleitung gesucht</div>
-          <div class="pt-st-cta">Jetzt bewerben →</div>
+          <div class="pt-st-cta">Jetzt für die Standortleitung bewerben →</div>
         </a>
-        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Genf — Standortleitung offen, jetzt bewerben">
+        <a class="pt-st-box pt-st--open" href="#partnerprofil" aria-label="Genf — Standortleitung offen, jetzt für die Standortleitung bewerben">
           <span class="pt-st-tag"><i class="pt-st-dot"></i>Offen</span>
           <div class="pt-st-city">Genf</div>
           <div class="pt-st-meta">Standortleitung gesucht</div>
-          <div class="pt-st-cta">Jetzt bewerben →</div>
+          <div class="pt-st-cta">Jetzt für die Standortleitung bewerben →</div>
         </a>
       </div>
 
       <p class="pt-note">Standorte entstehen um starke Menschen herum. Wer eine offene Stadt als Standortleitung übernimmt, baut sie von Anfang an mit.</p>
-      <a class="btn btn--primary pt-st-btn" href="#partnerprofil">Partnerprofil ausfüllen</a>
+      <p class="pt-note">Die Standortleitung ist eine Anstellung bei TCM.ch – keine Beteiligung und kein unternehmerisches Risiko. Sie führen den Standort, wir übernehmen Aufbau, Administration und Marketing.</p>
+      <a class="btn btn--primary pt-st-btn" href="#partnerprofil">Bewerbung starten</a>
     </div>
   </section>
 
   <!-- 10. FORMULAR -->
   <section class="section" id="partnerprofil">
     <div class="wrap pt-form-wrap">
-      <div class="section-label">Partnerprofil</div>
-      <h2 class="section-title">Partnerprofil unverbindlich einreichen</h2>
+      <div class="section-label">Bewerbung</div>
+      <h2 class="section-title">Bewerbung unverbindlich starten</h2>
       <p class="pt-body" style="margin-bottom:24px">Kostenlos und unverbindlich. Wir prüfen Ihr Profil und melden uns mit einer realistischen Einschätzung.</p>
 
       <form class="form-card pt-form" id="pt-form" novalidate>
@@ -277,7 +278,7 @@ const schema = [
         </fieldset>
 
         <fieldset class="pt-fieldset">
-          <legend>Standort & Partnerschaft</legend>
+          <legend>Standort & Rolle</legend>
           <div class="field"><label>Wunsch-Standorte</label>
             <div class="pt-checks">{standortOpts.map((s) => <label class="pt-check"><input type="checkbox" name="standorte" value={s} />{s}</label>)}</div></div>
           <div class="form-row">
@@ -290,7 +291,7 @@ const schema = [
               <select id="interesse" name="interesse">
                 <option value="">Bitte wählen</option>
                 <option>Anstellung</option><option>Senior</option><option>Standortleitung</option>
-                <option>Neuen Standort mitaufbauen</option><option>Lokales Partnermodell</option><option>Noch unsicher</option>
+                <option>Neuen Standort mitaufbauen</option><option>Standortleitung</option><option>Noch unsicher</option>
               </select></div>
           </div>
           <div class="form-row">
@@ -313,11 +314,11 @@ const schema = [
 
         <fieldset class="pt-fieldset">
           <legend>Motivation</legend>
-          <div class="field"><label for="motivation">Warum TCM.ch? Was macht Sie zu einem starken Partner für einen künftigen Standort?</label><textarea id="motivation" name="motivation" rows="4"></textarea></div>
+          <div class="field"><label for="motivation">Warum TCM.ch? Was macht Sie zu einer starken Standortleiterin oder einem starken Standortleiter für einen künftigen Standort?</label><textarea id="motivation" name="motivation" rows="4"></textarea></div>
         </fieldset>
 
         <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
-        <button class="btn btn--primary" type="submit"><span class="btn-label">Partnerprofil unverbindlich einreichen</span></button>
+        <button class="btn btn--primary" type="submit"><span class="btn-label">Bewerbung unverbindlich starten</span></button>
         <div class="form-status" role="status" aria-live="polite" hidden></div>
         <p class="pt-privacy">Übermittlung verschlüsselt und vertraulich. Ihre Angaben werden ausschliesslich zur Prüfung Ihres Profils verwendet. <a href="/datenschutz/">Datenschutz</a>.</p>
       </form>
@@ -329,7 +330,7 @@ const schema = [
     <div class="wrap pt-narrow pt-teaser">
       <h2 class="section-title">Neue Standorte entstehen um starke Menschen herum.</h2>
       <p class="pt-body">Wir eröffnen neue TCM.ch Standorte nicht nur nach Karte, sondern nach Qualität. Wenn eine starke Therapeutin oder ein starker Therapeut zu uns passt, kann daraus der nächste Standort entstehen.</p>
-      <a class="btn btn--primary" href="#partnerprofil">Partnerprofil einreichen</a>
+      <a class="btn btn--primary" href="#partnerprofil">Bewerbung starten</a>
     </div>
   </section>
 
@@ -395,7 +396,7 @@ const schema = [
           var data = null; try { data = await res.json(); } catch (_) {}
           if (res.ok && data && data.ok) {
             form.reset(); listEl.hidden = true; listEl.innerHTML = ''; showErr('');
-            show('success', 'Vielen Dank. Ihr Partnerprofil ist eingegangen. Wir melden uns mit einer realistischen Einschätzung möglicher nächster Schritte.');
+            show('success', 'Vielen Dank. Ihre Bewerbung ist eingegangen. Wir melden uns mit einer realistischen Einschätzung möglicher nächster Schritte.');
             form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
           } else {
             var map = { missing_fields: 'Bitte füllen Sie Name und E-Mail aus.', too_large: 'Dateien zusammen zu gross (max. 10 MB).', bad_file_type: 'Nicht unterstützter Dateityp (nur PDF, JPG, PNG).', too_many_files: 'Maximal 8 Dateien.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut versuchen.' };
