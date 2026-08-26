@@ -173,6 +173,37 @@ const schema = [
     </div>
   </section>
 
+  <!-- 9a. AUFBAUEN -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label">Standortleitung</div>
+      <h2 class="section-title">Für Menschen, die aufbauen wollen</h2>
+      <p class="pt-body">Eine eigene Praxis zu eröffnen kostet Kapital, Jahre und Nerven. Die meisten scheitern nicht an der Therapie, sondern an Administration, Marketing und Personal.</p>
+      <p class="pt-body" style="margin-bottom:24px">Bei TCM.ch übernehmen Sie einen Standort mit Ihrem Namen, Ihrem Team und Ihrer Handschrift. Aufbau, Verwaltung und Patientengewinnung kommen von uns.</p>
+
+      <div class="pt-cards pt-cards-4">
+        <div class="pt-card">
+          <h3>Ihr Standort</h3>
+          <p>Sie führen ihn unter Ihrem Namen, stellen Ihr Team ein und prägen das Angebot vor Ort.</p>
+        </div>
+        <div class="pt-card">
+          <h3>Ihr Ergebnis zählt</h3>
+          <p>Die Entwicklung Ihres Standorts wirkt sich direkt auf Ihre Vergütung aus – zusätzlich zum Fixlohn.</p>
+        </div>
+        <div class="pt-card">
+          <h3>Ohne eigenes Risiko</h3>
+          <p>Kein Kapitaleinsatz, keine Kreditaufnahme, keine Bürokratie. Sie bauen auf, ohne alles zu riskieren.</p>
+        </div>
+        <div class="pt-card">
+          <h3>Sichtbarer Weg</h3>
+          <p>Standortleitung → mehrere Standorte → Regionalverantwortung. Wer stark führt, wächst mit.</p>
+        </div>
+      </div>
+
+      <p class="pt-note">Wer über Jahre stark führt, kann im Einzelfall in ein Partnermodell wechseln – nach persönlicher Absprache, nicht über das Bewerbungsformular.</p>
+    </div>
+  </section>
+
   <!-- 9b. STANDORT-STATUS -->
   <section class="section">
     <div class="wrap">
@@ -500,6 +531,10 @@ const schema = [
   .pt-faq-item summary::after { content: '+'; color: var(--blue); font-weight: 700; font-size: 20px; }
   .pt-faq-item[open] summary::after { content: '−'; }
   .pt-faq-a { padding: 0 20px 18px; font-size: 14.5px; line-height: 1.6; color: var(--mid); }
+
+  .pt-cards-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .pt-cards-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pt-cards-4 { grid-template-columns: 1fr; } }
 
   .pt-st-progress { margin: 0 0 22px; }
   .pt-st-bar { height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; }
