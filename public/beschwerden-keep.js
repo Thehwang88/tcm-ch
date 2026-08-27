@@ -22,6 +22,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "prostata", "akne", "schuppenflechte", "hoersturz", "asthma",
   "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma",
   "copd", "piriformis-syndrom", "frozen-shoulder",
+  "eisenmangel", "wassereinlagerungen", "schleimbeutelentzuendung", "zaehneknirschen", "schleudertrauma",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
