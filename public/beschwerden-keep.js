@@ -23,6 +23,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "haemorrhoiden", "osteoporose", "depressionen", "hashimoto", "rheuma",
   "copd", "piriformis-syndrom", "frozen-shoulder",
   "eisenmangel", "wassereinlagerungen", "schleimbeutelentzuendung", "zaehneknirschen", "schleudertrauma",
+  "histaminintoleranz", "plantarfasziitis", "mittelohrentzuendung", "myome", "morton-neurom",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",
