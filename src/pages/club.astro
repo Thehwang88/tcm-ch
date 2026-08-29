@@ -1,0 +1,576 @@
+---
+// QI CLUB by TCM.CH — standalone consumer brand landing page (/club/).
+// Runs WITHOUT the clinic chrome (no DeHeader/Footer): own sticky nav, own minimal
+// footer, legal links point to the existing clinic pages. Reuses tokens.css,
+// HeadAnalytics (GTM + CookieYes) and the /api/anfrage form pipeline (quelle=qi-club).
+import { site } from '../data/site';
+import HeadAnalytics from '../components/HeadAnalytics.astro';
+
+const path = '/club';
+const url = new URL(path + '/', site.url).href;
+const title = 'QI CLUB by TCM.CH | Wellbeing Community Schweiz';
+const description =
+  'QI CLUB bringt Menschen rund um Wellbeing, Longevity, Movement und moderne chinesische Medizin zusammen. Events, Walks und Community. Zuerst in Zürich.';
+
+const konzepte = [
+  { n: '01', t: 'MOVE', d: 'Walks, Runs, Pilates, Breathwork. Gemeinsam, nicht alleine.' },
+  { n: '02', t: 'LEARN', d: 'Sleep, Stress, Longevity. Von Menschen, die es können.' },
+  { n: '03', t: 'MEET', d: 'Gute Gespräche statt Smalltalk. Kaffee statt Kaltakquise.' },
+  { n: '04', t: 'FEEL BETTER', d: 'Der Rest ergibt sich.' },
+];
+
+const themen = ['SLEEP', 'LONGEVITY', 'MOVEMENT', 'STRESS', 'RECOVERY', 'NUTRITION', 'TCM', "WOMEN'S HEALTH", 'SKIN', 'MENTAL WELLBEING', 'PREVENTION', 'BETTER AGING'];
+
+// revDSG: deliberately harmless lifestyle interests only, no sensitive health categories.
+const interessen = ['Sleep', 'Movement', 'Longevity', 'Nutrition', 'Recovery', 'TCM'];
+
+const schema = {
+  '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+  isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+};
+---
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <HeadAnalytics />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="QI CLUB by TCM.CH" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={site.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={site.ogImage} />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </head>
+  <body class="qi">
+
+    <!-- STICKY NAV (page-own, no clinic chrome) -->
+    <nav class="qi-nav" aria-label="QI CLUB Navigation">
+      <div class="qi-nav-inner">
+        <a class="qi-nav-logo" href="#top">QI CLUB<span class="qi-dot">.</span></a>
+        <div class="qi-nav-links">
+          <a href="#events">Events</a>
+          <a href="#about">About</a>
+          <a href="#ambassadors">Ambassadors</a>
+          <a href="/" data-qi="tcm_click">TCM.CH</a>
+        </div>
+        <a class="qi-nav-join" href="#join" data-qi="qi_join_click">JOIN</a>
+      </div>
+    </nav>
+
+    <main id="top">
+
+      <!-- 1. HERO -->
+      <header class="qi-hero">
+        <div class="qi-wrap">
+          <p class="qi-eyebrow qi-reveal">BY TCM.CH</p>
+          <h1 class="qi-hero-title qi-reveal">QI CLUB<span class="qi-dot">.</span></h1>
+          <p class="qi-hero-sub qi-reveal">Für Menschen, die besser leben wollen.</p>
+          <p class="qi-hero-support qi-reveal">Wellbeing, Longevity, Movement und moderne chinesische Medizin. Eine neue Community für die Schweiz.</p>
+          <div class="qi-hero-ctas qi-reveal">
+            <a class="qi-btn qi-btn--solid" href="#join" data-qi="qi_join_click">JOIN THE CLUB</a>
+            <a class="qi-btn qi-btn--line" href="#events">ERSTER QI WALK</a>
+          </div>
+          <p class="qi-hero-note qi-reveal">Kostenlos. Für alle. Du musst kein Patient sein.</p>
+        </div>
+      </header>
+
+      <!-- 2. MANIFESTO -->
+      <section class="qi-manifesto" id="about">
+        <div class="qi-wrap">
+          <h2 class="qi-giant qi-reveal">GESUNDHEIT BEGINNT NICHT ERST, WENN ETWAS WEH&nbsp;TUT.</h2>
+          <p class="qi-manifesto-text qi-reveal">Wir glauben, dass Gesundheit mehr sein kann als Behandlung. QI CLUB bringt Menschen zusammen, die sich für Bewegung, Schlaf, Ernährung, Longevity und Recovery interessieren. Kein Patientenclub. Eine Community fürs bessere Leben.</p>
+        </div>
+      </section>
+
+      <!-- 3. NOT A CLINIC. A COMMUNITY. -->
+      <section class="qi-concepts">
+        <div class="qi-wrap">
+          <h2 class="qi-section-title qi-reveal">NOT A CLINIC.<br /><span class="qi-red">A COMMUNITY.</span></h2>
+          <ol class="qi-concept-list">
+            {konzepte.map((k) => (
+              <li class="qi-reveal">
+                <span class="qi-concept-num">{k.n}</span>
+                <span class="qi-concept-name">{k.t}</span>
+                <span class="qi-concept-line">{k.d}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4. SEE YOU OFFLINE. -->
+      <section class="qi-events" id="events">
+        <div class="qi-wrap">
+          <h2 class="qi-section-title qi-reveal">SEE YOU OFFLINE<span class="qi-dot">.</span></h2>
+          <p class="qi-events-intro qi-reveal">Wir starten klein und echt. Ein Event. Eine Stadt. Kein Kalender voller Versprechen.</p>
+
+          <article class="qi-event qi-reveal">
+            <div class="qi-event-media" role="img" aria-label="Platzhalter: Morgen-Walk am Zürichsee">
+              <!-- TODO Simon: echtes Bild einsetzen (Morgen-Walk, candid, Zürich) -->
+              <span class="qi-media-tag">MORNING WALK · ZÜRICH</span>
+            </div>
+            <div class="qi-event-body">
+              <p class="qi-event-label">NEXT UP</p>
+              <h3>DER ERSTE QI WALK<span class="qi-dot">.</span></h3>
+              <p class="qi-event-desc">Samstagmorgen. Walk. Kaffee. Menschen.</p>
+              <!-- TODO Simon: Datum + Treffpunkt eintragen vor Launch -->
+              <dl class="qi-event-meta">
+                <div><dt>Datum</dt><dd>Wird angekündigt</dd></div>
+                <div><dt>Treffpunkt</dt><dd>Zürich, wird angekündigt</dd></div>
+                <div><dt>Kosten</dt><dd>Keine</dd></div>
+              </dl>
+              <a class="qi-btn qi-btn--solid" href="#join" data-qi="qi_join_click">DABEI SEIN</a>
+            </div>
+          </article>
+
+          <div class="qi-upcoming">
+            <div class="qi-upcoming-item qi-reveal">
+              <span class="qi-soon">BALD.</span>
+              <h3>AFTER HOURS</h3>
+              <p>Abendtalks in unseren Praxen. SLEEP. STRESS. RECOVERY. LONGEVITY.</p>
+            </div>
+            <div class="qi-upcoming-item qi-reveal">
+              <span class="qi-soon">BALD.</span>
+              <h3>QI SUNDAY</h3>
+              <p>Ein Morgen pro Quartal. Bewegung, Frühstück, gute Leute.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. VISUAL BREAK -->
+      <section class="qi-break" aria-label="Good people. Good energy. Good Qi.">
+        <img src="/images/haut-textur.webp" alt="" loading="lazy" decoding="async" />
+        <p class="qi-break-line">GOOD PEOPLE. GOOD ENERGY. GOOD&nbsp;QI.</p>
+      </section>
+
+      <!-- 6. WHAT WE'RE INTO. -->
+      <section class="qi-topics">
+        <div class="qi-wrap">
+          <h2 class="qi-section-title qi-reveal">WHAT WE'RE INTO<span class="qi-dot">.</span></h2>
+          <ul class="qi-topic-wall">
+            {themen.map((t) => <li class="qi-reveal">{t}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <!-- 7. PEOPLE MAKE THE CLUB. -->
+      <section class="qi-ambassadors" id="ambassadors">
+        <div class="qi-wrap">
+          <h2 class="qi-section-title qi-reveal">PEOPLE MAKE THE CLUB<span class="qi-dot">.</span></h2>
+          <p class="qi-amb-text qi-reveal">QI CLUB wird von Menschen getragen, die ihre Stadt bewegen. Coaches. Therapeutinnen. Athleten. Founder. Creatives.</p>
+          <!-- TODO Simon: club@tcm.ch als Postfach anlegen vor Launch -->
+          <a class="qi-btn qi-btn--line qi-reveal" href="mailto:club@tcm.ch">BECOME A FOUNDING AMBASSADOR</a>
+        </div>
+      </section>
+
+      <!-- 8. AN OLD MEDICINE. A NEW GENERATION. -->
+      <section class="qi-tcm">
+        <div class="qi-wrap qi-tcm-grid">
+          <div class="qi-tcm-text">
+            <h2 class="qi-section-title qi-reveal">AN OLD MEDICINE.<br /><span class="qi-red">A NEW GENERATION.</span></h2>
+            <p class="qi-reveal">Traditionelle Chinesische Medizin beschäftigt sich seit Jahrhunderten mit dem, was heute alle diskutieren: Schlaf. Stress. Ernährung. Bewegung. Regeneration. Prävention.</p>
+            <p class="qi-tcm-powered qi-reveal">Powered by TCM.CH</p>
+            <a class="qi-btn qi-btn--line qi-reveal" href="/" data-qi="tcm_click">TCM.CH ENTDECKEN</a>
+          </div>
+          <figure class="qi-tcm-media qi-reveal">
+            <img src="/images/haut-raum.webp" alt="Behandlungsraum einer TCM.CH Praxis" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 9. JOIN THE CLUB. -->
+      <section class="qi-join" id="join">
+        <div class="qi-wrap qi-join-wrap">
+          <h2 class="qi-section-title qi-reveal">JOIN THE CLUB<span class="qi-dot">.</span></h2>
+          <p class="qi-join-sub qi-reveal">Updates, Einladungen, erste Plätze bei Events. Mehr nicht.</p>
+
+          <form class="qi-form qi-reveal" id="qi-form" novalidate>
+            <div class="qi-hp" aria-hidden="true"><label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+            <div class="qi-form-row">
+              <div class="qi-field">
+                <label for="qi-vorname">Vorname</label>
+                <input id="qi-vorname" name="vorname" type="text" required autocomplete="given-name" />
+              </div>
+              <div class="qi-field">
+                <label for="qi-nachname">Nachname</label>
+                <input id="qi-nachname" name="nachname" type="text" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="qi-form-row">
+              <div class="qi-field">
+                <label for="qi-email">E-Mail</label>
+                <input id="qi-email" name="email" type="email" required autocomplete="email" inputmode="email" />
+              </div>
+              <div class="qi-field">
+                <label for="qi-stadt">Stadt</label>
+                <input id="qi-stadt" name="stadt" type="text" autocomplete="address-level2" placeholder="Zürich" />
+              </div>
+            </div>
+            <fieldset class="qi-interests">
+              <legend>Was interessiert dich? <span class="qi-optional">Optional</span></legend>
+              <div class="qi-chips">
+                {interessen.map((i) => (
+                  <label class="qi-chip"><input type="checkbox" name="interessen" value={i} /><span>{i}</span></label>
+                ))}
+              </div>
+            </fieldset>
+            <label class="qi-consent">
+              <input type="checkbox" name="consent" required />
+              <span>Ich möchte Updates, Einladungen und ausgewählte Inhalte vom QI CLUB erhalten.</span>
+            </label>
+            <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} data-theme="light" style="margin:6px 0 4px"></div>
+            <button class="qi-btn qi-btn--solid qi-submit" type="submit"><span class="qi-btn-label">I'M IN.</span></button>
+            <div class="qi-form-status" role="status" aria-live="polite" hidden></div>
+            <p class="qi-privacy">Kein Spam, jederzeit abmeldbar. <a href="/datenschutz/">Datenschutz</a></p>
+          </form>
+
+          <div class="qi-success" id="qi-success" hidden>
+            <p class="qi-success-big">YOU'RE IN<span class="qi-dot">.</span></p>
+            <p class="qi-success-sub">Willkommen im QI CLUB.</p>
+            <!-- TODO Simon: Instagram-Link ergänzen, sobald @qiclub.ch existiert -->
+            <p class="qi-success-ig">Als Nächstes: @qiclub.ch auf Instagram</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. ONE CLUB. ONE CITY. FIRST. -->
+      <section class="qi-city">
+        <div class="qi-wrap">
+          <p class="qi-city-label qi-reveal">ONE CLUB. ONE CITY. FIRST.</p>
+          <p class="qi-city-name qi-reveal">ZÜRICH<span class="qi-dot">.</span></p>
+          <p class="qi-city-line qi-reveal">Wir starten dort, wo wir zuhause sind. Weitere Städte folgen, sobald es dort echte Events gibt. Versprochen ist versprochen.</p>
+        </div>
+      </section>
+
+      <!-- 11. @QICLUB.CH -->
+      <section class="qi-social">
+        <div class="qi-wrap">
+          <h2 class="qi-section-title qi-reveal">@QICLUB.CH</h2>
+          <div class="qi-social-grid" aria-hidden="true">
+            <!-- TODO Simon: Platzhalter durch echte Posts ersetzen + FOLLOW-Button mit Link ergänzen, sobald der Account existiert -->
+            <div class="qi-tile"><span>MORNING WALK</span></div>
+            <div class="qi-tile"><span>RUN CLUB</span></div>
+            <div class="qi-tile"><span>MATCHA</span></div>
+            <div class="qi-tile"><span>PILATES</span></div>
+            <div class="qi-tile"><span>BREATHWORK</span></div>
+            <div class="qi-tile"><span>ZÜRICH</span></div>
+          </div>
+          <p class="qi-social-handle qi-reveal">Bald auf Instagram: <strong>@qiclub.ch</strong></p>
+        </div>
+      </section>
+
+      <!-- 12. FINAL -->
+      <section class="qi-final">
+        <div class="qi-wrap">
+          <p class="qi-final-big qi-reveal">LIVE WELL<span class="qi-dot">.</span></p>
+          <p class="qi-final-sub qi-reveal">Join Switzerland's new wellbeing community.</p>
+          <a class="qi-btn qi-btn--white qi-reveal" href="#join" data-qi="qi_join_click">JOIN QI CLUB</a>
+          <p class="qi-final-by qi-reveal">by TCM.CH</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Minimal footer: legal only, links into the clinic site. -->
+    <footer class="qi-footer">
+      <div class="qi-wrap qi-footer-inner">
+        <a class="qi-footer-back" href="/" data-qi="tcm_click">&larr; tcm.ch</a>
+        <div class="qi-footer-legal">
+          <a href="/impressum/">Impressum</a>
+          <a href="/datenschutz/">Datenschutz</a>
+          <a href="/agb/">AGB</a>
+        </div>
+        <p class="qi-footer-copy">© 2026 QI CLUB by TCM.CH</p>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        // Analytics: event names only, never form/interest content (no health data).
+        function track(ev) { if (window.dataLayer) window.dataLayer.push({ event: ev }); }
+        document.querySelectorAll('[data-qi]').forEach(function (el) {
+          el.addEventListener('click', function () { track(el.getAttribute('data-qi')); });
+        });
+
+        // Reveal on scroll (respects prefers-reduced-motion via CSS).
+        var els = document.querySelectorAll('.qi-reveal');
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+            });
+          }, { threshold: 0.12 });
+          els.forEach(function (el) { io.observe(el); });
+        } else {
+          els.forEach(function (el) { el.classList.add('is-in'); });
+        }
+
+        // Join form → existing /api/anfrage pipeline (quelle=qi-club).
+        var form = document.getElementById('qi-form');
+        if (!form) return;
+        var status = form.querySelector('.qi-form-status');
+        var label = form.querySelector('.qi-btn-label');
+        var success = document.getElementById('qi-success');
+        function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          if (form.querySelector('[name="website"]').value.trim() !== '') return;
+          if (!form.checkValidity()) { form.reportValidity(); return; }
+          var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+          var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+          if (!token) { show('error', 'Bitte bestätige kurz, dass du kein Roboter bist.'); return; }
+          var f = function (k) { var el = form.querySelector('[name="' + k + '"]'); return el ? el.value.trim() : ''; };
+          var interests = Array.prototype.slice.call(form.querySelectorAll('[name="interessen"]:checked')).map(function (c) { return c.value; });
+          track('qi_join_submit');
+          var payload = {
+            quelle: 'qi-club',
+            name: (f('vorname') + ' ' + f('nachname')).trim(),
+            first_name: f('vorname'),
+            last_name: f('nachname'),
+            email: f('email'),
+            standort: f('stadt'),
+            interessen: interests.join(', '),
+            consent: 'Ja',
+            turnstileToken: token,
+          };
+          form.classList.add('is-sending');
+          if (label) { label.dataset.orig = label.textContent; label.textContent = 'MOMENT …'; }
+          try {
+            var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            var data = null; try { data = await res.json(); } catch (_) {}
+            if (res.ok && data && data.ok) {
+              track('qi_join_success');
+              form.hidden = true;
+              success.hidden = false;
+              success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              var map = { missing_fields: 'Bitte fülle Vorname, Nachname und E-Mail aus.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte versuche es nochmals.' };
+              show('error', map[data && data.error] || 'Das hat nicht geklappt. Bitte versuche es nochmals.');
+            }
+          } catch (err) { show('error', 'Verbindungsfehler. Bitte versuche es nochmals.'); }
+          finally {
+            form.classList.remove('is-sending');
+            if (label && label.dataset.orig) label.textContent = label.dataset.orig;
+            if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+          }
+        });
+      })();
+    </script>
+
+    <style is:global>
+      /* ── QI CLUB base: off-white, black, TCM.CH red as the only accent. ── */
+      html { margin: 0; }
+      body { margin: 0; }
+      .qi {
+        --qi-bg: #FAF8F5;
+        --qi-ink: #0d0d0d;
+        --qi-red: #DA291C;
+        --qi-grey: #6b6661;
+        --qi-grey-soft: #EDE9E3;
+        --qi-max: 1280px;
+        margin: 0;
+        background: var(--qi-bg);
+        color: var(--qi-ink);
+        font-family: 'Figtree', system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .qi * { box-sizing: border-box; }
+      .qi-wrap { max-width: var(--qi-max); margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px); }
+      .qi-dot { color: var(--qi-red); }
+      .qi-red { color: var(--qi-red); }
+      .qi h1, .qi h2, .qi h3 { margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; }
+
+      /* Reveal animation */
+      .qi-reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+      .qi-reveal.is-in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) { .qi-reveal { opacity: 1; transform: none; transition: none; } }
+
+      /* Buttons */
+      .qi-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 30px; font-weight: 800; font-size: 14px; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; border: 2px solid var(--qi-ink); cursor: pointer; transition: background .18s ease, color .18s ease, border-color .18s ease; }
+      .qi-btn--solid { background: var(--qi-ink); color: #fff; }
+      .qi-btn--solid:hover { background: var(--qi-red); border-color: var(--qi-red); }
+      .qi-btn--line { background: transparent; color: var(--qi-ink); }
+      .qi-btn--line:hover { border-color: var(--qi-red); color: var(--qi-red); }
+      .qi-btn--white { background: #fff; color: var(--qi-ink); border-color: #fff; }
+      .qi-btn--white:hover { background: var(--qi-red); border-color: var(--qi-red); color: #fff; }
+
+      /* Nav */
+      .qi-nav { position: sticky; top: 0; z-index: 100; background: rgba(250,248,245,.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(13,13,13,.08); }
+      .qi-nav-inner { max-width: var(--qi-max); margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px); height: 64px; display: flex; align-items: center; gap: 24px; }
+      .qi-nav-logo { font-weight: 900; font-size: 19px; letter-spacing: -0.03em; color: var(--qi-ink); text-decoration: none; }
+      .qi-nav-links { display: none; gap: 26px; margin-left: auto; }
+      .qi-nav-links a { color: var(--qi-grey); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: color .15s ease; }
+      .qi-nav-links a:hover { color: var(--qi-ink); }
+      .qi-nav-join { margin-left: auto; display: inline-flex; align-items: center; min-height: 40px; padding: 0 20px; background: var(--qi-ink); color: #fff; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-decoration: none; transition: background .18s ease; }
+      .qi-nav-join:hover { background: var(--qi-red); }
+      @media (min-width: 860px) { .qi-nav-links { display: flex; } .qi-nav-join { margin-left: 0; } }
+
+      /* 1. Hero */
+      .qi-hero { padding: clamp(64px, 12vh, 140px) 0 clamp(48px, 8vh, 96px); }
+      .qi-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .28em; color: var(--qi-grey); margin: 0 0 14px; }
+      .qi-hero-title { font-size: clamp(72px, 18vw, 240px); }
+      .qi-hero-sub { font-size: clamp(20px, 3.2vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin: clamp(20px, 3vw, 36px) 0 12px; }
+      .qi-hero-support { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); max-width: 560px; margin: 0 0 30px; }
+      .qi-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+      .qi-hero-note { font-size: 13.5px; font-weight: 600; color: var(--qi-grey); margin: 0; }
+
+      /* 2. Manifesto */
+      .qi-manifesto { padding: clamp(64px, 12vh, 140px) 0; background: #fff; }
+      .qi-giant { font-size: clamp(34px, 6.4vw, 88px); max-width: 1100px; }
+      .qi-manifesto-text { font-size: clamp(16px, 2vw, 20px); color: var(--qi-grey); max-width: 640px; margin: clamp(24px, 4vw, 44px) 0 0; }
+
+      /* 3. Concepts */
+      .qi-concepts { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-section-title { font-size: clamp(34px, 5.6vw, 76px); margin-bottom: clamp(30px, 5vw, 56px); }
+      .qi-concept-list { list-style: none; margin: 0; padding: 0; }
+      .qi-concept-list li { display: grid; grid-template-columns: 64px 1fr; grid-template-areas: 'num name' 'num line'; column-gap: clamp(14px, 3vw, 32px); padding: clamp(20px, 3vw, 30px) 0; border-top: 1px solid rgba(13,13,13,.14); align-items: baseline; }
+      .qi-concept-list li:last-child { border-bottom: 1px solid rgba(13,13,13,.14); }
+      .qi-concept-num { grid-area: num; font-weight: 900; font-size: clamp(15px, 2vw, 20px); color: var(--qi-red); }
+      .qi-concept-name { grid-area: name; font-weight: 900; font-size: clamp(28px, 5vw, 56px); letter-spacing: -0.03em; line-height: 1; }
+      .qi-concept-line { grid-area: line; font-size: clamp(14px, 1.7vw, 17px); color: var(--qi-grey); margin-top: 8px; }
+      @media (min-width: 760px) {
+        .qi-concept-list li { grid-template-columns: 90px 1fr 1fr; grid-template-areas: 'num name line'; }
+        .qi-concept-line { margin-top: 0; }
+      }
+
+      /* 4. Events */
+      .qi-events { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-events-intro { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); max-width: 520px; margin: -14px 0 clamp(30px, 5vw, 52px); }
+      .qi-event { display: grid; gap: 0; border: 2px solid var(--qi-ink); }
+      .qi-event-media { position: relative; min-height: 260px; background: var(--qi-grey-soft); display: flex; align-items: flex-end; }
+      .qi-media-tag { font-size: 11px; font-weight: 800; letter-spacing: .22em; color: var(--qi-grey); padding: 14px 16px; }
+      .qi-event-body { padding: clamp(24px, 4vw, 44px); }
+      .qi-event-label { font-size: 12px; font-weight: 800; letter-spacing: .24em; color: var(--qi-red); margin: 0 0 10px; }
+      .qi-event-body h3 { font-size: clamp(30px, 5vw, 56px); margin-bottom: 12px; }
+      .qi-event-desc { font-size: clamp(16px, 2vw, 19px); font-weight: 600; margin: 0 0 22px; }
+      .qi-event-meta { display: grid; gap: 10px; margin: 0 0 26px; }
+      .qi-event-meta div { display: flex; gap: 12px; font-size: 14.5px; }
+      .qi-event-meta dt { font-weight: 800; min-width: 92px; margin: 0; }
+      .qi-event-meta dd { margin: 0; color: var(--qi-grey); }
+      @media (min-width: 860px) { .qi-event { grid-template-columns: 1fr 1.1fr; } .qi-event-media { min-height: 100%; } }
+      .qi-upcoming { display: grid; gap: 0; margin-top: clamp(28px, 4vw, 44px); }
+      .qi-upcoming-item { padding: clamp(22px, 3vw, 32px) 0; border-top: 1px solid rgba(13,13,13,.14); }
+      .qi-upcoming-item:last-child { border-bottom: 1px solid rgba(13,13,13,.14); }
+      .qi-soon { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .2em; color: var(--qi-red); margin-bottom: 8px; }
+      .qi-upcoming-item h3 { font-size: clamp(24px, 3.6vw, 40px); margin-bottom: 6px; }
+      .qi-upcoming-item p { margin: 0; color: var(--qi-grey); font-size: 15px; }
+
+      /* 5. Visual break */
+      .qi-break { position: relative; min-height: clamp(320px, 60vh, 620px); overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--qi-ink); }
+      .qi-break img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+      .qi-break-line { position: relative; z-index: 1; color: #fff; font-weight: 900; letter-spacing: -0.02em; font-size: clamp(26px, 5vw, 64px); line-height: 1.1; text-align: center; padding: 0 clamp(18px, 4vw, 48px); margin: 0; max-width: 1000px; }
+
+      /* 6. Topic wall */
+      .qi-topics { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-topic-wall { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: clamp(18px, 3vw, 40px); row-gap: 6px; }
+      .qi-topic-wall li { font-weight: 900; letter-spacing: -0.03em; font-size: clamp(28px, 5.4vw, 72px); line-height: 1.05; color: var(--qi-ink); }
+      .qi-topic-wall li:nth-child(4n) { color: var(--qi-red); }
+
+      /* 7. Ambassadors */
+      .qi-ambassadors { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-amb-text { font-size: clamp(17px, 2.4vw, 24px); font-weight: 600; max-width: 620px; margin: -6px 0 30px; }
+
+      /* 8. TCM */
+      .qi-tcm { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-tcm-grid { display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; }
+      .qi-tcm-text p { font-size: clamp(15.5px, 1.9vw, 19px); color: var(--qi-grey); max-width: 520px; margin: 0 0 18px; }
+      .qi-tcm-powered { font-weight: 800; letter-spacing: .18em; font-size: 12.5px; color: var(--qi-ink) !important; text-transform: uppercase; margin-bottom: 22px !important; }
+      .qi-tcm-media { margin: 0; }
+      .qi-tcm-media img { display: block; width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+      @media (min-width: 900px) { .qi-tcm-grid { grid-template-columns: 1.1fr 1fr; } }
+
+      /* 9. Join */
+      .qi-join { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-join-wrap { max-width: 760px; margin: 0 auto; }
+      .qi-join-sub { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); margin: -14px 0 34px; }
+      .qi-hp { position: absolute; left: -9999px; top: -9999px; }
+      .qi-form-row { display: grid; gap: 18px; margin-bottom: 18px; }
+      @media (min-width: 640px) { .qi-form-row { grid-template-columns: 1fr 1fr; } }
+      .qi-field label { display: block; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 7px; }
+      .qi-field input { width: 100%; min-height: 52px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--qi-ink); background: var(--qi-bg); border: 2px solid var(--qi-ink); border-radius: 0; }
+      .qi-field input:focus-visible { outline: 3px solid var(--qi-red); outline-offset: 1px; }
+      .qi-interests { border: none; padding: 0; margin: 6px 0 18px; }
+      .qi-interests legend { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 0; margin-bottom: 10px; }
+      .qi-optional { color: var(--qi-grey); font-weight: 600; letter-spacing: .06em; }
+      .qi-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+      .qi-chip { cursor: pointer; }
+      .qi-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+      .qi-chip span { display: inline-flex; align-items: center; min-height: 42px; padding: 0 18px; border: 2px solid var(--qi-ink); font-size: 13.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+      .qi-chip input:checked + span { background: var(--qi-ink); color: #fff; }
+      .qi-chip input:focus-visible + span { outline: 3px solid var(--qi-red); outline-offset: 1px; }
+      .qi-consent { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--qi-grey); margin: 0 0 18px; cursor: pointer; }
+      .qi-consent input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--qi-red); flex-shrink: 0; }
+      .qi-submit { width: 100%; }
+      @media (min-width: 640px) { .qi-submit { width: auto; min-width: 220px; } }
+      .qi-form-status { margin-top: 14px; font-size: 14.5px; font-weight: 700; }
+      .qi-form-status[data-state='error'] { color: var(--qi-red); }
+      .qi-privacy { font-size: 13px; color: var(--qi-grey); margin-top: 14px; }
+      .qi-privacy a { color: inherit; }
+      .qi-success { text-align: center; padding: clamp(24px, 5vw, 56px) 0; }
+      .qi-success-big { font-weight: 900; letter-spacing: -0.03em; font-size: clamp(48px, 10vw, 110px); line-height: 1; margin: 0 0 10px; }
+      .qi-success-sub { font-size: clamp(17px, 2.4vw, 22px); font-weight: 700; margin: 0 0 8px; }
+      .qi-success-ig { font-size: 14.5px; color: var(--qi-grey); margin: 0; }
+
+      /* 10. City */
+      .qi-city { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-city-label { font-size: 13px; font-weight: 800; letter-spacing: .28em; color: var(--qi-grey); margin: 0 0 10px; }
+      .qi-city-name { font-weight: 900; letter-spacing: -0.04em; line-height: .95; font-size: clamp(72px, 17vw, 230px); margin: 0 0 18px; }
+      .qi-city-line { font-size: clamp(15px, 1.9vw, 19px); color: var(--qi-grey); max-width: 560px; margin: 0; }
+
+      /* 11. Social */
+      .qi-social { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      @media (min-width: 720px) { .qi-social-grid { grid-template-columns: repeat(3, 1fr); } }
+      .qi-tile { aspect-ratio: 1; background: var(--qi-grey-soft); display: flex; align-items: flex-end; }
+      .qi-tile:nth-child(2) { background: #E3DED6; }
+      .qi-tile:nth-child(4) { background: #E3DED6; }
+      .qi-tile:nth-child(6) { background: #DDD7CE; }
+      .qi-tile span { font-size: 10.5px; font-weight: 800; letter-spacing: .2em; color: var(--qi-grey); padding: 12px 14px; }
+      .qi-social-handle { margin: 22px 0 0; font-size: 15px; color: var(--qi-grey); }
+      .qi-social-handle strong { color: var(--qi-ink); }
+
+      /* 12. Final */
+      .qi-final { background: var(--qi-ink); color: #fff; padding: clamp(80px, 14vh, 160px) 0; text-align: center; }
+      .qi-final-big { font-weight: 900; letter-spacing: -0.04em; line-height: .95; font-size: clamp(64px, 16vw, 220px); margin: 0 0 18px; }
+      .qi-final-sub { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.7); margin: 0 0 30px; }
+      .qi-final-by { font-size: 12.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); margin: 30px 0 0; }
+
+      /* Footer */
+      .qi-footer { background: var(--qi-ink); border-top: 1px solid rgba(255,255,255,.12); padding: 26px 0; }
+      .qi-footer-inner { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+      .qi-footer a { color: rgba(255,255,255,.55); text-decoration: none; font-size: 13px; font-weight: 600; transition: color .15s ease; }
+      .qi-footer a:hover { color: #fff; }
+      .qi-footer-legal { display: flex; gap: 20px; }
+      .qi-footer-copy { margin: 0 0 0 auto; font-size: 12.5px; color: rgba(255,255,255,.35); }
+      @media (max-width: 560px) { .qi-footer-copy { margin-left: 0; } }
+
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    </style>
+  </body>
+</html>

@@ -625,6 +625,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/club/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/datenschutz/</loc>
     <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
