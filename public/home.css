@@ -4634,7 +4634,7 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
 
 /* ── Footer-Bottom-Leiste mobile: kein Overflow, saubere Zeilen (Brand-Row zuerst, Rechtslinks darunter) ── */
 .footer-legal a,.footer-legal button{white-space:nowrap}
-.footer-brandrow{display:inline-flex;gap:16px;align-items:center}
+.footer-brandrow{display:inline-flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
 @media(max-width:768px){
   .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;max-width:100%}
   .footer-copy{font-size:11px;line-height:1.5}
