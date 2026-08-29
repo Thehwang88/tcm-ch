@@ -300,11 +300,12 @@ const schema = {
         <a class="qi-footer-back" href="/" data-qi="tcm_click">&larr; tcm.ch</a>
         <div class="qi-footer-legal">
           <!-- Brand-Leiste final: 6 Marken, keine weiteren ohne Simon -->
-          <span style="display:inline-flex;align-items:center"><img src="/images/brands/ph-logo-neg.svg" alt="Praxis Hwang" style="height:23px;width:auto;display:block"></span>
-          <span style="display:inline-flex;align-items:center"><img src="/images/brands/physio-ch-neg.png" alt="Physio.ch" style="height:15px;width:auto;display:block"></span>
-          <span style="display:inline-flex;align-items:center"><img src="/images/brands/biohax.png" alt="BIOHAX" style="height:11.8px;width:auto;display:block"></span>
-          <span style="display:inline-flex;align-items:center"><img src="/images/brands/bencao.png" alt="Bencao" style="height:11.8px;width:auto;display:block"></span>
-          <span style="display:inline-flex;align-items:center"><svg viewBox="0 0 302 100" style="height:11.8px;width:auto;display:block" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="#D8232A"><path fill-rule="evenodd" d="M31,0 C9,0 0,10 0,30 V70 C0,90 9,100 31,100 C53,100 62,90 62,70 V30 C62,10 53,0 31,0 Z M31,21 C37,21 39,24 39,31 V69 C39,76 37,79 31,79 C25,79 23,76 23,69 V31 C23,24 25,21 31,21 Z"/><path d="M70,0 H93 V68 C93,75 95,79 101,79 C107,79 109,75 109,68 V0 H132 V70 C132,90 123,100 101,100 C79,100 70,90 70,70 Z"/><path d="M171,0 C149,0 140,10 140,30 V70 C140,90 149,100 171,100 C193,100 201,91 201,71 V59 H178 V68 C178,75 176,79 171,79 C165,79 163,76 163,69 V31 C163,24 165,21 171,21 C176,21 178,25 178,32 V41 H201 V29 C201,9 193,0 171,0 Z"/><path d="M209,0 H232 V38 H251 V0 H274 V100 H251 V61 H232 V100 H209 Z"/><path d="M282,78 H302 V100 H282 Z"/></g></svg></span>
+          <span class="bm-label">Teil der <a href="https://tcm.ch">TCM.ch</a> Gruppe</span>
+          <a class="bm" href="https://hwang.ch" target="_blank" rel="noopener" aria-label="Praxis Hwang"><img class="brand-mark" src="/images/brands/ph-logo-neg.svg" alt="Praxis Hwang"></a>
+          <a class="bm" href="https://physio.ch" target="_blank" rel="noopener" aria-label="Physio.ch"><img class="brand-mark" src="/images/brands/physio-ch-neg.png" alt="Physio.ch"></a>
+          <span class="bm"><img class="brand-mark" src="/images/brands/biohax.png" alt="BIOHAX"></span>
+          <span class="bm"><img class="brand-mark" src="/images/brands/bencao.png" alt="Bencao"></span>
+          <span class="bm"><svg class="brand-mark" viewBox="0 -14.07 302 152.91" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="#D8232A"><path fill-rule="evenodd" d="M31,0 C9,0 0,10 0,30 V70 C0,90 9,100 31,100 C53,100 62,90 62,70 V30 C62,10 53,0 31,0 Z M31,21 C37,21 39,24 39,31 V69 C39,76 37,79 31,79 C25,79 23,76 23,69 V31 C23,24 25,21 31,21 Z"/><path d="M70,0 H93 V68 C93,75 95,79 101,79 C107,79 109,75 109,68 V0 H132 V70 C132,90 123,100 101,100 C79,100 70,90 70,70 Z"/><path d="M171,0 C149,0 140,10 140,30 V70 C140,90 149,100 171,100 C193,100 201,91 201,71 V59 H178 V68 C178,75 176,79 171,79 C165,79 163,76 163,69 V31 C163,24 165,21 171,21 C176,21 178,25 178,32 V41 H201 V29 C201,9 193,0 171,0 Z"/><path d="M209,0 H232 V38 H251 V0 H274 V100 H251 V61 H232 V100 H209 Z"/><path d="M282,78 H302 V100 H282 Z"/></g></svg></span>
           <a href="/impressum/">Impressum</a>
           <a href="/datenschutz/">Datenschutz</a>
           <a href="/agb/">AGB</a>
@@ -581,6 +582,12 @@ const schema = {
       .qi-footer a { color: rgba(255,255,255,.55); text-decoration: none; font-size: 13px; font-weight: 600; transition: color .15s ease; }
       .qi-footer a:hover { color: #fff; }
       .qi-footer-legal { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+      .bm { display: inline-flex; align-items: center; transition: opacity .15s ease; }
+      a.bm:hover { opacity: .8; }
+      .brand-mark { height: 16px; width: auto; display: block; }
+      .bm-label { flex-basis: 100%; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #8a8781; }
+      .bm-label a { color: #b5b2ac; text-decoration: none; }
+      @media (max-width: 768px) { .brand-mark { height: 14px; } }
       .qi-footer-copy { margin: 0 0 0 auto; font-size: 12.5px; color: rgba(255,255,255,.35); }
       @media (max-width: 560px) { .qi-footer-copy { margin-left: 0; } }
 
