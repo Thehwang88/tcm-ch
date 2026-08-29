@@ -4631,3 +4631,15 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
   .nav-cta { padding: 8px 10px !important; font-size: 13px !important; }
   .logo img { width: 88px; height: auto; }
 }
+
+/* ── Footer-Bottom-Leiste mobile: kein Overflow, saubere Zeilen (Brand-Row zuerst, Rechtslinks darunter) ── */
+.footer-legal a,.footer-legal button{white-space:nowrap}
+.footer-brandrow{display:inline-flex;gap:16px;align-items:center}
+@media(max-width:768px){
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;max-width:100%}
+  .footer-copy{font-size:11px;line-height:1.5}
+  .footer-care{display:block}
+  .footer-care-sep{display:none}
+  .footer-legal{flex-wrap:wrap;row-gap:10px;column-gap:16px;max-width:100%}
+  .footer-brandrow{flex-basis:100%}
+}
