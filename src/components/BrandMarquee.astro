@@ -1,0 +1,60 @@
+---
+// Brand-Marquee "Teil der TCM.ch Gruppe" — identisch zur Homepage-Variante
+// (dort raw in home-body.html + home.css). Self-contained: eigenes CSS, keine
+// Abhaengigkeit von tokens.css/home.css. Assets + optical-scale wie im Footer;
+// Hwang als volles PRAXIS/HWANG-Lockup (ph-logo-lockup.svg, scale 1.845).
+---
+<section class="brand-marquee" aria-label="Teil der TCM.ch Gruppe">
+  <div class="bmq-label">Teil der TCM.ch Gruppe</div>
+  <div class="bmq-viewport">
+    <div class="bmq-track">
+      {[false, true].map((hidden) => (
+        <div class="bmq-seq" aria-hidden={hidden || undefined}>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/ph-logo-lockup.svg" alt="Praxis Hwang" style="--optical-scale:1.845" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/physio-ch-neg.png" alt="Physio.ch" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/biohax.png" alt="BIOHAX" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/bencao.png" alt="Bencao" /></span>
+          <span class="bmq-item"><svg class="mq-mark" style="--optical-scale:1.1" viewBox="0 -14.07 302 152.91" xmlns="http://www.w3.org/2000/svg" aria-label="OUCH." role="img"><g fill="#D8232A"><path fill-rule="evenodd" d="M31,0 C9,0 0,10 0,30 V70 C0,90 9,100 31,100 C53,100 62,90 62,70 V30 C62,10 53,0 31,0 Z M31,21 C37,21 39,24 39,31 V69 C39,76 37,79 31,79 C25,79 23,76 23,69 V31 C23,24 25,21 31,21 Z"/><path d="M70,0 H93 V68 C93,75 95,79 101,79 C107,79 109,75 109,68 V0 H132 V70 C132,90 123,100 101,100 C79,100 70,90 70,70 Z"/><path d="M171,0 C149,0 140,10 140,30 V70 C140,90 149,100 171,100 C193,100 201,91 201,71 V59 H178 V68 C178,75 176,79 171,79 C165,79 163,76 163,69 V31 C163,24 165,21 171,21 C176,21 178,25 178,32 V41 H201 V29 C201,9 193,0 171,0 Z"/><path d="M209,0 H232 V38 H251 V0 H274 V100 H251 V61 H232 V100 H209 Z"/><path d="M282,78 H302 V100 H282 Z"/></g></svg></span>
+          <span class="bmq-item bmq-qi">QI&nbsp;CLUB<span class="bm-dot"></span></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/ph-logo-lockup.svg" alt="Praxis Hwang" style="--optical-scale:1.845" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/physio-ch-neg.png" alt="Physio.ch" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/biohax.png" alt="BIOHAX" /></span>
+          <span class="bmq-item"><img class="mq-mark" src="/images/brands/bencao.png" alt="Bencao" /></span>
+          <span class="bmq-item"><svg class="mq-mark" style="--optical-scale:1.1" viewBox="0 -14.07 302 152.91" xmlns="http://www.w3.org/2000/svg" aria-label="OUCH." role="img"><g fill="#D8232A"><path fill-rule="evenodd" d="M31,0 C9,0 0,10 0,30 V70 C0,90 9,100 31,100 C53,100 62,90 62,70 V30 C62,10 53,0 31,0 Z M31,21 C37,21 39,24 39,31 V69 C39,76 37,79 31,79 C25,79 23,76 23,69 V31 C23,24 25,21 31,21 Z"/><path d="M70,0 H93 V68 C93,75 95,79 101,79 C107,79 109,75 109,68 V0 H132 V70 C132,90 123,100 101,100 C79,100 70,90 70,70 Z"/><path d="M171,0 C149,0 140,10 140,30 V70 C140,90 149,100 171,100 C193,100 201,91 201,71 V59 H178 V68 C178,75 176,79 171,79 C165,79 163,76 163,69 V31 C163,24 165,21 171,21 C176,21 178,25 178,32 V41 H201 V29 C201,9 193,0 171,0 Z"/><path d="M209,0 H232 V38 H251 V0 H274 V100 H251 V61 H232 V100 H209 Z"/><path d="M282,78 H302 V100 H282 Z"/></g></svg></span>
+          <span class="bmq-item bmq-qi">QI&nbsp;CLUB<span class="bm-dot"></span></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .brand-marquee { --mq-base: 30px; background: #FAF9F7; border-top: 1px solid rgba(13,13,13,.08); border-bottom: 1px solid rgba(13,13,13,.08); padding: 16px 0 14px; }
+  .bmq-label { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #8a8781; margin: 0 0 10px; font-family: 'Figtree', system-ui, sans-serif; }
+  .bmq-viewport { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .bmq-track { display: flex; width: max-content; animation: bmq-scroll 45s linear infinite; }
+  .bmq-viewport:hover .bmq-track { animation-play-state: paused; }
+  .bmq-seq { display: flex; align-items: center; gap: 40px; padding-right: 40px; }
+  .bmq-item { display: inline-flex; align-items: center; opacity: .7; transition: opacity .2s ease, filter .2s ease; white-space: nowrap; }
+  .bmq-item .mq-mark { filter: brightness(0) invert(.6); }
+  .bmq-item:hover .mq-mark { filter: none; }
+  .bmq-qi .bm-dot { background: #9a9791; }
+  .bmq-qi:hover { color: #0d0d0d; }
+  .bmq-qi:hover .bm-dot { background: #DA291C; }
+  .bmq-item:hover { opacity: 1; }
+  .mq-mark { height: calc(var(--mq-base) * var(--optical-scale, 1)); width: auto; max-width: none; display: block; }
+  .bm-dot { display: inline-block; width: .16em; height: .16em; border-radius: 50%; background: #DA291C; margin-left: .07em; vertical-align: baseline; }
+  .bmq-qi { font-family: 'Figtree', system-ui, sans-serif; font-size: 28px; font-weight: 800; color: #9a9791; line-height: 1; transform: translateY(-.045em); }
+  @keyframes bmq-scroll { to { transform: translateX(-50%); } }
+  @media (max-width: 768px) {
+    .brand-marquee { --mq-base: 25px; padding: 14px 0 12px; }
+    .bmq-seq { gap: 28px; padding-right: 28px; }
+    .bmq-qi { font-size: 23px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bmq-track { animation: none; width: 100%; justify-content: center; }
+    .bmq-seq { flex-wrap: wrap; justify-content: center; row-gap: 18px; padding-right: 0; }
+    .bmq-seq[aria-hidden] { display: none; }
+    .bmq-viewport { mask-image: none; -webkit-mask-image: none; }
+  }
+</style>

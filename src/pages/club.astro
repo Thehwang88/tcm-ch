@@ -5,6 +5,7 @@
 // HeadAnalytics (GTM + CookieYes) and the /api/anfrage form pipeline (quelle=qi-club).
 import { site } from '../data/site';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
+import BrandMarquee from '../components/BrandMarquee.astro';
 
 const path = '/club';
 const url = new URL(path + '/', site.url).href;
@@ -291,6 +292,8 @@ const schema = {
           <p class="qi-final-by qi-reveal">by TCM.CH</p>
         </div>
       </section>
+
+      <BrandMarquee />
 
     </main>
 

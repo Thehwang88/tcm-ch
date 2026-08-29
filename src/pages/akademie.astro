@@ -1,5 +1,6 @@
 ---
 import LayoutDe from '../layouts/LayoutDe.astro';
+import BrandMarquee from '../components/BrandMarquee.astro';
 import { site } from '../data/site';
 
 const path = '/akademie';
@@ -245,6 +246,8 @@ const schema = [
       <p class="ak-closing-a">Genau dafür gibt es die TCM.CH Akademie.</p>
     </div>
   </section>
+
+  <BrandMarquee />
 
   <script is:inline>
     (function () {
