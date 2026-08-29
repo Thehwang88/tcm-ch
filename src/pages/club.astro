@@ -13,7 +13,7 @@ const description =
   'QI CLUB bringt Menschen rund um Wellbeing, Longevity, Movement und moderne chinesische Medizin zusammen. Events, Walks und Community. Zuerst in Zürich.';
 
 const konzepte = [
-  { n: '01', t: 'MOVE', d: 'Walks, Runs, Pilates, Breathwork. Gemeinsam, nicht alleine.' },
+  { n: '01', t: 'MOVE', d: 'Walks, Runs, Yoga, Pilates und Movement Sessions.' },
   { n: '02', t: 'LEARN', d: 'Sleep, Stress, Longevity. Von Menschen, die es können.' },
   { n: '03', t: 'MEET', d: 'Gute Gespräche statt Smalltalk. Kaffee statt Kaltakquise.' },
   { n: '04', t: 'FEEL BETTER', d: 'Der Rest ergibt sich.' },
@@ -538,8 +538,10 @@ const schema = {
 
       /* 10. City */
       .qi-city { padding: clamp(64px, 11vh, 130px) 0; }
-      .qi-city-label { font-size: 13px; font-weight: 800; letter-spacing: .28em; color: var(--qi-grey); margin: 0 0 10px; }
-      .qi-city-name { font-weight: 900; letter-spacing: -0.04em; line-height: .95; font-size: clamp(72px, 17vw, 230px); margin: 0 0 18px; }
+      .qi-city-label { font-size: 13px; font-weight: 800; letter-spacing: .28em; color: var(--qi-grey); margin: 0 0 16px; }
+      /* Display-Typo mit Umlauten: line-height min. 1.05, sonst ragen die Ü-Punkte
+         in die Zeile darüber (gilt für alle künftigen Riesen-Headlines mit Ü/Ä/Ö). */
+      .qi-city-name { font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; font-size: clamp(72px, 16vw, 210px); margin: 0 0 18px; }
       .qi-city-line { font-size: clamp(15px, 1.9vw, 19px); color: var(--qi-grey); max-width: 560px; margin: 0; }
 
       /* 11. Social */
