@@ -4652,3 +4652,19 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
 .footer-legal .bm-label a{color:#b5b2ac;text-decoration:none;font-size:10px;letter-spacing:.2em;min-height:0;padding:0!important;display:inline}
 .footer-legal a.bm-qi{font-size:14px;font-weight:800;color:#fff;white-space:nowrap}
 @media(max-width:768px){.brand-mark{height:calc(14px * var(--optical-scale, 1))}.footer-legal a.bm-qi{font-size:12px}}
+
+/* ── Brand-Marquee unter dem Hero: CSS-only Endlos-Band der 6 Gruppen-Marken ── */
+.brand-marquee{--mq-base:36.7px;background:#0d0d0d;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:30px 0 28px}
+.bmq-label{text-align:center;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8a8781;margin-bottom:20px}
+.bmq-viewport{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.bmq-track{display:flex;width:max-content;animation:bmq-scroll 40s linear infinite}
+.bmq-viewport:hover .bmq-track{animation-play-state:paused}
+.bmq-seq{display:flex;align-items:center;gap:64px;padding-right:64px}
+.bmq-item{display:inline-flex;align-items:center;opacity:.75;transition:opacity .2s ease;white-space:nowrap}
+.bmq-item:hover{opacity:1}
+.mq-mark{height:calc(var(--mq-base) * var(--optical-scale, 1));width:auto;display:block}
+#home-content .mq-mark,#home-content img.mq-mark{height:calc(var(--mq-base) * var(--optical-scale, 1))!important;width:auto!important;max-width:none!important}
+.bmq-qi{font-family:var(--font-sans);font-size:32px;font-weight:800;color:#fff;line-height:1;transform:translateY(-.045em)}
+@keyframes bmq-scroll{to{transform:translateX(-50%)}}
+@media(max-width:768px){.brand-marquee{--mq-base:27.5px;padding:24px 0 22px}.bmq-seq{gap:40px;padding-right:40px}.bmq-qi{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.bmq-track{animation:none;width:100%;justify-content:center}.bmq-seq{flex-wrap:wrap;justify-content:center;row-gap:18px;padding-right:0}.bmq-seq[aria-hidden]{display:none}.bmq-viewport{mask-image:none;-webkit-mask-image:none}}
