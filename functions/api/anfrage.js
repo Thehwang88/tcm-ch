@@ -22,8 +22,12 @@ export async function onRequestPost({ request, env }) {
     // Wartelisten (quelle=warteliste-*, z. B. Luzern) erfassen nur eine E-Mail.
     const _launchSG = d.quelle === 'launch-hero-sg';
     const _warteliste = typeof d.quelle === 'string' && d.quelle.indexOf('warteliste-') === 0;
+    // Akademie-Leads (quelle=akademie): Telefon optional, Name + E-Mail Pflicht.
+    const _akademie = d.quelle === 'akademie';
     if (_warteliste) {
       if (!d.email) return J({ error: 'missing_fields' }, 422);
+    } else if (_akademie) {
+      if (!d.name || !d.email) return J({ error: 'missing_fields' }, 422);
     } else if (!d.name || !d.telefon || (!_launchSG && !d.email)) {
       return J({ error: 'missing_fields' }, 422);
     }
@@ -51,6 +55,7 @@ export async function onRequestPost({ request, env }) {
     const rows = [
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
       ['Standort', d.standort],
+      ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen],
       ['Angebot', d.angebot], ['Seite', d.seite],
       ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
@@ -66,7 +71,9 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table></body></html>';
 
-    let subject = _warteliste
+    let subject = _akademie
+      ? 'Akademie – ' + (d.situation || 'Interesse') + ' (' + d.name + ')'
+      : _warteliste
       ? 'Warteliste – ' + (d.standort || 'Standort offen') + ' (' + d.email + ')'
       : d.typ === 'termin'
         ? 'Terminanfrage – ' + (d.standort || 'Standort offen')

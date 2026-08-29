@@ -1,0 +1,388 @@
+---
+import LayoutDe from '../layouts/LayoutDe.astro';
+import { site } from '../data/site';
+
+const path = '/akademie';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Weiterbildung, M7 Mentorat & Praxisaufbau | TCM.ch Akademie';
+const description =
+  'Die TCM.CH Akademie begleitet Therapeut:innen nach der Ausbildung: M7-Mentorat, Praktikum, Fortbildung und Praxisaufbau. Aus dem grössten TCM-Netzwerk der Schweiz.';
+
+const weg = [
+  { n: '01', label: 'Während der Ausbildung', t: 'Erlebe die Praxis, bevor du selbst eine führst.',
+    d: 'Schnuppertage, Hospitationen und Praktika in echten TCM.CH Praxen. Du siehst, wie Behandlungsalltag wirklich aussieht, sprichst mit erfahrenen Therapeut:innen und findest heraus, wohin dein Weg gehen soll.' },
+  { n: '02', label: 'Nach der Ausbildung', t: 'Du musst die ersten Jahre nicht alleine herausfinden.',
+    d: 'M7-Mentorat durch entsprechend akkreditierte Mentor:innen, 1:1-Begleitung, Fallbesprechungen und Unterstützung beim Berufseinstieg. Die Phase zwischen Abschluss und sicherer Praxis ist die schwierigste. Genau dafür sind wir da.' },
+  { n: '03', label: 'Als Therapeut:in', t: 'Fachlich weiterkommen. An echten Fällen.',
+    d: 'Praxisorientierte Fort- und Weiterbildungen: Diagnostik, Schmerztherapie, Frauenheilkunde, Patientenkommunikation und mehr. Konkrete Formate werden laufend aufgeschaltet.',
+    badge: 'Programm in Aufbau · Interesse anmelden' },
+  { n: '04', label: 'Die eigene Praxis', t: 'Eine Praxis braucht mehr als gute Medizin.',
+    d: 'Positionierung, Standortwahl, Preisgestaltung, Versicherungen, Sichtbarkeit, Patientengewinnung, Finanzen. Wir zeigen dir, wie eine Praxis wirtschaftlich funktioniert. Nicht als Theorie, sondern so, wie wir es selbst an 14 Standorten machen.' },
+  { n: '05', label: 'Von der Praxis zum Unternehmen', t: 'Vom Behandlungszimmer zur unternehmerischen Verantwortung.',
+    d: 'Team aufbauen, führen, delegieren. Prozesse, Standortentwicklung, Wachstum. Für Therapeut:innen, die grösser denken. Und vielleicht irgendwann Partner:in im TCM.CH Netzwerk werden.' },
+];
+
+const formate = [
+  { t: 'M7 Mentorat', d: 'Begleitung deiner Berufspraxis durch entsprechend akkreditierte Mentor:innen. Strukturiert, persönlich, auf deine Fälle bezogen.' },
+  { t: 'Praktikum & Hospitation', d: 'Praxisluft statt Hörsaal. Erlebe den Behandlungsalltag in unseren Praxen, bevor du selbst Verantwortung übernimmst.' },
+  { t: '1:1 Clinical Mentoring', d: 'Ein erfahrener Sparringspartner für schwierige Fälle, Diagnostik und deine therapeutische Entwicklung.' },
+  { t: 'Fort- & Weiterbildungen', d: 'Kompakte, praxisnahe Masterclasses und Fachveranstaltungen. Erste Formate in Vorbereitung.' },
+  { t: 'Praxis & Business Mentoring', d: 'Von den ersten Patienten bis zur Praxis, die wirtschaftlich trägt. Aufgebaut auf dem, was wir täglich selbst betreiben.' },
+];
+
+const fragen = [
+  'Was kostet mich ein neuer Patient?',
+  'Wie viele Patienten braucht meine Praxis zum Leben?',
+  'Warum bleibt mein Kalender leer?',
+  'Wie viel darf Marketing kosten?',
+  'Wann lohnt sich ein zweiter Raum?',
+  'Wann kann ich jemanden einstellen?',
+  'Welche Zahlen muss ich überhaupt kennen?',
+];
+
+const pfad = ['Schnuppern', 'Ausbildung', 'Praktikum', 'M7', 'Berufseinstieg', 'Fortbildung', 'Eigene Praxis', 'Team', 'Standort / Partnerschaft'];
+
+const fuerDich = [
+  'TCM studierst und echte Praxis erleben willst.',
+  'kurz vor dem Berufseinstieg stehst.',
+  'ein M7-Mentorat suchst.',
+  'bei schwierigen Fällen einen erfahrenen Sparringspartner willst.',
+  'dich fachlich weiterentwickeln möchtest.',
+  'deine eigene Praxis eröffnen willst.',
+  'selbstständig bist, aber deine Praxis noch nicht dort ist, wo du sie haben willst.',
+  'ein Team oder einen Standort aufbauen möchtest.',
+];
+
+const situationOpts = [
+  'Ich bin in Ausbildung',
+  'Ich suche ein Praktikum',
+  'Ich suche ein M7-Mentorat',
+  'Ich möchte mich fachlich weiterbilden',
+  'Ich möchte meine eigene Praxis aufbauen',
+  'Ich habe bereits eine Praxis',
+  'Vorträge / Workshops',
+  'Sonstiges',
+];
+
+// WebPage + BreadcrumbList only — no Course schema while no real courses are live.
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    audience: { '@type': 'Audience', audienceType: 'TCM therapists and TCM students' },
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Akademie', item: url },
+    ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} turnstile={true}>
+  <!-- 1. HERO -->
+  <section class="ak-hero" aria-label="TCM.CH Akademie">
+    <div class="wrap">
+      <div class="eyebrow">TCM.CH AKADEMIE</div>
+      <h1>Von der Ausbildung zur erfolgreichen Praxis.</h1>
+      <p class="lead ak-hero-sub">Du hast gelernt, Menschen zu behandeln. Aber wie wird daraus ein Beruf, von dem du leben kannst? Die TCM.CH Akademie begleitet dich dort, wo die Ausbildung aufhört: im Praxisalltag, beim Berufseinstieg und auf dem Weg in die Selbstständigkeit.</p>
+      <div class="ak-cta-row">
+        <a class="btn btn--primary" href="#weg">Akademie entdecken</a>
+        <a class="btn btn--ghost" href="#interesse">Interesse anmelden</a>
+      </div>
+      <p class="ak-trust">Aus dem grössten TCM-Netzwerk der Deutschschweiz · 14 Standorte · Echte Praxen, echte Patienten</p>
+    </div>
+  </section>
+
+  <!-- 2. STATEMENT -->
+  <section class="section ak-statement">
+    <div class="wrap">
+      <p>TCM lernen ist das eine. Davon leben zu können das andere.</p>
+    </div>
+  </section>
+
+  <!-- 3. MANIFESTO -->
+  <section class="section ak-manifesto">
+    <div class="wrap ak-narrow">
+      <h2>Eine gute Therapeutin zu sein reicht nicht immer aus.</h2>
+      <p>Fachliche Kompetenz ist die Grundlage. Ohne sie geht nichts.</p>
+      <p>Aber eine Praxis braucht Patienten. Patienten müssen dich finden, dir vertrauen und wiederkommen. Eine Praxis braucht Struktur, Zahlenverständnis und Entscheidungen, die niemand für dich trifft.</p>
+      <p>Nichts davon steht im Lehrplan. Und nichts davon sagt etwas darüber aus, ob jemand gut behandelt.</p>
+      <p>Trotzdem entscheidet genau das oft darüber, ob aus einer Ausbildung ein Beruf wird, der trägt.</p>
+      <p class="ak-manifesto-close">Diese Lücke schliessen wir.</p>
+    </div>
+  </section>
+
+  <!-- 4. DER WEG -->
+  <section class="section" id="weg">
+    <div class="wrap">
+      <div class="section-label">Der Weg</div>
+      <h2 class="section-title">Egal wo du stehst. Wir holen dich dort ab.</h2>
+      <div class="ak-weg">
+        {weg.map((w) => (
+          <div class="ak-weg-item">
+            <div class="ak-weg-num">{w.n}</div>
+            <div class="ak-weg-body">
+              <div class="ak-weg-label">{w.label}</div>
+              <h3>{w.t}</h3>
+              <p>{w.d}</p>
+              {w.badge && <a class="ak-badge" href="#interesse">{w.badge}</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FORMATE -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="section-label">Formate</div>
+      <h2 class="section-title">Unsere Formate.</h2>
+      <div class="ak-cards">
+        {formate.map((f) => (
+          <div class="ak-card">
+            <h3>{f.t}</h3>
+            <p>{f.d}</p>
+            <a class="ak-card-cta" href="#interesse">Interesse anmelden&nbsp;→</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DIFFERENZIERUNG -->
+  <section class="section">
+    <div class="wrap ak-diff">
+      <div class="ak-diff-img">
+        <img src="/images/behandlungsstart-beratung.webp" alt="Beratungsgespräch in einer TCM.CH Praxis" loading="lazy" decoding="async" />
+      </div>
+      <div class="ak-diff-text">
+        <div class="section-label">Differenzierung</div>
+        <h2 class="section-title">Nicht aus dem Lehrbuch. Aus der Praxis.</h2>
+        <p class="ak-body"><strong>Wir unterrichten nicht über Praxen. Wir führen welche.</strong></p>
+        <p class="ak-body">An 14 Standorten behandeln wir jeden Tag Patienten, stellen Therapeut:innen ein, verhandeln mit Versicherungen, planen Auslastung und bauen Standorte auf. Alles, was wir in der Akademie weitergeben, haben wir vorher selbst gemacht. Oft mehrfach. Manchmal auch falsch, bevor es richtig wurde.</p>
+        <p class="ak-body">Was wir vermitteln, muss im Berufsalltag funktionieren. Sonst vermitteln wir es nicht.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ECHTE FRAGEN -->
+  <section class="section ak-fragen">
+    <div class="wrap">
+      <div class="ak-fragen-list">
+        {fragen.map((q) => <p>{q}</p>)}
+      </div>
+      <p class="ak-fragen-abbinder"><strong>Keine theoretischen Business Cases. Fragen aus dem echten Praxisalltag.</strong> Wenn du dir eine davon schon gestellt hast, bist du hier richtig.</p>
+    </div>
+  </section>
+
+  <!-- 8. LANGFRISTIGKEIT -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="section-label">Langfristigkeit</div>
+      <h2 class="section-title">Wir begleiten dich nicht für einen Kurs. Sondern auf deinem Weg.</h2>
+      <ol class="ak-pfad">
+        {pfad.map((p) => <li>{p}</li>)}
+      </ol>
+      <p class="ak-body" style="margin-top:22px">Manche kommen für ein Praktikum. Andere für ein Mentorat oder eine einzelne Weiterbildung. Und manche bleiben zehn Jahre. Beides ist gut so.</p>
+    </div>
+  </section>
+
+  <!-- 9. TALENT -->
+  <section class="section" id="talent">
+    <div class="wrap ak-narrow ak-talent">
+      <div class="section-label">Talent</div>
+      <h2 class="section-title">Und vielleicht führt dein Weg irgendwann zu uns.</h2>
+      <p class="ak-body">Praktikum, Mentorat und Weiterbildung schaffen nicht nur Wissen. Sie schaffen Beziehungen. Wir wollen engagierte Therapeut:innen kennenlernen und fördern. Daraus entstehen immer wieder neue Möglichkeiten: als Therapeut:in in einer unserer Praxen, als Mentor:in, Dozent:in oder Standortpartner:in.</p>
+      <a class="ak-textlink" href="/partner/">TCM.CH kennenlernen&nbsp;→</a>
+    </div>
+  </section>
+
+  <!-- 10. FÜR WEN -->
+  <section class="section" style="background:var(--surface)">
+    <div class="wrap ak-narrow">
+      <div class="section-label">Für wen</div>
+      <h2 class="section-title">Die Akademie ist für dich, wenn du …</h2>
+      <ul class="ak-check-list">{fuerDich.map((f) => <li>{f}</li>)}</ul>
+    </div>
+  </section>
+
+  <!-- 11. LEAD-FORM -->
+  <section class="section" id="interesse">
+    <div class="wrap ak-form-wrap">
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title">Wo stehst du gerade?</h2>
+      <p class="ak-body" style="margin-bottom:24px">Sag uns kurz, wo du stehst. Wir melden uns persönlich und schauen gemeinsam, was für dich Sinn macht. Unverbindlich.</p>
+
+      <form class="form-card ak-form" id="ak-form" novalidate>
+        <div class="hp" aria-hidden="true"><label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+        <div class="field"><label for="situation">Aktuelle Situation</label>
+          <select id="situation" name="situation">
+            <option value="">Bitte wählen</option>
+            {situationOpts.map((o) => <option>{o}</option>)}
+          </select></div>
+        <div class="form-row">
+          <div class="field"><label for="vorname">Vorname <span class="req">*</span></label><input id="vorname" name="vorname" type="text" required autocomplete="given-name" /></div>
+          <div class="field"><label for="nachname">Nachname <span class="req">*</span></label><input id="nachname" name="nachname" type="text" required autocomplete="family-name" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input id="email" name="email" type="email" required autocomplete="email" inputmode="email" /></div>
+          <div class="field"><label for="telefon">Telefon <span class="opt">(optional)</span></label><input id="telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel" /></div>
+        </div>
+        <div class="field"><label for="nachricht">Nachricht <span class="opt">(optional)</span></label><textarea id="nachricht" name="nachricht" rows="4"></textarea></div>
+
+        <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
+        <button class="btn btn--primary" type="submit"><span class="btn-label">Unverbindlich Kontakt aufnehmen</span></button>
+        <div class="form-status" role="status" aria-live="polite" hidden></div>
+        <p class="ak-privacy">Wir melden uns bei dir. Kein Newsletter, kein Verkaufsdruck. <a href="/datenschutz/">Datenschutz</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 12. CLOSING -->
+  <section class="section ak-closing">
+    <div class="wrap">
+      <p class="ak-closing-q">Was kommt nach deiner Ausbildung?</p>
+      <p class="ak-closing-a">Genau dafür gibt es die TCM.CH Akademie.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('ak-form');
+      if (!form) return;
+      var status = form.querySelector('.form-status');
+      var label = form.querySelector('.btn-label');
+      function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (form.querySelector('[name="website"]').value.trim() !== '') return;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+        var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+        if (!token) { show('error', 'Bitte bestätige, dass du kein Roboter bist, und versuche es erneut.'); return; }
+        var f = function (k) { var el = form.querySelector('[name="' + k + '"]'); return el ? el.value.trim() : ''; };
+        var payload = {
+          quelle: 'akademie',
+          name: (f('vorname') + ' ' + f('nachname')).trim(),
+          email: f('email'),
+          telefon: f('telefon'),
+          situation: f('situation'),
+          nachricht: f('nachricht'),
+          turnstileToken: token,
+        };
+        form.classList.add('is-sending');
+        if (label) { label.dataset.orig = label.textContent; label.textContent = 'Wird gesendet…'; }
+        try {
+          var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          var data = null; try { data = await res.json(); } catch (_) {}
+          if (res.ok && data && data.ok) {
+            form.reset();
+            show('success', 'Danke. Deine Nachricht ist angekommen. Wir melden uns persönlich bei dir.');
+            form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
+          } else {
+            var map = { missing_fields: 'Bitte fülle Vorname, Nachname und E-Mail aus.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut versuchen.' };
+            show('error', map[data && data.error] || 'Nachricht konnte nicht gesendet werden. Bitte erneut versuchen.');
+          }
+        } catch (err) { show('error', 'Verbindungsfehler. Bitte erneut versuchen.'); }
+        finally {
+          form.classList.remove('is-sending');
+          if (label && label.dataset.orig) label.textContent = label.dataset.orig;
+          if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+        }
+      });
+    })();
+  </script>
+</LayoutDe>
+
+<style>
+  .ak-hero { padding: clamp(64px, 10vw, 120px) 0 clamp(44px, 7vw, 80px); background: var(--white); }
+  .ak-hero h1 { font-size: clamp(34px, 5.2vw, 60px); line-height: 1.08; letter-spacing: -.025em; color: var(--ink); margin: 0 0 18px; max-width: 820px; }
+  .ak-hero-sub { max-width: 680px; }
+  .ak-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 20px; }
+  .btn--ghost { background: var(--white); color: var(--ink); border: 1.5px solid var(--border); }
+  .btn--ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .ak-trust { font-size: 13.5px; font-weight: 600; color: var(--muted); margin: 0; }
+
+  .ak-statement { padding-top: clamp(56px, 9vw, 110px); padding-bottom: clamp(56px, 9vw, 110px); background: var(--surface); }
+  .ak-statement p { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px, 4.2vw, 48px); line-height: 1.18; letter-spacing: -.02em; color: var(--ink); margin: 0 auto; max-width: 900px; text-align: center; }
+
+  .ak-manifesto { background: #0d0d0d; color: rgba(255,255,255,.82); padding-top: clamp(56px, 8vw, 96px); padding-bottom: clamp(56px, 8vw, 96px); }
+  .ak-manifesto h2 { color: #fff; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -.02em; margin: 0 0 26px; }
+  .ak-manifesto p { font-size: clamp(16px, 1.6vw, 18px); line-height: 1.75; margin: 0 0 18px; }
+  .ak-manifesto-close { color: #fff; font-weight: 800; font-size: clamp(19px, 2.2vw, 24px) !important; margin-top: 10px !important; }
+
+  .ak-narrow { max-width: 780px; }
+  .ak-body { font-size: 16px; line-height: 1.7; color: var(--mid); margin: 0 0 16px; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .section-title { font-family: var(--font-sans); font-weight: 800; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 24px; }
+
+  .ak-weg { display: grid; gap: 0; }
+  .ak-weg-item { display: flex; gap: clamp(18px, 3vw, 36px); padding: 26px 0; border-bottom: 1px solid var(--border); }
+  .ak-weg-item:last-child { border-bottom: none; }
+  .ak-weg-num { flex-shrink: 0; font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px, 3vw, 36px); color: var(--blue); line-height: 1; padding-top: 4px; min-width: 58px; }
+  .ak-weg-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .ak-weg-body h3 { font-size: clamp(18px, 2vw, 22px); font-weight: 800; color: var(--ink); margin: 0 0 8px; line-height: 1.3; }
+  .ak-weg-body p { font-size: 15.5px; line-height: 1.65; color: var(--mid); margin: 0; max-width: 720px; }
+  .ak-badge { display: inline-block; margin-top: 12px; font-size: 12.5px; font-weight: 700; color: var(--blue-dark); background: var(--blue-light); border-radius: 999px; padding: 6px 14px; text-decoration: none; }
+  .ak-badge:hover { background: var(--blue); color: #fff; }
+
+  .ak-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .ak-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: var(--r-card); padding: 24px; box-shadow: var(--sh-sm); }
+  .ak-card h3 { font-size: 17px; font-weight: 800; color: var(--ink); margin: 0 0 8px; line-height: 1.3; }
+  .ak-card p { font-size: 14.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; }
+  .ak-card-cta { margin-top: auto; font-size: 14px; font-weight: 700; color: var(--blue-dark); text-decoration: none; }
+  .ak-card-cta:hover { color: var(--blue); }
+
+  .ak-diff { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .ak-diff-img img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: var(--r-card); }
+  .ak-diff-text .ak-body strong { color: var(--ink); font-size: 17px; }
+
+  .ak-fragen { background: var(--white); padding-top: clamp(56px, 8vw, 96px); padding-bottom: clamp(56px, 8vw, 96px); }
+  .ak-fragen-list p { font-family: var(--font-sans); font-weight: 800; font-size: clamp(20px, 3vw, 34px); line-height: 1.3; letter-spacing: -.02em; color: var(--ink); margin: 0 0 14px; }
+  .ak-fragen-abbinder { font-size: 16px; line-height: 1.7; color: var(--mid); margin: 30px 0 0; max-width: 640px; }
+  .ak-fragen-abbinder strong { color: var(--ink); }
+
+  .ak-pfad { list-style: none; counter-reset: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .ak-pfad li { font-size: 14px; font-weight: 600; color: var(--ink); background: var(--white); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; position: relative; }
+  .ak-pfad li:not(:last-child) { margin-right: 22px; }
+  .ak-pfad li:not(:last-child)::after { content: '→'; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 400; }
+  .ak-pfad li:last-child { background: var(--blue-light); border-color: rgba(45,155,111,.3); color: var(--blue-dark); font-weight: 700; }
+
+  .ak-talent .ak-textlink { font-size: 15.5px; font-weight: 700; color: var(--blue-dark); text-decoration: none; }
+  .ak-talent .ak-textlink:hover { color: var(--blue); }
+
+  .ak-check-list { list-style: none; padding: 0; margin: 0; }
+  .ak-check-list li { position: relative; padding: 9px 0 9px 30px; font-size: 15.5px; line-height: 1.55; color: var(--mid); border-bottom: 1px solid var(--border); }
+  .ak-check-list li:last-child { border-bottom: none; }
+  .ak-check-list li::before { content: '✓'; position: absolute; left: 0; top: 8px; color: var(--blue); font-weight: 800; }
+
+  .ak-form-wrap { max-width: 720px; }
+  .opt { color: var(--muted); font-weight: 400; font-size: 13px; }
+  .ak-privacy { font-size: 13px; color: var(--mid); margin-top: 14px; }
+  .ak-privacy a { color: var(--blue); }
+
+  .ak-closing { text-align: center; padding-top: clamp(48px, 7vw, 80px); padding-bottom: clamp(48px, 7vw, 80px); background: var(--surface); }
+  .ak-closing-q { font-family: var(--font-sans); font-weight: 800; font-size: clamp(22px, 3vw, 32px); letter-spacing: -.02em; color: var(--ink); margin: 0 0 8px; }
+  .ak-closing-a { font-size: 16.5px; color: var(--mid); margin: 0; }
+
+  @media (max-width: 900px) {
+    .ak-cards { grid-template-columns: repeat(2, 1fr); }
+    .ak-diff { grid-template-columns: 1fr; }
+    .ak-diff-img img { min-height: 240px; }
+  }
+  @media (max-width: 640px) {
+    .ak-pfad { flex-direction: column; align-items: stretch; }
+    .ak-pfad li { margin-right: 0 !important; text-align: center; }
+    .ak-pfad li:not(:last-child)::after { content: '↓'; position: static; display: block; transform: none; margin-top: 6px; color: var(--muted); }
+  }
+  @media (max-width: 560px) {
+    .ak-cards { grid-template-columns: 1fr; }
+    .ak-weg-item { flex-direction: column; gap: 10px; }
+    .ak-weg-num { min-width: 0; }
+  }
+  @media (max-width: 480px) {
+    .ak-cta-row .btn, .ak-form .btn--primary { width: 100%; }
+    .btn { min-height: 48px; justify-content: center; }
+    .form-card { padding: 20px; }
+  }
+</style>
