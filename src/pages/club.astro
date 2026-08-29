@@ -392,6 +392,10 @@ const schema = {
         --qi-grey: #6b6661;
         --qi-grey-soft: #EDE9E3;
         --qi-max: 1280px;
+        /* Spacing-System: Sektions-Padding, Headline->Subline, Headline->Block. */
+        --qi-sec-pad-y: clamp(56px, 9vw, 96px);
+        --qi-headline-gap: clamp(16px, 2.2vw, 24px);
+        --qi-block-gap: clamp(28px, 3.5vw, 40px);
         margin: 0;
         background: var(--qi-bg);
         color: var(--qi-ink);
@@ -404,7 +408,8 @@ const schema = {
       .qi-wrap { max-width: var(--qi-max); margin: 0 auto; padding: 0 clamp(18px, 4vw, 48px); }
       .qi-dot { color: var(--qi-red); }
       .qi-red { color: var(--qi-red); }
-      .qi h1, .qi h2, .qi h3 { margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; }
+      /* line-height nie unter 1.0 (Umlaute 1.05), sonst ragen Descender/Punkte in Folgeelemente. */
+      .qi h1, .qi h2, .qi h3 { margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
 
       /* Reveal animation */
       .qi-reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -441,13 +446,15 @@ const schema = {
       .qi-hero-note { font-size: 13.5px; font-weight: 600; color: var(--qi-grey); margin: 0; }
 
       /* 2. Manifesto */
-      .qi-manifesto { padding: clamp(64px, 12vh, 140px) 0; background: #fff; }
+      .qi-manifesto { padding: calc(var(--qi-sec-pad-y) * 1.2) 0; background: #fff; }
       .qi-giant { font-size: clamp(34px, 6.4vw, 88px); max-width: 1100px; }
       .qi-manifesto-text { font-size: clamp(16px, 2vw, 20px); color: var(--qi-grey); max-width: 640px; margin: clamp(24px, 4vw, 44px) 0 0; }
 
       /* 3. Concepts */
-      .qi-concepts { padding: clamp(64px, 11vh, 130px) 0; }
-      .qi-section-title { font-size: clamp(34px, 5.6vw, 76px); margin-bottom: clamp(30px, 5vw, 56px); }
+      .qi-concepts { padding: var(--qi-sec-pad-y) 0; }
+      .qi-section-title { font-size: clamp(34px, 5.6vw, 76px); margin-bottom: var(--qi-block-gap); }
+      /* Headline+Subline-Paare: engerer Gap, Subline traegt den Block-Abstand (keine negativen Margins). */
+      .qi-events .qi-wrap > .qi-section-title, .qi-join .qi-section-title, .qi-ambassadors .qi-section-title { margin-bottom: var(--qi-headline-gap); }
       .qi-concept-list { list-style: none; margin: 0; padding: 0; }
       .qi-concept-list li { display: grid; grid-template-columns: 64px 1fr; grid-template-areas: 'num name' 'num line'; column-gap: clamp(14px, 3vw, 32px); padding: clamp(20px, 3vw, 30px) 0; border-top: 1px solid rgba(13,13,13,.14); align-items: baseline; }
       .qi-concept-list li:last-child { border-bottom: 1px solid rgba(13,13,13,.14); }
@@ -460,14 +467,14 @@ const schema = {
       }
 
       /* 4. Events */
-      .qi-events { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
-      .qi-events-intro { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); max-width: 520px; margin: -14px 0 clamp(30px, 5vw, 52px); }
+      .qi-events { padding: var(--qi-sec-pad-y) 0; background: #fff; }
+      .qi-events-intro { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); max-width: 520px; margin: 0 0 var(--qi-block-gap); }
       .qi-event { display: grid; gap: 0; border: 2px solid var(--qi-ink); }
       .qi-event-media { position: relative; min-height: 260px; background: var(--qi-grey-soft); display: flex; align-items: flex-end; }
       .qi-media-tag { font-size: 11px; font-weight: 800; letter-spacing: .22em; color: var(--qi-grey); padding: 14px 16px; }
       .qi-event-body { padding: clamp(24px, 4vw, 44px); }
       .qi-event-label { font-size: 12px; font-weight: 800; letter-spacing: .24em; color: var(--qi-red); margin: 0 0 10px; }
-      .qi-event-body h3 { font-size: clamp(30px, 5vw, 56px); margin-bottom: 12px; }
+      .qi-event-body h3 { font-size: clamp(30px, 5vw, 56px); margin-bottom: .35em; }
       .qi-event-desc { font-size: clamp(16px, 2vw, 19px); font-weight: 600; margin: 0 0 22px; }
       .qi-event-meta { display: grid; gap: 10px; margin: 0 0 26px; }
       .qi-event-meta div { display: flex; gap: 12px; font-size: 14.5px; }
@@ -478,7 +485,7 @@ const schema = {
       .qi-upcoming-item { padding: clamp(22px, 3vw, 32px) 0; border-top: 1px solid rgba(13,13,13,.14); }
       .qi-upcoming-item:last-child { border-bottom: 1px solid rgba(13,13,13,.14); }
       .qi-soon { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .2em; color: var(--qi-red); margin-bottom: 8px; }
-      .qi-upcoming-item h3 { font-size: clamp(24px, 3.6vw, 40px); margin-bottom: 6px; }
+      .qi-upcoming-item h3 { font-size: clamp(24px, 3.6vw, 40px); margin-bottom: .35em; }
       .qi-upcoming-item p { margin: 0; color: var(--qi-grey); font-size: 15px; }
 
       /* 5. Visual break */
@@ -487,17 +494,17 @@ const schema = {
       .qi-break-line { position: relative; z-index: 1; color: #fff; font-weight: 900; letter-spacing: -0.02em; font-size: clamp(26px, 5vw, 64px); line-height: 1.1; text-align: center; padding: 0 clamp(18px, 4vw, 48px); margin: 0; max-width: 1000px; }
 
       /* 6. Topic wall */
-      .qi-topics { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-topics { padding: var(--qi-sec-pad-y) 0; }
       .qi-topic-wall { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; column-gap: clamp(18px, 3vw, 40px); row-gap: 6px; }
       .qi-topic-wall li { font-weight: 900; letter-spacing: -0.03em; font-size: clamp(28px, 5.4vw, 72px); line-height: 1.05; color: var(--qi-ink); }
       .qi-topic-wall li:nth-child(4n) { color: var(--qi-red); }
 
       /* 7. Ambassadors */
-      .qi-ambassadors { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
-      .qi-amb-text { font-size: clamp(17px, 2.4vw, 24px); font-weight: 600; max-width: 620px; margin: -6px 0 30px; }
+      .qi-ambassadors { padding: var(--qi-sec-pad-y) 0; background: #fff; }
+      .qi-amb-text { font-size: clamp(17px, 2.4vw, 24px); font-weight: 600; max-width: 620px; margin: 0 0 var(--qi-block-gap); }
 
       /* 8. TCM */
-      .qi-tcm { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-tcm { padding: var(--qi-sec-pad-y) 0; }
       .qi-tcm-grid { display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; }
       .qi-tcm-text p { font-size: clamp(15.5px, 1.9vw, 19px); color: var(--qi-grey); max-width: 520px; margin: 0 0 18px; }
       .qi-tcm-powered { font-weight: 800; letter-spacing: .18em; font-size: 12.5px; color: var(--qi-ink) !important; text-transform: uppercase; margin-bottom: 22px !important; }
@@ -506,9 +513,9 @@ const schema = {
       @media (min-width: 900px) { .qi-tcm-grid { grid-template-columns: 1.1fr 1fr; } }
 
       /* 9. Join */
-      .qi-join { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-join { padding: var(--qi-sec-pad-y) 0; background: #fff; }
       .qi-join-wrap { max-width: 760px; margin: 0 auto; }
-      .qi-join-sub { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); margin: -14px 0 34px; }
+      .qi-join-sub { font-size: clamp(15px, 1.8vw, 18px); color: var(--qi-grey); margin: 0 0 var(--qi-block-gap); }
       .qi-hp { position: absolute; left: -9999px; top: -9999px; }
       .qi-form-row { display: grid; gap: 18px; margin-bottom: 18px; }
       @media (min-width: 640px) { .qi-form-row { grid-template-columns: 1fr 1fr; } }
@@ -538,7 +545,7 @@ const schema = {
       .qi-success-ig { font-size: 14.5px; color: var(--qi-grey); margin: 0; }
 
       /* 10. City */
-      .qi-city { padding: clamp(64px, 11vh, 130px) 0; }
+      .qi-city { padding: var(--qi-sec-pad-y) 0; }
       .qi-city-label { font-size: 13px; font-weight: 800; letter-spacing: .28em; color: var(--qi-grey); margin: 0 0 16px; }
       /* Display-Typo mit Umlauten: line-height min. 1.05, sonst ragen die Ü-Punkte
          in die Zeile darüber (gilt für alle künftigen Riesen-Headlines mit Ü/Ä/Ö). */
@@ -546,7 +553,7 @@ const schema = {
       .qi-city-line { font-size: clamp(15px, 1.9vw, 19px); color: var(--qi-grey); max-width: 560px; margin: 0; }
 
       /* 11. Social */
-      .qi-social { padding: clamp(64px, 11vh, 130px) 0; background: #fff; }
+      .qi-social { padding: var(--qi-sec-pad-y) 0; background: #fff; }
       .qi-social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
       @media (min-width: 720px) { .qi-social-grid { grid-template-columns: repeat(3, 1fr); } }
       .qi-tile { aspect-ratio: 1; background: var(--qi-grey-soft); display: flex; align-items: flex-end; }
@@ -558,8 +565,8 @@ const schema = {
       .qi-social-handle strong { color: var(--qi-ink); }
 
       /* 12. Final */
-      .qi-final { background: var(--qi-ink); color: #fff; padding: clamp(80px, 14vh, 160px) 0; text-align: center; }
-      .qi-final-big { font-weight: 900; letter-spacing: -0.04em; line-height: .95; font-size: clamp(64px, 16vw, 220px); margin: 0 0 18px; }
+      .qi-final { background: var(--qi-ink); color: #fff; padding: calc(var(--qi-sec-pad-y) * 1.4) 0; text-align: center; }
+      .qi-final-big { font-weight: 900; letter-spacing: -0.04em; line-height: 1; font-size: clamp(64px, 16vw, 220px); margin: 0 0 18px; }
       .qi-final-sub { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.7); margin: 0 0 30px; }
       .qi-final-by { font-size: 12.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); margin: 30px 0 0; }
 
