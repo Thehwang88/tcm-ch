@@ -25,7 +25,9 @@ const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000
 
 // Kartendaten kommen aus symptomCards; der Heuschnupfen-Karte liegt die breitere
 // Zielseite /beschwerden/allergien-heuschnupfen/ zugrunde (nicht /beschwerden/heuschnupfen/).
-const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen' };
+// schlafstoerungen und heuschnupfen kanonisieren auf andere URLs (siehe MERGED in
+// src/pages/beschwerden/[slug].astro) — hier direkt auf die kanonische Seite verlinken.
+const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen', schlafstoerungen: 'schlafprobleme' };
 const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'heuschnupfen']
   .map((slug) => ({ slug, href: beschwerdenHref[slug] ?? slug, c: symptomCards[slug] }))
   .filter((x) => x.c);
@@ -323,6 +325,30 @@ const schema = [
             <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--blue)">+</span></summary>
             <div style="padding-top:14px;font-size:15px;line-height:1.7;color:var(--mid)">{f.a}</div>
           </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EINZUGSGEBIET BASEL-STADT & BASELLAND ──
+       Kein Doorway-Cluster: Baselbieter Ortsnamen bekommen bewusst KEINE eigenen Seiten
+       (dieselbe Falle, in der die beschwerden×stadt-Kombinationen 410 gegangen sind),
+       sondern stehen als Abschnitt auf der Stadtseite. Nachfrage ist belegt — tcm liestal
+       90/KD 7, tcm sissach 110/KD 9, akupunktur baselland 110/KD 13 (Semrush CH 09/2026). -->
+  <section class="section" id="einzugsgebiet">
+    <div class="wrap">
+      <div class="section-label">Einzugsgebiet</div>
+      <h2 class="section-title">Für Basel-Stadt und <em>Baselland</em></h2>
+      <p class="section-sub">Wir eröffnen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig — für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p>
+      <div class="cl-links" style="margin-top:18px;margin-bottom:22px">
+        <a href="/akupunktur-tcm-basel/" class="cl-chip">Akupunktur Basel</a>
+        <a href="/standorte/basel/kosten/" class="cl-chip">Kosten &amp; Krankenkasse</a>
+        <a href="/massage-basel/" class="cl-chip">Massage Basel</a>
+        <a href="/wissen/tcm-basel-erfahrungen-ablauf/" class="cl-chip">Erfahrungen &amp; Ablauf</a>
+      </div>
+      <div class="cl-links" style="margin-top:18px">
+        {['Basel-Stadt','Riehen','Bettingen','Binningen','Allschwil','Münchenstein','Reinach','Muttenz','Pratteln','Oberwil','Therwil','Liestal','Sissach','Birsfelden'].map((o) => (
+          <span class="cl-chip" style="cursor:default">{o}</span>
         ))}
       </div>
     </div>

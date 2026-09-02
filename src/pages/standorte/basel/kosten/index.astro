@@ -1,0 +1,160 @@
+---
+// /standorte/basel/kosten/ — Kosten-Spoke zu /standorte/basel/, nach dem Muster von
+// /standorte/frauenfeld/kosten/, /standorte/kreuzlingen/kosten/ und /standorte/luzern/kosten/.
+//
+// Abweichung: Basel ist Pre-Opening (2028). Deshalb Warteliste statt Termin-CTA und keine
+// Aussagen über Öffnungszeiten oder Adresse. Die Tarife gelten netzweit und sind heute
+// schon verbindlich — genau deshalb lässt sich die Seite jetzt bauen.
+//
+// Layout mit den msg-*-Klassen aus massage-city.css, wie die übrigen neuen Seiten.
+export const prerender = true;
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import MassageAnfrageForm from '../../../../components/MassageAnfrageForm.astro';
+import css from '../../../../data/massage-city.css?raw';
+
+const url = 'https://tcm.ch/standorte/basel/kosten/';
+const title = 'Akupunktur Kosten Basel – Preise & Krankenkasse | TCM.ch';
+const description = 'Was kostet Akupunktur in Basel? Abrechnung nach Tarif 590, Zusatzversicherung übernimmt meist 70 bis 90%. Netzweit identische Tarife. Deckung kostenlos prüfen lassen.';
+
+const faqs = [
+  { q: 'Übernimmt die Grundversicherung Akupunktur in Basel?', a: 'Nein, nicht bei uns. Die Grundversicherung übernimmt Akupunktur nur, wenn sie von einer Ärztin oder einem Arzt mit Facharzttitel und komplementärmedizinischer Weiterbildung durchgeführt wird. Unsere Therapeut:innen sind ausgebildete TCM-Fachpersonen mit EMR- und ASCA-Anerkennung, deshalb läuft es über die Zusatzversicherung für Komplementärmedizin.' },
+  { q: 'Wie viel übernimmt die Zusatzversicherung?', a: 'Je nach Police meist 70 bis 90 Prozent pro Sitzung, gedeckelt durch ein jährliches Maximum. Einige Kassen rechnen zusätzlich nach einem Höchstpreis pro Zeiteinheit ab. Verbindlich ist immer deine Police.' },
+  { q: 'Wie prüfe ich meine Deckung?', a: 'Schick uns deine Krankenkasse und dein Versicherungsmodell, wir klären für dich, was übernommen wird. Das ist kostenlos und unverbindlich. Alternativ steht die Beteiligung in deiner Police, oder du fragst direkt bei deiner Kasse nach.' },
+  { q: 'Was kostet die Erstbehandlung?', a: 'Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, oft bis zu 90 Minuten. Abgerechnet wird nach Tarif 590 nach Dauer, entsprechend liegt sie über einer Folgesitzung. Den konkreten Betrag nennen wir dir vorab, bevor behandelt wird.' },
+  { q: 'Brauche ich eine Überweisung vom Arzt?', a: 'Nein. Du kannst direkt einen Termin anfragen, sobald wir geöffnet haben. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.' },
+  { q: 'Kostet die Behandlung in Basel gleich viel wie an euren anderen Standorten?', a: 'Ja. Die Tarife sind im ganzen TCM.ch-Netzwerk identisch und richten sich nach Tarif 590. Der Standort ändert am Preis nichts.' },
+  { q: 'Ab wann kann ich in Basel einen Termin buchen?', a: 'Die Eröffnung ist für 2028 geplant. Auf der Warteliste bekommst du Bescheid, sobald Termine vergeben werden.' },
+];
+
+const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+const body = `
+<div class="msg-page">
+
+<section class="section msg-hero">
+  <div class="wrap">
+    <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/standorte/">Standorte</a> <span>&rsaquo;</span> <a href="/standorte/basel/">Basel</a> <span>&rsaquo;</span> <span>Kosten</span></div>
+    <div class="msg-hero-grid">
+      <div>
+        <h1 class="msg-h1">Was Akupunktur in Basel <em>kostet.</em></h1>
+        <p class="msg-lead">Die kurze Antwort: Abgerechnet wird nach Tarif 590 nach Dauer, und die Tarife sind im ganzen TCM.ch-Netzwerk identisch. Was am Ende bei dir hängen bleibt, entscheidet nicht der Standort, sondern deine Zusatzversicherung. Hier steht, wie du das vorher klärst statt hinterher.</p>
+        <div class="msg-hero-ctas">
+          <a href="#anfrage" class="btn-primary">Deckung prüfen lassen</a>
+          <a href="/standorte/basel/" class="btn-secondary">Zum Standort Basel</a>
+        </div>
+        <div class="msg-hero-trust">
+          <span>${CHECK}Tarif 590, netzweit gleich</span>
+          <span>${CHECK}Meist 70 bis 90% zurück</span>
+          <span>${CHECK}Keine Überweisung nötig</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Der wichtigste Punkt</div>
+    <h2 class="section-title">Zusatzversicherung, nicht <em>Grundversicherung.</em></h2>
+    <div class="msg-prose">
+      <p>Das ist die Unterscheidung, an der die meisten Rechnungen scheitern. Die obligatorische Grundversicherung übernimmt Akupunktur nur dann, wenn eine Ärztin oder ein Arzt mit Facharzttitel und komplementärmedizinischer Weiterbildung behandelt. Das ist gesetzlich so geregelt und gilt schweizweit.</p>
+      <p>Unsere Therapeut:innen sind ausgebildete TCM-Fachpersonen, EMR- und ASCA-anerkannt, mit anerkannter ZSR-Nummer — aber keine Ärzt:innen. Bei uns läuft die Abrechnung deshalb über deine Zusatzversicherung für Komplementärmedizin. Hast du keine, zahlst du selbst.</p>
+      <p>In der Praxis ist das selten ein Nachteil: Zusatzversicherungen decken Akupunktur meist grosszügig, verlangen keine ärztliche Überweisung und lassen dir die freie Wahl der Praxis. Ausführlich steht das unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Wie abgerechnet wird</div>
+    <h2 class="section-title">Tarif 590, nach <em>Dauer.</em></h2>
+    <p class="section-sub" style="margin-bottom:8px">Kein Pauschalpreis pro Behandlung, sondern Abrechnung nach Zeit. Das ist der übliche Weg in der Schweizer Komplementärmedizin.</p>
+    <div class="msg-group"><div class="msg-arts">
+      <div class="msg-art"><div class="msg-art-t">Erstkonsultation</div><div class="msg-art-d">Dauert länger, oft bis zu 90 Minuten. Anamnese, Untersuchung, Behandlungsplan und erste Behandlung. Liegt entsprechend über einer Folgesitzung.</div></div>
+      <div class="msg-art"><div class="msg-art-t">Folgesitzung</div><div class="msg-art-d">Kürzer, weil die Anamnese steht. Meist 45 bis 60 Minuten inklusive Gespräch und Liegezeit.</div></div>
+      <div class="msg-art"><div class="msg-art-t">Netzweit identisch</div><div class="msg-art-d">Ob Basel, St. Gallen oder Winterthur: gleicher Tarif. Nimm die Adresse, die für dich am kürzesten liegt.</div></div>
+    </div></div>
+    <div class="msg-prose" style="margin-top:24px">
+      <p>Den konkreten Betrag für deinen Fall nennen wir vor der Behandlung, nicht auf der Rechnung. Wenn du selbst zahlst, sag das beim Termin — dann rechnen wir dir vorher aus, womit du zu rechnen hast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="deckung">
+  <div class="wrap">
+    <div class="section-label">Deine Deckung</div>
+    <h2 class="section-title">Vorher klären, nicht <em>hinterher.</em></h2>
+    <div class="msg-kk-grid">
+      <div class="msg-prose" style="max-width:none">
+        <p>Wie viel zurückkommt, steht in deiner Police, nicht im Gesetz. Übliche Bandbreite: 70 bis 90 Prozent pro Sitzung, begrenzt durch ein jährliches Maximum. Genau dieses Maximum ist der Punkt, an dem die meisten im Herbst hängen bleiben — frag deine Kasse danach, nicht nur nach dem Prozentsatz.</p>
+        <p>Was die einzelnen Anbieter vorsehen, haben wir für 29 Kassen im <a href="/krankenkassen/">Krankenkassen-Vergleich</a> zusammengetragen. Oder du schickst uns deine Kasse und dein Modell, dann klären wir das für dich, kostenlos und unverbindlich.</p>
+        <p>Und weil Basel erst 2028 öffnet: Du hast bis dahin Zeit, deine Zusatzversicherung anzuschauen. Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Behandlung schnell vierstellig im Jahr.</p>
+      </div>
+      <aside class="msg-kk-aside">
+        <h3>Kurz zusammengefasst</h3>
+        <ul>
+          <li>Tarif 590, nach Dauer</li>
+          <li>Zusatzversicherung statt Grundversicherung</li>
+          <li>Keine ärztliche Überweisung</li>
+          <li>EMR- und ASCA-anerkannt</li>
+          <li>Jahresmaximum beachten</li>
+        </ul>
+        <a href="#anfrage" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center">Deckung prüfen lassen</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Passend dazu</div>
+    <h2 class="section-title">Weiterlesen</h2>
+    <div class="msg-pills">
+      <a class="msg-pill" href="/krankenkassen/akupunktur/">${ARROW}Akupunktur und Krankenkasse</a>
+      <a class="msg-pill" href="/krankenkassen/massage/">${ARROW}Massage und Krankenkasse</a>
+      <a class="msg-pill" href="/krankenkassen/">${ARROW}29 Kassen im Vergleich</a>
+      <a class="msg-pill" href="/akupunktur-tcm-basel/">${ARROW}Akupunktur Basel</a>
+      <a class="msg-pill" href="/massage-basel/">${ARROW}Massage Basel</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">Kosten und Kasse, kurz beantwortet.</h2>
+    <div class="msg-faq" style="margin-top:10px">
+      ${faqs.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${f.q}</summary><p class="msg-faq-a">${f.a}</p></details>`).join('')}
+    </div>
+  </div>
+</section>
+
+</div>`;
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', '@id': url + '#article', name: title,
+    headline: 'Was kostet Akupunktur in Basel?', description, url, inLanguage: 'de-CH',
+    about: { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+    { '@type': 'ListItem', position: 3, name: 'Basel', item: 'https://tcm.ch/standorte/basel/' },
+    { '@type': 'ListItem', position: 4, name: 'Kosten', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/standorte/basel/kosten" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={body} />
+  <MassageAnfrageForm
+    anfrageTyp="deckung"
+    quelle="kosten-basel"
+    heading="Deckung <em>prüfen lassen.</em>"
+    sub="Sag uns, wie du versichert bist. Wir melden uns mit einer Einschätzung — kostenlos und unverbindlich."
+  />
+</SpaPage>

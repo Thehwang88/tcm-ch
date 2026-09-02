@@ -17,6 +17,40 @@ import css from '../../data/massage-city.css?raw';
 
 const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
 
+// Qualifizierter Longtail für Basel. "massage basel" selbst hat 5.400 Suchanfragen bei
+// KD 33 — gegen physiozentrum, Origin Massage und Treatwell ist das ein Mehrjahreskampf.
+// Diese drei Varianten sind es nicht, und sie treffen genau unsere Positionierung
+// (Semrush CH, 09/2026):
+//   medizinische massage basel 320 / KD 27 · lymphdrainage basel 260 / KD 10
+//   sportmassage basel 90 / KD 12
+// Bleibt innerhalb der Anti-Kannibalisierungs-Regel oben: alles Varianten von
+// "massage basel", nichts aus dem tcm-/akupunktur-Feld.
+const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const longtailBlock = `
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Im Detail</div>
+    <h2 class="section-title">Drei Behandlungen, nach denen in Basel <em>am häufigsten gesucht wird.</em></h2>
+    <p class="section-sub" style="margin-bottom:8px">Was sie unterscheidet und wann welche sinnvoll ist.</p>
+    <div class="msg-prose" style="max-width:none">
+      <h3 style="font-size:20px;font-weight:800;color:var(--black);margin:26px 0 10px">Medizinische Massage in Basel</h3>
+      <p>Der übliche Einstieg bei einem konkreten Befund: verspannte Nacken- und Schultermuskulatur, ein überlasteter unterer Rücken, eine Schulter, die nach dem Sturz nicht mehr richtig mitmacht. Sie wird geplant statt improvisiert und ist über die Zusatzversicherung abrechenbar, ohne ärztliche Verordnung. Wie sie sich von einer Entspannungsmassage unterscheidet, steht auf der Seite zur <a href="/therapien/massage/medizinische-massage/">medizinischen Massage</a>.</p>
+      <h3 style="font-size:20px;font-weight:800;color:var(--black);margin:26px 0 10px">Lymphdrainage in Basel</h3>
+      <p>Eine sehr sanfte Grifftechnik, die mit einer kräftigen Massage wenig gemein hat. Eingesetzt bei Schwellungen und Wassereinlagerungen, etwa nach Operationen, bei Venenproblemen oder in der Schwangerschaft. Wer eine Lymphdrainage erwartet und eine Sportmassage bekommt, ist bei der falschen Adresse — Details auf der <a href="/therapien/massage/lymphdrainage/">Lymphdrainage-Seite</a>.</p>
+      <h3 style="font-size:20px;font-weight:800;color:var(--black);margin:26px 0 10px">Sportmassage in Basel</h3>
+      <p>Kräftiger dosiert, vor oder nach der Belastung, mit anderem Ziel als eine Entspannungsmassage. Für alle, die regelmässig trainieren und den Unterschied zwischen Muskelkater und einem Problem kennen wollen. Mehr auf der <a href="/therapien/massage/sportmassage/">Sportmassage-Seite</a>.</p>
+      <p style="margin-top:18px">Alle drei rechnest du bei EMR- und ASCA-anerkannten Therapeut:innen über die Zusatzversicherung ab. Was genau übernommen wird, steht unter <a href="/krankenkassen/massage/">Massage und Krankenkasse</a>.</p>
+    </div>
+    <div class="msg-pills" style="margin-top:22px">
+      <a class="msg-pill" href="/therapien/massage/medizinische-massage/">${ARROW}Medizinische Massage</a>
+      <a class="msg-pill" href="/therapien/massage/lymphdrainage/">${ARROW}Lymphdrainage</a>
+      <a class="msg-pill" href="/therapien/massage/sportmassage/">${ARROW}Sportmassage</a>
+      <a class="msg-pill" href="/therapien/massage/triggerpunktmassage/">${ARROW}Triggerpunktmassage</a>
+      <a class="msg-pill" href="/therapien/massage/">${ARROW}Alle Massagearten</a>
+    </div>
+  </div>
+</section>`;
+
 const url = 'https://tcm.ch/massage-basel/';
 const title = 'Massage Basel – Medizinische Massage & Tuina | TCM.ch';
 const description = "Massage Basel: medizinische Massage, Tuina, Schröpfen und Gua Sha ab Eröffnung 2028. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar. Jetzt auf die Warteliste.";
@@ -46,6 +80,7 @@ const schema = [
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Basel" />
   <Fragment set:html={restPart} />
+  <Fragment set:html={longtailBlock} />
   <MassageWartelisteForm stadt="Basel" jahr="2028" quelle="warteliste-basel-massage" />
   <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
