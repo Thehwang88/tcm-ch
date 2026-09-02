@@ -2,11 +2,13 @@
 // Phase 4: 3 genuine standalone articles. 34 city-variant doorway articles are 410'd
 // (functions/wissen/[[path]].js + public/wissen-kill.js), NOT migrated.
 // Schema: MedicalWebPage + Person(author) + FAQPage + BreadcrumbList + reviewedBy + lastReviewed.
+import { wissenAkupunkturBei } from './wissen-akupunktur-bei';
+
 export interface WissenFaq { q: string; a: string }
 export interface WissenRelated { href: string; label: string; cat: string }
 export interface WissenAuthor { name: string; role: string; bio: string }
 export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName: string; datePublished: string; dateModified: string; lastReviewed: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
-export const wissen: Wissen[] = [
+const wissenBase: Wissen[] = [
   {
     "slug": "wie-lange-bleiben-akupunkturnadeln-drin",
     "title": "Wie lange bleiben Akupunkturnadeln drin? 20 bis 30 Minuten",
@@ -1516,4 +1518,8 @@ export const wissen: Wissen[] = [
     ]
   }
 ];
+
+// Artikelreihen aus eigenen Dateien anhängen, damit wissen.ts nicht weiter wächst.
+export const wissen: Wissen[] = [...wissenBase, ...wissenAkupunkturBei];
+
 export const wissenBySlug = (slug: string): Wissen | undefined => wissen.find((w) => w.slug === slug);

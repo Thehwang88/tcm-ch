@@ -18,6 +18,11 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-bei-heuschnupfen/
+- https://tcm.ch/wissen/akupunktur-bei-migraene/
+- https://tcm.ch/wissen/akupunktur-bei-kopfschmerzen/
+- https://tcm.ch/wissen/akupunktur-bei-kinderwunsch/
+- https://tcm.ch/wissen/akupunktur-zum-abnehmen/
 - https://tcm.ch/therapien/ohrakupunktur/
 - https://tcm.ch/therapien/gua-sha/gesichts-gua-sha/
 - https://tcm.ch/krankenkassen/massage/
