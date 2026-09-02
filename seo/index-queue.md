@@ -1,0 +1,33 @@
+# Index-Queue
+
+URLs, für die in der Search Console eine Indexierung beantragt werden soll.
+
+Warum diese Datei: Eine frisch deployte Seite taucht in den GSC-Berichten
+("Gefunden – zurzeit nicht indexiert" etc.) erst nach Tagen auf. Bis dahin ist sie für
+eine reine GSC-Auswertung unsichtbar. Deshalb wird jede neu gebaute Seite hier
+eingetragen, sobald sie live ist.
+
+Regeln:
+- Eine URL pro Zeile, absolut, mit abschliessendem Slash.
+- Neue Seiten kommen unter "Offen" — direkt beim Deploy, nicht später.
+- Die tägliche Aufgabe "tcm.ch — Indexierung beantragen" (09:00) arbeitet die Liste ab,
+  bis zu 10 URLs pro Tag (GSC-Tageskontingent), und verschiebt Erledigtes nach unten.
+- Ist "Offen" leer, füllt die Aufgabe den Rest des Kontingents aus den GSC-Berichten auf.
+- Nicht eintragen: Seiten mit `noindex`, und Seiten, die per Canonical auf eine andere
+  URL konsolidieren (aktuell https://tcm.ch/haut/rosacea/).
+
+## Offen
+
+_(keine — der /haut/-Cluster läuft über die GSC-Berichte)_
+
+## Erledigt
+
+- https://tcm.ch/haut/microneedling/ — 02.09.2026
+- https://tcm.ch/haut/retinol/ — 02.09.2026
+- https://tcm.ch/haut/niacinamid/ — 02.09.2026
+- https://tcm.ch/haut/salicylsaeure/ — 02.09.2026
+- https://tcm.ch/haut/hydrafacial/ — 02.09.2026
+- https://tcm.ch/haut/centella/ — 02.09.2026
+- https://tcm.ch/haut/melasma/ — 02.09.2026
+- https://tcm.ch/haut/profhilo/ — 02.09.2026
+- https://tcm.ch/haut/couperose/ — 02.09.2026

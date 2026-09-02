@@ -66,6 +66,12 @@
 - ~~Generate sitemap.xml + robots.txt~~ ✅ done (live at /sitemap.xml, 119 URLs; robots references it)
 - ~~Submit sitemap to Google Search Console~~ ✅ done 2026-06-15 (GSC: Success)
 
+## SEO — New Pages
+- Every new indexable page gets appended to `seo/index-queue.md` under "Offen" **in the same commit that ships it**. No exceptions, no "later".
+- A daily scheduled task (09:00) works that queue in Search Console, up to 10 URLs/day, then tops up from the GSC "not indexed" reports.
+- Do NOT queue: `noindex` pages, and pages that canonicalise elsewhere (currently /haut/rosacea/ → /beschwerden/rosacea/).
+- Internal links matter more than the queue: a new page needs links from pages Google crawls daily (Standorte, Beschwerden-Leaves) or it stays "Gefunden – nicht indexiert". See `src/data/haut-links.ts` for the pattern.
+
 ## What NOT to Do
 - No blog
 - Don't pursue generic TCM ranking terms
