@@ -1,0 +1,139 @@
+---
+// /krankenkassen/<slug> — Themenseiten zur Kostenübernahme, datengetrieben aus
+// src/data/kk-themen.ts. Ein Template, drei (später mehr) Suchintentionen.
+//
+// Layout und Klassen bewusst identisch zu den Massage-City-Seiten (massage-city.css),
+// damit kein neues CSS entsteht und die Seiten sich wie der Rest der Site anfühlen.
+import SpaPage from '../../layouts/SpaPage.astro';
+import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
+import WhatsAppContact from '../../components/WhatsAppContact.astro';
+import css from '../../data/massage-city.css?raw';
+import { kkThemen, kkThemaBySlug, type KkThema } from '../../data/kk-themen';
+
+export function getStaticPaths() {
+  return kkThemen.map((t) => ({ params: { slug: t.slug }, props: { t } }));
+}
+
+const { t } = Astro.props as { t: KkThema };
+const data = t ?? kkThemaBySlug(Astro.params.slug as string)!;
+const url = `https://tcm.ch/krankenkassen/${data.slug}/`;
+
+const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+const body = `
+<div class="msg-page">
+
+<section class="section msg-hero">
+  <div class="wrap">
+    <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/krankenkassen/">Krankenkasse</a> <span>&rsaquo;</span> <span>${data.crumb}</span></div>
+    <div class="msg-hero-grid">
+      <div>
+        <h1 class="msg-h1">${data.h1}</h1>
+        <p class="msg-lead">${data.lead}</p>
+        <div class="msg-hero-ctas">
+          <a href="#anfrage" class="btn-primary">Deckung prüfen lassen</a>
+          <a href="/krankenkassen/" class="btn-secondary">Alle Kassen im Vergleich</a>
+        </div>
+        <div class="msg-hero-trust">${data.trust.map((x) => `<span>${CHECK}${x}</span>`).join('')}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">${data.introLabel}</div>
+    <h2 class="section-title">${data.introTitle}</h2>
+    <div class="msg-prose">${data.intro.map((p) => `<p>${p}</p>`).join('')}</div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">${data.cardsLabel}</div>
+    <h2 class="section-title">${data.cardsTitle}</h2>
+    <p class="section-sub" style="margin-bottom:8px">${data.cardsSub}</p>
+    <div class="msg-group"><div class="msg-arts">
+      ${data.cards.map((c) => c.href
+        ? `<a class="msg-art" href="${c.href}"><div class="msg-art-t">${c.title}${ARROW}</div><div class="msg-art-d">${c.text}</div></a>`
+        : `<div class="msg-art"><div class="msg-art-t">${c.title}</div><div class="msg-art-d">${c.text}</div></div>`).join('')}
+    </div></div>
+  </div>
+</section>
+
+<section class="section" id="deckung">
+  <div class="wrap">
+    <div class="section-label">Kostenübernahme</div>
+    <h2 class="section-title">${data.kkTitle}</h2>
+    <div class="msg-kk-grid">
+      <div class="msg-prose" style="max-width:none">${data.kkProse.map((p) => `<p>${p}</p>`).join('')}</div>
+      <aside class="msg-kk-aside">
+        <h3>Kurz zusammengefasst</h3>
+        <ul>${data.kkFacts.map((f) => `<li>${f}</li>`).join('')}</ul>
+        <a href="#anfrage" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center">Deckung prüfen lassen</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Passend dazu</div>
+    <h2 class="section-title">${data.pillsTitle}</h2>
+    <p class="section-sub" style="margin-bottom:6px">${data.pillsSub}</p>
+    <div class="msg-pills">
+      ${data.pills.map((p) => `<a class="msg-pill" href="${p.href}">${ARROW}${p.label}</a>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">${data.crumb} und Krankenkasse, gut zu wissen.</h2>
+    <div class="msg-faq" style="margin-top:10px">
+      ${data.faqs.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${f.q}</summary><p class="msg-faq-a">${f.a}</p></details>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="termin">
+  <div class="wrap">
+    <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:var(--r-card,16px);padding:34px 30px;text-align:center;max-width:760px;margin:0 auto">
+      <h2 class="section-title" style="margin-bottom:10px">${data.ctaTitle}</h2>
+      <p class="section-sub" style="margin:0 auto 20px">${data.ctaText}</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#anfrage" class="btn-primary">Anfrage stellen</a>
+        <a href="https://wa.me/41775236122?text=${encodeURIComponent(data.waText)}" class="btn-secondary" target="_blank" rel="noopener">Per WhatsApp</a>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:16px 0 0">Oder ruf uns an unter <a href="tel:+41775236122" style="color:var(--green-dark)">+41 77 523 61 22</a>.</p>
+    </div>
+  </div>
+</section>
+
+</div>`;
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: data.metaTitle, description: data.metaDesc,
+    url, inLanguage: 'de-CH', isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: data.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Krankenkasse', item: 'https://tcm.ch/krankenkassen/' },
+    { '@type': 'ListItem', position: 3, name: data.crumb, item: url },
+  ] },
+];
+---
+<SpaPage title={data.metaTitle} description={data.metaDesc} path={`/krankenkassen/${data.slug}`} body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={body} />
+  <MassageAnfrageForm
+    anfrageTyp="beratung"
+    quelle={`krankenkassen-${data.slug}`}
+    heading="Deckung <em>prüfen lassen.</em>"
+    sub="Sag uns, wie du versichert bist. Wir melden uns mit einer Einschätzung, meist innert 24 bis 48 Stunden."
+  />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Team TCM.ch" />
+</SpaPage>

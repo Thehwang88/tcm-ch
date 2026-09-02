@@ -18,6 +18,9 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/krankenkassen/massage/
+- https://tcm.ch/krankenkassen/akupunktur/
+- https://tcm.ch/krankenkassen/shiatsu/
 - https://tcm.ch/massage-zuerich/
 - https://tcm.ch/massage-st-gallen/
 - https://tcm.ch/therapien/massage/bindegewebsmassage/
