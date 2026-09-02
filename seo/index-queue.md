@@ -18,6 +18,8 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/therapien/ohrakupunktur/
+- https://tcm.ch/therapien/gua-sha/gesichts-gua-sha/
 - https://tcm.ch/krankenkassen/massage/
 - https://tcm.ch/krankenkassen/akupunktur/
 - https://tcm.ch/krankenkassen/shiatsu/

@@ -1,0 +1,194 @@
+---
+// /therapien/ohrakupunktur — neue Therapie-Seite.
+//
+// Warum: "ohrakupunktur" hat 590 Suchanfragen/Monat in der Schweiz bei KD 19 und wir
+// hatten dafür keine Seite. Die Nachbarbegriffe besitzen wir längst — Dauernadeln steht
+// auf Position 9 bis 13, Ear Seeds auf 13,7 — nur der Oberbegriff fehlte. Diese Seite
+// schliesst die Lücke und bündelt die bestehenden Unterseiten.
+//
+// Layout wie die Massage-City- und Krankenkassen-Themenseiten (massage-city.css), damit
+// kein neues CSS entsteht.
+import SpaPage from '../../../layouts/SpaPage.astro';
+import MassageAnfrageForm from '../../../components/MassageAnfrageForm.astro';
+import WhatsAppContact from '../../../components/WhatsAppContact.astro';
+import css from '../../../data/massage-city.css?raw';
+
+const url = 'https://tcm.ch/therapien/ohrakupunktur/';
+const title = 'Ohrakupunktur: Ablauf, Wirkung & Kosten | TCM.ch';
+const description = 'Ohrakupunktur in der Schweiz: wie die Behandlung abläuft, wobei sie eingesetzt wird, was Dauernadeln und Ear Seeds unterscheidet und was die Krankenkasse übernimmt.';
+
+const faqs = [
+  { q: 'Was ist Ohrakupunktur?', a: 'Bei der Ohrakupunktur werden sehr feine Nadeln an definierten Punkten der Ohrmuschel gesetzt. Die Ohrmuschel wird dabei als eigenes Punktesystem behandelt, unabhängig von der Körperakupunktur. Sie lässt sich allein oder ergänzend zu einer regulären Akupunktursitzung einsetzen.' },
+  { q: 'Tut Ohrakupunktur weh?', a: 'Das Setzen ist kurz spürbar, oft als Piks oder leichtes Brennen. Danach bleibt meist ein Druck- oder Wärmegefühl. Die Ohrmuschel ist empfindlicher als viele Körperstellen, die Nadeln sind dafür deutlich feiner.' },
+  { q: 'Wie lange dauert eine Sitzung?', a: 'Die Nadeln bleiben in der Regel 20 bis 30 Minuten. Mit Gespräch und Untersuchung plane 45 bis 60 Minuten für den Termin ein.' },
+  { q: 'Was ist der Unterschied zwischen Ohrakupunktur, Dauernadeln und Ear Seeds?', a: 'Ohrakupunktur ist der Oberbegriff. Bei der klassischen Sitzung werden die Nadeln nach 20 bis 30 Minuten wieder entfernt. Dauernadeln sind winzige Nadeln, die mit einem Pflaster fixiert werden und mehrere Tage bleiben. Ear Seeds arbeiten ganz ohne Nadel, mit kleinen Samen oder Kügelchen, die aufgeklebt werden.' },
+  { q: 'Wobei wird Ohrakupunktur eingesetzt?', a: 'Am häufigsten begleitend bei Schmerzen, Stress und Schlafproblemen sowie zur Unterstützung beim Rauchstopp. Sie ersetzt keine ärztliche Abklärung und keine ursächliche Behandlung, sondern ergänzt sie.' },
+  { q: 'Gibt es Nebenwirkungen?', a: 'Möglich sind eine kurze lokale Rötung, Druckempfindlichkeit und in seltenen Fällen ein leichtes Schwindelgefühl direkt nach der Behandlung. Bei Entzündungszeichen an der Einstichstelle meldest du dich bei uns.' },
+  { q: 'Übernimmt die Krankenkasse Ohrakupunktur?', a: 'Bei EMR- oder ASCA-anerkannten Therapeut:innen beteiligt sich die Zusatzversicherung für Komplementärmedizin in der Regel, meist mit 70 bis 90 Prozent pro Sitzung. Die Grundversicherung übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit entsprechender Weiterbildung.' },
+];
+
+const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+const body = `
+<div class="msg-page">
+
+<section class="section msg-hero">
+  <div class="wrap">
+    <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/therapien/">Therapien</a> <span>&rsaquo;</span> <span>Ohrakupunktur</span></div>
+    <div class="msg-hero-grid">
+      <div>
+        <h1 class="msg-h1">Ohrakupunktur.</h1>
+        <p class="msg-lead">Sehr feine Nadeln an definierten Punkten der Ohrmuschel, allein oder ergänzend zur Körperakupunktur. Am häufigsten begleitend bei Schmerzen, Stress und Schlafproblemen. Bei uns von EMR- und ASCA-anerkannten Therapeut:innen, an 14 Standorten in der Deutschschweiz.</p>
+        <div class="msg-hero-ctas">
+          <a href="#anfrage" class="btn-primary">Termin anfragen</a>
+          <a href="#ablauf" class="btn-secondary">Ablauf ansehen</a>
+        </div>
+        <div class="msg-hero-trust">
+          <span>${CHECK}EMR &amp; ASCA anerkannt</span>
+          <span>${CHECK}Ohne ärztliche Verordnung</span>
+          <span>${CHECK}Auch als Dauernadeln</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ablauf">
+  <div class="wrap">
+    <div class="section-label">Was dahintersteckt</div>
+    <h2 class="section-title">Das Ohr als eigenes <em>Punktesystem.</em></h2>
+    <div class="msg-prose">
+      <p>Die Ohrakupunktur behandelt die Ohrmuschel als eigenständige Landkarte. In den 1950er-Jahren beschrieb der französische Arzt Paul Nogier eine systematische Zuordnung von Ohrarealen zu Körperregionen; unabhängig davon kennt die chinesische Medizin die Ohrbehandlung seit deutlich längerer Zeit. Beide Systeme sind heute in Gebrauch und überschneiden sich in weiten Teilen.</p>
+      <p>Praktisch heisst das: Wir behandeln nicht die Stelle, die wehtut, sondern arbeiten an einem kleinen, gut zugänglichen Areal. Das ist der Grund, warum sich Ohrakupunktur gut mit anderen Behandlungen kombinieren lässt und warum sie auch dann funktioniert, wenn eine Körperregion gerade nicht behandelt werden kann.</p>
+      <p>Ehrlich zur Studienlage: Für einzelne Anwendungen, etwa begleitend bei Schmerzen und in der Suchtbehandlung, gibt es Untersuchungen mit positiven Ergebnissen. Die Qualität ist unterschiedlich, und eine belastbare Erklärung des Wirkmechanismus fehlt. Wer dir etwas anderes erzählt, verkauft dir etwas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Der Termin</div>
+    <h2 class="section-title">Wie eine Sitzung <em>abläuft.</em></h2>
+    <p class="section-sub" style="margin-bottom:8px">Von der ersten Frage bis zum Verlassen der Praxis, ohne Überraschungen.</p>
+    <div class="msg-group"><div class="msg-arts">
+      <div class="msg-art"><div class="msg-art-t">1. Gespräch</div><div class="msg-art-d">Wir klären, worum es geht, was du schon probiert hast und ob eine ärztliche Abklärung sinnvoll wäre, bevor wir behandeln.</div></div>
+      <div class="msg-art"><div class="msg-art-t">2. Punktwahl</div><div class="msg-art-d">Die Ohrmuschel wird abgetastet, empfindliche Areale geben den Ausschlag. Meist werden drei bis sieben Punkte pro Ohr gesetzt.</div></div>
+      <div class="msg-art"><div class="msg-art-t">3. Liegezeit</div><div class="msg-art-d">Die Nadeln bleiben 20 bis 30 Minuten. Du sitzt oder liegst ruhig, viele dösen dabei weg.</div></div>
+      <div class="msg-art"><div class="msg-art-t">4. Danach</div><div class="msg-art-d">Nadeln raus, kurz nachfragen wie es dir geht. Auf Wunsch setzen wir Dauernadeln, die zu Hause weiterwirken.</div></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Die drei Varianten</div>
+    <h2 class="section-title">Nadel, Dauernadel oder <em>Samen?</em></h2>
+    <p class="section-sub" style="margin-bottom:8px">Dieselbe Idee, drei Intensitäten. Was zu dir passt, hängt von Anliegen und Alltag ab.</p>
+    <div class="msg-group"><div class="msg-arts">
+      <a class="msg-art" href="/therapien/akupunktur/"><div class="msg-art-t">Klassische Sitzung${ARROW}</div><div class="msg-art-d">Nadeln für 20 bis 30 Minuten, danach entfernt. Der übliche Einstieg, gut kombinierbar mit Körperakupunktur.</div></a>
+      <a class="msg-art" href="/therapien/dauernadeln/"><div class="msg-art-t">Dauernadeln${ARROW}</div><div class="msg-art-d">Winzige Nadeln, mit einem Pflaster fixiert, bleiben mehrere Tage im Ohr und wirken zwischen den Sitzungen weiter.</div></a>
+      <a class="msg-art" href="/therapien/ear-seeds/"><div class="msg-art-t">Ear Seeds${ARROW}</div><div class="msg-art-d">Ganz ohne Nadel: kleine Samen oder Kügelchen werden aufgeklebt und bei Bedarf selbst gedrückt.</div></a>
+    </div></div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Für wen</div>
+    <h2 class="section-title">Wobei wir sie <em>einsetzen.</em></h2>
+    <p class="section-sub" style="margin-bottom:6px">Meist begleitend zu einer Behandlung, selten als alleinige Massnahme.</p>
+    <div class="msg-pills">
+      <a class="msg-pill" href="/beschwerden/rueckenschmerzen/">${ARROW}Rückenschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/nackenschmerzen/">${ARROW}Nackenschmerzen</a>
+      <a class="msg-pill" href="/beschwerden/migraene/">${ARROW}Migräne</a>
+      <a class="msg-pill" href="/beschwerden/schlafprobleme/">${ARROW}Schlafprobleme</a>
+      <a class="msg-pill" href="/beschwerden/stress-burnout/">${ARROW}Stress und Burnout</a>
+      <a class="msg-pill" href="/therapien/">${ARROW}Alle Therapien</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kosten">
+  <div class="wrap">
+    <div class="section-label">Kosten</div>
+    <h2 class="section-title">Was die Kasse <em>übernimmt.</em></h2>
+    <div class="msg-kk-grid">
+      <div class="msg-prose" style="max-width:none">
+        <p>Ohrakupunktur wird wie jede andere Akupunkturbehandlung abgerechnet. Über deine Zusatzversicherung für Komplementärmedizin kommen je nach Police meist 70 bis 90 Prozent pro Sitzung zurück, gedeckelt durch ein Jahresmaximum. Eine ärztliche Verordnung brauchst du dafür nicht.</p>
+        <p>Die Grundversicherung übernimmt Akupunktur nur, wenn sie von einer Ärztin oder einem Arzt mit Facharzttitel und komplementärmedizinischer Weiterbildung durchgeführt wird. Unsere Therapeut:innen sind ausgebildete TCM-Fachpersonen mit EMR- und ASCA-Anerkennung, deshalb läuft es bei uns über die Zusatzversicherung. Die Details stehen unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
+      </div>
+      <aside class="msg-kk-aside">
+        <h3>Kurz zusammengefasst</h3>
+        <ul>
+          <li>Zusatzversicherung statt Grundversicherung</li>
+          <li>Keine ärztliche Verordnung nötig</li>
+          <li>EMR- und ASCA-anerkannt</li>
+          <li>Meist 70 bis 90% pro Sitzung</li>
+        </ul>
+        <a href="#anfrage" class="btn-primary" style="margin-top:16px;width:100%;justify-content:center">Deckung prüfen lassen</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-label">Grenzen</div>
+    <h2 class="section-title">Wann wir <em>nicht behandeln.</em></h2>
+    <div class="msg-prose">
+      <p>Nicht behandelt wird bei Entzündungen, Ekzemen oder Verletzungen an der Ohrmuschel, bei akutem Fieber und bei bekannter Metallallergie gegen das verwendete Nadelmaterial. Unter Blutverdünnung und bei Gerinnungsstörungen arbeiten wir zurückhaltender und verzichten auf Dauernadeln. In der Schwangerschaft werden bestimmte Punkte ausgelassen.</p>
+      <p>Und der wichtigste Punkt: Ohrakupunktur ersetzt keine ärztliche Abklärung. Wenn Beschwerden neu, stark oder ungewöhnlich sind, gehört das zuerst abgeklärt. Wir sagen dir das auch, wenn du deshalb wieder gehst.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">Ohrakupunktur, gut zu wissen.</h2>
+    <div class="msg-faq" style="margin-top:10px">
+      ${faqs.map((f, i) => `<details${i === 0 ? ' open' : ''}><summary>${f.q}</summary><p class="msg-faq-a">${f.a}</p></details>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="termin">
+  <div class="wrap">
+    <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:var(--r-card,16px);padding:34px 30px;text-align:center;max-width:760px;margin:0 auto">
+      <h2 class="section-title" style="margin-bottom:10px">Ohrakupunktur <em>anfragen.</em></h2>
+      <p class="section-sub" style="margin:0 auto 20px">Schildere uns kurz dein Anliegen. Wir sagen dir, ob Ohrakupunktur sinnvoll ist — und wenn nicht, was besser passt.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#anfrage" class="btn-primary">Termin anfragen</a>
+        <a href="https://wa.me/41775236122?text=${encodeURIComponent('Hallo, ich interessiere mich für Ohrakupunktur.')}" class="btn-secondary" target="_blank" rel="noopener">Per WhatsApp</a>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:16px 0 0">Oder ruf uns an unter <a href="tel:+41775236122" style="color:var(--green-dark)">+41 77 523 61 22</a>.</p>
+    </div>
+  </div>
+</section>
+
+</div>`;
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+    { '@type': 'ListItem', position: 3, name: 'Ohrakupunktur', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/therapien/ohrakupunktur" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={body} />
+  <MassageAnfrageForm
+    anfrageTyp="therapie"
+    quelle="therapien-ohrakupunktur"
+    heading="Ohrakupunktur <em>anfragen.</em>"
+    sub="Kurz schildern, wir melden uns mit einem Vorschlag, meist innert 24 bis 48 Stunden."
+  />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Team TCM.ch" />
+</SpaPage>

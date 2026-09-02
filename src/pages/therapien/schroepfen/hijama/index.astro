@@ -8,6 +8,7 @@ import bodyRaw from '../../../../data/hijama-body.html?raw';
 import { prefillForm } from '../../../../data/form-prefill';
 import { inlineBodyImage } from '../../../../data/inline-body-image';
 import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
+import { therapieTiefeHtml } from '../../../../data/therapie-tiefe';
 const body = appendSidebarAllLink(
   inlineBodyImage(prefillForm(bodyRaw, 'Ich interessiere mich für Hijama.', 'Therapie: Hijama')),
   'therapie-symptoms-sidebar', '/beschwerden/', 'Alle Beschwerden ansehen');
@@ -38,4 +39,4 @@ const schema = [
   ] },
 ];
 ---
-<SpaPage title={title} description={description} path="/therapien/schroepfen/hijama" body={body} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien/schroepfen/hijama" body={body + therapieTiefeHtml('hijama')} schema={schema} />
