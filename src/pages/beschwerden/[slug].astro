@@ -8,6 +8,7 @@ import { prefillForm } from '../../data/form-prefill';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
 import { parseLeafFaqs, faqPageSchema } from '../../data/leaf-faq';
 import { hautLinksForBeschwerde, hautLinksHtml } from '../../data/haut-links';
+import { massageLinksForBeschwerde, massageLinksHtml } from '../../data/massage-links';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -65,9 +66,6 @@ const TITLES: Record<string, string> = {
   bluthochdruck: 'Bluthochdruck – begleitende TCM | TCM.ch',
   durchblutungsstoerungen: 'Durchblutungsstörungen – TCM | TCM.ch',
   depressionen: 'Depressionen – TCM-Begleitung | TCM.ch',
-  eisenmangel: 'Eisenmangel – TCM-Begleitung | TCM.ch',
-  mittelohrentzuendung: 'Mittelohrentzündung – TCM-Begleitung | TCM.ch',
-  myome: 'Myome – TCM-Begleitung | TCM.ch',
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -125,19 +123,6 @@ const DESCRIPTIONS: Record<string, string> = {
   depressionen: 'Depressionen mit TCM begleiten: Akupunktur für besseren Schlaf, mehr Energie und weniger Anspannung. Ergänzend zu Psychotherapie und ärztlicher Behandlung.',
   hashimoto: 'Hashimoto und Schilddrüsenunterfunktion mit TCM begleiten: mehr Energie, weniger Frieren, stabilere Verdauung. Ergänzend zur ärztlichen Hormontherapie.',
   rheuma: 'Rheuma mit TCM begleiten: Akupunktur bei Gelenkschmerzen, Morgensteifigkeit und rheumatoider Arthritis. Ergänzend zur rheumatologischen Therapie.',
-  copd: 'COPD mit TCM begleiten: Akupunktur und Kräutertherapie ergänzend zur ärztlichen Therapie, für leichteres Atmen und weniger Infekte im Alltag.',
-  'piriformis-syndrom': 'Piriformis-Syndrom mit TCM behandeln: Akupunktur und Tuina bei Gesässschmerz mit Ausstrahlung ins Bein. Gezielt an der verspannten Muskulatur.',
-  'frozen-shoulder': 'Frozen Shoulder mit TCM begleiten: Akupunktur gegen Schmerzen, sanfte Behandlung für mehr Beweglichkeit in jeder Phase der Schultersteife.',
-  eisenmangel: 'Eisenmangel mit TCM begleiten: mehr Energie, bessere Aufnahme, Ursachen angehen. Ergänzend zur ärztlichen Abklärung und Eisentherapie.',
-  wassereinlagerungen: 'Wassereinlagerungen und Ödeme mit TCM behandeln: Akupunktur, Lymphdrainage und Ernährung gegen schwere Beine und geschwollene Füsse.',
-  schleimbeutelentzuendung: 'Schleimbeutelentzündung mit TCM behandeln: Akupunktur bei Schmerzen in Schulter, Ellbogen, Hüfte oder Knie. Entzündung beruhigen, Überlastung angehen.',
-  zaehneknirschen: 'Zähneknirschen (Bruxismus) mit TCM behandeln: Akupunktur für Kaumuskulatur und Stressregulation, ergänzend zur Zahnschiene.',
-  schleudertrauma: 'Schleudertrauma mit TCM begleiten: Akupunktur und sanfte Behandlung bei Nackenschmerzen, Kopfweh und Schwindel nach dem Unfall.',
-  histaminintoleranz: 'Histaminintoleranz mit TCM begleiten: Verdauung stärken, Beschwerden nach dem Essen lindern, Toleranz Schritt für Schritt verbessern.',
-  plantarfasziitis: 'Plantarfasziitis mit TCM behandeln: Akupunktur gegen Fersenschmerz beim Auftreten. Entzündung beruhigen, Fuss und Wade mitbehandeln.',
-  mittelohrentzuendung: 'Wiederkehrende Mittelohrentzündungen mit TCM begleiten: Infektanfälligkeit senken, Erholung unterstützen, bei Kindern und Erwachsenen.',
-  myome: 'Myome mit TCM begleiten: starke Menstruation, Schmerzen und Druckgefühl lindern. Ergänzend zur gynäkologischen Kontrolle und Therapie.',
-  'morton-neurom': 'Morton-Neurom mit TCM behandeln: Akupunktur bei brennenden Vorfussschmerzen und Taubheit in den Zehen. Nerv entlasten, Fuss mitbehandeln.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
@@ -191,6 +176,14 @@ const hautBlock = hautLinksHtml(
   'Passend dazu aus der Rubrik Haut',
   'Wirkstoffe und Behandlungen, ehrlich eingeordnet — ohne Versprechen, die keiner halten kann.',
 );
+// Links in den Massage-Cluster — nur auf muskuloskelettalen und verwandten Beschwerden.
+// Die Unterseiten unter /therapien/massage/ haben Volumen (Lymphdrainage 9.900/Monat CH),
+// bekommen aber kaum Impressionen; ein paar davon standen auf "Gefunden – nicht indexiert".
+const massageBlock = massageLinksHtml(
+  massageLinksForBeschwerde(slug!, 4),
+  'Massage, die hier oft dazugehört',
+  'Welche Technik im Einzelfall passt, klären wir vor der Behandlung — nicht am Telefon geraten.',
+);
 // Prefill the contact form with this complaint as the topic (editable; source in hidden quelle).
 const prefilledBody = appendSidebarAllLink(
   prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`),
@@ -198,4 +191,4 @@ const prefilledBody = appendSidebarAllLink(
 // Soft entry into the interactive self-test (links to /selbsttest/ from every complaint page).
 const selbsttestBlock = `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock + hautBlock} schema={schema} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock} schema={schema} />

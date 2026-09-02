@@ -18,7 +18,17 @@ Regeln:
 
 ## Offen
 
-_(keine — der /haut/-Cluster läuft über die GSC-Berichte)_
+- https://tcm.ch/massage-zuerich/
+- https://tcm.ch/massage-st-gallen/
+- https://tcm.ch/therapien/massage/bindegewebsmassage/
+- https://tcm.ch/therapien/massage/triggerpunktmassage/
+- https://tcm.ch/therapien/massage/lymphdrainage/
+- https://tcm.ch/therapien/massage/sportmassage/
+- https://tcm.ch/therapien/massage/medizinische-massage/
+- https://tcm.ch/therapien/massage/fussreflexzonenmassage/
+- https://tcm.ch/therapien/massage/schwangerschaftsmassage/
+- https://tcm.ch/therapien/massage/klassische-massage/
+- https://tcm.ch/therapien/massage/deep-tissue-massage/
 
 ## Erledigt
 

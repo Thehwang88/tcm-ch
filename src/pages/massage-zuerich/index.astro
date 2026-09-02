@@ -1,0 +1,59 @@
+---
+// /massage-zuerich — City-Landingpage für "massage zürich", nach dem Muster von
+// /massage-winterthur/ und /massage-oerlikon/.
+//
+// Warum diese Seite: Zürich war das einzige echte Loch im Massage-Cluster — drei Praxen
+// in der Stadt, aber keine Stadt-Seite, während Winterthur, St. Gallen, Oerlikon, Basel,
+// Frauenfeld, Kreuzlingen und Luzern eine haben. Der Head-Term "massage zürich" (6.600/Mt)
+// ist gegen die Massage-Ketten ein langer Kampf; die Seite zielt deshalb bewusst auch auf
+// den qualifizierten Longtail, wo unsere Positionierung trägt: medizinische massage zürich
+// (590), lymphdrainage zürich (590/KD 10), sportmassage zürich (390/KD 11).
+import SpaPage from '../../layouts/SpaPage.astro';
+import InsuranceBanner from '../../components/InsuranceBanner.astro';
+import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
+import WhatsAppContact from '../../components/WhatsAppContact.astro';
+import bodyRaw from '../../data/massage-zuerich-body.html?raw';
+import css from '../../data/massage-city.css?raw';
+
+const [heroPart, restPart] = bodyRaw.split('<!--BANNER-->');
+
+const url = 'https://tcm.ch/massage-zuerich/';
+const title = 'Massage Zürich – medizinisch & Krankenkasse | TCM.ch';
+const description = 'Massage in Zürich: medizinische Massage, Lymphdrainage, Sportmassage und Tuina an drei Adressen. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar.';
+
+const faqs = [
+  { q: 'Wo in Zürich kann ich einen Termin bekommen?', a: 'Wir sind in Höngg an der Limmattalstrasse 340 und in der City. Der Standort an der Ohmstrasse 14 in Oerlikon eröffnet am 1. Dezember 2026, dafür kannst du dich schon jetzt vormerken lassen. Sag bei der Anfrage einfach, welches Quartier dir passt.' },
+  { q: 'Übernimmt die Krankenkasse die Massage?', a: 'Medizinische Massagen bei unseren EMR- und ASCA-anerkannten Therapeut:innen trägt die Zusatzversicherung in der Regel mit, meist zu 50 bis 90 Prozent. Die Grundversicherung zahlt keine Massagen, reine Entspannungsmassagen sind Selbstzahlerleistungen.' },
+  { q: 'Brauche ich eine ärztliche Verordnung?', a: 'Nein. Für die Abrechnung über die Zusatzversicherung genügt die Behandlung bei einer anerkannten Fachperson. Du kannst direkt einen Termin anfragen, ohne vorher zum Arzt zu gehen.' },
+  { q: 'Was ist der Unterschied zwischen medizinischer und klassischer Massage?', a: 'Die medizinische Massage arbeitet an einem konkreten Befund, gezielt an einer Region, und ist über die Zusatzversicherung abrechenbar. Die klassische Massage zielt auf allgemeine Entspannung, ist weniger befundorientiert und in der Regel Selbstzahlerleistung.' },
+  { q: 'Macht ihr auch Lymphdrainage in Zürich?', a: 'Ja. Die manuelle Lymphdrainage ist eine sanfte Grifftechnik bei Schwellungen und Wassereinlagerungen, etwa nach Operationen, bei Venenproblemen oder in der Schwangerschaft.' },
+  { q: 'Welche Massage passt zu meinem Anliegen?', a: 'Das klären wir vor der ersten Behandlung in einem kurzen Gespräch. Bei konkreten Beschwerden wie Rücken- oder Nackenschmerzen ist die medizinische Massage der übliche Einstieg, für Erholung und Stressabbau eher eine entspannende Technik oder Tuina.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'MedicalBusiness', name: 'TCM Zürich Höngg – TCM.ch', url: 'https://tcm.ch/standorte/zuerich-hoengg/',
+    address: { '@type': 'PostalAddress', streetAddress: 'Limmattalstrasse 340', postalCode: '8049', addressLocality: 'Zürich', addressCountry: 'CH' },
+    geo: { '@type': 'GeoCoordinates', latitude: 47.4040, longitude: 8.4970 },
+    telephone: '+41775236122', openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], areaServed: { '@type': 'City', name: 'Zürich' },
+    memberOf: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    medicalSpecialty: 'PhysicalTherapy' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Massage', item: 'https://tcm.ch/therapien/massage/' },
+    { '@type': 'ListItem', position: 3, name: 'Massage Zürich', item: url },
+  ] },
+];
+---
+<SpaPage title={title} description={description} path="/massage-zuerich" body="" schema={schema}>
+  <style set:html={css} is:inline></style>
+  <Fragment set:html={heroPart} />
+  <InsuranceBanner variant="inline" location="Zürich" />
+  <Fragment set:html={restPart} />
+  <MassageAnfrageForm anfrageTyp="massage" quelle="massage-zuerich" />
+  <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
+  <InsuranceBanner variant="sticky" />
+</SpaPage>

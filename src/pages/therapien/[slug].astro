@@ -6,6 +6,7 @@
 // "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
+import { massageLinksForTherapie, massageLinksHtml } from '../../data/massage-links';
 import homeBody from '../../data/home-body.html?raw';
 import { prefillForm } from '../../data/form-prefill';
 import { inlineBodyImage } from '../../data/inline-body-image';
@@ -81,5 +82,10 @@ if (slug === 'shiatsu') {
   const offer = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', os) + '</section>'.length) : '';
   prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', offer + '<div id="therapie-cities-section">');
 }
+const massageBlock = massageLinksHtml(
+  massageLinksForTherapie(slug!, 4),
+  'Verwandte Massage-Techniken',
+  'Wird in der Praxis oft kombiniert. Jede Seite erklärt, wofür die Technik taugt und wofür nicht.',
+);
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody} schema={schema} ogImage={OG_OVERRIDE[slug]} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody + massageBlock} schema={schema} ogImage={OG_OVERRIDE[slug]} />
