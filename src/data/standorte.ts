@@ -86,7 +86,7 @@ export const standorte: Record<string, Standort> = {
     },
     therapien: ['akupunktur', 'gesichtsakupunktur', 'elektroakupunktur', 'kraeutertherapie', 'moxibustion', 'schroepfen', 'tuina', 'massage', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
     beschwerdenIntro: 'Diese Beschwerden sehen wir in unserer Praxis in Kreuzlingen besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
-    beschwerden: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'nackenschmerzen', 'wechseljahre', 'reizdarm'],
+    beschwerden: ['rueckenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'kinderwunsch', 'nackenschmerzen', 'wechseljahre', 'reizdarm'],
     team: [],
     reviews: {
       items: [
@@ -185,11 +185,11 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "ischias",
-      "heuschnupfen"
+      "allergien-heuschnupfen"
     ],
     "team": [],
     "reviews": {
@@ -368,7 +368,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "tinnitus",
@@ -540,7 +540,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "schulterschmerzen",
@@ -711,7 +711,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "nackenschmerzen",
@@ -893,10 +893,10 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
-      "heuschnupfen",
+      "allergien-heuschnupfen",
       "tinnitus"
     ],
     "team": [],
@@ -1075,7 +1075,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "knieschmerzen",
@@ -1202,7 +1202,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "reizdarm",
@@ -1391,7 +1391,7 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
-      "schlafstoerungen",
+      "schlafprobleme",
       "stress-burnout",
       "kinderwunsch",
       "nackenschmerzen",

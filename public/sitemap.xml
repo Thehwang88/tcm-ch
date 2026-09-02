@@ -121,12 +121,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/beschwerden/burnout/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://tcm.ch/beschwerden/cluster-kopfschmerzen/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -236,12 +230,6 @@
   </url>
   <url>
     <loc>https://tcm.ch/beschwerden/hashimoto/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tcm.ch/beschwerden/heuschnupfen/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -482,12 +470,6 @@
   </url>
   <url>
     <loc>https://tcm.ch/beschwerden/schlafprobleme/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tcm.ch/beschwerden/schlafstoerungen/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1117,12 +1099,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/haut/rosacea/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://tcm.ch/haut/salicylsaeure/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -1585,19 +1561,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/wissen/akupunktur-bei-kinderwunsch/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://tcm.ch/wissen/akupunktur-bei-kopfschmerzen/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tcm.ch/wissen/akupunktur-bei-migraene/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

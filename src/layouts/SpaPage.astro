@@ -16,10 +16,20 @@ interface Props {
   /** Optional per-page OG image (absolute URL); defaults to the site image. */
   ogImage?: string;
   noindex?: boolean;
+  /**
+   * Kanonische Ziel-URL, wenn diese Seite bewusst auf eine ANDERE Seite konsolidiert
+   * (Duplikat-Auflösung, z. B. /beschwerden/schlafstoerungen/ -> /beschwerden/schlafprobleme/).
+   * Ist sie gesetzt, entfällt hreflang: die Sprachpaarung gilt dann für die Zielseite.
+   * Der Sitemap-Generator lässt solche Seiten automatisch weg (scripts/gen-sitemap.mjs).
+   */
+  canonicalTo?: string;
 }
-const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false } = Astro.props;
-const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
-const enTwin = enTwinPath(path); // EN alternate (null if no built EN twin)
+const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo } = Astro.props;
+const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
+const canonical = canonicalTo
+  ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
+  : selfUrl;
+const enTwin = canonicalTo ? null : enTwinPath(path); // EN alternate (null if no built EN twin)
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';

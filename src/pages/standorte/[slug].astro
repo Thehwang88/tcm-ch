@@ -155,9 +155,9 @@ if (migrated) {
   // "Häufige Beschwerden" für die Legacy-Leaves — gleiches Schema wie Beschwerden.astro
   // (Basis-Set + Rotation, unique Listen, Anker-Mix), bis diese Slugs migriert sind.
   const LEGACY_BESCHWERDEN: Record<string, { stadt: string; intro: string; slugs: string[] }> = {
-    'st-gallen': { stadt: 'St. Gallen', intro: 'Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in St. Gallen zu uns kommen.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'reizdarm', 'schulterschmerzen'] },
-    'zuerich-city': { stadt: 'Zürich', intro: 'Ein Überblick über die Beschwerden, die wir in Zürich am häufigsten behandeln. Details zu Ablauf und Kosten stehen auf den einzelnen Seiten.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'wechseljahre', 'endometriose', 'knieschmerzen'] },
-    bottighofen: { stadt: 'Bottighofen', intro: 'Womit kommen die Leute in Bottighofen zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.', slugs: ['rueckenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'tinnitus', 'wechseljahre'] },
+    'st-gallen': { stadt: 'St. Gallen', intro: 'Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in St. Gallen zu uns kommen.', slugs: ['rueckenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'kinderwunsch', 'ischias', 'reizdarm', 'schulterschmerzen'] },
+    'zuerich-city': { stadt: 'Zürich', intro: 'Ein Überblick über die Beschwerden, die wir in Zürich am häufigsten behandeln. Details zu Ablauf und Kosten stehen auf den einzelnen Seiten.', slugs: ['rueckenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'kinderwunsch', 'wechseljahre', 'endometriose', 'knieschmerzen'] },
+    bottighofen: { stadt: 'Bottighofen', intro: 'Womit kommen die Leute in Bottighofen zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.', slugs: ['rueckenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'kinderwunsch', 'tinnitus', 'wechseljahre'] },
   };
   const lb = LEGACY_BESCHWERDEN[slug!];
   const beschwerdenLinks = lb

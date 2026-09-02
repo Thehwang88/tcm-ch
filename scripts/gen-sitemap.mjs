@@ -26,6 +26,12 @@ for (const f of files) {
   // skip noindex pages (404, drafts) — they carry <meta name="robots" content="noindex...">
   if (/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(html)) continue;
   if (rel === '/404/' || rel.endsWith('/404/')) continue;
+  // Seiten, die bewusst auf eine andere URL kanonisieren (Duplikat-Auflösung), gehören
+  // nicht in die Sitemap — sonst meldet die Search Console sie als "Alternative Seite mit
+  // richtigem kanonischen Tag" und wir schicken Crawl-Budget auf Seiten, die gar nicht
+  // ranken sollen.
+  const canon = (html.match(/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i) || [])[1];
+  if (canon && canon !== SITE + rel) continue;
   urls.push(rel);
 }
 urls.sort();

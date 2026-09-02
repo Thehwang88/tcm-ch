@@ -20,16 +20,34 @@ export function getStaticPaths() {
   });
 }
 
+// Duplikat-Auflösung innerhalb von /beschwerden/. Drei Beschwerdebilder existierten
+// doppelt bzw. dreifach unter Synonym-Slugs und teilten sich damit die Ranking-Signale
+// (GSC Q3 2026: alle Beteiligten auf Position 57 bis 83, zusammen 119 Impressionen,
+// 1 Klick). Die schwächere URL bleibt für Nutzer:innen und interne Links bestehen,
+// kanonisiert aber auf die stärkere und fällt aus der Sitemap.
+//   Schlafstörungen  -> Schlafprobleme      (in der Navigation, 387 statt 76 Impressionen)
+//   Burnout          -> Stress & Burnout    (Titel überschnitten sich fast vollständig)
+//   Heuschnupfen     -> Allergien & Heusch. (breiter, bessere Position, mehr Impressionen)
+// Nicht zusammengelegt: Plantarfasziitis und Fersensporn — die Seiten grenzen sich
+// fachlich sauber voneinander ab und verlinken sich gegenseitig.
+const MERGED: Record<string, string> = {
+  schlafstoerungen: '/beschwerden/schlafprobleme/',
+  burnout: '/beschwerden/stress-burnout/',
+  heuschnupfen: '/beschwerden/allergien-heuschnupfen/',
+};
+
 // Valid leaf slugs (source of truth for real pages) — used to keep cross-links unbroken.
 const leafSlugs = new Set(
   Object.keys(import.meta.glob('../../data/symptom-leaves/*.html')).map((p) => p.split('/').pop()!.replace('.html', '')),
 );
 // Fallback pool of top-demand complaints to pad sparse related[] up to a few links.
+// Nur kanonische Slugs — nichts aus MERGED, sonst verlinken wir intern auf Seiten,
+// die selbst auf eine andere URL zeigen.
 const RELATED_POOL = [
   { slug: 'rueckenschmerzen', label: 'Rückenschmerzen' },
   { slug: 'nackenschmerzen', label: 'Nackenschmerzen' },
   { slug: 'migraene', label: 'Migräne' },
-  { slug: 'schlafstoerungen', label: 'Schlafstörungen' },
+  { slug: 'schlafprobleme', label: 'Schlafprobleme' },
   { slug: 'stress-burnout', label: 'Stress & Burnout' },
   { slug: 'verdauungsprobleme', label: 'Verdauungsprobleme' },
 ];
@@ -191,4 +209,4 @@ const prefilledBody = appendSidebarAllLink(
 // Soft entry into the interactive self-test (links to /selbsttest/ from every complaint page).
 const selbsttestBlock = `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock} schema={schema} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock} schema={schema} canonicalTo={MERGED[slug!]} />
