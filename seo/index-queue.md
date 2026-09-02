@@ -18,6 +18,7 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/standorte/luzern/
 - https://tcm.ch/wissen/akupunktur-bei-kopfschmerzen/
 - https://tcm.ch/wissen/akupunktur-zum-abnehmen/
 - https://tcm.ch/therapien/ohrakupunktur/
