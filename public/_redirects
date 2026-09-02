@@ -4,6 +4,10 @@
 # --- 301s ---
 /akupunktur-tcm-winterthur /standorte/winterthur-marktgasse/  301
 /standorte/winterthur      /standorte/winterthur-marktgasse/  301
+# Slash-Varianten: Cloudflare normalisiert /x -> /x/, die Regeln oben greifen dann nicht
+# mehr und die URL lief in einen 404 (GSC "Nicht gefunden", zuletzt gecrawlt 28.08.2026).
+/akupunktur-tcm-winterthur/ /standorte/winterthur-marktgasse/  301
+/standorte/winterthur/      /standorte/winterthur-marktgasse/  301
 /krankenkasse              /krankenkassen/        301
 /krankenkasse/*            /krankenkassen/:splat  301
 /zuerich-longevity         /                      301

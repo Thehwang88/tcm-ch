@@ -7,6 +7,7 @@ import { beschwerden } from '../../data/beschwerden';
 import { prefillForm } from '../../data/form-prefill';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
 import { parseLeafFaqs, faqPageSchema } from '../../data/leaf-faq';
+import { hautLinksForBeschwerde, hautLinksHtml } from '../../data/haut-links';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -182,6 +183,14 @@ for (const r of [...(entry?.related ?? []), ...RELATED_POOL]) {
 const relatedBlock = related.length
   ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Verwandte Beschwerden</div><h2 class="section-title">Das könnte dich auch betreffen</h2><div class="cl-links">${related.map((r) => `<a href="/beschwerden/${r.slug}/" class="cl-chip">${r.label}</a>`).join('')}</div></div></section>`
   : '';
+// Links in den /haut/-Cluster — nur auf hautnahen Beschwerden (Akne, Rosacea, Neurodermitis, ...),
+// damit die Verlinkung thematisch trägt. Hebt die /haut/-Leaves aus "Gefunden – nicht indexiert".
+const hautBlock = hautLinksHtml(
+  hautLinksForBeschwerde(slug!, 6),
+  'Haut & Gesicht',
+  'Passend dazu aus der Rubrik Haut',
+  'Wirkstoffe und Behandlungen, ehrlich eingeordnet — ohne Versprechen, die keiner halten kann.',
+);
 // Prefill the contact form with this complaint as the topic (editable; source in hidden quelle).
 const prefilledBody = appendSidebarAllLink(
   prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`),
@@ -189,4 +198,4 @@ const prefilledBody = appendSidebarAllLink(
 // Soft entry into the interactive self-test (links to /selbsttest/ from every complaint page).
 const selbsttestBlock = `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock} schema={schema} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + faqBlock + selbsttestBlock + relatedBlock + hautBlock} schema={schema} />

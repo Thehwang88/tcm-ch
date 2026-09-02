@@ -15,11 +15,21 @@ interface Props {
   schema?: object;
   noindex?: boolean;
   turnstile?: boolean;   // load Cloudflare Turnstile (pages with a protected form)
+  /**
+   * Kanonische Ziel-URL, wenn diese Seite bewusst auf eine ANDERE Seite konsolidiert
+   * (Duplikat-Auflösung). Ist sie gesetzt, entfällt hreflang: die Sprachpaarung gilt
+   * dann für die Zielseite, nicht für diese hier — sonst zeigt der Cluster auf eine
+   * URL, die sich selbst gar nicht als kanonisch deklariert, und Google verwirft ihn.
+   */
+  canonicalTo?: string;
 }
 
-const { title, description = '', path, schema, noindex = false, turnstile = false } = Astro.props;
-const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
-const enTwin = noindex ? null : enTwinPath(path);
+const { title, description = '', path, schema, noindex = false, turnstile = false, canonicalTo } = Astro.props;
+const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
+const canonical = canonicalTo
+  ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
+  : selfUrl;
+const enTwin = noindex || canonicalTo ? null : enTwinPath(path);
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const year = 2026;
 ---

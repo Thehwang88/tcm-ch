@@ -17,6 +17,7 @@ import ueberUns from '../../data/ueber-uns-body.html?raw';
 import homeBody from '../../data/home-body.html?raw';
 import { getStandort, waHref, telHref } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
+import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
 import type { Standort } from '../../data/standorte';
 import Hero from '../../components/standort/Hero.astro';
 import IntroNap from '../../components/standort/IntroNap.astro';
@@ -43,6 +44,16 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const migrated = getStandort(slug!);
 const url = `https://tcm.ch/standorte/${slug}/`;
+
+// Interne Links in den /haut/-Cluster. Die Standort-Seiten werden täglich gecrawlt,
+// die /haut/-Leaves standen dagegen in GSC auf "Gefunden – zurzeit nicht indexiert".
+// Rotation über den Slug, damit nicht alle 14 Standorte dieselben sechs Leaves verlinken.
+const hautBlock = hautLinksHtml(
+  hautLinksFor(slug!, 6),
+  'Haut & Gesicht',
+  'Haut, Gesicht und was wirklich hilft',
+  'Ehrlich erklärt: Wirkstoffe, Behandlungen und was davon realistisch etwas bringt.',
+);
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
@@ -180,7 +191,7 @@ if (migrated) {
     const sgEndCta = `<section class="section" style="background:var(--surface);text-align:center"><div class="wrap reveal" style="max-width:820px"><h2 class="section-title">Bereit für deinen Ersttermin?</h2><p class="section-sub" style="margin-left:auto;margin-right:auto">Wähle direkt einen freien Termin, Bestätigung sofort per E-Mail.</p><a href="#online-buchen" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px">Termin online buchen <span aria-hidden="true">→</span></a></div></section>`;
     sgBody = sgBody + beschwerdenLinks + sgOfferBand + sgEndCta;
   }
-  spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks;
+  spaBody = (slug === 'st-gallen') ? sgBody + hautBlock : filledBody + beschwerdenLinks + hautBlock;
 }
 
 const data = migrated as Standort;
@@ -229,6 +240,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
         )}
         <UeberPraxis data={data} />
         <WeitereStandorte data={data} />
+        <Fragment set:html={hautBlock} />
         <KontaktForm data={data} sitekey={turnstileSitekey} />
         <FinalCta data={data} />
       </div>

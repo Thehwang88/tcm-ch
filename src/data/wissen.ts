@@ -9,8 +9,8 @@ export interface Wissen { slug: string; title: string; metaDesc: string; region?
 export const wissen: Wissen[] = [
   {
     "slug": "wie-lange-bleiben-akupunkturnadeln-drin",
-    "title": "Wie lange bleiben Akupunkturnadeln drin?",
-    "metaDesc": "Akupunkturnadeln bleiben meist 20 bis 30 Minuten in der Haut. Was die Dauer beeinflusst, wann kürzer besser ist und was Dauernadeln unterscheidet.",
+    "title": "Wie lange bleiben Akupunkturnadeln drin? 20 bis 30 Minuten",
+    "metaDesc": "Akupunkturnadeln bleiben meist 20 bis 30 Minuten in der Haut, bei der ersten Sitzung oft kürzer. Was die Liegedauer beeinflusst und wann weniger sinnvoll ist.",
     "region": "Schweizweit",
     "excerpt": "Wie lange Akupunkturnadeln liegen bleiben, wovon die Dauer abhängt und was Dauernadeln davon unterscheidet.",
     "category": "Akupunktur",
@@ -264,8 +264,8 @@ export const wissen: Wissen[] = [
   {
     "slug": "dauernadeln-akupunktur",
     
-    "title": "Dauernadeln: Wirkung, Ablauf & Dauer",
-    "metaDesc": "Dauernadeln bleiben mehrere Tage im Ohr und wirken zwischen den Sitzungen weiter. Wie die Permanentnadeln funktionieren und worauf du achten musst.",
+    "title": "Dauernadeln & Akupunkturpflaster: wie lange tragen?",
+    "metaDesc": "Dauernadeln werden mit einem kleinen Pflaster fixiert und bleiben mehrere Tage im Ohr. Wie lange du sie trägst, wie sie wirken und worauf du achten musst.",
     "region": "Schweizweit",
     "excerpt": "Permanentnadeln bleiben mehrere Tage im Ohr und wirken zwischen den Sitzungen weiter. Ablauf, Tragedauer, Sicherheit und Kosten im Überblick.",
     "category": "TCM in der Schweiz",

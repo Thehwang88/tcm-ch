@@ -15,6 +15,15 @@ const { a } = Astro.props;
 const data = a ?? hautBySlug(Astro.params.slug as string)!;
 
 const path = `/haut/${data.slug}`;
+
+// Duplikat-Auflösung: /haut/rosacea/ und /beschwerden/rosacea/ behandeln dasselbe Thema.
+// Die Beschwerden-Seite rankt bereits (GSC Position 9,0), also konsolidieren wir dorthin —
+// die Haut-Seite bleibt für Leser:innen bestehen, gibt die Ranking-Signale aber ab.
+const CANONICAL_TO: Record<string, string> = {
+  rosacea: '/beschwerden/rosacea/',
+};
+const canonicalTo = CANONICAL_TO[data.slug];
+
 const url = new URL(path, site.url).href;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich habe eine Frage zu ${data.h1}.`)}`;
 
@@ -53,9 +62,11 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: data.h1, item: url },
   ],
 };
-const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+// Bei konsolidierten Seiten kein Schema ausspielen: MedicalWebPage/FAQPage würden sonst
+// mit der identischen Auszeichnung auf der kanonischen Zielseite konkurrieren.
+const schema = canonicalTo ? undefined : [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo}>
   <article class="haut-scope">
     <section class="hero">
       <div class="wrap narrow">
@@ -75,6 +86,16 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
     <section class="section" style="padding-top:0">
       <div class="wrap narrow">
         <div class="kb-body" set:html={data.bodyHtml} />
+
+        {canonicalTo && (
+          <div class="cta-card" style="margin-top:8px">
+            <div class="cta-card-title">Behandlung bei TCM.ch</div>
+            <p>Wie wir {data.h1} mit chinesischer Medizin behandeln, steht ausführlich auf der Behandlungsseite.</p>
+            <div class="cta-row">
+              <a class="btn btn--primary" href={canonicalTo}>Zur Behandlungsseite</a>
+            </div>
+          </div>
+        )}
 
         <div class="cta-card">
           <div class="cta-card-title">{data.ctaTitle ?? 'Haut abklären lassen?'}</div>
