@@ -18,6 +18,7 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/standorte/luzern/
 - https://tcm.ch/wissen/akupunktur-bei-heuschnupfen/
 - https://tcm.ch/wissen/akupunktur-bei-migraene/
 - https://tcm.ch/wissen/akupunktur-bei-kopfschmerzen/
