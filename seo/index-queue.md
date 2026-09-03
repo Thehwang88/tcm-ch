@@ -18,12 +18,9 @@ Regeln:
 
 ## Offen
 
-<<<<<<< HEAD
 - https://tcm.ch/standorte/luzern/
-=======
 - https://tcm.ch/akupunktur-tcm-basel/
 - https://tcm.ch/standorte/basel/kosten/
->>>>>>> 2547581 (seo: Basel-Cluster vorbereitet (Akupunktur, Kosten, Einzugsgebiet, Massage-Longtail))
 - https://tcm.ch/wissen/akupunktur-bei-kopfschmerzen/
 - https://tcm.ch/wissen/akupunktur-zum-abnehmen/
 - https://tcm.ch/therapien/ohrakupunktur/
