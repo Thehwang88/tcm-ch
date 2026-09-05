@@ -24,6 +24,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "copd", "piriformis-syndrom", "frozen-shoulder",
   "eisenmangel", "wassereinlagerungen", "schleimbeutelentzuendung", "zaehneknirschen", "schleudertrauma",
   "histaminintoleranz", "plantarfasziitis", "mittelohrentzuendung", "myome", "morton-neurom",
+  "hallux-valgus", "isg-blockade", "rhizarthrose", "nervenschmerzen", "lymphoedem",
   "hitzewallungen", "schwindel", "immunschwaeche", "verstopfung", "kieferschmerzen",
   "guertelrose", "bandscheibenvorfall", "karpaltunnelsyndrom", "fersensporn",
   "polyneuropathie", "hexenschuss", "nesselsucht", "gicht",

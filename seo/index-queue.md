@@ -18,6 +18,11 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/beschwerden/hallux-valgus/
+- https://tcm.ch/beschwerden/isg-blockade/
+- https://tcm.ch/beschwerden/rhizarthrose/
+- https://tcm.ch/beschwerden/nervenschmerzen/
+- https://tcm.ch/beschwerden/lymphoedem/
 - https://tcm.ch/standorte/luzern/
 - https://tcm.ch/akupunktur-tcm-basel/
 - https://tcm.ch/standorte/basel/kosten/
