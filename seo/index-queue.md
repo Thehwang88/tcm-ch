@@ -23,6 +23,11 @@ Regeln:
 - https://tcm.ch/beschwerden/rhizarthrose/
 - https://tcm.ch/beschwerden/nervenschmerzen/
 - https://tcm.ch/beschwerden/lymphoedem/
+- https://tcm.ch/wissen/dry-needling-vs-akupunktur/
+- https://tcm.ch/wissen/faszien-verklebt-was-hilft/
+- https://tcm.ch/wissen/akupressurmatte-was-bringt-sie/
+- https://tcm.ch/wissen/triggerpunkte-verstehen-loesen/
+- https://tcm.ch/wissen/schroepfen-wirkung-flecken/
 - https://tcm.ch/standorte/luzern/
 - https://tcm.ch/akupunktur-tcm-basel/
 - https://tcm.ch/standorte/basel/kosten/

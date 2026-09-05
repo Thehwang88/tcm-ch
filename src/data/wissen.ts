@@ -1516,6 +1516,336 @@ const wissenBase: Wissen[] = [
         "cat": "Artikel"
       }
     ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-05",
+    "dateModified": "2026-09-05",
+    "lastReviewed": "2026-09-05",
+    "slug": "dry-needling-vs-akupunktur",
+    "title": "Dry Needling vs. Akupunktur: Der Unterschied",
+    "metaDesc": "Dry Needling oder Akupunktur? Unterschied, Wirkung, Kosten und was für welche Beschwerden passt, ehrlich erklärt von TCM-Therapeutinnen.",
+    "excerpt": "Beide arbeiten mit Nadeln, sind aber zwei verschiedene Methoden. Was wann passt, wie intensiv es ist und was die Kasse zahlt.",
+    "category": "Therapien verstehen",
+    "h1": "Dry Needling vs. Akupunktur: Was ist der Unterschied und was passt zu dir?",
+    "lead": "Beide arbeiten mit feinen Nadeln, beide werden bei Schmerzen eingesetzt, und trotzdem sind es zwei verschiedene Methoden. Wer wegen Nacken-, Rücken- oder Schulterschmerzen eine Behandlung sucht, steht früher oder später vor der Frage: Dry Needling oder Akupunktur? Da wir bei TCM.ch beides anbieten, Dry Needling in der Physiotherapie und Akupunktur in der TCM, können wir die Frage ohne Eigeninteresse für eine Seite beantworten.",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Unsicher, was zu dir passt? Wir beraten ehrlich.",
+    "bodyHtml": "<p>Die Kurzfassung: Dry Needling zielt punktgenau auf verhärtete Muskelstellen, sogenannte Triggerpunkte, und arbeitet oft intensiver. Akupunktur behandelt nach einem breiteren Konzept, bezieht Schlaf, Stress und Begleitbeschwerden mit ein und ist sanfter. Welche Methode passt, hängt von deiner Beschwerde ab, und manchmal ist die Kombination das Beste.</p>\n  <h2>Woher die beiden Methoden kommen</h2>\n  <p><a href=\"/therapien/akupunktur/\">Akupunktur</a> stammt aus der Chinesischen Medizin und wird seit Jahrhunderten praktiziert. Behandelt wird an definierten Punkten am ganzen Körper, oft auch fern der schmerzenden Stelle, etwa an Händen oder Unterschenkeln bei Nackenschmerzen. Die Nadeln bleiben zwanzig bis dreissig Minuten liegen, die Behandlung wird von den meisten als entspannend empfunden.</p>\n  <p><a href=\"/therapien/physiotherapie/dry-needling/\">Dry Needling</a> ist deutlich jünger und kommt aus der westlichen Schmerzmedizin. Die Idee: Verhärtete Stellen im Muskel, die <a href=\"/wissen/triggerpunkte-verstehen-loesen/\">Triggerpunkte</a>, unterhalten Schmerzen und strahlen oft in andere Körperregionen aus. Beim Dry Needling sticht die Therapeutin die Nadel direkt in diesen Punkt. Trifft sie richtig, zuckt der Muskel kurz, das ist gewollt und Teil der Wirkung. Danach lässt die Spannung im Muskel messbar nach. Die Behandlung ist kurz und intensiver als Akupunktur, viele beschreiben den Moment der Zuckung als unangenehm, aber erlösend.</p>\n  <p>Der Name führt übrigens gern in die Irre: \"Dry\" heisst nur, dass nichts gespritzt wird, die Nadel ist leer, im Unterschied zur Injektion.</p>\n  <h2>Was die Forschung zu beiden sagt</h2>\n  <p>Für Akupunktur bei chronischen Schmerzen des Bewegungsapparats ist die Studienlage vergleichsweise breit. Cochrane-Reviews zeigen kurzfristige Verbesserungen bei chronischen <a href=\"/beschwerden/nackenschmerzen/\">Nackenschmerzen</a> (Trinh K et al., Cochrane Database Syst Rev 2016, CD004870), und grosse Metaanalysen stützen den Einsatz bei <a href=\"/beschwerden/rueckenschmerzen/\">Rücken-</a>, Schulter- und Kopfschmerzen, meist als Ergänzung zu Bewegung, nicht als Ersatz.</p>\n  <p>Für Dry Needling fasst eine vielzitierte Übersichtsarbeit die Datenlage zusammen: Bei muskulär bedingten Schmerzen lindert Dry Needling kurzfristig Schmerz und verbessert die Beweglichkeit, die Effekte über Monate sind weniger gut belegt (Gattie E et al., J Orthop Sports Phys Ther 2017). Direkte Vergleichsstudien zwischen beiden Methoden gibt es wenige, und sie zeigen keinen klaren Gesamtsieger. Ehrlich gesagt ist das auch logisch: Die Methoden beantworten unterschiedliche Fragen.</p>\n  <h2>Wann was passt</h2>\n  <p>Dry Needling spielt seine Stärke aus, wenn der Schmerz klar muskulär und lokalisierbar ist: ein Triggerpunkt im Schulterblattheber, der in den Nacken zieht, eine verhärtete Wade nach dem Sport, ein Tennisarm. Punkt finden, behandeln, Spannung weg, das ist die Logik.</p>\n  <p>Akupunktur passt, wenn mehr zusammenkommt: Schmerzen plus schlechter Schlaf, Verspannung plus Stress, wiederkehrende Beschwerden ohne einzelnen klaren Punkt. Auch Menschen, denen Dry Needling zu intensiv ist, fahren mit Akupunktur oft besser, die Behandlung ist spürbar sanfter.</p>\n  <p>In der Praxis kombinieren wir häufig: Dry Needling für den hartnäckigen Triggerpunkt, Akupunktur für Muskelketten, Schlaf und Stresslevel. Beides bei uns unter einem Dach zu haben, macht die Abstimmung einfach.</p>\n  <h2>Ablauf, Intensität, Risiken</h2>\n  <p>Beim Dry Needling behandelt die Physiotherapeutin wenige Punkte gezielt, die Sitzung am Muskel dauert oft nur Minuten, eingebettet in eine physiotherapeutische Behandlung. Nach dem Termin kann der Muskel ein bis zwei Tage wie nach Muskelkater ziehen, das ist normal.</p>\n  <p>Bei der Akupunktur liegst du zwanzig bis dreissig Minuten mit mehreren feinen Nadeln, die meisten Patient:innen entspannen dabei, manche schlafen ein. Nachwirkungen sind selten und mild, gelegentlich ein kleiner blauer Fleck.</p>\n  <p>Beide Methoden sind in geschulten Händen sicher. Wichtig bei beiden: Blutverdünner, Schwangerschaft und akute Infekte vorher ansprechen, dann wird die Behandlung angepasst.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Dry Needling läuft bei uns im Rahmen der Physiotherapie, ärztlich verordnet übernimmt sie die Grundversicherung. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei Taubheit, Lähmungserscheinungen oder Schmerzen nach einem Unfall zuerst ärztlich abklären lassen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Trinh K et al., Acupuncture for neck disorders, Cochrane Database of Systematic Reviews 2016, CD004870. Gattie E et al., The Effectiveness of Trigger Point Dry Needling for Musculoskeletal Conditions, J Orthop Sports Phys Ther 2017.</em></p>",
+    "faqs": [
+      {
+        "q": "Was tut mehr weh, Dry Needling oder Akupunktur?",
+        "a": "Dry Needling ist intensiver: Die Muskelzuckung am Triggerpunkt ist kurz unangenehm, danach oft erlösend. Akupunktur spürst du meist nur als kurzen Piks und ein dumpfes Ziehen, viele empfinden die Behandlung als entspannend."
+      },
+      {
+        "q": "Kann ich beides kombinieren?",
+        "a": "Ja, das machen wir oft: Dry Needling für den einzelnen hartnäckigen Triggerpunkt, Akupunktur für das Drumherum aus Verspannungsketten, Schlaf und Stress. Die Termine werden aufeinander abgestimmt."
+      },
+      {
+        "q": "Was ist bei Nackenschmerzen besser?",
+        "a": "Kommt auf die Ursache an. Ein einzelner klarer Triggerpunkt spricht für Dry Needling, diffuse Verspannung mit Stress und Schlafproblemen eher für Akupunktur. Im Erstgespräch klären wir das ehrlich, wir bieten beides an und müssen dir nichts verkaufen."
+      },
+      {
+        "q": "Wie viele Sitzungen brauche ich?",
+        "a": "Dry Needling zeigt oft schon nach ein bis drei Behandlungen, ob es greift. Bei Akupunktur planen wir meist sechs bis acht Sitzungen. Bewegt sich nach vier bis fünf Terminen nichts, besprechen wir Alternativen statt weiterzumachen."
+      },
+      {
+        "q": "Zahlt die Krankenkasse?",
+        "a": "Akupunktur über die Zusatzversicherung (EMR/ASCA, meist 80 bis 100 Prozent), ärztlich verordnetes Dry Needling im Rahmen der Physiotherapie über die Grundversicherung. Kläre deinen Anteil vor dem ersten Termin mit deiner Kasse."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/physiotherapie/dry-needling/",
+        "label": "Dry Needling",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/akupunktur/",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/triggerpunkte-verstehen-loesen/",
+        "label": "Triggerpunkte verstehen und lösen",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-05",
+    "dateModified": "2026-09-05",
+    "lastReviewed": "2026-09-05",
+    "slug": "faszien-verklebt-was-hilft",
+    "title": "Verklebte Faszien: Was wirklich hilft",
+    "metaDesc": "Faszien verklebt? Was hinter dem Begriff steckt, was Rolle, Massage, Gua Sha und Schröpfen wirklich leisten, ehrlich eingeordnet.",
+    "excerpt": "Es klebt nichts, aber es gleitet schlechter. Was an den verklebten Faszien dran ist und welche Behandlungen dem Gewebe wirklich helfen.",
+    "category": "Therapien verstehen",
+    "h1": "Verklebte Faszien: Was hinter dem Begriff steckt und was wirklich hilft",
+    "lead": "Kaum ein Begriff hat in den letzten Jahren so Karriere gemacht wie die Faszien. Verklebte Faszien sollen schuld sein an Rückenschmerzen, Verspannungen, Cellulite und ungefähr allem dazwischen, und die passende Rolle dazu steht inzwischen in jedem Sportgeschäft. Zeit für eine ehrliche Einordnung: Was sind Faszien wirklich, was ist an den Verklebungen dran, und welche Behandlungen bringen nachweislich etwas?",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Verspanntes Gewebe abklären lassen?",
+    "bodyHtml": "<h2>Was Faszien sind</h2>\n  <p>Faszien sind das Bindegewebsnetz, das den ganzen Körper durchzieht: dünne, zugfeste Hüllen, die jeden Muskel, jedes Organ und jede Muskelfaser umschliessen und alles miteinander verbinden. Sie geben Form und Halt, übertragen Kraft zwischen Muskeln und sind dicht mit Nervenenden besetzt. Das letzte Detail ist das wichtigste: Faszien können Schmerz melden, und zwar ziemlich laut. Die grosse Rückenfaszie gilt heute als relevante Quelle unspezifischer <a href=\"/beschwerden/rueckenschmerzen/\">Rückenschmerzen</a>.</p>\n  <p>Gesunde Faszien sind geschmeidig und gleiten bei jeder Bewegung gegeneinander. Bei Bewegungsmangel, einseitiger Belastung, nach Verletzungen und unter Dauerstress verändert sich das Gewebe: Es verliert Gleitfähigkeit, verdichtet sich, die Schichten bewegen sich schlechter gegeneinander. Das ist der wahre Kern hinter dem Schlagwort verklebt. Mit Klebstoff hat das nichts zu tun, mit weniger Bewegung im Gewebe sehr viel.</p>\n  <h2>Was die Forschung sagt und was nicht</h2>\n  <p>Fest steht: Fasziengewebe verändert sich messbar bei Bewegungsmangel und chronischer Anspannung, es ist schmerzempfindlich, und die grosse Rückenfaszie ist bei chronischen Rückenschmerzen oft mitbeteiligt. Ebenso fest steht: Viele Marketingversprechen rund um Faszien sind der Forschung weit voraus. Dass eine Rolle Verklebungen wegdrückt oder Cellulite glättet, ist nicht belegt.</p>\n  <p>Was belegt ist: Bewegung ist die wirksamste Faszienpflege, vielfältig, regelmässig, mit Dehn- und Federanteilen. Manuelle Behandlungen wie Massage verbessern kurzfristig Beweglichkeit und Schmerzempfinden. Die Faszienrolle kann die Beweglichkeit kurzfristig erhöhen und Muskelkater mildern, als alleinige Dauerlösung taugt sie nicht. Kurz: Das Gewebe reagiert auf Reize, aber es gibt keinen Trick, der Bewegung ersetzt.</p>\n  <h2>Was TCM-Behandlungen hier leisten</h2>\n  <p>Interessant ist, dass mehrere klassische TCM-Techniken genau an diesem Gewebe arbeiten, lange bevor der Begriff Faszie modern wurde.</p>\n  <p><a href=\"/therapien/gua-sha/\">Gua Sha</a> ist das deutlichste Beispiel: Mit einem abgerundeten Schaber wird die Haut in Bahnen ausgestrichen, mit spürbarem Druck auf die oberflächlichen Gewebsschichten. Die typische Rötung zeigt die stark angeregte Durchblutung. Viele Patient:innen beschreiben danach ein deutlich freieres Bewegungsgefühl im behandelten Bereich.</p>\n  <p><a href=\"/therapien/schroepfen/\">Schröpfen</a> arbeitet umgekehrt mit Unterdruck: Die Gläser heben Haut und oberflächliches Bindegewebe an, statt es zu komprimieren. Genau dieses Anheben und Lösen der Gewebeschichten voneinander ist der Grund, warum <a href=\"/wissen/schroepfen-wirkung-flecken/\">Schröpfen</a> in der Faszien-Szene inzwischen als Cupping wiederentdeckt wurde.</p>\n  <p><a href=\"/therapien/tuina/\">Tuina</a>, die chinesische manuelle Therapie, kombiniert tiefe Grifftechniken mit Mobilisation und erreicht damit die tieferen Muskel- und Bindegewebsschichten. Und die <a href=\"/therapien/massage/triggerpunktmassage/\">Triggerpunktmassage</a> arbeitet an den verhärteten Punkten im Muskel-Faszien-Gewebe, die Schmerzen in andere Regionen ausstrahlen.</p>\n  <p>Keine dieser Methoden löst im wörtlichen Sinn Verklebungen auf. Was sie leisten: Durchblutung anregen, Spannung senken, Beweglichkeit verbessern und dem überempfindlichen Gewebe neue, nicht schmerzhafte Reize geben. In Kombination mit Bewegung ist das oft der Ausweg aus dem Kreislauf von Schmerz und Schonung.</p>\n  <h2>Was du selbst tun kannst</h2>\n  <p>Der wichtigste Punkt zuerst: Beweg dich vielfältig. Faszien mögen Abwechslung, Gehen, Dehnen, federnde Bewegungen, Richtungswechsel. Wer täglich acht Stunden sitzt, braucht kein teures Gerät, sondern Unterbrechungen. Die Faszienrolle kannst du ergänzend nutzen, langsam, ohne in den Schmerz zu rollen, zwei bis drei Minuten pro Region reichen. Trinken hilft dem Gewebe, Dauerstress schadet ihm, denn Anspannung erhöht messbar den Grundtonus. Und bei anhaltenden Schmerzen gilt wie immer: erst einordnen lassen, dann behandeln.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Gua Sha, Schröpfen und Tuina bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent, die Grundversicherung deckt es nicht. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei anhaltenden oder ausstrahlenden Schmerzen zuerst ärztlich abklären lassen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Gibt es verklebte Faszien wirklich?",
+        "a": "Der Begriff ist unpräzise, das Phänomen real: Bei Bewegungsmangel und Dauerspannung verliert das Bindegewebe Gleitfähigkeit und wird schmerzempfindlicher. Es klebt nichts, aber es gleitet schlechter."
+      },
+      {
+        "q": "Bringt die Faszienrolle etwas?",
+        "a": "Kurzfristig ja: etwas mehr Beweglichkeit, etwas weniger Muskelkater. Sie ersetzt aber weder vielfältige Bewegung noch eine Behandlung bei echten Schmerzen."
+      },
+      {
+        "q": "Welche TCM-Behandlung passt bei Faszien-Beschwerden?",
+        "a": "Bei flächiger Verspannung Gua Sha oder Schröpfen, bei tiefen Verhärtungen Tuina oder Triggerpunktmassage. Im Erstgespräch schauen wir, wo dein Gewebe tatsächlich reagiert."
+      },
+      {
+        "q": "Sind die Flecken nach Gua Sha und Schröpfen gefährlich?",
+        "a": "Nein. Die Rötungen und Kreise entstehen durch die stark angeregte Durchblutung im oberflächlichen Gewebe und verschwinden nach wenigen Tagen. Warum genau, erklären wir im Schröpfen-Artikel."
+      },
+      {
+        "q": "Hilft das auch bei Rückenschmerzen?",
+        "a": "Die grosse Rückenfaszie ist bei unspezifischen Rückenschmerzen oft mitbeteiligt, Behandlungen an diesem Gewebe plus Bewegung sind deshalb ein sinnvoller Ansatz. Mehr auf unserer Seite zu Rückenschmerzen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/gua-sha/",
+        "label": "Gua Sha",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/tuina/",
+        "label": "Tuina",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/beschwerden/rueckenschmerzen/",
+        "label": "Rückenschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/schroepfen-wirkung-flecken/",
+        "label": "Schröpfen: Wirkung und Flecken",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-05",
+    "dateModified": "2026-09-05",
+    "lastReviewed": "2026-09-05",
+    "slug": "akupressurmatte-was-bringt-sie",
+    "title": "Akupressurmatte: Was bringt sie wirklich?",
+    "metaDesc": "Akupressurmatte im ehrlichen Check: Was die Nadelmatte kann, was nicht, für wen sie taugt und wann eine Behandlung mehr bringt.",
+    "excerpt": "Gutes Werkzeug für zu Hause, kein Ersatz für gezieltes Arbeiten. Was die Nadelmatte leistet, für wen sie taugt und wie du sie richtig nutzt.",
+    "category": "Therapien verstehen",
+    "h1": "Akupressurmatte: Was die Nadelmatte wirklich bringt",
+    "lead": "Sie liegt in vielen Schweizer Wohnzimmern: die Akupressurmatte, eine Schaumstoffmatte mit tausenden Kunststoffspitzen, auf die man sich mit dem Rücken legt. Die Versprechen reichen von gelösten Verspannungen über besseren Schlaf bis zum Stressabbau. Da wir täglich mit Akupressur und Akupunktur arbeiten, werden wir oft gefragt: Bringt das Ding etwas, oder ist es Geldverschwendung? Die ehrliche Antwort liegt, wie meistens, dazwischen.",
+    "readingTime": "7 Min.",
+    "ctaTitle": "Verspannungen, die bleiben? Sprich mit uns.",
+    "bodyHtml": "<h2>Was auf der Matte passiert</h2>\n  <p>Legst du dich auf die Matte, drücken sich hunderte Spitzen gleichzeitig in die Haut. Die ersten ein bis zwei Minuten sind unangenehm, manche brechen hier ab. Wer bleibt, spürt nach wenigen Minuten eine ausgeprägte Wärme im Rücken: Die Reizung erweitert die Blutgefässe der Haut, die Durchblutung steigt deutlich. Gleichzeitig setzt der intensive, aber harmlose Reiz Prozesse in Gang, die auch bei Massage und Akupressur eine Rolle spielen: Der starke Sinnesreiz überlagert Schmerz- und Spannungssignale, das Nervensystem schaltet einen Gang runter. Viele Nutzer beschreiben nach fünfzehn bis zwanzig Minuten einen Zustand angenehmer Schwere, ähnlich wie nach einer Massage.</p>\n  <h2>Was die Matte kann und was nicht</h2>\n  <p>Die Studienlage zur Akupressurmatte selbst ist dünn: wenige, kleine Untersuchungen, die kurzfristige Entspannung und subjektiv weniger Verspannungsgefühl zeigen. Das deckt sich mit der Erfahrung: Als tägliches Entspannungsritual, bei leichter Verspannung nach dem Bürotag und als Einschlafhilfe kann die Matte durchaus etwas. Sie ist günstig, immer verfügbar und hat kaum Nebenwirkungen. Aus unserer Sicht spricht nichts dagegen, im Gegenteil: Wer abends zwanzig Minuten auf der Matte liegt statt am Handy zu scrollen, tut seinem <a href=\"/beschwerden/nackenschmerzen/\">Nacken</a> doppelt Gutes.</p>\n  <p>Genauso klar ist, was die Matte nicht kann. Sie behandelt flächig und unspezifisch, während <a href=\"/therapien/akupressur/\">Akupressur</a> und <a href=\"/therapien/akupunktur/\">Akupunktur</a> gezielt an ausgewählten Punkten arbeiten, abgestimmt auf deine Beschwerde. Einen hartnäckigen Triggerpunkt, eine ISG-Blockade oder chronische Schmerzen erreicht die Matte nicht. Sie ersetzt auch keine Abklärung: Wer sich Woche für Woche auf die Matte legt, weil <a href=\"/beschwerden/rueckenschmerzen/\">der Rücken schmerzt</a>, ohne dass es besser wird, verliert Zeit.</p>\n  <p>Der Vergleich, den wir gern ziehen: Die Matte verhält sich zur professionellen Behandlung wie die Faszienrolle zur manuellen Therapie. Gutes Werkzeug für zu Hause, kein Ersatz für gezieltes Arbeiten.</p>\n  <h2>Für wen die Matte taugt</h2>\n  <p>Gut geeignet ist die Matte für Menschen mit leichten, stressbedingten Verspannungen, für alle, die ein Abendritual zum Runterfahren suchen, und als Ergänzung zwischen Behandlungsterminen, das empfehlen wir sogar aktiv. Vorsicht gilt bei sehr empfindlicher oder verletzter Haut, bei Blutverdünnern und in der <a href=\"/therapien/massage/schwangerschaftsmassage/\">Schwangerschaft</a>, hier vorher ärztlich oder bei uns nachfragen. Und wer nach zwei bis drei Wochen täglicher Nutzung keinen Unterschied spürt oder wessen Beschwerden zunehmen, sollte die Ursache abklären lassen statt weiter zu hoffen.</p>\n  <h2>So nutzt du sie richtig</h2>\n  <p>Starte mit einem T-Shirt zwischen Haut und Spitzen, das nimmt den ersten Schreck. Nach ein paar Tagen geht es meist direkt auf der Haut. Fünfzehn bis zwanzig Minuten am Abend reichen, auf einer weichen Unterlage wie dem Bett verteilen sich die Spitzen sanfter als auf dem Boden. Ruhig atmen und die anfängliche Unruhe aushalten, der Umschwung in die Wärme kommt meist nach zwei bis drei Minuten. Für den Nacken gibt es Kissen mit denselben Spitzen, dasselbe Prinzip, gleiche Regeln.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Die Matte kostet je nach Modell 30 bis 80 Franken, eine Kassenleistung ist sie nicht. Professionelle Akupressur- und Akupunkturbehandlungen bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei anhaltenden Beschwerden zuerst abklären lassen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Wie lange soll ich auf der Akupressurmatte liegen?",
+        "a": "Fünfzehn bis zwanzig Minuten reichen. Länger schadet nicht, bringt aber wenig zusätzlich. Wichtiger ist die Regelmässigkeit."
+      },
+      {
+        "q": "Tut die Akupressurmatte weh?",
+        "a": "Die ersten Minuten sind unangenehm, danach setzt bei den meisten ein Wärmegefühl ein. Mit T-Shirt starten nimmt die Schärfe raus. Echter Schmerz ist ein Zeichen, abzubrechen."
+      },
+      {
+        "q": "Hilft die Matte bei Rückenschmerzen?",
+        "a": "Bei leichten, muskulären Verspannungen kann sie kurzfristig entlasten. Anhaltende oder ausstrahlende Rückenschmerzen gehören abgeklärt und gezielt behandelt, dafür ist die Matte das falsche Werkzeug."
+      },
+      {
+        "q": "Ist die Matte dasselbe wie Akupressur?",
+        "a": "Nein. Die Matte reizt flächig und unspezifisch, Akupressur arbeitet gezielt an ausgewählten Punkten, abgestimmt auf deine Beschwerde. Die Matte ist die Heimversion des Prinzips, nicht die Behandlung."
+      },
+      {
+        "q": "Kann ich die Matte in der Schwangerschaft nutzen?",
+        "a": "Sicherheitshalber vorher ärztlich oder bei deiner Therapeutin nachfragen. Für Verspannungen in der Schwangerschaft gibt es gezieltere und geprüfte Optionen, etwa die Schwangerschaftsmassage."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/akupressur/",
+        "label": "Akupressur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/massage/schwangerschaftsmassage/",
+        "label": "Schwangerschaftsmassage",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/beschwerden/nackenschmerzen/",
+        "label": "Nackenschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-05",
+    "dateModified": "2026-09-05",
+    "lastReviewed": "2026-09-05",
+    "slug": "triggerpunkte-verstehen-loesen",
+    "title": "Triggerpunkte: Verstehen und lösen",
+    "metaDesc": "Was Triggerpunkte sind, warum sie in andere Körperregionen ausstrahlen und welche Behandlungen sie lösen: Massage, Dry Needling, Akupunktur.",
+    "excerpt": "Ein Punkt im Muskel, der woanders schmerzt. Wie Triggerpunkte entstehen, warum sie ausstrahlen und welche Behandlung sie wirklich löst.",
+    "category": "Beschwerden verstehen",
+    "h1": "Triggerpunkte: Warum ein Punkt im Muskel woanders schmerzt und was ihn löst",
+    "lead": "Du drückst auf eine Stelle in der Schulter und spürst den Schmerz im Hinterkopf. Oder die Physiotherapeutin findet einen Punkt im Gesäss, und es zieht das Bein hinunter. Das ist kein Zufall und keine Einbildung, sondern das typische Verhalten von Triggerpunkten: kleinen, verhärteten Stellen im Muskel, die Schmerzen in ganz andere Körperregionen senden. Wer sie versteht, versteht einen grossen Teil der alltäglichen Nacken-, Schulter- und Rückenschmerzen.",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Triggerpunkte, die immer wiederkommen?",
+    "bodyHtml": "<h2>Was ein Triggerpunkt ist</h2>\n  <p>Ein Triggerpunkt ist ein winziger Abschnitt im Muskel, der sich dauerhaft zusammengezogen hat und nicht mehr loslässt. Tastbar ist er als erbsen- bis olivengrosse Verhärtung in einem strangartig gespannten Muskelbündel, druckempfindlich und oft überraschend gemein: Drückt man drauf, sagt der Patient nicht selten \"genau das ist mein Schmerz\", nur eben am Hinterkopf, an der Schläfe oder im Arm statt an der gedrückten Stelle.</p>\n  <p>Dieses Ausstrahlen ist das Markenzeichen. Die Muster sind dabei erstaunlich konstant und wurden von den amerikanischen Ärzten Janet Travell und David Simons systematisch kartiert, ihre Handbücher sind bis heute das Standardwerk. Ein Triggerpunkt im Schulterheber strahlt typisch in <a href=\"/beschwerden/nackenschmerzen/\">Nacken</a> und <a href=\"/beschwerden/spannungskopfschmerzen/\">Schläfe</a>, einer im Gesässmuskel das Bein hinab, einer in der Kaumuskulatur in Zähne und Ohr. Deshalb werden Triggerpunkte so oft übersehen: Gesucht wird dort, wo es weh tut, der Verursacher sitzt aber woanders.</p>\n  <p>Dahinter steckt eine lokale Dauerkontraktion: Der Abschnitt verbraucht ständig Energie, wird schlecht durchblutet, das Gewebe übersäuert lokal und sensibilisiert die Schmerzrezeptoren. Ein kleiner Teufelskreis aus Spannung, Minderdurchblutung und Schmerz.</p>\n  <h2>Wie Triggerpunkte entstehen</h2>\n  <p>Die üblichen Verdächtigen: monotone Haltung, allen voran Bildschirmarbeit mit vorgeschobenem Kopf, einseitige Überlastung beim Sport oder Handwerk, direkte Traumen wie Zerrungen, Kälte und Zugluft auf verspannter Muskulatur, und, unterschätzt, psychischer Dauerstress, der den Grundtonus der Muskulatur hochhält. Auch Schonhaltungen nach Verletzungen züchten Triggerpunkte, weil andere Muskeln plötzlich Arbeit übernehmen, für die sie nicht gebaut sind.</p>\n  <h2>Welche Behandlungen Triggerpunkte lösen</h2>\n  <p>Das Prinzip ist bei allen Methoden gleich: Der verhärtete Abschnitt braucht einen gezielten Reiz, der die Dauerkontraktion unterbricht und die Durchblutung wiederherstellt. Der Weg dorthin unterscheidet sich.</p>\n  <p>Die <a href=\"/therapien/massage/triggerpunktmassage/\">Triggerpunktmassage</a> arbeitet manuell: anhaltender, gezielter Druck auf den Punkt, bis die Spannung spürbar nachlässt, kombiniert mit Dehnung des betroffenen Muskels. Das ist intensiv, der berühmte Wohlschmerz, und bei den meisten Punkten sehr wirksam.</p>\n  <p><a href=\"/therapien/physiotherapie/dry-needling/\">Dry Needling</a> geht mit der Nadel direkt in den Punkt. Die kurze Muskelzuckung beim Treffer entspannt den Abschnitt oft unmittelbar. Bei tief liegenden Punkten, die Finger schlecht erreichen, ist das der direkteste Weg. Mehr dazu in unserem <a href=\"/wissen/dry-needling-vs-akupunktur/\">Vergleich von Dry Needling und Akupunktur</a>.</p>\n  <p><a href=\"/therapien/akupunktur/\">Akupunktur</a> behandelt Triggerpunkte ebenfalls, spannend ist die historische Fussnote: Ein grosser Teil der klassischen Schmerzpunkte der Akupunktur deckt sich örtlich mit den später kartierten Triggerpunkten. Akupunktur arbeitet dabei sanfter und bezieht Muskelketten, Stress und Schlaf mit ein, was bei Menschen mit vielen Punkten und hohem Anspannungslevel oft der nachhaltigere Weg ist.</p>\n  <p><a href=\"/therapien/schroepfen/\">Schröpfen</a> und Gua Sha ergänzen flächig, wo ganze Muskelpartien verhärtet sind, und Wärme wie Moxibustion oder die Wärmflasche unterstützt die Durchblutung.</p>\n  <p>Was alle Methoden brauchen, um nachhaltig zu wirken: dass die Ursache mitbehandelt wird. Ein gelöster Triggerpunkt kommt wieder, wenn Haltung, Belastung und Stresslevel bleiben, wie sie sind.</p>\n  <h2>Was du selbst tun kannst</h2>\n  <p>Einzelne gut erreichbare Punkte kannst du selbst behandeln: mit dem Finger oder einem Massageball anhaltend drücken, zehn bis dreissig Sekunden, bis die Spannung spürbar nachgibt, danach den Muskel sanft dehnen. Nicht auf Knochen, nicht auf pochende Stellen, nicht mit Gewalt. Wärme hilft fast immer. Und die wirksamste Prävention ist unspektakulär: Haltung wechseln, Pausen, Bewegung, Stress senken. Bei Punkten, die immer wiederkommen, in mehreren Regionen auftreten oder stark ausstrahlen, lohnt sich die professionelle Behandlung, auch um andere Ursachen nicht zu übersehen.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Triggerpunktmassage, Akupunktur, Schröpfen und Gua Sha bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Ärztlich verordnetes Dry Needling läuft im Rahmen der Physiotherapie über die Grundversicherung. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei Warnzeichen wie Taubheit, Lähmung oder Ruheschmerz zuerst ärztlich abklären lassen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Travell JG, Simons DG, Myofascial Pain and Dysfunction: The Trigger Point Manual. Gattie E et al., J Orthop Sports Phys Ther 2017.</em></p>",
+    "faqs": [
+      {
+        "q": "Woran erkenne ich einen Triggerpunkt?",
+        "a": "Tastbare Verhärtung in einem gespannten Muskelstrang, druckempfindlich, und typischerweise strahlt der Druck in eine andere Region aus, oft genau in deinen bekannten Schmerz."
+      },
+      {
+        "q": "Warum strahlt der Schmerz woanders hin?",
+        "a": "Das Nervensystem ordnet die Signale aus dem verhärteten Muskelabschnitt konstant anderen Regionen zu, die Muster sind gut kartiert. Deshalb sitzt der Verursacher oft nicht dort, wo es weh tut."
+      },
+      {
+        "q": "Triggerpunktmassage oder Dry Needling?",
+        "a": "Gut erreichbare Punkte sprechen auf beides an, tief liegende oft besser auf die Nadel. Bei vielen Punkten plus Stress und Schlafproblemen ist Akupunktur häufig der nachhaltigere Rahmen. Wir bieten alle drei an und beraten ehrlich."
+      },
+      {
+        "q": "Wie schnell wirkt die Behandlung?",
+        "a": "Einzelne Punkte lösen sich oft in ein bis drei Sitzungen spürbar. Chronische Muster mit vielen Punkten brauchen länger, und ohne Änderung der Ursache kommen die Punkte zurück."
+      },
+      {
+        "q": "Sind Triggerpunkte gefährlich?",
+        "a": "Nein, aber sie können ernstere Ursachen maskieren. Bei Taubheit, Kraftverlust, nächtlichem Ruheschmerz oder Schmerzen nach einem Unfall zuerst ärztlich abklären lassen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/massage/triggerpunktmassage/",
+        "label": "Triggerpunktmassage",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/beschwerden/nackenschmerzen/",
+        "label": "Nackenschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/spannungskopfschmerzen/",
+        "label": "Spannungskopfschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/dry-needling-vs-akupunktur/",
+        "label": "Dry Needling vs. Akupunktur",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-05",
+    "dateModified": "2026-09-05",
+    "lastReviewed": "2026-09-05",
+    "slug": "schroepfen-wirkung-flecken",
+    "title": "Schröpfen: Wirkung und warum die Flecken entstehen",
+    "metaDesc": "Wie Schröpfen wirkt, warum die runden Flecken entstehen, wie lange sie bleiben und wann Schröpfen sinnvoll ist, ehrlich erklärt.",
+    "excerpt": "Die Flecken sehen dramatischer aus, als sie sind. Was beim Schröpfen im Gewebe passiert, was die Methode kann und was sie nicht ist.",
+    "category": "Therapien verstehen",
+    "h1": "Schröpfen: Wie es wirkt und warum die runden Flecken entstehen",
+    "lead": "Spätestens seit Spitzensportler mit kreisrunden, dunkelroten Flecken auf dem Rücken zu Wettkämpfen antraten, kennt jeder das Bild: Da hat jemand geschröpft. Die Flecken sehen dramatischer aus, als sie sind, und die Methode dahinter ist eine der ältesten Behandlungsformen überhaupt. Hier erklären wir, was beim Schröpfen im Gewebe passiert, warum die Flecken entstehen und was die Behandlung realistisch leisten kann.",
+    "readingTime": "7 Min.",
+    "ctaTitle": "Schröpfen ausprobieren? Frag uns vorher.",
+    "bodyHtml": "<h2>Was beim Schröpfen passiert</h2>\n  <p>Beim <a href=\"/therapien/schroepfen/\">Schröpfen</a> setzt die Therapeutin Gläser oder Kunststoff-Cups auf die Haut und erzeugt darin einen Unterdruck, klassisch mit einer kurzen Flamme, moderner mit einer Pumpe. Der Unterdruck saugt Haut und oberflächliches Bindegewebe wenige Millimeter in das Glas hinein. Das ist der entscheidende Unterschied zu fast allen anderen manuellen Techniken: Massage, <a href=\"/therapien/gua-sha/\">Gua Sha</a> und Druckbehandlungen komprimieren das Gewebe, Schröpfen hebt es an.</p>\n  <p>Dieses Anheben hat zwei unmittelbare Effekte. Erstens steigt die Durchblutung im behandelten Areal massiv, das Gewebe wird regelrecht durchspült. Zweitens werden die Gewebeschichten, Haut, Unterhaut und oberflächliche Faszie, voneinander abgehoben und gegeneinander mobilisiert. Genau deshalb hat die Sport- und <a href=\"/wissen/faszien-verklebt-was-hilft/\">Faszienwelt</a> das jahrtausendealte Schröpfen als Cupping wiederentdeckt.</p>\n  <p>Die Gläser bleiben je nach Technik fünf bis fünfzehn Minuten stehen, oder sie werden mit etwas Öl über die Muskulatur gezogen, die Schröpfmassage, die viele als intensive, tiefe Massage empfinden. Daneben gibt es das <a href=\"/therapien/schroepfen/blutiges-schroepfen/\">blutige Schröpfen</a> und die <a href=\"/therapien/schroepfen/hijama/\">Hijama</a>, bei denen die Haut vorher minimal angeritzt wird, dazu haben wir eigene Seiten.</p>\n  <h2>Warum die Flecken entstehen und wie lange sie bleiben</h2>\n  <p>Der Unterdruck zieht Blut in die feinsten Hautgefässe, einige der Kapillaren geben nach, und kleine Mengen Blut treten ins Gewebe aus. Das Ergebnis ist der typische kreisrunde Fleck: kein blauer Fleck durch Verletzung von aussen, sondern eine gewollte, kontrollierte Folge des Unterdrucks. Die Färbung reicht von rosa bis dunkelviolett, je nachdem, wie stark gesaugt wurde und wie das Gewebe reagiert. In der TCM-Praxis lesen wir die Färbung auch als Hinweis darauf, wie verspannt und schlecht durchblutet ein Areal ist, stark verhärtete Zonen färben sich meist deutlich dunkler.</p>\n  <p>Die Flecken schmerzen nicht, höchstens fühlt sich die Stelle an wie nach einer kräftigen Massage. Sie verblassen über drei bis zehn Tage, wie ein Bluterguss, von dunkel über grünlich zu gelb. Wer ein wichtiges Fotoshooting oder eine Hochzeit vor sich hat, plant die Behandlung besser zwei Wochen vorher.</p>\n  <h2>Was Schröpfen realistisch kann</h2>\n  <p>Die Studienlage ist ehrlich gesagt durchzogen: Übersichtsarbeiten zeigen Hinweise auf Schmerzlinderung bei Nacken- und Rückenschmerzen (Cao H et al., PLoS One 2012), die Qualität vieler Studien ist aber begrenzt, unter anderem, weil sich Schröpfen schlecht mit einer Scheinbehandlung vergleichen lässt. Aus der Praxis können wir sagen: Bei muskulären Verspannungen im <a href=\"/beschwerden/nackenschmerzen/\">Nacken-</a>, Schulter- und <a href=\"/beschwerden/rueckenschmerzen/\">Rückenbereich</a> ist Schröpfen eine unserer direktesten Techniken, viele Patient:innen beschreiben schon nach der ersten Behandlung ein deutlich lockereres, wärmeres Gefühl im behandelten Bereich. Eingesetzt wird es bei uns auch begleitend bei Erkältungsneigung und zur Lockerung vor Akupunktur oder Tuina.</p>\n  <p>Was Schröpfen nicht ist: eine Entgiftung. Die verbreitete Behauptung, mit den Flecken würden Giftstoffe ausgeleitet, ist nicht haltbar, und wir verwenden sie bewusst nicht. Die Wirkung erklärt sich über Durchblutung, Gewebemobilisation und die Reizantwort des Nervensystems, das reicht völlig.</p>\n  <h2>Für wen Schröpfen nicht geeignet ist</h2>\n  <p>Nicht geschröpft wird auf verletzter, entzündeter oder von Ekzemen betroffener Haut, über Krampfadern und bei akutem Fieber. Vorsicht und vorherige Absprache gelten bei Blutverdünnern und Gerinnungsstörungen, hier entstehen sonst sehr ausgeprägte Flecken, sowie in der Schwangerschaft, wo Bauch und unterer Rücken ausgespart werden. Bei sehr niedrigem Blutdruck behandeln wir im Liegen und langsamer. All das klären wir im Erstgespräch, sag uns deine Medikamente und Vorerkrankungen.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Schröpfen bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent, die Grundversicherung deckt es nicht. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei anhaltenden Schmerzen oder unklaren Beschwerden zuerst abklären lassen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Cao H et al., An updated review of the efficacy of cupping therapy, PLoS One 2012.</em></p>",
+    "faqs": [
+      {
+        "q": "Tut Schröpfen weh?",
+        "a": "Der Unterdruck spürt sich als kräftiges Ziehen an, die meisten empfinden es als intensiv, aber gut aushaltbar. Die Schröpfmassage fühlt sich wie eine tiefe Massage an. Echter Schmerz ist ein Signal, die Saugstärke zu reduzieren."
+      },
+      {
+        "q": "Wie lange bleiben die Schröpfflecken?",
+        "a": "Drei bis zehn Tage, je nach Saugstärke und Gewebe. Sie verblassen wie ein Bluterguss und schmerzen nicht."
+      },
+      {
+        "q": "Sind die Flecken gefährlich?",
+        "a": "Nein. Sie entstehen durch kontrolliert ausgetretenes Blut aus den feinsten Hautgefässen und bauen sich vollständig ab. Bei Gerinnungsstörungen oder Blutverdünnern vorher Bescheid sagen, dann wird sanfter gearbeitet."
+      },
+      {
+        "q": "Wie oft kann man schröpfen?",
+        "a": "Bei Verspannungen meist einmal pro Woche, auf derselben Stelle erst wieder, wenn die Flecken verblasst sind. Den Rhythmus legen wir nach deiner Reaktion fest."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Schröpfen und blutigem Schröpfen?",
+        "a": "Beim klassischen, trockenen Schröpfen bleibt die Haut intakt. Beim blutigen Schröpfen und der Hijama wird die Haut vorher minimal angeritzt, dazu findest du eigene Seiten mit allen Details und Hygieneregeln."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/schroepfen/",
+        "label": "Schröpfen",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/schroepfen/hijama/",
+        "label": "Hijama",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/beschwerden/nackenschmerzen/",
+        "label": "Nackenschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/faszien-verklebt-was-hilft/",
+        "label": "Verklebte Faszien",
+        "cat": "Artikel"
+      }
+    ]
   }
 ];
 
