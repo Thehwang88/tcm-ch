@@ -2,6 +2,7 @@
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import { site } from '../../data/site';
 import { wissen, wissenBySlug } from '../../data/wissen';
+import { OUCH_MAG, ouchMagRow } from '../../data/ouch-links';
 
 export function getStaticPaths() {
   return wissen.map((w) => ({ params: { slug: w.slug }, props: { w } }));
@@ -60,6 +61,13 @@ const breadcrumbLd = {
   ],
 };
 const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+
+// Rücklink ins OUCH.-Magazin — dezente Zeile am Artikelende (nur auf passenden Slugs).
+const OUCH_ROWS: Record<string, { href: string; label: string }> = {
+  'akupunktur-bei-rueckenschmerzen': { href: `${OUCH_MAG}/insights/placebo-artikel-akupunktur/`, label: 'Wirkt das wirklich? Unsere ehrliche Antwort im Magazin' },
+  'krankenkasse-tcm-was-wirklich-uebernommen-wird-2026': { href: `${OUCH_MAG}/insights/90-minuten-heuschnupfen/`, label: 'Warum Behandlungen 90 Minuten dauern – und was die Zusatzversicherung damit zu tun hat' },
+};
+const ouchRow = OUCH_ROWS[data.slug];
 ---
 <LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
   <article>
@@ -124,6 +132,8 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
             ))}
           </div>
         </div>
+
+        {ouchRow && <div set:html={ouchMagRow(ouchRow.href, ouchRow.label)} />}
       </div>
     </section>
   </article>
