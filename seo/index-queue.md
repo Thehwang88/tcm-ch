@@ -28,6 +28,11 @@ Regeln:
 - https://tcm.ch/wissen/akupressurmatte-was-bringt-sie/
 - https://tcm.ch/wissen/triggerpunkte-verstehen-loesen/
 - https://tcm.ch/wissen/schroepfen-wirkung-flecken/
+- https://tcm.ch/wissen/burnout-symptome-erkennen/
+- https://tcm.ch/wissen/schmerzen-unterer-ruecken/
+- https://tcm.ch/wissen/hexenschuss-was-tun/
+- https://tcm.ch/wissen/was-hilft-gegen-kopfschmerzen/
+- https://tcm.ch/wissen/akupunktur-geburtsvorbereitung-beckenendlage/
 - https://tcm.ch/standorte/luzern/
 - https://tcm.ch/akupunktur-tcm-basel/
 - https://tcm.ch/standorte/basel/kosten/

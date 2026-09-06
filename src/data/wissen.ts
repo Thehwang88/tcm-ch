@@ -1846,6 +1846,336 @@ const wissenBase: Wissen[] = [
         "cat": "Artikel"
       }
     ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "lastReviewed": "2026-09-06",
+    "slug": "burnout-symptome-erkennen",
+    "title": "Burnout-Symptome: Die Anzeichen erkennen",
+    "metaDesc": "Burnout-Symptome früh erkennen: die typischen Anzeichen, der Unterschied zu Erschöpfung und Depression, und wann du Hilfe holen solltest.",
+    "excerpt": "Burnout kommt schleichend. Die typischen Anzeichen der Reihe nach, die Abgrenzung zu Depression und wann Selbsthilfe nicht mehr reicht.",
+    "category": "Beschwerden verstehen",
+    "h1": "Burnout-Symptome: Woran du die Anzeichen erkennst und wann du handeln solltest",
+    "lead": "\"Bin ich einfach müde, oder ist das schon Burnout?\" Diese Frage hören wir in der Praxis fast wöchentlich, und sie ist berechtigt: Burnout kommt nicht über Nacht, sondern schleichend, und genau das macht es so tückisch. Wer die Anzeichen früh erkennt, kann gegensteuern, bevor aus Erschöpfung ein Zusammenbruch wird. Dieser Artikel zeigt dir die typischen Symptome, die Abgrenzung zu Depression und normaler Müdigkeit, und, ehrlich eingeordnet, wann Selbsthilfe reicht und wann du professionelle Unterstützung brauchst.",
+    "readingTime": "9 Min.",
+    "ctaTitle": "Erschöpfung, die bleibt? Sprich mit uns.",
+    "bodyHtml": "<h2>Was Burnout ist und was nicht</h2>\n  <p><a href=\"/beschwerden/burnout/\">Burnout</a> ist keine Modediagnose, aber auch keine Krankheit im engeren Sinn: Die WHO führt es als Folge von chronischem Arbeitsstress, der nicht erfolgreich verarbeitet wurde, mit drei Kernmerkmalen: tiefe Erschöpfung, wachsende innere Distanz oder Zynismus gegenüber der Arbeit, und das Gefühl, immer weniger zu leisten. Wichtig ist das Wort chronisch. Eine harte Woche macht müde, ein hartes Jahr ohne Erholung macht krank. Und obwohl der Begriff an die Arbeit gekoppelt ist, sehen wir dieselben Muster bei pflegenden Angehörigen und Müttern in der Dauerbelastung.</p>\n  <h2>Die typischen Anzeichen, in der Reihenfolge, in der sie meist kommen</h2>\n  <p>Am Anfang steht fast immer die <a href=\"/beschwerden/erschoepfung/\">Erschöpfung</a>, die sich nicht mehr wegschlafen lässt. Das Wochenende reicht nicht mehr, die Ferien wirken zwei Tage nach. Dazu kommt ein Nervensystem im Dauerbetrieb: <a href=\"/beschwerden/schlafstoerungen/\">Einschlafen fällt schwer</a>, obwohl du todmüde bist, nachts um drei rechnet der Kopf To-do-Listen durch.</p>\n  <p>Dann verändert sich die Haltung: Dinge, die dir wichtig waren, werden gleichgültig. Zynismus schleicht sich ein, Reizbarkeit bei Kleinigkeiten, sozialer Rückzug, weil selbst Freunde treffen Energie kostet, die nicht mehr da ist.</p>\n  <p>Parallel meldet sich der Körper, und das ist der Teil, der oft unterschätzt wird: Verspannungen in Nacken und Kiefer, <a href=\"/beschwerden/spannungskopfschmerzen/\">Spannungskopfschmerzen</a>, Magen-Darm-Beschwerden, Herzklopfen, Infektanfälligkeit, bei manchen Tinnitus oder Schwindel. Viele unserer Patient:innen kommen zuerst wegen dieser körperlichen Symptome und merken erst im Gespräch, wie viel Dauerlast dahintersteckt.</p>\n  <p>Zuletzt bricht die Leistung ein: Konzentration weg, Fehler häufen sich, einfachste Entscheidungen dauern ewig. Wer hier ankommt, ist nicht mehr im Frühstadium.</p>\n  <h2>Burnout, Erschöpfung oder Depression?</h2>\n  <p>Die Abgrenzung ist wichtig, weil die Wege verschieden sind. Normale Erschöpfung erholt sich mit Pause: Nach freien Tagen kommt Energie zurück. Beim Burnout nicht mehr, aber die Beschwerden bleiben zunächst an den Belastungskontext gekoppelt, in den Ferien wird es etwas besser, am Sonntagabend schlechter. Die <a href=\"/beschwerden/depressionen/\">Depression</a> dagegen färbt alles: Auch das, was mit Arbeit nichts zu tun hat, wird leer und freudlos, dazu kommen oft Schuldgefühle und Hoffnungslosigkeit. Beides kann ineinander übergehen, ein unbehandeltes Burnout ist ein Risikofaktor für eine Depression. Im Zweifel gehört die Einordnung in ärztliche oder psychotherapeutische Hände, und bei Gedanken, dir etwas anzutun, hol dir sofort Hilfe: Dargebotene Hand, Tel. 143, rund um die Uhr.</p>\n  <h2>Was jetzt hilft</h2>\n  <p>Ehrlich zuerst: Wenn die Ursache 60-Stunden-Wochen sind, behandelt keine Therapie der Welt das Grundproblem. Der wichtigste Schritt ist, die Last zu verändern, und dafür braucht es oft ein ärztliches Gespräch, manchmal eine Krankschreibung, manchmal Psychotherapie als Begleitung.</p>\n  <p>Was Behandlung leisten kann: das überdrehte Nervensystem wieder herunterregulieren. Genau hier setzen wir mit <a href=\"/wissen/tcm-stress-burnout/\">Akupunktur</a> an, viele Patient:innen berichten ab der dritten, vierten Sitzung über besseren Schlaf und weniger innere Anspannung, und beides ist die Grundlage jeder Erholung. Dazu kommen die körperlichen Baustellen, Nacken, Kiefer, Kopfschmerzen, die wir mit Massage und Tuina direkt angehen. Wie wir bei Stress und Burnout arbeiten, liest du auf unserer <a href=\"/beschwerden/stress-burnout/\">Behandlungsseite zu Stress und Burnout</a>.</p>\n  <p>Und im Alltag: Schlaf bekommt Priorität vor allem anderen, Bewegung ohne Leistungsanspruch, Koffein und Alkohol runter, und mindestens ein Termin pro Woche, der nur dir gehört. Klingt banal, ist aber das, was in Summe trägt.</p>\n  <h2>Wann du sofort handeln solltest</h2>\n  <p>Hol dir zeitnah professionelle Hilfe, wenn die Erschöpfung seit Monaten besteht und Erholung nichts mehr ändert, wenn du nur noch funktionierst, wenn Kolleginnen oder Familie dich auf Veränderungen ansprechen, oder wenn Suchtmittel zum Runterfahren nötig werden. Und sofort, bei Gedanken, dir etwas anzutun: Tel. 143 oder in Notfällen 144. Warte nicht auf einen freien Termin, bei niemandem.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur und Massagen bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Psychotherapie läuft ärztlich angeordnet über die Grundversicherung. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche oder psychotherapeutische Diagnose. Bei Gedanken, dir etwas anzutun: Dargebotene Hand, Tel. 143, rund um die Uhr.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: WHO, ICD-11, Burn-out als occupational phenomenon. Maslach C, Leiter MP, Understanding the burnout experience, World Psychiatry 2016.</em></p>",
+    "faqs": [
+      {
+        "q": "Was sind die ersten Anzeichen von Burnout?",
+        "a": "Erschöpfung, die sich nicht mehr wegschlafen lässt, Schlafprobleme trotz Müdigkeit, wachsende Gleichgültigkeit gegenüber Dingen, die dir wichtig waren, und körperliche Signale wie Verspannungen, Kopfschmerzen und Infektanfälligkeit."
+      },
+      {
+        "q": "Gibt es einen verlässlichen Burnout-Test?",
+        "a": "Online-Tests geben eine erste Orientierung, mehr nicht. Die verlässliche Einordnung, auch die Abgrenzung zur Depression, gehört in ein ärztliches oder psychotherapeutisches Gespräch."
+      },
+      {
+        "q": "Kann Akupunktur Burnout heilen?",
+        "a": "Nein, und wer das verspricht, ist unseriös. Akupunktur kann Schlaf, Anspannung und die körperlichen Begleitsymptome verbessern und so die Erholung unterstützen. Die Ursache, die Dauerlast, muss parallel angegangen werden."
+      },
+      {
+        "q": "Wie lange dauert die Erholung von einem Burnout?",
+        "a": "Je nach Stadium Wochen bis viele Monate. Je früher du gegensteuerst, desto kürzer. Das ist das stärkste Argument, die Anzeichen ernst zu nehmen."
+      },
+      {
+        "q": "Muss ich zuerst zum Arzt oder kann ich direkt zu euch kommen?",
+        "a": "Beides geht. Wenn sich im Erstgespräch zeigt, dass mehr dahintersteckt, sagen wir dir das offen und unterstützen dich beim nächsten Schritt, statt einfach zu behandeln."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/stress-burnout/",
+        "label": "Stress und Burnout",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/schlafstoerungen/",
+        "label": "Schlafstörungen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/tcm-stress-burnout/",
+        "label": "TCM bei Stress und Burnout",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "lastReviewed": "2026-09-06",
+    "slug": "schmerzen-unterer-ruecken",
+    "title": "Schmerzen im unteren Rücken: Ursachen & Hilfe",
+    "metaDesc": "Schmerzen im unteren Rücken: die häufigsten Ursachen von Muskulatur bis ISG, was du selbst tun kannst und wann welche Behandlung hilft.",
+    "excerpt": "Kreuzschmerzen sind selten gefährlich, aber Schonung macht es schlimmer. Die häufigsten Ursachen, die Warnzeichen und was nachweislich hilft.",
+    "category": "Beschwerden verstehen",
+    "h1": "Schmerzen im unteren Rücken: Was dahintersteckt und was wirklich hilft",
+    "lead": "Der untere Rücken ist die Schmerzregion Nummer eins: Vier von fünf Menschen kennen Kreuzschmerzen aus eigener Erfahrung, und kaum eine Beschwerde bringt mehr Menschen in unsere Praxen. Die gute Nachricht gleich vorweg: Bei den allermeisten steckt nichts Gefährliches dahinter, und die Wahrscheinlichkeit, dass es besser wird, ist hoch. Die weniger gute: Wer nur wartet und schont, macht es oft schlimmer. Hier liest du, welche Ursachen infrage kommen, wie du sie grob unterscheidest und was nachweislich hilft.",
+    "readingTime": "9 Min.",
+    "ctaTitle": "Kreuzschmerzen abklären lassen?",
+    "bodyHtml": "<h2>Warum ausgerechnet der untere Rücken</h2>\n  <p>Die Lendenwirbelsäule trägt das meiste Gewicht des Oberkörpers und ist zugleich der Übergang zum Becken, wo grosse Kräfte umgelenkt werden. Gleichzeitig ist sie im Sitzalltag chronisch unterfordert: Die stabilisierende Muskulatur verkümmert, die Hüftbeuger verkürzen, und irgendwann reicht eine Kleinigkeit, das Bücken zur Spülmaschine, eine ungewohnte Gartenstunde, und das Kreuz meldet sich.</p>\n  <h2>Die häufigsten Ursachen und wie sie sich anfühlen</h2>\n  <p>In den meisten Fällen ist der Schmerz unspezifisch muskulär: eine überlastete, verspannte Muskulatur, oft mit <a href=\"/wissen/triggerpunkte-verstehen-loesen/\">Triggerpunkten</a>, die ins Gesäss ausstrahlen. Typisch: dumpfer, flächiger Schmerz, schlimmer nach langem Sitzen, besser bei Bewegung.</p>\n  <p>Sitzt der Schmerz tief und einseitig über dem Gesässgrübchen, provoziert durch Aufstehen und Drehen im Bett, spricht viel für das Iliosakralgelenk, die <a href=\"/beschwerden/isg-blockade/\">ISG-Blockade</a>. Schiesst der Schmerz plötzlich bei einer Bewegung ein und macht dich krumm, ist es der klassische <a href=\"/beschwerden/hexenschuss/\">Hexenschuss</a>. Zieht es vom Kreuz übers Gesäss das Bein hinunter, womöglich mit Kribbeln, geht es Richtung <a href=\"/beschwerden/ischias/\">Ischias</a>, und bei Taubheit oder Schwäche im Bein Richtung <a href=\"/beschwerden/bandscheibenvorfall/\">Bandscheibe</a>, das gehört ärztlich abgeklärt. Und bei Menschen über 50 mit Schmerzen, die beim Gehen zunehmen und beim Vornüberbeugen besser werden, denken wir an eine <a href=\"/beschwerden/spinalkanalstenose/\">Spinalkanalstenose</a>.</p>\n  <p>Zu jeder dieser Ursachen haben wir <a href=\"/beschwerden/rueckenschmerzen/\">eigene Seiten mit Details</a>, wichtig ist hier das Muster: Wo genau, seit wann, was provoziert, strahlt es aus? Genau diese Fragen stellen wir auch im Erstgespräch, denn sie entscheiden über die Behandlung.</p>\n  <h2>Wann du zuerst zum Arzt gehst</h2>\n  <p>Geh ärztlich abklären bei Taubheit oder Lähmungsgefühlen im Bein, bei Gefühlsstörungen im Genitalbereich oder Problemen mit Blase und Darm (Notfall), nach einem Sturz oder Unfall, bei Fieber, nächtlichem Ruheschmerz, ungewolltem Gewichtsverlust, oder wenn du Kortison über längere Zeit nimmst oder eine Osteoporose bekannt ist. Alles andere, und das ist die grosse Mehrheit, darf konservativ behandelt werden.</p>\n  <h2>Was nachweislich hilft</h2>\n  <p>Die wichtigste Botschaft aus der Forschung ist unbequem: Bettruhe verschlechtert die Prognose, Bewegung verbessert sie. Der Rücken will belastet werden, nur eben dosiert.</p>\n  <p>Für <a href=\"/wissen/akupunktur-bei-rueckenschmerzen/\">Akupunktur bei chronischen Kreuzschmerzen</a> ist die Datenlage vergleichsweise solide: Ein Cochrane-Review von 2020 mit über 30 Studien zeigt Verbesserungen bei Schmerz und Funktion gegenüber keiner Behandlung und üblicher Versorgung, die Effekte gegenüber Scheinakupunktur sind kleiner (Mu J et al., Cochrane Database Syst Rev 2020, CD013814). In der Praxis kombinieren wir Akupunktur mit Tuina und Schröpfen für die verhärtete Muskulatur, bei ISG-Beschwerden mit gezielter Mobilisation, und geben dir Übungen mit, die den Effekt halten. Bei akuten Bildern wie dem <a href=\"/wissen/hexenschuss-was-tun/\">Hexenschuss</a> behandeln wir engmaschig, oft löst sich das Schlimmste in wenigen Sitzungen. Physiotherapie und ärztliche Behandlung laufen bei Bedarf parallel, das eine ersetzt das andere nicht.</p>\n  <h2>Was du heute selbst tun kannst</h2>\n  <p>In Bewegung bleiben, Gehen ist das unterschätzteste Rückenmittel überhaupt. Wärme auf die verspannte Region. Sitzen jede Stunde unterbrechen, dreissig Sekunden reichen. Die Stufenlagerung, Unterschenkel auf einen Stuhl, entlastet akut. Und sobald der Akutschmerz abklingt: Rumpf und Gesäss kräftigen, das ist die einzige Massnahme, die Rückfälle nachweislich seltener macht.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur, Tuina und Schröpfen bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei den genannten Warnzeichen zuerst ärztlich abklären lassen, bei Blasen- oder Darmstörungen sofort.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Mu J et al., Acupuncture for chronic nonspecific low back pain, Cochrane Database of Systematic Reviews 2020, CD013814.</em></p>",
+    "faqs": [
+      {
+        "q": "Woher weiss ich, ob es Muskulatur, ISG oder Bandscheibe ist?",
+        "a": "Grobe Faustregel: flächig und bewegungsabhängig spricht für Muskulatur, tief einseitig am Gesässgrübchen fürs ISG, ausstrahlend mit Kribbeln oder Taubheit Richtung Bandscheibe, und Letzteres gehört ärztlich abgeklärt. Sicher unterscheiden kann das nur die Untersuchung."
+      },
+      {
+        "q": "Hilft Akupunktur bei Schmerzen im unteren Rücken?",
+        "a": "Bei chronischen Kreuzschmerzen ist Akupunktur eines der am besten untersuchten komplementären Verfahren, mit belegten Verbesserungen bei Schmerz und Funktion. Am besten wirkt sie kombiniert mit Bewegung."
+      },
+      {
+        "q": "Soll ich mich schonen?",
+        "a": "Nein, das ist der häufigste Fehler. Bettruhe verlängert den Verlauf. Beweg dich im schmerzarmen Rahmen weiter, Gehen ist fast immer möglich und fast immer gut."
+      },
+      {
+        "q": "Wie schnell wirkt die Behandlung?",
+        "a": "Akute muskuläre Bilder und Blockaden reagieren oft in zwei bis vier Sitzungen. Chronische Kreuzschmerzen brauchen meist sechs bis zehn Behandlungen plus deine Eigenarbeit mit Übungen."
+      },
+      {
+        "q": "Wann brauche ich ein MRI?",
+        "a": "Nicht bei jedem Kreuzschmerz, das entscheidet die Ärztin anhand der Warnzeichen. Ohne Ausstrahlung, Taubheit oder rote Flaggen bringt frühe Bildgebung meist keine bessere Behandlung, aber oft unnötige Sorgen."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/rueckenschmerzen/",
+        "label": "Rückenschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/isg-blockade/",
+        "label": "ISG-Blockade",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/hexenschuss-was-tun/",
+        "label": "Hexenschuss: Was sofort hilft",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-rueckenschmerzen/",
+        "label": "Akupunktur bei Rückenschmerzen",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "lastReviewed": "2026-09-06",
+    "slug": "hexenschuss-was-tun",
+    "title": "Hexenschuss: Was jetzt sofort hilft",
+    "metaDesc": "Hexenschuss: was du in den ersten Stunden tun solltest, was du lassen solltest, wann zum Arzt und wie die Behandlung den Verlauf verkürzt.",
+    "excerpt": "Fühlt sich an wie ein Bruch, ist fast immer ein Schutzspasmus. Was in den ersten Stunden hilft, was du lassen solltest und wann es zum Arzt geht.",
+    "category": "Beschwerden verstehen",
+    "h1": "Hexenschuss: Was du jetzt sofort tun kannst",
+    "lead": "Eine Drehung, ein Bücken, manchmal nur ein Niesen, und dann dieser Blitz ins Kreuz, der dich in gebückter Haltung erstarren lässt. Der Hexenschuss, die akute Lumbago, gehört zu den dramatischsten und zugleich harmlosesten Rückenereignissen: Er fühlt sich an wie ein Bruch, ist aber fast immer eine massive muskuläre Schutzreaktion. Hier steht, was du in den ersten Stunden tust, was du besser lässt, und wie du den Verlauf von Wochen auf Tage verkürzen kannst.",
+    "readingTime": "7 Min.",
+    "ctaTitle": "Akuter Hexenschuss? Termin meist in 24 bis 48 Stunden.",
+    "bodyHtml": "<h2>Was da gerade passiert ist</h2>\n  <p>Beim Hexenschuss reagiert die tiefe <a href=\"/beschwerden/rueckenschmerzen/\">Rückenmuskulatur</a> auf eine Überlastung oder ungünstige Bewegung mit einer schlagartigen, extremen Anspannung, einem Schutzspasmus. Der Körper macht das Kreuz quasi zu, um weitere Bewegung zu verhindern. Das erklärt beides: den heftigen Schmerz bei jeder Bewegung und die gute Prognose, denn verletzt ist meist nichts. Oft war der Muskel schon Tage vorher verspannt und müde, die Bewegung war nur der Tropfen zu viel. Häufig ist auch das <a href=\"/beschwerden/isg-blockade/\">Iliosakralgelenk</a> beteiligt, dann sitzt der Schmerz tief und einseitig.</p>\n  <h2>Die ersten Stunden: das hilft</h2>\n  <p>Zuerst: eine Position finden, in der es aushaltbar ist. Bewährt ist die Stufenlagerung, auf den Rücken legen, Unterschenkel im rechten Winkel auf Stuhl oder Sofa, sie entlastet die Lendenwirbelsäule sofort. Zwanzig Minuten, dann wieder ein paar Schritte.</p>\n  <p>Denn das ist der zweite Punkt, und der wichtigste: bewegen, so früh und so viel wie aushaltbar. Kleine Schritte durch die Wohnung, alle halbe Stunde ein paar Meter. Der Spasmus lebt von der Stille, jede sanfte Bewegung signalisiert dem Nervensystem, dass keine Gefahr besteht.</p>\n  <p>Drittens Wärme: Wärmflasche, Kirschkernkissen, warme Dusche, sie entspannt die verkrampfte Muskulatur spürbar. Und wenn nötig, für die ersten Tage ein Schmerzmittel in Rücksprache mit Arzt oder Apotheke, nicht aus Heldentum verzichten, denn weniger Schmerz heisst mehr Bewegung, und Bewegung heilt.</p>\n  <h2>Was du lassen solltest</h2>\n  <p>Bettruhe über Stunden und Tage ist die schlechteste Option, sie verlängert den Verlauf nachweislich. Ruckartige Dehnversuche und das berühmte Einrenken durch hilfsbereite Bekannte: bitte nicht, ein verkrampfter Muskel lässt sich nicht einrenken. Und schweres Heben verbietet sich von selbst, dein Rücken sagt es dir ohnehin.</p>\n  <h2>Wann zum Arzt statt zu uns</h2>\n  <p>Der klassische Hexenschuss bleibt im Kreuz. Geh ärztlich abklären, wenn der Schmerz mit Kribbeln, Taubheit oder Schwäche <a href=\"/beschwerden/ischias/\">ins Bein ausstrahlt</a>, sofort bei Gefühlsstörungen im Genitalbereich oder Problemen mit Blase und Darm, ebenso nach einem Sturz, bei Fieber oder wenn eine Osteoporose bekannt ist. Dann ist es kein einfacher Hexenschuss mehr, und Zeit zählt.</p>\n  <h2>Wie die Behandlung den Verlauf verkürzt</h2>\n  <p>Unbehandelt dauert ein <a href=\"/beschwerden/hexenschuss/\">Hexenschuss</a> meist ein bis zwei Wochen. Mit gezielter Behandlung geht es oft deutlich schneller: Akupunktur dämpft den Schmerz und löst den Spasmus, sanfte Tuina-Techniken und Schröpfen lockern die verhärtete Muskulatur, bei ISG-Beteiligung mobilisieren wir das Gelenk. Akut behandeln wir engmaschig, zwei Termine in der ersten Woche sind ideal, und viele Patient:innen gehen nach der ersten Sitzung spürbar aufrechter raus. Genauso wichtig: Wir schauen, <a href=\"/wissen/schmerzen-unterer-ruecken/\">warum es dich erwischt hat</a>, meist eine Mischung aus Sitzalltag, schwacher Rumpfmuskulatur und Dauerspannung, damit der nächste Hexenschuss gar nicht erst kommt. Termine gibt es bei uns in der Regel innert 24 bis 48 Stunden, gerade beim Hexenschuss zählt das.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur, Tuina und Schröpfen bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Bei Ausstrahlung ins Bein, Taubheit oder Blasen- und Darmstörungen zuerst ärztlich abklären lassen, Letzteres sofort.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung.</em></p>",
+    "faqs": [
+      {
+        "q": "Wie lange dauert ein Hexenschuss?",
+        "a": "Unbehandelt meist ein bis zwei Wochen, die schlimmsten Tage sind die ersten zwei bis drei. Mit früher Behandlung und Bewegung verkürzt sich der Verlauf oft deutlich."
+      },
+      {
+        "q": "Wärme oder Kälte beim Hexenschuss?",
+        "a": "Wärme. Der Schmerz kommt vom verkrampften Muskel, und der entspannt mit Wärme. Kälte ist bei frischen Verletzungen sinnvoll, die liegt hier meist nicht vor."
+      },
+      {
+        "q": "Soll ich mich hinlegen oder bewegen?",
+        "a": "Beides im Wechsel: Stufenlagerung zum Entlasten, dazwischen immer wieder ein paar Schritte. Nur liegen verlängert den Verlauf."
+      },
+      {
+        "q": "Kann man einen Hexenschuss einrenken?",
+        "a": "Nein. Da ist nichts ausgerenkt, der Muskel schützt mit aller Kraft. Was hilft, ist gezieltes Lösen von Spasmus und Blockade, nicht der beherzte Ruck."
+      },
+      {
+        "q": "Wie schnell bekomme ich einen Termin?",
+        "a": "In der Regel innert 24 bis 48 Stunden an einem unserer Standorte. Beim akuten Hexenschuss lohnt sich der frühe Termin, je schneller der Spasmus gelöst wird, desto kürzer der Verlauf."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/hexenschuss/",
+        "label": "Hexenschuss",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/ischias/",
+        "label": "Ischias",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/schmerzen-unterer-ruecken/",
+        "label": "Schmerzen im unteren Rücken",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "lastReviewed": "2026-09-06",
+    "slug": "was-hilft-gegen-kopfschmerzen",
+    "title": "Was hilft gegen Kopfschmerzen? Ehrlicher Überblick",
+    "metaDesc": "Was gegen Kopfschmerzen hilft: Sofortmassnahmen und Hausmittel, die etwas taugen, welche Kopfschmerzart du hast und wann Behandlung sinnvoll ist.",
+    "excerpt": "Erst der Typ, dann das Mittel. Sofortmassnahmen mit Substanz, Hausmittel ohne, und die Schmerzmittel-Falle, in die viele tappen.",
+    "category": "Beschwerden verstehen",
+    "h1": "Was hilft gegen Kopfschmerzen? Sofortmassnahmen, Hausmittel und was langfristig wirkt",
+    "lead": "Der Schädel brummt, und die erste Frage ist immer dieselbe: Was hilft jetzt, möglichst schnell? Die ehrliche Antwort hängt davon ab, welcher Kopfschmerz es ist, und genau da lohnen sich zwei Minuten Lektüre, bevor du zur nächsten Tablette greifst. Hier findest du die Sofortmassnahmen, die wirklich etwas taugen, die Hausmittel mit und ohne Substanz, und die Wege aus der Falle, in die viele Kopfschmerzgeplagte tappen.",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Kopfschmerzen, die wiederkommen?",
+    "bodyHtml": "<h2>Zuerst: Welcher Kopfschmerz ist es?</h2>\n  <p>Über neunzig Prozent aller Kopfschmerzen gehören zu zwei Typen. Der <a href=\"/beschwerden/spannungskopfschmerzen/\">Spannungskopfschmerz</a> drückt dumpf und beidseitig, wie ein zu enges Band um den Kopf, oft mit verspanntem Nacken, und lässt Alltag grundsätzlich zu. Die <a href=\"/beschwerden/migraene/\">Migräne</a> pocht meist einseitig, kommt in Attacken mit Übelkeit sowie Licht- und Lärmempfindlichkeit und zwingt viele ins abgedunkelte Zimmer. Daneben gibt es Kopfschmerz durch zu viel Bildschirm, zu wenig Wasser, zu viel Alkohol, und, wichtig, den Kopfschmerz durch zu viele Schmerzmittel, dazu gleich mehr. Die Unterscheidung ist keine Akademie: Beim Spannungskopfschmerz hilft Bewegung, bei der Migräne Ruhe, es lohnt sich also, den eigenen Typ zu kennen.</p>\n  <h2>Was sofort hilft</h2>\n  <p>Beim Spannungskopfschmerz: raus an die Luft, ein zügiger Spaziergang schlägt erstaunlich oft die Tablette. Dazu ein grosses Glas Wasser, denn Flüssigkeitsmangel ist einer der häufigsten Auslöser überhaupt. Pfefferminzöl auf Schläfen und Nacken ist eines der wenigen Hausmittel mit ordentlicher Studienlage, die Wirkung ist bei Spannungskopfschmerz mit der von Schmerzmitteln vergleichbar. Wärme auf den Nacken, wenn er verspannt ist, und zwei Minuten Druckmassage an Schläfen und Nackenansatz, viele kennen die Erleichterung, wenn die richtige Stelle gefunden ist, das ist übrigens meist ein <a href=\"/wissen/triggerpunkte-verstehen-loesen/\">Triggerpunkt</a>.</p>\n  <p>Bei der Migräne gilt anderes: Reize weg, dunkler Raum, Ruhe, Kälte auf die Stirn empfinden viele als lindernd, und das Attackenmedikament früh nehmen statt heldenhaft zu warten. Kaffee mit Zitrone und ähnliche Küchenlegenden darfst du getrost vergessen.</p>\n  <h2>Die Falle: zu viele Schmerzmittel</h2>\n  <p>Das muss ehrlich gesagt werden: Wer an mehr als zehn Tagen pro Monat Schmerzmittel gegen Kopfweh nimmt, riskiert einen Kopfschmerz durch die Übernutzung selbst, ein Teufelskreis, der häufiger ist, als man denkt. Die Tablette ist für den Einzelfall ein gutes Werkzeug, als Dauerlösung wird sie Teil des Problems. Wenn du merkst, dass die Packung schneller leer wird, ist das der Moment für eine andere Strategie, nicht für eine grössere Packung.</p>\n  <h2>Was langfristig wirkt</h2>\n  <p>Bei wiederkehrenden Kopfschmerzen zielt die Behandlung auf die Ursache: verspannte Nacken- und Kaumuskulatur, Triggerpunkte, Stresslevel, Schlaf. <a href=\"/wissen/akupunktur-bei-kopfschmerzen/\">Akupunktur</a> ist hier gut untersucht, Cochrane-Reviews zeigen bei häufigem Spannungskopfschmerz und zur Migräneprophylaxe eine Reduktion der Kopfschmerztage (Linde K et al., Cochrane 2016, CD007587 und CD001218). Wir kombinieren sie je nach Bild mit Tuina und Triggerpunktbehandlung am Nacken, bei <a href=\"/beschwerden/zaehneknirschen/\">Zähneknirschern</a> mit Behandlung der Kaumuskulatur. Dazu die unspektakulären Basics, die niemand hören will und die trotzdem wirken: regelmässiger Schlaf, regelmässiges Essen, Wasser, Bewegung und Bildschirmpausen. Wie die Behandlung im Detail aussieht, liest du auf unseren Seiten zu <a href=\"/beschwerden/spannungskopfschmerzen/\">Spannungskopfschmerzen</a>, <a href=\"/beschwerden/kopfschmerzen/\">Kopfschmerzen</a> und <a href=\"/beschwerden/migraene/\">Migräne</a>.</p>\n  <h2>Wann zum Arzt</h2>\n  <p>Sofort ärztlich abklären: der schlagartige Vernichtungskopfschmerz, Kopfschmerz mit Fieber und Nackensteifigkeit, mit Lähmungen, Seh- oder Sprachstörungen, nach einem Sturz auf den Kopf, oder ein völlig neuartiger Kopfschmerz ab fünfzig. Ebenso, wenn ein bekannter Kopfschmerz plötzlich seinen Charakter ändert. Alles andere darf zuerst konservativ angegangen werden.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur und Tuina bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt keine ärztliche Diagnose. Beim schlagartigen Vernichtungskopfschmerz, Fieber mit Nackensteifigkeit oder neurologischen Ausfällen sofort den Notruf 144 wählen.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Linde K et al., Acupuncture for the prevention of tension-type headache, Cochrane 2016, CD007587. Linde K et al., Acupuncture for the prevention of episodic migraine, Cochrane 2016, CD001218.</em></p>",
+    "faqs": [
+      {
+        "q": "Was hilft am schnellsten gegen Kopfschmerzen?",
+        "a": "Beim Spannungskopfschmerz: Wasser, frische Luft, Pfefferminzöl auf die Schläfen, Wärme auf den Nacken. Bei Migräne: Reize weg, dunkler Raum, Attackenmedikament früh nehmen."
+      },
+      {
+        "q": "Welche Hausmittel wirken wirklich?",
+        "a": "Am besten belegt ist Pfefferminzöl bei Spannungskopfschmerz. Wasser trinken beseitigt den Dehydrations-Kopfschmerz, Wärme hilft bei Nackenverspannung. Vieles andere ist Folklore."
+      },
+      {
+        "q": "Wie oft darf ich Schmerzmittel nehmen?",
+        "a": "Faustregel: an weniger als zehn Tagen pro Monat. Darüber droht der Kopfschmerz durch Medikamentenübergebrauch, dann braucht es eine andere Strategie."
+      },
+      {
+        "q": "Hilft Akupunktur gegen Kopfschmerzen?",
+        "a": "Bei häufigem Spannungskopfschmerz und zur Migräneprophylaxe zeigen Cochrane-Analysen weniger Kopfschmerztage. Sie wirkt vorbeugend über Wochen, nicht als Akutmittel während der Attacke."
+      },
+      {
+        "q": "Woher weiss ich, ob es Migräne ist?",
+        "a": "Pochend, oft einseitig, mit Übelkeit und Licht- oder Lärmempfindlichkeit, verstärkt durch Bewegung: Das spricht für Migräne und lohnt eine ärztliche Diagnose, denn Migräne wird anders behandelt als Spannungskopfschmerz."
+      }
+    ],
+    "related": [
+      {
+        "href": "/beschwerden/spannungskopfschmerzen/",
+        "label": "Spannungskopfschmerzen",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/beschwerden/migraene/",
+        "label": "Migräne",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/akupunktur-bei-kopfschmerzen/",
+        "label": "Akupunktur bei Kopfschmerzen",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/wissen/triggerpunkte-verstehen-loesen/",
+        "label": "Triggerpunkte verstehen und lösen",
+        "cat": "Artikel"
+      }
+    ]
+  },
+  {
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-06",
+    "dateModified": "2026-09-06",
+    "lastReviewed": "2026-09-06",
+    "slug": "akupunktur-geburtsvorbereitung-beckenendlage",
+    "title": "Akupunktur zur Geburtsvorbereitung & Beckenendlage",
+    "metaDesc": "Geburtsvorbereitende Akupunktur ab Woche 36 und Moxibustion bei Beckenendlage: Ablauf, Zeitfenster, Studienlage und Kosten, ehrlich erklärt.",
+    "excerpt": "Ab Woche 36 wöchentlich, Moxibustion bei Beckenendlage ab Woche 33: Zeitfenster, Ablauf und was die Studienlage wirklich hergibt.",
+    "category": "Therapien verstehen",
+    "h1": "Akupunktur zur Geburtsvorbereitung und Moxibustion bei Beckenendlage: Ablauf, Zeitfenster, Nutzen",
+    "lead": "Im letzten Schwangerschaftsdrittel tauchen zwei Fragen in unseren Praxen regelmässig auf: \"Bringt geburtsvorbereitende Akupunktur wirklich etwas?\" und, wenn das Kind mit dem Po nach unten liegt, \"Kann man es mit Moxibustion noch drehen?\" Beides sind klassische Einsatzgebiete der TCM in der Schwangerschaft, beide haben ein klares Zeitfenster, und bei beiden lohnt sich der ehrliche Blick auf die Studienlage, bevor du Termine buchst.",
+    "readingTime": "8 Min.",
+    "ctaTitle": "Ab Woche 36 oder Beckenendlage? Melde dich früh.",
+    "bodyHtml": "<h2>Geburtsvorbereitende Akupunktur: ab Woche 36</h2>\n  <p>Die geburtsvorbereitende <a href=\"/therapien/akupunktur/schwangerschaft/\">Akupunktur</a> geht auf ein Behandlungsschema zurück, das in den 1990er-Jahren an der Frauenklinik Mannheim entwickelt und untersucht wurde: ab der 36. Schwangerschaftswoche eine Sitzung pro Woche, insgesamt meist vier, mit einem festen Set von Punkten an den Beinen. In der Mannheimer Untersuchung und Folgestudien verkürzte sich die Eröffnungsphase der Geburt bei behandelten Erstgebärenden im Schnitt um rund zwei Stunden, vor allem durch eine reifere Zervix zum Geburtstermin. Spätere Studien zeichnen ein gemischteres Bild, manche fanden den Effekt, andere nicht. Ehrlich zusammengefasst: Die Akupunktur macht die Geburt nicht schmerzfrei und garantiert keinen schnellen Verlauf, aber es gibt Hinweise auf eine kürzere Eröffnungsphase, das Risiko ist bei fachgerechter Behandlung gering, und viele Frauen erleben die wöchentlichen Termine als wohltuenden Fixpunkt am Ende der Schwangerschaft, auch weil Schlaf, Unruhe und die üblichen Endspurt-Beschwerden gleich mitbehandelt werden.</p>\n  <p>Wichtig: Behandelt wird erst ab Woche 36, vorher werden genau diese wehenfördernden Punkte in der Schwangerschaft bewusst gemieden. Deine Hebamme oder Gynäkologin sollte informiert sein, bei Risikoschwangerschaften braucht es ihr Einverständnis.</p>\n  <h2>Moxibustion bei Beckenendlage: das Zeitfenster ist eng</h2>\n  <p>Liegt das Kind um die Woche 32 bis 34 noch in Beckenendlage, also mit dem Po nach unten, kennt die TCM eine überraschend gut untersuchte Methode: die <a href=\"/therapien/moxibustion/\">Moxibustion</a> am kleinen Zeh. Dabei wird eine Moxa-Zigarre aus getrocknetem Beifuss nahe an einen Punkt am äusseren Nagelwinkel des kleinen Zehs gehalten, die Wärme regt spürbar die Kindsbewegungen an, und das soll die spontane Drehung in die Schädellage unterstützen. Ein Cochrane-Review kommt zum Schluss, dass Moxibustion in Kombination mit Lagerungsübungen oder Akupunktur die Zahl der Beckenendlagen zum Geburtstermin reduzieren kann (Coyle ME et al., Cochrane Database Syst Rev 2023, CD003928), bei insgesamt begrenzter Studienqualität. Auch hier ehrlich: kein Wundermittel, ein Teil der Kinder dreht sich auch ohne alles, und manche drehen sich trotz Moxa nicht. Aber die Methode ist risikoarm, günstig, und du kannst sie nach einer Anleitung bei uns zu Hause täglich selbst durchführen, meist über ein bis zwei Wochen.</p>\n  <p>Das Zeitfenster ist der springende Punkt: ideal Woche 33 bis 36, danach wird der Platz eng und die Chance sinkt. Sprich parallel mit deiner Gynäkologin, auch über die äussere Wendung als schulmedizinische Option, beides schliesst sich nicht aus.</p>\n  <h2>Wie die Behandlung bei uns abläuft</h2>\n  <p>Beim ersten Termin klären wir Schwangerschaftsverlauf, Befunde und <a href=\"/beschwerden/schwangerschaftsbeschwerden/\">Beschwerden</a>, von Rückenschmerzen über Sodbrennen bis Schlaf, vieles davon lässt sich mitbehandeln. Geburtsvorbereitung läuft dann als wöchentliche Sitzung ab Woche 36 bis zur Geburt. Bei Beckenendlage zeigen wir dir und deiner Begleitperson die Moxibustion einmal ausführlich, danach führst du sie zu Hause durch, mit kurzem Check nach einer Woche. Behandelt wird in bequemer Seiten- oder Halbsitzlage, und alle unsere Therapeutinnen arbeiten mit schwangerschaftstauglichen Punkten.</p>\n  <h2>Kosten und Krankenkasse</h2>\n  <p>Akupunktur bei EMR- oder ASCA-anerkannten Therapeutinnen erstatten die meisten Zusatzversicherungen mit 80 bis 100 Prozent, die Grundversicherung deckt es nicht. Vier Sitzungen Geburtsvorbereitung sind damit für die meisten gut tragbar. Details in unserem <a href=\"/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/\">Artikel zu Krankenkasse und TCM</a>.</p>\n  <p><em>Dieser Artikel ersetzt nicht die Betreuung durch Hebamme und Gynäkologin. Besprich Akupunktur und Moxibustion in der Schwangerschaft immer auch mit deinem Betreuungsteam.</em></p>\n  <p><em>Verfasst von Corinna Reinhart, dipl. TCM-Therapeutin mit EMR- und ASCA-Anerkennung. Quellen: Römer A et al., Untersuchungen zur geburtsvorbereitenden Akupunktur, Mannheimer Schema. Coyle ME et al., Cephalic version by moxibustion for breech presentation, Cochrane Database of Systematic Reviews 2023, CD003928.</em></p>",
+    "faqs": [
+      {
+        "q": "Ab wann beginnt die geburtsvorbereitende Akupunktur?",
+        "a": "Ab der vollendeten 36. Schwangerschaftswoche, eine Sitzung pro Woche bis zur Geburt, meist vier Termine. Vorher werden die wehenfördernden Punkte bewusst gemieden."
+      },
+      {
+        "q": "Kann die Akupunktur vorzeitige Wehen auslösen?",
+        "a": "Bei fachgerechter Behandlung ab Woche 36 ist das Risiko gering, die Punkte sind dafür gewählt, den Körper vorzubereiten, nicht Wehen zu erzwingen. Informiere uns über Besonderheiten deiner Schwangerschaft, bei Risikoschwangerschaften braucht es die ärztliche Rücksprache."
+      },
+      {
+        "q": "Bis wann kann sich ein Kind aus der Beckenendlage drehen?",
+        "a": "Spontan meist bis etwa Woche 36, danach wird es eng. Für die Moxibustion ist Woche 33 bis 36 das ideale Fenster, sprich uns also früh an, wenn die Beckenendlage feststeht."
+      },
+      {
+        "q": "Wie oft muss ich die Moxibustion machen?",
+        "a": "Nach unserer Anleitung täglich zu Hause, meist zehn bis zwanzig Minuten über ein bis zwei Wochen. Viele Frauen spüren dabei deutlich vermehrte Kindsbewegungen, das ist erwünscht."
+      },
+      {
+        "q": "Hilft Akupunktur auch bei Schwangerschaftsbeschwerden vorher?",
+        "a": "Ja, Übelkeit, Rückenschmerzen, Wassereinlagerungen und Schlafprobleme behandeln wir während der ganzen Schwangerschaft mit angepassten Punkten. Mehr auf unserer Seite zu Schwangerschaftsbeschwerden."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/akupunktur/schwangerschaft/",
+        "label": "Akupunktur in der Schwangerschaft",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/massage/schwangerschaftsmassage/",
+        "label": "Schwangerschaftsmassage",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/beschwerden/kinderwunsch/",
+        "label": "Kinderwunsch",
+        "cat": "Beschwerde"
+      },
+      {
+        "href": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+        "label": "Krankenkasse und TCM",
+        "cat": "Artikel"
+      }
+    ]
   }
 ];
 
