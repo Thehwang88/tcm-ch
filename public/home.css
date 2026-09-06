@@ -4679,6 +4679,4 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
 /* Marquee-Ausnahme vom generischen #home-content>section-Reset (padding + hairlines) */
 #home-content>section.brand-marquee{padding-top:16px!important;padding-bottom:14px!important;border-top:1px solid rgba(13,13,13,.08)!important;border-bottom:1px solid rgba(13,13,13,.08)!important}
 @media(max-width:768px){#home-content>section.brand-marquee{padding-top:14px!important;padding-bottom:12px!important}}
-.sg-inner { padding-top: 132px; }
-@media (max-width: 768px) { .sg-inner { padding-top: 100px; } }
 #generic-premium-hero.sg-active { margin-top: 68px; }
