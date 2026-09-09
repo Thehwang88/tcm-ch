@@ -121,23 +121,37 @@ export const visuals: Visual[] = [
     relatedPage: '/beschwerden/bandscheibenvorfall/',
     related: ['ischias', 'bandscheibenvorfall-hws'],
   },
-  // ── Batch 1 · Visual 1 — DRAFT bis finale Assets geliefert sind.
-  // Benötigte Assets (gleiche Perspektive Normal/Vorfall, Konvention wie LWS):
-  //   hws-normal · hws-disc-herniation · hws-pain-route
-  // Hotspot-/painPath-Koordinaten sind PROVISORISCH — nach Asset-Lieferung kalibrieren.
+  // ── Batch 1 · Visual 1 — DRAFT: Hauptvergleich final (aus geliefertem
+  // Kombi-Bild in zwei identisch gerahmte Hälften 604×1283 gesplittet),
+  // Hotspots kalibriert. Bleibt Draft, bis das finale hws-pain-route-Asset
+  // (Nacken → Schulter → Arm → Hand/Finger) geliefert ist.
   {
     slug: 'bandscheibenvorfall-hws',
     title: 'Bandscheibenvorfall HWS',
     category: 'Nacken',
     subtitle: 'Eine Bandscheibe im Nacken kann auf einen Nerv drücken.',
     status: 'draft',
+    imageNormal: {
+      src: '/images/visuals/hws-normal.jpg',
+      avif: '/images/visuals/hws-normal-480.avif 480w, /images/visuals/hws-normal-604.avif 604w',
+      webp: '/images/visuals/hws-normal-480.webp 480w, /images/visuals/hws-normal-604.webp 604w',
+      width: 604,
+      height: 1283,
+    },
+    imageProblem: {
+      src: '/images/visuals/hws-disc-herniation.jpg',
+      avif: '/images/visuals/hws-disc-herniation-480.avif 480w, /images/visuals/hws-disc-herniation-604.avif 604w',
+      webp: '/images/visuals/hws-disc-herniation-480.webp 480w, /images/visuals/hws-disc-herniation-604.webp 604w',
+      width: 604,
+      height: 1283,
+    },
     labelNormal: 'Normal',
     labelProblem: 'Bandscheibenvorfall',
     hotspots: [
-      { id: 'wirbel', label: 'Wirbel', x: 33, y: 46, view: 'both', note: 'Die Wirbel sind die Knochen der Halswirbelsäule.' },
-      { id: 'bandscheibe', label: 'Bandscheibe', x: 28, y: 33, view: 'both', labelSide: 'left', note: 'Die Bandscheibe ist das weiche Polster zwischen den Wirbeln.' },
-      { id: 'nerv', label: 'Nerv', x: 57, y: 52, view: 'both', note: 'Der Nerv läuft vom Nacken in den Arm.' },
-      { id: 'druck', label: 'Druck auf Nerv', x: 61, y: 35, view: 'problem', note: 'Bei einem Vorfall kann die Bandscheibe auf den Nerv drücken.' },
+      { id: 'wirbel', label: 'Wirbel', x: 54, y: 54, view: 'both', note: 'Die Wirbel sind die Knochen der Halswirbelsäule.' },
+      { id: 'bandscheibe', label: 'Bandscheibe', x: 58.8, y: 43.6, view: 'both', note: 'Die Bandscheibe ist das weiche Polster zwischen den Wirbeln.' },
+      { id: 'nerv', label: 'Nerv', x: 41.4, y: 60.8, view: 'both', labelSide: 'left', note: 'Der Nerv läuft vom Nacken in den Arm.' },
+      { id: 'druck', label: 'Druck auf Nerv', x: 45, y: 44.4, view: 'problem', labelSide: 'left', note: 'Bei einem Vorfall kann die Bandscheibe auf den Nerv drücken.' },
       { id: 'schmerz', label: 'Schmerzverlauf', x: 0, y: 0, view: 'pain', note: 'Beschwerden können vom Nacken bis in die Hand ziehen.' },
     ],
     painPath: [

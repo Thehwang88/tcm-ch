@@ -121,7 +121,8 @@ const panels = [
   )}
 
   {relatedLive.length > 0 && (
-    <nav class="vv-related" aria-label="Weiter erklären">
+    <!-- Kein <nav>: header.css setzt global nav{position:fixed} (Site-Header). -->
+    <aside class="vv-related" aria-label="Weiter erklären">
       <h2>Weiter erklären</h2>
       <div class="vv-related-row">
         {relatedLive.map((r) => (
@@ -131,7 +132,7 @@ const panels = [
           </a>
         ))}
       </div>
-    </nav>
+    </aside>
   )}
 
   <p class="vv-disclaimer">
