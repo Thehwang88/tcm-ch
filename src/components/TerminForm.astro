@@ -182,6 +182,10 @@ const STANDORTE = [
       var token = tokenEl && tokenEl.value ? tokenEl.value : '';
       if (!token) { show('error', 'Bitte bestätige kurz, dass du kein Roboter bist.'); return; }
 
+      // Site trackt via GTM (GTM-PZ92Q3KJ): Event in den dataLayer pushen;
+      // gtag nur als Fallback, falls es (z.B. via GTM-Tag) doch definiert ist.
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'form_submit', form_id: 'terminform', herkunft: form.herkunft.value });
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'form_submit', { form_id: 'terminform', herkunft: form.herkunft.value });
       }

@@ -15,7 +15,7 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
     href={waHref}
     target="_blank"
     rel="noopener"
-    onclick="if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'sticky_cta'})}"
+    onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'sticky_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'sticky_cta'})}"
   >WhatsApp</a>
   <a class="sc-btn sc-btn--form" href={formTarget}>Termin anfragen</a>
 </div>
