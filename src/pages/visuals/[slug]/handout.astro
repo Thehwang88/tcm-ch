@@ -16,6 +16,15 @@ const { visual: v } = Astro.props;
 const url = new URL(`/visuals/${v.slug}/`, site.url).href;
 const qrSvg = await QRCode.toString(url, { type: 'svg', margin: 0, color: { dark: '#0d0d0d', light: '#0000' } });
 const markers = (v.hotspots ?? []).filter((h) => h.view !== 'pain');
+// Sehr hohe Vergleichsbilder (z.B. HWS 604×1283) auf max ~118mm Höhe kappen,
+// damit das Handout einseitig bleibt. Breitere Formate (LWS 0.8) bleiben
+// unverändert bei voller Spaltenbreite. Wrap wird mitverkleinert, damit die
+// %-Hotspots weiter exakt auf dem Bild sitzen.
+function capStyle(img: typeof v.imageNormal): string | undefined {
+  if (!img || typeof img === 'string') return undefined;
+  const mm = Math.min(85, Math.round(118 * (img.width / img.height)));
+  return mm < 85 ? `max-width:${mm}mm;margin:0 auto` : undefined;
+}
 const panels = [
   { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: `${v.title}: vereinfachte Darstellung, normaler Zustand` },
   { key: 'problem', chip: v.labelProblem ?? v.title, img: v.imageProblem, alt: `${v.title}: vereinfachte Darstellung der Veränderung` },
@@ -57,7 +66,7 @@ const panels = [
         {panels.map((p) => (
           <figure class="ho-panel">
             <figcaption class:list={['ho-chip', { 'ho-chip--problem': p.key === 'problem' }]}>{p.chip}</figcaption>
-            <div class="ho-imgwrap">
+            <div class="ho-imgwrap" style={capStyle(p.img)}>
               {p.img && <VisualImg image={p.img} alt={p.alt} width={800} height={1000} sizes="90mm" />}
               {markers
                 .filter((h) => h.view === 'both' || h.view === p.key)

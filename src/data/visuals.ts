@@ -121,16 +121,14 @@ export const visuals: Visual[] = [
     relatedPage: '/beschwerden/bandscheibenvorfall/',
     related: ['ischias', 'bandscheibenvorfall-hws'],
   },
-  // ── Batch 1 · Visual 1 — DRAFT: Hauptvergleich final (aus geliefertem
-  // Kombi-Bild in zwei identisch gerahmte Hälften 604×1283 gesplittet),
-  // Hotspots kalibriert. Bleibt Draft, bis das finale hws-pain-route-Asset
-  // (Nacken → Schulter → Arm → Hand/Finger) geliefert ist.
+  // ── Batch 1 · Visual 1 — LIVE: alle drei finalen Assets vorhanden
+  // (Hauptvergleich aus Kombi-Bild gesplittet, je 604×1283; Pain-Route 1024×1536).
   {
     slug: 'bandscheibenvorfall-hws',
     title: 'Bandscheibenvorfall HWS',
     category: 'Nacken',
     subtitle: 'Eine Bandscheibe im Nacken kann auf einen Nerv drücken.',
-    status: 'draft',
+    status: 'live',
     imageNormal: {
       src: '/images/visuals/hws-normal.jpg',
       avif: '/images/visuals/hws-normal-480.avif 480w, /images/visuals/hws-normal-604.avif 604w',
@@ -154,11 +152,18 @@ export const visuals: Visual[] = [
       { id: 'druck', label: 'Druck auf Nerv', x: 45, y: 44.4, view: 'problem', labelSide: 'left', note: 'Bei einem Vorfall kann die Bandscheibe auf den Nerv drücken.' },
       { id: 'schmerz', label: 'Schmerzverlauf', x: 0, y: 0, view: 'pain', note: 'Beschwerden können vom Nacken bis in die Hand ziehen.' },
     ],
+    secondaryImage: {
+      src: '/images/visuals/hws-pain-route.jpg',
+      avif: '/images/visuals/hws-pain-route-800.avif 800w, /images/visuals/hws-pain-route-1024.avif 1024w',
+      webp: '/images/visuals/hws-pain-route-800.webp 800w, /images/visuals/hws-pain-route-1024.webp 1024w',
+      width: 1024,
+      height: 1536,
+    },
     painPath: [
-      { label: 'Nacken', x: 50, y: 18, labelSide: 'left' },
-      { label: 'Schulter', x: 60, y: 26 },
-      { label: 'Arm', x: 66, y: 45 },
-      { label: 'Hand / Finger', x: 70, y: 62 },
+      { label: 'Nacken', x: 45, y: 14.5, labelSide: 'left' },
+      { label: 'Schulter', x: 55, y: 21 },
+      { label: 'Arm', x: 62, y: 40 },
+      { label: 'Hand / Finger', x: 70.5, y: 55, labelSide: 'left' },
     ],
     keywords: ['hws', 'nacken', 'bandscheibe', 'halswirbelsäule', 'arm', 'kribbeln', 'taubheit', 'nerv', 'schulter', 'finger'],
     relatedPage: '/beschwerden/bandscheibenvorfall/',
