@@ -18,6 +18,7 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/standorte/zuerich/kosten/
 - https://tcm.ch/beschwerden/hallux-valgus/
 - https://tcm.ch/beschwerden/isg-blockade/
 - https://tcm.ch/beschwerden/rhizarthrose/

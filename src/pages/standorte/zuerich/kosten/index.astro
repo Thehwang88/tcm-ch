@@ -1,0 +1,79 @@
+---
+// /standorte/zuerich/kosten/ — Kosten-/Krankenkassen-Seite für die Stadt Zürich.
+// Muster: /standorte/luzern/kosten/, Preise identisch (Tarif 590), Stadtbezug angepasst.
+// Zürich hat drei Praxen (City/Höngg/Oerlikon); Stadt-Owner ist /akupunktur-tcm-zuerich/,
+// deshalb Breadcrumb + interne Links dorthin statt auf ein (nicht existierendes)
+// /standorte/zuerich/. Owner-Eintrag: seo/master-keyword-url-map.csv.
+export const prerender = true;
+import SpaPage from '../../../../layouts/SpaPage.astro';
+import body from '../../../../data/zuerich-kosten-body.html?raw';
+
+const url = 'https://tcm.ch/standorte/zuerich/kosten/';
+const title = 'Akupunktur Kosten Zürich – Preise & Krankenkasse | TCM.ch';
+const description =
+  'Was kostet Akupunktur in Zürich? Rund CHF 130 bis 160 pro Sitzung, Tarif 590 — gleich in allen drei Praxen (City, Höngg, Oerlikon). Zusatzversicherung übernimmt meist 80 bis 100%.';
+
+const faqs = [
+  {
+    q: 'Übernimmt die Grundversicherung Akupunktur in Zürich?',
+    a: 'Nein. Akupunktur bei Therapeut:innen läuft ausschliesslich über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Ohne passende Zusatzversicherung zahlst du selbst. Wir prüfen deine Deckung kostenlos, bevor du das erste Mal kommst, damit du vorher weisst, woran du bist.',
+  },
+  {
+    q: 'Wie prüfe ich meine Deckung?',
+    a: 'Am einfachsten schickst du uns deine Krankenkasse und dein Versicherungsmodell, wir klären für dich, was deine Zusatzversicherung übernimmt. Das ist kostenlos und unverbindlich. Alternativ steht die Beteiligung in deiner Police, oder du fragst direkt bei deiner Kasse nach.',
+  },
+  {
+    q: 'Was kostet die Erstbehandlung?',
+    a: 'Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, oft bis zu 90 Minuten. Abgerechnet wird nach Tarif 590 nach Dauer, entsprechend liegt sie über einer Folgesitzung. Den konkreten Betrag nennen wir dir vorab, bevor behandelt wird.',
+  },
+  {
+    q: 'Brauche ich eine Überweisung vom Arzt?',
+    a: 'Nein. Du kannst direkt einen Termin anfragen, eine ärztliche Überweisung ist für die Behandlung nicht nötig. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.',
+  },
+  {
+    q: 'Gelten die Preise an allen drei Zürcher Standorten?',
+    a: 'Ja. City, Höngg und Oerlikon rechnen alle nach Tarif 590 nach Behandlungsdauer ab, mit denselben Ansätzen. Es gibt keine Preisunterschiede zwischen den Quartieren.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    '@id': url + '#article',
+    name: title,
+    headline: 'Was kostet Akupunktur in Zürich?',
+    description,
+    url,
+    inLanguage: 'de-CH',
+    datePublished: '2026-09-09',
+    dateModified: '2026-09-09',
+    lastReviewed: '2026-09-09',
+    about: { '@type': 'MedicalProcedure', name: 'Akupunktur' },
+    author: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    reviewedBy: { '@type': 'Person', name: 'Simon Stüve', jobTitle: 'TCM-Therapeut', identifier: 'ZSR B838861', affiliation: { '@type': 'MedicalClinic', name: 'TCM.ch' } },
+    publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+      { '@type': 'ListItem', position: 3, name: 'Zürich', item: 'https://tcm.ch/akupunktur-tcm-zuerich/' },
+      { '@type': 'ListItem', position: 4, name: 'Kosten & Krankenkasse', item: url },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': url + '#faq',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<SpaPage title={title} description={description} path="/standorte/zuerich/kosten" body={body} schema={schema} />

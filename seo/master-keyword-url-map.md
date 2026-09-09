@@ -42,10 +42,10 @@ Zusatzregeln:
 
 ## Kennzahlen (Stand 2026-09-09)
 
-- 309 Seiten gemappt, davon 302 indexierbar (2 noindex, 5 kanonisiert)
-- 264 PRIMARY_OWNER · 20 SECONDARY_SUPPORT · 15 SHARED_INTENT_REVIEW · 5 REDUNDANT (kanonisiert) · 5 TECHNICAL_ONLY
+- 310 Seiten gemappt, davon 303 indexierbar (2 noindex, 5 kanonisiert)
+- 265 PRIMARY_OWNER · 20 SECONDARY_SUPPORT · 15 SHARED_INTENT_REVIEW · 5 REDUNDANT (kanonisiert) · 5 TECHNICAL_ONLY
 - Offene Konflikte: siehe `intent-conflicts.csv` (3 high: St. Gallen-Doppel, Basel-Doppel, Kinderwunsch)
-- Kandidaten: `unowned-search-intents.csv` (25 Zeilen, davon 15 Körpersignal-Kandidaten, 5×P1)
+- Kandidaten: `unowned-search-intents.csv` (17 Zeilen) · Körpersignal-Discovery: `koerpersignale-candidates.csv` (1'027 geprüfte Roh-Intents, 4×P1/10×P2) · Methoden-/Trust-Themen: `method-trust-opportunities.csv` (7)
 - Blacklist: `do-not-create-intents.csv` (26 gesperrte Intents)
 
 ## Datenlage
