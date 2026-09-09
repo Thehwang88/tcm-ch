@@ -32,12 +32,12 @@ export const wissenAkupunkturBei: Wissen[] = [
   // ────────────────────────────────────────────────────────── KOPFSCHMERZEN
   {
     slug: 'akupunktur-bei-kopfschmerzen',
-    title: 'Akupunktur bei Spannungskopfschmerzen: Was hilft',
+    title: 'Akupunktur bei Spannungskopfschmerzen: Was die Studien zeigen',
     metaDesc: 'Akupunktur bei Spannungskopfschmerzen: Was der Cochrane-Review zeigt, wie sich der Kopfschmerz von Migräne unterscheidet und warum der Nacken oft der eigentliche Ort ist.',
     region: 'Schweizweit',
     excerpt: 'Spannungskopfschmerz ist der häufigste Kopfschmerz überhaupt — und einer, bei dem Akupunktur in den Studien gut abschneidet.',
     category: 'Beschwerden verstehen',
-    h1: 'Akupunktur bei Spannungskopfschmerzen',
+    h1: 'Akupunktur bei Spannungskopfschmerzen: Was die Studien zeigen',
     lead: 'Der drückende, beidseitige Kopfschmerz ohne Übelkeit ist der häufigste überhaupt, und einer der wenigen, bei denen Akupunktur in einer grossen Übersichtsarbeit klar abschneidet. Hier steht, was gemessen wurde, warum wir dabei fast immer auch am Nacken arbeiten und wann Schmerzmittel selbst zum Problem werden.',
     readingTime: '8 Min.',
     ctaTitle: 'Kopfschmerzen abklären lassen?',
