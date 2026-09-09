@@ -364,10 +364,12 @@ export const visuals: Visual[] = [
   },
   // ── Batch 1 · Visual 4 — DRAFT bis finale Assets geliefert sind.
   // Wichtig: Plaque entsteht IN der Gefässwand — kein "gelbe Brocken schwimmen
-  // herum und verstopfen". Der 2-Panel-Viewer zeigt Gesund vs. Verengt; eine
-  // 3-4-Schritt-Progression bräuchte eine Viewer-Erweiterung (siehe Task-Report).
+  // herum und verstopfen". 2-Panel-Master bleibt: Gesund vs. Verengt.
+  // Zweite Ansicht "Wie entsteht das?": EIN Asset mit 3 Stufen nebeneinander
+  // (gesund → Ablagerung in der Wand → enger); Stufen-Labels sind HTML-Overlays.
+  // Herzinfarkt/Schlaganfall/Durchblutungsstörung werden später eigene related-Visuals.
   // Formulierungen: "kann das Risiko erhöhen", nie "führt zu".
-  // Benötigte Assets: gefaess-gesund · gefaess-verengt (Plaque in der Wand) · gefaess-folgen
+  // Benötigte Assets: gefaess-gesund · gefaess-verengt (Plaque in der Wand) · gefaess-entstehung (3 Stufen)
   {
     slug: 'cholesterin-arteriosklerose',
     title: 'Cholesterin & Arteriosklerose',
@@ -381,13 +383,14 @@ export const visuals: Visual[] = [
       { id: 'wand', label: 'Gefässwand', x: 45, y: 25, view: 'both', note: 'Ablagerungen entstehen in der Gefässwand.' },
       { id: 'ablagerung', label: 'Ablagerung', x: 55, y: 35, view: 'problem', note: 'Ablagerungen in der Wand können das Gefäss enger machen.' },
       { id: 'blutfluss', label: 'Blutfluss', x: 50, y: 55, view: 'both', note: 'Wird das Gefäss enger, hat das Blut weniger Platz.' },
-      { id: 'folgen', label: 'Mögliche Folgen', x: 0, y: 0, view: 'pain', note: 'Verengte Gefässe können das Risiko für Folgeerkrankungen erhöhen.' },
+      { id: 'entstehung', label: 'Wie entsteht das?', x: 0, y: 0, view: 'pain', note: 'Ablagerungen können sich über Jahre langsam aufbauen.' },
     ],
-    secondaryHeading: 'Was kann daraus entstehen?',
+    secondaryHeading: 'Wie entsteht das?',
+    // 3 Stufen im Querformat-Asset (Koordinaten provisorisch, nach Asset-Drop kalibrieren).
     painPath: [
-      { label: 'Herzinfarkt', x: 55, y: 32 },
-      { label: 'Schlaganfall', x: 50, y: 10 },
-      { label: 'Durchblutungsstörung', x: 60, y: 75 },
+      { label: 'Gesund', x: 17, y: 75 },
+      { label: 'Ablagerung in der Gefässwand', x: 50, y: 75 },
+      { label: 'Gefäss wird enger', x: 83, y: 75 },
     ],
     keywords: ['cholesterin', 'ldl', 'arteriosklerose', 'atherosklerose', 'gefäss', 'ablagerung', 'plaque', 'blutfluss'],
     // relatedPage: bewusst leer — keine bestätigte Beschwerden-Route für Cholesterin.
