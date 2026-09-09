@@ -99,8 +99,8 @@ const panels = [
   )}
 
   {v.secondaryImage && (
-    <section class="vv-pain" id="vv-pain" aria-label="Wo kann man es spüren?">
-      <h2>Wo kann man es spüren?</h2>
+    <section class="vv-pain" id="vv-pain" aria-label={v.secondaryHeading ?? 'Wo kann man es spüren?'}>
+      <h2>{v.secondaryHeading ?? 'Wo kann man es spüren?'}</h2>
       <div class="vv-pain-grid">
         <div class="vv-imgwrap vv-pain-imgwrap">
           <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />

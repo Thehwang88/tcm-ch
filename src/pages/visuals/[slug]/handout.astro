@@ -78,7 +78,7 @@ const panels = [
       <section class="ho-bottom">
         {v.secondaryImage && (
           <div class="ho-pain">
-            <h2>Wo kann man es spüren?</h2>
+            <h2>{v.secondaryHeading ?? 'Wo kann man es spüren?'}</h2>
             <div class="ho-pain-row">
               <div class="ho-imgwrap ho-pain-imgwrap">
                 <VisualImg image={v.secondaryImage} alt={`${v.title}: vereinfachter Schmerzverlauf`} width={600} height={1000} sizes="45mm" />
