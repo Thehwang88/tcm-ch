@@ -645,7 +645,19 @@ const panels = [
   /* ── Responsive: eine Ansicht + Umschalter ────────────── */
   @media (max-width: 900px) {
     .vv { padding: 24px 20px 48px; }
-    .vv-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    /* Bild vor Navigation: Titel → Umschalter → Visual → Controls → Aktionen.
+       vv-head wird aufgelöst (display:contents), damit die Aktions-Buttons
+       hinter die Controls rutschen statt das Visual nach unten zu schieben. */
+    .vv { display: flex; flex-direction: column; }
+    .vv-head { display: contents; }
+    .vv-head-text { order: 0; flex: 0 0 auto; margin-bottom: 16px; }
+    .vv-switch { order: 10; }
+    .vv-stage { order: 20; }
+    .vv-controlbar { order: 30; }
+    .vv-actions { order: 40; margin-top: 24px; }
+    .vv-pain { order: 50; }
+    .vv-related { order: 60; }
+    .vv-disclaimer { order: 70; }
     .vv-switch { display: flex; }
     .vv-stage { grid-template-columns: 1fr; padding: 16px; }
     .vv-stage[data-mobile-view="normal"] .vv-panel[data-panel="problem"] { display: none; }
