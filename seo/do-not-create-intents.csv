@@ -25,3 +25,15 @@ tcm st. gallen / akupunktur st. gallen,/standorte/st-gallen/,Bereits DOPPELT bes
 tcm zürich / akupunktur zürich,/akupunktur-tcm-zuerich/,Hub + drei Quartier-Spokes besetzen Stadt- und Quartier-Intents vollständig,Rotation in funktionierender Hub-Architektur,Nur /kosten/-Lücke (siehe unowned-search-intents P1)
 massage zürich / massage winterthur etc.,/massage-zuerich/,Acht Stadt-Massageseiten besetzen die lokalen Intents; Methoden gehören /therapien/massage/*,Doorway-Inflation,Nur neue Stadt bei realer Praxiseröffnung
 erstbehandlung ablauf / tcm erfahrungen {stadt},/wissen/tcm-st-gallen-erfahrungen-ablauf/,Sechs Stadt-Erfahrungs-Artikel decken das Muster für alle relevanten Standorte,Weitere Varianten kannibalisieren das Muster,Neue Stadt nur bei Praxiseröffnung
+schwindel beim umdrehen im bett,/koerpersignale/schwindel-beim-umdrehen-im-bett/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+herzschlag im ohr,/koerpersignale/herzschlag-im-ohr/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+schwindel beim aufstehen,/koerpersignale/schwindel-beim-aufstehen/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+finger schlafen ein,/koerpersignale/finger-schlafen-ein/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+einzelne finger taub,/koerpersignale/einzelne-finger-taub/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+eine hand kälter als die andere,/koerpersignale/kalte-haende-einseitig/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+klossgefühl im hals,/koerpersignale/klossgefuehl-im-hals/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+ständiger räusperzwang,/koerpersignale/staendiger-raeusperzwang/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+zungenbrennen,/koerpersignale/zungenbrennen/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+hitzegefühl ohne fieber,/koerpersignale/hitzegefuehl-ohne-fieber/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+starkes schwitzen ohne grund,/koerpersignale/starkes-schwitzen-ohne-sport/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+wadenkrämpfe nachts,/koerpersignale/wadenkraempfe-nachts/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner

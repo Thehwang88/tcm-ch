@@ -81,6 +81,13 @@ Legende: **Hub** = primärer Owner des breiten Intents · Support = zuliefernde 
 - Support: `/wissen/krankenkasse-tcm-...-2026/` (Review-Fall, medium)
 - Lücken: /krankenkassen/schroepfen/ (P3)
 
+## 15. Körpersignale (Symptom-Discovery, neu 09/2026)
+- **Hub:** `/koerpersignale/` mit 12 Leaves in fünf Gruppen (Kopf & Sinne, Hände & Nerven, Hals & Mund, Wärme & Schwitzen, Muskeln & Beine); Gruppen ohne eigene URLs
+- Rolle: Awareness-Ebene VOR der Diagnose; jede Seite funnelt zur passenden Beschwerdeseite und schützt deren Keywords (kein Behandlungs-Intent)
+- Rückverlinkung aus 11 Beschwerde-Leaves, Footer, Beschwerden- und Wissen-Hub
+- Beobachten (GSC): finger-schlafen-ein / einzelne-finger-taub vs. karpaltunnelsyndrom; starkes-schwitzen-ohne-sport vs. hyperhidrose
+- Nächste Kandidaten erst nach GSC-Daten: siehe koerpersignale-candidates.csv (P2: Augenlid-Zucken, gleiche-Uhrzeit-Aufwachen, Herzstolpern)
+
 ## Gesättigte Bereiche (nichts Neues bauen)
 Kopfschmerz, Rücken/Bewegungsapparat, Beschwerde-Leaves generell (100 Stück),
 Massage lokal, Stadt-Erfahrungs-Artikel, Hijama/Schröpfen, Dauernadeln-Raum.

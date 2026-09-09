@@ -1,0 +1,162 @@
+---
+// /koerpersignale — Hub der Symptom-Discovery-Ebene. Kein Blog-Archiv: Einstieg über
+// Körperregion (WO), Zeitpunkt (WANN) und Empfindung (WIE). Kategorien sind bewusst
+// nur Gruppen-Labels ohne eigene URLs (Information Architecture vor URL-Menge).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { koerpersignale } from '../../data/koerpersignale';
+
+const title = 'Körpersignale: Symptome verstehen, bevor sie einen Namen haben | TCM.ch';
+const description =
+  'Schwindel beim Umdrehen, Puls im Ohr, taube Finger: Manche Beschwerden haben noch keinen Namen, nur ein Muster. Hier findest du ehrliche medizinische Einordnungen, bevor du eine Diagnose kennst.';
+const url = 'https://tcm.ch/koerpersignale/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description,
+    url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Körpersignale', item: url },
+    ],
+  },
+];
+
+// Gruppen in Anzeige-Reihenfolge (WO spürst du etwas?)
+const GROUPS = ['Kopf & Sinne', 'Hände & Nerven', 'Hals & Mund', 'Wärme & Schwitzen', 'Muskeln & Beine'];
+const byGroup = GROUPS.map((g) => ({ g, items: koerpersignale.filter((k) => k.category === g) }));
+
+// WANN tritt es auf? Kuratierte Muster-Einstiege (nur echte Treffer, keine Keyword-Listen).
+const WANN = [
+  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'finger-schlafen-ein', 'herzschlag-im-ohr'] },
+  { label: 'Beim Aufstehen', slugs: ['schwindel-beim-aufstehen'] },
+  { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr'] },
+  { label: 'Bei Anspannung', slugs: ['klossgefuehl-im-hals', 'starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'] },
+];
+const bySlug = Object.fromEntries(koerpersignale.map((k) => [k.slug, k]));
+
+// WIE fühlt es sich an?
+const WIE = [
+  { label: 'Schwindel', slug: 'schwindel-beim-umdrehen-im-bett' },
+  { label: 'Pochen', slug: 'herzschlag-im-ohr' },
+  { label: 'Kribbeln', slug: 'finger-schlafen-ein' },
+  { label: 'Taubheit', slug: 'einzelne-finger-taub' },
+  { label: 'Enge im Hals', slug: 'klossgefuehl-im-hals' },
+  { label: 'Brennen', slug: 'zungenbrennen' },
+  { label: 'Kälte', slug: 'kalte-haende-einseitig' },
+  { label: 'Hitze', slug: 'hitzegefuehl-ohne-fieber' },
+  { label: 'Krampf', slug: 'wadenkraempfe-nachts' },
+  { label: 'Räusperdrang', slug: 'staendiger-raeusperzwang' },
+];
+---
+<LayoutDe title={title} description={description} path="/koerpersignale" schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="cat">Körpersignale</div>
+      <h1>Manche Beschwerden haben noch keinen Namen. Nur ein Muster.</h1>
+      <p class="lead">Schwindel genau beim Umdrehen im Bett. Ein Pochen im Ohr, im Takt des Pulses. Finger, die nachts einschlafen. Bevor eine Diagnose feststeht, merkt man oft nur, dass sich etwas verändert hat. Hier findest du ehrliche Einordnungen solcher Muster: was dahinterstecken kann, was du selbst beobachten kannst und wann eine ärztliche Abklärung wichtig ist.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      {byGroup.map(({ g, items }) => (
+        <div class="group">
+          <h2 class="group-title">{g}</h2>
+          <div class="sig-grid">
+            {items.map((k) => (
+              <a class="sig-card" href={`/koerpersignale/${k.slug}/`}>
+                <div class="sig-q">{k.h1}</div>
+                <div class="sig-meta">{k.readingTime} Lesezeit</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="axis">
+        <h2 class="group-title">Wann tritt es auf?</h2>
+        {WANN.map((w) => (
+          <div class="axis-row">
+            <span class="axis-label">{w.label}</span>
+            <span class="axis-links">
+              {w.slugs.map((s) => (
+                <a href={`/koerpersignale/${s}/`}>{bySlug[s].h1.replace('Warum ', '').replace('?', '')}</a>
+              ))}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div class="axis">
+        <h2 class="group-title">Wie fühlt es sich an?</h2>
+        <div class="chip-row">
+          {WIE.map((w) => (
+            <a class="chip" href={`/koerpersignale/${w.slug}/`}>{w.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="bridge">
+        <h2 class="group-title">Du kennst deine Beschwerde schon beim Namen?</h2>
+        <p>Wenn eine Diagnose bereits feststeht oder du dein Beschwerdebild kennst, findest du die Behandlungsseiten in unserer Übersicht: von Rückenschmerzen über Migräne bis Schlafprobleme.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/beschwerden/">Alle Beschwerden ansehen</a>
+          <a class="btn btn--ghost" href="/selbsttest/">Zum TCM-Selbsttest</a>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-title">Unsicher, was dein Körper dir sagen will?</div>
+        <p>Schildere uns kurz, was du beobachtest. Wir sagen dir ehrlich, ob eine TCM-Behandlung sinnvoll ist oder zuerst eine ärztliche Abklärung gehört. EMR- und ASCA-anerkannt, Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+          <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .group { margin: 36px 0 0; }
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 14px; }
+  .sig-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .sig-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px; text-decoration: none; transition: border-color var(--t-fast) ease; display: flex; flex-direction: column; gap: 8px; }
+  .sig-card:hover { border-color: var(--blue); }
+  .sig-q { font-size: 16.5px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+  .sig-meta { font-size: 12.5px; color: var(--muted); }
+
+  .axis { margin: 42px 0 0; }
+  .axis-row { display: flex; gap: 14px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .axis-label { flex-shrink: 0; width: 130px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .axis-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .axis-links a { font-size: 15px; font-weight: 600; color: var(--blue); text-decoration: none; }
+  .axis-links a:hover { text-decoration: underline; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  .bridge { margin: 46px 0 0; }
+  .bridge p { font-size: 16.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; max-width: 640px; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 640px) {
+    .sig-grid { grid-template-columns: 1fr; }
+    .axis-label { width: 100%; }
+  }
+</style>
