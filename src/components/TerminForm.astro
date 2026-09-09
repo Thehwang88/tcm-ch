@@ -2,8 +2,6 @@
 // Kontaktformular mit Herkunfts-Prefill. Nutzt den bestehenden Resend-Endpoint
 // POST /api/anfrage (functions/api/anfrage.js) und das bestehende Turnstile-Setup
 // (site.turnstileSitekey; das Turnstile-Script lädt die Seite via LayoutDe turnstile={true}).
-// Der Endpoint verlangt name + telefon + email: das kombinierte Feld "Telefon oder
-// E-Mail" wird deshalb clientseitig in beide Payload-Keys gespiegelt.
 import { site } from '../data/site';
 
 interface Props {
@@ -38,10 +36,14 @@ const STANDORTE = [
           <input type="text" name="name" required autocomplete="name" />
         </label>
         <label class="tf-field">
-          <span class="tf-label">Telefon oder E-Mail</span>
-          <input type="text" name="kontakt" required autocomplete="tel" />
+          <span class="tf-label">Telefon</span>
+          <input type="tel" name="telefon" required autocomplete="tel" />
         </label>
       </div>
+      <label class="tf-field">
+        <span class="tf-label">E-Mail</span>
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
       <label class="tf-field">
         <span class="tf-label">Standort</span>
         <select name="standort">
@@ -173,8 +175,8 @@ const STANDORTE = [
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       if (form.website.value.trim() !== '') return;
-      if (!form.name.value.trim() || !form.kontakt.value.trim() || !form.anliegen.value.trim()) {
-        show('error', 'Bitte fülle Name, Kontakt und dein Anliegen aus.'); return;
+      if (!form.name.value.trim() || !form.telefon.value.trim() || !form.email.value.trim() || !form.anliegen.value.trim()) {
+        show('error', 'Bitte fülle Name, Telefon, E-Mail und dein Anliegen aus.'); return;
       }
       var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
       var token = tokenEl && tokenEl.value ? tokenEl.value : '';
@@ -184,12 +186,11 @@ const STANDORTE = [
         window.gtag('event', 'form_submit', { form_id: 'terminform', herkunft: form.herkunft.value });
       }
 
-      var kontakt = form.kontakt.value.trim();
       var payload = {
         typ: 'termin',
         name: form.name.value.trim(),
-        email: kontakt,
-        telefon: kontakt,
+        email: form.email.value.trim(),
+        telefon: form.telefon.value.trim(),
         standort: form.standort.value,
         anliegen: form.anliegen.value.trim(),
         quelle: form.herkunft.value,
