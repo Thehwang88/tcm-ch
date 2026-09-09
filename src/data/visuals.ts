@@ -13,6 +13,19 @@ export const visualCategories: VisualCategory[] = [
   'Nacken', 'Rücken', 'Schulter', 'Arm & Hand', 'Hüfte', 'Knie', 'Bein & Fuss', 'Kiefer',
 ];
 
+/**
+ * Bildasset eines Visuals.
+ * - string: einfacher Pfad (SVG-Platzhalter oder simples Bild).
+ * - Objekt: finale hochauflösende Assets. `src` ist der Fallback (PNG/JPG),
+ *   `avif`/`webp` sind komplette srcset-Strings (z.B.
+ *   "/images/visuals/lws-normal-800.avif 800w, /images/visuals/lws-normal-1600.avif 1600w").
+ *   width/height = intrinsische Grösse des Fallbacks (Layout-Shift-Schutz).
+ *   Labels/Pfeile NIE ins Bild einbacken — alles bleibt HTML/SVG-Overlay.
+ */
+export type VisualImage =
+  | string
+  | { src: string; avif?: string; webp?: string; srcset?: string; sizes?: string; width: number; height: number };
+
 export interface VisualHotspot {
   id: string;
   label: string;
@@ -40,10 +53,10 @@ export interface Visual {
   /** Ein einziger einfacher Satz. Kein Fliesstext. */
   subtitle: string;
   status: 'live' | 'draft';
-  /** Bildpfade — finale medizinische Illustrationen werden separat geliefert. */
-  imageNormal?: string;
-  imageProblem?: string;
-  secondaryImage?: string;
+  /** Bildassets — finale medizinische Illustrationen werden separat geliefert. */
+  imageNormal?: VisualImage;
+  imageProblem?: VisualImage;
+  secondaryImage?: VisualImage;
   /** Panel-Beschriftungen (ausserhalb des Bildes, echtes HTML). */
   labelNormal?: string;
   labelProblem?: string;
@@ -53,6 +66,8 @@ export interface Visual {
   keywords: string[];
   /** Bestehende stärkste Beschwerden-/Behandlungs-Seite ("Mehr erfahren"). Optional — nie URLs erfinden. */
   relatedPage?: string;
+  /** "Weiter erklären": Slugs verwandter Visuals. Nur LIVE-Einträge werden gerendert. */
+  related?: string[];
 }
 
 export const visuals: Visual[] = [
@@ -81,6 +96,7 @@ export const visuals: Visual[] = [
     ],
     keywords: ['bandscheibe', 'rücken', 'lws', 'lendenwirbelsäule', 'nerv', 'ischias', 'bein', 'kribbeln', 'taubheit', 'hexenschuss'],
     relatedPage: '/beschwerden/bandscheibenvorfall/',
+    related: ['ischias', 'bandscheibenvorfall-hws'],
   },
   {
     slug: 'bandscheibenvorfall-hws',
@@ -255,6 +271,11 @@ export const visuals: Visual[] = [
 ];
 
 export const liveVisuals = visuals.filter((v) => v.status === 'live');
+
+/** Fallback-Pfad eines VisualImage (für Thumbnails etc.). */
+export function imgSrc(img?: VisualImage): string | undefined {
+  return typeof img === 'string' ? img : img?.src;
+}
 
 /** Suchstring pro Visual (Titel + Kategorie + Keywords), umlaut-gefaltet, lowercase. */
 export function searchIndex(v: Visual): string {

@@ -3,7 +3,8 @@
 // Desktop: beide Ansichten nebeneinander (Präsentationsmodus fürs Patientengespräch).
 // Mobile: eine grosse Ansicht + Normal/Vorfall-Umschalter. Hotspots in %, Labels/Pfeile
 // als echtes HTML/SVG — nie im Bild eingebacken.
-import type { Visual } from '../../data/visuals';
+import { visuals, imgSrc, type Visual } from '../../data/visuals';
+import VisualImg from './VisualImg.astro';
 
 interface Props {
   visual: Visual;
@@ -14,12 +15,16 @@ const { visual: v, qrSvg } = Astro.props;
 
 const controls = (v.hotspots ?? []);
 const markers = controls.filter((h) => h.view !== 'pain');
+// "Weiter erklären" — nur LIVE-Visuals, nie Links auf Draft-Seiten.
+const relatedLive = (v.related ?? [])
+  .map((slug) => visuals.find((x) => x.slug === slug))
+  .filter((x): x is Visual => !!x && x.status === 'live');
 const panels = [
   { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: `${v.title}: vereinfachte Darstellung, normaler Zustand` },
   { key: 'problem', chip: v.labelProblem ?? v.title, img: v.imageProblem, alt: `${v.title}: vereinfachte Darstellung der Veränderung` },
 ];
 ---
-<article class="vv" id="vv">
+<article class="vv" id="vv" data-slug={v.slug} data-category={v.category}>
 
   <header class="vv-head">
     <div class="vv-head-text">
@@ -28,8 +33,16 @@ const panels = [
       <p class="vv-sub">{v.subtitle}</p>
     </div>
     <div class="vv-actions">
-      <button class="vv-qr-open" type="button" id="vv-qr-open">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M20 20h1v1M17 20v1"/></svg>
+      <button class="vv-ghost-btn" type="button" id="vv-fs-open">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        <span id="vv-fs-label">Vollbild</span>
+      </button>
+      <a class="vv-ghost-btn" id="vv-pdf" href={`/visuals/${v.slug}/handout/?print=1`} target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Als PDF herunterladen
+      </a>
+      <button class="vv-ghost-btn" type="button" id="vv-qr-open">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M20 20h1v1M17 20v1"/></svg>
         Auf dem Handy öffnen
       </button>
       {v.relatedPage && <a class="vv-more" href={v.relatedPage}>Mehr erfahren</a>}
@@ -47,7 +60,7 @@ const panels = [
       <figure class="vv-panel" data-panel={p.key}>
         <figcaption class="vv-chip" data-chip={p.key}>{p.chip}</figcaption>
         <div class="vv-imgwrap">
-          {p.img && <img src={p.img} alt={p.alt} width="800" height="1000" decoding="async" />}
+          {p.img && <VisualImg image={p.img} alt={p.alt} width={800} height={1000} sizes="(max-width: 900px) 92vw, 550px" />}
           {markers
             .filter((h) => h.view === 'both' || h.view === p.key)
             .map((h) => (
@@ -90,7 +103,7 @@ const panels = [
       <h2>Wo kann man es spüren?</h2>
       <div class="vv-pain-grid">
         <div class="vv-imgwrap vv-pain-imgwrap">
-          <img src={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width="600" height="1000" loading="lazy" decoding="async" />
+          <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />
           {(v.painPath ?? []).map((s, i) => (
             <span class="vv-painstep" style={`left:${s.x}%;top:${s.y}%;`}>
               <span class="vv-painstep-dot" aria-hidden="true">{i + 1}</span>
@@ -107,6 +120,20 @@ const panels = [
     </section>
   )}
 
+  {relatedLive.length > 0 && (
+    <nav class="vv-related" aria-label="Weiter erklären">
+      <h2>Weiter erklären</h2>
+      <div class="vv-related-row">
+        {relatedLive.map((r) => (
+          <a class="vv-related-card" href={`/visuals/${r.slug}/`} data-related-slug={r.slug}>
+            {imgSrc(r.imageNormal) && <img src={imgSrc(r.imageNormal)} alt="" width="120" height="150" loading="lazy" decoding="async" />}
+            <span>{r.title}</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+  )}
+
   <p class="vv-disclaimer">
     Diese Darstellung dient der einfachen Erklärung und ersetzt keine individuelle medizinische Beurteilung.
   </p>
@@ -121,7 +148,13 @@ const panels = [
 </article>
 
 <script>
+  import { track } from '../../scripts/vl-track';
+
   const root = document.getElementById('vv')!;
+  const slug = root.dataset.slug || '';
+  const category = root.dataset.category || '';
+  const meta = { visual_slug: slug, category };
+  track('visual_open', meta);
   const stage = document.getElementById('vv-stage')!;
   const note = document.getElementById('vv-note');
   const pain = document.getElementById('vv-pain');
@@ -166,10 +199,12 @@ const panels = [
     if (target === 'pain') {
       active = id;
       apply();
+      track('visual_pain_route_open', meta);
       pain?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
     active = active === id ? null : id;
+    if (active) track('visual_hotspot_click', { ...meta, hotspot_id: id });
     // Liegt der Punkt nur auf einer Ansicht, auf kleinen Screens dorthin umschalten.
     if (active && (target === 'normal' || target === 'problem')) setMobileView(target);
     apply();
@@ -181,9 +216,44 @@ const panels = [
 
   // QR-Modal
   const dlg = document.getElementById('vv-dialog') as HTMLDialogElement | null;
-  document.getElementById('vv-qr-open')?.addEventListener('click', () => dlg?.showModal());
+  document.getElementById('vv-qr-open')?.addEventListener('click', () => {
+    track('visual_qr_open', meta);
+    dlg?.showModal();
+  });
   document.getElementById('vv-dialog-close')?.addEventListener('click', () => dlg?.close());
   dlg?.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+  // PDF-Handout
+  document.getElementById('vv-pdf')?.addEventListener('click', () => track('visual_pdf_download', meta));
+
+  // Weiter erklären
+  root.querySelectorAll<HTMLAnchorElement>('[data-related-slug]').forEach((a) =>
+    a.addEventListener('click', () => track('related_visual_click', { ...meta, related_slug: a.dataset.relatedSlug || '' }))
+  );
+
+  // Vollbild / Präsentationsmodus: Site-Chrome weg, Visual dominiert.
+  const fsBtn = document.getElementById('vv-fs-open');
+  const fsLabel = document.getElementById('vv-fs-label');
+  function fsActive() { return document.body.classList.contains('vv-fullscreen'); }
+  function syncFs(on: boolean) {
+    document.body.classList.toggle('vv-fullscreen', on);
+    if (fsLabel) fsLabel.textContent = on ? 'Vollbild beenden' : 'Vollbild';
+    fsBtn?.setAttribute('aria-pressed', String(on));
+  }
+  function enterFs() {
+    syncFs(true);
+    track('visual_fullscreen_open', meta);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+    window.scrollTo({ top: 0 });
+  }
+  function exitFs() {
+    syncFs(false);
+    if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+  }
+  fsBtn?.addEventListener('click', () => (fsActive() ? exitFs() : enterFs()));
+  // ESC beendet auch den Pseudo-Vollbildmodus (ohne natives Fullscreen, z.B. iPad).
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fsActive()) exitFs(); });
+  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && fsActive()) syncFs(false); });
 </script>
 
 <script type="application/json" id="vv-notes" set:html={JSON.stringify(Object.fromEntries(controls.filter((h) => h.note).map((h) => [h.id, h.note])))} is:inline />
@@ -198,11 +268,13 @@ const panels = [
   /* ── Kopf ─────────────────────────────────────────────── */
   .vv-head {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 24px;
+    gap: 20px 24px;
     margin-bottom: 28px;
   }
+  .vv-head-text { flex: 1 1 460px; min-width: 0; }
   .vv-back {
     display: inline-block;
     font-size: 14px;
@@ -226,8 +298,8 @@ const panels = [
     color: var(--text-soft);
     line-height: 1.4;
   }
-  .vv-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
-  .vv-qr-open {
+  .vv-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; flex-shrink: 0; }
+  .vv-ghost-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -239,10 +311,13 @@ const panels = [
     font-size: 14.5px;
     font-weight: 700;
     color: var(--text);
+    text-decoration: none;
     cursor: pointer;
+    min-height: 44px;
     transition: border-color .15s ease, color .15s ease;
   }
-  .vv-qr-open:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .vv-ghost-btn:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .vv-ghost-btn:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
   .vv-more {
     display: inline-flex;
     align-items: center;
@@ -313,7 +388,7 @@ const panels = [
   }
   .vv-panel[data-panel="problem"] .vv-chip { color: var(--blue-dark); border-color: var(--green-mid); background: var(--blue-light); }
   .vv-imgwrap { position: relative; }
-  .vv-imgwrap img {
+  .vv-imgwrap :global(img) {
     display: block;
     width: 100%;
     height: auto;
@@ -423,7 +498,7 @@ const panels = [
     border-radius: var(--r-hero);
     padding: 28px;
   }
-  .vv-pain-imgwrap img { border-radius: var(--r-card); }
+  .vv-pain-imgwrap :global(img) { border-radius: var(--r-card); }
   .vv-painstep {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -477,6 +552,40 @@ const panels = [
   }
   .vv-pain-list li + li { flex-direction: column; align-items: flex-start; gap: 4px; }
 
+  /* ── Weiter erklären ──────────────────────────────────── */
+  .vv-related { margin-top: 48px; }
+  .vv-related h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    color: var(--text-soft);
+  }
+  .vv-related-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .vv-related-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 10px 18px 10px 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .vv-related-card:hover { border-color: var(--green-mid); box-shadow: var(--sh-sm); }
+  .vv-related-card:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+  .vv-related-card img {
+    width: 48px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    background: #FAF8F5;
+  }
+
   /* ── Hinweis / Dialog ─────────────────────────────────── */
   .vv-disclaimer {
     margin: 40px 2px 0;
@@ -520,6 +629,19 @@ const panels = [
     line-height: 1.5;
   }
 
+  /* ── Vollbild / Präsentationsmodus ────────────────────── */
+  /* Site-Chrome verschwindet (global unten), hier: kompaktes Layout,
+     Visual dominiert. Back-Link, "Mehr erfahren" und Kleingedrucktes weg. */
+  :global(body.vv-fullscreen) .vv { padding-top: 20px; }
+  :global(body.vv-fullscreen) .vv-back,
+  :global(body.vv-fullscreen) .vv-more,
+  :global(body.vv-fullscreen) .vv-related,
+  :global(body.vv-fullscreen) .vv-disclaimer,
+  :global(body.vv-fullscreen) #vv-pdf { display: none; }
+  :global(body.vv-fullscreen) .vv-head { margin-bottom: 18px; align-items: center; }
+  :global(body.vv-fullscreen) .vv-head h1 { font-size: clamp(24px, 2.4vw, 34px); margin-bottom: 4px; }
+  :global(body.vv-fullscreen) .vv-stage { padding: 20px; }
+
   /* ── Responsive: eine Ansicht + Umschalter ────────────── */
   @media (max-width: 900px) {
     .vv { padding: 24px 20px 48px; }
@@ -532,4 +654,22 @@ const panels = [
     .vv-pain-grid { grid-template-columns: 1fr; gap: 20px; padding: 16px; }
     .vv-marker-label { font-size: 12.5px; padding: 3px 9px; }
   }
+</style>
+
+<style is:global>
+  /* Vollbild: Website-Chrome komplett ausblenden — nur das Visual.
+     #mainNav/#siteDrawer = DE-Header (src/data/header.html), .wac = Desktop-
+     WhatsApp-Concierge, .wa-fab/.scb-bar = mobile FABs/Sticky-CTA. */
+  body.vv-fullscreen #mainNav,
+  body.vv-fullscreen #siteDrawer,
+  body.vv-fullscreen #drawerOverlay,
+  body.vv-fullscreen footer,
+  body.vv-fullscreen .wa-fab,
+  body.vv-fullscreen .wac,
+  body.vv-fullscreen .scb-bar,
+  body.vv-fullscreen .sticky-cta,
+  body.vv-fullscreen [data-sticky-bottom] {
+    display: none !important;
+  }
+  body.vv-fullscreen { background: var(--white); }
 </style>

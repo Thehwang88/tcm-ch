@@ -1,12 +1,12 @@
 ---
 // Eine Karte im Visual-Library-Index. Drafts erscheinen ohne Link ("Bald"),
 // damit die Suche sie findet, aber keine kaputte Seite verlinkt wird.
-import { searchIndex, type Visual } from '../../data/visuals';
+import { imgSrc, searchIndex, type Visual } from '../../data/visuals';
 
 interface Props { visual: Visual }
 const { visual: v } = Astro.props;
 const live = v.status === 'live';
-const thumb = v.imageNormal;
+const thumb = imgSrc(v.imageNormal);
 const Tag = live ? 'a' : 'div';
 ---
 <Tag
