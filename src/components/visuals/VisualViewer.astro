@@ -105,7 +105,7 @@ const panels = [
         <div class="vv-imgwrap vv-pain-imgwrap">
           <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />
           {(v.painPath ?? []).map((s, i) => (
-            <span class="vv-painstep" style={`left:${s.x}%;top:${s.y}%;`}>
+            <span class:list={['vv-painstep', { 'vv-painstep--left': s.labelSide === 'left' }]} style={`left:${s.x}%;top:${s.y}%;`}>
               <span class="vv-painstep-dot" aria-hidden="true">{i + 1}</span>
               <span class="vv-painstep-label">{s.label}</span>
             </span>
@@ -490,10 +490,11 @@ const panels = [
   }
   .vv-pain-grid {
     display: grid;
-    grid-template-columns: minmax(0, 420px) 1fr;
+    grid-template-columns: minmax(0, 460px) 1fr;
     gap: 40px;
     align-items: center;
-    background: #FAF8F5;
+    /* Weiss, damit das fotorealistische Schmerzverlauf-Asset nahtlos sitzt. */
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--r-hero);
     padding: 28px;
@@ -501,10 +502,15 @@ const panels = [
   .vv-pain-imgwrap :global(img) { border-radius: var(--r-card); }
   .vv-painstep {
     position: absolute;
-    transform: translate(-50%, -50%);
+    /* Der PUNKT liegt auf x/y (halber Punkt = 13px), nicht das Label-Paar. */
+    transform: translate(-13px, -50%);
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+  .vv-painstep--left {
+    flex-direction: row-reverse;
+    transform: translate(calc(-100% + 13px), -50%);
   }
   .vv-painstep-dot {
     width: 26px;

@@ -44,6 +44,8 @@ export interface VisualPainStep {
   label: string;
   x: number;
   y: number;
+  /** Label links statt rechts vom Punkt (nicht über die Schmerzzone legen). */
+  labelSide?: 'left' | 'right';
 }
 
 export interface Visual {
@@ -92,7 +94,13 @@ export const visuals: Visual[] = [
       width: 1122,
       height: 1402,
     },
-    secondaryImage: '/images/visuals/lws-pain-route.svg',
+    secondaryImage: {
+      src: '/images/visuals/lws-pain-route.jpg',
+      avif: '/images/visuals/lws-pain-route-800.avif 800w, /images/visuals/lws-pain-route-1024.avif 1024w',
+      webp: '/images/visuals/lws-pain-route-800.webp 800w, /images/visuals/lws-pain-route-1024.webp 1024w',
+      width: 1024,
+      height: 1536,
+    },
     labelNormal: 'Normal',
     labelProblem: 'Bandscheibenvorfall',
     hotspots: [
@@ -103,9 +111,9 @@ export const visuals: Visual[] = [
       { id: 'schmerz', label: 'Schmerzverlauf', x: 0, y: 0, view: 'pain', note: 'Der Schmerz kann vom Rücken ins Bein ziehen.' },
     ],
     painPath: [
-      { label: 'Rücken', x: 52, y: 38 },
-      { label: 'Gesäss', x: 56, y: 52 },
-      { label: 'Bein', x: 56, y: 76 },
+      { label: 'Rücken', x: 51, y: 38.5, labelSide: 'left' },
+      { label: 'Gesäss', x: 60.5, y: 49 },
+      { label: 'Bein', x: 61.5, y: 77 },
     ],
     keywords: ['bandscheibe', 'rücken', 'lws', 'lendenwirbelsäule', 'nerv', 'ischias', 'bein', 'kribbeln', 'taubheit', 'hexenschuss'],
     relatedPage: '/beschwerden/bandscheibenvorfall/',
