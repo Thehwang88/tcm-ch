@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Platzhalter: Lendenwirbelsäule, Bandscheibenvorfall drückt auf Nerv">
+  <!-- TEMPORÄRER ENTWICKLUNGS-PLATZHALTER — wird durch finale medizinische Illustration ersetzt (Asset: lws-disc-herniation). Gleiche Perspektive wie lws-normal. Keine Texte einbacken. -->
+  <rect width="800" height="1000" fill="#FAF8F5"/>
+  <!-- Wirbelkörper (Seitenansicht, identisch zu normal) -->
+  <g fill="#EDE6DA" stroke="#C9BFAF" stroke-width="4">
+    <rect x="260" y="130" width="210" height="180" rx="34"/>
+    <rect x="260" y="420" width="210" height="180" rx="34"/>
+    <rect x="260" y="710" width="210" height="180" rx="34"/>
+  </g>
+  <!-- Dornfortsätze -->
+  <g fill="#E4DCCE" stroke="#C9BFAF" stroke-width="4">
+    <path d="M470 190 q90 10 110 40 q-30 24 -110 30 z"/>
+    <path d="M470 480 q90 10 110 40 q-30 24 -110 30 z"/>
+    <path d="M470 770 q90 10 110 40 q-30 24 -110 30 z"/>
+  </g>
+  <!-- Bandscheibe oben: normal -->
+  <g fill="#CBE0D5" stroke="#9CC4B0" stroke-width="4">
+    <rect x="268" y="332" width="194" height="66" rx="33"/>
+  </g>
+  <ellipse cx="365" cy="365" rx="52" ry="20" fill="#AFD2C1"/>
+  <!-- Bandscheibe unten: Vorfall (Kern tritt nach hinten aus) -->
+  <g fill="#CBE0D5" stroke="#9CC4B0" stroke-width="4">
+    <path d="M301 622 h 128 a33 33 0 0 1 33 33 a33 33 0 0 1 -33 33 h -128 a33 33 0 0 1 -33 -33 a33 33 0 0 1 33 -33 z"/>
+  </g>
+  <path d="M420 636 q86 -8 118 19 q-32 27 -118 19 q-24 -2 -24 -19 q0 -17 24 -19 z" fill="#C98A6B" stroke="#B0724F" stroke-width="4"/>
+  <ellipse cx="360" cy="655" rx="46" ry="18" fill="#AFD2C1"/>
+  <!-- Nerv, an der Engstelle verdrängt -->
+  <g stroke="#D9A441" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M540 90 V 600 q14 55 0 110 V 910"/>
+    <path d="M540 365 q60 10 110 44"/>
+    <path d="M546 668 q58 8 106 40"/>
+  </g>
+</svg>

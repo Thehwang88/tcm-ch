@@ -1,0 +1,180 @@
+---
+// Visual Library Index — internes Patienten-Kommunikationstool, kein SEO-Silo.
+// noindex,follow: öffentlich & teilbar, aber bewusst keine SEO-Landingpage
+// (Beschwerden/Behandlungen bleiben die Ranking-Seiten). Nicht in index-queue.md.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import VisualCard from '../../components/visuals/VisualCard.astro';
+import { visuals, visualCategories } from '../../data/visuals';
+---
+<LayoutDe
+  title="Visual Library — Medizin einfach erklärt"
+  description="Einfache medizinische Illustrationen für das Gespräch in der Praxis."
+  path="/visuals/"
+  noindex={true}
+  robots="noindex, follow"
+>
+  <section class="vl">
+    <header class="vl-head">
+      <h1>Visual Library</h1>
+      <p class="vl-sub">Medizin einfach erklärt</p>
+      <div class="vl-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input
+          type="search"
+          id="vl-search"
+          placeholder="Was möchten Sie zeigen?"
+          aria-label="Visuals durchsuchen"
+          autocomplete="off"
+        />
+      </div>
+      <div class="vl-cats" role="group" aria-label="Nach Körperregion filtern">
+        <button type="button" class="vl-cat" data-cat="" aria-pressed="true">Alle</button>
+        {visualCategories.map((c) => (
+          <button type="button" class="vl-cat" data-cat={c} aria-pressed="false">{c}</button>
+        ))}
+      </div>
+    </header>
+
+    <div class="vl-grid" id="vl-grid">
+      {visuals.map((v) => <VisualCard visual={v} />)}
+    </div>
+    <p class="vl-empty" id="vl-empty" hidden>Keine Treffer. Versuchen Sie z.&nbsp;B. «Knie», «Bandscheibe» oder «Schulter».</p>
+
+    <p class="vl-disclaimer">
+      Diese Darstellungen dienen der einfachen Erklärung und ersetzen keine individuelle medizinische Beurteilung.
+    </p>
+  </section>
+
+  <script>
+    const input = document.getElementById('vl-search') as HTMLInputElement;
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('#vl-grid [data-search]'));
+    const empty = document.getElementById('vl-empty')!;
+    const catBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.vl-cat'));
+    let cat = '';
+
+    const fold = (s: string) =>
+      s.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
+
+    function filter() {
+      const terms = fold(input.value.trim()).split(/\s+/).filter(Boolean);
+      let shown = 0;
+      for (const card of cards) {
+        const hay = card.dataset.search || '';
+        const okCat = !cat || card.dataset.category === cat;
+        const okTerms = terms.every((t) => hay.includes(t));
+        const show = okCat && okTerms;
+        card.hidden = !show;
+        if (show) shown++;
+      }
+      empty.hidden = shown > 0;
+    }
+
+    input.addEventListener('input', filter);
+    catBtns.forEach((b) =>
+      b.addEventListener('click', () => {
+        cat = cat === b.dataset.cat ? '' : b.dataset.cat || '';
+        catBtns.forEach((x) => x.setAttribute('aria-pressed', String((x.dataset.cat || '') === cat)));
+        filter();
+      })
+    );
+  </script>
+
+  <style>
+    .vl {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px var(--pad-x) 72px;
+    }
+    .vl-head { max-width: 720px; margin: 0 auto 44px; text-align: center; }
+    .vl-head h1 {
+      margin: 0 0 8px;
+      font-size: var(--fs-h1);
+      font-weight: 800;
+      letter-spacing: var(--tracking-heading);
+      line-height: var(--lh-heading);
+      color: var(--black);
+    }
+    .vl-sub {
+      margin: 0 0 28px;
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--text-soft);
+    }
+    .vl-search {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+    }
+    .vl-search svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .vl-search input {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: var(--font-sans);
+      font-size: 17px;
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 16px 22px 16px 50px;
+      box-shadow: var(--sh-sm);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .vl-search input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(45,155,111,.15);
+    }
+    .vl-cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .vl-cat {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 10px 18px;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      min-height: 42px;
+      transition: border-color .15s ease, background .15s ease, color .15s ease;
+    }
+    .vl-cat:hover { border-color: var(--blue); color: var(--blue-dark); }
+    .vl-cat[aria-pressed="true"] {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+    .vl-cat:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+
+    .vl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .vl-empty {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 16px;
+      padding: 48px 0;
+      margin: 0;
+    }
+    .vl-disclaimer {
+      margin: 48px auto 0;
+      max-width: 640px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    @media (max-width: 640px) {
+      .vl { padding: 32px 20px 56px; }
+      .vl-head { margin-bottom: 32px; }
+      .vl-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+    }
+  </style>
+</LayoutDe>

@@ -1,0 +1,98 @@
+---
+// Eine Karte im Visual-Library-Index. Drafts erscheinen ohne Link ("Bald"),
+// damit die Suche sie findet, aber keine kaputte Seite verlinkt wird.
+import { searchIndex, type Visual } from '../../data/visuals';
+
+interface Props { visual: Visual }
+const { visual: v } = Astro.props;
+const live = v.status === 'live';
+const thumb = v.imageNormal;
+const Tag = live ? 'a' : 'div';
+---
+<Tag
+  class:list={['vcard', { 'vcard--draft': !live }]}
+  href={live ? `/visuals/${v.slug}/` : undefined}
+  data-search={searchIndex(v)}
+  data-category={v.category}
+>
+  <div class="vcard-thumb">
+    {thumb
+      ? <img src={thumb} alt={`${v.title} – vereinfachte medizinische Darstellung`} width="800" height="1000" loading="lazy" decoding="async" />
+      : <span class="vcard-thumb-region" aria-hidden="true">{v.category}</span>}
+    {!live && <span class="vcard-soon">Bald</span>}
+  </div>
+  <div class="vcard-body">
+    <span class="vcard-cat">{v.category}</span>
+    <h3 class="vcard-title">{v.title}</h3>
+  </div>
+</Tag>
+
+<style>
+  .vcard {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  a.vcard:hover, a.vcard:focus-visible {
+    box-shadow: var(--sh-md);
+    transform: translateY(-2px);
+    border-color: var(--green-mid);
+  }
+  a.vcard:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  .vcard-thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #FAF8F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .vcard-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .vcard-thumb-region {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: var(--tracking-heading);
+    color: #C9BFAF;
+  }
+  .vcard-soon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .vcard--draft { opacity: .72; }
+
+  .vcard-body { padding: 16px 18px 18px; }
+  .vcard-cat {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .vcard-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    line-height: 1.25;
+    color: var(--black);
+  }
+</style>

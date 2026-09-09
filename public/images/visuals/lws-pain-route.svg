@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" role="img" aria-label="Platzhalter: Körper von hinten, Schmerzverlauf vom Rücken ins Bein">
+  <!-- TEMPORÄRER ENTWICKLUNGS-PLATZHALTER — wird durch finale Illustration ersetzt (Asset: lws-pain-route). Keine Texte einbacken. -->
+  <rect width="600" height="1000" fill="#FAF8F5"/>
+  <!-- Körper-Silhouette, Rückansicht -->
+  <g fill="#EDE6DA" stroke="#C9BFAF" stroke-width="4">
+    <circle cx="300" cy="105" r="52"/>
+    <path d="M300 160
+             c 70 0 108 30 116 78
+             c 6 40 10 90 6 132
+             c 26 6 30 30 26 52 l -14 96 c -3 18 -26 18 -28 0 l -8 -110 l -12 -2
+             c 8 40 12 76 10 112
+             c -2 44 -8 96 -14 148 l -12 220 c -2 26 -40 26 -42 0 l -8 -212 l -20 -1 l -20 1 l -8 212
+             c -2 26 -40 26 -42 0 l -12 -220 c -6 -52 -12 -104 -14 -148
+             c -2 -36 2 -72 10 -112 l -12 2 l -8 110 c -2 18 -25 18 -28 0 l -14 -96
+             c -4 -22 0 -46 26 -52
+             c -4 -42 0 -92 6 -132
+             c 8 -48 46 -78 116 -78 z"/>
+  </g>
+  <!-- Schmerzverlauf: Rücken → Gesäss → Bein -->
+  <path d="M312 372 q30 60 24 128 q-4 90 -6 150 q-2 120 4 210"
+        fill="none" stroke="#C98A6B" stroke-width="12" stroke-linecap="round"
+        stroke-dasharray="2 26" opacity="0.9"/>
+</svg>
