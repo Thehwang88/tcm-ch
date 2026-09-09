@@ -214,7 +214,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Interessant wird es, wenn sich ein Muster wiederholt. Denn wo die Finger einschlafen und in welcher Situation, verrät ziemlich genau, welcher Nerv gereizt wird.</p>
 <h2>Die drei häufigsten Situationen</h2>
 <p><strong>Nachts, oft mit abgeknicktem Handgelenk.</strong> Wer nachts regelmässig mit kribbelnden oder tauben Fingern aufwacht und die Hand erst ausschütteln muss, hat häufig ein Engpassproblem am Handgelenk. Dort verläuft der Mittelhandnerv durch den Karpaltunnel, und im Schlaf knicken viele Menschen das Handgelenk ab. Betroffen sind typischerweise Daumen, Zeige- und Mittelfinger. Wiederholt sich das Muster über Wochen, lies weiter auf unserer Seite <a href="/beschwerden/karpaltunnelsyndrom/">Karpaltunnelsyndrom</a>.</p>
-<p><strong>Beim Velofahren oder Aufstützen.</strong> Schlafen Ring- und Kleinfinger ein, während du am Lenker greifst oder den Ellenbogen lange aufstützt, ist meist der Ellennerv gereizt. Er liegt am Ellenbogen und an der Handkante sehr oberflächlich. Lenkerposition wechseln, gepolsterte Handschuhe und Pausen entlasten ihn spürbar.</p>
+<p><strong>Beim Velofahren oder Aufstützen.</strong> Schlafen Ring- und Kleinfinger ein, während du am Lenker greifst oder den Ellenbogen lange aufstützt, ist meist der Ellennerv gereizt. Er liegt am Ellenbogen und an der Handkante sehr oberflächlich. Lenkerposition wechseln, gepolsterte Handschuhe und Pausen entlasten ihn spürbar, die ausführliche Einordnung dazu steht unter <a href="/koerpersignale/hand-kribbelt-beim-velofahren/">Hand kribbelt beim Velofahren</a>.</p>
 <p><strong>Beim Telefonieren oder Über-Kopf-Arbeiten.</strong> Wird der Arm lange angehoben oder der Ellenbogen stark gebeugt gehalten, geraten Nerven und Gefässe zwischen Nacken und Achsel unter Zug. Auch hier gilt: Position ändern, und das Gefühl normalisiert sich innert Minuten.</p>
 <h2>Harmlos oder nicht? Die Faustregeln</h2>
 <p>Eher harmlos ist das Einschlafen, wenn es klar an eine Position gebunden ist, beide Hände je nach Situation betreffen kann und nach dem Positionswechsel rasch verschwindet. Genauer hinschauen solltest du, wenn die Taubheit ohne erkennbaren Auslöser auftritt, immer dieselben Finger betrifft, tagsüber bestehen bleibt oder wenn Kraft verloren geht, dir also etwa Gegenstände aus der Hand fallen.</p>
@@ -264,7 +264,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Läuft die Taubheit dagegen streifenförmig vom Nacken über den Arm bis in bestimmte Finger, kann auch eine gereizte Nervenwurzel an der Halswirbelsäule dahinterstecken, etwa durch einen Bandscheibenvorfall. Typisch ist dann, dass Nacken- oder Armschmerzen dazukommen und Kopfbewegungen das Gefühl verändern.</p>
 <h2>Häufige Muster im Alltag</h2>
 <p><strong>Taubheit in Daumen bis Mittelfinger, nachts am stärksten:</strong> das klassische Bild des Karpaltunnelsyndroms. Es beginnt oft mit nächtlichem Einschlafen der Hand und wird über Monate hartnäckiger. Die ausführliche Seite dazu: <a href="/beschwerden/karpaltunnelsyndrom/">Karpaltunnelsyndrom</a>.</p>
-<p><strong>Taubheit in Ring- und Kleinfinger:</strong> spricht für den Ellennerv. Häufige Auslöser sind langes Aufstützen des Ellenbogens, stark gebeugte Ellenbogen beim Schlafen oder Druck am Lenker. Hier hilft zuerst konsequentes Entlasten.</p>
+<p><strong>Taubheit in Ring- und Kleinfinger:</strong> spricht für den Ellennerv. Häufige Auslöser sind langes Aufstützen des Ellenbogens, stark gebeugte Ellenbogen beim Schlafen oder Druck am Lenker, das Velo-Muster erklären wir unter <a href="/koerpersignale/hand-kribbelt-beim-velofahren/">Hand kribbelt beim Velofahren</a>. Hier hilft zuerst konsequentes Entlasten.</p>
 <p><strong>Taubheit mit Nackenschmerz und Ausstrahlung:</strong> Hinweis auf die Halswirbelsäule. Mehr zum Hintergrund findest du unter <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a> und <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>.</p>
 <p><strong>Beidseitig, strumpf- oder handschuhförmig, eher Zehen und Finger gemeinsam:</strong> passt nicht zu einem einzelnen Engpass, sondern eher zu einer allgemeinen Nervenstörung, einer Polyneuropathie. Auch dafür gibt es eine eigene Seite: <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
 <p><strong>Anfallsweise weisse, kalte, taube Finger:</strong> hier sind nicht die Nerven, sondern die Gefässe der Auslöser. Dieses Muster gehört zum <a href="/beschwerden/raynaud-syndrom/">Raynaud-Syndrom</a>.</p>
@@ -547,7 +547,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p><strong>Medikamente:</strong> unter anderem Antidepressiva, Hormonpräparate und fiebersenkende Mittel verstärken das Schwitzen spürbar. Ein Blick auf den Beipackzettel und ein Gespräch in der Praxis lohnen sich.</p>
 <p><strong>Anspannung und Erschöpfung:</strong> ein dauerhaft hochgefahrenes Stresssystem schwitzt schneller. Typisch sind Schweissausbrüche in Belastungssituationen und beim abendlichen Runterfahren, häufig zusammen mit Schlafproblemen und innerer Unruhe. Den grösseren Zusammenhang findest du unter <a href="/beschwerden/stress-burnout/">Stress und Burnout</a>.</p>
 <p>Zur Einordnung hilft ein Blick darauf, wie die ärztliche Abklärung vorgeht: Am Anfang stehen keine Apparate, sondern Fragen. Seit wann, wo am Körper, tags oder nachts, symmetrisch oder einseitig, welche Medikamente, welche Begleitsymptome. Danach folgen einfache Blutwerte, allen voran die Schilddrüse und der Blutzucker. Damit sind die häufigsten sekundären Ursachen bereits geprüft. Je genauer du dein Muster beschreiben kannst, desto kürzer ist dieser Weg, ein einfaches Schwitz-Tagebuch über eine Woche reicht dafür.</p>
-<div class="wa-callout"><div class="wa-callout-label">Nachtschweiss ernst nehmen</div><p>Nächtliches Schwitzen, bei dem du Pyjama oder Bettwäsche wechseln musst, gehört ärztlich abgeklärt, besonders zusammen mit ungewolltem Gewichtsverlust, Fieber, anhaltender Erschöpfung oder geschwollenen Lymphknoten. Meist findet sich eine harmlose Erklärung, aber genau diese Kombination soll eine Ärztin ausschliessen, nicht du selbst.</p></div>
+<div class="wa-callout"><div class="wa-callout-label">Nachtschweiss ernst nehmen</div><p>Das nächtliche Muster mit allen Ursachen haben wir separat eingeordnet: <a href="/koerpersignale/nachtschweiss-ohne-fieber/">Nachtschweiss ohne Fieber</a>. Nächtliches Schwitzen, bei dem du Pyjama oder Bettwäsche wechseln musst, gehört ärztlich abgeklärt, besonders zusammen mit ungewolltem Gewichtsverlust, Fieber, anhaltender Erschöpfung oder geschwollenen Lymphknoten. Meist findet sich eine harmlose Erklärung, aber genau diese Kombination soll eine Ärztin ausschliessen, nicht du selbst.</p></div>
 <h2>Was du selbst tun kannst</h2>
 <p>Unabhängig von der Ursache helfen ein paar Basics: Kaffee, Alkohol und sehr scharfes Essen reduzieren, denn alle drei feuern das Schwitzsystem an. Atmungsaktive Kleidung in Schichten statt dicker Einzellagen. Regelmässig essen, um Blutzuckertäler zu vermeiden. Und bei situativem Stressschwitzen wirkt alles, was die Grundanspannung senkt, erfahrungsgemäss mehr als jedes Deo.</p>
 <h2>Der Blick der chinesischen Medizin</h2>
@@ -614,6 +614,341 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/therapien/massage/medizinische-massage/', label: 'Medizinische Massage', cat: 'Therapie' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── WELLE 2 (09/2026)
+  {
+    slug: 'augenlid-zuckt',
+    symptom: 'ein zuckendes Augenlid',
+    title: 'Augenlid zuckt seit Tagen: mögliche Ursachen',
+    metaDesc: 'Ein zuckendes Augenlid ist lästig, aber fast immer harmlos: Müdigkeit, Stress, Koffein und Bildschirmarbeit sind die üblichen Auslöser. Was hilft und wann du hinschauen solltest.',
+    h1: 'Warum zuckt mein Augenlid seit Tagen?',
+    category: 'Kopf & Sinne',
+    lead: 'Es flattert am Unterlid oder Oberlid, mal für Sekunden, mal in Wellen über Tage. Für andere unsichtbar, für dich kaum zu ignorieren. Das Lidzucken gehört zu den harmlosesten Körpersignalen überhaupt, und es hat meist sehr alltägliche Gründe.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Stress und Schlaf als Muster besprechen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Die Entwarnung zuerst</h2>
+<p>Das flatternde Zucken eines Augenlids ist in aller Regel eine sogenannte Lidmyokymie: Einzelne Fasern des feinen Lidmuskels feuern spontan, ohne dass etwas kaputt ist. Es kann Stunden bis Wochen immer wieder auftreten und verschwindet fast immer von selbst. Gefährlich ist es nicht, und es bedeutet auch nicht, dass mit deinem Auge etwas nicht stimmt.</p>
+<h2>Was das Lid zum Zucken bringt</h2>
+<p>Die üblichen Verdächtigen sind erstaunlich banal, und meistens kommen mehrere zusammen:</p>
+<ul>
+<li><strong>Schlafmangel und Erschöpfung:</strong> der mit Abstand häufigste Auslöser. Das Zucken taucht typischerweise in anstrengenden Wochen auf.</li>
+<li><strong>Stress und Anspannung:</strong> ein überdrehtes Nervensystem macht auch die feinen Muskeln unruhig.</li>
+<li><strong>Koffein:</strong> Kaffee, Energydrinks und viel Schwarztee verstärken das Flattern spürbar.</li>
+<li><strong>Angestrengte Augen:</strong> lange Bildschirmarbeit, eine nicht mehr passende Brille, trockene Augen.</li>
+<li><strong>Alkohol und unregelmässiges Essen:</strong> beides kann das Zucken triggern.</li>
+</ul>
+<p>Und Magnesium? Der Reflex, bei Muskelzucken sofort Magnesium zu nehmen, ist verbreitet, die Beleglage dafür ist dünn. Ein Versuch schadet bei gesunden Nieren in der Regel nicht, die zuverlässigeren Hebel sind aber Schlaf, weniger Koffein und Pausen für die Augen.</p>
+<h2>Was du konkret tun kannst</h2>
+<p>Gönn den Augen Bildschirmpausen, prüfe, ob deine Brille noch stimmt, und benetze trockene Augen mit Tropfen. Reduziere Koffein für ein paar Tage deutlich, geh früher ins Bett und leg eine warme Kompresse aufs geschlossene Lid, das entspannt den Muskel. Bei den meisten Menschen ist das Zucken damit innert Tagen bis weniger Wochen Geschichte. Wenn Daueranspannung dein Grundthema ist, findest du den grösseren Rahmen auf der Seite <a href="/beschwerden/stress-burnout/">Stress und Burnout</a>, bei chronisch kurzem Schlaf unter <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann du es anschauen lassen solltest</div><p>Lass es ärztlich beurteilen, wenn das Zucken über Wochen praktisch pausenlos anhält, wenn sich das Auge dabei aktiv zusammenkneift, wenn das Zucken auf Wange oder Mundwinkel derselben Gesichtshälfte übergreift oder wenn Lidhängen, Doppelbilder, Sehstörungen oder eine Gesichtsschwäche dazukommen. Solche Kombinationen sind selten, gehören aber in die Neurologie.</p></div>
+<h2>Warum ausgerechnet jetzt?</h2>
+<p>Viele Betroffene bemerken das Zucken in genau den Phasen, in denen ohnehin alles zu viel ist: Projektabschluss, kleine Kinder, schlechte Nächte, mehr Kaffee als sonst. Das ist kein Zufall, sondern das Muster. Das Lid ist einer der empfindlichsten Muskeln des Körpers und zeigt Übermüdung oft als Erstes an. Insofern lohnt es sich, das Signal nicht nur wegzudrücken, sondern kurz zu fragen, wovon es gerade erzählt.</p>
+<h2>Der Blick der chinesischen Medizin</h2>
+<p>Unruhige, flatternde Muskeln werden in der chinesischen Medizin traditionell mit Erschöpfung und aufgestauter Anspannung in Verbindung gebracht, also genau mit den Zuständen, die auch medizinisch als Auslöser gelten. Das ist ein traditionelles Erklärungsmodell, keine Diagnose. In der Praxis behandeln wir das Lidzucken selbst selten isoliert. Sinnvoller ist die Arbeit am Grundzustand: Schlaf, Anspannung, Regeneration, meist mit <a href="/therapien/akupunktur/">Akupunktur</a>, bei stark verspanntem Nacken- und Kieferbereich ergänzt durch <a href="/therapien/tuina/">Tuina</a>.</p>`,
+    faqs: [
+      { q: 'Ist ein zuckendes Augenlid gefährlich?', a: 'Fast nie. Das flatternde Lidzucken ist eine gutartige Überaktivität einzelner Muskelfasern und verschwindet meist von selbst. Abklären lassen solltest du es, wenn es wochenlang pausenlos anhält, das Auge sich zusammenkneift oder Zucken, Schwäche oder Hängen auf die Gesichtshälfte übergreifen.' },
+      { q: 'Was hilft am schnellsten gegen Lidzucken?', a: 'Mehr Schlaf, deutlich weniger Koffein für einige Tage, Bildschirmpausen und eine warme Kompresse auf das geschlossene Lid. Bei trockenen Augen helfen Benetzungstropfen.' },
+      { q: 'Hilft Magnesium gegen Augenzucken?', a: 'Die Beleglage ist dünn. Ein zeitlich begrenzter Versuch ist bei gesunden Nieren meist unproblematisch, zuverlässiger wirken Schlaf, Koffeinreduktion und Augenpausen.' },
+    ],
+    related: [
+      { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'ohr-einseitig-verstopft',
+    symptom: 'ein einseitig verstopftes Ohr',
+    title: 'Ohr einseitig verstopft ohne Erkältung: Was steckt dahinter?',
+    metaDesc: 'Ein Ohr fühlt sich zu an, wie mit Watte, ohne dass du erkältet bist? Von Ohrenschmalz über die Ohrtrompete bis zum Kiefer: die häufigsten Gründe und das eine Warnzeichen, das eilt.',
+    h1: 'Warum fühlt sich nur ein Ohr verstopft an?',
+    category: 'Kopf & Sinne',
+    lead: 'Wie Watte im Ohr, ein Druck, der beim Schlucken nicht weggeht, die eigene Stimme klingt dumpf. Wenn sich ein Ohr verstopft anfühlt, ohne dass eine Erkältung im Spiel ist, kommen mehrere Ursachen infrage. Die meisten sind gut lösbar. Eine einzige eilt, und die solltest du kennen.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Ohrdruck und Kieferspannung besprechen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Zuerst das Wichtigste</div><p>Wenn du auf dem betroffenen Ohr plötzlich schlechter hörst, also nicht nur ein Druckgefühl hast, sondern Gespräche, Ticken oder Rauschen gedämpft wahrnimmst, lass das innert ein bis zwei Tagen in einer HNO-Praxis abklären. Ein plötzlicher Hörverlust kann ein Hörsturz sein, und dessen Behandlung beginnt am besten früh. Mehr dazu auf unserer Seite <a href="/beschwerden/hoersturz/">Hörsturz</a>.</p></div>
+<h2>Die häufigste Erklärung ist die banalste</h2>
+<p>Ohrenschmalz. Ein Pfropf kann sich über Monate unbemerkt aufbauen und den Gehörgang schlagartig verschliessen, oft nach dem Duschen oder Schwimmen, wenn er aufquillt. Typisch: plötzliches Vollgefühl, dumpfes Hören, manchmal Rauschen, kein Schmerz. Die Lösung ist eine professionelle Ohrreinigung in der Hausarzt- oder HNO-Praxis, die dauert Minuten. Wattestäbchen verschlimmern das Problem, sie schieben den Pfropf tiefer.</p>
+<h2>Wenn der Druckausgleich klemmt</h2>
+<p>Das Mittelohr wird über die Ohrtrompete belüftet, einen feinen Kanal zum Nasenrachen. Arbeitet er nicht richtig, entsteht Unterdruck im Mittelohr: Das Ohr fühlt sich zu an, Schlucken oder Gähnen knackt, bessert aber nur kurz. Auslöser sind Restentzündungen nach Infekten, Allergien, gereizte Schleimhäute oder Druckwechsel nach Fliegen und Tauchen. Hinweise in diese Richtung: Das Gefühl schwankt über den Tag, und die Nase spielt mit. Bei allergischem Hintergrund lohnt der Blick auf <a href="/beschwerden/allergien-heuschnupfen/">Allergien und Heuschnupfen</a>, bei chronisch gereizten Nebenhöhlen auf <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
+<h2>Der unterschätzte Kandidat: dein Kiefer</h2>
+<p>Das Kiefergelenk liegt direkt vor dem Gehörgang, nur durch eine dünne Knochenwand getrennt. Eine verspannte Kaumuskulatur oder nächtliches Zähnepressen kann deshalb ein Ohrdruck- und Vollgefühl erzeugen, das täuschend echt nach Ohr klingt, obwohl das Ohr gesund ist. Verdächtig ist dieses Muster, wenn der Druck morgens am stärksten ist, das Kauen oder Mundöffnen ihn verändert, das Gelenk knackt oder du weisst, dass du knirschst. Dann liest du am besten weiter unter <a href="/beschwerden/kieferschmerzen/">Kieferschmerzen und CMD</a> und <a href="/beschwerden/zaehneknirschen/">Zähneknirschen</a>.</p>
+<h2>Was du selbst prüfen kannst</h2>
+<p>Drei einfache Fragen grenzen die Ursache ein. Erstens: Hörst du wirklich schlechter, oder fühlt es sich nur voll an? Bei echter, plötzlicher Hörminderung gilt der Kasten oben. Zweitens: Funktioniert der Druckausgleich, also Nase zuhalten und sanft Luft ins Ohr drücken? Wenn es knackt und kurz besser wird, spricht das für die Ohrtrompete. Drittens: Ändert Kauen, Gähnen oder Druck auf die Kaumuskulatur vor dem Ohr das Gefühl? Dann rückt der Kiefer in den Fokus.</p>
+<p>Und unabhängig davon gilt: Ein einseitiges Vollgefühl, das über zwei bis drei Wochen bleibt, gehört auch ohne Hörminderung einmal fachärztlich angeschaut, unter anderem, weil dahinter ein unbemerkter Erguss stecken kann.</p>
+<h2>Was die chinesische Medizin beitragen kann</h2>
+<p>Nach der HNO-Abklärung ist unser Beitrag am grössten, wenn Kiefer und Nacken beteiligt sind: Die Kaumuskulatur lässt sich mit <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a> und gezielter Triggerpunktarbeit gut behandeln, und damit verschwindet oft auch das Ohrgefühl. Die chinesische Medizin betrachtet Ohrbeschwerden traditionell ohnehin selten isoliert, sondern im Zusammenspiel mit Anspannung, Kiefer und Nacken. Als Modell gedacht passt das gut zu dem, was die Untersuchung bei diesem Muster häufig zeigt.</p>`,
+    faqs: [
+      { q: 'Warum fühlt sich mein Ohr zu an, obwohl ich nicht erkältet bin?', a: 'Die häufigsten Gründe sind ein Ohrenschmalzpfropf, eine schlecht belüftete Ohrtrompete und eine verspannte Kiefermuskulatur, die den Druck ins Ohr projiziert. Seltener stecken ein Erguss im Mittelohr oder eine Innenohrursache dahinter.' },
+      { q: 'Wann muss ich mit einem verstopften Ohr zum Arzt?', a: 'Rasch, innert ein bis zwei Tagen, wenn du auf dem Ohr plötzlich schlechter hörst, denn das kann ein Hörsturz sein. Ausserdem bei Schmerzen, Ausfluss, Schwindel oder wenn das Vollgefühl länger als zwei bis drei Wochen bleibt.' },
+      { q: 'Kann der Kiefer ein verstopftes Ohr verursachen?', a: 'Ja. Das Kiefergelenk liegt direkt vor dem Gehörgang, verspannte Kaumuskulatur und Zähnepressen können ein Druck- und Vollgefühl im Ohr erzeugen, obwohl das Ohr gesund ist. Typisch ist ein morgens betontes, kaubewegungsabhängiges Gefühl.' },
+      { q: 'Darf ich das Ohr selbst mit Wattestäbchen reinigen?', a: 'Besser nicht. Wattestäbchen schieben Ohrenschmalz tiefer und verdichten ihn zum Pfropf. Sicherer ist die professionelle Reinigung in der Hausarzt- oder HNO-Praxis.' },
+    ],
+    related: [
+      { href: '/beschwerden/hoersturz/', label: 'Hörsturz', cat: 'Beschwerde' },
+      { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen & CMD', cat: 'Beschwerde' },
+      { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
+      { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── SCHLAF & NACHT
+  {
+    slug: 'immer-zur-gleichen-uhrzeit-aufwachen',
+    symptom: 'nächtliches Aufwachen immer zur gleichen Uhrzeit',
+    title: 'Warum wache ich immer zur gleichen Uhrzeit auf?',
+    metaDesc: 'Jede Nacht um die gleiche Zeit wach, oft zwischen drei und vier Uhr? Das hat mit Schlafzyklen, Stresshormonen und Gewohnheit zu tun. Was wirklich dahintersteckt und was hilft.',
+    h1: 'Warum wache ich nachts immer zur gleichen Uhrzeit auf?',
+    category: 'Schlaf & Nacht',
+    lead: 'Drei Uhr vierzehn. Wieder. Wer nachts regelmässig zur fast gleichen Zeit aufwacht, sucht irgendwann nach einer Bedeutung dahinter. Die gute Nachricht: Es gibt eine Erklärung, und sie ist weniger mystisch und besser beeinflussbar, als viele denken.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schlaf und Stress gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nächtliches Aufwachen zur immer gleichen Zeit entsteht aus dem Zusammenspiel von drei sehr irdischen Dingen: dem festen Rhythmus deiner Schlafzyklen, einem in der zweiten Nachthälfte ansteigenden Stresshormonspiegel und einem Lerneffekt, der das Aufwachen zur Gewohnheit macht. Wer dazu noch auf die Uhr schaut, trainiert den Zeitpunkt unfreiwillig weiter an.</p>
+<h2>Warum die Uhrzeit so konstant ist</h2>
+<p>Dein Schlaf läuft in Zyklen von etwa 90 Minuten. Am Ende jedes Zyklus wird der Schlaf ganz natürlich flacher, ein kurzes Erwachen ist dort normal und wird meist sofort vergessen. Gehst du jeden Abend zur ähnlichen Zeit ins Bett, fallen diese flachen Phasen jede Nacht auf die ähnliche Uhrzeit. In der zweiten Nachthälfte kommt dazu, dass der Körper das Aufwachen vorbereitet: Das Stresshormon Cortisol steigt ab den frühen Morgenstunden an. Wer innerlich angespannt ist, wird von diesem Anstieg leichter über die Weckschwelle gehoben, typischerweise irgendwann zwischen drei und fünf Uhr.</p>
+<p>Und dann ist da der Lerneffekt: Wachwerden, auf die Uhr schauen, sich ärgern, grübeln. Das Gehirn merkt sich diese Abfolge erstaunlich schnell. Nach ein paar Wochen ist die Uhrzeit zum inneren Termin geworden.</p>
+<h2>Häufige Verstärker, die du prüfen kannst</h2>
+<ul>
+<li><strong>Alkohol am Abend:</strong> macht das Einschlafen leichter und die zweite Nachthälfte unruhig, das Rebound-Aufwachen kommt oft drei bis vier Stunden nach dem letzten Glas.</li>
+<li><strong>Harndrang:</strong> viel Flüssigkeit oder harntreibende Getränke am Abend wecken zuverlässig zur ähnlichen Zeit.</li>
+<li><strong>Umgebung:</strong> die Heizung, die um vier Uhr anspringt, der Lieferwagen, das Licht des Bewegungsmelders, der Partner mit anderem Rhythmus.</li>
+<li><strong>Später Zucker oder sehr spätes Essen:</strong> Blutzuckertäler in der Nacht können Aufwachreaktionen auslösen.</li>
+<li><strong>Körperliche Beschwerden:</strong> Schmerzen, Reflux im Liegen oder nächtliches Schwitzen, dazu mehr unter <a href="/koerpersignale/nachtschweiss-ohne-fieber/">Nachtschweiss ohne Fieber</a>.</li>
+</ul>
+<h2>Was du konkret ändern kannst</h2>
+<p>Der wirksamste Einzelschritt klingt trivial: <strong>Stell die Uhr ausser Sichtweite.</strong> Ohne Uhrzeit kein Termin-Training und deutlich weniger Ärger-Reaktion. Zweitens: Wenn du länger als gefühlt 20 Minuten wach liegst, steh kurz auf, geh in einen anderen Raum, lies etwas Langweiliges bei schummrigem Licht und geh erst schläfrig zurück. Das klingt kontraintuitiv, verhindert aber, dass dein Bett zum Wachliege-Ort wird. Drittens: Alkohol und grosse Trinkmengen am Abend reduzieren, Schlafzimmer kühl und dunkel halten.</p>
+<p>Wenn das Aufwachen Teil eines grösseren Musters ist, ständiges Grübeln, Erschöpfung am Morgen, Anspannung am Tag, findest du die Behandlungsseite dazu unter <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a> und den Stress-Rahmen unter <a href="/beschwerden/stress-burnout/">Stress und Burnout</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann du genauer hinschauen solltest</div><p>Ärztlich abklären lassen solltest du das nächtliche Erwachen, wenn lautes Schnarchen mit Atemaussetzern dazukommt, wenn du trotz genug Stunden chronisch wie gerädert aufwachst, wenn du schweissgebadet erwachst und Gewicht verlierst, oder wenn sehr frühes Erwachen mit anhaltend gedrückter Stimmung, Freudlosigkeit und Antriebslosigkeit einhergeht. Letzteres kann ein Hinweis auf eine Depression sein und verdient eine ehrliche Abklärung, nicht nur Schlafhygiene-Tipps.</p></div>
+<h2>Und die berühmte Organuhr?</h2>
+<p>Vielleicht hast du gelesen, dass Aufwachen um drei Uhr die Leber bedeute. Dazu sind wir gerne ehrlich: Die Organuhr ist ein traditionelles Ordnungsmodell der chinesischen Medizin, ein historisches Denkschema, kein medizinischer Befund. Aus einem Aufwachzeitpunkt lässt sich keine Organdiagnose ableiten, und wer dir das als Gewissheit verkauft, macht es sich zu einfach. Was die chinesische Medizin tatsächlich beitragen kann, liegt woanders: in der Arbeit an Anspannung, Erschöpfung und Schlafqualität, meist mit <a href="/therapien/akupunktur/">Akupunktur</a> und angepassten Abendroutinen. Was Akupunktur bei Schlafproblemen realistisch leisten kann, haben wir hier eingeordnet: <a href="/wissen/akupunktur-schlafprobleme/">Studienlage Akupunktur bei Schlafproblemen</a>.</p>`,
+    faqs: [
+      { q: 'Warum wache ich jede Nacht um drei Uhr auf?', a: 'Meist trifft das Ende eines 90-Minuten-Schlafzyklus auf den natürlichen Cortisolanstieg der zweiten Nachthälfte, und ein Lerneffekt macht die Uhrzeit zur Gewohnheit. Alkohol, Harndrang, Umgebungsreize und Stress verstärken das Muster.' },
+      { q: 'Bedeutet Aufwachen um drei Uhr etwas mit der Leber?', a: 'Nein. Die Organuhr ist ein traditionelles Ordnungsmodell der chinesischen Medizin, kein medizinischer Befund. Aus einer Aufwachzeit lässt sich keine Organdiagnose ableiten.' },
+      { q: 'Was hilft gegen nächtliches Aufwachen zur gleichen Zeit?', a: 'Uhr ausser Sichtweite stellen, bei längerem Wachliegen kurz aufstehen statt liegen bleiben, Alkohol und grosse Trinkmengen am Abend reduzieren, Schlafzimmer kühl und dunkel halten. Bei anhaltendem Muster mit Tagesmüdigkeit lohnt die Abklärung.' },
+      { q: 'Wann ist nächtliches Erwachen ein Warnzeichen?', a: 'Bei Schnarchen mit Atemaussetzern, chronischer Erschöpfung trotz genug Schlafstunden, durchgeschwitztem Erwachen mit Gewichtsverlust oder sehr frühem Erwachen mit anhaltend gedrückter Stimmung. Diese Kombinationen gehören ärztlich beurteilt.' },
+    ],
+    related: [
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+      { href: '/wissen/akupunktur-schlafprobleme/', label: 'Akupunktur bei Schlafproblemen', cat: 'Artikel' },
+    ],
+  },
+
+  {
+    slug: 'nachtschweiss-ohne-fieber',
+    symptom: 'Nachtschweiss ohne Fieber',
+    title: 'Nachtschweiss ohne Fieber: Was kann dahinterstecken?',
+    metaDesc: 'Nachts durchgeschwitzt, aber kein Fieber messbar? Von Schlafzimmer und Alkohol über Hormone und Medikamente bis zu den Warnzeichen, die eine Ärztin sehen sollte.',
+    h1: 'Warum schwitze ich nachts, obwohl ich kein Fieber habe?',
+    category: 'Schlaf & Nacht',
+    lead: 'Du wachst auf und das Pyjama klebt, das Kissen ist feucht, dabei zeigt das Thermometer normale Werte. Nächtliches Schwitzen ohne Fieber ist häufig und hat oft banale Gründe. Es gibt aber Kombinationen, die eine Ärztin sehen sollte, und genau die trennen wir hier sauber ab.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Nächtliches Schwitzen einordnen lassen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Erst die Sortierfrage: Wie nass ist nass?</h2>
+<p>Für die Einordnung zählt weniger das Gefühl als die Menge. Ein feuchter Nacken oder ein leicht klammes Shirt nach einer warmen Nacht ist ein anderes Signal als ein Pyjama oder Bettzeug, das du wechseln musst. Mediziner:innen interessieren sich vor allem für das zweite Muster, das durchnässende Schwitzen, besonders wenn es neu ist und sich über Wochen wiederholt.</p>
+<h2>Die banalen Ursachen zuerst</h2>
+<p>Bevor jemand an seltene Erkrankungen denkt, lohnt der Blick auf das Schlafzimmer und den Abend davor:</p>
+<ul>
+<li><strong>Zu warm gebettet:</strong> Daunendecke, Raumtemperatur über 19 Grad, synthetisches Pyjama. Der häufigste Grund überhaupt.</li>
+<li><strong>Alkohol:</strong> weitet die Hautgefässe und stört die zweite Nachthälfte, Nachtschweiss nach ein, zwei Gläsern ist ein bekanntes Muster.</li>
+<li><strong>Spätes, scharfes oder üppiges Essen</strong> heizt den Stoffwechsel in die Nacht hinein an.</li>
+<li><strong>Intensiver Sport am späten Abend</strong> hält die Wärmeproduktion hoch.</li>
+<li><strong>Stress und belastende Träume:</strong> das nächtliche Stresssystem schwitzt mit.</li>
+</ul>
+<p>Wenn sich dein Nachtschweiss mit kühlerem Schlafzimmer, leichterer Decke und alkoholfreien Abenden deutlich bessert, war die Erklärung meistens genau dort.</p>
+<h2>Körperliche Ursachen, die eine Abklärung findet</h2>
+<p><strong>Hormone.</strong> Wechseljahre sind die häufigste fassbare Ursache bei Frauen ab Mitte vierzig, oft als nächtliche Wallungen mit Erwachen. Sie können Jahre vor der letzten Blutung beginnen. Mehr dazu unter <a href="/beschwerden/wechseljahre/">Wechseljahre</a> und <a href="/beschwerden/hitzewallungen/">Hitzewallungen</a>.</p>
+<p><strong>Medikamente.</strong> Einige Antidepressiva, Hormonpräparate, fiebersenkende Mittel und Blutzuckermedikamente verstärken nächtliches Schwitzen. Ein Blick auf den Beipackzettel und ein Gespräch in der Praxis lohnen sich, setz nichts selbst ab.</p>
+<p><strong>Schilddrüse und Blutzucker.</strong> Eine Überfunktion macht wärmeintolerant und schwitzig, nächtliche Unterzuckerungen können Schweissausbrüche mit Herzklopfen auslösen. Beides ist über einfache Blutwerte prüfbar.</p>
+<p><strong>Infekte.</strong> Auch schwelende Infekte ohne gemessenes Fieber können nachts schwitzen lassen, gerade wenn Abgeschlagenheit dazukommt.</p>
+<p><strong>Schlafbezogene Atmung.</strong> Schnarchen mit Atemaussetzern treibt das nächtliche Stresssystem hoch, Schwitzen kann ein Begleitzeichen sein.</p>
+<div class="wa-callout"><div class="wa-callout-label">Diese Kombination gehört zeitnah zur Ärztin</div><p>Durchnässender Nachtschweiss über mehrere Wochen zusammen mit ungewolltem Gewichtsverlust, wiederkehrenden Fieberschüben, geschwollenen Lymphknoten, ausgeprägter Erschöpfung oder Juckreiz muss ärztlich abgeklärt werden. Meist findet sich auch dann eine gutartige Erklärung, aber diese sogenannte B-Symptomatik soll eine Ärztin ausschliessen, nicht du selbst. Bitte nicht wochenlang beobachten, sondern einen Termin machen.</p></div>
+<h2>So grenzt du dein Muster ein</h2>
+<p>Zwei Wochen Notizen reichen oft: In welchen Nächten schwitzt du, was gab es am Abend, wie warm war das Zimmer, musstest du Wäsche wechseln, bist du mit Herzklopfen erwacht? Und tagsüber: schwitzt du da auch übermässig? Falls ja, gehört dein Muster eher auf die Seite <a href="/koerpersignale/starkes-schwitzen-ohne-sport/">Starkes Schwitzen ohne Sport</a>, beim chronischen Schwitzen an Händen und Achseln direkt zur <a href="/beschwerden/hyperhidrose/">Hyperhidrose</a>.</p>
+<h2>Was die chinesische Medizin daraus macht</h2>
+<p>Nächtliches Schwitzen ist in der chinesischen Medizin seit jeher ein eigenes Beobachtungsthema und wird dort traditionell als Zeichen erschöpfter Reserven gelesen, gerade in hormonellen Umbruchphasen und nach auszehrenden Belastungen. Das ist ein traditionelles Modell und ersetzt keine der oben genannten Abklärungen. Nach unauffälligem Befund kann eine Begleitung mit <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> sinnvoll sein, am dankbarsten bei Wallungen in den Wechseljahren und beim stressgetriebenen Schwitzen. Ziel ist, dass du seltener durchgeschwitzt aufwachst, ein Versprechen auf null Nächte wäre unseriös.</p>`,
+    faqs: [
+      { q: 'Ist Nachtschweiss ohne Fieber gefährlich?', a: 'Meist nicht. Die häufigsten Ursachen sind ein zu warmes Schlafzimmer, Alkohol, spätes Essen, Stress, Hormone und Medikamente. Zeitnah abklären lassen solltest du durchnässenden Nachtschweiss über Wochen zusammen mit Gewichtsverlust, Fieberschüben, geschwollenen Lymphknoten oder starker Erschöpfung.' },
+      { q: 'Was ist der Unterschied zwischen Nachtschweiss und Hyperhidrose?', a: 'Hyperhidrose ist chronisches übermässiges Schwitzen, typischerweise tagsüber an Händen, Achseln oder Füssen, oft seit Jugendjahren. Nachtschweiss ist ein nächtliches Muster mit eigenen Ursachen von Schlafumgebung über Hormone bis zu Medikamenten.' },
+      { q: 'Können die Wechseljahre nachts schwitzen lassen, obwohl der Zyklus noch regelmässig ist?', a: 'Ja. Nächtliche Wallungen können Jahre vor der letzten Blutung beginnen, wenn die Zyklen äusserlich noch normal wirken. Sie sind die häufigste fassbare Ursache für neuen Nachtschweiss bei Frauen ab Mitte vierzig.' },
+      { q: 'Was kann TCM bei Nachtschweiss tun?', a: 'Nach ärztlicher Abklärung kann eine Behandlung mit Akupunktur und Kräutertherapie helfen, Wallungen und stressgetriebenes Schwitzen zu dämpfen, sodass durchgeschwitzte Nächte seltener werden. Die Ursachensuche ersetzt das nicht.' },
+    ],
+    related: [
+      { href: '/koerpersignale/starkes-schwitzen-ohne-sport/', label: 'Starkes Schwitzen ohne Sport', cat: 'Körpersignal' },
+      { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
+      { href: '/beschwerden/hyperhidrose/', label: 'Hyperhidrose', cat: 'Beschwerde' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── MUSKELN & BEINE (Welle 2)
+  {
+    slug: 'rueckenschmerzen-beim-husten',
+    symptom: 'Rückenschmerzen beim Husten',
+    title: 'Rückenschmerzen beim Husten oder Niesen: Was bedeutet das?',
+    metaDesc: 'Beim Husten oder Niesen schiesst ein Schmerz in den Rücken? Warum die plötzliche Druckerhöhung Muskeln, Gelenke und Bandscheiben fordert und welche Zeichen abgeklärt gehören.',
+    h1: 'Warum schmerzt mein Rücken beim Husten oder Niesen?',
+    category: 'Muskeln & Beine',
+    lead: 'Ein Niesen, und es fährt dir in den Rücken. Oder jeder Hustenstoss sticht zwischen den Schulterblättern. Dass der Rücken genau in diesen Momenten reagiert, ist mechanisch gut erklärbar und meistens harmlos. Wohin der Schmerz zieht, entscheidet, wie genau du hinschauen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Akuten Rückenschmerz behandeln lassen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Was beim Husten mit deinem Rücken passiert</h2>
+<p>Husten und Niesen sind kleine Explosionen: Die Bauch- und Rumpfmuskulatur spannt schlagartig an, der Druck im Bauchraum schnellt hoch, und die Wirbelsäule wird ruckartig bewegt und gestaucht. Für einen gesunden Rücken ist das Routine. Ist aber irgendwo etwas gereizt, eine verspannte Muskelpartie, ein blockiertes Wirbel- oder Rippengelenk, eine empfindliche Bandscheibe, dann meldet sich genau diese Stelle im Moment der Druckspitze. Der Husten verursacht das Problem selten, er deckt es auf.</p>
+<h2>Die drei häufigsten Muster</h2>
+<p><strong>Muskulär oder blockiert:</strong> Ein umschriebener, gut zeigbarer Schmerz neben der Wirbelsäule oder am Rippenbogen, der bei Bewegung und Husten sticht, in Ruhe aber erträglich ist. Nach längeren Hustenepisoden ist oft schlicht die Rumpfmuskulatur überlastet, ein Muskelkater vom vielen Husten. Beides ist unangenehm und harmlos, Wärme und Bewegung helfen.</p>
+<p><strong>Brustwirbelsäule und Rippengelenke:</strong> Sticht es zwischen den Schulterblättern oder seitlich am Brustkorb und verstärkt sich beim tiefen Einatmen genauso wie beim Husten, sind häufig die kleinen Rippen-Wirbel-Gelenke gereizt. Auch das ist meist gut behandelbar.</p>
+<p><strong>Bandscheibe und Nervenwurzel:</strong> Interessant wird es, wenn der Hustenschmerz nicht am Rücken bleibt, sondern ins Gesäss oder Bein schiesst. Die Druckerhöhung beim Husten und Niesen presst kurzzeitig auf gereizte Nervenwurzeln, ausstrahlender Schmerz in genau diesem Moment ist ein klassischer Hinweis auf eine Bandscheibenreizung. Das ist kein Notfall, aber ein Grund für eine Untersuchung. Die Hintergründe findest du unter <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a> und <a href="/beschwerden/ischias/">Ischias</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Diese Zeichen gehören sofort abgeklärt</div><p>Geh noch heute in ärztliche Behandlung, wenn zum Hustenschmerz Taubheit oder Lähmungserscheinungen im Bein, Taubheit im Genital- oder Analbereich oder Störungen von Blase oder Darm kommen. Ebenfalls zeitnah abklären: Rückenschmerz beim Husten nach einem Sturz oder Unfall, bei bekannter Osteoporose, bei Fieber oder wenn der Schmerz mit Atemnot einhergeht. Dahinter können Wirbelbrüche oder Erkrankungen von Lunge und Rippenfell stecken, die eine eigene Behandlung brauchen.</p></div>
+<h2>Was du selbst tun kannst</h2>
+<p>Beim akuten Muster hilft die Husten-Technik: Beim Husten oder Niesen leicht in die Knie gehen oder sich abstützen und den Rumpf nicht maximal aufrichten, das federt die Druckspitze ab. Danach gilt dasselbe wie bei akuten Rückenschmerzen generell: in Bewegung bleiben statt Schonhaltung, Wärme auf die verspannte Region, und dem Rücken zwei, drei Wochen Zeit geben. Bessert sich nichts oder strahlt der Schmerz zunehmend aus, gehört er untersucht. Die grosse Übersicht zum Thema bleibt unsere Seite <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a>.</p>
+<h2>Wie wir solche Rücken behandeln</h2>
+<p>Beim muskulär-blockierten Muster ist die Kombination aus <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/schroepfen/">Schröpfen</a> und <a href="/therapien/tuina/">Tuina</a> unser Standard: Die tiefe Rückenmuskulatur entspannt, die Gelenke werden mobilisiert, der Hustenstich verliert seinen Auslöser. Die chinesische Medizin denkt den Brustkorb dabei traditionell als Einheit von Atmung und Haltung, was gut zum klinischen Bild passt, in dem Atembewegung und Rumpfspannung zusammen schmerzen. Bei Verdacht auf eine Nervenwurzelbeteiligung gehört die ärztliche Diagnose zuerst, behandelt wird dann begleitend.</p>`,
+    faqs: [
+      { q: 'Warum tut mein Rücken ausgerechnet beim Husten weh?', a: 'Husten und Niesen erzeugen eine schlagartige Druckerhöhung und eine ruckartige Anspannung des Rumpfs. Gereizte Muskeln, blockierte Wirbel- oder Rippengelenke und empfindliche Bandscheiben melden sich genau in diesem Moment. Der Husten deckt das Problem auf, er verursacht es selten.' },
+      { q: 'Was bedeutet es, wenn der Hustenschmerz ins Bein ausstrahlt?', a: 'Ausstrahlung ins Gesäss oder Bein beim Husten oder Niesen ist ein klassischer Hinweis auf eine gereizte Nervenwurzel, etwa durch eine Bandscheibenvorwölbung. Das ist kein Notfall, gehört aber ärztlich untersucht.' },
+      { q: 'Wann ist Rückenschmerz beim Husten ein Notfall?', a: 'Bei gleichzeitiger Taubheit oder Lähmung im Bein, Taubheit im Genital- oder Analbereich oder Blasen- und Darmstörungen sofort ärztlich abklären lassen. Zeitnah untersuchen lassen auch nach Sturz, bei Osteoporose, Fieber oder Atemnot.' },
+      { q: 'Was hilft akut gegen Rückenschmerzen beim Husten?', a: 'Beim Husten leicht in die Knie gehen oder abstützen, das federt die Druckspitze ab. Danach Wärme, moderate Bewegung statt Schonhaltung. Hält der Schmerz über zwei bis drei Wochen an oder strahlt er aus, gehört er abgeklärt.' },
+    ],
+    related: [
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/therapien/schroepfen/', label: 'Schröpfen', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'bein-wird-beim-sitzen-taub',
+    symptom: 'ein taubes Bein beim Sitzen',
+    title: 'Bein wird beim Sitzen taub: harmlos oder Nervensache?',
+    metaDesc: 'Das Bein schläft beim Sitzen ein und kribbelt beim Aufstehen? Meist ist es Druck auf Nerven, manchmal steckt der Rücken dahinter. Woran du den Unterschied erkennst.',
+    h1: 'Warum wird mein Bein beim Sitzen taub?',
+    category: 'Muskeln & Beine',
+    lead: 'Du sitzt eine Weile, stehst auf, und das Bein ist wie abgestorben, dann prickelt es sich zurück ins Leben. Ein eingeschlafenes Bein kennt jeder Mensch, und meistens ist es genau das: Druck auf einen Nerv, der sich sofort erholt. Es gibt aber Verläufe, bei denen du genauer hinschauen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Taubes Bein und Rücken anschauen lassen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Warum Beine beim Sitzen einschlafen</h2>
+<p>Anders als oft vermutet ist selten die Durchblutung schuld, sondern fast immer direkter Druck auf einen Nerv. Beim Sitzen laufen mehrere Nerven durch exponierte Engstellen: unter dem Gesäss, an der Rückseite des Oberschenkels auf harter Stuhlkante, und besonders am Wadenbeinkopf knapp unter dem Knie, wo ein Nerv fast ungeschützt unter der Haut liegt. Übereinandergeschlagene Beine, Schneidersitz, eine harte Kante oder ein prall gefülltes Portemonnaie in der Gesässtasche drücken genau dort. Der Nerv meldet erst Kribbeln, dann Taubheit, und nach dem Aufstehen prickelt sich das Gefühl zurück.</p>
+<p>Dieses Muster, klar an die Sitzposition gebunden und nach wenigen Minuten vollständig verschwunden, ist harmlos. Es ist die Aufforderung, die Position öfter zu wechseln, mehr nicht.</p>
+<h2>Wann der Rücken der eigentliche Absender ist</h2>
+<p>Anders sieht es aus, wenn das Sitzen selbst das Problem füttert. Bandscheiben mögen langes Sitzen nicht: Der Druck auf die untere Lendenwirbelsäule ist im Sitzen hoch, und eine gereizte Nervenwurzel meldet sich dann typischerweise mit Taubheit oder Kribbeln, das vom Gesäss über die Beinrückseite abwärts zieht, oft zusammen mit Rücken- oder Gesässschmerz. Verdächtig ist dieses Muster, wenn das Taubheitsgefühl streifenförmig verläuft, wenn es beim längeren Sitzen zunimmt und im Gehen oder Liegen besser wird, und wenn Husten oder Pressen es kurz verstärkt. Dann bist du thematisch bei <a href="/beschwerden/ischias/">Ischias</a> und <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a>, auch das <a href="/beschwerden/piriformis-syndrom/">Piriformis-Syndrom</a> kann so aussehen.</p>
+<p>Und wenn beide Füsse oder Unterschenkel immer wieder taub kribbeln, unabhängig von der Sitzposition und eher strumpfförmig, passt das nicht zu Druck von aussen, sondern eher zu einer allgemeinen Nervenstörung. Die Einordnung dazu: <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Hier nicht abwarten</div><p>Sofort ärztlich abklären lassen: Taubheit, die nach dem Aufstehen bleibt statt zu verschwinden. Ein Fuss, der sich nicht mehr richtig anheben lässt und beim Gehen hängt. Taubheit im Genital- oder Analbereich oder neue Störungen von Blase oder Darm, das ist ein Notfall. Und ein plötzlich taubes, schweres Bein ohne jeden Sitz-Auslöser gehört noch am selben Tag beurteilt.</p></div>
+<h2>Was du im Alltag ändern kannst</h2>
+<p>Wechsle die Sitzposition, bevor das Kribbeln kommt, nicht erst danach. Beine nicht dauerhaft übereinanderschlagen, das Portemonnaie aus der Gesässtasche, harte Stuhlkanten entschärfen, und bei langem Sitzen einmal pro Stunde kurz aufstehen. Wenn dein Bein vor allem auf der Toilette oder im Schneidersitz einschläft, ist das schlicht Positionsdruck, kein Krankheitszeichen. Wer beruflich viel sitzt und zusätzlich Rückenschmerzen hat, findet die Behandlungsseite unter <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a>.</p>
+<h2>Was die chinesische Medizin beitragen kann</h2>
+<p>Beim rückengetriebenen Muster arbeiten wir nach der ärztlichen Diagnose an der Kette aus tiefer Gesässmuskulatur, Lendenwirbelsäule und Beinrückseite, meist mit <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a>. Die chinesische Medizin beschreibt Taubheit traditionell als Zeichen, dass die Versorgung einer Region nicht frei fliesst, ein altes Bild, das als Modell gut zur Kompression passt, aber keine Diagnose ersetzt. Beim rein positionsbedingten Einschlafen des Beins braucht es keine Behandlung, sondern bessere Sitzgewohnheiten, und das sagen wir dir auch so.</p>`,
+    faqs: [
+      { q: 'Ist ein eingeschlafenes Bein beim Sitzen gefährlich?', a: 'Wenn es klar an die Sitzposition gebunden ist und nach dem Aufstehen innert Minuten vollständig verschwindet, ist es harmlos: Druck auf einen Nerv, keine Durchblutungsstörung. Bleibende Taubheit, ein hängender Fuss oder Störungen von Blase und Darm sind dagegen Alarmzeichen.' },
+      { q: 'Kann das taube Bein vom Rücken kommen?', a: 'Ja. Eine gereizte Nervenwurzel der Lendenwirbelsäule meldet sich oft gerade im Sitzen, mit streifenförmiger Taubheit vom Gesäss abwärts, die im Gehen besser wird. Dieses Muster gehört untersucht.' },
+      { q: 'Warum schläft das Bein auf der Toilette ein?', a: 'Der harte Sitzrand drückt auf Nerven an der Oberschenkelrückseite, gleichzeitig ist die Haltung vorgebeugt. Das ist reiner Positionsdruck und verschwindet nach dem Aufstehen von selbst.' },
+      { q: 'Wann muss ich mit einem tauben Bein zum Arzt?', a: 'Sofort bei Taubheit, die bestehen bleibt, bei einem Fuss, der beim Gehen hängt, bei Taubheit im Genital- oder Analbereich oder neuen Blasen- und Darmstörungen. Ebenfalls zeitnah bei wiederkehrender Taubheit mit Rückenschmerz und Ausstrahlung.' },
+    ],
+    related: [
+      { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── HÄNDE & NERVEN (Welle 2)
+  {
+    slug: 'finger-morgens-steif',
+    symptom: 'morgens steife Finger',
+    title: 'Finger morgens steif: Was die Dauer verrät',
+    metaDesc: 'Steife Finger nach dem Aufstehen, die erst langsam in Gang kommen? Ob Überlastung, Arthrose oder eine Entzündung dahintersteckt, verrät vor allem eines: wie lange die Steifigkeit anhält.',
+    h1: 'Warum sind meine Finger morgens so steif?',
+    category: 'Hände & Nerven',
+    lead: 'Die Kaffeetasse greifen, die Zahnpastatube öffnen: Morgens fühlen sich die Finger dick, hölzern und langsam an, erst nach einer Weile laufen sie warm. Morgensteifigkeit der Finger ist häufig, und die wichtigste diagnostische Frage kannst du selbst beantworten: Wie lange dauert sie?',
+    readingTime: '6 Min.',
+    ctaTitle: 'Steife Finger einordnen lassen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Die Uhr ist der beste Hinweisgeber</h2>
+<p>Merk dir eine einfache Faustregel, mit der auch Rheumatolog:innen arbeiten: <strong>Anlaufsteifigkeit von wenigen Minuten</strong>, die nach dem ersten Bewegen verschwindet, spricht eher für Verschleiss oder Überlastung. <strong>Morgensteifigkeit, die deutlich länger als 30 bis 60 Minuten anhält</strong>, womöglich mit geschwollenen, warmen Gelenken, spricht für eine Entzündung und gehört abgeklärt. Diese eine Beobachtung sortiert die Ursachen besser als vieles andere.</p>
+<h2>Warum Finger gerade morgens streiken</h2>
+<p>Über Nacht bewegt sich die Hand kaum. Gelenkflüssigkeit verteilt sich schlechter, Gewebswasser sammelt sich in den Fingern, und Kapseln und Sehnen stehen morgens praller und strammer da als tagsüber. Ein bisschen Anlaufzeit am Morgen ist deshalb normal, gerade mit zunehmendem Alter und nach handintensiven Tagen mit Garten, Werkzeug oder viel Tastatur.</p>
+<h2>Die häufigsten Erklärungen im Überblick</h2>
+<p><strong>Überlastung:</strong> Nach ungewohnter Handarbeit reagieren Sehnen und Sehnenscheiden gereizt, morgens fühlt sich alles steif an, im Tagesverlauf wird es gut. Meist erledigt sich das mit ein paar ruhigeren Tagen. Bleibt ein einzelner Finger hängen oder schnappt beim Strecken, ist das ein eigenes Sehnenthema und einen Blick auf <a href="/beschwerden/sehnenscheidenentzuendung/">Sehnenscheidenentzündung</a> wert.</p>
+<p><strong>Arthrose der Fingergelenke:</strong> Das typische Bild sind kurze Anlaufsteifigkeit, knotige Verdickungen an den Endgelenken oder ein schmerzender Daumensattel beim Greifen und Aufschrauben. Verschleiss betrifft oft einzelne Gelenke und beide Hände unterschiedlich. Mehr dazu unter <a href="/beschwerden/arthrose/">Arthrose</a> und, für den Daumen, <a href="/beschwerden/rhizarthrose/">Rhizarthrose</a>.</p>
+<p><strong>Entzündlich-rheumatische Erkrankungen:</strong> Hier dauert die Morgensteifigkeit lange, betrifft bevorzugt Grund- und Mittelgelenke, oft an beiden Händen symmetrisch, mit weichen, warmen Schwellungen und manchmal Müdigkeit und Krankheitsgefühl dazu. Das Krankheitsbild beschreiben wir unter <a href="/beschwerden/rheuma/">Rheuma</a>.</p>
+<p><strong>Wassereinlagerungen und Hormone:</strong> In Schwangerschaft und Wechseljahren sowie bei salzreichem Essen am Vorabend stehen die Finger morgens praller da. Kommt Kribbeln oder nächtliches Einschlafen der Hände dazu, lohnt der Blick auf <a href="/koerpersignale/finger-schlafen-ein/">einschlafende Finger</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Damit bitte nicht warten</div><p>Lass deine Hände rheumatologisch abklären, wenn die Morgensteifigkeit regelmässig länger als 30 bis 60 Minuten dauert, wenn Gelenke geschwollen, warm oder druckempfindlich sind, wenn beide Hände symmetrisch betroffen sind oder Müdigkeit, Krankheitsgefühl und nächtlicher Gelenkschmerz dazukommen. Entzündliches Rheuma lässt sich heute gut behandeln, aber der Behandlungserfolg hängt stark davon ab, wie früh es erkannt wird. Wochenlanges Zuwarten ist hier die falsche Geduld.</p></div>
+<h2>Was den Morgen leichter macht</h2>
+<p>Ein Ritual von zwei, drei Minuten wirkt oft erstaunlich gut: die Hände unter warmem Wasser oder um die Teetasse aufwärmen, dann jeden Finger einmal durchbewegen, Faust öffnen und schliessen, die Handflächen ausstreichen. Wärme plus Bewegung bringt Gelenkflüssigkeit und Durchblutung in Gang. Tagsüber helfen Pausen bei handlastiger Arbeit mehr als Schonung, denn steife Gelenke wollen bewegt werden, nur nicht überlastet.</p>
+<h2>Wie die chinesische Medizin steife Hände betrachtet</h2>
+<p>Steifigkeit, die auf Wärme und Bewegung anspricht, ist in der chinesischen Medizin ein klassisches Muster: Sie wird dort traditionell als Zeichen gelesen, dass Kälte und mangelnde Zirkulation die Gelenke unbeweglich machen, weshalb Wärmeanwendungen fester Teil der Behandlung sind. Als Denkmodell passt das gut zur morgendlichen Anlaufsteifigkeit, ersetzt aber keine rheumatologische Diagnostik. In der Praxis kombinieren wir bei abgeklärten, verschleissbetonten Beschwerden <a href="/therapien/akupunktur/">Akupunktur</a> mit <a href="/therapien/moxibustion/">Moxibustion</a> und Handmassagen. Bei entzündlichem Rheuma bleibt die rheumatologische Therapie führend, wir behandeln begleitend.</p>`,
+    faqs: [
+      { q: 'Wie lange dürfen Finger morgens steif sein?', a: 'Anlaufsteifigkeit von wenigen Minuten, die nach dem ersten Bewegen verschwindet, ist meist harmlos und spricht eher für Verschleiss oder Überlastung. Dauert die Morgensteifigkeit regelmässig länger als 30 bis 60 Minuten, spricht das für eine Entzündung und gehört rheumatologisch abgeklärt.' },
+      { q: 'Woran erkenne ich rheumatische Morgensteifigkeit?', a: 'An langer Dauer über 30 bis 60 Minuten, weichen, warmen Schwellungen bevorzugt an Grund- und Mittelgelenken, symmetrischem Befall beider Hände und Begleitzeichen wie Müdigkeit oder Krankheitsgefühl. Früh abklären lohnt sich, weil frühe Behandlung die Prognose deutlich verbessert.' },
+      { q: 'Was hilft sofort gegen steife Finger am Morgen?', a: 'Wärme plus Bewegung: Hände unter warmem Wasser aufwärmen, dann jeden Finger durchbewegen, Faust öffnen und schliessen. Das bringt Gelenkflüssigkeit und Durchblutung in Gang und verkürzt die Anlaufzeit.' },
+      { q: 'Kann TCM bei steifen Fingern helfen?', a: 'Bei abgeklärten, verschleissbetonten Beschwerden kann die Kombination aus Akupunktur, Wärmeanwendungen wie Moxibustion und Handmassagen Steifigkeit und Schmerzen lindern. Bei entzündlichem Rheuma bleibt die rheumatologische Behandlung führend.' },
+    ],
+    related: [
+      { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
+      { href: '/beschwerden/rheuma/', label: 'Rheuma', cat: 'Beschwerde' },
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Eine Hand kälter als die andere', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'hand-kribbelt-beim-velofahren',
+    symptom: 'kribbelnde Hände beim Velofahren',
+    title: 'Hand kribbelt beim Velofahren: Ursachen und Lösungen',
+    metaDesc: 'Nach einer halben Stunde auf dem Velo schlafen Finger ein oder die Hand kribbelt? Welcher Nerv am Lenker unter Druck gerät, welche Einstellungen helfen und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum kribbelt meine Hand beim Velofahren?',
+    category: 'Hände & Nerven',
+    lead: 'Die ersten Kilometer sind gut, dann beginnt es: Kribbeln im kleinen Finger, taube Fingerkuppen, die Hand will geschüttelt werden. Kribbelnde Hände auf dem Velo sind ein reines Druckproblem, und sie lassen sich fast immer mit Position und Material lösen.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Hartnäckiges Kribbeln abklären lassen?',
+    author: AUTOR,
+    ...DATEN,
+    bodyHtml: `<h2>Was am Lenker mit deinen Nerven passiert</h2>
+<p>Beim Fahren lastet ein Teil deines Körpergewichts dauerhaft auf zwei kleinen Kontaktflächen, den Handballen. Genau dort verlaufen die beiden wichtigsten Nerven der Hand dicht unter der Haut. Dauerdruck plus Vibration vom Untergrund reizt sie, und sie antworten mit Kribbeln, Pelzigkeit und Taubheit. Welcher Bereich kribbelt, verrät den betroffenen Nerv:</p>
+<ul>
+<li><strong>Ring- und Kleinfinger:</strong> Der Ellennerv wird an der Kleinfingerseite des Handballens gedrückt. Das ist das mit Abstand häufigste Muster bei Velofahrer:innen, in der Sportmedizin gut bekannt.</li>
+<li><strong>Daumen bis Mittelfinger:</strong> Der Mittelhandnerv gerät unter Druck, wenn das Handgelenk stark überstreckt auf dem Lenker liegt, das klassische Karpaltunnel-Gebiet.</li>
+<li><strong>Diffuses Kribbeln im ganzen Arm:</strong> Hier lohnt der Blick nach oben. Eine gestauchte, hochgezogene Schulter-Nacken-Partie bei sportlicher Sitzposition kann die Nervenbahnen schon vor der Hand irritieren, mehr dazu unter <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>.</li>
+</ul>
+<h2>Die wirksamsten Anpassungen</h2>
+<p>Fast alle Lösungen zielen darauf, Druck zu verteilen, Position zu variieren und Gewicht von den Händen zu nehmen:</p>
+<p><strong>Griffposition regelmässig wechseln</strong>, am Rennlenker zwischen Ober-, Unterlenker und Hauben, am flachen Lenker mit Hörnchen als zweiter Position. Kein Nerv verträgt eine Stunde denselben Druckpunkt. <strong>Gepolsterte Handschuhe und ergonomische Griffe</strong> mit breiter Auflage entlasten die Handkante spürbar. <strong>Handgelenk gerade halten</strong> statt maximal überstreckt. Und der oft übersehene Hebel: <strong>die Sitzposition</strong>. Ein zu tiefer Lenker, ein zu weit nach vorn gekippter Sattel oder ein zu langes Cockpit schieben dein Gewicht auf die Hände. Wer nach jeder längeren Fahrt taube Finger hat, sollte eher Sattel und Lenker anpassen lassen als dickere Handschuhe zu kaufen.</p>
+<h2>Wann das Kribbeln mehr ist als ein Materialthema</h2>
+<p>Solange das Kribbeln nach der Fahrt innert Minuten bis maximal Stunden verschwindet, ist es eine Druckreizung ohne Krankheitswert. Genauer hinschauen solltest du in drei Fällen: wenn Taubheit oder Kribbeln tagelang nach der Fahrt anhalten, wenn die Hand schwächer wird, etwa beim Spreizen der Finger oder beim Halten des Lenkers, oder wenn dieselben Finger auch ohne Velo kribbeln, zum Beispiel nachts. Das nächtliche Muster in Daumen bis Mittelfinger spricht für einen Engpass am Handgelenk unabhängig vom Sport, die Einordnung dazu findest du unter <a href="/beschwerden/karpaltunnelsyndrom/">Karpaltunnelsyndrom</a> und bei der Frage, was die Verteilung bedeutet, unter <a href="/koerpersignale/einzelne-finger-taub/">Einzelne Finger taub</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Abklären lassen</div><p>Eine neurologische Untersuchung ist sinnvoll bei Taubheit, die nach Fahrten tagelang bleibt, bei zunehmender Schwäche oder sichtbarem Muskelabbau an der Hand und bei Kribbeln, das auch im Alltag ohne Belastung auftritt. Ein lange gereizter Nerv erholt sich langsamer, warte also nicht monatelang, wenn sich das Muster verfestigt.</p></div>
+<h2>Was zusätzlich hilft</h2>
+<p>Zwischen den Fahrten kannst du die Nerven aktiv entlasten: Unterarme und Handgelenke dehnen, die Handkante ausmassieren, Schulter-Nacken-Partie lockern. Wenn Verspannungen entlang der Arm-Nacken-Kette das Kribbeln unterhalten, arbeiten wir in der Praxis mit <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a> und <a href="/therapien/massage/triggerpunktmassage/">Triggerpunktmassage</a> an Unterarm, Schulter und Nacken. Die chinesische Medizin denkt Arm und Hand traditionell als durchgehende Leitbahn, was hier schlicht praktisch gedacht ist: Entlastet man die ganze Kette, beruhigt sich oft auch die Hand.</p>`,
+    faqs: [
+      { q: 'Warum schlafen mir beim Velofahren die Finger ein?', a: 'Dauerdruck und Vibration am Lenker reizen die Nerven an den Handballen. Kribbeln in Ring- und Kleinfinger spricht für den Ellennerv an der Handkante, Kribbeln in Daumen bis Mittelfinger für den Mittelhandnerv bei überstrecktem Handgelenk.' },
+      { q: 'Was hilft gegen taube Hände auf dem Velo?', a: 'Griffposition regelmässig wechseln, gepolsterte Handschuhe oder ergonomische Griffe, Handgelenk gerade halten und vor allem die Sitzposition prüfen: Ein zu tiefer Lenker oder nach vorn gekippter Sattel verlagert zu viel Gewicht auf die Hände.' },
+      { q: 'Wann sollte ich kribbelnde Hände abklären lassen?', a: 'Wenn Taubheit oder Kribbeln tagelang nach der Fahrt anhalten, die Hand schwächer wird oder dieselben Finger auch ohne Velo kribbeln, etwa nachts. Dann ist eine neurologische Untersuchung sinnvoll.' },
+      { q: 'Ist das Kribbeln beim Velofahren ein Karpaltunnelsyndrom?', a: 'Nicht automatisch. Auf dem Velo ist meist der Ellennerv an der Handkante gereizt, das Karpaltunnelsyndrom betrifft den Mittelhandnerv und zeigt sich typischerweise mit nächtlichem Einschlafen von Daumen bis Mittelfinger, auch ohne Sport. Beides kann sich überlagern, die Untersuchung trennt es.' },
+    ],
+    related: [
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
+      { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom', cat: 'Beschwerde' },
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
     ],
   },
 ];

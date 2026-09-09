@@ -1183,13 +1183,37 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/augenlid-zuckt/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/bein-wird-beim-sitzen-taub/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/einzelne-finger-taub/</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/finger-morgens-steif/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/finger-schlafen-ein/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/hand-kribbelt-beim-velofahren/</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1207,6 +1231,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/kalte-haende-einseitig/</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -1214,6 +1244,24 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/klossgefuehl-im-hals/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/nachtschweiss-ohne-fieber/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/rueckenschmerzen-beim-husten/</loc>
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

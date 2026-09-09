@@ -26,15 +26,18 @@ const schema = [
 ];
 
 // Gruppen in Anzeige-Reihenfolge (WO spürst du etwas?)
-const GROUPS = ['Kopf & Sinne', 'Hände & Nerven', 'Hals & Mund', 'Wärme & Schwitzen', 'Muskeln & Beine'];
+const GROUPS = ['Kopf & Sinne', 'Hände & Nerven', 'Hals & Mund', 'Schlaf & Nacht', 'Wärme & Schwitzen', 'Muskeln & Beine'];
 const byGroup = GROUPS.map((g) => ({ g, items: koerpersignale.filter((k) => k.category === g) }));
 
 // WANN tritt es auf? Kuratierte Muster-Einstiege (nur echte Treffer, keine Keyword-Listen).
 const WANN = [
-  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'finger-schlafen-ein', 'herzschlag-im-ohr'] },
+  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein'] },
+  { label: 'Morgens', slugs: ['finger-morgens-steif'] },
   { label: 'Beim Aufstehen', slugs: ['schwindel-beim-aufstehen'] },
   { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr'] },
-  { label: 'Bei Anspannung', slugs: ['klossgefuehl-im-hals', 'starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'] },
+  { label: 'Beim Sitzen', slugs: ['bein-wird-beim-sitzen-taub'] },
+  { label: 'Bei Bewegung', slugs: ['rueckenschmerzen-beim-husten', 'hand-kribbelt-beim-velofahren'] },
+  { label: 'Bei Anspannung', slugs: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'] },
 ];
 const bySlug = Object.fromEntries(koerpersignale.map((k) => [k.slug, k]));
 
@@ -50,14 +53,20 @@ const WIE = [
   { label: 'Hitze', slug: 'hitzegefuehl-ohne-fieber' },
   { label: 'Krampf', slug: 'wadenkraempfe-nachts' },
   { label: 'Räusperdrang', slug: 'staendiger-raeusperzwang' },
+  { label: 'Zucken', slug: 'augenlid-zuckt' },
+  { label: 'Steifheit', slug: 'finger-morgens-steif' },
+  { label: 'Druck im Ohr', slug: 'ohr-einseitig-verstopft' },
 ];
 ---
 <LayoutDe title={title} description={description} path="/koerpersignale" schema={schema}>
   <section class="hero">
-    <div class="wrap narrow">
-      <div class="cat">Körpersignale</div>
-      <h1>Manche Beschwerden haben noch keinen Namen. Nur ein Muster.</h1>
-      <p class="lead">Schwindel genau beim Umdrehen im Bett. Ein Pochen im Ohr, im Takt des Pulses. Finger, die nachts einschlafen. Bevor eine Diagnose feststeht, merkt man oft nur, dass sich etwas verändert hat. Hier findest du ehrliche Einordnungen solcher Muster: was dahinterstecken kann, was du selbst beobachten kannst und wann eine ärztliche Abklärung wichtig ist.</p>
+    <div class="wrap narrow hero-grid">
+      <div>
+        <div class="cat">Körpersignale</div>
+        <h1>Manche Beschwerden haben noch keinen Namen. Nur ein Muster.</h1>
+        <p class="lead">Schwindel genau beim Umdrehen im Bett. Ein Pochen im Ohr, im Takt des Pulses. Finger, die nachts einschlafen. Bevor eine Diagnose feststeht, merkt man oft nur, dass sich etwas verändert hat. Hier findest du ehrliche Einordnungen solcher Muster: was dahinterstecken kann, was du selbst beobachten kannst und wann eine ärztliche Abklärung wichtig ist.</p>
+      </div>
+      <img class="hero-img" src="/images/nackenschmerzen.png" alt="Frau nimmt ein körperliches Signal im Nackenbereich wahr" loading="eager" fetchpriority="high" width="1200" height="900" />
     </div>
   </section>
 
@@ -128,6 +137,14 @@ const WIE = [
   .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
   h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
   .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+  /* Hero-Split nach dem bestehenden akz-hero-Muster (Stadt-Lander) */
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .hero-grid > * { min-width: 0; }
+  .hero-img { width: 100%; max-width: 100%; border-radius: var(--r-hero); box-shadow: var(--sh-md); aspect-ratio: 4/3; object-fit: cover; object-position: 72% 28%; display: block; }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero-img { aspect-ratio: 16/10; }
+  }
 
   .group { margin: 36px 0 0; }
   .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 14px; }

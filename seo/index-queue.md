@@ -18,6 +18,14 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/augenlid-zuckt/
+- https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/
+- https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/
+- https://tcm.ch/koerpersignale/nachtschweiss-ohne-fieber/
+- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-husten/
+- https://tcm.ch/koerpersignale/bein-wird-beim-sitzen-taub/
+- https://tcm.ch/koerpersignale/finger-morgens-steif/
+- https://tcm.ch/koerpersignale/hand-kribbelt-beim-velofahren/
 - https://tcm.ch/koerpersignale/
 - https://tcm.ch/koerpersignale/schwindel-beim-umdrehen-im-bett/
 - https://tcm.ch/koerpersignale/herzschlag-im-ohr/

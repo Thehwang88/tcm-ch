@@ -82,10 +82,10 @@ Legende: **Hub** = primärer Owner des breiten Intents · Support = zuliefernde 
 - Lücken: /krankenkassen/schroepfen/ (P3)
 
 ## 15. Körpersignale (Symptom-Discovery, neu 09/2026)
-- **Hub:** `/koerpersignale/` mit 12 Leaves in fünf Gruppen (Kopf & Sinne, Hände & Nerven, Hals & Mund, Wärme & Schwitzen, Muskeln & Beine); Gruppen ohne eigene URLs
+- **Hub:** `/koerpersignale/` mit 20 Leaves in sechs Gruppen (Kopf & Sinne, Hände & Nerven, Hals & Mund, Schlaf & Nacht, Wärme & Schwitzen, Muskeln & Beine); Gruppen ohne eigene URLs. Welle 2 (09/2026): augenlid-zuckt, ohr-einseitig-verstopft, immer-zur-gleichen-uhrzeit-aufwachen, nachtschweiss-ohne-fieber, rueckenschmerzen-beim-husten, bein-wird-beim-sitzen-taub, finger-morgens-steif, hand-kribbelt-beim-velofahren
 - Rolle: Awareness-Ebene VOR der Diagnose; jede Seite funnelt zur passenden Beschwerdeseite und schützt deren Keywords (kein Behandlungs-Intent)
 - Rückverlinkung aus 11 Beschwerde-Leaves, Footer, Beschwerden- und Wissen-Hub
-- Beobachten (GSC): finger-schlafen-ein / einzelne-finger-taub vs. karpaltunnelsyndrom; starkes-schwitzen-ohne-sport vs. hyperhidrose
+- Beobachten (GSC): finger-schlafen-ein / einzelne-finger-taub / hand-kribbelt-beim-velofahren vs. karpaltunnelsyndrom; starkes-schwitzen-ohne-sport / nachtschweiss-ohne-fieber vs. hyperhidrose/wechseljahre; finger-morgens-steif vs. arthrose/rheuma; bein-wird-beim-sitzen-taub vs. ischias; rueckenschmerzen-beim-husten vs. rueckenschmerzen; ohr-einseitig-verstopft vs. hoersturz
 - Nächste Kandidaten erst nach GSC-Daten: siehe koerpersignale-candidates.csv (P2: Augenlid-Zucken, gleiche-Uhrzeit-Aufwachen, Herzstolpern)
 
 ## Gesättigte Bereiche (nichts Neues bauen)
