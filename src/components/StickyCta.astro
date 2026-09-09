@@ -1,0 +1,59 @@
+---
+// Mobile Sticky-CTA-Leiste (<768px): WhatsApp + Sprung zum Formular (#formular).
+// Blendet sich aus, solange das Formular im Viewport ist, damit sie den
+// Submit-Button nicht überdeckt.
+interface Props {
+  prefill?: string;
+  formTarget?: string;
+}
+const { prefill = 'Ich möchte gerne einen Termin anfragen.', formTarget = '#formular' } = Astro.props;
+const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
+---
+<div class="sticky-cta" id="stickyCta" data-target={formTarget}>
+  <a
+    class="sc-btn sc-btn--wa"
+    href={waHref}
+    target="_blank"
+    rel="noopener"
+    onclick="if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'sticky_cta'})}"
+  >WhatsApp</a>
+  <a class="sc-btn sc-btn--form" href={formTarget}>Termin anfragen</a>
+</div>
+
+<style>
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    display: none; gap: 10px; padding: 10px 14px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, .96); border-top: 1px solid var(--border);
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .sticky-cta.is-hidden { transform: translateY(110%); opacity: 0; pointer-events: none; }
+  .sc-btn {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    border-radius: var(--r-btn); padding: 12px 10px; text-align: center;
+  }
+  .sc-btn--wa { background: #1e8a5f; color: #fff; }
+  .sc-btn--wa:hover { background: #187650; }
+  .sc-btn--form { color: #1e8a5f; border: 1.5px solid #1e8a5f; background: #fff; }
+  .sc-btn--form:hover { color: #187650; border-color: #187650; }
+  @media (max-width: 767px) {
+    .sticky-cta { display: flex; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('stickyCta');
+    if (!bar || bar.dataset.init) return;
+    bar.dataset.init = '1';
+    var target = document.querySelector(bar.dataset.target || '#formular');
+    if (!target || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        bar.classList.toggle('is-hidden', en.isIntersecting);
+      });
+    }, { threshold: 0.05 }).observe(target);
+  })();
+</script>

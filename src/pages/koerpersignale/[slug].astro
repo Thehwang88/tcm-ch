@@ -3,6 +3,8 @@
 // Rendering bewusst identisch zum Wissen-Artikel-Layout (LayoutDe + kb-body-Stile),
 // damit die Rubrik visuell nahtlos zur bestehenden Site gehört.
 import LayoutDe from '../../layouts/LayoutDe.astro';
+import TerminForm from '../../components/TerminForm.astro';
+import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
 import { koerpersignale } from '../../data/koerpersignale';
 
@@ -49,8 +51,10 @@ const breadcrumbLd = {
   ],
 };
 const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+
+const anliegen = `Ich habe folgendes Anliegen: ${data.symptom ?? data.title}. Ich möchte gerne einen Termin anfragen.`;
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} turnstile={true}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
@@ -114,6 +118,9 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
         </div>
       </div>
     </section>
+
+    <TerminForm heading="Abklären lassen?" intro="Beschreib kurz, was du spürst – wir sagen dir ehrlich, ob TCM hier sinnvoll ist." prefill={anliegen} />
+    <StickyCta prefill={anliegen} />
   </article>
 </LayoutDe>
 

@@ -1,5 +1,6 @@
 ---
 import LayoutDe from '../layouts/LayoutDe.astro';
+import TerminForm from '../components/TerminForm.astro';
 import { site } from '../data/site';
 
 const path = '/kontakt';
@@ -16,7 +17,7 @@ const schema = {
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
 ---
-<LayoutDe title={`${title} | TCM.ch`} description={description} path={path} schema={schema}>
+<LayoutDe title={`${title} | TCM.ch`} description={description} path={path} schema={schema} turnstile={true}>
   <section class="hero">
     <div class="wrap kontakt-hero">
       <div class="eyebrow">Kontakt · TCM.ch</div>
@@ -47,6 +48,8 @@ const schema = {
           <span class="ch-go">E-Mail schreiben →</span>
         </a>
       </div>
+
+      <TerminForm heading="Oder direkt anfragen" />
 
       <div class="kontakt-foot">
         <p>

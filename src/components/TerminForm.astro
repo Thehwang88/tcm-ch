@@ -1,0 +1,218 @@
+---
+// Kontaktformular mit Herkunfts-Prefill. Nutzt den bestehenden Resend-Endpoint
+// POST /api/anfrage (functions/api/anfrage.js) und das bestehende Turnstile-Setup
+// (site.turnstileSitekey; das Turnstile-Script lädt die Seite via LayoutDe turnstile={true}).
+// Der Endpoint verlangt name + telefon + email: das kombinierte Feld "Telefon oder
+// E-Mail" wird deshalb clientseitig in beide Payload-Keys gespiegelt.
+import { site } from '../data/site';
+
+interface Props {
+  prefill?: string;
+  standort?: string;
+  heading?: string;
+  intro?: string;
+}
+const {
+  prefill = '',
+  standort = '',
+  heading = 'Termin anfragen',
+  intro = 'Kurz ausfüllen – wir melden uns meist innert 30 Minuten mit Terminvorschlägen.',
+} = Astro.props;
+
+const STANDORTE = [
+  'St. Gallen', 'Winterthur Marktgasse', 'Winterthur Münzgasse', 'Zürich City',
+  'Zürich Oerlikon', 'Zürich Höngg', 'Kreuzlingen', 'Frauenfeld', 'Volketswil',
+  'Rorschach', 'Bottighofen', 'Wil', 'Basel', 'Luzern',
+];
+---
+<section class="tf-section" id="formular">
+  <div class="tf-wrap">
+    <h2 class="tf-heading">{heading}</h2>
+    <p class="tf-intro">{intro}</p>
+    <form class="tf-form" id="terminform" data-prefill={prefill} data-standort={standort} novalidate>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+      <input type="hidden" name="herkunft" value="" />
+      <div class="tf-row">
+        <label class="tf-field">
+          <span class="tf-label">Name</span>
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label class="tf-field">
+          <span class="tf-label">Telefon oder E-Mail</span>
+          <input type="text" name="kontakt" required autocomplete="tel" />
+        </label>
+      </div>
+      <label class="tf-field">
+        <span class="tf-label">Standort</span>
+        <select name="standort">
+          <option value="">Bitte wählen (optional)</option>
+          {STANDORTE.map((s) => <option value={s}>{s}</option>)}
+        </select>
+      </label>
+      <label class="tf-field">
+        <span class="tf-label">Dein Anliegen</span>
+        <textarea name="anliegen" rows="4" required></textarea>
+      </label>
+      <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
+      <button type="submit" class="tf-submit"><span class="tf-submit-label">Termin anfragen</span></button>
+      <p class="tf-note">EMR-/ASCA-anerkannt. Abrechnung in der Regel über die Zusatzversicherung für Komplementärmedizin.</p>
+      <p class="tf-status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .tf-section { padding: 48px 0; }
+  .tf-wrap { max-width: 46rem; margin: 0 auto; padding: 0 24px; }
+  .tf-heading { font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .tf-intro { font-size: 16px; line-height: 1.55; color: var(--mid); margin: 0 0 22px; }
+  .tf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tf-field { display: block; margin-bottom: 14px; }
+  .tf-label { display: block; font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .tf-field input, .tf-field select, .tf-field textarea {
+    width: 100%; font: inherit; font-size: 15.5px; color: var(--ink);
+    background: #fff; border: 1px solid var(--border); border-radius: var(--r-btn);
+    padding: 11px 13px; box-sizing: border-box;
+  }
+  .tf-field textarea { resize: vertical; line-height: 1.5; }
+  .tf-field input:focus, .tf-field select:focus, .tf-field textarea:focus {
+    outline: none; border-color: #1e8a5f; box-shadow: 0 0 0 3px rgba(30,138,95,.15);
+  }
+  .tf-submit {
+    display: inline-flex; align-items: center; justify-content: center;
+    font: inherit; font-size: 15.5px; font-weight: 700; color: #fff;
+    background: #1e8a5f; border: none; border-radius: var(--r-btn);
+    padding: 13px 28px; cursor: pointer; transition: background .15s ease;
+  }
+  .tf-submit:hover { background: #187650; }
+  .tf-form.is-sending .tf-submit { opacity: .6; pointer-events: none; }
+  .tf-note { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; }
+  .tf-status { margin: 12px 0 0; font-size: 14.5px; font-weight: 600; }
+  .tf-status[data-state="success"] { color: #187650; }
+  .tf-status[data-state="error"] { color: #b3261e; }
+  @media (max-width: 640px) {
+    .tf-row { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('terminform');
+    if (!form || form.dataset.init) return;
+    form.dataset.init = '1';
+
+    var ORTE = {
+      'st-gallen': 'St. Gallen', 'winterthur-marktgasse': 'Winterthur Marktgasse',
+      'winterthur-muenzgasse': 'Winterthur Münzgasse', 'zuerich-city': 'Zürich City',
+      'zuerich-oerlikon': 'Zürich Oerlikon', 'zuerich-hoengg': 'Zürich Höngg',
+      kreuzlingen: 'Kreuzlingen', frauenfeld: 'Frauenfeld', volketswil: 'Volketswil',
+      rorschach: 'Rorschach', bottighofen: 'Bottighofen', wil: 'Wil', basel: 'Basel', luzern: 'Luzern',
+    };
+    function label(slug) {
+      return slug.split('-').map(function (p) {
+        p = p.replace(/ue/g, 'ü').replace(/oe/g, 'ö').replace(/ae/g, 'ä');
+        return p.charAt(0).toUpperCase() + p.slice(1);
+      }).join(' ');
+    }
+    function setStandort(name) {
+      var sel = form.standort;
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === name) { sel.value = name; return; }
+      }
+    }
+    function textFor(path) {
+      var m;
+      if ((m = path.match(/^\/standorte\/([a-z-]+)\/?/))) {
+        var ort = ORTE[m[1]] || label(m[1]);
+        setStandort(ort);
+        return 'Ich möchte gerne einen Termin in ' + ort + ' anfragen.';
+      }
+      if ((m = path.match(/^\/beschwerden\/([a-z-]+)\/?/))) {
+        return 'Ich habe Beschwerden im Bereich ' + label(m[1]) + ' und möchte gerne einen Termin anfragen.';
+      }
+      if ((m = path.match(/^\/therapien\/(?:[a-z-]+\/)*([a-z-]+)\/?$/))) {
+        return 'Ich interessiere mich für ' + label(m[1]) + ' und möchte gerne einen Termin anfragen.';
+      }
+      if ((m = path.match(/^\/massage-([a-z-]+)\/?/))) {
+        var mo = ORTE[m[1]] || label(m[1]);
+        setStandort(mo);
+        return 'Ich möchte gerne einen Massage-Termin in ' + mo + ' anfragen.';
+      }
+      if ((m = path.match(/^\/akupunktur-(?:tcm-)?([a-z-]+?)(?:-kosten)?\/?$/))) {
+        var ao = ORTE[m[1]] || label(m[1]);
+        setStandort(ao);
+        return 'Ich möchte gerne einen Akupunktur-Termin in ' + ao + ' anfragen.';
+      }
+      return 'Ich möchte gerne einen Termin anfragen.';
+    }
+
+    // Prefill: 1. Prop, 2. ?von=, 3. same-origin Referrer
+    var herkunft = location.pathname;
+    var prefill = form.dataset.prefill;
+    if (prefill) {
+      form.anliegen.value = prefill;
+      if (form.dataset.standort) setStandort(form.dataset.standort);
+    } else {
+      var von = null;
+      try { von = new URLSearchParams(location.search).get('von'); } catch (e) {}
+      if (!von && document.referrer) {
+        try {
+          var r = new URL(document.referrer);
+          if (r.origin === location.origin && r.pathname !== location.pathname) von = r.pathname;
+        } catch (e) {}
+      }
+      if (von) herkunft = von;
+      form.anliegen.value = textFor(von || '');
+    }
+    form.herkunft.value = herkunft;
+
+    var status = form.querySelector('.tf-status');
+    var btnLabel = form.querySelector('.tf-submit-label');
+    function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (form.website.value.trim() !== '') return;
+      if (!form.name.value.trim() || !form.kontakt.value.trim() || !form.anliegen.value.trim()) {
+        show('error', 'Bitte fülle Name, Kontakt und dein Anliegen aus.'); return;
+      }
+      var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+      var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+      if (!token) { show('error', 'Bitte bestätige kurz, dass du kein Roboter bist.'); return; }
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'form_submit', { form_id: 'terminform', herkunft: form.herkunft.value });
+      }
+
+      var kontakt = form.kontakt.value.trim();
+      var payload = {
+        typ: 'termin',
+        name: form.name.value.trim(),
+        email: kontakt,
+        telefon: kontakt,
+        standort: form.standort.value,
+        anliegen: form.anliegen.value.trim(),
+        quelle: form.herkunft.value,
+        turnstileToken: token,
+      };
+      form.classList.add('is-sending');
+      if (btnLabel) { btnLabel.dataset.orig = btnLabel.textContent; btnLabel.textContent = 'Wird gesendet…'; }
+      try {
+        var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        var data = null; try { data = await res.json(); } catch (e2) {}
+        if (res.ok && data && data.ok) {
+          form.reset();
+          show('success', 'Danke! Deine Anfrage ist bei uns – wir melden uns persönlich, meist innert 30 Minuten.');
+        } else {
+          show('error', 'Deine Anfrage konnte nicht gesendet werden. Versuch es nochmals oder ruf uns kurz an.');
+        }
+      } catch (err) {
+        show('error', 'Verbindungsfehler. Versuch es bitte nochmals.');
+      } finally {
+        form.classList.remove('is-sending');
+        if (btnLabel && btnLabel.dataset.orig) btnLabel.textContent = btnLabel.dataset.orig;
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (e3) {} }
+      }
+    });
+  })();
+</script>

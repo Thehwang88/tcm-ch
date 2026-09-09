@@ -20,6 +20,7 @@ export interface Koerpersignal {
   metaDesc: string;
   h1: string;           // Patientenfrage
   category: string;     // Gruppen-Label im Hub (keine eigene URL)
+  symptom?: string;     // kurze Symptom-Phrase für Formular-Prefill (Fallback: title)
   lead: string;
   readingTime: string;
   ctaTitle?: string;
@@ -46,6 +47,7 @@ export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
   {
     slug: 'schwindel-beim-umdrehen-im-bett',
+    symptom: 'Schwindel beim Umdrehen im Bett',
     title: 'Schwindel beim Umdrehen im Bett: was dahinterstecken kann',
     metaDesc: 'Kurzer Drehschwindel beim Umdrehen im Bett hat oft eine erstaunlich konkrete Ursache im Gleichgewichtsorgan. Woran du das Muster erkennst und wann du zum Arzt solltest.',
     h1: 'Warum wird mir beim Umdrehen im Bett schwindelig?',
@@ -97,6 +99,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'herzschlag-im-ohr',
+    symptom: 'ein pulsierendes Geräusch im Ohr',
     title: 'Herzschlag im Ohr: Warum höre ich meinen Puls?',
     metaDesc: 'Ein pochendes, pulssynchrones Geräusch im Ohr hat andere Ursachen als ein gewöhnlicher Tinnitus und gehört abgeklärt. Was hinter dem Puls im Ohr stecken kann.',
     h1: 'Warum höre ich meinen Herzschlag im Ohr?',
@@ -147,6 +150,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'schwindel-beim-aufstehen',
+    symptom: 'Schwindel beim Aufstehen',
     title: 'Schwindel beim Aufstehen: mögliche Ursachen',
     metaDesc: 'Wird dir beim Aufstehen schwarz vor Augen oder kurz schwindelig? Warum der Kreislauf dahintersteckt, was du selbst tun kannst und wann eine Abklärung wichtig ist.',
     h1: 'Warum wird mir beim Aufstehen schwindelig?',
@@ -195,6 +199,7 @@ export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── HÄNDE & NERVEN
   {
     slug: 'finger-schlafen-ein',
+    symptom: 'einschlafende Finger',
     title: 'Finger schlafen ein: harmlos oder Nervensache?',
     metaDesc: 'Eingeschlafene Finger nachts, am Lenker oder beim Telefonieren: Meist steckt Druck auf einen Nerv dahinter. Wann das harmlos ist und wann du genauer hinschauen solltest.',
     h1: 'Warum schlafen mir die Finger ein?',
@@ -239,6 +244,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'einzelne-finger-taub',
+    symptom: 'Taubheitsgefühle in einzelnen Fingern',
     title: 'Einzelne Finger taub: Was die Verteilung verrät',
     metaDesc: 'Ob Daumen, Ringfinger oder Kleinfinger taub sind, ist kein Zufall: Jeder Nerv versorgt bestimmte Finger. Was die Verteilung über die Ursache aussagt und wann du zum Arzt solltest.',
     h1: 'Warum sind ausgerechnet einzelne Finger taub?',
@@ -289,6 +295,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'kalte-haende-einseitig',
+    symptom: 'eine einseitig kalte Hand',
     title: 'Eine Hand kälter als die andere: mögliche Gründe',
     metaDesc: 'Wenn nur eine Hand kalt, blass oder taub wird, lohnt sich ein genauer Blick auf Durchblutung, Nerven und Schultergürtel. Welche Muster es gibt und wann es eilt.',
     h1: 'Warum ist eine Hand kälter als die andere?',
@@ -331,6 +338,7 @@ export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── HALS & MUND
   {
     slug: 'klossgefuehl-im-hals',
+    symptom: 'ein Klossgefühl im Hals',
     title: 'Klossgefühl im Hals ohne Erkältung: mögliche Gründe',
     metaDesc: 'Ein Kloss im Hals, der beim Essen verschwindet und in ruhigen Momenten wiederkommt, hat selten mit dem Hals selbst zu tun. Die häufigsten Erklärungen und der Weg zur Abklärung.',
     h1: 'Warum habe ich ein Klossgefühl im Hals, ohne krank zu sein?',
@@ -375,6 +383,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'staendiger-raeusperzwang',
+    symptom: 'ständigen Räusperzwang',
     title: 'Ständiger Räusperzwang: Woher kommt das Schleimgefühl?',
     metaDesc: 'Ständiges Räuspern ohne Erkältung entsteht oft durch stillen Reflux oder Sekret aus den Nebenhöhlen und hält sich selbst am Laufen. Wie du den Kreislauf durchbrichst.',
     h1: 'Warum muss ich mich ständig räuspern?',
@@ -419,6 +428,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'zungenbrennen',
+    symptom: 'Zungenbrennen',
     title: 'Zungenbrennen: Ursachen einer brennenden Zunge',
     metaDesc: 'Die Zunge brennt wie verbrüht, aber im Spiegel ist nichts zu sehen? Von Mundtrockenheit über Eisenmangel bis Burning-Mouth-Syndrom: die Erklärungen und der Weg zur Diagnose.',
     h1: 'Warum brennt meine Zunge, obwohl nichts zu sehen ist?',
@@ -468,6 +478,7 @@ export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── WÄRME & SCHWITZEN
   {
     slug: 'hitzegefuehl-ohne-fieber',
+    symptom: 'Hitzegefühle ohne Fieber',
     title: 'Hitzegefühl ohne Fieber: Woher kommen die Hitzewellen?',
     metaDesc: 'Dir wird plötzlich heiss, das Thermometer zeigt aber normale Werte? Von Hormonen über Schilddrüse bis Stressreaktion: was hinter Hitzegefühlen ohne Fieber stecken kann.',
     h1: 'Warum ist mir ständig heiss, obwohl ich kein Fieber habe?',
@@ -509,6 +520,7 @@ export const koerpersignale: Koerpersignal[] = [
 
   {
     slug: 'starkes-schwitzen-ohne-sport',
+    symptom: 'starkes Schwitzen ohne Anstrengung',
     title: 'Starkes Schwitzen ohne Anstrengung: Was steckt dahinter?',
     metaDesc: 'Du schwitzt stark, ohne Sport, ohne Hitze, ohne Grund? Ob Veranlagung, Hormone, Schilddrüse oder Medikamente dahinterstecken, hängt vom Muster ab. So ordnest du es ein.',
     h1: 'Warum schwitze ich so stark, ohne mich anzustrengen?',
@@ -558,6 +570,7 @@ export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── MUSKELN & BEINE
   {
     slug: 'wadenkraempfe-nachts',
+    symptom: 'nächtliche Wadenkrämpfe',
     title: 'Wadenkrämpfe nachts: Ursachen und was wirklich hilft',
     metaDesc: 'Nächtliche Wadenkrämpfe reissen dich aus dem Schlaf? Warum sie entstehen, was Magnesium wirklich kann, wie du akut reagierst und wann eine ärztliche Abklärung sinnvoll ist.',
     h1: 'Warum bekomme ich nachts Wadenkrämpfe?',
