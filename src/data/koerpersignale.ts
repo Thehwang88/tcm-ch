@@ -27,18 +27,20 @@ export interface Koerpersignal {
   faqs: KsFaq[];
   related: KsRelated[];
   author: KsAuthor;
-  reviewerName: string;
   datePublished: string;
   dateModified: string;
-  lastReviewed: string;
 }
 
+// Bewusst neutrale Redaktionsdarstellung ohne persönlichen Review-Claim: Für diese
+// Seiten existiert (noch) keine dokumentierte Einzelprüfung durch eine benannte
+// Therapeutin. Sobald ein reales Review stattfindet, kann hier eine Person mit
+// Datum eingetragen werden (dann auch reviewedBy im Schema ergänzen).
 const AUTOR: KsAuthor = {
-  name: 'Corinna Reinhart',
-  role: 'TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen',
-  bio: 'Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen.',
+  name: 'TCM.ch Fachredaktion',
+  role: 'Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen',
+  bio: 'Die Inhalte dieser Rubrik entstehen in der Fachredaktion von TCM.ch auf Basis der Erfahrung aus unseren Praxen. Sie erklären Symptommuster allgemein, ersetzen keine ärztliche Diagnose und nennen bewusst, wann eine medizinische Abklärung wichtig ist.',
 };
-const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09', lastReviewed: '2026-09-09' };
+const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -52,7 +54,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Schwindel einordnen lassen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Drehschwindel, der genau beim Umdrehen im Bett, beim Hinlegen oder beim Aufrichten auftritt und nach Sekunden wieder verschwindet, spricht am ehesten für einen <strong>gutartigen Lagerungsschwindel</strong>. Dabei geraten winzige Kalkkristalle im Gleichgewichtsorgan an eine Stelle, an die sie nicht gehören, und melden dem Gehirn bei bestimmten Kopfbewegungen eine Drehung, die gar nicht stattfindet.</p>
@@ -104,7 +105,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Ohrgeräusch besprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<p>Zuerst die wichtigste Einordnung: Wenn du deinen Herzschlag im Ohr hörst, nimmst du in aller Regel ein reales Geräusch wahr, nämlich das Strömen deines eigenen Blutes in Gefässen nahe am Ohr. Mediziner:innen sprechen von einem pulsatilen oder pulssynchronen Tinnitus. Er unterscheidet sich vom klassischen Tinnitus, bei dem das Geräusch im Hörsystem selbst entsteht.</p>
 <p>Genau wegen dieses Unterschieds gilt hier eine klare Regel, die wir gleich an den Anfang stellen:</p>
@@ -155,7 +155,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '5 Min.',
     ctaTitle: 'Kreislauf und Erschöpfung ansprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Was beim schnellen Aufstehen im Körper passiert</h2>
 <p>Beim Aufstehen versackt ein Teil des Blutes der Schwerkraft folgend in den Beinen. Der Körper muss innert Sekunden gegensteuern: Die Gefässe ziehen sich zusammen, der Puls steigt, der Blutdruck bleibt stabil. Wenn diese Regulation einen Moment zu langsam ist, bekommt das Gehirn kurz etwas weniger Blut. Das Ergebnis kennst du: Schwarzwerden, Flimmern, ein weiches Gefühl in den Knien.</p>
@@ -204,7 +203,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Kribbelnde Hände abklären lassen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Warum Finger überhaupt einschlafen</h2>
 <p>Nerven mögen keinen Dauerdruck. Wird ein Nerv auf seinem Weg vom Nacken über Schulter, Ellenbogen und Handgelenk irgendwo längere Zeit gedrückt oder abgeknickt, meldet er sich zuerst mit Kribbeln, dann mit Taubheit. Sobald der Druck weg ist, prickelt es und das normale Gefühl kommt zurück. Dieses vorübergehende Einschlafen kennt fast jeder Mensch, und es ist für sich genommen kein Grund zur Sorge.</p>
@@ -249,7 +247,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '7 Min.',
     ctaTitle: 'Taubheitsgefühl einordnen lassen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Drei Nerven, drei Zuständigkeiten</h2>
 <p>Das Gefühl deiner Hand wird im Wesentlichen von drei Nerven versorgt, und jeder hat sein festes Gebiet. Genau deshalb ist die Frage, welche Finger taub sind, die vielleicht wichtigste der ganzen Abklärung:</p>
@@ -300,7 +297,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '5 Min.',
     ctaTitle: 'Durchblutung und Verspannung anschauen lassen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Warum Einseitigkeit ein besonderes Signal ist</h2>
 <p>Frieren beide Hände, steckt meist eine allgemeine Ursache dahinter: Kälte, ein niedriger Blutdruck, ein träger Kreislauf, manchmal ein Eisenmangel oder eine träge Schilddrüse. Ist dagegen nur eine Hand betroffen, spricht das für eine örtliche Ursache auf genau dieser Seite, irgendwo auf dem Weg vom Brustkorb über Schulter und Arm bis in die Finger.</p>
@@ -343,7 +339,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Das Engegefühl besprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Was dieses Gefühl auslösen kann</h2>
 <p>Für das Klossgefühl, medizinisch Globusgefühl, gibt es nicht die eine Ursache, sondern mehrere Ebenen, die sich oft überlagern:</p>
@@ -388,7 +383,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Reizhals und Reflux ansprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Die zwei häufigsten Quellen des Schleimgefühls</h2>
 <p><strong>Von unten: stiller Reflux.</strong> Kleine Mengen Magensäure oder Magendämpfe steigen bis zum Kehlkopf auf, oft ohne jedes Sodbrennen. Die empfindliche Kehlkopfschleimhaut reagiert gereizt und produziert als Schutz zähes Sekret. Typische Begleiter: morgendliche Heiserkeit, ein rauer Hals nach dem Aufstehen, Verschlechterung nach spätem Essen, Alkohol oder Kaffee. Das Grundthema behandeln wir auf der Seite <a href="/beschwerden/sodbrennen/">Sodbrennen und Reflux</a>.</p>
@@ -433,7 +427,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Zungenbrennen ansprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Zuerst die gute Nachricht</h2>
 <p>Zungenbrennen ist in den allermeisten Fällen kein Zeichen einer bösartigen Erkrankung. Aber es ist auch keine Einbildung. Hinter dem Brennen steckt entweder eine fassbare Ursache im Mund oder im Stoffwechsel, oder eine Überempfindlichkeit der feinen Nerven der Mundschleimhaut, das sogenannte Burning-Mouth-Syndrom. Beides lässt sich angehen, und der erste Schritt ist eine systematische Suche.</p>
@@ -483,7 +476,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Hitzewallungen besprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Warum dir heiss sein kann, ohne dass du Fieber hast</h2>
 <p>Fieber bedeutet, dass der Körper seine Solltemperatur nach oben verstellt. Beim Hitzegefühl ohne Fieber passiert etwas anderes: Die Temperatur bleibt normal, aber die Gefässe der Haut öffnen sich plötzlich weit, das Blut schiesst in Gesicht und Oberkörper, und genau das spürst du als Hitzewelle. Gesteuert wird diese Reaktion vom vegetativen Nervensystem und von Hormonen, und beide können aus verschiedenen Gründen überreagieren.</p>
@@ -525,7 +517,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Schwitzen einordnen lassen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Das Muster entscheidet, nicht die Menge</h2>
 <p>Wie viel Schwitzen normal ist, lässt sich nicht in Millilitern beantworten. Zielführender sind drei Fragen, die auch jede Ärztin stellen würde:</p>
@@ -575,7 +566,6 @@ export const koerpersignale: Koerpersignal[] = [
     readingTime: '6 Min.',
     ctaTitle: 'Nächtliche Krämpfe besprechen?',
     author: AUTOR,
-    reviewerName: 'Corinna Reinhart',
     ...DATEN,
     bodyHtml: `<h2>Was bei einem Wadenkrampf passiert</h2>
 <p>Ein Krampf ist eine plötzliche, unwillkürliche Dauerkontraktion des Muskels: Die Wade zieht sich maximal zusammen und lässt für Sekunden bis Minuten nicht mehr los, oft mit einem Muskelkater-Gefühl am Folgetag. Warum das bevorzugt nachts passiert, ist gut erklärbar: Im Liegen sind die Füsse häufig gestreckt, die Wade steht damit in verkürzter Position, und in dieser Stellung geraten übererregte Muskelnerven am leichtesten in die Dauerkontraktion.</p>
