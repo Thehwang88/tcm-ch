@@ -22,6 +22,12 @@ Regeln:
 - https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
 - https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
 - https://tcm.ch/koerpersignale/trockener-mund-nachts/
+- https://tcm.ch/koerpersignale/bitterer-geschmack-morgens/
+- https://tcm.ch/koerpersignale/schwere-beine-abends/
+- https://tcm.ch/koerpersignale/brennende-fuesse-nachts/
+- https://tcm.ch/koerpersignale/ein-fuss-kaelter-als-der-andere/
+- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-langen-stehen/
+- https://tcm.ch/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/
 
 - https://tcm.ch/koerpersignale/augenlid-zuckt/
 - https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/

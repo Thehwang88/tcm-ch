@@ -31,11 +31,13 @@ const byGroup = GROUPS.map((g) => ({ g, items: koerpersignale.filter((k) => k.ca
 
 // WANN tritt es auf? Kuratierte Muster-Einstiege (nur echte Treffer, keine Keyword-Listen).
 const WANN = [
-  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein'] },
-  { label: 'Morgens', slugs: ['finger-morgens-steif'] },
+  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'trockener-mund-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein'] },
+  { label: 'Morgens', slugs: ['finger-morgens-steif', 'bitterer-geschmack-morgens'] },
   { label: 'Beim Aufstehen', slugs: ['schwindel-beim-aufstehen'] },
   { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr'] },
   { label: 'Beim Sitzen', slugs: ['bein-wird-beim-sitzen-taub'] },
+  { label: 'Beim Stehen', slugs: ['rueckenschmerzen-beim-langen-stehen'] },
+  { label: 'Abends', slugs: ['schwere-beine-abends'] },
   { label: 'Bei Bewegung', slugs: ['rueckenschmerzen-beim-husten', 'hand-kribbelt-beim-velofahren'] },
   { label: 'Bei Anspannung', slugs: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'] },
 ];
@@ -56,6 +58,9 @@ const WIE = [
   { label: 'Zucken', slug: 'augenlid-zuckt' },
   { label: 'Steifheit', slug: 'finger-morgens-steif' },
   { label: 'Druck im Ohr', slug: 'ohr-einseitig-verstopft' },
+  { label: 'Druck im Kopf', slug: 'druck-im-kopf-ohne-kopfschmerzen' },
+  { label: 'Knacken', slug: 'nacken-knackt-beim-drehen' },
+  { label: 'Schweregefühl', slug: 'schwere-beine-abends' },
 ];
 ---
 <LayoutDe title={title} description={description} path="/koerpersignale" schema={schema}>

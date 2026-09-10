@@ -1181,6 +1181,317 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen und Reflux', cat: 'Beschwerde' },
     ],
   },
+
+  // ────────────────────────────────────────────── WELLE 3 (Seiten 25 bis 30)
+  {
+    slug: 'bitterer-geschmack-morgens',
+    symptom: 'ein bitterer Geschmack im Mund am Morgen',
+    title: 'Bitterer Geschmack morgens: Was kann dahinterstecken?',
+    metaDesc: 'Du wachst mit bitterem Geschmack im Mund auf? Speichel, Mundatmung, Zähne, Reflux und Medikamente kommen infrage. Erfahre, worauf du achten solltest.',
+    h1: 'Warum habe ich morgens einen bitteren Geschmack im Mund?',
+    category: 'Hals & Mund',
+    lead: 'Du wachst auf und im Mund liegt ein bitterer oder schaler Geschmack, der erst nach dem Zähneputzen oder Frühstück verschwindet. Dafür gibt es mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind und wann eine Abklärung sinnvoll ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Reflux und Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein bitterer Geschmack am Morgen hat selten eine einzige Ursache. Während des Schlafs wird weniger Speichel produziert, der Mund trocknet leichter aus und Geschmacksstoffe werden weniger gut weggespült. Auch Mundatmung, die Situation von Zähnen und Zahnfleisch, aufsteigende Magensäure und bestimmte Medikamente können den Geschmack am Morgen verändern.</p>
+<p>Ein gelegentlicher schaler Geschmack nach dem Aufwachen ist meistens harmlos. Wenn der bittere Geschmack fast jeden Morgen auftritt, tagsüber bleibt oder weitere Beschwerden dazukommen, lohnt sich ein genauerer Blick.</p>
+<h2>Warum verändert sich der Geschmack über Nacht?</h2>
+<p>Speichel spült den Mund laufend durch und hält das Milieu stabil. Nachts nimmt die Speichelproduktion natürlicherweise ab. Bleibt der Mund dabei offen oder atmest du durch den Mund, trocknen die Schleimhäute zusätzlich aus.</p>
+<p>In einem trockenen Mund verändern sich Belag, Bakterienmilieu und Geschmackswahrnehmung. Das allein kann reichen, damit sich der erste Eindruck am Morgen bitter oder abgestanden anfühlt. Wenn du häufig mit trockenem Mund aufwachst, findest du mehr dazu auf unserer Seite <a href="/koerpersignale/trockener-mund-nachts/">Trockener Mund nachts</a>.</p>
+<h2>Können Zähne und Zahnfleisch beteiligt sein?</h2>
+<p>Ja. Beläge, Zahnfleischentzündungen oder Probleme an einzelnen Zähnen können den Geschmack im Mund verändern, gerade nach mehreren Stunden ohne Trinken und Schlucken.</p>
+<p>Wenn der bittere Geschmack zusammen mit Mundgeruch, Zahnfleischbluten oder empfindlichen Stellen auftritt, ist die zahnmedizinische Kontrolle ein sinnvoller erster Schritt. Das ist unspektakulär, aber häufig zielführender als die Suche nach einer inneren Ursache.</p>
+<h2>Wann spricht das Muster für Reflux?</h2>
+<p>Beim Reflux steigt Mageninhalt in die Speiseröhre auf, manchmal bis in den Rachen. Das passiert im Liegen leichter als im Stehen. Deshalb bemerken manche Menschen einen bitteren oder sauren Geschmack besonders am Morgen.</p>
+<p>Wahrscheinlicher wird dieser Zusammenhang, wenn zusätzlich auftreten:</p>
+<ul>
+<li>Sodbrennen oder Brennen hinter dem Brustbein</li>
+<li>saures Aufstossen oder Hochkommen von Mageninhalt</li>
+<li>morgendliche Heiserkeit</li>
+<li>häufiges Räuspern oder ein Schleimgefühl im Hals</li>
+</ul>
+<p>Ein bitterer Geschmack allein beweist keinen Reflux. Zusammen mit solchen Zeichen wird das Muster aber deutlich klarer. Die ausführliche Einordnung findest du auf unserer Seite <a href="/beschwerden/sodbrennen/">Sodbrennen und Reflux</a>, das Räusper-Muster auf <a href="/koerpersignale/staendiger-raeusperzwang/">Ständiger Räusperzwang</a>.</p>
+<h2>Können Medikamente den Geschmack verändern?</h2>
+<p>Ja. Verschiedene Medikamente können als Nebenwirkung einen bitteren oder metallischen Geschmack verursachen oder die Geschmackswahrnehmung verändern. Dazu gehören unter anderem bestimmte Antibiotika und weitere Wirkstoffgruppen.</p>
+<p>Setze ein verschriebenes Medikament nicht selbst ab. Wenn der Geschmack zeitlich mit einer neuen Medikation begonnen hat, besprich den Zusammenhang mit Arzt oder Apotheke.</p>
+<h2>Bedeutet bitterer Geschmack ein Leberproblem?</h2>
+<p>Diese Verknüpfung liest man oft, sie ist so pauschal aber nicht haltbar. Ein bitterer Morgengeschmack ist kein zuverlässiges Zeichen für eine Lebererkrankung, und aus diesem einen Symptom lässt sich auch kein Muster der chinesischen Medizin ableiten.</p>
+<p>Wenn du dir wegen deiner Leber Sorgen machst, hilft eine ärztliche Untersuchung mit Laborwerten weiter, nicht die Interpretation eines einzelnen Geschmackseindrucks.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Tritt der Geschmack nur morgens auf oder auch tagsüber? Ist er eher bitter oder eher sauer? Wachst du mit trockenem Mund auf? Schnarchst du oder atmest du nachts durch den Mund? Gibt es Sodbrennen, Aufstossen oder Räusperzwang? Hat eine neue Medikation begonnen? Wann warst du zuletzt bei der Dentalhygiene?</p>
+<p>Diese Beobachtungen machen die Einordnung deutlich einfacher.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass einen bitteren Geschmack ärztlich oder zahnärztlich beurteilen, wenn er über Wochen fast täglich besteht, wenn Sodbrennen, Schluckbeschwerden oder Gewichtsverlust dazukommen oder wenn sich dein Geschmackssinn insgesamt deutlich verändert hat. Auch ein anhaltend veränderter Geschmack zusammen mit Veränderungen der Mundschleimhaut gehört angeschaut.</p></div>
+<h2>Wo kann TCM ergänzen?</h2>
+<p>Die chinesische Medizin behandelt nicht den Geschmack als isoliertes Zeichen und leitet aus ihm keine Diagnose ab.</p>
+<p>Wenn medizinisch und zahnmedizinisch keine behandlungsbedürftige Ursache gefunden wurde und gleichzeitig funktionelle Verdauungsbeschwerden, Refluxneigung oder Stressmuster bestehen, kann geprüft werden, ob eine ergänzende Behandlung, etwa <a href="/therapien/akupunktur/">Akupunktur</a>, zum Gesamtbild passt.</p>
+<p>Du wachst regelmässig mit bitterem Geschmack auf und bemerkst gleichzeitig Sodbrennen, Verdauungs- oder Schlafbeschwerden? Schildere uns dein Muster. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Ist ein bitterer Geschmack am Morgen ein Zeichen für eine Krankheit?', a: 'Meistens nicht. Weniger Speichel im Schlaf, ein trockener Mund und Mundatmung reichen oft als Erklärung. Besteht der Geschmack fast täglich oder kommen Sodbrennen, Schluckbeschwerden oder Mundveränderungen dazu, sollte er abgeklärt werden.' },
+      { q: 'Kommt bitterer Geschmack morgens vom Reflux?', a: 'Möglich, vor allem wenn zusätzlich Sodbrennen, saures Aufstossen, morgendliche Heiserkeit oder Räusperzwang bestehen. Der Geschmack allein beweist keinen Reflux, das Gesamtmuster ist entscheidend.' },
+      { q: 'Bedeutet bitterer Geschmack, dass mit der Leber etwas nicht stimmt?', a: 'Nein, so pauschal ist das nicht haltbar. Ein bitterer Morgengeschmack ist kein zuverlässiges Leberzeichen. Bei Sorgen um die Leber hilft eine ärztliche Untersuchung mit Laborwerten weiter.' },
+    ],
+    related: [
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen und Reflux', cat: 'Beschwerde' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+    ],
+  },
+
+  {
+    slug: 'schwere-beine-abends',
+    symptom: 'schwere, müde Beine am Abend',
+    title: 'Schwere Beine abends: Warum fühlen sie sich so müde an?',
+    metaDesc: 'Deine Beine fühlen sich abends schwer und müde an? Langes Sitzen oder Stehen, Wärme und wenig Bewegung spielen oft mit. Erfahre, wann du es abklären solltest.',
+    h1: 'Warum fühlen sich meine Beine abends so schwer an?',
+    category: 'Muskeln & Beine',
+    lead: 'Am Morgen ist alles normal, aber gegen Abend werden die Beine schwer, müde oder leicht geschwollen. Dieses Tagesmuster hat oft nachvollziehbare Gründe. Hier erfährst du, was dahinterstecken kann, was du selbst verändern kannst und welches Warnzeichen du kennen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schwere Beine einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Beine, die über den Tag zunehmend schwer werden, sprechen oft für ein Belastungs- und Rückflussmuster. Wer viele Stunden sitzt oder steht, bewegt die Beinmuskulatur wenig. Genau diese Muskulatur wirkt aber wie eine Pumpe, die das Blut aus den Beinen zurück Richtung Herz befördert.</p>
+<p>Fehlt diese Pumpbewegung, kann sich das Blut in den Beinvenen stauen. Die Beine fühlen sich dann schwer, gespannt oder müde an, manchmal schwellen Knöchel oder Unterschenkel gegen Abend leicht an. Wärme verstärkt das Gefühl bei vielen Menschen zusätzlich.</p>
+<h2>Warum werden die Beine gerade abends schwer?</h2>
+<p>Das Muster folgt dem Tagesablauf. Über viele Stunden wirkt die Schwerkraft auf das Blut in den Beinen. Bei wenig Bewegung sammelt sich die Belastung an und ist am Abend am deutlichsten spürbar. Über Nacht, mit hochgelagerten Beinen, normalisiert sich das Gefühl meist wieder.</p>
+<p>Deshalb ist die Frage nach dem Tagesverlauf so aufschlussreich: Beschwerden, die morgens fehlen und abends zunehmen, haben ein anderes Profil als Schmerzen, die unabhängig von der Tageszeit bestehen.</p>
+<h2>Sitzen und Stehen sind beide anstrengend für die Venen</h2>
+<p>Das klingt widersprüchlich, ist es aber nicht. Beim langen Sitzen ist die Muskelpumpe kaum aktiv und die Beine sind abgewinkelt. Beim langen Stehen arbeitet die Muskulatur zwar, aber statisch, ohne die rhythmische Bewegung, die den Rückfluss unterstützt.</p>
+<p>In beiden Fällen hilft dasselbe: regelmässige Bewegung. Schon Gehen im Zimmer, Wippen auf den Zehenspitzen oder ein kurzer Spaziergang aktivieren die Muskelpumpe spürbar.</p>
+<h2>Was kannst du selbst tun?</h2>
+<ul>
+<li>Baue Bewegungspausen ein, wenn du lange sitzt oder stehst.</li>
+<li>Aktiviere die Wadenmuskulatur, zum Beispiel durch Zehenstände oder Fusskreisen.</li>
+<li>Lagere die Beine abends zeitweise hoch.</li>
+<li>Kühle Duschen der Unterschenkel empfinden viele als angenehm.</li>
+<li>Achte auf Bewegung im Alltag insgesamt, nicht nur auf einzelne Übungen.</li>
+</ul>
+<p>Wenn die Schwere trotz solcher Massnahmen regelmässig auftritt, deutlich zunimmt oder mit sichtbaren Venenveränderungen einhergeht, lohnt sich eine ärztliche Beurteilung der Venen. Das ist keine Notfallabklärung, aber eine sinnvolle Einordnung.</p>
+<h2>Was kannst du beobachten?</h2>
+<p>Sind beide Beine betroffen oder nur eines? Schwellen die Knöchel gegen Abend an? Verschwindet das Gefühl über Nacht? Wird es an warmen Tagen schlimmer? Wird es besser, wenn du gehst? Gibt es sichtbare Krampfadern? Kommen nächtliche Wadenkrämpfe dazu? Für dieses Muster haben wir eine eigene Seite: <a href="/koerpersignale/wadenkraempfe-nachts/">Wadenkrämpfe nachts</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort ärztlich abklären</div><p>Ein einzelnes Bein, das plötzlich anschwillt, schmerzt, sich warm anfühlt oder sich verfärbt, ist ein anderes Muster als die beidseitige Abendschwere und muss rasch medizinisch beurteilt werden. Dahinter kann eine Venenthrombose stecken. Kommen Atemnot oder Brustschmerzen dazu, gilt in der Schweiz die Notfallnummer 144.</p></div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Zuerst gehört das Gefässthema geklärt, besonders bei einseitigen oder neu veränderten Beschwerden. TCM ist hier nicht der erste diagnostische Schritt.</p>
+<p>Wenn medizinisch keine behandlungsbedürftige Gefässerkrankung vorliegt und die Schwere vor allem mit Belastung, wenig Bewegung und muskulärer Ermüdung zusammenhängt, kann eine ergänzende Behandlung geprüft werden. Je nach Befund kommen zum Beispiel <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a> oder aktivierende <a href="/therapien/physiotherapie/">Physiotherapie</a> infrage.</p>
+<p>Deine Beine sind fast jeden Abend schwer und du möchtest wissen, was dagegen hilft? Schildere uns dein Muster. Wir helfen dir einzuschätzen, welcher nächste Schritt und welche <a href="/standorte/">Praxis</a> passen.</p>`,
+    faqs: [
+      { q: 'Warum sind meine Beine abends schwer, aber morgens nicht?', a: 'Über den Tag wirkt die Schwerkraft auf das Blut in den Beinvenen. Bei langem Sitzen oder Stehen fehlt die Muskelpumpe, das Blut staut sich leichter und die Beine fühlen sich abends schwer an. Über Nacht normalisiert sich das meist wieder.' },
+      { q: 'Sind schwere Beine am Abend gefährlich?', a: 'Die beidseitige, langsam über den Tag zunehmende Schwere ist meistens ein Belastungsmuster. Ein einzelnes Bein, das plötzlich anschwillt, schmerzt, warm oder verfärbt ist, muss dagegen rasch abgeklärt werden, bei Atemnot oder Brustschmerz als Notfall.' },
+      { q: 'Was hilft gegen schwere Beine am Abend?', a: 'Regelmässige Bewegungspausen, aktive Wadenmuskulatur, zeitweises Hochlagern und kühle Duschen der Unterschenkel. Wenn die Beschwerden trotzdem regelmässig auftreten oder Venenveränderungen sichtbar sind, lohnt sich eine ärztliche Venenbeurteilung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+      { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
+      { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'brennende-fuesse-nachts',
+    symptom: 'brennende Füsse in der Nacht',
+    title: 'Brennende Füsse nachts: Was kann dahinterstecken?',
+    metaDesc: 'Deine Füsse oder Fusssohlen brennen vor allem nachts? Nerven, Stoffwechsel und andere Ursachen kommen infrage. Erfahre, wann eine Abklärung wichtig ist.',
+    h1: 'Warum brennen meine Füsse besonders nachts?',
+    category: 'Muskeln & Beine',
+    lead: 'Tagsüber geht es, aber abends im Bett beginnen die Fusssohlen zu brennen. Dieses Muster hat mehrere mögliche Erklärungen, von gereizten Nerven bis zu Stoffwechselfaktoren. Hier erfährst du, welche Unterschiede wichtig sind und wann du das Symptom abklären lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Brennende Füsse einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Brennende Füsse entstehen häufig, wenn feine Nerven in Füssen und Unterschenkeln gereizt sind oder Signale anders verarbeiten. Nachts fällt das besonders auf, weil Ablenkung fehlt, die Füsse warm zugedeckt sind und die Wahrnehmung in Ruhe empfindlicher wird.</p>
+<p>Mögliche Zusammenhänge sind eine Reizung oder Erkrankung der peripheren Nerven, ein Diabetes, Vitaminmangel, bestimmte Medikamente, örtliche Nervenengpässe oder auch Hautprobleme. Brennende Füsse sind aber nicht automatisch eine <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>. Das Muster und die Begleitzeichen entscheiden.</p>
+<h2>Warum gerade nachts?</h2>
+<p>Mehrere Faktoren kommen zusammen. In Ruhe nehmen wir Körpersignale stärker wahr, die tagsüber untergehen. Unter der Bettdecke werden die Füsse wärmer, was ein Brennen verstärken kann. Und bei manchen Nervenbeschwerden sind die Symptome abends und nachts tatsächlich ausgeprägter als tagsüber.</p>
+<p>Ein nächtliches Maximum allein verrät die Ursache also noch nicht. Es ist aber eine wichtige Beobachtung für die Abklärung.</p>
+<h2>Welche Unterschiede sind wichtig?</h2>
+<p>Für die Einordnung zählt weniger das Wort Brennen als das genaue Muster:</p>
+<ul>
+<li>Brennt ein Fuss oder brennen beide?</li>
+<li>Brennen eher die Zehen, die ganze Sohle oder auch die Unterschenkel?</li>
+<li>Fühlt sich die Haut tatsächlich heiss an oder brennt es nur subjektiv?</li>
+<li>Kommt Kribbeln dazu?</li>
+<li>Gibt es Taubheit oder ein pelziges Gefühl?</li>
+<li>Breiten sich die Beschwerden langsam aus, zum Beispiel von den Zehen aufwärts?</li>
+</ul>
+<p>Beidseitiges, strumpfförmiges Brennen mit Kribbeln oder Taubheit passt eher zu einer allgemeinen Nervenbeteiligung. Ein einseitiges, örtlich begrenztes Brennen spricht eher für einen lokalen Engpass oder eine örtliche Ursache.</p>
+<h2>Welche Ursachen kommen infrage?</h2>
+<p>Zu den bekannten Zusammenhängen gehören ein Diabetes und andere Stoffwechselerkrankungen, ein Mangel an bestimmten Vitaminen, regelmässiger Alkoholkonsum, Nebenwirkungen mancher Medikamente sowie örtliche Nervenkompressionen am Fuss. Auch Hautprobleme wie Pilzinfektionen können ein Brennen verursachen, dann meist mit sichtbaren Hautveränderungen.</p>
+<p>Manchmal findet sich trotz sorgfältiger Abklärung keine eindeutige Ursache. Auch dann lässt sich mit dem Symptom arbeiten, aber die Abklärung gehört an den Anfang.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Seit wann besteht das Brennen? Ist es jede Nacht da oder nur manchmal? Hilft es, die Füsse aus der Decke zu strecken oder kurz aufzustehen? Gibt es tagsüber Beschwerden beim Gehen? Sind die Füsse gleichzeitig taub? Für verwandte Muster haben wir eigene Seiten: <a href="/koerpersignale/bein-wird-beim-sitzen-taub/">Bein wird beim Sitzen taub</a> und <a href="/koerpersignale/einzelne-finger-taub/">Einzelne Finger taub</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Brennende Füsse, die über Wochen anhalten, zunehmen oder sich ausbreiten, sollten medizinisch abgeklärt werden. Besondere Vorsicht gilt bei bekanntem Diabetes, bei vermindertem Gefühl in den Füssen sowie bei Wunden, Rötungen oder Entzündungszeichen. In diesen Fällen gehören die Füsse zeitnah in ärztliche Kontrolle, weil Verletzungen unbemerkt bleiben und schlecht heilen können.</p></div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Am Anfang steht die medizinische Abklärung, besonders die Frage nach Nervenbeteiligung und Stoffwechselursachen. TCM ersetzt diese Diagnostik nicht.</p>
+<p>Ist die Ursache geklärt oder eine gefährliche Erkrankung ausgeschlossen, kann ergänzend geprüft werden, ob eine Behandlung wie <a href="/therapien/akupunktur/">Akupunktur</a> zum Gesamtbild passt. Bei diagnostizierter Nervenbeteiligung findest du die ausführliche Einordnung auf unserer Seite <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
+<p>Deine Füsse brennen seit Wochen fast jede Nacht und du möchtest wissen, was sinnvoll ist? Schildere uns dein Muster. Wir helfen dir beim nächsten Schritt und bei der Wahl der passenden <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Sind brennende Füsse nachts immer eine Polyneuropathie?', a: 'Nein. Eine Nervenbeteiligung ist eine mögliche Erklärung, aber nicht die einzige. Auch Stoffwechselfaktoren, Medikamente, örtliche Nervenengpässe oder Hautprobleme kommen infrage. Das genaue Muster und die Begleitzeichen entscheiden.' },
+      { q: 'Warum brennen die Füsse vor allem im Bett?', a: 'In Ruhe fällt die Wahrnehmung stärker auf die Füsse, unter der Decke werden sie wärmer und manche Nervenbeschwerden sind nachts tatsächlich ausgeprägter. Das nächtliche Maximum ist eine wichtige Beobachtung für die Abklärung.' },
+      { q: 'Wann muss ich mit brennenden Füssen zum Arzt?', a: 'Wenn das Brennen über Wochen anhält, zunimmt oder sich ausbreitet. Besonders wichtig ist die Abklärung bei Diabetes, vermindertem Gefühl in den Füssen oder wenn Wunden, Rötungen oder Entzündungszeichen dazukommen.' },
+    ],
+    related: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/ein-fuss-kaelter-als-der-andere/', label: 'Ein Fuss kälter als der andere', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'ein-fuss-kaelter-als-der-andere',
+    symptom: 'ein deutlich kälterer Fuss im Seitenvergleich',
+    title: 'Ein Fuss ist kälter als der andere: mögliche Ursachen',
+    metaDesc: 'Ein Fuss fühlt sich deutlich kälter an als der andere? Erfahre, wann das harmlos sein kann und bei welchen Zeichen die Durchblutung rasch geprüft werden sollte.',
+    h1: 'Warum ist ein Fuss deutlich kälter als der andere?',
+    category: 'Muskeln & Beine',
+    lead: 'Beim Vergleich fällt dir auf, dass sich ein Fuss deutlich kälter anfühlt als der andere. Oft steckt etwas Harmloses dahinter, aber ein anhaltender klarer Seitenunterschied verdient eine genauere Einordnung. Hier erfährst du, worauf es ankommt und welche Warnzeichen wichtig sind.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kältegefühl im Fuss einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Wenn sich beide Füsse unterschiedlich warm anfühlen, kann das vorübergehend an Position, Umgebung oder Wahrnehmung liegen. Bleibt ein Fuss jedoch dauerhaft deutlich kälter oder ist der Unterschied neu aufgetreten, sollte auch an Durchblutung und Nerven gedacht werden.</p>
+<p>Eine arterielle Durchblutungsstörung kann unter anderem dazu führen, dass ein Unterschenkel oder Fuss im Vergleich zur Gegenseite kühler ist. Ein plötzlich kalter, schmerzhafter oder blasser Fuss ist dagegen ein Warnzeichen.</p>
+<h2>Muss ein Temperaturunterschied immer krankhaft sein?</h2>
+<p>Nein. Unsere beiden Körperhälften fühlen sich nicht zu jeder Minute vollkommen gleich an. Vielleicht hast du ein Bein anders gelagert, sitzt mit übergeschlagenen Beinen oder ein Fuss war stärker der Kälte ausgesetzt.</p>
+<p>Wenn der Unterschied nach Bewegung oder Positionswechsel rasch verschwindet und keine anderen Beschwerden bestehen, ist das zunächst beruhigend. Wiederholt sich das Muster jedoch deutlich auf derselben Seite, lohnt sich eine genauere Einordnung.</p>
+<h2>Kann die Durchblutung dahinterstecken?</h2>
+<p>Ja. Bei einer peripheren arteriellen Verschlusskrankheit kann ein Fuss oder Unterschenkel kälter sein als die Gegenseite. Weitere mögliche Zeichen sind Schmerzen beim Gehen, Taubheit oder Schwäche, Hautveränderungen und schlecht heilende Wunden.</p>
+<p>Nicht jeder kalte Fuss bedeutet eine arterielle Erkrankung. Aber ein anhaltender klarer Seitenunterschied sollte nicht einfach als "schlechter Kreislauf" abgetan werden. Mehr zum Thema findest du auf unserer Seite <a href="/beschwerden/durchblutungsstoerungen/">Durchblutungsstörungen</a>.</p>
+<h2>Können auch Nerven ein Kältegefühl auslösen?</h2>
+<p>Ja. Manchmal fühlt sich ein Fuss kalt an, obwohl seine tatsächliche Hauttemperatur kaum verändert ist. Störungen der Nerven können Temperaturempfindungen verändern.</p>
+<p>Interessant ist deshalb der Vergleich: Fühlt sich der Fuss nur für dich kalt an oder ist er auch beim Berühren objektiv deutlich kühler als die andere Seite? Wenn gleichzeitig Kribbeln, Taubheit oder Brennen bestehen, wird die neurologische Einordnung wichtiger. Verwandte Muster erklären wir auf <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a> und <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
+<h2>Ist das dasselbe wie Raynaud?</h2>
+<p>Nicht unbedingt. Beim <a href="/beschwerden/raynaud-syndrom/">Raynaud-Syndrom</a> treten Durchblutungsreaktionen typischerweise an Fingern oder Zehen anfallsartig auf und können mit Farbveränderungen verbunden sein.</p>
+<p>Ein dauerhaft einseitig kalter Fuss ist deshalb nicht automatisch Raynaud. Die genaue Art des Musters ist entscheidend. Das einseitige Muster an der Hand beschreiben wir auf <a href="/koerpersignale/kalte-haende-einseitig/">Kalte Hände einseitig</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann ist ein kalter Fuss ein Notfall?</div><p>Ein plötzlich deutlich kälter werdender Fuss kann in seltenen Fällen auf eine akute Durchblutungsstörung hinweisen. Besonders ernst sind Kombinationen aus plötzlich starken Schmerzen, Blässe, deutlicher Kälte, Kribbeln oder Taubheit und neuer Schwäche oder Bewegungseinschränkung. Eine akute Extremitätenischämie ist ein medizinischer Notfall und muss sofort behandelt werden. In der Schweiz gilt bei einem medizinischen Notfall die Nummer 144.</p></div>
+<h2>Was kannst du selbst vergleichen?</h2>
+<p>Fühlen sich beide Füsse auch beim Berühren unterschiedlich warm an? Verändert Bewegung die Temperatur? Gibt es Farbunterschiede? Treten Schmerzen beim Gehen auf? Gibt es Taubheit oder Brennen? Sind Wunden vorhanden, die schlecht heilen? Ist das Symptom plötzlich entstanden oder schon seit Jahren ähnlich?</p>
+<p>Diese Beobachtungen helfen bei der späteren Untersuchung.</p>
+<h2>Wann kann TCM sinnvoll sein?</h2>
+<p>Bei einem neu aufgetretenen einseitig kalten Fuss sollte zuerst ausgeschlossen werden, dass ein Gefässproblem vorliegt. TCM ist hier nicht die primäre Diagnostik.</p>
+<p>Wenn medizinisch keine gefährliche Durchblutungsstörung besteht und beispielsweise funktionelle Temperaturbeschwerden oder andere begleitende Symptome vorhanden sind, kann anschliessend geprüft werden, ob eine ergänzende TCM-Behandlung wie <a href="/therapien/akupunktur/">Akupunktur</a> sinnvoll ist.</p>
+<p>Dein Fuss ist schon länger kälter als die andere Seite und eine akute Durchblutungsstörung wurde ausgeschlossen? Schildere uns das Muster. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Ist es normal, dass ein Fuss kälter ist als der andere?', a: 'Vorübergehend ja, zum Beispiel durch Lagerung, übergeschlagene Beine oder Kälte auf einer Seite. Verschwindet der Unterschied nach Bewegung rasch, ist das beruhigend. Ein dauerhafter klarer Seitenunterschied sollte dagegen eingeordnet werden.' },
+      { q: 'Wann ist ein einseitig kalter Fuss gefährlich?', a: 'Wenn er plötzlich deutlich kälter wird und starke Schmerzen, Blässe, Verfärbung, Taubheit oder neue Schwäche dazukommen. Das kann eine akute Durchblutungsstörung sein und ist ein medizinischer Notfall, in der Schweiz gilt die Nummer 144.' },
+      { q: 'Ist ein kalter Fuss ein Zeichen für Raynaud?', a: 'Nicht automatisch. Raynaud tritt typischerweise anfallsartig an Fingern oder Zehen auf, oft mit Farbveränderungen. Ein dauerhaft einseitig kalter Fuss hat ein anderes Muster und gehört anders eingeordnet.' },
+    ],
+    related: [
+      { href: '/beschwerden/raynaud-syndrom/', label: 'Raynaud-Syndrom', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Kalte Hände einseitig', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'rueckenschmerzen-beim-langen-stehen',
+    symptom: 'Rückenschmerzen beim langen Stehen',
+    title: 'Rückenschmerzen beim langen Stehen: mögliche Gründe',
+    metaDesc: 'Dein Rücken schmerzt vor allem, wenn du lange stehst? Erfahre, welche Belastungsmuster dahinterstecken können und wann du die Beschwerden abklären solltest.',
+    h1: 'Warum bekomme ich Rückenschmerzen, wenn ich lange stehe?',
+    category: 'Muskeln & Beine',
+    lead: 'Nach einer Weile im Stehen meldet sich der Rücken, beim Gehen oder Sitzen wird es wieder besser. Dieses Belastungsmuster ist häufig und sagt etwas über die Ursache aus. Hier erfährst du, warum Stehen den Rücken fordert, was du beobachten kannst und wann eine Abklärung wichtig ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Belastungsabhängige Rückenschmerzen anschauen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Langes Stehen kann den Rücken genauso fordern wie langes Sitzen. Wenn die Beschwerden erst nach einiger Zeit auftreten und sich durch Gehen, Hinsetzen oder Positionswechsel verändern, spricht das oft dafür, dass Belastung und Bewegung eine wichtige Rolle spielen.</p>
+<p>Das bedeutet trotzdem nicht automatisch, dass lediglich ein "schwacher Rücken" dahintersteckt. Rückenschmerzen können viele Ursachen haben und sollten besonders bei zusätzlichen neurologischen Beschwerden genauer eingeordnet werden.</p>
+<h2>Warum kann Stehen anstrengend für den Rücken sein?</h2>
+<p>Stehen wirkt von aussen ruhig. Für den Körper ist es aber dauerhafte Haltearbeit. Rumpf-, Rücken-, Hüft- und Beinmuskulatur müssen ständig kleine Korrekturen machen, damit wir aufrecht bleiben.</p>
+<p>Wer lange fast unbewegt steht, verteilt die Belastung weniger. Manche Menschen hängen mehr auf einem Bein, schieben das Becken nach vorne oder stehen dauerhaft im Hohlkreuz. Dann können einzelne Bereiche schneller ermüden oder verspannen.</p>
+<h2>Warum wird es beim Gehen manchmal besser?</h2>
+<p>Stehen und Gehen sind biomechanisch nicht dasselbe. Beim Gehen verändert sich die Belastung ständig. Muskeln wechseln zwischen Aktivität und Entlastung, Hüfte und Becken bewegen sich und die Position der Wirbelsäule variiert.</p>
+<p>Deshalb kann jemand zwanzig Minuten gehen, aber nach zehn Minuten statischem Stehen bereits Rückenschmerzen bekommen. Diese Information ist diagnostisch durchaus interessant.</p>
+<h2>Liegt es an der Haltung?</h2>
+<p>Haltung kann beteiligt sein, aber es gibt nicht die eine "perfekte" Haltung, die den ganzen Tag gehalten werden muss. Oft ist Variation wichtiger.</p>
+<p>Auch eine theoretisch gute Position wird irgendwann unangenehm, wenn du stundenlang unbewegt darin bleibst. Deshalb lohnt sich nicht nur die Frage "Wie stehe ich?", sondern auch "Wie lange stehe ich ohne Bewegung?"</p>
+<h2>Können Bandscheiben oder Nerven beteiligt sein?</h2>
+<p>Ja, besonders wenn Schmerzen zusätzlich ins Gesäss oder Bein ausstrahlen oder Taubheit, Kribbeln oder Schwäche auftreten.</p>
+<p>Bei einem Bandscheibenvorfall können Schmerzen je nach Lage durch bestimmte Bewegungen und auch Husten oder Niesen stärker werden. Das ist ein anderes Muster als rein belastungsabhängige Schmerzen beim Stehen. Dazu findest du auch unsere Seite <a href="/koerpersignale/rueckenschmerzen-beim-husten/">Warum schmerzt mein Rücken beim Husten oder Niesen?</a></p>
+<h2>Was kannst du im Alltag beobachten?</h2>
+<p>Nach wie vielen Minuten beginnt der Schmerz? Sitzt er mittig oder eher auf einer Seite? Wird er durch Gehen besser? Wird er durch Hinsetzen besser? Hilft es, das Gewicht von einem Bein auf das andere zu verlagern? Zieht der Schmerz ins Bein? Gibt es Taubheit oder Kribbeln? Ist der Rücken morgens ebenfalls schmerzhaft?</p>
+<p>Je präziser du das Muster beschreiben kannst, desto gezielter lässt es sich einordnen.</p>
+<h2>Was kannst du zunächst verändern?</h2>
+<p>Wechsle häufiger zwischen Stehen, Gehen und Sitzen. Wenn dein Beruf langes Stehen verlangt, können kleine Bewegungen zwischendurch einen deutlichen Unterschied machen.</p>
+<p>Auch gezieltes Training von Rumpf, Hüfte und Beinen kann bei wiederkehrenden mechanischen Rückenschmerzen sinnvoll sein. Welche Übungen passen, hängt aber von deinem Befund ab. Bei anhaltenden Beschwerden ist <a href="/therapien/physiotherapie/">Physiotherapie</a> häufig eine sinnvolle Möglichkeit, Bewegung und Belastung individuell zu beurteilen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann solltest du Rückenschmerzen abklären lassen?</div><p>Rückenschmerzen, die über längere Zeit bestehen, zunehmend stärker werden oder mit ausstrahlenden neurologischen Beschwerden auftreten, gehören untersucht. Sofort medizinisch abgeklärt werden müssen Rückenschmerzen zusammen mit Taubheit im Genital- oder Analbereich, neuen Problemen mit Blase oder Darm oder deutlicher Schwäche beziehungsweise Taubheit in beiden Beinen. Diese Zeichen können auf eine seltene, aber ernste Nervenkompression hinweisen. Auch Fieber, deutliches Krankheitsgefühl, schweres Trauma oder unerklärlicher Gewichtsverlust verändern die Einordnung.</p></div>
+<h2>Wie kann TCM begleiten?</h2>
+<p>Wenn akute strukturelle oder neurologische Ursachen ausgeschlossen sind und Muskelspannung oder wiederkehrende funktionelle Rückenschmerzen im Vordergrund stehen, kann TCM ergänzend eingesetzt werden.</p>
+<p>Dabei werden beispielsweise <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a> genutzt. Bei Belastungs- und Bewegungsproblemen kann die Kombination mit Physiotherapie besonders sinnvoll sein. Die ausführliche Behandlungsebene findest du auf unserer Seite <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a>.</p>
+<p>Dein Rücken schmerzt vor allem beim Stehen, aber du weisst nicht, welche Behandlung sinnvoll ist? Beschreibe uns kurz dein Belastungsmuster. Wir helfen dir, die passende <a href="/standorte/">Praxis</a> und Therapie zu finden.</p>`,
+    faqs: [
+      { q: 'Warum schmerzt der Rücken beim Stehen, aber nicht beim Gehen?', a: 'Stehen ist statische Haltearbeit, beim Gehen wechselt die Belastung ständig zwischen Muskelaktivität und Entlastung. Deshalb kann langes unbewegtes Stehen schneller Beschwerden machen als eine deutlich längere Gehstrecke.' },
+      { q: 'Ist eine schlechte Haltung schuld an Rückenschmerzen beim Stehen?', a: 'Haltung kann beteiligt sein, aber es gibt nicht die eine perfekte Haltung für den ganzen Tag. Wichtiger ist Variation: Auch eine gute Position wird unangenehm, wenn du stundenlang unbewegt darin bleibst.' },
+      { q: 'Wann sind Rückenschmerzen beim Stehen ein Warnzeichen?', a: 'Bei ausstrahlenden Schmerzen mit Taubheit, Kribbeln oder Schwäche gehört der Rücken untersucht. Sofort abklären lassen musst du Taubheit im Genital- oder Analbereich, neue Blasen- oder Darmprobleme oder deutliche Schwäche in beiden Beinen.' },
+    ],
+    related: [
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
+      { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
+      { href: '/therapien/tuina/', label: 'Tuina Massage', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'druck-im-kopf-ohne-kopfschmerzen',
+    symptom: 'ein Druckgefühl im Kopf ohne richtigen Kopfschmerz',
+    title: 'Druck im Kopf ohne Kopfschmerzen: mögliche Ursachen',
+    metaDesc: 'Druck im Kopf, aber kein richtiger Kopfschmerz? Nebenhöhlen, Muskelspannung und andere Faktoren können eine Rolle spielen. Erfahre, wann du es abklären solltest.',
+    h1: 'Warum habe ich Druck im Kopf, obwohl ich keine Kopfschmerzen habe?',
+    category: 'Kopf & Sinne',
+    lead: 'Es tut nicht richtig weh, aber im Kopf sitzt ein Gefühl von Druck, Enge oder Spannung. Dieses Signal lässt sich schwer beschreiben und hat mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind, was du beobachten kannst und welche Warnzeichen wichtig sind.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kopfdruck und Verspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Druckgefühl im Kopf lässt sich nicht immer eindeutig als Kopfschmerz beschreiben. Manche Menschen spüren eher Enge, Spannung oder ein Gefühl von "zu viel Druck", ohne dass es richtig weh tut.</p>
+<p>Dafür gibt es keine einzelne typische Ursache. Je nach Ort und Begleitsymptomen können zum Beispiel Nebenhöhlen, Spannung im Kopf-, Nacken- oder Kieferbereich oder andere Faktoren eine Rolle spielen. Neu auftretender oder anhaltender Kopfdruck sollte deshalb anhand des Gesamtbildes beurteilt werden.</p>
+<h2>Wo genau spürst du den Druck?</h2>
+<p>"Im Kopf" kann sehr Unterschiedliches bedeuten. Druck über der Stirn oder um Nase und Augen passt beispielsweise eher zu den Nebenhöhlen, besonders wenn gleichzeitig Schnupfen oder eine verstopfte Nase bestehen. Entzündete oder angeschwollene Schleimhäute können dort ein Spannungs- oder Druckgefühl verursachen.</p>
+<p>Ein bandförmiges Druckgefühl an Stirn oder Schläfen kann dagegen einem <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerz</a> ähneln, auch wenn du es subjektiv eher als Druck als als Schmerz wahrnimmst.</p>
+<h2>Können Nacken und Kiefer einen Druck im Kopf auslösen?</h2>
+<p>Sie können das Empfinden beeinflussen. Viele Menschen bemerken gleichzeitig einen steifen Nacken, hochgezogene Schultern oder einen angespannten Kiefer. Gerade langes Arbeiten am Bildschirm, wenig Bewegung und Zähnepressen können zusammen mit Kopf- oder Gesichtsspannung auftreten.</p>
+<p>Das bedeutet nicht, dass jeder Kopfdruck vom Nacken kommt. Aber Begleitsymptome können helfen, unterschiedliche Muster auseinanderzuhalten. Mehr zum Nackenmuster findest du auf unserer Seite <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>.</p>
+<h2>Ist Kopfdruck ein Zeichen für hohen Blutdruck?</h2>
+<p>Nicht zuverlässig. Hoher Blutdruck verursacht bei den meisten Menschen überhaupt keine spürbaren Symptome. Deshalb kann man anhand eines Druckgefühls im Kopf weder erkennen noch ausschliessen, ob der Blutdruck erhöht ist.</p>
+<p>Wenn dich dein Blutdruck interessiert, hilft eine korrekte Messung wesentlich mehr als die Interpretation eines einzelnen Körpersignals.</p>
+<h2>Können die Nebenhöhlen beteiligt sein, auch ohne starke Schmerzen?</h2>
+<p>Ja. Nebenhöhlendruck kann sich als Enge oder Druck an Stirn, Wangen, Nasenwurzel oder hinter den Augen bemerkbar machen. Erkältungen, Allergien und Nebenhöhlenentzündungen gehören zu möglichen Ursachen. Die ausführliche Einordnung findest du auf unserer Seite <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
+<p>Wenn gleichzeitig eine verstopfte Nase, veränderter Schleim oder Druck beim Bücken besteht, wird dieser Zusammenhang wahrscheinlicher.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Wo genau sitzt der Druck? Ist er einseitig oder beidseitig? Gibt es eine verstopfte Nase? Wird er beim Bücken stärker? Sind Nacken oder Kiefer gleichzeitig angespannt? Tritt das Gefühl nach langer Bildschirmarbeit auf? Gibt es <a href="/beschwerden/schwindel/">Schwindel</a>? Hat sich dein Sehen verändert? Ist das Gefühl neu oder kennst du es seit Jahren? Dauert es Minuten, Stunden oder fast den ganzen Tag?</p>
+<p>Diese Details sind oft hilfreicher als das Wort "Druck" allein.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann solltest du Kopfdruck ärztlich abklären lassen?</div><p>Ein neues, ungewöhnliches oder zunehmend stärkeres Kopfgefühl sollte beurteilt werden, besonders wenn du keine Erklärung dafür hast. Sofortige medizinische Abklärung ist wichtig, wenn plötzlich sehr starke Kopfbeschwerden auftreten oder neurologische Zeichen hinzukommen, etwa neue Sprachstörungen, Lähmungen, ausgeprägte Taubheit, Bewusstseinsveränderungen oder deutliche neue Sehstörungen. Auch Fieber mit ausgeprägter Nackensteife oder Beschwerden nach einer Kopfverletzung gehören medizinisch beurteilt.</p></div>
+<h2>Was kannst du selbst tun?</h2>
+<p>Wenn keine Warnzeichen bestehen, kannst du zunächst auf das Muster achten. Regelmässige Pausen bei Bildschirmarbeit, Bewegung und ausreichender Schlaf können besonders dann sinnvoll sein, wenn der Druck mit Nacken- oder Augenbelastung zusammenhängt.</p>
+<p>Bei verstopfter Nase kann eine medizinische oder HNO-Einordnung der Nasen- und Nebenhöhlenbeschwerden hilfreicher sein als eine reine Kopfschmerzbehandlung.</p>
+<h2>Welche Rolle kann die TCM spielen?</h2>
+<p>TCM sollte bei neuem Kopfdruck nicht dazu dienen, eine notwendige medizinische Abklärung zu umgehen.</p>
+<p>Sind ernstere Ursachen ausgeschlossen und treten beispielsweise wiederkehrende Spannung, Nackenbeschwerden, Stress oder bekannte <a href="/beschwerden/kopfschmerzen/">Kopfschmerzmuster</a> auf, kann ergänzend geprüft werden, ob <a href="/therapien/akupunktur/">Akupunktur</a> oder eine andere TCM-Methode zur Situation passt.</p>
+<p>Dabei wird nicht allein das Gefühl "Druck" behandelt. Entscheidend ist das gesamte Muster. Du hast wiederkehrenden Kopfdruck zusammen mit Nackenverspannung, Stress oder anderen bekannten Beschwerden? Schildere uns kurz, wann und wo du den Druck spürst. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Was bedeutet Druck im Kopf ohne Kopfschmerzen?', a: 'Ein Druck- oder Engegefühl im Kopf kann verschiedene Ursachen haben, von Nebenhöhlen über Nacken- und Kieferspannung bis zu Stress oder Bildschirmbelastung. Ort, Begleitsymptome und Verlauf sind für die Einordnung wichtiger als das Wort Druck allein.' },
+      { q: 'Ist Druck im Kopf ein Zeichen für hohen Blutdruck?', a: 'Nicht zuverlässig. Hoher Blutdruck verursacht bei den meisten Menschen keine spürbaren Symptome. Ob dein Blutdruck erhöht ist, zeigt nur eine korrekte Messung, nicht die Interpretation eines Druckgefühls.' },
+      { q: 'Wann muss ich mit Kopfdruck sofort zum Arzt?', a: 'Bei plötzlich sehr starken Kopfbeschwerden oder wenn neurologische Zeichen dazukommen, etwa Sprachstörungen, Lähmungen, ausgeprägte Taubheit, Bewusstseinsveränderungen oder neue Sehstörungen. Auch Fieber mit deutlicher Nackensteife oder eine kürzliche Kopfverletzung gehören sofort beurteilt.' },
+    ],
+    related: [
+      { href: '/beschwerden/kopfschmerzen/', label: 'Kopfschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
+    ],
+  },
 ];
 
 export const koerpersignalBySlug = (slug: string): Koerpersignal | undefined =>
