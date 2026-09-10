@@ -28,7 +28,21 @@ const order: Item[] = data.cro
       { icon: key('clock'), label: 'Öffnungszeiten', kind: 'hours' },
     ];
 ---
-<section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2><div class="up-grid">
+<section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
+{data.cro && (
+  <div class="content-body" style="margin-bottom:18px"><p>Unsere Praxis an der {data.nap.strasse} in {data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.</p></div>
+)}
+{data.cro && data.praxisBilder && data.praxisBilder.length > 0 && (
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px">
+  {data.praxisBilder.map((b) => (
+    <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
+      <img src={b.src} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
+      <figcaption style="position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px">{b.label}</figcaption>
+    </figure>
+  ))}
+  </div>
+)}
+<div class="up-grid">
 {order.map((it) => (
   <div class="up-item"><div class="up-ico"><Fragment set:html={it.icon} /></div><div class="up-body"><div class="up-label">{it.label}</div>
     {it.kind === 'mail' && <a class="up-val" href={`mailto:${data.nap.email}`}>{data.nap.email}</a>}

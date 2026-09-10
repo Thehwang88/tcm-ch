@@ -211,6 +211,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema}>
     <div class="page active" id="page-standort" style="display:block">
       <Hero data={data} />
+      {!data.cro && (
       <section class="section" style="padding:0;background:var(--bg)">
         <div class="wrap" style="padding-top:12px;padding-bottom:4px">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
@@ -222,19 +223,30 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
           </div>
         </div>
       </section>
+      )}
       <div id="standort-content">
         {data.cro ? (
           <Fragment>
-            {/* CRO-Master-Reihenfolge (SG-Vorlage): Trust → Team → Beschwerden → Therapien →
-                Ablauf → Reviews → Warum → KK → Intro/SEO → Praxis/Lage. Kräuter-Band entfällt,
-                Kräutertherapie ist reguläre 4. Therapie-Card. */}
+            {/* CRO-Master-Reihenfolge (SG-Vorlage): Trust → Reassurance → Team → Beschwerden →
+                Therapien → Ablauf → Reviews → KK → Intro/SEO → Praxis/Lage. Kräuter-Band und
+                das grosse "Warum TCM.ch" entfallen (Trust-Punkte sind in USP + Ablauf abgedeckt). */}
             <UspGrid />
+            <section class="section" style="padding:0;background:var(--bg)">
+              <div class="wrap" style="padding-top:12px;padding-bottom:4px">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
+                  <div>
+                    <div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:4px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div>
+                    <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. Komm vorbei, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
+                  </div>
+                  <button type="button" onclick="openContactForm()" class="btn-primary" style="flex-shrink:0">Termin anfragen <span aria-hidden="true">→</span></button>
+                </div>
+              </div>
+            </section>
             <Team data={data} />
             <Beschwerden data={data} />
             <Therapien data={data} />
             {data.ablaufBlock && <Ablauf />}
             {data.reviews && <Reviews data={data} />}
-            <WarumTcm data={data} />
             <KrankenkassenTeam data={data} />
             <IntroNap data={data} />
             {data.extraBlock && <Fragment set:html={data.extraBlock} />}
