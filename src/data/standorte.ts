@@ -1169,6 +1169,8 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "zuerich-hoengg": {
+    "cro": true,
+    "ablaufBlock": true,
     "slug": "zuerich-hoengg",
     "stadt": "Zürich Höngg",
     "hero": {
@@ -1180,6 +1182,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Limmattalstrasse 340",
+      "mapEmbed": "https://www.google.com/maps?q=Limmattalstrasse%20340%2C%208049%20Z%C3%BCrich&output=embed",
       "plz": "8049",
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
@@ -1205,9 +1208,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -1219,9 +1223,8 @@ export const standorte: Record<string, Standort> = {
       "migraene",
       "schlafprobleme",
       "stress-burnout",
-      "kinderwunsch",
       "reizdarm",
-      "endometriose"
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
@@ -1345,6 +1348,8 @@ export const standorte: Record<string, Standort> = {
   // Partnersatz in anfahrt.autoParken bleiben dauerhaft.
   // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten, vor Eröffnung für Ohmstrasse 14 bestätigen.
   "zuerich-oerlikon": {
+    "cro": true,
+    "ablaufBlock": true,
     "slug": "zuerich-oerlikon",
     "stadt": "Zürich Oerlikon",
     "seo": {
@@ -1362,6 +1367,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Ohmstrasse 14",
+      "mapEmbed": "https://www.google.com/maps?q=Ohmstrasse%2014%2C%208050%20Z%C3%BCrich&output=embed",
       "plz": "8050",
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
@@ -1389,9 +1395,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha"
@@ -1405,13 +1412,11 @@ export const standorte: Record<string, Standort> = {
     "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Zürich Oerlikon am häufigsten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "migraene",
-      "schlafprobleme",
-      "stress-burnout",
-      "kinderwunsch",
       "nackenschmerzen",
-      "tinnitus",
-      "hexenschuss"
+      "migraene",
+      "stress-burnout",
+      "schlafprobleme",
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
