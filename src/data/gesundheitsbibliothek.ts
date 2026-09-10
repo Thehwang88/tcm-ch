@@ -291,13 +291,67 @@ export function libraryLinksHtml(beschwerdeSlug: string): string {
 // ---------------------------------------------------------------------------------
 export interface SearchEntry { t: string; u: string; g: string; k?: string }
 
+// Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche —
+// NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
+const SYNONYMS: Record<string, string> = {
+  '/beschwerden/sodbrennen/': 'Reflux saures Aufstossen',
+  '/beschwerden/migraene/': 'Kopfweh Aura',
+  '/beschwerden/kopfschmerzen/': 'Kopfweh',
+  '/beschwerden/spannungskopfschmerzen/': 'Kopfweh Druck',
+  '/beschwerden/karpaltunnelsyndrom/': 'Hand eingeschlafen Kribbeln Taubheit',
+  '/beschwerden/verstopfung/': 'Obstipation träger Darm',
+  '/beschwerden/blaehungen/': 'Völlegefühl aufgeblähter Bauch',
+  '/beschwerden/schwindel/': 'Vertigo Gleichgewicht',
+  '/beschwerden/tinnitus/': 'Ohrgeräusch Pfeifen im Ohr',
+  '/beschwerden/hexenschuss/': 'Lumbago akuter Kreuzschmerz',
+  '/beschwerden/ischias/': 'Ischiasnerv Ausstrahlung Bein',
+  '/beschwerden/zaehneknirschen/': 'Bruxismus CMD Kiefer',
+  '/beschwerden/kieferschmerzen/': 'CMD Kiefergelenk',
+  '/beschwerden/wechseljahre/': 'Menopause Klimakterium Wallungen',
+  '/beschwerden/hitzewallungen/': 'Wallungen Schwitzen',
+  '/beschwerden/schlafprobleme/': 'Insomnie Einschlafen Durchschlafen Schlafstörungen',
+  '/beschwerden/stress-burnout/': 'Erschöpfung ausgebrannt',
+  '/beschwerden/reizdarm/': 'IBS Reizdarmsyndrom Bauchschmerzen',
+  '/beschwerden/rueckenschmerzen/': 'Kreuzschmerzen unterer Rücken LWS',
+  '/beschwerden/nackenschmerzen/': 'HWS steifer Nacken Verspannung',
+  '/beschwerden/bandscheibenvorfall/': 'Diskushernie Prolaps',
+  '/beschwerden/tennisarm/': 'Ellbogen Epicondylitis',
+  '/beschwerden/frozen-shoulder/': 'Schultersteife',
+  '/beschwerden/restless-legs/': 'unruhige Beine RLS',
+  '/beschwerden/durchblutungsstoerungen/': 'kalte Füsse kalte Hände',
+  '/koerpersignale/finger-schlafen-ein/': 'Hand eingeschlafen Kribbeln taub nachts',
+  '/koerpersignale/einzelne-finger-taub/': 'Taubheitsgefühl Kribbeln',
+  '/koerpersignale/herzschlag-im-ohr/': 'Puls im Ohr Pochen pulssynchron',
+  '/koerpersignale/klossgefuehl-im-hals/': 'Globusgefühl Enge im Hals',
+  '/koerpersignale/wadenkraempfe-nachts/': 'Muskelkrampf Wade',
+  '/koerpersignale/nachtschweiss-ohne-fieber/': 'nachts schwitzen',
+  '/koerpersignale/trockener-mund-nachts/': 'Mundtrockenheit Xerostomie',
+  '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/': 'Benommenheit dumpfer Kopf',
+  '/therapien/akupunktur/': 'Nadeln TCM',
+  '/therapien/schroepfen/': 'Cupping Schröpfgläser',
+  '/therapien/tuina/': 'chinesische Massage',
+  '/therapien/kraeutertherapie/': 'chinesische Kräuter Phytotherapie',
+  '/therapien/moxibustion/': 'Moxa Wärmetherapie',
+  '/therapien/gua-sha/': 'Schaben Faszien',
+  '/gesundheitsbibliothek/koerper/bauch-verdauung/': 'Magen Darm Verdauung',
+  '/gesundheitsbibliothek/koerper/hals-nacken/': 'HWS Halswirbelsäule',
+  '/gesundheitsbibliothek/koerper/ruecken/': 'LWS Wirbelsäule Kreuz',
+  '/gesundheitsbibliothek/koerper/schulter-arm-hand/': 'Ellbogen Handgelenk Finger',
+  '/gesundheitsbibliothek/koerper/huefte-bein-fuss/': 'Knie Wade Ferse',
+  '/gesundheitsbibliothek/koerper/zyklus-hormone/': 'Frauengesundheit Menstruation Menopause',
+};
+const withSynonyms = (e: SearchEntry): SearchEntry => {
+  const syn = SYNONYMS[e.u];
+  return syn ? { ...e, k: e.k ? `${e.k} ${syn}` : syn } : e;
+};
+
 export function buildSearchIndex(): SearchEntry[] {
   const entries: SearchEntry[] = [];
   // Körpersignale: vollständig aus koerpersignale.ts (Fragen als Titel).
   for (const k of koerpersignale) {
     entries.push({ t: k.h1, u: `/koerpersignale/${k.slug}/`, g: 'Körpersignale', k: k.category });
   }
-  // Beschwerden: kuratierte Labels aus den Regionen (dedupliziert, kanonische Slugs).
+  // Beschwerden: kuratierte Labels aus den Regionen (mit Region als Kontext) ...
   const seen = new Set<string>();
   for (const r of BODY_REGIONS) {
     for (const c of r.conditions) {
@@ -305,6 +359,21 @@ export function buildSearchIndex(): SearchEntry[] {
       seen.add(c.slug);
       entries.push({ t: c.label, u: `/beschwerden/${c.slug}/`, g: 'Beschwerden', k: r.nav });
     }
+  }
+  // ... plus ALLE übrigen Leaves (Label = H1 des Leafs, gleiche Ableitung wie
+  // beschwerden/[slug].astro). Kanonisierende Duplikat-Slugs bleiben draussen —
+  // die Suche soll direkt auf die kanonische Seite führen.
+  const MERGED_SLUGS = new Set(['schlafstoerungen', 'burnout', 'heuschnupfen']);
+  const leaves = import.meta.glob('./symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+  for (const [p, body] of Object.entries(leaves)) {
+    const slug = p.split('/').pop()!.replace('.html', '');
+    if (seen.has(slug) || MERGED_SLUGS.has(slug)) continue;
+    const m = body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const label = m
+      ? m[1].replace(/<[^>]+>/g, '').replace(/\s*TCM\.ch.*$/i, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim()
+      : slug;
+    seen.add(slug);
+    entries.push({ t: label, u: `/beschwerden/${slug}/`, g: 'Beschwerden' });
   }
   // Körperregionen (die neuen Hubs).
   for (const r of BODY_REGIONS) {
@@ -324,7 +393,7 @@ export function buildSearchIndex(): SearchEntry[] {
     if (v.status !== 'live') continue;
     entries.push({ t: v.title, u: `/visuals/${v.slug}/`, g: 'Visuals', k: (v.keywords ?? []).slice(0, 6).join(' ') });
   }
-  return entries;
+  return entries.map(withSynonyms);
 }
 
 /** Live-Visuals einer Region (nur status:'live', nie Drafts verlinken). */

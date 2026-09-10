@@ -34,6 +34,17 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'kalte-haende-einseitig', label: 'Eine Hand ist kälter' },
   { slug: 'bein-wird-beim-sitzen-taub', label: 'Bein wird beim Sitzen taub' },
   { slug: 'rueckenschmerzen-beim-husten', label: 'Rückenschmerzen beim Husten' },
+  // Zweite Welle (Deploy 09/2026) — siehe seo/index-queue.md.
+  { slug: 'nacken-knackt-beim-drehen', label: 'Nacken knackt beim Drehen' },
+  { slug: 'knie-knackt-ohne-schmerzen', label: 'Knie knackt ohne Schmerzen' },
+  { slug: 'ohr-knackt-beim-schlucken', label: 'Ohr knackt beim Schlucken' },
+  { slug: 'trockener-mund-nachts', label: 'Trockener Mund nachts' },
+  { slug: 'bitterer-geschmack-morgens', label: 'Bitterer Geschmack am Morgen' },
+  { slug: 'schwere-beine-abends', label: 'Schwere Beine am Abend' },
+  { slug: 'brennende-fuesse-nachts', label: 'Brennende Füsse nachts' },
+  { slug: 'ein-fuss-kaelter-als-der-andere', label: 'Ein Fuss ist kälter' },
+  { slug: 'rueckenschmerzen-beim-langen-stehen', label: 'Rückenschmerzen beim langen Stehen' },
+  { slug: 'druck-im-kopf-ohne-kopfschmerzen', label: 'Druck im Kopf ohne Kopfschmerzen' },
 ];
 
 /** Themenspezifische Zuordnung: Beschwerde-Slug -> passende /koerpersignale/-Leaves. */
@@ -76,7 +87,37 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   sehnenscheidenentzuendung: ['finger-morgens-steif', 'hand-kribbelt-beim-velofahren'],
   eisenmangel: ['wadenkraempfe-nachts', 'kalte-haende-einseitig'],
   erschoepfung: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber'],
+  // Zuordnungen der zweiten KS-Welle (gleiche Regel: nur wo das Symptombild wirklich passt).
+  knieschmerzen: ['knie-knackt-ohne-schmerzen'],
+  fettleber: ['bitterer-geschmack-morgens'],
+  'schwere-beine': ['schwere-beine-abends', 'wadenkraempfe-nachts', 'ein-fuss-kaelter-als-der-andere'],
+  wassereinlagerungen: ['schwere-beine-abends'],
+  lymphoedem: ['schwere-beine-abends'],
+  'isg-blockade': ['rueckenschmerzen-beim-langen-stehen', 'bein-wird-beim-sitzen-taub'],
+  spannungskopfschmerzen: ['druck-im-kopf-ohne-kopfschmerzen', 'nacken-knackt-beim-drehen'],
+  kopfschmerzen: ['druck-im-kopf-ohne-kopfschmerzen'],
+  bluthochdruck: ['druck-im-kopf-ohne-kopfschmerzen'],
 };
+// Ergänzungen zu bestehenden Einträgen der ersten Welle:
+for (const [b, extra] of Object.entries({
+  nackenschmerzen: ['nacken-knackt-beim-drehen'],
+  schleudertrauma: ['nacken-knackt-beim-drehen'],
+  arthrose: ['knie-knackt-ohne-schmerzen'],
+  tinnitus: ['ohr-knackt-beim-schlucken'],
+  mittelohrentzuendung: ['ohr-knackt-beim-schlucken'],
+  sinusitis: ['druck-im-kopf-ohne-kopfschmerzen'],
+  schlafprobleme: ['trockener-mund-nachts'],
+  schlafstoerungen: ['trockener-mund-nachts'],
+  sodbrennen: ['bitterer-geschmack-morgens'],
+  gastritis: ['bitterer-geschmack-morgens'],
+  polyneuropathie: ['brennende-fuesse-nachts'],
+  'restless-legs': ['brennende-fuesse-nachts'],
+  durchblutungsstoerungen: ['ein-fuss-kaelter-als-der-andere', 'schwere-beine-abends'],
+  rueckenschmerzen: ['rueckenschmerzen-beim-langen-stehen'],
+  spinalkanalstenose: ['rueckenschmerzen-beim-langen-stehen'],
+} as Record<string, string[]>)) {
+  KS_FOR_BESCHWERDE[b] = [...(KS_FOR_BESCHWERDE[b] ?? []), ...extra];
+}
 
 const bySlug = new Map(KS_LINKS.map((l) => [l.slug, l]));
 

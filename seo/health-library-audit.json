@@ -1,0 +1,2572 @@
+{
+  "generated": "2026-09-10",
+  "totals": {
+    "healthPages": 255,
+    "byType": {
+      "hub": 6,
+      "condition": 104,
+      "library_hub": 1,
+      "body_region": 8,
+      "editorial": 71,
+      "body_signal": 30,
+      "therapy": 31,
+      "visual": 4
+    }
+  },
+  "orphans": [],
+  "noOutboundHealthLinks": [],
+  "duplicateTitles": [],
+  "brokenRelationshipRefs": [],
+  "inventory": [
+    {
+      "url": "/beschwerden/",
+      "type": "hub",
+      "title": "Beschwerden &amp; Symptome – passende TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 44,
+      "outboundHealthLinks": 101
+    },
+    {
+      "url": "/beschwerden/akne/",
+      "type": "condition",
+      "title": "Akne – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/allergien-heuschnupfen/",
+      "type": "condition",
+      "title": "Allergien &amp; Heuschnupfen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/beschwerden/angststoerungen/",
+      "type": "condition",
+      "title": "Angststörungen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/beschwerden/aphten/",
+      "type": "condition",
+      "title": "Aphten – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/arthrose/",
+      "type": "condition",
+      "title": "Arthrose – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/asthma/",
+      "type": "condition",
+      "title": "Asthma – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/beschwerden/augenmigraene/",
+      "type": "condition",
+      "title": "Augenmigräne – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/bandscheibenvorfall/",
+      "type": "condition",
+      "title": "Bandscheibenvorfall – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 22
+    },
+    {
+      "url": "/beschwerden/blaehungen/",
+      "type": "condition",
+      "title": "Blähungen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/blasenentzuendung/",
+      "type": "condition",
+      "title": "Blasenentzündung – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/bluthochdruck/",
+      "type": "condition",
+      "title": "Bluthochdruck – begleitende TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/burnout/",
+      "type": "condition",
+      "title": "Burnout &amp; Erschöpfungssyndrom – TCM-Behandlung | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "https://tcm.ch/beschwerden/stress-burnout/",
+      "inSitemap": false,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/cluster-kopfschmerzen/",
+      "type": "condition",
+      "title": "Cluster-Kopfschmerzen – begleitende TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/colitis-ulcerosa/",
+      "type": "condition",
+      "title": "Colitis ulcerosa – begleitende TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/copd/",
+      "type": "condition",
+      "title": "COPD – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/beschwerden/depressionen/",
+      "type": "condition",
+      "title": "Depressionen – TCM-Begleitung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/durchblutungsstoerungen/",
+      "type": "condition",
+      "title": "Durchblutungsstörungen – TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 24
+    },
+    {
+      "url": "/beschwerden/eisenmangel/",
+      "type": "condition",
+      "title": "Eisenmangel – TCM-Begleitung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/endometriose/",
+      "type": "condition",
+      "title": "Endometriose – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/erschoepfung/",
+      "type": "condition",
+      "title": "Erschöpfung – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/fersensporn/",
+      "type": "condition",
+      "title": "Fersensporn – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/fettleber/",
+      "type": "condition",
+      "title": "Fettleber – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/fibromyalgie/",
+      "type": "condition",
+      "title": "Fibromyalgie – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/frozen-shoulder/",
+      "type": "condition",
+      "title": "Frozen Shoulder – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/gastritis/",
+      "type": "condition",
+      "title": "Gastritis – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/gewichtsmanagement/",
+      "type": "condition",
+      "title": "Gewichtsmanagement – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/gicht/",
+      "type": "condition",
+      "title": "Gicht – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/guertelrose/",
+      "type": "condition",
+      "title": "Gürtelrose &amp; Nervenschmerzen – TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/haarausfall/",
+      "type": "condition",
+      "title": "Haarausfall – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/haemorrhoiden/",
+      "type": "condition",
+      "title": "Hämorrhoiden – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/hallux-valgus/",
+      "type": "condition",
+      "title": "Hallux valgus – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/hashimoto/",
+      "type": "condition",
+      "title": "Hashimoto – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/heuschnupfen/",
+      "type": "condition",
+      "title": "Heuschnupfen – TCM-Behandlung | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "https://tcm.ch/beschwerden/allergien-heuschnupfen/",
+      "inSitemap": false,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/hexenschuss/",
+      "type": "condition",
+      "title": "Hexenschuss – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/histaminintoleranz/",
+      "type": "condition",
+      "title": "Histaminintoleranz – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/hitzewallungen/",
+      "type": "condition",
+      "title": "Hitzewallungen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/hoersturz/",
+      "type": "condition",
+      "title": "Hörsturz – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/hueftschmerzen/",
+      "type": "condition",
+      "title": "Hüftschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 21
+    },
+    {
+      "url": "/beschwerden/hyperhidrose/",
+      "type": "condition",
+      "title": "Starkes Schwitzen (Hyperhidrose) – TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/immunschwaeche/",
+      "type": "condition",
+      "title": "Immunschwäche – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/inkontinenz/",
+      "type": "condition",
+      "title": "Inkontinenz – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/ischias/",
+      "type": "condition",
+      "title": "Ischias – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 34,
+      "outboundHealthLinks": 25
+    },
+    {
+      "url": "/beschwerden/isg-blockade/",
+      "type": "condition",
+      "title": "ISG-Blockade – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/karpaltunnelsyndrom/",
+      "type": "condition",
+      "title": "Karpaltunnelsyndrom – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 23
+    },
+    {
+      "url": "/beschwerden/kieferschmerzen/",
+      "type": "condition",
+      "title": "Kieferschmerzen &amp; CMD – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/kinderwunsch/",
+      "type": "condition",
+      "title": "Akupunktur bei Kinderwunsch – TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 45,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/knieschmerzen/",
+      "type": "condition",
+      "title": "Knieschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/kopfschmerzen/",
+      "type": "condition",
+      "title": "Kopfschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/lippenherpes/",
+      "type": "condition",
+      "title": "Lippenherpes – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/long-covid/",
+      "type": "condition",
+      "title": "Long Covid – begleitende TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/lymphoedem/",
+      "type": "condition",
+      "title": "Lymphödem – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/beschwerden/menstruationsbeschwerden/",
+      "type": "condition",
+      "title": "Menstruationsbeschwerden – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/beschwerden/migraene/",
+      "type": "condition",
+      "title": "Akupunktur bei Migräne – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 135,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/beschwerden/mittelohrentzuendung/",
+      "type": "condition",
+      "title": "Mittelohrentzündung – TCM-Begleitung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/morbus-crohn/",
+      "type": "condition",
+      "title": "Morbus Crohn – begleitende TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/morton-neurom/",
+      "type": "condition",
+      "title": "Morton-Neurom – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/myome/",
+      "type": "condition",
+      "title": "Myome – TCM-Begleitung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/nackenschmerzen/",
+      "type": "condition",
+      "title": "Nackenschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 154,
+      "outboundHealthLinks": 24
+    },
+    {
+      "url": "/beschwerden/nervenschmerzen/",
+      "type": "condition",
+      "title": "Nervenschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/nesselsucht/",
+      "type": "condition",
+      "title": "Nesselsucht (Urtikaria): Behandlung &amp; was wirklich hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/neurodermitis/",
+      "type": "condition",
+      "title": "Neurodermitis – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/osteoporose/",
+      "type": "condition",
+      "title": "Osteoporose – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/pcos/",
+      "type": "condition",
+      "title": "PCOS – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/piriformis-syndrom/",
+      "type": "condition",
+      "title": "Piriformis-Syndrom – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/plantarfasziitis/",
+      "type": "condition",
+      "title": "Plantarfasziitis – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/pms/",
+      "type": "condition",
+      "title": "PMS – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/beschwerden/polyneuropathie/",
+      "type": "condition",
+      "title": "Polyneuropathie – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 31
+    },
+    {
+      "url": "/beschwerden/prostata/",
+      "type": "condition",
+      "title": "Prostatabeschwerden – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/beschwerden/raynaud-syndrom/",
+      "type": "condition",
+      "title": "Raynaud-Syndrom – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 23
+    },
+    {
+      "url": "/beschwerden/reizblase/",
+      "type": "condition",
+      "title": "Reizblase – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/reizdarm/",
+      "type": "condition",
+      "title": "Reizdarm – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/restless-legs/",
+      "type": "condition",
+      "title": "Restless Legs – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 23
+    },
+    {
+      "url": "/beschwerden/rheuma/",
+      "type": "condition",
+      "title": "Rheuma – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/rhizarthrose/",
+      "type": "condition",
+      "title": "Rhizarthrose – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/rosacea/",
+      "type": "condition",
+      "title": "Rosacea – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/rotatorenmanschette/",
+      "type": "condition",
+      "title": "Rotatorenmanschette: Schmerzen behandeln ohne OP | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/rueckenschmerzen/",
+      "type": "condition",
+      "title": "Rückenschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 176,
+      "outboundHealthLinks": 29
+    },
+    {
+      "url": "/beschwerden/schlafprobleme/",
+      "type": "condition",
+      "title": "Schlafprobleme – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 123,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/schlafstoerungen/",
+      "type": "condition",
+      "title": "Schlafstörungen – TCM-Behandlung | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "https://tcm.ch/beschwerden/schlafprobleme/",
+      "inSitemap": false,
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/schleimbeutelentzuendung/",
+      "type": "condition",
+      "title": "Schleimbeutelentzündung – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/schleudertrauma/",
+      "type": "condition",
+      "title": "Schleudertrauma – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/schulterschmerzen/",
+      "type": "condition",
+      "title": "Schulterschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 28,
+      "outboundHealthLinks": 21
+    },
+    {
+      "url": "/beschwerden/schuppenflechte/",
+      "type": "condition",
+      "title": "Schuppenflechte – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/schwangerschaftsbeschwerden/",
+      "type": "condition",
+      "title": "Schwangerschaftsbeschwerden – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/beschwerden/schwere-beine/",
+      "type": "condition",
+      "title": "Schwere Beine: was wirklich hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/schwindel/",
+      "type": "condition",
+      "title": "Schwindel – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/sehnenscheidenentzuendung/",
+      "type": "condition",
+      "title": "Sehnenscheidenentzündung: Behandlung, Dauer &amp; was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/sinusitis/",
+      "type": "condition",
+      "title": "Sinusitis – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/sodbrennen/",
+      "type": "condition",
+      "title": "Sodbrennen &amp; Reflux – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/spannungskopfschmerzen/",
+      "type": "condition",
+      "title": "Spannungskopfschmerzen – TCM | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 23
+    },
+    {
+      "url": "/beschwerden/spinalkanalstenose/",
+      "type": "condition",
+      "title": "Spinalkanalstenose – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 22
+    },
+    {
+      "url": "/beschwerden/sprunggelenkschmerzen/",
+      "type": "condition",
+      "title": "Sprunggelenkschmerzen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/stress-burnout/",
+      "type": "condition",
+      "title": "Stress &amp; Burnout – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 81,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/tennisarm/",
+      "type": "condition",
+      "title": "Tennisarm &amp; Golferarm – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/tinnitus/",
+      "type": "condition",
+      "title": "Tinnitus – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/trigeminusneuralgie/",
+      "type": "condition",
+      "title": "Trigeminusneuralgie – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/uebelkeit/",
+      "type": "condition",
+      "title": "Übelkeit – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/verdauungsprobleme/",
+      "type": "condition",
+      "title": "Verdauungsprobleme – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 29,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/verstopfung/",
+      "type": "condition",
+      "title": "Verstopfung – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/wadenschmerzen/",
+      "type": "condition",
+      "title": "Wadenschmerzen: Ursachen, Krämpfe &amp; was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/wassereinlagerungen/",
+      "type": "condition",
+      "title": "Wassereinlagerungen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/wechseljahre/",
+      "type": "condition",
+      "title": "Wechseljahre – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/zaehneknirschen/",
+      "type": "condition",
+      "title": "Zähneknirschen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/zyklusbeschwerden/",
+      "type": "condition",
+      "title": "Zyklusbeschwerden – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/",
+      "type": "library_hub",
+      "title": "Gesundheitsbibliothek: Gesundheitswissen einfach finden | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 101,
+      "outboundHealthLinks": 25
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
+      "type": "body_region",
+      "title": "Bauch &amp; Verdauung: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 25
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/hals-nacken/",
+      "type": "body_region",
+      "title": "Hals &amp; Nacken: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 27
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/huefte-bein-fuss/",
+      "type": "body_region",
+      "title": "Hüfte, Bein &amp; Fuss: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 32
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/kopf/",
+      "type": "body_region",
+      "title": "Kopf &amp; Gesicht: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 28,
+      "outboundHealthLinks": 34
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/ruecken/",
+      "type": "body_region",
+      "title": "Rücken: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 28
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/schlaf-nervensystem/",
+      "type": "body_region",
+      "title": "Schlaf &amp; Nervensystem: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 30
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
+      "type": "body_region",
+      "title": "Schulter, Arm &amp; Hand: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 28
+    },
+    {
+      "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
+      "type": "body_region",
+      "title": "Zyklus &amp; Hormone: Signale, Beschwerden &amp; Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 26
+    },
+    {
+      "url": "/haut/",
+      "type": "hub",
+      "title": "Haut &amp; Gesicht – Behandlungen und Wirkstoffe ehrlich erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 59,
+      "outboundHealthLinks": 38
+    },
+    {
+      "url": "/haut/aknenarben/",
+      "type": "editorial",
+      "title": "Aknenarben: Typen und was dagegen wirkt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/ampoule/",
+      "type": "editorial",
+      "title": "Ampoule, Essence, Serum: was ist der Unterschied? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/haut/augenringe/",
+      "type": "editorial",
+      "title": "Augenringe: die drei Typen und was jeweils hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/azelainsaeure/",
+      "type": "editorial",
+      "title": "Azelainsäure: der unterschätzte Wirkstoff | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/haut/centella/",
+      "type": "editorial",
+      "title": "Centella asiatica (Cica): Was der Wirkstoff kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/haut/couperose/",
+      "type": "editorial",
+      "title": "Couperose: sichtbare Äderchen im Gesicht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/doppelkinn/",
+      "type": "editorial",
+      "title": "Doppelkinn: Ursachen und was tatsächlich hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/haut/falten-gesicht/",
+      "type": "editorial",
+      "title": "Falten im Gesicht: Zornesfalte, Nasolabial, Marionettenfalten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/haut/fruchtsaeurepeeling/",
+      "type": "editorial",
+      "title": "Fruchtsäurepeeling: Wirkstoffe, Stärken, Ablauf | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/haut/gesichtsbehandlung/",
+      "type": "editorial",
+      "title": "Gesichtsbehandlung: welche passt zu deiner Haut | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 20
+    },
+    {
+      "url": "/haut/gesichtsyoga/",
+      "type": "editorial",
+      "title": "Gesichtsyoga: was die Studienlage hergibt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/glass-skin/",
+      "type": "editorial",
+      "title": "Glass Skin: was dahintersteckt und was davon erreichbar ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/hyaluronsaeure/",
+      "type": "editorial",
+      "title": "Hyaluronsäure: was sie kann und was nicht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/haut/hydrafacial/",
+      "type": "editorial",
+      "title": "Hydrafacial: Ablauf, Kosten, was es wirklich bringt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/haut/k-beauty/",
+      "type": "editorial",
+      "title": "K-Beauty: was wirklich dahintersteckt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/haut/korean-skincare/",
+      "type": "editorial",
+      "title": "Korean Skincare: Routine, Produkte, Kauf in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/haut/melasma/",
+      "type": "editorial",
+      "title": "Melasma: warum es anders ist als Altersflecken | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/haut/microneedling-zuhause/",
+      "type": "editorial",
+      "title": "Microneedling zu Hause: was geht und wo die Grenze ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/haut/microneedling/",
+      "type": "editorial",
+      "title": "Microneedling: Ablauf, Kosten, was realistisch ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/haut/mitesser/",
+      "type": "editorial",
+      "title": "Mitesser entfernen: was hilft und was die Haut schädigt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/nasolabialfalten/",
+      "type": "editorial",
+      "title": "Nasolabialfalten: warum sie entstehen, was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/haut/niacinamid/",
+      "type": "editorial",
+      "title": "Niacinamid: Wirkung, Konzentration, Kombinationen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/peeling/",
+      "type": "editorial",
+      "title": "Chemisches Peeling und Fruchtsäure: AHA, BHA, PHA erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/pigmentflecken/",
+      "type": "editorial",
+      "title": "Pigmentflecken im Gesicht: Formen, Ursachen, was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/polynukleotide/",
+      "type": "editorial",
+      "title": "Polynukleotide: Wirkprinzip, Präparate, Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/haut/profhilo/",
+      "type": "editorial",
+      "title": "Profhilo: was es ist, was es kostet, was es nicht kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/haut/rejuran-pdrn/",
+      "type": "editorial",
+      "title": "Rejuran und PDRN: der koreanische Hautbooster erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/haut/retinol/",
+      "type": "editorial",
+      "title": "Retinol: Einstieg, Dosierung, Nebenwirkungen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/haut/rosacea/",
+      "type": "editorial",
+      "title": "Rosacea: Formen, Auslöser, was hilft | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "https://tcm.ch/beschwerden/rosacea/",
+      "inSitemap": false,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/salicylsaeure/",
+      "type": "editorial",
+      "title": "Salicylsäure (BHA): Wirkung, Anwendung, Fehler | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/skin-booster/",
+      "type": "editorial",
+      "title": "Skin Booster: was hinter dem Begriff steckt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/sonnencreme-gesicht/",
+      "type": "editorial",
+      "title": "Sonnencreme fürs Gesicht: LSF, Filter, koreanische Texturen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/ultherapy-hifu/",
+      "type": "editorial",
+      "title": "Ultherapy und HIFU: fokussierter Ultraschall erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/haut/unreine-haut/",
+      "type": "editorial",
+      "title": "Unreine Haut bei Erwachsenen: Ursachen und was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/haut/vitamin-c-serum/",
+      "type": "editorial",
+      "title": "Vitamin-C-Serum: Formen, Wirkung, Anwendung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/koerpersignale/",
+      "type": "hub",
+      "title": "Körpersignale: Symptome verstehen, bevor sie einen Namen haben | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 100,
+      "outboundHealthLinks": 31
+    },
+    {
+      "url": "/koerpersignale/augenlid-zuckt/",
+      "type": "body_signal",
+      "title": "Augenlid zuckt seit Tagen: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/bein-wird-beim-sitzen-taub/",
+      "type": "body_signal",
+      "title": "Bein wird beim Sitzen taub: harmlos oder Nervensache? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/koerpersignale/bitterer-geschmack-morgens/",
+      "type": "body_signal",
+      "title": "Bitterer Geschmack morgens: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/brennende-fuesse-nachts/",
+      "type": "body_signal",
+      "title": "Brennende Füsse nachts: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/",
+      "type": "body_signal",
+      "title": "Druck im Kopf ohne Kopfschmerzen: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/ein-fuss-kaelter-als-der-andere/",
+      "type": "body_signal",
+      "title": "Ein Fuss ist kälter als der andere: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/einzelne-finger-taub/",
+      "type": "body_signal",
+      "title": "Einzelne Finger taub: Was die Verteilung verrät | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/koerpersignale/finger-morgens-steif/",
+      "type": "body_signal",
+      "title": "Finger morgens steif: Was die Dauer verrät | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/finger-schlafen-ein/",
+      "type": "body_signal",
+      "title": "Finger schlafen ein: harmlos oder Nervensache? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/hand-kribbelt-beim-velofahren/",
+      "type": "body_signal",
+      "title": "Hand kribbelt beim Velofahren: Ursachen und Lösungen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/herzschlag-im-ohr/",
+      "type": "body_signal",
+      "title": "Herzschlag im Ohr: Warum höre ich meinen Puls? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/hitzegefuehl-ohne-fieber/",
+      "type": "body_signal",
+      "title": "Hitzegefühl ohne Fieber: Woher kommen die Hitzewellen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/",
+      "type": "body_signal",
+      "title": "Warum wache ich immer zur gleichen Uhrzeit auf? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/kalte-haende-einseitig/",
+      "type": "body_signal",
+      "title": "Eine Hand kälter als die andere: mögliche Gründe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/klossgefuehl-im-hals/",
+      "type": "body_signal",
+      "title": "Klossgefühl im Hals ohne Erkältung: mögliche Gründe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/knie-knackt-ohne-schmerzen/",
+      "type": "body_signal",
+      "title": "Knie knackt ohne Schmerzen: Muss ich mir Sorgen machen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/nachtschweiss-ohne-fieber/",
+      "type": "body_signal",
+      "title": "Nachtschweiss ohne Fieber: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/nacken-knackt-beim-drehen/",
+      "type": "body_signal",
+      "title": "Nacken knackt beim Drehen: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/ohr-einseitig-verstopft/",
+      "type": "body_signal",
+      "title": "Ohr einseitig verstopft ohne Erkältung: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/koerpersignale/ohr-knackt-beim-schlucken/",
+      "type": "body_signal",
+      "title": "Ohr knackt beim Schlucken: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/koerpersignale/rueckenschmerzen-beim-husten/",
+      "type": "body_signal",
+      "title": "Rückenschmerzen beim Husten oder Niesen: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/rueckenschmerzen-beim-langen-stehen/",
+      "type": "body_signal",
+      "title": "Rückenschmerzen beim langen Stehen: mögliche Gründe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/schwere-beine-abends/",
+      "type": "body_signal",
+      "title": "Schwere Beine abends: Warum fühlen sie sich so müde an? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/schwindel-beim-aufstehen/",
+      "type": "body_signal",
+      "title": "Schwindel beim Aufstehen: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/schwindel-beim-umdrehen-im-bett/",
+      "type": "body_signal",
+      "title": "Schwindel beim Umdrehen im Bett: was dahinterstecken kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/staendiger-raeusperzwang/",
+      "type": "body_signal",
+      "title": "Ständiger Räusperzwang: Woher kommt das Schleimgefühl? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/starkes-schwitzen-ohne-sport/",
+      "type": "body_signal",
+      "title": "Starkes Schwitzen ohne Anstrengung: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/trockener-mund-nachts/",
+      "type": "body_signal",
+      "title": "Trockener Mund nachts: Warum passiert das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/wadenkraempfe-nachts/",
+      "type": "body_signal",
+      "title": "Wadenkrämpfe nachts: Ursachen und was wirklich hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/zungenbrennen/",
+      "type": "body_signal",
+      "title": "Zungenbrennen: Ursachen einer brennenden Zunge | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/therapien/",
+      "type": "hub",
+      "title": "TCM-Methoden – Behandlungen bei TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 127,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/therapien/akupressur/",
+      "type": "therapy",
+      "title": "Akupressur – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/therapien/akupunktur/",
+      "type": "therapy",
+      "title": "Akupunktur – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 173,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/therapien/akupunktur/schwangerschaft/",
+      "type": "therapy",
+      "title": "Akupunktur in der Schwangerschaft – Sicherheit, Nutzen &amp; Kosten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/therapien/dauernadeln/",
+      "type": "therapy",
+      "title": "Akupunktur mit Dauernadeln in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/therapien/ear-seeds/",
+      "type": "therapy",
+      "title": "Ear Seeds (Ohrsamen) in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/therapien/elektroakupunktur/",
+      "type": "therapy",
+      "title": "Elektroakupunktur in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/therapien/gesichtsakupunktur/",
+      "type": "therapy",
+      "title": "Gesichtsakupunktur – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 38,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/therapien/gua-sha/",
+      "type": "therapy",
+      "title": "Gua Sha – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/gua-sha/gesichts-gua-sha/",
+      "type": "therapy",
+      "title": "Gua Sha fürs Gesicht – Anleitung und Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/hanbang/",
+      "type": "therapy",
+      "title": "Hanbang – Koreanische Gesichtsbehandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/kraeutertherapie/",
+      "type": "therapy",
+      "title": "Kräutertherapie – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 93,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/therapien/massage/",
+      "type": "therapy",
+      "title": "Medizinische Massage – Arten, Wirkung &amp; Krankenkasse | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 64,
+      "outboundHealthLinks": 21
+    },
+    {
+      "url": "/therapien/massage/bindegewebsmassage/",
+      "type": "therapy",
+      "title": "Bindegewebsmassage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/massage/deep-tissue-massage/",
+      "type": "therapy",
+      "title": "Deep Tissue Massage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/therapien/massage/fussreflexzonenmassage/",
+      "type": "therapy",
+      "title": "Fussreflexzonenmassage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/massage/klassische-massage/",
+      "type": "therapy",
+      "title": "Klassische Massage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/therapien/massage/lymphdrainage/",
+      "type": "therapy",
+      "title": "Lymphdrainage Winterthur &amp; St. Gallen | Manuelle Lymphdrainage – TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/therapien/massage/medizinische-massage/",
+      "type": "therapy",
+      "title": "Medizinische Massage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 39,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/therapien/massage/schwangerschaftsmassage/",
+      "type": "therapy",
+      "title": "Schwangerschaftsmassage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/therapien/massage/sportmassage/",
+      "type": "therapy",
+      "title": "Sportmassage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/therapien/massage/triggerpunktmassage/",
+      "type": "therapy",
+      "title": "Triggerpunktmassage Winterthur &amp; St. Gallen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/therapien/moxibustion/",
+      "type": "therapy",
+      "title": "Moxibustion – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 49,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/therapien/ohrakupunktur/",
+      "type": "therapy",
+      "title": "Ohrakupunktur: Ablauf, Wirkung &amp; Kosten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/therapien/physiotherapie/",
+      "type": "therapy",
+      "title": "Physiotherapie – Kliniken &amp; Termine | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 35,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/therapien/physiotherapie/dry-needling/",
+      "type": "therapy",
+      "title": "Dry Needling – Triggerpunkte lösen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/therapien/physiotherapie/manuelle-therapie/",
+      "type": "therapy",
+      "title": "Manuelle Therapie – Gelenke mobilisieren | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/therapien/schroepfen/",
+      "type": "therapy",
+      "title": "Schröpfen – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 57,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/therapien/schroepfen/blutiges-schroepfen/",
+      "type": "therapy",
+      "title": "Blutiges Schröpfen (Hijama) in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/therapien/schroepfen/hijama/",
+      "type": "therapy",
+      "title": "Hijama in der Schweiz | Traditionelles Schröpfen bei TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/therapien/shiatsu/",
+      "type": "therapy",
+      "title": "Shiatsu – Behandlung &amp; Wirkung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/therapien/tuina/",
+      "type": "therapy",
+      "title": "Tuina Massage – TCM-Behandlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 92,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/visuals/",
+      "type": "hub",
+      "title": "Medizin einfach erklärt — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/visuals/bandscheibenvorfall-hws/",
+      "type": "visual",
+      "title": "Bandscheibenvorfall HWS — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/bandscheibenvorfall-hws/handout/",
+      "type": "visual",
+      "title": "Bandscheibenvorfall HWS — Patienten-Handout | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "",
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/bandscheibenvorfall-lws/",
+      "type": "visual",
+      "title": "Bandscheibenvorfall LWS — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/bandscheibenvorfall-lws/handout/",
+      "type": "visual",
+      "title": "Bandscheibenvorfall LWS — Patienten-Handout | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "",
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/wissen/",
+      "type": "hub",
+      "title": "Wissen &amp; Magazin – TCM ehrlich eingeordnet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 36,
+      "outboundHealthLinks": 37
+    },
+    {
+      "url": "/wissen/akupressurmatte-was-bringt-sie/",
+      "type": "editorial",
+      "title": "Akupressurmatte: Was bringt sie wirklich? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/akupunktur-bei-heuschnupfen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Heuschnupfen: Studienlage &amp; Nutzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/akupunktur-bei-kopfschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Spannungskopfschmerzen: Was die Studien zeigen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-nackenschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Nackenschmerzen: Studienlage | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-rueckenschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Rückenschmerzen: Was die Studienlage zeigt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-geburtsvorbereitung-beckenendlage/",
+      "type": "editorial",
+      "title": "Akupunktur zur Geburtsvorbereitung &amp; Beckenendlage | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/akupunktur-in-meiner-naehe-schweiz/",
+      "type": "editorial",
+      "title": "Akupunktur in meiner Nähe: Alle Standorte in der Deutschschweiz | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "https://tcm.ch/akupunktur-in-der-naehe/",
+      "inSitemap": false,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/wissen/akupunktur-schlafprobleme/",
+      "type": "editorial",
+      "title": "Akupunktur bei Schlafproblemen: Studien &amp; Ablauf | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-winterthur-kosten/",
+      "type": "editorial",
+      "title": "Akupunktur Winterthur: Kosten, Tarif 590 und Krankenkasse | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/akupunktur-zum-abnehmen/",
+      "type": "editorial",
+      "title": "Akupunktur zum Abnehmen: Was dran ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/burnout-symptome-erkennen/",
+      "type": "editorial",
+      "title": "Burnout-Symptome: Die Anzeichen erkennen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/wissen/chinesische-kraeutertherapie-winterthur/",
+      "type": "editorial",
+      "title": "Chinesische Kräutertherapie in Winterthur: Ablauf, Kosten und Sicherheit | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/dauernadeln-akupunktur/",
+      "type": "editorial",
+      "title": "Dauernadeln &amp; Akupunkturpflaster: Wirkung, Formen &amp; Risiken | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/dry-needling-vs-akupunktur/",
+      "type": "editorial",
+      "title": "Dry Needling vs. Akupunktur: Der Unterschied | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/elektroakupunktur-wirkung/",
+      "type": "editorial",
+      "title": "Elektroakupunktur: Wirkung &amp; Ablauf | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/wissen/faszien-verklebt-was-hilft/",
+      "type": "editorial",
+      "title": "Verklebte Faszien: Was wirklich hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/haeufige-infekte-immunsystem/",
+      "type": "editorial",
+      "title": "Häufige Infekte und Immunsystem: Was TCM leisten kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/wissen/hexenschuss-was-tun/",
+      "type": "editorial",
+      "title": "Hexenschuss: Was jetzt sofort hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/kinderwunsch-akupunktur-tcm/",
+      "type": "editorial",
+      "title": "Kinderwunsch und TCM: Akupunktur, Zyklus und IVF-Begleitung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
+      "type": "editorial",
+      "title": "Krankenkasse und TCM: Was wirklich übernommen wird (Stand 2026) | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/migraene-tcm-warum-akupunktur-nicht-fuer-jeden/",
+      "type": "editorial",
+      "title": "Migräne und TCM: Warum Akupunktur nicht für jeden funktioniert | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/pcos-akupunktur-tcm/",
+      "type": "editorial",
+      "title": "PCOS und TCM: Akupunktur, Zyklus und Kinderwunsch | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/schmerzen-unterer-ruecken/",
+      "type": "editorial",
+      "title": "Schmerzen im unteren Rücken: Ursachen &amp; Hilfe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/wissen/schroepfen-wirkung-flecken/",
+      "type": "editorial",
+      "title": "Schröpfen: Wirkung und warum die Flecken entstehen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/wissen/tcm-basel-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "TCM in Basel: Ablauf, Erfahrungen &amp; was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/tcm-frauenfeld-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "TCM in Frauenfeld: Ablauf, Erfahrungen &amp; was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/wissen/tcm-kreuzlingen-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "TCM in Kreuzlingen: Ablauf, Erfahrungen &amp; was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/wissen/tcm-luzern-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "TCM in Luzern: Ablauf, Erfahrungen &amp; was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/tcm-naturheilpraktiker-schweiz/",
+      "type": "editorial",
+      "title": "TCM-Heilpraktiker oder Naturheilpraktiker? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/tcm-st-gallen-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "TCM in St. Gallen: Ablauf, Erfahrungen und was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/tcm-stress-burnout/",
+      "type": "editorial",
+      "title": "Stress &amp; Burnout: Was Akupunktur realistisch bringt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/tcm-winterthur-erfahrungen-ablauf/",
+      "type": "editorial",
+      "title": "Akupunktur in Winterthur: Ablauf, Erfahrungen und was dich erwartet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/triggerpunkte-verstehen-loesen/",
+      "type": "editorial",
+      "title": "Triggerpunkte: Verstehen und lösen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/wissen/was-bringt-shiatsu-wirkung-ablauf-kosten/",
+      "type": "editorial",
+      "title": "Was bringt Shiatsu? Wirkung, Ablauf und Kosten ehrlich erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/was-hilft-gegen-kopfschmerzen/",
+      "type": "editorial",
+      "title": "Was hilft gegen Kopfschmerzen? Ehrlicher Überblick | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/wie-lange-bleiben-akupunkturnadeln-drin/",
+      "type": "editorial",
+      "title": "Wie lange bleiben Akupunkturnadeln drin? 20 bis 30 Minuten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    }
+  ]
+}
