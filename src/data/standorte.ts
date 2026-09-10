@@ -839,6 +839,9 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "winterthur-muenzgasse": {
+    "praxisBilder": [
+      { "src": "/images/standort-winterthur-muenzgasse.jpg", "alt": "TCM.ch Praxis Winterthur Münzgasse", "label": "Münzgasse" }
+    ],
     "slug": "winterthur-muenzgasse",
     "stadt": "Winterthur Münzgasse",
     "seo": {
@@ -1022,7 +1025,6 @@ export const standorte: Record<string, Standort> = {
   "winterthur-marktgasse": {
     "cro": true,
     "praxisBilder": [
-      { "src": "/images/standort-winterthur-muenzgasse.jpg", "alt": "TCM.ch Praxis Winterthur Münzgasse", "label": "Münzgasse" },
       { "src": "/images/standort-winterthur.jpg", "alt": "TCM.ch Praxis Winterthur Marktgasse", "label": "Marktgasse" }
     ],
     "slug": "winterthur-marktgasse",
