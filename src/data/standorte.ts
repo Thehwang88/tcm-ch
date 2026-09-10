@@ -53,6 +53,7 @@ export interface Standort {
 
 export const standorte: Record<string, Standort> = {
   kreuzlingen: {
+    cro: true,
     slug: 'kreuzlingen',
     stadt: 'Kreuzlingen',
     seo: {
@@ -70,6 +71,7 @@ export const standorte: Record<string, Standort> = {
     },
     nap: {
       strasse: 'Romanshornerstrasse 1',
+      mapEmbed: 'https://www.google.com/maps?q=Romanshornerstrasse%201%2C%208280%20Kreuzlingen&output=embed',
       plz: '8280',
       ort: 'Kreuzlingen',
       telefon: '+41 77 523 61 22',
@@ -88,9 +90,9 @@ export const standorte: Record<string, Standort> = {
       oev: '<strong>Bahnhof Kreuzlingen</strong> und <strong>Bahnhof Kreuzlingen Hafen</strong> in wenigen Gehminuten erreichbar. S-Bahn-Linie S14 sowie Verbindungen nach Konstanz, Romanshorn und Schaffhausen. Mehrere Buslinien (Stadtbus Kreuzlingen) halten in der Nähe.',
       autoParken: 'Anfahrt über A7 (Ausfahrt Kreuzlingen). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Stadthaus</strong>, <strong>Parkhaus Bärenplatz</strong>, Parkhaus Karussell.',
     },
-    therapien: ['akupunktur', 'gesichtsakupunktur', 'elektroakupunktur', 'kraeutertherapie', 'moxibustion', 'schroepfen', 'tuina', 'massage', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
+    therapien: ['akupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'gesichtsakupunktur', 'elektroakupunktur', 'moxibustion', 'massage', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
     beschwerdenIntro: 'Diese Beschwerden sehen wir in unserer Praxis in Kreuzlingen besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
-    beschwerden: ['rueckenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'kinderwunsch', 'nackenschmerzen', 'wechseljahre', 'reizdarm'],
+    beschwerden: ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'stress-burnout', 'reizdarm', 'kinderwunsch'],
     team: [],
     reviews: {
       items: [
@@ -130,6 +132,7 @@ export const standorte: Record<string, Standort> = {
     ],
   },
   "frauenfeld": {
+    "cro": true,
     "slug": "frauenfeld",
     "stadt": "Frauenfeld",
     "seo": {
@@ -147,6 +150,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Rheinstrasse 25",
+      "mapEmbed": "https://www.google.com/maps?q=Rheinstrasse%2025%2C%208500%20Frauenfeld&output=embed",
       "plz": "8500",
       "ort": "Frauenfeld",
       "telefon": "+41 77 523 61 22",
@@ -173,12 +177,12 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
-      "elektroakupunktur",
-      "kraeutertherapie",
-      "moxibustion",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
+      "elektroakupunktur",
+      "moxibustion",
       "massage",
       "akupressur",
       "shiatsu",
@@ -191,9 +195,8 @@ export const standorte: Record<string, Standort> = {
       "migraene",
       "schlafprobleme",
       "stress-burnout",
-      "kinderwunsch",
       "ischias",
-      "allergien-heuschnupfen"
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
@@ -324,6 +327,8 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "rorschach": {
+    "cro": true,
+    "ablaufBlock": true,
     "slug": "rorschach",
     "stadt": "Rorschach",
     "hero": {
@@ -335,6 +340,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Pestalozzistrasse 11",
+      "mapEmbed": "https://www.google.com/maps?q=Pestalozzistrasse%2011%2C%209400%20Rorschach&output=embed",
       "plz": "9400",
       "ort": "Rorschach",
       "telefon": "+41 77 523 61 22",
@@ -360,9 +366,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -374,10 +381,8 @@ export const standorte: Record<string, Standort> = {
       "migraene",
       "schlafprobleme",
       "stress-burnout",
-      "kinderwunsch",
-      "tinnitus",
       "knieschmerzen",
-      "hexenschuss"
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
@@ -496,6 +501,8 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "volketswil": {
+    "cro": true,
+    "ablaufBlock": true,
     "slug": "volketswil",
     "stadt": "Volketswil",
     "hero": {
@@ -507,6 +514,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Lindenstrasse 2/1",
+      "mapEmbed": "https://www.google.com/maps?q=Lindenstrasse%202%2F1%2C%208604%20Volketswil&output=embed",
       "plz": "8604",
       "ort": "Volketswil",
       "telefon": "+41 77 523 61 22",
@@ -532,9 +540,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -543,12 +552,11 @@ export const standorte: Record<string, Standort> = {
     "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Volketswil am häufigsten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "migraene",
-      "schlafprobleme",
-      "stress-burnout",
-      "kinderwunsch",
       "schulterschmerzen",
-      "endometriose"
+      "migraene",
+      "stress-burnout",
+      "schlafprobleme",
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
@@ -667,6 +675,8 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "wil": {
+    "cro": true,
+    "ablaufBlock": true,
     "slug": "wil",
     "stadt": "Wil",
     "hero": {
@@ -678,6 +688,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Obere Bahnhofstrasse 35",
+      "mapEmbed": "https://www.google.com/maps?q=Obere%20Bahnhofstrasse%2035%2C%209500%20Wil&output=embed",
       "plz": "9500",
       "ort": "Wil",
       "telefon": "+41 77 523 61 22",
@@ -703,9 +714,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -714,13 +726,11 @@ export const standorte: Record<string, Standort> = {
     "beschwerdenIntro": "Ein Überblick über die Beschwerden, die wir in Wil am häufigsten behandeln. Details zu Ablauf und Kosten stehen auf den einzelnen Seiten.",
     "beschwerden": [
       "rueckenschmerzen",
-      "migraene",
-      "schlafprobleme",
-      "stress-burnout",
-      "kinderwunsch",
       "nackenschmerzen",
-      "ischias",
-      "wechseljahre"
+      "migraene",
+      "stress-burnout",
+      "schlafprobleme",
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
@@ -839,6 +849,8 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "winterthur-muenzgasse": {
+    "cro": true,
+    "ablaufBlock": true,
     "praxisBilder": [
       { "src": "/images/standort-winterthur-muenzgasse.jpg", "alt": "TCM.ch Praxis Winterthur Münzgasse", "label": "Münzgasse" }
     ],
@@ -859,6 +871,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nap": {
       "strasse": "Münzgasse 2",
+      "mapEmbed": "https://www.google.com/maps?q=M%C3%BCnzgasse%202%2C%208400%20Winterthur&output=embed",
       "plz": "8400",
       "ort": "Winterthur",
       "telefon": "+41 77 523 61 22",
@@ -888,9 +901,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -902,9 +916,8 @@ export const standorte: Record<string, Standort> = {
       "migraene",
       "schlafprobleme",
       "stress-burnout",
-      "kinderwunsch",
-      "allergien-heuschnupfen",
-      "tinnitus"
+      "tinnitus",
+      "kinderwunsch"
     ],
     "team": [],
     "reviews": {
