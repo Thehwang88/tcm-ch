@@ -18,6 +18,7 @@ import homeBody from '../../data/home-body.html?raw';
 import { getStandort, waHref, telHref } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
 import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
+import { ksLinksFor, ksLinksHtml } from '../../data/koerpersignale-links';
 import type { Standort } from '../../data/standorte';
 import Hero from '../../components/standort/Hero.astro';
 import UspGrid from '../../components/standort/UspGrid.astro';
@@ -55,6 +56,15 @@ const hautBlock = hautLinksHtml(
   'Haut & Gesicht',
   'Haut, Gesicht und was wirklich hilft',
   'Ehrlich erklärt: Wirkstoffe, Behandlungen und was davon realistisch etwas bringt.',
+);
+
+// Interne Links in den /koerpersignale/-Cluster. Gleiches Problem wie bei /haut/:
+// Die Leaves stehen in GSC auf "URL ist Google nicht bekannt", verweisende Seite: keine.
+const ksBlock = ksLinksHtml(
+  ksLinksFor(slug! + 'ks', 6),
+  'Körpersignale',
+  'Wenn der Körper etwas meldet, bevor es einen Namen hat',
+  'Schwindel beim Umdrehen, Puls im Ohr, taube Finger: medizinisch eingeordnet, ohne Panikmache.',
 );
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
@@ -198,10 +208,10 @@ if (migrated) {
     // (Corinna-WA → OneDoc → Rückruf-Fallback), damit die Buchung die Seite abschliesst.
     const mi = sgBody.indexOf('<section class="sg-merged-cta">');
     sgBody = mi >= 0
-      ? sgBody.slice(0, mi) + beschwerdenLinks + hautBlock + sgBody.slice(mi)
-      : sgBody + beschwerdenLinks + hautBlock;
+      ? sgBody.slice(0, mi) + beschwerdenLinks + hautBlock + ksBlock + sgBody.slice(mi)
+      : sgBody + beschwerdenLinks + hautBlock + ksBlock;
   }
-  spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks + hautBlock;
+  spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks + hautBlock + ksBlock;
 }
 
 const data = migrated as Standort;
@@ -283,6 +293,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
         <UeberPraxis data={data} />
         <WeitereStandorte data={data} />
         <Fragment set:html={hautBlock} />
+        <Fragment set:html={ksBlock} />
         {data.cro ? (
           <Fragment>
             {/* CRO: menschlicher WhatsApp-CTA vor dem finalen Anfrage-Formular (= primärer

@@ -18,8 +18,6 @@ Regeln:
 
 ## Offen
 
-- https://tcm.ch/koerpersignale/augenlid-zuckt/
-- https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/
 - https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/
 - https://tcm.ch/koerpersignale/nachtschweiss-ohne-fieber/
 - https://tcm.ch/koerpersignale/rueckenschmerzen-beim-husten/
@@ -79,6 +77,8 @@ Regeln:
 
 ## Erledigt
 
+- https://tcm.ch/koerpersignale/augenlid-zuckt/ — 10.09.2026
+- https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/ — 10.09.2026
 - https://tcm.ch/haut/microneedling/ — 02.09.2026
 - https://tcm.ch/haut/retinol/ — 02.09.2026
 - https://tcm.ch/haut/niacinamid/ — 02.09.2026
