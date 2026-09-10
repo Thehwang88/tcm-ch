@@ -1349,6 +1349,9 @@ export const standorte: Record<string, Standort> = {
   // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten, vor Eröffnung für Ohmstrasse 14 bestätigen.
   "zuerich-oerlikon": {
     "cro": true,
+    "praxisBilder": [
+      { "src": "/images/standort-oerlikon.png", "alt": "TCM.ch Praxis Zürich Oerlikon", "label": "Oerlikon" }
+    ],
     "ablaufBlock": true,
     "slug": "zuerich-oerlikon",
     "stadt": "Zürich Oerlikon",
