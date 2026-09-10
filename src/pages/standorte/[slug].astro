@@ -192,9 +192,14 @@ if (migrated) {
     sgBody = ki >= 0
       ? sgBody.slice(0, ki) + onedocSection + sgBody.slice(ki)
       : sgBody.replace('<div id="standort-content">', '<div id="standort-content">' + onedocSection);
-    sgBody = sgBody + beschwerdenLinks;
+    // SEO-Linkblöcke (Beschwerden-Chips + Haut-Cluster) VOR das Conversion-Ende
+    // (Corinna-WA → OneDoc → Rückruf-Fallback), damit die Buchung die Seite abschliesst.
+    const mi = sgBody.indexOf('<section class="sg-merged-cta">');
+    sgBody = mi >= 0
+      ? sgBody.slice(0, mi) + beschwerdenLinks + hautBlock + sgBody.slice(mi)
+      : sgBody + beschwerdenLinks + hautBlock;
   }
-  spaBody = (slug === 'st-gallen') ? sgBody + hautBlock : filledBody + beschwerdenLinks + hautBlock;
+  spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks + hautBlock;
 }
 
 const data = migrated as Standort;
