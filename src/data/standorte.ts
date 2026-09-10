@@ -40,6 +40,8 @@ export interface Standort {
   faqs?: { q: string; a: string }[];
   reviews?: { heading?: string; items: { autor: string; text: string; stern: number; kontext?: string }[] };
   ablaufBlock?: boolean;
+  /** Opt-in: SG-Master-CRO-Layout (Sektionsreihenfolge, 4 Therapien, kompakte Blöcke). */
+  cro?: boolean;
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
   /** Optionaler Rücklink auf den Wissen-Artikel des Standorts (gerendert in UeberPraxis). */
   wissenLink?: { href: string; label: string; sub: string };
@@ -1016,6 +1018,7 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   "winterthur-marktgasse": {
+    "cro": true,
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
     "seo": {
@@ -1063,9 +1066,10 @@ export const standorte: Record<string, Standort> = {
     },
     "therapien": [
       "akupunktur",
-      "gesichtsakupunktur",
       "schroepfen",
       "tuina",
+      "kraeutertherapie",
+      "gesichtsakupunktur",
       "akupressur",
       "shiatsu",
       "gua-sha",
@@ -1074,13 +1078,11 @@ export const standorte: Record<string, Standort> = {
     "beschwerdenIntro": "Womit kommen die Leute an der Marktgasse in Winterthur zu uns? Meistens mit einem dieser Themen. Jede Seite erklärt, was die TCM realistisch leisten kann.",
     "beschwerden": [
       "rueckenschmerzen",
-      "migraene",
-      "schlafprobleme",
-      "stress-burnout",
-      "kinderwunsch",
-      "knieschmerzen",
       "schulterschmerzen",
-      "hexenschuss"
+      "migraene",
+      "stress-burnout",
+      "schlafprobleme",
+      "kinderwunsch"
     ],
     "team": [
       {
