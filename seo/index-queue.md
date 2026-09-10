@@ -18,10 +18,6 @@ Regeln:
 
 ## Offen
 
-- https://tcm.ch/beschwerden/rotatorenmanschette/
-- https://tcm.ch/beschwerden/wadenschmerzen/
-- https://tcm.ch/beschwerden/sprunggelenkschmerzen/
-- https://tcm.ch/beschwerden/schwere-beine/
 - https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
 - https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
 - https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
@@ -110,6 +106,10 @@ src/data/koerpersignale-links.ts eintragen, sonst haben sie dasselbe
 
 ## Erledigt
 
+- https://tcm.ch/beschwerden/rotatorenmanschette/ — 10.09.2026 (manuell)
+- https://tcm.ch/beschwerden/wadenschmerzen/ — 10.09.2026 (manuell)
+- https://tcm.ch/beschwerden/sprunggelenkschmerzen/ — 10.09.2026 (manuell)
+- https://tcm.ch/beschwerden/schwere-beine/ — 10.09.2026 (manuell)
 - https://tcm.ch/koerpersignale/augenlid-zuckt/ — 10.09.2026
 - https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/ — 10.09.2026
 - https://tcm.ch/haut/microneedling/ — 02.09.2026
