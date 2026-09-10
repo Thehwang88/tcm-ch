@@ -18,6 +18,11 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
+- https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
+- https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
+- https://tcm.ch/koerpersignale/trockener-mund-nachts/
+
 - https://tcm.ch/koerpersignale/augenlid-zuckt/
 - https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/
 - https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/
