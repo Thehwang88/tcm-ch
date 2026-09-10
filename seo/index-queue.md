@@ -18,6 +18,15 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/gesundheitsbibliothek/
+- https://tcm.ch/gesundheitsbibliothek/koerper/ruecken/
+- https://tcm.ch/gesundheitsbibliothek/koerper/hals-nacken/
+- https://tcm.ch/gesundheitsbibliothek/koerper/schulter-arm-hand/
+- https://tcm.ch/gesundheitsbibliothek/koerper/kopf/
+- https://tcm.ch/gesundheitsbibliothek/koerper/huefte-bein-fuss/
+- https://tcm.ch/gesundheitsbibliothek/koerper/bauch-verdauung/
+- https://tcm.ch/gesundheitsbibliothek/koerper/schlaf-nervensystem/
+- https://tcm.ch/gesundheitsbibliothek/koerper/zyklus-hormone/
 - https://tcm.ch/beschwerden/rotatorenmanschette/
 - https://tcm.ch/beschwerden/wadenschmerzen/
 - https://tcm.ch/beschwerden/sprunggelenkschmerzen/

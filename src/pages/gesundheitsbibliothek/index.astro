@@ -1,0 +1,282 @@
+---
+// Gesundheitsbibliothek — zentraler Discovery-Hub über alle Gesundheitsinhalte.
+// Organisiert BESTEHENDE Seiten (Körpersignale, Beschwerden, Therapien, Visuals),
+// erzeugt keine Duplikat-URLs. Suche ist rein clientseitig (keine indexierbaren
+// Filter-/Query-URLs). Design nach den bestehenden Hub-Mustern (/koerpersignale/).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { BODY_REGIONS, DIAGNOSTICS, buildSearchIndex } from '../../data/gesundheitsbibliothek';
+import { koerpersignale } from '../../data/koerpersignale';
+
+const title = 'Gesundheitsbibliothek: Gesundheitswissen einfach finden';
+const description =
+  'Symptom, Beschwerde, Körperregion oder Therapie: Die Gesundheitsbibliothek von TCM.ch verbindet alle Gesundheitsinhalte an einem Ort — von Körpersignalen ohne Diagnose bis zu Behandlungsmöglichkeiten in deiner Nähe.';
+const url = 'https://tcm.ch/gesundheitsbibliothek/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: url },
+    ],
+  },
+];
+
+const INDEX = buildSearchIndex();
+
+// Repräsentative Einstiege pro Kategorie (kuratiert, alle Ziele existieren).
+const ksSample = ['finger-schlafen-ein', 'schwindel-beim-umdrehen-im-bett', 'wadenkraempfe-nachts', 'klossgefuehl-im-hals']
+  .map((s) => koerpersignale.find((k) => k.slug === s))
+  .filter(Boolean);
+
+const CATEGORIES = [
+  {
+    label: 'Körpersignale',
+    href: '/koerpersignale/',
+    cta: 'Alle Körpersignale',
+    text: 'Etwas verändert sich, aber es hat noch keinen Namen? Ehrliche Einordnungen von Mustern wie Schwindel beim Umdrehen oder Fingern, die nachts einschlafen.',
+    samples: ksSample.map((k) => ({ href: `/koerpersignale/${k!.slug}/`, label: k!.h1 })),
+  },
+  {
+    label: 'Beschwerden',
+    href: '/beschwerden/',
+    cta: 'Alle Beschwerden A–Z',
+    text: 'Du kennst deine Diagnose oder dein Beschwerdebild? Über 100 Seiten von Rückenschmerzen bis Migräne — mit Behandlungsmöglichkeiten und Kostenübernahme.',
+    samples: [
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+      { href: '/beschwerden/migraene/', label: 'Migräne' },
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm' },
+    ],
+  },
+  {
+    label: 'Körper & Regionen',
+    href: '#koerperregionen',
+    cta: 'Nach Region stöbern',
+    text: 'Das Problem sitzt irgendwo in dieser Körperregion? Vom Kopf bis zum Fuss: alle Signale, Beschwerden und Behandlungen einer Region an einem Ort.',
+    samples: [
+      { href: '/gesundheitsbibliothek/koerper/ruecken/', label: 'Rücken' },
+      { href: '/gesundheitsbibliothek/koerper/hals-nacken/', label: 'Hals & Nacken' },
+      { href: '/gesundheitsbibliothek/koerper/schulter-arm-hand/', label: 'Schulter, Arm & Hand' },
+    ],
+  },
+  {
+    label: 'Therapien',
+    href: '/therapien/',
+    cta: 'Alle Therapien',
+    text: 'Wie lässt sich das behandeln? Akupunktur, Tuina, Schröpfen, Kräutertherapie und mehr — mit Ablauf, Dauer und Kostenübernahme durch die Zusatzversicherung.',
+    samples: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur' },
+      { href: '/therapien/tuina/', label: 'Tuina' },
+      { href: '/therapien/schroepfen/', label: 'Schröpfen' },
+      { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie' },
+    ],
+  },
+  {
+    label: 'Untersuchungen & Diagnostik',
+    href: '#diagnostik',
+    cta: 'Zur Übersicht',
+    text: 'Wie wird so etwas medizinisch abgeklärt? Zur Orientierung: was die Schulmedizin typischerweise untersucht — von der Blutuntersuchung bis zum MRI.',
+    samples: [],
+  },
+  {
+    label: 'Visual Library',
+    href: '/visuals/',
+    cta: 'Zur Visual Library',
+    text: 'Zeig mir, was passiert: einfache medizinische Illustrationen, mit denen unsere Therapeutinnen und Therapeuten Beschwerden verständlich erklären.',
+    samples: [],
+  },
+];
+---
+<LayoutDe title={title} description={description} path="/gesundheitsbibliothek" schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="cat">Gesundheitsbibliothek</div>
+      <h1>Gesundheitswissen einfach finden</h1>
+      <p class="lead">Ob du ein Symptom beobachtest, deine Diagnose schon kennst oder wissen willst, wie eine Behandlung abläuft: Hier findest du alle Gesundheitsinhalte von TCM.ch an einem Ort — nach Körpersignal, Beschwerde, Körperregion, Therapie oder Untersuchung.</p>
+
+      <div class="lib-search" id="lib-search">
+        <label class="ls-label" for="lib-search-input">Suche in der Gesundheitsbibliothek</label>
+        <div class="ls-box">
+          <svg class="ls-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input id="lib-search-input" type="search" placeholder="Symptom, Beschwerde oder Körperregion suchen" autocomplete="off" aria-describedby="lib-search-hint" />
+        </div>
+        <div id="lib-search-hint" class="ls-hint">Zum Beispiel: «Finger schlafen ein», «Migräne» oder «Nacken»</div>
+        <div id="lib-search-results" class="ls-results" hidden role="region" aria-live="polite" aria-label="Suchergebnisse"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <div class="cats">
+        {CATEGORIES.map((c) => (
+          <div class="cat-card">
+            <h2 class="cat-title">{c.label}</h2>
+            <p class="cat-text">{c.text}</p>
+            {c.samples.length > 0 && (
+              <ul class="cat-samples">
+                {c.samples.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+              </ul>
+            )}
+            <a class="cat-cta" href={c.href}>{c.cta} →</a>
+          </div>
+        ))}
+      </div>
+
+      <div class="regions" id="koerperregionen">
+        <h2 class="group-title">Nach Körperregion stöbern</h2>
+        <p class="group-sub">Wo spürst du etwas? Jede Region sammelt die passenden Körpersignale, Beschwerden, Behandlungen und Visuals.</p>
+        <div class="region-grid">
+          {BODY_REGIONS.map((r) => (
+            <a class="region-card" href={`/gesundheitsbibliothek/koerper/${r.slug}/`}>
+              <div class="region-name">{r.nav}</div>
+              <div class="region-meta">{r.signals.length + r.conditions.length} Themen</div>
+            </a>
+          ))}
+          <a class="region-card" href="/haut/">
+            <div class="region-name">Haut & Gesicht</div>
+            <div class="region-meta">Eigene Rubrik</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="diag" id="diagnostik">
+        <h2 class="group-title">Untersuchungen & Diagnostik</h2>
+        <p class="group-sub">Zur Orientierung: Diese Untersuchungen setzt die Schulmedizin häufig ein, um Beschwerden abzuklären. TCM.ch führt sie nicht selbst durch — die Abklärung gehört in ärztliche Hand. Unsere Therapeutinnen und Therapeuten sagen dir ehrlich, wenn zuerst ein Arztbesuch sinnvoll ist.</p>
+        <div class="diag-grid">
+          {DIAGNOSTICS.map((d) => (
+            <div class="diag-card">
+              <div class="diag-name">{d.name}</div>
+              <p class="diag-short">{d.short}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="bridge">
+        <h2 class="group-title">Lieber von A bis Z?</h2>
+        <p>Alle Beschwerdebilder gibt es auch als klassische Übersicht — von Akne bis Zyklusbeschwerden.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/beschwerden/">Alle Beschwerden ansehen</a>
+          <a class="btn btn--ghost" href="/selbsttest/">Zum TCM-Selbsttest</a>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-title">Behandlungsmöglichkeiten in deiner Nähe</div>
+        <p>14 geprüfte Praxen in der Deutschschweiz. EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+          <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<script define:vars={{ INDEX }}>
+  // Clientseitige Suche über den Build-Zeit-Index (Titel + URL + Gruppe).
+  // Bewusst ohne Query-Parameter/Routing: Suchzustände erzeugen keine URLs.
+  const input = document.getElementById('lib-search-input');
+  const box = document.getElementById('lib-search-results');
+  const norm = (s) => s.toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+  const GROUPS = ['Körpersignale', 'Beschwerden', 'Körperregionen', 'Therapien', 'Visuals'];
+  const prepared = INDEX.map((e) => ({ ...e, n: norm(e.t + ' ' + (e.k || '')) }));
+
+  function render(q) {
+    const nq = norm(q.trim());
+    if (nq.length < 2) { box.hidden = true; box.innerHTML = ''; return; }
+    const words = nq.split(/\s+/).filter(Boolean);
+    const hits = prepared.filter((e) => words.every((w) => e.n.includes(w)));
+    if (!hits.length) {
+      box.innerHTML = '<div class="ls-empty">Nichts gefunden. Versuch ein anderes Wort — oder stöbere <a href="/beschwerden/">von A bis Z</a>.</div>';
+      box.hidden = false;
+      return;
+    }
+    let html = '';
+    for (const g of GROUPS) {
+      const group = hits.filter((e) => e.g === g).slice(0, 5);
+      if (!group.length) continue;
+      html += '<div class="ls-group"><div class="ls-group-label">' + g + '</div>' +
+        group.map((e) => '<a class="ls-item" href="' + e.u + '">' + e.t + '</a>').join('') + '</div>';
+    }
+    box.innerHTML = html;
+    box.hidden = false;
+  }
+  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('search', () => render(input.value));
+</script>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .lib-search { margin-top: 28px; position: relative; }
+  .ls-label { display: block; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .ls-box { display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--border); border-radius: var(--r-btn); padding: 0 16px; background: #fff; transition: border-color var(--t-fast) ease; }
+  .ls-box:focus-within { border-color: var(--blue); }
+  .ls-icon { flex-shrink: 0; color: var(--muted); }
+  .ls-box input { flex: 1; min-width: 0; border: 0; outline: none; font: inherit; font-size: 16.5px; color: var(--ink); padding: 15px 0; background: transparent; }
+  .ls-hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .ls-results { border: 1px solid var(--border); border-radius: var(--r-card); background: #fff; box-shadow: var(--sh-md); margin-top: 10px; padding: 8px; max-height: 420px; overflow-y: auto; }
+  .ls-results :global(.ls-group) { padding: 6px 0; }
+  .ls-results :global(.ls-group-label) { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 6px 12px 4px; }
+  .ls-results :global(.ls-item) { display: block; padding: 9px 12px; border-radius: 8px; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .ls-results :global(.ls-item:hover), .ls-results :global(.ls-item:focus) { background: var(--blue-light); color: var(--blue-dark); }
+  .ls-results :global(.ls-empty) { padding: 14px 12px; font-size: 14.5px; color: var(--mid); }
+  .ls-results :global(.ls-empty a) { color: var(--blue); font-weight: 600; }
+
+  .cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
+  .cat-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .cat-title { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0; }
+  .cat-text { font-size: 15px; line-height: 1.55; color: var(--mid); margin: 0; }
+  .cat-samples { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .cat-samples a { font-size: 14.5px; font-weight: 600; color: var(--blue); text-decoration: none; }
+  .cat-samples a:hover { text-decoration: underline; }
+  .cat-cta { margin-top: auto; font-size: 14.5px; font-weight: 700; color: var(--blue); text-decoration: none; }
+  .cat-cta:hover { text-decoration: underline; }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.55; color: var(--mid); margin: 0 0 16px; max-width: 680px; }
+
+  .regions { margin: 48px 0 0; }
+  .region-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .region-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .region-card:hover { border-color: var(--blue); }
+  .region-name { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .region-meta { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+  .diag { margin: 48px 0 0; }
+  .diag-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .diag-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px; }
+  .diag-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .diag-short { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0; }
+
+  .bridge { margin: 48px 0 0; }
+  .bridge p { font-size: 16.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; max-width: 640px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+
+  @media (max-width: 760px) {
+    .cats { grid-template-columns: 1fr; }
+    .region-grid { grid-template-columns: repeat(2, 1fr); }
+    .diag-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 460px) {
+    .region-grid { grid-template-columns: 1fr; }
+  }
+</style>
