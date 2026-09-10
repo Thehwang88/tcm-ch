@@ -29,10 +29,10 @@ const order: Item[] = data.cro
     ];
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
-{data.cro && (
+{(data.cro || data.praxisBilder) && (
   <div class="content-body" style="margin-bottom:18px"><p>Unsere Praxis an der {data.nap.strasse} in {data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.</p></div>
 )}
-{data.cro && data.praxisBilder && data.praxisBilder.length > 0 && (
+{data.praxisBilder && data.praxisBilder.length > 0 && (
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px">
   {data.praxisBilder.map((b) => (
     <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
