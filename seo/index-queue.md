@@ -75,6 +75,25 @@ Regeln:
 - https://tcm.ch/therapien/massage/klassische-massage/
 - https://tcm.ch/therapien/massage/deep-tissue-massage/
 
+## Geplant (noch nicht live)
+
+Stichprobe am 10.09.2026: 404. Diese URLs gehören NICHT unter "Offen", sonst
+verbrennt die 09:00-Aufgabe Tageskontingent auf nicht existierende Seiten.
+Beim Deploy nach "Offen" verschieben — und gleichzeitig in KS_LINKS in
+src/data/koerpersignale-links.ts eintragen, sonst haben sie dasselbe
+"Verweisende Seite: nicht gefunden"-Problem wie die ersten 20 Leaves.
+
+- https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
+- https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
+- https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
+- https://tcm.ch/koerpersignale/trockener-mund-nachts/
+- https://tcm.ch/koerpersignale/bitterer-geschmack-morgens/
+- https://tcm.ch/koerpersignale/schwere-beine-abends/
+- https://tcm.ch/koerpersignale/brennende-fuesse-nachts/
+- https://tcm.ch/koerpersignale/ein-fuss-kaelter-als-der-andere/
+- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-langen-stehen/
+- https://tcm.ch/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/
+
 ## Erledigt
 
 - https://tcm.ch/koerpersignale/augenlid-zuckt/ — 10.09.2026
