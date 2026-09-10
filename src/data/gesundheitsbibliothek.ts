@@ -29,8 +29,10 @@ export interface RegionRef { slug: string; label: string }
 export interface Diagnostic {
   id: string;
   name: string;
-  /** Rein informativ: was die Schulmedizin in diesem Kontext abklärt. Keine eigene Seite in Phase 1. */
+  /** Rein informativ: was die Schulmedizin in diesem Kontext abklärt. */
   short: string;
+  /** Eigene Bibliotheks-Seite, falls vorhanden (z.B. Nervenleitmessung). */
+  href?: string;
 }
 
 // Untersuchungen & Diagnostik — Phase 1: nur Informationsblöcke auf Hub/Region-Hubs,
@@ -42,7 +44,7 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild — etwa bei Arthrose-Verdacht oder nach Stürzen.' },
   { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit — schnell und strahlungsfrei.' },
   { id: 'neurologisch', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft und Sensibilität — bei Taubheit, Kribbeln oder Schwindel.' },
-  { id: 'nlg', name: 'Nervenleitgeschwindigkeit', short: 'Misst, wie schnell ein Nerv leitet — Standard bei Verdacht auf Karpaltunnelsyndrom oder Polyneuropathie.' },
+  { id: 'nlg', name: 'Nervenleitgeschwindigkeit', short: 'Misst, wie schnell ein Nerv leitet — Standard bei Verdacht auf Karpaltunnelsyndrom oder Polyneuropathie.', href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/' },
   { id: 'gastroskopie', name: 'Gastroskopie', short: 'Blick in Speiseröhre und Magen — bei anhaltendem Sodbrennen oder Magenbeschwerden.' },
 ];
 
@@ -74,7 +76,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Kopf & Gesicht',
     metaDesc: 'Kopfschmerzen, Migräne, Schwindel, Ohrgeräusche, Kieferbeschwerden: alle Inhalte der Gesundheitsbibliothek zur Region Kopf & Gesicht — Körpersignale, Beschwerden und Behandlungsmöglichkeiten.',
     lead: 'Vom Spannungskopfschmerz über Schwindel beim Umdrehen bis zum Pochen im Ohr: Hier findest du alle Inhalte zur Region Kopf und Gesicht — Signale ohne Diagnose, bekannte Beschwerdebilder und passende Behandlungen.',
-    signals: ['schwindel-beim-umdrehen-im-bett', 'schwindel-beim-aufstehen', 'druck-im-kopf-ohne-kopfschmerzen', 'herzschlag-im-ohr', 'ohr-einseitig-verstopft', 'ohr-knackt-beim-schlucken', 'augenlid-zuckt', 'bitterer-geschmack-morgens'],
+    signals: ['schwindel-beim-umdrehen-im-bett', 'schwindel-beim-aufstehen', 'schwindel-beim-buecken', 'druck-im-kopf-ohne-kopfschmerzen', 'augenflimmern', 'herzschlag-im-ohr', 'ohr-einseitig-verstopft', 'ohr-knackt-beim-schlucken', 'augenlid-zuckt', 'bitterer-geschmack-morgens'],
     conditions: [
       { slug: 'migraene', label: 'Migräne' }, { slug: 'kopfschmerzen', label: 'Kopfschmerzen' },
       { slug: 'spannungskopfschmerzen', label: 'Spannungskopfschmerzen' }, { slug: 'cluster-kopfschmerzen', label: 'Cluster-Kopfschmerzen' },
@@ -96,7 +98,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Hals & Nacken',
     metaDesc: 'Nackenschmerzen, Knacken beim Drehen, Klossgefühl im Hals: alle Inhalte der Gesundheitsbibliothek zur Region Hals & Nacken — Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Ein Nacken, der beim Drehen knackt. Ein Kloss im Hals, der nicht verschwindet. Verspannungen, die bis in den Kopf ziehen. Hier ist alles zur Region Hals und Nacken gesammelt.',
-    signals: ['nacken-knackt-beim-drehen', 'klossgefuehl-im-hals', 'staendiger-raeusperzwang', 'zungenbrennen', 'trockener-mund-nachts'],
+    signals: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif', 'klossgefuehl-im-hals', 'staendiger-raeusperzwang', 'zungenbrennen', 'trockener-mund-nachts'],
     conditions: [
       { slug: 'nackenschmerzen', label: 'Nackenschmerzen' }, { slug: 'schleudertrauma', label: 'Schleudertrauma' },
       { slug: 'spannungskopfschmerzen', label: 'Spannungskopfschmerzen' }, { slug: 'schwindel', label: 'Schwindel' },
@@ -116,12 +118,12 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Schulter, Arm & Hand',
     metaDesc: 'Eingeschlafene Finger, Frozen Shoulder, Tennisarm, Karpaltunnelsyndrom: alle Inhalte der Gesundheitsbibliothek zu Schulter, Arm und Hand — vom ersten Signal bis zur Behandlung.',
     lead: 'Finger, die nachts einschlafen. Eine Schulter, die nicht mehr über den Kopf will. Kribbeln beim Velofahren. Diese Region sammelt alle Inhalte von der ersten Beobachtung bis zum bekannten Beschwerdebild.',
-    signals: ['finger-schlafen-ein', 'einzelne-finger-taub', 'finger-morgens-steif', 'hand-kribbelt-beim-velofahren', 'kalte-haende-einseitig'],
+    signals: ['finger-schlafen-ein', 'einzelne-finger-taub', 'arm-schlaeft-nachts-ein', 'finger-morgens-steif', 'hand-kribbelt-beim-velofahren', 'kalte-haende-einseitig'],
     conditions: [
       { slug: 'schulterschmerzen', label: 'Schulterschmerzen' }, { slug: 'frozen-shoulder', label: 'Frozen Shoulder' },
       { slug: 'rotatorenmanschette', label: 'Rotatorenmanschette' }, { slug: 'tennisarm', label: 'Tennisarm' },
       { slug: 'karpaltunnelsyndrom', label: 'Karpaltunnelsyndrom' }, { slug: 'sehnenscheidenentzuendung', label: 'Sehnenscheidenentzündung' },
-      { slug: 'rhizarthrose', label: 'Rhizarthrose' }, { slug: 'raynaud-syndrom', label: 'Raynaud-Syndrom' },
+      { slug: 'rhizarthrose', label: 'Rhizarthrose' }, { slug: 'kalkschulter', label: 'Kalkschulter' }, { slug: 'raynaud-syndrom', label: 'Raynaud-Syndrom' },
       { slug: 'polyneuropathie', label: 'Polyneuropathie' },
     ],
     therapies: [
@@ -158,7 +160,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Bauch & Verdauung',
     metaDesc: 'Reizdarm, Blähungen, Sodbrennen, Gastritis: alle Inhalte der Gesundheitsbibliothek zur Region Bauch & Verdauung — Beschwerden, Zusammenhänge und Behandlungsmöglichkeiten.',
     lead: 'Ein Bauch, der nach dem Essen rebelliert. Sodbrennen, das nachts wach hält. Eine Verdauung, die ohne klare Ursache unruhig ist. Hier findest du alle Inhalte zur Region Bauch und Verdauung.',
-    signals: ['bitterer-geschmack-morgens'],
+    signals: ['voellegefuehl-nach-dem-essen', 'blaehbauch-am-abend', 'bitterer-geschmack-morgens'],
     conditions: [
       { slug: 'verdauungsprobleme', label: 'Verdauungsprobleme' }, { slug: 'reizdarm', label: 'Reizdarm' },
       { slug: 'blaehungen', label: 'Blähungen' }, { slug: 'verstopfung', label: 'Verstopfung' },
@@ -180,12 +182,12 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Hüfte, Bein & Fuss',
     metaDesc: 'Knieschmerzen, Wadenkrämpfe, schwere Beine, Fersensporn: alle Inhalte der Gesundheitsbibliothek zu Hüfte, Bein und Fuss — Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Wadenkrämpfe, die nachts wecken. Ein Knie, das knackt. Füsse, die abends brennen. Von der Hüfte bis zur Fusssohle sammelt diese Region alle Inhalte der Bibliothek.',
-    signals: ['wadenkraempfe-nachts', 'schwere-beine-abends', 'brennende-fuesse-nachts', 'ein-fuss-kaelter-als-der-andere', 'bein-wird-beim-sitzen-taub', 'knie-knackt-ohne-schmerzen'],
+    signals: ['wadenkraempfe-nachts', 'schwere-beine-abends', 'brennende-fuesse-nachts', 'zehen-kribbeln', 'ein-fuss-kaelter-als-der-andere', 'bein-wird-beim-sitzen-taub', 'knie-knackt-ohne-schmerzen'],
     conditions: [
       { slug: 'hueftschmerzen', label: 'Hüftschmerzen' }, { slug: 'knieschmerzen', label: 'Knieschmerzen' },
       { slug: 'arthrose', label: 'Arthrose' }, { slug: 'plantarfasziitis', label: 'Plantarfasziitis' },
       { slug: 'fersensporn', label: 'Fersensporn' }, { slug: 'hallux-valgus', label: 'Hallux valgus' },
-      { slug: 'morton-neurom', label: 'Morton-Neurom' }, { slug: 'sprunggelenkschmerzen', label: 'Sprunggelenkschmerzen' },
+      { slug: 'morton-neurom', label: 'Morton-Neurom' }, { slug: 'achillessehnenentzuendung', label: 'Achillessehnenentzündung' }, { slug: 'sprunggelenkschmerzen', label: 'Sprunggelenkschmerzen' },
       { slug: 'wadenschmerzen', label: 'Wadenschmerzen' }, { slug: 'restless-legs', label: 'Restless Legs' },
       { slug: 'durchblutungsstoerungen', label: 'Durchblutungsstörungen' }, { slug: 'schwere-beine', label: 'Schwere Beine' },
     ],
@@ -202,7 +204,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Schlaf & Nervensystem',
     metaDesc: 'Schlafprobleme, nächtliches Aufwachen, Nachtschweiss, Erschöpfung, Stress: alle Inhalte der Gesundheitsbibliothek zu Schlaf und Nervensystem an einem Ort.',
     lead: 'Immer um drei Uhr wach. Nachtschweiss ohne Fieber. Tagsüber erschöpft, abends überdreht. Diese Region sammelt alle Inhalte rund um Schlaf, Stress und Nervensystem.',
-    signals: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'trockener-mund-nachts', 'wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'augenlid-zuckt'],
+    signals: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'herzklopfen-im-liegen', 'trockener-mund-nachts', 'wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'augenlid-zuckt'],
     conditions: [
       { slug: 'schlafprobleme', label: 'Schlafprobleme' }, { slug: 'stress-burnout', label: 'Stress & Burnout' },
       { slug: 'erschoepfung', label: 'Erschöpfung' }, { slug: 'angststoerungen', label: 'Angststörungen' },
@@ -333,6 +335,17 @@ const SYNONYMS: Record<string, string> = {
   '/therapien/kraeutertherapie/': 'chinesische Kräuter Phytotherapie',
   '/therapien/moxibustion/': 'Moxa Wärmetherapie',
   '/therapien/gua-sha/': 'Schaben Faszien',
+  '/beschwerden/kalkschulter/': 'Tendinosis calcarea Kalkdepot Schulter Kalk',
+  '/beschwerden/achillessehnenentzuendung/': 'Achillodynie Achillessehne Ferse Sehne',
+  '/koerpersignale/arm-schlaeft-nachts-ein/': 'taub Kribbeln eingeschlafen nachts',
+  '/koerpersignale/voellegefuehl-nach-dem-essen/': 'schnell satt Magendruck voller Bauch',
+  '/koerpersignale/blaehbauch-am-abend/': 'Blähbauch aufgeblähter Bauch Bloating gespannt',
+  '/koerpersignale/nacken-morgens-steif/': 'steifer Nacken Morgensteifheit',
+  '/koerpersignale/herzklopfen-im-liegen/': 'Herzrasen Palpitationen Herzstolpern nachts',
+  '/koerpersignale/augenflimmern/': 'Flimmerskotom Aura Zickzacklinien Sehstörung',
+  '/koerpersignale/zehen-kribbeln/': 'Ameisenlaufen taube Zehen Fuss',
+  '/koerpersignale/schwindel-beim-buecken/': 'Lagerungsschwindel Drehschwindel',
+  '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/': 'NLG ENG Nervenmessung Nervenleitgeschwindigkeit Elektroneurografie EMG',
   '/gesundheitsbibliothek/koerper/bauch-verdauung/': 'Magen Darm Verdauung',
   '/gesundheitsbibliothek/koerper/hals-nacken/': 'HWS Halswirbelsäule',
   '/gesundheitsbibliothek/koerper/ruecken/': 'LWS Wirbelsäule Kreuz',
@@ -387,6 +400,10 @@ export function buildSearchIndex(): SearchEntry[] {
       seenTh.add(th.slug);
       entries.push({ t: th.label, u: `/therapien/${th.slug}/`, g: 'Therapien' });
     }
+  }
+  // Untersuchungen & Diagnostik: nur Einträge mit eigener Seite.
+  for (const d of DIAGNOSTICS) {
+    if (d.href) entries.push({ t: d.name, u: d.href, g: 'Untersuchungen' });
   }
   // Visuals: nur live (Visual-Seiten sind bewusst noindex — Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {

@@ -1,14 +1,14 @@
 {
   "generated": "2026-09-10",
   "totals": {
-    "healthPages": 255,
+    "healthPages": 265,
     "byType": {
       "hub": 6,
-      "condition": 104,
+      "condition": 106,
       "library_hub": 1,
       "body_region": 8,
       "editorial": 71,
-      "body_signal": 30,
+      "body_signal": 38,
       "therapy": 31,
       "visual": 4
     }
@@ -26,7 +26,17 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 44,
-      "outboundHealthLinks": 101
+      "outboundHealthLinks": 107
+    },
+    {
+      "url": "/beschwerden/achillessehnenentzuendung/",
+      "type": "condition",
+      "title": "Achillessehnenentzündung: Behandlung &amp; was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/akne/",
@@ -46,7 +56,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/angststoerungen/",
@@ -55,7 +65,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 11
     },
     {
@@ -95,8 +105,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/bandscheibenvorfall/",
@@ -105,7 +115,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 22
     },
     {
@@ -115,8 +125,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/blasenentzuendung/",
@@ -205,7 +215,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 13
     },
     {
@@ -235,7 +245,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 19
     },
     {
@@ -265,7 +275,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 14
     },
     {
@@ -275,8 +285,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/gewichtsmanagement/",
@@ -335,7 +345,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 14
     },
     {
@@ -366,7 +376,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 19
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/histaminintoleranz/",
@@ -375,7 +385,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 16
     },
     {
@@ -445,7 +455,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 34,
+      "inboundContentLinks": 35,
       "outboundHealthLinks": 25
     },
     {
@@ -459,13 +469,23 @@
       "outboundHealthLinks": 19
     },
     {
+      "url": "/beschwerden/kalkschulter/",
+      "type": "condition",
+      "title": "Kalkschulter (Tendinosis calcarea): Behandlung ohne OP | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 20
+    },
+    {
       "url": "/beschwerden/karpaltunnelsyndrom/",
       "type": "condition",
       "title": "Karpaltunnelsyndrom – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 23
     },
     {
@@ -495,7 +515,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 16
     },
     {
@@ -506,7 +526,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 25,
-      "outboundHealthLinks": 14
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/lippenherpes/",
@@ -555,8 +575,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 135,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 138,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -585,8 +605,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/myome/",
@@ -605,8 +625,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 154,
-      "outboundHealthLinks": 24
+      "inboundContentLinks": 160,
+      "outboundHealthLinks": 25
     },
     {
       "url": "/beschwerden/nervenschmerzen/",
@@ -615,7 +635,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 15
     },
     {
@@ -675,7 +695,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 14
     },
     {
@@ -695,7 +715,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 31
     },
     {
@@ -735,7 +755,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 18
     },
     {
@@ -785,7 +805,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 16
     },
     {
@@ -795,8 +815,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 176,
-      "outboundHealthLinks": 29
+      "inboundContentLinks": 178,
+      "outboundHealthLinks": 31
     },
     {
       "url": "/beschwerden/schlafprobleme/",
@@ -805,8 +825,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 123,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 126,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/schlafstoerungen/",
@@ -825,7 +845,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 12
     },
     {
@@ -845,7 +865,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 21
     },
     {
@@ -875,7 +895,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 20
     },
     {
@@ -885,8 +905,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/sehnenscheidenentzuendung/",
@@ -905,7 +925,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 17
     },
     {
@@ -915,7 +935,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 18
     },
     {
@@ -925,8 +945,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/spinalkanalstenose/",
@@ -945,7 +965,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 16
     },
     {
@@ -956,7 +976,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 81,
-      "outboundHealthLinks": 16
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/tennisarm/",
@@ -1005,8 +1025,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 30,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/verstopfung/",
@@ -1015,8 +1035,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/wadenschmerzen/",
@@ -1025,7 +1045,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 17
     },
     {
@@ -1055,7 +1075,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 13
     },
     {
@@ -1075,7 +1095,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 101,
+      "inboundContentLinks": 111,
       "outboundHealthLinks": 25
     },
     {
@@ -1085,8 +1105,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
-      "outboundHealthLinks": 25
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 27
     },
     {
       "url": "/gesundheitsbibliothek/koerper/hals-nacken/",
@@ -1095,8 +1115,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 28
     },
     {
       "url": "/gesundheitsbibliothek/koerper/huefte-bein-fuss/",
@@ -1105,8 +1125,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
-      "outboundHealthLinks": 32
+      "inboundContentLinks": 28,
+      "outboundHealthLinks": 34
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -1115,8 +1135,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
-      "outboundHealthLinks": 34
+      "inboundContentLinks": 30,
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/ruecken/",
@@ -1135,8 +1155,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
-      "outboundHealthLinks": 30
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 31
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -1145,8 +1165,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 28
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 30
     },
     {
       "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
@@ -1525,8 +1545,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 100,
-      "outboundHealthLinks": 31
+      "inboundContentLinks": 116,
+      "outboundHealthLinks": 39
+    },
+    {
+      "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
+      "type": "body_signal",
+      "title": "Arm schläft nachts ein: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/augenflimmern/",
+      "type": "body_signal",
+      "title": "Augenflimmern: Was bedeuten Zickzacklinien und Flimmern im Blickfeld? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/augenlid-zuckt/",
@@ -1535,7 +1575,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 10
     },
     {
@@ -1555,8 +1595,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/blaehbauch-am-abend/",
+      "type": "body_signal",
+      "title": "Blähbauch am Abend: Warum wird mein Bauch abends so dick? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/brennende-fuesse-nachts/",
@@ -1565,7 +1615,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 9
     },
     {
@@ -1575,7 +1625,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 10
     },
     {
@@ -1585,7 +1635,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
     },
     {
@@ -1595,7 +1645,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 13
     },
     {
@@ -1605,7 +1655,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 11
     },
     {
@@ -1615,7 +1665,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 10
     },
     {
@@ -1626,6 +1676,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/herzklopfen-im-liegen/",
+      "type": "body_signal",
+      "title": "Herzklopfen im Liegen: Warum spüre ich mein Herz abends so stark? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 10
     },
     {
@@ -1645,7 +1705,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -1655,7 +1715,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -1675,7 +1735,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 9
     },
     {
@@ -1685,7 +1745,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -1695,7 +1755,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 11
     },
     {
@@ -1705,8 +1765,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/nacken-morgens-steif/",
+      "type": "body_signal",
+      "title": "Nacken morgens steif: Warum gerade nach dem Aufwachen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/ohr-einseitig-verstopft/",
@@ -1715,7 +1785,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 12
     },
     {
@@ -1725,7 +1795,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1735,7 +1805,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 10
     },
     {
@@ -1745,7 +1815,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 8
     },
     {
@@ -1755,7 +1825,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 8
     },
     {
@@ -1765,8 +1835,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/schwindel-beim-buecken/",
+      "type": "body_signal",
+      "title": "Schwindel beim Bücken: Warum dreht sich alles, wenn ich mich vornüberbeuge? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/schwindel-beim-umdrehen-im-bett/",
@@ -1775,7 +1855,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 8
     },
     {
@@ -1785,7 +1865,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {
@@ -1795,7 +1875,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 10
     },
     {
@@ -1805,8 +1885,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/voellegefuehl-nach-dem-essen/",
+      "type": "body_signal",
+      "title": "Völlegefühl nach dem Essen: Warum bin ich so schnell voll? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/wadenkraempfe-nachts/",
@@ -1815,8 +1905,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/zehen-kribbeln/",
+      "type": "body_signal",
+      "title": "Zehen kribbeln: Was bedeutet das Ameisenlaufen im Fuss? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/zungenbrennen/",
@@ -1825,7 +1925,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
     },
     {
@@ -1835,7 +1935,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 127,
+      "inboundContentLinks": 129,
       "outboundHealthLinks": 17
     },
     {
@@ -1855,7 +1955,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 173,
+      "inboundContentLinks": 184,
       "outboundHealthLinks": 2
     },
     {
@@ -1915,7 +2015,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 25,
       "outboundHealthLinks": 7
     },
     {
@@ -1945,7 +2045,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 93,
+      "inboundContentLinks": 95,
       "outboundHealthLinks": 1
     },
     {
@@ -2065,7 +2165,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 9
     },
     {
@@ -2075,7 +2175,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 35,
+      "inboundContentLinks": 37,
       "outboundHealthLinks": 17
     },
     {
@@ -2085,7 +2185,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 12
     },
     {
@@ -2105,7 +2205,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 57,
+      "inboundContentLinks": 61,
       "outboundHealthLinks": 6
     },
     {
@@ -2145,7 +2245,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 92,
+      "inboundContentLinks": 98,
       "outboundHealthLinks": 10
     },
     {
@@ -2225,7 +2325,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2235,7 +2335,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -2245,7 +2345,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 5
     },
     {
@@ -2255,7 +2355,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -2285,7 +2385,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -2315,7 +2415,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 9
     },
     {
@@ -2385,7 +2485,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -2435,7 +2535,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 11
     },
     {
@@ -2555,7 +2655,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 8
     },
     {

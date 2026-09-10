@@ -250,7 +250,7 @@ export const visuals: Visual[] = [
     subtitle: 'In der Sehne kann sich Kalk bilden.',
     status: 'draft',
     keywords: ['schulter', 'kalk', 'sehne', 'kalkschulter', 'stechen'],
-    relatedPage: '/beschwerden/schulterschmerzen/',
+    relatedPage: '/beschwerden/kalkschulter/',
   },
   {
     slug: 'tennisellenbogen',
@@ -355,7 +355,7 @@ export const visuals: Visual[] = [
     subtitle: 'Die Sehnenplatte unter dem Fuss kann gereizt sein.',
     status: 'draft',
     keywords: ['fuss', 'ferse', 'sohle', 'fersensporn', 'morgens', 'erste schritte'],
-    relatedPage: '/beschwerden/plantarfasziitis/',
+    relatedPage: '/beschwerden/achillessehnenentzuendung/',
   },
   {
     slug: 'kiefergelenk-cmd',

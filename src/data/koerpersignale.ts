@@ -43,6 +43,7 @@ const AUTOR: KsAuthor = {
 };
 const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09' };
 const DATEN3 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
+const DATEN4 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -1490,6 +1491,448 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
       { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── WELLE 4 (Seiten 31 bis 38)
+  // Fokus laut seo/health-library-map.md: Bauch & Verdauung (bisher 1 Signal),
+  // Schlaf/Nacht-Muster und Arm/Hand/Nerven. Vor jeder Seite geprüft: keine
+  // bestehende Beschwerden-, Wissen- oder Körpersignal-Seite deckt den Intent ab.
+  {
+    slug: 'arm-schlaeft-nachts-ein',
+    symptom: 'ein Arm, der nachts einschläft',
+    title: 'Arm schläft nachts ein: Was steckt dahinter?',
+    metaDesc: 'Wachst du nachts auf, weil ein ganzer Arm eingeschlafen ist? Meist steckt Druck auf Nerven oder Gefässe dahinter. Erfahre, wann es harmlos ist und wann nicht.',
+    h1: 'Warum schläft mein Arm nachts ein?',
+    category: 'Hände & Nerven',
+    lead: 'Du wachst auf und ein ganzer Arm ist taub, kribbelt oder fühlt sich fremd an. Meist liegt es an der Schlafposition: Druck auf Nerven oder Gefässe. Hier erfährst du, warum das passiert, wie du es von einem Nervenproblem unterscheidest und wann eine Abklärung sinnvoll ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Taubheitsgefühle einordnen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Wenn du im Schlaf längere Zeit auf dem Arm liegst oder ihn über den Kopf legst, geraten Nerven und Gefässe unter Druck. Der Arm meldet sich dann mit Taubheit und Kribbeln. Sobald du die Position wechselst, normalisiert sich das Gefühl meist innert Minuten.</p>
+<p>Anders sieht es aus, wenn der Arm fast jede Nacht einschläft, das Gefühl lange anhält oder immer dieselben Finger betroffen sind. Dann lohnt sich ein genauerer Blick.</p>
+<h2>Warum schläft ein Arm überhaupt ein?</h2>
+<p>Nerven mögen keinen Dauerdruck. Liegst du auf dem Arm, wird die Leitung vorübergehend gestört und das Gehirn erhält weniger Signale aus Haut und Muskeln. Das nimmst du als pelziges, taubes oder kribbelndes Gefühl wahr. Beim Positionswechsel kommt die Leitung zurück, oft mit dem typischen Ameisenlaufen.</p>
+<p>Das ist zunächst ein Schutzmechanismus und keine Krankheit. Entscheidend ist das Muster: wie oft, wie lange und wo genau.</p>
+<h2>Ganzer Arm oder nur einzelne Finger?</h2>
+<p>Diese Unterscheidung hilft bei der Einordnung:</p>
+<ul>
+<li><strong>Ganzer Arm, positionsabhängig:</strong> spricht für Druck durch die Schlafposition.</li>
+<li><strong>Daumen bis Mittelfinger, immer wieder:</strong> typisches Muster beim <a href="/beschwerden/karpaltunnelsyndrom/">Karpaltunnelsyndrom</a>, der Medianusnerv wird im Handgelenk eingeengt.</li>
+<li><strong>Kleinfinger und Ringfinger:</strong> hier ist oft der Ellennerv am Ellbogen beteiligt, etwa wenn du mit stark gebeugtem Arm schläfst.</li>
+<li><strong>Ausstrahlung vom Nacken in den Arm:</strong> kann auf eine Nervenreizung an der Halswirbelsäule hinweisen.</li>
+</ul>
+<p>Mehr zum Fingermuster findest du bei <a href="/koerpersignale/finger-schlafen-ein/">Finger schlafen nachts ein</a> und <a href="/koerpersignale/einzelne-finger-taub/">Einzelne Finger taub</a>.</p>
+<h2>Welche Rolle spielt die Schlafposition?</h2>
+<p>Häufige Auslöser sind der Arm unter dem Kopf oder Kissen, die Seitenlage direkt auf der Schulter und stark angewinkelte Ellbogen. Auch eine durchgelegene Matratze kann dazu führen, dass die Schulter zu stark einsinkt.</p>
+<p>Viele Menschen merken schon nach wenigen Nächten mit angepasster Position einen Unterschied. Ein flacheres Kissen oder ein Kissen vor der Brust, das den oberen Arm ablegt, entlastet die Schulter.</p>
+<h2>Wann steckt mehr dahinter?</h2>
+<p>Wenn das Einschlafen des Arms unabhängig von der Position auftritt, sich Schwäche dazugesellt oder das Gefühl nach dem Aufstehen nicht innert Minuten zurückkehrt, sollte die Nervenfunktion geprüft werden. Auch nächtliches Aufwachen durch Kribbeln mehrmals pro Woche ist ein Grund, genauer hinzuschauen.</p>
+<p>Zur Abklärung gehört oft eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>. Sie zeigt, ob und wo ein Nerv eingeengt ist.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Tritt eine Taubheit oder Schwäche im Arm plötzlich auf, zusammen mit Sprachstörungen, hängendem Mundwinkel oder Sehstörungen, wähle sofort den Notruf 144. Das können Zeichen eines Schlaganfalls sein, auch wenn die Symptome wieder verschwinden.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>In welcher Position wachst du auf, wenn der Arm eingeschlafen ist?</li>
+<li>Sind immer dieselben Finger betroffen oder der ganze Arm?</li>
+<li>Wie schnell normalisiert sich das Gefühl?</li>
+<li>Kribbelt es auch tagsüber, etwa beim Velofahren oder Telefonieren?</li>
+<li>Besteht zusätzlich Nackensteifheit oder Schulterschmerz?</li>
+</ul>
+<p>Diese Beobachtungen machen jede ärztliche oder therapeutische Abklärung deutlich schneller und präziser.</p>
+<h2>Wie schaut die chinesische Medizin auf eingeschlafene Arme?</h2>
+<p>Die chinesische Medizin interessiert sich für das Gesamtbild: Schläfst du durch, frierst du leicht, bestehen Verspannungen in Nacken und Schulter, wie ist deine Haltung tagsüber? Diese traditionelle Betrachtung ersetzt keine neurologische Abklärung, wenn Warnzeichen bestehen.</p>
+<p>Sind ernsthafte Ursachen ausgeschlossen und bleiben muskulär mitbedingte Beschwerden, kann eine Behandlung wie <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> die verspannte Schulter-Nacken-Region mitbehandeln. Ob das bei dir sinnvoll ist, klären wir ehrlich im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Ist es schlimm, wenn der Arm nachts einschläft?', a: 'Gelegentlich und positionsabhängig ist es meist harmlos: Druck auf Nerven oder Gefässe durch die Schlafhaltung. Auffällig wird es, wenn es fast jede Nacht passiert, lange anhält, immer dieselben Finger betrifft oder Schwäche dazukommt.' },
+      { q: 'Warum schlafen mir immer Daumen, Zeige- und Mittelfinger ein?', a: 'Dieses Muster ist typisch für das Karpaltunnelsyndrom: Der Medianusnerv wird im Handgelenk eingeengt. Eine Nervenleitmessung kann das objektiv zeigen. Lass es abklären, bevor die Taubheit dauerhaft wird.' },
+      { q: 'Welche Schlafposition hilft gegen eingeschlafene Arme?', a: 'Vermeide den Arm unter Kopf oder Kissen und stark gebeugte Ellbogen. In Seitenlage hilft ein Kissen vor der Brust, auf dem der obere Arm ruht, sowie ein Kissen, das die Schulter nicht zu tief einsinken lässt.' },
+    ],
+    related: [
+      { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom', cat: 'Beschwerde' },
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'voellegefuehl-nach-dem-essen',
+    symptom: 'ein starkes Völlegefühl nach dem Essen',
+    title: 'Völlegefühl nach dem Essen: Warum bin ich so schnell voll?',
+    metaDesc: 'Schon nach kleinen Portionen unangenehm voll? Völlegefühl nach dem Essen ist häufig funktionell, kann aber auch andere Ursachen haben. So ordnest du es ein.',
+    h1: 'Warum fühle ich mich nach dem Essen so voll?',
+    category: 'Bauch & Verdauung',
+    lead: 'Schon nach einer normalen oder sogar kleinen Portion fühlt sich dein Bauch gespannt und übervoll an. Oft steckt eine empfindliche oder träge Verdauung dahinter, manchmal auch mehr. Hier erfährst du, welche Ursachen infrage kommen und wann du das Völlegefühl abklären lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Völlegefühl entsteht, wenn der Magen sich gedehnt anfühlt oder seinen Inhalt langsamer weitergibt. Häufige Auslöser sind schnelles Essen, fettige oder sehr grosse Mahlzeiten, Stress und eine empfindliche Magenwahrnehmung. Bei vielen Menschen findet sich keine gefährliche Ursache.</p>
+<p>Hält das Völlegefühl über Wochen an, tritt es schon nach wenigen Bissen auf oder kommen Gewichtsverlust und Schmerzen dazu, gehört es ärztlich abgeklärt.</p>
+<h2>Was passiert im Magen nach dem Essen?</h2>
+<p>Nach einer Mahlzeit dehnt sich der Magen und gibt den Speisebrei portionsweise an den Dünndarm weiter. Wie schnell das geht, hängt von der Zusammensetzung ab: Fettreiches bleibt deutlich länger im Magen als Kohlenhydrate. Zusätzlich spielt die Wahrnehmung eine Rolle. Bei einem empfindlichen Magen wird schon normale Dehnung als unangenehm voll gemeldet.</p>
+<h2>Häufige, meist harmlose Auslöser</h2>
+<ul>
+<li>Schnelles Essen und wenig Kauen, oft mit viel geschluckter Luft</li>
+<li>Sehr grosse, fettige oder späte Mahlzeiten</li>
+<li>Kohlensäurehaltige Getränke zum Essen</li>
+<li>Stress und Essen nebenbei am Bildschirm</li>
+<li>Blähende Lebensmittel wie Hülsenfrüchte, Kohl oder Zwiebeln</li>
+</ul>
+<p>Tritt das Völlegefühl vor allem zusammen mit einem aufgetriebenen Bauch am Abend auf, findest du eine eigene Einordnung unter <a href="/koerpersignale/blaehbauch-am-abend/">Blähbauch am Abend</a>.</p>
+<h2>Welche Ursachen sollte man kennen?</h2>
+<p>Bleibt das Völlegefühl bestehen, kommen unter anderem infrage: ein Reizmagen (funktionelle Dyspepsie), eine <a href="/beschwerden/gastritis/">Magenschleimhautentzündung</a>, Reflux mit <a href="/beschwerden/sodbrennen/">Sodbrennen</a>, Unverträglichkeiten wie Laktose- oder <a href="/beschwerden/histaminintoleranz/">Histaminintoleranz</a> sowie ein <a href="/beschwerden/reizdarm/">Reizdarm</a>, wenn auch der Darm beteiligt ist. Seltener verlangsamen Erkrankungen oder Medikamente die Magenentleerung.</p>
+<p>Ein Reizmagen ist eine häufige Diagnose: Der Magen ist überempfindlich oder entleert sich verzögert, ohne dass eine Gastroskopie einen krankhaften Befund zeigt.</p>
+<h2>Wann zur Abklärung?</h2>
+<p>Innerhalb weniger Tage nach einem üppigen Wochenende ist Völlegefühl kein Fall für die Praxis. Anders bei anhaltenden oder wiederkehrenden Beschwerden: Dann gehören eine ärztliche Untersuchung und je nach Situation Laborwerte oder eine Magenspiegelung dazu.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass ein Völlegefühl zeitnah untersuchen, wenn du ungewollt Gewicht verlierst, Schluckbeschwerden hast, schon nach wenigen Bissen voll bist, Blut im Stuhl bemerkst, nachts von Schmerzen aufwachst oder die Beschwerden neu nach dem 50. Lebensjahr auftreten.</p></div>
+<h2>Was kannst du selbst ausprobieren?</h2>
+<ul>
+<li>Iss langsamer und kaue bewusst, gerade bei den ersten Bissen.</li>
+<li>Verteile das Essen auf kleinere Mahlzeiten statt zwei sehr grosser.</li>
+<li>Reduziere testweise sehr fettige Speisen und Kohlensäure.</li>
+<li>Führe ein kurzes Ess- und Symptomtagebuch über zwei Wochen.</li>
+<li>Ein Spaziergang nach dem Essen unterstützt die Magenentleerung.</li>
+</ul>
+<h2>Wie betrachtet die chinesische Medizin das Völlegefühl?</h2>
+<p>In der chinesischen Medizin gilt die Verdauung als zentrales Thema. Ein Therapeut fragt nach dem Zeitpunkt der Beschwerden, nach Kälte- oder Wärmeempfinden am Bauch, nach Stuhlgang, Appetit und Stresslevel und schaut traditionell auch Zunge und Puls an. Das ist ein traditionelles Diagnosemodell und ersetzt keine Magenspiegelung, wenn Warnzeichen bestehen.</p>
+<p>Sind ernsthafte Ursachen ausgeschlossen, arbeiten wir bei funktionellen Verdauungsbeschwerden häufig mit <a href="/therapien/akupunktur/">Akupunktur</a> und je nach Bild mit <a href="/therapien/kraeutertherapie/">chinesischer Kräutertherapie</a>. Ob das bei deinem Muster sinnvoll ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum bin ich schon nach kleinen Portionen voll?', a: 'Häufig ist der Magen überempfindlich oder entleert sich verzögert, etwa beim Reizmagen. Tritt frühe Sättigung neu auf, hält sie an oder verlierst du Gewicht, sollte das ärztlich abgeklärt werden.' },
+      { q: 'Welches Essen verursacht am meisten Völlegefühl?', a: 'Fettreiche und sehr grosse Mahlzeiten bleiben am längsten im Magen. Auch schnelles Essen, Kohlensäure und blähende Lebensmittel wie Hülsenfrüchte oder Kohl verstärken das Gefühl bei vielen Menschen.' },
+      { q: 'Ist ständiges Völlegefühl gefährlich?', a: 'Meist steckt eine funktionelle Ursache dahinter. Warnzeichen sind ungewollter Gewichtsverlust, Schluckbeschwerden, Blut im Stuhl, nächtliche Schmerzen oder neue Beschwerden ab etwa 50. Dann gehört das Völlegefühl zeitnah untersucht.' },
+    ],
+    related: [
+      { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
+      { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'blaehbauch-am-abend',
+    symptom: 'ein aufgeblähter Bauch am Abend',
+    title: 'Blähbauch am Abend: Warum wird mein Bauch abends so dick?',
+    metaDesc: 'Morgens flacher Bauch, abends gespannt und aufgebläht? Dieses Tagesmuster ist häufig und hat nachvollziehbare Gründe. So findest du deine Auslöser.',
+    h1: 'Warum ist mein Bauch abends so aufgebläht?',
+    category: 'Bauch & Verdauung',
+    lead: 'Am Morgen ist der Bauch flach, gegen Abend spannt er, wölbt sich vor und die Hose drückt. Dieses Muster kennt fast jeder Mensch mit empfindlicher Verdauung. Hier erfährst du, warum sich Blähungen über den Tag aufbauen, welche Auslöser häufig sind und wann eine Abklärung sinnvoll ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Blähbauch gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Über den Tag sammeln sich Nahrung, Flüssigkeit und Gase im Verdauungstrakt an. Bei einer empfindlichen oder trägen Verdauung reagiert der Bauch darauf mit sichtbarer Wölbung und Spannungsgefühl, am stärksten nach der letzten grossen Mahlzeit. Über Nacht wird der Darminhalt weitertransportiert, morgens ist der Bauch wieder flacher.</p>
+<p>Ein Blähbauch, der abends kommt und morgens weg ist, ist selten gefährlich. Ein Bauch, der dauerhaft aufgetrieben bleibt oder mit Warnzeichen einhergeht, gehört abgeklärt.</p>
+<h2>Warum gerade am Abend?</h2>
+<p>Drei Dinge kommen zusammen: Erstens summieren sich die Mahlzeiten des Tages, jede Verdauungsphase produziert Gase. Zweitens isst du abends oft die grösste Mahlzeit. Drittens lässt die Aktivität nach, im Sitzen und Liegen wird Gas schlechter weitertransportiert als in Bewegung.</p>
+<p>Zusätzlich beeinflussen Hormone und Stress die Darmbewegung. Manche Menschen bemerken den Blähbauch deshalb in stressigen Phasen oder in der zweiten Zyklushälfte deutlich stärker.</p>
+<h2>Häufige Auslöser im Alltag</h2>
+<ul>
+<li>Blähende Lebensmittel: Hülsenfrüchte, Kohlarten, Zwiebeln, viel Rohkost am Abend</li>
+<li>Zuckeraustauschstoffe wie Sorbit oder Xylit, etwa in Kaugummi</li>
+<li>Kohlensäure und hastiges Essen mit geschluckter Luft</li>
+<li>Unverträglichkeiten, zum Beispiel Laktose oder Fruktose</li>
+<li>Ein empfindlicher Darm, der normale Gasmengen als unangenehm meldet</li>
+</ul>
+<h2>Blähbauch oder Blähungen?</h2>
+<p>Beides hängt zusammen, ist aber nicht dasselbe. Beim Blähbauch steht die sichtbare Wölbung und Spannung im Vordergrund, bei <a href="/beschwerden/blaehungen/">Blähungen</a> das Abgehen von Gasen. Viele Menschen mit Blähbauch haben gar nicht mehr Gas als andere, ihr Darm reagiert nur empfindlicher auf die Dehnung, und die Bauchdecke spannt reflexartig an.</p>
+<h2>Wann steckt mehr dahinter?</h2>
+<p>Wenn der Blähbauch fast täglich auftritt und dich im Alltag einschränkt, lohnt sich eine Abklärung von Unverträglichkeiten und eine ärztliche Einschätzung, ob ein <a href="/beschwerden/reizdarm/">Reizdarm</a> vorliegt. Auch ein <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">starkes Völlegefühl nach dem Essen</a> gehört in dieses Bild.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Geh zur Ärztin oder zum Arzt, wenn der Bauch dauerhaft aufgetrieben bleibt, du ungewollt Gewicht verlierst, Blut im Stuhl bemerkst, Fieber oder starke Schmerzen dazukommen oder sich dein Stuhlgang über Wochen deutlich verändert. Bei Frauen gehört ein anhaltend zunehmender Bauchumfang auch gynäkologisch angeschaut.</p></div>
+<h2>Was kannst du selbst ausprobieren?</h2>
+<ul>
+<li>Verlege die grösste Mahlzeit testweise auf Mittag und iss abends leichter.</li>
+<li>Beobachte zwei Wochen lang, nach welchen Lebensmitteln der Bauch spannt.</li>
+<li>Geh nach dem Abendessen zehn Minuten spazieren.</li>
+<li>Reduziere testweise Kohlensäure, Kaugummi und Zuckeraustauschstoffe.</li>
+<li>Wärme auf dem Bauch empfinden viele als entspannend für die Darmmuskulatur.</li>
+</ul>
+<h2>Wie betrachtet die chinesische Medizin den Blähbauch?</h2>
+<p>Die chinesische Medizin ordnet Verdauungsbeschwerden traditionell über Fragen nach Essgewohnheiten, Kälte- und Wärmeempfinden, Stuhlgang, Energie und Stress ein, ergänzt durch Zungen- und Pulsbetrachtung. Diese traditionelle Sicht ersetzt keine Abklärung von Unverträglichkeiten oder Warnzeichen.</p>
+<p>Bei funktionellen Verdauungsbeschwerden ohne gefährliche Ursache kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> oder <a href="/therapien/schroepfen/">Schröpfen</a> am Rücken Teil eines Gesamtplans sein. Ob dein Muster dafür geeignet ist, klären wir im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum ist mein Bauch morgens flach und abends aufgebläht?', a: 'Über den Tag sammeln sich Nahrung und Verdauungsgase an, abends kommt oft die grösste Mahlzeit dazu und die Bewegung fehlt. Über Nacht transportiert der Darm weiter, morgens ist der Bauch wieder flacher. Dieses Muster ist meist funktionell.' },
+      { q: 'Welche Lebensmittel machen abends einen Blähbauch?', a: 'Häufige Auslöser sind Hülsenfrüchte, Kohl, Zwiebeln, viel Rohkost am Abend, Kohlensäure und Zuckeraustauschstoffe wie Sorbit. Auch Laktose- oder Fruktoseunverträglichkeit kann dahinterstecken. Ein Symptomtagebuch hilft, deine Auslöser zu finden.' },
+      { q: 'Wann ist ein Blähbauch ein Warnzeichen?', a: 'Wenn der Bauch dauerhaft aufgetrieben bleibt, du Gewicht verlierst, Blut im Stuhl bemerkst, Fieber oder starke Schmerzen auftreten oder sich der Stuhlgang über Wochen verändert. Dann gehört der Bauch ärztlich untersucht.' },
+    ],
+    related: [
+      { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'nacken-morgens-steif',
+    symptom: 'ein steifer Nacken am Morgen',
+    title: 'Nacken morgens steif: Warum gerade nach dem Aufwachen?',
+    metaDesc: 'Wachst du regelmässig mit steifem Nacken auf? Schlafposition, Kissen und Verspannungen sind die häufigsten Gründe. So wirst du die Morgensteifheit los.',
+    h1: 'Warum ist mein Nacken morgens so steif?',
+    category: 'Muskeln & Beine',
+    lead: 'Beim Aufwachen lässt sich der Kopf kaum drehen, erst nach einer Weile wird der Nacken langsam beweglicher. Meist stecken Schlafposition, Kissen oder verspannte Muskeln dahinter. Hier erfährst du, warum die Steifheit gerade morgens auftritt und wann sie abgeklärt gehört.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Nacken anschauen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nachts liegt der Nacken stundenlang in einer Position. Passt das Kissen nicht oder war die Muskulatur schon tagsüber verspannt, verkürzen und versteifen sich die Muskeln über Nacht. Morgens melden sie sich mit Steifheit, die sich mit Bewegung und Wärme meist innert Minuten bis Stunden löst.</p>
+<p>Wird die Morgensteifheit zur Regel, hält sie länger als eine halbe Stunde an oder strahlt sie in den Arm aus, lohnt sich eine genauere Abklärung.</p>
+<h2>Warum gerade morgens?</h2>
+<p>Tagsüber wechselst du ständig die Position, die Nackenmuskeln werden durchblutet und bleiben geschmeidig. Im Schlaf fehlt diese Bewegung. Liegt der Kopf dabei abgeknickt oder überstreckt, arbeiten einzelne Muskelpartien die ganze Nacht gegen die Schwerkraft. Das Ergebnis kennst du: Der Nacken fühlt sich beim Aufwachen wie eingerostet an.</p>
+<p>Auch nächtliches Zähnepressen und Stress erhöhen die Grundspannung der Muskulatur, oft ohne dass du es merkst.</p>
+<h2>Kissen und Matratze: die häufigsten Stellschrauben</h2>
+<ul>
+<li><strong>Zu hohes Kissen:</strong> knickt den Kopf in Seitenlage nach oben ab.</li>
+<li><strong>Zu flaches Kissen:</strong> lässt den Kopf in Seitenlage nach unten hängen.</li>
+<li><strong>Bauchlage:</strong> zwingt den Kopf stundenlang in maximale Drehung und ist für den Nacken die ungünstigste Position.</li>
+<li><strong>Durchgelegene Matratze:</strong> verändert die ganze Liegeposition mit.</li>
+</ul>
+<p>Faustregel: In Seitenlage sollte die Halswirbelsäule eine gerade Linie mit der übrigen Wirbelsäule bilden.</p>
+<h2>Steifheit, Knacken oder Schmerz?</h2>
+<p>Ein steifer Nacken tritt oft zusammen mit anderen Nackensignalen auf. Wenn es beim Drehen zusätzlich knackt, findest du die Einordnung unter <a href="/koerpersignale/nacken-knackt-beim-drehen/">Nacken knackt beim Drehen</a>. Bei anhaltenden Schmerzen ist die Seite <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a> der richtige Ort. Strahlen Schmerzen oder Kribbeln in den Arm aus, kann eine Nervenreizung an der Halswirbelsäule beteiligt sein.</p>
+<h2>Wann steckt mehr dahinter?</h2>
+<p>Eine Morgensteifheit, die regelmässig länger als etwa 30 Minuten anhält und auch andere Gelenke betrifft, kann auf eine entzündlich-rheumatische Erkrankung hinweisen und gehört ärztlich abgeklärt. Auch nach einem Unfall oder Sturz sollte ein steifer Nacken untersucht werden.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Ein steifer Nacken zusammen mit hohem Fieber, starken Kopfschmerzen und Lichtempfindlichkeit kann auf eine Hirnhautentzündung hinweisen. Das ist ein Notfall: sofort ärztliche Hilfe holen. Gleiches gilt für Steifheit mit plötzlicher Schwäche oder Taubheit in Armen oder Beinen.</p></div>
+<h2>Was kannst du selbst tun?</h2>
+<ul>
+<li>Prüfe die Kissenhöhe in deiner häufigsten Schlafposition.</li>
+<li>Beginne den Tag mit langsamen Nackenkreisen und Schulterrollen, ohne zu forcieren.</li>
+<li>Wärme am Morgen, etwa eine warme Dusche auf Nacken und Schultern, lockert die Muskulatur.</li>
+<li>Achte tagsüber auf Bildschirmhöhe und regelmässige Positionswechsel.</li>
+<li>Beobachte, ob die Steifheit nach stressigen Tagen oder Zähnepressen stärker ist.</li>
+</ul>
+<h2>Wie behandelt die chinesische Medizin einen verspannten Nacken?</h2>
+<p>Nacken und Schultern gehören zu den häufigsten Behandlungsregionen in unseren Praxen. Traditionell wird der steife Nacken im Zusammenhang mit Kälteempfindlichkeit, Stress und Haltung betrachtet. Diese Einordnung ersetzt keine ärztliche Abklärung bei Warnzeichen oder anhaltender Morgensteifheit.</p>
+<p>Bei muskulär bedingter Steifheit arbeiten wir je nach Bild mit <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a>, <a href="/therapien/schroepfen/">Schröpfen</a> oder <a href="/therapien/gua-sha/">Gua Sha</a> direkt an der verspannten Muskulatur. Ob das für deinen Nacken sinnvoll ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum ist mein Nacken nur morgens steif?', a: 'Im Schlaf fehlt die Bewegung, die die Muskeln tagsüber geschmeidig hält. Liegt der Kopf zusätzlich abgeknickt, weil das Kissen nicht passt, versteift die Muskulatur über Nacht. Mit Bewegung und Wärme löst sich das meist rasch.' },
+      { q: 'Welches Kissen hilft bei steifem Nacken?', a: 'Eines, das die Halswirbelsäule in deiner häufigsten Schlafposition gerade hält: in Seitenlage etwa schulterhoch, in Rückenlage flacher. Bauchlage ist für den Nacken am ungünstigsten, weil der Kopf stundenlang maximal gedreht liegt.' },
+      { q: 'Wann ist ein steifer Nacken gefährlich?', a: 'Sofort reagieren bei Steifheit mit hohem Fieber, starken Kopfschmerzen und Lichtempfindlichkeit sowie bei Schwäche oder Taubheit in Armen oder Beinen. Abklären lassen solltest du auch Morgensteifheit über 30 Minuten, die regelmässig auftritt.' },
+    ],
+    related: [
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
+      { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/zaehneknirschen/', label: 'Zähneknirschen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'herzklopfen-im-liegen',
+    symptom: 'spürbares Herzklopfen im Liegen',
+    title: 'Herzklopfen im Liegen: Warum spüre ich mein Herz abends so stark?',
+    metaDesc: 'Sobald du im Bett liegst, spürst du deinen Herzschlag deutlich? Warum das Herz im Liegen präsenter wirkt, was dahinterstecken kann und wann ein EKG sinnvoll ist.',
+    h1: 'Warum spüre ich mein Herz so stark, wenn ich liege?',
+    category: 'Schlaf & Nacht',
+    lead: 'Tagsüber denkst du nicht an dein Herz. Doch kaum liegst du im Bett, klopft es spürbar bis in den Hals oder das Ohr. Meist ist das Herz dabei gesund, im Liegen und in der Stille wird der Schlag nur deutlicher wahrnehmbar. Hier erfährst du, welche Ursachen infrage kommen und wann du das Herzklopfen abklären lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Unruhe und Schlaf gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Im Liegen fällt die Ablenkung des Tages weg, es ist still, und in bestimmten Positionen liegt das Herz näher an der Brustwand oder am Kissen. Ein normaler Herzschlag, den du tagsüber überhörst, wird dadurch plötzlich spürbar. Auch Koffein, Alkohol, Stress und ein aufgeregtes Nervensystem verstärken die Wahrnehmung.</p>
+<p>Spürbarer Herzschlag ist damit oft ein Wahrnehmungsphänomen. Abklären lassen solltest du ihn, wenn das Herz stolpert, rast, unregelmässig schlägt oder Begleitsymptome auftreten.</p>
+<h2>Warum gerade im Liegen?</h2>
+<p>Drei Effekte kommen zusammen. Erstens fehlt im Bett jede Ablenkung, die Aufmerksamkeit wandert nach innen. Zweitens überträgt sich der Herzschlag in Seitenlage, besonders links, mechanisch besser auf Brustwand und Kissen. Drittens fliesst im Liegen mehr Blut zum Herzen zurück, das Schlagvolumen steigt leicht, und jeder einzelne Schlag fühlt sich kräftiger an.</p>
+<p>Hörst du den Puls dabei rhythmisch im Ohr pochen, findest du eine eigene Einordnung unter <a href="/koerpersignale/herzschlag-im-ohr/">Herzschlag im Ohr</a>.</p>
+<h2>Was verstärkt das Herzklopfen am Abend?</h2>
+<ul>
+<li>Koffein am Nachmittag und Abend, auch in Cola, Energydrinks und Schwarztee</li>
+<li>Alkohol, besonders am späten Abend</li>
+<li>Stress und Grübeln: Anspannung aktiviert das sympathische Nervensystem</li>
+<li>Nikotin und manche Medikamente, etwa abschwellende Nasensprays</li>
+<li>Späte, schwere Mahlzeiten</li>
+</ul>
+<p>Auch Schilddrüsenüberfunktion, Blutarmut und <a href="/beschwerden/eisenmangel/">Eisenmangel</a> können das Herz schneller und spürbarer schlagen lassen. Das lässt sich mit einer einfachen Blutuntersuchung prüfen.</p>
+<h2>Herzklopfen, Herzrasen oder Herzstolpern?</h2>
+<p>Für die Einordnung ist die Unterscheidung wichtig. Ein gleichmässiger, normal schneller Schlag, der nur deutlich spürbar ist, spricht eher für verstärkte Wahrnehmung. Herzrasen bedeutet einen deutlich beschleunigten Puls in Ruhe. Herzstolpern beschreibt Aussetzer oder Extraschläge. Einzelne Extraschläge sind auch bei Gesunden häufig, gehäuftes Stolpern oder anfallsartiges Rasen gehört jedoch ärztlich untersucht, meist mit EKG oder Langzeit-EKG.</p>
+<h2>Die Rolle von Stress und Schlaf</h2>
+<p>Wer angespannt ins Bett geht, nimmt den eigenen Herzschlag stärker wahr, und die Aufmerksamkeit darauf verstärkt die Anspannung weiter. Dieses Kreisen kennen viele Menschen mit <a href="/beschwerden/schlafprobleme/">Schlafproblemen</a> oder in belastenden Lebensphasen. Auch wer <a href="/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/">nachts immer zur gleichen Zeit aufwacht</a>, beschreibt oft ein spürbares Herz in diesen Wachphasen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Geh zur Ärztin oder zum Arzt, wenn das Herz in Ruhe rast oder deutlich unregelmässig schlägt, wenn Stolpern gehäuft auftritt oder wenn Brustschmerzen, Atemnot, Schwindel oder Ohnmacht dazukommen. Bei Brustschmerz mit Engegefühl, Atemnot oder Ausstrahlung in Arm oder Kiefer wähle sofort den Notruf 144.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Ist der Schlag gleichmässig oder stolpert er? Miss den Puls am Handgelenk mit.</li>
+<li>Wie schnell schlägt das Herz dabei ungefähr?</li>
+<li>Tritt es nach Koffein, Alkohol oder stressigen Tagen häufiger auf?</li>
+<li>Verschwindet es, wenn du die Position wechselst oder aufstehst?</li>
+<li>Bestehen tagsüber Erschöpfung, Nervosität oder Gewichtsverlust?</li>
+</ul>
+<h2>Wie betrachtet die chinesische Medizin das nächtliche Herzklopfen?</h2>
+<p>In der chinesischen Medizin wird spürbares Herzklopfen traditionell zusammen mit Schlaf, innerer Unruhe, Hitzeempfinden und Erschöpfung betrachtet. Diese traditionelle Einordnung ersetzt kein EKG und keine Blutuntersuchung, wenn Rhythmusstörungen oder andere Warnzeichen im Raum stehen.</p>
+<p>Sind kardiologische Ursachen ausgeschlossen und steht ein unruhiges, stressbelastetes Nervensystem im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/ohrakupunktur/">Ohrakupunktur</a> Teil der Beruhigungsstrategie sein. Ob dein Muster dafür geeignet ist, klären wir ehrlich im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Ist es normal, das Herz im Liegen zu spüren?', a: 'Ja, häufig. In der Stille und in Seitenlage überträgt sich der Herzschlag besser auf Brustwand und Kissen, und ohne Ablenkung wandert die Aufmerksamkeit nach innen. Auffällig wird es bei Rasen, Stolpern oder Begleitsymptomen wie Atemnot.' },
+      { q: 'Warum klopft mein Herz stärker, wenn ich auf der linken Seite liege?', a: 'In Linkslage liegt das Herz näher an Brustwand und Kissen, der Schlag überträgt sich mechanisch deutlicher. Viele Menschen spüren ihr Herz deshalb nur in dieser Position. Das allein ist kein Krankheitszeichen.' },
+      { q: 'Wann sollte ich Herzklopfen abklären lassen?', a: 'Wenn das Herz in Ruhe rast, gehäuft stolpert oder unregelmässig schlägt, und immer, wenn Brustschmerzen, Atemnot, Schwindel oder Ohnmacht dazukommen. Ein EKG oder Langzeit-EKG schafft hier Klarheit. Bei akutem Brustschmerz mit Atemnot: Notruf 144.' },
+    ],
+    related: [
+      { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+      { href: '/beschwerden/angststoerungen/', label: 'Angststörungen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'augenflimmern',
+    symptom: 'Flimmern oder Zickzacklinien vor den Augen',
+    title: 'Augenflimmern: Was bedeuten Zickzacklinien und Flimmern im Blickfeld?',
+    metaDesc: 'Flimmern, Zickzacklinien oder blinde Flecken im Blickfeld? Oft steckt eine Augenmigräne dahinter. Wann Augenflimmern harmlos ist und wann du sofort reagieren solltest.',
+    h1: 'Warum flimmert es vor meinen Augen?',
+    category: 'Kopf & Sinne',
+    lead: 'Plötzlich flimmert ein Bereich deines Blickfelds, Zickzacklinien wandern langsam zur Seite, lesen wird kurz unmöglich. Nach 20 bis 30 Minuten ist alles wieder normal. Dieses Muster ist typisch für eine Augenmigräne. Hier erfährst du, wie du harmloses Flimmern von Warnzeichen unterscheidest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Flimmern und Kopfschmerzen einordnen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Das häufigste Muster hinter anfallsartigem Augenflimmern ist die Migräne-Aura: Im Sehzentrum des Gehirns breitet sich eine vorübergehende Erregungswelle aus. Typisch sind flimmernde Zickzacklinien, die klein beginnen, langsam grösser werden und nach etwa 20 bis 60 Minuten vollständig verschwinden, auf beiden Augen sichtbar, auch mit geschlossenen Augen.</p>
+<p>Plötzliche Blitze, ein Russregen aus schwarzen Punkten oder ein Schatten im Blickfeld sind dagegen ein Fall für die sofortige augenärztliche Kontrolle.</p>
+<h2>Wie fühlt sich eine Migräne-Aura an?</h2>
+<p>Viele beschreiben ein glitzerndes, flimmerndes Zackenmuster, das am Rand oder in der Mitte des Blickfelds beginnt und langsam wandert. Innerhalb der Zacken kann ein blinder Fleck liegen. Lesen und Autofahren sind währenddessen kaum möglich. Nach der Aura folgt bei vielen ein <a href="/beschwerden/migraene/">Migränekopfschmerz</a>, bei der sogenannten Augenmigräne kann der Kopfschmerz auch ganz ausbleiben.</p>
+<p>Genau dieses langsame Entstehen und Wandern über Minuten unterscheidet die Aura von den meisten gefährlichen Ursachen, die schlagartig auftreten.</p>
+<h2>Kommt das Flimmern vom Auge oder vom Gehirn?</h2>
+<p>Ein einfacher Selbsttest hilft bei der Einordnung: Decke abwechselnd ein Auge ab. Siehst du das Flimmern mit beiden Augen einzeln, entsteht es im Gehirn, wie bei der Aura. Ist nur ein Auge betroffen, liegt die Ursache eher im Auge selbst, dann gehört das Flimmern augenärztlich untersucht.</p>
+<p>Mehr zur Diagnose und Behandlung findest du auf der Seite <a href="/beschwerden/augenmigraene/">Augenmigräne</a>.</p>
+<h2>Was löst Augenflimmern aus?</h2>
+<ul>
+<li>Migräne-Trigger wie Schlafmangel, Stress und unregelmässiges Essen</li>
+<li>Grelles oder flackerndes Licht, lange Bildschirmarbeit</li>
+<li>Hormonschwankungen, etwa im Zyklus</li>
+<li>Starker Blutdruckanstieg oder Unterzuckerung</li>
+<li>Sehr selten: Durchblutungsstörungen im Sehzentrum</li>
+</ul>
+<p>Auch Verspannungen in Nacken und Schultern können Migräneattacken bei manchen Menschen mit anstossen. Ein <a href="/koerpersignale/nacken-morgens-steif/">morgens steifer Nacken</a> und wiederkehrendes Flimmern treten deshalb bei einigen gemeinsam auf.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Sofort augenärztlich oder notfallmässig abklären lassen: plötzliche Lichtblitze, ein Schwarm schwarzer Punkte, ein aufsteigender dunkler Schatten oder Vorhang im Blickfeld, plötzlicher Sehverlust auf einem Auge. Das können Zeichen einer Netzhautablösung oder Durchblutungsstörung sein. Ebenfalls notfallmässig: Flimmern zusammen mit Lähmungen, Sprachstörungen oder stärksten Kopfschmerzen.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Beginnt das Flimmern klein und wandert es langsam über das Blickfeld?</li>
+<li>Wie lange dauert es, bis alles wieder normal ist?</li>
+<li>Ist ein Auge betroffen oder beide? Mach den Abdecktest.</li>
+<li>Folgt danach ein Kopfschmerz, Übelkeit oder Lichtempfindlichkeit?</li>
+<li>Gab es Auslöser wie Schlafmangel, Stress oder grelles Licht?</li>
+</ul>
+<p>Notiere Häufigkeit und Dauer. Diese Angaben sind für die ärztliche Einordnung wertvoller als jede einzelne Attacke.</p>
+<h2>Wie betrachtet die chinesische Medizin wiederkehrendes Augenflimmern?</h2>
+<p>Die chinesische Medizin betrachtet Migräne und Aura traditionell im Zusammenhang mit Stress, Verspannung, Schlaf und Zyklus. Diese Einordnung ersetzt weder die erstmalige ärztliche Abklärung eines Flimmerns noch die augenärztliche Notfallkontrolle bei Blitzen oder Schatten.</p>
+<p>Ist die Diagnose Migräne mit Aura gestellt, begleiten wir viele Betroffene mit <a href="/therapien/akupunktur/">Akupunktur</a> zur Vorbeugung, oft kombiniert mit Arbeit an <a href="/beschwerden/nackenschmerzen/">Nacken</a> und Stressmustern. Ob das bei deiner Migräne sinnvoll ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Augenflimmern und Netzhautablösung?', a: 'Die Migräne-Aura beginnt klein, wandert langsam als Zickzackmuster und verschwindet nach 20 bis 60 Minuten vollständig, sichtbar mit beiden Augen. Blitze, ein Punkteschwarm oder ein dunkler Vorhang, meist auf einem Auge, sprechen für ein Netzhautproblem und gehören sofort augenärztlich untersucht.' },
+      { q: 'Kann Augenflimmern ohne Kopfschmerzen auftreten?', a: 'Ja. Bei der Augenmigräne tritt die typische Aura auf, der Kopfschmerz danach bleibt aber aus. Das erste Auftreten sollte trotzdem ärztlich eingeordnet werden, um andere Ursachen auszuschliessen.' },
+      { q: 'Wie oft ist Augenflimmern normal?', a: 'Vereinzelte Auren bei bekannter Migräne sind kein Alarmzeichen. Häufen sich die Attacken, verändern sie sich, dauern sie länger als eine Stunde oder treten sie erstmals nach dem 50. Lebensjahr auf, gehört das ärztlich abgeklärt.' },
+    ],
+    related: [
+      { href: '/beschwerden/augenmigraene/', label: 'Augenmigräne', cat: 'Beschwerde' },
+      { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
+      { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/', label: 'Druck im Kopf', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'zehen-kribbeln',
+    symptom: 'Kribbeln in den Zehen',
+    title: 'Zehen kribbeln: Was bedeutet das Ameisenlaufen im Fuss?',
+    metaDesc: 'Kribbelnde Zehen wie Ameisenlaufen? Von Schuhwerk über eingeklemmte Nerven bis Polyneuropathie: die häufigsten Ursachen und wann du das Kribbeln abklären solltest.',
+    h1: 'Warum kribbeln meine Zehen?',
+    category: 'Muskeln & Beine',
+    lead: 'Es kribbelt in den Zehen wie Ameisenlaufen, manchmal fühlen sie sich pelzig an. Kurzes Kribbeln nach dem Sitzen ist harmlos. Kribbeln, das immer wiederkommt oder bleibt, hat oft eine fassbare Ursache, von engen Schuhen über einen gereizten Nerv bis zu Stoffwechselthemen. Hier lernst du die Muster zu unterscheiden.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kribbelnde Füsse einordnen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kribbeln entsteht, wenn Nerven gereizt, gedrückt oder in ihrer Versorgung gestört sind. Bei den Zehen reicht das Spektrum von banal, etwa enge Schuhe oder das Bein über dem Knie, bis zu Ursachen, die man kennen sollte: ein eingeklemmter Nerv im Vorfuss oder Rücken, Diabetes, Vitamin-B12-Mangel oder eine beginnende <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
+<p>Entscheidend sind Dauer, Muster und Begleitzeichen: Ein Kribbeln, das nach Minuten verschwindet, ist anders zu bewerten als eines, das seit Wochen jeden Abend da ist.</p>
+<h2>Harmlose und häufige Auslöser</h2>
+<ul>
+<li>Enges oder spitz zulaufendes Schuhwerk, hohe Absätze</li>
+<li>Langes Sitzen mit überschlagenen Beinen oder auf den Fersen</li>
+<li>Kälte: Nerven melden bei kalten Füssen verändert</li>
+<li>Intensiver Sport mit geschwollenen Füssen</li>
+</ul>
+<p>Diese Formen verschwinden, sobald der Druck weg ist oder die Füsse warm werden.</p>
+<h2>Wenn ein Nerv eingeklemmt ist</h2>
+<p>Kribbelt es vor allem zwischen dem dritten und vierten Zeh, wie ein elektrisierender Schlag beim Gehen, kann ein <a href="/beschwerden/morton-neurom/">Morton-Neurom</a> dahinterstecken, eine verdickte Nervenstelle im Vorfuss. Zieht das Kribbeln dagegen vom Gesäss oder Rücken über das Bein bis in die Zehen, kommt eine Nervenreizung an der Lendenwirbelsäule infrage, etwa durch einen <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a> oder <a href="/beschwerden/ischias/">Ischias</a>.</p>
+<p>Auch das Sprunggelenk kann eine Engstelle sein: Beim Tarsaltunnelsyndrom wird ein Nerv hinter dem Innenknöchel gedrückt, das Kribbeln betrifft dann Fusssohle und Zehen.</p>
+<h2>Beide Füsse gleichzeitig: an den Stoffwechsel denken</h2>
+<p>Kribbeln beide Füsse symmetrisch, beginnend an den Zehen und langsam aufsteigend, sollte an eine Polyneuropathie gedacht werden. Häufige Ursachen sind Diabetes, Alkohol und Vitamin-B12-Mangel. Typisch sind zusätzlich Taubheit, Brennen oder das Gefühl, auf Watte zu gehen. Ein verwandtes nächtliches Muster findest du unter <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
+<p>Zur Abklärung gehören Blutwerte und oft eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>, die zeigt, wie gut die Nerven leiten.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch reagieren</div><p>Lass dich zeitnah untersuchen, wenn das Kribbeln von Schwäche im Fuss begleitet wird, etwa wenn die Fussspitze hängen bleibt, wenn es nach einem Unfall auftritt oder sich innerhalb von Tagen ausbreitet. Sofort in die Notaufnahme gehören Taubheit im Genitalbereich zusammen mit Blasen- oder Darmstörungen: Das kann auf eine schwere Nervenkompression im Rücken hinweisen.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Ein Fuss oder beide? Symmetrisch oder einseitig?</li>
+<li>Nur die Zehen oder aufsteigend Richtung Unterschenkel?</li>
+<li>Positionsabhängig, belastungsabhängig oder dauerhaft?</li>
+<li>Kribbelt es auch nachts oder in Ruhe?</li>
+<li>Bestehen Diabetes, regelmässiger Alkoholkonsum oder eine vegane Ernährung ohne B12-Ergänzung?</li>
+</ul>
+<p>Mit diesen Angaben kann die Ärztin oder der Arzt die Suche stark eingrenzen.</p>
+<h2>Wie schaut die chinesische Medizin auf kribbelnde Zehen?</h2>
+<p>Traditionell ordnet die chinesische Medizin Kribbeln und Taubheit über das Gesamtbild ein: Durchblutung, Kälteempfinden, Rücken und Beweglichkeit, Energie und Verdauung. Diese Betrachtung ersetzt keine Blutuntersuchung und keine Nervenmessung, wenn eine Polyneuropathie oder Nervenkompression im Raum steht.</p>
+<p>Ist die Ursache geklärt, begleiten wir Menschen mit Nervenbeschwerden je nach Situation mit <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a>, etwa bei muskulär mitverursachten Reizungen oder ergänzend bei Polyneuropathie. Was in deinem Fall realistisch ist, besprechen wir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Was bedeutet Kribbeln zwischen zwei Zehen?', a: 'Kribbeln oder elektrisierende Schläge zwischen drittem und viertem Zeh, oft beim Gehen in engen Schuhen, sind typisch für ein Morton-Neurom, eine verdickte Nervenstelle im Vorfuss. Das lässt sich untersuchen und gut behandeln.' },
+      { q: 'Warum kribbeln beide Füsse gleichzeitig?', a: 'Symmetrisches, an den Zehen beginnendes Kribbeln spricht für eine Polyneuropathie. Häufigste Ursachen sind Diabetes, Alkohol und Vitamin-B12-Mangel. Blutwerte und eine Nervenleitmessung bringen Klarheit, je früher, desto besser.' },
+      { q: 'Wann muss ich mit kribbelnden Zehen zum Arzt?', a: 'Wenn das Kribbeln länger als zwei Wochen immer wieder auftritt, sich ausbreitet, nachts stört oder Taubheit und Schwäche dazukommen. Sofort abklären lassen: Fussheberschwäche, Kribbeln nach Unfall oder Taubheit im Genitalbereich mit Blasenstörungen.' },
+    ],
+    related: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/beschwerden/morton-neurom/', label: 'Morton-Neurom', cat: 'Beschwerde' },
+      { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'schwindel-beim-buecken',
+    symptom: 'Schwindel beim Bücken',
+    title: 'Schwindel beim Bücken: Warum dreht sich alles, wenn ich mich vornüberbeuge?',
+    metaDesc: 'Beim Bücken oder Aufrichten wird dir schwindlig? Lagerungsschwindel, Blutdruck und andere Ursachen im Überblick, und wann der Schwindel abgeklärt gehört.',
+    h1: 'Warum wird mir beim Bücken schwindlig?',
+    category: 'Kopf & Sinne',
+    lead: 'Du bückst dich nach etwas oder richtest dich wieder auf, und für Sekunden dreht sich alles oder es wird schwarz vor den Augen. Meist stecken das Gleichgewichtsorgan oder der Kreislauf dahinter, beides lässt sich gut auseinanderhalten. Hier erfährst du, wie, und wann der Schwindel untersucht gehört.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schwindel einordnen lassen?',
+    author: AUTOR,
+    ...DATEN4,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Zwei Muster erklären die meisten Fälle. Erstens der gutartige Lagerungsschwindel: Winzige Kristalle im Gleichgewichtsorgan geraten bei Kopfbewegungen nach unten oder hinten in einen Bogengang und lösen ein heftiges, sekundenlanges Drehen aus. Zweitens der Kreislauf: Beim raschen Aufrichten nach dem Bücken sackt der Blutdruck kurz ab, es wird schwarz oder flau, aber es dreht sich nicht.</p>
+<p>Beide Formen sind unangenehm, aber gut behandelbar beziehungsweise meist harmlos. Wichtig ist die Abgrenzung zu selteneren Ursachen.</p>
+<h2>Drehschwindel: das Gleichgewichtsorgan</h2>
+<p>Beim gutartigen Lagerungsschwindel dreht sich die Umgebung für 10 bis 30 Sekunden heftig, ausgelöst durch bestimmte Kopfpositionen: Bücken, Kopf in den Nacken legen, Hinlegen oder <a href="/koerpersignale/schwindel-beim-umdrehen-im-bett/">Umdrehen im Bett</a>. Zwischen den Attacken ist meist Ruhe.</p>
+<p>Die gute Nachricht: Mit gezielten Lagerungsmanövern, die Ärztinnen und speziell geschulte Therapeuten durchführen, lassen sich die Kristalle oft in wenigen Sitzungen zurückbefördern. Mehr dazu auf der Seite <a href="/beschwerden/schwindel/">Schwindel</a>.</p>
+<h2>Schwarz vor Augen: der Kreislauf</h2>
+<p>Wird dir beim Aufrichten nach dem Bücken flau, schwarz oder schwummrig, ohne echtes Drehen, spricht das für einen kurzen Blutdruckabfall. Das kennst du vielleicht auch vom schnellen <a href="/koerpersignale/schwindel-beim-aufstehen/">Aufstehen aus dem Sitzen</a>. Begünstigend wirken zu wenig Flüssigkeit, Hitze, blutdrucksenkende Medikamente und lange Stehphasen davor.</p>
+<h2>Weitere Ursachen, die man kennen sollte</h2>
+<ul>
+<li>Druckgefühl und Schwindel beim Bücken bei verstopften Nebenhöhlen, etwa bei <a href="/beschwerden/sinusitis/">Sinusitis</a></li>
+<li>Verspannte Nacken- und Kiefermuskulatur, die die Kopfbewegung mit beeinflusst</li>
+<li>Blutzuckerschwankungen und <a href="/beschwerden/eisenmangel/">Eisenmangel</a></li>
+<li>Innenohrerkrankungen mit Hörveränderungen oder Ohrdruck</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Wähle den Notruf 144 bei Schwindel zusammen mit Doppelbildern, Sprech- oder Schluckstörungen, Lähmungen, Taubheit, heftigstem Kopfschmerz oder Gangunfähigkeit. Zeitnah abklären lassen: Schwindel mit einseitigem Hörverlust oder Ohrgeräusch, nach einem Sturz auf den Kopf oder wenn Attacken über Wochen immer wiederkehren.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Dreht sich die Umgebung oder wird es eher schwarz und flau?</li>
+<li>Wie lange dauert die Attacke: Sekunden oder Minuten?</li>
+<li>Tritt sie beim Bücken selbst auf oder erst beim Aufrichten?</li>
+<li>Lösen auch Hinlegen oder Kopfdrehen im Bett Schwindel aus?</li>
+<li>Trinkst du genug, und nimmst du Blutdruckmedikamente?</li>
+</ul>
+<p>Die Unterscheidung Drehen gegen Schwarzwerden ist für die ärztliche Diagnose die wichtigste Information überhaupt.</p>
+<h2>Wie betrachtet die chinesische Medizin den Schwindel?</h2>
+<p>Traditionell betrachtet die chinesische Medizin Schwindel im Zusammenhang mit Verspannung, Erschöpfung, Verdauung und Kreislauf. Diese Einordnung ersetzt weder Lagerungsmanöver beim Lagerungsschwindel noch die neurologische Abklärung bei Warnzeichen.</p>
+<p>Ist der Schwindel abgeklärt und bleiben muskuläre Mitverursacher wie ein stark verspannter <a href="/beschwerden/nackenschmerzen/">Nacken</a>, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> die Begleittherapie sinnvoll ergänzen. Wir sagen dir ehrlich, ob dein Muster dazu passt, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Was ist der Unterschied zwischen Drehschwindel und Schwarzwerden beim Bücken?', a: 'Drehschwindel für Sekunden nach Kopflagewechsel spricht für den gutartigen Lagerungsschwindel im Gleichgewichtsorgan. Schwarzwerden oder Flauheit beim Aufrichten spricht für einen kurzen Blutdruckabfall. Diese Unterscheidung ist der wichtigste Hinweis für die Diagnose.' },
+      { q: 'Ist Lagerungsschwindel gefährlich?', a: 'Er ist heftig, aber gutartig: Kristalle im Gleichgewichtsorgan geraten in einen Bogengang. Mit gezielten Lagerungsmanövern lässt er sich meist rasch behandeln. Die Diagnose sollte ärztlich gestellt werden, um andere Ursachen auszuschliessen.' },
+      { q: 'Wann muss Schwindel beim Bücken abgeklärt werden?', a: 'Sofort bei Doppelbildern, Sprachstörungen, Lähmungen oder Gangunfähigkeit. Zeitnah, wenn Attacken über Wochen wiederkehren, Hörveränderungen dazukommen oder der Schwindel nach einem Sturz auftritt.' },
+    ],
+    related: [
+      { href: '/beschwerden/schwindel/', label: 'Schwindel', cat: 'Beschwerde' },
+      { href: '/koerpersignale/schwindel-beim-umdrehen-im-bett/', label: 'Schwindel beim Umdrehen im Bett', cat: 'Körpersignal' },
+      { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
     ],
   },
 ];

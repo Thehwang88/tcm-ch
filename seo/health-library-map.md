@@ -1,4 +1,32 @@
-# Gesundheitsbibliothek — Content-Architektur-Mapping (Phase 2)
+# Gesundheitsbibliothek — Content-Architektur-Mapping (Phase 2, aktualisiert nach Welle 3)
+
+## Welle 3 (10.09.2026) — Vorher/Nachher
+
+| Metrik | vorher | nachher |
+|---|---|---|
+| Health-Seiten gesamt | 255 | 265 |
+| Körpersignale | 30 | 38 |
+| Beschwerden | 104 | 106 (103 kanonisch) |
+| Diagnostik-Seiten | 0 | 1 (Nervenleitmessung) |
+| Live-Visuals | 2 (+2 Handouts) | 2 — Promotion ABGELEHNT: Drafts (karpaltunnel, ischias, nacken-blockade) haben keine finalen Illustrations-Assets; Assets werden extern geliefert. Beziehungsdaten sind vorbereitet (relatedPage der Drafts zeigt auf kalkschulter/achillessehne-Seiten). |
+| Sitemap | 347 | 358 (+11, exakt die neuen URLs) |
+| Orphans | 0 | 0 |
+| Such-Index | 153 | 164 (+ Synonyme, + Gruppe "Untersuchungen") |
+
+Cluster-Scores neu: Bauch & Verdauung 62 -> ~74 (3 KS statt 1), Schulter/Arm/Hand
+72 -> ~78 (Kalkschulter + arm-schlaeft + NLG-Seite), Schlaf 70 -> ~74, Hüfte/Bein/
+Fuss 68 -> ~74 (Achillessehne + zehen-kribbeln), Kopf 66 -> ~72.
+Becken/Urologie: unverändert 5 Beschwerden, 0 KS -> Schwelle (~8 Knoten, 2 Typen)
+NICHT erreicht, Hub weiterhin nicht gebaut.
+
+## TODO vor jeder Konsolidierung der HIGH-Overlaps (NICHT in Welle 3 angefasst)
+
+Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:
+1. zyklusbeschwerden vs menstruationsbeschwerden
+2. wissen/kinderwunsch-akupunktur-tcm vs beschwerden/kinderwunsch
+3. kopfschmerzen / spannungskopfschmerzen / wissen-Artikel
+Kein Redirect, kein Canonical, kein Merge ohne diese Daten.
+
 
 Stand: 10.09.2026. Datenbasis: `seo/health-library-audit.json`
 (generiert von `node scripts/health-audit.mjs`, läuft über die gebaute Site).

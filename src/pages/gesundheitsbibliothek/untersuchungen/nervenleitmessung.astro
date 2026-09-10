@@ -1,0 +1,155 @@
+---
+// Erste Diagnostik-Seite der Gesundheitsbibliothek (Phase-2-Empfehlung: verbindet
+// die meisten bestehenden Seiten im Nerven-Cluster). Rein edukativ: Das ist
+// schulmedizinische Diagnostik, TCM.ch führt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/nervenleitmessung';
+const url = `https://tcm.ch${path}/`;
+const title = 'Nervenleitmessung (NLG): Ablauf, Nutzen & Grenzen';
+const description =
+  'Wie funktioniert eine Nervenleitmessung? Ablauf, was sie zeigt und wann Ärzte sie einsetzen, etwa bei Karpaltunnelsyndrom oder Polyneuropathie. Einfach erklärt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-10', dateModified: '2026-09-10',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/#diagnostik' },
+      { '@type': 'ListItem', position: 4, name: 'Nervenleitmessung', item: url },
+    ],
+  },
+];
+
+const signalLinks = [
+  { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein' },
+  { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub' },
+  { href: '/koerpersignale/arm-schlaeft-nachts-ein/', label: 'Arm schläft nachts ein' },
+  { href: '/koerpersignale/hand-kribbelt-beim-velofahren/', label: 'Hand kribbelt beim Velofahren' },
+  { href: '/koerpersignale/zehen-kribbeln/', label: 'Zehen kribbeln' },
+  { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts' },
+];
+const conditionLinks = [
+  { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom' },
+  { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie' },
+  { href: '/beschwerden/nervenschmerzen/', label: 'Nervenschmerzen' },
+  { href: '/beschwerden/bandscheibenvorfall/', label: 'Bandscheibenvorfall' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Nervenleitmessung</span>
+        </nav>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Nervenleitmessung: Wie gut leiten deine Nerven?</h1>
+        <p class="lead">Kribbelnde Finger, taube Zehen, eingeschlafene Arme: Wenn der Verdacht auf ein Nervenproblem besteht, ist die Nervenleitmessung oft die entscheidende Untersuchung. Hier erfährst du, wie sie abläuft, was sie zeigen kann und wo ihre Grenzen liegen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Nervenleitmessung ist eine schulmedizinische Untersuchung und wird von neurologischen Fachärztinnen und Fachärzten durchgeführt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Nervenleitmessung?</h2>
+          <p>Die Nervenleitmessung, medizinisch Nervenleitgeschwindigkeit (NLG) oder Elektroneurografie (ENG), misst, wie schnell und wie stark ein Nerv elektrische Signale weiterleitet. Nerven funktionieren wie Kabel: Ist ein Abschnitt gedrückt, gereizt oder geschädigt, leitet er langsamer oder schwächer. Genau das macht die Messung sichtbar, objektiv und in Zahlen.</p>
+
+          <h2>Wann setzen Ärztinnen und Ärzte sie ein?</h2>
+          <p>Typische Situationen sind:</p>
+          <ul>
+            <li><strong>Verdacht auf Karpaltunnelsyndrom:</strong> Schlafen Daumen bis Mittelfinger nachts ein, zeigt die Messung, ob und wie stark der Medianusnerv im Handgelenk eingeengt ist.</li>
+            <li><strong>Verdacht auf Polyneuropathie:</strong> Bei symmetrischem Kribbeln, Brennen oder Taubheit in beiden Füssen zeigt sie, ob die langen Nerven geschädigt sind, etwa bei Diabetes oder Vitamin-B12-Mangel.</li>
+            <li><strong>Engstellen an Ellbogen oder Sprunggelenk:</strong> etwa wenn Kleinfinger und Ringfinger kribbeln.</li>
+            <li><strong>Abgrenzung zum Rücken:</strong> Sie hilft zu unterscheiden, ob Beschwerden von einer Engstelle am Arm oder Bein stammen oder von einer Nervenwurzel an der Wirbelsäule.</li>
+          </ul>
+
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Auf der Haut werden kleine Elektroden über dem Nerv angebracht. Dann wird der Nerv mit kurzen, schwachen Stromimpulsen gereizt, und die Elektroden messen, wie schnell das Signal ankommt. Die Impulse fühlen sich an wie kurzes Schnappen oder Klopfen, viele empfinden sie als ungewohnt, aber gut aushaltbar. Die Untersuchung dauert je nach Fragestellung etwa 15 bis 45 Minuten, braucht keine Vorbereitung und hat keine relevanten Nebenwirkungen.</p>
+          <p>Je nach Fragestellung wird sie mit einer Elektromyografie (EMG) kombiniert, bei der zusätzlich die Muskelaktivität mit einer feinen Nadelelektrode gemessen wird.</p>
+
+          <h2>Was bedeutet das Ergebnis?</h2>
+          <p>Eine verlangsamte Leitung an einer umschriebenen Stelle spricht für eine lokale Engstelle, zum Beispiel im Karpaltunnel. Eine verlangsamte oder abgeschwächte Leitung an mehreren Nerven gleichzeitig spricht für eine allgemeine Nervenerkrankung wie die Polyneuropathie. Das Ergebnis hilft auch bei der Frage, ob eine Operation nötig ist oder konservative Behandlung ausreicht.</p>
+
+          <h2>Wo liegen die Grenzen?</h2>
+          <p>Die Messung erfasst vor allem die dicken, schnell leitenden Nervenfasern. Eine sogenannte Small-Fiber-Neuropathie, die nur die dünnen Fasern betrifft, kann trotz Beschwerden ein normales Ergebnis zeigen. Auch sehr frühe Reizungen sind nicht immer messbar. Ein unauffälliges Resultat schliesst ein Nervenproblem deshalb nicht in jedem Fall aus, die Ärztin oder der Arzt ordnet das Ergebnis immer zusammen mit deinen Beschwerden ein.</p>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Eine ehrliche Antwort: Die Nervenleitmessung liefert die Diagnose, nicht die Therapie. Für uns ist sie wichtig, weil sie klärt, womit wir es zu tun haben. Bei einem schweren Karpaltunnelsyndrom mit drohendem Muskelschwund gehört die Operation diskutiert, nicht die Akupunktur. Bei leichteren Reizungen oder ergänzend zur ärztlichen Behandlung, etwa bei Polyneuropathie, kann eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> Teil des Gesamtplans sein. Ohne saubere Diagnose behandeln wir nicht ins Blaue.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen diese Untersuchung oft zur Sprache kommt"
+          links={signalLinks}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={conditionLinks}
+          allHref="/gesundheitsbibliothek/koerper/schulter-arm-hand/"
+          allLabel="Region Schulter, Arm & Hand"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Kribbeln oder Taubheit, aber noch keine Diagnose?</div>
+          <p>Schildere uns dein Muster. Wir sagen dir ehrlich, ob zuerst eine neurologische Abklärung gehört oder ob eine TCM-Behandlung jetzt schon sinnvoll ist. EMR- und ASCA-anerkannt, Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

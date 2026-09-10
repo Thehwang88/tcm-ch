@@ -61,6 +61,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/achillessehnenentzuendung/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden/akne/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -302,6 +308,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/beschwerden/isg-blockade/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/beschwerden/kalkschulter/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1039,6 +1051,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/untersuchungen/nervenleitmessung/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/haut/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -1261,6 +1279,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/arm-schlaeft-nachts-ein/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/augenflimmern/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/augenlid-zuckt/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1274,6 +1304,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/bitterer-geschmack-morgens/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/blaehbauch-am-abend/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1316,6 +1352,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/hand-kribbelt-beim-velofahren/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/herzklopfen-im-liegen/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1369,6 +1411,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/nacken-morgens-steif/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1405,6 +1453,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/schwindel-beim-buecken/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/schwindel-beim-umdrehen-im-bett/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -1429,7 +1483,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/voellegefuehl-nach-dem-essen/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/wadenkraempfe-nachts/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/zehen-kribbeln/</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

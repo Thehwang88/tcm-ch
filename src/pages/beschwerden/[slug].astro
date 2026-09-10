@@ -12,6 +12,7 @@ import { ksLinksForBeschwerde, ksLinksHtml } from '../../data/koerpersignale-lin
 import { massageLinksForBeschwerde, massageLinksHtml } from '../../data/massage-links';
 import { OUCH_MAG, ouchMagRow } from '../../data/ouch-links';
 import { libraryLinksHtml } from '../../data/gesundheitsbibliothek';
+import { wissenLinksHtml } from '../../data/wissen-links';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -94,6 +95,8 @@ const TITLES: Record<string, string> = {
   wadenschmerzen: 'Wadenschmerzen: Ursachen, Krämpfe & was hilft | TCM.ch',
   sprunggelenkschmerzen: 'Sprunggelenkschmerzen – TCM-Behandlung | TCM.ch',
   'schwere-beine': 'Schwere Beine: was wirklich hilft | TCM.ch',
+  kalkschulter: 'Kalkschulter (Tendinosis calcarea): Behandlung ohne OP | TCM.ch',
+  achillessehnenentzuendung: 'Achillessehnenentzündung: Behandlung & was hilft | TCM.ch',
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -107,6 +110,8 @@ const DESCRIPTIONS: Record<string, string> = {
   wadenschmerzen: 'Wadenschmerzen mit TCM behandeln: Akupunktur bei Verspannung, Krämpfen und Triggerpunkten. Erst abklären, dann behandeln. EMR/ASCA-anerkannt.',
   sprunggelenkschmerzen: 'Sprunggelenkschmerzen mit TCM behandeln: Akupunktur nach Umknicken, bei Instabilität und Arthrose im Knöchel. EMR/ASCA-anerkannt, 14 Standorte.',
   'schwere-beine': 'Schwere Beine: Lymphdrainage und Akupunktur bei Schwellung und Spannungsgefühl. Ergänzt Kompression und Venenbehandlung. EMR/ASCA-anerkannt.',
+  kalkschulter: 'Kalkschulter: Akupunktur und Dry Needling bei Kalkdepot in der Schultersehne. Schmerzen dämpfen, Phasen überbrücken, ehrlich beraten. EMR/ASCA-anerkannt.',
+  achillessehnenentzuendung: 'Achillessehnenentzündung (Achillodynie): Akupunktur und Dry Needling ergänzen das exzentrische Training. Erst abklären, dann behandeln. EMR/ASCA-anerkannt.',
   migraene: 'Akupunktur bei Migräne: Attacken seltener machen, Trigger verstehen, Medikamente ergänzen. TCM-Behandlung an 14 Standorten, EMR/ASCA-anerkannt.',
   lippenherpes: 'Immer wieder Lippenherpes? TCM mit Kräutertherapie und Akupunktur bei häufigen Herpesschüben: Rezidive seltener machen. EMR/ASCA-anerkannt.',
   reizblase: 'Reizblase mit TCM behandeln: Akupunktur bei ständigem Harndrang und überaktiver Blase, ohne Infekt. Diskret und krankenkassenanerkannt, 14 Standorte.',
@@ -246,6 +251,8 @@ const ksBlock = ksLinksHtml(
 // gesundheitsbibliothek.ts). Gibt den neuen Hubs interne Links von täglich gecrawlten
 // Seiten — gleiches Muster wie ksBlock/hautBlock.
 const libraryBlock = libraryLinksHtml(slug!);
+// Links auf passende /wissen/-Studienartikel (kuratiert, health-library-map.md J.1).
+const wissenBlock = wissenLinksHtml(slug!);
 // Prefill the contact form with this complaint as the topic (editable; source in hidden quelle).
 const prefilledBody = appendSidebarAllLink(
   prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`),
@@ -264,4 +271,4 @@ const ouchBlock = ouchRow
 // Soft entry into the interactive self-test (links to /selbsttest/ from every complaint page).
 const selbsttestBlock = `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + libraryBlock} schema={schema} canonicalTo={MERGED[slug!]} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + wissenBlock + libraryBlock} schema={schema} canonicalTo={MERGED[slug!]} />

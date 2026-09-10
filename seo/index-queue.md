@@ -18,6 +18,17 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/arm-schlaeft-nachts-ein/
+- https://tcm.ch/koerpersignale/voellegefuehl-nach-dem-essen/
+- https://tcm.ch/koerpersignale/blaehbauch-am-abend/
+- https://tcm.ch/koerpersignale/nacken-morgens-steif/
+- https://tcm.ch/koerpersignale/herzklopfen-im-liegen/
+- https://tcm.ch/koerpersignale/augenflimmern/
+- https://tcm.ch/koerpersignale/zehen-kribbeln/
+- https://tcm.ch/koerpersignale/schwindel-beim-buecken/
+- https://tcm.ch/beschwerden/kalkschulter/
+- https://tcm.ch/beschwerden/achillessehnenentzuendung/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/nervenleitmessung/
 - https://tcm.ch/gesundheitsbibliothek/
 - https://tcm.ch/gesundheitsbibliothek/koerper/ruecken/
 - https://tcm.ch/gesundheitsbibliothek/koerper/hals-nacken/
@@ -96,22 +107,7 @@ Regeln:
 
 ## Geplant (noch nicht live)
 
-Stichprobe am 10.09.2026: 404. Diese URLs gehören NICHT unter "Offen", sonst
-verbrennt die 09:00-Aufgabe Tageskontingent auf nicht existierende Seiten.
-Beim Deploy nach "Offen" verschieben — und gleichzeitig in KS_LINKS in
-src/data/koerpersignale-links.ts eintragen, sonst haben sie dasselbe
-"Verweisende Seite: nicht gefunden"-Problem wie die ersten 20 Leaves.
-
-- https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
-- https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
-- https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
-- https://tcm.ch/koerpersignale/trockener-mund-nachts/
-- https://tcm.ch/koerpersignale/bitterer-geschmack-morgens/
-- https://tcm.ch/koerpersignale/schwere-beine-abends/
-- https://tcm.ch/koerpersignale/brennende-fuesse-nachts/
-- https://tcm.ch/koerpersignale/ein-fuss-kaelter-als-der-andere/
-- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-langen-stehen/
-- https://tcm.ch/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/
+(zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 
 ## Erledigt
 
