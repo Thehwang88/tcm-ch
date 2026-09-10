@@ -1,15 +1,25 @@
 User-agent: *
 Allow: /
+# Kein Crawl-Budget fuer Form-Endpoints und vorbefuellte Formular-Links.
+# Diese Parameter-URLs kanonisieren korrekt auf / bzw. /en/contact/, erzeugen in der
+# Search Console aber Dutzende "Alternative Seite mit richtigem kanonischen Tag".
+Disallow: /api/
+Disallow: /*?standort=
+Disallow: /*?beschwerde=
+Disallow: /*?therapie=
 
 # AI crawlers - allow for visibility
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
 
 # Sitemap
 Sitemap: https://tcm.ch/sitemap.xml
