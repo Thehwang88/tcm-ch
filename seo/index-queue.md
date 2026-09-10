@@ -18,6 +18,16 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
+- https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
+- https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/
+- https://tcm.ch/koerpersignale/trockener-mund-nachts/
+- https://tcm.ch/koerpersignale/bitterer-geschmack-morgens/
+- https://tcm.ch/koerpersignale/schwere-beine-abends/
+- https://tcm.ch/koerpersignale/brennende-fuesse-nachts/
+- https://tcm.ch/koerpersignale/ein-fuss-kaelter-als-der-andere/
+- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-langen-stehen/
+- https://tcm.ch/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/
 - https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/
 - https://tcm.ch/koerpersignale/nachtschweiss-ohne-fieber/
 - https://tcm.ch/koerpersignale/rueckenschmerzen-beim-husten/

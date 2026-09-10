@@ -42,6 +42,7 @@ const AUTOR: KsAuthor = {
   bio: 'Die Inhalte dieser Rubrik entstehen in der Fachredaktion von TCM.ch auf Basis der Erfahrung aus unseren Praxen. Sie erklären Symptommuster allgemein, ersetzen keine ärztliche Diagnose und nennen bewusst, wann eine medizinische Abklärung wichtig ist.',
 };
 const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09' };
+const DATEN3 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -951,6 +952,544 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
       { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom', cat: 'Beschwerde' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── WELLE 3 (Seiten 21 bis 24)
+  {
+    slug: 'nacken-knackt-beim-drehen',
+    symptom: 'ein knackender Nacken beim Drehen',
+    title: 'Nacken knackt beim Drehen: Was steckt dahinter?',
+    metaDesc: 'Dein Nacken knackt beim Drehen, tut aber kaum oder gar nicht weh? Erfahre, woher die Geräusche kommen können und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum knackt mein Nacken beim Drehen?',
+    category: 'Muskeln & Beine',
+    lead: 'Du drehst den Kopf und es knackt hörbar. Das klingt dramatischer, als es meistens ist. Hier erfährst du, woher die Geräusche kommen können, warum die Begleitsymptome wichtiger sind als die Lautstärke und wann du den Nacken anschauen lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Verspannten Nacken einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Knacken oder Reiben im Nacken kann beim Drehen des Kopfes ziemlich laut wirken. Das bedeutet aber nicht automatisch, dass etwas beschädigt ist. Gerade wenn das Geräusch ohne Schmerzen, Taubheit oder Bewegungseinschränkung auftritt, steckt häufig ein normales Bewegungsgeräusch der Gelenke oder des umgebenden Gewebes dahinter.</p>
+<p>Tritt das Knacken dagegen neu nach einem Unfall auf oder kommen Schmerzen, Kribbeln, Schwäche oder andere ungewöhnliche Symptome dazu, sollte der Nacken medizinisch beurteilt werden.</p>
+<h2>Was kann beim Drehen eigentlich knacken?</h2>
+<p>Die Halswirbelsäule besteht aus mehreren kleinen Wirbeln und Gelenken. Gleichzeitig verlaufen dort Muskeln, Sehnen und Bänder, die sich bei jeder Kopfbewegung gegeneinander verschieben.</p>
+<p>Dadurch können unterschiedliche Geräusche entstehen. Manchmal verändert sich der Druck in einem kleinen Gelenk. Manchmal bewegt sich eine Sehne oder ein Band über eine andere Struktur. Auch Steifigkeit nach langem Sitzen kann dazu führen, dass eine Bewegung plötzlich hörbarer wird.</p>
+<p>Das Geräusch allein sagt deshalb erstaunlich wenig darüber aus, wie gesund oder krank dein Nacken ist.</p>
+<h2>Ist Nackenknacken ohne Schmerzen gefährlich?</h2>
+<p>Wenn dein Nacken gelegentlich knackt und du dabei keine Schmerzen oder neurologischen Beschwerden hast, ist das meistens kein Grund zur Sorge. Solche Bewegungsgeräusche werden auch als Krepitation bezeichnet und kommen an vielen Gelenken vor.</p>
+<p>Wichtiger als die Lautstärke sind Begleitsymptome. Achte zum Beispiel darauf, ob:</p>
+<ul>
+<li>das Knacken plötzlich neu aufgetreten ist</li>
+<li>der Nacken gleichzeitig schmerzt</li>
+<li>sich der Kopf schlechter drehen lässt</li>
+<li>Schmerzen in Schulter oder Arm ziehen</li>
+<li>Finger kribbeln oder taub werden</li>
+<li>Kraft im Arm oder in der Hand fehlt</li>
+</ul>
+<p>Dann verändert sich die Bedeutung des Symptoms.</p>
+<h2>Warum knackt der Nacken besonders nach langem Sitzen?</h2>
+<p>Viele Menschen merken das Geräusch erst nach mehreren Stunden am Bildschirm oder nach längerer Zeit in derselben Position.</p>
+<p>Dabei bewegen wir die Halswirbelsäule oft weniger als gedacht. Gleichzeitig arbeitet die Muskulatur dauerhaft, um den Kopf zu halten. Nach längerer Ruhe kann sich die erste grössere Bewegung deshalb steifer anfühlen oder hörbarer sein.</p>
+<p>Das bedeutet nicht automatisch, dass ein Wirbel "blockiert" ist. Häufig ist es sinnvoller zu beobachten, ob regelmässige Bewegung, eine bessere Bildschirmhöhe und kurze Unterbrechungen das Gefühl verändern.</p>
+<h2>Sollte ich meinen Nacken absichtlich knacken?</h2>
+<p>Ein gelegentliches natürliches Knacken während einer normalen Bewegung ist etwas anderes als das kräftige, absichtliche Manipulieren des Halses.</p>
+<p>Wenn du ständig das Bedürfnis hast, den Nacken mit Kraft zu drehen, bis es knackt, lohnt sich eher die Frage, warum sich der Bereich immer wieder steif oder unter Druck anfühlt. Häufiges oder sehr kräftiges Selbstmanipulieren kann Gelenke und Gewebe unnötig belasten.</p>
+<p>Versuche deshalb nicht, ein bestimmtes Geräusch zu erzwingen. Sanfte Bewegung sollte sich gut anfühlen und nicht gegen Widerstand erfolgen.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Für die Einordnung sind einige einfache Fragen hilfreicher als das Geräusch selbst: Knackt es nur auf einer Seite oder auf beiden? Passiert es immer an derselben Stelle? Gibt es Schmerzen? Ist dein Nacken morgens besonders steif? Wird das Knacken nach einem langen Arbeitstag häufiger? Verändert es sich, wenn du dich regelmässiger bewegst? Gibt es zusätzlich Kopfschmerzen, Schulterspannung oder Beschwerden im Arm?</p>
+<p>Diese Informationen helfen auch bei einer späteren Untersuchung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass das Symptom ärztlich oder physiotherapeutisch beurteilen, wenn das Knacken mit anhaltenden Schmerzen, deutlicher Bewegungseinschränkung oder ausstrahlenden Beschwerden verbunden ist. Zügig abgeklärt werden sollten neu auftretende Taubheit, Kribbeln oder Schwäche in Arm oder Hand sowie Beschwerden nach einem Unfall. Auch starke Nackenschmerzen zusammen mit Fieber oder deutlichem Krankheitsgefühl gehören medizinisch beurteilt. Unsere Seite zu <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a> erklärt diese Warnzeichen ausführlicher.</p></div>
+<h2>Wie kann TCM bei einem verspannten Nacken einbezogen werden?</h2>
+<p>Das Geräusch selbst muss nicht behandelt werden.</p>
+<p>Wenn hinter dem Knacken jedoch zusätzlich Muskelspannung, eingeschränkte Beweglichkeit oder wiederkehrende Nackenschmerzen stehen, kann eine ergänzende Behandlung sinnvoll sein.</p>
+<p>In der chinesischen Medizin wird dabei nicht das Knacken isoliert betrachtet. Entscheidend ist, wo Spannung entsteht, wie beweglich der Nacken ist und ob weitere Beschwerden wie Kopf- oder Schulterschmerzen dazugehören.</p>
+<p>Je nach Befund kommen zum Beispiel <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> infrage. Bei klar mechanischen Problemen kann auch <a href="/therapien/physiotherapie/">Physiotherapie</a> der passendere oder ergänzende Weg sein.</p>
+<p>Dein Nacken knackt und fühlt sich gleichzeitig verspannt oder unbeweglich an? Schildere uns kurz, wann es passiert. Wir helfen dir einzuschätzen, welche <a href="/standorte/">Praxis</a> oder Behandlung zu deinem Muster passt.</p>`,
+    faqs: [
+      { q: 'Ist es schlimm, wenn der Nacken beim Drehen knackt?', a: 'Ohne Schmerzen, Taubheit oder Bewegungseinschränkung ist ein gelegentliches Knacken meistens ein harmloses Bewegungsgeräusch. Wichtiger als die Lautstärke sind Begleitsymptome wie ausstrahlende Schmerzen, Kribbeln oder Kraftverlust.' },
+      { q: 'Darf ich meinen Nacken selbst einrenken?', a: 'Kräftiges, absichtliches Manipulieren des Halses ist keine gute Idee und kann Gelenke und Gewebe unnötig belasten. Wenn sich der Nacken ständig steif anfühlt, ist die Frage nach der Ursache sinnvoller als das erzwungene Knacken.' },
+      { q: 'Wann sollte ich mit Nackenknacken zum Arzt?', a: 'Wenn Schmerzen, deutliche Bewegungseinschränkung oder ausstrahlende Beschwerden dazukommen. Neu auftretende Taubheit, Kribbeln oder Schwäche in Arm oder Hand sowie Beschwerden nach einem Unfall gehören zügig abgeklärt.' },
+    ],
+    related: [
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
+      { href: '/therapien/tuina/', label: 'Tuina Massage', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'knie-knackt-ohne-schmerzen',
+    symptom: 'ein knackendes Knie ohne Schmerzen',
+    title: 'Knie knackt ohne Schmerzen: Muss ich mir Sorgen machen?',
+    metaDesc: 'Dein Knie knackt beim Treppensteigen oder Aufstehen, tut aber nicht weh? Erfahre, warum das häufig vorkommt und welche Zeichen du abklären solltest.',
+    h1: 'Warum knackt mein Knie, obwohl es nicht weh tut?',
+    category: 'Muskeln & Beine',
+    lead: 'Beim Aufstehen oder Treppensteigen knackt dein Knie hörbar, aber es tut nicht weh. Muss das behandelt werden? Meistens nicht. Hier erfährst du, woher die Geräusche kommen, was sie über Arthrose aussagen und welche Zeichen du ernst nehmen solltest.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Kniebeschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Knie, das beim Aufstehen, Treppensteigen oder Beugen knackt, klingt manchmal dramatischer, als es ist. Wenn keine Schmerzen, Schwellung oder Instabilität dazukommen, ist ein Knacken oder Reiben häufig kein Zeichen dafür, dass das Knie behandelt werden muss.</p>
+<p>Entscheidend ist deshalb nicht nur das Geräusch. Entscheidend ist, wie sich das Knie dabei anfühlt und ob sich etwas verändert hat.</p>
+<h2>Woher kommt das Knacken im Knie?</h2>
+<p>Im Knie bewegen sich Knochen, Knorpel, Sehnen und andere Weichteile bei jeder Beugung gegeneinander. Dabei können verschiedene Geräusche entstehen. Medizinisch wird ein Reiben oder Knirschen häufig als Krepitation bezeichnet.</p>
+<p>Gerade rund um die Kniescheibe können Bewegungsgeräusche entstehen, ohne dass Schmerzen vorhanden sind. Auch Sehnen oder andere Weichteile können bei Bewegung hörbar über benachbarte Strukturen gleiten.</p>
+<p>Ein Geräusch allein erlaubt deshalb keine Diagnose.</p>
+<h2>Bedeutet Knacken, dass ich Arthrose habe?</h2>
+<p>Nein. <a href="/beschwerden/arthrose/">Arthrose</a> kann zwar mit Reibegeräuschen verbunden sein. Ein knackendes Knie ohne Schmerzen beweist aber keine Arthrose.</p>
+<p>Das ist wichtig, weil viele Menschen ein Geräusch hören und sofort an "Abnutzung" denken. Für die Einordnung zählen zusätzliche Beschwerden wie Belastungsschmerz, Schwellung, zunehmende Steifigkeit oder eingeschränkte Beweglichkeit deutlich stärker.</p>
+<p>Unsere Seite zu <a href="/beschwerden/knieschmerzen/">Knieschmerzen</a> bleibt deshalb die richtige Anlaufstelle, wenn nicht nur ein Geräusch, sondern tatsächlich Schmerz oder Einschränkung vorhanden ist. Auf dieser Seite geht es bewusst nur um das Körpersignal "Knacken ohne Schmerzen".</p>
+<h2>Warum knackt das Knie beim Treppensteigen?</h2>
+<p>Beim Treppensteigen wird das Knie deutlich stärker gebeugt als beim normalen Gehen. Die Kniescheibe bewegt sich dabei in ihrer Führung am Oberschenkelknochen. Gerade in dieser Bewegung bemerken viele Menschen ein Reiben, Knirschen oder Knacken.</p>
+<p>Wenn das Geräusch schon länger besteht und du Treppen problemlos gehen kannst, ist das etwas anderes als ein neu auftretendes schmerzhaftes Schnappen oder Blockieren.</p>
+<h2>Was ist der Unterschied zwischen Knacken, Reiben und Blockieren?</h2>
+<p>Ein einfaches Knacken ist meistens ein kurzes Geräusch während der Bewegung. Ein Reiben oder Knirschen kann sich eher rau anfühlen und bei mehreren Bewegungen hintereinander auftreten.</p>
+<p>Ein echtes Blockiergefühl ist etwas anderes. Dabei lässt sich das Knie plötzlich nicht normal beugen oder strecken oder es fühlt sich an, als würde etwas mechanisch hängen. Auch ein Wegknicken oder deutliches Instabilitätsgefühl sollte nicht einfach als "normales Knacken" abgetan werden.</p>
+<h2>Muss ich ein schmerzfreies Knieknacken behandeln?</h2>
+<p>In der Regel nicht nur wegen des Geräusches. Bewegung ist für ein schmerzfreies Knie normalerweise sinnvoll. Es gibt keinen guten Grund, normale Aktivität nur wegen eines gelegentlichen Knackens vollständig zu vermeiden.</p>
+<p>Wenn du unsicher bist, kannst du beobachten:</p>
+<ul>
+<li>Kommt das Geräusch bei jeder Bewegung oder nur manchmal?</li>
+<li>Ist ein Knie betroffen oder beide?</li>
+<li>Gibt es Schwellung?</li>
+<li>Beginnt das Knie später zu schmerzen?</li>
+<li>Fühlt es sich instabil an?</li>
+<li>Lässt es sich vollständig beugen und strecken?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann untersuchen lassen</div><p>Eine Abklärung ist sinnvoll, wenn zum Knacken Schmerzen, deutliche Schwellung, Instabilität oder Bewegungseinschränkung dazukommen. Nach einer Verletzung sollte ein Knie ebenfalls untersucht werden, wenn du nicht normal auftreten kannst, das Gelenk stark anschwillt oder sich nicht vollständig bewegen lässt.</p></div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Ein schmerzfreies Knie, das lediglich Geräusche macht, braucht nicht automatisch eine TCM-Behandlung.</p>
+<p>Wenn zusätzlich muskuläre Spannung, Belastungsschmerzen oder eine bekannte Kniebeschwerde vorhanden sind, kann dagegen geprüft werden, ob <a href="/therapien/akupunktur/">Akupunktur</a> oder andere ergänzende Methoden sinnvoll sind. Bei mechanischen Problemen ist auch <a href="/therapien/physiotherapie/">Physiotherapie</a> eine Möglichkeit.</p>
+<p>Gerade dieser Unterschied ist uns wichtig: Nicht jedes Körpersignal muss behandelt werden. Wenn Beschwerden vorhanden sind, findest du auf unserer Seite <a href="/beschwerden/knieschmerzen/">Knieschmerzen</a> die ausführliche Einordnung und passende Behandlungsmöglichkeiten.</p>
+<p>Knackt dein Knie nicht nur, sondern schmerzt oder fühlt sich instabil an? Beschreibe uns kurz, wann es passiert. Wir helfen dir beim nächsten sinnvollen Schritt, auch bei der Wahl der passenden <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Ist ein knackendes Knie ohne Schmerzen gefährlich?', a: 'Meistens nicht. Ohne Schmerzen, Schwellung oder Instabilität ist ein Knacken oder Reiben häufig ein normales Bewegungsgeräusch und kein Behandlungsgrund. Verändert sich das Muster oder kommen Beschwerden dazu, lohnt sich eine Abklärung.' },
+      { q: 'Bedeutet Knieknacken, dass ich Arthrose habe?', a: 'Nein. Arthrose kann mit Reibegeräuschen verbunden sein, aber ein knackendes Knie ohne Schmerzen beweist keine Arthrose. Belastungsschmerz, Schwellung und zunehmende Steifigkeit sagen deutlich mehr aus als das Geräusch.' },
+      { q: 'Wann sollte ich mit einem knackenden Knie zum Arzt?', a: 'Wenn Schmerzen, deutliche Schwellung, Instabilität oder Bewegungseinschränkung dazukommen. Nach einer Verletzung gehört das Knie untersucht, wenn du nicht normal auftreten kannst oder sich das Gelenk nicht vollständig bewegen lässt.' },
+    ],
+    related: [
+      { href: '/beschwerden/knieschmerzen/', label: 'Knieschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
+      { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'ohr-knackt-beim-schlucken',
+    symptom: 'ein knackendes Ohr beim Schlucken',
+    title: 'Ohr knackt beim Schlucken: mögliche Ursachen',
+    metaDesc: 'Knackt oder klickt dein Ohr beim Schlucken? Oft steckt der Druckausgleich im Mittelohr dahinter. Erfahre, wann das normal ist und wann HNO-Abklärung sinnvoll ist.',
+    h1: 'Warum knackt mein Ohr beim Schlucken?',
+    category: 'Kopf & Sinne',
+    lead: 'Bei jedem Schlucken klickt oder knackt es im Ohr. Oft ist das schlicht der normale Druckausgleich im Mittelohr. Hier erfährst du, wie der Mechanismus funktioniert, wann der Kiefer beteiligt sein kann und bei welchen Zeichen eine HNO-Abklärung sinnvoll ist.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Ohrdruck und Verspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Beim Schlucken öffnet sich für einen kurzen Moment eine Verbindung zwischen Mittelohr und Rachen, die sogenannte Eustachische Röhre. Dadurch wird der Druck im Mittelohr ausgeglichen. Genau dabei kann ein leises Knacken oder Klicken entstehen.</p>
+<p>Wenn das Ohr zusätzlich dauerhaft verstopft wirkt, das Hören schlechter wird oder Schmerzen auftreten, kann der Druckausgleich gestört sein.</p>
+<h2>Was passiert im Ohr, wenn wir schlucken?</h2>
+<p>Das Mittelohr liegt hinter dem Trommelfell und braucht einen ähnlichen Luftdruck wie die Umgebung. Die Eustachische Röhre verbindet das Mittelohr mit dem oberen Rachenraum. Beim Schlucken oder Gähnen öffnet sie sich kurz.</p>
+<p>Viele kennen diesen Mechanismus vom Flugzeug oder von einer Fahrt in die Berge. Man schluckt, im Ohr knackt es und plötzlich fühlt sich der Druck wieder normal an. Ein einzelnes Knacken kann deshalb schlicht bedeuten, dass der Druckausgleich funktioniert.</p>
+<h2>Warum knackt ein Ohr stärker als das andere?</h2>
+<p>Die beiden Seiten müssen sich nicht identisch verhalten. Wenn die Schleimhaut auf einer Seite stärker angeschwollen ist, kann sich dort der Druck anders anfühlen. Das kann zum Beispiel bei Erkältungen, Allergien oder Problemen mit der Belüftung des Mittelohrs vorkommen. Auch Reflux kann bei manchen Menschen eine Rolle bei Beschwerden der Eustachischen Röhre spielen.</p>
+<p>Einseitige Beschwerden, die über längere Zeit bestehen bleiben, gehören aber besser einmal angeschaut.</p>
+<h2>Was, wenn sich das Ohr gleichzeitig verstopft anfühlt?</h2>
+<p>Knacken zusammen mit einem Druck- oder Völlegefühl passt eher zu einer gestörten Belüftung. Typisch können zusätzlich sein: gedämpftes Hören, ein Gefühl wie "unter Wasser", Ohrdruck, leichte Ohrenschmerzen oder gelegentlich Tinnitus.</p>
+<p>Dann ist nicht das Knacken selbst das eigentliche Problem, sondern möglicherweise die Belüftung des Mittelohrs. Dazu passt auch unsere Körpersignal-Seite <a href="/koerpersignale/ohr-einseitig-verstopft/">Warum fühlt sich nur ein Ohr verstopft an?</a></p>
+<h2>Kann das Kiefergelenk beteiligt sein?</h2>
+<p>Ohr und Kiefer liegen anatomisch sehr nah beieinander. Manchmal wird ein Geräusch, das eigentlich aus dem Kiefergelenk kommt, subjektiv im Ohr wahrgenommen. Das ist besonders denkbar, wenn das Knacken eher beim Kauen oder grossen Öffnen des Mundes als beim reinen Schlucken auftritt.</p>
+<p>Kieferknacken, Pressen oder Zähneknirschen sollten deshalb als eigenes Muster betrachtet werden. Mehr dazu auf unserer Seite <a href="/beschwerden/kieferschmerzen/">Kieferschmerzen und Zähneknirschen</a>.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Interessant ist: Tritt es nur beim Schlucken auf? Passiert es auch beim Gähnen? Ist das Ohr gleichzeitig dumpf? Gab es kürzlich eine Erkältung oder starke Allergie? Verändert sich das Gefühl im Flugzeug oder in den Bergen? Knackt auch dein Kiefer? Gibt es Ohrenschmerzen oder eine Hörminderung?</p>
+<p>Diese Unterschiede helfen, das Symptom besser einzuordnen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann zum HNO-Arzt</div><p>Lass dein Ohr untersuchen, wenn das Druckgefühl oder die Hörminderung nicht wieder verschwindet, wenn Schmerzen stärker werden oder wenn Sekret aus dem Ohr austritt. Bei einer plötzlich auftretenden deutlichen Hörminderung solltest du nicht abwarten, sondern zeitnah eine HNO-Abklärung organisieren. Auch starker Schwindel zusammen mit einer neuen Hörveränderung gehört medizinisch beurteilt.</p></div>
+<h2>Wo passt TCM hinein?</h2>
+<p>Ein Knacken beim normalen Druckausgleich braucht keine Behandlung.</p>
+<p>Wenn gleichzeitig wiederkehrende Verspannungen im Kiefer- oder Nackenbereich bestehen, kann eine ergänzende Behandlung dieser muskulären Komponenten sinnvoll sein. Bei echten Ohrsymptomen sollte jedoch zunächst geklärt sein, ob eine HNO-Ursache vorliegt.</p>
+<p>TCM ergänzt diese Abklärung. Sie ersetzt sie nicht.</p>
+<p>Dein Ohr knackt nicht nur, sondern fühlt sich dauerhaft verstopft an oder du hast zusätzliche Beschwerden? Wir helfen dir einzuordnen, ob zuerst HNO oder eine ergänzende Behandlung in einer unserer <a href="/standorte/">Praxen</a> sinnvoll ist.</p>`,
+    faqs: [
+      { q: 'Ist es normal, dass das Ohr beim Schlucken knackt?', a: 'Ja, meistens. Beim Schlucken öffnet sich die Eustachische Röhre kurz und gleicht den Druck im Mittelohr aus. Das dabei entstehende Knacken oder Klicken zeigt oft schlicht, dass der Druckausgleich funktioniert.' },
+      { q: 'Warum knackt nur ein Ohr beim Schlucken?', a: 'Die beiden Seiten verhalten sich nicht immer identisch. Bei Erkältungen, Allergien oder einer schlechteren Belüftung des Mittelohrs kann eine Seite stärker betroffen sein. Einseitige Beschwerden, die länger bestehen, sollten HNO-ärztlich angeschaut werden.' },
+      { q: 'Wann muss ich mit Ohrknacken zum Arzt?', a: 'Wenn Druckgefühl oder Hörminderung nicht verschwinden, Schmerzen stärker werden oder Sekret austritt. Eine plötzliche deutliche Hörminderung gehört zeitnah abgeklärt, ebenso starker Schwindel mit neuer Hörveränderung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
+      { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
+      { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
+      { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen und Zähneknirschen', cat: 'Beschwerde' },
+    ],
+  },
+
+  {
+    slug: 'trockener-mund-nachts',
+    symptom: 'ein trockener Mund in der Nacht',
+    title: 'Trockener Mund nachts: Warum passiert das?',
+    metaDesc: 'Wachst du nachts oder morgens mit trockenem Mund auf? Mundatmung, Medikamente und andere Ursachen kommen infrage. Erfahre, worauf du achten solltest.',
+    h1: 'Warum ist mein Mund nachts so trocken?',
+    category: 'Hals & Mund',
+    lead: 'Du wachst nachts oder am Morgen mit völlig trockenem Mund auf. Meistens stecken Mundatmung, Schnarchen oder Medikamente dahinter. Hier erfährst du, warum der Mund im Schlaf trockener wird, was du selbst ausprobieren kannst und wann eine Abklärung sinnvoll ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schlaf und Mundtrockenheit gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nachts wird weniger Speichel produziert als tagsüber. Wenn du zusätzlich durch den Mund atmest, schnarchst oder bestimmte Medikamente einnimmst, kann sich der Mund beim Aufwachen sehr trocken anfühlen.</p>
+<p>Gelegentliche Mundtrockenheit ist häufig. Wenn sie jede Nacht auftritt, auch tagsüber besteht oder Essen, Schlucken und Sprechen erschwert, sollte die Ursache genauer angeschaut werden.</p>
+<h2>Warum wird der Mund im Schlaf trockener?</h2>
+<p>Speichel hält die Schleimhäute feucht, unterstützt das Schlucken und schützt Zähne und Mundraum. Während des Schlafs nimmt die Speichelproduktion natürlicherweise ab. Wenn der Mund dabei offensteht, verdunstet zusätzlich Feuchtigkeit.</p>
+<p>Deshalb können Menschen morgens mit trockenem Mund aufwachen, obwohl sie tagsüber kaum etwas davon merken.</p>
+<h2>Mundatmung und Schnarchen sind häufige Gründe</h2>
+<p>Eine verstopfte Nase kann dazu führen, dass du nachts automatisch durch den Mund atmest. Das passiert zum Beispiel bei Allergien, Erkältungen oder chronisch behinderter Nasenatmung. Auch Schnarchen geht häufig mit Mundatmung einher.</p>
+<p>Wenn du regelmässig laut schnarchst, Atempausen beobachtet wurden oder du trotz genügend Schlaf tagsüber stark müde bist, sollte auch eine schlafmedizinische Abklärung in Betracht gezogen werden.</p>
+<h2>Können Medikamente den Mund austrocknen?</h2>
+<p>Ja. Mundtrockenheit ist eine bekannte Nebenwirkung verschiedener Medikamente. Dazu gehören unter anderem manche Antidepressiva, Antihistaminika und entwässernde Medikamente.</p>
+<p>Setze ein verschriebenes Medikament deshalb aber nicht selbst ab. Wenn die Mundtrockenheit zeitlich mit einer neuen Medikation begonnen hat, kannst du dies mit Arzt oder Apotheke besprechen.</p>
+<h2>Liegt es einfach daran, dass ich zu wenig trinke?</h2>
+<p>Flüssigkeitsmangel kann Mundtrockenheit verstärken. Er ist aber nicht die einzige Erklärung.</p>
+<p>Wenn dein Mund trotz normalem Trinken dauerhaft trocken bleibt, sollte man nicht einfach immer mehr Wasser trinken und das Problem damit abhaken. Auch Erkrankungen wie Diabetes oder das Sjögren-Syndrom können mit anhaltender Mundtrockenheit verbunden sein.</p>
+<h2>Warum sollte dauerhafte Mundtrockenheit ernst genommen werden?</h2>
+<p>Speichel schützt nicht nur vor einem unangenehmen Trockenheitsgefühl. Bei dauerhaft zu wenig Speichel steigt unter anderem das Risiko für Probleme mit Zähnen und Zahnfleisch. Deshalb ist bei länger bestehender Mundtrockenheit auch die zahnmedizinische Perspektive wichtig.</p>
+<h2>Was kannst du selbst ausprobieren?</h2>
+<ul>
+<li>Trinke tagsüber ausreichend.</li>
+<li>Stelle nachts Wasser ans Bett, wenn dir das hilft.</li>
+<li>Achte darauf, ob deine Nase frei ist.</li>
+<li>Beobachte, ob du mit offenem Mund schläfst oder schnarchst.</li>
+<li>Alkohol, Rauchen und viel Koffein können die Trockenheit verstärken.</li>
+</ul>
+<p>Zuckerfreier Kaugummi kann tagsüber die Speichelproduktion anregen. Bei ausgeprägter Trockenheit gibt es zudem spezielle Produkte aus der Apotheke.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Wenn dein Mund über mehrere Wochen regelmässig trocken bleibt, wenn du Schwierigkeiten beim Essen oder Sprechen bekommst oder wenn zusätzlich trockene Augen, häufiges Wasserlassen oder Veränderungen im Mund auftreten, ist eine ärztliche Abklärung sinnvoll. Auch wiederkehrende Zahnprobleme trotz guter Mundhygiene gehören angesprochen.</p></div>
+<h2>Wie betrachtet die chinesische Medizin Mundtrockenheit?</h2>
+<p>In der chinesischen Medizin wird ein trockener Mund nicht isoliert betrachtet. Ein Therapeut fragt zum Beispiel, ob du nachts schwitzt, viel Durst hast, wie deine Verdauung funktioniert, ob Hitzegefühl besteht und wie du schläfst.</p>
+<p>Diese traditionelle Einordnung ersetzt nicht die Suche nach Medikamentennebenwirkungen, Atemproblemen, Diabetes oder anderen medizinischen Ursachen. Wenn solche Ursachen abgeklärt sind und weitere funktionelle Beschwerden bestehen, kann gemeinsam geprüft werden, ob eine ergänzende TCM-Behandlung, etwa <a href="/therapien/akupunktur/">Akupunktur</a>, für dein Gesamtbild sinnvoll ist.</p>
+<p>Du wachst fast jede Nacht mit trockenem Mund auf und bemerkst gleichzeitig Schlaf-, Verdauungs- oder andere Beschwerden? Schildere uns dein Muster. Wir sagen dir, welcher nächste Schritt sinnvoll ist, auch in welcher <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum wache ich morgens mit trockenem Mund auf?', a: 'Im Schlaf nimmt die Speichelproduktion natürlicherweise ab. Wenn du zusätzlich durch den Mund atmest oder schnarchst, verdunstet Feuchtigkeit und der Mund fühlt sich beim Aufwachen trocken an. Auch Medikamente können beteiligt sein.' },
+      { q: 'Welche Medikamente verursachen Mundtrockenheit?', a: 'Unter anderem manche Antidepressiva, Antihistaminika und entwässernde Medikamente. Setze ein verschriebenes Medikament nicht selbst ab, sondern besprich den zeitlichen Zusammenhang mit Arzt oder Apotheke.' },
+      { q: 'Wann sollte ich Mundtrockenheit abklären lassen?', a: 'Wenn der Mund über mehrere Wochen regelmässig trocken bleibt, Essen oder Sprechen erschwert wird oder zusätzlich trockene Augen, häufiges Wasserlassen oder Veränderungen im Mund auftreten. Auch wiederkehrende Zahnprobleme trotz guter Pflege gehören angesprochen.' },
+    ],
+    related: [
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafstörungen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen und Reflux', cat: 'Beschwerde' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── WELLE 3 (Seiten 25 bis 30)
+  {
+    slug: 'bitterer-geschmack-morgens',
+    symptom: 'ein bitterer Geschmack im Mund am Morgen',
+    title: 'Bitterer Geschmack morgens: Was kann dahinterstecken?',
+    metaDesc: 'Du wachst mit bitterem Geschmack im Mund auf? Speichel, Mundatmung, Zähne, Reflux und Medikamente kommen infrage. Erfahre, worauf du achten solltest.',
+    h1: 'Warum habe ich morgens einen bitteren Geschmack im Mund?',
+    category: 'Hals & Mund',
+    lead: 'Du wachst auf und im Mund liegt ein bitterer oder schaler Geschmack, der erst nach dem Zähneputzen oder Frühstück verschwindet. Dafür gibt es mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind und wann eine Abklärung sinnvoll ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Reflux und Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein bitterer Geschmack am Morgen hat selten eine einzige Ursache. Während des Schlafs wird weniger Speichel produziert, der Mund trocknet leichter aus und Geschmacksstoffe werden weniger gut weggespült. Auch Mundatmung, die Situation von Zähnen und Zahnfleisch, aufsteigende Magensäure und bestimmte Medikamente können den Geschmack am Morgen verändern.</p>
+<p>Ein gelegentlicher schaler Geschmack nach dem Aufwachen ist meistens harmlos. Wenn der bittere Geschmack fast jeden Morgen auftritt, tagsüber bleibt oder weitere Beschwerden dazukommen, lohnt sich ein genauerer Blick.</p>
+<h2>Warum verändert sich der Geschmack über Nacht?</h2>
+<p>Speichel spült den Mund laufend durch und hält das Milieu stabil. Nachts nimmt die Speichelproduktion natürlicherweise ab. Bleibt der Mund dabei offen oder atmest du durch den Mund, trocknen die Schleimhäute zusätzlich aus.</p>
+<p>In einem trockenen Mund verändern sich Belag, Bakterienmilieu und Geschmackswahrnehmung. Das allein kann reichen, damit sich der erste Eindruck am Morgen bitter oder abgestanden anfühlt. Wenn du häufig mit trockenem Mund aufwachst, findest du mehr dazu auf unserer Seite <a href="/koerpersignale/trockener-mund-nachts/">Trockener Mund nachts</a>.</p>
+<h2>Können Zähne und Zahnfleisch beteiligt sein?</h2>
+<p>Ja. Beläge, Zahnfleischentzündungen oder Probleme an einzelnen Zähnen können den Geschmack im Mund verändern, gerade nach mehreren Stunden ohne Trinken und Schlucken.</p>
+<p>Wenn der bittere Geschmack zusammen mit Mundgeruch, Zahnfleischbluten oder empfindlichen Stellen auftritt, ist die zahnmedizinische Kontrolle ein sinnvoller erster Schritt. Das ist unspektakulär, aber häufig zielführender als die Suche nach einer inneren Ursache.</p>
+<h2>Wann spricht das Muster für Reflux?</h2>
+<p>Beim Reflux steigt Mageninhalt in die Speiseröhre auf, manchmal bis in den Rachen. Das passiert im Liegen leichter als im Stehen. Deshalb bemerken manche Menschen einen bitteren oder sauren Geschmack besonders am Morgen.</p>
+<p>Wahrscheinlicher wird dieser Zusammenhang, wenn zusätzlich auftreten:</p>
+<ul>
+<li>Sodbrennen oder Brennen hinter dem Brustbein</li>
+<li>saures Aufstossen oder Hochkommen von Mageninhalt</li>
+<li>morgendliche Heiserkeit</li>
+<li>häufiges Räuspern oder ein Schleimgefühl im Hals</li>
+</ul>
+<p>Ein bitterer Geschmack allein beweist keinen Reflux. Zusammen mit solchen Zeichen wird das Muster aber deutlich klarer. Die ausführliche Einordnung findest du auf unserer Seite <a href="/beschwerden/sodbrennen/">Sodbrennen und Reflux</a>, das Räusper-Muster auf <a href="/koerpersignale/staendiger-raeusperzwang/">Ständiger Räusperzwang</a>.</p>
+<h2>Können Medikamente den Geschmack verändern?</h2>
+<p>Ja. Verschiedene Medikamente können als Nebenwirkung einen bitteren oder metallischen Geschmack verursachen oder die Geschmackswahrnehmung verändern. Dazu gehören unter anderem bestimmte Antibiotika und weitere Wirkstoffgruppen.</p>
+<p>Setze ein verschriebenes Medikament nicht selbst ab. Wenn der Geschmack zeitlich mit einer neuen Medikation begonnen hat, besprich den Zusammenhang mit Arzt oder Apotheke.</p>
+<h2>Bedeutet bitterer Geschmack ein Leberproblem?</h2>
+<p>Diese Verknüpfung liest man oft, sie ist so pauschal aber nicht haltbar. Ein bitterer Morgengeschmack ist kein zuverlässiges Zeichen für eine Lebererkrankung, und aus diesem einen Symptom lässt sich auch kein Muster der chinesischen Medizin ableiten.</p>
+<p>Wenn du dir wegen deiner Leber Sorgen machst, hilft eine ärztliche Untersuchung mit Laborwerten weiter, nicht die Interpretation eines einzelnen Geschmackseindrucks.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Tritt der Geschmack nur morgens auf oder auch tagsüber? Ist er eher bitter oder eher sauer? Wachst du mit trockenem Mund auf? Schnarchst du oder atmest du nachts durch den Mund? Gibt es Sodbrennen, Aufstossen oder Räusperzwang? Hat eine neue Medikation begonnen? Wann warst du zuletzt bei der Dentalhygiene?</p>
+<p>Diese Beobachtungen machen die Einordnung deutlich einfacher.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass einen bitteren Geschmack ärztlich oder zahnärztlich beurteilen, wenn er über Wochen fast täglich besteht, wenn Sodbrennen, Schluckbeschwerden oder Gewichtsverlust dazukommen oder wenn sich dein Geschmackssinn insgesamt deutlich verändert hat. Auch ein anhaltend veränderter Geschmack zusammen mit Veränderungen der Mundschleimhaut gehört angeschaut.</p></div>
+<h2>Wo kann TCM ergänzen?</h2>
+<p>Die chinesische Medizin behandelt nicht den Geschmack als isoliertes Zeichen und leitet aus ihm keine Diagnose ab.</p>
+<p>Wenn medizinisch und zahnmedizinisch keine behandlungsbedürftige Ursache gefunden wurde und gleichzeitig funktionelle Verdauungsbeschwerden, Refluxneigung oder Stressmuster bestehen, kann geprüft werden, ob eine ergänzende Behandlung, etwa <a href="/therapien/akupunktur/">Akupunktur</a>, zum Gesamtbild passt.</p>
+<p>Du wachst regelmässig mit bitterem Geschmack auf und bemerkst gleichzeitig Sodbrennen, Verdauungs- oder Schlafbeschwerden? Schildere uns dein Muster. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Ist ein bitterer Geschmack am Morgen ein Zeichen für eine Krankheit?', a: 'Meistens nicht. Weniger Speichel im Schlaf, ein trockener Mund und Mundatmung reichen oft als Erklärung. Besteht der Geschmack fast täglich oder kommen Sodbrennen, Schluckbeschwerden oder Mundveränderungen dazu, sollte er abgeklärt werden.' },
+      { q: 'Kommt bitterer Geschmack morgens vom Reflux?', a: 'Möglich, vor allem wenn zusätzlich Sodbrennen, saures Aufstossen, morgendliche Heiserkeit oder Räusperzwang bestehen. Der Geschmack allein beweist keinen Reflux, das Gesamtmuster ist entscheidend.' },
+      { q: 'Bedeutet bitterer Geschmack, dass mit der Leber etwas nicht stimmt?', a: 'Nein, so pauschal ist das nicht haltbar. Ein bitterer Morgengeschmack ist kein zuverlässiges Leberzeichen. Bei Sorgen um die Leber hilft eine ärztliche Untersuchung mit Laborwerten weiter.' },
+    ],
+    related: [
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen und Reflux', cat: 'Beschwerde' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+    ],
+  },
+
+  {
+    slug: 'schwere-beine-abends',
+    symptom: 'schwere, müde Beine am Abend',
+    title: 'Schwere Beine abends: Warum fühlen sie sich so müde an?',
+    metaDesc: 'Deine Beine fühlen sich abends schwer und müde an? Langes Sitzen oder Stehen, Wärme und wenig Bewegung spielen oft mit. Erfahre, wann du es abklären solltest.',
+    h1: 'Warum fühlen sich meine Beine abends so schwer an?',
+    category: 'Muskeln & Beine',
+    lead: 'Am Morgen ist alles normal, aber gegen Abend werden die Beine schwer, müde oder leicht geschwollen. Dieses Tagesmuster hat oft nachvollziehbare Gründe. Hier erfährst du, was dahinterstecken kann, was du selbst verändern kannst und welches Warnzeichen du kennen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schwere Beine einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Beine, die über den Tag zunehmend schwer werden, sprechen oft für ein Belastungs- und Rückflussmuster. Wer viele Stunden sitzt oder steht, bewegt die Beinmuskulatur wenig. Genau diese Muskulatur wirkt aber wie eine Pumpe, die das Blut aus den Beinen zurück Richtung Herz befördert.</p>
+<p>Fehlt diese Pumpbewegung, kann sich das Blut in den Beinvenen stauen. Die Beine fühlen sich dann schwer, gespannt oder müde an, manchmal schwellen Knöchel oder Unterschenkel gegen Abend leicht an. Wärme verstärkt das Gefühl bei vielen Menschen zusätzlich.</p>
+<h2>Warum werden die Beine gerade abends schwer?</h2>
+<p>Das Muster folgt dem Tagesablauf. Über viele Stunden wirkt die Schwerkraft auf das Blut in den Beinen. Bei wenig Bewegung sammelt sich die Belastung an und ist am Abend am deutlichsten spürbar. Über Nacht, mit hochgelagerten Beinen, normalisiert sich das Gefühl meist wieder.</p>
+<p>Deshalb ist die Frage nach dem Tagesverlauf so aufschlussreich: Beschwerden, die morgens fehlen und abends zunehmen, haben ein anderes Profil als Schmerzen, die unabhängig von der Tageszeit bestehen.</p>
+<h2>Sitzen und Stehen sind beide anstrengend für die Venen</h2>
+<p>Das klingt widersprüchlich, ist es aber nicht. Beim langen Sitzen ist die Muskelpumpe kaum aktiv und die Beine sind abgewinkelt. Beim langen Stehen arbeitet die Muskulatur zwar, aber statisch, ohne die rhythmische Bewegung, die den Rückfluss unterstützt.</p>
+<p>In beiden Fällen hilft dasselbe: regelmässige Bewegung. Schon Gehen im Zimmer, Wippen auf den Zehenspitzen oder ein kurzer Spaziergang aktivieren die Muskelpumpe spürbar.</p>
+<h2>Was kannst du selbst tun?</h2>
+<ul>
+<li>Baue Bewegungspausen ein, wenn du lange sitzt oder stehst.</li>
+<li>Aktiviere die Wadenmuskulatur, zum Beispiel durch Zehenstände oder Fusskreisen.</li>
+<li>Lagere die Beine abends zeitweise hoch.</li>
+<li>Kühle Duschen der Unterschenkel empfinden viele als angenehm.</li>
+<li>Achte auf Bewegung im Alltag insgesamt, nicht nur auf einzelne Übungen.</li>
+</ul>
+<p>Wenn die Schwere trotz solcher Massnahmen regelmässig auftritt, deutlich zunimmt oder mit sichtbaren Venenveränderungen einhergeht, lohnt sich eine ärztliche Beurteilung der Venen. Das ist keine Notfallabklärung, aber eine sinnvolle Einordnung.</p>
+<h2>Was kannst du beobachten?</h2>
+<p>Sind beide Beine betroffen oder nur eines? Schwellen die Knöchel gegen Abend an? Verschwindet das Gefühl über Nacht? Wird es an warmen Tagen schlimmer? Wird es besser, wenn du gehst? Gibt es sichtbare Krampfadern? Kommen nächtliche Wadenkrämpfe dazu? Für dieses Muster haben wir eine eigene Seite: <a href="/koerpersignale/wadenkraempfe-nachts/">Wadenkrämpfe nachts</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort ärztlich abklären</div><p>Ein einzelnes Bein, das plötzlich anschwillt, schmerzt, sich warm anfühlt oder sich verfärbt, ist ein anderes Muster als die beidseitige Abendschwere und muss rasch medizinisch beurteilt werden. Dahinter kann eine Venenthrombose stecken. Kommen Atemnot oder Brustschmerzen dazu, gilt in der Schweiz die Notfallnummer 144.</p></div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Zuerst gehört das Gefässthema geklärt, besonders bei einseitigen oder neu veränderten Beschwerden. TCM ist hier nicht der erste diagnostische Schritt.</p>
+<p>Wenn medizinisch keine behandlungsbedürftige Gefässerkrankung vorliegt und die Schwere vor allem mit Belastung, wenig Bewegung und muskulärer Ermüdung zusammenhängt, kann eine ergänzende Behandlung geprüft werden. Je nach Befund kommen zum Beispiel <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a> oder aktivierende <a href="/therapien/physiotherapie/">Physiotherapie</a> infrage.</p>
+<p>Deine Beine sind fast jeden Abend schwer und du möchtest wissen, was dagegen hilft? Schildere uns dein Muster. Wir helfen dir einzuschätzen, welcher nächste Schritt und welche <a href="/standorte/">Praxis</a> passen.</p>`,
+    faqs: [
+      { q: 'Warum sind meine Beine abends schwer, aber morgens nicht?', a: 'Über den Tag wirkt die Schwerkraft auf das Blut in den Beinvenen. Bei langem Sitzen oder Stehen fehlt die Muskelpumpe, das Blut staut sich leichter und die Beine fühlen sich abends schwer an. Über Nacht normalisiert sich das meist wieder.' },
+      { q: 'Sind schwere Beine am Abend gefährlich?', a: 'Die beidseitige, langsam über den Tag zunehmende Schwere ist meistens ein Belastungsmuster. Ein einzelnes Bein, das plötzlich anschwillt, schmerzt, warm oder verfärbt ist, muss dagegen rasch abgeklärt werden, bei Atemnot oder Brustschmerz als Notfall.' },
+      { q: 'Was hilft gegen schwere Beine am Abend?', a: 'Regelmässige Bewegungspausen, aktive Wadenmuskulatur, zeitweises Hochlagern und kühle Duschen der Unterschenkel. Wenn die Beschwerden trotzdem regelmässig auftreten oder Venenveränderungen sichtbar sind, lohnt sich eine ärztliche Venenbeurteilung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+      { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
+      { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'brennende-fuesse-nachts',
+    symptom: 'brennende Füsse in der Nacht',
+    title: 'Brennende Füsse nachts: Was kann dahinterstecken?',
+    metaDesc: 'Deine Füsse oder Fusssohlen brennen vor allem nachts? Nerven, Stoffwechsel und andere Ursachen kommen infrage. Erfahre, wann eine Abklärung wichtig ist.',
+    h1: 'Warum brennen meine Füsse besonders nachts?',
+    category: 'Muskeln & Beine',
+    lead: 'Tagsüber geht es, aber abends im Bett beginnen die Fusssohlen zu brennen. Dieses Muster hat mehrere mögliche Erklärungen, von gereizten Nerven bis zu Stoffwechselfaktoren. Hier erfährst du, welche Unterschiede wichtig sind und wann du das Symptom abklären lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Brennende Füsse einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Brennende Füsse entstehen häufig, wenn feine Nerven in Füssen und Unterschenkeln gereizt sind oder Signale anders verarbeiten. Nachts fällt das besonders auf, weil Ablenkung fehlt, die Füsse warm zugedeckt sind und die Wahrnehmung in Ruhe empfindlicher wird.</p>
+<p>Mögliche Zusammenhänge sind eine Reizung oder Erkrankung der peripheren Nerven, ein Diabetes, Vitaminmangel, bestimmte Medikamente, örtliche Nervenengpässe oder auch Hautprobleme. Brennende Füsse sind aber nicht automatisch eine <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>. Das Muster und die Begleitzeichen entscheiden.</p>
+<h2>Warum gerade nachts?</h2>
+<p>Mehrere Faktoren kommen zusammen. In Ruhe nehmen wir Körpersignale stärker wahr, die tagsüber untergehen. Unter der Bettdecke werden die Füsse wärmer, was ein Brennen verstärken kann. Und bei manchen Nervenbeschwerden sind die Symptome abends und nachts tatsächlich ausgeprägter als tagsüber.</p>
+<p>Ein nächtliches Maximum allein verrät die Ursache also noch nicht. Es ist aber eine wichtige Beobachtung für die Abklärung.</p>
+<h2>Welche Unterschiede sind wichtig?</h2>
+<p>Für die Einordnung zählt weniger das Wort Brennen als das genaue Muster:</p>
+<ul>
+<li>Brennt ein Fuss oder brennen beide?</li>
+<li>Brennen eher die Zehen, die ganze Sohle oder auch die Unterschenkel?</li>
+<li>Fühlt sich die Haut tatsächlich heiss an oder brennt es nur subjektiv?</li>
+<li>Kommt Kribbeln dazu?</li>
+<li>Gibt es Taubheit oder ein pelziges Gefühl?</li>
+<li>Breiten sich die Beschwerden langsam aus, zum Beispiel von den Zehen aufwärts?</li>
+</ul>
+<p>Beidseitiges, strumpfförmiges Brennen mit Kribbeln oder Taubheit passt eher zu einer allgemeinen Nervenbeteiligung. Ein einseitiges, örtlich begrenztes Brennen spricht eher für einen lokalen Engpass oder eine örtliche Ursache.</p>
+<h2>Welche Ursachen kommen infrage?</h2>
+<p>Zu den bekannten Zusammenhängen gehören ein Diabetes und andere Stoffwechselerkrankungen, ein Mangel an bestimmten Vitaminen, regelmässiger Alkoholkonsum, Nebenwirkungen mancher Medikamente sowie örtliche Nervenkompressionen am Fuss. Auch Hautprobleme wie Pilzinfektionen können ein Brennen verursachen, dann meist mit sichtbaren Hautveränderungen.</p>
+<p>Manchmal findet sich trotz sorgfältiger Abklärung keine eindeutige Ursache. Auch dann lässt sich mit dem Symptom arbeiten, aber die Abklärung gehört an den Anfang.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Seit wann besteht das Brennen? Ist es jede Nacht da oder nur manchmal? Hilft es, die Füsse aus der Decke zu strecken oder kurz aufzustehen? Gibt es tagsüber Beschwerden beim Gehen? Sind die Füsse gleichzeitig taub? Für verwandte Muster haben wir eigene Seiten: <a href="/koerpersignale/bein-wird-beim-sitzen-taub/">Bein wird beim Sitzen taub</a> und <a href="/koerpersignale/einzelne-finger-taub/">Einzelne Finger taub</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Brennende Füsse, die über Wochen anhalten, zunehmen oder sich ausbreiten, sollten medizinisch abgeklärt werden. Besondere Vorsicht gilt bei bekanntem Diabetes, bei vermindertem Gefühl in den Füssen sowie bei Wunden, Rötungen oder Entzündungszeichen. In diesen Fällen gehören die Füsse zeitnah in ärztliche Kontrolle, weil Verletzungen unbemerkt bleiben und schlecht heilen können.</p></div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Am Anfang steht die medizinische Abklärung, besonders die Frage nach Nervenbeteiligung und Stoffwechselursachen. TCM ersetzt diese Diagnostik nicht.</p>
+<p>Ist die Ursache geklärt oder eine gefährliche Erkrankung ausgeschlossen, kann ergänzend geprüft werden, ob eine Behandlung wie <a href="/therapien/akupunktur/">Akupunktur</a> zum Gesamtbild passt. Bei diagnostizierter Nervenbeteiligung findest du die ausführliche Einordnung auf unserer Seite <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
+<p>Deine Füsse brennen seit Wochen fast jede Nacht und du möchtest wissen, was sinnvoll ist? Schildere uns dein Muster. Wir helfen dir beim nächsten Schritt und bei der Wahl der passenden <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Sind brennende Füsse nachts immer eine Polyneuropathie?', a: 'Nein. Eine Nervenbeteiligung ist eine mögliche Erklärung, aber nicht die einzige. Auch Stoffwechselfaktoren, Medikamente, örtliche Nervenengpässe oder Hautprobleme kommen infrage. Das genaue Muster und die Begleitzeichen entscheiden.' },
+      { q: 'Warum brennen die Füsse vor allem im Bett?', a: 'In Ruhe fällt die Wahrnehmung stärker auf die Füsse, unter der Decke werden sie wärmer und manche Nervenbeschwerden sind nachts tatsächlich ausgeprägter. Das nächtliche Maximum ist eine wichtige Beobachtung für die Abklärung.' },
+      { q: 'Wann muss ich mit brennenden Füssen zum Arzt?', a: 'Wenn das Brennen über Wochen anhält, zunimmt oder sich ausbreitet. Besonders wichtig ist die Abklärung bei Diabetes, vermindertem Gefühl in den Füssen oder wenn Wunden, Rötungen oder Entzündungszeichen dazukommen.' },
+    ],
+    related: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/ein-fuss-kaelter-als-der-andere/', label: 'Ein Fuss kälter als der andere', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'ein-fuss-kaelter-als-der-andere',
+    symptom: 'ein deutlich kälterer Fuss im Seitenvergleich',
+    title: 'Ein Fuss ist kälter als der andere: mögliche Ursachen',
+    metaDesc: 'Ein Fuss fühlt sich deutlich kälter an als der andere? Erfahre, wann das harmlos sein kann und bei welchen Zeichen die Durchblutung rasch geprüft werden sollte.',
+    h1: 'Warum ist ein Fuss deutlich kälter als der andere?',
+    category: 'Muskeln & Beine',
+    lead: 'Beim Vergleich fällt dir auf, dass sich ein Fuss deutlich kälter anfühlt als der andere. Oft steckt etwas Harmloses dahinter, aber ein anhaltender klarer Seitenunterschied verdient eine genauere Einordnung. Hier erfährst du, worauf es ankommt und welche Warnzeichen wichtig sind.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kältegefühl im Fuss einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Wenn sich beide Füsse unterschiedlich warm anfühlen, kann das vorübergehend an Position, Umgebung oder Wahrnehmung liegen. Bleibt ein Fuss jedoch dauerhaft deutlich kälter oder ist der Unterschied neu aufgetreten, sollte auch an Durchblutung und Nerven gedacht werden.</p>
+<p>Eine arterielle Durchblutungsstörung kann unter anderem dazu führen, dass ein Unterschenkel oder Fuss im Vergleich zur Gegenseite kühler ist. Ein plötzlich kalter, schmerzhafter oder blasser Fuss ist dagegen ein Warnzeichen.</p>
+<h2>Muss ein Temperaturunterschied immer krankhaft sein?</h2>
+<p>Nein. Unsere beiden Körperhälften fühlen sich nicht zu jeder Minute vollkommen gleich an. Vielleicht hast du ein Bein anders gelagert, sitzt mit übergeschlagenen Beinen oder ein Fuss war stärker der Kälte ausgesetzt.</p>
+<p>Wenn der Unterschied nach Bewegung oder Positionswechsel rasch verschwindet und keine anderen Beschwerden bestehen, ist das zunächst beruhigend. Wiederholt sich das Muster jedoch deutlich auf derselben Seite, lohnt sich eine genauere Einordnung.</p>
+<h2>Kann die Durchblutung dahinterstecken?</h2>
+<p>Ja. Bei einer peripheren arteriellen Verschlusskrankheit kann ein Fuss oder Unterschenkel kälter sein als die Gegenseite. Weitere mögliche Zeichen sind Schmerzen beim Gehen, Taubheit oder Schwäche, Hautveränderungen und schlecht heilende Wunden.</p>
+<p>Nicht jeder kalte Fuss bedeutet eine arterielle Erkrankung. Aber ein anhaltender klarer Seitenunterschied sollte nicht einfach als "schlechter Kreislauf" abgetan werden. Mehr zum Thema findest du auf unserer Seite <a href="/beschwerden/durchblutungsstoerungen/">Durchblutungsstörungen</a>.</p>
+<h2>Können auch Nerven ein Kältegefühl auslösen?</h2>
+<p>Ja. Manchmal fühlt sich ein Fuss kalt an, obwohl seine tatsächliche Hauttemperatur kaum verändert ist. Störungen der Nerven können Temperaturempfindungen verändern.</p>
+<p>Interessant ist deshalb der Vergleich: Fühlt sich der Fuss nur für dich kalt an oder ist er auch beim Berühren objektiv deutlich kühler als die andere Seite? Wenn gleichzeitig Kribbeln, Taubheit oder Brennen bestehen, wird die neurologische Einordnung wichtiger. Verwandte Muster erklären wir auf <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a> und <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
+<h2>Ist das dasselbe wie Raynaud?</h2>
+<p>Nicht unbedingt. Beim <a href="/beschwerden/raynaud-syndrom/">Raynaud-Syndrom</a> treten Durchblutungsreaktionen typischerweise an Fingern oder Zehen anfallsartig auf und können mit Farbveränderungen verbunden sein.</p>
+<p>Ein dauerhaft einseitig kalter Fuss ist deshalb nicht automatisch Raynaud. Die genaue Art des Musters ist entscheidend. Das einseitige Muster an der Hand beschreiben wir auf <a href="/koerpersignale/kalte-haende-einseitig/">Kalte Hände einseitig</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann ist ein kalter Fuss ein Notfall?</div><p>Ein plötzlich deutlich kälter werdender Fuss kann in seltenen Fällen auf eine akute Durchblutungsstörung hinweisen. Besonders ernst sind Kombinationen aus plötzlich starken Schmerzen, Blässe, deutlicher Kälte, Kribbeln oder Taubheit und neuer Schwäche oder Bewegungseinschränkung. Eine akute Extremitätenischämie ist ein medizinischer Notfall und muss sofort behandelt werden. In der Schweiz gilt bei einem medizinischen Notfall die Nummer 144.</p></div>
+<h2>Was kannst du selbst vergleichen?</h2>
+<p>Fühlen sich beide Füsse auch beim Berühren unterschiedlich warm an? Verändert Bewegung die Temperatur? Gibt es Farbunterschiede? Treten Schmerzen beim Gehen auf? Gibt es Taubheit oder Brennen? Sind Wunden vorhanden, die schlecht heilen? Ist das Symptom plötzlich entstanden oder schon seit Jahren ähnlich?</p>
+<p>Diese Beobachtungen helfen bei der späteren Untersuchung.</p>
+<h2>Wann kann TCM sinnvoll sein?</h2>
+<p>Bei einem neu aufgetretenen einseitig kalten Fuss sollte zuerst ausgeschlossen werden, dass ein Gefässproblem vorliegt. TCM ist hier nicht die primäre Diagnostik.</p>
+<p>Wenn medizinisch keine gefährliche Durchblutungsstörung besteht und beispielsweise funktionelle Temperaturbeschwerden oder andere begleitende Symptome vorhanden sind, kann anschliessend geprüft werden, ob eine ergänzende TCM-Behandlung wie <a href="/therapien/akupunktur/">Akupunktur</a> sinnvoll ist.</p>
+<p>Dein Fuss ist schon länger kälter als die andere Seite und eine akute Durchblutungsstörung wurde ausgeschlossen? Schildere uns das Muster. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Ist es normal, dass ein Fuss kälter ist als der andere?', a: 'Vorübergehend ja, zum Beispiel durch Lagerung, übergeschlagene Beine oder Kälte auf einer Seite. Verschwindet der Unterschied nach Bewegung rasch, ist das beruhigend. Ein dauerhafter klarer Seitenunterschied sollte dagegen eingeordnet werden.' },
+      { q: 'Wann ist ein einseitig kalter Fuss gefährlich?', a: 'Wenn er plötzlich deutlich kälter wird und starke Schmerzen, Blässe, Verfärbung, Taubheit oder neue Schwäche dazukommen. Das kann eine akute Durchblutungsstörung sein und ist ein medizinischer Notfall, in der Schweiz gilt die Nummer 144.' },
+      { q: 'Ist ein kalter Fuss ein Zeichen für Raynaud?', a: 'Nicht automatisch. Raynaud tritt typischerweise anfallsartig an Fingern oder Zehen auf, oft mit Farbveränderungen. Ein dauerhaft einseitig kalter Fuss hat ein anderes Muster und gehört anders eingeordnet.' },
+    ],
+    related: [
+      { href: '/beschwerden/raynaud-syndrom/', label: 'Raynaud-Syndrom', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Kalte Hände einseitig', cat: 'Körpersignal' },
+    ],
+  },
+
+  {
+    slug: 'rueckenschmerzen-beim-langen-stehen',
+    symptom: 'Rückenschmerzen beim langen Stehen',
+    title: 'Rückenschmerzen beim langen Stehen: mögliche Gründe',
+    metaDesc: 'Dein Rücken schmerzt vor allem, wenn du lange stehst? Erfahre, welche Belastungsmuster dahinterstecken können und wann du die Beschwerden abklären solltest.',
+    h1: 'Warum bekomme ich Rückenschmerzen, wenn ich lange stehe?',
+    category: 'Muskeln & Beine',
+    lead: 'Nach einer Weile im Stehen meldet sich der Rücken, beim Gehen oder Sitzen wird es wieder besser. Dieses Belastungsmuster ist häufig und sagt etwas über die Ursache aus. Hier erfährst du, warum Stehen den Rücken fordert, was du beobachten kannst und wann eine Abklärung wichtig ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Belastungsabhängige Rückenschmerzen anschauen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Langes Stehen kann den Rücken genauso fordern wie langes Sitzen. Wenn die Beschwerden erst nach einiger Zeit auftreten und sich durch Gehen, Hinsetzen oder Positionswechsel verändern, spricht das oft dafür, dass Belastung und Bewegung eine wichtige Rolle spielen.</p>
+<p>Das bedeutet trotzdem nicht automatisch, dass lediglich ein "schwacher Rücken" dahintersteckt. Rückenschmerzen können viele Ursachen haben und sollten besonders bei zusätzlichen neurologischen Beschwerden genauer eingeordnet werden.</p>
+<h2>Warum kann Stehen anstrengend für den Rücken sein?</h2>
+<p>Stehen wirkt von aussen ruhig. Für den Körper ist es aber dauerhafte Haltearbeit. Rumpf-, Rücken-, Hüft- und Beinmuskulatur müssen ständig kleine Korrekturen machen, damit wir aufrecht bleiben.</p>
+<p>Wer lange fast unbewegt steht, verteilt die Belastung weniger. Manche Menschen hängen mehr auf einem Bein, schieben das Becken nach vorne oder stehen dauerhaft im Hohlkreuz. Dann können einzelne Bereiche schneller ermüden oder verspannen.</p>
+<h2>Warum wird es beim Gehen manchmal besser?</h2>
+<p>Stehen und Gehen sind biomechanisch nicht dasselbe. Beim Gehen verändert sich die Belastung ständig. Muskeln wechseln zwischen Aktivität und Entlastung, Hüfte und Becken bewegen sich und die Position der Wirbelsäule variiert.</p>
+<p>Deshalb kann jemand zwanzig Minuten gehen, aber nach zehn Minuten statischem Stehen bereits Rückenschmerzen bekommen. Diese Information ist diagnostisch durchaus interessant.</p>
+<h2>Liegt es an der Haltung?</h2>
+<p>Haltung kann beteiligt sein, aber es gibt nicht die eine "perfekte" Haltung, die den ganzen Tag gehalten werden muss. Oft ist Variation wichtiger.</p>
+<p>Auch eine theoretisch gute Position wird irgendwann unangenehm, wenn du stundenlang unbewegt darin bleibst. Deshalb lohnt sich nicht nur die Frage "Wie stehe ich?", sondern auch "Wie lange stehe ich ohne Bewegung?"</p>
+<h2>Können Bandscheiben oder Nerven beteiligt sein?</h2>
+<p>Ja, besonders wenn Schmerzen zusätzlich ins Gesäss oder Bein ausstrahlen oder Taubheit, Kribbeln oder Schwäche auftreten.</p>
+<p>Bei einem Bandscheibenvorfall können Schmerzen je nach Lage durch bestimmte Bewegungen und auch Husten oder Niesen stärker werden. Das ist ein anderes Muster als rein belastungsabhängige Schmerzen beim Stehen. Dazu findest du auch unsere Seite <a href="/koerpersignale/rueckenschmerzen-beim-husten/">Warum schmerzt mein Rücken beim Husten oder Niesen?</a></p>
+<h2>Was kannst du im Alltag beobachten?</h2>
+<p>Nach wie vielen Minuten beginnt der Schmerz? Sitzt er mittig oder eher auf einer Seite? Wird er durch Gehen besser? Wird er durch Hinsetzen besser? Hilft es, das Gewicht von einem Bein auf das andere zu verlagern? Zieht der Schmerz ins Bein? Gibt es Taubheit oder Kribbeln? Ist der Rücken morgens ebenfalls schmerzhaft?</p>
+<p>Je präziser du das Muster beschreiben kannst, desto gezielter lässt es sich einordnen.</p>
+<h2>Was kannst du zunächst verändern?</h2>
+<p>Wechsle häufiger zwischen Stehen, Gehen und Sitzen. Wenn dein Beruf langes Stehen verlangt, können kleine Bewegungen zwischendurch einen deutlichen Unterschied machen.</p>
+<p>Auch gezieltes Training von Rumpf, Hüfte und Beinen kann bei wiederkehrenden mechanischen Rückenschmerzen sinnvoll sein. Welche Übungen passen, hängt aber von deinem Befund ab. Bei anhaltenden Beschwerden ist <a href="/therapien/physiotherapie/">Physiotherapie</a> häufig eine sinnvolle Möglichkeit, Bewegung und Belastung individuell zu beurteilen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann solltest du Rückenschmerzen abklären lassen?</div><p>Rückenschmerzen, die über längere Zeit bestehen, zunehmend stärker werden oder mit ausstrahlenden neurologischen Beschwerden auftreten, gehören untersucht. Sofort medizinisch abgeklärt werden müssen Rückenschmerzen zusammen mit Taubheit im Genital- oder Analbereich, neuen Problemen mit Blase oder Darm oder deutlicher Schwäche beziehungsweise Taubheit in beiden Beinen. Diese Zeichen können auf eine seltene, aber ernste Nervenkompression hinweisen. Auch Fieber, deutliches Krankheitsgefühl, schweres Trauma oder unerklärlicher Gewichtsverlust verändern die Einordnung.</p></div>
+<h2>Wie kann TCM begleiten?</h2>
+<p>Wenn akute strukturelle oder neurologische Ursachen ausgeschlossen sind und Muskelspannung oder wiederkehrende funktionelle Rückenschmerzen im Vordergrund stehen, kann TCM ergänzend eingesetzt werden.</p>
+<p>Dabei werden beispielsweise <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a> genutzt. Bei Belastungs- und Bewegungsproblemen kann die Kombination mit Physiotherapie besonders sinnvoll sein. Die ausführliche Behandlungsebene findest du auf unserer Seite <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a>.</p>
+<p>Dein Rücken schmerzt vor allem beim Stehen, aber du weisst nicht, welche Behandlung sinnvoll ist? Beschreibe uns kurz dein Belastungsmuster. Wir helfen dir, die passende <a href="/standorte/">Praxis</a> und Therapie zu finden.</p>`,
+    faqs: [
+      { q: 'Warum schmerzt der Rücken beim Stehen, aber nicht beim Gehen?', a: 'Stehen ist statische Haltearbeit, beim Gehen wechselt die Belastung ständig zwischen Muskelaktivität und Entlastung. Deshalb kann langes unbewegtes Stehen schneller Beschwerden machen als eine deutlich längere Gehstrecke.' },
+      { q: 'Ist eine schlechte Haltung schuld an Rückenschmerzen beim Stehen?', a: 'Haltung kann beteiligt sein, aber es gibt nicht die eine perfekte Haltung für den ganzen Tag. Wichtiger ist Variation: Auch eine gute Position wird unangenehm, wenn du stundenlang unbewegt darin bleibst.' },
+      { q: 'Wann sind Rückenschmerzen beim Stehen ein Warnzeichen?', a: 'Bei ausstrahlenden Schmerzen mit Taubheit, Kribbeln oder Schwäche gehört der Rücken untersucht. Sofort abklären lassen musst du Taubheit im Genital- oder Analbereich, neue Blasen- oder Darmprobleme oder deutliche Schwäche in beiden Beinen.' },
+    ],
+    related: [
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
+      { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
+      { href: '/therapien/tuina/', label: 'Tuina Massage', cat: 'Therapie' },
+    ],
+  },
+
+  {
+    slug: 'druck-im-kopf-ohne-kopfschmerzen',
+    symptom: 'ein Druckgefühl im Kopf ohne richtigen Kopfschmerz',
+    title: 'Druck im Kopf ohne Kopfschmerzen: mögliche Ursachen',
+    metaDesc: 'Druck im Kopf, aber kein richtiger Kopfschmerz? Nebenhöhlen, Muskelspannung und andere Faktoren können eine Rolle spielen. Erfahre, wann du es abklären solltest.',
+    h1: 'Warum habe ich Druck im Kopf, obwohl ich keine Kopfschmerzen habe?',
+    category: 'Kopf & Sinne',
+    lead: 'Es tut nicht richtig weh, aber im Kopf sitzt ein Gefühl von Druck, Enge oder Spannung. Dieses Signal lässt sich schwer beschreiben und hat mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind, was du beobachten kannst und welche Warnzeichen wichtig sind.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kopfdruck und Verspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN3,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Druckgefühl im Kopf lässt sich nicht immer eindeutig als Kopfschmerz beschreiben. Manche Menschen spüren eher Enge, Spannung oder ein Gefühl von "zu viel Druck", ohne dass es richtig weh tut.</p>
+<p>Dafür gibt es keine einzelne typische Ursache. Je nach Ort und Begleitsymptomen können zum Beispiel Nebenhöhlen, Spannung im Kopf-, Nacken- oder Kieferbereich oder andere Faktoren eine Rolle spielen. Neu auftretender oder anhaltender Kopfdruck sollte deshalb anhand des Gesamtbildes beurteilt werden.</p>
+<h2>Wo genau spürst du den Druck?</h2>
+<p>"Im Kopf" kann sehr Unterschiedliches bedeuten. Druck über der Stirn oder um Nase und Augen passt beispielsweise eher zu den Nebenhöhlen, besonders wenn gleichzeitig Schnupfen oder eine verstopfte Nase bestehen. Entzündete oder angeschwollene Schleimhäute können dort ein Spannungs- oder Druckgefühl verursachen.</p>
+<p>Ein bandförmiges Druckgefühl an Stirn oder Schläfen kann dagegen einem <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerz</a> ähneln, auch wenn du es subjektiv eher als Druck als als Schmerz wahrnimmst.</p>
+<h2>Können Nacken und Kiefer einen Druck im Kopf auslösen?</h2>
+<p>Sie können das Empfinden beeinflussen. Viele Menschen bemerken gleichzeitig einen steifen Nacken, hochgezogene Schultern oder einen angespannten Kiefer. Gerade langes Arbeiten am Bildschirm, wenig Bewegung und Zähnepressen können zusammen mit Kopf- oder Gesichtsspannung auftreten.</p>
+<p>Das bedeutet nicht, dass jeder Kopfdruck vom Nacken kommt. Aber Begleitsymptome können helfen, unterschiedliche Muster auseinanderzuhalten. Mehr zum Nackenmuster findest du auf unserer Seite <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>.</p>
+<h2>Ist Kopfdruck ein Zeichen für hohen Blutdruck?</h2>
+<p>Nicht zuverlässig. Hoher Blutdruck verursacht bei den meisten Menschen überhaupt keine spürbaren Symptome. Deshalb kann man anhand eines Druckgefühls im Kopf weder erkennen noch ausschliessen, ob der Blutdruck erhöht ist.</p>
+<p>Wenn dich dein Blutdruck interessiert, hilft eine korrekte Messung wesentlich mehr als die Interpretation eines einzelnen Körpersignals.</p>
+<h2>Können die Nebenhöhlen beteiligt sein, auch ohne starke Schmerzen?</h2>
+<p>Ja. Nebenhöhlendruck kann sich als Enge oder Druck an Stirn, Wangen, Nasenwurzel oder hinter den Augen bemerkbar machen. Erkältungen, Allergien und Nebenhöhlenentzündungen gehören zu möglichen Ursachen. Die ausführliche Einordnung findest du auf unserer Seite <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
+<p>Wenn gleichzeitig eine verstopfte Nase, veränderter Schleim oder Druck beim Bücken besteht, wird dieser Zusammenhang wahrscheinlicher.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Wo genau sitzt der Druck? Ist er einseitig oder beidseitig? Gibt es eine verstopfte Nase? Wird er beim Bücken stärker? Sind Nacken oder Kiefer gleichzeitig angespannt? Tritt das Gefühl nach langer Bildschirmarbeit auf? Gibt es <a href="/beschwerden/schwindel/">Schwindel</a>? Hat sich dein Sehen verändert? Ist das Gefühl neu oder kennst du es seit Jahren? Dauert es Minuten, Stunden oder fast den ganzen Tag?</p>
+<p>Diese Details sind oft hilfreicher als das Wort "Druck" allein.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann solltest du Kopfdruck ärztlich abklären lassen?</div><p>Ein neues, ungewöhnliches oder zunehmend stärkeres Kopfgefühl sollte beurteilt werden, besonders wenn du keine Erklärung dafür hast. Sofortige medizinische Abklärung ist wichtig, wenn plötzlich sehr starke Kopfbeschwerden auftreten oder neurologische Zeichen hinzukommen, etwa neue Sprachstörungen, Lähmungen, ausgeprägte Taubheit, Bewusstseinsveränderungen oder deutliche neue Sehstörungen. Auch Fieber mit ausgeprägter Nackensteife oder Beschwerden nach einer Kopfverletzung gehören medizinisch beurteilt.</p></div>
+<h2>Was kannst du selbst tun?</h2>
+<p>Wenn keine Warnzeichen bestehen, kannst du zunächst auf das Muster achten. Regelmässige Pausen bei Bildschirmarbeit, Bewegung und ausreichender Schlaf können besonders dann sinnvoll sein, wenn der Druck mit Nacken- oder Augenbelastung zusammenhängt.</p>
+<p>Bei verstopfter Nase kann eine medizinische oder HNO-Einordnung der Nasen- und Nebenhöhlenbeschwerden hilfreicher sein als eine reine Kopfschmerzbehandlung.</p>
+<h2>Welche Rolle kann die TCM spielen?</h2>
+<p>TCM sollte bei neuem Kopfdruck nicht dazu dienen, eine notwendige medizinische Abklärung zu umgehen.</p>
+<p>Sind ernstere Ursachen ausgeschlossen und treten beispielsweise wiederkehrende Spannung, Nackenbeschwerden, Stress oder bekannte <a href="/beschwerden/kopfschmerzen/">Kopfschmerzmuster</a> auf, kann ergänzend geprüft werden, ob <a href="/therapien/akupunktur/">Akupunktur</a> oder eine andere TCM-Methode zur Situation passt.</p>
+<p>Dabei wird nicht allein das Gefühl "Druck" behandelt. Entscheidend ist das gesamte Muster. Du hast wiederkehrenden Kopfdruck zusammen mit Nackenverspannung, Stress oder anderen bekannten Beschwerden? Schildere uns kurz, wann und wo du den Druck spürst. Wir helfen dir beim passenden nächsten Schritt, auch bei der Wahl der richtigen <a href="/standorte/">Praxis</a>.</p>`,
+    faqs: [
+      { q: 'Was bedeutet Druck im Kopf ohne Kopfschmerzen?', a: 'Ein Druck- oder Engegefühl im Kopf kann verschiedene Ursachen haben, von Nebenhöhlen über Nacken- und Kieferspannung bis zu Stress oder Bildschirmbelastung. Ort, Begleitsymptome und Verlauf sind für die Einordnung wichtiger als das Wort Druck allein.' },
+      { q: 'Ist Druck im Kopf ein Zeichen für hohen Blutdruck?', a: 'Nicht zuverlässig. Hoher Blutdruck verursacht bei den meisten Menschen keine spürbaren Symptome. Ob dein Blutdruck erhöht ist, zeigt nur eine korrekte Messung, nicht die Interpretation eines Druckgefühls.' },
+      { q: 'Wann muss ich mit Kopfdruck sofort zum Arzt?', a: 'Bei plötzlich sehr starken Kopfbeschwerden oder wenn neurologische Zeichen dazukommen, etwa Sprachstörungen, Lähmungen, ausgeprägte Taubheit, Bewusstseinsveränderungen oder neue Sehstörungen. Auch Fieber mit deutlicher Nackensteife oder eine kürzliche Kopfverletzung gehören sofort beurteilt.' },
+    ],
+    related: [
+      { href: '/beschwerden/kopfschmerzen/', label: 'Kopfschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
     ],
   },
 ];
