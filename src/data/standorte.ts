@@ -42,6 +42,8 @@ export interface Standort {
   ablaufBlock?: boolean;
   /** Opt-in: SG-Master-CRO-Layout (Sektionsreihenfolge, 4 Therapien, kompakte Blöcke). */
   cro?: boolean;
+  /** Praxisbilder für "Über die Praxis" (CRO-Layout): Reihenfolge = Anzeige-Reihenfolge. */
+  praxisBilder?: { src: string; alt: string; label: string }[];
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
   /** Optionaler Rücklink auf den Wissen-Artikel des Standorts (gerendert in UeberPraxis). */
   wissenLink?: { href: string; label: string; sub: string };
@@ -1019,6 +1021,10 @@ export const standorte: Record<string, Standort> = {
   },
   "winterthur-marktgasse": {
     "cro": true,
+    "praxisBilder": [
+      { "src": "/images/standort-winterthur-muenzgasse.jpg", "alt": "TCM.ch Praxis Winterthur Münzgasse", "label": "Winterthur Münzgasse" },
+      { "src": "/images/standort-winterthur.jpg", "alt": "TCM.ch Praxis Winterthur Marktgasse", "label": "Winterthur Marktgasse" }
+    ],
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
     "seo": {
