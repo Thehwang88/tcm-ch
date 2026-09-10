@@ -18,6 +18,10 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/beschwerden/rotatorenmanschette/
+- https://tcm.ch/beschwerden/wadenschmerzen/
+- https://tcm.ch/beschwerden/sprunggelenkschmerzen/
+- https://tcm.ch/beschwerden/schwere-beine/
 - https://tcm.ch/koerpersignale/nacken-knackt-beim-drehen/
 - https://tcm.ch/koerpersignale/knie-knackt-ohne-schmerzen/
 - https://tcm.ch/koerpersignale/ohr-knackt-beim-schlucken/

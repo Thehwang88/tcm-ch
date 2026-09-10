@@ -33,5 +33,9 @@ globalThis.BESCHWERDEN_KEEP = [
   "gastritis", "rosacea", "hueftschmerzen",
   "aphten", "raynaud-syndrom", "long-covid",
   "lippenherpes", "reizblase", "spannungskopfschmerzen",
-  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen"
+  "uebelkeit", "augenmigraene", "bluthochdruck", "blaehungen", "durchblutungsstoerungen",
+  // 10.09.2026 — Lücken aus der GSC-404-Analyse, nach Semrush-Prüfung gebaut
+  // (Volumen CH / KD): rotatorenmanschette 2900/22 · wadenschmerzen 880/24 ·
+  // sprunggelenkschmerzen 480/21 · schwere-beine 480/15 (ehrlicher Krampfadern-Winkel).
+  "rotatorenmanschette", "wadenschmerzen", "sprunggelenkschmerzen", "schwere-beine"
 ];
