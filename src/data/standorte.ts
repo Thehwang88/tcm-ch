@@ -1086,9 +1086,14 @@ export const standorte: Record<string, Standort> = {
     ],
     "team": [
       {
-        "name": "Corinna Reinhart",
-        "rolle": "TCM-Therapeutin & Pflegefachfrau",
-        "bild": "/images/img-440b0d6748dc.webp"
+        "name": "Ken Uehara",
+        "rolle": "TCM-Therapeut · Schmerztherapie",
+        "bild": "/images/img-78e38ed076ea.webp"
+      },
+      {
+        "name": "Seongsu Kim",
+        "rolle": "Senior Clinical Lead",
+        "bild": "/images/Seongsu-Kim.png"
       }
     ],
     "ablaufBlock": true,
