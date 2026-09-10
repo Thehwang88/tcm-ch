@@ -7,6 +7,7 @@ import TerminForm from '../../components/TerminForm.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
 import { koerpersignale } from '../../data/koerpersignale';
+import { regionsForSignal } from '../../data/gesundheitsbibliothek';
 
 export function getStaticPaths() {
   return koerpersignale.map((k) => ({ params: { slug: k.slug }, props: { k } }));
@@ -53,6 +54,9 @@ const breadcrumbLd = {
 const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
 const anliegen = `Ich habe folgendes Anliegen: ${data.symptom ?? data.title}. Ich möchte gerne einen Termin anfragen.`;
+
+// Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
+const libRegions = regionsForSignal(data.slug);
 ---
 <LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} turnstile={true}>
   <article>
@@ -116,6 +120,17 @@ const anliegen = `Ich habe folgendes Anliegen: ${data.symptom ?? data.title}. Ic
             ))}
           </div>
         </div>
+
+        {libRegions.length > 0 && (
+          <div class="lib-row">
+            <span class="lib-row-label">Körperregion:</span>
+            {libRegions.map((r) => (
+              <a href={`/gesundheitsbibliothek/koerper/${r.slug}/`}>{r.nav}</a>
+            ))}
+            <span class="lib-row-sep" aria-hidden="true">·</span>
+            <a href="/gesundheitsbibliothek/">Zur Gesundheitsbibliothek</a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -175,6 +190,12 @@ const anliegen = `Ich habe folgendes Anliegen: ${data.symptom ?? data.title}. Ic
   .rel-card:hover { border-color: var(--blue); }
   .rel-cat { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
   .rel-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  .lib-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-top: 22px; font-size: 13.5px; }
+  .lib-row-label { font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: 11.5px; }
+  .lib-row a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .lib-row a:hover { text-decoration: underline; }
+  .lib-row-sep { color: var(--muted); }
 
   @media (max-width: 640px) {
     .rel-grid { grid-template-columns: 1fr; }

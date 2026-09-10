@@ -1,0 +1,37 @@
+---
+// Gesundheitsbibliothek: wiederverwendbarer Related-Content-Block (Chips-Gruppe).
+// Kontextuell kuratierte Links, 3–6 pro Gruppe empfohlen — kein Link-Stuffing.
+// Gestaltet nach dem bestehenden Chip-Muster des /koerpersignale/-Hubs.
+interface Link { href: string; label: string }
+interface Props {
+  label: string;        // Eyebrow, z.B. "Körpersignale"
+  title: string;        // z.B. "Passende Körpersignale"
+  sub?: string;
+  links: Link[];
+  allHref?: string;     // optionaler "Alle ansehen"-Link
+  allLabel?: string;
+}
+const { label, title, sub, links, allHref, allLabel } = Astro.props;
+---
+{links.length > 0 && (
+  <div class="lib-rel">
+    <div class="lib-rel-label">{label}</div>
+    <h2 class="lib-rel-title">{title}</h2>
+    {sub && <p class="lib-rel-sub">{sub}</p>}
+    <div class="lib-rel-links">
+      {links.map((l) => <a class="lib-chip" href={l.href}>{l.label}</a>)}
+      {allHref && <a class="lib-chip lib-chip--all" href={allHref}>{allLabel ?? 'Alle ansehen'}</a>}
+    </div>
+  </div>
+)}
+
+<style>
+  .lib-rel { margin: 38px 0 0; }
+  .lib-rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .lib-rel-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .lib-rel-sub { font-size: 15.5px; line-height: 1.55; color: var(--mid); margin: 0 0 14px; max-width: 640px; }
+  .lib-rel-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .lib-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .lib-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .lib-chip--all { color: var(--blue); border-color: rgba(45,155,111,.35); }
+</style>

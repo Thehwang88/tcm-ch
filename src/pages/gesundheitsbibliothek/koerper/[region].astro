@@ -1,0 +1,174 @@
+---
+// Körperregion-Hub der Gesundheitsbibliothek: aggregiert BESTEHENDE Inhalte einer
+// Region (Körpersignale, Beschwerden, Therapien, Visuals) — Discovery, keine Diagnose.
+// Datengetrieben aus gesundheitsbibliothek.ts; es entstehen nur Hubs für Regionen
+// mit genug Inhalt (Graveyard-Regel). Kanonische Inhalts-URLs bleiben unverändert.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { BODY_REGIONS, DIAGNOSTICS, liveVisualsForRegion } from '../../../data/gesundheitsbibliothek';
+import { koerpersignale } from '../../../data/koerpersignale';
+
+export function getStaticPaths() {
+  return BODY_REGIONS.map((r) => ({ params: { region: r.slug }, props: { r } }));
+}
+
+const { r } = Astro.props;
+const path = `/gesundheitsbibliothek/koerper/${r.slug}`;
+const url = `https://tcm.ch${path}/`;
+const title = `${r.title}: Signale, Beschwerden & Behandlung`;
+
+const ksBySlug = new Map(koerpersignale.map((k) => [k.slug, k]));
+const signalLinks = r.signals
+  .map((s) => ksBySlug.get(s))
+  .filter(Boolean)
+  .map((k) => ({ href: `/koerpersignale/${k!.slug}/`, label: k!.h1 }));
+const conditionLinks = r.conditions.map((c) => ({ href: `/beschwerden/${c.slug}/`, label: c.label }));
+const therapyLinks = r.therapies.map((t) => ({ href: `/therapien/${t.slug}/`, label: t.label }));
+const regionVisuals = liveVisualsForRegion(r);
+const diagnostics = r.diagnostics.map((id) => DIAGNOSTICS.find((d) => d.id === id)).filter(Boolean);
+const otherRegions = BODY_REGIONS.filter((x) => x.slug !== r.slug);
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: r.metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: r.title, item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={r.metaDesc} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">{r.title}</span>
+      </nav>
+      <div class="cat">Körperregion</div>
+      <h1>{r.title}</h1>
+      <p class="lead">{r.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <LibraryRelated
+        label="Körpersignale"
+        title="Signale ohne Diagnose"
+        sub="Du merkst etwas, weisst aber noch nicht, was es ist? Diese Einordnungen helfen, bevor eine Diagnose feststeht."
+        links={signalLinks}
+        allHref="/koerpersignale/"
+        allLabel="Alle Körpersignale"
+      />
+
+      <LibraryRelated
+        label="Beschwerden"
+        title="Bekannte Beschwerdebilder"
+        sub="Du kennst deine Beschwerde beim Namen? Hier findest du die Behandlungsseiten dieser Region."
+        links={conditionLinks}
+        allHref="/beschwerden/"
+        allLabel="Alle Beschwerden A–Z"
+      />
+
+      <LibraryRelated
+        label="Therapien"
+        title="Behandlungsmöglichkeiten"
+        sub="Diese Methoden kommen bei Beschwerden in dieser Region häufig zum Einsatz. Was im Einzelfall passt, klärt das Erstgespräch."
+        links={therapyLinks}
+        allHref="/therapien/"
+        allLabel="Alle Therapien"
+      />
+
+      {regionVisuals.length > 0 && (
+        <LibraryRelated
+          label="Visual Library"
+          title="Zeig mir, was passiert"
+          sub="Einfache medizinische Illustrationen, mit denen unsere Therapeutinnen und Therapeuten erklären."
+          links={regionVisuals.map((v) => ({ href: `/visuals/${v.slug}/`, label: v.title }))}
+          allHref="/visuals/"
+          allLabel="Ganze Visual Library"
+        />
+      )}
+
+      {diagnostics.length > 0 && (
+        <div class="diag">
+          <div class="diag-label">Untersuchungen & Diagnostik</div>
+          <h2 class="diag-title">Was ärztlich abgeklärt wird</h2>
+          <p class="diag-sub">Zur Orientierung: Diese Untersuchungen setzt die Schulmedizin bei Beschwerden in dieser Region häufig ein. TCM.ch führt sie nicht selbst durch — die Abklärung gehört in ärztliche Hand.</p>
+          <div class="diag-grid">
+            {diagnostics.map((d) => (
+              <div class="diag-card">
+                <div class="diag-name">{d!.name}</div>
+                <p class="diag-short">{d!.short}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="cta-card">
+        <div class="cta-card-title">Behandlungsmöglichkeiten in deiner Nähe</div>
+        <p>14 geprüfte Praxen in der Deutschschweiz. EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent. Wir sagen dir ehrlich, ob eine Behandlung bei dir sinnvoll ist — oder zuerst eine ärztliche Abklärung gehört.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+          <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+        </div>
+      </div>
+
+      <div class="more-regions">
+        <div class="mr-label">Andere Körperregionen</div>
+        <div class="mr-links">
+          {otherRegions.map((x) => (
+            <a class="mr-chip" href={`/gesundheitsbibliothek/koerper/${x.slug}/`}>{x.nav}</a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; min-width: 0; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .diag { margin: 44px 0 0; }
+  .diag-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .diag-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .diag-sub { font-size: 15.5px; line-height: 1.55; color: var(--mid); margin: 0 0 16px; max-width: 680px; }
+  .diag-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .diag-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px; }
+  .diag-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .diag-short { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 44px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .more-regions { border-top: 1px solid var(--border); margin-top: 44px; padding-top: 22px; }
+  .mr-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 640px) {
+    .diag-grid { grid-template-columns: 1fr; }
+  }
+</style>
