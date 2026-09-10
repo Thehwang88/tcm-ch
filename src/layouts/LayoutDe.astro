@@ -14,6 +14,8 @@ interface Props {
   path: string;          // DE path, e.g. "/ergebnisse/"
   schema?: object;
   noindex?: boolean;
+  /** Robots-Wert wenn noindex gesetzt ist (z.B. 'noindex, follow' für teilbare Tools). */
+  robots?: string;
   turnstile?: boolean;   // load Cloudflare Turnstile (pages with a protected form)
   /**
    * Kanonische Ziel-URL, wenn diese Seite bewusst auf eine ANDERE Seite konsolidiert
@@ -24,7 +26,7 @@ interface Props {
   canonicalTo?: string;
 }
 
-const { title, description = '', path, schema, noindex = false, turnstile = false, canonicalTo } = Astro.props;
+const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, canonicalTo } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -46,7 +48,7 @@ const year = 2026;
     <link rel="stylesheet" href="/footer.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     {enTwin && <link rel="alternate" hreflang="de-CH" href={canonical} />}
     {enTwin && <link rel="alternate" hreflang="en" href={new URL(enTwin, site.url).href} />}

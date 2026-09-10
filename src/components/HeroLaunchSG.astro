@@ -1,61 +1,30 @@
 ---
-// Launch hero for the St. Gallen standort page only. Uses existing brand tokens
-// (green = --blue, green-deep = --blue-dark, ink = --charcoal, gold = #FFC107 as
-// already used on this page's cta-band). Renders via SpaPage's <slot/>, above the
-// (hero-stripped) standort body. The mini-form posts DIRECTLY to /api/anfrage with
-// quelle=launch-hero-sg (worker allows no-email for that source) via a managed,
-// interaction-only Turnstile widget, then shows an inline success/error state.
+// Hero for the St. Gallen standort page only. Uses existing brand tokens
+// (green = --blue, green-deep = --blue-dark, ink = --charcoal). Renders via
+// SpaPage's <slot/>, above the (hero-stripped) standort body. One primary CTA
+// (#online-buchen → OneDoc-Sektion) + WhatsApp als sekundärer Pfad; das frühere
+// Hero-Leadformular (quelle=launch-hero-sg) wurde entfernt — Lead-Capture läuft
+// über das eine Kontaktformular weiter unten (sg-kontakt-bottom). Der Submit-
+// Handler unten bleibt als no-op stehen, damit kein Tracking-Code gelöscht wird.
 const { sitekey } = Astro.props;
 ---
 <section class="hlsg">
   <div class="hlsg-inner">
     <div class="hlsg-copy">
-      <span class="hlsg-badge">Jetzt offen · St. Gallen · Neupatient:innen</span>
-      <h1 class="hlsg-h1">Akupunktur &amp; TCM in <span class="hlsg-accent">St. Gallen</span>: dein erster Termin ist gratis.</h1>
-      <p class="hlsg-sub">Unsere Praxis liegt wenige Gehminuten vom Bahnhof St. Gallen und ist seit dem 9. Juli offen. Lern uns unverbindlich kennen, dein erster Termin ist gratis. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht. Von den Krankenkassen anerkannt (EMR/ASCA).</p>
+      <span class="hlsg-badge">TCM.ch Praxis · St. Gallen</span>
+      <h1 class="hlsg-h1">Akupunktur &amp; TCM in <span class="hlsg-accent">St. Gallen</span></h1>
+      <p class="hlsg-sub">Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht.</p>
+      <div class="hlsg-trust" style="margin-top:18px">
+        <div><span class="hlsg-check">✓</span> Krankenkassen anerkannt (EMR/ASCA)</div>
+        <div><span class="hlsg-check">✓</span> Oberer Graben 22, St. Gallen</div>
+        <div><span class="hlsg-check">✓</span> Kurzfristige Termine verfügbar</div>
+      </div>
       <div class="hlsg-cta-row">
         <a href="#online-buchen" class="hlsg-btn-primary">Termin online buchen</a>
+        <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." class="hlsg-btn-ghost" target="_blank" rel="noopener">WhatsApp fragen</a>
       </div>
-      <div class="hlsg-trust">
-        <div><span class="hlsg-check">✓</span> Kein Risiko, keine Verpflichtung</div>
-        <div><span class="hlsg-check">✓</span> Anerkannte Therapeut:innen</div>
-        <div><span class="hlsg-check">✓</span> Termine ab dieser Woche verfügbar</div>
-      </div>
-      <p style="margin-top:14px;font-size:14px;font-weight:600;color:var(--mid)"><b style="color:var(--charcoal)">Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
-    </div>
-
-    <div class="hlsg-visual">
-      <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
-        <div class="hlsg-ribbon">NEU</div>
-        <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Dein erster Termin ist <span class="hlsg-free">gratis</span></div>
-        <p class="hlsg-offer-note" style="margin-bottom:14px">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
-        <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 14px">
-          <div><span class="hlsg-check">✓</span> TCM-Check &amp; ausführliches Erstgespräch</div>
-          <div><span class="hlsg-check">✓</span> Diagnostik durch anerkannte Therapeut:innen</div>
-          <div><span class="hlsg-check">✓</span> Erste Akupunktur noch in derselben Sitzung</div>
-          <div><span class="hlsg-check">✓</span> Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</div>
-        </div>
-        <p class="hlsg-offer-note" style="margin:0 0 4px">Kein Abo, keine Verpflichtung, kein Verkaufsgespräch.</p>
-        <p class="hlsg-offer-note" style="margin:0 0 10px"><strong>Termine diese Woche verfügbar.</strong></p>
-        <p class="hlsg-offer-note" style="margin:0">Noch <strong class="hlsg-scarcity" data-sg-free>14</strong> von 20 Gratis-Erstgesprächen frei.</p>
-        <p class="hlsg-proof"><span class="hlsg-stars" aria-hidden="true">★★★★★</span> 4.9 bei Google, von Patient:innen weiterempfohlen.</p>
-        <div class="hlsg-divider"></div>
-        <form class="hlsg-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form novalidate>
-          <input type="hidden" name="quelle" value="launch-hero-sg">
-          <input type="hidden" name="standort" value="St. Gallen">
-          <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
-          <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
-          <input type="email" name="email" placeholder="E-Mail (optional)" aria-label="E-Mail" autocomplete="email" inputmode="email">
-          <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
-          <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
-          <input type="hidden" name="Angebot" value="GRATIS 30 Min Erstbehandlung (Hero St. Gallen)">
-          <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
-          <input type="hidden" name="Seite" value="/standort/st-gallen">
-          <button type="submit">Gratis Erstgespräch anfragen</button>
-          <p class="hlsg-form-rule">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p>
-          <p class="hlsg-form-err" role="alert" hidden></p>
-        </form>
-      </div>
+      <p style="margin-top:12px;font-size:14px;font-weight:600;color:var(--mid)">Erster Termin für Neupatient:innen kostenlos.</p>
+      <p style="margin-top:8px;font-size:14px;font-weight:600;color:var(--mid)"><b style="color:var(--charcoal)">Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
   </div>
 </section>
@@ -66,9 +35,8 @@ const { sitekey } = Astro.props;
   .hlsg-inner {
     max-width: var(--max); margin: 0 auto;
     padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 56px); align-items: center;
+    display: grid; grid-template-columns: 1fr; gap: clamp(28px, 5vw, 56px); align-items: center;
   }
-  @media (max-width: 900px) { .hlsg-inner { grid-template-columns: 1fr; gap: 32px; } }
 
   .hlsg-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -81,7 +49,7 @@ const { sitekey } = Astro.props;
     margin: 18px 0 14px; color: var(--charcoal);
   }
   .hlsg-accent { color: var(--blue); }
-  .hlsg-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 40ch; line-height: 1.55; }
+  .hlsg-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 56ch; line-height: 1.55; }
 
   .hlsg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
   .hlsg-btn-primary {

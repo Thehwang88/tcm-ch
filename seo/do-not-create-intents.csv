@@ -1,0 +1,47 @@
+blocked_intent,existing_owner_url,reason,risk_if_created,allowed_alternative_angle
+akupunktur bei nackenschmerzen,/beschwerden/nackenschmerzen/,Beschwerdeseite besitzt Behandlungs-Intent; Studienlage-Artikel existiert zusätzlich (/wissen/akupunktur-bei-nackenschmerzen/),Dritte Seite würde ein bereits zweifach besetztes Keyword splitten,Keiner — beide Intents sind besetzt
+akupunktur bei rückenschmerzen / tcm rückenschmerzen,/beschwerden/rueckenschmerzen/,Behandlungs-Intent besetzt; Studienlage (/wissen/akupunktur-bei-rueckenschmerzen/) und Unterer-Rücken-Ratgeber (/wissen/schmerzen-unterer-ruecken/) existieren ebenfalls,Vier Seiten im selben Cluster = garantierte Rotation,Sehr enge Muster (z.B. einseitige Ausstrahlung) nur nach GSC-Nachweis
+akupunktur bei migräne,/beschwerden/migraene/,Beschwerdeseite + kritischer Wissen-Artikel (migraene-tcm-warum-akupunktur-nicht-fuer-jeden) decken beide Intents,Rotation im gut rankenden Migräne-Cluster,Keiner
+wie lange bleiben akupunkturnadeln drin,/wissen/wie-lange-bleiben-akupunkturnadeln-drin/,Expliziter Owner; Dauernadeln-Artikel wurde 09/2026 bewusst von diesem Frame befreit,Wiederholung der dokumentierten Kannibalisierung (GSC Pos. 9-13),Keiner
+dauernadeln / akupunkturpflaster,/therapien/dauernadeln/,Therapieseite + Wissen-Support (/wissen/dauernadeln-akupunktur/) besetzen Methode und Einordnung,Drittes Dauernadeln-Dokument splittet erneut,Keiner
+akupunktur in der nähe / tcm in der nähe,/akupunktur-in-der-naehe/,Primary seit 09/2026; das Wissen-Duplikat wurde kanonisiert,Neuaufbau des gerade aufgelösten Duplikats,Keiner — neue Standorte in die bestehende Seite eintragen
+schröpfen flecken / schröpfen wirkung,/therapien/schroepfen/,Methode besetzt; Flecken-Frage besitzt /wissen/schroepfen-wirkung-flecken/,Rotation,Keiner
+hijama,/therapien/schroepfen/hijama/,Bereits ZWEI Seiten im Hijama-Raum (inkl. blutiges-schroepfen) — offener Review-Fall,Dritte Seite verschärft bestehenden Konflikt,Keiner bis intent-conflicts-Fall gelöst ist
+hexenschuss was tun,/wissen/hexenschuss-was-tun/,Soforthilfe-Intent besetzt; Behandlungs-Intent gehört /beschwerden/hexenschuss/,Rotation,Keiner
+burnout symptome / anzeichen burnout,/wissen/burnout-symptome-erkennen/,Früherkennungs-Intent besetzt; Behandlung gehört /beschwerden/stress-burnout/,Rotation im Stress-Cluster (burnout-Leaf ist bereits kanonisiert),Keiner
+was hilft gegen kopfschmerzen,/wissen/was-hilft-gegen-kopfschmerzen/,Generischer Ratgeber-Intent besetzt; Untertypen haben eigene Leaves,Sechste Seite im Kopfschmerz-Cluster,Nur klar abgegrenzte Untertypen mit eigener Diagnose (bereits vorhanden: Spannung/Cluster/Augenmigräne/Migräne)
+akupunktur zum abnehmen / akupunktur abnehmen ohr,/wissen/akupunktur-zum-abnehmen/,Transparenz-Artikel besetzt den Intent bewusst mit Absage-Positionierung,Neue Seite würde der publizierten Haltung widersprechen (Glaubwürdigkeit),Keiner — Positionierungsfrage zuerst redaktionell klären (siehe intent-conflicts)
+akupunktur kinderwunsch / tcm kinderwunsch,/beschwerden/kinderwunsch/,Money-Seite + Wissen-Artikel überlappen bereits (offener High-Risk-Fall),Dritte Seite in den grössten offenen Konflikt hinein,Keiner bis GSC-Entscheidung gefallen ist
+zähneknirschen nachts,/beschwerden/zaehneknirschen/,Leaf deckt das nächtliche Knirschen inkl. CMD-Kontext (Schwester-Leaf kieferschmerzen),Synonym-Doorway,Keiner
+blähungen nach dem essen,/beschwerden/blaehungen/,Leaf deckt das Symptom; Reizdarm/Verdauungsprobleme decken das Umfeld,Synonym-Doorway im dichten Verdauungs-Cluster,Keiner
+schulterschmerzen nachts beim liegen,/beschwerden/schulterschmerzen/,Leaf deckt Schulterschmerzen inkl. nächtlicher Symptomatik; frozen-shoulder existiert separat,Symptom-Variante ohne eigenen Intent,Keiner
+hände schlafen nachts ein / eingeschlafene hände,/beschwerden/karpaltunnelsyndrom/,Leaf-Meta targetiert genau dieses Muster (eingeschlafene Hände & nächtliche Schmerzen),Kannibalisierung der klar besetzten KTS-Seite,Differentialdiagnose-Artikel (Ulnaris/HWS) nur mit GSC-Nachweis dass die Query vorbeiläuft
+dry needling oder akupunktur,/wissen/dry-needling-vs-akupunktur/,Vergleichs-Intent explizit besetzt,Rotation,Keiner
+triggerpunkte lösen,/wissen/triggerpunkte-verstehen-loesen/,Besetzt; Behandlungs-Intent gehört /therapien/massage/triggerpunktmassage/,Rotation,Keiner
+verklebte faszien,/wissen/faszien-verklebt-was-hilft/,Besetzt,Rotation,Keiner
+akupressurmatte,/wissen/akupressurmatte-was-bringt-sie/,Besetzt,Rotation,Keiner
+akupunktur krankenkasse / tcm krankenkasse,/krankenkassen/,Hub + Unterseiten + Wissen-Deep-Dive besetzen den Raum bereits dreifach (Review-Fall),Vierte Seite verschärft den offenen Konflikt,Nur kassenspezifische Detailseiten nach GSC-Nachweis
+tcm st. gallen / akupunktur st. gallen,/standorte/st-gallen/,Bereits DOPPELT besetzt (Standortseite + Stadt-Lander) — offener High-Risk-Fall,Dritte Seite in offenen Konflikt,Keiner bis intent-conflicts-Fall gelöst ist
+tcm zürich / akupunktur zürich,/akupunktur-tcm-zuerich/,Hub + drei Quartier-Spokes besetzen Stadt- und Quartier-Intents vollständig,Rotation in funktionierender Hub-Architektur,Nur /kosten/-Lücke (siehe unowned-search-intents P1)
+massage zürich / massage winterthur etc.,/massage-zuerich/,Acht Stadt-Massageseiten besetzen die lokalen Intents; Methoden gehören /therapien/massage/*,Doorway-Inflation,Nur neue Stadt bei realer Praxiseröffnung
+erstbehandlung ablauf / tcm erfahrungen {stadt},/wissen/tcm-st-gallen-erfahrungen-ablauf/,Sechs Stadt-Erfahrungs-Artikel decken das Muster für alle relevanten Standorte,Weitere Varianten kannibalisieren das Muster,Neue Stadt nur bei Praxiseröffnung
+schwindel beim umdrehen im bett,/koerpersignale/schwindel-beim-umdrehen-im-bett/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+herzschlag im ohr,/koerpersignale/herzschlag-im-ohr/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+schwindel beim aufstehen,/koerpersignale/schwindel-beim-aufstehen/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+finger schlafen ein,/koerpersignale/finger-schlafen-ein/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+einzelne finger taub,/koerpersignale/einzelne-finger-taub/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+eine hand kälter als die andere,/koerpersignale/kalte-haende-einseitig/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+klossgefühl im hals,/koerpersignale/klossgefuehl-im-hals/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+ständiger räusperzwang,/koerpersignale/staendiger-raeusperzwang/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+zungenbrennen,/koerpersignale/zungenbrennen/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+hitzegefühl ohne fieber,/koerpersignale/hitzegefuehl-ohne-fieber/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+starkes schwitzen ohne grund,/koerpersignale/starkes-schwitzen-ohne-sport/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+wadenkrämpfe nachts,/koerpersignale/wadenkraempfe-nachts/,Körpersignal-Seite besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der neuen Rubrik,Keiner
+augenlid zuckt,/koerpersignale/augenlid-zuckt/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+ohr einseitig verstopft,/koerpersignale/ohr-einseitig-verstopft/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+immer zur gleichen uhrzeit aufwachen,/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+nachtschweiss ohne fieber,/koerpersignale/nachtschweiss-ohne-fieber/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+rückenschmerzen beim husten,/koerpersignale/rueckenschmerzen-beim-husten/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+bein wird beim sitzen taub,/koerpersignale/bein-wird-beim-sitzen-taub/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+finger morgens steif,/koerpersignale/finger-morgens-steif/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner
+hand kribbelt beim velofahren,/koerpersignale/hand-kribbelt-beim-velofahren/,Körpersignal-Seite (Welle 2) besitzt diesen Muster-Intent seit 09/2026,Duplikat innerhalb der Rubrik,Keiner

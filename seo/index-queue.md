@@ -18,6 +18,28 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/augenlid-zuckt/
+- https://tcm.ch/koerpersignale/ohr-einseitig-verstopft/
+- https://tcm.ch/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/
+- https://tcm.ch/koerpersignale/nachtschweiss-ohne-fieber/
+- https://tcm.ch/koerpersignale/rueckenschmerzen-beim-husten/
+- https://tcm.ch/koerpersignale/bein-wird-beim-sitzen-taub/
+- https://tcm.ch/koerpersignale/finger-morgens-steif/
+- https://tcm.ch/koerpersignale/hand-kribbelt-beim-velofahren/
+- https://tcm.ch/koerpersignale/
+- https://tcm.ch/koerpersignale/schwindel-beim-umdrehen-im-bett/
+- https://tcm.ch/koerpersignale/herzschlag-im-ohr/
+- https://tcm.ch/koerpersignale/schwindel-beim-aufstehen/
+- https://tcm.ch/koerpersignale/finger-schlafen-ein/
+- https://tcm.ch/koerpersignale/einzelne-finger-taub/
+- https://tcm.ch/koerpersignale/kalte-haende-einseitig/
+- https://tcm.ch/koerpersignale/klossgefuehl-im-hals/
+- https://tcm.ch/koerpersignale/staendiger-raeusperzwang/
+- https://tcm.ch/koerpersignale/zungenbrennen/
+- https://tcm.ch/koerpersignale/hitzegefuehl-ohne-fieber/
+- https://tcm.ch/koerpersignale/starkes-schwitzen-ohne-sport/
+- https://tcm.ch/koerpersignale/wadenkraempfe-nachts/
+- https://tcm.ch/standorte/zuerich/kosten/
 - https://tcm.ch/beschwerden/hallux-valgus/
 - https://tcm.ch/beschwerden/isg-blockade/
 - https://tcm.ch/beschwerden/rhizarthrose/

@@ -1,0 +1,694 @@
+---
+// Master-Viewer der Visual Library — datengetrieben, wiederverwendbar für alle Visuals.
+// Desktop: beide Ansichten nebeneinander (Präsentationsmodus fürs Patientengespräch).
+// Mobile: eine grosse Ansicht + Normal/Vorfall-Umschalter. Hotspots in %, Labels/Pfeile
+// als echtes HTML/SVG — nie im Bild eingebacken.
+import { visuals, imgSrc, type Visual } from '../../data/visuals';
+import VisualImg from './VisualImg.astro';
+
+interface Props {
+  visual: Visual;
+  /** Build-time generiertes QR-SVG (Link auf diese Seite). */
+  qrSvg: string;
+}
+const { visual: v, qrSvg } = Astro.props;
+
+const controls = (v.hotspots ?? []);
+const markers = controls.filter((h) => h.view !== 'pain');
+// "Weiter erklären" — nur LIVE-Visuals, nie Links auf Draft-Seiten.
+const relatedLive = (v.related ?? [])
+  .map((slug) => visuals.find((x) => x.slug === slug))
+  .filter((x): x is Visual => !!x && x.status === 'live');
+const panels = [
+  { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: `${v.title}: vereinfachte Darstellung, normaler Zustand` },
+  { key: 'problem', chip: v.labelProblem ?? v.title, img: v.imageProblem, alt: `${v.title}: vereinfachte Darstellung der Veränderung` },
+];
+---
+<article class="vv" id="vv" data-slug={v.slug} data-category={v.category}>
+
+  <header class="vv-head">
+    <div class="vv-head-text">
+      <a class="vv-back" href="/visuals/">&larr; Visual Library</a>
+      <h1>{v.title}</h1>
+      <p class="vv-sub">{v.subtitle}</p>
+    </div>
+    <div class="vv-actions">
+      <button class="vv-ghost-btn" type="button" id="vv-fs-open">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        <span id="vv-fs-label">Vollbild</span>
+      </button>
+      <a class="vv-ghost-btn" id="vv-pdf" href={`/visuals/${v.slug}/handout/?print=1`} target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Als PDF herunterladen
+      </a>
+      <button class="vv-ghost-btn" type="button" id="vv-qr-open">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M20 20h1v1M17 20v1"/></svg>
+        Auf dem Handy öffnen
+      </button>
+      {v.relatedPage && <a class="vv-more" href={v.relatedPage}>Mehr erfahren</a>}
+    </div>
+  </header>
+
+  <!-- Umschalter (nur sichtbar, wenn nur eine Ansicht Platz hat) -->
+  <div class="vv-switch" role="group" aria-label="Ansicht wählen">
+    <button type="button" class="vv-switch-btn" data-view="normal" aria-pressed="true">{panels[0].chip}</button>
+    <button type="button" class="vv-switch-btn" data-view="problem" aria-pressed="false">{panels[1].chip}</button>
+  </div>
+
+  <div class="vv-stage" id="vv-stage" data-mobile-view="normal">
+    {panels.map((p) => (
+      <figure class="vv-panel" data-panel={p.key}>
+        <figcaption class="vv-chip" data-chip={p.key}>{p.chip}</figcaption>
+        <div class="vv-imgwrap">
+          {p.img && <VisualImg image={p.img} alt={p.alt} width={800} height={1000} sizes="(max-width: 900px) 92vw, 550px" />}
+          {markers
+            .filter((h) => h.view === 'both' || h.view === p.key)
+            .map((h) => (
+              <button
+                type="button"
+                class:list={['vv-marker', { 'vv-marker--left': h.labelSide === 'left' }]}
+                data-control={h.id}
+                data-marker-view={h.view}
+                style={`left:${h.x}%;top:${h.y}%;`}
+                aria-label={h.label}
+              >
+                <span class="vv-marker-dot" aria-hidden="true"></span>
+                <span class="vv-marker-label">{h.label}</span>
+              </button>
+            ))}
+        </div>
+      </figure>
+    ))}
+  </div>
+
+  {controls.length > 0 && (
+    <div class="vv-controlbar">
+      <div class="vv-controls" role="group" aria-label="Bereich hervorheben">
+        {controls.map((h) => (
+          <button
+            type="button"
+            class="vv-control"
+            data-control={h.id}
+            data-target={h.view}
+            aria-pressed="false"
+          >{h.label}</button>
+        ))}
+      </div>
+      <p class="vv-note" id="vv-note" aria-live="polite"></p>
+    </div>
+  )}
+
+  {v.secondaryImage && (
+    <section class="vv-pain" id="vv-pain" aria-label={v.secondaryHeading ?? 'Wo kann man es spüren?'}>
+      <h2>{v.secondaryHeading ?? 'Wo kann man es spüren?'}</h2>
+      <div class="vv-pain-grid">
+        <div class="vv-imgwrap vv-pain-imgwrap">
+          <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />
+          {(v.painPath ?? []).map((s, i) => (
+            <span class:list={['vv-painstep', { 'vv-painstep--left': s.labelSide === 'left' }]} style={`left:${s.x}%;top:${s.y}%;`}>
+              <span class="vv-painstep-dot" aria-hidden="true">{i + 1}</span>
+              <span class="vv-painstep-label">{s.label}</span>
+            </span>
+          ))}
+        </div>
+        {(v.painPath ?? []).length > 0 && (
+          <ol class="vv-pain-list">
+            {(v.painPath ?? []).map((s) => <li>{s.label}</li>)}
+          </ol>
+        )}
+      </div>
+    </section>
+  )}
+
+  {relatedLive.length > 0 && (
+    <!-- Kein <nav>: header.css setzt global nav{position:fixed} (Site-Header). -->
+    <aside class="vv-related" aria-label="Weiter erklären">
+      <h2>Weiter erklären</h2>
+      <div class="vv-related-row">
+        {relatedLive.map((r) => (
+          <a class="vv-related-card" href={`/visuals/${r.slug}/`} data-related-slug={r.slug}>
+            {imgSrc(r.imageNormal) && <img src={imgSrc(r.imageNormal)} alt="" width="120" height="150" loading="lazy" decoding="async" />}
+            <span>{r.title}</span>
+          </a>
+        ))}
+      </div>
+    </aside>
+  )}
+
+  <p class="vv-disclaimer">
+    Diese Darstellung dient der einfachen Erklärung und ersetzt keine individuelle medizinische Beurteilung.
+  </p>
+
+  <dialog class="vv-dialog" id="vv-dialog" aria-label="Auf dem Handy öffnen">
+    <button type="button" class="vv-dialog-close" id="vv-dialog-close" aria-label="Schliessen">&times;</button>
+    <h3 class="vv-dialog-title">{v.title}</h3>
+    <div class="vv-dialog-qr" set:html={qrSvg} />
+    <p class="vv-dialog-hint">Mit der Handy-Kamera scannen — die Seite öffnet sich direkt.</p>
+  </dialog>
+
+</article>
+
+<script>
+  import { track } from '../../scripts/vl-track';
+
+  const root = document.getElementById('vv')!;
+  const slug = root.dataset.slug || '';
+  const category = root.dataset.category || '';
+  const meta = { visual_slug: slug, category };
+  track('visual_open', meta);
+  const stage = document.getElementById('vv-stage')!;
+  const note = document.getElementById('vv-note');
+  const pain = document.getElementById('vv-pain');
+  const noteById: Record<string, string> = {};
+  const targetById: Record<string, string> = {};
+  // Notizen/Targets aus den Control-Buttons ableiten (Server rendert sie aus den Daten).
+  root.querySelectorAll<HTMLButtonElement>('.vv-control').forEach((b) => {
+    targetById[b.dataset.control!] = b.dataset.target || 'both';
+  });
+
+  let active: string | null = null;
+
+  function apply() {
+    root.querySelectorAll<HTMLElement>('[data-control]').forEach((el) => {
+      const id = el.dataset.control!;
+      el.classList.toggle('is-active', active === id);
+      el.classList.toggle('is-dimmed', active !== null && active !== id);
+      if (el.classList.contains('vv-control')) el.setAttribute('aria-pressed', String(active === id));
+    });
+    if (note) {
+      note.textContent = active ? noteById[active] || '' : '';
+      note.hidden = !active || !noteById[active];
+    }
+  }
+
+  function setMobileView(view: string) {
+    stage.dataset.mobileView = view;
+    root.querySelectorAll<HTMLButtonElement>('.vv-switch-btn').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.view === view));
+    });
+  }
+
+  root.querySelectorAll<HTMLButtonElement>('.vv-switch-btn').forEach((b) => {
+    b.addEventListener('click', () => setMobileView(b.dataset.view!));
+  });
+
+  root.addEventListener('click', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLElement>('[data-control]');
+    if (!el || !root.contains(el)) return;
+    const id = el.dataset.control!;
+    const target = targetById[id] || el.dataset.markerView || 'both';
+    if (target === 'pain') {
+      active = id;
+      apply();
+      track('visual_pain_route_open', meta);
+      pain?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    active = active === id ? null : id;
+    if (active) track('visual_hotspot_click', { ...meta, hotspot_id: id });
+    // Liegt der Punkt nur auf einer Ansicht, auf kleinen Screens dorthin umschalten.
+    if (active && (target === 'normal' || target === 'problem')) setMobileView(target);
+    apply();
+  });
+
+  // Kurze Erklärsätze für die Notiz-Zeile (vom Server in ein JSON-Skript gerendert).
+  const data = document.getElementById('vv-notes');
+  if (data) Object.assign(noteById, JSON.parse(data.textContent || '{}'));
+
+  // QR-Modal
+  const dlg = document.getElementById('vv-dialog') as HTMLDialogElement | null;
+  document.getElementById('vv-qr-open')?.addEventListener('click', () => {
+    track('visual_qr_open', meta);
+    dlg?.showModal();
+  });
+  document.getElementById('vv-dialog-close')?.addEventListener('click', () => dlg?.close());
+  dlg?.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+  // PDF-Handout
+  document.getElementById('vv-pdf')?.addEventListener('click', () => track('visual_pdf_download', meta));
+
+  // Weiter erklären
+  root.querySelectorAll<HTMLAnchorElement>('[data-related-slug]').forEach((a) =>
+    a.addEventListener('click', () => track('related_visual_click', { ...meta, related_slug: a.dataset.relatedSlug || '' }))
+  );
+
+  // Vollbild / Präsentationsmodus: Site-Chrome weg, Visual dominiert.
+  const fsBtn = document.getElementById('vv-fs-open');
+  const fsLabel = document.getElementById('vv-fs-label');
+  function fsActive() { return document.body.classList.contains('vv-fullscreen'); }
+  function syncFs(on: boolean) {
+    document.body.classList.toggle('vv-fullscreen', on);
+    if (fsLabel) fsLabel.textContent = on ? 'Vollbild beenden' : 'Vollbild';
+    fsBtn?.setAttribute('aria-pressed', String(on));
+  }
+  function enterFs() {
+    syncFs(true);
+    track('visual_fullscreen_open', meta);
+    document.documentElement.requestFullscreen?.().catch(() => {});
+    window.scrollTo({ top: 0 });
+  }
+  function exitFs() {
+    syncFs(false);
+    if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+  }
+  fsBtn?.addEventListener('click', () => (fsActive() ? exitFs() : enterFs()));
+  // ESC beendet auch den Pseudo-Vollbildmodus (ohne natives Fullscreen, z.B. iPad).
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fsActive()) exitFs(); });
+  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && fsActive()) syncFs(false); });
+</script>
+
+<script type="application/json" id="vv-notes" set:html={JSON.stringify(Object.fromEntries(controls.filter((h) => h.note).map((h) => [h.id, h.note])))} is:inline />
+
+<style>
+  .vv {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 40px var(--pad-x) 64px;
+  }
+
+  /* ── Kopf ─────────────────────────────────────────────── */
+  .vv-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .vv-head-text { flex: 1 1 460px; min-width: 0; }
+  .vv-back {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-soft);
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  .vv-back:hover { color: var(--blue-dark); }
+  .vv-head h1 {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--lh-heading);
+    color: var(--black);
+  }
+  .vv-sub {
+    margin: 0;
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--text-soft);
+    line-height: 1.4;
+  }
+  .vv-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; flex-shrink: 0; }
+  .vv-ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-btn);
+    padding: 11px 16px;
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+    min-height: 44px;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .vv-ghost-btn:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .vv-ghost-btn:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+  .vv-more {
+    display: inline-flex;
+    align-items: center;
+    background: var(--blue);
+    color: var(--white);
+    border-radius: var(--r-btn);
+    padding: 12px 18px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--sh-btn);
+    transition: background .15s ease;
+  }
+  .vv-more:hover { background: var(--blue-dark); }
+
+  /* ── Umschalter (mobile) ──────────────────────────────── */
+  .vv-switch {
+    display: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  .vv-switch-btn {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    border-radius: var(--r-pill);
+    padding: 12px 10px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-soft);
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .vv-switch-btn[aria-pressed="true"] {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: var(--sh-sm);
+  }
+
+  /* ── Bühne ────────────────────────────────────────────── */
+  .vv-stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    background: #FAF8F5;
+    border: 1px solid var(--border);
+    border-radius: var(--r-hero);
+    padding: 28px;
+  }
+  .vv-panel { margin: 0; min-width: 0; }
+  .vv-chip {
+    display: inline-block;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+  .vv-panel[data-panel="problem"] .vv-chip { color: var(--blue-dark); border-color: var(--green-mid); background: var(--blue-light); }
+  .vv-imgwrap { position: relative; }
+  .vv-imgwrap :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--r-card);
+  }
+
+  /* ── Hotspot-Marker ───────────────────────────────────── */
+  .vv-marker {
+    position: absolute;
+    /* Der PUNKT liegt auf x/y (padding 8px + halber Punkt 9px = 17px), nicht die Pille. */
+    transform: translate(-17px, -50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+    padding: 8px;            /* touch target */
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: opacity .18s ease;
+  }
+  .vv-marker.is-dimmed { opacity: .35; }
+  .vv-marker--left {
+    flex-direction: row-reverse;
+    transform: translate(calc(-100% + 17px), -50%);
+  }
+  .vv-marker-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(45, 155, 111, .28);
+    border: 2.5px solid var(--blue);
+    box-shadow: 0 0 0 3px rgba(255,255,255,.85);
+    flex-shrink: 0;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .vv-marker.is-active .vv-marker-dot {
+    background: var(--blue);
+    transform: scale(1.25);
+  }
+  .vv-marker-label {
+    background: rgba(255,255,255,.92);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 4px 11px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .vv-marker.is-active .vv-marker-label {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+  .vv-marker:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; border-radius: var(--r-pill); }
+
+  /* ── Controls ─────────────────────────────────────────── */
+  .vv-controlbar { margin-top: 20px; }
+  .vv-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+  .vv-control {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 13px 22px;
+    font-family: var(--font-sans);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    min-height: 48px;
+    transition: border-color .15s ease, background .15s ease, color .15s ease, opacity .18s ease;
+  }
+  .vv-control:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .vv-control.is-active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+  .vv-control.is-dimmed { opacity: .55; }
+  .vv-control:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+  .vv-note {
+    margin: 14px 2px 0;
+    font-size: 16.5px;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 640px;
+  }
+  .vv-note:empty { display: none; }
+
+  /* ── Schmerz-Ansicht ──────────────────────────────────── */
+  .vv-pain { margin-top: 56px; scroll-margin-top: 90px; }
+  .vv-pain h2 {
+    margin: 0 0 20px;
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    color: var(--black);
+  }
+  .vv-pain-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 460px) 1fr;
+    gap: 40px;
+    align-items: center;
+    /* Weiss, damit das fotorealistische Schmerzverlauf-Asset nahtlos sitzt. */
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-hero);
+    padding: 28px;
+  }
+  .vv-pain-imgwrap :global(img) { border-radius: var(--r-card); }
+  .vv-painstep {
+    position: absolute;
+    /* Der PUNKT liegt auf x/y (halber Punkt = 13px), nicht das Label-Paar. */
+    transform: translate(-13px, -50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .vv-painstep--left {
+    flex-direction: row-reverse;
+    transform: translate(calc(-100% + 13px), -50%);
+  }
+  .vv-painstep-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 13.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.85);
+    flex-shrink: 0;
+  }
+  .vv-painstep-label {
+    background: rgba(255,255,255,.92);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: 4px 11px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .vv-pain-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: clamp(19px, 2vw, 24px);
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    color: var(--black);
+  }
+  .vv-pain-list li { display: flex; align-items: center; gap: 14px; }
+  .vv-pain-list li + li::before {
+    content: '↓';
+    display: block;
+    color: var(--blue);
+    font-size: .8em;
+    margin: 0 0 0 4px;
+  }
+  .vv-pain-list li + li { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  /* ── Weiter erklären ──────────────────────────────────── */
+  .vv-related { margin-top: 48px; }
+  .vv-related h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    color: var(--text-soft);
+  }
+  .vv-related-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .vv-related-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 10px 18px 10px 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .vv-related-card:hover { border-color: var(--green-mid); box-shadow: var(--sh-sm); }
+  .vv-related-card:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+  .vv-related-card img {
+    width: 48px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    background: #FAF8F5;
+  }
+
+  /* ── Hinweis / Dialog ─────────────────────────────────── */
+  .vv-disclaimer {
+    margin: 40px 2px 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .vv-dialog {
+    border: 0;
+    border-radius: var(--r-hero);
+    box-shadow: var(--sh-lg);
+    padding: 36px 40px 32px;
+    max-width: 340px;
+    text-align: center;
+  }
+  .vv-dialog::backdrop { background: rgba(13,13,13,.45); }
+  .vv-dialog-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: 0;
+    background: transparent;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px;
+  }
+  .vv-dialog-close:hover { color: var(--black); }
+  .vv-dialog-title {
+    margin: 0 0 18px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: var(--tracking-heading);
+    color: var(--black);
+  }
+  .vv-dialog-qr :global(svg) { width: 200px; height: 200px; display: block; margin: 0 auto; }
+  .vv-dialog-hint {
+    margin: 18px 0 0;
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Vollbild / Präsentationsmodus ────────────────────── */
+  /* Site-Chrome verschwindet (global unten), hier: kompaktes Layout,
+     Visual dominiert. Back-Link, "Mehr erfahren" und Kleingedrucktes weg. */
+  :global(body.vv-fullscreen) .vv { padding-top: 20px; }
+  :global(body.vv-fullscreen) .vv-back,
+  :global(body.vv-fullscreen) .vv-more,
+  :global(body.vv-fullscreen) .vv-related,
+  :global(body.vv-fullscreen) .vv-disclaimer,
+  :global(body.vv-fullscreen) #vv-pdf { display: none; }
+  :global(body.vv-fullscreen) .vv-head { margin-bottom: 18px; align-items: center; }
+  :global(body.vv-fullscreen) .vv-head h1 { font-size: clamp(24px, 2.4vw, 34px); margin-bottom: 4px; }
+  :global(body.vv-fullscreen) .vv-stage { padding: 20px; }
+
+  /* ── Responsive: eine Ansicht + Umschalter ────────────── */
+  @media (max-width: 900px) {
+    .vv { padding: 24px 20px 48px; }
+    /* Bild vor Navigation: Titel → Umschalter → Visual → Controls → Aktionen.
+       vv-head wird aufgelöst (display:contents), damit die Aktions-Buttons
+       hinter die Controls rutschen statt das Visual nach unten zu schieben. */
+    .vv { display: flex; flex-direction: column; }
+    .vv-head { display: contents; }
+    .vv-head-text { order: 0; flex: 0 0 auto; margin-bottom: 16px; }
+    .vv-switch { order: 10; }
+    .vv-stage { order: 20; }
+    .vv-controlbar { order: 30; }
+    .vv-actions { order: 40; margin-top: 24px; }
+    .vv-pain { order: 50; }
+    .vv-related { order: 60; }
+    .vv-disclaimer { order: 70; }
+    .vv-switch { display: flex; }
+    .vv-stage { grid-template-columns: 1fr; padding: 16px; }
+    .vv-stage[data-mobile-view="normal"] .vv-panel[data-panel="problem"] { display: none; }
+    .vv-stage[data-mobile-view="problem"] .vv-panel[data-panel="normal"] { display: none; }
+    .vv-chip { display: none; }  /* Umschalter übernimmt die Beschriftung */
+    .vv-pain-grid { grid-template-columns: 1fr; gap: 20px; padding: 16px; }
+    .vv-marker-label { font-size: 12.5px; padding: 3px 9px; }
+  }
+</style>
+
+<style is:global>
+  /* Vollbild: Website-Chrome komplett ausblenden — nur das Visual.
+     #mainNav/#siteDrawer = DE-Header (src/data/header.html), .wac = Desktop-
+     WhatsApp-Concierge, .wa-fab/.scb-bar = mobile FABs/Sticky-CTA. */
+  body.vv-fullscreen #mainNav,
+  body.vv-fullscreen #siteDrawer,
+  body.vv-fullscreen #drawerOverlay,
+  body.vv-fullscreen footer,
+  body.vv-fullscreen .wa-fab,
+  body.vv-fullscreen .wac,
+  body.vv-fullscreen .scb-bar,
+  body.vv-fullscreen .sticky-cta,
+  body.vv-fullscreen [data-sticky-bottom] {
+    display: none !important;
+  }
+  body.vv-fullscreen { background: var(--white); }
+</style>

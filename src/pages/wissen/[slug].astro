@@ -60,7 +60,16 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: data.h1, item: url },
   ],
 };
-const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
+// Kannibalisierungs-Auflösung: Der Artikel "akupunktur-in-meiner-naehe-schweiz" ist ein
+// Standort-Verzeichnis mit identischem Suchintent wie die Landingpage /akupunktur-in-der-naehe/
+// (sitewide verlinkt via Footer/Home, gleiche H2-Struktur "Standorte nach Region"). Gleiches
+// Muster wie MERGED in beschwerden/[slug].astro: Seite bleibt für Nutzer:innen bestehen,
+// kanonisiert auf die primäre URL und fällt aus der Sitemap.
+const CANONICAL_TO: Record<string, string> = {
+  'akupunktur-in-meiner-naehe-schweiz': '/akupunktur-in-der-naehe/',
+};
+const canonicalTo = CANONICAL_TO[data.slug];
+const schema = canonicalTo ? undefined : [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
 // Rücklink ins OUCH.-Magazin — dezente Zeile am Artikelende (nur auf passenden Slugs).
 const OUCH_ROWS: Record<string, { href: string; label: string }> = {
@@ -69,7 +78,7 @@ const OUCH_ROWS: Record<string, { href: string; label: string }> = {
 };
 const ouchRow = OUCH_ROWS[data.slug];
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo}>
   <article>
     <section class="hero">
       <div class="wrap narrow">

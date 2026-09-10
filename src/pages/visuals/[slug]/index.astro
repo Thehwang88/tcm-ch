@@ -1,0 +1,32 @@
+---
+// /visuals/[slug] — eine Seite pro LIVE-Visual (Drafts bekommen bewusst keine Route).
+// noindex,follow: öffentlich teilbar (Praxis/Handy), aber keine SEO-Landingpage —
+// "Mehr erfahren" verlinkt auf die bestehende Beschwerden-Seite (SEO-Autorität).
+// Nicht in seo/index-queue.md aufnehmen.
+import QRCode from 'qrcode';
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import VisualViewer from '../../../components/visuals/VisualViewer.astro';
+import { liveVisuals } from '../../../data/visuals';
+import { site } from '../../../data/site';
+
+export function getStaticPaths() {
+  return liveVisuals.map((v) => ({ params: { slug: v.slug }, props: { visual: v } }));
+}
+
+const { visual } = Astro.props;
+const url = new URL(`/visuals/${visual.slug}/`, site.url).href;
+const qrSvg = await QRCode.toString(url, {
+  type: 'svg',
+  margin: 0,
+  color: { dark: '#0d0d0d', light: '#0000' },
+});
+---
+<LayoutDe
+  title={`${visual.title} — Visual Library`}
+  description={visual.subtitle}
+  path={`/visuals/${visual.slug}/`}
+  noindex={true}
+  robots="noindex, follow"
+>
+  <VisualViewer visual={visual} qrSvg={qrSvg} />
+</LayoutDe>
