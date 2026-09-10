@@ -7,10 +7,10 @@
 
 export type VisualCategory =
   | 'Nacken' | 'Rücken' | 'Schulter' | 'Arm & Hand'
-  | 'Hüfte' | 'Knie' | 'Bein & Fuss' | 'Kiefer' | 'Herz & Gefässe';
+  | 'Hüfte' | 'Knie' | 'Bein & Fuss' | 'Kiefer' | 'Herz & Gefässe' | 'Hormone & Zyklus';
 
 export const visualCategories: VisualCategory[] = [
-  'Nacken', 'Rücken', 'Schulter', 'Arm & Hand', 'Hüfte', 'Knie', 'Bein & Fuss', 'Kiefer', 'Herz & Gefässe',
+  'Nacken', 'Rücken', 'Schulter', 'Arm & Hand', 'Hüfte', 'Knie', 'Bein & Fuss', 'Kiefer', 'Herz & Gefässe', 'Hormone & Zyklus',
 ];
 
 /**
@@ -315,14 +315,30 @@ export const visuals: Visual[] = [
     keywords: ['hüfte', 'arthrose', 'knorpel', 'leiste', 'gehen', 'steif'],
     relatedPage: '/beschwerden/hueftschmerzen/',
   },
+  // Welle 2 (Muskeln): voll konfiguriert, DRAFT bis finale Assets da sind.
+  // Benötigte Assets: piriformis-normal · piriformis-problem · piriformis-pain-route
   {
     slug: 'piriformis',
     title: 'Piriformis / Ischiasregion',
     category: 'Hüfte',
-    subtitle: 'Ein Muskel im Gesäss kann auf den Ischiasnerv drücken.',
+    subtitle: 'Ein tiefer Muskel im Gesäss. Verspannt kann er den Ischiasnerv reizen.',
     status: 'draft',
-    keywords: ['gesäss', 'hüfte', 'piriformis', 'muskel', 'ischias', 'nerv', 'sitzen', 'bein'],
+    labelNormal: 'Entspannt',
+    labelProblem: 'Verspannt',
+    hotspots: [
+      { id: 'muskel', label: 'Piriformis', x: 50, y: 40, view: 'both', note: 'Ein kleiner, tiefer Muskel mitten im Gesäss.' },
+      { id: 'nerv', label: 'Ischiasnerv', x: 55, y: 55, view: 'both', note: 'Der Nerv läuft direkt am Muskel vorbei, bei manchen sogar hindurch.' },
+      { id: 'druck', label: 'Druck auf Nerv', x: 58, y: 45, view: 'problem', note: 'Ist der Muskel verspannt, kann er den Nerv reizen.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Das kann sich ähnlich wie Ischias anfühlen.' },
+    ],
+    painPath: [
+      { label: 'Gesäss', x: 55, y: 48 },
+      { label: 'Hüfte aussen', x: 62, y: 55 },
+      { label: 'Rückseite Oberschenkel', x: 60, y: 70 },
+    ],
+    keywords: ['piriformis', 'piriformis-syndrom', 'gesässmuskel', 'gesäss', 'hüfte', 'muskel', 'ischias', 'ischias-ähnlich', 'nerv', 'sitzen', 'bein'],
     relatedPage: '/beschwerden/piriformis-syndrom/',
+    related: ['ischias', 'gluteus-medius'],
   },
   {
     slug: 'achillessehne',
@@ -415,6 +431,192 @@ export const visuals: Visual[] = [
     // relatedPage: bewusst leer — keine bestätigte Beschwerden-Route für Cholesterin.
     // Future related: herzinfarkt, schlaganfall (Slugs existieren noch nicht — nicht erfinden).
     related: ['bluthochdruck'],
+  },
+
+  // ════════════════════════════════════════════════════════════════
+  // Welle 2 — Muskeln (7) + Hormone (PCOS). Alle DRAFT: vollständige
+  // Copy/Hotspots/Suche/Related vorbereitet, es fehlen NUR die finalen
+  // Bilder. Keine Platzhaltergrafiken. Hotspot-/painPath-Koordinaten
+  // sind provisorisch und werden nach Asset-Drop kalibriert.
+  // Asset-Konvention pro Muskel: <slug>-normal · <slug>-problem ·
+  // <slug>-pain-route (gleiche Perspektive Entspannt/Verspannt).
+  // Suche: alle Muskeln tragen das Keyword 'muskel' (Cluster-Suche).
+  // ════════════════════════════════════════════════════════════════
+  {
+    slug: 'trapezmuskel',
+    title: 'Trapezmuskel',
+    category: 'Nacken',
+    subtitle: 'Der grosse Nacken-Schulter-Muskel. Verspannt kann er bis in den Kopf ausstrahlen.',
+    status: 'draft',
+    labelNormal: 'Entspannt',
+    labelProblem: 'Verspannt',
+    hotspots: [
+      { id: 'muskel', label: 'Trapezmuskel', x: 50, y: 35, view: 'both', note: 'Der Muskel verbindet Nacken, Schultern und oberen Rücken.' },
+      { id: 'nacken', label: 'Nacken', x: 50, y: 18, view: 'both', note: 'Der obere Teil zieht vom Hinterkopf zur Schulter.' },
+      { id: 'schulter', label: 'Schulter', x: 65, y: 30, view: 'both', note: 'Der Muskel hebt und hält die Schultern.' },
+      { id: 'verspannung', label: 'Verspannung', x: 58, y: 25, view: 'problem', note: 'Stress, Bildschirmarbeit oder langes Sitzen können ihn dauerhaft anspannen.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Die Spannung kann bis in den Hinterkopf ziehen.' },
+    ],
+    painPath: [
+      { label: 'Nacken', x: 50, y: 20, labelSide: 'left' },
+      { label: 'Hinterkopf', x: 52, y: 10 },
+      { label: 'Schulter', x: 63, y: 28 },
+    ],
+    keywords: ['trapezmuskel', 'trapezius', 'nackenmuskel', 'schulter-nacken', 'nacken', 'schulter', 'verspannung', 'kopfschmerzen', 'muskel'],
+    relatedPage: '/beschwerden/nackenschmerzen/',
+    related: ['scm', 'bandscheibenvorfall-hws'],
+  },
+  {
+    slug: 'quadratus-lumborum',
+    title: 'Quadratus lumborum',
+    category: 'Rücken',
+    subtitle: 'Ein tiefer Muskel in der Flanke. Er kann einseitige Kreuzschmerzen mitverursachen.',
+    status: 'draft',
+    labelNormal: 'Entspannt',
+    labelProblem: 'Verspannt',
+    hotspots: [
+      { id: 'muskel', label: 'Quadratus lumborum', x: 45, y: 45, view: 'both', note: 'Der Muskel liegt tief zwischen unterster Rippe und Beckenkamm.' },
+      { id: 'rippe', label: 'Unterste Rippe', x: 48, y: 30, view: 'both', note: 'Oben setzt er an der untersten Rippe an.' },
+      { id: 'becken', label: 'Beckenkamm', x: 48, y: 60, view: 'both', note: 'Unten hält er sich am Beckenkamm fest. Er stabilisiert den Rumpf.' },
+      { id: 'verspannung', label: 'Verspannung', x: 55, y: 45, view: 'problem', note: 'Langes Sitzen oder einseitiges Heben kann den Muskel überlasten.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Der Schmerz sitzt oft einseitig tief in der Flanke.' },
+    ],
+    painPath: [
+      { label: 'Flanke', x: 55, y: 40 },
+      { label: 'Unterer Rücken', x: 50, y: 48, labelSide: 'left' },
+      { label: 'Hüfte / Gesäss', x: 56, y: 58 },
+    ],
+    keywords: ['quadratus lumborum', 'ql', 'flankenschmerz', 'tiefer rücken', 'seitlich', 'einseitig', 'kreuz', 'heben', 'sitzen', 'rücken', 'muskel'],
+    relatedPage: '/beschwerden/rueckenschmerzen/',
+    related: ['iliopsoas', 'bandscheibenvorfall-lws'],
+  },
+  {
+    slug: 'rectus-femoris',
+    title: 'Rectus femoris',
+    category: 'Hüfte',
+    subtitle: 'Der Muskel vorne am Oberschenkel. Er beugt die Hüfte und streckt das Knie.',
+    status: 'draft',
+    labelNormal: 'Entspannt',
+    labelProblem: 'Überlastet',
+    hotspots: [
+      { id: 'muskel', label: 'Rectus femoris', x: 50, y: 45, view: 'both', note: 'Er zieht vom Becken über den Oberschenkel bis unter die Kniescheibe.' },
+      { id: 'huefte', label: 'Hüfte', x: 48, y: 25, view: 'both', note: 'Oben hilft er, das Bein anzuheben.' },
+      { id: 'knie', label: 'Knie', x: 52, y: 72, view: 'both', note: 'Unten hilft er, das Knie zu strecken.' },
+      { id: 'ueberlastung', label: 'Überlastung', x: 50, y: 38, view: 'problem', note: 'Sport, Treppen oder viel Sitzen können den Muskel reizen.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Zug oder Schmerz zeigt sich oft vorne am Oberschenkel oder an der Kniescheibe.' },
+    ],
+    painPath: [
+      { label: 'Leiste / Hüfte', x: 48, y: 28, labelSide: 'left' },
+      { label: 'Vorderer Oberschenkel', x: 50, y: 48 },
+      { label: 'Kniescheibe', x: 52, y: 70 },
+    ],
+    keywords: ['rectus femoris', 'vorderer oberschenkel', 'oberschenkel vorne', 'oberschenkelmuskel', 'hüftbeuger vorne', 'quadrizeps', 'knie', 'treppen', 'sport', 'muskel'],
+    relatedPage: '/beschwerden/hueftschmerzen/',
+    related: ['iliopsoas', 'gluteus-medius'],
+  },
+  {
+    slug: 'gluteus-medius',
+    title: 'Gluteus medius',
+    category: 'Hüfte',
+    subtitle: 'Der seitliche Gesässmuskel. Er hält das Becken bei jedem Schritt stabil.',
+    status: 'draft',
+    labelNormal: 'Stabil',
+    labelProblem: 'Überlastet',
+    hotspots: [
+      { id: 'muskel', label: 'Gluteus medius', x: 55, y: 40, view: 'both', note: 'Der Muskel liegt seitlich an der Hüfte, oberhalb des Hüftgelenks.' },
+      { id: 'becken', label: 'Becken', x: 48, y: 32, view: 'both', note: 'Beim Gehen hält er das Becken waagrecht.' },
+      { id: 'einbein', label: 'Einbeinstand', x: 52, y: 55, view: 'both', note: 'Bei jedem Schritt trägt er kurz das ganze Gewicht.' },
+      { id: 'ueberlastung', label: 'Überlastung', x: 58, y: 40, view: 'problem', note: 'Schwäche oder Überlastung zeigt sich oft beim Gehen, Stehen oder Treppensteigen.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Typisch ist Schmerz aussen an der Hüfte, manchmal bis seitlich ins Bein.' },
+    ],
+    painPath: [
+      { label: 'Hüfte aussen', x: 58, y: 45 },
+      { label: 'Seitliches Gesäss', x: 55, y: 52, labelSide: 'left' },
+      { label: 'Seitlicher Oberschenkel', x: 58, y: 65 },
+    ],
+    keywords: ['gluteus medius', 'seitliche hüfte', 'hüftstabilisator', 'gesäss', 'becken', 'gehen', 'stehen', 'trochanter', 'hüfte', 'muskel'],
+    relatedPage: '/beschwerden/hueftschmerzen/',
+    related: ['piriformis', 'rectus-femoris'],
+  },
+  {
+    slug: 'scm',
+    title: 'Sternocleidomastoideus (SCM)',
+    category: 'Nacken',
+    subtitle: 'Der Kopfdreher-Muskel vorne am Hals. Er dreht und neigt den Kopf.',
+    status: 'draft',
+    labelNormal: 'Entspannt',
+    labelProblem: 'Verspannt',
+    hotspots: [
+      { id: 'muskel', label: 'SCM', x: 50, y: 40, view: 'both', note: 'Der Muskel zieht vom Ohr schräg hinunter zu Brustbein und Schlüsselbein.' },
+      { id: 'drehen', label: 'Kopf drehen', x: 52, y: 25, view: 'both', note: 'Er dreht und neigt den Kopf.' },
+      { id: 'ansatz', label: 'Schlüsselbein', x: 48, y: 62, view: 'both', note: 'Unten setzt er an Brustbein und Schlüsselbein an.' },
+      { id: 'verspannung', label: 'Verspannung', x: 54, y: 38, view: 'problem', note: 'Bildschirmarbeit oder eine ungünstige Schlafposition können ihn überlasten.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Die Spannung kann sich bis an Kopf oder Stirn bemerkbar machen.' },
+    ],
+    painPath: [
+      { label: 'Hals seitlich', x: 50, y: 35, labelSide: 'left' },
+      { label: 'Hinter dem Ohr', x: 55, y: 18 },
+      { label: 'Stirn / Schläfe', x: 48, y: 10, labelSide: 'left' },
+    ],
+    keywords: ['scm', 'sternocleidomastoideus', 'halsmuskel', 'kopfdreher', 'hals', 'nacken', 'kopfschmerzen', 'drehen', 'muskel'],
+    relatedPage: '/beschwerden/nackenschmerzen/',
+    related: ['trapezmuskel', 'bandscheibenvorfall-hws'],
+  },
+  {
+    slug: 'iliopsoas',
+    title: 'Iliopsoas',
+    category: 'Hüfte',
+    subtitle: 'Der tiefe Hüftbeuger. Langes Sitzen kann ihn verkürzen und die Haltung verändern.',
+    status: 'draft',
+    labelNormal: 'Entspannt',
+    labelProblem: 'Verkürzt',
+    hotspots: [
+      { id: 'muskel', label: 'Iliopsoas', x: 50, y: 45, view: 'both', note: 'Der Muskel läuft von der Lendenwirbelsäule durch das Becken zur Hüfte.' },
+      { id: 'lws', label: 'Lendenwirbelsäule', x: 48, y: 25, view: 'both', labelSide: 'left', note: 'Oben setzt er direkt an den Lendenwirbeln an.' },
+      { id: 'leiste', label: 'Leiste', x: 52, y: 62, view: 'both', note: 'Unten zieht er durch die Leiste zum Oberschenkel.' },
+      { id: 'verkuerzung', label: 'Verkürzung', x: 54, y: 45, view: 'problem', note: 'Viel Sitzen kann den Muskel verkürzen. Das kann an Rücken und Hüfte ziehen.' },
+      { id: 'schmerz', label: 'Ausstrahlung', x: 0, y: 0, view: 'pain', note: 'Spürbar wird das oft in Leiste, vorderer Hüfte oder im unteren Rücken.' },
+    ],
+    painPath: [
+      { label: 'Unterer Rücken', x: 48, y: 35, labelSide: 'left' },
+      { label: 'Leiste', x: 52, y: 55 },
+      { label: 'Vordere Hüfte', x: 54, y: 62 },
+    ],
+    keywords: ['iliopsoas', 'psoas', 'hüftbeuger', 'leiste', 'sitzen', 'hüfte', 'unterer rücken', 'verkürzt', 'haltung', 'muskel'],
+    relatedPage: '/beschwerden/hueftschmerzen/',
+    related: ['quadratus-lumborum', 'rectus-femoris'],
+  },
+  // PCOS ist kein Muskel-Visual: Systemthema mit eigener Didaktik.
+  // Hauptvergleich = Zyklus-Gegenüberstellung (kein Körper-Vergleich),
+  // zweite Ansicht = Übersicht typischer Muster. Differenziert bleiben:
+  // PCOS ist NICHT nur "zu viele männliche Hormone" und NICHT nur ein
+  // Insulinthema; nicht jede Betroffene ist gleich betroffen.
+  // Benötigte Assets: pcos-zyklus-normal · pcos-zyklus · pcos-muster
+  {
+    slug: 'pcos',
+    title: 'PCOS',
+    category: 'Hormone & Zyklus',
+    subtitle: 'PCOS ist eine hormonelle Veränderung. Der Zyklus ist dabei oft unregelmässig.',
+    status: 'draft',
+    labelNormal: 'Normaler Zyklus',
+    labelProblem: 'Zyklus bei PCOS',
+    hotspots: [
+      { id: 'eisprung', label: 'Eisprung', x: 50, y: 35, view: 'normal', note: 'Im normalen Zyklus reift jeden Monat eine Eizelle heran und wird freigesetzt.' },
+      { id: 'follikel', label: 'Eibläschen', x: 50, y: 35, view: 'problem', note: 'Bei PCOS reifen oft viele kleine Eibläschen an, ohne dass ein Eisprung entsteht.' },
+      { id: 'hormone', label: 'Hormone', x: 50, y: 60, view: 'both', note: 'Mehrere Hormone spielen zusammen. Bei PCOS ist dieses Gleichgewicht verschoben.' },
+      { id: 'periode', label: 'Periode', x: 50, y: 80, view: 'both', note: 'Ohne regelmässigen Eisprung wird auch die Periode oft unregelmässig.' },
+      { id: 'muster', label: 'Typische Muster', x: 0, y: 0, view: 'pain', note: 'Nicht jede Betroffene hat die gleichen Beschwerden. Eine ärztliche Abklärung und Begleitung ist wichtig.' },
+    ],
+    secondaryHeading: 'Was kann dazugehören?',
+    painPath: [
+      { label: 'Unregelmässiger Zyklus', x: 25, y: 30 },
+      { label: 'Haut und Haare', x: 70, y: 30 },
+      { label: 'Gewicht und Stoffwechsel', x: 25, y: 70 },
+      { label: 'Kinderwunsch', x: 70, y: 70 },
+    ],
+    keywords: ['pcos', 'polyzystisches ovarialsyndrom', 'zyklus', 'hormone', 'unregelmässige periode', 'eisprung', 'kinderwunsch', 'haut', 'haare', 'insulin'],
+    relatedPage: '/beschwerden/pcos/',
+    // related: bewusst leer — noch keine passenden hormonellen Visuals.
   },
 ];
 

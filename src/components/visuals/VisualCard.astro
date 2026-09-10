@@ -28,6 +28,8 @@ const Tag = live ? 'a' : 'div';
 </Tag>
 
 <style>
+  /* display:flex würde sonst das [hidden]-Attribut des Suchfilters überstimmen. */
+  .vcard[hidden] { display: none; }
   .vcard {
     display: flex;
     flex-direction: column;
