@@ -9,7 +9,7 @@ import { koerpersignale } from '../../data/koerpersignale';
 
 const title = 'Gesundheitsbibliothek: Gesundheitswissen einfach finden';
 const description =
-  'Symptom, Beschwerde, Körperregion oder Therapie: Die Gesundheitsbibliothek von TCM.ch verbindet alle Gesundheitsinhalte an einem Ort — von Körpersignalen ohne Diagnose bis zu Behandlungsmöglichkeiten in deiner Nähe.';
+  'Symptom, Beschwerde, Körperregion oder Therapie: Die Gesundheitsbibliothek von TCM.ch verbindet alle Gesundheitsinhalte an einem Ort, von Körpersignalen ohne Diagnose bis zu Behandlungsmöglichkeiten in deiner Nähe.';
 const url = 'https://tcm.ch/gesundheitsbibliothek/';
 
 const schema = [
@@ -46,7 +46,7 @@ const CATEGORIES = [
     label: 'Beschwerden',
     href: '/beschwerden/',
     cta: 'Alle Beschwerden A–Z',
-    text: 'Du kennst deine Diagnose oder dein Beschwerdebild? Über 100 Seiten von Rückenschmerzen bis Migräne — mit Behandlungsmöglichkeiten und Kostenübernahme.',
+    text: 'Du kennst deine Diagnose oder dein Beschwerdebild? Über 100 Seiten von Rückenschmerzen bis Migräne, mit Behandlungsmöglichkeiten und Kostenübernahme.',
     samples: [
       { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
       { href: '/beschwerden/migraene/', label: 'Migräne' },
@@ -69,7 +69,7 @@ const CATEGORIES = [
     label: 'Therapien',
     href: '/therapien/',
     cta: 'Alle Therapien',
-    text: 'Wie lässt sich das behandeln? Akupunktur, Tuina, Schröpfen, Kräutertherapie und mehr — mit Ablauf, Dauer und Kostenübernahme durch die Zusatzversicherung.',
+    text: 'Wie lässt sich das behandeln? Akupunktur, Tuina, Schröpfen, Kräutertherapie und mehr, mit Ablauf, Dauer und Kostenübernahme durch die Zusatzversicherung.',
     samples: [
       { href: '/therapien/akupunktur/', label: 'Akupunktur' },
       { href: '/therapien/tuina/', label: 'Tuina' },
@@ -81,7 +81,7 @@ const CATEGORIES = [
     label: 'Untersuchungen & Diagnostik',
     href: '#diagnostik',
     cta: 'Zur Übersicht',
-    text: 'Wie wird so etwas medizinisch abgeklärt? Zur Orientierung: was die Schulmedizin typischerweise untersucht — von der Blutuntersuchung bis zum MRI.',
+    text: 'Wie wird so etwas medizinisch abgeklärt? Zur Orientierung: was die Schulmedizin typischerweise untersucht, von der Blutuntersuchung bis zum MRI.',
     samples: [],
   },
   {
@@ -98,7 +98,7 @@ const CATEGORIES = [
     <div class="wrap narrow">
       <div class="cat">Gesundheitsbibliothek</div>
       <h1>Gesundheitswissen einfach finden</h1>
-      <p class="lead">Ob du ein Symptom beobachtest, deine Diagnose schon kennst oder wissen willst, wie eine Behandlung abläuft: Hier findest du alle Gesundheitsinhalte von TCM.ch an einem Ort — nach Körpersignal, Beschwerde, Körperregion, Therapie oder Untersuchung.</p>
+      <p class="lead">Ob du ein Symptom beobachtest, deine Diagnose schon kennst oder wissen willst, wie eine Behandlung abläuft: Hier findest du alle Gesundheitsinhalte von TCM.ch an einem Ort: nach Körpersignal, Beschwerde, Körperregion, Therapie oder Untersuchung.</p>
 
       <div class="lib-search" id="lib-search">
         <label class="ls-label" for="lib-search-input">Suche in der Gesundheitsbibliothek</label>
@@ -149,7 +149,7 @@ const CATEGORIES = [
 
       <div class="diag" id="diagnostik">
         <h2 class="group-title">Untersuchungen & Diagnostik</h2>
-        <p class="group-sub">Zur Orientierung: Diese Untersuchungen setzt die Schulmedizin häufig ein, um Beschwerden abzuklären. TCM.ch führt sie nicht selbst durch — die Abklärung gehört in ärztliche Hand. Unsere Therapeutinnen und Therapeuten sagen dir ehrlich, wenn zuerst ein Arztbesuch sinnvoll ist.</p>
+        <p class="group-sub">Zur Orientierung: Diese Untersuchungen setzt die Schulmedizin häufig ein, um Beschwerden abzuklären. TCM.ch führt sie nicht selbst durch, die Abklärung gehört in ärztliche Hand. Unsere Therapeutinnen und Therapeuten sagen dir ehrlich, wenn zuerst ein Arztbesuch sinnvoll ist.</p>
         <div class="diag-grid">
           {DIAGNOSTICS.map((d) => d.href ? (
             <a class="diag-card diag-card--link" href={d.href}>
@@ -168,7 +168,7 @@ const CATEGORIES = [
 
       <div class="bridge">
         <h2 class="group-title">Lieber von A bis Z?</h2>
-        <p>Alle Beschwerdebilder gibt es auch als klassische Übersicht — von Akne bis Zyklusbeschwerden.</p>
+        <p>Alle Beschwerdebilder gibt es auch als klassische Übersicht, von Akne bis Zyklusbeschwerden.</p>
         <div class="cta-row">
           <a class="btn btn--primary" href="/beschwerden/">Alle Beschwerden ansehen</a>
           <a class="btn btn--ghost" href="/selbsttest/">Zum TCM-Selbsttest</a>
@@ -204,7 +204,7 @@ const CATEGORIES = [
     const words = nq.split(/\s+/).filter(Boolean);
     const hits = prepared.filter((e) => words.every((w) => e.n.includes(w)));
     if (!hits.length) {
-      box.innerHTML = '<div class="ls-empty">Nichts gefunden. Versuch ein anderes Wort — oder stöbere <a href="/beschwerden/">von A bis Z</a>.</div>';
+      box.innerHTML = '<div class="ls-empty">Nichts gefunden. Versuch ein anderes Wort oder stöbere <a href="/beschwerden/">von A bis Z</a>.</div>';
       box.hidden = false;
       return;
     }

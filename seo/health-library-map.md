@@ -100,6 +100,18 @@ FAQs bewusst leer (keine erfundenen Zusatzinhalte). Sitemap 367 -> 372 (+5).
   Produktentscheidung
 - "Visual anfragen" existiert im System nicht (nur QR/PDF/Vollbild) — nichts erfunden
 
+## Welle 7 (11.09.2026) — Homepage-Sektion + Em-Dash-Bereinigung
+
+- Homepage: Sektion "Gesundheitsbibliothek" (id gesundheitsbibliothek) zwischen
+  Behandlungen und Ergänzenden Therapien; 6 Einstiegskarten (Körpersignale,
+  Beschwerden, Körper & Regionen, Therapien, Untersuchungen, Visual Library)
+  + CTA auf /gesundheitsbibliothek/. Selbstständiges Inline-Styling nach
+  bestehendem kt-wrap-Muster, kein Home-Redesign, kein neues Tracking.
+- Em-Dashes: 41 sichtbare/Metadaten-Vorkommen im Health-Scope natürlich
+  umformuliert (Komma/Doppelpunkt/Punkt; Titel-Trenner auf "|"); Code-Kommentare
+  bewusst unangetastet. Sichtbare Em-Dashes im Health-Scope: 0 (Kommentar-
+  bereinigter dist-Sweep). Sitemap unverändert 372, keine URL/Canonical-Änderung.
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:

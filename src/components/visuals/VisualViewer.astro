@@ -108,7 +108,7 @@ const single = panels.length === 1;
       <h2>{v.secondaryHeading ?? 'Wo kann man es spüren?'}</h2>
       <div class="vv-pain-grid">
         <div class="vv-imgwrap vv-pain-imgwrap">
-          <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann — vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />
+          <VisualImg image={v.secondaryImage} alt={`${v.title}: Wo man es spüren kann, vereinfachter Schmerzverlauf`} width={600} height={1000} loading="lazy" sizes="(max-width: 900px) 92vw, 420px" />
           {(v.painPath ?? []).map((s, i) => (
             <span class:list={['vv-painstep', { 'vv-painstep--left': s.labelSide === 'left' }]} style={`left:${s.x}%;top:${s.y}%;`}>
               <span class="vv-painstep-dot" aria-hidden="true">{i + 1}</span>
@@ -154,7 +154,7 @@ const single = panels.length === 1;
     <button type="button" class="vv-dialog-close" id="vv-dialog-close" aria-label="Schliessen">&times;</button>
     <h3 class="vv-dialog-title">{v.title}</h3>
     <div class="vv-dialog-qr" set:html={qrSvg} />
-    <p class="vv-dialog-hint">Mit der Handy-Kamera scannen — die Seite öffnet sich direkt.</p>
+    <p class="vv-dialog-hint">Mit der Handy-Kamera scannen, die Seite öffnet sich direkt.</p>
   </dialog>
 
 </article>

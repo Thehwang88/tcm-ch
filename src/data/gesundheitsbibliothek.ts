@@ -39,13 +39,13 @@ export interface Diagnostic {
 // KEINE eigenen Seiten (kein Thin Content, keine Sitemap-Erweiterung). TCM.ch führt
 // diese Untersuchungen nicht selbst durch — die Sprache auf den Seiten stellt das klar.
 export const DIAGNOSTICS: Diagnostic[] = [
-  { id: 'blutuntersuchung', name: 'Blutuntersuchung', short: 'Laborwerte wie Entzündungszeichen, Eisen, Schilddrüse oder Vitamine — häufig der erste Schritt der ärztlichen Abklärung.' },
-  { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen — ohne Röntgenstrahlung.' },
-  { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild — etwa bei Arthrose-Verdacht oder nach Stürzen.' },
-  { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit — schnell und strahlungsfrei.' },
-  { id: 'neurologisch', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft und Sensibilität — bei Taubheit, Kribbeln oder Schwindel.' },
-  { id: 'nlg', name: 'Nervenleitgeschwindigkeit', short: 'Misst, wie schnell ein Nerv leitet — Standard bei Verdacht auf Karpaltunnelsyndrom oder Polyneuropathie.', href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/' },
-  { id: 'gastroskopie', name: 'Gastroskopie', short: 'Blick in Speiseröhre und Magen — bei anhaltendem Sodbrennen oder Magenbeschwerden.' },
+  { id: 'blutuntersuchung', name: 'Blutuntersuchung', short: 'Laborwerte wie Entzündungszeichen, Eisen, Schilddrüse oder Vitamine: häufig der erste Schritt der ärztlichen Abklärung.' },
+  { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen, ganz ohne Röntgenstrahlung.' },
+  { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild, etwa bei Arthrose-Verdacht oder nach Stürzen.' },
+  { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit, schnell und strahlungsfrei.' },
+  { id: 'neurologisch', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft und Sensibilität, geprüft bei Taubheit, Kribbeln oder Schwindel.' },
+  { id: 'nlg', name: 'Nervenleitgeschwindigkeit', short: 'Misst, wie schnell ein Nerv leitet: Standard bei Verdacht auf Karpaltunnelsyndrom oder Polyneuropathie.', href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/' },
+  { id: 'gastroskopie', name: 'Gastroskopie', short: 'Blick in Speiseröhre und Magen, etwa bei anhaltendem Sodbrennen oder Magenbeschwerden.' },
 ];
 
 export interface BodyRegion {
@@ -74,8 +74,8 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'kopf',
     title: 'Kopf & Gesicht',
     nav: 'Kopf & Gesicht',
-    metaDesc: 'Kopfschmerzen, Migräne, Schwindel, Ohrgeräusche, Kieferbeschwerden: alle Inhalte der Gesundheitsbibliothek zur Region Kopf & Gesicht — Körpersignale, Beschwerden und Behandlungsmöglichkeiten.',
-    lead: 'Vom Spannungskopfschmerz über Schwindel beim Umdrehen bis zum Pochen im Ohr: Hier findest du alle Inhalte zur Region Kopf und Gesicht — Signale ohne Diagnose, bekannte Beschwerdebilder und passende Behandlungen.',
+    metaDesc: 'Kopfschmerzen, Migräne, Schwindel, Ohrgeräusche, Kieferbeschwerden: alle Inhalte der Gesundheitsbibliothek zur Region Kopf & Gesicht. Körpersignale, Beschwerden und Behandlungsmöglichkeiten.',
+    lead: 'Vom Spannungskopfschmerz über Schwindel beim Umdrehen bis zum Pochen im Ohr: Hier findest du alle Inhalte zur Region Kopf und Gesicht. Signale ohne Diagnose, bekannte Beschwerdebilder und passende Behandlungen.',
     signals: ['schwindel-beim-umdrehen-im-bett', 'schwindel-beim-aufstehen', 'schwindel-beim-buecken', 'druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken', 'augenflimmern', 'herzschlag-im-ohr', 'ohr-einseitig-verstopft', 'ohr-knackt-beim-schlucken', 'augenlid-zuckt', 'bitterer-geschmack-morgens'],
     conditions: [
       { slug: 'migraene', label: 'Migräne' }, { slug: 'kopfschmerzen', label: 'Kopfschmerzen' },
@@ -96,7 +96,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'hals-nacken',
     title: 'Hals & Nacken',
     nav: 'Hals & Nacken',
-    metaDesc: 'Nackenschmerzen, Knacken beim Drehen, Klossgefühl im Hals: alle Inhalte der Gesundheitsbibliothek zur Region Hals & Nacken — Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
+    metaDesc: 'Nackenschmerzen, Knacken beim Drehen, Klossgefühl im Hals: alle Inhalte der Gesundheitsbibliothek zur Region Hals & Nacken. Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Ein Nacken, der beim Drehen knackt. Ein Kloss im Hals, der nicht verschwindet. Verspannungen, die bis in den Kopf ziehen. Hier ist alles zur Region Hals und Nacken gesammelt.',
     signals: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif', 'kribbeln-vom-nacken-in-den-arm', 'klossgefuehl-im-hals', 'staendiger-raeusperzwang', 'zungenbrennen', 'trockener-mund-nachts'],
     conditions: [
@@ -116,7 +116,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'schulter-arm-hand',
     title: 'Schulter, Arm & Hand',
     nav: 'Schulter, Arm & Hand',
-    metaDesc: 'Eingeschlafene Finger, Frozen Shoulder, Tennisarm, Karpaltunnelsyndrom: alle Inhalte der Gesundheitsbibliothek zu Schulter, Arm und Hand — vom ersten Signal bis zur Behandlung.',
+    metaDesc: 'Eingeschlafene Finger, Frozen Shoulder, Tennisarm, Karpaltunnelsyndrom: alle Inhalte der Gesundheitsbibliothek zu Schulter, Arm und Hand, vom ersten Signal bis zur Behandlung.',
     lead: 'Finger, die nachts einschlafen. Eine Schulter, die nicht mehr über den Kopf will. Kribbeln beim Velofahren. Diese Region sammelt alle Inhalte von der ersten Beobachtung bis zum bekannten Beschwerdebild.',
     signals: ['finger-schlafen-ein', 'einzelne-finger-taub', 'arm-schlaeft-nachts-ein', 'kribbeln-vom-nacken-in-den-arm', 'finger-morgens-steif', 'hand-kribbelt-beim-velofahren', 'kalte-haende-einseitig', 'kalte-haende-trotz-waerme'],
     conditions: [
@@ -137,7 +137,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'ruecken',
     title: 'Rücken',
     nav: 'Rücken',
-    metaDesc: 'Rückenschmerzen, Bandscheibenvorfall, Ischias, Hexenschuss: alle Inhalte der Gesundheitsbibliothek zur Region Rücken — Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
+    metaDesc: 'Rückenschmerzen, Bandscheibenvorfall, Ischias, Hexenschuss: alle Inhalte der Gesundheitsbibliothek zur Region Rücken. Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Schmerzen beim Husten, ein Bein, das beim Sitzen taub wird, oder der klassische Hexenschuss: Der Rücken ist die häufigste Beschwerderegion überhaupt. Hier ist alles dazu an einem Ort.',
     signals: ['rueckenschmerzen-beim-husten', 'rueckenschmerzen-beim-langen-stehen', 'bein-wird-beim-sitzen-taub'],
     conditions: [
@@ -158,7 +158,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'bauch-verdauung',
     title: 'Bauch & Verdauung',
     nav: 'Bauch & Verdauung',
-    metaDesc: 'Reizdarm, Blähungen, Sodbrennen, Gastritis: alle Inhalte der Gesundheitsbibliothek zur Region Bauch & Verdauung — Beschwerden, Zusammenhänge und Behandlungsmöglichkeiten.',
+    metaDesc: 'Reizdarm, Blähungen, Sodbrennen, Gastritis: alle Inhalte der Gesundheitsbibliothek zur Region Bauch & Verdauung. Beschwerden, Zusammenhänge und Behandlungsmöglichkeiten.',
     lead: 'Ein Bauch, der nach dem Essen rebelliert. Sodbrennen, das nachts wach hält. Eine Verdauung, die ohne klare Ursache unruhig ist. Hier findest du alle Inhalte zur Region Bauch und Verdauung.',
     signals: ['voellegefuehl-nach-dem-essen', 'blaehbauch-am-abend', 'bauch-fuehlt-sich-hart-an', 'stinkende-blaehungen', 'durchfall-am-morgen', 'magendruck-im-liegen', 'druckgefuehl-im-unterbauch', 'bitterer-geschmack-morgens'],
     conditions: [
@@ -180,7 +180,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'huefte-bein-fuss',
     title: 'Hüfte, Bein & Fuss',
     nav: 'Hüfte, Bein & Fuss',
-    metaDesc: 'Knieschmerzen, Wadenkrämpfe, schwere Beine, Fersensporn: alle Inhalte der Gesundheitsbibliothek zu Hüfte, Bein und Fuss — Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
+    metaDesc: 'Knieschmerzen, Wadenkrämpfe, schwere Beine, Fersensporn: alle Inhalte der Gesundheitsbibliothek zu Hüfte, Bein und Fuss. Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Wadenkrämpfe, die nachts wecken. Ein Knie, das knackt. Füsse, die abends brennen. Von der Hüfte bis zur Fusssohle sammelt diese Region alle Inhalte der Bibliothek.',
     signals: ['wadenkraempfe-nachts', 'schwere-beine-abends', 'brennende-fuesse-nachts', 'zehen-kribbeln', 'ein-fuss-kaelter-als-der-andere', 'bein-wird-beim-sitzen-taub', 'knie-knackt-ohne-schmerzen'],
     conditions: [
@@ -242,7 +242,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     slug: 'zyklus-hormone',
     title: 'Zyklus & Hormone',
     nav: 'Zyklus & Hormone',
-    metaDesc: 'Zyklusbeschwerden, PMS, Endometriose, Wechseljahre, Kinderwunsch: alle Inhalte der Gesundheitsbibliothek zu Zyklus und Hormonen — Beschwerden, Signale und Behandlungsmöglichkeiten.',
+    metaDesc: 'Zyklusbeschwerden, PMS, Endometriose, Wechseljahre, Kinderwunsch: alle Inhalte der Gesundheitsbibliothek zu Zyklus und Hormonen. Beschwerden, Signale und Behandlungsmöglichkeiten.',
     lead: 'Vom unregelmässigen Zyklus über PMS bis zu Wallungen in den Wechseljahren: Hier sind alle Inhalte rund um Zyklus, Hormone und Frauengesundheit gesammelt.',
     signals: ['nachtschweiss-ohne-fieber', 'hitzegefuehl-ohne-fieber', 'starkes-schwitzen-ohne-sport'],
     conditions: [
@@ -299,7 +299,7 @@ export function libraryLinksHtml(beschwerdeSlug: string): string {
     `<div class="wrap reveal">` +
     `<div class="section-label">Gesundheitsbibliothek</div>` +
     `<h2 class="section-title">Mehr zu dieser Körperregion</h2>` +
-    `<p class="section-sub">Signale, Beschwerden und Behandlungsmöglichkeiten der Region — an einem Ort gesammelt.</p>` +
+    `<p class="section-sub">Signale, Beschwerden und Behandlungsmöglichkeiten der Region, an einem Ort gesammelt.</p>` +
     `<div class="cl-links">${chips}<a href="/gesundheitsbibliothek/" class="cl-chip">Zur Gesundheitsbibliothek</a></div>` +
     `</div></section>`
   );

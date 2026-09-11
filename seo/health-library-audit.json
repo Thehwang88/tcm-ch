@@ -25,7 +25,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 45,
+      "inboundContentLinks": 46,
       "outboundHealthLinks": 112
     },
     {
@@ -1095,7 +1095,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 129,
+      "inboundContentLinks": 130,
       "outboundHealthLinks": 26
     },
     {
@@ -1555,7 +1555,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 140,
+      "inboundContentLinks": 141,
       "outboundHealthLinks": 52
     },
     {
@@ -2075,7 +2075,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 130,
+      "inboundContentLinks": 131,
       "outboundHealthLinks": 17
     },
     {
@@ -2391,17 +2391,17 @@
     {
       "url": "/visuals/",
       "type": "hub",
-      "title": "Medizin einfach erklärt — Visual Library | TCM.ch",
+      "title": "Medizin einfach erklärt | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
       "url": "/visuals/bandscheibenvorfall-hws/",
       "type": "visual",
-      "title": "Bandscheibenvorfall HWS — Visual Library | TCM.ch",
+      "title": "Bandscheibenvorfall HWS | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
@@ -2411,7 +2411,7 @@
     {
       "url": "/visuals/bandscheibenvorfall-hws/handout/",
       "type": "visual",
-      "title": "Bandscheibenvorfall HWS — Patienten-Handout | TCM.ch",
+      "title": "Bandscheibenvorfall HWS | Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
@@ -2421,7 +2421,7 @@
     {
       "url": "/visuals/bandscheibenvorfall-lws/",
       "type": "visual",
-      "title": "Bandscheibenvorfall LWS — Visual Library | TCM.ch",
+      "title": "Bandscheibenvorfall LWS | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
@@ -2431,7 +2431,7 @@
     {
       "url": "/visuals/bandscheibenvorfall-lws/handout/",
       "type": "visual",
-      "title": "Bandscheibenvorfall LWS — Patienten-Handout | TCM.ch",
+      "title": "Bandscheibenvorfall LWS | Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
@@ -2441,7 +2441,7 @@
     {
       "url": "/visuals/ischias/",
       "type": "visual",
-      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? — Visual Library | TCM.ch",
+      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
@@ -2451,7 +2451,7 @@
     {
       "url": "/visuals/ischias/handout/",
       "type": "visual",
-      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? — Patienten-Handout | TCM.ch",
+      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? | Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
@@ -2461,7 +2461,7 @@
     {
       "url": "/visuals/karpaltunnel/",
       "type": "visual",
-      "title": "Karpaltunnel: Welche Finger sind betroffen? — Visual Library | TCM.ch",
+      "title": "Karpaltunnel: Welche Finger sind betroffen? | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
@@ -2471,7 +2471,7 @@
     {
       "url": "/visuals/karpaltunnel/handout/",
       "type": "visual",
-      "title": "Karpaltunnel: Welche Finger sind betroffen? — Patienten-Handout | TCM.ch",
+      "title": "Karpaltunnel: Welche Finger sind betroffen? | Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
@@ -2481,7 +2481,7 @@
     {
       "url": "/visuals/nacken-ausstrahlung/",
       "type": "visual",
-      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm — Visual Library | TCM.ch",
+      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm | Visual Library | TCM.ch",
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
@@ -2491,7 +2491,7 @@
     {
       "url": "/visuals/nacken-ausstrahlung/handout/",
       "type": "visual",
-      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm — Patienten-Handout | TCM.ch",
+      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm | Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
