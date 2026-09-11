@@ -1,11 +1,12 @@
 {
   "generated": "2026-09-11",
   "totals": {
-    "healthPages": 292,
+    "healthPages": 305,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
+      "question": 13,
       "body_region": 9,
       "editorial": 76,
       "body_signal": 53,
@@ -25,7 +26,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 46,
+      "inboundContentLinks": 48,
       "outboundHealthLinks": 112
     },
     {
@@ -205,7 +206,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 24
     },
     {
@@ -235,7 +236,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 25,
       "outboundHealthLinks": 18
     },
     {
@@ -1095,8 +1096,138 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 133,
-      "outboundHealthLinks": 32
+      "inboundContentLinks": 134,
+      "outboundHealthLinks": 37
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/",
+      "type": "question",
+      "title": "Häufige Patientenfragen zu TCM &amp; Akupunktur | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
+      "type": "question",
+      "title": "Akupunktur mit Blutverdünnern: geht das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur/",
+      "type": "question",
+      "title": "Akupunktur: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/",
+      "type": "question",
+      "title": "Blaue Flecken nach Akupunktur: harmlos oder nicht? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/erster-termin/",
+      "type": "question",
+      "title": "Erster Termin &amp; Vorbereitung: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/kosten-versicherung/",
+      "type": "question",
+      "title": "Kosten &amp; Versicherung: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/",
+      "type": "question",
+      "title": "Müdigkeit nach Akupunktur: normal oder nicht? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/nach-der-behandlung/",
+      "type": "question",
+      "title": "Nach der Behandlung: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
+      "type": "question",
+      "title": "Schröpfen &amp; weitere Methoden: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/",
+      "type": "question",
+      "title": "Sicherheit &amp; Nebenwirkungen: häufige Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
+      "type": "question",
+      "title": "Tut Akupunktur weh? Was du wirklich spürst | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/",
+      "type": "question",
+      "title": "TCM oder zuerst zum Arzt? Die ehrliche Antwort | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/",
+      "type": "question",
+      "title": "Erster TCM-Termin: So läuft er ab | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
@@ -1555,7 +1686,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 146,
+      "inboundContentLinks": 148,
       "outboundHealthLinks": 54
     },
     {
@@ -2105,7 +2236,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 5
     },
     {
@@ -2115,8 +2246,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 198,
-      "outboundHealthLinks": 2
+      "inboundContentLinks": 205,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/therapien/akupunktur/schwangerschaft/",
@@ -2175,7 +2306,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 7
     },
     {
@@ -2205,8 +2336,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 100,
-      "outboundHealthLinks": 1
+      "inboundContentLinks": 102,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/therapien/massage/",
@@ -2315,7 +2446,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 53,
+      "inboundContentLinks": 54,
       "outboundHealthLinks": 5
     },
     {
@@ -2366,7 +2497,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 62,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 11
     },
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
@@ -2405,8 +2536,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 102,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 103,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/visuals/",
@@ -2415,7 +2546,7 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -2525,7 +2656,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 41,
+      "inboundContentLinks": 42,
       "outboundHealthLinks": 42
     },
     {
@@ -2555,7 +2686,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -2585,7 +2716,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 7
     },
     {
@@ -2655,7 +2786,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -2665,7 +2796,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -2675,7 +2806,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 13
     },
     {
@@ -2765,7 +2896,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 27,
       "outboundHealthLinks": 5
     },
     {
@@ -2775,7 +2906,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -2785,7 +2916,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -2815,8 +2946,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/wissen/tcm-basel-erfahrungen-ablauf/",
@@ -2935,7 +3066,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     }
   ]

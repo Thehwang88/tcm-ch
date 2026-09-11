@@ -1,0 +1,210 @@
+---
+// Fragen-Layer der Gesundheitsbibliothek: rendert Kategorie-Hubs UND Standalone-Fragen
+// aus fragen.ts. Layout bewusst identisch zu Körpersignale/Wissen (kb-body-Stile),
+// damit die Rubrik nahtlos zur Bibliothek gehört. Kein FAQPage-Schema als Selbstzweck:
+// MedicalWebPage + Breadcrumbs, Autor = Fachredaktion (MedicalOrganization, kein
+// erfundenes Review).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import TerminForm from '../../../components/TerminForm.astro';
+import StickyCta from '../../../components/StickyCta.astro';
+import { site } from '../../../data/site';
+import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
+import type { Frage, FragenHub } from '../../../data/fragen';
+
+export function getStaticPaths() {
+  return [
+    ...fragenHubs.map((h) => ({ params: { slug: h.slug }, props: { hub: h, frage: null } })),
+    ...fragen.map((f) => ({ params: { slug: f.slug }, props: { hub: null, frage: f } })),
+  ];
+}
+
+interface Props { hub: FragenHub | null; frage: Frage | null }
+const { hub, frage } = Astro.props;
+const slug = (hub ?? frage)!.slug;
+const path = `/gesundheitsbibliothek/fragen/${slug}`;
+const url = new URL(`${path}/`, site.url).href;
+const title = (hub ?? frage)!.title;
+const metaDesc = (hub ?? frage)!.metaDesc;
+const h1 = hub ? hub.h1 : frage!.question;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich habe eine Frage vor einer möglichen Behandlung.')}`;
+const anliegen = `Ich habe eine Frage: ${h1} Und ich möchte gerne einen Termin anfragen.`;
+
+const pageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  '@id': `${url}#page`,
+  name: title,
+  headline: title,
+  description: metaDesc,
+  url,
+  inLanguage: 'de-CH',
+  datePublished: FRAGEN_DATEN.datePublished,
+  dateModified: FRAGEN_DATEN.dateModified,
+  author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  publisher: {
+    '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+    logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+  },
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+    { '@type': 'ListItem', position: 3, name: 'Fragen', item: 'https://tcm.ch/gesundheitsbibliothek/fragen/' },
+    { '@type': 'ListItem', position: 4, name: h1, item: url },
+  ],
+};
+const schema = [pageLd, breadcrumbLd];
+
+const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
+---
+<LayoutDe title={`${title} | TCM.ch`} description={metaDesc} path={path} schema={schema} turnstile={true}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/fragen/">Fragen</a>
+        </nav>
+        <div class="cat">{hub ? 'Fragen-Kategorie' : 'Patientenfrage'}</div>
+        <h1>{h1}</h1>
+        <p class="lead">{hub ? hub.lead : ''}</p>
+        {frage && <div class="kurz kb-body" set:html={frage.kurz} />}
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+
+        {hub && (
+          <div class="answers">
+            {hub.answers.map((a) => (
+              <div class="answer" id={a.id}>
+                <h2>{a.q}</h2>
+                <div class="kb-body" set:html={a.a} />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {frage && <div class="kb-body" set:html={frage.bodyHtml} />}
+
+        <div class="cta-card">
+          <div class="cta-card-title">Deine Frage ist nicht dabei?</div>
+          <p>Frag uns direkt. Wir sagen dir ehrlich, ob eine Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört. EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
+          </div>
+        </div>
+
+        <aside class="author-card">
+          <div class="avatar avatar--sm">TCM</div>
+          <div>
+            <div class="a-label">Erstellt von</div>
+            <div class="a-name">TCM.ch Fachredaktion</div>
+            <div class="a-role">Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen</div>
+            <div class="a-review">Allgemeine Information, keine ärztliche Diagnose · zuletzt aktualisiert September 2026</div>
+          </div>
+        </aside>
+
+        {frage && (
+          <div class="related">
+            <div class="rel-label">Verwandte Fragen</div>
+            <ul class="q-list">
+              {frage.verwandt.map((v) => <li><a href={v.href}>{v.label}</a></li>)}
+            </ul>
+            <div class="rel-label" style="margin-top:26px">Mehr zum Thema</div>
+            <div class="rel-grid">
+              {frage.mehr.map((r) => (
+                <a class="rel-card" href={r.href}>
+                  <div class="rel-cat">{r.cat}</div>
+                  <div class="rel-title">{r.label}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {hub && (
+          <div class="related">
+            <div class="rel-label">Weitere Fragen-Kategorien</div>
+            <div class="mr-links">
+              {otherHubs.map((x) => (
+                <a class="mr-chip" href={`/gesundheitsbibliothek/fragen/${x.slug}/`}>{x.nav}</a>
+              ))}
+            </div>
+          </div>
+        )}
+
+      </div>
+    </section>
+
+    <TerminForm heading="Noch offene Fragen?" intro="Beschreib kurz dein Anliegen – wir melden uns mit einer ehrlichen Einschätzung." prefill={anliegen} />
+    <StickyCta prefill={anliegen} />
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 16px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .kurz { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin-top: 20px; }
+  .kurz :global(p) { margin: 0 !important; font-size: 17px !important; }
+
+  .answers { margin-top: 8px; }
+  .answer { border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 26px; scroll-margin-top: 90px; }
+  .answer:last-child { border-bottom: 0; }
+  .answer h2 { font-size: 22px; font-weight: 800; color: var(--ink); margin: 0 0 12px; letter-spacing: var(--tracking-heading); }
+
+  .kb-body :global(h2) { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body :global(p) { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body :global(li) { margin: 0 0 10px; }
+  .kb-body :global(strong) { color: var(--ink); }
+  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+  .kb-body :global(.wa-callout) { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body :global(.wa-callout-label) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body :global(.wa-callout p) { margin: 0; font-size: 16px; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .author-card { display: flex; gap: 16px; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; margin: 32px 0; }
+  .avatar--sm { font-size: 13px !important; letter-spacing: .02em; }
+  .avatar { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+  .a-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .a-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-top: 2px; }
+  .a-role { font-size: 13.5px; color: var(--blue-dark); font-weight: 600; margin: 2px 0 10px; }
+  .a-review { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; }
+
+  .related { border-top: 1px solid var(--border); margin-top: 44px; padding-top: 24px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .q-list { list-style: none; padding: 0; margin: 0; }
+  .q-list li { margin: 0 0 10px; }
+  .q-list a { font-size: 16px; font-weight: 600; color: var(--blue); text-decoration: none; }
+  .q-list a:hover { text-decoration: underline; }
+  .rel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .rel-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .rel-card:hover { border-color: var(--blue); }
+  .rel-cat { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .rel-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 640px) {
+    .rel-grid { grid-template-columns: 1fr; }
+  }
+</style>

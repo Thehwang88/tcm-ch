@@ -76,6 +76,18 @@ const CATEGORIES = [
     ],
   },
   {
+    label: 'Fragen',
+    href: '/gesundheitsbibliothek/fragen/',
+    cta: 'Alle Patientenfragen',
+    text: 'Du hast eine konkrete Frage vor oder nach einer Behandlung? Kurze, ehrliche Antworten zu Ablauf, Sicherheit, Kosten und dem Alltag danach.',
+    samples: [
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit danach normal?' },
+      { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Zahlt meine Versicherung?' },
+    ],
+  },
+  {
     label: 'Therapien',
     href: '/therapien/',
     cta: 'Alle Therapien',
@@ -219,7 +231,7 @@ const CATEGORIES = [
   const box = document.getElementById('lib-search-results');
   const norm = (s) => s.toLowerCase()
     .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
-  const GROUPS = ['Körpersignale', 'Beschwerden', 'Ratgeber', 'Körperregionen', 'Therapien', 'Untersuchungen', 'Visuals'];
+  const GROUPS = ['Körpersignale', 'Beschwerden', 'Fragen', 'Ratgeber', 'Körperregionen', 'Therapien', 'Untersuchungen', 'Visuals'];
   const prepared = INDEX.map((e) => ({ ...e, n: norm(e.t + ' ' + (e.k || '')) }));
 
   function render(q) {

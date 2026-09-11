@@ -1,0 +1,126 @@
+---
+// Haupt-Hub des Fragen-Layers: kuratierte Kategorie-Karten + häufigste Patientenfragen.
+// Bewusst klein gehalten (kein FAQ-Silo): Antworten leben in den Kategorie-Hubs,
+// Standalone-Seiten nur für Fragen mit eigenem Intent.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { fragenHubs, fragen } from '../../../data/fragen';
+
+const path = '/gesundheitsbibliothek/fragen';
+const url = `https://tcm.ch${path}/`;
+const title = 'Häufige Patientenfragen zu TCM & Akupunktur';
+const metaDesc = 'Häufige Fragen rund um Behandlung, Vorbereitung, Sicherheit, Kosten und den Alltag danach. Kurz, verständlich und medizinisch verantwortungsvoll beantwortet.';
+
+const featured = fragen.map((f) => ({ href: `/gesundheitsbibliothek/fragen/${f.slug}/`, q: f.question }));
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Fragen', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Fragen</span>
+      </nav>
+      <div class="cat">Patientenfragen</div>
+      <h1>Fragen vor und nach der Behandlung</h1>
+      <p class="lead">Häufige Fragen rund um Behandlung, Vorbereitung, Sicherheit und den Alltag danach: kurz, verständlich und medizinisch verantwortungsvoll beantwortet. Für alles Weitere ist das Erstgespräch da.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <div class="featured">
+        <h2 class="group-title">Häufig gestellt</h2>
+        <ul class="q-list">
+          {featured.map((f) => <li><a href={f.href}>{f.q}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="hubs">
+        <h2 class="group-title">Nach Thema</h2>
+        <p class="group-sub">Jede Kategorie beantwortet mehrere Fragen kompakt auf einer Seite, mit Links zu den ausführlichen Artikeln, wo es mehr zu sagen gibt.</p>
+        <div class="hub-grid">
+          {fragenHubs.map((h) => (
+            <a class="hub-card" href={`/gesundheitsbibliothek/fragen/${h.slug}/`}>
+              <div class="hub-name">{h.nav}</div>
+              <p class="hub-text">{h.lead}</p>
+              <span class="hub-more">{h.answers.length} Fragen →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="more">
+        <h2 class="group-title">Tiefer einsteigen</h2>
+        <p class="group-sub">Wenn du ein Symptom einordnen willst, sind die <a href="/koerpersignale/">Körpersignale</a> der richtige Ort. Beschwerdebilder mit Behandlungsmöglichkeiten findest du unter <a href="/beschwerden/">Beschwerden A–Z</a>, Studien und Hintergründe im <a href="/wissen/">Wissen</a>-Bereich und medizinische Illustrationen in der <a href="/visuals/">Visual Library</a>.</p>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-title">Deine Frage ist nicht dabei?</div>
+        <p>Frag uns direkt. Wir sagen dir ehrlich, ob eine Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört. 14 Praxen in der Deutschschweiz, EMR- und ASCA-anerkannt.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+          <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; max-width: 680px; }
+  .group-sub a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .group-sub a:hover { text-decoration: underline; }
+
+  .featured { margin-bottom: 40px; }
+  .q-list { list-style: none; padding: 0; margin: 8px 0 0; }
+  .q-list li { border-bottom: 1px solid var(--border); }
+  .q-list li:last-child { border-bottom: 0; }
+  .q-list a { display: block; padding: 13px 0; font-size: 17px; font-weight: 700; color: var(--ink); text-decoration: none; transition: color var(--t-fast) ease; }
+  .q-list a:hover { color: var(--blue); }
+
+  .hub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .hub-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .hub-card:hover { border-color: var(--blue); }
+  .hub-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .hub-text { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .hub-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .more { margin: 44px 0 0; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 44px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 640px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
+</style>

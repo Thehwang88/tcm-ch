@@ -1827,6 +1827,11 @@ const wissenBase: Wissen[] = [
     ],
     "related": [
       {
+        "href": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
+        "label": "Häufige Fragen zu Schröpfen & Methoden",
+        "cat": "Fragen"
+      },
+      {
         "href": "/therapien/schroepfen/",
         "label": "Schröpfen",
         "cat": "Therapie"

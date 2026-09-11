@@ -13,6 +13,7 @@ import { prefillForm } from '../../data/form-prefill';
 import { inlineBodyImage } from '../../data/inline-body-image';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
 import { parseLeafFaqs, faqPageSchema } from '../../data/leaf-faq';
+import { fragenLinksHtml } from '../../data/fragen';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/therapie-leaves/*.html', { query: '?raw', import: 'default', eager: true });
@@ -92,4 +93,4 @@ const massageBlock = massageLinksHtml(
   'Wird in der Praxis oft kombiniert. Jede Seite erklärt, wofür die Technik taugt und wofür nicht.',
 );
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody + tiefeBlock + massageBlock} schema={schema} ogImage={OG_OVERRIDE[slug]} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!)} schema={schema} ogImage={OG_OVERRIDE[slug]} />

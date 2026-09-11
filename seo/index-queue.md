@@ -18,6 +18,19 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/gesundheitsbibliothek/fragen/
+- https://tcm.ch/gesundheitsbibliothek/fragen/erster-termin/
+- https://tcm.ch/gesundheitsbibliothek/fragen/nach-der-behandlung/
+- https://tcm.ch/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/
+- https://tcm.ch/gesundheitsbibliothek/fragen/kosten-versicherung/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/schroepfen-methoden/
+- https://tcm.ch/gesundheitsbibliothek/fragen/tut-akupunktur-weh/
+- https://tcm.ch/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/
+- https://tcm.ch/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/
+- https://tcm.ch/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/
 - https://tcm.ch/wissen/erkaeltung-im-anflug/
 - https://tcm.ch/wissen/erkaeltung-grippe-allergie/
 - https://tcm.ch/wissen/kopfschmerzen-wetterumschwung/

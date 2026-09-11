@@ -177,6 +177,40 @@ SYNONYMS +7. Sitemap 372 -> 379. Queue +7 (gleicher Commit).
 **STOPP-REGEL: Nach dieser Welle keine weitere Health-Library-Content-Welle.
 Nur noch Messung, Pflege bestehender Seiten und explizit beauftragte Einzelfixes.**
 
+## Welle 10 (11.09.2026) — Fragen-Layer (explizit beauftragt, hub-lastig)
+
+Neuer Patientenfragen-Layer unter /gesundheitsbibliothek/fragen/ (Auftrag Simon,
+Ausnahme von der Stopp-Regel). Bewusst konservativ: 13 neue URLs statt Frage-Farm.
+
+NEU (src/data/fragen.ts + fragen/index.astro + fragen/[slug].astro):
+- 1 Haupt-Hub /gesundheitsbibliothek/fragen/
+- 6 Kategorie-Hubs (8 Kategorien auf 6 konsolidiert): erster-termin (inkl.
+  Ablauf & Organisation), nach-der-behandlung, sicherheit-nebenwirkungen (inkl.
+  "Wann ärztlich abklären"), kosten-versicherung, akupunktur, schroepfen-methoden
+  — zusammen 35 Hub-Antworten (80-200 Wörter, Antwort zuerst, Anker-IDs)
+- 6 Standalone-Fragen (Quality-Gate bestanden): tut-akupunktur-weh,
+  muedigkeit-nach-akupunktur, blaue-flecken-nach-akupunktur,
+  akupunktur-blutverduenner, was-passiert-beim-ersten-termin, wann-zuerst-zum-arzt
+
+ABGELEHNT als Standalone (Intent bereits stark abgedeckt -> Hub-Antwort + Link):
+Sitzungsanzahl (therapien/akupunktur), Schröpfmale (wissen/schroepfen-wirkung-
+flecken), Dry Needling vs. Akupunktur (wissen/dry-needling-vs-akupunktur),
+Migräne/Nacken-Wirkung (wissen/akupunktur-bei-*), Zusatzversicherung im Detail
+(/krankenkassen/* + wissen/krankenkasse-tcm), Nadel-Liegedauer (wissen/wie-lange),
+Schwangerschaft (Leaf-Abschnitt + wissen/geburtsvorbereitung), Elektro/Dauernadeln
+(eigene Artikel). Keine Stadt-/Varianten-Duplikate.
+
+Schema: MedicalWebPage + BreadcrumbList, Autor MedicalOrganization (Fachredaktion,
+kein erfundenes Review, kein FAQPage-Schema als Selbstzweck).
+Integration: Bibliothek-Hub neue Kategorie-Karte "Fragen"; Suche neue Gruppe
+"Fragen" (Hubs mit Antwort-Keywords + Standalones); Homepage-Sektion "Häufige
+Fragen vor der Behandlung" (6 Karten, hf-*-Klassen, nach glb-Sektion); Rück-Links
+via fragenLinksHtml() auf therapien/akupunktur, schroepfen, tuina,
+kraeutertherapie; wissen/schroepfen-wirkung-flecken related +1.
+health-audit classify() um Typ 'question' erweitert. Sitzungszahlen an
+therapien/akupunktur angeglichen (4-6 akut / 8-12 chronisch).
+Sitemap 379 -> 392. Queue +13 (gleicher Commit). Audit 0/0/0.
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:

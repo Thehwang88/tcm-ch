@@ -22,6 +22,7 @@ export type LibraryEntityType =
 
 import { koerpersignale } from './koerpersignale';
 import { visuals, type VisualCategory } from './visuals';
+import { fragenHubs, fragen as fragenList } from './fragen';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -445,6 +446,13 @@ export function buildSearchIndex(): SearchEntry[] {
   // Untersuchungen & Diagnostik: nur Einträge mit eigener Seite.
   for (const d of DIAGNOSTICS) {
     if (d.href) entries.push({ t: d.name, u: d.href, g: 'Untersuchungen' });
+  }
+  // Fragen: Kategorie-Hubs + Standalone-Patientenfragen (kuratiert aus fragen.ts).
+  for (const h of fragenHubs) {
+    entries.push({ t: h.nav, u: `/gesundheitsbibliothek/fragen/${h.slug}/`, g: 'Fragen', k: h.answers.map((a) => a.q).join(' ').slice(0, 300) });
+  }
+  for (const f of fragenList) {
+    entries.push({ t: f.question, u: `/gesundheitsbibliothek/fragen/${f.slug}/`, g: 'Fragen' });
   }
   // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
   const RATGEBER: Array<{ t: string; u: string }> = [
