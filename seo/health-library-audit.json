@@ -1,14 +1,14 @@
 {
   "generated": "2026-09-11",
   "totals": {
-    "healthPages": 285,
+    "healthPages": 292,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "body_region": 9,
-      "editorial": 71,
-      "body_signal": 51,
+      "editorial": 76,
+      "body_signal": 53,
       "therapy": 31,
       "visual": 10
     }
@@ -55,8 +55,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/beschwerden/angststoerungen/",
@@ -95,8 +95,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/augenmigraene/",
@@ -185,8 +185,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/beschwerden/depressionen/",
@@ -235,8 +235,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/fersensporn/",
@@ -435,8 +435,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/inkontinenz/",
@@ -525,8 +525,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/lippenherpes/",
@@ -575,8 +575,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 139,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 140,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -825,8 +825,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 128,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 129,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/schlafstoerungen/",
@@ -925,8 +925,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/sodbrennen/",
@@ -935,7 +935,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 19
     },
     {
@@ -945,7 +945,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 25
     },
     {
@@ -1095,8 +1095,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 131,
-      "outboundHealthLinks": 26
+      "inboundContentLinks": 133,
+      "outboundHealthLinks": 32
     },
     {
       "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
@@ -1125,8 +1125,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 31
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 32
     },
     {
       "url": "/gesundheitsbibliothek/koerper/huefte-bein-fuss/",
@@ -1145,8 +1145,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
-      "outboundHealthLinks": 38
+      "inboundContentLinks": 33,
+      "outboundHealthLinks": 39
     },
     {
       "url": "/gesundheitsbibliothek/koerper/ruecken/",
@@ -1195,7 +1195,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 59,
+      "inboundContentLinks": 60,
       "outboundHealthLinks": 38
     },
     {
@@ -1555,8 +1555,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 141,
-      "outboundHealthLinks": 52
+      "inboundContentLinks": 146,
+      "outboundHealthLinks": 54
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -1565,7 +1565,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 10
     },
     {
@@ -1575,7 +1575,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 10
     },
     {
@@ -1585,7 +1585,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {
@@ -1595,7 +1595,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 11
     },
     {
@@ -1605,7 +1605,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 14
     },
     {
@@ -1625,7 +1625,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 10
     },
     {
@@ -1645,7 +1645,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 10
     },
     {
@@ -1655,7 +1655,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 17
     },
     {
@@ -1665,7 +1665,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -1675,7 +1675,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
     },
     {
@@ -1685,7 +1685,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 13
     },
     {
@@ -1695,7 +1695,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 11
     },
     {
@@ -1705,7 +1705,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 11
     },
     {
@@ -1725,7 +1725,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {
@@ -1735,7 +1735,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 10
     },
     {
@@ -1745,7 +1745,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 8
     },
     {
@@ -1755,7 +1755,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 9
     },
     {
@@ -1765,7 +1765,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 9
     },
     {
@@ -1775,7 +1775,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 9
     },
     {
@@ -1785,7 +1785,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -1795,7 +1795,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 11
     },
     {
@@ -1805,7 +1805,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 8
     },
     {
@@ -1825,7 +1825,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -1845,7 +1845,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 15
     },
     {
@@ -1875,7 +1875,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 9
     },
     {
@@ -1885,7 +1885,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 12
     },
     {
@@ -1905,7 +1905,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1925,7 +1925,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {
@@ -1935,7 +1935,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -1945,7 +1945,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -1995,7 +1995,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 10
     },
     {
@@ -2005,7 +2005,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 10
     },
     {
@@ -2015,8 +2015,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/trockener-husten/",
+      "type": "body_signal",
+      "title": "Trockener Husten: was dahinterstecken kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/trockener-mund-nachts/",
@@ -2025,8 +2035,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/verstopfte-nase-ohne-erkaeltung/",
+      "type": "body_signal",
+      "title": "Verstopfte Nase ohne Erkältung: Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/voellegefuehl-nach-dem-essen/",
@@ -2035,7 +2055,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 12
     },
     {
@@ -2045,7 +2065,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 9
     },
     {
@@ -2095,7 +2115,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 193,
+      "inboundContentLinks": 198,
       "outboundHealthLinks": 2
     },
     {
@@ -2185,7 +2205,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 98,
+      "inboundContentLinks": 100,
       "outboundHealthLinks": 1
     },
     {
@@ -2385,7 +2405,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 101,
+      "inboundContentLinks": 102,
       "outboundHealthLinks": 10
     },
     {
@@ -2505,8 +2525,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
-      "outboundHealthLinks": 37
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 42
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -2525,7 +2545,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -2535,7 +2555,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -2585,7 +2605,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -2615,7 +2635,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 9
     },
     {
@@ -2659,6 +2679,26 @@
       "outboundHealthLinks": 13
     },
     {
+      "url": "/wissen/erkaeltung-grippe-allergie/",
+      "type": "editorial",
+      "title": "Erkältung, Grippe oder Allergie? So unterscheidest du sie | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/erkaeltung-im-anflug/",
+      "type": "editorial",
+      "title": "Erkältung im Anflug: Was in den ersten 24 Stunden hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/wissen/faszien-verklebt-was-hilft/",
       "type": "editorial",
       "title": "Verklebte Faszien: Was wirklich hilft | TCM.ch",
@@ -2675,8 +2715,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 2
+    },
+    {
+      "url": "/wissen/heizungsluft-trockene-schleimhaeute/",
+      "type": "editorial",
+      "title": "Heizungsluft: Was gegen trockene Schleimhäute hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/hexenschuss-was-tun/",
@@ -2699,6 +2749,16 @@
       "outboundHealthLinks": 4
     },
     {
+      "url": "/wissen/kopfschmerzen-wetterumschwung/",
+      "type": "editorial",
+      "title": "Kopfschmerzen bei Wetterumschwung: Was dahintersteckt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/",
       "type": "editorial",
       "title": "Krankenkasse und TCM: Was wirklich übernommen wird (Stand 2026) | TCM.ch",
@@ -2717,6 +2777,16 @@
       "inSitemap": true,
       "inboundContentLinks": 4,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/muedigkeit-im-herbst/",
+      "type": "editorial",
+      "title": "Müdigkeit im Herbst: Zeitumstellung, Licht und was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/pcos-akupunktur-tcm/",
@@ -2855,7 +2925,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 10
     },
     {

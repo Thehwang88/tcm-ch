@@ -140,6 +140,43 @@ Danach nur Messung: Impressionen, Positionen, Query-Page-Matching,
 Kannibalisierung (3 HIGH-Paare), Visual-Discovery, Indexierung der 33 offenen
 Queue-URLs.
 
+## Welle 9 (11.09.2026) — Saisonale Herbstwelle (explizit beauftragt, FINALE Content-Welle)
+
+Ausnahme von der Publikationspause auf expliziten Auftrag. 7 neue URLs aus 20
+Kandidaten; evergreen Slugs ohne Jahreszahl/Saison-Taxonomie, kein /herbst/-Hub
+(unter Schwelle), kein Blog-System. Neue Wissen-Artikel ohne erfundene Reviews:
+Autor "TCM.ch Fachredaktion" (Schema: MedicalOrganization statt Person, kein
+reviewedBy/lastReviewed — Template dafür konditional gemacht).
+
+NEU — 5 Wissen (src/data/wissen-herbst.ts) + 2 Körpersignale:
+1. wissen/erkaeltung-im-anflug (Kandidat 1; ehrlich: kein Stopp-Versprechen)
+2. wissen/erkaeltung-grippe-allergie (2; absorbiert 14 Herbstallergie-Abgrenzung)
+3. wissen/kopfschmerzen-wetterumschwung (3; Kausalität vorsichtig, Studienlage uneinheitlich)
+4. wissen/muedigkeit-im-herbst (5; absorbiert 6 zirkadian, 18 Zeitumstellung,
+   19 Winterblues/SAD-Abgrenzung mit Verweis auf professionelle Hilfe)
+5. wissen/heizungsluft-trockene-schleimhaeute (17; absorbiert 4 Halskratzen,
+   15 trockene Haut -> /haut/, 16 Lippen)
+6. koerpersignale/trockener-husten (8; Hals & Mund, DATEN6)
+7. koerpersignale/verstopfte-nase-ohne-erkaeltung (13; Kopf & Sinne, DATEN6)
+
+ABGELEHNT/ABSORBIERT (13 von 20): 4, 6, 15, 16, 18, 19 -> in Artikel oben;
+7+20 kalte Hände/Frieren -> Saison-Absatz in kalte-haende-trotz-waerme;
+9 Nacken bei Kälte -> Absatz in nacken-morgens-steif; 10 Herbstessen ->
+voellegefuehl-nach-dem-essen existiert; 11 Blähbauch -> blaehbauch-am-abend
+existiert; 12 Immunsystem -> haeufige-infekte-immunsystem existiert;
+14 Herbstallergie -> Absatz im Leaf allergien-heuschnupfen + Artikel 2.
+
+Integration: Hub-Modul "Aktuell im Herbst" (6 Karten, bestehende diag-Card-Optik);
+Suche: neue Gruppe "Ratgeber" (5 Artikel kuratiert) + Gruppe "Untersuchungen" im
+Frontend-Renderer nachgezogen (fehlte); Regionen kopf/hals-nacken um die 2 KS
+ergänzt; KS_LINKS +2; KS_FOR_BESCHWERDE (allergien-heuschnupfen, asthma, copd,
+sinusitis, sodbrennen); WISSEN_FOR_BESCHWERDE (kopfschmerzen, migraene,
+schlafprobleme, erschoepfung, allergien-heuschnupfen, immunschwaeche, sinusitis);
+SYNONYMS +7. Sitemap 372 -> 379. Queue +7 (gleicher Commit).
+
+**STOPP-REGEL: Nach dieser Welle keine weitere Health-Library-Content-Welle.
+Nur noch Messung, Pflege bestehender Seiten und explizit beauftragte Einzelfixes.**
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:

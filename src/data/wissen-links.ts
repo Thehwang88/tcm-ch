@@ -19,6 +19,7 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   ],
   kopfschmerzen: [
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Was hilft gegen Kopfschmerzen? Ehrlicher Überblick' },
+    { slug: 'kopfschmerzen-wetterumschwung', label: 'Kopfschmerzen bei Wetterumschwung: was dahintersteckt' },
   ],
   spannungskopfschmerzen: [
     { slug: 'akupunktur-bei-kopfschmerzen', label: 'Akupunktur bei Spannungskopfschmerzen: die Studien' },
@@ -26,15 +27,28 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   ],
   migraene: [
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
+    { slug: 'kopfschmerzen-wetterumschwung', label: 'Kopfschmerzen bei Wetterumschwung: was dahintersteckt' },
   ],
   'cluster-kopfschmerzen': [
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
   ],
   schlafprobleme: [
     { slug: 'akupunktur-schlafprobleme', label: 'Akupunktur bei Schlafproblemen: Studien und Ablauf' },
+    { slug: 'muedigkeit-im-herbst', label: 'Müdigkeit im Herbst: Licht, Zeitumstellung und was hilft' },
   ],
   'allergien-heuschnupfen': [
     { slug: 'akupunktur-bei-heuschnupfen', label: 'Akupunktur bei Heuschnupfen: Studienlage und Nutzen' },
+    { slug: 'erkaeltung-grippe-allergie', label: 'Erkältung, Grippe oder Allergie? Die Unterschiede' },
+  ],
+  erschoepfung: [
+    { slug: 'muedigkeit-im-herbst', label: 'Müdigkeit im Herbst: Licht, Zeitumstellung und was hilft' },
+  ],
+  immunschwaeche: [
+    { slug: 'erkaeltung-im-anflug', label: 'Erkältung im Anflug: die ersten 24 Stunden' },
+    { slug: 'haeufige-infekte-immunsystem', label: 'Häufige Infekte: was hinter einem schwachen Immunsystem steckt' },
+  ],
+  sinusitis: [
+    { slug: 'heizungsluft-trockene-schleimhaeute', label: 'Heizungsluft: was gegen trockene Schleimhäute hilft' },
   ],
   kinderwunsch: [
     { slug: 'kinderwunsch-akupunktur-tcm', label: 'Kinderwunsch und TCM: Studien, Zyklus und IVF-Begleitung' },
