@@ -31,8 +31,8 @@ const byGroup = GROUPS.map((g) => ({ g, items: koerpersignale.filter((k) => k.ca
 
 // WANN tritt es auf? Kuratierte Muster-Einstiege (nur echte Treffer, keine Keyword-Listen).
 const WANN = [
-  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'trockener-mund-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein', 'arm-schlaeft-nachts-ein', 'haeufiger-harndrang-nachts'] },
-  { label: 'Morgens', slugs: ['finger-morgens-steif', 'bitterer-geschmack-morgens', 'nacken-morgens-steif'] },
+  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'trockener-mund-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein', 'arm-schlaeft-nachts-ein', 'haeufiger-harndrang-nachts', 'juckreiz-nachts-ohne-ausschlag', 'schnarchen-jede-nacht'] },
+  { label: 'Morgens', slugs: ['finger-morgens-steif', 'bitterer-geschmack-morgens', 'nacken-morgens-steif', 'durchfall-am-morgen'] },
   { label: 'Beim Aufstehen', slugs: ['schwindel-beim-aufstehen'] },
   { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr', 'herzklopfen-im-liegen', 'magendruck-im-liegen'] },
   { label: 'Beim Sitzen', slugs: ['bein-wird-beim-sitzen-taub'] },
@@ -67,6 +67,7 @@ const WIE = [
   { label: 'Stolpern', slug: 'herzstolpern-in-ruhe' },
   { label: 'Harndrang', slug: 'ploetzlicher-harndrang-ohne-volle-blase' },
   { label: 'Harter Bauch', slug: 'bauch-fuehlt-sich-hart-an' },
+  { label: 'Juckreiz', slug: 'juckreiz-nachts-ohne-ausschlag' },
   { label: 'Schweregefühl', slug: 'schwere-beine-abends' },
 ];
 ---

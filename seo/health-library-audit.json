@@ -1,14 +1,14 @@
 {
   "generated": "2026-09-11",
   "totals": {
-    "healthPages": 274,
+    "healthPages": 279,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "body_region": 9,
       "editorial": 71,
-      "body_signal": 46,
+      "body_signal": 51,
       "therapy": 31,
       "visual": 4
     }
@@ -125,8 +125,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/blasenentzuendung/",
@@ -145,8 +145,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/burnout/",
@@ -165,8 +165,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/colitis-ulcerosa/",
@@ -205,7 +205,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 24
     },
     {
@@ -215,8 +215,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/endometriose/",
@@ -561,12 +561,12 @@
     {
       "url": "/beschwerden/menstruationsbeschwerden/",
       "type": "condition",
-      "title": "Menstruationsbeschwerden – TCM-Behandlung | TCM.ch",
+      "title": "Regelschmerzen &amp; starke Menstruation – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/migraene/",
@@ -576,7 +576,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 139,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -645,8 +645,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/neurodermitis/",
@@ -655,8 +655,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/osteoporose/",
@@ -735,8 +735,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/reizblase/",
@@ -755,8 +755,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 21,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/restless-legs/",
@@ -825,7 +825,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 127,
+      "inboundContentLinks": 128,
       "outboundHealthLinks": 17
     },
     {
@@ -875,8 +875,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/schwangerschaftsbeschwerden/",
@@ -946,7 +946,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 18,
-      "outboundHealthLinks": 24
+      "outboundHealthLinks": 25
     },
     {
       "url": "/beschwerden/spinalkanalstenose/",
@@ -1025,8 +1025,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 32,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/verstopfung/",
@@ -1035,7 +1035,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 16
     },
     {
@@ -1081,11 +1081,11 @@
     {
       "url": "/beschwerden/zyklusbeschwerden/",
       "type": "condition",
-      "title": "Zyklusbeschwerden – TCM-Behandlung | TCM.ch",
+      "title": "Unregelmässiger Zyklus &amp; Zyklusstörungen – TCM | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 12
     },
     {
@@ -1095,7 +1095,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 124,
+      "inboundContentLinks": 129,
       "outboundHealthLinks": 26
     },
     {
@@ -1105,8 +1105,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 27,
-      "outboundHealthLinks": 31
+      "inboundContentLinks": 29,
+      "outboundHealthLinks": 33
     },
     {
       "url": "/gesundheitsbibliothek/koerper/becken-blase/",
@@ -1165,8 +1165,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
-      "outboundHealthLinks": 34
+      "inboundContentLinks": 30,
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -1175,8 +1175,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
-      "outboundHealthLinks": 32
+      "inboundContentLinks": 29,
+      "outboundHealthLinks": 33
     },
     {
       "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
@@ -1555,8 +1555,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 132,
-      "outboundHealthLinks": 47
+      "inboundContentLinks": 140,
+      "outboundHealthLinks": 52
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -1565,7 +1565,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 9
     },
     {
@@ -1575,7 +1575,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 10
     },
     {
@@ -1585,7 +1585,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 10
     },
     {
@@ -1615,7 +1615,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -1625,7 +1625,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 10
     },
     {
@@ -1655,8 +1655,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/koerpersignale/durchfall-am-morgen/",
+      "type": "body_signal",
+      "title": "Durchfall am Morgen: Warum gerade morgens? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/ein-fuss-kaelter-als-der-andere/",
@@ -1665,7 +1675,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 9
     },
     {
@@ -1675,7 +1685,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 13
     },
     {
@@ -1685,7 +1695,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 11
     },
     {
@@ -1695,7 +1705,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 10
     },
     {
@@ -1705,7 +1715,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 12
     },
     {
@@ -1725,7 +1735,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 10
     },
     {
@@ -1735,7 +1745,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 8
     },
     {
@@ -1745,7 +1755,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 9
     },
     {
@@ -1765,8 +1775,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/juckreiz-nachts-ohne-ausschlag/",
+      "type": "body_signal",
+      "title": "Juckreiz nachts ohne Ausschlag: Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/kalte-haende-einseitig/",
@@ -1775,8 +1795,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/kalte-haende-trotz-waerme/",
+      "type": "body_signal",
+      "title": "Kalte Hände trotz Wärme: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/klossgefuehl-im-hals/",
@@ -1795,7 +1825,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -1805,7 +1835,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 11
     },
     {
@@ -1815,7 +1845,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 14
     },
     {
@@ -1825,7 +1855,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 9
     },
     {
@@ -1835,7 +1865,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 11
     },
     {
@@ -1845,7 +1875,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 9
     },
     {
@@ -1885,7 +1915,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 11
     },
     {
@@ -1909,13 +1939,23 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/koerpersignale/schnarchen-jede-nacht/",
+      "type": "body_signal",
+      "title": "Jede Nacht schnarchen: wann ist es harmlos? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/koerpersignale/schwere-beine-abends/",
       "type": "body_signal",
       "title": "Schwere Beine abends: Warum fühlen sie sich so müde an? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 8
     },
     {
@@ -1969,13 +2009,23 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/stinkende-blaehungen/",
+      "type": "body_signal",
+      "title": "Stinkende Blähungen: mögliche Ursachen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 10
+    },
+    {
       "url": "/koerpersignale/trockener-mund-nachts/",
       "type": "body_signal",
       "title": "Trockener Mund nachts: Warum passiert das? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -1985,7 +2035,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 12
     },
     {
@@ -1995,7 +2045,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 9
     },
     {
@@ -2005,7 +2055,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 11
     },
     {
@@ -2015,7 +2065,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 9
     },
     {
@@ -2581,7 +2631,7 @@
     {
       "url": "/wissen/kinderwunsch-akupunktur-tcm/",
       "type": "editorial",
-      "title": "Kinderwunsch und TCM: Akupunktur, Zyklus und IVF-Begleitung | TCM.ch",
+      "title": "Akupunktur bei Kinderwunsch und IVF: Ablauf und Zeitpunkt | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2745,8 +2795,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/wissen/wie-lange-bleiben-akupunkturnadeln-drin/",

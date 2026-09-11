@@ -63,6 +63,12 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'kribbeln-vom-nacken-in-den-arm', label: 'Kribbeln vom Nacken in den Arm' },
   { slug: 'kopfdruck-beim-buecken', label: 'Kopfdruck beim Bücken' },
   { slug: 'herzstolpern-in-ruhe', label: 'Herzstolpern in Ruhe' },
+  // Sechste Welle (redaktionelle Vorlage, 09/2026).
+  { slug: 'stinkende-blaehungen', label: 'Stinkende Blähungen' },
+  { slug: 'durchfall-am-morgen', label: 'Durchfall am Morgen' },
+  { slug: 'kalte-haende-trotz-waerme', label: 'Kalte Hände trotz Wärme' },
+  { slug: 'schnarchen-jede-nacht', label: 'Schnarchen jede Nacht' },
+  { slug: 'juckreiz-nachts-ohne-ausschlag', label: 'Juckreiz nachts ohne Ausschlag' },
 ];
 
 /** Themenspezifische Zuordnung: Beschwerde-Slug -> passende /koerpersignale/-Leaves. */
@@ -103,7 +109,7 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   rhizarthrose: ['finger-morgens-steif', 'einzelne-finger-taub'],
   fibromyalgie: ['wadenkraempfe-nachts', 'finger-morgens-steif', 'nachtschweiss-ohne-fieber'],
   sehnenscheidenentzuendung: ['finger-morgens-steif', 'hand-kribbelt-beim-velofahren'],
-  eisenmangel: ['wadenkraempfe-nachts', 'kalte-haende-einseitig'],
+  eisenmangel: ['wadenkraempfe-nachts', 'kalte-haende-einseitig', 'kalte-haende-trotz-waerme'],
   erschoepfung: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber'],
   // Zuordnungen der zweiten KS-Welle (gleiche Regel: nur wo das Symptombild wirklich passt).
   knieschmerzen: ['knie-knackt-ohne-schmerzen'],
@@ -114,12 +120,12 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   'isg-blockade': ['rueckenschmerzen-beim-langen-stehen', 'bein-wird-beim-sitzen-taub'],
   spannungskopfschmerzen: ['druck-im-kopf-ohne-kopfschmerzen', 'nacken-morgens-steif'],
   kopfschmerzen: ['druck-im-kopf-ohne-kopfschmerzen'],
-  bluthochdruck: ['druck-im-kopf-ohne-kopfschmerzen'],
+  bluthochdruck: ['druck-im-kopf-ohne-kopfschmerzen', 'schnarchen-jede-nacht'],
   // Zuordnungen der vierten Welle:
   augenmigraene: ['augenflimmern'],
   migraene: ['augenflimmern', 'druck-im-kopf-ohne-kopfschmerzen'],
-  blaehungen: ['blaehbauch-am-abend', 'voellegefuehl-nach-dem-essen'],
-  verdauungsprobleme: ['voellegefuehl-nach-dem-essen', 'blaehbauch-am-abend', 'bitterer-geschmack-morgens'],
+  blaehungen: ['blaehbauch-am-abend', 'stinkende-blaehungen', 'voellegefuehl-nach-dem-essen'],
+  verdauungsprobleme: ['voellegefuehl-nach-dem-essen', 'durchfall-am-morgen', 'blaehbauch-am-abend', 'bitterer-geschmack-morgens'],
   verstopfung: ['blaehbauch-am-abend'],
   kalkschulter: ['arm-schlaeft-nachts-ein', 'nacken-morgens-steif', 'finger-schlafen-ein'],
   achillessehnenentzuendung: ['wadenkraempfe-nachts', 'zehen-kribbeln', 'schwere-beine-abends'],
@@ -131,6 +137,10 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   myome: ['druckgefuehl-im-unterbauch'],
   endometriose: ['druckgefuehl-im-unterbauch'],
   nervenschmerzen: ['kribbeln-vom-nacken-in-den-arm', 'zehen-kribbeln', 'brennende-fuesse-nachts'],
+  // Zuordnungen der sechsten Welle:
+  neurodermitis: ['juckreiz-nachts-ohne-ausschlag'],
+  nesselsucht: ['juckreiz-nachts-ohne-ausschlag'],
+  schuppenflechte: ['juckreiz-nachts-ohne-ausschlag'],
 };
 // Ergänzungen zu bestehenden Einträgen der ersten Welle:
 for (const [b, extra] of Object.entries({
@@ -141,20 +151,21 @@ for (const [b, extra] of Object.entries({
   tinnitus: ['ohr-knackt-beim-schlucken'],
   mittelohrentzuendung: ['ohr-knackt-beim-schlucken'],
   sinusitis: ['druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken'],
-  schlafprobleme: ['trockener-mund-nachts', 'herzklopfen-im-liegen'],
-  schlafstoerungen: ['trockener-mund-nachts', 'herzklopfen-im-liegen'],
+  schlafprobleme: ['trockener-mund-nachts', 'schnarchen-jede-nacht', 'herzklopfen-im-liegen'],
+  schlafstoerungen: ['trockener-mund-nachts', 'schnarchen-jede-nacht', 'herzklopfen-im-liegen'],
   sodbrennen: ['bitterer-geschmack-morgens', 'magendruck-im-liegen'],
   gastritis: ['bitterer-geschmack-morgens', 'voellegefuehl-nach-dem-essen', 'magendruck-im-liegen'],
   polyneuropathie: ['brennende-fuesse-nachts', 'zehen-kribbeln'],
   'restless-legs': ['brennende-fuesse-nachts'],
   schwindel: ['schwindel-beim-buecken'],
   'morton-neurom': ['zehen-kribbeln'],
-  durchblutungsstoerungen: ['ein-fuss-kaelter-als-der-andere', 'schwere-beine-abends'],
+  durchblutungsstoerungen: ['ein-fuss-kaelter-als-der-andere', 'schwere-beine-abends', 'kalte-haende-trotz-waerme'],
   rueckenschmerzen: ['rueckenschmerzen-beim-langen-stehen'],
   spinalkanalstenose: ['rueckenschmerzen-beim-langen-stehen'],
+  'raynaud-syndrom': ['kalte-haende-trotz-waerme'],
   verstopfung: ['bauch-fuehlt-sich-hart-an'],
   blaehungen: ['bauch-fuehlt-sich-hart-an'],
-  reizdarm: ['bauch-fuehlt-sich-hart-an', 'blaehbauch-am-abend'],
+  reizdarm: ['bauch-fuehlt-sich-hart-an', 'durchfall-am-morgen', 'blaehbauch-am-abend'],
 } as Record<string, string[]>)) {
   KS_FOR_BESCHWERDE[b] = [...(KS_FOR_BESCHWERDE[b] ?? []), ...extra];
 }

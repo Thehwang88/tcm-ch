@@ -57,7 +57,28 @@ Fuss 68 -> ~74 (Achillessehne + zehen-kribbeln), Kopf 66 -> ~72.
 Becken/Urologie: unverändert 5 Beschwerden, 0 KS -> Schwelle (~8 Knoten, 2 Typen)
 NICHT erreicht, Hub weiterhin nicht gebaut.
 
-## TODO vor jeder Konsolidierung der HIGH-Overlaps (NICHT in Welle 3 angefasst)
+## Welle 5 (11.09.2026) — Kannibalisierungs-Cleanup + redaktionelle KS
+
+Cleanup (0 neue URLs, 0 Canonical-Änderungen, 0 Redirects):
+1. Kinderwunsch: Wissen-Artikel auf Ablauf/IVF-Timing-Intent repositioniert
+   (Titel/H1/Meta/Lead neu, Callout-Link zur Beschwerden-Seite oben im Artikel);
+   Beschwerden-Seite verlinkt zurück auf den Ablauf-Guide.
+2. Menstruations- vs Zyklusbeschwerden: Intents definiert (Periode-Symptome vs
+   Zyklus als Ganzes), Titel/Metas differenziert, Abgrenzungs-Boxen mit
+   Cross-Links auf beiden Seiten, Zyklus-Hero-Sub geschärft.
+3. Kopfschmerz-Cluster: Überblicksartikel routet jetzt auch zu
+   Cluster-Kopfschmerzen + Körpersignal Druck im Kopf; migraene,
+   spannungskopfschmerzen und cluster-kopfschmerzen verlinken den
+   generischen Einstieg ("Unsicher, welche Kopfschmerzart?").
+
+Redaktionelle KS-Welle (Vorlage Simon): 5 von 6 publiziert (stinkende-blaehungen,
+durchfall-am-morgen, kalte-haende-trotz-waerme, schnarchen-jede-nacht,
+juckreiz-nachts-ohne-ausschlag). ABGELEHNT: "Nachtschweiss ohne Fieber" — URL
+existiert seit Welle 1, Vorlage hätte eine indexierte Seite überschrieben.
+Sie-Form der Vorlage an Du-Hausstil angepasst, sonst textlich unverändert;
+FAQs bewusst leer (keine erfundenen Zusatzinhalte). Sitemap 367 -> 372 (+5).
+
+## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:
 1. zyklusbeschwerden vs menstruationsbeschwerden

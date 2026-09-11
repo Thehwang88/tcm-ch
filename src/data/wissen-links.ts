@@ -22,6 +22,13 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   ],
   spannungskopfschmerzen: [
     { slug: 'akupunktur-bei-kopfschmerzen', label: 'Akupunktur bei Spannungskopfschmerzen: die Studien' },
+    { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
+  ],
+  migraene: [
+    { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
+  ],
+  'cluster-kopfschmerzen': [
+    { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
   ],
   schlafprobleme: [
     { slug: 'akupunktur-schlafprobleme', label: 'Akupunktur bei Schlafproblemen: Studien und Ablauf' },

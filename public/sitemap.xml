@@ -1345,6 +1345,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/durchfall-am-morgen/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/ein-fuss-kaelter-als-der-andere/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -1411,7 +1417,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/juckreiz-nachts-ohne-ausschlag/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/kalte-haende-einseitig/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/kalte-haende-trotz-waerme/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1495,6 +1513,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/koerpersignale/schnarchen-jede-nacht/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/koerpersignale/schwere-beine-abends/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -1526,6 +1550,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/starkes-schwitzen-ohne-sport/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/stinkende-blaehungen/</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

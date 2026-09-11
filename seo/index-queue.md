@@ -18,6 +18,11 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/stinkende-blaehungen/
+- https://tcm.ch/koerpersignale/durchfall-am-morgen/
+- https://tcm.ch/koerpersignale/kalte-haende-trotz-waerme/
+- https://tcm.ch/koerpersignale/schnarchen-jede-nacht/
+- https://tcm.ch/koerpersignale/juckreiz-nachts-ohne-ausschlag/
 - https://tcm.ch/koerpersignale/haeufiger-harndrang-nachts/
 - https://tcm.ch/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/
 - https://tcm.ch/koerpersignale/druckgefuehl-im-unterbauch/

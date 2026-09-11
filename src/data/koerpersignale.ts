@@ -2335,6 +2335,223 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
     ],
   },
+
+  // ────────────────────────────────────────────── WELLE 6 (redaktionelle Vorlage Simon, 09/2026)
+  // Quelltexte geliefert, nur an Template/Du-Form/Hausstil angepasst, KEINE inhaltliche
+  // Umformulierung. Kandidat "Nachtschweiss ohne Fieber" abgelehnt: URL existiert seit
+  // Welle 1. FAQs bewusst leer (keine erfundenen Zusatzinhalte zur Vorlage).
+  {
+    slug: 'stinkende-blaehungen',
+    symptom: 'stark riechende Blähungen',
+    title: 'Stinkende Blähungen: mögliche Ursachen',
+    metaDesc: 'Stark riechende Blähungen entstehen oft durch Ernährung und Verdauung. Lies, welche Ursachen möglich sind und wann eine Abklärung sinnvoll ist.',
+    h1: 'Stinkende Blähungen',
+    category: 'Bauch & Verdauung',
+    lead: 'Stark riechende Blähungen sind häufig harmlos. Der Geruch entsteht vor allem durch schwefelhaltige Gase, die Darmbakterien beim Abbau bestimmter Nahrungsbestandteile bilden. Entscheidend ist weniger der Geruch allein als die Frage, ob weitere Beschwerden dazukommen oder sich das Verdauungsmuster neu verändert hat.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Warum riechen Blähungen manchmal so stark?</h2>
+<p>Blähungen gehören grundsätzlich zur normalen Verdauung. Wie stark sie riechen, kann von Mahlzeit zu Mahlzeit unterschiedlich sein. Besonders eiweissreiche oder schwefelhaltige Lebensmittel wie Eier, bestimmte Kohlsorten, Zwiebeln oder Knoblauch können den Geruch verstärken.</p>
+<p>Auch eine rasche Ernährungsumstellung, sehr grosse Mahlzeiten oder Veränderungen der Darmflora können eine Rolle spielen.</p>
+<h2>Häufige Zusammenhänge</h2>
+<ul>
+<li>bestimmte Lebensmittel</li>
+<li>Laktose- oder andere Kohlenhydrat-Unverträglichkeiten</li>
+<li><a href="/beschwerden/verstopfung/">Verstopfung</a></li>
+<li><a href="/beschwerden/reizdarm/">Reizdarm</a></li>
+<li>sehr proteinreiche Ernährung</li>
+<li>Veränderungen der Darmflora</li>
+</ul>
+<p>Wenn gleichzeitig ein <a href="/koerpersignale/blaehbauch-am-abend/">Blähbauch</a>, <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">Völlegefühl</a> oder veränderter Stuhlgang auftritt, lohnt es sich, auf zeitliche Zusammenhänge mit Mahlzeiten zu achten.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Medizinisch beurteilt werden sollten neu auftretende oder anhaltende Beschwerden insbesondere bei unbeabsichtigtem Gewichtsverlust, Blut im Stuhl, länger anhaltendem Durchfall, starken oder zunehmenden Bauchschmerzen, Fieber oder einer deutlichen Veränderung der Stuhlgewohnheiten. Starker Geruch allein ist dagegen normalerweise kein Warnsignal.</p></div>
+<h2>Was du beobachten kannst</h2>
+<p>Notiere einige Tage lang:</p>
+<ul>
+<li>welche Lebensmittel du gegessen hast</li>
+<li>wann die Blähungen auftreten</li>
+<li>ob gleichzeitig Völlegefühl oder Schmerzen entstehen</li>
+<li>wie sich der Stuhlgang verändert</li>
+</ul>
+<p>Solche Muster sind häufig aussagekräftiger als der Geruch selbst. Mehr zum Beschwerdebild insgesamt findest du auf den Seiten <a href="/beschwerden/blaehungen/">Blähungen</a> und <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'durchfall-am-morgen',
+    symptom: 'Durchfall am Morgen',
+    title: 'Durchfall am Morgen: Warum gerade morgens?',
+    metaDesc: 'Morgendlicher Durchfall kann durch Ernährung, Kaffee, Stress oder Darmerkrankungen entstehen. Erfahre, worauf du achten solltest.',
+    h1: 'Durchfall am Morgen',
+    category: 'Bauch & Verdauung',
+    lead: 'Wenn weicher oder flüssiger Stuhl vor allem morgens auftritt, kann das mit der natürlichen Aktivierung des Darms nach dem Aufstehen zusammenhängen. Kaffee, Frühstück, Stress und bestimmte Nahrungsmittel können diesen sogenannten gastro-kolischen Reflex zusätzlich verstärken. Wiederkehrender morgendlicher Durchfall kann aber auch andere Ursachen haben.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Warum wird der Darm morgens aktiv?</h2>
+<p>Der Darm wird morgens aktiver. Schon das Aufstehen und die erste Mahlzeit senden Signale an den Dickdarm, seinen Inhalt weiterzubewegen. Deshalb haben viele Menschen ihren ersten Stuhlgang des Tages am Morgen.</p>
+<h2>Was kommt infrage, wenn der Stuhl regelmässig sehr weich ist?</h2>
+<ul>
+<li>viel Kaffee, insbesondere auf nüchternen Magen</li>
+<li>Alkohol am Vorabend</li>
+<li>sehr fettreiche Mahlzeiten</li>
+<li>Laktose oder andere unverträgliche Nahrungsmittel</li>
+<li>Stress und Nervosität</li>
+<li><a href="/beschwerden/reizdarm/">Reizdarm</a></li>
+<li>Medikamente oder Nahrungsergänzungsmittel</li>
+<li>Darminfektionen</li>
+</ul>
+<p>Typisch für eine stressbedingte Darmreaktion ist, dass der Stuhldrang besonders vor Arbeit, Reisen, Prüfungen oder anderen belastenden Situationen auftritt.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann medizinisch abklären</div><p>Eine ärztliche Beurteilung ist sinnvoll bei Durchfall über mehrere Wochen, nächtlichem Durchfall, der aus dem Schlaf weckt, Blut im Stuhl, Gewichtsverlust, Fieber, starken Bauchschmerzen oder Zeichen von Flüssigkeitsmangel.</p></div>
+<h2>Was du beobachten kannst</h2>
+<p>Achte auf den Abstand zwischen Aufstehen, Kaffee, Frühstück und dem ersten Stuhldrang. Auch ein kurzes Ernährungs- und Symptomtagebuch kann helfen, wiederkehrende Auslöser zu erkennen. Mehr zum Gesamtbild findest du unter <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kalte-haende-trotz-waerme',
+    symptom: 'kalte Hände trotz warmer Umgebung',
+    title: 'Kalte Hände trotz Wärme: mögliche Ursachen',
+    metaDesc: 'Warum bleiben Hände kalt, obwohl es warm ist? Mögliche Ursachen reichen von Gefässreaktionen bis zu Kreislauf- oder Schilddrüsenproblemen.',
+    h1: 'Kalte Hände trotz Wärme',
+    category: 'Hände & Nerven',
+    lead: 'Kalte Hände entstehen meistens dadurch, dass sich die kleinen Blutgefässe in den Fingern verengen. Das kann auch in einer warmen Umgebung passieren. Häufig spielen Stress, niedriger Blutdruck oder eine ausgeprägte Gefässreaktion eine Rolle. Seltener stecken Erkrankungen dahinter.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Kalte Hände einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Warum werden Hände kalt, obwohl es warm ist?</h2>
+<p>Der Körper kann die Durchblutung von Händen und Füssen sehr schnell verändern. Bei Stress oder Kälte ziehen sich kleine Gefässe zusammen, sodass weniger warmes Blut bis in die Finger gelangt. Bei manchen Menschen reagiert dieses System besonders empfindlich.</p>
+<h2>Mögliche Zusammenhänge</h2>
+<ul>
+<li>individuelle Gefässreaktion</li>
+<li>niedriger Blutdruck</li>
+<li>Stress oder Angst</li>
+<li>Nikotin</li>
+<li>bestimmte Medikamente</li>
+<li><a href="/beschwerden/eisenmangel/">Eisenmangel</a></li>
+<li>Schilddrüsenunterfunktion</li>
+<li><a href="/beschwerden/raynaud-syndrom/">Raynaud-Syndrom</a></li>
+</ul>
+<p>Beim Raynaud-Syndrom verändern einzelne Finger häufig zusätzlich ihre Farbe, beispielsweise weiss oder bläulich, bevor sie beim Wiedererwärmen rot werden.</p>
+<p>Ist nur eine Hand deutlich kälter als die andere, findest du die eigene Einordnung unter <a href="/koerpersignale/kalte-haende-einseitig/">Eine Hand ist kälter</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Eine medizinische Beurteilung ist sinnvoll, wenn nur eine Hand dauerhaft betroffen ist, Finger stark weiss oder blau werden, Wunden an Fingern entstehen, deutliche Schmerzen auftreten oder gleichzeitig ausgeprägte Müdigkeit, Gewichtsveränderungen oder andere neue Symptome bestehen.</p></div>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>ob beide Hände betroffen sind</li>
+<li>welche Finger kalt werden</li>
+<li>ob sich die Hautfarbe verändert</li>
+<li>ob Stress einen Anfall auslöst</li>
+<li>wie schnell die Hände wieder warm werden</li>
+</ul>
+<p>Mehr zum Thema Durchblutung insgesamt findest du auf der Seite <a href="/beschwerden/durchblutungsstoerungen/">Durchblutungsstörungen</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/raynaud-syndrom/', label: 'Raynaud-Syndrom', cat: 'Beschwerde' },
+      { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Eine Hand ist kälter', cat: 'Körpersignal' },
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'schnarchen-jede-nacht',
+    symptom: 'Schnarchen jede Nacht',
+    title: 'Jede Nacht schnarchen: wann ist es harmlos?',
+    metaDesc: 'Regelmässiges Schnarchen ist häufig harmlos, kann aber auf verengte Atemwege oder Schlafapnoe hinweisen. Diese Zeichen solltest du beachten.',
+    h1: 'Schnarchen jede Nacht',
+    category: 'Schlaf & Nacht',
+    lead: 'Regelmässiges Schnarchen entsteht, wenn Gewebe in den oberen Atemwegen während des Schlafs vibriert. Bei vielen Menschen ist das harmlos. Lautes Schnarchen zusammen mit Atempausen, Luftschnappen oder starker Tagesmüdigkeit sollte jedoch medizinisch abgeklärt werden.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Schlaf gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Wie entsteht das Schnarchgeräusch?</h2>
+<p>Im Schlaf entspannen sich Muskeln im Rachen. Dadurch wird der Atemweg enger. Die vorbeiströmende Luft kann Gaumensegel und andere Strukturen zum Schwingen bringen, so entsteht das typische Schnarchgeräusch.</p>
+<h2>Was begünstigt Schnarchen?</h2>
+<ul>
+<li>Rückenlage</li>
+<li>Alkohol am Abend</li>
+<li>verstopfte Nase</li>
+<li>Übergewicht</li>
+<li>anatomisch enge Atemwege</li>
+<li>zunehmendes Alter</li>
+</ul>
+<p>Entscheidend ist, ob die Atmung während des Schlafs nur laut oder tatsächlich wiederholt unterbrochen ist.</p>
+<h2>Hinweise auf eine mögliche Schlafapnoe</h2>
+<ul>
+<li>beobachtete Atempausen</li>
+<li>Luftschnappen in der Nacht</li>
+<li>sehr lautes, unregelmässiges Schnarchen</li>
+<li>morgendliche Kopfschmerzen</li>
+<li>ausgeprägte Tagesmüdigkeit</li>
+<li>Konzentrationsprobleme</li>
+<li>erhöhter <a href="/beschwerden/bluthochdruck/">Blutdruck</a></li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Wenn solche Zeichen bestehen, sollte eine ärztliche Schlafabklärung erfolgen.</p></div>
+<h2>Was du beobachten kannst</h2>
+<p>Falls du mit jemandem zusammenlebst, kann die andere Person häufig besser beurteilen, ob das Schnarchen gleichmässig ist oder von Atempausen unterbrochen wird. Auch Aufzeichnungen mit Smartphone oder Uhr können Hinweise liefern, ersetzen jedoch keine medizinische Untersuchung.</p>
+<p>Leidet dein Schlaf insgesamt, findest du mehr auf der Seite <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a>. Ein trockener Mund beim Aufwachen ist ein häufiger Begleiter der Mundatmung, siehe <a href="/koerpersignale/trockener-mund-nachts/">Trockener Mund nachts</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+      { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'juckreiz-nachts-ohne-ausschlag',
+    symptom: 'nächtlicher Juckreiz ohne sichtbaren Ausschlag',
+    title: 'Juckreiz nachts ohne Ausschlag: Ursachen',
+    metaDesc: 'Nächtlicher Juckreiz ohne sichtbaren Ausschlag kann durch trockene Haut, Wärme oder andere Ursachen entstehen. Wann eine Abklärung sinnvoll ist.',
+    h1: 'Juckreiz nachts ohne Ausschlag',
+    category: 'Schlaf & Nacht',
+    lead: 'Juckreiz kann nachts stärker auffallen, obwohl zunächst kein Ausschlag sichtbar ist. Häufig sind trockene Haut, Wärme im Bett oder Hautreizung die Ursache. Bei länger anhaltendem oder ausgeprägtem Juckreiz sollte jedoch auch nach anderen Ursachen gesucht werden.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Juckreiz einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Warum juckt es gerade nachts?</h2>
+<p>Nachts gibt es weniger Ablenkung, sodass Hautempfindungen stärker wahrgenommen werden. Zusätzlich wird die Haut im warmen Bett stärker durchblutet und verliert Feuchtigkeit.</p>
+<h2>Häufige Ursachen</h2>
+<ul>
+<li>trockene Haut</li>
+<li>heisse Dusche vor dem Schlafen</li>
+<li>trockene Raumluft</li>
+<li>empfindliche Haut</li>
+<li>neue Pflegeprodukte oder Waschmittel</li>
+<li>Medikamente</li>
+</ul>
+<p>Manchmal beginnt eine Hauterkrankung mit Juckreiz, bevor sichtbare Hautveränderungen entstehen. Auch innere Erkrankungen können selten Juckreiz verursachen, beispielsweise bestimmte Leber-, Nieren- oder Blutkrankheiten.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Eine medizinische Untersuchung ist sinnvoll bei Juckreiz über mehrere Wochen, starkem generalisiertem Juckreiz am ganzen Körper, Gelbfärbung der Haut, deutlicher Gewichtsabnahme, Fieber oder Nachtschweiss, neu begonnenen Medikamenten oder zunehmenden Hautveränderungen.</p></div>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>welche Körperregion betroffen ist</li>
+<li>ob Wärme den Juckreiz verstärkt</li>
+<li>ob neue Hautprodukte verwendet wurden</li>
+<li>ob später doch Rötungen oder kleine Hautveränderungen auftreten</li>
+</ul>
+<p>Zeigen sich sichtbare Hautveränderungen, findest du die passenden Beschwerdebilder unter <a href="/beschwerden/neurodermitis/">Neurodermitis</a>, <a href="/beschwerden/nesselsucht/">Nesselsucht</a> und <a href="/beschwerden/schuppenflechte/">Schuppenflechte</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+    ],
+  },
 ];
 
 export const koerpersignalBySlug = (slug: string): Koerpersignal | undefined =>

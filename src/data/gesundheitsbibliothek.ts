@@ -118,7 +118,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Schulter, Arm & Hand',
     metaDesc: 'Eingeschlafene Finger, Frozen Shoulder, Tennisarm, Karpaltunnelsyndrom: alle Inhalte der Gesundheitsbibliothek zu Schulter, Arm und Hand — vom ersten Signal bis zur Behandlung.',
     lead: 'Finger, die nachts einschlafen. Eine Schulter, die nicht mehr über den Kopf will. Kribbeln beim Velofahren. Diese Region sammelt alle Inhalte von der ersten Beobachtung bis zum bekannten Beschwerdebild.',
-    signals: ['finger-schlafen-ein', 'einzelne-finger-taub', 'arm-schlaeft-nachts-ein', 'kribbeln-vom-nacken-in-den-arm', 'finger-morgens-steif', 'hand-kribbelt-beim-velofahren', 'kalte-haende-einseitig'],
+    signals: ['finger-schlafen-ein', 'einzelne-finger-taub', 'arm-schlaeft-nachts-ein', 'kribbeln-vom-nacken-in-den-arm', 'finger-morgens-steif', 'hand-kribbelt-beim-velofahren', 'kalte-haende-einseitig', 'kalte-haende-trotz-waerme'],
     conditions: [
       { slug: 'schulterschmerzen', label: 'Schulterschmerzen' }, { slug: 'frozen-shoulder', label: 'Frozen Shoulder' },
       { slug: 'rotatorenmanschette', label: 'Rotatorenmanschette' }, { slug: 'tennisarm', label: 'Tennisarm' },
@@ -160,7 +160,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Bauch & Verdauung',
     metaDesc: 'Reizdarm, Blähungen, Sodbrennen, Gastritis: alle Inhalte der Gesundheitsbibliothek zur Region Bauch & Verdauung — Beschwerden, Zusammenhänge und Behandlungsmöglichkeiten.',
     lead: 'Ein Bauch, der nach dem Essen rebelliert. Sodbrennen, das nachts wach hält. Eine Verdauung, die ohne klare Ursache unruhig ist. Hier findest du alle Inhalte zur Region Bauch und Verdauung.',
-    signals: ['voellegefuehl-nach-dem-essen', 'blaehbauch-am-abend', 'bauch-fuehlt-sich-hart-an', 'magendruck-im-liegen', 'druckgefuehl-im-unterbauch', 'bitterer-geschmack-morgens'],
+    signals: ['voellegefuehl-nach-dem-essen', 'blaehbauch-am-abend', 'bauch-fuehlt-sich-hart-an', 'stinkende-blaehungen', 'durchfall-am-morgen', 'magendruck-im-liegen', 'druckgefuehl-im-unterbauch', 'bitterer-geschmack-morgens'],
     conditions: [
       { slug: 'verdauungsprobleme', label: 'Verdauungsprobleme' }, { slug: 'reizdarm', label: 'Reizdarm' },
       { slug: 'blaehungen', label: 'Blähungen' }, { slug: 'verstopfung', label: 'Verstopfung' },
@@ -204,7 +204,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Schlaf & Nervensystem',
     metaDesc: 'Schlafprobleme, nächtliches Aufwachen, Nachtschweiss, Erschöpfung, Stress: alle Inhalte der Gesundheitsbibliothek zu Schlaf und Nervensystem an einem Ort.',
     lead: 'Immer um drei Uhr wach. Nachtschweiss ohne Fieber. Tagsüber erschöpft, abends überdreht. Diese Region sammelt alle Inhalte rund um Schlaf, Stress und Nervensystem.',
-    signals: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'herzklopfen-im-liegen', 'herzstolpern-in-ruhe', 'haeufiger-harndrang-nachts', 'trockener-mund-nachts', 'wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'augenlid-zuckt'],
+    signals: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'schnarchen-jede-nacht', 'juckreiz-nachts-ohne-ausschlag', 'herzklopfen-im-liegen', 'herzstolpern-in-ruhe', 'haeufiger-harndrang-nachts', 'trockener-mund-nachts', 'wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'augenlid-zuckt'],
     conditions: [
       { slug: 'schlafprobleme', label: 'Schlafprobleme' }, { slug: 'stress-burnout', label: 'Stress & Burnout' },
       { slug: 'erschoepfung', label: 'Erschöpfung' }, { slug: 'angststoerungen', label: 'Angststörungen' },
@@ -372,6 +372,11 @@ const SYNONYMS: Record<string, string> = {
   '/koerpersignale/kribbeln-vom-nacken-in-den-arm/': 'Ausstrahlung Arm HWS Nervenwurzel Brennen Schulter',
   '/koerpersignale/kopfdruck-beim-buecken/': 'Druck hinter der Stirn Nebenhöhlen Stirndruck vornüberbeugen',
   '/koerpersignale/herzstolpern-in-ruhe/': 'Extrasystolen Herzaussetzer Extraschläge unregelmässiger Herzschlag',
+  '/koerpersignale/stinkende-blaehungen/': 'übel riechende Blähungen Darmgase Schwefel Winde',
+  '/koerpersignale/durchfall-am-morgen/': 'weicher Stuhl morgens flüssiger Stuhlgang gastro-kolischer Reflex',
+  '/koerpersignale/kalte-haende-trotz-waerme/': 'kalte Finger schlechte Durchblutung Hände',
+  '/koerpersignale/schnarchen-jede-nacht/': 'Schnarchen Atemaussetzer Schlafapnoe laut',
+  '/koerpersignale/juckreiz-nachts-ohne-ausschlag/': 'Jucken nachts Hautjucken Pruritus trockene Haut',
   '/gesundheitsbibliothek/koerper/becken-blase/': 'Urologie Blase Unterleib Beckenboden',
   '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/': 'NLG ENG Nervenmessung Nervenleitgeschwindigkeit Elektroneurografie EMG',
   '/gesundheitsbibliothek/koerper/bauch-verdauung/': 'Magen Darm Verdauung',
