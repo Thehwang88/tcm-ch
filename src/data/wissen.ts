@@ -55,6 +55,11 @@ const wissenBase: Wissen[] = [
     ],
     "related": [
       {
+        "href": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
+        "label": "Tut Akupunktur weh?",
+        "cat": "Frage"
+      },
+      {
         "href": "/therapien/akupunktur/",
         "label": "Akupunktur",
         "cat": "Therapie"
@@ -1060,6 +1065,11 @@ const wissenBase: Wissen[] = [
     ],
     "related": [
       {
+        "href": "/gesundheitsbibliothek/fragen/kosten-versicherung/",
+        "label": "Kosten & Versicherung: häufige Fragen",
+        "cat": "Fragen"
+      },
+      {
         "href": "/wissen/akupunktur-bei-nackenschmerzen",
         "label": "Akupunktur bei Nackenschmerzen",
         "cat": "Artikel"
@@ -1562,6 +1572,11 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      {
+        "href": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
+        "label": "Tut Akupunktur weh?",
+        "cat": "Frage"
+      },
       {
         "href": "/therapien/physiotherapie/dry-needling/",
         "label": "Dry Needling",

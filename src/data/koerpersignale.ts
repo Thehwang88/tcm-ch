@@ -833,6 +833,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft akut gegen Rückenschmerzen beim Husten?', a: 'Beim Husten leicht in die Knie gehen oder abstützen, das federt die Druckspitze ab. Danach Wärme, moderate Bewegung statt Schonhaltung. Hält der Schmerz über zwei bis drei Wochen an oder strahlt er aus, gehört er abgeklärt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?', cat: 'Frage' },
       { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
       { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
@@ -1719,6 +1720,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist ein steifer Nacken gefährlich?', a: 'Sofort reagieren bei Steifheit mit hohem Fieber, starken Kopfschmerzen und Lichtempfindlichkeit sowie bei Schwäche oder Taubheit in Armen oder Beinen. Abklären lassen solltest du auch Morgensteifheit über 30 Minuten, die regelmässig auftritt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
       { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
       { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
@@ -2336,6 +2338,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Herzstolpern sofort zum Arzt?', a: 'Sofort den Notruf 144 wählen bei Stolpern mit Brustschmerzen, Engegefühl, starker Atemnot oder Ohnmacht. Zeitnah abklären lassen: anhaltend unregelmässiger Puls, anfallsartiges Herzrasen oder Stolpern mit Leistungsknick und Luftnot.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?', cat: 'Frage' },
       { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
       { href: '/beschwerden/angststoerungen/', label: 'Angststörungen', cat: 'Beschwerde' },
       { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },

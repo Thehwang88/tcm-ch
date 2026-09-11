@@ -399,13 +399,48 @@ const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
     { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung' },
     { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann zuerst zum Arzt?' },
   ],
+  moxibustion: [
+    { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/#moxibustion', label: 'Was ist Moxibustion genau?' },
+    { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung' },
+    { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung' },
+  ],
+};
+
+// Beschwerde-Seite -> Patientenfragen, nur wo die Beziehung stark ist (Akupunktur-geführte
+// Beschwerdebilder mit hoher Termin-Friktion). Bewusst NICHT auf jeder Beschwerde.
+const FRAGEN_FOR_BESCHWERDE: Record<string, { href: string; label: string }[]> = {
+  migraene: [
+    { href: '/gesundheitsbibliothek/fragen/akupunktur/#sitzungen', label: 'Wie viele Behandlungen braucht man?' },
+    { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+    { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+  ],
+  kopfschmerzen: [
+    { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    { href: '/gesundheitsbibliothek/fragen/akupunktur/#sitzungen', label: 'Wie viele Behandlungen braucht man?' },
+  ],
+  spannungskopfschmerzen: [
+    { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+  ],
+  nackenschmerzen: [
+    { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    { href: '/gesundheitsbibliothek/fragen/akupunktur/#sitzungen', label: 'Wie viele Behandlungen braucht man?' },
+    { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+  ],
+  rueckenschmerzen: [
+    { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    { href: '/gesundheitsbibliothek/fragen/akupunktur/#sitzungen', label: 'Wie viele Behandlungen braucht man?' },
+    { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+  ],
+  schlafprobleme: [
+    { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+    { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Übernimmt die Zusatzversicherung die Kosten?' },
+  ],
 };
 
 const escFr = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-/** Dezenter Link-Block "Häufige Patientenfragen" für Therapie-Seiten (bestehende .cl-*-Klassen). */
-export function fragenLinksHtml(therapieSlug: string): string {
-  const links = FRAGEN_FOR_THERAPIE[therapieSlug] ?? [];
+function fragenChipsHtml(links: { href: string; label: string }[]): string {
   if (!links.length) return '';
   const chips = links.map((l) => `<a href="${l.href}" class="cl-chip">${escFr(l.label)}</a>`).join('');
   return (
@@ -416,4 +451,14 @@ export function fragenLinksHtml(therapieSlug: string): string {
     `<div class="cl-links">${chips}<a href="/gesundheitsbibliothek/fragen/" class="cl-chip">Alle Fragen →</a></div>` +
     `</div></section>`
   );
+}
+
+/** Dezenter Link-Block "Häufige Patientenfragen" für Therapie-Seiten (bestehende .cl-*-Klassen). */
+export function fragenLinksHtml(therapieSlug: string): string {
+  return fragenChipsHtml(FRAGEN_FOR_THERAPIE[therapieSlug] ?? []);
+}
+
+/** Gleicher Block für Beschwerde-Seiten; leer, wenn nichts kuratiert ist. */
+export function fragenLinksForBeschwerdeHtml(beschwerdeSlug: string): string {
+  return fragenChipsHtml(FRAGEN_FOR_BESCHWERDE[beschwerdeSlug] ?? []);
 }

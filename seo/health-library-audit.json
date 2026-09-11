@@ -527,7 +527,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 26,
-      "outboundHealthLinks": 16
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/lippenherpes/",
@@ -577,7 +577,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 140,
-      "outboundHealthLinks": 14
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -627,7 +627,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 161,
-      "outboundHealthLinks": 26
+      "outboundHealthLinks": 29
     },
     {
       "url": "/beschwerden/nervenschmerzen/",
@@ -817,7 +817,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 178,
-      "outboundHealthLinks": 31
+      "outboundHealthLinks": 34
     },
     {
       "url": "/beschwerden/schlafprobleme/",
@@ -827,7 +827,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 129,
-      "outboundHealthLinks": 18
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/schlafstoerungen/",
@@ -947,7 +947,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 19,
-      "outboundHealthLinks": 25
+      "outboundHealthLinks": 28
     },
     {
       "url": "/beschwerden/spinalkanalstenose/",
@@ -1096,7 +1096,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 134,
+      "inboundContentLinks": 156,
       "outboundHealthLinks": 37
     },
     {
@@ -1106,8 +1106,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
@@ -1117,7 +1117,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur/",
@@ -1127,7 +1127,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 13
+      "outboundHealthLinks": 15
     },
     {
       "url": "/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/",
@@ -1137,7 +1137,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/erster-termin/",
@@ -1146,8 +1146,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/kosten-versicherung/",
@@ -1156,8 +1156,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/",
@@ -1167,7 +1167,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 8,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/nach-der-behandlung/",
@@ -1177,7 +1177,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 9,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
@@ -1187,7 +1187,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 8,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/",
@@ -1197,7 +1197,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 9,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
@@ -1206,8 +1206,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/",
@@ -1216,8 +1216,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/",
@@ -1226,8 +1226,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
@@ -1237,7 +1237,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 29,
-      "outboundHealthLinks": 33
+      "outboundHealthLinks": 34
     },
     {
       "url": "/gesundheitsbibliothek/koerper/becken-blase/",
@@ -1247,7 +1247,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 18,
-      "outboundHealthLinks": 22
+      "outboundHealthLinks": 23
     },
     {
       "url": "/gesundheitsbibliothek/koerper/hals-nacken/",
@@ -1257,7 +1257,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 22,
-      "outboundHealthLinks": 32
+      "outboundHealthLinks": 33
     },
     {
       "url": "/gesundheitsbibliothek/koerper/huefte-bein-fuss/",
@@ -1267,7 +1267,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 30,
-      "outboundHealthLinks": 36
+      "outboundHealthLinks": 37
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -1277,7 +1277,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 33,
-      "outboundHealthLinks": 39
+      "outboundHealthLinks": 40
     },
     {
       "url": "/gesundheitsbibliothek/koerper/ruecken/",
@@ -1287,7 +1287,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 21,
-      "outboundHealthLinks": 30
+      "outboundHealthLinks": 31
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schlaf-nervensystem/",
@@ -1297,7 +1297,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 30,
-      "outboundHealthLinks": 36
+      "outboundHealthLinks": 37
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -1307,7 +1307,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 29,
-      "outboundHealthLinks": 35
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
@@ -1317,7 +1317,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 21,
-      "outboundHealthLinks": 27
+      "outboundHealthLinks": 28
     },
     {
       "url": "/haut/",
@@ -1887,7 +1887,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/hitzegefuehl-ohne-fieber/",
@@ -2017,7 +2017,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/ohr-einseitig-verstopft/",
@@ -2057,7 +2057,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 8,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/rueckenschmerzen-beim-langen-stehen/",
@@ -2447,7 +2447,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 54,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 8
     },
     {
       "url": "/therapien/ohrakupunktur/",
@@ -2797,7 +2797,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/elektroakupunktur-wirkung/",
@@ -2897,7 +2897,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 27,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/migraene-tcm-warum-akupunktur-nicht-fuer-jeden/",
@@ -3067,7 +3067,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     }
   ]
 }
