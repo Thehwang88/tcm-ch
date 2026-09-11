@@ -18,6 +18,15 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/haeufiger-harndrang-nachts/
+- https://tcm.ch/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/
+- https://tcm.ch/koerpersignale/druckgefuehl-im-unterbauch/
+- https://tcm.ch/koerpersignale/bauch-fuehlt-sich-hart-an/
+- https://tcm.ch/koerpersignale/magendruck-im-liegen/
+- https://tcm.ch/koerpersignale/kribbeln-vom-nacken-in-den-arm/
+- https://tcm.ch/koerpersignale/kopfdruck-beim-buecken/
+- https://tcm.ch/koerpersignale/herzstolpern-in-ruhe/
+- https://tcm.ch/gesundheitsbibliothek/koerper/becken-blase/
 - https://tcm.ch/koerpersignale/arm-schlaeft-nachts-ein/
 - https://tcm.ch/koerpersignale/voellegefuehl-nach-dem-essen/
 - https://tcm.ch/koerpersignale/blaehbauch-am-abend/

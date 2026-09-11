@@ -26,19 +26,19 @@ const schema = [
 ];
 
 // Gruppen in Anzeige-Reihenfolge (WO spürst du etwas?)
-const GROUPS = ['Kopf & Sinne', 'Hände & Nerven', 'Hals & Mund', 'Bauch & Verdauung', 'Schlaf & Nacht', 'Wärme & Schwitzen', 'Muskeln & Beine'];
+const GROUPS = ['Kopf & Sinne', 'Hände & Nerven', 'Hals & Mund', 'Bauch & Verdauung', 'Becken & Blase', 'Schlaf & Nacht', 'Wärme & Schwitzen', 'Muskeln & Beine'];
 const byGroup = GROUPS.map((g) => ({ g, items: koerpersignale.filter((k) => k.category === g) }));
 
 // WANN tritt es auf? Kuratierte Muster-Einstiege (nur echte Treffer, keine Keyword-Listen).
 const WANN = [
-  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'trockener-mund-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein', 'arm-schlaeft-nachts-ein'] },
+  { label: 'Nachts', slugs: ['wadenkraempfe-nachts', 'brennende-fuesse-nachts', 'trockener-mund-nachts', 'immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'finger-schlafen-ein', 'arm-schlaeft-nachts-ein', 'haeufiger-harndrang-nachts'] },
   { label: 'Morgens', slugs: ['finger-morgens-steif', 'bitterer-geschmack-morgens', 'nacken-morgens-steif'] },
   { label: 'Beim Aufstehen', slugs: ['schwindel-beim-aufstehen'] },
-  { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr', 'herzklopfen-im-liegen'] },
+  { label: 'Im Liegen', slugs: ['schwindel-beim-umdrehen-im-bett', 'herzschlag-im-ohr', 'herzklopfen-im-liegen', 'magendruck-im-liegen'] },
   { label: 'Beim Sitzen', slugs: ['bein-wird-beim-sitzen-taub'] },
   { label: 'Beim Stehen', slugs: ['rueckenschmerzen-beim-langen-stehen'] },
   { label: 'Abends', slugs: ['schwere-beine-abends', 'blaehbauch-am-abend'] },
-  { label: 'Bei Bewegung', slugs: ['rueckenschmerzen-beim-husten', 'hand-kribbelt-beim-velofahren', 'schwindel-beim-buecken'] },
+  { label: 'Bei Bewegung', slugs: ['rueckenschmerzen-beim-husten', 'hand-kribbelt-beim-velofahren', 'schwindel-beim-buecken', 'kopfdruck-beim-buecken'] },
   { label: 'Nach dem Essen', slugs: ['voellegefuehl-nach-dem-essen'] },
   { label: 'Bei Anspannung', slugs: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'] },
 ];
@@ -64,6 +64,9 @@ const WIE = [
   { label: 'Flimmern', slug: 'augenflimmern' },
   { label: 'Völlegefühl', slug: 'voellegefuehl-nach-dem-essen' },
   { label: 'Herzklopfen', slug: 'herzklopfen-im-liegen' },
+  { label: 'Stolpern', slug: 'herzstolpern-in-ruhe' },
+  { label: 'Harndrang', slug: 'ploetzlicher-harndrang-ohne-volle-blase' },
+  { label: 'Harter Bauch', slug: 'bauch-fuehlt-sich-hart-an' },
   { label: 'Schweregefühl', slug: 'schwere-beine-abends' },
 ];
 ---

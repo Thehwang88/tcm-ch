@@ -44,6 +44,7 @@ const AUTOR: KsAuthor = {
 const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09' };
 const DATEN3 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN4 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
+const DATEN5 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -1933,6 +1934,405 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/schwindel-beim-umdrehen-im-bett/', label: 'Schwindel beim Umdrehen im Bett', cat: 'Körpersignal' },
       { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+    ],
+  },
+
+  // ────────────────────────────────────────────── WELLE 5 (GSC-informiert, 09/2026)
+  // Fokus: Becken/Urologie-Cluster aufbauen (3 Signale -> Hub-Schwelle), Bauch
+  // vertiefen, Nacken-Nerven-Brücke. 5 Kandidaten der Vorgabe als Duplikate
+  // abgelehnt (siehe seo/health-library-map.md, Welle 4).
+  {
+    slug: 'haeufiger-harndrang-nachts',
+    symptom: 'häufiger Harndrang in der Nacht',
+    title: 'Häufiger Harndrang nachts: Warum muss ich so oft raus?',
+    metaDesc: 'Wachst du nachts mehrmals auf, weil du auf die Toilette musst? Von Trinkgewohnheiten über Blase und Prostata bis Schlaf: die häufigsten Gründe für Nykturie.',
+    h1: 'Warum muss ich nachts so oft auf die Toilette?',
+    category: 'Becken & Blase',
+    lead: 'Einmal pro Nacht raus ist normal. Wer aber regelmässig zwei-, drei- oder viermal aufstehen muss, schläft schlecht und fragt sich irgendwann, ob etwas nicht stimmt. Nächtlicher Harndrang, medizinisch Nykturie, hat viele mögliche Gründe, von harmlosen Trinkgewohnheiten bis zu Blase, Prostata oder Herz. Hier lernst du die Muster zu unterscheiden.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Schlaf und Blase gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nachts drosselt der Körper normalerweise die Urinproduktion, damit du durchschlafen kannst. Musst du trotzdem mehrmals raus, gibt es drei Grundmuster: Du produzierst nachts zu viel Urin, deine Blase meldet sich zu früh, oder du wachst aus anderen Gründen auf und gehst dann zur Toilette, weil du ohnehin wach bist.</p>
+<p>Einmal pro Nacht gilt als unauffällig. Ab zwei Toilettengängen pro Nacht über längere Zeit lohnt sich ein genauerer Blick, vor allem, wenn der Schlaf darunter leidet.</p>
+<h2>Zu viel Urin in der Nacht</h2>
+<p>Die häufigsten Gründe sind banal: viel Flüssigkeit am Abend, Alkohol oder Kaffee, die beide harntreibend wirken, und entwässernde Medikamente, die zu spät am Tag eingenommen werden. Auch Wassereinlagerungen in den Beinen spielen eine Rolle: Was sich tagsüber in den Beinen sammelt, wird im Liegen zurück in den Kreislauf verschoben und über die Nieren ausgeschieden. Deshalb gehören <a href="/beschwerden/schwere-beine/">schwere, geschwollene Beine</a> und nächtlicher Harndrang oft zusammen.</p>
+<p>Seltener stecken Diabetes, Herz- oder Nierenerkrankungen dahinter. Ein einfacher erster Schritt ist ein Trink- und Toilettenprotokoll über zwei bis drei Tage, das die Ärztin sofort auswerten kann.</p>
+<h2>Die Blase meldet sich zu früh</h2>
+<p>Wenn du nachts und tagsüber häufig mit wenig Urinmenge zur Toilette musst, spricht das für eine überaktive oder gereizte Blase. Typisch ist plötzlicher, schwer aufschiebbarer Drang, mehr dazu auf der Seite <a href="/beschwerden/reizblase/">Reizblase</a> und beim Signal <a href="/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/">Plötzlicher Harndrang ohne volle Blase</a>. Brennt es zusätzlich beim Wasserlassen, gehört eine <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a> ausgeschlossen.</p>
+<p>Bei Männern ab etwa 50 ist die <a href="/beschwerden/prostata/">Prostata</a> ein häufiger Faktor: Eine vergrösserte Prostata kann die Blasenentleerung behindern, die Blase entleert sich unvollständig und meldet sich entsprechend öfter, gerade nachts.</p>
+<h2>Du wachst sowieso auf</h2>
+<p>Manche Menschen weckt nicht die Blase, sondern der Schlaf: Wer wegen Schnarchen, unruhigem Schlaf oder Grübeln ohnehin <a href="/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/">regelmässig aufwacht</a>, geht dann zur Toilette, obwohl die Blase noch gar nicht voll war. Auch eine unbehandelte Schlafapnoe erhöht die nächtliche Urinproduktion. Wenn du tagsüber stark müde bist und laut schnarchst, gehört diese Spur ernst genommen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass nächtlichen Harndrang ärztlich abklären, wenn er neu aufgetreten ist und anhält, wenn Blut im Urin sichtbar ist, wenn Brennen, Fieber oder Flankenschmerzen dazukommen, wenn du unbeabsichtigt Urin verlierst oder wenn zusätzlich starker Durst und Gewichtsverlust bestehen. Männer mit schwachem Harnstrahl und Restharngefühl sollten die Prostata untersuchen lassen. Das sind gut behandelbare Themen, je früher, desto einfacher.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Wie oft musst du raus, und wie viel kommt jeweils? Viel Urin spricht für Überproduktion, wenig für eine gereizte Blase.</li>
+<li>Was trinkst du nach 18 Uhr, und wie viel Alkohol oder Kaffee ist dabei?</li>
+<li>Sind deine Beine abends geschwollen?</li>
+<li>Wachst du wegen der Blase auf, oder gehst du, weil du ohnehin wach bist?</li>
+<li>Schnarchst du laut oder wurden Atempausen beobachtet?</li>
+</ul>
+<p>Mit einem einfachen Protokoll über zwei bis drei Nächte wird aus dem diffusen «ich muss ständig raus» ein klares Muster, das die Abklärung deutlich verkürzt.</p>
+<h2>Wie betrachtet die chinesische Medizin den nächtlichen Harndrang?</h2>
+<p>Die chinesische Medizin ordnet Blasen- und Schlafthemen traditionell gemeinsam ein: Sie fragt nach Kälteempfinden, Trinkgewohnheiten, Verdauung, Energie und danach, ob du nach dem Toilettengang wieder einschläfst. Diese traditionelle Sicht ersetzt keine Urin-, Blut- oder Prostataabklärung, wenn Warnzeichen bestehen.</p>
+<p>Sind ernsthafte Ursachen ausgeschlossen und stehen eine empfindliche Blase, Schlaf und Anspannung im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, je nach Bild ergänzt durch <a href="/therapien/moxibustion/">Moxibustion</a>, Teil des Plans sein. Ob dein Muster dafür geeignet ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Wie oft nachts auf die Toilette ist normal?', a: 'Null- bis einmal pro Nacht gilt als unauffällig. Ab zwei Toilettengängen über längere Zeit spricht man von Nykturie, vor allem wenn der Schlaf leidet. Dann lohnt sich eine Abklärung, die Ursachen sind meist gut behandelbar.' },
+      { q: 'Warum muss ich nachts öfter als tagsüber?', a: 'Häufig, weil tagsüber eingelagerte Flüssigkeit aus den Beinen im Liegen zurück in den Kreislauf gelangt und ausgeschieden wird, oder weil Alkohol, Kaffee und späte Getränke nachwirken. Auch Schlafapnoe erhöht die nächtliche Urinproduktion.' },
+      { q: 'Ist nächtlicher Harndrang bei Männern ein Prostata-Zeichen?', a: 'Ab etwa 50 ist eine vergrösserte Prostata eine häufige Ursache, typisch zusammen mit schwächerem Harnstrahl und Restharngefühl. Das gehört urologisch untersucht, ist aber meist gutartig und gut behandelbar.' },
+    ],
+    related: [
+      { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
+      { href: '/beschwerden/prostata/', label: 'Prostata', cat: 'Beschwerde' },
+      { href: '/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/', label: 'Plötzlicher Harndrang', cat: 'Körpersignal' },
+      { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'ploetzlicher-harndrang-ohne-volle-blase',
+    symptom: 'plötzlicher Harndrang, obwohl die Blase kaum voll ist',
+    title: 'Plötzlicher Harndrang ohne volle Blase: Was steckt dahinter?',
+    metaDesc: 'Der Drang kommt plötzlich und heftig, auf der Toilette ist es dann wenig? Warum die Blase falschen Alarm gibt, was eine Reizblase ist und wann du abklären solltest.',
+    h1: 'Warum habe ich plötzlich Harndrang, obwohl die Blase kaum voll ist?',
+    category: 'Becken & Blase',
+    lead: 'Von null auf dringend in Sekunden: Der Drang überfällt dich, du suchst hastig eine Toilette, und dann kommt nur wenig. Dieses Muster spricht dafür, dass die Blase zu früh Alarm schlägt, nicht dafür, dass sie voll ist. Hier erfährst du, warum das passiert und wie es sich behandeln lässt.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Empfindliche Blase einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Der Harndrang entsteht nicht erst, wenn die Blase voll ist, sondern wenn Blasenmuskel und Nervensystem Dehnung melden. Bei einer überaktiven Blase zieht sich der Blasenmuskel schon bei kleiner Füllung zusammen, und das Gehirn übersetzt das in dringenden Drang. Der Klassiker: heftiger Drang, kleine Menge.</p>
+<p>Dieses Muster ist häufig, gutartig und behandelbar. Wichtig ist nur, zuerst eine Entzündung und andere fassbare Ursachen auszuschliessen.</p>
+<h2>Falscher Alarm: die überaktive Blase</h2>
+<p>Bei der überaktiven Blase, umgangssprachlich <a href="/beschwerden/reizblase/">Reizblase</a>, ist das Zusammenspiel von Blasenmuskel, Nerven und Gehirn aus dem Takt. Typisch sind plötzlicher, kaum aufschiebbarer Drang, häufige Toilettengänge mit kleinen Mengen und oft auch <a href="/koerpersignale/haeufiger-harndrang-nachts/">nächtlicher Harndrang</a>. Manche verlieren beim Drang einige Tropfen Urin, dann spricht man von Dranginkontinenz, mehr dazu auf der Seite <a href="/beschwerden/inkontinenz/">Inkontinenz</a>.</p>
+<p>Verstärker sind Kälte, Stress, Koffein, kohlensäurehaltige und künstlich gesüsste Getränke sowie die berühmte Schlüssel-im-Schloss-Situation: Der Drang explodiert genau dann, wenn die Toilette in Sicht ist. Das zeigt, wie stark Kopf und Gewohnheit mitspielen.</p>
+<h2>Was sonst dahinterstecken kann</h2>
+<ul>
+<li><strong>Blasenentzündung:</strong> Drang plus Brennen, trüber oder riechender Urin. Der wichtigste Ausschluss, ein Urintest genügt meist. Siehe <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a>.</li>
+<li><strong>Prostata:</strong> Bei Männern kann eine vergrösserte oder gereizte <a href="/beschwerden/prostata/">Prostata</a> Drangsymptome auslösen.</li>
+<li><strong>Hormonelle Veränderungen:</strong> In den <a href="/beschwerden/wechseljahre/">Wechseljahren</a> wird das Gewebe von Blase und Harnröhre empfindlicher.</li>
+<li><strong>Beckenboden:</strong> Ein überspannter oder geschwächter Beckenboden verändert die Drangwahrnehmung.</li>
+<li><strong>Getränke und Medikamente:</strong> Koffein, Alkohol und entwässernde Mittel verstärken den Drang.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Geh zur Ärztin oder zum Arzt, wenn Brennen, Fieber oder Blut im Urin dazukommen, wenn der Drang neu und anhaltend ist, wenn du Urin verlierst oder wenn Schmerzen im Unterbauch oder in der Flanke auftreten. Blut im Urin gehört immer abgeklärt, auch wenn es nur einmal sichtbar war und nichts wehtut.</p></div>
+<h2>Was kannst du selbst tun?</h2>
+<ul>
+<li>Führe ein Blasentagebuch über zwei bis drei Tage: Uhrzeit, Drangstärke, Menge.</li>
+<li>Reduziere testweise Koffein, Kohlensäure und Süssstoffe.</li>
+<li>Geh nicht vorsorglich zur Toilette, das trainiert der Blase kleine Füllmengen an.</li>
+<li>Beim Drang: kurz stehen bleiben, ruhig atmen, Beckenboden sanft anspannen, der Drang ebbt oft ab und du gehst dann in Ruhe.</li>
+<li>Halte Füsse und Unterleib warm, viele Blasen reagieren empfindlich auf Kälte.</li>
+</ul>
+<p>Diese Form des Blasentrainings ist die Basis jeder Behandlung und wirkt bei vielen Menschen deutlich, braucht aber einige Wochen Geduld.</p>
+<h2>Wie betrachtet die chinesische Medizin die empfindliche Blase?</h2>
+<p>Traditionell fragt die chinesische Medizin bei Blasenthemen nach Kälteempfinden, Stress, Schlaf und danach, in welchen Situationen der Drang auftritt. Diese Einordnung ersetzt keinen Urintest und keine urologische Abklärung, wenn Warnzeichen bestehen.</p>
+<p>Ist eine Entzündung ausgeschlossen und steht die überempfindliche Blase im Vordergrund, begleiten wir das Blasentraining je nach Bild mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/ohrakupunktur/">Ohrakupunktur</a>. Ob das bei dir sinnvoll ist, klären wir ehrlich im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum kommt der Harndrang so plötzlich?', a: 'Bei einer überaktiven Blase zieht sich der Blasenmuskel schon bei kleiner Füllung ruckartig zusammen, das Gehirn meldet sofort dringenden Drang. Das ist ein Steuerungsthema von Blase und Nervensystem, keine volle Blase.' },
+      { q: 'Was ist der Unterschied zwischen Reizblase und Blasenentzündung?', a: 'Die Blasenentzündung brennt beim Wasserlassen und zeigt sich oft im Urintest, die Reizblase macht Drang und häufige kleine Mengen ohne Entzündungszeichen. Der Urintest ist deshalb der erste Schritt jeder Abklärung.' },
+      { q: 'Hilft es, einfach weniger zu trinken?', a: 'Nein, zu wenig Flüssigkeit konzentriert den Urin und reizt die Blase zusätzlich. Sinnvoller sind normale Trinkmengen über den Tag verteilt, weniger Koffein und Kohlensäure sowie ein Blasentraining, das der Blase wieder grössere Füllmengen beibringt.' },
+    ],
+    related: [
+      { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
+      { href: '/beschwerden/inkontinenz/', label: 'Inkontinenz', cat: 'Beschwerde' },
+      { href: '/beschwerden/blasenentzuendung/', label: 'Blasenentzündung', cat: 'Beschwerde' },
+      { href: '/koerpersignale/haeufiger-harndrang-nachts/', label: 'Häufiger Harndrang nachts', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'druckgefuehl-im-unterbauch',
+    symptom: 'ein Druckgefühl im Unterbauch',
+    title: 'Druckgefühl im Unterbauch: Was kann dahinterstecken?',
+    metaDesc: 'Ein dumpfer Druck im Unterbauch kann von Blase, Darm, Zyklus oder Beckenboden kommen. So grenzt du die Richtung ein und erkennst, wann eine Abklärung wichtig ist.',
+    h1: 'Warum spüre ich einen Druck im Unterbauch?',
+    category: 'Becken & Blase',
+    lead: 'Kein stechender Schmerz, eher ein dumpfes Drücken oder Schweregefühl unterhalb des Bauchnabels. Im Unterbauch liegen Blase, Darm und bei Frauen Gebärmutter und Eierstöcke dicht beieinander, entsprechend viele Richtungen kommen infrage. Hier bekommst du eine ehrliche Landkarte, statt einer voreiligen Diagnose.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Druckgefühl gemeinsam einordnen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Druckgefühl im Unterbauch ist ein Sammelsignal: Blase, Darm, gynäkologische Organe, Prostata und Beckenboden teilen sich diesen engen Raum und melden Beschwerden oft ähnlich dumpf. Die Begleitzeichen verraten meist die Richtung: Was verändert sich beim Wasserlassen, beim Stuhlgang, im Zyklus, bei Bewegung?</p>
+<p>Ein Druck, der mit einem dieser Systeme klar mitläuft und wieder verschwindet, ist selten gefährlich. Ein anhaltender, zunehmender oder nachts weckender Druck gehört abgeklärt.</p>
+<h2>Richtung Blase</h2>
+<p>Drückt es vor allem, wenn du längere Zeit nicht auf der Toilette warst, und bessert es sich nach dem Wasserlassen, spricht das für die Blase. Kommen häufiger Drang oder Brennen dazu, schau dir <a href="/beschwerden/reizblase/">Reizblase</a> und <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a> an. Bei Männern kann auch die <a href="/beschwerden/prostata/">Prostata</a> ein Druck- und Schweregefühl zwischen den Beinen und im Unterbauch verursachen.</p>
+<h2>Richtung Darm</h2>
+<p>Wandert der Druck, gluckert es, und bessert sich das Gefühl nach Stuhlgang oder Windabgang, ist meist der Darm beteiligt. Häufige Muster sind <a href="/beschwerden/verstopfung/">Verstopfung</a>, <a href="/beschwerden/blaehungen/">Blähungen</a> und ein <a href="/beschwerden/reizdarm/">Reizdarm</a>. Ein <a href="/koerpersignale/blaehbauch-am-abend/">abends aufgeblähter Bauch</a> und Unterbauchdruck treten oft gemeinsam auf.</p>
+<h2>Richtung Zyklus und Gynäkologie</h2>
+<p>Bei Frauen lohnt der Blick auf den Zyklus: Ein Druck- und Schweregefühl vor und während der Menstruation ist häufig und meist funktionell. Läuft der Druck aber nicht mit dem Zyklus mit, nimmt er zu oder bestehen starke <a href="/beschwerden/zyklusbeschwerden/">Zyklusbeschwerden</a>, gehören auch <a href="/beschwerden/myome/">Myome</a> und eine <a href="/beschwerden/endometriose/">Endometriose</a> gynäkologisch abgeklärt. Bei ausbleibender Periode gehört zuerst ein Schwangerschaftstest dazu.</p>
+<h2>Richtung Beckenboden</h2>
+<p>Ein dauerhaft überspannter Beckenboden, etwa bei viel Sitzen und Stress, kann ein Druck- und Fremdkörpergefühl erzeugen, das weder mit Blase noch Darm klar mitläuft. Nach Geburten oder mit zunehmendem Alter kann umgekehrt eine Senkung ein Schwere- und Druckgefühl nach unten machen, typisch stärker am Abend und beim Stehen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Zeitnah ärztlich abklären: starker oder rasch zunehmender Unterbauchschmerz, Fieber, Blut im Urin oder Stuhl, Blutungen ausserhalb der Periode, Schmerzen beim Geschlechtsverkehr, ungewollter Gewichtsverlust oder ein Druck, der dich nachts weckt. Bei möglicher Schwangerschaft mit plötzlichem einseitigem Schmerz sofort ärztliche Hilfe holen. Ein neu aufgetretener, anhaltender Druck gehört auch ohne Alarmzeichen innert Wochen untersucht, bei Frauen gynäkologisch, bei Männern urologisch.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Läuft der Druck mit Blase, Stuhlgang oder Zyklus mit?</li>
+<li>Ist er morgens weg und abends stärker, oder dauerhaft gleich?</li>
+<li>Verändert ihn Bewegung, Sitzen oder Liegen?</li>
+<li>Bestehen zusätzlich Ausfluss, Brennen, Blutungen oder Verdauungsänderungen?</li>
+<li>Seit wann besteht er, und wird er eher stärker oder schwächer?</li>
+</ul>
+<p>Zwei Wochen einfaches Beobachten ersetzt keine Untersuchung, macht sie aber deutlich zielgerichteter.</p>
+<h2>Wie betrachtet die chinesische Medizin den Unterbauch?</h2>
+<p>Der Unterbauch ist in der chinesischen Medizin traditionell eine zentrale Region: Sie fragt nach Kälteempfinden, Zyklus, Verdauung, Blase und Stress und betrachtet das Druckgefühl im Gesamtbild. Diese traditionelle Sicht ersetzt keine gynäkologische oder urologische Abklärung, wenn Warnzeichen bestehen oder der Druck anhält.</p>
+<p>Sind ernsthafte Ursachen ausgeschlossen, behandeln wir funktionelle Unterbauchbeschwerden je nach Bild mit <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/moxibustion/">Moxibustion</a> mit Wärme oder <a href="/therapien/kraeutertherapie/">Kräutertherapie</a>. Was bei deinem Muster realistisch ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Woher weiss ich, ob der Druck von Blase, Darm oder Gebärmutter kommt?', a: 'Beobachte, womit er mitläuft: Besserung nach dem Wasserlassen spricht für die Blase, nach Stuhlgang oder Windabgang für den Darm, ein Muster im Zyklus für die gynäkologische Richtung. Läuft er mit nichts klar mit oder hält er an, gehört er untersucht.' },
+      { q: 'Ist ein Druckgefühl im Unterbauch gefährlich?', a: 'Meist nicht, häufig stecken Blase, Verdauung, Zyklus oder ein verspannter Beckenboden dahinter. Warnzeichen sind starke oder zunehmende Schmerzen, Fieber, Blut in Urin oder Stuhl, Blutungen ausserhalb der Periode und Gewichtsverlust, dann zeitnah abklären lassen.' },
+      { q: 'Kann Stress ein Druckgefühl im Unterbauch machen?', a: 'Ja. Stress erhöht die Spannung des Beckenbodens und verändert Darm- und Blasenfunktion, alle drei können ein dumpfes Druckgefühl erzeugen. Das ist real und behandelbar, sollte aber erst nach Ausschluss anderer Ursachen so eingeordnet werden.' },
+    ],
+    related: [
+      { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
+      { href: '/beschwerden/myome/', label: 'Myome', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'bauch-fuehlt-sich-hart-an',
+    symptom: 'ein hart angespannter Bauch',
+    title: 'Bauch fühlt sich hart an: Was bedeutet die Spannung?',
+    metaDesc: 'Dein Bauch fühlt sich gespannt und hart an wie ein Ballon? Warum Luft, Verstopfung und angespannte Bauchmuskeln den Bauch hart machen und wann das ein Warnzeichen ist.',
+    h1: 'Warum fühlt sich mein Bauch so hart an?',
+    category: 'Bauch & Verdauung',
+    lead: 'Du legst die Hand auf den Bauch und statt weich fühlt er sich gespannt und hart an, manchmal wie ein Ballon. Meist stecken Luft im Darm, Verstopfung oder unbewusst angespannte Bauchmuskeln dahinter. Selten ist ein harter Bauch ein Alarmzeichen, und genau diesen Unterschied solltest du kennen.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Bauchspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein harter Bauch entsteht auf zwei Wegen: von innen, wenn Gase oder gestauter Darminhalt den Bauch von innen dehnen, oder von aussen, wenn die Bauchmuskulatur dauerhaft angespannt ist, oft ohne dass du es merkst. Beides zusammen ist der Klassiker: Der gedehnte Darm reizt, die Bauchdecke spannt reflexartig dagegen.</p>
+<p>Ein harter Bauch, der über den Tag kommt und geht, ist fast immer funktionell. Ein brettharter Bauch mit starken Schmerzen ist ein Notfall, dazu unten mehr.</p>
+<h2>Luft und Gase: der häufigste Grund</h2>
+<p>Der gespannte, harte Bauch nach dem Essen oder am Abend ist meist ein gedehnter Darm: Gase aus der Verdauung brauchen Platz, die Bauchdecke wölbt sich und spannt. Tritt das vor allem abends auf, findest du das Tagesmuster beim Signal <a href="/koerpersignale/blaehbauch-am-abend/">Blähbauch am Abend</a>, die Beschwerdeseite dazu ist <a href="/beschwerden/blaehungen/">Blähungen</a>.</p>
+<p>Interessant: Viele Menschen mit hartem, gespanntem Bauch haben gar nicht mehr Gas als andere. Bei einem empfindlichen Darm, etwa beim <a href="/beschwerden/reizdarm/">Reizdarm</a>, reagiert die Bauchwand nur stärker auf normale Dehnung.</p>
+<h2>Verstopfung: der gestaute Bauch</h2>
+<p>Wenn der Darm über Tage zu wenig transportiert, füllt sich der Bauch spürbar: Er wird fester, oft mit Druckgefühl im linken Unterbauch, wo der Enddarm verläuft. Typisch sind seltener Stuhlgang, hartes Pressen und das Gefühl unvollständiger Entleerung, mehr auf der Seite <a href="/beschwerden/verstopfung/">Verstopfung</a>.</p>
+<h2>Angespannte Bauchmuskeln: die vergessene Ursache</h2>
+<p>Stress spannt nicht nur Nacken und Kiefer an, sondern auch die Bauchdecke. Wer dauerhaft den Bauch einzieht, flach atmet oder unter Anspannung steht, trägt eine harte Bauchdecke vor einem völlig gesunden Bauch. Ein einfacher Test: Leg dich entspannt hin, atme einige Male tief in den Bauch. Wird er dabei deutlich weicher, spricht viel für die Muskelspannung als Hauptfaktor.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Ein brettharter Bauch mit starken, anhaltenden Schmerzen, bei dem schon leichte Berührung oder Erschütterung wehtut, ist ein Notfall und gehört sofort ins Spital, ebenso ein harter Bauch mit Fieber, Erbrechen oder wenn Stuhlgang und Winde komplett ausbleiben. In der Schwangerschaft gehören regelmässig hart werdende Bäuche mit der Gynäkologin besprochen. Abklären lassen solltest du auch einen Bauch, der über Wochen dauerhaft hart oder dicker wird, Gewichtsverlust oder Blut im Stuhl, bei Frauen auch einen stetig zunehmenden Bauchumfang ohne Gewichtszunahme.</p></div>
+<h2>Was kannst du selbst beobachten und tun?</h2>
+<ul>
+<li>Ist der Bauch morgens weich und wird über den Tag härter? Das spricht für Gase und Verdauung.</li>
+<li>Wird er im Liegen mit tiefer Bauchatmung weich? Das spricht für Muskelspannung.</li>
+<li>Wie oft hast du Stuhlgang, und wie fest ist er?</li>
+<li>Iss langsamer, reduziere testweise Kohlensäure und blähende Lebensmittel.</li>
+<li>Wärme auf dem Bauch und ein Spaziergang nach dem Essen entspannen Darm und Bauchdecke.</li>
+</ul>
+<h2>Wie betrachtet die chinesische Medizin den harten Bauch?</h2>
+<p>Die chinesische Medizin untersucht den Bauch traditionell auch mit den Händen: Wo ist er gespannt, wo weich, wie reagiert er auf Wärme und Druck? Zusammen mit Fragen zu Essen, Stuhlgang und Stress ergibt sich ein Bild. Diese traditionelle Einordnung ersetzt keine ärztliche Abklärung bei Warnzeichen oder anhaltender Härte.</p>
+<p>Bei funktioneller Bauchspannung ohne gefährliche Ursache arbeiten wir je nach Muster mit <a href="/therapien/akupunktur/">Akupunktur</a>, Wärme über <a href="/therapien/moxibustion/">Moxibustion</a> oder <a href="/therapien/tuina/">Tuina</a> am Bauch und Rücken. Ob das zu deinem Bild passt, klären wir ehrlich im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum ist mein Bauch hart, obwohl ich nicht zugenommen habe?', a: 'Ein harter Bauch ist meist Spannung, nicht Fett: Gase dehnen den Darm, Verstopfung staut Inhalt, und gestresste Bauchmuskeln spannen die Decke. Wird der Bauch im Liegen mit tiefer Atmung weich, spricht viel für die Muskelkomponente.' },
+      { q: 'Wann ist ein harter Bauch ein Notfall?', a: 'Wenn er brettharte Spannung mit starken, anhaltenden Schmerzen zeigt, Berührung kaum erträglich ist oder Fieber und Erbrechen dazukommen. Ebenso wenn Stuhl und Winde komplett ausbleiben. Dann sofort ins Spital, das kann eine Bauchfellreizung sein.' },
+      { q: 'Hilft Wärme bei einem harten, gespannten Bauch?', a: 'Bei funktioneller Spannung ja: Wärme entspannt Darmmuskulatur und Bauchdecke, viele empfinden eine Bettflasche als deutlich lösend. Bei starken Schmerzen mit Abwehrspannung ist Wärme kein Hausmittel mehr, sondern der Fall gehört ärztlich beurteilt.' },
+    ],
+    related: [
+      { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
+      { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'magendruck-im-liegen',
+    symptom: 'Magendruck im Liegen',
+    title: 'Magendruck im Liegen: Warum drückt der Magen nachts?',
+    metaDesc: 'Sobald du dich hinlegst, drückt oder brennt es im Oberbauch? Warum die Position den Magen belastet, was Reflux damit zu tun hat und was du selbst ändern kannst.',
+    h1: 'Warum drückt mein Magen, wenn ich liege?',
+    category: 'Bauch & Verdauung',
+    lead: 'Tagsüber ist alles gut, doch kaum liegst du auf dem Sofa oder im Bett, meldet sich der Oberbauch: Druck, Brennen oder saures Aufstossen. Das ist kein Zufall, im Liegen verliert der Magen die Schwerkraft als Verbündete. Hier erfährst du, was dahintersteckt und welche einfachen Massnahmen oft schon reichen.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Magen und Schlafposition anschauen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Im Stehen hilft die Schwerkraft, Mageninhalt unten zu halten. Im Liegen fällt diese Hilfe weg: Mageninhalt und Säure drücken gegen den oberen Magenverschluss, und wenn dieser nicht dicht hält, steigt Säure in die Speiseröhre. Deshalb treten Magendruck, Brennen und saures Aufstossen bevorzugt im Liegen und nach späten Mahlzeiten auf.</p>
+<p>Gelegentlich nach einem üppigen Abend ist das normal. Regelmässiger Magendruck im Liegen ist meist ein Reflux-Muster und lässt sich gut angehen.</p>
+<h2>Warum gerade im Liegen?</h2>
+<p>Drei Faktoren kommen zusammen. Erstens die Lage: horizontal drückt der Mageninhalt direkt gegen den Schliessmuskel zwischen Magen und Speiseröhre. Zweitens die Füllung: Je später und grösser die letzte Mahlzeit, desto voller ist der Magen beim Hinlegen. Drittens der Schliessmuskel selbst: Alkohol, Nikotin, fettige Speisen, Kaffee und manche Medikamente senken seine Spannung.</p>
+<p>Typisch ist auch die Seitenabhängigkeit: In Rechtslage liegt der Mageneingang tiefer, Säure fliesst leichter zurück. Viele Betroffene spüren in Linkslage deutlich weniger.</p>
+<h2>Reflux, Gastritis oder empfindlicher Magen?</h2>
+<p>Brennen hinter dem Brustbein und saures Aufstossen sprechen für Reflux, die Beschwerdeseite dazu ist <a href="/beschwerden/sodbrennen/">Sodbrennen</a>. Nüchternschmerz, Druck unabhängig von der Lage und Übelkeit passen eher zu einer gereizten Magenschleimhaut, siehe <a href="/beschwerden/gastritis/">Gastritis</a>. Und wenn der Druck vor allem nach dem Essen auftritt, unabhängig vom Liegen, schau dir das Signal <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">Völlegefühl nach dem Essen</a> an. Ein <a href="/koerpersignale/bitterer-geschmack-morgens/">bitterer Geschmack am Morgen</a> ist ein weiterer typischer Hinweis auf nächtlichen Reflux.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Lass den Magen untersuchen, wenn der Druck über Wochen regelmässig auftritt, wenn Schluckbeschwerden, ungewollter Gewichtsverlust, Blutarmut, schwarzer Stuhl oder Erbrechen dazukommen oder wenn die Beschwerden neu nach dem 50. Lebensjahr beginnen. Häufig gehört dann eine Magenspiegelung dazu. Wichtig: Druck oder Brennen im Brustbereich mit Engegefühl, Atemnot, Kaltschweiss oder Ausstrahlung in Arm oder Kiefer kann ein Herzproblem sein, in dem Fall sofort den Notruf 144 wählen.</p></div>
+<h2>Was kannst du selbst ändern?</h2>
+<ul>
+<li>Iss abends früher und leichter, ideal sind drei Stunden zwischen letzter Mahlzeit und Hinlegen.</li>
+<li>Erhöhe das Kopfende des Betts um 10 bis 15 Zentimeter, ein zweites Kissen allein knickt nur den Bauch ab.</li>
+<li>Teste die Linkslage als Schlafposition.</li>
+<li>Reduziere Alkohol, Nikotin, späten Kaffee und sehr fettige Abendessen.</li>
+<li>Enge Hosen und Gürtel nach dem Essen lockern, Druck von aussen verstärkt den Rückfluss.</li>
+</ul>
+<p>Diese Massnahmen klingen banal, gehören aber in jeder Reflux-Leitlinie an den Anfang und reichen bei leichten Verläufen oft aus.</p>
+<h2>Wie betrachtet die chinesische Medizin den Magendruck?</h2>
+<p>Die chinesische Medizin ordnet Magenbeschwerden traditionell über Essgewohnheiten, Stress, Wärme- und Kälteempfinden und die Zungen- und Pulsbetrachtung ein. Diese Sicht ersetzt keine Magenspiegelung, wenn Warnzeichen bestehen oder die Beschwerden anhalten.</p>
+<p>Bei funktionellen Magenbeschwerden und leichtem Reflux begleiten wir die Basismassnahmen je nach Bild mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/kraeutertherapie/">Kräutertherapie</a>. Ob dein Muster dafür geeignet ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum drückt der Magen im Liegen, aber nicht im Stehen?', a: 'Im Stehen hält die Schwerkraft Mageninhalt und Säure unten. Im Liegen drückt beides gegen den oberen Magenverschluss, und bei einem geschwächten Schliessmuskel fliesst Säure in die Speiseröhre zurück. Deshalb helfen erhöhtes Kopfende und frühere Abendmahlzeiten.' },
+      { q: 'Auf welcher Seite soll ich bei Magendruck schlafen?', a: 'Auf der linken. In Linkslage liegt der Mageneingang höher als der Magenkörper, Säure fliesst schlechter zurück. In Rechtslage ist es umgekehrt, viele spüren dort deutlich mehr Druck und Brennen.' },
+      { q: 'Wann muss Magendruck im Liegen abgeklärt werden?', a: 'Wenn er über Wochen regelmässig auftritt oder Schluckbeschwerden, Gewichtsverlust, schwarzer Stuhl oder nächtliches Erbrechen dazukommen. Dann gehört meist eine Magenspiegelung dazu. Druck mit Engegefühl, Atemnot oder Ausstrahlung in den Arm: sofort Notruf 144.' },
+    ],
+    related: [
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
+      { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kribbeln-vom-nacken-in-den-arm',
+    symptom: 'Kribbeln, das vom Nacken in den Arm zieht',
+    title: 'Kribbeln vom Nacken in den Arm: Was bedeutet die Ausstrahlung?',
+    metaDesc: 'Zieht ein Kribbeln oder Brennen vom Nacken über die Schulter in den Arm? Das spricht für eine Nervenreizung an der Halswirbelsäule. Ursachen, Muster und Abklärung.',
+    h1: 'Warum kribbelt es vom Nacken bis in den Arm?',
+    category: 'Hände & Nerven',
+    lead: 'Das Kribbeln beginnt nicht in der Hand, sondern zieht wie eine Spur vom Nacken über die Schulter den Arm hinunter, manchmal bis in einzelne Finger. Dieses Ausstrahlungsmuster spricht dafür, dass ein Nerv an der Halswirbelsäule gereizt wird. Hier erfährst du, was dahinterstecken kann und wie die Abklärung abläuft.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Ausstrahlende Beschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Zwischen den Halswirbeln treten die Nervenwurzeln aus, die Schulter, Arm und Hand versorgen. Wird eine dieser Wurzeln gereizt, durch eine vorgewölbte Bandscheibe, knöcherne Engstellen oder stark verspannte Muskulatur, meldet sich ihr Versorgungsgebiet: Kribbeln, Brennen oder Taubheit, das vom Nacken in den Arm zieht.</p>
+<p>Das Muster ist unangenehm, aber in den meisten Fällen gut behandelbar. Entscheidend ist die Abgrenzung: Kommt es aus dem Nacken oder aus einer Engstelle weiter unten am Arm?</p>
+<h2>Nacken oder Handgelenk? Das Muster verrät es</h2>
+<ul>
+<li><strong>Aus dem Nacken:</strong> Das Kribbeln zieht als Bahn von Nacken oder Schulterblatt den Arm entlang, oft abhängig von der Kopfhaltung. Kopf in den Nacken legen oder zur betroffenen Seite drehen kann es verstärken.</li>
+<li><strong>Aus dem Handgelenk:</strong> Kribbeln vor allem in Daumen bis Mittelfinger, besonders nachts, ohne Nackenbezug, typisch fürs <a href="/beschwerden/karpaltunnelsyndrom/">Karpaltunnelsyndrom</a>, siehe auch <a href="/koerpersignale/finger-schlafen-ein/">Finger schlafen nachts ein</a>.</li>
+<li><strong>Nur nachts, ganzer Arm, positionsabhängig:</strong> eher Druck durch die Schlafhaltung, siehe <a href="/koerpersignale/arm-schlaeft-nachts-ein/">Arm schläft nachts ein</a>.</li>
+</ul>
+<p>Welche Finger kribbeln, gibt der Ärztin zusätzliche Hinweise, denn jede Nervenwurzel hat ihr typisches Zielgebiet: Daumen und Zeigefinger sprechen für eine andere Wurzel als Kleinfinger und Ringfinger.</p>
+<h2>Häufige Ursachen der Nervenreizung im Nacken</h2>
+<p><strong>Muskulär-funktionell.</strong> Stark verspannte Nacken- und Schultermuskulatur kann Nerven auf ihrem Weg reizen und Ausstrahlung erzeugen, häufig zusammen mit <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a> und einem <a href="/koerpersignale/nacken-morgens-steif/">morgens steifen Nacken</a>.</p>
+<p><strong>Bandscheibe.</strong> Eine Vorwölbung oder ein <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a> an der Halswirbelsäule kann direkt auf die Nervenwurzel drücken. Typisch sind einschiessende Schmerzen mit Kribbeln entlang einer klaren Bahn.</p>
+<p><strong>Verschleiss.</strong> Mit den Jahren können knöcherne Anbauten die Nervenaustrittslöcher einengen. Die Beschwerden entwickeln sich dann eher schleichend.</p>
+<h2>Wie wird das abgeklärt?</h2>
+<p>Am Anfang stehen die Untersuchung von Kraft, Reflexen und Gefühl sowie Provokationstests der Halswirbelsäule. Je nach Befund folgen ein MRI der Halswirbelsäule und eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>, die zeigt, ob die Ursache an der Wurzel im Nacken oder an einer Engstelle weiter unten am Arm liegt. Genau diese Unterscheidung entscheidet über die Behandlung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch reagieren</div><p>Zeitnah ärztlich abklären: zunehmende Schwäche im Arm oder in der Hand, etwa wenn Gegenstände aus der Hand fallen, ein taubes Gefühl, das nicht mehr verschwindet, oder Ausstrahlung nach einem Unfall. Sofort in die Notaufnahme gehören Gangunsicherheit, Ungeschicklichkeit beider Hände oder Blasen- und Darmstörungen zusammen mit Nackenbeschwerden, das kann auf eine Rückenmarksbeteiligung hinweisen. Und bei plötzlicher Taubheit mit Sprachstörungen oder hängendem Mundwinkel: Notruf 144, das kann ein Schlaganfall sein.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Verändert sich das Kribbeln mit der Kopfhaltung?</li>
+<li>Zieht es entlang einer Bahn oder betrifft es diffus den ganzen Arm?</li>
+<li>Welche Finger sind beteiligt?</li>
+<li>Tritt es tagsüber bei Belastung auf oder vor allem nachts?</li>
+<li>Kommt Schwäche dazu? Das ist der wichtigste Punkt für die Dringlichkeit.</li>
+</ul>
+<h2>Wie kann die chinesische Medizin begleiten?</h2>
+<p>Bei muskulär mitverursachten Nervenreizungen ist die verspannte Nacken-Schulter-Region ein dankbares Behandlungsfeld: <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/tuina/">Tuina</a> und <a href="/therapien/schroepfen/">Schröpfen</a> können Spannung und Schmerz reduzieren, begleitend zur <a href="/therapien/physiotherapie/">Physiotherapie</a>, die Haltung und Kraft aufbaut. Das ersetzt keine ärztliche Abklärung: Bei Schwäche, anhaltender Taubheit oder unklarem Befund gehört zuerst die Diagnostik, danach besprechen wir ehrlich, was die TCM beitragen kann, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Woher weiss ich, ob das Kribbeln vom Nacken oder vom Karpaltunnel kommt?', a: 'Ein Nackenmuster zieht als Bahn von Nacken oder Schulterblatt den Arm entlang und reagiert oft auf Kopfbewegungen. Der Karpaltunnel kribbelt vor allem nachts in Daumen bis Mittelfinger ohne Nackenbezug. Sicher unterscheidet das die Nervenleitmessung, oft ergänzt durch ein MRI.' },
+      { q: 'Ist Kribbeln im Arm vom Nacken gefährlich?', a: 'Meist nicht, häufig stecken Verspannung oder eine Bandscheibenvorwölbung dahinter, beides ist oft konservativ gut behandelbar. Warnzeichen sind zunehmende Schwäche, bleibende Taubheit, Gangunsicherheit oder Blasenstörungen, dann rasch ärztlich abklären.' },
+      { q: 'Was hilft gegen Nervenreizung im Nacken?', a: 'Bei muskulär-funktionellen Ursachen die Kombination aus Entlastung, Haltungsarbeit und Physiotherapie, ergänzt durch Akupunktur oder Tuina gegen Spannung und Schmerz. Bei Bandscheiben- oder knöchernen Ursachen richtet sich die Behandlung nach dem ärztlichen Befund.' },
+    ],
+    related: [
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/bandscheibenvorfall/', label: 'Bandscheibenvorfall', cat: 'Beschwerde' },
+      { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/arm-schlaeft-nachts-ein/', label: 'Arm schläft nachts ein', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kopfdruck-beim-buecken',
+    symptom: 'Druck im Kopf beim Bücken',
+    title: 'Kopfdruck beim Bücken: Warum drückt es, wenn ich mich vornüberbeuge?',
+    metaDesc: 'Beim Bücken baut sich Druck im Kopf oder hinter den Augen auf? Häufig stecken die Nebenhöhlen dahinter, manchmal Blutdruck oder Kopfschmerzformen. So ordnest du es ein.',
+    h1: 'Warum habe ich Druck im Kopf, wenn ich mich bücke?',
+    category: 'Kopf & Sinne',
+    lead: 'Du bückst dich nach den Schuhen und im Kopf baut sich ein dumpfer Druck auf, oft hinter Stirn, Augen oder Wangen. Beim Aufrichten lässt er langsam nach. Dieses positionsabhängige Muster hat meist fassbare Gründe, allen voran die Nebenhöhlen. Hier lernst du die Muster zu unterscheiden.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kopfdruck einordnen lassen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Beim Vornüberbeugen steigt der Druck in den Blutgefässen und Hohlräumen des Kopfes kurzfristig an. Sind die Nebenhöhlen entzündet oder schlecht belüftet, wird dieser Druckanstieg als deutliches Drücken hinter Stirn, Augen oder Wangen spürbar. Auch Gefässe und Kopfschmerzmechanismen reagieren auf die Kopftieflage.</p>
+<p>Ein Kopfdruck, der nur beim Bücken auftritt und sich beim Aufrichten löst, ist meist harmlos einordenbar. Ein Druck, der neu, heftig oder von weiteren Symptomen begleitet ist, gehört abgeklärt.</p>
+<h2>Die häufigste Spur: die Nebenhöhlen</h2>
+<p>Der klassische Auslöser ist eine akute oder chronische Nebenhöhlenentzündung: In den entzündeten Höhlen staut sich Sekret, und in Kopftieflage drückt es spürbar gegen Stirn und Wangen. Typische Begleiter sind verstopfte Nase, Schnupfen, Druckempfindlichkeit beim Klopfen auf Stirn oder Wangenknochen und ein Druck, der sich beim Bücken deutlich verstärkt. Mehr dazu auf der Seite <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
+<p>Auch ohne akute Erkältung kann eine schlechte Belüftung der Nebenhöhlen, etwa bei <a href="/beschwerden/allergien-heuschnupfen/">Allergien</a> oder chronisch verstopfter Nase, denselben Effekt haben.</p>
+<h2>Weitere Muster, die man kennen sollte</h2>
+<ul>
+<li><strong>Kopfschmerzformen:</strong> <a href="/beschwerden/migraene/">Migräne</a> und andere Kopfschmerzen verstärken sich häufig bei Kopftieflage und Anstrengung. Ein dumpfer Dauerdruck ohne klaren Lagebezug passt eher zu <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerzen</a>, siehe auch das Signal <a href="/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/">Druck im Kopf ohne Kopfschmerzen</a>.</li>
+<li><strong>Blutdruck und Gefässe:</strong> Beim schnellen Bücken und Aufrichten schwankt der Blutdruck. Wird dir dabei eher schwindlig als drückend, findest du die Einordnung unter <a href="/koerpersignale/schwindel-beim-buecken/">Schwindel beim Bücken</a>.</li>
+<li><strong>Pressdruck:</strong> Druck, der bei Husten, Pressen oder Anstrengung einschiesst, gehört ärztlich eingeordnet, vor allem wenn er neu und heftig ist.</li>
+<li><strong>Verspannter Nacken:</strong> Eine stark verspannte Nackenmuskulatur kann Kopfdruck mit auslösen, der sich bei Kopfbewegungen verändert.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Zeitnah ärztlich abklären: Kopfdruck mit Fieber und starkem Krankheitsgefühl, eine Schwellung oder Rötung um die Augen, Sehstörungen, ein Druck, der über Wochen nicht abklingt, oder Nebenhöhlenbeschwerden, die trotz Behandlung immer wiederkehren. Sofort den Notruf 144 wählen bei einem schlagartig einsetzenden Vernichtungskopfschmerz, bei Kopfschmerz mit Nackensteifheit und Fieber oder mit Lähmungen, Sprach- oder Sehstörungen.</p></div>
+<h2>Was kannst du selbst beobachten und tun?</h2>
+<ul>
+<li>Sitzt der Druck hinter Stirn, Augen oder Wangen, und ist die Nase mitbeteiligt?</li>
+<li>Verstärkt Klopfen auf Stirn oder Wangenknochen den Druck?</li>
+<li>Tritt er nur beim Bücken auf oder auch in Ruhe?</li>
+<li>Dampfinhalation und Nasenspülungen entlasten viele bei Nebenhöhlenbeteiligung.</li>
+<li>Trink genug und beobachte, ob Erkältung oder Allergiezeit den Druck erklären.</li>
+</ul>
+<h2>Wie betrachtet die chinesische Medizin den Kopfdruck?</h2>
+<p>Die chinesische Medizin ordnet Kopf- und Nebenhöhlenbeschwerden traditionell zusammen mit Atemwegen, Verdauung und Spannungsmustern ein. Diese Sicht ersetzt keine ärztliche Abklärung bei Warnzeichen oder anhaltendem Druck.</p>
+<p>Bei wiederkehrenden Nebenhöhlenbeschwerden und begleitender Nacken-Schulter-Spannung arbeiten wir je nach Bild mit <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a>, ergänzend zur ärztlichen Behandlung. Ob dein Muster dafür geeignet ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Warum verstärkt Bücken den Druck in den Nebenhöhlen?', a: 'In Kopftieflage steigt der Druck in den Hohlräumen des Kopfes, und gestautes Sekret in entzündeten Nebenhöhlen drückt spürbar gegen Stirn und Wangen. Das ist das klassische Sinusitis-Zeichen und bessert sich meist mit der Behandlung der Entzündung.' },
+      { q: 'Kopfdruck beim Bücken ohne Schnupfen: was kann es sein?', a: 'Auch schlecht belüftete Nebenhöhlen ohne akute Erkältung, Migräne, Spannungskopfschmerzen mit Nackenbeteiligung oder Blutdruckschwankungen kommen infrage. Hält der Druck an oder wird er stärker, gehört er ärztlich eingeordnet.' },
+      { q: 'Wann ist Kopfdruck ein Notfall?', a: 'Bei schlagartig einsetzendem, heftigstem Kopfschmerz, bei Kopfschmerz mit Fieber und Nackensteifheit oder mit Lähmungen, Sprach- oder Sehstörungen. In diesen Fällen sofort den Notruf 144 wählen.' },
+    ],
+    related: [
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/', label: 'Druck im Kopf ohne Kopfschmerzen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/schwindel-beim-buecken/', label: 'Schwindel beim Bücken', cat: 'Körpersignal' },
+      { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'herzstolpern-in-ruhe',
+    symptom: 'Herzstolpern in Ruhe',
+    title: 'Herzstolpern in Ruhe: Sind Aussetzer und Extraschläge gefährlich?',
+    metaDesc: 'Das Herz stolpert, setzt scheinbar aus oder schlägt doppelt, gerade in ruhigen Momenten? Was Extraschläge sind, wann sie harmlos sind und wann ein EKG nötig ist.',
+    h1: 'Warum stolpert mein Herz, wenn ich zur Ruhe komme?',
+    category: 'Schlaf & Nacht',
+    lead: 'Ein Schlag scheint auszusetzen, dann kommt ein kräftiger Doppelschlag hinterher, und für einen Moment stockt dir der Atem. Herzstolpern spürt man ausgerechnet in ruhigen Momenten am deutlichsten, abends auf dem Sofa oder im Bett. Meist stecken harmlose Extraschläge dahinter. Hier erfährst du, wie du das Muster einordnest und wann ein EKG dazugehört.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Unruhe und Herzstolpern gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN5,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Das typische Herzstolpern entsteht durch Extraschläge, medizinisch Extrasystolen: Ein Herzschlag kommt etwas zu früh, wirft wenig Blut aus und wird kaum gespürt. Die kleine Pause danach füllt das Herz stärker, und der nächste Schlag fällt kräftiger aus. Gespürt wird also nicht der Aussetzer, sondern der Nachschlag.</p>
+<p>Extraschläge hat fast jeder Mensch, die meisten unbemerkt. Bei einem herzgesunden Menschen sind vereinzelte Extrasystolen in aller Regel harmlos. Ob dein Herz gesund ist, klärt allerdings nicht dieser Text, sondern eine ärztliche Untersuchung, in der Regel mit EKG.</p>
+<h2>Warum gerade in Ruhe?</h2>
+<p>Zwei Gründe. Erstens die Wahrnehmung: In Bewegung und Ablenkung überhörst du einzelne Stolperer, in der Stille spürst du jeden. Zweitens der Puls: In Ruhe schlägt das Herz langsamer, zwischen den Schlägen ist mehr Zeit, in der ein Extraschlag dazwischenfunken kann. Deshalb melden sich Extrasystolen bevorzugt abends, im Sitzen und im Bett.</p>
+<p>Spürst du eher ein gleichmässiges, kräftiges Klopfen im Liegen als ein Stolpern, findest du die Einordnung beim Signal <a href="/koerpersignale/herzklopfen-im-liegen/">Herzklopfen im Liegen</a>. Die Unterscheidung ist wichtig: Stolpern heisst unregelmässig, Klopfen heisst deutlich spürbar.</p>
+<h2>Was begünstigt Extraschläge?</h2>
+<ul>
+<li>Koffein, Alkohol und Nikotin, besonders am Abend</li>
+<li>Stress, Schlafmangel und Erschöpfung</li>
+<li>Magnesium- oder Kaliummangel, etwa nach Durchfall oder starkem Schwitzen</li>
+<li>Eine überaktive Schilddrüse</li>
+<li>Fieber und Infekte</li>
+<li>Manche Medikamente und Stimulanzien</li>
+</ul>
+<p>Viele Betroffene finden über zwei Wochen Beobachtung einen klaren Auslöser, oft ist es die Kombination aus Kaffee, wenig Schlaf und einem angespannten Tag.</p>
+<h2>Wann gehört Herzstolpern untersucht?</h2>
+<p>Ein erstmals bemerktes, wiederkehrendes Herzstolpern gehört einmal ärztlich eingeordnet, meist mit Ruhe-EKG und je nach Befund einem Langzeit-EKG, das die Stolperer über 24 Stunden aufzeichnet. Das nimmt in den allermeisten Fällen die Sorge und beantwortet die entscheidende Frage: einzelne harmlose Extraschläge oder eine Rhythmusstörung wie Vorhofflimmern, die behandelt werden sollte.</p>
+<p>Typisch für Vorhofflimmern ist ein anhaltend unregelmässiger, oft schneller Puls über Minuten bis Stunden, nicht der einzelne Stolperer. Ein einfacher Selbstcheck: Puls am Handgelenk fühlen. Einzelne Aussetzer mit sonst regelmässigem Grundrhythmus passen zu Extrasystolen, ein durchgehend chaotischer Puls gehört zeitnah ärztlich kontrolliert.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Wähle den Notruf 144 bei Herzstolpern zusammen mit Brustschmerzen oder Engegefühl, starker Atemnot, Ohnmacht oder Beinahe-Ohnmacht. Zeitnah ärztlich abklären lassen: anfallsartiges Herzrasen, einen anhaltend unregelmässigen Puls, Stolpern bei bekannter Herzerkrankung sowie neu aufgetretenes Stolpern mit Leistungsknick, Schwindel oder Luftnot bei Belastung.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Einzelne Stolperer oder längere unregelmässige Phasen? Fühle den Puls mit.</li>
+<li>Wie oft pro Tag, und in welchen Situationen?</li>
+<li>Gibt es Auslöser wie Kaffee, Alkohol, Schlafmangel oder Stressphasen?</li>
+<li>Bestehen zusätzlich Nervosität, Gewichtsverlust oder starkes Schwitzen? Das kann zur Schilddrüse passen.</li>
+<li>Verschwindet das Stolpern bei Bewegung? Harmlose Extrasystolen werden unter Belastung oft weniger.</li>
+</ul>
+<h2>Wie kann die chinesische Medizin begleiten?</h2>
+<p>Zuerst die klare Grenze: Herzstolpern gehört ärztlich eingeordnet, und eine Rhythmusstörung gehört in kardiologische Behandlung. Die TCM ersetzt weder EKG noch Kardiologie.</p>
+<p>Ist das Herz untersucht und sind die Stolperer als harmlose, stressverstärkte Extrasystolen eingeordnet, liegt der Hebel oft bei Anspannung, Schlaf und Erholung. Dort kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/ohrakupunktur/">Ohrakupunktur</a> ansetzen, zusammen mit dem, was du selbst veränderst: weniger Koffein, mehr Schlaf, echte Pausen. Auch in den <a href="/beschwerden/wechseljahre/">Wechseljahren</a>, in denen Herzstolpern häufiger auftritt, begleiten wir so. Ob das bei dir sinnvoll ist, sagen wir dir ehrlich, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Sind Extraschläge des Herzens gefährlich?', a: 'Bei einem herzgesunden Menschen sind vereinzelte Extrasystolen in aller Regel harmlos, fast jeder hat sie. Ob dein Herz gesund ist, sollte aber einmal ärztlich mit EKG geklärt werden, danach lässt sich das Stolpern meist gelassen einordnen.' },
+      { q: 'Wie unterscheide ich Herzstolpern von Vorhofflimmern?', a: 'Extrasystolen sind einzelne Aussetzer oder Doppelschläge in einem sonst regelmässigen Grundrhythmus. Vorhofflimmern macht den Puls über Minuten bis Stunden durchgehend unregelmässig und oft schnell. Fühle den Puls am Handgelenk mit, im Zweifel zeichnet ein Langzeit-EKG die Wahrheit auf.' },
+      { q: 'Warum stolpert das Herz abends und in Ruhe am meisten?', a: 'In Ruhe schlägt das Herz langsamer, zwischen den Schlägen bleibt mehr Raum für Extraschläge, und in der Stille spürst du jeden davon. Koffein, Alkohol und ein angespannter Tag verstärken das Muster zusätzlich.' },
+      { q: 'Wann muss ich mit Herzstolpern sofort zum Arzt?', a: 'Sofort den Notruf 144 wählen bei Stolpern mit Brustschmerzen, Engegefühl, starker Atemnot oder Ohnmacht. Zeitnah abklären lassen: anhaltend unregelmässiger Puls, anfallsartiges Herzrasen oder Stolpern mit Leistungsknick und Luftnot.' },
+    ],
+    related: [
+      { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
+      { href: '/beschwerden/angststoerungen/', label: 'Angststörungen', cat: 'Beschwerde' },
+      { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
     ],
   },
 ];

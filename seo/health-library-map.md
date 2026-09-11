@@ -1,4 +1,42 @@
-# Gesundheitsbibliothek — Content-Architektur-Mapping (Phase 2, aktualisiert nach Welle 3)
+# Gesundheitsbibliothek — Content-Architektur-Mapping (aktualisiert nach Welle 4)
+
+## Welle 4 (11.09.2026, GSC-informiert) — Vorher/Nachher
+
+| Metrik | vorher | nachher |
+|---|---|---|
+| Health-Seiten gesamt | 265 | 274 |
+| Körpersignale | 38 | 46 |
+| Region-Hubs | 8 | 9 (**Becken & Blase neu** — Schwelle mit 3 KS + 5 Beschwerden erfüllt) |
+| Sitemap | 358 | 367 (+9, exakt die neuen URLs) |
+| Such-Index | 164 | 173 |
+| Orphans / doppelte Titel / kaputte Refs | 0 | 0 |
+
+Angenommen (8): haeufiger-harndrang-nachts, ploetzlicher-harndrang-ohne-volle-blase (Backup E),
+druckgefuehl-im-unterbauch, bauch-fuehlt-sich-hart-an (Backup B), magendruck-im-liegen (Backup C),
+kribbeln-vom-nacken-in-den-arm (Backup A), kopfdruck-beim-buecken, herzstolpern-in-ruhe.
+
+Als Duplikate ABGELEHNT (Kandidaten waren Vorschlagsliste, keine Quote):
+- "Bauch abends aufgebläht" = blaehbauch-am-abend (identischer Intent)
+- "Magendruck nach dem Essen" = voellegefuehl-nach-dem-essen (Synonym bereits abgedeckt)
+- "Kribbeln im Arm nachts" = arm-schlaeft-nachts-ein (deckt nächtliche Parästhesien ab)
+- "Hand schläft nachts ein" = finger-schlafen-ein + arm-schlaeft-nachts-ein (gleiche
+  Medianus/Karpaltunnel-Geschichte; stattdessen finger-schlafen-ein mit Hand-Synonymen
+  gestärkt: "Hand schläft ein" findet die Seite jetzt in der Suche)
+- "Brennende Füsse nachts" existiert bereits (Welle 2)
+- "Schwindel beim Hinlegen" = schwindel-beim-umdrehen-im-bett (gleiches BPPV-im-Bett-Muster)
+- Backup D "Fusssohlen kribbeln nachts" = brennende-fuesse-nachts + zehen-kribbeln
+
+Cluster-Scores neu: Becken/Urologie 35 -> ~65 (Hub live, 3 KS, Rückverlinkung von
+5 Beschwerden-Leaves; prostata damit an Region angebunden), Bauch & Verdauung ~74 -> ~80
+(6 KS), Hals & Nacken ~78 -> ~82 (Nacken-Arm-Brücke), Schlaf ~74 -> ~76.
+
+Bestehende Seiten (GSC-Optimierungen):
+- /beschwerden/: Bridge-Sektion zur Gesundheitsbibliothek/Körpersignale ergänzt
+  (Symptom-Intent-Einstieg, keine Copy-Optimierung auf "symptome ch")
+- dauernadeln-akupunktur vs wie-lange-bleiben-akupunkturnadeln-drin: geprüft —
+  beidseitige Links + Intent-Abgrenzung existieren bereits, KEINE Änderung nötig
+- wassereinlagerungen: bewusst NICHT angefasst, kein konkurrierendes KS erstellt
+
 
 ## Welle 3 (10.09.2026) — Vorher/Nachher
 

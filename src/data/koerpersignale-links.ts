@@ -54,6 +54,15 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'augenflimmern', label: 'Augenflimmern' },
   { slug: 'zehen-kribbeln', label: 'Zehen kribbeln' },
   { slug: 'schwindel-beim-buecken', label: 'Schwindel beim Bücken' },
+  // Fünfte Welle (Deploy 09/2026) — Becken/Blase, Bauch, Nacken-Nerven-Brücke.
+  { slug: 'haeufiger-harndrang-nachts', label: 'Häufiger Harndrang nachts' },
+  { slug: 'ploetzlicher-harndrang-ohne-volle-blase', label: 'Plötzlicher Harndrang' },
+  { slug: 'druckgefuehl-im-unterbauch', label: 'Druckgefühl im Unterbauch' },
+  { slug: 'bauch-fuehlt-sich-hart-an', label: 'Bauch fühlt sich hart an' },
+  { slug: 'magendruck-im-liegen', label: 'Magendruck im Liegen' },
+  { slug: 'kribbeln-vom-nacken-in-den-arm', label: 'Kribbeln vom Nacken in den Arm' },
+  { slug: 'kopfdruck-beim-buecken', label: 'Kopfdruck beim Bücken' },
+  { slug: 'herzstolpern-in-ruhe', label: 'Herzstolpern in Ruhe' },
 ];
 
 /** Themenspezifische Zuordnung: Beschwerde-Slug -> passende /koerpersignale/-Leaves. */
@@ -78,12 +87,12 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   sinusitis: ['ohr-einseitig-verstopft', 'staendiger-raeusperzwang'],
   schlafstoerungen: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'wadenkraempfe-nachts'],
   schlafprobleme: ['immer-zur-gleichen-uhrzeit-aufwachen', 'nachtschweiss-ohne-fieber', 'wadenkraempfe-nachts'],
-  wechseljahre: ['hitzegefuehl-ohne-fieber', 'nachtschweiss-ohne-fieber', 'starkes-schwitzen-ohne-sport'],
+  wechseljahre: ['hitzegefuehl-ohne-fieber', 'nachtschweiss-ohne-fieber', 'starkes-schwitzen-ohne-sport', 'herzstolpern-in-ruhe'],
   hitzewallungen: ['hitzegefuehl-ohne-fieber', 'nachtschweiss-ohne-fieber', 'starkes-schwitzen-ohne-sport'],
   hyperhidrose: ['starkes-schwitzen-ohne-sport', 'hitzegefuehl-ohne-fieber'],
   'stress-burnout': ['klossgefuehl-im-hals', 'augenlid-zuckt', 'immer-zur-gleichen-uhrzeit-aufwachen'],
   burnout: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'immer-zur-gleichen-uhrzeit-aufwachen'],
-  angststoerungen: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'herzschlag-im-ohr'],
+  angststoerungen: ['klossgefuehl-im-hals', 'augenlid-zuckt', 'herzschlag-im-ohr', 'herzstolpern-in-ruhe'],
   sodbrennen: ['staendiger-raeusperzwang', 'klossgefuehl-im-hals'],
   gastritis: ['klossgefuehl-im-hals', 'staendiger-raeusperzwang'],
   reizdarm: ['klossgefuehl-im-hals'],
@@ -114,20 +123,28 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   verstopfung: ['blaehbauch-am-abend'],
   kalkschulter: ['arm-schlaeft-nachts-ein', 'nacken-morgens-steif', 'finger-schlafen-ein'],
   achillessehnenentzuendung: ['wadenkraempfe-nachts', 'zehen-kribbeln', 'schwere-beine-abends'],
+  // Zuordnungen der fünften Welle:
+  reizblase: ['ploetzlicher-harndrang-ohne-volle-blase', 'haeufiger-harndrang-nachts', 'druckgefuehl-im-unterbauch'],
+  inkontinenz: ['ploetzlicher-harndrang-ohne-volle-blase', 'haeufiger-harndrang-nachts'],
+  prostata: ['haeufiger-harndrang-nachts', 'druckgefuehl-im-unterbauch', 'ploetzlicher-harndrang-ohne-volle-blase'],
+  blasenentzuendung: ['druckgefuehl-im-unterbauch', 'ploetzlicher-harndrang-ohne-volle-blase', 'haeufiger-harndrang-nachts'],
+  myome: ['druckgefuehl-im-unterbauch'],
+  endometriose: ['druckgefuehl-im-unterbauch'],
+  nervenschmerzen: ['kribbeln-vom-nacken-in-den-arm', 'zehen-kribbeln', 'brennende-fuesse-nachts'],
 };
 // Ergänzungen zu bestehenden Einträgen der ersten Welle:
 for (const [b, extra] of Object.entries({
-  karpaltunnelsyndrom: ['arm-schlaeft-nachts-ein'],
-  nackenschmerzen: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif'],
-  schleudertrauma: ['nacken-knackt-beim-drehen'],
+  karpaltunnelsyndrom: ['arm-schlaeft-nachts-ein', 'kribbeln-vom-nacken-in-den-arm'],
+  nackenschmerzen: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif', 'kribbeln-vom-nacken-in-den-arm'],
+  schleudertrauma: ['nacken-knackt-beim-drehen', 'kribbeln-vom-nacken-in-den-arm'],
   arthrose: ['knie-knackt-ohne-schmerzen'],
   tinnitus: ['ohr-knackt-beim-schlucken'],
   mittelohrentzuendung: ['ohr-knackt-beim-schlucken'],
-  sinusitis: ['druck-im-kopf-ohne-kopfschmerzen'],
+  sinusitis: ['druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken'],
   schlafprobleme: ['trockener-mund-nachts', 'herzklopfen-im-liegen'],
   schlafstoerungen: ['trockener-mund-nachts', 'herzklopfen-im-liegen'],
-  sodbrennen: ['bitterer-geschmack-morgens'],
-  gastritis: ['bitterer-geschmack-morgens', 'voellegefuehl-nach-dem-essen'],
+  sodbrennen: ['bitterer-geschmack-morgens', 'magendruck-im-liegen'],
+  gastritis: ['bitterer-geschmack-morgens', 'voellegefuehl-nach-dem-essen', 'magendruck-im-liegen'],
   polyneuropathie: ['brennende-fuesse-nachts', 'zehen-kribbeln'],
   'restless-legs': ['brennende-fuesse-nachts'],
   schwindel: ['schwindel-beim-buecken'],
@@ -135,6 +152,9 @@ for (const [b, extra] of Object.entries({
   durchblutungsstoerungen: ['ein-fuss-kaelter-als-der-andere', 'schwere-beine-abends'],
   rueckenschmerzen: ['rueckenschmerzen-beim-langen-stehen'],
   spinalkanalstenose: ['rueckenschmerzen-beim-langen-stehen'],
+  verstopfung: ['bauch-fuehlt-sich-hart-an'],
+  blaehungen: ['bauch-fuehlt-sich-hart-an'],
+  reizdarm: ['bauch-fuehlt-sich-hart-an', 'blaehbauch-am-abend'],
 } as Record<string, string[]>)) {
   KS_FOR_BESCHWERDE[b] = [...(KS_FOR_BESCHWERDE[b] ?? []), ...extra];
 }
