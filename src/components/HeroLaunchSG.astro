@@ -27,6 +27,11 @@ const { sitekey } = Astro.props;
       <p style="margin-top:12px;font-size:14px;font-weight:600;color:var(--mid)">Erster Termin für Neupatient:innen kostenlos.</p>
       <p style="margin-top:8px;font-size:14px;font-weight:600;color:var(--mid)"><b style="color:var(--charcoal)">Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
+
+    <figure class="hlsg-visual">
+      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="lazy" decoding="async">
+      <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -64,7 +69,19 @@ const { sitekey } = Astro.props;
   .hlsg-inner {
     max-width: var(--max); margin: 0 auto;
     padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1fr; gap: clamp(28px, 5vw, 56px); align-items: center;
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 5vw, 56px); align-items: center;
+  }
+  @media (max-width: 900px) { .hlsg-inner { grid-template-columns: 1fr; gap: 28px; } }
+
+  .hlsg-visual { margin: 0; min-width: 0; }
+  .hlsg-visual img {
+    display: block; width: 100%; height: auto; max-width: 100%;
+    aspect-ratio: 4 / 3; object-fit: cover;
+    border-radius: var(--r-hero); border: 1px solid rgba(18, 33, 28, .08);
+    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .22);
+  }
+  .hlsg-visual figcaption {
+    margin-top: 10px; font-size: 13px; color: var(--mid); text-align: center;
   }
 
   .hlsg-badge {
@@ -155,6 +172,7 @@ const { sitekey } = Astro.props;
     .hlsg { padding-top: 60px; }
     .hlsg-inner { padding-left: 16px; padding-right: 16px; }
     .hlsg-offer-sec { padding-left: 16px; padding-right: 16px; }
+    .hlsg-visual img { aspect-ratio: 3 / 2; }
     .hlsg-card { padding: 18px; }
     .hlsg-card, .hlsg-card * { max-width: 100%; }
     .hlsg-ts { max-width: 100%; overflow-x: auto; }
