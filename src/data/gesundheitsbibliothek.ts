@@ -190,6 +190,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'morton-neurom', label: 'Morton-Neurom' }, { slug: 'achillessehnenentzuendung', label: 'Achillessehnenentzündung' }, { slug: 'sprunggelenkschmerzen', label: 'Sprunggelenkschmerzen' },
       { slug: 'wadenschmerzen', label: 'Wadenschmerzen' }, { slug: 'restless-legs', label: 'Restless Legs' },
       { slug: 'durchblutungsstoerungen', label: 'Durchblutungsstörungen' }, { slug: 'schwere-beine', label: 'Schwere Beine' },
+      { slug: 'wassereinlagerungen', label: 'Wassereinlagerungen' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'massage', label: 'Massage' },

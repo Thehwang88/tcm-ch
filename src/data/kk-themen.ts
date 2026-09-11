@@ -49,7 +49,7 @@ export const kkThemen: KkThema[] = [
   {
     slug: 'massage',
     crumb: 'Massage',
-    metaTitle: 'Massage & Krankenkasse: was die Zusatzversicherung zahlt | TCM.ch',
+    metaTitle: 'Medizinische Massage & Krankenkasse: was wird übernommen? | TCM.ch',
     metaDesc: 'Medizinische Massage über die Krankenkasse: was anerkannt ist, wie viel zurückkommt, warum die Grundversicherung nicht zahlt und ob du eine ärztliche Verordnung brauchst.',
     h1: 'Massage und <em>Krankenkasse.</em>',
     lead: 'Die Grundversicherung zahlt keine Massagen. Die Zusatzversicherung für Komplementärmedizin schon, wenn die Behandlung bei einer anerkannten Fachperson stattfindet. Was das konkret heisst, wie viel zurückkommt und wo die Grenze zwischen Behandlung und Wellness verläuft.',

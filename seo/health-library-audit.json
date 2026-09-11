@@ -1055,8 +1055,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/wechseljahre/",
@@ -1095,7 +1095,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 130,
+      "inboundContentLinks": 131,
       "outboundHealthLinks": 26
     },
     {
@@ -1135,8 +1135,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 35
+      "inboundContentLinks": 30,
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -2346,7 +2346,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 62,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
@@ -2745,7 +2745,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 9
     },
     {

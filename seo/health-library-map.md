@@ -112,6 +112,34 @@ FAQs bewusst leer (keine erfundenen Zusatzinhalte). Sitemap 367 -> 372 (+5).
   bewusst unangetastet. Sichtbare Em-Dashes im Health-Scope: 0 (Kommentar-
   bereinigter dist-Sweep). Sitemap unverändert 372, keine URL/Canonical-Änderung.
 
+## Welle 8 (11.09.2026) — GSC-Optimierung, LETZTE Welle vor Publikationspause
+
+0 neue URLs (alle 12 Kandidaten-Intents existierten bereits). Optimiert:
+1. wissen/wie-lange-bleiben-akupunkturnadeln-drin: Sektion "Wann werden Nadeln
+   früher entfernt?" + Sicherheitshinweis (nie eigenmächtig länger stecken
+   lassen). Ziel: Nadel-Dauer-Queries Pos 7-11.
+2. krankenkassen/massage: metaTitle auf "Medizinische Massage & Krankenkasse:
+   was wird übernommen?" (Query 108 Impr. Pos 22; Seite existierte bereits,
+   Kandidat "wissen/massage-krankenkasse-schweiz" daher ABGELEHNT).
+3. fersensporn + plantarfasziitis: klärende Abgrenzung beidseitig ("Sporn nicht
+   automatisch die Ursache"), Cross-Links bestanden schon.
+4. therapien/schroepfen: Sektion "Wie lange bleiben die Flecken?" + Link auf
+   wissen/schroepfen-wirkung-flecken (Query "schröpfen" Pos 23).
+5. therapien/kraeutertherapie: Medikamenten-/Schwangerschafts-Hinweis ergänzt.
+6. wassereinlagerungen: an Region Hüfte/Bein/Fuss angebunden (Region-Block auf
+   der Seite, Hub listet sie); Rotverlinkung/Red Flags waren bereits abgedeckt,
+   KEIN neues Ödem-Körpersignal (Schutz des Rankings Pos 8).
+ABGELEHNT als neue Seiten: massage-krankenkasse (existiert als
+/krankenkassen/massage/), aphten (Leaf existiert, Abklärungs-Fristen abgedeckt),
+fersensporn/plantar (beide existieren), "Symptome CH"-Seite (Bridge aus Welle 4
+deckt den Intent). ischias: Visual-Integration und Red Flags bereits vorhanden,
+nur verifiziert. Sitemap unverändert 372.
+
+**PUBLIKATIONSPAUSE: bis ~18.09.2026 keine neuen Health-Library-Seiten.**
+Danach nur Messung: Impressionen, Positionen, Query-Page-Matching,
+Kannibalisierung (3 HIGH-Paare), Visual-Discovery, Indexierung der 33 offenen
+Queue-URLs.
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:
