@@ -34,6 +34,16 @@ const ksSample = ['finger-schlafen-ein', 'schwindel-beim-umdrehen-im-bett', 'wad
   .map((s) => koerpersignale.find((k) => k.slug === s))
   .filter(Boolean);
 
+// Saisonales Modul (Herbstwelle 09/2026): kuratierte Karten, keine neue Taxonomie.
+const HERBST = [
+  { href: '/wissen/erkaeltung-im-anflug/', name: 'Erkältung im Anflug', short: 'Was in den ersten 24 Stunden wirklich hilft und was du dir sparen kannst.' },
+  { href: '/wissen/erkaeltung-grippe-allergie/', name: 'Erkältung, Grippe oder Allergie?', short: 'Die Unterschiede bei Beginn, Fieber und Dauer, klar erklärt.' },
+  { href: '/wissen/kopfschmerzen-wetterumschwung/', name: 'Kopfschmerzen bei Wetterumschwung', short: 'Was die Forschung zur Wetterfühligkeit sagt und was du tun kannst.' },
+  { href: '/wissen/muedigkeit-im-herbst/', name: 'Müdigkeit im Herbst', short: 'Zeitumstellung, fehlendes Licht und die Grenze zum Stimmungstief.' },
+  { href: '/wissen/heizungsluft-trockene-schleimhaeute/', name: 'Heizungsluft & trockene Schleimhäute', short: 'Trockene Nase, Kratzen im Hals, spröde Lippen: was wirklich hilft.' },
+  { href: '/koerpersignale/verstopfte-nase-ohne-erkaeltung/', name: 'Verstopfte Nase ohne Erkältung', short: 'Allergie, trockene Luft oder Nasenspray-Gewöhnung? Die Einordnung.' },
+];
+
 const CATEGORIES = [
   {
     label: 'Körpersignale',
@@ -130,6 +140,20 @@ const CATEGORIES = [
         ))}
       </div>
 
+      <div class="diag" id="herbst">
+        <h2 class="group-title">Aktuell im Herbst</h2>
+        <p class="group-sub">Typische Beschwerden und Gesundheitsfragen rund um die kühlere Jahreszeit.</p>
+        <div class="diag-grid">
+          {HERBST.map((h) => (
+            <a class="diag-card diag-card--link" href={h.href}>
+              <div class="diag-name">{h.name}</div>
+              <p class="diag-short">{h.short}</p>
+              <span class="diag-more">Lesen →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       <div class="regions" id="koerperregionen">
         <h2 class="group-title">Nach Körperregion stöbern</h2>
         <p class="group-sub">Wo spürst du etwas? Jede Region sammelt die passenden Körpersignale, Beschwerden, Behandlungen und Visuals.</p>
@@ -195,7 +219,7 @@ const CATEGORIES = [
   const box = document.getElementById('lib-search-results');
   const norm = (s) => s.toLowerCase()
     .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
-  const GROUPS = ['Körpersignale', 'Beschwerden', 'Körperregionen', 'Therapien', 'Visuals'];
+  const GROUPS = ['Körpersignale', 'Beschwerden', 'Ratgeber', 'Körperregionen', 'Therapien', 'Untersuchungen', 'Visuals'];
   const prepared = INDEX.map((e) => ({ ...e, n: norm(e.t + ' ' + (e.k || '')) }));
 
   function render(q) {

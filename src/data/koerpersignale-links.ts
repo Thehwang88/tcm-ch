@@ -69,6 +69,9 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'kalte-haende-trotz-waerme', label: 'Kalte Hände trotz Wärme' },
   { slug: 'schnarchen-jede-nacht', label: 'Schnarchen jede Nacht' },
   { slug: 'juckreiz-nachts-ohne-ausschlag', label: 'Juckreiz nachts ohne Ausschlag' },
+  // Herbstwelle (09/2026):
+  { slug: 'trockener-husten', label: 'Trockener Husten' },
+  { slug: 'verstopfte-nase-ohne-erkaeltung', label: 'Verstopfte Nase ohne Erkältung' },
 ];
 
 /** Themenspezifische Zuordnung: Beschwerde-Slug -> passende /koerpersignale/-Leaves. */
@@ -141,6 +144,10 @@ export const KS_FOR_BESCHWERDE: Record<string, string[]> = {
   neurodermitis: ['juckreiz-nachts-ohne-ausschlag'],
   nesselsucht: ['juckreiz-nachts-ohne-ausschlag'],
   schuppenflechte: ['juckreiz-nachts-ohne-ausschlag'],
+  // Zuordnungen der Herbstwelle:
+  'allergien-heuschnupfen': ['verstopfte-nase-ohne-erkaeltung', 'trockener-husten'],
+  asthma: ['trockener-husten'],
+  copd: ['trockener-husten'],
 };
 // Ergänzungen zu bestehenden Einträgen der ersten Welle:
 for (const [b, extra] of Object.entries({
@@ -150,10 +157,10 @@ for (const [b, extra] of Object.entries({
   arthrose: ['knie-knackt-ohne-schmerzen'],
   tinnitus: ['ohr-knackt-beim-schlucken'],
   mittelohrentzuendung: ['ohr-knackt-beim-schlucken'],
-  sinusitis: ['druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken'],
+  sinusitis: ['verstopfte-nase-ohne-erkaeltung', 'druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken'],
   schlafprobleme: ['trockener-mund-nachts', 'schnarchen-jede-nacht', 'herzklopfen-im-liegen'],
   schlafstoerungen: ['trockener-mund-nachts', 'schnarchen-jede-nacht', 'herzklopfen-im-liegen'],
-  sodbrennen: ['bitterer-geschmack-morgens', 'magendruck-im-liegen'],
+  sodbrennen: ['bitterer-geschmack-morgens', 'trockener-husten', 'magendruck-im-liegen'],
   gastritis: ['bitterer-geschmack-morgens', 'voellegefuehl-nach-dem-essen', 'magendruck-im-liegen'],
   polyneuropathie: ['brennende-fuesse-nachts', 'zehen-kribbeln'],
   'restless-legs': ['brennende-fuesse-nachts'],

@@ -45,6 +45,7 @@ const DATEN = { datePublished: '2026-09-09', dateModified: '2026-09-09' };
 const DATEN3 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN4 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN5 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
+const DATEN6 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -1687,6 +1688,7 @@ export const koerpersignale: Koerpersignal[] = [
 <h2>Warum gerade morgens?</h2>
 <p>Tagsüber wechselst du ständig die Position, die Nackenmuskeln werden durchblutet und bleiben geschmeidig. Im Schlaf fehlt diese Bewegung. Liegt der Kopf dabei abgeknickt oder überstreckt, arbeiten einzelne Muskelpartien die ganze Nacht gegen die Schwerkraft. Das Ergebnis kennst du: Der Nacken fühlt sich beim Aufwachen wie eingerostet an.</p>
 <p>Auch nächtliches Zähnepressen und Stress erhöhen die Grundspannung der Muskulatur, oft ohne dass du es merkst.</p>
+<p>In der kalten Jahreszeit berichten viele, dass die Morgensteifheit zunimmt. Das passt zur Alltagserfahrung: Bei Kälte und Zugluft, etwa durch ein gekipptes Fenster direkt am Bett, spannt sich die Nackenmuskulatur eher an, und hochgezogene Schultern auf dem Weg durch die Kälte tun ihr Übriges. Ein Schal, ein zugfreier Schlafplatz und Wärme am Morgen sind einfache Gegenmassnahmen.</p>
 <h2>Kissen und Matratze: die häufigsten Stellschrauben</h2>
 <ul>
 <li><strong>Zu hohes Kissen:</strong> knickt den Kopf in Seitenlage nach oben ab.</li>
@@ -2452,6 +2454,8 @@ export const koerpersignale: Koerpersignal[] = [
 </ul>
 <p>Beim Raynaud-Syndrom verändern einzelne Finger häufig zusätzlich ihre Farbe, beispielsweise weiss oder bläulich, bevor sie beim Wiedererwärmen rot werden.</p>
 <p>Ist nur eine Hand deutlich kälter als die andere, findest du die eigene Einordnung unter <a href="/koerpersignale/kalte-haende-einseitig/">Eine Hand ist kälter</a>.</p>
+<h2>In der kalten Jahreszeit häufiger</h2>
+<p>Mit Herbstbeginn melden sich empfindliche Gefässe deutlich öfter: Schon der Wechsel zwischen kalter Aussenluft und geheizten Räumen kann bei entsprechender Veranlagung einen Anfall auslösen. Handschuhe früh im Jahr, warme Handgelenke und das Vermeiden von Nikotin sind die einfachsten Gegenmassnahmen. Werden die Anfälle im Winter deutlich stärker oder schmerzhaft, sprich das bei der nächsten ärztlichen Kontrolle an.</p>
 <div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Eine medizinische Beurteilung ist sinnvoll, wenn nur eine Hand dauerhaft betroffen ist, Finger stark weiss oder blau werden, Wunden an Fingern entstehen, deutliche Schmerzen auftreten oder gleichzeitig ausgeprägte Müdigkeit, Gewichtsveränderungen oder andere neue Symptome bestehen.</p></div>
 <h2>Was du beobachten kannst</h2>
 <ul>
@@ -2555,6 +2559,87 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
       { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
       { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'trockener-husten',
+    symptom: 'trockener Husten ohne Auswurf',
+    title: 'Trockener Husten: was dahinterstecken kann',
+    metaDesc: 'Trockener Reizhusten entsteht oft durch trockene Luft, abklingende Infekte, Allergien oder Reflux. Welche Ursachen häufig sind und wann du abklären solltest.',
+    h1: 'Trockener Husten',
+    category: 'Hals & Mund',
+    lead: 'Trockener Husten ohne Auswurf ist meist ein Reizhusten: Die Schleimhaut der Atemwege ist gereizt, ohne dass Schleim abtransportiert werden muss. Häufige Auslöser sind trockene Heizungsluft, ein abklingender Infekt oder Allergien. Husten, der länger als acht Wochen besteht, gehört ärztlich abgeklärt.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Reizhusten gemeinsam einordnen?',
+    author: AUTOR,
+    ...DATEN6,
+    bodyHtml: `<h2>Was trockenen Husten auslöst</h2>
+<p>Husten ist ein Schutzreflex. Bei trockenem Husten wird er nicht durch Schleim ausgelöst, sondern durch eine gereizte Schleimhaut in Rachen, Kehlkopf oder Bronchien.</p>
+<h2>Häufige Ursachen</h2>
+<ul>
+<li>trockene Heizungsluft, besonders nachts und am Morgen</li>
+<li>abklingender Atemwegsinfekt: Der Hustenreiz kann nach einer Erkältung mehrere Wochen anhalten, obwohl der Infekt vorbei ist</li>
+<li>Allergien, etwa auf Hausstaubmilben oder Schimmelpilze</li>
+<li>Asthma, das sich manchmal nur als Husten zeigt, vor allem nachts oder bei Anstrengung</li>
+<li>Reflux: Aufsteigende Magensäure kann den Kehlkopf reizen, auch ohne spürbares <a href="/beschwerden/sodbrennen/">Sodbrennen</a></li>
+<li>Nebenwirkung bestimmter Blutdruckmedikamente (ACE-Hemmer)</li>
+<li>Rauchen und gereizte Atemwege durch Staub oder Dämpfe</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Ärztlich abklären lassen solltest du Husten mit Atemnot oder Brustschmerzen, Bluthusten, Husten mit Fieber über mehrere Tage, deutlicher Gewichtsabnahme oder Nachtschweiss, sowie jeden Husten, der länger als acht Wochen besteht. Bei Raucherinnen und Rauchern gilt eine tiefere Schwelle.</p></div>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>tritt der Husten vor allem in geheizten Räumen oder nachts auf?</li>
+<li>begann er nach einem Infekt?</li>
+<li>gibt es Begleiter wie Niesattacken, juckende Augen oder Sodbrennen?</li>
+<li>bessert er sich am Wochenende oder in den Ferien (Hinweis auf Auslöser am Arbeitsplatz)?</li>
+</ul>
+<p>Ist trockene Raumluft der wahrscheinlichste Auslöser, findest du die wirksamsten Massnahmen im Artikel <a href="/wissen/heizungsluft-trockene-schleimhaeute/">Heizungsluft und trockene Schleimhäute</a>. Bei pfeifender Atmung oder Atemnot unter Belastung gehört die Abklärung in Richtung <a href="/beschwerden/asthma/">Asthma</a>, bei bekannter Lungenerkrankung siehe <a href="/beschwerden/copd/">COPD</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/asthma/', label: 'Asthma', cat: 'Beschwerde' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
+      { href: '/wissen/heizungsluft-trockene-schleimhaeute/', label: 'Heizungsluft & trockene Schleimhäute', cat: 'Artikel' },
+      { href: '/koerpersignale/verstopfte-nase-ohne-erkaeltung/', label: 'Verstopfte Nase ohne Erkältung', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'verstopfte-nase-ohne-erkaeltung',
+    symptom: 'dauerhaft verstopfte Nase ohne Erkältung',
+    title: 'Verstopfte Nase ohne Erkältung: Ursachen',
+    metaDesc: 'Eine dauerhaft verstopfte Nase ohne Infekt kann durch Allergien, trockene Luft, gereizte Schleimhaut oder Nasenspray-Gewöhnung entstehen. Wann abklären?',
+    h1: 'Verstopfte Nase ohne Erkältung',
+    category: 'Kopf & Sinne',
+    lead: 'Wenn die Nase über Wochen zu ist, ohne dass du erkältet bist, steckt meist keine Infektion dahinter, sondern eine gereizte oder geschwollene Nasenschleimhaut. Häufige Ursachen sind Allergien, trockene Heizungsluft und die Gewöhnung an abschwellende Nasensprays.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Dauerbeschwerden gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN6,
+    bodyHtml: `<h2>Warum die Nase auch ohne Infekt zugehen kann</h2>
+<p>Die Nasenschleimhaut ist gut durchblutet und reagiert auf viele Reize mit Schwellung. Das Gefühl der verstopften Nase entsteht durch diese Schwellung, nicht zwingend durch Schleim.</p>
+<h2>Häufige Ursachen</h2>
+<ul>
+<li>Allergien: Im Herbst und Winter vor allem Hausstaubmilben, seltener Schimmelpilzsporen. Typisch sind Niesattacken und Beschwerden morgens im Bett</li>
+<li>trockene Heizungsluft, die die Schleimhaut reizt und anschwellen lässt</li>
+<li>Nasenspray-Gewöhnung: Abschwellende Sprays über mehr als etwa eine Woche führen dazu, dass die Nase ohne Spray dauerhaft zuschwillt</li>
+<li>nicht-allergischer Schnupfen: Die Schleimhaut reagiert überempfindlich auf Temperaturwechsel, Rauch, Düfte oder scharfes Essen</li>
+<li>anatomische Ursachen wie eine verkrümmte Nasenscheidewand oder Nasenpolypen</li>
+<li>hormonelle Einflüsse, etwa in der Schwangerschaft</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Ärztlich abklären lassen solltest du eine einseitig verstopfte Nase über längere Zeit, häufiges Nasenbluten, blutigen Ausfluss, nachlassenden Geruchssinn, Gesichtsschmerzen oder Druck über Wochen sowie eine tägliche Abhängigkeit von abschwellendem Nasenspray. Letztere ist gut behandelbar, braucht aber meist Begleitung beim Absetzen.</p></div>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>ist die Nase in bestimmten Räumen oder zu bestimmten Tageszeiten schlimmer?</li>
+<li>helfen Lüften oder Aufenthalt im Freien?</li>
+<li>wie oft brauchst du abschwellenden Nasenspray?</li>
+<li>gibt es Begleiter wie juckende Augen oder Niesattacken?</li>
+</ul>
+<p>Bei Verdacht auf eine Allergie findest du mehr unter <a href="/beschwerden/allergien-heuschnupfen/">Allergien und Heuschnupfen</a>. Kommen Gesichtsschmerz und Druck dazu, passt eher das Bild der <a href="/beschwerden/sinusitis/">Sinusitis</a>. Ist trockene Raumluft der Auslöser, helfen die Massnahmen im Artikel <a href="/wissen/heizungsluft-trockene-schleimhaeute/">Heizungsluft und trockene Schleimhäute</a>. Und weil eine verstopfte Nase nachts zu Mundatmung führt, lohnt sich auch ein Blick auf <a href="/koerpersignale/schnarchen-jede-nacht/">Schnarchen jede Nacht</a>.</p>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/allergien-heuschnupfen/', label: 'Allergien & Heuschnupfen', cat: 'Beschwerde' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/wissen/heizungsluft-trockene-schleimhaeute/', label: 'Heizungsluft & trockene Schleimhäute', cat: 'Artikel' },
+      { href: '/koerpersignale/schnarchen-jede-nacht/', label: 'Schnarchen jede Nacht', cat: 'Körpersignal' },
     ],
   },
 ];

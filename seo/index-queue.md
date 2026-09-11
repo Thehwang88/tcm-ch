@@ -18,6 +18,13 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/wissen/erkaeltung-im-anflug/
+- https://tcm.ch/wissen/erkaeltung-grippe-allergie/
+- https://tcm.ch/wissen/kopfschmerzen-wetterumschwung/
+- https://tcm.ch/wissen/muedigkeit-im-herbst/
+- https://tcm.ch/wissen/heizungsluft-trockene-schleimhaeute/
+- https://tcm.ch/koerpersignale/trockener-husten/
+- https://tcm.ch/koerpersignale/verstopfte-nase-ohne-erkaeltung/
 - https://tcm.ch/koerpersignale/stinkende-blaehungen/
 - https://tcm.ch/koerpersignale/durchfall-am-morgen/
 - https://tcm.ch/koerpersignale/kalte-haende-trotz-waerme/

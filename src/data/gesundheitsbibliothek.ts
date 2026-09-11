@@ -76,7 +76,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Kopf & Gesicht',
     metaDesc: 'Kopfschmerzen, Migräne, Schwindel, Ohrgeräusche, Kieferbeschwerden: alle Inhalte der Gesundheitsbibliothek zur Region Kopf & Gesicht. Körpersignale, Beschwerden und Behandlungsmöglichkeiten.',
     lead: 'Vom Spannungskopfschmerz über Schwindel beim Umdrehen bis zum Pochen im Ohr: Hier findest du alle Inhalte zur Region Kopf und Gesicht. Signale ohne Diagnose, bekannte Beschwerdebilder und passende Behandlungen.',
-    signals: ['schwindel-beim-umdrehen-im-bett', 'schwindel-beim-aufstehen', 'schwindel-beim-buecken', 'druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken', 'augenflimmern', 'herzschlag-im-ohr', 'ohr-einseitig-verstopft', 'ohr-knackt-beim-schlucken', 'augenlid-zuckt', 'bitterer-geschmack-morgens'],
+    signals: ['schwindel-beim-umdrehen-im-bett', 'schwindel-beim-aufstehen', 'schwindel-beim-buecken', 'druck-im-kopf-ohne-kopfschmerzen', 'kopfdruck-beim-buecken', 'augenflimmern', 'herzschlag-im-ohr', 'ohr-einseitig-verstopft', 'ohr-knackt-beim-schlucken', 'augenlid-zuckt', 'bitterer-geschmack-morgens', 'verstopfte-nase-ohne-erkaeltung'],
     conditions: [
       { slug: 'migraene', label: 'Migräne' }, { slug: 'kopfschmerzen', label: 'Kopfschmerzen' },
       { slug: 'spannungskopfschmerzen', label: 'Spannungskopfschmerzen' }, { slug: 'cluster-kopfschmerzen', label: 'Cluster-Kopfschmerzen' },
@@ -98,7 +98,7 @@ export const BODY_REGIONS: BodyRegion[] = [
     nav: 'Hals & Nacken',
     metaDesc: 'Nackenschmerzen, Knacken beim Drehen, Klossgefühl im Hals: alle Inhalte der Gesundheitsbibliothek zur Region Hals & Nacken. Körpersignale, Beschwerden, Visuals und Behandlungsmöglichkeiten.',
     lead: 'Ein Nacken, der beim Drehen knackt. Ein Kloss im Hals, der nicht verschwindet. Verspannungen, die bis in den Kopf ziehen. Hier ist alles zur Region Hals und Nacken gesammelt.',
-    signals: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif', 'kribbeln-vom-nacken-in-den-arm', 'klossgefuehl-im-hals', 'staendiger-raeusperzwang', 'zungenbrennen', 'trockener-mund-nachts'],
+    signals: ['nacken-knackt-beim-drehen', 'nacken-morgens-steif', 'kribbeln-vom-nacken-in-den-arm', 'klossgefuehl-im-hals', 'staendiger-raeusperzwang', 'zungenbrennen', 'trockener-mund-nachts', 'trockener-husten'],
     conditions: [
       { slug: 'nackenschmerzen', label: 'Nackenschmerzen' }, { slug: 'schleudertrauma', label: 'Schleudertrauma' },
       { slug: 'spannungskopfschmerzen', label: 'Spannungskopfschmerzen' }, { slug: 'schwindel', label: 'Schwindel' },
@@ -378,6 +378,13 @@ const SYNONYMS: Record<string, string> = {
   '/koerpersignale/kalte-haende-trotz-waerme/': 'kalte Finger schlechte Durchblutung Hände',
   '/koerpersignale/schnarchen-jede-nacht/': 'Schnarchen Atemaussetzer Schlafapnoe laut',
   '/koerpersignale/juckreiz-nachts-ohne-ausschlag/': 'Jucken nachts Hautjucken Pruritus trockene Haut',
+  '/koerpersignale/trockener-husten/': 'Reizhusten Hustenreiz Husten ohne Auswurf Kratzen im Hals',
+  '/koerpersignale/verstopfte-nase-ohne-erkaeltung/': 'Schnupfen Rhinitis Nase zu Dauerschnupfen Nasenspray',
+  '/wissen/kopfschmerzen-wetterumschwung/': 'Wetterfühligkeit Föhn Wetterwechsel Luftdruck Kopfweh',
+  '/wissen/muedigkeit-im-herbst/': 'Zeitumstellung Winterblues Herbstmüdigkeit Antriebslosigkeit Tageslicht',
+  '/wissen/heizungsluft-trockene-schleimhaeute/': 'Heizungsluft trockene Nase trockene Augen spröde Lippen Luftfeuchtigkeit',
+  '/wissen/erkaeltung-im-anflug/': 'Erkältung beginnt Halskratzen Frösteln grippaler Infekt',
+  '/wissen/erkaeltung-grippe-allergie/': 'Grippe Influenza Allergie Unterschied Schnupfen',
   '/gesundheitsbibliothek/koerper/becken-blase/': 'Urologie Blase Unterleib Beckenboden',
   '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/': 'NLG ENG Nervenmessung Nervenleitgeschwindigkeit Elektroneurografie EMG',
   '/gesundheitsbibliothek/koerper/bauch-verdauung/': 'Magen Darm Verdauung',
@@ -439,6 +446,15 @@ export function buildSearchIndex(): SearchEntry[] {
   for (const d of DIAGNOSTICS) {
     if (d.href) entries.push({ t: d.name, u: d.href, g: 'Untersuchungen' });
   }
+  // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
+  const RATGEBER: Array<{ t: string; u: string }> = [
+    { t: 'Erkältung im Anflug: erste 24 Stunden', u: '/wissen/erkaeltung-im-anflug/' },
+    { t: 'Erkältung, Grippe oder Allergie?', u: '/wissen/erkaeltung-grippe-allergie/' },
+    { t: 'Kopfschmerzen bei Wetterumschwung', u: '/wissen/kopfschmerzen-wetterumschwung/' },
+    { t: 'Müdigkeit im Herbst', u: '/wissen/muedigkeit-im-herbst/' },
+    { t: 'Heizungsluft & trockene Schleimhäute', u: '/wissen/heizungsluft-trockene-schleimhaeute/' },
+  ];
+  for (const a of RATGEBER) entries.push({ t: a.t, u: a.u, g: 'Ratgeber' });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex — Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {
     if (v.status !== 'live') continue;
