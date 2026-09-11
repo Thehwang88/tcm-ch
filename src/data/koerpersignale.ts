@@ -238,6 +238,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Hilft Akupunktur bei einschlafenden Händen?', a: 'Wenn Verspannungen von Nacken, Schulter und Unterarm mitspielen, kann eine Behandlung mit Akupunktur und Tuina die Beschwerden lindern. Ein diagnostizierter Engpass gehört zuerst ärztlich beurteilt, die TCM arbeitet dann begleitend.' },
     ],
     related: [
+      { href: '/visuals/karpaltunnel/', label: 'Visual: Karpaltunnel und Medianusnerv', cat: 'Visual' },
       { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
       { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom', cat: 'Beschwerde' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
@@ -868,6 +869,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit einem tauben Bein zum Arzt?', a: 'Sofort bei Taubheit, die bestehen bleibt, bei einem Fuss, der beim Gehen hängt, bei Taubheit im Genital- oder Analbereich oder neuen Blasen- und Darmstörungen. Ebenfalls zeitnah bei wiederkehrender Taubheit mit Rückenschmerz und Ausstrahlung.' },
     ],
     related: [
+      { href: '/visuals/ischias/', label: 'Visual: Verlauf des Ischiasnervs', cat: 'Visual' },
       { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
       { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
@@ -1551,6 +1553,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Welche Schlafposition hilft gegen eingeschlafene Arme?', a: 'Vermeide den Arm unter Kopf oder Kissen und stark gebeugte Ellbogen. In Seitenlage hilft ein Kissen vor der Brust, auf dem der obere Arm ruht, sowie ein Kissen, das die Schulter nicht zu tief einsinken lässt.' },
     ],
     related: [
+      { href: '/visuals/karpaltunnel/', label: 'Visual: Karpaltunnel und Medianusnerv', cat: 'Visual' },
       { href: '/beschwerden/karpaltunnelsyndrom/', label: 'Karpaltunnelsyndrom', cat: 'Beschwerde' },
       { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },
       { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
@@ -1714,6 +1717,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist ein steifer Nacken gefährlich?', a: 'Sofort reagieren bei Steifheit mit hohem Fieber, starken Kopfschmerzen und Lichtempfindlichkeit sowie bei Schwäche oder Taubheit in Armen oder Beinen. Abklären lassen solltest du auch Morgensteifheit über 30 Minuten, die regelmässig auftritt.' },
     ],
     related: [
+      { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
       { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
       { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
@@ -2224,6 +2228,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen Nervenreizung im Nacken?', a: 'Bei muskulär-funktionellen Ursachen die Kombination aus Entlastung, Haltungsarbeit und Physiotherapie, ergänzt durch Akupunktur oder Tuina gegen Spannung und Schmerz. Bei Bandscheiben- oder knöchernen Ursachen richtet sich die Behandlung nach dem ärztlichen Befund.' },
     ],
     related: [
+      { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/bandscheibenvorfall/', label: 'Bandscheibenvorfall', cat: 'Beschwerde' },
       { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },

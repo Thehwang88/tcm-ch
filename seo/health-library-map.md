@@ -78,6 +78,28 @@ existiert seit Welle 1, Vorlage hätte eine indexierte Seite überschrieben.
 Sie-Form der Vorlage an Du-Hausstil angepasst, sonst textlich unverändert;
 FAQs bewusst leer (keine erfundenen Zusatzinhalte). Sitemap 367 -> 372 (+5).
 
+## Welle 6 (11.09.2026) — Visual Library: 3 Visuals LIVE
+
+- Assets (Upload de8a373, Repo-Root) nach public/images/ verschoben:
+  karpaltunnel.png (512x1024), ischias.png (512x1024), nacken.png (1024x1536)
+- LIVE: /visuals/karpaltunnel/ (Draft promoted), /visuals/ischias/ (Draft
+  promoted), /visuals/nacken-ausstrahlung/ (NEU — die bestehenden Drafts
+  nacken-blockade/muskelverspannung-nacken sind andere Konzepte und bleiben
+  unverändert Drafts; kein Duplikat)
+- Viewer/Handout um Ein-Bild-Visuals erweitert (kein Umschalter, zentrierte
+  Ansicht, spezifischer Alt-Text, Erklärsektionen .vv-explain, Handout-
+  Merkpunkte aus Hotspot-Notes); PDF = bestehendes Handout-System
+- Bidirektional verlinkt: Beschwerden-Leaves zeigen "Zeig es mir"-Block
+  (datengetrieben über relatedPage: karpaltunnelsyndrom, ischias,
+  nackenschmerzen, bandscheibenvorfall), 5 Körpersignale verlinken ihr Visual,
+  Region-Hubs listen Live-Visuals automatisch, NLG-Seite beidseitig verknüpft
+- Suche: 3 neue Visual-Einträge inkl. Synonyme (Medianus, Ischiasnerv, HWS ...)
+- Sitemap unverändert 372: Visual-Seiten bleiben per dokumentierter Konvention
+  noindex,follow (Patienten-Tool, kein SEO-Silo) — bewusste Abweichung von der
+  Aufgaben-Erwartung "+3 indexiert"; Umstellung auf indexierbar wäre eine
+  Produktentscheidung
+- "Visual anfragen" existiert im System nicht (nur QR/PDF/Vollbild) — nichts erfunden
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:

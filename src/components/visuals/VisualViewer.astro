@@ -19,10 +19,13 @@ const markers = controls.filter((h) => h.view !== 'pain');
 const relatedLive = (v.related ?? [])
   .map((slug) => visuals.find((x) => x.slug === slug))
   .filter((x): x is Visual => !!x && x.status === 'live');
-const panels = [
-  { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: `${v.title}: vereinfachte Darstellung, normaler Zustand` },
+const allPanels = [
+  { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: v.imageAlt ?? `${v.title}: vereinfachte Darstellung, normaler Zustand` },
   { key: 'problem', chip: v.labelProblem ?? v.title, img: v.imageProblem, alt: `${v.title}: vereinfachte Darstellung der Veränderung` },
 ];
+// Ein-Bild-Visuals (nur imageNormal): kein Umschalter, eine zentrierte Ansicht.
+const panels = allPanels.filter((p) => !!p.img);
+const single = panels.length === 1;
 ---
 <article class="vv" id="vv" data-slug={v.slug} data-category={v.category}>
 
@@ -49,13 +52,15 @@ const panels = [
     </div>
   </header>
 
-  <!-- Umschalter (nur sichtbar, wenn nur eine Ansicht Platz hat) -->
-  <div class="vv-switch" role="group" aria-label="Ansicht wählen">
-    <button type="button" class="vv-switch-btn" data-view="normal" aria-pressed="true">{panels[0].chip}</button>
-    <button type="button" class="vv-switch-btn" data-view="problem" aria-pressed="false">{panels[1].chip}</button>
-  </div>
+  <!-- Umschalter (nur sichtbar, wenn nur eine Ansicht Platz hat; entfällt bei Ein-Bild-Visuals) -->
+  {!single && (
+    <div class="vv-switch" role="group" aria-label="Ansicht wählen">
+      <button type="button" class="vv-switch-btn" data-view="normal" aria-pressed="true">{panels[0].chip}</button>
+      <button type="button" class="vv-switch-btn" data-view="problem" aria-pressed="false">{panels[1].chip}</button>
+    </div>
+  )}
 
-  <div class="vv-stage" id="vv-stage" data-mobile-view="normal">
+  <div class:list={['vv-stage', { 'vv-stage--single': single }]} id="vv-stage" data-mobile-view="normal">
     {panels.map((p) => (
       <figure class="vv-panel" data-panel={p.key}>
         <figcaption class="vv-chip" data-chip={p.key}>{p.chip}</figcaption>
@@ -117,6 +122,12 @@ const panels = [
           </ol>
         )}
       </div>
+    </section>
+  )}
+
+  {v.explainHtml && (
+    <section class="vv-explain" aria-label="Was zeigt die Grafik?">
+      <div set:html={v.explainHtml} />
     </section>
   )}
 
@@ -471,6 +482,19 @@ const panels = [
   }
   .vv-control.is-dimmed { opacity: .55; }
   .vv-control:focus-visible { outline: 2px solid var(--blue-dark); outline-offset: 2px; }
+  .vv-stage--single { grid-template-columns: minmax(0, 560px); justify-content: center; }
+  .vv-explain { max-width: 640px; margin: 34px auto 0; }
+  .vv-explain :global(h3) { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 26px 0 10px; }
+  .vv-explain :global(p) { font-size: 16.5px; line-height: 1.6; color: var(--mid); margin: 0 0 14px; }
+  .vv-explain :global(ul) { font-size: 16px; line-height: 1.6; color: var(--mid); padding-left: 20px; margin: 0 0 14px; }
+  .vv-explain :global(li) { margin: 0 0 6px; }
+  .vv-explain :global(strong) { color: var(--ink); }
+  .vv-explain :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .vv-explain :global(a:hover) { text-decoration: underline; }
+  .vv-explain :global(.vv-box) { border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px 18px; margin: 0 0 14px; }
+  .vv-explain :global(.vv-box-title) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 8px; }
+  .vv-explain :global(.vv-box ul) { margin: 0; }
+  .vv-explain :global(.vv-flag) { background: #FFF7E6; border-left: 3px solid #E0A100; border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 14px 16px; font-size: 15px; line-height: 1.55; color: var(--mid); margin: 0 0 14px; }
   .vv-note {
     margin: 14px 2px 0;
     font-size: 16.5px;
@@ -663,6 +687,7 @@ const panels = [
     .vv-controlbar { order: 30; }
     .vv-actions { order: 40; margin-top: 24px; }
     .vv-pain { order: 50; }
+    .vv-explain { order: 55; }
     .vv-related { order: 60; }
     .vv-disclaimer { order: 70; }
     .vv-switch { display: flex; }

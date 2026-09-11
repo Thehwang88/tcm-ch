@@ -66,6 +66,11 @@ export interface Visual {
   /** Überschrift der zweiten Ansicht. Default: 'Wo kann man es spüren?' */
   secondaryHeading?: string;
   painPath?: VisualPainStep[];
+  /** Spezifischer Alt-Text für die Hauptillustration (Fallback: generisch aus title). */
+  imageAlt?: string;
+  /** Kurze HTML-Erklärsektionen unter dem Bild (h3/p/ul + .vv-flag für Warnhinweise).
+   *  Das Bild erklärt visuell, die Seite in Text — nie Text ins Bild einbacken. */
+  explainHtml?: string;
   /** Suche: Synonyme, Körperregion, Alltagswörter. */
   keywords: string[];
   /** Bestehende stärkste Beschwerden-/Behandlungs-Seite ("Mehr erfahren"). Optional — nie URLs erfinden. */
@@ -172,31 +177,60 @@ export const visuals: Visual[] = [
   // ── Batch 1 · Visual 2 — DRAFT bis finale Assets geliefert sind.
   // Fokus: NERVENVERLAUF/Symptommuster, bewusst abgegrenzt vom LWS-Bandscheiben-Visual.
   // Keine Aussage, dass Ischias immer von der Bandscheibe kommt (nur "kann gereizt sein").
-  // Benötigte Assets: ischias-normal (Nerv frei) · ischias-gereizt · ischias-pain-route
   {
+    // LIVE 09/2026 — freigegebenes Asset /images/ischias.png (512x1024).
     slug: 'ischias',
-    title: 'Ischias / Nervenreizung',
+    title: 'Ischias: Wo strahlt der Schmerz ins Bein aus?',
     category: 'Rücken',
     subtitle: 'Ein gereizter Nerv kann Schmerzen vom Rücken bis ins Bein verursachen.',
-    status: 'draft',
-    labelNormal: 'Nerv frei',
-    labelProblem: 'Nerv gereizt',
+    status: 'live',
+    imageNormal: { src: '/images/ischias.png', width: 512, height: 1024 },
+    imageAlt: 'Illustration des Verlaufs des Ischiasnervs vom unteren Rücken über das Gesäss in das Bein, mit Detail der Nervenwurzeln an der Wirbelsäule und Ausstrahlungszone.',
+    labelNormal: 'Verlauf des Ischiasnervs',
     hotspots: [
-      { id: 'nerv', label: 'Nerv', x: 50, y: 30, view: 'both', note: 'Der Ischiasnerv ist der längste Nerv im Körper.' },
-      { id: 'ruecken', label: 'Rücken', x: 45, y: 15, view: 'both', labelSide: 'left', note: 'Der Nerv beginnt im unteren Rücken.' },
-      { id: 'gesaess', label: 'Gesäss', x: 55, y: 42, view: 'both', note: 'Der Nerv läuft durch das Gesäss.' },
-      { id: 'bein', label: 'Bein', x: 58, y: 70, view: 'both', note: 'Ein gereizter Nerv kann bis ins Bein ausstrahlen.' },
-      { id: 'schmerz', label: 'Schmerzverlauf', x: 0, y: 0, view: 'pain', note: 'Beschwerden können vom Rücken bis in den Unterschenkel ziehen.' },
+      { id: 'wurzel', label: 'Nervenwurzeln', x: 34, y: 13, view: 'normal', labelSide: 'left', note: 'Der Ischiasnerv beginnt an Nervenwurzeln im unteren Rücken und Kreuzbein.' },
+      { id: 'gesaess', label: 'Gesäss', x: 40, y: 23, view: 'normal', labelSide: 'left', note: 'Der Nerv läuft durch das Gesäss in das Bein.' },
+      { id: 'bein', label: 'Bein', x: 47, y: 55, view: 'normal', labelSide: 'left', note: 'Beschwerden können bis in Unterschenkel und Fuss ziehen.' },
+      { id: 'zone', label: 'Ausstrahlungszone', x: 74, y: 60, view: 'normal', labelSide: 'left', note: 'Rot: typische Zone, in der Schmerz oder Kribbeln spürbar sein kann.' },
     ],
-    painPath: [
-      { label: 'unterer Rücken', x: 51, y: 38, labelSide: 'left' },
-      { label: 'Gesäss', x: 60, y: 49 },
-      { label: 'Oberschenkel', x: 62, y: 62 },
-      { label: 'Unterschenkel', x: 62, y: 80 },
-    ],
-    keywords: ['ischias', 'ischialgie', 'nerv', 'bein', 'rücken', 'gesäss', 'kribbeln', 'ziehen', 'ausstrahlung'],
+    explainHtml: `<h3>Was zeigt die Grafik?</h3>
+<p>Der Ischiasnerv beginnt an Nervenwurzeln im unteren Rücken und läuft über das Gesäss bis in den Fuss. Ausstrahlender Schmerz kann brennend, elektrisierend, ziehend oder einschiessend sein, auch Kribbeln und Taubheit kommen vor.</p>
+<div class="vv-box"><div class="vv-box-title">Typische Muster</div><ul>
+<li>nur unterer Rücken</li><li>Gesäss und Bein</li><li>zusätzlich Kribbeln oder Taubheit</li>
+</ul></div>
+<p>Nicht jeder Beinschmerz kommt vom Ischiasnerv. Auch Muskeln, Gelenke und Gefässe können ähnliche Beschwerden machen.</p>
+<div class="vv-flag">Rasch ärztlich abklären lassen: neue deutliche Schwäche im Bein, Störungen von Blase oder Darm oder Taubheit im Genital- und Gesässbereich.</div>`,
+    keywords: ['ischias', 'ischiasnerv', 'ischialgie', 'nerv', 'bein', 'rücken', 'gesäss', 'kribbeln', 'ziehen', 'ausstrahlung', 'ischiasschmerz'],
     relatedPage: '/beschwerden/ischias/',
-    related: ['bandscheibenvorfall-lws', 'bandscheibenvorfall-hws'],
+    related: ['bandscheibenvorfall-lws'],
+  },
+  {
+    // LIVE 09/2026 — freigegebenes Asset /images/nacken.png (1024x1536).
+    slug: 'nacken-ausstrahlung',
+    title: 'Nacken: Ausstrahlung in Kopf, Schulter und Arm',
+    category: 'Nacken',
+    subtitle: 'Beschwerden aus dem Nacken können lokal bleiben oder ausstrahlen.',
+    status: 'live',
+    imageNormal: { src: '/images/nacken.png', width: 1024, height: 1536 },
+    imageAlt: 'Illustration von Halswirbelsäule, Nerven und möglichen Ausstrahlungsbereichen vom Nacken zu Kopf, Schulter, Arm und Hand.',
+    labelNormal: 'Nacken & Ausstrahlungswege',
+    hotspots: [
+      { id: 'hws', label: 'Halswirbelsäule', x: 34, y: 20, view: 'normal', labelSide: 'left', note: 'Zwischen den Halswirbeln treten die Nerven für Schulter, Arm und Hand aus.' },
+      { id: 'kopf', label: 'Richtung Kopf', x: 43, y: 10, view: 'normal', labelSide: 'left', note: 'Verspannte Nackenmuskeln können Kopfschmerzen mit auslösen.' },
+      { id: 'schulter', label: 'Schulter', x: 52, y: 31, view: 'normal', labelSide: 'left', note: 'Häufige Zone für muskuläre Verspannung und Druckempfindlichkeit.' },
+      { id: 'arm', label: 'Arm & Hand', x: 63, y: 62, view: 'normal', labelSide: 'left', note: 'Kribbeln oder Taubheit bis in die Hand spricht eher für eine Nervenbeteiligung.' },
+    ],
+    explainHtml: `<h3>Was zeigt die Grafik?</h3>
+<p>Nackenbeschwerden können lokal bleiben oder in Kopf, Schulter, Schulterblatt, Arm und Hand ausstrahlen. Die Grafik zeigt die Nervenwege, über die das passieren kann.</p>
+<div class="vv-box"><div class="vv-box-title">Zwei Muster als Orientierung</div><ul>
+<li><strong>Eher Muskel:</strong> lokale Verspannung, Steifheit, Schmerz bei Bewegung, druckempfindliche Muskeln</li>
+<li><strong>Eher Nerv:</strong> Kribbeln, Taubheit, elektrisierendes oder einschiessendes Gefühl, eventuell Schwäche</li>
+</ul></div>
+<p>Diese Unterscheidung ist nur eine Orientierung und keine Diagnose.</p>
+<div class="vv-flag">Zunehmende Schwäche in Arm oder Hand, bleibende Taubheit oder Beschwerden nach einem Unfall gehören ärztlich untersucht, oft mit einer <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>.</div>`,
+    keywords: ['nacken', 'hws', 'ausstrahlung', 'arm', 'kribbeln arm', 'schulter', 'nackenschmerz', 'kopfschmerzen', 'nerv'],
+    relatedPage: '/beschwerden/nackenschmerzen/',
+    related: ['bandscheibenvorfall-hws'],
   },
   {
     slug: 'nacken-blockade',
@@ -261,14 +295,32 @@ export const visuals: Visual[] = [
     keywords: ['ellenbogen', 'arm', 'sehne', 'tennisarm', 'greifen', 'epicondylitis'],
     relatedPage: '/beschwerden/tennisarm/',
   },
+  // LIVE 09/2026 — freigegebenes Asset /images/karpaltunnel.png (512x1024).
   {
     slug: 'karpaltunnel',
-    title: 'Karpaltunnel',
+    title: 'Karpaltunnel: Welche Finger sind betroffen?',
     category: 'Arm & Hand',
-    subtitle: 'Im Handgelenk kann ein Nerv eingeengt werden.',
-    status: 'draft',
-    keywords: ['hand', 'finger', 'kribbeln', 'taub', 'medianus', 'nerv', 'handgelenk', 'nachts'],
+    subtitle: 'Ein Nerv im Handgelenk versorgt Daumen bis Mittelfinger.',
+    status: 'live',
+    imageNormal: { src: '/images/karpaltunnel.png', width: 512, height: 1024 },
+    imageAlt: 'Illustration des Medianusnervs im Handgelenk mit typischem Gefühlsbereich an Daumen, Zeige- und Mittelfinger, mit Querschnitt durch den Karpaltunnel.',
+    labelNormal: 'Medianusnerv & Gefühlsbereich',
+    hotspots: [
+      { id: 'gefuehl', label: 'Gefühlsbereich', x: 38, y: 18, view: 'normal', note: 'Blau: Hier spürt man Kribbeln oder Taubheit am häufigsten. Der Kleinfinger gehört meist nicht dazu.' },
+      { id: 'nerv', label: 'Medianusnerv', x: 47, y: 42, view: 'normal', labelSide: 'left', note: 'Dieser Nerv versorgt Daumen, Zeigefinger und Mittelfinger.' },
+      { id: 'tunnel', label: 'Karpaltunnel', x: 46, y: 51, view: 'normal', note: 'Unter diesem Band im Handgelenk kann der Nerv eingeengt werden.' },
+      { id: 'querschnitt', label: 'Querschnitt', x: 67, y: 74, view: 'normal', labelSide: 'left', note: 'Blick in den Tunnel: viele Sehnen und ein Nerv auf engem Raum.' },
+    ],
+    explainHtml: `<h3>Was zeigt die Grafik?</h3>
+<p>Der Medianusnerv läuft durch den Karpaltunnel im Handgelenk. Der blaue Bereich zeigt, wo man Kribbeln oder Taubheit typischerweise spürt.</p>
+<div class="vv-box"><div class="vv-box-title">Welche Finger sind betroffen?</div><ul>
+<li>Daumen</li><li>Zeigefinger</li><li>Mittelfinger</li><li>Ringfinger teilweise</li><li>Kleinfinger eher untypisch</li>
+</ul></div>
+<p>Kribbeln und Taubheit sind nachts oft stärker. Aber: Nicht jede eingeschlafene Hand ist ein Karpaltunnelsyndrom, und die Fingerverteilung allein ist keine Diagnose.</p>
+<div class="vv-flag">Anhaltende Taubheit, Schwäche oder nachlassende Griffkraft gehören ärztlich untersucht, oft mit einer <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>.</div>`,
+    keywords: ['hand', 'finger', 'kribbeln', 'taub', 'medianus', 'eingeschlafene finger', 'hand taub', 'karpaltunnel', 'nerv', 'handgelenk', 'nachts'],
     relatedPage: '/beschwerden/karpaltunnelsyndrom/',
+    related: ['bandscheibenvorfall-hws'],
   },
   {
     slug: 'kniearthrose',

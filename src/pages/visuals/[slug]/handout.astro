@@ -26,9 +26,9 @@ function capStyle(img: typeof v.imageNormal): string | undefined {
   return mm < 85 ? `max-width:${mm}mm;margin:0 auto` : undefined;
 }
 const panels = [
-  { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: `${v.title}: vereinfachte Darstellung, normaler Zustand` },
+  { key: 'normal', chip: v.labelNormal ?? 'Normal', img: v.imageNormal, alt: v.imageAlt ?? `${v.title}: vereinfachte Darstellung, normaler Zustand` },
   { key: 'problem', chip: v.labelProblem ?? v.title, img: v.imageProblem, alt: `${v.title}: vereinfachte Darstellung der Veränderung` },
-];
+].filter((p) => !!p.img);
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -62,7 +62,7 @@ const panels = [
         </div>
       </header>
 
-      <section class="ho-compare">
+      <section class:list={['ho-compare', { 'ho-compare--single': panels.length === 1 }]}>
         {panels.map((p) => (
           <figure class="ho-panel">
             <figcaption class:list={['ho-chip', { 'ho-chip--problem': p.key === 'problem' }]}>{p.chip}</figcaption>
@@ -82,6 +82,14 @@ const panels = [
             </div>
           </figure>
         ))}
+        {panels.length === 1 && markers.some((h) => h.note) && (
+          <div class="ho-points">
+            <h2>Das Wichtigste in Kürze</h2>
+            <ul>
+              {markers.filter((h) => h.note).map((h) => <li><strong>{h.label}:</strong> {h.note}</li>)}
+            </ul>
+          </div>
+        )}
       </section>
 
       <section class="ho-bottom">
@@ -216,6 +224,11 @@ const panels = [
         grid-template-columns: 1fr 1fr;
         gap: 8mm;
       }
+      .ho-compare--single { grid-template-columns: minmax(0, 96mm) 1fr; align-items: start; }
+      .ho-points { margin: 4mm 0 0; }
+      .ho-points h2 { font-size: 12pt; margin: 0 0 3mm; }
+      .ho-points ul { margin: 0; padding-left: 5mm; font-size: 9.5pt; line-height: 1.5; color: #444; }
+      .ho-points li { margin: 0 0 2mm; }
       .ho-panel { margin: 0; }
       .ho-chip {
         display: inline-block;

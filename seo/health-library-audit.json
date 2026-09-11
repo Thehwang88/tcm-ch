@@ -1,7 +1,7 @@
 {
   "generated": "2026-09-11",
   "totals": {
-    "healthPages": 279,
+    "healthPages": 285,
     "byType": {
       "hub": 6,
       "condition": 106,
@@ -10,7 +10,7 @@
       "editorial": 71,
       "body_signal": 51,
       "therapy": 31,
-      "visual": 4
+      "visual": 10
     }
   },
   "orphans": [],
@@ -116,7 +116,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 14,
-      "outboundHealthLinks": 22
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/blaehungen/",
@@ -456,7 +456,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 35,
-      "outboundHealthLinks": 25
+      "outboundHealthLinks": 26
     },
     {
       "url": "/beschwerden/isg-blockade/",
@@ -486,7 +486,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 23
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/kieferschmerzen/",
@@ -626,7 +626,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 161,
-      "outboundHealthLinks": 25
+      "outboundHealthLinks": 26
     },
     {
       "url": "/beschwerden/nervenschmerzen/",
@@ -1126,7 +1126,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 21,
-      "outboundHealthLinks": 30
+      "outboundHealthLinks": 31
     },
     {
       "url": "/gesundheitsbibliothek/koerper/huefte-bein-fuss/",
@@ -1156,7 +1156,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 21,
-      "outboundHealthLinks": 29
+      "outboundHealthLinks": 30
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schlaf-nervensystem/",
@@ -1176,7 +1176,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 29,
-      "outboundHealthLinks": 33
+      "outboundHealthLinks": 35
     },
     {
       "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
@@ -1566,7 +1566,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/augenflimmern/",
@@ -1606,7 +1606,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 20,
-      "outboundHealthLinks": 13
+      "outboundHealthLinks": 14
     },
     {
       "url": "/koerpersignale/bitterer-geschmack-morgens/",
@@ -1706,7 +1706,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 17,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/haeufiger-harndrang-nachts/",
@@ -1846,7 +1846,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 14
+      "outboundHealthLinks": 15
     },
     {
       "url": "/koerpersignale/magendruck-im-liegen/",
@@ -1886,7 +1886,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/ohr-einseitig-verstopft/",
@@ -2395,8 +2395,8 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 2
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/visuals/bandscheibenvorfall-hws/",
@@ -2405,8 +2405,8 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 1
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 2
     },
     {
       "url": "/visuals/bandscheibenvorfall-hws/handout/",
@@ -2425,13 +2425,73 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 1
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 2
     },
     {
       "url": "/visuals/bandscheibenvorfall-lws/handout/",
       "type": "visual",
       "title": "Bandscheibenvorfall LWS — Patienten-Handout | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "",
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/ischias/",
+      "type": "visual",
+      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/ischias/handout/",
+      "type": "visual",
+      "title": "Ischias: Wo strahlt der Schmerz ins Bein aus? — Patienten-Handout | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "",
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/karpaltunnel/",
+      "type": "visual",
+      "title": "Karpaltunnel: Welche Finger sind betroffen? — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/karpaltunnel/handout/",
+      "type": "visual",
+      "title": "Karpaltunnel: Welche Finger sind betroffen? — Patienten-Handout | TCM.ch",
+      "indexable": false,
+      "canonicalTo": "",
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/nacken-ausstrahlung/",
+      "type": "visual",
+      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm — Visual Library | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 1
+    },
+    {
+      "url": "/visuals/nacken-ausstrahlung/handout/",
+      "type": "visual",
+      "title": "Nacken: Ausstrahlung in Kopf, Schulter und Arm — Patienten-Handout | TCM.ch",
       "indexable": false,
       "canonicalTo": "",
       "inSitemap": false,
