@@ -47,11 +47,11 @@ const schema = [
 <LayoutDe title={title} description={r.metaDesc} path={path} schema={schema}>
   <section class="hero">
     <div class="wrap narrow">
-      <nav class="crumbs" aria-label="Breadcrumb">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
         <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
         <span aria-hidden="true">›</span>
         <span class="crumb-here">{r.title}</span>
-      </nav>
+      </div>
       <div class="cat">Körperregion</div>
       <h1>{r.title}</h1>
       <p class="lead">{r.lead}</p>

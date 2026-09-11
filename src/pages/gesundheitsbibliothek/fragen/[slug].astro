@@ -63,11 +63,11 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
   <article>
     <section class="hero">
       <div class="wrap narrow">
-        <nav class="crumbs" aria-label="Breadcrumb">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
           <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
           <span aria-hidden="true">›</span>
           <a href="/gesundheitsbibliothek/fragen/">Fragen</a>
-        </nav>
+        </div>
         <div class="cat">{hub ? 'Fragen-Kategorie' : 'Patientenfrage'}</div>
         <h1>{h1}</h1>
         <p class="lead">{hub ? hub.lead : ''}</p>

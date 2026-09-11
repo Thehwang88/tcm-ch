@@ -69,9 +69,9 @@ const schema = [medicalLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
   <section class="hero">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
         <a href="/ergebnisse/">Ergebnisse &amp; Transparenz</a> <span>/</span> <span>{r.condition}</span>
-      </nav>
+      </div>
       <div class="eyebrow">TCM.ch · Ergebnisbericht</div>
       <h1>{r.title}</h1>
       {isDraft && !r.sampleNotice && (
