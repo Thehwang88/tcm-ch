@@ -2,10 +2,10 @@
 // Hero for the St. Gallen standort page only. Uses existing brand tokens
 // (green = --blue, green-deep = --blue-dark, ink = --charcoal). Renders via
 // SpaPage's <slot/>, above the (hero-stripped) standort body. One primary CTA
-// (#online-buchen → OneDoc-Sektion) + WhatsApp als sekundärer Pfad; das frühere
-// Hero-Leadformular (quelle=launch-hero-sg) wurde entfernt — Lead-Capture läuft
-// über das eine Kontaktformular weiter unten (sg-kontakt-bottom). Der Submit-
-// Handler unten bleibt als no-op stehen, damit kein Tracking-Code gelöscht wird.
+// Primär "30 Min. gratis" (#offer-form, kompakte Sektion direkt unter dem Hero),
+// sekundär #online-buchen → OneDoc. Das Hero-Leadformular (quelle=launch-hero-sg,
+// form[data-sg-hero-form]) ist unverändert das frühere Original inkl. Submit-Handler
+// unten; das Kontaktformular am Seitenende (sg-kontakt-bottom) bleibt davon getrennt.
 const { sitekey } = Astro.props;
 ---
 <section class="hlsg">
@@ -20,12 +20,41 @@ const { sitekey } = Astro.props;
         <div><span class="hlsg-check">✓</span> Kurzfristige Termine verfügbar</div>
       </div>
       <div class="hlsg-cta-row">
-        <a href="#online-buchen" class="hlsg-btn-primary">Termin online buchen</a>
-        <a href="#kontakt" class="hlsg-btn-ghost">Gratis anfragen</a>
+        <a href="#offer-form" class="hlsg-btn-primary">30 Min. gratis Termin anfragen</a>
+        <a href="#online-buchen" class="hlsg-btn-ghost">Termin online buchen</a>
       </div>
+      <p class="hlsg-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
       <p style="margin-top:12px;font-size:14px;font-weight:600;color:var(--mid)">Erster Termin für Neupatient:innen kostenlos.</p>
       <p style="margin-top:8px;font-size:14px;font-weight:600;color:var(--mid)"><b style="color:var(--charcoal)">Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
+  </div>
+</section>
+
+<section class="hlsg-offer-sec">
+  <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
+    <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Dein erster Termin ist <span class="hlsg-free">gratis</span></div>
+    <p class="hlsg-offer-note" style="margin-bottom:14px">30 Minuten, kostenlos, für Neupatient:innen in St. Gallen.</p>
+    <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
+      <div><span class="hlsg-check">✓</span> TCM-Check &amp; ausführliches Erstgespräch</div>
+      <div><span class="hlsg-check">✓</span> Diagnostik durch anerkannte Therapeut:innen</div>
+      <div><span class="hlsg-check">✓</span> Erste Akupunktur noch in derselben Sitzung</div>
+      <div><span class="hlsg-check">✓</span> Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</div>
+    </div>
+    <form class="hlsg-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form novalidate>
+      <input type="hidden" name="quelle" value="launch-hero-sg">
+      <input type="hidden" name="standort" value="St. Gallen">
+      <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
+      <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
+      <input type="email" name="email" placeholder="E-Mail (optional)" aria-label="E-Mail" autocomplete="email" inputmode="email">
+      <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
+      <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
+      <input type="hidden" name="Angebot" value="GRATIS 30 Min Erstbehandlung (Hero St. Gallen)">
+      <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
+      <input type="hidden" name="Seite" value="/standort/st-gallen">
+      <button type="submit">Gratis Erstgespräch anfragen</button>
+      <p class="hlsg-form-rule">Unverbindlich. Bestätigung per WhatsApp oder Telefon.</p>
+      <p class="hlsg-form-err" role="alert" hidden></p>
+    </form>
   </div>
 </section>
 
@@ -67,6 +96,12 @@ const { sitekey } = Astro.props;
   .hlsg-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .hlsg-trust div { display: flex; align-items: center; gap: 7px; }
   .hlsg-check { color: var(--blue); font-weight: 800; }
+
+  .hlsg-tert { margin-top: 14px; font-size: 14px; color: var(--mid); }
+  .hlsg-tert a { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
+
+  .hlsg-offer-sec { background: var(--surface); font-family: var(--font-sans); padding: 0 var(--pad-x) clamp(32px, 5vw, 56px); }
+  .hlsg-offer-sec .hlsg-card { max-width: 520px; margin: 0 auto; }
 
   .hlsg-card {
     position: relative; overflow: hidden;
@@ -119,6 +154,7 @@ const { sitekey } = Astro.props;
   @media (max-width: 767px) {
     .hlsg { padding-top: 60px; }
     .hlsg-inner { padding-left: 16px; padding-right: 16px; }
+    .hlsg-offer-sec { padding-left: 16px; padding-right: 16px; }
     .hlsg-card { padding: 18px; }
     .hlsg-card, .hlsg-card * { max-width: 100%; }
     .hlsg-ts { max-width: 100%; overflow-x: auto; }
