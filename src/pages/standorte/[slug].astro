@@ -67,6 +67,11 @@ const ksBlock = ksLinksHtml(
   'Schwindel beim Umdrehen, Puls im Ohr, taube Finger: medizinisch eingeordnet, ohne Panikmache.',
 );
 
+// Integrierter Physio+TCM-Hinweis nur an Standorten, deren therapien[] Physiotherapie
+// führt (Verfügbarkeits-Flag; kein Standort ohne Physio bekommt den Block).
+const physioDachBlock = migrated && migrated.therapien?.includes('physiotherapie')
+  ? `<section class="section" style="padding:36px 0;background:var(--bg)"><div class="wrap reveal"><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 24px;max-width:860px"><div style="font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:6px">TCM und Physiotherapie unter einem Dach</div><p style="font-size:15px;color:var(--mid);line-height:1.6;margin:0">An diesem Standort sind TCM-Methoden und <a href="/therapien/physiotherapie/" style="color:var(--blue);font-weight:700;text-decoration:none">Physiotherapie</a> verfügbar; je nach Beschwerdebild können sich beide sinnvoll ergänzen, mit einem abgestimmten Plan. Wichtig zur Abrechnung: Physiotherapie läuft mit ärztlicher Verordnung über die Grundversicherung, TCM-Methoden über die Zusatzversicherung. Die Physio-Verfügbarkeit hängt vom Therapieplan der Fachpersonen ab, frag bei der Terminanfrage kurz nach.</p></div></div></section>`
+  : '';
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 
@@ -256,6 +261,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
             <Team data={data} />
             <Beschwerden data={data} />
             <Therapien data={data} />
+            {physioDachBlock && <Fragment set:html={physioDachBlock} />}
             {data.ablaufBlock && <Ablauf />}
             {data.reviews && <Reviews data={data} />}
             <KrankenkassenTeam data={data} />
@@ -267,6 +273,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
             <IntroNap data={data} />
             {data.extraBlock && <Fragment set:html={data.extraBlock} />}
             <Therapien data={data} />
+            {physioDachBlock && <Fragment set:html={physioDachBlock} />}
             <Kraeuter />
             <Beschwerden data={data} />
             {data.ablaufBlock && <Ablauf />}
