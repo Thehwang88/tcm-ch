@@ -270,7 +270,12 @@ const CATEGORIES = [
 </script>
 
 <style>
-  .wrap.narrow { max-width: 860px; }
+  /* Breiter Bibliothek-Container (Desktop-Plattform-Gefühl); Textmasse bleiben
+     schmal: Hero ~720px, Suche ~940px, Karten nutzen die volle Breite. */
+  .wrap.narrow { max-width: 1140px; }
+  .hero h1, .hero .lead { max-width: 720px; }
+  .lib-search { max-width: 940px; }
+  .group-sub { max-width: 680px; }
   .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
   h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
   .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
@@ -290,7 +295,7 @@ const CATEGORIES = [
   .ls-results :global(.ls-empty) { padding: 14px 12px; font-size: 14.5px; color: var(--mid); }
   .ls-results :global(.ls-empty a) { color: var(--blue); font-weight: 600; }
 
-  .cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
+  .cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
   .cat-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
   .cat-title { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0; }
   .cat-text { font-size: 15px; line-height: 1.55; color: var(--mid); margin: 0; }
@@ -311,7 +316,7 @@ const CATEGORIES = [
   .region-meta { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
 
   .diag { margin: 48px 0 0; }
-  .diag-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .diag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .diag-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 18px; }
   a.diag-card--link { display: block; text-decoration: none; transition: border-color var(--t-fast) ease; }
   a.diag-card--link:hover { border-color: var(--blue); }
@@ -327,6 +332,10 @@ const CATEGORIES = [
   .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
   .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
 
+  @media (max-width: 1023px) {
+    .cats { grid-template-columns: repeat(2, 1fr); }
+    .diag-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 760px) {
     .cats { grid-template-columns: 1fr; }
     .region-grid { grid-template-columns: repeat(2, 1fr); }
