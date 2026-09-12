@@ -18,6 +18,8 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/
 - https://tcm.ch/gesundheitsbibliothek/fragen/erster-termin/
 - https://tcm.ch/gesundheitsbibliothek/fragen/nach-der-behandlung/

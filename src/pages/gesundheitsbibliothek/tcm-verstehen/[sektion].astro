@@ -1,0 +1,143 @@
+---
+// Sektions-Hubs von "TCM verstehen" (Grundlagen, Muster, Meridiane & Punkte,
+// Diagnostik, Methoden). Struktur-Welle: Sektionen ohne eigene Leaf-Inhalte sind
+// noindex,follow (gleiche Konvention wie Visuals); indexable wird pro Sektion in
+// tcm-verstehen.ts umgeschaltet, sobald echte Inhalte existieren. Geplante Themen
+// werden bewusst NUR als Text gezeigt, nie als Links auf nicht existierende URLs.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { tcmSections } from '../../../data/tcm-verstehen';
+import type { TcmSection } from '../../../data/tcm-verstehen';
+
+export function getStaticPaths() {
+  return tcmSections.map((s) => ({ params: { sektion: s.slug }, props: { s } }));
+}
+
+interface Props { s: TcmSection }
+const { s } = Astro.props;
+const path = `/gesundheitsbibliothek/tcm-verstehen/${s.slug}`;
+const url = `https://tcm.ch${path}/`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${s.title} | TCM.ch`, description: s.metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'TCM verstehen', item: 'https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/' },
+      { '@type': 'ListItem', position: 4, name: s.h1, item: url },
+    ],
+  },
+];
+
+const otherSections = tcmSections.filter((x) => x.slug !== s.slug);
+---
+<LayoutDe title={`${s.title} | TCM.ch`} description={s.metaDesc} path={path} schema={schema} noindex={!s.indexable} robots={s.indexable ? undefined : 'noindex, follow'}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <a href="/gesundheitsbibliothek/tcm-verstehen/">TCM verstehen</a>
+      </div>
+      <div class="cat">TCM verstehen</div>
+      <h1>{s.h1}</h1>
+      <p class="lead">{s.lead}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <div class="kb-body" set:html={s.introHtml} />
+
+      {s.modellHinweis && (
+        <div class="einordnung">
+          <div class="ein-label">Traditionelles Modell, keine Diagnose</div>
+          <p>Die Begriffe in dieser Sektion beschreiben Einordnungsmodelle der Traditionellen Chinesischen Medizin. Sie sind keine schulmedizinischen Diagnosen und ersetzen keine ärztliche Abklärung. Bei Warnzeichen gilt: zuerst zur Ärztin, siehe <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">Wann sollte ich zuerst zum Arzt?</a></p>
+        </div>
+      )}
+
+      {s.vorhandene.length > 0 && (
+        <div class="block">
+          <h2 class="group-title">{s.indexable ? 'Alle Seiten dieser Sektion' : 'Passende bestehende Inhalte'}</h2>
+          <div class="rel-grid">
+            {s.vorhandene.map((l) => (
+              <a class="rel-card" href={l.href}>
+                <div class="rel-cat">{l.cat}</div>
+                <div class="rel-title">{l.label}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {s.geplant.length > 0 && (
+        <div class="block">
+          <h2 class="group-title">In Vorbereitung</h2>
+          <p class="group-sub">Diese Themen sind für den Ausbau dieser Sektion vorgesehen und erscheinen nach redaktioneller Prüfung als eigene Seiten.</p>
+          <div class="plan-list">
+            {s.geplant.map((g) => <span class="plan-chip">{g}</span>)}
+          </div>
+        </div>
+      )}
+
+      <div class="block">
+        <div class="rel-label">Weitere Bereiche</div>
+        <div class="mr-links">
+          {otherSections.map((x) => (
+            <a class="mr-chip" href={`/gesundheitsbibliothek/tcm-verstehen/${x.slug}/`}>{x.nav}</a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 16px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .kb-body :global(p) { font-size: 17px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+
+  .einordnung { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 20px 22px; margin: 8px 0 0; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .einordnung p { font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0; }
+  .einordnung a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .einordnung a:hover { text-decoration: underline; }
+
+  .block { margin-top: 40px; }
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 12px; }
+  .group-sub { font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 14px; max-width: 680px; }
+
+  .rel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .rel-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .rel-card:hover { border-color: var(--blue); }
+  .rel-cat { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .rel-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  .plan-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .plan-chip { border: 1px dashed var(--border); border-radius: 999px; padding: 7px 14px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 640px) {
+    .rel-grid { grid-template-columns: 1fr; }
+  }
+</style>

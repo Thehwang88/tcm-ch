@@ -23,6 +23,7 @@ export type LibraryEntityType =
 import { koerpersignale } from './koerpersignale';
 import { visuals, type VisualCategory } from './visuals';
 import { fragenHubs, fragen as fragenList } from './fragen';
+import { tcmSections } from './tcm-verstehen';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -386,6 +387,12 @@ const SYNONYMS: Record<string, string> = {
   '/wissen/heizungsluft-trockene-schleimhaeute/': 'Heizungsluft trockene Nase trockene Augen spröde Lippen Luftfeuchtigkeit',
   '/wissen/erkaeltung-im-anflug/': 'Erkältung beginnt Halskratzen Frösteln grippaler Infekt',
   '/wissen/erkaeltung-grippe-allergie/': 'Grippe Influenza Allergie Unterschied Schnupfen',
+  '/gesundheitsbibliothek/tcm-verstehen/': 'TCM Begriffe chinesische Medizin Lexikon Qi Yin Yang',
+  '/gesundheitsbibliothek/tcm-verstehen/grundlagen/': 'Qi Yin Yang Fünf Elemente Organuhr TCM Ernährung Jing Shen',
+  '/gesundheitsbibliothek/tcm-verstehen/muster/': 'Qi-Stagnation Qi-Mangel Leber-Qi Milz-Qi Yin-Mangel Yang-Mangel Syndrom',
+  '/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/': 'Meridian Meridiane Akupunkturpunkte Akupressurpunkte Leitbahnen Lungenmeridian Hegu Neiguan',
+  '/gesundheitsbibliothek/tcm-verstehen/diagnostik/': 'Zungendiagnose Pulsdiagnose Zungenbelag Anamnese TCM Diagnose',
+  '/gesundheitsbibliothek/tcm-verstehen/methoden/': 'Moxa Gua Sha Schröpfen Akupressur Ohrakupunktur Kräuter Methoden Überblick',
   '/gesundheitsbibliothek/koerper/becken-blase/': 'Urologie Blase Unterleib Beckenboden',
   '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/': 'NLG ENG Nervenmessung Nervenleitgeschwindigkeit Elektroneurografie EMG',
   '/gesundheitsbibliothek/koerper/bauch-verdauung/': 'Magen Darm Verdauung',
@@ -453,6 +460,12 @@ export function buildSearchIndex(): SearchEntry[] {
   }
   for (const f of fragenList) {
     entries.push({ t: f.question, u: `/gesundheitsbibliothek/fragen/${f.slug}/`, g: 'Fragen' });
+  }
+  // TCM verstehen: Haupt-Hub + Sektions-Hubs (noindex-Sektionen sind wie Visuals
+  // suchbar und verlinkbar, nur kein SEO-Ziel). Keine Einträge für ungebaute Leaves.
+  entries.push({ t: 'TCM verstehen', u: '/gesundheitsbibliothek/tcm-verstehen/', g: 'TCM verstehen' });
+  for (const ts of tcmSections) {
+    entries.push({ t: ts.nav, u: `/gesundheitsbibliothek/tcm-verstehen/${ts.slug}/`, g: 'TCM verstehen', k: ts.geplant.join(' ').slice(0, 200) });
   }
   // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
   const RATGEBER: Array<{ t: string; u: string }> = [

@@ -211,6 +211,37 @@ health-audit classify() um Typ 'question' erweitert. Sitzungszahlen an
 therapien/akupunktur angeglichen (4-6 akut / 8-12 chronisch).
 Sitemap 379 -> 392. Queue +13 (gleicher Commit). Audit 0/0/0.
 
+## Welle 11 (12.09.2026) — Architektur "TCM verstehen" (NUR Struktur, keine Leaves)
+
+Neue Wissens-Säule /gesundheitsbibliothek/tcm-verstehen/ mit 5 Sektionen
+(grundlagen, muster, meridiane-punkte, diagnostik, methoden). Semrush-CH-Nachfrage
+(Gua Sha/Schröpfen ~3600, Akupressur/Moxibustion ~880, Organuhr 320, Meridiane etc.)
+begründet die Säule; Leaf-Inhalte folgen datengetrieben in späteren Wellen.
+
+Indexierung: NUR Haupt-Hub + methoden/ indexierbar (bündeln echte Inhalte).
+grundlagen/, muster/, meridiane-punkte/, diagnostik/ sind noindex,follow bis
+eigene Leaves existieren (indexable-Flag in tcm-verstehen.ts). Geplante Themen
+erscheinen als reine Text-Chips, nie als Links. Sitemap 392 -> 394, Queue +2.
+
+Datenmodell: src/data/tcm-verstehen.ts mit TcmSection[] + vorbereitetem
+TcmEntity-Typ ('tcm-concept'|'tcm-pattern'|'meridian'|'acupuncture-point'|
+'tcm-diagnostic', Beziehungen als Slug-Listen im Stil des bestehenden Graphen;
+tcmEntities=[] bis zur ersten Inhalts-Welle). Templates: index.astro +
+[sektion].astro (kb-body-Konvention, Einordnungs-Block "Traditionelles Modell,
+keine Diagnose" für muster/diagnostik).
+
+Mapping bestehender Inhalte (keine URL-Änderungen, keine Duplikate): methoden/
+bündelt 8 Therapie-Seiten + 4 Wissen-Artikel + Fragen-Hub schroepfen-methoden;
+diagnostik/ verweist auf fragen/was-passiert-beim-ersten-termin (Puls/Zunge) und
+grenzt explizit zu /gesundheitsbibliothek/#diagnostik (schulmedizinisch) ab.
+
+Integration: Bibliothek-Hub neue Kategorie-Karte (zwischen Therapien und
+Untersuchungen), Suchgruppe "TCM verstehen" + SYNONYMS (Qi, Yin Yang, Meridian,
+Akupunkturpunkte, Zungendiagnose, Pulsdiagnose, Organuhr, Moxa ...), Homepage:
+glb-Karte "Untersuchungen" (Anker-Link) durch "TCM verstehen" ersetzt (Grid
+bleibt 6 Karten). Keine Aufnahme in die Hauptnavigation. CLAUDE.md-Voice-Regel
+um scoped Ausnahme für diese Säule ergänzt. KEINE Leaf-Content-Welle erstellt.
+
 ## TODO vor jeder Konsolidierung der HIGH-Overlaps (Cleanup Welle 5 erledigt die Intent-Schärfung; Canonical/Redirect weiterhin NUR mit weiteren GSC-Daten)
 
 Erst GSC-Query-/Klick-/Impressionen-Vergleich, dann entscheiden:

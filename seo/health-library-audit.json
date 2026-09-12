@@ -1,13 +1,14 @@
 {
-  "generated": "2026-09-11",
+  "generated": "2026-09-12",
   "totals": {
-    "healthPages": 305,
+    "healthPages": 311,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "question": 13,
       "body_region": 9,
+      "tcm_hub": 6,
       "editorial": 76,
       "body_signal": 53,
       "therapy": 31,
@@ -1096,8 +1097,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 156,
-      "outboundHealthLinks": 37
+      "inboundContentLinks": 162,
+      "outboundHealthLinks": 41
     },
     {
       "url": "/gesundheitsbibliothek/fragen/",
@@ -1106,7 +1107,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 17
     },
     {
@@ -1146,7 +1147,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 9
     },
     {
@@ -1186,7 +1187,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 12
     },
     {
@@ -1216,7 +1217,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 7
     },
     {
@@ -1226,7 +1227,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 7
     },
     {
@@ -1318,6 +1319,66 @@
       "inSitemap": true,
       "inboundContentLinks": 21,
       "outboundHealthLinks": 28
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/",
+      "type": "tcm_hub",
+      "title": "TCM verstehen: Begriffe, Methoden &amp; Diagnosemodelle | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 15
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/",
+      "type": "tcm_hub",
+      "title": "Diagnostik in der TCM | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/",
+      "type": "tcm_hub",
+      "title": "TCM-Grundlagen &amp; Begriffe | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/",
+      "type": "tcm_hub",
+      "title": "Meridiane &amp; Akupunkturpunkte | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/methoden/",
+      "type": "tcm_hub",
+      "title": "TCM-Methoden erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/",
+      "type": "tcm_hub",
+      "title": "TCM-Muster &amp; Syndrome | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/haut/",
@@ -1686,7 +1747,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 148,
+      "inboundContentLinks": 149,
       "outboundHealthLinks": 54
     },
     {
@@ -2226,7 +2287,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 131,
+      "inboundContentLinks": 132,
       "outboundHealthLinks": 17
     },
     {
@@ -2236,7 +2297,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 5
     },
     {
@@ -2246,7 +2307,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 205,
+      "inboundContentLinks": 208,
       "outboundHealthLinks": 8
     },
     {
@@ -2306,7 +2367,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 28,
       "outboundHealthLinks": 7
     },
     {
@@ -2336,7 +2397,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 102,
+      "inboundContentLinks": 104,
       "outboundHealthLinks": 4
     },
     {
@@ -2446,7 +2507,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 54,
+      "inboundContentLinks": 56,
       "outboundHealthLinks": 8
     },
     {
@@ -2456,7 +2517,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 9
     },
     {
@@ -2496,7 +2557,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 62,
+      "inboundContentLinks": 64,
       "outboundHealthLinks": 11
     },
     {
@@ -2536,7 +2597,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 103,
+      "inboundContentLinks": 105,
       "outboundHealthLinks": 13
     },
     {
@@ -2786,7 +2847,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -2796,7 +2857,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -2806,7 +2867,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 13
     },
     {
@@ -2946,7 +3007,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 10
     },
     {
@@ -3066,7 +3127,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     }
   ]

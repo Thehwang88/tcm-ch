@@ -1,0 +1,128 @@
+---
+// Haupt-Hub der Säule "TCM verstehen": Orientierung über die 5 Sektionen + bestehende
+// Inhalte. Indexierbar, weil er heute schon echte Inhalte bündelt (Methoden, Fragen,
+// Wissen). Leaf-Inhalte der Sektionen folgen in späteren Wellen (tcm-verstehen.ts).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { tcmSections } from '../../../data/tcm-verstehen';
+
+const path = '/gesundheitsbibliothek/tcm-verstehen';
+const url = `https://tcm.ch${path}/`;
+const title = 'TCM verstehen: Begriffe, Methoden & Diagnosemodelle';
+const metaDesc = 'Begriffe, Meridiane, Diagnosemodelle und Methoden der Traditionellen Chinesischen Medizin verständlich erklärt: modern, ehrlich und ohne Esoterik.';
+
+const methoden = tcmSections.find((s) => s.slug === 'methoden')!;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'TCM verstehen', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">TCM verstehen</span>
+      </div>
+      <div class="cat">Wissens-Säule</div>
+      <h1>TCM verstehen</h1>
+      <p class="lead">Begriffe, Meridiane, Diagnosemodelle und Methoden der Traditionellen Chinesischen Medizin verständlich erklärt. Traditionelle Konzepte, moderner Blick: Wir erklären, was die Begriffe meinen, wie sie in der Praxis genutzt werden und wo die Grenze zur schulmedizinischen Diagnose verläuft.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <div class="hubs">
+        <h2 class="group-title">Die Bereiche</h2>
+        <p class="group-sub">Diese Säule wird schrittweise ausgebaut. Die Methoden sind bereits vollständig erklärt; Begriffe, Muster, Meridiane und Diagnostik folgen als eigene Seiten.</p>
+        <div class="hub-grid">
+          {tcmSections.map((s) => (
+            <a class="hub-card" href={`/gesundheitsbibliothek/tcm-verstehen/${s.slug}/`}>
+              <div class="hub-name">{s.nav}</div>
+              <p class="hub-text">{s.lead}</p>
+              <span class="hub-more">{s.indexable ? `${s.vorhandene.length} Seiten →` : 'Im Aufbau →'}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="featured">
+        <h2 class="group-title">Bereits ausführlich erklärt</h2>
+        <p class="group-sub">Der praktischste Einstieg sind die Methoden: Jede hat eine eigene Seite mit Wirkung, Ablauf, Grenzen und Kostenübernahme.</p>
+        <div class="mr-links">
+          {methoden.vorhandene.filter((l) => l.cat === 'Therapie').map((l) => (
+            <a class="mr-chip" href={l.href}>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="einordnung">
+        <div class="ein-label">Einordnung</div>
+        <p>Qi, Meridiane oder die Organuhr sind traditionelle Erklärungsmodelle der chinesischen Medizin, keine anatomischen oder biomedizinischen Fakten. Wir erklären beides: was die Tradition meint und was die heutige Medizin dazu sagt. TCM-Einschätzungen ersetzen keine ärztliche Diagnose; bei Warnzeichen gehört die Abklärung zuerst in ärztliche Hand.</p>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-card-title">Lieber direkt ausprobieren statt nachlesen?</div>
+        <p>Im Erstgespräch erklären dir unsere Therapeutinnen und Therapeuten, was sie tun und warum. 14 Praxen in der Deutschschweiz, EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+          <a class="btn btn--ghost" href="/gesundheitsbibliothek/fragen/">Häufige Fragen ansehen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.55; color: var(--mid); max-width: 720px; }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; max-width: 680px; }
+
+  .hub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .hub-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .hub-card:hover { border-color: var(--blue); }
+  .hub-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .hub-text { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .hub-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .featured { margin: 44px 0 0; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  .einordnung { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 20px 22px; margin: 44px 0 0; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .einordnung p { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0; }
+
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 44px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 640px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
+</style>

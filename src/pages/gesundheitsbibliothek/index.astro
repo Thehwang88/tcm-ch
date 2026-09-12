@@ -100,6 +100,17 @@ const CATEGORIES = [
     ],
   },
   {
+    label: 'TCM verstehen',
+    href: '/gesundheitsbibliothek/tcm-verstehen/',
+    cta: 'TCM verstehen',
+    text: 'Qi, Meridiane, Akupunkturpunkte und traditionelle Diagnosemodelle verständlich erklärt: was die Begriffe meinen und wo die Grenze zur Diagnose verläuft.',
+    samples: [
+      { href: '/gesundheitsbibliothek/tcm-verstehen/methoden/', label: 'Methoden erklärt' },
+      { href: '/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/', label: 'Meridiane & Punkte' },
+      { href: '/gesundheitsbibliothek/tcm-verstehen/diagnostik/', label: 'Diagnostik in der TCM' },
+    ],
+  },
+  {
     label: 'Untersuchungen & Diagnostik',
     href: '#diagnostik',
     cta: 'Zur Übersicht',
@@ -231,7 +242,7 @@ const CATEGORIES = [
   const box = document.getElementById('lib-search-results');
   const norm = (s) => s.toLowerCase()
     .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
-  const GROUPS = ['Körpersignale', 'Beschwerden', 'Fragen', 'Ratgeber', 'Körperregionen', 'Therapien', 'Untersuchungen', 'Visuals'];
+  const GROUPS = ['Körpersignale', 'Beschwerden', 'Fragen', 'Ratgeber', 'Körperregionen', 'Therapien', 'TCM verstehen', 'Untersuchungen', 'Visuals'];
   const prepared = INDEX.map((e) => ({ ...e, n: norm(e.t + ' ' + (e.k || '')) }));
 
   function render(q) {

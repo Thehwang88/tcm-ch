@@ -31,6 +31,7 @@
 ## Voice & Copy
 - German Du-form throughout
 - NEVER use Qi, Yin-Yang, Meridiane, spiritual/energetic language
+  - Exception (scoped): under /gesundheitsbibliothek/tcm-verstehen/ these terms may be EXPLAINED as traditional models (modern lens, explicit "kein anatomischer/biomedizinischer Fakt, keine Diagnose" framing). Never as marketing language elsewhere.
 - TCM positioning: medical, EMR/ASCA-anerkannt, Krankenkasse 80-100%
 - Tone: factual, premium, modern healthcare — not wellness
 - Avoid healing promises
