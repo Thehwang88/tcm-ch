@@ -5,11 +5,14 @@
 // Indexierung pro Beitrag via indexable-Flag; status 'mock' baut zwar (Layout-QA),
 // ist aber immer noindex und landet nie in Sitemap oder Suche.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
-import { perspektiven, TOPIC_LABELS } from '../../../data/perspektiven';
+import { perspektiven, publishedPerspektiven, TOPIC_LABELS } from '../../../data/perspektiven';
 import type { Perspektive } from '../../../data/perspektiven';
 
 export function getStaticPaths() {
-  return perspektiven.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+  // Produktions-Build erzeugt Routen NUR für publizierte Beiträge: Mocks existieren
+  // physisch nicht (noindex allein reicht nicht). Im Dev-Server bauen Mocks für Layout-QA.
+  const source = import.meta.env.DEV ? perspektiven : publishedPerspektiven;
+  return source.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 
 interface Props { p: Perspektive }
