@@ -24,6 +24,7 @@ import { koerpersignale } from './koerpersignale';
 import { visuals, type VisualCategory } from './visuals';
 import { fragenHubs, fragen as fragenList } from './fragen';
 import { tcmSections } from './tcm-verstehen';
+import { publishedPerspektiven } from './perspektiven';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -466,6 +467,10 @@ export function buildSearchIndex(): SearchEntry[] {
   entries.push({ t: 'TCM verstehen', u: '/gesundheitsbibliothek/tcm-verstehen/', g: 'TCM verstehen' });
   for (const ts of tcmSections) {
     entries.push({ t: ts.nav, u: `/gesundheitsbibliothek/tcm-verstehen/${ts.slug}/`, g: 'TCM verstehen', k: ts.geplant.join(' ').slice(0, 200) });
+  }
+  // Perspektiven: NUR publizierte Beiträge (Mocks erreichen die Suche nie).
+  for (const pe of publishedPerspektiven) {
+    entries.push({ t: pe.title, u: `/gesundheitsbibliothek/perspektiven/${pe.slug}/`, g: 'Perspektiven', k: pe.deck.slice(0, 160) });
   }
   // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
   const RATGEBER: Array<{ t: string; u: string }> = [

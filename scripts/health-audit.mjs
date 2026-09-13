@@ -23,6 +23,7 @@ function classify(url) {
   if (url.startsWith('/gesundheitsbibliothek/koerper/')) return 'body_region';
   if (url.startsWith('/gesundheitsbibliothek/fragen/')) return 'question';
   if (url.startsWith('/gesundheitsbibliothek/tcm-verstehen/')) return 'tcm_hub';
+  if (url.startsWith('/gesundheitsbibliothek/perspektiven/')) return 'perspective';
   if (url === '/koerpersignale/') return 'hub';
   if (url.startsWith('/koerpersignale/')) return 'body_signal';
   if (url === '/beschwerden/') return 'hub';

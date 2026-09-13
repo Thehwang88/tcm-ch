@@ -1,13 +1,14 @@
 {
-  "generated": "2026-09-12",
+  "generated": "2026-09-13",
   "totals": {
-    "healthPages": 311,
+    "healthPages": 315,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "question": 13,
       "body_region": 9,
+      "perspective": 4,
       "tcm_hub": 6,
       "editorial": 76,
       "body_signal": 53,
@@ -27,7 +28,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 48,
+      "inboundContentLinks": 49,
       "outboundHealthLinks": 112
     },
     {
@@ -88,7 +89,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 19,
-      "outboundHealthLinks": 19
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/asthma/",
@@ -518,7 +519,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 19,
-      "outboundHealthLinks": 16
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/kopfschmerzen/",
@@ -628,7 +629,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 161,
-      "outboundHealthLinks": 29
+      "outboundHealthLinks": 31
     },
     {
       "url": "/beschwerden/nervenschmerzen/",
@@ -868,7 +869,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 29,
-      "outboundHealthLinks": 21
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/schuppenflechte/",
@@ -1097,7 +1098,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 162,
+      "inboundContentLinks": 166,
       "outboundHealthLinks": 41
     },
     {
@@ -1107,7 +1108,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 27,
       "outboundHealthLinks": 17
     },
     {
@@ -1321,13 +1322,53 @@
       "outboundHealthLinks": 28
     },
     {
+      "url": "/gesundheitsbibliothek/perspektiven/",
+      "type": "perspective",
+      "title": "Perspektiven: Wie TCM.ch klinisch denkt",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/perspektiven/mock-physio-oder-akupunktur/",
+      "type": "perspective",
+      "title": "Physiotherapie oder Akupunktur? Oft ist das die falsche Frage. | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/gesundheitsbibliothek/perspektiven/mock-tradition-ist-kein-beweis/",
+      "type": "perspective",
+      "title": "Tradition ist kein Beweis | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 2
+    },
+    {
+      "url": "/gesundheitsbibliothek/perspektiven/mock-wann-wir-abraten/",
+      "type": "perspective",
+      "title": "Wann wir von Akupunktur abraten | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 2
+    },
+    {
       "url": "/gesundheitsbibliothek/tcm-verstehen/",
       "type": "tcm_hub",
       "title": "TCM verstehen: Begriffe, Methoden &amp; Diagnosemodelle | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 15
     },
     {
@@ -1747,7 +1788,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 149,
+      "inboundContentLinks": 150,
       "outboundHealthLinks": 54
     },
     {
@@ -2287,7 +2328,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 132,
+      "inboundContentLinks": 133,
       "outboundHealthLinks": 17
     },
     {
@@ -2307,7 +2348,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 208,
+      "inboundContentLinks": 211,
       "outboundHealthLinks": 8
     },
     {
@@ -2527,7 +2568,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 38,
+      "inboundContentLinks": 40,
       "outboundHealthLinks": 17
     },
     {

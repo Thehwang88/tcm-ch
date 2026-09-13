@@ -1,0 +1,205 @@
+---
+// Perspektiven-Artikel-Template (Phase 1). Redaktionelles Layout: breiter Rahmen,
+// Lesespalte ~720px, flexible optionale Blöcke (These, klinische Sicht, Grenzen,
+// Evidenz, Quellen). Kein Standard-SEO-Template, kein Pflicht-Buchungs-CTA.
+// Indexierung pro Beitrag via indexable-Flag; status 'mock' baut zwar (Layout-QA),
+// ist aber immer noindex und landet nie in Sitemap oder Suche.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { perspektiven, TOPIC_LABELS } from '../../../data/perspektiven';
+import type { Perspektive } from '../../../data/perspektiven';
+
+export function getStaticPaths() {
+  return perspektiven.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+interface Props { p: Perspektive }
+const { p } = Astro.props;
+const path = `/gesundheitsbibliothek/perspektiven/${p.slug}`;
+const url = `https://tcm.ch${path}/`;
+const isReal = p.status === 'published';
+const indexable = isReal && p.indexable;
+const metaDesc = p.metaDesc ?? p.deck;
+
+const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const fmt = (iso?: string) => { if (!iso) return ''; const d = iso.split('-'); return d.length >= 3 ? `${parseInt(d[2])}. ${MONTHS[parseInt(d[1]) - 1]} ${d[0]}` : iso; };
+
+// Article-Schema NUR für publizierte Beiträge mit echten Angaben; nie für Mocks.
+const schema: object[] = [
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Perspektiven', item: 'https://tcm.ch/gesundheitsbibliothek/perspektiven/' },
+      { '@type': 'ListItem', position: 4, name: p.title, item: url },
+    ],
+  },
+];
+if (isReal && p.author && p.publishedAt) {
+  schema.unshift({
+    '@context': 'https://schema.org', '@type': 'Article',
+    '@id': `${url}#article`, headline: p.title, description: metaDesc, url, inLanguage: 'de-CH',
+    datePublished: p.publishedAt, ...(p.updatedAt ? { dateModified: p.updatedAt } : {}),
+    author: { '@type': 'Person', name: p.author.name, ...(p.author.credentials ? { description: p.author.credentials } : {}) },
+    publisher: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/', logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' } },
+  });
+}
+---
+<LayoutDe title={`${p.title} | TCM.ch`} description={metaDesc} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/perspektiven/">Perspektiven</a>
+        </div>
+        {p.status === 'mock' && <div class="mock-badge">Entwurf: Entwicklungs-Mock, nicht publiziert</div>}
+        <div class="cat">{TOPIC_LABELS[p.topic]}</div>
+        <h1>{p.title}</h1>
+        <p class="deck">{p.deck}</p>
+        {(p.author || p.publishedAt || p.readingTime) && (
+          <div class="byline">
+            {p.author && (p.author.href
+              ? <a class="by-name" href={p.author.href}>{p.author.name}</a>
+              : <span class="by-name">{p.author.name}</span>)}
+            {p.author?.role && <span class="by-role">{p.author.role}</span>}
+            {p.publishedAt && <span class="by-dot" aria-hidden="true"></span>}
+            {p.publishedAt && <span>{fmt(p.publishedAt)}</span>}
+            {p.updatedAt && p.updatedAt !== p.publishedAt && <span>· aktualisiert {fmt(p.updatedAt)}</span>}
+            {p.readingTime && <span class="by-dot" aria-hidden="true"></span>}
+            {p.readingTime && <span>{p.readingTime}</span>}
+            {p.reviewerName && <span>· Geprüft durch {p.reviewerName}</span>}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="read">
+
+          {p.thesisHtml && (
+            <aside class="thesis">
+              <div class="box-label">Die These</div>
+              <div class="kb-body" set:html={p.thesisHtml} />
+            </aside>
+          )}
+
+          {p.bodyHtml
+            ? <div class="kb-body" set:html={p.bodyHtml} />
+            : <p class="placeholder">Dieser Beitrag ist noch nicht redigiert. (Infrastruktur-Vorschau)</p>}
+
+          {p.klinischeSichtHtml && (
+            <aside class="box box--sicht">
+              <div class="box-label">Unsere klinische Sicht</div>
+              <div class="kb-body" set:html={p.klinischeSichtHtml} />
+            </aside>
+          )}
+
+          {p.grenzenHtml && (
+            <aside class="box box--grenzen">
+              <div class="box-label">Wo die Grenzen liegen</div>
+              <div class="kb-body" set:html={p.grenzenHtml} />
+            </aside>
+          )}
+
+          {p.evidenzHtml && (
+            <aside class="box">
+              <div class="box-label">Evidenz & Kontext</div>
+              <div class="kb-body" set:html={p.evidenzHtml} />
+            </aside>
+          )}
+
+          {p.sources && p.sources.length > 0 && (
+            <div class="sources">
+              <h2 class="src-title">Quellen</h2>
+              <ol>
+                {p.sources.map((s) => (
+                  <li>{s.href ? <a href={s.href} target="_blank" rel="noopener">{s.label}</a> : s.label}{s.detail && <span class="src-detail"> {s.detail}</span>}</li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {p.cta && (
+            <div class="soft-cta">
+              <a class="btn btn--ghost" href={p.cta.href}>{p.cta.label}</a>
+            </div>
+          )}
+        </div>
+
+        {p.related && p.related.length > 0 && (
+          <div class="related">
+            <div class="rel-label">Zum Weiterlesen</div>
+            <div class="rel-grid">
+              {p.related.map((r) => (
+                <a class="rel-card" href={r.href}>
+                  <div class="rel-cat">{r.cat}</div>
+                  <div class="rel-title">{r.label}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 960px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .mock-badge { display: inline-block; background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; border-radius: 999px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; max-width: 820px; }
+  .deck { font-size: 20px; line-height: 1.5; color: var(--mid); max-width: 720px; margin: 0 0 20px; }
+  .byline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 10px; font-size: 14px; color: var(--muted); }
+  .by-name { font-weight: 700; color: var(--ink); text-decoration: none; }
+  a.by-name:hover { color: var(--blue); }
+  .by-role { color: var(--blue-dark); font-weight: 600; }
+  .by-dot { width: 3px; height: 3px; border-radius: 50%; background: #c0c5cc; align-self: center; }
+
+  /* Lesespalte: 720px innerhalb des breiteren Rahmens. */
+  .read { max-width: 720px; }
+  .kb-body :global(h2) { font-size: 25px; font-weight: 800; color: var(--ink); margin: 40px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body :global(p) { font-size: 17.5px; line-height: 1.7; color: var(--mid); margin: 0 0 18px; }
+  .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body :global(a:hover) { text-decoration: underline; }
+  .kb-body :global(strong) { color: var(--ink); }
+  .kb-body :global(blockquote) { border-left: 3px solid var(--blue); margin: 28px 0; padding: 4px 0 4px 22px; font-size: 20px; line-height: 1.5; font-weight: 600; color: var(--ink); font-style: italic; }
+  .placeholder { font-size: 15px; color: var(--muted); border: 1px dashed var(--border); border-radius: var(--r-card); padding: 18px 20px; }
+
+  .thesis { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 20px 22px; margin: 0 0 30px; }
+  .box { border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px 22px; margin: 30px 0; }
+  .box--sicht { border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; }
+  .box--grenzen { border-left: 3px solid #c8842a; border-radius: 0 var(--r-card) var(--r-card) 0; }
+  .box-label, .thesis .box-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 8px; }
+  .box--grenzen .box-label { color: #92400E; }
+  .thesis :global(p), .box :global(p) { margin: 0 0 10px; font-size: 16px; }
+  .thesis :global(p:last-child), .box :global(p:last-child) { margin-bottom: 0; }
+
+  .sources { border-top: 1px solid var(--border); margin-top: 40px; padding-top: 22px; }
+  .src-title { font-size: 16px; font-weight: 800; color: var(--ink); margin: 0 0 12px; letter-spacing: .02em; }
+  .sources ol { padding-left: 20px; margin: 0; }
+  .sources li { font-size: 14px; line-height: 1.6; color: var(--mid); margin-bottom: 8px; }
+  .sources a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .sources a:hover { text-decoration: underline; }
+  .src-detail { color: var(--muted); }
+
+  .soft-cta { margin-top: 34px; }
+
+  .related { border-top: 1px solid var(--border); margin-top: 48px; padding-top: 24px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .rel-card { border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .rel-card:hover { border-color: var(--blue); }
+  .rel-cat { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .rel-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  @media (max-width: 860px) { .rel-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .rel-grid { grid-template-columns: 1fr; } }
+</style>

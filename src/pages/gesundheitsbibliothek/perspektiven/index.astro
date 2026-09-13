@@ -1,0 +1,158 @@
+---
+// Perspektiven-Hub (Phase 1: Infrastruktur). Redaktionelle Sammlung, kein zweites Wissen,
+// kein zweites TCM-verstehen: hier geht es um klinisches Urteilen, Grenzen und Evidenz-
+// Interpretation. noindex,follow bis echte Beiträge existieren (HUB_INDEXABLE in
+// perspektiven.ts); Mock-Einträge erscheinen NUR im Dev-Modus, nie im Produktions-Build.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { perspektiven, publishedPerspektiven, HUB_INDEXABLE, TOPIC_LABELS } from '../../../data/perspektiven';
+
+const path = '/gesundheitsbibliothek/perspektiven';
+const url = `https://tcm.ch${path}/`;
+const title = 'Perspektiven: Wie TCM.ch klinisch denkt';
+const metaDesc = 'Wie wir über Behandlung, Evidenz und medizinische Entscheidungen denken: die redaktionelle Ebene der Gesundheitsbibliothek, ehrlich und ohne einfache Antworten.';
+
+// Produktions-Build zeigt ausschliesslich publizierte Beiträge; Mocks nur im Dev-Server.
+const visible = import.meta.env.DEV ? perspektiven : publishedPerspektiven;
+const featured = visible.find((p) => p.featured) ?? visible[0];
+const rest = visible.filter((p) => p !== featured);
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Perspektiven', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!HUB_INDEXABLE} robots={HUB_INDEXABLE ? undefined : 'noindex, follow'}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Perspektiven</span>
+      </div>
+      <div class="cat">Gesundheitsbibliothek</div>
+      <h1>Perspektiven</h1>
+      <p class="lead">Wie wir über Behandlung, Evidenz und medizinische Entscheidungen denken. Nicht jede klinische Frage hat eine Ja-Nein-Antwort: Hier erklären wir, wie Behandlungsentscheidungen entstehen, wo Therapien an Grenzen stossen und wie sich traditionelle und konventionelle Medizin verantwortungsvoll verbinden lassen.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      {featured ? (
+        <Fragment>
+          <a class="feat" href={`/gesundheitsbibliothek/perspektiven/${featured.slug}/`}>
+            {featured.status === 'mock' && <span class="mock-badge">Entwurf (Dev)</span>}
+            <div class="feat-topic">{TOPIC_LABELS[featured.topic]}</div>
+            <div class="feat-title">{featured.title}</div>
+            <p class="feat-deck">{featured.deck}</p>
+            <div class="feat-meta">
+              {featured.author && <span class="fm-author">{featured.author.name}</span>}
+              {featured.publishedAt && <span>· {featured.publishedAt}</span>}
+              {featured.readingTime && <span>· {featured.readingTime}</span>}
+              <span class="fm-more">Lesen →</span>
+            </div>
+          </a>
+
+          {rest.length > 0 && (
+            <div class="p-grid">
+              {rest.map((p) => (
+                <a class="p-card" href={`/gesundheitsbibliothek/perspektiven/${p.slug}/`}>
+                  {p.status === 'mock' && <span class="mock-badge">Entwurf (Dev)</span>}
+                  <div class="p-topic">{TOPIC_LABELS[p.topic]}</div>
+                  <div class="p-title">{p.title}</div>
+                  <p class="p-deck">{p.deck}</p>
+                  <span class="p-more">Lesen →</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </Fragment>
+      ) : (
+        <div class="empty">
+          <div class="group-title">Die ersten Beiträge sind in Arbeit</div>
+          <p class="group-sub">Diese Rubrik startet mit einer kleinen, sorgfältig redigierten Reihe. Bis dahin findest du unsere Haltung dort, wo sie heute schon steht: in den ehrlichen Einordnungen der Beschwerde-Seiten, in den <a href="/gesundheitsbibliothek/fragen/">Patientenfragen</a> und im Bereich <a href="/gesundheitsbibliothek/tcm-verstehen/">TCM verstehen</a>.</p>
+        </div>
+      )}
+
+      <div class="about">
+        <div class="ein-label">Worum es hier geht</div>
+        <p>Die übrigen Bereiche der Gesundheitsbibliothek erklären Beschwerden, Methoden und Begriffe. Perspektiven erklärt das Dazwischen: wie wir abwägen, wann wir abraten, wie wir Studienlagen lesen und warum eine ehrliche Empfehlung manchmal lautet, zuerst woanders hinzugehen. Beiträge erscheinen mit echten Autor:innen und Quellen, ohne Heilversprechen und ohne einfache Antworten auf komplexe Fragen.</p>
+      </div>
+
+      <div class="entry">
+        <div class="rel-label">Weiter in der Bibliothek</div>
+        <div class="mr-links">
+          <a class="mr-chip" href="/beschwerden/">Beschwerden A–Z</a>
+          <a class="mr-chip" href="/therapien/">Therapien</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/tcm-verstehen/">TCM verstehen</a>
+          <a class="mr-chip" href="/koerpersignale/">Körpersignale</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/fragen/">Fragen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 960px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.6; color: var(--mid); max-width: 720px; }
+
+  .mock-badge { align-self: flex-start; background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: .04em; margin-bottom: 10px; display: inline-block; }
+
+  .feat { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 30px 32px; text-decoration: none; transition: border-color var(--t-fast) ease; margin-bottom: 18px; }
+  .feat:hover { border-color: var(--blue); }
+  .feat-topic { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .feat-title { font-size: clamp(22px, 2.8vw, 30px); font-weight: 800; line-height: 1.18; color: var(--ink); letter-spacing: var(--tracking-heading); margin-bottom: 10px; }
+  .feat-deck { font-size: 16.5px; line-height: 1.6; color: var(--mid); margin: 0 0 16px; max-width: 640px; }
+  .feat-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: 13.5px; color: var(--muted); }
+  .fm-author { font-weight: 700; color: var(--ink); }
+  .fm-more { margin-left: auto; font-weight: 700; color: var(--blue); }
+
+  .p-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .p-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .p-card:hover { border-color: var(--blue); }
+  .p-topic { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .p-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .p-deck { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .p-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0; max-width: 680px; }
+  .group-sub a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .group-sub a:hover { text-decoration: underline; }
+  .empty { border: 1px dashed var(--border); border-radius: var(--r-card); padding: 26px 28px; }
+
+  .about { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 22px 24px; margin: 44px 0 0; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .about p { font-size: 15.5px; line-height: 1.65; color: var(--mid); margin: 0; max-width: 76ch; }
+
+  .entry { margin-top: 40px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 720px) {
+    .p-grid { grid-template-columns: 1fr; }
+    .feat { padding: 22px; }
+  }
+</style>
