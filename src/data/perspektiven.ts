@@ -17,7 +17,7 @@
 // INDEXIERUNG: Hub und Beiträge folgen der indexable-Flag-Konvention (wie tcm-verstehen).
 // status 'planned'/'draft' = nicht publiziert: nie indexierbar, nie in der Sitemap
 // (gen-sitemap schliesst noindex aus), nie in der Bibliothek-Suche, nie verlinkt.
-// Der Hub wird erst indexierbar (HUB_INDEXABLE), wenn mindestens 2-3 echte Beiträge
+// Der Hub wird erst indexierbar (HUB_INDEXABLE), wenn mindestens 3-4 echte Beiträge
 // mit echten Autor:innen publiziert sind.
 
 export type PerspektiveTopic =
@@ -82,8 +82,8 @@ export interface Perspektive {
   canonicalIntentOwner?: string[];
 }
 
-/** Hub erst indexieren, wenn echte Beiträge existieren (Launch-Kriterien: siehe
- *  seo/editorial-perspectives-architecture.md). */
+/** Hub bleibt noindex, bis mindestens 3-4 wirklich publizierte Perspektiven mit
+ *  echter Autorschaft existieren (Launch-Kriterien: seo/editorial-perspectives-architecture.md). */
 export const HUB_INDEXABLE = false;
 
 export const perspektiven: Perspektive[] = [

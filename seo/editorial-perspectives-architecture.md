@@ -78,7 +78,7 @@ gehört nach /wissen/ oder wird nicht publiziert.
 
 ## J. Launch-Kriterien für Indexierung des Hubs
 
-1. Mindestens 2-3 publizierte Beiträge mit echten Autor:innen und Quellen.
+1. Mindestens 3-4 wirklich publizierte Beiträge mit echten Autor:innen und Quellen.
 2. Redaktionelle Prüfung (Simon oder Fachperson) pro Beitrag.
 3. Dann: HUB_INDEXABLE=true, indexable=true pro Beitrag, URLs in seo/index-queue.md
    (gleicher Commit), Bibliothek-Hub-Karte NACH den Kern-Kategorien ergänzen,
