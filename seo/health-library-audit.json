@@ -1,14 +1,14 @@
 {
   "generated": "2026-09-13",
   "totals": {
-    "healthPages": 315,
+    "healthPages": 312,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "question": 13,
       "body_region": 9,
-      "perspective": 4,
+      "perspective": 1,
       "tcm_hub": 6,
       "editorial": 76,
       "body_signal": 53,
@@ -1098,7 +1098,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 166,
+      "inboundContentLinks": 163,
       "outboundHealthLinks": 41
     },
     {
@@ -1328,38 +1328,8 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 0,
       "outboundHealthLinks": 6
-    },
-    {
-      "url": "/gesundheitsbibliothek/perspektiven/mock-physio-oder-akupunktur/",
-      "type": "perspective",
-      "title": "Physiotherapie oder Akupunktur? Oft ist das die falsche Frage. | TCM.ch",
-      "indexable": false,
-      "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 0,
-      "outboundHealthLinks": 2
-    },
-    {
-      "url": "/gesundheitsbibliothek/perspektiven/mock-tradition-ist-kein-beweis/",
-      "type": "perspective",
-      "title": "Tradition ist kein Beweis | TCM.ch",
-      "indexable": false,
-      "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 0,
-      "outboundHealthLinks": 2
-    },
-    {
-      "url": "/gesundheitsbibliothek/perspektiven/mock-wann-wir-abraten/",
-      "type": "perspective",
-      "title": "Wann wir von Akupunktur abraten | TCM.ch",
-      "indexable": false,
-      "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 0,
-      "outboundHealthLinks": 2
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/",

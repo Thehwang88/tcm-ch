@@ -2,7 +2,7 @@
 // Perspektiven-Hub (Phase 1: Infrastruktur). Redaktionelle Sammlung, kein zweites Wissen,
 // kein zweites TCM-verstehen: hier geht es um klinisches Urteilen, Grenzen und Evidenz-
 // Interpretation. noindex,follow bis echte Beiträge existieren (HUB_INDEXABLE in
-// perspektiven.ts); Mock-Einträge erscheinen NUR im Dev-Modus, nie im Produktions-Build.
+// perspektiven.ts); geplante Beiträge erscheinen NUR im Dev-Modus, nie in Produktion.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
 import { perspektiven, publishedPerspektiven, HUB_INDEXABLE, TOPIC_LABELS } from '../../../data/perspektiven';
 
@@ -11,7 +11,7 @@ const url = `https://tcm.ch${path}/`;
 const title = 'Perspektiven: Wie TCM.ch klinisch denkt';
 const metaDesc = 'Wie wir über Behandlung, Evidenz und medizinische Entscheidungen denken: die redaktionelle Ebene der Gesundheitsbibliothek, ehrlich und ohne einfache Antworten.';
 
-// Produktions-Build zeigt ausschliesslich publizierte Beiträge; Mocks nur im Dev-Server.
+// Produktions-Build zeigt ausschliesslich publizierte Beiträge; geplante nur im Dev-Server.
 const visible = import.meta.env.DEV ? perspektiven : publishedPerspektiven;
 const featured = visible.find((p) => p.featured) ?? visible[0];
 const rest = visible.filter((p) => p !== featured);
@@ -52,7 +52,7 @@ const schema = [
       {featured ? (
         <Fragment>
           <a class="feat" href={`/gesundheitsbibliothek/perspektiven/${featured.slug}/`}>
-            {featured.status === 'mock' && <span class="mock-badge">Entwurf (Dev)</span>}
+            {featured.status !== 'published' && <span class="mock-badge">Geplant (Dev)</span>}
             <div class="feat-topic">{TOPIC_LABELS[featured.topic]}</div>
             <div class="feat-title">{featured.title}</div>
             <p class="feat-deck">{featured.deck}</p>
@@ -68,7 +68,7 @@ const schema = [
             <div class="p-grid">
               {rest.map((p) => (
                 <a class="p-card" href={`/gesundheitsbibliothek/perspektiven/${p.slug}/`}>
-                  {p.status === 'mock' && <span class="mock-badge">Entwurf (Dev)</span>}
+                  {p.status !== 'published' && <span class="mock-badge">Geplant (Dev)</span>}
                   <div class="p-topic">{TOPIC_LABELS[p.topic]}</div>
                   <div class="p-title">{p.title}</div>
                   <p class="p-deck">{p.deck}</p>

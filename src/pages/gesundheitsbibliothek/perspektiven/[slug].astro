@@ -2,15 +2,15 @@
 // Perspektiven-Artikel-Template (Phase 1). Redaktionelles Layout: breiter Rahmen,
 // Lesespalte ~720px, flexible optionale Blöcke (These, klinische Sicht, Grenzen,
 // Evidenz, Quellen). Kein Standard-SEO-Template, kein Pflicht-Buchungs-CTA.
-// Indexierung pro Beitrag via indexable-Flag; status 'mock' baut zwar (Layout-QA),
-// ist aber immer noindex und landet nie in Sitemap oder Suche.
+// Indexierung pro Beitrag via indexable-Flag; geplante Beiträge ('planned'/'draft')
+// bauen nur im Dev-Server, sind immer noindex und landen nie in Sitemap oder Suche.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
 import { perspektiven, publishedPerspektiven, TOPIC_LABELS } from '../../../data/perspektiven';
 import type { Perspektive } from '../../../data/perspektiven';
 
 export function getStaticPaths() {
-  // Produktions-Build erzeugt Routen NUR für publizierte Beiträge: Mocks existieren
-  // physisch nicht (noindex allein reicht nicht). Im Dev-Server bauen Mocks für Layout-QA.
+  // Produktions-Build erzeugt Routen NUR für publizierte Beiträge: geplante Beiträge
+  // existieren physisch nicht (noindex allein reicht nicht). Dev-Server baut sie für QA.
   const source = import.meta.env.DEV ? perspektiven : publishedPerspektiven;
   return source.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
@@ -26,7 +26,7 @@ const metaDesc = p.metaDesc ?? p.deck;
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const fmt = (iso?: string) => { if (!iso) return ''; const d = iso.split('-'); return d.length >= 3 ? `${parseInt(d[2])}. ${MONTHS[parseInt(d[1]) - 1]} ${d[0]}` : iso; };
 
-// Article-Schema NUR für publizierte Beiträge mit echten Angaben; nie für Mocks.
+// Article-Schema NUR für publizierte Beiträge mit echten Angaben.
 const schema: object[] = [
   {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
@@ -57,7 +57,7 @@ if (isReal && p.author && p.publishedAt) {
           <span aria-hidden="true">›</span>
           <a href="/gesundheitsbibliothek/perspektiven/">Perspektiven</a>
         </div>
-        {p.status === 'mock' && <div class="mock-badge">Entwurf: Entwicklungs-Mock, nicht publiziert</div>}
+        {p.status !== 'published' && <div class="mock-badge">Geplanter Beitrag, noch ohne Inhalt (nur Dev)</div>}
         <div class="cat">{TOPIC_LABELS[p.topic]}</div>
         <h1>{p.title}</h1>
         <p class="deck">{p.deck}</p>
