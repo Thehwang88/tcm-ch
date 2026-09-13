@@ -2,7 +2,8 @@
 // Perspektiven-Hub (Phase 1: Infrastruktur). Redaktionelle Sammlung, kein zweites Wissen,
 // kein zweites TCM-verstehen: hier geht es um klinisches Urteilen, Grenzen und Evidenz-
 // Interpretation. noindex,follow bis echte Beiträge existieren (HUB_INDEXABLE in
-// perspektiven.ts); geplante Beiträge erscheinen NUR im Dev-Modus, nie in Produktion.
+// perspektiven.ts). Geplante Beiträge erscheinen in Produktion als NICHT-klickbare
+// "Demnächst"-Karten (ihre Artikel-Routen existieren in Produktion weiterhin nicht).
 import LayoutDe from '../../../layouts/LayoutDe.astro';
 import { perspektiven, publishedPerspektiven, HUB_INDEXABLE, TOPIC_LABELS } from '../../../data/perspektiven';
 
@@ -11,10 +12,11 @@ const url = `https://tcm.ch${path}/`;
 const title = 'Perspektiven: Wie TCM.ch klinisch denkt';
 const metaDesc = 'Wie wir über Behandlung, Evidenz und medizinische Entscheidungen denken: die redaktionelle Ebene der Gesundheitsbibliothek, ehrlich und ohne einfache Antworten.';
 
-// Produktions-Build zeigt ausschliesslich publizierte Beiträge; geplante nur im Dev-Server.
-const visible = import.meta.env.DEV ? perspektiven : publishedPerspektiven;
-const featured = visible.find((p) => p.featured) ?? visible[0];
-const rest = visible.filter((p) => p !== featured);
+// Klickbare Karten (Featured + Grid) NUR für publizierte Beiträge; geplante Themen
+// landen als nicht-klickbare Vorschau in der Demnächst-Sektion (kein Link, keine Route).
+const featured = publishedPerspektiven.find((p) => p.featured) ?? publishedPerspektiven[0];
+const rest = publishedPerspektiven.filter((p) => p !== featured);
+const geplant = perspektiven.filter((p) => p.status === 'planned' || p.status === 'draft');
 
 const schema = [
   {
@@ -49,10 +51,9 @@ const schema = [
   <section class="section" style="padding-top:0">
     <div class="wrap narrow">
 
-      {featured ? (
+      {featured && (
         <Fragment>
           <a class="feat" href={`/gesundheitsbibliothek/perspektiven/${featured.slug}/`}>
-            {featured.status !== 'published' && <span class="mock-badge">Geplant (Dev)</span>}
             <div class="feat-topic">{TOPIC_LABELS[featured.topic]}</div>
             <div class="feat-title">{featured.title}</div>
             <p class="feat-deck">{featured.deck}</p>
@@ -63,12 +64,10 @@ const schema = [
               <span class="fm-more">Lesen →</span>
             </div>
           </a>
-
           {rest.length > 0 && (
             <div class="p-grid">
               {rest.map((p) => (
                 <a class="p-card" href={`/gesundheitsbibliothek/perspektiven/${p.slug}/`}>
-                  {p.status !== 'published' && <span class="mock-badge">Geplant (Dev)</span>}
                   <div class="p-topic">{TOPIC_LABELS[p.topic]}</div>
                   <div class="p-title">{p.title}</div>
                   <p class="p-deck">{p.deck}</p>
@@ -78,10 +77,22 @@ const schema = [
             </div>
           )}
         </Fragment>
-      ) : (
-        <div class="empty">
-          <div class="group-title">Die ersten Beiträge sind in Arbeit</div>
-          <p class="group-sub">Diese Rubrik startet mit einer kleinen, sorgfältig redigierten Reihe. Bis dahin findest du unsere Haltung dort, wo sie heute schon steht: in den ehrlichen Einordnungen der Beschwerde-Seiten, in den <a href="/gesundheitsbibliothek/fragen/">Patientenfragen</a> und im Bereich <a href="/gesundheitsbibliothek/tcm-verstehen/">TCM verstehen</a>.</p>
+      )}
+
+      {geplant.length > 0 && (
+        <div class="soon">
+          <h2 class="group-title">Demnächst</h2>
+          <p class="group-sub">Diese Themen sind bereits geplant und werden nach und nach redaktionell veröffentlicht.</p>
+          <div class="p-grid">
+            {geplant.map((p) => (
+              <article class="soon-card">
+                <div class="p-topic">{TOPIC_LABELS[p.topic]}</div>
+                <div class="soon-title">{p.title}</div>
+                <p class="p-deck">{p.deck}</p>
+                <span class="soon-pill">In Vorbereitung</span>
+              </article>
+            ))}
+          </div>
         </div>
       )}
 
@@ -116,8 +127,6 @@ const schema = [
   h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
   .hero .lead { font-size: 18.5px; line-height: 1.6; color: var(--mid); max-width: 720px; }
 
-  .mock-badge { align-self: flex-start; background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: .04em; margin-bottom: 10px; display: inline-block; }
-
   .feat { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 30px 32px; text-decoration: none; transition: border-color var(--t-fast) ease; margin-bottom: 18px; }
   .feat:hover { border-color: var(--blue); }
   .feat-topic { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
@@ -139,7 +148,10 @@ const schema = [
   .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0; max-width: 680px; }
   .group-sub a { color: var(--blue); font-weight: 600; text-decoration: none; }
   .group-sub a:hover { text-decoration: underline; }
-  .empty { border: 1px dashed var(--border); border-radius: var(--r-card); padding: 26px 28px; }
+  .soon { margin-top: 14px; }
+  .soon-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; background: var(--surface); }
+  .soon-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .soon-pill { align-self: flex-start; border: 1px solid var(--border); border-radius: 999px; background: #fff; padding: 4px 12px; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
 
   .about { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 22px 24px; margin: 44px 0 0; }
   .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
