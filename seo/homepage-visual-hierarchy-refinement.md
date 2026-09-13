@@ -30,12 +30,11 @@ riskant umgebaut.
    Patienten". Kein Faktenverlust, ein Rating-Widerspruch (500+ vs 12'500+)
    entschärft. Drittes 4.9 (Stats-Count-up weiter unten) bleibt: kontextuell,
    anderes Format.
-2. **Therapie-Grid hierarchisiert (Punkt 9, CSS-only):** Reihe 1 (Akupunktur,
-   Gesichtsakupunktur, Schröpfen, Tuina) unverändert prominent; Karten 5-8
-   (Akupressur, Shiatsu, Gua Sha, Physiotherapie) mit flacheren Fotos (16/7
-   statt 4/3), kompakteren Titeln und einzeiliger Tagline. Vollwertig klickbar,
-   keine Karte entfernt, keine URLs geändert. Mobile (<=900px, 2-spaltig)
-   bleibt einheitlich, dort trägt die Reduktion nichts.
+2. **Therapie-Grid (Punkt 9, revidiert 13.09.):** Der erste Ansatz (flachere
+   Fotos für Reihe 2) beschnitt die Cover-Bilder zu aggressiv und wurde
+   zurückgenommen. Final: ALLE Karten mit identischer 4/3-Bildfläche; die
+   Karten sind flex-Spalten mit CTA am unteren Rand (margin-top:auto), so
+   bleiben CTAs pro Reihe ausgerichtet, ohne Bilder zu verkleinern.
 3. **Hintergrund-Rhythmus (Punkt 13):** St.-Gallen-Banner von var(--bg) auf
    Weiss: Sequenz ist jetzt weiss -> surface (kennst) -> weiss -> schwarz (wa)
    -> weiss-Block (Therapien/Ergänzend/Bibliothek) -> bg (Fragen) -> ...
