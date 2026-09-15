@@ -1,11 +1,12 @@
 {
-  "generated": "2026-09-13",
+  "generated": "2026-09-15",
   "totals": {
-    "healthPages": 312,
+    "healthPages": 313,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
+      "befund": 1,
       "question": 13,
       "body_region": 9,
       "perspective": 1,
@@ -28,7 +29,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 49,
+      "inboundContentLinks": 50,
       "outboundHealthLinks": 112
     },
     {
@@ -1098,8 +1099,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 163,
-      "outboundHealthLinks": 41
+      "inboundContentLinks": 164,
+      "outboundHealthLinks": 43
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/",
+      "type": "befund",
+      "title": "Befunde &amp; Werte verstehen | TCM.ch",
+      "indexable": false,
+      "canonicalTo": null,
+      "inSitemap": false,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/gesundheitsbibliothek/fragen/",
@@ -1328,7 +1339,7 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 0,
+      "inboundContentLinks": 1,
       "outboundHealthLinks": 6
     },
     {
@@ -1758,7 +1769,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 150,
+      "inboundContentLinks": 151,
       "outboundHealthLinks": 54
     },
     {
@@ -2618,7 +2629,7 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 5
     },
     {
