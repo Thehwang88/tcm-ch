@@ -26,6 +26,7 @@ import { fragenHubs, fragen as fragenList } from './fragen';
 import { tcmSections } from './tcm-verstehen';
 import { publishedPerspektiven } from './perspektiven';
 import { publishedBefundeWerte, KATEGORIE_LABELS } from './befunde-werte';
+import { publishedWasJetzt } from './was-jetzt';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -476,6 +477,10 @@ export function buildSearchIndex(): SearchEntry[] {
   // Befunde & Werte: NUR publizierte Beiträge (geplante existieren in Prod nicht).
   for (const bw of publishedBefundeWerte) {
     entries.push({ t: bw.title, u: `/gesundheitsbibliothek/befunde-werte/${bw.slug}/`, g: 'Befunde & Werte', k: `${KATEGORIE_LABELS[bw.category]} ${bw.deck.slice(0, 140)}` });
+  }
+  // Was jetzt?: NUR publizierte Beiträge (geplante existieren in Prod nicht).
+  for (const wj of publishedWasJetzt) {
+    entries.push({ t: wj.title, u: `/gesundheitsbibliothek/was-jetzt/${wj.slug}/`, g: 'Was jetzt?', k: wj.deck.slice(0, 160) });
   }
   // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
   const RATGEBER: Array<{ t: string; u: string }> = [

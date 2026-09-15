@@ -1,0 +1,154 @@
+---
+// Was-jetzt?-Hub (Phase 1: Infrastruktur). Intent: "Was kann ich jetzt sicher
+// selbst tun?" Praktische nächste Schritte, keine zweite Beschwerden-Bibliothek,
+// kein Hausmittel-Lexikon. noindex,follow bis echte Beiträge existieren
+// (HUB_INDEXABLE in was-jetzt.ts). Geplante Themen erscheinen als NICHT-klickbare
+// Karten; ihre Artikel-Routen existieren in Produktion nicht.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { wasJetzt, publishedWasJetzt, HUB_INDEXABLE, TOOL_LABELS } from '../../../data/was-jetzt';
+
+const path = '/gesundheitsbibliothek/was-jetzt';
+const url = `https://tcm.ch${path}/`;
+const title = 'Was jetzt? Praktische nächste Schritte';
+const metaDesc = 'Praktische nächste Schritte bei häufigen Beschwerden und Körpersignalen: was du selbst tun kannst, was du besser vermeiden solltest und wann professionelle oder ärztliche Hilfe sinnvoll wird.';
+
+const geplant = wasJetzt.filter((w) => w.status === 'planned' || w.status === 'draft');
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Was jetzt?', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!HUB_INDEXABLE} robots={HUB_INDEXABLE ? undefined : 'noindex, follow'}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Was jetzt?</span>
+      </div>
+      <div class="cat">Gesundheitsbibliothek</div>
+      <h1>Was jetzt?</h1>
+      <p class="lead">Praktische nächste Schritte bei häufigen Beschwerden und Körpersignalen: was du selbst tun kannst, was du besser vermeiden solltest und wann professionelle oder ärztliche Hilfe sinnvoll wird.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      <div class="about" style="margin:0 0 36px">
+        <div class="ein-label">Worum es hier geht</div>
+        <p>Die übrigen Bereiche der Bibliothek erklären, was ein Signal bedeutet, was hinter einer Beschwerde steckt oder wie eine Behandlung abläuft. Hier geht es um den Schritt dazwischen: was du in deiner Situation jetzt konkret tun kannst. Keine Diagnosen, keine Hausmittel-Sammlung, keine Behandlungsanleitung zum Selbermachen.</p>
+      </div>
+
+      {publishedWasJetzt.length > 0 && (
+        <div class="p-grid" style="margin-bottom:36px">
+          {publishedWasJetzt.map((w) => (
+            <a class="p-card" href={`/gesundheitsbibliothek/was-jetzt/${w.slug}/`}>
+              <div class="p-title">{w.title}</div>
+              <p class="p-deck">{w.deck}</p>
+              <span class="p-more">Lesen →</span>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {geplant.length > 0 && (
+        <div class="soon">
+          <h2 class="group-title">Geplante Themen</h2>
+          <p class="group-sub">Diese Beiträge sind in Vorbereitung und werden nach fachlicher Prüfung nach und nach veröffentlicht.</p>
+          <div class="p-grid">
+            {geplant.map((w) => (
+              <article class="soon-card">
+                <div class="soon-title">{w.title}</div>
+                <p class="p-deck">{w.deck}</p>
+                {w.selfCareTools.length > 0 && (
+                  <div class="tool-chips">
+                    {w.selfCareTools.map((t) => <span class="tool-chip">{TOOL_LABELS[t]}</span>)}
+                  </div>
+                )}
+                <span class="soon-pill">In Vorbereitung</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="about">
+        <div class="ein-label">Was kann dazugehören?</div>
+        <p>Je nach Thema: Bewegung, Ernährung, einfache Akupressur, Wärme oder Kälte, Schlaf und Alltag. Nicht jeder Beitrag enthält alles; gezeigt wird nur, was für die jeweilige Situation wirklich relevant ist.</p>
+      </div>
+
+      <div class="about about--safety">
+        <div class="ein-label">Wichtig zu wissen</div>
+        <p>Selbsthilfe ist nur dort sinnvoll, wo die Beschwerden dafür geeignet sind. Bei starken, plötzlichen oder anhaltenden Beschwerden gehört die Abklärung in ärztliche Hände. Die Beiträge hier ersetzen keine medizinische Beurteilung.</p>
+      </div>
+
+      <div class="entry">
+        <div class="rel-label">Weiter in der Bibliothek</div>
+        <div class="mr-links">
+          <a class="mr-chip" href="/koerpersignale/">Körpersignale</a>
+          <a class="mr-chip" href="/beschwerden/">Beschwerden A–Z</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/befunde-werte/">Befunde &amp; Werte</a>
+          <a class="mr-chip" href="/therapien/">Therapien</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/fragen/">Fragen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 960px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.6; color: var(--mid); max-width: 720px; }
+
+  .p-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .p-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .p-card:hover { border-color: var(--blue); }
+  .p-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .p-deck { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .p-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0 0 14px; max-width: 680px; }
+  .soon-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; background: var(--surface); }
+  .soon-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tool-chip { border: 1px solid var(--border); border-radius: 999px; background: #fff; padding: 3px 10px; font-size: 12px; font-weight: 600; color: var(--mid); }
+  .soon-pill { align-self: flex-start; border: 1px solid var(--border); border-radius: 999px; background: #fff; padding: 4px 12px; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
+
+  .about { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 22px 24px; margin: 36px 0 0; }
+  .about--safety { border-left-color: #c8842a; }
+  .about--safety .ein-label { color: #92400E; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .about p { font-size: 15.5px; line-height: 1.65; color: var(--mid); margin: 0; max-width: 76ch; }
+
+  .entry { margin-top: 40px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 720px) {
+    .p-grid { grid-template-columns: 1fr; }
+  }
+</style>
