@@ -1,0 +1,141 @@
+---
+// Befunde-&-Werte-Hub (Phase 1: Infrastruktur). Intent: "Ein Test, Labor, Messwert
+// oder Bericht sagt etwas. Was bedeutet das?" Kein Symptom-, Diagnose- oder
+// Therapie-Cluster. noindex,follow bis echte Beiträge existieren (HUB_INDEXABLE in
+// befunde-werte.ts). Geplante Themen erscheinen als NICHT-klickbare Karten; ihre
+// Artikel-Routen existieren in Produktion nicht.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import { befundeWerte, publishedBefundeWerte, HUB_INDEXABLE, KATEGORIE_LABELS, type BefundWertKategorie } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/befunde-werte';
+const url = `https://tcm.ch${path}/`;
+const title = 'Befunde & Werte verstehen';
+const metaDesc = 'Laborwerte, Messwerte und medizinische Befunde verständlich eingeordnet: Was bedeutet der Befund, was kann dahinterstecken und wann sollte weiter abgeklärt werden?';
+
+// Kategorien sind reine Gruppierungs-Labels, keine eigenen URLs.
+const KATEGORIEN: BefundWertKategorie[] = ['laborwert', 'messwert', 'bildgebung'];
+const geplant = befundeWerte.filter((b) => b.status === 'planned' || b.status === 'draft');
+const geplantByKat = KATEGORIEN
+  .map((k) => ({ key: k, label: KATEGORIE_LABELS[k], items: geplant.filter((b) => b.category === k) }))
+  .filter((g) => g.items.length > 0);
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Befunde & Werte verstehen', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!HUB_INDEXABLE} robots={HUB_INDEXABLE ? undefined : 'noindex, follow'}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Befunde &amp; Werte</span>
+      </div>
+      <div class="cat">Gesundheitsbibliothek</div>
+      <h1>Befunde &amp; Werte verstehen</h1>
+      <p class="lead">Laborwerte, Messwerte und medizinische Befunde verständlich eingeordnet: Was bedeutet der Befund, was kann dahinterstecken und wann sollte weiter abgeklärt werden? Hier übersetzen wir Befundsprache in verständliches Deutsch, ohne aus einem Wert eine Diagnose zu machen.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      {publishedBefundeWerte.length > 0 && (
+        <div class="p-grid" style="margin-bottom:36px">
+          {publishedBefundeWerte.map((b) => (
+            <a class="p-card" href={`/gesundheitsbibliothek/befunde-werte/${b.slug}/`}>
+              <div class="p-topic">{KATEGORIE_LABELS[b.category]}</div>
+              <div class="p-title">{b.title}</div>
+              <p class="p-deck">{b.deck}</p>
+              <span class="p-more">Lesen →</span>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {geplantByKat.map((g) => (
+        <div class="soon">
+          <h2 class="group-title">{g.label}</h2>
+          <div class="p-grid">
+            {g.items.map((b) => (
+              <article class="soon-card">
+                <div class="p-topic">{KATEGORIE_LABELS[b.category]}</div>
+                <div class="soon-title">{b.title}</div>
+                <p class="p-deck">{b.deck}</p>
+                <span class="soon-pill">In Vorbereitung</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="about">
+        <div class="ein-label">Wichtig zu wissen</div>
+        <p>Ein Labor- oder Bildbefund ist für sich allein keine Diagnose. Ob ein Wert relevant ist, hängt von Referenzbereichen, Verlauf, Beschwerden und der Krankengeschichte ab. Die Beiträge hier ordnen Befunde ein und ersetzen keine ärztliche Beurteilung.</p>
+      </div>
+
+      <div class="entry">
+        <div class="rel-label">Weiter in der Bibliothek</div>
+        <div class="mr-links">
+          <a class="mr-chip" href="/koerpersignale/">Körpersignale</a>
+          <a class="mr-chip" href="/beschwerden/">Beschwerden A–Z</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>
+          <a class="mr-chip" href="/visuals/">Visual Library</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 960px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.6; color: var(--mid); max-width: 720px; }
+
+  .p-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .p-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .p-card:hover { border-color: var(--blue); }
+  .p-topic { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .p-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .p-deck { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .p-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 14px; }
+  .soon { margin-bottom: 36px; }
+  .soon-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; background: var(--surface); }
+  .soon-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .soon-pill { align-self: flex-start; border: 1px solid var(--border); border-radius: 999px; background: #fff; padding: 4px 12px; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .03em; }
+
+  .about { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 22px 24px; margin: 8px 0 0; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .about p { font-size: 15.5px; line-height: 1.65; color: var(--mid); margin: 0; max-width: 76ch; }
+
+  .entry { margin-top: 40px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 720px) {
+    .p-grid { grid-template-columns: 1fr; }
+  }
+</style>

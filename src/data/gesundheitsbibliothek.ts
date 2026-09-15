@@ -25,6 +25,7 @@ import { visuals, type VisualCategory } from './visuals';
 import { fragenHubs, fragen as fragenList } from './fragen';
 import { tcmSections } from './tcm-verstehen';
 import { publishedPerspektiven } from './perspektiven';
+import { publishedBefundeWerte, KATEGORIE_LABELS } from './befunde-werte';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -471,6 +472,10 @@ export function buildSearchIndex(): SearchEntry[] {
   // Perspektiven: NUR publizierte Beiträge (Mocks erreichen die Suche nie).
   for (const pe of publishedPerspektiven) {
     entries.push({ t: pe.title, u: `/gesundheitsbibliothek/perspektiven/${pe.slug}/`, g: 'Perspektiven', k: pe.deck.slice(0, 160) });
+  }
+  // Befunde & Werte: NUR publizierte Beiträge (geplante existieren in Prod nicht).
+  for (const bw of publishedBefundeWerte) {
+    entries.push({ t: bw.title, u: `/gesundheitsbibliothek/befunde-werte/${bw.slug}/`, g: 'Befunde & Werte', k: `${KATEGORIE_LABELS[bw.category]} ${bw.deck.slice(0, 140)}` });
   }
   // Ratgeber: kuratierte saisonale Wissen-Artikel (Herbstwelle).
   const RATGEBER: Array<{ t: string; u: string }> = [
