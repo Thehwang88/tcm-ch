@@ -1886,12 +1886,12 @@
     {
       "url": "/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/",
       "type": "body_signal",
-      "title": "Druck im Kopf ohne Kopfschmerzen: mögliche Ursachen | TCM.ch",
+      "title": "Druck im Kopf ohne Schmerzen: mögliche Ursachen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/druckgefuehl-im-unterbauch/",
@@ -2090,7 +2090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 11
     },
     {
@@ -2300,7 +2300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 7
     },
     {

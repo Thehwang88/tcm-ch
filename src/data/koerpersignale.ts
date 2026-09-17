@@ -1452,11 +1452,11 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'druck-im-kopf-ohne-kopfschmerzen',
     symptom: 'ein Druckgefühl im Kopf ohne richtigen Kopfschmerz',
-    title: 'Druck im Kopf ohne Kopfschmerzen: mögliche Ursachen',
-    metaDesc: 'Druck im Kopf, aber kein richtiger Kopfschmerz? Nebenhöhlen, Muskelspannung und andere Faktoren können eine Rolle spielen. Erfahre, wann du es abklären solltest.',
+    title: 'Druck im Kopf ohne Schmerzen: mögliche Ursachen',
+    metaDesc: 'Druck im Kopf ohne Schmerzen? Ein Enge- oder Druckgefühl ohne richtigen Kopfschmerz ist häufig: Nebenhöhlen, Nacken- und Kieferspannung können eine Rolle spielen.',
     h1: 'Warum habe ich Druck im Kopf, obwohl ich keine Kopfschmerzen habe?',
     category: 'Kopf & Sinne',
-    lead: 'Es tut nicht richtig weh, aber im Kopf sitzt ein Gefühl von Druck, Enge oder Spannung. Dieses Signal lässt sich schwer beschreiben und hat mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind, was du beobachten kannst und welche Warnzeichen wichtig sind.',
+    lead: 'Es tut nicht richtig weh, aber im Kopf sitzt ein Gefühl von Druck, Enge oder Spannung: ein Druck im Kopf ohne Schmerzen, wie viele es beschreiben. Dieses Signal lässt sich schwer fassen und hat mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind, was du beobachten kannst und welche Warnzeichen wichtig sind.',
     readingTime: '6 Min.',
     ctaTitle: 'Kopfdruck und Verspannung einordnen lassen?',
     author: AUTOR,
@@ -1475,7 +1475,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Wenn dich dein Blutdruck interessiert, hilft eine korrekte Messung wesentlich mehr als die Interpretation eines einzelnen Körpersignals.</p>
 <h2>Können die Nebenhöhlen beteiligt sein, auch ohne starke Schmerzen?</h2>
 <p>Ja. Nebenhöhlendruck kann sich als Enge oder Druck an Stirn, Wangen, Nasenwurzel oder hinter den Augen bemerkbar machen. Erkältungen, Allergien und Nebenhöhlenentzündungen gehören zu möglichen Ursachen. Die ausführliche Einordnung findest du auf unserer Seite <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
-<p>Wenn gleichzeitig eine verstopfte Nase, veränderter Schleim oder Druck beim Bücken besteht, wird dieser Zusammenhang wahrscheinlicher.</p>
+<p>Wenn gleichzeitig eine <a href="/koerpersignale/verstopfte-nase-ohne-erkaeltung/">verstopfte Nase</a>, veränderter Schleim oder <a href="/koerpersignale/kopfdruck-beim-buecken/">Druck beim Bücken</a> besteht, wird dieser Zusammenhang wahrscheinlicher.</p>
 <h2>Was kannst du selbst beobachten?</h2>
 <p>Wo genau sitzt der Druck? Ist er einseitig oder beidseitig? Gibt es eine verstopfte Nase? Wird er beim Bücken stärker? Sind Nacken oder Kiefer gleichzeitig angespannt? Tritt das Gefühl nach langer Bildschirmarbeit auf? Gibt es <a href="/beschwerden/schwindel/">Schwindel</a>? Hat sich dein Sehen verändert? Ist das Gefühl neu oder kennst du es seit Jahren? Dauert es Minuten, Stunden oder fast den ganzen Tag?</p>
 <p>Diese Details sind oft hilfreicher als das Wort "Druck" allein.</p>
@@ -1496,6 +1496,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/kopfschmerzen/', label: 'Kopfschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/koerpersignale/kopfdruck-beim-buecken/', label: 'Kopfdruck beim Bücken', cat: 'Körpersignal' },
       { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
     ],
   },

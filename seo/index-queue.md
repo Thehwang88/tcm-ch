@@ -18,9 +18,6 @@ Regeln:
 
 ## Offen
 
-- https://tcm.ch/koerpersignale/herzklopfen-nach-dem-essen/
-- https://tcm.ch/gesundheitsbibliothek/befunde-werte/crp-erhoeht/
-- https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/
@@ -150,6 +147,9 @@ Regeln:
 
 ## Erledigt
 
+- https://tcm.ch/koerpersignale/herzklopfen-nach-dem-essen/ — 17.09.2026 (manuell)
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/crp-erhoeht/ — 17.09.2026 (manuell)
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/ — 17.09.2026 (manuell)
 - https://tcm.ch/beschwerden/rotatorenmanschette/ — 10.09.2026 (manuell)
 - https://tcm.ch/beschwerden/wadenschmerzen/ — 10.09.2026 (manuell)
 - https://tcm.ch/beschwerden/sprunggelenkschmerzen/ — 10.09.2026 (manuell)

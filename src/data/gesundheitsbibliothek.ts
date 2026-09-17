@@ -356,7 +356,7 @@ const SYNONYMS: Record<string, string> = {
   '/koerpersignale/wadenkraempfe-nachts/': 'Muskelkrampf Wade',
   '/koerpersignale/nachtschweiss-ohne-fieber/': 'nachts schwitzen',
   '/koerpersignale/trockener-mund-nachts/': 'Mundtrockenheit Xerostomie',
-  '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/': 'Benommenheit dumpfer Kopf',
+  '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/': 'Benommenheit dumpfer Kopf Druck im Kopf ohne Schmerzen Kopfdruck ohne Schmerzen Druckgefühl keine Kopfschmerzen',
   '/therapien/akupunktur/': 'Nadeln TCM',
   '/therapien/schroepfen/': 'Cupping Schröpfgläser',
   '/therapien/tuina/': 'chinesische Massage',
