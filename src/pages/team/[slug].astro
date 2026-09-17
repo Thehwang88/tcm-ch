@@ -76,13 +76,15 @@ const schema = {
   <article class="tp">
     <div class="tp-wrap">
 
-      <nav class="tp-crumb" aria-label="Breadcrumb">
+      {/* div statt <nav>: header.css stylt das nackte nav-Element (fixed, 68px, weiss)
+          und würde den Breadcrumb über den Site-Header legen. */}
+      <div class="tp-crumb" role="navigation" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">/</span>
         <a href="/ueber-uns/">Über uns</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.name}</span>
-      </nav>
+      </div>
 
       <header class="tp-hero">
         <div class="tp-portrait">
