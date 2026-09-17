@@ -46,6 +46,7 @@ const DATEN3 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN4 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN5 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN6 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
+const DATEN7 = { datePublished: '2026-09-17', dateModified: '2026-09-17' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -1614,6 +1615,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
       { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen', cat: 'Körpersignal' },
       { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
     ],
   },
@@ -1778,6 +1780,7 @@ export const koerpersignale: Koerpersignal[] = [
     ],
     related: [
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
+      { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen', cat: 'Körpersignal' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
       { href: '/beschwerden/angststoerungen/', label: 'Angststörungen', cat: 'Beschwerde' },
@@ -2643,6 +2646,62 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
       { href: '/wissen/heizungsluft-trockene-schleimhaeute/', label: 'Heizungsluft & trockene Schleimhäute', cat: 'Artikel' },
       { href: '/koerpersignale/schnarchen-jede-nacht/', label: 'Schnarchen jede Nacht', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'herzklopfen-nach-dem-essen',
+    symptom: 'Herzklopfen nach dem Essen',
+    title: 'Herzklopfen nach dem Essen: Was kann dahinterstecken?',
+    metaDesc: 'Nach dem Essen schlägt dein Herz spürbar schneller oder kräftiger? Warum Mahlzeiten das Herz beschäftigen, welche Muster harmlos sind und wann ein EKG sinnvoll ist.',
+    h1: 'Warum klopft mein Herz nach dem Essen?',
+    category: 'Bauch & Verdauung',
+    lead: 'Kaum ist die Mahlzeit vorbei, spürst du deinen Herzschlag: schneller, kräftiger, manchmal bis in den Hals. Dass das Herz nach dem Essen mehr arbeitet, ist zunächst normal, denn die Verdauung braucht Blut und Energie. Hier erfährst du, welche Muster dahinterstecken können und wann du das Herzklopfen abklären lassen solltest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Verdauung und Unruhe gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN7,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nach einer Mahlzeit leitet der Körper mehr Blut in den Verdauungstrakt. Das Herz gleicht das aus, indem es etwas schneller und kräftiger schlägt. Bei grossen, üppigen Mahlzeiten fällt dieser Effekt stärker aus und kann als Herzklopfen spürbar werden. Auch Kaffee, Alkohol, ein voller Magen, der gegen das Zwerchfell drückt, und angespanntes, hastiges Essen verstärken die Wahrnehmung.</p>
+<p>Der zeitliche Zusammenhang mit dem Essen sagt allein aber nicht, was dahintersteckt. Abklären lassen solltest du das Klopfen, wenn das Herz dabei rast, stolpert oder Begleitsymptome auftreten.</p>
+<h2>Was genau spürst du: Klopfen, Rasen oder Stolpern?</h2>
+<p>Für die Einordnung lohnt sich ein genauer Blick. Ein gleichmässiger, etwas schnellerer und deutlich spürbarer Schlag nach dem Essen spricht eher für die normale Verdauungsreaktion und verstärkte Wahrnehmung. Herzrasen bedeutet einen deutlich beschleunigten Puls, der nicht zur Situation passt. Stolpern beschreibt Aussetzer oder Extraschläge; die Einordnung dazu findest du beim Signal <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern in Ruhe</a>. Diese drei Muster fühlen sich ähnlich an, werden ärztlich aber unterschiedlich bewertet.</p>
+<h2>Was das Herzklopfen nach dem Essen begünstigt</h2>
+<ul>
+<li>Grosse, fettige oder sehr üppige Mahlzeiten: Die Verdauung fordert mehr Kreislaufarbeit.</li>
+<li>Koffein zum oder nach dem Essen, auch in Cola und Energydrinks</li>
+<li>Alkohol zur Mahlzeit, besonders am Abend</li>
+<li>Ein voller Magen, der nach oben drückt: Manche spüren dann Herz und Atmung deutlicher, oft zusammen mit einem <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">starken Völlegefühl</a> oder <a href="/beschwerden/sodbrennen/">Sodbrennen</a>.</li>
+<li>Hastiges Essen unter Anspannung: Stress aktiviert das Nervensystem, das auch den Puls steuert.</li>
+<li>Zu wenig getrunken über den Tag</li>
+</ul>
+<p>Manche Menschen bemerken das Klopfen vor allem nach bestimmten Mahlzeiten oder Getränken. Ein einfaches Ess- und Symptomtagebuch über ein bis zwei Wochen macht solche Zusammenhänge sichtbar, ohne dass du raten musst.</p>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Beginnt das Klopfen direkt nach dem Essen oder erst 30 bis 60 Minuten später?</li>
+<li>Tritt es nach jeder Mahlzeit auf oder nur nach bestimmten, etwa üppigen oder späten?</li>
+<li>Schlägt das Herz gleichmässig, rast es oder stolpert es? Miss den Puls am Handgelenk mit.</li>
+<li>Kommen Schwindel, Atemnot oder ein Druckgefühl in der Brust dazu?</li>
+<li>Wie lange dauert es, bis sich der Schlag wieder normal anfühlt?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Geh zur Ärztin oder zum Arzt, wenn das Herz nach dem Essen regelmässig rast oder deutlich stolpert, wenn das Klopfen mit Schwindel, Atemnot oder Ohnmachtsgefühl einhergeht oder wenn es neu, häufig und ohne erkennbaren Auslöser auftritt. Meist bringt ein EKG oder Langzeit-EKG Klarheit. Bei Brustschmerz mit Engegefühl, Atemnot oder Ausstrahlung in Arm oder Kiefer wähle sofort den Notruf 144.</p></div>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Am Anfang stehen das Gespräch und der Puls: Wie fühlt sich das Klopfen an, wann tritt es auf, welche Medikamente, Genussmittel und Vorerkrankungen bestehen? Je nach Bild folgen ein EKG, bei anfallsartigen Beschwerden ein Langzeit-EKG, und eine Blutuntersuchung, etwa von Schilddrüse und Blutbild, denn eine Überfunktion oder Blutarmut kann das Herz schneller schlagen lassen. Ob weitere Untersuchungen nötig sind, hängt vom Befund ab; eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<h2>Herz und Verdauung: warum die beiden sich beeinflussen</h2>
+<p>Herzschlag und Verdauung werden vom selben vegetativen Nervensystem gesteuert. Ein stark gedehnter Magen, Blähungen oder Reflux können über diese Verschaltung den Herzschlag spürbarer machen, ohne dass am Herzen selbst etwas krank ist. Das erklärt, warum das Klopfen oft zusammen mit Völlegefühl oder Druck im Oberbauch auftritt und nach ein bis zwei Stunden von selbst verschwindet. Ein Krankheitsbeweis ist dieser Zusammenhang aber nicht, und er ersetzt keine Abklärung, wenn die Warnzeichen oben zutreffen.</p>
+<h2>Wie betrachtet die chinesische Medizin das Herzklopfen nach dem Essen?</h2>
+<p>Die chinesische Medizin betrachtet spürbares Herzklopfen traditionell zusammen mit Verdauung, Anspannung und Schlaf als Gesamtmuster. Diese Einordnung ersetzt kein EKG und keine Blutuntersuchung, wenn Rhythmusstörungen oder andere Warnzeichen im Raum stehen.</p>
+<p>Sind kardiologische Ursachen ausgeschlossen und stehen Verdauung und Stress im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> Teil der Strategie sein, oft zusammen mit Anpassungen bei Essrhythmus und Portionsgrössen. Ob dein Muster dafür geeignet ist, klären wir ehrlich im Erstgespräch, auch in einer <a href="/standorte/">Praxis in deiner Nähe</a>.</p>`,
+    faqs: [
+      { q: 'Ist Herzklopfen nach dem Essen normal?', a: 'Ein etwas schnellerer, kräftigerer Herzschlag nach einer grossen Mahlzeit ist eine normale Kreislaufreaktion, weil die Verdauung mehr Blut braucht. Auffällig wird es, wenn das Herz dabei rast, stolpert oder Schwindel, Atemnot und Brustbeschwerden dazukommen.' },
+      { q: 'Warum klopft mein Herz besonders nach üppigen Mahlzeiten?', a: 'Je grösser und fettiger die Mahlzeit, desto mehr Kreislaufarbeit braucht die Verdauung, und ein voller Magen kann zusätzlich nach oben drücken. Kaffee und Alkohol zur Mahlzeit verstärken den Effekt. Kleinere Portionen und langsameres Essen reduzieren das Klopfen bei vielen deutlich.' },
+      { q: 'Wann sollte ich Herzklopfen nach dem Essen abklären lassen?', a: 'Wenn es regelmässig auftritt, das Herz dabei rast oder stolpert oder Begleitsymptome wie Schwindel, Atemnot oder Brustdruck bestehen. Ein EKG, bei Bedarf ein Langzeit-EKG und eine Blutuntersuchung schaffen Klarheit. Bei akutem Brustschmerz mit Atemnot: Notruf 144.' },
+    ],
+    related: [
+      { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/herzstolpern-in-ruhe/', label: 'Herzstolpern in Ruhe', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
+      { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
     ],
   },
 ];

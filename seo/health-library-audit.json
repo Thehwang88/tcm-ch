@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-15",
+  "generated": "2026-09-17",
   "totals": {
-    "healthPages": 314,
+    "healthPages": 317,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 1,
+      "befund": 3,
       "question": 13,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 6,
       "selfcare": 1,
       "editorial": 76,
-      "body_signal": 53,
+      "body_signal": 54,
       "therapy": 31,
       "visual": 10
     }
@@ -440,8 +440,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/inkontinenz/",
@@ -940,7 +940,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 19
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 18
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 165,
+      "inboundContentLinks": 167,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,28 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/crp-erhoeht/",
+      "type": "befund",
+      "title": "CRP erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/",
+      "type": "befund",
+      "title": "Leukozyten erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/fragen/",
@@ -1780,8 +1800,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 152,
-      "outboundHealthLinks": 54
+      "inboundContentLinks": 153,
+      "outboundHealthLinks": 55
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -1960,8 +1980,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/herzklopfen-nach-dem-essen/",
+      "type": "body_signal",
+      "title": "Herzklopfen nach dem Essen: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/herzschlag-im-ohr/",
@@ -1980,7 +2010,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 10
     },
     {
@@ -1990,7 +2020,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 9
     },
     {
@@ -2090,7 +2120,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 11
     },
     {
@@ -2280,8 +2310,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/wadenkraempfe-nachts/",
@@ -2340,7 +2370,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 211,
+      "inboundContentLinks": 212,
       "outboundHealthLinks": 8
     },
     {

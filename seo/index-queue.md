@@ -18,6 +18,9 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/herzklopfen-nach-dem-essen/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/crp-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/

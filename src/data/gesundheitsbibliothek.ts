@@ -321,6 +321,9 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche —
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/koerpersignale/herzklopfen-nach-dem-essen/': 'Herzrasen nach dem Essen Puls nach Mahlzeit Palpitationen',
+  '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/': 'CRP Wert Entzündungswert C-reaktives Protein Blutwert Entzündung',
+  '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/': 'weisse Blutkörperchen erhöht Blutbild Leukozytose',
   '/beschwerden/sodbrennen/': 'Reflux saures Aufstossen',
   '/beschwerden/migraene/': 'Kopfweh Aura',
   '/beschwerden/kopfschmerzen/': 'Kopfweh',
