@@ -13,8 +13,8 @@ import SpaPage from '../../layouts/SpaPage.astro';
 import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
-import ueberUns from '../../data/ueber-uns-body.html?raw';
 import homeBody from '../../data/home-body.html?raw';
+import { getTherapeut, teamCardHtml } from '../../data/therapeuten';
 import { getStandort, waHref, telHref } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
 import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
@@ -151,16 +151,22 @@ if (migrated) {
 
   function endOfDiv(html: string, i: number) { const rx = /<div\b|<\/div>/g; rx.lastIndex = i; let d = 0; let m: RegExpExecArray | null; while ((m = rx.exec(html))) { if (m[0] === '</div>') { d--; if (d === 0) return m.index + 6; } else d++; } return html.length; }
   let outBody = body;
-  if (slug === 'st-gallen' || slug === 'winterthur-marktgasse') {
-    const tg0 = ueberUns.indexOf('<div class="team-grid">');
-    const teamGrid = tg0 >= 0 ? ueberUns.slice(tg0, endOfDiv(ueberUns, tg0)) : '';
-    const cor0 = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
-    if (teamGrid && cor0 >= 0) outBody = outBody.slice(0, cor0) + teamGrid + outBody.slice(endOfDiv(outBody, cor0));
+  if (slug === 'st-gallen') {
+    // Die hartcodierten Teamkarten des Leafs durch generierte Karten aus
+    // src/data/therapeuten.ts ersetzen — komplette Karte verlinkt auf /team/<slug>/.
+    const tg0 = outBody.indexOf('<div class="team-grid">');
+    if (tg0 >= 0) {
+      const cards = ['corinna-reinhart', 'seongsu-kim']
+        .map((s) => getTherapeut(s))
+        .filter((x): x is NonNullable<typeof x> => !!x)
+        .map((x) => teamCardHtml(x))
+        .join('');
+      outBody = outBody.slice(0, tg0) + '<div class="team-grid">' + cards + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
+    }
   }
   if (slug === 'bottighofen') {
-    const ei = ueberUns.indexOf('Emanuela Pelican');
-    const cs = ei >= 0 ? ueberUns.lastIndexOf('<div class="team-card', ei) : -1;
-    const card = cs >= 0 ? ueberUns.slice(cs, endOfDiv(ueberUns, cs)) : '';
+    const emanuela = getTherapeut('emanuela-pelican');
+    const card = emanuela ? teamCardHtml(emanuela) : '';
     const ph = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
     if (card && ph >= 0) outBody = outBody.slice(0, ph) + '<div class="team-grid bf-therapist" style="max-width:360px;margin:20px 0">' + card + '</div>' + outBody.slice(endOfDiv(outBody, ph));
     const hg0 = homeBody.indexOf('<div class="svc-grid">');

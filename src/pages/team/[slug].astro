@@ -1,0 +1,311 @@
+---
+// /team/[slug] — kanonische Therapeut:innen-Profilseiten, generiert aus
+// src/data/therapeuten.ts. Eine Person = eine Profilseite; Standorte werden
+// im Profil verlinkt (Daten aus src/data/locations.ts, nichts doppelt hardcoden).
+//
+// Qualitätsregel: jede Section rendert NUR, wenn Daten vorhanden sind — ein
+// Profil mit nur Name/Bild/Titel/Buchungslink funktioniert vollständig.
+// Development-Placeholder ("[…]") erscheinen sichtbar markiert, aber nie im Schema.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { therapeuten, bookingHref, isPlaceholder, type Therapeut } from '../../data/therapeuten';
+import { clinics } from '../../data/locations';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return therapeuten.map((t) => ({ params: { slug: t.slug }, props: { t } }));
+}
+
+const { t } = Astro.props as { t: Therapeut };
+const path = `/team/${t.slug}/`;
+const url = site.url + path;
+const booking = bookingHref(t);
+const vorname = t.name.replace(/^Dr\.\s*\w*\.?\s*/i, '').split(' ')[0];
+
+const locs = (t.standorte ?? [])
+  .map((id) => clinics.find((c) => c.id === id))
+  .filter((c) => !!c);
+const primaryLoc = locs[0];
+
+// Nur echte (Nicht-Placeholder-)Werte rendern die jeweilige Section / das Schema-Feld.
+const real = (arr?: string[]) => (arr ?? []).filter((s) => !isPlaceholder(s));
+const show = {
+  kurz: !!t.kurzbeschreibung,
+  philosophie: !!t.philosophie,
+  bio: !!t.bio?.length,
+  schwerpunkte: !!t.schwerpunkte?.length,
+  ausbildung: !!t.ausbildung?.length || !!t.erfahrung,
+  methoden: !!t.methoden?.length,
+  sprachen: !!t.sprachen?.length,
+  anerkennungen: !!t.anerkennungen?.length,
+  standorte: locs.length > 0,
+};
+
+const title = t.seo?.title ?? `${t.name} – ${t.titel} | TCM.ch`;
+const description =
+  t.seo?.description ??
+  `${t.name}, ${t.titel}${t.ortLabel ? ` bei TCM.ch in ${t.ortLabel}` : ' im TCM.ch Netzwerk'}. Profil ansehen und Termin unkompliziert per WhatsApp anfragen.`;
+
+// Schema.org: Person + Breadcrumb. Nur Angaben, die sichtbar auf der Seite stehen
+// und keine Placeholder sind.
+const person: Record<string, unknown> = {
+  '@type': 'Person',
+  name: t.name,
+  jobTitle: t.titel,
+  image: site.url + t.bild,
+  url,
+  worksFor: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: site.url + '/' },
+};
+if (real(t.sprachen).length) person.knowsLanguage = real(t.sprachen);
+if (locs.length) person.workLocation = locs.map((c) => ({ '@type': 'Place', name: `TCM.ch ${c.name}`, url: `${site.url}/standorte/${c.id}/` }));
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    person,
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: site.url + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Über uns', item: site.url + '/ueber-uns/' },
+        { '@type': 'ListItem', position: 3, name: t.name, item: url },
+      ],
+    },
+  ],
+};
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} ogImage={site.url + t.bild}>
+  <article class="tp">
+    <div class="tp-wrap">
+
+      <nav class="tp-crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/ueber-uns/">Über uns</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t.name}</span>
+      </nav>
+
+      <header class="tp-hero">
+        <div class="tp-portrait">
+          <img src={t.bild} alt={`${t.name} – ${t.titel} bei TCM.ch`} width="630" height="840" loading="eager" fetchpriority="high" />
+        </div>
+        <div class="tp-hero-info">
+          {t.verfuegbar !== undefined && (
+            <div class={`tp-status ${t.verfuegbar ? 'is-on' : 'is-off'}`}>
+              <span class="tp-status-dot" aria-hidden="true"></span>
+              {t.verfuegbar ? 'Nimmt neue Patient:innen an' : 'Aktuell ausgebucht'}
+            </div>
+          )}
+          <p class="tp-eyebrow">{t.titel}</p>
+          <h1 class="tp-name">{t.name}</h1>
+          {t.ortLabel && (
+            <p class="tp-ort">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              {t.ortLabel}
+            </p>
+          )}
+          {show.kurz && <p class="tp-kurz">{t.kurzbeschreibung}</p>}
+          {show.philosophie && <p class="tp-quote">«{t.philosophie}»</p>}
+          {(show.methoden || show.schwerpunkte) && (
+            <div class="tp-pills">
+              {(t.methoden ?? []).map((m) => <span class="tp-pill">{m}</span>)}
+              {(t.schwerpunkte ?? []).map((s) => <span class="tp-pill tp-pill--soft">{s}</span>)}
+            </div>
+          )}
+          {show.anerkennungen && (
+            <div class="tp-pills">
+              {t.anerkennungen!.map((a) => <span class="tp-pill tp-pill--badge">{a}</span>)}
+            </div>
+          )}
+          {(t.erfahrung || show.sprachen) && (
+            <dl class="tp-meta">
+              {t.erfahrung && (<><dt>Erfahrung</dt><dd>{t.erfahrung}</dd></>)}
+              {show.sprachen && (<><dt>Sprachen</dt><dd>{t.sprachen!.join(', ')}</dd></>)}
+            </dl>
+          )}
+          <div class="tp-cta-row">
+            <a class="tp-cta" href={booking} target="_blank" rel="noopener">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Termin buchen
+            </a>
+            {primaryLoc && <a class="tp-cta tp-cta--sec" href={`/standorte/${primaryLoc.id}/`}>Standort ansehen</a>}
+          </div>
+          <p class="tp-trust">Antwort meist innert Minuten · Krankenkasse deckt 80–100 %</p>
+        </div>
+      </header>
+
+      {show.bio && (
+        <section class="tp-section">
+          <h2>Über {vorname}</h2>
+          {t.bio!.map((p) => <p class={isPlaceholder(p) ? 'tp-ph' : undefined}>{p}</p>)}
+        </section>
+      )}
+
+      {show.schwerpunkte && (
+        <section class="tp-section">
+          <h2>Behandlungsschwerpunkte</h2>
+          <ul class="tp-tags">
+            {t.schwerpunkte!.map((s) => <li class={isPlaceholder(s) ? 'tp-ph' : undefined}>{s}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {show.ausbildung && (
+        <section class="tp-section">
+          <h2>Ausbildung &amp; Erfahrung</h2>
+          {t.ausbildung?.length && (
+            <ul class="tp-edu">
+              {t.ausbildung!.map((a) => (
+                <li class={isPlaceholder(a.titel) ? 'tp-ph' : undefined}>
+                  <strong>{a.titel}</strong>
+                  {(a.institution || a.jahr) && <span>{[a.institution, a.jahr].filter(Boolean).join(' · ')}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
+          {t.erfahrung && <p class={isPlaceholder(t.erfahrung) ? 'tp-ph' : undefined}>{t.erfahrung}</p>}
+        </section>
+      )}
+
+      {show.methoden && (
+        <section class="tp-section">
+          <h2>Methoden</h2>
+          <ul class="tp-tags">
+            {t.methoden!.map((m) => <li>{m}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {show.sprachen && (
+        <section class="tp-section">
+          <h2>Sprachen</h2>
+          <p class={t.sprachen!.every(isPlaceholder) ? 'tp-ph' : undefined}>{t.sprachen!.join(' · ')}</p>
+        </section>
+      )}
+
+      {show.standorte && (
+        <section class="tp-section">
+          <h2>{locs.length > 1 ? 'Standorte' : 'Standort'}</h2>
+          <div class="tp-locs">
+            {locs.map((c) => (
+              <div class="tp-loc-card">
+                <div class="tp-loc-body">
+                  <p class="tp-loc-name">TCM.ch {c!.name}</p>
+                  <p class="tp-loc-addr">{[c!.street, [c!.postalCode, c!.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')}</p>
+                </div>
+                <div class="tp-loc-actions">
+                  <a href={`/standorte/${c!.id}/`}>Standort ansehen</a>
+                  <a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin buchen</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="tp-final">
+        <h2>Termin bei {vorname} anfragen</h2>
+        <p>Unkompliziert per WhatsApp – wir melden uns meist innert Minuten.</p>
+        <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a>
+      </section>
+
+      <p class="tp-back"><a href="/ueber-uns/#ueber-uns-team">← Alle Therapeut:innen ansehen</a></p>
+    </div>
+
+    <div class="tp-sticky" aria-hidden="false">
+      <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a>
+    </div>
+  </article>
+</LayoutDe>
+
+<style>
+  .tp { padding: 96px 0 72px; background: var(--white); }
+  .tp-wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+  .tp-crumb { font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
+  .tp-crumb a { color: var(--muted); text-decoration: none; }
+  .tp-crumb a:hover { color: var(--blue-dark); }
+  .tp-crumb [aria-current] { color: var(--charcoal); font-weight: 600; }
+
+  /* ── Hero ── */
+  .tp-hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
+  .tp-portrait { border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: var(--surface); box-shadow: 0 2px 16px rgba(0,0,0,.06), 0 16px 48px rgba(0,0,0,.08); }
+  .tp-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+  .tp-status { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 100px; margin-bottom: 16px; }
+  .tp-status.is-on { background: var(--blue-light); color: var(--blue-dark); }
+  .tp-status.is-off { background: var(--surface); color: var(--muted); }
+  .tp-status-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  .tp-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-dark); margin: 0 0 10px; }
+  .tp-name { font-family: var(--font-sans); font-weight: 800; font-size: clamp(30px, 4vw, 44px); letter-spacing: -.03em; line-height: 1.06; color: var(--black); margin: 0 0 12px; }
+  .tp-ort { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--mid); margin: 0 0 18px; }
+  .tp-ort svg { color: var(--blue); flex-shrink: 0; }
+  .tp-kurz { font-size: 16px; line-height: 1.7; color: var(--mid); margin: 0 0 14px; }
+  .tp-quote { font-family: 'Nunito', sans-serif; font-style: italic; font-weight: 900; font-size: 17px; line-height: 1.55; color: var(--charcoal); margin: 0 0 18px; }
+
+  .tp-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .tp-pill { font-size: 12.5px; font-weight: 600; padding: 6px 13px; border-radius: 100px; background: var(--blue-light); color: var(--blue-dark); }
+  .tp-pill--soft { background: var(--surface); color: var(--charcoal); border: 1px solid var(--border); }
+  .tp-pill--badge { background: #fff; color: var(--mid); border: 1px solid var(--border); }
+
+  .tp-meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin: 6px 0 22px; font-size: 14px; }
+  .tp-meta dt { color: var(--muted); font-weight: 600; }
+  .tp-meta dd { margin: 0; color: var(--charcoal); }
+
+  .tp-cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .tp-cta { display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: var(--blue); color: #fff; padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 700; font-family: var(--font-sans); text-decoration: none; transition: background .2s ease, transform .2s ease; }
+  .tp-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+  .tp-cta--sec { background: #fff; color: var(--charcoal); border: 1.5px solid var(--border); }
+  .tp-cta--sec:hover { background: var(--surface); border-color: #ccc; }
+  .tp-trust { font-size: 12.5px; color: var(--muted); margin: 12px 0 0; }
+
+  /* ── Sections ── */
+  .tp-section { max-width: 760px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .tp-section h2 { font-family: var(--font-sans); font-weight: 800; font-size: 24px; letter-spacing: -.02em; color: var(--black); margin: 0 0 16px; }
+  .tp-section p { font-size: 15.5px; line-height: 1.75; color: var(--mid); margin: 0 0 12px; }
+
+  .tp-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 9px; padding: 0; margin: 0; }
+  .tp-tags li { font-size: 13.5px; font-weight: 600; color: var(--charcoal); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 15px; }
+
+  .tp-edu { list-style: none; padding: 0; margin: 0 0 12px; }
+  .tp-edu li { display: flex; flex-direction: column; gap: 3px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+  .tp-edu li:last-child { border-bottom: none; }
+  .tp-edu strong { color: var(--black); font-weight: 700; }
+  .tp-edu span { color: var(--muted); font-size: 13px; }
+
+  /* Development-Placeholder sichtbar dezent markieren */
+  .tp-ph { color: var(--muted) !important; font-style: italic; }
+
+  .tp-locs { display: grid; gap: 12px; }
+  .tp-loc-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+  .tp-loc-name { font-size: 15px; font-weight: 700; color: var(--black); margin: 0 0 3px; }
+  .tp-loc-addr { font-size: 13px; color: var(--muted); margin: 0; }
+  .tp-loc-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .tp-loc-actions a { font-size: 13.5px; font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+  .tp-loc-actions a:hover { text-decoration: underline; }
+  .tp-loc-actions a.tp-loc-book { background: var(--blue); color: #fff; padding: 10px 18px; border-radius: 100px; }
+  .tp-loc-actions a.tp-loc-book:hover { background: var(--blue-dark); text-decoration: none; }
+
+  .tp-final { margin-top: 64px; background: var(--blue-light); border-radius: 20px; padding: 44px 32px; text-align: center; }
+  .tp-final h2 { font-family: var(--font-sans); font-weight: 800; font-size: 26px; letter-spacing: -.02em; color: var(--black); margin: 0 0 8px; }
+  .tp-final p { font-size: 15px; color: var(--mid); margin: 0 0 20px; }
+
+  .tp-back { margin: 28px 0 0; font-size: 14px; }
+  .tp-back a { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
+  .tp-back a:hover { text-decoration: underline; }
+
+  /* ── Sticky Mobile-CTA ── */
+  .tp-sticky { display: none; }
+
+  @media (max-width: 860px) {
+    .tp { padding: 84px 0 96px; }
+    .tp-wrap { padding: 0 20px; }
+    .tp-hero { grid-template-columns: 1fr; gap: 24px; }
+    .tp-portrait { max-width: 420px; }
+    .tp-section { margin-top: 40px; padding-top: 28px; }
+    .tp-loc-card { flex-direction: column; align-items: flex-start; }
+    .tp-final { padding: 36px 20px; }
+    .tp-sticky { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-top: 1px solid var(--border); }
+    .tp-sticky .tp-cta { width: 100%; }
+  }
+</style>

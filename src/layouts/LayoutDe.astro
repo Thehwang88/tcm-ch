@@ -17,6 +17,8 @@ interface Props {
   /** Robots-Wert wenn noindex gesetzt ist (z.B. 'noindex, follow' für teilbare Tools). */
   robots?: string;
   turnstile?: boolean;   // load Cloudflare Turnstile (pages with a protected form)
+  /** Per-page OG-Bild (absolute URL); Default: site.ogImage. */
+  ogImage?: string;
   /**
    * Kanonische Ziel-URL, wenn diese Seite bewusst auf eine ANDERE Seite konsolidiert
    * (Duplikat-Auflösung). Ist sie gesetzt, entfällt hreflang: die Sprachpaarung gilt
@@ -26,7 +28,7 @@ interface Props {
   canonicalTo?: string;
 }
 
-const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, canonicalTo } = Astro.props;
+const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, canonicalTo, ogImage = site.ogImage } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -59,9 +61,9 @@ const year = 2026;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={site.ogImage} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={site.ogImage} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

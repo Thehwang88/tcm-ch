@@ -18,6 +18,22 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/team/simon-stueve/
+- https://tcm.ch/team/yuna-stueve/
+- https://tcm.ch/team/ken-uehara/
+- https://tcm.ch/team/markus-muschal/
+- https://tcm.ch/team/johann-stueve/
+- https://tcm.ch/team/janine-schmieder/
+- https://tcm.ch/team/emanuela-pelican/
+- https://tcm.ch/team/jiun-lee/
+- https://tcm.ch/team/michele-seiler/
+- https://tcm.ch/team/kristen-lambertin/
+- https://tcm.ch/team/leon-brandon-mueller/
+- https://tcm.ch/team/corinna-reinhart/
+- https://tcm.ch/team/natalia-goc/
+- https://tcm.ch/team/seongsu-kim/
+- https://tcm.ch/team/brenda-oviedo/
+
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/

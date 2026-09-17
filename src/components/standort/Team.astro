@@ -3,16 +3,22 @@
 // Nutzt die bestehenden .team-* Klassen (home.css); rendert nur, wenn team-Daten existieren.
 import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
+import { getTherapeutByName } from '../../data/therapeuten';
 const { data } = Astro.props as { data: Standort };
 const wa = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 const ort = data.nap.ort;
+// Hat die Person ein Profil (src/data/therapeuten.ts), wird die ganze Karte
+// zum Link auf /team/<slug>/; sonst bleibt der bisherige WhatsApp-CTA.
+const cards = data.team.map((t) => ({ ...t, profil: getTherapeutByName(t.name)?.slug }));
 ---
 {data.team.length > 0 && (
   <section class="section" id={`team-${data.slug}`} style="scroll-margin-top:68px"><div class="wrap"><div class="content-body">
     <h2>Dein TCM Team in {data.stadt}</h2>
     <p>Erfahrene Therapeut:innen und qualifizierte Ärzt:innen arbeiten hier Hand in Hand. Alle Behandlungen folgen klaren Standards des TCM.ch Netzwerks.</p>
     <div class="team-grid">
-    {data.team.map((t) => (
+    {cards.map((t) => t.profil ? (
+      <a href={`/team/${t.profil}/`} class="team-card reveal team-card--link" aria-label={`Profil von ${t.name} ansehen`}> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <span class="team-cta">Profil ansehen</span> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </a>
+    ) : (
       <div class="team-card reveal"> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <a href={wa} class="team-cta" target="_blank" rel="noopener">Termin anfragen</a> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </div>
     ))}
     </div>

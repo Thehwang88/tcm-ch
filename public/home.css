@@ -4687,3 +4687,10 @@ div.sidebar-row:not([onclick]){cursor:default;background:none}
 #generic-premium-hero.sg-active { margin-top: 68px; }
 .sg-inner { padding-top: 132px; }
 @media (max-width: 768px) { .sg-inner { padding-top: 100px; } }
+
+/* ── TEAM CARD → PROFIL-LINK (ganze Karte klickbar, /team/<slug>/) ── */
+a.team-card--link{display:block;color:inherit;text-decoration:none}
+a.team-card--link:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:20px}
+a.team-card--link .team-cta{pointer-events:none}
+a.team-card--link .team-cta svg{transition:transform var(--t-base) ease}
+a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
