@@ -24,14 +24,35 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
    sonst min-height verloren geht und die Pille auf Textzeilenhöhe kollabiert. */
 #navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;min-height:44px!important;padding:0 22px!important;border-radius:100px!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;line-height:1!important}
 #navCtaBtn.nav-cta:hover{background:#000!important;border:none!important}
-/* Mobil: CTA als klar primäre, gut tippbare Pille zwischen Logo und Burger */
+/* ── Mobiler Header: ruhige, ausbalancierte Reihe Logo | CTA | Burger ──────
+   80px hoch mit mehr Luft, CTA als 46px-Pille (klar primär, aber nicht
+   bullig), Burger als echter 46px-Kreis mit dezentem Rand auf gleicher
+   Mittellinie. Body-Offsets werden mitgezogen (header.css setzt 60px). */
 @media(max-width:900px){
-  #navCtaBtn.nav-cta{min-height:48px!important;font-size:16px!important;padding:0 26px!important;min-width:176px!important}
-  .nav-menu-btn,#navMenuBtn{margin-left:8px!important}
+  nav#mainNav{height:80px;padding:0 18px}
+  body > main, body > #home-content{padding-top:80px!important}
+  #mainNav .nav-inner{gap:12px}
+  #mainNav .nav-right{gap:10px}
+  #mainNav .logo{flex:0 0 auto}
+  #mainNav .logo img{width:116px;height:auto;max-width:none}
+  #navCtaBtn.nav-cta{min-height:46px!important;font-size:16px!important;padding:0 26px!important;min-width:0!important;margin-left:auto}
+  .nav-menu-btn,#navMenuBtn{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;border-radius:50%!important;border:1px solid rgba(25,20,20,.14)!important;margin-left:0!important;box-shadow:none!important}
+  .nav-menu-btn svg,#navMenuBtn svg{width:17px!important;height:17px!important}
+  .hero-bg{min-height:calc(100vh - 80px)}
 }
-@media(max-width:374px){
-  nav#mainNav{padding:0 12px}
-  #navCtaBtn.nav-cta{min-width:0!important;padding:0 20px!important;font-size:15px!important}
+@media(max-width:409px){
+  #mainNav .logo img{width:108px}
+  #navCtaBtn.nav-cta{padding:0 22px!important}
+}
+@media(max-width:389px){
+  #mainNav .logo img{width:96px}
+  #navCtaBtn.nav-cta{padding:0 16px!important;font-size:15.5px!important}
+}
+@media(max-width:349px){
+  nav#mainNav{padding:0 14px}
+  #mainNav .nav-inner{gap:10px}
+  #mainNav .logo img{width:80px}
+  #navCtaBtn.nav-cta{padding:0 11px!important;font-size:15px!important}
 }
 
 /* Burger-Button neutral statt grün umrandet */
