@@ -101,7 +101,12 @@ function navMoreToggle(){
     var li=e.target.closest&&e.target.closest('.nav-more-li');
     if(!li) closeMore();
   });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMore(); });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    closeMore();
+    var d=document.getElementById('siteDrawer');
+    if(d&&d.classList.contains('open')&&typeof drawerClose==='function') drawerClose();
+  });
 })();
 
 /* "Jetzt Hilfe erhalten" CTA: open the home contact form if present, else go to /kontakt. */
