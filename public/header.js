@@ -82,6 +82,28 @@ function openDrawer(page, id)   { nav(page, id); }
 function closeDrawer()          { history.back(); }
 
 
+/* "Mehr"-Dropdown (Desktop): Toggle mit aria-expanded, schliesst bei Escape und Klick ausserhalb. */
+function navMoreToggle(){
+  var btn=document.getElementById('navMoreBtn');
+  var panel=document.getElementById('navMorePanel');
+  if(!btn||!panel) return;
+  var open=btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded', open?'false':'true');
+  panel.classList.toggle('open', !open);
+}
+(function(){
+  function closeMore(){
+    var btn=document.getElementById('navMoreBtn');
+    var panel=document.getElementById('navMorePanel');
+    if(btn&&btn.getAttribute('aria-expanded')==='true'){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');}
+  }
+  document.addEventListener('click',function(e){
+    var li=e.target.closest&&e.target.closest('.nav-more-li');
+    if(!li) closeMore();
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMore(); });
+})();
+
 /* "Jetzt Hilfe erhalten" CTA: open the home contact form if present, else go to /kontakt. */
 (function(){
   var cta = document.getElementById('navCtaBtn');

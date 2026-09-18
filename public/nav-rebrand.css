@@ -1,0 +1,94 @@
+/* ── NAV REBRAND (Presentation-Layer only) ─────────────────────────────────
+   Neues Marken-Grün (#1ED760) + Schwarz (#191414) NUR für Header & Drawer.
+   Wird NACH header.css bzw. home.css geladen und überschreibt gezielt deren
+   Nav-/Drawer-Regeln. Keine Routing-/Struktur-Änderungen, keine Seitenstile.
+   Der Rest der Site behält vorerst die bisherigen Tokens; der site-weite
+   Rebrand (Hero etc.) folgt separat. */
+
+:root{
+  --nav-green:#1ED760;
+  --nav-green-dark:#14532D;
+  --nav-green-soft:rgba(30,215,96,.12);
+  --nav-ink:#191414;
+}
+
+/* ── Desktop-Bar ── */
+nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:none}
+#mainNav .nav-inner{gap:20px}
+#mainNav .nav-links{gap:6px}
+#mainNav .nav-links a,#mainNav .nav-links button{font-weight:600;color:var(--nav-ink);border-radius:100px;transition:background .15s ease,color .15s ease}
+#mainNav .nav-links a:hover,#mainNav .nav-links button:hover{background:var(--nav-green-soft);color:var(--nav-ink)}
+
+/* CTA: schwarze Pille (überschreibt die Ghost-Regel aus header.css) */
+#navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;padding:0 22px!important;border-radius:100px!important;box-shadow:none!important}
+#navCtaBtn.nav-cta:hover{background:#000!important;border:none!important}
+
+/* Burger-Button neutral statt grün umrandet */
+.nav-menu-btn,#navMenuBtn{border:1.5px solid rgba(25,20,20,.16)!important;color:var(--nav-ink)!important;border-radius:100px!important;background:#fff!important}
+.nav-menu-btn svg,#navMenuBtn svg{stroke:var(--nav-ink)!important}
+.nav-menu-btn:hover,#navMenuBtn:hover{border-color:var(--nav-ink)!important;background:var(--nav-green-soft)!important}
+
+/* EN-Pille angleichen */
+#mainNav .nav-lang{color:var(--nav-ink)!important;border:1.5px solid rgba(25,20,20,.16)!important;font-weight:700!important}
+#mainNav .nav-lang:hover{border-color:var(--nav-ink)!important;background:var(--nav-green-soft)!important}
+
+/* ── Audience-Switch (Desktop) ── */
+.nav-audience{display:none;align-items:center;gap:2px;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin-right:10px;flex-shrink:0}
+@media(min-width:1180px){.nav-audience{display:inline-flex}}
+.nav-aud-opt{font-size:12.5px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:6px 13px;border-radius:100px;white-space:nowrap;transition:color .15s ease,background .15s ease;line-height:1}
+.nav-aud-opt:hover{color:var(--nav-ink)}
+.nav-aud-opt.is-active{background:#fff;color:var(--nav-ink);font-weight:700;box-shadow:0 1px 4px rgba(25,20,20,.12)}
+.nav-aud-opt.is-active::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
+
+/* ── "Mehr"-Dropdown ── */
+.nav-more-li{position:relative}
+.nav-more-btn{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--nav-ink);background:none;border:none;cursor:pointer;font-family:var(--font-sans);border-radius:100px;min-height:44px;padding:0 10px}
+.nav-more-btn:hover,.nav-more-btn[aria-expanded="true"]{background:var(--nav-green-soft)}
+.nav-more-btn svg{transition:transform .2s ease}
+.nav-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-more-panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:300px;background:#fff;border:1px solid rgba(25,20,20,.1);border-radius:18px;box-shadow:0 18px 50px rgba(25,20,20,.14);padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:300}
+.nav-more-panel.open{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.nav-more-group + .nav-more-group{border-top:1px solid rgba(25,20,20,.07);margin-top:8px;padding-top:8px}
+.nav-more-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(25,20,20,.45);padding:6px 12px 4px}
+#mainNav .nav-links .nav-more-panel a{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;gap:2px;padding:9px 12px!important;min-height:auto;border-radius:10px;font-size:14px;font-weight:600;color:var(--nav-ink);text-decoration:none;transition:background .12s ease}
+.nav-more-panel a:hover{background:var(--nav-green-soft)}
+.nav-more-desc{font-size:11.5px;font-weight:400;color:rgba(25,20,20,.5)}
+
+/* ── Drawer: Basis ── */
+#siteDrawer{background:#fff}
+.drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(30,215,96,0) 100%)}
+
+/* Audience-Switch im Drawer */
+.drw-aud{display:flex;gap:2px;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin:14px 22px 6px}
+.drw-aud-opt{flex:1;text-align:center;font-size:13px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:9px 10px;border-radius:100px;line-height:1;transition:color .15s ease,background .15s ease;min-height:auto}
+.drw-aud-opt.is-active{background:#fff;color:var(--nav-ink);font-weight:700;box-shadow:0 1px 4px rgba(25,20,20,.12)}
+.drw-aud-opt.is-active::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
+
+/* Gruppen-Labels (rein visuell) */
+.drw-group-label{padding:16px 22px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(25,20,20,.42)}
+
+/* Grün-Akzente im Drawer auf Markengrün umstellen */
+.drw-acc-btn::before{background:var(--nav-green)!important;opacity:1}
+.drw-acc-btn.open{background:var(--nav-green-soft)}
+.drw-acc-btn.open .drw-acc-label{color:var(--nav-ink)!important}
+.drw-acc-btn.open .drw-acc-chevron{background:var(--nav-green-soft)!important;color:var(--nav-green-dark)!important}
+.drw-links li a:hover,.drw-links li button:hover{background:var(--nav-green-soft);color:var(--nav-ink)}
+.drw-plain-links li a:hover,.drw-plain-links li button:hover{background:var(--nav-green-soft);color:var(--nav-ink)}
+.drw-plain-links li a,.drw-plain-links li button{font-weight:600;color:var(--nav-ink)}
+.drw-acc-label{font-size:15px;color:var(--nav-ink)}
+.drw-logo-dot{background:var(--nav-green)!important}
+
+/* Drawer-CTA: Markengrün, gross, sticky am unteren Rand des Scrollbereichs */
+.drw-group--cta{position:sticky;bottom:0;background:#fff;border-top:1px solid rgba(25,20,20,.08);padding:12px 18px calc(14px + env(safe-area-inset-bottom));margin-top:auto;box-shadow:0 -10px 24px rgba(25,20,20,.05)}
+.drw-cta-primary{background:var(--nav-green)!important;color:var(--nav-ink)!important;min-height:48px;border-radius:100px!important;font-size:15px;font-weight:700;box-shadow:none!important}
+.drw-cta-primary:hover{background:#19c556!important;color:var(--nav-ink)!important}
+.drw-cta-primary svg{stroke:var(--nav-ink)}
+.drw-cta-secondary{border-radius:100px;min-height:44px}
+.drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(30,215,96,.4)}
+
+/* Damit die sticky CTA im Scrollcontainer wirkt */
+.drw-body{display:flex;flex-direction:column}
+.drw-body > .drw-group{flex-shrink:0}
+/* header.css gibt .drw-body mobil 80px padding-bottom; die sticky CTA bringt
+   ihr Safe-Area-Padding selbst mit, sonst lugt die Liste unter der CTA hervor. */
+@media(max-width:900px){.drw-body{padding-bottom:0!important}}
