@@ -19,9 +19,20 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
 #mainNav .nav-links a,#mainNav .nav-links button{font-weight:600;color:var(--nav-ink);border-radius:100px;transition:background .15s ease,color .15s ease}
 #mainNav .nav-links a:hover,#mainNav .nav-links button:hover{background:var(--nav-green-soft);color:var(--nav-ink)}
 
-/* CTA: schwarze Pille (überschreibt die Ghost-Regel aus header.css) */
-#navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;padding:0 22px!important;border-radius:100px!important;box-shadow:none!important}
+/* CTA: schwarze Pille (überschreibt die Ghost-Regel aus header.css).
+   Explizite Höhe/Zentrierung, weil je nach Seite (home.css vs header.css)
+   sonst min-height verloren geht und die Pille auf Textzeilenhöhe kollabiert. */
+#navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;min-height:44px!important;padding:0 22px!important;border-radius:100px!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;line-height:1!important}
 #navCtaBtn.nav-cta:hover{background:#000!important;border:none!important}
+/* Mobil: CTA als klar primäre, gut tippbare Pille zwischen Logo und Burger */
+@media(max-width:900px){
+  #navCtaBtn.nav-cta{min-height:48px!important;font-size:16px!important;padding:0 26px!important;min-width:176px!important}
+  .nav-menu-btn,#navMenuBtn{margin-left:8px!important}
+}
+@media(max-width:374px){
+  nav#mainNav{padding:0 12px}
+  #navCtaBtn.nav-cta{min-width:0!important;padding:0 20px!important;font-size:15px!important}
+}
 
 /* Burger-Button neutral statt grün umrandet */
 .nav-menu-btn,#navMenuBtn{border:1.5px solid rgba(25,20,20,.16)!important;color:var(--nav-ink)!important;border-radius:100px!important;background:#fff!important}
