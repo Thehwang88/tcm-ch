@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-17",
+  "generated": "2026-09-18",
   "totals": {
-    "healthPages": 317,
+    "healthPages": 322,
     "byType": {
       "hub": 6,
       "condition": 106,
@@ -14,7 +14,7 @@
       "selfcare": 1,
       "editorial": 76,
       "body_signal": 54,
-      "therapy": 31,
+      "therapy": 36,
       "visual": 10
     }
   },
@@ -530,7 +530,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 27,
       "outboundHealthLinks": 18
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
+      "inboundContentLinks": 34,
       "outboundHealthLinks": 18
     },
     {
@@ -1140,7 +1140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 17
     },
     {
@@ -1240,7 +1240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 9
     },
     {
@@ -1370,7 +1370,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 15
     },
     {
@@ -2310,7 +2310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 13
     },
     {
@@ -2350,7 +2350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 134,
+      "inboundContentLinks": 139,
       "outboundHealthLinks": 17
     },
     {
@@ -2370,8 +2370,38 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 212,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 217,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/therapien/akupunktur/bauchakupunktur/",
+      "type": "therapy",
+      "title": "Bauchakupunktur: Methode und Anwendung erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/therapien/akupunktur/laserakupunktur/",
+      "type": "therapy",
+      "title": "Laserakupunktur: Akupunktur ohne Nadeln erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/therapien/akupunktur/schaedelakupunktur/",
+      "type": "therapy",
+      "title": "Schädelakupunktur: Methode, Anwendung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/therapien/akupunktur/schwangerschaft/",
@@ -2384,14 +2414,34 @@
       "outboundHealthLinks": 9
     },
     {
+      "url": "/therapien/akupunktur/verfahren/",
+      "type": "therapy",
+      "title": "Akupunkturverfahren im Überblick | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/therapien/akupunktur/ynsa/",
+      "type": "therapy",
+      "title": "YNSA: Yamamoto Neue Schädelakupunktur erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/therapien/dauernadeln/",
       "type": "therapy",
       "title": "Akupunktur mit Dauernadeln in der Schweiz | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/therapien/ear-seeds/",
@@ -2400,7 +2450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 5
     },
     {
@@ -2410,8 +2460,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/therapien/gesichtsakupunktur/",
@@ -2420,7 +2470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 38,
+      "inboundContentLinks": 39,
       "outboundHealthLinks": 3
     },
     {
@@ -2470,7 +2520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 64,
+      "inboundContentLinks": 65,
       "outboundHealthLinks": 21
     },
     {
@@ -2580,7 +2630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 9
     },
     {
@@ -2600,7 +2650,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 12
     },
     {

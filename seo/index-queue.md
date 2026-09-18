@@ -33,7 +33,11 @@ Regeln:
 - https://tcm.ch/team/natalia-goc/
 - https://tcm.ch/team/seongsu-kim/
 - https://tcm.ch/team/brenda-oviedo/
-
+- https://tcm.ch/therapien/akupunktur/verfahren/
+- https://tcm.ch/therapien/akupunktur/schaedelakupunktur/
+- https://tcm.ch/therapien/akupunktur/ynsa/
+- https://tcm.ch/therapien/akupunktur/bauchakupunktur/
+- https://tcm.ch/therapien/akupunktur/laserakupunktur/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/
