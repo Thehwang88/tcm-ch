@@ -109,6 +109,71 @@ function navMoreToggle(){
   });
 })();
 
+/* Audience-Switch (Patient:innen | Therapeut:innen).
+   EIN Zustand: audience = 'patient' | 'therapist'. Optik (Indikator, aktive
+   Labels) und Hero-Panels leiten sich beide daraus ab. Auf der Startseite
+   (Hero-Panels vorhanden) schaltet der Klick in-page ohne Reload und die
+   Controls bekommen Tab-Semantik; auf allen anderen Seiten bleiben die
+   Optionen normale Links (/ bzw. /partner/). */
+(function(){
+  var pPanel=document.querySelector('[data-audience-panel="patient"]');
+  var tPanel=document.querySelector('[data-audience-panel="therapist"]');
+  var interactive=!!(pPanel&&tPanel);
+  var groups=document.querySelectorAll('.nav-audience,.drw-aud');
+  if(!groups.length) return;
+
+  function setAudience(aud){
+    groups.forEach(function(g){
+      g.setAttribute('data-audience',aud);
+      g.querySelectorAll('[data-aud]').forEach(function(o){
+        var active=o.getAttribute('data-aud')===aud;
+        if(interactive){o.setAttribute('aria-selected',active?'true':'false');o.setAttribute('tabindex',active?'0':'-1');}
+        if(active) o.setAttribute('aria-current','true'); else o.removeAttribute('aria-current');
+      });
+    });
+    if(interactive){
+      // hidden-Attribut + inline display MIT priority 'important':
+      // home.css setzt #home-content .hero-bg{display:block !important}
+      // (DE-Home-Hero-Block), das schlägt sowohl [hidden] als auch normale
+      // Inline-Styles. Inline-!important gewinnt zuverlässig.
+      pPanel.hidden = aud!=='patient';
+      tPanel.hidden = aud!=='therapist';
+      if(aud==='patient') pPanel.style.removeProperty('display'); else pPanel.style.setProperty('display','none','important');
+      if(aud==='therapist') tPanel.style.removeProperty('display'); else tPanel.style.setProperty('display','none','important');
+    }
+  }
+
+  if(interactive){
+    groups.forEach(function(g){g.setAttribute('role','tablist');});
+    document.querySelectorAll('.nav-audience [data-aud],.drw-aud [data-aud]').forEach(function(o){o.setAttribute('role','tab');});
+    pPanel.setAttribute('role','tabpanel');
+    tPanel.setAttribute('role','tabpanel');
+  }
+
+  document.addEventListener('click',function(e){
+    var opt=e.target.closest&&e.target.closest('.nav-aud-opt,.drw-aud-opt');
+    if(!opt||!interactive) return; // Subseiten: normaler Link
+    e.preventDefault();
+    setAudience(opt.getAttribute('data-aud'));
+    if(opt.classList.contains('drw-aud-opt')&&typeof drawerClose==='function') drawerClose();
+  });
+  document.addEventListener('keydown',function(e){
+    if(!interactive) return;
+    var opt=e.target.closest&&e.target.closest('.nav-aud-opt,.drw-aud-opt');
+    if(!opt) return;
+    if(e.key===' '){e.preventDefault();opt.click();}
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+      e.preventDefault();
+      var aud=e.key==='ArrowLeft'?'patient':'therapist';
+      setAudience(aud);
+      var next=opt.parentElement.querySelector('[data-aud="'+aud+'"]');
+      if(next) next.focus();
+    }
+  });
+
+  setAudience('patient'); // Default, hält Optik und Panels konsistent
+})();
+
 /* "Jetzt Hilfe erhalten" CTA: open the home contact form if present, else go to /kontakt. */
 (function(){
   var cta = document.getElementById('navCtaBtn');

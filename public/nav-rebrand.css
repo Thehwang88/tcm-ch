@@ -43,13 +43,22 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
 #mainNav .nav-lang{color:var(--nav-ink)!important;border:1.5px solid rgba(25,20,20,.16)!important;font-weight:700!important}
 #mainNav .nav-lang:hover{border-color:var(--nav-ink)!important;background:var(--nav-green-soft)!important}
 
-/* ── Audience-Switch (Desktop) ── */
-.nav-audience{display:none;align-items:center;gap:2px;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin-right:10px;flex-shrink:0}
-@media(min-width:1180px){.nav-audience{display:inline-flex}}
-.nav-aud-opt{font-size:12.5px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:6px 13px;border-radius:100px;white-space:nowrap;transition:color .15s ease,background .15s ease;line-height:1}
+/* ── Audience-Switch: echter Zwei-Zustands-Schalter ─────────────────────────
+   EIN weisser Indikator (.aud-ind) gleitet per transform zwischen zwei
+   gleich breiten Hälften (Grid 1fr/1fr); aktiv/inaktiv leitet sich rein aus
+   data-audience am Container ab. Ohne JS bleibt der Default (Patient) stehen
+   und die Optionen funktionieren als normale Links. */
+.nav-audience{display:none;position:relative;grid-template-columns:1fr 1fr;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin-right:10px;flex-shrink:0}
+@media(min-width:1180px){.nav-audience{display:grid}}
+.aud-ind{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#fff;border-radius:100px;box-shadow:0 1px 4px rgba(25,20,20,.12);transform:translateX(0);transition:transform .2s ease;pointer-events:none}
+[data-audience="therapist"] .aud-ind{transform:translateX(100%)}
+.nav-aud-opt{position:relative;z-index:1;text-align:center;font-size:12.5px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:6px 13px;border-radius:100px;white-space:nowrap;transition:color .15s ease;line-height:1}
 .nav-aud-opt:hover{color:var(--nav-ink)}
-.nav-aud-opt.is-active{background:#fff;color:var(--nav-ink);font-weight:700;box-shadow:0 1px 4px rgba(25,20,20,.12)}
-.nav-aud-opt.is-active::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
+.nav-aud-opt:focus-visible,.drw-aud-opt:focus-visible{outline:2px solid var(--nav-green-dark);outline-offset:1px}
+[data-audience="patient"] [data-aud="patient"],[data-audience="therapist"] [data-aud="therapist"]{color:var(--nav-ink);font-weight:700}
+[data-audience="patient"] [data-aud="patient"]::before,[data-audience="therapist"] [data-aud="therapist"]::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
+/* Ausgeblendete Hero-Panels (Audience-Umschaltung auf der Startseite) */
+[data-audience-panel][hidden]{display:none!important}
 
 /* ── "Mehr"-Dropdown ── */
 .nav-more-li{position:relative}
@@ -69,11 +78,9 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
 #siteDrawer{background:#fff}
 .drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(30,215,96,0) 100%)}
 
-/* Audience-Switch im Drawer */
-.drw-aud{display:flex;gap:2px;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin:14px 22px 6px}
-.drw-aud-opt{flex:1;text-align:center;font-size:13px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:9px 10px;border-radius:100px;line-height:1;transition:color .15s ease,background .15s ease;min-height:auto}
-.drw-aud-opt.is-active{background:#fff;color:var(--nav-ink);font-weight:700;box-shadow:0 1px 4px rgba(25,20,20,.12)}
-.drw-aud-opt.is-active::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
+/* Audience-Switch im Drawer (gleiche Indikator-Mechanik) */
+.drw-aud{display:grid;position:relative;grid-template-columns:1fr 1fr;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin:14px 22px 6px;flex-shrink:0}
+.drw-aud-opt{position:relative;z-index:1;text-align:center;font-size:13px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:9px 10px;border-radius:100px;line-height:1;transition:color .15s ease;min-height:auto}
 
 /* Gruppen-Labels (rein visuell) */
 .drw-group-label{padding:16px 22px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(25,20,20,.42)}
