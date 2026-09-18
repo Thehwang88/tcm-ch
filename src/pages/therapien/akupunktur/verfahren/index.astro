@@ -1,0 +1,161 @@
+---
+// Akupunkturverfahren-Hub: Navigations- und Vergleichsebene unter dem
+// Akupunktur-Pillar. Karten verlinken auf die jeweilige KANONISCHE Seite
+// (bestehende Therapie-Seiten oder neue /therapien/akupunktur/<slug>/-Seiten).
+// Dry Needling wird bewusst als verwandte Nadeltechnik ausgewiesen, nicht als
+// TCM-Akupunkturform. Geplante Methoden (Bienengift, Pharmakopunktur) erscheinen
+// hier NICHT. Nested Pfad ist in functions/therapien/[[path]].js allowlisted.
+import LayoutDe from '../../../../layouts/LayoutDe.astro';
+import { hubVerfahren, VERFAHREN_HUB_INDEXABLE } from '../../../../data/akupunkturverfahren';
+
+const path = '/therapien/akupunktur/verfahren';
+const url = `https://tcm.ch${path}/`;
+const title = 'Akupunkturverfahren im Überblick';
+const metaDesc = 'Neben der klassischen Körperakupunktur gibt es spezialisierte Verfahren: Ohr-, Schädel-, Bauch-, Elektro- und Laserakupunktur, YNSA und mehr. Der Überblick mit Unterschieden.';
+
+const spezial = hubVerfahren.filter((v) => v.methodType === 'spezialverfahren');
+const klassisch = hubVerfahren.filter((v) => v.methodType === 'klassisch');
+const verwandt = hubVerfahren.filter((v) => v.methodType === 'verwandte-nadeltechnik');
+const hrefFor = (v: (typeof hubVerfahren)[number]) => v.canonicalUrl ?? `/therapien/akupunktur/${v.slug}/`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Therapien', item: 'https://tcm.ch/therapien/' },
+      { '@type': 'ListItem', position: 3, name: 'Akupunktur', item: 'https://tcm.ch/therapien/akupunktur/' },
+      { '@type': 'ListItem', position: 4, name: 'Akupunkturverfahren', item: url },
+    ],
+  },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!VERFAHREN_HUB_INDEXABLE} robots={VERFAHREN_HUB_INDEXABLE ? undefined : 'noindex, follow'}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/therapien/">Therapien</a>
+        <span aria-hidden="true">›</span>
+        <a href="/therapien/akupunktur/">Akupunktur</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Verfahren</span>
+      </div>
+      <div class="cat">Akupunktur</div>
+      <h1>Akupunkturverfahren</h1>
+      <p class="lead">Neben der klassischen Körperakupunktur gibt es spezialisierte Verfahren mit unterschiedlichen Ansätzen, Körperregionen und technischen Methoden. Hier findest du den Überblick: was die einzelnen Verfahren auszeichnet, wie sie sich unterscheiden und wo du die Details findest.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+
+      {klassisch.map((v) => (
+        <a class="feat" href={hrefFor(v)}>
+          <div class="p-topic">Die Basis</div>
+          <div class="feat-title">{v.label}</div>
+          <p class="p-deck">{v.deck}</p>
+          <span class="p-more">Zur Akupunktur →</span>
+        </a>
+      ))}
+
+      <h2 class="group-title">Spezialisierte Verfahren</h2>
+      <div class="p-grid">
+        {spezial.map((v) => (
+          <a class="p-card" href={hrefFor(v)}>
+            <div class="p-title">{v.label}</div>
+            <p class="p-deck">{v.deck}</p>
+            <span class="p-more">Mehr erfahren →</span>
+          </a>
+        ))}
+      </div>
+
+      {verwandt.length > 0 && (
+        <div class="verwandt">
+          <h2 class="group-title">Verwandte Nadeltechnik</h2>
+          <p class="group-sub">Kein TCM-Verfahren, aber verwandt in der Technik: Dry Needling stammt aus der Physiotherapie und folgt einem eigenen, westlich-anatomischen Konzept rund um muskuläre Triggerpunkte.</p>
+          <div class="p-grid">
+            {verwandt.map((v) => (
+              <a class="p-card" href={hrefFor(v)}>
+                <div class="p-topic">Verwandte Nadeltechnik</div>
+                <div class="p-title">{v.label}</div>
+                <p class="p-deck">{v.deck}</p>
+                <span class="p-more">Mehr erfahren →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="about">
+        <div class="ein-label">Wie unterscheiden sich die Verfahren?</div>
+        <p>Die Verfahren unterscheiden sich in der Behandlungsregion (ganzer Körper, Ohr, Kopfhaut, Gesicht oder Bauch), in der Art des Reizes (Nadel, Dauerreiz über Tage, elektrischer Impuls oder Laserlicht) und im typischen Einsatzkontext. Auch die wissenschaftliche Evidenz ist nicht bei allen Verfahren gleich gut untersucht; am breitesten ist die Studienlage zur klassischen Körperakupunktur. Eine Rangliste "was wirkt am besten" gibt es seriös nicht.</p>
+      </div>
+
+      <div class="about">
+        <div class="ein-label">Welche Methode passt zu mir?</div>
+        <p>Das lässt sich nicht am Verfahren allein festmachen. Die Wahl hängt von deiner Beschwerde und Diagnose, deinen Präferenzen (etwa bei Nadelangst) und der Einschätzung der behandelnden Fachperson ab. Nicht jedes Verfahren wird an jedem Standort angeboten; was für dich infrage kommt, klären wir ehrlich im Erstgespräch oder bei der <a href="/kontakt/">Zuweisung</a>.</p>
+      </div>
+
+      <div class="entry">
+        <div class="rel-label">Weiterlesen</div>
+        <div class="mr-links">
+          <a class="mr-chip" href="/therapien/akupunktur/">Akupunktur</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/fragen/">Fragen zur Behandlung</a>
+          <a class="mr-chip" href="/gesundheitsbibliothek/tcm-verstehen/">TCM verstehen</a>
+          <a class="mr-chip" href="/therapien/">Alle Therapien</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 960px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18.5px; line-height: 1.6; color: var(--mid); max-width: 720px; }
+
+  .feat { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 26px 28px; text-decoration: none; transition: border-color var(--t-fast) ease; margin-bottom: 36px; background: var(--blue-light); border-color: transparent; }
+  .feat:hover { border-color: var(--blue); }
+  .feat-title { font-size: clamp(20px, 2.4vw, 26px); font-weight: 800; line-height: 1.2; color: var(--ink); letter-spacing: var(--tracking-heading); margin-bottom: 8px; }
+
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: var(--tracking-heading); margin: 0 0 14px; }
+  .group-sub { font-size: 15.5px; line-height: 1.6; color: var(--mid); margin: 0 0 14px; max-width: 680px; }
+  .p-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .p-card { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; text-decoration: none; transition: border-color var(--t-fast) ease; }
+  .p-card:hover { border-color: var(--blue); }
+  .p-topic { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .p-title { font-size: 18px; font-weight: 800; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+  .p-deck { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; flex: 1; }
+  .p-more { font-size: 13.5px; font-weight: 700; color: var(--blue); }
+
+  .verwandt { margin-top: 36px; }
+  .verwandt .p-grid { grid-template-columns: 1fr 1fr; }
+
+  .about { border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--r-card) var(--r-card) 0; padding: 22px 24px; margin: 36px 0 0; }
+  .ein-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .about p { font-size: 15.5px; line-height: 1.65; color: var(--mid); margin: 0; max-width: 76ch; }
+  .about a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .about a:hover { text-decoration: underline; }
+
+  .entry { margin-top: 40px; }
+  .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .mr-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mr-chip { border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color var(--t-fast) ease, color var(--t-fast) ease; }
+  .mr-chip:hover { border-color: var(--blue); color: var(--blue); }
+
+  @media (max-width: 720px) {
+    .p-grid, .verwandt .p-grid { grid-template-columns: 1fr; }
+  }
+</style>

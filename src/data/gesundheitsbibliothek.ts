@@ -27,6 +27,7 @@ import { tcmSections } from './tcm-verstehen';
 import { publishedPerspektiven } from './perspektiven';
 import { publishedBefundeWerte, KATEGORIE_LABELS } from './befunde-werte';
 import { publishedWasJetzt } from './was-jetzt';
+import { publishedVerfahrenPages } from './akupunkturverfahren';
 
 /** Referenz auf eine bestehende Seite (Slug im jeweiligen Cluster + Anzeige-Label). */
 export interface RegionRef { slug: string; label: string }
@@ -321,6 +322,10 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche —
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/therapien/akupunktur/schaedelakupunktur/': 'Skalpakupunktur scalp acupuncture Kopfhaut Akupunktur',
+  '/therapien/akupunktur/ynsa/': 'Yamamoto Akupunktur Yamamoto Neue Schädelakupunktur',
+  '/therapien/akupunktur/bauchakupunktur/': 'Abdominalakupunktur abdominal acupuncture Akupunktur Bauch',
+  '/therapien/akupunktur/laserakupunktur/': 'Laser Akupunktur Akupunktur ohne Nadeln Lichtakupunktur',
   '/koerpersignale/herzklopfen-nach-dem-essen/': 'Herzrasen nach dem Essen Puls nach Mahlzeit Palpitationen',
   '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/': 'CRP Wert Entzündungswert C-reaktives Protein Blutwert Entzündung',
   '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/': 'weisse Blutkörperchen erhöht Blutbild Leukozytose',
@@ -480,6 +485,12 @@ export function buildSearchIndex(): SearchEntry[] {
   // Befunde & Werte: NUR publizierte Beiträge (geplante existieren in Prod nicht).
   for (const bw of publishedBefundeWerte) {
     entries.push({ t: bw.title, u: `/gesundheitsbibliothek/befunde-werte/${bw.slug}/`, g: 'Befunde & Werte', k: `${KATEGORIE_LABELS[bw.category]} ${bw.deck.slice(0, 140)}` });
+  }
+  // Akupunkturverfahren: nur eigene publizierte Methodenseiten (bestehende
+  // Therapien sind über den Therapien-Loop bereits drin; planned nie).
+  entries.push({ t: 'Akupunkturverfahren im Überblick', u: '/therapien/akupunktur/verfahren/', g: 'Therapien' });
+  for (const av of publishedVerfahrenPages) {
+    entries.push({ t: av.label, u: `/therapien/akupunktur/${av.slug}/`, g: 'Therapien', k: av.deck.slice(0, 140) });
   }
   // Was jetzt?: NUR publizierte Beiträge (geplante existieren in Prod nicht).
   for (const wj of publishedWasJetzt) {

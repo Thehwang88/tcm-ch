@@ -18,6 +18,11 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/therapien/akupunktur/verfahren/
+- https://tcm.ch/therapien/akupunktur/schaedelakupunktur/
+- https://tcm.ch/therapien/akupunktur/ynsa/
+- https://tcm.ch/therapien/akupunktur/bauchakupunktur/
+- https://tcm.ch/therapien/akupunktur/laserakupunktur/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/methoden/
 - https://tcm.ch/gesundheitsbibliothek/fragen/
