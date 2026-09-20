@@ -18,7 +18,6 @@ Regeln:
 
 ## Offen
 
-- https://tcm.ch/standorte/zuerich-bellevue/
 - https://tcm.ch/team/simon-stueve/
 - https://tcm.ch/team/yuna-stueve/
 - https://tcm.ch/team/ken-uehara/
@@ -168,6 +167,7 @@ Regeln:
 
 ## Erledigt
 
+- https://tcm.ch/standorte/zuerich-bellevue/ — 20.09.2026 (manuell)
 - https://tcm.ch/koerpersignale/herzklopfen-nach-dem-essen/ — 17.09.2026 (manuell)
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/crp-erhoeht/ — 17.09.2026 (manuell)
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/ — 17.09.2026 (manuell)
