@@ -662,7 +662,7 @@ export const standorte: Record<string, Standort> = {
       {
         "slug": "zuerich-oerlikon",
         "plz": "8050",
-        "city": "Oerlikon",
+        "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
       },
       {
@@ -1029,7 +1029,7 @@ export const standorte: Record<string, Standort> = {
       {
         "slug": "zuerich-oerlikon",
         "plz": "8050",
-        "city": "Oerlikon",
+        "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
       },
       {
@@ -1181,7 +1181,7 @@ export const standorte: Record<string, Standort> = {
       {
         "slug": "zuerich-oerlikon",
         "plz": "8050",
-        "city": "Oerlikon",
+        "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
       }
     ]
@@ -1349,7 +1349,7 @@ export const standorte: Record<string, Standort> = {
       {
         "slug": "zuerich-oerlikon",
         "plz": "8050",
-        "city": "Oerlikon",
+        "city": "Zürich Oerlikon",
         "desc": "Zürich Nord"
       },
       {
@@ -1544,7 +1544,7 @@ export const standorte: Record<string, Standort> = {
       {
         "slug": "zuerich-hoengg",
         "plz": "8049",
-        "city": "Höngg",
+        "city": "Zürich Höngg",
         "desc": "Zürich West"
       },
       {
