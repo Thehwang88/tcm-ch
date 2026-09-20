@@ -70,6 +70,14 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opening 2028',
     areaServed: ['Zürich', 'Küsnacht', 'Zollikon', 'Erlenbach', 'Männedorf', 'Schlieren', 'Dietikon', 'Urdorf'] },
 
+  // Bellevue: Adresse verifiziert, Eröffnung noch ohne Datum (Warteliste offen).
+  // geo = Stadtzentrum-Näherung wie bei den anderen Pre-Opening-Einträgen
+  // (identisch zuerich-city); präzise Koordinaten folgen mit der Eröffnung.
+  { id: 'zuerich-bellevue', name: 'Zürich Bellevue', city: 'Zürich', region: 'Zürich',
+    street: 'Rössligasse 8', postalCode: '8001', phone: '+41 77 523 61 22',
+    openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opening soon',
+    areaServed: ['Zürich', 'Altstadt', 'Seefeld', 'Enge', 'Riesbach'] },
+
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
     openingHours: [], geo: { lat: 47.5596, lng: 7.5886 }, openingSoon: true, openingNote: 'Opening 2028',

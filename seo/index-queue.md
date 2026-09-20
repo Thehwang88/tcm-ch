@@ -18,6 +18,7 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/standorte/zuerich-bellevue/
 - https://tcm.ch/team/simon-stueve/
 - https://tcm.ch/team/yuna-stueve/
 - https://tcm.ch/team/ken-uehara/
