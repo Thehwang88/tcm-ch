@@ -65,8 +65,9 @@ export interface BefundWert {
   integrativeContextHtml?: string;
 }
 
-// Hub bleibt noindex,follow bis mindestens 4 wirklich publizierte Leaves existieren.
-export const HUB_INDEXABLE = false;
+// Regel: Hub bleibt noindex,follow bis mindestens 4 wirklich publizierte Leaves existieren.
+// Seit 21.09.2026 sind 4 Leaves publiziert (crp, leukozyten, tsh, cholesterin) -> indexable.
+export const HUB_INDEXABLE = true;
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -104,16 +105,43 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' }],
   },
   {
-    slug: 'tsh-erhoeht-ft4-normal',
-    title: 'TSH erhöht, fT4 normal: Wie wird das eingeordnet?',
+    slug: 'tsh-erhoeht',
+    title: 'TSH erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Was die Kombination aus erhöhtem TSH und normalem fT4 bedeutet und wann eine Kontrolle sinnvoll ist.',
-    primaryPurpose: 'Einordnung einer Laborwert-Konstellation der Schilddrüse, kein Ersatz für eine Schilddrüsen-Erkrankungsseite.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-21',
+    deck: 'TSH ist das Steuerhormon der Schilddrüse. Ein erhöhter Wert ist ein Hinweis, keine Diagnose. Was dahinterstecken kann und wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung eines Schilddrüsen-Laborbefunds, kein Ersatz für eine Schilddrüsen-Erkrankungsseite.',
     canonicalIntentOwner: [],
-    overlapNotes: 'Kein bestehender Owner: es existiert keine Schilddrüsen-Beschwerden-Seite (geprüft: kein Leaf zu Schilddrüse/Hypothyreose). Sollte später eine entstehen, übernimmt sie den Erkrankungs-Intent; diese Seite bleibt auf die Befund-Konstellation beschränkt.',
+    overlapNotes: 'Kein bestehender Owner: es existiert keine Schilddrüsen-Beschwerden-Seite (geprüft: kein Leaf zu Schilddrüse/Hypothyreose). Sollte später eine entstehen, übernimmt sie den Erkrankungs-Intent; diese Seite bleibt auf die Befund-Einordnung beschränkt. Konstellation "TSH erhöht, fT4 normal" wird als Abschnitt hier abgedeckt (Slug umbenannt am 21.09.2026, hatte nie eine Prod-Route).',
     suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Innere Medizin)',
+    shortAnswerHtml: `<p>TSH ist das Hormon, mit dem die Hirnanhangsdrüse die Schilddrüse steuert. Steigt der TSH-Wert, fordert der Körper die Schilddrüse stärker an, oft, weil sie etwas weniger leistet als gerade gebraucht wird. Ein erhöhter Wert ist damit ein <strong>Hinweis auf die Regulation</strong>, keine Diagnose. Ob er Bedeutung hat, ergibt sich erst aus den eigentlichen Schilddrüsenhormonen (vor allem fT4), deinen Beschwerden und dem Verlauf.</p>`,
+    bodyHtml: `<h2>Was ist TSH?</h2>
+<p>TSH (Thyreoidea-stimulierendes Hormon) wird nicht in der Schilddrüse gebildet, sondern in der Hirnanhangsdrüse. Es funktioniert wie ein Regler: Produziert die Schilddrüse weniger Hormone, steigt das TSH, um sie anzutreiben. Produziert sie mehr, sinkt es. Deshalb reagiert TSH oft früher und empfindlicher als die Schilddrüsenhormone selbst und deshalb ist es der übliche erste Suchtest.</p>
+<h2>Warum kann TSH erhöht sein?</h2>
+<ul>
+<li><strong>Die Schilddrüse arbeitet etwas weniger:</strong> die häufigste Erklärung. Oft steckt eine schleichende, meist harmlos verlaufende Veränderung dahinter, die zunächst nur beobachtet wird.</li>
+<li><strong>Vorübergehende Einflüsse:</strong> die Erholungsphase nach einem Infekt, ausgeprägter Schlafmangel oder die Tageszeit der Blutentnahme können den Wert verschieben. Auch deshalb wird ein einzelner erhöhter Wert in der Regel zuerst kontrolliert.</li>
+<li><strong>Medikamente:</strong> bestimmte Wirkstoffe beeinflussen die Schilddrüsenwerte. Wichtig ist, dass die Ärztin oder der Arzt deine aktuelle Medikation kennt.</li>
+<li><strong>Andere, seltenere Ursachen:</strong> dafür gibt es meist zusätzliche Hinweise in Untersuchung und weiteren Werten; ein einzelner erhöhter TSH-Wert ist kein Grund, davon auszugehen.</li>
+</ul>
+<h2>TSH erhöht, fT4 normal: die häufige Konstellation</h2>
+<p>Sehr oft zeigt das Labor ein erhöhtes TSH bei <strong>normalem fT4</strong>. Das bedeutet: Die Schilddrüse liefert (noch) genug Hormon, braucht dafür aber mehr Antrieb. Diese Konstellation wird als latente oder subklinische Veränderung bezeichnet. Sie macht häufig keine Beschwerden, kann sich bei einer Kontrolle wieder normalisieren und ist für sich allein kein Grund zur Sorge. Ob und wann daraus eine Behandlung wird, ist eine individuelle ärztliche Entscheidung, abhängig von Höhe und Verlauf des Werts, Beschwerden, Alter und Begleitumständen.</p>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Ein einzelner TSH-Wert ist eine Momentaufnahme, und der Wert schwankt auch bei Gesunden. Für die Einordnung zählen der Referenzbereich deines Labors, eine <strong>Kontrollmessung</strong> nach einigen Wochen bis Monaten, das fT4 und je nach Situation weitere Werte sowie deine Beschwerden. Erst dieses Gesamtbild trägt eine Entscheidung.</p>`,
+    notProofHtml: `<p>Ein erhöhtes TSH beweist <strong>keine Schilddrüsenerkrankung</strong> und erklärt nicht automatisch Müdigkeit, Gewichtszunahme oder Stimmungstief, auch wenn diese Verknüpfung oft gezogen wird. Solche Beschwerden haben viele mögliche Ursachen. Umgekehrt schliesst ein normales TSH nicht jede Schilddrüsenfrage aus. Die Zuordnung von Beschwerden zu einem Laborwert ist eine ärztliche Aufgabe.</p>`,
+    followUpHtml: `<p>Der übliche nächste Schritt ist unspektakulär: eine <strong>Kontrollmessung</strong> mit fT4 nach einigen Wochen bis Monaten, dazu das Gespräch über Beschwerden und Medikamente. Je nach Ergebnis folgen gezielt weitere Werte oder ein Ultraschall der Schilddrüse. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich besprechen solltest du den Befund, wenn gleichzeitig deutliche Beschwerden bestehen, etwa ausgeprägte Müdigkeit und Verlangsamung, starkes Frieren, deutliche Gewichtsveränderung, eine sichtbare Schwellung am Hals oder Schluckbeschwerden. In der Schwangerschaft oder bei Kinderwunsch gehört ein erhöhtes TSH immer und ohne Verzögerung in ärztliche Hände.</p>`,
+    integrativeContextHtml: `<p>Schilddrüsenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert TSH nicht und stellt daraus keine Diagnosen. Erst wenn ärztlich geklärt ist, was hinter dem Befund steckt, kann sich die Frage stellen, ob eine komplementäre Behandlung, bezogen auf die Diagnose und deine konkreten Beschwerden, sinnvoll ist. Das besprechen wir ehrlich im Einzelfall.</p>`,
+    relatedSignals: [
+      { href: '/koerpersignale/hitzegefuehl-ohne-fieber/', label: 'Hitzegefühl ohne Fieber' },
+      { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
+    ],
   },
   {
     slug: 'leukozyten-erhoeht',
@@ -151,16 +179,41 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' }],
   },
   {
-    slug: 'cholesterin-erhoeht-trotz-gesunder-ernaehrung',
-    title: 'Cholesterin erhöht trotz gesunder Ernährung',
+    slug: 'cholesterin-erhoeht',
+    title: 'Cholesterin erhöht: Was bedeutet das?',
     category: 'laborwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Warum Cholesterinwerte auch bei gesunder Ernährung erhöht sein können und welche Faktoren mitspielen.',
-    primaryPurpose: 'Einordnung eines Laborbefunds inkl. des häufigen Widerspruchs-Erlebens, keine Herz-Kreislauf-Erkrankungsseite.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-21',
+    deck: 'Cholesterin ist ein körpereigener Baustoff, kein Fremdstoff. Was ein erhöhter Wert aussagt, warum er auch bei gesunder Ernährung vorkommt und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung eines Laborbefunds inkl. des häufigen Widerspruchs-Erlebens ("trotz gesunder Ernährung"), keine Herz-Kreislauf-Erkrankungsseite.',
     canonicalIntentOwner: [],
-    overlapNotes: 'Kein bestehender Owner: keine Hypercholesterinämie-/Herz-Kreislauf-Beschwerden-Seite vorhanden (geprüft). Keine Therapie- oder Ernährungsberatungs-Versprechen; Abgrenzung dokumentieren, falls später eine kardiovaskuläre Seite entsteht.',
+    overlapNotes: 'Kein bestehender Owner: keine Hypercholesterinämie-/Herz-Kreislauf-Beschwerden-Seite vorhanden (geprüft). Keine Therapie- oder Ernährungsberatungs-Versprechen; Abgrenzung dokumentieren, falls später eine kardiovaskuläre Seite entsteht. Slug umbenannt am 21.09.2026 von cholesterin-erhoeht-trotz-gesunder-ernaehrung (hatte nie eine Prod-Route); die Konstellation "trotz gesunder Ernährung" ist ein Abschnitt.',
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Kardiologie)',
+    shortAnswerHtml: `<p>Cholesterin ist kein Fremdstoff, sondern ein Baustoff, den dein Körper selbst herstellt, für Zellwände, Hormone und Gallensäuren. Ein erhöhter Wert im Labor ist <strong>keine Erkrankung und kein Notfall</strong>, sondern ein Risikofaktor unter mehreren. Was er für dich bedeutet, hängt von der Aufschlüsselung der Blutfette und deinem persönlichen Gesamtrisiko ab, und das beurteilt die Ärztin oder der Arzt, nicht die einzelne Zahl.</p>`,
+    bodyHtml: `<h2>Was ist Cholesterin?</h2>
+<p>Cholesterin wird zum grössten Teil in der Leber gebildet; nur ein kleinerer Teil kommt aus der Nahrung. Im Blut wird es in Transportpaketen befördert, die im Labor getrennt gemessen werden: unter anderem LDL und HDL, dazu die Triglyceride. Deshalb sagt das Gesamtcholesterin allein wenig aus. Aussagekräftig wird der Befund erst durch die <strong>Aufschlüsselung</strong> dieser Werte.</p>
+<h2>Warum kann Cholesterin erhöht sein?</h2>
+<ul>
+<li><strong>Veranlagung:</strong> ein grosser Teil des Cholesterinspiegels ist genetisch bestimmt. Deshalb haben auch schlanke, sportliche Menschen mit ausgewogener Ernährung teils erhöhte Werte.</li>
+<li><strong>Lebensstil:</strong> Ernährung, Bewegung, Gewicht und Rauchen spielen mit, aber sie sind nur ein Teil des Bildes.</li>
+<li><strong>Andere Ursachen:</strong> unter anderem können eine verminderte Schilddrüsenfunktion oder bestimmte Medikamente die Blutfette verändern. Auch das prüft die ärztliche Abklärung.</li>
+</ul>
+<h2>Erhöht trotz gesunder Ernährung: warum das kein Widerspruch ist</h2>
+<p>Viele erleben den Befund als unfair: Die Ernährung stimmt, der Wert trotzdem nicht. Der Grund ist meist die Veranlagung. Weil die Leber den grössten Teil des Cholesterins selbst produziert, kann die Ernährung den Wert nur begrenzt bewegen. Ein erhöhter Wert bei gesundem Lebensstil bedeutet also <strong>nicht, dass du etwas falsch machst</strong>, und er bedeutet auch nicht, dass gesunde Gewohnheiten sinnlos wären: Sie wirken auf das Gesamtrisiko, nicht nur auf diese eine Zahl.</p>
+<h2>Warum das Gesamtrisiko zählt, nicht die einzelne Zahl</h2>
+<p>Ob und wie ein erhöhter Wert behandelt wird, richtet sich nicht nach einem festen Grenzwert für alle, sondern nach deinem persönlichen Risiko für Herz-Kreislauf-Erkrankungen. Dazu gehören Alter, Blutdruck, Rauchen, familiäre Vorgeschichte, Blutzucker und weitere Faktoren. Derselbe Cholesterinwert kann bei einer Person unbedenklich sein und bei einer anderen behandlungsbedürftig. Genau deshalb gehört die Bewertung in die ärztliche Sprechstunde.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Cholesterin beweist <strong>keine Gefässerkrankung</strong>: Es sagt nicht, dass deine Gefässe verengt sind oder ein Ereignis bevorsteht. Es ist ein Risikofaktor, der das Gesamtbild mitprägt, mehr nicht. Umgekehrt garantiert ein normaler Wert keine gesunden Gefässe. Cholesterin macht zudem in aller Regel keine Beschwerden; aktuelle Symptome haben fast immer eine andere Erklärung.</p>`,
+    followUpHtml: `<p>Üblich sind: das Gespräch über Vorerkrankungen, Familiengeschichte und Medikamente, eine <strong>Kontrolle mit vollständigem Lipidprofil</strong> (LDL, HDL, Triglyceride), je nach Situation Blutdruck-, Blutzucker- und Schilddrüsenwerte und daraus die gemeinsame Einschätzung des Gesamtrisikos. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Der Laborwert selbst ist nie ein Notfall. Ärztliche Abklärung ohne Aufschub brauchen dagegen Warnzeichen wie Druck oder Schmerzen in der Brust, Atemnot bei geringer Belastung oder Schmerzen in den Beinen beim Gehen, unabhängig vom Cholesterinwert. Zügig besprechen solltest du den Befund auch bei sehr hohen Werten in jungen Jahren oder wenn nahe Angehörige früh Herzinfarkte oder Schlaganfälle hatten: Dahinter kann eine ausgeprägte familiäre Veranlagung stecken.</p>`,
+    integrativeContextHtml: `<p>Die Bewertung von Blutfetten und die Entscheidung über eine Behandlung gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Cholesterinwerte nicht und ersetzt keine ärztlich empfohlene Therapie. Erst auf Basis der ärztlichen Einordnung kann sich die Frage stellen, ob eine komplementäre Behandlung, bezogen auf konkrete Beschwerden, sinnvoll ist. Das besprechen wir ehrlich im Einzelfall.</p>`,
+    relatedSignals: [
+      { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+    ],
   },
   {
     slug: 'ferritin-niedrig-haemoglobin-normal',

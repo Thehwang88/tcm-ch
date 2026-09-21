@@ -47,6 +47,7 @@ const DATEN4 = { datePublished: '2026-09-10', dateModified: '2026-09-10' };
 const DATEN5 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN6 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN7 = { datePublished: '2026-09-17', dateModified: '2026-09-17' };
+const DATEN8 = { datePublished: '2026-09-21', dateModified: '2026-09-21' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -478,6 +479,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
       { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
       { href: '/koerpersignale/hitzegefuehl-ohne-fieber/', label: 'Hitzegefühl ohne Fieber', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-an-der-lippe/', label: 'Kribbeln an der Lippe', cat: 'Körpersignal' },
     ],
   },
 
@@ -1347,6 +1349,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
       { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
       { href: '/koerpersignale/ein-fuss-kaelter-als-der-andere/', label: 'Ein Fuss kälter als der andere', cat: 'Körpersignal' },
+      { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts', cat: 'Körpersignal' },
     ],
   },
 
@@ -1498,6 +1501,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
       { href: '/koerpersignale/kopfdruck-beim-buecken/', label: 'Kopfdruck beim Bücken', cat: 'Körpersignal' },
       { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-hinter-den-augen/', label: 'Druck hinter den Augen', cat: 'Körpersignal' },
     ],
   },
 
@@ -1894,6 +1898,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/morton-neurom/', label: 'Morton-Neurom', cat: 'Beschwerde' },
       { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
       { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/fuss-schlaeft-staendig-ein/', label: 'Fuss schläft ständig ein', cat: 'Körpersignal' },
     ],
   },
   {
@@ -2189,6 +2194,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
       { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch', cat: 'Körpersignal' },
     ],
   },
   {
@@ -2703,6 +2709,356 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
+      { href: '/koerpersignale/schwindel-nach-dem-essen/', label: 'Schwindel nach dem Essen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-gesicht',
+    symptom: 'Kribbeln im Gesicht',
+    title: 'Kribbeln im Gesicht: Was kann dahinterstecken?',
+    metaDesc: 'Es kribbelt im Gesicht, an Wange, Stirn oder um den Mund? Von Anspannung über Nerven bis Migräne: die häufigsten Muster, und welche Warnzeichen sofort abgeklärt gehören.',
+    h1: 'Warum kribbelt es in meinem Gesicht?',
+    category: 'Kopf & Sinne',
+    lead: 'Ein Kribbeln an Wange, Stirn oder um den Mund fühlt sich beunruhigend an, weil das Gesicht so nah am Kopf liegt. Meist stecken harmlose Auslöser dahinter, von Anspannung bis zu einem gereizten Nerv. Wichtig ist, die wenigen ernsten Muster zu kennen. Hier lernst du sie zu unterscheiden.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kribbeln und Anspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kribbeln entsteht, wenn Nerven gereizt sind oder anders melden als gewohnt. Im Gesicht reicht das Spektrum von Anspannung und schneller Atmung über verspannte Kiefer- und Nackenmuskulatur bis zu Migräne, Zahnbehandlungen oder einem gereizten Gesichtsnerv. Ein Kribbeln allein ist keine Diagnose, entscheidend sind Dauer, Seite und Begleitsymptome.</p>
+<p>Ein wichtiger Unterschied vorweg: Kribbeln ist nicht dasselbe wie Taubheit oder Schwäche. Wenn sich eine Gesichtshälfte plötzlich taub oder gelähmt anfühlt, gilt die Notfall-Regel weiter unten.</p>
+<h2>Häufige Muster und mögliche Auslöser</h2>
+<ul>
+<li><strong>Anspannung und schnelle Atmung:</strong> Bei Stress oder Hyperventilation kribbelt es typischerweise um den Mund und in den Fingern, oft beidseitig. Das ist unangenehm, aber nicht gefährlich und verschwindet mit ruhiger Atmung.</li>
+<li><strong>Kiefer und Nacken:</strong> Zähnepressen, Kiefergelenksprobleme und verspannte Nackenmuskulatur können Missempfindungen im Gesicht mit anstossen. Kribbelt es auch <a href="/koerpersignale/kribbeln-vom-nacken-in-den-arm/">vom Nacken in den Arm</a>, spricht das für ein muskulär-nervales Muster.</li>
+<li><strong>Migräne:</strong> Bei manchen wandert vor oder während einer Attacke ein Kribbeln über Gesicht oder Hand, meist einseitig und über Minuten. Mehr dazu auf der Seite <a href="/beschwerden/migraene/">Migräne</a>.</li>
+<li><strong>Zahnärztliche Ursachen:</strong> Nach Spritzen, Weisheitszahn-Eingriffen oder bei Zahnentzündungen kann ein Ast des Gesichtsnervs vorübergehend gereizt sein.</li>
+<li><strong>Gereizter Gesichtsnerv:</strong> Blitzartige, stromschlagartige Schmerzen in einer Gesichtshälfte gehören zum Bild der <a href="/beschwerden/trigeminusneuralgie/">Trigeminusneuralgie</a> und sind etwas anderes als ein dumpfes Dauerkribbeln.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Wähle sofort den Notruf 144, wenn das Kribbeln oder Taubheitsgefühl plötzlich einseitig auftritt und Schwäche, ein hängender Mundwinkel, Sprach- oder Sehstörungen dazukommen. Das können Zeichen eines Schlaganfalls oder einer Durchblutungsstörung sein, auch wenn sie nach Minuten wieder verschwinden.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Ist eine Gesichtshälfte betroffen oder beide Seiten?</li>
+<li>Kommt das Kribbeln in Stresssituationen oder unabhängig davon?</li>
+<li>Presst oder knirschst du mit den Zähnen, ist der Kiefer morgens müde?</li>
+<li>Gab es kürzlich eine Zahnbehandlung?</li>
+<li>Folgen Kopfschmerzen auf das Kribbeln?</li>
+<li>Wie lange dauert eine Episode: Sekunden, Minuten oder Stunden?</li>
+</ul>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Am Anfang stehen Gespräch und eine einfache neurologische Untersuchung: Gefühl, Kraft und Reflexe im Gesicht. Je nach Muster folgen zahnärztliche Abklärung, eine Untersuchung von Kiefer und Nacken oder bei unklaren, anhaltenden Beschwerden eine neurologische Diagnostik. Ein neues, anhaltendes oder wiederkehrendes Gesichtskribbeln ohne erkennbaren Auslöser gehört ärztlich eingeordnet.</p>
+<h2>Wie betrachtet die chinesische Medizin das Kribbeln im Gesicht?</h2>
+<p>Die chinesische Medizin betrachtet Missempfindungen traditionell zusammen mit Anspannung, Kiefer- und Nackenmustern und Stress. Diese Einordnung ersetzt keine ärztliche oder zahnärztliche Abklärung, besonders nicht bei einseitigen oder neuen Beschwerden.</p>
+<p>Sind ernste Ursachen ausgeschlossen und stehen Verspannung und Stress im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, oft zusammen mit Arbeit an <a href="/beschwerden/kieferschmerzen/">Kiefer</a> und <a href="/beschwerden/nackenschmerzen/">Nacken</a>, Teil der Strategie sein. Ob dein Muster passt, klären wir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Ist Kribbeln im Gesicht gefährlich?', a: 'Meist nicht: Anspannung, Kiefer- und Nackenverspannung oder eine Zahnbehandlung sind häufige Erklärungen. Gefährlich wird es, wenn das Kribbeln plötzlich einseitig auftritt und Schwäche, ein hängender Mundwinkel oder Sprachstörungen dazukommen. Dann sofort den Notruf 144 wählen.' },
+      { q: 'Kann Stress Kribbeln im Gesicht auslösen?', a: 'Ja. Bei Anspannung und schneller Atmung verschiebt sich das Kohlendioxid im Blut, und es kribbelt typischerweise um den Mund und in den Fingern, meist beidseitig. Mit ruhiger Atmung verschwindet das Gefühl wieder.' },
+      { q: 'Wann sollte ich Gesichtskribbeln abklären lassen?', a: 'Wenn es neu ist und ohne erkennbaren Auslöser anhält, wenn es immer dieselbe Gesichtshälfte betrifft, wenn blitzartige Schmerzen dazukommen oder wenn es sich ausbreitet. Einseitiges Kribbeln mit Schwäche oder Sprachstörungen ist ein Notfall.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kribbeln-an-der-lippe/', label: 'Kribbeln an der Lippe', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
+      { href: '/beschwerden/trigeminusneuralgie/', label: 'Trigeminusneuralgie', cat: 'Beschwerde' },
+      { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
+      { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'schwindel-nach-dem-essen',
+    symptom: 'Schwindel nach dem Essen',
+    title: 'Schwindel nach dem Essen: Was kann dahinterstecken?',
+    metaDesc: 'Nach dem Essen wird dir schwummrig oder flau? Warum Kreislauf und Blutzucker nach Mahlzeiten schwanken können, welche Muster häufig sind und wann du das abklären solltest.',
+    h1: 'Warum wird mir nach dem Essen schwindlig?',
+    category: 'Kopf & Sinne',
+    lead: 'Kaum ist die Mahlzeit vorbei, fühlst du dich schwummrig, flau oder benommen. Schwindel nach dem Essen hat meist mit Kreislauf und Verdauung zu tun, die nach einer Mahlzeit umverteilen müssen. Hier erfährst du, welche Muster dahinterstecken können und wann eine Abklärung wichtig ist.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kreislauf und Verdauung gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nach einer Mahlzeit leitet der Körper mehr Blut in den Verdauungstrakt. Bei manchen Menschen sinkt der Blutdruck dadurch vorübergehend, und es wird ihnen schwummrig, besonders nach grossen Mahlzeiten, im Alter oder bei blutdrucksenkenden Medikamenten. Auch Blutzuckerschwankungen nach kohlenhydratreichem Essen und zu wenig Flüssigkeit über den Tag können sich als Schwindel oder Flauheit melden.</p>
+<p>Eine einzelne Ursache lässt sich am Zeitpunkt allein nicht festmachen. Entscheidend sind Muster, Begleitsymptome und Verlauf.</p>
+<h2>Wichtig: Welcher Schwindel ist es?</h2>
+<p>Für die Einordnung hilft die Unterscheidung: Ein diffuses Schwummrig- oder Benommenheitsgefühl nach dem Essen passt zu Kreislauf und Blutzucker. Echtes Drehen wie im Karussell spricht eher für das Gleichgewichtsorgan und tritt dann zufällig auch mal nach einer Mahlzeit auf; typische Muster dazu findest du unter <a href="/koerpersignale/schwindel-beim-umdrehen-im-bett/">Schwindel beim Umdrehen im Bett</a>. Wird dir vor allem beim Aufstehen vom Tisch schwarz vor Augen, passt das Muster <a href="/koerpersignale/schwindel-beim-aufstehen/">Schwindel beim Aufstehen</a>.</p>
+<h2>Häufige Muster nach dem Essen</h2>
+<ul>
+<li><strong>Grosse, üppige Mahlzeiten:</strong> Je mehr der Magen zu tun hat, desto mehr Blut braucht die Verdauung. Der Kreislauf muss gegensteuern; gelingt das verzögert, wird dir flau.</li>
+<li><strong>Kohlenhydratlastiges Essen:</strong> Nach schnellen Kohlenhydraten kann der Blutzucker erst steigen und dann rasch fallen, mit Flauheit, Zittrigkeit und Heisshunger ein bis drei Stunden nach dem Essen.</li>
+<li><strong>Zu wenig getrunken:</strong> Flüssigkeitsmangel macht den Kreislauf anfälliger für jede Umverteilung.</li>
+<li><strong>Medikamente:</strong> Blutdrucksenker und einige weitere Wirkstoffe verstärken den Blutdruckabfall nach Mahlzeiten. Das gehört in die ärztliche Sprechstunde, nicht in Eigenregie angepasst.</li>
+<li><strong>Begleitendes Herzklopfen:</strong> Meldet sich zusätzlich das Herz, findest du die Einordnung unter <a href="/koerpersignale/herzklopfen-nach-dem-essen/">Herzklopfen nach dem Essen</a>.</li>
+</ul>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Tritt der Schwindel nach jeder Mahlzeit auf oder nur nach grossen, späten oder süssen?</li>
+<li>Beginnt er direkt nach dem Essen oder erst nach einer bis zwei Stunden?</li>
+<li>Ist es ein Drehen oder eher ein Schwummrig-Sein?</li>
+<li>Hilft Hinsetzen oder etwas Kleines essen?</li>
+<li>Nimmst du blutdrucksenkende Medikamente?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Geh zur Ärztin oder zum Arzt, wenn der Schwindel nach dem Essen regelmässig auftritt, wenn du dabei fast ohnmächtig wirst oder stürzt, wenn Herzrasen, Brustschmerzen oder Atemnot dazukommen oder wenn du an Diabetes leidest und Unterzuckerungen möglich sind. Plötzlicher heftiger Schwindel mit Sprach-, Seh- oder Lähmungserscheinungen ist ein Notfall: Notruf 144.</p></div>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Typisch sind Blutdruckmessungen im Sitzen und Stehen, teils auch nach einer Testmahlzeit, ein Blick auf Medikamente und Trinkmenge sowie je nach Verdacht Blutzucker- und Blutuntersuchungen. Bei Drehschwindel wird zusätzlich das Gleichgewichtsorgan geprüft; die Übersicht dazu findest du unter <a href="/beschwerden/schwindel/">Schwindel</a>.</p>
+<h2>Wie betrachtet die chinesische Medizin den Schwindel nach dem Essen?</h2>
+<p>Die chinesische Medizin betrachtet Schwindel traditionell zusammen mit Verdauung, Essrhythmus und Erschöpfung als Gesamtmuster. Diese Einordnung ersetzt keine Blutdruck- oder Blutzuckerabklärung.</p>
+<p>Sind ernste Ursachen ausgeschlossen und stehen träge Verdauung und Essgewohnheiten im Vordergrund, kann eine Begleitung mit <a href="/therapien/akupunktur/">Akupunktur</a> und Anpassungen bei Portionsgrössen und Mahlzeitenrhythmus sinnvoll sein. Ob das bei dir passt, klären wir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Warum wird mir nach dem Essen schwummrig?', a: 'Nach einer Mahlzeit fliesst mehr Blut in die Verdauungsorgane. Gleicht der Kreislauf das verzögert aus, sinkt der Blutdruck kurzzeitig und dir wird flau, besonders nach grossen Mahlzeiten, bei wenig Flüssigkeit oder unter blutdrucksenkenden Medikamenten.' },
+      { q: 'Kann der Blutzucker Schwindel nach dem Essen verursachen?', a: 'Ja. Nach schnellen Kohlenhydraten kann der Blutzucker erst steigen und dann rasch abfallen. Typisch sind Flauheit, Zittrigkeit und Heisshunger ein bis drei Stunden nach dem Essen. Tritt das regelmässig auf, gehört es ärztlich abgeklärt.' },
+      { q: 'Wann ist Schwindel nach dem Essen ein Warnzeichen?', a: 'Wenn er regelmässig auftritt, du beinahe ohnmächtig wirst, Herzrasen oder Brustschmerzen dazukommen oder du Diabetes hast. Plötzlicher Schwindel mit Sprach-, Seh- oder Lähmungserscheinungen ist ein Notfall: Notruf 144.' },
+    ],
+    related: [
+      { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/beschwerden/schwindel/', label: 'Schwindel', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'druck-im-oberbauch',
+    symptom: 'Druck im Oberbauch',
+    title: 'Druck im Oberbauch: Was kann dahinterstecken?',
+    metaDesc: 'Ein Druckgefühl im Oberbauch, ohne dass es richtig schmerzt? Von Magen und Verdauung bis Stress: die häufigsten Muster, was du beobachten kannst und wann du abklären solltest.',
+    h1: 'Warum spüre ich einen Druck im Oberbauch?',
+    category: 'Bauch & Verdauung',
+    lead: 'Zwischen Rippenbogen und Nabel sitzt ein Druck, der sich schwer beschreiben lässt: kein richtiger Schmerz, aber auch nicht normal. Ein Druckgefühl im Oberbauch ist häufig und hat meist mit Magen und Verdauung zu tun. Hier erfährst du, welche Muster typisch sind und welche Zeichen abgeklärt gehören.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Oberbauch und Verdauung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Der Oberbauch ist die Heimat von Magen, Zwölffingerdarm, Leber und Gallenblase, und in den meisten Fällen meldet sich hier die Verdauung: ein empfindlicher oder gereizter Magen, verzögerte Entleerung, Luft im Bauch oder Anspannung, die auf den Magen schlägt. Ein reiner Druck ohne weitere Zeichen ist selten gefährlich; wichtig ist, ihn von Brennen, Schmerz und Alarmzeichen zu unterscheiden.</p>
+<h2>Druck ist nicht gleich Druck: die Abgrenzung</h2>
+<p>Für die Einordnung lohnt sich Präzision. <strong>Brennen</strong> hinter dem Brustbein, das nach oben steigt, spricht für Reflux, siehe <a href="/beschwerden/sodbrennen/">Sodbrennen</a>. <strong>Völlegefühl</strong> direkt nach Mahlzeiten hat ein eigenes Muster, siehe <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">Völlegefühl nach dem Essen</a>. Tritt der Druck vor allem <strong>im Liegen</strong> auf, passt <a href="/koerpersignale/magendruck-im-liegen/">Magendruck im Liegen</a>. Ein <strong>geblähter, gespannter Bauch</strong> gegen Abend gehört zum <a href="/koerpersignale/blaehbauch-am-abend/">Blähbauch</a>. Diese Seite gehört dem diffusen Druckgefühl im Oberbauch, das nicht klar an Essen, Lage oder Brennen gebunden ist.</p>
+<h2>Häufige Muster und mögliche Auslöser</h2>
+<ul>
+<li><strong>Empfindlicher oder gereizter Magen:</strong> Stress, unregelmässiges Essen, Kaffee, Alkohol und Schmerzmittel können die Magenschleimhaut reizen. Anhaltende Beschwerden gehören abgeklärt, mehr dazu unter <a href="/beschwerden/gastritis/">Gastritis</a>.</li>
+<li><strong>Funktionelle Magenbeschwerden:</strong> Sehr häufig findet sich keine sichtbare Ursache; der Magen reagiert empfindlich auf Dehnung und Anspannung. Unangenehm, aber gutartig.</li>
+<li><strong>Anspannung:</strong> Der Magen gehört zu den Organen, die Stress am direktesten spüren. Viele beschreiben den Druck in belastenden Phasen deutlicher.</li>
+<li><strong>Luft und Verdauung:</strong> Geschluckte Luft und Gase können im Oberbauch drücken, oft zusammen mit Aufstossen.</li>
+</ul>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Ist der Druck an Mahlzeiten gebunden, an die Lage oder an Stress?</li>
+<li>Gibt es Aufstossen, Brennen, Übelkeit oder Stuhlveränderungen dazu?</li>
+<li>Hilft Wärme, Bewegung oder Aufstossen?</li>
+<li>Nimmst du regelmässig Schmerzmittel?</li>
+<li>Seit wann besteht der Druck, und wird er eher stärker?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Zeitnah ärztlich abklären lassen: Druck, der über Wochen anhält oder zunimmt, Beschwerden zusammen mit ungewolltem Gewichtsverlust, Schluckbeschwerden, Blut im Stuhl oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber, sowie neue Oberbauchbeschwerden ab dem mittleren Alter. Plötzliche, heftige Ober­bauchschmerzen, besonders mit Ausstrahlung in Brust, Rücken oder Schulter, Atemnot oder Kaltschweiss, sind ein Notfall: Notruf 144.</p></div>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Am Anfang stehen Gespräch und die Untersuchung des Bauchs. Je nach Bild folgen Blutwerte, ein Ultraschall des Oberbauchs (Leber, Galle, Bauchspeicheldrüse) oder eine Magenspiegelung. Welche Untersuchung sinnvoll ist, hängt von Dauer, Alarmzeichen und Alter ab.</p>
+<h2>Wie betrachtet die chinesische Medizin den Druck im Oberbauch?</h2>
+<p>Die chinesische Medizin betrachtet Oberbauchbeschwerden traditionell zusammen mit Essrhythmus, Anspannung und Verdauungskraft als Gesamtmuster. Diese Einordnung ersetzt keine Abklärung, wenn Alarmzeichen bestehen.</p>
+<p>Sind ernste Ursachen ausgeschlossen und stehen funktionelle Magenbeschwerden im Vordergrund, arbeiten wir häufig mit <a href="/therapien/akupunktur/">Akupunktur</a> und je nach Bild mit <a href="/therapien/kraeutertherapie/">chinesischer Kräutertherapie</a>. Ob das bei deinem Muster sinnvoll ist, sagen wir dir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Was bedeutet ein Druckgefühl im Oberbauch ohne Schmerzen?', a: 'Meist meldet sich die Verdauung: ein empfindlicher Magen, verzögerte Entleerung, Luft oder Anspannung. Ein reiner Druck ohne Alarmzeichen ist selten gefährlich. Anhaltende oder zunehmende Beschwerden gehören trotzdem ärztlich eingeordnet.' },
+      { q: 'Kann Stress Druck im Oberbauch verursachen?', a: 'Ja, der Magen reagiert direkt auf Anspannung. Viele spüren den Druck in belastenden Phasen deutlicher, oft zusammen mit weniger Appetit oder Aufstossen. Bessert sich das Gefühl in ruhigen Phasen, spricht das für ein funktionelles Muster.' },
+      { q: 'Wann muss ich mit Oberbauchbeschwerden zum Arzt?', a: 'Bei Druck über Wochen, Gewichtsverlust, Schluckbeschwerden, Blut im oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche heftige Oberbauchschmerzen mit Ausstrahlung, Atemnot oder Kaltschweiss sind ein Notfall: Notruf 144.' },
+    ],
+    related: [
+      { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
+      { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kribbeln-an-der-lippe',
+    symptom: 'Kribbeln an der Lippe',
+    title: 'Kribbeln an der Lippe: Was kann dahinterstecken?',
+    metaDesc: 'Die Lippe kribbelt oder fühlt sich pelzig an? Von Zahnbehandlung über Anspannung bis Lippenherpes: die häufigsten Erklärungen, und wann du das Kribbeln abklären solltest.',
+    h1: 'Warum kribbelt meine Lippe?',
+    category: 'Hals & Mund',
+    lead: 'Ein Kribbeln oder pelziges Gefühl an der Lippe ist irritierend, weil die Lippen extrem empfindlich sind. Die häufigsten Erklärungen sind harmlos, von der abklingenden Zahnarztspritze bis zum beginnenden Lippenherpes. Hier erfährst du, welche Muster typisch sind und wann eine Abklärung wichtig ist.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Wiederkehrendes Kribbeln einordnen lassen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Die Lippen sind dicht mit Nerven versorgt, deshalb fällt hier jede kleine Reizung auf. Häufige Auslöser sind Zahnbehandlungen und abklingende Betäubung, ein beginnender <a href="/beschwerden/lippenherpes/">Lippenherpes</a> (Kribbeln oft Stunden vor den Bläschen), Anspannung mit schneller Atmung sowie gereizte Nervenäste nach zahnärztlichen Eingriffen. Seltener stecken allergische Reaktionen oder neurologische Ursachen dahinter.</p>
+<p>Kribbeln ist dabei nicht dasselbe wie eine taube Lippe: Anhaltende Taubheit nach einem Eingriff oder ohne Erklärung gehört ärztlich oder zahnärztlich kontrolliert.</p>
+<h2>Häufige Muster</h2>
+<ul>
+<li><strong>Beginnender Lippenherpes:</strong> Viele Betroffene spüren Kribbeln, Spannen oder Brennen an immer derselben Stelle, Stunden bevor Bläschen sichtbar werden.</li>
+<li><strong>Nach der Zahnbehandlung:</strong> Wenn die Spritze abklingt, kribbelt die Lippe oft eine Weile. Hält Taubheit oder Kribbeln Tage an, gehört das in die zahnärztliche Kontrolle.</li>
+<li><strong>Anspannung und schnelle Atmung:</strong> Kribbeln um Mund und Lippen, meist beidseitig und zusammen mit kribbelnden Fingern, ist typisch für Hyperventilation und verschwindet mit ruhiger Atmung.</li>
+<li><strong>Migräne:</strong> Bei manchen wandert ein einseitiges Kribbeln über Lippe, Gesicht oder Hand vor einer Attacke, mehr dazu unter <a href="/beschwerden/migraene/">Migräne</a>.</li>
+<li><strong>Kontaktreizungen:</strong> Neue Lippenpflege, Zahnpasta oder bestimmte Lebensmittel können Kribbeln und Brennen auslösen.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Sofort Hilfe holen (Notruf 144), wenn die Lippe rasch anschwillt, Atemnot, Engegefühl im Hals oder Kreislaufprobleme dazukommen: Das kann eine allergische Reaktion sein. Ebenfalls notfallmässig: plötzliches einseitiges Kribbeln oder Taubheit mit hängendem Mundwinkel, Schwäche oder Sprachstörungen.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Kribbelt es immer an derselben Stelle, und folgen Bläschen?</li>
+<li>Gab es eine Zahnbehandlung in den letzten Tagen oder Wochen?</li>
+<li>Tritt das Kribbeln in Stresssituationen auf, zusammen mit kribbelnden Händen?</li>
+<li>Hast du neue Kosmetik, Zahnpasta oder Lebensmittel ausprobiert?</li>
+<li>Ist die Lippe nur kribbelig oder wirklich taub?</li>
+</ul>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Je nach Muster ist die richtige Adresse unterschiedlich: die Zahnärztin nach Eingriffen, die Hausärztin bei wiederkehrendem Herpes oder unklarem Kribbeln, die Neurologie bei anhaltenden einseitigen Missempfindungen. Untersucht werden Gefühl und Kraft im Gesicht, der Zahnstatus und mögliche Auslöser.</p>
+<h2>Wie betrachtet die chinesische Medizin das Kribbeln an der Lippe?</h2>
+<p>Die chinesische Medizin betrachtet Missempfindungen an Mund und Lippen traditionell zusammen mit Anspannung und wiederkehrenden Mustern wie Herpesneigung. Diese Einordnung ersetzt keine zahnärztliche oder ärztliche Abklärung.</p>
+<p>Bei wiederkehrender Herpesneigung oder stressgebundenen Beschwerden kann, nach ärztlicher Einordnung, eine begleitende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> geprüft werden. Ob das bei dir sinnvoll ist, sagen wir dir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Ist Kribbeln an der Lippe ein Zeichen für Herpes?', a: 'Oft ja: Viele spüren Kribbeln, Spannen oder Brennen an immer derselben Stelle, Stunden bevor die Bläschen kommen. Wer seine Vorboten kennt, kann früh reagieren. Kribbeln ohne Bläschen hat aber auch viele andere, meist harmlose Erklärungen.' },
+      { q: 'Wie lange darf die Lippe nach dem Zahnarzt kribbeln?', a: 'Das Abklingen der Betäubung dauert Stunden, ein Nachkribbeln bis zum nächsten Tag kommt vor. Hält Kribbeln oder Taubheit mehrere Tage an, melde dich in der Zahnarztpraxis, damit der Nerv kontrolliert wird.' },
+      { q: 'Wann ist Lippenkribbeln ein Notfall?', a: 'Wenn die Lippe rasch anschwillt und Atemnot oder Kreislaufprobleme dazukommen (mögliche allergische Reaktion), oder wenn einseitiges Kribbeln mit hängendem Mundwinkel, Schwäche oder Sprachstörungen auftritt. In beiden Fällen: Notruf 144.' },
+    ],
+    related: [
+      { href: '/beschwerden/lippenherpes/', label: 'Lippenherpes', cat: 'Beschwerde' },
+      { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
+      { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'beine-kribbeln-nachts',
+    symptom: 'Kribbeln in den Beinen in der Nacht',
+    title: 'Beine kribbeln nachts: Was kann dahinterstecken?',
+    metaDesc: 'Nachts kribbeln die Beine und rauben dir den Schlaf? Von Liegeposition über Nerven bis Restless Legs: die häufigsten Muster und wann das Kribbeln abgeklärt gehört.',
+    h1: 'Warum kribbeln meine Beine in der Nacht?',
+    category: 'Muskeln & Beine',
+    lead: 'Kaum liegst du im Bett, beginnen die Beine zu kribbeln, wie Ameisenlaufen oder feines Prickeln. Nachts fällt jede Missempfindung stärker auf, weil die Ablenkung fehlt. Hier erfährst du, welche Muster hinter nächtlichem Beinkribbeln stecken können und wie du es vom Restless-Legs-Syndrom unterscheidest.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Unruhige Beine und Schlaf gemeinsam anschauen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Nächtliches Kribbeln in den Beinen hat drei häufige Quellen: Druck und Liegeposition (ein Nerv wird komprimiert, das Bein "schläft ein"), gereizte oder in ihrer Versorgung gestörte Nerven, etwa bei Diabetes, Vitamin-B12-Mangel oder einer beginnenden <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>, sowie das Restless-Legs-Syndrom, bei dem aber der Bewegungsdrang im Vordergrund steht, nicht das Kribbeln allein.</p>
+<p>Nachts spürst du Missempfindungen deutlicher als tagsüber, weil Reize von aussen fehlen. Ein gelegentliches Kribbeln, das nach Positionswechsel verschwindet, ist kein Grund zur Sorge.</p>
+<h2>Kribbeln ist nicht gleich Restless Legs</h2>
+<p>Wichtig zur Abgrenzung: Beim <a href="/beschwerden/restless-legs/">Restless-Legs-Syndrom</a> steht ein quälender Bewegungsdrang im Zentrum, der in Ruhe auftritt, sich durch Bewegung bessert und abends oder nachts am stärksten ist. Kribbeln kann dazugehören, aber Kribbeln allein, ohne Bewegungsdrang, ist noch kein Restless Legs. Brennende Fusssohlen haben wiederum ein eigenes Muster, siehe <a href="/koerpersignale/brennende-fuesse-nachts/">brennende Füsse nachts</a>, und schmerzhafte Krämpfe gehören zu <a href="/koerpersignale/wadenkraempfe-nachts/">Wadenkrämpfen</a>.</p>
+<h2>Häufige Muster und mögliche Auslöser</h2>
+<ul>
+<li><strong>Liegeposition und Druck:</strong> Seitenlage mit angewinkelten Beinen oder ein durchgelegenes Kissen zwischen den Knien kann Nerven komprimieren. Typisch: Das Kribbeln betrifft eine klare Zone und verschwindet nach Bewegung in Minuten.</li>
+<li><strong>Nervenversorgung:</strong> Diabetes, Vitamin-B12-Mangel, Alkohol und einige Medikamente können Nerven schädigen. Typisch: beidseitiges, strumpfförmiges Kribbeln an Füssen und Unterschenkeln, das über Wochen eher zunimmt.</li>
+<li><strong>Rücken und Nervenwurzeln:</strong> Kribbelt es einseitig vom Gesäss das Bein hinunter, kann eine gereizte Nervenwurzel dahinterstecken, siehe <a href="/beschwerden/ischias/">Ischias</a>.</li>
+<li><strong>Kreislauf und Erschöpfung:</strong> Nach langem Stehen oder intensiver Belastung melden sich Beine nachts eher mit Missempfindungen.</li>
+</ul>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Verschwindet das Kribbeln, wenn du die Position wechselst?</li>
+<li>Besteht ein Drang, die Beine zu bewegen, der durch Bewegung besser wird?</li>
+<li>Ist das Kribbeln beidseitig und strumpfförmig oder einseitig in einer Zone?</li>
+<li>Kribbelt es nur nachts oder inzwischen auch tagsüber?</li>
+<li>Bestehen Diabetes, Alkoholkonsum oder eine vegetarisch-vegane Ernährung ohne B12-Ergänzung?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Ärztlich abklären lassen solltest du beidseitiges Kribbeln, das über Wochen zunimmt oder auch tagsüber besteht, Kribbeln zusammen mit Taubheit, Schwäche oder Gangunsicherheit, sowie einen quälenden nächtlichen Bewegungsdrang, der den Schlaf stört. Plötzliche Lähmung, Taubheit im Genitalbereich oder Blasenstörungen sind ein Notfall.</p></div>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Neben Gespräch und Untersuchung von Gefühl, Kraft und Reflexen gehören je nach Bild Blutwerte (Blutzucker, Vitamin B12, Eisenspeicher) und bei Verdacht auf Nervenschädigung eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a> dazu. Beim Restless-Legs-Verdacht wird zusätzlich der Eisenstoffwechsel geprüft.</p>
+<h2>Wie betrachtet die chinesische Medizin nächtliches Beinkribbeln?</h2>
+<p>Die chinesische Medizin betrachtet unruhige, kribbelnde Beine traditionell zusammen mit Schlaf, Erschöpfung und Durchblutungsmustern. Diese Einordnung ersetzt keine Abklärung von Blutzucker, Vitaminstatus oder Nervenfunktion.</p>
+<p>Sind behandlungsbedürftige Ursachen ausgeschlossen, begleiten wir Menschen mit unruhigen Beinen und gestörtem Schlaf häufig mit <a href="/therapien/akupunktur/">Akupunktur</a>. Ob dein Muster geeignet ist, klären wir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Sind kribbelnde Beine nachts ein Restless-Legs-Syndrom?', a: 'Nicht automatisch. Beim Restless-Legs-Syndrom steht ein Bewegungsdrang im Zentrum, der in Ruhe auftritt und durch Bewegung besser wird. Kribbeln allein hat viele andere Erklärungen, von der Liegeposition bis zu Nerven- oder Vitaminthemen.' },
+      { q: 'Warum kribbeln die Beine gerade nachts?', a: 'In der Ruhe fehlen ablenkende Reize, Missempfindungen fallen stärker auf. Zusätzlich können Liegepositionen Nerven komprimieren. Kribbeln, das nach Positionswechsel verschwindet, ist meist harmlos.' },
+      { q: 'Wann sollte ich nächtliches Beinkribbeln abklären lassen?', a: 'Wenn es beidseitig und strumpfförmig ist und über Wochen zunimmt, wenn Taubheit, Schwäche oder Gangunsicherheit dazukommen oder wenn ein quälender Bewegungsdrang den Schlaf stört. Blutwerte und je nach Bild eine Nervenleitmessung schaffen Klarheit.' },
+    ],
+    related: [
+      { href: '/beschwerden/restless-legs/', label: 'Restless Legs', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/fuss-schlaeft-staendig-ein/', label: 'Fuss schläft ständig ein', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'druck-hinter-den-augen',
+    symptom: 'Druck hinter den Augen',
+    title: 'Druck hinter den Augen: Was kann dahinterstecken?',
+    metaDesc: 'Ein Druckgefühl hinter den Augen, beim Blinzeln oder Bewegen der Augen? Nebenhöhlen, Bildschirmarbeit und Kopfschmerzformen im Überblick, plus die Warnzeichen fürs Auge.',
+    h1: 'Warum spüre ich Druck hinter den Augen?',
+    category: 'Kopf & Sinne',
+    lead: 'Ein dumpfer Druck hinter einem oder beiden Augen, manchmal beim Blinzeln oder bei Augenbewegungen spürbar: Dieses Signal hat meist mit Nebenhöhlen, überanstrengten Augen oder Kopfschmerzformen zu tun. Hier erfährst du, welche Muster typisch sind und welche Augen-Warnzeichen sofort kontrolliert gehören.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Kopfdruck und Verspannung einordnen lassen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Hinter den Augen treffen mehrere Systeme zusammen: die Nebenhöhlen, die Augenmuskeln, die Kopf- und Gesichtsmuskulatur und die Strukturen des Auges selbst. Am häufigsten entsteht Druck hinter den Augen durch verstopfte oder gereizte Nebenhöhlen, durch lange Naharbeit am Bildschirm und durch Kopfschmerzformen wie Spannungskopfschmerz oder Migräne. Das Auge selbst ist seltener die Ursache, hat aber klare Warnzeichen.</p>
+<h2>Häufige Muster</h2>
+<ul>
+<li><strong>Nebenhöhlen:</strong> Druck an Stirn, Nasenwurzel und hinter den Augen, oft zusammen mit verstopfter Nase und schlimmer beim Bücken. Die Einordnung dazu findest du unter <a href="/beschwerden/sinusitis/">Sinusitis</a> und beim Signal <a href="/koerpersignale/kopfdruck-beim-buecken/">Kopfdruck beim Bücken</a>.</li>
+<li><strong>Überanstrengte Augen:</strong> Nach Stunden am Bildschirm ermüden die Augenmuskeln; typisch sind Druck, Brennen und das Gefühl schwerer Augen am Abend, oft mit verspanntem Nacken.</li>
+<li><strong>Kopfschmerzformen:</strong> <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerzen</a> drücken oft bandförmig bis hinter die Augen; bei der <a href="/beschwerden/migraene/">Migräne</a> sitzt der Schmerz häufig einseitig hinter Auge oder Schläfe. Ein diffuser Dauerdruck im Kopf ohne echten Schmerz hat eine eigene Seite: <a href="/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/">Druck im Kopf ohne Kopfschmerzen</a>.</li>
+<li><strong>Das Auge selbst:</strong> Trockene Augen und nicht korrigierte Sehschwächen machen Druck und Ermüdung. Ernste Augenursachen sind seltener, aber wichtig, siehe Warnzeichen.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort reagieren</div><p>Sofort augenärztlich oder notfallmässig abklären lassen: plötzlicher heftiger Augenschmerz mit rotem Auge, Übelkeit und Sehverschlechterung, plötzlicher Sehverlust oder neue Doppelbilder, Schmerzen bei Augenbewegungen mit verschlechtertem Sehen, sowie Druck hinter den Augen zusammen mit Fieber, geschwollenem Lid oder neurologischen Ausfällen.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Ist der Druck einseitig oder beidseitig?</li>
+<li>Wird er beim Bücken stärker, und ist die Nase verstopft?</li>
+<li>Tritt er vor allem nach Bildschirmtagen auf?</li>
+<li>Schmerzen Augenbewegungen, oder ist das Sehen verändert?</li>
+<li>Wann war deine letzte Brillen- oder Sehstärkenkontrolle?</li>
+</ul>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Je nach Muster ist die richtige Adresse die Hausärztin (Nebenhöhlen, Kopfschmerzformen), die Augenärztin (Sehstärke, Augendruck, trockene Augen) oder bei anhaltend unklarem Druck die weiterführende Abklärung. Neue Sehstörungen gehören immer augenärztlich kontrolliert.</p>
+<h2>Wie betrachtet die chinesische Medizin den Druck hinter den Augen?</h2>
+<p>Die chinesische Medizin betrachtet Druckgefühle an Kopf und Augen traditionell zusammen mit Nacken, Kiefer, Bildschirmbelastung und Stress. Diese Einordnung ersetzt keine augenärztliche Kontrolle bei Sehveränderungen.</p>
+<p>Sind ernste Ursachen ausgeschlossen und stehen Verspannung und bekannte Kopfschmerzmuster im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, oft kombiniert mit Arbeit am <a href="/beschwerden/nackenschmerzen/">Nacken</a>, geprüft werden. Ob das bei dir sinnvoll ist, klären wir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Was bedeutet Druck hinter den Augen ohne Schmerzen?', a: 'Häufig stecken Nebenhöhlen, überanstrengte Augen nach Bildschirmarbeit oder Spannungsmuster dahinter. Ein Druck ohne Sehveränderung und ohne Alarmzeichen ist meist harmlos, gehört aber eingeordnet, wenn er anhält oder wiederkehrt.' },
+      { q: 'Können die Nebenhöhlen Druck hinter den Augen machen?', a: 'Ja, das ist eine der häufigsten Erklärungen: Gereizte oder verstopfte Nebenhöhlen drücken an Stirn, Nasenwurzel und hinter den Augen, oft zusammen mit verstopfter Nase und stärker beim Bücken.' },
+      { q: 'Wann muss ich mit Augendruck sofort zum Arzt?', a: 'Bei plötzlichem heftigem Augenschmerz mit rotem Auge und Sehverschlechterung, plötzlichem Sehverlust, neuen Doppelbildern, Schmerzen bei Augenbewegungen oder Druck mit Fieber und geschwollenem Lid. Das gehört sofort augenärztlich oder notfallmässig kontrolliert.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kopfdruck-beim-buecken/', label: 'Kopfdruck beim Bücken', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/', label: 'Druck im Kopf ohne Kopfschmerzen', cat: 'Körpersignal' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/spannungskopfschmerzen/', label: 'Spannungskopfschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/augenflimmern/', label: 'Augenflimmern', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'fuss-schlaeft-staendig-ein',
+    symptom: 'ein Fuss, der ständig einschläft',
+    title: 'Fuss schläft ständig ein: Was kann dahinterstecken?',
+    metaDesc: 'Dein Fuss schläft immer wieder ein und kribbelt? Von Sitzposition über eingeengte Nerven bis Rücken: die häufigsten Muster, und wann das Einschlafen abgeklärt gehört.',
+    h1: 'Warum schläft mein Fuss ständig ein?',
+    category: 'Muskeln & Beine',
+    lead: 'Einmal ist es harmlos: Der Fuss schläft ein, kribbelt beim Aufwachen und ist nach Minuten wieder normal. Passiert das aber ständig, oder immer am gleichen Fuss, lohnt sich ein genauer Blick. Hier erfährst du, welche Muster hinter einem wiederholt einschlafenden Fuss stecken können.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Taube Füsse einordnen lassen?',
+    author: AUTOR,
+    ...DATEN8,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Fuss schläft ein, wenn ein Nerv auf seinem Weg vom Rücken bis zum Fuss gedrückt oder gereizt wird. Beim gelegentlichen Einschlafen ist das schlicht die Sitz- oder Liegeposition. Schläft der Fuss dagegen ständig ein, kommen eingeengte Nerven am Knie oder Sprunggelenk, eine gereizte Nervenwurzel im Rücken oder eine gestörte Nervenversorgung wie bei Diabetes infrage.</p>
+<p>Die wichtigste Beobachtung: Verschwindet das Taubheitsgefühl nach Positionswechsel vollständig, oder bleibt ein Rest?</p>
+<h2>Häufige Muster und mögliche Auslöser</h2>
+<ul>
+<li><strong>Position und Druck:</strong> Übergeschlagene Beine, Fersensitz oder harte Stuhlkanten drücken auf Nerven. Typisch: klare Auslösesituation, vollständige Erholung in Minuten. Das verwandte Sitz-Muster findest du unter <a href="/koerpersignale/bein-wird-beim-sitzen-taub/">Bein wird beim Sitzen taub</a>.</li>
+<li><strong>Eingeengter Nerv am Knie:</strong> Der Wadenbeinnerv verläuft aussen am Knie direkt unter der Haut. Häufiges Beineüberschlagen oder enge Bandagen können ihn reizen; typisch sind Kribbeln am Fussrücken und aussen am Unterschenkel.</li>
+<li><strong>Rücken und Nervenwurzeln:</strong> Schläft immer derselbe Fuss ein, teils mit Ausstrahlung vom Gesäss das Bein hinunter, kann eine gereizte Nervenwurzel dahinterstecken, etwa bei <a href="/beschwerden/ischias/">Ischias</a> oder einem <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a>.</li>
+<li><strong>Nervenversorgung:</strong> Beidseitiges, strumpfförmiges Taubheitsgefühl an beiden Füssen, das schleichend zunimmt, passt eher zu einer <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>, etwa bei Diabetes oder Vitamin-B12-Mangel.</li>
+</ul>
+<h2>Was kannst du selbst beobachten?</h2>
+<ul>
+<li>Gibt es eine klare Auslöseposition, oder schläft der Fuss auch ohne ein?</li>
+<li>Ist immer derselbe Fuss betroffen oder wechselt die Seite?</li>
+<li>Erholt sich das Gefühl vollständig oder bleibt eine taube Zone?</li>
+<li>Strahlt es vom Rücken oder Gesäss ins Bein aus?</li>
+<li>Kribbeln auch die <a href="/koerpersignale/zehen-kribbeln/">Zehen</a> oder beide Füsse?</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Ärztlich abklären lassen solltest du einen Fuss, der ohne erkennbare Auslöseposition oder mehrmals täglich einschläft, Taubheit, die nicht mehr vollständig verschwindet, Schwäche beim Anheben des Fusses (Stolpern über die eigene Fussspitze) oder beidseitige, zunehmende Taubheit. Plötzliche Lähmung, Taubheit im Genitalbereich oder Blasenstörungen sind ein Notfall: Notruf 144.</p></div>
+<h2>Was schaut die Ärztin oder der Arzt an?</h2>
+<p>Untersucht werden Gefühl, Kraft und Reflexe an Bein und Fuss sowie der Rücken. Je nach Bild folgen Blutwerte (Blutzucker, Vitamin B12) und eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a>, die zeigt, wo und wie stark ein Nerv beeinträchtigt ist.</p>
+<h2>Wie betrachtet die chinesische Medizin den einschlafenden Fuss?</h2>
+<p>Die chinesische Medizin betrachtet Missempfindungen an Beinen und Füssen traditionell zusammen mit Rücken, Haltung und Durchblutungsmustern. Diese Einordnung ersetzt keine neurologische Abklärung, wenn die Warnzeichen oben zutreffen.</p>
+<p>Ist die Ursache geklärt und geht es um muskulär-nervale Reizungen ohne Warnzeichen, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, oft zusammen mit Arbeit an <a href="/beschwerden/rueckenschmerzen/">Rücken</a> und Haltung, Teil der Strategie sein. Ob dein Muster passt, klären wir ehrlich im Erstgespräch.</p>`,
+    faqs: [
+      { q: 'Ist es schlimm, wenn der Fuss ständig einschläft?', a: 'Gelegentliches Einschlafen mit klarer Auslöseposition ist harmlos. Abklären lassen solltest du es, wenn der Fuss ohne erkennbaren Auslöser oder mehrmals täglich einschläft, das Gefühl nicht vollständig zurückkommt oder Schwäche dazukommt.' },
+      { q: 'Warum schläft immer derselbe Fuss ein?', a: 'Ein seitenkonstantes Muster spricht für eine mechanische Ursache auf einer Seite: eine gereizte Nervenwurzel im Rücken, ein eingeengter Nerv am Knie oder eine Gewohnheitsposition. Genau diese Konstanz ist eine wichtige Information für die Abklärung.' },
+      { q: 'Welcher Arzt ist bei einschlafenden Füssen zuständig?', a: 'Der erste Weg führt zur Hausärztin, die Gefühl, Kraft und Reflexe prüft und Blutwerte bestimmt. Bei Verdacht auf eine Nervenschädigung folgt die neurologische Abklärung, meist mit einer Nervenleitmessung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zehen-kribbeln/', label: 'Zehen kribbeln', cat: 'Körpersignal' },
+      { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts', cat: 'Körpersignal' },
     ],
   },
 ];

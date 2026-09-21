@@ -18,6 +18,17 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/kribbeln-im-gesicht/
+- https://tcm.ch/koerpersignale/schwindel-nach-dem-essen/
+- https://tcm.ch/koerpersignale/druck-im-oberbauch/
+- https://tcm.ch/koerpersignale/kribbeln-an-der-lippe/
+- https://tcm.ch/koerpersignale/beine-kribbeln-nachts/
+- https://tcm.ch/koerpersignale/druck-hinter-den-augen/
+- https://tcm.ch/koerpersignale/fuss-schlaeft-staendig-ein/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/
+
 - https://tcm.ch/team/simon-stueve/
 - https://tcm.ch/team/yuna-stueve/
 - https://tcm.ch/team/ken-uehara/

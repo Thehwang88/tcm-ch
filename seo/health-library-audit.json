@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-20",
+  "generated": "2026-09-21",
   "totals": {
-    "healthPages": 322,
+    "healthPages": 331,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 3,
+      "befund": 5,
       "question": 13,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 6,
       "selfcare": 1,
       "editorial": 76,
-      "body_signal": 54,
+      "body_signal": 61,
       "therapy": 36,
       "visual": 10
     }
@@ -120,7 +120,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 24
     },
     {
@@ -290,7 +290,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 20
     },
     {
@@ -460,7 +460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
+      "inboundContentLinks": 38,
       "outboundHealthLinks": 26
     },
     {
@@ -500,7 +500,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 16
     },
     {
@@ -540,7 +540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 15
     },
     {
@@ -580,7 +580,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 142,
+      "inboundContentLinks": 145,
       "outboundHealthLinks": 17
     },
     {
@@ -630,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 163,
+      "inboundContentLinks": 165,
       "outboundHealthLinks": 31
     },
     {
@@ -720,7 +720,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 31
     },
     {
@@ -770,7 +770,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 23
     },
     {
@@ -820,7 +820,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 180,
+      "inboundContentLinks": 181,
       "outboundHealthLinks": 34
     },
     {
@@ -910,7 +910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 21
     },
     {
@@ -930,7 +930,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 19
     },
     {
@@ -940,7 +940,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 19
     },
     {
@@ -950,7 +950,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 28
     },
     {
@@ -1010,7 +1010,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 15
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 35,
+      "inboundContentLinks": 36,
       "outboundHealthLinks": 18
     },
     {
@@ -1100,18 +1100,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 167,
+      "inboundContentLinks": 169,
       "outboundHealthLinks": 44
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/",
       "type": "befund",
       "title": "Befunde &amp; Werte verstehen | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/",
+      "type": "befund",
+      "title": "Cholesterin erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/crp-erhoeht/",
@@ -1120,7 +1130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -1131,6 +1141,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/",
+      "type": "befund",
+      "title": "TSH erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1800,8 +1820,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 153,
-      "outboundHealthLinks": 55
+      "inboundContentLinks": 160,
+      "outboundHealthLinks": 62
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -1820,7 +1840,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 10
     },
     {
@@ -1850,8 +1870,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 14
+    },
+    {
+      "url": "/koerpersignale/beine-kribbeln-nachts/",
+      "type": "body_signal",
+      "title": "Beine kribbeln nachts: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/bitterer-geschmack-morgens/",
@@ -1870,7 +1900,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 10
     },
     {
@@ -1880,7 +1910,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/druck-hinter-den-augen/",
+      "type": "body_signal",
+      "title": "Druck hinter den Augen: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 9
     },
     {
@@ -1890,8 +1930,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/koerpersignale/druck-im-oberbauch/",
+      "type": "body_signal",
+      "title": "Druck im Oberbauch: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/druckgefuehl-im-unterbauch/",
@@ -1954,6 +2004,16 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/koerpersignale/fuss-schlaeft-staendig-ein/",
+      "type": "body_signal",
+      "title": "Fuss schläft ständig ein: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 9
+    },
+    {
       "url": "/koerpersignale/haeufiger-harndrang-nachts/",
       "type": "body_signal",
       "title": "Häufiger Harndrang nachts: Warum muss ich so oft raus? | TCM.ch",
@@ -1990,8 +2050,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/herzschlag-im-ohr/",
@@ -2020,7 +2080,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 9
     },
     {
@@ -2090,8 +2150,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 11
+    },
+    {
+      "url": "/koerpersignale/kribbeln-an-der-lippe/",
+      "type": "body_signal",
+      "title": "Kribbeln an der Lippe: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/koerpersignale/kribbeln-im-gesicht/",
+      "type": "body_signal",
+      "title": "Kribbeln im Gesicht: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/kribbeln-vom-nacken-in-den-arm/",
@@ -2100,7 +2180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 15
     },
     {
@@ -2110,8 +2190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/nachtschweiss-ohne-fieber/",
@@ -2120,7 +2200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 11
     },
     {
@@ -2220,7 +2300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 9
     },
     {
@@ -2240,8 +2320,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/schwindel-nach-dem-essen/",
+      "type": "body_signal",
+      "title": "Schwindel nach dem Essen: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/staendiger-raeusperzwang/",
@@ -2310,7 +2400,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 13
     },
     {
@@ -2320,7 +2410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 9
     },
     {
@@ -2330,8 +2420,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/zungenbrennen/",
@@ -2340,8 +2430,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/therapien/",
@@ -2370,7 +2460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 218,
+      "inboundContentLinks": 225,
       "outboundHealthLinks": 9
     },
     {
@@ -2510,7 +2600,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 104,
+      "inboundContentLinks": 105,
       "outboundHealthLinks": 4
     },
     {
