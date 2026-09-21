@@ -16,6 +16,42 @@ function walk(dir, out = []) {
   return out;
 }
 
+// ── GUARDRAIL ───────────────────────────────────────────────────────────────
+// Die Cloudflare-Pages-Functions beantworten bestimmte Routen bewusst mit 410.
+// Eine solche URL darf NIE in die Sitemap geraten: Google bekommt sonst zwei
+// widersprüchliche Signale ("indexier mich" vs. "ich bin weg"). Genau das ist am
+// 21.09.2026 passiert — /beschwerden/achillessehnenentzuendung/ und
+// /beschwerden/kalkschulter/ standen live in der Sitemap und lieferten 410.
+//
+// Die Prune-Regeln werden hier aus denselben Quelldateien gelesen wie in den
+// Functions, damit sie nicht auseinanderlaufen können.
+await import('../public/beschwerden-keep.js');
+await import('../public/wissen-kill.js');
+const BESCHWERDEN_KEEP = new Set(globalThis.BESCHWERDEN_KEEP || []);
+const WISSEN_KILL = new Set(globalThis.WISSEN_KILL || []);
+
+// ALLOW-Liste der echten /therapien/<a>/<b>-Unterseiten direkt aus der Function lesen.
+const therapienFn = fs.readFileSync('functions/therapien/[[path]].js', 'utf8');
+const THERAPIEN_ALLOW = new Set(
+  (therapienFn.match(/const ALLOW = new Set\(\[([\s\S]*?)\]\)/) || [, ''])[1]
+    .split(',').map((s) => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean)
+);
+
+// Gibt den Grund zurück, warum eine Route 410 liefern würde — oder null.
+function prunedReason(rel) {
+  const segs = rel.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+  if (segs[0] === 'beschwerden' && segs.length === 2 && !BESCHWERDEN_KEEP.has(segs[1]))
+    return 'nicht in public/beschwerden-keep.js -> Function liefert 410';
+  if (segs[0] === 'beschwerden' && segs.length >= 3)
+    return 'verschachtelte /beschwerden/-Kombination -> Function liefert 410';
+  if (segs[0] === 'wissen' && segs.length === 2 && WISSEN_KILL.has(segs[1]))
+    return 'in public/wissen-kill.js -> Function liefert 410';
+  if (segs[0] === 'therapien' && segs.length >= 3 && segs[1] !== 'massage'
+      && !THERAPIEN_ALLOW.has(segs.slice(1).join('/')))
+    return 'Doorway-Kombination /therapien/<t>/<stadt> -> Function liefert 410';
+  return null;
+}
+
 const files = walk(DIST);
 const urls = [];
 for (const f of files) {
@@ -35,6 +71,23 @@ for (const f of files) {
   urls.push(rel);
 }
 urls.sort();
+
+// Guardrail: Build abbrechen, wenn eine Route in der Sitemap landen würde, die
+// von einer Pages Function mit 410 beantwortet wird, oder die keinen Trailing
+// Slash hat. Lieber ein roter Build als eine widersprüchliche Sitemap.
+const violations = [];
+for (const u of urls) {
+  const reason = prunedReason(u);
+  if (reason) violations.push([u, reason]);
+  else if (!u.endsWith('/')) violations.push([u, 'kein Trailing Slash']);
+}
+if (violations.length) {
+  console.error('\nSITEMAP-GUARDRAIL: ' + violations.length + ' ungültige URL(s) —');
+  for (const [u, r] of violations) console.error('  ' + SITE + u + '\n      ' + r);
+  console.error('\nEntweder die Seite wieder freigeben (KEEP/ALLOW ergänzen) oder das\n'
+    + 'Leaf/die Route entfernen, damit sie gar nicht erst gebaut wird.\n');
+  process.exit(1);
+}
 
 const priority = (u) => (u === '/' ? '1.0' : u.startsWith('/en/') ? '0.7' : (u.match(/\//g) || []).length <= 2 ? '0.8' : '0.6');
 const changefreq = (u) => ((u.match(/\//g) || []).length <= 2 ? 'weekly' : 'monthly');
