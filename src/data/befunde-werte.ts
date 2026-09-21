@@ -122,7 +122,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Warum kann TSH erhöht sein?</h2>
 <ul>
 <li><strong>Die Schilddrüse arbeitet etwas weniger:</strong> die häufigste Erklärung. Oft steckt eine schleichende, meist harmlos verlaufende Veränderung dahinter, die zunächst nur beobachtet wird.</li>
-<li><strong>Vorübergehende Einflüsse:</strong> die Erholungsphase nach einem Infekt, ausgeprägter Schlafmangel oder die Tageszeit der Blutentnahme können den Wert verschieben. Auch deshalb wird ein einzelner erhöhter Wert in der Regel zuerst kontrolliert.</li>
+<li><strong>Vorübergehende Einflüsse:</strong> die Erholungsphase nach einem Infekt oder die Tageszeit der Blutentnahme können den Wert verschieben. Auch deshalb wird ein einzelner erhöhter Wert in der Regel zuerst kontrolliert.</li>
 <li><strong>Medikamente:</strong> bestimmte Wirkstoffe beeinflussen die Schilddrüsenwerte. Wichtig ist, dass die Ärztin oder der Arzt deine aktuelle Medikation kennt.</li>
 <li><strong>Andere, seltenere Ursachen:</strong> dafür gibt es meist zusätzliche Hinweise in Untersuchung und weiteren Werten; ein einzelner erhöhter TSH-Wert ist kein Grund, davon auszugehen.</li>
 </ul>

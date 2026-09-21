@@ -95,7 +95,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'erstverschlimmerung',
         q: 'Meine Beschwerden sind nach der Behandlung kurz stärker. Ist das normal?',
-        a: '<p>Das kommt vor und ist meist harmlos: Eine vorübergehende Verstärkung der Beschwerden für einen bis zwei Tage nach der Behandlung ist bekannt und wird oft als «Erstverschlimmerung» bezeichnet, besonders zu Beginn einer Behandlungsserie. Sie sollte von selbst abklingen. Wichtig zur Einordnung: Hält die Verschlechterung länger an, wird sie stark oder kommen neue Symptome wie Fieber, Taubheit oder Lähmungserscheinungen dazu, ist das kein Behandlungseffekt mehr, sondern ein Fall für die ärztliche Abklärung. Melde dich in dem Fall auch bei deiner Praxis.</p>',
+        a: '<p>Mit „Erstverschlimmerung“ beschreiben manche Patient:innen eine vorübergehende Veränderung ihrer Beschwerden nach einer Behandlung. Leichte Müdigkeit, lokale Empfindlichkeit oder ein kurzfristiges Schwanken bereits bestehender Beschwerden können vorkommen. Eine deutliche, anhaltende oder neue Verschlechterung sollte jedoch nicht pauschal als normale Erstreaktion eingeordnet werden. Wenn Beschwerden ungewöhnlich stark sind, länger anhalten oder neue Symptome auftreten, melde dich bei der behandelnden Praxis oder lass sie medizinisch abklären.</p>',
       },
       {
         id: 'abstaende',

@@ -2752,7 +2752,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Sind ernste Ursachen ausgeschlossen und stehen Verspannung und Stress im Vordergrund, kann eine Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a>, oft zusammen mit Arbeit an <a href="/beschwerden/kieferschmerzen/">Kiefer</a> und <a href="/beschwerden/nackenschmerzen/">Nacken</a>, Teil der Strategie sein. Ob dein Muster passt, klären wir ehrlich im Erstgespräch.</p>`,
     faqs: [
       { q: 'Ist Kribbeln im Gesicht gefährlich?', a: 'Meist nicht: Anspannung, Kiefer- und Nackenverspannung oder eine Zahnbehandlung sind häufige Erklärungen. Gefährlich wird es, wenn das Kribbeln plötzlich einseitig auftritt und Schwäche, ein hängender Mundwinkel oder Sprachstörungen dazukommen. Dann sofort den Notruf 144 wählen.' },
-      { q: 'Kann Stress Kribbeln im Gesicht auslösen?', a: 'Ja. Bei Anspannung und schneller Atmung verschiebt sich das Kohlendioxid im Blut, und es kribbelt typischerweise um den Mund und in den Fingern, meist beidseitig. Mit ruhiger Atmung verschwindet das Gefühl wieder.' },
+      { q: 'Kann Stress Kribbeln im Gesicht auslösen?', a: 'Ja, besonders bei ausgeprägter Anspannung mit schneller Atmung kann es rund um den Mund und an Händen oder Füssen kribbeln. Neu auftretendes, anhaltendes oder deutlich einseitiges Gesichtskribbeln sollte aber nicht einfach Stress zugeschrieben werden.' },
       { q: 'Wann sollte ich Gesichtskribbeln abklären lassen?', a: 'Wenn es neu ist und ohne erkennbaren Auslöser anhält, wenn es immer dieselbe Gesichtshälfte betrifft, wenn blitzartige Schmerzen dazukommen oder wenn es sich ausbreitet. Einseitiges Kribbeln mit Schwäche oder Sprachstörungen ist ein Notfall.' },
     ],
     related: [
@@ -2804,7 +2804,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Sind ernste Ursachen ausgeschlossen und stehen träge Verdauung und Essgewohnheiten im Vordergrund, kann eine Begleitung mit <a href="/therapien/akupunktur/">Akupunktur</a> und Anpassungen bei Portionsgrössen und Mahlzeitenrhythmus sinnvoll sein. Ob das bei dir passt, klären wir ehrlich im Erstgespräch.</p>`,
     faqs: [
       { q: 'Warum wird mir nach dem Essen schwummrig?', a: 'Nach einer Mahlzeit fliesst mehr Blut in die Verdauungsorgane. Gleicht der Kreislauf das verzögert aus, sinkt der Blutdruck kurzzeitig und dir wird flau, besonders nach grossen Mahlzeiten, bei wenig Flüssigkeit oder unter blutdrucksenkenden Medikamenten.' },
-      { q: 'Kann der Blutzucker Schwindel nach dem Essen verursachen?', a: 'Ja. Nach schnellen Kohlenhydraten kann der Blutzucker erst steigen und dann rasch abfallen. Typisch sind Flauheit, Zittrigkeit und Heisshunger ein bis drei Stunden nach dem Essen. Tritt das regelmässig auf, gehört es ärztlich abgeklärt.' },
+      { q: 'Kann der Blutzucker Schwindel nach dem Essen verursachen?', a: 'Das ist möglich, aber nicht jede Benommenheit nach einer Mahlzeit ist eine Unterzuckerung. Typische zusätzliche Zeichen können Zittern, Schwitzen, Heisshunger, Herzklopfen und Schwäche sein. Ob der Blutzucker tatsächlich zu tief ist, muss durch eine passende Messung bestätigt werden.' },
       { q: 'Wann ist Schwindel nach dem Essen ein Warnzeichen?', a: 'Wenn er regelmässig auftritt, du beinahe ohnmächtig wirst, Herzrasen oder Brustschmerzen dazukommen oder du Diabetes hast. Plötzlicher Schwindel mit Sprach-, Seh- oder Lähmungserscheinungen ist ein Notfall: Notruf 144.' },
     ],
     related: [
@@ -2845,7 +2845,7 @@ export const koerpersignale: Koerpersignal[] = [
 <li>Nimmst du regelmässig Schmerzmittel?</li>
 <li>Seit wann besteht der Druck, und wird er eher stärker?</li>
 </ul>
-<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Zeitnah ärztlich abklären lassen: Druck, der über Wochen anhält oder zunimmt, Beschwerden zusammen mit ungewolltem Gewichtsverlust, Schluckbeschwerden, Blut im Stuhl oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber, sowie neue Oberbauchbeschwerden ab dem mittleren Alter. Plötzliche, heftige Ober­bauchschmerzen, besonders mit Ausstrahlung in Brust, Rücken oder Schulter, Atemnot oder Kaltschweiss, sind ein Notfall: Notruf 144.</p></div>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen</div><p>Zeitnah ärztlich abklären lassen: Druck, der über Wochen anhält oder zunimmt, Beschwerden zusammen mit ungewolltem Gewichtsverlust, Schluckbeschwerden, Blut im Stuhl oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche, heftige Ober­bauchschmerzen, besonders mit Ausstrahlung in Brust, Rücken oder Schulter, Atemnot oder Kaltschweiss, sind ein Notfall: Notruf 144.</p></div>
 <h2>Was schaut die Ärztin oder der Arzt an?</h2>
 <p>Am Anfang stehen Gespräch und die Untersuchung des Bauchs. Je nach Bild folgen Blutwerte, ein Ultraschall des Oberbauchs (Leber, Galle, Bauchspeicheldrüse) oder eine Magenspiegelung. Welche Untersuchung sinnvoll ist, hängt von Dauer, Alarmzeichen und Alter ab.</p>
 <h2>Wie betrachtet die chinesische Medizin den Druck im Oberbauch?</h2>
@@ -2902,7 +2902,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Die chinesische Medizin betrachtet Missempfindungen an Mund und Lippen traditionell zusammen mit Anspannung und wiederkehrenden Mustern wie Herpesneigung. Diese Einordnung ersetzt keine zahnärztliche oder ärztliche Abklärung.</p>
 <p>Bei wiederkehrender Herpesneigung oder stressgebundenen Beschwerden kann, nach ärztlicher Einordnung, eine begleitende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> geprüft werden. Ob das bei dir sinnvoll ist, sagen wir dir ehrlich im Erstgespräch.</p>`,
     faqs: [
-      { q: 'Ist Kribbeln an der Lippe ein Zeichen für Herpes?', a: 'Oft ja: Viele spüren Kribbeln, Spannen oder Brennen an immer derselben Stelle, Stunden bevor die Bläschen kommen. Wer seine Vorboten kennt, kann früh reagieren. Kribbeln ohne Bläschen hat aber auch viele andere, meist harmlose Erklärungen.' },
+      { q: 'Ist Kribbeln an der Lippe ein Zeichen für Herpes?', a: 'Es kann ein Vorzeichen von Lippenherpes sein, besonders wenn das Kribbeln wiederholt an derselben Stelle auftritt und kurz danach typische Bläschen entstehen. Kribbeln an der Lippe hat aber viele andere mögliche Ursachen, zum Beispiel eine Zahnbehandlung, Reizung, Migräne oder Hyperventilation. Ohne die späteren typischen Hautveränderungen lässt sich Herpes aus dem Kribbeln allein nicht ableiten.' },
       { q: 'Wie lange darf die Lippe nach dem Zahnarzt kribbeln?', a: 'Das Abklingen der Betäubung dauert Stunden, ein Nachkribbeln bis zum nächsten Tag kommt vor. Hält Kribbeln oder Taubheit mehrere Tage an, melde dich in der Zahnarztpraxis, damit der Nerv kontrolliert wird.' },
       { q: 'Wann ist Lippenkribbeln ein Notfall?', a: 'Wenn die Lippe rasch anschwillt und Atemnot oder Kreislaufprobleme dazukommen (mögliche allergische Reaktion), oder wenn einseitiges Kribbeln mit hängendem Mundwinkel, Schwäche oder Sprachstörungen auftritt. In beiden Fällen: Notruf 144.' },
     ],
@@ -2935,7 +2935,6 @@ export const koerpersignale: Koerpersignal[] = [
 <li><strong>Liegeposition und Druck:</strong> Seitenlage mit angewinkelten Beinen oder ein durchgelegenes Kissen zwischen den Knien kann Nerven komprimieren. Typisch: Das Kribbeln betrifft eine klare Zone und verschwindet nach Bewegung in Minuten.</li>
 <li><strong>Nervenversorgung:</strong> Diabetes, Vitamin-B12-Mangel, Alkohol und einige Medikamente können Nerven schädigen. Typisch: beidseitiges, strumpfförmiges Kribbeln an Füssen und Unterschenkeln, das über Wochen eher zunimmt.</li>
 <li><strong>Rücken und Nervenwurzeln:</strong> Kribbelt es einseitig vom Gesäss das Bein hinunter, kann eine gereizte Nervenwurzel dahinterstecken, siehe <a href="/beschwerden/ischias/">Ischias</a>.</li>
-<li><strong>Kreislauf und Erschöpfung:</strong> Nach langem Stehen oder intensiver Belastung melden sich Beine nachts eher mit Missempfindungen.</li>
 </ul>
 <h2>Was kannst du selbst beobachten?</h2>
 <ul>
@@ -3002,7 +3001,7 @@ export const koerpersignale: Koerpersignal[] = [
     faqs: [
       { q: 'Was bedeutet Druck hinter den Augen ohne Schmerzen?', a: 'Häufig stecken Nebenhöhlen, überanstrengte Augen nach Bildschirmarbeit oder Spannungsmuster dahinter. Ein Druck ohne Sehveränderung und ohne Alarmzeichen ist meist harmlos, gehört aber eingeordnet, wenn er anhält oder wiederkehrt.' },
       { q: 'Können die Nebenhöhlen Druck hinter den Augen machen?', a: 'Ja, das ist eine der häufigsten Erklärungen: Gereizte oder verstopfte Nebenhöhlen drücken an Stirn, Nasenwurzel und hinter den Augen, oft zusammen mit verstopfter Nase und stärker beim Bücken.' },
-      { q: 'Wann muss ich mit Augendruck sofort zum Arzt?', a: 'Bei plötzlichem heftigem Augenschmerz mit rotem Auge und Sehverschlechterung, plötzlichem Sehverlust, neuen Doppelbildern, Schmerzen bei Augenbewegungen oder Druck mit Fieber und geschwollenem Lid. Das gehört sofort augenärztlich oder notfallmässig kontrolliert.' },
+      { q: 'Wann muss ich mit Augendruck sofort zum Arzt?', a: 'Wenn ein Auge plötzlich stark schmerzt und rot wird, das Sehen deutlich schlechter wird, neue Doppelbilder auftreten oder Schmerzen bei Augenbewegungen mit einer Sehverschlechterung verbunden sind. Auch Fieber mit Schwellung rund um das Auge gehört rasch abgeklärt. Ein blosses Druckgefühl sagt dagegen nicht, ob der gemessene Augeninnendruck erhöht ist.' },
     ],
     related: [
       { href: '/koerpersignale/kopfdruck-beim-buecken/', label: 'Kopfdruck beim Bücken', cat: 'Körpersignal' },
@@ -3025,7 +3024,7 @@ export const koerpersignale: Koerpersignal[] = [
     author: AUTOR,
     ...DATEN8,
     bodyHtml: `<h2>Die kurze Antwort</h2>
-<p>Ein Fuss schläft ein, wenn ein Nerv auf seinem Weg vom Rücken bis zum Fuss gedrückt oder gereizt wird. Beim gelegentlichen Einschlafen ist das schlicht die Sitz- oder Liegeposition. Schläft der Fuss dagegen ständig ein, kommen eingeengte Nerven am Knie oder Sprunggelenk, eine gereizte Nervenwurzel im Rücken oder eine gestörte Nervenversorgung wie bei Diabetes infrage.</p>
+<p>Das typische Kribbeln und Taubheitsgefühl eines „eingeschlafenen“ Fusses entsteht meist, wenn ein Nerv vorübergehend gedrückt oder gereizt wird. Beim gelegentlichen Einschlafen ist das schlicht die Sitz- oder Liegeposition. Schläft der Fuss dagegen ständig ein, kommen eingeengte Nerven am Knie oder Sprunggelenk, eine gereizte Nervenwurzel im Rücken oder eine gestörte Nervenversorgung wie bei Diabetes infrage.</p>
 <p>Die wichtigste Beobachtung: Verschwindet das Taubheitsgefühl nach Positionswechsel vollständig, oder bleibt ein Rest?</p>
 <h2>Häufige Muster und mögliche Auslöser</h2>
 <ul>
