@@ -18,6 +18,17 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/kalte-fuesse/
+- https://tcm.ch/koerpersignale/kribbeln-im-koerper/
+- https://tcm.ch/koerpersignale/metallischer-geschmack-im-mund/
+- https://tcm.ch/koerpersignale/druck-auf-den-ohren/
+- https://tcm.ch/koerpersignale/kribbeln-im-kopf/
+- https://tcm.ch/koerpersignale/zittern-am-ganzen-koerper/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/
+
 - https://tcm.ch/koerpersignale/kribbeln-im-gesicht/
 - https://tcm.ch/koerpersignale/schwindel-nach-dem-essen/
 - https://tcm.ch/koerpersignale/druck-im-oberbauch/

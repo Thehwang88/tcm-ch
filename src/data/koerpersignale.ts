@@ -48,6 +48,7 @@ const DATEN5 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN6 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN7 = { datePublished: '2026-09-17', dateModified: '2026-09-17' };
 const DATEN8 = { datePublished: '2026-09-21', dateModified: '2026-09-21' };
+const DATEN9 = { datePublished: '2026-09-22', dateModified: '2026-09-22' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -707,6 +708,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen & CMD', cat: 'Beschwerde' },
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
       { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
+      { href: '/koerpersignale/druck-auf-den-ohren/', label: 'Druck auf den Ohren', cat: 'Körpersignal' },
     ],
   },
 
@@ -1247,6 +1249,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
       { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/koerpersignale/metallischer-geschmack-im-mund/', label: 'Metallischer Geschmack im Mund', cat: 'Körpersignal' },
     ],
   },
 
@@ -1398,6 +1401,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
       { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
       { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Kalte Hände einseitig', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-fuesse/', label: 'Kalte Füsse', cat: 'Körpersignal' },
     ],
   },
 
@@ -2485,6 +2489,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
       { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Eine Hand ist kälter', cat: 'Körpersignal' },
       { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen nachts ein', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-fuesse/', label: 'Kalte Füsse', cat: 'Körpersignal' },
     ],
   },
   {
@@ -2761,6 +2766,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/trigeminusneuralgie/', label: 'Trigeminusneuralgie', cat: 'Beschwerde' },
       { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
       { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen', cat: 'Beschwerde' },
+      { href: '/koerpersignale/kribbeln-im-koerper/', label: 'Kribbeln im Körper', cat: 'Körpersignal' },
     ],
   },
   {
@@ -3058,6 +3064,292 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
       { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kalte-fuesse',
+    title: 'Kalte Füsse: mögliche Ursachen und wann du sie abklären solltest',
+    metaDesc: 'Kalte Füsse sind häufig harmlos, können aber auch mit Durchblutung, Nerven, Schilddrüse oder anderen Faktoren zusammenhängen. Was bei der Einordnung hilft.',
+    h1: 'Kalte Füsse: Was kann dahinterstecken?',
+    category: 'Muskeln & Beine',
+    symptom: 'Kalte Füsse',
+    lead: 'Kalte Füsse sind häufig harmlos, können aber auch mit Durchblutung, Nerven, Schilddrüse oder anderen Faktoren zusammenhängen. Was bei der Einordnung hilft.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kalte Füsse sind häufig harmlos. Bei niedriger Umgebungstemperatur verengt der Körper die Blutgefässe in Händen und Füssen, um Wärme im Körperkern zu halten. Manche Menschen reagieren darauf stärker als andere.</p>
+<p>Wenn beide Füsse jedoch häufig kalt sind, obwohl dir insgesamt warm ist, oder zusätzlich Taubheit, Schmerzen, Farbveränderungen oder andere Beschwerden auftreten, lohnt sich eine genauere Einordnung. Entscheidend ist dabei nicht nur die Temperatur, sondern auch ob beide Seiten gleich betroffen sind und welche Begleitsymptome auftreten.</p>
+<h2>Häufige Situationen</h2>
+<ul>
+<li><strong>Kälte und individuelle Reaktion:</strong> Manche Menschen bekommen deutlich schneller kalte Hände und Füsse als andere. Das allein ist noch kein Hinweis auf eine Erkrankung.</li>
+<li><strong>Wenig Bewegung:</strong> Wer lange sitzt oder sich wenig bewegt, kann kalte Füsse stärker wahrnehmen. Bewegung aktiviert die Muskulatur und verändert die lokale Durchblutung.</li>
+<li><strong>Raynaud-Phänomen:</strong> Dabei reagieren kleine Blutgefässe an Fingern oder Zehen anfallsartig auf Kälte oder Stress. Typisch sind deutliche Farbwechsel, etwa weisslich, bläulich und später gerötet.</li>
+<li><strong>Schilddrüse und Stoffwechsel:</strong> Bei einer verminderten Schilddrüsenfunktion kann ausgeprägtes Frieren vorkommen. Kalte Füsse allein reichen für diese Diagnose jedoch nicht aus.</li>
+<li><strong>Nerven:</strong> Bei einer Polyneuropathie kann sich ein Fuss subjektiv kalt anfühlen, obwohl die Hauttemperatur normal ist. Häufig bestehen dann zusätzlich Kribbeln, Brennen oder Taubheitsgefühle.</li>
+</ul>
+<h2>Beide Füsse kalt oder nur einer?</h2>
+<p>Diese Unterscheidung ist wichtig. Sind beide Füsse ähnlich kalt, sprechen allgemeine Faktoren wie Umgebungstemperatur, individuelle Gefässreaktion oder Stoffwechsel eher für sich. Ist dagegen plötzlich nur ein Fuss deutlich kälter als der andere, muss die Durchblutung stärker berücksichtigt werden.</p>
+<p>Für dieses einseitige Muster gibt es bereits eine eigene Einordnung: <a href="/koerpersignale/ein-fuss-kaelter-als-der-andere/">Ein Fuss ist kälter als der andere</a>.</p>
+<h2>Was du selbst beobachten kannst</h2>
+<ul>
+<li>Sind beide Füsse gleich betroffen?</li>
+<li>Tritt die Kälte nur draussen oder auch in warmen Räumen auf?</li>
+<li>Verändert sich die Hautfarbe?</li>
+<li>Bestehen gleichzeitig Kribbeln, Brennen oder Taubheitsgefühle?</li>
+<li>Werden die Füsse durch Bewegung rasch wieder warm?</li>
+<li>Gibt es zusätzlich starkes Frieren, Müdigkeit oder andere neue Beschwerden?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann rasch abklären?</div>
+<p>Ein plötzlich deutlich kälterer Fuss zusammen mit starken Schmerzen, ausgeprägter Blässe oder bläulicher Verfärbung, Gefühlsverlust oder Bewegungseinschränkung gehört sofort medizinisch abgeklärt. Auch schlecht heilende Wunden am Fuss oder neue Beschwerden bei bestehender Gefäss- oder Diabeteserkrankung sollten ärztlich beurteilt werden.</p>
+</div>
+<h2>Wie wird die Ursache abgeklärt?</h2>
+<p>Je nach Beschwerden werden Hautfarbe, Temperatur, Pulse, Sensibilität und Durchblutung beurteilt. Bei wiederkehrenden oder unklaren Beschwerden können weitere Untersuchungen sinnvoll sein, beispielsweise Blutwerte oder eine Gefäss- beziehungsweise neurologische Abklärung.</p>
+<h2>Wo passt TCM hinein?</h2>
+<p>Akupunktur oder andere TCM-Verfahren können bei manchen Menschen ergänzend eingesetzt werden, wenn gleichzeitig funktionelle Beschwerden wie muskuläre Spannung, Stress oder andere behandelbare Symptome bestehen. Kalte Füsse allein sind jedoch keine ausreichende TCM- oder schulmedizinische Diagnose. Neue oder auffällige Durchblutungs- und Nervensymptome sollten zuerst medizinisch eingeordnet werden.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/ein-fuss-kaelter-als-der-andere/', label: 'Ein Fuss kälter als der andere', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-trotz-waerme/', label: 'Kalte Hände trotz Wärme', cat: 'Körpersignal' },
+      { href: '/beschwerden/raynaud-syndrom/', label: 'Raynaud-Syndrom', cat: 'Beschwerde' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-koerper',
+    title: 'Kribbeln im Körper: mögliche Ursachen und wichtige Warnzeichen',
+    metaDesc: 'Kribbeln an mehreren Körperstellen kann viele Ursachen haben. Entscheidend sind Verteilung, Dauer und Begleitsymptome. So lässt sich das Gefühl besser einordnen.',
+    h1: 'Kribbeln im Körper: Was bedeutet dieses Gefühl?',
+    category: 'Hände & Nerven',
+    symptom: 'Kribbeln im Körper',
+    lead: 'Kribbeln an mehreren Körperstellen kann viele Ursachen haben. Entscheidend sind Verteilung, Dauer und Begleitsymptome. So lässt sich das Gefühl besser einordnen.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kribbeln entsteht durch veränderte Signale sensibler Nerven. Wenn das Gefühl nicht nur an einer klar begrenzten Stelle, sondern an mehreren Körperregionen oder am ganzen Körper auftritt, ist die Einordnung breiter als bei einem einzelnen eingeschlafenen Arm oder Fuss.</p>
+<p>Manchmal tritt ein solches Kribbeln vorübergehend bei starker Anspannung oder schneller Atmung auf. Wiederkehrende oder anhaltende Beschwerden können aber auch mit Nerven, Stoffwechsel, Medikamenten, Mangelzuständen oder anderen Erkrankungen zusammenhängen. Aus dem Symptom allein lässt sich deshalb keine Diagnose ableiten.</p>
+<h2>Welche Muster sind besonders wichtig?</h2>
+<ul>
+<li><strong>Kribbeln an Händen, Füssen und rund um den Mund:</strong> Dieses Muster kann bei ausgeprägter Hyperventilation auftreten, weil sich dabei der Kohlendioxidgehalt im Blut verändert.</li>
+<li><strong>Kribbeln vor allem an Händen und Füssen:</strong> Bei länger bestehenden Beschwerden werden unter anderem periphere Nerven und mögliche Polyneuropathien berücksichtigt.</li>
+<li><strong>Kribbeln zusammen mit Unruhe oder Herzklopfen:</strong> Stress und Angst können körperliche Empfindungen deutlich verstärken. Neue Beschwerden sollten trotzdem nicht automatisch psychisch erklärt werden.</li>
+<li><strong>Kribbeln nach Medikamenten oder neuen Präparaten:</strong> Auch Medikamente und andere Substanzen können Missempfindungen beeinflussen. Veränderungen sollten mit der behandelnden Fachperson besprochen werden.</li>
+</ul>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Wo beginnt das Kribbeln?</li>
+<li>Ist es symmetrisch oder einseitig?</li>
+<li>Dauert es Sekunden, Minuten oder Stunden?</li>
+<li>Kommt es in Ruhe oder bei Bewegung?</li>
+<li>Bestehen Taubheitsgefühle oder Muskelschwäche?</li>
+<li>Treten gleichzeitig Schwindel, Atemprobleme, Kopfschmerzen oder Herzklopfen auf?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Sofort medizinisch abklären</div>
+<p>Plötzliches Kribbeln zusammen mit einseitiger Schwäche, hängendem Mundwinkel, Sprach- oder Sehstörungen, starker neuer Gangunsicherheit oder anderen akuten neurologischen Ausfällen ist ein Notfall. In der Schweiz: 144.</p>
+</div>
+<h2>Wann ist eine Untersuchung sinnvoll?</h2>
+<p>Eine ärztliche Abklärung ist sinnvoll, wenn das Kribbeln wiederkehrt, zunimmt, über längere Zeit bestehen bleibt oder zusätzlich Taubheit, Muskelschwäche, Gleichgewichtsstörungen oder andere neue Symptome auftreten.</p>
+<p>Je nach Muster können neurologische Untersuchung, Blutwerte oder weitere Tests sinnvoll sein.</p>
+<h2>TCM und Akupunktur</h2>
+<p>Akupunktur kann bei bestimmten begleitenden Beschwerden ergänzend eingesetzt werden. Bei neuem, ungeklärtem oder weit verbreitetem Kribbeln sollte jedoch zuerst geklärt werden, ob eine neurologische oder andere medizinisch relevante Ursache vorliegt.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
+      { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zehen-kribbeln/', label: 'Zehen kribbeln', cat: 'Körpersignal' },
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'metallischer-geschmack-im-mund',
+    title: 'Metallischer Geschmack im Mund: häufige Ursachen und Einordnung',
+    metaDesc: 'Ein metallischer Geschmack kann von Mund, Medikamenten, Infekten oder anderen Ursachen kommen. Was du beobachten kannst und wann eine Abklärung sinnvoll ist.',
+    h1: 'Metallischer Geschmack im Mund: Woher kann er kommen?',
+    category: 'Hals & Mund',
+    symptom: 'Metallischer Geschmack im Mund',
+    lead: 'Ein metallischer Geschmack kann von Mund, Medikamenten, Infekten oder anderen Ursachen kommen. Was du beobachten kannst und wann eine Abklärung sinnvoll ist.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein metallischer Geschmack im Mund ist eine Form der Geschmacksveränderung. Häufig liegt die Ursache direkt im Mund- oder Nasenbereich, zum Beispiel nach einer Zahnbehandlung, bei Zahnfleischproblemen, Mundtrockenheit oder während beziehungsweise nach einem Infekt.</p>
+<p>Auch Medikamente können den Geschmack verändern. Entscheidend ist deshalb, wann das Gefühl begonnen hat, ob es dauerhaft oder nur zeitweise auftritt und ob weitere Beschwerden vorhanden sind.</p>
+<h2>Häufige mögliche Ursachen</h2>
+<ul>
+<li><strong>Mund und Zähne:</strong> Zahnfleischentzündungen, Blutungen, Zahnersatz oder kürzlich durchgeführte zahnärztliche Behandlungen können den Geschmack vorübergehend verändern.</li>
+<li><strong>Infekte und Geruchssinn:</strong> Geschmack und Geruch arbeiten eng zusammen. Erkältungen und andere Infekte können deshalb Geschmackseindrücke verändern.</li>
+<li><strong>Mundtrockenheit:</strong> Weniger Speichel verändert die Wahrnehmung von Geschmack. Mundtrockenheit kann unter anderem durch Medikamente, Mundatmung oder Flüssigkeitsmangel verstärkt werden.</li>
+<li><strong>Medikamente:</strong> Verschiedene Arzneimittel können Geschmacksveränderungen verursachen. Ein neu auftretender Geschmack nach Beginn eines Medikaments sollte mit Arzt oder Apotheke besprochen werden, das Medikament aber nicht selbstständig abgesetzt werden.</li>
+<li><strong>Reflux:</strong> Rückfluss von Mageninhalt kann einen bitteren, sauren oder ungewöhnlichen Geschmack verursachen. Metallischer Geschmack allein beweist jedoch keinen Reflux.</li>
+</ul>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Ist der Geschmack den ganzen Tag vorhanden oder nur morgens?</li>
+<li>Gab es kürzlich eine Zahnbehandlung?</li>
+<li>Blutet das Zahnfleisch?</li>
+<li>Ist der Mund ungewöhnlich trocken?</li>
+<li>Hat sich gleichzeitig der Geruchssinn verändert?</li>
+<li>Wurde kürzlich ein neues Medikament begonnen?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann abklären?</div>
+<p>Ein anhaltender metallischer Geschmack ohne erkennbare Ursache sollte ärztlich oder zahnärztlich abgeklärt werden. Das gilt besonders bei zusätzlichen Beschwerden wie deutlichen Schluckproblemen, anhaltenden Veränderungen von Geruch und Geschmack, starken Mundschmerzen oder anderen neuen neurologischen Symptomen.</p>
+</div>
+<h2>Metallisch, bitter oder sauer?</h2>
+<p>Die genaue Beschreibung kann helfen. Ein bitterer Geschmack am Morgen passt beispielsweise zu anderen Situationen als ein dauerhaft metallischer Geschmack. Für das Muster <a href="/koerpersignale/bitterer-geschmack-morgens/">bitterer Geschmack am Morgen</a> gibt es deshalb eine eigene Seite.</p>
+<h2>TCM und Akupunktur</h2>
+<p>In der TCM wird der Geschmack traditionell als Teil eines grösseren Beschwerdebildes betrachtet. Ein einzelner Geschmack erlaubt jedoch keine verlässliche TCM-Diagnose. Bei neuen oder anhaltenden Geschmacksveränderungen sollte zuerst nach nachvollziehbaren medizinischen oder zahnmedizinischen Ursachen gesucht werden.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'druck-auf-den-ohren',
+    title: 'Druck auf den Ohren: mögliche Ursachen und wann du zum Arzt solltest',
+    metaDesc: 'Druck auf den Ohren entsteht häufig durch gestörten Druckausgleich, Erkältung oder andere Ohrprobleme. So lässt sich das Gefühl besser einordnen.',
+    h1: 'Druck auf den Ohren: Was kann dahinterstecken?',
+    category: 'Kopf & Sinne',
+    symptom: 'Druck auf den Ohren',
+    lead: 'Druck auf den Ohren entsteht häufig durch gestörten Druckausgleich, Erkältung oder andere Ohrprobleme. So lässt sich das Gefühl besser einordnen.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein Druckgefühl im Ohr entsteht häufig, wenn der Druck im Mittelohr nicht gut an den Aussendruck angepasst werden kann. Das passiert zum Beispiel beim Fliegen, bei Höhenunterschieden oder wenn die Verbindung zwischen Mittelohr und Nasen-Rachen-Raum vorübergehend schlechter funktioniert.</p>
+<p>Auch Erkältungen, Allergien oder andere Erkrankungen des Ohres können Druckgefühl verursachen. Ob zusätzlich Hörminderung, Schmerzen, Schwindel oder Ohrgeräusche auftreten, ist für die Einordnung besonders wichtig.</p>
+<h2>Häufige Situationen</h2>
+<ul>
+<li><strong>Fliegen oder Höhenwechsel:</strong> Schnelle Druckänderungen können das Trommelfell belasten, wenn der Druckausgleich verzögert ist.</li>
+<li><strong>Erkältung oder verstopfte Nase:</strong> Eine geschwollene Schleimhaut kann die Belüftung des Mittelohres beeinträchtigen.</li>
+<li><strong>Allergien:</strong> Auch allergisch gereizte Schleimhäute können ein Druck- oder Verstopfungsgefühl begünstigen.</li>
+<li><strong>Kiefergelenk:</strong> Beschwerden rund um das Kiefergelenk können teilweise als Druck oder Spannung in Ohrnähe wahrgenommen werden.</li>
+<li><strong>Ohrerkrankungen:</strong> Entzündungen, Flüssigkeit hinter dem Trommelfell oder andere Ohrprobleme können ebenfalls Druck verursachen.</li>
+</ul>
+<h2>Knackt es beim Schlucken?</h2>
+<p>Wenn das Hauptsymptom ein Knacken oder Knistern beim Schlucken ist, passt das eher zu unserem Körpersignal <a href="/koerpersignale/ohr-knackt-beim-schlucken/">Ohr knackt beim Schlucken</a>.</p>
+<p>Ein dauerhaft einseitig verstopftes Ohrgefühl wird ebenfalls separat eingeordnet.</p>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Ein Ohr oder beide?</li>
+<li>Begann es nach einem Flug oder Höhenwechsel?</li>
+<li>Bestehen Schnupfen oder Allergiesymptome?</li>
+<li>Ist das Hören verändert?</li>
+<li>Gibt es Ohrenschmerzen?</li>
+<li>Treten Tinnitus oder Schwindel dazu?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann rasch ärztlich abklären?</div>
+<p>Eine plötzlich auftretende deutliche Hörminderung, besonders auf einem Ohr, sollte zeitnah ärztlich beurteilt werden. Auch starke Ohrenschmerzen, Flüssigkeit oder Blut aus dem Ohr, ausgeprägter Schwindel oder Beschwerden nach einer Verletzung gehören abgeklärt.</p>
+</div>
+<h2>TCM und Akupunktur</h2>
+<p>Akupunktur kann bei manchen begleitenden funktionellen Beschwerden eingesetzt werden. Ein neues Druckgefühl im Ohr sollte jedoch nicht allein mit einem TCM-Muster erklärt werden. Hörverlust und andere auffällige Ohrsymptome benötigen eine medizinische beziehungsweise HNO-ärztliche Einordnung.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
+      { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
+      { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
+      { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-kopf',
+    title: 'Kribbeln im Kopf oder auf der Kopfhaut: mögliche Ursachen',
+    metaDesc: 'Kribbeln am Kopf oder auf der Kopfhaut kann von Haut, Nerven, Migräne oder anderen Faktoren kommen. Was bei der Einordnung wichtig ist.',
+    h1: 'Kribbeln im Kopf oder auf der Kopfhaut',
+    category: 'Kopf & Sinne',
+    symptom: 'Kribbeln im Kopf oder auf der Kopfhaut',
+    lead: 'Kribbeln am Kopf oder auf der Kopfhaut kann von Haut, Nerven, Migräne oder anderen Faktoren kommen. Was bei der Einordnung wichtig ist.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kribbeln am Kopf wird häufig als oberflächliches Gefühl auf oder direkt unter der Kopfhaut beschrieben. Dafür kommen andere Ursachen infrage als bei einem Druckgefühl oder eigentlichen Kopfschmerzen.</p>
+<p>Vorübergehende Nervenreizung, Hautprobleme, Migräne oder starke Anspannung können eine Rolle spielen. Entscheidend ist, ob das Gefühl lokal begrenzt, einseitig oder über die ganze Kopfhaut verteilt ist und ob weitere neurologische Symptome hinzukommen.</p>
+<h2>Mögliche Zusammenhänge</h2>
+<ul>
+<li><strong>Haut und Kopfhaut:</strong> Reizung, trockene Haut oder entzündliche Veränderungen können ungewöhnliche Empfindungen verursachen.</li>
+<li><strong>Oberflächliche Nerven:</strong> Kleine sensible Nerven versorgen die Kopfhaut. Werden sie gereizt, können Kribbeln, Ziehen oder elektrische Missempfindungen entstehen.</li>
+<li><strong>Migräne:</strong> Bei manchen Menschen treten im Rahmen einer Migräne sensible Veränderungen oder eine Aura auf. Das kann auch Kribbeln umfassen.</li>
+<li><strong>Nacken und Hinterkopf:</strong> Beschwerden des oberen Nackens können gleichzeitig mit Empfindungen am Hinterkopf auftreten. Anhaltende sensible Veränderungen sollten trotzdem nicht einfach einer Verspannung zugeschrieben werden.</li>
+<li><strong>Stress und Hyperventilation:</strong> Starke Anspannung kann Körperempfindungen verändern oder verstärken. Bei schneller Atmung tritt Kribbeln allerdings typischerweise eher rund um Mund, Hände und Füsse auf.</li>
+</ul>
+<h2>Kribbeln oder Kopfdruck?</h2>
+<p>Kribbeln ist eine sensible Missempfindung. Druck im Kopf ist ein anderes Beschwerdemuster. Für <a href="/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/">Druck im Kopf ohne Kopfschmerzen</a> gibt es deshalb eine eigene Einordnung.</p>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Wo genau kribbelt es?</li>
+<li>Ist es nur auf einer Seite?</li>
+<li>Gibt es Veränderungen der Haut?</li>
+<li>Treten Kopfschmerzen oder Sehstörungen gleichzeitig auf?</li>
+<li>Bestehen Taubheitsgefühle im Gesicht oder an anderen Körperstellen?</li>
+<li>Ist das Gefühl nur kurz oder bleibt es bestehen?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann sofort reagieren?</div>
+<p>Plötzliches Kribbeln zusammen mit Gesichtslähmung, Sprachstörung, Schwäche oder Taubheit einer Körperseite, neuen schweren Sehstörungen oder deutlicher Gangunsicherheit ist ein Notfall. In der Schweiz: 144.</p>
+</div>
+<h2>TCM und Akupunktur</h2>
+<p>Bei wiederkehrenden Beschwerden kann Akupunktur je nach zugrunde liegendem Beschwerdebild ergänzend eingesetzt werden. Neu auftretende oder neurologisch auffällige Empfindungsstörungen müssen jedoch zuerst medizinisch abgeklärt werden.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/', label: 'Druck im Kopf ohne Kopfschmerzen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
+      { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'zittern-am-ganzen-koerper',
+    title: 'Zittern am ganzen Körper: mögliche Ursachen und Warnzeichen',
+    metaDesc: 'Plötzliches oder wiederkehrendes Zittern kann viele Ursachen haben. Entscheidend sind Auslöser, Dauer und Begleitsymptome. So lässt es sich besser einordnen.',
+    h1: 'Zittern am ganzen Körper: Was kann dahinterstecken?',
+    category: 'Hände & Nerven',
+    symptom: 'Zittern am ganzen Körper',
+    lead: 'Plötzliches oder wiederkehrendes Zittern kann viele Ursachen haben. Entscheidend sind Auslöser, Dauer und Begleitsymptome. So lässt es sich besser einordnen.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN9,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Der Körper kann aus vielen Gründen zittern. Häufige kurzfristige Auslöser sind Kälte, starke körperliche Belastung, Aufregung oder eine ausgeprägte Stressreaktion. Auch Medikamente, Stimulanzien oder Stoffwechselveränderungen können Zittern verursachen.</p>
+<p>Wichtig ist, ob das Zittern sichtbar ist oder eher innerlich wahrgenommen wird, wie lange es anhält und welche weiteren Symptome gleichzeitig auftreten.</p>
+<h2>Häufige Situationen</h2>
+<ul>
+<li><strong>Kälte:</strong> Muskelzittern erzeugt Wärme und ist eine normale Reaktion auf niedrige Körper- oder Umgebungstemperatur.</li>
+<li><strong>Stress oder starke Aufregung:</strong> Adrenalin kann Zittern, Herzklopfen, Schwitzen und innere Unruhe auslösen.</li>
+<li><strong>Koffein und andere Stimulanzien:</strong> Grössere Mengen können Zittern verstärken.</li>
+<li><strong>Medikamente:</strong> Verschiedene Medikamente können Tremor als Nebenwirkung verursachen.</li>
+<li><strong>Blutzucker und Stoffwechsel:</strong> Niedriger Blutzucker kann unter anderem Zittern, Schwitzen, Hunger und Schwäche verursachen. Symptome allein beweisen jedoch keine Hypoglykämie.</li>
+</ul>
+<h2>Inneres Zittern oder sichtbares Zittern?</h2>
+<p>Manche Menschen beschreiben ein deutliches inneres Vibrieren, obwohl von aussen kaum Bewegung sichtbar ist. Andere haben einen sichtbaren Tremor der Hände oder des Körpers. Diese Unterscheidung hilft bei der medizinischen Einordnung.</p>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Wie lange dauert das Zittern?</li>
+<li>Ist es sichtbar oder nur innerlich spürbar?</li>
+<li>Passiert es in Ruhe oder bei Bewegung?</li>
+<li>Gab es Kälte, Stress, Sport oder viel Koffein?</li>
+<li>Bestehen Herzklopfen, Schwitzen oder Hunger?</li>
+<li>Treten Schwäche, Verwirrtheit oder neurologische Ausfälle hinzu?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann rasch abklären?</div>
+<p>Plötzliches starkes Zittern zusammen mit Bewusstseinsstörung, Verwirrtheit, Krampfanfall, einseitiger Schwäche, Sprachstörung, ausgeprägter Atemnot oder Brustschmerzen ist ein Notfall. Neu auftretendes oder zunehmend häufiges Zittern sollte ärztlich eingeordnet werden.</p>
+</div>
+<h2>TCM und Akupunktur</h2>
+<p>Bei funktionellen Beschwerden wie Stress oder muskulärer Anspannung kann Akupunktur ergänzend eingesetzt werden. Ein neu aufgetretener Tremor oder ungeklärtes Ganzkörperzittern sollte jedoch nicht allein über ein TCM-Muster erklärt werden.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
+      { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?', cat: 'Artikel' },
     ],
   },
 ];

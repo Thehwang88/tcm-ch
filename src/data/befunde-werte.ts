@@ -216,17 +216,73 @@ export const befundeWerte: BefundWert[] = [
     ],
   },
   {
-    slug: 'ferritin-niedrig-haemoglobin-normal',
-    title: 'Ferritin niedrig trotz normalem Hämoglobin',
+    slug: 'leberwerte-erhoeht',
+    title: 'Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte?',
     category: 'laborwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Was leere Eisenspeicher bei noch normalem Hämoglobin bedeuten und wann das relevant wird.',
-    primaryPurpose: 'Einordnung der Befund-Konstellation Eisenspeicher vs. Blutbild; die Erkrankungsseite bleibt der Owner für Eisenmangel.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-22',
+    deck: 'Erhöhte Leberwerte haben viele mögliche Ursachen. Welche Werte dazugehören, was sie aussagen und warum ein einzelner Laborwert noch keine Diagnose ist.',
+    primaryPurpose: 'Einordnung des Sammelbefunds "Leberwerte erhöht", keine Lebererkrankungs-Seite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner für den Befund-Intent "leberwerte erhöht". /beschwerden/fettleber/ bleibt Owner des Erkrankungs-Intents Fettleber; nur Related.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>„Leberwerte“ ist ein Sammelbegriff für mehrere Laborwerte. Dazu gehören je nach Untersuchung unter anderem ALT, AST, GGT, alkalische Phosphatase und Bilirubin. Sie zeigen unterschiedliche Prozesse und dürfen deshalb nicht wie ein einzelner Wert interpretiert werden.</p>
+<p>Ein erhöhter Leberwert bedeutet nicht automatisch, dass eine schwere Lebererkrankung vorliegt. Für die Einordnung sind Höhe, Muster, Verlauf, weitere Blutwerte, Medikamente, Alkoholkonsum, Vorerkrankungen und gegebenenfalls Bildgebung wichtig.</p>`,
+    bodyHtml: `<h2>Welche Werte werden häufig betrachtet?</h2>
+<ul>
+<li><strong>ALT:</strong> Ein Enzym, das besonders stark in Leberzellen vorkommt. Erhöhungen können bei verschiedenen Formen einer Leberzellschädigung auftreten.</li>
+<li><strong>AST:</strong> Kommt ausser in der Leber auch in anderen Geweben wie Muskeln vor. Der Wert ist deshalb weniger leberspezifisch.</li>
+<li><strong>GGT:</strong> Kann unter anderem bei Erkrankungen der Leber und Gallenwege sowie durch Alkohol oder bestimmte Medikamente erhöht sein.</li>
+<li><strong>Alkalische Phosphatase:</strong> Wird unter anderem bei Fragestellungen rund um Gallenwege und Knochen beurteilt.</li>
+<li><strong>Bilirubin:</strong> Entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle verarbeitet.</li>
+</ul>
+<h2>Warum können Leberwerte erhöht sein?</h2>
+<p>Mögliche Ursachen reichen von vorübergehenden Veränderungen bis zu Fettleber, Medikamentenwirkungen, Alkohol, Virusinfektionen, Erkrankungen der Gallenwege und anderen Lebererkrankungen. Auch intensive Muskelbelastung kann einzelne Werte beeinflussen.</p>
+<p>Welche Ursache wahrscheinlich ist, lässt sich nicht aus einem einzelnen Laborwert ableiten.</p>`,
+    notProofHtml: `<p>Ein erhöhter Laborwert zeigt nicht automatisch, wie gut die Leber insgesamt funktioniert und beweist keine bestimmte Erkrankung. Umgekehrt können manche Lebererkrankungen bestehen, obwohl einzelne Werte nur gering verändert sind.</p>`,
+    followUpHtml: `<p>Je nach Befund können Werte kontrolliert, Medikamente und Risikofaktoren überprüft oder weitere Blutuntersuchungen durchgeführt werden. Bei bestimmten Konstellationen kommen Ultraschall oder andere Untersuchungen hinzu.</p>`,
+    redFlagsHtml: `<p>Neu auffällige Leberwerte sollten ärztlich eingeordnet werden. Besonders wichtig ist eine rasche Abklärung bei Gelbfärbung von Haut oder Augen, sehr dunklem Urin, starken Oberbauchschmerzen, wiederholtem Erbrechen, ausgeprägter Benommenheit oder deutlicher allgemeiner Verschlechterung.</p>`,
+    integrativeContextHtml: `<p>TCM-Begriffe wie „Leber-Qi“ sind traditionelle Konzepte und nicht mit modernen Leberwerten gleichzusetzen. Aus einem erhöhten Laborwert lässt sich kein TCM-Muster ableiten. Die medizinische Abklärung des Laborbefunds steht deshalb an erster Stelle.</p>`,
+    relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
+    relatedSignals: [{ href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch' }],
+    relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' }],
+  },
+  {
+    slug: 'ferritin-zu-niedrig',
+    title: 'Ferritin zu niedrig: Was bedeutet der Laborwert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-22',
+    deck: 'Ein niedriger Ferritinwert kann auf geringe Eisenspeicher hinweisen. Was Ferritin misst, welche anderen Werte wichtig sind und wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Laborwerts Ferritin; die Erkrankungsseite bleibt der Owner für Eisenmangel.',
     canonicalIntentOwner: ['/beschwerden/eisenmangel/'],
-    overlapNotes: 'Eisenmangel-Intent gehört /beschwerden/eisenmangel/. Diese Seite beantwortet nur die Labor-Konstellation (Speicher leer, Hb normal) und verlinkt für Symptome/Behandlung dorthin.',
+    overlapNotes: 'Eisenmangel-Intent gehört /beschwerden/eisenmangel/. Diese Seite beantwortet nur die Labor-Einordnung und verlinkt für Symptome/Behandlung dorthin. Slug umbenannt am 22.09.2026 von ferritin-niedrig-haemoglobin-normal (nie live); Hb-Konstellation als Abschnitt abgedeckt.',
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Ferritin ist ein Eiweiss, das Eisen speichert. Ein niedriger Ferritinwert spricht häufig dafür, dass die Eisenspeicher reduziert sind. Für die genaue Einordnung werden jedoch Referenzbereich, Blutbild, weitere Eisenwerte, Beschwerden und mögliche Ursachen gemeinsam betrachtet.</p>
+<p>Ein niedriger Ferritinwert ist damit ein wichtiger Hinweis, aber nicht die gesamte Diagnose.</p>`,
+    bodyHtml: `<h2>Was misst Ferritin?</h2>
+<p>Ferritin befindet sich vor allem in Zellen und speichert Eisen. Ein kleiner Teil lässt sich im Blut messen und dient als Marker für die Eisenspeicher.</p>
+<p>Ferritin kann durch Entzündungen beeinflusst werden. Deshalb ist besonders bei normalen oder erhöhten Ferritinwerten wichtig, den klinischen Kontext und gegebenenfalls Entzündungswerte mit einzubeziehen.</p>
+<h2>Warum kann Ferritin niedrig sein?</h2>
+<ul>
+<li><strong>Blutverlust:</strong> Zum Beispiel durch starke Menstruationsblutungen oder Blutungen im Magen-Darm-Trakt.</li>
+<li><strong>Erhöhter Bedarf:</strong> Schwangerschaft, Wachstum oder andere Situationen können den Eisenbedarf erhöhen.</li>
+<li><strong>Geringere Aufnahme:</strong> Ernährung oder Erkrankungen des Magen-Darm-Trakts können die Eisenaufnahme beeinflussen.</li>
+<li><strong>Weitere Ursachen:</strong> Der individuelle Kontext entscheidet, welche Ursachen untersucht werden müssen.</li>
+</ul>
+<h2>Welche anderen Werte helfen?</h2>
+<p>Zur Einordnung werden häufig Blutbild und weitere Parameter des Eisenstoffwechsels betrachtet. Ob bereits eine Blutarmut besteht, lässt sich beispielsweise nicht am Ferritin allein erkennen.</p>
+<h2>Niedriges Ferritin und Eisenmangel</h2>
+<p>Ein deutlich vermindertes Ferritin passt häufig zu leeren oder reduzierten Eisenspeichern. Für das Krankheitsbild und seine Behandlung gibt es auf TCM.ch eine eigene Seite zu <a href="/beschwerden/eisenmangel/">Eisenmangel</a>. Diese Befundseite erklärt dagegen ausschliesslich den Laborwert.</p>`,
+    redFlagsHtml: `<p>Bei niedrigem Ferritin sollte nicht nur der Wert selbst betrachtet werden. Entscheidend ist auch, warum die Eisenspeicher reduziert sind. Besonders bei Männern, nach der Menopause oder bei unerklärtem beziehungsweise wiederkehrendem Eisenmangel kann eine gezielte ärztliche Ursachenabklärung notwendig sein.</p>`,
+    integrativeContextHtml: `<p>Ein Laborwert wie Ferritin lässt sich nicht direkt in ein traditionelles TCM-Muster übersetzen. Die medizinische Abklärung des Eisenstatus und möglicher Ursachen steht im Vordergrund.</p>`,
     relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+    ],
   },
   {
     slug: 'hba1c-leicht-erhoeht',
@@ -241,29 +297,70 @@ export const befundeWerte: BefundWert[] = [
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Diabetologie)',
   },
   {
-    slug: 'nuechternblutzucker-erhoeht',
-    title: 'Nüchternblutzucker erhöht',
+    slug: 'blutzucker-erhoeht',
+    title: 'Blutzucker erhöht: Was bedeutet der Messwert?',
     category: 'laborwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Wie ein erhöhter Nüchternwert zustande kommen kann und wann eine weitere Abklärung sinnvoll ist.',
-    primaryPurpose: 'Einordnung eines einzelnen Messbefunds inkl. Fehlerquellen, keine Diabetes-Erkrankungsseite.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-22',
+    deck: 'Ein erhöhter Blutzucker kann viele Gründe haben. Entscheidend sind Messzeitpunkt, Nüchternstatus, Wiederholungsmessungen und weitere Werte wie HbA1c.',
+    primaryPurpose: 'Einordnung eines Blutzucker-Messwerts inkl. Messsituation, keine Diabetes-Erkrankungsseite.',
     canonicalIntentOwner: [],
-    overlapNotes: 'Kein bestehender Owner (wie hba1c-leicht-erhoeht: keine Diabetes-Seite vorhanden). Interner Überlapp mit hba1c-leicht-erhoeht beachten: Nüchternwert = Momentaufnahme, HbA1c = Langzeitwert; Abgrenzung in den Artikeln explizit machen.',
+    overlapNotes: 'Kein bestehender Owner (keine Diabetes-Seite vorhanden). Slug umbenannt am 22.09.2026 von nuechternblutzucker-erhoeht (nie live); Nüchtern-Frage als Abschnitt abgedeckt. Interner Überlapp mit geplantem hba1c-leicht-erhoeht beachten: HbA1c = Langzeitwert, hier Momentaufnahme-Einordnung.',
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Diabetologie)',
+    shortAnswerHtml: `<p>Ob ein Blutzuckerwert erhöht ist, hängt stark davon ab, wann und unter welchen Bedingungen gemessen wurde. Ein Wert nach einer Mahlzeit wird anders beurteilt als ein Nüchternwert.</p>
+<p>Auch akute Erkrankungen, Stress, bestimmte Medikamente und andere Faktoren können Blutzuckerwerte beeinflussen. Deshalb wird eine Diabetesdiagnose nicht allein aufgrund eines zufälligen einzelnen Messwertes gestellt.</p>`,
+    bodyHtml: `<h2>Nüchtern oder nach dem Essen?</h2>
+<p>Für die Interpretation ist entscheidend, ob vor der Messung gegessen wurde. Nüchternblutzucker, zufällige Blutzuckermessungen und Werte nach einer Mahlzeit beantworten unterschiedliche Fragen.</p>
+<p>Zusätzlich kann HbA1c Hinweise auf den durchschnittlichen Blutzucker über einen längeren Zeitraum geben.</p>
+<h2>Warum kann Blutzucker erhöht sein?</h2>
+<ul>
+<li><strong>Nahrungsaufnahme:</strong> Nach einer Mahlzeit steigt der Blutzucker physiologisch an.</li>
+<li><strong>Diabetes oder Vorstufen:</strong> Wiederholt auffällige Werte können auf eine gestörte Blutzuckerregulation hinweisen.</li>
+<li><strong>Akute Erkrankung oder Stressreaktion:</strong> Stresshormone können Blutzucker vorübergehend erhöhen.</li>
+<li><strong>Medikamente:</strong> Bestimmte Medikamente können die Blutzuckerregulation beeinflussen.</li>
+</ul>`,
+    notProofHtml: `<p>Ein einmal erhöhter Wert beweist weder Diabetes noch erklärt er automatisch Beschwerden wie Müdigkeit, Schwindel oder Durst. Für die Diagnose werden definierte Messbedingungen und gegebenenfalls Wiederholungsmessungen verwendet.</p>`,
+    followUpHtml: `<p>Je nach Höhe und Messsituation kann der Wert wiederholt oder durch weitere Untersuchungen ergänzt werden. Dazu können Nüchternblutzucker, HbA1c oder andere Tests gehören.</p>`,
+    redFlagsHtml: `<p>Sehr hohe gemessene Werte zusammen mit starker Übelkeit, Erbrechen, deutlicher Austrocknung, tiefer oder auffälliger Atmung, Verwirrtheit oder ausgeprägter allgemeiner Verschlechterung benötigen rasche medizinische Abklärung.</p>`,
+    integrativeContextHtml: `<p>Ein erhöhter Blutzucker ist ein moderner medizinischer Messwert und lässt sich nicht direkt in ein TCM-Muster übersetzen. Akupunktur ersetzt weder Diagnostik noch notwendige medizinische Behandlung einer gestörten Blutzuckerregulation.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
+    ],
   },
   {
     slug: 'blutdruck-140-90',
-    title: 'Blutdruck 140/90: Wie ist der Wert einzuordnen?',
+    title: 'Blutdruck 140/90: Wie lässt sich der Messwert einordnen?',
     category: 'messwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Was ein einzelner Messwert von 140/90 aussagt, was nicht, und wie Blutdruck korrekt beurteilt wird.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-22',
+    deck: 'Was bedeutet ein Blutdruck von 140/90? Warum eine einzelne Messung nicht reicht und wie wiederholte Blutdruckwerte normalerweise eingeordnet werden.',
     primaryPurpose: 'Einordnung eines konkreten Messwerts (Grenzwert-Frage), nicht die Erkrankungsseite Bluthochdruck.',
     canonicalIntentOwner: ['/beschwerden/bluthochdruck/'],
     overlapNotes: 'Der Erkrankungs-Intent Bluthochdruck gehört /beschwerden/bluthochdruck/. Diese Seite beantwortet nur "ist dieser Wert schon zu hoch?" und verlinkt für Erkrankung/Behandlung dorthin.',
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Kardiologie)',
+    shortAnswerHtml: `<p>Ein Blutdruckwert besteht aus zwei Zahlen. Die erste Zahl ist der systolische, die zweite der diastolische Blutdruck. Ein Messwert von 140/90 mmHg liegt höher als Werte, die bei vielen gesunden Erwachsenen in Ruhe angestrebt werden.</p>
+<p>Eine einzelne Messung reicht jedoch nicht aus, um dauerhaft erhöhten Blutdruck zu diagnostizieren. Blutdruck schwankt im Tagesverlauf und wird unter anderem durch Bewegung, Stress, Schmerzen, Koffein und die Messsituation beeinflusst.</p>`,
+    bodyHtml: `<h2>Was bedeuten die zwei Zahlen?</h2>
+<ul>
+<li><strong>Systolisch:</strong> Der höhere Wert während der Auswurfphase des Herzens.</li>
+<li><strong>Diastolisch:</strong> Der niedrigere Wert während der Entspannungsphase zwischen zwei Herzschlägen.</li>
+</ul>
+<h2>Warum eine einzelne Messung nicht reicht</h2>
+<p>Für die Beurteilung zählt das Muster über mehrere Messungen. Deshalb werden Blutdruckwerte häufig wiederholt zu Hause, in der Praxis oder mit einer Langzeitmessung erfasst.</p>
+<p>Auch die Messtechnik beeinflusst den Wert. Vor einer Ruheblutdruckmessung sollte man einige Minuten ruhig sitzen, der Arm sollte unterstützt sein und die Manschette muss zur Armgrösse passen.</p>
+<h2>Was passiert bei wiederholt erhöhten Werten?</h2>
+<p>Wenn der Blutdruck wiederholt erhöht ist, wird das persönliche Herz-Kreislauf-Risiko betrachtet. Dazu gehören unter anderem Alter, Rauchen, Diabetes, Blutfette, Nierenfunktion und bereits bestehende Herz-Kreislauf-Erkrankungen.</p>
+<p>Für das Krankheitsbild selbst gibt es die Seite <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a>. Diese Seite hier erklärt nur den einzelnen Messwert.</p>`,
+    redFlagsHtml: `<p>Ein einzelner Wert von 140/90 ist normalerweise kein akuter Notfall. Sehr hohe Werte zusammen mit Brustschmerzen, schwerer Atemnot, neurologischen Ausfällen, Verwirrtheit oder anderen schweren akuten Beschwerden gehören jedoch sofort medizinisch beurteilt.</p>`,
+    integrativeContextHtml: `<p>Akupunktur oder andere komplementäre Verfahren ersetzen keine medizinische Blutdruckdiagnostik und keine verordnete Behandlung. Ein gemessener Blutdruckwert lässt sich ausserdem nicht direkt einem traditionellen TCM-Muster zuordnen.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+    ],
   },
   {
     slug: 'bandscheibenprotrusion-mrt',
