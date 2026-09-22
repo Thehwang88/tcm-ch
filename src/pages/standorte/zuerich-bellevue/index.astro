@@ -1,6 +1,6 @@
 ---
 // /standorte/zuerich-bellevue/ - TCM.ch Zürich Bellevue, unser erster City Pop-up.
-// Start: 19. Oktober 2026, Rössligasse 8, 8001 Zürich (bei Élu Cosmetics).
+// Start: 1. Oktober 2026, Rössligasse 8, 8001 Zürich (bei Élu Cosmetics).
 // Aktuell ein Behandlungsraum, montags geöffnet, Therapeutin: Brenda Oviedo.
 //
 // Conversion-Logik: Bellevue ist die Location, Zürich der Funnel. Primärer CTA
@@ -9,7 +9,7 @@
 // termin-zuerich-bellevue, typ=termin → /api/anfrage. Montag wird transparent
 // genannt, ist aber nie Conversion-Blocker.
 //
-// Verifizierte Daten: Name, Adresse, Startdatum 19.10.2026, Behandlungstag Montag,
+// Verifizierte Daten: Name, Adresse, Startdatum 01.10.2026, Behandlungstag Montag,
 // Raumpartner Élu Cosmetics, Therapeutin Brenda Oviedo (src/data/therapeuten.ts).
 // KEINE erfundenen Öffnungszeiten-Uhrzeiten, Gehminuten, Parkplätze oder
 // Anerkennungs-Claims für Brenda.
@@ -27,7 +27,7 @@ import { ZH_FLEXIBEL, zhStandortOptionsHtml, zhTerminData, zhTerminScript } from
 const url = 'https://tcm.ch/standorte/zuerich-bellevue/';
 const title = 'TCM & Akupunktur Zürich Bellevue - City Pop-up | TCM.ch';
 const description =
-  'TCM und Akupunktur mitten in Zürich: TCM.ch Zürich Bellevue startet am 19. Oktober 2026 als City Pop-up an der Rössligasse 8, bei Élu Cosmetics. Jetzt Termin in Zürich finden.';
+  'TCM und Akupunktur mitten in Zürich: TCM.ch Zürich Bellevue startet am 1. Oktober 2026 als City Pop-up an der Rössligasse 8, bei Élu Cosmetics. Jetzt Termin in Zürich finden.';
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: 'Wann startet der Standort?',
-    a: 'TCM.ch Zürich Bellevue startet am 19. Oktober 2026. Termine kannst du ab sofort anfragen - wir bestätigen dir deinen Termin, sobald die Agenda steht.',
+    a: 'TCM.ch Zürich Bellevue startet am 1. Oktober 2026. Termine kannst du ab sofort anfragen - wir bestätigen dir deinen Termin, sobald die Agenda steht.',
   },
   {
     q: 'An welchen Tagen ist Bellevue geöffnet?',
@@ -104,7 +104,7 @@ const schema = [
     medicalSpecialty: ['TraditionalChineseMedicine', 'Acupuncture'],
     telephone: '+41775236122',
     email: 'termine@tcm.ch',
-    foundingDate: '2026-10-19',
+    foundingDate: '2026-10-01',
     address: { '@type': 'PostalAddress', streetAddress: 'Rössligasse 8', postalCode: '8001', addressLocality: 'Zürich', addressRegion: 'ZH', addressCountry: 'CH' },
     // Nur der bestätigte Behandlungstag (Montag) - Uhrzeiten folgen, sobald fix.
     openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday' }],
@@ -134,9 +134,9 @@ const schema = [
     <div class="lu-hero-inner">
       <div class="lu-hero-copy">
         <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Zürich Bellevue</span></div>
-        <span class="lu-badge">City Pop-up · Neu ab 19. Oktober 2026</span>
+        <span class="lu-badge">City Pop-up · Neu ab 1. Oktober 2026</span>
         <h1 class="lu-h1">TCM &amp; Akupunktur in <span class="lu-accent">Zürich Bellevue</span></h1>
-        <p class="lu-sub">Unser erster City Pop-up im Herzen von Zürich: TCM.ch Zürich Bellevue startet am 19. Oktober 2026 an der Rössligasse 8, wenige Schritte vom Bellevue. Termine gibt es am Bellevue sowie an unseren weiteren Zürcher Standorten - wir finden den passenden Termin für dich.</p>
+        <p class="lu-sub">Unser erster City Pop-up im Herzen von Zürich: TCM.ch Zürich Bellevue startet am 1. Oktober 2026 an der Rössligasse 8, wenige Schritte vom Bellevue. Termine gibt es am Bellevue sowie an unseren weiteren Zürcher Standorten - wir finden den passenden Termin für dich.</p>
         <div class="lu-cta-row">
           <a href="#termin" class="lu-btn-primary">Termin in Zürich finden</a>
           <a href="#lage" class="lu-btn-ghost">Standort ansehen</a>
@@ -187,7 +187,7 @@ const schema = [
       </div>
       <div class="usp-card">
         <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-        <div class="usp-title">Start: 19. Oktober 2026</div>
+        <div class="usp-title">Start: 1. Oktober 2026</div>
         <div class="usp-sub">Termine an allen verfügbaren Tagen über unser Zürcher Standortnetz.</div>
       </div>
       <div class="usp-card">
@@ -203,7 +203,7 @@ const schema = [
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Standort</div>
       <h2 class="section-title">Unser erster <em>City Pop-up</em> im Herzen von Zürich.</h2>
-      <p class="section-sub">Am 19. Oktober 2026 startet TCM.ch Zürich Bellevue an der Rössligasse 8, in den Räumlichkeiten von Élu Cosmetics - mitten im Kreis 1, wenige Schritte vom Bellevueplatz.</p>
+      <p class="section-sub">Am 1. Oktober 2026 startet TCM.ch Zürich Bellevue an der Rössligasse 8, in den Räumlichkeiten von Élu Cosmetics - mitten im Kreis 1, wenige Schritte vom Bellevueplatz.</p>
       <p style="margin-top:20px">Bellevue ist unser erster City Pop-up: ein kompakter Standort mit einem Behandlungsraum und einer festen Therapeutin vor Ort. Die medizinische Arbeit ist dieselbe wie an unseren grösseren Praxen - viel Zeit pro Termin, klare Diagnostik, ehrliche Einschätzung. Gleichzeitig ist Bellevue Teil unseres wachsenden Zürcher Standortnetzes für <a href="/akupunktur-tcm-zuerich/">Akupunktur &amp; TCM in Zürich</a>, neben Oerlikon und Höngg.</p>
       <p style="margin-top:16px">Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich deine Therapeutin eine ganze Stunde Zeit, hört zu, schaut Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, welche Methoden sinnvoll sind und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter.</p>
       <p style="margin-top:16px">Was eine Sitzung kostet und was am Ende bei dir bleibt, steht auf der Seite <a href="/standorte/zuerich/kosten/">Akupunktur-Kosten in Zürich</a>.</p>
@@ -241,8 +241,8 @@ const schema = [
            die passende Variante (Portrait ≤767px, Landscape ab 768px). -->
       <figure style="margin:24px 0 0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md)">
         <picture>
-          <source media="(max-width: 767px)" srcset="/images/standort-zuerich-bellevue-mobile.png" width="941" height="1672" />
-          <img src="/images/standort-zuerich-bellevue-desktop.png" alt="TCM.ch Zürich Bellevue City Pop-up im Zürcher Zentrum" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:auto;display:block" />
+          <source media="(max-width: 767px)" srcset="/images/standort-zuerich-bellevue-mobile.webp" width="941" height="1672" />
+          <img src="/images/standort-zuerich-bellevue-desktop.webp" alt="TCM.ch Zürich Bellevue City Pop-up im Zürcher Zentrum" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:auto;display:block" />
         </picture>
       </figure>
       <div style="margin-top:24px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 24px">

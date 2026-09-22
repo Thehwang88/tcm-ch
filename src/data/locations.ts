@@ -68,12 +68,12 @@ export const clinics: Clinic[] = [
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 },
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
-  // Bellevue: City Pop-up bei Élu Cosmetics, Start 19.10.2026, aktuell montags
+  // Bellevue: City Pop-up bei Élu Cosmetics, Start 01.10.2026, aktuell montags
   // (Uhrzeiten noch nicht bestätigt → openingHours leer, nur der Tag auf der DE-Seite).
   // geo = Stadtzentrum-Näherung; präzise Koordinaten folgen mit der Eröffnung.
   { id: 'zuerich-bellevue', name: 'Zürich Bellevue', city: 'Zürich', region: 'Zürich',
     street: 'Rössligasse 8', postalCode: '8001', phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opens 19 October 2026',
+    openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opens 1 October 2026',
     areaServed: ['Zürich', 'Altstadt', 'Seefeld', 'Enge', 'Riesbach'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
