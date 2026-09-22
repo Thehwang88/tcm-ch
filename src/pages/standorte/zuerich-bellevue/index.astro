@@ -14,9 +14,9 @@
 // KEINE erfundenen Öffnungszeiten-Uhrzeiten, Gehminuten, Parkplätze oder
 // Anerkennungs-Claims für Brenda.
 //
-// Intent-Ownership: NUR Bellevue/Kreis-1-Intents. Breites "TCM/Akupunktur Zürich"
-// bleibt bei /akupunktur-tcm-zuerich/ (Hub), "Zürich City"-Intents bei
-// /standorte/zuerich-city/ (siehe seo/master-keyword-url-map.csv).
+// Intent-Ownership: Bellevue/Kreis-1-Intents. Breites "TCM/Akupunktur Zürich"
+// bleibt bei /akupunktur-tcm-zuerich/ (Hub); /standorte/zuerich-city/ ist eine
+// schmale City/Zentrum-Intent-Seite, die hierher routet (seo/master-keyword-url-map.csv).
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 import { symptomCards } from '../../../data/symptom-cards';
@@ -44,11 +44,11 @@ const therapien = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'a
   .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapyCards[slug]?.tagline }))
   .filter((x) => x.c);
 
-// Das Zürcher Netz rund um Bellevue: zwei offene Standorte + der geplante City-Standort.
+// Das Zürcher Netz rund um Bellevue.
 const nearby = [
   { slug: 'zuerich-oerlikon', city: 'Zürich Oerlikon', meta: '8050', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
   { slug: 'zuerich-hoengg', city: 'Zürich Höngg', meta: '8049', desc: 'Limmattalstrasse 340, im Westen der Stadt.' },
-  { slug: 'zuerich-city', city: 'Zürich City', meta: '8001', desc: 'An der Bahnhofstrasse, geplant für 2028.' },
+  { slug: 'winterthur-muenzgasse', city: 'Winterthur Münzgasse', meta: '8400', desc: 'Münzgasse 2, nahe Zürich.' },
 ];
 
 const faqs = [
@@ -77,8 +77,8 @@ const faqs = [
     a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Ob und in welchem Umfang deine Police die Behandlung deckt, prüfen wir kostenlos, bevor Kosten entstehen.',
   },
   {
-    q: 'Was ist der Unterschied zu eurem Standort Zürich City?',
-    a: 'Bellevue ist ab dem 19. Oktober 2026 offen und liegt an der Rössligasse beim Bellevueplatz, auf der Seeseite des Kreis 1. Zürich City an der Bahnhofstrasse ist für 2028 geplant und wird die Achse Hauptbahnhof/Paradeplatz abdecken.',
+    q: 'Ist Bellevue euer Standort für Zürich City?',
+    a: 'Ja. TCM.ch Zürich Bellevue an der Rössligasse 8 ist unser Standort mitten in Zürich City, im Kreis 1 zwischen Bellevueplatz, See und Altstadt. Wer im Zentrum arbeitet oder wohnt, ist hier am schnellsten bei uns.',
   },
 ];
 
