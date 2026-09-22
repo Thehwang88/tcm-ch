@@ -401,8 +401,9 @@ const schema = [
     </div>
   </section>
 
-  <!-- Mobile Sticky-CTA (bestehende Komponente; springt zum Hero-Formular) -->
-  <StickyCta prefill="Hallo, ich möchte einen Termin in Zürich (Bellevue) anfragen." formTarget="#termin" />
+  <!-- Mobile Sticky-CTA (bestehende Komponente; SG-Pattern: erscheint erst,
+       wenn der Hero samt Hero-CTA aus dem Viewport gescrollt ist) -->
+  <StickyCta prefill="Hallo, ich möchte einen Termin in Zürich (Bellevue) anfragen." formTarget="#termin" heroSelector=".lu-hero" />
 
 <style>
   .svc-card, .kt-feature, .city-card { text-decoration: none; color: inherit; }

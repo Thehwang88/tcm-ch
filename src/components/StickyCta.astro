@@ -5,11 +5,14 @@
 interface Props {
   prefill?: string;
   formTarget?: string;
+  /** Optional (SG-Pattern): Bar erst zeigen, wenn dieser Hero aus dem Viewport
+   *  gescrollt ist (IntersectionObserver, threshold 0 – wie st-gallen-Leaf). */
+  heroSelector?: string;
 }
-const { prefill = 'Ich möchte gerne einen Termin anfragen.', formTarget = '#formular' } = Astro.props;
+const { prefill = 'Ich möchte gerne einen Termin anfragen.', formTarget = '#formular', heroSelector } = Astro.props;
 const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
 ---
-<div class="sticky-cta" id="stickyCta" data-target={formTarget}>
+<div class:list={["sticky-cta", { "is-hidden": !!heroSelector }]} id="stickyCta" data-target={formTarget} data-hero={heroSelector}>
   <a
     class="sc-btn sc-btn--wa"
     href={waHref}
@@ -49,11 +52,19 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
     if (!bar || bar.dataset.init) return;
     bar.dataset.init = '1';
     var target = document.querySelector(bar.dataset.target || '#formular');
-    if (!target || !('IntersectionObserver' in window)) return;
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        bar.classList.toggle('is-hidden', en.isIntersecting);
-      });
-    }, { threshold: 0.05 }).observe(target);
+    var hero = bar.dataset.hero ? document.querySelector(bar.dataset.hero) : null;
+    if (!('IntersectionObserver' in window)) { bar.classList.remove('is-hidden'); return; }
+    // Sichtbar nur, wenn (a) der Hero aus dem Viewport ist (SG-Pattern) und
+    // (b) das Ziel-Formular nicht sichtbar ist (Submit nie überdecken).
+    var heroOut = !hero;
+    var formVisible = false;
+    var apply = function () { bar.classList.toggle('is-hidden', !heroOut || formVisible); };
+    if (hero) {
+      new IntersectionObserver(function (es) { heroOut = !es[0].isIntersecting; apply(); }, { threshold: 0 }).observe(hero);
+    }
+    if (target) {
+      new IntersectionObserver(function (es) { formVisible = es[0].isIntersecting; apply(); }, { threshold: 0.05 }).observe(target);
+    }
+    apply();
   })();
 </script>
