@@ -236,6 +236,15 @@ const schema = [
       <div class="section-label">Lage &amp; Anreise</div>
       <h2 class="section-title">Kreis 1, beim <em>Bellevue.</em></h2>
       <p class="section-sub">Unser City-Pop-up befindet sich in den Räumlichkeiten von Élu Cosmetics an der Rössligasse 8 - in der Altstadt auf der Seeseite des Kreis 1, wenige Schritte vom Bellevueplatz und nahe beim Bahnhof Zürich Stadelhofen. Mit Tram und S-Bahn bist du über Bellevue und Stadelhofen bestens angebunden.</p>
+      <!-- Bellevue-Webvisuals (final): Figure-Pattern wie UeberPraxis.astro (Oerlikon),
+           aber ohne object-fit-Crop – native Seitenverhältnisse. <picture> lädt nur
+           die passende Variante (Portrait ≤767px, Landscape ab 768px). -->
+      <figure style="margin:24px 0 0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md)">
+        <picture>
+          <source media="(max-width: 767px)" srcset="/images/standort-zuerich-bellevue-mobile.png" width="941" height="1672" />
+          <img src="/images/standort-zuerich-bellevue-desktop.png" alt="TCM.ch Zürich Bellevue City Pop-up im Zürcher Zentrum" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:auto;display:block" />
+        </picture>
+      </figure>
       <div style="margin-top:24px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 24px">
         <div style="font-weight:800;font-family:var(--font-sans);letter-spacing:-.01em;margin-bottom:6px">TCM.ch Zürich Bellevue</div>
         <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0">bei Élu Cosmetics<br>Rössligasse 8, 8001 Zürich</p>
