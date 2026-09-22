@@ -177,6 +177,8 @@ export const therapeuten: Therapeut[] = [
     name: 'Brenda Oviedo',
     titel: 'TCM-Therapeutin',
     bild: '/images/Brenda-new.png',
+    ortLabel: 'Zürich Bellevue',
+    standorte: ['zuerich-bellevue'],
   },
 ];
 
