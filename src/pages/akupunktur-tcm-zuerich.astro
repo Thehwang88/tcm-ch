@@ -2,7 +2,17 @@
 // /akupunktur-tcm-zuerich/ - kommerzielle Zürich-Hub-Landingpage (Hub & Spoke → die 3 Zürcher Standorte).
 export const prerender = true;
 import SpaPage from '../layouts/SpaPage.astro';
-import body from '../data/akupunktur-tcm-zuerich-body.html?raw';
+import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
+import { zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../data/zuerich-termin';
+
+// Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
+// statt hartcodiert - noch nicht anfragbare Standorte (terminAb) erscheinen erst ab Stichtag.
+const ZH_ALT = '<select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Bellevue</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select>';
+if (!rawBody.includes(ZH_ALT)) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
+const body = rawBody.replace(
+  ZH_ALT,
+  `<select class="form-select" name="standort" data-zh-termin="${zhTerminData({ html: true })}"><option value="">Standort auswählen</option>${zhStandortOptionsHtml()}<option data-zh-last>Andere / in meiner Nähe</option></select>`,
+) + zhTerminScript;
 
 const title = 'TCM Zürich – Akupunktur & Chinesische Medizin | TCM.ch';
 const description =

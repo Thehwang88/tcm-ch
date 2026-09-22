@@ -22,6 +22,9 @@ export interface Clinic {
   openingNote?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
   areaServed?: string[];
+  /** ISO-Datum (YYYY-MM-DD): erst ab diesem Tag als Terminoption im Termin-Funnel
+   *  angeboten (src/data/zuerich-termin.ts). Weglassen = Termine anfragbar. */
+  terminAb?: string;
 }
 
 export const clinics: Clinic[] = [
@@ -63,6 +66,7 @@ export const clinics: Clinic[] = [
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 },
+    terminAb: '2026-12-01', // Eröffnung Ohmstrasse 14 - vorher nicht als Terminoption
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   // Bellevue: City Pop-up bei Élu Cosmetics, Start 19.10.2026, aktuell montags

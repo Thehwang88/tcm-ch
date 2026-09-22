@@ -68,7 +68,8 @@ export const therapeuten: Therapeut[] = [
     titel: 'TCM-Therapeut',
     fokus: 'Akupunktur & Tuina',
     bild: '/images/img-b0d621bda695.webp',
-    ortLabel: 'Winterthur',
+    ortLabel: 'Winterthur · Zürich Bellevue',
+    standorte: ['zuerich-bellevue'],
     methoden: ['Akupunktur', 'Tuina'],
     kurzbeschreibung: '[Kurzbeschreibung folgt]',
     anerkennungen: ['[Anerkennung folgt]'],
@@ -171,6 +172,8 @@ export const therapeuten: Therapeut[] = [
     name: 'Seongsu Kim',
     titel: 'TCM-Therapeut',
     bild: '/images/Seongsu-Kim.png',
+    ortLabel: 'St. Gallen · Zürich Bellevue',
+    standorte: ['st-gallen', 'zuerich-bellevue'],
   },
   {
     slug: 'brenda-oviedo',

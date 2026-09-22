@@ -5,7 +5,7 @@
 //
 // Conversion-Logik: Bellevue ist die Location, Zürich der Funnel. Primärer CTA
 // "Termin in Zürich finden" → Terminanfrage-Formular mit Standort-Präferenz
-// (Bellevue / anderer Zürcher Standort / nächster freier Termin), quelle=
+// (Zürcher Standorte aus src/data/zuerich-termin.ts + nächster freier Termin), quelle=
 // termin-zuerich-bellevue, typ=termin → /api/anfrage. Montag wird transparent
 // genannt, ist aber nie Conversion-Blocker.
 //
@@ -21,7 +21,8 @@ export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 import { symptomCards } from '../../../data/symptom-cards';
 import { therapyCards } from '../../../data/therapy-cards';
-import { getTherapeut, teamCardHtml } from '../../../data/therapeuten';
+import { therapeuten, teamCardHtml } from '../../../data/therapeuten';
+import { ZH_FLEXIBEL, zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../../../data/zuerich-termin';
 
 const url = 'https://tcm.ch/standorte/zuerich-bellevue/';
 const title = 'TCM & Akupunktur Zürich Bellevue - City Pop-up | TCM.ch';
@@ -31,8 +32,19 @@ const description =
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 
-const brenda = getTherapeut('brenda-oviedo');
-const brendaCard = brenda ? teamCardHtml(brenda) : '';
+// Team = alle Therapeut:innen mit standorte ∋ 'zuerich-bellevue' (src/data/therapeuten.ts).
+// Reihenfolge: Brenda (Hauptansprechpartnerin vor Ort) zuerst; weitere Bellevue-Einträge danach.
+const TEAM_REIHENFOLGE = ['brenda-oviedo', 'seongsu-kim', 'simon-stueve'];
+const teamRank = (slug: string) => { const i = TEAM_REIHENFOLGE.indexOf(slug); return i < 0 ? 99 : i; };
+const teamCards = therapeuten
+  .filter((t) => t.standorte?.includes('zuerich-bellevue'))
+  .sort((a, b) => teamRank(a.slug) - teamRank(b.slug))
+  .map(teamCardHtml)
+  .join('');
+
+// Terminpräferenz: aktuell anfragbare Zürcher Standorte aus locations.ts + flexible Schluss-Option.
+const zhOptions = zhStandortOptionsHtml('Zürich Bellevue') +
+  `<option value="${ZH_FLEXIBEL.value}" data-zh-last>${ZH_FLEXIBEL.label}</option>`;
 
 const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen', schlafstoerungen: 'schlafprobleme' };
 const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'heuschnupfen']
@@ -148,11 +160,8 @@ const schema = [
             <input name="telefon" type="tel" autocomplete="tel" required placeholder="Telefonnummer" aria-label="Telefonnummer" />
             <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
             <label class="lu-select-label" for="lu-standort">Terminpräferenz</label>
-            <select name="standort" id="lu-standort" aria-label="Terminpräferenz">
-              <option value="Zürich Bellevue" selected>Zürich Bellevue</option>
-              <option value="Zürich Bellevue oder anderer Zürcher Standort">Bellevue oder anderer Zürcher Standort</option>
-              <option value="Zürich – nächster freier Termin">Nächster freier Termin in Zürich</option>
-            </select>
+            <select name="standort" id="lu-standort" aria-label="Terminpräferenz" data-zh-termin={zhTerminData()} set:html={zhOptions}></select>
+            <Fragment set:html={zhTerminScript} />
             <div class="cf-turnstile lu-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
             <button type="submit">Termin anfragen</button>
             <p class="lu-form-rule">Unverbindliche Anfrage. Keine Werbung, keine Weitergabe.</p>
@@ -211,13 +220,13 @@ const schema = [
     </div>
   </section>
 
-  <!-- ── THERAPEUTIN ── -->
+  <!-- ── TEAM ── -->
   <section class="section">
     <div class="wrap">
       <div class="section-label">Team</div>
-      <h2 class="section-title">Deine <em>Therapeutin</em> am Bellevue</h2>
-      <p class="section-sub" style="max-width:72ch">Bellevue startet bewusst klein und persönlich - mit Brenda Oviedo als fester Ansprechpartnerin vor Ort. Sie behandelt dich vom ersten Gespräch bis zur letzten Sitzung.</p>
-      <div class="team-grid" style="margin-top:28px" set:html={brendaCard}></div>
+      <h2 class="section-title">Unser Team in <em>Zürich Bellevue</em></h2>
+      <p class="section-sub" style="max-width:72ch">Bellevue startet bewusst klein und persönlich, mit Brenda Oviedo als Ansprechpartnerin vor Ort. Unser Zürcher Team behandelt je nach Termin und Verfügbarkeit am Bellevue sowie an unseren weiteren Zürcher Standorten.</p>
+      <div class="team-grid" style="margin-top:28px" set:html={teamCards}></div>
     </div>
   </section>
 
