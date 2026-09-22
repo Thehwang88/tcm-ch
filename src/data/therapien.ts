@@ -13,7 +13,7 @@ export const therapien: Therapie[] = [
     "name": "Akupunktur",
     "title": "Akupunktur Schweiz – EMR-anerkannt, Termin in 24h",
     "metaDesc": "Akupunktur in der Schweiz: 11 geprüfte TCM-Praxen, EMR/ASCA anerkannt, Krankenkasse 80–100%. Termin oft in 24h. Zürich · Basel · St. Gallen · Winterthur.",
-    "lead": "Feine Nadeln an definierten Körperpunkten — eine der am besten erforschten komplementärmedizinischen Methoden. EMR-/ASCA-anerkannt, Termin oft innert 24 Stunden.",
+    "lead": "Feine Nadeln an definierten Körperpunkten - eine der am besten erforschten komplementärmedizinischen Methoden. EMR-/ASCA-anerkannt, Termin oft innert 24 Stunden.",
     "duration": "45–60 Min",
     "sessions": "6–10",
     "insurance": "Zusatzversicherung oft anerkannt",

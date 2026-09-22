@@ -8,7 +8,7 @@
 //
 // Der Hub /therapien/massage/ verlinkt alle Unterseiten, wird selbst aber zu selten
 // gecrawlt. Diese Blöcke setzen zusätzliche Links von den Seiten, die Google regelmässig
-// anfasst — und zwar nur dort, wo es thematisch trägt: muskuloskelettale Beschwerden und
+// anfasst - und zwar nur dort, wo es thematisch trägt: muskuloskelettale Beschwerden und
 // verwandte Therapien. Markup nutzt die bestehenden SPA-Klassen (.cl-related /
 // .cl-links / .cl-chip), damit kein neues CSS nötig ist.
 //

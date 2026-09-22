@@ -151,7 +151,7 @@ export const krankenkassen: Krankenkasse[] = [
       "Mivita / Diversa"
     ],
     "register": "EMR",
-    "deckung": "tarifabhängige anteilige Rückerstattung — Police prüfen.",
+    "deckung": "tarifabhängige anteilige Rückerstattung - Police prüfen.",
     "verordnung": false
   },
   {
@@ -161,7 +161,7 @@ export const krankenkassen: Krankenkasse[] = [
       "Komplementärmedizin-Zusatz (paketabhängig)"
     ],
     "register": "EMR",
-    "deckung": "Eingeschränkte Deckung: nur über bestimmte Zusatzpakete und oft begrenzt. Tarif genau prüfen — viele Assura-Modelle decken Komplementärmedizin nur minimal. Wir helfen bei der Abklärung oder Tarifwahl.",
+    "deckung": "Eingeschränkte Deckung: nur über bestimmte Zusatzpakete und oft begrenzt. Tarif genau prüfen - viele Assura-Modelle decken Komplementärmedizin nur minimal. Wir helfen bei der Abklärung oder Tarifwahl.",
     "verordnung": false
   },
   {
@@ -171,7 +171,7 @@ export const krankenkassen: Krankenkasse[] = [
       "ambulante Komplementärmedizin-Zusatzversicherung"
     ],
     "register": "EMR",
-    "deckung": "Anteilige Rückerstattung über die ambulante Zusatzversicherung; tarifabhängig — Police prüfen.",
+    "deckung": "Anteilige Rückerstattung über die ambulante Zusatzversicherung; tarifabhängig - Police prüfen.",
     "verordnung": false
   },
   {
@@ -291,7 +291,7 @@ export const krankenkassen: Krankenkasse[] = [
       "CSS-Gruppe (digital)"
     ],
     "register": "EMR",
-    "deckung": "Sanagate gehört zur CSS-Gruppe. Komplementärmedizin nur über CSS-Zusatzversicherung möglich — Sanagate selbst ist ein reines Grundversicherungs-Digitalmodell. Deckung prüfen.",
+    "deckung": "Sanagate gehört zur CSS-Gruppe. Komplementärmedizin nur über CSS-Zusatzversicherung möglich - Sanagate selbst ist ein reines Grundversicherungs-Digitalmodell. Deckung prüfen.",
     "verordnung": false
   },
   {

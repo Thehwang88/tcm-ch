@@ -1,7 +1,7 @@
 // Interne Verlinkung in den /haut/-Cluster.
 //
 // Hintergrund: Alle ~34 /haut/-Leaves standen in der Search Console auf
-// "Gefunden – zurzeit nicht indexiert", Spalte "Zuletzt gecrawlt: nicht zutreffend" —
+// "Gefunden – zurzeit nicht indexiert", Spalte "Zuletzt gecrawlt: nicht zutreffend" -
 // Google kannte die URLs aus der Sitemap, hat sie aber nie abgerufen. Der Hub /haut/
 // verlinkt zwar alle Leaves im HTML, wird selbst aber zu selten gecrawlt, um die
 // Crawl-Priorität der Kinder zu heben.
@@ -67,7 +67,7 @@ export const HAUT_FOR_BESCHWERDE: Record<string, string[]> = {
 
 const bySlug = new Map(HAUT_LINKS.map((l) => [l.slug, l]));
 
-/** Kleiner, stabiler Hash — nur für die Rotation, nichts Sicherheitsrelevantes. */
+/** Kleiner, stabiler Hash - nur für die Rotation, nichts Sicherheitsrelevantes. */
 function seedNum(seed: string): number {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;

@@ -1,5 +1,5 @@
 ---
-// /haut/<slug> — Artikelseite der Sektion Haut & Gesicht.
+// /haut/<slug> - Artikelseite der Sektion Haut & Gesicht.
 // Aufbau wie /wissen/[slug].astro, aber mit eigener warmer Farbpalette
 // (Bronze statt Türkis), damit die Beauty-Sektion optisch eigenständig bleibt.
 // Alle Farben sind lokal auf .haut-scope begrenzt und berühren den Rest nicht.
@@ -17,7 +17,7 @@ const data = a ?? hautBySlug(Astro.params.slug as string)!;
 const path = `/haut/${data.slug}`;
 
 // Duplikat-Auflösung: /haut/rosacea/ und /beschwerden/rosacea/ behandeln dasselbe Thema.
-// Die Beschwerden-Seite rankt bereits (GSC Position 9,0), also konsolidieren wir dorthin —
+// Die Beschwerden-Seite rankt bereits (GSC Position 9,0), also konsolidieren wir dorthin -
 // die Haut-Seite bleibt für Leser:innen bestehen, gibt die Ranking-Signale aber ab.
 const CANONICAL_TO: Record<string, string> = {
   rosacea: '/beschwerden/rosacea/',

@@ -184,7 +184,7 @@ const schema = {
           var data = null; try { data = await res.json(); } catch (_) {}
           if (res.ok && data && data.ok) {
             form.reset(); listEl.hidden = true; listEl.innerHTML = ''; showErr('');
-            show('success', 'Vielen Dank. Ihre Zuweisung ist eingegangen — Sie erhalten eine Bestätigung per E-Mail und eine Rückmeldung zum Behandlungsverlauf.');
+            show('success', 'Vielen Dank. Ihre Zuweisung ist eingegangen - Sie erhalten eine Bestätigung per E-Mail und eine Rückmeldung zum Behandlungsverlauf.');
             form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
           } else {
             var map = { missing_fields: 'Bitte füllen Sie die Pflichtfelder aus.', too_large: 'Dateien zusammen zu gross (max. 10 MB).', bad_file_type: 'Nicht unterstützter Dateityp (nur PDF, JPG, PNG).', too_many_files: 'Maximal 8 Dateien.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut versuchen.' };

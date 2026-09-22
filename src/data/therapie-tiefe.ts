@@ -7,7 +7,7 @@
 // Fragen nicht, mit denen Leute tatsächlich suchen (Ablauf, Nebenwirkungen, Abgrenzung,
 // Kosten).
 //
-// Statt die Captures umzuschreiben — fehleranfällig und schwer zu pflegen — hängen wir
+// Statt die Captures umzuschreiben - fehleranfällig und schwer zu pflegen - hängen wir
 // einen strukturierten Block an den Body, so wie es die Seiten mit faqBlock, relatedBlock
 // und selbsttestBlock schon tun. Markup nutzt die bestehenden Klassen.
 
@@ -45,7 +45,7 @@ export const therapieTiefe: Record<string, TiefeBlock> = {
       {
         h: 'Wann Gua Sha nicht in Frage kommt',
         p: [
-          'Nicht behandelt wird über offenen Wunden, frischen Narben, Sonnenbrand, Hautinfektionen oder ausgeprägten Krampfadern. Wer blutverdünnende Medikamente nimmt oder an einer Gerinnungsstörung leidet, sollte das vorher ansprechen — dann arbeiten wir deutlich sanfter oder wählen eine andere Technik.',
+          'Nicht behandelt wird über offenen Wunden, frischen Narben, Sonnenbrand, Hautinfektionen oder ausgeprägten Krampfadern. Wer blutverdünnende Medikamente nimmt oder an einer Gerinnungsstörung leidet, sollte das vorher ansprechen - dann arbeiten wir deutlich sanfter oder wählen eine andere Technik.',
           'Auch bei Fieber, in der Frühschwangerschaft und direkt nach einer Operation im behandelten Gebiet warten wir ab. Das sind Standardgrenzen, keine Formalitäten.',
         ],
       },
@@ -59,7 +59,7 @@ export const therapieTiefe: Record<string, TiefeBlock> = {
       {
         h: 'Gua Sha im Gesicht ist etwas anderes',
         p: [
-          'Das kosmetische Gesichts-Gua-Sha, das man aus Social Media kennt, arbeitet mit sehr leichtem Druck und erzeugt bewusst keine Verfärbung. Ziel ist Lymphfluss und Hautbild, nicht die Behandlung von Verspannungen. Wir behandeln beides, verwechseln sollte man es aber nicht — dazu haben wir eine eigene Seite zu <a href="/therapien/gua-sha/gesichts-gua-sha/">Gesichts-Gua-Sha</a>.',
+          'Das kosmetische Gesichts-Gua-Sha, das man aus Social Media kennt, arbeitet mit sehr leichtem Druck und erzeugt bewusst keine Verfärbung. Ziel ist Lymphfluss und Hautbild, nicht die Behandlung von Verspannungen. Wir behandeln beides, verwechseln sollte man es aber nicht - dazu haben wir eine eigene Seite zu <a href="/therapien/gua-sha/gesichts-gua-sha/">Gesichts-Gua-Sha</a>.',
         ],
       },
     ],
@@ -138,14 +138,14 @@ export const therapieTiefe: Record<string, TiefeBlock> = {
         h: 'Ablauf und Hygiene',
         p: [
           'Zuerst wird trocken geschröpft, damit die Region durchblutet ist. Dann wird die Haut desinfiziert, mit einer sterilen Einwegklinge werden mehrere sehr oberflächliche Ritzungen gesetzt, und das Glas kommt für wenige Minuten zurück. Danach wird gereinigt, desinfiziert und abgedeckt.',
-          'Alles, was mit Blut in Kontakt kommt, ist Einwegmaterial und wird nach der Behandlung fachgerecht entsorgt. Das ist der Punkt, an dem sich seriöse von unseriöser Praxis unterscheidet — frag bei jeder Praxis danach, nicht nur bei uns.',
+          'Alles, was mit Blut in Kontakt kommt, ist Einwegmaterial und wird nach der Behandlung fachgerecht entsorgt. Das ist der Punkt, an dem sich seriöse von unseriöser Praxis unterscheidet - frag bei jeder Praxis danach, nicht nur bei uns.',
         ],
       },
       {
         h: 'Danach: was normal ist und was nicht',
         p: [
           'Runde Male an den Schröpfstellen sind normal und verblassen über etwa eine Woche. Die Ritzungen sind oberflächlich und verheilen in wenigen Tagen. Am Behandlungstag solltest du auf Sauna, Schwimmbad, intensives Training und Alkohol verzichten und die Stellen 24 Stunden sauber und trocken halten.',
-          'Nicht normal sind zunehmende Rötung, Schwellung, Wärme oder Eiter. Das wären Zeichen einer Infektion — dann meldest du dich, und zwar am selben Tag.',
+          'Nicht normal sind zunehmende Rötung, Schwellung, Wärme oder Eiter. Das wären Zeichen einer Infektion - dann meldest du dich, und zwar am selben Tag.',
         ],
       },
       {

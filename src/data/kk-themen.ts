@@ -1,14 +1,14 @@
 // Themenseiten unter /krankenkassen/<slug>.
 //
 // Warum es diese Seiten gibt: Der Hub /krankenkassen/ deckt Grundversicherung,
-// Zusatzversicherung, 29 Kassen und alle Methoden auf einer Seite ab — und rankt deshalb
+// Zusatzversicherung, 29 Kassen und alle Methoden auf einer Seite ab - und rankt deshalb
 // für seine eigenen Kernbegriffe auf Position 45 bis 78 (GSC, Q3 2026). Zum Vergleich:
 // "massage krankenkasse" wird von einem blossen Abschnitt auf /therapien/massage/
 // bedient und steht auf Position 20,5. Ein Abschnitt schlägt den Hub um 25 Plätze.
 // Deshalb pro Suchintention eine eigene Seite; der Hub bleibt die Übersicht.
 //
 // Fachliche Grundlage für die Grundversicherungs-Aussagen: BAG, "Ärztliche
-// Komplementärmedizin" — die OKP übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit
+// Komplementärmedizin" - die OKP übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit
 // Facharzttitel und komplementärmedizinischer Weiterbildung. Leistungen nicht-ärztlicher
 // Therapeut:innen laufen über die Zusatzversicherung.
 // https://www.bag.admin.ch/de/arztliche-komplementaermedizin
@@ -59,7 +59,7 @@ export const kkThemen: KkThema[] = [
     intro: [
       'Die entscheidende Trennlinie verläuft nicht zwischen teuer und günstig, sondern zwischen medizinischer Massage und Wellness. Eine <a href="/therapien/massage/medizinische-massage/">medizinische Massage</a> arbeitet an einem konkreten Befund: verspannte Nackenmuskulatur, ein überlasteter unterer Rücken, eine Schulter, die nach dem Sturz nicht mehr richtig mitmacht. Sie wird geplant, dokumentiert und über die Zusatzversicherung abgerechnet.',
       'Eine Entspannungsmassage tut genauso gut, ist aber keine Behandlung im Sinne der Versicherung. Die zahlst du selbst. Das ist keine Willkür der Kassen, sondern die Logik dahinter: erstattet wird, was auf ein medizinisches Problem zielt.',
-      'Bei uns arbeiten medizinische Masseur:innen und TCM-Therapeut:innen unter anerkannter ZSR-Nummer, eingetragen bei EMR und ASCA. Genau dieser Eintrag ist die Voraussetzung dafür, dass deine Zusatzversicherung mitzahlt — nicht der Praxisname und nicht die Technik.',
+      'Bei uns arbeiten medizinische Masseur:innen und TCM-Therapeut:innen unter anerkannter ZSR-Nummer, eingetragen bei EMR und ASCA. Genau dieser Eintrag ist die Voraussetzung dafür, dass deine Zusatzversicherung mitzahlt - nicht der Praxisname und nicht die Technik.',
     ],
     cardsLabel: 'Wer zahlt was',
     cardsTitle: 'Drei Töpfe, klar <em>getrennt.</em>',
@@ -172,7 +172,7 @@ export const kkThemen: KkThema[] = [
     metaTitle: 'Shiatsu & Krankenkasse: anerkannt oder nicht? | TCM.ch',
     metaDesc: 'Shiatsu und Krankenkasse in der Schweiz: Warum die Grundversicherung nicht zahlt, was die Zusatzversicherung übernimmt und woran du erkennst, ob deine Police Shiatsu einschliesst.',
     h1: 'Shiatsu und <em>Krankenkasse.</em>',
-    lead: 'Shiatsu ist eine Komplementärtherapie, keine ärztliche Leistung. Die Grundversicherung zahlt deshalb nicht. Viele Zusatzversicherungen schon — allerdings nicht alle, und nicht alle im selben Umfang. Woran du erkennst, ob deine Police dazugehört.',
+    lead: 'Shiatsu ist eine Komplementärtherapie, keine ärztliche Leistung. Die Grundversicherung zahlt deshalb nicht. Viele Zusatzversicherungen schon - allerdings nicht alle, und nicht alle im selben Umfang. Woran du erkennst, ob deine Police dazugehört.',
     trust: ['EMR &amp; ASCA anerkannt', 'Keine ärztliche Verordnung nötig', 'Deckung vorab prüfbar'],
     introLabel: 'Der Status',
     introTitle: 'Anerkannt heisst nicht <em>automatisch gedeckt.</em>',

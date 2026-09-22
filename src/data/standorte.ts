@@ -7,8 +7,8 @@
 //
 // Two fields extend the brief's schema because the canonical flow needs them and the
 // existing data files don't carry them:
-//   - reviews.items[].kontext  — the "Stadt · Therapie · Kontext" line under each review
-//   - nearby                    — curated WeitereStandorte cards ({slug, plz, city, desc}),
+//   - reviews.items[].kontext  - the "Stadt · Therapie · Kontext" line under each review
+//   - nearby                    - curated WeitereStandorte cards ({slug, plz, city, desc}),
 //                                 lifted verbatim from the leaf (slug drives the nav link).
 
 export interface Standort {

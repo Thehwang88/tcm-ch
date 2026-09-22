@@ -75,7 +75,7 @@ const CANONICAL_TO: Record<string, string> = {
 const canonicalTo = CANONICAL_TO[data.slug];
 const schema = canonicalTo ? undefined : [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
-// Rücklink ins OUCH.-Magazin — dezente Zeile am Artikelende (nur auf passenden Slugs).
+// Rücklink ins OUCH.-Magazin - dezente Zeile am Artikelende (nur auf passenden Slugs).
 const OUCH_ROWS: Record<string, { href: string; label: string }> = {
   'akupunktur-bei-rueckenschmerzen': { href: `${OUCH_MAG}/insights/placebo-artikel-akupunktur/`, label: 'Wirkt das wirklich? Unsere ehrliche Antwort im Magazin' },
   'krankenkasse-tcm-was-wirklich-uebernommen-wird-2026': { href: `${OUCH_MAG}/insights/90-minuten-heuschnupfen/`, label: 'Warum Behandlungen 90 Minuten dauern – und was die Zusatzversicherung damit zu tun hat' },

@@ -2,7 +2,7 @@
 //
 // Hintergrund: Die 20 Leaves stehen in der Search Console auf "URL ist Google nicht
 // bekannt" bzw. "Gefunden – zurzeit nicht indexiert", Spalte "Verweisende Seite:
-// nicht gefunden". Die Sitemap enthält sie (live geprüft, 10.09.2026) — es fehlen
+// nicht gefunden". Die Sitemap enthält sie (live geprüft, 10.09.2026) - es fehlen
 // interne Links. Der Hub /koerpersignale/ verlinkt alle Leaves, wird selbst aber zu
 // selten gecrawlt, um die Crawl-Priorität der Kinder zu heben. Gleiches Muster wie
 // beim /haut/-Cluster, siehe haut-links.ts.
@@ -34,7 +34,7 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'kalte-haende-einseitig', label: 'Eine Hand ist kälter' },
   { slug: 'bein-wird-beim-sitzen-taub', label: 'Bein wird beim Sitzen taub' },
   { slug: 'rueckenschmerzen-beim-husten', label: 'Rückenschmerzen beim Husten' },
-  // Zweite Welle (Deploy 09/2026) — siehe seo/index-queue.md.
+  // Zweite Welle (Deploy 09/2026) - siehe seo/index-queue.md.
   { slug: 'nacken-knackt-beim-drehen', label: 'Nacken knackt beim Drehen' },
   { slug: 'knie-knackt-ohne-schmerzen', label: 'Knie knackt ohne Schmerzen' },
   { slug: 'ohr-knackt-beim-schlucken', label: 'Ohr knackt beim Schlucken' },
@@ -45,7 +45,7 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'ein-fuss-kaelter-als-der-andere', label: 'Ein Fuss ist kälter' },
   { slug: 'rueckenschmerzen-beim-langen-stehen', label: 'Rückenschmerzen beim langen Stehen' },
   { slug: 'druck-im-kopf-ohne-kopfschmerzen', label: 'Druck im Kopf ohne Kopfschmerzen' },
-  // Vierte Welle (Deploy 09/2026) — Fokus Bauch, Schlaf, Nerven (health-library-map.md).
+  // Vierte Welle (Deploy 09/2026) - Fokus Bauch, Schlaf, Nerven (health-library-map.md).
   { slug: 'arm-schlaeft-nachts-ein', label: 'Arm schläft nachts ein' },
   { slug: 'voellegefuehl-nach-dem-essen', label: 'Völlegefühl nach dem Essen' },
   { slug: 'blaehbauch-am-abend', label: 'Blähbauch am Abend' },
@@ -54,7 +54,7 @@ export const KS_LINKS: KsLink[] = [
   { slug: 'augenflimmern', label: 'Augenflimmern' },
   { slug: 'zehen-kribbeln', label: 'Zehen kribbeln' },
   { slug: 'schwindel-beim-buecken', label: 'Schwindel beim Bücken' },
-  // Fünfte Welle (Deploy 09/2026) — Becken/Blase, Bauch, Nacken-Nerven-Brücke.
+  // Fünfte Welle (Deploy 09/2026) - Becken/Blase, Bauch, Nacken-Nerven-Brücke.
   { slug: 'haeufiger-harndrang-nachts', label: 'Häufiger Harndrang nachts' },
   { slug: 'ploetzlicher-harndrang-ohne-volle-blase', label: 'Plötzlicher Harndrang' },
   { slug: 'druckgefuehl-im-unterbauch', label: 'Druckgefühl im Unterbauch' },
@@ -179,7 +179,7 @@ for (const [b, extra] of Object.entries({
 
 const bySlug = new Map(KS_LINKS.map((l) => [l.slug, l]));
 
-/** Kleiner, stabiler Hash — nur für die Rotation, nichts Sicherheitsrelevantes. */
+/** Kleiner, stabiler Hash - nur für die Rotation, nichts Sicherheitsrelevantes. */
 function seedNum(seed: string): number {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;

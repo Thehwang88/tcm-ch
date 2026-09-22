@@ -8,7 +8,7 @@
 //
 // hreflang: EN-only by default (self-canonical, x-default=en). If a DE Wissen
 // article on the SAME topic exists, set deWissenUrl to its absolute URL to pair
-// them — do NOT invent a fake DE twin.
+// them - do NOT invent a fake DE twin.
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 

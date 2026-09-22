@@ -1,4 +1,4 @@
-// Gesundheitsbibliothek — zentrales Beziehungs-/Taxonomie-Modell (Phase 1).
+// Gesundheitsbibliothek - zentrales Beziehungs-/Taxonomie-Modell (Phase 1).
 //
 // Die Bibliothek ist eine DISCOVERY-Ebene über den bestehenden Inhalten. Sie erzeugt
 // keine neuen Inhalts-URLs für bestehende Seiten und dupliziert keinen Seiteninhalt:
@@ -13,7 +13,7 @@
 // Neue URLs in Phase 1: /gesundheitsbibliothek/ (Hub) und
 // /gesundheitsbibliothek/koerper/<region>/ (Körperregion-Hubs). Eine Region wird nur
 // aufgenommen, wenn genug bestehender Inhalt existiert (Graveyard-Regel: keine
-// leeren Hubs). Alle Slugs hier MÜSSEN auf existierende Seiten zeigen — nie raten.
+// leeren Hubs). Alle Slugs hier MÜSSEN auf existierende Seiten zeigen - nie raten.
 //
 // Entity-Typen des Graphen (Phase 1 nutzt body_signal/condition/body_region/therapy/
 // diagnostic/visual; location bleibt bewusst Conversion-Layer):
@@ -41,9 +41,9 @@ export interface Diagnostic {
   href?: string;
 }
 
-// Untersuchungen & Diagnostik — Phase 1: nur Informationsblöcke auf Hub/Region-Hubs,
+// Untersuchungen & Diagnostik - Phase 1: nur Informationsblöcke auf Hub/Region-Hubs,
 // KEINE eigenen Seiten (kein Thin Content, keine Sitemap-Erweiterung). TCM.ch führt
-// diese Untersuchungen nicht selbst durch — die Sprache auf den Seiten stellt das klar.
+// diese Untersuchungen nicht selbst durch - die Sprache auf den Seiten stellt das klar.
 export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'blutuntersuchung', name: 'Blutuntersuchung', short: 'Laborwerte wie Entzündungszeichen, Eisen, Schilddrüse oder Vitamine: häufig der erste Schritt der ärztlichen Abklärung.' },
   { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen, ganz ohne Röntgenstrahlung.' },
@@ -68,13 +68,13 @@ export interface BodyRegion {
   therapies: RegionRef[];
   /** Visual-Library-Kategorien; gerendert werden nur status:'live'-Visuals. */
   visualCategories: VisualCategory[];
-  /** IDs aus DIAGNOSTICS — was ärztlich typischerweise abgeklärt wird. */
+  /** IDs aus DIAGNOSTICS - was ärztlich typischerweise abgeklärt wird. */
   diagnostics: string[];
 }
 
 // Kuratierte Regionen. Nur Regionen mit ausreichend bestehendem Inhalt (>= ~10 echte
 // Ziele über mehrere Entity-Typen). Bewusst NICHT aufgenommen: Brust, Becken (zu dünn),
-// Haut (hat mit /haut/ bereits einen eigenen, etablierten Hub — wird nur verlinkt).
+// Haut (hat mit /haut/ bereits einen eigenen, etablierten Hub - wird nur verlinkt).
 export const BODY_REGIONS: BodyRegion[] = [
   {
     slug: 'kopf',
@@ -292,7 +292,7 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 /**
  * Link-Block "Gesundheitsbibliothek" für Beschwerden-Leaves (SpaPage-Bodies), nach dem
  * Muster von ksLinksHtml/hautLinksHtml (bestehende .cl-*-Klassen, kein neues CSS).
- * Verlinkt die passenden Körperregion-Hubs + den Bibliotheks-Hub — das sind die
+ * Verlinkt die passenden Körperregion-Hubs + den Bibliotheks-Hub - das sind die
  * internen Links, die die neuen Hubs aus "Gefunden – nicht indexiert" heben.
  */
 export function libraryLinksHtml(beschwerdeSlug: string): string {
@@ -314,12 +314,12 @@ export function libraryLinksHtml(beschwerdeSlug: string): string {
 
 // ---------------------------------------------------------------------------------
 // Such-Index (Phase 1: clientseitig, klein). Wird zur Build-Zeit aus den bestehenden
-// Datenquellen abgeleitet — kein Inhalt wird dupliziert, nur Titel + URL + Typ.
+// Datenquellen abgeleitet - kein Inhalt wird dupliziert, nur Titel + URL + Typ.
 // Filter-/Suchzustände erzeugen KEINE eigenen URLs (nicht indexierbar by design).
 // ---------------------------------------------------------------------------------
 export interface SearchEntry { t: string; u: string; g: string; k?: string }
 
-// Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche —
+// Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche -
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
   '/therapien/akupunktur/schaedelakupunktur/': 'Skalpakupunktur scalp acupuncture Kopfhaut Akupunktur',
@@ -454,7 +454,7 @@ export function buildSearchIndex(): SearchEntry[] {
     }
   }
   // ... plus ALLE übrigen Leaves (Label = H1 des Leafs, gleiche Ableitung wie
-  // beschwerden/[slug].astro). Kanonisierende Duplikat-Slugs bleiben draussen —
+  // beschwerden/[slug].astro). Kanonisierende Duplikat-Slugs bleiben draussen -
   // die Suche soll direkt auf die kanonische Seite führen.
   const MERGED_SLUGS = new Set(['schlafstoerungen', 'burnout', 'heuschnupfen']);
   const leaves = import.meta.glob('./symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
@@ -525,7 +525,7 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Heizungsluft & trockene Schleimhäute', u: '/wissen/heizungsluft-trockene-schleimhaeute/' },
   ];
   for (const a of RATGEBER) entries.push({ t: a.t, u: a.u, g: 'Ratgeber' });
-  // Visuals: nur live (Visual-Seiten sind bewusst noindex — Verlinkung ist ok, kein SEO-Ziel).
+  // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {
     if (v.status !== 'live') continue;
     entries.push({ t: v.title, u: `/visuals/${v.slug}/`, g: 'Visuals', k: (v.keywords ?? []).slice(0, 6).join(' ') });

@@ -1,5 +1,5 @@
 ---
-// /standorte — faithful 1:1 reproduction of the live SPA #page-standorte hub.
+// /standorte - faithful 1:1 reproduction of the live SPA #page-standorte hub.
 import SpaPage from '../../layouts/SpaPage.astro';
 import body from '../../data/standorte-body.html?raw';
 
@@ -15,7 +15,7 @@ const schema = {
 <SpaPage title={title} description={description} path="/standorte" body={body} schema={schema} />
 
 <style is:global>
-  /* Mobile hero compression — /standorte only. Lifts the location grid toward the
+  /* Mobile hero compression - /standorte only. Lifts the location grid toward the
      first scroll. Every selector namespaced under #standorte-premium-hero so nothing
      leaks to other heroes/pages. Desktop (>768px) is untouched. */
   @media (max-width: 768px) {
