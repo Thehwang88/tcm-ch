@@ -302,7 +302,7 @@ const schema = [
         ))}
       </div>
       <div style="margin-top:18px">
-        <button type="button" class="btn-secondary mob-more-btn" data-more-target="ther-grid" aria-expanded="false" aria-controls="ther-grid">Weitere Methoden im TCM.ch Netzwerk anzeigen</button>
+        <button type="button" class="btn-secondary mob-more-btn" data-more-target="ther-grid" data-label-less="Weniger Methoden anzeigen" aria-expanded="false" aria-controls="ther-grid">Weitere Methoden anzeigen</button>
       </div>
       <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot und Preise stehen auf der Seite <a href="/massage-zuerich/" style="color:var(--blue);font-weight:700">Massage in Zürich</a>.</p>
     </div>
@@ -413,7 +413,10 @@ const schema = [
      die Klasse entfernt. Kein Lazy-Load, keine Layout-Shifts beim Initial-Render. */
   .mob-more-btn { display: none; }
   @media (max-width: 767px) {
-    .mob-more-btn { display: inline-flex; width: 100%; justify-content: center; }
+    .mob-more-btn {
+      display: inline-flex; width: 100%; max-width: 100%; justify-content: center;
+      white-space: normal; text-align: center; box-sizing: border-box;
+    }
     .mob-collapsed .mob-extra { display: none !important; }
   }
 
@@ -513,12 +516,18 @@ const schema = [
   <script is:inline>
     (function () {
       // "Weitere anzeigen"-Buttons (mobil): klappen server-gerenderte Inhalte auf.
+      // Mit data-label-less wird der Button zum Auf-/Zuklapp-Toggle, sonst
+      // verschwindet er nach dem ersten Aufklappen (One-Shot).
       document.querySelectorAll('[data-more-target]').forEach(function (b) {
+        var less = b.getAttribute('data-label-less');
+        var more = b.textContent;
         b.addEventListener('click', function () {
           var t = document.getElementById(b.getAttribute('data-more-target'));
-          if (t) { t.classList.remove('mob-collapsed'); }
-          b.setAttribute('aria-expanded', 'true');
-          b.style.display = 'none';
+          if (!t) return;
+          var open = t.classList.toggle('mob-collapsed') === false;
+          b.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (less) { b.textContent = open ? less : more; }
+          else if (open) { b.style.display = 'none'; }
         });
       });
 
