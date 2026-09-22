@@ -1,15 +1,15 @@
 ---
 // /standorte/zuerich-bellevue/ - TCM.ch Zürich Bellevue, unser erster City Pop-up.
 // Start: 1. Oktober 2026, Rössligasse 8, 8001 Zürich (bei Élu Cosmetics).
-// Aktuell ein Behandlungsraum, montags geöffnet, Therapeutin: Brenda Oviedo.
+// Aktuell ein Behandlungsraum; Team: Brenda Oviedo, Seongsu Kim, Simon Stüve.
 //
 // Conversion-Logik: Bellevue ist die Location, Zürich der Funnel. Primärer CTA
 // "Termin in Zürich finden" → Terminanfrage-Formular mit Standort-Präferenz
 // (Zürcher Standorte aus src/data/zuerich-termin.ts + nächster freier Termin), quelle=
-// termin-zuerich-bellevue, typ=termin → /api/anfrage. Montag wird transparent
-// genannt, ist aber nie Conversion-Blocker.
+// termin-zuerich-bellevue, typ=termin → /api/anfrage. Kein Wochentag wird als
+// Conversion-Blocker kommuniziert; Routing über das Zürcher Netz.
 //
-// Verifizierte Daten: Name, Adresse, Startdatum 01.10.2026, Behandlungstag Montag,
+// Verifizierte Daten: Name, Adresse, Startdatum 01.10.2026 (Behandlungstag intern: Montag),
 // Raumpartner Élu Cosmetics, Therapeutin Brenda Oviedo (src/data/therapeuten.ts).
 // KEINE erfundenen Öffnungszeiten-Uhrzeiten, Gehminuten, Parkplätze oder
 // Anerkennungs-Claims für Brenda.
@@ -23,6 +23,15 @@ import { symptomCards } from '../../../data/symptom-cards';
 import { therapyCards } from '../../../data/therapy-cards';
 import { therapeuten, teamCardHtml } from '../../../data/therapeuten';
 import { ZH_FLEXIBEL, zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../../../data/zuerich-termin';
+import KontaktForm from '../../../components/standort/KontaktForm.astro';
+import type { Standort } from '../../../data/standorte';
+
+// Minimales Standort-Objekt für die zentrale KontaktForm (Bellevue hat keinen
+// standorte.ts-Eintrag): stadt steuert Headline + Standort-Vorauswahl im Select,
+// nap füttert WhatsApp/Telefon/E-Mail (Werte wie in locations.ts). Submit läuft
+// über den bestehenden data-contact-form-Handler (public/home.js →
+// submitInlineFormGeneric → /api/anfrage, quelle=Pfad, GA4 formular_senden).
+const kontaktData = { stadt: 'Zürich Bellevue', nap: { telefon: '+41 77 523 61 22', email: 'termine@tcm.ch' } } as unknown as Standort;
 
 const url = 'https://tcm.ch/standorte/zuerich-bellevue/';
 const title = 'TCM & Akupunktur Zürich Bellevue - City Pop-up | TCM.ch';
@@ -73,8 +82,8 @@ const faqs = [
     a: 'TCM.ch Zürich Bellevue startet am 1. Oktober 2026. Termine kannst du ab sofort anfragen - wir bestätigen dir deinen Termin, sobald die Agenda steht.',
   },
   {
-    q: 'An welchen Tagen ist Bellevue geöffnet?',
-    a: 'Bellevue ist aktuell montags geöffnet. Kein passender Termin am Bellevue? Wir prüfen gerne freie Termine an unseren weiteren Zürcher Standorten in Oerlikon und Höngg - du sagst uns einfach, wann es dir passt.',
+    q: 'Was, wenn am Bellevue gerade kein Termin frei ist?',
+    a: 'Kein passender Termin am Bellevue? Wir finden gerne einen passenden Termin an unseren weiteren Zürcher Standorten in Oerlikon und Höngg - du sagst uns einfach, wann es dir passt.',
   },
   {
     q: 'Was heisst City Pop-up?',
@@ -249,7 +258,7 @@ const schema = [
         <div style="font-weight:800;font-family:var(--font-sans);letter-spacing:-.01em;margin-bottom:6px">TCM.ch Zürich Bellevue</div>
         <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0">bei Élu Cosmetics<br>Rössligasse 8, 8001 Zürich</p>
         <div style="height:1px;background:var(--border);margin:16px 0"></div>
-        <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0"><strong style="color:var(--charcoal)">Bellevue aktuell montags geöffnet.</strong><br>Kein passender Termin am Bellevue? Wir prüfen gerne freie Termine an unseren weiteren Zürcher Standorten.</p>
+        <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0"><strong style="color:var(--charcoal)">Kein passender Termin am Bellevue?</strong><br>Wir finden gerne einen passenden Termin an einem unserer Zürcher Standorte.</p>
       </div>
       <p style="margin-top:20px">Im Norden der Stadt ist <a href="/standorte/zuerich-oerlikon/">Oerlikon</a> für dich da, im Westen <a href="/standorte/zuerich-hoengg/">Höngg</a>. Welcher Standort für dich passt, zeigt die Übersicht <a href="/akupunktur-tcm-zuerich/">TCM Zürich</a>.</p>
     </div>
@@ -351,7 +360,7 @@ const schema = [
   </section>
 
   <!-- ── PRAXEN IN DER NÄHE ── -->
-  <section class="related-section" style="background:var(--surface)">
+  <section class="related-section" style="background:#fff">
     <div class="wrap">
       <div class="section-label">Weitere Standorte</div>
       <h2 class="section-title">TCM.ch in <em>Zürich</em></h2>
@@ -363,6 +372,9 @@ const schema = [
       </div>
     </div>
   </section>
+
+  <!-- ── KONTAKT / TERMINANFRAGE (zentrale Komponente wie St. Gallen/Oerlikon) ── -->
+  <KontaktForm data={kontaktData} sitekey={turnstileSitekey} />
 
   <!-- ── END-CTA ── -->
   <section class="cta-band" style="background:var(--blue);padding:48px 0">
