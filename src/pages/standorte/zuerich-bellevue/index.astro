@@ -74,7 +74,7 @@ const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM
 
 // Kern-Methoden zuerst (mobil sichtbar), weitere Netzwerk-Methoden dahinter
 // (THER_VISIBLE). Framing bleibt "im Netzwerk" - keine Bellevue-Verfügbarkeits-Claims.
-const THER_VISIBLE = 3;
+const THER_VISIBLE = 4;
 const therapien = ['akupunktur', 'akupressur', 'tuina', 'gesichtsakupunktur', 'schroepfen', 'shiatsu', 'gua-sha', 'physiotherapie']
   .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapyCards[slug]?.tagline }))
   .filter((x) => x.c);
@@ -281,7 +281,7 @@ const schema = [
       </div>
       <div style="text-align:center;margin-top:20px">
         <button type="button" class="btn-secondary mob-more-btn" data-more-target="besw-grid" aria-expanded="false" aria-controls="besw-grid">Weitere Beschwerden anzeigen</button>
-        <a href="/beschwerden/" class="btn-secondary" style="display:inline-flex">Alle Beschwerden ansehen →</a>
+        <a href="/beschwerden/" class="btn-secondary besw-all" style="display:inline-flex">Alle Beschwerden ansehen →</a>
       </div>
     </div>
   </section>
@@ -418,6 +418,9 @@ const schema = [
       white-space: normal; text-align: center; box-sizing: border-box;
     }
     .mob-collapsed .mob-extra { display: none !important; }
+    /* Eingeklappt nur EIN CTA: der "Alle Beschwerden"-Link erscheint erst nach
+       dem Aufklappen (Link bleibt im HTML → crawlbar). */
+    .mob-collapsed + div .besw-all { display: none !important; }
   }
 
   /* ── Mobiler Seitenrhythmus: engere Section-Abstände + kompakter Ablauf ── */
