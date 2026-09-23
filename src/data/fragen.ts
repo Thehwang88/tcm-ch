@@ -222,10 +222,10 @@ export const fragenHubs: FragenHub[] = [
   {
     slug: 'schroepfen-methoden',
     nav: 'Schröpfen & weitere Methoden',
-    title: 'Schröpfen & weitere Methoden: häufige Fragen',
+    title: 'Schröpfen-Methoden & weitere Anwendungen: häufige Fragen',
     metaDesc: 'Wie lange bleiben Schröpfmale sichtbar, tut Schröpfen weh, was unterscheidet Tuina von Massage und was ist bei Kräutertherapie zu beachten?',
-    h1: 'Schröpfen & weitere Methoden',
-    lead: 'Fragen zu Schröpfen, Gua Sha, Tuina, Moxibustion und Kräutertherapie, kurz beantwortet und mit den ausführlichen Seiten verlinkt.',
+    h1: 'Schröpfen-Methoden & weitere Anwendungen',
+    lead: 'Fragen zu Schröpfen, Gua Sha, Tuina, Moxibustion und Kräutertherapie, kurz beantwortet und mit den ausführlichen Therapieseiten verlinkt.',
     answers: [
       {
         id: 'schroepfmale',

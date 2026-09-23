@@ -1276,7 +1276,7 @@
     {
       "url": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
       "type": "question",
-      "title": "Schröpfen &amp; weitere Methoden: häufige Fragen | TCM.ch",
+      "title": "Schröpfen-Methoden &amp; weitere Anwendungen: häufige Fragen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2556,7 +2556,7 @@
     {
       "url": "/therapien/akupunktur/",
       "type": "therapy",
-      "title": "Akupunktur – TCM-Behandlung | TCM.ch",
+      "title": "Akupunktur: Wirkung, Ablauf &amp; Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2641,7 +2641,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/therapien/elektroakupunktur/",
@@ -2696,7 +2696,7 @@
     {
       "url": "/therapien/kraeutertherapie/",
       "type": "therapy",
-      "title": "Kräutertherapie – TCM-Behandlung | TCM.ch",
+      "title": "Chinesische Kräutertherapie: TCM-Kräutermedizin | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2806,7 +2806,7 @@
     {
       "url": "/therapien/moxibustion/",
       "type": "therapy",
-      "title": "Moxibustion – TCM-Behandlung | TCM.ch",
+      "title": "Moxibustion: Moxa-Therapie, Wirkung &amp; Ablauf | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2820,7 +2820,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 9
     },
     {
@@ -2856,7 +2856,7 @@
     {
       "url": "/therapien/schroepfen/",
       "type": "therapy",
-      "title": "Schröpfen – TCM-Behandlung | TCM.ch",
+      "title": "Schröpfen: Wirkung, Ablauf &amp; Methoden | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2866,7 +2866,7 @@
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
       "type": "therapy",
-      "title": "Blutiges Schröpfen (Hijama) in der Schweiz | TCM.ch",
+      "title": "Blutiges Schröpfen in der Schweiz | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2886,7 +2886,7 @@
     {
       "url": "/therapien/shiatsu/",
       "type": "therapy",
-      "title": "Shiatsu – Behandlung &amp; Wirkung | TCM.ch",
+      "title": "Shiatsu: Behandlung, Wirkung &amp; Ablauf | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2896,7 +2896,7 @@
     {
       "url": "/therapien/tuina/",
       "type": "therapy",
-      "title": "Tuina Massage – TCM-Behandlung | TCM.ch",
+      "title": "Tuina Massage: Traditionelle chinesische Massage | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3306,7 +3306,7 @@
     {
       "url": "/wissen/schroepfen-wirkung-flecken/",
       "type": "editorial",
-      "title": "Schröpfen: Wirkung und warum die Flecken entstehen | TCM.ch",
+      "title": "Schröpfen-Wirkung: Warum Flecken entstehen und wie lange sie bleiben | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,

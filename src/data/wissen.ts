@@ -1809,7 +1809,7 @@ const wissenBase: Wissen[] = [
     "dateModified": "2026-09-05",
     "lastReviewed": "2026-09-05",
     "slug": "schroepfen-wirkung-flecken",
-    "title": "Schröpfen: Wirkung und warum die Flecken entstehen",
+    "title": "Schröpfen-Wirkung: Warum Flecken entstehen und wie lange sie bleiben",
     "metaDesc": "Wie Schröpfen wirkt, warum die runden Flecken entstehen, wie lange sie bleiben und wann Schröpfen sinnvoll ist, ehrlich erklärt.",
     "excerpt": "Die Flecken sehen dramatischer aus, als sie sind. Was beim Schröpfen im Gewebe passiert, was die Methode kann und was sie nicht ist.",
     "category": "Therapien verstehen",
