@@ -1,12 +1,13 @@
 ---
-// /akupunktur-tcm-st-gallen/ — kommerzielle St.-Gallen-Landingpage (eine Praxis am Oberen Graben).
-// Generische Stadt-Intents landen hier, hyperlokale Intents auf der Standortseite /standorte/st-gallen/.
+// /akupunktur-tcm-st-gallen/ — SECONDARY_SUPPORT St. Gallen (Behandlung/Ablauf/Orientierung).
+// PRIMARY_OWNER der Stadt-Intents (TCM/Akupunktur St. Gallen) ist per GSC-Evidenz /standorte/st-gallen/
+// (Ownership-Cleanup 23.09.2026); diese Seite stützt Commercial-Investigation und verlinkt dorthin.
 export const prerender = true;
 import SpaPage from '../layouts/SpaPage.astro';
 import body from '../data/akupunktur-tcm-st-gallen-body.html?raw';
 
 const url = 'https://tcm.ch/akupunktur-tcm-st-gallen/';
-const title = 'Akupunktur & TCM St. Gallen | Krankenkasse anerkannt | TCM.ch';
+const title = 'Akupunktur & TCM in St. Gallen: Behandlung, Ablauf & Orientierung | TCM.ch';
 const description =
   'Akupunktur & TCM in St. Gallen, zentral am Oberen Graben. EMR/ASCA-anerkannt, Zusatzversicherung zahlt 80–100%. Termin oft in 24h.';
 
