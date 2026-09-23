@@ -11,7 +11,6 @@ export const site = {
 
 // The 14 TCM.ch clinics (id = DE SPA standort slug, label = display name).
 export const standorte = [
-  { id: 'zuerich-bellevue', label: 'Zürich Bellevue' },
   { id: 'zuerich-hoengg', label: 'Zürich Höngg' },
   { id: 'zuerich-oerlikon', label: 'Zürich Oerlikon' },
   { id: 'winterthur-marktgasse', label: 'Winterthur Marktgasse' },

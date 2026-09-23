@@ -42,7 +42,7 @@ Three things matter when choosing:
 
 We run clinics across the German-speaking part of Switzerland, with the strongest English-speaking presence in the larger centres:
 
-- **Zürich** has the most options, with clinics in [Zürich Bellevue](/en/locations/zuerich-bellevue), [Zürich Höngg](/en/locations/zuerich-hoengg) and [Zürich Oerlikon](/en/locations/zuerich-oerlikon). The city's large international community means English-speaking care is the norm here.
+- **Zürich** has the most options, with clinics in [Zürich Höngg](/en/locations/zuerich-hoengg) and [Zürich Oerlikon](/en/locations/zuerich-oerlikon). The city's large international community means English-speaking care is the norm here.
 - **Basel**, another expat-heavy city, is served by our [Basel clinic](/en/locations/basel).
 - **Winterthur, St. Gallen and the wider region** are covered too. You can see the full list on our [locations page](/en/locations/).
 

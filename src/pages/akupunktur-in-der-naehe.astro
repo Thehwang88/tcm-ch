@@ -14,7 +14,7 @@ const description =
 
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
-  'zuerich-bellevue': 'City / Bellevue · ab 01.10.2026', 'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Zürich Nord',
+   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Zürich Nord',
   'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Nahe Bahnhof', 'volketswil': 'Zürcher Oberland',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
@@ -23,7 +23,7 @@ const desc: Record<string, string> = {
 
 // Regionen-Gruppierung (crawlbare Karten, keine div-onclick).
 const groups = [
-  { label: 'Region Zürich & Winterthur', ids: ['zuerich-bellevue', 'zuerich-hoengg', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
+  { label: 'Region Zürich & Winterthur', ids: ['zuerich-hoengg', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
   { label: 'Ostschweiz & Bodensee', ids: ['st-gallen', 'frauenfeld', 'kreuzlingen', 'wil', 'rorschach', 'bottighofen'] },
   { label: 'Basel & Nordwestschweiz', ids: ['basel'] },
   { label: 'Zentralschweiz', ids: ['luzern'] },

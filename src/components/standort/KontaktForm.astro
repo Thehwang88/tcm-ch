@@ -6,7 +6,7 @@ const wa = waHref(data.nap.telefon);
 const tel = telHref(data.nap.telefon);
 // Standort <select>: preselect the option matching this location (prefix match, so
 // "Winterthur Marktgasse" -> "Winterthur"), mirroring prefillStandort().
-const options = ['Zürich Bellevue', 'Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Andere / in meiner Nähe'];
+const options = ['Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Andere / in meiner Nähe'];
 let selIdx = -1;
 options.forEach((t, i) => { if (selIdx < 0 && (data.stadt === t || data.stadt.startsWith(t))) selIdx = i; });
 ---

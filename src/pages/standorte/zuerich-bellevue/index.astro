@@ -1,137 +1,46 @@
 ---
-// /standorte/zuerich-bellevue/ - TCM.ch Zürich Bellevue, unser erster City Pop-up.
-// Start: 1. Oktober 2026, Rössligasse 8, 8001 Zürich (bei Élu Cosmetics).
-// Aktuell ein Behandlungsraum; Team: Brenda Oviedo, Seongsu Kim, Simon Stüve.
+// /standorte/zuerich-bellevue/ - neutrale "Neuer Standort in Vorbereitung"-Seite.
 //
-// Mobile-first-Aufbau (Conversion-Reihenfolge): Hero mit kompaktem Terminformular
-// → Trust → Lage → Team → City-Pop-up-Story (EINE Section, zusammengeführt) →
-// Beschwerden (mobil 4 sichtbar + "Weitere anzeigen") → Methoden (mobil 3 Kern-
-// Methoden + Netzwerk-Rest einklappbar) → Ablauf (mobil kompakt) → Krankenkasse
-// (Kurzfassung sichtbar, Details einklappbar) → FAQ (accordion) → Zürich-Routing
-// → volle KontaktForm → End-CTA. Alle eingeklappten Inhalte sind server-gerendert
-// im DOM (kein Lazy-Load von SEO-Copy); Buttons mit aria-expanded/aria-controls.
+// Der frühere Standort-Setup (Raumpartner, Adresse, Eröffnungsdatum, Visuals,
+// Team-Zuordnung, Bellevue-Buchung) wurde vollständig entfernt: Es gibt aktuell
+// KEINE bestätigte Adresse im Zürcher Zentrum. Die URL bleibt bestehen (SEO),
+// die Seite kommuniziert nur: neuer Standort im Zürcher Zentrum in Vorbereitung,
+// Termine ab sofort an den bestehenden Zürcher Standorten (Oerlikon, Höngg).
 //
-// Conversion-Logik: Bellevue ist die Location, Zürich der Funnel. quelle=
-// termin-zuerich-bellevue, typ=termin → /api/anfrage. Kein Wochentag wird als
-// Conversion-Blocker kommuniziert; Routing über das Zürcher Netz.
-//
-// Verifizierte Daten: Name, Adresse, Startdatum 01.10.2026 (Behandlungstag intern: Montag),
-// Raumpartner Élu Cosmetics, Therapeutin Brenda Oviedo (src/data/therapeuten.ts).
-// KEINE erfundenen Öffnungszeiten-Uhrzeiten, Gehminuten, Parkplätze oder
-// Anerkennungs-Claims für Brenda. Methoden bleiben als Netzwerk-Angebot gerahmt,
-// keine Bellevue-spezifische Verfügbarkeits-Behauptung.
-//
-// Intent-Ownership: Bellevue/Kreis-1-Intents. Breites "TCM/Akupunktur Zürich"
-// bleibt bei /akupunktur-tcm-zuerich/ (Hub); /standorte/zuerich-city/ ist eine
-// schmale City/Zentrum-Intent-Seite, die hierher routet (seo/master-keyword-url-map.csv).
+// Kein MedicalClinic-/LocalBusiness-Schema (keine physische Adresse publizieren),
+// nur WebPage + Breadcrumb. Kein Bellevue-Standort mehr in Formularen/Datenquellen
+// (locations.ts, zuerich-termin.ts, KontaktForm, TerminForm).
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
-import StickyCta from '../../../components/StickyCta.astro';
-import { symptomCards } from '../../../data/symptom-cards';
-import { therapyCards } from '../../../data/therapy-cards';
-import { therapeuten, teamCardHtml } from '../../../data/therapeuten';
-import { ZH_FLEXIBEL, zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../../../data/zuerich-termin';
 import KontaktForm from '../../../components/standort/KontaktForm.astro';
 import type { Standort } from '../../../data/standorte';
 
-// Minimales Standort-Objekt für die zentrale KontaktForm (Bellevue hat keinen
-// standorte.ts-Eintrag): stadt steuert Headline + Standort-Vorauswahl im Select,
-// nap füttert WhatsApp/Telefon/E-Mail (Werte wie in locations.ts). Submit läuft
-// über den bestehenden data-contact-form-Handler (public/home.js →
-// submitInlineFormGeneric → /api/anfrage, quelle=Pfad, GA4 formular_senden).
-const kontaktData = { stadt: 'Zürich Bellevue', nap: { telefon: '+41 77 523 61 22', email: 'termine@tcm.ch' } } as unknown as Standort;
+// KontaktForm ohne Standort-Vorauswahl: stadt 'Zürich' matcht keine Option,
+// Leads wählen einen bestehenden Standort oder "Andere / in meiner Nähe".
+const kontaktData = { stadt: 'Zürich', nap: { telefon: '+41 77 523 61 22', email: 'termine@tcm.ch' } } as unknown as Standort;
 
 const url = 'https://tcm.ch/standorte/zuerich-bellevue/';
-const title = 'TCM & Akupunktur Zürich Bellevue - City Pop-up | TCM.ch';
+const title = 'TCM Zürich City - Neuer Standort in Vorbereitung | TCM.ch';
 const description =
-  'TCM und Akupunktur mitten in Zürich: TCM.ch Zürich Bellevue startet am 1. Oktober 2026 als City Pop-up an der Rössligasse 8, bei Élu Cosmetics. Jetzt Termin in Zürich finden.';
+  'TCM.ch bereitet einen neuen Standort im Zürcher Zentrum vor. Bereits jetzt Termine an unseren bestehenden Zürcher Standorten anfragen.';
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 
-// Team = alle Therapeut:innen mit standorte ∋ 'zuerich-bellevue' (src/data/therapeuten.ts).
-// Reihenfolge: Brenda (Hauptansprechpartnerin vor Ort) zuerst; weitere Bellevue-Einträge danach.
-const TEAM_REIHENFOLGE = ['brenda-oviedo', 'seongsu-kim', 'simon-stueve'];
-const teamRank = (slug: string) => { const i = TEAM_REIHENFOLGE.indexOf(slug); return i < 0 ? 99 : i; };
-const teamCards = therapeuten
-  .filter((t) => t.standorte?.includes('zuerich-bellevue'))
-  .sort((a, b) => teamRank(a.slug) - teamRank(b.slug))
-  .map(teamCardHtml)
-  .join('');
-
-// Terminpräferenz: aktuell anfragbare Zürcher Standorte aus locations.ts + flexible Schluss-Option.
-const zhOptions = zhStandortOptionsHtml('Zürich Bellevue') +
-  `<option value="${ZH_FLEXIBEL.value}" data-zh-last>${ZH_FLEXIBEL.label}</option>`;
-
-// Mobil sichtbar: die 4 häufigsten Anliegen; Rest hinter "Weitere Beschwerden anzeigen"
-// (BESW_VISIBLE). Desktop zeigt alle 8. Inhalte sind immer server-gerendert.
-const BESW_VISIBLE = 4;
-const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen', schlafstoerungen: 'schlafprobleme' };
-const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'heuschnupfen']
-  .map((slug) => ({ slug, href: beschwerdenHref[slug] ?? slug, c: symptomCards[slug] }))
-  .filter((x) => x.c);
-const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${name}`;
-
-// Kern-Methoden zuerst (mobil sichtbar), weitere Netzwerk-Methoden dahinter
-// (THER_VISIBLE). Framing bleibt "im Netzwerk" - keine Bellevue-Verfügbarkeits-Claims.
-const THER_VISIBLE = 4;
-const therapien = ['akupunktur', 'akupressur', 'tuina', 'gesichtsakupunktur', 'schroepfen', 'shiatsu', 'gua-sha', 'physiotherapie']
-  .map((slug) => ({ slug, c: therapyCards[slug], tagline: therapyCards[slug]?.tagline }))
-  .filter((x) => x.c);
-
-// Das Zürcher Netz rund um Bellevue.
-const nearby = [
+const standorte = [
   { slug: 'zuerich-oerlikon', city: 'Zürich Oerlikon', meta: '8050', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
   { slug: 'zuerich-hoengg', city: 'Zürich Höngg', meta: '8049', desc: 'Limmattalstrasse 340, im Westen der Stadt.' },
-  { slug: 'winterthur-muenzgasse', city: 'Winterthur Münzgasse', meta: '8400', desc: 'Münzgasse 2, nahe Zürich.' },
-];
-
-const faqs = [
-  {
-    q: 'Wo genau seid ihr am Bellevue?',
-    a: 'An der Rössligasse 8, 8001 Zürich, in den Räumlichkeiten von Élu Cosmetics - mitten in der Altstadt, wenige Schritte vom Bellevueplatz und nahe beim Bahnhof Stadelhofen.',
-  },
-  {
-    q: 'Wann startet der Standort?',
-    a: 'TCM.ch Zürich Bellevue startet am 1. Oktober 2026. Termine kannst du ab sofort anfragen - wir bestätigen dir deinen Termin, sobald die Agenda steht.',
-  },
-  {
-    q: 'Was, wenn am Bellevue gerade kein Termin frei ist?',
-    a: 'Kein passender Termin am Bellevue? Wir finden gerne einen passenden Termin an unseren weiteren Zürcher Standorten in Oerlikon und Höngg - du sagst uns einfach, wann es dir passt.',
-  },
-  {
-    q: 'Was heisst City Pop-up?',
-    a: 'Ein bewusst kompakter TCM.ch-Standort mitten in der Stadt: ein Behandlungsraum, eine feste Therapeutin, die gleiche medizinische Sorgfalt wie an unseren grösseren Praxen. So können wir den Standort persönlich aufbauen und das Angebot Schritt für Schritt erweitern.',
-  },
-  {
-    q: 'Was kostet Akupunktur bei euch?',
-    a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger und liegt entsprechend höher. Alle Details stehen auf der Seite Akupunktur-Kosten in Zürich.',
-  },
-  {
-    q: 'Zahlt die Krankenkasse die Behandlung?',
-    a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Ob und in welchem Umfang deine Police die Behandlung deckt, prüfen wir kostenlos, bevor Kosten entstehen.',
-  },
-  {
-    q: 'Ist Bellevue euer Standort für Zürich City?',
-    a: 'Ja. TCM.ch Zürich Bellevue an der Rössligasse 8 ist unser Standort mitten in Zürich City, im Kreis 1 zwischen Bellevueplatz, See und Altstadt. Wer im Zentrum arbeitet oder wohnt, ist hier am schnellsten bei uns.',
-  },
 ];
 
 const schema = [
   {
     '@context': 'https://schema.org',
-    '@type': 'MedicalClinic',
-    name: 'TCM.ch Zürich Bellevue',
+    '@type': 'WebPage',
+    name: title,
+    description,
     url,
-    image: 'https://tcm.ch/og-image.jpg',
-    medicalSpecialty: ['TraditionalChineseMedicine', 'Acupuncture'],
-    telephone: '+41775236122',
-    email: 'termine@tcm.ch',
-    foundingDate: '2026-10-01',
-    address: { '@type': 'PostalAddress', streetAddress: 'Rössligasse 8', postalCode: '8001', addressLocality: 'Zürich', addressRegion: 'ZH', addressCountry: 'CH' },
-    // Nur der bestätigte Behandlungstag (Montag) - Uhrzeiten folgen, sobald fix.
-    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: 'https://schema.org/Monday' }],
-    parentOrganization: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
   },
   {
     '@context': 'https://schema.org',
@@ -139,443 +48,81 @@ const schema = [
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
       { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
-      { '@type': 'ListItem', position: 3, name: 'Zürich Bellevue', item: url },
+      { '@type': 'ListItem', position: 3, name: 'Zürich City', item: url },
     ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    '@id': url + '#faq',
-    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   },
 ];
 ---
 <SpaPage title={title} description={description} path="/standorte/zuerich-bellevue" body="" schema={schema}>
 
   <!-- ── HERO ── -->
-  <section class="lu-hero">
-    <div class="lu-hero-inner">
-      <div class="lu-hero-copy">
-        <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Zürich Bellevue</span></div>
-        <span class="lu-badge">City Pop-up · Neu ab 1. Oktober 2026</span>
-        <h1 class="lu-h1">TCM &amp; Akupunktur in <span class="lu-accent">Zürich Bellevue</span></h1>
-        <p class="lu-sub">Unser erster City Pop-up im Herzen von Zürich: TCM.ch Zürich Bellevue startet am 1. Oktober 2026 an der Rössligasse 8, wenige Schritte vom Bellevue. Termine gibt es am Bellevue sowie an unseren weiteren Zürcher Standorten - wir finden den passenden Termin für dich.</p>
-        <div class="lu-cta-row">
-          <a href="#termin" class="lu-btn-primary">Termin in Zürich finden</a>
-          <a href="#lage" class="lu-btn-ghost">Standort ansehen</a>
-        </div>
-        <div class="lu-trust">
-          <div><span class="lu-check">✓</span> EMR- und ASCA-anerkannt</div>
-          <div><span class="lu-check">✓</span> Krankenkasse 80 bis 100%</div>
-          <div><span class="lu-check">✓</span> Keine Überweisung nötig</div>
-        </div>
+  <section class="zc-hero">
+    <div class="zc-hero-inner">
+      <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Zürich City</span></div>
+      <span class="zc-badge">Neuer Standort in Vorbereitung</span>
+      <h1 class="zc-h1">TCM.ch <span class="zc-accent">Zürich City</span></h1>
+      <p class="zc-sub">Wir bereiten aktuell einen neuen TCM.ch Standort im Zürcher Zentrum vor. Weitere Informationen zur Adresse und Eröffnung folgen in Kürze. Bereits jetzt kannst du einen Termin an einem unserer bestehenden Zürcher Standorte anfragen.</p>
+      <div class="zc-cta-row">
+        <a href="#kontakt" class="zc-btn-primary">Termin in Zürich finden</a>
+        <a href="/akupunktur-tcm-zuerich/" class="zc-btn-ghost">Unsere Zürcher Standorte</a>
       </div>
-
-      <div class="lu-hero-visual">
-        <div class="lu-card" id="termin" style="scroll-margin-top:88px">
-          <div class="lu-ribbon">NEU</div>
-          <div class="lu-card-h">Dein <span class="lu-accent">Termin in Zürich</span></div>
-          <p class="lu-note" style="margin-bottom:14px">Sag uns, wie wir dich erreichen und wo es dir passt. Wir melden uns mit passenden Terminvorschlägen - am Bellevue oder an einem unserer weiteren Zürcher Standorte.</p>
-          <div class="lu-divider"></div>
-          <form class="lu-wl-form" data-lu-termin novalidate>
-            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
-            <input name="name" type="text" autocomplete="name" required placeholder="Vor- und Nachname" aria-label="Name" />
-            <input name="telefon" type="tel" autocomplete="tel" required placeholder="Telefonnummer" aria-label="Telefonnummer" />
-            <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
-            <label class="lu-select-label" for="lu-standort">Terminpräferenz</label>
-            <select name="standort" id="lu-standort" aria-label="Terminpräferenz" data-zh-termin={zhTerminData()} set:html={zhOptions}></select>
-            <Fragment set:html={zhTerminScript} />
-            <div class="cf-turnstile lu-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
-            <button type="submit">Termin anfragen</button>
-            <p class="lu-form-rule">Unverbindliche Anfrage. Keine Werbung, keine Weitergabe.</p>
-            <p class="lu-form-err" role="alert" hidden></p>
-          </form>
-        </div>
+      <div class="zc-trust">
+        <div><span class="zc-check">✓</span> EMR- und ASCA-anerkannt</div>
+        <div><span class="zc-check">✓</span> Krankenkasse 80 bis 100%</div>
+        <div><span class="zc-check">✓</span> Keine Überweisung nötig</div>
       </div>
     </div>
   </section>
 
-  <!-- ── TRUST-BAND ── -->
-  <section class="usp-grid-section" style="background:#fff;padding:48px 0;border-bottom:1px solid var(--border)">
-    <div class="wrap"><div class="usp-grid">
-      <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg></div>
-        <div class="usp-title">Krankenkassen-anerkannt</div>
-        <div class="usp-sub">EMR und ASCA, Abrechnung über die Zusatzversicherung.</div>
-      </div>
-      <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
-        <div class="usp-title">Rössligasse 8, 8001 Zürich</div>
-        <div class="usp-sub">Bei Élu Cosmetics, mitten im Kreis 1 beim Bellevue.</div>
-      </div>
-      <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-        <div class="usp-title">Start: 1. Oktober 2026</div>
-        <div class="usp-sub">Termine an allen verfügbaren Tagen über unser Zürcher Standortnetz.</div>
-      </div>
-      <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-        <div class="usp-title">Keine Überweisung nötig</div>
-        <div class="usp-sub">Du meldest dich direkt bei uns.</div>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- ── LAGE / ANREISE ── -->
-  <section class="section" id="lage" style="background:var(--surface);scroll-margin-top:68px">
-    <div class="wrap" style="max-width:820px">
-      <div class="section-label">Lage &amp; Anreise</div>
-      <h2 class="section-title">Kreis 1, beim <em>Bellevue.</em></h2>
-      <p class="section-sub">Unser City-Pop-up befindet sich in den Räumlichkeiten von Élu Cosmetics an der Rössligasse 8 - wenige Schritte vom Bellevueplatz, nahe beim Bahnhof Zürich Stadelhofen. Mit Tram und S-Bahn bestens angebunden.</p>
-      <!-- Bellevue-Webvisuals (final): Figure-Pattern wie UeberPraxis.astro (Oerlikon),
-           aber ohne object-fit-Crop – native Seitenverhältnisse. <picture> lädt nur
-           die passende Variante (Portrait ≤767px, Landscape ab 768px). -->
-      <figure style="margin:24px 0 0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md)">
-        <picture>
-          <source media="(max-width: 767px)" srcset="/images/standort-zuerich-bellevue-mobile.webp" width="941" height="1672" />
-          <img src="/images/standort-zuerich-bellevue-desktop.webp" alt="TCM.ch Zürich Bellevue City Pop-up im Zürcher Zentrum" width="1672" height="941" loading="lazy" decoding="async" style="width:100%;height:auto;display:block" />
-        </picture>
-      </figure>
-      <div style="margin-top:24px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 24px">
-        <div style="font-weight:800;font-family:var(--font-sans);letter-spacing:-.01em;margin-bottom:6px">TCM.ch Zürich Bellevue</div>
-        <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0">bei Élu Cosmetics<br>Rössligasse 8, 8001 Zürich</p>
-        <div style="height:1px;background:var(--border);margin:16px 0"></div>
-        <p style="font-size:15px;line-height:1.7;color:var(--mid);margin:0"><strong style="color:var(--charcoal)">Kein passender Termin am Bellevue?</strong><br>Wir finden gerne einen passenden Termin an einem unserer Zürcher Standorte.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── TEAM ── -->
+  <!-- ── BESTEHENDE ZÜRCHER STANDORTE ── -->
   <section class="section">
-    <div class="wrap">
-      <div class="section-label">Team</div>
-      <h2 class="section-title">Unser Team in <em>Zürich Bellevue</em></h2>
-      <p class="section-sub" style="max-width:72ch">Bellevue startet bewusst klein und persönlich, mit Brenda Oviedo als Ansprechpartnerin vor Ort. Unser Zürcher Team behandelt je nach Termin und Verfügbarkeit am Bellevue sowie an unseren weiteren Zürcher Standorten.</p>
-      <div class="team-grid" style="margin-top:28px" set:html={teamCards}></div>
-    </div>
-  </section>
-
-  <!-- ── CITY-POP-UP (zusammengeführt: Intro + "Klein gestartet") ── -->
-  <section class="section" style="background:var(--surface)">
     <div class="wrap" style="max-width:820px">
-      <div class="section-label">City Pop-up</div>
-      <h2 class="section-title">Unser erster <em>City Pop-up</em> im Herzen von Zürich.</h2>
-      <p class="section-sub">Am 1. Oktober 2026 startet TCM.ch Zürich Bellevue an der Rössligasse 8, in den Räumlichkeiten von Élu Cosmetics - mitten im Kreis 1, wenige Schritte vom Bellevueplatz.</p>
-      <p style="margin-top:16px">Bewusst kompakt: ein Behandlungsraum, eine feste Ansprechpartnerin vor Ort - und die gleiche medizinische Sorgfalt wie an unseren grösseren Praxen, mit viel Zeit pro Termin, klarer Diagnostik und ehrlicher Einschätzung. Was als kleiner City-Pop-up startet, kann mit der Nachfrage wachsen.</p>
-      <p style="margin-top:16px">Bellevue ist Teil unseres Zürcher Standortnetzes für <a href="/akupunktur-tcm-zuerich/">Akupunktur &amp; TCM in Zürich</a>, neben <a href="/standorte/zuerich-oerlikon/">Oerlikon</a> und <a href="/standorte/zuerich-hoengg/">Höngg</a>. Passt es am Bellevue gerade nicht, finden wir deinen Termin an einem anderen Zürcher Standort. Was eine Sitzung kostet, steht unter <a href="/standorte/zuerich/kosten/">Akupunktur-Kosten in Zürich</a>.</p>
-    </div>
-  </section>
-
-  <!-- ── BESCHWERDEN (mobil: 4 sichtbar + Weitere anzeigen) ── -->
-  <section class="section">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="section-label">Beschwerden</div>
-        <h2 class="section-title">Beschwerden, bei denen wir am <em>Bellevue</em> häufig helfen</h2>
-        <p class="section-sub">Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.</p>
-      </div>
-      <div class="card-grid reveal mob-collapsed" id="besw-grid">
-        {beschwerden.map(({ href, c }, i) => (
-          <a href={`/beschwerden/${href}/`} class={`svc-card reveal${i >= BESW_VISIBLE ? ' mob-extra' : ''}`}><div class="svc-photo-top-bar"></div><div class="svc-photo-wrap"><img loading="lazy" decoding="async" src={c.img} alt={`${c.name} mit TCM behandeln in Zürich`} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div><div class="svc-body"><div class="svc-name">{anchor(i, c.name)}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
-        ))}
-      </div>
-      <div style="text-align:center;margin-top:20px">
-        <button type="button" class="btn-secondary mob-more-btn" data-more-target="besw-grid" aria-expanded="false" aria-controls="besw-grid">Weitere Beschwerden anzeigen</button>
-        <a href="/beschwerden/" class="btn-secondary besw-all" style="display:inline-flex">Alle Beschwerden ansehen →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── THERAPIEN (mobil: Kern-Methoden + Netzwerk-Rest einklappbar) ── -->
-  <section class="section svc-section" style="background:var(--surface)">
-    <div class="wrap">
-      <div class="svc-header reveal">
-        <div>
-          <div class="section-label">Therapien</div>
-          <h2 class="section-title">Unsere <em>Methoden</em> im Netzwerk</h2>
-        </div>
-        <p class="svc-sub">Diese Methoden bietet TCM.ch an seinen Standorten an. Am Bellevue starten wir bewusst kompakt - was dort nicht angeboten wird, findest du an unseren weiteren Zürcher Standorten.</p>
-      </div>
-      <div class="svc-grid mob-collapsed" id="ther-grid">
-        {therapien.map(({ slug, c, tagline }, i) => (
-          <a href={`/therapien/${slug}/`} class={`svc-card reveal${i >= THER_VISIBLE ? ' mob-extra' : ''}`}> <div class="svc-photo-wrap"> <img width={c.w} height={c.h} src={c.img} alt={`${c.name} bei TCM.ch`} class="svc-photo" loading="lazy" style={`object-position:${c.objectPos}`}> <div class="svc-photo-top-bar"></div> </div> <div class="svc-body"> <div class="svc-name">{c.name}</div> <div class="svc-tagline">{tagline}</div> <div class="svc-meta"> <span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>{c.time}</span> <span class="svc-badge svc-badge--ins">{c.ins}</span> </div> <div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div> </div> </a>
-        ))}
-      </div>
-      <div style="margin-top:18px">
-        <button type="button" class="btn-secondary mob-more-btn" data-more-target="ther-grid" data-label-less="Weniger Methoden anzeigen" aria-expanded="false" aria-controls="ther-grid">Weitere Methoden anzeigen</button>
-      </div>
-      <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot und Preise stehen auf der Seite <a href="/massage-zuerich/" style="color:var(--blue);font-weight:700">Massage in Zürich</a>.</p>
-    </div>
-  </section>
-
-  <!-- ── ABLAUF (mobil kompakter Stepper) ── -->
-  <section class="section" id="ablauf">
-    <div class="wrap">
-      <div class="section-label">Ablauf</div>
-      <h2 class="section-title">Erstgespräch → Behandlungsplan → Folgetermine</h2>
-      <p class="section-sub">So läuft es an allen unseren Standorten ab - auch am Bellevue.</p>
-      <div class="usp-grid ablauf-grid" style="margin-top:28px">
-        <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">1</div>
-          <div class="usp-title">Erstgespräch &amp; Anamnese, 60 Minuten</div>
-          <div class="usp-sub">Wir hören zu, schauen Vorbefunde an und machen die TCM-Diagnostik. Eine erste Behandlung ist meist schon dabei.</div>
-        </div>
-        <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">2</div>
-          <div class="usp-title">Behandlungsplan</div>
-          <div class="usp-sub">Du bekommst eine konkrete Einschätzung: welche Methoden, wie viele Sitzungen, in welchem Abstand und was das kostet.</div>
-        </div>
-        <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">3</div>
-          <div class="usp-title">Folgetermine</div>
-          <div class="usp-sub">Meist 45 bis 60 Minuten, anfangs wöchentlich. Nach vier bis sechs Sitzungen schauen wir gemeinsam, ob es wirkt.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── KRANKENKASSE (Kurzfassung sichtbar, Details mobil einklappbar) ── -->
-  <section class="section" style="background:var(--surface)">
-    <div class="wrap" style="max-width:820px">
-      <div class="section-label">Krankenkasse</div>
-      <h2 class="section-title">Was die <em>Zusatzversicherung</em> übernimmt.</h2>
-      <p>Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin - bei den meisten Kassen sind damit <strong>80 bis 100 Prozent</strong> gedeckt. Deine Deckung prüfen wir kostenlos, bevor Kosten entstehen. Details: <a href="/standorte/zuerich/kosten/">Akupunktur-Kosten in Zürich</a> und <a href="/krankenkassen/">Krankenkasse</a>.</p>
-      <div id="kk-details" class="mob-collapsed">
-        <p class="mob-extra" style="margin-top:16px">Wichtig zur Abrechnung: Akupunktur bei Therapeut:innen läuft nicht über die Grundversicherung. Damit deine Kasse mitzahlt, muss die behandelnde Person in den Registern <strong>EMR</strong> bzw. <strong>ASCA</strong> anerkannt sein. Wie viel übernommen wird, hängt von Modell und Jahreslimite ab - verbindlich ist immer deine Police.</p>
-      </div>
-      <div style="margin-top:14px">
-        <button type="button" class="btn-secondary mob-more-btn" data-more-target="kk-details" aria-expanded="false" aria-controls="kk-details">Details zur Kostenübernahme anzeigen</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FAQ ── -->
-  <section class="section">
-    <div class="wrap reveal" style="max-width:820px">
-      <div class="section-label">Häufige Fragen</div>
-      <h2 class="section-title" style="margin-bottom:24px">FAQ zu <em>TCM &amp; Akupunktur am Bellevue</em></h2>
-      <div class="faq-list">
-        {faqs.map((f) => (
-          <details class="faq-item" style="border-bottom:1px solid var(--border);padding:18px 0">
-            <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--blue)">+</span></summary>
-            <div style="padding-top:14px;font-size:15px;line-height:1.7;color:var(--mid)">{f.a}</div>
-          </details>
-        ))}
-      </div>
-      <div class="cl-links" style="margin-top:26px">
-        <a href="/akupunktur-tcm-zuerich/" class="cl-chip">TCM Zürich</a>
-        <a href="/standorte/zuerich/kosten/" class="cl-chip">Kosten &amp; Krankenkasse Zürich</a>
-        <a href="/therapien/akupunktur/" class="cl-chip">Akupunktur</a>
-        <a href="/therapien/akupressur/" class="cl-chip">Akupressur</a>
-        <a href="/massage-zuerich/" class="cl-chip">Massage Zürich</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ZÜRICH-ROUTING / PRAXEN IN DER NÄHE (sichtbar, conversion-kritisch) ── -->
-  <section class="related-section" style="background:#fff">
-    <div class="wrap">
-      <div class="section-label">Weitere Standorte</div>
-      <h2 class="section-title">TCM.ch in <em>Zürich</em></h2>
-      <p class="section-sub"><strong>Kein passender Termin am Bellevue?</strong> Wir finden gerne einen passenden Termin an einem unserer Zürcher Standorte - oder du sicherst dir direkt den <a href="#termin">nächsten freien Termin in Zürich</a>. Den Überblick gibt die Seite <a href="/akupunktur-tcm-zuerich/">Akupunktur &amp; TCM in Zürich</a>.</p>
-      <div class="city-grid reveal">
-        {nearby.map((n) => (
-          <a href={`/standorte/${n.slug}/`} class="city-card location-card"><span class="location-plz">{n.meta}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Standort ansehen →</span></a>
+      <div class="section-label">Schon heute für dich da</div>
+      <h2 class="section-title">Unsere <em>Zürcher Standorte.</em></h2>
+      <p class="section-sub">Bis der neue Standort im Zentrum eröffnet, behandeln wir dich an unseren bestehenden Zürcher Praxen - oder wir finden den nächsten freien Termin für dich. Den Überblick gibt die Seite <a href="/akupunktur-tcm-zuerich/">Akupunktur &amp; TCM in Zürich</a>, Preise stehen unter <a href="/standorte/zuerich/kosten/">Akupunktur-Kosten in Zürich</a>.</p>
+      <div class="city-grid reveal" style="margin-top:28px;grid-template-columns:repeat(2,1fr)">
+        {standorte.map((n) => (
+          <a href={`/standorte/${n.slug}/`} class="city-card location-card"><span class="location-plz">{n.meta}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Termin prüfen →</span></a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ── KONTAKT / TERMINANFRAGE (zentrale Komponente wie St. Gallen/Oerlikon) ── -->
+  <!-- ── KONTAKT / TERMINANFRAGE (zentrale Komponente, ohne Standort-Vorauswahl) ── -->
   <KontaktForm data={kontaktData} sitekey={turnstileSitekey} />
 
-  <!-- ── END-CTA ── -->
-  <section class="cta-band" style="background:var(--blue);padding:48px 0">
-    <div class="wrap" style="text-align:center">
-      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Dein Termin in Zürich</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Am Bellevue oder an einem unserer weiteren Zürcher Standorte - sag uns, wann es dir passt, wir finden den passenden Termin.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn-white" href="#termin" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin in Zürich finden</a>
-        <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20%28Bellevue%29." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">Per WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mobile Sticky-CTA (bestehende Komponente; SG-Pattern: erscheint erst,
-       wenn der Hero samt Hero-CTA aus dem Viewport gescrollt ist) -->
-  <StickyCta prefill="Hallo, ich möchte einen Termin in Zürich (Bellevue) anfragen." formTarget="#termin" heroSelector=".lu-hero" />
-
 <style>
-  .svc-card, .kt-feature, .city-card { text-decoration: none; color: inherit; }
-
-  /* ── Progressive Disclosure (nur mobil): .mob-extra-Elemente sind server-
-     gerendert und auf Desktop immer sichtbar; unter 768px blendet .mob-collapsed
-     sie aus, bis der zugehörige "Weitere anzeigen"-Button (nur mobil sichtbar)
-     die Klasse entfernt. Kein Lazy-Load, keine Layout-Shifts beim Initial-Render. */
-  .mob-more-btn { display: none; }
-  @media (max-width: 767px) {
-    .mob-more-btn {
-      display: inline-flex; width: 100%; max-width: 100%; justify-content: center;
-      white-space: normal; text-align: center; box-sizing: border-box;
-    }
-    .mob-collapsed .mob-extra { display: none !important; }
-    /* Eingeklappt nur EIN CTA: der "Alle Beschwerden"-Link erscheint erst nach
-       dem Aufklappen (Link bleibt im HTML → crawlbar). */
-    .mob-collapsed + div .besw-all { display: none !important; }
-  }
-
-  /* ── Mobiler Seitenrhythmus: engere Section-Abstände + kompakter Ablauf ── */
-  @media (max-width: 767px) {
-    .section, .related-section { padding: 52px 0; }
-    .section-sub { margin-bottom: 0; }
-    .ablauf-grid { gap: 10px; }
-    .ablauf-grid .usp-card { padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; }
-    .ablauf-grid .usp-icon { flex-shrink: 0; margin-bottom: 0; }
-  }
-
-  /* Hero-Styles wie /standorte/basel/ bzw. /standorte/luzern/ (1:1 nach
-     HeroLaunchSG.astro), Astro scoped die Regeln auf diese Seite. */
-  .lu-hero { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
-  .lu-hero-inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 56px); align-items: center;
-  }
-  @media (max-width: 900px) { .lu-hero-inner { grid-template-columns: 1fr; gap: 32px; } }
-
-  .lu-badge {
+  .city-card { text-decoration: none; color: inherit; }
+  .zc-hero { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
+  .zc-hero-inner { max-width: 860px; margin: 0 auto; padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px); }
+  .zc-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--blue-light); color: var(--blue-dark); border: 1px solid rgba(45, 155, 111, .18);
     padding: 6px 13px; border-radius: var(--r-pill);
     font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
   }
-  .lu-h1 {
-    font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800;
-    margin: 18px 0 14px; color: var(--charcoal);
+  .zc-h1 { font-size: clamp(2.1rem, 5.2vw, 3.2rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800; margin: 18px 0 14px; }
+  .zc-accent { color: var(--blue); }
+  .zc-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 62ch; line-height: 1.6; }
+  .zc-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .zc-btn-primary {
+    background: var(--blue); color: #fff; text-decoration: none;
+    padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700; box-shadow: var(--sh-btn);
   }
-  .lu-accent { color: var(--blue); }
-  .lu-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 44ch; line-height: 1.55; }
-
-  .lu-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-  .lu-btn-primary {
-    background: var(--blue); color: #fff; border: none; text-decoration: none;
-    padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700;
-    box-shadow: var(--sh-btn); transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
-  }
-  .lu-btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
-  .lu-btn-ghost {
+  .zc-btn-primary:hover { background: var(--blue-dark); }
+  .zc-btn-ghost {
     background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
     padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
   }
-  .lu-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
-
-  .lu-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
-  .lu-trust div { display: flex; align-items: center; gap: 7px; }
-  .lu-check { color: var(--blue); font-weight: 800; }
-
-  .lu-card {
-    position: relative; overflow: hidden;
-    background: linear-gradient(160deg, #ffffff, #f2f5f0);
-    border: 1px solid rgba(18, 33, 28, .08); border-radius: var(--r-hero);
-    padding: 32px; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .18);
-  }
-  .lu-ribbon {
-    position: absolute; top: 16px; right: -42px;
-    background: #FFC107; color: #2a2109; font-weight: 800; font-size: 11.5px; letter-spacing: .08em;
-    padding: 6px 48px; transform: rotate(45deg); box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .3);
-  }
-  .lu-card-h { font-size: clamp(1.4rem, 2.6vw, 1.85rem); font-weight: 800; letter-spacing: -.02em; margin: 6px 0 5px; line-height: 1.15; }
-  .lu-note { color: var(--mid); font-size: 14.5px; }
-  .lu-divider { height: 1px; background: var(--border); margin: 22px 0; }
-
-  .lu-wl-form { display: flex; flex-direction: column; gap: 10px; }
-  .lu-wl-form input[type="email"], .lu-wl-form input[type="text"]:not([name="website"]), .lu-wl-form input[type="tel"], .lu-wl-form select {
-    border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; font-size: 15px;
-    background: #fff; font-family: inherit; color: var(--charcoal); width: 100%;
-  }
-  .lu-wl-form input:focus, .lu-wl-form select:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: transparent; }
-  .lu-select-label { font-size: 12.5px; font-weight: 700; color: var(--mid); letter-spacing: .03em; text-transform: uppercase; margin-top: 4px; }
-  .lu-wl-form button {
-    background: var(--blue); color: #fff; border: none; border-radius: 10px;
-    padding: 14px; font-size: 15.5px; font-weight: 700; cursor: pointer;
-    transition: background var(--t-fast) var(--ease-out);
-  }
-  .lu-wl-form button:hover { background: var(--blue-dark); }
-  .lu-wl-form button:disabled { opacity: .65; cursor: default; }
-  .lu-form-rule { font-size: 12px; color: var(--mid); text-align: center; }
-  .lu-ts { min-height: 0; }
-  .lu-form-err { font-size: 13px; color: #c0392b; line-height: 1.5; margin-top: 2px; }
-
+  .zc-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .zc-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
+  .zc-trust div { display: flex; align-items: center; gap: 7px; }
+  .zc-check { color: var(--blue); font-weight: 800; }
   @media (max-width: 767px) {
-    .lu-hero { padding-top: 60px; }
-    .lu-hero-inner { padding-left: 16px; padding-right: 16px; }
-    .lu-card { padding: 18px; }
-    .lu-card, .lu-card * { max-width: 100%; }
-    .lu-ts { max-width: 100%; overflow-x: auto; }
-    .lu-wl-form input, .lu-wl-form select, .lu-wl-form button { width: 100%; }
+    .zc-hero { padding-top: 60px; }
+    .zc-hero-inner { padding-left: 16px; padding-right: 16px; }
+    .section { padding: 52px 0; }
   }
-  @media (prefers-reduced-motion: reduce) { .lu-btn-primary:hover { transform: none; } }
+  @media (max-width: 600px) { .city-grid { grid-template-columns: 1fr !important; } }
 </style>
-
-  <script is:inline>
-    (function () {
-      // "Weitere anzeigen"-Buttons (mobil): klappen server-gerenderte Inhalte auf.
-      // Mit data-label-less wird der Button zum Auf-/Zuklapp-Toggle, sonst
-      // verschwindet er nach dem ersten Aufklappen (One-Shot).
-      document.querySelectorAll('[data-more-target]').forEach(function (b) {
-        var less = b.getAttribute('data-label-less');
-        var more = b.textContent;
-        b.addEventListener('click', function () {
-          var t = document.getElementById(b.getAttribute('data-more-target'));
-          if (!t) return;
-          var open = t.classList.toggle('mob-collapsed') === false;
-          b.setAttribute('aria-expanded', open ? 'true' : 'false');
-          if (less) { b.textContent = open ? less : more; }
-          else if (open) { b.style.display = 'none'; }
-        });
-      });
-
-      var f = document.querySelector('[data-lu-termin]');
-      if (!f) return;
-      var btn = f.querySelector('button[type="submit"]');
-      var errEl = f.querySelector('.lu-form-err');
-      var showErr = function (m) { if (errEl) { errEl.textContent = m; errEl.hidden = false; } };
-      f.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (errEl) errEl.hidden = true;
-        var val = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-        var name = val('name'), telefon = val('telefon'), email = val('email'), standort = val('standort') || 'Zürich Bellevue';
-        if (!name) { showErr('Bitte deinen Namen angeben.'); return; }
-        if (!telefon) { showErr('Bitte eine Telefonnummer angeben.'); return; }
-        if (!email || email.indexOf('@') < 1) { showErr('Bitte eine gültige E-Mail-Adresse angeben.'); return; }
-        var ts = window.tcmTsToken ? window.tcmTsToken(f)
-          : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
-        if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
-        var data = {
-          name: name, telefon: telefon, email: email,
-          standort: standort, typ: 'termin', quelle: 'termin-zuerich-bellevue',
-          website: (f.querySelector('[name="website"]') || {}).value || '',
-          zeit: new Date().toISOString(), turnstileToken: ts.token,
-        };
-        if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Wird gesendet…'; }
-        fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-          .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
-          .then(function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: 'formular_senden', form_type: 'terminanfrage', quelle: 'termin-zuerich-bellevue', standort: standort });
-            var ok = document.createElement('div');
-            ok.style.cssText = 'text-align:center;padding:14px 4px';
-            ok.innerHTML = '<div aria-hidden="true" style="width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--blue-light);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">✓</div>' +
-              '<h3 style="font-size:19px;font-weight:800;color:var(--charcoal);margin:0 0 8px;letter-spacing:-.01em">Danke, deine Anfrage ist bei uns.</h3>' +
-              '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns mit passenden Terminvorschlägen - am Bellevue oder an einem unserer weiteren Zürcher Standorte.</p>';
-            f.replaceWith(ok);
-          })
-          .catch(function () {
-            if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Termin anfragen'; }
-            if (window.turnstile && ts.el) { try { window.turnstile.reset(ts.el); } catch (_) {} }
-            showErr('Senden fehlgeschlagen. Bitte später nochmal versuchen oder an termine@tcm.ch schreiben.');
-          });
-      });
-    })();
-  </script>
 </SpaPage>
