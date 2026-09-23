@@ -5,7 +5,7 @@
 // tcm-verstehen.ts umgeschaltet, sobald echte Inhalte existieren. Geplante Themen
 // werden bewusst NUR als Text gezeigt, nie als Links auf nicht existierende URLs.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
-import { tcmSections } from '../../../data/tcm-verstehen';
+import { tcmSections, publishedTcmEntities } from '../../../data/tcm-verstehen';
 import type { TcmSection } from '../../../data/tcm-verstehen';
 
 export function getStaticPaths() {
@@ -35,6 +35,8 @@ const schema = [
 ];
 
 const otherSections = tcmSections.filter((x) => x.slug !== s.slug);
+// Publizierte Leaves dieser Sektion (Phase 4A): erscheinen automatisch als Karten.
+const leaves = publishedTcmEntities.filter((e) => e.section === s.slug);
 ---
 <LayoutDe title={`${s.title} | TCM.ch`} description={s.metaDesc} path={path} schema={schema} noindex={!s.indexable} robots={s.indexable ? undefined : 'noindex, follow'}>
   <section class="hero">
@@ -59,6 +61,20 @@ const otherSections = tcmSections.filter((x) => x.slug !== s.slug);
         <div class="einordnung">
           <div class="ein-label">Traditionelles Modell, keine Diagnose</div>
           <p>Die Begriffe in dieser Sektion beschreiben Einordnungsmodelle der Traditionellen Chinesischen Medizin. Sie sind keine schulmedizinischen Diagnosen und ersetzen keine ärztliche Abklärung. Bei Warnzeichen gilt: zuerst zur Ärztin, siehe <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">Wann sollte ich zuerst zum Arzt?</a></p>
+        </div>
+      )}
+
+      {leaves.length > 0 && (
+        <div class="block">
+          <h2 class="group-title">Begriffe & Konzepte</h2>
+          <div class="rel-grid">
+            {leaves.map((e) => (
+              <a class="rel-card" href={`/gesundheitsbibliothek/tcm-verstehen/${e.section}/${e.slug}/`}>
+                <div class="rel-cat">TCM verstehen</div>
+                <div class="rel-title">{e.nav}</div>
+              </a>
+            ))}
+          </div>
         </div>
       )}
 

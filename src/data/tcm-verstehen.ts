@@ -15,11 +15,32 @@ export interface TcmLink { href: string; label: string; cat: string }
 // Künftige Entitätstypen des Wissensgraphen. Bewusst im bestehenden Graph-Stil
 // (Slug-Referenzen wie in gesundheitsbibliothek.ts), kein paralleles System.
 export type TcmEntityType = 'tcm-concept' | 'tcm-pattern' | 'meridian' | 'acupuncture-point' | 'tcm-diagnostic';
+// Phase 4A (Foundation, 23.09.2026): Inhaltsmodell fuer Leaves. Regel wie bei
+// Befunde & Werte: NUR status 'published' erzeugt Prod-Routen. Drafts haben KEINE
+// Route (nicht bloss noindex): kein Thin Content in Google. Finales Copy liefert
+// ChatGPT (siehe seo/tcm-verstehen-foundation-editorial-handoff-2026-09-23.md);
+// hier stehen nur Struktur, SEO-Vorschlaege und Beziehungen. Keine AI-Fuelltexte.
 export interface TcmEntity {
   type: TcmEntityType;
   slug: string;
   section: 'grundlagen' | 'muster' | 'meridiane-punkte' | 'diagnostik' | 'methoden';
-  title: string;
+  title: string;                   // SEO-Title ohne "| TCM.ch"
+  status: 'draft' | 'published';   // draft = WAITING_FOR_CHATGPT_EDITORIAL, keine Route
+  indexable: boolean;              // erst mit finalem Copy true (dann auch Sitemap/Queue)
+  nav: string;                     // kurzes Karten-Label
+  metaDesc: string;
+  h1: string;
+  publishedAt?: string;
+  // Inhaltsbloecke (Reihenfolge = Template-Reihenfolge). Alle optional, Editorial
+  // kommt extern; KEINE Platzhalter-Prosa eintragen.
+  kurzantwortHtml?: string;        // praezise Definition / kurze Antwort
+  traditionellHtml?: string;       // was das traditionelle Konzept meint
+  praxisHtml?: string;             // wie es in der TCM-Praxis verwendet wird
+  abgrenzungHtml?: string;         // was es NICHT bedeutet
+  evidenzHtml?: string;            // moderne medizinische / Evidenz-Perspektive
+  relevanzHtml?: string;           // praktische Relevanz fuer Patient:innen
+  arztHinweisHtml?: string;        // wann aerztliche Abklaerung zaehlt (wo anwendbar)
+  sources?: { label: string; url?: string }[];
   // Beziehungen als Slug-Listen, aufgelöst gegen die bestehenden Datenquellen:
   relatedConcepts?: string[];      // TcmEntity.slug
   relatedPatterns?: string[];      // TcmEntity.slug
@@ -30,9 +51,92 @@ export interface TcmEntity {
   relatedTherapies?: string[];     // therapien slug
   relatedDiagnostics?: string[];   // DIAGNOSTICS id (schulmedizinisch) ODER TcmEntity slug
   relatedVisuals?: string[];       // visuals slug
+  /** Bestehende Nicht-Graph-URLs (Fragen/Wissen), nur echte URLs. */
+  relatedLinks?: TcmLink[];
 }
-// Leer bis zur ersten Inhalts-Welle. Keine Platzhalter-Einträge anlegen.
-export const tcmEntities: TcmEntity[] = [];
+
+// Foundation-Welle 4A: 7 genehmigte Konzepte, alle draft (Editorial ausstehend).
+// URL-Schema (mit Sektion, wie "TCM verstehen -> Kategorie -> Leaf"):
+// /gesundheitsbibliothek/tcm-verstehen/<section>/<slug>/
+export const tcmEntities: TcmEntity[] = [
+  {
+    type: 'tcm-concept', slug: 'qi', section: 'grundlagen',
+    status: 'draft', indexable: false,
+    nav: 'Qi',
+    title: 'Qi in der TCM: Was der Begriff bedeutet',
+    metaDesc: 'Was meint die TCM mit Qi? Warum Übersetzungen wie "Energie" nur Annäherungen sind, wie der Begriff in der Praxis verwendet wird und was er nicht bedeutet.',
+    h1: 'Qi: Was meint die TCM damit?',
+    relatedConcepts: ['yin-und-yang', 'fuenf-elemente'],
+    relatedTherapies: ['akupunktur'],
+  },
+  {
+    type: 'tcm-concept', slug: 'yin-und-yang', section: 'grundlagen',
+    status: 'draft', indexable: false,
+    nav: 'Yin und Yang',
+    title: 'Yin und Yang: Bedeutung in der Chinesischen Medizin',
+    metaDesc: 'Yin und Yang als Ordnungsprinzip der TCM: was das Begriffspaar traditionell beschreibt, wie es in der Behandlung genutzt wird und was es nicht ist.',
+    h1: 'Yin und Yang: Bedeutung in der TCM',
+    relatedConcepts: ['qi', 'fuenf-elemente'],
+  },
+  {
+    type: 'tcm-concept', slug: 'fuenf-elemente', section: 'grundlagen',
+    status: 'draft', indexable: false,
+    nav: 'Fünf Elemente',
+    title: 'Fünf Elemente der TCM: Holz, Feuer, Erde, Metall, Wasser',
+    metaDesc: 'Die Fünf Elemente (Wandlungsphasen) der TCM: was das traditionelle Modell beschreibt, wie es in der Praxis verwendet wird und wo seine Grenzen liegen.',
+    h1: 'Die Fünf Elemente der TCM',
+    relatedConcepts: ['qi', 'yin-und-yang', 'organuhr'],
+  },
+  {
+    type: 'tcm-concept', slug: 'organuhr', section: 'grundlagen',
+    status: 'draft', indexable: false,
+    nav: 'TCM-Organuhr',
+    title: 'TCM-Organuhr: Das traditionelle 24-Stunden-Modell erklärt',
+    metaDesc: 'Die chinesische Organuhr: was das traditionelle 24-Stunden-Modell beschreibt, wie nächtliches Aufwachen traditionell gedeutet wird und wo die Grenzen liegen.',
+    h1: 'Die TCM-Organuhr: Was das Modell beschreibt und was nicht',
+    relatedConcepts: ['fuenf-elemente', 'qi'],
+    relatedSignals: ['herzklopfen-im-liegen', 'nachtschweiss-ohne-fieber'],
+    relatedConditions: ['schlafprobleme'],
+  },
+  {
+    type: 'tcm-concept', slug: 'meridiane', section: 'meridiane-punkte',
+    status: 'draft', indexable: false,
+    nav: 'Meridiane',
+    title: 'Meridiane in der TCM: Das Leitbahnen-Modell erklärt',
+    metaDesc: 'Was Meridiane in der TCM sind: das traditionelle Leitbahnen-Modell, seine Rolle in der Akupunktur und warum Meridiane keine anatomischen Strukturen sind.',
+    h1: 'Meridiane: Das Leitbahnen-Modell der TCM',
+    relatedConcepts: ['qi'],
+    relatedTherapies: ['akupunktur', 'akupressur'],
+  },
+  {
+    type: 'tcm-diagnostic', slug: 'zungendiagnostik', section: 'diagnostik',
+    status: 'draft', indexable: false,
+    nav: 'Zungendiagnostik',
+    title: 'Zungendiagnostik in der TCM: Was die Zunge zeigt und was nicht',
+    metaDesc: 'Zungendiagnostik der TCM: was Therapeut:innen an Farbe, Form und Belag beobachten, wie das Bild in die Einschätzung einfliesst und was es nicht leisten kann.',
+    h1: 'Zungendiagnostik: Wie die TCM die Zunge betrachtet',
+    relatedDiagnostics: ['pulsdiagnostik'],
+    relatedSignals: ['zungenbrennen'],
+    relatedLinks: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
+    ],
+  },
+  {
+    type: 'tcm-diagnostic', slug: 'pulsdiagnostik', section: 'diagnostik',
+    status: 'draft', indexable: false,
+    nav: 'Pulsdiagnostik',
+    title: 'Pulsdiagnostik in der TCM: Was das Pulstasten erfasst',
+    metaDesc: 'Pulsdiagnostik der TCM: warum an beiden Handgelenken getastet wird, welche Qualitäten traditionell unterschieden werden und was das Verfahren nicht ersetzt.',
+    h1: 'Pulsdiagnostik: Wie die TCM den Puls tastet',
+    relatedDiagnostics: ['zungendiagnostik'],
+    relatedLinks: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
+    ],
+  },
+];
+
+export const publishedTcmEntities = tcmEntities.filter((e) => e.status === 'published');
+export const tcmEntityBySlug = (slug: string) => tcmEntities.find((e) => e.slug === slug);
 
 export interface TcmSection {
   slug: string;
