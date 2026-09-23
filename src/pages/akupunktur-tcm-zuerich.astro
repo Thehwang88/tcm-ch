@@ -4,6 +4,7 @@ export const prerender = true;
 import SpaPage from '../layouts/SpaPage.astro';
 import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
 import { zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../data/zuerich-termin';
+import StickyCta from '../components/StickyCta.astro';
 
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
 // statt hartcodiert - noch nicht anfragbare Standorte (terminAb) erscheinen erst ab Stichtag.
@@ -11,12 +12,12 @@ const ZH_ALT = '<select class="form-select" name="standort"><option value="">Sta
 if (!rawBody.includes(ZH_ALT)) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
 const body = rawBody.replace(
   ZH_ALT,
-  `<select class="form-select" name="standort" data-zh-termin="${zhTerminData({ html: true })}"><option value="">Standort auswählen</option>${zhStandortOptionsHtml()}<option data-zh-last>Andere / in meiner Nähe</option></select>`,
+  `<select class="form-select" name="standort" data-zh-termin="${zhTerminData({ html: true })}"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option data-zh-last>Anderer Standort / in meiner Nähe</option></select>`,
 ) + zhTerminScript;
 
 const title = 'TCM Zürich & Akupunktur Zürich | TCM.ch';
 const description =
-  'TCM Zürich: Akupunktur und Chinesische Medizin in Oerlikon und Höngg. EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar, Termin oft in 24h.';
+  'Akupunktur & TCM in Zürich: mehrere Standorte, ein Netzwerk. Sag uns, wo du bist - wir finden die passende Praxis oder den nächsten freien Termin. EMR-/ASCA-anerkannt.';
 
 const schema = [
   {
@@ -60,6 +61,9 @@ const schema = [
     '@type': 'FAQPage',
     mainEntity: [
       { '@type': 'Question', name: 'Wo finde ich Akupunktur in Zürich in meiner Nähe?', acceptedAnswer: { '@type': 'Answer', text: 'TCM.ch hat im Raum Zürich Standorte in Oerlikon und in Höngg; ein neuer Standort im Zentrum ist in Vorbereitung. So findest du eine Praxis in deiner Nähe, ohne lange Anfahrt. Schildere kurz dein Anliegen, wir buchen dich in der nächsten passenden Klinik ein.' } },
+      { '@type': 'Question', name: 'Muss ich schon wissen, welchen Standort ich wählen möchte?', acceptedAnswer: { '@type': 'Answer', text: 'Nein. Sag uns einfach, wo du in Zürich wohnst oder arbeitest und was dir wichtig ist - nächster Standort oder schnellster Termin. Wir schlagen dir den passenden Standort vor.' } },
+      { '@type': 'Question', name: 'Kann ich auch aus Altstetten, Seefeld, Wiedikon oder einem anderen Quartier kommen?', acceptedAnswer: { '@type': 'Answer', text: 'Ja. Unsere Zürcher Standorte sind mit dem ÖV aus der ganzen Stadt gut erreichbar. Patient:innen kommen aus allen Zürcher Quartieren zu uns - wir finden den Standort mit dem kürzesten Weg oder dem schnellsten freien Termin.' } },
+      { '@type': 'Question', name: 'Was, wenn mein Wunschstandort keinen freien Termin hat?', acceptedAnswer: { '@type': 'Answer', text: 'Dann bieten wir dir den nächsten freien Termin an einem anderen Zürcher Standort an. Du entscheidest, ob du lieber wartest oder ausweichst.' } },
       { '@type': 'Question', name: 'Übernimmt die Krankenkasse die Akupunktur?', acceptedAnswer: { '@type': 'Answer', text: 'Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen. Wir prüfen das kostenlos vor deinem ersten Termin.' } },
       { '@type': 'Question', name: 'Wie schnell bekomme ich einen Termin in Zürich?', acceptedAnswer: { '@type': 'Answer', text: 'Wir antworten auf deine Anfrage meist innerhalb einer Stunde. Ein Ersttermin ist je nach Standort und Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, an den Zürcher Standorten Oerlikon und Höngg.' } },
       { '@type': 'Question', name: 'Tut Akupunktur weh?', acceptedAnswer: { '@type': 'Answer', text: 'Die Nadeln sind dünner als ein Haar. Die meisten spüren beim Setzen nur ein kurzes Ziehen oder Kribbeln, danach oft eine angenehme Schwere. Wenn etwas unangenehm ist, sag Bescheid, dann passen wir an.' } },
@@ -68,4 +72,7 @@ const schema = [
   },
 ];
 ---
-<SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body} schema={schema} />
+<SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body} schema={schema}>
+  <!-- Mobile Sticky-CTA (bestehende Komponente; erscheint erst nach dem Hero) -->
+  <StickyCta prefill="Hallo, ich suche eine TCM-Praxis in Zürich." formTarget="#zh-funnel" heroSelector=".akz-hero" />
+</SpaPage>

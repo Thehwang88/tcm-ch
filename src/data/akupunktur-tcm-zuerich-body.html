@@ -15,6 +15,28 @@
   .akz-txtlinks a{margin-right:18px;white-space:nowrap;color:var(--blue-dark);text-decoration:none}
   .akz-txtlinks a:hover{text-decoration:underline}
   @media(max-width:820px){.akz-hero-grid,.akz-split{grid-template-columns:1fr;gap:28px}}
+
+  /* ── Zürich-Flagship (zhx-*): Praxis-Karten, Quartier-Chips, Routing, Funnel ── */
+  .zhx-praxis-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+  .zhx-praxis{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);text-decoration:none;color:inherit}
+  .zhx-praxis-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+  .zhx-praxis-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+  .zhx-praxis-name{font-family:var(--font-sans);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--black);margin:0 0 4px}
+  .zhx-praxis-addr{font-size:14px;color:var(--mid);margin:0 0 10px}
+  .zhx-praxis-pos{font-size:14.5px;line-height:1.55;color:var(--mid);margin:0 0 14px;flex:1}
+  .zhx-praxis-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .zhx-tag{background:var(--blue-light);color:var(--blue-dark);font-family:var(--font-sans);font-size:12px;font-weight:700;padding:4px 10px;border-radius:var(--r-pill)}
+  .zhx-praxis-ctas{display:flex;gap:10px;flex-wrap:wrap}
+  .zhx-prep{display:flex;align-items:center;gap:14px;background:#F4FAF8;border:1px solid rgba(45,155,111,.16);border-radius:var(--r-card);padding:18px 22px;margin-top:22px;text-decoration:none;color:inherit;flex-wrap:wrap}
+  .zhx-routing{background:#F4FAF8;border:1px solid rgba(45,155,111,.16);border-radius:var(--r-card);padding:clamp(24px,4vw,40px);text-align:center}
+  .zhx-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+  .zhx-chip{background:#fff;border:1px solid var(--border);color:var(--charcoal);font-family:var(--font-sans);font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:var(--r-pill);cursor:pointer;transition:border-color .15s,color .15s}
+  .zhx-chip:hover,.zhx-chip:focus-visible{border-color:var(--blue);color:var(--blue-dark)}
+  .zhx-chip--other{background:var(--blue-light);color:var(--blue-dark);border-color:rgba(45,155,111,.25)}
+  @media(max-width:900px){.zhx-praxis-grid{grid-template-columns:1fr}}
+  @media(max-width:767px){.zhx-praxis-body{padding:18px 16px 20px}.zhx-praxis-ctas .btn-primary,.zhx-praxis-ctas .btn-secondary{flex:1;justify-content:center}
+  .zhx-routing .btn-primary,.zhx-routing .btn-secondary{width:100%;justify-content:center;white-space:normal;text-align:center}
+  .akz-hero .deh-cta .btn-primary,.akz-hero .deh-cta .btn-secondary{width:100%;justify-content:center;white-space:normal;text-align:center}}
 </style>
 
 <div class="akz">
@@ -24,17 +46,17 @@
     <div class="wrap">
       <div class="akz-hero-grid">
         <div>
-          <div class="section-label">Akupunktur · Medizinische TCM</div>
-          <h1 class="section-title" style="margin-bottom:18px">TCM &amp; Akupunktur in <em>Zürich</em></h1>
-          <p class="section-sub">Die Übersicht über alle TCM.ch Praxen und Behandlungen in Zürich: erfahrene, ärztlich begleitete Praxen in Oerlikon und Höngg, ein neuer Standort im Zentrum ist in Vorbereitung. Keine einzelne Quartierpraxis, sondern dein Einstieg zum passenden Standort. EMR-/ASCA-anerkannt und über deine Zusatzversicherung abrechenbar.</p>
+          <div class="section-label">TCM.ch Zürich</div>
+          <h1 class="section-title" style="margin-bottom:18px">Akupunktur &amp; TCM in <em>Zürich</em></h1>
+          <p class="section-sub">Mehrere Standorte in Zürich. Wir finden die Praxis oder den nächsten freien Termin, der am besten zu dir passt - egal ob City, Seefeld, Wiedikon, Altstetten, Oerlikon oder ein anderes Zürcher Quartier.</p>
           <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-            <a class="btn-primary" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." rel="nofollow">Termin anfragen · Antwort in ~1h</a>
-            <a class="btn-secondary" href="#standorte">Praxis finden</a>
+            <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Passenden Termin in Zürich finden</a>
+            <a class="btn-secondary" href="#standorte">Zürcher Standorte ansehen</a>
           </div>
           <div class="akz-trust">
             <span><span class="akz-stars">★★★★★</span> <b>4.9</b> Google · 500+ Bewertungen</span>
             <span><b>EMR/ASCA</b> anerkannt</span>
-            <span><b>12'500+</b> Patienten</span>
+            <span><b>Mehrere</b> Zürcher Standorte</span>
           </div>
         </div>
         <div>
@@ -77,18 +99,72 @@
 
   <section class="section" id="standorte">
     <div class="wrap">
-      <div class="reveal" style="max-width:60ch;margin-bottom:36px">
+      <div class="reveal" style="max-width:62ch;margin-bottom:36px">
         <div class="section-label">Standorte im Raum Zürich</div>
-        <h2 class="section-title">Eine TCM-Praxis <em>in deiner Nähe</em></h2>
-        <p class="section-sub">Als Netzwerk sind wir an mehreren Orten in Zürich für dich da. So findest du eine Praxis in der Nähe, ohne quer durch die Stadt zu fahren. Wähle deinen Standort, oft ist ein Termin noch am selben Tag möglich. Im Norden der Stadt findest du uns als <a href="/standorte/zuerich-oerlikon/">TCM in Oerlikon</a>.</p>
+        <h2 class="section-title">Unsere Praxen <em>in Zürich</em></h2>
+        <p class="section-sub">Wähle direkt einen Standort - oder lass uns den passendsten für dich finden. Im Norden der Stadt findest du uns als <a href="/standorte/zuerich-oerlikon/">TCM in Oerlikon</a>, im Westen in <a href="/standorte/zuerich-hoengg/">Höngg</a>.</p>
       </div>
-      <div class="city-grid">
-        <a class="city-card location-card" href="/standorte/zuerich-oerlikon/"><span class="location-plz">8050</span><div class="location-city">Zürich Oerlikon</div><div class="location-desc">Zürich Nord, gut erreichbar beim Bahnhof Oerlikon.</div><span class="location-link">Termin prüfen →</span></a>
-        <a class="city-card location-card" href="/standorte/zuerich-hoengg/"><span class="location-plz">8049</span><div class="location-city">Zürich Höngg</div><div class="location-desc">Zürich West, persönliche Behandlung in ruhiger Lage.</div><span class="location-link">Termin prüfen →</span></a>
-        <a class="city-card location-card" href="/standorte/zuerich-bellevue/"><span class="location-plz" style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-dark)">In Vorbereitung</span><div class="location-city">Zürich City</div><div class="location-desc">Neuer Standort im Zentrum</div><span class="location-link">Standort ansehen →</span></a>
+      <div class="zhx-praxis-grid">
+        <div class="zhx-praxis">
+          <img class="zhx-praxis-img" src="/images/standort-oerlikon.png" alt="TCM.ch Praxis Zürich Oerlikon" loading="lazy" width="1448" height="1086">
+          <div class="zhx-praxis-body">
+            <h3 class="zhx-praxis-name">Zürich Oerlikon</h3>
+            <p class="zhx-praxis-addr">Ohmstrasse 14, 8050 Zürich</p>
+            <p class="zhx-praxis-pos">Unsere Praxis für Zürich Nord: wenige Gehminuten vom Bahnhof Oerlikon, einem der grössten ÖV-Knoten der Schweiz - ideal für alle, die über Oerlikon pendeln.</p>
+            <div class="zhx-praxis-tags"><span class="zhx-tag">Sehr gut mit ÖV erreichbar</span><span class="zhx-tag">Zusatzversicherung anerkannt</span><span class="zhx-tag">Flexible Termine</span></div>
+            <div class="zhx-praxis-ctas">
+              <a class="btn-primary" href="/standorte/zuerich-oerlikon/#kontakt" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'zuerich-oerlikon'})">Termin anfragen</a>
+              <a class="btn-secondary" href="/standorte/zuerich-oerlikon/">Standort ansehen</a>
+            </div>
+          </div>
+        </div>
+        <div class="zhx-praxis">
+          <img class="zhx-praxis-img" src="/images/img-c73145069060.webp" alt="Empfang einer TCM.ch Praxis in Zürich" loading="lazy" width="1054" height="1492">
+          <div class="zhx-praxis-body">
+            <h3 class="zhx-praxis-name">Zürich Höngg</h3>
+            <p class="zhx-praxis-addr">Limmattalstrasse 340, 8049 Zürich</p>
+            <p class="zhx-praxis-pos">Unsere Praxis im Westen der Stadt: persönliche Behandlung in ruhiger Lage im Kreis 10 - passend für Höngg, Wipkingen, Affoltern und Umgebung.</p>
+            <div class="zhx-praxis-tags"><span class="zhx-tag">Ruhige Lage</span><span class="zhx-tag">Zusatzversicherung anerkannt</span><span class="zhx-tag">Erfahrenes TCM-Team</span></div>
+            <div class="zhx-praxis-ctas">
+              <a class="btn-primary" href="/standorte/zuerich-hoengg/#kontakt" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'zuerich-hoengg'})">Termin anfragen</a>
+              <a class="btn-secondary" href="/standorte/zuerich-hoengg/">Standort ansehen</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="section-sub" style="margin-top:22px"><strong>Welcher Standort passt zu dir?</strong> Für die Innenstadt bereiten wir aktuell einen <a href="/standorte/zuerich-bellevue/">neuen Standort im Zürcher Zentrum</a> vor. Für Zürich Nord und alle, die über den Bahnhof Oerlikon pendeln, liegt <a href="/standorte/zuerich-oerlikon/">Oerlikon</a> am nächsten. <a href="/standorte/zuerich-hoengg/">Höngg</a> passt für den Westen der Stadt rund um den Kreis 10. Unsicher? Schildere uns kurz dein Anliegen, wir schlagen dir den passenden Standort vor. Alle Praxen sind EMR- und ASCA-anerkannt und rechnen über die Zusatzversicherung ab.</p>
+      <a class="zhx-prep" href="/standorte/zuerich-bellevue/">
+        <span class="location-plz" style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-dark)">In Vorbereitung</span>
+        <span style="font-family:var(--font-sans);font-weight:700;color:var(--charcoal)">Zürich City</span>
+        <span style="font-size:14px;color:var(--mid);flex:1;min-width:200px">Ein neuer Standort im Zürcher Zentrum ist in Vorbereitung.</span>
+        <span class="location-link">Mehr erfahren →</span>
+      </a>
       <p class="section-sub" style="margin-top:22px">Ausserhalb von Zürich? Sieh dir <a class="body-link" href="/standorte/">alle 14 Standorte</a> in der Deutschschweiz an, von Winterthur über Frauenfeld bis St. Gallen. Oder finde <a class="body-link" href="/akupunktur-in-der-naehe/">Akupunktur in der Nähe</a>.</p>
+    </div>
+  </section>
+
+  <!-- ── ROUTING-BOTSCHAFT ── -->
+  <section class="section" style="background:var(--surface);padding-top:64px;padding-bottom:64px">
+    <div class="wrap" style="max-width:860px">
+      <div class="zhx-routing">
+        <h2 class="section-title" style="margin-bottom:12px">Du musst nicht wissen, <em>welcher Standort der richtige ist.</em></h2>
+        <p class="section-sub" style="margin:0 auto 24px;max-width:58ch">Sag uns einfach, wo du in Zürich wohnst oder arbeitest und was dir wichtig ist. Wir finden den Standort, der für dich am besten erreichbar ist - oder den schnellsten freien Termin.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'routing_block'})">Passenden Termin in Zürich finden</a>
+          <a class="btn-secondary" href="#zh-funnel" onclick="if(window.zhFastest)zhFastest();">Nächster freier Termin in Zürich</a>
+        </div>
+        <p style="margin:18px 0 0;font-size:14px;color:var(--mid)">Standort egal? Wir finden den schnellsten passenden Termin in Zürich. Lieber direkt sprechen? <a href="tel:+41775236122" style="color:var(--blue-dark);font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_routing_block'})">Ruf uns an: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUARTIERE / EINZUGSGEBIET ── -->
+  <section class="section" id="zh-quartiere">
+    <div class="wrap" style="max-width:860px">
+      <div class="section-label">Einzugsgebiet</div>
+      <h2 class="section-title">In ganz Zürich <em>für dich da</em></h2>
+      <p class="section-sub">Ob City, Seefeld, Wiedikon, Altstetten, Oerlikon oder ein anderes Zürcher Quartier - sag uns einfach, wo du wohnst oder arbeitest. Wir finden den Standort, der für dich am besten erreichbar ist. Wähle dein Quartier:</p>
+      <div class="zhx-chips" role="list"><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Zürich City / Zentrum')">Zürich City / Zentrum</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Stadelhofen')">Stadelhofen</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Seefeld')">Seefeld</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Hottingen')">Hottingen</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Enge')">Enge</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Wiedikon')">Wiedikon</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Altstetten')">Altstetten</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Zürich West')">Zürich West</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Wollishofen')">Wollishofen</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Oerlikon')">Oerlikon</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Höngg')">Höngg</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Unterstrass')">Unterstrass</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Oberstrass')">Oberstrass</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Schwamendingen')">Schwamendingen</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Affoltern')">Affoltern</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Albisrieden')">Albisrieden</button><button type="button" class="zhx-chip" role="listitem" onclick="zhQuartier('Zürichberg')">Zürichberg</button><button type="button" class="zhx-chip zhx-chip--other" role="listitem" onclick="zhQuartier('Anderes Quartier')">Mein Quartier ist nicht dabei</button></div>
+      <p style="margin-top:18px;font-size:14px;color:var(--mid)">Auch aus allen weiteren Zürcher Quartieren kannst du bei uns einen passenden Termin anfragen.</p>
     </div>
   </section>
 
@@ -237,15 +313,15 @@
 
   <!-- OFFER: STARTE OHNE RISIKO -->
   <!-- CONTACT -->
-  <section class="section contact-section-inline" style="background:var(--surface)">
+  <section class="section contact-section-inline" id="zh-funnel" style="background:var(--surface);scroll-margin-top:68px">
     <div class="wrap">
       <div class="contact-inline-grid">
         <div class="reveal">
           <div class="section-label">Passende Hilfe finden</div>
-          <h2 class="section-title">Termin in <em>Zürich</em> anfragen.</h2>
-          <p class="section-sub" style="margin-bottom:0">Kurz schildern, wir melden uns mit einem passenden Vorschlag. Kostenlos und unverbindlich.</p>
+          <h2 class="section-title">Passenden Termin in <em>Zürich</em> finden.</h2>
+          <p class="section-sub" style="margin-bottom:0">Schnell, unkompliziert und persönlich: Sag uns, wo du bist und was dir wichtig ist - wir finden den passenden Standort oder den nächsten freien Termin. Kostenlos und unverbindlich.</p>
           <div class="intake-trust-row">
-            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Passende Praxis statt langem Suchen</div>
+            <div class="intake-trust-item"><span class="intake-trust-dot"></span>Wir übernehmen die Standortwahl für dich</div>
             <div class="intake-trust-item"><span class="intake-trust-dot"></span>Standorte in Zürich: Oerlikon und Höngg</div>
             <div class="intake-trust-item"><span class="intake-trust-dot"></span>Krankenkassenanerkannt (Zusatzversicherung)</div>
           </div>
@@ -265,11 +341,61 @@
           </div>
         </div>
         <div class="reveal">
-          <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">Termin anfragen</div><div class="inline-form-sub">Wir melden uns mit einem Terminvorschlag.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label">Standort</label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label">Behandlung / Anliegen <span class="termin-opt">(optional)</span></label><textarea class="form-textarea" name="behandlung" rows="2" placeholder="z. B. Akupunktur bei Rückenschmerzen"></textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Termin anfragen</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="https://wa.me/41775236122" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div>
+          <div class="inline-form-card"><div class="inline-form-header"><div class="inline-form-title">Passenden Termin finden</div><div class="inline-form-sub">Wir melden uns mit dem passenden Standort und Terminvorschlag.</div></div><form class="inline-form" data-contact-form novalidate=""><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px"><div class="form-group"><label class="form-label">Name *</label><input class="form-input" name="name" type="text" autocomplete="name" required=""></div><div class="form-row-2"><div class="form-group"><label class="form-label">Telefon *</label><input class="form-input" name="telefon" type="tel" autocomplete="tel" required=""></div><div class="form-group"><label class="form-label">E-Mail *</label><input class="form-input" name="email" type="email" autocomplete="email" required=""></div></div><div class="form-group"><label class="form-label" for="zh-quartier">Wo wohnst oder arbeitest du ungefähr?</label><select class="form-select" name="quartier" id="zh-quartier"><option value="">Quartier auswählen</option><option>Zürich City / Zentrum</option><option>Stadelhofen</option><option>Seefeld</option><option>Hottingen</option><option>Enge</option><option>Wiedikon</option><option>Altstetten</option><option>Zürich West</option><option>Wollishofen</option><option>Oerlikon</option><option>Höngg</option><option>Unterstrass</option><option>Oberstrass</option><option>Schwamendingen</option><option>Affoltern</option><option>Albisrieden</option><option>Zürichberg</option><option>Anderes Quartier / nicht dabei</option></select></div><div class="form-group"><label class="form-label" for="zh-plz">PLZ oder Ort <span class="termin-opt">(optional, z. B. 8004 oder Zürich HB)</span></label><input class="form-input" name="plz" id="zh-plz" type="text" inputmode="text" autocomplete="postal-code"></div><div class="form-row-2"><div class="form-group"><label class="form-label" for="zh-prio">Was ist dir am wichtigsten?</label><select class="form-select" name="prioritaet" id="zh-prio"><option>Egal - bitte empfehlen</option><option>Nächster Standort</option><option>Schnellster Termin</option><option>Beides möglichst gut</option><option>Bestimmte Therapeutin / bestimmter Therapeut</option></select></div><div class="form-group"><label class="form-label" for="zh-zeit">Wann passt es dir am besten?</label><select class="form-select" name="zeitfenster" id="zh-zeit"><option>Möglichst schnell</option><option>Vormittags</option><option>Nachmittags</option><option>Abends</option><option>Flexibel</option></select></div></div><input type="hidden" name="situation" value=""><input type="hidden" name="anfrage_typ" value="zuerich-routing"><input type="hidden" name="formular" value="Zürich-Funnel"><div class="form-group"><label class="form-label">Wunsch-Standort <span class="termin-opt">(optional)</span></label><select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select></div><div class="form-group"><label class="form-label" for="zh-anliegen">Was ist dein Anliegen?</label><select class="form-select" name="behandlung" id="zh-anliegen" style="margin-bottom:8px"><option value="">Bitte auswählen (optional)</option><option>Rücken / Nacken / Schmerzen</option><option>Kopfschmerzen / Migräne</option><option>Stress / Schlaf</option><option>Verdauung</option><option>Frauenheilkunde / Zyklus</option><option>Kinderwunsch</option><option>Anderes Anliegen</option></select><textarea class="form-textarea" name="nachricht" rows="2" placeholder="Optional: kurze Nachricht zu deinem Anliegen"></textarea></div><div class="form-group cf-turnstile-wrap"><div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__" data-ts-mounted="1"></div></div><button type="submit" class="btn-primary form-submit" style="width:100%;justify-content:center">Passenden Termin anfragen</button><p class="termin-under-btn">Wir melden uns innerhalb von 1 Stunde mit einem Terminvorschlag.</p><div class="form-divider-quiet">Lieber direkt per WhatsApp?</div><a href="https://wa.me/41775236122" class="form-wa-alt-new" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366" style="display:inline-block;vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"></path></svg>Per WhatsApp anfragen</a></form></div>
         </div>
       </div>
     </div>
   </section>
+<script>
+  /* Zürich-Funnel: Quartier-Chips setzen das Formular-Quartier; situation wird für
+     die Anfrage-Mail aus Quartier/PLZ/Priorität/Zeitfenster zusammengesetzt.
+     Tracking: zh_quartier_click, zh_funnel_start (erste Interaktion),
+     zh_funnel_submit (Absende-Versuch mit Parametern); die echte Conversion bleibt
+     formular_senden (nur bei erfolgreichem Submit, form_type=zuerich-routing). */
+  (function(){
+    var form=document.querySelector('#zh-funnel form[data-contact-form]');
+    if(!form) return;
+    var dl=function(o){window.dataLayer=window.dataLayer||[];window.dataLayer.push(o);};
+    var val=function(n){var el=form.querySelector('[name="'+n+'"]');return el?(el.value||'').trim():'';};
+    function sync(){
+      var parts=[];
+      if(val('quartier'))parts.push('Quartier: '+val('quartier'));
+      if(val('plz'))parts.push('PLZ/Ort: '+val('plz'));
+      parts.push('Priorität: '+(val('prioritaet')||'-'));
+      parts.push('Zeitfenster: '+(val('zeitfenster')||'-'));
+      form.querySelector('[name="situation"]').value=parts.join(' · ');
+    }
+    var started=false;
+    form.addEventListener('input',function(){sync();if(!started){started=true;dl({event:'zh_funnel_start'});}});
+    form.addEventListener('change',sync);
+    form.addEventListener('submit',function(){sync();dl({event:'zh_funnel_submit',quartier:val('quartier')||'(leer)',plz:val('plz')||'(leer)',prioritaet:val('prioritaet'),zeitfenster:val('zeitfenster'),anliegen:val('behandlung')||'(leer)',wunsch_standort:val('standort')||'(leer)'});});
+    var title=document.querySelector('#zh-funnel .inline-form-title');
+    var submit=form.querySelector('.form-submit');
+    function setState(t,btn){if(title)title.textContent=t;if(submit)submit.textContent=btn;}
+    window.zhQuartier=function(q){
+      dl({event:'zh_quartier_click',quartier:q});
+      var sel=form.querySelector('[name="quartier"]');
+      if(sel){var hit=Array.prototype.find.call(sel.options,function(o){return o.text===q;});sel.value=hit?hit.value||hit.text:'Anderes Quartier / nicht dabei';}
+      if(q&&q!=='Anderes Quartier')setState('Termin nahe '+q+' finden','Termin nahe '+q+' finden');
+      else setState('Passenden Termin finden','Passenden Termin anfragen');
+      sync();
+      var t=document.getElementById('zh-funnel');if(t)t.scrollIntoView({behavior:'smooth'});
+    };
+    var qsel=form.querySelector('[name="quartier"]');
+    if(qsel)qsel.addEventListener('change',function(){
+      var q=qsel.value;
+      if(q&&q.indexOf('Anderes')<0)setState('Termin nahe '+q+' finden','Termin nahe '+q+' finden');
+      else setState('Passenden Termin finden','Passenden Termin anfragen');
+    });
+    window.zhFastest=function(){
+      dl({event:'zh_fastest_shortcut'});
+      var p=form.querySelector('[name="prioritaet"]');
+      if(p)p.value='Schnellster Termin';
+      setState('Nächsten freien Termin in Zürich finden','Nächsten Termin finden');
+      sync();
+    };
+  })();
+</script>
 
   <!-- FAQ -->
   <section class="kk-section">
@@ -280,6 +406,9 @@
           <h2 class="section-title" style="margin:0 auto 14px">Das Wichtigste <em>in Kürze.</em></h2>
         </div>
         <div class="kk-faq">
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Muss ich schon wissen, welchen Standort ich wählen möchte?<span class="kk-ico">+</span></button><div class="kk-a"><p>Nein. Sag uns einfach, wo du in Zürich wohnst oder arbeitest und was dir wichtig ist - nächster Standort oder schnellster Termin. Wir schlagen dir den passenden Standort vor.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Kann ich auch aus Altstetten, Seefeld, Wiedikon oder einem anderen Quartier kommen?<span class="kk-ico">+</span></button><div class="kk-a"><p>Ja. Unsere Zürcher Standorte sind mit dem ÖV aus der ganzen Stadt gut erreichbar. Patient:innen kommen aus allen Zürcher Quartieren zu uns - wir finden den Standort mit dem kürzesten Weg oder dem schnellsten freien Termin.</p></div></div>
+          <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Was, wenn mein Wunschstandort keinen freien Termin hat?<span class="kk-ico">+</span></button><div class="kk-a"><p>Dann bieten wir dir den nächsten freien Termin an einem anderen Zürcher Standort an. Du entscheidest, ob du lieber wartest oder ausweichst.</p></div></div>
           <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wo finde ich Akupunktur in Zürich in meiner Nähe?<span class="kk-ico">+</span></button><div class="kk-a"><p>Wir haben im Raum Zürich Standorte in Oerlikon und Höngg; ein neuer Standort im Zentrum ist in Vorbereitung. So findest du eine Praxis in deiner Nähe, ohne lange Anfahrt. Schildere kurz dein Anliegen, wir buchen dich in der nächsten passenden Klinik ein.</p></div></div>
           <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Übernimmt die Krankenkasse die Akupunktur?<span class="kk-ico">+</span></button><div class="kk-a"><p>Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt. Bei den meisten Kassen werden 80 bis 100 Prozent übernommen. Wir prüfen das kostenlos vor deinem ersten Termin.</p></div></div>
           <div class="kk-item"><button class="kk-q" onclick="kkToggle(this)" aria-expanded="false">Wie schnell bekomme ich einen Termin in Zürich?<span class="kk-ico">+</span></button><div class="kk-a"><p>Wir antworten auf deine Anfrage meist innerhalb einer Stunde. Ein Ersttermin ist je nach Standort und Verfügbarkeit oft schon innert 24 bis 48 Stunden möglich, an den Zürcher Standorten Oerlikon und Höngg.</p></div></div>
@@ -293,10 +422,10 @@
   <!-- FINAL CTA -->
   <section class="cta-band" style="background:var(--blue);padding:48px 0">
     <div class="wrap" style="text-align:center">
-      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Bereit für deinen ersten Termin?</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Akupunktur und TCM in Zürich, an einem Standort in deiner Nähe. Antwort auf deine Anfrage in rund einer Stunde.</p>
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Jetzt passenden Termin in Zürich finden</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Sag uns, wo du bist und was dir wichtig ist. Wir finden den passenden Standort oder den nächsten freien Termin. Antwort meist in rund einer Stunde.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn-white" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>
+        <a class="btn-white" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20anfragen." rel="nofollow" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin in Zürich anfragen</a>
         <a href="tel:+41775236122" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">+41 77 523 61 22</a>
       </div>
     </div>

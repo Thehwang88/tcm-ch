@@ -48,6 +48,7 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
 
 <script is:inline>
   (function () {
+    function init() {
     var bar = document.getElementById('stickyCta');
     if (!bar || bar.dataset.init) return;
     bar.dataset.init = '1';
@@ -66,5 +67,8 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
       new IntersectionObserver(function (es) { formVisible = es[0].isIntersecting; apply(); }, { threshold: 0.05 }).observe(target);
     }
     apply();
+    }
+    if (document.readyState !== 'loading') init();
+    else addEventListener('DOMContentLoaded', init);
   })();
 </script>
