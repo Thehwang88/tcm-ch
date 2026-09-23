@@ -82,8 +82,8 @@ const libRegions = regionsForSignal(data.slug);
           <div class="cta-card-title">{data.ctaTitle ?? 'Beschwerden einordnen lassen?'}</div>
           <p>Schildere uns kurz, was du beobachtest. Wir sagen dir ehrlich, ob eine TCM-Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört.</p>
           <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
-            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
+            <a class="btn btn--primary" href="#formular">Termin anfragen</a>
+            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'koerpersignal_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'koerpersignal_content_cta'})}">Per WhatsApp fragen</a>
           </div>
         </div>
 

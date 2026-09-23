@@ -95,8 +95,8 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
           <div class="cta-card-title">Deine Frage ist nicht dabei?</div>
           <p>Frag uns direkt. Wir sagen dir ehrlich, ob eine Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört. EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
           <div class="cta-row">
-            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
-            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
+            <a class="btn btn--primary" href="#formular">Termin anfragen</a>
+            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'frage_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'frage_content_cta'})}">Per WhatsApp fragen</a>
           </div>
         </div>
 
