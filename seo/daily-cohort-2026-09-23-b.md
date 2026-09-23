@@ -53,6 +53,20 @@ Datum: 2026-09-23 · Typ: Daily organic library expansion · Ziel: bis zu 10 Sei
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/
 
+
+## Replacement candidates (Nachtrag, gleicher Tag)
+
+Nach 4 korrekt blockierten Original-Kandidaten wurden 4 Ersatz-Befunde auditiert. Historie oben bleibt unverändert gültig.
+
+| Kandidat | Audit | Verdict | Sitemap | Links |
+|---|---|---|---|---|
+| /gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/ | Kein Owner; Bilirubin nur Listenpunkt in leberwerte-erhoeht (Umbrella bleibt Owner, Listenpunkt verlinkt jetzt hierher); Gamma-GT eigener Owner | **CREATED** (risk low) | ja | in: leberwerte-Body; out: leberwerte, gamma-gt |
+| /gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/ | Kein Owner; Subtyp von leukozyten-erhoeht (Umbrella bleibt Owner, Zugehörigkeit im Text explizit, relativ vs. absolut erklärt) | **CREATED** (risk low) | ja | in: leukozyten-Body; out: leukozyten, neutrophile |
+| /gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/ | Kein Owner; Subtyp-Grenze wie Lymphozyten | **CREATED** (risk low) | ja | in: leukozyten-Body; out: leukozyten, lymphozyten, crp |
+| /gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/ | Kein Owner (keine Blutbild-/Gerinnungs-Seite); reaktive Rahmung, nicht alarmierend; Eisen-Bezug vorsichtig | **CREATED** (risk low) | ja | out: leukozyten, ferritin, crp, eisenmangel |
+
+Cohort-Total heute: **10 CREATED** (6 + 4 Replacement), 4 Original-BLOCKED bleiben dokumentiert. Sitemap 453 -> 457, Suchindex 246 -> 250, 4 CSV-Zeilen, 4 Synonyme. Auch diese 4 URLs bewusst NICHT in seo/index-queue.md (Natural-Crawl-Experiment).
+
 ## 13. Deployment-Hinweis
 
 After deployment, verify the updated sitemap in Google Search Console. Do not manually request indexing for this cohort yet.

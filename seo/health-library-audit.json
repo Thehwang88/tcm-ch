@@ -1,12 +1,12 @@
 {
   "generated": "2026-09-23",
   "totals": {
-    "healthPages": 354,
+    "healthPages": 358,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 12,
+      "befund": 16,
       "question": 16,
       "body_region": 9,
       "perspective": 1,
@@ -220,7 +220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 15
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 186,
+      "inboundContentLinks": 190,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/",
+      "type": "befund",
+      "title": "Bilirubin erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/",
@@ -1150,7 +1160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 5
     },
     {
@@ -1160,7 +1170,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1170,7 +1180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1190,8 +1200,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/",
@@ -1200,8 +1210,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/",
+      "type": "befund",
+      "title": "Lymphozyten erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/",
+      "type": "befund",
+      "title": "Neutrophile erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/",
@@ -1212,6 +1242,16 @@
       "inSitemap": true,
       "inboundContentLinks": 1,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/",
+      "type": "befund",
+      "title": "Thrombozyten erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/",

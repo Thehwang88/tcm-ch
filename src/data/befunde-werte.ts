@@ -157,7 +157,7 @@ export const befundeWerte: BefundWert[] = [
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
     shortAnswerHtml: `<p>Leukozyten sind weisse Blutkörperchen, die Abwehrzellen deines Immunsystems. Ihre Zahl im Blut steigt, wenn das Immunsystem gefordert ist, und das kann viele Gründe haben: einen Infekt, eine Entzündung, körperlichen Stress oder anderes. Ein erhöhter Wert ist damit ein Zeichen von Aktivität, <strong>keine Diagnose</strong>. Was er bedeutet, ergibt sich erst aus Beschwerden, Verlauf und den übrigen Blutwerten.</p>`,
     bodyHtml: `<h2>Was sind Leukozyten?</h2>
-<p>Weisse Blutkörperchen sind die Abwehrzellen des Körpers. Sie erkennen Krankheitserreger, bekämpfen sie und räumen geschädigtes Gewebe ab. Es gibt verschiedene Typen mit unterschiedlichen Aufgaben, unter anderem Granulozyten und Lymphozyten. Im grossen Blutbild wird neben der Gesamtzahl auch die Verteilung dieser Typen gemessen.</p>
+<p>Weisse Blutkörperchen sind die Abwehrzellen des Körpers. Sie erkennen Krankheitserreger, bekämpfen sie und räumen geschädigtes Gewebe ab. Es gibt verschiedene Typen mit unterschiedlichen Aufgaben, unter anderem <a href="/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/">neutrophile Granulozyten</a> und <a href="/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/">Lymphozyten</a>. Im grossen Blutbild wird neben der Gesamtzahl auch die Verteilung dieser Typen gemessen.</p>
 <h2>Warum können Leukozyten erhöht sein?</h2>
 <ul>
 <li><strong>Infektionen:</strong> die häufigste Erklärung, von der Erkältung bis zur bakteriellen Entzündung.</li>
@@ -235,7 +235,7 @@ export const befundeWerte: BefundWert[] = [
 <li><strong>AST:</strong> Kommt ausser in der Leber auch in anderen Geweben wie Muskeln vor. Der Wert ist deshalb weniger leberspezifisch.</li>
 <li><strong>GGT:</strong> Kann unter anderem bei Erkrankungen der Leber und Gallenwege sowie durch Alkohol oder bestimmte Medikamente erhöht sein.</li>
 <li><strong>Alkalische Phosphatase:</strong> Wird unter anderem bei Fragestellungen rund um Gallenwege und Knochen beurteilt.</li>
-<li><strong>Bilirubin:</strong> Entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle verarbeitet.</li>
+<li><strong>Bilirubin:</strong> Entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle verarbeitet; die Einzelheiten erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin erhöht</a>.</li>
 </ul>
 <h2>Warum können Leberwerte erhöht sein?</h2>
 <p>Mögliche Ursachen reichen von vorübergehenden Veränderungen bis zu Fettleber, Medikamentenwirkungen, Alkohol, Virusinfektionen, Erkrankungen der Gallenwege und anderen Lebererkrankungen. Auch intensive Muskelbelastung kann einzelne Werte beeinflussen.</p>
@@ -314,6 +314,144 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+    ],
+  },
+  {
+    slug: 'bilirubin-erhoeht',
+    title: 'Bilirubin erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'Bilirubin entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle ausgeschieden. Warum der Wert erhöht sein kann und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Einzelwerts Bilirubin; der Sammelbefund bleibt bei leberwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Generisches "Leberwerte erhöht" gehört leberwerte-erhoeht (dort ist Bilirubin ein Listenpunkt), Gamma-GT gehört gamma-gt-erhoeht. Diese Seite besitzt NUR den Bilirubin-Intent; keine allgemeine Lebererkrankungs-Seite.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>Bilirubin ist ein gelblicher Farbstoff, der beim Abbau roter Blutkörperchen entsteht. Die Leber verarbeitet ihn und scheidet ihn über die Galle aus. Steigt er im Blut, kann das am vermehrten Abbau von Blutzellen, an der Leber selbst oder am Galleabfluss liegen, und manchmal an einer harmlosen angeborenen Veranlagung. Ein erhöhter Einzelwert ist deshalb <strong>ein Hinweis, keine Diagnose</strong>.</p>`,
+    bodyHtml: `<h2>Was ist Bilirubin?</h2>
+<p>Beim Abbau alter roter Blutkörperchen entsteht zunächst sogenanntes indirektes (unkonjugiertes) Bilirubin. Die Leber wandelt es in eine wasserlösliche Form um, das direkte (konjugierte) Bilirubin, und gibt es an die Galle ab. Das Labor kann Gesamtbilirubin und diese beiden Anteile getrennt ausweisen; die Verteilung hilft der Ärztin bei der Einordnung, wo im Ablauf etwas hakt.</p>
+<h2>Warum kann Bilirubin erhöht sein?</h2>
+<ul>
+<li><strong>Vermehrter Abbau roter Blutkörperchen:</strong> etwa nach einem grossen Bluterguss oder bei einer Hämolyse; dann steigt vor allem der indirekte Anteil.</li>
+<li><strong>Die Leber selbst:</strong> Entzündungen oder andere Lebererkrankungen können die Verarbeitung beeinträchtigen.</li>
+<li><strong>Der Galleabfluss:</strong> staut sich Galle, etwa durch Gallensteine, steigt vor allem der direkte Anteil.</li>
+<li><strong>Harmlose Veranlagung:</strong> beim häufigen Gilbert-Syndrom (Morbus Meulengracht) ist das indirekte Bilirubin zeitweise leicht erhöht, besonders bei Fasten, Infekten oder Stress, ohne Krankheitswert. Diese Einordnung trifft die Ärztin, nicht die Tabelle im Internet.</li>
+</ul>
+<h2>Warum die Begleitwerte zählen</h2>
+<p>Ein Bilirubinwert wird praktisch nie allein beurteilt. Aussagekräftig wird er zusammen mit den übrigen Leberwerten wie ALT, AST, Gamma-GT und alkalischer Phosphatase sowie dem Blutbild. Das Gesamtbild erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>; den empfindlichen Gallenwege-Wert beschreibt <a href="/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/">Gamma-GT erhöht</a>.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Bilirubin beweist keine bestimmte Leber- oder Gallenerkrankung und keine Blutkrankheit. Ein leicht erhöhter Einzelwert bei sonst normalen Leberwerten hat oft eine harmlose Erklärung. Umgekehrt schliesst ein normales Bilirubin eine Lebererkrankung nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind die Aufschlüsselung in direktes und indirektes Bilirubin, die übrigen Leberwerte, ein Blutbild und je nach Bild ein <strong>Ultraschall</strong> von Leber und Gallenwegen oder eine Kontrollmessung. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah medizinisch beurteilt gehören: Gelbfärbung von Haut oder Augen, sehr dunkler Urin oder heller, entfärbter Stuhl, starke Schmerzen im rechten Oberbauch, Fieber mit Schüttelfrost oder ausgeprägter Juckreiz am ganzen Körper. Solche Zeichen können auf einen Gallestau oder eine relevante Lebererkrankung hinweisen.</p>`,
+    integrativeContextHtml: `<p>Bilirubin gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab. Erst wenn die Ursache ärztlich geklärt ist, kann sich die Frage nach einer komplementären Begleitung konkreter Beschwerden stellen.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'lymphozyten-erhoeht',
+    title: 'Lymphozyten erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'Lymphozyten sind eine Untergruppe der weissen Blutkörperchen. Warum sie erhöht sein können, was relative von absoluten Werten unterscheidet und was ein Einzelwert nicht beweist.',
+    primaryPurpose: 'Einordnung der Leukozyten-Untergruppe Lymphozyten; der Gesamtwert bleibt bei leukozyten-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Generisches "Leukozyten erhöht" gehört leukozyten-erhoeht. Diese Seite besitzt NUR den Subtyp Lymphozyten und erklärt die Zugehörigkeit explizit; Schwester-Seite neutrophile-erhoeht.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Lymphozyten sind eine Untergruppe der weissen Blutkörperchen (Leukozyten) und Teil der spezifischen Immunabwehr. Erhöhte Lymphozyten sind am häufigsten eine <strong>Reaktion auf Infekte, besonders Virusinfekte</strong>, und normalisieren sich danach wieder. Ein einzelner erhöhter Wert ist keine Diagnose; entscheidend sind Gesamtbild, Verlauf und die übrigen Blutwerte.</p>`,
+    bodyHtml: `<h2>Was sind Lymphozyten?</h2>
+<p>Lymphozyten erkennen Krankheitserreger gezielt und bilden das immunologische Gedächtnis. Im Differenzialblutbild machen sie bei Erwachsenen typischerweise einen guten Viertel bis gut ein Drittel der Leukozyten aus; bei Kindern ist ihr Anteil natürlicherweise höher. Den übergeordneten Gesamtwert erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten erhöht</a>.</p>
+<h2>Relativ oder absolut erhöht?</h2>
+<p>Das Labor weist Lymphozyten als Prozentanteil und als absolute Zahl aus. Ein hoher Prozentwert bei normaler Gesamtzahl (relative Lymphozytose) entsteht oft nur, weil eine andere Zellgruppe vorübergehend niedrig ist. Aussagekräftiger ist die absolute Zahl. Diese Unterscheidung ist einer der häufigsten Gründe, warum ein Laborbericht bedrohlicher aussieht, als er ist.</p>
+<h2>Warum können Lymphozyten erhöht sein?</h2>
+<ul>
+<li><strong>Virusinfekte:</strong> die häufigste Erklärung, von banalen Atemwegsinfekten bis zum Pfeifferschen Drüsenfieber; die Erhöhung kann dem Infekt einige Wochen nachlaufen.</li>
+<li><strong>Andere Infektionen und Reizungen des Immunsystems:</strong> auch bestimmte bakterielle und chronische Infektionen verändern das Bild.</li>
+<li><strong>Anhaltend deutlich erhöhte Werte:</strong> deutlich und dauerhaft erhöhte absolute Lymphozytenzahlen ohne Infekt gehören abgeklärt; dahinter können auch Erkrankungen des blutbildenden Systems stehen. Ein einzelner Wert ist dafür kein Beleg, ein unklarer Verlauf aber ein Grund für die Kontrolle.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen der Referenzbereich deines Labors, dein Alter, aktuelle oder kürzliche Infekte, die absolute Zahl, das übrige Blutbild inklusive <a href="/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/">Neutrophilen</a> und der Verlauf über eine Kontrollmessung. Häufig wird schlicht nach einigen Wochen nachgemessen.</p>`,
+    notProofHtml: `<p>Erhöhte Lymphozyten beweisen keine bestimmte Infektion und insbesondere keine Leukämie oder andere Bluterkrankung. Sie zeigen eine Aktivität der spezifischen Abwehr an, mehr nicht. Auch normale Werte schliessen eine Erkrankung nicht in jedem Fall aus.</p>`,
+    followUpHtml: `<p>Üblich sind das Gespräch über kürzliche Infekte und Medikamente, eine <strong>Kontrolle des Blutbilds</strong> nach einigen Wochen und nur bei auffälligem Verlauf oder Begleitbefunden weitere gezielte Untersuchungen. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören erhöhte Lymphozyten zusammen mit anhaltendem Fieber, Nachtschweiss, ungewolltem Gewichtsverlust, geschwollenen Lymphknoten über mehrere Wochen, ausgeprägter Abgeschlagenheit oder auffälliger Blutungs- und Infektneigung.</p>`,
+    integrativeContextHtml: `<p>Blutbild-Interpretation gehört in die schulmedizinische Beurteilung: Die chinesische Medizin übersetzt Lymphozytenzahlen nicht in eigene Diagnosen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/', label: 'Neutrophile erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'neutrophile-erhoeht',
+    title: 'Neutrophile erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'Neutrophile Granulozyten sind die grösste Untergruppe der weissen Blutkörperchen. Warum sie erhöht sein können und wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung der Leukozyten-Untergruppe Neutrophile; der Gesamtwert bleibt bei leukozyten-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Generisches "Leukozyten erhöht" gehört leukozyten-erhoeht, Lymphozyten gehören lymphozyten-erhoeht. Diese Seite besitzt NUR den Subtyp Neutrophile.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Neutrophile Granulozyten sind die zahlreichste Untergruppe der weissen Blutkörperchen (Leukozyten) und die schnelle Eingreiftruppe gegen Bakterien. Ihr Wert steigt bei <strong>akuten Entzündungen und Infekten, aber auch bei körperlichem Stress</strong>, nach Belastung, durch Rauchen oder bestimmte Medikamente wie Kortison. Ein erhöhter Einzelwert ist damit ein unspezifisches Aktivitätszeichen, keine Diagnose.</p>`,
+    bodyHtml: `<h2>Was sind Neutrophile?</h2>
+<p>Neutrophile machen bei Erwachsenen meist rund die Hälfte bis zwei Drittel der Leukozyten aus. Sie wandern als erste Zellen in entzündetes Gewebe ein und nehmen Erreger auf. Steigt ihre Zahl, steigt meist auch die Gesamtzahl der Leukozyten; die Übersicht dazu gibt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten erhöht</a>.</p>
+<h2>Warum können Neutrophile erhöht sein?</h2>
+<ul>
+<li><strong>Akute Infektionen und Entzündungen:</strong> besonders bakterielle Infekte sind die klassische Erklärung.</li>
+<li><strong>Körperlicher Stress:</strong> intensive Anstrengung, Verletzungen, Operationen und auch starke Aufregung mobilisieren kurzfristig Neutrophile aus den Gefässwänden; der Wert kann dadurch vorübergehend steigen, ohne dass eine Erkrankung vorliegt.</li>
+<li><strong>Rauchen:</strong> erhöht die Werte häufig chronisch leicht.</li>
+<li><strong>Medikamente:</strong> Kortisonpräparate sind eine bekannte Ursache erhöhter Neutrophilenzahlen.</li>
+<li><strong>Seltenere Ursachen:</strong> dauerhaft deutlich erhöhte Werte ohne Erklärung gehören abgeklärt; dafür gibt es im Blutbild in der Regel weitere Hinweise.</li>
+</ul>
+<h2>Relativ, absolut und das Differenzialblutbild</h2>
+<p>Wie bei den <a href="/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/">Lymphozyten</a> gilt: Der Prozentanteil allein kann täuschen, aussagekräftiger ist die absolute Zahl. Beurteilt wird der Wert zusammen mit der Leukozyten-Gesamtzahl, den übrigen Zellreihen und Entzündungswerten wie dem <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a>.</p>`,
+    notProofHtml: `<p>Erhöhte Neutrophile beweisen keine bestimmte Infektion, keinen Entzündungsort und keine Bluterkrankung. Nach Belastung, bei Stress oder unter Kortison sind erhöhte Werte erwartbar. Auch hier gilt der Umkehrschluss nicht: Normale Neutrophile schliessen eine Infektion nicht sicher aus.</p>`,
+    followUpHtml: `<p>Häufige nächste Schritte: die klinische Untersuchung, der Abgleich mit Beschwerden, Medikamenten und Rauchstatus, eine <strong>Kontrolle des Blutbilds</strong> in Ruhe und nur bei konkreten Hinweisen weitere gezielte Diagnostik. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören erhöhte Neutrophile zusammen mit hohem oder anhaltendem Fieber, Schüttelfrost, starken lokalisierten Schmerzen, rascher Verschlechterung des Allgemeinzustands oder Atemnot; das Muster kann auf eine relevante bakterielle Infektion hinweisen.</p>`,
+    integrativeContextHtml: `<p>Auch hier gilt: Die Interpretation des Blutbilds ist schulmedizinische Aufgabe. Die chinesische Medizin leitet aus Neutrophilenzahlen keine eigenen Diagnosen ab und ersetzt keine Infekt-Abklärung.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/', label: 'Lymphozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'thrombozyten-erhoeht',
+    title: 'Thrombozyten erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'Thrombozyten sind die Blutplättchen der Gerinnung. Warum ihre Zahl erhöht sein kann, welche Rolle Entzündungen und Eisenmangel spielen und was ein Einzelwert nicht beweist.',
+    primaryPurpose: 'Einordnung des Blutbild-Befunds erhöhte Thrombozyten (Thrombozytose), keine Gerinnungs- oder Bluterkrankungs-Seite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft; kein Blutbild-Leaf zu Thrombozyten, keine Gerinnungs-Seite). Vorsichtige, nicht alarmierende Rahmung; reaktive Ursachen im Vordergrund.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Thrombozyten (Blutplättchen) verschliessen kleine Gefässverletzungen und starten die Blutgerinnung. Eine erhöhte Zahl (Thrombozytose) ist im Alltag <strong>meist reaktiv</strong>: eine Begleitreaktion auf Entzündungen, Infekte, Eisenmangel, Blutungen oder Operationen, die sich mit der Ursache zurückbildet. Ein einzelner erhöhter Wert ist keine Diagnose und in aller Regel kein Notfall.</p>`,
+    bodyHtml: `<h2>Was sind Thrombozyten?</h2>
+<p>Blutplättchen entstehen im Knochenmark und leben rund eine gute Woche. Ihre Zahl schwankt auch bei Gesunden und reagiert empfindlich auf alles, was das Knochenmark stimuliert, von Entzündungsbotenstoffen bis zu Blutverlust.</p>
+<h2>Warum können Thrombozyten erhöht sein?</h2>
+<ul>
+<li><strong>Entzündungen und Infekte:</strong> die häufigste Erklärung; die Plättchenzahl steigt als Teil der Akutreaktion, oft zusammen mit Entzündungswerten wie dem <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a>.</li>
+<li><strong>Eisenmangel:</strong> reduzierte Eisenspeicher können mit erhöhten Thrombozyten einhergehen; die Einordnung des passenden Laborwerts erklärt <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin zu niedrig</a>.</li>
+<li><strong>Nach Blutungen, Operationen oder Verletzungen:</strong> das Knochenmark produziert vorübergehend mehr.</li>
+<li><strong>Nach Milzentfernung:</strong> die Milz baut normalerweise Plättchen ab; fehlt sie, liegen die Werte höher.</li>
+<li><strong>Seltener:</strong> dauerhafte, deutliche Erhöhungen ohne erkennbare Ursache können auf eine Erkrankung des blutbildenden Systems hinweisen und gehören hämatologisch beurteilt. Ein einzelner Wert belegt das nicht.</li>
+</ul>
+<h2>Vorübergehend oder anhaltend?</h2>
+<p>Die wichtigste Frage ist der Verlauf: Eine reaktive Thrombozytose bildet sich zurück, wenn Infekt, Entzündung oder Eisenmangel behandelt sind. Deshalb wird häufig zuerst die naheliegende Ursache angegangen und der Wert danach kontrolliert, zusammen mit dem übrigen Blutbild und den Eisenwerten.</p>`,
+    notProofHtml: `<p>Erhöhte Thrombozyten beweisen keine Gerinnungsstörung, keine drohende Thrombose und keine Knochenmarkerkrankung. Der Wert zeigt zunächst nur, dass das Knochenmark stimuliert ist; die häufigsten Auslöser sind vorübergehend. Auch ein normaler Wert garantiert umgekehrt keine normale Gerinnung.</p>`,
+    followUpHtml: `<p>Üblich sind die Suche nach der reaktiven Ursache (Infekt, Entzündung, Eisenstatus), eine <strong>Kontrollmessung</strong> nach einigen Wochen und erst bei anhaltend deutlich erhöhten Werten ohne Erklärung eine gezielte hämatologische Abklärung. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Unabhängig vom Laborwert rasch beurteilt gehören Zeichen einer Thrombose oder Embolie: einseitig geschwollenes, schmerzendes Bein, plötzliche Atemnot, Brustschmerz oder akute neurologische Ausfälle; im Notfall Telefon 144. Zügig besprechen solltest du auch wiederholt deutlich erhöhte Werte ohne erkennbaren Anlass.</p>`,
+    integrativeContextHtml: `<p>Blutbild und Gerinnung gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Thrombozytenzahlen nicht und behandelt keine Laborwerte. Eine komplementäre Begleitung ist höchstens nach der ärztlichen Einordnung ein Thema.</p>`,
+    relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
     ],
   },
   {
