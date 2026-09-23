@@ -37,13 +37,15 @@ if(tsEl && !tsToken){
 }
 data.turnstileToken = tsToken;
 const okHTML = '<div style="text-align:center;padding:32px 16px"><div style="font-size:44px;margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="7.5 12.5 10.5 15.5 16.5 9.5"/></svg></div><h3 style="font-family:var(--font-sans);font-size:20px;color:var(--black);margin-bottom:8px">Das war\'s schon.</h3><p style="font-size:14px;color:var(--mid);line-height:1.6;margin-bottom:20px">Wir haben deine Anfrage. Lehn dich zurück, wir melden uns bei dir. Kein Stress, kein Papierkram.</p><a href="https://wa.me/41775236122" class="btn-primary" style="display:inline-flex;justify-content:center" target="_blank">Schreib uns per WhatsApp</a></div>';
+// Zürich-Funnel: Ownership-Success (wir prüfen UNSERE Standorte, keine Vermittlungs-Sprache).
+const zhOkHTML = okHTML.replace('Das war\'s schon.','Danke!').replace('Wir haben deine Anfrage. Lehn dich zurück, wir melden uns bei dir. Kein Stress, kein Papierkram.','Wir prüfen jetzt unsere Zürcher Standorte und melden uns mit dem passenden Terminvorschlag. Du musst nichts weiter tun - wir übernehmen die Koordination.');
 if(btn){ btn.disabled = true; btn.dataset.label = btn.innerHTML; btn.innerHTML = 'Wird gesendet…'; }
 fetch('/api/anfrage', {
   method:'POST',
   headers:{'Content-Type':'application/json'},
   body: JSON.stringify(data)
 }).then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json().catch(function(){return {};}); })
-.then(function(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle || location.pathname }); if(card){ card.innerHTML = okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
+.then(function(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle || location.pathname }); if(card){ card.innerHTML = (data.anfrage_typ==='zuerich-routing') ? zhOkHTML : okHTML; card.scrollIntoView({behavior:'smooth',block:'start'}); } })
 .catch(function(){
   if(btn){ btn.disabled = false; btn.innerHTML = btn.dataset.label || 'Los geht\'s'; }
   if(window.turnstile && tsEl){ try{ window.turnstile.reset(tsEl); }catch(_){} }
