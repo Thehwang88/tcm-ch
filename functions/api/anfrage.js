@@ -25,7 +25,11 @@ export async function onRequestPost({ request, env }) {
     // Akademie-Leads (quelle=akademie) und QI CLUB Joins (quelle=qi-club):
     // Telefon optional, Name + E-Mail Pflicht.
     const _akademie = d.quelle === 'akademie' || d.quelle === 'qi-club';
-    if (_warteliste) {
+    // Zürich-Routing-Funnel: Name + Telefon ODER E-Mail genügt (eines von beidem).
+    const _zhRouting = d.anfrage_typ === 'zuerich-routing';
+    if (_zhRouting) {
+      if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
+    } else if (_warteliste) {
       if (!d.email) return J({ error: 'missing_fields' }, 422);
     } else if (_akademie) {
       if (!d.name || !d.email) return J({ error: 'missing_fields' }, 422);
