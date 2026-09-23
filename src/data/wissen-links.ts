@@ -26,6 +26,7 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
   ],
   migraene: [
+    { slug: 'migraene-tcm-warum-akupunktur-nicht-fuer-jeden', label: 'Akupunktur bei Migräne: Wirkung, Evidenz und Grenzen' },
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
     { slug: 'kopfschmerzen-wetterumschwung', label: 'Kopfschmerzen bei Wetterumschwung: was dahintersteckt' },
   ],

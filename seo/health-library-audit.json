@@ -60,7 +60,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 12
     },
     {
@@ -370,7 +370,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/allergien-heuschnupfen/",
       "inSitemap": false,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -576,12 +576,12 @@
     {
       "url": "/beschwerden/migraene/",
       "type": "condition",
-      "title": "Akupunktur bei Migräne – TCM-Behandlung | TCM.ch",
+      "title": "Migräne – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 142,
-      "outboundHealthLinks": 17
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -680,7 +680,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 14
     },
     {
@@ -3046,7 +3046,7 @@
     {
       "url": "/wissen/akupunktur-bei-kopfschmerzen/",
       "type": "editorial",
-      "title": "Akupunktur bei Spannungskopfschmerzen: Was die Studien zeigen | TCM.ch",
+      "title": "Akupunktur bei Kopfschmerzen: Was die Studien zeigen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3236,7 +3236,7 @@
     {
       "url": "/wissen/kinderwunsch-akupunktur-tcm/",
       "type": "editorial",
-      "title": "Akupunktur bei Kinderwunsch und IVF: Ablauf und Zeitpunkt | TCM.ch",
+      "title": "Akupunktur bei IVF &amp; Kinderwunschbehandlung: Zeitpunkt und Ablauf | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3266,11 +3266,11 @@
     {
       "url": "/wissen/migraene-tcm-warum-akupunktur-nicht-fuer-jeden/",
       "type": "editorial",
-      "title": "Migräne und TCM: Warum Akupunktur nicht für jeden funktioniert | TCM.ch",
+      "title": "Akupunktur bei Migräne: Wirkung, Evidenz &amp; Grenzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 6
     },
     {
@@ -3286,12 +3286,12 @@
     {
       "url": "/wissen/pcos-akupunktur-tcm/",
       "type": "editorial",
-      "title": "PCOS und TCM: Akupunktur, Zyklus und Kinderwunsch | TCM.ch",
+      "title": "Akupunktur bei PCOS: Wirkung, Evidenz und Grenzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/schmerzen-unterer-ruecken/",
