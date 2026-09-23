@@ -66,6 +66,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Qi in der TCM: Was der Begriff bedeutet',
     metaDesc: 'Was meint die TCM mit Qi? Warum Übersetzungen wie "Energie" nur Annäherungen sind, wie der Begriff in der Praxis verwendet wird und was er nicht bedeutet.',
     h1: 'Qi: Was meint die TCM damit?',
+    sources: [
+      { label: 'National Center for Complementary and Integrative Health: Traditional Chinese Medicine - What You Need To Know' },
+      { label: 'Stanford Encyclopedia of Philosophy: Chinese Metaphysics' },
+    ],
     relatedConcepts: ['yin-und-yang', 'fuenf-elemente'],
     relatedTherapies: ['akupunktur'],
   },
@@ -76,6 +80,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Yin und Yang: Bedeutung in der Chinesischen Medizin',
     metaDesc: 'Yin und Yang als Ordnungsprinzip der TCM: was das Begriffspaar traditionell beschreibt, wie es in der Behandlung genutzt wird und was es nicht ist.',
     h1: 'Yin und Yang: Bedeutung in der TCM',
+    sources: [
+      { label: 'Stanford Encyclopedia of Philosophy: Chinese Metaphysics' },
+      { label: 'Stanford Encyclopedia of Philosophy: Philosophy in Han Dynasty China' },
+    ],
     relatedConcepts: ['qi', 'fuenf-elemente'],
   },
   {
@@ -85,6 +93,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Fünf Elemente der TCM: Holz, Feuer, Erde, Metall, Wasser',
     metaDesc: 'Die Fünf Elemente (Wandlungsphasen) der TCM: was das traditionelle Modell beschreibt, wie es in der Praxis verwendet wird und wo seine Grenzen liegen.',
     h1: 'Die Fünf Elemente der TCM',
+    sources: [
+      { label: 'Stanford Encyclopedia of Philosophy: Chinese Metaphysics' },
+      { label: 'Stanford Encyclopedia of Philosophy: Philosophy in Han Dynasty China' },
+    ],
     relatedConcepts: ['qi', 'yin-und-yang', 'organuhr'],
   },
   {
@@ -94,6 +106,11 @@ export const tcmEntities: TcmEntity[] = [
     title: 'TCM-Organuhr: Das traditionelle 24-Stunden-Modell erklärt',
     metaDesc: 'Die chinesische Organuhr: was das traditionelle 24-Stunden-Modell beschreibt, wie nächtliches Aufwachen traditionell gedeutet wird und wo die Grenzen liegen.',
     h1: 'Die TCM-Organuhr: Was das Modell beschreibt und was nicht',
+    sources: [
+      { label: 'National Institute of General Medical Sciences: Circadian Rhythms' },
+      { label: 'Samuels N. Chronotherapy in traditional Chinese medicine. American Journal of Chinese Medicine, 2000.' },
+      { label: 'National Center for Complementary and Integrative Health: Traditional Chinese Medicine - What You Need To Know' },
+    ],
     relatedConcepts: ['fuenf-elemente', 'qi'],
     relatedSignals: ['herzklopfen-im-liegen', 'nachtschweiss-ohne-fieber'],
     relatedConditions: ['schlafprobleme'],
@@ -105,6 +122,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Meridiane in der TCM: Das Leitbahnen-Modell erklärt',
     metaDesc: 'Was Meridiane in der TCM sind: das traditionelle Leitbahnen-Modell, seine Rolle in der Akupunktur und warum Meridiane keine anatomischen Strukturen sind.',
     h1: 'Meridiane: Das Leitbahnen-Modell der TCM',
+    sources: [
+      { label: 'National Center for Complementary and Integrative Health: Acupuncture - Effectiveness and Safety' },
+      { label: 'Peer-reviewed research on the anatomical basis of acupuncture meridians: anatomical basis remains unresolved' },
+    ],
     relatedConcepts: ['qi'],
     relatedTherapies: ['akupunktur', 'akupressur'],
   },
@@ -115,6 +136,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Zungendiagnostik in der TCM: Was die Zunge zeigt und was nicht',
     metaDesc: 'Zungendiagnostik der TCM: was Therapeut:innen an Farbe, Form und Belag beobachten, wie das Bild in die Einschätzung einfliesst und was es nicht leisten kann.',
     h1: 'Zungendiagnostik: Wie die TCM die Zunge betrachtet',
+    sources: [
+      { label: 'Experimental Studies of Inter-Rater Agreement in Traditional Chinese Medicine: A Systematic Review' },
+      { label: 'Research on intra-rater and inter-rater reliability of TCM tongue assessment' },
+    ],
     relatedDiagnostics: ['pulsdiagnostik'],
     relatedSignals: ['zungenbrennen'],
     relatedLinks: [
@@ -128,6 +153,10 @@ export const tcmEntities: TcmEntity[] = [
     title: 'Pulsdiagnostik in der TCM: Was das Pulstasten erfasst',
     metaDesc: 'Pulsdiagnostik der TCM: warum an beiden Handgelenken getastet wird, welche Qualitäten traditionell unterschieden werden und was das Verfahren nicht ersetzt.',
     h1: 'Pulsdiagnostik: Wie die TCM den Puls tastet',
+    sources: [
+      { label: 'Experimental Studies of Inter-Rater Agreement in Traditional Chinese Medicine: A Systematic Review' },
+      { label: 'Can Traditional Chinese Medicine Diagnosis Be Parameterized and Standardized? A Narrative Review' },
+    ],
     relatedDiagnostics: ['zungendiagnostik'],
     relatedLinks: [
       { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
