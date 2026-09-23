@@ -1742,7 +1742,7 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'herzklopfen-im-liegen',
     symptom: 'spürbares Herzklopfen im Liegen',
-    title: 'Herzklopfen im Liegen: Warum spüre ich mein Herz abends so stark?',
+    title: 'Herzklopfen im Liegen: Ursachen & wann abklären?',
     metaDesc: 'Sobald du im Bett liegst, spürst du deinen Herzschlag deutlich? Warum das Herz im Liegen präsenter wirkt, was dahinterstecken kann und wann ein EKG sinnvoll ist.',
     h1: 'Warum spüre ich mein Herz so stark, wenn ich liege?',
     category: 'Schlaf & Nacht',
@@ -2256,8 +2256,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'kopfdruck-beim-buecken',
     symptom: 'Druck im Kopf beim Bücken',
-    title: 'Kopfdruck beim Bücken: Warum drückt es, wenn ich mich vornüberbeuge?',
-    metaDesc: 'Beim Bücken baut sich Druck im Kopf oder hinter den Augen auf? Häufig stecken die Nebenhöhlen dahinter, manchmal Blutdruck oder Kopfschmerzformen. So ordnest du es ein.',
+    title: 'Kopfschmerzen & Kopfdruck beim Bücken: Ursachen',
+    metaDesc: 'Kopfschmerzen oder Druck im Kopf beim Bücken? Häufig sind die Nebenhöhlen beteiligt. Erfahre mögliche Ursachen, Warnzeichen und wann du es abklären solltest.',
     h1: 'Warum habe ich Druck im Kopf, wenn ich mich bücke?',
     category: 'Kopf & Sinne',
     lead: 'Du bückst dich nach den Schuhen und im Kopf baut sich ein dumpfer Druck auf, oft hinter Stirn, Augen oder Wangen. Beim Aufrichten lässt er langsam nach. Dieses positionsabhängige Muster hat meist fassbare Gründe, allen voran die Nebenhöhlen. Hier lernst du die Muster zu unterscheiden.',
@@ -2410,7 +2410,7 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'durchfall-am-morgen',
     symptom: 'Durchfall am Morgen',
-    title: 'Durchfall am Morgen: Warum gerade morgens?',
+    title: 'Durchfall am Morgen: Ursachen & wann abklären?',
     metaDesc: 'Morgendlicher Durchfall kann durch Ernährung, Kaffee, Stress oder Darmerkrankungen entstehen. Erfahre, worauf du achten solltest.',
     h1: 'Durchfall am Morgen',
     category: 'Bauch & Verdauung',
