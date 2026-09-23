@@ -249,6 +249,74 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' }],
   },
   {
+    slug: 'gamma-gt-erhoeht',
+    title: 'Gamma-GT erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'Die Gamma-GT (GGT) ist ein empfindlicher Leber- und Gallenwege-Wert. Warum sie erhöht sein kann, was ein isolierter Wert aussagt und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Einzelwerts Gamma-GT/GGT; der Sammelbefund bleibt bei leberwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Generisches "Leberwerte erhöht" gehört /gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/ (dort ist GGT ein Listenpunkt). Diese Seite besitzt NUR den GGT-Einzelwert-Intent und verlinkt für das Gesamtbild dorthin.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>Die Gamma-GT (GGT, Gamma-Glutamyltransferase) ist ein Enzym, das vor allem in Leber und Gallenwegen vorkommt. Sie reagiert empfindlich auf viele Einflüsse, von Alkohol über Medikamente bis zu Leber- und Gallenwegserkrankungen. Genau deshalb gilt: Eine erhöhte Gamma-GT ist ein <strong>unspezifischer Hinweis, keine Diagnose</strong>. Was sie bedeutet, ergibt sich erst zusammen mit den übrigen Leberwerten, deiner Situation und dem Verlauf.</p>`,
+    bodyHtml: `<h2>Was ist die Gamma-GT?</h2>
+<p>Das Enzym sitzt in den Zellmembranen von Leber und Gallenwegen. Werden diese Zellen gereizt oder geschädigt oder staut sich Galle, steigt die Gamma-GT im Blut. Sie ist damit ein empfindlicher, aber wenig spezifischer Marker: Sie zeigt an, dass etwas auf Leber oder Gallenwege wirkt, nicht was.</p>
+<h2>Warum kann die Gamma-GT erhöht sein?</h2>
+<ul>
+<li><strong>Alkohol:</strong> regelmässiger Konsum ist eine der häufigsten Erklärungen; der Wert kann schon bei Mengen steigen, die nicht als Missbrauch gelten.</li>
+<li><strong>Medikamente:</strong> zahlreiche Wirkstoffe erhöhen die Gamma-GT als bekannte Begleitwirkung. Setze deswegen nie selbstständig ein Medikament ab, sondern besprich die Liste ärztlich.</li>
+<li><strong>Stoffwechsel und Fettleber:</strong> Übergewicht und eine nicht-alkoholische Fettleber gehören zu den häufigsten Ursachen dauerhaft erhöhter Werte.</li>
+<li><strong>Erkrankungen von Leber und Gallenwegen:</strong> von Entzündungen bis zum Gallestau; dafür gibt es meist weitere Hinweise in Untersuchung und Labor.</li>
+</ul>
+<h2>Isolierte Gamma-GT oder mehrere auffällige Leberwerte?</h2>
+<p>Eine isoliert erhöhte Gamma-GT bei sonst normalen Werten hat oft eine harmlose oder gut adressierbare Erklärung und wird häufig zuerst kontrolliert. Sind gleichzeitig ALT, AST, alkalische Phosphatase oder Bilirubin verändert, wird gezielter gesucht. Das Gesamtbild erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>.</p>`,
+    notProofHtml: `<p>Eine erhöhte Gamma-GT beweist keinen Alkoholmissbrauch, keine bestimmte Lebererkrankung und keinen Gallenstein. Sie sagt auch nicht, wie gut die Leber insgesamt arbeitet. Umgekehrt schliesst ein normaler Wert eine Lebererkrankung nicht sicher aus.</p>`,
+    followUpHtml: `<p>Häufige nächste Schritte: das Gespräch über Alkohol, Medikamente und Stoffwechselfaktoren, eine <strong>Kontrollmessung</strong> nach einigen Wochen, die übrigen Leberwerte, je nach Bild ein Ultraschall des Oberbauchs. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören: Gelbfärbung von Haut oder Augen, sehr dunkler Urin oder entfärbter Stuhl, starke Oberbauchschmerzen, Fieber mit Schmerzen im rechten Oberbauch, ausgeprägte Müdigkeit mit Übelkeit oder eine deutliche allgemeine Verschlechterung.</p>`,
+    integrativeContextHtml: `<p>Leberwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert die Gamma-GT nicht, und der TCM-Begriff Leber ist nicht mit dem Laborwert gleichzusetzen. Erst wenn die Ursache ärztlich eingeordnet ist, kann sich die Frage nach einer komplementären Begleitung konkreter Beschwerden stellen.</p>`,
+    relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'nierenwerte-erhoeht',
+    title: 'Nierenwerte erhöht: Was bedeutet der Befund?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: '"Nierenwerte" meint meist Kreatinin und eGFR. Was ein erhöhter Wert aussagen kann, welche Faktoren mitspielen und warum ein Einzelwert keine Diagnose ist.',
+    primaryPurpose: 'Einordnung des Sammelbefunds "Nierenwerte erhöht" (Kreatinin/eGFR), keine Nierenerkrankungs-Seite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner: keine Nieren-Beschwerden-Seite und kein Befund-Leaf vorhanden (geprüft). Sollte später eine Nierenerkrankungs-Seite entstehen, übernimmt sie Erkrankung/Therapie; diese Seite bleibt Befund-Einordnung.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>"Nierenwerte" ist ein Sammelbegriff aus dem Alltag. Gemeint sind meist das <strong>Kreatinin</strong> im Blut und die daraus berechnete <strong>eGFR</strong>, ein Schätzwert für die Filterleistung der Nieren. Ein erhöhtes Kreatinin (beziehungsweise eine erniedrigte eGFR) kann auf eine eingeschränkte Nierenfunktion hinweisen, hat aber auch andere mögliche Erklärungen. Ein einzelner Wert ist deshalb keine Diagnose einer Nierenerkrankung.</p>`,
+    bodyHtml: `<h2>Was wird gemessen?</h2>
+<p>Kreatinin ist ein Abbauprodukt des Muskelstoffwechsels, das über die Nieren ausgeschieden wird. Arbeiten die Nieren weniger, steigt es im Blut. Die eGFR wird aus dem Kreatinin zusammen mit Alter und Geschlecht berechnet und schätzt, wie viel die Nieren pro Minute filtern. Je nach Labor gehören auch Harnstoff oder weitere Werte zum Bild.</p>
+<h2>Warum können Nierenwerte erhöht sein?</h2>
+<ul>
+<li><strong>Flüssigkeitsmangel:</strong> zu wenig trinken, Durchfall, Erbrechen oder starkes Schwitzen können das Kreatinin vorübergehend erhöhen.</li>
+<li><strong>Muskelmasse und Belastung:</strong> viel Muskelmasse oder intensives Training können den Wert anheben, ohne dass die Nieren krank sind; bei sehr wenig Muskelmasse kann er umgekehrt zu gut aussehen.</li>
+<li><strong>Medikamente:</strong> bestimmte Schmerzmittel, einige Blutdruck- und andere Medikamente beeinflussen die Nierenwerte. Die Medikamentenliste gehört deshalb ins ärztliche Gespräch; setze nichts selbstständig ab.</li>
+<li><strong>Akute oder chronische Nierenfunktionsstörung:</strong> ob es sich um eine vorübergehende Reaktion oder eine dauerhafte Einschränkung handelt, zeigt erst der Verlauf über Wiederholungsmessungen.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen der Vergleich mit früheren Werten, eine Kontrollmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), oft ein Urintest auf Eiweiss und der klinische Kontext wie Blutdruck und Diabetes. Ein einmalig leicht auffälliger Wert bei gutem Befinden wird häufig zuerst kontrolliert.</p>`,
+    notProofHtml: `<p>Ein einmalig erhöhtes Kreatinin beweist keine chronische Nierenerkrankung, und eine einzelne eGFR-Zahl ist keine Prozentangabe der "Nierengesundheit". Umgekehrt schliessen normale Werte eine beginnende Nierenschädigung nicht sicher aus; dafür braucht es je nach Risiko zusätzlich den Urin-Befund.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Wiederholungsmessung</strong>, ein Urintest (u.a. auf Eiweiss/Albumin), Blutdruckkontrolle, die Durchsicht der Medikamente und je nach Situation ein Ultraschall der Nieren. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah medizinisch beurteilt gehören: deutlich weniger oder kein Urin, starke Wassereinlagerungen, Atemnot, Übelkeit mit Verwirrtheit, Flankenschmerzen mit Fieber oder ein rasch angestiegener Wert. Solche Konstellationen können auf eine akute Nierenschädigung oder eine Infektion hinweisen.</p>`,
+    integrativeContextHtml: `<p>Nierenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kreatinin und eGFR nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+    ],
+  },
+  {
     slug: 'ferritin-zu-niedrig',
     title: 'Ferritin zu niedrig: Was bedeutet der Laborwert?',
     category: 'laborwert',
@@ -285,16 +353,36 @@ export const befundeWerte: BefundWert[] = [
     ],
   },
   {
-    slug: 'hba1c-leicht-erhoeht',
-    title: 'HbA1c leicht erhöht: Was bedeutet das?',
+    slug: 'hba1c-erhoeht',
+    title: 'HbA1c erhöht: Was bedeutet der Langzeitwert?',
     category: 'laborwert',
-    status: 'planned',
-    indexable: false,
-    deck: 'Was der Langzeit-Blutzuckerwert aussagt und wie ein leicht erhöhter HbA1c eingeordnet wird.',
-    primaryPurpose: 'Einordnung eines Laborbefunds im Graubereich, keine Diabetes-Erkrankungsseite.',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-23',
+    deck: 'HbA1c spiegelt den durchschnittlichen Blutzucker der letzten Wochen bis Monate. Was ein erhöhter Wert aussagt, was nicht, und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Langzeit-Blutzuckerwerts, keine Diabetes-Erkrankungsseite.',
     canonicalIntentOwner: [],
-    overlapNotes: 'Kein bestehender Owner: keine Diabetes-/Prädiabetes-Beschwerden-Seite vorhanden (geprüft). Sollte eine entstehen, übernimmt sie Erkrankung/Therapie; diese Seite bleibt Befund-Einordnung.',
+    overlapNotes: 'Kein bestehender Owner: keine Diabetes-/Prädiabetes-Beschwerden-Seite vorhanden (geprüft). Slug umbenannt am 23.09.2026 von hba1c-leicht-erhoeht (nie live); "leicht erhöht" als Einordnungsfrage im Text. Abgrenzung zu blutzucker-erhoeht (Momentaufnahme) beidseitig verlinkt und dokumentiert.',
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Diabetologie)',
+    shortAnswerHtml: `<p>HbA1c ist der sogenannte Langzeit-Blutzuckerwert: Er zeigt, wie viel Zucker in den letzten rund zwei bis drei Monaten durchschnittlich an den roten Blutfarbstoff gebunden war. Ein erhöhter Wert ist damit aussagekräftiger als eine einzelne Blutzuckermessung, aber auch er ist <strong>für sich allein keine Diagnose</strong>. Was er bedeutet, hängt vom Referenzbereich, von Wiederholungsmessungen, Begleitfaktoren und deiner gesamten Situation ab.</p>`,
+    bodyHtml: `<h2>Was misst HbA1c?</h2>
+<p>Glukose bindet sich im Blut an den roten Blutfarbstoff (Hämoglobin). Je höher der Blutzucker über Wochen ist, desto grösser ist der Anteil dieses gezuckerten Hämoglobins. Weil rote Blutkörperchen rund drei Monate leben, bildet der Wert ein Zeitfenster von etwa acht bis zwölf Wochen ab, mit stärkerem Gewicht auf den letzten Wochen.</p>
+<h2>Warum HbA1c und Blutzucker nicht dasselbe sind</h2>
+<p>Eine einzelne Blutzuckermessung ist eine Momentaufnahme: Sie hängt stark davon ab, wann und unter welchen Bedingungen gemessen wurde. HbA1c gleicht solche Schwankungen aus. Beide Werte ergänzen sich, ersetzen sich aber nicht; wie eine Momentaufnahme eingeordnet wird, erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/">Blutzucker erhöht</a>.</p>
+<h2>Was einen erhöhten HbA1c beeinflussen kann</h2>
+<ul>
+<li><strong>Blutzuckerregulation:</strong> Wiederholt erhöhte Werte können auf eine gestörte Regulation bis hin zu einem Diabetes hinweisen. Die Diagnose folgt definierten Kriterien und meist einer Bestätigungsmessung.</li>
+<li><strong>Leicht erhöhte Werte im Graubereich:</strong> Sie bedeuten nicht automatisch eine Erkrankung, sind aber ein Anlass, Risiko und Verlauf ärztlich zu besprechen.</li>
+<li><strong>Störfaktoren:</strong> Zustände, die die Lebensdauer der roten Blutkörperchen verändern (etwa Blutarmut, Eisenmangel oder bestimmte Blutkrankheiten), können den Wert verfälschen, in beide Richtungen. Auch das gehört in die ärztliche Beurteilung.</li>
+</ul>`,
+    notProofHtml: `<p>Ein einzelner erhöhter HbA1c beweist keinen Diabetes und sagt nichts darüber, wie sich dein Blutzucker an einem bestimmten Tag verhält. Umgekehrt schliesst ein unauffälliger HbA1c kurzfristige Blutzuckerspitzen nicht aus. Und er erklärt aktuelle Beschwerden wie Müdigkeit oder Durst nicht automatisch; das gehört klinisch eingeordnet.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Bestätigungs- oder Verlaufsmessung</strong>, je nach Situation Nüchternblutzucker oder weitere Werte, das Gespräch über Risikofaktoren (Gewicht, Blutdruck, Blutfette, Familiengeschichte) und daraus die gemeinsame Entscheidung über Kontrollintervalle. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Der HbA1c-Wert selbst ist kein Notfall. Rasch medizinisch beurteilt gehören dagegen ausgeprägter Durst mit häufigem Wasserlassen, ungewollter Gewichtsverlust, starke Müdigkeit mit Übelkeit oder Erbrechen, tiefe oder auffällige Atmung sowie Verwirrtheit, unabhängig vom Laborwert.</p>`,
+    integrativeContextHtml: `<p>Die Beurteilung des Zuckerstoffwechsels und die Entscheidung über eine Behandlung gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert HbA1c nicht und ersetzt weder Diagnostik noch eine notwendige Therapie. Erst auf Basis der ärztlichen Einordnung kann sich die Frage stellen, ob eine komplementäre Begleitung bei konkreten Beschwerden sinnvoll ist.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
+    ],
   },
   {
     slug: 'blutzucker-erhoeht',
@@ -325,6 +413,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Sehr hohe gemessene Werte zusammen mit starker Übelkeit, Erbrechen, deutlicher Austrocknung, tiefer oder auffälliger Atmung, Verwirrtheit oder ausgeprägter allgemeiner Verschlechterung benötigen rasche medizinische Abklärung.</p>`,
     integrativeContextHtml: `<p>Ein erhöhter Blutzucker ist ein moderner medizinischer Messwert und lässt sich nicht direkt in ein TCM-Muster übersetzen. Akupunktur ersetzt weder Diagnostik noch notwendige medizinische Behandlung einer gestörten Blutzuckerregulation.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/', label: 'HbA1c erhöht: Was bedeutet der Langzeitwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
     ],

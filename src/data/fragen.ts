@@ -115,7 +115,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'nebenwirkungen',
         q: 'Welche Nebenwirkungen hat Akupunktur?',
-        a: '<p>Akupunktur durch ausgebildete Fachpersonen ist sehr sicher. Zwei grosse britische Untersuchungen mit zusammen über 66&#8217;000 Behandlungen fanden keine schwerwiegenden Zwischenfälle. Häufige, harmlose Reaktionen sind: kleine Blutergüsse an Einstichstellen, ein kurzer Schwindel beim Aufstehen, Müdigkeit nach der Sitzung und selten eine vorübergehende Verstärkung der Beschwerden. Mehr zu den zwei häufigsten Reaktionen: <a href="/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/">blaue Flecken</a> und <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">Müdigkeit</a>.</p>',
+        a: '<p>Akupunktur durch ausgebildete Fachpersonen ist sehr sicher. Zwei grosse britische Untersuchungen mit zusammen über 66&#8217;000 Behandlungen fanden keine schwerwiegenden Zwischenfälle. Häufige, harmlose Reaktionen sind: kleine Blutergüsse an Einstichstellen, ein kurzer Schwindel beim Aufstehen, Müdigkeit nach der Sitzung und selten eine vorübergehende Verstärkung der Beschwerden. Mehr zu den zwei häufigsten Reaktionen: <a href="/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/">blaue Flecken</a> und <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">Müdigkeit</a>. Die vollständige Übersicht findest du unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Akupunktur: Nebenwirkungen</a>.</p>',
       },
       {
         id: 'hygiene',
@@ -368,6 +368,57 @@ export const fragen: Frage[] = [
       { href: '/koerpersignale/', label: 'Körpersignale einordnen', cat: 'Körpersignale' },
       { href: '/beschwerden/', label: 'Beschwerden A–Z', cat: 'Beschwerden' },
       { href: '/gesundheitsbibliothek/', label: 'Gesundheitsbibliothek', cat: 'Bibliothek' },
+    ],
+  },
+  {
+    slug: 'starke-reaktion-nach-akupunktur',
+    question: 'Ist eine starke Reaktion nach Akupunktur normal?',
+    title: 'Starke Reaktion nach Akupunktur: Was ist noch normal?',
+    metaDesc: 'Müdigkeit, Kreislauf, kurz stärkere Beschwerden: Welche Reaktionen nach Akupunktur vorkommen, was nicht als normale Reaktion gilt und wann du dich melden solltest.',
+    kurz: '<p>Leichte Reaktionen nach einer Akupunktursitzung kommen vor: Müdigkeit, ein Gefühl von Schwere, lokale Empfindlichkeit an Einstichstellen oder ein kurzes Schwanken der bestehenden Beschwerden. Sie klingen in der Regel innert ein bis zwei Tagen ab. Eine deutliche, anhaltende oder ganz neue Verschlechterung ist dagegen keine normale Behandlungsreaktion: Melde dich in dem Fall bei deiner Praxis oder lass die Beschwerden medizinisch einordnen.</p>',
+    bodyHtml: '<h2>Welche Reaktionen häufig und vorübergehend sind</h2>\n<p>Der Körper reagiert auf die Behandlung, und das darf spürbar sein. Am häufigsten sind <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">Müdigkeit am Behandlungstag</a>, ein dumpfes Druck- oder Muskelkatergefühl an behandelten Stellen, <a href="/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/">kleine Blutergüsse</a> und kurzer Schwindel beim Aufstehen von der Liege. Auch ein vorübergehendes Schwanken der bestehenden Beschwerden wird beschrieben, meist für einen bis zwei Tage. All das braucht normalerweise keine Behandlung, nur Ruhe und Flüssigkeit.</p>\n<h2>Was keine normale Reaktion ist</h2>\n<p>Der Begriff Erstverschlimmerung wird manchmal so verwendet, als wäre jede Verschlechterung ein gutes Zeichen. So ist es nicht, und eine Heilkrise ist kein belegtes medizinisches Konzept. Nicht als normale Reaktion gelten: starke oder zunehmende Schmerzen, eine deutliche Verschlechterung über mehr als zwei Tage, Fieber, eine heisse, geschwollene oder nässende Einstichstelle, anhaltende Taubheit oder Kribbeln, Atemnot oder neue Symptome, die vor der Behandlung nicht da waren.</p>\n<h2>Wann du dich bei der Praxis melden solltest</h2>\n<p>Im Zweifel immer. Deine Therapeutin will wissen, wie dein Körper reagiert hat, auch weil sich die Behandlung anpassen lässt: weniger Nadeln, kürzere Liegezeit, sanftere Stimulation. Melde dich besonders dann, wenn eine Reaktion dich beunruhigt, länger als zwei Tage anhält oder nach jeder Sitzung stärker ausfällt.</p>\n<h2>Wann eine ärztliche Beurteilung dazugehört</h2>\n<p>Rasch medizinisch abklären lassen solltest du Atemnot oder Brustschmerzen nach einer Behandlung am Brustkorb, zunehmende starke Schmerzen, Zeichen einer Infektion (Fieber, heisse geschwollene Stelle), anhaltende neurologische Symptome wie Taubheit oder Schwäche sowie alles, was sich rasch verschlechtert. Bei akuter Atemnot oder Bewusstseinsstörung gilt in der Schweiz: Notruf 144. Mehr zu einzelnen Nervensymptomen unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/">Nerv getroffen?</a></p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann zuerst zum Arzt?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'akupunktur-nerv-getroffen',
+    question: 'Kann bei der Akupunktur ein Nerv getroffen werden?',
+    title: 'Akupunktur: Nerv getroffen? Elektrisierendes Gefühl einordnen',
+    metaDesc: 'Ein kurzes elektrisierendes Gefühl beim Nadeln kommt vor. Wann es harmlos ist, wann anhaltende Taubheit oder Schwäche abgeklärt gehören und was sofort zu tun ist.',
+    kurz: '<p>Ein kurzes elektrisierendes oder ausstrahlendes Gefühl beim Setzen einer Nadel kommt vor: Die Nadel hat einen Nerv gereizt. Sag es sofort, dann wird die Nadel umplatziert; in den allermeisten Fällen verschwindet das Gefühl danach vollständig. Anhaltende Taubheit, Kribbeln, Schwäche oder einschiessende Schmerzen nach der Behandlung sind dagegen nicht normal und gehören medizinisch beurteilt.</p>',
+    bodyHtml: '<h2>Was beim Nadeln normal sein kann</h2>\n<p>Akupunktur arbeitet bewusst in der Nähe von Nervenstrukturen. Ein dumpfes, ziehendes oder kurz ausstrahlendes Gefühl (in der TCM als De-Qi beschrieben) gehört für viele zur Behandlung. Auch ein einzelner kurzer elektrisierender Impuls beim Einstich bedeutet meist nur, dass die Nadel einen Hautnerv gestreift hat. Entscheidend ist der Verlauf: Klingt das Gefühl nach dem Umsetzen der Nadel ab, ist in der Regel nichts passiert.</p>\n<h2>Was du während der Behandlung tun solltest</h2>\n<p>Melde ein elektrisierendes, brennendes oder stark ausstrahlendes Gefühl sofort, auch während der Ruhezeit. Die Fachperson platziert die Nadel dann um oder entfernt sie. Aushalten ist hier falsch: Eine korrekt sitzende Nadel darf spürbar sein, aber nicht elektrisch schmerzen.</p>\n<h2>Wann Symptome abgeklärt gehören</h2>\n<p>Nicht normal ist, wenn nach der Behandlung Taubheit, Kribbeln, ein pelziges Gefühl, Muskelschwäche oder einschiessende Schmerzen bestehen bleiben, über Stunden anhalten oder zunehmen. Solche Symptome können auf eine relevante Nervenreizung hinweisen und gehören zeitnah medizinisch beurteilt, auch damit andere Ursachen nicht übersehen werden. Wir spielen das nicht herunter: Bleibende Nervenschäden durch Akupunktur sind selten, aber anhaltende neurologische Symptome sind nie einfach abzuwarten.</p>\n<h2>Sofort reagieren</h2>\n<p>Bei plötzlicher Schwäche oder Lähmung, Gefühlsverlust einer ganzen Region, starken einschiessenden Schmerzen oder Atemnot nach einer Behandlung am Brustkorb: rasche medizinische Beurteilung, im Notfall Telefon 144. Informiere zusätzlich deine Praxis, damit der Vorfall dokumentiert und die Behandlung angepasst wird.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/', label: 'Ist eine starke Reaktion nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'akupunktur-nebenwirkungen',
+    question: 'Welche Nebenwirkungen hat Akupunktur?',
+    title: 'Akupunktur Nebenwirkungen: von harmlos bis selten',
+    metaDesc: 'Müdigkeit, blaue Flecken, Kreislauf: die häufigen Reaktionen auf Akupunktur, die seltenen ernsten Komplikationen und wann ärztliche Hilfe angezeigt ist.',
+    kurz: '<p>Akupunktur durch ausgebildete, anerkannte Fachpersonen gilt als sehr sichere Behandlung. Die häufigen Nebenwirkungen sind mild und vorübergehend: Müdigkeit, kleine Blutergüsse, kurzes Schwindelgefühl, lokale Empfindlichkeit. Ernste Komplikationen wie Infektionen oder Verletzungen innerer Organe sind bei korrekter Technik sehr selten, aber nicht unmöglich; deshalb gehört die Behandlung in geschulte Hände, und anhaltende oder starke Symptome gehören abgeklärt.</p>',
+    bodyHtml: '<h2>Häufig und harmlos</h2>\n<p>Am häufigsten sind <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">Müdigkeit nach der Sitzung</a>, <a href="/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/">kleine blaue Flecken</a> an Einstichstellen, ein dumpfes Druckgefühl oder leichter Muskelkater an behandelten Punkten und kurzer Schwindel beim Aufstehen. Auch ein kurzes Schwanken der bestehenden Beschwerden kommt vor; mehr dazu unter <a href="/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/">Starke Reaktion nach Akupunktur</a>. Diese Reaktionen klingen von selbst ab.</p>\n<h2>Kreislauf</h2>\n<p>Selten reagiert der Kreislauf während der Behandlung: Schwitzen, Flauheit, im Extremfall eine kurze Ohnmacht (vasovagale Reaktion). Das Risiko sinkt, wenn du nicht nüchtern kommst und liegend behandelt wirst. Sag sofort Bescheid, wenn dir flau wird.</p>\n<h2>Nerven</h2>\n<p>Ein kurzes elektrisierendes Gefühl beim Nadeln ist meist harmlos und verschwindet nach dem Umsetzen der Nadel. Anhaltende Taubheit, Kribbeln oder Schwäche sind dagegen nicht normal; wie du das einordnest, steht unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/">Nerv getroffen?</a></p>\n<h2>Infektionen</h2>\n<p>Mit sterilen Einwegnadeln, wie sie in der Schweiz bei EMR-/ASCA-anerkannten Fachpersonen Standard sind, sind Infektionen an Einstichstellen sehr selten. Eine Stelle, die heiss wird, anschwillt, zunehmend schmerzt oder nässt, gehört trotzdem ärztlich angeschaut.</p>\n<h2>Seltene, aber ernste Komplikationen</h2>\n<p>Sehr selten, aber wichtig zu kennen: Bei unsachgemäss tiefer Nadelung am Brustkorb kann die Lunge verletzt werden (Pneumothorax), auch Verletzungen anderer Organe oder grösserer Gefässe sind beschrieben. Grosse Untersuchungen mit zehntausenden Behandlungen durch geschulte Fachpersonen fanden solche Ereignisse nicht oder extrem selten; sie sind vor allem ein Argument für qualifizierte Behandlung, nicht gegen Akupunktur. Atemnot, stechende Brustschmerzen oder starker Husten nach einer Behandlung am Oberkörper sind ein Notfallzeichen: Telefon 144.</p>\n<h2>Wann ärztliche Hilfe angezeigt ist</h2>\n<p>Bei allem, was stark ist, zunimmt oder anhält: Infektionszeichen, anhaltende neurologische Symptome, Atemnot, Brustschmerz, eine deutliche Verschlechterung über mehr als zwei Tage. Für die Einordnung im Alltag gilt: Deine Praxis will von jeder ungewöhnlichen Reaktion wissen.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/', label: 'Sind blaue Flecken nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?', cat: 'Frage' },
     ],
   },
 ];

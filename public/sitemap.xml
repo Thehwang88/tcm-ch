@@ -1033,6 +1033,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -1040,6 +1052,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1058,6 +1076,18 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1106,6 +1136,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

@@ -1,13 +1,13 @@
 {
   "generated": "2026-09-23",
   "totals": {
-    "healthPages": 348,
+    "healthPages": 354,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 9,
-      "question": 13,
+      "befund": 12,
+      "question": 16,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
@@ -150,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 16
     },
     {
@@ -260,7 +260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 15
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 180,
+      "inboundContentLinks": 186,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/",
@@ -1130,8 +1130,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/",
@@ -1140,7 +1140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -1150,7 +1150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 5
     },
     {
@@ -1164,13 +1164,33 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/",
+      "type": "befund",
+      "title": "Gamma-GT erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/",
+      "type": "befund",
+      "title": "HbA1c erhöht: Was bedeutet der Langzeitwert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/",
       "type": "befund",
       "title": "Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -1182,6 +1202,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/",
+      "type": "befund",
+      "title": "Nierenwerte erhöht: Was bedeutet der Befund? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/",
@@ -1200,8 +1230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 32,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
@@ -1212,6 +1242,26 @@
       "inSitemap": true,
       "inboundContentLinks": 6,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/",
+      "type": "question",
+      "title": "Akupunktur Nebenwirkungen: von harmlos bis selten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/",
+      "type": "question",
+      "title": "Akupunktur: Nerv getroffen? Elektrisierendes Gefühl einordnen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur/",
@@ -1230,7 +1280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 7
     },
     {
@@ -1260,7 +1310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 8
     },
     {
@@ -1270,7 +1320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 8
     },
     {
@@ -1290,8 +1340,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/",
+      "type": "question",
+      "title": "Starke Reaktion nach Akupunktur: Was ist noch normal? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
@@ -1300,7 +1360,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 9
     },
     {
@@ -1310,7 +1370,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 7
     },
     {
@@ -2630,7 +2690,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 227,
+      "inboundContentLinks": 230,
       "outboundHealthLinks": 10
     },
     {
