@@ -1,8 +1,8 @@
 ---
-// /visuals/[slug]/handout/ — druckbare A4-Hochformat-Version jedes Live-Visuals
+// /visuals/[slug]/handout/ - druckbare A4-Hochformat-Version jedes Live-Visuals
 // ("Als PDF herunterladen" im Viewer). Bewusst OHNE Site-Chrome/Interaktion:
 // ein professionelles Patienten-Handout. ?print=1 öffnet direkt den Druckdialog
-// (Browser "Als PDF sichern"). noindex,nofollow — reines Werkzeug.
+// (Browser "Als PDF sichern"). noindex,nofollow - reines Werkzeug.
 import QRCode from 'qrcode';
 import VisualImg from '../../../components/visuals/VisualImg.astro';
 import { liveVisuals } from '../../../data/visuals';
@@ -44,7 +44,7 @@ const panels = [
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <!-- Bildschirm-Werkzeugleiste — erscheint nicht im Druck -->
+    <!-- Bildschirm-Werkzeugleiste - erscheint nicht im Druck -->
     <div class="toolbar" data-noprint>
       <a href={`/visuals/${v.slug}/`}>&larr; Zurück zum Visual</a>
       <button type="button" id="print-btn">Drucken / Als PDF sichern</button>

@@ -1,10 +1,10 @@
 ---
-// Home — faithful 1:1 static reproduction of the LIVE tcm.ch home.
+// Home - faithful 1:1 static reproduction of the LIVE tcm.ch home.
 // The body is the SPA home verbatim: its own header (#mainNav) + #home-content +
 // <footer> + burger (#siteDrawer). Full SPA CSS bundled (public/home.css, header rules
 // KEPT); interactivity in public/home.js (nav() routes the SPA's nav() calls to the DE
 // Astro pages). Only functional adaptations: value=slug select, stats baked, Turnstile
-// env-gated. NO voice cleanup, NO trimming — wording/layout identical to live.
+// env-gated. NO voice cleanup, NO trimming - wording/layout identical to live.
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';

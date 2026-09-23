@@ -31,7 +31,7 @@ const relatedConditions = related.map(conditionBySlug).filter(Boolean) as Condit
 // Therapies commonly used for this condition (cross-link back to therapy pages).
 const relevantTherapies = therapiesForCondition(slug);
 
-// Hero image — same asset the DE Beschwerde page uses.
+// Hero image - same asset the DE Beschwerde page uses.
 const image = conditionImages[slug];
 
 // ── JSON-LD: MedicalWebPage + FAQPage + BreadcrumbList ──
@@ -78,7 +78,7 @@ const breadcrumbLd = {
 <Layout title={title} description={description} path={path} schema={[medicalLd, faqLd, breadcrumbLd]}>
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch — Conditions</div>
+      <div class="eyebrow">TCM.ch - Conditions</div>
       <h1>{h1}</h1>
       <p class="lead">{lead}</p>
       <div class="hero__cta">

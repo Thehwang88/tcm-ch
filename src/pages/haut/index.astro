@@ -1,5 +1,5 @@
 ---
-// /haut — Sektions-Startseite «Haut & Gesicht».
+// /haut - Sektions-Startseite «Haut & Gesicht».
 // Zwei Aufgaben: die buchbaren Behandlungen sichtbar machen und den Artikel-Cluster
 // bündeln. Artikel kommen aus src/data/haut.ts, neue Einträge erscheinen automatisch.
 import LayoutDe from '../../layouts/LayoutDe.astro';
@@ -9,7 +9,7 @@ const path = '/haut';
 const title = 'Haut & Gesicht – Behandlungen und Wirkstoffe ehrlich erklärt | TCM.ch';
 const description = 'Gesichtsbehandlungen, Wirkstoffe und Hautthemen, fachlich eingeordnet von TCM.ch. Ohne Versprechen, die niemand halten kann.';
 
-// Buchbare Behandlungen — die eigentlichen Zielseiten des Clusters.
+// Buchbare Behandlungen - die eigentlichen Zielseiten des Clusters.
 const WA = 'https://wa.me/41775236122';
 
 const behandlungen = [
@@ -52,7 +52,7 @@ const zuordnung = [
   { thema: 'Müdes Hautbild, Rötungsneigung, Stress', href: '/therapien/gesichtsakupunktur/', ziel: 'Gesichtsakupunktur', bei: true },
   { thema: 'Koreanische Kombibehandlung', href: '/therapien/hanbang/', ziel: 'Hanbang, 75 Minuten', bei: true },
   { thema: 'Augenringe, vaskulärer Typ', href: '/haut/augenringe/', ziel: 'Erst Typ bestimmen, dann Gua Sha', bei: true },
-  { thema: 'Pigmentflecken, Melasma', href: '/haut/pigmentflecken/', ziel: 'Dermatologisch abklären — wir ordnen ein', bei: false },
+  { thema: 'Pigmentflecken, Melasma', href: '/haut/pigmentflecken/', ziel: 'Dermatologisch abklären - wir ordnen ein', bei: false },
   { thema: 'Sichtbare Äderchen (Couperose)', href: '/haut/couperose/', ziel: 'Gefässlaser, nicht bei uns', bei: false },
   { thema: 'Aknenarben, Hautstruktur', href: '/haut/microneedling/', ziel: 'Microneedling, nicht bei uns', bei: false },
   { thema: 'Falten, Volumen, Kontur', href: '/haut/falten-gesicht/', ziel: 'Ärztliche Verfahren, nicht bei uns', bei: false },
@@ -69,7 +69,7 @@ if (rest.length) gruppen.push({ cat: 'Weitere Themen', items: rest });
 // Einleitungstexte pro Gruppe
 const INTRO: Record<string, string> = {
   'Wirkstoffe': 'Was tatsächlich in den Produkten steckt, welche Konzentration untersucht ist und womit sich was kombinieren lässt.',
-  'Methoden': 'Apparative und injizierbare Verfahren, sachlich erklärt — auch die, die wir selbst nicht anbieten.',
+  'Methoden': 'Apparative und injizierbare Verfahren, sachlich erklärt - auch die, die wir selbst nicht anbieten.',
   'Hautthemen': 'Von Pigmentflecken bis Couperose: erst die Form bestimmen, dann behandeln.',
   'K-Beauty': 'Koreanische Hautpflege stammt aus derselben Tradition, mit der wir arbeiten. Was daran Methode ist und was Marketing.',
 };
@@ -147,7 +147,7 @@ const schema = [
               </a>
             ))}
           </div>
-          <p class="m-note">Bei den grau markierten Themen sind wir nicht die richtige Adresse. Wir sagen dir trotzdem, was wir wissen — die Artikel dahinter ordnen ein, wohin du gehörst.</p>
+          <p class="m-note">Bei den grau markierten Themen sind wir nicht die richtige Adresse. Wir sagen dir trotzdem, was wir wissen - die Artikel dahinter ordnen ein, wohin du gehörst.</p>
         </div>
         <figure class="band">
           <img src="/images/haut-raum.webp" width="1536" height="1024" alt="Heller Behandlungsraum mit Liege, Tageslicht und beleuchteter Wandnische" loading="lazy" decoding="async">
@@ -166,7 +166,7 @@ const schema = [
                   <img src="/images/haut-najeon.webp" width="1400" height="933" alt="Perlmutt wird von Hand in schwarzen Lack eingelegt, koreanische Najeon-Technik" loading="lazy" decoding="async">
                   <img src="/images/haut-lackdose.webp" width="1400" height="933" alt="Fertige koreanische Lackdose mit Perlmutteinlage" loading="lazy" decoding="async">
                 </div>
-                <figcaption><strong>Najeon chilgi</strong> — Perlmutt in Lack, Koreas höchste Handwerkskunst. Dreissig Schichten, von Hand poliert, Monate Arbeit für ein Stück. Dieselbe Geduld steckt hinter der koreanischen Hautpflege: nicht die einzelne Anwendung zählt, sondern was sich über Monate aufbaut. Und dieselbe Tradition — Hanbang ist die Schwesterdisziplin der chinesischen Medizin, mit der wir arbeiten.</figcaption>
+                <figcaption><strong>Najeon chilgi</strong> - Perlmutt in Lack, Koreas höchste Handwerkskunst. Dreissig Schichten, von Hand poliert, Monate Arbeit für ein Stück. Dieselbe Geduld steckt hinter der koreanischen Hautpflege: nicht die einzelne Anwendung zählt, sondern was sich über Monate aufbaut. Und dieselbe Tradition - Hanbang ist die Schwesterdisziplin der chinesischen Medizin, mit der wir arbeiten.</figcaption>
               </figure>
             </div>
           </section>
@@ -181,9 +181,9 @@ const schema = [
                 <div class="story-text">
                   <div class="story-label">Koreanische Ästhetik</div>
                   <h2>Warum Perlmutt</h2>
-                  <p>Perlmutt entsteht nicht in einem Schritt. Die Muschel legt über Jahre hauchdünne Schichten übereinander, jede für sich fast durchsichtig. Erst die Summe bringt den Glanz — und der kommt nicht von der Oberfläche, sondern aus der Tiefe.</p>
+                  <p>Perlmutt entsteht nicht in einem Schritt. Die Muschel legt über Jahre hauchdünne Schichten übereinander, jede für sich fast durchsichtig. Erst die Summe bringt den Glanz - und der kommt nicht von der Oberfläche, sondern aus der Tiefe.</p>
                   <p>In Korea ist dieses Material seit Jahrhunderten das Sinnbild für höchste Handwerkskunst, und es ist auch das genaueste Bild für das, was koreanische Hautpflege eigentlich meint. Kein einzelnes Produkt, das über Nacht etwas verändert, sondern Schicht auf Schicht, über Monate, bis das Ergebnis von innen kommt.</p>
-                  <p class="story-note">Genau darum arbeiten wir in Serien statt in Einzelterminen — und sagen vorher, wie lange etwas dauert.</p>
+                  <p class="story-note">Genau darum arbeiten wir in Serien statt in Einzelterminen - und sagen vorher, wie lange etwas dauert.</p>
                 </div>
               </div>
             </div>

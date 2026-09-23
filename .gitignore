@@ -11,3 +11,6 @@ worker/
 
 # Claude Code local session/config
 .claude/
+
+Claude outputs/
+_png-backup/

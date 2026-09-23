@@ -7,7 +7,7 @@ const isDe = lang === 'de';
 // ── Single source of truth for the whole site header. Same markup/classes/CSS/
 // drawer for DE and EN; only labels + links differ. Order mirrors the DE SPA. ──
 const logoHref = isDe ? '/' : '/en/';
-const logoAria = isDe ? 'TCM.ch — Startseite' : 'TCM.ch — home';
+const logoAria = isDe ? 'TCM.ch - Startseite' : 'TCM.ch - home';
 
 const navLinks = isDe ? [
   { href: '/beschwerden/', label: 'Beschwerden' },
@@ -33,13 +33,13 @@ const drawerLangLabel = isDe ? 'English / EN' : 'Deutsch / DE';
 const ctaHref = isDe ? '/kontakt/' : '/en/contact/';
 const ctaLabel = isDe ? 'Jetzt Hilfe erhalten' : 'Request an appointment';
 const callLabel = isDe ? 'Anrufen' : 'Call';
-const drawerUtilLabel = isDe ? 'Für Fachpersonen / Zuweiser' : 'For professionals — referral form in German';
+const drawerUtilLabel = isDe ? 'Für Fachpersonen / Zuweiser' : 'For professionals - referral form in German';
 
 const arrow = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
 const cross = `<svg viewBox="0 0 32 32" width="1.15em" height="1.15em" style="display:inline-block;vertical-align:middle;margin-left:3px" aria-hidden="true"><rect width="32" height="32" rx="4" fill="#DA291C"/><rect x="6" y="13" width="20" height="6" fill="#fff"/><rect x="13" y="6" width="6" height="20" fill="#fff"/></svg>`;
 const waHref = `https://wa.me/${site.whatsapp}`;
 
-// EN drawer leaf lists — crawlable <a> for every EN hub child so leaves sit at
+// EN drawer leaf lists - crawlable <a> for every EN hub child so leaves sit at
 // depth 2 (drawer is on every page). DE uses its own header (DeHeader/header.html).
 const enDrawer = [
   { label: 'Conditions', hubHref: '/en/conditions/', children: [
@@ -68,7 +68,7 @@ const enDrawer = [
   { label: 'Locations', hubHref: '/en/locations/', children: [
     { href: '/en/locations/zuerich-oerlikon/', label: 'Zürich Oerlikon' },
     { href: '/en/locations/zuerich-hoengg/', label: 'Zürich Höngg' },
-    { href: '/en/locations/zuerich-city/', label: 'Zürich City' },
+    
     { href: '/en/locations/winterthur-muenzgasse/', label: 'Winterthur Münzgasse' },
     { href: '/en/locations/winterthur-marktgasse/', label: 'Winterthur Marktgasse' },
     { href: '/en/locations/st-gallen/', label: 'St. Gallen' },
@@ -94,7 +94,7 @@ const enDrawer = [
 ];
 const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>`;
 ---
-<!-- Header bar — mirrors the DE SPA #mainNav exactly (classes, spacing, typography, CTA, burger). -->
+<!-- Header bar - mirrors the DE SPA #mainNav exactly (classes, spacing, typography, CTA, burger). -->
 <nav id="mainNav">
   <div class="nav-inner">
     <a class="logo" href={logoHref} aria-label={logoAria}>
@@ -116,7 +116,7 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
   </div>
 </nav>
 
-<!-- Mobile drawer — mirrors the DE SPA #siteDrawer (right slide-in, overlay, header + plain links + CTA group). -->
+<!-- Mobile drawer - mirrors the DE SPA #siteDrawer (right slide-in, overlay, header + plain links + CTA group). -->
 <div id="drawerOverlay" aria-hidden="true"></div>
 <aside id="siteDrawer" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="drw-header">
@@ -238,7 +238,7 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
   .nav-links a:hover { color: var(--blue); }
 
   .nav-right { display: flex; align-items: center; flex-shrink: 0; }
-  /* Secondary utility link (referrers / professionals) — not part of the 5-item patient nav. */
+  /* Secondary utility link (referrers / professionals) - not part of the 5-item patient nav. */
   .nav-util { font-size: 13px; font-weight: 600; color: var(--mid); text-decoration: none; white-space: nowrap; margin-right: 12px; transition: color .15s ease; }
   .nav-util:hover { color: var(--blue); }
   .nav-util-lang { color: var(--muted); font-weight: 500; }
@@ -296,7 +296,7 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
   .drw-cta-secondary:hover { border-color: var(--blue); color: var(--blue); }
   .drw-cta-wa { color: var(--blue); border-color: rgba(37,211,102,.25); }
 
-  /* EN drawer accordions — native <details>, no JS. Every child is a crawlable <a>. */
+  /* EN drawer accordions - native <details>, no JS. Every child is a crawlable <a>. */
   .drw-en-acc { border: none; }
   .drw-en-sum { display: flex; align-items: center; gap: 10px; padding: 11px 24px; line-height: normal; font-family: var(--font-sans); font-size: 14.5px; font-weight: 500; color: #1a1a1a; cursor: pointer; list-style: none; user-select: none; transition: color .2s ease, background .2s ease; }
   .drw-en-sum::-webkit-details-marker { display: none; }

@@ -22,6 +22,9 @@ export interface Clinic {
   openingNote?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
   areaServed?: string[];
+  /** ISO-Datum (YYYY-MM-DD): erst ab diesem Tag als Terminoption im Termin-Funnel
+   *  angeboten (src/data/zuerich-termin.ts). Weglassen = Termine anfragbar. */
+  terminAb?: string;
 }
 
 export const clinics: Clinic[] = [
@@ -64,19 +67,6 @@ export const clinics: Clinic[] = [
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 },
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
-
-  { id: 'zuerich-city', name: 'Zürich City', city: 'Zürich', region: 'Zürich',
-    street: null, postalCode: null, phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opening 2028',
-    areaServed: ['Zürich', 'Küsnacht', 'Zollikon', 'Erlenbach', 'Männedorf', 'Schlieren', 'Dietikon', 'Urdorf'] },
-
-  // Bellevue: Adresse verifiziert, Eröffnung noch ohne Datum (Warteliste offen).
-  // geo = Stadtzentrum-Näherung wie bei den anderen Pre-Opening-Einträgen
-  // (identisch zuerich-city); präzise Koordinaten folgen mit der Eröffnung.
-  { id: 'zuerich-bellevue', name: 'Zürich Bellevue', city: 'Zürich', region: 'Zürich',
-    street: 'Rössligasse 8', postalCode: '8001', phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.3769, lng: 8.5417 }, openingSoon: true, openingNote: 'Opening soon',
-    areaServed: ['Zürich', 'Altstadt', 'Seefeld', 'Enge', 'Riesbach'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
@@ -127,7 +117,6 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'st-gallen':              { src: '/images/img-67b9921801f9.webp', alt: 'TCM.ch practitioners at the St. Gallen clinic' },
   'rorschach':              { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Rorschach' },
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Wil' },
-  'zuerich-city':           { src: '/images/img-376c0c830c84.webp', alt: 'TCM.ch treatment room with a view in Zürich' },
   'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
   'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },

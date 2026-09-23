@@ -3,7 +3,7 @@ import type { Standort } from '../../data/standorte';
 import { telHref } from '../../data/standorte';
 const { data } = Astro.props as { data: Standort };
 const address = `${data.nap.strasse}, ${data.nap.plz} ${data.nap.ort}`;
-// Intro prose only (intro + optional Einzugsgebiet). Anfahrt is deliberately NOT here —
+// Intro prose only (intro + optional Einzugsgebiet). Anfahrt is deliberately NOT here -
 // it lives once, in <UeberPraxis/>.
 const introHtml = data.intro.body + (data.intro.einzugsgebiet ?? '');
 ---

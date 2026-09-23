@@ -36,7 +36,7 @@ const supportedConditions = therapy.conditions
 // Related therapies for cross-linking (EN -> EN).
 const relatedTherapies = related.map(therapyBySlug).filter(Boolean) as Therapy[];
 
-// Hero image — same asset the DE therapy showcase uses.
+// Hero image - same asset the DE therapy showcase uses.
 const image = therapyImages[slug];
 
 // ── JSON-LD: MedicalProcedure + MedicalWebPage + FAQPage + BreadcrumbList ──
@@ -94,7 +94,7 @@ const breadcrumbLd = {
 <Layout title={title} description={description} path={path} schema={[procedureLd, medicalLd, faqLd, breadcrumbLd]}>
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch — Therapies</div>
+      <div class="eyebrow">TCM.ch - Therapies</div>
       <h1>{h1}</h1>
       <p class="lead">{lead}</p>
       <div class="hero__cta">

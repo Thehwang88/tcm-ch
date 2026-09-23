@@ -1,8 +1,8 @@
 ---
-// Master-Viewer der Visual Library — datengetrieben, wiederverwendbar für alle Visuals.
+// Master-Viewer der Visual Library - datengetrieben, wiederverwendbar für alle Visuals.
 // Desktop: beide Ansichten nebeneinander (Präsentationsmodus fürs Patientengespräch).
 // Mobile: eine grosse Ansicht + Normal/Vorfall-Umschalter. Hotspots in %, Labels/Pfeile
-// als echtes HTML/SVG — nie im Bild eingebacken.
+// als echtes HTML/SVG - nie im Bild eingebacken.
 import { visuals, imgSrc, type Visual } from '../../data/visuals';
 import VisualImg from './VisualImg.astro';
 
@@ -15,7 +15,7 @@ const { visual: v, qrSvg } = Astro.props;
 
 const controls = (v.hotspots ?? []);
 const markers = controls.filter((h) => h.view !== 'pain');
-// "Weiter erklären" — nur LIVE-Visuals, nie Links auf Draft-Seiten.
+// "Weiter erklären" - nur LIVE-Visuals, nie Links auf Draft-Seiten.
 const relatedLive = (v.related ?? [])
   .map((slug) => visuals.find((x) => x.slug === slug))
   .filter((x): x is Visual => !!x && x.status === 'live');
@@ -701,7 +701,7 @@ const single = panels.length === 1;
 </style>
 
 <style is:global>
-  /* Vollbild: Website-Chrome komplett ausblenden — nur das Visual.
+  /* Vollbild: Website-Chrome komplett ausblenden - nur das Visual.
      #mainNav/#siteDrawer = DE-Header (src/data/header.html), .wac = Desktop-
      WhatsApp-Concierge, .wa-fab/.scb-bar = mobile FABs/Sticky-CTA. */
   body.vv-fullscreen #mainNav,

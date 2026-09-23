@@ -1,13 +1,13 @@
 // ── Single source of truth für alle TCM.ch Therapeut:innen. ──
 // Profilseiten: /team/<slug>/ (src/pages/team/[slug].astro).
 // Teamkarten (Über-uns-Seite + Standortseiten) werden aus DIESEN Daten generiert
-// (teamCardHtml unten) — keine hartcodierten Karten mehr in ueber-uns-body.html.
+// (teamCardHtml unten) - keine hartcodierten Karten mehr in ueber-uns-body.html.
 //
 // Neue:r Therapeut:in = neuer Eintrag hier. Fertig.
 //
 // REGELN:
 // - Keine erfundenen Fakten. Nur eintragen, was verifiziert ist.
-// - Fehlende optionale Felder WEGLASSEN — die Profilseite lässt die Section dann aus.
+// - Fehlende optionale Felder WEGLASSEN - die Profilseite lässt die Section dann aus.
 // - Development-Placeholder in eckigen Klammern ("[Profiltext folgt]") sind erlaubt,
 //   um die Struktur vorzubereiten; isPlaceholder() erkennt sie, Schema.org lässt sie aus.
 // - standorte[] nur mit Slugs aus src/data/locations.ts (clinics[].id) befüllen,
@@ -56,13 +56,13 @@ export const TEAM_WHATSAPP = 'https://wa.me/41775236122';
 
 export const bookingHref = (t: Therapeut) => t.bookingUrl ?? TEAM_WHATSAPP;
 
-/** Development-Placeholder ("[…]‑Werte") — nie in Schema.org o. Ä. ausspielen. */
+/** Development-Placeholder ("[…]‑Werte") - nie in Schema.org o. Ä. ausspielen. */
 export const isPlaceholder = (s: string | undefined): boolean => !!s && s.trim().startsWith('[');
 
 export const therapeuten: Therapeut[] = [
   {
     // Beispielprofil mit vollständiger Placeholder-Struktur: zeigt alle Sections.
-    // Echte Daten ersetzen die [Platzhalter] 1:1 — Struktur bleibt.
+    // Echte Daten ersetzen die [Platzhalter] 1:1 - Struktur bleibt.
     slug: 'simon-stueve',
     name: 'Simon Stüve',
     titel: 'TCM-Therapeut',
@@ -171,12 +171,15 @@ export const therapeuten: Therapeut[] = [
     name: 'Seongsu Kim',
     titel: 'TCM-Therapeut',
     bild: '/images/Seongsu-Kim.png',
+    ortLabel: 'St. Gallen',
+    standorte: ['st-gallen'],
   },
   {
     slug: 'brenda-oviedo',
     name: 'Brenda Oviedo',
     titel: 'TCM-Therapeutin',
     bild: '/images/Brenda-new.png',
+    ortLabel: 'Zürich',
   },
 ];
 
@@ -189,7 +192,7 @@ const LOC_PIN =
   '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
 
 /**
- * Eine Teamkarte als HTML-String — komplette Karte klickbar → /team/<slug>/.
+ * Eine Teamkarte als HTML-String - komplette Karte klickbar → /team/<slug>/.
  * Nutzt die bestehenden .team-* Klassen aus public/home.css (Hover, Overlay,
  * mobile Darstellung inklusive). Wird auf /ueber-uns und den Legacy-
  * Standortseiten (st-gallen, winterthur-marktgasse, bottighofen) eingesetzt.

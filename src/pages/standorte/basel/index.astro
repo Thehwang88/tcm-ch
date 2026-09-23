@@ -1,5 +1,5 @@
 ---
-// /standorte/basel/ — vollwertige Standortseite auf dem Luzern-Template (das seinerseits
+// /standorte/basel/ - vollwertige Standortseite auf dem Luzern-Template (das seinerseits
 // auf St. Gallen basiert), im Pre-Opening-Modus (Eröffnung 2028, Adresse noch offen).
 //
 // Ersetzt den alten SPA-Leaf src/data/standort-leaves/basel.html (gelöscht), der einen
@@ -26,7 +26,7 @@ const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000
 // Kartendaten kommen aus symptomCards; der Heuschnupfen-Karte liegt die breitere
 // Zielseite /beschwerden/allergien-heuschnupfen/ zugrunde (nicht /beschwerden/heuschnupfen/).
 // schlafstoerungen und heuschnupfen kanonisieren auf andere URLs (siehe MERGED in
-// src/pages/beschwerden/[slug].astro) — hier direkt auf die kanonische Seite verlinken.
+// src/pages/beschwerden/[slug].astro) - hier direkt auf die kanonische Seite verlinken.
 const beschwerdenHref: Record<string, string> = { heuschnupfen: 'allergien-heuschnupfen', schlafstoerungen: 'schlafprobleme' };
 const beschwerden = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafstoerungen', 'stress-burnout', 'kinderwunsch', 'ischias', 'heuschnupfen']
   .map((slug) => ({ slug, href: beschwerdenHref[slug] ?? slug, c: symptomCards[slug] }))
@@ -43,7 +43,7 @@ const therapien = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'a
 
 // "Praxen in der Nähe": die nächstgelegenen bestehenden Standorte ab Basel.
 const nearby = [
-  { slug: 'zuerich-city', city: 'Zürich City', meta: 'Eröffnung 2028', desc: 'Zentral in Zürich, ebenfalls im Aufbau.' },
+  { slug: 'zuerich-bellevue', city: 'Zürich City', meta: 'In Vorbereitung', desc: 'Neuer Standort im Zentrum.' },
   { slug: 'zuerich-oerlikon', city: 'Zürich Oerlikon', meta: '8050', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
   { slug: 'winterthur-marktgasse', city: 'Winterthur Marktgasse', meta: '8400', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
 ];
@@ -106,7 +106,7 @@ const schema = [
         <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Basel</span></div>
         <span class="lu-badge">Standort Basel · Eröffnung 2028</span>
         <h1 class="lu-h1">TCM &amp; Akupunktur in <span class="lu-accent">Basel</span></h1>
-        <p class="lu-sub">Wir eröffnen 2028 eine Praxis in Basel, mit demselben Team und denselben Methoden wie an unseren dreizehn übrigen Standorten. Zentrale Lage, Bahnhof SBB in Gehdistanz geplant — die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
+        <p class="lu-sub">Wir eröffnen 2028 eine Praxis in Basel, mit demselben Team und denselben Methoden wie an unseren dreizehn übrigen Standorten. Zentrale Lage, Bahnhof SBB in Gehdistanz geplant - die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
         <div class="lu-cta-row">
           <a href="#warteliste" class="lu-btn-primary">Auf die Warteliste</a>
           <a href="/standorte/" class="lu-btn-ghost">Bestehende Standorte</a>
@@ -180,7 +180,7 @@ const schema = [
       <p style="margin-top:16px">Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich dein Akupunkteur eine ganze Stunde Zeit, hört zu, schaut sich Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, ob Akupunktur, Schröpfen, Tuina oder eine Kräuterrezeptur sinnvoll ist, und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter. Wie ein Termin Schritt für Schritt abläuft, was er kostet und was die Studien zu Akupunktur hergeben, steht ausführlich unter <a href="/wissen/tcm-basel-erfahrungen-ablauf/">Erfahrungen &amp; Ablauf</a>.</p>
       <p style="margin-top:16px">Behandelt wird auf Deutsch, Englisch, Französisch und Mandarin. In einer Stadt, in der viele für Pharma, Uni oder Chemie hergezogen sind, ist das keine Nebensache: Beschwerden zu schildern fällt in der eigenen Sprache deutlich leichter, und in der Anamnese hängt fast alles daran, wie genau du erzählen kannst.</p>
       <p style="margin-top:16px">Unsere Therapeut:innen sind EMR- und ASCA-registriert, damit deine Zusatzversicherung mitzahlt. Was eine Sitzung kostet und was am Ende bei dir bleibt, rechnen wir dir vorher vor, mehr dazu unter <a href="/krankenkassen/">Krankenkasse</a>.</p>
-      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof Basel SBB in Gehdistanz geplant — Adresse folgt nach Mietvertrag.</p>
+      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof Basel SBB in Gehdistanz geplant - Adresse folgt nach Mietvertrag.</p>
     </div>
   </section>
 
@@ -333,13 +333,13 @@ const schema = [
   <!-- ── EINZUGSGEBIET BASEL-STADT & BASELLAND ──
        Kein Doorway-Cluster: Baselbieter Ortsnamen bekommen bewusst KEINE eigenen Seiten
        (dieselbe Falle, in der die beschwerden×stadt-Kombinationen 410 gegangen sind),
-       sondern stehen als Abschnitt auf der Stadtseite. Nachfrage ist belegt — tcm liestal
+       sondern stehen als Abschnitt auf der Stadtseite. Nachfrage ist belegt - tcm liestal
        90/KD 7, tcm sissach 110/KD 9, akupunktur baselland 110/KD 13 (Semrush CH 09/2026). -->
   <section class="section" id="einzugsgebiet">
     <div class="wrap">
       <div class="section-label">Einzugsgebiet</div>
       <h2 class="section-title">Für Basel-Stadt und <em>Baselland</em></h2>
-      <p class="section-sub">Wir eröffnen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig — für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p>
+      <p class="section-sub">Wir eröffnen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig - für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p>
       <div class="cl-links" style="margin-top:18px;margin-bottom:22px">
         <a href="/akupunktur-tcm-basel/" class="cl-chip">Akupunktur Basel</a>
         <a href="/standorte/basel/kosten/" class="cl-chip">Kosten &amp; Krankenkasse</a>

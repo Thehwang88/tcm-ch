@@ -5,14 +5,14 @@ import { site, standorte } from '../../data/site';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Request an appointment — TCM.ch',
+  name: 'Request an appointment - TCM.ch',
   url: 'https://tcm.ch/en/contact',
   inLanguage: 'en',
 };
 ---
 <Layout
   title="Request an appointment"
-  description="Request a TCM appointment at one of our 12 Swiss clinics. Tell us briefly what's going on and your preferred location — we usually reply within ~1h."
+  description="Request a TCM appointment at one of our 12 Swiss clinics. Tell us briefly what's going on and your preferred location - we usually reply within ~1h."
   path="/en/contact"
   schema={schema}
 >
@@ -20,7 +20,7 @@ const schema = {
     <div class="wrap">
       <div class="eyebrow">TCM.ch</div>
       <h1>Request an appointment</h1>
-      <p class="lead">Tell us briefly what's going on and your preferred location — we'll get back to you, usually within ~1h.</p>
+      <p class="lead">Tell us briefly what's going on and your preferred location - we'll get back to you, usually within ~1h.</p>
     </div>
   </section>
 
@@ -99,7 +99,7 @@ const schema = {
         var data = null; try { data = await res.json(); } catch (_) {}
         if (res.ok && data && data.ok) {
           form.reset();
-          show('success', 'Thank you! Your request has been received — we will get back to you personally, usually within ~1h.');
+          show('success', 'Thank you! Your request has been received - we will get back to you personally, usually within ~1h.');
         } else {
           show('error', (data && data.error) || 'Could not send your request. Please try again or call us.');
         }

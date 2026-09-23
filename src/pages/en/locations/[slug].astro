@@ -28,14 +28,14 @@ const description = openingSoon
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
 
-// Hero image — DE heroBg where the Standort page has one, else a relevant existing asset.
+// Hero image - DE heroBg where the Standort page has one, else a relevant existing asset.
 const image = locationImages[id];
 
 // ── JSON-LD: MedicalClinic + BreadcrumbList ──
 const clinicLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
-  name: `TCM.ch — Acupuncture & TCM ${name}`,
+  name: `TCM.ch - Acupuncture & TCM ${name}`,
   url,
   telephone: phone,
   medicalSpecialty: 'TraditionalChineseMedicine',
@@ -64,13 +64,13 @@ const breadcrumbLd = {
 <Layout title={title} description={description} path={path} schema={[clinicLd, breadcrumbLd]}>
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch — {region}</div>
+      <div class="eyebrow">TCM.ch - {region}</div>
       <h1>Acupuncture & TCM in {name}</h1>
       {openingSoon ? (
         <p class="lead">
           Our {name} clinic is <strong>opening in 2028</strong>. Across TCM.ch you'll already find
           English-speaking, EMR-/ASCA-recognised practitioners offering acupuncture and Traditional
-          Chinese Medicine — get in touch and we'll point you to your nearest open clinic.
+          Chinese Medicine - get in touch and we'll point you to your nearest open clinic.
         </p>
       ) : (
         <p class="lead">

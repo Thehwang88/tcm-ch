@@ -25,7 +25,7 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 // Trailing slash ist hier nicht kosmetisch: PAIR_MAP speichert die DE-Pfade teils ohne
 // (deConditionPath/deTherapyPath/deStandortPath liefern "/beschwerden/<slug>"). Ohne
 // Normalisierung zeigt das EN-hreflang auf eine Redirect-URL, während die DE-Seite sich
-// selbst mit Slash als de-CH deklariert — die Paarung ist dann nicht reziprok und Google
+// selbst mit Slash als de-CH deklariert - die Paarung ist dann nicht reziprok und Google
 // verwirft den Cluster. Deshalb hier auf die kanonische Slash-Form bringen.
 const withSlash = (p: string) => (p.endsWith('/') ? p : p + '/');
 const enHref = canonical;
@@ -37,7 +37,7 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Shared design tokens — single source of truth (also loaded by the DE SPA). -->
+    <!-- Shared design tokens - single source of truth (also loaded by the DE SPA). -->
     <HeadAnalytics />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <!-- Shared dark footer styles (Footer.astro renders SPA markup; LayoutDe loads this too). -->

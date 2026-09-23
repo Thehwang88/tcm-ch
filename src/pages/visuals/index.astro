@@ -1,5 +1,5 @@
 ---
-// Visual Library Index — internes Patienten-Kommunikationstool, kein SEO-Silo.
+// Visual Library Index - internes Patienten-Kommunikationstool, kein SEO-Silo.
 // noindex,follow: öffentlich & teilbar, aber bewusst keine SEO-Landingpage
 // (Beschwerden/Behandlungen bleiben die Ranking-Seiten). Nicht in index-queue.md.
 import LayoutDe from '../../layouts/LayoutDe.astro';
@@ -112,7 +112,7 @@ import { visuals, visualCategories } from '../../data/visuals';
 
     document.querySelectorAll('[data-request-open]').forEach((b) =>
       b.addEventListener('click', () => {
-        // Suchbegriff vorbefüllen — Ziel-UX: suchen → nicht gefunden → in ~10s angefragt.
+        // Suchbegriff vorbefüllen - Ziel-UX: suchen → nicht gefunden → in ~10s angefragt.
         if (!reqTopic.value.trim()) reqTopic.value = input.value.trim();
         reqMsg.textContent = '';
         reqSubmit.disabled = false;

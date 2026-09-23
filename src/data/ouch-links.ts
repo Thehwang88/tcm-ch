@@ -1,5 +1,5 @@
 // Dezente Rücklink-Zeile ins OUCH.-Magazin (ouch.tcm.ch): "AUS DEM MAGAZIN."-Eyebrow
-// + Zeile mit Pfeil. Interne Subdomain — normale rel-Attribute, kein nofollow.
+// + Zeile mit Pfeil. Interne Subdomain - normale rel-Attribute, kein nofollow.
 export const OUCH_MAG = 'https://ouch.tcm.ch';
 
 export function ouchMagRow(href: string, label: string): string {

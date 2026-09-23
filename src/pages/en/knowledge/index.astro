@@ -4,7 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 
 const path = '/en/knowledge/';
 
-// Newest first by publish date (static ISO strings — no Date.now()).
+// Newest first by publish date (static ISO strings - no Date.now()).
 const articles = (await getCollection('knowledge'))
   .sort((a, b) => (a.data.datePublished < b.data.datePublished ? 1 : -1));
 
@@ -37,10 +37,10 @@ const itemListLd = {
 >
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch — Knowledge</div>
+      <div class="eyebrow">TCM.ch - Knowledge</div>
       <h1>Knowledge</h1>
       <p class="lead">
-        Honest, evidence-aware guides to acupuncture and Traditional Chinese Medicine in Switzerland —
+        Honest, evidence-aware guides to acupuncture and Traditional Chinese Medicine in Switzerland -
         written in plain English for people new to the system. No cure claims, no mysticism: what helps,
         what it costs, and when to see a doctor first.
       </p>

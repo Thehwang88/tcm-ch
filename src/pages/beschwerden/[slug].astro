@@ -1,5 +1,5 @@
 ---
-// /beschwerden/[slug] — faithful 1:1 reproduction of each live SPA symptom leaf
+// /beschwerden/[slug] - faithful 1:1 reproduction of each live SPA symptom leaf
 // (#page-symptom), captured per-slug. Per-slug content (sidebar "hilft bei", related
 // therapies, FAQ, "Behandlung in deiner Nähe") is baked into each captured file.
 import SpaPage from '../../layouts/SpaPage.astro';
@@ -19,7 +19,7 @@ import { visuals } from '../../data/visuals';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/symptom-leaves/*.html', { query: '?raw', import: 'default', eager: true });
-  // kinderwunsch has a dedicated page at beschwerden/kinderwunsch/index.astro — exclude it
+  // kinderwunsch has a dedicated page at beschwerden/kinderwunsch/index.astro - exclude it
   // here so it doesn't double-build the same route (leaf file kept for the leafSlugs set below).
   return Object.keys(leaves).filter((p) => !p.endsWith('/kinderwunsch.html')).map((p) => {
     const slug = p.split('/').pop().replace('.html', '');
@@ -35,7 +35,7 @@ export function getStaticPaths() {
 //   Schlafstörungen  -> Schlafprobleme      (in der Navigation, 387 statt 76 Impressionen)
 //   Burnout          -> Stress & Burnout    (Titel überschnitten sich fast vollständig)
 //   Heuschnupfen     -> Allergien & Heusch. (breiter, bessere Position, mehr Impressionen)
-// Nicht zusammengelegt: Plantarfasziitis und Fersensporn — die Seiten grenzen sich
+// Nicht zusammengelegt: Plantarfasziitis und Fersensporn - die Seiten grenzen sich
 // fachlich sauber voneinander ab und verlinken sich gegenseitig.
 const MERGED: Record<string, string> = {
   schlafstoerungen: '/beschwerden/schlafprobleme/',
@@ -43,12 +43,12 @@ const MERGED: Record<string, string> = {
   heuschnupfen: '/beschwerden/allergien-heuschnupfen/',
 };
 
-// Valid leaf slugs (source of truth for real pages) — used to keep cross-links unbroken.
+// Valid leaf slugs (source of truth for real pages) - used to keep cross-links unbroken.
 const leafSlugs = new Set(
   Object.keys(import.meta.glob('../../data/symptom-leaves/*.html')).map((p) => p.split('/').pop()!.replace('.html', '')),
 );
 // Fallback pool of top-demand complaints to pad sparse related[] up to a few links.
-// Nur kanonische Slugs — nichts aus MERGED, sonst verlinken wir intern auf Seiten,
+// Nur kanonische Slugs - nichts aus MERGED, sonst verlinken wir intern auf Seiten,
 // die selbst auf eine andere URL zeigen.
 const RELATED_POOL = [
   { slug: 'rueckenschmerzen', label: 'Rückenschmerzen' },
@@ -218,7 +218,7 @@ if (entry?.faqs?.length) {
   const leafFaqs = parseLeafFaqs(body);
   if (leafFaqs.length) schema.push(faqPageSchema(leafFaqs));
 }
-// "Verwandte Beschwerden" cross-link block — interlinks the /beschwerden/ leaf pages
+// "Verwandte Beschwerden" cross-link block - interlinks the /beschwerden/ leaf pages
 // (SEO: lift them out of "discovered, not crawled"). Built from the real related[] data,
 // padded from RELATED_POOL, filtered to existing leaf slugs (no broken links), excl. self.
 const relSeen = new Set([slug]);
@@ -230,7 +230,7 @@ for (const r of [...(entry?.related ?? []), ...RELATED_POOL]) {
 const relatedBlock = related.length
   ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Verwandte Beschwerden</div><h2 class="section-title">Das könnte dich auch betreffen</h2><div class="cl-links">${related.map((r) => `<a href="/beschwerden/${r.slug}/" class="cl-chip">${r.label}</a>`).join('')}</div></div></section>`
   : '';
-// Links in den /haut/-Cluster — nur auf hautnahen Beschwerden (Akne, Rosacea, Neurodermitis, ...),
+// Links in den /haut/-Cluster - nur auf hautnahen Beschwerden (Akne, Rosacea, Neurodermitis, ...),
 // damit die Verlinkung thematisch trägt. Hebt die /haut/-Leaves aus "Gefunden – nicht indexiert".
 const hautBlock = hautLinksHtml(
   hautLinksForBeschwerde(slug!, 6),
@@ -238,7 +238,7 @@ const hautBlock = hautLinksHtml(
   'Passend dazu aus der Rubrik Haut',
   'Wirkstoffe und Behandlungen, ehrlich eingeordnet, ohne Versprechen, die keiner halten kann.',
 );
-// Links in den Massage-Cluster — nur auf muskuloskelettalen und verwandten Beschwerden.
+// Links in den Massage-Cluster - nur auf muskuloskelettalen und verwandten Beschwerden.
 // Die Unterseiten unter /therapien/massage/ haben Volumen (Lymphdrainage 9.900/Monat CH),
 // bekommen aber kaum Impressionen; ein paar davon standen auf "Gefunden – nicht indexiert".
 const massageBlock = massageLinksHtml(
@@ -246,7 +246,7 @@ const massageBlock = massageLinksHtml(
   'Massage, die hier oft dazugehört',
   'Welche Technik im Einzelfall passt, klären wir vor der Behandlung und nicht am Telefon geraten.',
 );
-// Links in den /koerpersignale/-Cluster — nur wo das Symptombild thematisch passt.
+// Links in den /koerpersignale/-Cluster - nur wo das Symptombild thematisch passt.
 // Hebt die Leaves aus "URL ist Google nicht bekannt" (Sitemap allein reicht nicht).
 const ksBlock = ksLinksHtml(
   ksLinksForBeschwerde(slug!, 4),
@@ -256,7 +256,7 @@ const ksBlock = ksLinksHtml(
 );
 // Links in die Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben aus
 // gesundheitsbibliothek.ts). Gibt den neuen Hubs interne Links von täglich gecrawlten
-// Seiten — gleiches Muster wie ksBlock/hautBlock.
+// Seiten - gleiches Muster wie ksBlock/hautBlock.
 const libraryBlock = libraryLinksHtml(slug!);
 // Links auf passende /wissen/-Studienartikel (kuratiert, health-library-map.md J.1).
 const wissenBlock = wissenLinksHtml(slug!);
@@ -272,7 +272,7 @@ const visualBlock = pageVisuals.length
 const prefilledBody = appendSidebarAllLink(
   prefillForm(body, `Ich habe ${name} und suche Unterstützung.`, `Beschwerde: ${name}`),
   'symptom-therapies-sidebar', '/therapien/', 'Alle Therapien ansehen');
-// Rücklink ins OUCH.-Magazin — dezente Zeile am Artikelende (nur auf passenden Slugs).
+// Rücklink ins OUCH.-Magazin - dezente Zeile am Artikelende (nur auf passenden Slugs).
 const OUCH_ROWS: Record<string, { href: string; label: string }> = {
   rueckenschmerzen: { href: `${OUCH_MAG}/insights/placebo-artikel-akupunktur/`, label: 'Wirkt das wirklich? Unsere ehrliche Antwort im Magazin' },
   nackenschmerzen: { href: `${OUCH_MAG}/insights/placebo-artikel-akupunktur/`, label: 'Wirkt das wirklich? Unsere ehrliche Antwort im Magazin' },

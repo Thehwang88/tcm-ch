@@ -24,3 +24,9 @@
 
 # Unmatched paths: Cloudflare auto-serves /404.html with HTTP 404 (no rule needed;
 # an explicit "404" status is rejected by the build validator).
+/standorte/zuerich           /akupunktur-tcm-zuerich/    301
+/standorte/zuerich/          /akupunktur-tcm-zuerich/    301
+/en/locations/zuerich-city   /en/locations/              301
+/en/locations/zuerich-city/  /en/locations/              301
+/en/locations/zuerich-bellevue   /en/locations/              301
+/en/locations/zuerich-bellevue/  /en/locations/              301

@@ -1,4 +1,4 @@
-// Visual Library — Datenmodell + Einträge (/visuals/).
+// Visual Library - Datenmodell + Einträge (/visuals/).
 // Patienten-Kommunikationstool für die Praxis, KEIN SEO-Silo: alle Visual-Seiten
 // sind noindex,follow und werden NICHT in seo/index-queue.md aufgenommen.
 // Nur status:'live' bekommt eine öffentliche Seite; Drafts erscheinen im Index
@@ -20,7 +20,7 @@ export const visualCategories: VisualCategory[] = [
  *   `avif`/`webp` sind komplette srcset-Strings (z.B.
  *   "/images/visuals/lws-normal-800.avif 800w, /images/visuals/lws-normal-1600.avif 1600w").
  *   width/height = intrinsische Grösse des Fallbacks (Layout-Shift-Schutz).
- *   Labels/Pfeile NIE ins Bild einbacken — alles bleibt HTML/SVG-Overlay.
+ *   Labels/Pfeile NIE ins Bild einbacken - alles bleibt HTML/SVG-Overlay.
  */
 export type VisualImage =
   | string
@@ -55,7 +55,7 @@ export interface Visual {
   /** Ein einziger einfacher Satz. Kein Fliesstext. */
   subtitle: string;
   status: 'live' | 'draft';
-  /** Bildassets — finale medizinische Illustrationen werden separat geliefert. */
+  /** Bildassets - finale medizinische Illustrationen werden separat geliefert. */
   imageNormal?: VisualImage;
   imageProblem?: VisualImage;
   secondaryImage?: VisualImage;
@@ -69,11 +69,11 @@ export interface Visual {
   /** Spezifischer Alt-Text für die Hauptillustration (Fallback: generisch aus title). */
   imageAlt?: string;
   /** Kurze HTML-Erklärsektionen unter dem Bild (h3/p/ul + .vv-flag für Warnhinweise).
-   *  Das Bild erklärt visuell, die Seite in Text — nie Text ins Bild einbacken. */
+   *  Das Bild erklärt visuell, die Seite in Text - nie Text ins Bild einbacken. */
   explainHtml?: string;
   /** Suche: Synonyme, Körperregion, Alltagswörter. */
   keywords: string[];
-  /** Bestehende stärkste Beschwerden-/Behandlungs-Seite ("Mehr erfahren"). Optional — nie URLs erfinden. */
+  /** Bestehende stärkste Beschwerden-/Behandlungs-Seite ("Mehr erfahren"). Optional - nie URLs erfinden. */
   relatedPage?: string;
   /** "Weiter erklären": Slugs verwandter Visuals. Nur LIVE-Einträge werden gerendert. */
   related?: string[];
@@ -126,7 +126,7 @@ export const visuals: Visual[] = [
     relatedPage: '/beschwerden/bandscheibenvorfall/',
     related: ['ischias', 'bandscheibenvorfall-hws'],
   },
-  // ── Batch 1 · Visual 1 — LIVE: alle drei finalen Assets vorhanden
+  // ── Batch 1 · Visual 1 - LIVE: alle drei finalen Assets vorhanden
   // (Hauptvergleich aus Kombi-Bild gesplittet, je 604×1283; Pain-Route 1024×1536).
   {
     slug: 'bandscheibenvorfall-hws',
@@ -174,11 +174,11 @@ export const visuals: Visual[] = [
     relatedPage: '/beschwerden/bandscheibenvorfall/',
     related: ['bandscheibenvorfall-lws', 'ischias'],
   },
-  // ── Batch 1 · Visual 2 — DRAFT bis finale Assets geliefert sind.
+  // ── Batch 1 · Visual 2 - DRAFT bis finale Assets geliefert sind.
   // Fokus: NERVENVERLAUF/Symptommuster, bewusst abgegrenzt vom LWS-Bandscheiben-Visual.
   // Keine Aussage, dass Ischias immer von der Bandscheibe kommt (nur "kann gereizt sein").
   {
-    // LIVE 09/2026 — freigegebenes Asset /images/ischias.png (512x1024).
+    // LIVE 09/2026 - freigegebenes Asset /images/ischias.png (512x1024).
     slug: 'ischias',
     title: 'Ischias: Wo strahlt der Schmerz ins Bein aus?',
     category: 'Rücken',
@@ -205,7 +205,7 @@ export const visuals: Visual[] = [
     related: ['bandscheibenvorfall-lws'],
   },
   {
-    // LIVE 09/2026 — freigegebenes Asset /images/nacken.png (1024x1536).
+    // LIVE 09/2026 - freigegebenes Asset /images/nacken.png (1024x1536).
     slug: 'nacken-ausstrahlung',
     title: 'Nacken: Ausstrahlung in Kopf, Schulter und Arm',
     category: 'Nacken',
@@ -295,7 +295,7 @@ export const visuals: Visual[] = [
     keywords: ['ellenbogen', 'arm', 'sehne', 'tennisarm', 'greifen', 'epicondylitis'],
     relatedPage: '/beschwerden/tennisarm/',
   },
-  // LIVE 09/2026 — freigegebenes Asset /images/karpaltunnel.png (512x1024).
+  // LIVE 09/2026 - freigegebenes Asset /images/karpaltunnel.png (512x1024).
   {
     slug: 'karpaltunnel',
     title: 'Karpaltunnel: Welche Finger sind betroffen?',
@@ -418,7 +418,7 @@ export const visuals: Visual[] = [
     keywords: ['kiefer', 'cmd', 'kiefergelenk', 'knacken', 'zähneknirschen', 'kauen', 'ohr'],
     relatedPage: '/beschwerden/kieferschmerzen/',
   },
-  // ── Batch 1 · Visual 3 — DRAFT bis finale Assets geliefert sind.
+  // ── Batch 1 · Visual 3 - DRAFT bis finale Assets geliefert sind.
   // Gefäss-Vergleich: gleiches Gefäss, normaler vs. erhöhter Druck auf die Gefässwand.
   // NICHT "mehr Blut", NICHT verstopfte Arterie. Zweite Ansicht: Organ-Übersicht,
   // rein edukativ, keine dramatischen Schadensbilder.
@@ -449,8 +449,8 @@ export const visuals: Visual[] = [
     relatedPage: '/beschwerden/bluthochdruck/',
     related: ['cholesterin-arteriosklerose'],
   },
-  // ── Batch 1 · Visual 4 — DRAFT bis finale Assets geliefert sind.
-  // Wichtig: Plaque entsteht IN der Gefässwand — kein "gelbe Brocken schwimmen
+  // ── Batch 1 · Visual 4 - DRAFT bis finale Assets geliefert sind.
+  // Wichtig: Plaque entsteht IN der Gefässwand - kein "gelbe Brocken schwimmen
   // herum und verstopfen". 2-Panel-Master bleibt: Gesund vs. Verengt.
   // Zweite Ansicht "Wie entsteht das?": EIN Asset mit 3 Stufen nebeneinander
   // (gesund → Ablagerung in der Wand → enger); Stufen-Labels sind HTML-Overlays.
@@ -480,13 +480,13 @@ export const visuals: Visual[] = [
       { label: 'Gefäss wird enger', x: 83, y: 75 },
     ],
     keywords: ['cholesterin', 'ldl', 'arteriosklerose', 'atherosklerose', 'gefäss', 'ablagerung', 'plaque', 'blutfluss'],
-    // relatedPage: bewusst leer — keine bestätigte Beschwerden-Route für Cholesterin.
-    // Future related: herzinfarkt, schlaganfall (Slugs existieren noch nicht — nicht erfinden).
+    // relatedPage: bewusst leer - keine bestätigte Beschwerden-Route für Cholesterin.
+    // Future related: herzinfarkt, schlaganfall (Slugs existieren noch nicht - nicht erfinden).
     related: ['bluthochdruck'],
   },
 
   // ════════════════════════════════════════════════════════════════
-  // Welle 2 — Muskeln (7) + Hormone (PCOS). Alle DRAFT: vollständige
+  // Welle 2 - Muskeln (7) + Hormone (PCOS). Alle DRAFT: vollständige
   // Copy/Hotspots/Suche/Related vorbereitet, es fehlen NUR die finalen
   // Bilder. Keine Platzhaltergrafiken. Hotspot-/painPath-Koordinaten
   // sind provisorisch und werden nach Asset-Drop kalibriert.
@@ -668,7 +668,7 @@ export const visuals: Visual[] = [
     ],
     keywords: ['pcos', 'polyzystisches ovarialsyndrom', 'zyklus', 'hormone', 'unregelmässige periode', 'eisprung', 'kinderwunsch', 'haut', 'haare', 'insulin'],
     relatedPage: '/beschwerden/pcos/',
-    // related: bewusst leer — noch keine passenden hormonellen Visuals.
+    // related: bewusst leer - noch keine passenden hormonellen Visuals.
   },
 ];
 

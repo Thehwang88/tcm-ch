@@ -35,7 +35,7 @@ export interface ErgebnisReport {
   lead: string;
   methodik: string[];               // wie wir messen
   ablauf: { step: string; text: string }[];
-  notWorking: string[];             // "Was nicht funktioniert hat" — Grenzen
+  notWorking: string[];             // "Was nicht funktioniert hat" - Grenzen
   redFlags: string[];               // wann zuerst zum Arzt
   datenschutz: string[];            // nDSG-konforme Datenverarbeitung
   faqs: ErgebnisFaq[];
