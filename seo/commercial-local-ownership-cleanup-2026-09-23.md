@@ -18,8 +18,8 @@ Regeln dieser Phase: URLs, Routen, Canonicals, Redirects, Navigation, Layouts, F
 - TRACKING IMPACT: not touched
 
 ### Zürich City
-- AUDIT: Positionierung ist eng ("TCM & Akupunktur Zürich City", CARE™-Konzept), konkurriert nicht stark um generisches TCM Zürich. Kein erfundener Status.
-- CHANGE: keine.
+- AUDIT: Während dieser Phase parallel auf main umgebaut (Commits b933b60/b0fe6ed vom lokalen Checkout): /standorte/zuerich-city/ ist jetzt eine schmale, neutrale Vorbereitungs-Seite ohne Standort-Setup; konkurriert nicht um generisches TCM Zürich. Kein erfundener Status.
+- CHANGE: keine durch diese Phase (Hub-Intro beim Merge an den neuen Stand angepasst: "Praxen in Oerlikon und Höngg, ein neuer Standort im Zentrum ist in Vorbereitung").
 - TRACKING IMPACT: not touched
 
 ### TCM/Akupunktur St. Gallen
@@ -98,7 +98,7 @@ Regeln dieser Phase: URLs, Routen, Canonicals, Redirects, Navigation, Layouts, F
 
 ## Freeze-Tests
 
-- Routen: 463 vorher / 463 nachher; ADDED 0, REMOVED 0, RENAMED 0.
-- Sitemap: 439 vorher / 439 nachher.
+- Routen: identisches Inventar vor/nach den Phase-1-Edits; ADDED 0, REMOVED 0, RENAMED 0 (Routen-Differenzen auf main stammen aus dem parallel gemergten lokalen Rework, nicht aus dieser Phase).
+- Sitemap: 437 vorher / 437 nachher (Basis = main nach Merge des lokalen Bellevue-/City-Reworks inkl. Sitemap-Guardrail; Phase 1 selbst ändert keine Routen).
 - Tracking: Diff der 5 editierten Dateien enthält ausschliesslich Title-/H1-/Intro-Text und Em-Dash-Interpunktion; keine onclick/dataLayer/Form-IDs/wa.me/CTA-IDs verändert.
 - Canonicals/Redirects/noindex: unverändert.
