@@ -23,7 +23,7 @@ export type LibraryEntityType =
 import { koerpersignale } from './koerpersignale';
 import { visuals, type VisualCategory } from './visuals';
 import { fragenHubs, fragen as fragenList } from './fragen';
-import { tcmSections } from './tcm-verstehen';
+import { tcmSections, publishedTcmEntities } from './tcm-verstehen';
 import { publishedPerspektiven } from './perspektiven';
 import { publishedBefundeWerte, KATEGORIE_LABELS } from './befunde-werte';
 import { publishedWasJetzt } from './was-jetzt';
@@ -349,6 +349,13 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/': 'Ferritin niedrig Ferritinwert zu niedrig Eisenspeicher Eisenwert',
   '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/': 'Blutdruck 140 zu 90 140/90 Blutdruckwert 140 90',
   '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/': 'Blutzucker zu hoch erhöhter Blutzucker Zuckerwert Glukose',
+  '/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/': 'qi chi qi bedeutung was ist qi',
+  '/gesundheitsbibliothek/tcm-verstehen/grundlagen/yin-und-yang/': 'yin yang yin und yang yin yang bedeutung yin und yang bedeutung',
+  '/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/': 'Organuhr TCM Organuhr chinesische Organuhr Organ Uhr',
+  '/gesundheitsbibliothek/tcm-verstehen/grundlagen/fuenf-elemente/': 'fünf Elemente 5 Elemente Wandlungsphasen fünf Wandlungsphasen',
+  '/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/': 'Meridian Meridiane TCM Meridiane Leitbahnen',
+  '/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/': 'Zungendiagnostik Zungendiagnose TCM Zunge Zungenbelag',
+  '/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/': 'Pulsdiagnostik Pulsdiagnose TCM Puls Pulstasten',
   '/beschwerden/sodbrennen/': 'Reflux saures Aufstossen',
   '/beschwerden/migraene/': 'Kopfweh Aura',
   '/beschwerden/kopfschmerzen/': 'Kopfweh',
@@ -497,6 +504,10 @@ export function buildSearchIndex(): SearchEntry[] {
   entries.push({ t: 'TCM verstehen', u: '/gesundheitsbibliothek/tcm-verstehen/', g: 'TCM verstehen' });
   for (const ts of tcmSections) {
     entries.push({ t: ts.nav, u: `/gesundheitsbibliothek/tcm-verstehen/${ts.slug}/`, g: 'TCM verstehen', k: ts.geplant.join(' ').slice(0, 200) });
+  }
+  // Foundation-Leaves (Phase 4A): NUR publizierte Entities.
+  for (const te of publishedTcmEntities) {
+    entries.push({ t: te.nav, u: `/gesundheitsbibliothek/tcm-verstehen/${te.section}/${te.slug}/`, g: 'TCM verstehen', k: te.title.slice(0, 160) });
   }
   // Perspektiven: NUR publizierte Beiträge (Mocks erreichen die Suche nie).
   for (const pe of publishedPerspektiven) {

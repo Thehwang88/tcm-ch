@@ -21,6 +21,17 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/yin-und-yang/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/fuenf-elemente/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/
+
 - https://tcm.ch/koerpersignale/kalte-fuesse/
 - https://tcm.ch/koerpersignale/kribbeln-im-koerper/
 - https://tcm.ch/koerpersignale/metallischer-geschmack-im-mund/

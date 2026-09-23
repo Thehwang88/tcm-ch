@@ -1,7 +1,7 @@
 {
   "generated": "2026-09-23",
   "totals": {
-    "healthPages": 341,
+    "healthPages": 348,
     "byType": {
       "hub": 6,
       "condition": 106,
@@ -10,7 +10,7 @@
       "question": 13,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 6,
+      "tcm_hub": 13,
       "selfcare": 1,
       "editorial": 76,
       "body_signal": 67,
@@ -830,7 +830,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 127,
+      "inboundContentLinks": 128,
       "outboundHealthLinks": 21
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 173,
+      "inboundContentLinks": 180,
       "outboundHealthLinks": 44
     },
     {
@@ -1310,7 +1310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 7
     },
     {
@@ -1320,8 +1320,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
@@ -1430,38 +1430,108 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 15
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/",
       "type": "tcm_hub",
       "title": "Diagnostik in der TCM | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 9
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/",
+      "type": "tcm_hub",
+      "title": "Pulsdiagnostik in der TCM: Was das Pulstasten erfasst | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/",
+      "type": "tcm_hub",
+      "title": "Zungendiagnostik in der TCM: Was die Zunge zeigt und was nicht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/",
       "type": "tcm_hub",
       "title": "TCM-Grundlagen &amp; Begriffe | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
+      "inSitemap": true,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/fuenf-elemente/",
+      "type": "tcm_hub",
+      "title": "Fünf Elemente der TCM: Holz, Feuer, Erde, Metall, Wasser | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/",
+      "type": "tcm_hub",
+      "title": "TCM-Organuhr: Das traditionelle 24-Stunden-Modell erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/",
+      "type": "tcm_hub",
+      "title": "Qi in der TCM: Was der Begriff bedeutet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/yin-und-yang/",
+      "type": "tcm_hub",
+      "title": "Yin und Yang: Bedeutung in der Chinesischen Medizin | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/",
       "type": "tcm_hub",
       "title": "Meridiane &amp; Akupunkturpunkte | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/",
+      "type": "tcm_hub",
+      "title": "Meridiane in der TCM: Das Leitbahnen-Modell erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/methoden/",
@@ -2090,7 +2160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 11
     },
     {
@@ -2141,7 +2211,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 14,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/juckreiz-nachts-ohne-ausschlag/",
@@ -2290,7 +2360,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 11
     },
     {
@@ -2530,7 +2600,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 10
     },
     {
@@ -2550,7 +2620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
+      "inboundContentLinks": 30,
       "outboundHealthLinks": 5
     },
     {
@@ -2560,8 +2630,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 225,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 227,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/therapien/akupunktur/bauchakupunktur/",
