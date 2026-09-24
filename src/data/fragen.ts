@@ -613,7 +613,7 @@ export const fragen: Frage[] = [
   },
   {
     slug: 'wie-lange-dauert-akupunktur',
-    question: 'Wie lange dauert eine Akupunkturbehandlung?',
+    question: 'Wie lange dauert ein Akupunktur-Termin?',
     title: 'Wie lange dauert Akupunktur? Termin, Gespräch und Liegezeit',
     metaDesc: 'Wie lange ein Akupunkturtermin dauert: warum der erste Termin länger ist, was Folgetermine brauchen und warum die Nadel-Liegezeit nur ein Teil davon ist.',
     kurz: '<p>Wie lange ein Akupunkturtermin dauert, hängt davon ab, ob es dein erster Termin oder eine Folgebehandlung ist und wie umfangreich Gespräch und Behandlung sind.</p><p>Der eigentliche Zeitraum, in dem Nadeln liegen bleiben, ist nur ein Teil des gesamten Termins.</p>',
