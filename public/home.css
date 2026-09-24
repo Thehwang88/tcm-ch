@@ -4709,3 +4709,34 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 .city-card.location-card .location-desc{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;width:100%!important;font-size:13px!important;color:var(--mid)!important;line-height:1.3!important;margin:4px 0 0!important;min-height:2.6em!important;white-space:normal!important;overflow:hidden!important}
 .city-card.location-card .location-link{margin-top:auto!important;padding-top:12px!important;white-space:nowrap!important}
 .city-grid{align-items:stretch!important}
+
+/* ── HOME: Patient-Journey-Funnel (ersetzt kennst-grid, nur Homepage) ── */
+.pj-funnel{list-style:none;margin:0 auto;padding:0;max-width:680px;display:flex;flex-direction:column;align-items:center}
+.pj-stage{position:relative;width:100%;border-radius:16px;padding:22px 24px;display:flex;gap:16px;align-items:center;text-align:left}
+.pj-stage-1,.pj-stage-2{margin-bottom:16px}
+.pj-stage-1{background:#fff;border:1px solid rgba(0,0,0,.06);transition:border-color var(--t-fast) ease}
+.pj-stage-2{width:87%;background:var(--green-mint);border:1px solid var(--green-mid);transition:border-color var(--t-fast) ease}
+.pj-stage-1:hover{border-color:rgba(45,155,111,.35)}
+.pj-stage-2:hover{border-color:rgba(45,155,111,.55)}
+.pj-stage-3{width:74%;background:var(--green);border:1px solid var(--green);flex-direction:column;align-items:stretch;gap:16px}
+.pj-stage-1::after,.pj-stage-2::after{content:"";position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);width:2px;height:16px;background:var(--green-mid)}
+.pj-num{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:rgba(45,155,111,.08);display:flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-weight:800;font-size:15px;letter-spacing:.02em;color:#2D9B6F}
+.pj-stage-2 .pj-num{background:#fff}
+.pj-stage-3 .pj-num{background:rgba(255,255,255,.16);color:#fff}
+.pj-title{font-size:17.5px;font-weight:700;letter-spacing:-.015em;color:#111;margin:0 0 3px;line-height:1.3}
+.pj-sub{font-size:14.5px;line-height:1.55;color:#4a4a4a;margin:0;font-weight:400}
+.pj-stage-3 .pj-title{color:#fff}
+.pj-stage-3 .pj-sub,#home-content .kennst-section .pj-stage-3 .pj-sub{color:rgba(255,255,255,.88)!important}
+.pj-stage-3-head{display:flex;gap:16px;align-items:center;text-align:left}
+.pj-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#111;color:#fff;font-family:var(--font-sans);font-weight:700;font-size:15.5px;line-height:1;min-height:48px;padding:14px 22px;border-radius:12px;text-decoration:none;transition:background var(--t-fast) ease,transform var(--t-fast) ease}
+.pj-cta:hover{background:#000;transform:translateY(-1px)}
+.pj-cta:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:480px){
+  .pj-stage{padding:18px 18px;gap:12px}
+  .pj-stage-2{width:88%}
+  .pj-stage-3{width:78%}
+  .pj-num{width:40px;height:40px;font-size:14px}
+  .pj-title{font-size:16.5px}
+  .pj-sub{font-size:13.5px}
+  .pj-cta{width:100%}
+}
