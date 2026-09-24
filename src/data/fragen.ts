@@ -35,7 +35,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'dauer',
         q: 'Wie lange dauert der erste Termin?',
-        a: '<p>Rechne mit 60 bis 75 Minuten. Der erste Termin ist länger als die Folgetermine, weil ein ausführliches Gespräch dazugehört: deine Beschwerden, deine Krankengeschichte, Medikamente, Schlaf, Verdauung. Danach folgen die Untersuchung mit Puls- und Zungendiagnostik und meist bereits eine erste Behandlung. Folgetermine dauern in der Regel 45 bis 60 Minuten. Was genau passiert, liest du unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a></p>',
+        a: '<p>Rechne mit 60 bis 75 Minuten. Der erste Termin ist länger als die Folgetermine, weil ein ausführliches Gespräch dazugehört: deine Beschwerden, deine Krankengeschichte, Medikamente, Schlaf, Verdauung. Danach folgen die Untersuchung mit Puls- und Zungendiagnostik und meist bereits eine erste Behandlung. Folgetermine dauern in der Regel 45 bis 60 Minuten. Was genau passiert, liest du unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a> Mehr zur Termindauer generell: <a href="/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/">Wie lange dauert Akupunktur?</a></p>',
       },
       {
         id: 'mitbringen',
@@ -45,17 +45,17 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'kleidung',
         q: 'Was soll ich anziehen?',
-        a: '<p>Bequeme Kleidung, die sich leicht hochschieben lässt: Viele Akupunkturpunkte liegen an Unterarmen, Unterschenkeln, Rücken und Bauch. Du musst dich nicht komplett ausziehen; für die meisten Behandlungen reicht es, einzelne Körperstellen freizulegen. Für Rückenbehandlungen wie Schröpfen oder Tuina wird der Oberkörper teilweise frei gemacht, du wirst dabei zugedeckt, wo gerade nicht behandelt wird.</p>',
+        a: '<p>Bequeme Kleidung, die sich leicht hochschieben lässt: Viele Akupunkturpunkte liegen an Unterarmen, Unterschenkeln, Rücken und Bauch. Du musst dich nicht komplett ausziehen; für die meisten Behandlungen reicht es, einzelne Körperstellen freizulegen. Für Rückenbehandlungen wie Schröpfen oder Tuina wird der Oberkörper teilweise frei gemacht, du wirst dabei zugedeckt, wo gerade nicht behandelt wird. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/kleidung-akupunktur/">Was soll ich zur Akupunktur anziehen?</a></p>',
       },
       {
         id: 'essen',
         q: 'Muss ich nüchtern kommen? Darf ich vorher essen?',
-        a: '<p>Du sollst nicht nüchtern kommen. Ideal ist eine leichte Mahlzeit ein bis zwei Stunden vor dem Termin. Mit ganz leerem Magen steigt das Risiko für Kreislaufreaktionen während der Behandlung, mit sehr vollem Magen liegt es sich unbequem. Auch genug trinken hilft. Alkohol vor der Behandlung ist keine gute Idee.</p>',
+        a: '<p>Du sollst nicht nüchtern kommen. Ideal ist eine leichte Mahlzeit ein bis zwei Stunden vor dem Termin. Mit ganz leerem Magen steigt das Risiko für Kreislaufreaktionen während der Behandlung, mit sehr vollem Magen liegt es sich unbequem. Auch genug trinken hilft. Alkohol vor der Behandlung ist keine gute Idee. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/essen-vor-akupunktur/">Essen vor Akupunktur</a>.</p>',
       },
       {
         id: 'ueberweisung',
         q: 'Brauche ich eine Überweisung vom Arzt?',
-        a: '<p>Nein. Für TCM-Behandlungen über die Zusatzversicherung brauchst du keine ärztliche Überweisung, du kannst direkt einen Termin vereinbaren. Die Ausnahme ist Physiotherapie: Sie läuft über die Grundversicherung und braucht eine ärztliche Verordnung. Wichtig ist nur, dass deine Therapeutin oder dein Therapeut EMR- oder ASCA-anerkannt ist, sonst zahlt die Zusatzversicherung nicht. Bei TCM.ch ist das an allen Standorten der Fall.</p>',
+        a: '<p>Nein. Für TCM-Behandlungen über die Zusatzversicherung brauchst du keine ärztliche Überweisung, du kannst direkt einen Termin vereinbaren. Die Ausnahme ist Physiotherapie: Sie läuft über die Grundversicherung und braucht eine ärztliche Verordnung. Wichtig ist nur, dass deine Therapeutin oder dein Therapeut EMR- oder ASCA-anerkannt ist, sonst zahlt die Zusatzversicherung nicht. Bei TCM.ch ist das an allen Standorten der Fall. Ausführlicher inklusive Kassenfrage: <a href="/gesundheitsbibliothek/fragen/ueberweisung-akupunktur/">Brauche ich eine Überweisung?</a></p>',
       },
       {
         id: 'vorbereitung',
@@ -100,7 +100,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'abstaende',
         q: 'Wie viel Abstand liegt zwischen den Sitzungen?',
-        a: '<p>Üblich ist zu Beginn eine Sitzung pro Woche, bei akuten Beschwerden manchmal zwei. Wird es besser, werden die Abstände grösser: alle zwei Wochen, dann nach Bedarf. Wie viele Sitzungen insgesamt realistisch sind, hängt von der Beschwerde ab und wird im Erstgespräch besprochen; eine ehrliche Einordnung dazu findest du auf der Seite <a href="/therapien/akupunktur/">Akupunktur</a>.</p>',
+        a: '<p>Üblich ist zu Beginn eine Sitzung pro Woche, bei akuten Beschwerden manchmal zwei. Wird es besser, werden die Abstände grösser: alle zwei Wochen, dann nach Bedarf. Wie viele Sitzungen insgesamt realistisch sind, hängt von der Beschwerde ab und wird im Erstgespräch besprochen; eine ehrliche Einordnung dazu findest du auf der Seite <a href="/therapien/akupunktur/">Akupunktur</a> und unter <a href="/gesundheitsbibliothek/fragen/wie-oft-akupunktur/">Wie oft braucht man Akupunktur?</a></p>',
       },
     ],
   },
@@ -195,7 +195,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'sitzungen',
         q: 'Wie viele Sitzungen brauche ich?',
-        a: '<p>Als grobe Orientierung: Bei akuten Beschwerden zeigen sich meist nach 4 bis 6 Sitzungen deutliche Verbesserungen; chronische Beschwerden brauchen in der Regel eine Serie von 8 bis 12 Sitzungen. Seriös lässt sich das erst nach dem Erstgespräch einschätzen, und eine gute Praxis überprüft nach den ersten Sitzungen ehrlich, ob es Fortschritte gibt. Mehr zum Behandlungsablauf steht auf der Seite <a href="/therapien/akupunktur/">Akupunktur</a>.</p>',
+        a: '<p>Als grobe Orientierung: Bei akuten Beschwerden zeigen sich meist nach 4 bis 6 Sitzungen deutliche Verbesserungen; chronische Beschwerden brauchen in der Regel eine Serie von 8 bis 12 Sitzungen. Seriös lässt sich das erst nach dem Erstgespräch einschätzen, und eine gute Praxis überprüft nach den ersten Sitzungen ehrlich, ob es Fortschritte gibt. Mehr zum Behandlungsablauf steht auf der Seite <a href="/therapien/akupunktur/">Akupunktur</a>. Zur sinnvollen Frequenz: <a href="/gesundheitsbibliothek/fragen/wie-oft-akupunktur/">Wie oft Akupunktur?</a>, zur Verlaufsbeurteilung: <a href="/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/">Wann merkt man eine Wirkung?</a></p>',
       },
       {
         id: 'nadeldauer',
@@ -268,7 +268,7 @@ export const fragen: Frage[] = [
     title: 'Tut Akupunktur weh? Was du wirklich spürst',
     metaDesc: 'Der Einstich ist meist kaum spürbar, danach folgt oft ein dumpfes Ziehen oder Wärmegefühl. Was bei Akupunktur normal ist und was du sagen solltest.',
     kurz: '<p>Meist nicht. Der Einstich selbst ist mit den haarfeinen Nadeln kaum spürbar, deutlich weniger als eine Blutentnahme oder Impfung. Danach entsteht an manchen Punkten ein dumpfes Ziehen, Wärme- oder Schweregefühl. Das ist kein Schmerz, sondern eine erwartete Empfindung. Richtig weh tun sollte Akupunktur nicht; wenn ein Punkt schmerzt, sag es, die Nadel wird korrigiert.</p>',
-    bodyHtml: '<h2>Was du normalerweise spürst</h2>\n<p>Akupunkturnadeln sind mit 0,2 bis 0,3 Millimetern Durchmesser um ein Mehrfaches dünner als Injektionsnadeln und massiv statt hohl. Der Einstich durch die Haut ist deshalb meist ein kurzer, feiner Reiz, den viele gar nicht wahrnehmen. Interessanter ist, was danach kommt: An gut getroffenen Punkten entsteht oft ein dumpfes Ziehen, ein Druck-, Wärme- oder Schweregefühl, das nach wenigen Sekunden nachlässt oder in ein neutrales Gefühl übergeht. Während der 20 bis 30 Minuten Liegezeit spüren die meisten die Nadeln kaum noch, viele entspannen dabei stark oder schlafen ein.</p>\n<h2>Wovon es abhängt</h2>\n<p>Manche Körperstellen sind empfindlicher als andere: Hände, Füsse und Ohren spürst du mehr als Rücken oder Beine. Auch Tagesform, Anspannung und die individuelle Schmerzempfindlichkeit spielen mit; wer angespannt auf den Einstich wartet, spürt mehr. Bei der ersten Behandlung wird deshalb bewusst vorsichtig dosiert: weniger Nadeln, sanftere Stimulation. Sag deiner Therapeutin, wenn du nadelempfindlich bist; es gibt für fast jede Situation eine angepasste Technik, bei Bedarf auch nadelfreie Alternativen wie <a href="/therapien/akupressur/">Akupressur</a>.</p>\n<h2>Was du selbst tun kannst</h2>\n<p>Komm nicht nüchtern, atme beim Setzen der Nadeln ruhig weiter und melde dich sofort, wenn ein Punkt unangenehm bleibt statt nachzulassen. Eine liegende Nadel, die drückt oder brennt, wird einfach minimal korrigiert oder entfernt; das ist Routine und kein Grund, die Zähne zusammenzubeissen.</p>\n<h2>Wann du es ansprechen solltest</h2>\n<p>Scharfer, elektrisierender oder ausstrahlender Schmerz beim Einstich ist nicht normal; sag es sofort, die Nadel wird umplatziert. Schmerzt eine Einstichstelle nach der Behandlung länger, schwillt an oder entzündet sich, lass es in der Praxis oder ärztlich anschauen. Das ist selten, gehört aber angeschaut.</p>',
+    bodyHtml: '<h2>Was du normalerweise spürst</h2>\n<p>Akupunkturnadeln sind mit 0,2 bis 0,3 Millimetern Durchmesser um ein Mehrfaches dünner als Injektionsnadeln und massiv statt hohl. Der Einstich durch die Haut ist deshalb meist ein kurzer, feiner Reiz, den viele gar nicht wahrnehmen. Interessanter ist, was danach kommt: An gut getroffenen Punkten entsteht oft ein dumpfes Ziehen, ein Druck-, Wärme- oder Schweregefühl, das nach wenigen Sekunden nachlässt oder in ein neutrales Gefühl übergeht. Während der 20 bis 30 Minuten Liegezeit spüren die meisten die Nadeln kaum noch, viele entspannen dabei stark oder schlafen ein.</p>\n<h2>Wovon es abhängt</h2>\n<p>Manche Körperstellen sind empfindlicher als andere: Hände, Füsse und Ohren spürst du mehr als Rücken oder Beine. Auch Tagesform, Anspannung und die individuelle Schmerzempfindlichkeit spielen mit; wer angespannt auf den Einstich wartet, spürt mehr. Bei der ersten Behandlung wird deshalb bewusst vorsichtig dosiert: weniger Nadeln, sanftere Stimulation. Sag deiner Therapeutin, wenn du nadelempfindlich bist; es gibt für fast jede Situation eine angepasste Technik, bei Bedarf auch nadelfreie Alternativen wie <a href="/therapien/akupressur/">Akupressur</a>. Wenn dich vor allem die Angst vor Nadeln beschäftigt: <a href="/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/">Angst vor Akupunkturnadeln</a>.</p>\n<h2>Was du selbst tun kannst</h2>\n<p>Komm nicht nüchtern, atme beim Setzen der Nadeln ruhig weiter und melde dich sofort, wenn ein Punkt unangenehm bleibt statt nachzulassen. Eine liegende Nadel, die drückt oder brennt, wird einfach minimal korrigiert oder entfernt; das ist Routine und kein Grund, die Zähne zusammenzubeissen.</p>\n<h2>Wann du es ansprechen solltest</h2>\n<p>Scharfer, elektrisierender oder ausstrahlender Schmerz beim Einstich ist nicht normal; sag es sofort, die Nadel wird umplatziert. Schmerzt eine Einstichstelle nach der Behandlung länger, schwillt an oder entzündet sich, lass es in der Praxis oder ärztlich anschauen. Das ist selten, gehört aber angeschaut.</p>',
     verwandt: [
       { href: '/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/', label: 'Sind blaue Flecken nach Akupunktur normal?' },
       { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
@@ -340,11 +340,13 @@ export const fragen: Frage[] = [
     title: 'Erster TCM-Termin: So läuft er ab',
     metaDesc: 'Erstgespräch, Puls- und Zungendiagnostik, erste Behandlung: was in den 60 bis 75 Minuten deines ersten TCM-Termins passiert, Schritt für Schritt.',
     kurz: '<p>Der erste Termin dauert 60 bis 75 Minuten und besteht aus drei Teilen: einem ausführlichen Gespräch über deine Beschwerden und Krankengeschichte, der Untersuchung mit <a href="/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/">Puls-</a> und <a href="/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/">Zungendiagnostik</a> und meist bereits einer ersten, bewusst zurückhaltend dosierten Behandlung. Am Ende weisst du, ob und wie eine Behandlung bei dir sinnvoll ist und mit wie vielen Sitzungen du rechnen kannst.</p>',
-    bodyHtml: '<h2>Teil 1: das Gespräch</h2>\n<p>Den grössten Teil des ersten Termins macht die Anamnese aus. Deine Therapeutin fragt nach deinen aktuellen Beschwerden, aber auch nach Dingen, die auf den ersten Blick nichts damit zu tun haben: Schlaf, Verdauung, Energie im Tagesverlauf, Kälte- oder Wärmeempfinden, bei Frauen der Zyklus. Diese Muster gehören zur TCM-Befunderhebung. Dazu kommen Krankengeschichte, bisherige Abklärungen und deine vollständige Medikamentenliste. Mitgebrachte Befunde und Berichte sind willkommen.</p>\n<h2>Teil 2: die Untersuchung</h2>\n<p>Typisch für die TCM sind zwei kurze, völlig schmerzfreie Untersuchungen: das Tasten des Pulses an beiden Handgelenken und ein Blick auf die Zunge. Beides liefert der Therapeutin Hinweise für die Wahl der Behandlungspunkte und -methoden. Je nach Beschwerde kommen einfache körperliche Untersuchungen dazu, etwa das Abtasten verspannter Muskulatur.</p>\n<h2>Teil 3: die erste Behandlung</h2>\n<p>In den meisten Fällen wird beim ersten Termin bereits behandelt, bewusst vorsichtig: weniger Nadeln, kürzere Liegezeit, sanfte Dosierung. So zeigt sich, wie dein Körper reagiert, bevor bei den Folgeterminen gesteigert wird. Ob Akupunktur, Schröpfen, Tuina oder eine Kombination zum Einsatz kommt, besprecht ihr vorher; nichts passiert unangekündigt. Ob die Nadeln wehtun, beantworten wir <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">hier ehrlich</a>.</p>\n<h2>Und danach?</h2>\n<p>Zum Abschluss bekommst du eine ehrliche Einschätzung: ob eine Behandlung bei deiner Beschwerde sinnvoll ist, mit wie vielen Sitzungen du rechnen kannst und ob zuerst eine ärztliche Abklärung gehört. Plane für den Rest des Tages nichts Anstrengendes ein, manche sind nach der ersten Behandlung <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde</a>. Was du vorher zu Kleidung, Essen und Unterlagen wissen musst, steht unter <a href="/gesundheitsbibliothek/fragen/erster-termin/">Erster Termin &amp; Vorbereitung</a>.</p>',
+    bodyHtml: '<h2>Teil 1: das Gespräch</h2>\n<p>Den grössten Teil des ersten Termins macht die Anamnese aus. Deine Therapeutin fragt nach deinen aktuellen Beschwerden, aber auch nach Dingen, die auf den ersten Blick nichts damit zu tun haben: Schlaf, Verdauung, Energie im Tagesverlauf, Kälte- oder Wärmeempfinden, bei Frauen der Zyklus. Diese Muster gehören zur TCM-Befunderhebung. Dazu kommen Krankengeschichte, bisherige Abklärungen und deine vollständige Medikamentenliste. Mitgebrachte Befunde und Berichte sind willkommen.</p>\n<h2>Teil 2: die Untersuchung</h2>\n<p>Typisch für die TCM sind zwei kurze, völlig schmerzfreie Untersuchungen: das Tasten des Pulses an beiden Handgelenken und ein Blick auf die Zunge. Beides liefert der Therapeutin Hinweise für die Wahl der Behandlungspunkte und -methoden. Je nach Beschwerde kommen einfache körperliche Untersuchungen dazu, etwa das Abtasten verspannter Muskulatur.</p>\n<h2>Teil 3: die erste Behandlung</h2>\n<p>In den meisten Fällen wird beim ersten Termin bereits behandelt, bewusst vorsichtig: weniger Nadeln, kürzere Liegezeit, sanfte Dosierung. So zeigt sich, wie dein Körper reagiert, bevor bei den Folgeterminen gesteigert wird. Ob Akupunktur, Schröpfen, Tuina oder eine Kombination zum Einsatz kommt, besprecht ihr vorher; nichts passiert unangekündigt. Ob die Nadeln wehtun, beantworten wir <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">hier ehrlich</a>.</p>\n<h2>Und danach?</h2>\n<p>Zum Abschluss bekommst du eine ehrliche Einschätzung: ob eine Behandlung bei deiner Beschwerde sinnvoll ist, mit wie vielen Sitzungen du rechnen kannst und ob zuerst eine ärztliche Abklärung gehört. Plane für den Rest des Tages nichts Anstrengendes ein, manche sind nach der ersten Behandlung <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde</a>. Was du vorher zu Kleidung, Essen und Unterlagen wissen musst, steht unter <a href="/gesundheitsbibliothek/fragen/erster-termin/">Erster Termin &amp; Vorbereitung</a>, im Detail unter <a href="/gesundheitsbibliothek/fragen/essen-vor-akupunktur/">Essen vor Akupunktur</a>, <a href="/gesundheitsbibliothek/fragen/kleidung-akupunktur/">Was anziehen?</a> und <a href="/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/">Wie lange dauert Akupunktur?</a> Bei Nadelangst hilft <a href="/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/">dieser Artikel</a>, zur Terminvereinbarung ohne Arztbesuch <a href="/gesundheitsbibliothek/fragen/ueberweisung-akupunktur/">Brauche ich eine Überweisung?</a></p>',
     verwandt: [
       { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung: alle Fragen' },
       { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
       { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung: alle Fragen' },
+      { href: '/gesundheitsbibliothek/fragen/wie-oft-akupunktur/', label: 'Wie oft braucht man Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/', label: 'Wann merkt man, ob Akupunktur wirkt?' },
     ],
     mehr: [
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
@@ -576,6 +578,155 @@ export const fragen: Frage[] = [
       { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie', cat: 'Therapie' },
     ],
   },
+  {
+    slug: 'essen-vor-akupunktur',
+    question: 'Sollte man vor Akupunktur essen?',
+    title: 'Essen vor Akupunktur: Muss ich nüchtern kommen?',
+    metaDesc: 'Vor Akupunktur musst du normalerweise nicht nüchtern sein. Was eine leichte Mahlzeit bringt, was bei empfindlichem Kreislauf gilt und wie das mit Kaffee ist.',
+    kurz: '<p>Für eine normale Akupunkturbehandlung musst du in der Regel nicht nüchtern erscheinen. Im Gegenteil: Mit völlig leerem Magen zur Behandlung zu kommen, ist für manche Menschen unangenehm, besonders wenn sie zu Kreislaufproblemen oder Schwindel neigen.</p><p>Eine normale, leichte Mahlzeit vor dem Termin ist für viele Menschen sinnvoller als extremes Fasten oder ein sehr schweres Essen unmittelbar vorher.</p>',
+    bodyHtml: '<h2>Muss ich nüchtern sein?</h2>\n<p>Akupunktur ist normalerweise keine Untersuchung oder Operation, für die routinemässig Nüchternheit erforderlich ist.</p>\n<p>Falls für deine konkrete medizinische Situation etwas anderes gilt, sollte dir das vorab mitgeteilt werden.</p>\n<h2>Wie viel sollte ich vorher essen?</h2>\n<p>Du brauchst keine besondere Akupunktur-Mahlzeit.</p>\n<p>Iss so, wie es für dich normalerweise angenehm ist. Direkt vor dem Termin kann eine sehr grosse oder schwere Mahlzeit unangenehm sein, besonders wenn du während der Behandlung liegen möchtest.</p>\n<h2>Was, wenn ich morgens keinen Hunger habe?</h2>\n<p>Du musst dich nicht zu einer grossen Mahlzeit zwingen.</p>\n<p>Wenn du allerdings weisst, dass dein Kreislauf auf leeren Magen empfindlich reagiert, kann eine kleine Mahlzeit oder ein Snack vorher sinnvoll sein.</p>\n<h2>Darf ich Kaffee trinken?</h2>\n<p>Es gibt keine allgemeine Regel, die Kaffee vor jeder Akupunkturbehandlung verbietet.</p>\n<p>Wenn du sehr empfindlich auf Koffein reagierst, Herzklopfen bekommst oder ohnehin nervös vor dem Termin bist, kann weniger Koffein für dein persönliches Wohlbefinden angenehmer sein.</p>\n<h2>Kurz gesagt</h2>\n<p>Für Akupunktur musst du normalerweise nicht nüchtern sein. Komm möglichst in einem normalen körperlichen Zustand, weder ausgehungert noch direkt nach einer sehr schweren Mahlzeit. Wie der ganze erste Termin abläuft, steht unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a></p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/kleidung-akupunktur/', label: 'Welche Kleidung ist für Akupunktur praktisch?' },
+      { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung: alle Fragen' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Was gilt nach der Behandlung?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'kleidung-akupunktur',
+    question: 'Welche Kleidung ist für Akupunktur praktisch?',
+    title: 'Was soll ich zur Akupunktur anziehen?',
+    metaDesc: 'Kleidung für den Akupunkturtermin: bequem und an Armen und Beinen leicht hochzuschieben. Ob du dich ausziehen musst und was direkt aus dem Büro gilt.',
+    kurz: '<p>Für einen Akupunkturtermin brauchst du keine spezielle Kleidung. Am praktischsten sind bequeme Sachen, die sich an Armen und Beinen leicht hochschieben lassen.</p><p>Welche Körperbereiche zugänglich sein müssen, hängt davon ab, weshalb du behandelt wirst und welche Punkte verwendet werden.</p>',
+    bodyHtml: '<h2>Welche Kleidung ist am einfachsten?</h2>\n<p>Praktisch sind zum Beispiel:</p>\n<ul><li>eine lockere Hose</li><li>ein T-Shirt oder Oberteil mit gut zugänglichen Armen</li><li>Kleidung, die nicht sehr eng sitzt</li></ul>\n<p>Sehr enge Jeans, komplizierte Kleidung oder viele Schichten können den Zugang zu bestimmten Bereichen erschweren.</p>\n<h2>Muss ich mich ausziehen?</h2>\n<p>Nicht grundsätzlich.</p>\n<p>Viele Akupunkturpunkte liegen an Armen, Händen, Unterschenkeln und Füssen.</p>\n<p>Bei Beschwerden an Rücken, Hüfte, Bauch, Schulter oder anderen Regionen kann es notwendig sein, Kleidung teilweise abzulegen oder zu verschieben.</p>\n<p>Dabei sollte die Privatsphäre gewahrt bleiben und nur der Bereich freigelegt werden, der tatsächlich benötigt wird.</p>\n<h2>Kann ich direkt aus dem Büro kommen?</h2>\n<p>Ja.</p>\n<p>Wenn deine Kleidung unpraktisch für die Behandlung ist, lässt sich meist eine einfache Lösung finden. Du musst deinen ganzen Tagesablauf nicht nach dem Termin ausrichten.</p>\n<h2>Was ist mit Schmuck?</h2>\n<p>Schmuck muss nicht pauschal abgelegt werden. Wenn er den zu behandelnden Bereich verdeckt oder stört, kann es sinnvoll sein, einzelne Stücke abzunehmen.</p>\n<h2>Kurz gesagt</h2>\n<p>Komm bequem. Kleidung, die Arme und Beine gut zugänglich macht, ist ideal. Welche Bereiche tatsächlich benötigt werden, entscheidet sich nach deinem Anliegen. Was sonst zum ersten Termin gehört, steht unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a></p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/essen-vor-akupunktur/', label: 'Sollte man vor Akupunktur essen?' },
+      { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung: alle Fragen' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'wie-lange-dauert-akupunktur',
+    question: 'Wie lange dauert eine Akupunkturbehandlung?',
+    title: 'Wie lange dauert Akupunktur? Termin, Gespräch und Liegezeit',
+    metaDesc: 'Wie lange ein Akupunkturtermin dauert: warum der erste Termin länger ist, was Folgetermine brauchen und warum die Nadel-Liegezeit nur ein Teil davon ist.',
+    kurz: '<p>Wie lange ein Akupunkturtermin dauert, hängt davon ab, ob es dein erster Termin oder eine Folgebehandlung ist und wie umfangreich Gespräch und Behandlung sind.</p><p>Der eigentliche Zeitraum, in dem Nadeln liegen bleiben, ist nur ein Teil des gesamten Termins.</p>',
+    bodyHtml: '<h2>Warum dauert der erste Termin oft länger?</h2>\n<p>Beim ersten Termin muss zunächst geklärt werden:</p>\n<ul><li>weshalb du kommst</li><li>wie lange Beschwerden bestehen</li><li>welche Diagnosen oder Untersuchungen vorhanden sind</li><li>welche Medikamente du einnimmst</li><li>welche Behandlung sinnvoll sein könnte</li></ul>\n<p>Danach folgt die eigentliche Behandlung. Den ganzen Ablauf beschreibt <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a></p>\n<h2>Wie lange bleiben die Nadeln liegen?</h2>\n<p>Das ist eine separate Frage. Die Liegedauer hängt von Behandlung, Methode und Situation ab; ausführlich beantwortet sie der Artikel <a href="/wissen/wie-lange-bleiben-akupunkturnadeln-drin/">Wie lange bleiben Akupunkturnadeln drin?</a></p>\n<h2>Sind Folgetermine kürzer?</h2>\n<p>Häufig ist weniger Anamnese notwendig, weil dein Fall bereits bekannt ist.</p>\n<p>Trotzdem sollte genügend Zeit bleiben, um Veränderungen seit dem letzten Termin zu besprechen und die Behandlung anzupassen.</p>\n<h2>Muss ich danach noch Zeit einplanen?</h2>\n<p>Viele Patientinnen und Patienten gehen danach normal ihrem Alltag nach.</p>\n<p>Wenn du weisst, dass du nach Akupunktur <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde</a> oder sehr entspannt reagierst, kann ein etwas ruhigerer Anschluss angenehmer sein.</p>\n<h2>Kurz gesagt</h2>\n<p>Der Termin umfasst mehr als die reine Nadel-Liegezeit. Beim ersten Termin solltest du zusätzlich Zeit für Gespräch und Einordnung einplanen.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/wie-oft-akupunktur/', label: 'Wie oft braucht man Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung: alle Fragen' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/wissen/wie-lange-bleiben-akupunkturnadeln-drin/', label: 'Wie lange bleiben die Nadeln drin?', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'wie-viele-akupunkturnadeln',
+    question: 'Wie viele Akupunkturnadeln braucht eine Behandlung?',
+    title: 'Wie viele Nadeln werden bei Akupunktur verwendet?',
+    metaDesc: 'Es gibt keine Standardzahl an Akupunkturnadeln. Warum die Anzahl variiert, was bei der ersten Behandlung gilt und warum mehr nicht automatisch besser ist.',
+    kurz: '<p>Es gibt keine feste Anzahl von Nadeln, die bei jeder Akupunkturbehandlung verwendet werden muss.</p><p>Je nach Behandlungsansatz, Beschwerden, ausgewählten Punkten und Therapeut können wenige oder mehrere Nadeln eingesetzt werden. Mehr Nadeln bedeuten nicht automatisch eine bessere Behandlung.</p>',
+    bodyHtml: '<h2>Warum ist die Anzahl unterschiedlich?</h2>\n<p>Akupunktur wird individuell geplant. Eine Therapeutin oder ein Therapeut kann zum Beispiel:</p>\n<ul><li>lokale Punkte verwenden</li><li>entfernte Punkte an Armen oder Beinen wählen</li><li>verschiedene Körperregionen kombinieren</li><li>bewusst mit einer kleinen Punktzahl arbeiten</li></ul>\n<p>Die Anzahl allein sagt wenig über die Qualität der Behandlung aus.</p>\n<h2>Werden bei der ersten Behandlung weniger Nadeln verwendet?</h2>\n<p>Das kann vorkommen, besonders wenn jemand noch nie Akupunktur hatte oder sehr empfindlich beziehungsweise nervös ist.</p>\n<p>Es gibt aber keine allgemeine Regel.</p>\n<h2>Was, wenn ich Angst vor vielen Nadeln habe?</h2>\n<p>Sag es vor Beginn.</p>\n<p>Du kannst jederzeit fragen, wie die Behandlung geplant ist. Eine gute Behandlung sollte nicht davon abhängen, dass du Angst oder starke Anspannung einfach aushältst. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/">Angst vor Akupunkturnadeln</a>.</p>\n<h2>Kann ich sagen, dass ich weniger Nadeln möchte?</h2>\n<p>Du kannst Bedenken jederzeit ansprechen.</p>\n<p>Die Therapeutin oder der Therapeut kann erklären, welche Punkte geplant sind und welche Anpassungen möglich sind.</p>\n<h2>Kurz gesagt</h2>\n<p>Es gibt keine ideale Standardzahl. Die Anzahl der Nadeln wird an Behandlung und Patient angepasst. Mehr ist nicht automatisch besser. Wie sich das Nadeln anfühlt, beschreibt <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/', label: 'Was, wenn ich Angst vor Akupunkturnadeln habe?' },
+      { href: '/gesundheitsbibliothek/fragen/wie-tief-akupunkturnadeln/', label: 'Wie tief gehen Akupunkturnadeln in die Haut?' },
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'wie-tief-akupunkturnadeln',
+    question: 'Wie tief gehen Akupunkturnadeln in die Haut?',
+    title: 'Wie tief werden Akupunkturnadeln gesetzt?',
+    metaDesc: 'Akupunkturnadeln werden je nach Punkt, Körperregion und Anatomie unterschiedlich tief gesetzt. Warum tiefer nicht stärker bedeutet und was bei Nerven gilt.',
+    kurz: '<p>Akupunkturnadeln werden nicht überall gleich tief gesetzt. Die Tiefe hängt vom gewählten Punkt, der Körperregion, der Anatomie und der Behandlungstechnik ab.</p><p>An manchen Stellen wird nur oberflächlich genadelt, an anderen können Nadeln tiefer eingebracht werden.</p>',
+    bodyHtml: '<h2>Warum ist die Tiefe unterschiedlich?</h2>\n<p>Unter der Haut liegen je nach Körperregion unterschiedliche Strukturen.</p>\n<p>Ein Punkt am Gesicht wird deshalb nicht auf dieselbe Weise behandelt wie ein Punkt an einem kräftigen Muskelbereich. Die Anatomie bestimmt wesentlich mit, welche Tiefe sicher und angemessen ist.</p>\n<h2>Bedeutet tiefer auch stärker?</h2>\n<p>Nein. Eine tiefere Nadelung ist nicht automatisch wirksamer.</p>\n<p>Behandlungstechnik und Punktwahl sind wichtiger als eine möglichst grosse Tiefe.</p>\n<h2>Kann eine Nadel einen Nerv treffen?</h2>\n<p>Bestimmte Punkte liegen in der Nähe anatomischer Strukturen, weshalb anatomische Kenntnisse wichtig sind.</p>\n<p>Ein kurzes elektrisierendes Gefühl kann auftreten. Anhaltende Taubheit, Schwäche oder starke ausstrahlende Schmerzen sollten dagegen nicht einfach ignoriert werden; wie du das einordnest, steht unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/">Nerv getroffen?</a></p>\n<h2>Muss ich Angst haben, dass die Nadeln sehr tief gehen?</h2>\n<p>Wenn dir die Vorstellung Sorgen macht, sprich das vor der Behandlung an.</p>\n<p>Akupunkturnadeln sind sehr fein und die Technik wird an Region und Patient angepasst. Wie sich das anfühlt, beschreibt <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>\n<h2>Kurz gesagt</h2>\n<p>Es gibt keine Standardtiefe für Akupunktur. Sie richtet sich nach Punkt, Anatomie und Behandlungstechnik.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/', label: 'Kann bei der Akupunktur ein Nerv getroffen werden?' },
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+      { href: '/gesundheitsbibliothek/fragen/wie-viele-akupunkturnadeln/', label: 'Wie viele Akupunkturnadeln braucht eine Behandlung?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'angst-vor-akupunktur-nadeln',
+    question: 'Was, wenn ich Angst vor Akupunkturnadeln habe?',
+    title: 'Angst vor Nadeln: Kann ich trotzdem Akupunktur machen?',
+    metaDesc: 'Nadelangst schliesst Akupunktur nicht automatisch aus. Wie ein vorsichtiger Einstieg aussehen kann, dass du jederzeit stoppen darfst und welche nadelfreien Alternativen es gibt.',
+    kurz: '<p>Angst vor Nadeln ist kein ungewöhnlicher Grund, bei Akupunktur unsicher zu sein.</p><p>Du musst diese Angst nicht verstecken. Sag bereits vor der Behandlung, dass Nadeln für dich schwierig sind. Dann kann die Behandlung ruhiger geplant und erklärt werden.</p>',
+    bodyHtml: '<h2>Sind Akupunkturnadeln wie Spritzennadeln?</h2>\n<p>Nein. Akupunkturnadeln sind sehr fein und unterscheiden sich von den Hohlnadeln, die zum Beispiel für Blutentnahmen oder Injektionen verwendet werden; wie sich der Einstich anfühlt, beschreibt <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>\n<p>Trotzdem kann auch eine sehr feine Nadel bei ausgeprägter Nadelangst emotional schwierig sein.</p>\n<h2>Kann man mit wenigen Nadeln beginnen?</h2>\n<p>Je nach Behandlung kann ein vorsichtiger Einstieg möglich sein.</p>\n<p>Du kannst darum bitten, dass der Ablauf zuerst erklärt wird und nicht sofort viele Nadeln gesetzt werden. Warum die Anzahl ohnehin individuell ist, erklärt <a href="/gesundheitsbibliothek/fragen/wie-viele-akupunkturnadeln/">Wie viele Nadeln braucht eine Behandlung?</a></p>\n<h2>Kann ich jederzeit stoppen?</h2>\n<p>Ja. Wenn du dich unwohl fühlst, kannst du jederzeit sagen, dass eine Pause notwendig ist oder du die Behandlung beenden möchtest.</p>\n<h2>Gibt es Akupunktur ohne Nadeln?</h2>\n<p>Es gibt Methoden, die Punkte ohne klassische Nadeln stimulieren, zum Beispiel <a href="/therapien/akupressur/">Akupressur</a> mit Fingerdruck oder <a href="/therapien/akupunktur/laserakupunktur/">Laserakupunktur</a>.</p>\n<p>Diese Methoden sind nicht automatisch gleichwertig oder für jede Situation austauschbar, können aber eine Alternative sein.</p>\n<h2>Was, wenn mir bei Nadeln schwindelig wird?</h2>\n<p>Sag das unbedingt vorher.</p>\n<p>Die Behandlung kann im Liegen erfolgen und die Therapeutin oder der Therapeut kann besonders auf deine Reaktion achten.</p>\n<h2>Kurz gesagt</h2>\n<p>Nadelangst bedeutet nicht automatisch, dass Akupunktur ausgeschlossen ist. Sprich offen darüber. Der Ablauf kann häufig so gestaltet werden, dass du dich sicherer fühlst.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+      { href: '/gesundheitsbibliothek/fragen/wie-viele-akupunkturnadeln/', label: 'Wie viele Akupunkturnadeln braucht eine Behandlung?' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupressur/', label: 'Akupressur (ohne Nadeln)', cat: 'Therapie' },
+      { href: '/therapien/akupunktur/laserakupunktur/', label: 'Laserakupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'ueberweisung-akupunktur',
+    question: 'Braucht man für Akupunktur eine Überweisung?',
+    title: 'Brauche ich für Akupunktur eine ärztliche Überweisung?',
+    metaDesc: 'Für die Terminvereinbarung in einer TCM-Praxis brauchst du meist keine ärztliche Überweisung. Was für die Krankenkasse gilt und wann zuerst der Arzt drankommt.',
+    kurz: '<p>Für einen privaten Termin bei einer TCM- oder Akupunkturpraxis brauchst du in vielen Fällen keine ärztliche Überweisung, um überhaupt einen Termin zu vereinbaren.</p><p>Ob und unter welchen Voraussetzungen deine Krankenversicherung einen Teil der Kosten übernimmt, ist jedoch eine separate Frage.</p>',
+    bodyHtml: '<h2>Kann ich direkt einen Termin buchen?</h2>\n<p>Bei einer selbstständig arbeitenden TCM-Praxis kannst du normalerweise direkt Kontakt aufnehmen und einen Termin vereinbaren.</p>\n<p>Du musst nicht zuerst wissen, welche Akupunkturpunkte oder Behandlungsmethode du brauchst; das klärt sich <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">beim ersten Termin</a>.</p>\n<h2>Was ist mit der Krankenkasse?</h2>\n<p>Die Kostenübernahme hängt in der Schweiz unter anderem von deinem Versicherungsmodell, einer vorhandenen Zusatzversicherung und der Anerkennung der behandelnden Person ab.</p>\n<p>Die Regeln unterscheiden sich zwischen Versicherern und Produkten. Was die Zusatzversicherung typischerweise übernimmt und worauf du achten solltest, steht ausführlich unter <a href="/krankenkassen/akupunktur/">Akupunktur &amp; Krankenkasse</a>.</p>\n<h2>Sollte ich trotzdem vorher zum Arzt?</h2>\n<p>Bei neuen, ungeklärten, starken oder potenziell ernsthaften Beschwerden kann eine medizinische Abklärung wichtig sein.</p>\n<p>Akupunktur sollte keine notwendige Diagnostik verzögern. Eine Orientierung gibt <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">Wann zuerst zum Arzt?</a></p>\n<h2>Kann ich ärztliche Befunde mitbringen?</h2>\n<p>Ja. Vorhandene Arztberichte, Bildgebung, Laborwerte oder Medikamentenlisten können hilfreich sein, besonders bei komplexeren Beschwerden.</p>\n<h2>Kurz gesagt</h2>\n<p>Für die Terminvereinbarung brauchst du häufig keine ärztliche Überweisung. Ob deine Versicherung Kosten übernimmt, solltest du separat anhand deiner Police und der Anerkennung des Therapeuten prüfen.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung: alle Fragen' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?' },
+    ],
+    mehr: [
+      { href: '/krankenkassen/akupunktur/', label: 'Akupunktur & Krankenkasse', cat: 'Krankenkasse' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'wie-oft-akupunktur',
+    question: 'Wie oft braucht man Akupunktur?',
+    title: 'Wie oft sollte man Akupunktur machen?',
+    metaDesc: 'Es gibt keinen allgemein richtigen Rhythmus für Akupunktur. Wovon die Frequenz abhängt, wann Abstände grösser werden und was gilt, wenn sich nichts verändert.',
+    kurz: '<p>Es gibt keinen allgemein richtigen Rhythmus für Akupunktur.</p><p>Wie häufig Termine sinnvoll sind, hängt unter anderem davon ab, ob Beschwerden akut oder länger bestehend sind, wie stark sie ausgeprägt sind und wie du auf die bisherigen Behandlungen reagierst.</p>',
+    bodyHtml: '<h2>Wird am Anfang häufiger behandelt?</h2>\n<p>Bei manchen Beschwerden können zu Beginn kürzere Abstände gewählt werden. In anderen Situationen reicht ein grösserer Abstand.</p>\n<p>Eine starre Regel wie zweimal pro Woche für jeden Patienten wäre nicht sinnvoll. Wie viele Sitzungen insgesamt realistisch sind, ist eine eigene Frage; eine grobe Orientierung gibt die Kurzantwort <a href="/gesundheitsbibliothek/fragen/akupunktur/#sitzungen">Wie viele Sitzungen brauche ich?</a></p>\n<h2>Was passiert, wenn es besser wird?</h2>\n<p>Wenn sich Beschwerden stabil verbessern, kann der Abstand zwischen Terminen angepasst werden.</p>\n<p>Ziel sollte nicht sein, möglichst viele Behandlungen zu absolvieren, sondern regelmässig zu prüfen, ob die Behandlung einen sinnvollen Beitrag leistet.</p>\n<h2>Was, wenn sich nichts verändert?</h2>\n<p>Wenn nach einer angemessenen Behandlungsphase keine erkennbare Veränderung eintritt, sollte nicht einfach unbegrenzt nach demselben Schema weiterbehandelt werden.</p>\n<p>Dann ist sinnvoll zu besprechen:</p>\n<ul><li>Ist die ursprüngliche Einschätzung noch plausibel?</li><li>Muss die Behandlung angepasst werden?</li><li>Ist weitere medizinische Abklärung sinnvoll?</li><li>Ist eine andere Therapie geeigneter?</li></ul>\n<p>Woran du eine relevante Veränderung erkennst, beschreibt <a href="/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/">Wann merkt man, ob Akupunktur wirkt?</a></p>\n<h2>Brauche ich einen festen Behandlungsplan?</h2>\n<p>Ein grober Plan kann hilfreich sein, sollte aber anhand des Verlaufs angepasst werden.</p>\n<h2>Kurz gesagt</h2>\n<p>Wie oft Akupunktur sinnvoll ist, lässt sich nicht pauschal festlegen. Der Abstand sollte zu deinem Problem und zum tatsächlichen Verlauf passen.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/', label: 'Wie schnell kann man eine Wirkung der Akupunktur merken?' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur/', label: 'Alle Fragen zur Akupunktur' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'wann-wirkt-akupunktur',
+    question: 'Wie schnell kann man eine Wirkung der Akupunktur merken?',
+    title: 'Wann merkt man, ob Akupunktur wirkt?',
+    metaDesc: 'Manche merken früh eine Veränderung, bei anderen braucht es mehrere Termine, und manchmal hilft Akupunktur nicht ausreichend. Woran du einen echten Verlauf erkennst.',
+    kurz: '<p>Wie schnell sich nach Akupunktur etwas verändert, ist von Person zu Person und je nach Beschwerde sehr unterschiedlich.</p><p>Manche Menschen bemerken bereits früh eine Veränderung. Bei anderen entwickelt sich ein Effekt erst über mehrere Termine. Und bei manchen bringt Akupunktur für das jeweilige Problem keine ausreichende Verbesserung.</p>',
+    bodyHtml: '<h2>Muss ich nach der ersten Sitzung etwas merken?</h2>\n<p>Nein. Eine einzelne Sitzung ist nicht automatisch ein zuverlässiger Test dafür, ob Akupunktur für dein Problem hilfreich sein wird.</p>\n<p>Gleichzeitig sollte auch nicht jede ausbleibende Veränderung unbegrenzt damit erklärt werden, dass es einfach mehr Zeit braucht.</p>\n<h2>Was kann eine erste Veränderung sein?</h2>\n<p>Je nach Behandlungsziel kann eine Veränderung zum Beispiel bedeuten:</p>\n<ul><li>geringere Schmerzintensität</li><li>längere schmerzfreie Phasen</li><li>bessere Beweglichkeit</li><li>weniger häufige Beschwerden</li><li>besserer Schlaf</li><li>die Veränderung eines konkreten Symptoms</li></ul>\n<h2>Wie viele Sitzungen sollte ich ausprobieren?</h2>\n<p>Es gibt keine universelle Zahl.</p>\n<p>Wichtiger ist eine vorher vereinbarte Phase, nach der gemeinsam beurteilt wird, ob sich etwas Relevantes verändert hat. Wie sich die Frequenz sinnvoll gestaltet, steht unter <a href="/gesundheitsbibliothek/fragen/wie-oft-akupunktur/">Wie oft braucht man Akupunktur?</a></p>\n<h2>Was, wenn nichts passiert?</h2>\n<p>Wenn sich trotz Behandlung nichts verändert, sollte die Situation neu bewertet werden.</p>\n<p>Mehr Termine sind nicht automatisch die richtige Antwort; manchmal gehört auch eine weitere <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">medizinische Abklärung</a> dazu.</p>\n<h2>Kann Akupunktur auch nicht helfen?</h2>\n<p>Ja. Keine Behandlung wirkt bei jedem Menschen und jeder Beschwerde gleich.</p>\n<p>Eine seriöse Beratung sollte deshalb nicht garantieren, dass Akupunktur dein Problem lösen wird.</p>\n<h2>Kurz gesagt</h2>\n<p>Manche Veränderungen können früh auftreten, andere brauchen Zeit. Entscheidend ist nicht ein festes Versprechen, sondern ob sich im Verlauf eine für dich relevante Verbesserung zeigt.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/wie-oft-akupunktur/', label: 'Wie oft braucht man Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
 ];
 
 export const fragenHubBySlug = (slug: string) => fragenHubs.find((h) => h.slug === slug);
@@ -585,6 +736,8 @@ export const frageBySlug = (slug: string) => fragen.find((f) => f.slug === slug)
 const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
   akupunktur: [
     { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    { href: '/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/', label: 'Was bei Angst vor Nadeln?' },
+    { href: '/gesundheitsbibliothek/fragen/wie-oft-akupunktur/', label: 'Wie oft braucht man Akupunktur?' },
     { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?' },
     { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit danach normal?' },
     { href: '/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/', label: 'Sind blaue Flecken normal?' },

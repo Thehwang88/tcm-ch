@@ -1,13 +1,13 @@
 {
   "generated": "2026-09-24",
   "totals": {
-    "healthPages": 387,
+    "healthPages": 396,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "befund": 34,
-      "question": 25,
+      "question": 34,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 217,
+      "inboundContentLinks": 226,
       "outboundHealthLinks": 44
     },
     {
@@ -1450,8 +1450,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 41,
-      "outboundHealthLinks": 29
+      "inboundContentLinks": 50,
+      "outboundHealthLinks": 38
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
@@ -1480,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1490,8 +1490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/",
@@ -1501,6 +1501,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/",
+      "type": "question",
+      "title": "Angst vor Nadeln: Kann ich trotzdem Akupunktur machen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1520,8 +1530,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 13
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/essen-vor-akupunktur/",
+      "type": "question",
+      "title": "Essen vor Akupunktur: Muss ich nüchtern kommen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/kleidung-akupunktur/",
+      "type": "question",
+      "title": "Was soll ich zur Akupunktur anziehen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/fragen/kosten-versicherung/",
@@ -1530,7 +1560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 8
     },
     {
@@ -1540,7 +1570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 8
     },
     {
@@ -1550,8 +1580,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/",
@@ -1660,8 +1690,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tut-schroepfen-weh/",
@@ -1674,13 +1704,33 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/gesundheitsbibliothek/fragen/ueberweisung-akupunktur/",
+      "type": "question",
+      "title": "Brauche ich für Akupunktur eine ärztliche Überweisung? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/",
+      "type": "question",
+      "title": "Wann merkt man, ob Akupunktur wirkt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/",
       "type": "question",
       "title": "TCM oder zuerst zum Arzt? Die ehrliche Antwort | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 7
     },
     {
@@ -1690,8 +1740,48 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/",
+      "type": "question",
+      "title": "Wie lange dauert Akupunktur? Termin, Gespräch und Liegezeit | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wie-oft-akupunktur/",
+      "type": "question",
+      "title": "Wie oft sollte man Akupunktur machen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wie-tief-akupunkturnadeln/",
+      "type": "question",
+      "title": "Wie tief werden Akupunkturnadeln gesetzt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/wie-viele-akupunkturnadeln/",
+      "type": "question",
+      "title": "Wie viele Nadeln werden bei Akupunktur verwendet? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/koerper/bauch-verdauung/",
@@ -2990,7 +3080,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
+      "inboundContentLinks": 32,
       "outboundHealthLinks": 5
     },
     {
@@ -3000,8 +3090,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 233,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 241,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/therapien/akupunktur/bauchakupunktur/",
@@ -3020,7 +3110,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -3890,7 +3980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     }
   ]
