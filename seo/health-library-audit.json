@@ -1,13 +1,13 @@
 {
   "generated": "2026-09-24",
   "totals": {
-    "healthPages": 378,
+    "healthPages": 387,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
       "befund": 34,
-      "question": 16,
+      "question": 25,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 208,
+      "inboundContentLinks": 217,
       "outboundHealthLinks": 44
     },
     {
@@ -1450,8 +1450,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 29
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
@@ -1460,7 +1460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 8
     },
     {
@@ -1470,8 +1470,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/",
@@ -1480,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 7
     },
     {
@@ -1492,6 +1492,16 @@
       "inSitemap": true,
       "inboundContentLinks": 7,
       "outboundHealthLinks": 15
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/",
+      "type": "question",
+      "title": "Alkohol nach Akupunktur: Muss ich darauf verzichten? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/",
@@ -1530,7 +1540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 8
     },
     {
@@ -1540,7 +1550,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/",
+      "type": "question",
+      "title": "Nach Akupunktur mehr Schmerzen: Ist das normal? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -1550,8 +1570,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/",
+      "type": "question",
+      "title": "Schröpfen: Welche Nebenwirkungen können auftreten? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/",
+      "type": "question",
+      "title": "Schwimmen nach Akupunktur: Ist das erlaubt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/",
@@ -1560,8 +1600,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 13
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/sport-nach-akupunktur/",
+      "type": "question",
+      "title": "Sport nach Akupunktur: Darf ich danach trainieren? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/",
@@ -1570,8 +1620,38 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-erstverschlimmerung/",
+      "type": "question",
+      "title": "Erstverschlimmerung durch TCM-Kräuter: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/",
+      "type": "question",
+      "title": "TCM-Kräuter: Welche Nebenwirkungen und Wechselwirkungen sind möglich? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/tuina-nebenwirkungen/",
+      "type": "question",
+      "title": "Tuina: Welche Nebenwirkungen können auftreten? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
@@ -1580,8 +1660,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/tut-schroepfen-weh/",
+      "type": "question",
+      "title": "Tut Schröpfen weh? So fühlt es sich normalerweise an | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/",
@@ -1590,7 +1680,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 7
     },
     {
@@ -2910,7 +3000,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 230,
+      "inboundContentLinks": 233,
       "outboundHealthLinks": 10
     },
     {
@@ -2980,7 +3070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 6
     },
     {
@@ -2990,7 +3080,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 6
     },
     {
@@ -3050,8 +3140,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 105,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 107,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/therapien/massage/",
@@ -3060,7 +3150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 65,
+      "inboundContentLinks": 66,
       "outboundHealthLinks": 21
     },
     {
@@ -3210,8 +3300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 65,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 67,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
@@ -3220,7 +3310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     },
     {
@@ -3250,8 +3340,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 106,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 107,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/visuals/",
@@ -3660,8 +3750,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/wissen/schroepfmassage/",
@@ -3670,8 +3760,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/shiatsu-selbstbehandlung/",

@@ -1843,6 +1843,7 @@ const wissenBase: Wissen[] = [
     ],
     "related": [
       { "href": "/wissen/schroepfmassage/", "label": "Schröpfmassage: Gläser in Bewegung", "cat": "Artikel" },
+      { "href": "/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/", "label": "Welche Nebenwirkungen kann Schröpfen haben?", "cat": "Fragen" },
       {
         "href": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
         "label": "Häufige Fragen zu Schröpfen & Methoden",
@@ -2240,6 +2241,7 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      { "href": "/gesundheitsbibliothek/fragen/tut-schroepfen-weh/", "label": "Tut Schröpfen weh?", "cat": "Fragen" },
       {
         "href": "/therapien/schroepfen/",
         "label": "Schröpfen: Wirkung, Ablauf & Methoden",

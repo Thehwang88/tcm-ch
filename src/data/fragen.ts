@@ -75,17 +75,17 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'sport',
         q: 'Darf ich nach der Behandlung Sport machen?',
-        a: '<p>Leichte Bewegung wie Spazieren ist jederzeit gut. Intensives Training verschiebst du besser auf den nächsten Tag: Der Körper reagiert auf die Behandlung, viele fühlen sich danach entspannt bis müde, und ein hartes Training arbeitet dagegen. Nach Schröpfen oder Gua Sha ist die behandelte Muskulatur zudem stärker durchblutet und kann empfindlich sein. Faustregel: Am Behandlungstag runterfahren, ab dem Folgetag wie gewohnt.</p>',
+        a: '<p>Leichte Bewegung wie Spazieren ist jederzeit gut. Intensives Training verschiebst du besser auf den nächsten Tag: Der Körper reagiert auf die Behandlung, viele fühlen sich danach entspannt bis müde, und ein hartes Training arbeitet dagegen. Nach Schröpfen oder Gua Sha ist die behandelte Muskulatur zudem stärker durchblutet und kann empfindlich sein. Faustregel: Am Behandlungstag runterfahren, ab dem Folgetag wie gewohnt. Ausführlicher mit allen Abwägungen: <a href="/gesundheitsbibliothek/fragen/sport-nach-akupunktur/">Sport nach Akupunktur</a>.</p>',
       },
       {
         id: 'sauna',
         q: 'Sind Sauna, Schwimmbad oder heisses Bad erlaubt?',
-        a: '<p>Am Behandlungstag besser nicht. Nach Akupunktur sind die Einstichstellen winzige Wunden, die ein paar Stunden Ruhe verdienen; Schwimmbadwasser und starkes Schwitzen sind da unnötige Reize. Nach Schröpfen gilt das noch mehr, weil die Haut stärker beansprucht ist. Duschen ist kein Problem. Mit Dauernadeln im Ohr solltest du Schwimmbad und Sauna ganz meiden, bis sie entfernt sind.</p>',
+        a: '<p>Am Behandlungstag besser nicht. Nach Akupunktur sind die Einstichstellen winzige Wunden, die ein paar Stunden Ruhe verdienen; Schwimmbadwasser und starkes Schwitzen sind da unnötige Reize. Nach Schröpfen gilt das noch mehr, weil die Haut stärker beansprucht ist. Duschen ist kein Problem. Mit Dauernadeln im Ohr solltest du Schwimmbad und Sauna ganz meiden, bis sie entfernt sind. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/">Schwimmen nach Akupunktur</a>.</p>',
       },
       {
         id: 'alkohol',
         q: 'Darf ich nach der Behandlung Alkohol trinken?',
-        a: '<p>Verzichte am Behandlungstag besser darauf. Alkohol belastet den Kreislauf, und der ist nach einer Behandlung bei manchen ohnehin etwas gedämpft. Dasselbe gilt für sehr viel Kaffee direkt danach. Viel Wasser oder Tee trinken ist dagegen sinnvoll, die meisten empfinden das nach der Behandlung als angenehm.</p>',
+        a: '<p>Verzichte am Behandlungstag besser darauf. Alkohol belastet den Kreislauf, und der ist nach einer Behandlung bei manchen ohnehin etwas gedämpft. Dasselbe gilt für sehr viel Kaffee direkt danach. Viel Wasser oder Tee trinken ist dagegen sinnvoll, die meisten empfinden das nach der Behandlung als angenehm. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/">Alkohol nach Akupunktur</a>.</p>',
       },
       {
         id: 'autofahren',
@@ -95,7 +95,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'erstverschlimmerung',
         q: 'Meine Beschwerden sind nach der Behandlung kurz stärker. Ist das normal?',
-        a: '<p>Mit „Erstverschlimmerung“ beschreiben manche Patient:innen eine vorübergehende Veränderung ihrer Beschwerden nach einer Behandlung. Leichte Müdigkeit, lokale Empfindlichkeit oder ein kurzfristiges Schwanken bereits bestehender Beschwerden können vorkommen. Eine deutliche, anhaltende oder neue Verschlechterung sollte jedoch nicht pauschal als normale Erstreaktion eingeordnet werden. Wenn Beschwerden ungewöhnlich stark sind, länger anhalten oder neue Symptome auftreten, melde dich bei der behandelnden Praxis oder lass sie medizinisch abklären.</p>',
+        a: '<p>Mit „Erstverschlimmerung“ beschreiben manche Patient:innen eine vorübergehende Veränderung ihrer Beschwerden nach einer Behandlung. Leichte Müdigkeit, lokale Empfindlichkeit oder ein kurzfristiges Schwanken bereits bestehender Beschwerden können vorkommen. Eine deutliche, anhaltende oder neue Verschlechterung sollte jedoch nicht pauschal als normale Erstreaktion eingeordnet werden. Wenn Beschwerden ungewöhnlich stark sind, länger anhalten oder neue Symptome auftreten, melde dich bei der behandelnden Praxis oder lass sie medizinisch abklären. Speziell zu stärkeren Schmerzen: <a href="/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/">Nach Akupunktur mehr Schmerzen?</a></p>',
       },
       {
         id: 'abstaende',
@@ -230,12 +230,12 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'schroepfmale',
         q: 'Wie lange bleiben Schröpfmale sichtbar?',
-        a: '<p>Die runden Abdrücke verblassen in der Regel innert 3 bis 10 Tagen, je nach Hauttyp und Intensität der Behandlung. Sie sind keine klassischen Blutergüsse einer Verletzung und tun normalerweise nicht weh. Plane bei sichtbaren Stellen (Schultern, Nacken) allenfalls um Anlässe herum. Was die Färbung bedeutet und wann du eine Stelle anschauen lassen solltest, erklärt der Artikel <a href="/wissen/schroepfen-wirkung-flecken/">Schröpfen: Wirkung und Flecken</a>.</p>',
+        a: '<p>Die runden Abdrücke verblassen in der Regel innert 3 bis 10 Tagen, je nach Hauttyp und Intensität der Behandlung. Sie sind keine klassischen Blutergüsse einer Verletzung und tun normalerweise nicht weh. Plane bei sichtbaren Stellen (Schultern, Nacken) allenfalls um Anlässe herum. Was die Färbung bedeutet und wann du eine Stelle anschauen lassen solltest, erklärt der Artikel <a href="/wissen/schroepfen-wirkung-flecken/">Schröpfen: Wirkung und Flecken</a>, weitere mögliche Reaktionen die Übersicht <a href="/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/">Schröpfen: Nebenwirkungen</a>.</p>',
       },
       {
         id: 'schroepfen-schmerz',
         q: 'Tut Schröpfen weh?',
-        a: '<p>Schröpfen zieht spürbar an der Haut, die meisten beschreiben es als intensiven, aber gut aushaltbaren Druck, ähnlich einer kräftigen Massage. Beim Gleitschröpfen über eingeölte Haut ist das Gefühl flächiger. Schmerzhaft sollte es nicht sein: Der Unterdruck lässt sich jederzeit anpassen, sag also, wenn es zu stark zieht. Nach der Behandlung kann sich die Stelle für ein bis zwei Tage empfindlich anfühlen wie nach Muskelkater.</p>',
+        a: '<p>Schröpfen zieht spürbar an der Haut, die meisten beschreiben es als intensiven, aber gut aushaltbaren Druck, ähnlich einer kräftigen Massage. Beim Gleitschröpfen über eingeölte Haut ist das Gefühl flächiger. Schmerzhaft sollte es nicht sein: Der Unterdruck lässt sich jederzeit anpassen, sag also, wenn es zu stark zieht. Nach der Behandlung kann sich die Stelle für ein bis zwei Tage empfindlich anfühlen wie nach Muskelkater. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/tut-schroepfen-weh/">Tut Schröpfen weh?</a></p>',
       },
       {
         id: 'gua-sha',
@@ -245,7 +245,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'tuina',
         q: 'Was unterscheidet Tuina von einer klassischen Massage?',
-        a: '<p><a href="/therapien/tuina/">Tuina</a> ist die manuelle Therapie der chinesischen Medizin: Sie kombiniert kräftige Massagegriffe mit Mobilisation von Gelenken und gezielter Arbeit an Druckpunkten und folgt einer eigenen Befunderhebung. Eine klassische Massage arbeitet primär entspannend an der Muskulatur. In der Praxis überschneiden sich die Techniken; welche Form die Zusatzversicherung übernimmt, hängt von der Anerkennung der Fachperson ab, siehe <a href="/krankenkassen/massage/">Massage &amp; Krankenkasse</a>.</p>',
+        a: '<p><a href="/therapien/tuina/">Tuina</a> ist die manuelle Therapie der chinesischen Medizin: Sie kombiniert kräftige Massagegriffe mit Mobilisation von Gelenken und gezielter Arbeit an Druckpunkten und folgt einer eigenen Befunderhebung. Eine klassische Massage arbeitet primär entspannend an der Muskulatur. In der Praxis überschneiden sich die Techniken; welche Form die Zusatzversicherung übernimmt, hängt von der Anerkennung der Fachperson ab, siehe <a href="/krankenkassen/massage/">Massage &amp; Krankenkasse</a>. Zu möglichen Reaktionen: <a href="/gesundheitsbibliothek/fragen/tuina-nebenwirkungen/">Tuina: Nebenwirkungen</a>.</p>',
       },
       {
         id: 'moxibustion',
@@ -255,7 +255,7 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'kraeuter-medikamente',
         q: 'Darf ich chinesische Kräuter neben meinen Medikamenten nehmen?',
-        a: '<p>Nicht ohne Rücksprache. Kräuterrezepturen können mit Medikamenten wechselwirken, besonders relevant bei Blutverdünnern, Immunsuppressiva und in der Schwangerschaft. Deshalb gehört zur seriösen <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> immer die vollständige Medikamentenliste ins Erstgespräch, und im Zweifel die Absprache mit der behandelnden Ärztin. Bei TCM.ch werden ausschliesslich geprüfte Rezepturen aus Schweizer Apotheken verwendet.</p>',
+        a: '<p>Nicht ohne Rücksprache. Kräuterrezepturen können mit Medikamenten wechselwirken, besonders relevant bei Blutverdünnern, Immunsuppressiva und in der Schwangerschaft. Deshalb gehört zur seriösen <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> immer die vollständige Medikamentenliste ins Erstgespräch, und im Zweifel die Absprache mit der behandelnden Ärztin. Bei TCM.ch werden ausschliesslich geprüfte Rezepturen aus Schweizer Apotheken verwendet. Ausführlich: <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">TCM-Kräuter: Nebenwirkungen</a>.</p>',
       },
     ],
   },
@@ -381,6 +381,7 @@ export const fragen: Frage[] = [
       { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?' },
       { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
       { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/', label: 'Nach Akupunktur mehr Schmerzen: Ist das normal?' },
     ],
     mehr: [
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
@@ -414,11 +415,165 @@ export const fragen: Frage[] = [
     verwandt: [
       { href: '/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/', label: 'Sind blaue Flecken nach Akupunktur normal?' },
       { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/', label: 'Nach Akupunktur mehr Schmerzen: Ist das normal?' },
       { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
     ],
     mehr: [
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
       { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'sport-nach-akupunktur',
+    question: 'Darf man nach Akupunktur Sport machen?',
+    title: 'Sport nach Akupunktur: Darf ich danach trainieren?',
+    metaDesc: 'Trainieren nach einer Akupunkturbehandlung: was direkt danach sinnvoll ist, wann du intensives Training verschiebst und wann eine Pause die bessere Wahl ist.',
+    kurz: '<p>In den meisten Fällen musst du nach einer Akupunkturbehandlung nicht grundsätzlich auf Bewegung verzichten. Ob intensives Training direkt danach sinnvoll ist, hängt aber davon ab, wie du dich fühlst und weshalb du behandelt wurdest.</p><p>Wenn du dich nach der Behandlung ruhig, etwas müde oder leicht benommen fühlst, ist es meist sinnvoller, den Körper zunächst zur Ruhe kommen zu lassen. Ein Spaziergang oder leichte Bewegung ist etwas anderes als ein intensives Krafttraining, Intervalltraining oder ein langer Lauf.</p>',
+    bodyHtml: '<h2>Was ist direkt nach der Akupunktur sinnvoll?</h2>\n<p>Nach der Behandlung kannst du zunächst ein paar Minuten beobachten, wie du dich fühlst. Manche Menschen merken kaum einen Unterschied, andere fühlen sich vorübergehend entspannt, <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde</a> oder etwas leichter im Kopf.</p>\n<p>Leichte Alltagsbewegung ist normalerweise kein Problem. Bei intensiver Belastung solltest du dich dagegen nicht dazu zwingen, wenn sich dein Körper gerade erschöpft oder ungewöhnlich anfühlt.</p>\n<h2>Muss ich einen ganzen Tag mit Sport warten?</h2>\n<p>Eine pauschale Wartezeit gibt es nicht. Entscheidend sind dein Zustand, die Intensität des Trainings und der Grund der Behandlung.</p>\n<p>Wenn du dich normal fühlst und keine besonderen Beschwerden hast, spricht häufig nichts gegen moderate Bewegung. Bei Kreislaufproblemen, stärkeren Schmerzen, ungewöhnlicher Müdigkeit oder einer <a href="/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/">deutlichen Reaktion auf die Behandlung</a> solltest du Training verschieben.</p>\n<h2>Was ist mit Krafttraining oder intensivem Ausdauertraining?</h2>\n<p>Je intensiver das Training, desto sinnvoller ist es, auf dein aktuelles Körpergefühl zu achten. Eine Akupunkturbehandlung sollte kein Anlass sein, Warnsignale zu übergehen.</p>\n<p>Besonders wenn wegen akuter Schmerzen, Schwindel, Erschöpfung oder einer Verletzung behandelt wurde, kann die zugrunde liegende Beschwerde selbst wichtiger für die Trainingsentscheidung sein als die Akupunktur.</p>\n<h2>Wann sollte ich lieber pausieren?</h2>\n<p>Pausiere und kläre die Situation ab, wenn nach der Behandlung zum Beispiel deutlicher Schwindel, ungewöhnliche Schwäche, starke Schmerzen oder andere neue Beschwerden auftreten.</p>\n<p>Akupunktur ist kein Grund, sportliche Belastung trotz solcher Symptome fortzusetzen.</p>\n<h2>Kurz gesagt</h2>\n<p>Leichte Bewegung nach Akupunktur ist für viele Menschen gut möglich. Intensives Training musst du nicht grundsätzlich vermeiden, solltest es aber davon abhängig machen, wie du dich nach der Behandlung fühlst. Was sonst am Behandlungstag gilt, steht unter <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/', label: 'Ist eine starke Reaktion nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/', label: 'Darf man nach Akupunktur schwimmen?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'schwimmen-nach-akupunktur',
+    question: 'Darf man nach Akupunktur schwimmen?',
+    title: 'Schwimmen nach Akupunktur: Ist das erlaubt?',
+    metaDesc: 'Schwimmen oder Baden nach Akupunktur: warum kurz warten sinnvoll sein kann und was bei Sauna, Dauernadeln und gereizten Einstichstellen gilt.',
+    kurz: '<p>Nach einer normalen Akupunkturbehandlung sind die Einstichstellen sehr klein. Trotzdem ist es sinnvoll, unmittelbar danach nicht unnötig an ihnen zu reiben oder sie zu reizen.</p><p>Wenn die Haut unauffällig ist und du dich gut fühlst, ist Schwimmen später normalerweise kein grundsätzliches Problem. Direkt nach der Behandlung kann es jedoch sinnvoll sein, etwas Zeit verstreichen zu lassen.</p>',
+    bodyHtml: '<h2>Warum überhaupt warten?</h2>\n<p>Die Haut wurde an mehreren Stellen mit sehr feinen Nadeln durchstochen. Die Einstiche schliessen sich normalerweise schnell, aber direkt nach der Behandlung können einzelne Punkte noch etwas empfindlich sein.</p>\n<p>Auch Kreislauf und Allgemeinbefinden spielen eine Rolle. Wer sich nach der Behandlung <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde</a> oder leicht schwindelig fühlt, sollte nicht direkt ins Wasser gehen.</p>\n<h2>Schwimmbad, See oder Sauna?</h2>\n<p>Bei offenen, blutenden oder deutlich gereizten Einstichstellen solltest du mit Schwimmen warten.</p>\n<p>Auch sehr heisse Bäder oder Sauna können unmittelbar nach einer Behandlung belastender sein, wenn dein Kreislauf empfindlich reagiert.</p>\n<h2>Was ist bei Dauernadeln oder Ohrpflastern?</h2>\n<p>Hier gelten andere Überlegungen als nach einer normalen Sitzung. Wenn <a href="/therapien/dauernadeln/">Dauernadeln</a> oder <a href="/therapien/ear-seeds/">Ohrpflaster</a> weiter getragen werden, solltest du die konkreten Pflegehinweise deiner Therapeutin oder deines Therapeuten beachten.</p>\n<h2>Wann solltest du nachfragen?</h2>\n<p>Wenn eine Einstichstelle stärker gerötet, geschwollen, schmerzhaft oder ungewöhnlich verändert ist, solltest du nicht einfach weiterbaden oder schwimmen, sondern die Stelle beobachten und bei Bedarf medizinisch abklären lassen.</p>\n<h2>Kurz gesagt</h2>\n<p>Nach einer unkomplizierten Akupunkturbehandlung musst du Schwimmen nicht dauerhaft vermeiden. Direkt danach ist etwas Zurückhaltung sinnvoll, besonders wenn Einstichstellen noch gereizt sind oder du dich nicht ganz fit fühlst. Weitere Alltagsfragen beantwortet die Übersicht <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/sport-nach-akupunktur/', label: 'Darf man nach Akupunktur Sport machen?' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?' },
+    ],
+    mehr: [
+      { href: '/therapien/dauernadeln/', label: 'Dauernadeln', cat: 'Therapie' },
+      { href: '/therapien/ear-seeds/', label: 'Ear Seeds', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'alkohol-nach-akupunktur',
+    question: 'Darf man nach Akupunktur Alkohol trinken?',
+    title: 'Alkohol nach Akupunktur: Muss ich darauf verzichten?',
+    metaDesc: 'Alkohol nach einer Akupunkturbehandlung: keine generelle Verbotsregel, aber gute Gründe für Zurückhaltung direkt danach. Was bei Kräutern und Medikamenten gilt.',
+    kurz: '<p>Es gibt keine allgemeine Regel, nach der Alkohol nach jeder Akupunkturbehandlung grundsätzlich verboten wäre. Direkt nach einer Behandlung ist Zurückhaltung trotzdem sinnvoll.</p><p>Alkohol kann Kreislauf, Reaktionsfähigkeit und Körperwahrnehmung beeinflussen. Wenn du nach der Akupunktur ohnehin müde, schwindelig oder ungewöhnlich entspannt bist, kann Alkohol diese Effekte verstärken.</p>',
+    bodyHtml: '<h2>Warum empfehlen viele Therapeuten Zurückhaltung?</h2>\n<p>Der praktische Grund ist weniger eine besondere Wechselwirkung mit der Akupunkturnadel als dein Allgemeinzustand.</p>\n<p>Nach einer Behandlung möchtest du unterscheiden können, ob Beschwerden wie Schwindel, <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">Müdigkeit</a> oder Unwohlsein von der Behandlung, deiner ursprünglichen Erkrankung oder etwas anderem kommen. Alkohol kann diese Einschätzung erschweren.</p>\n<h2>Ist ein Glas Wein gefährlich?</h2>\n<p>Eine pauschale Aussage lässt sich nicht für jeden Menschen treffen. Entscheidend sind unter anderem dein Gesundheitszustand, Medikamente, Begleiterkrankungen und wie du dich nach der Behandlung fühlst.</p>\n<p>Wenn medizinische Gründe gegen Alkohol sprechen, ändert eine Akupunkturbehandlung daran selbstverständlich nichts.</p>\n<h2>Was gilt bei Kräutertherapie oder Medikamenten?</h2>\n<p>Wenn du zusätzlich chinesische Arzneimittel, Medikamente oder andere Präparate einnimmst, können andere Regeln gelten.</p>\n<p>Alkohol kann mit verschiedenen Arzneimitteln wechselwirken. Frage bei Unsicherheit deine behandelnde Fachperson oder Apotheke. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">TCM-Kräuter: Nebenwirkungen</a>.</p>\n<h2>Kurz gesagt</h2>\n<p>Du musst Alkohol nicht deshalb grundsätzlich meiden, weil du Akupunktur hattest. Direkt danach ist es jedoch vernünftig, zurückhaltend zu sein und zunächst zu beobachten, wie du dich fühlst. Was sonst am Behandlungstag gilt, steht unter <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'Können TCM-Kräuter Nebenwirkungen haben?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'schmerzen-nach-akupunktur-schlimmer',
+    question: 'Warum sind die Schmerzen nach Akupunktur stärker?',
+    title: 'Nach Akupunktur mehr Schmerzen: Ist das normal?',
+    metaDesc: 'Stärkere Schmerzen nach Akupunktur: was vorübergehend vorkommen kann, warum eine deutliche Verschlechterung keine normale Heilreaktion ist und wann du dich meldest.',
+    kurz: '<p>Leichte Empfindlichkeit an einer behandelten Stelle kann nach Akupunktur vorkommen. Wenn die eigentlichen Schmerzen nach der Behandlung deutlich stärker werden, solltest du das aber nicht automatisch als normale oder gewünschte Reaktion einordnen.</p><p>Entscheidend ist, wie stark die Verschlechterung ist, wie lange sie anhält und ob neue Symptome hinzukommen.</p>',
+    bodyHtml: '<h2>Was kann vorübergehend vorkommen?</h2>\n<p>Einzelne Einstichstellen können empfindlich sein. Auch Muskeln können sich kurzfristig anders oder etwas wund anfühlen.</p>\n<p>Eine leichte, vorübergehende Veränderung ist etwas anderes als eine deutliche Verschlechterung deiner ursprünglichen Schmerzen.</p>\n<h2>Ist eine sogenannte Erstverschlimmerung normal?</h2>\n<p>Der Begriff wird in der Komplementärmedizin häufig verwendet, sollte aber nicht dazu führen, neue oder deutlich stärkere Beschwerden pauschal als Zeichen einer erfolgreichen Behandlung zu betrachten.</p>\n<p>Eine Verschlechterung hat verschiedene mögliche Ursachen und sollte im klinischen Kontext beurteilt werden. Wie du die Bandbreite an Reaktionen einordnest, steht unter <a href="/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/">Starke Reaktion nach Akupunktur</a>.</p>\n<h2>Wann solltest du den Therapeuten kontaktieren?</h2>\n<p>Melde dich, wenn die Schmerzen:</p>\n<ul><li>deutlich stärker als vorher sind</li><li>ungewöhnlich lange anhalten</li><li>eine neue Qualität haben</li><li>mit Taubheit, Schwäche oder anderen neurologischen Symptomen einhergehen (mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/">Nerv getroffen?</a>)</li><li>dich im Alltag deutlich einschränken</li></ul>\n<h2>Wann braucht es medizinische Abklärung?</h2>\n<p>Starke oder zunehmende Schmerzen, Atemnot, ausgeprägte neurologische Veränderungen, Fieber oder andere ernsthafte neue Symptome gehören medizinisch abgeklärt. Bei akuter Atemnot oder rasch zunehmenden Symptomen gilt in der Schweiz der Notruf 144. Eine Orientierung, wann die ärztliche Abklärung zuerst kommt, gibt <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">Wann zuerst zum Arzt?</a></p>\n<h2>Kurz gesagt</h2>\n<p>Etwas lokale Empfindlichkeit kann vorkommen. Eine deutliche Schmerzverschlechterung solltest du aber nicht einfach als normale Heilreaktion abhaken.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/', label: 'Ist eine starke Reaktion nach Akupunktur normal?' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/', label: 'Kann bei der Akupunktur ein Nerv getroffen werden?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/', label: 'Ist Müdigkeit nach Akupunktur normal?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'schroepfen-nebenwirkungen',
+    question: 'Welche Nebenwirkungen kann Schröpfen haben?',
+    title: 'Schröpfen: Welche Nebenwirkungen können auftreten?',
+    metaDesc: 'Schröpfmale, Druckempfindlichkeit, blutiges Schröpfen: welche Reaktionen nach Schröpfen häufig sind, welche nicht normal sind und wann Vorsicht wichtig ist.',
+    kurz: '<p>Nach Schröpfen sind sichtbare Hautverfärbungen, Druckempfindlichkeit oder ein vorübergehendes Spannungsgefühl relativ typische Reaktionen. Je nach Methode und Intensität können die Spuren mehrere Tage sichtbar bleiben.</p><p>Neben diesen erwartbaren Hautreaktionen gibt es aber auch Situationen, in denen Schröpfen nicht oder nur mit besonderer Vorsicht durchgeführt werden sollte.</p>',
+    bodyHtml: '<h2>Welche Reaktionen kommen häufig vor?</h2>\n<p>Nach trockenem Schröpfen können kreisrunde rote, violette oder dunklere Stellen entstehen. Sie entsprechen nicht automatisch einem Giftstoff oder einer bestimmten Diagnose; was die Färbung bedeutet, erklärt der Artikel <a href="/wissen/schroepfen-wirkung-flecken/">Schröpfen: Wirkung und Flecken</a>.</p>\n<p>Möglich sind ausserdem:</p>\n<ul><li>Druckempfindlichkeit</li><li>leichte lokale Schmerzen</li><li>vorübergehende Hautreizung</li><li>kleine Blutergüsse</li></ul>\n<h2>Wann sind Flecken nicht mehr nur eine normale Reaktion?</h2>\n<p>Starke Schmerzen, Blasenbildung, ausgeprägte Hautverletzungen oder Zeichen einer Infektion gehören nicht zu dem, was einfach ignoriert werden sollte.</p>\n<h2>Gibt es Risiken bei blutigem Schröpfen?</h2>\n<p><a href="/therapien/schroepfen/blutiges-schroepfen/">Blutiges Schröpfen</a> verletzt die Haut gezielt und hat deshalb zusätzliche Anforderungen an Hygiene, Infektionsschutz und fachgerechte Durchführung.</p>\n<p>Es ist nicht mit trockenem Schröpfen gleichzusetzen.</p>\n<h2>Wann ist besondere Vorsicht wichtig?</h2>\n<p>Zum Beispiel bei:</p>\n<ul><li>Blutgerinnungsstörungen</li><li>bestimmten blutverdünnenden Medikamenten</li><li>verletzter oder infizierter Haut</li><li>ausgeprägten Hauterkrankungen im Behandlungsgebiet</li><li>bestimmten akuten Erkrankungen</li></ul>\n<p>Die individuelle Situation entscheidet; solche Punkte gehören ins Erstgespräch.</p>\n<h2>Kurz gesagt</h2>\n<p>Schröpfmale und leichte lokale Empfindlichkeit können vorkommen. Starke Schmerzen, Hautverletzungen oder Infektionszeichen sind dagegen kein normaler Behandlungserfolg und sollten beurteilt werden.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/tut-schroepfen-weh/', label: 'Tut Schröpfen weh?' },
+      { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/', label: 'Alle Fragen zu Schröpfen & Methoden' },
+      { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
+    ],
+    mehr: [
+      { href: '/therapien/schroepfen/', label: 'Schröpfen', cat: 'Therapie' },
+      { href: '/wissen/schroepfen-wirkung-flecken/', label: 'Schröpfen: Wirkung und Flecken', cat: 'Wissen' },
+      { href: '/wissen/schroepfmassage/', label: 'Schröpfmassage', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'tut-schroepfen-weh',
+    question: 'Tut Schröpfen weh?',
+    title: 'Tut Schröpfen weh? So fühlt es sich normalerweise an',
+    metaDesc: 'Wie sich Schröpfen anfühlt: deutlicher Zug und Druck statt Schmerz. Was bei der Schröpfmassage anders ist und warum du Schmerzen nicht aushalten musst.',
+    kurz: '<p>Schröpfen sollte nicht einfach nur weh tun müssen. Durch den Unterdruck entsteht ein deutliches Ziehen und Spannungsgefühl an der Haut. Wie intensiv das empfunden wird, hängt von der Methode, der Stärke des Unterdrucks, der Körperregion und deiner individuellen Empfindlichkeit ab.</p>',
+    bodyHtml: '<h2>Wie fühlt sich trockenes Schröpfen an?</h2>\n<p>Viele beschreiben:</p>\n<ul><li>starkes Saugen</li><li>Zug an Haut und Gewebe</li><li>Wärme</li><li>Druck</li><li>ein gespanntes Gefühl</li></ul>\n<p>Intensiv bedeutet nicht automatisch schmerzhaft.</p>\n<h2>Was ist bei der Schröpfmassage anders?</h2>\n<p>Bei der <a href="/wissen/schroepfmassage/">Schröpfmassage</a> wird ein Schröpfglas über eingeölte Haut bewegt. Dadurch verändert sich der Reiz ständig und kann an empfindlichen oder verspannten Stellen intensiver wahrgenommen werden.</p>\n<h2>Sollte man Schmerzen aushalten?</h2>\n<p>Nein. Eine Behandlung muss nicht besonders schmerzhaft sein, um wirksam zu sein.</p>\n<p>Wenn der Unterdruck unangenehm oder schmerzhaft ist, solltest du das unmittelbar sagen. Die Intensität kann angepasst oder das Glas entfernt werden.</p>\n<h2>Was ist nach der Behandlung normal?</h2>\n<p>Die Haut kann empfindlich sein und sichtbare Schröpfmale zeigen. Starke Schmerzen, Blasen oder ausgeprägte Hautschäden sollten dagegen nicht als normal betrachtet werden. Eine Übersicht möglicher Reaktionen gibt <a href="/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/">Schröpfen: Nebenwirkungen</a>.</p>\n<h2>Kurz gesagt</h2>\n<p>Schröpfen erzeugt einen deutlichen Zug und Druck. Es darf intensiv sein, sollte aber nicht unnötig schmerzhaft durchgeführt werden.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/', label: 'Welche Nebenwirkungen kann Schröpfen haben?' },
+      { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/', label: 'Alle Fragen zu Schröpfen & Methoden' },
+      { href: '/gesundheitsbibliothek/fragen/tut-akupunktur-weh/', label: 'Tut Akupunktur weh?' },
+    ],
+    mehr: [
+      { href: '/therapien/schroepfen/', label: 'Schröpfen', cat: 'Therapie' },
+      { href: '/wissen/schroepfen-wirkung-flecken/', label: 'Schröpfen: Wirkung und Flecken', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'tuina-nebenwirkungen',
+    question: 'Welche Nebenwirkungen kann Tuina haben?',
+    title: 'Tuina: Welche Nebenwirkungen können auftreten?',
+    metaDesc: 'Nebenwirkungen von Tuina: was nach der manuellen TCM-Behandlung vorkommen kann, wann Vorsicht gilt und welche Beschwerden abgeklärt gehören.',
+    kurz: '<p>Tuina ist eine manuelle Behandlung. Je nach Technik kann sie sehr sanft oder deutlich kräftiger sein. Danach können sich behandelte Muskeln vorübergehend empfindlich oder ähnlich wie nach einer intensiven Massage anfühlen.</p><p>Deutliche Verschlechterungen oder neue Beschwerden sollten aber nicht automatisch als normal betrachtet werden.</p>',
+    bodyHtml: '<h2>Was kann nach Tuina vorkommen?</h2>\n<p>Möglich sind:</p>\n<ul><li>vorübergehende Druckempfindlichkeit</li><li>ein Muskelkater-ähnliches Gefühl</li><li>Müdigkeit</li><li>eine kurzfristige Veränderung des Spannungsgefühls</li></ul>\n<p>Wie stark jemand reagiert, hängt unter anderem von der Technik und der behandelten Region ab. Was am Behandlungstag generell gilt, steht unter <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a>.</p>\n<h2>Muss Tuina weh tun?</h2>\n<p>Nein. Manche Techniken sind kräftig, aber Schmerz ist kein notwendiges Qualitätsmerkmal.</p>\n<p>Wenn eine Technik unangenehm oder zu intensiv ist, solltest du das während der Behandlung sagen.</p>\n<h2>Wann sollte man vorsichtiger sein?</h2>\n<p>Bei akuten Verletzungen, Knochenbrüchen, starken Entzündungen, bestimmten Gefässproblemen oder anderen Erkrankungen können bestimmte manuelle Techniken ungeeignet sein.</p>\n<p>Die Behandlung muss an die individuelle Situation angepasst werden; solche Punkte gehören ins Erstgespräch.</p>\n<h2>Wann sollte man Beschwerden abklären?</h2>\n<p>Neue neurologische Symptome, starke anhaltende Schmerzen, deutliche Schwellungen oder andere ungewöhnliche Reaktionen sollten beurteilt werden. Eine Orientierung gibt <a href="/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/">Wann zuerst zum Arzt?</a></p>\n<h2>Kurz gesagt</h2>\n<p>Leichte Muskel- oder Druckempfindlichkeit kann nach Tuina vorkommen. Starke oder anhaltende Beschwerden sollten nicht einfach als normale Reaktion betrachtet werden.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?' },
+      { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
+    ],
+    mehr: [
+      { href: '/therapien/tuina/', label: 'Tuina', cat: 'Therapie' },
+      { href: '/therapien/massage/', label: 'Massage', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'tcm-kraeuter-nebenwirkungen',
+    question: 'Können TCM-Kräuter Nebenwirkungen haben?',
+    title: 'TCM-Kräuter: Welche Nebenwirkungen und Wechselwirkungen sind möglich?',
+    metaDesc: 'Chinesische Arzneimittel können Nebenwirkungen und Wechselwirkungen haben. Was bei Medikamenten, Schwangerschaft, Leber und Niere zu beachten ist.',
+    kurz: '<p>Ja. Chinesische Arzneimittel können Wirkungen, Nebenwirkungen und Wechselwirkungen haben. Natürlich bedeutet nicht automatisch risikofrei.</p><p>Entscheidend sind die verwendeten Substanzen, Dosierung, Qualität, Einnahmedauer, Begleiterkrankungen und gleichzeitig eingenommene Medikamente.</p>',
+    bodyHtml: '<h2>Welche Nebenwirkungen können auftreten?</h2>\n<p>Je nach Rezeptur können zum Beispiel Verdauungsbeschwerden, Übelkeit, Kopfschmerzen, Hautreaktionen oder andere unerwünschte Effekte auftreten.</p>\n<p>Eine einzelne Liste kann jedoch nicht alle möglichen Reaktionen abbilden, weil chinesische Rezepturen aus sehr unterschiedlichen Arzneimitteln bestehen können.</p>\n<h2>Können TCM-Kräuter mit Medikamenten wechselwirken?</h2>\n<p>Ja, Wechselwirkungen sind möglich.</p>\n<p>Wenn du regelmässig Medikamente einnimmst, solltest du das der behandelnden Fachperson vollständig mitteilen. Das gilt besonders bei Medikamenten mit engem therapeutischem Bereich, Blutgerinnungsmedikamenten und bei komplexen Erkrankungen. Zur Situation mit Blutverdünnern gibt es eine eigene Antwort: <a href="/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/">Blutverdünner und TCM-Behandlung</a>.</p>\n<h2>Was gilt bei Schwangerschaft und Stillzeit?</h2>\n<p>Hier ist besondere Vorsicht notwendig. Nicht jede chinesische Arznei ist in Schwangerschaft oder Stillzeit geeignet. Kläre die Einnahme in dieser Situation immer mit der verschreibenden Fachperson.</p>\n<h2>Was ist mit Leber und Niere?</h2>\n<p>Bestimmte Arzneimittel oder Verunreinigungen können Organe belasten. Qualität, korrekte Identifikation und fachgerechte Anwendung sind deshalb wichtig; seriöse Anbieter arbeiten mit geprüften Rezepturen aus kontrollierten Quellen.</p>\n<h2>Kurz gesagt</h2>\n<p>TCM-Kräuter sind pharmakologisch aktive Arzneimittel. Sie können sinnvoll eingesetzt werden, haben aber ebenso Nebenwirkungs- und Interaktionspotenzial. Wie eine seriöse <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> mit Qualität und Wechselwirkungen umgeht, steht auf der Therapieseite.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-erstverschlimmerung/', label: 'Sind stärkere Beschwerden nach TCM-Kräutern eine Erstverschlimmerung?' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/', label: 'Kann ich mit Blutverdünnern zur Akupunktur?' },
+      { href: '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/', label: 'Alle Fragen zu Sicherheit & Nebenwirkungen' },
+    ],
+    mehr: [
+      { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann zuerst zum Arzt?', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'tcm-kraeuter-erstverschlimmerung',
+    question: 'Sind stärkere Beschwerden nach TCM-Kräutern eine Erstverschlimmerung?',
+    title: 'Erstverschlimmerung durch TCM-Kräuter: Was bedeutet das?',
+    metaDesc: 'Stärkere Beschwerden nach TCM-Kräutern sind nicht automatisch eine Erstverschlimmerung. Wann du die verschreibende Fachperson kontaktieren solltest.',
+    kurz: '<p>Wenn Beschwerden nach Beginn einer Kräuterrezeptur stärker werden, sollte das nicht automatisch als Erstverschlimmerung oder notwendiger Teil der Wirkung interpretiert werden.</p><p>Neue oder stärkere Symptome können verschiedene Ursachen haben, darunter auch eine unerwünschte Wirkung, eine Wechselwirkung oder eine Veränderung der zugrunde liegenden Erkrankung.</p>',
+    bodyHtml: '<h2>Was bedeutet der Begriff Erstverschlimmerung?</h2>\n<p>Der Begriff wird in verschiedenen Bereichen der Komplementärmedizin verwendet, ist aber keine Erklärung, mit der jede Verschlechterung automatisch als positiv bewertet werden sollte.</p>\n<p>Entscheidend ist, was konkret passiert ist. Für die Akupunktur gilt dieselbe Logik, siehe <a href="/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/">Starke Reaktion nach Akupunktur</a>; die Behandlungen sind aber nicht dasselbe.</p>\n<h2>Wann sollte ich die behandelnde Person kontaktieren?</h2>\n<p>Bei deutlich zunehmenden Beschwerden, neuen Symptomen oder Unsicherheit solltest du die verschreibende Fachperson kontaktieren.</p>\n<p>Besonders wichtig ist das bei:</p>\n<ul><li>Hautreaktionen</li><li>starkem Durchfall oder Erbrechen</li><li>Kreislaufproblemen</li><li>ausgeprägter Schwäche</li><li>ungewöhnlichen Schmerzen</li><li>anderen deutlichen Veränderungen</li></ul>\n<h2>Sollte ich die Kräuter einfach weiternehmen?</h2>\n<p>Eine pauschale Empfehlung ist nicht sinnvoll.</p>\n<p>Ob eine Rezeptur weitergenommen, angepasst oder pausiert werden sollte, hängt von der konkreten Situation ab und sollte mit der zuständigen Fachperson geklärt werden.</p>\n<h2>Kurz gesagt</h2>\n<p>Eine Verschlechterung nach TCM-Kräutern ist nicht automatisch ein gutes Zeichen. Neue oder deutlich stärkere Beschwerden sollten ernst genommen und fachlich eingeordnet werden. Welche Nebenwirkungen und Wechselwirkungen grundsätzlich möglich sind, steht unter <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">TCM-Kräuter: Nebenwirkungen</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'Können TCM-Kräuter Nebenwirkungen haben?' },
+      { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?' },
+      { href: '/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/', label: 'Ist eine starke Reaktion nach Akupunktur normal?' },
+    ],
+    mehr: [
+      { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie', cat: 'Therapie' },
     ],
   },
 ];
@@ -437,16 +592,20 @@ const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
   ],
   schroepfen: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/', label: 'Fragen zu Schröpfen & Methoden' },
+    { href: '/gesundheitsbibliothek/fragen/tut-schroepfen-weh/', label: 'Tut Schröpfen weh?' },
+    { href: '/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/', label: 'Welche Nebenwirkungen hat Schröpfen?' },
     { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Was gilt nach der Behandlung?' },
     { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung' },
   ],
   tuina: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/#tuina', label: 'Tuina oder klassische Massage?' },
+    { href: '/gesundheitsbibliothek/fragen/tuina-nebenwirkungen/', label: 'Welche Nebenwirkungen kann Tuina haben?' },
     { href: '/gesundheitsbibliothek/fragen/erster-termin/', label: 'Erster Termin & Vorbereitung' },
     { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Was gilt nach der Behandlung?' },
   ],
   kraeutertherapie: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/#kraeuter-medikamente', label: 'Kräuter neben Medikamenten?' },
+    { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'Welche Nebenwirkungen haben TCM-Kräuter?' },
     { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung' },
     { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann zuerst zum Arzt?' },
   ],

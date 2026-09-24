@@ -1231,6 +1231,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -1261,7 +1267,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/schroepfen-methoden/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1273,13 +1297,43 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/sport-nach-akupunktur/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/starke-reaktion-nach-akupunktur/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-erstverschlimmerung/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/tuina-nebenwirkungen/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/fragen/tut-akupunktur-weh/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/fragen/tut-schroepfen-weh/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
