@@ -231,10 +231,10 @@ export const befundeWerte: BefundWert[] = [
 <p>Ein erhöhter Leberwert bedeutet nicht automatisch, dass eine schwere Lebererkrankung vorliegt. Für die Einordnung sind Höhe, Muster, Verlauf, weitere Blutwerte, Medikamente, Alkoholkonsum, Vorerkrankungen und gegebenenfalls Bildgebung wichtig.</p>`,
     bodyHtml: `<h2>Welche Werte werden häufig betrachtet?</h2>
 <ul>
-<li><strong>ALT:</strong> Ein Enzym, das besonders stark in Leberzellen vorkommt. Erhöhungen können bei verschiedenen Formen einer Leberzellschädigung auftreten.</li>
-<li><strong>AST:</strong> Kommt ausser in der Leber auch in anderen Geweben wie Muskeln vor. Der Wert ist deshalb weniger leberspezifisch.</li>
+<li><strong>ALT:</strong> Ein Enzym, das besonders stark in Leberzellen vorkommt. Erhöhungen können bei verschiedenen Formen einer Leberzellschädigung auftreten; Details unter <a href="/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/">GPT (ALT) erhöht</a>.</li>
+<li><strong>AST:</strong> Kommt ausser in der Leber auch in anderen Geweben wie Muskeln vor. Der Wert ist deshalb weniger leberspezifisch; Details unter <a href="/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/">GOT (AST) erhöht</a>.</li>
 <li><strong>GGT:</strong> Kann unter anderem bei Erkrankungen der Leber und Gallenwege sowie durch Alkohol oder bestimmte Medikamente erhöht sein.</li>
-<li><strong>Alkalische Phosphatase:</strong> Wird unter anderem bei Fragestellungen rund um Gallenwege und Knochen beurteilt.</li>
+<li><strong>Alkalische Phosphatase:</strong> Wird unter anderem bei Fragestellungen rund um Gallenwege und Knochen beurteilt; Details unter <a href="/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/">Alkalische Phosphatase erhöht</a>.</li>
 <li><strong>Bilirubin:</strong> Entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle verarbeitet; die Einzelheiten erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin erhöht</a>.</li>
 </ul>
 <h2>Warum können Leberwerte erhöht sein?</h2>
@@ -312,6 +312,7 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Nierenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kreatinin und eGFR nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
     ],
@@ -455,6 +456,283 @@ export const befundeWerte: BefundWert[] = [
     ],
   },
   {
+    slug: 'harnsaeure-erhoeht',
+    title: 'Harnsäure erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Harnsäure entsteht beim Abbau von Purinen und wird über die Nieren ausgeschieden. Warum der Wert erhöht sein kann und warum das noch keine Gicht bedeutet.',
+    primaryPurpose: 'Einordnung des Laborwerts Harnsäure; die Erkrankungsseite bleibt der Owner für Gicht.',
+    canonicalIntentOwner: ['/beschwerden/gicht/'],
+    overlapNotes: 'Gicht-Erkrankungs-/Behandlungs-Intent gehört /beschwerden/gicht/. Diese Seite beantwortet nur die Laborwert-Frage und verlinkt für Anfall/Behandlung dorthin.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Rheumatologie)',
+    shortAnswerHtml: `<p>Harnsäure ist ein Abbauprodukt der Purine, die in jeder Körperzelle und in vielen Lebensmitteln vorkommen. Ausgeschieden wird sie vor allem über die Nieren. Ein erhöhter Wert bedeutet, dass mehr anfällt oder weniger ausgeschieden wird, und ist zunächst nur ein <strong>Laborbefund, keine Erkrankung</strong>: Viele Menschen mit erhöhter Harnsäure bekommen nie einen Gichtanfall.</p>`,
+    bodyHtml: `<h2>Was ist Harnsäure?</h2>
+<p>Purine stammen aus dem Zellstoffwechsel und aus der Nahrung. Ihr Endprodukt Harnsäure wird zum grössten Teil über die Nieren, zu einem kleineren Teil über den Darm ausgeschieden. Der Blutspiegel ist das Gleichgewicht aus Produktion und Ausscheidung.</p>
+<h2>Warum kann die Harnsäure erhöht sein?</h2>
+<ul>
+<li><strong>Verminderte Ausscheidung:</strong> der häufigste Mechanismus, mitgeprägt von Veranlagung und Nierenfunktion.</li>
+<li><strong>Ernährung und Alkohol:</strong> purinreiche Lebensmittel (etwa Innereien, viel Fleisch, bestimmte Fischsorten), Bier und fruktosereiche Süssgetränke können den Spiegel anheben. Die Ernährung ist aber selten die alleinige Erklärung; die Veranlagung wiegt meist schwerer.</li>
+<li><strong>Medikamente:</strong> unter anderem bestimmte entwässernde Mittel erhöhen die Harnsäure. Die Medikamentenliste gehört ins ärztliche Gespräch; setze nichts selbstständig ab.</li>
+<li><strong>Vermehrter Zellumsatz:</strong> etwa nach Fastenkuren, intensiver Belastung oder bei bestimmten Erkrankungen.</li>
+</ul>
+<h2>Harnsäure und Gicht</h2>
+<p>Dauerhaft hohe Werte können dazu führen, dass sich Harnsäurekristalle in Gelenken ablagern und einen Gichtanfall auslösen, klassisch im Grosszehengrundgelenk. Der Umkehrschluss gilt aber nicht: Ein erhöhter Wert allein ist keine Gicht, und während eines akuten Anfalls kann die Harnsäure sogar normal sein. Was ein Anfall ist und wie er behandelt wird, erklärt die Seite <a href="/beschwerden/gicht/">Gicht</a>.</p>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen der Referenzbereich deines Labors, eine Wiederholungsmessung unter Alltagsbedingungen, deine Nierenwerte und die Frage, ob je Gelenkbeschwerden aufgetreten sind. Ob und ab wann eine dauerhaft erhöhte Harnsäure behandelt wird, ist eine individuelle ärztliche Entscheidung, keine Frage einer Universaltabelle.</p>`,
+    notProofHtml: `<p>Ein erhöhter Harnsäurewert beweist keine Gicht, keinen Nierenschaden und keine falsche Ernährung. Er ist ein Risikomarker. Umgekehrt schliesst ein normaler Wert einen Gichtanfall nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung</strong>, der Blick auf die <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte</a>, das Gespräch über Medikamente, Ernährung und Alkohol sowie bei Gelenkbeschwerden die gezielte Abklärung. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Rasch ärztlich gehört ein plötzlich stark schmerzendes, geschwollenes, gerötetes und überwärmtes Gelenk, besonders mit Fieber: Das kann ein Gichtanfall sein, aber auch eine Gelenkinfektion, und die Unterscheidung ist dringlich.</p>`,
+    integrativeContextHtml: `<p>Die Beurteilung der Harnsäure und die Entscheidung über eine Therapie gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Gichtbehandlung. Eine komplementäre Begleitung ist höchstens nach der ärztlichen Einordnung ein Thema.</p>`,
+    relatedConditions: [{ href: '/beschwerden/gicht/', label: 'Gicht' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'ferritin-erhoeht',
+    title: 'Ferritin erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Ein hoher Ferritinwert bedeutet nicht automatisch Eisenüberladung: Ferritin steigt auch bei Entzündungen und Leberbelastung. So wird der Befund eingeordnet.',
+    primaryPurpose: 'Einordnung des Laborwerts Ferritin erhöht; der gegenteilige Befund bleibt bei ferritin-zu-niedrig.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Klar getrennt von ferritin-zu-niedrig (leere Speicher): dieser Eintrag besitzt NUR den erhöhten Wert; beide Seiten kreuzverlinkt. Kein Eisenüberladungs-Erkrankungs-Owner vorhanden.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Ferritin ist der Eisenspeicher-Marker, aber ein hoher Wert bedeutet <strong>nicht automatisch zu viel Eisen</strong>. Ferritin gehört zu den Akute-Phase-Proteinen und steigt auch bei Entzündungen, Infekten, Leberbelastung und Stoffwechselerkrankungen. Eine echte Eisenüberladung ist nur eine von mehreren Möglichkeiten; die Unterscheidung braucht weitere Werte, vor allem die Transferrinsättigung und Entzündungsmarker.</p>`,
+    bodyHtml: `<h2>Warum Ferritin doppeldeutig ist</h2>
+<p>Bei leeren Speichern ist ein tiefes Ferritin recht eindeutig. Beim erhöhten Ferritin ist es umgekehrt kompliziert: Der Wert steigt bei vielem, was mit Eisen nichts zu tun hat. Deshalb ist ein hoher Einzelwert erst einmal ein Anlass zur Einordnung, nicht zur Sorge.</p>
+<h2>Häufige Gründe für ein erhöhtes Ferritin</h2>
+<ul>
+<li><strong>Entzündungen und Infekte:</strong> als Akute-Phase-Protein steigt Ferritin parallel zu Markern wie dem <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a>, auch Wochen nach einem Infekt.</li>
+<li><strong>Leber und Stoffwechsel:</strong> eine <a href="/beschwerden/fettleber/">Fettleber</a>, erhöhte <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte</a>, regelmässiger Alkoholkonsum und das metabolische Syndrom gehören zu den häufigsten Erklärungen dauerhaft erhöhter Werte.</li>
+<li><strong>Eisenüberladung:</strong> etwa bei der erblichen Hämochromatose oder nach vielen Bluttransfusionen. Hier ist typischerweise auch die Transferrinsättigung erhöht; genau deshalb wird sie zur Abklärung mitbestimmt.</li>
+<li><strong>Seltenere Ursachen:</strong> ausgeprägt hohe Werte können auf entzündliche oder hämatologische Erkrankungen hinweisen und gehören gezielt abgeklärt.</li>
+</ul>
+<h2>Welche Werte helfen bei der Einordnung?</h2>
+<p>Vor allem die <strong>Transferrinsättigung</strong> (erhöht bei echter Eisenüberladung, meist normal bei Entzündung), Entzündungswerte, Leberwerte und das Blutbild. Erst dieses Set trennt "Eisenproblem" von "Ferritin als Entzündungs- oder Leberzeichen". Der gegenteilige Befund ist hier erklärt: <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin zu niedrig</a>.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Ferritin beweist keine Hämochromatose und keine Eisenüberladung; ohne erhöhte Transferrinsättigung ist Eisen oft gar nicht das Thema. Es beweist auch keine bestimmte Entzündung oder Lebererkrankung. Und: Eisenpräparate einzunehmen oder abzusetzen ist auf Basis dieses Werts allein nie die richtige Konsequenz.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Transferrinsättigung</strong>, CRP, Leberwerte und Blutbild, eine Kontrollmessung mit Abstand zu Infekten und je nach Konstellation weitere gezielte Abklärung (bei Verdacht auf Hämochromatose auch genetisch). Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zügig besprechen solltest du sehr hohe oder rasch steigende Werte, ein erhöhtes Ferritin zusammen mit deutlich erhöhten Leberwerten, Gelenkschmerzen, ausgeprägter Müdigkeit oder bekannter familiärer Eisenspeicherkrankheit.</p>`,
+    integrativeContextHtml: `<p>Die Abklärung eines erhöhten Ferritins gehört in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Wert nicht und behandelt keine Eisenüberladung. Eine komplementäre Begleitung ist höchstens nach der ärztlichen Einordnung ein Thema.</p>`,
+    relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+    ],
+  },
+  {
+    slug: 'kalium-zu-hoch',
+    title: 'Kalium zu hoch: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Kalium steuert die elektrische Erregbarkeit von Herz, Nerven und Muskeln. Warum der Wert erhöht sein kann, welche Rolle die Probe selbst spielt und wann es dringlich wird.',
+    primaryPurpose: 'Einordnung des Laborwerts Kalium erhöht (Hyperkaliämie), keine Nieren- oder Herz-Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (kein Elektrolyt-Leaf vorhanden). Sicherheitsrelevanter Wert: dringliche Konstellationen klar benannt, keine individuellen Grenzwerte, keine Anleitung zur Eigen-Manipulation von Elektrolyten.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>Kalium ist ein Elektrolyt, das die elektrische Erregbarkeit von Herz, Nerven und Muskeln mitsteuert; reguliert wird es vor allem über die Nieren. Ein erhöhter Wert (Hyperkaliämie) hat viele mögliche Erklärungen, von einem <strong>Messartefakt bei der Blutentnahme</strong> über Medikamente bis zur eingeschränkten Nierenfunktion. Weil deutlich erhöhtes Kalium den Herzrhythmus beeinflussen kann, gehört der Befund immer zeitnah ärztlich eingeordnet.</p>`,
+    bodyHtml: `<h2>Was macht Kalium im Körper?</h2>
+<p>Der grösste Teil des Kaliums liegt in den Körperzellen; im Blut wird nur ein kleiner Ausschnitt gemessen. Schon kleine Verschiebungen verändern die elektrische Erregbarkeit von Muskel- und Herzzellen, deshalb hält der Körper den Blutspiegel normalerweise eng konstant.</p>
+<h2>Warum kann Kalium erhöht sein?</h2>
+<ul>
+<li><strong>Die Probe selbst:</strong> überraschend häufig. Platzen rote Blutkörperchen bei oder nach der Entnahme (Hämolyse), etwa durch langes Stauen oder Transport, wird Kalium aus den Zellen frei und der Wert erscheint falsch hoch. Deshalb wird ein unerwartet hoher Wert oft zuerst mit einer frischen Probe kontrolliert.</li>
+<li><strong>Nierenfunktion:</strong> arbeiten die Nieren eingeschränkt, wird weniger Kalium ausgeschieden; die Einordnung dazu liefert die Seite <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a>.</li>
+<li><strong>Medikamente:</strong> mehrere häufig eingesetzte Blutdruck- und Herzmedikamente sowie bestimmte Schmerzmittel und kaliumsparende Entwässerungsmittel können den Spiegel anheben, besonders in Kombination. Nichts selbstständig absetzen, aber die Liste ärztlich besprechen.</li>
+<li><strong>Weitere Ursachen:</strong> unter anderem hormonelle Störungen oder grosser Zellzerfall nach Verletzungen.</li>
+</ul>
+<h2>Warum der Wert ernst genommen wird</h2>
+<p>Deutlich erhöhtes Kalium kann Herzrhythmusstörungen begünstigen, oft ohne Vorwarnung durch Beschwerden. Genau deshalb entscheidet die Ärztin je nach Höhe, Verlauf und Begleitumständen über das Tempo der Abklärung, manchmal inklusive EKG. Wichtig für dich: Der richtige Umgang mit einem erhöhten Wert ist die ärztliche Kontrolle, nicht die Eigenbehandlung; verändere weder Medikamente noch Elektrolyt- oder Salzersatzprodukte auf eigene Faust.</p>`,
+    notProofHtml: `<p>Ein einzelner erhöhter Kaliumwert beweist keine Nierenerkrankung und keine Herzgefährdung; nicht selten steckt ein Probenartefakt dahinter. Umgekehrt ist ein normales Kalium keine Garantie: Beschwerden wie Herzstolpern haben ihre eigene Abklärung verdient.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>zeitnahe Kontrollmessung</strong> mit sauberer Abnahme, Nierenwerte, die Durchsicht der Medikamente und je nach Höhe des Werts ein EKG. Wie schnell das geschehen soll, legt die Ärztin anhand des konkreten Werts fest. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Rasch medizinisch gehören ein deutlich erhöhter Wert zusammen mit Herzstolpern oder sehr langsamem Puls, Muskelschwäche, Kribbeln, Übelkeit oder wenn gleichzeitig die Nierenwerte stark angestiegen sind. Bei Ohnmacht, Brustschmerz oder ausgeprägter Atemnot gilt in der Schweiz: Notruf 144.</p>`,
+    integrativeContextHtml: `<p>Elektrolyte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kaliumwerte nicht, und kein komplementäres Verfahren ersetzt deren Kontrolle oder Behandlung.</p>`,
+    relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
+    ],
+  },
+  {
+    slug: 'alkalische-phosphatase-erhoeht',
+    title: 'Alkalische Phosphatase erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Die alkalische Phosphatase (AP) stammt vor allem aus Leber, Gallenwegen und Knochen. Warum der Wert erhöht sein kann und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Einzelwerts alkalische Phosphatase; der Sammelbefund bleibt bei leberwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Generisches "Leberwerte erhöht" gehört leberwerte-erhoeht (AP dort Listenpunkt, jetzt verlinkt); Gamma-GT eigener Owner und wichtigster Abgrenzungswert. Diese Seite besitzt NUR den AP-Intent.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>Die alkalische Phosphatase (AP) ist ein Enzym, das vor allem aus zwei Quellen stammt: aus <strong>Leber und Gallenwegen</strong> und aus dem <strong>Knochen</strong>. Ein erhöhter Wert kann deshalb ganz Unterschiedliches bedeuten, von Gallenwegsreizung über Knochenumbau bis zu normalen Lebensphasen wie Wachstum oder Schwangerschaft. Erst die Begleitwerte zeigen, aus welcher Richtung die Erhöhung kommt.</p>`,
+    bodyHtml: `<h2>Woher kommt die alkalische Phosphatase?</h2>
+<p>Das Enzym kommt in mehreren Geweben vor. Im Laboralltag relevant sind vor allem die Leber-/Gallenwegs-Form und die Knochen-Form; kleinere Beiträge liefern Darm und in der Schwangerschaft die Plazenta. Bei Kindern und Jugendlichen ist die AP wegen des Knochenwachstums natürlicherweise deutlich höher, und in der Schwangerschaft ist ein Anstieg normal.</p>
+<h2>Warum kann die AP erhöht sein?</h2>
+<ul>
+<li><strong>Gallenwege und Leber:</strong> ein gestörter Galleabfluss oder Lebererkrankungen; typischerweise steigt dann auch die <a href="/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/">Gamma-GT</a>, oft auch das <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin</a>.</li>
+<li><strong>Knochen:</strong> erhöhter Knochenumbau, etwa nach Brüchen, bei Vitamin-D-Mangel oder bestimmten Knochenerkrankungen. In dieser Konstellation bleibt die Gamma-GT meist normal.</li>
+<li><strong>Physiologisch:</strong> Wachstum bei Kindern und Jugendlichen, Schwangerschaft.</li>
+<li><strong>Weitere Ursachen:</strong> seltener Medikamente oder andere Erkrankungen; dafür gibt es meist zusätzliche Hinweise.</li>
+</ul>
+<h2>Warum die Gamma-GT der Schlüssel ist</h2>
+<p>Die praktisch wichtigste Frage lautet: Kommt die Erhöhung aus Leber/Galle oder aus dem Knochen? Eine gleichzeitig erhöhte Gamma-GT spricht für Leber/Galle, eine normale eher für den Knochen. Das Gesamtbild der Leberwerte erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>.</p>`,
+    notProofHtml: `<p>Eine erhöhte AP beweist keine bestimmte Leber-, Gallen- oder Knochenerkrankung. Bei Jugendlichen und Schwangeren ist sie häufig schlicht normal. Umgekehrt schliesst ein normaler Wert eine Erkrankung nicht sicher aus.</p>`,
+    followUpHtml: `<p>Üblich sind die Begleitwerte (Gamma-GT, Bilirubin, ALT/AST, je nach Frage Vitamin D und Knochenmarker), eine <strong>Kontrollmessung</strong> und je nach Richtung ein Ultraschall von Leber und Gallenwegen oder eine gezielte Knochenabklärung. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören eine erhöhte AP zusammen mit Gelbfärbung von Haut oder Augen, dunklem Urin, hellem Stuhl, starken Oberbauch- oder neu aufgetretenen Knochenschmerzen sowie Fieber mit Schmerzen im rechten Oberbauch.</p>`,
+    integrativeContextHtml: `<p>Auch hier gilt: Die Interpretation gehört in die schulmedizinische Beurteilung. Die chinesische Medizin leitet aus der alkalischen Phosphatase keine eigenen Diagnosen ab.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/', label: 'Bilirubin erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'gpt-alt-erhoeht',
+    title: 'GPT (ALT) erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'GPT und ALT bezeichnen dasselbe Leberenzym. Warum der Wert erhöht sein kann, welche Rolle Medikamente und Stoffwechsel spielen und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Einzelwerts GPT/ALT (ein Enzym, eine Seite); der Sammelbefund bleibt bei leberwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'GPT und ALT sind Synonyme (alte/neue Nomenklatur) und bewusst EIN Owner, keine zwei URLs. Generisches "Leberwerte erhöht" bleibt beim Umbrella (ALT dort Listenpunkt, jetzt verlinkt); Schwester-Seite got-ast-erhoeht.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>GPT (Glutamat-Pyruvat-Transaminase) und ALT (Alanin-Aminotransferase) sind <strong>zwei Namen für dasselbe Enzym</strong>: die ältere und die internationale Bezeichnung. Es kommt besonders konzentriert in Leberzellen vor. Ein erhöhter Wert spricht deshalb für eine Reizung oder Schädigung von Leberzellen, sagt aber nicht, wodurch, und ist für sich allein keine Diagnose.</p>`,
+    bodyHtml: `<h2>GPT oder ALT: Warum zwei Namen?</h2>
+<p>Auf Schweizer Laborbefunden steht je nach Labor GPT, ALT oder ALAT, gemeint ist immer dasselbe Enzym. Es arbeitet im Stoffwechsel der Leberzellen und gelangt ins Blut, wenn Leberzellen gestresst oder geschädigt werden. Von den gängigen Leberwerten ist es der leberspezifischste.</p>
+<h2>Warum kann die GPT/ALT erhöht sein?</h2>
+<ul>
+<li><strong>Fettleber und Stoffwechsel:</strong> die häufigste Erklärung dauerhaft leicht erhöhter Werte, oft zusammen mit Übergewicht, erhöhten Blutfetten oder Blutzucker; mehr unter <a href="/beschwerden/fettleber/">Fettleber</a>.</li>
+<li><strong>Medikamente und Substanzen:</strong> zahlreiche Wirkstoffe, auch rezeptfreie Präparate und pflanzliche Produkte, können die Leberwerte anheben. Die vollständige Liste gehört ins ärztliche Gespräch.</li>
+<li><strong>Alkohol:</strong> regelmässiger Konsum belastet die Leberzellen; typischerweise steigt dann auch die <a href="/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/">Gamma-GT</a>.</li>
+<li><strong>Virusinfektionen und andere Lebererkrankungen:</strong> von akuten Hepatitiden bis zu selteneren Ursachen; deutlich erhöhte Werte werden entsprechend gezielt abgeklärt.</li>
+<li><strong>Muskel und Belastung:</strong> intensives Training kann die Transaminasen vorübergehend anheben, die GPT/ALT allerdings weniger stark als die <a href="/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/">GOT/AST</a>.</li>
+</ul>
+<h2>Höhe und Verlauf</h2>
+<p>Leicht erhöhte Werte bei gutem Befinden werden häufig zuerst kontrolliert, mit Blick auf Gewicht, Alkohol und Medikamente. Mehrfach erhöhte oder steigende Werte werden gezielter abgeklärt. Wie die einzelnen Werte zusammenspielen, zeigt die Übersicht <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>.</p>`,
+    notProofHtml: `<p>Eine erhöhte GPT/ALT beweist keine bestimmte Lebererkrankung und sagt nicht, wie gut die Leber insgesamt arbeitet. Ein einzelner leicht erhöhter Wert kann eine Momentaufnahme sein. Umgekehrt können relevante Lebererkrankungen mit nur gering veränderten Werten einhergehen.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung</strong>, die übrigen Leberwerte (GOT/AST, Gamma-GT, alkalische Phosphatase, Bilirubin), das Gespräch über Medikamente, Alkohol und Stoffwechselfaktoren und je nach Bild ein Ultraschall. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören stark erhöhte Werte sowie erhöhte Werte zusammen mit Gelbfärbung von Haut oder Augen, dunklem Urin, starken Oberbauchschmerzen, ausgeprägter Übelkeit oder deutlicher allgemeiner Verschlechterung.</p>`,
+    integrativeContextHtml: `<p>Leberwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert die GPT/ALT nicht, und der TCM-Begriff Leber ist nicht mit dem Laborwert gleichzusetzen.</p>`,
+    relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/', label: 'GOT (AST) erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'got-ast-erhoeht',
+    title: 'GOT (AST) erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'GOT und AST bezeichnen dasselbe Enzym, das in Leber UND Muskulatur vorkommt. Warum der Wert erhöht sein kann und warum er weniger leberspezifisch ist als die GPT.',
+    primaryPurpose: 'Einordnung des Einzelwerts GOT/AST (ein Enzym, eine Seite); der Sammelbefund bleibt bei leberwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'GOT und AST sind Synonyme und bewusst EIN Owner. Schwester-Seite gpt-alt-erhoeht (leberspezifischer); Umbrella bleibt leberwerte-erhoeht. Keine Selbstdiagnose-Formeln (De-Ritis nur als Konzept erwähnt, ohne Rechenanleitung).',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hepatologie)',
+    shortAnswerHtml: `<p>GOT (Glutamat-Oxalacetat-Transaminase) und AST (Aspartat-Aminotransferase) sind <strong>zwei Namen für dasselbe Enzym</strong>. Anders als die GPT/ALT kommt es nicht nur in der Leber vor, sondern auch in Skelettmuskulatur, Herzmuskel und anderen Geweben. Ein erhöhter Wert kann deshalb von der Leber stammen, aber genauso vom Muskel, etwa nach intensivem Training.</p>`,
+    bodyHtml: `<h2>GOT oder AST: Warum zwei Namen?</h2>
+<p>Wie bei GPT/ALT handelt es sich um die ältere deutsche und die internationale Bezeichnung; auf Befunden steht auch ASAT. Wichtig ist die Herkunftsfrage: Das Enzym sitzt in mehreren Geweben, deshalb ist es weniger leberspezifisch als die <a href="/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/">GPT/ALT</a>.</p>
+<h2>Warum kann die GOT/AST erhöht sein?</h2>
+<ul>
+<li><strong>Leber:</strong> dieselben Ursachen wie bei der GPT/ALT, von Fettleber über Medikamente und Alkohol bis zu Virusinfektionen; meist sind dann beide Transaminasen erhöht.</li>
+<li><strong>Muskel:</strong> intensives Krafttraining, ein Muskelkater nach ungewohnter Belastung, Verletzungen oder Muskelerkrankungen können die GOT/AST deutlich anheben, ohne dass die Leber beteiligt ist.</li>
+<li><strong>Herz:</strong> historisch wurde der Wert zur Infarktdiagnostik genutzt; heute übernehmen das spezifischere Marker, die Herkunft bleibt aber möglich.</li>
+<li><strong>Weitere Ursachen:</strong> unter anderem eine Hämolyse der Blutprobe kann den Wert verfälschen.</li>
+</ul>
+<h2>Zusammenspiel mit der GPT/ALT</h2>
+<p>Ärztinnen betrachten beide Transaminasen zusammen: Das Verhältnis der beiden Werte (in der Fachsprache De-Ritis-Quotient) und die Begleitwerte geben Hinweise auf die wahrscheinliche Herkunft und Schwere. Für die Selbstinterpretation taugt das Verhältnis nicht; ohne Kontext führt es eher in die Irre. Das Gesamtbild erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>.</p>`,
+    notProofHtml: `<p>Eine erhöhte GOT/AST beweist keine Lebererkrankung: Nach dem Training ist sie ein erwartbarer Muskelbefund. Sie beweist auch keinen Herzinfarkt und keine bestimmte Diagnose. Umgekehrt schliessen normale Werte eine Lebererkrankung nicht sicher aus.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung ohne vorherige intensive Belastung</strong>, GPT/ALT und die übrigen Leberwerte, bei Muskelverdacht die Kreatinkinase und je nach Bild ein Ultraschall. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören stark erhöhte Werte, erhöhte Werte mit Gelbfärbung, dunklem Urin oder starken Oberbauchschmerzen sowie Muskelschmerzen mit auffallend dunklem Urin nach extremer Belastung. Brustschmerz mit Atemnot ist unabhängig vom Laborwert ein Notfall: Telefon 144.</p>`,
+    integrativeContextHtml: `<p>Auch die GOT/AST gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/', label: 'GPT (ALT) erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'vitamin-d-zu-niedrig',
+    title: 'Vitamin D zu niedrig: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Gemessen wird meist das 25-OH-Vitamin-D. Was ein tiefer Wert bedeutet, welche Rolle Jahreszeit und Sonne spielen und warum die Dosierung nicht aus dem Internet stammen sollte.',
+    primaryPurpose: 'Einordnung des Laborwerts Vitamin D (25-OH) zu niedrig, keine Supplement-Beratungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (Vitamin D nur als Nebenerwähnung in KS-/Beschwerden-Texten). Keine Dosierungsempfehlungen; Substitution ist ärztliche Entscheidung.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Endokrinologie)',
+    shortAnswerHtml: `<p>Im Labor wird üblicherweise das <strong>25-OH-Vitamin-D</strong> gemessen, die Speicherform des Vitamins. Ein tiefer Wert ist in der Schweiz vor allem im Winterhalbjahr häufig, weil der Körper Vitamin D überwiegend über Sonnenlicht in der Haut bildet. Ob und wie ein tiefer Wert ausgeglichen werden soll, hängt von Höhe, Situation und Risikofaktoren ab und gehört ins ärztliche Gespräch, nicht in eine Internet-Dosiertabelle.</p>`,
+    bodyHtml: `<h2>Was wird gemessen?</h2>
+<p>Vitamin D wirkt vor allem im Kalzium- und Knochenstoffwechsel. Der Bluttest erfasst die Speicherform 25-OH-Vitamin-D; sie bildet Sonnenexposition und Zufuhr der letzten Wochen ab. Referenz- und Zielbereiche unterscheiden sich je nach Labor und Fachgesellschaft, auch deshalb gehört die Bewertung zur Ärztin.</p>
+<h2>Warum kann Vitamin D zu niedrig sein?</h2>
+<ul>
+<li><strong>Wenig Sonne:</strong> der häufigste Grund: Winterhalbjahr, viel Innenraumzeit, bedeckende Kleidung, konsequenter Sonnenschutz, dunklere Hauttypen in nördlichen Breiten.</li>
+<li><strong>Ernährung:</strong> über die Nahrung allein (fetter Fisch, Eier, angereicherte Produkte) lässt sich der Bedarf nur begrenzt decken.</li>
+<li><strong>Aufnahme und Verwertung:</strong> Magen-Darm-Erkrankungen mit gestörter Fettaufnahme, bestimmte Medikamente sowie Leber- oder Nierenerkrankungen können den Spiegel senken.</li>
+<li><strong>Erhöhter Bedarf oder besondere Lebensphasen:</strong> etwa höheres Alter, in dem die Haut weniger Vitamin D bildet.</li>
+</ul>
+<h2>Warum die Dosierung nicht aus dem Internet stammen sollte</h2>
+<p>Wie viel substituiert wird, hängt vom gemessenen Wert, vom Grund des Mangels, von Begleiterkrankungen und Medikamenten ab. Sehr hohe Eigendosierungen über lange Zeit können schaden. Sinnvoll ist deshalb: Wert ärztlich einordnen lassen, Substitution und Kontrolle gemeinsam festlegen.</p>`,
+    notProofHtml: `<p>Ein tiefer Vitamin-D-Wert erklärt nicht automatisch Müdigkeit, Muskel- oder Stimmungsbeschwerden; diese haben viele mögliche Ursachen und verdienen eine eigene Einordnung. Umgekehrt schliesst ein normaler Wert eine Knochenstoffwechsel-Frage nicht in jedem Fall ab.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen eine <strong>ärztlich begleitete Substitution mit Verlaufskontrolle</strong>, bei Verdacht auf Aufnahme- oder Verwertungsstörungen weitere Werte (etwa Kalzium, Nieren- und Leberwerte) und die Suche nach der Ursache. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Der Wert selbst ist kein Notfall. Ärztlich besprochen gehören ausgeprägte Knochen- oder Muskelschmerzen, Knochenbrüche ohne adäquaten Anlass, wiederholte Stürze im Alter oder ein tiefer Wert bei bekannter Magen-Darm-, Leber- oder Nierenerkrankung.</p>`,
+    integrativeContextHtml: `<p>Die Beurteilung des Vitamin-D-Status und die Substitution gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Substitution.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'vitamin-b12-zu-niedrig',
+    title: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Vitamin B12 ist wichtig für Blutbildung und Nerven. Was ein tiefer Wert bedeutet, warum das Serum-B12 allein oft nicht reicht und wann eine Abklärung wichtig ist.',
+    primaryPurpose: 'Einordnung des Laborwerts Vitamin B12 zu niedrig, keine Supplement- oder Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (B12 nur als Nebenerwähnung in KS-Texten, u.a. beine-kribbeln-nachts). Keine Dosierungsempfehlungen; neurologische Relevanz ehrlich benannt.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Vitamin B12 braucht der Körper für die Blutbildung und für die Funktion der Nerven. Ein tiefer Serumwert kann auf einen Mangel hinweisen, ist aber <strong>interpretationsbedürftig</strong>: Das Standard-Serum-B12 hat eine Grauzone, in der erst Zusatzwerte klären, ob wirklich ein Mangel auf Zellebene besteht. Weil ein länger unbehandelter B12-Mangel Nerven schädigen kann, gehört ein tiefer Wert ärztlich eingeordnet.</p>`,
+    bodyHtml: `<h2>Wofür braucht der Körper B12?</h2>
+<p>B12 steckt praktisch nur in tierischen Lebensmitteln und wird im Endabschnitt des Dünndarms aufgenommen, wofür es einen Hilfsstoff aus dem Magen braucht (Intrinsic Factor). Die Leber speichert B12 über Jahre; ein Mangel entwickelt sich deshalb meist langsam.</p>
+<h2>Warum kann B12 zu niedrig sein?</h2>
+<ul>
+<li><strong>Zufuhr:</strong> vegane und streng vegetarische Ernährung ohne Supplementierung.</li>
+<li><strong>Aufnahme:</strong> chronische Magenschleimhautentzündung, die Autoimmunform mit fehlendem Intrinsic Factor, Magen- oder Darmoperationen, chronisch-entzündliche Darmerkrankungen.</li>
+<li><strong>Medikamente:</strong> langfristige Magensäureblocker und Metformin können die Aufnahme vermindern; nichts davon selbstständig absetzen, aber ansprechen.</li>
+<li><strong>Erhöhter Bedarf:</strong> unter anderem Schwangerschaft und Stillzeit.</li>
+</ul>
+<h2>Warum der Serumwert allein oft nicht reicht</h2>
+<p>Im unteren Graubereich kann das Serum-B12 normal aussehen, obwohl auf Zellebene ein Mangel besteht, und umgekehrt. Je nach Situation zieht die Ärztin deshalb Zusatzwerte wie Holotranscobalamin oder Methylmalonsäure sowie das Blutbild bei. Relevante Begleiterscheinungen können Blutarmut und Nervensymptome wie Kribbeln in Händen und Füssen oder Gangunsicherheit sein.</p>`,
+    notProofHtml: `<p>Ein einzelner tiefer Serumwert beweist noch keinen behandlungsbedürftigen Mangel, und ein grenzwertig normaler Wert schliesst ihn nicht aus. Müdigkeit allein ist kein Beweis für einen B12-Mangel; die Zuordnung von Beschwerden gehört zur ärztlichen Beurteilung.</p>`,
+    followUpHtml: `<p>Üblich sind Zusatzwerte (je nach Labor Holotranscobalamin oder Methylmalonsäure), das Blutbild, die Suche nach der Ursache (Ernährung, Magen-Darm, Medikamente) und bei bestätigtem Mangel eine <strong>ärztlich festgelegte Substitution mit Verlaufskontrolle</strong>. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören ein tiefer B12-Wert zusammen mit Kribbeln oder Taubheit in Händen oder Füssen, Gangunsicherheit, Gedächtnisproblemen oder einer Blutarmut: Nervensymptome sollen nicht abgewartet werden, weil sie bei langem Bestehen bleiben können.</p>`,
+    integrativeContextHtml: `<p>Abklärung und Substitution eines B12-Mangels gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Substitution.</p>`,
+    relatedSignals: [{ href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts' }],
+    relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+    ],
+  },
+  {
     slug: 'ferritin-zu-niedrig',
     title: 'Ferritin zu niedrig: Was bedeutet der Laborwert?',
     category: 'laborwert',
@@ -486,6 +764,7 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Ein Laborwert wie Ferritin lässt sich nicht direkt in ein traditionelles TCM-Muster übersetzen. Die medizinische Abklärung des Eisenstatus und möglicher Ursachen steht im Vordergrund.</p>`,
     relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/', label: 'Ferritin erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
     ],

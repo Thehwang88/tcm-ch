@@ -366,6 +366,16 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/': 'Lymphozyten zu hoch erhöhte Lymphozyten Lymphozytose Differenzialblutbild',
   '/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/': 'Neutrophile zu hoch neutrophile Granulozyten erhöht Neutrophilie',
   '/gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/': 'Thrombozyten zu hoch erhöhte Thrombozyten Thrombozytose Blutplättchen',
+  '/gesundheitsbibliothek/befunde-werte/harnsaeure-erhoeht/': 'Harnsäure zu hoch erhöhte Harnsäure hoher Harnsäurewert Purine Gicht-Wert',
+  '/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/': 'Ferritin zu hoch hoher Ferritinwert Eisenspeicher erhöht Eisenüberladung',
+  '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/': 'Kalium erhöht erhöhter Kaliumwert Hyperkaliämie Elektrolyte',
+  '/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/': 'AP erhöht alkalische Phosphatase zu hoch Knochen Gallenwege',
+  '/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/': 'GPT erhöht ALT erhöht GPT zu hoch ALT zu hoch ALAT Transaminasen',
+  '/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/': 'GOT erhöht AST erhöht GOT zu hoch AST zu hoch ASAT Transaminasen',
+  '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/': 'Vitamin D Mangel Blutwert 25-OH-Vitamin-D niedrig Vitamin D Wert',
+  '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/': 'Vitamin B12 Mangel Blutwert B12 Wert niedrig Cobalamin',
+  '/wissen/schroepfmassage/': 'Schröpfmassage Cupping Massage bewegte Schröpfgläser',
+  '/wissen/shiatsu-selbstbehandlung/': 'Shiatsu selbst machen Selbstakupressur Shiatsu zu Hause',
   '/beschwerden/sodbrennen/': 'Reflux saures Aufstossen',
   '/beschwerden/migraene/': 'Kopfweh Aura',
   '/beschwerden/kopfschmerzen/': 'Kopfweh',
@@ -546,6 +556,12 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Heizungsluft & trockene Schleimhäute', u: '/wissen/heizungsluft-trockene-schleimhaeute/' },
   ];
   for (const a of RATGEBER) entries.push({ t: a.t, u: a.u, g: 'Ratgeber' });
+  // Kuratierte Methoden-Artikel (nicht saisonal), Gruppe wie die Therapie-Einträge:
+  const METHODEN_ARTIKEL: Array<{ t: string; u: string; k?: string }> = [
+    { t: 'Schröpfmassage', u: '/wissen/schroepfmassage/' },
+    { t: 'Shiatsu-Selbstbehandlung', u: '/wissen/shiatsu-selbstbehandlung/' },
+  ];
+  for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {
     if (v.status !== 'live') continue;

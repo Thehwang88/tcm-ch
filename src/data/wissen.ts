@@ -1267,6 +1267,7 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      { "href": "/wissen/shiatsu-selbstbehandlung/", "label": "Shiatsu-Selbstbehandlung für zu Hause", "cat": "Artikel" },
       {
         "href": "/therapien/shiatsu/",
         "label": "Shiatsu Behandlung",
@@ -1841,6 +1842,7 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      { "href": "/wissen/schroepfmassage/", "label": "Schröpfmassage: Gläser in Bewegung", "cat": "Artikel" },
       {
         "href": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
         "label": "Häufige Fragen zu Schröpfen & Methoden",
@@ -2207,6 +2209,126 @@ const wissenBase: Wissen[] = [
         "cat": "Artikel"
       }
     ]
+  },
+  {
+    "slug": "schroepfmassage",
+    "title": "Schröpfmassage: Wirkung, Ablauf und Unterschied zum Schröpfen",
+    "metaDesc": "Bei der Schröpfmassage gleiten die Gläser mit Öl über die Haut statt still zu stehen. Wie sich das anfühlt, was es bringt und für wen es geeignet ist.",
+    "excerpt": "Statt still stehender Gläser gleiten die Cups mit Öl über die Muskulatur. Was die Schröpfmassage vom klassischen Schröpfen unterscheidet und was sie kann.",
+    "category": "Therapien verstehen",
+    "h1": "Schröpfmassage: Wenn die Gläser wandern statt stehen",
+    "lead": "Die Schröpfmassage ist keine eigene Medizin, sondern eine Variante des Schröpfens: Statt die Gläser einige Minuten an einer Stelle zu belassen, werden sie mit Öl über die Haut gezogen, meist über Rücken, Schultern und Nacken. Das kombiniert den Unterdruck des Schröpfens mit dem flächigen Zug einer Massage. Hier erklären wir Ablauf, Gefühl, mögliche Rötungen und für wen die Methode passt.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Schröpfmassage ausprobieren?",
+    "bodyHtml": "<h2>Was ist eine Schröpfmassage?</h2>\n<p>Technisch ist die Schröpfmassage eine Form des trockenen Schröpfens, also derselben Methode, die auf unserer Seite <a href=\"/therapien/schroepfen/\">Schröpfen</a> ausführlich erklärt ist. Der Unterschied liegt in der Bewegung: Die Haut wird zuerst mit Öl oder einer Lotion vorbereitet, dann wird das Schröpfglas mit mildem Unterdruck aufgesetzt und langsam über die Muskulatur geführt, in Bahnen den Rücken entlang, über die Schulterblätter oder den Nacken hinauf. Der Unterdruck bleibt dabei meist schwächer als beim stehenden Schröpfen.</p>\n<h2>Wie es sich anfühlt</h2>\n<p>Die meisten beschreiben ein intensives Ziehen, das an eine sehr kräftige Massage erinnert, an verspannten Stellen deutlich spürbar, aber nicht scharf schmerzhaft. Die Intensität lässt sich über den Unterdruck jederzeit anpassen; sag während der Behandlung, wenn eine Bahn unangenehm ist.</p>\n<h2>Rötungen statt runder Flecken</h2>\n<p>Weil das Glas wandert, entstehen selten die typischen kreisrunden Male des stehenden Schröpfens. Häufiger sind flächige Rötungen entlang der Bahnen, die meist nach Stunden bis wenigen Tagen verblassen. Warum Schröpfen überhaupt Flecken macht und was deren Farbe bedeutet, erklärt der Artikel <a href=\"/wissen/schroepfen-wirkung-flecken/\">Schröpfen-Wirkung und Flecken</a>.</p>\n<h2>Wann sie eingesetzt wird</h2>\n<p>In der Praxis nutzen wir die Schröpfmassage vor allem bei flächigen muskulären Verspannungen von Rücken, Schultern und Nacken, oft kombiniert mit Akupunktur oder <a href=\"/therapien/tuina/\">Tuina</a> innerhalb einer Sitzung. Sie eignet sich auch für Menschen, denen stehende Gläser zu intensiv sind oder die sichtbare runde Male vermeiden möchten.</p>\n<h2>Was die Forschung sagt</h2>\n<p>Ehrlich eingeordnet: Die Studienlage zum Schröpfen insgesamt ist begrenzt, mit Hinweisen auf kurzfristige Effekte bei muskulären Schmerzen, aber methodisch schwachen Studien. Für die Schröpfmassage als Variante gibt es kaum eigene Forschung. Wir setzen sie deshalb als Teil eines Behandlungsplans ein, nicht als Wundermittel.</p>\n<h2>Für wen sie nicht geeignet ist</h2>\n<p>Zurückhaltung gilt bei stark blutverdünnenden Medikamenten, ausgeprägter Neigung zu Blutergüssen, offenen Hautstellen, Ekzemen oder Sonnenbrand im Behandlungsgebiet, akuten Entzündungen und in der Schwangerschaft im Bauch- und unteren Rückenbereich. Sag uns vor der Behandlung, welche Medikamente du nimmst; die Technik wird dann angepasst oder es wird eine andere Methode gewählt.</p>",
+    "faqs": [
+      {
+        "q": "Ist Schröpfmassage etwas anderes als Schröpfen?",
+        "a": "Nein, sie ist eine Variante des trockenen Schröpfens: Statt die Gläser stehen zu lassen, werden sie mit Öl über die Haut bewegt. Grundprinzip, Wirkweise und Vorsichtsregeln sind dieselben wie beim klassischen Schröpfen."
+      },
+      {
+        "q": "Gibt es nach der Schröpfmassage auch Flecken?",
+        "a": "Meist entstehen flächige Rötungen entlang der Bahnen statt der typischen runden Male. Sie verblassen in der Regel nach Stunden bis wenigen Tagen. Bei empfindlicher Haut oder stärkerem Unterdruck können vereinzelt auch deutlichere Male auftreten."
+      },
+      {
+        "q": "Tut eine Schröpfmassage weh?",
+        "a": "Sie ist intensiv, aber steuerbar: Der Unterdruck wird an dein Empfinden angepasst. An stark verspannten Stellen zieht es deutlich, scharfer Schmerz gehört nicht dazu und soll sofort gemeldet werden."
+      },
+      {
+        "q": "Übernimmt die Krankenkasse die Schröpfmassage?",
+        "a": "Schröpfen ist bei TCM.ch Teil der TCM-Behandlung und läuft wie diese über die Zusatzversicherung für Komplementärmedizin, bei EMR-/ASCA-anerkannten Therapeut:innen meist mit 80 bis 100 Prozent Beteiligung. Die Grundversicherung übernimmt sie nicht."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/schroepfen/",
+        "label": "Schröpfen: Wirkung, Ablauf & Methoden",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/schroepfen-wirkung-flecken/",
+        "label": "Schröpfen-Wirkung: Warum Flecken entstehen",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/therapien/tuina/",
+        "label": "Tuina Massage",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/gesundheitsbibliothek/fragen/schroepfen-methoden/",
+        "label": "Häufige Fragen zu Schröpfen-Methoden",
+        "cat": "Fragen"
+      }
+    ],
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-24",
+    "dateModified": "2026-09-24",
+    "lastReviewed": "2026-09-24"
+  },
+  {
+    "slug": "shiatsu-selbstbehandlung",
+    "title": "Shiatsu-Selbstbehandlung: Was du zu Hause sinnvoll tun kannst",
+    "metaDesc": "Sanfter Daumendruck an Nacken, Schultern, Händen und Füssen: Was von Shiatsu sich für die Selbstanwendung eignet, was nicht, und wann du besser abklären lässt.",
+    "excerpt": "Einfache Druck- und Atemprinzipien aus dem Shiatsu lassen sich zu Hause nutzen. Was sinnvoll ist, wo Grenzen liegen und wann Beschwerden abgeklärt gehören.",
+    "category": "Therapien verstehen",
+    "h1": "Shiatsu-Selbstbehandlung: sinnvoll, aber mit klaren Grenzen",
+    "lead": "Shiatsu ist eine professionelle japanische Drucktherapie, und eine Behandlung durch geübte Hände lässt sich zu Hause nicht nachbauen. Einige Grundprinzipien kannst du aber gut für die eigene Alltagspflege nutzen: ruhiger, flächiger Druck, langsames Tempo, bewusste Atmung. Hier steht, was davon sinnvoll ist, was du besser lässt und wann Beschwerden in eine Abklärung gehören statt in die Selbstbehandlung.",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Lieber professionell behandeln lassen?",
+    "bodyHtml": "<h2>Was Selbstbehandlung hier bedeutet</h2>\n<p>Gemeint ist einfache Selbstakupressur nach Shiatsu-Prinzipien: mit Daumen, Fingerkuppen oder Handballen ruhigen, gleichmässigen Druck auf Muskulatur und Gewebe geben, einige Atemzüge halten, langsam lösen. Es geht um Wohlbefinden und Entspannung, nicht um Therapie. Was professionelles Shiatsu ausmacht, erklärt unsere Seite <a href=\"/therapien/shiatsu/\">Shiatsu</a>; was eine Behandlung realistisch bringt, der Artikel <a href=\"/wissen/was-bringt-shiatsu-wirkung-ablauf-kosten/\">Was bringt Shiatsu?</a></p>\n<h2>Wo einfacher Druck gut funktioniert</h2>\n<p><strong>Nacken und Schultern:</strong> Mit den Fingerkuppen beider Hände den oberen Schultermuskel greifen und in ruhigen Wellen drücken, vom Nacken Richtung Schulter wandern. Nicht direkt auf die Wirbelsäule oder den vorderen Hals drücken.</p>\n<p><strong>Hände:</strong> Mit dem Daumen der anderen Hand die Handfläche in kleinen Kreisen durcharbeiten, Fingerwurzeln und Daumenballen einbeziehen. Angenehm nach einem Bildschirmtag.</p>\n<p><strong>Füsse:</strong> Im Sitzen die Fusssohle mit beiden Daumen von der Ferse Richtung Zehen ausstreichen, gern auch über einem weichen Ball rollen.</p>\n<p><strong>Tempo und Atmung:</strong> Beim Ausatmen etwas mehr Druck, beim Einatmen lösen. Deutlicher, aber angenehmer Druck genügt; ein Schmerz, gegen den du dich anspannst, ist zu viel.</p>\n<h2>Was du nicht aggressiv drücken solltest</h2>\n<p>Kein kräftiger Druck auf den vorderen Hals, auf pulsierende Stellen, direkt auf Knochen und Wirbelsäule, auf Krampfadern, verletzte oder entzündete Haut, frische Verletzungen oder in den Bauch. In der Schwangerschaft gilt für kräftige Druckpunkt-Arbeit generell Zurückhaltung; lass dich vorher beraten.</p>\n<h2>Wann Selbstbehandlung der falsche Weg ist</h2>\n<p>Selbstdruck ist Alltagspflege für Verspannungsgefühle, kein Ersatz für eine Abklärung. Nicht selbst behandeln, sondern einordnen lassen solltest du: Schmerzen, die neu, stark oder über Wochen anhaltend sind, Schmerzen mit Kribbeln, Taubheit oder Schwäche in Armen oder Beinen, nächtliche Schmerzen, die dich wecken, Fieber oder eine Verletzung als Auslöser. Erste Orientierung gibt unsere Seite <a href=\"/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/\">Wann zuerst zum Arzt?</a></p>\n<h2>Der Unterschied zur professionellen Behandlung</h2>\n<p>Eine Shiatsu-Therapeutin arbeitet mit dem ganzen Körpergewicht, spürt Gewebespannung im Verlauf und behandelt Zonen, die du selbst nicht erreichst, vor allem den Rücken. Selbstbehandlung ist deshalb eine gute Ergänzung zwischen Terminen, aber kein Ersatz, wenn Beschwerden dich wirklich einschränken.</p>",
+    "faqs": [
+      {
+        "q": "Kann ich mit Selbst-Shiatsu etwas falsch machen?",
+        "a": "Bei sanftem Druck auf Muskulatur ist das Risiko klein. Wichtig sind die Tabuzonen: kein kräftiger Druck auf den vorderen Hals, auf Knochen, Krampfadern, verletzte Haut oder in den Bauch, und Zurückhaltung in der Schwangerschaft. Schmerzen, die du wegdrücken willst, gehören stattdessen eingeordnet."
+      },
+      {
+        "q": "Wie oft darf ich mich selbst behandeln?",
+        "a": "Kurze Einheiten von fünf bis zehn Minuten sind täglich unproblematisch, etwa abends für Nacken und Füsse. Wird eine Stelle danach wund oder empfindlicher, war der Druck zu stark oder zu häufig."
+      },
+      {
+        "q": "Ersetzt Selbstbehandlung eine Shiatsu-Sitzung?",
+        "a": "Nein. Sie pflegt zwischen den Terminen, erreicht aber weder den Rücken noch die Tiefe und Systematik einer professionellen Behandlung. Bei anhaltenden Beschwerden ist die Behandlung durch eine Fachperson der wirksamere Weg."
+      }
+    ],
+    "related": [
+      {
+        "href": "/therapien/shiatsu/",
+        "label": "Shiatsu: Behandlung, Wirkung & Ablauf",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/wissen/was-bringt-shiatsu-wirkung-ablauf-kosten/",
+        "label": "Was bringt Shiatsu? Wirkung, Ablauf und Kosten",
+        "cat": "Artikel"
+      },
+      {
+        "href": "/therapien/akupressur/",
+        "label": "Akupressur",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/",
+        "label": "Wann zuerst zum Arzt?",
+        "cat": "Frage"
+      }
+    ],
+    "region": "Schweizweit",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden. Ausbildung in der Schweiz mit Weiterbildungen in Chengdu und Shanghai. Arbeitet eng mit Neurologen und Gynäkologinnen in der Ostschweiz zusammen."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-24",
+    "dateModified": "2026-09-24",
+    "lastReviewed": "2026-09-24"
   }
 ];
 

@@ -1,18 +1,18 @@
 {
-  "generated": "2026-09-23",
+  "generated": "2026-09-24",
   "totals": {
-    "healthPages": 358,
+    "healthPages": 368,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 16,
+      "befund": 24,
       "question": 16,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
       "selfcare": 1,
-      "editorial": 76,
+      "editorial": 78,
       "body_signal": 67,
       "therapy": 36,
       "visual": 10
@@ -150,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 16
     },
     {
@@ -220,7 +220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 15
     },
     {
@@ -260,7 +260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 15
     },
     {
@@ -310,7 +310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
     },
     {
@@ -510,7 +510,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 43,
+      "inboundContentLinks": 42,
       "outboundHealthLinks": 5
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 34,
+      "inboundContentLinks": 35,
       "outboundHealthLinks": 18
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 190,
+      "inboundContentLinks": 198,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 27
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
+      "type": "befund",
+      "title": "Alkalische Phosphatase erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/",
@@ -1120,7 +1130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 4
     },
     {
@@ -1130,7 +1140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -1150,7 +1160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -1160,8 +1170,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/",
+      "type": "befund",
+      "title": "Ferritin erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/",
@@ -1170,8 +1190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/",
@@ -1180,7 +1200,37 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/",
+      "type": "befund",
+      "title": "GOT (AST) erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/",
+      "type": "befund",
+      "title": "GPT (ALT) erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/harnsaeure-erhoeht/",
+      "type": "befund",
+      "title": "Harnsäure erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
       "outboundHealthLinks": 5
     },
     {
@@ -1194,14 +1244,24 @@
       "outboundHealthLinks": 4
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/",
+      "type": "befund",
+      "title": "Kalium zu hoch: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/",
       "type": "befund",
       "title": "Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/",
@@ -1240,8 +1300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/",
@@ -1260,8 +1320,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/",
+      "type": "befund",
+      "title": "Vitamin B12 zu niedrig: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/",
+      "type": "befund",
+      "title": "Vitamin D zu niedrig: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/gesundheitsbibliothek/fragen/",
@@ -1370,7 +1450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 12
     },
     {
@@ -1410,7 +1490,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 7
     },
     {
@@ -2090,7 +2170,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -2720,7 +2800,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
+      "inboundContentLinks": 31,
       "outboundHealthLinks": 5
     },
     {
@@ -3030,8 +3110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 64,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 65,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
@@ -3060,8 +3140,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/therapien/tuina/",
@@ -3070,7 +3150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 105,
+      "inboundContentLinks": 106,
       "outboundHealthLinks": 13
     },
     {
@@ -3190,8 +3270,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 42,
-      "outboundHealthLinks": 42
+      "inboundContentLinks": 44,
+      "outboundHealthLinks": 44
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -3480,8 +3560,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/wissen/schroepfmassage/",
+      "type": "editorial",
+      "title": "Schröpfmassage: Wirkung, Ablauf und Unterschied zum Schröpfen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/shiatsu-selbstbehandlung/",
+      "type": "editorial",
+      "title": "Shiatsu-Selbstbehandlung: Was du zu Hause sinnvoll tun kannst | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/tcm-basel-erfahrungen-ablauf/",
@@ -3580,8 +3680,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/was-hilft-gegen-kopfschmerzen/",
