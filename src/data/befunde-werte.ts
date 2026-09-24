@@ -32,6 +32,8 @@ export interface BefundWert {
   slug: string;
   title: string;
   category: BefundWertKategorie;
+  /** Thematische Hub-Gruppe (nur Anzeige-Label, keine URL). Fallback: 'Weitere Werte'. */
+  gruppe?: string;
   // planned = freigegebenes Thema ohne Artikel; nur published erzeugt Prod-Routen.
   status: 'planned' | 'draft' | 'published';
   indexable: boolean;
@@ -69,9 +71,13 @@ export interface BefundWert {
 // Seit 21.09.2026 sind 4 Leaves publiziert (crp, leukozyten, tsh, cholesterin) -> indexable.
 export const HUB_INDEXABLE = true;
 
+// Anzeige-Reihenfolge der Hub-Gruppen (Phase: Cluster-Ausbau 24.09.2026).
+export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse', 'Elektrolyte', 'Stoffwechsel', 'Vitamine & Eisenspeicher', 'Entzündung', 'Schilddrüse', 'Niere & Blutdruck', 'Weitere Werte'];
+
 export const befundeWerte: BefundWert[] = [
   {
     slug: 'crp-erhoeht',
+    gruppe: 'Entzündung',
     title: 'CRP erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -106,6 +112,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'tsh-erhoeht',
+    gruppe: 'Schilddrüse',
     title: 'TSH erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -145,6 +152,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'leukozyten-erhoeht',
+    gruppe: 'Blutbild',
     title: 'Leukozyten erhöht: Was bedeutet das?',
     category: 'laborwert',
     status: 'published',
@@ -176,10 +184,15 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Die Interpretation von Blutwerten gehört in die schulmedizinische Beurteilung: Die chinesische Medizin übersetzt eine erhöhte Leukozytenzahl nicht in ein eigenes Diagnose-Muster. Erst wenn ärztlich geklärt ist, was hinter dem Befund steckt, kann eine komplementäre Behandlung, bezogen auf die Diagnose und deine Beschwerden, ein Thema sein.</p>`,
     relatedConditions: [{ href: '/beschwerden/immunschwaeche/', label: 'Immunschwäche & Infektanfälligkeit' }],
     relatedSignals: [{ href: '/koerpersignale/hitzegefuehl-ohne-fieber/', label: 'Hitzegefühl ohne Fieber' }],
-    relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/', label: 'Monozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/', label: 'Eosinophile erhöht: Was bedeutet das?' },
+    ],
   },
   {
     slug: 'cholesterin-erhoeht',
+    gruppe: 'Stoffwechsel',
     title: 'Cholesterin erhöht: Was bedeutet das?',
     category: 'laborwert',
     status: 'published',
@@ -217,6 +230,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'leberwerte-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte?',
     category: 'laborwert',
     status: 'published',
@@ -250,6 +264,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'gamma-gt-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'Gamma-GT erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -284,6 +299,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'nierenwerte-erhoeht',
+    gruppe: 'Niere & Blutdruck',
     title: 'Nierenwerte erhöht: Was bedeutet der Befund?',
     category: 'laborwert',
     status: 'published',
@@ -319,6 +335,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'bilirubin-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'Bilirubin erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -352,6 +369,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'lymphozyten-erhoeht',
+    gruppe: 'Blutbild',
     title: 'Lymphozyten erhöht: Was bedeutet das?',
     category: 'laborwert',
     status: 'published',
@@ -386,6 +404,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'neutrophile-erhoeht',
+    gruppe: 'Blutbild',
     title: 'Neutrophile erhöht: Was bedeutet das?',
     category: 'laborwert',
     status: 'published',
@@ -421,6 +440,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'thrombozyten-erhoeht',
+    gruppe: 'Blutbild',
     title: 'Thrombozyten erhöht: Was bedeutet das?',
     category: 'laborwert',
     status: 'published',
@@ -457,6 +477,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'harnsaeure-erhoeht',
+    gruppe: 'Stoffwechsel',
     title: 'Harnsäure erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -493,6 +514,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'ferritin-erhoeht',
+    gruppe: 'Vitamine & Eisenspeicher',
     title: 'Ferritin erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -528,6 +550,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'kalium-zu-hoch',
+    gruppe: 'Elektrolyte',
     title: 'Kalium zu hoch: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -556,12 +579,14 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Elektrolyte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kaliumwerte nicht, und kein komplementäres Verfahren ersetzt deren Kontrolle oder Behandlung.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-hoch/', label: 'Natrium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
     ],
   },
   {
     slug: 'alkalische-phosphatase-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'Alkalische Phosphatase erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -596,6 +621,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'gpt-alt-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'GPT (ALT) erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -632,6 +658,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'got-ast-erhoeht',
+    gruppe: 'Leber & Enzyme',
     title: 'GOT (AST) erhöht: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -666,6 +693,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'vitamin-d-zu-niedrig',
+    gruppe: 'Vitamine & Eisenspeicher',
     title: 'Vitamin D zu niedrig: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -699,6 +727,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'vitamin-b12-zu-niedrig',
+    gruppe: 'Vitamine & Eisenspeicher',
     title: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?',
     category: 'laborwert',
     status: 'published',
@@ -733,7 +762,364 @@ export const befundeWerte: BefundWert[] = [
     ],
   },
   {
+    slug: 'haemoglobin-zu-niedrig',
+    gruppe: 'Blutbild',
+    title: 'Hämoglobin zu niedrig: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Hämoglobin transportiert den Sauerstoff im Blut. Was ein tiefer Hb-Wert bedeuten kann, welche Begleitwerte zählen und wann eine Abklärung wichtig ist.',
+    primaryPurpose: 'Einordnung des Laborwerts Hämoglobin zu niedrig, keine Anämie- oder Eisenmangel-Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Labor-Einordnungs-Seite: Erkrankungs-/Behandlungs-Intent Eisenmangel bleibt bei /beschwerden/eisenmangel/; Speicher-Wert bei ferritin-zu-niedrig, B12 bei vitamin-b12-zu-niedrig (alle kreuzverlinkt). Gegen-Intent haemoglobin-zu-hoch eigene Seite.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Hämoglobin (Hb) ist der rote Blutfarbstoff, der den Sauerstoff von der Lunge in den Körper transportiert. Ein zu tiefer Wert bedeutet, dass weniger Transportkapazität zur Verfügung steht (Blutarmut, medizinisch Anämie). Das ist ein <strong>Befund, keine Diagnose</strong>: Erst die Begleitwerte zeigen, ob Eisen, Vitamine, ein Blutverlust oder eine andere Ursache dahintersteckt.</p>`,
+    bodyHtml: `<h2>Was ist Hämoglobin?</h2>
+<p>Hämoglobin sitzt in den roten Blutkörperchen und bindet Sauerstoff. Sinkt der Wert, muss das Herz mehr arbeiten, um den Körper zu versorgen; typische Folgen sind Müdigkeit, Leistungsabfall, Blässe oder Atemnot bei Anstrengung. Frauen haben natürlicherweise etwas tiefere Referenzbereiche als Männer, und in der Schwangerschaft sinkt der Wert verdünnungsbedingt.</p>
+<h2>Warum kann das Hämoglobin zu niedrig sein?</h2>
+<ul>
+<li><strong>Eisenmangel:</strong> weltweit die häufigste Ursache, oft durch Blutverluste (Menstruation, Magen-Darm-Trakt) oder zu geringe Aufnahme. Der Speicherwert dazu ist das <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a>, das Krankheitsbild erklärt die Seite <a href="/beschwerden/eisenmangel/">Eisenmangel</a>.</li>
+<li><strong>Vitaminmangel:</strong> zu wenig <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12</a> oder Folsäure stört die Blutbildung.</li>
+<li><strong>Akuter oder chronischer Blutverlust:</strong> von der starken Menstruation bis zur unbemerkten Blutung im Magen-Darm-Trakt.</li>
+<li><strong>Chronische Erkrankungen:</strong> länger dauernde Entzündungen, Nieren- oder andere Grunderkrankungen können die Blutbildung dämpfen.</li>
+<li><strong>Seltenere Ursachen:</strong> Erkrankungen des Knochenmarks oder vermehrter Abbau roter Blutkörperchen; dafür liefert das Blutbild meist weitere Hinweise.</li>
+</ul>
+<h2>Warum die Begleitwerte entscheiden</h2>
+<p>Der Hb-Wert sagt, DASS weniger roter Blutfarbstoff da ist, nicht warum. Die Grösse der roten Blutkörperchen (MCV), Ferritin, B12/Folsäure, Retikulozyten und Entzündungswerte grenzen die Ursache ein. Genau deshalb wird ein tiefer Hb-Wert nie isoliert behandelt, sondern zuerst eingeordnet.</p>`,
+    notProofHtml: `<p>Ein tiefer Hb-Wert beweist keinen Eisenmangel; Eisen auf Verdacht einzunehmen kann die Abklärung verschleiern und bei falscher Ursache schaden. Er beweist auch keine ernste Erkrankung: Von der Verdünnung in der Schwangerschaft bis zum banalen Infekt gibt es viele Erklärungen. Umgekehrt schliesst ein normaler Hb-Wert leere Eisenspeicher nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind das vollständige Blutbild mit Zellgrössen, <strong>Ferritin</strong> und je nach Bild B12/Folsäure, Retikulozyten und Entzündungswerte; bei unklarem Blutverlust die gezielte Quellensuche. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah medizinisch gehören ein deutlich tiefer Wert, rasche Verschlechterung, Atemnot in Ruhe, Brustschmerz, Ohnmacht, schwarzer Stuhl oder sichtbares Blut im Stuhl sowie ein tiefer Hb-Wert bei Männern und Frauen nach der Menopause ohne erkennbare Ursache: Dort gehört immer die Quelle gesucht.</p>`,
+    integrativeContextHtml: `<p>Abklärung und Behandlung einer Blutarmut gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Hb-Wert nicht, und der TCM-Begriff Blut ist nicht mit dem Laborwert gleichzusetzen.</p>`,
+    relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/', label: 'Hämoglobin zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'haemoglobin-zu-hoch',
+    gruppe: 'Blutbild',
+    title: 'Hämoglobin zu hoch: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Ein hoher Hb-Wert kann Eindickung durch Flüssigkeitsmangel oder echte Mehrproduktion bedeuten. Wie der Befund eingeordnet wird und wann er abgeklärt gehört.',
+    primaryPurpose: 'Einordnung des Laborwerts Hämoglobin zu hoch; Gegen-Intent zur Low-Seite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Eigener Owner, klar getrennt von haemoglobin-zu-niedrig (beidseitig als Gegen-Befund verlinkt). Kein Erkrankungs-Owner (keine Polyglobulie-Seite).',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Ein erhöhter Hämoglobinwert hat zwei grundsätzlich verschiedene Erklärungen: Entweder ist das Blut <strong>eingedickt</strong> (zu wenig Flüssigkeit, dann ist die Konzentration hoch, ohne dass mehr rote Blutkörperchen da sind), oder der Körper bildet <strong>tatsächlich mehr</strong> rote Blutkörperchen, etwa als Reaktion auf Sauerstoffmangel. Eine Wiederholungsmessung in gut hydriertem Zustand ist deshalb oft der erste Schritt.</p>`,
+    bodyHtml: `<h2>Konzentration oder echte Vermehrung?</h2>
+<p>Hb wird als Konzentration gemessen. Nach starkem Schwitzen, Durchfall oder schlicht zu wenig Trinken steigt der Wert scheinbar, weil weniger Flüssigkeit im Gefässsystem ist. Beurteilt wird er deshalb zusammen mit Hämatokrit und der Zahl der roten Blutkörperchen und im Zweifel nach einer Kontrolle mit normaler Trinkmenge.</p>
+<h2>Warum kann das Hämoglobin echt erhöht sein?</h2>
+<ul>
+<li><strong>Rauchen:</strong> eine der häufigsten Ursachen chronisch erhöhter Werte; Kohlenmonoxid verschlechtert den Sauerstofftransport, der Körper kompensiert mit mehr roten Blutkörperchen.</li>
+<li><strong>Sauerstoffmangel:</strong> Aufenthalte in grosser Höhe, chronische Lungen- oder bestimmte Herzerkrankungen sowie unbehandelte nächtliche Atemaussetzer regen die Blutbildung an.</li>
+<li><strong>Seltener:</strong> eine eigenständige Mehrproduktion im Knochenmark (Polyglobulie/Polycythaemia vera). Dafür sprechen anhaltend deutlich erhöhte Werte ohne die genannten Erklärungen; das klärt die Hämatologie.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen Hämatokrit und Erythrozytenzahl, Rauchstatus, Schlaf (Schnarchen mit Atempausen), Medikamente, Höhenaufenthalte und der Verlauf über eine Kontrollmessung. Ein einmalig leicht erhöhter Wert bei Flüssigkeitsmangel ist meist unspektakulär.</p>`,
+    notProofHtml: `<p>Ein erhöhter Hb-Wert beweist keine Knochenmarkerkrankung; die häufigsten Erklärungen sind Flüssigkeitsmangel, Rauchen und Sauerstoff-Kompensation. Er ist auch kein Fitness-Beweis. Umgekehrt schliesst ein normaler Einzelwert eine relevante Ursache wie nächtliche Atemaussetzer nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung in gut hydriertem Zustand</strong>, Hämatokrit und Blutbild, das Gespräch über Rauchen, Schlaf und Medikamente und nur bei anhaltend deutlich erhöhten Werten eine gezielte weitere Abklärung. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zügig besprechen solltest du anhaltend deutlich erhöhte Werte, besonders zusammen mit Kopfschmerzen, Sehstörungen, Juckreiz nach warmem Duschen, Rötung von Gesicht oder Handflächen oder früheren Thrombosen. Zeichen einer akuten Thrombose oder Embolie (einseitig geschwollenes Bein, plötzliche Atemnot, Brustschmerz) sind ein Notfall: Telefon 144.</p>`,
+    integrativeContextHtml: `<p>Die Abklärung erhöhter Blutwerte gehört in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Hb-Wert nicht und behandelt keine Polyglobulie.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'monozyten-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'Monozyten erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Monozyten sind die Aufräumzellen unter den weissen Blutkörperchen. Warum sie erhöht sein können, oft in der Erholungsphase nach Infekten, und was ein Einzelwert nicht beweist.',
+    primaryPurpose: 'Einordnung der Leukozyten-Untergruppe Monozyten; der Gesamtwert bleibt bei leukozyten-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Leukozyten-SUBTYP-Owner wie lymphozyten-/neutrophile-erhoeht; Umbrella bleibt leukozyten-erhoeht. Geschwister-Seiten (Lymphozyten, Neutrophile, Eosinophile, Basophile) kreuzverlinkt.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Monozyten sind eine Untergruppe der weissen Blutkörperchen (Leukozyten). Sie wandern ins Gewebe ein, werden dort zu Fresszellen und räumen Erreger und Zelltrümmer ab. Erhöhte Monozyten sieht man deshalb häufig in der <strong>Erholungs- und Aufräumphase nach Infekten</strong> und bei länger laufenden Entzündungen. Ein einzelner, leicht erhöhter Wert ist keine Diagnose.</p>`,
+    bodyHtml: `<h2>Was sind Monozyten?</h2>
+<p>Monozyten machen normalerweise nur wenige Prozent der Leukozyten aus. Ihre Aufgabe beginnt oft dort, wo die Akutabwehr durch <a href="/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/">Neutrophile</a> aufhört: aufräumen, Gewebe reparieren, dem Immunsystem Erreger präsentieren. Der übergeordnete Gesamtwert ist auf der Seite <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten erhöht</a> erklärt.</p>
+<h2>Relativ oder absolut erhöht?</h2>
+<p>Wie bei allen Untergruppen gilt: Der Prozentanteil kann hoch aussehen, nur weil eine andere Zellgruppe gerade niedrig ist. Aussagekräftiger ist die absolute Monozytenzahl.</p>
+<h2>Warum können Monozyten erhöht sein?</h2>
+<ul>
+<li><strong>Abklingende oder durchgemachte Infekte:</strong> die klassische Konstellation; die Monozyten steigen oft, wenn die Akutphase vorbei ist, und normalisieren sich über Wochen.</li>
+<li><strong>Chronische Entzündungen und Infektionen:</strong> länger aktive Prozesse halten die Aufräumtruppe beschäftigt.</li>
+<li><strong>Rauchen und Stressreaktionen:</strong> können die Werte leicht anheben.</li>
+<li><strong>Anhaltend deutlich erhöhte Werte:</strong> ohne Erklärung gehören sie hämatologisch beurteilt; ein Einzelwert belegt keine Bluterkrankung.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen kürzliche Infekte, die absolute Zahl, das übrige Differenzialblutbild (<a href="/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/">Lymphozyten</a>, Neutrophile, <a href="/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/">Eosinophile</a>, <a href="/gesundheitsbibliothek/befunde-werte/basophile-erhoeht/">Basophile</a>), Entzündungswerte und die Kontrollmessung nach einigen Wochen.</p>`,
+    notProofHtml: `<p>Erhöhte Monozyten beweisen keine bestimmte Infektion, keine chronische Erkrankung und keine Leukämie. Sie zeigen Aufräum- und Abwehraktivität an. Nach einem Infekt sind vorübergehend erhöhte Werte erwartbar.</p>`,
+    followUpHtml: `<p>Üblich sind das Gespräch über kürzliche Infekte, eine <strong>Kontrolle des Blutbilds</strong> nach einigen Wochen und nur bei anhaltend auffälligen Werten oder Begleitbefunden weitere gezielte Diagnostik. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören erhöhte Monozyten zusammen mit anhaltendem Fieber, Nachtschweiss, ungewolltem Gewichtsverlust, geschwollenen Lymphknoten über Wochen oder auffälligen weiteren Blutbildveränderungen.</p>`,
+    integrativeContextHtml: `<p>Blutbild-Interpretation gehört in die schulmedizinische Beurteilung: Die chinesische Medizin leitet aus Monozytenzahlen keine eigenen Diagnosen ab.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/', label: 'Neutrophile erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/', label: 'Lymphozyten erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'eosinophile-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'Eosinophile erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Eosinophile Granulozyten steigen oft bei Allergien, Asthma oder Hautentzündungen, haben aber viele mögliche Auslöser. Wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung der Leukozyten-Untergruppe Eosinophile; der Gesamtwert bleibt bei leukozyten-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Leukozyten-SUBTYP-Owner; Umbrella bleibt leukozyten-erhoeht. Allergie ausdrücklich NICHT als automatische Erklärung gerahmt; /beschwerden/allergien-heuschnupfen/ bleibt Erkrankungs-Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Allergologie)',
+    shortAnswerHtml: `<p>Eosinophile sind eine kleine Untergruppe der weissen Blutkörperchen, die bei allergischen Reaktionen und in der Abwehr von Parasiten eine Rolle spielt. Erhöhte Werte sieht man deshalb oft bei <strong>Allergien, Asthma oder entzündlichen Hauterkrankungen</strong>, aber längst nicht nur dort: Auch Medikamente und andere Erkrankungen kommen infrage. Ein erhöhter Wert benennt nie von selbst die Ursache.</p>`,
+    bodyHtml: `<h2>Was sind Eosinophile?</h2>
+<p>Eosinophile Granulozyten machen normalerweise nur wenige Prozent der Leukozyten aus. Sie sind auf die Abwehr grösserer Eindringlinge (klassisch: Parasiten) und auf allergisch-entzündliche Reaktionen spezialisiert, unter anderem in Atemwegen und Haut. Den Gesamtwert erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten erhöht</a>.</p>
+<h2>Relativ oder absolut erhöht?</h2>
+<p>Auch hier zählt die absolute Zahl mehr als der Prozentanteil: Ein hoher Anteil bei niedriger Gesamtleukozytenzahl bedeutet oft wenig. Ärztinnen sprechen erst ab bestimmten absoluten Werten von einer relevanten Eosinophilie und stufen deren Ausmass ab.</p>
+<h2>Warum können Eosinophile erhöht sein?</h2>
+<ul>
+<li><strong>Allergische Erkrankungen:</strong> Heuschnupfen, Asthma, allergische Hautreaktionen; die Erkrankungs-Seite dazu ist <a href="/beschwerden/allergien-heuschnupfen/">Allergien &amp; Heuschnupfen</a>.</li>
+<li><strong>Hauterkrankungen:</strong> unter anderem Ekzeme und Nesselsucht.</li>
+<li><strong>Medikamente:</strong> ein wichtiger und oft übersehener Auslöser; neue Präparate gehören ins ärztliche Gespräch.</li>
+<li><strong>Parasitäre Infektionen:</strong> je nach Reiseanamnese relevant.</li>
+<li><strong>Seltener:</strong> entzündliche Systemerkrankungen oder hämatologische Ursachen bei anhaltend deutlich erhöhten Werten.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen die absolute Höhe, Beschwerden (Atemwege, Haut, Verdauung), Reisen, Medikamente und der Verlauf über Kontrollmessungen. Ein leicht erhöhter Einzelwert bei bekannter Allergie ist meist wenig überraschend.</p>`,
+    notProofHtml: `<p>Erhöhte Eosinophile beweisen keine Allergie, und eine bekannte Allergie erklärt nicht automatisch jeden erhöhten Wert. Sie beweisen auch keinen Parasitenbefall und keine Bluterkrankung. Umgekehrt schliessen normale Werte eine Allergie nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind die absolute Zählung im Differenzialblutbild, das Gespräch über Beschwerden, Medikamente und Reisen, eine <strong>Kontrollmessung</strong> und je nach Verdacht gezielte Allergie- oder weitere Abklärung. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören anhaltend deutlich erhöhte Werte, erhöhte Eosinophile mit Atemnot, ausgeprägten Hautveränderungen, Fieber, Gewichtsverlust oder nach Beginn eines neuen Medikaments mit Krankheitsgefühl.</p>`,
+    integrativeContextHtml: `<p>Blutbild-Interpretation gehört in die schulmedizinische Beurteilung: Die chinesische Medizin leitet aus Eosinophilenzahlen keine eigenen Diagnosen ab.</p>`,
+    relatedConditions: [{ href: '/beschwerden/allergien-heuschnupfen/', label: 'Allergien & Heuschnupfen' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/basophile-erhoeht/', label: 'Basophile erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/', label: 'Monozyten erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'basophile-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'Basophile erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Basophile sind die seltenste Untergruppe der weissen Blutkörperchen. Was ein erhöhter Wert bedeuten kann und warum er fast nie isoliert beurteilt wird.',
+    primaryPurpose: 'Einordnung der Leukozyten-Untergruppe Basophile; der Gesamtwert bleibt bei leukozyten-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Leukozyten-SUBTYP-Owner; Umbrella bleibt leukozyten-erhoeht. Bewusst nicht alarmistisch: kleinste Zellgruppe, prozentuale Ausreisser häufig bedeutungsarm.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Basophile sind die mit Abstand seltenste Untergruppe der weissen Blutkörperchen, normalerweise unter einem Prozent. Sie sind an allergisch-entzündlichen Reaktionen beteiligt. Weil die Zahlen so klein sind, wirken prozentuale Veränderungen schnell dramatisch, ohne es zu sein: Ein leicht erhöhter Einzelwert ist <strong>häufig ohne Krankheitswert</strong> und wird praktisch nie isoliert beurteilt.</p>`,
+    bodyHtml: `<h2>Was sind Basophile?</h2>
+<p>Basophile Granulozyten tragen Botenstoffe wie Histamin und wirken bei allergischen und entzündlichen Reaktionen mit, ähnlich den Mastzellen im Gewebe. Im Differenzialblutbild sind sie die kleinste Gruppe; den übergeordneten Gesamtwert erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten erhöht</a>.</p>
+<h2>Warum die kleinen Zahlen täuschen können</h2>
+<p>Wenn eine Zellart normalerweise unter einem Prozent liegt, verdoppelt schon eine minimale absolute Veränderung den Anteil. Deshalb zählt die absolute Basophilenzahl, und selbst diese wird immer im Kontext des gesamten Blutbilds gelesen.</p>
+<h2>Warum können Basophile erhöht sein?</h2>
+<ul>
+<li><strong>Allergisch-entzündliche Zustände:</strong> unter anderem allergische Erkrankungen und chronische Entzündungen, auch die Abheilungsphase von Infekten.</li>
+<li><strong>Weitere Zusammenhänge:</strong> unter anderem eine verminderte Schilddrüsenfunktion wird beschrieben.</li>
+<li><strong>Anhaltend deutlich erhöhte Werte:</strong> sind selten und gehören zusammen mit dem übrigen Blutbild hämatologisch beurteilt, vor allem, wenn gleichzeitig andere Zellreihen auffällig sind.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen die absolute Zahl, das gesamte Differenzialblutbild (<a href="/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/">Eosinophile</a>, <a href="/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/">Neutrophile</a>, <a href="/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/">Lymphozyten</a>, <a href="/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/">Monozyten</a>) und der Verlauf über eine Kontrolle.</p>`,
+    notProofHtml: `<p>Erhöhte Basophile beweisen keine Allergie und keine Bluterkrankung. Ein isolierter, leicht erhöhter Wert bei sonst normalem Blutbild ist häufig ein Zufallsbefund ohne Konsequenz.</p>`,
+    followUpHtml: `<p>Üblich sind schlicht die <strong>Kontrolle des Blutbilds</strong> und der Blick auf das Gesamtbild; nur bei anhaltenden oder mehrreihigen Auffälligkeiten folgt gezielte Diagnostik. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehören anhaltend erhöhte Basophile zusammen mit weiteren Blutbildveränderungen, Nachtschweiss, Gewichtsverlust, ausgeprägter Müdigkeit oder vergrösserter Milz im Ultraschall.</p>`,
+    integrativeContextHtml: `<p>Blutbild-Interpretation gehört in die schulmedizinische Beurteilung: Die chinesische Medizin leitet aus Basophilenzahlen keine eigenen Diagnosen ab.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/', label: 'Eosinophile erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'ldh-erhoeht',
+    gruppe: 'Leber & Enzyme',
+    title: 'LDH erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Die Laktatdehydrogenase (LDH) kommt in fast allen Geweben vor. Warum der Wert bei vielem steigt, was er nicht lokalisieren kann und wie er eingeordnet wird.',
+    primaryPurpose: 'Einordnung des unspezifischen Zellschaden-Markers LDH, keine Organ- oder Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner. Kernbotschaft: maximal unspezifisch, LDH allein lokalisiert nichts; bewusst NICHT als Pankreas- oder Leber-spezifisch gerahmt.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
+    shortAnswerHtml: `<p>Die Laktatdehydrogenase (LDH) ist ein Enzym des Energiestoffwechsels, das in fast allen Körperzellen vorkommt: Leber, Muskeln, Herz, rote Blutkörperchen, Lunge und mehr. Steigt sie im Blut, sind irgendwo vermehrt Zellen zerfallen oder gestresst. Die LDH ist damit einer der <strong>unspezifischsten Laborwerte überhaupt</strong>: Sie zeigt an, dass etwas ist, aber praktisch nie, wo.</p>`,
+    bodyHtml: `<h2>Was ist die LDH?</h2>
+<p>Weil das Enzym überall vorkommt, gibt es kaum eine Erkrankung, bei der die LDH nicht steigen kann, und genau das macht sie als Einzelwert so wenig aussagekräftig. Nützlich ist sie vor allem als Verlaufs- und Zusatzwert im Kontext anderer Befunde.</p>
+<h2>Warum kann die LDH erhöht sein?</h2>
+<ul>
+<li><strong>Die Blutprobe selbst:</strong> ein häufiger Grund. Zerfallen rote Blutkörperchen bei der Entnahme oder auf dem Transport (Hämolyse), steigt die LDH künstlich; oft wird deshalb zuerst mit frischer Probe kontrolliert.</li>
+<li><strong>Muskel:</strong> intensives Training, Muskelkater oder Verletzungen; typischerweise zusammen mit anderen Muskelwerten wie der <a href="/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/">GOT/AST</a>.</li>
+<li><strong>Leber:</strong> im Verbund mit den <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerten</a>.</li>
+<li><strong>Vermehrter Zellabbau im Blut:</strong> etwa bei Hämolyse im Körper oder wenig effektiver Blutbildung, dann zusammen mit Blutbild und <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin</a> beurteilt.</li>
+<li><strong>Weitere Ursachen:</strong> von Infektionen über Lungen- bis zu Tumorerkrankungen; für keine davon ist die LDH allein beweisend.</li>
+</ul>
+<h2>Wie der Wert sinnvoll gelesen wird</h2>
+<p>Immer im Set: Beschwerden, Blutbild, Leber- und Muskelwerte, Entzündungsmarker. Die Frage ist nie "Was bedeutet die LDH?", sondern "Zu welchem Gesamtbild passt sie?".</p>`,
+    notProofHtml: `<p>Eine erhöhte LDH beweist keine bestimmte Erkrankung, keinen Herzinfarkt, keine Leber- oder Tumorerkrankung, und sie lokalisiert kein Organ. Ein isolierter, leicht erhöhter Wert nach Sport oder mit hämolytischer Probe ist ein häufiger, meist banaler Befund.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung mit sauberer Abnahme und ohne vorherige intensive Belastung</strong> sowie die passenden Begleitwerte je nach Verdacht. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören deutlich oder anhaltend erhöhte Werte zusammen mit B-Symptomen (Fieber, Nachtschweiss, Gewichtsverlust), Blässe und Müdigkeit, dunklem Urin nach extremer Belastung oder auffälligen weiteren Befunden.</p>`,
+    integrativeContextHtml: `<p>Die LDH gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/', label: 'GOT (AST) erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/', label: 'Bilirubin erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'lipase-erhoeht',
+    gruppe: 'Bauchspeicheldrüse',
+    title: 'Lipase erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Die Lipase ist das wichtigste Laborzeichen der Bauchspeicheldrüse. Warum sie erhöht sein kann, warum das nicht automatisch eine Entzündung bedeutet und wann es dringlich wird.',
+    primaryPurpose: 'Einordnung des Laborwerts Lipase, keine Pankreatitis-Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner. Sicherheitsseite: Symptom+Wert-Konstellation (dringlich) klar getrennt vom asymptomatischen Zufallsbefund; Schwester-Seite amylase-erhoeht kreuzverlinkt.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Gastroenterologie)',
+    shortAnswerHtml: `<p>Die Lipase ist ein Verdauungsenzym der Bauchspeicheldrüse, das Fette spaltet. Deutlich erhöhte Werte zusammen mit starken Oberbauchschmerzen sprechen für eine Entzündung der Bauchspeicheldrüse und gehören <strong>rasch medizinisch beurteilt</strong>. Ein leicht erhöhter Wert ohne Beschwerden ist dagegen ein anderer Fall: Er hat viele mögliche Erklärungen und beweist keine Pankreatitis.</p>`,
+    bodyHtml: `<h2>Was ist die Lipase?</h2>
+<p>Die Bauchspeicheldrüse gibt Lipase in den Dünndarm ab, ein kleiner Teil zirkuliert im Blut. Wird das Organ gereizt oder entzündet, steigt der Blutwert, bei einer akuten Entzündung oft auf ein Mehrfaches. Für Fragen rund um die Bauchspeicheldrüse ist die Lipase heute aussagekräftiger als die <a href="/gesundheitsbibliothek/befunde-werte/amylase-erhoeht/">Amylase</a>.</p>
+<h2>Warum kann die Lipase erhöht sein?</h2>
+<ul>
+<li><strong>Akute Pankreatitis:</strong> die wichtigste Ursache deutlich erhöhter Werte, typischerweise mit starken, gürtelförmigen Oberbauchschmerzen, Übelkeit und Krankheitsgefühl. Häufige Auslöser sind Gallensteine und Alkohol.</li>
+<li><strong>Reizung ohne akute Entzündung:</strong> nach Gallenwegsproblemen, bei chronischen Veränderungen der Bauchspeicheldrüse oder nach endoskopischen Eingriffen.</li>
+<li><strong>Eingeschränkte Nierenfunktion:</strong> die Lipase wird über die Nieren abgebaut; bei reduzierten <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerten</a> kann sie erhöht sein, ohne dass die Bauchspeicheldrüse krank ist.</li>
+<li><strong>Medikamente und weitere Ursachen:</strong> verschiedene Wirkstoffe sowie Magen-Darm-Erkrankungen können den Wert anheben; auch dauerhaft leicht erhöhte Werte ohne Krankheitswert kommen vor.</li>
+</ul>
+<h2>Der Kontext entscheidet</h2>
+<p>Die zentrale Frage lautet: Gibt es Beschwerden? Ein deutlich erhöhter Wert mit akuten Oberbauchschmerzen ist ein medizinischer Fall für heute, nicht für nächste Woche. Ein leicht erhöhter Zufallsbefund ohne Symptome wird dagegen kontrolliert und eingeordnet, oft zusammen mit Leber-, Gallen- und Nierenwerten und je nach Bild einem Ultraschall.</p>`,
+    notProofHtml: `<p>Eine erhöhte Lipase beweist keine Pankreatitis: Ohne passende Beschwerden ist eine leichte Erhöhung oft ein Nebenbefund, etwa bei eingeschränkter Nierenfunktion oder medikamentös bedingt. Umgekehrt schliesst ein normaler Wert eine chronische Bauchspeicheldrüsen-Erkrankung nicht sicher aus.</p>`,
+    followUpHtml: `<p>Üblich sind je nach Situation eine <strong>Kontrollmessung</strong>, Leber-, Gallen- und Nierenwerte, ein Ultraschall des Oberbauchs und das Gespräch über Alkohol und Medikamente. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Rasch medizinisch beurteilt gehören starke, anhaltende Oberbauchschmerzen (oft gürtelförmig in den Rücken ziehend) mit Übelkeit oder Erbrechen, Fieber oder Gelbfärbung, erst recht zusammen mit einem erhöhten Lipasewert. Bei heftigen akuten Bauchschmerzen mit Kreislaufsymptomen gilt in der Schweiz: Notruf 144.</p>`,
+    integrativeContextHtml: `<p>Bauchspeicheldrüsen-Befunde gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert die Lipase nicht und behandelt keine Pankreatitis.</p>`,
+    relatedSignals: [{ href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/amylase-erhoeht/', label: 'Amylase erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
+    ],
+  },
+  {
+    slug: 'amylase-erhoeht',
+    gruppe: 'Bauchspeicheldrüse',
+    title: 'Amylase erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Amylase stammt aus Bauchspeicheldrüse UND Speicheldrüsen. Warum der Wert erhöht sein kann und warum die Lipase bei Pankreas-Fragen oft aussagekräftiger ist.',
+    primaryPurpose: 'Einordnung des Laborwerts Amylase; enge Schwester-Seite zu lipase-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner. Doppelte Herkunft (Pankreas + Speicheldrüsen) als Kernunterschied zur Lipase; beidseitig kreuzverlinkt; keine Pankreatitis-Diagnose aus dem Einzelwert.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Gastroenterologie)',
+    shortAnswerHtml: `<p>Amylase ist ein Enzym, das Stärke spaltet, und stammt aus <strong>zwei Quellen</strong>: der Bauchspeicheldrüse und den Speicheldrüsen. Ein erhöhter Wert kann deshalb vom Bauch kommen, aber genauso vom Mundbereich, etwa bei einer Speicheldrüsenentzündung. Für Fragen zur Bauchspeicheldrüse ist die <a href="/gesundheitsbibliothek/befunde-werte/lipase-erhoeht/">Lipase</a> deshalb meist der aussagekräftigere Wert.</p>`,
+    bodyHtml: `<h2>Was ist die Amylase?</h2>
+<p>Das Enzym beginnt die Verdauung von Kohlenhydraten bereits im Mund und setzt sie im Dünndarm fort. Im Blut messen Labore die Gesamtamylase; die Herkunft (Pankreas oder Speicheldrüse) lässt sich daraus nicht direkt ablesen, wohl aber aus dem Kontext und gegebenenfalls einer Aufschlüsselung.</p>
+<h2>Warum kann die Amylase erhöht sein?</h2>
+<ul>
+<li><strong>Bauchspeicheldrüse:</strong> Entzündung oder Reizung, meist zusammen mit erhöhter Lipase und passenden Beschwerden.</li>
+<li><strong>Speicheldrüsen:</strong> Entzündungen (klassisch Mumps), Speichelsteine oder Reizungen erhöhen die Amylase, ohne dass der Bauch beteiligt ist.</li>
+<li><strong>Eingeschränkte Nierenfunktion:</strong> wie die Lipase wird Amylase über die Nieren ausgeschieden; reduzierte Nierenleistung hebt den Wert an.</li>
+<li><strong>Makroamylasämie:</strong> eine harmlose Laborbesonderheit, bei der Amylase an Eiweisse gebunden langsamer abgebaut wird; der Wert bleibt dauerhaft erhöht ohne Krankheitswert.</li>
+<li><strong>Weitere Ursachen:</strong> unter anderem Magen-Darm-Erkrankungen und einzelne Medikamente.</li>
+</ul>
+<h2>Amylase und Lipase zusammen lesen</h2>
+<p>Erhöhte Amylase bei normaler Lipase spricht eher gegen die Bauchspeicheldrüse und für eine andere Quelle. Sind beide deutlich erhöht und bestehen Oberbauchschmerzen, wird eine Pankreatitis abgeklärt. Diese Kombination ist der Hauptgrund, warum beide Werte oft gemeinsam bestimmt werden.</p>`,
+    notProofHtml: `<p>Eine erhöhte Amylase beweist keine Pankreatitis und keine bestimmte Erkrankung; sie kann aus dem Mundbereich stammen, nierenbedingt oder eine harmlose Makroamylasämie sein. Umgekehrt schliesst ein normaler Wert Bauchspeicheldrüsen-Probleme nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Lipase als Vergleichswert</strong>, Nieren- und Leberwerte, je nach Bild ein Ultraschall und bei dauerhaft unklar erhöhten Werten die Prüfung auf Makroamylasämie. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Rasch beurteilt gehören erhöhte Werte zusammen mit starken Oberbauchschmerzen, Fieber, Erbrechen oder Gelbfärbung sowie eine schmerzhafte Schwellung im Bereich der Speicheldrüsen mit Fieber.</p>`,
+    integrativeContextHtml: `<p>Auch die Amylase gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/lipase-erhoeht/', label: 'Lipase erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'natrium-zu-hoch',
+    gruppe: 'Elektrolyte',
+    title: 'Natrium zu hoch: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Ein hoher Natriumwert ist meist ein Wasser-Problem, kein Salz-Problem: Er zeigt in der Regel Flüssigkeitsmangel an. Wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Laborwerts Natrium erhöht (Hypernatriämie), Elektrolyt-Cluster zu kalium-zu-hoch.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner; Elektrolyt-Schwester zu kalium-zu-hoch (kreuzverlinkt). Kernbotschaft: Wasserbilanz statt Kochsalz-Konsum; keine DIY-Elektrolyt-Korrektur.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>Natrium ist das wichtigste Elektrolyt im Blutplasma und wird gemeinsam mit dem Wasserhaushalt reguliert. Ein zu hoher Wert (Hypernatriämie) bedeutet fast immer: Es fehlt <strong>Wasser im Verhältnis zum Salz</strong>, meist durch zu wenig Trinken oder Flüssigkeitsverluste. Mit viel gesalzenem Essen allein hat der Laborwert dagegen wenig zu tun.</p>`,
+    bodyHtml: `<h2>Natrium und Wasser gehören zusammen</h2>
+<p>Der Körper hält die Natriumkonzentration über Durst und die Nieren eng konstant. Steigt sie, ist in aller Regel die Wasserseite der Gleichung gestört: Es wurde zu wenig getrunken oder zu viel Flüssigkeit verloren. Deshalb ist die Hypernatriämie vor allem ein Befund bei Menschen, die nicht genug trinken können oder ihr Durstgefühl verlieren, etwa im hohen Alter oder bei schwerer Krankheit.</p>
+<h2>Warum kann Natrium erhöht sein?</h2>
+<ul>
+<li><strong>Zu geringe Flüssigkeitszufuhr:</strong> gerade bei älteren Menschen mit abgeschwächtem Durstgefühl die häufigste Erklärung.</li>
+<li><strong>Flüssigkeitsverluste:</strong> Fieber, starkes Schwitzen, Durchfall, Erbrechen oder stark gesteigertes Wasserlassen.</li>
+<li><strong>Medikamente und Erkrankungen:</strong> unter anderem entwässernde Medikamente und seltene hormonelle Störungen der Wasserregulation (Diabetes insipidus).</li>
+</ul>
+<h2>Warum der Wert ernst genommen wird</h2>
+<p>Deutliche Verschiebungen betreffen vor allem das Gehirn: Verwirrtheit, Schläfrigkeit und Schwäche können Folgen sein. Wichtig zu wissen: Auch die Korrektur gehört in ärztliche Hände, weil ein zu schneller Ausgleich eigene Risiken hat. Ein auffälliger Wert ist deshalb kein Fall für Eigenrezepte mit Wasser- oder Salzmengen, sondern für die ärztliche Beurteilung von Ursache und Tempo.</p>`,
+    notProofHtml: `<p>Ein erhöhter Natriumwert beweist keine Nieren- oder Hormonerkrankung und ist kein Mass für den Salzkonsum. Meist zeigt er eine negative Wasserbilanz an. Umgekehrt schliesst ein normaler Wert eine beginnende Austrocknung nicht aus.</p>`,
+    followUpHtml: `<p>Üblich sind die Beurteilung von Trinkmenge und Flüssigkeitsverlusten, <strong>Kontrollmessungen</strong>, Nierenwerte und die Durchsicht der Medikamente; bei unklarer Ursache gezielte weitere Abklärung. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Rasch medizinisch gehören ein erhöhter Wert zusammen mit Verwirrtheit, ausgeprägter Schläfrigkeit, sehr wenig Urin, hohem Fieber mit grossen Flüssigkeitsverlusten oder wenn eine betroffene Person kaum trinken kann. Bei Bewusstseinsstörung gilt in der Schweiz: Notruf 144.</p>`,
+    integrativeContextHtml: `<p>Elektrolyte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Natriumwerte nicht, und kein komplementäres Verfahren ersetzt deren Kontrolle oder Korrektur.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'calcium-zu-hoch',
+    gruppe: 'Elektrolyte',
+    title: 'Calcium zu hoch: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-24',
+    deck: 'Ein erhöhter Calciumwert wird oft erst nach Korrektur um das Eiweiss Albumin aussagekräftig. Welche Ursachen infrage kommen und wie der Befund eingeordnet wird.',
+    primaryPurpose: 'Einordnung des Laborwerts Calcium erhöht (Hyperkalzämie), Teil des Elektrolyt-Clusters.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner; Standalone-Wert über Varianten (kalzium erhöht, hyperkalzämie) und distinkten Inhalt (Albumin-Korrektur, Nebenschilddrüse) bestätigt. Keine Behandlungsempfehlungen.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Endokrinologie)',
+    shortAnswerHtml: `<p>Calcium wird im Blut zum Teil frei, zum Teil an das Eiweiss Albumin gebunden transportiert. Ein leicht erhöhter Gesamtwert wird deshalb oft erst nach <strong>Korrektur um das Albumin</strong> (oder als ionisiertes Calcium) aussagekräftig. Bestätigt sich die Erhöhung, sind die zwei häufigsten Richtungen eine Überfunktion der Nebenschilddrüsen und andere abklärungsbedürftige Ursachen; ein Einzelwert ist auch hier keine Diagnose.</p>`,
+    bodyHtml: `<h2>Gesamt-Calcium, korrigiertes Calcium, ionisiertes Calcium</h2>
+<p>Wirksam ist nur das freie (ionisierte) Calcium. Weil das Standardlabor meist das Gesamtcalcium misst, verfälschen hohe oder tiefe Albuminwerte und auch eine gestaute Blutentnahme das Bild. Der erste Schritt bei einem auffälligen Wert ist deshalb oft schlicht die Bestätigung: korrigiert um Albumin oder direkt ionisiert gemessen.</p>
+<h2>Warum kann Calcium erhöht sein?</h2>
+<ul>
+<li><strong>Nebenschilddrüsen:</strong> eine Überfunktion (Hyperparathyreoidismus) ist ambulant die häufigste bestätigte Ursache; sie wird über das Parathormon abgeklärt.</li>
+<li><strong>Vitamin-D- und Calcium-Präparate:</strong> hohe Eigendosierungen über längere Zeit können den Wert anheben; alle Supplemente gehören ins ärztliche Gespräch.</li>
+<li><strong>Medikamente:</strong> unter anderem bestimmte Entwässerungsmittel und Lithium.</li>
+<li><strong>Flüssigkeitsmangel:</strong> kann den Wert vorübergehend anheben.</li>
+<li><strong>Ernstere Ursachen:</strong> deutlich erhöhte Werte können bei bestimmten Tumor- und granulomatösen Erkrankungen auftreten und werden entsprechend zügig abgeklärt.</li>
+</ul>
+<h2>Einzelwert oder Verlauf?</h2>
+<p>Für die Einordnung zählen die Bestätigungsmessung, Albumin, Parathormon, Vitamin-D-Status, Nierenwerte und die Medikamenten- und Supplementliste. Viele leichte Erhöhungen entpuppen sich bei der Kontrolle als Mess- oder Bindungseffekt.</p>`,
+    notProofHtml: `<p>Ein erhöhter Calciumwert beweist weder eine Nebenschilddrüsen- noch eine Tumorerkrankung; nicht selten relativiert ihn schon die Albumin-Korrektur. Er ist auch kein Grund, Calcium- oder Vitamin-D-Präparate eigenmächtig zu verändern, wohl aber, sie ärztlich zu besprechen.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Bestätigung (albuminkorrigiert oder ionisiert)</strong>, Parathormon, <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Status</a>, <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte</a> und die Supplement-/Medikamentenliste. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    redFlagsHtml: `<p>Zügig beurteilt gehören deutlich erhöhte Werte sowie erhöhte Werte zusammen mit starkem Durst und viel Wasserlassen, Übelkeit, Verstopfung, Knochenschmerzen, Verwirrtheit oder ausgeprägter Müdigkeit.</p>`,
+    integrativeContextHtml: `<p>Auch der Calciumhaushalt gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und ersetzt keine Abklärung der Nebenschilddrüsen.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
     slug: 'ferritin-zu-niedrig',
+    gruppe: 'Vitamine & Eisenspeicher',
     title: 'Ferritin zu niedrig: Was bedeutet der Laborwert?',
     category: 'laborwert',
     status: 'published',
@@ -771,6 +1157,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'hba1c-erhoeht',
+    gruppe: 'Stoffwechsel',
     title: 'HbA1c erhöht: Was bedeutet der Langzeitwert?',
     category: 'laborwert',
     status: 'published',
@@ -803,6 +1190,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'blutzucker-erhoeht',
+    gruppe: 'Stoffwechsel',
     title: 'Blutzucker erhöht: Was bedeutet der Messwert?',
     category: 'laborwert',
     status: 'published',
@@ -837,6 +1225,7 @@ export const befundeWerte: BefundWert[] = [
   },
   {
     slug: 'blutdruck-140-90',
+    gruppe: 'Niere & Blutdruck',
     title: 'Blutdruck 140/90: Wie lässt sich der Messwert einordnen?',
     category: 'messwert',
     status: 'published',

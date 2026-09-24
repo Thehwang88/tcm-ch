@@ -5,7 +5,7 @@
 // befunde-werte.ts). Geplante Themen erscheinen als NICHT-klickbare Karten; ihre
 // Artikel-Routen existieren in Produktion nicht.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
-import { befundeWerte, publishedBefundeWerte, HUB_INDEXABLE, KATEGORIE_LABELS, type BefundWertKategorie } from '../../../data/befunde-werte';
+import { befundeWerte, publishedBefundeWerte, HUB_INDEXABLE, KATEGORIE_LABELS, GRUPPEN_ORDER, type BefundWertKategorie } from '../../../data/befunde-werte';
 
 const path = '/gesundheitsbibliothek/befunde-werte';
 const url = `https://tcm.ch${path}/`;
@@ -15,6 +15,10 @@ const metaDesc = 'Laborwerte, Messwerte und medizinische Befunde verständlich e
 // Kategorien sind reine Gruppierungs-Labels, keine eigenen URLs.
 const KATEGORIEN: BefundWertKategorie[] = ['laborwert', 'messwert', 'bildgebung'];
 const geplant = befundeWerte.filter((b) => b.status === 'planned' || b.status === 'draft');
+// Publizierte Leaves thematisch gruppiert (Cluster-Ausbau 24.09.2026).
+const publishedByGruppe = GRUPPEN_ORDER
+  .map((g) => ({ label: g, items: publishedBefundeWerte.filter((b) => (b.gruppe ?? 'Weitere Werte') === g) }))
+  .filter((g) => g.items.length > 0);
 const geplantByKat = KATEGORIEN
   .map((k) => ({ key: k, label: KATEGORIE_LABELS[k], items: geplant.filter((b) => b.category === k) }))
   .filter((g) => g.items.length > 0);
@@ -52,18 +56,21 @@ const schema = [
   <section class="section" style="padding-top:0">
     <div class="wrap narrow">
 
-      {publishedBefundeWerte.length > 0 && (
-        <div class="p-grid" style="margin-bottom:36px">
-          {publishedBefundeWerte.map((b) => (
-            <a class="p-card" href={`/gesundheitsbibliothek/befunde-werte/${b.slug}/`}>
-              <div class="p-topic">{KATEGORIE_LABELS[b.category]}</div>
-              <div class="p-title">{b.title}</div>
-              <p class="p-deck">{b.deck}</p>
-              <span class="p-more">Lesen →</span>
-            </a>
-          ))}
+      {publishedByGruppe.map((g) => (
+        <div style="margin-bottom:36px">
+          <h2 class="group-title">{g.label}</h2>
+          <div class="p-grid">
+            {g.items.map((b) => (
+              <a class="p-card" href={`/gesundheitsbibliothek/befunde-werte/${b.slug}/`}>
+                <div class="p-topic">{KATEGORIE_LABELS[b.category]}</div>
+                <div class="p-title">{b.title}</div>
+                <p class="p-deck">{b.deck}</p>
+                <span class="p-more">Lesen →</span>
+              </a>
+            ))}
+          </div>
         </div>
-      )}
+      ))}
 
       {geplantByKat.map((g) => (
         <div class="soon">

@@ -39,3 +39,30 @@ Datum: 2026-09-24 · Typ: Daily organic library expansion · Max: 10 · **Ergebn
 ## Indexierung
 
 Natural crawl only. Manual URL indexing: NO. URLs nicht in seo/index-queue.md.
+
+## Part 2 / URLs 11-20 (gleicher Tag, zweiter Batch)
+
+Audit erneut gegen aktuellen main + CSV gefahren. **10 CREATED, 0 BLOCKED** (Calcium bestand den Standalone-Test über Kalzium-/Hyperkalzämie-Varianten + distinkten Inhalt Albumin-Korrektur/Nebenschilddrüse).
+
+| URL | Keyword (Semrush) | Nächster Owner | Risiko | Verdict | Sitemap | Links |
+|---|---|---|---|---|---|---|
+| befunde-werte/haemoglobin-zu-niedrig/ | hämoglobin zu niedrig (~590, KD20) | eisenmangel (Erkrankung), ferritin-low, b12 | low | CREATED | ja | out: ferritin-low, b12, eisenmangel, hb-hoch |
+| befunde-werte/haemoglobin-zu-hoch/ | hämoglobin zu hoch (~210, KD23) | hb-niedrig (Gegen-Intent) | low | CREATED | ja | in+out: hb-niedrig (beidseitig) |
+| befunde-werte/monozyten-erhoeht/ | monozyten erhöht (~480, KD21) | leukozyten-Umbrella | low | CREATED (SUBTYP) | ja | in: leukozyten-Umbrella; out: Umbrella + 4 Geschwister |
+| befunde-werte/eosinophile-erhoeht/ | eosinophile erhöht (~170, KD44) | leukozyten-Umbrella; heuschnupfen (Erkrankung) | low | CREATED (Allergie kein Automatismus) | ja | in: leukozyten-Umbrella; out: Umbrella, Basophile, Monozyten, Heuschnupfen |
+| befunde-werte/basophile-erhoeht/ | basophile erhöht (~90, KD24) | leukozyten-Umbrella | low | CREATED (nicht alarmistisch) | ja | out: Umbrella, Eosinophile + Geschwister im Text |
+| befunde-werte/ldh-erhoeht/ | ldh erhöht (~110, KD16) | keiner | none | CREATED (maximal unspezifisch gerahmt, nicht organspezifisch) | ja | out: got-ast, leberwerte, bilirubin |
+| befunde-werte/lipase-erhoeht/ | lipase erhöht (~210, KD21) | keiner | none | CREATED (Sicherheitsseite: Wert+Symptom dringlich) | ja | out: amylase, nierenwerte, leberwerte, druck-im-oberbauch |
+| befunde-werte/amylase-erhoeht/ | amylase erhöht (~90, KD22) | lipase (Schwester) | low | CREATED (Doppelquelle Pankreas+Speicheldrüse) | ja | in+out: lipase (beidseitig), nierenwerte |
+| befunde-werte/natrium-zu-hoch/ | natrium zu hoch (~20; Cluster-Wert) | kalium-zu-hoch (Schwester) | low | CREATED (Wasserbilanz statt Salz; keine DIY-Korrektur) | ja | in: kalium; out: kalium, nierenwerte |
+| befunde-werte/calcium-zu-hoch/ | calcium zu hoch (~10 Head + Kalzium-/Hyperkalzämie-Varianten) | keiner | none | CREATED (Standalone bestätigt) | ja | out: kalium, vitamin-d, nierenwerte |
+
+### Hub-UX (Cluster-Ausbau)
+
+Publizierte Befunde-Leaves neu thematisch gruppiert (neues optionales `gruppe`-Feld + GRUPPEN_ORDER; gleiche Karten, kein Redesign): Blutbild (9), Leber & Enzyme (7 inkl. LDH), Bauchspeicheldrüse (2), Elektrolyte (3), Stoffwechsel (4), Vitamine & Eisenspeicher (4), Entzündung (CRP), Schilddrüse (TSH), Niere & Blutdruck (2). Geplante Themen weiterhin separat "In Vorbereitung".
+
+### Zahlen Teil 2
+
+Sitemap 467 → **477** (+10) · Suchindex 260 → **270** (+10) · 10 CSV-Zeilen · 10 Synonyme · leukozyten-Umbrella verlinkt neu auf Monozyten/Eosinophile · health-audit 0/0/0 · Renders (Hub + 4 Samples, 1440/390) sauber · Natural Crawl: URLs NICHT in index-queue (verifiziert 0 Treffer).
+
+**Tagestotal 24.09.: Batch 1 (10) + Batch 2 (10) = 20 CREATED.**

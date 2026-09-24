@@ -1,12 +1,12 @@
 {
   "generated": "2026-09-24",
   "totals": {
-    "healthPages": 368,
+    "healthPages": 378,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 24,
+      "befund": 34,
       "question": 16,
       "body_region": 9,
       "perspective": 1,
@@ -60,7 +60,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 12
     },
     {
@@ -220,7 +220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 15
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 198,
+      "inboundContentLinks": 208,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 35,
+      "outboundHealthLinks": 37
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1124,13 +1124,33 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/amylase-erhoeht/",
+      "type": "befund",
+      "title": "Amylase erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/basophile-erhoeht/",
+      "type": "befund",
+      "title": "Basophile erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/",
       "type": "befund",
       "title": "Bilirubin erhöht: Was bedeutet der Wert? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     },
     {
@@ -1154,6 +1174,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/",
+      "type": "befund",
+      "title": "Calcium zu hoch: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/",
       "type": "befund",
       "title": "Cholesterin erhöht: Was bedeutet das? | TCM.ch",
@@ -1174,6 +1204,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/",
+      "type": "befund",
+      "title": "Eosinophile erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/",
       "type": "befund",
       "title": "Ferritin erhöht: Was bedeutet der Wert? | TCM.ch",
@@ -1190,7 +1230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 6
     },
     {
@@ -1210,7 +1250,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -1221,6 +1261,26 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/",
+      "type": "befund",
+      "title": "Hämoglobin zu hoch: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/",
+      "type": "befund",
+      "title": "Hämoglobin zu niedrig: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1250,7 +1310,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/",
+      "type": "befund",
+      "title": "LDH erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
       "outboundHealthLinks": 5
     },
     {
@@ -1260,7 +1330,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -1270,8 +1340,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/lipase-erhoeht/",
+      "type": "befund",
+      "title": "Lipase erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/",
@@ -1280,7 +1360,27 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/",
+      "type": "befund",
+      "title": "Monozyten erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/natrium-zu-hoch/",
+      "type": "befund",
+      "title": "Natrium zu hoch: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 4
     },
     {
@@ -1290,7 +1390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -1300,7 +1400,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 6
     },
     {
@@ -1330,7 +1430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -1340,7 +1440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 4
     },
     {
@@ -2240,7 +2340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
