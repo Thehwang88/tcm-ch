@@ -33,21 +33,19 @@ Keine. Ein einziger Footer-Render pro Seite; Header/Drawer/StickyCtaBar enthalte
 
 ## 6. Entscheidung
 
-**KEEP BUT NEUTRALISE.** Netzwerk-Link zwischen verbundenen, eigenen Healthcare-Properties bleibt (echter Navigations-/Brand-Zweck). Problem war ausschliesslich der sitewide wiederholte Keyword-Anker. Brand-Leiste war bereits neutral → unverändert.
+**KEEP BUT NEUTRALISE, dann REDUCE (Follow-up):** Erst wurde der Keyword-Anker neutralisiert; im Follow-up wurde der Therapien-Spalten-Textlink komplett entfernt, weil dieselbe externe Domain nicht zweimal sitewide verlinkt sein muss. Finale Architektur: **ein** neutraler sitewide Brand-/Netzwerk-Link (Logo in der „Teil der TCM.ch Gruppe"-Leiste) + selektive kontextuelle Editorial-Links.
 
 ## 7. Implementierte Änderung
 
-`src/data/footer.html`, Therapien-Spalte:
+`src/data/footer.html`, Therapien-Spalte, in zwei Schritten:
 
-- Vorher: `<a href="https://physio.ch/" target="_blank">Domizil-Physiotherapie: physio.ch</a>`
-- Nachher: `<a href="https://physio.ch/" target="_blank" rel="noopener">Physio.ch – Physiotherapie zu Hause</a>`
-
-(brand-led Anker gemäss Vorgabe + rel="noopener" ergänzt; Ziel-URL unverändert, weiterhin follow.)
+1. Anker neutralisiert: „Domizil-Physiotherapie: physio.ch" → „Physio.ch – Physiotherapie zu Hause" + rel="noopener" (Commit 8061f51).
+2. **Follow-up:** Textlink (inkl. `<li>`) vollständig entfernt, ohne Ersatz. Brand-Logo-Link in der Netzwerk-Leiste bleibt unverändert; kontextuelle Links (Über-uns, Physiotherapie-Leaf, Club) unangetastet; Hwang.ch unangetastet.
 
 ## 8. Sitewide-Link-Zahl vorher/nachher
 
-- Vorher: ~959 Physio.ch-Links (479 keyword-anchored + 480 brand-led)
-- Nachher: ~959 Links (unverändert), davon **0 keyword-anchored** — 479 Anker neutralisiert, 480 unverändert brand-led. Kein REMOVE/REDUCE nötig.
+- Ausgangslage: **959** Physio.ch-Links (479 keyword-anchored Textlinks + 480 brand-led Logos)
+- Nach Follow-up: **481** Links = 480 Brand-Logo-Links (479 Footer-Seiten + /club/) + 1 kontextueller Link im Physiotherapie-Leaf. 0 keyword-anchored, 0 Duplikate pro Seite.
 
 ## 9. Neue kontextuelle TCM.ch → Physio.ch Links
 
@@ -78,7 +76,7 @@ TCM.ch → Hwang.ch (bestehend ausreichend: Footer-Logo sitewide, Über-uns-Pill
 - Mass-Insertion Standort→Einzugsgebiet über alle 11 Standorte: verworfen (wirkt wie Linkschema; nur ZH/Winterthur mit echter Abdeckung als Kandidaten gelistet).
 - Befunde-/Körpersignale-Seiten → Physio.ch: verworfen (YMYL-Einordnungsseiten, kein Reha-Kontext).
 - Footer-Link REMOVE: verworfen (bewusste Netzwerk-Architektur, legitimer Zweck).
-- Zweiten Textlink zusätzlich zur Brand-Leiste entfernen (REDUCE): verworfen — die Therapien-Spalte hat Navigationsnutzen (Domizil-Angebot neben /therapien/physiotherapie/); nach Anker-Neutralisierung kein SEO-Risiko. Bei Bedarf später manuell entscheidbar.
+- ~~Zweiten Textlink behalten~~: im Follow-up revidiert — Textlink entfernt, eine Domain wird sitewide nur noch einmal verlinkt (Brand-Leiste).
 
 ## 13. Kannibalisierung
 
@@ -90,18 +88,17 @@ TCM.ch → Hwang.ch (bestehend ausreichend: Footer-Logo sitewide, Über-uns-Pill
 
 Aus dieser Umgebung nicht durchführbar (Egress-Policy blockiert physio.ch/hwang.ch; curl → kein Response). Deshalb 0 neue Links. Manuelle Prüfliste pro Kandidat: HTTP 200, kein Redirect, self-canonical, indexierbar (kein noindex/draft/staging).
 
-## 15. Build-/Link-Validierung
+## 15. Build-/Link-Validierung (final)
 
-Build sauber, Sitemap unverändert 513. dist-Verifikation: 0 Treffer „Domizil-Physiotherapie:" als Anker, 479× neuer Anker, Linkzahlen unverändert (479+480 physio, 480+2 hwang). health-audit 0/0/0/0.
+Build sauber, Sitemap unverändert 513. dist-Verifikation nach Follow-up: 0 Textlinks in Footer-Spalten (Desktop und Mobile identisch, kein Layout-Bruch, keine leeren Listenpunkte), 480× Brand-Logo-Link (479 Footer-Seiten + Club), 1× kontextueller Link im Physiotherapie-Leaf, Über-uns-Pillar intakt; hwang unverändert (480 Logos + 2 Standort-Links). health-audit 0/0/0/0.
 
 ## 16. Commit
 
-Siehe Branch `claude/friendly-pasteur-bdbypz` (Hash im Abschlussreport). **Nicht gemerged** (per Auftrag).
+Branch `claude/friendly-pasteur-bdbypz`: 8061f51 (Neutralisierung) + Follow-up-Commit (Textlink-Entfernung, Hash im Abschlussreport). **Nicht gemerged** (per Auftrag).
 
 ## 17. Offene manuelle Entscheidungen
 
 1. Merge des Branches (bewusst offen gelassen).
-2. Ob der Footer-Textlink zusätzlich zur Brand-Leiste langfristig bleiben soll (aktuell: ja, neutralisiert).
 3. Freigabe + HTTP-Prüfung der Future/Opportunity-Links (Abschnitt 10).
 4. Framer-Umsetzungen auf Hwang.ch (Abschnitt 11).
 
