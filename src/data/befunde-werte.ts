@@ -312,7 +312,7 @@ export const befundeWerte: BefundWert[] = [
     suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
     shortAnswerHtml: `<p>"Nierenwerte" ist ein Sammelbegriff aus dem Alltag. Gemeint sind meist das <strong>Kreatinin</strong> im Blut und die daraus berechnete <strong>eGFR</strong>, ein Schätzwert für die Filterleistung der Nieren. Ein erhöhtes Kreatinin (beziehungsweise eine erniedrigte eGFR) kann auf eine eingeschränkte Nierenfunktion hinweisen, hat aber auch andere mögliche Erklärungen. Ein einzelner Wert ist deshalb keine Diagnose einer Nierenerkrankung.</p>`,
     bodyHtml: `<h2>Was wird gemessen?</h2>
-<p>Kreatinin ist ein Abbauprodukt des Muskelstoffwechsels, das über die Nieren ausgeschieden wird. Arbeiten die Nieren weniger, steigt es im Blut. Die eGFR wird aus dem Kreatinin zusammen mit Alter und Geschlecht berechnet und schätzt, wie viel die Nieren pro Minute filtern. Je nach Labor gehören auch Harnstoff oder weitere Werte zum Bild.</p>
+<p><a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> ist ein Abbauprodukt des Muskelstoffwechsels, das über die Nieren ausgeschieden wird. Arbeiten die Nieren weniger, steigt es im Blut. Die eGFR wird aus dem Kreatinin zusammen mit Alter und Geschlecht berechnet und schätzt, wie viel die Nieren pro Minute filtern. Je nach Labor gehören auch Harnstoff oder weitere Werte zum Bild.</p>
 <h2>Warum können Nierenwerte erhöht sein?</h2>
 <ul>
 <li><strong>Flüssigkeitsmangel:</strong> zu wenig trinken, Durchfall, Erbrechen oder starkes Schwitzen können das Kreatinin vorübergehend erhöhen.</li>
@@ -328,6 +328,7 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Nierenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kreatinin und eGFR nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
@@ -1115,6 +1116,49 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [
       { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'kreatinin-erhoeht',
+    gruppe: 'Niere & Blutdruck',
+    title: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-25',
+    deck: 'Kreatinin wird zur Einschätzung der Nierenfunktion verwendet. Warum Muskelmasse, Flüssigkeitshaushalt und eGFR für die Interpretation wichtig sind.',
+    primaryPurpose: 'Einordnung des Einzelwerts Kreatinin; der Sammelbefund bleibt bei nierenwerte-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Der Sammelbefund "Nierenwerte erhöht" gehört nierenwerte-erhoeht (dort ist Kreatinin Kernbestandteil). Diese Seite besitzt NUR den Einzelwert-Intent "kreatinin erhöht"; beidseitig verlinkt, analog zum Leberwerte/GGT-Muster.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>Kreatinin wird häufig verwendet, um die Nierenfunktion einzuschätzen. Ein erhöhter Kreatininwert kann auf eine verminderte Filtration der Nieren hinweisen, muss aber immer zusammen mit eGFR, Verlauf und persönlichen Faktoren interpretiert werden. Ein einzelner erhöhter Wert bedeutet <strong>nicht automatisch</strong>, dass eine Nierenerkrankung vorliegt.</p>`,
+    bodyHtml: `<h2>Was ist Kreatinin?</h2>
+<p>Kreatinin entsteht beim normalen Stoffwechsel der Muskulatur. Es gelangt ins Blut und wird überwiegend über die Nieren ausgeschieden. Deshalb kann sich die Konzentration im Blut verändern, wenn die Nieren weniger Kreatinin herausfiltern.</p>
+<h2>Bedeutet hohes Kreatinin automatisch eine schlechte Nierenfunktion?</h2>
+<p>Nein. Die Nierenfunktion ist eine wichtige Ursache für Veränderungen des Kreatinins, aber nicht der einzige Einflussfaktor. Der Wert wird zum Beispiel auch beeinflusst durch:</p>
+<ul><li>Muskelmasse</li><li>Alter</li><li>Körperbau</li><li>Flüssigkeitshaushalt</li><li>körperliche Belastung</li><li>bestimmte Medikamente</li><li>teilweise Ernährung und Nahrungsergänzungsmittel</li></ul>
+<p>Deshalb sollte Kreatinin nicht isoliert interpretiert werden.</p>
+<h2>Was hat Muskelmasse mit Kreatinin zu tun?</h2>
+<p>Menschen mit mehr Muskelmasse können von Natur aus höhere Kreatininwerte haben. Bei sehr geringer Muskelmasse kann Kreatinin dagegen relativ niedrig sein, obwohl die Nierenfunktion nicht unbedingt optimal ist. Das ist einer der Gründe, weshalb zusätzlich die geschätzte glomeruläre Filtrationsrate, die eGFR, verwendet wird.</p>
+<h2>Was ist die eGFR?</h2>
+<p>eGFR steht für geschätzte glomeruläre Filtrationsrate. Sie soll abschätzen, wie gut die Nieren Blut filtern. Die Berechnung verwendet Kreatinin zusammen mit weiteren persönlichen Faktoren. Auch die eGFR ist eine Schätzung und muss im klinischen Zusammenhang betrachtet werden.</p>
+<h2>Kann Flüssigkeitsmangel Kreatinin erhöhen?</h2>
+<p>Ja. Wenn der Körper deutlich zu wenig Flüssigkeit enthält, kann sich das Blut stärker konzentrieren und die Nierendurchblutung verändern. Dadurch können Nierenwerte vorübergehend auffälliger sein. Das bedeutet jedoch nicht, dass jeder erhöhte Kreatininwert einfach durch zu wenig Trinken erklärt werden sollte.</p>
+<h2>Welche Werte werden zusammen mit Kreatinin betrachtet?</h2>
+<p>Je nach Situation sind unter anderem relevant: eGFR, Harnstoff, Elektrolyte, eine Urinuntersuchung, Albumin im Urin und frühere Kreatininwerte. Ein einzelner Wert ist deutlich weniger aussagekräftig als der Verlauf. Den Sammelbefund erklären wir unter <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a>.</p>
+<h2>Wann ist der Verlauf besonders wichtig?</h2>
+<p>Wenn ein Wert bereits früher auffällig war, lässt sich beurteilen, ob er stabil bleibt, langsam steigt oder plötzlich verändert ist. Eine akute deutliche Veränderung hat eine andere Bedeutung als ein langfristig stabiler Wert.</p>
+<h2>Können Medikamente Kreatinin beeinflussen?</h2>
+<p>Ja. Bestimmte Medikamente können Kreatinin oder die Nierenfunktion beeinflussen. Medikamente sollten deshalb bei der Interpretation berücksichtigt werden. Ändere oder stoppe verschriebene Medikamente aber nicht aufgrund eines Laborwertes selbstständig.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Kreatinin ist keine Diagnose einer Nierenerkrankung. Der Wert wird auch durch Muskelmasse, Flüssigkeitshaushalt, Belastung und Medikamente beeinflusst. Umgekehrt schliesst ein normales Kreatinin, besonders bei geringer Muskelmasse, eine beginnende Einschränkung nicht sicher aus. Referenzbereiche unterscheiden sich je nach Labor, Methode und persönlichen Faktoren; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Wiederholungsmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), die eGFR, je nach Situation Harnstoff, Elektrolyte, eine Urinuntersuchung inklusive Albumin sowie der Vergleich mit früheren Werten und die Durchsicht der Medikamentenliste.</p>`,
+    redFlagsHtml: `<p>Besonders wichtig ist eine ärztliche Einordnung bei neu deutlich erhöhtem Wert, sinkender eGFR, Veränderungen der Urinmenge, Schwellungen, Atemnot, ausgeprägter Schwäche, auffälligen Elektrolyten oder bekannten Nierenerkrankungen.</p>`,
+    integrativeContextHtml: `<p>Kreatinin und eGFR gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Nieren-Laborwerte nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-hoch/', label: 'Natrium zu hoch: Was bedeutet der Wert?' },
     ],
   },
   {

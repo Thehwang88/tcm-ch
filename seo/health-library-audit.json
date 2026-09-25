@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-24",
+  "generated": "2026-09-25",
   "totals": {
-    "healthPages": 396,
+    "healthPages": 404,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 34,
+      "befund": 35,
       "question": 34,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
       "selfcare": 1,
       "editorial": 78,
-      "body_signal": 67,
+      "body_signal": 74,
       "therapy": 36,
       "visual": 10
     }
@@ -150,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 16
     },
     {
@@ -410,7 +410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 17
     },
     {
@@ -630,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 163,
+      "inboundContentLinks": 164,
       "outboundHealthLinks": 31
     },
     {
@@ -1040,7 +1040,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 16
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 226,
+      "inboundContentLinks": 227,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 35,
-      "outboundHealthLinks": 37
+      "inboundContentLinks": 36,
+      "outboundHealthLinks": 38
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1310,7 +1310,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/",
+      "type": "befund",
+      "title": "Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1380,7 +1390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 4
     },
     {
@@ -1400,8 +1410,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/",
@@ -2390,8 +2400,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 165,
-      "outboundHealthLinks": 68
+      "inboundContentLinks": 172,
+      "outboundHealthLinks": 75
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -2430,8 +2440,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/bein-wird-beim-sitzen-taub/",
@@ -2470,8 +2480,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/brennende-fuesse-nachts/",
@@ -2490,7 +2500,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -2530,8 +2540,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/koerpersignale/dumpfes-gefuehl-im-ohr/",
+      "type": "body_signal",
+      "title": "Dumpfes Gefühl im Ohr: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/durchfall-am-morgen/",
@@ -2614,6 +2634,16 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/harter-unterbauch/",
+      "type": "body_signal",
+      "title": "Harter Unterbauch: Was kann dahinterstecken? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/koerpersignale/herzklopfen-im-liegen/",
       "type": "body_signal",
       "title": "Herzklopfen im Liegen: Ursachen &amp; wann abklären? | TCM.ch",
@@ -2660,7 +2690,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 9
     },
     {
@@ -2700,7 +2730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 11
     },
     {
@@ -2710,8 +2740,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/klossgefuehl-im-hals/",
@@ -2750,8 +2780,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/kribbeln-im-gesicht/",
@@ -2760,7 +2790,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 9
     },
     {
@@ -2784,14 +2814,34 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/koerpersignale/kribbeln-im-mund/",
+      "type": "body_signal",
+      "title": "Kribbeln im Mund: Mögliche Ursachen und Warnzeichen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/koerpersignale/kribbeln-im-nacken/",
+      "type": "body_signal",
+      "title": "Kribbeln im Nacken: Woher kann das Gefühl kommen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/koerpersignale/kribbeln-vom-nacken-in-den-arm/",
       "type": "body_signal",
       "title": "Kribbeln vom Nacken in den Arm: Was bedeutet die Ausstrahlung? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/koerpersignale/magendruck-im-liegen/",
@@ -2807,6 +2857,16 @@
       "url": "/koerpersignale/metallischer-geschmack-im-mund/",
       "type": "body_signal",
       "title": "Metallischer Geschmack im Mund: häufige Ursachen und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/koerpersignale/morgens-flacher-bauch-abends-dicker/",
+      "type": "body_signal",
+      "title": "Morgens flacher Bauch, abends dicker: Ist das normal? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -2830,7 +2890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
     },
     {
@@ -2850,8 +2910,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/koerpersignale/ohr-knackt-beim-schlucken/",
@@ -2860,7 +2920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -2984,6 +3044,16 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/taube-zunge/",
+      "type": "body_signal",
+      "title": "Taube Zunge: Warum kann sich die Zunge pelzig anfühlen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/koerpersignale/trockener-husten/",
       "type": "body_signal",
       "title": "Trockener Husten: was dahinterstecken kann | TCM.ch",
@@ -3020,7 +3090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 13
     },
     {
@@ -3032,6 +3102,16 @@
       "inSitemap": true,
       "inboundContentLinks": 20,
       "outboundHealthLinks": 9
+    },
+    {
+      "url": "/koerpersignale/warmes-gesicht-kalte-haende/",
+      "type": "body_signal",
+      "title": "Warmes Gesicht und kalte Hände: Wie passt das zusammen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/koerpersignale/zehen-kribbeln/",
@@ -3060,8 +3140,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/therapien/",

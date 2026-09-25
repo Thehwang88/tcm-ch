@@ -49,6 +49,7 @@ const DATEN6 = { datePublished: '2026-09-11', dateModified: '2026-09-11' };
 const DATEN7 = { datePublished: '2026-09-17', dateModified: '2026-09-17' };
 const DATEN8 = { datePublished: '2026-09-21', dateModified: '2026-09-21' };
 const DATEN9 = { datePublished: '2026-09-22', dateModified: '2026-09-22' };
+const DATEN10 = { datePublished: '2026-09-25', dateModified: '2026-09-25' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -476,6 +477,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann die TCM Zungenbrennen behandeln?', a: 'Nach der Abklärung kann eine Behandlung mit Akupunktur und Kräutertherapie helfen, Anspannung, Schlaf und hormonelle Begleitfaktoren zu regulieren, die das Brennen verstärken. Die Zungendiagnostik der TCM ist dabei ein traditionelles Beobachtungsinstrument, kein Ersatz für die medizinische Diagnose.' },
     ],
     related: [
+      { href: '/koerpersignale/taube-zunge/', label: 'Taube Zunge', cat: 'Körpersignal' },
       { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
       { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
       { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
@@ -704,6 +706,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Darf ich das Ohr selbst mit Wattestäbchen reinigen?', a: 'Besser nicht. Wattestäbchen schieben Ohrenschmalz tiefer und verdichten ihn zum Pfropf. Sicherer ist die professionelle Reinigung in der Hausarzt- oder HNO-Praxis.' },
     ],
     related: [
+      { href: '/koerpersignale/dumpfes-gefuehl-im-ohr/', label: 'Dumpfes Gefühl im Ohr', cat: 'Körpersignal' },
       { href: '/beschwerden/hoersturz/', label: 'Hörsturz', cat: 'Beschwerde' },
       { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen & CMD', cat: 'Beschwerde' },
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
@@ -1676,6 +1679,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist ein Blähbauch ein Warnzeichen?', a: 'Wenn der Bauch dauerhaft aufgetrieben bleibt, du Gewicht verlierst, Blut im Stuhl bemerkst, Fieber oder starke Schmerzen auftreten oder sich der Stuhlgang über Wochen verändert. Dann gehört der Bauch ärztlich untersucht.' },
     ],
     related: [
+      { href: '/koerpersignale/morgens-flacher-bauch-abends-dicker/', label: 'Bauch abends dicker als morgens', cat: 'Körpersignal' },
       { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
@@ -2149,6 +2153,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Hilft Wärme bei einem harten, gespannten Bauch?', a: 'Bei funktioneller Spannung ja: Wärme entspannt Darmmuskulatur und Bauchdecke, viele empfinden eine Bettflasche als deutlich lösend. Bei starken Schmerzen mit Abwehrspannung ist Wärme kein Hausmittel mehr, sondern der Fall gehört ärztlich beurteilt.' },
     ],
     related: [
+      { href: '/koerpersignale/harter-unterbauch/', label: 'Harter Unterbauch', cat: 'Körpersignal' },
       { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
       { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
       { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
@@ -2246,6 +2251,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen Nervenreizung im Nacken?', a: 'Bei muskulär-funktionellen Ursachen die Kombination aus Entlastung, Haltungsarbeit und Physiotherapie, ergänzt durch Akupunktur oder Tuina gegen Spannung und Schmerz. Bei Bandscheiben- oder knöchernen Ursachen richtet sich die Behandlung nach dem ärztlichen Befund.' },
     ],
     related: [
+      { href: '/koerpersignale/kribbeln-im-nacken/', label: 'Kribbeln im Nacken', cat: 'Körpersignal' },
       { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/bandscheibenvorfall/', label: 'Bandscheibenvorfall', cat: 'Beschwerde' },
@@ -2485,6 +2491,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Mehr zum Thema Durchblutung insgesamt findest du auf der Seite <a href="/beschwerden/durchblutungsstoerungen/">Durchblutungsstörungen</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/warmes-gesicht-kalte-haende/', label: 'Warmes Gesicht, kalte Hände', cat: 'Körpersignal' },
       { href: '/beschwerden/raynaud-syndrom/', label: 'Raynaud-Syndrom', cat: 'Beschwerde' },
       { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
       { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Eine Hand ist kälter', cat: 'Körpersignal' },
@@ -2913,6 +2920,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist Lippenkribbeln ein Notfall?', a: 'Wenn die Lippe rasch anschwillt und Atemnot oder Kreislaufprobleme dazukommen (mögliche allergische Reaktion), oder wenn einseitiges Kribbeln mit hängendem Mundwinkel, Schwäche oder Sprachstörungen auftritt. In beiden Fällen: Notruf 144.' },
     ],
     related: [
+      { href: '/koerpersignale/kribbeln-im-mund/', label: 'Kribbeln im Mund', cat: 'Körpersignal' },
       { href: '/beschwerden/lippenherpes/', label: 'Lippenherpes', cat: 'Beschwerde' },
       { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
       { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
@@ -3350,6 +3358,268 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
       { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'dumpfes-gefuehl-im-ohr',
+    symptom: 'Dumpfes Gefühl im Ohr',
+    title: 'Dumpfes Gefühl im Ohr: Was kann dahinterstecken?',
+    metaDesc: 'Ein dumpfes Gefühl im Ohr kann sich wie Watte, Druck oder schlechteres Hören anfühlen. Erfahre häufige Ursachen und wann eine Hörminderung abgeklärt werden sollte.',
+    h1: 'Warum fühlt sich mein Ohr dumpf an?',
+    category: 'Kopf & Sinne',
+    lead: 'Ein dumpfes Gefühl im Ohr wird häufig als „wie Watte im Ohr“, Druck oder vermindertes Hören beschrieben. Dahinter können sehr unterschiedliche Ursachen stecken. Häufig sind Ohrenschmalz, eine vorübergehende Belüftungsstörung des Mittelohrs oder eine Erkältung beteiligt.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<p>Wichtig ist vor allem, ob das Gefühl plötzlich oder langsam entstanden ist und ob sich gleichzeitig das Hörvermögen deutlich verändert hat.</p>
+<h2>Wie kann sich ein dumpfes Ohr anfühlen?</h2>
+<p>Menschen beschreiben das Gefühl unterschiedlich. Typisch sind zum Beispiel:</p>
+<ul><li>Wattegefühl im Ohr</li><li>Druck oder Völlegefühl</li><li>gedämpftes Hören</li><li>ein Gefühl wie nach dem Fliegen</li><li>einseitiges oder beidseitiges Auftreten</li><li>gelegentlich Knacken oder Knistern</li></ul>
+<p>Das Gefühl allein zeigt noch nicht, wo die Ursache liegt.</p>
+<h2>Häufige Gründe für ein dumpfes Ohr</h2>
+<p><strong>Ohrenschmalz.</strong> Ein Pfropf aus Ohrenschmalz kann den Gehörgang teilweise oder vollständig verschliessen. Dadurch kann das Hören plötzlich oder allmählich dumpfer werden. Versuche nicht, das Ohr mit Wattestäbchen oder anderen Gegenständen tief zu reinigen. Dadurch kann Ohrenschmalz weiter nach innen geschoben werden.</p>
+<p><strong>Belüftungsstörung des Mittelohrs.</strong> Die sogenannte Ohrtrompete verbindet das Mittelohr mit dem Nasen-Rachen-Raum. Bei Erkältung, geschwollenen Schleimhäuten, Allergien oder Druckveränderungen kann der Druckausgleich schlechter funktionieren. Das Ohr kann sich dann <a href="/koerpersignale/ohr-einseitig-verstopft/">verstopft</a> oder dumpf anfühlen.</p>
+<p><strong>Druckveränderungen.</strong> Nach Flugreisen, Bergfahrten oder Tauchen kann sich vorübergehend ein Druckgefühl entwickeln. Wenn das Ohr danach länger dumpf bleibt oder Schmerzen auftreten, sollte die Situation beurteilt werden.</p>
+<p><strong>Infektionen und andere Ohrprobleme.</strong> Auch Entzündungen oder andere Veränderungen im Bereich von Gehörgang und Mittelohr können das Hörgefühl beeinflussen.</p>
+<h2>Dumpfes Ohr ohne Schmerzen: trotzdem relevant?</h2>
+<p>Ja. Ein Ohrproblem muss nicht wehtun. Besonders eine neue Hörminderung kann auch ohne Schmerzen auftreten. Deshalb ist nicht nur wichtig, ob das Ohr schmerzt, sondern auch, ob du auf einer Seite plötzlich deutlich schlechter hörst.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch abklären?</div><p>Wenn das Hörvermögen auf einem Ohr plötzlich deutlich schlechter wird, solltest du das zeitnah medizinisch abklären lassen. Das gilt besonders, wenn zusätzlich Ohrgeräusche, Schwindel, starkes Druckgefühl oder neurologische Beschwerden auftreten. Mehr zum plötzlichen Hörverlust unter <a href="/beschwerden/hoersturz/">Hörsturz</a>.</p></div>
+<h2>Was kannst du selbst beobachten?</h2>
+<p>Für die Einordnung sind hilfreich:</p>
+<ul><li>ein oder beide Ohren?</li><li>plötzlich oder langsam?</li><li>nach Erkältung?</li><li>nach Flug oder Druckwechsel?</li><li>Schmerzen?</li><li>Ohrgeräusche?</li><li>Schwindel?</li><li>deutlich schlechteres Hören?</li></ul>
+<p>Diese Informationen helfen bei der weiteren Beurteilung.</p>
+<h2>Kurz gesagt</h2>
+<p>Ein dumpfes Ohr ist häufig durch Ohrenschmalz, Schleimhautschwellung oder eine Belüftungsstörung erklärbar. Eine plötzlich deutliche Hörminderung, besonders einseitig, sollte jedoch nicht einfach abgewartet werden.</p>`,
+    faqs: [
+      { q: 'Ist ein dumpfes Ohr ohne Schmerzen harmlos?', a: 'Nicht automatisch. Ein Ohrproblem muss nicht wehtun; besonders eine neue Hörminderung kann ohne Schmerzen auftreten. Wichtig ist, ob du auf einer Seite plötzlich deutlich schlechter hörst.' },
+      { q: 'Kann Ohrenschmalz das Ohr dumpf machen?', a: 'Ja. Ein Pfropf kann den Gehörgang teilweise oder vollständig verschliessen. Reinige das Ohr nicht mit Wattestäbchen in der Tiefe, dadurch wird Ohrenschmalz oft weiter nach innen geschoben.' },
+      { q: 'Wann muss ein dumpfes Ohr rasch abgeklärt werden?', a: 'Wenn das Hörvermögen auf einem Ohr plötzlich deutlich schlechter wird, besonders zusammen mit Ohrgeräuschen, Schwindel, starkem Druckgefühl oder neurologischen Beschwerden.' },
+    ],
+    related: [
+      { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-auf-den-ohren/', label: 'Druck auf den Ohren', cat: 'Körpersignal' },
+      { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
+      { href: '/beschwerden/hoersturz/', label: 'Hörsturz', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-nacken',
+    symptom: 'Kribbeln im Nacken',
+    title: 'Kribbeln im Nacken: Woher kann das Gefühl kommen?',
+    metaDesc: 'Kribbeln im Nacken kann von Haut, Muskeln oder Nerven ausgehen. Erfahre mögliche Ursachen und wann Taubheit, Schwäche oder ausstrahlende Beschwerden wichtig sind.',
+    h1: 'Warum kribbelt mein Nacken?',
+    category: 'Hände & Nerven',
+    lead: 'Kribbeln im Nacken kann sich oberflächlich auf der Haut oder tiefer im Gewebe anfühlen. Häufig spielen Haltung, verspannte Muskulatur oder gereizte Nervenstrukturen eine Rolle. Das Gefühl allein lässt jedoch nicht sicher erkennen, wo die Ursache liegt.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Ist das Kribbeln nur im Nacken oder zieht es weiter?</h2>
+<p>Für die Einordnung ist wichtig, ob das Kribbeln lokal bleibt oder in Schulter, Arm oder Hand ausstrahlt. Wenn es vom Nacken in einen Arm zieht, kann eine Reizung einer Nervenwurzel oder anderer Nervenstrukturen eine Rolle spielen. Dieses Muster beschreiben wir unter <a href="/koerpersignale/kribbeln-vom-nacken-in-den-arm/">Kribbeln vom Nacken in den Arm</a>.</p>
+<h2>Können verspannte Muskeln Kribbeln verursachen?</h2>
+<p>Muskelverspannungen können Druck-, Zieh- und ungewöhnliche Empfindungen verursachen. Auch eine länger ungünstige Haltung, zum Beispiel am Computer, kann Beschwerden im Nackenbereich fördern.</p>
+<p>Ein echtes Taubheitsgefühl oder ausgeprägte neurologische Symptome sollten jedoch nicht einfach mit „Verspannung“ erklärt werden.</p>
+<h2>Kann die Haut selbst die Ursache sein?</h2>
+<p>Ja. Lokale Hautreizung, trockene Haut, Kontaktreaktionen oder andere dermatologische Ursachen können ebenfalls Kribbeln oder Missempfindungen verursachen.</p>
+<h2>Was spricht eher für eine Nervenbeteiligung?</h2>
+<p>Hinweise können sein:</p>
+<ul><li>Kribbeln zieht in Arm oder Finger</li><li>Taubheitsgefühl</li><li>elektrisierender Schmerz</li><li>bestimmte Kopfbewegungen verändern das Gefühl</li><li>Schwäche in Arm oder Hand</li></ul>
+<p>Das bedeutet nicht automatisch einen Bandscheibenvorfall, sollte aber bei ausgeprägten Beschwerden abgeklärt werden.</p>
+<h2>Wann solltest du das Kribbeln abklären lassen?</h2>
+<p>Wenn es neu und anhaltend ist, deutlich zunimmt, mit Taubheit verbunden ist, nach einem Unfall entstanden ist oder bis in Arm oder Hand zieht, ist eine fachliche Beurteilung sinnvoll.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch handeln?</div><p>Bei neuer deutlicher Muskelschwäche, schweren Koordinationsstörungen, Lähmungserscheinungen, starken Kopfschmerzen mit neurologischen Symptomen oder Beschwerden nach schwerem Trauma solltest du rasch medizinische Hilfe suchen.</p></div>
+<h2>Kurz gesagt</h2>
+<p>Kribbeln im Nacken kann durch Muskeln, Haltung, Haut oder gereizte Nervenstrukturen entstehen. Wenn Taubheit, Schwäche oder ein Ausstrahlen in Arm und Hand dazukommen, sollte die Situation genauer abgeklärt werden.</p>`,
+    faqs: [
+      { q: 'Können Verspannungen Kribbeln im Nacken auslösen?', a: 'Ja, Muskelverspannungen und eine länger ungünstige Haltung können Druck-, Zieh- und ungewöhnliche Empfindungen verursachen. Echte Taubheit oder ausgeprägte neurologische Symptome sollten aber nicht einfach mit Verspannung erklärt werden.' },
+      { q: 'Was spricht für eine Nervenbeteiligung?', a: 'Kribbeln, das in Arm oder Finger zieht, Taubheitsgefühl, elektrisierender Schmerz, Veränderungen durch Kopfbewegungen oder Schwäche in Arm und Hand. Das bedeutet nicht automatisch einen Bandscheibenvorfall, gehört bei ausgeprägten Beschwerden aber abgeklärt.' },
+      { q: 'Wann sollte Kribbeln im Nacken abgeklärt werden?', a: 'Wenn es neu und anhaltend ist, deutlich zunimmt, mit Taubheit verbunden ist, nach einem Unfall entstanden ist oder bis in Arm oder Hand zieht.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
+      { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
+      { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'harter-unterbauch',
+    symptom: 'Harter Unterbauch',
+    title: 'Harter Unterbauch: Was kann dahinterstecken?',
+    metaDesc: 'Ein harter Unterbauch kann durch Darmfüllung, Blähungen, Verstopfung, Blase oder Muskelanspannung entstehen. Erfahre, welche Begleitsymptome wichtig sind.',
+    h1: 'Warum fühlt sich mein Unterbauch hart oder gespannt an?',
+    category: 'Bauch & Verdauung',
+    lead: 'Ein harter oder gespannter Unterbauch kann viele Ursachen haben. Häufig entstehen solche Gefühle durch Darmfüllung, Blähungen, Verstopfung oder eine angespannte Bauchmuskulatur. Je nach Situation können aber auch Blase, gynäkologische Ursachen oder andere Strukturen im Unterbauch beteiligt sein.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Kann ein voller Darm den Unterbauch hart machen?</h2>
+<p>Ja. Stuhl, Gas und Darminhalt können dazu führen, dass sich der Unterbauch voller, gespannter oder fester anfühlt. Besonders bei <a href="/beschwerden/verstopfung/">Verstopfung</a> oder starken Blähungen kann die Bauchdecke zeitweise deutlich gespannter wirken.</p>
+<h2>Was ist mit der Blase?</h2>
+<p>Eine stark gefüllte Blase kann Druck und Spannung im Unterbauch verursachen. Wenn zusätzlich Probleme beim Wasserlassen, Schmerzen oder ungewöhnlich häufiger Harndrang auftreten, kann eine gezieltere Abklärung sinnvoll sein.</p>
+<h2>Können Muskeln den Bauch hart wirken lassen?</h2>
+<p>Ja. Manche Menschen spannen die Bauchmuskulatur unbewusst stark an, zum Beispiel bei Stress, Schmerzen oder ungünstiger Haltung. Ein dauerhaft harter oder deutlich schmerzhafter Bauch sollte trotzdem nicht allein auf Muskelspannung zurückgeführt werden.</p>
+<h2>Was kann bei Frauen zusätzlich eine Rolle spielen?</h2>
+<p>Je nach Zyklus und Situation können auch gynäkologische Ursachen Beschwerden im Unterbauch verursachen. Mögliche Zusammenhänge sind zum Beispiel:</p>
+<ul><li>Menstruation</li><li>Zyklusveränderungen</li><li>Schwangerschaft</li><li>Veränderungen an Eierstöcken oder Gebärmutter</li></ul>
+<p>Aus einem harten Unterbauch allein lässt sich keine gynäkologische Diagnose ableiten.</p>
+<h2>Wann sollte ein harter Unterbauch abgeklärt werden?</h2>
+<p>Wenn der Unterbauch dauerhaft hart bleibt, zunehmend schmerzt, sich deutlich verändert hat, mit Problemen beim Wasserlassen verbunden ist oder mit ausgeprägten Verdauungsproblemen auftritt, ist eine medizinische Einordnung sinnvoll. Fühlt sich eher der ganze Bauch fest an, passt das Muster <a href="/koerpersignale/bauch-fuehlt-sich-hart-an/">Bauch fühlt sich hart an</a> besser.</p>
+<div class="wa-callout"><div class="wa-callout-label">Diese Warnzeichen sind wichtig</div><p>Rasch abgeklärt werden sollten insbesondere: starke zunehmende Bauchschmerzen, ein brettharter Bauch, wiederholtes Erbrechen, Fieber, Kreislaufprobleme, kein Wasserlassen möglich, kein Stuhlgang oder Wind bei stark aufgeblähtem Bauch sowie eine Schwangerschaft zusammen mit stärkeren Schmerzen oder Blutung.</p></div>
+<h2>Kurz gesagt</h2>
+<p>Ein gespannter Unterbauch kann durch Darm, Blase oder Muskelspannung entstehen. Wenn der Bauch stark schmerzt, ungewöhnlich hart bleibt oder zusätzliche Beschwerden auftreten, sollte die Ursache fachlich geklärt werden.</p>`,
+    faqs: [
+      { q: 'Kann Verstopfung den Unterbauch hart machen?', a: 'Ja. Stuhl, Gas und Darminhalt können den Unterbauch voller und gespannter wirken lassen, besonders bei Verstopfung oder starken Blähungen.' },
+      { q: 'Kann die Blase Spannung im Unterbauch verursachen?', a: 'Ja, eine stark gefüllte Blase kann Druck und Spannung verursachen. Kommen Probleme beim Wasserlassen, Schmerzen oder ungewöhnlich häufiger Harndrang dazu, ist eine gezieltere Abklärung sinnvoll.' },
+      { q: 'Welche Warnzeichen sind beim harten Unterbauch dringend?', a: 'Starke zunehmende Schmerzen, ein brettharter Bauch, wiederholtes Erbrechen, Fieber, Kreislaufprobleme, kein Wasserlassen, kein Stuhlgang oder Wind bei stark aufgeblähtem Bauch sowie stärkere Schmerzen oder Blutung in der Schwangerschaft.' },
+    ],
+    related: [
+      { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druckgefuehl-im-unterbauch/', label: 'Druckgefühl im Unterbauch', cat: 'Körpersignal' },
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-mund',
+    symptom: 'Kribbeln im Mund',
+    title: 'Kribbeln im Mund: Mögliche Ursachen und Warnzeichen',
+    metaDesc: 'Kribbeln im Mund kann Lippen, Zunge oder Gaumen betreffen. Erfahre mögliche Ursachen und wann Schwellung, Atemnot oder neurologische Symptome dringend sind.',
+    h1: 'Warum kribbelt es im Mund?',
+    category: 'Hals & Mund',
+    lead: 'Kribbeln im Mund kann Lippen, Zunge, Gaumen oder mehrere Bereiche gleichzeitig betreffen. Mögliche Auslöser reichen von einer lokalen Reizung bis zu Hyperventilation, allergischen Reaktionen oder neurologischen Ursachen. Entscheidend ist, ob das Gefühl nur kurz auftritt oder neu, ausgeprägt und mit anderen Beschwerden verbunden ist.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Kann das Kribbeln von Zähnen oder Zahnarzt kommen?</h2>
+<p>Ja. Nach einer lokalen Betäubung beim Zahnarzt können Lippen, <a href="/koerpersignale/taube-zunge/">Zunge</a> oder Teile des Mundes vorübergehend taub oder kribbelig sein. Auch Eingriffe, Druck oder lokale Reizungen können ungewöhnliche Empfindungen verursachen.</p>
+<h2>Kann Stress oder schnelles Atmen Kribbeln im Mund verursachen?</h2>
+<p>Bei sehr schnellem oder tiefem Atmen kann sich der Kohlendioxidgehalt im Blut verändern. Dadurch können unter anderem Kribbeln um Mund, Hände oder Gesicht auftreten. Das bedeutet aber nicht, dass jedes Kribbeln automatisch durch Angst oder Stress verursacht wird.</p>
+<h2>Können Allergien Kribbeln im Mund verursachen?</h2>
+<p>Ja. Bestimmte Lebensmittel oder andere allergische Reaktionen können mit Kribbeln, Jucken, Brennen oder Schwellung im Mundbereich beginnen. Besonders wichtig ist, ob Zunge, Lippen oder Rachen anschwellen.</p>
+<h2>Können Vitamin- oder Mineralstoffveränderungen eine Rolle spielen?</h2>
+<p>Bestimmte Mangelzustände oder Veränderungen des Elektrolythaushalts können Missempfindungen fördern. Aus Kribbeln im Mund allein lässt sich jedoch kein bestimmter Mangel ableiten.</p>
+<h2>Können neurologische Ursachen dahinterstecken?</h2>
+<p>Missempfindungen im Mund- und Gesichtsbereich können auch mit Nerven zusammenhängen. Besonders wichtig ist, ob gleichzeitig eine einseitige Gesichtsschwäche, Sprachprobleme, Schwäche eines Arms oder Beins oder plötzlich starke Kopfschmerzen auftreten. Ähnliche Muster beschreiben wir unter <a href="/koerpersignale/kribbeln-im-gesicht/">Kribbeln im Gesicht</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann ist das ein Notfall?</div><p>Rasche medizinische Hilfe ist wichtig bei Schwellung von Zunge oder Rachen, Atemnot, Schluckproblemen, Kreislaufproblemen nach möglicher Allergie sowie bei plötzlich auftretender Lähmung oder Sprachstörung.</p></div>
+<h2>Kurz gesagt</h2>
+<p>Kribbeln im Mund kann harmlose lokale Gründe haben, aber auch Teil einer allergischen oder neurologischen Reaktion sein. Neue starke Beschwerden oder Schwellungen sollten deshalb ernst genommen werden.</p>`,
+    faqs: [
+      { q: 'Kann Hyperventilation Kribbeln im Mund auslösen?', a: 'Ja. Bei sehr schnellem oder tiefem Atmen verändert sich der Kohlendioxidgehalt im Blut, dadurch kann Kribbeln um Mund, Hände oder Gesicht auftreten. Trotzdem ist nicht jedes Kribbeln automatisch stressbedingt.' },
+      { q: 'Wie beginnt eine allergische Reaktion im Mund?', a: 'Bestimmte Lebensmittel oder andere allergische Reaktionen können mit Kribbeln, Jucken, Brennen oder Schwellung im Mundbereich beginnen. Entscheidend ist, ob Zunge, Lippen oder Rachen anschwellen.' },
+      { q: 'Wann ist Kribbeln im Mund ein Notfall?', a: 'Bei Schwellung von Zunge oder Rachen, Atemnot, Schluckproblemen, Kreislaufproblemen nach möglicher Allergie, plötzlicher Lähmung oder Sprachstörung braucht es rasche medizinische Hilfe.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kribbeln-an-der-lippe/', label: 'Kribbeln an der Lippe', cat: 'Körpersignal' },
+      { href: '/koerpersignale/taube-zunge/', label: 'Taube Zunge', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'taube-zunge',
+    symptom: 'Taube Zunge',
+    title: 'Taube Zunge: Warum kann sich die Zunge pelzig anfühlen?',
+    metaDesc: 'Eine taube oder pelzige Zunge kann nach Zahnarztbehandlung oder lokaler Reizung auftreten. Erfahre, wann neurologische oder allergische Warnzeichen wichtig sind.',
+    h1: 'Warum fühlt sich meine Zunge taub an?',
+    category: 'Hals & Mund',
+    lead: 'Ein taubes oder pelziges Gefühl an der Zunge kann nach einer zahnärztlichen Betäubung oder einer lokalen Reizung auftreten. Wenn das Gefühl ohne erkennbaren Anlass neu entsteht, länger anhält oder mit anderen neurologischen Beschwerden verbunden ist, sollte es abgeklärt werden.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Ist eine taube Zunge nach dem Zahnarzt normal?</h2>
+<p>Nach einer lokalen Betäubung kann die Zunge vorübergehend teilweise oder vollständig taub sein. Das Gefühl sollte mit dem Nachlassen der Betäubung wieder zurückgehen. Wenn die Taubheit ungewöhnlich lange bestehen bleibt, solltest du die behandelnde Zahnarztpraxis kontaktieren.</p>
+<h2>Kann die Zunge durch Verletzung oder Reizung taub werden?</h2>
+<p>Ja. Mögliche lokale Auslöser sind zum Beispiel:</p>
+<ul><li>Biss auf die Zunge</li><li>sehr heisse Speisen</li><li>zahnärztliche Eingriffe</li><li>Reizung bestimmter Nerven</li><li>Veränderungen der Mundschleimhaut</li></ul>
+<h2>Können Allergien eine Rolle spielen?</h2>
+<p>Eine allergische Reaktion kann Missempfindungen, Jucken oder Schwellung im Mund verursachen. Wenn die Zunge deutlich anschwillt oder Atem- beziehungsweise Schluckprobleme auftreten, ist das dringend.</p>
+<h2>Kann eine taube Zunge neurologische Ursachen haben?</h2>
+<p>Ja, auch neurologische Ursachen sind möglich. Besonders wichtig ist, ob die Taubheit plötzlich auftritt und gleichzeitig andere Symptome entstehen. Ein brennendes Gefühl ohne Taubheit ist dagegen ein anderes Muster, siehe <a href="/koerpersignale/zungenbrennen/">Zungenbrennen</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Diese Warnzeichen sind wichtig</div><p>Rasche medizinische Abklärung ist nötig bei plötzlich schiefer Gesichtshälfte, Sprachstörung, Schwäche oder Taubheit eines Arms oder Beins, starken neuen Gleichgewichtsstörungen, Problemen beim Schlucken, Atemnot oder deutlicher Zungenschwellung.</p></div>
+<h2>Kurz gesagt</h2>
+<p>Eine taube Zunge kann vorübergehend nach einem zahnärztlichen Eingriff auftreten. Neu auftretende Taubheit ohne klare Erklärung, besonders zusammen mit anderen neurologischen oder allergischen Symptomen, sollte dagegen abgeklärt werden.</p>`,
+    faqs: [
+      { q: 'Wie lange darf die Zunge nach dem Zahnarzt taub sein?', a: 'Nach einer lokalen Betäubung geht die Taubheit normalerweise mit dem Nachlassen der Betäubung zurück. Bleibt sie ungewöhnlich lange bestehen, kontaktiere die behandelnde Zahnarztpraxis.' },
+      { q: 'Kann eine Allergie die Zunge taub machen?', a: 'Eine allergische Reaktion kann Missempfindungen, Jucken oder Schwellung im Mund verursachen. Deutliche Zungenschwellung oder Atem- und Schluckprobleme sind dringend.' },
+      { q: 'Wann ist eine taube Zunge ein Warnzeichen?', a: 'Bei plötzlich schiefer Gesichtshälfte, Sprachstörung, Schwäche oder Taubheit eines Arms oder Beins, neuen starken Gleichgewichtsstörungen, Schluckproblemen, Atemnot oder deutlicher Zungenschwellung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kribbeln-im-mund/', label: 'Kribbeln im Mund', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-an-der-lippe/', label: 'Kribbeln an der Lippe', cat: 'Körpersignal' },
+      { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'warmes-gesicht-kalte-haende',
+    symptom: 'Warmes Gesicht und kalte Hände',
+    title: 'Warmes Gesicht und kalte Hände: Wie passt das zusammen?',
+    metaDesc: 'Ein warmes Gesicht bei kalten Händen kann durch unterschiedliche Hautdurchblutung und Temperaturregulation entstehen. Erfahre mögliche Ursachen und Warnzeichen.',
+    h1: 'Warum ist mein Gesicht warm, obwohl meine Hände kalt sind?',
+    category: 'Wärme & Schwitzen',
+    lead: 'Ein warmes oder gerötetes Gesicht bei gleichzeitig kalten Händen kann zunächst widersprüchlich wirken. Tatsächlich reguliert der Körper die Durchblutung verschiedener Hautbereiche unabhängig voneinander. Deshalb können Gesicht und Hände sich gleichzeitig sehr unterschiedlich anfühlen.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Warum können die Hände kalt sein, während das Gesicht warm ist?</h2>
+<p>Bei Kälte oder Stress können sich kleine Blutgefässe in Händen und Fingern verengen. Dadurch wird weniger warmes Blut an die Haut der Hände transportiert. Im Gesicht können Blutgefässe dagegen gleichzeitig erweitert sein, sodass es warm oder gerötet wirkt.</p>
+<h2>Kann Stress so ein Temperaturgefühl verursachen?</h2>
+<p>Ja. Stress und emotionale Anspannung beeinflussen das autonome Nervensystem. Manche Menschen bekommen dabei warme oder gerötete Wangen, kalte Hände, Schwitzen oder Herzklopfen. Das bedeutet aber nicht, dass jede Kombination aus warmem Gesicht und kalten Händen psychisch verursacht wird.</p>
+<h2>Können Hormone eine Rolle spielen?</h2>
+<p>Hormonelle Veränderungen können die Temperaturwahrnehmung und Hautdurchblutung beeinflussen. Besonders Hitzewallungen können im Gesicht oder Oberkörper auftreten, während Hände und Füsse gleichzeitig kühl bleiben. Mehr zum Wärmemuster ohne Fieber unter <a href="/koerpersignale/hitzegefuehl-ohne-fieber/">Hitzegefühl ohne Fieber</a>.</p>
+<h2>Was ist mit Fieber?</h2>
+<p>Bei Fieber können Temperaturgefühl und Hautdurchblutung im Verlauf wechseln. Wenn du dich krank fühlst, ist eine tatsächliche Temperaturmessung hilfreicher als das Gefühl allein.</p>
+<h2>Wann solltest du kalte Hände genauer beobachten?</h2>
+<div class="wa-callout"><div class="wa-callout-label">Abklären lassen</div><p>Eine medizinische Abklärung kann sinnvoll sein, wenn Hände dauerhaft sehr kalt sind, Finger weiss oder blau werden, starke Schmerzen auftreten, nur eine Hand betroffen ist oder Taubheit und deutliche Durchblutungsstörungen dazukommen. Das einseitige Muster beschreiben wir unter <a href="/koerpersignale/kalte-haende-einseitig/">Kalte Hände einseitig</a>.</p></div>
+<h2>Die Perspektive der chinesischen Medizin</h2>
+<p>In der traditionellen chinesischen Medizin werden Wärme- und Kälteempfindungen als Teil eines grösseren Musters betrachtet. Ein warmes Gesicht bei kalten Händen reicht jedoch auch aus TCM-Sicht nicht aus, um allein daraus ein bestimmtes Muster sicher abzuleiten. Die TCM-Perspektive ersetzt keine medizinische Abklärung neuer oder auffälliger Beschwerden.</p>
+<h2>Kurz gesagt</h2>
+<p>Ein warmes Gesicht und kalte Hände können gleichzeitig auftreten, weil die Durchblutung verschiedener Körperregionen unterschiedlich reguliert wird. Das Muster allein ist keine Diagnose.</p>`,
+    faqs: [
+      { q: 'Warum sind meine Hände kalt, obwohl mir warm ist?', a: 'Der Körper reguliert die Durchblutung verschiedener Hautbereiche unabhängig. Bei Kälte oder Stress verengen sich kleine Gefässe in Händen und Fingern, während Gesichtsgefässe gleichzeitig erweitert sein können.' },
+      { q: 'Können Hitzewallungen kalte Hände erklären?', a: 'Hormonelle Veränderungen beeinflussen Temperaturwahrnehmung und Hautdurchblutung. Hitzewallungen betreffen oft Gesicht und Oberkörper, während Hände und Füsse kühl bleiben können.' },
+      { q: 'Wann sollten kalte Hände abgeklärt werden?', a: 'Wenn Hände dauerhaft sehr kalt sind, Finger weiss oder blau werden, starke Schmerzen auftreten, nur eine Hand betroffen ist oder Taubheit und deutliche Durchblutungsstörungen dazukommen.' },
+    ],
+    related: [
+      { href: '/koerpersignale/hitzegefuehl-ohne-fieber/', label: 'Hitzegefühl ohne Fieber', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-trotz-waerme/', label: 'Kalte Hände trotz Wärme', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kalte-haende-einseitig/', label: 'Kalte Hände einseitig', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'morgens-flacher-bauch-abends-dicker',
+    symptom: 'Bauch abends dicker als morgens',
+    title: 'Morgens flacher Bauch, abends dicker: Ist das normal?',
+    metaDesc: 'Der Bauch ist morgens oft flacher und wird im Tagesverlauf voller. Erfahre, welche Veränderungen normal sind und wann starke Aufblähung abgeklärt werden sollte.',
+    h1: 'Warum ist der Bauch morgens flacher als am Abend?',
+    category: 'Bauch & Verdauung',
+    lead: 'Dass der Bauch morgens flacher und am Abend voller aussieht oder sich gespannter anfühlt, ist bis zu einem gewissen Grad normal. Über den Tag kommen Nahrung, Flüssigkeit, Darminhalt und Gas hinzu. Deshalb verändert sich das Bauchvolumen ganz natürlich. Wenn die Veränderung allerdings sehr stark, schmerzhaft oder neu ist, können Blähungen, Verstopfung oder andere Verdauungsthemen eine Rolle spielen.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN10,
+    bodyHtml: `<h2>Warum ist der Bauch morgens oft flacher?</h2>
+<p>Während der Nacht wird normalerweise nichts gegessen. Der Magen ist leerer, und auch ein Teil des Darminhalts hat sich weiterbewegt. Dadurch wirkt der Bauch morgens bei vielen Menschen flacher als am Abend.</p>
+<h2>Warum wird der Bauch im Lauf des Tages grösser?</h2>
+<p>Über den Tag kommen verschiedene Faktoren zusammen:</p>
+<ul><li>Mahlzeiten</li><li>Getränke</li><li>Gas im Darm</li><li>Stuhl im Dickdarm</li><li>Veränderungen der Körperhaltung</li><li>normale Schwankungen der Bauchmuskulatur</li></ul>
+<p>Eine gewisse Zunahme des Bauchumfangs ist deshalb normal.</p>
+<h2>Was spricht eher für Blähungen?</h2>
+<p>Hinweise können sein: ein deutliches Spannungsgefühl, häufiges Aufstossen oder Winde, ein Bauch, der nach bestimmten Mahlzeiten besonders gross wird, Verbesserung nach Stuhlgang oder Windabgang sowie Druck oder Völlegefühl. Das Abendmuster beschreiben wir ausführlich unter <a href="/koerpersignale/blaehbauch-am-abend/">Blähbauch am Abend</a>.</p>
+<h2>Kann Verstopfung den Unterschied verstärken?</h2>
+<p>Ja. Wenn sich Stuhl über den Tag oder mehrere Tage ansammelt, kann der Bauch voller und gespannter wirken. Dabei können zusätzlich seltener Stuhlgang, harter Stuhl, starkes Pressen oder das Gefühl unvollständiger Entleerung auftreten, siehe <a href="/beschwerden/verstopfung/">Verstopfung</a>.</p>
+<h2>Welche Rolle spielt der Zyklus?</h2>
+<p>Bei manchen Frauen verändert sich Bauchumfang und Verdauung im Verlauf des Menstruationszyklus. Hormonelle Veränderungen können Wasserhaushalt, Darmbewegung und Blähungsgefühl beeinflussen.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Eine medizinische Einordnung ist sinnvoll, wenn der Bauch dauerhaft zunehmend gebläht ist, starke Schmerzen auftreten, das Problem neu und ausgeprägt ist, Gewichtsverlust dazukommt, Blut im Stuhl auftritt oder anhaltendes Erbrechen besteht.</p></div>
+<h2>Kurz gesagt</h2>
+<p>Ein morgens flacherer und abends etwas vollerer Bauch ist meistens normal. Starke, schmerzhafte oder dauerhaft zunehmende Veränderungen sollten dagegen genauer angeschaut werden.</p>`,
+    faqs: [
+      { q: 'Ist es normal, dass der Bauch abends dicker ist?', a: 'Ja, bis zu einem gewissen Grad. Über den Tag kommen Mahlzeiten, Getränke, Gas und Stuhl hinzu, deshalb verändert sich das Bauchvolumen natürlich.' },
+      { q: 'Was spricht für Blähungen als Ursache?', a: 'Deutliches Spannungsgefühl, häufiges Aufstossen oder Winde, ein nach bestimmten Mahlzeiten besonders grosser Bauch und Besserung nach Stuhlgang oder Windabgang.' },
+      { q: 'Wann sollte ein aufgeblähter Bauch abgeklärt werden?', a: 'Wenn der Bauch dauerhaft zunehmend gebläht ist, starke Schmerzen auftreten, das Problem neu und ausgeprägt ist, Gewichtsverlust dazukommt, Blut im Stuhl auftritt oder anhaltendes Erbrechen besteht.' },
+    ],
+    related: [
+      { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
+      { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
     ],
   },
 ];
