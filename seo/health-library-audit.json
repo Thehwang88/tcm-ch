@@ -1,12 +1,12 @@
 {
   "generated": "2026-09-25",
   "totals": {
-    "healthPages": 404,
+    "healthPages": 414,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 35,
+      "befund": 45,
       "question": 34,
       "body_region": 9,
       "perspective": 1,
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 227,
+      "inboundContentLinks": 237,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
-      "outboundHealthLinks": 38
+      "inboundContentLinks": 46,
+      "outboundHealthLinks": 48
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1214,6 +1214,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/",
+      "type": "befund",
+      "title": "Erythrozyten niedrig: Was bedeutet eine zu niedrige Anzahl? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/",
       "type": "befund",
       "title": "Ferritin erhöht: Was bedeutet der Wert? | TCM.ch",
@@ -1230,8 +1240,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/",
@@ -1264,14 +1274,24 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/haematokrit-erhoeht/",
+      "type": "befund",
+      "title": "Hämatokrit erhöht: Was bedeutet ein zu hoher Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/",
       "type": "befund",
       "title": "Hämoglobin zu hoch: Was bedeutet der Wert? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/",
@@ -1280,8 +1300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/harnsaeure-erhoeht/",
@@ -1291,6 +1311,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/harnstoff-erhoeht/",
+      "type": "befund",
+      "title": "Harnstoff erhöht: Was bedeutet ein zu hoher Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1310,7 +1340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 6
     },
     {
@@ -1320,8 +1350,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/",
@@ -1340,7 +1370,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 9
     },
     {
@@ -1350,8 +1380,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-niedrig/",
+      "type": "befund",
+      "title": "Leukozyten niedrig: Was bedeutet eine zu niedrige Anzahl? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/lipase-erhoeht/",
@@ -1370,8 +1410,48 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/mchc-erhoeht/",
+      "type": "befund",
+      "title": "MCHC erhöht: Was bedeutet ein zu hoher Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/mchc-niedrig/",
+      "type": "befund",
+      "title": "MCHC niedrig: Was bedeutet ein zu niedriger Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/",
+      "type": "befund",
+      "title": "MCV erhöht: Was bedeutet ein zu hoher MCV-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/mcv-niedrig/",
+      "type": "befund",
+      "title": "MCV niedrig: Was bedeutet ein zu niedriger MCV-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/",
@@ -1380,7 +1460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1400,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -1410,7 +1490,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 7
     },
     {
@@ -1420,7 +1500,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/",
+      "type": "befund",
+      "title": "Thrombozyten niedrig: Was bedeutet ein zu niedriger Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1430,8 +1520,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/tsh-niedrig/",
+      "type": "befund",
+      "title": "TSH niedrig: Was bedeutet ein zu niedriger TSH-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/",
@@ -1440,8 +1540,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/",
@@ -2680,7 +2780,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {

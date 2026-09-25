@@ -37,3 +37,33 @@ Datum: 2026-09-25 · Typ: Daily organic library expansion (Editorial-Copy vorgeg
 ### Indexierung
 
 Natural Discovery. Manual URL indexing: NO. Manuelle Sitemap-Resubmission: NO. URLs nicht in seo/index-queue.md (verifiziert: 0 Treffer). Publikation: 2026-09-25.
+
+## Part 2 / URLs 11-20
+
+Typ: Befunde & Werte (Editorial-Copy vorgegeben) · **Ergebnis: 10 CREATED, 0 BLOCKED** · Publikation: 2026-09-25 · Indexierungs-Strategie: **Natural Discovery** (keine manuellen GSC-Anfragen, keine manuelle Sitemap-Resubmission, nicht in index-queue; verifiziert: 0 Treffer).
+
+| URL (befunde-werte/) | Query (Semrush CH) | Nächster Owner | Verdict | Ownership-Grenze | Gruppe | Links |
+|---|---|---|---|---|---|---|
+| mcv-erhoeht/ | mcv erhöht (~110, KD23) | keiner (B12/Hb/Leber/TSH nur Nachbarn) | **CREATED** | NUR MCV hoch (Makrozytose); B12-Seite bleibt Mangel-Owner (prominent verlinkt) | Blutbild | in: b12-Seite related; out: B12, Hb-low, Leberwerte, TSH, MCV-low |
+| erythrozyten-niedrig/ | erythrozyten niedrig (~480, KD26) | haemoglobin-zu-niedrig (Anämie-Kern) | **CREATED** (medium→low) | Zellzahl-Frage; Anämie-Intent bleibt bei Hb-low (beidseitig verlinkt) | Blutbild | in: hb-low related; out: Hb, Ferritin, B12, MCV hoch/niedrig |
+| leukozyten-niedrig/ | leukozyten (zu) niedrig (~260+) | leukozyten-erhoeht (HIGH) + Subtypen | **CREATED** | NUR Niedrig-Gesamtwert (Leukopenie); HIGH-Owner + Subtyp-Owner unangetastet (beidseitig verlinkt) | Blutbild | in: leukozyten-erhoeht related; out: HIGH, Neutrophile, Lymphozyten, Monozyten |
+| thrombozyten-niedrig/ | thrombozyten niedrig (~480, KD20) | thrombozyten-erhoeht (HIGH) | **CREATED** | NUR Niedrig-Intent inkl. Pseudothrombozytopenie | Blutbild | in: thrombo-erhoeht related; out: HIGH, Hb-low, Leuko-low, Leberwerte |
+| harnstoff-erhoeht/ | harnstoff erhöht (~90, KD27) | nierenwerte-erhoeht (Umbrella); kreatinin-erhoeht (Schwester) | **CREATED** | NUR Harnstoff-Einzelwert; Teil-1-Zusage (Kreatinin↔Harnstoff) eingelöst: Kreatinin-Body + related verlinken jetzt hierher | Niere & Blutdruck | in: kreatinin Body+related; out: Kreatinin, Nierenwerte, Kalium |
+| mchc-niedrig/ | mchc niedrig (~30) | keiner | **CREATED** | NUR MCHC niedrig; keine Eisenmangel-Diagnose aus Einzelwert | Blutbild | out: Ferritin, Hb-low, MCV-low, MCHC-hoch |
+| tsh-niedrig/ | tsh niedrig (~20) | tsh-erhoeht (HIGH) | **CREATED** | NUR Niedrig-Intent; keine Hyperthyreose-Seite, keine Medikamenten-Änderungsempfehlung | Schilddrüse | in: tsh-erhoeht related; out: TSH-hoch, Herzstolpern-in-Ruhe (KS) |
+| haematokrit-erhoeht/ | hämatokrit erhöht (~20) | haemoglobin-zu-hoch | **CREATED** | NUR HKT-Intent (inkl. Hämokonzentration); Hb-hoch bleibt Owner (beidseitig verlinkt) | Blutbild | in: hb-hoch related; out: Hb-hoch, MCV hoch/niedrig |
+| mcv-niedrig/ | mcv niedrig (~20) | mcv-erhoeht (Gegen-Intent); ferritin-zu-niedrig | **CREATED** | NUR MCV niedrig (Mikrozytose); kein Eisenmangel-Beweis, keine Thalassämie-Seite | Blutbild | in: ferritin-low related; out: Ferritin, Hb-low, Erythrozyten, MCHC-low, MCV-hoch |
+| mchc-erhoeht/ | mchc erhöht (~20) | mchc-niedrig (Gegen-Intent) | **CREATED** | NUR MCHC hoch; Fokus Reproduzierbarkeit/Messartefakte/Hämolyse | Blutbild | out: MCHC-low, MCV hoch/niedrig, Hb-hoch |
+
+### Hub / Links / Suche / Technik
+
+- Befunde-Hub: automatisch gruppiert (Blutbild +8, Niere & Blutdruck +1, Schilddrüse +1); kein Redesign.
+- 8 Inbound-Links in bestehende relatedArticles (b12, ferritin-low, hb-low, hb-hoch, leukozyten-erhoeht, thrombozyten-erhoeht, tsh-erhoeht, kreatinin) + Kreatinin-Body-Link auf Harnstoff; bewusst keine dichte Vollvernetzung.
+- Suchindex: 296 → **306** (+10) + 10 SYNONYMS (Leukopenie, Thrombopenie/Thrombozytopenie, Makrozytose, Mikrozytose, Urea, HKT u.a.; keine Konkurrenz zu bestehenden Ownern).
+- Sitemap: 503 → **513** (+10, via normalem Build).
+- Alle 10: self-canonical, indexierbar, unique Title/Meta, genau 1 H1, Schema + Breadcrumbs nach Bestand, 0 Em-Dashes, 0 Orphans.
+- health-audit: 0/0/0/0. Renders (Hub + 4 Samples, 1440/390): 0 Overflow, 0 JS-Errors.
+- YMYL: Interpretation statt Diagnose, keine erfundenen Schwellenwerte, keine Dosierungen/Absetzempfehlungen, Referenzbereich-Hinweis pro Seite, TCM-Block ausdrücklich ohne Laborwert-Interpretation.
+- Tracking/Booking/Formulare: unverändert.
+
+**Tagestotal 25.09.: Teil 1 (8 CREATED, 2 BLOCKED) + Teil 2 (10 CREATED, 0 BLOCKED) = 18/20 CREATED.**
