@@ -1206,6 +1206,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Ärztlich eingeordnet gehören insbesondere eine deutliche oder anhaltende Veränderung, mehrere gleichzeitig auffällige Blutwerte oder Beschwerden wie ausgeprägte Müdigkeit und verminderte Belastbarkeit.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/', label: 'RDW erhöht: Was bedeutet ein hoher RDW-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
@@ -1245,6 +1246,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Ärztlich eingeordnet gehören insbesondere: ein neu auffälliges Blutbild, eine deutliche Veränderung gegenüber früher, ausgeprägte Müdigkeit, Atemnot, ungewöhnliche Blutungen, unbeabsichtigter Gewichtsverlust oder mehrere gleichzeitig auffällige Blutzellreihen.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/erythrozyten-erhoeht/', label: 'Erythrozyten erhöht: Was bedeutet eine zu hohe Anzahl?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
@@ -1357,6 +1359,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Besonders sinnvoll ist eine medizinische Einordnung bei gleichzeitig erhöhtem Kreatinin, sinkender eGFR, Veränderungen der Urinmenge, starker Schwäche, Erbrechen, Schwellungen, Atemnot oder auffälligen Elektrolyten.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/harnstoff-niedrig/', label: 'Harnstoff niedrig: Was bedeutet ein zu tiefer Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
@@ -1459,6 +1462,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Eine medizinische Einordnung ist sinnvoll, wenn der Hämatokrit wiederholt erhöht ist, Hämoglobin oder Erythrozyten ebenfalls erhöht sind, Kopfschmerzen, Schwindel oder andere neue Beschwerden auftreten oder eine bekannte Herz- oder Lungenerkrankung besteht.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/haematokrit-niedrig/', label: 'Hämatokrit niedrig: Was bedeutet ein zu tiefer Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/', label: 'Hämoglobin zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-niedrig/', label: 'MCV niedrig: Was bedeutet ein zu niedriger MCV-Wert?' },
@@ -1495,6 +1499,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Ärztlich eingeordnet gehören insbesondere ein gleichzeitig niedriges Hämoglobin, ein auffälliges Ferritin, ein neuer oder zunehmender Befund sowie Beschwerden wie ausgeprägte Müdigkeit oder Belastungsatemnot.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/', label: 'RDW erhöht: Was bedeutet ein hoher RDW-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/', label: 'Erythrozyten niedrig: Was bedeutet eine zu niedrige Anzahl?' },
@@ -1531,6 +1536,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Ärztlich eingeordnet gehören insbesondere ein wiederholt deutlich auffälliger Wert zusammen mit weiteren Blutbildveränderungen oder Hinweisen auf Hämolyse sowie neue ausgeprägte Beschwerden.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/mch-erhoeht/', label: 'MCH erhöht: Was bedeutet ein zu hoher MCH-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mchc-niedrig/', label: 'MCHC niedrig: Was bedeutet ein zu niedriger Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-niedrig/', label: 'MCV niedrig: Was bedeutet ein zu niedriger MCV-Wert?' },
@@ -1598,6 +1604,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Zeitnah ärztlich besprochen gehören sehr hohe Werte, eine auffällige Familiengeschichte mit frühen Herzinfarkten sowie ein erhöhtes LDL zusammen mit weiteren Risikofaktoren wie Bluthochdruck, Diabetes oder Rauchen. Brustschmerzen oder Atemnot sind unabhängig vom Laborwert ein Notfall (Telefon 144).</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/lipoprotein-a-erhoeht/', label: 'Lipoprotein(a) erhöht: Was bedeutet ein hoher Lp(a)-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/', label: 'Triglyceride erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/hdl-niedrig/', label: 'HDL niedrig: Was bedeutet der Wert?' },
@@ -1801,6 +1808,202 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet ein hoher Entzündungswert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'erythrozyten-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'Erythrozyten erhöht: Was bedeutet eine zu hohe Anzahl?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Erhöhte Erythrozyten können durch Flüssigkeitsmangel oder eine echte Mehrproduktion entstehen. Warum Hämoglobin, Hämatokrit und Verlauf zur Einordnung gehören.',
+    primaryPurpose: 'Einordnung der erhöhten Erythrozytenzahl; erythrozyten-niedrig, haemoglobin-zu-hoch und haematokrit-erhoeht bleiben eigene Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Gegen-Intent zu erythrozyten-niedrig; haemoglobin-zu-hoch und haematokrit-erhoeht bleiben eigene Owner (beidseitig verlinkt). Diese Seite besitzt NUR die Zellzahl-Hoch-Frage.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Erythrozyten sind die roten Blutkörperchen. Liegt ihre Anzahl über dem Referenzbereich, kann das zwei grundsätzlich verschiedene Gründe haben: Das Blut ist durch Flüssigkeitsmangel stärker konzentriert, oder der Körper bildet tatsächlich mehr rote Blutkörperchen. Die Unterscheidung gelingt nur zusammen mit Hämoglobin, Hämatokrit und dem Verlauf.</p>`,
+    bodyHtml: `<h2>Was sind Erythrozyten?</h2>
+<p>Rote Blutkörperchen transportieren mit dem Blutfarbstoff Hämoglobin Sauerstoff durch den Körper. Ihre Anzahl wird im Blutbild zusammen mit <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/">Hämoglobin</a>, <a href="/gesundheitsbibliothek/befunde-werte/haematokrit-erhoeht/">Hämatokrit</a> und den Erythrozytenindizes (MCV, MCH, MCHC) beurteilt.</p>
+<h2>Konzentration oder echte Mehrproduktion?</h2>
+<p>Bei Flüssigkeitsmangel, etwa nach Durchfall, starkem Schwitzen oder zu wenig Trinken, sinkt der flüssige Blutanteil; die Zellzahl erscheint dann rechnerisch höher (Hämokonzentration). Sind dagegen Erythrozyten, Hämoglobin und Hämatokrit dauerhaft gemeinsam erhöht, kann eine echte Mehrproduktion vorliegen.</p>
+<h2>Was kann eine echte Mehrproduktion begünstigen?</h2>
+<ul><li>chronischer Sauerstoffmangel, etwa durch Rauchen, Lungenerkrankungen oder Schlafapnoe</li><li>Aufenthalt in grosser Höhe</li><li>selten hormonelle Ursachen</li><li>selten Erkrankungen der Blutbildung</li></ul>
+<p>Welche Ursache vorliegt, lässt sich aus dem Einzelwert nicht bestimmen.</p>
+<h2>Merkt man erhöhte Erythrozyten?</h2>
+<p>Leichte Erhöhungen bleiben meist unbemerkt. Bei deutlich verdicktem Blut sind Kopfschmerzen, Schwindel, Sehstörungen oder Gesichtsrötung möglich; solche Beschwerden haben aber auch viele andere Ursachen.</p>`,
+    notProofHtml: `<p>Ein einmalig erhöhter Erythrozytenwert ist keine Diagnose: Er unterscheidet nicht zwischen Flüssigkeitsmangel und echter Mehrproduktion und beweist keine Erkrankung der Blutbildung. Verlauf und Begleitwerte entscheiden. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung unter guten Bedingungen (ausreichend getrunken), Hämoglobin und Hämatokrit im Vergleich, frühere Blutbilder, je nach Situation Sauerstoffsättigung und die Frage nach Rauchen, Schnarchen und Medikamenten.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehören wiederholt erhöhte Werte, gleichzeitig erhöhtes Hämoglobin und Hämatokrit, neue Kopfschmerzen, Sehstörungen oder Schwindel sowie bekannte Herz- oder Lungenerkrankungen. Plötzliche neurologische Ausfälle oder Brustschmerzen sind ein Notfall (144).</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/', label: 'Erythrozyten niedrig: Was bedeutet eine zu niedrige Anzahl?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/', label: 'Hämoglobin zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haematokrit-erhoeht/', label: 'Hämatokrit erhöht: Was bedeutet ein zu hoher Wert?' },
+    ],
+  },
+  {
+    slug: 'haematokrit-niedrig',
+    gruppe: 'Blutbild',
+    title: 'Hämatokrit niedrig: Was bedeutet ein zu tiefer Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Ein niedriger Hämatokrit bedeutet einen geringeren Zellanteil im Blut. Warum Hämoglobin, Erythrozyten und Eisenstatus zur Einordnung gehören und was der Wert nicht beweist.',
+    primaryPurpose: 'Einordnung des niedrigen Hämatokrits; haematokrit-erhoeht bleibt HIGH-Owner, Hb-low bleibt Anämie-Kern.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'haematokrit-erhoeht bleibt Owner des Hoch-Intents; haemoglobin-zu-niedrig bleibt Anämie-Kern-Owner, erythrozyten-niedrig und ferritin-zu-niedrig bleiben eigene Owner (alle verlinkt). Diese Seite besitzt NUR den HKT-Niedrig-Intent.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Der Hämatokrit gibt an, welchen Anteil die Blutzellen am gesamten Blutvolumen ausmachen. Ein niedriger Wert bedeutet: Der Zellanteil ist im Verhältnis zum flüssigen Anteil kleiner als erwartet. Das kann zu einer Blutarmut passen, aber auch durch einen verschobenen Flüssigkeitshaushalt entstehen. Der Wert wird deshalb nie allein beurteilt.</p>`,
+    bodyHtml: `<h2>Was misst der Hämatokrit?</h2>
+<p>Vereinfacht: den zellulären Anteil des Blutes, der überwiegend aus roten Blutkörperchen besteht. Hämatokrit, <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a> und <a href="/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/">Erythrozytenzahl</a> hängen eng zusammen und verändern sich meist gemeinsam.</p>
+<h2>Was kann den Hämatokrit senken?</h2>
+<ul><li>alle Formen der Blutarmut, etwa durch Eisenmangel, Vitaminmangel oder Blutverlust</li><li>vermehrtes Blutvolumen durch Flüssigkeitsverschiebungen, etwa in der Schwangerschaft (dort teils physiologisch)</li><li>chronische Erkrankungen</li><li>eingeschränkte Blutbildung</li></ul>
+<h2>Bedeutet niedriger Hämatokrit automatisch Eisenmangel?</h2>
+<p>Nein. Eisenmangel ist eine häufige Ursache einer Anämie, aber längst nicht die einzige. Ob Eisen fehlt, klären <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> und weitere Eisenwerte; auch B12- oder Folsäuremangel und andere Ursachen kommen infrage. Die Erythrozytenindizes (MCV, MCH) helfen, die Muster zu unterscheiden.</p>
+<h2>Welche Beschwerden sind möglich?</h2>
+<p>Bei relevanter Anämie können Müdigkeit, verminderte Belastbarkeit, Atemnot bei Belastung, Blässe oder Herzklopfen auftreten; all das ist unspezifisch.</p>`,
+    notProofHtml: `<p>Ein niedriger Hämatokrit ist keine Diagnose und beweist weder Eisenmangel noch eine bestimmte Anämieform. In der Schwangerschaft ist eine gewisse Verdünnung des Blutes normal. Verlauf, Begleitwerte und die klinische Situation entscheiden. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind Hämoglobin, Erythrozytenzahl, MCV/MCH, Ferritin beziehungsweise Eisenstatus, je nach Situation Vitamin B12 und Folsäure, Retikulozyten sowie der Vergleich mit früheren Blutbildern.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören: ein deutlich erniedrigter oder rasch gefallener Wert, Zeichen von Blutverlust (schwarzer Stuhl, Blut im Stuhl, starke Menstruationsblutung), ausgeprägte Müdigkeit oder Atemnot sowie Blässe mit Herzrasen. Bei Kollaps oder starker Atemnot gilt der Notruf 144.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/haematokrit-erhoeht/', label: 'Hämatokrit erhöht: Was bedeutet ein zu hoher Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/', label: 'Erythrozyten niedrig: Was bedeutet eine zu niedrige Anzahl?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'rdw-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'RDW erhöht: Was bedeutet ein hoher RDW-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Die RDW beschreibt, wie unterschiedlich gross die roten Blutkörperchen sind. Was ein erhöhter Wert bedeutet und warum er nur mit MCV, Ferritin und B12 sinnvoll ist.',
+    primaryPurpose: 'Einordnung des Einzelwerts RDW als Verteilungsmass; Cluster-Verbindungsseite des roten Blutbilds.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner. MCV hoch/niedrig, Ferritin, B12 und Hb bleiben eigene Owner; diese Seite besitzt NUR den RDW-Intent und verbindet den Blutbild-Cluster.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>RDW steht für „Red Cell Distribution Width" und beschreibt, wie stark die Grösse der roten Blutkörperchen streut. Ein erhöhter RDW-Wert bedeutet: Die Erythrozyten sind unterschiedlich gross (Anisozytose). Das ist ein Hinweis auf einen aktiven Umbau im Blutbild, aber für sich genommen keine Diagnose; entscheidend ist die Kombination mit MCV und weiteren Werten.</p>`,
+    bodyHtml: `<h2>Was misst die RDW?</h2>
+<p>Moderne Analysegeräte vermessen jedes rote Blutkörperchen einzeln. Die RDW fasst zusammen, wie breit die Grössenverteilung ist. Sind alle Zellen ähnlich gross, ist die RDW niedrig; entstehen gerade neue Zellen anderer Grösse, steigt sie.</p>
+<h2>Warum ist die Kombination mit MCV so wichtig?</h2>
+<p>Erst RDW plus MCV ergibt ein Muster: Eine erhöhte RDW mit <a href="/gesundheitsbibliothek/befunde-werte/mcv-niedrig/">niedrigem MCV</a> passt zum Beispiel zu einem beginnenden Eisenmangel, eine erhöhte RDW mit <a href="/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/">hohem MCV</a> eher zu einem B12- oder Folsäuremangel. Auch nach begonnener Behandlung eines Mangels steigt die RDW vorübergehend, weil neue, anders grosse Zellen nachrücken; das ist dann ein gutes Zeichen, kein schlechtes.</p>
+<h2>Was kann eine erhöhte RDW begünstigen?</h2>
+<ul><li>Eisenmangel, oft früh im Verlauf</li><li>Vitamin-B12- oder Folsäuremangel</li><li>kürzliche Blutungen oder deren Erholung</li><li>begonnene Mangel-Behandlung (Umbauphase)</li><li>Mischbilder mehrerer Ursachen</li><li>bestimmte chronische Erkrankungen</li></ul>
+<h2>RDW normal, trotzdem auffälliges Blutbild?</h2>
+<p>Auch das kommt vor: Bei erblichen, gleichförmigen Veränderungen der roten Blutkörperchen kann die RDW normal bleiben, obwohl MCV auffällig ist. Die RDW ist ein Hilfswert, kein Ausschlusstest.</p>`,
+    notProofHtml: `<p>Eine erhöhte RDW ist keine Diagnose: Sie sagt nur, dass die roten Blutkörperchen unterschiedlich gross sind, nicht warum. Ohne MCV, Hämoglobin und Eisen-/Vitaminstatus ist der Wert nicht interpretierbar. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind die gemeinsame Beurteilung mit MCV, <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> und <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12</a>/Folsäure, je nach Bild Retikulozyten sowie der Verlauf über Wochen.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehören eine erhöhte RDW zusammen mit niedrigem Hämoglobin, Zeichen von Blutverlust, ausgeprägter Müdigkeit oder wenn mehrere Blutbildwerte gleichzeitig auffällig sind.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/mcv-niedrig/', label: 'MCV niedrig: Was bedeutet ein zu niedriger MCV-Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'mch-erhoeht',
+    gruppe: 'Blutbild',
+    title: 'MCH erhöht: Was bedeutet ein zu hoher MCH-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'MCH beschreibt die durchschnittliche Hämoglobinmenge pro rotem Blutkörperchen und folgt meist dem MCV. Was ein erhöhter Wert bedeutet und wie er sich von MCHC unterscheidet.',
+    primaryPurpose: 'Einordnung des Einzelwerts MCH erhöht; bewusst relational (MCH folgt MCV), Ursachen-Tiefe bleibt bei mcv-erhoeht.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'MCH ist NICHT MCHC: mchc-erhoeht/-niedrig bleiben eigene Owner, mcv-erhoeht bleibt Owner der Makrozytose-Ursachen (diese Seite delegiert die Ursachenliste dorthin statt sie zu duplizieren). Besitzt NUR den MCH-Hoch-Intent.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>MCH steht für „Mean Corpuscular Hemoglobin" und beschreibt, wie viel Hämoglobin ein einzelnes rotes Blutkörperchen durchschnittlich enthält. Ein erhöhtes MCH tritt fast immer zusammen mit einem erhöhten MCV auf: Grössere Zellen enthalten mehr Hämoglobin. Der Wert wird deshalb nicht isoliert, sondern als Teil der Erythrozytenindizes beurteilt.</p>`,
+    bodyHtml: `<h2>Was misst MCH und was ist der Unterschied zu MCHC?</h2>
+<p>MCH gibt die absolute Hämoglobin-Menge pro Zelle an. <a href="/gesundheitsbibliothek/befunde-werte/mchc-erhoeht/">MCHC</a> beschreibt dagegen die Konzentration von Hämoglobin im Zellvolumen. Eine grosse Zelle kann viel Hämoglobin enthalten (hohes MCH), ohne dass die Konzentration erhöht ist (normales MCHC). Die beiden Werte beantworten also verschiedene Fragen und dürfen nicht verwechselt werden.</p>
+<h2>Warum folgt MCH meist dem MCV?</h2>
+<p>MCH und <a href="/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/">MCV</a> steigen und fallen in der Regel gemeinsam: Sind die roten Blutkörperchen durchschnittlich grösser (Makrozytose), ist auch der Hämoglobingehalt pro Zelle höher. Deshalb gelten für ein erhöhtes MCH im Wesentlichen dieselben möglichen Zusammenhänge wie für ein erhöhtes MCV, von Vitamin-B12- oder Folsäuremangel über Alkohol und Lebererkrankungen bis zu Medikamenten; die ausführliche Einordnung steht bewusst dort.</p>
+<h2>Wann ist MCH allein auffällig?</h2>
+<p>Ein isoliert erhöhtes MCH bei normalem MCV und normalem Blutbild ist selten und oft wenig bedeutsam; gelegentlich stecken Messeinflüsse dahinter. Ein wiederholt auffälliger Wert wird im Zusammenhang mit dem kompletten Blutbild beurteilt.</p>`,
+    notProofHtml: `<p>Ein erhöhtes MCH ist keine Diagnose und beweist keinen Vitaminmangel; es beschreibt lediglich, dass die Zellen im Durchschnitt mehr Hämoglobin enthalten, meist weil sie grösser sind. Die Ursachensuche läuft über MCV, B12, Folsäure und das übrige Blutbild. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind die gemeinsame Beurteilung mit MCV, MCHC, Hämoglobin und <a href="/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/">RDW</a>, je nach Bild <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12</a> und Folsäure sowie eine Kontrollmessung im Verlauf.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehört ein erhöhtes MCH vor allem zusammen mit erhöhtem MCV, niedrigem Hämoglobin oder Beschwerden wie ausgeprägter Müdigkeit und Kribbeln (mögliche B12-Konstellation).</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/mchc-erhoeht/', label: 'MCHC erhöht: Was bedeutet ein zu hoher Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/mchc-niedrig/', label: 'MCHC niedrig: Was bedeutet ein zu niedriger Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/', label: 'RDW erhöht: Was bedeutet ein hoher RDW-Wert?' },
+    ],
+  },
+  {
+    slug: 'lipoprotein-a-erhoeht',
+    gruppe: 'Stoffwechsel',
+    title: 'Lipoprotein(a) erhöht: Was bedeutet ein hoher Lp(a)-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Lipoprotein(a) ist ein weitgehend genetisch festgelegter Blutfett-Wert mit eigenem Herz-Kreislauf-Risikobeitrag. Was der Wert bedeutet und warum er kein LDL ist.',
+    primaryPurpose: 'Einordnung des Einzelwerts Lp(a); medizinische Einordnungs-Seite, bewusst keine Conversion-Landingpage.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'cholesterin-erhoeht bleibt Umbrella, ldl-erhoeht/hdl-niedrig/triglyceride-erhoeht bleiben eigene Leaves. Diese Seite besitzt NUR den Lp(a)-Intent; keine Medikamenten-Empfehlungen, keine TCM-senkt-Lpa-Aussagen.',
+    suggestedReviewerType: 'Ärztliche Review (Kardiologie/Lipidologie)',
+    shortAnswerHtml: `<p>Lipoprotein(a), kurz Lp(a), ist ein spezielles Blutfett-Teilchen, dessen Höhe zum grössten Teil genetisch festgelegt ist. Ein erhöhter Wert gilt als eigenständiger Beitrag zum Herz-Kreislauf-Risiko, unabhängig vom LDL. Lebensstil verändert Lp(a) kaum; die Konsequenz eines hohen Werts liegt vor allem darin, die übrigen Risikofaktoren konsequenter anzugehen.</p>`,
+    bodyHtml: `<h2>Was ist Lipoprotein(a)?</h2>
+<p>Lp(a) ähnelt dem <a href="/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/">LDL</a>-Teilchen, trägt aber zusätzlich ein besonderes Eiweiss, das Apolipoprotein(a). Diese Struktur macht es zu einem eigenen Risikomarker: Hohe Werte werden mit Gefässverkalkung und Erkrankungen der Herzklappen in Verbindung gebracht.</p>
+<h2>Warum ist die Genetik hier so wichtig?</h2>
+<p>Die Lp(a)-Höhe ist weitgehend angeboren und bleibt über das Leben relativ stabil. Deshalb reicht in der Regel eine einmalige Messung im Leben, und deshalb erklärt ein hoher Wert manche familiäre Häufung von Herzinfarkten trotz unauffälligem Cholesterin.</p>
+<h2>Was folgt aus einem erhöhten Wert?</h2>
+<p>Da sich Lp(a) durch Ernährung und Bewegung kaum senken lässt und breit verfügbare Medikamente dafür bislang fehlen, liegt der praktische Nutzen der Messung in der Risikoeinschätzung: Bei hohem Lp(a) wird ärztlich meist empfohlen, LDL, Blutdruck, Blutzucker und Rauchen besonders konsequent zu kontrollieren. Diese Abwägung gehört in die ärztliche Beratung.</p>
+<h2>Wer sollte den Wert mit dem Arzt besprechen?</h2>
+<p>Besonders sinnvoll ist die Besprechung bei früher Herz-Kreislauf-Erkrankung in der Familie, bei eigener Gefässerkrankung trotz guter Cholesterinwerte oder wenn der Wert im Rahmen einer Risikoabklärung auffällig war.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Lp(a) ist keine Diagnose und kein Schicksalsurteil: Es ist ein Risikofaktor unter mehreren, dessen Bedeutung vom Gesamtprofil abhängt. Umgekehrt schliesst ein normales Lp(a) ein Herz-Kreislauf-Risiko nicht aus. Beginne oder ändere keine Medikamente aufgrund dieses Werts selbstständig. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht. Für Lp(a) sind zudem die Messeinheiten uneinheitlich (mg/dl vs. nmol/l), was Vergleiche zwischen Laboren erschwert.</p>`,
+    followUpHtml: `<p>Üblich sind das vollständige Lipidprofil (<a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Cholesterin</a>, LDL, <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceride</a>), Blutdruck und Blutzucker sowie eine ärztliche Gesamtrisiko-Beurteilung; eine ständige Wiederholung der Lp(a)-Messung ist meist unnötig.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören ein hoher Wert zusammen mit familiären Frühinfarkten oder eigener Gefässerkrankung. Brustschmerzen, Atemnot oder neurologische Ausfälle sind unabhängig vom Laborwert ein Notfall (Telefon 144).</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/', label: 'LDL erhöht: Was bedeutet ein hoher LDL-Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/hdl-niedrig/', label: 'HDL niedrig: Was bedeutet ein zu tiefer HDL-Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/', label: 'Triglyceride erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'harnstoff-niedrig',
+    gruppe: 'Niere & Blutdruck',
+    title: 'Harnstoff niedrig: Was bedeutet ein zu tiefer Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Ein niedriger Harnstoffwert ist meist harmlos und hängt oft mit Ernährung, Flüssigkeit oder Muskelmasse zusammen. Was der Wert bedeutet und wann er besprochen gehört.',
+    primaryPurpose: 'Einordnung des niedrigen Harnstoffs; harnstoff-erhoeht bleibt HIGH-Owner, nierenwerte-erhoeht bleibt Umbrella.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'harnstoff-erhoeht bleibt Owner des Hoch-Intents (beidseitig verlinkt); nierenwerte-erhoeht und kreatinin-erhoeht bleiben eigene Owner. Diese Seite besitzt NUR den Niedrig-Intent.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin)',
+    shortAnswerHtml: `<p>Harnstoff entsteht beim Abbau von Eiweiss und wird über die Nieren ausgeschieden. Ein Wert unter dem Referenzbereich ist deutlich seltener ein Krankheitszeichen als ein erhöhter Wert: Häufige Erklärungen sind eine eiweissarme Ernährung, viel Flüssigkeit, geringe Muskelmasse oder eine Schwangerschaft. Nur in bestimmten Konstellationen lohnt eine genauere Abklärung.</p>`,
+    bodyHtml: `<h2>Warum werden niedrige Werte anders beurteilt als hohe?</h2>
+<p>Ein <a href="/gesundheitsbibliothek/befunde-werte/harnstoff-erhoeht/">erhöhter Harnstoff</a> wirft vor allem die Frage nach Nierenfunktion und Flüssigkeitshaushalt auf. Ein niedriger Wert entsteht dagegen meist, wenn weniger Harnstoff gebildet wird oder das Blut verdünnter ist; die Nierenfunktion ist dafür selten der Grund.</p>
+<h2>Was kann den Harnstoff senken?</h2>
+<ul><li>eiweissarme oder kalorienarme Ernährung, auch bei vegetarisch-veganer Kost mit wenig Protein</li><li>hohe Trinkmengen oder Infusionen (Verdünnung)</li><li>Schwangerschaft (physiologisch)</li><li>geringe Muskelmasse</li><li>selten eine deutlich eingeschränkte Leberfunktion, da die Leber den Harnstoff bildet</li><li>sehr selten angeborene Störungen des Harnstoffzyklus</li></ul>
+<h2>Wann bekommt der Wert Gewicht?</h2>
+<p>Isoliert und leicht erniedrigt ist der Harnstoff meist ohne Krankheitswert. Aufmerksamkeit verdient er, wenn gleichzeitig <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte</a> deutlich auffällig sind, Zeichen einer Mangelernährung bestehen oder weitere Werte in dieselbe Richtung zeigen.</p>`,
+    notProofHtml: `<p>Ein niedriger Harnstoffwert allein ist keine Diagnose und in den meisten Fällen harmlos; er beweist weder eine Leber- noch eine Ernährungsstörung. Kontext, Begleitwerte und Verlauf entscheiden. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind der Blick auf Ernährung und Trinkmenge, <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und eGFR, je nach Situation Leberwerte und Albumin sowie eine Kontrolle im Verlauf statt Einzelwert-Bewertung.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehört ein niedriger Harnstoff vor allem zusammen mit deutlich auffälligen Leberwerten, ungewolltem Gewichtsverlust, Zeichen von Mangelernährung oder in Kombination mit weiteren auffälligen Befunden.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/harnstoff-erhoeht/', label: 'Harnstoff erhöht: Was bedeutet ein zu hoher Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
     ],
   },
   {

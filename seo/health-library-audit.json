@@ -1,16 +1,16 @@
 {
   "generated": "2026-09-26",
   "totals": {
-    "healthPages": 434,
+    "healthPages": 444,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 53,
+      "befund": 59,
       "question": 34,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 14,
+      "tcm_hub": 18,
       "selfcare": 11,
       "editorial": 78,
       "body_signal": 75,
@@ -240,7 +240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 18
     },
     {
@@ -510,7 +510,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 42,
+      "inboundContentLinks": 43,
       "outboundHealthLinks": 5
     },
     {
@@ -830,7 +830,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 129,
+      "inboundContentLinks": 131,
       "outboundHealthLinks": 21
     },
     {
@@ -980,7 +980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 80,
+      "inboundContentLinks": 81,
       "outboundHealthLinks": 17
     },
     {
@@ -1070,7 +1070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 13
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 256,
+      "inboundContentLinks": 266,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 54,
-      "outboundHealthLinks": 56
+      "inboundContentLinks": 60,
+      "outboundHealthLinks": 62
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1200,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 7
     },
     {
@@ -1220,7 +1220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 6
     },
     {
@@ -1234,14 +1234,24 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/erythrozyten-erhoeht/",
+      "type": "befund",
+      "title": "Erythrozyten erhöht: Was bedeutet eine zu hohe Anzahl? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/",
       "type": "befund",
       "title": "Erythrozyten niedrig: Was bedeutet eine zu niedrige Anzahl? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/",
@@ -1260,7 +1270,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 7
     },
     {
@@ -1300,8 +1310,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/haematokrit-niedrig/",
+      "type": "befund",
+      "title": "Hämatokrit niedrig: Was bedeutet ein zu tiefer Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/",
@@ -1310,7 +1330,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -1320,7 +1340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 7
     },
     {
@@ -1340,8 +1360,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/harnstoff-niedrig/",
+      "type": "befund",
+      "title": "Harnstoff niedrig: Was bedeutet ein zu tiefer Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/",
@@ -1360,7 +1390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -1390,7 +1420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 7
     },
     {
@@ -1410,8 +1440,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/",
@@ -1420,7 +1450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 9
     },
     {
@@ -1454,6 +1484,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/lipoprotein-a-erhoeht/",
+      "type": "befund",
+      "title": "Lipoprotein(a) erhöht: Was bedeutet ein hoher Lp(a)-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/",
       "type": "befund",
       "title": "Lymphozyten erhöht: Was bedeutet das? | TCM.ch",
@@ -1474,14 +1514,24 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/mch-erhoeht/",
+      "type": "befund",
+      "title": "MCH erhöht: Was bedeutet ein zu hoher MCH-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/mchc-erhoeht/",
       "type": "befund",
       "title": "MCHC erhöht: Was bedeutet ein zu hoher Wert? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/mchc-niedrig/",
@@ -1490,7 +1540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -1500,8 +1550,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/mcv-niedrig/",
@@ -1510,8 +1560,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/",
@@ -1560,7 +1610,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/",
+      "type": "befund",
+      "title": "RDW erhöht: Was bedeutet ein hoher RDW-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 7
     },
     {
@@ -1590,7 +1650,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -1620,7 +1680,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -1920,7 +1980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 28,
       "outboundHealthLinks": 7
     },
     {
@@ -2080,7 +2140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 15
     },
     {
@@ -2120,8 +2180,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/fuenf-elemente/",
@@ -2134,14 +2194,34 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/jing/",
+      "type": "tcm_hub",
+      "title": "Jing in der TCM: Das Essenz-Konzept erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr-leber/",
+      "type": "tcm_hub",
+      "title": "Organuhr Leber: Was bedeutet die Leber-Zeit von 1 bis 3 Uhr? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 12
+    },
+    {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/",
       "type": "tcm_hub",
       "title": "TCM-Organuhr: Das traditionelle 24-Stunden-Modell erklärt | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/",
@@ -2150,8 +2230,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 10
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/shen/",
+      "type": "tcm_hub",
+      "title": "Shen in der TCM: Geist und Bewusstsein im traditionellen Modell | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/wei-qi/",
+      "type": "tcm_hub",
+      "title": "Wei Qi: Das Abwehr-Qi der TCM erklärt | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/yin-und-yang/",
@@ -2160,7 +2260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 6
     },
     {
@@ -2310,7 +2410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -3000,7 +3100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 11
     },
     {
@@ -3470,7 +3570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 253,
+      "inboundContentLinks": 257,
       "outboundHealthLinks": 12
     },
     {
@@ -3610,7 +3710,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 108,
+      "inboundContentLinks": 109,
       "outboundHealthLinks": 5
     },
     {
@@ -4120,7 +4220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 2
     },
     {

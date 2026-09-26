@@ -41,3 +41,25 @@
 - Blutfett-Cluster: cholesterin-erhoeht (Umbrella) vs. LDL/HDL/Triglyceride-Leaves — sauber getrennt, aber Google könnte Umbrella/LDL anfangs mischen; GSC-Query-Zuordnung beobachten.
 - harter-oberbauch vs. bauch-fuehlt-sich-hart-an: Lokalisierungs-Trennung wie beim Unterbauch-Paar; bei Query-Überlappung im GSC ggf. Title schärfen.
 - Sonst keine offenen Konflikte.
+
+## Teil 2 (Cluster-Tiefe: TCM verstehen + Blutbild/Lipide/Niere)
+
+**Ergebnis: 10 CREATED, 0 BLOCKED** · Natural Discovery (nicht in index-queue, verifiziert 0 Treffer).
+
+| URL | Keyword (CH) | Owner-Grenze | Gruppe/Sektion |
+|---|---|---|---|
+| tcm-verstehen/grundlagen/organuhr-leber/ | organuhr leber (~140, KD18) | Leaf unter Organuhr-Hub; ordnet „Aufwachen=Leberproblem" explizit ein; KS-Aufwachseite + Leberwerte bleiben Owner | Grundlagen |
+| tcm-verstehen/grundlagen/wei-qi/ | wei qi (~30) | NICHT mit Immunsystem gleichgesetzt, keine Schutzversprechen; Infekt-Intent bleibt Wissen-Artikel | Grundlagen |
+| tcm-verstehen/grundlagen/jing/ | jing tcm (~20) | keine Substanz/Anti-Aging/Supplements; aus geplant-Liste eingelöst | Grundlagen |
+| tcm-verstehen/grundlagen/shen/ | shen tcm (~20) | keine Psycho-Diagnostik aus Shen; Krisen-Hinweis 143/144; aus geplant-Liste eingelöst | Grundlagen |
+| befunde-werte/erythrozyten-erhoeht/ | erythrozyten erhöht (~10+Longtail) | Gegen-Intent zu -niedrig; Hb-hoch/HKT-hoch bleiben Owner | Blutbild |
+| befunde-werte/haematokrit-niedrig/ | hämatokrit niedrig (~20) | Gegen-Intent zu -erhoeht; Anämie-Kern bleibt Hb-low, kein Eisenmangel-Automatismus | Blutbild |
+| befunde-werte/rdw-erhoeht/ | rdw erhöht (~20) | Cluster-Verbindungsseite RDW+MCV-Muster; Ursachen-Owner bleiben | Blutbild |
+| befunde-werte/mch-erhoeht/ | mch erhöht (~20) | 4/5 bestanden via relationalem Aufbau: MCH folgt MCV, Ursachen-Tiefe an mcv-erhoeht delegiert (keine Duplikation); MCH≠MCHC als Kern | Blutbild |
+| befunde-werte/lipoprotein-a-erhoeht/ | lipoprotein a erhöht (~10) | genetischer Risikomarker, Einordnungs-Seite ohne Conversion/Medikamente/TCM-Senkungs-Claims | Stoffwechsel |
+| befunde-werte/harnstoff-niedrig/ | harnstoff niedrig (~20) | Gegen-Intent zu -erhoeht; meist-harmlos-Rahmung | Niere & Blutdruck |
+
+Inbound neu (9): qi→wei-qi/jing/shen, organuhr→organuhr-leber, erythrozyten-niedrig→erhoeht, haematokrit-erhoeht→niedrig, harnstoff-erhoeht→niedrig, ldl→lp(a), mcv-erhoeht+mcv-niedrig→rdw, mchc-erhoeht→mch. Cluster-Ketten komplettiert: RDW↔MCV↔MCH/MCHC↔Hb↔Ferritin↔B12; Cholesterin↔LDL↔HDL↔Triglyceride↔Lp(a); Nierenwerte↔Kreatinin↔Harnstoff hoch/niedrig; Qi↔WeiQi↔Jing↔Shen↔Organuhr(+Leber).
+Suchindex 326→**336** (+10 Synonyme inkl. Anisozytose, Lp(a), HbE). Sitemap 534→**544**. CSV +10. geplant-Liste bereinigt (Jing/Shen eingelöst).
+QA: Build sauber, alle 10 self-canonical/indexierbar/1 H1/0 Em-Dashes, health-audit 0/0/0/0, Renders 1440/390 clean.
+Restrisiko: MCH-erhoeht vs. MCV-erhoeht ist das engste Paar der Welle (bewusst relational gelöst); im GSC beobachten, bei Query-Mischung MCH weiter zuspitzen.
