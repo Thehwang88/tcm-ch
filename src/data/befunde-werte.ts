@@ -187,6 +187,7 @@ export const befundeWerte: BefundWert[] = [
     relatedConditions: [{ href: '/beschwerden/immunschwaeche/', label: 'Immunschwäche & Infektanfälligkeit' }],
     relatedSignals: [{ href: '/koerpersignale/hitzegefuehl-ohne-fieber/', label: 'Hitzegefühl ohne Fieber' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'Grosses Blutbild: Was wird gemessen?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-niedrig/', label: 'Leukozyten niedrig: Was bedeutet eine zu niedrige Anzahl?' },
       { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/', label: 'Monozyten erhöht: Was bedeutet das?' },
@@ -333,6 +334,7 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Nierenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kreatinin und eGFR nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/harnsaeure-erhoeht/', label: 'Harnsäure erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },

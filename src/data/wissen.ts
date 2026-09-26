@@ -570,6 +570,7 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      { "href": "/beschwerden/immunschwaeche/", "label": "Immunschwäche", "cat": "Beschwerde" },
       {
         "href": "/akupunktur-in-der-naehe/",
         "label": "Akupunktur in meiner Nähe",

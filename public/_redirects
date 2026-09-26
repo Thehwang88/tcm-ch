@@ -30,3 +30,27 @@
 /en/locations/zuerich-city/  /en/locations/              301
 /en/locations/zuerich-bellevue   /en/locations/              301
 /en/locations/zuerich-bellevue/  /en/locations/              301
+
+# --- GSC-Malformed-Varianten (Cleanup 26.09.2026): exakte 301s, keine internen Quellen gefunden ---
+/koerpersignale/hitzegefuehl-ohne-feber    /koerpersignale/hitzegefuehl-ohne-fieber/  301
+/koerpersignale/hitzegefuehl-ohne-feber/   /koerpersignale/hitzegefuehl-ohne-fieber/  301
+/koerpersignale/hitzegefuehl-ohne-feuer    /koerpersignale/hitzegefuehl-ohne-fieber/  301
+/koerpersignale/hitzegefuehl-ohne-feuer/   /koerpersignale/hitzegefuehl-ohne-fieber/  301
+/koerpersignale/bauch-fuehle-sich-hart-an    /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehle-sich-hart-an/   /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sich-hard-an    /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sich-hard-an/   /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sich-hart-an]   /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sich-hart-an]/  /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sigen-hart-an   /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/bauch-fuehlt-sigen-hart-an/  /koerpersignale/bauch-fuehlt-sich-hart-an/  301
+/koerpersignale/herzklopfen-nach-esssen-was-kann-dahinterstecken   /koerpersignale/herzklopfen-nach-dem-essen/  301
+/koerpersignale/herzklopfen-nach-esssen-was-kann-dahinterstecken/  /koerpersignale/herzklopfen-nach-dem-essen/  301
+/koerpersignale/kalte-haende-trotrocken-waerme    /koerpersignale/kalte-haende-trotz-waerme/  301
+/koerpersignale/kalte-haende-trotrocken-waerme/   /koerpersignale/kalte-haende-trotz-waerme/  301
+/koerpersignale/ohr-knackt-beim-schlucker    /koerpersignale/ohr-knackt-beim-schlucken/  301
+/koerpersignale/ohr-knackt-beim-schlucker/   /koerpersignale/ohr-knackt-beim-schlucken/  301
+/koerpersignale/ohrnackt-beim-schlucken    /koerpersignale/ohr-knackt-beim-schlucken/  301
+/koerpersignale/ohrnackt-beim-schlucken/   /koerpersignale/ohr-knackt-beim-schlucken/  301
+/en/therapies/shiatsu/%7C   /en/therapies/shiatsu/  301
+/en/therapies/shiatsu/%7C/  /en/therapies/shiatsu/  301

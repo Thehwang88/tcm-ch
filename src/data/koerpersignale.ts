@@ -882,6 +882,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit einem tauben Bein zum Arzt?', a: 'Sofort bei Taubheit, die bestehen bleibt, bei einem Fuss, der beim Gehen hängt, bei Taubheit im Genital- oder Analbereich oder neuen Blasen- und Darmstörungen. Ebenfalls zeitnah bei wiederkehrender Taubheit mit Rückenschmerz und Ausstrahlung.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/ischias-schmerzen/', label: 'Was tun bei Ischias-Schmerzen?', cat: 'Was jetzt?' },
       { href: '/visuals/ischias/', label: 'Visual: Verlauf des Ischiasnervs', cat: 'Visual' },
       { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
@@ -1028,6 +1029,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich mit Nackenknacken zum Arzt?', a: 'Wenn Schmerzen, deutliche Bewegungseinschränkung oder ausstrahlende Beschwerden dazukommen. Neu auftretende Taubheit, Kribbeln oder Schwäche in Arm oder Hand sowie Beschwerden nach einem Unfall gehören zügig abgeklärt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/muskelverspannungen/', label: 'Was tun bei Muskelverspannungen?', cat: 'Was jetzt?' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
       { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen ein', cat: 'Körpersignal' },
       { href: '/koerpersignale/einzelne-finger-taub/', label: 'Einzelne Finger taub', cat: 'Körpersignal' },
@@ -1087,6 +1089,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich mit einem knackenden Knie zum Arzt?', a: 'Wenn Schmerzen, deutliche Schwellung, Instabilität oder Bewegungseinschränkung dazukommen. Nach einer Verletzung gehört das Knie untersucht, wenn du nicht normal auftreten kannst oder sich das Gelenk nicht vollständig bewegen lässt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/knieschmerzen-nach-belastung/', label: 'Was tun bei Knieschmerzen nach Belastung?', cat: 'Was jetzt?' },
       { href: '/beschwerden/knieschmerzen/', label: 'Knieschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
       { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
@@ -1798,6 +1801,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich Herzklopfen abklären lassen?', a: 'Wenn das Herz in Ruhe rast, gehäuft stolpert oder unregelmässig schlägt, und immer, wenn Brustschmerzen, Atemnot, Schwindel oder Ohnmacht dazukommen. Ein EKG oder Langzeit-EKG schafft hier Klarheit. Bei akutem Brustschmerz mit Atemnot: Notruf 144.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG & Langzeit-EKG: Was zeigt die Untersuchung?', cat: 'Untersuchung' },
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
       { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen', cat: 'Körpersignal' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
@@ -1854,6 +1858,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wie oft ist Augenflimmern normal?', a: 'Vereinzelte Auren bei bekannter Migräne sind kein Alarmzeichen. Häufen sich die Attacken, verändern sie sich, dauern sie länger als eine Stunde oder treten sie erstmals nach dem 50. Lebensjahr auf, gehört das ärztlich abgeklärt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/migraene-im-anflug/', label: 'Was tun bei Migräne im Anflug?', cat: 'Was jetzt?' },
       { href: '/beschwerden/augenmigraene/', label: 'Augenmigräne', cat: 'Beschwerde' },
       { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
       { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt', cat: 'Körpersignal' },
@@ -2365,6 +2370,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Herzstolpern sofort zum Arzt?', a: 'Sofort den Notruf 144 wählen bei Stolpern mit Brustschmerzen, Engegefühl, starker Atemnot oder Ohnmacht. Zeitnah abklären lassen: anhaltend unregelmässiger Puls, anfallsartiges Herzrasen oder Stolpern mit Leistungsknick und Luftnot.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG & Langzeit-EKG: Was zeigt die Untersuchung?', cat: 'Untersuchung' },
       { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?', cat: 'Frage' },
       { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
       { href: '/beschwerden/angststoerungen/', label: 'Angststörungen', cat: 'Beschwerde' },

@@ -300,7 +300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -440,7 +440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 20
     },
     {
@@ -1350,7 +1350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1611,7 +1611,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 13,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/",
@@ -2350,7 +2350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -2360,7 +2360,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -2380,7 +2380,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 4
     },
     {
@@ -2390,7 +2390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 7
     },
     {
@@ -2811,7 +2811,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/augenlid-zuckt/",
@@ -2841,7 +2841,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 17,
-      "outboundHealthLinks": 14
+      "outboundHealthLinks": 15
     },
     {
       "url": "/koerpersignale/beine-kribbeln-nachts/",
@@ -3161,7 +3161,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/kopfdruck-beim-buecken/",
@@ -3291,7 +3291,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/nacken-morgens-steif/",
@@ -4131,7 +4131,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 1,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/burnout-symptome-erkennen/",
@@ -4221,7 +4221,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 2
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/heizungsluft-trockene-schleimhaeute/",

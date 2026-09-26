@@ -112,6 +112,7 @@ export const wissenAkupunkturBei: Wissen[] = [
       { q: 'Wohin soll ich mich stattdessen wenden?', a: 'An eine Ernährungsberatung oder deine Ärztin. Bei anerkannten Fachpersonen beteiligt sich die Zusatzversicherung daran häufig ebenfalls.' },
     ],
     related: [
+      { href: '/beschwerden/gewichtsmanagement/', label: 'Gewichtsmanagement', cat: 'Beschwerde' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
