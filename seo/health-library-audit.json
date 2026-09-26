@@ -1,19 +1,19 @@
 {
   "generated": "2026-09-26",
   "totals": {
-    "healthPages": 424,
+    "healthPages": 434,
     "byType": {
       "hub": 6,
       "condition": 106,
       "library_hub": 1,
-      "befund": 45,
+      "befund": 53,
       "question": 34,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 13,
+      "tcm_hub": 14,
       "selfcare": 11,
       "editorial": 78,
-      "body_signal": 74,
+      "body_signal": 75,
       "therapy": 36,
       "visual": 10
     }
@@ -150,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 16
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
+      "inboundContentLinks": 37,
       "outboundHealthLinks": 18
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 247,
+      "inboundContentLinks": 256,
       "outboundHealthLinks": 44
     },
     {
@@ -1110,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 46,
-      "outboundHealthLinks": 48
+      "inboundContentLinks": 54,
+      "outboundHealthLinks": 56
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1170,7 +1170,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/",
+      "type": "befund",
+      "title": "Blutsenkung (BSG) erhöht: Was bedeutet das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1180,7 +1190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1190,7 +1200,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/ck-erhoeht/",
+      "type": "befund",
+      "title": "CK erhöht: Was bedeutet ein hoher CK-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1200,8 +1220,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/",
@@ -1260,8 +1280,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/",
@@ -1300,7 +1320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 7
     },
     {
@@ -1334,14 +1354,34 @@
       "outboundHealthLinks": 4
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/hdl-niedrig/",
+      "type": "befund",
+      "title": "HDL niedrig: Was bedeutet ein zu tiefer HDL-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/kalium-niedrig/",
+      "type": "befund",
+      "title": "Kalium niedrig: Was bedeutet ein zu tiefer Kaliumwert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/",
       "type": "befund",
       "title": "Kalium zu hoch: Was bedeutet der Wert? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/",
@@ -1360,8 +1400,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/",
+      "type": "befund",
+      "title": "LDL erhöht: Was bedeutet ein hoher LDL-Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/",
@@ -1370,7 +1420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 9
     },
     {
@@ -1380,7 +1430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 11
     },
     {
@@ -1412,6 +1462,16 @@
       "inSitemap": true,
       "inboundContentLinks": 6,
       "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/magnesium-zu-niedrig/",
+      "type": "befund",
+      "title": "Magnesium zu niedrig: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/mchc-erhoeht/",
@@ -1470,8 +1530,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/",
+      "type": "befund",
+      "title": "Natrium zu niedrig: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/",
@@ -1490,7 +1560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 7
     },
     {
@@ -1514,13 +1584,23 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/",
+      "type": "befund",
+      "title": "Triglyceride erhöht: Was bedeutet der Wert? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/",
       "type": "befund",
       "title": "TSH erhöht: Was bedeutet der Wert? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -1800,7 +1880,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 10
     },
     {
@@ -1840,7 +1920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 24,
       "outboundHealthLinks": 7
     },
     {
@@ -1850,7 +1930,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 16
     },
     {
@@ -2000,7 +2080,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 15
     },
     {
@@ -2070,7 +2150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -2090,8 +2170,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/",
+      "type": "tcm_hub",
+      "title": "Akupunkturpunkte: Was sie sind und wie sie gewählt werden | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/",
@@ -2100,8 +2190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/methoden/",
@@ -2600,8 +2690,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 172,
-      "outboundHealthLinks": 75
+      "inboundContentLinks": 173,
+      "outboundHealthLinks": 76
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -2640,8 +2730,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/bein-wird-beim-sitzen-taub/",
@@ -2730,8 +2820,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/druckgefuehl-im-unterbauch/",
@@ -2834,13 +2924,23 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/harter-oberbauch-ohne-schmerzen/",
+      "type": "body_signal",
+      "title": "Harter Oberbauch ohne Schmerzen: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 10
+    },
+    {
       "url": "/koerpersignale/harter-unterbauch/",
       "type": "body_signal",
       "title": "Harter Unterbauch: Was kann dahinterstecken? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -2880,7 +2980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 10
     },
     {
@@ -3050,7 +3150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 10
     },
     {
@@ -3290,7 +3390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 14
     },
     {
@@ -3300,7 +3400,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 9
     },
     {
@@ -3360,7 +3460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 5
     },
     {
@@ -3370,7 +3470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 251,
+      "inboundContentLinks": 253,
       "outboundHealthLinks": 12
     },
     {
@@ -3710,7 +3810,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 110,
+      "inboundContentLinks": 111,
       "outboundHealthLinks": 14
     },
     {

@@ -108,7 +108,8 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert CRP nicht und stellt daraus keine Diagnosen. Erst wenn die Ursache ärztlich eingeordnet ist, kann sich die Frage stellen, ob eine komplementäre Behandlung, bezogen auf die diagnostizierte Erkrankung und deine konkreten Beschwerden, sinnvoll ist. Das besprechen wir ehrlich im Einzelfall.</p>`,
     relatedConditions: [{ href: '/beschwerden/immunschwaeche/', label: 'Immunschwäche & Infektanfälligkeit' }],
     relatedSignals: [{ href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber' }],
-    relatedArticles: [{ href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' }],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/', label: 'Blutsenkung (BSG) erhöht: Was bedeutet das?' },{ href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' }],
   },
   {
     slug: 'tsh-erhoeht',
@@ -226,6 +227,8 @@ export const befundeWerte: BefundWert[] = [
       { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen' },
     ],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/', label: 'Triglyceride erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/', label: 'LDL erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
     ],
@@ -583,6 +586,7 @@ export const befundeWerte: BefundWert[] = [
     integrativeContextHtml: `<p>Elektrolyte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kaliumwerte nicht, und kein komplementäres Verfahren ersetzt deren Kontrolle oder Behandlung.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-niedrig/', label: 'Kalium niedrig: Was bedeutet ein zu tiefer Kaliumwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-hoch/', label: 'Natrium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
@@ -690,6 +694,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Zeitnah ärztlich gehören stark erhöhte Werte, erhöhte Werte mit Gelbfärbung, dunklem Urin oder starken Oberbauchschmerzen sowie Muskelschmerzen mit auffallend dunklem Urin nach extremer Belastung. Brustschmerz mit Atemnot ist unabhängig vom Laborwert ein Notfall: Telefon 144.</p>`,
     integrativeContextHtml: `<p>Auch die GOT/AST gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ck-erhoeht/', label: 'CK erhöht: Was bedeutet ein hoher CK-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/gpt-alt-erhoeht/', label: 'GPT (ALT) erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
       { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
@@ -1085,6 +1090,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Rasch medizinisch gehören ein erhöhter Wert zusammen mit Verwirrtheit, ausgeprägter Schläfrigkeit, sehr wenig Urin, hohem Fieber mit grossen Flüssigkeitsverlusten oder wenn eine betroffene Person kaum trinken kann. Bei Bewusstseinsstörung gilt in der Schweiz: Notruf 144.</p>`,
     integrativeContextHtml: `<p>Elektrolyte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Natriumwerte nicht, und kein komplementäres Verfahren ersetzt deren Kontrolle oder Korrektur.</p>`,
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/', label: 'Natrium zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
     ],
@@ -1529,6 +1535,272 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-niedrig/', label: 'MCV niedrig: Was bedeutet ein zu niedriger MCV-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-hoch/', label: 'Hämoglobin zu hoch: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'triglyceride-erhoeht',
+    gruppe: 'Stoffwechsel',
+    title: 'Triglyceride erhöht: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Triglyceride sind Blutfette, die stark auf Ernährung, Alkohol und Stoffwechsellage reagieren. Wie der Wert eingeordnet wird und warum Nüchternheit eine Rolle spielt.',
+    primaryPurpose: 'Einordnung des Einzelwerts Triglyceride; cholesterin-erhoeht bleibt Blutfett-Umbrella.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'cholesterin-erhoeht bleibt Umbrella fuer Blutfette (dort sind Triglyceride Nebenaspekt); ldl-erhoeht und hdl-niedrig sind Schwester-Leaves. Diese Seite besitzt NUR den Triglycerid-Intent.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Kardiologie)',
+    shortAnswerHtml: `<p>Triglyceride sind Blutfette, die der Körper als Energiespeicher nutzt. Ein erhöhter Wert kann mit Ernährung, Alkohol, Übergewicht, Stoffwechsellage oder erblichen Faktoren zusammenhängen und wird zusammen mit Cholesterin, LDL und HDL sowie dem persönlichen Risikoprofil beurteilt. Ein einzelner erhöhter Wert ist keine Diagnose.</p>`,
+    bodyHtml: `<h2>Was sind Triglyceride?</h2>
+<p>Triglyceride stammen teils aus der Nahrung, teils bildet sie der Körper selbst, vor allem in der Leber. Sie dienen als Energiespeicher und werden im Blut transportiert. Gemessen werden sie meist im Rahmen eines Lipidprofils zusammen mit <a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Cholesterin</a>, LDL und HDL.</p>
+<h2>Warum spielt die letzte Mahlzeit eine Rolle?</h2>
+<p>Triglyceride reagieren deutlich auf Essen und Trinken: Nach einer fett- oder zuckerreichen Mahlzeit oder nach Alkohol kann der Wert vorübergehend höher liegen. Ob nüchtern oder nicht nüchtern gemessen wurde, gehört deshalb zur Einordnung; ein unerwartet hoher Wert wird häufig unter definierten Bedingungen kontrolliert.</p>
+<h2>Was kann erhöhte Triglyceride begünstigen?</h2>
+<ul><li>Ernährung mit viel Zucker, Weissmehl und Alkohol</li><li>Übergewicht, insbesondere Bauchfett</li><li>wenig Bewegung</li><li>Diabetes oder Insulinresistenz</li><li>Schilddrüsenunterfunktion</li><li>bestimmte Medikamente</li><li>erbliche Fettstoffwechselstörungen</li><li>Schwangerschaft</li></ul>
+<p>Welche Faktoren im Einzelfall beitragen, zeigt der Wert allein nicht.</p>
+<h2>Warum ist der Wert relevant?</h2>
+<p>Deutlich erhöhte Triglyceride gelten als ein Baustein des Herz-Kreislauf-Risikoprofils und können bei sehr hohen Werten die Bauchspeicheldrüse belasten. Die Bedeutung ergibt sich aber immer aus dem Gesamtbild: Blutdruck, Blutzucker, LDL, Rauchen, Familiengeschichte und Lebensstil zählen mit.</p>`,
+    notProofHtml: `<p>Ein einzelner erhöhter Triglyceridwert beweist keine Fettstoffwechselstörung und erst recht keine Gefässerkrankung: Mahlzeiten, Alkohol und die aktuelle Stoffwechsellage beeinflussen den Wert deutlich. Umgekehrt schliesst ein normaler Wert ein erhöhtes Herz-Kreislauf-Risiko nicht aus. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung unter definierten Bedingungen, das vollständige Lipidprofil (Cholesterin, <a href="/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/">LDL</a>, <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>), Blutzucker beziehungsweise HbA1c, TSH und die Durchsicht von Medikamenten und Lebensstilfaktoren. Behandlungsentscheide richten sich nach dem Gesamtrisiko, nicht nach dem Einzelwert.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehören insbesondere wiederholt deutlich erhöhte Werte, sehr hohe Einzelwerte, gleichzeitig auffälliger Blutzucker sowie neue starke Oberbauchschmerzen bei bekannt sehr hohen Triglyceriden (mögliches Zeichen einer Bauchspeicheldrüsenreizung; im Notfall Telefon 144).</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/', label: 'LDL erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/hdl-niedrig/', label: 'HDL niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+    ],
+  },
+  {
+    slug: 'ldl-erhoeht',
+    gruppe: 'Stoffwechsel',
+    title: 'LDL erhöht: Was bedeutet ein hoher LDL-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'LDL-Cholesterin gilt als wichtigster Blutfett-Wert für das Herz-Kreislauf-Risikoprofil. Wie der Wert eingeordnet wird und warum das Gesamtrisiko entscheidet.',
+    primaryPurpose: 'Einordnung des Einzelwerts LDL; cholesterin-erhoeht bleibt Blutfett-Umbrella.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'cholesterin-erhoeht bleibt Umbrella (Gesamtcholesterin); diese Seite besitzt NUR den LDL-Intent; triglyceride-erhoeht und hdl-niedrig sind Schwester-Leaves. Keine Statin-/Medikamenten-Empfehlungen.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Kardiologie)',
+    shortAnswerHtml: `<p>LDL-Cholesterin transportiert Cholesterin von der Leber in die Gewebe und gilt in der Risikobeurteilung als der wichtigste einzelne Blutfett-Wert. Ein erhöhtes LDL ist keine Krankheit, sondern ein Risikofaktor: Welche Konsequenz es hat, hängt vom gesamten Herz-Kreislauf-Risikoprofil ab, nicht vom Wert allein.</p>`,
+    bodyHtml: `<h2>Was ist LDL?</h2>
+<p>LDL steht für Low-Density-Lipoprotein, ein Transportpaket für Cholesterin im Blut. Vereinfacht gilt: Je mehr LDL über lange Zeit im Blut zirkuliert, desto mehr Cholesterin kann sich in Gefässwänden ablagern. Deshalb wird LDL im Lipidprofil zusammen mit <a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Gesamtcholesterin</a>, HDL und Triglyceriden gemessen.</p>
+<h2>Warum gibt es keinen einheitlichen Grenzwert?</h2>
+<p>Welcher LDL-Bereich als Zielwert gilt, hängt vom individuellen Risiko ab: Alter, Blutdruck, Rauchen, Diabetes, Familiengeschichte und bestehende Gefässerkrankungen fliessen ein. Für eine gesunde Person ohne Risikofaktoren gelten andere Zielbereiche als nach einem Herzinfarkt. Deshalb steht auf dem Laborbericht ein Referenzbereich, die eigentliche Bewertung ist aber eine ärztliche Risikoabwägung.</p>
+<h2>Was kann ein hohes LDL begünstigen?</h2>
+<ul><li>Veranlagung bis hin zur familiären Hypercholesterinämie</li><li>Ernährung mit vielen gesättigten Fetten und Transfetten</li><li>wenig Bewegung, Übergewicht</li><li>Schilddrüsenunterfunktion</li><li>bestimmte Medikamente</li><li>bestimmte Leber- und Nierenerkrankungen</li></ul>
+<h2>Merkt man ein hohes LDL?</h2>
+<p>In der Regel nicht: Erhöhte Blutfette verursachen lange keine Symptome. Genau deshalb wird das Lipidprofil im Rahmen von Vorsorgeuntersuchungen bestimmt und im Verlauf verglichen.</p>`,
+    notProofHtml: `<p>Ein erhöhtes LDL ist keine Diagnose einer Gefässerkrankung und sagt allein nichts über den Zustand deiner Gefässe aus. Umgekehrt bedeutet ein normales LDL keinen Freipass: Das Herz-Kreislauf-Risiko entsteht aus dem Zusammenspiel mehrerer Faktoren. Beginne oder ändere keine Medikamente aufgrund eines Laborwertes selbstständig. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Bestätigungsmessung, das vollständige Lipidprofil inklusive <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceriden</a> und <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, Blutdruck- und Blutzuckerwerte, TSH sowie eine ärztliche Risikoabschätzung; je nach Profil folgen Lebensstilmassnahmen und gegebenenfalls eine medikamentöse Beratung.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich besprochen gehören sehr hohe Werte, eine auffällige Familiengeschichte mit frühen Herzinfarkten sowie ein erhöhtes LDL zusammen mit weiteren Risikofaktoren wie Bluthochdruck, Diabetes oder Rauchen. Brustschmerzen oder Atemnot sind unabhängig vom Laborwert ein Notfall (Telefon 144).</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/', label: 'Triglyceride erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/hdl-niedrig/', label: 'HDL niedrig: Was bedeutet der Wert?' },
+      { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
+    ],
+  },
+  {
+    slug: 'hdl-niedrig',
+    gruppe: 'Stoffwechsel',
+    title: 'HDL niedrig: Was bedeutet ein zu tiefer HDL-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'HDL gilt als das „Rücktransport-Cholesterin". Was ein niedriger Wert aussagt, warum er nur im Lipidprofil sinnvoll interpretierbar ist und was ihn beeinflusst.',
+    primaryPurpose: 'Einordnung des Einzelwerts HDL niedrig; cholesterin-erhoeht bleibt Blutfett-Umbrella.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'cholesterin-erhoeht bleibt Umbrella; ldl-erhoeht und triglyceride-erhoeht sind Schwester-Leaves. Diese Seite besitzt NUR den HDL-Niedrig-Intent; keine Supplement-Empfehlungen.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Kardiologie)',
+    shortAnswerHtml: `<p>HDL-Cholesterin transportiert Cholesterin aus den Geweben zurück zur Leber und wird deshalb oft vereinfacht als „gutes Cholesterin" bezeichnet. Ein niedriger HDL-Wert gilt als ungünstiger Baustein im Risikoprofil, ist aber für sich genommen keine Krankheit und kein zuverlässiger Einzelmassstab.</p>`,
+    bodyHtml: `<h2>Was ist HDL?</h2>
+<p>HDL steht für High-Density-Lipoprotein. Es sammelt überschüssiges Cholesterin ein und bringt es zur Leber zurück. Gemessen wird HDL im Lipidprofil zusammen mit <a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Gesamtcholesterin</a>, <a href="/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/">LDL</a> und <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceriden</a>.</p>
+<h2>Was kann ein niedriges HDL begünstigen?</h2>
+<ul><li>wenig körperliche Aktivität</li><li>Rauchen</li><li>Übergewicht, insbesondere Bauchfett</li><li>Diabetes und Insulinresistenz</li><li>erhöhte Triglyceride (beides tritt oft gemeinsam auf)</li><li>bestimmte Medikamente</li><li>Veranlagung</li></ul>
+<h2>Ist mehr HDL automatisch besser?</h2>
+<p>Nein. Die frühere Vorstellung, HDL müsse möglichst hoch sein, gilt heute als überholt: Sehr hohe HDL-Werte sind nicht automatisch schützend, und Medikamente, die nur HDL anheben, haben in Studien keinen klaren Nutzen gezeigt. Entscheidend bleibt das gesamte Risikoprofil, allen voran LDL, Blutdruck, Blutzucker und Rauchen.</p>
+<h2>Lässt sich HDL beeinflussen?</h2>
+<p>Regelmässige Bewegung, Rauchstopp und Gewichtsreduktion wirken sich günstig auf das Lipidprofil insgesamt aus, oft auch auf HDL. Gezielte Präparate zur HDL-Erhöhung sind kein etablierter Behandlungsweg; besprich Massnahmen im Rahmen deines Gesamtprofils ärztlich.</p>`,
+    notProofHtml: `<p>Ein niedriger HDL-Wert allein beweist kein erhöhtes Herz-Kreislauf-Risiko und schon gar keine Erkrankung; er ist ein Baustein unter mehreren. Auch ein hoher HDL-Wert garantiert keinen Schutz. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind das vollständige Lipidprofil, Blutzucker beziehungsweise HbA1c, Blutdruck und die Einordnung ins Gesamtrisiko; im Verlauf zählt die Entwicklung des Profils unter Lebensstilmassnahmen mehr als der einzelne HDL-Wert.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprochen gehört ein niedriges HDL vor allem zusammen mit weiteren Risikofaktoren (hohes LDL, hohe Triglyceride, Diabetes, Bluthochdruck, Rauchen) oder einer familiären Häufung von Herz-Kreislauf-Erkrankungen.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/', label: 'LDL erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/', label: 'Triglyceride erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'kalium-niedrig',
+    gruppe: 'Elektrolyte',
+    title: 'Kalium niedrig: Was bedeutet ein zu tiefer Kaliumwert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Ein niedriger Kaliumwert kann durch Verluste über Magen-Darm oder Niere, Medikamente oder Verschiebungen entstehen. Warum keine Eigenkorrektur und wann es dringend ist.',
+    primaryPurpose: 'Einordnung des niedrigen Kaliums; kalium-zu-hoch bleibt separater HIGH-Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'kalium-zu-hoch bleibt Owner des Hoch-Intents (beidseitig verlinkt). Diese Seite besitzt NUR den Niedrig-Intent. Sicherheitsseite: keine DIY-Elektrolytkorrektur, keine Supplement-Dosierungen.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>Kalium ist ein Elektrolyt, das für Herzrhythmus, Muskeln und Nerven wichtig ist. Liegt der Wert unter dem Referenzbereich, spricht man von einer Hypokaliämie. Häufige Zusammenhänge sind Verluste über Magen-Darm oder Niere sowie bestimmte Medikamente. Wichtig: Kalium gehört nicht in die Eigenkorrektur; Ursache und allfälliger Ausgleich sind ärztliche Aufgaben.</p>`,
+    bodyHtml: `<h2>Wofür braucht der Körper Kalium?</h2>
+<p>Kalium steuert zusammen mit Natrium die elektrische Erregbarkeit von Herz-, Muskel- und Nervenzellen. Schon deshalb wird ein auffälliger Wert ernst genommen: Deutliche Abweichungen können den Herzrhythmus beeinflussen.</p>
+<h2>Was kann Kalium senken?</h2>
+<ul><li>Erbrechen oder anhaltender Durchfall</li><li>entwässernde Medikamente (bestimmte Diuretika)</li><li>Abführmittel, besonders bei regelmässigem Gebrauch</li><li>vermehrte Verluste über die Niere, auch hormonell bedingt</li><li>sehr einseitige Ernährung oder Essstörungen</li><li>Verschiebungen von Kalium in die Zellen, etwa bei bestimmten Medikamenten oder Stoffwechsellagen</li></ul>
+<p>Die Ursache lässt sich aus dem Einzelwert nicht ablesen; Medikamentenliste und Begleitwerte gehören zur Beurteilung.</p>
+<h2>Welche Beschwerden können auftreten?</h2>
+<p>Leichte Erniedrigungen bleiben oft unbemerkt. Möglich sind Muskelschwäche, Krämpfe, Müdigkeit, Verstopfung und <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern</a>. Diese Beschwerden sind unspezifisch und beweisen keinen Kaliummangel.</p>
+<h2>Warum keine Eigenkorrektur?</h2>
+<p>Kalium hat ein enges Fenster: Zu viel ist ebenso problematisch wie zu wenig, und hochdosierte Präparate können den Wert schnell überkorrigieren. Ob, wie und wie schnell ausgeglichen wird, hängt von Ursache, Ausmass, Nierenfunktion und Medikamenten ab und gehört in ärztliche Hände. Setze auch keine verordneten Diuretika selbstständig ab.</p>`,
+    notProofHtml: `<p>Ein einzelner niedriger Kaliumwert ist keine Diagnose und kann durch die Abnahmebedingungen mitbeeinflusst sein. Er beweist weder eine Nieren- noch eine Hormonerkrankung; dafür braucht es Verlauf, Begleitwerte und die klinische Situation. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung, weitere Elektrolyte wie <a href="/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/">Natrium</a> und <a href="/gesundheitsbibliothek/befunde-werte/magnesium-zu-niedrig/">Magnesium</a> (ein Magnesiummangel kann eine Kaliumkorrektur erschweren), Nierenwerte, je nach Situation ein EKG sowie die Durchsicht der Medikamente.</p>`,
+    redFlagsHtml: `<p>Rasch medizinisch beurteilt gehören: ausgeprägte Muskelschwäche, Lähmungsgefühle, deutliches Herzstolpern oder Herzrasen, Ohnmacht sowie ein stark erniedrigter Wert im Laborbericht. Bei Brustschmerzen, schwerer Schwäche oder Bewusstseinsstörung gilt der Notruf 144.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/', label: 'Kalium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/', label: 'Natrium zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/magnesium-zu-niedrig/', label: 'Magnesium zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'natrium-zu-niedrig',
+    gruppe: 'Elektrolyte',
+    title: 'Natrium zu niedrig: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Ein zu tiefes Natrium (Hyponatriämie) ist die häufigste Elektrolytstörung und meist ein Wasser-, kein Salzproblem. Warum Tempo und Ursache zählen und wann es dringend ist.',
+    primaryPurpose: 'Einordnung des niedrigen Natriums; natrium-zu-hoch bleibt separater HIGH-Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'natrium-zu-hoch bleibt Owner des Hoch-Intents (beidseitig verlinkt). Diese Seite besitzt NUR den Niedrig-Intent. Sicherheitsseite: keine Trink-/Salz-Selbstkorrektur-Anleitungen.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Nephrologie)',
+    shortAnswerHtml: `<p>Liegt das Natrium im Blut unter dem Referenzbereich, spricht man von einer Hyponatriämie, der häufigsten Elektrolytstörung überhaupt. Meist ist sie ein Problem des Wasserhaushalts: Es ist zu viel freies Wasser im Verhältnis zum Natrium vorhanden, nicht zwingend zu wenig Salz. Ursache, Tempo der Entwicklung und Beschwerden bestimmen die Bedeutung.</p>`,
+    bodyHtml: `<h2>Was macht Natrium im Körper?</h2>
+<p>Natrium reguliert zusammen mit dem Wasserhaushalt die Verteilung von Flüssigkeit zwischen Blut und Zellen. Sinkt das Natrium, kann Wasser in die Zellen verschoben werden; das betrifft besonders das Gehirn und erklärt, warum eine ausgeprägte Hyponatriämie neurologische Beschwerden machen kann.</p>
+<h2>Was kann Natrium senken?</h2>
+<ul><li>bestimmte Medikamente, darunter Entwässerungsmittel und einige Antidepressiva</li><li>sehr hohe Trinkmengen in kurzer Zeit, auch bei Ausdauersport</li><li>Erbrechen und Durchfall</li><li>Herz-, Leber- oder Nierenerkrankungen mit Wassereinlagerung</li><li>hormonelle Ursachen, etwa ein Zuviel des antidiuretischen Hormons (SIADH) oder eine Nebennieren-/Schilddrüsenstörung</li></ul>
+<p>Welche Ursache vorliegt, klärt sich über Krankengeschichte, Medikamente, Urin- und Blutwerte, nicht über den Einzelwert.</p>
+<h2>Welche Beschwerden sind möglich?</h2>
+<p>Eine langsam entstandene, leichte Erniedrigung bleibt oft unbemerkt oder zeigt sich unspezifisch: Müdigkeit, Konzentrationsprobleme, Gangunsicherheit, Übelkeit, Kopfschmerzen. Ein rasch fallendes oder stark erniedrigtes Natrium kann dagegen zu Verwirrtheit, Erbrechen und Krampfanfällen führen.</p>
+<h2>Warum ist das Tempo der Korrektur so wichtig?</h2>
+<p>Ein zu schneller Ausgleich eines länger bestehenden Natriummangels kann das Gehirn schädigen. Genau deshalb gibt es hier keine sinnvolle Selbsthilfe über Salz- oder Trinkregeln: Diagnostik und Korrektur gehören in ärztliche Hände, oft mit kontrollierten Verlaufsmessungen.</p>`,
+    notProofHtml: `<p>Ein einzelner niedriger Natriumwert ist keine Diagnose: Er unterscheidet nicht zwischen den vielen möglichen Ursachen und sagt allein nichts über die Dringlichkeit aus. Verlauf, Beschwerden, Medikamente und weitere Untersuchungen entscheiden. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung, weitere Elektrolyte wie <a href="/gesundheitsbibliothek/befunde-werte/kalium-niedrig/">Kalium</a>, Nieren- und je nach Situation Schilddrüsen- und Hormonwerte, Urinuntersuchungen sowie die Durchsicht der Medikamenten- und Trinkgewohnheiten.</p>`,
+    redFlagsHtml: `<p>Notfall (Telefon 144): Verwirrtheit, wiederholtes Erbrechen, starke Schläfrigkeit oder ein Krampfanfall bei bekannt niedrigem Natrium. Zeitnah ärztlich gehören: ein neu deutlich erniedrigter Wert, zunehmende Gangunsicherheit oder Stürze, insbesondere bei älteren Menschen unter Entwässerungs- oder Psychopharmaka-Therapie.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-hoch/', label: 'Natrium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-niedrig/', label: 'Kalium niedrig: Was bedeutet ein zu tiefer Kaliumwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'magnesium-zu-niedrig',
+    gruppe: 'Elektrolyte',
+    title: 'Magnesium zu niedrig: Was bedeutet der Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Ein tiefer Magnesiumwert kann mit Verlusten über Darm oder Niere, Medikamenten oder Alkohol zusammenhängen. Was der Blutwert zeigt, was nicht, und wann abklären.',
+    primaryPurpose: 'Einordnung des Einzelwerts Magnesium niedrig; kein Supplement-Ratgeber.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (nur Nebenerwähnungen in Beschwerden-Inhalten wie PMS/Wadenkrämpfe). Diese Seite besitzt NUR den Laborwert-Intent; keine Dosierungsempfehlungen; Wadenkrämpfe-Signal bleibt eigener Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin)',
+    shortAnswerHtml: `<p>Magnesium ist an Muskel- und Nervenfunktion, Herzrhythmus und vielen Stoffwechselvorgängen beteiligt. Ein Wert unter dem Referenzbereich (Hypomagnesiämie) kann mit Verlusten über Darm oder Niere, Medikamenten oder Alkoholkonsum zusammenhängen. Der Blutwert bildet die Körperspeicher nur unvollständig ab und ist deshalb allein wenig aussagekräftig.</p>`,
+    bodyHtml: `<h2>Was zeigt der Magnesium-Blutwert?</h2>
+<p>Nur rund ein Prozent des Körpermagnesiums zirkuliert im Blut; der grösste Teil steckt in Knochen und Muskeln. Ein normaler Blutwert schliesst einen Mangel deshalb nicht sicher aus, und ein leicht erniedrigter Wert bedeutet nicht automatisch entleerte Speicher. Der Wert wird im klinischen Zusammenhang interpretiert.</p>
+<h2>Was kann Magnesium senken?</h2>
+<ul><li>chronischer Durchfall oder Erkrankungen mit gestörter Aufnahme im Darm</li><li>bestimmte Medikamente, darunter Säureblocker (PPI) bei Langzeiteinnahme und einige Diuretika</li><li>regelmässig hoher Alkoholkonsum</li><li>schlecht eingestellter Diabetes</li><li>vermehrte Verluste über die Niere</li><li>einseitige Ernährung</li></ul>
+<h2>Welche Beschwerden sind möglich?</h2>
+<p>Möglich sind Muskelkrämpfe, Zuckungen, Kribbeln, Müdigkeit und Herzstolpern; ausgeprägte Mängel können den Herzrhythmus beeinflussen. Diese Beschwerden sind unspezifisch: <a href="/koerpersignale/wadenkraempfe-nachts/">Nächtliche Wadenkrämpfe</a> etwa haben meist andere oder keine fassbaren Ursachen und beweisen keinen Magnesiummangel.</p>
+<h2>Warum hängen Magnesium und Kalium zusammen?</h2>
+<p>Ein Magnesiummangel kann dazu führen, dass sich ein gleichzeitig niedriges <a href="/gesundheitsbibliothek/befunde-werte/kalium-niedrig/">Kalium</a> schlecht korrigieren lässt. Deshalb werden die Elektrolyte oft gemeinsam beurteilt.</p>
+<h2>Und Magnesium-Präparate?</h2>
+<p>Ob eine Einnahme sinnvoll ist, in welcher Form und wie lange, hängt von Ursache, Nierenfunktion und Begleitmedikamenten ab und gehört in die ärztliche Beratung; bei eingeschränkter Nierenfunktion kann unkontrollierte Einnahme schaden. Diese Seite gibt bewusst keine Dosierungsempfehlungen.</p>`,
+    notProofHtml: `<p>Ein einzelner Magnesiumwert beweist weder einen relevanten Mangel noch schliesst ein normaler Wert ihn aus, da der Blutspiegel die Speicher nur unvollständig abbildet. Beschwerden wie Wadenkrämpfe sind kein Beleg für einen Mangel. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung, weitere Elektrolyte (Kalium, Kalzium), Nierenwerte, je nach Situation Urin-Magnesium zur Unterscheidung von Darm- und Nierenverlusten sowie die Durchsicht der Medikamente (u.a. Säureblocker, Diuretika).</p>`,
+    redFlagsHtml: `<p>Ärztlich beurteilt gehören: ein deutlich erniedrigter Wert, Herzrhythmusstörungen, ausgeprägte Muskelkrämpfe oder Zuckungen, gleichzeitige Kalium- oder Kalziumauffälligkeiten sowie eine Langzeiteinnahme von Säureblockern mit passenden Beschwerden.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kalium-niedrig/', label: 'Kalium niedrig: Was bedeutet ein zu tiefer Kaliumwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/', label: 'Natrium zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/', label: 'Calcium zu hoch: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'ck-erhoeht',
+    gruppe: 'Weitere Werte',
+    title: 'CK erhöht: Was bedeutet ein hoher CK-Wert?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Die Kreatinkinase (CK) ist ein Muskel-Enzym. Warum Sport und Belastung den Wert stark erhöhen können, welche Ursachen es gibt und wann eine Abklärung wichtig ist.',
+    primaryPurpose: 'Einordnung des Einzelwerts CK (Kreatinkinase) als Muskel-/Gewebemarker.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner. GOT/AST bleibt eigener Owner (CK-Abgrenzung dort relevant: AST kommt auch aus Muskel); Muskelbeschwerden-Signale bleiben eigene Owner. Keine Diagnose aus Einzelwert.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Neurologie)',
+    shortAnswerHtml: `<p>CK steht für Kreatinkinase, ein Enzym, das vor allem in der Skelettmuskulatur und im Herzmuskel vorkommt. Ein erhöhter CK-Wert zeigt, dass Muskelzellen beansprucht oder geschädigt wurden. Die häufigste harmlose Erklärung ist körperliche Belastung; der Wert kann nach intensivem Training tagelang deutlich erhöht sein.</p>`,
+    bodyHtml: `<h2>Was misst der CK-Wert?</h2>
+<p>Wird Muskelgewebe beansprucht oder geschädigt, tritt CK aus den Zellen ins Blut über. Der Wert ist damit ein empfindlicher, aber unspezifischer Muskel- und Gewebemarker: Er sagt, dass etwas auf die Muskulatur gewirkt hat, aber nicht was.</p>
+<h2>Was kann CK erhöhen?</h2>
+<ul><li>intensives oder ungewohntes Training, besonders mit Muskelkater</li><li>Muskelverletzungen, Stürze, Injektionen in den Muskel</li><li>Krampfanfälle oder starkes Muskelzittern</li><li>bestimmte Medikamente, darunter Statine</li><li>Schilddrüsenunterfunktion</li><li>Muskelerkrankungen</li><li>selten ein ausgedehnter Muskelzerfall (Rhabdomyolyse)</li></ul>
+<p>Auch die Herkunft spielt eine Rolle: Es gibt Untergruppen der CK; bei Verdacht auf Herzbeteiligung werden heute spezifischere Herzmarker verwendet.</p>
+<h2>Sport und CK: der häufigste Zusammenhang</h2>
+<p>Nach hartem Training kann CK auf ein Mehrfaches des Referenzbereichs steigen und braucht Tage bis zur Normalisierung. Vor einer geplanten Blutentnahme einige Tage auf intensives Training zu verzichten, macht den Wert aussagekräftiger. Ein sportbedingt erhöhter Wert ist keine Erkrankung.</p>
+<h2>CK und andere Werte</h2>
+<p>Weil das Enzym <a href="/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/">AST/GOT</a> ebenfalls in Muskelzellen vorkommt, kann ein Muskelereignis auch diesen „Leberwert" mit anheben; die gemeinsame Betrachtung verhindert Fehlinterpretationen.</p>`,
+    notProofHtml: `<p>Ein erhöhter CK-Wert ist keine Diagnose: Er unterscheidet nicht zwischen Muskelkater, Medikamentenwirkung und Muskelerkrankung. Dafür braucht es Verlauf, Begleitwerte und die klinische Situation, insbesondere die Frage nach Belastung in den Tagen vor der Blutentnahme. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrollmessung nach einigen Tagen ohne intensive Belastung, die Durchsicht der Medikamente (u.a. Statine), TSH, je nach Situation Nierenwerte und Urinbefund sowie bei anhaltend hohen Werten eine neurologische Abklärung der Muskulatur.</p>`,
+    redFlagsHtml: `<p>Rasch medizinisch beurteilt gehören: starke Muskelschmerzen mit ausgeprägter Schwäche, dunkler (colafarbener) Urin nach extremer Belastung oder Muskelverletzung (mögliche Rhabdomyolyse; im Notfall 144), neue Muskelschmerzen unter Statin-Therapie (nicht selbstständig absetzen, ärztlich melden) sowie wiederholt deutlich erhöhte Werte ohne erklärende Belastung.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/', label: 'GOT/AST erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/', label: 'LDH erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'bsg-erhoeht',
+    gruppe: 'Entzündung',
+    title: 'Blutsenkung (BSG) erhöht: Was bedeutet das?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-09-26',
+    deck: 'Die Blutsenkung (BSG) ist ein unspezifischer Entzündungsmarker. Was eine erhöhte Senkung bedeutet, wie sie sich vom CRP unterscheidet und wann abklären.',
+    primaryPurpose: 'Einordnung des Werts Blutsenkung/BSG; crp-erhoeht bleibt Owner des CRP-Intents.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'crp-erhoeht bleibt eigener Owner (beidseitig verlinkt); diese Seite besitzt NUR den BSG-/Blutsenkungs-Intent inkl. Abgrenzung der beiden Marker.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Rheumatologie)',
+    shortAnswerHtml: `<p>Die Blutsenkung (Blutsenkungsgeschwindigkeit, BSG) misst, wie schnell rote Blutkörperchen in einer Blutprobe absinken. Eine beschleunigte Senkung kann auf eine Entzündungsreaktion hinweisen, ist aber sehr unspezifisch: Sie zeigt weder Ort noch Ursache und kann auch ohne Krankheit erhöht sein. Beurteilt wird sie immer zusammen mit Beschwerden, Untersuchung und weiteren Werten.</p>`,
+    bodyHtml: `<h2>Wie funktioniert die Blutsenkung?</h2>
+<p>Bei Entzündungsreaktionen verändern bestimmte Eiweisse im Blut die Oberflächeneigenschaften der roten Blutkörperchen; sie ballen sich leichter zusammen und sinken schneller ab. Gemessen wird die Strecke nach einer, teils auch nach zwei Stunden.</p>
+<h2>Was kann die Senkung erhöhen?</h2>
+<ul><li>Infektionen</li><li>entzündlich-rheumatische Erkrankungen</li><li>Gewebeschäden, Operationen</li><li>Blutarmut</li><li>Schwangerschaft</li><li>höheres Alter (der Referenzbereich steigt mit dem Alter)</li><li>selten bestimmte Eiweissveränderungen im Blut</li></ul>
+<p>Eine leicht erhöhte Senkung ohne Beschwerden ist häufig und für sich genommen kein Krankheitsbeweis.</p>
+<h2>BSG oder CRP: Was ist der Unterschied?</h2>
+<p>Das <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> reagiert schnell (innert Stunden bis Tagen) und eignet sich für akute Verläufe. Die Blutsenkung verändert sich träger und bleibt länger erhöht; sie wird heute vor allem noch bei bestimmten rheumatologischen Fragestellungen und zur Verlaufsbeurteilung einzelner Erkrankungen verwendet. Beide Marker können auch auseinanderlaufen; das ist ein Befund, keine Panne.</p>
+<h2>Warum zählt der Kontext?</h2>
+<p>Eine stark beschleunigte Senkung mit passenden Beschwerden, etwa neuen Kopfschmerzen an den Schläfen, Sehstörungen und Kauschmerzen bei älteren Menschen, hat ein anderes Gewicht als eine mässige Erhöhung bei gutem Befinden. Die Einordnung gehört deshalb in die ärztliche Gesamtschau.</p>`,
+    notProofHtml: `<p>Eine erhöhte Blutsenkung ist keine Diagnose und kein Tumormarker: Sie ist bei vielen harmlosen Zuständen erhöht, steigt mit dem Alter und kann in der Schwangerschaft physiologisch beschleunigt sein. Umgekehrt schliesst eine normale Senkung eine Erkrankung nicht aus. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
+    followUpHtml: `<p>Üblich sind die gemeinsame Beurteilung mit CRP und Blutbild (u.a. <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, da Blutarmut die Senkung beschleunigt), je nach Beschwerdebild weitere gezielte Tests sowie eine Verlaufskontrolle statt Einzelwert-Bewertung.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich gehören: eine stark beschleunigte Senkung, B-Symptome wie Fieber, Nachtschweiss oder ungewollter Gewichtsverlust, neue Schläfenkopfschmerzen mit Seh- oder Kaubeschwerden (bei über 50-Jährigen dringlich) sowie anhaltend unklare Beschwerden mit wiederholt erhöhten Entzündungswerten.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet ein hoher Entzündungswert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
     ],
   },
   {

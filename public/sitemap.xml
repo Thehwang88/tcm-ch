@@ -1039,6 +1039,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1046,6 +1052,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/ck-erhoeht/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1135,6 +1147,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/hdl-niedrig/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/kalium-niedrig/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/kalium-zu-hoch/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1148,6 +1172,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1178,6 +1208,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/lymphozyten-erhoeht/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/magnesium-zu-niedrig/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1219,6 +1255,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/natrium-zu-niedrig/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/neutrophile-erhoeht/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1238,6 +1280,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1580,6 +1628,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2024,6 +2078,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/hand-kribbelt-beim-velofahren/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/harter-oberbauch-ohne-schmerzen/</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

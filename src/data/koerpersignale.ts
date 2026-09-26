@@ -50,6 +50,7 @@ const DATEN7 = { datePublished: '2026-09-17', dateModified: '2026-09-17' };
 const DATEN8 = { datePublished: '2026-09-21', dateModified: '2026-09-21' };
 const DATEN9 = { datePublished: '2026-09-22', dateModified: '2026-09-22' };
 const DATEN10 = { datePublished: '2026-09-25', dateModified: '2026-09-25' };
+const DATEN11 = { datePublished: '2026-09-26', dateModified: '2026-09-26' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -2158,6 +2159,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Hilft Wärme bei einem harten, gespannten Bauch?', a: 'Bei funktioneller Spannung ja: Wärme entspannt Darmmuskulatur und Bauchdecke, viele empfinden eine Bettflasche als deutlich lösend. Bei starken Schmerzen mit Abwehrspannung ist Wärme kein Hausmittel mehr, sondern der Fall gehört ärztlich beurteilt.' },
     ],
     related: [
+      { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen', cat: 'Körpersignal' },
       { href: '/koerpersignale/harter-unterbauch/', label: 'Harter Unterbauch', cat: 'Körpersignal' },
       { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
       { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
@@ -2875,6 +2877,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Oberbauchbeschwerden zum Arzt?', a: 'Bei Druck über Wochen, Gewichtsverlust, Schluckbeschwerden, Blut im oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche heftige Oberbauchschmerzen mit Ausstrahlung, Atemnot oder Kaltschweiss sind ein Notfall: Notruf 144.' },
     ],
     related: [
+      { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen', cat: 'Körpersignal' },
       { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen', cat: 'Körpersignal' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
@@ -3625,6 +3628,44 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
       { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
       { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'harter-oberbauch-ohne-schmerzen',
+    symptom: 'Harter Oberbauch ohne Schmerzen',
+    title: 'Harter Oberbauch ohne Schmerzen: Was steckt dahinter?',
+    metaDesc: 'Der Oberbauch fühlt sich hart oder gespannt an, tut aber nicht weh? Häufige Erklärungen von Magenfüllung bis Muskelspannung und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum ist mein Oberbauch hart, obwohl nichts schmerzt?',
+    category: 'Bauch & Verdauung',
+    lead: 'Ein harter oder gespannter Oberbauch ohne Schmerzen verunsichert viele. Häufig stecken Magenfüllung, Luft im Verdauungstrakt oder eine angespannte Bauchmuskulatur dahinter. Das Gefühl allein ist keine Diagnose; entscheidend ist, ob es neu ist, bleibt oder sich verändert.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN11,
+    bodyHtml: `<h2>Warum kann sich der Oberbauch hart anfühlen?</h2>
+<p>Im Oberbauch liegen Magen, Teile des Darms, die Leber und die kräftige obere Bauchmuskulatur. Ein gespanntes oder festes Gefühl entsteht am häufigsten durch einen gut gefüllten Magen, Luft im Verdauungstrakt oder eine unbewusst angespannte Bauchdecke, etwa bei Stress oder aufrechter Anspannungshaltung.</p>
+<p>Auch die Körperposition spielt mit: Im Sitzen mit gekrümmtem Oberkörper wirkt der Oberbauch schneller gestaut und fest als im Stehen.</p>
+<h2>Magenfüllung und Luft</h2>
+<p>Nach grösseren Mahlzeiten, kohlensäurereichen Getränken oder hastigem Essen kann sich der Oberbauch für einige Stunden voll und gespannt anfühlen, ohne dass etwas wehtut. Tritt das Gefühl vor allem nach dem Essen auf, passt es zum Muster <a href="/koerpersignale/voellegefuehl-nach-dem-essen/">Völlegefühl nach dem Essen</a>.</p>
+<h2>Angespannte Bauchmuskulatur</h2>
+<p>Manche Menschen spannen die obere Bauchwand dauerhaft leicht an, ohne es zu merken. Die Bauchdecke fühlt sich dann von aussen fest an, obwohl im Bauch selbst nichts verändert ist. Ein einfacher Selbsttest: Im entspannten Liegen mit angewinkelten Beinen wird eine muskulär bedingte Härte meist deutlich weicher.</p>
+<h2>Wie unterscheidet sich das von Druck oder Schmerz?</h2>
+<p>Ein hartes Gefühl ohne Beschwerden ist ein anderes Muster als ein Druckgefühl oder Brennen: Drückt es vor allem, findest du die Einordnung unter <a href="/koerpersignale/druck-im-oberbauch/">Druck im Oberbauch</a>; meldet sich der Oberbauch vor allem im Liegen, unter <a href="/koerpersignale/magendruck-im-liegen/">Magendruck im Liegen</a>. Fühlt sich der ganze Bauch fest an, passt <a href="/koerpersignale/bauch-fuehlt-sich-hart-an/">Bauch fühlt sich hart an</a> besser.</p>
+<h2>Wie wird das abgeklärt?</h2>
+<p>Bleibt das Gefühl bestehen, tastet die Ärztin oder der Arzt den Bauch ab und prüft, ob die Härte von der Bauchdecke oder aus der Tiefe kommt. Je nach Befund folgen Ultraschall des Oberbauchs und einfache Laborwerte, etwa <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte</a>. Häufig ist das Ergebnis unauffällig und das Gefühl erklärt sich über Verdauung und Muskelspannung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären lassen?</div><p>Ärztlich beurteilt gehört ein harter Oberbauch, wenn er dauerhaft bleibt, eine tastbare umschriebene Verhärtung oder Schwellung besteht, Schmerzen, Fieber, Appetitverlust, ungewollter Gewichtsverlust, Schluckbeschwerden, Erbrechen oder schwarzer Stuhl dazukommen oder du älter bist und das Gefühl neu und anhaltend auftritt. Ein brettharter, schmerzhafter Bauch ist ein Notfall (Telefon 144).</p></div>
+<h2>Die Perspektive der chinesischen Medizin</h2>
+<p>Die TCM betrachtet den Oberbauch traditionell als Region der „Mitte", in der Verdauung, Anspannung und Essrhythmus zusammenlaufen. Ein gespannter, harter Oberbauch wird dort im Zusammenhang mit Essgewohnheiten und innerer Anspannung betrachtet; ein bestimmtes Muster lässt sich aus dem einzelnen Zeichen jedoch nicht ableiten. Nach unauffälliger Abklärung arbeiten wir bei funktionellen Oberbauch-Beschwerden mit <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/therapien/tuina/">Tuina</a>-Bauchtechniken, ergänzend und ohne Heilversprechen.</p>`,
+    faqs: [
+      { q: 'Ist ein harter Oberbauch ohne Schmerzen gefährlich?', a: 'Meist nicht: Magenfüllung, Luft und angespannte Bauchmuskulatur sind die häufigsten Erklärungen. Anhaltende Härte, eine tastbare Verhärtung oder Begleitsymptome wie Gewichtsverlust, Erbrechen oder schwarzer Stuhl gehören aber ärztlich beurteilt.' },
+      { q: 'Woran erkenne ich, ob die Bauchdecke oder der Bauchinhalt hart ist?', a: 'Ein Hinweis: Im entspannten Liegen mit angewinkelten Beinen wird eine muskulär bedingte Härte meist deutlich weicher. Sicher unterscheiden kann das nur die ärztliche Untersuchung.' },
+      { q: 'Wie wird ein harter Oberbauch abgeklärt?', a: 'Mit Abtasten, je nach Befund Ultraschall des Oberbauchs und einfachen Laborwerten wie den Leberwerten. Häufig ist das Ergebnis unauffällig.' },
+    ],
+    related: [
+      { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
+      { href: '/koerpersignale/harter-unterbauch/', label: 'Harter Unterbauch', cat: 'Körpersignal' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+      { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
     ],
   },
 ];

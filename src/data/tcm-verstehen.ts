@@ -196,6 +196,27 @@ export const tcmEntities: TcmEntity[] = [
     relatedConditions: ['schlafprobleme'],
   },
   {
+    type: 'tcm-concept', slug: 'akupunkturpunkte', section: 'meridiane-punkte',
+    status: 'published', indexable: true, publishedAt: '2026-09-26',
+    nav: 'Akupunkturpunkte',
+    title: 'Akupunkturpunkte: Was sie sind und wie sie gewählt werden',
+    metaDesc: 'Was Akupunkturpunkte in der TCM sind, wie sie mit dem Meridianmodell zusammenhängen, wie Therapeut:innen Punkte auswählen und was die Forschung dazu sagt.',
+    h1: 'Was sind Akupunkturpunkte?',
+    kurzantwortHtml: `<p>Akupunkturpunkte sind definierte Stellen am Körper, die in der traditionellen chinesischen Medizin für Akupunktur und Akupressur verwendet werden. Sie werden im TCM-Modell entlang der <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridiane</a> angeordnet und nach traditionellen Kriterien ausgewählt. Akupunkturpunkte sind Orientierungspunkte eines traditionellen Behandlungssystems, keine anatomisch eigenständigen Organe.</p>`,
+    traditionellHtml: `<p>Die klassische chinesische Medizin beschreibt mehrere hundert Punkte, die meisten davon auf den zwölf Hauptleitbahnen. Jeder Punkt trägt einen traditionellen Namen und eine Nummer innerhalb seiner Leitbahn, zum Beispiel „Dickdarm 4" am Handrücken.</p>
+<p>Im traditionellen Modell werden Punkten bestimmte Wirkbereiche und Beziehungen zugeschrieben: lokale Punkte in der Nähe einer Beschwerde, Fernpunkte an Armen oder Beinen und Kombinationen, die sich auf das vermutete TCM-Muster beziehen. Diese Zuschreibungen stammen aus jahrhundertelanger Überlieferung und Systematisierung, nicht aus anatomischen Messungen.</p>`,
+    praxisHtml: `<p>In der Behandlung wählt die Therapeutin oder der Therapeut Punkte nach mehreren Kriterien aus: wo die Beschwerde liegt, welches TCM-Muster nach Gespräch, Puls- und Zungenbefund vermutet wird und wie die letzte Behandlung vertragen wurde. Meist werden wenige bis rund ein Dutzend Punkte kombiniert; mehr Punkte bedeuten nicht automatisch eine bessere Behandlung.</p>
+<p>Viele häufig verwendete Punkte liegen an Unterarmen, Händen, Unterschenkeln und Füssen. Deshalb kann eine Behandlung von Kopf- oder Bauchbeschwerden auch Punkte an Armen und Beinen einbeziehen. Dieselben Punkte dienen in der <a href="/therapien/akupressur/">Akupressur</a> als Orientierung, dort mit Druck statt Nadeln.</p>`,
+    abgrenzungHtml: `<p>Akupunkturpunkte sind keine nachgewiesenen anatomischen Strukturen: Es gibt kein eigenes „Punkt-Organ", das sich unter dem Mikroskop eindeutig abgrenzen liesse. Manche Punkte liegen in Regionen mit vielen Nervenendigungen oder Muskel-Faszien-Übergängen, eine durchgehende anatomische Erklärung für alle Punkte existiert jedoch nicht.</p>
+<p>Ebenso wenig gibt es den einen „Punkt gegen" eine bestimmte Krankheit. Listen, die einzelnen Punkten feste Heilwirkungen zuschreiben, werden weder der traditionellen Systematik noch der Studienlage gerecht. Diese Seite ist bewusst keine Anleitung zur Selbstbehandlung.</p>`,
+    evidenzHtml: `<p>Die Forschung untersucht Akupunktur meist als Gesamtverfahren, nicht einzelne Punkte isoliert. Für einige Anwendungsgebiete, etwa bestimmte Schmerzzustände, zeigen Studien Effekte von Akupunktur; wie viel davon auf die exakte Punktlokalisation zurückgeht, ist wissenschaftlich umstritten, da auch Nadelungen abseits klassischer Punkte in Studien Wirkungen zeigen können.</p>
+<p>Seriös lässt sich sagen: Die Punktwahl folgt einem traditionellen, in sich konsistenten System, und die Wirksamkeit der Akupunktur ist je nach Beschwerde unterschiedlich gut belegt. Ein Wirkversprechen für einzelne Punkte lässt sich daraus nicht ableiten.</p>`,
+    relevanzHtml: `<p>Für dich als Patient:in heisst das: Du musst keine Punkte kennen oder mitbringen. Die Auswahl gehört zur Behandlung und wird dir auf Wunsch erklärt. Wenn dich interessiert, wie eine Behandlung abläuft und wie sich die Nadeln anfühlen, findest du das unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a> und <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>`,
+    arztHinweisHtml: `<p>Akupunkturpunkte und ihre traditionelle Systematik ersetzen keine medizinische Diagnostik. Neue, starke oder unklare Beschwerden gehören zuerst ärztlich eingeordnet; Akupunktur kann danach je nach Beschwerde als ergänzende Behandlung infrage kommen.</p>`,
+    relatedConcepts: ['meridiane', 'qi'],
+    relatedTherapies: ['akupunktur', 'akupressur'],
+  },
+  {
     type: 'tcm-concept', slug: 'meridiane', section: 'meridiane-punkte',
     status: 'published', indexable: true, publishedAt: '2026-09-23',
     nav: 'Meridiane',
@@ -229,7 +250,7 @@ export const tcmEntities: TcmEntity[] = [
       { label: 'National Center for Complementary and Integrative Health: Acupuncture - Effectiveness and Safety' },
       { label: 'Peer-reviewed research on the anatomical basis of acupuncture meridians: anatomical basis remains unresolved' },
     ],
-    relatedConcepts: ['qi'],
+    relatedConcepts: ['akupunkturpunkte', 'qi'],
     relatedTherapies: ['akupunktur', 'akupressur'],
   },
   {
