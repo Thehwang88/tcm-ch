@@ -2047,6 +2047,7 @@ const wissenBase: Wissen[] = [
       }
     ],
     "related": [
+      { "href": "/gesundheitsbibliothek/was-jetzt/akuter-hexenschuss/", "label": "Was tun bei akutem Hexenschuss?", "cat": "Was jetzt?" },
       {
         "href": "/beschwerden/hexenschuss/",
         "label": "Hexenschuss",
