@@ -403,10 +403,10 @@ const wissenBase: Wissen[] = [
   },
   {
     "slug": "tcm-st-gallen-erfahrungen-ablauf",
-    "title": "TCM in St. Gallen: Ablauf, Erfahrungen und was dich erwartet",
+    "title": "Erfahrungen & Ablauf: TCM-Behandlung in St. Gallen",
     "metaDesc": "Wie läuft eine TCM-Behandlung in St. Gallen ab? Anamnese, Diagnose, erste Behandlung und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.", "region": "St. Gallen", "excerpt": "Wie läuft eine TCM-Behandlung in St. Gallen ab? Anamnese, Diagnose, erste Behandlung und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
     "category": "Standort & Erfahrungen",
-    "h1": "TCM in St. Gallen: Ablauf, Erfahrungen und was dich erwartet",
+    "h1": "Erfahrungen & Ablauf: Was dich bei einer TCM-Behandlung in St. Gallen erwartet",
     "lead": "Du überlegst, eine TCM-Praxis in St. Gallen zu besuchen, weisst aber nicht so recht, was dich dort erwartet. Diese Unsicherheit ist der häufigste Grund, warum Menschen den Schritt aufschieben. Darum erklären wir hier konkret, wie eine Behandlung bei uns abläuft, was du mitbringen solltest und was Patientinnen und Patienten nach den ersten Terminen berichten.",
     "readingTime": "8 Min.",
     "ctaTitle": "Termin in St. Gallen anfragen",
