@@ -197,6 +197,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist Aufsteh-Schwindel ein Warnzeichen?', a: 'Wenn du dabei stürzt oder bewusstlos wirst, wenn Herzrasen, Herzstolpern oder Brustschmerzen dazukommen, wenn du Blutdruckmedikamente nimmst oder das Muster neu und heftig auftritt. Dann gehört es zeitnah in ärztliche Abklärung.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/leichter-schwindel/', label: 'Was tun bei leichtem Schwindel?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/schwindel-beim-umdrehen-im-bett/', label: 'Schwindel beim Umdrehen im Bett', cat: 'Körpersignal' },
       { href: '/beschwerden/schwindel/', label: 'Schwindel', cat: 'Beschwerde' },
       { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung', cat: 'Beschwerde' },
@@ -754,6 +755,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist nächtliches Erwachen ein Warnzeichen?', a: 'Bei Schnarchen mit Atemaussetzern, chronischer Erschöpfung trotz genug Schlafstunden, durchgeschwitztem Erwachen mit Gewichtsverlust oder sehr frühem Erwachen mit anhaltend gedrückter Stimmung. Diese Kombinationen gehören ärztlich beurteilt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/schlafprobleme-heute-nacht/', label: 'Was tun bei Schlafproblemen heute Nacht?', cat: 'Was jetzt?' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
@@ -1624,6 +1626,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Ist ständiges Völlegefühl gefährlich?', a: 'Meist steckt eine funktionelle Ursache dahinter. Warnzeichen sind ungewollter Gewichtsverlust, Schluckbeschwerden, Blut im Stuhl, nächtliche Schmerzen oder neue Beschwerden ab etwa 50. Dann gehört das Völlegefühl zeitnah untersucht.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/voellegefuehl-nach-dem-essen/', label: 'Was tun bei Völlegefühl nach dem Essen?', cat: 'Was jetzt?' },
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
       { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },
@@ -1679,6 +1682,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist ein Blähbauch ein Warnzeichen?', a: 'Wenn der Bauch dauerhaft aufgetrieben bleibt, du Gewicht verlierst, Blut im Stuhl bemerkst, Fieber oder starke Schmerzen auftreten oder sich der Stuhlgang über Wochen verändert. Dann gehört der Bauch ärztlich untersucht.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/blaehbauch-am-abend/', label: 'Was tun bei Blähbauch am Abend?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/morgens-flacher-bauch-abends-dicker/', label: 'Bauch abends dicker als morgens', cat: 'Körpersignal' },
       { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
@@ -1735,6 +1739,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist ein steifer Nacken gefährlich?', a: 'Sofort reagieren bei Steifheit mit hohem Fieber, starken Kopfschmerzen und Lichtempfindlichkeit sowie bei Schwäche oder Taubheit in Armen oder Beinen. Abklären lassen solltest du auch Morgensteifheit über 30 Minuten, die regelmässig auftritt.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/nackenschmerzen-nach-dem-schlafen/', label: 'Was tun bei Nackenschmerzen nach dem Schlafen?', cat: 'Was jetzt?' },
       { href: '/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/', label: 'Was passiert beim ersten Termin?', cat: 'Frage' },
       { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },

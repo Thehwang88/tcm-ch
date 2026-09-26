@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-25",
+  "generated": "2026-09-26",
   "totals": {
-    "healthPages": 414,
+    "healthPages": 424,
     "byType": {
       "hub": 6,
       "condition": 106,
@@ -11,7 +11,7 @@
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 13,
-      "selfcare": 1,
+      "selfcare": 11,
       "editorial": 78,
       "body_signal": 74,
       "therapy": 36,
@@ -90,7 +90,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 20
     },
     {
@@ -120,7 +120,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 24
     },
     {
@@ -130,7 +130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 20
     },
     {
@@ -380,7 +380,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 20
     },
     {
@@ -460,7 +460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 37,
+      "inboundContentLinks": 38,
       "outboundHealthLinks": 26
     },
     {
@@ -520,7 +520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 17
     },
     {
@@ -580,7 +580,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 142,
+      "inboundContentLinks": 143,
       "outboundHealthLinks": 18
     },
     {
@@ -630,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 164,
+      "inboundContentLinks": 166,
       "outboundHealthLinks": 31
     },
     {
@@ -760,7 +760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 21
     },
     {
@@ -820,7 +820,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 177,
+      "inboundContentLinks": 179,
       "outboundHealthLinks": 34
     },
     {
@@ -830,7 +830,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 128,
+      "inboundContentLinks": 129,
       "outboundHealthLinks": 21
     },
     {
@@ -910,7 +910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 21
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 35,
+      "inboundContentLinks": 36,
       "outboundHealthLinks": 18
     },
     {
@@ -1100,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 237,
+      "inboundContentLinks": 247,
       "outboundHealthLinks": 44
     },
     {
@@ -2127,10 +2127,110 @@
       "url": "/gesundheitsbibliothek/was-jetzt/",
       "type": "selfcare",
       "title": "Was jetzt? Praktische nächste Schritte | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 16
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/akuter-hexenschuss/",
+      "type": "selfcare",
+      "title": "Was tun bei akutem Hexenschuss? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/blaehbauch-am-abend/",
+      "type": "selfcare",
+      "title": "Was tun bei Blähbauch am Abend? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/ischias-schmerzen/",
+      "type": "selfcare",
+      "title": "Was tun bei Ischias-Schmerzen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/knieschmerzen-nach-belastung/",
+      "type": "selfcare",
+      "title": "Was tun bei Knieschmerzen nach Belastung? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/leichter-schwindel/",
+      "type": "selfcare",
+      "title": "Was tun bei leichtem Schwindel? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/migraene-im-anflug/",
+      "type": "selfcare",
+      "title": "Was tun bei Migräne im Anflug? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/muskelverspannungen/",
+      "type": "selfcare",
+      "title": "Was tun bei Muskelverspannungen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/nackenschmerzen-nach-dem-schlafen/",
+      "type": "selfcare",
+      "title": "Was tun bei Nackenschmerzen nach dem Schlafen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/schlafprobleme-heute-nacht/",
+      "type": "selfcare",
+      "title": "Was tun bei Schlafproblemen heute Nacht? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/voellegefuehl-nach-dem-essen/",
+      "type": "selfcare",
+      "title": "Was tun bei Völlegefühl nach dem Essen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -2580,8 +2680,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/brennende-fuesse-nachts/",
@@ -2800,8 +2900,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/juckreiz-nachts-ohne-ausschlag/",
@@ -3000,8 +3100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/koerpersignale/ohr-einseitig-verstopft/",
@@ -3080,8 +3180,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/schwindel-beim-buecken/",
@@ -3100,7 +3200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 8
     },
     {
@@ -3190,8 +3290,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/koerpersignale/wadenkraempfe-nachts/",
@@ -3270,7 +3370,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 241,
+      "inboundContentLinks": 251,
       "outboundHealthLinks": 12
     },
     {
@@ -3410,7 +3510,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 107,
+      "inboundContentLinks": 108,
       "outboundHealthLinks": 5
     },
     {
@@ -3420,7 +3520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 66,
+      "inboundContentLinks": 67,
       "outboundHealthLinks": 21
     },
     {
@@ -3610,7 +3710,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 107,
+      "inboundContentLinks": 110,
       "outboundHealthLinks": 14
     },
     {
@@ -3670,7 +3770,7 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 1
     },
     {
@@ -3710,7 +3810,7 @@
       "indexable": false,
       "canonicalTo": null,
       "inSitemap": false,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 1
     },
     {
