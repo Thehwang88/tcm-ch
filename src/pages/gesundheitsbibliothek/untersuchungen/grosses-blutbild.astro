@@ -1,0 +1,142 @@
+---
+// Untersuchungen & Diagnostik Leaf (Phase 2, 26.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/grosses-blutbild';
+const url = `https://tcm.ch${path}/`;
+const title = 'Grosses Blutbild: Was wird gemessen und was zeigt es?';
+const description = 'Was zum grossen Blutbild gehört, wie es sich vom kleinen unterscheidet, ob du nüchtern sein musst und warum Werte-Muster mehr zählen als Einzelwerte.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-26', dateModified: '2026-09-26',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Grosses Blutbild', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig' },
+  { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht' },
+  { href: '/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/', label: 'Thrombozyten niedrig' },
+  { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht' },
+  { href: '/gesundheitsbibliothek/befunde-werte/rdw-erhoeht/', label: 'RDW erhöht' },
+  { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig' }
+];
+const rel2Links = [
+  { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung' },
+  { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Grosses Blutbild</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Grosses Blutbild: Was wird da eigentlich gemessen?</h1>
+        <p class="lead">Kaum eine Untersuchung wird häufiger gemacht, und kaum ein Befund wirft mehr Fragen auf. Hier erfährst du, welche Werte zum grossen Blutbild gehören, wann es sinnvoll ist und wie auffällige Werte eingeordnet werden.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das grosse Blutbild ist eine schulmedizinische Laboruntersuchung; Entnahme und Beurteilung erfolgen durch Arztpraxen und Labore. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist ein grosses Blutbild?</h2>
+          <p>Das grosse Blutbild ist eine der häufigsten Laboruntersuchungen überhaupt. Es besteht aus zwei Teilen: dem kleinen Blutbild und dem Differentialblutbild. Untersucht werden die Zellen deines Blutes: rote Blutkörperchen, weisse Blutkörperchen mit ihren Untergruppen und Blutplättchen.</p>
+          <h2>Was wird gemessen?</h2>
+          <ul>
+            <li><strong>Rotes Blutbild:</strong> <a href="/gesundheitsbibliothek/befunde-werte/erythrozyten-niedrig/">Erythrozyten</a>, <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, Hämatokrit sowie die Indizes MCV, MCH, MCHC und RDW, die Grösse und Hämoglobingehalt der Zellen beschreiben.</li>
+            <li><strong>Weisses Blutbild:</strong> <a href="/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/">Leukozyten</a> gesamt und im Differentialblutbild die Untergruppen Neutrophile, Lymphozyten, Monozyten, Eosinophile und Basophile.</li>
+            <li><strong>Blutplättchen:</strong> <a href="/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/">Thrombozyten</a>, wichtig für die Blutstillung.</li>
+          </ul>
+          <p>Der Unterschied zum kleinen Blutbild: Das kleine Blutbild zählt nur die Hauptwerte, das grosse schlüsselt zusätzlich die weissen Blutkörperchen nach Untergruppen auf.</p>
+          <h2>Warum wird es gemacht?</h2>
+          <p>Als Basisuntersuchung bei Müdigkeit und Erschöpfung, bei Verdacht auf Infekte oder Entzündungen, zur Abklärung von Blutarmut, vor Operationen, zur Verlaufskontrolle unter Medikamenten und bei vielen unklaren Beschwerden. Es ist oft der erste Laborschritt, an den sich gezieltere Tests anschliessen.</p>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Eine normale Blutentnahme aus der Armvene, meist in wenigen Minuten erledigt. Für das Blutbild selbst musst du in der Regel nicht nüchtern sein; nüchtern nötig ist es erst, wenn gleichzeitig Werte wie Blutzucker oder Blutfette bestimmt werden. Frag im Zweifel bei der Praxis nach, was angesetzt ist.</p>
+          <h2>Was kann das Blutbild zeigen und was nicht?</h2>
+          <p>Das Blutbild zeigt Muster, keine fertigen Diagnosen: etwa ob eine Blutarmut besteht und ob sie eher zu Eisenmangel oder Vitaminmangel passt, ob die Abwehrzellen auf einen Infekt reagieren oder ob Blutplättchen auffällig sind. Was dahintersteckt, klärt sich erst mit Beschwerden, Verlauf und gezielten Zusatzwerten wie Ferritin, Vitamin B12 oder Entzündungswerten. Wichtig ist auch die Gegenrichtung: Ein normales Blutbild schliesst längst nicht jede Erkrankung aus.</p>
+          <h2>Wie werden Ergebnisse eingeordnet?</h2>
+          <p>Jeder Wert hat einen laborabhängigen Referenzbereich, und einzelne leichte Abweichungen sind häufig und oft ohne Krankheitswert. Entscheidend sind das Muster mehrerer Werte zusammen und der Verlauf. Was einzelne auffällige Werte bedeuten können, erklären wir Wert für Wert in der Rubrik <a href="/gesundheitsbibliothek/befunde-werte/">Befunde &amp; Werte</a>.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die chinesische Medizin interpretiert keine Laborwerte, und ein Blutbild ersetzt keine TCM-Diagnostik, so wie umgekehrt. Für uns ist das Blutbild wichtig als Sicherheitsnetz: Bei anhaltender <a href="/beschwerden/erschoepfung/">Erschöpfung</a> etwa gehört die Abklärung von Blutarmut und <a href="/beschwerden/eisenmangel/">Eisenmangel</a> vor jede Behandlung. Erst mit dieser Grundlage planen wir eine ergänzende TCM-Behandlung seriös.</p>
+        </div>
+
+        <LibraryRelated
+          label="Befunde & Werte"
+          title="Einzelwerte aus dem Blutbild verstehen"
+          links={rel1Links}
+          allHref="/gesundheitsbibliothek/befunde-werte/"
+          allLabel="Alle Befunde & Werte"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Blutbild unauffällig und trotzdem erschöpft?</div>
+          <p>Wenn die ärztliche Abklärung keine Ursache zeigt, kann eine TCM-Behandlung ergänzend ansetzen, etwa bei Schlaf, Anspannung und Erholung. Wir sagen dir ehrlich, was realistisch ist.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

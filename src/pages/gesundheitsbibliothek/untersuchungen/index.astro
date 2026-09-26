@@ -1,0 +1,89 @@
+---
+// Untersuchungen & Diagnostik Hub (aktiviert 26.09.2026, Schwelle >=4 Leaves erreicht).
+// HUB_NAVIGATION_OWNER: organisiert die Untersuchungs-Leaves, besitzt keine Kind-Keywords.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen';
+const url = `https://tcm.ch${path}/`;
+const title = 'Untersuchungen & Diagnostik verstehen';
+const metaDesc = 'Häufige medizinische Untersuchungen einfach erklärt: warum sie gemacht werden, wie sie ablaufen, was sie zeigen können und wo ihre Grenzen liegen.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: `${title} | TCM.ch`, description: metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: url },
+    ],
+  },
+];
+
+const leaves = [
+  { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', name: 'Grosses Blutbild', text: 'Welche Werte dazugehören, wann es sinnvoll ist und wie auffällige Werte eingeordnet werden.' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ekg/', name: 'EKG & Langzeit-EKG', text: 'Wie die Herzstromkurve aufgezeichnet wird, was sie zeigt und wo ihre Grenzen liegen.' },
+  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', name: 'MRT (MRI)', text: 'Ablauf, Vorbereitung, Kontrastmittel und warum nicht jeder Befund die Schmerzen erklärt.' },
+  { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', name: 'Nervenleitmessung (NLG)', text: 'Wie gut leiten deine Nerven? Standard bei Kribbeln, Taubheit und Karpaltunnel-Verdacht.' },
+];
+---
+<LayoutDe title={title} description={metaDesc} path={path} schema={schema}>
+  <section class="hero">
+    <div class="wrap narrow">
+      <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+        <span aria-hidden="true">›</span>
+        <span class="crumb-here">Untersuchungen & Diagnostik</span>
+      </div>
+      <div class="cat">Untersuchungen & Diagnostik</div>
+      <h1>Untersuchungen & Diagnostik verstehen</h1>
+      <p class="lead">Wer eine Untersuchung vor sich hat, will vor allem wissen: Warum wird sie gemacht, was passiert dabei, und was kann sie zeigen? Hier erklären wir häufige medizinische Untersuchungen verständlich, inklusive ihrer Grenzen. Diese Seiten dienen der Orientierung; durchgeführt und beurteilt werden die Untersuchungen von Ärztinnen und Ärzten, nicht von TCM.ch.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap narrow">
+      <div class="leaf-grid">
+        {leaves.map((l) => (
+          <a class="leaf-card" href={l.href}>
+            <div class="leaf-name">{l.name}</div>
+            <p class="leaf-text">{l.text}</p>
+            <span class="leaf-more">Zur Erklärung →</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="more">
+        <h2 class="group-title">Und danach?</h2>
+        <p class="group-sub">Was ein auffälliger Messwert bedeuten kann, erklären wir Wert für Wert unter <a href="/gesundheitsbibliothek/befunde-werte/">Befunde &amp; Werte</a>. Wenn du ein Symptom einordnen willst, helfen die <a href="/koerpersignale/">Körpersignale</a>; nach Körperregion navigierst du über <a href="/gesundheitsbibliothek/koerper/ruecken/">Rücken</a> und die weiteren Regionen der Bibliothek. Medizinische Illustrationen findest du in der <a href="/visuals/">Visual Library</a>.</p>
+      </div>
+    </div>
+  </section>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 860px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 18px; line-height: 1.6; color: var(--mid); }
+  .leaf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .leaf-card { display: block; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: var(--r-card); padding: 20px; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
+  .leaf-card:hover { border-color: rgba(45,155,111,.45); transform: translateY(-2px); }
+  .leaf-name { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .leaf-text { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; }
+  .leaf-more { font-size: 14px; font-weight: 700; color: var(--blue); }
+  .more { margin-top: 40px; }
+  .group-title { font-size: 22px; font-weight: 800; color: var(--ink); margin: 0 0 8px; }
+  .group-sub { font-size: 15.5px; line-height: 1.65; color: var(--mid); }
+  .group-sub a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .group-sub a:hover { text-decoration: underline; }
+</style>

@@ -46,7 +46,9 @@ export interface Diagnostic {
 // diese Untersuchungen nicht selbst durch - die Sprache auf den Seiten stellt das klar.
 export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'blutuntersuchung', name: 'Blutuntersuchung', short: 'Laborwerte wie Entzündungszeichen, Eisen, Schilddrüse oder Vitamine: häufig der erste Schritt der ärztlichen Abklärung.' },
-  { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen, ganz ohne Röntgenstrahlung.' },
+  { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen, ganz ohne Röntgenstrahlung.', href: '/gesundheitsbibliothek/untersuchungen/mrt/' },
+  { id: 'ekg', name: 'EKG & Langzeit-EKG', short: 'Zeichnet die Herzströme auf: Standard bei Herzstolpern, Herzrasen und zur Blutdruck-Verlaufskontrolle.', href: '/gesundheitsbibliothek/untersuchungen/ekg/' },
+  { id: 'grosses-blutbild', name: 'Grosses Blutbild', short: 'Rote und weisse Blutkörperchen plus Blutplättchen: die häufigste Basis-Laboruntersuchung.', href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/' },
   { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild, etwa bei Arthrose-Verdacht oder nach Stürzen.' },
   { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit, schnell und strahlungsfrei.' },
   { id: 'neurologisch', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft und Sensibilität, geprüft bei Taubheit, Kribbeln oder Schwindel.' },

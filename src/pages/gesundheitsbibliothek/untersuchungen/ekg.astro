@@ -1,0 +1,141 @@
+---
+// Untersuchungen & Diagnostik Leaf (Phase 2, 26.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/ekg';
+const url = `https://tcm.ch${path}/`;
+const title = 'EKG & Langzeit-EKG: Ablauf und was die Kurve zeigt';
+const description = 'Wie ein EKG abläuft, wann ein Langzeit-EKG sinnvoll ist, was die Herzstromkurve zeigen kann und warum ein unauffälliges EKG nicht alles ausschliesst.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-26', dateModified: '2026-09-26',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'EKG', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/herzstolpern-in-ruhe/', label: 'Herzstolpern in Ruhe' },
+  { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen' },
+  { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen' },
+  { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen' }
+];
+const rel2Links = [
+  { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
+  { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout' },
+  { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme' }
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">EKG</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>EKG: Was zeigt die Aufzeichnung der Herzströme?</h1>
+        <p class="lead">Herzstolpern, Herzrasen oder einfach Routine: Das EKG ist die grundlegende Herzuntersuchung. Hier erfährst du, wie Ruhe- und Langzeit-EKG ablaufen, was die Kurve zeigen kann und wo ihre Grenzen liegen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das EKG ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist ein EKG?</h2>
+          <p>Das Elektrokardiogramm (EKG) zeichnet die elektrische Aktivität des Herzens auf. Jeder Herzschlag beginnt mit einem elektrischen Impuls; das EKG macht diesen Ablauf als Kurve sichtbar. Daraus lassen sich Herzrhythmus, Herzfrequenz und Hinweise auf verschiedene Herzprobleme ablesen.</p>
+          <h2>Warum wird ein EKG gemacht?</h2>
+          <ul>
+            <li><strong>Herzstolpern oder Herzrasen:</strong> etwa bei <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern in Ruhe</a> oder <a href="/koerpersignale/herzklopfen-im-liegen/">Herzklopfen im Liegen</a>.</li>
+            <li><strong>Brustschmerzen oder Atemnot:</strong> hier ist das EKG Teil der Notfall-Abklärung.</li>
+            <li><strong>Bluthochdruck:</strong> zur Verlaufskontrolle bei <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a>.</li>
+            <li><strong>Routine:</strong> vor Operationen oder bei Check-ups.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Beim Ruhe-EKG werden Klebeelektroden an Brustkorb, Armen und Beinen angebracht, während du entspannt liegst. Die Aufzeichnung selbst dauert nur wenige Minuten, ist völlig schmerzfrei und ohne Strahlung. Eine Vorbereitung braucht es nicht.</p>
+          <h2>Was ist ein Langzeit-EKG?</h2>
+          <p>Viele Rhythmusstörungen kommen anfallsweise und sind im kurzen Ruhe-EKG gerade nicht sichtbar. Dann wird ein Langzeit-EKG eingesetzt: ein kleines Gerät, das den Herzrhythmus über 24 Stunden bis mehrere Tage im Alltag aufzeichnet. Du führst dabei oft ein kurzes Protokoll, wann du Beschwerden gespürt hast; so lässt sich prüfen, ob das Gefühl mit einer messbaren Rhythmusveränderung zusammenfällt.</p>
+          <h2>Was kann das EKG zeigen und was nicht?</h2>
+          <p>Das EKG ist eine Momentaufnahme der Herzströme. Es kann Rhythmusstörungen, Leitungsprobleme und Hinweise auf einen Herzinfarkt zeigen. Es kann aber nicht alles ausschliessen: Ein unauffälliges Ruhe-EKG bedeutet nicht automatisch, dass das Herz gesund ist, besonders wenn Beschwerden nur anfallsweise auftreten oder unter Belastung. Je nach Fragestellung folgen deshalb Langzeit-EKG, Belastungs-EKG oder ein Herzultraschall.</p>
+          <h2>Wie werden Ergebnisse eingeordnet?</h2>
+          <p>Einzelne Extraschläge sind auch bei Herzgesunden häufig und im EKG dann als harmloser Befund erkennbar. Ob eine Veränderung behandlungsbedürftig ist, beurteilt die Ärztin oder der Arzt immer zusammen mit Beschwerden, Vorgeschichte und weiteren Untersuchungen, nie aus der Kurve allein.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Bei Herzsymptomen gilt bei uns eine klare Reihenfolge: zuerst die ärztliche Abklärung, dazu gehört oft das EKG. Zeigt sie, dass keine behandlungsbedürftige Herzerkrankung vorliegt, und bleibt zum Beispiel stressverstärktes Herzklopfen, kann eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> ergänzend Teil des Plans sein, mit Fokus auf Anspannung und Schlaf. Herzbeschwerden mit Warnzeichen gehören immer zuerst in ärztliche Hände.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen ein EKG oft zur Sprache kommt"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Herzklopfen abgeklärt und trotzdem unruhig?</div>
+          <p>Wenn die ärztliche Abklärung unauffällig war und Stress oder Schlaf das Herzklopfen verstärken, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

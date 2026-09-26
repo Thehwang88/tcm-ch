@@ -1,0 +1,142 @@
+---
+// Untersuchungen & Diagnostik Leaf (Phase 2, 26.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/mrt';
+const url = `https://tcm.ch${path}/`;
+const title = 'MRT (MRI): Ablauf, Vorbereitung & Grenzen einfach erklärt';
+const description = 'Wie ein MRT abläuft, wann es sinnvoll ist, was du zu Metall, Kontrastmittel und Platzangst wissen musst und warum nicht jeder Befund die Schmerzen erklärt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-26', dateModified: '2026-09-26',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'MRT', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/bandscheibenvorfall/', label: 'Bandscheibenvorfall' },
+  { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+  { href: '/beschwerden/ischias/', label: 'Ischias' },
+  { href: '/beschwerden/knieschmerzen/', label: 'Knieschmerzen' }
+];
+const rel2Links = [
+  { href: '/visuals/bandscheibenvorfall-lws/', label: 'Visual: Bandscheibenvorfall LWS' },
+  { href: '/visuals/bandscheibenvorfall-hws/', label: 'Visual: Bandscheibenvorfall HWS' },
+  { href: '/visuals/ischias/', label: 'Visual: Verlauf des Ischiasnervs' }
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">MRT</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Was passiert bei einem MRT?</h1>
+        <p class="lead">Laut, eng, aber ohne Strahlung: Das MRT zeigt Bandscheiben, Nerven und Gelenke so genau wie kaum eine andere Untersuchung. Hier erfährst du, wie sie abläuft, wie du dich vorbereitest und warum ein auffälliger Befund nicht automatisch die Ursache deiner Schmerzen ist.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das MRT ist eine schulmedizinische Untersuchung und wird in radiologischen Instituten durchgeführt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist ein MRT?</h2>
+          <p>Die Magnetresonanztomographie (MRT, auch MRI) erzeugt Schichtbilder des Körpers mit einem starken Magnetfeld und Radiowellen, ganz ohne Röntgenstrahlung. Sie zeigt Weichteile besonders gut: Bandscheiben, Nerven, Muskeln, Sehnen, Gelenkknorpel und Organe. Deshalb ist sie oft die Untersuchung der Wahl, wenn Röntgen und Ultraschall nicht weit genug sehen.</p>
+          <h2>Warum wird ein MRT gemacht?</h2>
+          <ul>
+            <li><strong>Rücken und Nacken:</strong> bei Verdacht auf <a href="/beschwerden/bandscheibenvorfall/">Bandscheibenvorfall</a> oder Nervenwurzelreizung, vor allem wenn Beschwerden ausstrahlen oder neurologische Zeichen bestehen.</li>
+            <li><strong>Gelenke:</strong> Meniskus, Bänder, Rotatorenmanschette, Knorpel.</li>
+            <li><strong>Kopf:</strong> bei bestimmten Kopfschmerz-Warnzeichen oder neurologischen Symptomen.</li>
+            <li><strong>Weichteile und Organe:</strong> je nach ärztlicher Fragestellung.</li>
+          </ul>
+          <p>Wichtig: Nicht jede Rückenschmerz-Episode braucht ein MRT. Ohne Warnzeichen wird bei akuten <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a> häufig bewusst zugewartet, weil die meisten Episoden von selbst abklingen.</p>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Du liegst auf einer Liege, die in eine Röhre gefahren wird. Die Untersuchung dauert je nach Region etwa 15 bis 45 Minuten. Das Gerät klopft und brummt laut, du bekommst deshalb einen Gehörschutz und einen Notrufball in die Hand. Wichtig ist ruhiges Liegen, sonst verwackeln die Bilder. Bei Platzangst hilft es, das vorher anzusprechen; es gibt Möglichkeiten wie Beruhigungsmittel oder offenere Geräte.</p>
+          <h2>Muss ich mich vorbereiten?</h2>
+          <p>Meist nicht speziell. Entscheidend ist die Sicherheitsabklärung vorher: Metall im oder am Körper (Herzschrittmacher, Implantate, Metallsplitter, teils Piercings) muss gemeldet werden, ebenso eine mögliche Schwangerschaft. Je nach Fragestellung wird ein Kontrastmittel über die Vene gegeben; dazu wird vorher unter anderem die Nierenfunktion berücksichtigt und nach Allergien gefragt.</p>
+          <h2>Was kann das MRT zeigen und was nicht?</h2>
+          <p>Das MRT zeigt Strukturen, nicht Schmerzen. Das ist die wichtigste Einordnung: Viele Menschen ohne jede Beschwerde haben im MRT sichtbare Bandscheibenveränderungen, und umgekehrt erklärt nicht jeder Befund die aktuellen Symptome. Ein Befundbericht voller Fachbegriffe bedeutet deshalb nicht automatisch eine schwere Erkrankung. Entscheidend ist, ob Bild und Beschwerden zusammenpassen; genau das beurteilt die Ärztin oder der Arzt.</p>
+          <h2>Gibt es Risiken?</h2>
+          <p>Das MRT arbeitet ohne ionisierende Strahlung und gilt als sehr sicher. Grenzen setzen vor allem nicht MRT-taugliche Implantate, Platzangst und selten Reaktionen auf Kontrastmittel. Die Lautstärke und das lange Stillliegen sind unangenehm, aber harmlos.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Das MRT liefert die strukturelle Diagnose, nicht die Therapie. Für uns ist der Befund wichtig, um richtig einzuordnen: Bei einem Bandscheibenvorfall mit Lähmungszeichen gehört die ärztliche Behandlung an erste Stelle. Bei vielen abgeklärten Rücken- und Gelenkbeschwerden kann <a href="/therapien/akupunktur/">Akupunktur</a> ergänzend eingesetzt werden; mitgebrachte MRT-Berichte helfen uns, die Behandlung realistisch zu planen.</p>
+        </div>
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Beschwerdebilder, bei denen ein MRT oft zur Sprache kommt"
+          links={rel1Links}
+          allHref="/gesundheitsbibliothek/koerper/ruecken/"
+          allLabel="Region Rücken"
+        />
+        <LibraryRelated
+          label="Visuals"
+          title="Passende medizinische Illustrationen"
+          links={rel2Links}
+          allHref="/visuals/"
+          allLabel="Visual Library"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Rückenschmerzen abgeklärt und trotzdem Beschwerden?</div>
+          <p>Schildere uns dein Muster. Wir sagen dir ehrlich, ob eine TCM-Behandlung bei deinem Befund sinnvoll ist oder zuerst weitere Abklärung gehört. EMR- und ASCA-anerkannt, Zusatzversicherung übernimmt meist 80 bis 100 Prozent.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
