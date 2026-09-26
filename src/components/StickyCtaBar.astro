@@ -69,21 +69,27 @@ const TEL = `tel:+${site.whatsapp}`;
     var bar = document.querySelector('.scb-bar');
     if (!bar) return;
     var primary = bar.querySelector('.scb-primary');
-    // SG-Seiten: einheitliches Formular-CTA-Wording ("Gratis Erstgespräch" statt "Kostenlos anfragen"); Ziel-Link unverändert, alle anderen Seiten unberührt.
-    if (primary && /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname)) {
+    // SG-Seiten: EIN Funnel-Wording ("Gratis Termin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
+    var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
+    if (primary && sgPage) {
       for (var i = 0; i < primary.childNodes.length; i++) {
         var tn = primary.childNodes[i];
-        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Gratis Erstgespräch ';
+        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Gratis Termin anfragen ';
       }
     }
-    // SG-Seiten mit OneDoc-Widget: Sticky-Primär direkt aufs Widget; der Formular-Scroll-Handler unten entfällt, damit er den Anchor nicht hijackt.
-    // Fällt das Widget mal weg, greift automatisch wieder das Standard-Verhalten (inkl. "Gratis Erstgespräch"-Label von oben).
-    var toOnedoc = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname) && document.getElementById('online-buchen');
+    // SG-Seiten mit OneDoc-Widget: Primär → #kontakt-Formular (Fallback: Widget), "Termin online buchen" als
+    // sekundärer Button in der Icon-Zeile (.scb-book, Styles im SG-Leaf). Der Formular-Scroll-Handler unten
+    // entfällt, damit er den Anchor nicht hijackt; bestehende WA-/Tel-Links (Tracking-Hooks) unverändert.
+    var toOnedoc = sgPage && document.getElementById('online-buchen');
     if (primary && toOnedoc) {
-      primary.setAttribute('href', '#online-buchen');
-      for (var j = 0; j < primary.childNodes.length; j++) {
-        var tj = primary.childNodes[j];
-        if (tj.nodeType === 3 && tj.textContent.trim()) tj.textContent = ' Termin online buchen ';
+      primary.setAttribute('href', document.getElementById('kontakt') ? '#kontakt' : '#online-buchen');
+      var row = bar.querySelector('.scb-row');
+      if (row && !row.querySelector('.scb-book')) {
+        var book = document.createElement('a');
+        book.className = 'scb-book';
+        book.setAttribute('href', '#online-buchen');
+        book.textContent = 'Termin online buchen';
+        row.insertBefore(book, row.firstChild);
       }
     }
     if (primary && !toOnedoc) primary.addEventListener('click', function (e) {
