@@ -1,0 +1,137 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026, Reserve U3). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/lungenfunktion';
+const url = `https://tcm.ch${path}/`;
+const title = 'Lungenfunktion (Spirometrie): Ablauf und was die Werte zeigen';
+const description = 'Wie ein Lungenfunktionstest abläuft, wann er gemacht wird, was Werte wie FEV1 grob bedeuten und warum die Mitarbeit beim Pusten das Resultat bestimmt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Lungenfunktion', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/trockener-husten/', label: 'Trockener Husten' },
+  { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten' },
+];
+const rel2Links = [
+  { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung' },
+  { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Lungenfunktion</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Lungenfunktionstest: Was passiert bei der Spirometrie?</h1>
+        <p class="lead">Hartnäckiger Husten, Atemnot bei Belastung oder Asthma-Verdacht: Der Lungenfunktionstest misst, wie viel Luft du bewegen kannst und wie schnell. Er ist unblutig, dauert nur Minuten und verlangt vor allem eines: kräftiges Pusten.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Lungenfunktionsprüfung ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Spirometrie?</h2>
+          <p>Die Spirometrie ist der Basistest der Lungenfunktion. Du atmest über ein Mundstück in ein Messgerät, die Nase ist mit einer Klammer verschlossen. Gemessen wird unter anderem, wie viel Luft du nach tiefem Einatmen insgesamt ausatmen kannst und wie viel davon in der ersten Sekunde (der FEV1-Wert). Aus dem Verhältnis dieser Werte erkennt die Ärztin oder der Arzt, ob die Atemwege verengt sind.</p>
+          <h2>Wann wird sie gemacht?</h2>
+          <ul>
+            <li><strong>Anhaltender Husten:</strong> etwa wenn ein <a href="/koerpersignale/trockener-husten/">trockener Husten</a> über Wochen bleibt.</li>
+            <li><strong>Atemnot:</strong> bei Belastung oder in Ruhe, auch zur Unterscheidung von Herz- und Lungenursachen.</li>
+            <li><strong>Asthma- oder COPD-Verdacht:</strong> zur Diagnose und Verlaufskontrolle, oft mit einem zweiten Durchgang nach einem bronchienerweiternden Spray.</li>
+            <li><strong>Pfeifende Atmung oder häufige Infekte:</strong> zur Einordnung der Atemwege.</li>
+            <li><strong>Vor Operationen:</strong> zur Risikoeinschätzung.</li>
+          </ul>
+          <h2>Wie läuft der Test ab?</h2>
+          <p>Nach ruhigen Atemzügen atmest du auf Kommando so tief wie möglich ein und stösst die Luft dann so schnell und so lange wie möglich aus, meist in mehreren Durchgängen, bis zwei bis drei brauchbare Messungen vorliegen. Das ist anstrengend, aber ungefährlich und dauert insgesamt etwa 10 bis 15 Minuten. Die Qualität des Resultats hängt direkt von der Mitarbeit ab; die Fachperson coacht dich dabei lautstark, das gehört dazu. Je nach Fragestellung folgt ein erweiterter Test in der Messkabine (Bodyplethysmografie) oder die Messung nach einem Spray, um zu prüfen, ob sich verengte Atemwege öffnen lassen.</p>
+          <h2>Was bedeuten die Werte?</h2>
+          <p>Die Messwerte werden mit Referenzwerten für Alter, Grösse und Geschlecht verglichen. Vereinfacht: Ein normal grosses Luftvolumen, das aber zu langsam ausströmt, spricht für verengte Atemwege (wie bei Asthma oder COPD); ein insgesamt kleines Volumen für eine eingeschränkte Ausdehnung der Lunge. Ein einzelner Wert stellt aber keine Diagnose: Die Einordnung gehört zusammen mit Beschwerden, Vorgeschichte und allenfalls weiteren Untersuchungen wie dem Thorax-<a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgen</a> in ärztliche Hände. Auch ein normaler Test schliesst nicht jede Atemwegserkrankung aus, etwa wenn Asthma-Beschwerden nur anfallsweise auftreten.</p>
+          <h2>Braucht es eine Vorbereitung?</h2>
+          <p>Meist wenig: bequeme Kleidung, vorher keine grosse Mahlzeit und kein intensiver Sport. Ob du Asthma- oder andere Inhalations-Medikamente vor dem Test pausieren sollst, entscheidet die untersuchende Praxis; ändere das nie eigenmächtig.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Atembeschwerden gehören zuerst in die ärztliche Abklärung, akute Atemnot in die Notfallversorgung (Telefon 144). Ist die Diagnose gestellt und die schulmedizinische Behandlung eingerichtet, kann bei stress- und verspannungsverstärkten Atemmustern ergänzend eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> eingesetzt werden; sie ersetzt weder Diagnostik noch Asthma-Medikamente.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale rund um Husten und Atmung"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Lunge abgeklärt, Anspannung bleibt?</div>
+          <p>Wenn die ärztliche Abklärung gemacht ist und Stress oder Verspannung die Atmung spürbar beeinflussen, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

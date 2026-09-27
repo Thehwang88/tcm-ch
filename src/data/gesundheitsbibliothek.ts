@@ -49,11 +49,14 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'mrt', name: 'MRI / MRT', short: 'Schichtbilder von Bandscheiben, Gelenken, Nerven und Weichteilen, ganz ohne Röntgenstrahlung.', href: '/gesundheitsbibliothek/untersuchungen/mrt/' },
   { id: 'ekg', name: 'EKG & Langzeit-EKG', short: 'Zeichnet die Herzströme auf: Standard bei Herzstolpern, Herzrasen und zur Blutdruck-Verlaufskontrolle.', href: '/gesundheitsbibliothek/untersuchungen/ekg/' },
   { id: 'grosses-blutbild', name: 'Grosses Blutbild', short: 'Rote und weisse Blutkörperchen plus Blutplättchen: die häufigste Basis-Laboruntersuchung.', href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/' },
-  { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild, etwa bei Arthrose-Verdacht oder nach Stürzen.' },
-  { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit, schnell und strahlungsfrei.' },
+  { id: 'roentgen', name: 'Röntgen', short: 'Knochen und Gelenkstellung im Bild, etwa bei Arthrose-Verdacht oder nach Stürzen.', href: '/gesundheitsbibliothek/untersuchungen/roentgen/' },
+  { id: 'ultraschall', name: 'Ultraschall', short: 'Sehnen, Schleimbeutel, Gefässe und Organe in Echtzeit, schnell und strahlungsfrei.', href: '/gesundheitsbibliothek/untersuchungen/ultraschall/' },
   { id: 'neurologisch', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft und Sensibilität, geprüft bei Taubheit, Kribbeln oder Schwindel.' },
   { id: 'nlg', name: 'Nervenleitgeschwindigkeit', short: 'Misst, wie schnell ein Nerv leitet: Standard bei Verdacht auf Karpaltunnelsyndrom oder Polyneuropathie.', href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/' },
-  { id: 'gastroskopie', name: 'Gastroskopie', short: 'Blick in Speiseröhre und Magen, etwa bei anhaltendem Sodbrennen oder Magenbeschwerden.' },
+  { id: 'gastroskopie', name: 'Gastroskopie', short: 'Blick in Speiseröhre und Magen, etwa bei anhaltendem Sodbrennen oder Magenbeschwerden.', href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/' },
+  { id: 'koloskopie', name: 'Koloskopie', short: 'Darmspiegelung zur Vorsorge und Abklärung: Vorbereitung, Ablauf und Polypenentfernung.', href: '/gesundheitsbibliothek/untersuchungen/koloskopie/' },
+  { id: 'ct', name: 'CT (Computertomografie)', short: 'Schnittbilder in Sekunden: stark bei Knochen, Lunge und Notfalldiagnostik.', href: '/gesundheitsbibliothek/untersuchungen/ct/' },
+  { id: 'lungenfunktion', name: 'Lungenfunktion (Spirometrie)', short: 'Misst Luftmenge und Luftfluss: der Basistest bei Husten, Atemnot und Asthma-Verdacht.', href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/' },
 ];
 
 export interface BodyRegion {

@@ -80,12 +80,12 @@ export const fragenHubs: FragenHub[] = [
       {
         id: 'sauna',
         q: 'Sind Sauna, Schwimmbad oder heisses Bad erlaubt?',
-        a: '<p>Am Behandlungstag besser nicht. Nach Akupunktur sind die Einstichstellen winzige Wunden, die ein paar Stunden Ruhe verdienen; Schwimmbadwasser und starkes Schwitzen sind da unnötige Reize. Nach Schröpfen gilt das noch mehr, weil die Haut stärker beansprucht ist. Duschen ist kein Problem. Mit Dauernadeln im Ohr solltest du Schwimmbad und Sauna ganz meiden, bis sie entfernt sind. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/">Schwimmen nach Akupunktur</a>.</p>',
+        a: '<p>Am Behandlungstag besser nicht. Nach Akupunktur sind die Einstichstellen winzige Wunden, die ein paar Stunden Ruhe verdienen; Schwimmbadwasser und starkes Schwitzen sind da unnötige Reize. Nach Schröpfen gilt das noch mehr, weil die Haut stärker beansprucht ist. Duschen ist dagegen jederzeit möglich (mehr dazu: <a href="/gesundheitsbibliothek/fragen/duschen-nach-akupunktur/">Duschen nach Akupunktur</a>). Mit Dauernadeln im Ohr solltest du Schwimmbad und Sauna ganz meiden, bis sie entfernt sind. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/">Schwimmen nach Akupunktur</a>.</p>',
       },
       {
         id: 'alkohol',
         q: 'Darf ich nach der Behandlung Alkohol trinken?',
-        a: '<p>Verzichte am Behandlungstag besser darauf. Alkohol belastet den Kreislauf, und der ist nach einer Behandlung bei manchen ohnehin etwas gedämpft. Dasselbe gilt für sehr viel Kaffee direkt danach. Viel Wasser oder Tee trinken ist dagegen sinnvoll, die meisten empfinden das nach der Behandlung als angenehm. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/">Alkohol nach Akupunktur</a>.</p>',
+        a: '<p>Verzichte am Behandlungstag besser darauf. Alkohol belastet den Kreislauf, und der ist nach einer Behandlung bei manchen ohnehin etwas gedämpft. Dasselbe gilt für sehr viel Kaffee direkt danach (mehr dazu: <a href="/gesundheitsbibliothek/fragen/kaffee-nach-akupunktur/">Kaffee nach Akupunktur</a>). Viel Wasser oder Tee trinken ist dagegen sinnvoll, die meisten empfinden das nach der Behandlung als angenehm. Ausführlicher: <a href="/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/">Alkohol nach Akupunktur</a>.</p>',
       },
       {
         id: 'autofahren',
@@ -725,6 +725,40 @@ export const fragen: Frage[] = [
     ],
     mehr: [
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'duschen-nach-akupunktur',
+    question: 'Muss man mit Duschen nach Akupunktur warten?',
+    title: 'Duschen nach Akupunktur: Muss man warten?',
+    metaDesc: 'Normales Duschen ist nach Akupunktur in der Regel sofort möglich. Was für empfindliche Einstichstellen gilt und wann Dauernadeln oder Pflaster eine Ausnahme sind.',
+    kurz: '<p>Nach einer normalen Akupunkturbehandlung kannst du duschen, wann du willst; eine feste Wartezeit gibt es nicht. Die Einstichstellen sind winzig und schliessen sich schnell.</p><p>Sinnvoll ist nur etwas Rücksicht: nicht direkt an frisch empfindlichen Stellen rubbeln und extrem heisses Duschen kurz nach der Behandlung vermeiden, wenn dein Kreislauf empfindlich reagiert.</p>',
+    bodyHtml: '<h2>Warum du nicht warten musst</h2>\n<p>Akupunkturnadeln sind sehr fein und hinterlassen nur punktförmige Einstiche, die sich normalerweise innert kurzer Zeit schliessen. Normales Duschwasser ist dafür kein Problem; eine allgemeine Wartezeit von mehreren Stunden ist ein Mythos, den du getrost vergessen kannst.</p>\n<h2>Worauf du trotzdem achten kannst</h2>\n<p>Wenn einzelne Stellen noch empfindlich sind oder <a href="/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/">kleine blaue Flecken</a> haben, reib beim Duschen nicht kräftig darüber und tupfe die Haut danach eher trocken. Sehr heisses, langes Duschen direkt nach der Behandlung kann den Kreislauf zusätzlich fordern; wer sich nach der Sitzung <a href="/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/">müde oder leicht schwindelig</a> fühlt, duscht besser erst, wenn das abgeklungen ist.</p>\n<h2>Ausnahmen: Dauernadeln, Ohrpflaster, Verbände</h2>\n<p>Anders sieht es aus, wenn etwas auf oder in der Haut bleibt: Bei <a href="/therapien/dauernadeln/">Dauernadeln</a>, <a href="/therapien/ear-seeds/">Ohrpflastern</a> oder nach Behandlungen mit Verband gelten die konkreten Pflegehinweise deiner Therapeutin oder deines Therapeuten; meist heisst das kurz duschen ja, langes Einweichen und direktes Abrubbeln der Stelle nein. Auch nach <a href="/therapien/schroepfen/">Schröpfen</a> ist die Haut stärker beansprucht; lauwarm duschen ist in Ordnung, Schwimmbad und Sauna sind ein anderes Thema.</p>\n<h2>Schwimmbad, Sauna &amp; Co.</h2>\n<p>Für alles, was über die Dusche hinausgeht, also Schwimmbad, See, Baden und Sauna, gelten eigene Überlegungen. Die beantwortet die Seite <a href="/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/">Schwimmen nach Akupunktur</a>.</p>\n<h2>Kurz gesagt</h2>\n<p>Duschen nach Akupunktur: jederzeit erlaubt, sanft an den Einstichstellen, Ausnahmen nur bei Dauernadeln, Pflastern oder Verbänden, dort gelten die Hinweise aus der Praxis. Weitere Alltagsfragen sammelt die Übersicht <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/', label: 'Darf man nach Akupunktur schwimmen?' },
+      { href: '/gesundheitsbibliothek/fragen/sport-nach-akupunktur/', label: 'Darf man nach Akupunktur Sport machen?' },
+    ],
+    mehr: [
+      { href: '/therapien/dauernadeln/', label: 'Dauernadeln', cat: 'Therapie' },
+      { href: '/therapien/schroepfen/', label: 'Schröpfen', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'kaffee-nach-akupunktur',
+    question: 'Darf man nach Akupunktur Kaffee trinken?',
+    title: 'Kaffee nach Akupunktur: Ist das okay?',
+    metaDesc: 'Kaffee ist nach Akupunktur nicht verboten. Warum viele die Tasse trotzdem etwas nach hinten schieben, was bei Herzklopfen und Unruhe gilt und was Koffein nicht kann.',
+    kurz: '<p>Ein grundsätzliches Kaffeeverbot nach Akupunktur gibt es nicht. Eine Tasse Kaffee macht die Behandlung nicht rückgängig; die Vorstellung, Koffein würde die Wirkung „löschen", hat keine seriöse Grundlage.</p><p>Viele Patient:innen fühlen sich nach der Behandlung angenehm entspannt und verschieben den Kaffee freiwillig etwas nach hinten, um diesen Zustand nicht sofort zu übersteuern. Wasser oder Tee direkt danach empfinden die meisten als stimmiger.</p>',
+    bodyHtml: '<h2>Kein Verbot, aber ein sinnvoller Moment zum Hinhören</h2>\n<p>Nach einer Akupunkturbehandlung reagiert der Körper individuell: Manche fühlen sich wach und klar, andere angenehm müde. Koffein wirkt anregend und kann diesen Entspannungszustand schneller beenden; verboten ist das nicht, aber viele empfinden die erste Stunde nach der Behandlung ohne Kaffee als angenehmer. Trink zuerst Wasser oder Tee, der Flüssigkeitsnachschub tut nach der Behandlung ohnehin gut, und den Kaffee dann, wann er dir passt.</p>\n<h2>Wann etwas Zurückhaltung sinnvoll ist</h2>\n<p>Wenn du wegen innerer Unruhe, Schlafproblemen oder stressverstärktem Herzklopfen in Behandlung bist, lohnt sich ein bewusster Umgang mit Koffein generell, nicht nur am Behandlungstag: Bei empfindlichen Personen kann Kaffee Herzklopfen und Unruhe verstärken, gerade am Nachmittag und Abend. Das ist eine allgemeine Koffein-Frage, keine Akupunktur-Regel. Wie sich Koffein bei dir auswirkt, besprichst du am besten direkt in der Behandlung.</p>\n<h2>Was Kaffee nicht kann</h2>\n<p>Weder „löscht" Kaffee die Wirkung einer Akupunkturbehandlung, noch ersetzt der Verzicht darauf eine Behandlung. Solche Alles-oder-nichts-Regeln stammen nicht aus der seriösen Praxis. Wenn dir eine Therapeutin oder ein Therapeut im Einzelfall empfiehlt, vor oder nach der Sitzung auf Kaffee zu verzichten (etwa bei ausgeprägter Unruhe), hat das individuelle Gründe und gilt für dich, nicht als Universalregel.</p>\n<h2>Und vor der Behandlung?</h2>\n<p>Auch da gilt: normale Mengen sind in Ordnung. Direkt vor der Sitzung literweise starken Kaffee zu trinken, ist keine gute Idee, ein aufgedrehter Kreislauf und volle Blase machen das Liegen unnötig unruhig. Was rund ums Essen vor dem Termin gilt, steht unter <a href="/gesundheitsbibliothek/fragen/essen-vor-akupunktur/">Essen vor der Akupunktur</a>.</p>\n<h2>Kurz gesagt</h2>\n<p>Kaffee nach Akupunktur ist okay. Gönn dir nach der Behandlung zuerst Wasser oder Tee und hör auf deinen Körper; bei Unruhe- und Schlafthemen lohnt sich ein generell bewusster Koffein-Umgang. Mehr Alltagsfragen: <a href="/gesundheitsbibliothek/fragen/nach-der-behandlung/">Nach der Behandlung</a> und <a href="/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/">Alkohol nach Akupunktur</a>.</p>',
+    verwandt: [
+      { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Alle Fragen zu: Nach der Behandlung' },
+      { href: '/gesundheitsbibliothek/fragen/alkohol-nach-akupunktur/', label: 'Darf man nach Akupunktur Alkohol trinken?' },
+      { href: '/gesundheitsbibliothek/fragen/essen-vor-akupunktur/', label: 'Muss ich vor der Akupunktur nüchtern sein?' },
+    ],
+    mehr: [
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
     ],
   },
 ];

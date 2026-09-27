@@ -1,0 +1,142 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/roentgen';
+const url = `https://tcm.ch${path}/`;
+const title = 'Röntgen: Ablauf, Strahlenbelastung und was man erkennen kann';
+const description = 'Wie eine Röntgenuntersuchung abläuft, wie hoch die Strahlenbelastung im Verhältnis wirklich ist, was Röntgenbilder zeigen und wo CT oder MRT übernehmen.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Röntgen', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/finger-morgens-steif/', label: 'Finger morgens steif' },
+  { href: '/koerpersignale/knie-knackt-ohne-schmerzen/', label: 'Knie knackt ohne Schmerzen' },
+  { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen' },
+];
+const rel2Links = [
+  { href: '/beschwerden/arthrose/', label: 'Arthrose' },
+  { href: '/beschwerden/rhizarthrose/', label: 'Rhizarthrose (Daumensattelgelenk)' },
+  { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+  { href: '/beschwerden/knieschmerzen/', label: 'Knieschmerzen' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Röntgen</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Röntgen: Was zeigt das Bild und wie viel Strahlung ist das?</h1>
+        <p class="lead">Nach einem Sturz, bei Gelenkbeschwerden oder Arthrose-Verdacht ist das Röntgenbild oft die erste Bildgebung. Hier erfährst du, wie die Untersuchung abläuft, was sie zeigen kann und wie die Strahlenbelastung einzuordnen ist.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das Röntgen ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Röntgenuntersuchung?</h2>
+          <p>Röntgenstrahlen durchdringen den Körper unterschiedlich stark: Knochen halten viel Strahlung zurück und erscheinen hell, Weichteile und Luft erscheinen dunkler. So entsteht in Sekundenbruchteilen ein Bild, auf dem vor allem Knochen und Gelenkstellungen gut beurteilbar sind.</p>
+          <h2>Wann wird geröntgt?</h2>
+          <ul>
+            <li><strong>Nach Stürzen und Unfällen:</strong> zum Ausschluss oder Nachweis von Knochenbrüchen.</li>
+            <li><strong>Bei Gelenkbeschwerden:</strong> etwa Gelenkspalt und Knochenanbauten bei Verdacht auf <a href="/beschwerden/arthrose/">Arthrose</a> oder <a href="/beschwerden/rhizarthrose/">Rhizarthrose</a>.</li>
+            <li><strong>An der Wirbelsäule:</strong> Stellung und Struktur der Wirbel, etwa bei anhaltenden <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a> mit bestimmten Fragestellungen.</li>
+            <li><strong>Am Brustkorb:</strong> das Thorax-Röntgen bei Lungen- und Herzfragestellungen.</li>
+            <li><strong>An den Zähnen:</strong> als zahnärztliche Aufnahmen mit sehr kleiner Dosis.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Du legst Schmuck und Metall in der Region ab, wirst von der Fachperson positioniert und hältst für die Aufnahme einen Moment still, beim Thorax-Röntgen kurz mit angehaltenem Atem. Die Aufnahme selbst dauert nur einen Augenblick und tut nicht weh. Eine besondere Vorbereitung braucht es nicht. Wichtig: <strong>Eine bestehende oder mögliche Schwangerschaft solltest du vor der Untersuchung immer angeben</strong>, damit die Ärztin oder der Arzt Nutzen und Alternativen abwägen kann.</p>
+          <h2>Wie hoch ist die Strahlenbelastung?</h2>
+          <p>Die Dosis einer einzelnen Röntgenaufnahme ist klein. Zur Einordnung: Jeder Mensch in der Schweiz nimmt pro Jahr natürliche Strahlung aus Boden, Luft und Höhenstrahlung auf; eine Aufnahme von Hand oder Knie entspricht nur einem Bruchteil weniger Tage dieser natürlichen Belastung, ein Thorax-Röntgen etwa dem Bereich weniger Tage bis Wochen. Moderne digitale Geräte kommen mit deutlich weniger Dosis aus als früher. Trotzdem gilt das Prinzip: Geröntgt wird, wenn das Bild eine Konsequenz hat, nicht auf Vorrat. Panik ist bei einer medizinisch begründeten Aufnahme nicht angebracht.</p>
+          <h2>Was zeigt das Röntgenbild nicht?</h2>
+          <p>Weichteile sind die Schwäche des Röntgens: Bandscheiben, Knorpel, Sehnen, Muskeln und Nerven sind kaum direkt beurteilbar. Deshalb übernehmen bei solchen Fragestellungen andere Verfahren: der <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> für Sehnen und Weichteile nahe der Oberfläche, das <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> für Bandscheiben, Knorpel und Nerven und das <a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a> für feine Knochendetails und Notfalldiagnostik. Wichtig zu wissen: Röntgen-Arthrose und Schmerzstärke passen nicht immer zusammen; deutliche Bildveränderungen können wenig Beschwerden machen und umgekehrt.</p>
+          <h2>Wie geht es nach der Aufnahme weiter?</h2>
+          <p>Die Bilder werden ärztlich befundet, oft direkt in der Sprechstunde oder mit schriftlichem Bericht an die zuweisende Praxis. Was der Befund für die Behandlung bedeutet, besprichst du mit der behandelnden Ärztin oder dem behandelnden Arzt, immer zusammen mit Untersuchung und Beschwerdebild.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Direkt nichts: Das Röntgen gehört in die ärztliche Abklärung. Relevant wird es für uns danach, etwa wenn eine Arthrose gesichert ist und die Beschwerden ergänzend zur ärztlichen Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> angegangen werden sollen. Eine unklare Verletzung gehört zuerst in ärztliche Hände, nicht auf die Behandlungsliege.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen Röntgenfragen auftauchen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Arthrose oder Gelenkschmerz abgeklärt?</div>
+          <p>Wenn die Bildgebung gemacht ist und die Beschwerden bleiben, kann eine TCM-Behandlung ergänzend zur ärztlichen Therapie sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

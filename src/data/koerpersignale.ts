@@ -385,6 +385,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was macht die TCM bei einem Klossgefühl?', a: 'Bei funktionellem Globusgefühl behandeln wir die Daueranspannung und die Muskulatur von Nacken, Kiefer und Hals, meist mit Akupunktur und Tuina. Bestehen Warnzeichen, kommt zuerst die HNO-Abklärung.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/globusgefuehl/', label: 'Was tun bei Globusgefühl im Hals?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
       { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
@@ -430,6 +431,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Räusperzwang zum Arzt?', a: 'Wenn er länger als sechs bis acht Wochen anhält, bei Heiserkeit über drei Wochen, Schluckschmerzen, hängen bleibendem Essen, Atemnot oder Blut im Sekret. Raucher:innen sollten früher untersuchen lassen.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/raeusperzwang/', label: 'Was tun bei ständigem Räusperzwang?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
@@ -492,8 +494,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'hitzegefuehl-ohne-fieber',
     symptom: 'Hitzegefühle ohne Fieber',
-    title: 'Hitzegefühl ohne Fieber: Woher kommen die Hitzewellen?',
-    metaDesc: 'Dir wird plötzlich heiss, das Thermometer zeigt aber normale Werte? Von Hormonen über Schilddrüse bis Stressreaktion: was hinter Hitzegefühlen ohne Fieber stecken kann.',
+    title: 'Plötzliches Hitzegefühl ohne Fieber: Was steckt dahinter?',
+    metaDesc: 'Dir wird plötzlich heiss, ohne Fieber? Von Hormonen und Wechseljahren über Schilddrüse bis Stressreaktion: die häufigsten Gründe für Hitzewallungen und wann du sie abklären lassen solltest.',
     h1: 'Warum ist mir ständig heiss, obwohl ich kein Fieber habe?',
     category: 'Wärme & Schwitzen',
     lead: 'Von innen steigt eine Hitzewelle auf, das Gesicht glüht, vielleicht bricht Schweiss aus. Das Thermometer zeigt trotzdem normale Werte. Solche Hitzegefühle ohne Fieber sind ein Regulationsphänomen, und die Frage ist nicht ob, sondern welches System gerade überreagiert.',
@@ -623,6 +625,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sind Wadenkrämpfe ein Warnzeichen?', a: 'Bei sehr häufigen, schlafstörenden Krämpfen, bei Begleitsymptomen wie Muskelschwäche, Taubheit oder Kribbeln, nach Beginn neuer Medikamente oder wenn eine Wade geschwollen, überwärmt oder druckschmerzhaft ist. Im letzten Fall noch am selben Tag ärztlich beurteilen lassen, das kann eine Thrombose sein.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/wadenkraempfe-nachts/', label: 'Was tun bei Wadenkrämpfen in der Nacht?', cat: 'Was jetzt?' },
       { href: '/beschwerden/restless-legs/', label: 'Restless Legs', cat: 'Beschwerde' },
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
@@ -895,8 +898,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'finger-morgens-steif',
     symptom: 'morgens steife Finger',
-    title: 'Finger morgens steif: Was die Dauer verrät',
-    metaDesc: 'Steife Finger nach dem Aufstehen, die erst langsam in Gang kommen? Ob Überlastung, Arthrose oder eine Entzündung dahintersteckt, verrät vor allem eines: wie lange die Steifigkeit anhält.',
+    title: 'Steife Finger am Morgen: Was die Dauer der Steifigkeit verrät',
+    metaDesc: 'Morgens steife Finger, die erst langsam in Gang kommen? Ob Überlastung, Arthrose oder Entzündung dahintersteckt, verrät oft die Dauer der Morgensteifigkeit. So ordnest du sie ein.',
     h1: 'Warum sind meine Finger morgens so steif?',
     category: 'Hände & Nerven',
     lead: 'Die Kaffeetasse greifen, die Zahnpastatube öffnen: Morgens fühlen sich die Finger dick, hölzern und langsam an, erst nach einer Weile laufen sie warm. Morgensteifigkeit der Finger ist häufig, und die wichtigste diagnostische Frage kannst du selbst beantworten: Wie lange dauert sie?',
@@ -1100,8 +1103,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'ohr-knackt-beim-schlucken',
     symptom: 'ein knackendes Ohr beim Schlucken',
-    title: 'Ohr knackt beim Schlucken: mögliche Ursachen',
-    metaDesc: 'Knackt oder klickt dein Ohr beim Schlucken? Oft steckt der Druckausgleich im Mittelohr dahinter. Erfahre, wann das normal ist und wann HNO-Abklärung sinnvoll ist.',
+    title: 'Ohr knackt beim Schlucken: Ursachen und wann es normal ist',
+    metaDesc: 'Knackt oder klickt dein Ohr beim Schlucken? Meist ist es der normale Druckausgleich der Ohrtrompete. Wann das Knacken harmlos ist und wann du es abklären lassen solltest.',
     h1: 'Warum knackt mein Ohr beim Schlucken?',
     category: 'Kopf & Sinne',
     lead: 'Bei jedem Schlucken klickt oder knackt es im Ohr. Oft ist das schlicht der normale Druckausgleich im Mittelohr. Hier erfährst du, wie der Mechanismus funktioniert, wann der Kiefer beteiligt sein kann und bei welchen Zeichen eine HNO-Abklärung sinnvoll ist.',
@@ -1195,6 +1198,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich Mundtrockenheit abklären lassen?', a: 'Wenn der Mund über mehrere Wochen regelmässig trocken bleibt, Essen oder Sprechen erschwert wird oder zusätzlich trockene Augen, häufiges Wasserlassen oder Veränderungen im Mund auftreten. Auch wiederkehrende Zahnprobleme trotz guter Pflege gehören angesprochen.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/trockener-mund-nachts/', label: 'Was tun bei trockenem Mund in der Nacht?', cat: 'Was jetzt?' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafstörungen', cat: 'Beschwerde' },
       { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
       { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
@@ -2127,8 +2131,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'bauch-fuehlt-sich-hart-an',
     symptom: 'ein hart angespannter Bauch',
-    title: 'Bauch fühlt sich hart an: Was bedeutet die Spannung?',
-    metaDesc: 'Dein Bauch fühlt sich gespannt und hart an wie ein Ballon? Warum Luft, Verstopfung und angespannte Bauchmuskeln den Bauch hart machen und wann das ein Warnzeichen ist.',
+    title: 'Harter, aufgeblähter Bauch: Was bedeutet die Spannung?',
+    metaDesc: 'Dein Bauch fühlt sich hart und gespannt an wie ein Ballon? Warum Luft, Verstopfung und angespannte Bauchmuskeln den Bauch hart machen und wann du das abklären lassen solltest.',
     h1: 'Warum fühlt sich mein Bauch so hart an?',
     category: 'Bauch & Verdauung',
     lead: 'Du legst die Hand auf den Bauch und statt weich fühlt er sich gespannt und hart an, manchmal wie ein Ballon. Meist stecken Luft im Darm, Verstopfung oder unbewusst angespannte Bauchmuskeln dahinter. Selten ist ein harter Bauch ein Alarmzeichen, und genau diesen Unterschied solltest du kennen.',
@@ -2429,8 +2433,8 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'durchfall-am-morgen',
     symptom: 'Durchfall am Morgen',
-    title: 'Durchfall am Morgen: Ursachen & wann abklären?',
-    metaDesc: 'Morgendlicher Durchfall kann durch Ernährung, Kaffee, Stress oder Darmerkrankungen entstehen. Erfahre, worauf du achten solltest.',
+    title: 'Jeden Morgen Durchfall? Ursachen und wann du abklären solltest',
+    metaDesc: 'Morgendlicher Durchfall direkt nach dem Aufstehen: von Kaffee und Stress bis Reizdarm. Welche Ursachen häufig sind, was du beobachten solltest und wann eine Abklärung sinnvoll ist.',
     h1: 'Durchfall am Morgen',
     category: 'Bauch & Verdauung',
     lead: 'Wenn weicher oder flüssiger Stuhl vor allem morgens auftritt, kann das mit der natürlichen Aktivierung des Darms nach dem Aufstehen zusammenhängen. Kaffee, Frühstück, Stress und bestimmte Nahrungsmittel können diesen sogenannten gastro-kolischen Reflex zusätzlich verstärken. Wiederkehrender morgendlicher Durchfall kann aber auch andere Ursachen haben.',
@@ -2457,6 +2461,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Achte auf den Abstand zwischen Aufstehen, Kaffee, Frühstück und dem ersten Stuhldrang. Auch ein kurzes Ernährungs- und Symptomtagebuch kann helfen, wiederkehrende Auslöser zu erkennen. Mehr zum Gesamtbild findest du unter <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie: Ablauf der Darmspiegelung', cat: 'Untersuchung' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
@@ -2634,6 +2639,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Ist trockene Raumluft der wahrscheinlichste Auslöser, findest du die wirksamsten Massnahmen im Artikel <a href="/wissen/heizungsluft-trockene-schleimhaeute/">Heizungsluft und trockene Schleimhäute</a>. Bei pfeifender Atmung oder Atemnot unter Belastung gehört die Abklärung in Richtung <a href="/beschwerden/asthma/">Asthma</a>, bei bekannter Lungenerkrankung siehe <a href="/beschwerden/copd/">COPD</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion: Was zeigt die Spirometrie?', cat: 'Untersuchung' },
       { href: '/beschwerden/asthma/', label: 'Asthma', cat: 'Beschwerde' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
       { href: '/wissen/heizungsluft-trockene-schleimhaeute/', label: 'Heizungsluft & trockene Schleimhäute', cat: 'Artikel' },
@@ -2883,6 +2889,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Oberbauchbeschwerden zum Arzt?', a: 'Bei Druck über Wochen, Gewichtsverlust, Schluckbeschwerden, Blut im oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche heftige Oberbauchschmerzen mit Ausstrahlung, Atemnot oder Kaltschweiss sind ein Notfall: Notruf 144.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie: Was passiert bei der Magenspiegelung?', cat: 'Untersuchung' },
       { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen', cat: 'Körpersignal' },
       { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen', cat: 'Körpersignal' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
@@ -3667,6 +3674,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wie wird ein harter Oberbauch abgeklärt?', a: 'Mit Abtasten, je nach Befund Ultraschall des Oberbauchs und einfachen Laborwerten wie den Leberwerten. Häufig ist das Ergebnis unauffällig.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall: Ablauf und Einsatz', cat: 'Untersuchung' },
       { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch', cat: 'Körpersignal' },
       { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Bauch fühlt sich hart an', cat: 'Körpersignal' },
       { href: '/koerpersignale/harter-unterbauch/', label: 'Harter Unterbauch', cat: 'Körpersignal' },

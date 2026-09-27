@@ -1,0 +1,141 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Abgrenzung: /haut/ultherapy-hifu/ ist eine aesthetische Ultraschall-BEHANDLUNG
+// und bleibt separater Owner; diese Seite besitzt nur den Untersuchungs-Intent.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/ultraschall';
+const url = `https://tcm.ch${path}/`;
+const title = 'Ultraschall: Ablauf, Einsatz und was die Untersuchung zeigt';
+const description = 'Wie eine Ultraschalluntersuchung abläuft, was sich damit gut beurteilen lässt, wo die Grenzen liegen und warum sie ganz ohne Strahlung auskommt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Ultraschall', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen' },
+  { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch' },
+  { href: '/koerpersignale/schwere-beine-abends/', label: 'Schwere Beine am Abend' },
+];
+const rel2Links = [
+  { href: '/beschwerden/schulterschmerzen/', label: 'Schulterschmerzen' },
+  { href: '/beschwerden/kalkschulter/', label: 'Kalkschulter' },
+  { href: '/beschwerden/schwere-beine/', label: 'Schwere Beine' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Ultraschall</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Ultraschall: Was zeigt die Untersuchung in Echtzeit?</h1>
+        <p class="lead">Bauch, Schilddrüse, Sehnen oder Gefässe: Der Ultraschall (Sonografie) ist eine der häufigsten Untersuchungen überhaupt. Hier erfährst du, wie er abläuft, was er gut zeigen kann und wo seine Grenzen liegen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Der Ultraschall ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist ein Ultraschall?</h2>
+          <p>Bei der Sonografie sendet ein Schallkopf für den Körper unhörbare Schallwellen aus. Aus deren Echos berechnet das Gerät in Echtzeit ein Bild der Organe und Gewebe. Die Untersuchung kommt ganz ohne Röntgenstrahlung aus, tut nicht weh und kann beliebig oft wiederholt werden, auch in der Schwangerschaft.</p>
+          <h2>Was lässt sich damit untersuchen?</h2>
+          <ul>
+            <li><strong>Bauchorgane:</strong> Leber, Gallenblase, Nieren, Milz und Bauchschlagader, etwa bei <a href="/koerpersignale/druck-im-oberbauch/">Druck im Oberbauch</a> oder unklaren Bauchbeschwerden.</li>
+            <li><strong>Schilddrüse:</strong> Grösse, Knoten und Gewebestruktur, oft zusammen mit den Schilddrüsen-Blutwerten.</li>
+            <li><strong>Sehnen, Muskeln und Gelenke:</strong> etwa Schleimbeutel und Sehnen bei <a href="/beschwerden/schulterschmerzen/">Schulterschmerzen</a> oder Verkalkungen bei einer <a href="/beschwerden/kalkschulter/">Kalkschulter</a>.</li>
+            <li><strong>Gefässe:</strong> Venen und Arterien im Doppler-Modus, zum Beispiel bei Thromboseverdacht oder <a href="/beschwerden/schwere-beine/">schweren Beinen</a>.</li>
+            <li><strong>Herz:</strong> als Herzultraschall (Echokardiografie), eine eigene spezialisierte Untersuchung.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Du liegst meist auf einer Liege, die Haut wird mit Gel bestrichen, damit der Schallkopf guten Kontakt hat, und die Ärztin oder der Arzt führt ihn über die Region. Die Untersuchung dauert je nach Fragestellung etwa 10 bis 30 Minuten. Die Vorbereitung hängt von der Körperregion ab: Für den Bauch-Ultraschall wirst du oft gebeten, nüchtern zu kommen, für den Unterbauch manchmal mit gefüllter Blase; für Schilddrüse, Gelenke oder Gefässe braucht es keine Vorbereitung. Massgeblich sind immer die Angaben der untersuchenden Praxis.</p>
+          <h2>Stärken und Grenzen</h2>
+          <p>Die Stärken: keine Strahlung, Bilder in Echtzeit und in Bewegung, sofort wiederholbar und gut verfügbar. Die Grenzen: Luft und Knochen blockieren die Schallwellen, deshalb sind Lunge, Darmabschnitte hinter viel Luft und das Innere von Knochen schlecht einsehbar, und bei tiefer liegenden Strukturen nimmt die Bildqualität ab. Ein unauffälliger Ultraschall kann deshalb nicht jede Erkrankung ausschliessen. Je nach Fragestellung folgen weitere Untersuchungen wie <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>, <a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a> oder eine <a href="/gesundheitsbibliothek/untersuchungen/gastroskopie/">Magenspiegelung</a>.</p>
+          <h2>Wie werden Ergebnisse eingeordnet?</h2>
+          <p>Viele Ultraschall-Befunde sind Zufallsbefunde ohne Krankheitswert, etwa kleine Zysten oder Verkalkungen. Was ein Befund für dich bedeutet, ordnet die behandelnde Ärztin oder der behandelnde Arzt zusammen mit Beschwerden, Vorgeschichte und Laborwerten ein, nicht das Bild allein.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Wenig, und das ist Absicht: Der Ultraschall gehört in die ärztliche Abklärung. Für unsere Arbeit ist er wertvoll, weil ein sauber abgeklärter Befund die Grundlage für eine seriöse Behandlungsplanung ist, etwa bei Sehnen- und Schulterbeschwerden, die nach der Abklärung ergänzend mit <a href="/therapien/akupunktur/">Akupunktur</a> behandelt werden können. Übrigens: Die ästhetische Anwendung fokussierten Ultraschalls ist etwas ganz anderes und auf der Seite <a href="/haut/ultherapy-hifu/">Ultherapy &amp; HIFU</a> beschrieben.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen ein Ultraschall oft zur Sprache kommt"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Abgeklärt und bereit für den nächsten Schritt?</div>
+          <p>Wenn die ärztliche Abklärung gemacht ist und Beschwerden wie Schulter- oder Verdauungsprobleme bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

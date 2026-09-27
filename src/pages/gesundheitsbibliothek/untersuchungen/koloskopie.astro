@@ -1,0 +1,137 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// KEINE detaillierten Abfuehr-/Dosierungsanweisungen: massgeblich ist immer
+// das Schema der verordnenden Praxis/Klinik.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/koloskopie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Koloskopie (Darmspiegelung): Vorbereitung, Ablauf und Befunde';
+const description = 'Wie eine Darmspiegelung abläuft: Darmvorbereitung im Überblick, Sedierung, Polypenentfernung, was danach gilt und wann die Koloskopie als Vorsorge sinnvoll ist.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Koloskopie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/durchfall-am-morgen/', label: 'Durchfall am Morgen' },
+  { href: '/koerpersignale/stinkende-blaehungen/', label: 'Stinkende Blähungen' },
+  { href: '/koerpersignale/bauch-fuehlt-sich-hart-an/', label: 'Harter, gespannter Bauch' },
+];
+const rel2Links = [
+  { href: '/beschwerden/reizdarm/', label: 'Reizdarm' },
+  { href: '/beschwerden/verstopfung/', label: 'Verstopfung' },
+  { href: '/beschwerden/blaehungen/', label: 'Blähungen' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Koloskopie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Darmspiegelung: Wie laufen Vorbereitung und Untersuchung ab?</h1>
+        <p class="lead">Ob als Vorsorge ab 50 oder zur Abklärung von Darmbeschwerden: Die Koloskopie ist die gründlichste Untersuchung des Dickdarms. Der grösste Teil des Aufwands ist die Vorbereitung, die Untersuchung selbst verschlafen die meisten.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Koloskopie ist eine schulmedizinische Untersuchung und wird von spezialisierten Ärztinnen und Ärzten durchgeführt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Für die Darmvorbereitung gilt ausschliesslich das Schema deiner untersuchenden Praxis oder Klinik.</div>
+
+          <h2>Was wird untersucht?</h2>
+          <p>Bei der Koloskopie (Darmspiegelung) wird ein biegsamer Schlauch mit Kamera über den After durch den gesamten Dickdarm geführt, oft bis in den letzten Dünndarmabschnitt. Die Ärztin oder der Arzt beurteilt die Schleimhaut direkt und kann Polypen, Entzündungen, Blutungsquellen oder andere Veränderungen erkennen, und viele davon gleich behandeln.</p>
+          <h2>Vorsorge oder Abklärung?</h2>
+          <p>Die Koloskopie hat zwei Rollen. Als <strong>Vorsorgeuntersuchung</strong> (in der Schweiz üblicherweise ab 50) sucht sie nach Polypen, aus denen über Jahre Darmkrebs entstehen könnte; werden sie entfernt, ist die Vorstufe beseitigt. Als <strong>Abklärungsuntersuchung</strong> geht sie Beschwerden nach: Blut im Stuhl, anhaltende Durchfälle oder Verstopfung, unklare Bauchschmerzen, Eisenmangel oder Gewichtsverlust. Auch die Diagnose <a href="/beschwerden/reizdarm/">Reizdarm</a> setzt voraus, dass andere Ursachen ausgeschlossen wurden, je nach Situation auch per Koloskopie.</p>
+          <h2>Die Darmvorbereitung im Überblick</h2>
+          <p>Damit die Schleimhaut beurteilbar ist, muss der Darm sauber sein. Dafür stellst du in den Tagen davor die Ernährung um (ballaststoffarm, dann klare Flüssigkeiten) und trinkst am Vortag und teils am Untersuchungstag eine Abführlösung in mehreren Portionen. Welche Lösung, welche Mengen und welche Zeiten: Das legt deine untersuchende Praxis fest, und ihr Schema hat immer Vorrang. Plane für die Stunden nach dem Abführmittel Zeit in Toilettennähe ein; die gründliche Vorbereitung ist entscheidend für die Aussagekraft der Untersuchung.</p>
+          <h2>Ablauf und Sedierung</h2>
+          <p>Die Untersuchung dauert meist 20 bis 45 Minuten. Die meisten Patientinnen und Patienten wählen eine Sedierung („Dämmerschlaf") und bekommen von der Untersuchung wenig bis nichts mit. Zur besseren Sicht wird Luft oder CO2 in den Darm gegeben; ein Blähgefühl danach ist deshalb normal und legt sich rasch.</p>
+          <h2>Polypen und Gewebeproben</h2>
+          <p>Werden Polypen gefunden, entfernt sie die Ärztin oder der Arzt in der Regel direkt während der Untersuchung mit einer kleinen Schlinge; das ist schmerzfrei. Gewebeproben und entfernte Polypen gehen ins Labor, die Resultate liegen nach einigen Tagen bis etwa zwei Wochen vor und bestimmen auch, wann die nächste Kontroll-Koloskopie empfohlen wird.</p>
+          <h2>Nach der Untersuchung</h2>
+          <p>Nach der Sedierung bleibst du kurz zur Überwachung; an diesem Tag gilt: nicht selbst Auto fahren, keine wichtigen Entscheide, Begleitung für den Heimweg organisieren. Essen ist meist bald wieder normal möglich. <strong>Ärztlich melden solltest du dich bei:</strong> stärkeren oder zunehmenden Bauchschmerzen, Fieber, anhaltendem oder grösserem Blutabgang. Ernsthafte Komplikationen wie Nachblutungen oder eine Verletzung der Darmwand sind selten, kommen aber vor allem nach Polypenentfernungen vereinzelt vor, deshalb diese Warnzeichen ernst nehmen.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die Koloskopie gehört in die ärztliche Abklärung, und Warnzeichen wie Blut im Stuhl gehören nie auf die Behandlungsliege, sondern zuerst in die Sprechstunde. Ist die Abklärung unauffällig und bleiben funktionelle Beschwerden wie Blähungen oder ein unregelmässiger Stuhlgang, kann ergänzend eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> mit Fokus auf die Verdauung eingesetzt werden.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen Darm-Abklärungen zur Sprache kommen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Darm abgeklärt, Verdauung weiter launisch?</div>
+          <p>Wenn die Koloskopie unauffällig war und funktionelle Verdauungsbeschwerden bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

@@ -1,0 +1,140 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026, Reserve U1). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/ct';
+const url = `https://tcm.ch${path}/`;
+const title = 'CT (Computertomografie): Ablauf, Einsatz und Unterschied zum MRT';
+const description = 'Wann ein CT gemacht wird, wie die Untersuchung abläuft, was Kontrastmittel bedeutet, wie die Strahlendosis einzuordnen ist und wann das MRT die bessere Wahl ist.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'CT', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/', label: 'Druck im Kopf ohne Kopfschmerzen' },
+  { href: '/koerpersignale/kopfdruck-beim-buecken/', label: 'Kopfdruck beim Bücken' },
+  { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten' },
+];
+const rel2Links = [
+  { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+  { href: '/beschwerden/migraene/', label: 'Migräne' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">CT</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Was passiert bei einem CT?</h1>
+        <p class="lead">Schnell, präzise und in Notfällen oft die erste Wahl: Die Computertomografie liefert in Sekunden detaillierte Schnittbilder des Körpers. Hier erfährst du, wie das CT abläuft, wann es eingesetzt wird und wie es sich vom MRT unterscheidet.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das CT ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Computertomografie?</h2>
+          <p>Beim CT rotiert eine Röntgenröhre um den Körper, während der Tisch langsam durch einen offenen Ring fährt. Ein Computer berechnet aus den Messwerten Schnittbilder in hoher Auflösung. Anders als das einzelne <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgenbild</a> zeigt das CT den Körper Schicht für Schicht und stellt neben Knochen auch Organe, Gefässe und die Lunge detailliert dar.</p>
+          <h2>Wann wird ein CT gemacht?</h2>
+          <ul>
+            <li><strong>Notfälle:</strong> nach Unfällen, bei Schlaganfall-Verdacht oder akuten starken Kopf-, Brust- und Bauchschmerzen, weil das CT in Sekunden Ergebnisse liefert.</li>
+            <li><strong>Lunge:</strong> Abklärung von Lungenveränderungen, die im Röntgenbild unklar bleiben.</li>
+            <li><strong>Knochen:</strong> komplexe Brüche und feine Knochendetails, die dem Röntgen entgehen.</li>
+            <li><strong>Bauchorgane und Gefässe:</strong> meist mit Kontrastmittel, etwa bei unklaren Bauchbefunden.</li>
+            <li><strong>Planung:</strong> vor Operationen oder Bestrahlungen.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Du liegst auf dem Untersuchungstisch, der Ring ist offen und kurz, Platzangst ist deshalb selten ein Problem. Die eigentliche Aufnahme dauert oft nur Sekunden bis wenige Minuten; zwischendurch wirst du gebeten, kurz die Luft anzuhalten. Je nach Fragestellung wird ein jodhaltiges Kontrastmittel über die Vene gegeben; ein kurzes Wärmegefühl dabei ist normal. Wichtig vorab anzugeben: Allergien, Schilddrüsen- und Nierenerkrankungen sowie eine mögliche Schwangerschaft.</p>
+          <h2>Wie ist die Strahlendosis einzuordnen?</h2>
+          <p>Das CT nutzt Röntgenstrahlung, und die Dosis ist höher als bei einer einzelnen Röntgenaufnahme, je nach Untersuchung im Bereich von Monaten bis wenigen Jahren natürlicher Hintergrundstrahlung. Moderne Geräte reduzieren die Dosis deutlich, und ein medizinisch begründetes CT wird gemacht, wenn seine Antwort die Behandlung beeinflusst; dann überwiegt der Nutzen. Auf Vorrat oder als Wunsch-Check-up ist es dagegen das falsche Instrument.</p>
+          <h2>CT oder MRT: Was ist wann besser?</h2>
+          <p>Vereinfacht: Das CT ist schnell, überall verfügbar und stark bei Knochen, Lunge, akuten Blutungen und Notfällen. Das <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> arbeitet ohne Röntgenstrahlung und ist stark bei Weichteilen: Bandscheiben, Knorpel, Nerven, Gehirn im Detail. Deshalb wird ein unklarer Bandscheibenvorfall meist im MRT abgeklärt, ein Verdacht auf komplizierten Bruch im CT. Die Wahl trifft die Ärztin oder der Arzt anhand der Fragestellung, nicht anhand einer Rangliste der Geräte.</p>
+          <h2>Wie geht es nach der Untersuchung weiter?</h2>
+          <p>Die Bilder werden radiologisch befundet und mit der zuweisenden Ärztin oder dem zuweisenden Arzt besprochen. Wie beim MRT gilt: Nicht jeder beschriebene Befund erklärt die Beschwerden, die Einordnung gehört immer ins ärztliche Gespräch.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Direkt nichts: Das CT gehört in die ärztliche, oft notfallmässige Abklärung. Für uns zählt das Danach: Ist die Abklärung abgeschlossen und bleiben zum Beispiel muskuloskelettale Beschwerden, kann ergänzend zur ärztlichen Behandlung eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> Teil des Plans sein. Akute Warnzeichen gehören zuerst in die Notfallversorgung, nicht in die TCM-Praxis.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen Bildgebungs-Fragen auftauchen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Abklärung abgeschlossen und jetzt?</div>
+          <p>Wenn die Bildgebung Klarheit gebracht hat und Beschwerden bleiben, kann eine TCM-Behandlung ergänzend zur ärztlichen Therapie sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

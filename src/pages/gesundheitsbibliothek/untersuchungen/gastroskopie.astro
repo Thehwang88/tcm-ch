@@ -1,0 +1,140 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Keine individualisierten Nuechternheits-/Medikamenten-Anweisungen: massgeblich
+// sind immer die Instruktionen der untersuchenden Praxis/Klinik.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/gastroskopie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Gastroskopie (Magenspiegelung): Ablauf, Vorbereitung und Befunde';
+const description = 'Wie eine Magenspiegelung abläuft, wie du dich vorbereitest, was Sedierung bedeutet, wann Biopsien genommen werden und wann die Resultate vorliegen.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Gastroskopie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch' },
+  { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen' },
+  { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen' },
+  { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals' },
+];
+const rel2Links = [
+  { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux' },
+  { href: '/beschwerden/gastritis/', label: 'Gastritis' },
+  { href: '/beschwerden/reizdarm/', label: 'Reizdarm' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Gastroskopie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Magenspiegelung: Was passiert bei der Gastroskopie?</h1>
+        <p class="lead">Anhaltendes Sodbrennen, Magendruck oder unklare Oberbauchbeschwerden: Die Gastroskopie schafft den direkten Blick in Speiseröhre, Magen und Zwölffingerdarm. So läuft sie ab, so bereitest du dich vor.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Gastroskopie ist eine schulmedizinische Untersuchung und wird von spezialisierten Ärztinnen und Ärzten durchgeführt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Für Vorbereitung und Medikamente gelten immer die Instruktionen deiner untersuchenden Praxis oder Klinik.</div>
+
+          <h2>Was wird untersucht?</h2>
+          <p>Bei der Gastroskopie (Magenspiegelung) führt die Ärztin oder der Arzt einen dünnen, biegsamen Schlauch mit Kamera über Mund und Rachen in die Speiseröhre, den Magen und den obersten Dünndarmabschnitt (Zwölffingerdarm). Die Schleimhaut wird dabei direkt beurteilt; Entzündungen, Reizungen, Geschwüre oder Veränderungen der Schleimhaut sind so sichtbar, die zum Beispiel hinter anhaltendem <a href="/beschwerden/sodbrennen/">Sodbrennen</a>, einer <a href="/beschwerden/gastritis/">Gastritis</a> oder unklarem <a href="/koerpersignale/druck-im-oberbauch/">Druck im Oberbauch</a> stecken können.</p>
+          <h2>Wie bereitest du dich vor?</h2>
+          <p>Für die Untersuchung muss der Magen leer sein: Üblich sind mehrere Stunden ohne Essen und eine kürzere Zeit ohne Trinken vor dem Termin; die genauen Zeiten und den Umgang mit deinen Medikamenten (etwa Blutverdünnern oder Diabetes-Medikamenten) legt die untersuchende Praxis fest. Halte dich an genau diese Angaben, nicht an allgemeine Regeln aus dem Internet.</p>
+          <h2>Sedierung: schlafen oder wach bleiben?</h2>
+          <p>Viele Patientinnen und Patienten wählen eine leichte Sedierung, ein „Dämmerschlaf", bei dem die Untersuchung meist gar nicht bewusst erlebt wird. Alternativ ist die Untersuchung mit Rachenbetäubung auch wach möglich; der Schlauch behindert die Atmung nicht, auch wenn der Würgereiz am Anfang unangenehm sein kann. Die Untersuchung selbst dauert meist nur etwa 5 bis 15 Minuten.</p>
+          <h2>Biopsien: Gewebeproben sind Routine</h2>
+          <p>Häufig werden kleine Gewebeproben (Biopsien) entnommen, etwa um eine Infektion mit dem Magenkeim Helicobacter pylori zu prüfen oder Schleimhautveränderungen genauer zu untersuchen. Das ist schmerzfrei und Routine, kein Alarmzeichen.</p>
+          <h2>Nach der Untersuchung</h2>
+          <p>Nach einer Sedierung bleibst du noch kurz zur Überwachung und darfst an diesem Tag nicht selbst Auto fahren, wichtige Verträge unterschreiben oder Maschinen bedienen; organisiere dir eine Begleitung für den Heimweg. Ein leichtes Kratzen im Hals oder Blähgefühl durch die eingebrachte Luft ist normal und verschwindet rasch.</p>
+          <h2>Welche Risiken gibt es?</h2>
+          <p>Die Gastroskopie gilt als sehr sichere Routineuntersuchung. Selten kommt es zu Nachblutungen (vor allem nach Probenentnahmen) oder Reizungen; ernsthafte Komplikationen wie eine Verletzung der Wand sind sehr selten. Melde dich nach der Untersuchung ärztlich, wenn starke Schmerzen, Bluterbrechen, schwarzer Stuhl oder Fieber auftreten.</p>
+          <h2>Wann liegen die Resultate vor?</h2>
+          <p>Was die Ärztin oder der Arzt gesehen hat, erfährst du meist direkt im Anschluss. Die Ergebnisse der Gewebeproben brauchen einige Tage bis etwa zwei Wochen und werden nachbesprochen oder schriftlich mitgeteilt.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Anhaltende Oberbauchbeschwerden gehören zuerst sauber abgeklärt, und dazu gehört je nach Situation die Gastroskopie. Zeigt sie keinen behandlungsbedürftigen Befund und bleiben funktionelle Magen-Darm-Beschwerden, kann ergänzend eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> mit Fokus auf Verdauung und Stressregulation eingesetzt werden; sie ersetzt die Abklärung nicht.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen eine Gastroskopie zur Sprache kommt"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Magen abgeklärt, Beschwerden geblieben?</div>
+          <p>Wenn die Spiegelung unauffällig war und funktionelle Verdauungsbeschwerden bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
