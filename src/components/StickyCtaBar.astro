@@ -10,7 +10,7 @@ const TEL = `tel:+${site.whatsapp}`;
 <div class="scb-bar" role="region" aria-label="Kontakt">
   <a class="scb-primary" href="/kontakt/">
     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    Kostenlos anfragen
+    Termin abklären
   </a>
   <div class="scb-row">
     <a class="scb-out" href={WA} target="_blank" rel="noopener" aria-label="Per WhatsApp anfragen">
@@ -63,11 +63,18 @@ const TEL = `tel:+${site.whatsapp}`;
     .scb-primary { animation: none; }
     .scb-bar { transition: none; }
   }
+  /* Offenes Drawer-Menue: Bar ausblenden (zusaetzlich zum Overlay, das sie ohnehin
+     ueberdeckt); App-Flows koennen die Bar per [data-no-sticky-cta] deaktivieren. */
+  :global(body.drawer-open) .scb-bar { opacity: 0 !important; pointer-events: none !important; }
+  .scb-bar.scb-off { display: none !important; }
 </style>
 <script is:inline>
   (function () {
     var bar = document.querySelector('.scb-bar');
     if (!bar) return;
+    // Opt-out fuer App-artige Buchungs-/Matching-Flows mit eigener persistenter
+    // Aktionsleiste: beliebiges Element mit data-no-sticky-cta auf der Seite.
+    if (document.querySelector('[data-no-sticky-cta]')) { bar.classList.add('scb-off'); return; }
     var primary = bar.querySelector('.scb-primary');
     // SG-Seiten: EIN Funnel-Wording ("Gratis Termin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
@@ -106,17 +113,33 @@ const TEL = `tel:+${site.whatsapp}`;
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    // Reveal only after the hero scrolls out of view; hide again near the top.
-    // Priority-ordered so we observe the VISIBLE hero (leaves hide inactive hero
-    // variants, and a display:none element would never intersect -> always shown).
+    // Sichtbarkeits-Logik: Sticky-CTA nur zeigen, wenn der normale Primaer-CTA
+    // der Seite NICHT sichtbar ist (keine doppelten CTAs). Beobachtet wird der
+    // erste Primaer-CTA im Above-the-fold-Bereich; Fallback bleibt der sichtbare
+    // Hero (Leaves verstecken inaktive Hero-Varianten, und ein display:none-
+    // Element wuerde nie intersecten -> Bar immer sichtbar).
     var hero = document.querySelector('.sg-active')          // therapie/symptom/standort leaf hero
       || document.querySelector('.hero-bg')                  // home
       || document.querySelector('.hero')                     // wissen + other LayoutDe pages
       || document.querySelector('[class*="-hero"]')
       || document.querySelector('main section, section');
-    if (!('IntersectionObserver' in window) || !hero) { bar.classList.add('is-visible'); return; }
+    var target = null;
+    var ctas = document.querySelectorAll('.hlsg-btn-primary, main .btn-primary, .hero .btn-primary, #home-content .btn-primary, .cta-card .btn--primary');
+    for (var c = 0; c < ctas.length; c++) {
+      var el = ctas[c];
+      if (bar.contains(el) || el.closest('.scb-bar, footer, #siteDrawer')) continue;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 && r.height === 0) continue;        // versteckte Varianten
+      // Nur ein CTA im oberen Seitenbereich zaehlt als "Hero-CTA"; ein erster
+      // Primaerbutton weit unten (z.B. Formular-Submit) wuerde die Bar sonst
+      // auf der ganzen Seite unterdruecken.
+      if (r.top + (window.scrollY || 0) < window.innerHeight * 1.5) { target = el; }
+      break;                                                 // nur den ersten sichtbaren pruefen
+    }
+    if (!target) target = hero;
+    if (!('IntersectionObserver' in window) || !target) { bar.classList.add('is-visible'); return; }
     new IntersectionObserver(function (entries) {
       bar.classList.toggle('is-visible', !entries[0].isIntersecting);
-    }, { threshold: 0 }).observe(hero);
+    }, { threshold: 0 }).observe(target);
   })();
 </script>

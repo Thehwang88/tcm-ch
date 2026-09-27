@@ -151,3 +151,13 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
     -webkit-mask-image:none;mask-image:none}
   .drw-acc-btn.open .drw-acc-btn-inner::after{display:none}
 }
+
+/* ── Mobile Header hide/reveal (Verhalten in header.js): nur ≤1023px, Desktop unverändert.
+   transform+transition only, kein Layout-Shift (Header ist fixed). ── */
+@media (max-width:1023px){
+  #mainNav{transition:transform .2s ease}
+  #mainNav.nav-hidden{transform:translateY(-100%)}
+}
+@media (prefers-reduced-motion:reduce){
+  #mainNav{transition:none}
+}

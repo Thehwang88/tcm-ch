@@ -12,6 +12,8 @@ function nav(page, id){
 
 function drawerOpen(){
 var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.add('open');
+document.body.classList.add('drawer-open');
+if(window.__tcmNavShow) window.__tcmNavShow();
 var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.add('open');
 window.__drawerScrollY=window.scrollY||window.pageYOffset||0;
 document.body.style.position='fixed';
@@ -31,6 +33,7 @@ if(first) first.focus();
 
 function drawerClose(){
 var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.remove('open');
+document.body.classList.remove('drawer-open');
 var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.remove('open');
 document.body.style.position='';
 document.body.style.top='';
@@ -38,7 +41,8 @@ document.body.style.left='';
 document.body.style.right='';
 document.body.style.width='';
 document.body.style.overflow='';
-if(typeof window.__drawerScrollY==='number'){window.scrollTo(0,window.__drawerScrollY);window.__drawerScrollY=null;}
+if(window.__tcmNavSync) window.__tcmNavSync();
+if(typeof window.__drawerScrollY==='number'){window.scrollTo({top:window.__drawerScrollY,left:0,behavior:'instant'});window.__drawerScrollY=null;}
 var btn=document.getElementById('navMenuBtn');
 if(btn) btn.setAttribute('aria-expanded','false');
 }
@@ -194,4 +198,45 @@ function navMoreToggle(){
   else document.addEventListener('DOMContentLoaded', update);
   window.addEventListener('load', update);
   window.addEventListener('resize', update);
+})();
+
+/* ── Mobile Header-Verhalten (≤1023px): Hysterese-Hide beim Runterscrollen,
+   sofortiges Reveal beim Hochscrollen. Desktop (≥1024px) unverändert.
+   Regeln: y<=20 immer sichtbar; ~10px akkumuliert runter -> hide (erst ab y>90);
+   ~6px akkumuliert hoch -> show. Kein Hide bei offenem Drawer oder Fokus im Header.
+   prefers-reduced-motion: CSS deaktiviert die Transition (nav-rebrand.css). */
+(function(){
+var nav=document.getElementById('mainNav');
+if(!nav) return;
+var mq=window.matchMedia('(max-width:1023px)');
+var lastY=window.scrollY||0, acc=0, ticking=false, holdUntil=0;
+function isHidden(){return nav.classList.contains('nav-hidden');}
+function show(){nav.classList.remove('nav-hidden');}
+function hide(){
+  if(nav.contains(document.activeElement)) return;
+  var d=document.getElementById('siteDrawer');
+  if(d&&d.classList.contains('open')) return;
+  nav.classList.add('nav-hidden');
+}
+function onScroll(){
+  if(ticking) return; ticking=true;
+  requestAnimationFrame(function(){
+    ticking=false;
+    var y=window.scrollY||0;
+    if(!mq.matches){lastY=y; if(isHidden()) show(); return;}
+    if(document.body.style.position==='fixed'||performance.now()<holdUntil){lastY=y; acc=0; return;} // Drawer offen / Restore
+    var d=y-lastY; lastY=y;
+    if(y<=20){acc=0; show(); return;}
+    if(d===0) return;
+    if((d>0)!==(acc>0)) acc=0;   // Richtungswechsel setzt Akkumulator zurueck
+    acc+=d;
+    if(acc>10&&y>90&&!isHidden()) hide();
+    else if(acc<-6&&isHidden()) show();
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+nav.addEventListener('focusin',show);
+if(mq.addEventListener) mq.addEventListener('change',function(){if(!mq.matches) show();});
+window.__tcmNavShow=show; // Drawer-Hooks
+window.__tcmNavSync=function(){holdUntil=performance.now()+400; lastY=window.scrollY||0; acc=0; show();};
 })();
