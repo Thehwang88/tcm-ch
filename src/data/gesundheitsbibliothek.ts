@@ -337,6 +337,14 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche -
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/beschwerden/fazialisparese/': 'Bell Parese Bell-Parese Gesichtslähmung Gesichtslaehmung Facialisparese',
+  '/beschwerden/morbus-meniere/': 'Meniere Morbus Meniere Menière Meniere Syndrom Drehschwindel Ohrdruck',
+  '/beschwerden/schlafapnoe/': 'Atemaussetzer nachts Atempausen Schlaf obstruktive Schlafapnoe Schnarchen',
+  '/beschwerden/lipoedem/': 'Lipödem Lipoedem schmerzhafte Beine Fettverteilung',
+  '/beschwerden/rheumatoide-arthritis/': 'chronische Polyarthritis entzündliches Rheuma RA',
+  '/beschwerden/crps/': 'Morbus Sudeck komplexes regionales Schmerzsyndrom Sudeck',
+  '/beschwerden/interkostalneuralgie/': 'Intercostalneuralgie Nervenschmerz Rippen Nervenschmerzen Brustkorb',
+  '/beschwerden/bettnaessen/': 'Bettnässen Enuresis Enuresis nocturna nachts einnässen Kind',
   '/therapien/akupunktur/schaedelakupunktur/': 'Skalpakupunktur scalp acupuncture Kopfhaut Akupunktur',
   '/therapien/akupunktur/ynsa/': 'Yamamoto Akupunktur Yamamoto Neue Schädelakupunktur',
   '/therapien/akupunktur/bauchakupunktur/': 'Abdominalakupunktur abdominal acupuncture Akupunktur Bauch',

@@ -1224,6 +1224,581 @@ export const beschwerden: Beschwerde[] = [
         "label": "Moxibustion"
       }
     ]
+  },
+  {
+    "slug": "fazialisparese",
+    "name": "Fazialisparese",
+    "title": "Fazialisparese: Gesichtslähmung richtig einordnen und begleiten",
+    "metaDesc": "Fazialisparese und Bell-Parese: Symptome, dringende Abklärung, Augenschutz und Behandlung. TCM.ch erklärt, wann Akupunktur ergänzend infrage kommen kann.",
+    "conditionName": "Fazialisparese",
+    "lead": "Plötzlich hängt eine Gesichtshälfte oder das Auge lässt sich nicht richtig schliessen. Eine neue Gesichtslähmung gehört zuerst medizinisch abgeklärt.",
+    "bodyHtml": "<h2>Was ist eine Fazialisparese?</h2> <p>Bei einer <strong>Fazialisparese</strong> ist der Gesichtsnerv beeinträchtigt. Dadurch können Muskeln einer Gesichtshälfte plötzlich schwächer werden oder sich kaum noch bewegen. Mundwinkel und Augenlid können hängen, das Auge lässt sich möglicherweise nicht vollständig schliessen, und auch Geschmack, Tränenfluss oder Geräuschempfindlichkeit können verändert sein.</p><p>Eine häufige Form ist die sogenannte <strong>idiopathische Fazialisparese oder Bell-Parese</strong>. Sie wird erst dann angenommen, wenn andere Ursachen der Gesichtslähmung ausgeschlossen wurden. Deshalb sollte eine neu aufgetretene Gesichtsschwäche nicht selbst diagnostiziert werden.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Plötzlich hängender Mundwinkel auf einer Seite</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Ein Auge lässt sich nicht vollständig schliessen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schwierigkeiten beim Lächeln, Pfeifen oder Stirnrunzeln</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Veränderter Geschmack</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Trockenes oder tränendes Auge</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Empfindlichkeit gegenüber lauten Geräuschen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Beschwerden beim Essen oder Trinken</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerzen im Bereich hinter oder um das Ohr möglich</div> </div><h2>Neue Gesichtslähmung: zuerst medizinisch abklären</h2> <p>Eine plötzlich hängende Gesichtshälfte kann auch bei einem Schlaganfall auftreten. Besonders wenn zusätzlich ein Arm schwach wird, Sprache auffällig ist, Sehstörungen, starke Kopfschmerzen, Gleichgewichtsstörungen oder andere neurologische Symptome auftreten, ist eine sofortige Notfallabklärung notwendig.</p><p>Auch eine isolierte neue Fazialisparese sollte möglichst früh ärztlich beurteilt werden. Bei einer Bell-Parese kann eine früh begonnene Kortisonbehandlung die Heilungschancen verbessern. Kann das Auge nicht vollständig geschlossen werden, muss die Hornhaut vor Austrocknung und Verletzung geschützt werden.</p><h2>Mögliche Ursachen</h2> <ul> <li><strong>Bell-Parese:</strong> häufigste periphere Fazialisparese ohne eindeutig nachweisbare Ursache.</li> <li><strong>Infektionen:</strong> unter anderem Gürtelrose im Ohrbereich oder Borreliose können den Gesichtsnerv betreffen.</li> <li><strong>Entzündliche oder neurologische Erkrankungen:</strong> müssen abhängig vom klinischen Bild ausgeschlossen werden.</li> <li><strong>Verletzungen oder Eingriffe:</strong> können den Gesichtsnerv direkt beeinträchtigen.</li> <li><strong>Zentrale neurologische Ursachen:</strong> beispielsweise ein Schlaganfall müssen bei entsprechenden Zeichen dringend ausgeschlossen werden.</li> </ul><h2>Wie wird eine Fazialisparese behandelt?</h2> <p>Die Behandlung richtet sich nach der Ursache. Bei einer typischen Bell-Parese stehen die frühe medizinische Behandlung und der Schutz des betroffenen Auges im Vordergrund. Bei länger anhaltender Schwäche können spezialisierte Gesichtsrehabilitation, Physiotherapie oder Logopädie sinnvoll sein.</p><p>Bei unvollständiger Erholung können Bewegungen ungewollt miteinander gekoppelt sein. Diese sogenannten Synkinesien sollten gezielt durch erfahrene Fachpersonen behandelt werden.</p><h2>Kann Akupunktur ergänzend eingesetzt werden?</h2> <p>Akupunktur wird bei Fazialisparesen ergänzend angeboten. Die wissenschaftliche Datenlage reicht jedoch nicht aus, um daraus einen Ersatz für die frühe medizinische Behandlung abzuleiten. Vor allem in den ersten Tagen haben ärztliche Diagnostik, Augenschutz und eine gegebenenfalls zeitkritische medikamentöse Behandlung Vorrang.</p><p>Wenn die Diagnose feststeht und die medizinische Behandlung läuft, kann Akupunktur bei einzelnen Betroffenen als ergänzende symptomorientierte Massnahme besprochen werden. Ziel ist dabei nicht, eine Regeneration des Nervs zu versprechen, sondern Beschwerden während des Verlaufs unterstützend zu begleiten.</p><h2>Wann wir nicht zuerst behandeln</h2> <ul> <li>Neu aufgetretene Gesichtslähmung ohne ärztliche Diagnose</li> <li>Zusätzliche Arm- oder Beinschwäche</li> <li>Sprach-, Seh- oder Bewusstseinsstörungen</li> <li>Starke Kopfschmerzen mit neurologischen Ausfällen</li> <li>Rotes, schmerzhaftes oder gefährdetes Auge bei fehlendem Lidschluss</li> </ul>",
+    "faqs": [
+      {
+        "q": "Ist eine Fazialisparese dasselbe wie ein Schlaganfall?",
+        "a": "Nein. Eine periphere Fazialisparese wie die Bell-Parese betrifft den Gesichtsnerv. Eine Gesichtslähmung kann aber auch bei einem Schlaganfall auftreten. Deshalb sollte eine plötzlich neue Gesichtsschwäche medizinisch beurteilt werden, besonders wenn weitere neurologische Symptome dazukommen."
+      },
+      {
+        "q": "Warum ist der Augenschutz bei Fazialisparese wichtig?",
+        "a": "Wenn das Auge nicht vollständig geschlossen werden kann, trocknet die Hornhaut leichter aus und kann verletzt werden. Ärztlich empfohlene Augentropfen, Salben oder Schutzmassnahmen können deshalb wichtig sein."
+      },
+      {
+        "q": "Wann sollte eine Bell-Parese behandelt werden?",
+        "a": "Möglichst früh. Bei einer typischen Bell-Parese kann eine früh begonnene Kortisonbehandlung sinnvoll sein. Eine neue Gesichtslähmung sollte deshalb nicht erst mehrere Tage beobachtet werden, bevor sie abgeklärt wird."
+      },
+      {
+        "q": "Kann Akupunktur eine Fazialisparese heilen?",
+        "a": "Das lässt sich nicht versprechen. Die Datenlage zu Akupunktur bei Fazialisparese ist begrenzt. Sie kann nach medizinischer Abklärung ergänzend besprochen werden, ersetzt aber weder die Diagnose noch eine zeitkritische ärztliche Behandlung."
+      },
+      {
+        "q": "Wie lange dauert die Erholung?",
+        "a": "Das ist individuell und hängt unter anderem von Ursache und Schweregrad ab. Viele Bell-Paresen bessern sich über Wochen bis Monate. Bei ausbleibender oder unvollständiger Erholung ist eine spezialisierte Verlaufskontrolle sinnvoll."
+      }
+    ],
+    "related": [
+      {
+        "slug": "trigeminusneuralgie",
+        "label": "Trigeminusneuralgie"
+      },
+      {
+        "slug": "hoersturz",
+        "label": "Hörsturz"
+      },
+      {
+        "slug": "guertelrose",
+        "label": "Gürtelrose"
+      },
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "morbus-meniere",
+    "name": "Morbus Menière",
+    "title": "Morbus Menière: Drehschwindel, Hörverlust und Tinnitus",
+    "metaDesc": "Morbus Menière: anfallsartiger Drehschwindel, Hörminderung, Tinnitus und Ohrdruck. Diagnose und Behandlung gehören in HNO-Hand, TCM kann ergänzend begleiten.",
+    "conditionName": "Morbus Menière",
+    "lead": "Wiederkehrender Drehschwindel zusammen mit Hörveränderungen, Tinnitus oder Druck im Ohr braucht eine genaue HNO-Abklärung.",
+    "bodyHtml": "<h2>Was ist Morbus Menière?</h2> <p><strong>Morbus Menière</strong> ist eine Erkrankung des Innenohrs. Typisch sind wiederkehrende Anfälle von Drehschwindel zusammen mit Hörminderung, Ohrgeräuschen und einem Druck- oder Völlegefühl im betroffenen Ohr.</p><p>Die Beschwerden können sehr belastend sein, weil Schwindelattacken oft plötzlich auftreten. Zwischen den Attacken können Gleichgewicht und Hörvermögen unterschiedlich stark beeinträchtigt bleiben.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Anfallsartiger Drehschwindel</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schwankendes Hörvermögen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Tinnitus auf dem betroffenen Ohr</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Druck oder Völlegefühl im Ohr</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Übelkeit während einer Schwindelattacke</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Unsicherheit beim Gehen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Erschöpfung nach stärkeren Attacken</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Alltagsangst vor einer unerwarteten nächsten Attacke</div> </div><h2>Nicht jeder Schwindel ist Morbus Menière</h2> <p>Drehschwindel hat viele mögliche Ursachen. Häufiger als Morbus Menière sind beispielsweise gutartiger Lagerungsschwindel, Kreislaufprobleme oder vestibuläre Migräne. Ein plötzlicher Hörverlust kann wiederum andere Ursachen haben und sollte zeitnah HNO-ärztlich beurteilt werden.</p><p>Die Diagnose Morbus Menière wird deshalb nicht allein anhand eines einzelnen Symptoms gestellt. Entscheidend sind Verlauf, Hörprüfung und die fachärztliche Beurteilung.</p><h2>Wie wird Morbus Menière behandelt?</h2> <p>Es gibt derzeit keine Behandlung, die Morbus Menière zuverlässig heilt. Ziel der konventionellen Therapie ist deshalb, Schwindelattacken zu kontrollieren, Hörprobleme zu begleiten und die Auswirkungen der Erkrankung im Alltag zu reduzieren.</p><ul> <li><strong>Medikamente:</strong> können während akuter Schwindel- und Übelkeitsphasen eingesetzt werden.</li> <li><strong>Hörversorgung:</strong> bei bleibender Hörminderung können Hörhilfen sinnvoll sein.</li> <li><strong>Vestibuläre Rehabilitation:</strong> kann bei anhaltender Gleichgewichtsunsicherheit unterstützen.</li> <li><strong>Tinnitus-Begleitung:</strong> kann helfen, die Belastung durch Ohrgeräusche zu reduzieren.</li> <li><strong>Weitere HNO-Verfahren:</strong> kommen bei schweren, schwer kontrollierbaren Verläufen infrage.</li> </ul><h2>Was kann im Alltag helfen?</h2> <p>Ein geregelter Tagesablauf, ausreichender Schlaf und ein bewusster Umgang mit individuellen Auslösern können hilfreich sein. Ernährung, Salz, Koffein, Alkohol und Stress werden häufig diskutiert. Pauschale Verbote sind jedoch nicht für jede Person gleich sinnvoll. Änderungen sollten bei ausgeprägten Beschwerden mit der behandelnden Fachperson abgestimmt werden.</p><p>Während oder kurz vor einer Schwindelattacke sollten Tätigkeiten vermieden werden, bei denen ein Sturz besonders gefährlich wäre.</p><h2>Kann TCM bei Morbus Menière unterstützen?</h2> <p>Akupunktur wird bei Schwindel, Übelkeit, Stress und begleitenden Beschwerden eingesetzt. Für Morbus Menière selbst ist die wissenschaftliche Evidenz jedoch nicht stark genug, um Akupunktur als Ersatz für HNO-Diagnostik und etablierte Behandlung zu betrachten.</p><p>Bei gesicherter Diagnose kann eine ergänzende Behandlung symptomorientiert geplant werden. Im Vordergrund stehen dabei Beschwerden wie Übelkeit, Verspannung, Stress oder das subjektive Belastungserleben. Ein Fortschreiten einer Innenohrerkrankung lässt sich durch Akupunktur nicht zuverlässig verhindern.</p><h2>Wann rasch medizinisch abklären?</h2> <ul> <li>Plötzlicher neuer Hörverlust</li> <li>Neue neurologische Symptome wie Lähmung, Doppelbilder oder Sprachstörung</li> <li>Schwindel mit Bewusstseinsstörung</li> <li>Erstmals sehr starker oder ungewöhnlicher Schwindel</li> <li>Anhaltendes Erbrechen oder deutliche Austrocknung</li> </ul>",
+    "faqs": [
+      {
+        "q": "Was ist typisch für Morbus Menière?",
+        "a": "Typisch ist die Kombination aus wiederkehrenden Drehschwindelattacken, Hörminderung, Tinnitus und Druck- oder Völlegefühl im betroffenen Ohr."
+      },
+      {
+        "q": "Ist jeder Schwindel mit Tinnitus Morbus Menière?",
+        "a": "Nein. Sowohl Schwindel als auch Tinnitus haben viele mögliche Ursachen. Für eine Menière-Diagnose braucht es eine gezielte HNO-ärztliche Abklärung."
+      },
+      {
+        "q": "Kann Morbus Menière geheilt werden?",
+        "a": "Es gibt derzeit keine sichere Heilung. Die Behandlung zielt darauf, Attacken und Begleitbeschwerden zu kontrollieren und Hör- sowie Gleichgewichtsfunktion möglichst gut zu unterstützen."
+      },
+      {
+        "q": "Kann Akupunktur bei Morbus Menière helfen?",
+        "a": "Akupunktur kann ergänzend zur Behandlung einzelner Beschwerden diskutiert werden. Die Evidenz reicht jedoch nicht aus, um die HNO-Behandlung oder medizinische Verlaufskontrollen zu ersetzen."
+      },
+      {
+        "q": "Was ist bei plötzlichem Hörverlust zu tun?",
+        "a": "Ein plötzlich neu aufgetretener Hörverlust sollte zeitnah HNO-ärztlich abgeklärt werden und nicht zunächst ausschliesslich komplementär behandelt werden."
+      }
+    ],
+    "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "tinnitus",
+        "label": "Tinnitus"
+      },
+      {
+        "slug": "hoersturz",
+        "label": "Hörsturz"
+      },
+      {
+        "slug": "uebelkeit",
+        "label": "Übelkeit"
+      },
+      {
+        "slug": "migraene",
+        "label": "Migräne"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "schlafapnoe",
+    "name": "Schlafapnoe",
+    "title": "Schlafapnoe: Atemaussetzer im Schlaf erkennen und behandeln",
+    "metaDesc": "Schlafapnoe: Schnarchen, Atemaussetzer und Tagesmüdigkeit richtig einordnen. Schlafdiagnostik und etablierte Therapie haben Vorrang vor TCM.",
+    "conditionName": "Schlafapnoe",
+    "lead": "Lautes Schnarchen mit beobachteten Atempausen und ausgeprägter Tagesmüdigkeit sollte schlafmedizinisch abgeklärt werden.",
+    "bodyHtml": "<h2>Was ist Schlafapnoe?</h2> <p>Bei einer <strong>Schlafapnoe</strong> kommt es während des Schlafs wiederholt zu Atemaussetzern oder deutlich eingeschränkter Atmung. Die häufigste Form ist die obstruktive Schlafapnoe, bei der die oberen Atemwege im Schlaf wiederholt zusammenfallen oder sich verengen.</p><p>Betroffene merken die Atemaussetzer oft selbst nicht. Hinweise kommen deshalb häufig von Partnerinnen oder Partnern, die lautes Schnarchen, Atempausen oder plötzliches Luftschnappen beobachten.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Lautes, unregelmässiges Schnarchen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Beobachtete Atemaussetzer im Schlaf</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Luftschnappen oder abruptes Erwachen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Ausgeprägte Tagesmüdigkeit</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Morgendliche Kopfschmerzen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Konzentrationsprobleme</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Unruhiger, wenig erholsamer Schlaf</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Reizbarkeit oder reduzierte Leistungsfähigkeit</div> </div><h2>Warum Schlafapnoe abgeklärt werden sollte</h2> <p>Unbehandelte Schlafapnoe betrifft nicht nur die Schlafqualität. Wiederholte Atemstörungen und Sauerstoffschwankungen belasten den Körper und sind mit gesundheitlichen Risiken verbunden. Auch das Unfallrisiko kann steigen, wenn ausgeprägte Tagesschläfrigkeit besteht.</p><p>Eine Diagnose lässt sich nicht allein durch Schnarchen stellen. Nicht jeder schnarchende Mensch hat Schlafapnoe, und nicht jede Schlafapnoe wird gleich deutlich bemerkt.</p><h2>Wie wird Schlafapnoe festgestellt?</h2> <p>Die Abklärung erfolgt durch eine Schlafuntersuchung. Je nach Situation kann zunächst eine Messung zu Hause erfolgen oder eine Untersuchung im Schlaflabor notwendig sein. Dabei werden beispielsweise Atmung, Sauerstoffsättigung und Herzfrequenz während des Schlafs erfasst.</p><p>Mehr zum Ablauf findest du auf unserer Seite zum <a href=\"/gesundheitsbibliothek/untersuchungen/schlaflabor/\">Schlaflabor</a>.</p><h2>Wie wird obstruktive Schlafapnoe behandelt?</h2> <p>Die passende Behandlung hängt von Ursache und Schweregrad ab.</p><ul> <li><strong>CPAP-Therapie:</strong> hält die Atemwege während des Schlafs durch positiven Luftdruck offen und ist eine wichtige Behandlung bei vielen Betroffenen.</li> <li><strong>Gewichtsmanagement:</strong> kann bei Übergewicht einen relevanten Einfluss haben.</li> <li><strong>Alkohol und sedierende Faktoren:</strong> können Atemwegsprobleme während des Schlafs verstärken.</li> <li><strong>Unterkieferprotrusionsschiene:</strong> kann bei ausgewählten Betroffenen sinnvoll sein.</li> <li><strong>HNO- oder kieferchirurgische Verfahren:</strong> kommen nur bei passenden anatomischen Voraussetzungen infrage.</li> </ul><h2>Welche Rolle hat TCM?</h2> <p>Akupunktur kann Schlafqualität, Stress oder muskuläre Begleitbeschwerden als komplementärer Ansatz adressieren. Sie öffnet jedoch keinen mechanisch kollabierenden Atemweg und ersetzt weder Schlafdiagnostik noch CPAP oder andere notwendige Therapien.</p><p>Bei bestätigter Schlafapnoe sollte eine TCM-Behandlung deshalb ausschliesslich ergänzend verstanden werden. Das Ziel ist nicht, Atemaussetzer ohne objektive Kontrolle als behoben zu betrachten.</p><h2>Wann ärztlich abklären?</h2> <ul> <li>Beobachtete Atemaussetzer im Schlaf</li> <li>Starkes Schnarchen plus ausgeprägte Tagesmüdigkeit</li> <li>Einschlafen beim Autofahren oder in anderen gefährlichen Situationen</li> <li>Wiederholtes nächtliches Luftschnappen</li> <li>Schlafprobleme zusammen mit schwer einstellbarem Bluthochdruck oder relevanten Herz-Kreislauf-Erkrankungen</li> </ul>",
+    "faqs": [
+      {
+        "q": "Ist starkes Schnarchen automatisch Schlafapnoe?",
+        "a": "Nein. Schnarchen ist häufig und kann ohne Schlafapnoe auftreten. Atemaussetzer, ausgeprägte Tagesmüdigkeit und Luftschnappen erhöhen jedoch den Verdacht und sollten abgeklärt werden."
+      },
+      {
+        "q": "Wie wird Schlafapnoe diagnostiziert?",
+        "a": "Mit einer Schlafmessung. Je nach Situation erfolgt sie zu Hause oder im Schlaflabor. Dabei werden unter anderem Atmung, Sauerstoff und weitere Schlafparameter beurteilt."
+      },
+      {
+        "q": "Was ist CPAP?",
+        "a": "CPAP ist eine Atemtherapie mit positivem Luftdruck. Eine Maske hält die oberen Atemwege während des Schlafs offen und verhindert dadurch bei vielen Betroffenen wiederkehrende Atemwegsverschlüsse."
+      },
+      {
+        "q": "Kann Akupunktur CPAP ersetzen?",
+        "a": "Nein. Akupunktur kann eine notwendige Behandlung der Atemwegsobstruktion nicht ersetzen. Sie kann höchstens ergänzend bei anderen Beschwerden eingesetzt werden."
+      },
+      {
+        "q": "Wann sollte Schnarchen abgeklärt werden?",
+        "a": "Besonders wenn Atempausen beobachtet werden, starke Tagesmüdigkeit besteht, nächtliches Luftschnappen auftritt oder das Schnarchen sehr ausgeprägt und unregelmässig ist."
+      }
+    ],
+    "related": [
+      {
+        "slug": "schlafprobleme",
+        "label": "Schlafprobleme"
+      },
+      {
+        "slug": "bluthochdruck",
+        "label": "Bluthochdruck"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      },
+      {
+        "slug": "kopfschmerzen",
+        "label": "Kopfschmerzen"
+      },
+      {
+        "slug": "gewichtsmanagement",
+        "label": "Gewichtsmanagement"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "lipoedem",
+    "name": "Lipödem",
+    "title": "Lipödem: Beschwerden erkennen und sinnvoll behandeln",
+    "metaDesc": "Lipödem: schmerzhafte, symmetrische Fettverteilung an Beinen oder Armen. Abgrenzung zu Lymphödem und Übergewicht, Behandlung und ergänzende TCM.",
+    "conditionName": "Lipödem",
+    "lead": "Schmerzhafte, symmetrisch vermehrte Fettverteilung an Beinen oder Armen ist nicht automatisch Übergewicht und sollte fachlich eingeordnet werden.",
+    "bodyHtml": "<h2>Was ist ein Lipödem?</h2> <p>Das <strong>Lipödem</strong> ist eine chronische Erkrankung des Unterhautfettgewebes, die überwiegend Frauen betrifft. Typisch ist eine symmetrische, disproportionierte Fettvermehrung vor allem an Beinen, Hüften oder Armen. Häufig kommen Druckschmerz, Schweregefühl und eine Neigung zu blauen Flecken hinzu.</p><p>Ein Lipödem ist nicht dasselbe wie Übergewicht und auch nicht dasselbe wie ein Lymphödem. Die Abgrenzung ist wichtig, weil sich Behandlung und Verlauf unterscheiden.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Symmetrisch kräftigere Beine oder Arme</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Füsse oder Hände meist relativ ausgespart</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Druck- und Berührungsschmerz</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schwere- oder Spannungsgefühl</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Leichte Entstehung blauer Flecken</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Zunahme der Beschwerden im Tagesverlauf möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Belastung beim längeren Stehen oder Gehen</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Psychische Belastung durch Körperform und Schmerzen</div> </div><h2>Lipödem, Lymphödem oder Übergewicht?</h2> <p>Bei einem Lymphödem steht eine Störung des Lymphabflusses mit Flüssigkeitseinlagerung im Vordergrund. Beim Lipödem ist das Fettgewebe selbst krankhaft verändert. Übergewicht kann zusätzlich vorhanden sein, erklärt das typische Lipödem-Muster aber nicht vollständig.</p><p>Deshalb sollte bei unklaren Beinschwellungen oder ausgeprägter Disproportion eine fachkundige Untersuchung erfolgen, bevor eine Behandlung begonnen wird.</p><h2>Wie wird ein Lipödem behandelt?</h2> <p>Es gibt keine einfache Einzelmassnahme, die ein Lipödem beseitigt. Die Behandlung richtet sich nach Beschwerden und Alltagseinschränkung.</p><ul> <li><strong>Kompression:</strong> kann Schmerzen, Schweregefühl und Alltagseinschränkungen reduzieren.</li> <li><strong>Bewegung:</strong> unterstützt Fitness, Muskelpumpe und allgemeine Gesundheit.</li> <li><strong>Gewichtsmanagement:</strong> ist relevant, wenn zusätzlich Übergewicht besteht, auch wenn das Lipödem dadurch nicht einfach verschwindet.</li> <li><strong>Hautpflege und Selbstmanagement:</strong> gehören bei entsprechenden Beschwerden zur langfristigen Betreuung.</li> <li><strong>Liposuktion:</strong> kann bei ausgewählten schweren Verläufen nach spezialisierter Beurteilung infrage kommen.</li> </ul><h2>Kann TCM beim Lipödem unterstützen?</h2> <p>Für eine Veränderung des krankhaft vermehrten Fettgewebes durch Akupunktur oder andere TCM-Verfahren gibt es keine ausreichende wissenschaftliche Grundlage. Eine TCM-Behandlung sollte deshalb nicht mit dem Versprechen verbunden werden, ein Lipödem zu entfernen oder dessen Ursache zu beheben.</p><p>Ergänzend können bei einzelnen Patientinnen Beschwerden wie muskuläre Spannung, Stress, Schlafprobleme oder begleitende Schmerzen behandelt werden. Dabei sollte die etablierte Versorgung mit Kompression, Bewegung und gegebenenfalls spezialisierter Gefäss- oder Lymphologie weitergeführt werden.</p><h2>Wann medizinisch abklären?</h2> <ul> <li>Neu aufgetretene oder deutlich zunehmende Beinschwellung</li> <li>Einseitige Schwellung, Rötung, Überwärmung oder starke Schmerzen</li> <li>Unklare Schwellung von Füssen oder Händen</li> <li>Atemnot zusammen mit Beinschwellung</li> <li>Unsicherheit, ob Lipödem, Lymphödem, venöse Erkrankung oder eine andere Ursache vorliegt</li> </ul>",
+    "faqs": [
+      {
+        "q": "Ist Lipödem einfach Übergewicht?",
+        "a": "Nein. Ein Lipödem ist eine eigenständige Erkrankung mit typischer symmetrischer Fettverteilung und häufig Schmerzen oder Druckempfindlichkeit. Übergewicht kann zusätzlich bestehen."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Lipödem und Lymphödem?",
+        "a": "Beim Lipödem steht krankhaft verändertes Fettgewebe im Vordergrund. Beim Lymphödem sammelt sich Flüssigkeit durch eine Störung des Lymphabflusses. Beide können teilweise ähnliche Beschwerden verursachen."
+      },
+      {
+        "q": "Hilft Abnehmen gegen Lipödem?",
+        "a": "Eine Gewichtsreduktion kann bei zusätzlichem Übergewicht die allgemeine Gesundheit und Belastung verbessern. Das typische Lipödem-Gewebe verschwindet dadurch jedoch nicht zwangsläufig."
+      },
+      {
+        "q": "Kann Akupunktur Lipödem beseitigen?",
+        "a": "Dafür gibt es keine belastbare Evidenz. Akupunktur sollte nicht als Methode zum Entfernen des Lipödem-Fettgewebes angeboten werden. Sie kann allenfalls ergänzend bei Begleitbeschwerden eingesetzt werden."
+      },
+      {
+        "q": "Welche Behandlung ist bei Lipödem üblich?",
+        "a": "Je nach Beschwerden gehören Kompression, Bewegung, Gewichtsmanagement bei zusätzlichem Übergewicht, Hautpflege und bei ausgewählten schweren Fällen spezialisierte operative Verfahren zu den Optionen."
+      }
+    ],
+    "related": [
+      {
+        "slug": "lymphoedem",
+        "label": "Lymphödem"
+      },
+      {
+        "slug": "wassereinlagerungen",
+        "label": "Wassereinlagerungen"
+      },
+      {
+        "slug": "schwere-beine",
+        "label": "Schwere Beine"
+      },
+      {
+        "slug": "durchblutungsstoerungen",
+        "label": "Durchblutungsstörungen"
+      },
+      {
+        "slug": "gewichtsmanagement",
+        "label": "Gewichtsmanagement"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "rheumatoide-arthritis",
+    "name": "Rheumatoide Arthritis",
+    "title": "Rheumatoide Arthritis: Entzündung behandeln, Beschwerden begleiten",
+    "metaDesc": "Rheumatoide Arthritis: entzündliche Gelenkerkrankung mit Schmerzen, Schwellung und Morgensteifigkeit. DMARD-Therapie hat Vorrang, TCM nur ergänzend.",
+    "conditionName": "Rheumatoide Arthritis",
+    "lead": "Rheumatoide Arthritis ist eine entzündliche Autoimmunerkrankung. Eine frühe rheumatologische Behandlung schützt Gelenke und Funktion.",
+    "bodyHtml": "<h2>Was ist rheumatoide Arthritis?</h2> <p>Die <strong>rheumatoide Arthritis</strong> ist eine chronisch-entzündliche Autoimmunerkrankung. Das Immunsystem greift Strukturen in und um die Gelenke an. Dadurch entstehen Schwellung, Schmerzen und ausgeprägte Steifigkeit. Ohne wirksame Behandlung kann die Entzündung Gelenke dauerhaft schädigen.</p><p>Sie unterscheidet sich grundlegend von einer Arthrose. Arthrose ist primär eine degenerative Gelenkerkrankung. Rheumatoide Arthritis ist dagegen eine systemische Entzündungserkrankung und gehört rheumatologisch behandelt.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Geschwollene, schmerzhafte Gelenke</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Ausgeprägte Morgensteifigkeit</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Häufig symmetrischer Gelenkbefall</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Beschwerden an Finger- und Handgelenken</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Erschöpfung und reduzierte Belastbarkeit</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schubweiser Verlauf möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Kraftverlust oder eingeschränkte Funktion</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Allgemeines Krankheitsgefühl während aktiver Entzündung</div> </div><h2>Warum eine frühe Diagnose wichtig ist</h2> <p>Bei rheumatoider Arthritis reicht reine Schmerzbehandlung nicht aus. Entscheidend ist, die Entzündungsaktivität möglichst früh zu kontrollieren. Dafür werden krankheitsmodifizierende Medikamente eingesetzt, sogenannte DMARDs. Sie können den Verlauf bremsen und Gelenkschäden vorbeugen.</p><p>Schmerzmittel allein erfüllen diese Aufgabe nicht. Auch eine komplementäre Behandlung kann eine wirksame rheumatologische Basistherapie nicht ersetzen.</p><h2>Wie wird rheumatoide Arthritis behandelt?</h2> <ul> <li><strong>DMARDs:</strong> bilden die Grundlage der krankheitsmodifizierenden Therapie.</li> <li><strong>Biologika und weitere zielgerichtete Medikamente:</strong> können bei entsprechender Krankheitsaktivität eingesetzt werden.</li> <li><strong>Kortison:</strong> wird abhängig von Situation und Therapiestrategie insbesondere kurzfristig verwendet.</li> <li><strong>Physio- und Ergotherapie:</strong> unterstützen Beweglichkeit, Kraft und Alltag.</li> <li><strong>Bewegung:</strong> bleibt auch bei entzündlich-rheumatischen Erkrankungen wichtig und wird an Krankheitsaktivität und Funktion angepasst.</li> </ul><h2>Kann TCM ergänzend unterstützen?</h2> <p>Akupunktur kann bei chronischen Schmerzen und muskulären Begleitbeschwerden als ergänzende Massnahme eingesetzt werden. Sie ist bei rheumatoider Arthritis jedoch keine krankheitsmodifizierende Therapie und verhindert nicht zuverlässig Gelenkschäden.</p><p>Eine sinnvolle komplementäre Begleitung setzt deshalb voraus, dass die rheumatologische Behandlung weitergeführt wird. Medikamente sollten wegen einer TCM-Behandlung niemals selbstständig reduziert oder abgesetzt werden.</p><p>Bei stark entzündeten, heissen oder deutlich geschwollenen Gelenken behandeln wir nicht aggressiv lokal. Die medizinische Kontrolle der Entzündungsaktivität steht im Vordergrund.</p><h2>Wann rasch abklären?</h2> <ul> <li>Neu auftretende anhaltende Gelenkschwellungen</li> <li>Mehrere schmerzhaft geschwollene Gelenke gleichzeitig</li> <li>Lange Morgensteifigkeit zusammen mit Gelenkschwellung</li> <li>Fieber oder ausgeprägtes Krankheitsgefühl bei immunsuppressiver Therapie</li> <li>Plötzlich sehr heisses, stark schmerzendes Einzelgelenk</li> </ul>",
+    "faqs": [
+      {
+        "q": "Was ist der Unterschied zwischen Arthrose und rheumatoider Arthritis?",
+        "a": "Arthrose ist vor allem eine degenerative Gelenkerkrankung. Rheumatoide Arthritis ist eine Autoimmunerkrankung mit systemischer Gelenkentzündung und braucht eine krankheitsmodifizierende rheumatologische Behandlung."
+      },
+      {
+        "q": "Warum sind DMARDs wichtig?",
+        "a": "DMARDs behandeln nicht nur Schmerzen, sondern können die Krankheitsaktivität bremsen und Gelenkschäden verhindern oder reduzieren. Deshalb bilden sie einen zentralen Bestandteil der Behandlung."
+      },
+      {
+        "q": "Kann Akupunktur DMARDs ersetzen?",
+        "a": "Nein. Akupunktur ist keine krankheitsmodifizierende Behandlung der rheumatoiden Arthritis. Sie kann höchstens ergänzend bei einzelnen Beschwerden eingesetzt werden."
+      },
+      {
+        "q": "Darf man trotz rheumatoider Arthritis Sport machen?",
+        "a": "Bewegung ist grundsätzlich wichtig. Art und Intensität sollten an Krankheitsaktivität, Gelenkzustand und persönliche Belastbarkeit angepasst werden. Physiotherapie kann dabei unterstützen."
+      },
+      {
+        "q": "Soll ich Medikamente vor einer Akupunkturbehandlung absetzen?",
+        "a": "Nein. Rheumamedikamente sollten nicht wegen Akupunktur eigenständig verändert oder abgesetzt werden. Änderungen gehören mit der behandelnden Ärztin oder dem behandelnden Arzt besprochen."
+      }
+    ],
+    "related": [
+      {
+        "slug": "rheuma",
+        "label": "Rheuma"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "fibromyalgie",
+        "label": "Fibromyalgie"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      },
+      {
+        "slug": "osteoporose",
+        "label": "Osteoporose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina Massage"
+      }
+    ]
+  },
+  {
+    "slug": "crps",
+    "name": "CRPS",
+    "title": "CRPS: komplexes regionales Schmerzsyndrom verstehen und behandeln",
+    "metaDesc": "CRPS oder Morbus Sudeck: starke Schmerzen, Überempfindlichkeit, Schwellung und Bewegungsprobleme. Frühzeitige multidisziplinäre Behandlung ist entscheidend.",
+    "conditionName": "Komplexes regionales Schmerzsyndrom (CRPS)",
+    "lead": "CRPS kann nach Verletzung oder Operation entstehen und braucht eine koordinierte Schmerz- und Rehabilitationstherapie.",
+    "bodyHtml": "<h2>Was ist CRPS?</h2> <p>Das <strong>komplexe regionale Schmerzsyndrom</strong>, kurz CRPS und früher häufig Morbus Sudeck genannt, ist eine komplexe Schmerzerkrankung. Sie entwickelt sich meist nach einer Verletzung, Operation oder Immobilisation einer Extremität. Die Schmerzen und Veränderungen können deutlich stärker sein, als aufgrund der ursprünglichen Verletzung zu erwarten wäre.</p><p>CRPS betrifft häufig Hand, Arm, Fuss oder Bein. Neben Schmerz können Hautfarbe, Temperatur, Schwellung, Berührungsempfindlichkeit und Beweglichkeit verändert sein.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Anhaltender starker Schmerz</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Extreme Berührungsempfindlichkeit</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Brennender oder neuropathischer Schmerz</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schwellung der betroffenen Region</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Veränderte Hautfarbe oder Hauttemperatur</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Steifigkeit und eingeschränkte Bewegung</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Verändertes Schwitzen möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schwierigkeit, die betroffene Extremität normal zu benutzen</div> </div><h2>Warum frühe Rehabilitation wichtig ist</h2> <p>Bei CRPS besteht die Gefahr, dass Schmerz, Schonhaltung und Bewegungsvermeidung sich gegenseitig verstärken. Eine spezialisierte Behandlung versucht deshalb, Funktion und normale Nutzung des betroffenen Körperteils schrittweise zu fördern.</p><p>Zu aggressive Belastung kann Beschwerden verstärken. Gleichzeitig ist vollständiges dauerhaftes Schonverhalten meist ebenfalls ungünstig. Deshalb sollte die Rehabilitation individuell durch erfahrene Fachpersonen gesteuert werden.</p><h2>Wie wird CRPS behandelt?</h2> <p>Die Behandlung ist meist multidisziplinär und kann mehrere Bereiche kombinieren:</p><ul> <li><strong>Physiotherapie und Rehabilitation:</strong> zur schrittweisen Verbesserung von Bewegung und Funktion.</li> <li><strong>Desensibilisierung:</strong> kann helfen, extreme Berührungsempfindlichkeit zu reduzieren.</li> <li><strong>Schmerztherapie:</strong> Medikamente werden je nach Schmerztyp individuell eingesetzt.</li> <li><strong>Ergo- und Alltagstherapie:</strong> unterstützt die Wiederaufnahme normaler Tätigkeiten.</li> <li><strong>Psychologische Schmerztherapie:</strong> kann helfen, mit chronischem Schmerz umzugehen und Rehabilitation zu unterstützen.</li> <li><strong>Spezialisierte Verfahren:</strong> können bei schweren Verläufen in Schmerzkliniken geprüft werden.</li> </ul><h2>Kann Akupunktur bei CRPS eingesetzt werden?</h2> <p>Die wissenschaftliche Grundlage für Akupunktur speziell bei CRPS ist begrenzt. Sie sollte deshalb nicht an die Stelle einer spezialisierten Schmerz- und Rehabilitationstherapie treten.</p><p>Bei einzelnen Patientinnen und Patienten kann eine sehr vorsichtige ergänzende Behandlung erwogen werden, wenn das Behandlungsteam dies sinnvoll findet und Berührungsreize toleriert werden. Bei ausgeprägter Allodynie behandeln wir nicht aggressiv direkt in die schmerzhafte Region.</p><p>Ziel einer ergänzenden Behandlung wäre ausschliesslich Symptomunterstützung, etwa bei begleitender Muskelspannung oder allgemeinem Schmerzmanagement. Eine Normalisierung des komplexen Krankheitsprozesses kann nicht versprochen werden.</p><h2>Wann ärztlich oder schmerzmedizinisch abklären?</h2> <ul> <li>Ungewöhnlich starke, anhaltende Schmerzen nach Verletzung oder Operation</li> <li>Zunehmende Berührungsempfindlichkeit</li> <li>Deutliche Farb- oder Temperaturunterschiede einer Extremität</li> <li>Schwellung zusammen mit zunehmender Bewegungseinschränkung</li> <li>Fortschreitender Funktionsverlust</li> </ul>",
+    "faqs": [
+      {
+        "q": "Ist CRPS dasselbe wie Morbus Sudeck?",
+        "a": "Morbus Sudeck ist eine ältere Bezeichnung, die häufig für CRPS verwendet wurde. Heute spricht man meist vom komplexen regionalen Schmerzsyndrom."
+      },
+      {
+        "q": "Wie entsteht CRPS?",
+        "a": "Häufig beginnt CRPS nach einer Verletzung oder Operation. Warum manche Menschen die Erkrankung entwickeln und andere nicht, ist nicht vollständig geklärt."
+      },
+      {
+        "q": "Warum ist Bewegung trotz Schmerzen wichtig?",
+        "a": "Ziel ist keine aggressive Belastung, sondern eine kontrollierte, schrittweise Wiederherstellung von Funktion. Dauerhafte Bewegungsvermeidung kann langfristig zusätzliche Einschränkungen fördern."
+      },
+      {
+        "q": "Kann Akupunktur CRPS heilen?",
+        "a": "Dafür gibt es keine ausreichende Evidenz. Akupunktur kann höchstens ergänzend und vorsichtig im Rahmen eines umfassenden Behandlungsplans eingesetzt werden."
+      },
+      {
+        "q": "Wer behandelt CRPS?",
+        "a": "Häufig arbeiten Schmerzmedizin, Physiotherapie, Ergotherapie, Haus- oder Fachärzte und bei Bedarf psychologische Schmerztherapie zusammen."
+      }
+    ],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      },
+      {
+        "slug": "fibromyalgie",
+        "label": "Fibromyalgie"
+      },
+      {
+        "slug": "guertelrose",
+        "label": "Gürtelrose"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "interkostalneuralgie",
+    "name": "Interkostalneuralgie",
+    "title": "Interkostalneuralgie: Nervenschmerz zwischen den Rippen",
+    "metaDesc": "Interkostalneuralgie: brennender oder stechender Nervenschmerz entlang der Rippen. Brustschmerz zuerst sicher abklären, danach gezielt behandeln.",
+    "conditionName": "Interkostalneuralgie",
+    "lead": "Bandförmiger, brennender Schmerz entlang der Rippen kann von Interkostalnerven kommen. Neuer Brustschmerz sollte trotzdem zuerst medizinisch eingeordnet werden.",
+    "bodyHtml": "<h2>Was ist eine Interkostalneuralgie?</h2> <p>Eine <strong>Interkostalneuralgie</strong> ist ein neuropathischer Schmerz im Verlauf eines oder mehrerer Nerven zwischen den Rippen. Der Schmerz kann vom Rücken seitlich um den Brustkorb bis nach vorne ziehen und teilweise auch den oberen Bauchbereich betreffen.</p><p>Typisch sind brennende, stechende, elektrische oder bandförmige Schmerzen. Gleichzeitig können Kribbeln, Taubheit oder eine ausgeprägte Berührungsempfindlichkeit auftreten.</p><h2>Typische Beschwerden</h2> <div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Bandförmiger Schmerz entlang einer Rippe</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Brennender oder stechender Nervenschmerz</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerz vom Rücken Richtung Brustkorb</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Kribbeln oder Taubheitsgefühl</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Überempfindlichkeit der Haut</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Verstärkung bei Husten oder Niesen möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Schmerz bei tiefem Atemzug oder Bewegung möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Einseitiges, klar begrenztes Schmerzband möglich</div> </div><h2>Brustschmerz zuerst sicher einordnen</h2> <p>Schmerzen im Brustkorb dürfen nicht allein aufgrund ihres Charakters als Interkostalneuralgie eingestuft werden. Herz, Lunge, Rippen, Brustwirbelsäule, Speiseröhre und andere Strukturen können ähnliche Beschwerden verursachen.</p><p>Neue, starke oder unerklärte Brustschmerzen sollten deshalb medizinisch abgeklärt werden, bevor eine reine Nerven- oder Muskelbehandlung begonnen wird.</p><h2>Mögliche Ursachen</h2> <ul> <li><strong>Gürtelrose:</strong> der betroffene Nerv kann während und nach der Infektion starke neuropathische Schmerzen verursachen.</li> <li><strong>Operationen am Brustkorb:</strong> können Interkostalnerven reizen oder verletzen.</li> <li><strong>Verletzungen:</strong> beispielsweise Rippenverletzungen oder andere Traumata.</li> <li><strong>Nervenkompression:</strong> kann durch Wirbelsäulen- oder Gewebeveränderungen entstehen.</li> <li><strong>Unklare Ursache:</strong> nicht immer lässt sich ein eindeutiger Auslöser finden.</li> </ul><h2>Wie wird Interkostalneuralgie behandelt?</h2> <p>Die Therapie richtet sich nach der Ursache. Bei neuropathischem Schmerz kommen andere Medikamente infrage als bei rein muskulären Beschwerden. Physiotherapie kann sinnvoll sein, wenn Bewegungsapparat oder Schutzspannung mitbeteiligt sind. Bei bestimmten Verläufen können spezialisierte Schmerzverfahren oder Nervenblockaden geprüft werden.</p><p>Besteht eine zugrunde liegende Erkrankung wie Gürtelrose, muss diese entsprechend behandelt werden.</p><h2>Kann TCM ergänzend helfen?</h2> <p>Nach medizinischer Abklärung kann Akupunktur bei chronischen Schmerz- und Spannungsmustern ergänzend eingesetzt werden. Dabei unterscheiden wir zwischen neuropathischem Schmerz und sekundärer Muskelspannung im Bereich von Rücken und Brustkorb.</p><p>Bei klar neuropathischen Beschwerden sollte keine Heilung des geschädigten Nervs versprochen werden. Die Behandlung ist symptomorientiert und ersetzt keine diagnostische Abklärung von Brustschmerzen.</p><p>Stark empfindliche oder akut entzündete Bereiche werden nicht aggressiv lokal behandelt.</p><h2>Wann sofort medizinische Hilfe?</h2> <ul> <li>Brustschmerz mit Atemnot</li> <li>Druck oder Enge im Brustkorb</li> <li>Brustschmerz mit kaltem Schweiss, Übelkeit oder Kreislaufproblemen</li> <li>Ausstrahlung in Arm, Schulter, Rücken oder Kiefer bei neuem Brustschmerz</li> <li>Plötzlich deutlich erschwerte Atmung</li> <li>Neurologische Ausfälle oder starke allgemeine Verschlechterung</li> </ul>",
+    "faqs": [
+      {
+        "q": "Wie fühlt sich Interkostalneuralgie an?",
+        "a": "Häufig wird der Schmerz als brennend, stechend, elektrisch oder bandförmig entlang einer Rippe beschrieben. Kribbeln, Taubheit und Berührungsempfindlichkeit können dazukommen."
+      },
+      {
+        "q": "Kann Interkostalneuralgie beim Atmen wehtun?",
+        "a": "Ja. Bewegung des Brustkorbs, tiefe Atemzüge, Husten oder Niesen können die Beschwerden verstärken. Das ist jedoch nicht spezifisch und sollte bei neuen Brustschmerzen medizinisch eingeordnet werden."
+      },
+      {
+        "q": "Kann Gürtelrose Interkostalneuralgie verursachen?",
+        "a": "Ja. Herpes Zoster betrifft häufig Nerven am Brustkorb und kann auch nach Abheilung des Ausschlags länger anhaltende Nervenschmerzen hinterlassen."
+      },
+      {
+        "q": "Kann Akupunktur Interkostalneuralgie behandeln?",
+        "a": "Nach ärztlicher Abklärung kann Akupunktur ergänzend bei Schmerz und muskulären Begleitspannungen eingesetzt werden. Eine Heilung eines geschädigten Nervs kann nicht versprochen werden."
+      },
+      {
+        "q": "Wann ist Brustschmerz ein Notfall?",
+        "a": "Bei neuem starken Brustschmerz, Atemnot, Engegefühl, Kreislaufproblemen oder typischer Ausstrahlung sollte sofort medizinische Hilfe gesucht werden."
+      }
+    ],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "guertelrose",
+        "label": "Gürtelrose"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
+      {
+        "slug": "fibromyalgie",
+        "label": "Fibromyalgie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina Massage"
+      }
+    ]
+  },
+  {
+    "slug": "bettnaessen",
+    "name": "Bettnässen",
+    "title": "Bettnässen bei Kindern: Ursachen, Abklärung und Behandlung",
+    "metaDesc": "Bettnässen oder Enuresis bei Kindern: häufig, behandelbar und kein Grund für Schuld. Wann abklären, was hilft und welche Rolle Akupunktur ergänzend haben kann.",
+    "conditionName": "Nächtliche Enuresis",
+    "lead": "Nächtliches Bettnässen ist bei Kindern häufig. Wichtig sind eine druckfreie Haltung, altersgerechte Abklärung und bewährte Behandlungsmöglichkeiten.",
+    "bodyHtml": "<h2>Was bedeutet Bettnässen?</h2> <p><strong>Bettnässen</strong> oder nächtliche Enuresis bedeutet, dass ein Kind im Schlaf wiederholt unwillkürlich Urin verliert. Bei jüngeren Kindern gehört nächtliche Blasenkontrolle noch zur normalen Entwicklung. Erst mit zunehmendem Alter wird wiederholtes Bettnässen medizinisch relevanter.</p><p>Wichtig: Bettnässen ist kein Fehlverhalten. Kinder machen das nicht absichtlich und sollten weder beschämt noch bestraft werden.</p><h2>Welche Muster gibt es?</h2> <p>Man unterscheidet unter anderem Kinder, die nachts noch nie über längere Zeit trocken waren, von Kindern, die nach einer längeren trockenen Phase erneut einnässen. Zusätzlich ist wichtig, ob tagsüber Beschwerden bestehen.</p><div class=\"cp-sx-grid\"> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Nasse Nächte trotz altersgerechter Toilettennutzung tagsüber</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Sehr tiefer Schlaf und fehlendes Erwachen bei voller Blase</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Gelegentlich mehrere Einnässereignisse pro Nacht</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Erneutes Bettnässen nach längerer trockener Phase</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Zusätzlicher Harndrang tagsüber möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Verstopfung kann gleichzeitig auftreten</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Psychische Belastung oder Schamgefühl möglich</div> <div class=\"cp-sx-item\"><span class=\"cp-sx-dot\"></span>Belastung bei Übernachtungen, Lagern oder Schulreisen</div> </div><h2>Was kann dahinterstecken?</h2> <p>Bei vielen Kindern entwickelt sich die nächtliche Blasenkontrolle einfach später. Vererbung, nächtliche Urinproduktion, Blasenkapazität und die Fähigkeit, bei voller Blase aufzuwachen, spielen zusammen.</p><p>Auch Verstopfung kann Bettnässen verstärken. Bei plötzlich neu aufgetretenem Bettnässen oder zusätzlichen Symptomen muss ausserdem geprüft werden, ob beispielsweise Harnwegsprobleme, Diabetes, Schlafprobleme oder andere Ursachen vorliegen.</p><h2>Was hilft bei Bettnässen?</h2> <p>Die Behandlung richtet sich nach Alter, Häufigkeit, Begleitsymptomen und Belastung des Kindes.</p><ul> <li><strong>Normales Trinken tagsüber:</strong> Kinder sollten nicht durch übermässiges Einschränken von Flüssigkeit dehydriert werden.</li> <li><strong>Regelmässige Toilettengänge:</strong> einschliesslich Toilettengang vor dem Schlafen.</li> <li><strong>Positive Unterstützung:</strong> belohnt wird Mitarbeit, nicht eine trockene Nacht, die das Kind nicht vollständig kontrollieren kann.</li> <li><strong>Enuresis-Alarm:</strong> gehört zu den etablierten Behandlungsoptionen und trainiert das Erwachen bei beginnendem Einnässen.</li> <li><strong>Desmopressin:</strong> kann bei ausgewählten Kindern ärztlich eingesetzt werden, besonders wenn eine schnelle oder kurzfristige Verbesserung wichtig ist.</li> <li><strong>Behandlung von Verstopfung oder Tagesbeschwerden:</strong> falls vorhanden.</li> </ul><h2>Wann sollte ein Kind ärztlich abgeklärt werden?</h2> <ul> <li>Bettnässen beginnt plötzlich nach längerer trockener Phase</li> <li>Schmerzen oder Brennen beim Wasserlassen</li> <li>Ausgeprägter Harndrang oder Einnässen auch tagsüber</li> <li>Sehr starker Durst oder auffällig grosse Urinmengen</li> <li>Wiederkehrende Harnwegsinfekte</li> <li>Ausgeprägte Verstopfung</li> <li>Lautes Schnarchen oder Verdacht auf Schlafapnoe</li> <li>Bettnässen belastet Kind oder Familie deutlich</li> </ul><h2>Kann Akupunktur bei Bettnässen eingesetzt werden?</h2> <p>Akupunktur und Akupressur werden bei Enuresis eingesetzt, die wissenschaftliche Datenlage ist aber deutlich weniger etabliert als für Enuresis-Alarm und Desmopressin. Deshalb sollte eine TCM-Behandlung nicht anstelle einer pädiatrischen Abklärung oder bewährter Behandlungsmöglichkeiten erfolgen.</p><p>Wenn Eltern eine ergänzende Behandlung wünschen, muss sie kindgerecht, freiwillig und ohne Druck erfolgen. Je nach Alter und Akzeptanz können auch nicht-invasive Methoden wie Akupressur besprochen werden. Ein Kind sollte nie für nasse Nächte verantwortlich gemacht werden.</p><h2>Unser wichtigster Grundsatz</h2> <p>Das Ziel ist nicht nur ein trockenes Bett. Das Kind soll sich sicher fühlen und verstehen, dass Bettnässen eine behandelbare Entwicklungs- oder Gesundheitsfrage ist und kein persönliches Versagen.</p>",
+    "faqs": [
+      {
+        "q": "Ab welchem Alter ist Bettnässen auffällig?",
+        "a": "Nächtliche Blasenkontrolle entwickelt sich bei Kindern unterschiedlich. Bei wiederholtem Bettnässen ab dem Schulalter oder bei deutlicher Belastung lohnt sich eine ärztliche Besprechung. Auch jüngere Kinder können untersucht werden, wenn zusätzliche Beschwerden bestehen."
+      },
+      {
+        "q": "Sollte man ein Kind für trockene Nächte belohnen?",
+        "a": "Besser ist es, Verhalten zu belohnen, das das Kind selbst kontrollieren kann, zum Beispiel Toilettengang vor dem Schlafen oder aktive Mitarbeit beim Alarmtraining. Strafen und Beschämung sollten vermieden werden."
+      },
+      {
+        "q": "Was ist ein Enuresis-Alarm?",
+        "a": "Ein Enuresis-Alarm erkennt beginnende Nässe und weckt das Kind. Über die Zeit soll das Kind lernen, bei voller Blase früher aufzuwachen. Die Behandlung braucht Geduld und Unterstützung der Familie."
+      },
+      {
+        "q": "Was ist Desmopressin?",
+        "a": "Desmopressin ist ein verschreibungspflichtiges Medikament, das die nächtliche Urinproduktion reduzieren kann. Anwendung und Flüssigkeitsregeln müssen genau nach ärztlicher Anweisung erfolgen."
+      },
+      {
+        "q": "Hilft Akupunktur gegen Bettnässen?",
+        "a": "Die Evidenz ist weniger klar als für etablierte Behandlungen wie Alarmtraining und Desmopressin. Akupunktur oder Akupressur können höchstens ergänzend nach pädiatrischer Abklärung besprochen werden."
+      }
+    ],
+    "related": [
+      {
+        "slug": "reizblase",
+        "label": "Reizblase"
+      },
+      {
+        "slug": "inkontinenz",
+        "label": "Inkontinenz"
+      },
+      {
+        "slug": "blasenentzuendung",
+        "label": "Blasenentzündung"
+      },
+      {
+        "slug": "schlafprobleme",
+        "label": "Schlafprobleme"
+      },
+      {
+        "slug": "verstopfung",
+        "label": "Verstopfung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "akupressur",
+        "label": "Akupressur"
+      }
+    ]
+  },
+  {
+    "slug": "nervenschmerzen",
+    "name": "Nervenschmerzen",
+    "title": "",
+    "metaDesc": "",
+    "conditionName": "Nervenschmerzen",
+    "lead": "",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      },
+      {
+        "slug": "crps",
+        "label": "CRPS"
+      },
+      {
+        "slug": "interkostalneuralgie",
+        "label": "Interkostalneuralgie"
+      },
+      {
+        "slug": "fazialisparese",
+        "label": "Fazialisparese"
+      },
+      {
+        "slug": "trigeminusneuralgie",
+        "label": "Trigeminusneuralgie"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "guertelrose",
+    "name": "Gürtelrose",
+    "title": "",
+    "metaDesc": "",
+    "conditionName": "Gürtelrose",
+    "lead": "",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "interkostalneuralgie",
+        "label": "Interkostalneuralgie"
+      },
+      {
+        "slug": "fazialisparese",
+        "label": "Fazialisparese"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "reizblase",
+    "name": "Reizblase",
+    "title": "",
+    "metaDesc": "",
+    "conditionName": "Reizblase",
+    "lead": "",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "blasenentzuendung",
+        "label": "Blasenentzündung"
+      },
+      {
+        "slug": "inkontinenz",
+        "label": "Inkontinenz"
+      },
+      {
+        "slug": "bettnaessen",
+        "label": "Bettnässen"
+      },
+      {
+        "slug": "prostata",
+        "label": "Prostatabeschwerden"
+      }
+    ],
+    "therapies": []
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);

@@ -847,6 +847,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft akut gegen Rückenschmerzen beim Husten?', a: 'Beim Husten leicht in die Knie gehen oder abstützen, das federt die Druckspitze ab. Danach Wärme, moderate Bewegung statt Schonhaltung. Hält der Schmerz über zwei bis drei Wochen an oder strahlt er aus, gehört er abgeklärt.' },
     ],
     related: [
+      { href: '/beschwerden/interkostalneuralgie/', label: 'Interkostalneuralgie', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?', cat: 'Frage' },
       { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
       { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
@@ -928,6 +929,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann TCM bei steifen Fingern helfen?', a: 'Bei abgeklärten, verschleissbetonten Beschwerden kann die Kombination aus Akupunktur, Wärmeanwendungen wie Moxibustion und Handmassagen Steifigkeit und Schmerzen lindern. Bei entzündlichem Rheuma bleibt die rheumatologische Behandlung führend.' },
     ],
     related: [
+      { href: '/beschwerden/rheumatoide-arthritis/', label: 'Rheumatoide Arthritis', cat: 'Beschwerde' },
       { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
       { href: '/beschwerden/rheuma/', label: 'Rheuma', cat: 'Beschwerde' },
       { href: '/koerpersignale/finger-schlafen-ein/', label: 'Finger schlafen ein', cat: 'Körpersignal' },
@@ -1309,6 +1311,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen schwere Beine am Abend?', a: 'Regelmässige Bewegungspausen, aktive Wadenmuskulatur, zeitweises Hochlagern und kühle Duschen der Unterschenkel. Wenn die Beschwerden trotzdem regelmässig auftreten oder Venenveränderungen sichtbar sind, lohnt sich eine ärztliche Venenbeurteilung.' },
     ],
     related: [
+      { href: '/beschwerden/lipoedem/', label: 'Lipödem', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', label: 'Duplexsonografie: der Gefäss-Ultraschall', cat: 'Untersuchung' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
       { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
@@ -2558,6 +2561,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Leidet dein Schlaf insgesamt, findest du mehr auf der Seite <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a>. Ein trockener Mund beim Aufwachen ist ein häufiger Begleiter der Mundatmung, siehe <a href="/koerpersignale/trockener-mund-nachts/">Trockener Mund nachts</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/beschwerden/schlafapnoe/', label: 'Schlafapnoe', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/', label: 'Schlaflabor: Was passiert bei der Untersuchung?', cat: 'Untersuchung' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
@@ -2789,6 +2793,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich Gesichtskribbeln abklären lassen?', a: 'Wenn es neu ist und ohne erkennbaren Auslöser anhält, wenn es immer dieselbe Gesichtshälfte betrifft, wenn blitzartige Schmerzen dazukommen oder wenn es sich ausbreitet. Einseitiges Kribbeln mit Schwäche oder Sprachstörungen ist ein Notfall.' },
     ],
     related: [
+      { href: '/beschwerden/fazialisparese/', label: 'Fazialisparese', cat: 'Beschwerde' },
       { href: '/koerpersignale/kribbeln-an-der-lippe/', label: 'Kribbeln an der Lippe', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
       { href: '/beschwerden/trigeminusneuralgie/', label: 'Trigeminusneuralgie', cat: 'Beschwerde' },
@@ -3283,6 +3288,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Akupunktur kann bei manchen begleitenden funktionellen Beschwerden eingesetzt werden. Ein neues Druckgefühl im Ohr sollte jedoch nicht allein mit einem TCM-Muster erklärt werden. Hörverlust und andere auffällige Ohrsymptome benötigen eine medizinische beziehungsweise HNO-ärztliche Einordnung.</p>`,
     faqs: [],
     related: [
+      { href: '/beschwerden/morbus-meniere/', label: 'Morbus Menière', cat: 'Beschwerde' },
       { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
       { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },

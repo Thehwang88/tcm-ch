@@ -1,10 +1,10 @@
 {
   "generated": "2026-09-27",
   "totals": {
-    "healthPages": 450,
+    "healthPages": 458,
     "byType": {
       "hub": 6,
-      "condition": 106,
+      "condition": 114,
       "library_hub": 1,
       "befund": 59,
       "question": 36,
@@ -31,7 +31,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 64,
-      "outboundHealthLinks": 112
+      "outboundHealthLinks": 120
     },
     {
       "url": "/beschwerden/achillessehnenentzuendung/",
@@ -90,7 +90,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 20
     },
     {
@@ -124,6 +124,16 @@
       "outboundHealthLinks": 24
     },
     {
+      "url": "/beschwerden/bettnaessen/",
+      "type": "condition",
+      "title": "Bettnässen bei Kindern: Ursachen, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/blaehungen/",
       "type": "condition",
       "title": "Blähungen – TCM-Behandlung | TCM.ch",
@@ -140,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 18
     },
     {
@@ -150,7 +160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 16
     },
     {
@@ -194,6 +204,16 @@
       "outboundHealthLinks": 12
     },
     {
+      "url": "/beschwerden/crps/",
+      "type": "condition",
+      "title": "CRPS: komplexes regionales Schmerzsyndrom verstehen und behandeln",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/depressionen/",
       "type": "condition",
       "title": "Depressionen – TCM-Begleitung | TCM.ch",
@@ -210,7 +230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 24
     },
     {
@@ -240,8 +260,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 30,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/fazialisparese/",
+      "type": "condition",
+      "title": "Fazialisparese: Gesichtslähmung richtig einordnen und begleiten",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/fersensporn/",
@@ -270,7 +300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 16
     },
     {
@@ -320,8 +350,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/haarausfall/",
@@ -410,7 +440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 17
     },
     {
@@ -450,8 +480,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/interkostalneuralgie/",
+      "type": "condition",
+      "title": "Interkostalneuralgie: Nervenschmerz zwischen den Rippen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/ischias/",
@@ -530,8 +570,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 27,
+      "inboundContentLinks": 28,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/lipoedem/",
+      "type": "condition",
+      "title": "Lipödem: Beschwerden erkennen und sinnvoll behandeln",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/lippenherpes/",
@@ -560,7 +610,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 11
     },
     {
@@ -580,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 144,
+      "inboundContentLinks": 141,
       "outboundHealthLinks": 18
     },
     {
@@ -602,6 +652,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/morbus-meniere/",
+      "type": "condition",
+      "title": "Morbus Menière: Drehschwindel, Hörverlust und Tinnitus",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/morton-neurom/",
@@ -630,7 +690,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 166,
+      "inboundContentLinks": 163,
       "outboundHealthLinks": 31
     },
     {
@@ -640,8 +700,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/nesselsucht/",
@@ -720,7 +780,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 31
     },
     {
@@ -730,7 +790,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 16
     },
     {
@@ -750,8 +810,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/reizdarm/",
@@ -780,8 +840,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/rheumatoide-arthritis/",
+      "type": "condition",
+      "title": "Rheumatoide Arthritis: Entzündung behandeln, Beschwerden begleiten",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/rhizarthrose/",
@@ -820,8 +890,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 183,
+      "inboundContentLinks": 181,
       "outboundHealthLinks": 34
+    },
+    {
+      "url": "/beschwerden/schlafapnoe/",
+      "type": "condition",
+      "title": "Schlafapnoe: Atemaussetzer im Schlaf erkennen und behandeln",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/schlafprobleme/",
@@ -830,7 +910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 135,
+      "inboundContentLinks": 134,
       "outboundHealthLinks": 21
     },
     {
@@ -900,7 +980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 20
     },
     {
@@ -910,7 +990,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 21
     },
     {
@@ -960,7 +1040,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 22
     },
     {
@@ -1000,7 +1080,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 12
     },
     {
@@ -1010,7 +1090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 15
     },
     {
@@ -1020,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 16
     },
     {
@@ -1060,7 +1140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 17
     },
     {
@@ -2951,7 +3031,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/druck-hinter-den-augen/",
@@ -3041,7 +3121,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/finger-schlafen-ein/",
@@ -3251,7 +3331,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/kribbeln-im-koerper/",
@@ -3401,7 +3481,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/rueckenschmerzen-beim-langen-stehen/",
@@ -3421,7 +3501,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/schwere-beine-abends/",
@@ -3431,7 +3511,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 12,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/schwindel-beim-aufstehen/",
@@ -3610,7 +3690,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 139,
+      "inboundContentLinks": 147,
       "outboundHealthLinks": 17
     },
     {
