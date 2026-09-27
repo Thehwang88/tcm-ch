@@ -1,0 +1,137 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/knochendichtemessung';
+const url = `https://tcm.ch${path}/`;
+const title = 'Knochendichtemessung (DEXA): Ablauf und Ergebnisse';
+const description = 'Wie eine Knochendichtemessung (DEXA-Scan) abläuft, wann sie sinnvoll ist, was T-Score und Z-Score grob bedeuten und warum ein Wert allein keine Diagnose ist.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Knochendichtemessung', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/osteoporose/', label: 'Osteoporose' },
+  { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre' },
+  { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', label: 'Röntgen' },
+  { href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/', label: 'Szintigrafie' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Knochendichtemessung</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Knochendichte&shy;messung: Wie läuft der DEXA-Scan ab?</h1>
+        <p class="lead">Nach den Wechseljahren, unter Kortisontherapie oder nach einem Bruch ohne grossen Unfall: Die Knochendichtemessung zeigt, wie stabil die Knochen sind. Die Untersuchung dauert nur Minuten und kommt mit sehr wenig Strahlung aus.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Knochendichtemessung ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was misst die Knochendichtemessung?</h2>
+          <p>Die gebräuchlichste Methode ist die DEXA-Messung (Dual-Energy X-ray Absorptiometry): Zwei sehr schwache Röntgenstrahlen tasten meist Lendenwirbelsäule und Hüfte ab, und aus der Abschwächung berechnet das Gerät den Mineralgehalt des Knochens. So lässt sich abschätzen, ob die Knochendichte altersentsprechend ist oder deutlich vermindert, wie bei einer <a href="/beschwerden/osteoporose/">Osteoporose</a>.</p>
+          <h2>Wann ist sie sinnvoll?</h2>
+          <ul>
+            <li><strong>Nach den Wechseljahren:</strong> weil der Östrogenabfall den Knochenabbau beschleunigt (mehr dazu bei den <a href="/beschwerden/wechseljahre/">Wechseljahren</a>).</li>
+            <li><strong>Nach Brüchen ohne passenden Unfall:</strong> etwa einem Wirbel- oder Handgelenksbruch bei geringer Belastung.</li>
+            <li><strong>Bei Risikofaktoren:</strong> längere Kortisontherapie, familiäre Osteoporose, starkes Untergewicht, bestimmte Grunderkrankungen.</li>
+            <li><strong>Zur Verlaufskontrolle:</strong> unter einer laufenden Osteoporose-Behandlung.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Du liegst angezogen auf einer Liege, ein Messarm fährt langsam über Lendenwirbelsäule und Hüfte. Die Messung dauert etwa 10 bis 20 Minuten, tut nicht weh und braucht keine besondere Vorbereitung. Die Strahlendosis ist sehr klein, deutlich kleiner als bei einer normalen <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgenaufnahme</a>; eine mögliche Schwangerschaft solltest du trotzdem vorher angeben.</p>
+          <h2>T-Score und Z-Score: grob erklärt</h2>
+          <p>Das Resultat wird als Vergleichswert angegeben: Der <strong>T-Score</strong> vergleicht deine Knochendichte mit der von gesunden jungen Erwachsenen, der <strong>Z-Score</strong> mit Gleichaltrigen. Je weiter der Wert unter dem Vergleichsbereich liegt, desto geringer die Knochendichte; ab definierten Schwellen sprechen Fachleute von Osteopenie oder Osteoporose. Wo genau dein Wert liegt und was er bedeutet, ordnet die Ärztin oder der Arzt ein.</p>
+          <h2>Warum der Wert allein keine Diagnose ist</h2>
+          <p>Entscheidend ist nie die Zahl allein, sondern das gesamte Bruchrisiko: Alter, frühere Brüche, Sturzrisiko, Medikamente und Grunderkrankungen fliessen in die Beurteilung ein. Umgekehrt kann eine fortgeschrittene Arthrose an der Wirbelsäule die Messwerte künstlich verbessern. Deshalb gehört die Interpretation, und erst recht der Entscheid über eine Behandlung, in die ärztliche Sprechstunde.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die Knochendichte selbst behandeln wir nicht; hier zählen ärztliche Therapie, Ernährung, Krafttraining und Sturzprävention. Ergänzend kann bei muskuloskelettalen Beschwerden, etwa <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a>, eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> Teil des Gesamtplans sein; sie ersetzt keine Osteoporose-Behandlung.</p>
+        </div>
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel1Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Knochen abgeklärt und in Bewegung bleiben?</div>
+          <p>Wenn die ärztliche Abklärung gemacht ist und Rücken- oder Gelenkbeschwerden bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

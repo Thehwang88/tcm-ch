@@ -1,0 +1,134 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Beschwerden-/Wissens-Owner (allergien-heuschnupfen, akupunktur-bei-heuschnupfen)
+// behalten Erkrankungs- und Behandlungs-Intent; diese Seite nur Untersuchungs-Intent.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/allergietest';
+const url = `https://tcm.ch${path}/`;
+const title = 'Allergietest: Ablauf von Pricktest, Bluttest und Epikutantest';
+const description = 'Wie eine Allergie abgeklärt wird: Pricktest, Bluttest (spezifisches IgE) und Epikutantest im Überblick, was positive Resultate bedeuten und was vor dem Test gilt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Allergietest', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/trockener-husten/', label: 'Trockener Husten' },
+  { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang' },
+];
+const rel2Links = [
+  { href: '/beschwerden/allergien-heuschnupfen/', label: 'Allergien & Heuschnupfen' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Allergietest</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Allergietest: Wie wird eine Allergie abgeklärt?</h1>
+        <p class="lead">Heuschnupfen, juckende Augen, unklare Hautreaktionen: Ein Allergietest zeigt, worauf dein Immunsystem reagiert. Hier erfährst du, wie Pricktest, Bluttest und Epikutantest ablaufen und warum ein positives Resultat allein noch keine Allergie beweist.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Der Allergietest ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Wann wird auf Allergien getestet?</h2>
+          <p>Typische Anlässe sind saisonaler Schnupfen mit juckenden Augen (siehe <a href="/beschwerden/allergien-heuschnupfen/">Allergien &amp; Heuschnupfen</a>), ganzjährige Symptome auf Hausstaubmilben oder Tiere, Reaktionen auf Nahrungsmittel oder Insektenstiche sowie unklare Ekzeme. Der Test beantwortet die Frage: Worauf reagiert das Immunsystem, und passt das zu den Beschwerden?</p>
+          <h2>Pricktest: der Klassiker auf der Haut</h2>
+          <p>Beim Pricktest werden Tropfen verschiedener Allergenlösungen auf den Unterarm gesetzt und die Haut darunter oberflächlich angeritzt; das ist fast schmerzfrei. Nach etwa 15 bis 20 Minuten zeigt sich an sensibilisierten Stellen eine kleine juckende Quaddel, ähnlich einem Mückenstich. Grösse und Muster der Reaktionen geben zusammen mit deiner Geschichte den entscheidenden Hinweis.</p>
+          <h2>Bluttest: spezifisches IgE</h2>
+          <p>Im Blut lassen sich Antikörper (spezifisches IgE) gegen einzelne Allergene messen. Das ist sinnvoll, wenn ein Hauttest gerade nicht möglich ist, etwa bei ausgeprägten Hautekzemen, oder zur Ergänzung des Pricktests. Erhöhte <a href="/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/">Eosinophile im Blutbild</a> können ein unspezifischer Begleithinweis auf allergisches Geschehen sein, sind aber kein Allergietest.</p>
+          <h2>Epikutantest: die eigene Methode für Kontaktallergien</h2>
+          <p>Für Kontaktallergien, etwa auf Nickel, Duftstoffe oder Konservierungsmittel, wird der Epikutantest (Patch-Test) verwendet: Pflaster mit Testsubstanzen bleiben rund zwei Tage auf dem Rücken, abgelesen wird mehrfach über mehrere Tage. Er beantwortet eine andere Frage als der Pricktest und wird bei Ekzem-Verdacht eingesetzt.</p>
+          <h2>Was bedeuten die Resultate?</h2>
+          <p>Wichtig zu wissen: Ein positiver Test zeigt eine <strong>Sensibilisierung</strong>, nicht automatisch eine relevante Allergie. Viele Menschen haben positive Testresultate ohne jede Beschwerde, und falsch-positive wie falsch-negative Resultate kommen vor. Erst die Kombination aus Testresultat und tatsächlichen Beschwerden ergibt die Diagnose, und diese Einordnung gehört in die allergologische Sprechstunde.</p>
+          <h2>Vorbereitung: Was gilt vor dem Test?</h2>
+          <p>Antihistaminika und bestimmte andere Medikamente können Hauttests abschwächen. <strong>Setze sie aber nie eigenständig ab:</strong> Ob und wie lange ein Medikament vor dem Termin pausiert werden soll, legt ausschliesslich die testende Praxis fest. Melde dich dort, wenn du unsicher bist, und gib alle Medikamente an.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die Allergie-Diagnostik gehört in ärztliche Hände. Ist die Diagnose gestellt, kann ergänzend zur ärztlichen Behandlung eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> in Betracht kommen; die Studienlage speziell zu Heuschnupfen haben wir unter <a href="/wissen/akupunktur-bei-heuschnupfen/">Akupunktur bei Heuschnupfen</a> ehrlich eingeordnet. Bei schweren allergischen Reaktionen mit Atemnot oder Kreislaufsymptomen gilt: Notfall, Telefon 144.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen Allergiefragen auftauchen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Allergie abgeklärt, Nase weiter zu?</div>
+          <p>Wenn die allergologische Abklärung gemacht ist und Beschwerden bleiben, kann eine TCM-Behandlung ergänzend zur ärztlichen Therapie sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

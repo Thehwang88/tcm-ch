@@ -24,17 +24,41 @@ const schema = [
   },
 ];
 
-const leaves = [
-  { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', name: 'Grosses Blutbild', text: 'Welche Werte dazugehören, wann es sinnvoll ist und wie auffällige Werte eingeordnet werden.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/ekg/', name: 'EKG & Langzeit-EKG', text: 'Wie die Herzstromkurve aufgezeichnet wird, was sie zeigt und wo ihre Grenzen liegen.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', name: 'MRT (MRI)', text: 'Ablauf, Vorbereitung, Kontrastmittel und warum nicht jeder Befund die Schmerzen erklärt.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', name: 'Nervenleitmessung (NLG)', text: 'Wie gut leiten deine Nerven? Standard bei Kribbeln, Taubheit und Karpaltunnel-Verdacht.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', name: 'Ultraschall', text: 'Bauch, Schilddrüse, Sehnen und Gefässe in Echtzeit, ganz ohne Strahlung.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', name: 'Röntgen', text: 'Knochen und Gelenke im Bild: Ablauf, Strahlenbelastung im Verhältnis und Grenzen bei Weichteilen.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/ct/', name: 'CT (Computertomografie)', text: 'Schnittbilder in Sekunden: wann das CT erste Wahl ist und wann das MRT übernimmt.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', name: 'Gastroskopie (Magenspiegelung)', text: 'Der direkte Blick in Speiseröhre und Magen: Vorbereitung, Sedierung, Biopsien.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', name: 'Koloskopie (Darmspiegelung)', text: 'Vorsorge und Abklärung: Darmvorbereitung, Ablauf, Polypenentfernung und was danach gilt.' },
-  { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', name: 'Lungenfunktion (Spirometrie)', text: 'Wie viel Luft, wie schnell: der Basistest bei Husten, Atemnot und Asthma-Verdacht.' },
+// Gruppierte Darstellung (20 Leaves): sinnvolle klinische Taxonomie statt einer
+// flachen Liste; Design-System unveraendert (leaf-grid pro Gruppe).
+const groups = [
+  { title: 'Bildgebung', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/mrt/', name: 'MRT (MRI)', text: 'Ablauf, Vorbereitung, Kontrastmittel und warum nicht jeder Befund die Schmerzen erklärt.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/ct/', name: 'CT (Computer­tomografie)', text: 'Schnittbilder in Sekunden: wann das CT erste Wahl ist und wann das MRT übernimmt.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', name: 'Röntgen', text: 'Knochen und Gelenke im Bild: Ablauf, Strahlenbelastung im Verhältnis und Grenzen bei Weichteilen.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', name: 'Ultraschall', text: 'Bauch, Schilddrüse, Sehnen und Gefässe in Echtzeit, ganz ohne Strahlung.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', name: 'Duplex­sonografie', text: 'Der Gefäss-Ultraschall: Venen, Arterien und Blutfluss, von Thromboseverdacht bis Halsschlagader.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/', name: 'Szintigrafie', text: 'Nuklearmedizin: Tracer und Gammakamera zeigen, wie Organe arbeiten, nicht nur wie sie aussehen.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/knochendichtemessung/', name: 'Knochendichte­messung (DEXA)', text: 'Wie stabil sind die Knochen? Ablauf, T-Score und Z-Score, mit sehr wenig Strahlung.' },
+  ]},
+  { title: 'Herz & Kreislauf', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/ekg/', name: 'EKG & Langzeit-EKG', text: 'Wie die Herzstromkurve aufgezeichnet wird, was sie zeigt und wo ihre Grenzen liegen.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/', name: 'Echo­kardiografie', text: 'Der Herzultraschall: Pumpfunktion, Herzklappen und Blutfluss im bewegten Bild.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/langzeit-blutdruckmessung/', name: '24h-Blutdruck­messung', text: 'Das Blutdruckprofil über Tag und Nacht, aussagekräftiger als jede Einzelmessung.' },
+  ]},
+  { title: 'Nerven & Gehirn', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', name: 'Nervenleitmessung (NLG)', text: 'Wie gut leiten deine Nerven? Standard bei Kribbeln, Taubheit und Karpaltunnel-Verdacht.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/eeg/', name: 'EEG', text: 'Die Hirnströme im Bild: schmerzfrei, ohne Strahlung, wichtig bei Anfalls-Abklärungen.' },
+  ]},
+  { title: 'Lunge, Schlaf & Atmung', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', name: 'Lungenfunktion (Spirometrie)', text: 'Wie viel Luft, wie schnell: der Basistest bei Husten, Atemnot und Asthma-Verdacht.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/', name: 'Schlaflabor', text: 'Eine Nacht unter Messung: Atmung, Sauerstoff, Schlafphasen und Bewegungen.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/blutgasanalyse/', name: 'Blutgasanalyse', text: 'Sauerstoff, CO2 und Säure-Basen-Haushalt: die Schnellanalyse bei Atem- und Stoffwechselfragen.' },
+  ]},
+  { title: 'Magen & Darm', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', name: 'Gastroskopie (Magenspiegelung)', text: 'Der direkte Blick in Speiseröhre und Magen: Vorbereitung, Sedierung, Biopsien.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', name: 'Koloskopie (Darmspiegelung)', text: 'Vorsorge und Abklärung: Darmvorbereitung, Ablauf, Polypenentfernung und was danach gilt.' },
+  ]},
+  { title: 'Labor, Allergie & Gehör', leaves: [
+    { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', name: 'Grosses Blutbild', text: 'Welche Werte dazugehören, wann es sinnvoll ist und wie auffällige Werte eingeordnet werden.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/allergietest/', name: 'Allergietest', text: 'Pricktest, Bluttest und Epikutantest: wie eine Allergie abgeklärt wird und was Resultate bedeuten.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/hoertest/', name: 'Hörtest (Audiometrie)', text: 'Ton- und Sprachaudiometrie: wie das Hören gemessen wird und was das Audiogramm grob zeigt.' },
+  ]},
 ];
 ---
 <LayoutDe title={title} description={metaDesc} path={path} schema={schema}>
@@ -53,15 +77,20 @@ const leaves = [
 
   <section class="section" style="padding-top:0">
     <div class="wrap narrow">
-      <div class="leaf-grid">
-        {leaves.map((l) => (
-          <a class="leaf-card" href={l.href}>
-            <div class="leaf-name">{l.name}</div>
-            <p class="leaf-text">{l.text}</p>
-            <span class="leaf-more">Zur Erklärung →</span>
-          </a>
-        ))}
-      </div>
+      {groups.map((g) => (
+        <div class="leaf-group">
+          <h2 class="group-heading">{g.title}</h2>
+          <div class="leaf-grid">
+            {g.leaves.map((l) => (
+              <a class="leaf-card" href={l.href}>
+                <div class="leaf-name">{l.name}</div>
+                <p class="leaf-text">{l.text}</p>
+                <span class="leaf-more">Zur Erklärung →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
 
       <div class="more">
         <h2 class="group-title">Und danach?</h2>
@@ -81,10 +110,12 @@ const leaves = [
   .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
   h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
   .hero .lead { font-size: 18px; line-height: 1.6; color: var(--mid); }
+  .leaf-group { margin-bottom: 36px; }
+  .group-heading { font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 14px; letter-spacing: var(--tracking-heading); }
   .leaf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
   .leaf-card { display: block; background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: var(--r-card); padding: 20px; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
   .leaf-card:hover { border-color: rgba(45,155,111,.45); transform: translateY(-2px); }
-  .leaf-name { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .leaf-name { font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 6px; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
   .leaf-text { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 12px; }
   .leaf-more { font-size: 14px; font-weight: 700; color: var(--blue); }
   .more { margin-top: 40px; }

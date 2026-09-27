@@ -1309,6 +1309,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen schwere Beine am Abend?', a: 'Regelmässige Bewegungspausen, aktive Wadenmuskulatur, zeitweises Hochlagern und kühle Duschen der Unterschenkel. Wenn die Beschwerden trotzdem regelmässig auftreten oder Venenveränderungen sichtbar sind, lohnt sich eine ärztliche Venenbeurteilung.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', label: 'Duplexsonografie: der Gefäss-Ultraschall', cat: 'Untersuchung' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
       { href: '/beschwerden/durchblutungsstoerungen/', label: 'Durchblutungsstörungen', cat: 'Beschwerde' },
       { href: '/therapien/physiotherapie/', label: 'Physiotherapie', cat: 'Therapie' },
@@ -2557,6 +2558,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Leidet dein Schlaf insgesamt, findest du mehr auf der Seite <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a>. Ein trockener Mund beim Aufwachen ist ein häufiger Begleiter der Mundatmung, siehe <a href="/koerpersignale/trockener-mund-nachts/">Trockener Mund nachts</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/', label: 'Schlaflabor: Was passiert bei der Untersuchung?', cat: 'Untersuchung' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
       { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
@@ -3417,6 +3419,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ein dumpfes Ohr rasch abgeklärt werden?', a: 'Wenn das Hörvermögen auf einem Ohr plötzlich deutlich schlechter wird, besonders zusammen mit Ohrgeräuschen, Schwindel, starkem Druckgefühl oder neurologischen Beschwerden.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hoertest/', label: 'Hörtest: Wie läuft eine Audiometrie ab?', cat: 'Untersuchung' },
       { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
       { href: '/koerpersignale/druck-auf-den-ohren/', label: 'Druck auf den Ohren', cat: 'Körpersignal' },
       { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },

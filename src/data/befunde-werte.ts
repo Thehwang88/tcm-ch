@@ -151,6 +151,9 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
     ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/', label: 'Szintigrafie (z. B. der Schilddrüse)' },
+    ],
   },
   {
     slug: 'leukozyten-erhoeht',
@@ -735,6 +738,9 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
     ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/knochendichtemessung/', label: 'Knochendichtemessung (DEXA)' },
+    ],
   },
   {
     slug: 'vitamin-b12-zu-niedrig',
@@ -919,6 +925,9 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten erhöht: Was bedeutet das?' },
       { href: '/gesundheitsbibliothek/befunde-werte/basophile-erhoeht/', label: 'Basophile erhöht: Was bedeutet das?' },
       { href: '/gesundheitsbibliothek/befunde-werte/monozyten-erhoeht/', label: 'Monozyten erhöht: Was bedeutet das?' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/allergietest/', label: 'Allergietest: Ablauf und Methoden' },
     ],
   },
   {
@@ -2147,6 +2156,9 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/langzeit-blutdruckmessung/', label: '24-Stunden-Blutdruckmessung' },
     ],
   },
   {

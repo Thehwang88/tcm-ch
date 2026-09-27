@@ -57,6 +57,16 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'koloskopie', name: 'Koloskopie', short: 'Darmspiegelung zur Vorsorge und Abklärung: Vorbereitung, Ablauf und Polypenentfernung.', href: '/gesundheitsbibliothek/untersuchungen/koloskopie/' },
   { id: 'ct', name: 'CT (Computertomografie)', short: 'Schnittbilder in Sekunden: stark bei Knochen, Lunge und Notfalldiagnostik.', href: '/gesundheitsbibliothek/untersuchungen/ct/' },
   { id: 'lungenfunktion', name: 'Lungenfunktion (Spirometrie)', short: 'Misst Luftmenge und Luftfluss: der Basistest bei Husten, Atemnot und Asthma-Verdacht.', href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/' },
+  { id: 'echokardiografie', name: 'Echokardiografie', short: 'Der Herzultraschall: Pumpfunktion, Herzklappen und Blutfluss im bewegten Bild.', href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/' },
+  { id: 'langzeit-blutdruckmessung', name: '24h-Blutdruckmessung', short: 'Das Blutdruckprofil über Tag und Nacht, aussagekräftiger als Einzelmessungen.', href: '/gesundheitsbibliothek/untersuchungen/langzeit-blutdruckmessung/' },
+  { id: 'schlaflabor', name: 'Schlaflabor', short: 'Polysomnografie: Atmung, Sauerstoff, Schlafphasen und Bewegungen über eine ganze Nacht.', href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/' },
+  { id: 'eeg', name: 'EEG', short: 'Zeichnet die Hirnströme auf: schmerzfrei, ohne Strahlung, zentral bei Anfalls-Abklärungen.', href: '/gesundheitsbibliothek/untersuchungen/eeg/' },
+  { id: 'blutgasanalyse', name: 'Blutgasanalyse', short: 'Sauerstoff, CO2 und Säure-Basen-Haushalt: die Schnellanalyse bei Atem- und Stoffwechselfragen.', href: '/gesundheitsbibliothek/untersuchungen/blutgasanalyse/' },
+  { id: 'knochendichtemessung', name: 'Knochendichtemessung (DEXA)', short: 'Misst die Stabilität der Knochen, etwa bei Osteoporose-Risiko, mit sehr wenig Strahlung.', href: '/gesundheitsbibliothek/untersuchungen/knochendichtemessung/' },
+  { id: 'allergietest', name: 'Allergietest', short: 'Pricktest, Bluttest und Epikutantest: wie eine Allergie abgeklärt wird.', href: '/gesundheitsbibliothek/untersuchungen/allergietest/' },
+  { id: 'hoertest', name: 'Hörtest (Audiometrie)', short: 'Ton- und Sprachaudiometrie: wie das Hören gemessen und eingeordnet wird.', href: '/gesundheitsbibliothek/untersuchungen/hoertest/' },
+  { id: 'szintigrafie', name: 'Szintigrafie', short: 'Nuklearmedizin mit Tracer und Gammakamera: zeigt die Funktion von Schilddrüse, Knochen und mehr.', href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/' },
+  { id: 'duplexsonografie', name: 'Duplexsonografie', short: 'Der Gefäss-Ultraschall: Venen, Arterien und Blutfluss in Echtzeit.', href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/' },
 ];
 
 export interface BodyRegion {

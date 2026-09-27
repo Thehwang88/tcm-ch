@@ -1,0 +1,132 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/hoertest';
+const url = `https://tcm.ch${path}/`;
+const title = 'Hörtest (Audiometrie): Ablauf und Ergebnisse';
+const description = 'Wie ein professioneller Hörtest abläuft: Tonaudiometrie, Sprachaudiometrie, was das Audiogramm grob zeigt und wann eine HNO-Abklärung sinnvoll ist.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Hörtest', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/dumpfes-gefuehl-im-ohr/', label: 'Dumpfes Gefühl im Ohr' },
+  { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft' },
+  { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr hören' },
+];
+const rel2Links = [
+  { href: '/beschwerden/tinnitus/', label: 'Tinnitus' },
+  { href: '/beschwerden/hoersturz/', label: 'Hörsturz' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Hörtest</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Hörtest: Wie läuft eine Audiometrie ab?</h1>
+        <p class="lead">Ohren zu, Gesprächen folgen strengt an, oder ein Ohrgeräusch ist neu dazugekommen: Der Hörtest misst präzise, was du hörst. Hier erfährst du, wie Ton- und Sprachaudiometrie ablaufen und was die Kurven grob bedeuten.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Audiometrie ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Wann ist ein Hörtest sinnvoll?</h2>
+          <p>Typische Anlässe: Du verstehst Gespräche in Gruppen oder bei Nebengeräuschen schlechter, drehst den Fernseher lauter, ein Ohr fühlt sich <a href="/koerpersignale/dumpfes-gefuehl-im-ohr/">dumpf</a> oder <a href="/koerpersignale/ohr-einseitig-verstopft/">einseitig verstopft</a> an, oder ein Ohrgeräusch wie <a href="/beschwerden/tinnitus/">Tinnitus</a> ist neu aufgetreten. Wichtig: Eine plötzliche Hörminderung gehört zeitnah in die HNO-Praxis, siehe <a href="/beschwerden/hoersturz/">Hörsturz</a>.</p>
+          <h2>Tonaudiometrie: die Hörschwellen</h2>
+          <p>Im schallgeschützten Raum bekommst du Kopfhörer und drückst einen Knopf, sobald du einen Ton hörst. Getestet werden verschiedene Tonhöhen bei abnehmender Lautstärke, für jedes Ohr einzeln. Zusätzlich wird oft ein kleiner Hörer hinter das Ohr gesetzt, der den Schall direkt über den Knochen ans Innenohr leitet. Aus beiden Messungen entsteht das Audiogramm: eine Kurve deiner Hörschwellen.</p>
+          <h2>Sprachaudiometrie: Verstehen statt nur Hören</h2>
+          <p>Weil Alltagshören vor allem Sprachverstehen ist, wird oft ergänzend geprüft, wie viele Wörter oder Zahlen du bei verschiedenen Lautstärken korrekt wiederholst. Das zeigt, wie sich eine Hörminderung praktisch auswirkt, und hilft bei der Frage, ob ein Hörgerät etwas bringen würde.</p>
+          <h2>Was zeigen die Ergebnismuster, grob?</h2>
+          <p>Vereinfacht unterscheidet die HNO-Ärztin oder der HNO-Arzt zwei Muster: Liegt das Problem bei der Schallübertragung (etwa Ohrenschmalz, Mittelohrerguss, Belüftungsstörung), hört das Innenohr über den Knochen deutlich besser als über die Luft. Liegt es im Innenohr oder Hörnerv (etwa altersbedingte Hörminderung, Lärmschaden), sind beide Wege ähnlich betroffen. Welche Ursache bei dir vorliegt, lässt sich aus den Kurven allein nicht selbst ablesen; dafür gehören Ohrmikroskopie und ärztliche Beurteilung dazu.</p>
+          <h2>Vorbereitung und Dauer</h2>
+          <p>Eine Vorbereitung braucht es nicht; die Messungen dauern zusammen etwa 15 bis 30 Minuten und sind völlig schmerzfrei. Sag der Fachperson, wenn du einen Infekt hattest oder ein Ohrgeräusch besteht, das beeinflusst die Einordnung.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Hörminderung und neue Ohrgeräusche gehören zuerst in die HNO-Abklärung, ein plötzlicher Hörverlust sogar dringlich. Nach der Abklärung kann bei Tinnitus mit starker Stress- und Verspannungskomponente eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> ergänzend eingesetzt werden; was sie bei <a href="/beschwerden/tinnitus/">Tinnitus</a> realistisch leisten kann, ordnen wir dort ehrlich ein.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Ohr-Signale, die zum Hörtest führen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Ohren abgeklärt, Tinnitus bleibt?</div>
+          <p>Wenn die HNO-Abklärung gemacht ist und Stress das Ohrgeräusch verstärkt, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

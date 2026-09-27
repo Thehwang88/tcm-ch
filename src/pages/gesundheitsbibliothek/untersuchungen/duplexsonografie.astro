@@ -1,0 +1,140 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Kind der generischen Ultraschall-Seite (Umbrella bleibt Owner); besitzt nur den
+// Gefaess-Ultraschall-Intent (duplexsonografie, doppler ultraschall).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/duplexsonografie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Duplexsonografie: Ablauf des Gefäss-Ultraschalls';
+const description = 'Wie die Duplexsonografie Venen und Arterien untersucht: Doppler-Prinzip, typische Einsatzgebiete von Thromboseverdacht bis Halsschlagader und die Grenzen der Methode.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Duplexsonografie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/schwere-beine-abends/', label: 'Schwere Beine am Abend' },
+  { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts' },
+  { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Kribbeln in den Beinen nachts' },
+];
+const rel2Links = [
+  { href: '/beschwerden/schwere-beine/', label: 'Schwere Beine' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall (Übersicht)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/', label: 'Echokardiografie' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Duplexsonografie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Duplexsonografie: Was zeigt der Gefäss-Ultraschall?</h1>
+        <p class="lead">Schwere Beine, Krampfadern, Thromboseverdacht oder die Kontrolle der Halsschlagadern: Die Duplexsonografie macht Gefässe und ihren Blutfluss sichtbar, in Echtzeit und ohne Strahlung.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Duplexsonografie ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Duplexsonografie?</h2>
+          <p>Die Duplexsonografie kombiniert zwei Dinge: das normale <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschallbild</a>, das die Gefässwand und das umliegende Gewebe zeigt, und die Doppler-Messung, die den Blutfluss hörbar und farbig sichtbar macht. So sieht die Ärztin oder der Arzt gleichzeitig, wie ein Gefäss aussieht und wie das Blut darin fliesst, in welche Richtung und wie schnell.</p>
+          <h2>Wann wird sie gemacht?</h2>
+          <ul>
+            <li><strong>Beinvenen:</strong> bei Verdacht auf eine Thrombose (einseitig geschwollenes, schmerzendes Bein: zeitnah abklären!), bei Krampfadern oder <a href="/beschwerden/schwere-beine/">schweren Beinen</a>.</li>
+            <li><strong>Halsschlagadern:</strong> zur Frage nach Verkalkungen und Engstellen, etwa im Rahmen der Gefäss-Vorsorge.</li>
+            <li><strong>Beinarterien:</strong> bei Durchblutungsstörungen, etwa Schmerzen beim Gehen.</li>
+            <li><strong>Vor Eingriffen:</strong> zur Planung von Krampfader- oder Gefässbehandlungen.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Wie beim normalen Ultraschall: Gel auf die Haut, Schallkopf auf die Gefässregion, du liegst oder stehst je nach Fragestellung. Bei Venenuntersuchungen drückt die Fachperson die Venen sanft zusammen oder bittet dich zu pressen, um Klappenfunktion und Durchgängigkeit zu prüfen. Die Untersuchung dauert etwa 15 bis 30 Minuten, ist schmerzfrei, ohne Strahlung und ohne Vorbereitung.</p>
+          <h2>Was zeigt sie und was nicht?</h2>
+          <p>Gut beurteilen lassen sich: Durchgängigkeit von Venen, Funktion der Venenklappen, Engstellen und Verkalkungen in Arterien sowie die Flussgeschwindigkeit als Mass für eine Verengung. Grenzen hat die Methode bei sehr tief liegenden Gefässen und bei viel Darmgas, etwa im Bauchraum; dort können <a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a>- oder <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>-Angiografien übernehmen. Ein unauffälliger Befund ist eine Momentaufnahme und ersetzt bei neuen Symptomen keine erneute Abklärung.</p>
+          <h2>Wie werden Resultate eingeordnet?</h2>
+          <p>Leichte Wandveränderungen sind mit zunehmendem Alter häufig und für sich kein Alarmbefund. Was ein Resultat für dich bedeutet, von „nur beobachten" bis behandlungsbedürftig, ordnet die Angiologin oder der Angiologe zusammen mit Risikofaktoren und Beschwerden ein.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Gefässdiagnostik ist ärztliche Sache, und ein Thromboseverdacht gehört sofort in ärztliche Hände, nicht auf die Behandlungsliege. Sind die Gefässe abgeklärt und bleiben funktionelle Beschwerden wie müde, <a href="/koerpersignale/schwere-beine-abends/">schwere Beine am Abend</a>, kann ergänzend eine <a href="/therapien/massage/medizinische-massage/">medizinische Massage</a> oder <a href="/therapien/akupunktur/">Akupunktur</a> Teil des Plans sein.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, bei denen Gefässfragen auftauchen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden & Untersuchungen"
+          title="Passende Seiten"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Gefässe abgeklärt, Beine weiter schwer?</div>
+          <p>Wenn die angiologische Abklärung unauffällig war und müde, schwere Beine bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

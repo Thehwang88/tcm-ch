@@ -1,0 +1,139 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/schlaflabor';
+const url = `https://tcm.ch${path}/`;
+const title = 'Schlaflabor: Ablauf, Messungen und Auswertung';
+const description = 'Was im Schlaflabor passiert: Polysomnografie, Sensoren für Atmung, Sauerstoff und Schlafphasen, Heim-Schlafmessung im Vergleich und wie die Resultate besprochen werden.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Schlaflabor', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/schnarchen-jede-nacht/', label: 'Schnarchen jede Nacht' },
+  { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen' },
+  { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts' },
+];
+const rel2Links = [
+  { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme' },
+  { href: '/beschwerden/restless-legs/', label: 'Restless Legs' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Schlaflabor</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Schlaflabor: Was passiert bei der Untersuchung?</h1>
+        <p class="lead">Lautes Schnarchen mit Atempausen, ausgeprägte Tagesmüdigkeit oder hartnäckig gestörter Schlaf: Im Schlaflabor wird eine ganze Nacht Schlaf vermessen. Hier erfährst du, was die Sensoren erfassen und wie es danach weitergeht.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Schlaflabor-Untersuchung ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Polysomnografie?</h2>
+          <p>Die Untersuchung im Schlaflabor heisst Polysomnografie: Während du schläfst, zeichnen Sensoren gleichzeitig Hirnströme (Schlafphasen), Atmung an Nase und Brustkorb, Sauerstoffsättigung, Herzfrequenz, Beinbewegungen sowie Körperlage auf, meist ergänzt durch eine Videoaufzeichnung. So entsteht ein vollständiges Bild davon, was dein Körper nachts tatsächlich macht.</p>
+          <h2>Wann ist ein Schlaflabor sinnvoll?</h2>
+          <ul>
+            <li><strong>Verdacht auf Schlafapnoe:</strong> etwa bei lautem, unregelmässigem <a href="/koerpersignale/schnarchen-jede-nacht/">Schnarchen jede Nacht</a> mit beobachteten Atempausen und Tagesmüdigkeit. Wichtig: Aus Symptomen allein lässt sich eine Schlafapnoe nicht diagnostizieren, dafür braucht es die Messung.</li>
+            <li><strong>Ausgeprägte Tagesschläfrigkeit</strong> trotz genügend Schlafzeit.</li>
+            <li><strong>Unklare Schlafstörungen:</strong> wenn <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a> trotz Abklärung und Verhaltensmassnahmen unerklärt bleiben.</li>
+            <li><strong>Auffällige Bewegungen im Schlaf:</strong> etwa bei Verdacht auf <a href="/beschwerden/restless-legs/">Restless Legs</a> oder ungewöhnliches nächtliches Verhalten.</li>
+          </ul>
+          <h2>Wie läuft die Nacht ab?</h2>
+          <p>Du kommst am Abend ins Schlaflabor und beziehst ein normales Zimmer. Fachpersonen kleben die Elektroden und Sensoren an Kopf, Gesicht, Brustkorb und Beinen; das dauert eine Weile, tut aber nicht weh. Danach schläfst du möglichst normal, während die Signale nebenan überwacht werden. Am Morgen werden die Sensoren entfernt, und du kannst deinem Tag normal nachgehen. Dass man verkabelt etwas schlechter schläft als zu Hause, ist bekannt und in der Auswertung berücksichtigt.</p>
+          <h2>Heim-Schlafmessung oder Schlaflabor?</h2>
+          <p>Bei klarem Verdacht auf Schlafapnoe reicht oft eine ambulante Messung zu Hause mit einem vereinfachten Gerät (respiratorische Polygrafie): weniger Sensoren, dafür die gewohnte Umgebung. Das volle Schlaflabor kommt zum Zug, wenn die Heimmessung nicht eindeutig ist, andere Schlafstörungen infrage kommen oder die Schlafphasen selbst gemessen werden müssen. Welche Stufe sinnvoll ist, entscheidet die schlafmedizinische Sprechstunde.</p>
+          <h2>Vorbereitung</h2>
+          <p>Meist gilt: am Untersuchungstag auf Mittagsschlaf und übermässig Koffein verzichten, Haare gewaschen und ohne Styling-Produkte, gewohnte Medikamente nur nach Absprache verändern, nie eigenmächtig. Die konkreten Instruktionen bekommst du vom Schlaflabor.</p>
+          <h2>Wie geht es mit den Resultaten weiter?</h2>
+          <p>Die Aufzeichnung wird fachärztlich ausgewertet: Schlafphasen, Atempausen pro Stunde, Sauerstoffverlauf, Beinbewegungen. Das Resultat wird in einer Sprechstunde besprochen, samt allfälliger Therapieempfehlung, von Schlafhygiene über Lagerungs- und Zahnschienen bis zur CPAP-Maske. Was für dich passt, ist ein ärztlicher Entscheid im Gespräch.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Eine unbehandelte Schlafapnoe ist ein medizinisches Thema, keines für die Behandlungsliege. Ist sie ausgeschlossen oder behandelt und bleibt der Schlaf stress- und anspannungsbedingt schlecht, kann ergänzend eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> mit Fokus auf Anspannung und Schlafqualität sinnvoll sein; erste Selbsthilfe für akute Nächte findest du unter <a href="/gesundheitsbibliothek/was-jetzt/schlafprobleme-heute-nacht/">Was tun bei Schlafproblemen heute Nacht?</a></p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale, die im Schlaflabor abgeklärt werden"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Beschwerdebilder"
+          links={rel2Links}
+          allHref="/beschwerden/"
+          allLabel="Beschwerden A-Z"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Schlaf abgeklärt und trotzdem unruhig?</div>
+          <p>Wenn die schlafmedizinische Abklärung gemacht ist und Anspannung den Schlaf weiter stört, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

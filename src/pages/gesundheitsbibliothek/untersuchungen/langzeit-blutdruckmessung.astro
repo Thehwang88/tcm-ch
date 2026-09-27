@@ -1,0 +1,133 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Grenzen: /beschwerden/bluthochdruck/ = Erkrankung, befunde-werte/blutdruck-140-90/ =
+// Einzelmesswert, diese Seite = Untersuchungsmethode.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/langzeit-blutdruckmessung';
+const url = `https://tcm.ch${path}/`;
+const title = '24-Stunden-Blutdruckmessung: Ablauf und Auswertung';
+const description = 'Wie die Langzeit-Blutdruckmessung über 24 Stunden abläuft, warum sie aussagekräftiger ist als Einzelwerte und was Praxis- und maskierte Hypertonie bedeuten.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: '24h-Blutdruckmessung', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet das?' },
+];
+const rel2Links = [
+  { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG & Langzeit-EKG' },
+  { href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/', label: 'Echokardiografie' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">24h-Blutdruckmessung</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>24-Stunden-Blutdruckmessung: Wie läuft sie ab?</h1>
+        <p class="lead">Ein einzelner Messwert ist eine Momentaufnahme; die Langzeit-Blutdruckmessung zeigt, was dein Blutdruck über Tag und Nacht wirklich macht. So läuft die Messung ab, und so werden die Resultate ausgewertet.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Langzeit-Blutdruckmessung ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine 24-Stunden-Blutdruckmessung?</h2>
+          <p>Du trägst einen Tag lang eine Blutdruckmanschette am Oberarm, verbunden mit einem kleinen Messgerät am Gürtel. Die Manschette pumpt sich automatisch in Intervallen auf, tagsüber etwa alle 15 bis 30 Minuten, nachts seltener. So entsteht ein vollständiges Blutdruckprofil über 24 Stunden, statt einer einzelnen Momentaufnahme wie beim Praxiswert oder einem Messwert wie <a href="/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/">140/90</a>.</p>
+          <h2>Warum wiederholte Messungen wichtig sind</h2>
+          <p>Der Blutdruck schwankt ständig: mit Aktivität, Anspannung, Kaffee, Gesprächen und Tageszeit. Manche Menschen haben nur in der Arztpraxis erhöhte Werte (Weisskittel- oder Praxishypertonie), andere zeigen dort normale Werte, aber erhöhte im Alltag (maskierte Hypertonie). Beides lässt sich mit Einzelmessungen kaum unterscheiden; die Langzeitmessung ist deshalb ein Standardschritt, bevor die Diagnose <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a> gestellt oder eine Therapie angepasst wird.</p>
+          <h2>Wie läuft der Messtag ab?</h2>
+          <p>Das Gerät wird in der Praxis angelegt; danach gilt: <strong>möglichst normalen Alltag leben</strong>, denn genau den soll die Messung abbilden. Während der Messung den Arm ruhig hängen lassen, das verbessert die Qualität. Falls die Praxis ein kurzes Protokoll empfiehlt, notierst du Schlafenszeit, Aufstehen, besondere Belastungen oder Symptome; das hilft bei der Auswertung. Duschen geht mit dem Gerät nicht, das wird beim Anlegen besprochen.</p>
+          <h2>Wie werden die Resultate ausgewertet?</h2>
+          <p>Ausgewertet werden vor allem die Mittelwerte über den Tag, die Nacht und die vollen 24 Stunden sowie die Frage, ob der Blutdruck nachts wie erwartet absinkt. Für die Langzeitmessung gelten andere Grenzwerte als für Praxismessungen. Was dein Profil bedeutet und ob eine Behandlung oder Anpassung nötig ist, beurteilt die Ärztin oder der Arzt; ändere Blutdruckmedikamente nie aufgrund eigener Messwerte.</p>
+          <h2>Grenzen der Untersuchung</h2>
+          <p>Einzelne Messungen können fehlerhaft sein, etwa bei Bewegung während des Aufpumpens; die Auswertung berücksichtigt das. Und eine unruhige, untypische Nacht kann das Nachtprofil verfälschen; auch deshalb zählt das Gesamtbild, nicht der einzelne Wert.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die Blutdruck-Diagnostik und -Therapie gehören in ärztliche Hände. Ergänzend, nie ersetzend, kann bei stressverstärktem Blutdruckverhalten eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> mit Fokus auf Anspannung und Schlaf Teil des Gesamtplans sein; mehr zur Rolle der TCM steht beim Beschwerdebild <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a>.</p>
+        </div>
+
+        <LibraryRelated
+          label="Befunde & Werte"
+          title="Passende Messwert-Einordnungen"
+          links={rel1Links}
+          allHref="/gesundheitsbibliothek/befunde-werte/"
+          allLabel="Alle Befunde & Werte"
+        />
+        <LibraryRelated
+          label="Beschwerden & Untersuchungen"
+          title="Passende Seiten"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Blutdruck abgeklärt, Stress bleibt?</div>
+          <p>Wenn die ärztliche Abklärung läuft und Anspannung eine Rolle spielt, kann eine TCM-Behandlung ergänzend zur ärztlichen Therapie sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

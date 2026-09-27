@@ -1,0 +1,137 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/eeg';
+const url = `https://tcm.ch${path}/`;
+const title = 'EEG-Untersuchung: Ablauf und was sie misst';
+const description = 'Wie eine EEG-Untersuchung abläuft: Elektroden auf der Kopfhaut messen die Hirnströme, schmerzfrei und ohne Strahlung. Wann das EEG eingesetzt wird und wo seine Grenzen liegen.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'EEG', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/kribbeln-im-kopf/', label: 'Kribbeln im Kopf' },
+  { href: '/koerpersignale/augenflimmern/', label: 'Augenflimmern' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', label: 'MRT (MRI)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/', label: 'Schlaflabor' },
+  { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', label: 'Nervenleitmessung (NLG)' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">EEG</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>EEG-Untersuchung: Was messen die Hirnströme?</h1>
+        <p class="lead">Bei Verdacht auf Anfallsleiden, nach unklaren Bewusstseinsstörungen oder in der Schlafmedizin: Das EEG macht die elektrische Aktivität des Gehirns sichtbar, völlig schmerzfrei. So läuft die Untersuchung ab.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das EEG ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist ein EEG?</h2>
+          <p>Das Elektroenzephalogramm (EEG) zeichnet die elektrische Aktivität des Gehirns auf. Dafür werden viele kleine Elektroden mit einer Haube oder einzeln mit Kontaktpaste auf der Kopfhaut befestigt; sie messen nur, es fliesst kein Strom in den Kopf. Die Untersuchung ist schmerzfrei, ohne Strahlung und beliebig wiederholbar.</p>
+          <h2>Wann wird ein EEG gemacht?</h2>
+          <ul>
+            <li><strong>Nach unklaren Bewusstseinsverlusten oder Anfällen:</strong> zur Abklärung, ob eine Epilepsie infrage kommt.</li>
+            <li><strong>Bei unklaren Zuständen:</strong> etwa wiederholten Aussetzern, Verwirrtheitsepisoden oder ungewöhnlichen Attacken.</li>
+            <li><strong>In der Schlafmedizin:</strong> als Teil der Messung im <a href="/gesundheitsbibliothek/untersuchungen/schlaflabor/">Schlaflabor</a>, um Schlafphasen zu bestimmen.</li>
+            <li><strong>In Klinik und Intensivmedizin:</strong> zur Überwachung der Hirnfunktion.</li>
+          </ul>
+          <h2>Vorbereitung</h2>
+          <p>Komm mit frisch gewaschenen, trockenen Haaren ohne Gel oder Spray, damit die Elektroden gut haften. Meist sollst du ausgeschlafen sein; für bestimmte Fragestellungen wird gezielt ein Schlafentzugs-EEG angesetzt, dann bekommst du entsprechende Instruktionen von der neurologischen Praxis. Medikamente nimmst du normal weiter, sofern nichts anderes angeordnet ist.</p>
+          <h2>Wie läuft die Aufzeichnung ab?</h2>
+          <p>Du sitzt oder liegst entspannt mit geschlossenen Augen, die Aufzeichnung dauert meist 20 bis 30 Minuten. Dazu gehören oft zwei harmlose Provokationen: einige Minuten vertieftes Atmen und Blitzlichtreize mit einer Lampe, weil beides bestimmte EEG-Veränderungen sichtbarer machen kann. Sag vorher, wenn dir dabei unwohl wird.</p>
+          <h2>Was kann das EEG zeigen und was nicht?</h2>
+          <p>Das EEG ist eine Momentaufnahme der Hirnaktivität. Es kann typische Veränderungen zeigen, die zu einer Epilepsie passen, oder Verlangsamungen der Aktivität. Es kann aber nicht jede neurologische Erkrankung erkennen: Ein normales EEG schliesst eine Epilepsie nicht aus, und einzelne Auffälligkeiten kommen auch bei Menschen vor, die nie einen Anfall haben. <strong>Ein auffälliges EEG ist deshalb keine automatische Diagnose</strong>; die Einordnung gehört zusammen mit Vorgeschichte, Untersuchung und oft weiterer Bildgebung wie dem <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> in neurologische Hände.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Wenig, bewusst: Unklare Bewusstseinsstörungen und Anfälle sind neurologische Abklärungsthemen, keine TCM-Indikation. Relevant wird die Behandlung höchstens danach und ergänzend, etwa bei stressassoziierten Beschwerden wie Anspannung und Schlafstörungen, immer parallel zur ärztlichen Betreuung, nie als Ersatz.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Signale rund um Kopf und Nerven"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Neurologisch abgeklärt, Anspannung bleibt?</div>
+          <p>Wenn die Abklärung gemacht ist und stressbedingte Beschwerden wie Verspannung oder schlechter Schlaf bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

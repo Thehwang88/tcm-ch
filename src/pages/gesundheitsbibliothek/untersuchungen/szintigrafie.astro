@@ -1,0 +1,139 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Genereller Owner; organspezifische Kinder (Schilddruesen-/Knochen-/Herzszintigrafie)
+// bewusst NICHT erstellt - erst bei Suchsignal als Children.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/szintigrafie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Szintigrafie: Ablauf, Einsatz und Strahlenbelastung';
+const description = 'Wie eine Szintigrafie funktioniert: schwach radioaktiver Tracer, Gammakamera, typische Einsatzgebiete von Schilddrüse bis Knochen und die Strahlenbelastung im Verhältnis.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Szintigrafie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht' },
+  { href: '/gesundheitsbibliothek/befunde-werte/tsh-niedrig/', label: 'TSH zu niedrig' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+  { href: '/gesundheitsbibliothek/untersuchungen/knochendichtemessung/', label: 'Knochendichtemessung (DEXA)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ct/', label: 'CT (Computertomografie)' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Szintigrafie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Szintigrafie: Wie funktioniert die nuklearmedizinische Untersuchung?</h1>
+        <p class="lead">Ob Schilddrüse, Knochen oder Herz: Die Szintigrafie zeigt nicht nur, wie ein Organ aussieht, sondern wie es arbeitet. Hier erfährst du, wie Tracer und Gammakamera zusammenspielen und wie die Strahlenbelastung einzuordnen ist.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Szintigrafie ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+
+          <h2>Was ist eine Szintigrafie?</h2>
+          <p>Die Szintigrafie ist eine nuklearmedizinische Untersuchung: Du bekommst eine kleine Menge einer schwach radioaktiv markierten Substanz (Tracer), meist über die Vene. Der Tracer reichert sich je nach Untersuchung in bestimmten Geweben an, und eine Gammakamera macht diese Verteilung als Bild sichtbar. Anders als <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgen</a> oder <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>, die vor allem die Struktur zeigen, bildet die Szintigrafie die <strong>Funktion</strong> ab: wo Stoffwechsel stattfindet, wo viel oder wenig Aktivität ist.</p>
+          <h2>Wofür wird sie eingesetzt?</h2>
+          <ul>
+            <li><strong>Schilddrüse:</strong> um zu prüfen, ob Knoten Hormone produzieren, oft zusammen mit Ultraschall und Werten wie <a href="/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/">TSH</a>.</li>
+            <li><strong>Knochen:</strong> um aktive Prozesse im Skelett aufzuspüren, etwa Entzündungen, unklare Schmerzen oder Belastungsreaktionen.</li>
+            <li><strong>Herz und Lunge:</strong> Durchblutungs- und Belüftungsfragen in spezialisierten Zentren.</li>
+            <li><strong>Nieren und weitere Organe:</strong> Funktionsprüfungen je nach Fragestellung.</li>
+          </ul>
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Nach der Tracer-Gabe folgt je nach Untersuchung eine Wartezeit von Minuten bis einigen Stunden, bis sich die Substanz im Zielgewebe verteilt hat; bei Knochenaufnahmen sind es oft zwei bis drei Stunden. Die Aufnahme selbst ist schmerzfrei: Du liegst ruhig, während die Gammakamera über dir misst, meist 15 bis 45 Minuten. Die Vorbereitung ist je nach Untersuchung verschieden, etwa das Pausieren bestimmter Schilddrüsenmedikamente; massgeblich sind ausschliesslich die Instruktionen der nuklearmedizinischen Praxis.</p>
+          <h2>Wie viel Strahlung ist das?</h2>
+          <p>Die verwendeten Tracer haben kurze Halbwertszeiten und werden rasch ausgeschieden; viel Trinken nach der Untersuchung unterstützt das. Die Strahlendosis liegt je nach Untersuchung in einer ähnlichen Grössenordnung wie bei Röntgen- oder <a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a>-Untersuchungen und wird gegen den Nutzen der Fragestellung abgewogen. <strong>Wichtig: Eine Schwangerschaft oder Stillzeit musst du vor der Untersuchung immer angeben</strong>, dann wird die Untersuchung verschoben, angepasst oder eine Alternative gewählt.</p>
+          <h2>Wie werden die Bilder eingeordnet?</h2>
+          <p>Mehr- oder Minderanreicherungen des Tracers sind Hinweise, keine fertigen Diagnosen: Ein „heisser" Schilddrüsenknoten bedeutet etwas anderes als ein „kalter", und eine aktive Stelle im Knochen kann von einer Entzündung bis zur alten Verletzung vieles bedeuten. Die Einordnung übernimmt die Nuklearmedizin zusammen mit der zuweisenden Ärztin oder dem zuweisenden Arzt, im Kontext von Beschwerden, Labor und weiterer Bildgebung.</p>
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Direkt nichts: Die Szintigrafie gehört in die spezialisierte ärztliche Abklärung. Für unsere Arbeit zählt wie immer das Danach: Erst wenn die Abklärung abgeschlossen ist, lässt sich seriös beurteilen, ob eine ergänzende <a href="/therapien/akupunktur/">TCM-Behandlung</a> bei verbleibenden funktionellen Beschwerden sinnvoll ist.</p>
+        </div>
+
+        <LibraryRelated
+          label="Befunde & Werte"
+          title="Werte, die oft zur Szintigrafie führen"
+          links={rel1Links}
+          allHref="/gesundheitsbibliothek/befunde-werte/"
+          allLabel="Alle Befunde & Werte"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Abklärung abgeschlossen?</div>
+          <p>Wenn die nuklearmedizinische Abklärung gemacht ist und funktionelle Beschwerden bleiben, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

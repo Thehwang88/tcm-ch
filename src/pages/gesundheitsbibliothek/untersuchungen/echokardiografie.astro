@@ -1,20 +1,21 @@
 ---
-// Untersuchungen & Diagnostik Leaf (Phase 2, 26.09.2026). Rein edukativ:
+// Untersuchungen & Diagnostik Leaf (Kohorte 2, 27.09.2026). Rein edukativ:
 // schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Eigene Herz-Untersuchungsseite; die generische Ultraschall-Seite bleibt Umbrella-Owner.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
 import LibraryRelated from '../../../components/LibraryRelated.astro';
 
-const path = '/gesundheitsbibliothek/untersuchungen/ekg';
+const path = '/gesundheitsbibliothek/untersuchungen/echokardiografie';
 const url = `https://tcm.ch${path}/`;
-const title = 'EKG & Langzeit-EKG: Ablauf und was die Kurve zeigt';
-const description = 'Wie ein EKG abläuft, wann ein Langzeit-EKG sinnvoll ist, was die Herzstromkurve zeigen kann und warum ein unauffälliges EKG nicht alles ausschliesst.';
+const title = 'Echokardiografie: Was der Herzultraschall zeigt';
+const description = 'Wie der Herzultraschall (Echokardiografie) abläuft, was Pumpfunktion, Herzklappen und Doppler-Messung zeigen und wo die Grenzen der Untersuchung liegen.';
 
 const schema = [
   {
     '@context': 'https://schema.org', '@type': 'MedicalWebPage',
     '@id': `${url}#article`,
     name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
-    datePublished: '2026-09-26', dateModified: '2026-09-26',
+    datePublished: '2026-09-27', dateModified: '2026-09-27',
     author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
     publisher: {
       '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
@@ -27,7 +28,7 @@ const schema = [
       { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
       { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
       { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
-      { '@type': 'ListItem', position: 4, name: 'EKG', item: url },
+      { '@type': 'ListItem', position: 4, name: 'Echokardiografie', item: url },
     ],
   },
 ];
@@ -36,12 +37,10 @@ const rel1Links = [
   { href: '/koerpersignale/herzstolpern-in-ruhe/', label: 'Herzstolpern in Ruhe' },
   { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen' },
   { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen' },
-  { href: '/koerpersignale/schwindel-beim-aufstehen/', label: 'Schwindel beim Aufstehen' }
 ];
 const rel2Links = [
   { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
   { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout' },
-  { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme' }
 ];
 ---
 <LayoutDe title={title} description={description} path={path} schema={schema}>
@@ -53,43 +52,43 @@ const rel2Links = [
           <span aria-hidden="true">›</span>
           <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
           <span aria-hidden="true">›</span>
-          <span class="crumb-here">EKG</span>
+          <span class="crumb-here">Echokardiografie</span>
         </div>
         <div class="cat">Untersuchungen & Diagnostik</div>
-        <h1>EKG: Was zeigt die Aufzeichnung der Herzströme?</h1>
-        <p class="lead">Herzstolpern, Herzrasen oder einfach Routine: Das EKG ist die grundlegende Herzuntersuchung. Hier erfährst du, wie Ruhe- und Langzeit-EKG ablaufen, was die Kurve zeigen kann und wo ihre Grenzen liegen.</p>
+        <h1>Echokardiografie: Was zeigt der Herzultraschall?</h1>
+        <p class="lead">Nach einem auffälligen EKG, bei Atemnot, Herzgeräusch oder langjährigem Bluthochdruck: Der Herzultraschall zeigt das Herz in Bewegung. Hier erfährst du, wie die Untersuchung abläuft und was sie beurteilen kann.</p>
       </div>
     </section>
 
     <section class="section" style="padding-top:0">
       <div class="wrap narrow">
         <div class="kb-body">
-          <div class="info-note">Diese Seite dient der Orientierung. Das EKG ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
+          <div class="info-note">Diese Seite dient der Orientierung. Die Echokardiografie ist eine schulmedizinische Untersuchung und wird von Ärztinnen und Ärzten durchgeführt und beurteilt. <strong>TCM.ch bietet diese Untersuchung nicht an.</strong> Unsere Therapeutinnen und Therapeuten sagen dir aber ehrlich, wann eine solche Abklärung vor einer Behandlung sinnvoll ist.</div>
 
-          <h2>Was ist ein EKG?</h2>
-          <p>Das Elektrokardiogramm (EKG) zeichnet die elektrische Aktivität des Herzens auf. Jeder Herzschlag beginnt mit einem elektrischen Impuls; das EKG macht diesen Ablauf als Kurve sichtbar. Daraus lassen sich Herzrhythmus, Herzfrequenz und Hinweise auf verschiedene Herzprobleme ablesen.</p>
-          <h2>Warum wird ein EKG gemacht?</h2>
+          <h2>Was ist eine Echokardiografie?</h2>
+          <p>Die Echokardiografie ist ein <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> des Herzens: Über einen Schallkopf auf dem Brustkorb entsteht ein Live-Bild des schlagenden Herzens, ganz ohne Strahlung. Anders als das <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG</a>, das die elektrischen Signale aufzeichnet, zeigt der Herzultraschall die Struktur und Bewegung: Herzkammern, Herzklappen und die Pumpleistung.</p>
+          <h2>Wann wird sie gemacht?</h2>
           <ul>
-            <li><strong>Herzstolpern oder Herzrasen:</strong> etwa bei <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern in Ruhe</a> oder <a href="/koerpersignale/herzklopfen-im-liegen/">Herzklopfen im Liegen</a>.</li>
-            <li><strong>Brustschmerzen oder Atemnot:</strong> hier ist das EKG Teil der Notfall-Abklärung.</li>
-            <li><strong>Bluthochdruck:</strong> zur Verlaufskontrolle bei <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a>.</li>
-            <li><strong>Routine:</strong> vor Operationen oder bei Check-ups.</li>
+            <li><strong>Nach auffälligem EKG oder Herzgeräusch:</strong> zur genaueren Abklärung.</li>
+            <li><strong>Bei Atemnot oder Leistungsknick:</strong> um die Pumpfunktion zu beurteilen.</li>
+            <li><strong>Bei <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a>:</strong> um zu prüfen, ob das Herz auf die jahrelange Druckbelastung reagiert hat.</li>
+            <li><strong>Bei Herzklopfen und Herzstolpern:</strong> als Teil der Abklärung, wenn Anamnese und EKG Fragen offenlassen, etwa bei <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern in Ruhe</a>.</li>
           </ul>
           <h2>Wie läuft die Untersuchung ab?</h2>
-          <p>Beim Ruhe-EKG werden Klebeelektroden an Brustkorb, Armen und Beinen angebracht, während du entspannt liegst. Die Aufzeichnung selbst dauert nur wenige Minuten, ist völlig schmerzfrei und ohne Strahlung. Eine Vorbereitung braucht es nicht.</p>
-          <h2>Was ist ein Langzeit-EKG?</h2>
-          <p>Viele Rhythmusstörungen kommen anfallsweise und sind im kurzen Ruhe-EKG gerade nicht sichtbar. Dann wird ein Langzeit-EKG eingesetzt: ein kleines Gerät, das den Herzrhythmus über 24 Stunden bis mehrere Tage im Alltag aufzeichnet. Du führst dabei oft ein kurzes Protokoll, wann du Beschwerden gespürt hast; so lässt sich prüfen, ob das Gefühl mit einer messbaren Rhythmusveränderung zusammenfällt.</p>
-          <h2>Was kann das EKG zeigen und was nicht?</h2>
-          <p>Das EKG ist eine Momentaufnahme der Herzströme. Es kann Rhythmusstörungen, Leitungsprobleme und Hinweise auf einen Herzinfarkt zeigen. Es kann aber nicht alles ausschliessen: Ein unauffälliges Ruhe-EKG bedeutet nicht automatisch, dass das Herz gesund ist, besonders wenn Beschwerden nur anfallsweise auftreten oder unter Belastung. Je nach Fragestellung folgen deshalb Langzeit-EKG, Belastungs-EKG oder ein <a href="/gesundheitsbibliothek/untersuchungen/echokardiografie/">Herzultraschall (Echokardiografie)</a>.</p>
-          <h2>Wie werden Ergebnisse eingeordnet?</h2>
-          <p>Einzelne Extraschläge sind auch bei Herzgesunden häufig und im EKG dann als harmloser Befund erkennbar. Ob eine Veränderung behandlungsbedürftig ist, beurteilt die Ärztin oder der Arzt immer zusammen mit Beschwerden, Vorgeschichte und weiteren Untersuchungen, nie aus der Kurve allein.</p>
+          <p>Beim üblichen transthorakalen Herzultraschall liegst du auf der linken Seite, die Ärztin oder der Arzt setzt den Schallkopf mit etwas Gel an verschiedenen Stellen des Brustkorbs an. Die Untersuchung dauert etwa 20 bis 30 Minuten, tut nicht weh und braucht keine Vorbereitung. Du kannst danach sofort wieder in den Alltag.</p>
+          <h2>Das Doppler-Element: Blutfluss sichtbar machen</h2>
+          <p>Mit der Doppler-Technik wird der Blutfluss im Herzen farbig dargestellt und in seiner Geschwindigkeit gemessen. So lässt sich beurteilen, ob Herzklappen dicht schliessen und weit genug öffnen, und ob das Blut in die richtige Richtung fliesst. Undichte oder verengte Klappen werden so oft erst erkannt.</p>
+          <h2>Was kann sie zeigen und was nicht?</h2>
+          <p>Beurteilt werden vor allem: Grösse der Herzkammern, Dicke des Herzmuskels, Pumpfunktion, Klappenfunktion und der Herzbeutel. Die Herzkranzgefässe selbst sieht der Herzultraschall dagegen nicht direkt; bei Verdacht auf Durchblutungsstörungen folgen andere Untersuchungen, etwa ein Belastungstest, ein Herz-<a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a> oder eine Katheteruntersuchung. Auch anfallsweise Rhythmusstörungen bleiben Sache von <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG und Langzeit-EKG</a>.</p>
+          <h2>Wie werden Resultate eingeordnet?</h2>
+          <p>Viele Messwerte haben altersabhängige Normbereiche, und leichte Klappenundichtigkeiten sind auch bei Gesunden häufig. Was ein Befund für dich bedeutet, ordnet die Kardiologin oder der Kardiologe zusammen mit Beschwerden und Vorgeschichte ein; diese Seite ersetzt keine Diagnose.</p>
           <h2>Und was hat das mit TCM zu tun?</h2>
-          <p>Bei Herzsymptomen gilt bei uns eine klare Reihenfolge: zuerst die ärztliche Abklärung, dazu gehört oft das EKG. Zeigt sie, dass keine behandlungsbedürftige Herzerkrankung vorliegt, und bleibt zum Beispiel stressverstärktes Herzklopfen, kann eine <a href="/therapien/akupunktur/">TCM-Behandlung</a> ergänzend Teil des Plans sein, mit Fokus auf Anspannung und Schlaf. Herzbeschwerden mit Warnzeichen gehören immer zuerst in ärztliche Hände.</p>
+          <p>Herzsymptome gehören zuerst in die ärztliche Abklärung, und dazu kann der Herzultraschall gehören. Ist eine behandlungsbedürftige Herzerkrankung ausgeschlossen und bleibt stressverstärktes Herzklopfen, kann ergänzend eine <a href="/therapien/akupunktur/">Akupunktur-Behandlung</a> mit Fokus auf Anspannung und Schlaf Teil des Plans sein. Brustschmerz, Atemnot oder Ohnmacht sind Notfälle: Telefon 144.</p>
         </div>
 
         <LibraryRelated
           label="Körpersignale"
-          title="Signale, bei denen ein EKG oft zur Sprache kommt"
+          title="Signale, bei denen ein Herzultraschall zur Sprache kommt"
           links={rel1Links}
           allHref="/koerpersignale/"
           allLabel="Alle Körpersignale"
@@ -103,8 +102,8 @@ const rel2Links = [
         />
 
         <div class="cta-card">
-          <div class="cta-card-title">Herzklopfen abgeklärt und trotzdem unruhig?</div>
-          <p>Wenn die ärztliche Abklärung unauffällig war und Stress oder Schlaf das Herzklopfen verstärken, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
+          <div class="cta-card-title">Herz abgeklärt und trotzdem unruhig?</div>
+          <p>Wenn die kardiologische Abklärung unauffällig war und Stress das Herzklopfen verstärkt, kann eine TCM-Behandlung ergänzend sinnvoll sein. Wir sagen dir ehrlich, ob sie zu deiner Situation passt.</p>
           <div class="cta-row">
             <a class="btn btn--primary" href="/kontakt/">Termin anfragen</a>
             <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
