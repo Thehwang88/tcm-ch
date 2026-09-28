@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-27",
+  "generated": "2026-09-28",
   "totals": {
     "healthPages": 458,
     "byType": {
@@ -1880,7 +1880,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -1916,12 +1916,12 @@
     {
       "url": "/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/",
       "type": "question",
-      "title": "Müdigkeit nach Akupunktur: normal oder nicht? | TCM.ch",
+      "title": "Müde nach Akupunktur? Wie lange Müdigkeit normal sein kann | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 16,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/fragen/nach-der-behandlung/",
@@ -2090,7 +2090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 27,
       "outboundHealthLinks": 16
     },
     {
@@ -3046,7 +3046,7 @@
     {
       "url": "/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/",
       "type": "body_signal",
-      "title": "Druck im Kopf ohne Schmerzen: mögliche Ursachen | TCM.ch",
+      "title": "Druck im Kopf ohne Schmerzen: Ursachen &amp; wann abklären | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3086,7 +3086,7 @@
     {
       "url": "/koerpersignale/durchfall-am-morgen/",
       "type": "body_signal",
-      "title": "Jeden Morgen Durchfall? Ursachen und wann du abklären solltest | TCM.ch",
+      "title": "Jeden Morgen Durchfall: Ursachen vor oder nach dem Frühstück | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3196,7 +3196,7 @@
     {
       "url": "/koerpersignale/herzklopfen-nach-dem-essen/",
       "type": "body_signal",
-      "title": "Herzklopfen nach dem Essen: Was kann dahinterstecken? | TCM.ch",
+      "title": "Herzklopfen oder Herzrasen nach dem Essen: Ursachen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3246,7 +3246,7 @@
     {
       "url": "/koerpersignale/juckreiz-nachts-ohne-ausschlag/",
       "type": "body_signal",
-      "title": "Juckreiz nachts ohne Ausschlag: Ursachen | TCM.ch",
+      "title": "Juckreiz nachts am ganzen Körper ohne Ausschlag: Ursachen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3296,7 +3296,7 @@
     {
       "url": "/koerpersignale/knie-knackt-ohne-schmerzen/",
       "type": "body_signal",
-      "title": "Knie knackt ohne Schmerzen: Muss ich mir Sorgen machen? | TCM.ch",
+      "title": "Knie knackt beim Beugen oder Strecken – ohne Schmerzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3306,7 +3306,7 @@
     {
       "url": "/koerpersignale/kopfdruck-beim-buecken/",
       "type": "body_signal",
-      "title": "Kopfschmerzen &amp; Kopfdruck beim Bücken: Ursachen | TCM.ch",
+      "title": "Druck im Kopf beim Bücken: Nebenhöhlen oder andere Ursache? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3346,7 +3346,7 @@
     {
       "url": "/koerpersignale/kribbeln-im-kopf/",
       "type": "body_signal",
-      "title": "Kribbeln im Kopf oder auf der Kopfhaut: mögliche Ursachen | TCM.ch",
+      "title": "Kribbeln im Kopf &amp; auf der Kopfhaut: Ursachen und Warnzeichen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,

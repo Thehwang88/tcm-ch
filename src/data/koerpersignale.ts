@@ -24,6 +24,8 @@ export interface Koerpersignal {
   lead: string;
   readingTime: string;
   ctaTitle?: string;
+  ctaText?: string;
+  ctaLabel?: string;
   bodyHtml: string;
   faqs: KsFaq[];
   related: KsRelated[];
@@ -1045,15 +1047,17 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'knie-knackt-ohne-schmerzen',
     symptom: 'ein knackendes Knie ohne Schmerzen',
-    title: 'Knie knackt ohne Schmerzen: Muss ich mir Sorgen machen?',
-    metaDesc: 'Dein Knie knackt beim Treppensteigen oder Aufstehen, tut aber nicht weh? Erfahre, warum das häufig vorkommt und welche Zeichen du abklären solltest.',
+    title: 'Knie knackt beim Beugen oder Strecken – ohne Schmerzen',
+    metaDesc: 'Knie knackt beim Strecken, Beugen oder Treppensteigen, aber tut nicht weh? Warum das häufig harmlos ist und welche Zeichen trotzdem untersucht werden sollten.',
     h1: 'Warum knackt mein Knie, obwohl es nicht weh tut?',
     category: 'Muskeln & Beine',
     lead: 'Beim Aufstehen oder Treppensteigen knackt dein Knie hörbar, aber es tut nicht weh. Muss das behandelt werden? Meistens nicht. Hier erfährst du, woher die Geräusche kommen, was sie über Arthrose aussagen und welche Zeichen du ernst nehmen solltest.',
     readingTime: '5 Min.',
-    ctaTitle: 'Kniebeschwerden einordnen lassen?',
+    ctaTitle: 'Jetzt doch Schmerzen oder Unsicherheit im Knie?',
+    ctaText: 'Wenn aus dem Geräusch eine funktionelle Beschwerde geworden ist, können wir einschätzen, ob Physiotherapie, medizinische Abklärung oder eine ergänzende Behandlung sinnvoll ist.',
     author: AUTOR,
     ...DATEN3,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Ein Knie, das beim Aufstehen, Treppensteigen oder Beugen knackt, klingt manchmal dramatischer, als es ist. Wenn keine Schmerzen, Schwellung oder Instabilität dazukommen, ist ein Knacken oder Reiben häufig kein Zeichen dafür, dass das Knie behandelt werden muss.</p>
 <p>Entscheidend ist deshalb nicht nur das Geräusch. Entscheidend ist, wie sich das Knie dabei anfühlt und ob sich etwas verändert hat.</p>
@@ -1061,6 +1065,9 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Im Knie bewegen sich Knochen, Knorpel, Sehnen und andere Weichteile bei jeder Beugung gegeneinander. Dabei können verschiedene Geräusche entstehen. Medizinisch wird ein Reiben oder Knirschen häufig als Krepitation bezeichnet.</p>
 <p>Gerade rund um die Kniescheibe können Bewegungsgeräusche entstehen, ohne dass Schmerzen vorhanden sind. Auch Sehnen oder andere Weichteile können bei Bewegung hörbar über benachbarte Strukturen gleiten.</p>
 <p>Ein Geräusch allein erlaubt deshalb keine Diagnose.</p>
+<h2>Knie knackt beim Strecken oder Aufstehen</h2>
+<p>Wenn das Geräusch vor allem beim vollständigen Strecken, Aufstehen oder nach längerem Sitzen auftritt, ist das allein noch kein Zeichen für Gelenkverschleiss.</p>
+<p>Wichtiger ist, ob gleichzeitig Schmerzen, Schwellung, Instabilität oder ein echtes Blockieren bestehen.</p>
 <h2>Bedeutet Knacken, dass ich Arthrose habe?</h2>
 <p>Nein. <a href="/beschwerden/arthrose/">Arthrose</a> kann zwar mit Reibegeräuschen verbunden sein. Ein knackendes Knie ohne Schmerzen beweist aber keine Arthrose.</p>
 <p>Das ist wichtig, weil viele Menschen ein Geräusch hören und sofort an "Abnutzung" denken. Für die Einordnung zählen zusätzliche Beschwerden wie Belastungsschmerz, Schwellung, zunehmende Steifigkeit oder eingeschränkte Beweglichkeit deutlich stärker.</p>
@@ -1476,18 +1483,24 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'druck-im-kopf-ohne-kopfschmerzen',
     symptom: 'ein Druckgefühl im Kopf ohne richtigen Kopfschmerz',
-    title: 'Druck im Kopf ohne Schmerzen: mögliche Ursachen',
-    metaDesc: 'Druck im Kopf ohne Schmerzen? Ein Enge- oder Druckgefühl ohne richtigen Kopfschmerz ist häufig: Nebenhöhlen, Nacken- und Kieferspannung können eine Rolle spielen.',
+    title: 'Druck im Kopf ohne Schmerzen: Ursachen & wann abklären',
+    metaDesc: 'Druck oder Enge im Kopf ohne Kopfschmerzen? Nebenhöhlen, Nacken, Kiefer und andere Ursachen im Überblick, plus Warnzeichen und wann eine Abklärung sinnvoll ist.',
     h1: 'Warum habe ich Druck im Kopf, obwohl ich keine Kopfschmerzen habe?',
     category: 'Kopf & Sinne',
     lead: 'Es tut nicht richtig weh, aber im Kopf sitzt ein Gefühl von Druck, Enge oder Spannung: ein Druck im Kopf ohne Schmerzen, wie viele es beschreiben. Dieses Signal lässt sich schwer fassen und hat mehrere mögliche Erklärungen. Hier erfährst du, welche Muster typisch sind, was du beobachten kannst und welche Warnzeichen wichtig sind.',
     readingTime: '6 Min.',
-    ctaTitle: 'Kopfdruck und Verspannung einordnen lassen?',
+    ctaTitle: 'Kopfdruck kommt immer wieder?',
+    ctaText: 'Wenn keine akuten Warnzeichen bestehen, können wir gemeinsam sortieren, ob das Muster eher zu Nebenhöhlen, Nacken/Kiefer, Kopfschmerzen oder einer anderen Abklärung passt. Du musst nicht selbst entscheiden, welche Fachrichtung zuerst sinnvoll ist.',
+    ctaLabel: 'Erstgespräch anfragen',
     author: AUTOR,
     ...DATEN3,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Ein Druckgefühl im Kopf lässt sich nicht immer eindeutig als Kopfschmerz beschreiben. Manche Menschen spüren eher Enge, Spannung oder ein Gefühl von "zu viel Druck", ohne dass es richtig weh tut.</p>
 <p>Dafür gibt es keine einzelne typische Ursache. Je nach Ort und Begleitsymptomen können zum Beispiel Nebenhöhlen, Spannung im Kopf-, Nacken- oder Kieferbereich oder andere Faktoren eine Rolle spielen. Neu auftretender oder anhaltender Kopfdruck sollte deshalb anhand des Gesamtbildes beurteilt werden.</p>
+<h2>Wenn du „Druck", aber keinen eigentlichen Schmerz meinst</h2>
+<p>Genau dieses Muster beschreiben viele Menschen: kein klassischer Kopfschmerz, sondern eher Enge, Spannung, Schwere oder das Gefühl, dass im Kopf „Druck" besteht.</p>
+<p>Das ist medizinisch zunächst eine Beschreibung, keine Diagnose. Ort, Dauer, Lageabhängigkeit und Begleitsymptome helfen, das Muster einzuordnen.</p>
 <h2>Wo genau spürst du den Druck?</h2>
 <p>"Im Kopf" kann sehr Unterschiedliches bedeuten. Druck über der Stirn oder um Nase und Augen passt beispielsweise eher zu den Nebenhöhlen, besonders wenn gleichzeitig Schnupfen oder eine verstopfte Nase bestehen. Entzündete oder angeschwollene Schleimhäute können dort ein Spannungs- oder Druckgefühl verursachen.</p>
 <p>Ein bandförmiges Druckgefühl an Stirn oder Schläfen kann dagegen einem <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerz</a> ähneln, auch wenn du es subjektiv eher als Druck als als Schmerz wahrnimmst.</p>
@@ -2282,21 +2295,27 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'kopfdruck-beim-buecken',
     symptom: 'Druck im Kopf beim Bücken',
-    title: 'Kopfschmerzen & Kopfdruck beim Bücken: Ursachen',
-    metaDesc: 'Kopfschmerzen oder Druck im Kopf beim Bücken? Häufig sind die Nebenhöhlen beteiligt. Erfahre mögliche Ursachen, Warnzeichen und wann du es abklären solltest.',
+    title: 'Druck im Kopf beim Bücken: Nebenhöhlen oder andere Ursache?',
+    metaDesc: 'Druck im Kopf beim Bücken, mit oder ohne Schnupfen? Warum Nebenhöhlen häufig beteiligt sind, welche anderen Ursachen möglich sind und wann du es abklären solltest.',
     h1: 'Warum habe ich Druck im Kopf, wenn ich mich bücke?',
     category: 'Kopf & Sinne',
     lead: 'Du bückst dich nach den Schuhen und im Kopf baut sich ein dumpfer Druck auf, oft hinter Stirn, Augen oder Wangen. Beim Aufrichten lässt er langsam nach. Dieses positionsabhängige Muster hat meist fassbare Gründe, allen voran die Nebenhöhlen. Hier lernst du die Muster zu unterscheiden.',
     readingTime: '6 Min.',
-    ctaTitle: 'Kopfdruck einordnen lassen?',
+    ctaTitle: 'Druck beim Bücken, aber keine klare Erklärung?',
+    ctaText: 'Schildere uns das Muster. Wir helfen dir einzuordnen, ob eine HNO-, neurologische oder andere medizinische Abklärung sinnvoll ist und welche Beschwerden danach ergänzend behandelt werden können.',
     author: AUTOR,
     ...DATEN5,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Beim Vornüberbeugen steigt der Druck in den Blutgefässen und Hohlräumen des Kopfes kurzfristig an. Sind die Nebenhöhlen entzündet oder schlecht belüftet, wird dieser Druckanstieg als deutliches Drücken hinter Stirn, Augen oder Wangen spürbar. Auch Gefässe und Kopfschmerzmechanismen reagieren auf die Kopftieflage.</p>
 <p>Ein Kopfdruck, der nur beim Bücken auftritt und sich beim Aufrichten löst, ist meist harmlos einordenbar. Ein Druck, der neu, heftig oder von weiteren Symptomen begleitet ist, gehört abgeklärt.</p>
 <h2>Die häufigste Spur: die Nebenhöhlen</h2>
 <p>Der klassische Auslöser ist eine akute oder chronische Nebenhöhlenentzündung: In den entzündeten Höhlen staut sich Sekret, und in Kopftieflage drückt es spürbar gegen Stirn und Wangen. Typische Begleiter sind verstopfte Nase, Schnupfen, Druckempfindlichkeit beim Klopfen auf Stirn oder Wangenknochen und ein Druck, der sich beim Bücken deutlich verstärkt. Mehr dazu auf der Seite <a href="/beschwerden/sinusitis/">Sinusitis</a>.</p>
 <p>Auch ohne akute Erkältung kann eine schlechte Belüftung der Nebenhöhlen, etwa bei <a href="/beschwerden/allergien-heuschnupfen/">Allergien</a> oder chronisch verstopfter Nase, denselben Effekt haben.</p>
+<h2>Kopfdruck beim Bücken ohne Schnupfen</h2>
+<p>Fehlt Schnupfen vollständig, sind die Nebenhöhlen nicht automatisch ausgeschlossen, aber andere Möglichkeiten werden wichtiger.</p>
+<p>Beobachte dann besonders, ob zusätzlich Migräne, Nackenbeschwerden, Schwindel oder Druck bei Husten und Pressen auftreten.</p>
+<p>Ein neu aufgetretener Kopfschmerz, der deutlich durch Husten, Pressen oder körperliche Belastung ausgelöst wird, sollte medizinisch beurteilt werden.</p>
 <h2>Weitere Muster, die man kennen sollte</h2>
 <ul>
 <li><strong>Kopfschmerzformen:</strong> <a href="/beschwerden/migraene/">Migräne</a> und andere Kopfschmerzen verstärken sich häufig bei Kopftieflage und Anstrengung. Ein dumpfer Dauerdruck ohne klaren Lagebezug passt eher zu <a href="/beschwerden/spannungskopfschmerzen/">Spannungskopfschmerzen</a>, siehe auch das Signal <a href="/koerpersignale/druck-im-kopf-ohne-kopfschmerzen/">Druck im Kopf ohne Kopfschmerzen</a>.</li>
@@ -2437,17 +2456,27 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'durchfall-am-morgen',
     symptom: 'Durchfall am Morgen',
-    title: 'Jeden Morgen Durchfall? Ursachen und wann du abklären solltest',
-    metaDesc: 'Morgendlicher Durchfall direkt nach dem Aufstehen: von Kaffee und Stress bis Reizdarm. Welche Ursachen häufig sind, was du beobachten solltest und wann eine Abklärung sinnvoll ist.',
+    title: 'Jeden Morgen Durchfall: Ursachen vor oder nach dem Frühstück',
+    metaDesc: 'Jeden Morgen Durchfall, vor dem Frühstück oder direkt danach? Warum der Darm morgens besonders aktiv ist, welche Rolle Kaffee, Stress und Reizdarm spielen und wann du es abklären solltest.',
     h1: 'Durchfall am Morgen',
     category: 'Bauch & Verdauung',
     lead: 'Wenn weicher oder flüssiger Stuhl vor allem morgens auftritt, kann das mit der natürlichen Aktivierung des Darms nach dem Aufstehen zusammenhängen. Kaffee, Frühstück, Stress und bestimmte Nahrungsmittel können diesen sogenannten gastro-kolischen Reflex zusätzlich verstärken. Wiederkehrender morgendlicher Durchfall kann aber auch andere Ursachen haben.',
     readingTime: '4 Min.',
-    ctaTitle: 'Verdauung einordnen lassen?',
+    ctaTitle: 'Dein Morgen beginnt inzwischen immer mit dem Darm?',
+    ctaText: 'Bring dein typisches Tagesmuster ins Gespräch: Uhrzeit, Essen, Kaffee, Stress und Begleitsymptome. So lässt sich schneller entscheiden, ob zuerst eine gastroenterologische Abklärung oder eine Behandlung funktioneller Verdauungsbeschwerden sinnvoll ist.',
     author: AUTOR,
     ...DATEN5,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Warum wird der Darm morgens aktiv?</h2>
 <p>Der Darm wird morgens aktiver. Schon das Aufstehen und die erste Mahlzeit senden Signale an den Dickdarm, seinen Inhalt weiterzubewegen. Deshalb haben viele Menschen ihren ersten Stuhlgang des Tages am Morgen.</p>
+<h2>Durchfall vor dem Frühstück</h2>
+<p>Wenn der Stuhldrang bereits direkt nach dem Aufstehen einsetzt, können der natürliche Tagesrhythmus des Darms, Stress oder Gewohnheiten eine Rolle spielen.</p>
+<h2>Durchfall direkt nach dem Frühstück</h2>
+<p>Essen aktiviert den sogenannten gastro-kolischen Reflex. Bei empfindlichem Darm kann dieser Reflex besonders stark sein.</p>
+<p>Kaffee verstärkt den Effekt bei manchen Menschen zusätzlich.</p>
+<h2>Jeden Morgen Durchfall über Wochen</h2>
+<p>Das ist etwas anderes als gelegentlich weicher Stuhl.</p>
+<p>Wenn sich das Muster über Wochen hält, lohnt sich eine medizinische Abklärung, insbesondere bei Gewichtsverlust, Blut im Stuhl, nächtlichen Beschwerden, Fieber oder neuem Beginn in höherem Alter.</p>
 <h2>Was kommt infrage, wenn der Stuhl regelmässig sehr weich ist?</h2>
 <ul>
 <li>viel Kaffee, insbesondere auf nüchternen Magen</li>
@@ -2572,15 +2601,17 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'juckreiz-nachts-ohne-ausschlag',
     symptom: 'nächtlicher Juckreiz ohne sichtbaren Ausschlag',
-    title: 'Juckreiz nachts ohne Ausschlag: Ursachen',
-    metaDesc: 'Nächtlicher Juckreiz ohne sichtbaren Ausschlag kann durch trockene Haut, Wärme oder andere Ursachen entstehen. Wann eine Abklärung sinnvoll ist.',
+    title: 'Juckreiz nachts am ganzen Körper ohne Ausschlag: Ursachen',
+    metaDesc: 'Nachts Juckreiz am ganzen Körper, aber kein Ausschlag sichtbar? Häufige Ursachen, was Wärme und trockene Haut damit zu tun haben und wann eine Abklärung sinnvoll ist.',
     h1: 'Juckreiz nachts ohne Ausschlag',
     category: 'Schlaf & Nacht',
     lead: 'Juckreiz kann nachts stärker auffallen, obwohl zunächst kein Ausschlag sichtbar ist. Häufig sind trockene Haut, Wärme im Bett oder Hautreizung die Ursache. Bei länger anhaltendem oder ausgeprägtem Juckreiz sollte jedoch auch nach anderen Ursachen gesucht werden.',
     readingTime: '4 Min.',
-    ctaTitle: 'Juckreiz einordnen lassen?',
+    ctaTitle: 'Juckreiz seit Wochen, aber niemand sieht etwas auf der Haut?',
+    ctaText: 'Wir helfen dir, die nächsten Schritte sinnvoll zu sortieren. Bei generalisiertem Juckreiz steht zuerst die medizinische Abklärung; bei bereits geklärten Beschwerden können ergänzende Ansätze danach besprochen werden.',
     author: AUTOR,
     ...DATEN5,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Warum juckt es gerade nachts?</h2>
 <p>Nachts gibt es weniger Ablenkung, sodass Hautempfindungen stärker wahrgenommen werden. Zusätzlich wird die Haut im warmen Bett stärker durchblutet und verliert Feuchtigkeit.</p>
 <h2>Häufige Ursachen</h2>
@@ -2594,6 +2625,10 @@ export const koerpersignale: Koerpersignal[] = [
 </ul>
 <p>Manchmal beginnt eine Hauterkrankung mit Juckreiz, bevor sichtbare Hautveränderungen entstehen. Auch innere Erkrankungen können selten Juckreiz verursachen, beispielsweise bestimmte Leber-, Nieren- oder Blutkrankheiten.</p>
 <div class="wa-callout"><div class="wa-callout-label">Wann abklären</div><p>Eine medizinische Untersuchung ist sinnvoll bei Juckreiz über mehrere Wochen, starkem generalisiertem Juckreiz am ganzen Körper, Gelbfärbung der Haut, deutlicher Gewichtsabnahme, Fieber oder Nachtschweiss, neu begonnenen Medikamenten oder zunehmenden Hautveränderungen.</p></div>
+<h2>Wenn der ganze Körper nachts juckt</h2>
+<p>Ein kleiner juckender Bereich ist etwas anderes als generalisierter Juckreiz am ganzen Körper.</p>
+<p>Wenn fast überall Juckreiz besteht, obwohl kaum Hautveränderungen sichtbar sind, sollte bei anhaltenden Beschwerden breiter gedacht werden. Neben trockener Haut und Medikamenten können selten auch innere Erkrankungen beteiligt sein.</p>
+<p>Deshalb gehört generalisierter Juckreiz über mehrere Wochen medizinisch abgeklärt, besonders wenn zusätzlich Gewichtsverlust, Fieber, Nachtschweiss oder eine Gelbfärbung der Haut auftreten.</p>
 <h2>Was du beobachten kannst</h2>
 <ul>
 <li>welche Körperregion betroffen ist</li>
@@ -2695,20 +2730,25 @@ export const koerpersignale: Koerpersignal[] = [
   {
     slug: 'herzklopfen-nach-dem-essen',
     symptom: 'Herzklopfen nach dem Essen',
-    title: 'Herzklopfen nach dem Essen: Was kann dahinterstecken?',
-    metaDesc: 'Nach dem Essen schlägt dein Herz spürbar schneller oder kräftiger? Warum Mahlzeiten das Herz beschäftigen, welche Muster harmlos sind und wann ein EKG sinnvoll ist.',
+    title: 'Herzklopfen oder Herzrasen nach dem Essen: Ursachen',
+    metaDesc: 'Herzklopfen, Herzrasen oder hoher Puls nach dem Essen? Warum grosse Mahlzeiten, Alkohol, Koffein und andere Faktoren eine Rolle spielen können und wann ein EKG sinnvoll ist.',
     h1: 'Warum klopft mein Herz nach dem Essen?',
     category: 'Bauch & Verdauung',
     lead: 'Kaum ist die Mahlzeit vorbei, spürst du deinen Herzschlag: schneller, kräftiger, manchmal bis in den Hals. Dass das Herz nach dem Essen mehr arbeitet, ist zunächst normal, denn die Verdauung braucht Blut und Energie. Hier erfährst du, welche Muster dahinterstecken können und wann du das Herzklopfen abklären lassen solltest.',
     readingTime: '6 Min.',
-    ctaTitle: 'Verdauung und Unruhe gemeinsam anschauen?',
+    ctaTitle: 'Herzklopfen kommt nach fast jeder Mahlzeit?',
+    ctaText: 'Statt nur „Stress" oder „Verdauung" anzunehmen, lohnt sich eine saubere Einordnung. Wir helfen dir zu entscheiden, wann zuerst ein EKG beziehungsweise eine ärztliche Abklärung sinnvoll ist und ob danach Verdauungs- oder Stressbeschwerden ergänzend behandelt werden können.',
     author: AUTOR,
     ...DATEN7,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Nach einer Mahlzeit leitet der Körper mehr Blut in den Verdauungstrakt. Das Herz gleicht das aus, indem es etwas schneller und kräftiger schlägt. Bei grossen, üppigen Mahlzeiten fällt dieser Effekt stärker aus und kann als Herzklopfen spürbar werden. Auch Kaffee, Alkohol, ein voller Magen, der gegen das Zwerchfell drückt, und angespanntes, hastiges Essen verstärken die Wahrnehmung.</p>
 <p>Der zeitliche Zusammenhang mit dem Essen sagt allein aber nicht, was dahintersteckt. Abklären lassen solltest du das Klopfen, wenn das Herz dabei rast, stolpert oder Begleitsymptome auftreten.</p>
 <h2>Was genau spürst du: Klopfen, Rasen oder Stolpern?</h2>
 <p>Für die Einordnung lohnt sich ein genauer Blick. Ein gleichmässiger, etwas schnellerer und deutlich spürbarer Schlag nach dem Essen spricht eher für die normale Verdauungsreaktion und verstärkte Wahrnehmung. Herzrasen bedeutet einen deutlich beschleunigten Puls, der nicht zur Situation passt. Stolpern beschreibt Aussetzer oder Extraschläge; die Einordnung dazu findest du beim Signal <a href="/koerpersignale/herzstolpern-in-ruhe/">Herzstolpern in Ruhe</a>. Diese drei Muster fühlen sich ähnlich an, werden ärztlich aber unterschiedlich bewertet.</p>
+<h2>Herzrasen oder hoher Puls nach dem Essen</h2>
+<p>Manche Menschen beschreiben nicht nur kräftiges Herzklopfen, sondern messen tatsächlich einen höheren Puls nach einer Mahlzeit.</p>
+<p>Ein gewisser Anstieg kann Teil der normalen Kreislaufreaktion auf Verdauung sein. Wiederholt sehr ausgeprägtes Herzrasen, ein deutlich unregelmässiger Puls oder Beschwerden wie Schwindel, Brustschmerz oder Atemnot sollten jedoch medizinisch eingeordnet werden. Die Standarduntersuchung dafür ist das <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG, bei anfallsweisen Beschwerden auch als Langzeit-EKG</a>.</p>
 <h2>Was das Herzklopfen nach dem Essen begünstigt</h2>
 <ul>
 <li>Grosse, fettige oder sehr üppige Mahlzeiten: Die Verdauung fordert mehr Kreislaufarbeit.</li>
@@ -3298,18 +3338,33 @@ export const koerpersignale: Koerpersignal[] = [
   },
   {
     slug: 'kribbeln-im-kopf',
-    title: 'Kribbeln im Kopf oder auf der Kopfhaut: mögliche Ursachen',
-    metaDesc: 'Kribbeln am Kopf oder auf der Kopfhaut kann von Haut, Nerven, Migräne oder anderen Faktoren kommen. Was bei der Einordnung wichtig ist.',
+    title: 'Kribbeln im Kopf & auf der Kopfhaut: Ursachen und Warnzeichen',
+    metaDesc: 'Kribbeln im Kopf, Hinterkopf oder auf der Kopfhaut? Häufige Ursachen, warum es einseitig auftreten kann und welche neurologischen Warnzeichen du kennen solltest.',
     h1: 'Kribbeln im Kopf oder auf der Kopfhaut',
     category: 'Kopf & Sinne',
     symptom: 'Kribbeln im Kopf oder auf der Kopfhaut',
-    lead: 'Kribbeln am Kopf oder auf der Kopfhaut kann von Haut, Nerven, Migräne oder anderen Faktoren kommen. Was bei der Einordnung wichtig ist.',
+    lead: 'Kribbeln im Kopf, Hinterkopf oder auf der Kopfhaut? Häufige Ursachen, warum es einseitig auftreten kann und welche neurologischen Warnzeichen du kennen solltest.',
     readingTime: '5 Min.',
+    ctaTitle: 'Kribbeln kommt immer wieder und du kannst es nicht einordnen?',
+    ctaText: 'Beschreibe uns, wo es kribbelt, wie lange es dauert und was gleichzeitig auftritt. Wir sagen dir, ob eine medizinisch-neurologische Abklärung zuerst sinnvoll ist oder ob ein bekanntes Spannungs-/Beschwerdemuster ergänzend behandelt werden kann.',
+    ctaLabel: 'Beschwerden besprechen',
     author: AUTOR,
     ...DATEN9,
+    dateModified: '2026-09-28',
     bodyHtml: `<h2>Die kurze Antwort</h2>
 <p>Kribbeln am Kopf wird häufig als oberflächliches Gefühl auf oder direkt unter der Kopfhaut beschrieben. Dafür kommen andere Ursachen infrage als bei einem Druckgefühl oder eigentlichen Kopfschmerzen.</p>
 <p>Vorübergehende Nervenreizung, Hautprobleme, Migräne oder starke Anspannung können eine Rolle spielen. Entscheidend ist, ob das Gefühl lokal begrenzt, einseitig oder über die ganze Kopfhaut verteilt ist und ob weitere neurologische Symptome hinzukommen.</p>
+<h2>Wo kribbelt es genau?</h2>
+<p>Viele Suchanfragen unterscheiden zwischen Kopfhaut, Hinterkopf und einem einseitigen Gefühl. Diese Angaben sind tatsächlich hilfreich. Ein oberflächliches Kribbeln der Kopfhaut ist etwas anderes als eine Taubheit im Gesicht oder ein neurologischer Ausfall.</p>
+<p>Beobachte deshalb:</p>
+<ul>
+<li>Kopfhaut oder „im Kopf"?</li>
+<li>Hinterkopf oder Stirn?</li>
+<li>links, rechts oder beidseitig?</li>
+<li>nur Sekunden oder länger?</li>
+<li>zusammen mit Nackenspannung?</li>
+<li>zusammen mit Taubheit, Schwäche oder Sehstörung?</li>
+</ul>
 <h2>Mögliche Zusammenhänge</h2>
 <ul>
 <li><strong>Haut und Kopfhaut:</strong> Reizung, trockene Haut oder entzündliche Veränderungen können ungewöhnliche Empfindungen verursachen.</li>
