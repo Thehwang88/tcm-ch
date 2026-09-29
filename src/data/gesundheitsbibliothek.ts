@@ -67,6 +67,8 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'hoertest', name: 'Hörtest (Audiometrie)', short: 'Ton- und Sprachaudiometrie: wie das Hören gemessen und eingeordnet wird.', href: '/gesundheitsbibliothek/untersuchungen/hoertest/' },
   { id: 'szintigrafie', name: 'Szintigrafie', short: 'Nuklearmedizin mit Tracer und Gammakamera: zeigt die Funktion von Schilddrüse, Knochen und mehr.', href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/' },
   { id: 'duplexsonografie', name: 'Duplexsonografie', short: 'Der Gefäss-Ultraschall: Venen, Arterien und Blutfluss in Echtzeit.', href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/' },
+  { id: 'belastungs-ekg', name: 'Belastungs-EKG', short: 'EKG unter körperlicher Belastung: wie Herzrhythmus, Puls und Blutdruck auf Anstrengung reagieren.', href: '/gesundheitsbibliothek/untersuchungen/belastungs-ekg/' },
+  { id: 'hormontest', name: 'Hormontest', short: 'Es gibt nicht den einen Hormontest: welche Bluttests je nach Fragestellung sinnvoll sein können.', href: '/gesundheitsbibliothek/untersuchungen/hormontest/' },
 ];
 
 export interface BodyRegion {
@@ -337,6 +339,16 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche -
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/gesundheitsbibliothek/untersuchungen/belastungs-ekg/': 'Ergometrie Belastungstest EKG unter Belastung Fahrradergometer',
+  '/gesundheitsbibliothek/untersuchungen/hormontest/': 'Hormone testen Hormonstatus Hormonwerte Cortisol Hormonpanel',
+  '/beschwerden/schilddruesenunterfunktion/': 'Hypothyreose Schilddrüse Unterfunktion Unterfunktion Schilddrüse Schilddruese',
+  '/haut/altersflecken/': 'Pigmentflecken Alter Lentigines Sonnenflecken Handrücken Flecken',
+  '/wissen/narbenbehandlung/': 'Narben Narbenmassage Narbenpflege Narbe verhärtet',
+  '/koerpersignale/eingerissene-mundwinkel/': 'Mundwinkelrhagaden Faulecken Cheilitis angularis Mundwinkel rissig',
+  '/koerpersignale/bruechige-naegel/': 'Nägel splittern Nagelrillen brüchige Fingernägel Naegel bruechig',
+  '/koerpersignale/muskelzucken/': 'Faszikulationen Muskelzuckungen Zucken Muskel',
+  '/koerpersignale/schmerzen-solarplexus/': 'Solarplexus Druck Magengrube Schmerz Oberbauch Mitte',
+  '/koerpersignale/juckreiz-nach-dem-duschen/': 'Juckreiz Duschen aquagener Pruritus Haut juckt nach Wasser',
   '/beschwerden/fazialisparese/': 'Bell Parese Bell-Parese Gesichtslähmung Gesichtslaehmung Facialisparese',
   '/beschwerden/morbus-meniere/': 'Meniere Morbus Meniere Menière Meniere Syndrom Drehschwindel Ohrdruck',
   '/beschwerden/schlafapnoe/': 'Atemaussetzer nachts Atempausen Schlaf obstruktive Schlafapnoe Schnarchen',
@@ -658,6 +670,7 @@ export function buildSearchIndex(): SearchEntry[] {
   // Kuratierte Methoden-Artikel (nicht saisonal), Gruppe wie die Therapie-Einträge:
   const METHODEN_ARTIKEL: Array<{ t: string; u: string; k?: string }> = [
     { t: 'Schröpfmassage', u: '/wissen/schroepfmassage/' },
+    { t: 'Narbenbehandlung', u: '/wissen/narbenbehandlung/' },
     { t: 'Shiatsu-Selbstbehandlung', u: '/wissen/shiatsu-selbstbehandlung/' },
   ];
   for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });

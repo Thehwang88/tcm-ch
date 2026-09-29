@@ -1710,6 +1710,61 @@ export const beschwerden: Beschwerde[] = [
     ]
   },
   {
+    "slug": "schilddruesenunterfunktion",
+    "name": "Schilddrüsenunterfunktion",
+    "title": "Schilddrüsenunterfunktion: Symptome, Werte & ergänzende TCM",
+    "metaDesc": "Müdigkeit, Frieren, Gewichtszunahme? Wie eine Schilddrüsenunterfunktion abgeklärt und behandelt wird und welche ergänzende Rolle TCM spielen kann.",
+    "conditionName": "Hypothyreose",
+    "lead": "Müdigkeit, Frieren, trockene Haut oder Gewichtszunahme werden häufig mit der Schilddrüse verbunden. Das Problem: Diese Beschwerden sind unspezifisch und kommen auch bei vielen anderen Ursachen vor. Ob tatsächlich eine Schilddrüsenunterfunktion besteht, lässt sich deshalb nicht anhand der Symptome allein feststellen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hashimoto",
+        "label": "Hashimoto"
+      },
+      {
+        "slug": "eisenmangel",
+        "label": "Eisenmangel"
+      },
+      {
+        "slug": "schlafprobleme",
+        "label": "Schlafprobleme"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "hashimoto",
+    "name": "Hashimoto",
+    "title": "",
+    "metaDesc": "",
+    "conditionName": "Hashimoto-Thyreoiditis",
+    "lead": "",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schilddruesenunterfunktion",
+        "label": "Schilddrüsenunterfunktion"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      }
+    ],
+    "therapies": []
+  },
+  {
     "slug": "nervenschmerzen",
     "name": "Nervenschmerzen",
     "title": "",

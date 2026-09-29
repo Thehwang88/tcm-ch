@@ -211,7 +211,7 @@ export const tcmEntities: TcmEntity[] = [
     evidenzHtml: `<p>Die moderne Chronobiologie kennt tatsächlich Tagesrhythmen vieler Körperfunktionen, auch der Leber. Diese Erkenntnisse sind jedoch unabhängig von der traditionellen Organuhr entstanden und bestätigen deren Zwei-Stunden-Zuordnungen nicht. Es gibt keine Studien, die das Aufwachen zu einer bestimmten Uhrzeit als zuverlässigen Hinweis auf ein bestimmtes Organproblem belegen.</p>`,
     relevanzHtml: `<p>Wachst du regelmässig zur gleichen Zeit auf, lohnt sich der Blick auf die häufigen, fassbaren Ursachen; eine praktische Einordnung gibt das Körpersignal <a href="/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/">Immer zur gleichen Uhrzeit aufwachen</a>. Bei anhaltenden Schlafproblemen findest du Hilfe unter <a href="/beschwerden/schlafprobleme/">Schlafprobleme</a> und akute Selbsthilfe unter <a href="/gesundheitsbibliothek/was-jetzt/schlafprobleme-heute-nacht/">Was tun bei Schlafproblemen heute Nacht?</a></p>`,
     arztHinweisHtml: `<p>Anhaltende Schlafstörungen, nächtliches Erwachen mit Atemnot, Herzrasen oder Schmerzen sowie ausgeprägte Tagesmüdigkeit gehören ärztlich abgeklärt, unabhängig von jeder Uhrzeit-Deutung.</p>`,
-    relatedConcepts: ['organuhr', 'qi', 'yin-und-yang'],
+    relatedConcepts: ['organuhr', 'qi', 'yin-und-yang', 'lebermeridian'],
     relatedTherapies: ['akupunktur'],
   },
   {
@@ -272,6 +272,60 @@ export const tcmEntities: TcmEntity[] = [
     relatedTherapies: ['akupunktur'],
   },
   {
+    type: 'tcm-concept', slug: 'dreifacher-erwaermer', section: 'meridiane-punkte',
+    status: 'published', indexable: true, publishedAt: '2026-09-29',
+    nav: 'Dreifacher Erwärmer',
+    title: 'Dreifacher Erwärmer in der TCM: Was bedeutet San Jiao?',
+    metaDesc: 'Was ist der Dreifache Erwärmer in der TCM? Traditionelle Bedeutung von San Jiao, Meridianmodell und praktische Einordnung, ohne ihn mit einem anatomischen Organ gleichzusetzen.',
+    h1: 'Der Dreifache Erwärmer: Was bedeutet dieses TCM-Konzept?',
+    kurzantwortHtml: `<p>Der «Dreifache Erwärmer», chinesisch San Jiao, gehört zu den ungewöhnlicheren Begriffen der chinesischen Medizin. Anders als Lunge, Herz oder Niere bezeichnet er kein anatomisch klar abgrenzbares Organ.</p>
+<p>Er ist ein traditionelles Funktionsmodell und zugleich der Name einer Leitbahn im TCM-System. Diese traditionelle Einordnung darf nicht mit einer anatomischen oder schulmedizinischen Diagnose gleichgesetzt werden.</p>`,
+    traditionellHtml: `<p>In klassischen TCM-Modellen wird der Körper im Zusammenhang mit dem Dreifachen Erwärmer grob in einen oberen, mittleren und unteren Bereich gegliedert.</p>
+<ul>
+<li><strong>Oberer Erwärmer:</strong> Brustbereich sowie traditionelle Zuordnungen zu Herz und Lunge.</li>
+<li><strong>Mittlerer Erwärmer:</strong> vor allem Verdauungsbereich und traditionelle Zuordnungen zu Magen und Milz.</li>
+<li><strong>Unterer Erwärmer:</strong> Unterbauch und Becken sowie traditionelle Zuordnungen zu Niere, Blase und weiteren Funktionen.</li>
+</ul>
+<p>Diese Einteilung ist eine TCM-Systematik und keine moderne anatomische Unterteilung des Körpers.</p>`,
+    praxisHtml: `<p>Der Begriff kann in einer TCM-Anamnese oder bei der Auswahl von Akupunkturpunkten eine Rolle spielen. Der Dreifache Erwärmer gehört ausserdem zu den klassischen <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridianen</a>.</p>
+<p>Auf dieser Leitbahn liegen verschiedene Akupunkturpunkte. Wie bei anderen Meridianen dient das Modell als traditionelle therapeutische Landkarte.</p>
+<p>Für Patientinnen und Patienten ist vor allem wichtig: Ein Satz wie «der Dreifache Erwärmer ist gestört» ist keine medizinische Diagnose und sagt nichts darüber aus, ob ein anatomisches Organ krank ist.</p>`,
+    abgrenzungHtml: `<p>Der Dreifache Erwärmer ist kein anatomisches Organ, kein einzelner Nerv und kein nachgewiesenes Gefässsystem. Versuche, das Konzept direkt mit einer einzigen modernen Körperstruktur gleichzusetzen, vereinfachen die traditionelle Bedeutung zu stark.</p>
+<p>Auch konkrete Beschwerden sollten nicht allein aus diesem traditionellen Konzept erklärt werden. Schmerzen, Atemprobleme, Verdauungsbeschwerden oder andere neue Symptome benötigen dieselbe medizinische Einordnung wie bei Menschen, die noch nie von San Jiao gehört haben.</p>`,
+    evidenzHtml: `<p>Für den Dreifachen Erwärmer als eigenständige anatomische Struktur gibt es keine etablierte biomedizinische Entsprechung. Wissenschaftliche Forschung zu Akupunktur untersucht überwiegend konkrete Behandlungen und Krankheitsbilder und bestätigt nicht automatisch jedes traditionelle Erklärungsmodell der TCM.</p>
+<p>Das Konzept lässt sich deshalb am sinnvollsten als Bestandteil des historischen und praktischen Ordnungssystems der chinesischen Medizin verstehen.</p>`,
+    relevanzHtml: `<p>Wenn deine Therapeutin den Dreifachen Erwärmer erwähnt, kannst du nachfragen, was damit in deinem konkreten Fall gemeint ist. Eine gute Erklärung sollte sich auf dein tatsächliches Beschwerdebild beziehen und keine mystische Organdiagnose daraus machen.</p>
+<p>Grundlagen zum System findest du unter <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridiane</a> und <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/">Akupunkturpunkte</a>.</p>`,
+    arztHinweisHtml: `<p>TCM-Konzepte ersetzen keine medizinische Diagnostik. Neue, starke oder unklare körperliche Beschwerden sollten nach medizinischen Kriterien beurteilt werden. Bei akuten schweren Beschwerden gilt in der Schweiz der Notruf 144.</p>`,
+    relatedConcepts: ['meridiane', 'akupunkturpunkte'],
+    relatedTherapies: ['akupunktur'],
+  },
+  {
+    type: 'tcm-concept', slug: 'lebermeridian', section: 'meridiane-punkte',
+    status: 'published', indexable: true, publishedAt: '2026-09-29',
+    nav: 'Lebermeridian',
+    title: 'Lebermeridian in der TCM: Verlauf, Bedeutung & Grenzen',
+    metaDesc: 'Was bedeutet der Lebermeridian in der TCM? Verlauf der traditionellen Leitbahn, Punktwahl und praktische Bedeutung, klar getrennt von Erkrankungen der anatomischen Leber.',
+    h1: 'Der Lebermeridian in der TCM',
+    kurzantwortHtml: `<p>Der Lebermeridian gehört zu den zwölf Hauptleitbahnen der Traditionellen Chinesischen Medizin. Auf der Leitbahn liegen verschiedene Akupunkturpunkte, die in Akupunktur und Akupressur verwendet werden.</p>
+<p>Der Name führt leicht zu einem Missverständnis: Ein Problem, das im TCM-Modell dem Lebermeridian zugeordnet wird, bedeutet nicht, dass die anatomische Leber krank ist.</p>`,
+    traditionellHtml: `<p>In klassischen Darstellungen beginnt der Lebermeridian am Fuss und verläuft über die Innenseite des Beins in Richtung Unterbauch und Rumpf.</p>
+<p>Diese Beschreibung gehört zum traditionellen <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridianmodell</a>. Die Leitbahn ist keine anatomisch nachgewiesene Struktur wie ein Nerv oder Blutgefäss.</p>
+<p>Innerhalb der TCM werden dem sogenannten Leber-Funktionskreis zusätzlich verschiedene traditionelle Beziehungen zugeschrieben. Diese traditionellen Zuordnungen dürfen nicht mit den Funktionen der anatomischen Leber gleichgesetzt werden.</p>`,
+    praxisHtml: `<p>Bei der Akupunktur kann der Lebermeridian bei der Auswahl und Kombination bestimmter <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/">Akupunkturpunkte</a> eine Rolle spielen.</p>
+<p>Eine Therapeutin berücksichtigt dabei nicht nur einen Meridian, sondern das gesamte Beschwerdebild, weitere traditionelle Muster, Puls- und Zungenbefund sowie die Reaktion auf bisherige Behandlungen.</p>
+<p>Seriöse Behandlung beginnt deshalb nicht damit, dass ein Patient online seinen «Lebermeridian diagnostiziert», sondern mit seinen tatsächlichen Beschwerden.</p>`,
+    abgrenzungHtml: `<p>«Lebermeridian gestört» bedeutet nicht Leberkrankheit. Ein traditionelles TCM-Muster erlaubt keine Aussage darüber, ob Leberzellen, Gallengänge oder andere anatomische Strukturen krank sind.</p>
+<p>Umgekehrt kann eine echte Lebererkrankung nicht durch Meridian-Diagnostik ausgeschlossen werden.</p>`,
+    evidenzHtml: `<p>Meridiane sind keine anatomisch eindeutig nachgewiesenen Leitungsbahnen. Wissenschaftliche Forschung zur Akupunktur untersucht überwiegend konkrete Behandlungen und Krankheitsbilder; daraus lässt sich nicht ableiten, dass jede traditionelle Meridian-Zuordnung biomedizinisch bestätigt ist.</p>
+<p>Der Lebermeridian sollte deshalb als Bestandteil des traditionellen TCM-Modells verstanden werden, nicht als medizinischer Test für die Leber.</p>`,
+    relevanzHtml: `<p>Wenn deine Therapeutin vom Lebermeridian spricht, darfst du nachfragen, was damit konkret in Bezug auf deine Beschwerden gemeint ist.</p>
+<p>Wenn du dagegen wegen auffälliger Leberwerte oder körperlicher Zeichen Sorge um die anatomische Leber hast, hilft medizinische Diagnostik weiter. Traditionelle Meridian-Zuordnungen können solche Untersuchungen nicht ersetzen.</p>`,
+    arztHinweisHtml: `<p>Gelbfärbung von Haut oder Augen, starke neue Oberbauchschmerzen, sehr dunkler Urin, ausgeprägtes Krankheitsgefühl oder auffällige Leberwerte gehören medizinisch abgeklärt. Ein TCM-Muster darf in solchen Situationen nicht als Ersatzdiagnose verwendet werden.</p>`,
+    relatedConcepts: ['meridiane', 'akupunkturpunkte', 'qi'],
+    relatedTherapies: ['akupunktur'],
+  },
+  {
     type: 'tcm-concept', slug: 'akupunkturpunkte', section: 'meridiane-punkte',
     status: 'published', indexable: true, publishedAt: '2026-09-26',
     nav: 'Akupunkturpunkte',
@@ -289,7 +343,7 @@ export const tcmEntities: TcmEntity[] = [
 <p>Seriös lässt sich sagen: Die Punktwahl folgt einem traditionellen, in sich konsistenten System, und die Wirksamkeit der Akupunktur ist je nach Beschwerde unterschiedlich gut belegt. Ein Wirkversprechen für einzelne Punkte lässt sich daraus nicht ableiten.</p>`,
     relevanzHtml: `<p>Für dich als Patient:in heisst das: Du musst keine Punkte kennen oder mitbringen. Die Auswahl gehört zur Behandlung und wird dir auf Wunsch erklärt. Wenn dich interessiert, wie eine Behandlung abläuft und wie sich die Nadeln anfühlen, findest du das unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a> und <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>`,
     arztHinweisHtml: `<p>Akupunkturpunkte und ihre traditionelle Systematik ersetzen keine medizinische Diagnostik. Neue, starke oder unklare Beschwerden gehören zuerst ärztlich eingeordnet; Akupunktur kann danach je nach Beschwerde als ergänzende Behandlung infrage kommen.</p>`,
-    relatedConcepts: ['meridiane', 'qi'],
+    relatedConcepts: ['meridiane', 'qi', 'dreifacher-erwaermer', 'lebermeridian'],
     relatedTherapies: ['akupunktur', 'akupressur'],
   },
   {
@@ -307,8 +361,8 @@ export const tcmEntities: TcmEntity[] = [
 <li>Magen und Milz</li>
 <li>Herz und Dünndarm</li>
 <li>Blase und Niere</li>
-<li>Perikard und Dreifachem Erwärmer</li>
-<li>Gallenblase und Leber</li>
+<li>Perikard und <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/dreifacher-erwaermer/">Dreifachem Erwärmer</a></li>
+<li>Gallenblase und <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/lebermeridian/">Leber</a></li>
 </ul>
 <p>Daneben beschreibt die chinesische Medizin weitere Leitbahnsysteme. Die Namen orientieren sich an traditionellen Funktionskreisen und dürfen nicht so verstanden werden, als würde jede Leitbahn anatomisch direkt zu dem gleichnamigen Organ führen.</p>`,
     praxisHtml: `<p>Für Akupunktur ist das Meridianmodell vor allem eine Landkarte zur Auswahl und Kombination von Punkten. Eine Therapeutin entscheidet nicht nur danach, wo ein Symptom liegt, sondern berücksichtigt auch das vermutete TCM-Muster und Beziehungen zwischen verschiedenen Punkten.</p>
@@ -468,7 +522,7 @@ export const tcmSections: TcmSection[] = [
       { href: '/therapien/ohrakupunktur/', label: 'Ohrakupunktur', cat: 'Therapie' },
       { href: '/wissen/wie-lange-bleiben-akupunkturnadeln-drin/', label: 'Wie lange bleiben die Nadeln drin?', cat: 'Artikel' },
     ],
-    geplant: ['Akupunkturpunkte: Überblick', 'Akupressurpunkte Hand', 'Akupressurpunkte Fuss', 'Lungenmeridian', 'Lebermeridian', 'Magenmeridian', 'Nierenmeridian', 'Dickdarmmeridian', 'Einzelne Punkte (z.B. Neiguan PC6, Hegu Di4, Zusanli Ma36)'],
+    geplant: ['Akupunkturpunkte: Überblick', 'Akupressurpunkte Hand', 'Akupressurpunkte Fuss', 'Lungenmeridian', 'Magenmeridian', 'Nierenmeridian', 'Dickdarmmeridian', 'Einzelne Punkte (z.B. Neiguan PC6, Hegu Di4, Zusanli Ma36)'],
   },
   {
     slug: 'diagnostik',

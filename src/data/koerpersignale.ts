@@ -26,6 +26,7 @@ export interface Koerpersignal {
   ctaTitle?: string;
   ctaText?: string;
   ctaLabel?: string;
+  ctaHref?: string;
   bodyHtml: string;
   faqs: KsFaq[];
   related: KsRelated[];
@@ -53,6 +54,7 @@ const DATEN8 = { datePublished: '2026-09-21', dateModified: '2026-09-21' };
 const DATEN9 = { datePublished: '2026-09-22', dateModified: '2026-09-22' };
 const DATEN10 = { datePublished: '2026-09-25', dateModified: '2026-09-25' };
 const DATEN11 = { datePublished: '2026-09-26', dateModified: '2026-09-26' };
+const DATEN12 = { datePublished: '2026-09-29', dateModified: '2026-09-29' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -483,6 +485,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann die TCM Zungenbrennen behandeln?', a: 'Nach der Abklärung kann eine Behandlung mit Akupunktur und Kräutertherapie helfen, Anspannung, Schlaf und hormonelle Begleitfaktoren zu regulieren, die das Brennen verstärken. Die Zungendiagnostik der TCM ist dabei ein traditionelles Beobachtungsinstrument, kein Ersatz für die medizinische Diagnose.' },
     ],
     related: [
+      { href: '/koerpersignale/eingerissene-mundwinkel/', label: 'Eingerissene Mundwinkel', cat: 'Körpersignal' },
       { href: '/koerpersignale/taube-zunge/', label: 'Taube Zunge', cat: 'Körpersignal' },
       { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
       { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
@@ -528,6 +531,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was macht die TCM bei Hitzewallungen?', a: 'Nach der Abklärung behandeln wir je nach Muster mit Akupunktur und Kräutertherapie, mit dem Ziel, die Wellen seltener und flacher zu machen. Bei Wallungen in den Wechseljahren ist das ein häufiger und dankbarer Behandlungsanlass.' },
     ],
     related: [
+      { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion', cat: 'Beschwerde' },
       { href: '/beschwerden/hitzewallungen/', label: 'Hitzewallungen', cat: 'Beschwerde' },
       { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
       { href: '/koerpersignale/starkes-schwitzen-ohne-sport/', label: 'Starkes Schwitzen ohne Sport', cat: 'Körpersignal' },
@@ -627,6 +631,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sind Wadenkrämpfe ein Warnzeichen?', a: 'Bei sehr häufigen, schlafstörenden Krämpfen, bei Begleitsymptomen wie Muskelschwäche, Taubheit oder Kribbeln, nach Beginn neuer Medikamente oder wenn eine Wade geschwollen, überwärmt oder druckschmerzhaft ist. Im letzten Fall noch am selben Tag ärztlich beurteilen lassen, das kann eine Thrombose sein.' },
     ],
     related: [
+      { href: '/koerpersignale/muskelzucken/', label: 'Muskelzucken am Körper', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/was-jetzt/wadenkraempfe-nachts/', label: 'Was tun bei Wadenkrämpfen in der Nacht?', cat: 'Was jetzt?' },
       { href: '/beschwerden/restless-legs/', label: 'Restless Legs', cat: 'Beschwerde' },
       { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
@@ -675,6 +680,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Hilft Magnesium gegen Augenzucken?', a: 'Die Beleglage ist dünn. Ein zeitlich begrenzter Versuch ist bei gesunden Nieren meist unproblematisch, zuverlässiger wirken Schlaf, Koffeinreduktion und Augenpausen.' },
     ],
     related: [
+      { href: '/koerpersignale/muskelzucken/', label: 'Muskelzucken am Körper', cat: 'Körpersignal' },
       { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/', label: 'Immer zur gleichen Uhrzeit aufwachen', cat: 'Körpersignal' },
@@ -1207,6 +1213,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte ich Mundtrockenheit abklären lassen?', a: 'Wenn der Mund über mehrere Wochen regelmässig trocken bleibt, Essen oder Sprechen erschwert wird oder zusätzlich trockene Augen, häufiges Wasserlassen oder Veränderungen im Mund auftreten. Auch wiederkehrende Zahnprobleme trotz guter Pflege gehören angesprochen.' },
     ],
     related: [
+      { href: '/koerpersignale/eingerissene-mundwinkel/', label: 'Eingerissene Mundwinkel', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/was-jetzt/trockener-mund-nachts/', label: 'Was tun bei trockenem Mund in der Nacht?', cat: 'Was jetzt?' },
       { href: '/beschwerden/schlafprobleme/', label: 'Schlafstörungen', cat: 'Beschwerde' },
       { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
@@ -2232,6 +2239,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss Magendruck im Liegen abgeklärt werden?', a: 'Wenn er über Wochen regelmässig auftritt oder Schluckbeschwerden, Gewichtsverlust, schwarzer Stuhl oder nächtliches Erbrechen dazukommen. Dann gehört meist eine Magenspiegelung dazu. Druck mit Engegefühl, Atemnot oder Ausstrahlung in den Arm: sofort Notruf 144.' },
     ],
     related: [
+      { href: '/koerpersignale/schmerzen-solarplexus/', label: 'Schmerzen am Solarplexus', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
       { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
@@ -2639,6 +2647,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Zeigen sich sichtbare Hautveränderungen, findest du die passenden Beschwerdebilder unter <a href="/beschwerden/neurodermitis/">Neurodermitis</a>, <a href="/beschwerden/nesselsucht/">Nesselsucht</a> und <a href="/beschwerden/schuppenflechte/">Schuppenflechte</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/juckreiz-nach-dem-duschen/', label: 'Juckreiz nach dem Duschen', cat: 'Körpersignal' },
       { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
       { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
       { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
@@ -2936,6 +2945,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Oberbauchbeschwerden zum Arzt?', a: 'Bei Druck über Wochen, Gewichtsverlust, Schluckbeschwerden, Blut im oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche heftige Oberbauchschmerzen mit Ausstrahlung, Atemnot oder Kaltschweiss sind ein Notfall: Notruf 144.' },
     ],
     related: [
+      { href: '/koerpersignale/schmerzen-solarplexus/', label: 'Schmerzen am Solarplexus', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie: Was passiert bei der Magenspiegelung?', cat: 'Untersuchung' },
       { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen', cat: 'Körpersignal' },
       { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen', cat: 'Körpersignal' },
@@ -3746,6 +3756,305 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
     ],
   },
+
+  // ────────────────────────────────────────────── Kohorte 29.09.2026
+  {
+    slug: 'eingerissene-mundwinkel',
+    title: 'Eingerissene Mundwinkel: Ursachen & wann abklären',
+    metaDesc: 'Eingerissene Mundwinkel können durch trockene Haut, Reizung, Infektionen oder Mangelzustände entstehen. Welche Hinweise wichtig sind und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum reissen meine Mundwinkel immer wieder ein?',
+    category: 'Hals & Mund',
+    symptom: 'eingerissene Mundwinkel',
+    lead: 'Ein kleiner Riss im Mundwinkel kann beim Essen, Sprechen und Lachen überraschend unangenehm sein. Manche Menschen bekommen ihn nur einmal im Winter, andere immer wieder. Dafür gibt es mehrere mögliche Ursachen und nicht jeder eingerissene Mundwinkel bedeutet automatisch Eisen- oder Vitaminmangel.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Mundwinkel reissen immer wieder ein?',
+    ctaText: 'Wenn gleichzeitig Müdigkeit, Verdauungsbeschwerden oder andere wiederkehrende Symptome bestehen, können wir gemeinsam sortieren, welche Abklärung sinnvoll ist und ob ein ergänzender TCM-Ansatz überhaupt zum Gesamtbild passt.',
+    ctaLabel: 'Erstgespräch anfragen',
+    ctaHref: '#formular',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Die Haut im Mundwinkel wird stark beansprucht. Feuchtigkeit, Speichel, trockene Haut und die ständige Bewegung beim Sprechen oder Essen können kleine Risse entstehen lassen.</p>
+<p>Häufig heilt ein solcher Riss mit einfacher Pflege wieder ab. Wiederkehrende oder schlecht heilende Mundwinkel können jedoch auch mit einer lokalen Entzündung, Hauterkrankungen oder bestimmten Mangelzuständen zusammenhängen.</p>
+<h2>Häufige Ursachen</h2>
+<ul>
+<li>trockene oder gereizte Haut</li>
+<li>häufiges Lippenlecken</li>
+<li>Speichel, der sich im Mundwinkel sammelt</li>
+<li>kalte und trockene Luft</li>
+<li>lokale Pilz- oder bakterielle Besiedlung</li>
+<li>Ekzeme oder andere Hautprobleme</li>
+<li>mechanische Reizung, zum Beispiel durch Zahn- oder Prothesensituation</li>
+<li>seltener bestimmte Mangelzustände</li>
+</ul>
+<h2>Ist Eisenmangel schuld?</h2>
+<p>Das ist möglich, aber nicht die einzige Erklärung.</p>
+<p>Wenn gleichzeitig Müdigkeit, Blässe, Leistungsabfall oder bereits auffällige Blutwerte bestehen, kann beispielsweise ein <a href="/beschwerden/eisenmangel/">Eisenmangel</a> beziehungsweise ein niedriger Ferritinwert in die Abklärung gehören.</p>
+<p>Aus eingerissenen Mundwinkeln allein lässt sich jedoch kein Eisenmangel diagnostizieren.</p>
+<h2>Warum kommen die Risse immer wieder?</h2>
+<p>Wiederkehrende Beschwerden sprechen dafür, den Auslöser systematisch zu suchen.</p>
+<p>Hilfreich ist zu beobachten:</p>
+<ul>
+<li>Ist immer dieselbe Seite betroffen oder beide?</li>
+<li>Ist der Mund häufig trocken?</li>
+<li>Gibt es Zahn-, Biss- oder Prothesenprobleme?</li>
+<li>Besteht generell sehr trockene oder empfindliche Haut?</li>
+<li>Wurde Zahnpasta oder Lippenpflege gewechselt?</li>
+<li>Besteht eine bekannte Hauterkrankung?</li>
+<li>Gibt es weitere Beschwerden wie ausgeprägte Müdigkeit?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann abklären?</div>
+<p>Wenn ein Riss trotz normaler Pflege über längere Zeit nicht heilt oder ständig zurückkehrt, lohnt sich eine medizinische oder zahnmedizinische Beurteilung. Auch eine ausgeprägte Entzündung, zunehmende Schwellung, Eiter, starke Schmerzen oder weitere Veränderungen der Mundschleimhaut sollten angeschaut werden.</p>
+</div>
+<h2>Was kannst du selbst tun?</h2>
+<p>Versuche zunächst, die Mundwinkel möglichst trocken und geschützt zu halten und weiteres Aufreissen zu vermeiden. Ständiges Lippenlecken kann das Problem trotz kurzfristiger Erleichterung verstärken.</p>
+<p>Wenn du einen Mangel vermutest, ist eine gezielte Blutuntersuchung sinnvoller als Nahrungsergänzungsmittel auf Verdacht.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Eingerissene Mundwinkel sind kein eigenständiges TCM-Behandlungsziel und sollten nicht aus einem einzelnen Zeichen heraus traditionell diagnostiziert werden.</p>
+<p>Wenn gleichzeitig wiederkehrende Verdauungsbeschwerden, Erschöpfung oder andere bereits medizinisch eingeordnete Beschwerden bestehen, kann in einem Erstgespräch das Gesamtbild betrachtet werden. Notwendige medizinische oder zahnmedizinische Abklärungen haben dabei Vorrang.</p>`,
+    faqs: [
+    ],
+    related: [
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig', cat: 'Befund' },
+      { href: '/koerpersignale/bruechige-naegel/', label: 'Brüchige Nägel', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'bruechige-naegel',
+    title: 'Brüchige Nägel: Ursachen, Rillen & mögliche Mängel',
+    metaDesc: 'Brüchige Fingernägel können durch Wasser, Chemikalien, Hauterkrankungen oder andere Ursachen entstehen. Wann Blutwerte oder eine ärztliche Abklärung sinnvoll sind.',
+    h1: 'Warum sind meine Nägel so brüchig?',
+    category: 'Hände & Nerven',
+    symptom: 'brüchige Nägel',
+    lead: 'Nägel splittern, reissen oder brechen schon bei kleinen Belastungen. Oft liegt die Ursache direkt am Nagel und seinem Alltag und nicht automatisch an einem Vitaminmangel. Begleitsymptome und das genaue Muster helfen bei der Einordnung.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Brüchige Nägel plus Müdigkeit, Frieren oder andere Beschwerden?',
+    ctaText: 'Dann lohnt sich der Blick auf das Gesamtbild mehr als ein weiteres Nahrungsergänzungsmittel. Wir helfen dir zu sortieren, ob zuerst Blutwerte oder eine medizinische Abklärung sinnvoll sind und wo eine ergänzende Behandlung überhaupt ansetzt.',
+    ctaLabel: 'Beschwerden einordnen lassen',
+    ctaHref: '#formular',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Brüchige Nägel sind häufig und entstehen oft durch wiederholten Kontakt mit Wasser, Reinigungsmitteln, Lösungsmitteln oder mechanische Belastung. Auch trockene Haut und bestimmte Haut- oder Nagelerkrankungen können eine Rolle spielen.</p>
+<p>Ein Mangelzustand ist möglich, aber brüchige Nägel allein beweisen keinen Eisen-, Vitamin- oder Mineralstoffmangel.</p>
+<h2>Häufige Ursachen im Alltag</h2>
+<ul>
+<li>viel Kontakt mit Wasser</li>
+<li>Reinigungsmittel und Lösungsmittel</li>
+<li>häufiger Nagellackentferner</li>
+<li>mechanische Belastung</li>
+<li>trockene Haut</li>
+<li>häufige Maniküre</li>
+<li>bestimmte Haut- oder Nagelerkrankungen</li>
+</ul>
+<h2>Sind brüchige Nägel ein Zeichen für Eisenmangel?</h2>
+<p>Sie können im Rahmen eines Eisenmangels vorkommen, sind aber keineswegs beweisend.</p>
+<p>Wenn gleichzeitig Müdigkeit, Leistungsabfall oder bereits auffällige Blutwerte bestehen, kann eine Abklärung auf <a href="/beschwerden/eisenmangel/">Eisenmangel</a> beziehungsweise ein Blick auf passende Laborwerte sinnvoll sein.</p>
+<p>Nahrungsergänzung auf Verdacht ist weniger sinnvoll als eine gezielte Abklärung.</p>
+<h2>Was bedeuten Rillen im Nagel?</h2>
+<p>Feine Längsrillen sind häufig und können mit zunehmendem Alter sichtbarer werden. Sie sind allein meist kein Hinweis auf eine bestimmte Erkrankung.</p>
+<p>Deutliche neue Veränderungen, einzelne stark verformte Nägel oder Veränderungen von Farbe, Dicke und Nagelbett sollten dagegen genauer angeschaut werden.</p>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann abklären?</div>
+<p>Eine ärztliche oder dermatologische Beurteilung ist sinnvoll, wenn mehrere Nägel neu stark verändert sind, sich ein Nagel vom Nagelbett löst, deutliche Farbveränderungen auftreten, Hautveränderungen dazukommen, die Beschwerden über Monate bestehen oder gleichzeitig deutliche Allgemeinsymptome auftreten.</p>
+</div>
+<h2>Was du selbst verändern kannst</h2>
+<ul>
+<li>Hände bei häufiger Nassarbeit schützen.</li>
+<li>Sehr aggressive Nagelprodukte reduzieren.</li>
+<li>Nägel nicht unnötig mechanisch bearbeiten.</li>
+<li>Haut und Nagelfalz regelmässig pflegen.</li>
+<li>Bei Verdacht auf Mangelzustände nicht wahllos Supplemente kombinieren, sondern gezielt abklären.</li>
+</ul>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Brüchige Nägel allein sind kein Grund für eine TCM-Diagnose. Wenn weitere Beschwerden wie ausgeprägte Müdigkeit, Verdauungsprobleme oder Schlafstörungen bestehen, kann das Gesamtbild in einem Erstgespräch betrachtet werden.</p>
+<p>Notwendige medizinische oder dermatologische Abklärungen ersetzen wir dadurch nicht.</p>`,
+    faqs: [
+    ],
+    related: [
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig', cat: 'Befund' },
+      { href: '/koerpersignale/eingerissene-mundwinkel/', label: 'Eingerissene Mundwinkel', cat: 'Körpersignal' },
+      { href: '/koerpersignale/finger-morgens-steif/', label: 'Steife Finger am Morgen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'muskelzucken',
+    title: 'Muskelzucken: häufige Ursachen & neurologische Warnzeichen',
+    metaDesc: 'Muskelzucken ist häufig harmlos und kann bei Stress, Schlafmangel oder nach Belastung auftreten. Wann wiederkehrendes Zucken ärztlich abgeklärt werden sollte.',
+    h1: 'Muskelzucken: Warum zuckt ein Muskel plötzlich?',
+    category: 'Muskeln & Beine',
+    symptom: 'Muskelzucken',
+    lead: 'Ein Augenlid, eine Wade oder ein kleiner Muskel im Arm beginnt plötzlich zu zucken. Manchmal nur für Sekunden, manchmal immer wieder über mehrere Tage. Solche Muskelzuckungen sind häufig und sehr oft harmlos. Entscheidend ist, ob weitere neurologische Symptome hinzukommen.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Muskelzucken macht dir Sorgen und du weisst nicht, ob du damit zum Arzt musst?',
+    ctaText: 'Schildere uns, wo es zuckt, seit wann und ob weitere Beschwerden bestehen. Wir helfen beim nächsten sinnvollen Schritt: medizinische Abklärung, Beobachtung oder ergänzende Behandlung.',
+    ctaLabel: 'Muster besprechen',
+    ctaHref: '#formular',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Kleine unwillkürliche Muskelzuckungen können auch bei gesunden Menschen auftreten. Häufig sind sie vorübergehend und verschwinden von selbst wieder.</p>
+<p>Wichtiger als das Zucken allein ist, ob gleichzeitig echte Muskelschwäche, Muskelabbau, ausgeprägte Taubheit oder andere neurologische Veränderungen auftreten.</p>
+<h2>Häufige Auslöser</h2>
+<p>Muskelzucken kann unter anderem begünstigt werden durch:</p>
+<ul>
+<li>Schlafmangel</li>
+<li>Stress und Anspannung</li>
+<li>intensive körperliche Belastung</li>
+<li>viel Koffein oder andere Stimulanzien</li>
+<li>Reizung eines Nervs</li>
+<li>bestimmte Medikamente</li>
+<li>Veränderungen im Elektrolyt- oder Stoffwechselhaushalt</li>
+</ul>
+<h2>Was ist mit Magnesiummangel?</h2>
+<p>Magnesium wird bei Muskelzucken häufig als erste Erklärung genannt. Das ist zu einfach.</p>
+<p>Ein Elektrolytproblem kann eine Rolle spielen, aber Muskelzucken allein beweist keinen Magnesiummangel. Wer Beschwerden dauerhaft hat, sollte die Ursache nicht ausschliesslich mit Nahrungsergänzungsmitteln behandeln.</p>
+<h2>Zuckt es an mehreren Stellen?</h2>
+<p>Wenn kleine Muskelgruppen an unterschiedlichen Stellen zucken, kann das gerade in Stressphasen sehr beunruhigend wirken.</p>
+<p>Das Verteilungsmuster, die Dauer und vor allem die Frage, ob echte Schwäche hinzukommt, sind für die medizinische Beurteilung wichtiger als die reine Zahl der zuckenden Stellen.</p>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Welcher Muskel zuckt?</li>
+<li>Wie lange dauert eine Episode?</li>
+<li>Passiert es nach Sport oder Belastung?</li>
+<li>Ist es in Ruhe stärker?</li>
+<li>Besteht gleichzeitig Taubheit oder Kribbeln?</li>
+<li>Ist die Kraft wirklich vermindert oder fühlt sich der Muskel nur ungewöhnlich an?</li>
+<li>Gab es neue Medikamente oder viel Koffein?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann neurologisch abklären?</div>
+<p>Eine neurologische Abklärung ist besonders wichtig, wenn zusätzlich neue oder zunehmende Muskelschwäche, sichtbarer Muskelabbau, ausgeprägte Taubheit, Schwierigkeiten beim Gehen, anhaltende Koordinationsprobleme oder Schluck- beziehungsweise Sprechstörungen auftreten.</p>
+</div>
+<h2>Welche Rolle spielt TCM?</h2>
+<p>Akupunktur kann bei bestimmten stress- oder spannungsassoziierten Beschwerden ergänzend eingesetzt werden. Neurologische Warnzeichen sollten jedoch niemals mit einem TCM-Muster erklärt werden, bevor sie medizinisch abgeklärt wurden.</p>`,
+    faqs: [
+    ],
+    related: [
+      { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt', cat: 'Körpersignal' },
+      { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', label: 'Nervenleitmessung (NLG)', cat: 'Untersuchung' },
+      { href: '/beschwerden/nervenschmerzen/', label: 'Nervenschmerzen', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'schmerzen-solarplexus',
+    title: 'Solarplexus-Schmerzen: Druck im Oberbauch richtig einordnen',
+    metaDesc: 'Schmerzen oder Druck am Solarplexus können aus Magen, Bauchwand, Rippen oder Brustbereich kommen. Welche Begleitsymptome wichtig sind und wann eine Abklärung nötig ist.',
+    h1: 'Schmerzen am Solarplexus: Was kann dort überhaupt wehtun?',
+    category: 'Bauch & Verdauung',
+    symptom: 'Schmerzen am Solarplexus',
+    lead: '«Solarplexus-Schmerzen» ist keine genaue medizinische Diagnose. Menschen meinen damit meist einen Schmerz oder Druck mittig im oberen Bauch, direkt unterhalb des Brustbeins. In dieser Region liegen mehrere Strukturen dicht nebeneinander, deshalb ist das genaue Muster wichtiger als der Begriff selbst.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Druck im Oberbauch, aber du kannst ihn nicht richtig zuordnen?',
+    ctaText: 'Für unklare Beschwerden kann ein strukturiertes Gespräch helfen. Wir sortieren, was medizinisch abgeklärt gehört und ob funktionelle Verdauungs- oder Spannungsbeschwerden ergänzend behandelt werden können.',
+    ctaLabel: 'Beschwerden besprechen',
+    ctaHref: '/sprechstunde/',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Beschwerden in der Mitte des Oberbauchs können aus unterschiedlichen Regionen kommen. Möglich sind unter anderem Magen und Speiseröhre, Bauchwand und Muskulatur, Rippenansatz oder andere Strukturen des Brust- und Oberbauchbereichs.</p>
+<p>Deshalb hilft es mehr, den Schmerz genau zu beschreiben, als ihn nur dem «Solarplexus» zuzuordnen.</p>
+<h2>Kommt der Schmerz nach dem Essen?</h2>
+<p>Wenn gleichzeitig Völlegefühl, Übelkeit, Aufstossen oder Brennen hinter dem Brustbein bestehen, kann der obere Verdauungstrakt beteiligt sein.</p>
+<p>Passende Informationen findest du unter <a href="/beschwerden/gastritis/">Gastritis</a> und <a href="/beschwerden/sodbrennen/">Sodbrennen und Reflux</a>.</p>
+<h2>Wird es bei Bewegung oder Druck stärker?</h2>
+<p>Ein Schmerz, der sich bei Rumpfbewegung, tiefem Einatmen, Husten oder Druck auf eine bestimmte Stelle verändert, kann eher aus Muskeln, Bauchwand oder Rippenbereich kommen.</p>
+<p>Das ersetzt jedoch keine Untersuchung, insbesondere wenn die Beschwerden neu oder stark sind.</p>
+<h2>Was du beobachten kannst</h2>
+<ul>
+<li>Tritt der Schmerz nach dem Essen auf?</li>
+<li>Ist es eher Brennen, Druck, Stechen oder Spannung?</li>
+<li>Verändert Bewegung den Schmerz?</li>
+<li>Wird es beim tiefen Einatmen schlimmer?</li>
+<li>Gibt es Sodbrennen, Übelkeit oder Blähungen?</li>
+<li>Tritt gleichzeitig Herzrasen, Atemnot oder Schwindel auf?</li>
+<li>Besteht das Muster nur in Stressphasen oder auch unabhängig davon?</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann sofort medizinisch abklären?</div>
+<p>Schmerzen im oberen Bauch können sich gelegentlich schwer von Beschwerden des Brustkorbs unterscheiden. Sofort medizinische Hilfe ist wichtig bei starkem oder neuem Brustdruck, Atemnot, Kaltschweissigkeit, Kreislaufproblemen, Ausstrahlung in Arm, Rücken oder Kiefer oder sehr starken plötzlich auftretenden Schmerzen. In der Schweiz: Notruf 144.</p>
+</div>
+<h2>Kann Stress dort Beschwerden auslösen?</h2>
+<p>Stress kann Atmung, Verdauung und Muskelspannung beeinflussen und dadurch Beschwerden im Oberbauch verstärken. Trotzdem sollten neue oder anhaltende Schmerzen nicht automatisch als «Stress» erklärt werden.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Wenn ernste oder behandlungsbedürftige Ursachen ausgeschlossen sind und funktionelle Verdauungsbeschwerden, Stress oder Spannungsmuster im Vordergrund stehen, kann eine ergänzende Behandlung geprüft werden.</p>
+<p>Die TCM-Einordnung ersetzt dabei nicht die medizinische Ursachenklärung.</p>`,
+    faqs: [
+      { q: 'Was ist der Solarplexus?', a: 'Als Solarplexus wird umgangssprachlich die Region in der Mitte des Oberbauchs direkt unterhalb des Brustbeins bezeichnet. Er ist keine eigenständige medizinische Diagnose; Beschwerden dort können aus Magen, Bauchwand, Rippenbereich oder anderen Strukturen kommen.' },
+      { q: 'Kann Stress dort Druck machen?', a: 'Ja, Stress kann Atmung, Verdauung und Muskelspannung beeinflussen und Beschwerden im Oberbauch verstärken. Neue oder anhaltende Schmerzen sollten trotzdem nicht automatisch als Stress erklärt, sondern eingeordnet werden.' },
+      { q: 'Wann ist der Schmerz ein Notfall?', a: 'Bei starkem oder neuem Brustdruck, Atemnot, Kaltschweissigkeit, Kreislaufproblemen, Ausstrahlung in Arm, Rücken oder Kiefer oder sehr starken plötzlichen Schmerzen sofort medizinische Hilfe holen. In der Schweiz: Notruf 144.' },
+    ],
+    related: [
+      { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch', cat: 'Körpersignal' },
+      { href: '/koerpersignale/magendruck-im-liegen/', label: 'Magendruck im Liegen', cat: 'Körpersignal' },
+      { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'juckreiz-nach-dem-duschen',
+    title: 'Juckreiz nach dem Duschen: Warum juckt die Haut danach?',
+    metaDesc: 'Die Haut juckt nach dem Duschen, oft ohne Ausschlag? Heisses Wasser, trockene Haut und Pflegeprodukte sind häufige Ursachen. Wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum juckt meine Haut nach dem Duschen?',
+    category: 'Wärme & Schwitzen',
+    symptom: 'Juckreiz nach dem Duschen',
+    lead: 'Du steigst aus der Dusche und wenige Minuten später beginnt die Haut zu jucken, manchmal an den Beinen, manchmal am Rücken oder fast am ganzen Körper. Häufig liegt die Ursache direkt bei Hautbarriere, Wassertemperatur oder Pflegeprodukten.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Deine Haut juckt immer wieder und du findest keinen Auslöser?',
+    ctaText: 'Wir können gemeinsam das Muster sortieren. Wenn der Juckreiz medizinisch abgeklärt werden sollte, sagen wir das zuerst. Bei bereits geklärten Beschwerden prüfen wir danach, ob eine ergänzende Behandlung sinnvoll sein kann.',
+    ctaLabel: 'Beschwerden einordnen lassen',
+    ctaHref: '#formular',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Juckreiz nach dem Duschen ist häufig eine Reaktion trockener oder empfindlicher Haut auf Wärme, Wasser und Waschprodukte. Besonders heisses und langes Duschen kann die Hautbarriere belasten.</p>
+<p>Wenn der Juckreiz ausschliesslich nach dem Duschen auftritt und sich durch mildere Pflege bessert, spricht das eher für eine lokale Hautreaktion. Anhaltender oder generalisierter Juckreiz sollte dagegen genauer eingeordnet werden.</p>
+<h2>Heisses Wasser kann die Haut austrocknen</h2>
+<p>Sehr warmes Wasser kann Fettbestandteile von der Hautoberfläche entfernen. Dadurch kann die Haut nach dem Duschen stärker spannen, trocknen oder jucken.</p>
+<p>Besonders im Winter und bei ohnehin trockener Haut wird das häufig schneller bemerkbar.</p>
+<h2>Duschgel, Shampoo und Duftstoffe</h2>
+<p>Auch ein neues Produkt kann verantwortlich sein.</p>
+<p>Interessant ist deshalb, ob der Juckreiz begonnen hat nach:</p>
+<ul>
+<li>Wechsel des Duschgels</li>
+<li>neuem Shampoo</li>
+<li>Duftprodukten</li>
+<li>neuen Cremes</li>
+<li>häufigerem oder deutlich heisserem Duschen</li>
+</ul>
+<h2>Juckreiz ohne Ausschlag</h2>
+<p>Ein sichtbarer Ausschlag muss nicht sofort vorhanden sein. Trockene Haut kann stark jucken, obwohl nur wenig zu sehen ist.</p>
+<p>Wenn der Juckreiz besonders nachts auftritt, findest du die separate Einordnung unter <a href="/koerpersignale/juckreiz-nachts-ohne-ausschlag/">Juckreiz nachts ohne Ausschlag</a>.</p>
+<h2>Was du ausprobieren kannst</h2>
+<p>Wenn keine Warnzeichen bestehen:</p>
+<ul>
+<li>etwas kühler und kürzer duschen</li>
+<li>aggressive oder stark parfümierte Produkte reduzieren</li>
+<li>Haut danach sanft trocken tupfen statt stark zu reiben</li>
+<li>eine einfache rückfettende Pflege ausprobieren</li>
+<li>beobachten, ob einzelne Produkte den Juckreiz verstärken</li>
+</ul>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann medizinisch abklären?</div>
+<p>Eine medizinische Abklärung ist sinnvoll, wenn der Juckreiz über Wochen anhält, fast den ganzen Körper betrifft, deutliche Hautveränderungen entstehen, eine Gelbfärbung der Haut auftritt, Gewichtsverlust, Fieber oder Nachtschweiss dazukommen oder der Juckreiz unabhängig vom Duschen zunehmend stärker wird.</p>
+</div>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Bei ungeklärtem generalisiertem Juckreiz steht zuerst die medizinische Ursachenklärung im Vordergrund.</p>
+<p>Wenn eine dermatologische oder medizinische Abklärung erfolgt ist und eine chronische Hauterkrankung oder andere bekannte Beschwerden bestehen, kann anschliessend geprüft werden, ob eine ergänzende Behandlung zum Gesamtbild passt.</p>`,
+    faqs: [
+    ],
+    related: [
+      { href: '/koerpersignale/juckreiz-nachts-ohne-ausschlag/', label: 'Juckreiz nachts ohne Ausschlag', cat: 'Körpersignal' },
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
+    ],
+  },
+
 ];
 
 export const koerpersignalBySlug = (slug: string): Koerpersignal | undefined =>

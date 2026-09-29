@@ -1,0 +1,165 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 29.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/belastungs-ekg';
+const url = `https://tcm.ch${path}/`;
+const title = 'Belastungs-EKG: Ablauf, Werte & Unterschied zum Ruhe-EKG';
+const description = 'Was passiert beim Belastungs-EKG? Ablauf auf Velo oder Laufband, was Ärzt:innen dabei beobachten, Unterschiede zum normalen EKG und wann die Untersuchung eingesetzt wird.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-29', dateModified: '2026-09-29',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Belastungs-EKG', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/herzklopfen-nach-dem-essen/', label: 'Herzklopfen nach dem Essen' },
+  { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen' },
+  { href: '/koerpersignale/herzstolpern-in-ruhe/', label: 'Herzstolpern in Ruhe' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG (Ruhe-EKG)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/', label: 'Echokardiografie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/langzeit-blutdruckmessung/', label: 'Langzeit-Blutdruckmessung' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Belastungs-EKG</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Belastungs-EKG: Was passiert unter körperlicher Belastung?</h1>
+        <p class="lead">Brustdruck beim Sport, ungewöhnliche Atemnot oder die Frage, wie das Herz auf Belastung reagiert: Ein normales Ruhe-EKG beantwortet nicht alles. Beim Belastungs-EKG wird beobachtet, wie sich Herzrhythmus, Puls und Blutdruck während körperlicher Aktivität verändern.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Das Belastungs-EKG ist eine schulmedizinische Untersuchung und wird ärztlich durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine medizinische Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+<h2>Was ist ein Belastungs-EKG?</h2>
+          <p>Ein Belastungs-EKG, auch Ergometrie genannt, zeichnet die elektrische Aktivität des Herzens auf, während du dich körperlich belastest.</p>
+          <p>Meist sitzt du dabei auf einem Fahrradergometer. Die Belastung wird schrittweise gesteigert. Währenddessen werden EKG, Herzfrequenz, Beschwerden und in der Regel auch der Blutdruck beobachtet.</p>
+
+          <h2>Was ist der Unterschied zum normalen EKG?</h2>
+          <p>Ein <a href="/gesundheitsbibliothek/untersuchungen/ekg/">Ruhe-EKG</a> zeigt die elektrische Herzaktivität in Ruhe. Manche Auffälligkeiten oder Beschwerden treten jedoch erst auf, wenn das Herz stärker arbeiten muss.</p>
+          <p>Deshalb beantworten Ruhe-EKG und Belastungs-EKG unterschiedliche Fragestellungen.</p>
+          <p>Auch ein Langzeit-EKG hat einen anderen Zweck: Es zeichnet den Herzrhythmus über viele Stunden im Alltag auf und kann zum Beispiel bei nur gelegentlich auftretendem Herzstolpern eingesetzt werden.</p>
+
+          <h2>Wann wird ein Belastungs-EKG eingesetzt?</h2>
+          <p>Ob ein Belastungs-EKG sinnvoll ist, entscheidet die behandelnde Ärztin oder der behandelnde Arzt anhand der Beschwerden, der Vorgeschichte und der konkreten Fragestellung.</p>
+          <p>Mögliche Anlässe sind beispielsweise:</p>
+          <ul>
+            <li>Beschwerden bei körperlicher Belastung</li>
+            <li>ungewöhnliche Belastungsintoleranz</li>
+            <li>Verlaufskontrollen bestimmter Herzerkrankungen</li>
+            <li>Rhythmusauffälligkeiten unter Belastung</li>
+            <li>Beurteilung von Puls und Blutdruck während körperlicher Aktivität</li>
+          </ul>
+          <p>Nicht jedes Herzsymptom benötigt automatisch ein Belastungs-EKG.</p>
+
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Vor Beginn werden Elektroden am Oberkörper befestigt und zunächst Werte in Ruhe erhoben. Danach beginnt die körperliche Belastung niedrig und wird schrittweise gesteigert.</p>
+          <p>Während der Untersuchung solltest du Beschwerden sofort angeben, zum Beispiel Brustdruck, ungewöhnliche Atemnot, Schwindel oder Herzrasen.</p>
+          <p>Die Untersuchung wird beendet, wenn das vorgesehene Belastungsziel erreicht ist oder ein medizinischer Grund zum Abbruch besteht. Danach folgt eine kurze Erholungsphase, in der Herzfrequenz, EKG und Blutdruck weiter beobachtet werden können.</p>
+
+          <h2>Was bedeutet ein auffälliges Resultat?</h2>
+          <p>Ein einzelner EKG-Befund wird nicht isoliert interpretiert. Beschwerden, Blutdruckreaktion, EKG-Veränderungen, Vorerkrankungen und weitere Untersuchungen gehören zusammen.</p>
+          <p>Je nach Fragestellung können anschliessend weitere kardiologische Untersuchungen sinnvoll sein, beispielsweise eine <a href="/gesundheitsbibliothek/untersuchungen/echokardiografie/">Echokardiografie</a>.</p>
+
+          <h2>Welche Untersuchung passt zu Herzklopfen?</h2>
+          <p>Bei Symptomen wie <a href="/koerpersignale/herzklopfen-nach-dem-essen/">Herzklopfen nach dem Essen</a> oder <a href="/koerpersignale/herzklopfen-im-liegen/">Herzklopfen im Liegen</a> ist nicht automatisch ein Belastungs-EKG die richtige Untersuchung.</p>
+          <p>Entscheidend ist das Muster: Tritt die Beschwerde nur unter Belastung auf? Kommt sie in Ruhe? Ist der Puls regelmässig oder unregelmässig? Bestehen Brustschmerz, Atemnot oder Schwindel?</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Wann sofort medizinische Hilfe?</div>
+            <p>Neue starke Brustschmerzen, deutliche Atemnot, Bewusstlosigkeit oder schwere Kreislaufprobleme gehören nicht in eine normale Terminabklärung. Bei akuten schweren Beschwerden gilt in der Schweiz: Notruf 144.</p>
+          </div>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Ein Belastungs-EKG liefert medizinische Diagnostik und wird nicht durch TCM ersetzt. Wenn Herzbeschwerden medizinisch abgeklärt sind und zusätzlich beispielsweise Stress, Schlafprobleme oder funktionelle Begleitbeschwerden bestehen, kann danach besprochen werden, ob eine ergänzende Behandlung sinnvoll ist.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Passende Symptome verstehen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Herzklopfen, Schwindel oder Belastungsbeschwerden und du weisst nicht, wo anfangen?</div>
+          <p>In einer ärztlichen Sprechstunde lässt sich klären, welche Untersuchung zu deinem Beschwerdemuster passt und was zuerst medizinisch abgeklärt werden sollte.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+</style>

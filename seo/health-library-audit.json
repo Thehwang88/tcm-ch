@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-28",
+  "generated": "2026-09-29",
   "totals": {
-    "healthPages": 458,
+    "healthPages": 468,
     "byType": {
       "hub": 6,
-      "condition": 114,
+      "condition": 115,
       "library_hub": 1,
       "befund": 59,
       "question": 36,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 18,
+      "tcm_hub": 20,
       "selfcare": 15,
-      "editorial": 78,
-      "body_signal": 75,
+      "editorial": 80,
+      "body_signal": 80,
       "therapy": 36,
       "visual": 10
     }
@@ -30,8 +30,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 64,
-      "outboundHealthLinks": 120
+      "inboundContentLinks": 65,
+      "outboundHealthLinks": 121
     },
     {
       "url": "/beschwerden/achillessehnenentzuendung/",
@@ -240,7 +240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 15
     },
     {
@@ -260,7 +260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
+      "inboundContentLinks": 31,
       "outboundHealthLinks": 18
     },
     {
@@ -320,7 +320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 20
     },
     {
@@ -390,8 +390,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/heuschnupfen/",
@@ -630,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 141,
+      "inboundContentLinks": 140,
       "outboundHealthLinks": 18
     },
     {
@@ -700,7 +700,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 18
     },
     {
@@ -710,7 +710,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 19
     },
     {
@@ -720,7 +720,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 18
     },
     {
@@ -894,6 +894,16 @@
       "outboundHealthLinks": 34
     },
     {
+      "url": "/beschwerden/schilddruesenunterfunktion/",
+      "type": "condition",
+      "title": "Schilddrüsenunterfunktion: Symptome, Werte &amp; ergänzende TCM",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/beschwerden/schlafapnoe/",
       "type": "condition",
       "title": "Schlafapnoe: Atemaussetzer im Schlaf erkennen und behandeln",
@@ -1020,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 19
     },
     {
@@ -1150,7 +1160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 24,
       "outboundHealthLinks": 13
     },
     {
@@ -1180,7 +1190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 292,
+      "inboundContentLinks": 296,
       "outboundHealthLinks": 44
     },
     {
@@ -1190,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 64,
+      "inboundContentLinks": 65,
       "outboundHealthLinks": 62
     },
     {
@@ -1350,7 +1360,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 7
     },
     {
@@ -1740,7 +1750,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 7
     },
     {
@@ -1750,7 +1760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     },
     {
@@ -2080,7 +2090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 30,
       "outboundHealthLinks": 7
     },
     {
@@ -2240,7 +2250,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 15
     },
     {
@@ -2311,7 +2321,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 13
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/",
@@ -2330,7 +2340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 10
     },
     {
@@ -2370,8 +2380,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/",
@@ -2380,8 +2390,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/dreifacher-erwaermer/",
+      "type": "tcm_hub",
+      "title": "Dreifacher Erwärmer in der TCM: Was bedeutet San Jiao? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/lebermeridian/",
+      "type": "tcm_hub",
+      "title": "Lebermeridian in der TCM: Verlauf, Bedeutung &amp; Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/",
@@ -2390,8 +2420,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/methoden/",
@@ -2570,8 +2600,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 59,
-      "outboundHealthLinks": 38
+      "inboundContentLinks": 60,
+      "outboundHealthLinks": 39
     },
     {
       "url": "/haut/aknenarben/",
@@ -2580,8 +2610,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 11
+    },
+    {
+      "url": "/haut/altersflecken/",
+      "type": "editorial",
+      "title": "Altersflecken: Ursachen, Unterschied zu Melasma &amp; was hilft | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/haut/ampoule/",
@@ -2740,8 +2780,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/haut/microneedling-zuhause/",
@@ -2930,8 +2970,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 188,
-      "outboundHealthLinks": 76
+      "inboundContentLinks": 194,
+      "outboundHealthLinks": 81
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -2960,8 +3000,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/bauch-fuehlt-sich-hart-an/",
@@ -3024,6 +3064,16 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/bruechige-naegel/",
+      "type": "body_signal",
+      "title": "Brüchige Nägel: Ursachen, Rillen &amp; mögliche Mängel | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/koerpersignale/druck-auf-den-ohren/",
       "type": "body_signal",
       "title": "Druck auf den Ohren: mögliche Ursachen und wann du zum Arzt solltest | TCM.ch",
@@ -3060,8 +3110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/druckgefuehl-im-unterbauch/",
@@ -3104,6 +3154,16 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/eingerissene-mundwinkel/",
+      "type": "body_signal",
+      "title": "Eingerissene Mundwinkel: Ursachen &amp; wann abklären | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/koerpersignale/einzelne-finger-taub/",
       "type": "body_signal",
       "title": "Einzelne Finger taub: Was die Verteilung verrät | TCM.ch",
@@ -3120,7 +3180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 12
     },
     {
@@ -3190,7 +3250,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 11
     },
     {
@@ -3200,7 +3260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -3220,7 +3280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 10
     },
     {
@@ -3231,7 +3291,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 15,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/",
@@ -3244,14 +3304,24 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/koerpersignale/juckreiz-nach-dem-duschen/",
+      "type": "body_signal",
+      "title": "Juckreiz nach dem Duschen: Warum juckt die Haut danach? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/koerpersignale/juckreiz-nachts-ohne-ausschlag/",
       "type": "body_signal",
       "title": "Juckreiz nachts am ganzen Körper ohne Ausschlag: Ursachen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/kalte-fuesse/",
@@ -3390,8 +3460,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/metallischer-geschmack-im-mund/",
@@ -3412,6 +3482,16 @@
       "inSitemap": true,
       "inboundContentLinks": 2,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/koerpersignale/muskelzucken/",
+      "type": "body_signal",
+      "title": "Muskelzucken: häufige Ursachen &amp; neurologische Warnzeichen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/koerpersignale/nachtschweiss-ohne-fieber/",
@@ -3492,6 +3572,16 @@
       "inSitemap": true,
       "inboundContentLinks": 6,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/schmerzen-solarplexus/",
+      "type": "body_signal",
+      "title": "Solarplexus-Schmerzen: Druck im Oberbauch richtig einordnen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/schnarchen-jede-nacht/",
@@ -3610,8 +3700,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/verstopfte-nase-ohne-erkaeltung/",
@@ -3640,8 +3730,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/warmes-gesicht-kalte-haende/",
@@ -3681,7 +3771,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 13,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/therapien/",
@@ -3690,7 +3780,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 147,
+      "inboundContentLinks": 148,
       "outboundHealthLinks": 17
     },
     {
@@ -3710,7 +3800,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 278,
+      "inboundContentLinks": 282,
       "outboundHealthLinks": 12
     },
     {
@@ -4050,7 +4140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 111,
+      "inboundContentLinks": 112,
       "outboundHealthLinks": 14
     },
     {
@@ -4170,8 +4260,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 44,
-      "outboundHealthLinks": 44
+      "inboundContentLinks": 45,
+      "outboundHealthLinks": 45
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -4432,6 +4522,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/narbenbehandlung/",
+      "type": "editorial",
+      "title": "Narbenbehandlung: Möglichkeiten, Massage &amp; Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/pcos-akupunktur-tcm/",

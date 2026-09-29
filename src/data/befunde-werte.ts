@@ -152,6 +152,7 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
     ],
     relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest: welche Werte wann sinnvoll sind' },
       { href: '/gesundheitsbibliothek/untersuchungen/szintigrafie/', label: 'Szintigrafie (z. B. der Schilddrüse)' },
     ],
   },

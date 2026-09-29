@@ -40,6 +40,71 @@ const AUTOR: HautAuthor = {
 };
 
 export const haut: HautArticle[] = [
+  {
+    slug: 'altersflecken',
+    title: 'Altersflecken: Ursachen, Unterschied zu Melasma & was hilft',
+    metaDesc: 'Altersflecken entstehen meist nach jahrelanger UV-Belastung. Wie du sie von anderen Pigmentflecken unterscheidest, was wirklich hilft und wann eine Hautkontrolle wichtig ist.',
+    excerpt: 'Braune Flecken an Händen, Gesicht oder Dekolleté: meist gutartig nach jahrelanger UV-Belastung, aber nicht jeder neue Fleck ist automatisch ein Altersfleck.',
+    category: 'Hautthemen',
+    h1: 'Altersflecken: Was steckt dahinter und was kann man tun?',
+    lead: 'Braune Flecken an Händen, Gesicht oder Dekolleté werden mit zunehmendem Alter häufiger. Meist handelt es sich um gutartige Pigmentveränderungen nach langjähriger UV-Belastung. Trotzdem gilt: Nicht jeder neue braune Fleck ist automatisch ein Altersfleck.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Unsicher, was für Pigmentflecken du hast?',
+    ctaText: 'Schildere kurz, was dich stört und wie lange die Veränderung besteht. Wir sagen dir ehrlich, ob zuerst eine dermatologische Kontrolle sinnvoll ist oder welcher nächste Schritt zu deiner Situation passt.',
+    ctaHref: '/kontakt/',
+    ctaLabel: 'Haut besprechen',
+    author: AUTOR,
+    reviewerName: 'Simon Stüve',
+    datePublished: '2026-09-29',
+    dateModified: '2026-09-29',
+    lastReviewed: '2026-09-29',
+    bodyHtml: `
+<h2>Die kurze Antwort</h2>
+<p>Altersflecken entstehen vor allem durch langfristige UV-Belastung. Typisch sind flache, klar begrenzte, hell- bis dunkelbraune Flecken auf Handrücken, Gesicht, Unterarmen und Dekolleté.</p>
+<p>Sie sind in der Regel gutartig. Ein neuer, deutlich veränderter oder ungewöhnlich aussehender Pigmentfleck sollte jedoch dermatologisch beurteilt werden, bevor man versucht, ihn kosmetisch zu behandeln.</p>
+<h2>Altersflecken oder Melasma?</h2>
+<p>Beides sind Pigmentveränderungen, aber das Muster unterscheidet sich.</p>
+<p>Altersflecken sind häufig einzelne, relativ klar begrenzte Flecken auf sonnenexponierter Haut. Beim <a href="/haut/melasma/">Melasma</a> entstehen eher grössere, unregelmässige Pigmentflächen, häufig symmetrisch im Gesicht. Hormone und UV-Licht spielen dabei eine wichtige Rolle.</p>
+<h2>Warum entstehen Altersflecken?</h2>
+<p>UV-Strahlung beeinflusst die Pigmentbildung der Haut. Über viele Jahre können dadurch einzelne Bereiche entstehen, in denen mehr Pigment sichtbar bleibt.</p>
+<p>Deshalb treten Altersflecken besonders häufig an Stellen auf, die viel Sonne abbekommen:</p>
+<ul>
+<li>Handrücken</li>
+<li>Gesicht</li>
+<li>Stirn und Schläfen</li>
+<li>Dekolleté</li>
+<li>Unterarme</li>
+</ul>
+<p>Sonnenschutz ist deshalb nicht nur Vorbeugung gegen neue Flecken, sondern auch ein wichtiger Teil jeder Strategie bei bestehender Pigmentierung.</p>
+<h2>Was hilft gegen Altersflecken?</h2>
+<p>Je nach Hauttyp, Pigmentierung und Ziel kommen dermatologische oder kosmetische Verfahren infrage. Dazu gehören beispielsweise bestimmte Wirkstoffe, Peelings oder apparative Verfahren.</p>
+<p>Wichtig ist die Reihenfolge: <strong>Zuerst sicher sein, was der Fleck ist. Danach über Aufhellung oder Entfernung sprechen.</strong></p>
+<p>Einen unbekannten dunklen Fleck auf eigene Faust aggressiv mit Säuren oder starken Wirkstoffen zu behandeln, ist keine gute Strategie.</p>
+<div class="wa-callout">
+<div class="wa-callout-label">Wann einen Fleck anschauen lassen?</div>
+<p>Lass eine Pigmentveränderung medizinisch beurteilen, wenn sie neu entstanden ist und rasch wächst, deutlich asymmetrisch wird, mehrere sehr unterschiedliche Farben zeigt, blutet oder wiederholt verkrustet, stark juckt oder sich sichtbar verändert. Bei solchen Veränderungen geht es zuerst um die medizinische Einordnung und nicht um Kosmetik.</p>
+</div>
+<h2>Was du selbst tun kannst</h2>
+<ul>
+<li>Neue oder sich verändernde Flecken beobachten und bei Unsicherheit dermatologisch zeigen.</li>
+<li>Sonnenschutz auf exponierten Hautstellen konsequent einsetzen.</li>
+<li>Bei Pigmentbehandlungen realistische Erwartungen haben: Eine Behandlung verhindert nicht automatisch neue Flecken.</li>
+<li>Bei mehreren unterschiedlichen Pigmentveränderungen zuerst klären, ob wirklich alle dasselbe sind.</li>
+</ul>
+<h2>Erst einordnen, dann behandeln</h2>
+<p>Wenn du nicht sicher bist, ob du Altersflecken, <a href="/haut/melasma/">Melasma</a> oder eine andere Pigmentveränderung hast, lohnt sich zuerst eine saubere Einordnung. Danach lässt sich deutlich besser entscheiden, was sinnvoll ist und was nicht.</p>
+`,
+    faqs: [
+      { q: 'Sind Altersflecken gefährlich?', a: 'Typische Altersflecken sind gutartig. Weil verschiedene Hautveränderungen ähnlich aussehen können, sollte ein neuer oder sich deutlich verändernder Fleck medizinisch beurteilt werden.' },
+      { q: 'Können Altersflecken wiederkommen?', a: 'Ja. Auch nach erfolgreicher Aufhellung können bei weiterer UV-Belastung neue Pigmentflecken entstehen.' },
+      { q: 'Was ist wichtiger: Creme oder Sonnenschutz?', a: 'Konsequenter UV-Schutz gehört praktisch immer zur Basis, unabhängig davon, ob zusätzlich ein Wirkstoff oder eine Behandlung eingesetzt wird.' },
+    ],
+    related: [
+      { href: '/haut/melasma/', label: 'Melasma', cat: 'Hautthema' },
+      { href: '/haut/aknenarben/', label: 'Aknenarben', cat: 'Hautthema' },
+      { href: '/haut/', label: 'Haut & Gesicht: alle Themen', cat: 'Übersicht' },
+    ],
+  },
   // ─────────────────────────────────────────────────────────── Wirkstoffe
   {
     slug: 'centella',
@@ -845,7 +910,7 @@ export const haut: HautArticle[] = [
 <h2>Warum Melasma anders reagiert</h2>
 <p>Ein <a href="/haut/pigmentflecken/">Sonnenfleck</a> ist ein lokal begrenzter UV-Schaden. Melasma ist ein aktiver, hormonell mitgesteuerter Prozess, bei dem die pigmentbildenden Zellen dauerhaft überempfindlich reagieren.</p>
 <p>Der entscheidende Unterschied in der Praxis: <strong>Nicht nur UV triggert, sondern auch Wärme.</strong> Sauna, heisses Duschen, Kochen über dem Herd, intensiver Sport in der Sonne. Und Behandlungen, die mit Hitze arbeiten, allen voran Laser, können Melasma verschlimmern statt verbessern.</p>
-<div class="wa-callout"><div class="wa-callout-label">Die wichtigste Unterscheidung</div><p>Wer Melasma für Altersflecken hält und entsprechend behandeln lässt, riskiert eine deutliche Verschlechterung. Vor jeder Behandlung gehört die Einordnung, welche Art von Pigmentierung vorliegt.</p></div>
+<div class="wa-callout"><div class="wa-callout-label">Die wichtigste Unterscheidung</div><p>Wer Melasma für <a href="/haut/altersflecken/">Altersflecken</a> hält und entsprechend behandeln lässt, riskiert eine deutliche Verschlechterung. Vor jeder Behandlung gehört die Einordnung, welche Art von Pigmentierung vorliegt.</p></div>
 
 <h2>Die drei Tiefen</h2>
 <p><strong>Epidermal.</strong> Das Pigment liegt in der Oberhaut, die Farbe ist eher hellbraun, die Ränder relativ deutlich. Beste Prognose.</p>
@@ -890,6 +955,7 @@ export const haut: HautArticle[] = [
       { q: 'Darf ich bei Melasma in die Sauna?', a: 'Besser nicht. Wärme triggert die Pigmentbildung unabhängig von UV. Sauna, Dampfbad und heisses Duschen ins Gesicht gehören zu den vermeidbaren Auslösern.' },
     ],
     related: [
+      { href: '/haut/altersflecken/', label: 'Altersflecken', cat: 'Hautthema' },
       { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
       { href: '/haut/niacinamid/', label: 'Niacinamid', cat: 'Wirkstoff' },
       { href: '/haut/vitamin-c-serum/', label: 'Vitamin-C-Serum', cat: 'Wirkstoff' },
@@ -2088,6 +2154,7 @@ export const haut: HautArticle[] = [
       { href: '/haut/unreine-haut/', label: 'Unreine Haut', cat: 'Hautthema' },
       { href: '/haut/microneedling/', label: 'Microneedling', cat: 'Methode' },
       { href: '/haut/pigmentflecken/', label: 'Pigmentflecken', cat: 'Hautthema' },
+          { href: '/wissen/narbenbehandlung/', label: 'Narbenbehandlung', cat: 'Ratgeber' },
     ],
   },
   // ──────────────────────────────────────────────── Welle 6 · Methoden

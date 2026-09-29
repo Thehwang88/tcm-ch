@@ -8,7 +8,7 @@ import { wissenHerbst } from './wissen-herbst';
 export interface WissenFaq { q: string; a: string }
 export interface WissenRelated { href: string; label: string; cat: string }
 export interface WissenAuthor { name: string; role: string; bio: string }
-export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; author: WissenAuthor; reviewerName?: string; datePublished: string; dateModified: string; lastReviewed?: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
+export interface Wissen { slug: string; title: string; metaDesc: string; region?: string; excerpt?: string; category: string; h1: string; lead: string; readingTime: string; ctaTitle?: string; ctaText?: string; ctaLabel?: string; ctaHref?: string; author: WissenAuthor; reviewerName?: string; datePublished: string; dateModified: string; lastReviewed?: string; bodyHtml: string; faqs: WissenFaq[]; related: WissenRelated[]; }
 const wissenBase: Wissen[] = [
   {
     "slug": "wie-lange-bleiben-akupunkturnadeln-drin",
@@ -2333,6 +2333,60 @@ const wissenBase: Wissen[] = [
     "datePublished": "2026-09-24",
     "dateModified": "2026-09-24",
     "lastReviewed": "2026-09-24"
+  },
+  {
+    "slug": "narbenbehandlung",
+    "title": "Narbenbehandlung: Möglichkeiten, Massage & Grenzen",
+    "metaDesc": "Was kann man bei Narben tun? Von Narbenpflege und Massage bis zu medizinischen Verfahren. Welche Behandlung zu welcher Narbe passt und wann zuerst ärztlich abgeklärt werden sollte.",
+    "category": "Therapien verstehen",
+    "h1": "Narbenbehandlung: Was kann man wirklich verbessern?",
+    "lead": "Narben verändern sich über Monate. Manche bleiben kaum sichtbar, andere werden hart, empfindlich, gerötet, eingezogen oder beginnen zu jucken. Die richtige Behandlung hängt deshalb weniger vom Wort «Narbe» ab als von der Frage: Was genau stört?",
+    "readingTime": "6 Min.",
+    "ctaTitle": "Deine Narbe zieht, ist verhärtet oder stört bei Bewegung?",
+    "ctaText": "Schildere uns kurz, wo die Narbe liegt, wie alt sie ist und was genau dich daran stört. Wir sagen dir ehrlich, ob eine manuelle beziehungsweise TCM-orientierte Behandlung sinnvoll erscheint oder ob du zuerst dermatologisch oder chirurgisch vorstellig werden solltest.",
+    "ctaLabel": "Narbe besprechen",
+    "ctaHref": "/kontakt/",
+    "author": {
+      "name": "Corinna Reinhart",
+      "role": "TCM-Therapeutin · EMR & ASCA zertifiziert · Praxis St. Gallen",
+      "bio": "Corinna behandelt seit über zwölf Jahren Patientinnen mit Akupunktur, Tuina und Schröpfen. Schwerpunkte: chronische Schmerzen, Kopfschmerzen, Migräne und stressbedingte Beschwerden."
+    },
+    "reviewerName": "Corinna Reinhart",
+    "datePublished": "2026-09-29",
+    "dateModified": "2026-09-29",
+    "lastReviewed": "2026-09-29",
+    "bodyHtml": "\n<h2>Nicht jede Narbe braucht eine Behandlung</h2>\n<p>Eine unauffällige, weiche Narbe ohne Beschwerden muss nicht behandelt werden. Viele Narben verändern sich zudem noch über Monate und werden mit der Zeit flacher und blasser.</p>\n<p>Interessant wird eine Narbenbehandlung eher, wenn die Narbe:</p>\n<ul>\n<li>schmerzt oder zieht</li>\n<li>verhärtet ist</li>\n<li>die Beweglichkeit einschränkt</li>\n<li>deutlich verdickt oder wulstig wird</li>\n<li>auffällig pigmentiert ist</li>\n<li>nach einer Operation bei Bewegung spannt</li>\n<li>kosmetisch stark belastet</li>\n</ul>\n<h2>Welche Möglichkeiten gibt es?</h2>\n<h3>Narbenpflege</h3>\n<p>In der frühen Heilungsphase geht es zunächst darum, die Wunde korrekt ausheilen zu lassen und die Haut vor unnötiger Reizung und UV-Strahlung zu schützen. Was direkt nach einer Operation erlaubt ist, sollte mit der behandelnden Praxis abgesprochen werden.</p>\n<h3>Manuelle Narbenbehandlung</h3>\n<p>Nach abgeschlossener Wundheilung können bestimmte Narben durch Mobilisation und Massage behandelt werden, besonders wenn Haut und darunterliegendes Gewebe wenig verschieblich sind oder bei Bewegung ein deutliches Spannungsgefühl entsteht.</p>\n<h3>Dermatologische und medizinische Verfahren</h3>\n<p>Bei hypertrophen Narben, Keloiden, auffälliger Pigmentierung oder tieferen Narben können dermatologische oder chirurgische Verfahren sinnvoll sein. Welche Methode passt, hängt stark vom Narbentyp ab.</p>\n<p><a href=\"/haut/aknenarben/\">Aknenarben</a> sind wiederum ein eigenes Thema und werden je nach Form anders behandelt als eine Operationsnarbe.</p>\n<h2>Können Akupunktur oder TCM bei Narben eingesetzt werden?</h2>\n<p>In der TCM-Praxis werden Nadeln teilweise im Umfeld von Narben eingesetzt. Auch manuelle Verfahren können bei Spannungsgefühl oder eingeschränkter Gewebebeweglichkeit eine Rolle spielen.</p>\n<p>Wichtig ist dabei eine realistische Erwartung: Eine deutlich verdickte, stark eingezogene oder kosmetisch störende Narbe verschwindet nicht einfach durch Akupunktur.</p>\n<p>Wenn eine Narbe funktionell stört, etwa zieht oder Bewegung unangenehm macht, kann trotzdem geprüft werden, ob eine ergänzende Behandlung sinnvoll ist.</p>\n<div class=\"wa-callout\">\n<div class=\"wa-callout-label\">Wann zuerst medizinisch abklären?</div>\n<p>Eine frische Narbe mit zunehmender Rötung, Wärme, Schwellung, Sekret oder Fieber muss medizinisch beurteilt werden. Auch rasch wachsende, stark wulstige oder sich ungewöhnlich verändernde Narben gehören zunächst ärztlich beziehungsweise dermatologisch abgeklärt.</p>\n</div>\n<h2>Was wir vor einer Behandlung wissen möchten</h2>\n<ul>\n<li>Wo liegt die Narbe?</li>\n<li>Wie alt ist sie?</li>\n<li>Ist die Wunde vollständig verheilt?</li>\n<li>Ist das Hauptproblem Schmerz, Spannung, Beweglichkeit oder Optik?</li>\n<li>Gab es Komplikationen bei der Heilung?</li>\n<li>Wurde die Narbe bereits dermatologisch oder chirurgisch beurteilt?</li>\n</ul>\n<p>Diese Fragen entscheiden stärker über das sinnvolle Vorgehen als die Grösse der Narbe allein.</p>\n",
+    "faqs": [
+      {
+        "q": "Wann darf man eine Narbe massieren?",
+        "a": "Erst nach abgeschlossener Wundheilung und ohne Entzündungszeichen. Was direkt nach einer Operation erlaubt ist, sollte mit der behandelnden Praxis abgesprochen werden."
+      },
+      {
+        "q": "Kann man alte Narben noch behandeln?",
+        "a": "Auch ältere Narben können behandelt werden, wenn sie ziehen, verhärtet sind oder die Beweglichkeit stören. Was realistisch erreichbar ist, hängt vom Narbentyp ab und wird vorher ehrlich eingeordnet."
+      },
+      {
+        "q": "Kann Akupunktur eine Narbe entfernen?",
+        "a": "Nein. Eine deutlich verdickte, eingezogene oder kosmetisch störende Narbe verschwindet nicht durch Akupunktur. Bei funktionellen Beschwerden wie Spannung oder eingeschränkter Gewebebeweglichkeit kann eine ergänzende Behandlung geprüft werden."
+      }
+    ],
+    "related": [
+      {
+        "href": "/haut/aknenarben/",
+        "label": "Aknenarben",
+        "cat": "Hautthema"
+      },
+      {
+        "href": "/therapien/tuina/",
+        "label": "Tuina Massage",
+        "cat": "Therapie"
+      },
+      {
+        "href": "/therapien/akupunktur/",
+        "label": "Akupunktur",
+        "cat": "Therapie"
+      }
+    ]
   }
 ];
 

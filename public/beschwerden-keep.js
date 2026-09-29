@@ -40,5 +40,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "rotatorenmanschette", "wadenschmerzen", "sprunggelenkschmerzen", "schwere-beine", "achillessehnenentzuendung", "kalkschulter",
   // 27.09.2026 — acht neue Diagnose-Owner (extern gelieferter Content, medical-first):
   "fazialisparese", "morbus-meniere", "schlafapnoe", "lipoedem",
-  "rheumatoide-arthritis", "crps", "interkostalneuralgie", "bettnaessen"
+  "rheumatoide-arthritis", "crps", "interkostalneuralgie", "bettnaessen",
+  // 29.09.2026 — Kohorte: Hypothyreose-Owner (extern gelieferter Content):
+  "schilddruesenunterfunktion"
 ];
