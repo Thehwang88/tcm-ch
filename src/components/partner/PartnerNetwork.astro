@@ -1,0 +1,90 @@
+---
+import { NETWORK, type PartnerMarket } from '../../data/partner-markets';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+
+// Orbit geometry (SVG units). Ellipses use the width better than circles.
+const W = 820, H = 620, CX = W / 2, CY = H / 2;
+const RING = { A: { rx: 238, ry: 188 }, B: { rx: 350, ry: 270 } };
+const nodes = NETWORK.map((n) => {
+  const r = RING[n.tier];
+  const a = (n.angle * Math.PI) / 180;
+  const x = CX + r.rx * Math.cos(a);
+  const y = CY + r.ry * Math.sin(a);
+  const anchor = Math.cos(a) > 0.3 ? 'start' : Math.cos(a) < -0.3 ? 'end' : 'middle';
+  const dx = anchor === 'start' ? 14 : anchor === 'end' ? -14 : 0;
+  const dy = anchor === 'middle' ? (Math.sin(a) < 0 ? -16 : 24) : 5;
+  const focus = n.id === market.nodeId;
+  // Focus city: centred label above, status below — never clipped at the stage edge.
+  if (focus) return { ...n, x, y, anchor: 'middle', dx: 0, dy: -22, focus };
+  return { ...n, x, y, anchor, dx, dy, focus };
+});
+const focus = nodes.find((n) => n.focus)!;
+const statusText = { active: 'aktiv', planned: 'geplant', available: 'offen' } as const;
+const primary = nodes.filter((n) => n.tier === 'A');
+---
+<section class="pp-ch pp-net" id="kapitel-2" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Das Netzwerk</p>
+    <h2 class="pp-h2 pp-reveal">Ein Netzwerk. Ein freier Platz in {market.city}.</h2>
+
+    <div class="pn" data-network style={`--fx:${(focus.x / W) * 100}%;--fy:${(focus.y / H) * 100}%`}>
+      <div class="pn__stage">
+        <svg class="pn__svg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+          <ellipse class="pn__orbit" cx={CX} cy={CY} rx={RING.A.rx} ry={RING.A.ry} />
+          <ellipse class="pn__orbit pn__orbit--b" cx={CX} cy={CY} rx={RING.B.rx} ry={RING.B.ry} />
+          {primary.filter((n) => !n.focus).map((n) => (
+            <line class="pn__spoke" x1={CX} y1={CY} x2={n.x} y2={n.y} />
+          ))}
+          <line class="pn__spoke pn__spoke--focus" x1={CX} y1={CY} x2={focus.x} y2={focus.y} pathLength="1" />
+          <circle class="pn__core-ring" cx={CX} cy={CY} r="46" />
+          <circle class="pn__core" cx={CX} cy={CY} r="34" />
+          <text class="pn__core-t" x={CX} y={CY + 5} text-anchor="middle">TCM.ch</text>
+          {nodes.map((n) => (
+            <g class={`pn__node pn__node--${n.tier} is-${n.status}${n.focus ? ' is-focus' : ''}`}>
+              {n.focus && <circle class="pn__pulse" cx={n.x} cy={n.y} r="12" />}
+              <circle cx={n.x} cy={n.y} r={n.focus ? 10 : n.tier === 'A' ? 6 : 4} />
+              <text x={n.x + n.dx} y={n.y + n.dy} text-anchor={n.anchor}>{n.focus ? n.name.toUpperCase() : n.name}</text>
+              {n.focus && <text class="pn__sub" x={n.x + n.dx} y={n.y + 32} text-anchor={n.anchor}>{market.statusLabel}</text>}
+            </g>
+          ))}
+        </svg>
+        <button type="button" class="pn__hit" data-focus-open style={`left:var(--fx);top:var(--fy)`}>
+          <span class="pp-sr">{market.city} öffnen</span>
+        </button>
+      </div>
+
+      <!-- Mobile: lesbare Liste statt Orbit -->
+      <ul class="pn__list">
+        {[...primary].sort((a, b) => Number(b.focus) - Number(a.focus)).map((n) => n.focus ? (
+          <li class="is-focus"><button type="button" data-focus-open><span class="pn__dot"></span><b>{n.name}</b><em>{market.statusLabel}</em><span aria-hidden="true">→</span></button></li>
+        ) : (
+          <li class={`is-${n.status}`}><span class="pn__dot"></span>{n.name}<em>{statusText[n.status]}</em></li>
+        ))}
+      </ul>
+
+      <div class="pn__panel" data-focus-panel aria-hidden="true">
+        <p class="pp-label pp-label--green">{market.leadPartnerNote}</p>
+        <p class="pn__panel-t">TCM.ch <span class="pp-accent">{market.city}</span></p>
+        <ul class="pn__stack">
+          <li><b>1</b> Behandlungsraum</li>
+          <li><b>1</b> lokaler Partner</li>
+          <li><b>+</b> TCM.ch Demand Engine</li>
+        </ul>
+        <div class="pp-actions">
+          <a class="pp-btn" href="#kapitel-3">Wie das funktioniert <span aria-hidden="true">→</span></a>
+          <button type="button" class="pp-link" data-focus-close>Netzwerk</button>
+        </div>
+      </div>
+
+      <div class="pn__legend">
+        <span class="lg lg--active">aktiv</span>
+        <span class="lg lg--planned">geplant</span>
+        <span class="lg lg--available">offen</span>
+        <span class="lg lg--focus">{market.city}</span>
+        <button type="button" class="pp-link pn__cta" data-focus-open>{market.city} öffnen →</button>
+      </div>
+      <p class="pp-fine">Interne strategische Marktübersicht, keine externe Rangliste. Status ohne Gewähr, keine dauerhafte Gebietsexklusivität.</p>
+    </div>
+  </div>
+</section>

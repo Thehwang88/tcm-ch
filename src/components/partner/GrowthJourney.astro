@@ -1,0 +1,27 @@
+---
+const stages = [
+  { n: '01', t: 'Micro', rooms: 1, lines: ['1 Raum', '1 Inhaber-Therapeut:in'], scale: 'indikativ ~CHF 15–25k+ Standortumsatz / Monat' },
+  { n: '02', t: 'Partnerklinik', rooms: 3, lines: ['2–3 Räume', 'Inhaber:in + angestellte Therapeut:innen'], scale: 'indikativ ~CHF 30–75k+' },
+  { n: '03', t: 'Lokales Flagship', rooms: 5, lines: ['Grössere Klinik', 'nur wenn Nachfrage und Zahlen es tragen'], scale: '' },
+];
+---
+<section class="pp-ch pp-growth" id="kapitel-6" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Wachstum</p>
+    <h2 class="pp-h2 pp-reveal">Erst Nachfrage.<br /><span class="pp-accent">Dann Kapazität.</span></h2>
+    <ol class="gj" data-growth>
+      {stages.map((s, i) => (
+        <li style={`--i:${i}`}>
+          <div class="gj__rooms" aria-hidden="true">
+            {Array.from({ length: s.rooms }, (_, r) => <span style={`--r:${r}`}></span>)}
+          </div>
+          <p class="gj__n">{s.n}</p>
+          <p class="gj__t">{s.t}</p>
+          {s.lines.map((l) => <p class="gj__l">{l}</p>)}
+          {s.scale && <p class="gj__s">{s.scale}</p>}
+        </li>
+      ))}
+    </ol>
+    <p class="pp-fine">Mögliche Entwicklung, kein Automatismus. Jede Stufe setzt nachgewiesene Nachfrage und tragfähige Kosten voraus.</p>
+  </div>
+</section>

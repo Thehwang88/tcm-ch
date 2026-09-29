@@ -1,0 +1,11 @@
+---
+const steps = ['Business & Zahlen prüfen', 'Qualifikation & Dokumente', 'Standort & Partnergebiet', 'Partnervereinbarung', '90-Tage-Launch', 'Review & Skalierung'];
+---
+<div class="ns">
+  <p class="pp-label">Wenn wir beide weitermachen möchten</p>
+  <ol class="ns__list">
+    {steps.map((s, i) => (
+      <li style={`--i:${i}`}><span>{String(i + 1).padStart(2, '0')}</span>{s}</li>
+    ))}
+  </ol>
+</div>

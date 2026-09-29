@@ -1,0 +1,55 @@
+---
+import type { PartnerMarket } from '../../data/partner-markets';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+
+const partner = ['Therapie', 'Qualifikation', 'BAB / Anerkennungen', 'Behandlungsraum', 'Klinische Verantwortung', 'Lokale Unternehmerschaft', 'Später: eigenes Team'];
+const platform = ['Marke', 'Website & Standortseite', 'SEO', 'Google Ads / Performance Marketing', 'Tracking & Analytics', 'Lead Management', 'Telefon / Terminmanagement', 'Conversion-Optimierung', 'Reviews', 'Technologie', 'Zentrale Administration', 'Business Know-how', 'Recruiting-Unterstützung', 'Standortentwicklung', 'Wachstumsplanung'];
+const flow = [
+  { t: 'Google · SEO · TCM.ch · Empfehlungen', s: 'Sichtbarkeit' },
+  { t: 'Anfrage', s: 'Telefon, WhatsApp, Web' },
+  { t: 'Lead & Termin Management', s: 'zentral durch TCM.ch' },
+  { t: 'Termin', s: 'in deinem Kalender' },
+  { t: 'Behandlung vor Ort', s: 'durch dich' },
+  { t: 'Folgetermine & Reviews', s: '' },
+  { t: 'Wachstum', s: '' },
+];
+---
+<section class="pp-ch pp-roles" id="kapitel-3" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Wer bringt was</p>
+    <h2 class="pp-h2 pp-reveal">Du bringst die Therapie.<br /><span class="pp-muted">Wir bauen das System darum.</span></h2>
+
+    <div class="pr" data-roles>
+      <div class="pr__col">
+        <p class="pr__head">Du · lokaler Partner {market.city}</p>
+        <ul class="pr__list pr__list--you">
+          {partner.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div class="pr__mid" aria-hidden="true"><span></span><b>+</b><span></span></div>
+      <div class="pr__col">
+        <p class="pr__head">TCM.ch</p>
+        <ul class="pr__list pr__list--sys">
+          {platform.map((p, i) => <li style={`--i:${i}`}>{p}</li>)}
+        </ul>
+        <p class="pr__os"><span class="pr__os-line" aria-hidden="true"></span>TCM.ch Operating System</p>
+      </div>
+    </div>
+    <p class="pp-lead pr__claim pp-reveal">Du konzentrierst dich auf Patienten und deine lokale Praxis. Wir bauen und betreiben das System darum.</p>
+
+    <!-- Woher Patienten kommen -->
+    <div class="pd">
+      <p class="pp-label">Woher Patienten kommen</p>
+      <p class="pp-h3 pp-reveal">Wir bringen nicht nur eine Marke. Wir bauen Nachfrage und das System, das sie verarbeitet.</p>
+      <ol class="pd__flow" data-flow>
+        {flow.map((f, i) => (
+          <li style={`--i:${i}`} class={i === flow.length - 1 ? 'is-end' : ''}>
+            <span class="pd__dot" aria-hidden="true"></span>
+            <b>{f.t}</b>{f.s && <small>{f.s}</small>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

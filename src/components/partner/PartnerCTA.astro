@@ -1,0 +1,27 @@
+---
+import type { PartnerMarket } from '../../data/partner-markets';
+import PartnerNextSteps from './PartnerNextSteps.astro';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+const wa = `https://wa.me/${market.contact.whatsapp}?text=${encodeURIComponent(market.contact.message)}`;
+---
+<section class="pp-ch pp-cta" id="kapitel-7" data-chapter>
+  <div class="pp-wrap">
+    <PartnerNextSteps />
+
+    <div class="pc">
+      <div class="pc__vis" aria-hidden="true">
+        <div><span class="pc__room"></span><small>Heute<br />1 Raum · 1 Therapeut:in</small></div>
+        <i></i>
+        <div><span class="pc__room"></span><span class="pc__room is-soft"></span><span class="pc__room is-soft"></span><small>Potenzial<br />TCM.ch {market.city} · lokales Team</small></div>
+      </div>
+      <h2 class="pp-display pp-reveal">Lass uns TCM.ch<br /><span class="pp-accent">{market.city}</span> aufbauen.</h2>
+      <p class="pp-lead pp-reveal">Eine starke lokale Praxis. Unterstützt durch eine nationale Plattform.</p>
+      <p class="pp-p pp-muted">Das Potenzial: aus einem Behandlungsraum Schritt für Schritt einen starken lokalen TCM.ch Standort entwickeln.</p>
+      <div class="pp-actions">
+        <a class="pp-btn" href={wa} target="_blank" rel="noopener">{market.city} gemeinsam prüfen <span aria-hidden="true">→</span></a>
+        <a class="pp-link" href="#kapitel-5">Simulation nochmals öffnen</a>
+      </div>
+    </div>
+  </div>
+</section>

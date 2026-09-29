@@ -1,0 +1,46 @@
+---
+// Private partner presentation, e.g. /partner/bern/. noindex, nofollow; not linked
+// from public nav; excluded from sitemap.xml (gen-sitemap skips noindex pages).
+// New market = new entry in src/data/partner-markets.ts.
+import PartnerLayout from '../../layouts/PartnerLayout.astro';
+import PartnerHero from '../../components/partner/PartnerHero.astro';
+import PartnerNetwork from '../../components/partner/PartnerNetwork.astro';
+import PartnerRoles from '../../components/partner/PartnerRoles.astro';
+import PartnerLaunch from '../../components/partner/PartnerLaunch.astro';
+import ClinicSimulator from '../../components/partner/ClinicSimulator.astro';
+import GrowthJourney from '../../components/partner/GrowthJourney.astro';
+import PartnerCTA from '../../components/partner/PartnerCTA.astro';
+import { PARTNER_MARKETS, type PartnerMarket } from '../../data/partner-markets';
+
+export function getStaticPaths() {
+  return Object.values(PARTNER_MARKETS).map((market) => ({ params: { city: market.slug }, props: { market } }));
+}
+const { market } = Astro.props as { market: PartnerMarket };
+
+const chapters = [
+  { id: 'kapitel-1', label: 'Start' },
+  { id: 'kapitel-2', label: market.city },
+  { id: 'kapitel-3', label: 'Rollen' },
+  { id: 'kapitel-4', label: '90 Tage' },
+  { id: 'kapitel-5', label: 'Simulation' },
+  { id: 'kapitel-6', label: 'Wachstum' },
+  { id: 'kapitel-7', label: 'Nächste Schritte' },
+];
+---
+<PartnerLayout
+  title={`TCM.ch ${market.city} · Partner`}
+  description={`Private Partner-Präsentation: TCM.ch ${market.city} als lokaler Partner aufbauen.`}
+  chapters={chapters}
+>
+  <PartnerHero market={market} />
+  <PartnerNetwork market={market} />
+  <PartnerRoles market={market} />
+  <PartnerLaunch market={market} />
+  <ClinicSimulator market={market} />
+  <GrowthJourney />
+  <PartnerCTA market={market} />
+</PartnerLayout>
+
+<script>
+  import '../../scripts/partner-page';
+</script>
