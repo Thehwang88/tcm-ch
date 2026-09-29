@@ -6,26 +6,21 @@ const { market } = Astro.props;
 const days = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 const MAX_SLOTS = 15;
 const config = { model: market.model, assumptions: BASE_ASSUMPTIONS, scenarios: SCENARIOS, defaultScenario: market.defaultScenario };
-const pct = Math.round(market.model.marketingShare * 100);
-const mk = market.model.marketingShare * 100;
-const barVars = `--mk:${mk}%;--pa:${(100 - mk) * market.model.partnerShare}%;--tc:${(100 - mk) * market.model.platformShare}%`;
 
 const advanced = [
-  { key: 'rentPerRoom', label: 'Raummiete pro Raum / Monat', hint: 'inkl. Nebenkosten' },
-  { key: 'materialCosts', label: 'Material / Monat', hint: 'Nadeln, Verbrauchsmaterial' },
-  { key: 'otherOperatingCosts', label: 'Weitere lokale Betriebskosten', hint: 'Versicherung, Wäsche, Diverses' },
-  { key: 'ownSocialCosts', label: 'Eigene Sozialabgaben & Vorsorge', hint: 'abhängig von Rechtsform' },
-  { key: 'targetPartnerResult', label: 'Gewünschtes Ergebnis Partnerfirma', hint: 'optional, für Meilenstein' },
-  { key: 'centralOpsCost', label: 'Beispiel zentrale TCM.ch Betriebskosten', hint: 'Annahme, noch nicht validiert' },
-  { key: 'employeeFullCostFullTime', label: 'Vollkosten Anstellung bei 100 %', hint: 'Lohn + Arbeitgeberbeiträge, Beispiel' },
+  { key: 'rentPerRoom', label: 'Raummiete pro Raum / Monat' },
+  { key: 'materialCosts', label: 'Material / Monat' },
+  { key: 'otherOperatingCosts', label: 'Weitere lokale Kosten / Monat' },
+  { key: 'ownSocialCosts', label: 'Eigene Sozialabgaben & Vorsorge' },
+  { key: 'employeeFullCostFullTime', label: 'Vollkosten Anstellung bei 100 %' },
+  { key: 'centralOpsCost', label: 'Zentrale TCM.ch Betriebskosten (Beispiel)' },
+  { key: 'targetPartnerResult', label: 'Wunsch-Ergebnis Partnerfirma' },
 ];
-
 ---
 <section class="pp-ch pp-sim" id="kapitel-5" data-chapter>
   <div class="pp-wrap" id="sim" data-sim={JSON.stringify(config)}>
-    <p class="pp-label">Simulation</p>
-    <h2 class="pp-h2 pp-reveal">Baue dein TCM.ch {market.city}.</h2>
-    <p class="pp-lead pp-reveal">Du stellst Kapazität bereit. Gemeinsam arbeiten wir daran, sie zu füllen.</p>
+    <p class="pp-label pp-label--green" data-who>{market.city}</p>
+    <h2 class="pp-h2 pp-reveal">Wie möchtest du arbeiten?</h2>
 
     <div class="ps-scen" role="radiogroup" aria-label="Szenario">
       {SCENARIOS.map((s) => (
@@ -35,32 +30,45 @@ const advanced = [
     </div>
 
     <div class="ps">
-      <!-- Controls -->
       <div class="ps__controls">
-        <div class="ctl">
-          <label for="in-days">Arbeitstage / Woche</label>
-          <output data-v="days" for="in-days"></output>
-          <input id="in-days" type="range" min="3" max="5" step="1" data-in="workdaysPerWeek" />
-        </div>
-        <div class="ctl">
+        <!-- Hero-Control -->
+        <div class="hc">
           <label for="in-pat">Patienten / Tag</label>
-          <output data-v="patients" for="in-pat"></output>
+          <div class="hc__row">
+            <button type="button" class="hc__step" data-step="-1" aria-label="Ein:e Patient:in weniger">−</button>
+            <output data-v="patients" for="in-pat"></output>
+            <button type="button" class="hc__step" data-step="1" aria-label="Ein:e Patient:in mehr">+</button>
+          </div>
+          <p class="hc__word" data-v="rhythm"></p>
           <input id="in-pat" type="range" min="4" max="15" step="1" data-in="patientsPerDay" />
         </div>
-        <div class="ctl">
-          <label for="in-rev">Ø Umsatz / Behandlung</label>
-          <span class="ctl__num">CHF <input id="in-rev-n" type="number" min="60" max="300" step="1" inputmode="numeric" data-in="avgRevenuePerTreatment" aria-label="Ø Umsatz pro Behandlung in CHF" /></span>
-          <input id="in-rev" type="range" min="100" max="220" step="1" data-in="avgRevenuePerTreatment" />
-        </div>
-        <div class="ctl">
-          <label for="in-util">Auslastung</label>
-          <output data-v="util" for="in-util"></output>
-          <input id="in-util" type="range" min="50" max="100" step="5" data-in="utilization" data-scale="100" />
+
+        <p class="ps-assume">
+          <span data-v="days"></span> · <span data-v="util"></span> Auslastung · <span data-v="rev"></span> / Behandlung
+          <button type="button" class="pp-link pp-link--sm" data-more-toggle aria-expanded="false" aria-controls="ps-more">Anpassen</button>
+        </p>
+
+        <div class="ps-more" id="ps-more">
+          <div class="ctl">
+            <label for="in-days">Arbeitstage / Woche</label>
+            <output data-v="days" for="in-days"></output>
+            <input id="in-days" type="range" min="3" max="5" step="1" data-in="workdaysPerWeek" />
+          </div>
+          <div class="ctl">
+            <label for="in-util">Auslastung</label>
+            <output data-v="util" for="in-util"></output>
+            <input id="in-util" type="range" min="50" max="100" step="5" data-in="utilization" data-scale="100" />
+          </div>
+          <div class="ctl">
+            <label for="in-rev">Ø Umsatz / Behandlung</label>
+            <span class="ctl__num">CHF <input id="in-rev-n" type="number" min="60" max="300" step="1" inputmode="numeric" data-in="avgRevenuePerTreatment" aria-label="Ø Umsatz pro Behandlung in CHF" /></span>
+            <input id="in-rev" type="range" min="100" max="220" step="1" data-in="avgRevenuePerTreatment" />
+          </div>
         </div>
 
-        <details class="ps-adv" data-adv>
+        <details class="ps-adv x-only" data-adv>
           <summary>Weitere Annahmen</summary>
-          <p class="pp-fine">Leer = nicht erfasst. Wir rechnen keine Kosten, die du nicht siehst.</p>
+          <p class="pp-fine">Leer = noch nicht definiert. Wir rechnen keine Kosten, die du nicht siehst.</p>
           <div class="ps-adv__grid">
             <div class="ctl ctl--sm">
               <label for="in-d2">Pensum Therapeut:in 2</label>
@@ -69,102 +77,52 @@ const advanced = [
             </div>
             {advanced.map((a) => (
               <label class="fld">
-                <span>{a.label}<small>{a.hint}</small></span>
-                <span class="fld__in">CHF <input type="number" min="0" step="50" inputmode="numeric" placeholder="0" data-in={a.key} /></span>
+                <span>{a.label}</span>
+                <span class="fld__in">CHF <input type="number" min="0" step="50" inputmode="numeric" placeholder="–" data-in={a.key} /></span>
               </label>
             ))}
           </div>
+          <p class="pp-fine">Zentrale Kosten: Beispielannahme {formatCHF(BASE_ASSUMPTIONS.centralOpsCost)}, noch nicht validiert.</p>
         </details>
       </div>
 
-      <!-- Visual clinic -->
-      <div class="ps__visual" aria-live="polite">
+      <div class="ps__visual" aria-hidden="true">
+        <p class="pp-label">Deine verfügbare Kapazität</p>
         <div class="clinic" data-clinic>
-          <div class="room" data-room="1">
-            <div class="room__box"><span class="room__who" aria-hidden="true"></span></div>
-            <div class="room__meta"><b>Raum 1</b><small>Du · Inhaber:in</small></div>
-            <div class="cal" data-cal="1">{days.map((d, di) => (
+          <div class="cal" data-cal="1">
+            {days.map((d, di) => (
               <div class="cal__col" data-col={di}>
                 <span class="cal__d">{d}</span>
                 <div class="cal__slots">{Array.from({ length: MAX_SLOTS }, (_, si) => <i data-slot={si}></i>)}</div>
               </div>
-            ))}</div>
+            ))}
           </div>
-          <div class="room room--2" data-room="2" hidden>
-            <div class="room__box"><span class="room__who" aria-hidden="true"></span></div>
-            <div class="room__meta"><b>Raum 2</b><small>Therapeut:in, angestellt bei deiner Partnerfirma</small></div>
-            <div class="cal" data-cal="2">{days.map((d, di) => (
-              <div class="cal__col" data-col={di}>
-                <span class="cal__d">{d}</span>
-                <div class="cal__slots">{Array.from({ length: MAX_SLOTS }, (_, si) => <i data-slot={si}></i>)}</div>
-              </div>
-            ))}</div>
+          <div class="cal-2" data-room2 hidden>
+            <p class="cal-2__t">Raum 2 · Therapeut:in</p>
+            <div class="cal" data-cal="2">
+              {days.map((d, di) => (
+                <div class="cal__col" data-col={di}>
+                  <div class="cal__slots">{Array.from({ length: MAX_SLOTS }, (_, si) => <i data-slot={si}></i>)}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <p class="clinic__sum"><b data-out="treatments"></b> Behandlungen / Monat <span class="pp-muted">· <span data-out="capacity"></span> Kapazität</span></p>
-        <button type="button" class="pp-btn pp-btn--ghost" data-add-therapist aria-pressed="false">+ Therapeut:in hinzufügen</button>
-        <div class="struct" data-struct hidden>
-          <p class="struct__chain"><span>TCM.ch</span><i>B2B-Partnervereinbarung</i><span class="is-green">Partnerfirma {market.city}</span><i>beschäftigt</i><span>Du + angestellte Therapeut:in</span></p>
-          <p class="pp-fine">Die Anstellung läuft über deine lokale Partnerfirma, nicht über TCM.ch. Lohn, Sozialabgaben, Versicherungen, Ferien/Krankheit und HR liegen bei der Partnerfirma. TCM.ch liefert weiter Nachfrage, Marketing, Administration, Technologie und Recruiting-Unterstützung.</p>
-        </div>
+        <p class="clinic__sum"><b data-out="treatments"></b> Behandlungen / Monat</p>
       </div>
     </div>
+    <p class="ps-claim pp-reveal">Du stellst Kapazität bereit.<br /><span class="pp-muted">Gemeinsam arbeiten wir daran, sie zu füllen.</span></p>
 
-    <!-- Simple output first -->
-    <div class="po">
-      <div class="po__item"><span class="po__v" data-out="revenue"></span><span class="po__l">Standortumsatz / Monat</span></div>
-      <div class="po__item po__item--green"><span class="po__v" data-out="partner"></span><span class="po__l">Anteil Partnerfirma</span></div>
-      <div class="po__item"><span class="po__v" data-out="platform"></span><span class="po__l">TCM.ch Systemanteil</span></div>
+    <div class="res">
+      <span class="res__v" data-out="revenue"></span>
+      <span class="res__l">möglicher Standortumsatz / Monat</span>
+      <details class="res__note">
+        <summary>Modellrechnung <span class="pp-info" aria-hidden="true">i</span></summary>
+        <p class="pp-fine">Modellrechnung zur Veranschaulichung, kein Versprechen. Tatsächliche Umsätze, Kosten und Ergebnisse hängen unter anderem von Nachfrage, Auslastung, Standort, Kostenstruktur und individueller Tätigkeit ab. Berechnung: Arbeitstage × Patienten/Tag × 4 Wochen × Auslastung × Ø Umsatz.</p>
+      </details>
+      <p class="res__split x-only">Partnerfirma <b data-out="partner"></b><span>·</span>TCM.ch Systemanteil <b data-out="platform"></b></p>
+      <ul class="ms x-only" data-milestones aria-label="Meilensteine"></ul>
+      <p><a class="pp-link" href="#kapitel-6">Wie wird das verteilt? <span aria-hidden="true">↓</span></a></p>
     </div>
-
-    <ul class="ms" data-milestones aria-label="Meilensteine"></ul>
-
-    <div class="ps-reveals">
-      <button type="button" class="pp-link pp-link--big" aria-expanded="false" aria-controls="wf" data-toggle="wf">Berechnung ansehen <span aria-hidden="true">↓</span></button>
-    </div>
-
-    <!-- Waterfall -->
-    <div class="wf" id="wf" hidden>
-      <ol class="wf__steps">
-        <li><span class="wf__v" data-out="revenue"></span><span class="wf__l">Standortumsatz</span></li>
-        <li class="is-minus"><span class="wf__v" data-out="marketing"></span><span class="wf__l">{pct} % Marketing & Wachstum</span></li>
-        <li><span class="wf__v" data-out="base"></span><span class="wf__l">Verteilungsbasis</span></li>
-      </ol>
-      <div class="wf__bar" aria-hidden="true" style={barVars}><span class="wf__mk"></span><span class="wf__pa"></span><span class="wf__tc"></span></div>
-      <div class="wf__split">
-        <div><span class="pp-label pp-label--green">Partnerfirma · 2/3</span><span class="wf__big" data-out="partner"></span></div>
-        <div><span class="pp-label">TCM.ch · 1/3</span><span class="wf__big" data-out="platform"></span></div>
-      </div>
-      <p class="pp-fine">Der Split erfolgt nach der Marketing-Allokation. Der TCM.ch Systemanteil ist kein Gewinn, sondern deckt zuerst die zentralen Betriebskosten.</p>
-      <button type="button" class="pp-link pp-link--big" aria-expanded="false" aria-controls="costs" data-toggle="costs">Was bleibt tatsächlich? <span aria-hidden="true">↓</span></button>
-    </div>
-
-    <!-- Both sides have costs -->
-    <div class="bc" id="costs" hidden>
-      <div class="bc__col">
-        <p class="pp-label pp-label--green">Partnerfirma</p>
-        <dl>
-          <div class="bc__row bc__row--top"><dt>Partneranteil</dt><dd data-out="partner"></dd></div>
-          <div class="bc__row"><dt>Raum / Miete <small data-out="roomsLabel"></small></dt><dd data-cost="rent"></dd></div>
-          <div class="bc__row"><dt>Material</dt><dd data-cost="material"></dd></div>
-          <div class="bc__row"><dt>Lokale Betriebskosten</dt><dd data-cost="other"></dd></div>
-          <div class="bc__row"><dt>Eigene Sozialabgaben & Vorsorge</dt><dd data-cost="social"></dd></div>
-          <div class="bc__row" data-emp-row hidden><dt>Anstellung Therapeut:in 2</dt><dd data-cost="employee"></dd></div>
-          <div class="bc__row bc__row--res"><dt>Ergebnis Partnerfirma<small>vor persönlichen Steuern, je nach Rechtsform</small></dt><dd data-out="partnerResult"></dd></div>
-        </dl>
-        <button type="button" class="pp-link" data-open-adv data-partner-hint>Kosten unter «Weitere Annahmen» erfassen</button>
-      </div>
-      <div class="bc__col">
-        <p class="pp-label">TCM.ch</p>
-        <dl>
-          <div class="bc__row bc__row--top"><dt>Systemanteil</dt><dd data-out="platform"></dd></div>
-          <div class="bc__row"><dt>Zentrale Betriebskosten<small>Beispielannahme · Lead-/Telefonmanagement, Terminadministration, Kampagnen, Technologie, Tracking & Reporting, Partner Support, Operations</small></dt><dd data-out="centralOps"></dd></div>
-          <div class="bc__row bc__row--res"><dt>TCM.ch Deckungsbeitrag<small>vor weiteren zentralen Kosten</small></dt><dd data-out="platformContribution"></dd></div>
-        </dl>
-        <p class="pp-fine">Beispiel {formatCHF(BASE_ASSUMPTIONS.centralOpsCost)} pro reifem Standort, noch nicht validiert. Anpassbar unter «Weitere Annahmen».</p>
-      </div>
-    </div>
-
-    <p class="pp-fine ps-disclaimer">Modellrechnung zur Veranschaulichung. Tatsächliche Umsätze, Kosten und Ergebnisse hängen unter anderem von Nachfrage, Auslastung, Standort, Kostenstruktur und individueller Tätigkeit ab. Berechnung: Arbeitstage × Patienten/Tag × 4 Wochen × Auslastung × Ø Umsatz.</p>
   </div>
 </section>

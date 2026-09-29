@@ -1,0 +1,55 @@
+---
+import type { PartnerMarket } from '../../data/partner-markets';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+
+const caps = [
+  { id: 'nachfrage', t: 'Nachfrage', items: ['SEO', 'Google Ads', 'Content', 'Marke'] },
+  { id: 'conversion', t: 'Conversion', items: ['Lead Management', 'Telefon', 'Terminmanagement', 'Reviews'] },
+  { id: 'betrieb', t: 'Betrieb', items: ['Technologie', 'Tracking', 'Reporting', 'Administration'] },
+  { id: 'wachstum', t: 'Wachstum', items: ['Recruiting', 'Kapazitätsplanung', 'Standortentwicklung', 'Business Support'] },
+];
+const journey = [
+  { t: 'Google · SEO · TCM.ch · Empfehlungen' },
+  { t: 'Anfrage' },
+  { t: 'Lead + Termin', k: 'TCM.ch' },
+  { t: 'Behandlung', k: market.city, green: true },
+  { t: 'Folgetermine' },
+  { t: 'Reviews' },
+  { t: 'Wachstum', green: true },
+];
+---
+<section class="pp-ch pp-system" id="kapitel-7" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Das System</p>
+    <h2 class="pp-h2 pp-reveal">Was läuft im Hintergrund?</h2>
+
+    <div class="cap" data-inview>
+      <ul class="cap__grid">
+        {caps.map((c, i) => (
+          <li style={`--i:${i}`}>
+            <button type="button" class="cap__k" aria-expanded="false" aria-controls={`cap-${c.id}`} data-cap>{c.t}</button>
+            <p class="cap__sub" id={`cap-${c.id}`}>{c.items.join(' · ')}</p>
+          </li>
+        ))}
+      </ul>
+      <svg class="cap__lines" viewBox="0 0 400 70" preserveAspectRatio="none" aria-hidden="true">
+        {[50, 150, 250, 350].map((x) => <path d={`M${x} 0 C ${x} 40, 200 30, 200 70`} pathLength="1" />)}
+      </svg>
+      <p class="cap__os"><span class="nc">TCM.ch</span> Operating System</p>
+    </div>
+    <p class="pp-statement sys__claim pp-reveal">Du behandelst Patienten und führst deine lokale Praxis.<br /><span class="pp-muted">Wir bauen und betreiben das System darum.</span></p>
+
+    <div class="pj">
+      <p class="pp-label">Der Weg eines Patienten</p>
+      <ol class="pj__flow" data-inview>
+        {journey.map((j, i) => (
+          <li style={`--i:${i}`} class={j.green ? 'is-green' : ''}>
+            <span class="pj__dot" aria-hidden="true"></span>
+            {j.k && <small>{j.k}</small>}<b>{j.t}</b>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

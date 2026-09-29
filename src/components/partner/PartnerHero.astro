@@ -5,8 +5,7 @@ const { market } = Astro.props;
 ---
 <section class="pp-ch pp-hero" id="kapitel-1" data-chapter>
   <div class="pp-wrap">
-    <p class="pp-label">Partner Opportunity · {market.city}</p>
-    <p class="pp-for" data-candidate hidden></p>
+    <p class="pp-label"><span class="nc">TCM.ch</span> Partner · {market.city}</p>
     <h1 class="pp-display pp-reveal">
       Deine Praxis.<br />
       Unsere Plattform.<br />
@@ -17,24 +16,16 @@ const { market } = Astro.props;
       und dem System einer starken Plattform im Hintergrund.
     </p>
     <div class="pp-actions pp-reveal">
-      <a class="pp-btn" href="#kapitel-2">{market.city} entdecken <span aria-hidden="true">→</span></a>
-      <a class="pp-link" href="#kapitel-3">Modell ansehen</a>
+      <a class="pp-btn" href="#kapitel-2">{market.city} entdecken <span aria-hidden="true">↓</span></a>
     </div>
 
-    <!-- 1 Raum → Nachfrage → wachsende Praxis -->
-    <svg class="pp-hero__vis" viewBox="0 0 560 90" role="img" aria-label="Ein Behandlungsraum, Nachfrage, eine wachsende Praxis">
-      <rect class="hv-room" x="1" y="21" width="48" height="48" rx="6" />
-      <circle class="hv-dot" cx="25" cy="45" r="5" />
-      <line class="hv-line" x1="70" y1="45" x2="400" y2="45" />
-      <circle class="hv-p hv-p1" cx="70" cy="45" r="3" />
-      <circle class="hv-p hv-p2" cx="70" cy="45" r="3" />
-      <circle class="hv-p hv-p3" cx="70" cy="45" r="3" />
-      <rect class="hv-grow hv-g1" x="420" y="21" width="40" height="48" rx="6" />
-      <rect class="hv-grow hv-g2" x="466" y="21" width="40" height="48" rx="6" />
-      <rect class="hv-grow hv-g3" x="512" y="21" width="40" height="48" rx="6" />
+    <!-- TCM.ch → Bern: eine einzige Verbindung -->
+    <svg class="hv" viewBox="0 0 360 64" data-inview role="img" aria-label={`TCM.ch verbunden mit ${market.city}`}>
+      <circle class="hv__core" cx="12" cy="24" r="7" />
+      <line class="hv__line" x1="26" y1="24" x2="326" y2="24" pathLength="1" />
+      <circle class="hv__city" cx="340" cy="24" r="9" />
+      <text x="5" y="58">TCM.ch</text>
+      <text class="hv__city-t" x="349" y="58" text-anchor="end">{market.city}</text>
     </svg>
-    <div class="pp-hero__cap" aria-hidden="true">
-      <span>1 Raum</span><span>Nachfrage</span><span>Wachsende Praxis</span>
-    </div>
   </div>
 </section>

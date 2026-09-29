@@ -24,7 +24,7 @@ export const BASE_ASSUMPTIONS: Omit<SimInputs, 'workdaysPerWeek' | 'patientsPerD
   targetPartnerResult: 0,
   secondTherapist: false,
   secondTherapistDays: 4,
-  employeeFullCostFullTime: 8000, // Beispielannahme Arbeitgeber-Vollkosten 100 %, editierbar
+  employeeFullCostFullTime: 0,    // 0 = noch nicht definiert (keine erfundenen Lohnkosten)
 };
 
 export type ScenarioKey = 'konservativ' | 'ziel' | 'hoch';
@@ -32,7 +32,7 @@ export interface Scenario { key: ScenarioKey; label: string; workdaysPerWeek: nu
 
 export const SCENARIOS: Scenario[] = [
   { key: 'konservativ', label: 'Konservativ', workdaysPerWeek: 4, patientsPerDay: 6, avgRevenuePerTreatment: 156, utilization: 0.6 },
-  { key: 'ziel', label: 'Ziel', workdaysPerWeek: 5, patientsPerDay: 8, avgRevenuePerTreatment: 156, utilization: 0.8 },
+  { key: 'ziel', label: 'Zielmodell', workdaysPerWeek: 5, patientsPerDay: 8, avgRevenuePerTreatment: 156, utilization: 0.8 },
   { key: 'hoch', label: 'Hohe Auslastung', workdaysPerWeek: 5, patientsPerDay: 8, avgRevenuePerTreatment: 156, utilization: 1 },
 ];
 

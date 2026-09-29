@@ -2,12 +2,16 @@
 // Private partner presentation, e.g. /partner/bern/. noindex, nofollow; not linked
 // from public nav; excluded from sitemap.xml (gen-sitemap skips noindex pages).
 // New market = new entry in src/data/partner-markets.ts.
+// Modes: ?modus=praesentation (story, minimal UI) · default Entdecken (full simulator).
 import PartnerLayout from '../../layouts/PartnerLayout.astro';
 import PartnerHero from '../../components/partner/PartnerHero.astro';
+import PartnerWhy from '../../components/partner/PartnerWhy.astro';
 import PartnerNetwork from '../../components/partner/PartnerNetwork.astro';
-import PartnerRoles from '../../components/partner/PartnerRoles.astro';
+import PartnerStart from '../../components/partner/PartnerStart.astro';
 import PartnerLaunch from '../../components/partner/PartnerLaunch.astro';
 import ClinicSimulator from '../../components/partner/ClinicSimulator.astro';
+import MoneyFlow from '../../components/partner/MoneyFlow.astro';
+import PartnerSystem from '../../components/partner/PartnerSystem.astro';
 import GrowthJourney from '../../components/partner/GrowthJourney.astro';
 import PartnerCTA from '../../components/partner/PartnerCTA.astro';
 import { PARTNER_MARKETS, type PartnerMarket } from '../../data/partner-markets';
@@ -18,13 +22,15 @@ export function getStaticPaths() {
 const { market } = Astro.props as { market: PartnerMarket };
 
 const chapters = [
-  { id: 'kapitel-1', label: 'Start' },
-  { id: 'kapitel-2', label: market.city },
-  { id: 'kapitel-3', label: 'Rollen' },
-  { id: 'kapitel-4', label: '90 Tage' },
-  { id: 'kapitel-5', label: 'Simulation' },
-  { id: 'kapitel-6', label: 'Wachstum' },
-  { id: 'kapitel-7', label: 'Nächste Schritte' },
+  { id: 'kapitel-1', label: 'Die Chance' },
+  { id: 'kapitel-2', label: 'Warum TCM.ch' },
+  { id: 'kapitel-3', label: market.city },
+  { id: 'kapitel-4', label: 'Klein starten' },
+  { id: 'kapitel-5', label: 'Deine Praxis' },
+  { id: 'kapitel-6', label: 'Die Zahlen' },
+  { id: 'kapitel-7', label: 'Das System' },
+  { id: 'kapitel-8', label: 'Wachstum' },
+  { id: 'kapitel-9', label: `${market.city} bauen` },
 ];
 ---
 <PartnerLayout
@@ -33,11 +39,14 @@ const chapters = [
   chapters={chapters}
 >
   <PartnerHero market={market} />
+  <PartnerWhy />
   <PartnerNetwork market={market} />
-  <PartnerRoles market={market} />
+  <PartnerStart market={market} />
   <PartnerLaunch market={market} />
   <ClinicSimulator market={market} />
-  <GrowthJourney />
+  <MoneyFlow market={market} />
+  <PartnerSystem market={market} />
+  <GrowthJourney market={market} />
   <PartnerCTA market={market} />
 </PartnerLayout>
 

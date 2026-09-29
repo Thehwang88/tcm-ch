@@ -1,0 +1,14 @@
+---
+// Abstract floor-plan tile for one treatment room (Start + Growth chapters).
+interface Props { label?: string; sub?: string; variant?: 'owner' | 'team'; attrs?: Record<string, string> }
+const { label, sub, variant = 'owner', attrs = {} } = Astro.props;
+---
+<figure class={`rt rt--${variant}`} {...attrs}>
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <rect class="rt__wall" x="2" y="2" width="116" height="116" rx="10" />
+    <path class="rt__door" d="M2 84 A 24 24 0 0 1 26 108" />
+    <rect class="rt__bed" x="58" y="22" width="34" height="64" rx="6" />
+    <circle class="rt__who" cx="40" cy="52" r="7" />
+  </svg>
+  {label && <figcaption><b>{label}</b>{sub && <small>{sub}</small>}</figcaption>}
+</figure>

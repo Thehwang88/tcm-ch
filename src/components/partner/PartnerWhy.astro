@@ -1,0 +1,35 @@
+---
+const principles = [
+  { t: 'Klein starten.', d: 'Keine grosse Praxis, bevor Nachfrage da ist.' },
+  { t: 'Nachfrage beweisen.', d: 'Erst Patienten und Auslastung aufbauen.' },
+  { t: 'Dann wachsen.', d: 'Mehr Räume und Therapeut:innen erst, wenn der Markt sie braucht.' },
+];
+---
+<section class="pp-ch pp-why" id="kapitel-2" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Warum <span class="nc">TCM.ch</span></p>
+    <h2 class="pp-statement pp-reveal">Gute Therapie allein füllt noch keine Praxis.</h2>
+    <p class="pp-lead pp-reveal">
+      Viele hervorragende Therapeut:innen sind jahrelang gleichzeitig Behandler, Marketer,
+      Telefonzentrale und Unternehmer. Wir glauben, dass es besser geht.
+    </p>
+
+    <p class="eq" data-inview aria-label="Therapie plus Nachfrage plus System ergibt TCM.ch">
+      <span style="--i:0">Therapie</span><i style="--i:1">+</i><span style="--i:2">Nachfrage</span><i style="--i:3">+</i><span style="--i:4">System</span><i style="--i:5">→</i><b style="--i:6">TCM.ch</b>
+    </p>
+
+    <p class="pp-lead pp-reveal">Damit du dich auf das konzentrieren kannst, was du am besten kannst: <strong>Menschen behandeln.</strong></p>
+
+    <div class="why__turn">
+      <p class="pp-p pp-reveal">Was wir in unseren eigenen Standorten gelernt haben, möchten wir mit starken lokalen Partnern skalieren.</p>
+      <p class="pp-statement pp-reveal">Nicht möglichst viele eigene Praxen.<br /><span class="pp-accent">Sondern ein System für gute Praxen.</span></p>
+    </div>
+
+    <ol class="pr3" data-inview>
+      {principles.map((p, i) => (
+        <li style={`--i:${i}`}><span>{String(i + 1).padStart(2, '0')}</span><b>{p.t}</b><small>{p.d}</small></li>
+      ))}
+    </ol>
+    <p class="pp-h2 why__rule pp-reveal">Erst Nachfrage.<br /><span class="pp-accent">Dann Kapazität.</span></p>
+  </div>
+</section>

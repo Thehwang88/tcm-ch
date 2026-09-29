@@ -5,23 +5,29 @@ interface Props { market: PartnerMarket }
 const { market } = Astro.props;
 const wa = `https://wa.me/${market.contact.whatsapp}?text=${encodeURIComponent(market.contact.message)}`;
 ---
-<section class="pp-ch pp-cta" id="kapitel-7" data-chapter>
+<section class="pp-ch pp-end" id="kapitel-9" data-chapter>
   <div class="pp-wrap">
+    <!-- Sitzungs-Zusammenfassung aus den aktuellen Simulatorwerten (nichts wird gespeichert) -->
+    <div class="sum pp-reveal">
+      <p class="pp-label">Dein Modell</p>
+      <p class="sum__city" data-who>{market.city}</p>
+      <p class="sum__vals"><span data-v="days"></span> / Woche · <span data-v="patients"></span> Patienten / Tag · <span data-v="util"></span> Auslastung</p>
+      <p class="sum__v" data-out="revenue"></p>
+      <p class="sum__l">simulierter Standortumsatz / Monat</p>
+      <p class="pp-p sum__note">Das ist kein Versprechen. Es ist der Ausgangspunkt für unser gemeinsames Gespräch.</p>
+    </div>
+
     <PartnerNextSteps />
 
-    <div class="pc">
-      <div class="pc__vis" aria-hidden="true">
-        <div><span class="pc__room"></span><small>Heute<br />1 Raum · 1 Therapeut:in</small></div>
-        <i></i>
-        <div><span class="pc__room"></span><span class="pc__room is-soft"></span><span class="pc__room is-soft"></span><small>Potenzial<br />TCM.ch {market.city} · lokales Team</small></div>
-      </div>
-      <h2 class="pp-display pp-reveal">Lass uns TCM.ch<br /><span class="pp-accent">{market.city}</span> aufbauen.</h2>
+    <div class="fin">
+      <p class="pp-label"><span class="nc">TCM.ch</span> · {market.city}</p>
+      <h2 class="pp-display pp-reveal">Lass uns herausfinden,<br />ob wir das <span class="pp-accent">gemeinsam</span> bauen.</h2>
       <p class="pp-lead pp-reveal">Eine starke lokale Praxis. Unterstützt durch eine nationale Plattform.</p>
-      <p class="pp-p pp-muted">Das Potenzial: aus einem Behandlungsraum Schritt für Schritt einen starken lokalen TCM.ch Standort entwickeln.</p>
-      <div class="pp-actions">
+      <div class="pp-actions pp-reveal">
         <a class="pp-btn" href={wa} target="_blank" rel="noopener">{market.city} gemeinsam prüfen <span aria-hidden="true">→</span></a>
         <a class="pp-link" href="#kapitel-5">Simulation nochmals öffnen</a>
       </div>
+      <img class="fin__mark" src="/images/logo/tcm-kliniken-logo-wordmark.svg" alt="TCM.ch" width="82" height="40" loading="lazy" />
     </div>
   </div>
 </section>

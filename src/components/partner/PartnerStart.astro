@@ -1,0 +1,28 @@
+---
+import type { PartnerMarket } from '../../data/partner-markets';
+import RoomTile from './RoomTile.astro';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+---
+<section class="pp-ch pp-start" id="kapitel-4" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Start klein</p>
+    <div class="duo pp-reveal">
+      <p><span class="duo__k">Du</span><span class="duo__v">Therapie + lokale Unternehmerschaft</span></p>
+      <p><span class="duo__k"><span class="nc">TCM.ch</span></span><span class="duo__v">Nachfrage + System</span></p>
+    </div>
+    <p class="pp-statement pp-reveal">Gemeinsam entsteht die Praxis.</p>
+
+    <div class="st" data-inview>
+      <RoomTile />
+      <ul class="st__list">
+        <li style="--i:0"><b>1</b> Raum</li>
+        <li style="--i:1"><b>1</b> Therapeut:in</li>
+        <li style="--i:2"><b>1</b> Standort · {market.city}</li>
+        <li style="--i:3" class="is-green"><b>+</b> TCM.ch Demand Engine</li>
+      </ul>
+    </div>
+    <p class="pp-statement pp-reveal">Mehr braucht es am Anfang nicht.</p>
+    <p class="pp-lead pp-reveal">Keine fünf Räume. Kein grosses Team. Keine unnötigen Fixkosten.<br />Wir beweisen zuerst, dass Nachfrage da ist.</p>
+  </div>
+</section>

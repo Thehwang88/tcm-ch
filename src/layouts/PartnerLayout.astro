@@ -38,13 +38,11 @@ const { title, description = '', chapters } = Astro.props;
         <a class="pp-logo" href="#kapitel-1" aria-label="TCM.ch – zum Anfang">
           <img src="/images/logo/tcm-kliniken-logo-wordmark.svg" alt="TCM.ch" width="82" height="40" />
         </a>
-        <nav class="pp-progress" aria-label="Kapitel">
-          <ol>
-            {chapters.map((c, i) => (
-              <li><a href={`#${c.id}`} data-chapter-link={c.id} aria-label={`${String(i + 1).padStart(2, '0')} ${c.label}`}><span></span></a></li>
-            ))}
-          </ol>
-          <span class="pp-progress__label" aria-live="polite"><b data-chapter-num>01</b> <span data-chapter-name>{chapters[0].label}</span></span>
+        <nav class="pp-progress" aria-label="Fortschritt" data-names={JSON.stringify(chapters.map((c) => c.label))}>
+          <b data-chapter-num>01</b>
+          <span class="pp-progress__track" aria-hidden="true"><span data-progress-fill></span></span>
+          <span class="pp-progress__total">{String(chapters.length).padStart(2, '0')}</span>
+          <span class="pp-progress__label" data-chapter-name aria-live="polite">{chapters[0].label}</span>
         </nav>
         <div class="pp-mode" role="group" aria-label="Modus">
           <button type="button" data-mode="praesentation" aria-pressed="false">Präsentation</button>

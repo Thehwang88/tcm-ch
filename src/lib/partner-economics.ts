@@ -111,8 +111,8 @@ export function simulate(i: SimInputs, model: EconomicsModel): SimResult {
     revenue,
     ...split,
     partnerCosts: { rent, material: i.materialCosts, other: i.otherOperatingCosts, social: i.ownSocialCosts, employee, total },
-    // Ohne erfasste Raumkosten ist ein "Ergebnis" nicht aussagekräftig.
-    partnerCostsEntered: i.rentPerRoom > 0,
+    // Ohne erfasste Raum- (und ggf. Anstellungs-)kosten ist ein "Ergebnis" nicht aussagekräftig.
+    partnerCostsEntered: i.rentPerRoom > 0 && (!i.secondTherapist || i.employeeFullCostFullTime > 0),
     partnerResult: split.partnerShare - total,
     platformContribution: split.platformShare - i.centralOpsCost,
   };

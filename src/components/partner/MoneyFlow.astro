@@ -1,0 +1,63 @@
+---
+import type { PartnerMarket } from '../../data/partner-markets';
+interface Props { market: PartnerMarket }
+const { market } = Astro.props;
+const m = market.model;
+const mk = m.marketingShare * 100;
+const vars = `--mk:${mk}fr;--pa:${(100 - mk) * m.partnerShare}fr;--tc:${(100 - mk) * m.platformShare}fr`;
+const pct = Math.round(mk);
+const tcmItems = ['Lead- & Telefonmanagement', 'Terminadministration', 'Marketing Operations', 'Technologie', 'Reporting', 'Partner Support'];
+const partnerCosts = [
+  { key: 'rent', label: 'Raum' },
+  { key: 'material', label: 'Material' },
+  { key: 'other', label: 'Lokale Kosten' },
+  { key: 'social', label: 'Sozialabgaben & Vorsorge' },
+];
+---
+<section class="pp-ch pp-money" id="kapitel-6" data-chapter>
+  <div class="pp-wrap">
+    <p class="pp-label">Die Zahlen</p>
+    <h2 class="pp-h2 pp-reveal">So fliesst der Umsatz.</h2>
+
+    <!-- Signatur: ein Balken verliert 10 % und teilt sich 2/3 : 1/3 -->
+    <div class="mf" data-flowbar style={vars} data-stage="0">
+      <div class="mf__row mf__row--top">
+        <p class="mf__lab mf__lab--rev"><b data-out="revenue"></b><span>Standortumsatz</span></p>
+        <p class="mf__lab mf__lab--mk"><b data-out="marketingPlain"></b><span>{pct} % Marketing & Wachstum</span></p>
+      </div>
+      <div class="mf__bar" aria-hidden="true"><span class="mf__mk"></span><span class="mf__pa"></span><span class="mf__tc"></span></div>
+      <div class="mf__row mf__row--bottom">
+        <p class="mf__lab mf__lab--base"><b data-out="base"></b><span>Verteilungsbasis</span></p>
+        <p class="mf__lab mf__lab--pa"><b data-out="partner"></b><span>Partnerfirma · 2/3</span></p>
+        <p class="mf__lab mf__lab--tc"><b data-out="platform"></b><span>TCM.ch · 1/3</span></p>
+      </div>
+      <button type="button" class="mf__replay" data-replay>Nochmals abspielen</button>
+    </div>
+    <p class="pp-lead mf__note pp-reveal">Der TCM.ch Systemanteil ist kein Gewinn.<br /><span class="pp-muted">Beide Seiten führen ein echtes Geschäft – mit echten Kosten.</span></p>
+
+    <details class="bc-wrap" data-explore-open>
+      <summary>Was bleibt tatsächlich? <span aria-hidden="true">↓</span></summary>
+      <div class="bc">
+        <div class="bc__col">
+          <p class="pp-label pp-label--green">Deine Firma</p>
+          <p class="bc__top" data-out="partner"></p>
+          <ul class="bc__list">
+            {partnerCosts.map((c) => <li><span>{c.label}</span><em data-cost={c.key}></em></li>)}
+            <li data-emp-row hidden><span>Anstellung Therapeut:in 2</span><em data-cost="employee"></em></li>
+          </ul>
+          <p class="bc__res"><span>Ergebnis Partnerfirma<small>vor persönlichen Steuern</small></span><b data-out="partnerResult"></b></p>
+          <button type="button" class="pp-link pp-link--sm" data-define>Gemeinsam festlegen <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="bc__col">
+          <p class="pp-label">TCM.ch</p>
+          <p class="bc__top" data-out="platform"></p>
+          <p class="bc__items">{tcmItems.join(' · ')}</p>
+          <ul class="bc__list">
+            <li><span>Zentrale Betriebskosten<small>Beispielannahme, nicht validiert</small></span><em data-out="centralOps"></em></li>
+          </ul>
+          <p class="bc__res"><span>TCM.ch Deckungsbeitrag</span><b data-out="platformContribution"></b></p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>

@@ -8,41 +8,34 @@ const months = Array.from({ length: m.launchMonths }, (_, i) => i + 1);
 const total = m.launchMonthlyAdBudget * m.launchMonths;
 const pct = Math.round(m.marketingShare * 100);
 ---
-<section class="pp-ch pp-launch" id="kapitel-4" data-chapter>
+<!-- Teil von Kapitel 04 (Start klein), daher kein eigenes data-chapter -->
+<section class="pp-ch pp-launch" id="launch">
   <div class="pp-wrap">
-    <p class="pp-label">Start</p>
-    <h2 class="pp-h2 pp-reveal">{m.launchMonths * 30} Tage, um Nachfrage zu beweisen.</h2>
-    <p class="pp-lead pp-reveal">Klein anfangen. Erst Nachfrage beweisen, dann Fixkosten hinzufügen.</p>
+    <p class="pp-label">{m.launchMonths * 30}-Tage-Launch</p>
+    <p class="ln__big pp-reveal">{formatCHF(total)}</p>
+    <p class="ln__sub pp-reveal">{formatCHF(m.launchMonthlyAdBudget)} × {m.launchMonths} Monate</p>
 
-    <div class="pl" data-launch>
-      <ol class="pl__months">
-        {months.map((n) => (
-          <li style={`--i:${n - 1}`}>
-            <span class="pl__m">Monat {n}</span>
-            <span class="pl__v">{formatCHF(m.launchMonthlyAdBudget)}</span>
-            <span class="pl__bar" aria-hidden="true"></span>
-          </li>
-        ))}
-      </ol>
-      <div class="pl__sum">
-        <span class="pl__sum-v">{formatCHF(total)}</span>
-        <span class="pl__sum-l">Launch-Marketing für deinen Standort</span>
-      </div>
+    <ol class="ln__tl" data-inview>
+      {months.map((n) => (
+        <li style={`--i:${n - 1}`}><span>Monat {n}</span><b>{formatCHF(m.launchMonthlyAdBudget)}</b></li>
+      ))}
+    </ol>
+
+    <p class="pp-h3 pp-reveal">100 % Launch-Marketing für TCM.ch {market.city}.</p>
+    <p class="pp-fine">Keine Eintritts- oder Franchisegebühr.</p>
+
+    <div class="ln__after pp-reveal">
+      <p class="pp-label">Danach</p>
+      <p class="ln__rule"><span class="pp-accent">{pct} %</span> des Standortumsatzes<br />finanziert Marketing & Wachstum.</p>
     </div>
 
-    <div class="pl__explain">
-      <div>
-        <p class="pp-p"><b>Werbebudget, keine Gebühr.</b> Die {formatCHF(total)} fliessen als standortbezogene Werbung in die Nachfrage für deine Praxis. Kein Eintrittsgeld, keine Franchise-Gebühr, kein Preis für den Zugang zu TCM.ch.</p>
+    <details class="pp-more" data-explore-open>
+      <summary>Wie funktioniert das? <span aria-hidden="true">→</span></summary>
+      <div class="pp-more__body">
+        <p class="pp-p">Die {formatCHF(total)} sind standortbezogenes Werbebudget für die Nachfrage in {market.city}, kein Preis für den Zugang zu TCM.ch.</p>
+        <p class="pp-p">TCM.ch bringt das System ein: Setup, Kampagnen, Standortseite, Tracking, Lead Management, Terminadministration, Marke und Technologie.</p>
+        <p class="pp-p">Ab Monat {m.launchMonths + 1} wird das Wachstumsbudget zentral nach Partnermodell gesteuert und je nach Bedarf eingesetzt oder reserviert. Bei entsprechender Nachfrage kann sich das laufende Marketing zunehmend aus dem Standortgeschäft tragen.</p>
       </div>
-      <div>
-        <p class="pp-p"><b>TCM.ch bringt das System ein:</b> Setup, Kampagnen, Standortseite, Tracking, Lead Management, Terminadministration, Marke, Technologie und Business Know-how.</p>
-      </div>
-    </div>
-
-    <div class="pl__after pp-reveal">
-      <p class="pp-label">Ab Monat {m.launchMonths + 1}</p>
-      <p class="pl__rule"><span class="pp-accent">{pct} %</span> des Standortumsatzes <span aria-hidden="true">→</span> Marketing & Wachstum</p>
-      <p class="pp-p pp-muted">Das Wachstumsbudget wird zentral nach Partnermodell gesteuert und je nach Bedarf eingesetzt oder reserviert, nicht mechanisch jeden Monat ausgegeben. Bei ausreichendem Umsatz kann sich das laufende Marketing bereits während der Startphase zunehmend aus dem Standortgeschäft tragen.</p>
-    </div>
+    </details>
   </div>
 </section>
