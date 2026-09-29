@@ -1765,6 +1765,36 @@ export const beschwerden: Beschwerde[] = [
     "therapies": []
   },
   {
+    "slug": "venenschwaeche",
+    "name": "Venenschwäche",
+    "title": "Venenschwäche: Symptome, Diagnose & was wirklich hilft",
+    "metaDesc": "Schwere oder geschwollene Beine können auf eine Venenschwäche hinweisen. Symptome, Duplex-Ultraschall, Behandlung und wann plötzlich einseitige Beschwerden dringend sind.",
+    "conditionName": "Chronische venöse Insuffizienz",
+    "lead": "Die Beine werden gegen Abend schwer, die Knöchel schwellen an oder sichtbare Venen nehmen zu. Solche Beschwerden können bei einer chronischen Venenschwäche auftreten. Sie beweisen sie aber nicht: Schwere Beine und Wassereinlagerungen haben auch andere mögliche Ursachen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwere-beine",
+        "label": "Schwere Beine"
+      },
+      {
+        "slug": "wassereinlagerungen",
+        "label": "Wassereinlagerungen"
+      },
+      {
+        "slug": "durchblutungsstoerungen",
+        "label": "Durchblutungsstörungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
     "slug": "nervenschmerzen",
     "name": "Nervenschmerzen",
     "title": "",

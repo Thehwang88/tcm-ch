@@ -1,0 +1,179 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 29.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/emg';
+const url = `https://tcm.ch${path}/`;
+const title = 'EMG (Elektromyografie): Ablauf & Unterschied zur Nervenleitmessung';
+const description = 'Was passiert bei einer Elektromyografie? Wie ein EMG Muskeln untersucht, wie es sich von der Nervenleitmessung unterscheidet und wann es eingesetzt wird.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-29', dateModified: '2026-09-29',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'EMG (Elektromyografie)', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/muskelzucken/', label: 'Muskelzucken am Körper' },
+  { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt' },
+  { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', label: 'Nervenleitmessung (NLG)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/eeg/', label: 'EEG' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">EMG (Elektromyografie)</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>EMG: Was misst eine Elektromyografie?</h1>
+        <p class="lead">Wenn Muskeln schwächer werden, ungewöhnlich zucken oder der Verdacht auf eine Nerven- oder Muskelerkrankung besteht, reicht die äussere Untersuchung manchmal nicht aus. Mit einer Elektromyografie wird die elektrische Aktivität ausgewählter Muskeln untersucht.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Das EMG ist eine neurologische Untersuchung und wird ärztlich durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Diese Seite dient der Orientierung und ersetzt keine neurologische Diagnostik.</div>
+
+<h2>Was ist ein EMG?</h2>
+          <p>EMG steht für Elektromyografie. Dabei wird untersucht, welche elektrische Aktivität ein Muskel in Ruhe und bei Anspannung zeigt.</p>
+          <p>Dafür wird in der Regel eine sehr dünne Nadelelektrode in ausgewählte Muskeln eingeführt. Die gemessenen Signale können Hinweise darauf geben, ob eine Auffälligkeit eher den Muskel selbst, die versorgenden Nerven oder bestimmte Abschnitte des neuromuskulären Systems betrifft.</p>
+
+          <h2>Was ist der Unterschied zur Nervenleitmessung?</h2>
+          <p>EMG und <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a> werden häufig zusammen erwähnt, beantworten aber unterschiedliche Fragen.</p>
+          <p><strong>Bei der Nervenleitmessung</strong> wird geprüft, wie gut und wie schnell ein peripherer Nerv elektrische Signale weiterleitet.</p>
+          <p><strong>Beim EMG</strong> wird dagegen die elektrische Aktivität des Muskels selbst untersucht.</p>
+          <p>In einer neurologischen Untersuchung können beide Verfahren kombiniert werden, weil sie unterschiedliche Teile desselben Systems betrachten.</p>
+
+          <h2>Wann kann ein EMG sinnvoll sein?</h2>
+          <p>Ob ein EMG benötigt wird, entscheidet die neurologische Fachperson anhand von Beschwerden und Untersuchung.</p>
+          <p>Mögliche Fragestellungen sind beispielsweise:</p>
+          <ul>
+            <li>ungeklärte Muskelschwäche</li>
+            <li>bestimmte Lähmungserscheinungen</li>
+            <li>Verdacht auf Schädigung eines Nervs oder einer Nervenwurzel</li>
+            <li>bestimmte Muskelerkrankungen</li>
+            <li>auffälliges Muskelzucken zusammen mit weiteren neurologischen Zeichen</li>
+          </ul>
+          <p>Ein gelegentlich zuckendes Augenlid oder einzelnes <a href="/koerpersignale/muskelzucken/">Muskelzucken</a> bedeutet nicht automatisch, dass ein EMG nötig ist.</p>
+
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Die Ärztin oder der Arzt wählt einzelne Muskeln aus, die zur jeweiligen Fragestellung passen.</p>
+          <p>Eine dünne Elektrode wird in den Muskel eingeführt. Anschliessend wird die Aktivität zunächst in Ruhe und danach bei unterschiedlich starker Muskelanspannung aufgezeichnet.</p>
+          <p>Wie viele Muskeln untersucht werden, hängt von der Fragestellung ab.</p>
+
+          <h2>Tut ein EMG weh?</h2>
+          <p>Der Einstich und die Untersuchung im Muskel können unangenehm sein. Wie stark dies empfunden wird, ist individuell unterschiedlich.</p>
+          <p>Nach der Untersuchung kann die untersuchte Stelle vorübergehend empfindlich sein oder ein kleiner Bluterguss entstehen.</p>
+
+          <h2>Muss ich mich vorbereiten?</h2>
+          <p>Besondere Vorbereitung ist häufig nicht nötig. Wichtig ist jedoch, die untersuchende Praxis über Medikamente und relevante Erkrankungen zu informieren, insbesondere wenn Medikamente die Blutgerinnung beeinflussen.</p>
+          <p>Die konkreten Anweisungen der neurologischen Praxis haben Vorrang.</p>
+
+          <h2>Was bedeutet ein auffälliges EMG?</h2>
+          <p>Ein EMG-Ergebnis wird nicht isoliert interpretiert. Beschwerden, neurologische Untersuchung, Nervenleitmessung und gegebenenfalls weitere Diagnostik gehören zusammen.</p>
+          <p>Ein auffälliges Signal ist deshalb nicht automatisch gleichbedeutend mit einer bestimmten Diagnose.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Wann rasch neurologisch abklären?</div>
+            <p>Neu auftretende deutliche Muskelschwäche, Lähmungserscheinungen, zunehmende Gang- oder Koordinationsprobleme sowie neue Schluck- oder Sprechstörungen sollten medizinisch abgeklärt werden. Plötzlich aufgetretene neurologische Ausfälle können ein Notfall sein.</p>
+          </div>
+
+          <h2>Und welche Rolle spielt TCM?</h2>
+          <p>Das EMG beantwortet neurologische Fragen, die TCM nicht ersetzen kann.</p>
+          <p>Wenn eine medizinische Diagnose gestellt wurde und zusätzlich Schmerzen, Muskelspannung oder andere behandelbare Begleitbeschwerden bestehen, kann danach geprüft werden, ob eine ergänzende Behandlung sinnvoll ist.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Was ist der Unterschied zwischen EMG und Nervenleitmessung?</h3>
+          <p>Die Nervenleitmessung prüft die elektrische Signalübertragung eines peripheren Nervs. Beim EMG wird die elektrische Aktivität ausgewählter Muskeln untersucht. Beide Verfahren können sich ergänzen.</p>
+          <h3>Ist ein EMG schmerzhaft?</h3>
+          <p>Die Nadelelektrode kann kurz unangenehm sein. Die Wahrnehmung ist individuell und hängt auch davon ab, welche und wie viele Muskeln untersucht werden.</p>
+          <h3>Braucht man bei Muskelzucken immer ein EMG?</h3>
+          <p>Nein. Häufiges oder gelegentliches Muskelzucken allein führt nicht automatisch zu einem EMG. Entscheidend sind das gesamte Beschwerdebild und mögliche neurologische Begleitsymptome.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Passende Symptome verstehen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Kribbeln, Muskelzucken oder Schwäche und unklar, welche Abklärung sinnvoll ist?</div>
+          <p>In der ärztlichen Sprechstunde kann eingeordnet werden, ob zuerst eine neurologische Untersuchung notwendig ist und welche nächsten Schritte zu deinem Beschwerdemuster passen.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

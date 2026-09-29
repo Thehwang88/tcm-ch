@@ -691,6 +691,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/beschwerden/venenschwaeche/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/beschwerden/verdauungsprobleme/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -1771,6 +1777,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/hegu/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/lebermeridian/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -1778,6 +1790,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/ren-mai/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1838,6 +1856,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/untersuchungen/ekg/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/untersuchungen/emg/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1910,6 +1934,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/untersuchungen/schlaflabor/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/gesundheitsbibliothek/untersuchungen/stuhlanalyse/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2402,6 +2432,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/koerpersignale/harter-unterbauch/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/koerpersignale/heiserkeit-ohne-erkaeltung/</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

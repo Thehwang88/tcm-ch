@@ -69,6 +69,8 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'duplexsonografie', name: 'Duplexsonografie', short: 'Der Gefäss-Ultraschall: Venen, Arterien und Blutfluss in Echtzeit.', href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/' },
   { id: 'belastungs-ekg', name: 'Belastungs-EKG', short: 'EKG unter körperlicher Belastung: wie Herzrhythmus, Puls und Blutdruck auf Anstrengung reagieren.', href: '/gesundheitsbibliothek/untersuchungen/belastungs-ekg/' },
   { id: 'hormontest', name: 'Hormontest', short: 'Es gibt nicht den einen Hormontest: welche Bluttests je nach Fragestellung sinnvoll sein können.', href: '/gesundheitsbibliothek/untersuchungen/hormontest/' },
+  { id: 'emg', name: 'EMG (Elektromyografie)', short: 'Untersucht die elektrische Aktivität der Muskeln: bei Muskelschwäche und neurologischen Fragestellungen.', href: '/gesundheitsbibliothek/untersuchungen/emg/' },
+  { id: 'stuhlanalyse', name: 'Stuhlanalyse', short: 'Calprotectin, Erreger, verborgenes Blut: welcher Stuhltest welche medizinische Frage beantwortet.', href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/' },
 ];
 
 export interface BodyRegion {
@@ -339,6 +341,12 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche -
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/gesundheitsbibliothek/untersuchungen/emg/': 'Elektromyografie EMG Muskelmessung Nadelelektrode EMG Untersuchung',
+  '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/': 'Stuhlprobe Stuhltest Calprotectin Stuhlkultur Mikrobiom-Test Blut im Stuhl Test',
+  '/beschwerden/venenschwaeche/': 'Venenschwäche chronische venöse Insuffizienz CVI Venenleiden schwache Venen',
+  '/koerpersignale/heiserkeit-ohne-erkaeltung/': 'heiser ohne Erkältung Heiserkeit Stimme weg rauhe Stimme Stimmlippen',
+  '/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/hegu/': 'Hegu LI4 Di4 Hegu-Punkt Akupunkturpunkt Hand',
+  '/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/ren-mai/': 'Ren Mai Konzeptionsgefäss Konzeptionsgefäß ausserordentliche Leitbahn',
   '/gesundheitsbibliothek/untersuchungen/belastungs-ekg/': 'Ergometrie Belastungstest EKG unter Belastung Fahrradergometer',
   '/gesundheitsbibliothek/untersuchungen/hormontest/': 'Hormone testen Hormonstatus Hormonwerte Cortisol Hormonpanel',
   '/beschwerden/schilddruesenunterfunktion/': 'Hypothyreose Schilddrüse Unterfunktion Unterfunktion Schilddrüse Schilddruese',

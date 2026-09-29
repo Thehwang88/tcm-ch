@@ -389,6 +389,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was macht die TCM bei einem Klossgefühl?', a: 'Bei funktionellem Globusgefühl behandeln wir die Daueranspannung und die Muskulatur von Nacken, Kiefer und Hals, meist mit Akupunktur und Tuina. Bestehen Warnzeichen, kommt zuerst die HNO-Abklärung.' },
     ],
     related: [
+      { href: '/koerpersignale/heiserkeit-ohne-erkaeltung/', label: 'Heiserkeit ohne Erkältung', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/was-jetzt/globusgefuehl/', label: 'Was tun bei Globusgefühl im Hals?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
       { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
@@ -435,6 +436,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Räusperzwang zum Arzt?', a: 'Wenn er länger als sechs bis acht Wochen anhält, bei Heiserkeit über drei Wochen, Schluckschmerzen, hängen bleibendem Essen, Atemnot oder Blut im Sekret. Raucher:innen sollten früher untersuchen lassen.' },
     ],
     related: [
+      { href: '/koerpersignale/heiserkeit-ohne-erkaeltung/', label: 'Heiserkeit ohne Erkältung', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/was-jetzt/raeusperzwang/', label: 'Was tun bei ständigem Räusperzwang?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
@@ -1325,6 +1327,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen schwere Beine am Abend?', a: 'Regelmässige Bewegungspausen, aktive Wadenmuskulatur, zeitweises Hochlagern und kühle Duschen der Unterschenkel. Wenn die Beschwerden trotzdem regelmässig auftreten oder Venenveränderungen sichtbar sind, lohnt sich eine ärztliche Venenbeurteilung.' },
     ],
     related: [
+      { href: '/beschwerden/venenschwaeche/', label: 'Venenschwäche', cat: 'Beschwerde' },
       { href: '/beschwerden/lipoedem/', label: 'Lipödem', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', label: 'Duplexsonografie: der Gefäss-Ultraschall', cat: 'Untersuchung' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
@@ -2502,6 +2505,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Achte auf den Abstand zwischen Aufstehen, Kaffee, Frühstück und dem ersten Stuhldrang. Auch ein kurzes Ernährungs- und Symptomtagebuch kann helfen, wiederkehrende Auslöser zu erkennen. Mehr zum Gesamtbild findest du unter <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', label: 'Stuhlanalyse', cat: 'Untersuchung' },
       { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie: Ablauf der Darmspiegelung', cat: 'Untersuchung' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
@@ -3935,6 +3939,7 @@ export const koerpersignale: Koerpersignal[] = [
     faqs: [
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/emg/', label: 'EMG (Elektromyografie)', cat: 'Untersuchung' },
       { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt', cat: 'Körpersignal' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', label: 'Nervenleitmessung (NLG)', cat: 'Untersuchung' },
@@ -4055,6 +4060,71 @@ export const koerpersignale: Koerpersignal[] = [
     ],
   },
 
+  {
+    slug: 'heiserkeit-ohne-erkaeltung',
+    title: 'Heiserkeit ohne Erkältung: Ursachen & wann zum HNO',
+    metaDesc: 'Heiser ohne Erkältung? Stimme, Reflux, Überlastung und Stimmlippen können dahinterstecken. Wann anhaltende Heiserkeit beim HNO abgeklärt werden sollte.',
+    h1: 'Warum bin ich heiser, obwohl ich nicht erkältet bin?',
+    category: 'Hals & Mund',
+    lead: 'Die Stimme klingt rau, tiefer oder angestrengt, aber Schnupfen, Fieber und typische Erkältung fehlen. Häufig steckt eine harmlose Reizung oder Überlastung dahinter. Wenn Heiserkeit jedoch über Wochen bleibt oder ohne erkennbare Erklärung auftritt, sollte man die Stimmlippen anschauen lassen.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Die Stimme bleibt heiser und du kennst den Grund nicht?',
+    ctaText: 'Wir helfen dir zu sortieren, ob zuerst eine HNO-Abklärung sinnvoll ist und welche bereits abgeklärten Begleitbeschwerden ergänzend behandelt werden können.',
+    ctaLabel: 'Beschwerden einordnen lassen',
+    ctaHref: '/sprechstunde/',
+    author: AUTOR,
+    ...DATEN12,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Heiserkeit entsteht, wenn die Stimmlippen im Kehlkopf nicht mehr so frei und gleichmässig schwingen wie gewohnt.</p>
+<p>Das kann auch völlig ohne Erkältung passieren.</p>
+
+<h2>Die Stimme wurde stark belastet</h2>
+<p>Langes Sprechen, lautes Reden, Singen, Rufen oder häufiges Sprechen in lauter Umgebung können die Stimme vorübergehend belasten.</p>
+<p>Typisch ist dann ein zeitlicher Zusammenhang: Nach einer Phase intensiver Stimmbelastung klingt die Stimme rau oder ermüdet schneller.</p>
+
+<h2>Kann Reflux heiser machen?</h2>
+<p>Reflux kann den Kehlkopf und die Stimmlippen reizen. Dabei muss nicht immer klassisches <a href="/beschwerden/sodbrennen/">Sodbrennen</a> bestehen.</p>
+<p>Hinweise können beispielsweise sein:</p>
+<ul>
+<li>Heiserkeit besonders am Morgen</li>
+<li>häufiger Räusperzwang</li>
+<li>Hustenreiz</li>
+<li>ein Gefühl von Schleim oder Reizung im Hals</li>
+</ul>
+<p>Ständiger <a href="/koerpersignale/staendiger-raeusperzwang/">Räusperzwang</a> ist ein eigenes Körpersignal und wird dort ausführlicher eingeordnet.</p>
+
+<h2>Weitere mögliche Ursachen</h2>
+<p>Auch Allergien, trockene Luft, Rauch und andere Reizstoffe können die Stimme beeinflussen.</p>
+<p>Seltener können Veränderungen direkt an den Stimmlippen, neurologische Erkrankungen oder andere medizinische Ursachen dahinterstecken.</p>
+
+<h2>Was du selbst zunächst tun kannst</h2>
+<ul>
+<li>Stimme nicht unnötig stark belasten.</li>
+<li>Ausreichend trinken.</li>
+<li>Rauch und andere starke Reizstoffe vermeiden.</li>
+<li>Beobachten, ob Reflux, Stimmbelastung oder bestimmte Situationen das Muster beeinflussen.</li>
+</ul>
+<p>Flüstern ist nicht automatisch eine gute Form der Stimmruhe und kann je nach Sprechweise ebenfalls belastend sein. Bei länger bestehenden Beschwerden ist eine HNO-Abklärung sinnvoller als immer neue Hausmittel.</p>
+
+<div class="wa-callout">
+<div class="wa-callout-label">Wann zum Arzt?</div>
+<p>Wenn die Stimme länger als ungefähr drei Wochen heiser bleibt, besonders ohne vorausgegangene Erkältung, sollte sie ärztlich beziehungsweise HNO-ärztlich abgeklärt werden. Früher abklären solltest du Heiserkeit zusammen mit Atemproblemen, Schluckbeschwerden, Blut beim Husten, einem neu tastbaren Knoten am Hals oder ausgeprägten Schmerzen beim Sprechen oder Schlucken.</p>
+</div>
+
+<h2>Wie untersucht der HNO die Stimme?</h2>
+<p>Bei anhaltender Heiserkeit kann der Kehlkopf mit einer kleinen Optik beziehungsweise einem Endoskop untersucht werden. Dadurch lassen sich die Stimmlippen direkt beurteilen.</p>
+
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Persistierende Heiserkeit sollte nicht mit einem TCM-Muster erklärt werden, bevor relevante organische Ursachen abgeklärt wurden.</p>
+<p>Wenn die Stimme medizinisch untersucht wurde und beispielsweise Stress, Muskelspannung oder andere bereits bekannte Beschwerden mit hineinspielen, kann danach eine ergänzende Behandlung besprochen werden.</p>`,
+    faqs: [],
+    related: [
+      { href: '/koerpersignale/staendiger-raeusperzwang/', label: 'Ständiger Räusperzwang', cat: 'Körpersignal' },
+      { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+    ],
+  },
 ];
 
 export const koerpersignalBySlug = (slug: string): Koerpersignal | undefined =>

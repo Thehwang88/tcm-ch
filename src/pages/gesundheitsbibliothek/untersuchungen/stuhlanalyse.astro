@@ -1,0 +1,175 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 29.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/stuhlanalyse';
+const url = `https://tcm.ch${path}/`;
+const title = 'Stuhlanalyse: Welche Tests gibt es und was können sie zeigen?';
+const description = 'Stuhlprobe bei Durchfall oder Darmbeschwerden: Calprotectin, Erreger, verborgenes Blut und andere Tests. Warum es nicht die eine Stuhlanalyse gibt.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-29', dateModified: '2026-09-29',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Stuhlanalyse', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/reizdarm/', label: 'Reizdarm' },
+  { href: '/beschwerden/verstopfung/', label: 'Verstopfung' },
+  { href: '/koerpersignale/durchfall-am-morgen/', label: 'Durchfall am Morgen' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie (Darmspiegelung)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie (Magenspiegelung)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'Grosses Blutbild' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Stuhlanalyse</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Stuhlanalyse: Was kann eine Stuhlprobe wirklich zeigen?</h1>
+        <p class="lead">«Stuhlanalyse» klingt nach einer einzelnen Untersuchung. Tatsächlich können aus einer Stuhlprobe sehr unterschiedliche Dinge bestimmt werden. Welcher Test sinnvoll ist, hängt deshalb von der konkreten medizinischen Frage ab.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note"><strong>TCM.ch führt Stuhllaboranalysen nicht selbst durch.</strong> Welche Untersuchung sinnvoll ist, sollte anhand von Beschwerden und medizinischer Fragestellung ausgewählt werden.</div>
+
+<h2>Es gibt nicht die eine Stuhlanalyse</h2>
+          <p>Aus einer Stuhlprobe lassen sich unterschiedliche Parameter untersuchen. Ein Test auf Darmentzündung beantwortet eine andere Frage als eine Untersuchung auf bestimmte Krankheitserreger.</p>
+          <p>Deshalb ist die wichtigste Frage zuerst: Was möchte man überhaupt herausfinden?</p>
+
+          <h2>Calprotectin: Hinweis auf Entzündung</h2>
+          <p>Calprotectin ist ein Eiweiss, dessen Konzentration im Stuhl bei entzündlichen Vorgängen im Darm erhöht sein kann.</p>
+          <p>Der Wert kann beispielsweise helfen, die weitere Abklärung bei länger bestehenden Darmbeschwerden zu steuern.</p>
+          <p>Ein erhöhter Wert stellt jedoch nicht allein eine bestimmte Diagnose.</p>
+
+          <h2>Stuhlkultur und Erregerdiagnostik</h2>
+          <p>Bei bestimmten Formen von Durchfall kann gezielt nach Bakterien oder anderen Krankheitserregern gesucht werden.</p>
+          <p>Welche Erreger getestet werden, richtet sich unter anderem nach Beschwerden, Dauer, Reiseanamnese, Medikamenten und weiteren Risikofaktoren.</p>
+
+          <h2>Verborgenes Blut im Stuhl</h2>
+          <p>Auch Blut, das mit blossem Auge nicht sichtbar ist, kann mit speziellen Tests nachgewiesen werden.</p>
+          <p>Solche Tests werden unter anderem im Rahmen bestimmter medizinischer Abklärungen und Vorsorgeprogramme eingesetzt.</p>
+
+          <h2>Was ist mit Parasiten?</h2>
+          <p>Eine Untersuchung auf Parasiten wird nicht automatisch bei jedem Verdauungsproblem benötigt.</p>
+          <p>Reiseanamnese, Dauer und Art der Beschwerden sowie weitere Faktoren bestimmen, ob sie sinnvoll ist.</p>
+
+          <h2>Und was ist mit Mikrobiom-Tests?</h2>
+          <p>Kommerzielle «Darmflora»- oder Mikrobiom-Analysen sind nicht dasselbe wie gezielte medizinische Stuhldiagnostik.</p>
+          <p>Das Darmmikrobiom ist Gegenstand intensiver Forschung. Für viele sehr detaillierte kommerzielle Auswertungen ist jedoch nicht klar, welche konkrete medizinische Entscheidung sich aus einzelnen Abweichungen ableiten lässt.</p>
+          <p>Ein umfangreicher Bericht mit vielen Bakteriennamen ist deshalb nicht automatisch hilfreicher als ein gezielt ausgewählter medizinischer Test.</p>
+
+          <h2>Wann kann eine Stuhlprobe sinnvoll sein?</h2>
+          <p>Je nach Beschwerdebild kann eine Stuhluntersuchung beispielsweise bei anhaltendem oder wiederkehrendem Durchfall, Verdacht auf Entzündung, bestimmten Infektionen oder Blut im Stuhl Teil der Diagnostik sein.</p>
+          <p>Der Test sollte zur Fragestellung passen.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Wann Beschwerden ärztlich abklären?</div>
+            <p>Blut im Stuhl, schwarzer Stuhl, ausgeprägter oder anhaltender Durchfall, deutliche Austrocknung, Fieber, starke Bauchschmerzen oder ungewollter Gewichtsverlust gehören medizinisch eingeordnet.</p>
+          </div>
+
+          <h2>Stuhlanalyse oder Darmspiegelung?</h2>
+          <p>Eine Stuhlprobe und eine <a href="/gesundheitsbibliothek/untersuchungen/koloskopie/">Koloskopie</a> beantworten unterschiedliche Fragen. Ein Stuhltest kann Hinweise liefern, ersetzt aber nicht jede Form der weiterführenden Diagnostik.</p>
+
+          <h2>Welche Rolle spielt TCM?</h2>
+          <p>TCM kann medizinische Stuhldiagnostik nicht ersetzen. Bei funktionellen Verdauungsbeschwerden kann nach angemessener medizinischer Einordnung ergänzend besprochen werden, welche Behandlung sinnvoll ist.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Was kann man aus einer Stuhlprobe untersuchen?</h3>
+          <p>Je nach Fragestellung zum Beispiel Entzündungszeichen wie Calprotectin, bestimmte Krankheitserreger oder verborgenes Blut. Es gibt nicht die eine Stuhlanalyse, sondern verschiedene Tests für verschiedene Fragen.</p>
+          <h3>Was bedeutet ein erhöhter Calprotectin-Wert?</h3>
+          <p>Er kann auf entzündliche Vorgänge im Darm hinweisen und die weitere Abklärung steuern. Eine bestimmte Diagnose stellt der Wert allein jedoch nicht; er wird ärztlich im Zusammenhang beurteilt.</p>
+          <h3>Ist ein Mikrobiom-Test dasselbe wie eine medizinische Stuhlanalyse?</h3>
+          <p>Nein. Kommerzielle Darmflora-Analysen sind keine gezielte medizinische Stuhldiagnostik. Für viele detaillierte Auswertungen ist unklar, welche medizinische Entscheidung sich daraus ableiten lässt.</p>
+          <h3>Kann eine Stuhlprobe eine Darmspiegelung ersetzen?</h3>
+          <p>Nein. Stuhltests und Koloskopie beantworten unterschiedliche Fragen. Ein Stuhltest kann Hinweise liefern, ersetzt aber nicht jede weiterführende Diagnostik.</p>
+        </div>
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Themen"
+          links={rel1Links}
+          allHref="/beschwerden/"
+          allLabel="Alle Beschwerden"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Darmbeschwerden und unklar, welche Untersuchung überhaupt sinnvoll ist?</div>
+          <p>In der ärztlichen Sprechstunde können Beschwerden und vorhandene Befunde geordnet werden, bevor wahllos Laborpakete oder Mikrobiom-Tests durchgeführt werden.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

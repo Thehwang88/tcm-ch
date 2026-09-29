@@ -326,6 +326,55 @@ export const tcmEntities: TcmEntity[] = [
     relatedTherapies: ['akupunktur'],
   },
   {
+    type: 'acupuncture-point', slug: 'hegu', section: 'meridiane-punkte',
+    status: 'published', indexable: true, publishedAt: '2026-09-29',
+    nav: 'Hegu (LI4)',
+    title: 'Hegu (LI4): Lage, Bedeutung & Grenzen des Akupunkturpunkts',
+    metaDesc: 'Hegu beziehungsweise LI4 ist einer der bekanntesten Akupunkturpunkte. Wo er traditionell liegt, wie er in der TCM verwendet wird und was daraus medizinisch nicht folgt.',
+    h1: 'Hegu (LI4): Was bedeutet dieser Akupunkturpunkt?',
+    kurzantwortHtml: `<p>Hegu, international häufig als LI4 bezeichnet, ist ein klassischer Akupunkturpunkt auf der Hand. Er gehört im traditionellen TCM-System zur Dickdarm-Leitbahn.</p>
+<p>LI4 ist einer der bekanntesten Punkte der Akupunktur. Seine traditionelle Bedeutung ist jedoch nicht dasselbe wie ein nachgewiesener anatomischer «Schaltpunkt» für bestimmte Krankheiten.</p>`,
+    traditionellHtml: `<p>Hegu wird traditionell auf dem Handrücken im Bereich zwischen Daumen und Zeigefinger lokalisiert.</p>
+<p>In klassischen Akupunkturlehren wird der Punkt in unterschiedliche Punktkombinationen einbezogen. Welche Bedeutung ihm zugeschrieben wird, hängt vom gesamten traditionellen Muster und von den übrigen gewählten Punkten ab.</p>
+<p>Der Begriff «Dickdarm-Leitbahn» bedeutet dabei nicht, dass Hegu anatomisch direkt mit dem Dickdarm verbunden ist.</p>`,
+    praxisHtml: `<p>In einer Akupunkturbehandlung wird LI4 selten isoliert betrachtet. Die Therapeutin wählt Punkte anhand des konkreten Beschwerdebilds und kombiniert sie mit anderen Punkten.</p>
+<p>Die Punktwahl kann sich deshalb bei zwei Menschen mit derselben schulmedizinischen Diagnose unterscheiden.</p>
+<p>Bei TCM.ch soll ein einzelner Punkt niemals als Selbstdiagnose dienen. Entscheidend sind Beschwerden, medizinische Situation und die gesamte Behandlungsplanung.</p>`,
+    abgrenzungHtml: `<p>Hegu ist kein Nervenknoten, kein Organ und kein anatomischer Schalter. Die traditionelle Punktbezeichnung gehört zum Meridiansystem der chinesischen Medizin.</p>
+<p>Auch Aussagen wie «Hegu hilft immer gegen Kopfschmerzen» oder «dieser Punkt aktiviert den Dickdarm» vereinfachen die traditionelle Akupunkturlehre zu stark und sind medizinisch nicht belastbar.</p>`,
+    evidenzHtml: `<p>Akupunktur kann wissenschaftlich bei konkreten Krankheitsbildern und Behandlungskonzepten untersucht werden. Daraus lässt sich jedoch nicht ableiten, dass jeder traditionelle Einzelpunkt eine eindeutig nachgewiesene krankheitsspezifische Wirkung besitzt.</p>
+<p>Auch die traditionelle Meridianverbindung des Punktes ist nicht mit einer anatomisch nachgewiesenen Leitung gleichzusetzen.</p>`,
+    relevanzHtml: `<p>Wenn du Hegu aus einem Video, einer Grafik oder einer Akupressur-Anleitung kennst, ist vor allem wichtig zu verstehen, dass ein einzelner Punkt nicht die gesamte Akupunkturbehandlung repräsentiert.</p>
+<p>Grundlagen findest du unter <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/">Akupunkturpunkte</a> und <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridiane</a>.</p>`,
+    arztHinweisHtml: `<p>Neue starke Schmerzen, Lähmungen, ausgeprägte Taubheit oder andere akute Beschwerden sollten nicht durch Selbstbehandlung eines Akupunkturpunkts verzögert werden. Medizinische Warnzeichen werden nach medizinischen Kriterien beurteilt.</p>`,
+    relatedConcepts: ['akupunkturpunkte', 'meridiane'],
+    relatedTherapies: ['akupunktur'],
+  },
+  {
+    type: 'meridian', slug: 'ren-mai', section: 'meridiane-punkte',
+    status: 'published', indexable: true, publishedAt: '2026-09-29',
+    nav: 'Ren Mai',
+    title: 'Ren Mai (Konzeptionsgefäss): Verlauf, Bedeutung & Grenzen',
+    metaDesc: 'Ren Mai wird häufig als Konzeptionsgefäss übersetzt. Was diese traditionelle TCM-Leitbahn beschreibt, wie sie verläuft und warum sie kein anatomisches Gefäss ist.',
+    h1: 'Ren Mai: Was ist das sogenannte Konzeptionsgefäss?',
+    kurzantwortHtml: `<p>Ren Mai ist eine traditionelle Leitbahn der chinesischen Medizin und wird im Deutschen häufig als «Konzeptionsgefäss» bezeichnet.</p>
+<p>Der Name kann missverständlich sein: Ren Mai ist kein anatomisches Blutgefäss und auch keine Struktur des Fortpflanzungssystems. Es handelt sich um ein traditionelles Meridian-Konzept.</p>`,
+    traditionellHtml: `<p>Ren Mai gehört in der chinesischen Medizin zu den sogenannten ausserordentlichen Gefässen beziehungsweise Leitbahnen.</p>
+<p>In klassischen Darstellungen verläuft die oberflächlich beschriebene Bahn entlang der vorderen Körpermittellinie vom Becken über Bauch und Brust in Richtung Kinn.</p>
+<p>Entlang dieses traditionellen Verlaufs liegen verschiedene Akupunkturpunkte.</p>`,
+    praxisHtml: `<p>Punkte des Ren Mai können je nach Behandlungskonzept in Akupunktur und Moxibustion verwendet werden.</p>
+<p>Die Auswahl erfolgt nicht allein aufgrund des Namens «Konzeptionsgefäss». Eine seriöse TCM-Behandlung berücksichtigt das gesamte Beschwerdebild und kombiniert unterschiedliche Punkte und Leitbahnen.</p>`,
+    abgrenzungHtml: `<p>Ren Mai ist kein anatomisches Gefäss und nicht mit einer Vene, Arterie, einem Lymphgefäss oder einem bestimmten Nerv gleichzusetzen.</p>
+<p>Auch die Bezeichnung «Konzeptionsgefäss» bedeutet nicht, dass Probleme dieser traditionellen Leitbahn eine medizinische Ursache für Unfruchtbarkeit, Zyklusbeschwerden oder Schwangerschaftsprobleme darstellen.</p>`,
+    evidenzHtml: `<p>Für Meridiane und ausserordentliche Leitbahnen gibt es keine etablierte anatomische Entsprechung als eigenständiges Leitungssystem.</p>
+<p>Forschung zu Akupunktur untersucht konkrete Anwendungen und klinische Ergebnisse. Sie bestätigt nicht automatisch die traditionellen Meridianmodelle als anatomische Strukturen.</p>`,
+    relevanzHtml: `<p>Ren Mai ist vor allem wichtig, um die Sprache und Punkt-Systematik der Akupunktur zu verstehen.</p>
+<p>Eine allgemeine Einführung findest du unter <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/">Meridiane</a> und <a href="/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/akupunkturpunkte/">Akupunkturpunkte</a>.</p>`,
+    arztHinweisHtml: `<p>Beschwerden im Unterbauch, Zyklusveränderungen, Schmerzen oder Probleme rund um Schwangerschaft und Fruchtbarkeit benötigen bei entsprechender Situation medizinische beziehungsweise gynäkologische Abklärung. Ein Meridianmodell ersetzt diese Diagnostik nicht.</p>`,
+    relatedConcepts: ['meridiane', 'akupunkturpunkte'],
+    relatedTherapies: ['akupunktur'],
+  },
+  {
     type: 'tcm-concept', slug: 'akupunkturpunkte', section: 'meridiane-punkte',
     status: 'published', indexable: true, publishedAt: '2026-09-26',
     nav: 'Akupunkturpunkte',
@@ -343,7 +392,7 @@ export const tcmEntities: TcmEntity[] = [
 <p>Seriös lässt sich sagen: Die Punktwahl folgt einem traditionellen, in sich konsistenten System, und die Wirksamkeit der Akupunktur ist je nach Beschwerde unterschiedlich gut belegt. Ein Wirkversprechen für einzelne Punkte lässt sich daraus nicht ableiten.</p>`,
     relevanzHtml: `<p>Für dich als Patient:in heisst das: Du musst keine Punkte kennen oder mitbringen. Die Auswahl gehört zur Behandlung und wird dir auf Wunsch erklärt. Wenn dich interessiert, wie eine Behandlung abläuft und wie sich die Nadeln anfühlen, findest du das unter <a href="/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/">Was passiert beim ersten Termin?</a> und <a href="/gesundheitsbibliothek/fragen/tut-akupunktur-weh/">Tut Akupunktur weh?</a></p>`,
     arztHinweisHtml: `<p>Akupunkturpunkte und ihre traditionelle Systematik ersetzen keine medizinische Diagnostik. Neue, starke oder unklare Beschwerden gehören zuerst ärztlich eingeordnet; Akupunktur kann danach je nach Beschwerde als ergänzende Behandlung infrage kommen.</p>`,
-    relatedConcepts: ['meridiane', 'qi', 'dreifacher-erwaermer', 'lebermeridian'],
+    relatedConcepts: ['meridiane', 'qi', 'dreifacher-erwaermer', 'lebermeridian', 'hegu', 'ren-mai'],
     relatedTherapies: ['akupunktur', 'akupressur'],
   },
   {
@@ -380,7 +429,7 @@ export const tcmEntities: TcmEntity[] = [
       { label: 'National Center for Complementary and Integrative Health: Acupuncture - Effectiveness and Safety' },
       { label: 'Peer-reviewed research on the anatomical basis of acupuncture meridians: anatomical basis remains unresolved' },
     ],
-    relatedConcepts: ['akupunkturpunkte', 'qi'],
+    relatedConcepts: ['akupunkturpunkte', 'qi', 'ren-mai', 'hegu'],
     relatedTherapies: ['akupunktur', 'akupressur'],
   },
   {
@@ -522,7 +571,7 @@ export const tcmSections: TcmSection[] = [
       { href: '/therapien/ohrakupunktur/', label: 'Ohrakupunktur', cat: 'Therapie' },
       { href: '/wissen/wie-lange-bleiben-akupunkturnadeln-drin/', label: 'Wie lange bleiben die Nadeln drin?', cat: 'Artikel' },
     ],
-    geplant: ['Akupunkturpunkte: Überblick', 'Akupressurpunkte Hand', 'Akupressurpunkte Fuss', 'Lungenmeridian', 'Magenmeridian', 'Nierenmeridian', 'Dickdarmmeridian', 'Einzelne Punkte (z.B. Neiguan PC6, Hegu Di4, Zusanli Ma36)'],
+    geplant: ['Akupunkturpunkte: Überblick', 'Akupressurpunkte Hand', 'Akupressurpunkte Fuss', 'Lungenmeridian', 'Magenmeridian', 'Nierenmeridian', 'Dickdarmmeridian', 'Einzelne Punkte (z.B. Neiguan PC6, Zusanli Ma36)'],
   },
   {
     slug: 'diagnostik',

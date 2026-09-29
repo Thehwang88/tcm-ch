@@ -69,6 +69,7 @@ const condName = entry?.conditionName || name;
 const url = `https://tcm.ch/beschwerden/${slug}/`;
 // Per-slug title overrides from the content briefs; template default otherwise.
 const TITLES: Record<string, string> = {
+  venenschwaeche: 'Venenschwäche: Symptome, Diagnose & was wirklich hilft',
   schilddruesenunterfunktion: 'Schilddrüsenunterfunktion: Symptome, Werte & ergänzende TCM',
   guertelrose: 'Gürtelrose & Nervenschmerzen – TCM | TCM.ch',
   migraene: 'Migräne – TCM-Behandlung | TCM.ch',
@@ -120,6 +121,7 @@ const MODIFIED: Record<string, string> = {
 const title = TITLES[slug!] ?? `${name} – TCM-Behandlung | TCM.ch`;
 // Per-slug meta descriptions from the content briefs; template default otherwise.
 const DESCRIPTIONS: Record<string, string> = {
+  venenschwaeche: 'Schwere oder geschwollene Beine können auf eine Venenschwäche hinweisen. Symptome, Duplex-Ultraschall, Behandlung und wann plötzlich einseitige Beschwerden dringend sind.',
   schilddruesenunterfunktion: 'Müdigkeit, Frieren, Gewichtszunahme? Wie eine Schilddrüsenunterfunktion abgeklärt und behandelt wird und welche ergänzende Rolle TCM spielen kann.',
   rotatorenmanschette: 'Rotatorenmanschette: Akupunktur und Dry Needling bei Sehnenreizung und Teilriss der Schulter. Konservativ begleiten, EMR/ASCA-anerkannt.',
   wadenschmerzen: 'Wadenschmerzen mit TCM behandeln: Akupunktur bei Verspannung, Krämpfen und Triggerpunkten. Erst abklären, dann behandeln. EMR/ASCA-anerkannt.',

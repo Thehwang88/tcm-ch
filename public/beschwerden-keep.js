@@ -42,5 +42,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "fazialisparese", "morbus-meniere", "schlafapnoe", "lipoedem",
   "rheumatoide-arthritis", "crps", "interkostalneuralgie", "bettnaessen",
   // 29.09.2026 — Kohorte: Hypothyreose-Owner (extern gelieferter Content):
-  "schilddruesenunterfunktion"
+  "schilddruesenunterfunktion",
+  // 29.09.2026 — Kohorte B: CVI-Owner (extern gelieferter Content):
+  "venenschwaeche"
 ];
