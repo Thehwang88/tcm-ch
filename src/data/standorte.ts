@@ -17,7 +17,7 @@ export interface Standort {
   titelZusatz?: string;
   /** Per-slug SEO overrides; fallback is the generic pattern in [slug].astro / Hero.astro. */
   seo?: { title?: string; description?: string; h1?: string; schemaName?: string };
-  hero: { banner: string; lead: string; sub: string; image: string; locationHook: string };
+  hero: { banner: string; lead: string; sub: string; image: string; imageAlt?: string; locationHook: string };
   nap: {
     strasse: string;
     plz: string;
@@ -54,6 +54,65 @@ export interface Standort {
 }
 
 export const standorte: Record<string, Standort> = {
+  basel: {
+    cro: true,
+    slug: 'basel',
+    stadt: 'Basel',
+    seo: {
+      title: 'TCM & Akupunktur Basel | TCM.ch',
+      description: 'Akupunktur und TCM in Basel, Steinenvorstadt 73: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt Termin anfragen.',
+      h1: 'Akupunktur & TCM in <em>Basel</em>',
+      schemaName: 'TCM.ch Basel',
+    },
+    hero: {
+      banner: 'Standort Basel',
+      lead: 'Unsere Praxis an der Steinenvorstadt 73, mitten in der Basler Innenstadt: dasselbe Team-Prinzip und dieselben Methoden wie an unseren übrigen Standorten.',
+      sub: 'EMR- und ASCA-anerkannt, Abrechnung über die Zusatzversicherung. Behandelt wird auf Deutsch, Englisch, Französisch und Mandarin.',
+      image: '/images/basel-reception.webp',
+      imageAlt: 'Empfangsbereich der TCM.ch Klinik Basel an der Steinenvorstadt 73',
+      locationHook: 'Steinenvorstadt 73 · 4051 Basel · mitten in der Innenstadt',
+    },
+    aufEinenBlick: "<section class='section' style='padding:32px 0;background:var(--bg)'><div class='wrap reveal'><div class='section-label'>TCM Basel auf einen Blick</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Adresse</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Steinenvorstadt 73, 4051 Basel,<br>mitten in der Basler Innenstadt.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Behandlungen</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Akupunktur, Gesichtsakupunktur, Schröpfen, Tuina, Akupressur, Shiatsu, Gua Sha, Kräuterrezepturen.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Vertrauen &amp; Kosten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>EMR- und ASCA-anerkannt. Zusatzversicherung? Wir helfen dir beim Check: Was übernommen wird, hängt von Kasse und Modell ab. <a href='/standorte/basel/kosten/' style='color:var(--blue);font-weight:700;text-decoration:none'>Kosten &amp; Krankenkasse</a></div></div></div><div style='margin-top:16px'><button type='button' onclick='openContactForm()' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></button></div></div></section>",
+    nap: {
+      strasse: 'Steinenvorstadt 73',
+      mapEmbed: 'https://www.google.com/maps?q=Steinenvorstadt%2073%2C%204051%20Basel&output=embed',
+      plz: '4051',
+      ort: 'Basel',
+      telefon: '+41 77 523 61 22',
+      email: 'termine@tcm.ch',
+      oeffnungszeiten: [],
+      geo: { lat: 47.5528, lng: 7.5878 },
+    },
+    intro: {
+      body: '<h2>Deine TCM-Praxis in Basel</h2><p>An der Steinenvorstadt 73 behandeln wir nach demselben Prinzip wie an allen TCM.ch-Standorten: kleine Teams, viel Zeit pro Termin, klare Diagnostik.</p><p>Wer nach chinesischer Medizin in Basel sucht, landet oft bei Einzelpraxen mit langen Wartezeiten. Bei uns behandelt dich ein Team, das täglich mit denselben Krankheitsbildern arbeitet und schwierige Fälle untereinander bespricht, statt allein zu entscheiden.</p><p>Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich dein Akupunkteur eine ganze Stunde Zeit, hört zu, schaut sich Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, ob Akupunktur, Schröpfen, Tuina oder eine Kräuterrezeptur sinnvoll ist, und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter. Wie ein Termin Schritt für Schritt abläuft, was er kostet und was die Studien zu Akupunktur hergeben, steht ausführlich unter <a href="/wissen/tcm-basel-erfahrungen-ablauf/">Erfahrungen &amp; Ablauf</a>.</p><p>Behandelt wird auf Deutsch, Englisch, Französisch und Mandarin. In einer Stadt, in der viele für Pharma, Uni oder Chemie hergezogen sind, ist das keine Nebensache: Beschwerden zu schildern fällt in der eigenen Sprache deutlich leichter, und in der Anamnese hängt fast alles daran, wie genau du erzählen kannst.</p><p>Unsere Therapeut:innen sind EMR- und ASCA-registriert, damit deine Zusatzversicherung mitzahlen kann. Was übernommen wird, hängt von Kasse und Zusatzversicherungs-Modell ab; wir rechnen es dir vorher vor, mehr dazu unter <a href="/krankenkassen/">Krankenkasse</a> und <a href="/standorte/basel/kosten/">Akupunktur Kosten Basel</a>.</p>',
+      einzugsgebiet: '<h2>Wo du uns in Basel findest</h2><p>Die Praxis liegt an der Steinenvorstadt 73, mitten in der Innenstadt, mit kurzen Wegen aus Grossbasel und Kleinbasel. Aus dem Gundeli, St. Johann, St. Alban und Bachletten bist du mit dem Tram in wenigen Minuten da. Für Riehen, Allschwil, Binningen, Münchenstein, Birsfelden und Reinach gilt dasselbe: alle sind direkt ans Zentrum angebunden, ohne Umsteigen.</p><p>Ein Punkt, der Basel von anderen Städten unterscheidet: die Grenze. Aus Weil am Rhein, Lörrach und Grenzach-Wyhlen auf deutscher Seite und aus Saint-Louis, Hégenheim und Mulhouse auf französischer Seite ist die Basler Innenstadt oft schneller erreicht als das nächste grössere Zentrum im eigenen Land. Für Grenzgänger:innen, die ohnehin in Basel arbeiten, liegt ein Termin damit auf dem Arbeitsweg. Wie die Abrechnung in dem Fall läuft, steht unten im FAQ.</p>',
+    },
+    extraBlock: '<section class="section" id="einzugsgebiet"><div class="wrap"><div class="section-label">Einzugsgebiet</div><h2 class="section-title">Für Basel-Stadt und <em>Baselland</em></h2><p class="section-sub">Wir führen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig - für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p><div class="cl-links" style="margin-top:18px;margin-bottom:22px"><a href="/akupunktur-tcm-basel/" class="cl-chip">Akupunktur Basel</a><a href="/standorte/basel/kosten/" class="cl-chip">Kosten &amp; Krankenkasse</a><a href="/massage-basel/" class="cl-chip">Massage Basel</a><a href="/wissen/tcm-basel-erfahrungen-ablauf/" class="cl-chip">Erfahrungen &amp; Ablauf</a></div><div class="cl-links" style="margin-top:18px">' + ['Basel-Stadt','Riehen','Bettingen','Binningen','Allschwil','Münchenstein','Reinach','Muttenz','Pratteln','Oberwil','Therwil','Liestal','Sissach','Birsfelden'].map((o) => '<span class="cl-chip" style="cursor:default">' + o + '</span>').join('') + '</div></div></section>',
+    anfahrt: { oev: '', autoParken: '' },
+    therapien: ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'akupressur', 'shiatsu', 'gua-sha'],
+    beschwerdenIntro: 'Das sind die Anliegen, mit denen Patient:innen an unseren Standorten am häufigsten kommen und die wir auch in Basel behandeln. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.',
+    beschwerden: ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'stress-burnout', 'kinderwunsch', 'ischias'],
+    team: [],
+    ablaufBlock: true,
+    faqs: [
+      { q: 'Wo genau seid ihr in Basel?', a: 'An der Steinenvorstadt 73, 4051 Basel, mitten in der Basler Innenstadt.' },
+      { q: 'Wie bekomme ich einen Termin in Basel?', a: 'Trag deine Angaben im Formular ein oder schreib direkt an termine@tcm.ch, dann melden wir uns für die Terminvereinbarung. Alternativ behandeln wir dich gerne an einem unserer anderen Standorte.' },
+      { q: 'Was kostet Akupunktur in Basel?', a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Den konkreten Betrag nennen wir dir vor dem Termin.' },
+      { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unsere Therapeut:innen EMR- und ASCA-anerkannt sind, beteiligen sich viele Zusatzversicherungen, je nach Kasse und Modell häufig mit 80 bis 100 Prozent. Deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.' },
+      { q: 'Behandelt ihr auch Grenzgänger aus Deutschland und Frankreich?', a: 'Ja. Entscheidend ist nicht dein Wohnort, sondern deine Versicherung. Wer in der Schweiz arbeitet und hier grundversichert ist, kann eine Schweizer Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen. Bist du dagegen in Deutschland oder Frankreich versichert, zahlst du bei uns selbst und reichst die Rechnung bei deiner Kasse ein. Ob die etwas übernimmt, hängt von deinem Tarif ab. Schick uns vorher deine Angaben, dann sagen wir dir, was auf dich zukommt.' },
+      { q: 'Gibt es Termine ausserhalb der Bürozeiten?', a: 'An unseren Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Frag den gewünschten Zeitraum einfach bei der Terminanfrage an.' },
+    ],
+    praxisBilder: [
+      { src: '/images/basel-reception.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel an der Steinenvorstadt 73', label: 'Empfang · Steinenvorstadt 73' },
+    ],
+    wissenLink: { href: '/wissen/tcm-basel-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Basel abläuft, was sie kostet und was die Studien hergeben.' },
+    massageLink: { href: '/massage-basel/', text: 'Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite', anchor: 'Massage in Basel' },
+    nearby: [
+      { slug: 'zuerich-oerlikon', plz: '8050', city: 'Zürich Oerlikon', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
+      { slug: 'winterthur-marktgasse', plz: '8400', city: 'Winterthur Marktgasse', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
+      { slug: 'zuerich-bellevue', plz: 'Bald', city: 'Zürich City', desc: 'Neuer Standort im Zentrum, in Vorbereitung.' },
+    ],
+  },
   kreuzlingen: {
     cro: true,
     slug: 'kreuzlingen',

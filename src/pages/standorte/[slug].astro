@@ -15,7 +15,7 @@ import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import homeBody from '../../data/home-body.html?raw';
 import { getTherapeut, teamCardHtml } from '../../data/therapeuten';
-import { getStandort, waHref, telHref } from '../../data/standorte';
+import { getStandort, waHref, telHref, standorte } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
 import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
 import { ksLinksFor, ksLinksHtml } from '../../data/koerpersignale-links';
@@ -38,10 +38,16 @@ import FinalCta from '../../components/standort/FinalCta.astro';
 
 export function getStaticPaths() {
   const leaves = import.meta.glob('../../data/standort-leaves/*.html', { query: '?raw', import: 'default', eager: true });
-  return Object.keys(leaves).map((p) => {
+  const paths = Object.keys(leaves).map((p) => {
     const slug = p.split('/').pop()!.replace('.html', '');
     return { params: { slug }, props: { body: leaves[p] as string } };
   });
+  // Voll migrierte Standorte ohne Leaf (z.B. basel): Route kommt allein aus standorte.ts.
+  const leafSlugs = new Set(paths.map((x) => x.params.slug));
+  for (const s of Object.keys(standorte)) {
+    if (!leafSlugs.has(s)) paths.push({ params: { slug: s }, props: { body: '' } });
+  }
+  return paths;
 }
 
 const { slug } = Astro.params;

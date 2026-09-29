@@ -14,7 +14,7 @@ const icons = {
 };
 const key = (k: 'mail' | 'tel' | 'pin' | 'clock') => icons[k];
 type Item = { icon: string; label: string; kind: 'mail' | 'tel' | 'text' | 'hours' };
-const order: Item[] = data.cro
+const orderAll: Item[] = data.cro
   ? [
       { icon: key('pin'), label: 'Adresse', kind: 'text' },
       { icon: key('clock'), label: 'Öffnungszeiten', kind: 'hours' },
@@ -27,6 +27,9 @@ const order: Item[] = data.cro
       { icon: key('pin'), label: 'Adresse', kind: 'text' },
       { icon: key('clock'), label: 'Öffnungszeiten', kind: 'hours' },
     ];
+// Standorte ohne bestätigte Öffnungszeiten (leeres Array) zeigen die Zeile nicht.
+const order = orderAll.filter((it) => it.kind !== 'hours' || data.nap.oeffnungszeiten.length > 0);
+const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && (
@@ -52,12 +55,12 @@ const order: Item[] = data.cro
   </div></div>
 ))}
 </div><div class="up-map">{data.nap.mapEmbed && <iframe src={data.nap.mapEmbed} width="100%" height="320" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Karte: TCM.ch ${data.stadt}, ${data.nap.strasse}`}></iframe>}</div>
-{data.cro ? (
+{data.cro && hasAnfahrt ? (
   <details class="up-transit-acc" style="margin-top:18px;border:1px solid var(--border);border-radius:12px;padding:0 16px;background:#fff">
     <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;font-family:var(--font-sans);font-size:15.5px;font-weight:700;color:var(--charcoal)">Anreise &amp; Parkieren<span aria-hidden="true" style="font-size:20px;color:var(--blue);font-weight:600">+</span></summary>
     <div style="padding-bottom:16px" class="up-transit">{data.anfahrt.oev && <p class="up-transit-area"><strong>Mit dem Zug &amp; ÖV:</strong> <span set:html={data.anfahrt.oev}></span></p>}{data.anfahrt.autoParken && <p class="up-transit-area"><strong>Mit dem Auto &amp; Parken:</strong> <span set:html={data.anfahrt.autoParken}></span></p>}</div>
   </details>
-) : (
+) : hasAnfahrt ? (
   <div class="up-transit"><h3 class="up-transit-h">Lage &amp; Anfahrt</h3>{data.anfahrt.oev && <p class="up-transit-area"><strong>Mit dem Zug &amp; ÖV:</strong> <span set:html={data.anfahrt.oev}></span></p>}{data.anfahrt.autoParken && <p class="up-transit-area"><strong>Mit dem Auto &amp; Parken:</strong> <span set:html={data.anfahrt.autoParken}></span></p>}</div>
-)}
+) : null}
 {data.wissenLink && (<p class="sg-wissen-xlink" style="margin:20px 0 0;font-size:15px;line-height:1.55"><a href={data.wissenLink.href} style="color:var(--blue);font-weight:700;text-decoration:none">{data.wissenLink.label} →</a><span style="display:block;color:#4a4a4a;font-size:13.5px;margin-top:3px">{data.wissenLink.sub}</span></p>)}</div></section>
