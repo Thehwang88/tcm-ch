@@ -2,16 +2,15 @@
 // /akupunktur-tcm-basel - Stadt-Landingpage für Basel, nach dem Muster von
 // /akupunktur-tcm-zuerich/ und /akupunktur-tcm-st-gallen/.
 //
-// Warum jetzt, obwohl die Praxis erst 2028 eröffnet: "akupunktur basel" hat 590
+// "akupunktur basel" hat 590
 // Suchanfragen/Monat bei KD 8 - der niedrigste Difficulty-Wert, den wir auf dieser Domain
 // gemessen haben (Semrush CH, 09/2026). Rankings brauchen 6 bis 18 Monate. Wer zur
-// Eröffnung sichtbar sein will, fängt nicht zur Eröffnung an.
 //
 // Der Local Pack ist bis zur Adresse verschlossen (kein Google-Business-Profil ohne
 // Standort). Diese Seite zielt deshalb bewusst auf die organischen Plätze darunter und auf
 // den Baselbieter Longtail, wo gar kein Pack ausgespielt wird.
 //
-// Pre-Opening-Regeln wie auf /standorte/basel/: Warteliste statt Termin-CTA, KEIN
+// Aktiver Standort (Steinenvorstadt 73, 4051 Basel), Termin-Anfrage wie auf /standorte/basel/. KEIN
 // MedicalClinic-Schema (erst mit Adresse), keine Öffnungszeiten, keine Anfahrt.
 export const prerender = true;
 import SpaPage from '../../layouts/SpaPage.astro';
@@ -19,11 +18,11 @@ import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
 import css from '../../data/massage-city.css?raw';
 
 const url = 'https://tcm.ch/akupunktur-tcm-basel/';
-const title = 'Akupunktur in Basel: Angebot, Ablauf & Eröffnung 2028 | TCM.ch';
-const description = 'Akupunktur und TCM in Basel: TCM.ch eröffnet 2028 zentral in der Stadt, EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar. Jetzt auf die Warteliste.';
+const title = 'Akupunktur in Basel: Angebot, Ablauf & Kosten | TCM.ch';
+const description = 'Akupunktur und TCM in Basel, Steinenvorstadt 73: EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar. Jetzt Termin anfragen.';
 
 const faqs = [
-  { q: 'Ab wann gibt es TCM.ch in Basel?', a: 'Die Eröffnung ist für 2028 geplant, die Adresse steht noch nicht fest. Auf der Warteliste bekommst du Bescheid, sobald Termine vergeben werden, und zwar vor allen anderen.' },
+  { q: 'Wo finde ich TCM.ch in Basel?', a: 'An der Steinenvorstadt 73, 4051 Basel, mitten in der Innenstadt. Frag deinen Termin über das Formular oder an termine@tcm.ch an.' },
   { q: 'Was kann ich bis dahin machen?', a: 'Wenn du nicht warten willst: Unsere nächstgelegene Praxis erreichst du in gut einer Stunde. Für Anliegen, die keine Behandlung vor Ort brauchen, kannst du dich vorab per WhatsApp oder E-Mail bei uns melden, wir sagen dir ehrlich, ob sich der Weg lohnt.' },
   { q: 'Übernimmt die Krankenkasse Akupunktur in Basel?', a: 'Über die Zusatzversicherung für Komplementärmedizin ja, in der Regel mit 70 bis 90 Prozent pro Sitzung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt und arbeiten unter anerkannter ZSR-Nummer. Die Grundversicherung übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit komplementärmedizinischer Weiterbildung.' },
   { q: 'Was kostet eine Sitzung?', a: 'Abgerechnet wird nach Tarif 590 nach Dauer. Die Tarife sind im ganzen TCM.ch-Netzwerk identisch, unabhängig vom Standort. Die Details stehen auf der Kostenseite.' },
@@ -44,16 +43,16 @@ const body = `
     <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/standorte/">Standorte</a> <span>&rsaquo;</span> <span>Basel</span></div>
     <div class="msg-hero-grid">
       <div>
-        <h1 class="msg-h1">Akupunktur in Basel: <em>Angebot, Ablauf und Eröffnung 2028.</em></h1>
-        <p class="msg-lead">Wir eröffnen 2028 eine Praxis in Basel. Bis dahin steht hier, was du wissen solltest: wie wir arbeiten, was eine Behandlung kostet, was die Zusatzversicherung übernimmt und wie du dir einen der ersten Termine sicherst. Ehrlich gesagt: heute buchen kannst du noch nichts.</p>
+        <h1 class="msg-h1">Akupunktur in Basel: <em>Angebot, Ablauf und Kosten.</em></h1>
+        <p class="msg-lead">Unsere Praxis liegt an der Steinenvorstadt 73, 4051 Basel. Hier steht, was du wissen solltest: wie wir arbeiten, was eine Behandlung kostet, was die Zusatzversicherung übernimmt und wie du zu deinem Termin kommst.</p>
         <div class="msg-hero-ctas">
-          <a href="#anfrage" class="btn-primary">Auf die Warteliste</a>
+          <a href="#anfrage" class="btn-primary">Termin anfragen</a>
           <a href="/standorte/basel/" class="btn-secondary">Zum Standort Basel</a>
         </div>
         <div class="msg-hero-trust">
           <span>${CHECK}EMR &amp; ASCA anerkannt</span>
-          <span>${CHECK}Eröffnung 2028</span>
-          <span>${CHECK}Warteliste offen</span>
+          <span>${CHECK}Steinenvorstadt 73, 4051 Basel</span>
+          <span>${CHECK}Krankenkasse 80 bis 100%</span>
         </div>
       </div>
     </div>
@@ -113,7 +112,7 @@ const body = `
       <div class="msg-prose" style="max-width:none">
         <p>Abgerechnet wird nach Tarif 590 nach Dauer. Die Tarife sind im ganzen TCM.ch-Netzwerk identisch, der Standort ändert am Preis nichts. Die Erstkonsultation dauert länger als eine Folgesitzung, weil die Anamnese Zeit braucht, und liegt entsprechend höher.</p>
         <p>Über deine Zusatzversicherung für Komplementärmedizin kommen je nach Police meist 70 bis 90 Prozent zurück, gedeckelt durch ein Jahresmaximum. Eine ärztliche Überweisung brauchst du nicht. Details stehen unter <a href="/standorte/basel/kosten/">Akupunktur Kosten Basel</a> und <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
-        <p>Ein praktischer Hinweis, wenn du ohnehin über einen Kassenwechsel nachdenkst: Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Behandlung schnell vierstellig im Jahr. Bis 2028 hast du Zeit, das zu prüfen.</p>
+        <p>Ein praktischer Hinweis, wenn du ohnehin über einen Kassenwechsel nachdenkst: Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Behandlung schnell vierstellig im Jahr.</p>
       </div>
       <aside class="msg-kk-aside">
         <h3>Kurz zusammengefasst</h3>
@@ -136,7 +135,7 @@ const body = `
     <p class="section-sub" style="margin-bottom:6px">Die Region ist mit dem ÖV eng verbunden. Aus diesen Gemeinden bist du in wenigen Minuten in der Stadt:</p>
     <div class="msg-pills">${REGION.map((o) => `<span class="msg-pill" style="cursor:default">${o}</span>`).join('')}</div>
     <div class="msg-prose" style="margin-top:24px">
-      <p>Wir eröffnen bewusst eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig. Das ist für die meisten näher als eine Praxis im eigenen Dorf, die nur zweimal pro Woche geöffnet hat.</p>
+      <p>Wir führen bewusst eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig. Das ist für die meisten näher als eine Praxis im eigenen Dorf, die nur zweimal pro Woche geöffnet hat.</p>
     </div>
   </div>
 </section>
@@ -154,10 +153,10 @@ const body = `
 <section class="section">
   <div class="wrap">
     <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:var(--r-card,16px);padding:34px 30px;text-align:center;max-width:760px;margin:0 auto">
-      <h2 class="section-title" style="margin-bottom:10px">Einer der ersten Termine <em>in Basel?</em></h2>
-      <p class="section-sub" style="margin:0 auto 20px">Auf der Warteliste bekommst du Bescheid, sobald wir Termine vergeben. Kein Newsletter, keine Werbung: eine Nachricht, wenn es so weit ist.</p>
+      <h2 class="section-title" style="margin-bottom:10px">Termin <em>in Basel?</em></h2>
+      <p class="section-sub" style="margin:0 auto 20px">Trag deine Angaben ins Formular ein, wir melden uns für die Terminvereinbarung. Kein Newsletter, keine Werbung.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="#anfrage" class="btn-primary">Auf die Warteliste</a>
+        <a href="#anfrage" class="btn-primary">Termin anfragen</a>
         <a href="/massage-basel/" class="btn-secondary">Massage in Basel</a>
       </div>
       <p style="font-size:13px;color:var(--muted);margin:16px 0 0">Fragen? Schreib an <a href="mailto:termine@tcm.ch" style="color:var(--green-dark)">termine@tcm.ch</a>.</p>
@@ -167,8 +166,8 @@ const body = `
 
 </div>`;
 
-// Kein MedicalClinic-Schema: Ohne Adresse und Öffnungszeiten wäre das eine Behauptung
-// über einen Betrieb, den es noch nicht gibt. Erst mit der Eröffnung.
+// Kein MedicalClinic-Schema auf dieser Ratgeber-/Stadtseite: das trägt die kanonische
+// Standortseite /standorte/basel/. Hier nur WebPage + FAQ + Breadcrumb.
 const schema = [
   { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
@@ -185,9 +184,9 @@ const schema = [
   <style set:html={css} is:inline></style>
   <Fragment set:html={body} />
   <MassageAnfrageForm
-    anfrageTyp="warteliste"
-    quelle="warteliste-basel-akupunktur"
-    heading="Auf die <em>Warteliste.</em>"
-    sub="Wir melden uns, sobald in Basel Termine vergeben werden. Sonst nichts."
+    anfrageTyp="termin"
+    quelle="termin-basel-akupunktur"
+    heading="Termin <em>anfragen.</em>"
+    sub="Wir melden uns für die Terminvereinbarung in Basel. Sonst nichts."
   />
 </SpaPage>

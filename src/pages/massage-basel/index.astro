@@ -5,12 +5,10 @@
 // Anti-Kannibalisierung: targetet ausschliesslich "massage basel". Kein
 // "tcm basel" / "akupunktur basel" in Title, H1 oder H2s (gehört
 // /standorte/...), und "tuina" generisch bleibt bei /therapien/tuina/.
-// Pre-Opening-Variante: Warteliste statt Buchungs-CTA, kein MedicalBusiness-Schema
-// (es gibt noch keine Adresse), informationaler gewichtet, damit die Seite bis zur
-// Eröffnung 2028 Substanz hat.
+// Aktiver Standort: Steinenvorstadt 73, 4051 Basel. Termin-Anfrage via MassageAnfrageForm.
 import SpaPage from '../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../components/InsuranceBanner.astro';
-import MassageWartelisteForm from '../../components/MassageWartelisteForm.astro';
+import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
 import WhatsAppContact from '../../components/WhatsAppContact.astro';
 import bodyRaw from '../../data/massage-basel-body.html?raw';
 import css from '../../data/massage-city.css?raw';
@@ -53,14 +51,14 @@ const longtailBlock = `
 
 const url = 'https://tcm.ch/massage-basel/';
 const title = 'Massage Basel – Medizinische Massage & Tuina | TCM.ch';
-const description = "Massage Basel: medizinische Massage, Tuina, Schröpfen und Gua Sha ab Eröffnung 2028. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar. Jetzt auf die Warteliste.";
+const description = "Massage Basel, Steinenvorstadt 73: medizinische Massage, Tuina, Schröpfen und Gua Sha. EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar. Jetzt Termin anfragen.";
 
 const faqs = [
-  { q: "Wann kann ich in Basel einen Termin buchen?", a: "Fix buchen kannst du noch nicht. Wir eröffnen 2028, ein genaues Datum steht noch nicht fest, weil die Räume gerade gesucht werden. Trag dich auf die Warteliste ein, dann melden wir uns, sobald die Terminvergabe startet, und du kommst vor der offiziellen Freigabe dran. Brauchst du früher eine Behandlung, sind unsere bestehenden Standorte offen." },
-  { q: "Was kostet eine Massage bei euch?", a: "Eine medizinische Massage oder eine Tuina-Behandlung dauert 45 bis 60 Minuten und kostet rund 130 bis 160 Franken. Kürzere Behandlungen wie Schröpfen oder Gua Sha liegen bei 30 bis 40 Minuten und rund 90 bis 120 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach tatsächlicher Dauer. Die Tarife sind an allen Standorten gleich, für Basel rechnen wir mit demselben Rahmen." },
+  { q: "Wie buche ich in Basel einen Termin?", a: "Frag deinen Termin über das Formular oder direkt an termine@tcm.ch an, mit Behandlung und Wunschzeitraum. Wir melden uns für die Terminvereinbarung. Die Praxis liegt an der Steinenvorstadt 73, 4051 Basel." },
+  { q: "Was kostet eine Massage bei euch?", a: "Eine medizinische Massage oder eine Tuina-Behandlung dauert 45 bis 60 Minuten und kostet rund 130 bis 160 Franken. Kürzere Behandlungen wie Schröpfen oder Gua Sha liegen bei 30 bis 40 Minuten und rund 90 bis 120 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach tatsächlicher Dauer. Die Tarife sind an allen Standorten gleich, auch in Basel." },
   { q: "Zahlt die Krankenkasse eine Massage?", a: "Bei medizinisch indizierten Behandlungen durch EMR- und ASCA-anerkannte Therapeut:innen beteiligt sich die Zusatzversicherung für Komplementärmedizin, je nach Modell 50 bis 90 Prozent, bei guten Policen mehr. Die Grundversicherung übernimmt keine Massagen, und reine Entspannungsmassagen zahlst du selbst. Eine ärztliche Verordnung ist nicht nötig." },
   { q: "Was zahle ich als Grenzgänger:in?", a: "Entscheidend ist deine Versicherung, nicht dein Wohnort. Wer in der Schweiz grundversichert ist, kann eine Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen, genau wie alle anderen. Bist du in Deutschland oder Frankreich versichert, zahlst du selbst und reichst die Rechnung dort ein. Du bekommst von uns eine detaillierte Rechnung mit ZSR-Nummer, mit der du bei deinem Versicherer einreichen kannst." },
-  { q: "Kostet die Warteliste etwas?", a: "Nein. Es braucht nur eine E-Mail-Adresse, keine Anzahlung und keine Verpflichtung. Wir schreiben dir einmal, wenn die Termine in Basel freigegeben sind. Keine Werbung, keine Weitergabe an Dritte." },
+  { q: "Kostet die Termin-Anfrage etwas?", a: "Nein. Es braucht nur eine E-Mail-Adresse, keine Anzahlung und keine Verpflichtung. Wir melden uns nur zur Terminvereinbarung. Keine Werbung, keine Weitergabe an Dritte." },
 ];
 
 const schema = [
@@ -81,7 +79,7 @@ const schema = [
   <InsuranceBanner variant="inline" location="Basel" />
   <Fragment set:html={restPart} />
   <Fragment set:html={longtailBlock} />
-  <MassageWartelisteForm stadt="Basel" jahr="2028" quelle="warteliste-basel-massage" />
+  <MassageAnfrageForm anfrageTyp="massage" quelle="massage-basel" />
   <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
 </SpaPage>

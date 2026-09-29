@@ -1,15 +1,10 @@
 ---
 // /standorte/basel/ - vollwertige Standortseite auf dem Luzern-Template (das seinerseits
-// auf St. Gallen basiert), im Pre-Opening-Modus (Eröffnung 2028, Adresse noch offen).
+// auf St. Gallen basiert). Aktiver Standort: Steinenvorstadt 73, 4051 Basel.
 //
-// Ersetzt den alten SPA-Leaf src/data/standort-leaves/basel.html (gelöscht), der einen
-// doppelten Hero/H1 hatte und eine Praxis "an der Freien Strasse" behauptete, obwohl
-// Basel erst 2028 eröffnet.
-//
-// Abweichungen zu St. Gallen, bewusst und nur wegen Pre-Opening:
-//   • Warteliste-Formular statt Buchungs-CTA (quelle=warteliste-basel)
-//   • KEIN MedicalClinic-Schema (erst mit Adresse), nur BreadcrumbList + FAQPage
-//   • keine Adress-/Anfahrts-Sektion, keine Öffnungszeiten, keine Team-Sektion
+// Ersetzt den alten SPA-Leaf src/data/standort-leaves/basel.html (gelöscht).
+// Termin-Anfrage per E-Mail-Formular (quelle=termin-basel); Öffnungszeiten und Team
+// stehen hier erst, wenn sie als bestätigte Daten vorliegen.
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 import { symptomCards } from '../../../data/symptom-cards';
@@ -18,7 +13,7 @@ import { therapyCards } from '../../../data/therapy-cards';
 const url = 'https://tcm.ch/standorte/basel/';
 const title = 'TCM & Akupunktur Basel | TCM.ch';
 const description =
-  'Akupunktur und TCM in Basel: TCM.ch eröffnet 2028 zentral in der Stadt. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt auf die Warteliste.';
+  'Akupunktur und TCM in Basel, Steinenvorstadt 73: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt Termin anfragen.';
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
@@ -50,10 +45,6 @@ const nearby = [
 
 const faqs = [
   {
-    q: 'Wann eröffnet ihr in Basel?',
-    a: '2028. Ein genaues Datum können wir noch nicht nennen, weil die Räume gerade gesucht werden. Wer auf der Warteliste steht, erfährt den Termin als Erstes und kann sich vor der offiziellen Eröffnung einen Platz sichern.',
-  },
-  {
     q: 'Was kostet Akupunktur in Basel?',
     a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Den konkreten Betrag nennen wir dir vor dem Termin.',
   },
@@ -67,19 +58,30 @@ const faqs = [
   },
   {
     q: 'Wo genau seid ihr in Basel?',
-    a: 'Die Adresse steht noch nicht fest. Klar ist die Lage: zentral in der Stadt, mit dem Bahnhof Basel SBB in Gehdistanz und guter Tramanbindung nach Kleinbasel, ins Gundeli und nach Riehen. Sobald der Mietvertrag unterschrieben ist, steht die Adresse hier.',
+    a: 'An der Steinenvorstadt 73, 4051 Basel, mitten in der Basler Innenstadt.',
   },
   {
-    q: 'Kann ich schon einen Termin reservieren?',
-    a: 'Fix buchen kannst du noch nicht. Auf die Warteliste eintragen schon. Wir melden uns, sobald die Terminvergabe für Basel startet, und du kommst vor allen anderen dran. Wenn du früher etwas brauchst, behandeln wir dich gerne an einem unserer bestehenden Standorte.',
+    q: 'Wie bekomme ich einen Termin in Basel?',
+    a: 'Trag deine E-Mail-Adresse im Formular ein oder schreib direkt an termine@tcm.ch, dann melden wir uns für die Terminvereinbarung. Alternativ behandeln wir dich gerne an einem unserer anderen Standorte.',
   },
   {
     q: 'Gibt es Termine ausserhalb der Bürozeiten?',
-    a: 'Ja. An unseren bestehenden Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags. Für Basel planen wir dieselben Zeiten, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Die definitiven Öffnungszeiten stehen hier, sobald die Praxis fix ist.',
+    a: 'An unseren Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Frag den gewünschten Zeitraum einfach bei der Terminanfrage an.',
   },
 ];
 
 const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalClinic',
+    '@id': url,
+    name: 'TCM.ch Basel',
+    url,
+    inLanguage: 'de-CH',
+    medicalSpecialty: 'TraditionalChineseMedicine',
+    address: { '@type': 'PostalAddress', streetAddress: 'Steinenvorstadt 73', postalCode: '4051', addressLocality: 'Basel', addressCountry: 'CH' },
+    memberOf: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+  },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -104,12 +106,12 @@ const schema = [
     <div class="lu-hero-inner">
       <div class="lu-hero-copy">
         <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Basel</span></div>
-        <span class="lu-badge">Standort Basel · Eröffnung 2028</span>
+        <span class="lu-badge">Standort Basel · Steinenvorstadt 73</span>
         <h1 class="lu-h1">TCM &amp; Akupunktur in <span class="lu-accent">Basel</span></h1>
-        <p class="lu-sub">Wir eröffnen 2028 eine Praxis in Basel, mit demselben Team und denselben Methoden wie an unseren dreizehn übrigen Standorten. Zentrale Lage, Bahnhof SBB in Gehdistanz geplant - die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
+        <p class="lu-sub">Unsere Praxis an der Steinenvorstadt 73, 4051 Basel, mitten in der Innenstadt: dasselbe Team-Prinzip und dieselben Methoden wie an unseren übrigen Standorten, EMR- und ASCA-anerkannt.</p>
         <div class="lu-cta-row">
-          <a href="#warteliste" class="lu-btn-primary">Auf die Warteliste</a>
-          <a href="/standorte/" class="lu-btn-ghost">Bestehende Standorte</a>
+          <a href="#termin" class="lu-btn-primary">Termin anfragen</a>
+          <a href="/standorte/" class="lu-btn-ghost">Alle Standorte</a>
         </div>
         <div class="lu-trust">
           <div><span class="lu-check">✓</span> EMR- und ASCA-anerkannt</div>
@@ -119,24 +121,23 @@ const schema = [
       </div>
 
       <div class="lu-hero-visual">
-        <div class="lu-card" id="warteliste" style="scroll-margin-top:88px">
-          <div class="lu-ribbon">2028</div>
-          <div class="lu-card-h">Sichere dir einen der <span class="lu-accent">ersten Termine</span></div>
-          <p class="lu-note" style="margin-bottom:14px">Eine E-Mail genügt. Wir melden uns, sobald die Terminvergabe in Basel startet.</p>
+        <div class="lu-card" id="termin" style="scroll-margin-top:88px">
+          <div class="lu-card-h">Termin in <span class="lu-accent">Basel</span> anfragen</div>
+          <p class="lu-note" style="margin-bottom:14px">Eine E-Mail genügt. Wir melden uns für die Terminvereinbarung, oder du schreibst direkt an termine@tcm.ch.</p>
           <div class="lu-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
-            <div><span class="lu-check">✓</span> Du hörst als Erstes vom Eröffnungstermin</div>
-            <div><span class="lu-check">✓</span> Terminwahl vor der offiziellen Freigabe</div>
+            <div><span class="lu-check">✓</span> Steinenvorstadt 73, 4051 Basel</div>
+            <div><span class="lu-check">✓</span> Krankenkasse 80 bis 100% über die Zusatzversicherung</div>
             <div><span class="lu-check">✓</span> Keine Anzahlung, keine Verpflichtung</div>
           </div>
           <div class="lu-divider"></div>
           <form class="lu-wl-form" data-lu-waitlist novalidate>
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
-            <input type="hidden" name="quelle" value="warteliste-basel" />
+            <input type="hidden" name="quelle" value="termin-basel" />
             <input type="hidden" name="standort" value="Basel" />
             <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
             <div class="cf-turnstile lu-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
-            <button type="submit">Auf die Warteliste</button>
-            <p class="lu-form-rule">Keine Werbung, keine Weitergabe. Nur eine Nachricht, wenn Basel startet.</p>
+            <button type="submit">Termin anfragen</button>
+            <p class="lu-form-rule">Keine Werbung, keine Weitergabe. Wir melden uns nur zur Terminvereinbarung.</p>
             <p class="lu-form-err" role="alert" hidden></p>
           </form>
         </div>
@@ -159,8 +160,8 @@ const schema = [
       </div>
       <div class="usp-card">
         <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-        <div class="usp-title">Termine ab Eröffnung 2028</div>
-        <div class="usp-sub">Warteliste zuerst, danach die offizielle Freigabe.</div>
+        <div class="usp-title">Termin unkompliziert anfragen</div>
+        <div class="usp-sub">Eine E-Mail genügt, wir melden uns zur Terminvereinbarung.</div>
       </div>
       <div class="usp-card">
         <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
@@ -175,12 +176,12 @@ const schema = [
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Standort</div>
       <h2 class="section-title">Deine <em>TCM-Praxis</em> in Basel.</h2>
-      <p class="section-sub">Basel steht auf unserer Liste, und wir bauen den Standort genau so auf wie die bestehenden: kleine Teams, viel Zeit pro Termin, klare Diagnostik.</p>
-      <p style="margin-top:20px">Wer heute nach chinesischer Medizin in Basel sucht, landet meist bei Einzelpraxen mit langen Wartezeiten. Das wollen wir ändern. Ab 2028 behandelt dich hier ein Team, das täglich mit denselben Krankheitsbildern arbeitet und schwierige Fälle untereinander bespricht, statt allein zu entscheiden.</p>
+      <p class="section-sub">An der Steinenvorstadt 73 behandeln wir nach demselben Prinzip wie an allen TCM.ch-Standorten: kleine Teams, viel Zeit pro Termin, klare Diagnostik.</p>
+      <p style="margin-top:20px">Wer nach chinesischer Medizin in Basel sucht, landet oft bei Einzelpraxen mit langen Wartezeiten. Bei uns behandelt dich ein Team, das täglich mit denselben Krankheitsbildern arbeitet und schwierige Fälle untereinander bespricht, statt allein zu entscheiden.</p>
       <p style="margin-top:16px">Der Ablauf ist überall gleich. Beim ersten Termin nimmt sich dein Akupunkteur eine ganze Stunde Zeit, hört zu, schaut sich Vorbefunde an und macht eine TCM-Diagnostik. Erst danach steht fest, ob Akupunktur, Schröpfen, Tuina oder eine Kräuterrezeptur sinnvoll ist, und in welcher Reihenfolge. Wir sagen dir auch, wenn wir dir nicht weiterhelfen können, und verweisen dich dann weiter. Wie ein Termin Schritt für Schritt abläuft, was er kostet und was die Studien zu Akupunktur hergeben, steht ausführlich unter <a href="/wissen/tcm-basel-erfahrungen-ablauf/">Erfahrungen &amp; Ablauf</a>.</p>
       <p style="margin-top:16px">Behandelt wird auf Deutsch, Englisch, Französisch und Mandarin. In einer Stadt, in der viele für Pharma, Uni oder Chemie hergezogen sind, ist das keine Nebensache: Beschwerden zu schildern fällt in der eigenen Sprache deutlich leichter, und in der Anamnese hängt fast alles daran, wie genau du erzählen kannst.</p>
       <p style="margin-top:16px">Unsere Therapeut:innen sind EMR- und ASCA-registriert, damit deine Zusatzversicherung mitzahlt. Was eine Sitzung kostet und was am Ende bei dir bleibt, rechnen wir dir vorher vor, mehr dazu unter <a href="/krankenkassen/">Krankenkasse</a>.</p>
-      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof Basel SBB in Gehdistanz geplant - Adresse folgt nach Mietvertrag.</p>
+      <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">TCM.ch Basel · Steinenvorstadt 73, 4051 Basel · mitten in der Innenstadt.</p>
     </div>
   </section>
 
@@ -188,8 +189,8 @@ const schema = [
   <section class="section" style="background:var(--surface)">
     <div class="wrap" style="max-width:820px">
       <div class="section-label">Einzugsgebiet</div>
-      <h2 class="section-title">Wo wir in Basel <em>erreichbar sein werden.</em></h2>
-      <p class="section-sub">Die Praxis entsteht zentral in der Stadt, mit kurzen Wegen aus Grossbasel und Kleinbasel. Der Bahnhof SBB soll in Gehdistanz liegen, damit du nach der Arbeit nicht noch quer durch die Stadt musst.</p>
+      <h2 class="section-title">Wo du uns in Basel <em>findest.</em></h2>
+      <p class="section-sub">Die Praxis liegt an der Steinenvorstadt 73, mitten in der Innenstadt, mit kurzen Wegen aus Grossbasel und Kleinbasel.</p>
       <p style="margin-top:16px">Aus dem Gundeli, St. Johann, St. Alban und Bachletten bist du mit dem Tram in wenigen Minuten da. Für Riehen, Allschwil, Binningen, Münchenstein, Birsfelden und Reinach gilt dasselbe: alle sind direkt ans Zentrum angebunden, ohne Umsteigen.</p>
       <p style="margin-top:16px">Ein Punkt, der Basel von anderen Städten unterscheidet: die Grenze. Aus Weil am Rhein, Lörrach und Grenzach-Wyhlen auf deutscher Seite und aus Saint-Louis, Hégenheim und Mulhouse auf französischer Seite ist die Basler Innenstadt oft schneller erreicht als das nächste grössere Zentrum im eigenen Land. Für Grenzgänger:innen, die ohnehin in Basel arbeiten, liegt ein Termin damit auf dem Arbeitsweg. Wie die Abrechnung in dem Fall läuft, steht weiter unten im FAQ.</p>
     </div>
@@ -201,7 +202,7 @@ const schema = [
       <div class="reveal">
         <div class="section-label">Beschwerden</div>
         <h2 class="section-title">Beschwerden, die wir in <em>Basel</em> behandeln</h2>
-        <p class="section-sub">Das sind die Anliegen, mit denen Patient:innen an unseren Standorten am häufigsten kommen, und die wir ab 2028 auch in Basel behandeln. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.</p>
+        <p class="section-sub">Das sind die Anliegen, mit denen Patient:innen an unseren Standorten am häufigsten kommen und die wir auch in Basel behandeln. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.</p>
       </div>
       <div class="card-grid reveal">
         {beschwerden.map(({ href, c }, i) => (
@@ -227,7 +228,7 @@ const schema = [
           <a href={`/therapien/${slug}/`} class="svc-card reveal"> <div class="svc-photo-wrap"> <img width={c.w} height={c.h} src={c.img} alt={`${c.name} bei TCM.ch`} class="svc-photo" loading="lazy" style={`object-position:${c.objectPos}`}> <div class="svc-photo-top-bar"></div> </div> <div class="svc-body"> <div class="svc-name">{c.name}</div> <div class="svc-tagline">{tagline}</div> <div class="svc-meta"> <span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>{c.time}</span> <span class="svc-badge svc-badge--ins">{c.ins}</span> </div> <div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div> </div> </a>
         ))}
       </div>
-      <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite <a href="/massage-basel/" style="color:var(--blue);font-weight:700">Massage in Basel</a>, die Warteliste läuft dort genauso.</p>
+      <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite <a href="/massage-basel/" style="color:var(--blue);font-weight:700">Massage in Basel</a>.</p>
     </div>
   </section>
 
@@ -245,7 +246,7 @@ const schema = [
             <span class="kt-micro-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Ergänzende Therapie</span>
           </div>
           <h3 class="kt-headline">Kräutertherapie</h3>
-          <p class="kt-desc">Individuelle Rezepturen als Granulat, wenn eine Behandlung über längere Zeit begleitet werden soll. In Basel ab Eröffnung verfügbar.</p>
+          <p class="kt-desc">Individuelle Rezepturen als Granulat, wenn eine Behandlung über längere Zeit begleitet werden soll.</p>
           <span class="kt-cta">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
         </div>
       </a>
@@ -257,7 +258,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Ablauf</div>
       <h2 class="section-title">Erstgespräch → Behandlungsplan → Folgetermine</h2>
-      <p class="section-sub">So läuft es an allen unseren Standorten ab, und so wird es auch in Basel laufen.</p>
+      <p class="section-sub">So läuft es an allen unseren Standorten ab, auch in Basel.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
           <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">1</div>
@@ -293,7 +294,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Warum TCM.ch</div>
       <h2 class="section-title">Was du bei uns anders <em>bekommst.</em></h2>
-      <p class="section-sub">Basel wird kein Einzelkämpfer-Standort, sondern Teil eines Netzes, das seit Jahren läuft.</p>
+      <p class="section-sub">Basel ist kein Einzelkämpfer-Standort, sondern Teil eines Netzes, das seit Jahren läuft.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
           <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
@@ -339,7 +340,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Einzugsgebiet</div>
       <h2 class="section-title">Für Basel-Stadt und <em>Baselland</em></h2>
-      <p class="section-sub">Wir eröffnen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig - für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p>
+      <p class="section-sub">Wir führen eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig - für die meisten näher als eine Praxis im eigenen Dorf, die zweimal pro Woche geöffnet hat.</p>
       <div class="cl-links" style="margin-top:18px;margin-bottom:22px">
         <a href="/akupunktur-tcm-basel/" class="cl-chip">Akupunktur Basel</a>
         <a href="/standorte/basel/kosten/" class="cl-chip">Kosten &amp; Krankenkasse</a>
@@ -359,7 +360,7 @@ const schema = [
     <div class="wrap">
       <div class="section-label">Weitere Standorte</div>
       <h2 class="section-title">Praxen <em>in der Nähe</em></h2>
-      <p class="section-sub">Bis Basel öffnet, sind das die nächstgelegenen Standorte. Zürich erreichst du ab Basel SBB in rund 55 Minuten.</p>
+      <p class="section-sub">Auch diese Standorte erreichst du gut: Zürich liegt ab Basel SBB rund 55 Minuten entfernt.</p>
       <div class="city-grid reveal">
         {nearby.map((n) => (
           <a href={`/standorte/${n.slug}/`} class="city-card location-card"><span class="location-plz">{n.meta}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Standort ansehen →</span></a>
@@ -371,11 +372,11 @@ const schema = [
   <!-- ── END-CTA ── -->
   <section class="cta-band" style="background:var(--blue);padding:48px 0">
     <div class="wrap" style="text-align:center">
-      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Einer der ersten Termine in Basel?</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Trag dich mit deiner E-Mail ein. Wir melden uns, sobald die Terminvergabe startet, und du kommst vor allen anderen dran.</p>
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Termin in Basel anfragen?</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Trag dich mit deiner E-Mail ein, wir melden uns für die Terminvereinbarung. Steinenvorstadt 73, 4051 Basel.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn-white" href="#warteliste" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Auf die Warteliste</a>
-        <a href="/standorte/" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">Bestehende Standorte</a>
+        <a class="btn-white" href="#termin" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>
+        <a href="/standorte/" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">Alle Standorte</a>
       </div>
     </div>
   </section>
@@ -485,7 +486,7 @@ const schema = [
           : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
         if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
         var data = {
-          email: email, standort: 'Basel', quelle: 'warteliste-basel',
+          email: email, standort: 'Basel', quelle: 'termin-basel',
           website: (f.querySelector('[name="website"]') || {}).value || '',
           zeit: new Date().toISOString(), turnstileToken: ts.token,
         };
@@ -494,18 +495,18 @@ const schema = [
           .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
           .then(function () {
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: 'formular_senden', form_type: 'warteliste', quelle: 'warteliste-basel' });
+            window.dataLayer.push({ event: 'formular_senden', form_type: 'terminanfrage', quelle: 'termin-basel' });
             // Inline-Styles, weil die scoped Styles dieser Seite auf zur Laufzeit
             // erzeugte Elemente nicht greifen (kein data-astro-cid).
             var ok = document.createElement('div');
             ok.style.cssText = 'text-align:center;padding:14px 4px';
             ok.innerHTML = '<div aria-hidden="true" style="width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--blue-light);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">✓</div>' +
-              '<h3 style="font-size:19px;font-weight:800;color:var(--charcoal);margin:0 0 8px;letter-spacing:-.01em">Danke, du stehst auf der Liste.</h3>' +
-              '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail, sobald die Termine in Basel freigegeben sind.</p>';
+              '<h3 style="font-size:19px;font-weight:800;color:var(--charcoal);margin:0 0 8px;letter-spacing:-.01em">Danke, deine Anfrage ist da.</h3>' +
+              '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail für die Terminvereinbarung in Basel.</p>';
             f.replaceWith(ok);
           })
           .catch(function () {
-            if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Auf die Warteliste'; }
+            if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Termin anfragen'; }
             if (window.turnstile && ts.el) { try { window.turnstile.reset(ts.el); } catch (_) {} }
             showErr('Senden fehlgeschlagen. Bitte später nochmal versuchen oder an termine@tcm.ch schreiben.');
           });

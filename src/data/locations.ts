@@ -69,8 +69,8 @@ export const clinics: Clinic[] = [
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
-    street: null, postalCode: null, phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.5596, lng: 7.5886 }, openingSoon: true, openingNote: 'Opening 2028',
+    street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
+    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 },
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',

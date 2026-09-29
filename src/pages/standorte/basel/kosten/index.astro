@@ -2,9 +2,7 @@
 // /standorte/basel/kosten/ - Kosten-Spoke zu /standorte/basel/, nach dem Muster von
 // /standorte/frauenfeld/kosten/, /standorte/kreuzlingen/kosten/ und /standorte/luzern/kosten/.
 //
-// Abweichung: Basel ist Pre-Opening (2028). Deshalb Warteliste statt Termin-CTA und keine
-// Aussagen über Öffnungszeiten oder Adresse. Die Tarife gelten netzweit und sind heute
-// schon verbindlich - genau deshalb lässt sich die Seite jetzt bauen.
+// Die Tarife gelten netzweit und sind verbindlich; Standort: Steinenvorstadt 73, 4051 Basel.
 //
 // Layout mit den msg-*-Klassen aus massage-city.css, wie die übrigen neuen Seiten.
 export const prerender = true;
@@ -21,9 +19,9 @@ const faqs = [
   { q: 'Wie viel übernimmt die Zusatzversicherung?', a: 'Je nach Police meist 70 bis 90 Prozent pro Sitzung, gedeckelt durch ein jährliches Maximum. Einige Kassen rechnen zusätzlich nach einem Höchstpreis pro Zeiteinheit ab. Verbindlich ist immer deine Police.' },
   { q: 'Wie prüfe ich meine Deckung?', a: 'Schick uns deine Krankenkasse und dein Versicherungsmodell, wir klären für dich, was übernommen wird. Das ist kostenlos und unverbindlich. Alternativ steht die Beteiligung in deiner Police, oder du fragst direkt bei deiner Kasse nach.' },
   { q: 'Was kostet die Erstbehandlung?', a: 'Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, oft bis zu 90 Minuten. Abgerechnet wird nach Tarif 590 nach Dauer, entsprechend liegt sie über einer Folgesitzung. Den konkreten Betrag nennen wir dir vorab, bevor behandelt wird.' },
-  { q: 'Brauche ich eine Überweisung vom Arzt?', a: 'Nein. Du kannst direkt einen Termin anfragen, sobald wir geöffnet haben. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.' },
+  { q: 'Brauche ich eine Überweisung vom Arzt?', a: 'Nein. Du kannst direkt einen Termin anfragen. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.' },
   { q: 'Kostet die Behandlung in Basel gleich viel wie an euren anderen Standorten?', a: 'Ja. Die Tarife sind im ganzen TCM.ch-Netzwerk identisch und richten sich nach Tarif 590. Der Standort ändert am Preis nichts.' },
-  { q: 'Ab wann kann ich in Basel einen Termin buchen?', a: 'Die Eröffnung ist für 2028 geplant. Auf der Warteliste bekommst du Bescheid, sobald Termine vergeben werden.' },
+  { q: 'Wie buche ich einen Termin in Basel?', a: 'Frag deinen Termin über das Formular oder direkt beim Standort Basel an, Steinenvorstadt 73, 4051 Basel. Wir melden uns für die Terminvereinbarung.' },
 ];
 
 const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
@@ -89,7 +87,7 @@ const body = `
       <div class="msg-prose" style="max-width:none">
         <p>Wie viel zurückkommt, steht in deiner Police, nicht im Gesetz. Übliche Bandbreite: 70 bis 90 Prozent pro Sitzung, begrenzt durch ein jährliches Maximum. Genau dieses Maximum ist der Punkt, an dem die meisten im Herbst hängen bleiben - frag deine Kasse danach, nicht nur nach dem Prozentsatz.</p>
         <p>Was die einzelnen Anbieter vorsehen, haben wir für 29 Kassen im <a href="/krankenkassen/">Krankenkassen-Vergleich</a> zusammengetragen. Oder du schickst uns deine Kasse und dein Modell, dann klären wir das für dich, kostenlos und unverbindlich.</p>
-        <p>Und weil Basel erst 2028 öffnet: Du hast bis dahin Zeit, deine Zusatzversicherung anzuschauen. Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Behandlung schnell vierstellig im Jahr.</p>
+        <p>Ein Blick in die eigene Zusatzversicherung lohnt sich in jedem Fall: Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Behandlung schnell vierstellig im Jahr.</p>
       </div>
       <aside class="msg-kk-aside">
         <h3>Kurz zusammengefasst</h3>
