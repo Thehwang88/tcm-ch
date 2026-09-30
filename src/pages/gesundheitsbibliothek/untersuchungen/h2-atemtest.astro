@@ -1,0 +1,170 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 30.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/h2-atemtest';
+const url = `https://tcm.ch${path}/`;
+const title = 'H2-Atemtest: Ablauf bei Laktose- & Fruktose-Verdacht';
+const description = 'Wie der H2-Atemtest Laktose- und Fruktosemalabsorption aufspürt: Vorbereitung, Ablauf über zwei bis drei Stunden, was das Ergebnis zeigt und wo die Grenzen liegen.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-30', dateModified: '2026-09-30',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'H2-Atemtest', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/blaehungen/', label: 'Blähungen' },
+  { href: '/beschwerden/reizdarm/', label: 'Reizdarm' },
+  { href: '/koerpersignale/durchfall-am-morgen/', label: 'Durchfall am Morgen' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', label: 'Stuhlanalyse' },
+  { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie (Magenspiegelung)' },
+  { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie (Darmspiegelung)' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">H2-Atemtest</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>H2-Atemtest: Was zeigt der Atemtest bei Unverträglichkeiten?</h1>
+        <p class="lead">Blähungen, Krämpfe oder Durchfall nach Milchprodukten oder Früchten? Mit dem H2-Atemtest lässt sich prüfen, ob Milch- oder Fruchtzucker im Dünndarm schlecht aufgenommen wird. Der Test ist unkompliziert, braucht aber etwas Zeit und die richtige Vorbereitung.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Der H2-Atemtest ist eine medizinische Untersuchung und wird ärztlich veranlasst und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+<h2>Was misst der H2-Atemtest?</h2>
+          <p>Der H2-Atemtest misst Wasserstoff in der Ausatemluft. Der Hintergrund: Wenn bestimmte Zucker wie Milchzucker (Laktose) oder Fruchtzucker (Fruktose) im Dünndarm nicht richtig aufgenommen werden, wandern sie weiter in den Dickdarm. Dort vergären Bakterien den Zucker, und dabei entsteht unter anderem Wasserstoff. Er gelangt über das Blut in die Lunge und wird abgeatmet.</p>
+          <p>Steigt der Wasserstoffwert in der Atemluft nach dem Trinken einer Zuckerlösung deutlich an, spricht das dafür, dass der getestete Zucker schlecht aufgenommen wurde.</p>
+
+          <h2>Wann kann der Test sinnvoll sein?</h2>
+          <p>Der Test wird vor allem eingesetzt, wenn Beschwerden wie Blähungen, Bauchkrämpfe, laute Darmgeräusche oder Durchfall immer wieder nach bestimmten Lebensmitteln auftreten und der Verdacht auf eine Laktose- oder Fruktosemalabsorption besteht.</p>
+          <p>Ob und welcher Test sinnvoll ist, entscheidet die Ärztin anhand deiner Beschwerden und deines Ernährungsprotokolls. Ein Test ohne passende Beschwerden bringt wenig, weil eine schlechte Zuckeraufnahme auch ohne Krankheitswert vorkommen kann.</p>
+
+          <h2>Laktose oder Fruktose: zwei Fragen, ein Prinzip</h2>
+          <p>Getestet wird immer ein Zucker pro Termin. Beim Verdacht auf Milchzucker-Unverträglichkeit wird Laktose getestet, beim Verdacht auf Fruchtzucker-Problematik Fruktose. Das Messprinzip ist dasselbe; wenn beides in Frage kommt, finden zwei Tests an verschiedenen Tagen statt.</p>
+
+          <h2>Vorbereitung und Ablauf</h2>
+          <p>Damit das Ergebnis aussagekräftig ist, kommst du nüchtern zum Test; die Praxis gibt dir vorher genaue Anweisungen, etwa zu Essenspause, Rauchen, Kaugummi und bestimmten Medikamenten wie kürzlich eingenommenen Antibiotika.</p>
+          <p>Beim Termin bläst du zuerst in ein Messgerät, um den Ausgangswert zu bestimmen. Dann trinkst du eine definierte Zuckerlösung. Anschliessend wird die Atemluft über zwei bis drei Stunden in regelmässigen Abständen gemessen. Notiert wird auch, ob während des Tests Beschwerden wie Blähungen, Krämpfe oder Durchfall auftreten, denn erst die Kombination aus Messwert und Symptomen ergibt das Bild einer Unverträglichkeit.</p>
+
+          <h2>Was das Ergebnis zeigen kann und was nicht</h2>
+          <p>Ein deutlicher Wasserstoffanstieg spricht für eine schlechte Aufnahme des getesteten Zuckers. Das allein ist noch keine Krankheit: Entscheidend ist, ob gleichzeitig Beschwerden auftreten.</p>
+          <p>Umgekehrt schliesst ein unauffälliger Test nicht jede Ursache aus. Ein Teil der Menschen bildet kaum Wasserstoff, sodass der Test trotz Malabsorption unauffällig bleiben kann. Auch andere Ursachen wie ein <a href="/beschwerden/reizdarm/">Reizdarm</a>, eine Zöliakie oder chronisch-entzündliche Darmerkrankungen macht der Atemtest nicht sichtbar; sie brauchen eigene Diagnostik.</p>
+
+          <h2>Risiken und Grenzen</h2>
+          <p>Der Test ist unkompliziert und ohne Strahlung oder Blutentnahme. Die einzige übliche Nebenwirkung: Wer den getesteten Zucker tatsächlich schlecht aufnimmt, bekommt während des Tests vorübergehend die bekannten Beschwerden.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Keine Dauerdiät auf Verdacht</div>
+            <p>Streiche nicht auf eigene Faust ganze Lebensmittelgruppen dauerhaft vom Speiseplan. Eine unnötig strenge Diät schränkt ein und kann die Nährstoffversorgung verschlechtern. Sinnvoller ist die gezielte Abklärung und danach eine Ernährungsanpassung, die zu deinem Befund passt, idealerweise mit Ernährungsberatung.</p>
+          </div>
+
+          <h2>Was passiert nach dem Test?</h2>
+          <p>Bestätigt sich eine Unverträglichkeit, heisst das meist nicht Totalverzicht: Viele vertragen kleinere Mengen problemlos. Besprochen werden individuelle Toleranzgrenzen, Alternativen und bei Laktose gegebenenfalls Enzympräparate für Ausnahmesituationen. Bleibt der Test unauffällig, geht die Abklärung der Beschwerden gezielt weiter.</p>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Der Atemtest ist medizinische Diagnostik und wird nicht durch TCM ersetzt. Wenn die Abklärung abgeschlossen ist und funktionelle Verdauungsbeschwerden bleiben, kann danach besprochen werden, ob eine ergänzende Behandlung sinnvoll ist.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Wie lange dauert ein H2-Atemtest?</h3>
+          <p>Rechne mit zwei bis drei Stunden, weil die Atemluft nach dem Trinken der Zuckerlösung in regelmässigen Abständen gemessen wird. Pro Termin wird ein Zucker getestet.</p>
+          <h3>Muss ich für den Test nüchtern sein?</h3>
+          <p>Ja. Die Praxis gibt dir vorher genaue Anweisungen zu Essenspause und weiteren Punkten wie Rauchen oder kürzlich eingenommenen Antibiotika, weil diese das Ergebnis verfälschen können.</p>
+          <h3>Kann der Test normal sein, obwohl ich Beschwerden habe?</h3>
+          <p>Ja. Manche Menschen bilden kaum Wasserstoff, und andere Ursachen wie Reizdarm oder Zöliakie zeigt der Test nicht. Ein unauffälliges Ergebnis beendet die Abklärung deshalb nicht automatisch.</p>
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/diagnosis" target="_blank" rel="noopener">NIDDK (National Institutes of Health): Diagnosis of Lactose Intolerance</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Themen"
+          links={rel1Links}
+          allHref="/beschwerden/"
+          allLabel="Alle Beschwerden"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Verdauungsbeschwerden und unklar, ob eine Unverträglichkeit dahintersteckt?</div>
+          <p>In der ärztlichen Sprechstunde lässt sich klären, ob ein Atemtest zu deinem Beschwerdemuster passt und welche Abklärung zuerst sinnvoll ist.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

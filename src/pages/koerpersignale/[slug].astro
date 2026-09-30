@@ -109,6 +109,17 @@ const libRegions = regionsForSignal(data.slug);
           </section>
         )}
 
+        {data.sources && data.sources.length > 0 && (
+          <div class="ks-sources">
+            <div class="ks-sources-label">Quellen</div>
+            <ul>
+              {data.sources.map((q) => (
+                <li>{q.url ? <a href={q.url} target="_blank" rel="noopener">{q.label}</a> : q.label}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div class="related">
           <div class="rel-label">Weiterlesen</div>
           <div class="rel-grid">
@@ -183,6 +194,11 @@ const libRegions = regionsForSignal(data.slug);
   .faq details[open] summary::after { content: '–'; }
   .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
 
+  .ks-sources { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .ks-sources-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .ks-sources ul { margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+  .ks-sources a { color: var(--muted); text-decoration: underline; }
+  .ks-sources a:hover { color: var(--blue); }
   .related { border-top: 1px solid var(--border); margin-top: 44px; padding-top: 24px; }
   .rel-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
   .rel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }

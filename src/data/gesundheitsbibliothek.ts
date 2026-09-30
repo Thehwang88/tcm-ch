@@ -71,6 +71,9 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'hormontest', name: 'Hormontest', short: 'Es gibt nicht den einen Hormontest: welche Bluttests je nach Fragestellung sinnvoll sein können.', href: '/gesundheitsbibliothek/untersuchungen/hormontest/' },
   { id: 'emg', name: 'EMG (Elektromyografie)', short: 'Untersucht die elektrische Aktivität der Muskeln: bei Muskelschwäche und neurologischen Fragestellungen.', href: '/gesundheitsbibliothek/untersuchungen/emg/' },
   { id: 'stuhlanalyse', name: 'Stuhlanalyse', short: 'Calprotectin, Erreger, verborgenes Blut: welcher Stuhltest welche medizinische Frage beantwortet.', href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/' },
+  { id: 'h2-atemtest', name: 'H2-Atemtest', short: 'Prüft per Atemluft, ob Milch- oder Fruchtzucker im Dünndarm schlecht aufgenommen wird.', href: '/gesundheitsbibliothek/untersuchungen/h2-atemtest/' },
+  { id: 'neurologische-untersuchung', name: 'Neurologische Untersuchung', short: 'Reflexe, Kraft, Gefühl und Koordination: die klinische Basisuntersuchung des Nervensystems.', href: '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/' },
+  { id: 'urinuntersuchung', name: 'Urinuntersuchung', short: 'Teststreifen, Laboranalyse und Urinkultur: was der Urin zeigen kann und was nicht.', href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/' },
 ];
 
 export interface BodyRegion {
@@ -341,6 +344,21 @@ export interface SearchEntry { t: string; u: string; g: string; k?: string }
 // Kontrollierte Synonyme (URL-Pfad -> Alltagswörter/Varianten). Nur für die Suche -
 // NIE eigene Seiten für Synonyme anlegen. Natürliche Begriffe, kein Keyword-Stuffing.
 const SYNONYMS: Record<string, string> = {
+  '/gesundheitsbibliothek/untersuchungen/h2-atemtest/': 'Atemtest Laktosetest Fruktosetest Laktoseintoleranz Test Wasserstoff-Atemtest',
+  '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/': 'Neurostatus neurologischer Status Untersuchung beim Neurologen Reflexe testen',
+  '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/': 'Urintest Urinprobe Urinstatus Teststreifen Urinkultur Mittelstrahlurin',
+  '/koerpersignale/kribbeln-im-ruecken/': 'Kribbeln Rücken Ameisenlaufen Rücken Missempfindung Rücken',
+  '/koerpersignale/ohr-juckt-innen/': 'Juckreiz Gehörgang Ohr jucken innen Ohrenjucken',
+  '/koerpersignale/kiefer-knackt-beim-oeffnen/': 'Kieferknacken Kiefergelenk knackt Knacken beim Kauen',
+  '/koerpersignale/husten-nach-dem-essen/': 'Hustenreiz nach dem Essen Husten beim Essen Verschlucken',
+  '/koerpersignale/schmerzen-beim-tiefen-einatmen/': 'Stechen beim Einatmen Schmerzen beim Atmen atemabhängige Schmerzen',
+  '/koerpersignale/schmerzen-zwischen-den-schulterblaettern/': 'Schmerzen Schulterblätter BWS Schmerzen oberer Rücken brennen zwischen Schulterblättern',
+  '/koerpersignale/magen-knurrt-staendig/': 'Magenknurren Darmgeräusche Bauch gluckert laute Verdauungsgeräusche',
+  '/koerpersignale/haende-zittern/': 'Händezittern Handzittern Tremor Hände zittrige Hände essentieller Tremor',
+  '/gesundheitsbibliothek/was-jetzt/verstopfung/': 'was tun bei Verstopfung Hausmittel Verstopfung was hilft sofort',
+  '/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/': 'neues Ohrgeräusch was tun Tinnitus plötzlich Piepen im Ohr was tun',
+  '/gesundheitsbibliothek/was-jetzt/heuschnupfen-akut/': 'was hilft sofort bei Heuschnupfen Pollenallergie akut Tipps',
+  '/gesundheitsbibliothek/was-jetzt/fersenschmerzen/': 'was tun bei Fersenschmerzen Ferse schmerzt morgens erste Schritte',
   '/gesundheitsbibliothek/untersuchungen/emg/': 'Elektromyografie EMG Muskelmessung Nadelelektrode EMG Untersuchung',
   '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/': 'Stuhlprobe Stuhltest Calprotectin Stuhlkultur Mikrobiom-Test Blut im Stuhl Test',
   '/beschwerden/venenschwaeche/': 'Venenschwäche chronische venöse Insuffizienz CVI Venenleiden schwache Venen',

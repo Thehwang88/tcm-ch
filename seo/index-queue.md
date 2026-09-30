@@ -21,6 +21,25 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/koerpersignale/kribbeln-im-ruecken/
+- https://tcm.ch/koerpersignale/ohr-juckt-innen/
+- https://tcm.ch/koerpersignale/kiefer-knackt-beim-oeffnen/
+- https://tcm.ch/koerpersignale/husten-nach-dem-essen/
+- https://tcm.ch/koerpersignale/schmerzen-beim-tiefen-einatmen/
+- https://tcm.ch/koerpersignale/schmerzen-zwischen-den-schulterblaettern/
+- https://tcm.ch/koerpersignale/magen-knurrt-staendig/
+- https://tcm.ch/koerpersignale/haende-zittern/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/h2-atemtest/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/urinuntersuchung/
+- https://tcm.ch/gesundheitsbibliothek/was-jetzt/verstopfung/
+- https://tcm.ch/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/
+- https://tcm.ch/gesundheitsbibliothek/was-jetzt/heuschnupfen-akut/
+- https://tcm.ch/gesundheitsbibliothek/was-jetzt/fersenschmerzen/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-bei-erkaeltung/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-waehrend-periode/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-stillzeit/
+- https://tcm.ch/gesundheitsbibliothek/fragen/schwindel-nach-akupunktur/
 - https://tcm.ch/tools/
 - https://tcm.ch/tools/bab-navigator/
 - https://tcm.ch/tools/praxiswert-rechner/
