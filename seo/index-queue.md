@@ -21,6 +21,8 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/team/astrid-lenggenhager/
+- https://tcm.ch/team/desiree-letter/
 - https://tcm.ch/fachpersonen/
 - https://tcm.ch/partner/modell/
 - https://tcm.ch/karriere/

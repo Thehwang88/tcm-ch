@@ -1,13 +1,9 @@
 ---
-// /team/[slug] - kanonische Therapeut:innen-Profilseiten, generiert aus
-// src/data/therapeuten.ts. Eine Person = eine Profilseite; Standorte werden
-// im Profil verlinkt (Daten aus src/data/locations.ts, nichts doppelt hardcoden).
-//
-// Qualitätsregel: jede Section rendert NUR, wenn Daten vorhanden sind - ein
-// Profil mit nur Name/Bild/Titel/Buchungslink funktioniert vollständig.
-// Development-Placeholder ("[…]") erscheinen sichtbar markiert, aber nie im Schema.
+// /team/[slug] - kanonische Therapeut:innen-Profilseiten aus src/data/therapeuten.ts.
+// Jede Section rendert NUR, wenn Daten vorhanden sind. `geplant` wird nie gerendert,
+// `beantragt` sichtbar als «Antrag läuft». Keine E-Mails, keine internen Hinweise.
 import LayoutDe from '../../layouts/LayoutDe.astro';
-import { therapeuten, bookingHref, isPlaceholder, type Therapeut } from '../../data/therapeuten';
+import { therapeuten, bookingHref, isUnconfirmed, visible, activeRegs, initials, type Therapeut } from '../../data/therapeuten';
 import { clinics } from '../../data/locations';
 import { site } from '../../data/site';
 
@@ -19,172 +15,214 @@ const { t } = Astro.props as { t: Therapeut };
 const path = `/team/${t.slug}/`;
 const url = site.url + path;
 const booking = bookingHref(t);
-const vorname = t.name.replace(/^Dr\.\s*\w*\.?\s*/i, '').split(' ')[0];
+const vorname = t.vorname ?? t.name.replace(/^Dr\.\s*\w*\.?\s*/i, '').split(' ')[0];
 
-const locs = (t.standorte ?? [])
-  .map((id) => clinics.find((c) => c.id === id))
-  .filter((c) => !!c);
+const locs = (t.standorte ?? []).map((id) => clinics.find((c) => c.id === id)).filter((c) => !!c);
 const primaryLoc = locs[0];
 
-// Nur echte (Nicht-Placeholder-)Werte rendern die jeweilige Section / das Schema-Feld.
-const real = (arr?: string[]) => (arr ?? []).filter((s) => !isPlaceholder(s));
-const show = {
-  kurz: !!t.kurzbeschreibung,
-  philosophie: !!t.philosophie,
-  bio: !!t.bio?.length,
-  schwerpunkte: !!t.schwerpunkte?.length,
-  ausbildung: !!t.ausbildung?.length || !!t.erfahrung,
-  methoden: !!t.methoden?.length,
-  sprachen: !!t.sprachen?.length,
-  anerkennungen: !!t.anerkennungen?.length,
-  standorte: locs.length > 0,
-};
+const ausbildungDone = visible(t.ausbildung).filter((a) => a.status !== 'in_ausbildung');
+const ausbildungLaufend = visible(t.ausbildung).filter((a) => a.status === 'in_ausbildung');
+const weiterbildungen = visible(t.weiterbildungen);
+const WB_VISIBLE = 8;
+const regsTcm = (t.registrierungen ?? []).filter((r) => !r.bereich);
+const regsOther = (t.registrierungen ?? []).filter((r) => !!r.bereich);
+const showGln = !!t.gln && !isUnconfirmed(t, 'gln');
+const glnInOther = showGln && !!t.glnNote && regsOther.some((r) => r.bereich === t.glnNote);
+const heroChips = (t.schwerpunkte ?? t.themenGruppen?.map((g) => g.titel) ?? []).slice(0, 3);
+const badges = activeRegs(t).slice(0, 4);
+const statusLabel = { anerkannt: 'anerkannt', registriert: 'registriert', beantragt: 'Antrag läuft' } as const;
+const facts = [
+  t.erfahrung && { k: 'Erfahrung', v: t.erfahrung },
+  t.sprachen?.length && { k: 'Sprachen', v: t.sprachen.join(', ') },
+  t.methoden?.length && { k: 'Methoden', v: t.methoden.slice(0, 4).join(', ') + (t.methoden.length > 4 ? ' …' : '') },
+  activeRegs(t).length && { k: 'Anerkennungen', v: activeRegs(t).map((r) => r.organisation).join(', ') },
+].filter(Boolean) as { k: string; v: string }[];
+const hasRegister = regsTcm.length > 0 || !!t.zsr || showGln || regsOther.length > 0;
 
-const title = t.seo?.title ?? `${t.name} – ${t.titel} | TCM.ch`;
+const title = t.seo?.title ?? `${t.name} | ${t.titel} bei TCM.ch`;
 const description =
   t.seo?.description ??
-  `${t.name}, ${t.titel}${t.ortLabel ? ` bei TCM.ch in ${t.ortLabel}` : ' im TCM.ch Netzwerk'}. Profil ansehen und Termin unkompliziert per WhatsApp anfragen.`;
+  (t.kurzbeschreibung ? `${t.kurzbeschreibung} Termin bei TCM.ch${t.ortLabel ? ` in ${t.ortLabel}` : ''} anfragen.` : `${t.name}, ${t.titel}${t.ortLabel ? ` bei TCM.ch in ${t.ortLabel}` : ' bei TCM.ch'}. Ausbildung, Methoden und Termin.`);
 
-// Schema.org: Person + Breadcrumb. Nur Angaben, die sichtbar auf der Seite stehen
-// und keine Placeholder sind.
+// Schema.org: nur sichtbare, gepflegte Angaben. Keine medicalSpecialty, keine Ratings.
 const person: Record<string, unknown> = {
   '@type': 'Person',
   name: t.name,
   jobTitle: t.titel,
-  image: site.url + t.bild,
   url,
   worksFor: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: site.url + '/' },
 };
-if (real(t.sprachen).length) person.knowsLanguage = real(t.sprachen);
-if (locs.length) person.workLocation = locs.map((c) => ({ '@type': 'Place', name: `TCM.ch ${c.name}`, url: `${site.url}/standorte/${c.id}/` }));
+if (t.bild) person.image = site.url + t.bild;
+if (t.registerName && t.registerName !== t.name) person.alternateName = t.registerName;
+if (t.sprachen?.length) person.knowsLanguage = t.sprachen;
+if (locs.length) person.workLocation = locs.map((c) => ({ '@type': 'Place', name: `TCM.ch ${c!.name}`, url: `${site.url}/standorte/${c!.id}/` }));
+const creds = [
+  ...ausbildungDone.map((a) => ({ '@type': 'EducationalOccupationalCredential', name: a.titel, credentialCategory: 'degree', ...(a.institution ? { recognizedBy: { '@type': 'Organization', name: a.institution } } : {}) })),
+  ...activeRegs(t).map((r) => ({ '@type': 'EducationalOccupationalCredential', name: `${r.organisation}-Registrierung`, credentialCategory: 'certification', recognizedBy: { '@type': 'Organization', name: r.organisation } })),
+];
+if (creds.length) person.hasCredential = creds;
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     person,
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: site.url + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Über uns', item: site.url + '/ueber-uns/' },
-        { '@type': 'ListItem', position: 3, name: t.name, item: url },
-      ],
-    },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: site.url + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Über uns', item: site.url + '/ueber-uns/' },
+      { '@type': 'ListItem', position: 3, name: t.name, item: url } ] },
   ],
 };
+const WA = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+const edu = (a: { titel: string; institution?: string; jahr?: string; note?: string }) => [a.institution, a.jahr].filter(Boolean).join(' · ');
 ---
-<LayoutDe title={title} description={description} path={path} schema={schema} ogImage={site.url + t.bild}>
+<LayoutDe title={title} description={description} path={path} schema={schema} ogImage={t.bild ? site.url + t.bild : undefined}>
   <article class="tp">
     <div class="tp-wrap">
-
-      {/* div statt <nav>: header.css stylt das nackte nav-Element (fixed, 68px, weiss)
-          und würde den Breadcrumb über den Site-Header legen. */}
       <div class="tp-crumb" role="navigation" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span aria-hidden="true">/</span>
-        <a href="/ueber-uns/">Über uns</a>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">{t.name}</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/ueber-uns/">Über uns</a><span aria-hidden="true">/</span><span aria-current="page">{t.name}</span>
       </div>
 
       <header class="tp-hero">
         <div class="tp-portrait">
-          <img src={t.bild} alt={`${t.name} – ${t.titel} bei TCM.ch`} width="630" height="840" loading="eager" fetchpriority="high" />
+          {t.bild
+            ? <img src={t.bild} alt={`${t.name}, ${t.titel} bei TCM.ch`} width="630" height="840" loading="eager" fetchpriority="high" />
+            : <div class="tp-initials" role="img" aria-label={t.name}><span>{initials(t.name)}</span></div>}
         </div>
         <div class="tp-hero-info">
-          {t.verfuegbar !== undefined && (
-            <div class={`tp-status ${t.verfuegbar ? 'is-on' : 'is-off'}`}>
-              <span class="tp-status-dot" aria-hidden="true"></span>
-              {t.verfuegbar ? 'Nimmt neue Patient:innen an' : 'Aktuell ausgebucht'}
-            </div>
-          )}
           <p class="tp-eyebrow">{t.titel}</p>
           <h1 class="tp-name">{t.name}</h1>
+          {t.untertitel && <p class="tp-sub">{t.untertitel}</p>}
           {t.ortLabel && (
-            <p class="tp-ort">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              {t.ortLabel}
-            </p>
+            <p class="tp-ort"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{t.ortLabel}</p>
           )}
-          {show.kurz && <p class="tp-kurz">{t.kurzbeschreibung}</p>}
-          {show.philosophie && <p class="tp-quote">«{t.philosophie}»</p>}
-          {(show.methoden || show.schwerpunkte) && (
-            <div class="tp-pills">
-              {(t.methoden ?? []).map((m) => <span class="tp-pill">{m}</span>)}
-              {(t.schwerpunkte ?? []).map((s) => <span class="tp-pill tp-pill--soft">{s}</span>)}
-            </div>
-          )}
-          {show.anerkennungen && (
-            <div class="tp-pills">
-              {t.anerkennungen!.map((a) => <span class="tp-pill tp-pill--badge">{a}</span>)}
-            </div>
-          )}
-          {(t.erfahrung || show.sprachen) && (
-            <dl class="tp-meta">
-              {t.erfahrung && (<><dt>Erfahrung</dt><dd>{t.erfahrung}</dd></>)}
-              {show.sprachen && (<><dt>Sprachen</dt><dd>{t.sprachen!.join(', ')}</dd></>)}
-            </dl>
-          )}
+          {t.kurzbeschreibung && <p class="tp-kurz">{t.kurzbeschreibung}</p>}
+          {heroChips.length > 0 && <div class="tp-pills">{heroChips.map((s) => <span class="tp-pill">{s}</span>)}</div>}
+          {badges.length > 0 && <div class="tp-pills">{badges.map((r) => <span class="tp-pill tp-pill--badge">{r.organisation}</span>)}</div>}
           <div class="tp-cta-row">
-            <a class="tp-cta" href={booking} target="_blank" rel="noopener">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Termin buchen
-            </a>
+            <a class="tp-cta" href={booking} target="_blank" rel="noopener"><Fragment set:html={WA} />Termin buchen</a>
             {primaryLoc && <a class="tp-cta tp-cta--sec" href={`/standorte/${primaryLoc.id}/`}>Standort ansehen</a>}
           </div>
-          <p class="tp-trust">Antwort meist innert Minuten · Krankenkasse deckt 80–100 %</p>
+          <p class="tp-trust">Kostenübernahme abhängig von Methode und Zusatzversicherung. <a href="/krankenkassen/">Wir prüfen deine Deckung gerne vorab.</a></p>
         </div>
       </header>
 
-      {show.bio && (
-        <section class="tp-section">
-          <h2>Über {vorname}</h2>
-          {t.bio!.map((p) => <p class={isPlaceholder(p) ? 'tp-ph' : undefined}>{p}</p>)}
+      {facts.length > 0 && (
+        <section class="tp-facts" aria-label="Auf einen Blick">
+          <h2 class="tp-visually">Auf einen Blick</h2>
+          <dl>{facts.map((f) => <div><dt>{f.k}</dt><dd>{f.v}</dd></div>)}</dl>
         </section>
       )}
 
-      {show.schwerpunkte && (
+      {t.bio?.length ? (
+        <section class="tp-section"><h2>Über {vorname}</h2>{t.bio.map((p) => <p>{p}</p>)}</section>
+      ) : null}
+
+      {t.themenGruppen?.length ? (
         <section class="tp-section">
-          <h2>Behandlungsschwerpunkte</h2>
-          <ul class="tp-tags">
-            {t.schwerpunkte!.map((s) => <li class={isPlaceholder(s) ? 'tp-ph' : undefined}>{s}</li>)}
+          <h2>{t.schwerpunkteAlsInteressen ? 'Behandlungsschwerpunkte & besondere Interessen' : 'Behandlungsschwerpunkte'}</h2>
+          {t.schwerpunkteAlsInteressen && <p class="tp-note">Diese Themen sind Schwerpunkte und besondere Interessen in der TCM-Praxis, keine formelle Fachspezialisierung.</p>}
+          <div class="tp-groups">
+            {t.themenGruppen.map((g) => (
+              <div class="tp-group"><h3>{g.titel}</h3><ul class="tp-tags">{g.items.map((i) => <li>{i}</li>)}</ul>{g.note && <p class="tp-note">{g.note}</p>}</div>
+            ))}
+          </div>
+        </section>
+      ) : t.schwerpunkte?.length ? (
+        <section class="tp-section">
+          <h2>{t.schwerpunkteAlsInteressen ? 'Behandlungsschwerpunkte & besondere Interessen' : 'Behandlungsschwerpunkte'}</h2>
+          <ul class="tp-tags">{t.schwerpunkte.map((s) => <li>{s}</li>)}</ul>
+        </section>
+      ) : null}
+
+      {t.methoden?.length ? (
+        <section class="tp-section"><h2>Methoden</h2><ul class="tp-tags">{t.methoden.map((m) => <li>{m}</li>)}</ul></section>
+      ) : null}
+
+      {(ausbildungDone.length || ausbildungLaufend.length) ? (
+        <section class="tp-section">
+          <h2>Ausbildung &amp; Abschlüsse</h2>
+          <ul class="tp-edu">
+            {ausbildungDone.map((a) => <li><strong>{a.titel}</strong>{edu(a) && <span>{edu(a)}</span>}{a.note && <span>{a.note}</span>}<em class="tp-st tp-st--ok">Abgeschlossen</em></li>)}
+            {ausbildungLaufend.map((a) => <li><strong>{a.titel}</strong>{edu(a) && <span>{edu(a)}</span>}{a.note && <span>{a.note}</span>}<em class="tp-st">In Ausbildung</em></li>)}
           </ul>
         </section>
-      )}
+      ) : null}
 
-      {show.ausbildung && (
+      {(t.klinischerHintergrund || t.berufserfahrung?.length) ? (
         <section class="tp-section">
-          <h2>Ausbildung &amp; Erfahrung</h2>
-          {t.ausbildung?.length && (
+          <h2>{t.klinischerHintergrund?.titel ?? 'Beruflicher Hintergrund'}</h2>
+          {t.klinischerHintergrund && <ul class="tp-list">{t.klinischerHintergrund.items.map((i) => <li>{i}</li>)}</ul>}
+          {t.berufserfahrung?.length ? (
             <ul class="tp-edu">
-              {t.ausbildung!.map((a) => (
-                <li class={isPlaceholder(a.titel) ? 'tp-ph' : undefined}>
-                  <strong>{a.titel}</strong>
-                  {(a.institution || a.jahr) && <span>{[a.institution, a.jahr].filter(Boolean).join(' · ')}</span>}
+              {t.berufserfahrung.map((e) => (
+                <li>
+                  <strong>{[e.rolle, e.organisation].filter(Boolean).join(', ')}</strong>
+                  {(e.ort || e.zeitraum) && <span>{[e.ort, e.zeitraum].filter(Boolean).join(' · ')}</span>}
+                  {e.beschreibung && <span>{e.beschreibung}</span>}
+                  {e.aufgaben?.length ? <ul class="tp-list tp-list--sm">{e.aufgaben.map((a) => <li>{a}</li>)}</ul> : null}
                 </li>
               ))}
             </ul>
-          )}
-          {t.erfahrung && <p class={isPlaceholder(t.erfahrung) ? 'tp-ph' : undefined}>{t.erfahrung}</p>}
+          ) : null}
         </section>
-      )}
+      ) : null}
 
-      {show.methoden && (
+      {weiterbildungen.length ? (
         <section class="tp-section">
-          <h2>Methoden</h2>
-          <ul class="tp-tags">
-            {t.methoden!.map((m) => <li>{m}</li>)}
+          <h2>Weiterbildungen</h2>
+          <ul class="tp-edu">
+            {weiterbildungen.slice(0, WB_VISIBLE).map((w) => <li><strong>{w.titel}</strong>{edu(w) && <span>{edu(w)}</span>}{w.status === 'in_ausbildung' && <em class="tp-st">In Ausbildung</em>}</li>)}
           </ul>
+          {weiterbildungen.length > WB_VISIBLE && (
+            <details class="tp-more">
+              <summary>Alle Weiterbildungen anzeigen ({weiterbildungen.length})</summary>
+              <ul class="tp-edu">
+                {weiterbildungen.slice(WB_VISIBLE).map((w) => <li><strong>{w.titel}</strong>{edu(w) && <span>{edu(w)}</span>}{w.status === 'in_ausbildung' && <em class="tp-st">In Ausbildung</em>}</li>)}
+              </ul>
+            </details>
+          )}
+          {t.weitereQualifikationen?.length ? <p class="tp-note">Weitere Qualifikation: {t.weitereQualifikationen.join(' · ')}</p> : null}
+        </section>
+      ) : null}
+
+      {hasRegister && (
+        <section class="tp-section">
+          <h2>Anerkennungen &amp; Register</h2>
+          <div class="tp-reg">
+            {regsTcm.map((r) => (
+              <div class={`tp-reg-item${r.status === 'beantragt' ? ' is-pending' : ''}`}>
+                <b>{r.organisation}</b><span class="tp-reg-st">{statusLabel[r.status]}</span>{r.nummer && <span>Nr. {r.nummer}</span>}{r.note && <span>{r.note}</span>}
+              </div>
+            ))}
+            {t.zsr && <div class="tp-reg-item"><b>ZSR</b><span>{t.zsr}</span></div>}
+            {showGln && !glnInOther && <div class="tp-reg-item"><b>GLN</b><span>{t.gln}</span>{t.glnNote && <span>{t.glnNote}</span>}</div>}
+          </div>
+          {regsOther.length > 0 && (
+            <>
+              <h3 class="tp-h3">{regsOther[0].bereich} (separat von TCM)</h3>
+              <div class="tp-reg">
+                {regsOther.map((r) => <div class="tp-reg-item"><b>{r.organisation}</b>{r.note && <span class="tp-reg-st">{r.note}</span>}</div>)}
+                {glnInOther && <div class="tp-reg-item"><b>GLN</b><span>{t.gln}</span></div>}
+              </div>
+            </>
+          )}
+          {t.registerName && t.registerName !== t.name && <p class="tp-note">Name bei Versicherern und Registern: {t.registerName}</p>}
+          <p class="tp-note">Eine Anerkennung bedeutet keine automatische Kostenübernahme. Massgebend ist deine Zusatzversicherung. <a href="/krankenkassen/">Mehr zur Kostenübernahme</a></p>
         </section>
       )}
 
-      {show.sprachen && (
+      {t.mitgliedschaften?.length ? (
+        <section class="tp-section"><h2>Mitgliedschaften</h2><ul class="tp-list">{t.mitgliedschaften.map((m) => <li>{m}</li>)}</ul></section>
+      ) : null}
+
+      {(t.sprachen?.length || t.weitereSprachen) ? (
         <section class="tp-section">
           <h2>Sprachen</h2>
-          <p class={t.sprachen!.every(isPlaceholder) ? 'tp-ph' : undefined}>{t.sprachen!.join(' · ')}</p>
+          {t.sprachen?.length ? <p><strong>Therapiesprachen:</strong> {t.sprachen.join(' · ')}</p> : null}
+          {t.weitereSprachen && <p><strong>{t.weitereSprachen.label}:</strong> {t.weitereSprachen.items.join(' · ')}</p>}
         </section>
-      )}
+      ) : null}
 
-      {show.standorte && (
+      {locs.length > 0 && (
         <section class="tp-section">
           <h2>{locs.length > 1 ? 'Standorte' : 'Standort'}</h2>
           <div class="tp-locs">
@@ -194,10 +232,7 @@ const schema = {
                   <p class="tp-loc-name">TCM.ch {c!.name}</p>
                   <p class="tp-loc-addr">{[c!.street, [c!.postalCode, c!.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')}</p>
                 </div>
-                <div class="tp-loc-actions">
-                  <a href={`/standorte/${c!.id}/`}>Standort ansehen</a>
-                  <a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin buchen</a>
-                </div>
+                <div class="tp-loc-actions"><a href={`/standorte/${c!.id}/`}>Standort ansehen</a><a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin buchen</a></div>
               </div>
             ))}
           </div>
@@ -206,16 +241,14 @@ const schema = {
 
       <section class="tp-final">
         <h2>Termin bei {vorname} anfragen</h2>
-        <p>Unkompliziert per WhatsApp – wir melden uns meist innert Minuten.</p>
+        <p>Unkompliziert per WhatsApp. Wir melden uns meist innert Minuten.</p>
         <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a>
       </section>
 
       <p class="tp-back"><a href="/ueber-uns/#ueber-uns-team">← Alle Therapeut:innen ansehen</a></p>
     </div>
 
-    <div class="tp-sticky" aria-hidden="false">
-      <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a>
-    </div>
+    <div class="tp-sticky"><a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a></div>
   </article>
 </LayoutDe>
 
@@ -270,13 +303,11 @@ const schema = {
   .tp-tags li { font-size: 13.5px; font-weight: 600; color: var(--charcoal); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 15px; }
 
   .tp-edu { list-style: none; padding: 0; margin: 0 0 12px; }
-  .tp-edu li { display: flex; flex-direction: column; gap: 3px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
-  .tp-edu li:last-child { border-bottom: none; }
+  .tp-edu > li { display: flex; flex-direction: column; gap: 3px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+  .tp-edu > li:last-child { border-bottom: none; }
   .tp-edu strong { color: var(--black); font-weight: 700; }
   .tp-edu span { color: var(--muted); font-size: 13px; }
 
-  /* Development-Placeholder sichtbar dezent markieren */
-  .tp-ph { color: var(--muted) !important; font-style: italic; }
 
   .tp-locs { display: grid; gap: 12px; }
   .tp-loc-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
@@ -295,6 +326,37 @@ const schema = {
   .tp-back { margin: 28px 0 0; font-size: 14px; }
   .tp-back a { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
   .tp-back a:hover { text-decoration: underline; }
+
+
+  .tp-initials, .tp-portrait .tp-initials { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--blue-light), #d5ebdf); }
+  .tp-initials span { font-family: var(--font-sans); font-weight: 800; font-size: 72px; letter-spacing: -.02em; color: var(--blue-dark); }
+  .tp-sub { font-size: 14.5px; color: var(--mid); margin: -4px 0 12px; }
+  .tp-trust a { color: var(--blue-dark); }
+  .tp-facts { margin-top: 48px; }
+  .tp-facts dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0; }
+  .tp-facts dl > div { padding: 16px 18px; border: 1px solid var(--border); border-radius: 14px; background: #fff; }
+  .tp-facts dt { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .tp-facts dd { margin: 0; font-size: 14px; line-height: 1.5; color: var(--charcoal); }
+  .tp-visually { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tp-note { font-size: 13.5px !important; color: var(--muted) !important; }
+  .tp-note a { color: var(--blue-dark); }
+  .tp-groups { display: grid; gap: 20px; }
+  .tp-group h3, .tp-h3 { font-size: 16px; font-weight: 700; color: var(--black); margin: 0 0 10px; }
+  .tp-h3 { margin-top: 24px; }
+  .tp-list { margin: 0 0 12px; padding-left: 20px; }
+  .tp-list li { font-size: 15px; line-height: 1.65; color: var(--mid); margin: 3px 0; }
+  .tp-list--sm li { font-size: 13.5px; }
+  .tp-edu li { position: relative; }
+  .tp-st { align-self: flex-start; font-style: normal; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 100px; background: var(--surface); color: var(--mid); border: 1px solid var(--border); margin-top: 4px; }
+  .tp-st--ok { background: var(--blue-light); color: var(--blue-dark); border-color: transparent; }
+  .tp-more summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--blue-dark); padding: 12px 0; }
+  .tp-reg { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .tp-reg-item { min-width: 0; overflow-wrap: anywhere; hyphens: auto; display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-size: 13.5px; color: var(--mid); }
+  .tp-reg-item b { font-size: 15px; color: var(--black); overflow-wrap: anywhere; hyphens: auto; }
+  .tp-reg-st { font-weight: 700; color: var(--blue-dark); }
+  .tp-reg-item.is-pending { background: var(--surface); }
+  .tp-reg-item.is-pending .tp-reg-st { color: var(--muted); }
+  @media (max-width: 860px) { .tp-facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tp-initials span { font-size: 56px; } }
 
   /* ── Sticky Mobile-CTA ── */
   .tp-sticky { display: none; }
