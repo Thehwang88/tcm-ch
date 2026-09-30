@@ -1,0 +1,8 @@
+---
+// Sichtbares Prüfdatum. «Zuletzt fachlich geprüft» NUR bei geprüften Quellen, sonst «Stand».
+import { REGULATORIK_VERIFIED, REG_STAND, SOURCES, type SourceId } from '../../data/regulatorik/sources';
+const { ids, lastReviewed } = Astro.props as { ids: SourceId[]; lastReviewed: string };
+const verified = REGULATORIK_VERIFIED && ids.every((i) => SOURCES[i].checked && SOURCES[i].precise);
+const fmt = (d: string) => new Date(d).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<p class="pro-verify">{verified ? <><b>Zuletzt fachlich geprüft:</b> {fmt(lastReviewed)}</> : <><b>Stand:</b> {fmt(REG_STAND)}</>} · TCM.ch Redaktion<br />Diese Seite dient der Orientierung für Fachpersonen. Verbindlich sind die aktuellen Vorgaben der zuständigen Behörde bzw. Organisation.</p>

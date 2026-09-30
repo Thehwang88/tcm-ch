@@ -95,3 +95,16 @@ m7-erklaerung (zweite Erklärseite),/regulatorik/oda-am/ (Erklärung) · /akadem
 tcm-praxis-nachfolge-{stadt} (Städteseiten),/partner/praxisnachfolge/,Ein Nachfolge-Owner,Doorways,Keiner
 tcm-praxis-verkaufen-zuerich/-bern/… (Städteseiten),/praxiswissen/tcm-praxis-verkaufen/,Ein Verkaufen-Owner,Doorways,Keiner
 tcm-praxis-uebernehmen-{stadt} (Städteseiten),/praxiswissen/tcm-praxis-uebernehmen/,Ein Übernehmen-Owner,Doorways,Keiner
+/regulatorik/emr-schweiz/,/regulatorik/emr/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/emr-tcm/,/regulatorik/emr/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/asca-tcm/,/regulatorik/asca/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/zsr-tcm/,/regulatorik/zsr/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/zsr-beantragen/,/regulatorik/zsr/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/gln/,/regulatorik/gln-zsr-nareg/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/nareg/,/regulatorik/gln-zsr-nareg/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/oda-am-m7/,/regulatorik/oda-am/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/tarif-590-tcm/,/regulatorik/tarif-590/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/krankenkasse-emr/,/regulatorik/emr/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/regulatorik/krankenkasse-asca/,/regulatorik/asca/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+"/regulatorik/bab-[kanton]/ (alle 26, z. B. bab-zuerich, bab-thurgau, bab-basel, bab-bern)",/regulatorik/kantone/,Kantonsdaten gehören in den Navigator,"Doorways, unverifizierte Rechtsinfos",Navigator-Datensatz mit kantonaler Primärquelle
+/regulatorik/egk-anerkennung/ · /regulatorik/visana-anerkennung/,/regulatorik/krankenkassen-anerkennung/,"Vorerst Abschnitte; eigene URL erst bei klarer GSC-Nachfrage (visana therapeuten anerkennung, egk therapeut registrieren)","Fragmentierung, Thin Content",Nach GSC-Review

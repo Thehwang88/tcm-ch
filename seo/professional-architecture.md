@@ -96,3 +96,10 @@ Profil → Klinik, Mentor-Status, Kurse, Artikel mit Zitat, aktuelle Inserate ·
 - Gebaut, aber `noindex,follow`: /regulatorik/ (Hub) + 5 Leaves. Gate `REGULATORIK_VERIFIED` in `src/data/pro/regulatorik.ts`.
   Freischalten: jede Quelle in `SOURCES` im Browser prüfen, `checked` datieren, Gate auf `true`, Status in `professional-topic-map.csv` / `master-keyword-url-map.csv` auf `live`. Dann erscheint «Zuletzt fachlich geprüft» automatisch.
 - Wortgetreue Fliesstexte: `src/data/pro/cohort-bodies.ts`. Komponenten: `ProWasIstWas`, `ProSources` (src/components/pro/), Formular `NachfolgeForm` (quelle=praxisnachfolge).
+
+## Regulatorik-Cluster (2026-09-30)
+- 1 Hub + 9 Leaves (inkl. /regulatorik/kantone/ als EIN Navigator, 26 Datensätze). /regulatorik/betriebsbewilligung-praxis/ = planned P2.
+- Single Source: `src/data/regulatorik/` (sources.ts = Quellen + volatile Fakten + Gate, kantone.ts, pages.ts, glossary.ts). Komponenten `src/components/reg/`.
+- Gate `REGULATORIK_VERIFIED=false` → alles noindex,follow. Freigabe: jede Quelle `precise: true` (konkrete Fachseite statt Startseite) + `checked`, jeder Fakt `reviewed`, dann Gate true; `node scripts/check-professional.mjs` listet Blocker.
+- Versicherer: EMR/ASCA ≠ alle Versicherer. EGK (Therapeutenstelle, mit EMR) und Visana (eigenes Verfahren, via Health Insurance Solutions AG) als Abschnitte auf /regulatorik/krankenkassen-anerkennung/; eigene URLs erst bei GSC-Nachfrage.
+- Fachverband-Übersicht (Stand 06.08.2026) nur Crosscheck; Abweichungen zur Primärquelle hier dokumentieren.

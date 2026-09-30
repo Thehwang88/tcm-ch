@@ -386,3 +386,34 @@ a.b2-card:hover { border-color: var(--blue); transform: translateY(-2px); }
 .pro-soonlist em { font-style: normal; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8f8f8f; }
 @media (max-width: 900px) { .pro-soonlist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .pro-soonlist { grid-template-columns: 1fr; } .pro-wiw dl { grid-template-columns: 1fr; } .pro-wiw dd { border-top: 0; padding-top: 0; } .pro-short { padding: 20px; } }
+
+/* Regulatorik-Werkzeug */
+.reg-subnav { display: flex; gap: 6px; overflow-x: auto; margin: 0 0 28px; padding-bottom: 4px; scrollbar-width: none; }
+.reg-subnav a { flex: none; font-size: 13.5px; font-weight: 600; color: var(--mid); text-decoration: none; padding: 7px 12px; border: 1px solid var(--border); border-radius: 999px; background: #fff; }
+.reg-subnav a[aria-current="page"] { color: #fff; background: var(--black); border-color: var(--black); }
+.reg-layers { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 32px 0 24px; }
+.reg-layers div { padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
+.reg-layers dt { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 4px; }
+.reg-layers dd { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.reg-layers a { color: var(--black); text-decoration: none; }
+.reg-map { margin-top: 48px; padding: 22px; border: 1px solid var(--border); border-radius: var(--r-card); background: #fff; }
+.reg-map__h { margin: 0 0 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-dark); }
+.reg-map__h + .reg-map__grid ~ .reg-map__h { margin-top: 22px; }
+.reg-map__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.reg-map__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.reg-map__grid a { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: inherit; }
+.reg-map__grid a b { font-size: 15px; color: var(--black); }
+.reg-map__grid a span { font-size: 13px; line-height: 1.4; color: var(--mid); }
+.reg-map__grid a.is-here { background: var(--blue-light); border-color: var(--blue); }
+.reg-map__fine { margin: 14px 0 0; font-size: 12.5px; color: #8f8f8f; }
+.reg-nav { margin-top: 40px; padding: 24px; border-radius: var(--r-card); background: var(--surface); }
+.reg-nav select { display: block; width: 100%; margin-top: 10px; padding: 14px 16px; font: inherit; font-size: 16px; border: 1px solid var(--border); border-radius: 12px; background: #fff; }
+.reg-nav__count { margin: 10px 0 0; font-size: 13px; color: var(--mid); }
+.reg-kt { margin-top: 20px; padding: 20px; border-radius: 12px; background: #fff; }
+.reg-kt h2 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+.reg-kt p, .reg-kt li { font-size: 15px; line-height: 1.6; color: #333; }
+.reg-kt__open { color: var(--mid) !important; }
+.reg-kt dl { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: 8px 14px; }
+.reg-kt dt { font-weight: 700; } .reg-kt dd { margin: 0; }
+@media (max-width: 900px) { .reg-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); } .reg-map__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .reg-layers, .reg-map__grid, .reg-map__grid--3, .reg-kt dl { grid-template-columns: minmax(0, 1fr); } .reg-map { padding: 16px; } .reg-nav { padding: 18px; } }

@@ -41,7 +41,7 @@ for (const d of fs.readdirSync('dist/partner', { withFileTypes: true })) {
 
 // Logik-Tests (esbuild-Bundle der TS-Module)
 const tmp = path.join(os.tmpdir(), `pro-check-${process.pid}.mjs`);
-await build({ stdin: { contents: "export * from './src/data/pro/taxonomy.ts'; export * from './src/data/pro/entities.ts'; export * from './src/data/pro/contributions.ts'; export * from './src/data/pro/submissions.ts'; export * from './src/data/pro/regulatorik-kantone.ts'; export * from './src/data/pro/daten-methodik.ts'; export { PRO_NAV, PRO_MAP, PRO_NAV_OVERVIEW } from './src/data/pro/architecture.ts';", resolveDir: process.cwd(), loader: 'ts' }, bundle: true, format: 'esm', platform: 'node', outfile: tmp, logLevel: 'silent' });
+await build({ stdin: { contents: "export * from './src/data/pro/taxonomy.ts'; export * from './src/data/pro/entities.ts'; export * from './src/data/pro/contributions.ts'; export * from './src/data/pro/submissions.ts'; export * from './src/data/pro/regulatorik-kantone.ts'; export * from './src/data/pro/daten-methodik.ts'; export { REG_PAGES, KANTONE_PAGE } from './src/data/regulatorik/pages.ts'; export { SOURCES, FACTS, REGULATORIK_VERIFIED } from './src/data/regulatorik/sources.ts'; export { PRO_NAV, PRO_MAP, PRO_NAV_OVERVIEW } from './src/data/pro/architecture.ts';", resolveDir: process.cwd(), loader: 'ts' }, bundle: true, format: 'esm', platform: 'node', outfile: tmp, logLevel: 'silent' });
 const m = await import(tmp); fs.unlinkSync(tmp);
 ok(!m.canTransition('submitted', 'published'), 'submitted→published darf nicht erlaubt sein');
 ok(m.canTransition('verified', 'published'), 'verified→published muss erlaubt sein');
@@ -61,7 +61,31 @@ ok(!('submittedBy' in sale) && !('area' in sale) && !('images' in sale) && !('co
 ok(m.renderableQuotes([{ quote: 'q', displayName: 'A', sourceType: 'interview', consentConfirmed: false }]).length === 0, 'Zitat ohne Einwilligung wird gerendert');
 ok(m.renderableQuotes([{ quote: 'q', displayName: 'A', sourceType: 'public-source', consentConfirmed: true }]).length === 0, 'öffentliches Zitat ohne Link wird gerendert');
 ok(m.PROFILES.length + m.JOBS.length + m.COURSES.length + m.LISTINGS.length === 0, 'Es dürfen keine Profile/Jobs/Kurse/Inserate im Code stehen');
-ok(m.CANTON_RECORDS.length === 0 && m.DATASETS.length === 0 && m.BENCHMARK_PUBLISHING_ENABLED === false, 'Unverifizierte Kanton-/Benchmarkdaten vorhanden');
+ok(m.DATASETS.length === 0 && m.BENCHMARK_PUBLISHING_ENABLED === false, 'Unverifizierte Benchmarkdaten vorhanden');
+// Kanton-Navigator: 26 Datensätze; verified nur mit Datum, Quelle, offizieller URL und belegten Aussagen
+ok(m.KANTONE.length === 26 && new Set(m.KANTONE.map((k) => k.cantonCode)).size === 26, 'Kanton-Navigator braucht genau 26 Kantone');
+for (const k of m.KANTONE) {
+  if (k.status === 'verified') ok(m.isPublishable(k), `Kanton ${k.cantonCode} verified ohne Datum/Quelle/URL`);
+  else for (const f of m.CANTON_FIELDS) ok(k[f.key] === null, `Kanton ${k.cantonCode}: ${f.key} gesetzt, aber needs_verification`);
+  for (const f of m.CANTON_FIELDS) if (k[f.key]) ok(/^https:\/\//.test(k[f.key].sourceUrl), `Kanton ${k.cantonCode}: ${f.key} ohne Quelle`);
+}
+// Regulatorik-Quellenintegrität
+const regPages = [...m.REG_PAGES, { slug: 'kantone', ...m.KANTONE_PAGE, lastReviewed: '2026-09-30', facts: [] }];
+const regBlockers = [];
+for (const p of regPages) {
+  const src = p.sources.map((i) => [i, m.SOURCES[i]]);
+  ok(src.every(([, s]) => s), `Regulatorik ${p.slug}: unbekannte Quelle`);
+  ok(src.some(([, s]) => s && s.kind !== 'association'), `Regulatorik ${p.slug}: keine offizielle Primärquelle`);
+  if (['berufsausuebungsbewilligung', 'kantone'].includes(p.slug)) ok(src.some(([, s]) => s && s.kind === 'cantonal'), `Regulatorik ${p.slug}: keine kantonale Quelle`);
+  ok(!!p.lastReviewed, `Regulatorik ${p.slug}: kein Review-Datum`);
+  for (const [i, s] of src) if (s && s.kind !== 'association' && (!s.checked || !s.precise)) regBlockers.push(`${p.slug}: Quelle ${i} ${!s.precise ? 'unpräzise (Startseite)' : 'ungeprüft'}`);
+  for (const f of p.facts) { ok(!!m.FACTS[f], `Regulatorik ${p.slug}: unbekannter Fakt ${f}`); if (m.FACTS[f] && !m.FACTS[f].reviewed) regBlockers.push(`${p.slug}: Fakt ${f} ungeprüft`); }
+}
+if (m.REGULATORIK_VERIFIED) regBlockers.forEach((b) => errs.push('Freigabe-Blocker ' + b));
+else {
+  for (const p of regPages) { const u = p.slug ? `/regulatorik/${p.slug}/` : '/regulatorik/'; if (built(u)) ok(noindex(html(u)), `Gate aus, aber indexierbar: ${u}`); }
+  console.log(`  Regulatorik-Gate geschlossen: ${new Set(regBlockers).size} offene Quellen-/Faktenprüfungen (noindex aktiv).`);
+}
 ok(!m.SUBMISSION_TYPES.find((t) => t.id === 'benchmark').publicNow, 'Benchmark-Formular darf nicht öffentlich sein');
 const apiTypes = fs.readFileSync('functions/api/einreichung.js', 'utf8').match(/new Set\(\[([^\]]+)\]\)/)[1].split(',').map((s) => s.trim().replace(/'/g, ''));
 for (const t of m.SUBMISSION_TYPES) ok(t.id === 'benchmark' ? !apiTypes.includes(t.id) : apiTypes.includes(t.id), `API/Schema-Drift: ${t.id}`);

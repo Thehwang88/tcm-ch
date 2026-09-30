@@ -1,0 +1,14 @@
+---
+// «Offizielle Quellen» — Organisation, Dokument, direkter Link, Prüfdatum. Daten: src/data/regulatorik/sources.ts.
+import { SOURCES, type SourceId } from '../../data/regulatorik/sources';
+const { ids } = Astro.props as { ids: SourceId[] };
+const fmt = (d: string) => d.split('-').reverse().join('.');
+---
+<div class="pro-src">
+  <p class="b2-label" style="margin:0">Offizielle Quellen</p>
+  <ol>
+    {ids.map((i) => SOURCES[i]).map((s) => (
+      <li><b>{s.org}</b><br /><a href={s.url} rel="noopener" target="_blank">{s.title}</a><br /><span>{s.checked ? `Zuletzt geprüft: ${fmt(s.checked)}` : 'Zuletzt geprüft: ausstehend'}</span>{s.kind === 'association' && <span> · nur Abgleich, keine Primärquelle</span>}</li>
+    ))}
+  </ol>
+</div>

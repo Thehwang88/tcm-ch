@@ -1,0 +1,20 @@
+---
+// RegulatoryMap — jede Box eine eigene Aufgabe; keine ersetzt eine andere. Daten: src/data/regulatorik/glossary.ts.
+import { REGULATORY_MAP, INSURER_LAYER } from '../../data/regulatorik/glossary';
+const { here, insurers = false } = Astro.props as { here?: string; insurers?: boolean };
+---
+<div class="reg-map">
+  <p class="reg-map__h">Wer macht was?</p>
+  <div class="reg-map__grid">
+    {REGULATORY_MAP.map((m) => (
+      <a class={m.key === here ? 'is-here' : undefined} href={m.href} aria-current={m.key === here ? 'page' : undefined}><b>{m.label}</b><span>{m.role}</span></a>
+    ))}
+  </div>
+  {insurers && (<>
+    <p class="reg-map__h">Versicherer: mehrere Wege nach Abschluss und Bewilligung</p>
+    <div class="reg-map__grid reg-map__grid--3">
+      {INSURER_LAYER.map((m) => <a href={m.href}><b>{m.label}</b><span>{m.role}</span></a>)}
+    </div>
+  </>)}
+  <p class="reg-map__fine">Jede Stelle erfüllt eine eigene Aufgabe. Keine ersetzt eine andere.</p>
+</div>

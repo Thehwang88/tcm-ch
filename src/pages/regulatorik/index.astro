@@ -1,19 +1,40 @@
 ---
-// /regulatorik/ — Hub der Regulatorik-Leaves. Indexierung hängt am Gate REGULATORIK_VERIFIED.
+// /regulatorik/ — Werkzeug-Hub. Indexierung hängt am Gate REGULATORIK_VERIFIED.
 import LayoutDe from '../../layouts/LayoutDe.astro';
-import ProWasIstWas from '../../components/pro/ProWasIstWas.astro';
+import RegulatoryMap from '../../components/reg/RegulatoryMap.astro';
+import RegSubnav from '../../components/reg/RegSubnav.astro';
+import RegReview from '../../components/reg/RegReview.astro';
+import RegSources from '../../components/reg/RegSources.astro';
 import { site } from '../../data/site';
-import { REGULATORIK, REGULATORIK_VERIFIED, regHref } from '../../data/pro/regulatorik';
+import { REG_PAGES, regHref } from '../../data/regulatorik/pages';
+import { REGULATORIK_VERIFIED, SOURCES, type SourceId } from '../../data/regulatorik/sources';
+const allIds = (Object.keys(SOURCES) as SourceId[]).filter((i) => SOURCES[i].kind !== 'association');
 import '../../styles/b2b.css';
 
 const path = '/regulatorik';
 const url = new URL(path + '/', site.url).href;
 const title = 'TCM Regulatorik Schweiz: BAB, EMR, ASCA, ZSR & OdA AM';
-const description = 'BAB, EMR, ASCA, ZSR und OdA AM für TCM-Fachpersonen erklärt: welche Aufgabe jedes System hat, wo die Grenzen liegen und welche offiziellen Stellen zuständig sind.';
+const description = 'Berufsausübungsbewilligung, OdA AM, EMR, ASCA, ZSR, Tarif 590 und Krankenkassen: Schweizer TCM-Regulatorik für Fachpersonen verständlich erklärt.';
+const layers = [
+  { k: 'Ausbildung & Berufsabschluss', v: 'OdA AM / eidgenössisches Diplom', href: '/regulatorik/oda-am/' },
+  { k: 'Darf ich arbeiten?', v: 'Kanton / Berufsausübungsbewilligung', href: '/regulatorik/berufsausuebungsbewilligung/' },
+  { k: 'Registrierung', v: 'EMR / ASCA', href: '/regulatorik/emr/' },
+  { k: 'Abrechnung', v: 'ZSR / Tarif 590', href: '/regulatorik/zsr/' },
+  { k: 'Arzneimittel', v: 'Swissmedic + kantonale Bewilligung', href: '/regulatorik/chinesische-arzneimittel-abgabe/' },
+];
+const questions = [
+  { q: 'Darf ich arbeiten?', t: 'Berufsausübungsbewilligung', href: '/regulatorik/berufsausuebungsbewilligung/' },
+  { q: 'Was gilt in meinem Kanton?', t: 'Kanton-Navigator', href: '/regulatorik/kantone/' },
+  { q: 'Welchen Berufsabschluss brauche ich?', t: 'OdA AM & eidg. Diplom', href: '/regulatorik/oda-am/' },
+  { q: 'Wie registriere ich mich?', t: 'EMR · ASCA', href: '/regulatorik/emr/', href2: '/regulatorik/asca/' },
+  { q: 'Wie rechne ich ab?', t: 'ZSR · Tarif 590', href: '/regulatorik/zsr/', href2: '/regulatorik/tarif-590/' },
+  { q: 'Zahlt die Zusatzversicherung?', t: 'EMR, ASCA, EGK, Visana', href: '/regulatorik/krankenkassen-anerkennung/' },
+  { q: 'Darf ich Arzneimittel abgeben?', t: 'Swissmedic + Kanton', href: '/regulatorik/chinesische-arzneimittel-abgabe/' },
+];
 const schema = [
   { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
     isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
-    hasPart: REGULATORIK.map((p) => ({ '@type': 'WebPage', name: p.h1, url: new URL(regHref(p.slug), site.url).href })) },
+    hasPart: [...REG_PAGES.map((p) => regHref(p.slug)), '/regulatorik/kantone/'].map((h) => ({ '@type': 'WebPage', url: new URL(h, site.url).href })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
     { '@type': 'ListItem', position: 2, name: 'Regulatorik', item: url } ] },
@@ -21,21 +42,29 @@ const schema = [
 ---
 <LayoutDe title={title} description={description} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
   <div class="b2">
-    <section class="b2-hero">
+    <section class="b2-hero" style="padding-bottom:48px">
       <div class="b2-wrap">
+        <RegSubnav current="/regulatorik/" />
         <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span>Regulatorik</div>
-        <p class="b2-label">TCM.ch Regulatorik</p>
-        <h1 class="b2-h1">Die Schweizer TCM-Regeln – endlich an einem Ort erklärt.</h1>
-        <p class="b2-lead">BAB, EMR, ASCA, OdA AM, ZSR: Diese Begriffe werden ständig nebeneinander verwendet, obwohl sie völlig unterschiedliche Aufgaben haben. Hier findest du die einzelnen Systeme, ihre Grenzen und die offiziellen Stellen dahinter.</p>
+        <h1 class="b2-h1">Schweizer TCM-Regulatorik – endlich an einem Ort erklärt.</h1>
+        <p class="b2-lead">BAB, OdA AM, EMR, ASCA, ZSR, GLN und Tarif 590 tauchen im Berufsalltag ständig nebeneinander auf. Trotzdem erfüllen sie völlig unterschiedliche Aufgaben. Hier findest du das System dahinter – und die offiziellen Stellen, bei denen am Ende die verbindliche Antwort liegt.</p>
+        <dl class="reg-layers">
+          {layers.map((l) => <div><dt>{l.k}</dt><dd><a href={l.href}>{l.v}</a></dd></div>)}
+        </dl>
+        <div class="b2-actions"><a class="btn btn--primary" href="/regulatorik/kantone/">Was brauche ich konkret?</a></div>
+        <RegReview ids={allIds} lastReviewed="2026-09-30" />
       </div>
     </section>
-    <section class="b2-sec b2-sec--soft" style="padding-top:64px">
+    <section class="b2-sec b2-sec--soft" style="padding-top:56px">
       <div class="b2-wrap">
-        <div class="b2-cards">
-          {REGULATORIK.map((p) => <a class="b2-card" href={regHref(p.slug)}><small>{p.wiw === 'bab' ? 'BAB' : p.wiw === 'oda-am' ? 'OdA AM' : p.wiw.toUpperCase()}</small><b>{p.h1}</b><p>{p.card}</p><span class="b2-go">Lesen →</span></a>)}
+        <h2 class="b2-h2">Was möchtest du klären?</h2>
+        <div class="b2-cards b2-cards--4">
+          {questions.map((c) => <a class="b2-card" href={c.href}><small>{c.t}</small><b>{c.q}</b><span class="b2-go">→</span></a>)}
+          <a class="b2-card" href="/regulatorik/gln-zsr-nareg/"><small>GLN · ZSR · NAREG</small><b>Welche Nummer brauche ich?</b><span class="b2-go">→</span></a>
         </div>
-        <div class="b2-art"><ProWasIstWas /></div>
-        <p class="b2-fine" style="margin-top:32px"><b>In Vorbereitung: Kanton-Navigator.</b> Kantonale Anforderungen erscheinen strukturiert pro Kanton, sobald sie gegen die offiziellen kantonalen Quellen geprüft sind – nicht als 26 einzelne SEO-Seiten. Bis dahin gilt: Verbindlich sind die aktuellen Vorgaben der zuständigen Stelle.</p>
+        <div class="b2-art"><RegulatoryMap insurers={true} /></div>
+        <p class="b2-fine" style="margin-top:32px"><b>In Vorbereitung:</b> Betriebsbewilligung für Praxisgesellschaften (AG/GmbH). Wir veröffentlichen erst nach Vergleich der kantonalen Regeln.</p>
+        <div class="b2-art"><RegSources ids={allIds} /></div>
         <p class="b2-route" style="margin-top:24px"><a href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen</a> · <a href="/akademie/">Akademie</a> · <a href="/branche/">Branche</a> · <a href="/fachpersonen/">Für Fachpersonen</a></p>
       </div>
     </section>

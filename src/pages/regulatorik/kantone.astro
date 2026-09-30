@@ -1,0 +1,95 @@
+---
+// /regulatorik/kantone/ — EIN Navigator für 26 Kantone. Keine Kantons-URLs; ?k=… wird per JS gesetzt,
+// canonical bleibt /regulatorik/kantone/, Filterzustände erhalten robots noindex.
+// Daten: src/data/regulatorik/kantone.ts. Nur `verified`-Datensätze zeigen kantonale Details.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import RegulatoryMap from '../../components/reg/RegulatoryMap.astro';
+import RegSources from '../../components/reg/RegSources.astro';
+import RegSubnav from '../../components/reg/RegSubnav.astro';
+import RegReview from '../../components/reg/RegReview.astro';
+import { site } from '../../data/site';
+import { KANTONE, CANTON_FIELDS, isPublishable } from '../../data/regulatorik/kantone';
+import { KANTONE_PAGE as K } from '../../data/regulatorik/pages';
+import { REGULATORIK_VERIFIED } from '../../data/regulatorik/sources';
+import '../../styles/b2b.css';
+
+const path = '/regulatorik/kantone';
+const url = new URL(path + '/', site.url).href;
+const sorted = [...KANTONE].sort((a, b) => a.cantonName.localeCompare(b.cantonName, 'de'));
+const verifiedCount = KANTONE.filter(isPublishable).length;
+const fmt = (d: string) => d.split('-').reverse().join('.');
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: K.title, description: K.metaDesc, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'CollectionPage', name: 'TCM Regulatorik Schweiz', url: 'https://tcm.ch/regulatorik/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Regulatorik', item: 'https://tcm.ch/regulatorik/' },
+    { '@type': 'ListItem', position: 3, name: 'Kantone', item: url } ] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: K.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<LayoutDe title={K.title} description={K.metaDesc} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
+  <div class="b2">
+    <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
+      <div class="b2-wrap">
+        <RegSubnav current="/regulatorik/kantone/" />
+        <div class="b2-art">
+          <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span><a href="/regulatorik/">Regulatorik</a></div>
+          <h1 class="b2-h1">{K.h1}</h1>
+          <p class="b2-lead">{K.lead}</p>
+          <RegReview ids={K.sources.filter((s) => s !== 'fachverbandKantone')} lastReviewed="2026-09-30" />
+          <div class="pro-short"><p class="b2-label" style="margin:0">Kurzantwort</p><p>{K.short}</p></div>
+
+          <div class="reg-nav" id="navigator">
+            <label for="kt" class="b2-label" style="margin:0">Dein Kanton</label>
+            <select id="kt">
+              <option value="">Kanton wählen</option>
+              {sorted.map((k) => <option value={k.cantonCode.toLowerCase()}>{k.cantonCode} – {k.cantonName}</option>)}
+            </select>
+            <p class="reg-nav__count">{verifiedCount} von 26 Kantonen mit geprüften Primärdaten.</p>
+            {KANTONE.map((k) => (
+              <section class="reg-kt" data-k={k.cantonCode.toLowerCase()} hidden aria-live="polite">
+                <h2>{k.cantonName} ({k.cantonCode})</h2>
+                {isPublishable(k) ? (<>
+                  <p class="reg-kt__ok">Geprüft am {fmt(k.lastVerified!)} gegen die kantonale Primärquelle.</p>
+                  <dl>{CANTON_FIELDS.map((f) => { const c = k[f.key] as { text: string; sourceUrl: string } | null; return c ? <><dt>{f.label}</dt><dd>{c.text} <a href={c.sourceUrl} rel="noopener" target="_blank">Quelle</a></dd></> : null; })}</dl>
+                  <p><a class="b2-link" href={k.officialUrl!} rel="noopener" target="_blank">Zur zuständigen kantonalen Stelle</a></p>
+                </>) : (<>
+                  <p class="reg-kt__open">Für {k.cantonName} haben wir die Angaben noch nicht gegen die aktuelle kantonale Primärquelle geprüft. Deshalb zeigen wir hier bewusst keine Details.</p>
+                  <p>Das solltest du bei der kantonalen Gesundheitsbehörde klären:</p>
+                  <ul class="b2-check-list"><li>Gibt es für deine Tätigkeit eine Bewilligungs- oder Meldepflicht?</li><li>Gilt für Akupunktur eine eigene Regel?</li><li>Welche Rolle spielen eidgenössisches Diplom und Zertifikat OdA AM?</li><li>Gibt es Regeln für die Zeit im M7?</li><li>Gibt es Sprachvoraussetzungen?</li><li>Wie wird eine Bewilligung aus einem anderen Kanton berücksichtigt?</li></ul>
+                </>)}
+              </section>
+            ))}
+          </div>
+
+          <div class="b2-body">
+            <h2>Worin sich Kantone unterscheiden</h2>
+            <ul><li>bewilligungspflichtig, meldepflichtig oder nicht reglementiert</li><li>Akupunktur separat geregelt</li><li>eidgenössisches Diplom verlangt oder nicht</li><li>Zertifikat OdA AM berücksichtigt oder nicht</li><li>Sonderregeln für M7</li><li>Sprachvoraussetzungen</li></ul>
+            <p>Mehr zum Grundprinzip: <a href="/regulatorik/berufsausuebungsbewilligung/">Berufsausübungsbewilligung</a>. Arzneimittelabgabe ist ein eigenes Thema: <a href="/regulatorik/chinesische-arzneimittel-abgabe/">Arzneimittelabgabe</a>.</p>
+          </div>
+          <RegulatoryMap here="kanton" />
+          <div class="b2-faq" style="margin-top:48px">{K.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+          <p class="pro-ouch"><small>Kommentar & Analyse im OUCH.-Magazin</small><a href="https://ouch.tcm.ch/insights/kantons-lotterie/" rel="noopener">Die Kantons-Lotterie</a> – redaktionelle Perspektive, keine offizielle Quelle.</p>
+          <RegSources ids={K.sources} />
+        </div>
+      </div>
+    </article>
+  </div>
+</LayoutDe>
+<script is:inline>
+  (function () {
+    var sel = document.getElementById('kt'); if (!sel) return;
+    function show(k) {
+      document.querySelectorAll('.reg-kt').forEach(function (s) { s.hidden = s.getAttribute('data-k') !== k; });
+      var u = new URL(location.href); if (k) u.searchParams.set('k', k); else u.searchParams.delete('k');
+      history.replaceState(null, '', u);
+      var m = document.querySelector('meta[name="robots"]');
+      if (k) { if (!m) { m = document.createElement('meta'); m.name = 'robots'; document.head.appendChild(m); } m.content = 'noindex, follow'; }
+    }
+    sel.addEventListener('change', function () { show(sel.value); });
+    var k = new URLSearchParams(location.search).get('k');
+    if (k && sel.querySelector('option[value="' + k.replace(/[^a-z]/g, '') + '"]')) { sel.value = k; show(k); }
+  })();
+</script>

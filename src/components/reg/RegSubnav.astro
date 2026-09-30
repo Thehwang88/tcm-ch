@@ -1,0 +1,7 @@
+---
+import { REG_SUBNAV } from '../../data/regulatorik/glossary';
+const { current } = Astro.props as { current: string };
+---
+<div class="reg-subnav" role="navigation" aria-label="Regulatorik">
+  {REG_SUBNAV.map((l) => <a href={l.href} aria-current={l.href === current ? 'page' : undefined}>{l.label}</a>)}
+</div>
