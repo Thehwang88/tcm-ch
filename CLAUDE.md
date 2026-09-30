@@ -4,7 +4,7 @@
 - Astro 5 multi-page app (`.astro` pages under src/pages/, components in src/components/)
 - Build: `npm run build` → static `dist/` + Worker bundle. Deployed as Cloudflare Worker project **tcm-ch-2** (old single-file `index.html` SPA and the tcm-ch Pages project are dead)
 - Push to main = live in ~60 sec
-- Merge feature branches with `git merge --no-ff` (new commit SHA on main). Cloudflare Workers Builds skips a main push whose SHA was already built from another branch (preview-only), so a fast-forward merge may never deploy.
+- If a push does not go live: check the Cloudflare build status on the GitHub commit (Workers Builds check). 30.09.2026 a build failed at "Cloning repository" and later pushes triggered no builds until a manual main build was started in the Cloudflare dashboard.
 - Routing: Astro file-based + `_redirects`
 - Home hero markup lives in src/data/home-body.html (imported `?raw` into index.astro), styled by public/home.css
 
