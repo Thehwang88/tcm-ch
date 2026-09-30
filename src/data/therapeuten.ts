@@ -187,10 +187,9 @@ export const therapeuten: Therapeut[] = [
   {
     slug: 'johann-stueve',
     name: 'Dr. tcm Johann Stüve',
-    titel: 'Leitender TCM-Arzt & Gründer',
+    titel: 'Mentor',
+    cardFocus: ['Mentoring im TCM.ch Team'],
     bild: '/images/img-645a5e1b4b7f.webp',
-    ortLabel: 'Kreuzlingen · Frauenfeld',
-    standorte: ['kreuzlingen', 'frauenfeld'],
   },
   {
     slug: 'janine-schmieder',
