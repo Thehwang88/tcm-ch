@@ -1,0 +1,61 @@
+---
+// /partner/praxisnachfolge/ — commercial: vertrauliches Nachfolge-Gespräch mit TCM.ch.
+// Keine Bewertungsmultiplikatoren, kein Kaufversprechen. Neutrales Inserat ≠ dieses Gespräch (→ /marktplatz/).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import NachfolgeForm from '../../components/b2b/NachfolgeForm.astro';
+import { site } from '../../data/site';
+import { BODY } from '../../data/pro/cohort-bodies';
+import '../../styles/b2b.css';
+
+const path = '/partner/praxisnachfolge';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Praxisnachfolge: Deine Praxis weiterführen statt einfach schliessen';
+const description = 'Du möchtest deine TCM-Praxis in den nächsten Jahren reduzieren oder übergeben? Sprich vertraulich mit TCM.ch über Nachfolge, Integration oder schrittweisen Übergang.';
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    about: { '@type': 'Thing', name: 'Praxisnachfolge TCM' },
+    provider: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    audience: { '@type': 'Audience', audienceType: 'TCM practice owners' },
+    isPartOf: { '@type': 'WebPage', name: 'Partner werden', url: 'https://tcm.ch/partner/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Partner', item: 'https://tcm.ch/partner/' },
+    { '@type': 'ListItem', position: 3, name: 'Praxisnachfolge', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} turnstile={true}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm" style="padding-bottom:40px">
+      <div class="b2-wrap">
+        <div class="b2-art">
+          <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/partner/">Partner</a><span aria-hidden="true">/</span>Praxisnachfolge</div>
+          <p class="b2-label">Praxisnachfolge mit TCM.ch</p>
+          <h1 class="b2-h1">Was passiert mit deiner Praxis, wenn du irgendwann aufhören möchtest?</h1>
+          <p class="b2-lead">Eine Praxis wird über Jahre aufgebaut. Patienten kennen dich. Abläufe funktionieren. Vielleicht gibt es Mitarbeitende, Räume und einen guten lokalen Namen. Wenn du irgendwann weniger behandeln oder ganz aufhören möchtest, sollte die einzige Option nicht sein, den Schlüssel abzugeben und alles verschwinden zu lassen.</p>
+          <div class="b2-actions"><a class="btn btn--primary" href="#gespraech">Vertrauliches Erstgespräch</a><a class="b2-link" href="/praxiswissen/tcm-praxis-verkaufen/">Nachfolge vorbereiten</a></div>
+
+          <div class="b2-body" set:html={BODY.praxisnachfolge} />
+
+          <div class="b2-related">
+            <p class="b2-label">Zum Weiterlesen</p>
+            <div class="b2-cards">
+              <a class="b2-card" href="/praxiswissen/tcm-praxis-verkaufen/"><small>Praxiswissen</small><b>Eine Praxis wird nicht am Tag des Verkaufs verkaufsfähig.</b><span class="b2-go">Lesen →</span></a>
+              <a class="b2-card" href="/praxiswissen/tcm-praxis-uebernehmen/"><small>Praxiswissen</small><b>Praxis übernehmen oder bei null anfangen?</b><span class="b2-go">Lesen →</span></a>
+              <a class="b2-card" href="/praxiswissen/praxisrechner/"><small>Tool</small><b>Praxisrechner</b><span class="b2-go">Rechnen →</span></a>
+            </div>
+            <p class="b2-fine">Du möchtest deine Praxis neutral inserieren statt mit TCM.ch zu sprechen? Dafür ist die <a href="/marktplatz/">Praxisbörse</a> gedacht. Praxiswert-Einschätzung: in Vorbereitung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="b2-sec b2-sec--soft" id="gespraech">
+      <div class="b2-wrap">
+        <p class="b2-label">Vertrauliches Erstgespräch</p>
+        <h2 class="b2-h2">Lass uns vertraulich über deine Praxis sprechen.</h2>
+        <p class="b2-p">Noch keine Entscheidung. Kein Verkaufsmandat. Wir schauen zuerst, ob es überhaupt einen sinnvollen gemeinsamen Weg gibt.</p>
+        <NachfolgeForm />
+        <p class="b2-route" style="margin-top:32px"><a href="/partner/">Partner werden</a> · <a href="/partner/modell/">Das Partnermodell</a> · <a href="/praxiswissen/">Praxiswissen</a></p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

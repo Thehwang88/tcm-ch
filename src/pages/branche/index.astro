@@ -1,0 +1,51 @@
+---
+// /branche/ — Hub der Branche-Leaves. Spätere Bereiche sichtbar, aber ohne Link (keine Thin Pages).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { BRANCHE, brHref } from '../../data/pro/branche';
+import '../../styles/b2b.css';
+
+const path = '/branche';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Schweiz: Beruf, Arbeitsmarkt & Praxis';
+const description = 'Die Schweizer TCM-Branche für Fachpersonen erklärt: Berufsbild und Strukturen, Arbeitsmarkt, Lohn und Vergütungsmodelle sowie Praxisformen vom Einzelraum bis zum Netzwerk.';
+const later = [
+  { t: 'Daten & Benchmarks', d: 'Anonymisierte Praxis- und Branchendaten, erst mit Stichprobe und Methodik.' },
+  { t: 'Interviews', d: 'Gespräche mit Fachpersonen, nur echt und freigegeben.' },
+  { t: 'Organisationen', d: 'Wer im Berufsfeld welche Aufgabe übernimmt.' },
+  { t: 'Branchenreport', d: 'Periodische Einordnung mit ausgewiesenen Quellen.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    hasPart: BRANCHE.map((b) => ({ '@type': 'Article', headline: b.h1, url: new URL(brHref(b.slug), site.url).href })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Branche', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span>Branche</div>
+        <p class="b2-label">TCM.ch Branche</p>
+        <h1 class="b2-h1">Die Schweizer TCM-Branche verstehen.</h1>
+        <p class="b2-lead">Wie der Beruf organisiert ist, wo du arbeiten kannst, wie Vergütung funktioniert und welche Praxisformen es gibt – aus der Sicht von Menschen, die selbst Praxen betreiben, mit klarer Trennung zwischen Fakten und eigener Erfahrung.</p>
+      </div>
+    </section>
+    <section class="b2-sec b2-sec--soft" style="padding-top:64px">
+      <div class="b2-wrap">
+        <div class="b2-cards b2-cards--4">
+          {BRANCHE.map((b) => <a class="b2-card" href={brHref(b.slug)}><small>{b.cardLabel}</small><b>{b.h1}</b><p>{b.card}</p><span class="b2-go">Lesen →</span></a>)}
+        </div>
+        <h2 class="b2-h2" style="margin-top:64px">In Vorbereitung</h2>
+        <div class="pro-soonlist">
+          {later.map((l) => <div><b>{l.t}</b>{l.d}<br /><em>in Vorbereitung</em></div>)}
+        </div>
+        <p class="b2-route" style="margin-top:40px"><a href="/regulatorik/">Regulatorik</a> · <a href="/karriere/">Karriere</a> · <a href="/jobs/">Jobs</a> · <a href="/akademie/">Akademie</a> · <a href="/praxiswissen/">Praxiswissen</a> · <a href="/partner/">Partner</a></p>
+        <p class="b2-fine">Meinung und Branchenkritik findest du im OUCH.-Magazin (<a href="https://ouch.tcm.ch/">ouch.tcm.ch</a>).</p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

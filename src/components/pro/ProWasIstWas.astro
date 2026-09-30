@@ -1,0 +1,14 @@
+---
+// «Was ist was?» — kompakte Vergleichskomponente (Regulatorik). Owner-Links aus src/data/pro/regulatorik.ts.
+import { WAS_IST_WAS, type WiwKey } from '../../data/pro/regulatorik';
+const { here } = Astro.props as { here?: WiwKey };
+---
+<div class="pro-wiw">
+  <p>Was ist was?</p>
+  <dl>
+    {WAS_IST_WAS.map((w) => (<>
+      <dt class={w.key === here ? 'is-here' : undefined}>{w.key === here ? w.label : <a href={w.href}>{w.label}</a>}</dt>
+      <dd class={w.key === here ? 'is-here' : undefined}>{w.role}</dd>
+    </>))}
+  </dl>
+</div>

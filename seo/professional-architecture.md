@@ -90,3 +90,9 @@ Profil → Klinik, Mentor-Status, Kurse, Artikel mit Zitat, aktuelle Inserate ·
 
 ## 10. Governance-Check
 `node scripts/check-professional.mjs` (nach `npm run build`): prüft Registry-Duplikate, dass geplante URLs nicht gebaut/in der Sitemap sind, dass Gerüste noindex und nicht in der Sitemap sind, dass live-URLs gebaut + indexierbar + self-canonical sind, und die Moderations-/Ablauf-/Indexlogik.
+
+## Content-Kohorte 1 (2026-09-30)
+- Live: /branche/ (Hub) + 4 Leaves, /partner/praxisnachfolge/, /praxiswissen/tcm-praxis-uebernehmen/, /praxiswissen/tcm-praxis-verkaufen/.
+- Gebaut, aber `noindex,follow`: /regulatorik/ (Hub) + 5 Leaves. Gate `REGULATORIK_VERIFIED` in `src/data/pro/regulatorik.ts`.
+  Freischalten: jede Quelle in `SOURCES` im Browser prüfen, `checked` datieren, Gate auf `true`, Status in `professional-topic-map.csv` / `master-keyword-url-map.csv` auf `live`. Dann erscheint «Zuletzt fachlich geprüft» automatisch.
+- Wortgetreue Fliesstexte: `src/data/pro/cohort-bodies.ts`. Komponenten: `ProWasIstWas`, `ProSources` (src/components/pro/), Formular `NachfolgeForm` (quelle=praxisnachfolge).

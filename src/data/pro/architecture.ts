@@ -68,11 +68,11 @@ export const PRO_LAYERS: ProLayer[] = [
     question: 'Wie kann ich mich beteiligen?',
     owns: ['moderierte Einreichungen', 'Expertise teilen', 'Branchendaten beitragen (geplant)'],
     notOwner: ['Forum / Kommentare / Messaging (bewusst nicht gebaut)'] },
-  { id: 'branche', label: 'Branche', href: '/branche/', status: 'planned', pillar: 'read', tcmOffer: false,
+  { id: 'branche', label: 'Branche', href: '/branche/', status: 'live', pillar: 'read', tcmOffer: false,
     question: 'Wie funktionieren Beruf und Markt TCM in der Schweiz?',
     owns: ['Berufsbild', 'Arbeitsmarkt-Referenz', 'Praxisformen', 'Bildungslandschaft', 'Interviews'],
     notOwner: ['Meinung/Kritik (→ OUCH)', 'Jobs', 'Anmeldung M7 (→ Akademie)'] },
-  { id: 'regulatorik', label: 'Regulatorik', href: '/regulatorik/', status: 'planned', pillar: 'read', tcmOffer: false,
+  { id: 'regulatorik', label: 'Regulatorik', href: '/regulatorik/', status: 'live', pillar: 'read', tcmOffer: false,
     question: 'Welche Regeln, Register und Bewilligungen gelten?',
     owns: ['BAB', 'EMR', 'ASCA', 'OdA AM', 'ZSR', 'Kanton-Navigator'],
     notOwner: ['Patienten-Kassenfragen (→ /krankenkassen/)', 'Kritik (→ OUCH)'] },
@@ -104,13 +104,13 @@ export const PRO_NAV: NavGroup[] = [
     { label: 'Akademie', href: '/akademie/' }, { label: 'Weiterbildungen', href: '/weiterbildungen/' }] },
   { id: 'praxis', label: 'Praxis', items: [
     { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Tools & Rechner', href: '/tools/', planned: true },
-    { label: 'Regulatorik', href: '/regulatorik/', planned: true }] },
+    { label: 'Regulatorik', href: '/regulatorik/' }] },
   { id: 'netzwerk', label: 'Netzwerk', items: [
     { label: 'Verzeichnis', href: '/verzeichnis/' }, { label: 'Marktplatz', href: '/marktplatz/' }, { label: 'Community', href: '/community/' }] },
   { id: 'wachstum', label: 'Wachstum', items: [
-    { label: 'Partner werden', href: '/partner/', accent: true }, { label: 'Praxisnachfolge', href: '/partner/praxisnachfolge/', planned: true }] },
+    { label: 'Partner werden', href: '/partner/', accent: true }, { label: 'Praxisnachfolge', href: '/partner/praxisnachfolge/' }] },
   { id: 'branche', label: 'Branche', items: [
-    { label: 'Branchenwissen', href: '/branche/', planned: true }, { label: 'Daten & Benchmarks', href: '/daten/', planned: true }] },
+    { label: 'Branchenwissen', href: '/branche/' }, { label: 'Daten & Benchmarks', href: '/daten/', planned: true }] },
   { id: 'zuweiser', label: 'Für Zuweiser', items: [{ label: 'Online-Zuweisung', href: '/zuweisen/' }] },
 ];
 
@@ -124,8 +124,8 @@ export const PRO_MAP: NavGroup[] = [
     { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:in finden', href: '/verzeichnis/#mentoren' }] },
   { id: 'praxis', label: 'Praxis führen', items: [
     { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' },
-    { label: 'Tools', href: '/tools/', planned: true }, { label: 'Regulatorik', href: '/regulatorik/', planned: true },
-    { label: 'BAB / EMR / ASCA', href: '/regulatorik/berufsausuebungsbewilligung/', planned: true }] },
+    { label: 'Tools', href: '/tools/', planned: true }, { label: 'Regulatorik', href: '/regulatorik/' },
+    { label: 'BAB / EMR / ASCA', href: '/regulatorik/berufsausuebungsbewilligung/' }] },
   { id: 'vernetzen', label: 'Vernetzen', items: [
     { label: 'Fachpersonen-Verzeichnis', href: '/verzeichnis/#therapeuten' }, { label: 'Kliniken', href: '/verzeichnis/#kliniken' },
     { label: 'Mentor:in werden', href: '/community/#mentor' }, { label: 'Community', href: '/community/' }] },
@@ -135,9 +135,9 @@ export const PRO_MAP: NavGroup[] = [
     { label: 'Vertretungen', href: '/marktplatz/#vertretung' }] },
   { id: 'wachsen', label: 'Wachsen', items: [
     { label: 'TCM.ch Partner', href: '/partner/', accent: true }, { label: 'Partnermodell', href: '/partner/modell/' },
-    { label: 'Praxisnachfolge mit TCM.ch', href: '/partner/praxisnachfolge/', planned: true }] },
+    { label: 'Praxisnachfolge mit TCM.ch', href: '/partner/praxisnachfolge/' }] },
   { id: 'branche', label: 'Branche verstehen', items: [
-    { label: 'Branchenwissen', href: '/branche/', planned: true }, { label: 'Daten', href: '/daten/', planned: true },
+    { label: 'Branchenwissen', href: '/branche/' }, { label: 'Daten', href: '/daten/', planned: true },
     { label: 'Benchmarks', href: '/daten/praxis-benchmark/', planned: true }, { label: 'Reports', href: '/daten/', planned: true },
     { label: 'Interviews', href: '/branche/interviews/', planned: true }] },
   { id: 'zuweisen', label: 'Zuweisen', items: [{ label: 'Online-Zuweisung', href: '/zuweisen/' }] },
@@ -161,7 +161,7 @@ export const LIFECYCLE_STAGES: LifecycleStage[] = [
   { id: 'eigene_praxis', label: 'Eigene Praxis', question: 'Wie eröffne ich eine Praxis, und was kostet sie?', layer: 'praxiswissen', href: '/praxiswissen/tcm-praxis-eroeffnen/' },
   { id: 'wachstum', label: 'Wachstum / Team', question: 'Wann stelle ich ein, wann baue ich aus?', layer: 'praxiswissen', href: '/praxiswissen/tcm-praxis-auslastung/' },
   { id: 'partnerschaft', label: 'TCM.ch Partnerschaft', question: 'Will ich das System nicht allein bauen?', layer: 'partner', href: '/partner/' },
-  { id: 'nachfolge', label: 'Praxisnachfolge', question: 'Was passiert mit meiner Praxis, wenn ich aufhöre?', layer: 'marktplatz', href: '/marktplatz/#praxisverkauf' },
+  { id: 'nachfolge', label: 'Praxisnachfolge', question: 'Was passiert mit meiner Praxis, wenn ich aufhöre?', layer: 'partner', href: '/partner/praxisnachfolge/' },
 ];
 
 /** Cluster-Taxonomie (IDs = Spalte `cluster` in seo/professional-topic-map.csv). */

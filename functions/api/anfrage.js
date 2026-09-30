@@ -24,7 +24,8 @@ export async function onRequestPost({ request, env }) {
     const _warteliste = typeof d.quelle === 'string' && d.quelle.indexOf('warteliste-') === 0;
     // Akademie-Leads (quelle=akademie) und QI CLUB Joins (quelle=qi-club):
     // Telefon optional, Name + E-Mail Pflicht.
-    const _akademie = d.quelle === 'akademie' || d.quelle === 'qi-club';
+    // Praxisnachfolge (quelle=praxisnachfolge, /partner/praxisnachfolge/): Telefon optional.
+    const _akademie = d.quelle === 'akademie' || d.quelle === 'qi-club' || d.quelle === 'praxisnachfolge';
     // Zürich-Routing-Funnel: Name + Telefon ODER E-Mail genügt (eines von beidem).
     const _zhRouting = d.anfrage_typ === 'zuerich-routing';
     if (_zhRouting) {
@@ -69,6 +70,8 @@ export async function onRequestPost({ request, env }) {
       ['Anerkennung', d.anerkennung], ['Räume / Team', d.raeume_team],
       ['Patientenaktivität', d.patienten_aktivitaet], ['Wunschstadt', d.wunschstadt],
       ['Warum Partnerschaft', d.motivation],
+      // Praxisnachfolge (quelle=praxisnachfolge): kein Umsatzfeld.
+      ['Praxis aktiv seit', d.aktiv_seit], ['Gewünschter Zeitraum', d.zeitraum], ['Gewünschter Übergang', d.uebergang],
       ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
       ['Formular', d.formular], ['Zeit', d.zeit],
     ];
@@ -84,6 +87,8 @@ export async function onRequestPost({ request, env }) {
 
     let subject = d.quelle === 'partner-b2b'
       ? 'Partner-Anfrage – ' + (d.situation || 'Situation offen') + ' (' + d.name + (d.wunschstadt ? ', ' + d.wunschstadt : '') + ')'
+      : d.quelle === 'praxisnachfolge'
+      ? 'Praxisnachfolge – ' + (d.uebergang || 'Übergang offen') + ' (' + d.name + (d.standort ? ', ' + d.standort : '') + ')'
       : d.quelle === 'qi-club'
       ? 'QI CLUB Join – ' + d.name + (d.standort ? ' (' + d.standort + ')' : '')
       : _akademie

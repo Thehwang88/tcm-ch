@@ -4,8 +4,9 @@
 // OUCH (ouch.tcm.ch) bleibt Meinung/Analyse; hier stehen Werkzeuge, Checklisten, Rechnungen.
 
 import type { ProfessionalContentExtras } from './pro/architecture';
+import { BODY } from './pro/cohort-bodies';
 
-export type PwCategory = 'gruenden' | 'zahlen' | 'wachstum';
+export type PwCategory = 'gruenden' | 'zahlen' | 'wachstum' | 'nachfolge';
 
 /** Optional: expertQuotes, interviews, firstPartyObservations, sourceLinks, lifecycle (siehe professional.ts). */
 export interface PwArticle extends ProfessionalContentExtras {
@@ -34,6 +35,7 @@ export const PW_CATEGORIES: { id: PwCategory | 'next'; label: string }[] = [
   { id: 'gruenden', label: 'Gründen' },
   { id: 'zahlen', label: 'Zahlen' },
   { id: 'wachstum', label: 'Wachstum' },
+  { id: 'nachfolge', label: 'Nachfolge' },
   { id: 'next', label: 'Nächster Schritt' },
 ];
 
@@ -69,9 +71,9 @@ export const PRAXISWISSEN: PwArticle[] = [
 <p>Bevor du über Räume nachdenkst: Welche Methoden willst du anbieten, und welche Abschlüsse und Anerkennungen hast du dafür? Davon hängt ab, welche Bewilligung du brauchst und ob Patient:innen über eine Zusatzversicherung abrechnen können.</p>
 <ul class="b2-check-list"><li>Abschlüsse und Diplome vollständig und übersetzt, wo nötig</li><li>Methodenliste klar: Akupunktur, Tuina, Kräuter, weitere</li><li>Nachweise für Weiterbildungen gesammelt</li></ul>
 <h2>2. Kanton und Berufsausübungsbewilligung (BAB)</h2>
-<p>Ob und welche kantonale Bewilligung nötig ist, entscheidet der Kanton, in dem du praktizierst. Die Regeln sind nicht einheitlich. Wie unterschiedlich das in der Praxis wirken kann, beschreibt das OUCH.-Magazin in der <a href="${OUCH}/kantons-lotterie/">Kantons-Lotterie</a>. Für deine Planung heisst das: Bewilligungsfrage früh stellen, weil sie Zeitplan und Standortwahl beeinflussen kann.</p>
+<p>Ob und welche kantonale Bewilligung nötig ist, entscheidet der Kanton, in dem du praktizierst. Die Regeln sind nicht einheitlich. Wie unterschiedlich das in der Praxis wirken kann, beschreibt das OUCH.-Magazin in der <a href="${OUCH}/kantons-lotterie/">Kantons-Lotterie</a>. Für deine Planung heisst das: Bewilligungsfrage früh stellen, weil sie Zeitplan und Standortwahl beeinflussen kann. Die sachliche Einordnung: <a href="/regulatorik/berufsausuebungsbewilligung/">Berufsausübungsbewilligung für TCM</a>.</p>
 <h2>3. EMR, ASCA und ZSR, wo relevant</h2>
-<p>Viele Patient:innen fragen zuerst, ob ihre Zusatzversicherung zahlt. Dafür sind Registrierungen wie EMR oder ASCA und eine ZSR-Nummer relevant. Welche Stelle welche Anforderungen stellt, ist ein eigenes Thema; die kritische Einordnung dazu steht im <a href="${OUCH}/emr-asca-labyrinth/">EMR/ASCA-Labyrinth</a>. Plane die Registrierung vor der Eröffnung ein, damit du nicht mit einer Praxis startest, deren Leistungen niemand zurückerstattet bekommt.</p>
+<p>Viele Patient:innen fragen zuerst, ob ihre Zusatzversicherung zahlt. Dafür sind Registrierungen wie EMR oder ASCA und eine ZSR-Nummer relevant. Welche Stelle welche Anforderungen stellt, ist ein eigenes Thema; die kritische Einordnung dazu steht im <a href="${OUCH}/emr-asca-labyrinth/">EMR/ASCA-Labyrinth</a>. Plane die Registrierung vor der Eröffnung ein, damit du nicht mit einer Praxis startest, deren Leistungen niemand zurückerstattet bekommt. Die einzelnen Systeme erklärt: <a href="/regulatorik/emr/">EMR</a>, <a href="/regulatorik/asca/">ASCA</a>, <a href="/regulatorik/zsr/">ZSR-Nummer</a>.</p>
 <h2>4. Bevor du einen Mietvertrag unterschreibst</h2>
 <ul class="b2-check-list"><li>Laufzeit und Kündigungsfristen: Wie lange bindest du dich?</li><li>Nutzung als Praxis erlaubt? Nebenkosten und Anpassungen geklärt?</li><li>Erreichbarkeit mit ÖV, Parkplätze wo relevant, barrierearmer Zugang</li><li>Kaution und Einrichtung in der Liquidität eingeplant</li></ul>
 <h2>5. Raumgrösse gegen tatsächliche Nachfrage</h2>
@@ -358,6 +360,52 @@ export const PRAXISWISSEN: PwArticle[] = [
       { k: 'Lernen / Mentorat', t: 'TCM.ch Akademie', href: '/akademie/' },
       { k: 'Partner', t: 'Eigene Praxis mit System', href: '/partner/' },
     ],
+  },
+  {
+    slug: 'tcm-praxis-uebernehmen',
+    category: 'nachfolge',
+    title: 'TCM Praxis übernehmen oder neu eröffnen?',
+    metaDesc: 'Bestehende TCM-Praxis übernehmen oder selbst neu starten? Nachfrage, Patienten, Mietvertrag, Team, Abhängigkeit vom Inhaber und Zahlen richtig prüfen.',
+    h1: 'Praxis übernehmen oder bei null anfangen?',
+    lead: 'Eine bestehende Praxis klingt zunächst einfacher: Räume sind da, Patienten auch, vielleicht sogar ein Team. Aber du kaufst nicht automatisch ein funktionierendes Unternehmen. Manchmal kaufst du vor allem den Arbeitsplatz der bisherigen Inhaberin.',
+    datePublished: D, dateModified: D, readTime: '6 Min.',
+    keyTakeaways: [
+      'Entscheidend ist, was ohne die bisherige Inhaberin bleibt.',
+      'Ein Patientenstamm ist kein garantierter zukünftiger Umsatz.',
+      'Mietvertrag, Team und Neupatientenquellen vor dem Preis prüfen.',
+      'Kein Kaufpreis aus Internet-Faustformeln.',
+    ],
+    bodyHtml: BODY.uebernehmen,
+    related: ['tcm-praxis-verkaufen', 'tcm-praxis-eroeffnen', 'tcm-praxis-kosten'],
+    ctaTitle: 'Du prüfst gerade eine bestehende Praxis?',
+    ctaText: 'Rechne die Zahlen selbst nach oder sprich vertraulich mit uns über eine schrittweise Nachfolgelösung.',
+    ctaLabel: 'Praxisnachfolge mit TCM.ch',
+    ctaHref: '/partner/praxisnachfolge/',
+    ctaCards: [
+      { k: 'Tool', t: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' },
+      { k: 'Nachfolge', t: 'Praxisnachfolge mit TCM.ch', href: '/partner/praxisnachfolge/' },
+    ],
+  },
+  {
+    slug: 'tcm-praxis-verkaufen',
+    category: 'nachfolge',
+    title: 'TCM Praxis verkaufen: So bereitest du eine Nachfolge vor',
+    metaDesc: 'TCM-Praxis verkaufen oder übergeben: Welche Zahlen, Verträge, Prozesse und Abhängigkeiten du vor einer Nachfolge klären solltest.',
+    h1: 'Eine Praxis wird nicht am Tag des Verkaufs verkaufsfähig.',
+    lead: 'Wenn du möchtest, dass deine Praxis nach dir weiterlebt, beginnt die Vorbereitung nicht mit einem Inserat. Sie beginnt damit, ein Unternehmen zu schaffen, das eine andere Person verstehen und weiterführen kann.',
+    datePublished: D, dateModified: D, readTime: '7 Min.',
+    keyTakeaways: [
+      'Je weniger die Praxis an dir persönlich hängt, desto leichter die Übergabe.',
+      'Zahlen, Verträge und Prozesse früh dokumentieren.',
+      'Patientendaten gehören nicht in ein Verkaufsdossier.',
+      'Der Wert entsteht aus dem konkreten Geschäft, nicht aus einem Multiplikator.',
+    ],
+    bodyHtml: BODY.verkaufen,
+    related: ['tcm-praxis-uebernehmen', 'tcm-praxis-kennzahlen', 'tcm-praxis-auslastung'],
+    ctaTitle: 'Du denkst über die nächsten Jahre nach?',
+    ctaText: 'Du musst noch nichts verkaufen. Wir können vertraulich anschauen, welche Nachfolgewege für deine Praxis grundsätzlich denkbar wären.',
+    ctaLabel: 'Praxisnachfolge besprechen',
+    ctaHref: '/partner/praxisnachfolge/',
   },
 ];
 

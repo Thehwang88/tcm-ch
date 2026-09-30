@@ -1,0 +1,15 @@
+---
+// «Offizielle Quellen» — nur offizielle Primärquellen, mit Prüfdatum. Kein OUCH, keine Sekundärquellen.
+import { SOURCES, type OfficialSource } from '../../data/pro/regulatorik';
+const { ids } = Astro.props as { ids: string[] };
+const list = ids.map((i) => SOURCES[i]).filter(Boolean) as OfficialSource[];
+const fmt = (d: string) => new Date(d).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<div class="pro-src">
+  <p class="b2-label" style="margin:0">Offizielle Quellen</p>
+  <ol>
+    {list.map((s) => (
+      <li><b>{s.org}</b>: <a href={s.url} rel="noopener" target="_blank">{s.title}</a><br /><span>{s.checked ? `Zuletzt geprüft: ${fmt(s.checked)}` : 'Prüfung durch die Redaktion ausstehend'}</span></li>
+    ))}
+  </ol>
+</div>

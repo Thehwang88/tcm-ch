@@ -15,6 +15,7 @@ const order: Record<string, string[]> = {
   gruenden: ['tcm-praxis-eroeffnen', 'standortwahl-tcm-praxis', 'tcm-selbststaendig-oder-angestellt'],
   zahlen: ['tcm-praxis-kosten', PW_RECHNER.slug, 'tcm-praxis-kennzahlen'],
   wachstum: ['patienten-gewinnen-tcm-praxis', 'tcm-praxis-auslastung'],
+  nachfolge: ['tcm-praxis-uebernehmen', 'tcm-praxis-verkaufen'],
 };
 const item = (slug: string) => {
   if (slug === PW_RECHNER.slug) return { href: pwHref(slug), t: PW_RECHNER.short, d: PW_RECHNER.teaser, k: 'Tool' };

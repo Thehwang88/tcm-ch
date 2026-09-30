@@ -1,0 +1,71 @@
+---
+// Branche-Leaf. Daten: src/data/pro/branche.ts (Body wortgetreu aus cohort-bodies.ts).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { BRANCHE, BRANCHE_DATE, brBySlug, brHref, type BranchePage } from '../../data/pro/branche';
+import '../../styles/b2b.css';
+
+export function getStaticPaths() {
+  return BRANCHE.map((b) => ({ params: { slug: b.slug }, props: { b } }));
+}
+const { b } = Astro.props as { b: BranchePage };
+const path = `/branche/${b.slug}`;
+const url = new URL(path + '/', site.url).href;
+const related = b.related.map(brBySlug).filter(Boolean) as BranchePage[];
+const dateLabel = new Date(BRANCHE_DATE).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: b.h1, description: b.metaDesc, url, inLanguage: 'de-CH',
+    datePublished: BRANCHE_DATE, dateModified: BRANCHE_DATE,
+    author: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/', logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' } },
+    mainEntityOfPage: url, isPartOf: { '@type': 'WebPage', name: 'TCM Branche Schweiz', url: 'https://tcm.ch/branche/' },
+    audience: { '@type': 'Audience', audienceType: 'TCM therapists, students and practice owners' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Branche', item: 'https://tcm.ch/branche/' },
+    { '@type': 'ListItem', position: 3, name: b.h1, item: url } ] },
+];
+---
+<LayoutDe title={b.title} description={b.metaDesc} path={path} schema={schema}>
+  <div class="b2">
+    <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
+      <div class="b2-wrap">
+        <div class="b2-art">
+          <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span><a href="/branche/">Branche</a></div>
+          <h1 class="b2-h1">{b.h1}</h1>
+          <p class="b2-lead">{b.lead}</p>
+          <p class="b2-art__meta"><span>{b.cardLabel}</span><span>{b.readTime} Lesezeit</span><span>Aktualisiert {dateLabel}</span><span>TCM.ch Redaktion</span></p>
+
+          <div class="b2-body" set:html={b.bodyHtml} />
+
+          <aside class="pro-short" aria-label="Daten und Methodik">
+            <p class="b2-label" style="margin:0">Daten & Methodik</p>
+            <p>{b.method}</p>
+          </aside>
+
+          {b.ouch && (
+            <p class="pro-ouch"><small>Kommentar / Analyse im OUCH.-Magazin</small><a href={b.ouch.url} rel="noopener">{b.ouch.label}</a> – redaktionelle Einordnung, getrennt von dieser Sachseite.</p>
+          )}
+
+          <div class="b2-cta">
+            <p class="b2-h3">{b.cta.title}</p>
+            {b.cta.text && <p>{b.cta.text}</p>}
+            {b.cta.cards ? (
+              <div class="b2-cards">{b.cta.cards.map((c) => <a class="b2-card" href={c.href}><small>{c.k}</small><b>{c.t}</b><span class="b2-go">→</span></a>)}</div>
+            ) : (
+              <a class="btn btn--primary" href={b.cta.href}>{b.cta.label}</a>
+            )}
+          </div>
+
+          <div class="b2-related">
+            <p class="b2-label">Weiterlesen</p>
+            <div class="b2-cards">
+              {related.map((r) => <a class="b2-card" href={brHref(r.slug)}><small>{r.cardLabel}</small><b>{r.h1}</b><span class="b2-go">Lesen →</span></a>)}
+            </div>
+            <p class="b2-route" style="margin-top:32px"><a href="/branche/">Branche</a> · <a href="/karriere/">Karriere</a> · <a href="/jobs/">Jobs</a> · <a href="/akademie/">Akademie</a> · <a href="/praxiswissen/">Praxiswissen</a> · <a href="/regulatorik/">Regulatorik</a> · <a href="/partner/">Partner</a></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</LayoutDe>

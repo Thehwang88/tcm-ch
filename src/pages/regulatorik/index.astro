@@ -1,0 +1,43 @@
+---
+// /regulatorik/ — Hub der Regulatorik-Leaves. Indexierung hängt am Gate REGULATORIK_VERIFIED.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import ProWasIstWas from '../../components/pro/ProWasIstWas.astro';
+import { site } from '../../data/site';
+import { REGULATORIK, REGULATORIK_VERIFIED, regHref } from '../../data/pro/regulatorik';
+import '../../styles/b2b.css';
+
+const path = '/regulatorik';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Regulatorik Schweiz: BAB, EMR, ASCA, ZSR & OdA AM';
+const description = 'BAB, EMR, ASCA, ZSR und OdA AM für TCM-Fachpersonen erklärt: welche Aufgabe jedes System hat, wo die Grenzen liegen und welche offiziellen Stellen zuständig sind.';
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    hasPart: REGULATORIK.map((p) => ({ '@type': 'WebPage', name: p.h1, url: new URL(regHref(p.slug), site.url).href })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Regulatorik', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
+  <div class="b2">
+    <section class="b2-hero">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span>Regulatorik</div>
+        <p class="b2-label">TCM.ch Regulatorik</p>
+        <h1 class="b2-h1">Die Schweizer TCM-Regeln – endlich an einem Ort erklärt.</h1>
+        <p class="b2-lead">BAB, EMR, ASCA, OdA AM, ZSR: Diese Begriffe werden ständig nebeneinander verwendet, obwohl sie völlig unterschiedliche Aufgaben haben. Hier findest du die einzelnen Systeme, ihre Grenzen und die offiziellen Stellen dahinter.</p>
+      </div>
+    </section>
+    <section class="b2-sec b2-sec--soft" style="padding-top:64px">
+      <div class="b2-wrap">
+        <div class="b2-cards">
+          {REGULATORIK.map((p) => <a class="b2-card" href={regHref(p.slug)}><small>{p.wiw === 'bab' ? 'BAB' : p.wiw === 'oda-am' ? 'OdA AM' : p.wiw.toUpperCase()}</small><b>{p.h1}</b><p>{p.card}</p><span class="b2-go">Lesen →</span></a>)}
+        </div>
+        <div class="b2-art"><ProWasIstWas /></div>
+        <p class="b2-fine" style="margin-top:32px"><b>In Vorbereitung: Kanton-Navigator.</b> Kantonale Anforderungen erscheinen strukturiert pro Kanton, sobald sie gegen die offiziellen kantonalen Quellen geprüft sind – nicht als 26 einzelne SEO-Seiten. Bis dahin gilt: Verbindlich sind die aktuellen Vorgaben der zuständigen Stelle.</p>
+        <p class="b2-route" style="margin-top:24px"><a href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen</a> · <a href="/akademie/">Akademie</a> · <a href="/branche/">Branche</a> · <a href="/fachpersonen/">Für Fachpersonen</a></p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

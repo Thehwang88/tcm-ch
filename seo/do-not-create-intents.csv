@@ -85,3 +85,13 @@ tcm lohn / akupunkteur lohn / naturheilpraktiker lohn (je eigene Seite),/branche
 "Praxiswissen-Einzelleaves pro Kostenposten / Marketingkanal (Google Ads, GBP, Reviews …)",/praxiswissen/tcm-praxis-kosten/ · /praxiswissen/patienten-gewinnen-tcm-praxis/,Grosse Owner zuerst; Split nur mit Nachfrage-Evidenz,Generischer Digital-Marketing-Spam,Nach GSC-Evidenz + Auftrag
 "Interviewseiten ohne echtes, freigegebenes Interview",/branche/interviews/ (planned),"Keine erfundenen Zitate, keine Composite-Personas","Glaubwürdigkeit, Recht",Keiner
 Benchmark-/Statistikseiten ohne Stichprobe & Methodik,/daten/ (planned),DatasetMeta Pflicht; interne Daten = TCM.ch-Netzwerkdaten,Irreführende Branchenzahlen,Keiner
+akupunkteur-lohn-schweiz (eigene Seite),/branche/tcm-lohn-schweiz/,Ein Lohn-Owner für alle Synonyme,Synonym-Splitting,Keiner
+naturheilpraktiker-tcm-lohn (eigene Seite),/branche/tcm-lohn-schweiz/,Ein Lohn-Owner für alle Synonyme,Synonym-Splitting,Keiner
+emr-tcm / emr-akupunktur (separate Varianten),/regulatorik/emr/,Ein EMR-Owner,Kannibalisierung,Keiner
+asca-tcm / asca-akupunktur (separate Varianten),/regulatorik/asca/,Ein ASCA-Owner,Kannibalisierung,Keiner
+bab-zuerich / bab-thurgau / bab-basel (Thin Pages),/regulatorik/berufsausuebungsbewilligung/ → künftiger Kanton-Navigator,"Kantonsinfos gehören in den strukturierten Navigator, nicht in 26 SEO-Doorways","Doorways, unverifizierte Rechtsinfos",Navigator-Eintrag mit verifizierter Quelle
+zsr-beantragen-tcm (separate Seite),/regulatorik/zsr/,ZSR-Owner deckt Antrag/Voraussetzungen ab,Duplicate,Keiner
+m7-erklaerung (zweite Erklärseite),/regulatorik/oda-am/ (Erklärung) · /akademie/ (Angebot),"M7 erklärt OdA AM, M7-Angebot = Akademie",Duplicate,Keiner
+tcm-praxis-nachfolge-{stadt} (Städteseiten),/partner/praxisnachfolge/,Ein Nachfolge-Owner,Doorways,Keiner
+tcm-praxis-verkaufen-zuerich/-bern/… (Städteseiten),/praxiswissen/tcm-praxis-verkaufen/,Ein Verkaufen-Owner,Doorways,Keiner
+tcm-praxis-uebernehmen-{stadt} (Städteseiten),/praxiswissen/tcm-praxis-uebernehmen/,Ein Übernehmen-Owner,Doorways,Keiner

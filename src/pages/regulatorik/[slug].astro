@@ -1,0 +1,86 @@
+---
+// Regulatorik-Leaf. Daten: src/data/pro/regulatorik.ts (Body wortgetreu aus cohort-bodies.ts).
+// Indexierung hängt am Gate REGULATORIK_VERIFIED (Quellenprüfung).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import ProWasIstWas from '../../components/pro/ProWasIstWas.astro';
+import ProSources from '../../components/pro/ProSources.astro';
+import { site } from '../../data/site';
+import { REGULATORIK, REGULATORIK_VERIFIED, REGULATORIK_STAND, SOURCES, regHref, type RegPage } from '../../data/pro/regulatorik';
+import '../../styles/b2b.css';
+
+export function getStaticPaths() {
+  return REGULATORIK.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props as { p: RegPage };
+const path = `/regulatorik/${p.slug}`;
+const url = new URL(path + '/', site.url).href;
+const checkedDates = p.sources.map((s) => SOURCES[s].checked).filter(Boolean) as string[];
+const verified = REGULATORIK_VERIFIED && checkedDates.length === p.sources.length;
+const fmt = (d: string) => new Date(d).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+const others = REGULATORIK.filter((o) => o.slug !== p.slug);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: p.title, description: p.metaDesc, url, inLanguage: 'de-CH',
+    ...(verified ? { lastReviewed: checkedDates.sort().at(-1) } : {}),
+    audience: { '@type': 'Audience', audienceType: 'TCM therapists and practice owners' },
+    isPartOf: { '@type': 'WebPage', name: 'TCM Regulatorik Schweiz', url: 'https://tcm.ch/regulatorik/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Regulatorik', item: 'https://tcm.ch/regulatorik/' },
+    { '@type': 'ListItem', position: 3, name: p.h1, item: url } ] },
+];
+---
+<LayoutDe title={p.title} description={p.metaDesc} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
+  <div class="b2">
+    <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
+      <div class="b2-wrap">
+        <div class="b2-art">
+          <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span><a href="/regulatorik/">Regulatorik</a></div>
+          <h1 class="b2-h1">{p.h1}</h1>
+          <p class="b2-lead">{p.lead}</p>
+          <p class="pro-verify">{verified ? <><b>Zuletzt fachlich geprüft:</b> {fmt(checkedDates.sort().at(-1)!)}</> : <><b>Stand:</b> {fmt(REGULATORIK_STAND)}</>}<br />Diese Seite dient der Orientierung. Verbindlich sind die aktuellen Vorgaben der zuständigen Stelle.</p>
+
+          <div class="pro-short">
+            <p class="b2-label" style="margin:0">Kurzantwort</p>
+            <p>{p.short}</p>
+          </div>
+
+          <div class="b2-body" set:html={p.bodyHtml} />
+
+          {p.not?.length ? (
+            <div class="pro-not">
+              <p class="b2-label" style="margin:0">Was es nicht ist</p>
+              <ul>{p.not.map((n) => <li>{n}</li>)}</ul>
+            </div>
+          ) : null}
+
+          <ProWasIstWas here={p.wiw} />
+
+          {p.faq?.length ? (
+            <div class="b2-faq" style="margin-top:48px">{p.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+          ) : null}
+
+          <div class="b2-cta">
+            <p class="b2-label" style="margin:0 0 8px">Nächster Schritt</p>
+            <p class="b2-h3">{p.cta.title}</p>
+            {p.cta.text && <p>{p.cta.text}</p>}
+            <a class="btn btn--primary" href={p.cta.href}>{p.cta.label}</a>
+          </div>
+
+          {p.ouch && (
+            <p class="pro-ouch"><small>Kommentar / Analyse im OUCH.-Magazin</small><a href={p.ouch.url} rel="noopener">{p.ouch.label}</a> – redaktionelle Perspektive, keine offizielle Quelle.</p>
+          )}
+
+          <ProSources ids={p.sources} />
+
+          <div class="b2-related">
+            <p class="b2-label">Weitere Regulatorik</p>
+            <div class="b2-cards">
+              {others.map((o) => <a class="b2-card" href={regHref(o.slug)}><small>Regulatorik</small><b>{o.h1}</b><span class="b2-go">Lesen →</span></a>)}
+            </div>
+            <p class="b2-route" style="margin-top:32px"><a href="/regulatorik/">Alle Regulatorik-Themen</a> · <a href="/praxiswissen/">Praxiswissen</a> · <a href="/akademie/">Akademie</a> · <a href="/branche/">Branche</a></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</LayoutDe>
