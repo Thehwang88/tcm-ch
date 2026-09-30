@@ -1,0 +1,17 @@
+---
+// "Warum TCM.ch" — generalised from the private PartnerWhy chapter.
+import { PRINCIPLES } from '../../data/b2b';
+---
+<section class="b2-sec">
+  <div class="b2-wrap">
+    <p class="b2-label">Warum TCM.ch</p>
+    <h2 class="b2-statement">Gute Therapie allein füllt noch keine Praxis.</h2>
+    <p class="b2-lead">Viele starke Therapeut:innen sind gleichzeitig Behandler, Marketer, Empfang, Administration, Recruiting und Unternehmer. Das kostet Zeit, die im Behandlungsraum fehlt.</p>
+    <p class="b2-eq" aria-label="Therapie plus Nachfrage plus System ergibt TCM.ch"><span>Therapie</span><i>+</i><span>Nachfrage</span><i>+</i><span>System</span><i>→</i><b>TCM.ch</b></p>
+    <p class="b2-statement">Nicht möglichst viele eigene Praxen.<br /><span class="b2-accent">Sondern ein System für gute lokale Praxen.</span></p>
+    <ol class="b2-pr3">
+      {PRINCIPLES.map((p, i) => <li><span>{String(i + 1).padStart(2, '0')}</span><b>{p.t}</b><small>{p.d}</small></li>)}
+    </ol>
+    <p class="b2-h2" style="margin-top:72px">Erst Nachfrage.<br /><span class="b2-accent">Dann Kapazität.</span></p>
+  </div>
+</section>

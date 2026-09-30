@@ -1,0 +1,99 @@
+---
+// Partner-Qualifikation (/partner/#partnerschaft). POST JSON → /api/anfrage, quelle=partner-b2b.
+// Kein Umsatz-Pflichtfeld. Turnstile wie alle übrigen Formulare.
+import { site } from '../../data/site';
+const situationen = ['Ich habe bereits eine Praxis', 'Therapeut:in, will eigenen Standort', 'Bereits selbstständig', 'Ich orientiere mich erst'];
+const anerkennung = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'in Bearbeitung'];
+---
+<form class="form-card b2-form" id="pl-form" novalidate>
+  <div class="hp" aria-hidden="true"><label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+  <fieldset>
+    <legend>Kontakt</legend>
+    <div class="form-row">
+      <div class="field"><label for="pl-vorname">Vorname <span class="req">*</span></label><input id="pl-vorname" name="vorname" required autocomplete="given-name" /></div>
+      <div class="field"><label for="pl-nachname">Nachname <span class="req">*</span></label><input id="pl-nachname" name="nachname" required autocomplete="family-name" /></div>
+    </div>
+    <div class="form-row">
+      <div class="field"><label for="pl-email">E-Mail <span class="req">*</span></label><input id="pl-email" name="email" type="email" required autocomplete="email" inputmode="email" /></div>
+      <div class="field"><label for="pl-tel">Telefon <span class="req">*</span></label><input id="pl-tel" name="telefon" type="tel" required autocomplete="tel" inputmode="tel" /></div>
+    </div>
+    <div class="field"><label for="pl-ort">Stadt / Kanton <span class="req">*</span></label><input id="pl-ort" name="standort" required /></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ausgangslage</legend>
+    <div class="field"><label for="pl-sit">Aktuelle Situation <span class="req">*</span></label>
+      <select id="pl-sit" name="situation" required><option value="">Bitte wählen</option>{situationen.map((s) => <option>{s}</option>)}</select></div>
+    <div class="form-row">
+      <div class="field"><label for="pl-url">Website der Praxis <span class="opt">(optional)</span></label><input id="pl-url" name="praxis_url" type="url" inputmode="url" placeholder="https://" /></div>
+      <div class="field"><label for="pl-exp">Jahre klinische Erfahrung</label><input id="pl-exp" name="erfahrung" inputmode="numeric" /></div>
+    </div>
+    <div class="field"><span class="b2-flabel">Anerkennung</span>
+      <div class="b2-checks">{anerkennung.map((a) => <label class="b2-check"><input type="checkbox" name="anerkennung" value={a} />{a}</label>)}</div></div>
+    <div class="form-row">
+      <div class="field"><label for="pl-rooms">Räume / Team <span class="opt">(optional)</span></label><input id="pl-rooms" name="raeume_team" placeholder="z. B. 1 Raum, allein" /></div>
+      <div class="field"><label for="pl-pat">Patientenaktivität <span class="opt">(optional)</span></label><input id="pl-pat" name="patienten_aktivitaet" placeholder="z. B. ca. 20 Behandlungen / Woche" /></div>
+    </div>
+    <div class="field"><label for="pl-city">Wunschstadt für die Partnerschaft</label><input id="pl-city" name="wunschstadt" /></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Motivation</legend>
+    <div class="field"><label for="pl-why">Warum interessiert dich eine Partnerschaft?</label><textarea id="pl-why" name="motivation" rows="3"></textarea></div>
+    <div class="field"><label for="pl-msg">Nachricht <span class="opt">(optional)</span></label><textarea id="pl-msg" name="nachricht" rows="3"></textarea></div>
+  </fieldset>
+
+  <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
+  <button class="btn btn--primary" type="submit"><span class="btn-label">Partnerschaft unverbindlich prüfen</span></button>
+  <div class="form-status" role="status" aria-live="polite" hidden></div>
+  <p class="b2-privacy">Unverbindlich und vertraulich. Wir fragen keine Umsatzzahlen ab. Nicht jede Praxis passt in das Modell; wir melden uns mit einer ehrlichen Einschätzung. <a href="/datenschutz/">Datenschutz</a>.</p>
+</form>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('pl-form');
+    if (!form) return;
+    var status = form.querySelector('.form-status');
+    var label = form.querySelector('.btn-label');
+    function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (form.website.value.trim() !== '') return;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+      var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+      if (!token) { show('error', 'Bitte bestätige kurz, dass du kein Roboter bist, und versuche es erneut.'); return; }
+      var fd = new FormData(form);
+      var d = {};
+      fd.forEach(function (v, k) { if (k === 'anerkennung' || k === 'cf-turnstile-response') return; d[k] = String(v).trim(); });
+      d.anerkennung = fd.getAll('anerkennung').join(', ');
+      d.name = (d.vorname + ' ' + d.nachname).trim();
+      d.quelle = 'partner-b2b';
+      d.formular = 'Partner-Qualifikation';
+      d.seite = location.pathname;
+      d.zeit = new Date().toISOString();
+      d.turnstileToken = token;
+      form.classList.add('is-sending');
+      if (label) { label.dataset.orig = label.textContent; label.textContent = 'Wird gesendet…'; }
+      try {
+        var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+        var data = null; try { data = await res.json(); } catch (_) {}
+        if (res.ok && data && data.ok) {
+          form.reset();
+          show('success', 'Danke. Deine Anfrage ist eingegangen. Wir melden uns persönlich mit einer realistischen Einschätzung.');
+          form.querySelectorAll('input,select,textarea,button').forEach(function (el) { el.disabled = true; });
+          if (window.dataLayer) window.dataLayer.push({ event: 'form_submit', form_name: 'partner-b2b' });
+        } else {
+          var map = { missing_fields: 'Bitte fülle Name, E-Mail und Telefon aus.', turnstile_failed: 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut versuchen.' };
+          show('error', map[data && data.error] || 'Anfrage konnte nicht gesendet werden. Bitte erneut versuchen.');
+        }
+      } catch (err) { show('error', 'Verbindungsfehler. Bitte erneut versuchen.'); }
+      finally {
+        form.classList.remove('is-sending');
+        if (label && label.dataset.orig) label.textContent = label.dataset.orig;
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+      }
+    });
+  })();
+</script>

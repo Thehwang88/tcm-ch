@@ -1,0 +1,87 @@
+---
+// /praxiswissen/praxisrechner/ — interaktives Tool. Eingaben bleiben im Browser (keine Übertragung).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { B2B_LINKS, MODEL_DISCLAIMER } from '../../data/b2b';
+import { WEEKS_PER_MONTH } from '../../lib/praxis-rechner';
+import '../../styles/b2b.css';
+
+const path = '/praxiswissen/praxisrechner';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Praxis Rechner: Umsatz, Auslastung & Break-even';
+const description = 'Kostenloser Rechner für TCM-Praxen: Umsatz, Kosten, Auslastung und Break-even aus deinen eigenen Zahlen berechnen. Transparente Formeln, keine Datenübertragung.';
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebPage', name: 'TCM Praxiswissen', url: 'https://tcm.ch/praxiswissen/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Praxiswissen', item: 'https://tcm.ch/praxiswissen/' },
+    { '@type': 'ListItem', position: 3, name: 'Praxisrechner', item: url } ] },
+];
+const money = [
+  { k: 'revenuePerTreatment', l: 'Ø Umsatz / Behandlung', v: '120' },
+  { k: 'rent', l: 'Miete / Monat', s: 'inkl. Nebenkosten', v: '' },
+  { k: 'otherFixed', l: 'Weitere Fixkosten / Monat', s: 'Versicherung, Software, Buchhaltung, Telefon …', v: '' },
+  { k: 'marketing', l: 'Marketing / Monat', v: '' },
+  { k: 'staff', l: 'Personalkosten / Monat', s: 'optional, inkl. Arbeitgeberbeiträge', v: '' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm" style="padding-bottom:24px">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href={B2B_LINKS.praxiswissen}>Praxiswissen</a><span aria-hidden="true">/</span>Praxisrechner</div>
+        <h1 class="b2-h1">Wie viele Patienten braucht deine Praxis?</h1>
+        <p class="b2-lead">Trage deine eigenen Zahlen ein. Der Rechner zeigt Umsatz, Kosten, Ergebnis und ab wann deine Praxis trägt. Alles bleibt in deinem Browser.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec" style="padding-top:24px">
+      <div class="b2-wrap">
+        <div class="b2-calc" data-rechner>
+          <form class="b2-calc__in" onsubmit="return false" aria-label="Eingaben Praxisrechner">
+            <div class="b2-ctl"><label for="pr-days">Arbeitstage / Woche</label><output for="pr-days" data-o="days"></output><input id="pr-days" type="range" min="1" max="6" step="1" value="4" data-i="days" /></div>
+            <div class="b2-ctl"><label for="pr-max">Max. Patienten / Tag</label><output for="pr-max" data-o="maxPerDay"></output><input id="pr-max" type="range" min="1" max="16" step="1" value="8" data-i="maxPerDay" /></div>
+            <div class="b2-ctl"><label for="pr-util">Auslastung</label><output for="pr-util" data-o="utilization"></output><input id="pr-util" type="range" min="5" max="100" step="5" value="60" data-i="utilization" /></div>
+            {money.map((m) => (
+              <div class="b2-num"><label for={`pr-${m.k}`}>{m.l}{m.s && <small>{m.s}</small>}</label><span>CHF <input id={`pr-${m.k}`} type="number" min="0" step="1" inputmode="numeric" value={m.v} placeholder="–" data-i={m.k} /></span></div>
+            ))}
+            <button type="button" class="b2-reset" data-reset>Zurücksetzen</button>
+          </form>
+          <div class="b2-calc__out" aria-live="polite">
+            <ul class="b2-kpi">
+              <li class="is-hero"><span>Umsatz / Monat</span><b data-o="revenue"></b></li>
+              <li>Behandlungen / Monat <b data-o="treatments"></b></li>
+              <li>Kapazitätsauslastung <b data-o="capacity"></b></li>
+              <li>Eingegebene Kosten <b data-o="costs"></b></li>
+              <li class="is-res">Ergebnis vor persönlichen Steuern <b data-o="result"></b></li>
+              <li>Break-even Behandlungen <b data-o="beTreat"></b></li>
+              <li>Break-even Patienten <b data-o="beDay"></b></li>
+              <li>Nötige Auslastung für Break-even <b data-o="beUtil"></b></li>
+            </ul>
+            <p class="b2-calc__note" data-warn hidden><strong>Achtung:</strong> Mit diesen Werten reicht die maximale Kapazität nicht, um die Kosten zu decken.</p>
+            <p class="b2-calc__note"><strong>{MODEL_DISCLAIMER}</strong> Es werden nur die Kosten berücksichtigt, die du eingibst. Keine Datenübertragung, nichts wird gespeichert.</p>
+            <p class="b2-formula">
+              Behandlungen = <code>Tage × Patienten × {WEEKS_PER_MONTH} Wochen × Auslastung</code><br />
+              Umsatz = <code>Behandlungen × Ø Umsatz</code> · Ergebnis = <code>Umsatz − Kosten</code><br />
+              Break-even = <code>Kosten ÷ Ø Umsatz pro Behandlung</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="b2-cta">
+          <p class="b2-h3">Deine Praxis funktioniert therapeutisch – aber die Zahlen sind eng?</p>
+          <div class="b2-cards">
+            <a class="b2-card" href={B2B_LINKS.praxiswissen}><small>Praxiswissen</small><b>Kosten, Auslastung, Kennzahlen</b><span class="b2-go">→</span></a>
+            <a class="b2-card" href={B2B_LINKS.akademieForm}><small>Akademie</small><b>Praxis- & Business-Mentoring</b><span class="b2-go">→</span></a>
+            <a class="b2-card" href={B2B_LINKS.modell}><small>Partner</small><b>Das TCM.ch Partnermodell</b><span class="b2-go">→</span></a>
+          </div>
+        </div>
+        <p class="b2-route" style="margin-top:32px">Hintergrund: <a href="/praxiswissen/tcm-praxis-kosten/">Was eine Praxis kostet</a> · <a href="/praxiswissen/tcm-praxis-auslastung/">Auslastung</a> · <a href="/praxiswissen/tcm-praxis-kennzahlen/">Kennzahlen</a></p>
+      </div>
+    </section>
+  </div>
+  <script>
+    import '../../scripts/praxisrechner';
+  </script>
+</LayoutDe>

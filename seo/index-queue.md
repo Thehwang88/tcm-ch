@@ -21,6 +21,20 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/partner/modell/
+- https://tcm.ch/karriere/
+- https://tcm.ch/karriere/standortleitung/
+- https://tcm.ch/karriere/berufseinstieg/
+- https://tcm.ch/praxiswissen/
+- https://tcm.ch/praxiswissen/tcm-praxis-eroeffnen/
+- https://tcm.ch/praxiswissen/tcm-praxis-kosten/
+- https://tcm.ch/praxiswissen/praxisrechner/
+- https://tcm.ch/praxiswissen/patienten-gewinnen-tcm-praxis/
+- https://tcm.ch/praxiswissen/standortwahl-tcm-praxis/
+- https://tcm.ch/praxiswissen/tcm-praxis-auslastung/
+- https://tcm.ch/praxiswissen/tcm-praxis-kennzahlen/
+- https://tcm.ch/praxiswissen/tcm-selbststaendig-oder-angestellt/
+- https://tcm.ch/partner/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/yin-und-yang/

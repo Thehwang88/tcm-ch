@@ -1,0 +1,73 @@
+---
+// /karriere/berufseinstieg/ — nach der Ausbildung. M7/Mentorat bleibt Akademie-Territorium.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { B2B_LINKS, LIFECYCLE, LEGAL_NOTE } from '../../data/b2b';
+import '../../styles/b2b.css';
+
+const path = '/karriere/berufseinstieg';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Berufseinstieg Schweiz: Vom Abschluss zur ersten Stelle';
+const description =
+  'Was kommt nach der TCM-Ausbildung? Berufseinstieg, Mentorat, Anerkennung, erste klinische Verantwortung und mögliche Karrierewege bei TCM.ch.';
+
+const themen = [
+  { t: 'Abschluss ist nicht gleich Sicherheit', d: 'Die Ausbildung vermittelt Wissen. Klinische Sicherheit entsteht erst mit vielen echten Fällen, Rückfragen und Rückmeldungen.' },
+  { t: 'M7, wo relevant', d: 'Für manche Wege gehört eine begleitete Praxisphase dazu. Wie das Mentorat bei uns aussieht, erklärt die Akademie.' },
+  { t: 'Erste begleitete Erfahrung', d: 'Fallbesprechungen und erfahrene Kolleg:innen im Rücken machen den Unterschied zwischen Unsicherheit und Routine.' },
+  { t: 'Dokumentation', d: 'Saubere Anamnese und Verlaufsdokumentation sind Grundlage für Qualität und für die Abrechnung mit Zusatzversicherungen.' },
+  { t: 'Anerkennung', d: 'EMR, ASCA, kantonale Bewilligung, ZSR: Welche Schritte für dich relevant sind, hängt von Methode und Kanton ab.' },
+  { t: 'Patientenkommunikation', d: 'Erwartungen klären, Behandlungspläne erklären, ehrlich sagen, wenn TCM nicht die richtige Wahl ist.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Karriere', item: 'https://tcm.ch/karriere/' },
+    { '@type': 'ListItem', position: 3, name: 'Berufseinstieg', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href={B2B_LINKS.karriere}>Karriere</a><span aria-hidden="true">/</span>Berufseinstieg</div>
+        <h1 class="b2-h1">Der schwierigste Schritt ist oft der erste nach der Ausbildung.</h1>
+        <p class="b2-lead">Zwischen Abschluss und sicherer Praxis liegen Jahre, die kaum jemand plant. Hier ist, was in dieser Phase zählt, und wie du sie nicht allein gehen musst.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <p class="b2-label">Was jetzt zählt</p>
+        <h2 class="b2-h2">Sechs Dinge, die im Lehrplan zu kurz kommen.</h2>
+        <div class="b2-cards">
+          {themen.map((a) => <div class="b2-card"><b>{a.t}</b><p>{a.d}</p></div>)}
+        </div>
+        <p class="b2-fine">{LEGAL_NOTE}</p>
+      </div>
+    </section>
+
+    <section class="b2-sec">
+      <div class="b2-wrap b2-narrow">
+        <p class="b2-label">Anstellung oder sofort selbstständig?</p>
+        <h2 class="b2-h2">Erst Routine, dann Risiko.</h2>
+        <p class="b2-p">Direkt nach dem Abschluss eine eigene Praxis zu eröffnen heisst: Patientengewinnung, Miete, Administration und klinische Unsicherheit gleichzeitig. Eine Anstellung mit Fallbesprechungen gibt dir Zeit, klinische Routine aufzubauen, bevor du unternehmerisches Risiko trägst. Beides kann richtig sein. Den ausführlichen Vergleich findest du unter <a class="b2-link b2-link--green" href="/praxiswissen/tcm-selbststaendig-oder-angestellt/">selbstständig oder angestellt</a>.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <p class="b2-label">Dein Weg</p>
+        <h2 class="b2-h2">Lernen, arbeiten, aufbauen.</h2>
+        <ol class="b2-path">{LIFECYCLE.map((l) => <li><a href={l.href}>{l.t}</a></li>)}</ol>
+        <div class="b2-cards" style="margin-top:48px">
+          <a class="b2-card" href={B2B_LINKS.akademieForm}><small>Akademie</small><b>M7-Mentorat & Praktikum</b><p>Begleitung nach dem Abschluss, Hospitation, Fallbesprechungen.</p><span class="b2-go">Interesse anmelden →</span></a>
+          <a class="b2-card" href={B2B_LINKS.karriere}><small>Karriere</small><b>Erste Stelle bei TCM.ch</b><p>Als Therapeut:in in einer bestehenden Praxis starten.</p><span class="b2-go">Zur Bewerbung →</span></a>
+          <a class="b2-card" href={B2B_LINKS.partner}><small>Später</small><b>Eigene Praxis als Partner</b><p>Wenn Routine und Netzwerk da sind: eigene lokale Firma mit TCM.ch System.</p><span class="b2-go">Partnermodell →</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

@@ -12,8 +12,6 @@
 /krankenkasse/*            /krankenkassen/:splat  301
 /zuerich-longevity         /                      301
 /zuerich-longevity/*       /                      301
-/karriere                  /partner/             301
-/karriere/*                /partner/             301
 /partnerpraxen             /partner/             301
 /partnerpraxen/*           /partner/             301
 /st-gallen-tag-der-offenen-tuer    /standorte/st-gallen/  301

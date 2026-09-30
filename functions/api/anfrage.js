@@ -64,6 +64,11 @@ export async function onRequestPost({ request, env }) {
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen],
       ['Angebot', d.angebot], ['Seite', d.seite],
+      // Partner-B2B (quelle=partner-b2b, /partner/): Qualifikationsfelder. Nur gesetzt, wenn vorhanden.
+      ['Praxis-Website', d.praxis_url], ['Klinische Erfahrung (Jahre)', d.erfahrung],
+      ['Anerkennung', d.anerkennung], ['Räume / Team', d.raeume_team],
+      ['Patientenaktivität', d.patienten_aktivitaet], ['Wunschstadt', d.wunschstadt],
+      ['Warum Partnerschaft', d.motivation],
       ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
       ['Formular', d.formular], ['Zeit', d.zeit],
     ];
@@ -77,7 +82,9 @@ export async function onRequestPost({ request, env }) {
         .join('') +
       '</table></body></html>';
 
-    let subject = d.quelle === 'qi-club'
+    let subject = d.quelle === 'partner-b2b'
+      ? 'Partner-Anfrage – ' + (d.situation || 'Situation offen') + ' (' + d.name + (d.wunschstadt ? ', ' + d.wunschstadt : '') + ')'
+      : d.quelle === 'qi-club'
       ? 'QI CLUB Join – ' + d.name + (d.standort ? ' (' + d.standort + ')' : '')
       : _akademie
       ? 'Akademie – ' + (d.situation || 'Interesse') + ' (' + d.name + ')'

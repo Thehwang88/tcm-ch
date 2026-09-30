@@ -1,0 +1,13 @@
+---
+import { JOURNEY } from '../../data/b2b';
+---
+<section class="b2-sec">
+  <div class="b2-wrap">
+    <p class="b2-label">Der Weg eines Patienten</p>
+    <h2 class="b2-h2">Wer welchen Teil verantwortet.</h2>
+    <ol class="b2-journey">
+      {JOURNEY.map((j) => <li data-owner={j.owner}><small>{j.owner}</small><b>{j.t}</b></li>)}
+    </ol>
+    <p class="b2-legend"><span>TCM.ch: Nachfrage, Anfrage, Termin</span><span class="is-p">Partner: Behandlung & klinische Verantwortung</span><span class="is-g">Gemeinsam: Qualität, Reviews, Wachstum</span></p>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import { GROWTH_STAGES } from '../../data/b2b';
+const rooms = [1, 3, 5];
+---
+<section class="b2-sec">
+  <div class="b2-wrap">
+    <p class="b2-label">Wachstum</p>
+    <h2 class="b2-statement">Du skalierst nicht nur deine Arbeitszeit.<br /><span class="b2-accent">Du skalierst deine Praxis.</span></h2>
+    <ol class="b2-growth">
+      {GROWTH_STAGES.map((s, i) => (
+        <li><div class="b2-rooms" aria-hidden="true">{Array.from({ length: rooms[i] }, () => <i></i>)}</div><span>{String(i + 1).padStart(2, '0')}</span><b>{s.t}</b><small>{s.d}</small></li>
+      ))}
+    </ol>
+    <p class="b2-fine">Mögliche Entwicklung, kein Automatismus. Mehr Kapazität erst, wenn die Nachfrage die bestehende wiederholt übersteigt. Zusätzliche Therapeut:innen werden von der lokalen Partnerfirma beschäftigt, nicht von TCM.ch.</p>
+  </div>
+</section>

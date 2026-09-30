@@ -1,0 +1,16 @@
+---
+import { CAPABILITIES } from '../../data/b2b';
+interface Props { soft?: boolean }
+const { soft = true } = Astro.props;
+---
+<section class={`b2-sec${soft ? ' b2-sec--soft' : ''}`}>
+  <div class="b2-wrap">
+    <p class="b2-label">Das TCM.ch System</p>
+    <h2 class="b2-h2">Was im Hintergrund läuft.</h2>
+    <ul class="b2-caps">
+      {CAPABILITIES.map((c) => <li><b>{c.t}</b><small>{c.items.join(' · ')}</small></li>)}
+    </ul>
+    <p class="b2-os">TCM.ch Operating System</p>
+    <p class="b2-lead" style="text-align:center;margin-left:auto;margin-right:auto">Du behandelst Patienten und führst deine lokale Praxis. Wir bauen und betreiben das System darum.</p>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+---
+// Praxiswissen-Artikel. Daten: src/data/praxiswissen.ts (getrennt von der Patienten-Wissensbasis).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { PRAXISWISSEN, PW_CATEGORIES, pwBySlug, pwHref, type PwArticle } from '../../data/praxiswissen';
+import { B2B_LINKS } from '../../data/b2b';
+import '../../styles/b2b.css';
+
+export function getStaticPaths() {
+  return PRAXISWISSEN.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props as { a: PwArticle };
+const path = `/praxiswissen/${a.slug}`;
+const url = new URL(path + '/', site.url).href;
+const cat = PW_CATEGORIES.find((c) => c.id === a.category)!;
+const related = a.related.map(pwBySlug).filter(Boolean) as PwArticle[];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: a.h1, description: a.metaDesc, url, inLanguage: 'de-CH',
+    datePublished: a.datePublished, dateModified: a.dateModified,
+    author: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: { '@type': 'Organization', name: 'TCM.ch', url: 'https://tcm.ch/', logo: { '@type': 'ImageObject', url: 'https://tcm.ch/icon-512.png' } },
+    mainEntityOfPage: url, isPartOf: { '@type': 'WebPage', name: 'TCM Praxiswissen', url: 'https://tcm.ch/praxiswissen/' },
+    audience: { '@type': 'Audience', audienceType: 'TCM therapists and practice owners' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Praxiswissen', item: 'https://tcm.ch/praxiswissen/' },
+    { '@type': 'ListItem', position: 3, name: a.h1, item: url } ] },
+  ...(a.faq?.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: a.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
+];
+const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<LayoutDe title={a.title} description={a.metaDesc} path={path} schema={schema}>
+  <div class="b2">
+    <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
+      <div class="b2-wrap">
+        <div class="b2-art">
+          <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href={B2B_LINKS.praxiswissen}>Praxiswissen</a><span aria-hidden="true">/</span>{cat.label}</div>
+          <h1 class="b2-h1">{a.h1}</h1>
+          <p class="b2-lead">{a.lead}</p>
+          <p class="b2-art__meta"><span>{cat.label}</span><span>{a.readTime} Lesezeit</span><span>Aktualisiert {dateLabel}</span><span>TCM.ch Praxisteam</span></p>
+
+          <div class="b2-take">
+            <p class="b2-label" style="margin:0">Das Wichtigste</p>
+            <ul>{a.keyTakeaways.map((k) => <li>{k}</li>)}</ul>
+          </div>
+
+          <div class="b2-body" set:html={a.bodyHtml} />
+
+          {a.firstPartyBox && (
+            <aside class="b2-fp" aria-label="Aus unserer Praxis">
+              <p class="b2-label b2-label--green" style="margin:0">Aus unserer Praxis</p>
+              <p>{a.firstPartyBox}</p>
+            </aside>
+          )}
+
+          {a.faq?.length ? (
+            <div class="b2-faq" style="margin-top:48px">{a.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+          ) : null}
+
+          <div class="b2-cta">
+            <p class="b2-h3">{a.ctaTitle}</p>
+            <p>{a.ctaText}</p>
+            {a.ctaCards ? (
+              <div class="b2-cards">{a.ctaCards.map((c) => <a class="b2-card" href={c.href}><small>{c.k}</small><b>{c.t}</b><span class="b2-go">→</span></a>)}</div>
+            ) : (
+              <a class="btn btn--primary" href={a.ctaHref}>{a.ctaLabel}</a>
+            )}
+          </div>
+
+          <div class="b2-related">
+            <p class="b2-label">Weiterlesen</p>
+            <div class="b2-cards">
+              {related.map((r) => <a class="b2-card" href={pwHref(r.slug)}><small>{PW_CATEGORIES.find((c) => c.id === r.category)!.label}</small><b>{r.h1}</b><span class="b2-go">Lesen →</span></a>)}
+            </div>
+            <p class="b2-route" style="margin-top:32px"><a href={B2B_LINKS.praxiswissen}>Alle Praxiswissen-Themen</a> · <a href={B2B_LINKS.rechner}>Praxisrechner</a> · <a href={B2B_LINKS.akademie}>Akademie</a> · <a href={B2B_LINKS.karriere}>Karriere</a> · <a href={B2B_LINKS.partner}>Partner</a></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</LayoutDe>

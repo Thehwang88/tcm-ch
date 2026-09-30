@@ -2,12 +2,13 @@
 import LayoutDe from '../layouts/LayoutDe.astro';
 import BrandMarquee from '../components/BrandMarquee.astro';
 import { site } from '../data/site';
+import { LIFECYCLE, B2B_LINKS } from '../data/b2b';
 
 const path = '/akademie';
 const url = new URL(path + '/', site.url).href;
 const title = 'TCM Weiterbildung, M7 Mentorat & Praxisaufbau | TCM.ch Akademie';
 const description =
-  'Die TCM.CH Akademie begleitet Therapeut:innen nach der Ausbildung: M7-Mentorat, Praktikum, Fortbildung und Praxisaufbau. Aus dem grössten TCM-Netzwerk der Schweiz.';
+  'Die TCM.CH Akademie begleitet Therapeut:innen nach der Ausbildung: M7-Mentorat, Praktikum, Fortbildung und Praxisaufbau. Aus der Praxis eines Schweizer TCM-Netzwerks.';
 
 const weg = [
   { n: '01', label: 'Während der Ausbildung', t: 'Erlebe die Praxis, bevor du selbst eine führst.',
@@ -18,7 +19,7 @@ const weg = [
     d: 'Praxisorientierte Fort- und Weiterbildungen: Diagnostik, Schmerztherapie, Frauenheilkunde, Patientenkommunikation und mehr. Konkrete Formate werden laufend aufgeschaltet.',
     badge: 'Programm in Aufbau · Interesse anmelden' },
   { n: '04', label: 'Die eigene Praxis', t: 'Eine Praxis braucht mehr als gute Medizin.',
-    d: 'Positionierung, Standortwahl, Preisgestaltung, Versicherungen, Sichtbarkeit, Patientengewinnung, Finanzen. Wir zeigen dir, wie eine Praxis wirtschaftlich funktioniert. Nicht als Theorie, sondern so, wie wir es selbst an 14 Standorten machen.' },
+    d: 'Positionierung, Standortwahl, Preisgestaltung, Versicherungen, Sichtbarkeit, Patientengewinnung, Finanzen. Wir zeigen dir, wie eine Praxis wirtschaftlich funktioniert. Nicht als Theorie, sondern so, wie wir es selbst in unseren Praxen machen.' },
   { n: '05', label: 'Von der Praxis zum Unternehmen', t: 'Vom Behandlungszimmer zur unternehmerischen Verantwortung.',
     d: 'Team aufbauen, führen, delegieren. Prozesse, Standortentwicklung, Wachstum. Für Therapeut:innen, die grösser denken. Und vielleicht irgendwann Partner:in im TCM.CH Netzwerk werden.' },
 ];
@@ -41,7 +42,6 @@ const fragen = [
   'Welche Zahlen muss ich überhaupt kennen?',
 ];
 
-const pfad = ['Schnuppern', 'Ausbildung', 'Praktikum', 'M7', 'Berufseinstieg', 'Fortbildung', 'Eigene Praxis', 'Team', 'Standort / Partnerschaft'];
 
 const fuerDich = [
   'TCM studierst und echte Praxis erleben willst.',
@@ -88,7 +88,7 @@ const schema = [
         <a class="btn btn--primary" href="#weg">Akademie entdecken</a>
         <a class="btn btn--ghost" href="#interesse">Interesse anmelden</a>
       </div>
-      <p class="ak-trust">Aus dem grössten TCM-Netzwerk der Deutschschweiz · 14 Standorte · Echte Praxen, echte Patienten</p>
+      <p class="ak-trust">Aus dem TCM.ch Netzwerk · mehrere eigene Standorte · Echte Praxen, echte Patienten</p>
     </div>
   </section>
 
@@ -159,7 +159,7 @@ const schema = [
         <div class="section-label">Differenzierung</div>
         <h2 class="section-title">Nicht aus dem Lehrbuch. Aus der Praxis.</h2>
         <p class="ak-body"><strong>Wir unterrichten nicht über Praxen. Wir führen welche.</strong></p>
-        <p class="ak-body">An 14 Standorten behandeln wir jeden Tag Patienten, stellen Therapeut:innen ein, verhandeln mit Versicherungen, planen Auslastung und bauen Standorte auf. Alles, was wir in der Akademie weitergeben, haben wir vorher selbst gemacht. Oft mehrfach. Manchmal auch falsch, bevor es richtig wurde.</p>
+        <p class="ak-body">In mehreren eigenen Praxen behandeln wir jeden Tag Patienten, stellen Therapeut:innen ein, verhandeln mit Versicherungen, planen Auslastung und bauen Standorte auf. Alles, was wir in der Akademie weitergeben, haben wir vorher selbst gemacht. Oft mehrfach. Manchmal auch falsch, bevor es richtig wurde.</p>
         <p class="ak-body">Was wir vermitteln, muss im Berufsalltag funktionieren. Sonst vermitteln wir es nicht.</p>
       </div>
     </div>
@@ -181,7 +181,7 @@ const schema = [
       <div class="section-label">Langfristigkeit</div>
       <h2 class="section-title">Wir begleiten dich nicht für einen Kurs. Sondern auf deinem Weg.</h2>
       <ol class="ak-pfad">
-        {pfad.map((p) => <li>{p}</li>)}
+        {LIFECYCLE.map((p) => <li><a href={p.href}>{p.t}</a></li>)}
       </ol>
       <p class="ak-body" style="margin-top:22px">Manche kommen für ein Praktikum. Andere für ein Mentorat oder eine einzelne Weiterbildung. Und manche bleiben zehn Jahre. Beides ist gut so.</p>
     </div>
@@ -192,8 +192,13 @@ const schema = [
     <div class="wrap ak-narrow ak-talent">
       <div class="section-label">Talent</div>
       <h2 class="section-title">Und vielleicht führt dein Weg irgendwann zu uns.</h2>
-      <p class="ak-body">Praktikum, Mentorat und Weiterbildung schaffen nicht nur Wissen. Sie schaffen Beziehungen. Wir wollen engagierte Therapeut:innen kennenlernen und fördern. Daraus entstehen immer wieder neue Möglichkeiten: als Therapeut:in in einer unserer Praxen, als Mentor:in, Dozent:in oder Standortpartner:in.</p>
-      <a class="ak-textlink" href="/partner/">TCM.CH kennenlernen&nbsp;→</a>
+      <p class="ak-body">Praktikum, Mentorat und Weiterbildung schaffen nicht nur Wissen. Sie schaffen Beziehungen. Wir wollen engagierte Therapeut:innen kennenlernen und fördern. Daraus entstehen immer wieder neue Möglichkeiten: als Therapeut:in in einer unserer Praxen, als Mentor:in, Dozent:in, Standortleitung oder als Partner:in mit eigener Praxis.</p>
+      <ul class="ak-routes">
+        <li><a class="ak-textlink" href={B2B_LINKS.karriere}>Anstellung bei TCM.ch&nbsp;→</a></li>
+        <li><a class="ak-textlink" href={B2B_LINKS.standortleitung}>Standortleitung&nbsp;→</a></li>
+        <li><a class="ak-textlink" href={B2B_LINKS.partner}>Eigene Praxis als Partner&nbsp;→</a></li>
+        <li><a class="ak-textlink" href={B2B_LINKS.praxiswissen}>Praxiswissen: Zahlen & Betrieb&nbsp;→</a></li>
+      </ul>
     </div>
   </section>
 
@@ -351,6 +356,9 @@ const schema = [
   .ak-pfad li:not(:last-child)::after { content: '→'; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 400; }
   .ak-pfad li:last-child { background: var(--blue-light); border-color: rgba(45,155,111,.3); color: var(--blue-dark); font-weight: 700; }
 
+  .ak-routes { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+  .ak-pfad a { color: inherit; text-decoration: none; }
+  .ak-pfad li:hover { border-color: var(--blue); }
   .ak-talent .ak-textlink { font-size: 15.5px; font-weight: 700; color: var(--blue-dark); text-decoration: none; }
   .ak-talent .ak-textlink:hover { color: var(--blue); }
 

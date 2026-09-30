@@ -1,0 +1,85 @@
+---
+// /karriere/standortleitung/ — Führungs-ANSTELLUNG. Nicht mit dem Partnermodell (/partner/) verwechseln.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { B2B_LINKS, CAPABILITIES } from '../../data/b2b';
+import '../../styles/b2b.css';
+
+const path = '/karriere/standortleitung';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Standortleitung: Eine Klinik führen bei TCM.ch';
+const description =
+  'Standortleitung bei TCM.ch: Team, Patientenversorgung und Standortentwicklung verantworten – mit zentralem Marketing, Administration und Systemen.';
+
+const aufgaben = [
+  { t: 'Klinische Verantwortung', d: 'Du behandelst selbst und stellst sicher, dass Diagnostik, Dokumentation und Behandlungsqualität am Standort stimmen.' },
+  { t: 'Teamführung', d: 'Einarbeitung, Fallbesprechungen, Einsatzplanung und ein Klima, in dem gute Therapeut:innen bleiben.' },
+  { t: 'Qualität', d: 'Standards einhalten, Rückmeldungen ernst nehmen, Abläufe verbessern.' },
+  { t: 'Patientenerlebnis', d: 'Vom ersten Termin bis zur Folgebehandlung: Patient:innen sollen sich gut aufgehoben fühlen.' },
+  { t: 'Kapazitätsplanung', d: 'Auslastung beobachten, Engpässe früh erkennen, mit der Zentrale über zusätzliche Kapazität entscheiden.' },
+  { t: 'Standortentwicklung', d: 'Lokale Kontakte, Zuweiser:innen und Sichtbarkeit vor Ort gemeinsam mit dem zentralen Team entwickeln.' },
+];
+const faqs = [
+  { q: 'Ist die Standortleitung eine Anstellung?', a: 'Ja. Die Standortleitung ist eine Anstellung bei TCM.ch, sofern keine separate individuelle Partnervereinbarung besteht. Eine Beteiligung ist damit nicht verbunden.' },
+  { q: 'Was ist der Unterschied zum Partnermodell?', a: 'Als Partner:in führst du eine eigene lokale Firma und trägst unternehmerisches Risiko und lokale Kosten. Als Standortleitung bist du angestellt. Beides sind gute Wege, aber sehr verschiedene.' },
+  { q: 'Muss ich Führungserfahrung haben?', a: 'Klinische Erfahrung ist Voraussetzung. Führungserfahrung hilft; wir prüfen jedes Profil individuell.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Karriere', item: 'https://tcm.ch/karriere/' },
+    { '@type': 'ListItem', position: 3, name: 'Standortleitung', item: url } ] },
+  { '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href={B2B_LINKS.karriere}>Karriere</a><span aria-hidden="true">/</span>Standortleitung</div>
+        <h1 class="b2-h1">Einen TCM.ch Standort führen.</h1>
+        <p class="b2-lead">Du verantwortest Team, Patientenversorgung und die Entwicklung eines Standorts. Marketing, Administration und Systeme kommen zentral von TCM.ch.</p>
+        <div class="b2-actions"><a class="btn btn--primary" href={B2B_LINKS.karriere + '#bewerbung'}>Für Standortleitung bewerben</a></div>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <p class="b2-label">Deine Verantwortung</p>
+        <h2 class="b2-h2">Was eine Standortleitung trägt.</h2>
+        <div class="b2-cards">
+          {aufgaben.map((a) => <div class="b2-card"><b>{a.t}</b><p>{a.d}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="b2-sec">
+      <div class="b2-wrap">
+        <p class="b2-label">Zusammenarbeit mit der Zentrale</p>
+        <h2 class="b2-h2">Du führst den Standort. Das System läuft mit.</h2>
+        <ul class="b2-caps">
+          {CAPABILITIES.map((c) => <li><b>{c.t}</b><small>{c.items.join(' · ')}</small></li>)}
+        </ul>
+        <p class="b2-p">Die Standortleitung konzentriert sich auf Menschen, Qualität und lokale Entwicklung. Kampagnen, Terminadministration, Technologie und Reporting organisiert das zentrale Team.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap b2-narrow">
+        <p class="b2-label">Wichtig</p>
+        <h2 class="b2-h2">Anstellung, nicht Unternehmertum.</h2>
+        <p class="b2-p">Die Standortleitung ist eine Anstellung bei TCM.ch, sofern keine separate individuelle Partnervereinbarung besteht. Wir versprechen keine Beteiligung. Wer eine eigene lokale Firma aufbauen will, findet das unter <a class="b2-link b2-link--green" href={B2B_LINKS.partner}>Partner werden</a>.</p>
+        <div class="b2-faq" style="margin-top:32px">
+          {faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        </div>
+        <div class="b2-actions">
+          <a class="btn btn--primary" href={B2B_LINKS.karriere + '#bewerbung'}>Für Standortleitung bewerben</a>
+          <a class="b2-link" href={B2B_LINKS.akademie}>Führung & Praxisaufbau in der Akademie</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

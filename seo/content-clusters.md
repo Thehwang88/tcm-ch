@@ -88,6 +88,18 @@ Legende: **Hub** = primärer Owner des breiten Intents · Support = zuliefernde 
 - Beobachten (GSC): finger-schlafen-ein / einzelne-finger-taub / hand-kribbelt-beim-velofahren vs. karpaltunnelsyndrom; starkes-schwitzen-ohne-sport / nachtschweiss-ohne-fieber vs. hyperhidrose/wechseljahre; finger-morgens-steif vs. arthrose/rheuma; bein-wird-beim-sitzen-taub vs. ischias; rueckenschmerzen-beim-husten vs. rueckenschmerzen; ohr-einseitig-verstopft vs. hoersturz
 - Nächste Kandidaten erst nach GSC-Daten: siehe koerpersignale-candidates.csv (P2: Augenlid-Zucken, gleiche-Uhrzeit-Aufwachen, Herzstolpern)
 
+## 16. B2B / Fachpersonen (neu 09/2026) — learn → work → build → partner
+Kein Patienten-Cluster. Vier Zielgruppen, strikt getrennte Owner:
+- **`/partner/`** — Praxis-Partnerschaft (bestehende Praxen + lokale Unternehmer:innen). Repurposed, kein Redirect. Partner-Qualifikationsformular → `/api/anfrage` (quelle=partner-b2b).
+- **`/partner/modell/`** — Partnermodell (Start klein, 90-Tage-Launch, Geldfluss 10 % / 2/3 : 1/3, öffentlicher Simulator). Zahlen nur aus `BASE_MODEL`.
+- **`/karriere/`** — TCM Jobs Schweiz (Anstellung); Bewerbungsformular `/api/partner` (quelle=karriere). Unterseiten `/karriere/standortleitung/` (Führungs-Anstellung) und `/karriere/berufseinstieg/`.
+- **`/akademie/`** — Weiterbildung, M7 (commercial/Anmeldung), Praktikum/Hospitation, Business-Mentoring. Lebenszyklus-Pfad verlinkt alle B2B-Seiten.
+- **`/praxiswissen/`** — Hub + 7 Artikel + `/praxiswissen/praxisrechner/` (Tool). Daten: `src/data/praxiswissen.ts` (NICHT wissen.ts).
+- **OUCH** (ouch.tcm.ch) bleibt Meinung/Analyse (tcm-jobs-schweiz, m7-mentorat-tcm, tcm-ausbildung-lohnt-sich, emr-asca-labyrinth, kantons-lotterie …) und verlinkt kontextuell auf die Commercial-Owner. Nichts kopieren.
+- **Privat:** `/partner/[city]/` (z. B. Bern) = noindex, nicht in Sitemap, nie öffentlich verlinken. Keine öffentlichen Stadt-Partnerseiten.
+- Navigation: nur „Mehr → Für Fachpersonen“ + Drawer-Gruppe + Footer-Link „Karriere“. Patienten-Seiten bekommen KEINE B2B-Links.
+- Gesättigt: keine weiteren Praxiswissen-Artikel ohne expliziten Auftrag; siehe do-not-create-intents.csv.
+
 ## Gesättigte Bereiche (nichts Neues bauen)
 Kopfschmerz, Rücken/Bewegungsapparat, Beschwerde-Leaves generell (100 Stück),
 Massage lokal, Stadt-Erfahrungs-Artikel, Hijama/Schröpfen, Dauernadeln-Raum.

@@ -1,0 +1,40 @@
+---
+// Public-safe partner simulator. Only BASE_MODEL shares are passed to the client —
+// no central cost assumptions, no presets for local costs. Nothing is transmitted.
+import { BASE_MODEL } from '../../data/partner-markets';
+import { MODEL_DISCLAIMER } from '../../data/b2b';
+const cfg = { weeksPerMonth: BASE_MODEL.weeksPerMonth, marketingShare: BASE_MODEL.marketingShare, partnerShare: BASE_MODEL.partnerShare, platformShare: BASE_MODEL.platformShare };
+---
+<section class="b2-sec" id="simulator">
+  <div class="b2-wrap">
+    <p class="b2-label">Simulator</p>
+    <h2 class="b2-h2">Rechne dein Modell selbst durch.</h2>
+    <p class="b2-p">Alle Werte bleiben in deinem Browser. {MODEL_DISCLAIMER}</p>
+    <div class="b2-calc" data-pcalc={JSON.stringify(cfg)}>
+      <form class="b2-calc__in" onsubmit="return false" aria-label="Eingaben">
+        <div class="b2-ctl"><label for="pc-days">Arbeitstage / Woche</label><output for="pc-days" data-o="days"></output><input id="pc-days" type="range" min="1" max="6" step="1" value="5" data-i="days" /></div>
+        <div class="b2-ctl"><label for="pc-pat">Patienten / Tag (max.)</label><output for="pc-pat" data-o="pat"></output><input id="pc-pat" type="range" min="2" max="15" step="1" value="8" data-i="pat" /></div>
+        <div class="b2-ctl"><label for="pc-util">Auslastung</label><output for="pc-util" data-o="util"></output><input id="pc-util" type="range" min="10" max="100" step="5" value="60" data-i="util" /></div>
+        <div class="b2-num"><label for="pc-rev">Ø Umsatz / Behandlung</label><span>CHF <input id="pc-rev" type="number" min="0" step="1" inputmode="numeric" value="130" data-i="rev" /></span></div>
+        <div class="b2-num"><label for="pc-cost">Lokale Kosten / Monat<small>optional: Miete, Material, Versicherungen …</small></label><span>CHF <input id="pc-cost" type="number" min="0" step="50" inputmode="numeric" placeholder="–" data-i="cost" /></span></div>
+        <button type="button" class="b2-reset" data-reset>Zurücksetzen</button>
+      </form>
+      <div class="b2-calc__out" aria-live="polite">
+        <ul class="b2-kpi">
+          <li class="is-hero"><span>Standortumsatz / Monat</span><b data-o="revenue"></b></li>
+          <li>Behandlungen / Monat <b data-o="treat"></b></li>
+          <li>Marketing & Wachstum <b data-o="mk"></b></li>
+          <li>Verteilbasis <b data-o="base"></b></li>
+          <li class="is-green">Anteil lokale Partnerfirma <b data-o="pa"></b></li>
+          <li>TCM.ch Systemanteil <b data-o="tc"></b></li>
+          <li class="is-res">Partnerfirma nach lokalen Kosten <b data-o="res"></b></li>
+        </ul>
+        <p class="b2-calc__note"><strong>{MODEL_DISCLAIMER}</strong> Beispielwerte, keine Erfahrungswerte. Vor persönlichen Steuern und Sozialabgaben; tatsächliche Nachfrage, Kosten und Vertragsdetails variieren.</p>
+        <p class="b2-formula">Behandlungen = <code>Tage × Patienten × {cfg.weeksPerMonth} Wochen × Auslastung</code> · Umsatz = <code>Behandlungen × Ø Umsatz</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import '../../scripts/partner-public-calc';
+</script>

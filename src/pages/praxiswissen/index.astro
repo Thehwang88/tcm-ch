@@ -1,0 +1,69 @@
+---
+// /praxiswissen/ — B2B-Hub. Kein Blog: Werkzeuge, Checklisten, Rechnungen.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import { PRAXISWISSEN, PW_CATEGORIES, PW_RECHNER, pwHref } from '../../data/praxiswissen';
+import { B2B_LINKS } from '../../data/b2b';
+import '../../styles/b2b.css';
+
+const path = '/praxiswissen';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM Praxiswissen: Gründung, Patienten, Finanzen & Wachstum';
+const description = 'Praxiswissen für TCM-Therapeut:innen: Praxis eröffnen, Kosten verstehen, Patienten gewinnen, Auslastung planen und eine wirtschaftlich stabile Praxis aufbauen.';
+
+const order: Record<string, string[]> = {
+  gruenden: ['tcm-praxis-eroeffnen', 'standortwahl-tcm-praxis', 'tcm-selbststaendig-oder-angestellt'],
+  zahlen: ['tcm-praxis-kosten', PW_RECHNER.slug, 'tcm-praxis-kennzahlen'],
+  wachstum: ['patienten-gewinnen-tcm-praxis', 'tcm-praxis-auslastung'],
+};
+const item = (slug: string) => {
+  if (slug === PW_RECHNER.slug) return { href: pwHref(slug), t: PW_RECHNER.short, d: PW_RECHNER.teaser, k: 'Tool' };
+  const a = PRAXISWISSEN.find((x) => x.slug === slug)!;
+  return { href: pwHref(slug), t: a.h1, d: a.lead, k: a.readTime };
+};
+const next = [
+  { href: B2B_LINKS.akademie, t: 'Akademie', d: 'M7-Mentorat, Praktikum, Weiterbildung, Praxis- & Business-Mentoring.', k: 'Lernen' },
+  { href: B2B_LINKS.karriere, t: 'Karriere', d: 'Als Therapeut:in, Senior oder Standortleitung bei TCM.ch arbeiten.', k: 'Arbeiten' },
+  { href: B2B_LINKS.partner, t: 'Partner', d: 'Eigene lokale Praxis, TCM.ch baut Nachfrage und System darum.', k: 'Aufbauen' },
+];
+const all = [...PRAXISWISSEN.map((a) => pwHref(a.slug)), pwHref(PW_RECHNER.slug)];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    hasPart: all.map((h) => ({ '@type': 'WebPage', url: new URL(h, site.url).href })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Praxiswissen', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero">
+      <div class="b2-wrap">
+        <p class="b2-label">TCM.ch Praxiswissen</p>
+        <h1 class="b2-h1">Eine gute Praxis braucht mehr als gute Therapie.</h1>
+        <p class="b2-lead">TCM.ch betreibt Praxen selbst. In Praxiswissen teilen wir die operativen Fragen, Zahlen und Entscheidungen, die im Behandlungsraum kaum jemand lernt.</p>
+        <div class="b2-actions"><a class="btn btn--primary" href={B2B_LINKS.rechner}>Zum Praxisrechner</a><a class="b2-link" href="#gruenden">Themen ansehen</a></div>
+      </div>
+    </section>
+    <section class="b2-sec b2-sec--soft" style="padding-top:64px">
+      <div class="b2-wrap">
+        {PW_CATEGORIES.filter((c) => c.id !== 'next').map((c) => (
+          <div class="b2-cat" id={c.id}>
+            <h2>{c.label}</h2>
+            <div class="b2-cards">
+              {order[c.id].map(item).map((i) => <a class="b2-card" href={i.href}><small>{i.k}</small><b>{i.t}</b><p>{i.d}</p><span class="b2-go">{i.k === 'Tool' ? 'Rechnen →' : 'Lesen →'}</span></a>)}
+            </div>
+          </div>
+        ))}
+        <div class="b2-cat" id="naechster-schritt">
+          <h2>Nächster Schritt</h2>
+          <div class="b2-cards">
+            {next.map((i) => <a class="b2-card" href={i.href}><small>{i.k}</small><b>{i.t}</b><p>{i.d}</p><span class="b2-go">Ansehen →</span></a>)}
+          </div>
+        </div>
+        <p class="b2-fine" style="margin-top:48px">Meinung, Analyse und Branchenkritik findest du im OUCH.-Magazin (<a href="https://ouch.tcm.ch/">ouch.tcm.ch</a>). Praxiswissen ist die praktische Seite: Werkzeuge, Checklisten und Rechnungen. Allgemeine Orientierung, keine Rechts-, Steuer- oder Behördenberatung.</p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

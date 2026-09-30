@@ -1,0 +1,67 @@
+---
+// /partner/modell/ — öffentliches TCM.ch Partnermodell. Zahlen ausschliesslich aus BASE_MODEL
+// (src/data/partner-markets.ts). Keine zentralen Kostenannahmen, keine Stadtdaten.
+// Statische Route hat Vorrang vor /partner/[city]/ ("modell" ist kein Markt-Slug).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import B2bStartSmall from '../../components/b2b/B2bStartSmall.astro';
+import B2bLaunch from '../../components/b2b/B2bLaunch.astro';
+import PublicPartnerCalculator from '../../components/b2b/PublicPartnerCalculator.astro';
+import B2bOperatingSystem from '../../components/b2b/B2bOperatingSystem.astro';
+import B2bGrowth from '../../components/b2b/B2bGrowth.astro';
+import { site } from '../../data/site';
+import { B2B_LINKS } from '../../data/b2b';
+import '../../styles/b2b.css';
+
+const path = '/partner/modell';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM.ch Partnermodell: Marketing, Umsatz & Wachstum';
+const description =
+  'Wie das TCM.ch Partnermodell funktioniert: klein starten, Nachfrage aufbauen, Marketing finanzieren und die lokale Praxis schrittweise entwickeln.';
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Partner', item: 'https://tcm.ch/partner/' },
+    { '@type': 'ListItem', position: 3, name: 'Partnermodell', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href={B2B_LINKS.partner}>Partner</a><span aria-hidden="true">/</span>Modell</div>
+        <h1 class="b2-h1">So funktioniert das TCM.ch Partnermodell</h1>
+        <p class="b2-lead">Du behandelst Patienten und führst deine lokale Praxis. TCM.ch baut und betreibt das System darum.</p>
+        <p class="b2-p">Das ist keine Anstellung und kein klassisches Franchise: Die lokale Partnerfirma ist selbstständig, trägt die klinische Verantwortung und die lokalen Kosten. TCM.ch bringt Marke, Nachfrage, Technologie und zentrale Abläufe ein.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <p class="b2-label">Klein starten</p>
+        <h2 class="b2-h2">Mehr braucht es am Anfang nicht.</h2>
+        <B2bStartSmall />
+        <p class="b2-lead">Keine fünf Räume. Kein grosses Team. Keine unnötigen Fixkosten. Erst Nachfrage beweisen, dann Kapazität ausbauen.</p>
+      </div>
+    </section>
+
+    <B2bLaunch />
+    <PublicPartnerCalculator />
+    <B2bOperatingSystem />
+    <B2bGrowth />
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <h2 class="b2-h2">Passt das Modell zu deiner Praxis?</h2>
+        <p class="b2-lead">Ein unverbindliches Gespräch klärt, ob Standort, Qualifikation und Nachfrage zusammenpassen.</p>
+        <div class="b2-actions">
+          <a class="btn btn--primary" href={B2B_LINKS.partner + '#partnerschaft'}>Partnerschaft prüfen</a>
+          <a class="b2-link" href={B2B_LINKS.rechner}>Eigene Praxiszahlen rechnen</a>
+        </div>
+        <p class="b2-route">Lieber angestellt? <a href={B2B_LINKS.karriere}>Karriere bei TCM.ch&nbsp;→</a></p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

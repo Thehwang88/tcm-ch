@@ -1,0 +1,51 @@
+---
+// Public launch + money flow. Values come from BASE_MODEL at build time.
+import { BASE_MODEL } from '../../data/partner-markets';
+import { formatCHF } from '../../lib/partner-economics';
+import { MODEL_DISCLAIMER } from '../../data/b2b';
+const m = BASE_MODEL;
+const total = m.launchMonthlyAdBudget * m.launchMonths;
+const pct = Math.round(m.marketingShare * 100);
+const base = 100 - pct;
+const pa = base * m.partnerShare;
+const tc = base * m.platformShare;
+const vars = `--mk:${pct}fr;--pa:${pa}fr;--tc:${tc}fr`;
+const fmtPct = (n: number) => `${Math.round(n)} %`;
+---
+<section class="b2-sec" id="launch">
+  <div class="b2-wrap">
+    <p class="b2-label">{m.launchMonths * 30}-Tage-Launch</p>
+    <p class="b2-big">{formatCHF(total)}</p>
+    <p class="b2-lead">{formatCHF(m.launchMonthlyAdBudget)} × {m.launchMonths} Monate Launch-Marketing.</p>
+    <ol class="b2-tl">
+      {Array.from({ length: m.launchMonths }, (_, i) => <li><span>Monat {i + 1}</span><b>{formatCHF(m.launchMonthlyAdBudget)}</b></li>)}
+    </ol>
+    <p class="b2-h3">100 % standortbezogenes Werbebudget. Keine Eintritts- oder Franchisegebühr.</p>
+    <p class="b2-p">Das Budget finanziert Werbung für deine lokale Praxis. Es ist kein Preis für den Zugang zu TCM.ch und garantiert weder Patienten noch Umsatz. TCM.ch bringt Setup, Kampagnen, Standortseite, Tracking, Lead Management, Terminadministration und Technologie ein.</p>
+    <p class="b2-statement" style="margin-top:72px">Ab Monat {m.launchMonths + 1}: grundsätzlich <span class="b2-accent">{pct} %</span> des Standortumsatzes für Marketing & Wachstum.</p>
+  </div>
+</section>
+
+<section class="b2-sec b2-sec--soft" id="geldfluss">
+  <div class="b2-wrap">
+    <p class="b2-label">Geldfluss im Basismodell</p>
+    <h2 class="b2-h2">So wird der Standortumsatz verteilt.</h2>
+    <div class="b2-flow" style={vars} aria-hidden="true">
+      <div class="b2-flow__bar"><i></i><i></i><i></i></div>
+      <div class="b2-flow__labels">
+        <p><b>{fmtPct(pct)}</b>Marketing</p>
+        <p><b>{fmtPct(pa)}</b>Lokale Partnerfirma · 2/3 der Verteilbasis</p>
+        <p><b>{fmtPct(tc)}</b>TCM.ch · 1/3</p>
+      </div>
+    </div>
+    <ol class="b2-steps">
+      <li>Standortumsatz <b>100 %</b></li>
+      <li>− Marketing & Wachstum <b>{fmtPct(pct)}</b></li>
+      <li>= Verteilbasis <b>{fmtPct(base)}</b></li>
+      <li>→ lokale Partnerfirma (2/3) <b>{fmtPct(pa)}</b></li>
+      <li>→ TCM.ch Systemanteil (1/3) <b>{fmtPct(tc)}</b></li>
+    </ol>
+    <p class="b2-p">Die Partnerfirma bezahlt aus ihrem Anteil die lokalen Kosten: Raum, Material, Versicherungen, eigene Sozialabgaben und später Personal. TCM.ch betreibt mit dem Systemanteil die zentralen Leistungen: Lead- und Telefonmanagement, Terminadministration, Kampagnen, Technologie, Reporting und Partner Support. Der Systemanteil ist kein Reingewinn.</p>
+    <p class="b2-fine">{MODEL_DISCLAIMER} Aktuelles Pilot-/Basismodell. Die konkrete Ausgestaltung regelt die individuelle Partnervereinbarung; tatsächliche Kosten und Ergebnisse variieren.</p>
+  </div>
+</section>
