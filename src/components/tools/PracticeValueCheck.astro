@@ -1,0 +1,250 @@
+---
+// Praxiswert-Check (Wizard). Logik: src/lib/practiceValueCheck.ts. Design: tool-wizard.css.
+// Alles lokal im Browser: keine API, keine Übertragung von Antworten, keine Antwortdaten in Analytics.
+import '../../styles/tool-wizard.css';
+---
+<div class="rn" id="pv" data-state="start">
+  <section id="pv-start" aria-labelledby="pv-h1">
+    <p class="rn-eyebrow">TCM.ch Tools</p>
+    <h1 id="pv-h1" class="rn-h1">Wie übertragbar ist deine Praxis?</h1>
+    <p class="rn-sub">Beantworte einige Fragen zu Umsatz, Team, Nachfrage und Organisation. Du bekommst danach eine strukturierte Einschätzung deiner Praxis und konkrete nächste Schritte.</p>
+    <div class="rn-start-actions">
+      <button type="button" class="rn-btn rn-btn--primary" id="pv-go">Praxis-Check starten</button>
+      <span class="rn-time">Dauert ca. 2 Minuten</span>
+    </div>
+    <button type="button" class="rn-link" id="pv-resume" hidden>Letzten Check fortsetzen</button>
+    <p class="rn-trust">Kostenlos · keine Anmeldung · Daten bleiben im Browser</p>
+    <p class="rn-note">Keine Unternehmensbewertung und kein Kaufangebot. Der Check zeigt Faktoren, die die Übertragbarkeit und wirtschaftliche Attraktivität einer Praxis beeinflussen.</p>
+    <noscript><p class="rn-note">Der Check braucht JavaScript. Die Grundlagen findest du unter <a href="/praxiswissen/tcm-praxis-wert/">Praxiswert</a>.</p></noscript>
+  </section>
+
+  <section id="pv-wizard" hidden aria-label="Praxis-Check">
+    <div class="rn-top">
+      <button type="button" class="rn-link" id="pv-back">← Zurück</button>
+      <span class="rn-count" id="pv-count" aria-live="polite"></span>
+      <button type="button" class="rn-link" id="pv-ov-open" aria-haspopup="dialog" aria-controls="pv-ov">Übersicht</button>
+    </div>
+    <div class="rn-progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pv-progress"><span id="pv-bar"></span></div>
+    <div class="rn-stage" id="pv-stage"></div>
+  </section>
+
+  <section class="rn-result" id="pv-result" hidden aria-live="polite" tabindex="-1"></section>
+
+  <div class="rn-ov" id="pv-ov" role="dialog" aria-modal="true" aria-labelledby="pv-ov-h" hidden>
+    <div class="rn-ov-panel">
+      <div class="rn-ov-head"><p id="pv-ov-h" class="rn-ov-title">Übersicht</p><button type="button" class="rn-link" id="pv-ov-close" aria-label="Übersicht schliessen">Schliessen</button></div>
+      <ol id="pv-ov-list"></ol>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    getPvSteps, isPvAnswered, getPracticeTransferabilityResult, practiceResultAsText, PV_STEP_LABELS, PROCESS_LABELS, PV_STORAGE_KEY,
+    type PracticeAnswers, type PvStepId, type Source, type ProcessArea, type ProcessState, type ActionItem, type Dimension,
+  } from '../../lib/practiceValueCheck';
+  import { esc, track, store, swapCard, bindRadioKeys, reducedMotion, CHECK_SVG } from '../../lib/wizardKit';
+
+  const $ = (id: string) => document.getElementById(id)!;
+  const root = $('pv'), start = $('pv-start'), wiz = $('pv-wizard'), stage = $('pv-stage'), result = $('pv-result');
+  const st = store<{ answers: PracticeAnswers; cur: PvStepId; finished?: boolean }>(PV_STORAGE_KEY);
+  let answers: PracticeAnswers = {};
+  let cur: PvStepId = 'org';
+  const save = (finished = false) => st.save({ answers, cur, finished });
+
+  type Opt = { v: string; t: string; d?: string };
+  const SINGLE: Partial<Record<PvStepId, { q: string; hint?: string; grid?: boolean; opts: Opt[] }>> = {
+    org: { q: 'Wie ist deine Praxis heute organisiert?', opts: [
+      { v: 'solo', t: 'Ich arbeite allein' }, { v: 'therapists', t: 'Ich arbeite mit weiteren Therapeut:innen' },
+      { v: 'team_admin', t: 'Ich habe ein kleines Team inklusive Administration' }, { v: 'autonomous', t: 'Die Praxis funktioniert weitgehend ohne mich' } ] },
+    revenue: { q: 'Wie hoch ist dein Praxisumsatz pro Monat ungefähr?', hint: 'Eine grobe Spanne reicht. Du kannst die Frage auch auslassen.', grid: true, opts: [
+      { v: 'lt10', t: "unter CHF 10'000" }, { v: '10_20', t: "CHF 10'000–20'000" }, { v: '20_35', t: "CHF 20'000–35'000" },
+      { v: '35_50', t: "CHF 35'000–50'000" }, { v: '50_75', t: "CHF 50'000–75'000" }, { v: '75plus', t: "CHF 75'000+" }, { v: 'na', t: 'Möchte ich nicht angeben' } ] },
+    stability: { q: 'Wie stabil ist dein Umsatz über das Jahr?', opts: [
+      { v: 'stable', t: 'Sehr stabil', d: 'Kaum Unterschiede von Monat zu Monat' }, { v: 'seasonal', t: 'Etwas saisonal', d: 'Ruhigere Phasen, zum Beispiel im Sommer' },
+      { v: 'volatile', t: 'Stark schwankend', d: 'Gute und schwache Monate wechseln deutlich' }, { v: 'unknown', t: 'Weiss ich nicht genau', d: 'Ich habe keinen klaren Überblick' } ] },
+    ownerDemand: { q: 'Wie abhängig ist die Nachfrage von dir persönlich?', hint: 'Kommen Patient:innen wegen der Praxis oder wegen dir?', opts: [
+      { v: 'low', t: 'Kaum' }, { v: 'partial', t: 'Teilweise' }, { v: 'high', t: 'Stark' }, { v: 'full', t: 'Fast vollständig' } ] },
+    absence: { q: 'Was passiert, wenn du vier Wochen nicht behandelst?', opts: [
+      { v: 'runs', t: 'Die Praxis läuft weitgehend weiter' }, { v: 'drops_team', t: 'Der Umsatz sinkt, aber das Team arbeitet weiter' },
+      { v: 'mostly_lost', t: 'Ein Grossteil fällt weg' }, { v: 'stops', t: 'Die Praxis steht praktisch still' } ] },
+    lease: { q: 'Wie sicher sind deine Praxisräume?', hint: 'Deine Einschätzung genügt. Der Check prüft keine Verträge.', grid: true, opts: [
+      { v: 'long', t: 'Langfristig gesichert' }, { v: 'stable', t: 'Grundsätzlich stabil' }, { v: 'short', t: 'Kurzfristig oder bald kündbar' },
+      { v: 'unsure', t: 'Unsicher' }, { v: 'owned', t: 'Die Räume gehören mir' }, { v: 'na', t: 'Möchte ich nicht angeben' } ] },
+    goal: { q: 'Was ist dein Ziel?', grid: true, opts: [
+      { v: 'sell', t: 'Praxis verkaufen' }, { v: 'successor', t: 'Nachfolger finden' }, { v: 'less', t: 'Weniger selbst behandeln' },
+      { v: 'team', t: 'Zweites Team aufbauen' }, { v: 'location', t: 'Zweiten Standort eröffnen' }, { v: 'know', t: 'Einfach wissen, wo ich stehe' } ] },
+  };
+  const SOURCES: [Source, string][] = [['seo', 'Google / SEO'], ['ads', 'Google Ads'], ['referrals', 'Empfehlungen'], ['existing', 'Bestehende Patient:innen'], ['doctors', 'Ärzt:innen / Zuweiser'], ['platforms', 'Plattformen / Verzeichnisse'], ['social', 'Social Media'], ['owner', 'Meine persönliche Bekanntheit'], ['other', 'Andere']];
+  const PSTATES: [ProcessState, string][] = [['doc', 'Dokumentiert'], ['partial', 'Teilweise'], ['head', 'Im Kopf']];
+
+  const radios = (key: string, val: string | undefined, opts: Opt[], label: string, grid = false) => `
+    <div class="rn-opts${grid ? ' rn-opts--grid' : ''}" role="radiogroup" aria-label="${esc(label)}">${opts.map((o, i) => `
+      <button type="button" class="rn-opt${grid ? ' rn-opt--sm' : ''}${val === o.v ? ' is-on' : ''}" role="radio" aria-checked="${val === o.v}" tabindex="${val === o.v || (!val && i === 0) ? 0 : -1}" data-single="${key}" data-v="${o.v}">
+        <span class="rn-opt-t">${o.t}</span>${o.d ? `<span class="rn-opt-d">${o.d}</span>` : ''}${CHECK_SVG}</button>`).join('')}</div>`;
+  const seg = (key: string, label: string, val: string | undefined, opts: [string, string][]) => `
+    <div class="rn-reg"><span class="rn-reg-t" id="pv-l-${key}">${label}</span><div class="rn-seg" role="radiogroup" aria-labelledby="pv-l-${key}">${opts.map(([v, t], i) => `
+      <button type="button" role="radio" aria-checked="${val === v}" tabindex="${val === v || (!val && i === 0) ? 0 : -1}" class="${val === v ? 'is-on' : ''}" data-seg="${key}" data-v="${v}">${t}</button>`).join('')}</div></div>`;
+
+  function stepHtml(step: PvStepId): string {
+    const single = SINGLE[step];
+    if (single) return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">${single.q}</legend>${single.hint ? `<p class="rn-hint">${single.hint}</p>` : ''}${radios(step, answers[step] as string | undefined, single.opts, single.q, single.grid)}</fieldset>`;
+    if (step === 'sources') {
+      const sel = answers.sources ?? [];
+      return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">Woher kommen deine neuen Patient:innen?</legend><p class="rn-hint">Mehrfachauswahl möglich.</p>
+        <div class="rn-opts rn-opts--grid">${SOURCES.map(([v, t]) => `<button type="button" class="rn-opt rn-opt--sm${sel.includes(v) ? ' is-on' : ''}" aria-pressed="${sel.includes(v)}" data-src="${v}"><span class="rn-opt-t">${t}</span>${CHECK_SVG}</button>`).join('')}</div>
+        <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${sel.length ? '' : 'disabled'}>Weiter</button></div></fieldset>`;
+    }
+    if (step === 'processes') {
+      const p = answers.processes ?? {};
+      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie gut sind deine Abläufe festgehalten?</h2><p class="rn-hint">Nur was du spontan weisst. Bereiche, die bei dir nicht vorkommen, lässt du einfach leer.</p>
+        <div class="rn-regs">${(Object.keys(PROCESS_LABELS) as ProcessArea[]).map((k) => seg('p-' + k, PROCESS_LABELS[k], p[k], PSTATES)).join('')}</div>
+        <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next>Weiter</button></div></div>`;
+    }
+    if (step === 'team') {
+      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie stark hängt der Betrieb an einzelnen Personen im Team?</h2><p class="rn-hint">Die zweite Frage ist optional.</p>
+        <div class="rn-regs">${seg('keyPerson', 'Abhängigkeit von Schlüsselpersonen', answers.keyPerson, [['low', 'Kaum'], ['some', 'Etwas'], ['high', 'Stark']])}
+        ${seg('manager', 'Könnte jemand den Betrieb führen?', answers.manager, [['yes', 'Ja'], ['partial', 'Teilweise'], ['no', 'Nein']])}</div>
+        <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${answers.keyPerson ? '' : 'disabled'}>Weiter</button></div></div>`;
+    }
+    // demandData
+    const dd: Opt[] = [{ v: 'crm', t: 'CRM oder System zeigt Leads, Neupatient:innen und Termine' }, { v: 'partial', t: 'Teilweise dokumentiert' }, { v: 'feeling', t: 'Hauptsächlich Gefühl und Kalender' }, { v: 'none', t: 'Praktisch nicht dokumentiert' }];
+    return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1" id="pv-dd-h">Wie gut kannst du deine Nachfrage belegen?</h2>${radios('demandData', answers.demandData, dd, 'Wie gut kannst du deine Nachfrage belegen?').replaceAll('data-single', 'data-stay data-single')}
+      <div class="rn-regs" style="margin-top:14px">${seg('knowsNewPatients', 'Kennst du deine Neupatient:innen pro Monat? (optional)', answers.knowsNewPatients, [['yes', 'Ja'], ['partial', 'Ungefähr'], ['no', 'Nein']])}</div>
+      <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${answers.demandData ? '' : 'disabled'}>Weiter</button></div></div>`;
+  }
+
+  const steps = () => getPvSteps(answers);
+  function chrome() {
+    const s = steps(); const i = s.indexOf(cur);
+    $('pv-count').textContent = `Schritt ${i + 1} von ${s.length}`;
+    const pct = Math.round((i / s.length) * 100);
+    $('pv-bar').style.width = pct + '%'; $('pv-progress').setAttribute('aria-valuenow', String(pct));
+  }
+  function show(step: PvStepId, dir: 1 | -1 = 1) {
+    cur = step; save();
+    swapCard(stage, stepHtml(step), dir, () => { chrome(); bind(); stage.querySelector<HTMLElement>('.rn-h2')?.focus({ preventScroll: true }); });
+  }
+  function next() {
+    if (cur === 'processes') answers.processesSeen = true;
+    const s = steps(); const i = s.indexOf(cur); if (i < s.length - 1) show(s[i + 1], 1); else finish();
+  }
+  function back() { const s = steps(); const i = s.indexOf(cur); if (i > 0) show(s[i - 1], -1); else { wiz.hidden = true; start.hidden = false; root.dataset.state = 'start'; $('pv-go').focus(); } }
+
+  const setOn = (b: HTMLElement) => {
+    b.parentElement!.querySelectorAll('[role=radio]').forEach((x) => { x.classList.remove('is-on'); x.setAttribute('aria-checked', 'false'); });
+    b.classList.add('is-on'); b.setAttribute('aria-checked', 'true');
+  };
+  const nextBtn = () => stage.querySelector('[data-next]') as HTMLButtonElement | null;
+  function bind() {
+    const A = answers as Record<string, unknown>;
+    stage.querySelectorAll<HTMLButtonElement>('[data-single]').forEach((b) => b.addEventListener('click', () => {
+      A[b.dataset.single!] = b.dataset.v;
+      if (b.dataset.single === 'org' && b.dataset.v === 'solo') { delete answers.keyPerson; delete answers.manager; }
+      setOn(b); save();
+      if (b.hasAttribute('data-stay')) { const n = nextBtn(); if (n) n.disabled = false; }
+      else setTimeout(next, reducedMotion() ? 0 : 260);
+    }));
+    stage.querySelectorAll<HTMLButtonElement>('[data-seg]').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.seg!, v = b.dataset.v!;
+      if (k.startsWith('p-')) {
+        const p = { ...(answers.processes ?? {}) }; const area = k.slice(2) as ProcessArea;
+        if (p[area] === v) { delete p[area]; answers.processes = p; b.classList.remove('is-on'); b.setAttribute('aria-checked', 'false'); save(); return; }
+        p[area] = v as ProcessState; answers.processes = p;
+      } else A[k] = v;
+      setOn(b); save();
+      if (k === 'keyPerson') { const n = nextBtn(); if (n) n.disabled = false; }
+    }));
+    stage.querySelectorAll<HTMLButtonElement>('[data-src]').forEach((b) => b.addEventListener('click', () => {
+      const v = b.dataset.src as Source; const set = new Set(answers.sources ?? []);
+      set.has(v) ? set.delete(v) : set.add(v); answers.sources = [...set];
+      b.classList.toggle('is-on', set.has(v)); b.setAttribute('aria-pressed', String(set.has(v)));
+      nextBtn()!.disabled = !set.size; save();
+    }));
+    nextBtn()?.addEventListener('click', next);
+    bindRadioKeys(stage);
+  }
+
+  // Übersicht
+  const ov = $('pv-ov');
+  function openOv() {
+    const s = steps();
+    $('pv-ov-list').innerHTML = s.map((x, i) => {
+      const ok = isPvAnswered(answers, x); const reach = ok || x === cur || s.slice(0, i).every((y) => isPvAnswered(answers, y));
+      return `<li>${reach ? `<button type="button" data-jump="${x}" ${x === cur ? 'aria-current="step"' : ''}>` : '<span class="is-locked">'}<span class="rn-ov-n" aria-hidden="true">${ok ? '✓' : i + 1}</span>${PV_STEP_LABELS[x]}${ok ? '<span class="rn-sr"> (beantwortet)</span>' : ''}${reach ? '</button>' : '</span>'}</li>`;
+    }).join('') + `<li><span class="is-locked"><span class="rn-ov-n" aria-hidden="true">${s.length + 1}</span>Ergebnis</span></li>`;
+    ov.hidden = false; requestAnimationFrame(() => ov.classList.add('is-open')); ($('pv-ov-close') as HTMLButtonElement).focus();
+    $('pv-ov-list').querySelectorAll<HTMLButtonElement>('[data-jump]').forEach((b) => b.addEventListener('click', () => { closeOv(); const t = b.dataset.jump as PvStepId; if (t !== cur) show(t, steps().indexOf(t) > steps().indexOf(cur) ? 1 : -1); }));
+  }
+  function closeOv() { ov.classList.remove('is-open'); setTimeout(() => (ov.hidden = true), reducedMotion() ? 0 : 200); ($('pv-ov-open') as HTMLButtonElement).focus(); }
+  $('pv-ov-open').addEventListener('click', openOv); $('pv-ov-close').addEventListener('click', closeOv);
+  ov.addEventListener('click', (e) => { if (e.target === ov) closeOv(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ov.hidden) closeOv(); });
+
+  // Ergebnis
+  const LEVEL = { strong: ['done', '✓'], good: ['done', '✓'], fair: ['info', '·'], critical: ['todo', '!'] } as const;
+  const dimCell = (d: Dimension) => `<div class="is-${LEVEL[d.level][0]}"><dt>${d.label}</dt><dd><span class="rn-facts-ico" aria-hidden="true">${LEVEL[d.level][1]}</span>${d.status}</dd><p class="pv-note">${esc(d.note)}</p></div>`;
+  const ICO = '<span class="rn-item-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>';
+  const item = (it: ActionItem, i: number) => `<article class="rn-item" style="--d:${i * 70}ms">${ICO}<div><h4>${esc(it.title)}</h4><p>${esc(it.text)}</p></div></article>`;
+  const prio = (it: ActionItem, i: number) => `<article class="rn-item" style="--d:${i * 70}ms"><span class="rn-item-ico pv-n" aria-hidden="true">${i + 1}</span><div><h4>${esc(it.title)}</h4>
+    <p><strong>Warum:</strong> ${esc(it.text)}</p>${it.action ? `<p><strong>Nächste Aktion:</strong> ${esc(it.action)}</p>` : ''}
+    ${it.link ? `<p class="rn-item-links"><a class="rn-link" data-cta href="${it.link.href}">${esc(it.link.label)} →</a></p>` : ''}</div></article>`;
+
+  function finish(skipLoader = false) {
+    save(true); wiz.hidden = true; result.hidden = false; root.dataset.state = 'result';
+    const render = () => {
+      const r = getPracticeTransferabilityResult(answers);
+      const [cta, cta2] = r.nextSteps;
+      result.innerHTML = `
+        <div class="rn-res-head"><p class="rn-eyebrow">Dein Praxis-Check</p><h2 class="rn-h1 rn-h1--res" tabindex="-1" id="pv-res-h">${esc(r.summary)}</h2><p class="rn-sub">${esc(r.sub)}</p></div>
+        <dl class="rn-facts pv-dims" aria-label="Einschätzung in vier Dimensionen">${Object.values(r.dimensions).map(dimCell).join('')}</dl>
+        ${r.revenueLine ? `<p class="rn-note">${esc(r.revenueLine)}</p>` : ''}
+        <section class="rn-grp"><h3>Was deine Praxis heute stark macht</h3>${r.strengths.length ? r.strengths.map(item).join('') : '<p class="rn-hint">Aus deinen Angaben ergibt sich noch keine klare Stärke. Die Schritte unten zeigen, wo du am schnellsten eine aufbaust.</p>'}</section>
+        <section class="rn-grp is-opt"><h3>Was einen Käufer oder Nachfolger beschäftigen würde</h3>${r.risks.length ? r.risks.map(item).join('') : '<p class="rn-hint">Aus deinen Angaben ergibt sich kein grosser Punkt, der eine Übergabe erschweren würde.</p>'}</section>
+        ${r.priorities.length ? `<section class="rn-grp is-now"><h3>Die ${r.priorities.length === 1 ? 'wichtigste nächste Aktion' : `${r.priorities.length} wichtigsten nächsten Schritte`}</h3>${r.priorities.map(prio).join('')}</section>` : ''}
+        <section class="rn-grp"><h3>Was bestimmt den tatsächlichen Praxiswert?</h3>
+          <p class="rn-hint">Der Wert einer Praxis entsteht aus dem Zusammenspiel vieler Faktoren: nachhaltiger Ertrag, Umsatzqualität, Abhängigkeit vom Inhaber, Team, Patientenbasis, Nachfrage, Prozesse, Standort, Verträge, Risiken und Wachstumsmöglichkeiten. Eine belastbare Bewertung braucht die konkreten Zahlen und Verträge deiner Praxis.</p></section>
+        <div class="rn-res-tools"><button type="button" class="rn-btn rn-btn--ghost" id="pv-copy">Meine nächsten Schritte kopieren</button><button type="button" class="rn-btn rn-btn--ghost" id="pv-print">Ergebnis drucken</button><button type="button" class="rn-link" id="pv-edit">Antworten ändern</button><button type="button" class="rn-link" id="pv-restart">Neu starten</button></div>
+        <p class="rn-copied" id="pv-copied" role="status"></p>
+        <div class="rn-end"><h3>${esc(cta.title)}</h3><p>${esc(cta.text)}</p>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-cta href="${cta.link!.href}">${esc(cta.link!.label)}</a>${cta2 ? `<a class="rn-btn rn-btn--ghost" data-cta href="${cta2.link!.href}">${esc(cta2.link!.label)}</a>` : ''}</p></div>
+        <p class="rn-disc">Der Praxiswert-Check dient der Orientierung. Er ersetzt keine Unternehmens-, Steuer- oder Transaktionsbewertung und stellt kein Kaufangebot dar.</p>`;
+      if (!reducedMotion()) result.classList.add('is-anim');
+      ($('pv-res-h') as HTMLElement).focus({ preventScroll: true });
+      result.scrollIntoView({ block: 'start', behavior: reducedMotion() ? 'auto' : 'smooth' });
+      $('pv-copy').addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(practiceResultAsText(r)); $('pv-copied').textContent = 'Nächste Schritte kopiert.'; } catch (_) { $('pv-copied').textContent = 'Kopieren nicht möglich. Nutze «Ergebnis drucken».'; }
+      });
+      $('pv-print').addEventListener('click', () => window.print());
+      $('pv-edit').addEventListener('click', () => { result.hidden = true; wiz.hidden = false; root.dataset.state = 'wizard'; show(steps()[0], -1); });
+      $('pv-restart').addEventListener('click', restart);
+      result.querySelectorAll<HTMLAnchorElement>('[data-cta]').forEach((a) => a.addEventListener('click', () => track('practice_value_result_cta', { destination: a.getAttribute('href') || '' })));
+    };
+    if (skipLoader || reducedMotion()) render();
+    else { result.innerHTML = '<div class="rn-loading"><span class="rn-spin" aria-hidden="true"></span><p>Deine Einschätzung zusammenstellen …</p></div>'; setTimeout(render, 600); }
+    if (!skipLoader) track('practice_value_check_complete');
+  }
+
+  function begin() { start.hidden = true; wiz.hidden = false; root.dataset.state = 'wizard'; show(cur, 1); }
+  function restart() { st.clear(); answers = {}; cur = 'org'; result.hidden = true; result.classList.remove('is-anim'); stage.innerHTML = ''; track('practice_value_check_restart'); begin(); }
+  $('pv-go').addEventListener('click', () => { answers = {}; cur = 'org'; stage.innerHTML = ''; track('practice_value_check_start'); begin(); });
+  $('pv-back').addEventListener('click', back);
+
+  const saved = st.load();
+  if (saved?.answers && Object.keys(saved.answers).length) {
+    const r = $('pv-resume'); r.hidden = false;
+    r.addEventListener('click', () => {
+      answers = saved.answers; cur = getPvSteps(answers).includes(saved.cur) ? saved.cur : 'org';
+      start.hidden = true; root.dataset.state = 'wizard';
+      if (saved.finished) finish(true); else begin();
+    });
+  }
+</script>
+
+<style is:global>
+  .pv-dims > div { display: flex; flex-direction: column; }
+  .pv-dims dt { text-transform: none; letter-spacing: 0; font-size: 12.5px; }
+  .pv-note { margin: 6px 0 0; font-size: 13px; line-height: 1.45; color: var(--mid); }
+  .rn-item-ico.pv-n { font-weight: 800; font-size: 14px; color: var(--blue-dark); }
+  .rn-item p strong { color: var(--black); }
+</style>

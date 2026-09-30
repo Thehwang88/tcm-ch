@@ -438,7 +438,7 @@ export const PRAXISWISSEN: PwArticle[] = [
     ctaText: 'Du musst deine Praxis noch nicht verkaufen. Ein vertrauliches Gespräch kann trotzdem helfen, mögliche Wege früh zu verstehen.',
     ctaLabel: 'Praxisnachfolge besprechen',
     ctaHref: '/partner/praxisnachfolge/',
-    ctaSecondary: { label: 'Praxis verkaufen vorbereiten', href: '/praxiswissen/tcm-praxis-verkaufen/' },
+    ctaSecondary: { label: 'Praxiswert-Check starten', href: '/tools/praxiswert-rechner/' },
   },
   {
     slug: 'tcm-praxis-team-aufbauen',
