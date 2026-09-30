@@ -114,8 +114,8 @@ export const initials = (name: string) =>
 export const therapeuten: Therapeut[] = [
   {
     slug: 'simon-stueve',
-    name: 'Simon Stüve',
-    titel: 'TCM-Therapeut',
+    name: 'Simon Stüve Hwang',
+    titel: 'TCM-Therapeut & Inhaber TCM.ch',
     cardFocus: ['Akupunktur & Tuina'],
     bild: '/images/img-b0d621bda695.webp',
     ortLabel: 'Winterthur',
@@ -197,6 +197,8 @@ export const therapeuten: Therapeut[] = [
     untertitel: 'Ernährungswissenschaftlerin BSc',
     cardFocus: ['Frauengesundheit', 'Schmerz & Kiefer'],
     bild: '/images/Janine%20Schmieder.webp',
+    ortLabel: 'Basel',
+    standorte: ['basel'],
     kurzbeschreibung: 'Naturheilpraktikerin TCM mit Studium der Ernährungswissenschaft und praktischer Erfahrung in Vietnam und Deutschland. Schwerpunkte Frauengesundheit, Schmerz und Kiefer.',
     schwerpunkte: ['Frauengesundheit', 'Schmerztherapie', 'Kieferbeschwerden', 'Regulation des Nervensystems', 'Ohrakupunktur'],
     ausbildung: [
@@ -292,10 +294,12 @@ export const therapeuten: Therapeut[] = [
     untertitel: 'Dipl. Akupunkteurin TCM-FVS · Zertifikat OdA AM',
     cardFocus: ['Frauengesundheit', 'Shiatsu & Akupunktur'],
     bild: '/images/Michele%20Seiler.webp',
+    ortLabel: 'Frauenfeld',
+    standorte: ['frauenfeld'],
     erfahrung: '10 Jahre Erfahrung',
     kurzbeschreibung: 'Therapeutin für Chinesische Medizin und Shiatsu mit zehn Jahren Erfahrung. Schwerpunkt Frauengesundheit, Kinderwunsch und die Zeit rund um die Geburt.',
     schwerpunkte: ['Frauengesundheit', 'Kinderwunsch', 'Begleitung rund um Geburt und Wochenbett', 'Shiatsu und Akupressur bei Babys und Neugeborenen'],
-    methoden: ['Akupunktur', 'Tuina', 'Shiatsu', 'Diätetik'],
+    methoden: ['Akupunktur', 'Tuina', 'Shiatsu', 'Diätetik', 'Phytotherapie mit westlichen Kräutern'],
     ausbildung: [
       { titel: 'Vierjähriges Studium Chinesische Medizin und Shiatsu', institution: 'HPS Luzern', status: 'abgeschlossen' },
       { titel: 'Dipl. Akupunkteurin TCM-FVS', status: 'abgeschlossen' },
@@ -314,7 +318,6 @@ export const therapeuten: Therapeut[] = [
       'In zehn Jahren Praxis hat sie sich auf Frauengesundheit konzentriert, besonders auf Kinderwunsch und die Zeit rund um Geburt und Wochenbett. Dazu gehört auch die sanfte Behandlung von Babys und Neugeborenen mit Shiatsu und Akupressur.',
       'Die Behandlung in der Schwangerschaft ergänzt die Betreuung durch Hebamme und Ärztin, sie ersetzt sie nicht.',
     ],
-    needsConfirmation: [{ field: 'methoden', note: '«Physiotherapie mit westlichen Kräutern» geliefert, vermutlich «Phytotherapie». Bis zur Bestätigung weggelassen.' }],
   },
   {
     slug: 'kristen-lambertin',
@@ -364,7 +367,7 @@ export const therapeuten: Therapeut[] = [
       'Diese Erfahrung bringt sie in ihre TCM-Arbeit mit: Sie weiss, wann eine Beschwerde ärztlich abgeklärt gehören muss, und sie stimmt ihre Behandlung auf eine laufende schulmedizinische Therapie ab, statt sie zu ersetzen.',
       'Neben Akupunktur und Tuina arbeitet sie mit Laserakupunktur. Das ist eine Möglichkeit für Kinder und für Menschen, die Nadeln nicht vertragen.',
     ],
-    needsConfirmation: [{ field: 'gln', note: 'Gelieferte GLN «76010099248» hat 11 statt 13 Stellen. Unverändert gespeichert, nicht öffentlich angezeigt.' }],
+    needsConfirmation: [{ field: 'gln', note: 'Gelieferte GLN «76010099248» hat 11 statt 13 Stellen. Unverändert gespeichert, bewusst offen gelassen und nicht öffentlich angezeigt.' }],
   },
   {
     slug: 'natalia-goc',
@@ -373,6 +376,8 @@ export const therapeuten: Therapeut[] = [
     untertitel: 'Akupunktur · Tuina · Chinesische Arzneitherapie · Shiatsu',
     cardFocus: ['Orthopädie & Neurologie', 'Physiotherapie & TCM'],
     bild: '/images/Natalia-Goc.webp',
+    ortLabel: 'Winterthur',
+    standorte: ['winterthur-muenzgasse'],
     kurzbeschreibung: 'Physiotherapeutin BSc und Naturheilpraktikerin für Akupunktur, Tuina und Chinesische Arzneitherapie. Über zehn Jahre Weiterbildung in klassischer chinesischer Medizin.',
     schwerpunkte: ['Orthopädie', 'Neurologie', 'Dermatologie', 'Gynäkologie'],
     methoden: ['Akupunktur', 'Tuina', 'Chinesische Arzneitherapie', 'Shiatsu'],
@@ -514,6 +519,7 @@ export const therapeuten: Therapeut[] = [
     cardFocus: ['Akupressur', 'Kopf, Kiefer & Nacken'],
     bild: '/images/Brenda-new.png',
     ortLabel: 'Winterthur',
+    standorte: ['winterthur-muenzgasse'],
     kurzbeschreibung: 'Akupressur-Therapeutin mit Branchenzertifikat und Fokus auf Kopf, Kiefer, Nacken und Stress. Aktuell in Ausbildung zur Naturheilpraktikerin TCM.',
     schwerpunkte: ['Kopf- und Nackenbeschwerden', 'Kopfschmerzen', 'Kiefer- und Gesichtsverspannungen', 'Muskuläre Verspannungen', 'Stress und innere Unruhe', 'Menstruations- und Frauenbeschwerden'],
     methoden: ['Akupressur-Massage', 'Schröpfen', 'Gua Sha', 'Moxibustion'],
@@ -539,7 +545,6 @@ export const therapeuten: Therapeut[] = [
       'Viele ihrer Patient:innen kommen mit Kopfschmerzen, einem verspannten Kiefer oder dem Gefühl, nicht mehr abschalten zu können. Neben der Akupressur-Massage setzt sie dafür Schröpfen, Gua Sha und Moxibustion ein.',
       'Seit 2024 ist sie therapeutisch tätig, seit Mai 2026 bei TCM.ch in Winterthur. Parallel absolviert sie die Ausbildung zur Naturheilpraktikerin TCM.',
     ],
-    needsConfirmation: [{ field: 'standorte', note: 'Bisher ortLabel «Zürich»; Briefing nennt «Praxis Hwang Winterthur». Label auf Winterthur, Standort-Slug leer (zwei Winterthur-Praxen).' }],
   },
   {
     slug: 'astrid-lenggenhager',
@@ -547,6 +552,8 @@ export const therapeuten: Therapeut[] = [
     titel: 'Naturheilpraktikerin TCM · Zertifikat OdA AM',
     untertitel: 'Akupunktur / Tuina',
     cardFocus: ['Akupunktur & Tuina', 'Klinischer Hintergrund Onkologie'],
+    ortLabel: 'St. Gallen',
+    standorte: ['st-gallen'],
     kurzbeschreibung: 'Naturheilpraktikerin TCM mit langjähriger klinischer Erfahrung in der Onkologie und einem CAS in Psychoonkologie.',
     methoden: ['Akupunktur', 'Tuina'],
     ausbildung: [
@@ -570,7 +577,6 @@ export const therapeuten: Therapeut[] = [
     ],
     needsConfirmation: [
       { field: 'bild', note: 'Kein Portrait im Repository. Initialen-Placeholder aktiv.' },
-      { field: 'standorte', note: 'Standort nicht bekannt, nicht gesetzt.' },
     ],
   },
   {
@@ -579,6 +585,8 @@ export const therapeuten: Therapeut[] = [
     titel: 'Dipl. Naturheilpraktikerin TCM',
     untertitel: 'Akupunktur / Tuina · Zertifikat OdA AM',
     cardFocus: ['Psycho-emotionale Beschwerden', 'Frauengesundheit & Schmerzen'],
+    ortLabel: 'Winterthur',
+    standorte: ['winterthur-muenzgasse'],
     kurzbeschreibung: 'Naturheilpraktikerin TCM mit einem Bachelor in Sozialer Arbeit und mehrjähriger Erfahrung in Suchttherapie und Sozialpsychiatrie.',
     schwerpunkteAlsInteressen: true,
     themenGruppen: [
@@ -615,7 +623,6 @@ export const therapeuten: Therapeut[] = [
     needsConfirmation: [
       { field: 'bild', note: 'Kein Portrait im Repository. Initialen-Placeholder aktiv.' },
       { field: 'gln', note: 'Gelieferte GLN «76601009360558» hat 14 statt 13 Stellen. Unverändert gespeichert, nicht öffentlich angezeigt.' },
-      { field: 'standorte', note: 'Standort nicht bekannt, nicht gesetzt.' },
     ],
   },
 ];
