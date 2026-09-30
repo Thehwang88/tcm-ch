@@ -1,0 +1,277 @@
+---
+// Praxis-Checkliste (Wizard + abhakbare Liste). Logik: src/lib/practiceChecklist.ts. Design: tool-wizard.css.
+// Alles lokal im Browser: keine API, keine Antworten in Analytics. Regulatorik-Details nur über bestehende Tools.
+import '../../styles/tool-wizard.css';
+---
+<div class="rn" id="pc" data-state="start">
+  <section id="pc-start" aria-labelledby="pc-h1">
+    <p class="rn-eyebrow">TCM.ch Tools</p>
+    <h1 id="pc-h1" class="rn-h1">Was fehlt dir noch für deine eigene Praxis?</h1>
+    <p class="rn-sub">Beantworte ein paar kurze Fragen. Danach bekommst du deine persönliche Start-Checkliste.</p>
+    <div class="rn-start-actions">
+      <button type="button" class="rn-btn rn-btn--primary" id="pc-go">Praxis-Check starten</button>
+      <span class="rn-time">Dauert ca. 2 Minuten</span>
+    </div>
+    <button type="button" class="rn-link" id="pc-resume" hidden>Checkliste fortsetzen</button>
+    <p class="rn-trust">Kostenlos · keine Anmeldung · Daten bleiben im Browser</p>
+    <noscript><p class="rn-note">Die Checkliste braucht JavaScript. Die Grundlagen findest du unter <a href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen</a>.</p></noscript>
+  </section>
+
+  <section id="pc-wizard" hidden aria-label="Praxis-Checkliste">
+    <div class="rn-top">
+      <button type="button" class="rn-link" id="pc-back">← Zurück</button>
+      <span class="rn-count" id="pc-count" aria-live="polite"></span>
+      <button type="button" class="rn-link" id="pc-ov-open" aria-haspopup="dialog" aria-controls="pc-ov">Übersicht</button>
+    </div>
+    <div class="rn-progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pc-progress"><span id="pc-bar"></span></div>
+    <div class="rn-stage" id="pc-stage"></div>
+  </section>
+
+  <section class="rn-result" id="pc-result" hidden aria-live="polite" tabindex="-1"></section>
+
+  <div class="rn-ov" id="pc-ov" role="dialog" aria-modal="true" aria-labelledby="pc-ov-h" hidden>
+    <div class="rn-ov-panel">
+      <div class="rn-ov-head"><p id="pc-ov-h" class="rn-ov-title">Übersicht</p><button type="button" class="rn-link" id="pc-ov-close" aria-label="Übersicht schliessen">Schliessen</button></div>
+      <ol id="pc-ov-list"></ol>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    getPcSteps, isPcAnswered, getChecklistResult, checklistAsText, CANTONS, PC_STEP_LABELS, METHOD_LABELS, REG_LABELS, BILL_LABELS, OPS_LABELS, MKT_LABELS, GROUP_LABELS, PC_STORAGE_KEY,
+    type ChecklistAnswers, type PcStepId, type Method, type MktKey, type CheckItem, type ChecklistResult, type Group,
+  } from '../../lib/practiceChecklist';
+  import { esc, track, store, swapCard, bindRadioKeys, bindCantonCombo, reducedMotion, CHECK_SVG } from '../../lib/wizardKit';
+
+  const $ = (id: string) => document.getElementById(id)!;
+  const root = $('pc'), start = $('pc-start'), wiz = $('pc-wizard'), stage = $('pc-stage'), result = $('pc-result');
+  type State = { answers: ChecklistAnswers; cur: PcStepId; finished?: boolean; checked?: Record<string, boolean> };
+  const st = store<State>(PC_STORAGE_KEY);
+  let answers: ChecklistAnswers = {};
+  let cur: PcStepId = 'stage';
+  let checked: Record<string, boolean> = {};
+  const save = (finished = false) => st.save({ answers, cur, finished, checked });
+
+  type Opt = { v: string; t: string; d?: string };
+  const SINGLE: Partial<Record<PcStepId, { q: string; hint?: string; grid?: boolean; opts: Opt[] }>> = {
+    stage: { q: 'Wo stehst du?', grid: true, opts: [
+      { v: 'training', t: 'Noch in Ausbildung' }, { v: 'graduated', t: 'Ausbildung abgeschlossen' }, { v: 'zertifikat', t: 'Zertifikat OdA AM' },
+      { v: 'diplom', t: 'Eidgenössisches Diplom' }, { v: 'ausland', t: 'Ausländischer Abschluss' }, { v: 'open', t: 'Praxis bereits eröffnet' } ] },
+    bab: { q: 'Hast du die kantonale Situation bereits geklärt?', hint: 'Gemeint ist die Berufsausübungsbewilligung (BAB) deines Kantons.', opts: [
+      { v: 'yes', t: 'BAB vorhanden' }, { v: 'pending', t: 'Antrag läuft' }, { v: 'not_needed', t: 'Geprüft, keine BAB nötig' },
+      { v: 'unchecked', t: 'Noch nicht geprüft' }, { v: 'unknown', t: 'Weiss ich nicht' } ] },
+    goal: { q: 'Was ist dein Ziel?', grid: true, opts: [
+      { v: 'open', t: 'Praxis neu eröffnen' }, { v: 'professionalize', t: 'Bestehende Praxis professionalisieren' },
+      { v: 'grow', t: 'Praxis wachsen lassen' }, { v: 'team', t: 'Team aufbauen' } ] },
+  };
+  type SegOpt = [string, string];
+  const MATRIX: Partial<Record<PcStepId, { q: string; hint: string; field: 'regs' | 'billing' | 'ops'; labels: Record<string, string>; opts: SegOpt[]; wrap?: boolean }>> = {
+    regs: { q: 'Wie weit sind deine Registrierungen?', hint: 'Details prüfst du später im Anerkennungs-Navigator.', field: 'regs', labels: REG_LABELS, wrap: true,
+      opts: [['done', 'Erledigt'], ['pending', 'Läuft'], ['open', 'Offen'], ['na', 'Nicht relevant'], ['unknown', 'Weiss nicht']] },
+    billing: { q: 'Wie weit ist deine Abrechnung?', hint: 'Keine Nummern nötig, nur dein Stand.', field: 'billing', labels: BILL_LABELS,
+      opts: [['yes', 'Ja'], ['wip', 'In Arbeit'], ['no', 'Nein']] },
+    ops: { q: 'Wie weit ist dein Praxisbetrieb?', hint: 'Was du leer lässt, gilt als offen.', field: 'ops', labels: OPS_LABELS,
+      opts: [['done', 'Erledigt'], ['wip', 'In Arbeit'], ['open', 'Offen']] },
+  };
+
+  const radios = (key: string, val: string | undefined, opts: Opt[], label: string, grid = false) => `
+    <div class="rn-opts${grid ? ' rn-opts--grid' : ''}" role="radiogroup" aria-label="${esc(label)}">${opts.map((o, i) => `
+      <button type="button" class="rn-opt${grid ? ' rn-opt--sm' : ''}${val === o.v ? ' is-on' : ''}" role="radio" aria-checked="${val === o.v}" tabindex="${val === o.v || (!val && i === 0) ? 0 : -1}" data-single="${key}" data-v="${o.v}">
+        <span class="rn-opt-t">${o.t}</span>${o.d ? `<span class="rn-opt-d">${o.d}</span>` : ''}${CHECK_SVG}</button>`).join('')}</div>`;
+  const seg = (field: string, key: string, label: string, val: string | undefined, opts: SegOpt[], wrap = false) => `
+    <div class="rn-reg"><span class="rn-reg-t" id="pc-l-${key}">${label}</span><div class="rn-seg${wrap ? ' rn-seg--wrap' : ''}" role="radiogroup" aria-labelledby="pc-l-${key}">${opts.map(([v, t], i) => `
+      <button type="button" role="radio" aria-checked="${val === v}" tabindex="${val === v || (!val && i === 0) ? 0 : -1}" class="${val === v ? 'is-on' : ''}" data-field="${field}" data-key="${key}" data-v="${v}">${t}</button>`).join('')}</div></div>`;
+  const next_ = (disabled = false) => `<div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${disabled ? 'disabled' : ''}>Weiter</button></div>`;
+
+  function stepHtml(step: PcStepId): string {
+    const single = SINGLE[step];
+    if (single) return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">${single.q}</legend>${single.hint ? `<p class="rn-hint">${single.hint}</p>` : ''}${radios(step, answers[step] as string | undefined, single.opts, single.q, single.grid)}</fieldset>`;
+    const mx = MATRIX[step];
+    if (mx) {
+      const cur = (answers[mx.field] ?? {}) as Record<string, string>;
+      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">${mx.q}</h2><p class="rn-hint">${mx.hint}</p>
+        <div class="rn-regs">${Object.entries(mx.labels).map(([k, l]) => seg(mx.field, k, l, cur[k], mx.opts, mx.wrap)).join('')}</div>${next_()}</div>`;
+    }
+    if (step === 'methods') {
+      const sel = answers.methods ?? [];
+      return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">Welche Tätigkeit möchtest du anbieten?</legend><p class="rn-hint">Mehrfachauswahl möglich.</p>
+        <div class="rn-opts rn-opts--grid">${(Object.keys(METHOD_LABELS) as Method[]).map((m) => `
+          <button type="button" class="rn-opt rn-opt--sm${sel.includes(m) ? ' is-on' : ''}" aria-pressed="${sel.includes(m)}" data-method="${m}"><span class="rn-opt-t">${METHOD_LABELS[m]}</span>${CHECK_SVG}</button>`).join('')}</div>${next_(!sel.length)}</fieldset>`;
+    }
+    if (step === 'mkt') {
+      const m = answers.mkt ?? {};
+      return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">Ist dein Praxisstart sichtbar und messbar?</legend><p class="rn-hint">Wähle, was schon vorhanden ist. Niemand muss alles haben.</p>
+        <div class="rn-opts rn-opts--grid">${(Object.keys(MKT_LABELS) as MktKey[]).map((k) => `
+          <button type="button" class="rn-opt rn-opt--sm${m[k] ? ' is-on' : ''}" aria-pressed="${!!m[k]}" data-mkt="${k}"><span class="rn-opt-t">${MKT_LABELS[k]}</span>${CHECK_SVG}</button>`).join('')}</div>${next_()}</fieldset>`;
+    }
+    const c = CANTONS.find((k) => k.code === answers.canton);
+    return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1" id="pc-ct-h">In welchem Kanton möchtest du arbeiten?</h2>
+      <div class="rn-combo"><input id="pc-ct" type="text" role="combobox" aria-labelledby="pc-ct-h" aria-autocomplete="list" aria-expanded="false" aria-controls="pc-ct-list" placeholder="Kanton suchen, z. B. Zürich" autocomplete="off"><ul id="pc-ct-list" role="listbox" hidden></ul></div>
+      <p class="rn-picked" id="pc-picked">${c ? `<span class="rn-badge">${c.code}</span> ${esc(c.name)}` : ''}</p>${next_(!c)}</div>`;
+  }
+
+  const steps = () => getPcSteps(answers);
+  function chrome() {
+    const s = steps(); const i = s.indexOf(cur);
+    $('pc-count').textContent = `Schritt ${i + 1} von ${s.length}`;
+    const pct = Math.round((i / s.length) * 100);
+    $('pc-bar').style.width = pct + '%'; $('pc-progress').setAttribute('aria-valuenow', String(pct));
+  }
+  function show(step: PcStepId, dir: 1 | -1 = 1) {
+    cur = step; save();
+    swapCard(stage, stepHtml(step), dir, () => { chrome(); bind(); stage.querySelector<HTMLElement>('.rn-h2')?.focus({ preventScroll: true }); });
+  }
+  const SEEN: Partial<Record<PcStepId, 'regsSeen' | 'billingSeen' | 'opsSeen' | 'mktSeen'>> = { regs: 'regsSeen', billing: 'billingSeen', ops: 'opsSeen', mkt: 'mktSeen' };
+  function next() {
+    const f = SEEN[cur]; if (f) answers[f] = true;
+    const s = steps(); const i = s.indexOf(cur); if (i < s.length - 1) show(s[i + 1], 1); else finish();
+  }
+  function back() { const s = steps(); const i = s.indexOf(cur); if (i > 0) show(s[i - 1], -1); else { wiz.hidden = true; start.hidden = false; root.dataset.state = 'start'; $('pc-go').focus(); } }
+
+  const setOn = (b: HTMLElement) => {
+    b.parentElement!.querySelectorAll('[role=radio]').forEach((x) => { x.classList.remove('is-on'); x.setAttribute('aria-checked', 'false'); });
+    b.classList.add('is-on'); b.setAttribute('aria-checked', 'true');
+  };
+  const nextBtn = () => stage.querySelector('[data-next]') as HTMLButtonElement | null;
+  function bind() {
+    const A = answers as Record<string, unknown>;
+    stage.querySelectorAll<HTMLButtonElement>('[data-single]').forEach((b) => b.addEventListener('click', () => {
+      A[b.dataset.single!] = b.dataset.v; setOn(b); save(); setTimeout(next, reducedMotion() ? 0 : 260);
+    }));
+    stage.querySelectorAll<HTMLButtonElement>('[data-field]').forEach((b) => b.addEventListener('click', () => {
+      const f = b.dataset.field as 'regs' | 'billing' | 'ops'; const k = b.dataset.key!;
+      const obj = { ...((answers[f] ?? {}) as Record<string, string>) };
+      if (obj[k] === b.dataset.v) { delete obj[k]; b.classList.remove('is-on'); b.setAttribute('aria-checked', 'false'); }
+      else { obj[k] = b.dataset.v!; setOn(b); }
+      A[f] = obj; save();
+    }));
+    stage.querySelectorAll<HTMLButtonElement>('[data-method]').forEach((b) => b.addEventListener('click', () => {
+      const m = b.dataset.method as Method; const set = new Set(answers.methods ?? []);
+      set.has(m) ? set.delete(m) : set.add(m); answers.methods = [...set];
+      b.classList.toggle('is-on', set.has(m)); b.setAttribute('aria-pressed', String(set.has(m)));
+      nextBtn()!.disabled = !set.size; save();
+    }));
+    stage.querySelectorAll<HTMLButtonElement>('[data-mkt]').forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.mkt as MktKey; const m = { ...(answers.mkt ?? {}) };
+      if (m[k]) delete m[k]; else m[k] = true; answers.mkt = m;
+      b.classList.toggle('is-on', !!m[k]); b.setAttribute('aria-pressed', String(!!m[k])); save();
+    }));
+    nextBtn()?.addEventListener('click', next);
+    bindRadioKeys(stage);
+    if (cur === 'canton') bindCantonCombo($('pc-ct') as HTMLInputElement, $('pc-ct-list'), CANTONS, (code) => {
+      answers.canton = code; save();
+      const c = CANTONS.find((k) => k.code === code)!;
+      $('pc-picked').innerHTML = `<span class="rn-badge">${c.code}</span> ${esc(c.name)}`;
+      const n = nextBtn()!; n.disabled = false; n.focus();
+    });
+  }
+
+  // Übersicht
+  const ov = $('pc-ov');
+  function openOv() {
+    const s = steps();
+    $('pc-ov-list').innerHTML = s.map((x, i) => {
+      const ok = isPcAnswered(answers, x); const reach = ok || x === cur || s.slice(0, i).every((y) => isPcAnswered(answers, y));
+      return `<li>${reach ? `<button type="button" data-jump="${x}" ${x === cur ? 'aria-current="step"' : ''}>` : '<span class="is-locked">'}<span class="rn-ov-n" aria-hidden="true">${ok ? '✓' : i + 1}</span>${PC_STEP_LABELS[x]}${ok ? '<span class="rn-sr"> (beantwortet)</span>' : ''}${reach ? '</button>' : '</span>'}</li>`;
+    }).join('') + `<li><span class="is-locked"><span class="rn-ov-n" aria-hidden="true">${s.length + 1}</span>Checkliste</span></li>`;
+    ov.hidden = false; requestAnimationFrame(() => ov.classList.add('is-open')); ($('pc-ov-close') as HTMLButtonElement).focus();
+    $('pc-ov-list').querySelectorAll<HTMLButtonElement>('[data-jump]').forEach((b) => b.addEventListener('click', () => { closeOv(); const t = b.dataset.jump as PcStepId; if (t !== cur) show(t, steps().indexOf(t) > steps().indexOf(cur) ? 1 : -1); }));
+  }
+  function closeOv() { ov.classList.remove('is-open'); setTimeout(() => (ov.hidden = true), reducedMotion() ? 0 : 200); ($('pc-ov-open') as HTMLButtonElement).focus(); }
+  $('pc-ov-open').addEventListener('click', openOv); $('pc-ov-close').addEventListener('click', closeOv);
+  ov.addEventListener('click', (e) => { if (e.target === ov) closeOv(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ov.hidden) closeOv(); });
+
+  // Ergebnis: abhakbare Liste. Erledigt = aus Antworten oder lokal abgehakt.
+  const isDone = (i: CheckItem) => i.done || !!checked[i.id];
+  const itemHtml = (i: CheckItem, n: number) => `
+    <article class="rn-item rn-item--check" data-item="${i.id}" style="--d:${n * 60}ms">
+      <button type="button" class="rn-tick" aria-pressed="${isDone(i)}" ${i.done ? 'disabled' : ''} data-tick="${i.id}" aria-label="${esc(i.title)}: ${isDone(i) ? (i.done ? 'erledigt' : 'wieder öffnen') : 'als erledigt markieren'}">${isDone(i) ? '✓' : ''}</button>
+      <div><h4>${esc(i.title)}</h4>${isDone(i) && !i.done ? '<p>Erledigt.</p>' : `<p>${esc(i.text)}</p>`}
+        ${i.cta && !isDone(i) ? `<p class="rn-item-links"><a class="rn-btn rn-btn--sm" data-out href="${i.cta.href}">${esc(i.cta.label)}</a></p>` : ''}</div></article>`;
+
+  function listsHtml(r: ChecklistResult) {
+    const open = r.items.filter((i) => !isDone(i)), done = r.items.filter(isDone);
+    const g = (grp: Group) => {
+      const xs = open.filter((i) => i.group === grp); if (!xs.length) return '';
+      const hint = grp === 'growth' && r.growthBlocked ? '<p class="rn-hint">Erst sinnvoll, wenn die Punkte unter «Jetzt zuerst» erledigt sind.</p>' : '';
+      return `<section class="rn-grp${grp === 'now' ? ' is-now' : grp === 'growth' && r.growthBlocked ? ' is-opt' : ''}"><h3>${GROUP_LABELS[grp]}</h3>${hint}${xs.map(itemHtml).join('')}</section>`;
+    };
+    return (['now', 'next', 'ops', 'growth'] as Group[]).map(g).join('')
+      + (open.length ? '' : '<p class="rn-note">Alle Punkte sind erledigt. Deine Praxis ist aus Sicht dieser Checkliste startklar.</p>')
+      + (done.length ? `<details class="rn-grp rn-done"><summary>Erledigt (${done.length})</summary>${done.map(itemHtml).join('')}</details>` : '');
+  }
+  function tally(r: ChecklistResult) {
+    const total = r.items.length, d = r.items.filter(isDone).length, pct = total ? Math.round((d / total) * 100) : 0;
+    $('pc-tally-t').textContent = `${d} von ${total} Punkten erledigt`;
+    $('pc-tally-bar').style.width = pct + '%'; $('pc-tally-p').setAttribute('aria-valuenow', String(pct));
+  }
+  function bindLists(r: ChecklistResult) {
+    const box = $('pc-lists');
+    box.querySelectorAll<HTMLButtonElement>('[data-tick]').forEach((b) => b.addEventListener('click', () => {
+      const id = b.dataset.tick!; const nowDone = !checked[id];
+      if (nowDone) { checked[id] = true; track('practice_checklist_item_done'); } else delete checked[id];
+      save(true);
+      const card = b.closest('.rn-item') as HTMLElement;
+      const redraw = () => {
+        result.classList.remove('is-anim');
+        const openDetails = (box.querySelector('.rn-done') as HTMLDetailsElement | null)?.open;
+        box.innerHTML = listsHtml(r); bindLists(r); tally(r);
+        if (openDetails) (box.querySelector('.rn-done') as HTMLDetailsElement | null)?.setAttribute('open', '');
+        const nb = box.querySelector<HTMLButtonElement>(`[data-tick="${id}"]`);
+        if (nb && (!nowDone || openDetails)) nb.focus(); else $('pc-tally-t').focus();
+      };
+      if (reducedMotion()) redraw(); else { card.classList.add('is-leaving'); setTimeout(redraw, 240); }
+    }));
+    box.querySelectorAll<HTMLAnchorElement>('[data-out]').forEach((a) => a.addEventListener('click', () => track('practice_checklist_result_click', { destination: a.getAttribute('href') || '' })));
+  }
+
+  function finish(skipLoader = false) {
+    save(true); wiz.hidden = true; result.hidden = false; root.dataset.state = 'result';
+    const render = () => {
+      const r = getChecklistResult(answers);
+      const openCount = r.items.filter((i) => !isDone(i)).length;
+      result.innerHTML = `
+        <div class="rn-res-head"><p class="rn-eyebrow">TCM.ch Praxis-Checkliste</p><h2 class="rn-h1 rn-h1--res" tabindex="-1" id="pc-res-h">Deine Praxis-Checkliste</h2>
+          <p class="rn-sub">${openCount ? `Für deinen aktuellen Stand haben wir ${openCount === 1 ? 'einen offenen Punkt' : `${openCount} offene Punkte`} gefunden.` : 'Für deinen aktuellen Stand ist alles erledigt.'} Hake ab, was du erledigt hast. Dein Fortschritt bleibt in diesem Browser gespeichert.</p></div>
+        <div class="rn-tally"><span id="pc-tally-t" tabindex="-1" aria-live="polite"></span><div class="rn-progress" role="progressbar" aria-label="Erledigte Punkte" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pc-tally-p"><span id="pc-tally-bar"></span></div></div>
+        <div id="pc-lists">${listsHtml(r)}</div>
+        <div class="rn-res-tools"><button type="button" class="rn-btn rn-btn--ghost" id="pc-copy">Checkliste kopieren</button><button type="button" class="rn-btn rn-btn--ghost" id="pc-print">Checkliste drucken</button><button type="button" class="rn-link" id="pc-edit">Antworten ändern</button><button type="button" class="rn-link" id="pc-restart">Neu starten</button></div>
+        <p class="rn-copied" id="pc-copied" role="status"></p>
+        <div class="rn-end"><h3>${esc(r.end.title)}</h3><p>${esc(r.end.text)}</p>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="${r.end.primary.href}">${esc(r.end.primary.label)}</a>${r.end.secondary.map((x) => `<a class="rn-link" data-out href="${x.href}">${esc(x.label)} →</a>`).join('')}</p></div>
+        <p class="rn-disc">Die Praxis-Checkliste dient der Orientierung und ist keine Rechts- oder Versicherungsberatung. Verbindlich sind die Vorgaben der zuständigen Behörden, Register und Versicherer.</p>`;
+      tally(r); bindLists(r);
+      result.querySelectorAll<HTMLAnchorElement>('.rn-end [data-out]').forEach((a) => a.addEventListener('click', () => track('practice_checklist_result_click', { destination: a.getAttribute('href') || '' })));
+      if (!reducedMotion()) result.classList.add('is-anim');
+      ($('pc-res-h') as HTMLElement).focus({ preventScroll: true });
+      result.scrollIntoView({ block: 'start', behavior: reducedMotion() ? 'auto' : 'smooth' });
+      $('pc-copy').addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(checklistAsText(r, checked)); $('pc-copied').textContent = 'Checkliste kopiert.'; } catch (_) { $('pc-copied').textContent = 'Kopieren nicht möglich. Nutze «Checkliste drucken».'; }
+      });
+      $('pc-print').addEventListener('click', () => { result.querySelector('.rn-done')?.setAttribute('open', ''); window.print(); });
+      $('pc-edit').addEventListener('click', () => { result.hidden = true; wiz.hidden = false; root.dataset.state = 'wizard'; show(steps()[0], -1); });
+      $('pc-restart').addEventListener('click', restart);
+    };
+    if (skipLoader || reducedMotion()) render();
+    else { result.innerHTML = '<div class="rn-loading"><span class="rn-spin" aria-hidden="true"></span><p>Deine Checkliste zusammenstellen …</p></div>'; setTimeout(render, 600); }
+    if (!skipLoader) track('practice_checklist_complete');
+  }
+
+  function begin() { start.hidden = true; wiz.hidden = false; root.dataset.state = 'wizard'; show(cur, 1); }
+  function restart() { st.clear(); answers = {}; checked = {}; cur = 'stage'; result.hidden = true; result.classList.remove('is-anim'); stage.innerHTML = ''; track('practice_checklist_restart'); begin(); }
+  $('pc-go').addEventListener('click', () => { answers = {}; checked = {}; cur = 'stage'; stage.innerHTML = ''; track('practice_checklist_start'); begin(); });
+  $('pc-back').addEventListener('click', back);
+
+  const saved = st.load();
+  if (saved?.answers && Object.keys(saved.answers).length) {
+    const r = $('pc-resume'); r.hidden = false;
+    if (!saved.finished) r.textContent = 'Letzten Check fortsetzen';
+    r.addEventListener('click', () => {
+      answers = saved.answers; checked = saved.checked ?? {}; cur = getPcSteps(answers).includes(saved.cur) ? saved.cur : 'stage';
+      start.hidden = true; root.dataset.state = 'wizard';
+      if (saved.finished) finish(true); else begin();
+    });
+  }
+</script>

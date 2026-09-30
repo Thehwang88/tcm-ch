@@ -24,6 +24,7 @@ Regeln:
 - https://tcm.ch/tools/
 - https://tcm.ch/tools/bab-navigator/
 - https://tcm.ch/tools/praxiswert-rechner/
+- https://tcm.ch/tools/praxis-checkliste/
 - https://tcm.ch/team/astrid-lenggenhager/
 - https://tcm.ch/team/desiree-letter/
 - https://tcm.ch/fachpersonen/

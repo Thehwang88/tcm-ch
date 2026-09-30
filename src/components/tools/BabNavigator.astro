@@ -171,7 +171,7 @@ import '../../styles/tool-wizard.css';
         <div class="rn-res-tools"><button type="button" class="rn-btn rn-btn--ghost" id="bn-copy">Checkliste kopieren</button><button type="button" class="rn-btn rn-btn--ghost" id="bn-print">Checkliste drucken</button><button type="button" class="rn-link" id="bn-edit">Antworten ändern</button><button type="button" class="rn-link" id="bn-restart">Neu starten</button></div>
         <p class="rn-copied" id="bn-copied" role="status"></p>
         <div class="rn-end"><h3>Weiter im System</h3><p>BAB ist eine Ebene. Registrierung, Versicherer und Abrechnung prüfst du im Anerkennungs-Navigator.</p>
-          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="/tools/anerkennungs-navigator/">Anerkennung prüfen</a><a class="rn-btn rn-btn--ghost" data-out href="/regulatorik/kantone/">Kanton-Navigator</a></p></div>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="/tools/anerkennungs-navigator/">Anerkennung prüfen</a><a class="rn-link" data-out href="/regulatorik/kantone/">Kanton-Navigator →</a>${answers.babStatus === 'ja' && (answers.qualification === 'diplom' || answers.qualification === 'zertifikat') ? '<a class="rn-link" data-out href="/tools/praxis-checkliste/">Praxis eröffnen →</a>' : ''}</p></div>
         <p class="rn-disc">Der BAB-Navigator dient der Orientierung. Verbindlich sind die aktuellen Vorgaben der zuständigen kantonalen Behörden.</p>`;
       if (!reducedMotion()) result.classList.add('is-anim');
       ($('bn-res-h') as HTMLElement).focus({ preventScroll: true });
