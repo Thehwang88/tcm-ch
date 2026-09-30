@@ -30,6 +30,8 @@ export interface Koerpersignal {
   bodyHtml: string;
   faqs: KsFaq[];
   related: KsRelated[];
+  // Optionale, geprüfte Quellen (Patienteninfos/Leitlinien); Template rendert nur wenn vorhanden.
+  sources?: { label: string; url?: string }[];
   author: KsAuthor;
   datePublished: string;
   dateModified: string;
@@ -4177,6 +4179,10 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann Kribbeln am Rücken eine Gürtelrose ankündigen?', a: 'Ja, das kommt vor. Typisch ist ein brennendes oder kribbelndes Gefühl in einer bandförmigen Zone auf einer Rumpfseite, einige Tage bevor Bläschen erscheinen. Bei diesem Muster lohnt sich eine frühe ärztliche Beurteilung.' },
       { q: 'Kommt Kribbeln im Rücken von der Wirbelsäule?', a: 'Manchmal. Eine gereizte Nervenwurzel macht aber meist ein klares Linienmuster, oft mit Ausstrahlung ins Bein. Ein wechselndes, fleckiges Kribbeln spricht eher für Haut oder Muskulatur als für die Wirbelsäule.' },
     ],
+    sources: [
+      { label: 'Techniker Krankenkasse: Was ist Herpes zoster?', url: 'https://www.tk.de/techniker/krankheit-und-behandlungen/erkrankungen/behandlungen-und-medizin/haut-und-geschlechtskrankheiten/was-ist-herpes-zoster-2017606' },
+      { label: 'MSD Manuals (Ausgabe für Patienten): Neurologische Untersuchung', url: 'https://www.msdmanuals.com/de/heim/st%C3%B6rungen-der-hirn-r%C3%BCckenmarks-und-nervenfunktion/neurologische-untersuchung' },
+    ],
     related: [
       { href: '/koerpersignale/kribbeln-im-koerper/', label: 'Kribbeln im Körper', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
@@ -4218,6 +4224,9 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Warum juckt mein Ohr innen ständig?', a: 'Häufigste Ursache ist eine gereizte oder zu trockene Gehörgangshaut, oft unterhalten durch Wattestäbchen, häufiges Reinigen, Kopfhörer oder Wasser im Ohr. Bleibt der Juckreiz trotz Schonung über Wochen, gehört das Ohr einmal fachärztlich angeschaut.' },
       { q: 'Darf ich bei Juckreiz Wattestäbchen benutzen?', a: 'Besser nicht. Wattestäbchen schieben Ohrenschmalz tiefer, verletzen die empfindliche Haut und verstärken den Juckreiz auf Dauer. Das Ohr reinigt sich selbst; aussen mit dem Waschlappen zu reinigen reicht.' },
       { q: 'Woran erkenne ich eine Gehörgangsentzündung?', a: 'Typisch sind zunehmende Schmerzen, besonders beim Ziehen an der Ohrmuschel oder Druck auf den Ohrknorpel, dazu oft Ausfluss, Schwellung und vermindertes Hören. Damit solltest du zeitnah in die HNO- oder Hausarztpraxis.' },
+    ],
+    sources: [
+      { label: 'nidirect (UK Gesundheitsdienst): Otitis externa', url: 'https://www.nidirect.gov.uk/conditions/otitis-externa' },
     ],
     related: [
       { href: '/koerpersignale/dumpfes-gefuehl-im-ohr/', label: 'Dumpfes Gefühl im Ohr', cat: 'Körpersignal' },
@@ -4261,6 +4270,9 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann das Knacken von selbst verschwinden?', a: 'Ja, das Geräusch kann sich verändern, zeitweise verschwinden und wiederkommen, je nachdem wie die Knorpelscheibe im Gelenk gleitet. Ein dauerhaft knackendes, aber beschwerdefreies Gelenk ist kein Grund zur Sorge.' },
       { q: 'Soll ich das Knacken bewusst auslösen, um es zu lösen?', a: 'Nein. Absichtliches Provozieren bringt nichts und kann das Gelenk reizen. Sinnvoller ist, extremes Aufreissen zu vermeiden und auf Zeichen von Pressen oder Knirschen zu achten.' },
     ],
+    sources: [
+      { label: 'NHS: Temporomandibular disorder (TMD)', url: 'https://www.nhs.uk/conditions/temporomandibular-disorder-tmd/' },
+    ],
     related: [
       { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
       { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen & CMD', cat: 'Beschwerde' },
@@ -4302,6 +4314,9 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann ist Verschlucken beim Essen bedenklich?', a: 'Gelegentliches Verschlucken ist normal. Häufiges Husten beim Essen oder Trinken, eine feucht klingende Stimme danach, stecken bleibendes Essen oder wiederkehrende Atemwegsinfekte sprechen für eine Schluckstörung und gehören abgeklärt.' },
       { q: 'Welcher Arzt ist bei Husten nach dem Essen zuständig?', a: 'Der erste Schritt ist die Hausarztpraxis. Je nach Verdacht geht es weiter zur Magen-Darm-Spezialistin, in die HNO- oder Schlucksprechstunde oder zur Lungenärztin.' },
     ],
+    sources: [
+      { label: 'NHS: Heartburn and acid reflux', url: 'https://www.nhs.uk/conditions/heartburn-and-acid-reflux/' },
+    ],
     related: [
       { href: '/koerpersignale/trockener-husten/', label: 'Trockener Husten', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
@@ -4341,6 +4356,10 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Sind Schmerzen beim tiefen Einatmen gefährlich?', a: 'Oft stecken Muskeln, Rippengelenke oder gereizte Nerven dahinter. Gefährlich wird es bei Kombinationen: plötzlicher Schmerz mit Atemnot, geschwollenem Bein, Brustdruck, Bluthusten oder Fieber. Dann sofort medizinische Hilfe holen, im Notfall Telefon 144.' },
       { q: 'Woran erkenne ich eine muskuläre Ursache?', a: 'Der Schmerz sitzt punktgenau, lässt sich durch Druck auf die Stelle oder Drehbewegungen auslösen und besteht oft nach Husten, ungewohnter Belastung oder langem Sitzen. Sicher wird die Einordnung erst durch eine ärztliche Untersuchung.' },
       { q: 'Soll ich bei Atemschmerz flach atmen?', a: 'Nein. Dauerhaft flaches Atmen belüftet die Lunge schlechter. Wenn ernste Ursachen ausgeschlossen sind, ist regelmässiges tiefes Durchatmen trotz Ziehen ausdrücklich sinnvoll.' },
+    ],
+    sources: [
+      { label: 'NHS: Pleurisy', url: 'https://www.nhs.uk/conditions/pleurisy/' },
+      { label: 'NHS: Costochondritis', url: 'https://www.nhs.uk/conditions/costochondritis/' },
     ],
     related: [
       { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
@@ -4383,6 +4402,9 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Können Schmerzen zwischen den Schulterblättern vom Herzen kommen?', a: 'Ja, in seltenen Fällen strahlen Herzbeschwerden in den oberen Rücken aus, bei Frauen auch ohne typischen Brustschmerz. Plötzliche Schmerzen mit Atemnot, Übelkeit, Schweissausbruch oder Engegefühl sind ein Notfall: Telefon 144.' },
       { q: 'Was hilft schnell bei Verspannung zwischen den Schulterblättern?', a: 'Bewegungspausen, Schulterkreisen, das bewusste Öffnen der Brust und Wärme auf die Region. Hält der Schmerz über Wochen an, gehört er fachlich beurteilt statt dauerhaft überbrückt.' },
     ],
+    sources: [
+      { label: 'NHS: Costochondritis (Brustwand- und Rippenschmerz)', url: 'https://www.nhs.uk/conditions/costochondritis/' },
+    ],
     related: [
       { href: '/koerpersignale/schmerzen-beim-tiefen-einatmen/', label: 'Schmerzen beim tiefen Einatmen', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
@@ -4423,6 +4445,10 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Ist ständiges Magenknurren normal?', a: 'Meist ja. Knurren und Gluckern sind Arbeitsgeräusche von Magen und Darm und bei leerem Magen besonders laut. Ohne Begleitsymptome wie Schmerzen, Gewichtsverlust oder verändertem Stuhlgang sind sie kein Krankheitszeichen.' },
       { q: 'Warum knurrt der Magen auch nach dem Essen?', a: 'Auch ein gefüllter Verdauungstrakt arbeitet hörbar, besonders wenn Luft mitgeschluckt wurde oder gärfreudige Lebensmittel wie Hülsenfrüchte, Kohl oder viel Fruchtzucker auf dem Teller waren.' },
       { q: 'Kann hinter lauten Darmgeräuschen eine Unverträglichkeit stecken?', a: 'Ja. Werden Milch- oder Fruchtzucker schlecht aufgenommen, vergären sie im Darm; typisch sind dann zusätzlich Blähungen und weicher Stuhl nach entsprechenden Lebensmitteln. Ein H2-Atemtest kann das klären.' },
+    ],
+    sources: [
+      { label: 'NIDDK (NIH): Diagnosis of Lactose Intolerance', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/diagnosis' },
+      { label: 'Techniker Krankenkasse: Reizdarmsyndrom', url: 'https://www.tk.de/techniker/gesundheit-und-medizin/behandlungen-und-medizin/verdauungstrakt/funktionelle-magen-darm-erkrankungen-reizdarmsyndrom-2021864' },
     ],
     related: [
       { href: '/gesundheitsbibliothek/untersuchungen/h2-atemtest/', label: 'H2-Atemtest', cat: 'Untersuchung' },
@@ -4465,6 +4491,10 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was ist ein essentieller Tremor?', a: 'Eine häufige, gutartige neurologische Erkrankung, bei der beide Hände beim Halten und bei gezielten Bewegungen zittern, etwa beim Tassehalten oder Schreiben. Er tritt oft familiär auf, nimmt über Jahre langsam zu und ist behandelbar, wenn er stört.' },
       { q: 'Kann die Schilddrüse Händezittern auslösen?', a: 'Ja. Eine Überfunktion aktiviert den Körper und kann feines beidseitiges Zittern verursachen, oft zusammen mit Herzrasen, Schwitzen, Unruhe oder Gewichtsverlust. Ein Bluttest der Schilddrüsenwerte klärt das.' },
       { q: 'Was verstärkt das Zittern der Hände?', a: 'Koffein, Nikotin, Stress, Schlafmangel, Hunger und bestimmte Medikamente, etwa einige Asthma- oder Psychopharmaka. Auch Alkoholentzug macht zittrig. Solche Verstärker zu notieren hilft bei der Abklärung.' },
+    ],
+    sources: [
+      { label: 'NHS: Tremor or shaking hands', url: 'https://www.nhs.uk/conditions/tremor/' },
+      { label: 'nidirect (UK Gesundheitsdienst): Essential tremor', url: 'https://www.nidirect.gov.uk/conditions/essential-tremor' },
     ],
     related: [
       { href: '/koerpersignale/zittern-am-ganzen-koerper/', label: 'Zittern am ganzen Körper', cat: 'Körpersignal' },
