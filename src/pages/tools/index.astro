@@ -1,0 +1,53 @@
+---
+// /tools/ — Hub der TCM.ch Tool-Familie. Aktiviert, seit zwei substanzielle Tools live sind.
+// Geplante Tools erscheinen ohne Link (keine Fake-Unterseiten).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import { site } from '../../data/site';
+import '../../styles/b2b.css';
+
+const path = '/tools';
+const url = new URL(path + '/', site.url).href;
+const title = 'Tools für TCM-Fachpersonen | TCM.ch';
+const description = 'Kostenlose Tools für TCM-Fachpersonen in der Schweiz: Anerkennungs-Navigator und BAB-Navigator. Ohne Anmeldung, ohne Datenübertragung.';
+const tools = [
+  { href: '/tools/anerkennungs-navigator/', k: 'Anerkennungs-Navigator', t: 'Was brauchst du noch für Anerkennung, Versicherer und Abrechnung?', cta: 'Anerkennung prüfen' },
+  { href: '/tools/bab-navigator/', k: 'BAB-Navigator', t: 'Welche kantonalen Anforderungen musst du für deine Tätigkeit prüfen?', cta: 'BAB prüfen' },
+];
+const later = [
+  { t: 'Praxiswert-Check', d: 'Was macht deine Praxis übertragbar?' },
+  { t: 'Praxis-Checkliste', d: 'Deine persönliche Checkliste für den Praxisstart.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
+    hasPart: tools.map((x) => ({ '@type': 'WebApplication', name: x.k, url: new URL(x.href, site.url).href })) },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Für Fachpersonen</a><span aria-hidden="true">/</span>Tools</div>
+        <p class="b2-label">TCM.ch Tools</p>
+        <h1 class="b2-h1">Tools für TCM-Fachpersonen</h1>
+        <p class="b2-lead">Kurze Checks statt langer Recherche. Kostenlos, ohne Anmeldung, und deine Antworten bleiben in deinem Browser.</p>
+      </div>
+    </section>
+    <section class="b2-sec b2-sec--soft" style="padding-top:56px">
+      <div class="b2-wrap">
+        <div class="b2-cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          {tools.map((x) => <a class="b2-card" href={x.href}><small>{x.k}</small><b>{x.t}</b><span class="b2-go">{x.cta} →</span></a>)}
+        </div>
+        <h2 class="b2-h2" style="margin-top:56px">In Vorbereitung</h2>
+        <div class="pro-soonlist" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+          {later.map((l) => <div><b>{l.t}</b>{l.d}<br /><em>in Vorbereitung</em></div>)}
+        </div>
+        <p class="b2-route" style="margin-top:40px"><a href="/regulatorik/">Regulatorik</a> · <a href="/praxiswissen/">Praxiswissen</a> · <a href="/praxiswissen/praxisrechner/">Praxisrechner</a> · <a href="/fachpersonen/">Für Fachpersonen</a></p>
+        <p class="b2-fine">Die Tools dienen der Orientierung. Verbindlich sind die aktuellen Vorgaben der zuständigen Behörden, Register und Versicherer.</p>
+      </div>
+    </section>
+  </div>
+</LayoutDe>
+<style>@media (max-width: 700px) { .b2-cards, .pro-soonlist { grid-template-columns: minmax(0, 1fr) !important; } }</style>

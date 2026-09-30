@@ -21,6 +21,8 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/tools/
+- https://tcm.ch/tools/bab-navigator/
 - https://tcm.ch/team/astrid-lenggenhager/
 - https://tcm.ch/team/desiree-letter/
 - https://tcm.ch/fachpersonen/

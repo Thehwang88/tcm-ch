@@ -52,12 +52,20 @@ const schema = [
 
     <section class="b2-sec" style="padding-bottom:0">
       <div class="b2-wrap">
-        <a class="b2-card" href="/tools/anerkennungs-navigator/" style="max-width:760px">
-          <small>Praxis · Tool</small>
-          <b>Anerkennungs-Navigator</b>
-          <p>Finde heraus, was du für Berufsausübung, Versicherer und Abrechnung noch brauchst.</p>
-          <span class="b2-go">Check starten →</span>
-        </a>
+        <div class="b2-cards" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0">
+          <a class="b2-card" href="/tools/anerkennungs-navigator/">
+            <small>Praxis · Tool</small>
+            <b>Anerkennungs-Navigator</b>
+            <p>Finde heraus, was du für Berufsausübung, Versicherer und Abrechnung noch brauchst.</p>
+            <span class="b2-go">Check starten →</span>
+          </a>
+          <a class="b2-card" href="/tools/bab-navigator/">
+            <small>Praxis · Tool</small>
+            <b>BAB-Navigator</b>
+            <p>Prüfe kantonale Anforderungen für deine Tätigkeit und Qualifikation.</p>
+            <span class="b2-go">BAB prüfen →</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -90,3 +98,4 @@ const schema = [
     </section>
   </div>
 </LayoutDe>
+<style>@media (max-width: 700px) { .b2 .b2-cards[style*="repeat(2"] { grid-template-columns: minmax(0, 1fr) !important; } }</style>

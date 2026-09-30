@@ -3,6 +3,8 @@
 // TCM Fachverband (Stand 06.08.2026) nur als Discovery/Crosscheck. Abweichung → Primärquelle gewinnt, Abweichung in `notes`.
 // Nie einen Kanton aus einem anderen ableiten. Review-Intervall kantonal: 3 Monate.
 
+import type { SourceId } from './sources';
+
 export type CantonCode =
   | 'AG' | 'AI' | 'AR' | 'BE' | 'BL' | 'BS' | 'FR' | 'GE' | 'GL' | 'GR' | 'JU' | 'LU' | 'NE'
   | 'NW' | 'OW' | 'SG' | 'SH' | 'SO' | 'SZ' | 'TG' | 'TI' | 'UR' | 'VD' | 'VS' | 'ZG' | 'ZH';
@@ -33,7 +35,20 @@ export interface CantonRecord {
   applicationUrl: string | null;
   notes?: string;
   sources: string[];
+  /**
+   * Geprüfte offizielle Seiten der zuständigen kantonalen Stelle (IDs aus sources.ts).
+   * Nur Verweis auf die Quelle, KEINE daraus abgeleitete Regel. Genutzt von BAB-/Anerkennungs-Navigator.
+   */
+  officialSourceIds?: SourceId[];
+  /** Methodenspezifische offizielle Quellen (z. B. eigenes Merkblatt Akupunktur). Nur Verweis. */
+  methodSourceIds?: Partial<Record<BabMethodKey, SourceId[]>>;
+  /** Verifizierte Unterlagenliste (je Eintrag mit Quelle). Leer = nichts anzeigen. */
+  documents?: NonNullable<Claim>[];
+  /** Verifizierte Regel, ob die Arbeitsform (selbstständig/angestellt) relevant ist. null = Frage nicht stellen. */
+  employmentRule?: Claim;
 }
+
+export type BabMethodKey = 'acupuncture' | 'tuina' | 'herbalMedicine' | 'otherTcm';
 
 const empty = (cantonCode: CantonCode, cantonName: string, priority = false): CantonRecord => ({
   cantonCode, cantonName, status: 'needs_verification', lastVerified: null, reviewIntervalMonths: 3, priority,
@@ -44,7 +59,7 @@ const empty = (cantonCode: CantonCode, cantonName: string, priority = false): Ca
 
 /** Alle 26 Kantone. 09/2026: keine Primärquelle aus der Build-Umgebung erreichbar → alle needs_verification. */
 export const KANTONE: CantonRecord[] = [
-  { ...empty('ZH', 'Zürich', true), notes: 'Kandidaten-Primärquellen: zh.ch «Nichtärztliche Komplementärmedizin» + Merkblatt Akupunktur (src/data/regulatorik/sources.ts). Akupunktur separat geregelt – vor Publikation am Originaltext prüfen.' },
+  { ...empty('ZH', 'Zürich', true), officialSourceIds: ['zhKomplementaer'], methodSourceIds: { acupuncture: ['zhAkupunktur'] }, notes: 'Kandidaten-Primärquellen: zh.ch «Nichtärztliche Komplementärmedizin» + Merkblatt Akupunktur (src/data/regulatorik/sources.ts). Akupunktur separat geregelt – vor Publikation am Originaltext prüfen.' },
   empty('BE', 'Bern', true), empty('LU', 'Luzern', true), empty('UR', 'Uri', true), empty('SZ', 'Schwyz'),
   empty('OW', 'Obwalden'), empty('NW', 'Nidwalden'), empty('GL', 'Glarus'), empty('ZG', 'Zug', true),
   empty('FR', 'Freiburg', true), empty('SO', 'Solothurn'), empty('BS', 'Basel-Stadt', true), empty('BL', 'Basel-Landschaft', true),
