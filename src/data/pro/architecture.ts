@@ -80,7 +80,7 @@ export const PRO_LAYERS: ProLayer[] = [
     question: 'Wie sieht der Markt tatsächlich aus?',
     owns: ['TCM.ch-Netzwerkdaten mit Methodik', 'Branchenreport', 'Benchmark-Beiträge'],
     notOwner: ['Schätzungen als Landesdurchschnitt'] },
-  { id: 'tools', label: 'Tools', href: '/tools/', status: 'planned', pillar: 'build', tcmOffer: false,
+  { id: 'tools', label: 'Tools', href: '/tools/', status: 'live', pillar: 'build', tcmOffer: false,
     question: 'Hilf mir, etwas zu entscheiden oder zu berechnen.',
     owns: ['Navigatoren', 'Checklisten', 'Entscheidungsrechner'],
     notOwner: ['Praxisrechner (bleibt /praxiswissen/)', 'Rechts-/Steuerberatung'] },
@@ -103,7 +103,7 @@ export const PRO_NAV: NavGroup[] = [
     { label: 'Jobs', href: '/jobs/' }, { label: 'Karriere bei TCM.ch', href: '/karriere/' },
     { label: 'Akademie', href: '/akademie/' }, { label: 'Weiterbildungen', href: '/weiterbildungen/' }] },
   { id: 'praxis', label: 'Praxis', items: [
-    { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Tools & Rechner', href: '/tools/', planned: true },
+    { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Tools & Rechner', href: '/tools/' },
     { label: 'Regulatorik', href: '/regulatorik/' }] },
   { id: 'netzwerk', label: 'Netzwerk', items: [
     { label: 'Verzeichnis', href: '/verzeichnis/' }, { label: 'Marktplatz', href: '/marktplatz/' }, { label: 'Community', href: '/community/' }] },
@@ -125,7 +125,8 @@ export const PRO_MAP: NavGroup[] = [
     { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:in finden', href: '/verzeichnis/#mentoren' }] },
   { id: 'praxis', label: 'Praxis führen', items: [
     { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' },
-    { label: 'Anerkennungs-Navigator', href: '/tools/anerkennungs-navigator/', accent: true }, { label: 'Tools', href: '/tools/', planned: true }, { label: 'Regulatorik', href: '/regulatorik/' },
+    { label: 'Anerkennungs-Navigator', href: '/tools/anerkennungs-navigator/', accent: true }, { label: 'BAB-Navigator', href: '/tools/bab-navigator/' },
+    { label: 'Tools', href: '/tools/' }, { label: 'Regulatorik', href: '/regulatorik/' },
     { label: 'BAB / EMR / ASCA', href: '/regulatorik/berufsausuebungsbewilligung/' }] },
   { id: 'vernetzen', label: 'Vernetzen', items: [
     { label: 'Fachpersonen-Verzeichnis', href: '/verzeichnis/#therapeuten' }, { label: 'Kliniken', href: '/verzeichnis/#kliniken' },
