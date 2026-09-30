@@ -3547,6 +3547,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/tools/anerkennungs-navigator/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/ueber-uns/</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>

@@ -3,15 +3,15 @@
 // Jede Section rendert NUR, wenn Daten vorhanden sind. `geplant` wird nie gerendert,
 // `beantragt` sichtbar als «Antrag läuft». Keine E-Mails, keine internen Hinweise.
 import LayoutDe from '../../layouts/LayoutDe.astro';
-import { therapeuten, bookingHref, isUnconfirmed, visible, activeRegs, initials, type Therapeut } from '../../data/therapeuten';
+import { therapeuten, bookingHref, visible, activeRegs, initials, getPublicTherapistProfile, type PublicTherapeut } from '../../data/therapeuten';
 import { clinics } from '../../data/locations';
 import { site } from '../../data/site';
 
 export function getStaticPaths() {
-  return therapeuten.map((t) => ({ params: { slug: t.slug }, props: { t } }));
+  return therapeuten.map((t) => ({ params: { slug: t.slug }, props: { t: getPublicTherapistProfile(t) } }));
 }
 
-const { t } = Astro.props as { t: Therapeut };
+const { t } = Astro.props as { t: PublicTherapeut };
 const path = `/team/${t.slug}/`;
 const url = site.url + path;
 const booking = bookingHref(t);
@@ -26,8 +26,6 @@ const weiterbildungen = visible(t.weiterbildungen);
 const WB_VISIBLE = 8;
 const regsTcm = (t.registrierungen ?? []).filter((r) => !r.bereich);
 const regsOther = (t.registrierungen ?? []).filter((r) => !!r.bereich);
-const showGln = !!t.gln && !isUnconfirmed(t, 'gln');
-const glnInOther = showGln && !!t.glnNote && regsOther.some((r) => r.bereich === t.glnNote);
 const heroChips = (t.schwerpunkte ?? t.themenGruppen?.map((g) => g.titel) ?? []).slice(0, 3);
 const badges = activeRegs(t).slice(0, 4);
 const statusLabel = { anerkannt: 'anerkannt', registriert: 'registriert', beantragt: 'Antrag läuft' } as const;
@@ -37,7 +35,7 @@ const facts = [
   t.methoden?.length && { k: 'Methoden', v: t.methoden.slice(0, 4).join(', ') + (t.methoden.length > 4 ? ' …' : '') },
   activeRegs(t).length && { k: 'Anerkennungen', v: activeRegs(t).map((r) => r.organisation).join(', ') },
 ].filter(Boolean) as { k: string; v: string }[];
-const hasRegister = regsTcm.length > 0 || !!t.zsr || showGln || regsOther.length > 0;
+const hasRegister = regsTcm.length > 0 || regsOther.length > 0;
 
 const title = t.seo?.title ?? `${t.name} | ${t.titel} bei TCM.ch`;
 const description =
@@ -190,18 +188,15 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
           <div class="tp-reg">
             {regsTcm.map((r) => (
               <div class={`tp-reg-item${r.status === 'beantragt' ? ' is-pending' : ''}`}>
-                <b>{r.organisation}</b><span class="tp-reg-st">{statusLabel[r.status]}</span>{r.nummer && <span>Nr. {r.nummer}</span>}{r.note && <span>{r.note}</span>}
+                <b>{r.organisation}</b><span class="tp-reg-st">{statusLabel[r.status]}</span>{r.note && <span>{r.note}</span>}
               </div>
             ))}
-            {t.zsr && <div class="tp-reg-item"><b>ZSR</b><span>{t.zsr}</span></div>}
-            {showGln && !glnInOther && <div class="tp-reg-item"><b>GLN</b><span>{t.gln}</span>{t.glnNote && <span>{t.glnNote}</span>}</div>}
           </div>
           {regsOther.length > 0 && (
             <>
               <h3 class="tp-h3">{regsOther[0].bereich} (separat von TCM)</h3>
               <div class="tp-reg">
                 {regsOther.map((r) => <div class="tp-reg-item"><b>{r.organisation}</b>{r.note && <span class="tp-reg-st">{r.note}</span>}</div>)}
-                {glnInOther && <div class="tp-reg-item"><b>GLN</b><span>{t.gln}</span></div>}
               </div>
             </>
           )}

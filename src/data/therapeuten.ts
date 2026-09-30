@@ -13,8 +13,9 @@
 // - Klinischer Hintergrund ≠ TCM-Schwerpunkt. Keine Heil- oder Ergebnisversprechen.
 // - standorte[] nur mit Slugs aus src/data/locations.ts (clinics[].id), und nur wenn EINDEUTIG
 //   bekannt (z. B. nicht bei zwei Winterthur-Praxen). ortLabel ist das Anzeige-Label.
-// - Keine E-Mail-Adressen, keine internen Kommentare. `needsConfirmation` ist intern (nie gerendert).
-// - GLN/Nummern mit `needsConfirmation` werden nicht öffentlich angezeigt, bis bestätigt.
+// - DATENSCHUTZ: Nur Felder für Patient:innen. KEINE ZSR, GLN, Registernummern, Prüfvermerke,
+//   E-Mails, Telefonnummern, Adressen, Vertrags-/HR-Daten. Diese leben nur im Hub (hub.tcm.ch).
+//   Rendering nur über getPublicTherapistProfile() (Whitelist).
 
 export type Status = 'abgeschlossen' | 'in_ausbildung' | 'geplant';
 
@@ -40,7 +41,6 @@ export interface TherapeutErfahrung {
 export interface TherapeutRegistrierung {
   organisation: string;
   status: 'anerkannt' | 'registriert' | 'beantragt';
-  nummer?: string;
   note?: string;
   /** Fachbereich, falls nicht TCM (z. B. «Physiotherapie»). */
   bereich?: string;
@@ -77,10 +77,6 @@ export interface Therapeut {
   klinischerHintergrund?: { titel: string; items: string[] };
   berufserfahrung?: TherapeutErfahrung[];
   registrierungen?: TherapeutRegistrierung[];
-  zsr?: string;
-  gln?: string;
-  /** Zusatz zur GLN, z. B. «Physiotherapie». */
-  glnNote?: string;
   mitgliedschaften?: string[];
   /** Therapiesprachen (Anamnese und Behandlung vollständig möglich). */
   sprachen?: string[];
@@ -90,8 +86,6 @@ export interface Therapeut {
   bio?: string[];
   bookingUrl?: string;
   seo?: { title?: string; description?: string };
-  /** INTERN: offene Punkte zur Bestätigung. Wird nie gerendert. */
-  needsConfirmation?: { field: string; note: string }[];
 }
 
 /** Bestehender Team-Buchungskanal (identisch mit den bisherigen Teamkarten-CTAs). */
@@ -99,14 +93,32 @@ export const TEAM_WHATSAPP = 'https://wa.me/41775236122';
 
 export const bookingHref = (t: Therapeut) => t.bookingUrl ?? TEAM_WHATSAPP;
 
-/** Feld ist als offen markiert → nicht öffentlich rendern. */
-export const isUnconfirmed = (t: Therapeut, field: string) => !!t.needsConfirmation?.some((n) => n.field === field);
+/**
+ * Public View (Whitelist). tcm.ch rendert ausschliesslich diese Felder.
+ * Administrative Daten (ZSR, GLN, Registernummern, Prüfvermerke, Kontaktdaten, HR) gehören
+ * NICHT in dieses Repo, sondern nur in den authentifizierten Hub (hub.tcm.ch).
+ */
+export type PublicTherapeut = Pick<Therapeut,
+  'slug' | 'name' | 'vorname' | 'registerName' | 'titel' | 'untertitel' | 'bild' | 'ortLabel' | 'standorte' | 'cardFocus' |
+  'kurzbeschreibung' | 'schwerpunkte' | 'schwerpunkteAlsInteressen' | 'themenGruppen' | 'methoden' | 'ausbildung' |
+  'weiterbildungen' | 'weitereQualifikationen' | 'klinischerHintergrund' | 'berufserfahrung' | 'registrierungen' |
+  'mitgliedschaften' | 'sprachen' | 'weitereSprachen' | 'erfahrung' | 'bio' | 'bookingUrl' | 'seo'>;
+export const getPublicTherapistProfile = (t: Therapeut): PublicTherapeut => ({
+  slug: t.slug, name: t.name, vorname: t.vorname, registerName: t.registerName, titel: t.titel, untertitel: t.untertitel,
+  bild: t.bild, ortLabel: t.ortLabel, standorte: t.standorte, cardFocus: t.cardFocus, kurzbeschreibung: t.kurzbeschreibung,
+  schwerpunkte: t.schwerpunkte, schwerpunkteAlsInteressen: t.schwerpunkteAlsInteressen, themenGruppen: t.themenGruppen,
+  methoden: t.methoden, ausbildung: t.ausbildung, weiterbildungen: t.weiterbildungen, weitereQualifikationen: t.weitereQualifikationen,
+  klinischerHintergrund: t.klinischerHintergrund, berufserfahrung: t.berufserfahrung,
+  registrierungen: t.registrierungen?.map((r) => ({ organisation: r.organisation, status: r.status, bereich: r.bereich, note: r.note })),
+  mitgliedschaften: t.mitgliedschaften, sprachen: t.sprachen, weitereSprachen: t.weitereSprachen, erfahrung: t.erfahrung,
+  bio: t.bio, bookingUrl: t.bookingUrl, seo: t.seo,
+});
 
 /** Öffentlich sichtbare Einträge (geplant wird nie gerendert). */
 export const visible = <T extends { status?: Status }>(arr?: T[]) => (arr ?? []).filter((x) => x.status !== 'geplant');
 
 /** Aktive Registrierungen (für Badges). */
-export const activeRegs = (t: Therapeut) => (t.registrierungen ?? []).filter((r) => r.status !== 'beantragt' && !r.bereich);
+export const activeRegs = (t: { registrierungen?: TherapeutRegistrierung[] }) => (t.registrierungen ?? []).filter((r) => r.status !== 'beantragt' && !r.bereich);
 
 export const initials = (name: string) =>
   name.replace(/^Dr\.\s*\w*\.?\s*/i, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
@@ -162,11 +174,9 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Treatment of Cough Caused by Disorders of Zang-Fu Organs in addition to the Lungs' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt', nummer: '44426' },
+      { organisation: 'EMR', status: 'anerkannt' },
       { organisation: 'ASCA', status: 'anerkannt' },
     ],
-    zsr: 'H763464',
-    gln: '7601001989344',
     sprachen: ['Deutsch', 'Englisch', 'Japanisch'],
     bio: [
       'Ken kommt aus der Sportwissenschaft. Er hat einen Master in dem Fach und bringt dadurch ein genaues Verständnis für Bewegung, Belastung und muskuläre Überlastung mit. Das prägt seinen Blick auf Schmerzpatient:innen: Er fragt nicht nur, wo es weh tut, sondern auch, wann und bei welcher Bewegung.',
@@ -220,9 +230,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Kosmetische Akupunktur' },
     ],
     weitereQualifikationen: ['Yogalehrerin: Yin Yoga, Hatha Yoga, Kiefer- und Gesichtsyoga'],
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', nummer: '47731' }],
-    zsr: 'J212764',
-    gln: '7601009302329',
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
     sprachen: ['Deutsch', 'Englisch', 'Französisch'],
     bio: [
       'Janine hat zuerst Ernährungswissenschaft an der Universität Hohenheim studiert. Dieser naturwissenschaftliche Hintergrund zeigt sich in ihrer Arbeit: Sie denkt Beschwerden gerne von Alltag, Ernährung und Belastung her mit, bevor sie behandelt.',
@@ -279,8 +287,6 @@ export const therapeuten: Therapeut[] = [
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'EGK', status: 'anerkannt' },
     ],
-    zsr: 'A233864',
-    gln: '7601001884168',
     mitgliedschaften: ['TCM Fachverband Schweiz'],
     bio: [
       'Ji Eun hat ihre TCM-Ausbildung an der Chiway Akademie abgeschlossen und parallel 700 Stunden schulmedizinische Grundlagen an der Biomedica absolviert.',
@@ -310,8 +316,6 @@ export const therapeuten: Therapeut[] = [
       { organisation: 'EMR', status: 'anerkannt' },
       { organisation: 'ASCA', status: 'anerkannt' },
     ],
-    zsr: 'V006363',
-    gln: '7601002672955',
     mitgliedschaften: ['TCM Fachverband Schweiz'],
     sprachen: ['Deutsch'],
     bio: [
@@ -361,14 +365,11 @@ export const therapeuten: Therapeut[] = [
       { organisation: 'Visana', status: 'anerkannt' },
       { organisation: 'SNE', status: 'anerkannt' },
     ],
-    zsr: 'K413264',
-    gln: '76010099248',
     bio: [
       'Corinna ist diplomierte Pflegefachfrau HF. Bevor sie zur TCM kam, hat sie in der Onkologie, der Nephrologie und der Neurochirurgie gearbeitet. Sie kennt Spitalabläufe, schwere Krankheitsverläufe und die Fragen, die Patient:innen neben der Behandlung beschäftigen.',
       'Diese Erfahrung bringt sie in ihre TCM-Arbeit mit: Sie weiss, wann eine Beschwerde ärztlich abgeklärt gehören muss, und sie stimmt ihre Behandlung auf eine laufende schulmedizinische Therapie ab, statt sie zu ersetzen.',
       'Neben Akupunktur und Tuina arbeitet sie mit Laserakupunktur. Das ist eine Möglichkeit für Kinder und für Menschen, die Nadeln nicht vertragen.',
     ],
-    needsConfirmation: [{ field: 'gln', note: 'Gelieferte GLN «76010099248» hat 11 statt 13 Stellen. Unverändert gespeichert, bewusst offen gelassen und nicht öffentlich angezeigt.' }],
   },
   {
     slug: 'natalia-goc',
@@ -458,15 +459,13 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Shamanic Roots of Chinese Medicine / Channel Systems in Acupuncture', institution: 'Chiway', jahr: '30.10.–01.11.2026', status: 'geplant' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt', nummer: '44370' },
-      { organisation: 'ASCA', status: 'anerkannt', nummer: 'I734864' },
+      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'EGK', status: 'anerkannt' },
       { organisation: 'Kanton Zürich', status: 'anerkannt', note: 'Berufsausübungsbewilligung', bereich: 'Physiotherapie' },
       { organisation: 'Kanton Thurgau', status: 'anerkannt', note: 'Berufsausübungsbewilligung', bereich: 'Physiotherapie' },
       { organisation: 'Kanton St. Gallen', status: 'anerkannt', note: 'Berufsausübungsbewilligung', bereich: 'Physiotherapie' },
     ],
-    gln: '7601007575091',
-    glnNote: 'Physiotherapie',
     mitgliedschaften: [
       'TCM Fachverband Schweiz (A-Mitglied für Akupunktur, Tuina und Arzneimittel)',
       'Physioswiss',
@@ -503,9 +502,7 @@ export const therapeuten: Therapeut[] = [
         aufgaben: ['Eigenverantwortliche Praxisleitung', 'Qualitätsmanagement', 'Personalführung', 'Finanzführung', 'Behandlung mit Akupunktur, Kräutertherapie, Tuina und Moxibustion'] },
       { rolle: 'Stellvertretender Direktor', organisation: 'Jeheung Clinic', ort: 'Seoul, Südkorea', zeitraum: '01/2008–08/2008', beschreibung: 'Klinische Diagnostik und Therapieplanung' },
     ],
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', nummer: '49403' }],
-    zsr: 'V636364',
-    gln: '7601009518690',
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
     bio: [
       'Seongsu hat an der Woosuk University in Jeonju Koreanische Medizin studiert. Danach hat er fast 17 Jahre lang seine eigene Klinik in Südkorea geführt, als Praxisleiter und Inhaber. In dieser Zeit hat er über 13\'000 Patientinnen und Patienten behandelt.',
       'Er bringt damit nicht nur klinische Routine mit, sondern auch die Erfahrung, eine Praxis mit Team, Qualitätsmanagement und Finanzen zu verantworten.',
@@ -534,12 +531,10 @@ export const therapeuten: Therapeut[] = [
       { rolle: 'Akupressur-Therapeutin', organisation: 'TCM.ch / Praxis Hwang', ort: 'Winterthur', zeitraum: 'seit Mai 2026' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt', nummer: '45414' },
+      { organisation: 'EMR', status: 'anerkannt' },
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'SNE', status: 'anerkannt' },
     ],
-    zsr: 'U934864',
-    gln: '7601009025853',
     sprachen: ['Deutsch', 'Schweizerdeutsch', 'Englisch'],
     bio: [
       'Brenda arbeitet mit den Händen. Als diplomierte Akupressur-Therapeutin mit Branchenzertifikat behandelt sie vor allem muskuläre Verspannungen und Beschwerden im Bereich Kopf, Gesicht, Kiefer und Nacken.',
@@ -566,8 +561,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Dipl. Energetiker & medizinisches Qi Gong Practitioner', jahr: 'Start November 2026', status: 'geplant' },
     ],
     klinischerHintergrund: { titel: 'Klinischer Hintergrund in der Onkologie', items: ['Langjährige Tätigkeit in der onkologischen Pflege', 'In den letzten sieben Jahren besonderer Schwerpunkt Brustkrebs', 'Weiterbildung in Psychoonkologie (CAS)'] },
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', nummer: 'D370465' }],
-    zsr: 'D370465',
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
     mitgliedschaften: ['TCM Fachverband Schweiz', 'Onkologiepflege Schweiz'],
     sprachen: ['Deutsch', 'Englisch', 'Italienisch'],
     weitereSprachen: { label: 'Gute Alltagskenntnisse', items: ['Französisch'] },
@@ -575,9 +569,6 @@ export const therapeuten: Therapeut[] = [
       'Astrid hat viele Jahre in der onkologischen Pflege gearbeitet, in den letzten sieben Jahren mit besonderem Schwerpunkt auf Brustkrebs. Mit einem CAS in Psychoonkologie hat sie sich zusätzlich mit der seelischen Belastung einer Krebserkrankung auseinandergesetzt.',
       'Aus dieser Arbeit heraus hat sie TCM Akupunktur und Tuina an der Biomedica Zürich studiert und das Zertifikat OdA AM abgeschlossen.',
       'Wer bei ihr in Behandlung ist, trifft auf jemanden, der onkologische Therapien, ihre Nebenwirkungen und die Abläufe im Spital aus nächster Nähe kennt. TCM ergänzt dabei die ärztliche Behandlung, sie ersetzt sie nicht.',
-    ],
-    needsConfirmation: [
-      { field: 'bild', note: 'Kein Portrait im Repository. Initialen-Placeholder aktiv.' },
     ],
   },
   {
@@ -609,21 +600,15 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Ohrakupunktur nach NADA-Protokoll', institution: 'NADA Schweiz' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt', nummer: '48478' },
+      { organisation: 'EMR', status: 'anerkannt' },
       { organisation: 'Visana', status: 'anerkannt' },
     ],
-    zsr: 'N286064',
-    gln: '76601009360558',
     sprachen: ['Schweizerdeutsch', 'Deutsch'],
     weitereSprachen: { label: 'Behandlung zusätzlich möglich auf', items: ['Englisch', 'Französisch', 'Spanisch'] },
     bio: [
       'Désirée hat Soziale Arbeit an der FHNW studiert und danach mehrere Jahre in der Suchttherapie und der Sozialpsychiatrie gearbeitet. Sie kennt Menschen in schwierigen Lebensphasen und weiss, wie wichtig ein ruhiger, verlässlicher Rahmen für eine Behandlung ist.',
       'Heute arbeitet sie als Naturheilpraktikerin TCM mit Akupunktur und Tuina. Ein besonderes Interesse hat sie für psycho-emotionale Beschwerden wie Stress, Schlafprobleme und Ängste. Bei Trauma, Depression und Sucht behandelt sie begleitend zu einer ärztlichen oder psychotherapeutischen Betreuung.',
       'Daneben behandelt sie Frauenbeschwerden und Schmerzen an Gelenken und Wirbelsäule. Weitergebildet hat sie sich unter anderem in der Ohrakupunktur nach dem NADA-Protokoll, das aus der Suchtarbeit stammt.',
-    ],
-    needsConfirmation: [
-      { field: 'bild', note: 'Kein Portrait im Repository. Initialen-Placeholder aktiv.' },
-      { field: 'gln', note: 'Gelieferte GLN «76601009360558» hat 14 statt 13 Stellen. Unverändert gespeichert, nicht öffentlich angezeigt.' },
     ],
   },
 ];
@@ -637,7 +622,7 @@ const LOC_PIN =
   '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
 
 /** Portrait oder Initialen-Placeholder (kein Stockfoto). */
-export const portraitHtml = (t: Therapeut, cls: string, eager = false): string =>
+export const portraitHtml = (t: PublicTherapeut, cls: string, eager = false): string =>
   t.bild
     ? `<img width="630" height="840" src="${t.bild}" alt="${esc(t.name)}, ${esc(t.titel)} bei TCM.ch" class="${cls}" loading="${eager ? 'eager' : 'lazy'}">`
     : `<div class="${cls} tmc-initials" role="img" aria-label="${esc(t.name)}"><span>${esc(initials(t.name))}</span></div>`;
@@ -647,7 +632,7 @@ export const portraitHtml = (t: Therapeut, cls: string, eager = false): string =
  * Bild, Berufsbezeichnung, Name, max. 2 Fokusthemen, Standort, max. 2 Badges, «Profil ansehen».
  * Gesamte Karte klickbar → /team/<slug>/. Styles: .tmc-* in public/home.css.
  */
-export const teamCardHtml = (t: Therapeut): string => {
+export const teamCardHtml = (t: PublicTherapeut): string => {
   const focus = (t.cardFocus ?? []).slice(0, 2);
   const badges = activeRegs(t).slice(0, 2);
   return (
@@ -666,4 +651,4 @@ export const teamCardHtml = (t: Therapeut): string => {
 
 /** Das komplette Teamgrid (Über-uns-Sektion) als HTML-String. */
 export const teamGridHtml = (): string =>
-  `<div class="tmc-grid">${therapeuten.map(teamCardHtml).join('')}</div>`;
+  `<div class="tmc-grid">${therapeuten.map((t) => teamCardHtml(getPublicTherapistProfile(t))).join('')}</div>`;

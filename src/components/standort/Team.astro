@@ -3,7 +3,7 @@
 // Nutzt die bestehenden .team-* Klassen (home.css); rendert nur, wenn team-Daten existieren.
 import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
-import { getTherapeutByName, therapeuten, teamCardHtml } from '../../data/therapeuten';
+import { getTherapeutByName, therapeuten, teamCardHtml, getPublicTherapistProfile } from '../../data/therapeuten';
 const { data } = Astro.props as { data: Standort };
 const wa = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 const ort = data.nap.ort;
@@ -21,7 +21,7 @@ const total = assigned.length + cards.length;
     <h2>Dein TCM Team in {data.stadt}</h2>
     <p>Erfahrene Therapeut:innen und qualifizierte Ärzt:innen arbeiten hier Hand in Hand. Alle Behandlungen folgen klaren Standards des TCM.ch Netzwerks.</p>
     <div class="team-grid">
-    <Fragment set:html={assigned.map(teamCardHtml).join('')} />
+    <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t))).join('')} />
     {cards.map((t) => t.profil ? (
       <a href={`/team/${t.profil}/`} class="team-card reveal team-card--link" aria-label={`Profil von ${t.name} ansehen`}> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <span class="team-cta">Profil ansehen</span> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </a>
     ) : (

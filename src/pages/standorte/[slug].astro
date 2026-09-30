@@ -14,7 +14,7 @@ import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import homeBody from '../../data/home-body.html?raw';
-import { getTherapeut, teamCardHtml } from '../../data/therapeuten';
+import { getTherapeut, teamCardHtml, getPublicTherapistProfile } from '../../data/therapeuten';
 import { getStandort, waHref, telHref, standorte } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
 import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
@@ -165,14 +165,14 @@ if (migrated) {
       const cards = ['corinna-reinhart', 'astrid-lenggenhager']
         .map((s) => getTherapeut(s))
         .filter((x): x is NonNullable<typeof x> => !!x)
-        .map((x) => teamCardHtml(x))
+        .map((x) => teamCardHtml(getPublicTherapistProfile(x)))
         .join('');
       outBody = outBody.slice(0, tg0) + '<div class="team-grid">' + cards + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
     }
   }
   if (slug === 'bottighofen') {
     const emanuela = getTherapeut('emanuela-pelican');
-    const card = emanuela ? teamCardHtml(emanuela) : '';
+    const card = emanuela ? teamCardHtml(getPublicTherapistProfile(emanuela)) : '';
     const ph = outBody.indexOf('<div style="display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;max-width:300px">');
     if (card && ph >= 0) outBody = outBody.slice(0, ph) + '<div class="team-grid bf-therapist" style="max-width:360px;margin:20px 0">' + card + '</div>' + outBody.slice(endOfDiv(outBody, ph));
     const hg0 = homeBody.indexOf('<div class="svc-grid">');

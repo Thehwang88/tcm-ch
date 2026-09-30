@@ -120,3 +120,9 @@ tcm-praxis-uebernehmen-{stadt} (Städteseiten),/praxiswissen/tcm-praxis-ueberneh
 /branche/emr-vs-asca/,/branche/organisationen/ · /regulatorik/krankenkassen-anerkennung/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
 /branche/tcm-fachverband/,/branche/organisationen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
 /branche/oda-am/,/regulatorik/oda-am/ · /branche/organisationen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/tools/emr-check/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
+/tools/asca-check/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
+/tools/zsr-check/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
+/tools/visana-check/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
+/tools/egk-check/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
+/tools/tcm-anerkennung-schweiz/,/tools/anerkennungs-navigator/,Alle Anerkennungs-Checks gehören in einen Navigator,"Fragmentierung, Thin Tools",Keiner
