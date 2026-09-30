@@ -115,16 +115,18 @@ export const therapeuten: Therapeut[] = [
   {
     slug: 'simon-stueve',
     name: 'Simon Stüve Hwang',
-    titel: 'TCM-Therapeut & Inhaber TCM.ch',
-    cardFocus: ['Akupunktur & Tuina'],
+    titel: 'Inhaber TCM.ch · TCM in Ausbildung',
+    untertitel: 'Administration und Praxisorganisation',
+    cardFocus: ['Administration & Praxisorganisation'],
     bild: '/images/img-b0d621bda695.webp',
     ortLabel: 'Zürich',
-    methoden: ['Akupunktur', 'Tuina'],
+    ausbildung: [{ titel: 'Ausbildung Traditionelle Chinesische Medizin', status: 'in_ausbildung' }],
   },
   {
     slug: 'yuna-stueve',
     name: 'Yuna Stüve',
-    titel: 'TCM-Therapeutin',
+    titel: 'TCM-Therapeutin in Ausbildung',
+    ausbildung: [{ titel: 'Ausbildung Traditionelle Chinesische Medizin', status: 'in_ausbildung' }],
     cardFocus: ['Frauengesundheit'],
     bild: '/images/img-8eef129844b9.webp',
     ortLabel: 'Zürich',
@@ -653,11 +655,11 @@ export const teamCardHtml = (t: Therapeut): string => {
     `<a href="/team/${t.slug}/" class="tmc reveal" aria-label="Profil von ${esc(t.name)} ansehen">` +
     `<div class="tmc-photo">${portraitHtml(t, 'tmc-img')}</div>` +
     `<div class="tmc-body">` +
-    `<p class="tmc-title">${esc(t.titel)}</p>` +
-    `<p class="tmc-name">${esc(t.name)}</p>` +
-    `<p class="tmc-focus">${focus.map(esc).join(' · ')}</p>` +
-    `<p class="tmc-loc">${t.ortLabel ? LOC_PIN + esc(t.ortLabel) : ''}</p>` +
-    `<p class="tmc-badges">${badges.map((b) => `<span>${esc(b.organisation)}</span>`).join('')}</p>` +
+    `<div class="tmc-title">${esc(t.titel)}</div>` +
+    `<div class="tmc-name">${esc(t.name)}</div>` +
+    `<div class="tmc-focus">${focus.map(esc).join(' · ')}</div>` +
+    `<div class="tmc-loc">${t.ortLabel ? LOC_PIN + esc(t.ortLabel) : ''}</div>` +
+    `<div class="tmc-badges">${badges.map((b) => `<span>${esc(b.organisation)}</span>`).join('')}</div>` +
     `<span class="tmc-cta">Profil ansehen <span aria-hidden="true">→</span></span>` +
     `</div></a>`
   );

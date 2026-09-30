@@ -261,13 +261,7 @@ export const standorte: Record<string, Standort> = {
       "ischias",
       "kinderwunsch"
     ],
-    "team": [
-      {
-        "name": "Seongsu Kim",
-        "rolle": "Senior Clinical Lead",
-        "bild": "/images/Seongsu-Kim.png"
-      }
-    ],
+    "team": [],
     "reviews": {
       "items": [
         {
@@ -989,13 +983,7 @@ export const standorte: Record<string, Standort> = {
       "tinnitus",
       "kinderwunsch"
     ],
-    "team": [
-      {
-        "name": "Ken Uehara",
-        "rolle": "TCM-Therapeut · Schmerztherapie",
-        "bild": "/images/img-78e38ed076ea.webp"
-      }
-    ],
+    "team": [],
     "reviews": {
       "items": [
         {
