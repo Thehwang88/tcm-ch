@@ -9,7 +9,7 @@ export type Stability = 'stable' | 'seasonal' | 'volatile' | 'unknown';
 export type Source = 'seo' | 'ads' | 'referrals' | 'existing' | 'doctors' | 'platforms' | 'social' | 'owner' | 'other';
 export type OwnerDemand = 'low' | 'partial' | 'high' | 'full';
 export type Absence = 'runs' | 'drops_team' | 'mostly_lost' | 'stops';
-export type ProcessArea = 'termine' | 'abrechnung' | 'rechnung' | 'kasse' | 'kommunikation' | 'marketing' | 'onboarding' | 'qualitaet' | 'einkauf';
+export type ProcessArea = 'termine' | 'abrechnung' | 'rechnung' | 'kommunikation' | 'marketing' | 'onboarding' | 'qualitaet' | 'einkauf';
 export type ProcessState = 'doc' | 'partial' | 'head';
 export type KeyPerson = 'low' | 'some' | 'high';
 export type Tri = 'yes' | 'partial' | 'no';
@@ -29,7 +29,7 @@ export const PV_STEP_LABELS: Record<PvStepId, string> = {
   absence: 'Vier Wochen ohne dich', processes: 'Abläufe', team: 'Team', lease: 'Räume', demandData: 'Zahlen', goal: 'Ziel',
 };
 export const PROCESS_LABELS: Record<ProcessArea, string> = {
-  termine: 'Terminmanagement', abrechnung: 'Abrechnung', rechnung: 'Rechnungsstellung', kasse: 'Krankenkassen / Tarif', kommunikation: 'Patientenkommunikation',
+  termine: 'Terminmanagement', abrechnung: 'Abrechnung', rechnung: 'Rechnungsstellung', kommunikation: 'Patientenkommunikation',
   marketing: 'Marketing', onboarding: 'Team-Onboarding', qualitaet: 'Qualitätsprozesse', einkauf: 'Lieferanten / Einkauf',
 };
 export const REVENUE_LABELS: Record<Exclude<Revenue, 'na'>, string> = {
@@ -66,6 +66,7 @@ const L = {
   auslastung: { label: 'Auslastung verstehen', href: '/praxiswissen/tcm-praxis-auslastung/' },
   nachfolge: { label: 'Praxisnachfolge besprechen', href: '/partner/praxisnachfolge/' },
   erweitern: { label: 'Praxis erweitern', href: '/praxiswissen/tcm-praxis-erweitern/' },
+  checkliste: { label: 'Praxis-Checkliste', href: '/tools/praxis-checkliste/' },
 };
 
 const clamp = (n: number) => Math.max(0, Math.min(100, n));
@@ -117,7 +118,7 @@ export function getPracticeTransferabilityResult(a: PracticeAnswers): PracticeRe
     transferability: dim('Übertragbarkeit', total, ['Die Praxis lässt sich gut übergeben.', 'Solide Basis für eine Übergabe.', 'Einiges hängt noch an wenigen Punkten.', 'Heute schwer ohne dich weiterzuführen.']),
     ownerDependency: dim('Inhaber\u00ADabhängigkeit', ownerDim, ['Gering: der Betrieb trägt sich.', 'Mittel: vieles läuft ohne dich.', 'Hoch: vieles hängt an dir.', 'Sehr hoch: fast alles hängt an dir.']),
     operatingStability: dim('Betriebs\u00ADstabilität', opDim, ['Nachfrage, Umsatz und Räume sind stabil.', 'Überwiegend stabil.', 'Einzelne Unsicherheiten.', 'Mehrere Unsicherheiten gleichzeitig.']),
-    documentation: dim('Nachweisbarkeit', docDim, ['Abläufe und Zahlen sind belegbar.', 'Vieles ist festgehalten.', 'Teilweise nur im Kopf.', 'Kaum etwas ist festgehalten.']),
+    documentation: dim('Dokumentation & Nachweis\u00ADbarkeit', docDim, ['Abläufe und Zahlen sind belegbar.', 'Vieles ist festgehalten.', 'Teilweise nur im Kopf.', 'Kaum etwas ist festgehalten.']),
   };
 
   const src = a.sources ?? [];
@@ -160,7 +161,7 @@ export function getPracticeTransferabilityResult(a: PracticeAnswers): PracticeRe
   const goal = a.goal ?? 'know';
   const boost: Partial<Record<keyof F, number>> = {
     sell: { owner: 1.2, processes: 1.2, data: 1.2, lease: 1.5 }, successor: { owner: 1.2, processes: 1.2, data: 1.2, lease: 1.5 },
-    less: { owner: 1.3, team: 1.3 }, team: { team: 1.4, processes: 1.3 },
+    less: { owner: 1.3, team: 1.4, processes: 1.4 }, team: { team: 1.4, processes: 1.3 },
     location: { processes: 1.4, team: 1.3, data: 1.2, lease: 0.5 }, know: {},
   }[goal];
   const P: Record<keyof F, ActionItem> = {
@@ -181,23 +182,29 @@ export function getPracticeTransferabilityResult(a: PracticeAnswers): PracticeRe
     .map((k) => ({ k, gap: (100 - f[k]) * WEIGHTS[k] * (boost[k] ?? 1) }))
     .sort((x, y) => y.gap - x.gap).slice(0, 3).map((x) => P[x.k]);
 
-  // CTA nach Ziel
-  const CTA: Record<Goal, ActionItem[]> = {
-    sell: [{ id: 'cta', title: 'Praxisnachfolge besprechen', text: 'Wenn du über eine Übergabe nachdenkst, kannst du deine Situation vertraulich mit TCM.ch besprechen.', link: L.nachfolge }, { id: 'cta2', title: 'Übergabe vorbereiten', text: '', link: L.verkaufen }],
-    successor: [{ id: 'cta', title: 'Praxisnachfolge besprechen', text: 'Wenn du über eine Übergabe nachdenkst, kannst du deine Situation vertraulich mit TCM.ch besprechen.', link: L.nachfolge }, { id: 'cta2', title: 'Übergabe vorbereiten', text: '', link: L.verkaufen }],
-    less: [{ id: 'cta', title: 'Team aufbauen', text: 'Weniger selbst behandeln heisst: andere tragen einen Teil der Nachfrage. So baust du das Team dafür auf.', link: L.team }, { id: 'cta2', title: 'Praxiswert verstehen', text: '', link: L.wert }],
-    team: [{ id: 'cta', title: 'Team aufbauen', text: 'Ein zweites Team braucht klare Abläufe und Verantwortungen. So gehst du es an.', link: L.team }, { id: 'cta2', title: 'Administration organisieren', text: '', link: L.admin }],
-    location: [{ id: 'cta', title: 'Praxis erweitern', text: 'Ein zweiter Standort funktioniert, wenn Team, Prozesse und Nachfrage auch ohne deine ständige Anwesenheit tragen.', link: L.erweitern }, { id: 'cta2', title: 'Team aufbauen', text: '', link: L.team }],
-    know: [{ id: 'cta', title: 'Mehr über Praxiswert', text: 'Was den Wert einer TCM-Praxis ausmacht und wie du ihn Schritt für Schritt stärkst.', link: L.wert }, { id: 'cta2', title: 'Kennzahlen der Praxis', text: '', link: L.kpi }],
+  // «Praxis weiterentwickeln»: 1 primärer CTA nach Ziel, max. 2 Links nach Ergebnis
+  const NF: ActionItem = { id: 'cta', title: 'Praxisnachfolge besprechen', text: 'Wenn du über eine Übergabe nachdenkst, kannst du deine Situation vertraulich mit TCM.ch besprechen.', link: L.nachfolge };
+  const PRIMARY: Record<Goal, ActionItem> = {
+    sell: NF, successor: NF,
+    less: { id: 'cta', title: 'Team aufbauen', text: 'Weniger selbst behandeln heisst: andere tragen einen Teil der Nachfrage, und Abläufe funktionieren ohne dich.', link: L.team },
+    team: { id: 'cta', title: 'Team aufbauen', text: 'Ein Team braucht klare Abläufe und verteilte Verantwortung. So gehst du es an.', link: L.team },
+    location: { id: 'cta', title: 'Praxis erweitern', text: 'Ein zweiter Standort funktioniert, wenn Team, Prozesse und Nachfrage auch ohne deine ständige Anwesenheit tragen.', link: L.erweitern },
+    know: { id: 'cta', title: 'Praxiswert verstehen', text: 'Was den Wert einer TCM-Praxis ausmacht und wie du ihn Schritt für Schritt stärkst.', link: L.wert },
   };
-  const nextSteps = CTA[goal];
+  const secondary = [
+    f.processes <= 35 && a.org === 'solo' && revIdx < 3 ? L.checkliste : null,
+    f.team < 55 ? L.team : null,
+    f.processes < 55 ? L.admin : null,
+    f.data < 55 ? L.kpi : null,
+  ].filter((x): x is { label: string; href: string } => !!x && x.href !== PRIMARY[goal].link!.href).slice(0, 2);
+  const nextSteps: ActionItem[] = [PRIMARY[goal], ...secondary.map((l, i) => ({ id: 'sec' + i, title: l.label, text: '', link: l }))];
 
   // Hero
   const ownerWeak = ownerDim < 55, docWeak = docDim < 55;
   const basis = revIdx >= 3 || a.stability === 'stable' || opDim >= 60;
   const summary = total >= 75 ? 'Deine Praxis ist bereits relativ gut übertragbar.'
     : ownerWeak && basis ? 'Deine Praxis hat eine gute Basis, hängt aber noch stark von dir persönlich ab.'
-    : ownerWeak && docWeak ? 'Die grösste Chance liegt nicht im Umsatz, sondern in besseren Prozessen und geringerer Inhaberabhängigkeit.'
+    : ownerWeak && docWeak ? 'Der grösste Hebel liegt aktuell bei Prozessen und geringerer Inhaberabhängigkeit.'
     : total >= 55 ? 'Deine Praxis hat eine solide Basis. Mit gezielten Schritten wird sie noch besser übertragbar.'
     : 'In deiner Praxis gibt es mehrere Stellen, an denen du die Übertragbarkeit gezielt stärken kannst.';
   const sub = {

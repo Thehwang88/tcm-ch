@@ -7,14 +7,14 @@ import '../../styles/tool-wizard.css';
   <section id="pv-start" aria-labelledby="pv-h1">
     <p class="rn-eyebrow">TCM.ch Tools</p>
     <h1 id="pv-h1" class="rn-h1">Wie übertragbar ist deine Praxis?</h1>
-    <p class="rn-sub">Beantworte einige Fragen zu Umsatz, Team, Nachfrage und Organisation. Du bekommst danach eine strukturierte Einschätzung deiner Praxis und konkrete nächste Schritte.</p>
+    <p class="rn-sub">Beantworte einige Fragen zu Umsatz, Team, Nachfrage und Organisation. Du bekommst danach eine strukturierte Einschätzung und deine wichtigsten nächsten Schritte.</p>
     <div class="rn-start-actions">
       <button type="button" class="rn-btn rn-btn--primary" id="pv-go">Praxis-Check starten</button>
       <span class="rn-time">Dauert ca. 2 Minuten</span>
     </div>
     <button type="button" class="rn-link" id="pv-resume" hidden>Letzten Check fortsetzen</button>
     <p class="rn-trust">Kostenlos · keine Anmeldung · Daten bleiben im Browser</p>
-    <p class="rn-note">Keine Unternehmensbewertung und kein Kaufangebot. Der Check zeigt Faktoren, die die Übertragbarkeit und wirtschaftliche Attraktivität einer Praxis beeinflussen.</p>
+    <p class="rn-note">Keine Unternehmensbewertung und kein Kaufangebot.</p>
     <noscript><p class="rn-note">Der Check braucht JavaScript. Die Grundlagen findest du unter <a href="/praxiswissen/tcm-praxis-wert/">Praxiswert</a>.</p></noscript>
   </section>
 
@@ -55,9 +55,9 @@ import '../../styles/tool-wizard.css';
   type Opt = { v: string; t: string; d?: string };
   const SINGLE: Partial<Record<PvStepId, { q: string; hint?: string; grid?: boolean; opts: Opt[] }>> = {
     org: { q: 'Wie ist deine Praxis heute organisiert?', opts: [
-      { v: 'solo', t: 'Ich arbeite allein' }, { v: 'therapists', t: 'Ich arbeite mit weiteren Therapeut:innen' },
-      { v: 'team_admin', t: 'Ich habe ein kleines Team inklusive Administration' }, { v: 'autonomous', t: 'Die Praxis funktioniert weitgehend ohne mich' } ] },
-    revenue: { q: 'Wie hoch ist dein Praxisumsatz pro Monat ungefähr?', hint: 'Eine grobe Spanne reicht. Du kannst die Frage auch auslassen.', grid: true, opts: [
+      { v: 'solo', t: 'Ich arbeite allein' }, { v: 'therapists', t: 'Weitere Therapeut:innen arbeiten mit' },
+      { v: 'team_admin', t: 'Team inklusive Administration' }, { v: 'autonomous', t: 'Die Praxis funktioniert weitgehend ohne mich' } ] },
+    revenue: { q: 'Wie hoch ist dein durchschnittlicher Monatsumsatz?', hint: 'Eine grobe Spanne reicht. Du kannst die Frage auch auslassen.', grid: true, opts: [
       { v: 'lt10', t: "unter CHF 10'000" }, { v: '10_20', t: "CHF 10'000–20'000" }, { v: '20_35', t: "CHF 20'000–35'000" },
       { v: '35_50', t: "CHF 35'000–50'000" }, { v: '50_75', t: "CHF 50'000–75'000" }, { v: '75plus', t: "CHF 75'000+" }, { v: 'na', t: 'Möchte ich nicht angeben' } ] },
     stability: { q: 'Wie stabil ist dein Umsatz über das Jahr?', opts: [
@@ -66,16 +66,16 @@ import '../../styles/tool-wizard.css';
     ownerDemand: { q: 'Wie abhängig ist die Nachfrage von dir persönlich?', hint: 'Kommen Patient:innen wegen der Praxis oder wegen dir?', opts: [
       { v: 'low', t: 'Kaum' }, { v: 'partial', t: 'Teilweise' }, { v: 'high', t: 'Stark' }, { v: 'full', t: 'Fast vollständig' } ] },
     absence: { q: 'Was passiert, wenn du vier Wochen nicht behandelst?', opts: [
-      { v: 'runs', t: 'Die Praxis läuft weitgehend weiter' }, { v: 'drops_team', t: 'Der Umsatz sinkt, aber das Team arbeitet weiter' },
-      { v: 'mostly_lost', t: 'Ein Grossteil fällt weg' }, { v: 'stops', t: 'Die Praxis steht praktisch still' } ] },
-    lease: { q: 'Wie sicher sind deine Praxisräume?', hint: 'Deine Einschätzung genügt. Der Check prüft keine Verträge.', grid: true, opts: [
+      { v: 'runs', t: 'Die Praxis läuft weitgehend weiter' }, { v: 'drops_team', t: 'Umsatz sinkt, Team arbeitet weiter' },
+      { v: 'mostly_lost', t: 'Ein Grossteil des Umsatzes fällt weg' }, { v: 'stops', t: 'Die Praxis steht praktisch still' } ] },
+    lease: { q: 'Wie stabil ist deine Standortsituation?', hint: 'Deine Einschätzung genügt. Der Check prüft keine Verträge.', grid: true, opts: [
       { v: 'long', t: 'Langfristig gesichert' }, { v: 'stable', t: 'Grundsätzlich stabil' }, { v: 'short', t: 'Kurzfristig oder bald kündbar' },
       { v: 'unsure', t: 'Unsicher' }, { v: 'owned', t: 'Die Räume gehören mir' }, { v: 'na', t: 'Möchte ich nicht angeben' } ] },
-    goal: { q: 'Was ist dein Ziel?', grid: true, opts: [
+    goal: { q: 'Was möchtest du langfristig erreichen?', grid: true, opts: [
       { v: 'sell', t: 'Praxis verkaufen' }, { v: 'successor', t: 'Nachfolger finden' }, { v: 'less', t: 'Weniger selbst behandeln' },
-      { v: 'team', t: 'Zweites Team aufbauen' }, { v: 'location', t: 'Zweiten Standort eröffnen' }, { v: 'know', t: 'Einfach wissen, wo ich stehe' } ] },
+      { v: 'team', t: 'Team aufbauen' }, { v: 'location', t: 'Zweiten Standort eröffnen' }, { v: 'know', t: 'Einfach wissen, wo ich stehe' } ] },
   };
-  const SOURCES: [Source, string][] = [['seo', 'Google / SEO'], ['ads', 'Google Ads'], ['referrals', 'Empfehlungen'], ['existing', 'Bestehende Patient:innen'], ['doctors', 'Ärzt:innen / Zuweiser'], ['platforms', 'Plattformen / Verzeichnisse'], ['social', 'Social Media'], ['owner', 'Meine persönliche Bekanntheit'], ['other', 'Andere']];
+  const SOURCES: [Source, string][] = [['seo', 'Google / SEO'], ['ads', 'Google Ads'], ['referrals', 'Empfehlungen'], ['existing', 'Bestehende Patient:innen'], ['doctors', 'Ärzt:innen / Zuweiser'], ['platforms', 'Plattformen'], ['social', 'Social Media'], ['owner', 'Persönliche Bekanntheit'], ['other', 'Andere']];
   const PSTATES: [ProcessState, string][] = [['doc', 'Dokumentiert'], ['partial', 'Teilweise'], ['head', 'Im Kopf']];
 
   const radios = (key: string, val: string | undefined, opts: Opt[], label: string, grid = false) => `
@@ -88,7 +88,7 @@ import '../../styles/tool-wizard.css';
 
   function stepHtml(step: PvStepId): string {
     const single = SINGLE[step];
-    if (single) return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">${single.q}</legend>${single.hint ? `<p class="rn-hint">${single.hint}</p>` : ''}${radios(step, answers[step] as string | undefined, single.opts, single.q, single.grid)}</fieldset>`;
+    if (single) return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">${single.q}</legend>${single.hint ? `<p class="rn-hint">${single.hint}</p>` : ''}${radios(step, (answers as Record<string, unknown>)[step] as string | undefined, single.opts, single.q, single.grid)}</fieldset>`;
     if (step === 'sources') {
       const sel = answers.sources ?? [];
       return `<fieldset class="rn-q"><legend class="rn-h2" tabindex="-1">Woher kommen deine neuen Patient:innen?</legend><p class="rn-hint">Mehrfachauswahl möglich.</p>
@@ -97,19 +97,19 @@ import '../../styles/tool-wizard.css';
     }
     if (step === 'processes') {
       const p = answers.processes ?? {};
-      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie gut sind deine Abläufe festgehalten?</h2><p class="rn-hint">Nur was du spontan weisst. Bereiche, die bei dir nicht vorkommen, lässt du einfach leer.</p>
+      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie gut sind deine Abläufe dokumentiert?</h2><p class="rn-hint">«Im Kopf» heisst: hauptsächlich bei dir. Bereiche, die bei dir nicht vorkommen, lässt du leer.</p>
         <div class="rn-regs">${(Object.keys(PROCESS_LABELS) as ProcessArea[]).map((k) => seg('p-' + k, PROCESS_LABELS[k], p[k], PSTATES)).join('')}</div>
         <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next>Weiter</button></div></div>`;
     }
     if (step === 'team') {
-      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie stark hängt der Betrieb an einzelnen Personen im Team?</h2><p class="rn-hint">Die zweite Frage ist optional.</p>
+      return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1">Wie abhängig ist die Praxis von einzelnen Schlüsselpersonen?</h2><p class="rn-hint">Die zweite Frage ist optional.</p>
         <div class="rn-regs">${seg('keyPerson', 'Abhängigkeit von Schlüsselpersonen', answers.keyPerson, [['low', 'Kaum'], ['some', 'Etwas'], ['high', 'Stark']])}
-        ${seg('manager', 'Könnte jemand den Betrieb führen?', answers.manager, [['yes', 'Ja'], ['partial', 'Teilweise'], ['no', 'Nein']])}</div>
+        ${seg('manager', 'Könnte heute jemand ausser dir den Betrieb koordinieren?', answers.manager, [['yes', 'Ja'], ['partial', 'Teilweise'], ['no', 'Nein']])}</div>
         <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${answers.keyPerson ? '' : 'disabled'}>Weiter</button></div></div>`;
     }
     // demandData
-    const dd: Opt[] = [{ v: 'crm', t: 'CRM oder System zeigt Leads, Neupatient:innen und Termine' }, { v: 'partial', t: 'Teilweise dokumentiert' }, { v: 'feeling', t: 'Hauptsächlich Gefühl und Kalender' }, { v: 'none', t: 'Praktisch nicht dokumentiert' }];
-    return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1" id="pv-dd-h">Wie gut kannst du deine Nachfrage belegen?</h2>${radios('demandData', answers.demandData, dd, 'Wie gut kannst du deine Nachfrage belegen?').replaceAll('data-single', 'data-stay data-single')}
+    const dd: Opt[] = [{ v: 'crm', t: 'Leads, Neupatient:innen und Termine werden systematisch gemessen' }, { v: 'partial', t: 'Teilweise dokumentiert' }, { v: 'feeling', t: 'Hauptsächlich Kalender / Gefühl' }, { v: 'none', t: 'Kaum dokumentiert' }];
+    return `<div class="rn-q"><h2 class="rn-h2" tabindex="-1" id="pv-dd-h">Wie gut kannst du Nachfrage und Leistung belegen?</h2>${radios('demandData', answers.demandData, dd, 'Wie gut kannst du Nachfrage und Leistung belegen?').replaceAll('data-single', 'data-stay data-single')}
       <div class="rn-regs" style="margin-top:14px">${seg('knowsNewPatients', 'Kennst du deine Neupatient:innen pro Monat? (optional)', answers.knowsNewPatients, [['yes', 'Ja'], ['partial', 'Ungefähr'], ['no', 'Nein']])}</div>
       <div class="rn-actions"><button type="button" class="rn-btn rn-btn--primary" data-next ${answers.demandData ? '' : 'disabled'}>Weiter</button></div></div>`;
   }
@@ -194,20 +194,20 @@ import '../../styles/tool-wizard.css';
     save(true); wiz.hidden = true; result.hidden = false; root.dataset.state = 'result';
     const render = () => {
       const r = getPracticeTransferabilityResult(answers);
-      const [cta, cta2] = r.nextSteps;
+      const [cta, ...rest] = r.nextSteps;
       result.innerHTML = `
         <div class="rn-res-head"><p class="rn-eyebrow">Dein Praxis-Check</p><h2 class="rn-h1 rn-h1--res" tabindex="-1" id="pv-res-h">${esc(r.summary)}</h2><p class="rn-sub">${esc(r.sub)}</p></div>
         <dl class="rn-facts pv-dims" aria-label="Einschätzung in vier Dimensionen">${Object.values(r.dimensions).map(dimCell).join('')}</dl>
         ${r.revenueLine ? `<p class="rn-note">${esc(r.revenueLine)}</p>` : ''}
         <section class="rn-grp"><h3>Was deine Praxis heute stark macht</h3>${r.strengths.length ? r.strengths.map(item).join('') : '<p class="rn-hint">Aus deinen Angaben ergibt sich noch keine klare Stärke. Die Schritte unten zeigen, wo du am schnellsten eine aufbaust.</p>'}</section>
-        <section class="rn-grp is-opt"><h3>Was einen Käufer oder Nachfolger beschäftigen würde</h3>${r.risks.length ? r.risks.map(item).join('') : '<p class="rn-hint">Aus deinen Angaben ergibt sich kein grosser Punkt, der eine Übergabe erschweren würde.</p>'}</section>
-        ${r.priorities.length ? `<section class="rn-grp is-now"><h3>Die ${r.priorities.length === 1 ? 'wichtigste nächste Aktion' : `${r.priorities.length} wichtigsten nächsten Schritte`}</h3>${r.priorities.map(prio).join('')}</section>` : ''}
+        <section class="rn-grp is-opt"><h3>Was bei einer Übergabe Fragen auslösen würde</h3>${r.risks.length ? r.risks.map(item).join('') : '<p class="rn-hint">Aus deinen Angaben ergibt sich kein grosser Punkt, der eine Übergabe erschweren würde.</p>'}</section>
+        ${r.priorities.length ? `<section class="rn-grp is-now"><h3>${r.priorities.length === 1 ? 'Dein wichtigster nächster Schritt' : `Deine ${r.priorities.length} wichtigsten nächsten Schritte`}</h3>${r.priorities.map(prio).join('')}</section>` : ''}
         <section class="rn-grp"><h3>Was bestimmt den tatsächlichen Praxiswert?</h3>
           <p class="rn-hint">Der Wert einer Praxis entsteht aus dem Zusammenspiel vieler Faktoren: nachhaltiger Ertrag, Umsatzqualität, Abhängigkeit vom Inhaber, Team, Patientenbasis, Nachfrage, Prozesse, Standort, Verträge, Risiken und Wachstumsmöglichkeiten. Eine belastbare Bewertung braucht die konkreten Zahlen und Verträge deiner Praxis.</p></section>
         <div class="rn-res-tools"><button type="button" class="rn-btn rn-btn--ghost" id="pv-copy">Meine nächsten Schritte kopieren</button><button type="button" class="rn-btn rn-btn--ghost" id="pv-print">Ergebnis drucken</button><button type="button" class="rn-link" id="pv-edit">Antworten ändern</button><button type="button" class="rn-link" id="pv-restart">Neu starten</button></div>
         <p class="rn-copied" id="pv-copied" role="status"></p>
-        <div class="rn-end"><h3>${esc(cta.title)}</h3><p>${esc(cta.text)}</p>
-          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-cta href="${cta.link!.href}">${esc(cta.link!.label)}</a>${cta2 ? `<a class="rn-btn rn-btn--ghost" data-cta href="${cta2.link!.href}">${esc(cta2.link!.label)}</a>` : ''}</p></div>
+        <div class="rn-end"><p class="rn-eyebrow">Praxis weiterentwickeln</p><h3>${esc(cta.title)}</h3><p>${esc(cta.text)}</p>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-cta href="${cta.link!.href}">${esc(cta.link!.label)}</a>${rest.map((x) => `<a class="rn-link" data-cta href="${x.link!.href}">${esc(x.link!.label)} →</a>`).join('')}</p></div>
         <p class="rn-disc">Der Praxiswert-Check dient der Orientierung. Er ersetzt keine Unternehmens-, Steuer- oder Transaktionsbewertung und stellt kein Kaufangebot dar.</p>`;
       if (!reducedMotion()) result.classList.add('is-anim');
       ($('pv-res-h') as HTMLElement).focus({ preventScroll: true });
