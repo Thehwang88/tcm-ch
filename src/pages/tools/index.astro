@@ -1,6 +1,5 @@
 ---
-// /tools/ — Hub der TCM.ch Tool-Familie. Aktiviert, seit substanzielle Tools live sind.
-// Geplante Tools erscheinen ohne Link (keine Fake-Unterseiten).
+// /tools/ — Hub der TCM.ch Tool-Familie: vier live Tools, gruppiert nach Beruf & Anerkennung / Praxis & Wachstum.
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import { site } from '../../data/site';
 import '../../styles/b2b.css';
@@ -8,18 +7,25 @@ import '../../styles/b2b.css';
 const path = '/tools';
 const url = new URL(path + '/', site.url).href;
 const title = 'Tools für TCM-Fachpersonen | TCM.ch';
-const description = 'Kostenlose Tools für TCM-Fachpersonen in der Schweiz: Anerkennungs-Navigator, BAB-Navigator und Praxiswert-Check. Ohne Anmeldung, ohne Datenübertragung.';
-const tools = [
-  { href: '/tools/anerkennungs-navigator/', k: 'Anerkennungs-Navigator', t: 'Was brauchst du noch für Anerkennung, Versicherer und Abrechnung?', cta: 'Anerkennung prüfen' },
-  { href: '/tools/bab-navigator/', k: 'BAB-Navigator', t: 'Welche kantonalen Anforderungen musst du für deine Tätigkeit prüfen?', cta: 'BAB prüfen' },
-  { href: '/tools/praxiswert-rechner/', k: 'Praxiswert-Check', t: 'Finde heraus, wie übertragbar deine Praxis ist und welche Faktoren du vor einer Nachfolge verbessern kannst.', cta: 'Praxis prüfen' },
+const description = 'Kostenlose Tools für TCM-Fachpersonen in der Schweiz: Anerkennungs-Navigator, BAB-Navigator, Praxis-Checkliste und Praxiswert-Check. Ohne Anmeldung, ohne Datenübertragung.';
+const groups = [
+  { h: 'Beruf & Anerkennung', tools: [
+    { href: '/tools/anerkennungs-navigator/', k: 'Anerkennungs-Navigator', t: 'Was brauchst du noch für Anerkennung, Versicherer und Abrechnung?', cta: 'Anerkennung prüfen' },
+    { href: '/tools/bab-navigator/', k: 'BAB-Navigator', t: 'Welche kantonalen Anforderungen musst du für deine Tätigkeit prüfen?', cta: 'BAB prüfen' },
+  ] },
+  { h: 'Praxis & Wachstum', tools: [
+    { href: '/tools/praxis-checkliste/', k: 'Praxis-Checkliste', t: 'Was fehlt dir noch, damit deine Praxis sauber startklar ist?', cta: 'Praxis prüfen' },
+    { href: '/tools/praxiswert-rechner/', k: 'Praxiswert-Check', t: 'Wie gut ist deine Praxis übertragbar und welche Faktoren beeinflussen ihren Wert?', cta: 'Praxis analysieren' },
+  ] },
 ];
-const later = [
-  { t: 'Praxis-Checkliste', d: 'Deine persönliche Checkliste für den Praxisstart.' },
+const entries = [
+  { t: 'Ich will als Therapeut:in starten', href: '/tools/anerkennungs-navigator/' },
+  { t: 'Ich will eine Praxis eröffnen', href: '/tools/praxis-checkliste/' },
+  { t: 'Ich habe bereits eine Praxis', href: '/tools/praxiswert-rechner/' },
 ];
 const schema = [
   { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url, inLanguage: 'de-CH',
-    hasPart: tools.map((x) => ({ '@type': 'WebApplication', name: x.k, url: new URL(x.href, site.url).href })) },
+    hasPart: groups.flatMap((g) => g.tools).map((x) => ({ '@type': 'WebApplication', name: x.k, url: new URL(x.href, site.url).href })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
     { '@type': 'ListItem', position: 2, name: 'Tools', item: url } ] },
@@ -37,12 +43,17 @@ const schema = [
     </section>
     <section class="b2-sec b2-sec--soft" style="padding-top:56px">
       <div class="b2-wrap">
-        <div class="b2-cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-          {tools.map((x) => <a class="b2-card" href={x.href}><small>{x.k}</small><b>{x.t}</b><span class="b2-go">{x.cta} →</span></a>)}
-        </div>
-        <h2 class="b2-h2" style="margin-top:56px">In Vorbereitung</h2>
-        <div class="pro-soonlist" style="grid-template-columns:minmax(0,1fr)">
-          {later.map((l) => <div><b>{l.t}</b>{l.d}<br /><em>in Vorbereitung</em></div>)}
+        {groups.map((g, gi) => (
+          <div class="tl-grp" style={gi ? 'margin-top:48px' : ''}>
+            <h2 class="tl-h">{g.h}</h2>
+            <div class="b2-cards tl-cards">
+              {g.tools.map((x) => <a class="b2-card" href={x.href}><small>{x.k}</small><b>{x.t}</b><span class="b2-go">{x.cta} →</span></a>)}
+            </div>
+          </div>
+        ))}
+        <div class="tl-entry">
+          <p class="tl-entry-t">Du musst nicht wissen, welches Tool du brauchst.</p>
+          <ul>{entries.map((e) => <li><a href={e.href}>{e.t} <span aria-hidden="true">→</span></a></li>)}</ul>
         </div>
         <p class="b2-route" style="margin-top:40px"><a href="/regulatorik/">Regulatorik</a> · <a href="/praxiswissen/">Praxiswissen</a> · <a href="/praxiswissen/praxisrechner/">Praxisrechner</a> · <a href="/fachpersonen/">Für Fachpersonen</a></p>
         <p class="b2-fine">Die Tools dienen der Orientierung. Verbindlich sind die aktuellen Vorgaben der zuständigen Behörden, Register und Versicherer.</p>
@@ -50,4 +61,13 @@ const schema = [
     </section>
   </div>
 </LayoutDe>
-<style>@media (max-width: 900px) { .b2-cards, .pro-soonlist { grid-template-columns: minmax(0, 1fr) !important; } }</style>
+<style>
+  .tl-h { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .tl-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+  .tl-entry { margin-top: 56px; padding: 28px; border-radius: 18px; background: #fff; border: 1px solid var(--border); }
+  .tl-entry-t { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -.02em; margin: 0 0 12px; }
+  .tl-entry ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .tl-entry a { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 48px; padding: 0 16px; border-radius: 12px; background: var(--surface); color: var(--charcoal); font-weight: 600; font-size: 15px; text-decoration: none; transition: background .2s; }
+  .tl-entry a:hover { background: var(--blue-light); color: var(--blue-dark); }
+  @media (max-width: 760px) { .tl-cards, .tl-entry ul { grid-template-columns: minmax(0, 1fr); } .tl-entry { padding: 20px; } }
+</style>

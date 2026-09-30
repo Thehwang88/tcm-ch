@@ -52,25 +52,11 @@ const schema = [
 
     <section class="b2-sec" style="padding-bottom:0">
       <div class="b2-wrap">
-        <div class="b2-cards" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:0">
-          <a class="b2-card" href="/tools/anerkennungs-navigator/">
-            <small>Praxis · Tool</small>
-            <b>Anerkennungs-Navigator</b>
-            <p>Finde heraus, was du für Berufsausübung, Versicherer und Abrechnung noch brauchst.</p>
-            <span class="b2-go">Check starten →</span>
-          </a>
-          <a class="b2-card" href="/tools/bab-navigator/">
-            <small>Praxis · Tool</small>
-            <b>BAB-Navigator</b>
-            <p>Prüfe kantonale Anforderungen für deine Tätigkeit und Qualifikation.</p>
-            <span class="b2-go">BAB prüfen →</span>
-          </a>
-          <a class="b2-card" href="/tools/praxiswert-rechner/">
-            <small>Praxis · Tool</small>
-            <b>Praxiswert-Check</b>
-            <p>Prüfe, wie stark deine Praxis von dir abhängt und wie gut sie übertragbar ist.</p>
-            <span class="b2-go">Praxis prüfen →</span>
-          </a>
+        <div class="b2-card fp-tools">
+          <small>TCM.ch Tools</small>
+          <b>Tools für deine Praxis und deinen Berufsweg</b>
+          <p>Vier kurze Checks: Anerkennung, kantonale Berufsausübung, Praxis-Checkliste und Praxiswert. Kostenlos, ohne Anmeldung.</p>
+          <p class="fp-tools-links"><a class="b2-go" href="/tools/">Alle Tools →</a><a href="/tools/anerkennungs-navigator/">Anerkennung prüfen</a><a href="/tools/praxis-checkliste/">Praxis starten</a></p>
         </div>
       </div>
     </section>
@@ -104,4 +90,4 @@ const schema = [
     </section>
   </div>
 </LayoutDe>
-<style>@media (max-width: 900px) { .b2 .b2-cards[style*="repeat(3"] { grid-template-columns: minmax(0, 1fr) !important; } }</style>
+<style>.fp-tools .fp-tools-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 8px; } .fp-tools-links a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; } .fp-tools-links a:not(.b2-go) { color: var(--charcoal); text-decoration: underline; text-underline-offset: 3px; }</style>

@@ -106,6 +106,7 @@ export const PRAXISWISSEN: PwArticle[] = [
     ctaText: 'Im TCM.ch Partnermodell führst du deine lokale Praxis. Nachfrage, Terminannahme und Technologie laufen über das System.',
     ctaLabel: 'Partner werden',
     ctaHref: '/partner/',
+    ctaSecondary: { label: 'Praxis-Checkliste starten', href: '/tools/praxis-checkliste/' },
   },
   {
     slug: 'tcm-praxis-kosten',

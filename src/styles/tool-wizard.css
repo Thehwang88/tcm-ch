@@ -1,4 +1,4 @@
-/* TCM.ch Tool-Familie: gemeinsames Wizard-Design (Anerkennungs-Navigator, BAB-Navigator). Präfix .rn- */
+/* TCM.ch Tool-Familie: gemeinsames Wizard-Design (Anerkennungs-Navigator, BAB-Navigator, Praxiswert-Check, Praxis-Checkliste). Präfix .rn- */
   .rn { --rn-ease: cubic-bezier(.22, .61, .36, 1); max-width: 820px; margin: 0 auto; }
   .rn[data-state="result"] { max-width: 960px; }
   .rn-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue-dark); margin: 0 0 14px; }
@@ -128,6 +128,18 @@
   .rn-check-list { list-style: none; margin: 0; padding: 18px 20px; background: #fff; border: 1px solid var(--border); border-radius: 16px; display: grid; gap: 8px; }
   .rn-check-list li { font-size: 15px; color: var(--charcoal); }
   .rn-result.is-anim .rn-facts > div { animation: rnUp .4s var(--rn-ease) both; }
+  /* Abhakbare Checklisten-Punkte (Praxis-Checkliste) */
+  .rn-item--check { grid-template-columns: 44px minmax(0, 1fr) !important; transition: opacity .24s var(--rn-ease), transform .24s var(--rn-ease); }
+  .rn-item--check.is-leaving { opacity: 0; transform: translateX(12px); }
+  .rn-tick { width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--border); background: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font: 800 18px var(--font-sans); color: var(--blue-dark); transition: background .2s, border-color .2s; }
+  .rn-tick:hover { border-color: var(--blue); }
+  .rn-tick[aria-pressed="true"] { background: var(--blue-light); border-color: var(--blue-light); }
+  .rn-tick:disabled { cursor: default; }
+  .rn-tally { display: flex; align-items: center; gap: 12px; margin: 4px 0 8px; font-size: 14.5px; font-weight: 700; color: var(--charcoal); }
+  .rn-tally .rn-progress { flex: 1; margin: 0; }
+  .rn-seg--wrap { flex-wrap: wrap; }
+  .rn-seg.rn-seg--wrap button { flex: 1 1 auto; }
+  @media (max-width: 760px) { .rn .rn-seg.rn-seg--wrap button { flex: 1 1 30%; } }
   @media (max-width: 760px) {
     .rn-opts--grid { grid-template-columns: minmax(0, 1fr); }
     .rn-sum { grid-template-columns: repeat(4, minmax(0, 1fr)); }

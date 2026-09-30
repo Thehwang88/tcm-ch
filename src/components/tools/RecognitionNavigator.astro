@@ -264,8 +264,11 @@ import '../../styles/tool-wizard.css';
         ${p.done.length ? `<details class="rn-grp rn-done"><summary>Bereits erledigt (${p.done.length})</summary>${p.done.map(card).join('')}</details>` : ''}
         <div class="rn-res-tools"><button type="button" class="rn-btn rn-btn--ghost" id="rn-copy">Meine Checkliste kopieren</button><button type="button" class="rn-btn rn-btn--ghost" id="rn-print">Checkliste drucken</button><button type="button" class="rn-link" id="rn-edit">Antworten ändern</button><button type="button" class="rn-link" id="rn-restart">Neu starten</button></div>
         <p class="rn-copied" id="rn-copied" role="status"></p>
-        <div class="rn-end"><h3>Noch eine Frage offen?</h3><p>Die offiziellen Regeln ändern sich. Deshalb verlinken wir dir bei jedem Schritt die zuständige Stelle und unsere ausführliche Erklärung.</p>
-          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="/regulatorik/">Regulatorik öffnen</a><a class="rn-btn rn-btn--ghost" data-out href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen</a></p></div>
+        ${!p.now.length && p.summary[0]?.state === 'done'
+          ? `<div class="rn-end"><h3>Eigene Praxis geplant?</h3><p>Deine Grundlagen stehen weitgehend. Die Praxis-Checkliste zeigt dir, was für einen sauberen Start noch fehlt.</p>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="/tools/praxis-checkliste/">Praxis-Checkliste öffnen</a><a class="rn-link" data-out href="/regulatorik/">Regulatorik →</a></p></div>`
+          : `<div class="rn-end"><h3>Noch eine Frage offen?</h3><p>Die offiziellen Regeln ändern sich. Deshalb verlinken wir dir bei jedem Schritt die zuständige Stelle und unsere ausführliche Erklärung.</p>
+          <p class="rn-item-links"><a class="rn-btn rn-btn--primary" data-out href="/regulatorik/">Regulatorik öffnen</a><a class="rn-link" data-out href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen →</a></p></div>`}
         <p class="rn-disc">Der Navigator dient der Orientierung. Verbindlich sind die aktuellen Vorgaben der zuständigen Behörden, Register und Versicherer.</p>`;
       if (!reduce) result.classList.add('is-anim');
       ($('rn-res-h') as HTMLElement).focus({ preventScroll: true });

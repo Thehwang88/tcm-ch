@@ -125,7 +125,7 @@ export const PRO_MAP: NavGroup[] = [
     { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:in finden', href: '/verzeichnis/#mentoren' }] },
   { id: 'praxis', label: 'Praxis führen', items: [
     { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' },
-    { label: 'Anerkennungs-Navigator', href: '/tools/anerkennungs-navigator/', accent: true }, { label: 'BAB-Navigator', href: '/tools/bab-navigator/' }, { label: 'Praxiswert-Check', href: '/tools/praxiswert-rechner/' },
+    { label: 'Anerkennungs-Navigator', href: '/tools/anerkennungs-navigator/', accent: true }, { label: 'BAB-Navigator', href: '/tools/bab-navigator/' }, { label: 'Praxis-Checkliste', href: '/tools/praxis-checkliste/' }, { label: 'Praxiswert-Check', href: '/tools/praxiswert-rechner/' },
     { label: 'Tools', href: '/tools/' }, { label: 'Regulatorik', href: '/regulatorik/' },
     { label: 'BAB / EMR / ASCA', href: '/regulatorik/berufsausuebungsbewilligung/' }] },
   { id: 'vernetzen', label: 'Vernetzen', items: [
