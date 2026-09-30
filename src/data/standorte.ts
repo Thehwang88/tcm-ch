@@ -261,7 +261,13 @@ export const standorte: Record<string, Standort> = {
       "ischias",
       "kinderwunsch"
     ],
-    "team": [],
+    "team": [
+      {
+        "name": "Seongsu Kim",
+        "rolle": "Senior Clinical Lead",
+        "bild": "/images/Seongsu-Kim.png"
+      }
+    ],
     "reviews": {
       "items": [
         {
@@ -983,7 +989,13 @@ export const standorte: Record<string, Standort> = {
       "tinnitus",
       "kinderwunsch"
     ],
-    "team": [],
+    "team": [
+      {
+        "name": "Ken Uehara",
+        "rolle": "TCM-Therapeut · Schmerztherapie",
+        "bild": "/images/img-78e38ed076ea.webp"
+      }
+    ],
     "reviews": {
       "items": [
         {
@@ -1169,18 +1181,7 @@ export const standorte: Record<string, Standort> = {
       "schlafprobleme",
       "kinderwunsch"
     ],
-    "team": [
-      {
-        "name": "Ken Uehara",
-        "rolle": "TCM-Therapeut · Schmerztherapie",
-        "bild": "/images/img-78e38ed076ea.webp"
-      },
-      {
-        "name": "Seongsu Kim",
-        "rolle": "Senior Clinical Lead",
-        "bild": "/images/Seongsu-Kim.png"
-      }
-    ],
+    "team": [],
     "ablaufBlock": true,
     "reviews": {
       "heading": "Erfahrungen in Winterthur.",

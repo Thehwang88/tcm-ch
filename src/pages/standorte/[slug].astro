@@ -162,7 +162,7 @@ if (migrated) {
     // src/data/therapeuten.ts ersetzen - komplette Karte verlinkt auf /team/<slug>/.
     const tg0 = outBody.indexOf('<div class="team-grid">');
     if (tg0 >= 0) {
-      const cards = ['corinna-reinhart', 'seongsu-kim']
+      const cards = ['corinna-reinhart', 'astrid-lenggenhager']
         .map((s) => getTherapeut(s))
         .filter((x): x is NonNullable<typeof x> => !!x)
         .map((x) => teamCardHtml(x))
