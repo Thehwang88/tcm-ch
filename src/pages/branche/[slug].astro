@@ -3,6 +3,8 @@
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import { site } from '../../data/site';
 import { BRANCHE, BRANCHE_DATE, brBySlug, brHref, type BranchePage } from '../../data/pro/branche';
+import RegSources from '../../components/reg/RegSources.astro';
+import RegReview from '../../components/reg/RegReview.astro';
 import '../../styles/b2b.css';
 
 export function getStaticPaths() {
@@ -24,7 +26,10 @@ const schema = [
     { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
     { '@type': 'ListItem', position: 2, name: 'Branche', item: 'https://tcm.ch/branche/' },
     { '@type': 'ListItem', position: 3, name: b.h1, item: url } ] },
+  ...(b.faq?.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: b.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
 ];
+const officialIds = (b.sources ?? []).filter((i) => i !== 'fachverbandKantone');
 ---
 <LayoutDe title={b.title} description={b.metaDesc} path={path} schema={schema}>
   <div class="b2">
@@ -35,6 +40,9 @@ const schema = [
           <h1 class="b2-h1">{b.h1}</h1>
           <p class="b2-lead">{b.lead}</p>
           <p class="b2-art__meta"><span>{b.cardLabel}</span><span>{b.readTime} Lesezeit</span><span>Aktualisiert {dateLabel}</span><span>TCM.ch Redaktion</span></p>
+
+          {b.sources && <RegReview ids={officialIds} lastReviewed={BRANCHE_DATE} />}
+          {b.short && <div class="pro-short"><p class="b2-label" style="margin:0">Kurzantwort</p><p>{b.short}</p></div>}
 
           <div class="b2-body" set:html={b.bodyHtml} />
 
@@ -55,7 +63,11 @@ const schema = [
             ) : (
               <a class="btn btn--primary" href={b.cta.href}>{b.cta.label}</a>
             )}
+            {b.cta.secondary && <p style="margin-top:16px"><a class="b2-link" href={b.cta.secondary.href}>{b.cta.secondary.label}</a></p>}
           </div>
+
+          {b.faq?.length ? <div class="b2-faq" style="margin-top:48px">{b.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div> : null}
+          {b.sources && <RegSources ids={b.sources} />}
 
           <div class="b2-related">
             <p class="b2-label">Weiterlesen</p>

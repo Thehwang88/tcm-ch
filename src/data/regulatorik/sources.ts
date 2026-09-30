@@ -48,6 +48,7 @@ export const SOURCES = {
   egkTherapeutenstelle: { org: 'EGK-Gesundheitskasse', title: 'EGK-Therapeutenstelle – Registrierung für Therapeut:innen', url: 'https://www.egk.ch/de/services/wissen-hilfe/therapeuten-therapien', kind: 'insurer', precise: true, checked: '2026-09-30' },
   visanaTherapeuten: { org: 'Visana', title: 'Therapeuten Komplementärmedizin – Anerkennung', url: 'https://www.visana.ch/visana/partner/leistungserbringer/therapeuten/komplementaermedizin', kind: 'insurer', precise: true, checked: '2026-09-30' },
   visanaKriterien: { org: 'Visana', title: 'Kriterien und Antrag für Therapeut:innen Komplementärmedizin', url: 'https://www.visana.ch/visana/partner/leistungserbringer/therapeuten/komplementaermedizin', kind: 'insurer', precise: true, checked: '2026-09-30' },
+  sem: { org: 'Staatssekretariat für Migration SEM', title: 'Einreise, Aufenthalt und Arbeit in der Schweiz', url: 'https://www.sem.admin.ch/', kind: 'federal', precise: false, checked: null },
   fachverbandKantone: { org: 'TCM Fachverband Schweiz', title: 'Kantone / Berufsausübungsbedingungen (Stand 06.08.2026) – nur Crosscheck', url: 'https://www.tcmfachverband.ch/', kind: 'association', precise: false, checked: null },
 } satisfies Record<string, RegSource>;
 export type SourceId = keyof typeof SOURCES;

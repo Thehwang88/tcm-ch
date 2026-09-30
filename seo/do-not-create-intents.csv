@@ -108,3 +108,15 @@ tcm-praxis-uebernehmen-{stadt} (Städteseiten),/praxiswissen/tcm-praxis-ueberneh
 /regulatorik/krankenkasse-asca/,/regulatorik/asca/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
 "/regulatorik/bab-[kanton]/ (alle 26, z. B. bab-zuerich, bab-thurgau, bab-basel, bab-bern)",/regulatorik/kantone/,Kantonsdaten gehören in den Navigator,"Doorways, unverifizierte Rechtsinfos",Navigator-Datensatz mit kantonaler Primärquelle
 /regulatorik/egk-anerkennung/ · /regulatorik/visana-anerkennung/,/regulatorik/krankenkassen-anerkennung/,"Vorerst Abschnitte; eigene URL erst bei klarer GSC-Nachfrage (visana therapeuten anerkennung, egk therapeut registrieren)","Fragmentierung, Thin Content",Nach GSC-Review
+/praxiswissen/praxiswert/,/praxiswissen/tcm-praxis-wert/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/naturheilpraxis-wert/,/praxiswissen/tcm-praxis-wert/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/zweiten-therapeuten-einstellen/,/praxiswissen/tcm-praxis-team-aufbauen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/praxis-team/,/praxiswissen/tcm-praxis-team-aufbauen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/zweiter-standort/,/praxiswissen/tcm-praxis-erweitern/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/tcm-praxis-software/,/praxiswissen/tcm-praxis-administration/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/praxiswissen/no-show-tcm/,/praxiswissen/tcm-praxis-administration/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/branche/tcm-ausland/,/branche/tcm-international-schweiz/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/branche/auslaendischer-tcm-therapeut/,/branche/tcm-international-schweiz/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/branche/emr-vs-asca/,/branche/organisationen/ · /regulatorik/krankenkassen-anerkennung/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/branche/tcm-fachverband/,/branche/organisationen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner
+/branche/oda-am/,/regulatorik/oda-am/ · /branche/organisationen/,Synonym-Leaf; Owner deckt Intent ab,Kannibalisierung / Thin Content,Keiner

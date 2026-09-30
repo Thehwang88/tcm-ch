@@ -5,8 +5,9 @@
 
 import type { ProfessionalContentExtras } from './pro/architecture';
 import { BODY } from './pro/cohort-bodies';
+import { BODY2 } from './pro/cohort2-bodies';
 
-export type PwCategory = 'gruenden' | 'zahlen' | 'wachstum' | 'nachfolge';
+export type PwCategory = 'gruenden' | 'zahlen' | 'wachstum' | 'betrieb' | 'nachfolge';
 
 /** Optional: expertQuotes, interviews, firstPartyObservations, sourceLinks, lifecycle (siehe professional.ts). */
 export interface PwArticle extends ProfessionalContentExtras {
@@ -21,6 +22,9 @@ export interface PwArticle extends ProfessionalContentExtras {
   readTime: string;
   bodyHtml: string;
   keyTakeaways: string[];
+  /** Answer-first: 2–5 Sätze direkt nach dem Lead. */
+  shortAnswer?: string;
+  ctaSecondary?: { label: string; href: string };
   firstPartyBox?: string;
   faq?: { q: string; a: string }[];
   related: string[];
@@ -35,6 +39,7 @@ export const PW_CATEGORIES: { id: PwCategory | 'next'; label: string }[] = [
   { id: 'gruenden', label: 'Gründen' },
   { id: 'zahlen', label: 'Zahlen' },
   { id: 'wachstum', label: 'Wachstum' },
+  { id: 'betrieb', label: 'Betrieb' },
   { id: 'nachfolge', label: 'Nachfolge' },
   { id: 'next', label: 'Nächster Schritt' },
 ];
@@ -230,7 +235,7 @@ export const PRAXISWISSEN: PwArticle[] = [
 <ul class="b2-check-list"><li>Einzugsgebiet und Pendlerwege angeschaut</li><li>Lokale Suche und Wettbewerb geprüft</li><li>Erreichbarkeit mit ÖV und Auto getestet</li><li>Fixkosten und Break-even gerechnet (<a href="/praxiswissen/praxisrechner/">Praxisrechner</a>)</li><li>Laufzeit, Kündigung und Erweiterungsoption verhandelt</li></ul>
 <p>Weitere Schritte vor der Eröffnung: <a href="/praxiswissen/tcm-praxis-eroeffnen/">Praxis eröffnen: die Checkliste</a>.</p>`,
     firstPartyBox: 'Neue TCM.ch Partnerstandorte starten bewusst klein: ein Behandlungsraum, eine Therapeut:in, ein zeitlich begrenzter Launch. Ausgebaut wird erst, wenn die Nachfrage die bestehende Kapazität wiederholt übersteigt.',
-    related: ['tcm-praxis-eroeffnen', 'tcm-praxis-auslastung', 'patienten-gewinnen-tcm-praxis'],
+    related: ['tcm-praxis-erweitern', 'tcm-praxis-eroeffnen', 'tcm-praxis-kosten'],
     ctaTitle: 'Standort lieber klein testen?',
     ctaText: 'Im Partnermodell startest du mit einem Raum und einem zeitlich begrenzten Launch, bevor du Fixkosten ausbaust.',
     ctaLabel: 'Partner werden',
@@ -269,7 +274,7 @@ export const PRAXISWISSEN: PwArticle[] = [
 <p>Wenn die Auslastung schwankt, wenn nur eine Kampagne den Kalender füllt oder wenn Anfragen zwar kommen, aber nicht zu Terminen werden: Dann liegt das Problem nicht in der Kapazität, sondern in Nachfrage oder Conversion. Zuerst <a href="/praxiswissen/patienten-gewinnen-tcm-praxis/">dort ansetzen</a>.</p>
 <div class="b2-callout"><p>Kapazität erst ausbauen, wenn die Nachfrage die bestehende wiederholt übersteigt.</p></div>`,
     firstPartyBox: 'In der internen Standortplanung von TCM.ch folgt die Entscheidung über einen zweiten Raum derselben Regel: Die Nachfrage muss die bestehende Kapazität wiederholt übersteigen, bevor Fixkosten dazukommen.',
-    related: ['tcm-praxis-kennzahlen', 'patienten-gewinnen-tcm-praxis', 'standortwahl-tcm-praxis'],
+    related: ['tcm-praxis-team-aufbauen', 'tcm-praxis-erweitern', 'tcm-praxis-kennzahlen'],
     ctaTitle: 'Kapazität berechnen',
     ctaText: 'Arbeitstage, Slots und Auslastung eintragen und sehen, was deine Praxis heute trägt.',
     ctaLabel: 'Zum Praxisrechner',
@@ -312,7 +317,7 @@ export const PRAXISWISSEN: PwArticle[] = [
 <h2>Zum Weiterdenken</h2>
 <p>Wie Praxen an falschen Annahmen über Zahlen scheitern können, analysiert das OUCH.-Magazin am Beispiel <a href="${OUCH}/holistiq-konkurs-analyse/">Holistiq</a>.</p>`,
     firstPartyBox: 'Im TCM.ch System werden Anfragen, Termine und Behandlungen zentral erfasst, damit Standorte diese Zahlen nicht selbst zusammensuchen müssen.',
-    related: ['tcm-praxis-auslastung', 'tcm-praxis-kosten', 'patienten-gewinnen-tcm-praxis'],
+    related: ['tcm-praxis-administration', 'tcm-praxis-auslastung', 'tcm-praxis-wert'],
     ctaTitle: 'Praxiszahlen modellieren',
     ctaText: 'Sieh im Rechner, wie Auslastung, Preis und Fixkosten zusammen dein Ergebnis bestimmen.',
     ctaLabel: 'Zum Praxisrechner',
@@ -379,7 +384,7 @@ export const PRAXISWISSEN: PwArticle[] = [
       'Kein Kaufpreis aus Internet-Faustformeln.',
     ],
     bodyHtml: BODY.uebernehmen,
-    related: ['tcm-praxis-verkaufen', 'tcm-praxis-eroeffnen', 'tcm-praxis-kosten'],
+    related: ['tcm-praxis-wert', 'tcm-praxis-verkaufen', 'tcm-praxis-eroeffnen'],
     ctaTitle: 'Du prüfst gerade eine bestehende Praxis?',
     ctaText: 'Rechne die Zahlen selbst nach oder sprich vertraulich mit uns über eine schrittweise Nachfolgelösung.',
     ctaLabel: 'Praxisnachfolge mit TCM.ch',
@@ -404,11 +409,111 @@ export const PRAXISWISSEN: PwArticle[] = [
       'Der Wert entsteht aus dem konkreten Geschäft, nicht aus einem Multiplikator.',
     ],
     bodyHtml: BODY.verkaufen,
-    related: ['tcm-praxis-uebernehmen', 'tcm-praxis-kennzahlen', 'tcm-praxis-auslastung'],
+    related: ['tcm-praxis-wert', 'tcm-praxis-uebernehmen', 'tcm-praxis-kennzahlen'],
     ctaTitle: 'Du denkst über die nächsten Jahre nach?',
     ctaText: 'Du musst noch nichts verkaufen. Wir können vertraulich anschauen, welche Nachfolgewege für deine Praxis grundsätzlich denkbar wären.',
     ctaLabel: 'Praxisnachfolge besprechen',
     ctaHref: '/partner/praxisnachfolge/',
+  },
+  {
+    slug: 'tcm-praxis-wert',
+    category: 'nachfolge',
+    title: 'TCM Praxis Wert: Was deine Praxis wirklich wertvoll macht',
+    metaDesc: 'Was bestimmt den Wert einer TCM-Praxis? Ergebnis, Inhaberabhängigkeit, Team, Standort, Nachfrage, Prozesse und Risiken verständlich erklärt.',
+    h1: 'Was ist deine TCM-Praxis wert?',
+    lead: "Umsatz allein beantwortet diese Frage nicht. Zwei Praxen können beide CHF 300'000 Umsatz machen und trotzdem wirtschaftlich völlig unterschiedlich sein. Entscheidend ist, was vom Geschäft tatsächlich übertragbar ist.",
+    shortAnswer: 'Eine Praxis ist dann besonders übertragbar, wenn sie nachhaltig Geld verdient und nicht vollständig an einer einzelnen Person hängt. Entscheidend sind deshalb neben Umsatz und Gewinn auch Nachfrage, Team, Prozesse, Mietvertrag, Marke und die Frage, was passiert, wenn du selbst weniger behandelst.',
+    datePublished: D, dateModified: D, readTime: '7 Min.',
+    keyTakeaways: [],
+    bodyHtml: BODY2.praxisWert,
+    faq: [
+      { q: 'Ist Umsatz gleich Praxiswert?', a: 'Nein. Umsatz zeigt, wie viel Geld hereinkommt. Für den Wert zählt, was nach allen Kosten nachhaltig übrig bleibt und ob dieses Ergebnis auch ohne dich weiterläuft.' },
+      { q: 'Gibt es einen festen Multiplikator?', a: 'Nicht seriös. Ein fixer Faktor auf den Umsatz ignoriert Ergebnis, Abhängigkeit von dir, Mietvertrag und Risiken. Für eine echte Transaktion braucht es eine Bewertung des konkreten Geschäfts.' },
+      { q: 'Wie wichtig ist mein Patientenstamm?', a: 'Er hilft, ist aber kein garantierter zukünftiger Umsatz. Patient:innen entscheiden selbst, ob sie bei einer Nachfolge bleiben. Wichtiger ist, ob die Praxis laufend neue Anfragen erzeugt, die nicht nur an deinem Namen hängen.' },
+      { q: 'Macht ein Team meine Praxis wertvoller?', a: 'Oft ja, wenn das Team bleiben möchte, wirtschaftlich trägt und nicht vollständig von dir geführt und ausgelastet wird. Ein Team bringt aber auch Verträge und Verantwortung mit, die ein Nachfolger übernimmt.' },
+      { q: 'Wann sollte ich mich auf eine Nachfolge vorbereiten?', a: 'Mehrere Jahre vorher. Zahlen sauber führen, Prozesse dokumentieren und die Abhängigkeit von dir reduzieren braucht Zeit. Diese Schritte machen die Praxis meist schon heute ruhiger.' },
+    ],
+    related: ['tcm-praxis-verkaufen', 'tcm-praxis-uebernehmen', 'tcm-praxis-kennzahlen'],
+    ctaTitle: 'Du denkst über Nachfolge nach?',
+    ctaText: 'Du musst deine Praxis noch nicht verkaufen. Ein vertrauliches Gespräch kann trotzdem helfen, mögliche Wege früh zu verstehen.',
+    ctaLabel: 'Praxisnachfolge besprechen',
+    ctaHref: '/partner/praxisnachfolge/',
+    ctaSecondary: { label: 'Praxis verkaufen vorbereiten', href: '/praxiswissen/tcm-praxis-verkaufen/' },
+  },
+  {
+    slug: 'tcm-praxis-team-aufbauen',
+    category: 'wachstum',
+    title: 'TCM Praxis Team aufbauen: Wann lohnt sich der zweite Therapeut?',
+    metaDesc: 'Wann solltest du in einer TCM-Praxis den zweiten Therapeuten einstellen? Nachfrage, Auslastung, Lohnmodell, Onboarding und Kapazität praktisch erklärt.',
+    h1: 'Wann ist deine Praxis bereit für den zweiten Therapeuten?',
+    lead: 'Ein freies Zimmer ist noch kein Grund, jemanden einzustellen. Die bessere Frage lautet: Hast du genug wiederkehrende Nachfrage, damit eine zweite Person sinnvoll ausgelastet werden kann?',
+    shortAnswer: 'Stell nicht ein, weil du wachsen möchtest. Stell ein, weil deine bestehende Nachfrage wiederholt mehr Kapazität braucht als du selbst anbieten kannst. Idealerweise siehst du diese Überlastung über mehrere Wochen oder Monate und nicht nur während einer besonders guten Woche.',
+    datePublished: D, dateModified: D, readTime: '7 Min.',
+    keyTakeaways: [],
+    bodyHtml: BODY2.teamAufbauen,
+    faq: [
+      { q: 'Wann ist der richtige Zeitpunkt für den zweiten Therapeuten?', a: 'Wenn du über mehrere Wochen oder Monate Anfragen nicht bedienen kannst, obwohl du selbst nahe an deiner gewünschten Kapazität arbeitest. Eine einzelne volle Woche reicht nicht.' },
+      { q: 'Soll ich direkt 100 Prozent einstellen?', a: 'Meistens nicht. Ein Start mit zwei Behandlungstagen ist leichter zu füllen. Wenn die Nachfrage mitwächst, erhöhst du das Pensum schrittweise.' },
+      { q: 'Fixlohn oder Umsatzbeteiligung?', a: 'Beides kann funktionieren. Ein Fixlohn gibt der Mitarbeiterin Planbarkeit und dir mehr Risiko. Ein variabler Anteil verteilt das Risiko, muss aber transparent und arbeitsrechtlich sauber geregelt sein. Lass den Vertrag im Zweifel prüfen.' },
+      { q: 'Was passiert, wenn die neue Person nicht voll wird?', a: 'Dann trägst du die Differenz. Plane deshalb so, dass das Modell auch bei tieferer Auslastung in den ersten Monaten aufgeht, und verteile neue Anfragen gezielt an die neue Person.' },
+      { q: 'Wer sollte neue Patienten bekommen?', a: 'In der Aufbauphase gezielt die neue Person, vor allem Anfragen, die du selbst nicht zeitnah bedienen kannst. Bestehende Patient:innen wechselst du nur mit deren Einverständnis.' },
+    ],
+    related: ['tcm-praxis-auslastung', 'tcm-praxis-kennzahlen', 'tcm-praxis-erweitern'],
+    ctaTitle: 'Du willst wachsen, aber nicht alles selbst aufbauen?',
+    ctaText: 'Im Partnermodell baut TCM.ch Nachfrage, Anfragen und Terminprozesse mit dir zusammen auf.',
+    ctaLabel: 'Partner werden',
+    ctaHref: '/partner/',
+    ctaSecondary: { label: 'Auslastung berechnen', href: '/praxiswissen/tcm-praxis-auslastung/' },
+  },
+  {
+    slug: 'tcm-praxis-erweitern',
+    category: 'wachstum',
+    title: 'TCM Praxis erweitern: Zweiter Raum, Team oder zweiter Standort?',
+    metaDesc: 'Wann solltest du eine TCM-Praxis erweitern? Zweiter Behandlungsraum, zusätzliche Therapeut:innen oder zweiter Standort mit klarer Entscheidungslogik.',
+    h1: 'Mehr Platz oder mehr Standort? Erst herausfinden, was wirklich knapp ist.',
+    lead: 'Wenn die Praxis voll wird, fühlt sich Expansion logisch an. Trotzdem ist ein zweiter Standort nicht automatisch der nächste Schritt. Vielleicht brauchst du nur einen weiteren Behandlungstag, einen zweiten Raum oder eine zusätzliche Therapeutin.',
+    shortAnswer: 'Erweitere immer den Engpass. Wenn Termine fehlen, brauchst du mehr Behandlungskapazität. Wenn Räume fehlen, brauchst du Raum. Wenn Nachfrage aus einer anderen Region kommt, kann ein zweiter Standort sinnvoll werden. Ein zweiter Mietvertrag sollte nicht die Standardantwort auf Wachstum sein.',
+    datePublished: D, dateModified: D, readTime: '7 Min.',
+    keyTakeaways: [],
+    bodyHtml: BODY2.praxisErweitern,
+    faq: [
+      { q: 'Wann lohnt sich ein zweiter Standort?', a: 'Wenn echte Nachfrage aus einer anderen Region da ist, zum Beispiel Anfragen, Suchnachfrage oder Patient:innen mit langer Anreise, und der erste Standort ohne dich laufen kann.' },
+      { q: 'Zweiter Raum oder zweite Praxis?', a: 'Wenn die Nachfrage am bestehenden Ort liegt, meistens zuerst der zweite Raum. Er bringt Kapazität ohne zweite Administration, zweiten Mietvertrag und zweite lokale Nachfrage.' },
+      { q: 'Wie teste ich Nachfrage vor dem Mietvertrag?', a: 'Bestehende Anfragen nach Herkunft auswerten, eine Landingpage oder begrenzte Werbung für die neue Region testen und wenn möglich mit kleiner Fläche oder Teilzeitkapazität starten.' },
+      { q: 'Wie viel Reserve brauche ich?', a: 'Genug für Eröffnung und die Monate danach: Kaution, Ausbau, Miete, Personal, Marketing und Administration, auch wenn der Standort nicht ab Woche eins voll ist. Die konkrete Summe hängt von deinem Mietvertrag und deiner Kostenstruktur ab.' },
+      { q: 'Sollte ich erst jemanden einstellen?', a: 'Oft ja. Wenn deine eigene Zeit der Engpass ist, löst eine zusätzliche Therapeutin im bestehenden Raum das Problem mit deutlich weniger Risiko als ein neuer Standort.' },
+    ],
+    related: ['standortwahl-tcm-praxis', 'tcm-praxis-auslastung', 'tcm-praxis-team-aufbauen'],
+    ctaTitle: 'Du willst mehrere Standorte aufbauen?',
+    ctaText: 'Im Partnermodell bringt TCM.ch Nachfrage, Systeme und Standortentwicklung mit.',
+    ctaLabel: 'Partner werden',
+    ctaHref: '/partner/',
+    ctaSecondary: { label: 'Standortwahl', href: '/praxiswissen/standortwahl-tcm-praxis/' },
+  },
+  {
+    slug: 'tcm-praxis-administration',
+    category: 'betrieb',
+    title: 'TCM Praxis Administration: Termine, Abrechnung & Prozesse',
+    metaDesc: 'Wie organisierst du eine TCM-Praxis effizient? Telefon, Terminmanagement, Tarif 590, Rechnungen, No-Shows, Software und wiederkehrende Prozesse.',
+    h1: 'Gute Administration merkst du daran, dass sie kaum auffällt.',
+    lead: 'Patient:innen kommen nicht wegen deiner Buchhaltungssoftware. Trotzdem entscheidet die Administration mit darüber, ob deine Praxis ruhig läuft oder jeder Behandlungstag von Telefonaten, offenen Rechnungen und Terminverschiebungen unterbrochen wird.',
+    shortAnswer: 'Du brauchst am Anfang kein kompliziertes Praxissystem. Du brauchst klare Standards für Anfragen, Termine, Dokumentation, Rechnungen und Ausfälle. Sobald dieselbe Frage zum dritten Mal auftaucht, lohnt sich ein Prozess.',
+    datePublished: D, dateModified: D, readTime: '7 Min.',
+    keyTakeaways: [],
+    bodyHtml: BODY2.praxisAdministration,
+    faq: [
+      { q: 'Welche Software braucht eine TCM-Praxis?', a: 'Eine Lösung für Agenda, Patientendaten, Dokumentation und Rechnungsstellung nach Tarif 590. Ob das ein Tool oder mehrere sind, ist zweitrangig. Wichtig ist, dass für jede Aufgabe klar ist, welches System zuständig ist.' },
+      { q: 'Wie oft sollte ich Rechnungen stellen?', a: 'In einem festen Rhythmus, den Patient:innen kennen, zum Beispiel nach jeder Behandlung oder monatlich. Monatelang nicht abzurechnen belastet deine Liquidität.' },
+      { q: 'Wie gehe ich mit No-Shows um?', a: 'Mit einer Absageregel, die vor dem ersten Termin bekannt ist: bis wann kostenlos abgesagt werden kann, was bei kurzfristigen Ausfällen gilt und welche Ausnahmen es gibt. Alle im Team kommunizieren sie gleich.' },
+      { q: 'Wann lohnt sich eine administrative Person?', a: 'Wenn du regelmässig viel Zeit mit Aufgaben verbringst, die jemand anderes nach einem klaren Prozess erledigen könnte. Miss das eine Woche lang, bevor du entscheidest.' },
+      { q: 'Was gehört zu Tarif 590?', a: 'Tarif 590 ist die Struktur, mit der komplementärmedizinische Leistungen gegenüber Zusatzversicherern bezeichnet und abgerechnet werden. Dazu gehören die aktuellen Tarifpositionen und deine ZSR-Nummer auf der Rechnung. Details unter Tarif 590.' },
+    ],
+    related: ['tcm-praxis-kennzahlen', 'tcm-praxis-auslastung', 'tcm-praxis-eroeffnen'],
+    ctaTitle: 'Du willst weniger selbst administrieren?',
+    ctaText: 'Im Partnermodell übernimmt TCM.ch Anfragen, Terminprozesse und Technologie.',
+    ctaLabel: 'Partner werden',
+    ctaHref: '/partner/',
+    ctaSecondary: { label: 'Tarif 590', href: '/regulatorik/tarif-590/' },
   },
 ];
 

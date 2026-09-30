@@ -118,7 +118,8 @@ export const PRO_NAV: NavGroup[] = [
 export const PRO_MAP: NavGroup[] = [
   { id: 'arbeiten', label: 'Arbeiten', items: [
     { label: 'Jobs finden', href: '/jobs/' }, { label: 'Karriere bei TCM.ch', href: '/karriere/' },
-    { label: 'Berufseinstieg', href: '/karriere/berufseinstieg/' }, { label: 'Standortleitung', href: '/karriere/standortleitung/' }] },
+    { label: 'Berufseinstieg', href: '/karriere/berufseinstieg/' }, { label: 'Standortleitung', href: '/karriere/standortleitung/' },
+    { label: 'Aus dem Ausland in die Schweiz', href: '/branche/tcm-international-schweiz/' }] },
   { id: 'lernen', label: 'Lernen', items: [
     { label: 'Akademie', href: '/akademie/' }, { label: 'M7 Mentorat', href: '/akademie/#interesse' },
     { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:in finden', href: '/verzeichnis/#mentoren' }] },
@@ -137,7 +138,8 @@ export const PRO_MAP: NavGroup[] = [
     { label: 'TCM.ch Partner', href: '/partner/', accent: true }, { label: 'Partnermodell', href: '/partner/modell/' },
     { label: 'Praxisnachfolge mit TCM.ch', href: '/partner/praxisnachfolge/' }] },
   { id: 'branche', label: 'Branche verstehen', items: [
-    { label: 'Branchenwissen', href: '/branche/' }, { label: 'Daten', href: '/daten/', planned: true },
+    { label: 'Branchenwissen', href: '/branche/' }, { label: 'Organisationen & Register', href: '/branche/organisationen/' },
+    { label: 'Daten', href: '/daten/', planned: true },
     { label: 'Benchmarks', href: '/daten/praxis-benchmark/', planned: true }, { label: 'Reports', href: '/daten/', planned: true },
     { label: 'Interviews', href: '/branche/interviews/', planned: true }] },
   { id: 'zuweisen', label: 'Zuweisen', items: [{ label: 'Online-Zuweisung', href: '/zuweisen/' }] },

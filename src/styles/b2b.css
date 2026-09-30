@@ -417,3 +417,4 @@ a.b2-card:hover { border-color: var(--blue); transform: translateY(-2px); }
 .reg-kt dt { font-weight: 700; } .reg-kt dd { margin: 0; }
 @media (max-width: 900px) { .reg-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); } .reg-map__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .reg-layers, .reg-map__grid, .reg-map__grid--3, .reg-kt dl { grid-template-columns: minmax(0, 1fr); } .reg-map { padding: 16px; } .reg-nav { padding: 18px; } }
+.b2-cta .b2-link { color: #fff; border-color: rgba(255,255,255,.4); }

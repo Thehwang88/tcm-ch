@@ -43,10 +43,16 @@ const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'n
           <p class="b2-lead">{a.lead}</p>
           <p class="b2-art__meta"><span>{cat.label}</span><span>{a.readTime} Lesezeit</span><span>Aktualisiert {dateLabel}</span><span>TCM.ch Praxisteam</span></p>
 
-          <div class="b2-take">
-            <p class="b2-label" style="margin:0">Das Wichtigste</p>
-            <ul>{a.keyTakeaways.map((k) => <li>{k}</li>)}</ul>
-          </div>
+          {a.shortAnswer && (
+            <div class="pro-short"><p class="b2-label" style="margin:0">Kurzantwort</p><p>{a.shortAnswer}</p></div>
+          )}
+
+          {a.keyTakeaways.length > 0 && (
+            <div class="b2-take">
+              <p class="b2-label" style="margin:0">Das Wichtigste</p>
+              <ul>{a.keyTakeaways.map((k) => <li>{k}</li>)}</ul>
+            </div>
+          )}
 
           <div class="b2-body" set:html={a.bodyHtml} />
 
@@ -89,6 +95,7 @@ const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'n
             ) : (
               <a class="btn btn--primary" href={a.ctaHref}>{a.ctaLabel}</a>
             )}
+            {a.ctaSecondary && <p style="margin-top:16px"><a class="b2-link" href={a.ctaSecondary.href}>{a.ctaSecondary.label}</a></p>}
           </div>
 
           {a.sourceLinks?.length ? (
