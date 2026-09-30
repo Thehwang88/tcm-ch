@@ -1,0 +1,163 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 30.09.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/urinuntersuchung';
+const url = `https://tcm.ch${path}/`;
+const title = 'Urinuntersuchung: Teststreifen, Labor & Urinkultur erklärt';
+const description = 'Was eine Urinuntersuchung zeigt: Unterschied zwischen Teststreifen, Laboranalyse und Urinkultur, wie die Probe richtig abgegeben wird und warum ein Wert allein keine Diagnose ist.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-09-30', dateModified: '2026-09-30',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Urinuntersuchung', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/koerpersignale/haeufiger-harndrang-nachts/', label: 'Häufiger Harndrang nachts' },
+  { href: '/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/', label: 'Plötzlicher Harndrang' },
+];
+const rel2Links = [
+  { href: '/beschwerden/blasenentzuendung/', label: 'Blasenentzündung' },
+  { href: '/beschwerden/reizblase/', label: 'Reizblase' },
+  { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'Grosses Blutbild' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Urinuntersuchung</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Urinuntersuchung: Was zeigen Teststreifen, Labor und Kultur?</h1>
+        <p class="lead">Brennen beim Wasserlassen, auffälliger Urin oder eine Routinekontrolle: Die Urinuntersuchung gehört zu den häufigsten Tests überhaupt. Je nach Frage kommen Teststreifen, Laboranalyse oder Urinkultur zum Einsatz, und sie zeigen unterschiedlich viel.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Urinuntersuchungen werden ärztlich veranlasst und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+<h2>Es gibt nicht die eine Urinuntersuchung</h2>
+          <p>Aus einer Urinprobe lassen sich verschiedene Dinge bestimmen, und die drei häufigsten Verfahren beantworten unterschiedliche Fragen:</p>
+          <ul>
+            <li><strong>Teststreifen (Schnelltest):</strong> Ein Streifen wird in den Urin getaucht und zeigt innert Minuten grobe Hinweise, etwa auf weisse oder rote Blutkörperchen, Nitrit als Bakterienhinweis, Eiweiss, Zucker oder Ketone.</li>
+            <li><strong>Laboruntersuchung mit Mikroskopie:</strong> Der Urin wird im Labor genauer analysiert; unter dem Mikroskop lassen sich Zellen, Kristalle und Zylinder beurteilen, quantitativ auch Eiweiss oder andere Stoffe.</li>
+            <li><strong>Urinkultur:</strong> Der Urin wird auf Nährböden angelegt. Nach ein bis zwei Tagen zeigt sich, ob und welche Bakterien in relevanter Menge wachsen und welche Antibiotika wirken. Das ist der Massstab bei komplizierten oder wiederkehrenden Harnwegsinfekten.</li>
+          </ul>
+
+          <h2>Wann wird der Urin untersucht?</h2>
+          <p>Typische Anlässe sind Brennen beim Wasserlassen und häufiger Harndrang mit Verdacht auf <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a>, sichtbares oder vermutetes Blut im Urin, unklare Flankenschmerzen, Verlaufskontrollen bei Nieren- oder Blasenerkrankungen, Diabetes- und Schwangerschaftskontrollen sowie Check-up-Situationen.</p>
+
+          <h2>Wie läuft die Probe ab?</h2>
+          <p>Meist wird Mittelstrahlurin verwendet: erst etwas Urin in die Toilette, dann den Becher füllen. So gelangen weniger Keime von Haut und Schleimhaut in die Probe. Für manche Fragestellungen ist Morgenurin oder Sammelurin über 24 Stunden nötig; die Praxis sagt dir, was gebraucht wird. Die Probe sollte frisch verarbeitet werden, weil längeres Stehen die Werte verfälscht.</p>
+
+          <h2>Was Ergebnisse zeigen können und was nicht</h2>
+          <p>Ein Teststreifen liefert Hinweise, keine Diagnosen. Ein positiver Befund kann harmlose Gründe haben, etwa Verunreinigung der Probe, Menstruation oder intensive körperliche Belastung, und ein unauffälliger Streifen schliesst nicht jede Erkrankung aus. Umgekehrt bedeutet ein Bakteriennachweis ohne Beschwerden nicht automatisch, dass eine Behandlung nötig ist.</p>
+          <p>Deshalb gilt: Urinbefunde werden zusammen mit Beschwerden, Untersuchung und gegebenenfalls Blutwerten beurteilt. Aus einem einzelnen Wert allein ergibt sich keine Diagnose, und auffällige Befunde werden je nach Frage mit Laboranalyse, Kultur oder Bildgebung weiter abgeklärt.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Wann rasch abklären?</div>
+            <p>Sichtbares Blut im Urin ohne erklärbaren Grund, Fieber und Schüttelfrost mit Flankenschmerzen, starke Schmerzen beim Wasserlassen oder plötzlich fehlende Urinausscheidung gehören zeitnah in ärztliche Beurteilung. Harnwegsbeschwerden in der Schwangerschaft und bei Männern sollten generell ärztlich eingeordnet werden.</p>
+          </div>
+
+          <h2>Wer führt die Untersuchung durch?</h2>
+          <p>Teststreifen werden direkt in der Hausarzt-, Kinderarzt- oder gynäkologischen Praxis eingesetzt. Laboranalysen und Urinkulturen übernehmen medizinische Labors im Auftrag der Praxis. Frei verkäufliche Teststreifen für zu Hause können Hinweise geben, ersetzen aber keine ärztliche Beurteilung.</p>
+
+          <h2>Was passiert danach?</h2>
+          <p>Je nach Befund folgt eine Behandlung, etwa bei einem Harnwegsinfekt, eine Kontrolle nach Abschluss, eine gezielte Zusatzdiagnostik wie <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> der Nieren und Blase oder schlicht die Entwarnung. Wiederkehrende Infekte werden strukturiert abgeklärt statt wiederholt blind behandelt.</p>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Die Urinuntersuchung ist medizinische Diagnostik und wird nicht durch TCM ersetzt. Bei abgeklärten funktionellen Beschwerden wie einer <a href="/beschwerden/reizblase/">Reizblase</a> kann danach besprochen werden, ob eine ergänzende Behandlung sinnvoll ist.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Was bedeutet ein positiver Teststreifen?</h3>
+          <p>Er liefert einen Hinweis, keine Diagnose. Ob ein Befund relevant ist, hängt von Beschwerden, Probenqualität und weiteren Untersuchungen ab. Die Einordnung gehört in ärztliche Hände.</p>
+          <h3>Wozu braucht es eine Urinkultur?</h3>
+          <p>Sie zeigt, welche Bakterien in relevanter Menge wachsen und welche Antibiotika wirken. Eingesetzt wird sie vor allem bei komplizierten, wiederkehrenden oder nicht ansprechenden Harnwegsinfekten.</p>
+          <h3>Wie gebe ich die Urinprobe richtig ab?</h3>
+          <p>Meist als Mittelstrahlurin: erst etwas Urin in die Toilette, dann den Becher füllen. Für bestimmte Fragen braucht es Morgen- oder Sammelurin; die Praxis instruiert dich vorab.</p>
+        </div>
+
+        <LibraryRelated
+          label="Körpersignale"
+          title="Passende Symptome verstehen"
+          links={rel1Links}
+          allHref="/koerpersignale/"
+          allLabel="Alle Körpersignale"
+        />
+        <LibraryRelated
+          label="Beschwerden & Untersuchungen"
+          title="Passende Themen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Harnwegsbeschwerden und unklar, welche Abklärung sinnvoll ist?</div>
+          <p>In der ärztlichen Sprechstunde lässt sich klären, welche Untersuchung zu deinem Beschwerdemuster passt und was zuerst medizinisch eingeordnet werden sollte.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+            <a class="btn btn--ghost" href="/standorte/">Praxis in deiner Nähe finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

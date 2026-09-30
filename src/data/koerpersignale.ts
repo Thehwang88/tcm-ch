@@ -55,6 +55,7 @@ const DATEN9 = { datePublished: '2026-09-22', dateModified: '2026-09-22' };
 const DATEN10 = { datePublished: '2026-09-25', dateModified: '2026-09-25' };
 const DATEN11 = { datePublished: '2026-09-26', dateModified: '2026-09-26' };
 const DATEN12 = { datePublished: '2026-09-29', dateModified: '2026-09-29' };
+const DATEN13 = { datePublished: '2026-09-30', dateModified: '2026-09-30' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -154,6 +155,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Kann Akupunktur den Puls im Ohr wegmachen?', a: 'Nein. Zuerst braucht es die medizinische Ursachensuche. Bleibt nach unauffälliger Abklärung ein belastendes Ohrgeräusch oder spielen Stress und Verspannung mit, kann eine begleitende Behandlung sinnvoll sein.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/', label: 'Tinnitus neu aufgetreten: Was jetzt?', cat: 'Was jetzt?' },
       { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
       { href: '/koerpersignale/schwindel-beim-umdrehen-im-bett/', label: 'Schwindel beim Umdrehen im Bett', cat: 'Körpersignal' },
       { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck', cat: 'Beschwerde' },
@@ -857,6 +859,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft akut gegen Rückenschmerzen beim Husten?', a: 'Beim Husten leicht in die Knie gehen oder abstützen, das federt die Druckspitze ab. Danach Wärme, moderate Bewegung statt Schonhaltung. Hält der Schmerz über zwei bis drei Wochen an oder strahlt er aus, gehört er abgeklärt.' },
     ],
     related: [
+      { href: '/koerpersignale/schmerzen-beim-tiefen-einatmen/', label: 'Schmerzen beim tiefen Einatmen', cat: 'Körpersignal' },
       { href: '/beschwerden/interkostalneuralgie/', label: 'Interkostalneuralgie', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann sollte ich zuerst zum Arzt?', cat: 'Frage' },
       { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
@@ -1159,6 +1162,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Ohrknacken zum Arzt?', a: 'Wenn Druckgefühl oder Hörminderung nicht verschwinden, Schmerzen stärker werden oder Sekret austritt. Eine plötzliche deutliche Hörminderung gehört zeitnah abgeklärt, ebenso starker Schwindel mit neuer Hörveränderung.' },
     ],
     related: [
+      { href: '/koerpersignale/kiefer-knackt-beim-oeffnen/', label: 'Kiefer knackt beim Öffnen', cat: 'Körpersignal' },
       { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
       { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
@@ -2050,6 +2054,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Ist nächtlicher Harndrang bei Männern ein Prostata-Zeichen?', a: 'Ab etwa 50 ist eine vergrösserte Prostata eine häufige Ursache, typisch zusammen mit schwächerem Harnstrahl und Restharngefühl. Das gehört urologisch untersucht, ist aber meist gutartig und gut behandelbar.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung', cat: 'Untersuchung' },
       { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
       { href: '/beschwerden/prostata/', label: 'Prostata', cat: 'Beschwerde' },
       { href: '/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/', label: 'Plötzlicher Harndrang', cat: 'Körpersignal' },
@@ -2242,6 +2247,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss Magendruck im Liegen abgeklärt werden?', a: 'Wenn er über Wochen regelmässig auftritt oder Schluckbeschwerden, Gewichtsverlust, schwarzer Stuhl oder nächtliches Erbrechen dazukommen. Dann gehört meist eine Magenspiegelung dazu. Druck mit Engegefühl, Atemnot oder Ausstrahlung in den Arm: sofort Notruf 144.' },
     ],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/verstopfung/', label: 'Was tun bei Verstopfung?', cat: 'Was jetzt?' },
       { href: '/koerpersignale/schmerzen-solarplexus/', label: 'Schmerzen am Solarplexus', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
       { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
@@ -2295,6 +2301,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Was hilft gegen Nervenreizung im Nacken?', a: 'Bei muskulär-funktionellen Ursachen die Kombination aus Entlastung, Haltungsarbeit und Physiotherapie, ergänzt durch Akupunktur oder Tuina gegen Spannung und Schmerz. Bei Bandscheiben- oder knöchernen Ursachen richtet sich die Behandlung nach dem ärztlichen Befund.' },
     ],
     related: [
+      { href: '/koerpersignale/schmerzen-zwischen-den-schulterblaettern/', label: 'Schmerzen zwischen den Schulterblättern', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-im-nacken/', label: 'Kribbeln im Nacken', cat: 'Körpersignal' },
       { href: '/visuals/nacken-ausstrahlung/', label: 'Visual: Ausstrahlung vom Nacken', cat: 'Visual' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
@@ -2505,6 +2512,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Achte auf den Abstand zwischen Aufstehen, Kaffee, Frühstück und dem ersten Stuhldrang. Auch ein kurzes Ernährungs- und Symptomtagebuch kann helfen, wiederkehrende Auslöser zu erkennen. Mehr zum Gesamtbild findest du unter <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/h2-atemtest/', label: 'H2-Atemtest', cat: 'Untersuchung' },
       { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', label: 'Stuhlanalyse', cat: 'Untersuchung' },
       { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie: Ablauf der Darmspiegelung', cat: 'Untersuchung' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
@@ -2693,6 +2701,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Ist trockene Raumluft der wahrscheinlichste Auslöser, findest du die wirksamsten Massnahmen im Artikel <a href="/wissen/heizungsluft-trockene-schleimhaeute/">Heizungsluft und trockene Schleimhäute</a>. Bei pfeifender Atmung oder Atemnot unter Belastung gehört die Abklärung in Richtung <a href="/beschwerden/asthma/">Asthma</a>, bei bekannter Lungenerkrankung siehe <a href="/beschwerden/copd/">COPD</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/husten-nach-dem-essen/', label: 'Husten nach dem Essen', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion: Was zeigt die Spirometrie?', cat: 'Untersuchung' },
       { href: '/beschwerden/asthma/', label: 'Asthma', cat: 'Beschwerde' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen', cat: 'Beschwerde' },
@@ -2734,6 +2743,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Bei Verdacht auf eine Allergie findest du mehr unter <a href="/beschwerden/allergien-heuschnupfen/">Allergien und Heuschnupfen</a>. Kommen Gesichtsschmerz und Druck dazu, passt eher das Bild der <a href="/beschwerden/sinusitis/">Sinusitis</a>. Ist trockene Raumluft der Auslöser, helfen die Massnahmen im Artikel <a href="/wissen/heizungsluft-trockene-schleimhaeute/">Heizungsluft und trockene Schleimhäute</a>. Und weil eine verstopfte Nase nachts zu Mundatmung führt, lohnt sich auch ein Blick auf <a href="/koerpersignale/schnarchen-jede-nacht/">Schnarchen jede Nacht</a>.</p>`,
     faqs: [],
     related: [
+      { href: '/gesundheitsbibliothek/was-jetzt/heuschnupfen-akut/', label: 'Heuschnupfen akut: Was jetzt?', cat: 'Was jetzt?' },
       { href: '/beschwerden/allergien-heuschnupfen/', label: 'Allergien & Heuschnupfen', cat: 'Beschwerde' },
       { href: '/beschwerden/sinusitis/', label: 'Sinusitis', cat: 'Beschwerde' },
       { href: '/wissen/heizungsluft-trockene-schleimhaeute/', label: 'Heizungsluft & trockene Schleimhäute', cat: 'Artikel' },
@@ -2949,6 +2959,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ich mit Oberbauchbeschwerden zum Arzt?', a: 'Bei Druck über Wochen, Gewichtsverlust, Schluckbeschwerden, Blut im oder schwarzem Stuhl, wiederholtem Erbrechen oder Fieber. Plötzliche heftige Oberbauchschmerzen mit Ausstrahlung, Atemnot oder Kaltschweiss sind ein Notfall: Notruf 144.' },
     ],
     related: [
+      { href: '/koerpersignale/magen-knurrt-staendig/', label: 'Magen knurrt ständig', cat: 'Körpersignal' },
       { href: '/koerpersignale/schmerzen-solarplexus/', label: 'Schmerzen am Solarplexus', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie: Was passiert bei der Magenspiegelung?', cat: 'Untersuchung' },
       { href: '/koerpersignale/harter-oberbauch-ohne-schmerzen/', label: 'Harter Oberbauch ohne Schmerzen', cat: 'Körpersignal' },
@@ -3247,6 +3258,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Akupunktur kann bei bestimmten begleitenden Beschwerden ergänzend eingesetzt werden. Bei neuem, ungeklärtem oder weit verbreitetem Kribbeln sollte jedoch zuerst geklärt werden, ob eine neurologische oder andere medizinisch relevante Ursache vorliegt.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/kribbeln-im-ruecken/', label: 'Kribbeln im Rücken', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-im-gesicht/', label: 'Kribbeln im Gesicht', cat: 'Körpersignal' },
       { href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts', cat: 'Körpersignal' },
       { href: '/koerpersignale/zehen-kribbeln/', label: 'Zehen kribbeln', cat: 'Körpersignal' },
@@ -3342,6 +3354,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Akupunktur kann bei manchen begleitenden funktionellen Beschwerden eingesetzt werden. Ein neues Druckgefühl im Ohr sollte jedoch nicht allein mit einem TCM-Muster erklärt werden. Hörverlust und andere auffällige Ohrsymptome benötigen eine medizinische beziehungsweise HNO-ärztliche Einordnung.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/ohr-juckt-innen/', label: 'Ohr juckt innen', cat: 'Körpersignal' },
       { href: '/beschwerden/morbus-meniere/', label: 'Morbus Menière', cat: 'Beschwerde' },
       { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
       { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
@@ -3453,6 +3466,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Bei funktionellen Beschwerden wie Stress oder muskulärer Anspannung kann Akupunktur ergänzend eingesetzt werden. Ein neu aufgetretener Tremor oder ungeklärtes Ganzkörperzittern sollte jedoch nicht allein über ein TCM-Muster erklärt werden.</p>`,
     faqs: [],
     related: [
+      { href: '/koerpersignale/haende-zittern/', label: 'Zitternde Hände', cat: 'Körpersignal' },
       { href: '/koerpersignale/herzklopfen-im-liegen/', label: 'Herzklopfen im Liegen', cat: 'Körpersignal' },
       { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?', cat: 'Artikel' },
@@ -3494,6 +3508,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann muss ein dumpfes Ohr rasch abgeklärt werden?', a: 'Wenn das Hörvermögen auf einem Ohr plötzlich deutlich schlechter wird, besonders zusammen mit Ohrgeräuschen, Schwindel, starkem Druckgefühl oder neurologischen Beschwerden.' },
     ],
     related: [
+      { href: '/koerpersignale/ohr-juckt-innen/', label: 'Ohr juckt innen', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/hoertest/', label: 'Hörtest: Wie läuft eine Audiometrie ab?', cat: 'Untersuchung' },
       { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
       { href: '/koerpersignale/druck-auf-den-ohren/', label: 'Druck auf den Ohren', cat: 'Körpersignal' },
@@ -3534,6 +3549,7 @@ export const koerpersignale: Koerpersignal[] = [
       { q: 'Wann sollte Kribbeln im Nacken abgeklärt werden?', a: 'Wenn es neu und anhaltend ist, deutlich zunimmt, mit Taubheit verbunden ist, nach einem Unfall entstanden ist oder bis in Arm oder Hand zieht.' },
     ],
     related: [
+      { href: '/koerpersignale/kribbeln-im-ruecken/', label: 'Kribbeln im Rücken', cat: 'Körpersignal' },
       { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
       { href: '/koerpersignale/nacken-knackt-beim-drehen/', label: 'Nacken knackt beim Drehen', cat: 'Körpersignal' },
       { href: '/beschwerden/nackenschmerzen/', label: 'Nackenschmerzen', cat: 'Beschwerde' },
@@ -3939,6 +3955,7 @@ export const koerpersignale: Koerpersignal[] = [
     faqs: [
     ],
     related: [
+      { href: '/koerpersignale/haende-zittern/', label: 'Zitternde Hände', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/emg/', label: 'EMG (Elektromyografie)', cat: 'Untersuchung' },
       { href: '/koerpersignale/augenlid-zuckt/', label: 'Augenlid zuckt', cat: 'Körpersignal' },
       { href: '/koerpersignale/wadenkraempfe-nachts/', label: 'Wadenkrämpfe nachts', cat: 'Körpersignal' },
@@ -4123,6 +4140,337 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
       { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
       { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'kribbeln-im-ruecken',
+    symptom: 'Kribbeln im Rücken',
+    title: 'Kribbeln im Rücken: Muster erkennen & wann abklären',
+    metaDesc: 'Kribbeln im Rücken kann von Haut, Muskulatur oder Nervenwurzeln kommen. Welche Muster du unterscheiden kannst und wann eine Abklärung sinnvoll ist.',
+    h1: 'Was bedeutet Kribbeln im Rücken?',
+    category: 'Hände & Nerven',
+    lead: 'Ein Kribbeln auf oder unter der Haut am Rücken ist ein häufiges und meist harmloses Signal. Entscheidend ist das Muster: Bleibt es an einer Stelle, wandert es bandförmig um den Rumpf oder tritt es zusammen mit anderen Beschwerden auf?',
+    readingTime: '5 Min.',
+    ctaTitle: 'Kribbeln einordnen lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein umschriebenes Kribbeln am Rücken entsteht oft in der Haut oder in der verspannten Muskulatur, zum Beispiel nach langem Sitzen, unter einem drückenden Rucksackgurt oder bei trockener, gereizter Haut. Solche Missempfindungen kommen und gehen und brauchen selten eine Behandlung.</p>
+<p>Genauer hinschauen solltest du, wenn das Kribbeln einem klaren Muster folgt: bandförmig um eine Rumpfseite, entlang einer Linie nach unten ins Bein oder zusammen mit Taubheit und Schwäche. Dann können Nervenwurzeln oder einzelne Hautnerven beteiligt sein.</p>
+<h2>Muster, die du unterscheiden kannst</h2>
+<ul>
+<li><strong>Fleckförmig und wechselnd:</strong> mal hier, mal dort, ohne feste Linie. Spricht am ehesten für Haut oder Muskulatur, oft haltungs- oder stressabhängig.</li>
+<li><strong>Bandförmig um eine Seite des Rumpfs:</strong> ein gereizter Zwischenrippennerv kann so ein Muster machen. Tritt in derselben Zone zusätzlich ein brennender Schmerz oder nach wenigen Tagen ein Hautausschlag mit Bläschen auf, gehört das rasch ärztlich angeschaut, weil eine <a href="/beschwerden/guertelrose/">Gürtelrose</a> dahinterstecken kann.</li>
+<li><strong>Linie vom Rücken ins Bein:</strong> zieht das Kribbeln vom unteren Rücken über Gesäss und Bein bis in den Fuss, passt das zu einer gereizten Nervenwurzel, wie sie etwa bei <a href="/beschwerden/ischias/">Ischias-Beschwerden</a> vorkommt.</li>
+<li><strong>Nur bei bestimmter Haltung:</strong> Kribbeln, das beim langen Sitzen oder in einer bestimmten Liegeposition auftritt und nach Bewegung verschwindet, ist meist ein Druck- oder Durchblutungsphänomen.</li>
+</ul>
+<p>Kribbelt es nicht nur am Rücken, sondern an mehreren Körperstellen gleichzeitig, ist unsere Seite <a href="/koerpersignale/kribbeln-im-koerper/">Kribbeln im Körper</a> der bessere Einstieg. Für ein Kribbeln, das vom Nacken in den Arm zieht, gibt es ein eigenes Muster: <a href="/koerpersignale/kribbeln-vom-nacken-in-den-arm/">Kribbeln vom Nacken in den Arm</a>.</p>
+<h2>Was du selbst beobachten kannst</h2>
+<p>Notier dir über einige Tage: Wo genau kribbelt es, immer an derselben Stelle oder wechselnd? Ist die Haut dort verändert, gerötet oder berührungsempfindlich? Hängt es mit Sitzen, Liegen oder bestimmten Bewegungen zusammen? Und gibt es Begleitzeichen wie Taubheit, Schwäche oder Schmerzen? Diese Angaben machen eine Abklärung deutlich gezielter.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch abklären?</div><p>Kribbeln zusammen mit neuer Schwäche oder Lähmung in einem Bein, Taubheit im Genital- oder Gesässbereich, Problemen mit Blase oder Darm, Gangunsicherheit oder nach einem Sturz gehört rasch in ärztliche Beurteilung. Auch ein bandförmiges Kribbeln mit beginnendem Bläschenausschlag sollte zeitnah angeschaut werden, weil eine frühe Behandlung der Gürtelrose wichtig ist.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>Die Hausärztin prüft Gefühl, Kraft und Reflexe und entscheidet je nach Muster, ob weitere Diagnostik nötig ist. Bei Verdacht auf eine Nervenbeteiligung kommen eine <a href="/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/">neurologische Untersuchung</a> und gegebenenfalls eine <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a> oder Bildgebung in Frage. Häufig ist das Ergebnis beruhigend: kein Nervenschaden, sondern ein muskulär-haltungsbedingtes Reizphänomen.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Ein unklares Kribbeln sollte zuerst eingeordnet werden, besonders wenn es einem Nervenmuster folgt. Ist die Abklärung unauffällig und spielen Verspannung, langes Sitzen oder Stress erkennbar mit, kann eine ergänzende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> an der Rücken- und Schultermuskulatur besprochen werden. Sie ersetzt keine neurologische Diagnostik.</p>`,
+    faqs: [
+      { q: 'Ist Kribbeln im Rücken gefährlich?', a: 'Meist nicht. Fleck- oder stellenweises Kribbeln ohne Begleitsymptome ist in der Regel harmlos. Rasch abklären solltest du Kribbeln mit Schwäche, Taubheit im Genitalbereich, Blasen- oder Darmproblemen oder nach einem Sturz.' },
+      { q: 'Kann Kribbeln am Rücken eine Gürtelrose ankündigen?', a: 'Ja, das kommt vor. Typisch ist ein brennendes oder kribbelndes Gefühl in einer bandförmigen Zone auf einer Rumpfseite, einige Tage bevor Bläschen erscheinen. Bei diesem Muster lohnt sich eine frühe ärztliche Beurteilung.' },
+      { q: 'Kommt Kribbeln im Rücken von der Wirbelsäule?', a: 'Manchmal. Eine gereizte Nervenwurzel macht aber meist ein klares Linienmuster, oft mit Ausstrahlung ins Bein. Ein wechselndes, fleckiges Kribbeln spricht eher für Haut oder Muskulatur als für die Wirbelsäule.' },
+    ],
+    related: [
+      { href: '/koerpersignale/kribbeln-im-koerper/', label: 'Kribbeln im Körper', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/', label: 'Neurologische Untersuchung', cat: 'Untersuchung' },
+      { href: '/beschwerden/guertelrose/', label: 'Gürtelrose', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'ohr-juckt-innen',
+    symptom: 'Juckreiz im Ohr',
+    title: 'Ohr juckt innen: Ursachen & was du nicht tun solltest',
+    metaDesc: 'Juckt es im Gehörgang, stecken oft trockene Haut, ein Ekzem oder Reizung durch Wattestäbchen dahinter. Was hilft, was schadet und wann der HNO drankommt.',
+    h1: 'Warum juckt mein Ohr innen?',
+    category: 'Kopf & Sinne',
+    lead: 'Ein Juckreiz tief im Ohr ist lästig, weil man nicht richtig hinkommt. Genau das ist auch der wichtigste Hinweis: Die meisten juckenden Gehörgänge werden durch zu viel Reinigen und Kratzen schlimmer, nicht besser.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Beschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Die Haut im Gehörgang ist dünn und empfindlich. Juckt sie, ist sie meist gereizt oder zu trocken. Häufige Auslöser sind Wattestäbchen und häufiges Reinigen, Wasser im Ohr, Kopfhörer und Ohrstöpsel, trockene Haut oder ein Ekzem des Gehörgangs. Auch Ohrenschmalz, der sich löst oder verschiebt, kann kitzeln.</p>
+<p>Seltener stecken eine beginnende Gehörgangsentzündung oder eine Pilzbesiedlung dahinter. Beide machen meist zusätzlich Schmerzen, ein Nässegefühl oder Ausfluss und gehören in die HNO-Praxis.</p>
+<h2>Warum Kratzen und Wattestäbchen das Problem verstärken</h2>
+<p>Der Gehörgang reinigt sich selbst: Ohrenschmalz transportiert Hautschüppchen und Schmutz nach aussen und schützt die Haut. Wattestäbchen schieben den Schmalz tiefer, reiben die Schutzschicht ab und hinterlassen winzige Kratzer. Die gereizte Haut juckt stärker, man reinigt noch mehr, und der Kreislauf beginnt von vorn. Dasselbe gilt für Büroklammern, Haarnadeln und Fingernägel, die zusätzlich Verletzungen setzen können.</p>
+<h2>Was du selbst tun kannst</h2>
+<ul>
+<li><strong>Nichts ins Ohr stecken:</strong> weder Wattestäbchen noch andere Gegenstände. Das Ohr aussen mit dem Waschlappen reinigen reicht.</li>
+<li><strong>Feuchtigkeit meiden:</strong> nach dem Duschen oder Schwimmen das Ohr sanft trocken tupfen und Wasser abfliessen lassen, ohne zu reiben.</li>
+<li><strong>Kopfhörer-Pausen:</strong> In-Ear-Kopfhörer und Ohrstöpsel einige Tage weglassen oder reinigen, wenn der Juckreiz mit ihnen zusammenhängt.</li>
+<li><strong>Geduld:</strong> Eine gereizte Gehörgangshaut beruhigt sich meist innert ein bis zwei Wochen, wenn sie in Ruhe gelassen wird.</li>
+</ul>
+<p>Ohrentropfen oder Hausmittel auf eigene Faust sind heikel: Wenn das Trommelfell nicht intakt ist, können sie schaden. Vor Tropfen jeder Art gehört das Ohr einmal angeschaut.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann zum HNO?</div><p>Ärztlich anschauen lassen solltest du das Ohr bei Schmerzen, Druckgefühl oder Ausfluss, bei neu vermindertem Hören, wenn der Juckreiz trotz Schonung über zwei bis drei Wochen bleibt oder immer wiederkehrt, sowie bei Diabetes oder geschwächtem Immunsystem, weil Gehörgangsentzündungen dann seltener harmlos verlaufen. Starke Schmerzen mit Fieber gehören zeitnah in Behandlung.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>In der Hausarzt- oder HNO-Praxis wird der Gehörgang mit dem Ohrmikroskop oder Otoskop angeschaut. So lässt sich unterscheiden, ob trockene Haut, ein Ekzem, eine Entzündung, ein Pilz oder ein Schmalzpfropf dahintersteckt, und die Behandlung passt zum Befund statt zur Vermutung. Ein Pfropf wird dabei gleich fachgerecht entfernt.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Ein juckender Gehörgang ist kein eigenständiges TCM-Behandlungsziel und sollte bei anhaltenden Beschwerden zuerst HNO-ärztlich angeschaut werden. Bestehen daneben eingeordnete Themen wie eine generell trockene, juckende Haut oder <a href="/beschwerden/neurodermitis/">Neurodermitis</a>, kann im Rahmen von deren Behandlung auch über ergänzende Möglichkeiten gesprochen werden.</p>`,
+    faqs: [
+      { q: 'Warum juckt mein Ohr innen ständig?', a: 'Häufigste Ursache ist eine gereizte oder zu trockene Gehörgangshaut, oft unterhalten durch Wattestäbchen, häufiges Reinigen, Kopfhörer oder Wasser im Ohr. Bleibt der Juckreiz trotz Schonung über Wochen, gehört das Ohr einmal fachärztlich angeschaut.' },
+      { q: 'Darf ich bei Juckreiz Wattestäbchen benutzen?', a: 'Besser nicht. Wattestäbchen schieben Ohrenschmalz tiefer, verletzen die empfindliche Haut und verstärken den Juckreiz auf Dauer. Das Ohr reinigt sich selbst; aussen mit dem Waschlappen zu reinigen reicht.' },
+      { q: 'Woran erkenne ich eine Gehörgangsentzündung?', a: 'Typisch sind zunehmende Schmerzen, besonders beim Ziehen an der Ohrmuschel oder Druck auf den Ohrknorpel, dazu oft Ausfluss, Schwellung und vermindertes Hören. Damit solltest du zeitnah in die HNO- oder Hausarztpraxis.' },
+    ],
+    related: [
+      { href: '/koerpersignale/dumpfes-gefuehl-im-ohr/', label: 'Dumpfes Gefühl im Ohr', cat: 'Körpersignal' },
+      { href: '/koerpersignale/druck-auf-den-ohren/', label: 'Druck auf den Ohren', cat: 'Körpersignal' },
+      { href: '/koerpersignale/ohr-einseitig-verstopft/', label: 'Ohr einseitig verstopft', cat: 'Körpersignal' },
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'kiefer-knackt-beim-oeffnen',
+    symptom: 'Kieferknacken beim Öffnen',
+    title: 'Kiefer knackt beim Öffnen: harmlos oder abklären?',
+    metaDesc: 'Ein Knacken im Kiefergelenk beim Öffnen des Munds ist häufig und oft harmlos. Woher das Geräusch kommt, welche Begleitzeichen zählen und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum knackt mein Kiefer beim Öffnen?',
+    category: 'Kopf & Sinne',
+    lead: 'Beim Gähnen oder Abbeissen knackt es hörbar im Gelenk vor dem Ohr. Solange das Geräusch ohne Schmerzen und ohne Blockaden auftritt, ist es meist kein Grund zur Sorge. Wichtig ist, die Begleitzeichen zu kennen.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Kieferbeschwerden besprechen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Das Kiefergelenk enthält eine kleine Knorpelscheibe, den Diskus, die bei jeder Mundöffnung mitgleitet. Liegt sie nicht mehr exakt in der Spur, springt sie beim Öffnen oder Schliessen hörbar über den Gelenkkopf: Das ist das typische Knacken. Diese Diskusverlagerung ist verbreitet und bleibt bei vielen Menschen dauerhaft ohne Beschwerden.</p>
+<p>Ein Knacken allein, ohne Schmerzen, ohne eingeschränkte Mundöffnung und ohne Blockadegefühl, muss in der Regel nicht behandelt werden.</p>
+<h2>Worauf du achten solltest</h2>
+<ul>
+<li><strong>Schmerzen:</strong> Schmerzt das Gelenk oder die Kaumuskulatur beim Kauen, Sprechen oder morgens nach dem Aufwachen?</li>
+<li><strong>Mundöffnung:</strong> Bekommst du drei Finger hochkant zwischen die Schneidezähne? Eine deutlich eingeschränkte oder schief verlaufende Öffnung ist ein Hinweis auf eine Funktionsstörung.</li>
+<li><strong>Blockaden:</strong> Bleibt der Kiefer beim Öffnen oder Schliessen zeitweise hängen oder lässt er sich nur mit einem Trick wieder bewegen?</li>
+<li><strong>Zähneknirschen:</strong> Morgendliche Verspannung der Kaumuskeln, abgeschliffene Zähne oder Hinweise vom Zahnarzt sprechen für nächtliches <a href="/beschwerden/zaehneknirschen/">Zähneknirschen</a>, das das Gelenk zusätzlich belastet.</li>
+</ul>
+<p>Kommen zum Knacken Schmerzen, Verspannung oder Blockaden dazu, spricht man von einer craniomandibulären Dysfunktion. Was dahintersteckt und wie behandelt wird, erklärt unsere Seite <a href="/beschwerden/kieferschmerzen/">Kieferschmerzen &amp; CMD</a>; diese Seite hier bleibt bewusst beim Geräusch selbst.</p>
+<h2>Was du selbst tun kannst</h2>
+<p>Provoziere das Knacken nicht absichtlich und vermeide extremes Aufreissen, etwa beim Gähnen die Faust unters Kinn stützen. Harte, zähe Lebensmittel und ausgiebiges Kaugummikauen kannst du reduzieren, wenn das Gelenk gereizt ist. Achte tagsüber darauf, ob deine Zähne aufeinanderstehen: In Ruhe haben die Zahnreihen leicht Abstand, die Zunge liegt locker am Gaumen. Viele pressen unbewusst bei Konzentration oder Stress.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Zahnärztlich oder ärztlich beurteilen lassen solltest du den Kiefer, wenn das Knacken neu von Schmerzen begleitet wird, die Mundöffnung eingeschränkt ist oder der Kiefer blockiert. Eine akute Kiefersperre, bei der der Mund nicht mehr richtig öffnet oder schliesst, gehört zeitnah in Behandlung. Auch einseitige Schwellung, Fieber oder Schmerzen nach einem Schlag aufs Kinn sind Gründe für eine rasche Abklärung.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>Erste Anlaufstelle ist die Zahnarztpraxis oder eine auf Kiefergelenke spezialisierte Sprechstunde. Untersucht werden Gelenkgeräusche, Mundöffnung, Kaumuskulatur und Zahnkontakte; je nach Befund folgen Schienentherapie, Physiotherapie der Kaumuskulatur oder weitere Diagnostik. Ein schmerzloses Knacken allein ist selten ein Behandlungsgrund.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Beim reinen Knacken ohne Beschwerden gibt es nichts zu behandeln. Wenn Verspannung der Kau-, Nacken- und Schultermuskulatur, Stress oder nächtliches Pressen das Bild mitprägen und die zahnärztliche Einordnung erfolgt ist, kann eine ergänzende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> an der beteiligten Muskulatur besprochen werden. Die Gelenk- und Schienenbehandlung bleibt Sache der Zahnmedizin.</p>`,
+    faqs: [
+      { q: 'Ist Kieferknacken gefährlich?', a: 'Ein Knacken ohne Schmerzen, ohne Blockaden und mit normaler Mundöffnung ist meist harmlos und muss nicht behandelt werden. Kommen Schmerzen, Blockaden oder eine eingeschränkte Öffnung dazu, lohnt sich eine zahnärztliche Beurteilung.' },
+      { q: 'Kann das Knacken von selbst verschwinden?', a: 'Ja, das Geräusch kann sich verändern, zeitweise verschwinden und wiederkommen, je nachdem wie die Knorpelscheibe im Gelenk gleitet. Ein dauerhaft knackendes, aber beschwerdefreies Gelenk ist kein Grund zur Sorge.' },
+      { q: 'Soll ich das Knacken bewusst auslösen, um es zu lösen?', a: 'Nein. Absichtliches Provozieren bringt nichts und kann das Gelenk reizen. Sinnvoller ist, extremes Aufreissen zu vermeiden und auf Zeichen von Pressen oder Knirschen zu achten.' },
+    ],
+    related: [
+      { href: '/koerpersignale/ohr-knackt-beim-schlucken/', label: 'Ohr knackt beim Schlucken', cat: 'Körpersignal' },
+      { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen & CMD', cat: 'Beschwerde' },
+      { href: '/beschwerden/zaehneknirschen/', label: 'Zähneknirschen', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'husten-nach-dem-essen',
+    symptom: 'Husten nach dem Essen',
+    title: 'Husten nach dem Essen: mögliche Ursachen & Abklärung',
+    metaDesc: 'Husten direkt nach dem Essen kann mit Reflux, Verschlucken oder gereizten Atemwegen zusammenhängen. Welche Muster zählen und wann eine Abklärung wichtig ist.',
+    h1: 'Warum muss ich nach dem Essen husten?',
+    category: 'Hals & Mund',
+    lead: 'Immer wieder Hustenreiz während oder kurz nach dem Essen ist mehr als eine Angewohnheit. Dahinter können aufsteigende Magensäure, kleine Verschlucker oder empfindliche Atemwege stecken. Das Muster hilft beim Unterscheiden.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Beschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Die häufigste Erklärung für wiederkehrenden Husten rund ums Essen ist Reflux: Mageninhalt oder Säurenebel steigt in Speiseröhre und Rachen auf und reizt dort die Hustenrezeptoren. Das funktioniert auch ohne klassisches <a href="/beschwerden/sodbrennen/">Sodbrennen</a>; manche Betroffene husten, räuspern sich oder werden heiser, ohne je Brennen zu spüren.</p>
+<p>Die zweite wichtige Möglichkeit ist Verschlucken: Wenn beim Schlucken kleinste Mengen in die Atemwege geraten, hustet der Körper reflexhaft. Gelegentliches Verschlucken kennt jeder. Häufiges Husten beim Essen, eine feucht oder gurgelnd klingende Stimme danach oder das Gefühl, dass Essen stecken bleibt, sind dagegen Zeichen, die abgeklärt gehören.</p>
+<h2>Muster, die bei der Einordnung helfen</h2>
+<ul>
+<li><strong>Nach üppigen, fettigen oder späten Mahlzeiten, im Liegen schlimmer:</strong> spricht für Reflux als Auslöser.</li>
+<li><strong>Beim Trinken oder bei dünnflüssigen Speisen, mit Räuspern und feuchter Stimme:</strong> spricht für eine Schluckstörung, besonders bei älteren Menschen oder nach neurologischen Erkrankungen.</li>
+<li><strong>Bei bestimmten Lebensmitteln:</strong> scharfe, säurehaltige oder sehr krümelige Speisen können Rachen und Atemwege direkt reizen; einzelne Nahrungsmittel können auch allergisch reagieren.</li>
+<li><strong>Mit Pfeifen oder Engegefühl:</strong> empfindliche Bronchien, etwa bei <a href="/beschwerden/asthma/">Asthma</a>, können auf Essen und Reflux mit Hustenreiz reagieren.</li>
+</ul>
+<h2>Was du selbst beobachten und tun kannst</h2>
+<p>Führ für ein bis zwei Wochen ein kurzes Protokoll: Wann hustest du, bei welchen Speisen, wie lange danach, im Sitzen oder Liegen? Beim Verdacht auf Reflux helfen kleinere Portionen, spätes Essen vermeiden und nach der Mahlzeit zwei bis drei Stunden nicht flach liegen. Iss in Ruhe, aufrecht sitzend und ohne gleichzeitiges Sprechen, wenn du dich leicht verschluckst.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Ärztlich abklären lassen solltest du Husten nach dem Essen, wenn er über Wochen immer wieder auftritt, wenn du dich regelmässig verschluckst, Essen stecken bleibt oder das Schlucken schmerzt, bei ungewolltem Gewichtsverlust, Fieber oder wiederkehrenden Atemwegsinfekten. Heftiges Verschlucken mit Atemnot oder bläulicher Verfärbung ist ein Notfall: in der Schweiz Telefon 144.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>Je nach Muster prüft die Hausärztin Richtung Reflux, Schluckfunktion oder Atemwege. Möglich sind eine <a href="/gesundheitsbibliothek/untersuchungen/gastroskopie/">Magenspiegelung</a>, eine logopädische oder HNO-ärztliche Schluckabklärung oder eine <a href="/gesundheitsbibliothek/untersuchungen/lungenfunktion/">Lungenfunktionsprüfung</a>. Ein länger bestehender Husten ohne klare Erklärung gehört unabhängig vom Essen einmal beurteilt; dafür gibt es die Seite <a href="/koerpersignale/trockener-husten/">Trockener Husten</a>.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Husten nach dem Essen ist zuerst eine Frage der richtigen Diagnose. Ist die Ursache eingeordnet und bleiben funktionelle Beschwerden wie Reflux-Neigung oder ein empfindlicher Magen, kann ergänzend zur ärztlichen Behandlung über <a href="/therapien/akupunktur/">Akupunktur</a> gesprochen werden. Sie ersetzt weder die Abklärung noch eine notwendige Refluxtherapie.</p>`,
+    faqs: [
+      { q: 'Ist Husten nach dem Essen ein Zeichen für Reflux?', a: 'Häufig ja. Aufsteigende Magensäure kann Rachen und Atemwege reizen und Husten auslösen, auch ohne spürbares Sodbrennen. Typisch ist Husten nach üppigen oder späten Mahlzeiten und im Liegen. Sicher einordnen lässt sich das erst mit einer Abklärung.' },
+      { q: 'Wann ist Verschlucken beim Essen bedenklich?', a: 'Gelegentliches Verschlucken ist normal. Häufiges Husten beim Essen oder Trinken, eine feucht klingende Stimme danach, stecken bleibendes Essen oder wiederkehrende Atemwegsinfekte sprechen für eine Schluckstörung und gehören abgeklärt.' },
+      { q: 'Welcher Arzt ist bei Husten nach dem Essen zuständig?', a: 'Der erste Schritt ist die Hausarztpraxis. Je nach Verdacht geht es weiter zur Magen-Darm-Spezialistin, in die HNO- oder Schlucksprechstunde oder zur Lungenärztin.' },
+    ],
+    related: [
+      { href: '/koerpersignale/trockener-husten/', label: 'Trockener Husten', cat: 'Körpersignal' },
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen & Reflux', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie', cat: 'Untersuchung' },
+      { href: '/koerpersignale/klossgefuehl-im-hals/', label: 'Klossgefühl im Hals', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'schmerzen-beim-tiefen-einatmen',
+    symptom: 'Schmerzen beim tiefen Einatmen',
+    title: 'Schmerzen beim tiefen Einatmen: was dahinterstecken kann',
+    metaDesc: 'Stechen beim tiefen Einatmen kommt oft von Muskeln, Rippen oder gereizten Nerven, kann aber auch ernste Ursachen haben. Welche Warnzeichen zählen und wie abgeklärt wird.',
+    h1: 'Warum schmerzt tiefes Einatmen?',
+    category: 'Muskeln & Beine',
+    lead: 'Ein Stechen, das genau beim tiefen Luftholen auftritt, hat oft eine mechanische Ursache an Muskeln oder Rippen. Bevor es um harmlose Erklärungen geht, gehören aber die Warnzeichen an den Anfang: In bestimmten Kombinationen ist dieser Schmerz ein Notfall.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Beschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Zuerst die Warnzeichen</h2>
+<div class="wa-callout"><div class="wa-callout-label">Wann sofort medizinische Hilfe?</div><p>Ruf den Notruf 144 oder lass dich sofort untersuchen, wenn der atemabhängige Schmerz plötzlich aufgetreten ist und mit Atemnot, Herzrasen, Schwindel oder Ohnmachtsgefühl einhergeht, wenn gleichzeitig ein Bein geschwollen oder schmerzhaft ist, bei Brustdruck oder Engegefühl, Bluthusten, hohem Fieber mit Schüttelfrost oder nach einem Unfall oder Sturz. Solche Kombinationen können auf eine Lungenembolie, eine Lungenentzündung mit Rippenfellbeteiligung, einen Pneumothorax oder eine Rippenverletzung hinweisen und dürfen nicht abgewartet werden.</p></div>
+<p>Erst wenn solche Zeichen fehlen, der Schmerz schon länger besteht oder eindeutig bewegungsabhängig ist, lohnt sich der Blick auf die häufigen, mechanischen Erklärungen.</p>
+<h2>Die häufigen Erklärungen</h2>
+<ul>
+<li><strong>Muskulatur und Rippengelenke:</strong> Die Atemmuskeln zwischen den Rippen und die kleinen Wirbel-Rippen-Gelenke können verspannt oder blockiert sein. Typisch: Der Schmerz sitzt punktgenau, hängt auch von Drehbewegungen oder Druck auf die Stelle ab und besteht oft nach ungewohnter Belastung, Husten oder langem Sitzen.</li>
+<li><strong>Gereizte Zwischenrippennerven:</strong> Ein brennender oder stechender Schmerz, der einem Rippenbogen entlang zieht, passt zu einer <a href="/beschwerden/interkostalneuralgie/">Interkostalneuralgie</a>.</li>
+<li><strong>Nach Infekten:</strong> Nach heftigem Husten sind Atemmuskeln und Rippenansätze oft tagelang empfindlich; auch eine abklingende Reizung des Rippenfells kann beim tiefen Einatmen ziehen.</li>
+</ul>
+<p>Tritt der Schmerz eher im Rücken auf und wird durch Husten ausgelöst, findest du das passende Muster unter <a href="/koerpersignale/rueckenschmerzen-beim-husten/">Rückenschmerzen beim Husten</a>.</p>
+<h2>Was du selbst beobachten kannst</h2>
+<p>Drei Fragen helfen bei der Einordnung: Lässt sich der Schmerz durch Druck auf eine Stelle oder durch Drehen des Oberkörpers auslösen? Dann spricht viel für Muskeln oder Gelenke. Ist er unabhängig von Bewegung einfach da und wird nur beim Atmen stärker? Das gehört eher abgeklärt. Und: Ist er neu und plötzlich oder schleichend über Tage entstanden? Plötzlich und heftig wiegt schwerer.</p>
+<h2>Wie es abgeklärt wird</h2>
+<p>Die Ärztin hört Lunge und Herz ab, tastet Brustkorb und Wirbelsäule und entscheidet je nach Bild über weitere Schritte, etwa ein <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG</a>, ein Röntgenbild oder Laborwerte. Bei mechanischen Ursachen ist der Befund oft unauffällig und die Behandlung besteht aus Bewegung, Wärme und Geduld; atme trotz Schmerz regelmässig tief durch, damit die Lunge gut belüftet bleibt.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Erst nach der ärztlichen Einordnung. Bei muskulär-gelenkigen Ursachen, die sich hartnäckig halten, kann eine ergänzende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> oder <a href="/therapien/tuina/">Tuina</a> an Rücken- und Zwischenrippenmuskulatur besprochen werden. Ein neuer, ungeklärter Atemschmerz gehört dagegen nicht auf die Behandlungsliege, sondern zuerst in die Abklärung.</p>`,
+    faqs: [
+      { q: 'Sind Schmerzen beim tiefen Einatmen gefährlich?', a: 'Oft stecken Muskeln, Rippengelenke oder gereizte Nerven dahinter. Gefährlich wird es bei Kombinationen: plötzlicher Schmerz mit Atemnot, geschwollenem Bein, Brustdruck, Bluthusten oder Fieber. Dann sofort medizinische Hilfe holen, im Notfall Telefon 144.' },
+      { q: 'Woran erkenne ich eine muskuläre Ursache?', a: 'Der Schmerz sitzt punktgenau, lässt sich durch Druck auf die Stelle oder Drehbewegungen auslösen und besteht oft nach Husten, ungewohnter Belastung oder langem Sitzen. Sicher wird die Einordnung erst durch eine ärztliche Untersuchung.' },
+      { q: 'Soll ich bei Atemschmerz flach atmen?', a: 'Nein. Dauerhaft flaches Atmen belüftet die Lunge schlechter. Wenn ernste Ursachen ausgeschlossen sind, ist regelmässiges tiefes Durchatmen trotz Ziehen ausdrücklich sinnvoll.' },
+    ],
+    related: [
+      { href: '/koerpersignale/rueckenschmerzen-beim-husten/', label: 'Rückenschmerzen beim Husten', cat: 'Körpersignal' },
+      { href: '/beschwerden/interkostalneuralgie/', label: 'Interkostalneuralgie', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion', cat: 'Untersuchung' },
+      { href: '/koerpersignale/schmerzen-zwischen-den-schulterblaettern/', label: 'Schmerzen zwischen den Schulterblättern', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'schmerzen-zwischen-den-schulterblaettern',
+    symptom: 'Schmerzen zwischen den Schulterblättern',
+    title: 'Schmerzen zwischen den Schulterblättern: Ursachen & Abklärung',
+    metaDesc: 'Schmerzen zwischen den Schulterblättern sind meist muskulär und haltungsbedingt, können aber auch von inneren Organen ausstrahlen. Welche Muster du kennen solltest.',
+    h1: 'Was bedeuten Schmerzen zwischen den Schulterblättern?',
+    category: 'Muskeln & Beine',
+    lead: 'Der Bereich zwischen den Schulterblättern meldet sich gern nach langen Bildschirmtagen: ziehend, brennend oder wie ein Stein zwischen den Schultern. Meist steckt die Muskulatur dahinter. Es gibt aber Muster, die du kennen solltest, weil sie nicht vom Rücken kommen.',
+    readingTime: '5 Min.',
+    ctaTitle: 'Verspannung behandeln lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Zwischen den Schulterblättern treffen Brustwirbelsäule, Rippengelenke und mehrere Muskelschichten aufeinander, die Schulterblatt und Wirbelsäule verbinden. Langes Sitzen mit vorgezogenen Schultern, Bildschirm- und Handyhaltung, Tragen und Stress führen hier besonders oft zu Verspannungen und Reizungen. Typisch: Der Schmerz ist lageabhängig, bessert sich bei Bewegung und lässt sich durch Druck auf verhärtete Muskelpunkte auslösen.</p>
+<p>Diese Seite bleibt bewusst beim Muster zwischen den Schulterblättern. Für Rückenschmerzen insgesamt, ihre Ursachen und Behandlung ist die Seite <a href="/beschwerden/rueckenschmerzen/">Rückenschmerzen</a> zuständig.</p>
+<h2>Muster, die du unterscheiden kannst</h2>
+<ul>
+<li><strong>Haltungs- und belastungsabhängig:</strong> schlimmer nach langem Sitzen, besser bei Bewegung, auslösbar durch Schulterkreisen oder Druck. Spricht für Muskulatur und kleine Wirbelgelenke.</li>
+<li><strong>Stechend bei Atmung oder Drehung:</strong> ein blockiertes Rippengelenk kann punktgenau stechen, besonders beim tiefen Einatmen. Dieses Muster beschreibt die Seite <a href="/koerpersignale/schmerzen-beim-tiefen-einatmen/">Schmerzen beim tiefen Einatmen</a>.</li>
+<li><strong>Mit Kribbeln Richtung Arm:</strong> zieht es vom Nacken über das Schulterblatt in den Arm, kann eine Nervenwurzel am Hals beteiligt sein, siehe <a href="/koerpersignale/kribbeln-vom-nacken-in-den-arm/">Kribbeln vom Nacken in den Arm</a>.</li>
+<li><strong>Unabhängig von Bewegung:</strong> Schmerzen, die sich durch Haltung und Druck nicht beeinflussen lassen, können von inneren Organen ausstrahlen und gehören eher abgeklärt.</li>
+</ul>
+<div class="wa-callout"><div class="wa-callout-label">Wann rasch abklären?</div><p>Sofort medizinische Hilfe braucht es bei Schmerzen zwischen den Schulterblättern, die plötzlich und heftig einsetzen oder zusammen mit Brustdruck, Atemnot, Übelkeit, Schweissausbruch oder Ausstrahlung in Arm oder Kiefer auftreten; das kann ein Herzereignis sein, bei Frauen auch ohne den klassischen Brustschmerz. Kolikartige Schmerzen nach fettigem Essen mit Ausstrahlung zwischen die Schulterblätter können von der Gallenblase kommen. Auch Fieber, ungewollter Gewichtsverlust, nächtlicher Ruheschmerz oder Schmerzen nach einem Sturz sind Gründe für eine zeitnahe Beurteilung.</p></div>
+<h2>Was du selbst tun kannst</h2>
+<p>Bei muskulärem Muster helfen regelmässige Haltungswechsel, zwei bis drei kurze Bewegungspausen pro Bildschirmstunde, Schulterkreisen und das bewusste Öffnen der Brust: Hände hinter dem Rücken fassen und Schulterblätter sanft zusammenziehen. Wärme auf die Region entspannt zusätzlich. Ein ergonomisch eingerichteter Arbeitsplatz mit Bildschirm auf Augenhöhe entlastet die Zone spürbar.</p>
+<h2>Wie es abgeklärt wird</h2>
+<p>Hält der Schmerz trotz Bewegung und Wärme über mehrere Wochen an oder kehrt er ständig zurück, lohnt sich eine Untersuchung: Beweglichkeit, Muskulatur, Rippen- und Wirbelgelenke werden geprüft, je nach Bild ergänzt durch Bildgebung oder Laborwerte. Meist bestätigt sich ein muskulär-gelenkiges Problem, das gut behandelbar ist.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Die Zone zwischen den Schulterblättern reagiert gut auf manuelle Behandlung. Bei eingeordneten muskulären Beschwerden können <a href="/therapien/akupunktur/">Akupunktur</a>, <a href="/therapien/schroepfen/">Schröpfen</a> und <a href="/therapien/tuina/">Tuina</a> ergänzend eingesetzt werden, oft kombiniert mit Haltungs- und Bewegungsarbeit. Warnzeichen gehören zuerst in die ärztliche Abklärung.</p>`,
+    faqs: [
+      { q: 'Woher kommen Schmerzen zwischen den Schulterblättern meistens?', a: 'Am häufigsten von verspannter Muskulatur und gereizten Wirbel- oder Rippengelenken der Brustwirbelsäule, typischerweise nach langem Sitzen in vorgebeugter Haltung. Der Schmerz ist dann lage- und bewegungsabhängig.' },
+      { q: 'Können Schmerzen zwischen den Schulterblättern vom Herzen kommen?', a: 'Ja, in seltenen Fällen strahlen Herzbeschwerden in den oberen Rücken aus, bei Frauen auch ohne typischen Brustschmerz. Plötzliche Schmerzen mit Atemnot, Übelkeit, Schweissausbruch oder Engegefühl sind ein Notfall: Telefon 144.' },
+      { q: 'Was hilft schnell bei Verspannung zwischen den Schulterblättern?', a: 'Bewegungspausen, Schulterkreisen, das bewusste Öffnen der Brust und Wärme auf die Region. Hält der Schmerz über Wochen an, gehört er fachlich beurteilt statt dauerhaft überbrückt.' },
+    ],
+    related: [
+      { href: '/koerpersignale/schmerzen-beim-tiefen-einatmen/', label: 'Schmerzen beim tiefen Einatmen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/kribbeln-vom-nacken-in-den-arm/', label: 'Kribbeln vom Nacken in den Arm', cat: 'Körpersignal' },
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen', cat: 'Beschwerde' },
+      { href: '/therapien/schroepfen/', label: 'Schröpfen', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'magen-knurrt-staendig',
+    symptom: 'Ständiges Magenknurren',
+    title: 'Magen knurrt ständig: normal oder ein Zeichen?',
+    metaDesc: 'Laute Magen- und Darmgeräusche sind meist normale Verdauungsarbeit. Warum der Bauch knurrt, was laute Geräusche begünstigt und wann eine Abklärung sinnvoll ist.',
+    h1: 'Warum knurrt mein Magen ständig?',
+    category: 'Bauch & Verdauung',
+    lead: 'Der Bauch meldet sich hörbar im Meeting, obwohl du gegessen hast. Unangenehm, aber fast immer harmlos: Knurren und Gluckern sind Arbeitsgeräusche des Verdauungstrakts. Interessant wird es erst, wenn Begleitzeichen dazukommen.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Verdauung besprechen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Magen und Darm bewegen ihren Inhalt mit wellenförmigen Muskelkontraktionen. Wenn sich dabei Luft, Flüssigkeit und Nahrungsreste mischen, entstehen Geräusche. Bei leerem Magen sind sie lauter, weil nichts den Schall dämpft und der Darm in Ess-Pausen kräftige Reinigungswellen durch den Verdauungstrakt schickt. Ein knurrender Bauch ist also meist ein Zeichen normaler Verdauungsarbeit, nicht von Krankheit.</p>
+<h2>Was laute Geräusche begünstigt</h2>
+<ul>
+<li><strong>Leerer Magen und unregelmässige Mahlzeiten:</strong> lange Ess-Pausen machen die Reinigungswellen hörbar.</li>
+<li><strong>Geschluckte Luft:</strong> hastiges Essen, viel Reden beim Essen, Kaugummi und kohlensäurehaltige Getränke bringen Luft in den Verdauungstrakt.</li>
+<li><strong>Schwer verdauliche Kohlenhydrate:</strong> Hülsenfrüchte, Zwiebeln, Kohl und Zuckeraustauschstoffe werden im Dickdarm vergoren und erzeugen Gas und Geräusche.</li>
+<li><strong>Unverträglichkeiten:</strong> Wenn Milchzucker oder Fruchtzucker schlecht aufgenommen werden, gären sie im Darm; typisch sind dann zusätzlich <a href="/beschwerden/blaehungen/">Blähungen</a>, Bauchgrummeln und weicher Stuhl nach entsprechenden Lebensmitteln.</li>
+<li><strong>Stress:</strong> Der Darm reagiert direkt auf Anspannung; ein nervöser Bauch ist oft auch ein lauter Bauch.</li>
+</ul>
+<h2>Was du selbst beobachten und tun kannst</h2>
+<p>Iss regelmässig und in Ruhe, kau gründlich und reduziere testweise Kohlensäure und Kaugummi. Wenn du einen Zusammenhang mit Milchprodukten oder fruchtzuckerreichen Lebensmitteln vermutest, notier ein bis zwei Wochen lang, was du gegessen hast und wann der Bauch besonders aktiv war. So ein Protokoll ist die beste Grundlage für eine gezielte Abklärung, etwa mit einem <a href="/gesundheitsbibliothek/untersuchungen/h2-atemtest/">H2-Atemtest</a>.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Ärztlich einordnen lassen solltest du laute Darmgeräusche, wenn sie zusammen mit anhaltenden Bauchschmerzen, Durchfall oder Verstopfung über Wochen, Blut im Stuhl, ungewolltem Gewichtsverlust, Fieber oder nächtlichen Beschwerden auftreten. Ein plötzlich aufgetriebener, schmerzhafter Bauch mit Erbrechen und ausbleibendem Stuhlgang ist ein Notfall.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>Bestehen Begleitsymptome, klärt die Hausärztin je nach Bild Richtung Unverträglichkeit, <a href="/beschwerden/reizdarm/">Reizdarm</a> oder entzündliche Ursachen ab. Dazu gehören Anamnese und Untersuchung, gegebenenfalls Laborwerte, eine <a href="/gesundheitsbibliothek/untersuchungen/stuhlanalyse/">Stuhlanalyse</a> oder ein Atemtest. Geräusche allein, ohne weitere Zeichen, sind kein Grund für grosse Diagnostik.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Bei einem nervösen, geräuschvollen Bauch ohne krankhaften Befund, besonders wenn Stress und unregelmässiges Essen mitspielen, kann ergänzend über <a href="/therapien/akupunktur/">Akupunktur</a> gesprochen werden; funktionelle Verdauungsbeschwerden gehören zu den klassischen Einsatzgebieten. Unverträglichkeiten und entzündliche Erkrankungen gehören zuerst in die medizinische Abklärung.</p>`,
+    faqs: [
+      { q: 'Ist ständiges Magenknurren normal?', a: 'Meist ja. Knurren und Gluckern sind Arbeitsgeräusche von Magen und Darm und bei leerem Magen besonders laut. Ohne Begleitsymptome wie Schmerzen, Gewichtsverlust oder verändertem Stuhlgang sind sie kein Krankheitszeichen.' },
+      { q: 'Warum knurrt der Magen auch nach dem Essen?', a: 'Auch ein gefüllter Verdauungstrakt arbeitet hörbar, besonders wenn Luft mitgeschluckt wurde oder gärfreudige Lebensmittel wie Hülsenfrüchte, Kohl oder viel Fruchtzucker auf dem Teller waren.' },
+      { q: 'Kann hinter lauten Darmgeräuschen eine Unverträglichkeit stecken?', a: 'Ja. Werden Milch- oder Fruchtzucker schlecht aufgenommen, vergären sie im Darm; typisch sind dann zusätzlich Blähungen und weicher Stuhl nach entsprechenden Lebensmitteln. Ein H2-Atemtest kann das klären.' },
+    ],
+    related: [
+      { href: '/gesundheitsbibliothek/untersuchungen/h2-atemtest/', label: 'H2-Atemtest', cat: 'Untersuchung' },
+      { href: '/beschwerden/blaehungen/', label: 'Blähungen', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/koerpersignale/druck-im-oberbauch/', label: 'Druck im Oberbauch', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'haende-zittern',
+    symptom: 'Zitternde Hände',
+    title: 'Hände zittern: Ursachen von harmlos bis abklärungsbedürftig',
+    metaDesc: 'Zitternde Hände haben viele Ursachen: Koffein, Stress, Schilddrüse, Medikamente oder ein essentieller Tremor. Welche Muster zählen und wann eine neurologische Abklärung sinnvoll ist.',
+    h1: 'Warum zittern meine Hände?',
+    category: 'Hände & Nerven',
+    lead: 'Die Tasse klirrt am Unterteller, die Handschrift wird wackliger: Zitternde Hände fallen schnell auf und machen vielen Angst vor Parkinson. Dabei ist das längst nicht die häufigste Erklärung. Entscheidend ist, wann die Hände zittern: in Ruhe oder bei Bewegung.',
+    readingTime: '6 Min.',
+    ctaTitle: 'Beschwerden einordnen lassen?',
+    author: AUTOR,
+    ...DATEN13,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Jeder Mensch hat ein feines, meist unsichtbares Zittern. Es wird sichtbar, wenn das Nervensystem aktiviert ist: durch Koffein, Stress, Lampenfieber, Schlafmangel, Unterzuckerung, eine überaktive Schilddrüse oder bestimmte Medikamente. Dieses verstärkte physiologische Zittern betrifft meist beide Hände, tritt beim Halten und bei Bewegungen auf und schwankt stark mit der Situation.</p>
+<p>Daneben gibt es den essentiellen Tremor, eine häufige, gutartige neurologische Erkrankung, die oft familiär auftritt: Beide Hände zittern beim Halten und bei gezielten Bewegungen, etwa beim Tassehalten oder Schreiben, während sie in Ruhe weitgehend still sind. Das Gegenteil, ein Zittern der ruhig im Schoss liegenden Hand, das bei Bewegung nachlässt, ist das typische Muster eines Ruhetremors und gehört neurologisch abgeklärt.</p>
+<h2>Die Muster im Überblick</h2>
+<ul>
+<li><strong>Halte- und Bewegungszittern, beidseitig, situationsabhängig:</strong> verstärktes physiologisches Zittern durch Koffein, Stress, Medikamente, Schilddrüse oder Entzug.</li>
+<li><strong>Halte- und Bewegungszittern, beidseitig, über Jahre langsam zunehmend, oft in der Familie:</strong> passt zum essentiellen Tremor. Manche bemerken, dass wenig Alkohol das Zittern kurzfristig dämpft; als Selbstbehandlung ist das ungeeignet.</li>
+<li><strong>Ruhezittern, oft einseitig beginnend:</strong> die ruhende Hand zittert, bei Bewegung wird es besser. Zusammen mit kleiner werdender Schrift, Steifigkeit oder verlangsamtem Gang ein Grund für eine zeitnahe neurologische Beurteilung.</li>
+</ul>
+<p>Zittert nicht nur die Hand, sondern der ganze Körper, ist unsere Seite <a href="/koerpersignale/zittern-am-ganzen-koerper/">Zittern am ganzen Körper</a> der passende Einstieg. Sichtbares Zucken einzelner Muskeln ohne Bewegung des Arms ist wiederum etwas anderes: <a href="/koerpersignale/muskelzucken/">Muskelzucken am Körper</a>.</p>
+<h2>Was du selbst beobachten kannst</h2>
+<p>Für die Abklärung ist dein Bericht wertvoller als jede schnelle Untersuchung: Zittern beide Hände oder eine? In Ruhe, beim Halten oder bei gezielten Bewegungen? Seit wann, konstant oder in Episoden? Was verstärkt es (Kaffee, Stress, Hunger, Medikamente) und was beruhigt es? Gibt es Zittern in der Familie? Auch kurze Videoaufnahmen mit dem Handy helfen der Ärztin bei der Einordnung.</p>
+<div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Zeitnah ärztlich beurteilen lassen solltest du ein Zittern, das neu aufgetreten ist und sich nicht durch Koffein, Stress oder Schlafmangel erklärt, ein einseitiges Ruhezittern, Zittern mit Steifigkeit, Gangveränderung oder kleiner werdender Schrift, Zittern nach Beginn eines neuen Medikaments sowie Zittern mit Gewichtsverlust, Herzrasen oder starkem Schwitzen, das auf eine Schilddrüsenüberfunktion hinweisen kann. Plötzliches Zittern mit Sprach- oder Sehstörungen, Lähmung oder Verwirrtheit ist ein Notfall: Telefon 144.</p></div>
+<h2>Wie es abgeklärt wird</h2>
+<p>Die Hausärztin prüft Medikamente, fragt nach Koffein, Alkohol und Familiengeschichte und bestimmt bei passendem Bild Laborwerte wie <a href="/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/">TSH</a> und Blutzucker. Bei unklarem oder auffälligem Muster folgt eine <a href="/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/">neurologische Untersuchung</a>, die Tremorform, Tonus und Koordination gezielt testet. Die meisten Abklärungen enden beruhigend: mit einem verstärkten physiologischen oder essentiellen Tremor statt einer fortschreitenden Erkrankung.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Ein unklares Zittern gehört zuerst in die medizinische Einordnung; ein Tremor lässt sich nicht durch Akupunktur wegbehandeln. Wenn die Diagnose steht und Stress, Anspannung oder unruhiger Schlaf das Zittern sichtbar verstärken, kann eine ergänzende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> an diesen Verstärkern ansetzen. Sie ersetzt weder Diagnostik noch eine neurologische Therapie.</p>`,
+    faqs: [
+      { q: 'Sind zitternde Hände ein Zeichen für Parkinson?', a: 'Meist nicht. Typisch für Parkinson ist ein Ruhezittern, oft einseitig beginnend, mit Steifigkeit oder verlangsamten Bewegungen. Zittern beim Halten und bei Bewegung, beidseitig und situationsabhängig, spricht eher für verstärktes physiologisches Zittern oder einen essentiellen Tremor. Die Einordnung gehört in ärztliche Hände.' },
+      { q: 'Was ist ein essentieller Tremor?', a: 'Eine häufige, gutartige neurologische Erkrankung, bei der beide Hände beim Halten und bei gezielten Bewegungen zittern, etwa beim Tassehalten oder Schreiben. Er tritt oft familiär auf, nimmt über Jahre langsam zu und ist behandelbar, wenn er stört.' },
+      { q: 'Kann die Schilddrüse Händezittern auslösen?', a: 'Ja. Eine Überfunktion aktiviert den Körper und kann feines beidseitiges Zittern verursachen, oft zusammen mit Herzrasen, Schwitzen, Unruhe oder Gewichtsverlust. Ein Bluttest der Schilddrüsenwerte klärt das.' },
+      { q: 'Was verstärkt das Zittern der Hände?', a: 'Koffein, Nikotin, Stress, Schlafmangel, Hunger und bestimmte Medikamente, etwa einige Asthma- oder Psychopharmaka. Auch Alkoholentzug macht zittrig. Solche Verstärker zu notieren hilft bei der Abklärung.' },
+    ],
+    related: [
+      { href: '/koerpersignale/zittern-am-ganzen-koerper/', label: 'Zittern am ganzen Körper', cat: 'Körpersignal' },
+      { href: '/koerpersignale/muskelzucken/', label: 'Muskelzucken am Körper', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/', label: 'Neurologische Untersuchung', cat: 'Untersuchung' },
+      { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion', cat: 'Beschwerde' },
     ],
   },
 ];

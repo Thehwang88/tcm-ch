@@ -1,19 +1,19 @@
 {
   "generated": "2026-09-30",
   "totals": {
-    "healthPages": 472,
+    "healthPages": 488,
     "byType": {
       "hub": 6,
       "condition": 116,
       "library_hub": 1,
       "befund": 59,
-      "question": 36,
+      "question": 40,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 22,
-      "selfcare": 15,
+      "selfcare": 19,
       "editorial": 80,
-      "body_signal": 81,
+      "body_signal": 89,
       "therapy": 36,
       "visual": 10
     }
@@ -30,7 +30,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 66,
+      "inboundContentLinks": 67,
       "outboundHealthLinks": 122
     },
     {
@@ -40,7 +40,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 22
     },
     {
@@ -60,8 +60,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/angststoerungen/",
@@ -100,7 +100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 13
     },
     {
@@ -140,7 +140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 20
     },
     {
@@ -150,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 18
     },
     {
@@ -260,7 +260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
+      "inboundContentLinks": 32,
       "outboundHealthLinks": 18
     },
     {
@@ -280,8 +280,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/fettleber/",
@@ -350,7 +350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 16
     },
     {
@@ -440,7 +440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 17
     },
     {
@@ -470,7 +470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 20
     },
     {
@@ -490,7 +490,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -500,7 +500,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 39,
+      "inboundContentLinks": 40,
       "outboundHealthLinks": 26
     },
     {
@@ -540,7 +540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 16
     },
     {
@@ -550,7 +550,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 43,
+      "inboundContentLinks": 44,
       "outboundHealthLinks": 5
     },
     {
@@ -620,7 +620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 9
     },
     {
@@ -720,7 +720,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 18
     },
     {
@@ -760,7 +760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 14
     },
     {
@@ -810,7 +810,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 16
     },
     {
@@ -820,7 +820,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 28,
       "outboundHealthLinks": 21
     },
     {
@@ -890,7 +890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 182,
+      "inboundContentLinks": 183,
       "outboundHealthLinks": 34
     },
     {
@@ -900,7 +900,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -1000,7 +1000,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 21
     },
     {
@@ -1020,7 +1020,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 19
     },
     {
@@ -1030,7 +1030,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 24,
       "outboundHealthLinks": 19
     },
     {
@@ -1090,8 +1090,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/trigeminusneuralgie/",
@@ -1140,8 +1140,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/wadenschmerzen/",
@@ -1180,7 +1180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 13
     },
     {
@@ -1190,7 +1190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 12
     },
     {
@@ -1200,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 300,
+      "inboundContentLinks": 311,
       "outboundHealthLinks": 44
     },
     {
@@ -1760,7 +1760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 7
     },
     {
@@ -1800,8 +1800,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 52,
-      "outboundHealthLinks": 40
+      "inboundContentLinks": 56,
+      "outboundHealthLinks": 44
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-bei-erkaeltung/",
+      "type": "question",
+      "title": "Mit Erkältung zur Akupunktur: kommen oder absagen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/",
@@ -1820,8 +1830,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/",
@@ -1832,6 +1842,26 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-stillzeit/",
+      "type": "question",
+      "title": "Akupunktur in der Stillzeit: was gilt für Nadeln &amp; Kräuter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/akupunktur-waehrend-periode/",
+      "type": "question",
+      "title": "Akupunktur während der Periode: geht das? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur/",
@@ -1890,7 +1920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 13
     },
     {
@@ -1900,8 +1930,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/kaffee-nach-akupunktur/",
@@ -1920,8 +1950,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/fragen/kosten-versicherung/",
@@ -1940,8 +1970,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/nach-der-behandlung/",
@@ -1950,7 +1980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 15
     },
     {
@@ -1994,13 +2024,23 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/gesundheitsbibliothek/fragen/schwindel-nach-akupunktur/",
+      "type": "question",
+      "title": "Schwindel nach Akupunktur: was jetzt zu tun ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 10
+    },
+    {
       "url": "/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/",
       "type": "question",
       "title": "Sicherheit &amp; Nebenwirkungen: häufige Fragen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 13
     },
     {
@@ -2020,8 +2060,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-erstverschlimmerung/",
@@ -2040,8 +2080,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tuina-nebenwirkungen/",
@@ -2060,7 +2100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 25,
       "outboundHealthLinks": 10
     },
     {
@@ -2100,8 +2140,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 33,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/",
@@ -2110,8 +2150,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 27,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 28,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/",
@@ -2480,8 +2520,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/akuter-hexenschuss/",
@@ -2504,6 +2544,16 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/gesundheitsbibliothek/was-jetzt/fersenschmerzen/",
+      "type": "selfcare",
+      "title": "Was tun bei Fersenschmerzen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/gesundheitsbibliothek/was-jetzt/globusgefuehl/",
       "type": "selfcare",
       "title": "Was tun bei Globusgefühl im Hals? | TCM.ch",
@@ -2512,6 +2562,16 @@
       "inSitemap": true,
       "inboundContentLinks": 2,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/heuschnupfen-akut/",
+      "type": "selfcare",
+      "title": "Heuschnupfen akut: Was jetzt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/ischias-schmerzen/",
@@ -2594,6 +2654,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/",
+      "type": "selfcare",
+      "title": "Tinnitus neu aufgetreten: Was jetzt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/was-jetzt/trockener-mund-nachts/",
       "type": "selfcare",
       "title": "Was tun bei trockenem Mund in der Nacht? | TCM.ch",
@@ -2601,6 +2671,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/was-jetzt/verstopfung/",
+      "type": "selfcare",
+      "title": "Was tun bei Verstopfung? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -3000,8 +3080,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 197,
-      "outboundHealthLinks": 82
+      "inboundContentLinks": 207,
+      "outboundHealthLinks": 90
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -3110,8 +3190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/druck-hinter-den-augen/",
@@ -3140,8 +3220,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/druckgefuehl-im-unterbauch/",
@@ -3160,8 +3240,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/koerpersignale/durchfall-am-morgen/",
@@ -3170,7 +3250,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 7
     },
     {
@@ -3234,13 +3314,23 @@
       "outboundHealthLinks": 9
     },
     {
+      "url": "/koerpersignale/haende-zittern/",
+      "type": "body_signal",
+      "title": "Hände zittern: Ursachen von harmlos bis abklärungsbedürftig | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/koerpersignale/haeufiger-harndrang-nachts/",
       "type": "body_signal",
       "title": "Häufiger Harndrang nachts: Warum muss ich so oft raus? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 12
     },
     {
@@ -3310,8 +3400,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/herzstolpern-in-ruhe/",
@@ -3332,6 +3422,16 @@
       "inSitemap": true,
       "inboundContentLinks": 15,
       "outboundHealthLinks": 10
+    },
+    {
+      "url": "/koerpersignale/husten-nach-dem-essen/",
+      "type": "body_signal",
+      "title": "Husten nach dem Essen: mögliche Ursachen &amp; Abklärung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/koerpersignale/immer-zur-gleichen-uhrzeit-aufwachen/",
@@ -3394,13 +3494,23 @@
       "outboundHealthLinks": 10
     },
     {
+      "url": "/koerpersignale/kiefer-knackt-beim-oeffnen/",
+      "type": "body_signal",
+      "title": "Kiefer knackt beim Öffnen: harmlos oder abklären? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/koerpersignale/klossgefuehl-im-hals/",
       "type": "body_signal",
       "title": "Klossgefühl im Hals ohne Erkältung: mögliche Gründe | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 11
     },
     {
@@ -3450,8 +3560,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/koerpersignale/kribbeln-im-kopf/",
@@ -3481,7 +3591,17 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/koerpersignale/kribbeln-im-ruecken/",
+      "type": "body_signal",
+      "title": "Kribbeln im Rücken: Muster erkennen &amp; wann abklären | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/kribbeln-vom-nacken-in-den-arm/",
@@ -3490,8 +3610,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 17
+    },
+    {
+      "url": "/koerpersignale/magen-knurrt-staendig/",
+      "type": "body_signal",
+      "title": "Magen knurrt ständig: normal oder ein Zeichen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/magendruck-im-liegen/",
@@ -3501,7 +3631,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/metallischer-geschmack-im-mund/",
@@ -3530,8 +3660,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/nachtschweiss-ohne-fieber/",
@@ -3570,8 +3700,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 14
+    },
+    {
+      "url": "/koerpersignale/ohr-juckt-innen/",
+      "type": "body_signal",
+      "title": "Ohr juckt innen: Ursachen &amp; was du nicht tun solltest | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/ohr-knackt-beim-schlucken/",
@@ -3580,8 +3720,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/",
@@ -3590,7 +3730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 11
     },
     {
@@ -3600,8 +3740,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/rueckenschmerzen-beim-langen-stehen/",
@@ -3614,6 +3754,16 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/koerpersignale/schmerzen-beim-tiefen-einatmen/",
+      "type": "body_signal",
+      "title": "Schmerzen beim tiefen Einatmen: was dahinterstecken kann | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/koerpersignale/schmerzen-solarplexus/",
       "type": "body_signal",
       "title": "Solarplexus-Schmerzen: Druck im Oberbauch richtig einordnen | TCM.ch",
@@ -3622,6 +3772,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/koerpersignale/schmerzen-zwischen-den-schulterblaettern/",
+      "type": "body_signal",
+      "title": "Schmerzen zwischen den Schulterblättern: Ursachen &amp; Abklärung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/schnarchen-jede-nacht/",
@@ -3650,7 +3810,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 10
     },
     {
@@ -3730,8 +3890,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/trockener-mund-nachts/",
@@ -3750,8 +3910,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/voellegefuehl-nach-dem-essen/",
@@ -3800,8 +3960,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/koerpersignale/zungenbrennen/",
@@ -3840,7 +4000,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 284,
+      "inboundContentLinks": 296,
       "outboundHealthLinks": 12
     },
     {
@@ -3880,7 +4040,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 9
     },
     {
@@ -3980,7 +4140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 109,
+      "inboundContentLinks": 110,
       "outboundHealthLinks": 5
     },
     {
@@ -4140,7 +4300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 68,
+      "inboundContentLinks": 69,
       "outboundHealthLinks": 14
     },
     {
@@ -4180,7 +4340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 112,
+      "inboundContentLinks": 116,
       "outboundHealthLinks": 14
     },
     {
@@ -4470,7 +4630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
