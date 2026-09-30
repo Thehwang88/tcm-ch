@@ -105,9 +105,15 @@ function navMoreToggle(){
     var li=e.target.closest&&e.target.closest('.nav-more-li');
     if(!li) closeMore();
   });
+  // Tastatur: Fokus verlässt das Menü → schliessen (kein Fokus-Trap); Escape → schliessen + Fokus zurück auf den Button.
+  document.addEventListener('focusin',function(e){
+    if(!(e.target.closest&&e.target.closest('.nav-more-li'))) closeMore();
+  });
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape') return;
+    var inMore=document.activeElement&&document.activeElement.closest&&document.activeElement.closest('#navMorePanel');
     closeMore();
+    if(inMore){var b=document.getElementById('navMoreBtn'); if(b) b.focus();}
     var d=document.getElementById('siteDrawer');
     if(d&&d.classList.contains('open')&&typeof drawerClose==='function') drawerClose();
   });

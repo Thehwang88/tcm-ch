@@ -4,6 +4,38 @@
 // rich #siteDrawer burger (grouped, DE sub-items) + #drawerOverlay. Styling lives in
 // /header.css (subpages) or /home.css (home); behaviour in /header.js (nav + drawer + CTA).
 // The EN header (Header.astro) is used ONLY by Layout.astro for /en/ pages.
+// «Für Fachpersonen» (Desktop-Mega-Panel + Drawer-Akkordeons) wird aus PRO_NAV generiert
+// (src/data/pro/architecture.ts): Kategorien statt Einzelseiten; geplante Routen = «bald», ohne Link.
 import header from '../data/header.html?raw';
+import { PRO_NAV, PRO_NAV_OVERVIEW, type NavItem } from '../data/pro/architecture';
+
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const arrow = '<span class="drw-link-arrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>';
+const chevron = '<div class="drw-acc-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div>';
+
+const deskItem = (i: NavItem) => i.planned
+  ? `<span class="pro-soon" aria-disabled="true">${esc(i.label)} <em>bald</em></span>`
+  : `<a href="${i.href}"${i.accent ? ' class="pro-accent"' : ''}>${esc(i.label)}${i.accent ? ' <span aria-hidden="true">→</span>' : ''}</a>`;
+const desktop =
+  `<div class="nav-more-group nav-more-group--pro" role="group" aria-labelledby="navProLabel">` +
+  `<div class="nav-more-label" id="navProLabel">Für Fachpersonen</div>` +
+  `<a class="pro-overview" href="${PRO_NAV_OVERVIEW.href}">${PRO_NAV_OVERVIEW.label}<span class="nav-more-desc">Alle Bereiche für TCM-Fachpersonen</span></a>` +
+  `<div class="pro-grid">` +
+  PRO_NAV.map((g) => `<div class="pro-col" role="group" aria-labelledby="navPro-${g.id}"><div class="pro-col-label" id="navPro-${g.id}">${esc(g.label)}</div>${g.items.map(deskItem).join('')}</div>`).join('') +
+  `</div></div>`;
+
+const drwItem = (i: NavItem) => i.planned
+  ? `<li><span class="drw-pro-soon" aria-disabled="true">${esc(i.label)} <em>bald</em></span></li>`
+  : `<li><a href="${i.href}" onclick="drawerClose()"${i.accent ? ' class="drw-pro-accent"' : ''}>${esc(i.label)}${arrow}</a></li>`;
+const drawer =
+  `<div class="drw-group"><div class="drw-group-label">Für Fachpersonen</div>` +
+  `<div class="drw-section"><ul class="drw-plain-links"><li><a href="${PRO_NAV_OVERVIEW.href}" onclick="drawerClose()">Übersicht Fachpersonen${arrow}</a></li></ul></div>` +
+  PRO_NAV.map((g) =>
+    `<div class="drw-section"><button class="drw-acc-btn" onclick="drawerToggle(this)" aria-expanded="false" aria-controls="drwPro-${g.id}">` +
+    `<div class="drw-acc-btn-inner"><span class="drw-acc-label">${esc(g.label)}</span></div>${chevron}</button>` +
+    `<div class="drw-acc-body" id="drwPro-${g.id}"><ul class="drw-links">${g.items.map(drwItem).join('')}</ul></div></div>`).join('') +
+  `</div>`;
+
+const html = header.replace('<!--PRO_NAV_DESKTOP-->', desktop).replace('<!--PRO_NAV_DRAWER-->', drawer);
 ---
-<Fragment set:html={header} />
+<Fragment set:html={html} />

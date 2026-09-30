@@ -4,7 +4,7 @@
 // geplante Bereiche erscheinen als Text ohne Link.
 import LayoutDe from '../layouts/LayoutDe.astro';
 import { site } from '../data/site';
-import { GATEWAY_CARDS, LIFECYCLE_STAGES, layer } from '../data/pro/architecture';
+import { PRO_MAP, LIFECYCLE_STAGES, layer } from '../data/pro/architecture';
 import '../styles/b2b.css';
 
 const path = '/fachpersonen';
@@ -34,16 +34,19 @@ const schema = [
 
     <section class="b2-sec b2-sec--soft">
       <div class="b2-wrap">
-        <p class="b2-label">Was brauchst du gerade?</p>
-        <div class="b2-gw">
-          {GATEWAY_CARDS.map((c) => (
-            <div>
-              <b>{c.t}</b>
-              <ul>{c.items.map((i) => <li>{i.href ? <a href={i.href}>{i.label}</a> : <span title="in Vorbereitung">{i.label}</span>}</li>)}</ul>
-            </div>
+        <p class="b2-label">Alles an einem Ort</p>
+        <h2 class="b2-h2">Was möchtest du tun?</h2>
+        <div class="b2-gw b2-gw--map">
+          {PRO_MAP.map((c) => (
+            <section aria-labelledby={`map-${c.id}`}>
+              <b id={`map-${c.id}`}>{c.label}</b>
+              <ul>{c.items.map((i) => <li>{i.planned
+                ? <span class="is-soon">{i.label} <em>bald</em></span>
+                : <a href={i.href} class={i.accent ? 'is-accent' : undefined}>{i.label}{i.accent && <span aria-hidden="true"> →</span>}</a>}</li>)}</ul>
+            </section>
           ))}
         </div>
-        <p class="b2-fine">Grau = in Vorbereitung. Einige Bereiche sind im Aufbau und erscheinen mit geprüften Einträgen.</p>
+        <p class="b2-fine">«bald» = in Vorbereitung. Diese Bereiche erscheinen, sobald sie geprüften Inhalt haben.</p>
       </div>
     </section>
 

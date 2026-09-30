@@ -324,3 +324,12 @@ a.b2-card:hover { border-color: var(--blue); transform: translateY(-2px); }
 .b2-gw span { font-size: 15px; color: #a3a3a3; }
 @media (max-width: 900px) { .b2-gw { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .pro-grid, .b2-gw { grid-template-columns: 1fr; } }
+.b2-gw--map { grid-template-columns: repeat(4, 1fr); }
+.b2-gw--map > section { padding: 22px; border-radius: var(--r-card); background: #fff; border: 1px solid var(--border); }
+.b2-gw--map b { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--black); margin-bottom: 12px; }
+.b2-gw--map ul { flex-direction: column; gap: 8px; }
+.b2-gw--map a.is-accent { color: var(--blue-dark); font-weight: 800; }
+.b2-gw .is-soon { color: #a3a3a3; font-size: 15px; }
+.b2-gw .is-soon em { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #b8b8b8; margin-left: 4px; }
+@media (max-width: 1100px) { .b2-gw--map { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .b2-gw--map { grid-template-columns: 1fr; } }

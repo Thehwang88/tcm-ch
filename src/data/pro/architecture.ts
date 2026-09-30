@@ -90,14 +90,57 @@ export const layer = (id: LayerId) => PRO_LAYERS.find((l) => l.id === id)!;
 /** Verlinkbar = echte Route vorhanden (indexierbar oder noindex-Gerüst). */
 export const isLinkable = (l: ProLayer) => l.status === 'live' || l.status === 'scaffold_noindex';
 
-/** Gateway-Karten für /fachpersonen/ (Einträge ohne href = geplant, nicht verlinkt). */
-export const GATEWAY_CARDS: { t: string; items: { label: string; href?: string }[] }[] = [
-  { t: 'Lernen', items: [{ label: 'Akademie', href: '/akademie/' }, { label: 'M7', href: '/akademie/#interesse' }, { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:innen', href: '/verzeichnis/#mentoren' }] },
-  { t: 'Arbeiten', items: [{ label: 'Jobs', href: '/jobs/' }, { label: 'Berufseinstieg', href: '/karriere/berufseinstieg/' }, { label: 'Karriere bei TCM.ch', href: '/karriere/' }] },
-  { t: 'Praxis führen', items: [{ label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' }, { label: 'Regulatorik' }] },
-  { t: 'Vernetzen', items: [{ label: 'Verzeichnis', href: '/verzeichnis/' }, { label: 'Mitmachen', href: '/community/' }, { label: 'Veranstaltungen', href: '/weiterbildungen/' }] },
-  { t: 'Geschäftlich weitergehen', items: [{ label: 'Praxisräume', href: '/marktplatz/#praxisraeume' }, { label: 'Praxisverkauf', href: '/marktplatz/#praxisverkauf' }, { label: 'Nachfolge mit TCM.ch' }, { label: 'Partnerschaft', href: '/partner/' }] },
-  { t: 'Branche verstehen', items: [{ label: 'Daten' }, { label: 'Branchenwissen' }, { label: 'Regeln' }] },
+/** Navigationseintrag. `planned: true` = Route existiert noch nicht → wird als «bald» ohne Link
+ *  gerendert (nie ein toter Link). check-professional.mjs prüft: nicht-geplante hrefs sind gebaut,
+ *  geplante nicht — beim Launch einer Route hier `planned` entfernen. */
+export interface NavItem { label: string; href: string; planned?: true; accent?: true }
+export interface NavGroup { id: string; label: string; items: NavItem[] }
+
+/** Header «Für Fachpersonen»: nur Kategorien/Hubs, nie Einzelartikel. */
+export const PRO_NAV_OVERVIEW: NavItem = { label: 'Übersicht', href: '/fachpersonen/' };
+export const PRO_NAV: NavGroup[] = [
+  { id: 'arbeiten', label: 'Arbeiten & Lernen', items: [
+    { label: 'Jobs', href: '/jobs/' }, { label: 'Karriere bei TCM.ch', href: '/karriere/' },
+    { label: 'Akademie', href: '/akademie/' }, { label: 'Weiterbildungen', href: '/weiterbildungen/' }] },
+  { id: 'praxis', label: 'Praxis', items: [
+    { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Tools & Rechner', href: '/tools/', planned: true },
+    { label: 'Regulatorik', href: '/regulatorik/', planned: true }] },
+  { id: 'netzwerk', label: 'Netzwerk', items: [
+    { label: 'Verzeichnis', href: '/verzeichnis/' }, { label: 'Marktplatz', href: '/marktplatz/' }, { label: 'Community', href: '/community/' }] },
+  { id: 'wachstum', label: 'Wachstum', items: [
+    { label: 'Partner werden', href: '/partner/', accent: true }, { label: 'Praxisnachfolge', href: '/partner/praxisnachfolge/', planned: true }] },
+  { id: 'branche', label: 'Branche', items: [
+    { label: 'Branchenwissen', href: '/branche/', planned: true }, { label: 'Daten & Benchmarks', href: '/daten/', planned: true }] },
+  { id: 'zuweiser', label: 'Für Zuweiser', items: [{ label: 'Online-Zuweisung', href: '/zuweisen/' }] },
+];
+
+/** /fachpersonen/ Control Center: vollständige Karte des Ökosystems. */
+export const PRO_MAP: NavGroup[] = [
+  { id: 'arbeiten', label: 'Arbeiten', items: [
+    { label: 'Jobs finden', href: '/jobs/' }, { label: 'Karriere bei TCM.ch', href: '/karriere/' },
+    { label: 'Berufseinstieg', href: '/karriere/berufseinstieg/' }, { label: 'Standortleitung', href: '/karriere/standortleitung/' }] },
+  { id: 'lernen', label: 'Lernen', items: [
+    { label: 'Akademie', href: '/akademie/' }, { label: 'M7 Mentorat', href: '/akademie/#interesse' },
+    { label: 'Weiterbildungen', href: '/weiterbildungen/' }, { label: 'Mentor:in finden', href: '/verzeichnis/#mentoren' }] },
+  { id: 'praxis', label: 'Praxis führen', items: [
+    { label: 'Praxiswissen', href: '/praxiswissen/' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/' },
+    { label: 'Tools', href: '/tools/', planned: true }, { label: 'Regulatorik', href: '/regulatorik/', planned: true },
+    { label: 'BAB / EMR / ASCA', href: '/regulatorik/berufsausuebungsbewilligung/', planned: true }] },
+  { id: 'vernetzen', label: 'Vernetzen', items: [
+    { label: 'Fachpersonen-Verzeichnis', href: '/verzeichnis/#therapeuten' }, { label: 'Kliniken', href: '/verzeichnis/#kliniken' },
+    { label: 'Mentor:in werden', href: '/community/#mentor' }, { label: 'Community', href: '/community/' }] },
+  { id: 'marktplatz', label: 'Marktplatz', items: [
+    { label: 'Praxis verkaufen / Nachfolge', href: '/marktplatz/#praxisverkauf' }, { label: 'Praxis übernehmen', href: '/marktplatz/#praxisgesuche' },
+    { label: 'Praxisräume', href: '/marktplatz/#praxisraeume' }, { label: 'Praxispartner', href: '/marktplatz/#praxispartner' },
+    { label: 'Vertretungen', href: '/marktplatz/#vertretung' }] },
+  { id: 'wachsen', label: 'Wachsen', items: [
+    { label: 'TCM.ch Partner', href: '/partner/', accent: true }, { label: 'Partnermodell', href: '/partner/modell/' },
+    { label: 'Praxisnachfolge mit TCM.ch', href: '/partner/praxisnachfolge/', planned: true }] },
+  { id: 'branche', label: 'Branche verstehen', items: [
+    { label: 'Branchenwissen', href: '/branche/', planned: true }, { label: 'Daten', href: '/daten/', planned: true },
+    { label: 'Benchmarks', href: '/daten/praxis-benchmark/', planned: true }, { label: 'Reports', href: '/daten/', planned: true },
+    { label: 'Interviews', href: '/branche/interviews/', planned: true }] },
+  { id: 'zuweisen', label: 'Zuweisen', items: [{ label: 'Online-Zuweisung', href: '/zuweisen/' }] },
 ];
 
 /** Lebenszyklus der Fachperson — von erstem Interesse bis Praxisübergabe. */
