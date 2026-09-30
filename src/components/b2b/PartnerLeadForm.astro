@@ -6,6 +6,7 @@ const situationen = ['Ich habe bereits eine Praxis', 'Therapeut:in, will eigenen
 const anerkennung = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'in Bearbeitung'];
 ---
 <form class="form-card b2-form" id="pl-form" novalidate>
+  <input type="hidden" name="angebot" value="" data-dossier-flag />
   <div class="hp" aria-hidden="true"><label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
 
   <fieldset>
@@ -40,7 +41,7 @@ const anerkennung = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'in Bearbeitung'];
 
   <fieldset>
     <legend>Motivation</legend>
-    <div class="field"><label for="pl-why">Warum interessiert dich eine Partnerschaft?</label><textarea id="pl-why" name="motivation" rows="3"></textarea></div>
+    <div class="field"><label for="pl-why">Was interessiert dich am Partnermodell?</label><textarea id="pl-why" name="motivation" rows="3"></textarea></div>
     <div class="field"><label for="pl-msg">Nachricht <span class="opt">(optional)</span></label><textarea id="pl-msg" name="nachricht" rows="3"></textarea></div>
   </fieldset>
 
@@ -55,6 +56,11 @@ const anerkennung = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'in Bearbeitung'];
     var form = document.getElementById('pl-form');
     if (!form) return;
     var status = form.querySelector('.form-status');
+    // ?anliegen=dossier (CTA «Partner-Dossier anfordern» auf /partner/modell/)
+    if (/[?&]anliegen=dossier\b/.test(location.search)) {
+      form.querySelector('[data-dossier-flag]').value = 'Partner-Dossier angefordert';
+      var bl = form.querySelector('.btn-label'); if (bl) bl.textContent = 'Partner-Dossier anfordern';
+    }
     var label = form.querySelector('.btn-label');
     function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
     form.addEventListener('submit', async function (e) {
@@ -70,7 +76,7 @@ const anerkennung = ['EMR', 'ASCA', 'OdA AM', 'BAB', 'ZSR', 'in Bearbeitung'];
       d.anerkennung = fd.getAll('anerkennung').join(', ');
       d.name = (d.vorname + ' ' + d.nachname).trim();
       d.quelle = 'partner-b2b';
-      d.formular = 'Partner-Qualifikation';
+      d.formular = d.angebot ? 'Partner-Dossier' : 'Partner-Qualifikation';
       d.seite = location.pathname;
       d.zeit = new Date().toISOString();
       d.turnstileToken = token;
