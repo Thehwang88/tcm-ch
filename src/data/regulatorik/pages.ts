@@ -256,15 +256,19 @@ export const REG_PAGES: RegPage[] = [
     short: 'Tarif 590 ist die gemeinsame Leistungs- und Abrechnungsstruktur für Komplementärmedizin im Zusatzversicherungsbereich (VVG). Er legt fest, wie Leistungen bezeichnet und abgerechnet werden – nicht, dass ein Versicherer bezahlt. Arbeite immer mit der aktuellen Version.',
     bodyHtml: `
 <h2>Was ist Tarif 590?</h2>
-<p>Eine schweizweit einheitliche Struktur für die Bezeichnung und Abrechnung komplementärmedizinischer Leistungen gegenüber Zusatzversicherern. Die OdA AM stellt die aktuellen Tarif-590-Unterlagen bereit; technische Abrechnungskomponenten laufen über santéservices/SASIS.</p>
+<p>Der Tarif 590 ist die schweizweit gültige Liste ambulanter komplementärmedizinischer Leistungen im Bereich der Zusatzversicherung (VVG). Laut OdA AM umfasst er über 100 Tarifpositionen für einzelne Methoden und Verrichtungen.</p>
+<p>Seit <strong>1. Januar 2018</strong> ist die Abrechnung komplementärmedizinischer Leistungen nach Tarif 590 verbindlich. Das einheitliche Rechnungsformular ist seit <strong>1. April 2018</strong> obligatorisch.</p>
+<h2>Was gilt 2026?</h2>
+<p>Seit <strong>1. Januar 2022</strong> akzeptieren die Krankenversicherer gemäss OdA AM nur noch Rechnungen bzw. Rückforderungsbelege, die dem aktuellen Rechnungsstandard entsprechen. Die OdA AM weist deshalb auf die Nutzung einer professionellen Software-Lösung hin.</p>
+<p>Für 2026 stellt die OdA AM separate aktuelle Tarifunterlagen bereit für Naturheilpraktiker:innen mit eidgenössischem Diplom bzw. Zertifikat OdA AM sowie Unterlagen für EMR und ASCA. Arbeite deshalb immer mit der aktuellen Fassung und nicht mit einer lokal gespeicherten alten Tarifliste.</p>
 <h2>Ist der Preis vorgeschrieben?</h2>
-<p>Verwechsle Tarifposition nicht mit Preisvorgabe. Die Tarifposition beschreibt, welche Leistung du erbracht hast. Welche Preisregeln im Detail gelten, steht in den aktuellen Tarif-590-Unterlagen. ${NOT_VERIFIED} Wir nennen hier deshalb keine Beträge.</p>
+<p>Tarifposition und Behandlungspreis sind nicht dasselbe. Tarif 590 strukturiert, <em>welche</em> Leistung du abrechnest. Er ist keine pauschale Vorgabe dafür, welchen Stundenpreis jede Praxis verlangen muss. Für die konkrete Rechnungsstellung gelten die aktuellen Tarifunterlagen und die Regeln des jeweiligen Versicherers.</p>
 <h2>Was gehört auf die Rechnung?</h2>
-<ul class="b2-check-list"><li>Rechnung im Tarif-590-Standard</li><li>Leistungscodes gemäss aktueller Tarifversion</li><li>notwendige Angaben zu dir als Leistungserbringer:in</li><li>deine <a href="/regulatorik/zsr/">ZSR-Nummer</a></li><li>eine Abrechnungslösung, die den aktuellen Standard erfüllt</li></ul>
-<p>Welche Software du nutzt, ist deine Wahl – entscheidend ist, dass sie den aktuellen Standard technisch korrekt abbildet.</p>
-<div class="pro-callout"><strong>Speichere keine Tarifliste von vor drei Jahren und arbeite einfach weiter damit.</strong><p>Prüfe vor jeder Anpassung deiner Rechnungsvorlagen die aktuelle Version.</p></div>
+<ul class="b2-check-list"><li>Rechnung im aktuellen Tarif-590-Standard</li><li>passende Tarifziffern gemäss aktueller Version</li><li>notwendige Angaben zu dir als Leistungserbringer:in</li><li>deine <a href="/regulatorik/zsr/">ZSR-Nummer</a></li><li>eine Software-/Abrechnungslösung, die den aktuellen Rechnungsstandard korrekt erzeugt</li></ul>
+<p>Visana bestätigt beispielsweise für ihre anerkannten Komplementärtherapeut:innen ausdrücklich die Abrechnung über eine Softwarelösung und das standardisierte Formular nach Tarif 590. Welche Software du verwendest, bleibt dir überlassen, solange sie die aktuellen Anforderungen erfüllt.</p>
+<div class="pro-callout"><strong>Speichere keine Tarifliste von vor drei Jahren und arbeite einfach weiter damit.</strong><p>Prüfe bei Änderungen deiner Rechnungsvorlagen immer zuerst die aktuelle Version bei OdA AM bzw. santéservices/SASIS.</p></div>
 <h2>Tarif 590 ist keine Kostengutsprache</h2>
-<p>Eine korrekte Rechnung heisst nicht, dass der Versicherer bezahlt. Das entscheidet weiterhin sein Vertrag bzw. Produkt. Mehr unter <a href="/regulatorik/krankenkassen-anerkennung/">Krankenkassen & Anerkennung</a>.</p>`,
+<p>Eine formal korrekte Rechnung bedeutet nicht automatisch, dass die Zusatzversicherung bezahlt. Entscheidend bleiben Versicherungsprodukt, anerkannte Methode und Anerkennungsstatus der behandelnden Person. Mehr unter <a href="/regulatorik/krankenkassen-anerkennung/">Krankenkassen & Anerkennung</a>.</p>`,
     faq: [
       { q: 'Schreibt Tarif 590 meinen Stundenpreis vor?', a: 'Tarif 590 ist in erster Linie eine Leistungs- und Abrechnungsstruktur. Welche Preisregeln gelten, steht in den aktuellen Tarif-590-Unterlagen.' },
       { q: 'Brauche ich eine ZSR-Nummer für Tarif-590-Rechnungen?', a: 'Die ZSR ist eine der Angaben auf der Rechnung an Zusatzversicherer. Details unter ZSR-Nummer.' },
@@ -273,7 +277,7 @@ export const REG_PAGES: RegPage[] = [
       { q: 'Wo finde ich die aktuelle Version?', a: 'Bei der OdA AM (Tarif-590-Unterlagen). Prüfe sie regelmässig.' },
     ],
     cta: { title: 'Wer bezahlt am Ende?', label: 'EMR, ASCA & Krankenkassen', href: '/regulatorik/krankenkassen-anerkennung/' },
-    sources: ['odaAmTarif590', 'sasisZsr'],
+    sources: ['odaAmTarif590', 'sasisZsr', 'visanaTherapeuten'],
     facts: [], lastReviewed: R, reviewIntervalMonths: 6,
   },
   {
