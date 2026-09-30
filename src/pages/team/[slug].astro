@@ -184,11 +184,19 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
 
       {hasRegister && (
         <section class="tp-section">
-          <h2>Anerkennungen &amp; Register</h2>
+          <h2>Anerkennungen &amp; Krankenkasse</h2>
           <div class="tp-reg">
             {regsTcm.map((r) => (
               <div class={`tp-reg-item${r.status === 'beantragt' ? ' is-pending' : ''}`}>
-                <b>{r.organisation}</b><span class="tp-reg-st">{statusLabel[r.status]}</span>{r.note && <span>{r.note}</span>}
+                {r.organisation === 'EMR' && r.status === 'anerkannt' && r.profileUrl ? (
+                  <>
+                    <b><span aria-hidden="true">✓ </span>EMR-Qualitätslabel bestätigt</b>
+                    <a class="tp-reg-link" href={r.profileUrl} target="_blank" rel="noopener noreferrer">Bei EMR prüfen <span aria-hidden="true">→</span><span class="tp-visually"> (öffnet emr.ch in neuem Tab)</span></a>
+                  </>
+                ) : (
+                  <><b>{r.organisation}</b><span class="tp-reg-st">{statusLabel[r.status]}</span></>
+                )}
+                {r.note && <span>{r.note}</span>}
               </div>
             ))}
           </div>
@@ -201,7 +209,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
             </>
           )}
           {t.registerName && t.registerName !== t.name && <p class="tp-note">Name bei Versicherern und Registern: {t.registerName}</p>}
-          <p class="tp-note">Eine Anerkennung bedeutet keine automatische Kostenübernahme. Massgebend ist deine Zusatzversicherung. <a href="/krankenkassen/">Mehr zur Kostenübernahme</a></p>
+          <p class="tp-note">Ob deine Behandlung von der Zusatzversicherung übernommen wird, hängt von Versicherer, Produkt und anerkannter Methode ab. Bitte prüfe deine persönliche Deckung vor der Behandlung. <a href="/krankenkassen/">Krankenkassen &amp; TCM verstehen →</a></p>
         </section>
       )}
 
@@ -349,6 +357,8 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
   .tp-reg-item { min-width: 0; overflow-wrap: anywhere; hyphens: auto; display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-size: 13.5px; color: var(--mid); }
   .tp-reg-item b { font-size: 15px; color: var(--black); overflow-wrap: anywhere; hyphens: auto; }
   .tp-reg-st { font-weight: 700; color: var(--blue-dark); }
+  .tp-reg-link { align-self: flex-start; margin-top: 4px; font-size: 13.5px; font-weight: 700; color: var(--blue-dark); text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+  .tp-reg-link:hover { text-decoration: underline; }
   .tp-reg-item.is-pending { background: var(--surface); }
   .tp-reg-item.is-pending .tp-reg-st { color: var(--muted); }
   @media (max-width: 860px) { .tp-facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tp-initials span { font-size: 56px; } }

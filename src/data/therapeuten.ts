@@ -42,6 +42,10 @@ export interface TherapeutRegistrierung {
   organisation: string;
   status: 'anerkannt' | 'registriert' | 'beantragt';
   note?: string;
+  /** Bestätigter öffentlicher Verifikationslink (exakt übernommen, nie aus dem Namen generiert). */
+  profileUrl?: string;
+  /** INTERN: Datum der letzten Prüfung. Nicht Teil der Public View. */
+  lastVerified?: string;
   /** Fachbereich, falls nicht TCM (z. B. «Physiotherapie»). */
   bereich?: string;
 }
@@ -109,7 +113,7 @@ export const getPublicTherapistProfile = (t: Therapeut): PublicTherapeut => ({
   schwerpunkte: t.schwerpunkte, schwerpunkteAlsInteressen: t.schwerpunkteAlsInteressen, themenGruppen: t.themenGruppen,
   methoden: t.methoden, ausbildung: t.ausbildung, weiterbildungen: t.weiterbildungen, weitereQualifikationen: t.weitereQualifikationen,
   klinischerHintergrund: t.klinischerHintergrund, berufserfahrung: t.berufserfahrung,
-  registrierungen: t.registrierungen?.map((r) => ({ organisation: r.organisation, status: r.status, bereich: r.bereich, note: r.note })),
+  registrierungen: t.registrierungen?.map((r) => ({ organisation: r.organisation, status: r.status, bereich: r.bereich, note: r.note, profileUrl: r.status === 'anerkannt' ? r.profileUrl : undefined })),
   mitgliedschaften: t.mitgliedschaften, sprachen: t.sprachen, weitereSprachen: t.weitereSprachen, erfahrung: t.erfahrung,
   bio: t.bio, bookingUrl: t.bookingUrl, seo: t.seo,
 });
@@ -174,7 +178,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Treatment of Cough Caused by Disorders of Zang-Fu Organs in addition to the Lungs' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/ken.uehara', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
     ],
     sprachen: ['Deutsch', 'Englisch', 'Japanisch'],
@@ -230,7 +234,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Kosmetische Akupunktur' },
     ],
     weitereQualifikationen: ['Yogalehrerin: Yin Yoga, Hatha Yoga, Kiefer- und Gesichtsyoga'],
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/janine.schmieder', lastVerified: '2026-09-30' }],
     sprachen: ['Deutsch', 'Englisch', 'Französisch'],
     bio: [
       'Janine hat zuerst Ernährungswissenschaft an der Universität Hohenheim studiert. Dieser naturwissenschaftliche Hintergrund zeigt sich in ihrer Arbeit: Sie denkt Beschwerden gerne von Alltag, Ernährung und Belastung her mit, bevor sie behandelt.',
@@ -245,6 +249,7 @@ export const therapeuten: Therapeut[] = [
     bild: '/images/Emanuela%20Pelican.webp',
     ortLabel: 'Bottighofen',
     standorte: ['bottighofen'],
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/emanuela.pelican/4', lastVerified: '2026-09-30' }],
   },
   {
     slug: 'jiun-lee',
@@ -283,7 +288,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Fasziale Akupunktur', jahr: '11/2026–04/2027', status: 'geplant' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/ji.eun.lee.tremmel', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'EGK', status: 'anerkannt' },
     ],
@@ -313,7 +318,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Zertifikat OdA AM, Fachrichtung TCM Akupunktur / Tuina', status: 'abgeschlossen' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/michele.seiler', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
     ],
     mitgliedschaften: ['TCM Fachverband Schweiz'],
@@ -329,12 +334,14 @@ export const therapeuten: Therapeut[] = [
     name: 'Kristen Lambertin',
     titel: 'TCM-Therapeutin',
     bild: '/images/Kristen%20Lambertin.webp',
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/klambertin', lastVerified: '2026-09-30' }],
   },
   {
     slug: 'leon-brandon-mueller',
     name: 'Leon Brandon Müller',
     titel: 'TCM-Therapeut',
     bild: '/images/Leon%20Brandon%20M%C3%BCller.webp',
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/leon.brandon.muller', lastVerified: '2026-09-30' }],
   },
   {
     slug: 'corinna-reinhart',
@@ -360,7 +367,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Diverse Weiterbildungen in energetischer Arbeit', status: 'abgeschlossen' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/corinna.reinhart', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'Visana', status: 'anerkannt' },
       { organisation: 'SNE', status: 'anerkannt' },
@@ -459,7 +466,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Shamanic Roots of Chinese Medicine / Channel Systems in Acupuncture', institution: 'Chiway', jahr: '30.10.–01.11.2026', status: 'geplant' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/natalia.goc', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'EGK', status: 'anerkannt' },
       { organisation: 'Kanton Zürich', status: 'anerkannt', note: 'Berufsausübungsbewilligung', bereich: 'Physiotherapie' },
@@ -502,7 +509,7 @@ export const therapeuten: Therapeut[] = [
         aufgaben: ['Eigenverantwortliche Praxisleitung', 'Qualitätsmanagement', 'Personalführung', 'Finanzführung', 'Behandlung mit Akupunktur, Kräutertherapie, Tuina und Moxibustion'] },
       { rolle: 'Stellvertretender Direktor', organisation: 'Jeheung Clinic', ort: 'Seoul, Südkorea', zeitraum: '01/2008–08/2008', beschreibung: 'Klinische Diagnostik und Therapieplanung' },
     ],
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/seongsu.kim', lastVerified: '2026-09-30' }],
     bio: [
       'Seongsu hat an der Woosuk University in Jeonju Koreanische Medizin studiert. Danach hat er fast 17 Jahre lang seine eigene Klinik in Südkorea geführt, als Praxisleiter und Inhaber. In dieser Zeit hat er über 13\'000 Patientinnen und Patienten behandelt.',
       'Er bringt damit nicht nur klinische Routine mit, sondern auch die Erfahrung, eine Praxis mit Team, Qualitätsmanagement und Finanzen zu verantworten.',
@@ -531,7 +538,7 @@ export const therapeuten: Therapeut[] = [
       { rolle: 'Akupressur-Therapeutin', organisation: 'TCM.ch / Praxis Hwang', ort: 'Winterthur', zeitraum: 'seit Mai 2026' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/brenda.oviedo.diaz', lastVerified: '2026-09-30' },
       { organisation: 'ASCA', status: 'anerkannt' },
       { organisation: 'SNE', status: 'anerkannt' },
     ],
@@ -561,7 +568,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Dipl. Energetiker & medizinisches Qi Gong Practitioner', jahr: 'Start November 2026', status: 'geplant' },
     ],
     klinischerHintergrund: { titel: 'Klinischer Hintergrund in der Onkologie', items: ['Langjährige Tätigkeit in der onkologischen Pflege', 'In den letzten sieben Jahren besonderer Schwerpunkt Brustkrebs', 'Weiterbildung in Psychoonkologie (CAS)'] },
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt' }],
+    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/astrid.lenggenhager', lastVerified: '2026-09-30' }],
     mitgliedschaften: ['TCM Fachverband Schweiz', 'Onkologiepflege Schweiz'],
     sprachen: ['Deutsch', 'Englisch', 'Italienisch'],
     weitereSprachen: { label: 'Gute Alltagskenntnisse', items: ['Französisch'] },
@@ -600,7 +607,7 @@ export const therapeuten: Therapeut[] = [
       { titel: 'Ohrakupunktur nach NADA-Protokoll', institution: 'NADA Schweiz' },
     ],
     registrierungen: [
-      { organisation: 'EMR', status: 'anerkannt' },
+      { organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/desiree.letter/2', lastVerified: '2026-09-30' },
       { organisation: 'Visana', status: 'anerkannt' },
     ],
     sprachen: ['Schweizerdeutsch', 'Deutsch'],
