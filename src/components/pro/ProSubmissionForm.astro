@@ -1,0 +1,43 @@
+---
+// Modulares, moderiertes Einreichungsformular (Schema: src/data/pro/submissions.ts).
+// POST JSON → /api/einreichung. Nie Direktveröffentlichung. Consent + Datenschutz + Honeypot + Turnstile.
+import { site } from '../../data/site';
+import type { SubmissionType } from '../../data/pro/submissions';
+interface Props { t: SubmissionType }
+const { t } = Astro.props;
+const id = (k: string) => `sf-${t.id}-${k}`;
+---
+<form class="form-card b2-form pro-form" data-pro-form={t.id} novalidate>
+  <div class="hp" aria-hidden="true"><label>Dieses Feld leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+  <p class="b2-p" style="margin-top:0">{t.intro}</p>
+  <div class="pro-grid">
+    {t.fields.map((f) => (
+      <div class={`field${f.type === 'textarea' || f.type === 'checkboxes' ? ' pro-wide' : ''}`}>
+        {f.type === 'checkboxes' ? (
+          <fieldset>
+            <legend class="b2-flabel">{f.label}{f.required && <span class="req"> *</span>}</legend>
+            <div class="b2-checks" data-group={f.key} data-required={f.required ? '1' : undefined}>{f.options!.map((o) => <label class="b2-check"><input type="checkbox" name={f.key} value={o} />{o}</label>)}</div>
+          </fieldset>
+        ) : (
+          <>
+            <label for={id(f.key)}>{f.label}{f.required && <span class="req"> *</span>}{f.private && <span class="opt"> (nicht öffentlich)</span>}</label>
+            {f.type === 'textarea' ? (
+              <textarea id={id(f.key)} name={f.key} rows="4" required={f.required} maxlength={f.maxLength ?? 5000}></textarea>
+            ) : f.type === 'select' ? (
+              <select id={id(f.key)} name={f.key} required={f.required}><option value="">Bitte wählen</option>{f.options!.map((o) => <option>{o}</option>)}</select>
+            ) : (
+              <input id={id(f.key)} name={f.key} type={f.type} required={f.required} maxlength={f.maxLength ?? 500} autocomplete={f.key === 'name' ? 'name' : f.key === 'email' ? 'email' : f.key === 'telefon' ? 'tel' : 'off'} />
+            )}
+            {f.hint && <small class="pro-hint">{f.hint}</small>}
+          </>
+        )}
+      </div>
+    ))}
+  </div>
+  <label class="pro-consent"><input type="checkbox" name="consent_publikation" required /> Ich bin berechtigt, diese Angaben zu machen, und willige ein, dass TCM.ch sie nach Prüfung veröffentlichen darf. Kontaktdaten bleiben privat, sofern ich nichts anderes wähle.</label>
+  <label class="pro-consent"><input type="checkbox" name="consent_datenschutz" required /> Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen.</label>
+  <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:10px 0 14px"></div>
+  <button class="btn btn--primary" type="submit"><span class="btn-label">{t.cta}</span></button>
+  <div class="form-status" role="status" aria-live="polite" hidden></div>
+  <p class="b2-privacy">Wird vor jeder Veröffentlichung von uns geprüft. Kein Anspruch auf Aufnahme.</p>
+</form>

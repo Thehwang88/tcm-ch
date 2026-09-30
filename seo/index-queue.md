@@ -21,6 +21,7 @@ Regeln:
 
 ## Offen
 
+- https://tcm.ch/fachpersonen/
 - https://tcm.ch/partner/modell/
 - https://tcm.ch/karriere/
 - https://tcm.ch/karriere/standortleitung/

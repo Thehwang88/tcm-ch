@@ -68,3 +68,20 @@ praxiswissen m7 mentorat (/praxiswissen/m7-mentorat/),/akademie/,M7 commercial/A
 tcm partner {stadt} / partner bern / partner luzern (öffentliche Stadt-Partnerseiten),/partner/,/partner/[city]/ sind PRIVATE noindex-Präsentationen; öffentlich nur /partner/ + /partner/modell/,Doorway-Inflation + Offenlegung interner Marktstrategie,Keiner
 akupunkteur jobs (eigene Seite),/karriere/,Deckt /karriere/ als secondary keyword ab,Split des Job-Intents ohne Datenbasis,Nur bei klarer GSC-/Nachfrage-Evidenz und explizitem Auftrag
 tcm karriere / tcm karriere schweiz (auf /partner/),/karriere/,"/partner/ ist seit 09/2026 Partnerschafts-Owner, nicht Karriere",Intent-Vermischung Anstellung vs. Unternehmertum,Keiner
+tcm therapeut {stadt} / akupunkteur {stadt} (Verzeichnis-Stadtseiten),/verzeichnis/,Programmatische Stadt×Therapeut-Seiten = Doorways; Patienten-Lokalintent gehört /standorte/,"Doorway-Inflation, Konflikt mit Standortseiten",Keiner
+{kanton} × {methode} Verzeichnisseiten,/verzeichnis/,"Filter sind noindex,follow; keine Kombinationsseiten",Unbegrenzte dünne URL-Menge,Nur explizit freigegebene redaktionelle Landingpage
+jede Filter-/Suchkombination als eigene Seite,/verzeichnis/ /jobs/ /marktplatz/ /weiterbildungen/,"FILTER_ROBOTS = noindex,follow","Crawl-Budget, Thin Content",Keiner
+gescrapte oder ungefragte Fachpersonen-Profile,/verzeichnis/,Nur Opt-in mit Einwilligung,"Datenschutz, Rechtsrisiko, Vertrauen",Keiner
+leere Marktplatz-/Job-/Kurs-Inserate,/marktplatz/ /jobs/ /weiterbildungen/,"Nur echte, moderierte Einträge; Hubs noindex bis Mindestanzahl","Fake-Listings, Vertrauensverlust",Keiner
+beste tcm therapeuten / top tcm kliniken (Rankings),/verzeichnis/,Keine Qualitätsrankings ohne transparente Methodik + Rechtsprüfung,"Irreführung, Recht",Keiner
+"doppelte Kurs- oder Stellenseiten (gleicher Inhalt, mehrere Städte)",/jobs/ /weiterbildungen/,Ein Eintrag = eine kanonische URL (fingerprint()),Duplicate Content,Keiner
+"zweite Commercial-Jobs-Seite (/stellen/, /tcm-jobs/)",/jobs/,/jobs/ wird einziger generischer Job-Owner (/karriere/ interim),Job-Intent-Splitting,Keiner
+separate Mentoring-Service-Seite neben der Akademie,/akademie/,Akademie = TCM.ch-Service; /verzeichnis/mentoren/ = neutrale Suche,Kannibalisierung Service vs. Verzeichnis,Nur bei klar anderem Intent und Auftrag
+"Kategorie-Unterseiten ohne Einträge (/verzeichnis/therapeuten/, /marktplatz/praxisverkauf/ …)",/verzeichnis/ /marktplatz/,"Kategorien als Anker im Hub, bis echte Einträge existieren",Thin Pages,Ab HUB_INDEX_MIN_ENTRIES echten Einträgen
+"öffentliches Forum, Kommentare, Messaging, Bewertungen von Fachpersonen",/community/,"Phase 1 = Profile + Einreichungen + Matching + Beiträge, moderiert","Moderation, Fehlinformation, Diffamierung",Neubewertung nach nachgewiesener Nachfrage
+/regulatorik/kantone/{kanton}/ (26 automatische Seiten),/regulatorik/kantone/ (planned),Ein Navigator statt 26 Seiten; nur verifizierte Daten,Thin/Unverifizierte Rechtsinfos,"Einzelkanton nur mit verifiziertem, eigenständigem Inhalt"
+tcm lohn / akupunkteur lohn / naturheilpraktiker lohn (je eigene Seite),/branche/tcm-lohn-schweiz/ (planned),EIN konsolidierter Lohn-Owner nach Keyword-Research,Synonym-Splitting,Keiner
+"reine Organisationsnamen-Seiten (EMR, ASCA, Verbände) nur für SEO",/branche/organisationen/ (planned) · /regulatorik/… (planned),Nur substanzielle Referenzseiten; sonst eine Vergleichsseite,Thin Pages,Nach Overlap-Review
+"Praxiswissen-Einzelleaves pro Kostenposten / Marketingkanal (Google Ads, GBP, Reviews …)",/praxiswissen/tcm-praxis-kosten/ · /praxiswissen/patienten-gewinnen-tcm-praxis/,Grosse Owner zuerst; Split nur mit Nachfrage-Evidenz,Generischer Digital-Marketing-Spam,Nach GSC-Evidenz + Auftrag
+"Interviewseiten ohne echtes, freigegebenes Interview",/branche/interviews/ (planned),"Keine erfundenen Zitate, keine Composite-Personas","Glaubwürdigkeit, Recht",Keiner
+Benchmark-/Statistikseiten ohne Stichprobe & Methodik,/daten/ (planned),DatasetMeta Pflicht; interne Daten = TCM.ch-Netzwerkdaten,Irreführende Branchenzahlen,Keiner

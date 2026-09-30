@@ -1,0 +1,78 @@
+---
+// /fachpersonen/ — professionelle Eingangstür (indexierbar). Routet nach Bedarf und Lebensphase.
+// Rendert Links nur für echte Routen (live oder noindex-Gerüst, src/data/pro/architecture.ts);
+// geplante Bereiche erscheinen als Text ohne Link.
+import LayoutDe from '../layouts/LayoutDe.astro';
+import { site } from '../data/site';
+import { GATEWAY_CARDS, LIFECYCLE_STAGES, layer } from '../data/pro/architecture';
+import '../styles/b2b.css';
+
+const path = '/fachpersonen';
+const url = new URL(path + '/', site.url).href;
+const title = 'TCM für Fachpersonen: Jobs, Praxis, Weiterbildung & Netzwerk';
+const description = 'Die professionelle TCM-Plattform der Schweiz: Jobs, Weiterbildung, Praxiswissen, Mentoren, Branchenwissen, Praxisbörse und Partnerschaften.';
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url, inLanguage: 'de-CH',
+    audience: { '@type': 'Audience', audienceType: 'TCM therapists, students and practice owners' },
+    isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+    { '@type': 'ListItem', position: 2, name: 'Für Fachpersonen', item: url } ] },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <div class="b2">
+    <section class="b2-hero">
+      <div class="b2-wrap">
+        <p class="b2-label">TCM.ch für Fachpersonen</p>
+        <h1 class="b2-h1">Für Menschen, die TCM zum Beruf gemacht haben.</h1>
+        <p class="b2-lead">Lernen, arbeiten, eine Praxis führen, sich vernetzen und gemeinsam wachsen: der professionelle Bereich von TCM.ch – offen für die ganze Schweizer TCM-Branche.</p>
+        <p class="b2-route">Du suchst eine Behandlung? <a href="/standorte/">Zu den Standorten für Patient:innen&nbsp;→</a></p>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap">
+        <p class="b2-label">Was brauchst du gerade?</p>
+        <div class="b2-gw">
+          {GATEWAY_CARDS.map((c) => (
+            <div>
+              <b>{c.t}</b>
+              <ul>{c.items.map((i) => <li>{i.href ? <a href={i.href}>{i.label}</a> : <span title="in Vorbereitung">{i.label}</span>}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+        <p class="b2-fine">Grau = in Vorbereitung. Einige Bereiche sind im Aufbau und erscheinen mit geprüften Einträgen.</p>
+      </div>
+    </section>
+
+    <section class="b2-sec">
+      <div class="b2-wrap">
+        <p class="b2-label">Nach Lebensphase</p>
+        <h2 class="b2-h2">Wo stehst du im Beruf?</h2>
+        <ol class="b2-life">
+          {LIFECYCLE_STAGES.map((s, i) => (
+            <li>
+              <span class="b2-life__n">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                {s.href ? <a href={s.href}><b>{s.label}</b></a> : <b>{s.label}</b>}
+                <p>{s.question}</p>
+              </div>
+              <small>{s.href ? layer(s.layer).label : 'in Vorbereitung'}</small>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="b2-sec b2-sec--soft">
+      <div class="b2-wrap b2-narrow">
+        <p class="b2-label">Mitmachen</p>
+        <h2 class="b2-h2">Die Branche gestaltet mit.</h2>
+        <p class="b2-p">Profil anmelden, Stelle oder Praxis inserieren, Raum anbieten, Weiterbildung melden oder Expertise teilen. Alles wird von uns geprüft, bevor es erscheint. Unabhängige Fachpersonen sind nie Teil des TCM.ch-Teams, sondern ihr eigenes Profil.</p>
+        <div class="b2-actions"><a class="btn btn--primary" href="/community/">Mitmachen</a><a class="b2-link" href="https://ouch.tcm.ch/">Meinung & Analyse im OUCH.-Magazin</a></div>
+      </div>
+    </section>
+  </div>
+</LayoutDe>

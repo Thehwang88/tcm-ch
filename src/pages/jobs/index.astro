@@ -1,0 +1,20 @@
+---
+// /jobs/ — nationaler TCM-Stellenmarkt (Gerüst, noindex bis echte, geprüfte Inserate existieren).
+// JobPosting-Schema nur via jobPostingSchema() für echte aktive Inserate (entities.ts). Aktuell keine.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import ProHub from '../../components/pro/ProHub.astro';
+import { JOBS } from '../../data/pro/entities';
+import '../../styles/b2b.css';
+const cats = [
+  { id: 'therapie', label: 'TCM-Therapie & Akupunktur', text: 'Stellen für TCM-Therapeut:innen, Akupunktur, Naturheilpraktiker:innen TCM, Tuina und Kräutermedizin.', submit: 'stelle' },
+  { id: 'einstieg', label: 'Einstieg & Praktikum', text: 'Junior-Stellen und Praktika, wo rechtlich zulässig.', submit: 'stelle' },
+  { id: 'leitung', label: 'Leitung', text: 'Klinische Leitung und Standortleitung.', submit: 'stelle' },
+  { id: 'tcmch', label: 'Stellen bei TCM.ch', text: 'Rollen im TCM.ch Netzwerk.', route: { label: 'Karriere bei TCM.ch', href: '/karriere/' } },
+];
+---
+<LayoutDe title="TCM Stellenmarkt Schweiz (im Aufbau) | TCM.ch" description="Nationaler Stellenmarkt für TCM-Fachpersonen in der Schweiz: moderierte Inserate von Praxen und Kliniken. Im Aufbau." path="/jobs" noindex={true} robots="noindex, follow">
+  <ProHub id="jobs" h1="Der Stellenmarkt für TCM in der Schweiz." lead={`Hier entsteht ein neutraler Stellenmarkt für die ganze Branche – Stellen von TCM.ch und von anderen Praxen, jede vor Veröffentlichung geprüft. Aktuell ${JOBS.length ? JOBS.length + ' Inserate' : 'noch keine externen Inserate'}.`}
+    cats={cats}
+    rules={['Nur echte Stellen mit echtem Arbeitgeber, Ort und Bewerbungsweg.', 'Lohnangaben nur, wenn der Arbeitgeber sie liefert.', 'Abgelaufene Stellen werden als «nicht mehr aktiv» markiert und nicht mehr indexiert.', 'Keine unzulässig diskriminierenden Anforderungen.']}
+    routes={[{ label: 'Karriere bei TCM.ch', href: '/karriere/', note: 'Stellen bei TCM.ch selbst.' }, { label: 'Berufseinstieg', href: '/karriere/berufseinstieg/', note: 'Orientierung nach der Ausbildung.' }, { label: 'OUCH.-Magazin', href: 'https://ouch.tcm.ch/insights/tcm-jobs-schweiz/', note: 'Analyse des TCM-Arbeitsmarkts (Meinung).' }]} />
+</LayoutDe>

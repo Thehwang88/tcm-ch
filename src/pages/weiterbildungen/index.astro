@@ -1,0 +1,18 @@
+---
+// /weiterbildungen/ — neutrales Kurs-/Eventverzeichnis (Gerüst, noindex). TCM.ch-eigene Kurse = /akademie/.
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import ProHub from '../../components/pro/ProHub.astro';
+import '../../styles/b2b.css';
+const cats = [
+  { id: 'kurse', label: 'Kurse & Workshops', text: 'Fachliche Fort- und Weiterbildungen verschiedener Anbieter.', submit: 'weiterbildung' },
+  { id: 'kongresse', label: 'Kongresse & Veranstaltungen', text: 'Fachtagungen und Branchenevents.', submit: 'weiterbildung' },
+  { id: 'webinare', label: 'Webinare', text: 'Online-Formate für TCM-Fachpersonen.', submit: 'weiterbildung' },
+  { id: 'akademie', label: 'Angebote von TCM.ch', text: 'M7-Mentorat, Praktikum und Weiterbildung von TCM.ch selbst.', route: { label: 'Zur Akademie', href: '/akademie/' } },
+];
+---
+<LayoutDe title="TCM Weiterbildungen & Veranstaltungen Schweiz (im Aufbau) | TCM.ch" description="Neutrales Verzeichnis für TCM-Kurse, Kongresse, Workshops und Webinare in der Schweiz. Moderiert, Anerkennungen nur mit Beleg. Im Aufbau." path="/weiterbildungen" noindex={true} robots="noindex, follow">
+  <ProHub id="weiterbildungen" h1="Weiterbildungen und Veranstaltungen für TCM-Fachpersonen." lead="Ein neutrales Verzeichnis für Kurse und Events der ganzen Branche. Angebote von TCM.ch selbst findest du in der Akademie – sie werden hier klar gekennzeichnet."
+    cats={cats}
+    rules={['Nur reale Angebote mit Anbieter, Datum und Link zur Ausschreibung.', 'Anerkennungen und Credits nur mit Beleg.', 'Vergangene Veranstaltungen werden archiviert.', 'Keine doppelten Einträge desselben Kurses.']}
+    routes={[{ label: 'Akademie', href: '/akademie/', note: 'Kurse, M7 und Mentoring von TCM.ch.' }]} />
+</LayoutDe>

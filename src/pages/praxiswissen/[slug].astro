@@ -4,6 +4,7 @@ import LayoutDe from '../../layouts/LayoutDe.astro';
 import { site } from '../../data/site';
 import { PRAXISWISSEN, PW_CATEGORIES, pwBySlug, pwHref, type PwArticle } from '../../data/praxiswissen';
 import { B2B_LINKS } from '../../data/b2b';
+import { renderableQuotes } from '../../data/pro/contributions';
 import '../../styles/b2b.css';
 
 export function getStaticPaths() {
@@ -29,6 +30,7 @@ const schema = [
   ...(a.faq?.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: a.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
 ];
+const quotes = renderableQuotes(a.expertQuotes);
 const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <LayoutDe title={a.title} description={a.metaDesc} path={path} schema={schema}>
@@ -55,6 +57,26 @@ const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'n
             </aside>
           )}
 
+          {a.firstPartyObservations?.length ? (
+            <aside class="b2-fp" aria-label="TCM.ch-Netzwerkdaten">
+              <p class="b2-label b2-label--green" style="margin:0">Beobachtungen aus dem TCM.ch-Netzwerk</p>
+              {a.firstPartyObservations.map((o) => <p>{o.text}{o.period && <span class="b2-muted"> ({o.period})</span>}</p>)}
+              <p class="b2-fine">TCM.ch-Netzwerkdaten bzw. Betriebserfahrung, kein Schweizer Branchendurchschnitt.</p>
+            </aside>
+          ) : null}
+
+          {quotes.length ? (
+            <div class="b2-quotes">
+              <p class="b2-label b2-label--green" style="margin:0">Stimme aus der Praxis</p>
+              {quotes.map((q) => (
+                <figure class="b2-quote">
+                  <blockquote>«{q.quote}»</blockquote>
+                  <figcaption><b>{q.displayName}</b>{q.role && `, ${q.role}`}{q.organisation && `, ${q.organisation}`}{q.sourceUrl && <> · <a href={q.sourceUrl} rel="noopener" target="_blank">Quelle</a></>}{q.sourceType === 'interview' && <span class="b2-muted"> · Interview mit TCM.ch</span>}{q.sourceType === 'survey' && <span class="b2-muted"> · Umfrage</span>}</figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : null}
+
           {a.faq?.length ? (
             <div class="b2-faq" style="margin-top:48px">{a.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
           ) : null}
@@ -68,6 +90,17 @@ const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'n
               <a class="btn btn--primary" href={a.ctaHref}>{a.ctaLabel}</a>
             )}
           </div>
+
+          {a.sourceLinks?.length ? (
+            <div class="b2-sources">
+              <p class="b2-label">Quellen</p>
+              {(['fact', 'analysis'] as const).map((n) => {
+                const list = a.sourceLinks!.filter((l) => l.nature === n);
+                return list.length ? (<><p class="b2-sources__h">{n === 'fact' ? 'Amtliche & offizielle Angaben' : 'Externe Analysen & Einschätzungen'}</p>
+                  <ul>{list.map((l) => <li><a href={l.url} rel="noopener" target="_blank">{l.label}</a>{l.accessed && <span class="b2-muted"> · abgerufen {l.accessed}</span>}</li>)}</ul></>) : null;
+              })}
+            </div>
+          ) : null}
 
           <div class="b2-related">
             <p class="b2-label">Weiterlesen</p>

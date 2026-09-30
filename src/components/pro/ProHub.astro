@@ -1,0 +1,44 @@
+---
+// Gerüst eines Fachpersonen-Hubs (noindex, bis echte, geprüfte Einträge existieren).
+// Zeigt Zweck, Kategorien, Regeln und Beteiligungswege — nie Platzhalter-Einträge.
+import { layer, type LayerId } from '../../data/pro/architecture';
+import { HUB_INDEX_MIN_ENTRIES } from '../../data/pro/taxonomy';
+interface Cat { id: string; label: string; text: string; submit?: string; route?: { label: string; href: string } }
+interface Props { id: LayerId; h1: string; lead: string; cats: Cat[]; rules: string[]; routes: { label: string; href: string; note: string }[] }
+const { id, h1, lead, cats, rules, routes } = Astro.props;
+const l = layer(id);
+---
+<div class="b2">
+  <section class="b2-hero b2-hero--sm">
+    <div class="b2-wrap">
+      <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Fachpersonen</a><span aria-hidden="true">/</span>{l.label}</div>
+      <p class="b2-label b2-label--green">Im Aufbau</p>
+      <h1 class="b2-h1">{h1}</h1>
+      <p class="b2-lead">{lead}</p>
+      <p class="b2-fine">Ein professionelles Angebot auf TCM.ch. Einträge erscheinen erst nach Prüfung; bis genügend geprüfte Einträge vorhanden sind (mind. {HUB_INDEX_MIN_ENTRIES}), ist dieser Bereich nicht in Suchmaschinen gelistet.</p>
+    </div>
+  </section>
+  <section class="b2-sec b2-sec--soft" style="padding-top:56px">
+    <div class="b2-wrap">
+      <div class="b2-cards">
+        {cats.map((c) => (
+          <div class="b2-card" id={c.id}>
+            <b>{c.label}</b>
+            <p>{c.text}</p>
+            <p class="b2-card__owns">Noch keine veröffentlichten Einträge.</p>
+            {c.submit && <a class="b2-go" href={`/community/#${c.submit}`}>Einreichen →</a>}
+            {c.route && <a class="b2-go" href={c.route.href}>{c.route.label} →</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="b2-sec">
+    <div class="b2-wrap b2-narrow">
+      <p class="b2-label">Regeln</p>
+      <ul class="b2-rules">{rules.map((r) => <li>{r}</li>)}</ul>
+      <p class="b2-label" style="margin-top:48px">Nicht verwechseln</p>
+      <ul class="b2-rules">{routes.map((r) => <li><a href={r.href}>{r.label}</a> – {r.note}</li>)}</ul>
+    </div>
+  </section>
+</div>

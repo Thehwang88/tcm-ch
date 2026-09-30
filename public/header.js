@@ -118,7 +118,7 @@ function navMoreToggle(){
    Labels) und Hero-Panels leiten sich beide daraus ab. Auf der Startseite
    (Hero-Panels vorhanden) schaltet der Klick in-page ohne Reload und die
    Controls bekommen Tab-Semantik; auf allen anderen Seiten bleiben die
-   Optionen normale Links (/ bzw. /partner/). */
+   Optionen normale Links (/ bzw. /fachpersonen/). */
 (function(){
   var pPanel=document.querySelector('[data-audience-panel="patient"]');
   var tPanel=document.querySelector('[data-audience-panel="therapist"]');

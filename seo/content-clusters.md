@@ -88,17 +88,17 @@ Legende: **Hub** = primärer Owner des breiten Intents · Support = zuliefernde 
 - Beobachten (GSC): finger-schlafen-ein / einzelne-finger-taub / hand-kribbelt-beim-velofahren vs. karpaltunnelsyndrom; starkes-schwitzen-ohne-sport / nachtschweiss-ohne-fieber vs. hyperhidrose/wechseljahre; finger-morgens-steif vs. arthrose/rheuma; bein-wird-beim-sitzen-taub vs. ischias; rueckenschmerzen-beim-husten vs. rueckenschmerzen; ohr-einseitig-verstopft vs. hoersturz
 - Nächste Kandidaten erst nach GSC-Daten: siehe koerpersignale-candidates.csv (P2: Augenlid-Zucken, gleiche-Uhrzeit-Aufwachen, Herzstolpern)
 
-## 16. B2B / Fachpersonen (neu 09/2026) — learn → work → build → partner
-Kein Patienten-Cluster. Vier Zielgruppen, strikt getrennte Owner:
-- **`/partner/`** — Praxis-Partnerschaft (bestehende Praxen + lokale Unternehmer:innen). Repurposed, kein Redirect. Partner-Qualifikationsformular → `/api/anfrage` (quelle=partner-b2b).
-- **`/partner/modell/`** — Partnermodell (Start klein, 90-Tage-Launch, Geldfluss 10 % / 2/3 : 1/3, öffentlicher Simulator). Zahlen nur aus `BASE_MODEL`.
-- **`/karriere/`** — TCM Jobs Schweiz (Anstellung); Bewerbungsformular `/api/partner` (quelle=karriere). Unterseiten `/karriere/standortleitung/` (Führungs-Anstellung) und `/karriere/berufseinstieg/`.
-- **`/akademie/`** — Weiterbildung, M7 (commercial/Anmeldung), Praktikum/Hospitation, Business-Mentoring. Lebenszyklus-Pfad verlinkt alle B2B-Seiten.
-- **`/praxiswissen/`** — Hub + 7 Artikel + `/praxiswissen/praxisrechner/` (Tool). Daten: `src/data/praxiswissen.ts` (NICHT wissen.ts).
-- **OUCH** (ouch.tcm.ch) bleibt Meinung/Analyse (tcm-jobs-schweiz, m7-mentorat-tcm, tcm-ausbildung-lohnt-sich, emr-asca-labyrinth, kantons-lotterie …) und verlinkt kontextuell auf die Commercial-Owner. Nichts kopieren.
-- **Privat:** `/partner/[city]/` (z. B. Bern) = noindex, nicht in Sitemap, nie öffentlich verlinken. Keine öffentlichen Stadt-Partnerseiten.
-- Navigation: nur „Mehr → Für Fachpersonen“ + Drawer-Gruppe + Footer-Link „Karriere“. Patienten-Seiten bekommen KEINE B2B-Links.
-- Gesättigt: keine weiteren Praxiswissen-Artikel ohne expliziten Auftrag; siehe do-not-create-intents.csv.
+## 16. B2B / Fachpersonen — professionelle Infrastruktur (READ · LEARN · WORK · CONNECT · BUILD · TRADE & MATCH · GROW · CONTRIBUTE)
+Kein Patienten-Cluster. Vollständige Architektur: `seo/professional-architecture.md`; Topic-Registry (98 Einträge, Status/Priorität): `seo/professional-topic-map.csv`.
+- **Live & indexiert:** `/fachpersonen/` (Gateway), `/partner/`, `/partner/modell/`, `/karriere/` (+ standortleitung, berufseinstieg), `/akademie/`, `/praxiswissen/` (+ 7 Artikel + Praxisrechner).
+- **Noindex-Gerüste (echte Routen, keine Einträge, nicht in Sitemap):** `/jobs/`, `/verzeichnis/`, `/weiterbildungen/`, `/marktplatz/`, `/community/` (moderierte Einreichungen → `/api/einreichung`).
+- **Geplant (keine Route):** `/branche/`, `/regulatorik/` (+ Kanton-Navigator), `/daten/`, `/tools/`, `/partner/praxisnachfolge/`, Verzeichnis-/Marktplatz-Kategorien, Nachfolge-Praxiswissen.
+- **Owner-Wechsel geplant:** generischer Job-Intent `/karriere/` → `/jobs/`, sobald `/jobs/` echte Inserate hat. `/karriere/` = Karriere bei TCM.ch.
+- **Trennungen:** Akademie (TCM.ch-Kurse/M7) ≠ Weiterbildungen (branchenweit) · Akademie-Mentoring ≠ Verzeichnis Mentor:innen · Marktplatz Praxisverkauf (neutral) ≠ Partner Praxisnachfolge (TCM.ch) · Marktplatz Praxispartner (extern) ≠ Partner (TCM.ch) · Verzeichnis (Netzwerk) ≠ Standorte (Patient:innen).
+- **OUCH** bleibt Meinung/Analyse und verlinkt auf Commercial-/Referenz-Owner. Nichts kopieren.
+- **Privat:** `/partner/[city]/` noindex, nie öffentlich verlinken, keine Stadt-Partnerseiten.
+- **Navigation:** Header «Mehr → Für Fachpersonen» (Übersicht + Kernseiten), Drawer-Gruppe, Footer «Für Fachpersonen», Audience-Toggle «Therapeut:innen» → `/fachpersonen/`. Patienten-Navigation unverändert.
+- **Nie:** programmatische Stadt/Kanton×Methode-Seiten, indexierte Filter, gescrapte Profile, Rankings, Fake-Listings, Forum/Reviews/Messaging (Phase 1). Siehe do-not-create-intents.csv.
 
 ## Gesättigte Bereiche (nichts Neues bauen)
 Kopfschmerz, Rücken/Bewegungsapparat, Beschwerde-Leaves generell (100 Stück),

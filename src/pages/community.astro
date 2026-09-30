@@ -1,0 +1,45 @@
+---
+// /community/ — Beteiligung (Phase 1): moderierte Einreichungen. Kein Forum, keine Kommentare,
+// kein Messaging, keine Follower. noindex bis die Verzeichnisse echte Einträge haben.
+import LayoutDe from '../layouts/LayoutDe.astro';
+import ProSubmissionForm from '../components/pro/ProSubmissionForm.astro';
+import { SUBMISSION_TYPES } from '../data/pro/submissions';
+import '../styles/b2b.css';
+
+const title = 'Mitmachen: Die Schweizer TCM-Community auf TCM.ch';
+const description = 'Profil anmelden, Stelle oder Praxis inserieren, Raum anbieten, Weiterbildung melden oder Expertise teilen – moderiert und datenschutzfreundlich.';
+const open = SUBMISSION_TYPES.filter((t) => t.publicNow);
+const later = SUBMISSION_TYPES.filter((t) => !t.publicNow);
+---
+<LayoutDe title={title} description={description} path="/community" noindex={true} robots="noindex, follow" turnstile={true}>
+  <div class="b2">
+    <section class="b2-hero b2-hero--sm">
+      <div class="b2-wrap">
+        <div class="b2-crumbs" role="navigation" aria-label="Breadcrumb"><a href="/">TCM.ch</a><span aria-hidden="true">/</span><a href="/fachpersonen/">Fachpersonen</a><span aria-hidden="true">/</span>Mitmachen</div>
+        <h1 class="b2-h1">Die Schweizer TCM-Community auf TCM.ch.</h1>
+        <p class="b2-lead">Offen für die ganze Branche, nicht nur für TCM.ch. Jede Einreichung wird von uns geprüft, bevor etwas erscheint. Kontaktdaten bleiben privat, wenn du nichts anderes wählst.</p>
+      </div>
+    </section>
+    <section class="b2-sec" style="padding-top:24px">
+      <div class="b2-wrap b2-narrow">
+        <div class="pro-list">
+          {open.map((t) => (
+            <details id={t.id} data-pro-details>
+              <summary><b>{t.label}</b><span>{t.priority === 'P1' ? 'moderiert' : ''}</span></summary>
+              <ProSubmissionForm t={t} />
+            </details>
+          ))}
+        </div>
+        <p class="b2-label" style="margin-top:56px">Bald</p>
+        <ul class="b2-rules">{later.map((t) => <li>{t.label}</li>)}</ul>
+        <p class="b2-fine">Bewusst (noch) nicht: öffentliche Kommentare, Forum, Nachrichten, Bewertungen, Follower. Unabhängige Fachpersonen erscheinen nie als TCM.ch-Team.</p>
+      </div>
+    </section>
+  </div>
+  <script>
+    import '../scripts/pro-submit';
+    // Deep-Link #typ öffnet das passende Formular
+    const d = location.hash && document.querySelector<HTMLDetailsElement>(`details${location.hash}`);
+    if (d) d.open = true;
+  </script>
+</LayoutDe>

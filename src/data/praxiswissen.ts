@@ -3,9 +3,12 @@
 // Beispiele sind als Beispiele markiert, Kostenposten ohne Schweizer Durchschnittswerte.
 // OUCH (ouch.tcm.ch) bleibt Meinung/Analyse; hier stehen Werkzeuge, Checklisten, Rechnungen.
 
+import type { ProfessionalContentExtras } from './pro/architecture';
+
 export type PwCategory = 'gruenden' | 'zahlen' | 'wachstum';
 
-export interface PwArticle {
+/** Optional: expertQuotes, interviews, firstPartyObservations, sourceLinks, lifecycle (siehe professional.ts). */
+export interface PwArticle extends ProfessionalContentExtras {
   slug: string;
   category: PwCategory;
   title: string;

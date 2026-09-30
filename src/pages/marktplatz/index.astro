@@ -1,0 +1,21 @@
+---
+// /marktplatz/ — professioneller Marktplatz (Gerüst, noindex). Kein E-Commerce, keine Bezahlung.
+// Neutrale Inserate ≠ TCM.ch Nachfolge/Partnerschaft (/partner/…).
+import LayoutDe from '../../layouts/LayoutDe.astro';
+import ProHub from '../../components/pro/ProHub.astro';
+import '../../styles/b2b.css';
+const cats = [
+  { id: 'praxisverkauf', label: 'Praxis verkaufen / Nachfolge', text: 'Praxisinhaber:innen inserieren ihre Praxis, auf Wunsch vertraulich und ohne Adresse. Finanzzahlen nur freiwillig.', submit: 'praxisverkauf' },
+  { id: 'praxisraeume', label: 'Praxisräume', text: 'Behandlungsräume zur Miete, Untermiete oder tageweise.', submit: 'praxisraum' },
+  { id: 'praxisgesuche', label: 'Praxis gesucht', text: 'Fachpersonen suchen Raum, Praxis oder Übernahme. Ungefähre Region genügt.', submit: 'praxisgesuch' },
+  { id: 'praxispartner', label: 'Praxispartner gesucht', text: 'Externe Zusammenarbeit, Praxisgemeinschaft, Mitgründung. Nicht die TCM.ch Partnerschaft.' },
+  { id: 'vertretung', label: 'Vertretung', text: 'Ferien-, Mutterschafts- oder Krankheitsvertretungen.' },
+  { id: 'jobs', label: 'Jobs & Weiterbildung', text: 'Haben eigene Bereiche.', route: { label: 'Zum Stellenmarkt', href: '/jobs/' } },
+];
+---
+<LayoutDe title="Der professionelle TCM-Marktplatz der Schweiz (im Aufbau) | TCM.ch" description="Praxisverkauf, Nachfolge, Praxisräume, Praxisgesuche, Praxispartner und Vertretungen für TCM-Fachpersonen in der Schweiz. Moderiert und vertraulich möglich. Im Aufbau." path="/marktplatz" noindex={true} robots="noindex, follow">
+  <ProHub id="marktplatz" h1="Der professionelle TCM-Marktplatz der Schweiz." lead="Praxis, Raum, Nachfolge, Zusammenarbeit: Inserate aus der ganzen Branche, jedes vor Veröffentlichung geprüft. Vertrauliche Inserate laufen über TCM.ch, ohne Namen und Adresse."
+    cats={cats}
+    rules={['Finanzdaten nie verpflichtend; privat Gewähltes erscheint nie im Quelltext.', 'Inserate müssen regelmässig bestätigt werden, sonst laufen sie ab.', 'Ein Inserat = eine URL. Keine Duplikate für mehrere Städte.', 'Keine Aussagen zur Eignung als Gesundheitsraum ohne Prüfung.', 'Bezahlte Hervorhebungen würden immer sichtbar gekennzeichnet (derzeit keine).']}
+    routes={[{ label: 'Partnerschaft mit TCM.ch', href: '/partner/', note: 'eigene Praxis mit TCM.ch aufbauen oder integrieren – nicht die externe Praxispartner-Suche.' }, { label: 'Praxisrechner', href: '/praxiswissen/praxisrechner/', note: 'Zahlen einer Praxis selbst rechnen.' }]} />
+</LayoutDe>

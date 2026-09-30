@@ -73,6 +73,11 @@
 - Do NOT queue: `noindex` pages, and pages that canonicalise elsewhere (currently /haut/rosacea/ → /beschwerden/rosacea/).
 - Internal links matter more than the queue: a new page needs links from pages Google crawls daily (Standorte, Beschwerden-Leaves) or it stays "Gefunden – nicht indexiert". See `src/data/haut-links.ts` for the pattern.
 
+## Professional / B2B Layer
+- Architecture: `seo/professional-architecture.md`; topic registry `seo/professional-topic-map.csv`; code `src/data/pro/`.
+- Planned topics are NEVER built without approval. Noindex scaffolds (/jobs/, /verzeichnis/, /weiterbildungen/, /marktplatz/, /community/) hold no entries.
+- Run `node scripts/check-professional.mjs` after build when touching B2B pages.
+
 ## What NOT to Do
 - No blog
 - Don't pursue generic TCM ranking terms

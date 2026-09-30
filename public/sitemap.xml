@@ -1051,6 +1051,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/fachpersonen/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/gesundheitsbibliothek/</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
