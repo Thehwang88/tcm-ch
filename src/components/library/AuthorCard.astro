@@ -1,0 +1,40 @@
+---
+// Geteilte Author-Card der Bibliotheks-Leaves (Rebrand-Pilot Schritt 2).
+// Markup + Styles verbatim aus wissen/[slug].astro und koerpersignale/[slug].astro
+// (Stand a82df8f); die Familien-Unterschiede laufen über Props: label
+// ("Geschrieben von"/"Erstellt von"), avatar-Text (Initialen/"TCM"), avatarSm
+// (KS: kleinere Schrift) und die fertig berechnete review-Zeile — wissen behält
+// seine reviewerName-Bedingung in der Seite.
+export interface Props {
+  label: string;
+  avatar: string;
+  avatarSm?: boolean;
+  author: { name: string; role: string; bio: string };
+  review: string;
+}
+const { label, avatar, avatarSm = false, author, review } = Astro.props;
+---
+<aside class="author-card">
+  <div class:list={['avatar', { 'avatar--sm': avatarSm }]}>{avatar}</div>
+  <div>
+    <div class="a-label">{label}</div>
+    <div class="a-name">{author.name}</div>
+    <div class="a-role">{author.role}</div>
+    <p class="a-bio">{author.bio}</p>
+    <div class="a-review">{review}</div>
+  </div>
+</aside>
+<style>
+  .author-card { display: flex; gap: 16px; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; margin: 32px 0; }
+  .avatar--sm { font-size: 13px !important; letter-spacing: .02em; }
+  .avatar { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+  .a-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .a-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-top: 2px; }
+  .a-role { font-size: 13.5px; color: var(--blue-dark); font-weight: 600; margin: 2px 0 10px; }
+  .a-bio { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 10px; }
+  .a-review { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; }
+
+  @media (max-width: 640px) {
+    .author-card { flex-direction: column; gap: 12px; }
+  }
+</style>
