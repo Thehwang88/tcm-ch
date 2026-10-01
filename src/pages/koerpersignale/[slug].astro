@@ -62,8 +62,9 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 const topic = data.symptom ?? data.title;
 const formPrefill = `Mein Anliegen betrifft: ${topic}.\nWeitere Angaben: `;
 const waText = `Hallo, mein Anliegen betrifft: ${topic}.`;
+// Nur dataLayer (GTM ist kanonisch) - kein gtag-Doppelversand fuer das CARE-Event.
 const careClickJs = (pos: string) =>
-  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'koerpersignal_care',content_type:'koerpersignal',cta_position:'${pos}',source_path:location.pathname});if(typeof window.gtag==='function'){window.gtag('event','hilfeerhalten_click',{quelle:'koerpersignal_care',content_type:'koerpersignal',cta_position:'${pos}',source_path:location.pathname})}`;
+  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'koerpersignal_care',content_type:'koerpersignal',cta_position:'${pos}',source_path:location.pathname})`;
 
 // Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
 const libRegions = regionsForSignal(data.slug);
