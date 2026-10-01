@@ -78,6 +78,22 @@ const TEL = `tel:+${site.whatsapp}`;
     var primary = bar.querySelector('.scb-primary');
     // SG-Seiten: EIN Funnel-Wording ("Gratis Termin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
+    // CARE-Seiten (Marker aus dem CARE-Adapter, z.B. Beschwerden): ruhigeres
+    // Label + Ein-Event-Tracking (nur dataLayer); Ziel bleibt das On-Page-Formular
+    // ueber den bestehenden Scroll-Handler unten. Alle anderen Seiten unberuehrt.
+    var care = !sgPage && document.querySelector('[data-care-sticky]');
+    if (primary && care) {
+      for (var ci = 0; ci < primary.childNodes.length; ci++) {
+        var ctn = primary.childNodes[ci];
+        if (ctn.nodeType === 3 && ctn.textContent.trim()) ctn.textContent = ' Hilfe erhalten ';
+      }
+      primary.setAttribute('data-care-cta', 'sticky');
+      primary.addEventListener('click', function () {
+        var ct = care.getAttribute('data-care-sticky') || 'beschwerde';
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'hilfeerhalten_click', quelle: ct + '_care', content_type: ct, cta_position: 'sticky', source_path: location.pathname });
+      });
+    }
     if (primary && sgPage) {
       for (var i = 0; i < primary.childNodes.length; i++) {
         var tn = primary.childNodes[i];
