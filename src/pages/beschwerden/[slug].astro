@@ -16,6 +16,7 @@ import { wissenLinksHtml } from '../../data/wissen-links';
 import { fragenLinksForBeschwerdeHtml } from '../../data/fragen';
 import { physioTcmHtml, PHYSIO_TCM_BESCHWERDEN } from '../../data/physio-tcm';
 import { careBeschwerdenHtml, injectCareFormMeta } from '../../data/care-beschwerden';
+import { replaceStandortCards } from '../../data/standort-cards';
 import { visuals } from '../../data/visuals';
 
 export function getStaticPaths() {
@@ -297,6 +298,9 @@ let prefilledBody = appendSidebarAllLink(
   prefillForm(body, `Mein Anliegen betrifft: ${name}.\nWeitere Angaben: `, `Beschwerde: ${name}`),
   'symptom-therapies-sidebar', '/therapien/', 'Alle Therapien ansehen');
 prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
+// Rebrand-Pilot: byte-identisch duplizierter Standort-Karten-Block -> zentrale
+// Ausgabe (standort-cards.ts); 0/>1 Treffer brechen den Build ab (kein stiller Fallback).
+prefilledBody = replaceStandortCards(prefilledBody, slug!);
 // CARE-Bridge VOR der bestehenden Inline-Kontakt-Sektion; Sektion bekommt den
 // #kontakt-Anker (Standorte-Pattern), damit der Primaer-CTA sauber scrollt.
 const KONTAKT_MARKER = '<section class="section contact-section-inline" style="background:var(--surface)">';
