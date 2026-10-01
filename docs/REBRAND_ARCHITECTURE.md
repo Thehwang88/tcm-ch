@@ -241,8 +241,9 @@ den FAQ-Block (Markup + Styles) aus Wissen- und Körpersignale-Leaf
 extrahieren.**
 
 - Warum dieser Block: Markup in beiden Templates byte-identisch; die
-  6 FAQ-Regeln (`.faq details`, `.faq summary`, `::after`-Chevron,
-  `details[open]`, `.faq p`, `.faq-block h2`) sind identisch, haben KEINE
+  7 FAQ-Regeln (`.faq-block h2`, `.faq details`, `.faq summary`,
+  `.faq summary::-webkit-details-marker`, `.faq summary::after`-Chevron,
+  `.faq details[open] summary::after`, `.faq p`) sind identisch, haben KEINE
   breiten Selektoren, keine `:global()`-Abhängigkeit, kein `!important`,
   keine Media-Query und keine Verwendung ausserhalb des Blocks.
   Scoped-Styles wandern mit der Komponente (eigener Scope-Hash auf eigenem
