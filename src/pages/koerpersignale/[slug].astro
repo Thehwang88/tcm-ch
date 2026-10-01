@@ -5,6 +5,7 @@
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
 import AuthorCard from '../../components/library/AuthorCard.astro';
+import ArticleCta from '../../components/library/ArticleCta.astro';
 import TerminForm from '../../components/TerminForm.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
@@ -80,14 +81,14 @@ const libRegions = regionsForSignal(data.slug);
       <div class="wrap narrow">
         <div class="kb-body" set:html={data.bodyHtml} />
 
-        <div class="cta-card">
-          <div class="cta-card-title">{data.ctaTitle ?? 'Beschwerden einordnen lassen?'}</div>
-          <p>{data.ctaText ?? 'Schildere uns kurz, was du beobachtest. Wir sagen dir ehrlich, ob eine TCM-Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört.'}</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href={data.ctaHref ?? '#formular'}>{data.ctaLabel ?? 'Termin anfragen'}</a>
-            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'koerpersignal_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'koerpersignal_content_cta'})}">Per WhatsApp fragen</a>
-          </div>
-        </div>
+        <ArticleCta
+          title={data.ctaTitle ?? 'Beschwerden einordnen lassen?'}
+          text={data.ctaText ?? 'Schildere uns kurz, was du beobachtest. Wir sagen dir ehrlich, ob eine TCM-Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört.'}
+          primaryHref={data.ctaHref ?? '#formular'}
+          primaryLabel={data.ctaLabel ?? 'Termin anfragen'}
+          waHref={waHref}
+          waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'koerpersignal_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'koerpersignal_content_cta'})}"
+        />
 
         <AuthorCard
           label="Erstellt von"
@@ -162,10 +163,6 @@ const libRegions = regionsForSignal(data.slug);
   .kb-body :global(.wa-callout-label) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
   .kb-body :global(.wa-callout p) { margin: 0; font-size: 16px; }
 
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
-  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 
 
