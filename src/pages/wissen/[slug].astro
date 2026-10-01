@@ -2,6 +2,7 @@
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
 import AuthorCard from '../../components/library/AuthorCard.astro';
+import ArticleCta from '../../components/library/ArticleCta.astro';
 import { site } from '../../data/site';
 import { wissen, wissenBySlug } from '../../data/wissen';
 import { OUCH_MAG, ouchMagRow } from '../../data/ouch-links';
@@ -105,14 +106,13 @@ const ouchRow = OUCH_ROWS[data.slug];
       <div class="wrap narrow">
         <div class="kb-body" set:html={data.bodyHtml} />
 
-        <div class="cta-card">
-          <div class="cta-card-title">{data.ctaTitle ?? 'Beschwerden abklären lassen?'}</div>
-          <p>{data.ctaText ?? 'Schildere uns kurz deine Situation – wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.'}</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href={data.ctaHref ?? '/kontakt/'}>{data.ctaLabel ?? 'Termin anfragen'}</a>
-            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener">Per WhatsApp fragen</a>
-          </div>
-        </div>
+        <ArticleCta
+          title={data.ctaTitle ?? 'Beschwerden abklären lassen?'}
+          text={data.ctaText ?? 'Schildere uns kurz deine Situation – wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.'}
+          primaryHref={data.ctaHref ?? '/kontakt/'}
+          primaryLabel={data.ctaLabel ?? 'Termin anfragen'}
+          waHref={waHref}
+        />
 
         <AuthorCard
           label="Geschrieben von"
@@ -167,10 +167,6 @@ const ouchRow = OUCH_ROWS[data.slug];
   .kb-body :global(.wa-callout p) { margin: 0; font-size: 16px; }
   .kb-body :global(.wa-pullquote) { font-size: 22px; line-height: 1.4; font-weight: 700; color: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; margin: 28px 0; }
 
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
-  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 
 

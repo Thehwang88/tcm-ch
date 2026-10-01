@@ -1,0 +1,31 @@
+---
+// Geteilte CTA-Card der Bibliotheks-Leaves (Rebrand-Pilot 3).
+// Markup + die 4 scoped Regeln verbatim aus wissen/[slug].astro und
+// koerpersignale/[slug].astro (Stand 1bf13c9). Familien-Defaults, waHref
+// und Tracking-onclick bleiben in den Seiten und kommen fertig als Props;
+// waOnclick=undefined laesst das Attribut weg (wissen-Fall). Button-Styles
+// (.btn, .btn--primary, .btn--ghost) sind global (src/styles/global.css).
+export interface Props {
+  title: string;
+  text: string;
+  primaryHref: string;
+  primaryLabel: string;
+  waHref: string;
+  waOnclick?: string;
+}
+const { title, text, primaryHref, primaryLabel, waHref, waOnclick } = Astro.props;
+---
+<div class="cta-card">
+  <div class="cta-card-title">{title}</div>
+  <p>{text}</p>
+  <div class="cta-row">
+    <a class="btn btn--primary" href={primaryHref}>{primaryLabel}</a>
+    <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener" onclick={waOnclick}>Per WhatsApp fragen</a>
+  </div>
+</div>
+<style>
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>
