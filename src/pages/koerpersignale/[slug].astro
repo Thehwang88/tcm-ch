@@ -4,6 +4,7 @@
 // damit die Rubrik visuell nahtlos zur bestehenden Site gehört.
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
+import AuthorCard from '../../components/library/AuthorCard.astro';
 import TerminForm from '../../components/TerminForm.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
@@ -88,16 +89,13 @@ const libRegions = regionsForSignal(data.slug);
           </div>
         </div>
 
-        <aside class="author-card">
-          <div class="avatar avatar--sm">TCM</div>
-          <div>
-            <div class="a-label">Erstellt von</div>
-            <div class="a-name">{data.author.name}</div>
-            <div class="a-role">{data.author.role}</div>
-            <p class="a-bio">{data.author.bio}</p>
-            <div class="a-review">Allgemeine Einordnung, keine ärztliche Diagnose · zuletzt aktualisiert {fmtMonthYear(data.dateModified)}</div>
-          </div>
-        </aside>
+        <AuthorCard
+          label="Erstellt von"
+          avatar="TCM"
+          avatarSm={true}
+          author={data.author}
+          review={`Allgemeine Einordnung, keine ärztliche Diagnose · zuletzt aktualisiert ${fmtMonthYear(data.dateModified)}`}
+        />
 
         <FaqBlock faqs={data.faqs} />
 
@@ -169,14 +167,6 @@ const libRegions = regionsForSignal(data.slug);
   .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
-  .author-card { display: flex; gap: 16px; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; margin: 32px 0; }
-  .avatar--sm { font-size: 13px !important; letter-spacing: .02em; }
-  .avatar { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-  .a-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-  .a-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-top: 2px; }
-  .a-role { font-size: 13.5px; color: var(--blue-dark); font-weight: 600; margin: 2px 0 10px; }
-  .a-bio { font-size: 14.5px; line-height: 1.55; color: var(--mid); margin: 0 0 10px; }
-  .a-review { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 10px; }
 
 
   .ks-sources { margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--border); }
@@ -200,6 +190,5 @@ const libRegions = regionsForSignal(data.slug);
 
   @media (max-width: 640px) {
     .rel-grid { grid-template-columns: 1fr; }
-    .author-card { flex-direction: column; gap: 12px; }
   }
 </style>
