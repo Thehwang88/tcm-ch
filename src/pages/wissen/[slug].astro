@@ -3,6 +3,7 @@ import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
 import AuthorCard from '../../components/library/AuthorCard.astro';
 import ArticleCta from '../../components/library/ArticleCta.astro';
+import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../data/care';
 import { site } from '../../data/site';
 import { wissen, wissenBySlug } from '../../data/wissen';
 import { OUCH_MAG, ouchMagRow } from '../../data/ouch-links';
@@ -16,7 +17,7 @@ const data = w ?? wissenBySlug(Astro.params.slug as string)!;
 
 const path = `/wissen/${data.slug}`;
 const url = new URL(path, site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich habe eine Frage zu Akupunktur bei Migräne.')}`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, meine Frage betrifft: ${data.title}`)}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const fmtMonthYear = (iso: string) => { const d = iso.split('-'); return d.length >= 2 ? `${MONTHS[parseInt(d[1], 10) - 1]} ${d[0]}` : iso; };
@@ -106,12 +107,23 @@ const ouchRow = OUCH_ROWS[data.slug];
       <div class="wrap narrow">
         <div class="kb-body" set:html={data.bodyHtml} />
 
+        {/* CARE-Bridge (Sprint #1B, Soft-Variante fuer Wissen): Artikel-Overrides
+            behalten feldweise Vorrang; Ziel bleibt /kontakt/ (kein Formular auf
+            Wissen-Seiten), kein Sticky auf dem Lern-Cluster. */}
         <ArticleCta
-          title={data.ctaTitle ?? 'Beschwerden abklären lassen?'}
-          text={data.ctaText ?? 'Schildere uns kurz deine Situation – wir sagen dir ehrlich, ob und wie Akupunktur bei dir sinnvoll ist.'}
+          eyebrow="TCM.ch Care"
+          title={data.ctaTitle ?? 'Frage zu diesem Thema?'}
+          text={data.ctaText ?? 'Schildere uns kurz deine Situation. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden.'}
           primaryHref={data.ctaHref ?? '/kontakt/'}
-          primaryLabel={data.ctaLabel ?? 'Termin anfragen'}
+          primaryLabel={data.ctaLabel ?? 'Anliegen schildern'}
+          primaryOnclick={careClickJs('wissen', 'article')}
+          primaryCtaPos="article"
+          secondaryHref="/standorte/"
+          secondaryLabel="Praxis finden"
+          trustLine={CARE_TRUST}
+          safetyNote={CARE_SAFETY}
           waHref={waHref}
+          waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'wissen_content_cta'})"
         />
 
         <AuthorCard
