@@ -9,12 +9,22 @@ interface Props {
   standort?: string;
   heading?: string;
   intro?: string;
+  /** CARE (Sprint #1): Button-Text, Formular-Kennung (Betreff-Prefix im Mail)
+   *  und menschenlesbares Quelle-Detail. quelleDetail landet unabhaengig vom
+   *  sichtbaren Anliegen-Text als eigenes Feld in der Mail — die Herkunft
+   *  uebersteht also auch geloeschten/umgeschriebenen Prefill. */
+  submitLabel?: string;
+  formular?: string;
+  quelleDetail?: string;
 }
 const {
   prefill = '',
   standort = '',
   heading = 'Termin anfragen',
   intro = 'Kurz ausfüllen – wir melden uns meist innert 30 Minuten mit Terminvorschlägen.',
+  submitLabel = 'Termin anfragen',
+  formular = '',
+  quelleDetail = '',
 } = Astro.props;
 
 const STANDORTE = [
@@ -27,9 +37,10 @@ const STANDORTE = [
   <div class="tf-wrap">
     <h2 class="tf-heading">{heading}</h2>
     <p class="tf-intro">{intro}</p>
-    <form class="tf-form" id="terminform" data-prefill={prefill} data-standort={standort} novalidate>
+    <form class="tf-form" id="terminform" data-prefill={prefill} data-standort={standort} data-formular={formular || undefined} data-quelle-detail={quelleDetail || undefined} novalidate>
       <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
       <input type="hidden" name="herkunft" value="" />
+      <input type="hidden" name="cta_pos" value="" />
       <div class="tf-row">
         <label class="tf-field">
           <span class="tf-label">Name</span>
@@ -56,7 +67,7 @@ const STANDORTE = [
         <textarea name="anliegen" rows="4" required></textarea>
       </label>
       <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin:4px 0 14px"></div>
-      <button type="submit" class="tf-submit"><span class="tf-submit-label">Termin anfragen</span></button>
+      <button type="submit" class="tf-submit"><span class="tf-submit-label">{submitLabel}</span></button>
       <p class="tf-note">EMR-/ASCA-anerkannt. Abrechnung in der Regel über die Zusatzversicherung für Komplementärmedizin.</p>
       <p class="tf-status" hidden></p>
     </form>
@@ -168,6 +179,13 @@ const STANDORTE = [
     }
     form.herkunft.value = herkunft;
 
+    // CARE: merken, ueber welchen CTA das Formular erreicht wurde (article/sticky).
+    // Nur vordefinierte Positions-Strings, nie Nutzertext.
+    document.addEventListener('click', function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-care-cta]') : null;
+      if (el) form.cta_pos.value = el.getAttribute('data-care-cta') || '';
+    });
+
     var status = form.querySelector('.tf-status');
     var btnLabel = form.querySelector('.tf-submit-label');
     function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
@@ -200,6 +218,13 @@ const STANDORTE = [
         quelle: form.herkunft.value,
         turnstileToken: token,
       };
+      // CARE: strukturierte Herkunft unabhaengig vom sichtbaren Anliegen-Text.
+      // Backend (functions/api/anfrage.js) kennt formular + quelle_detail bereits.
+      if (form.dataset.formular) payload.formular = form.dataset.formular;
+      if (form.dataset.quelleDetail) {
+        payload.quelle_detail = form.dataset.quelleDetail +
+          (form.cta_pos.value ? ' · CTA: ' + form.cta_pos.value : '');
+      }
       form.classList.add('is-sending');
       if (btnLabel) { btnLabel.dataset.orig = btnLabel.textContent; btnLabel.textContent = 'Wird gesendet…'; }
       try {
