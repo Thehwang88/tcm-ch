@@ -8,7 +8,7 @@ import LayoutDe from '../../../layouts/LayoutDe.astro';
 import TerminForm from '../../../components/TerminForm.astro';
 import StickyCta from '../../../components/StickyCta.astro';
 import ArticleCta from '../../../components/library/ArticleCta.astro';
-import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../../data/care';
+import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { site } from '../../../data/site';
 import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
 import type { Frage, FragenHub } from '../../../data/fragen';
@@ -97,7 +97,9 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
         {/* CARE-Bridge (Sprint #1B): Frage-Framing; Artikel-Overrides behalten
             feldweise Vorrang vor den CARE-Defaults. */}
         <ArticleCta
-          eyebrow="TCM.ch Care"
+          eyebrow={CARE_PERSON.eyebrowWithName}
+          portrait={CARE_PERSON.portrait}
+          portraitAlt={CARE_PERSON.portraitAlt}
           title={frage?.ctaTitle ?? 'Noch eine persönliche Frage?'}
           text={frage?.ctaText ?? 'Wenn deine Situation damit nicht vollständig beantwortet ist, schildere uns kurz dein Anliegen. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden.'}
           primaryHref="#formular"

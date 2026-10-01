@@ -18,6 +18,11 @@ export interface Props {
   waHref: string;
   waOnclick?: string;
   eyebrow?: string;
+  /** CARE-Personalisierung (Frag Yuna): kleines rundes Portrait neben
+   *  Eyebrow/Titel. Optional - ohne Props rendert die Karte wie bisher,
+   *  und die Karte funktioniert auch, wenn das Bild nicht laedt. */
+  portrait?: string;
+  portraitAlt?: string;
   primaryOnclick?: string;
   primaryCtaPos?: string;
   secondaryHref?: string;
@@ -27,13 +32,18 @@ export interface Props {
 }
 const {
   title, text, primaryHref, primaryLabel, waHref, waOnclick,
-  eyebrow, primaryOnclick, primaryCtaPos, secondaryHref, secondaryLabel,
-  trustLine, safetyNote,
+  eyebrow, portrait, portraitAlt, primaryOnclick, primaryCtaPos,
+  secondaryHref, secondaryLabel, trustLine, safetyNote,
 } = Astro.props;
 ---
 <div class="cta-card">
-  {eyebrow && <div class="cta-eyebrow">{eyebrow}</div>}
-  <div class="cta-card-title">{title}</div>
+  <div class="cta-head">
+    {portrait && <img class="cta-portrait" src={portrait} alt={portraitAlt ?? ''} width="56" height="56" loading="lazy" decoding="async" />}
+    <div>
+      {eyebrow && <div class="cta-eyebrow">{eyebrow}</div>}
+      <div class="cta-card-title">{title}</div>
+    </div>
+  </div>
   <p>{text}</p>
   <div class="cta-row">
     <a class="btn btn--primary" href={primaryHref} onclick={primaryOnclick} data-care-cta={primaryCtaPos}>{primaryLabel}</a>
@@ -45,6 +55,9 @@ const {
 </div>
 <style>
   .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
+  .cta-head { display: flex; align-items: center; gap: 14px; }
+  .cta-portrait { flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+  @media (max-width: 640px) { .cta-portrait { width: 48px; height: 48px; } }
   .cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
   .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
   .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
