@@ -267,7 +267,7 @@ verworfen, weil:
    weiterer Übersetzungsschritt mit Fehlerpotenzial.
 4. Der gewollte `.rel-grid`-Unterschied müsste parametrisiert bleiben.
 
-### Umgesetzte Piloten (Stand a783e61: alle drei gemerged + deployed)
+### Umgesetzte Piloten (Stand a783e61: alle drei gemerged; Deployment-Evidenz siehe §1)
 
 `src/components/library/` enthält jetzt drei geteilte, scoped Komponenten,
 Konsumenten jeweils `wissen/[slug].astro` + `koerpersignale/[slug].astro`
