@@ -33,7 +33,7 @@ sind, wo markiert, **pending Hyejin** (Figma folgt).
 | `SpaPage.astro` | SPA-Erbe: Home, Beschwerden-Leaves, Therapien-Leaves, Standorte (alle Varianten), Massage-/Stadt-Seiten, Hubs mit `*-body.html` | `tokens.css` → `home.css` → `nav-rebrand.css` → Google Fonts → page-`<style>`; Scripts: Turnstile, `header.js`, `home.js` |
 | `LayoutDe.astro` | Gesundheitsbibliothek komplett (Körpersignale, Wissen, Haut, Fragen, Untersuchungen, Was-jetzt, Befunde, TCM-verstehen, Körper, Team, Praxiswissen/Tools/Regulatorik-Doku) | `tokens.css` → `header.css` → `nav-rebrand.css` → `footer.css` → Fonts → scoped page-`<style>` |
 | `Layout.astro` | `/en/*` (50 Seiten) | `src/styles/global.css` (139 Z., Astro-bundled) → `tokens.css` → `footer.css` → Fonts; eigener EN-Header (`Header.astro`) + Drawer |
-| `PartnerLayout.astro` | `/partner/[city]` (private Pitch-Decks, noindex) | `tokens.css` → Fonts → deck-eigene Styles |
+| `PartnerLayout.astro` | NUR `/partner/[city]` (private Pitch-Decks, noindex) | `tokens.css` → Fonts → deck-eigene Styles |
 
 ### 2.2 Token-System (`public/styles/tokens.css`, 92 Zeilen)
 
@@ -152,10 +152,13 @@ Zahlen = generierte Seiten im Build von `d1a4436` (gesamt 687).
   (`REGULATORIK_VERIFIED`). Formulare: `ProSubmissionForm`,
   `PartnerLeadForm`, `NachfolgeForm` → `functions/api/einreichung.js`.
 
-### 3.10 Partner-Präsentationen (4, privat)
-- `partner/[city].astro` + `partner/modell|praxisnachfolge` auf
-  `PartnerLayout` (Slide-Deck-UI, noindex). Eigenes visuelles System —
-  vom Patient:innen-Rebrand entkoppelt (pending Hyejin, ob überhaupt).
+### 3.10 Partner-Seiten (4)
+- `partner/[city].astro` auf `PartnerLayout` (privates Slide-Deck-UI,
+  noindex) — nur diese Route nutzt PartnerLayout.
+- `partner/index.astro`, `partner/modell.astro`, `partner/praxisnachfolge.astro`
+  importieren dagegen `LayoutDe` (Korrektur ggü. Erstfassung) und gehören
+  damit zur LayoutDe-Familie; Formulare `PartnerLeadForm`/`NachfolgeForm`.
+- Deck-Design vom Patient:innen-Rebrand entkoppelt (pending Hyejin, ob überhaupt).
 
 ### 3.11 English (50)
 - `en/*` auf `Layout.astro` (+ `Header/FooterEn`), Daten `locations.ts`,
@@ -180,58 +183,90 @@ Zahlen = generierte Seiten im Build von `d1a4436` (gesamt 687).
 | OneDoc (nur SG) | `iframe.od-widget`, Widget-ID `7a0d6d1b…`, postMessage-Höhe, GA4-Forwarding `G-NHZ8Y6V840` |
 | Warteliste | `[data-lu-waitlist]` (Luzern/Bellevue), `MassageWartelisteForm` (Luzern), `quelle=warteliste-*` |
 
-## 5. Wissen vs. Körpersignale (Detailvergleich)
+## 5. Wissen vs. Körpersignale (korrigierter Detailvergleich)
 
-Beide Leaf-Templates (LayoutDe, scoped `<style>`) wurden regelweise
-verglichen (Selektor → Deklaration, normalisiert):
+Methodik (Revision): Vergleich pro Regel-VORKOMMEN in Quellreihenfolge, mit
+erhaltenem `@media`-Kontext, Selektor, Deklarationen und `!important`
+(kein Selektor-Map, das Wiederholungen überschreibt — die Erstfassung hatte
+dadurch den `.rel-grid`-Unterschied mit dessen Mobile-Override verschmolzen
+und fälschlich «43/43 identisch, 0 abweichend» gemeldet).
 
-- Wissen: 45 Regeln · Körpersignale: 55 Regeln · **43 Selektoren geteilt,
-  davon 43 mit IDENTISCHEN Deklarationen, 0 abweichend.**
-- Identisch u. a.: `.hero .lead`, `.cat`, `.kb-body`-Satz (p/h2/ul/li/strong/
-  `:global(a)`/`:global(.wa-callout*)`), `.faq`-Details-Akkordeon komplett,
-  `.cta-card*`, Autoren-Card (`.author-card/.avatar/.a-*`), `.back`, `.dot`.
-- Bewusste Unterschiede (klein): KS-only `.ks-sources*`, `.lib-row*`
-  (Körperregionen-Leiste), `.avatar--sm`; Wissen-only
-  `:global(.wa-pullquote)`; KS hat 2 zusätzliche strukturelle Blöcke, sonst
-  nichts Divergentes. Haut/Fragen nutzen denselben Stil-Satz in eigenen Kopien
-  (nicht Teil des Pilots, aber derselbe spätere Hebel).
+Befund auf `d1a4436`:
 
-**Teilbarkeit:** Ja. Da 0 Deklarationen abweichen, ist ein gemeinsamer Block
-ohne Erscheinungsänderung möglich, wenn (a) die geteilten Regeln VOR den
-verbleibenden lokalen Regeln geladen werden und (b) die lokalen Regeln keine
-der geteilten Selektoren erneut definieren (ist heute der Fall). Vorbild im
-Repo: `massage-city.css?raw` + `<style set:html={css} is:inline>`.
+- Wissen: 48 Regel-Vorkommen · Körpersignale: 58 · kein Selektor kommt im
+  selben Kontext doppelt vor (keine Order-abhängigen Self-Overrides).
+- **47 geteilte (Kontext, Selektor)-Schlüssel: 46 identisch, 1 abweichend.**
+- Der eine ECHTE, gewollte Unterschied:
+  - `[top] .rel-grid` — Wissen `repeat(3, 1fr)` vs. Körpersignale
+    `repeat(2, 1fr)`; der `@media (max-width: 640px)`-Override auf `1fr`
+    ist in beiden identisch.
+- Nur-KS: `.ks-sources*` (5 Regeln), `.lib-row*` (5), `.avatar--sm`
+  (einziges `!important` im Vergleich). Nur-Wissen:
+  `.kb-body :global(.wa-pullquote)`.
+- Die 46 identischen Schlüssel enthalten BREITE Selektoren: `h1`, `.dot`,
+  `.avatar`, `.back`, `.cat`, `.meta-row`, `.wrap.narrow`, `.related` —
+  heute durch Astro-Scoping (`[data-astro-cid-…]`-Attribut pro Selektor)
+  auf die jeweilige Seite begrenzt. 14 davon nutzen Astro-`:global()`
+  (`.kb-body :global(p|h2|h3|ul|ol|li|strong|a|a:hover|.wa-callout*)`) für
+  `set:html`-Inhalte.
+- Markup-Gegenprobe: `author-card`-Block und `faq`-Block sind in beiden
+  Templates BYTE-IDENTISCH; `cta-card` unterscheidet sich nur in den
+  Default-Fallback-Strings (`'Beschwerden abklären…'` vs.
+  `'…einordnen lassen?'`). `.avatar` wird in KS zusätzlich im Hero-Meta
+  (`avatar avatar--sm`, Z. 91) verwendet, nicht nur in der Autoren-Card —
+  Styles dieses Selektors überspannen also zwei Seitenregionen.
 
-### Empfohlener Pilot (EINER, kleinstmöglich)
+### Teilbarkeit, revidiert
 
-**„library-article.css“: die 43 identischen Regeln aus Wissen + Körpersignale
-in eine geteilte Raw-CSS-Datei extrahieren.**
+Unscoped Shared-CSS (Erstvorschlag «library-article.css») ist als PILOT
+verworfen, weil:
+1. Breite Selektoren (`h1`, `.dot`, `.avatar`, `.back`, `.cat`) ohne
+   Astro-Scoping seitenweit gälten; Containment bräuchte einen
+   Wrapper-Präfix (z. B. `.lib-article h1`), was
+2. die Spezifität verschiebt: Astro-Scoping = +1 Attribut-Selektor,
+   Wrapper = +1 Klasse → gleiche Stufe, Gewinner hängt an der Reihenfolge;
+   Astro bündelt Seiten-Styles in den `<head>`, ein
+   `<style set:html>`-Inline-Block im Body käme DANACH und gewänne
+   Gleichstände in der falschen Richtung. Beherrschbar, aber nicht «klein».
+3. `:global()`-Syntax ist Astro-Compiler-Syntax: beim Verschieben in eine
+   echte .css-Datei müssen diese 14 Regeln zu normalem CSS umgeschrieben
+   werden (`.kb-body p` statt `.kb-body :global(p)`) — korrekt, aber ein
+   weiterer Übersetzungsschritt mit Fehlerpotenzial.
+4. Der gewollte `.rel-grid`-Unterschied müsste parametrisiert bleiben.
 
-- Betroffene Dateien: NEU `src/data/library-article.css`;
+### Empfohlener sicherer Pilot (EINER, scoped)
+
+**Geteilte Astro-Komponente `src/components/library/FaqBlock.astro`:
+den FAQ-Block (Markup + Styles) aus Wissen- und Körpersignale-Leaf
+extrahieren.**
+
+- Warum dieser Block: Markup in beiden Templates byte-identisch; die
+  6 FAQ-Regeln (`.faq details`, `.faq summary`, `::after`-Chevron,
+  `details[open]`, `.faq p`, `.faq-block h2`) sind identisch, haben KEINE
+  breiten Selektoren, keine `:global()`-Abhängigkeit, kein `!important`,
+  keine Media-Query und keine Verwendung ausserhalb des Blocks.
+  Scoped-Styles wandern mit der Komponente (eigener Scope-Hash auf eigenem
+  Markup) → Spezifität, Ladeort und Erscheinung bleiben exakt erhalten.
+- Props: `faqs: {q,a}[]` (+ optional `heading`), FAQPage-Schema bleibt in
+  den Seiten (unverändert).
+- Betroffene Dateien: NEU `src/components/library/FaqBlock.astro`;
   EDIT `src/pages/wissen/[slug].astro` + `src/pages/koerpersignale/[slug].astro`
-  (identische Regeln aus dem scoped `<style>` entfernen, stattdessen
-  `import css from '../../data/library-article.css?raw'` +
-  `<style set:html={css} is:inline>` vor dem Rest-`<style>`; dafür müssen die
-  betroffenen Selektoren im Rest-Block auf `:global()`-frei bleiben bzw. die
-  geteilten Regeln ohne Astro-Scoping auskommen — die 43 Regeln nutzen keine
-  Scoping-abhängigen Selektoren).
-- Erwarteter Nutzen: Hyejins Artikel-Redesign (Typo, FAQ, CTA-Card, Autoren-
-  Card) wird an EINER Stelle umgesetzt und wirkt sofort auf 135 Seiten
-  (45 Wissen + 90 KS); Folgeausbau auf Haut/Fragen (weitere 77) ist dann ein
-  Copy-Delete, kein neues Muster.
-- Risiken: Astro-Scoping entfällt für die geteilten Regeln → sie gelten
-  seitenweit; Selektoren sind aber präfix-spezifisch (`.kb-body`, `.cta-card`,
-  `.faq`, `.a-*`) und kollidieren laut Grep nicht mit home.css/header.css.
-  Zweites Risiko: Spezifitätsgleichstand bei künftigen lokalen Overrides →
-  Konvention: lokale Blöcke überschreiben nur mit zusätzlichem Selektor.
-- Verifikation: `npm run build`; Pixel-Vergleich (Screenshot-Diff 1440/390)
-  von je 1 Wissen-, 1 KS-Seite vor/nach; Grep, dass keine der 43 Regeln noch
-  doppelt existiert; bestehende QA-Battery (Overflow/Konsole).
-- Rollback: ein Commit, reiner Revert; keine Daten-/URL-Änderung.
+  (FAQ-Markup + 6 Regeln raus, `<FaqBlock faqs={data.faqs} />` rein).
+- Reichweite: alle Leaf-Routen beider Familien = **44 Wissen- + 89
+  Körpersignale-Leaves = 133 Seiten** (Hubs `wissen/index` und
+  `koerpersignale/index` konsumieren diese Styles nicht und zählen nicht).
+- Gewollte Unterschiede bleiben unberührt (`.rel-grid`-Spalten,
+  `.ks-sources`, `.lib-row`, `.wa-pullquote`, CTA-Default-Texte).
+- Ausbaupfad danach (je eigener kleiner Schritt): `AuthorCard` (Markup
+  identisch, aber `.avatar`-Styles müssen wegen des Hero-Meta-Zweitnutzers
+  aufgeteilt oder dupliziert bleiben), `CtaCard` (Default-Texte als Props),
+  `RelatedGrid` (`cols`-Prop für 3 vs. 2), dann Haut/Fragen anschliessen.
+- Verifikation: `npm run build`; Pixel-Diff (1440/390) je 1 Wissen- und
+  1 KS-Seite mit offenem und geschlossenem FAQ; Grep, dass `.faq`-Regeln in
+  den Seiten-Styles nicht mehr vorkommen; bestehende QA-Battery.
+- Rollback: 1 Commit, reiner Revert; keine URL-/Daten-/Schema-Änderung.
 
-Umsetzung NICHT in diesem Task (Analyse only) — als erster Schritt von
-Step 3, idealerweise nachdem Hyejins Artikel-Design vorliegt (sonst wird
-1:1-Erscheinung extrahiert und später einmal umgestylt — auch ok).
+Nicht in diesem Task umgesetzt (Doku only).
 
 ## 6. Pending Hyejin (Design-Entscheide, hier nur gesammelt)
 
