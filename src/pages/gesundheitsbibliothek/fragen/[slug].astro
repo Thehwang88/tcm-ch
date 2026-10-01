@@ -7,6 +7,8 @@
 import LayoutDe from '../../../layouts/LayoutDe.astro';
 import TerminForm from '../../../components/TerminForm.astro';
 import StickyCta from '../../../components/StickyCta.astro';
+import ArticleCta from '../../../components/library/ArticleCta.astro';
+import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../../data/care';
 import { site } from '../../../data/site';
 import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
 import type { Frage, FragenHub } from '../../../data/fragen';
@@ -26,8 +28,9 @@ const url = new URL(`${path}/`, site.url).href;
 const title = (hub ?? frage)!.title;
 const metaDesc = (hub ?? frage)!.metaDesc;
 const h1 = hub ? hub.h1 : frage!.question;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich habe eine Frage vor einer möglichen Behandlung.')}`;
-const anliegen = `Ich habe eine Frage: ${h1} Und ich möchte gerne einen Termin anfragen.`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, meine Frage betrifft: ${h1}`)}`;
+// CARE (Sprint #1B): neutraler Prefill ohne Termin-/Therapie-Annahme.
+const formPrefill = `Meine Frage betrifft: ${h1}\nWeitere Angaben: `;
 
 const pageLd = {
   '@context': 'https://schema.org',
@@ -91,14 +94,23 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
 
         {frage && <div class="kb-body" set:html={frage.bodyHtml} />}
 
-        <div class="cta-card">
-          <div class="cta-card-title">{frage?.ctaTitle ?? 'Deine Frage ist nicht dabei?'}</div>
-          <p>{frage?.ctaText ?? 'Frag uns direkt. Wir sagen dir ehrlich, ob eine Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört. EMR- und ASCA-anerkannt, die Zusatzversicherung übernimmt meist 80 bis 100 Prozent.'}</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="#formular">{frage?.ctaLabel ?? 'Termin anfragen'}</a>
-            <a class="btn btn--ghost" href={waHref} target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'frage_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'frage_content_cta'})}">Per WhatsApp fragen</a>
-          </div>
-        </div>
+        {/* CARE-Bridge (Sprint #1B): Frage-Framing; Artikel-Overrides behalten
+            feldweise Vorrang vor den CARE-Defaults. */}
+        <ArticleCta
+          eyebrow="TCM.ch Care"
+          title={frage?.ctaTitle ?? 'Noch eine persönliche Frage?'}
+          text={frage?.ctaText ?? 'Wenn deine Situation damit nicht vollständig beantwortet ist, schildere uns kurz dein Anliegen. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden.'}
+          primaryHref="#formular"
+          primaryLabel={frage?.ctaLabel ?? 'Frage stellen'}
+          primaryOnclick={careClickJs('patientenfrage', 'article')}
+          primaryCtaPos="article"
+          secondaryHref="/standorte/"
+          secondaryLabel="Praxis finden"
+          trustLine={CARE_TRUST}
+          safetyNote={CARE_SAFETY}
+          waHref={waHref}
+          waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'frage_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'frage_content_cta'})}"
+        />
 
         <aside class="author-card">
           <div class="avatar avatar--sm">TCM</div>
@@ -142,8 +154,15 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
       </div>
     </section>
 
-    <TerminForm heading="Noch offene Fragen?" intro="Beschreib kurz dein Anliegen – wir melden uns mit einer ehrlichen Einschätzung." prefill={anliegen} />
-    <StickyCta prefill={anliegen} />
+    <TerminForm
+      heading="Frage stellen"
+      intro="Beschreib kurz dein Anliegen – wir melden uns persönlich mit einer ehrlichen Einschätzung, welcher nächste Schritt sinnvoll ist."
+      prefill={formPrefill}
+      submitLabel="Frage senden"
+      formular="TCM.ch CARE – Patientenfrage"
+      quelleDetail={`Patientenfrage: ${h1} · Seite: ${path}/`}
+    />
+    <StickyCta prefill={`Hallo, meine Frage betrifft: ${h1}`} formLabel="Frage stellen" formOnclick={careClickJs('patientenfrage', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
   </article>
 </LayoutDe>
 
@@ -174,11 +193,6 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
   .kb-body :global(.wa-callout) { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
   .kb-body :global(.wa-callout-label) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
   .kb-body :global(.wa-callout p) { margin: 0; font-size: 16px; }
-
-  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0; }
-  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
   .author-card { display: flex; gap: 16px; border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; margin: 32px 0; }
   .avatar--sm { font-size: 13px !important; letter-spacing: .02em; }

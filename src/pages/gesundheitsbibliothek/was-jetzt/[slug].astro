@@ -8,6 +8,11 @@
 // Geplante Beiträge bauen nur im Dev-Server (noindex allein reicht nicht),
 // sind immer noindex und landen nie in Sitemap oder Suche.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
+import TerminForm from '../../../components/TerminForm.astro';
+import StickyCta from '../../../components/StickyCta.astro';
+import ArticleCta from '../../../components/library/ArticleCta.astro';
+import { site } from '../../../data/site';
+import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../../data/care';
 import { wasJetzt, publishedWasJetzt, TOOL_LABELS } from '../../../data/was-jetzt';
 import type { WasJetztEntry, WasJetztLink } from '../../../data/was-jetzt';
 
@@ -20,6 +25,10 @@ export function getStaticPaths() {
 interface Props { w: WasJetztEntry }
 const { w } = Astro.props;
 const path = `/gesundheitsbibliothek/was-jetzt/${w.slug}`;
+// CARE (Sprint #1B): neutraler Prefill, keine Therapie-Annahme.
+const careTopic = w.title.replace(/[?!.]+$/, '');
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, mein Anliegen betrifft: ${careTopic}.`)}`;
+const formPrefill = `Mein Anliegen betrifft: ${careTopic}.\nWeitere Angaben: `;
 const url = `https://tcm.ch${path}/`;
 const isReal = w.status === 'published';
 const indexable = isReal && w.indexable;
@@ -66,7 +75,7 @@ if (isReal && w.publishedAt) {
   });
 }
 ---
-<LayoutDe title={`${w.title} | TCM.ch`} description={w.deck} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
+<LayoutDe title={`${w.title} | TCM.ch`} description={w.deck} path={path} schema={schema} turnstile={true} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
@@ -151,6 +160,23 @@ if (isReal && w.publishedAt) {
           )}
         </div>
 
+        {/* CARE-Bridge (Sprint #1B): Was-jetzt ist der natuerlichste CARE-Uebergang. */}
+        <ArticleCta
+          eyebrow="TCM.ch Care"
+          title="Du bist dir noch unsicher, wie es weitergeht?"
+          text="Beschreibe uns kurz deine Situation. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden – ob ärztliche Abklärung, TCM oder eine andere Anlaufstelle sinnvoll ist."
+          primaryHref="#formular"
+          primaryLabel="Nächsten Schritt finden"
+          primaryOnclick={careClickJs('was_jetzt', 'article')}
+          primaryCtaPos="article"
+          secondaryHref="/standorte/"
+          secondaryLabel="Praxis finden"
+          trustLine={CARE_TRUST}
+          safetyNote={CARE_SAFETY}
+          waHref={waHref}
+          waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'was_jetzt_content_cta'})"
+        />
+
         {relatedGroups.length > 0 && (
           <div class="related">
             <div class="rel-label">Zum Weiterlesen</div>
@@ -167,6 +193,16 @@ if (isReal && w.publishedAt) {
       </div>
     </section>
   </article>
+
+    <TerminForm
+      heading="Nächsten Schritt finden"
+      intro="Beschreib kurz deine Situation – wir melden uns persönlich und sagen dir ehrlich, welcher nächste Schritt sinnvoll ist: ärztliche Abklärung, TCM oder eine andere Anlaufstelle."
+      prefill={formPrefill}
+      submitLabel="Anliegen senden"
+      formular="TCM.ch CARE – Was jetzt"
+      quelleDetail={`Was jetzt: ${careTopic} · Seite: ${path}/`}
+    />
+    <StickyCta prefill={`Hallo, mein Anliegen betrifft: ${careTopic}.`} formLabel="Hilfe erhalten" formOnclick={careClickJs('was_jetzt', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
 </LayoutDe>
 
 <style>

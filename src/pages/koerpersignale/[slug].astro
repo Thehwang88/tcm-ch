@@ -10,6 +10,7 @@ import TerminForm from '../../components/TerminForm.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
 import { koerpersignale } from '../../data/koerpersignale';
+import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../data/care';
 import { regionsForSignal } from '../../data/gesundheitsbibliothek';
 
 export function getStaticPaths() {
@@ -62,9 +63,7 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 const topic = data.symptom ?? data.title;
 const formPrefill = `Mein Anliegen betrifft: ${topic}.\nWeitere Angaben: `;
 const waText = `Hallo, mein Anliegen betrifft: ${topic}.`;
-// Nur dataLayer (GTM ist kanonisch) - kein gtag-Doppelversand fuer das CARE-Event.
-const careClickJs = (pos: string) =>
-  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'koerpersignal_care',content_type:'koerpersignal',cta_position:'${pos}',source_path:location.pathname})`;
+const careClick = (pos: 'article' | 'sticky') => careClickJs('koerpersignal', pos);
 
 // Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
 const libRegions = regionsForSignal(data.slug);
@@ -97,12 +96,12 @@ const libRegions = regionsForSignal(data.slug);
           text={data.ctaText ?? 'Beschreibe uns kurz, was du bemerkst. Wir helfen dir kostenlos, den passenden nächsten Schritt zu finden – ob ärztliche Abklärung, TCM, Physiotherapie oder eine andere Anlaufstelle sinnvoll ist.'}
           primaryHref={data.ctaHref ?? '#formular'}
           primaryLabel={data.ctaLabel ?? 'Anliegen schildern'}
-          primaryOnclick={careClickJs('article')}
+          primaryOnclick={careClick('article')}
           primaryCtaPos="article"
           secondaryHref="/standorte/"
-          secondaryLabel="Praxis in meiner Nähe finden"
-          trustLine="Kostenlos · unverbindlich · persönlich"
-          safetyNote="Bei akuten oder schweren Beschwerden wende dich direkt an eine Ärztin oder einen Arzt – im Notfall an die 144."
+          secondaryLabel="Praxis finden"
+          trustLine={CARE_TRUST}
+          safetyNote={CARE_SAFETY}
           waHref={waHref}
           waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'koerpersignal_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'koerpersignal_content_cta'})}"
         />
@@ -162,7 +161,7 @@ const libRegions = regionsForSignal(data.slug);
       quelleDetail={`Körpersignal: ${topic} · Seite: ${path}/`}
     />
     {/* heroSelector: Bar erst nach dem Hero einblenden – lesen zuerst (CARE). */}
-    <StickyCta prefill={waText} formLabel="Hilfe erhalten" formOnclick={careClickJs('sticky')} formCtaPos="sticky" heroSelector=".hero" />
+    <StickyCta prefill={waText} formLabel="Hilfe erhalten" formOnclick={careClick('sticky')} formCtaPos="sticky" heroSelector=".hero" />
   </article>
 </LayoutDe>
 
