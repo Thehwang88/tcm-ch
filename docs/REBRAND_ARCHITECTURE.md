@@ -10,17 +10,21 @@ markiert, **pending Hyejin** (Figma folgt).
 - Analysierter Stand: `d1a4436` (= origin/main). Session-Branch trägt zusätzlich
   `bc6b0d7` (nur regenerierte sitemap-`lastmod` + audit-JSON, keine Inhalte) —
   bewusst NICHT in diesen Branch übernommen.
-- Build: 688 Seiten + Cloudflare Worker, Sitemap 661 URLs. (Die ursprünglich
-  notierte 687 war eine veraltete Zählung; `a783e61` und `d1a4436` bauen
-  beide 688.)
-- Deploy-Status (belegt): PR #3 (FaqBlock), PR #4 (AuthorCard) und PR #5
-  (ArticleCta) sind nach main gemerged und deployed. Live-Checks liefen als
-  separate Cloud-Sessions mit Netzwerkzugriff per curl gegen tcm.ch:
-  nach `1bf13c9` und nach `a783e61` je HTTP 200 auf den Stichproben-Seiten
-  (wissen/narbenbehandlung, wissen/akupunktur-bei-kopfschmerzen,
-  koerpersignale/haende-zittern) mit intaktem CTA-/FAQ-/Author-Card-Markup
-  inkl. Tracking-onclick. Visuelle Live-Prüfung im echten Browser: nur
-  Nutzer-Sichtung (FaqBlock-Deploy), nicht automatisiert.
+- Build: 687 Routen (`index.html`) + `404.html` = 688 HTML-Dateien gesamt;
+  Astros «688 page(s)» zählt die 404 mit. Beide früher kursierenden Zahlen
+  (687/688) meinten also dasselbe. Dazu Cloudflare Worker, Sitemap 661 URLs.
+- Deploy-Status (Einordnung der Evidenz): PR #3 (FaqBlock), PR #4
+  (AuthorCard) und PR #5 (ArticleCta) sind nach main **gemerged** (direkt
+  belegt: Merge-SHAs). «Deployed» stützt sich auf berichtete Live-Checks:
+  separate Cloud-Sessions prüften tcm.ch per curl nach `1bf13c9` und
+  `a783e61` — HTTP 200 auf den Stichproben-Seiten (wissen/narbenbehandlung,
+  wissen/akupunktur-bei-kopfschmerzen, koerpersignale/haende-zittern) mit
+  erwartetem CTA-/FAQ-/Author-Card-Markup inkl. Tracking-onclick.
+  **Limitation:** HTTP 200 + erwartetes Markup identifizieren den
+  deployten Commit nicht eindeutig (das Markup ist vor/nach den
+  Extraktionen absichtlich gleich); ein Commit-genauer Beleg (z. B.
+  Workers-Builds-Check am Commit) wurde nicht erhoben. Visuelle
+  Live-Prüfung: nur Nutzer-Sichtung nach dem FaqBlock-Deploy.
 - Bekannte Baseline-Limitierungen (aus Step 1):
   - `tcm.ch` ist aus der Agent-Umgebung egress-blockiert; alle Browser-Checks
     liefen gegen den lokalen Build. Webfonts (fonts.googleapis.com), GTM,
@@ -230,8 +234,13 @@ Befund auf `d1a4436`:
   auf die jeweilige Seite begrenzt. 14 davon nutzen Astro-`:global()`
   (`.kb-body :global(p|h2|h3|ul|ol|li|strong|a|a:hover|.wa-callout*)`) für
   `set:html`-Inhalte.
-- Markup-Gegenprobe: `author-card`-Block und `faq`-Block waren in beiden
-  Templates BYTE-IDENTISCH; `cta-card` unterschied sich nur in den
+- Markup-Gegenprobe: der `faq`-Block war in beiden Templates BYTE-IDENTISCH.
+  Der `author-card`-Block war strukturell identisch, trug aber
+  Familienunterschiede, die die Extraktion als Props erhalten hat:
+  Label («Geschrieben von» vs. «Erstellt von»), Avatar (Initialen vs.
+  fixes «TCM» mit `avatar--sm`) und Review-Zeile (Wissen: konditional
+  «Medizinisch geprüft durch …» bei `reviewerName`, sonst wie KS
+  «Allgemeine Einordnung …»). `cta-card` unterschied sich nur in den
   Default-Fallback-Strings (`'Beschwerden abklären…'` vs.
   `'…einordnen lassen?'`), dem `ctaHref`-Default (`/kontakt/` vs.
   `#formular`) und dem KS-Tracking-`onclick` auf dem WhatsApp-Button.

@@ -7,7 +7,10 @@ und die Implementierung. Architektur-Details: `docs/REBRAND_ARCHITECTURE.md`.
 rendern aus captured HTML (`src/data/*-leaves/*.html`, `*-body.html`) mit
 Inline-Styles; `home.css`/`header.css` tragen Hardcodes; GTM/CookieYes/
 Turnstile/OneDoc/Webfonts sind in der QA-Umgebung blockiert und daher nur
-eingeschränkt verifiziert. Token-Änderungen allein restylen diese Teile nicht.
+eingeschränkt verifiziert. Zu Inline-Styles präzise: Inline-`var(--…)`-
+Referenzen (kommen in den Leaves vor, z. B. st-gallen.html) reagieren auf
+Token-Änderungen; hartkodierte Literale daneben nicht. Token-Swaps
+restylen captured HTML also nur teilweise und ungleichmässig.
 
 ## 1. Tokens: Ist-Zustand und Grenzen
 
@@ -23,7 +26,9 @@ eingeschränkt verifiziert. Token-Änderungen allein restylen diese Teile nicht.
   - Inline-Hardcodes in `standort/*`-Komponenten, `StickyCtaBar.astro`,
     `404.astro`, `luzern/index.astro` u. a.
   - Captured Leaves/Bodies (Beschwerden, Therapien, Home, SG/Bottighofen)
-    tragen Inline-Styles im HTML — ausserhalb jeder Token-Reichweite.
+    tragen Inline-Styles im HTML. Davon reagieren Inline-`var(--…)`-
+    Referenzen auf Tokens; hartkodierte Literale im selben HTML nicht —
+    beides kommt gemischt vor.
 - Regel: neue Design-Werte zuerst in `tokens.css`; Hardcodes familienweise
   beim jeweiligen Redesign ablösen; KEIN zweites Token-System.
 
@@ -40,26 +45,40 @@ eingeschränkt verifiziert. Token-Änderungen allein restylen diese Teile nicht.
 | `LibraryRelated.astro` | Untersuchungen |
 | `pro|b2b|reg/*` | B2B-/Regulatorik-Familie |
 
-NICHT komponentisiert (captured HTML): Home-Body, Beschwerden-Leaves (117),
-Therapien-Leaves (37), SG- und Bottighofen-Standortseiten, EN (`Layout.astro`,
-eigenes `global.css`).
+NICHT komponentisiert, captured HTML (Routen-Zahl ≠ Leaf-Dateien-Zahl, weil
+Hubs, hand-authored Unterseiten und datengetriebene Teile dazukommen):
+Home-Body; Beschwerden (117 Routen, davon 116 captured `symptom-leaves`);
+Therapien (37 Routen, davon nur 11 captured `therapie-leaves` — Rest sind
+eigene `.astro`-Unterseiten/Hub); Standorte SG + Bottighofen (2 von 11
+`standort-leaves`-Dateien aktiv, 9 tot).
+EN ist ein eigener Fall, aber KEIN captured HTML: `Layout.astro`-Templates
++ Content Collections (`src/content/knowledge/*.md`) mit eigenem
+`global.css` — regulär restylebar, nur eben ein separates Layout-System.
 
-## 3. Repräsentative Templates für Figma
+## 3. Design-Abdeckungs-Checkliste für Figma
 
-Je eines pro Familie deckt den Grossteil der Site ab:
+Checkliste der Flächen, die das Design abdecken muss (keine fixe Anzahl;
+pro Punkt reicht i. d. R. eine repräsentative Seite):
 
-1. **Home** (`/`) — SpaPage, Conversion-Referenz.
-2. **Standort CRO-Flow** (`/standorte/kreuzlingen/` oder `/basel/`) — die
-   kanonische Sektionsfolge der 10 migrierten Standorte.
-3. **Bibliotheks-Leaf** (`/wissen/narbenbehandlung/` + 1 Körpersignal) —
-   Hero, kb-body, ArticleCta, AuthorCard, FaqBlock, Related.
-4. **Beschwerden-Leaf** (`/beschwerden/rueckenschmerzen/`) — captured
-   Template, grösste SEO-Familie.
-5. **Haut-Leaf** (`/haut/…`) — bewusster warmer Theme-Pocket (Bronze).
-6. **Hub** (`/gesundheitsbibliothek/`) — Suche + Kartenraster.
-7. **Team-Profil** (`/team/…`) + `teamCardHtml()`-Karte.
-8. Sonderfälle nur zur Kenntnis: St. Gallen (Flagship/OneDoc), Luzern/
-   Bellevue (Pre-Opening), Partner-Decks, EN.
+- **Home** (`/`) — SpaPage, Conversion-Referenz.
+- **Standort CRO-Flow** (`/standorte/kreuzlingen/` oder `/standorte/basel/`)
+  — die kanonische Sektionsfolge der 10 migrierten Standorte.
+- **Bibliotheks-Leaf** (`/wissen/narbenbehandlung/` + 1 Körpersignal) —
+  Hero, kb-body, ArticleCta, AuthorCard, FaqBlock, Related.
+- **Beschwerden-Leaf** (`/beschwerden/rueckenschmerzen/`) — captured
+  Template, grösste SEO-Familie.
+- **Therapie-Leaf** (`/therapien/akupunktur/`) — zweitgrösste
+  Behandlungs-Familie, eigener Aufbau (captured + Unterseiten).
+- **Haut-Leaf** (`/haut/…`) — bewusster warmer Theme-Pocket (Bronze).
+- **Hub** (`/gesundheitsbibliothek/`) — Suche + Kartenraster.
+- **Team-Profil** (`/team/…`) + `teamCardHtml()`-Karte.
+- **Öffentliche B2B-Seite** (`/fachpersonen/` oder eine
+  `/praxiswissen/`-Seite) — eigener Ton, eigene Formulare
+  (`ProSubmissionForm` etc.).
+- **Conversion-Seiten** (`/kontakt/`, `/sprechstunde/`) + Inline-Formular
+  und Sticky-CTA-Zustände — die Hooks aus §4 im designten Zustand.
+- Sonderfälle nur zur Kenntnis: St. Gallen (Flagship/OneDoc), Luzern/
+  Bellevue (Pre-Opening), Partner-Decks, EN.
 
 ## 4. Bewusste Ausnahmen und geschützte Conversion-Hooks
 
@@ -81,25 +100,36 @@ inkl. KS-`whatsapp_click`-onclick; OneDoc-Widget (nur SG); `[data-lu-waitlist]`.
 
 ## 5. Mapping: Figma-Foundations/-Komponenten → Code
 
-| Figma | Code-Ziel |
+Die bestehenden Komponenten sind **Ausgangspunkte**, keine Garantie: das
+finale Mapping hängt von der approven Figma-Struktur und deren
+Responsive-Verhalten ab. Ändert das Design Markup-Struktur, Sektionszuschnitt
+oder Breakpoints, sind Umbauten statt Style-Swaps nötig.
+
+| Figma | Code-Ausgangspunkt |
 |---|---|
-| Color/Type/Spacing/Radius/Shadow Styles | ausschliesslich `public/styles/tokens.css` (Werte ersetzen, Namen stabil halten) |
+| Color/Type/Spacing/Radius/Shadow Styles | `public/styles/tokens.css` als einziger Ort für neue Werte (Namen möglichst stabil halten) |
 | Button-Komponente | `.btn/.btn--primary/.btn--ghost` in `src/styles/global.css` + `.btn-primary/.btn-white` (SpaPage-Welt, home.css) — zwei Welten, Konsolidierung pending |
 | Karten (Service/City/Related/Team/Review) | `.svc-card`, `.city-card`, `.rel-card`, `teamCardHtml()`, Review-Markup — pending-Hyejin-Konsolidierung (§6 Architektur-Doc) |
-| Artikel-Bausteine | `library/FaqBlock|AuthorCard|ArticleCta.astro` (Props stehen, nur Styles tauschen) |
-| Standort-Sektionen | `components/standort/*` 1:1 |
+| Artikel-Bausteine | `library/FaqBlock|AuthorCard|ArticleCta.astro` — Props/Markup stehen; ob Style-Swap reicht, entscheidet das approved Design |
+| Standort-Sektionen | `components/standort/*` als Sektions-Inventar; Zuschnitt/Reihenfolge je nach Design |
 | Navigation/Footer | `header.css` + `nav-rebrand.css` (Palette dabei in tokens aufgehen lassen) bzw. `footer.css` |
-| Formulare | `standort/KontaktForm.astro`, Inline-Form im home-body (captured!), Pro-/Partner-Forms |
+| Formulare | `standort/KontaktForm.astro`, Inline-Form im home-body (captured!), Pro-/Partner-Forms — Hooks aus §4 sind dabei invariant |
 
 ## 6. Restarbeit, nach konkretem Rebrand-Nutzen geordnet
 
-**Vor Figma sinnvoll (senkt Umbaukosten, kein Designentscheid nötig):**
-1. Tote Standort-Leaves löschen (9 Dateien, nachweislich ungenutzt) —
-   weniger irreführende Quellen beim Umbau. Günstig, risikoarm.
-2. `RelatedGrid`-Extraktion (`cols`-Prop) — letzter Zwilling der
+**Weiteres Refactoring ist PAUSIERT, bis Hyejins erste repräsentative
+Templates vorliegen.** Vor Figma ist nichts davon Voraussetzung.
+
+**Vor Figma sinnvoll (kein Designentscheid, kein Code):**
+1. Inventar-Pflege: `nav-rebrand`-`:root`-Werte + `home.css`-Hardcode-Liste
+   als Checkliste, damit spätere Token-Swaps nichts übersehen.
+
+**Optionales Backlog (kein Pre-Figma-Requirement; erst nach den ersten
+approved Templates wieder anfassen):**
+2. Tote Standort-Leaves löschen (9 Dateien, nachweislich ungenutzt) —
+   Hygiene, günstig, risikoarm, aber ohne Rebrand-Blocker-Charakter.
+3. `RelatedGrid`-Extraktion (`cols`-Prop) — letzter Zwilling der
    Bibliotheks-Leaves, gleiche Verifikationsmethodik wie die drei Piloten.
-3. Inventar-Pflege: `nav-rebrand`-`:root`-Werte + `home.css`-Hardcode-Liste
-   als Checkliste, damit Token-Swaps nichts übersehen.
 
 **Auf approved Design warten (Designentscheid zwingend):**
 4. Nav-Palette (#1ED760) vs. Brand-Grün vereinheitlichen.
@@ -116,6 +146,9 @@ inkl. KS-`whatsapp_click`-onclick; OneDoc-Widget (nur SG); `[data-lu-waitlist]`.
 Before/After vom selben Baseline-Commit: Build, 0 Meta-/DOM-Diffs
 (normalisiert um Scope-IDs/Bundle-Hashes), computed Styles + Screenshots
 1440/390 pixelidentisch, `health-audit` + `check-professional` (bekannter
-vorbestehender OdA-AM-Fail), keine echten Anfragen/Events. Limitation:
+vorbestehender OdA-AM-Fail), keine echten Anfragen/Events. Limitationen:
 tcm.ch ist aus der Agent-Umgebung egress-blockiert; Live-Checks laufen als
-separate Cloud-Session per curl (HTML-Marker), nicht visuell.
+separate Cloud-Session per curl (HTML-Marker), nicht visuell — und
+HTTP 200 + erwartetes Markup belegen NICHT commit-genau, welcher Stand
+deployed ist. Solche Checks sind dokumentierte/berichtete Evidenz, keine
+direkte Deploy-Verifikation (dafür: Workers-Builds-Check am Commit).
