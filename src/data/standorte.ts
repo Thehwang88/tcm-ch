@@ -118,8 +118,8 @@ export const standorte: Record<string, Standort> = {
     slug: 'kreuzlingen',
     stadt: 'Kreuzlingen',
     seo: {
-      title: 'TCM & Akupunktur Kreuzlingen | TCM.ch',
-      description: 'TCM & Akupunktur Kreuzlingen, Romanshornerstrasse 1: Partnerklinik von Praxis Hwang am Bodensee. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100%. Termin online anfragen.',
+      title: 'TCM Kreuzlingen: Akupunktur & Chinesische Medizin | TCM.ch',
+      description: 'TCM Kreuzlingen, Romanshornerstrasse 1: Akupunktur, Tuina und Kräutertherapie der Partnerklinik von Praxis Hwang am Bodensee. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100%. Jetzt Termin anfragen.',
       h1: 'TCM & Akupunktur <em>Kreuzlingen</em>',
       schemaName: 'TCM.ch Kreuzlingen',
     },
@@ -1107,8 +1107,8 @@ export const standorte: Record<string, Standort> = {
     "slug": "winterthur-marktgasse",
     "stadt": "Winterthur Marktgasse",
     "seo": {
-      "title": "Akupunktur & TCM Winterthur | Praxis Marktgasse | TCM.ch",
-      "description": "Akupunktur & TCM in Winterthur, Marktgasse 78: Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo–Sa geöffnet.",
+      "title": "Akupunktur Winterthur: TCM-Praxis an der Marktgasse | TCM.ch",
+      "description": "Akupunktur & TCM in Winterthur, Marktgasse 78: Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo bis Sa geöffnet. Jetzt Termin anfragen.",
       "h1": "Akupunktur & TCM in <em>Winterthur – Marktgasse</em>",
       "schemaName": "TCM Winterthur – TCM.ch"
     },
