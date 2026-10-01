@@ -3,7 +3,7 @@ import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
 import AuthorCard from '../../components/library/AuthorCard.astro';
 import ArticleCta from '../../components/library/ArticleCta.astro';
-import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../data/care';
+import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../data/care';
 import { site } from '../../data/site';
 import { wissen, wissenBySlug } from '../../data/wissen';
 import { OUCH_MAG, ouchMagRow } from '../../data/ouch-links';
@@ -111,7 +111,9 @@ const ouchRow = OUCH_ROWS[data.slug];
             behalten feldweise Vorrang; Ziel bleibt /kontakt/ (kein Formular auf
             Wissen-Seiten), kein Sticky auf dem Lern-Cluster. */}
         <ArticleCta
-          eyebrow="TCM.ch Care"
+          eyebrow={CARE_PERSON.eyebrowWithName}
+          portrait={CARE_PERSON.portrait}
+          portraitAlt={CARE_PERSON.portraitAlt}
           title={data.ctaTitle ?? 'Frage zu diesem Thema?'}
           text={data.ctaText ?? 'Schildere uns kurz deine Situation. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden.'}
           primaryHref={data.ctaHref ?? '/kontakt/'}

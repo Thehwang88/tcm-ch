@@ -12,7 +12,7 @@ import TerminForm from '../../../components/TerminForm.astro';
 import StickyCta from '../../../components/StickyCta.astro';
 import ArticleCta from '../../../components/library/ArticleCta.astro';
 import { site } from '../../../data/site';
-import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../../data/care';
+import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { wasJetzt, publishedWasJetzt, TOOL_LABELS } from '../../../data/was-jetzt';
 import type { WasJetztEntry, WasJetztLink } from '../../../data/was-jetzt';
 
@@ -162,7 +162,9 @@ if (isReal && w.publishedAt) {
 
         {/* CARE-Bridge (Sprint #1B): Was-jetzt ist der natuerlichste CARE-Uebergang. */}
         <ArticleCta
-          eyebrow="TCM.ch Care"
+          eyebrow={CARE_PERSON.eyebrowWithName}
+          portrait={CARE_PERSON.portrait}
+          portraitAlt={CARE_PERSON.portraitAlt}
           title="Du bist dir noch unsicher, wie es weitergeht?"
           text="Beschreibe uns kurz deine Situation. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden – ob ärztliche Abklärung, TCM oder eine andere Anlaufstelle sinnvoll ist."
           primaryHref="#formular"

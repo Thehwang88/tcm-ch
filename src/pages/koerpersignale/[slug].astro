@@ -10,7 +10,7 @@ import TerminForm from '../../components/TerminForm.astro';
 import StickyCta from '../../components/StickyCta.astro';
 import { site } from '../../data/site';
 import { koerpersignale } from '../../data/koerpersignale';
-import { careClickJs, CARE_TRUST, CARE_SAFETY } from '../../data/care';
+import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../data/care';
 import { regionsForSignal } from '../../data/gesundheitsbibliothek';
 
 export function getStaticPaths() {
@@ -92,8 +92,10 @@ const libRegions = regionsForSignal(data.slug);
             feldweise Vorrang vor den CARE-Defaults. */}
         <ArticleCta
           eyebrow="TCM.ch Care"
-          title={data.ctaTitle ?? 'Unsicher, was als Nächstes sinnvoll ist?'}
-          text={data.ctaText ?? 'Beschreibe uns kurz, was du bemerkst. Wir helfen dir kostenlos, den passenden nächsten Schritt zu finden – ob ärztliche Abklärung, TCM, Physiotherapie oder eine andere Anlaufstelle sinnvoll ist.'}
+          portrait={CARE_PERSON.portrait}
+          portraitAlt={CARE_PERSON.portraitAlt}
+          title={data.ctaTitle ?? CARE_PERSON.heading}
+          text={data.ctaText ?? CARE_PERSON.body}
           primaryHref={data.ctaHref ?? '#formular'}
           primaryLabel={data.ctaLabel ?? 'Anliegen schildern'}
           primaryOnclick={careClick('article')}
