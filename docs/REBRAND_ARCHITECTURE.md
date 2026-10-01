@@ -1,0 +1,247 @@
+# TCM.ch — Rebrand-Architektur-Inventar (Step 2)
+
+Stand: 2026-10-01, analysiert auf `main` = `d1a4436` (Baseline aus Step 1).
+Nur Analyse; keine Code-, Content- oder Style-Änderungen. Design-Entscheide
+sind, wo markiert, **pending Hyejin** (Figma folgt).
+
+## 1. Baseline
+
+- Analysierter Stand: `d1a4436` (= origin/main). Session-Branch trägt zusätzlich
+  `bc6b0d7` (nur regenerierte sitemap-`lastmod` + audit-JSON, keine Inhalte) —
+  bewusst NICHT in diesen Branch übernommen.
+- Build: 687 Seiten (`index.html`) + Cloudflare Worker, Sitemap 661 URLs.
+- Bekannte Baseline-Limitierungen (aus Step 1):
+  - `tcm.ch` ist aus der Agent-Umgebung egress-blockiert; alle Browser-Checks
+    liefen gegen den lokalen Build. Webfonts (fonts.googleapis.com), GTM,
+    CookieYes, Turnstile und OneDoc waren dabei blockiert → Font-Rendering,
+    Consent-Banner, Turnstile-Widget und OneDoc-Iframe sind NICHT visuell
+    verifiziert.
+  - Erfolgreicher Formularversand wurde bewusst nicht getestet (keine echten
+    Anfragen/Conversion-Events); getestet ist nur die Validierung (leerer
+    Submit feuert keinen `/api/*`-Request).
+  - `scripts/check-professional.mjs` hat einen vorbestehenden Fehler:
+    `Freigabe-Blocker oda-am: Quelle sbfiTitel unpräzise (Startseite)`
+    (`src/data/regulatorik/sources.ts:32`, `precise:false, checked:null`).
+    Wird in einem eigenen Task behoben, nicht hier.
+
+## 2. Layout- & CSS-System
+
+### 2.1 Vier Layouts
+
+| Layout | Verwendet von | CSS-Ladereihenfolge (Head) |
+|---|---|---|
+| `SpaPage.astro` | SPA-Erbe: Home, Beschwerden-Leaves, Therapien-Leaves, Standorte (alle Varianten), Massage-/Stadt-Seiten, Hubs mit `*-body.html` | `tokens.css` → `home.css` → `nav-rebrand.css` → Google Fonts → page-`<style>`; Scripts: Turnstile, `header.js`, `home.js` |
+| `LayoutDe.astro` | Gesundheitsbibliothek komplett (Körpersignale, Wissen, Haut, Fragen, Untersuchungen, Was-jetzt, Befunde, TCM-verstehen, Körper, Team, Praxiswissen/Tools/Regulatorik-Doku) | `tokens.css` → `header.css` → `nav-rebrand.css` → `footer.css` → Fonts → scoped page-`<style>` |
+| `Layout.astro` | `/en/*` (50 Seiten) | `src/styles/global.css` (139 Z., Astro-bundled) → `tokens.css` → `footer.css` → Fonts; eigener EN-Header (`Header.astro`) + Drawer |
+| `PartnerLayout.astro` | `/partner/[city]` (private Pitch-Decks, noindex) | `tokens.css` → Fonts → deck-eigene Styles |
+
+### 2.2 Token-System (`public/styles/tokens.css`, 92 Zeilen)
+
+Deklarierte Single Source of Truth, von allen 4 Layouts + Sonderseiten
+(`longevity`, `selbsttest`, `visuals/handout`) geladen. Enthält Brand-Farben,
+semantische Aliase (`--green`→`--blue` …), Typo-Skala, Layout-Rhythmus
+(`--section-py` responsive), Radius-, Schatten-, Motion-Skalen.
+
+**Tatsächliche Adoption / Konflikte (konkrete Fundstellen):**
+
+1. `public/nav-rebrand.css:8-13` definiert ein ZWEITES `:root` mit eigener
+   Palette `--nav-green:#1ED760`, `--nav-green-dark:#14532D` (Spotify-Grün,
+   nicht Brand-Grün #2D9B6F). Gilt global, wird aber nur von Nav-Selektoren
+   konsumiert. Für das Rebrand die wichtigste bewusste Abweichung.
+2. `public/home.css`: 159 hartkodierte Brand-Grün-Vorkommen (`#2D9B6F`/
+   `#1F7A54`/`#E8F5EE`) neben Token-Nutzung; kein eigenes `:root`.
+3. `public/header.css`: 10 hartkodierte Grün-Werte.
+4. Inline-Hardcodes in Komponenten (statt `var(--blue)`), u. a.
+   `src/components/standort/UspGrid|UeberPraxis|Reviews|KrankenkassenTeam|
+   Ablauf.astro`, `WhatsAppConcierge.astro`, `src/pages/404.astro`,
+   `src/pages/standorte/luzern/index.astro` (`rgba(45,155,111,…)`-Literale).
+5. `StickyCtaBar.astro` hardkodiert `#2D9B6F` + Schatten direkt.
+
+Kein Wholesale-Cleanup hier; für das Rebrand gilt: **neue Werte zuerst in
+tokens.css, Hardcodes familienweise beim jeweiligen Redesign ablösen.**
+KEIN zweites Token-System einführen (nav-rebrand-`:root` beim Nav-Redesign in
+tokens.css aufgehen lassen — pending Hyejin).
+
+## 3. Seitenfamilien-Inventar
+
+Zahlen = generierte Seiten im Build von `d1a4436` (gesamt 687).
+
+### 3.1 Home (1)
+- Route `/`, `src/pages/index.astro` + Markup `src/data/home-body.html`
+  (`?raw`), Styles `public/home.css`. SpaPage-Familie.
+- Hero: `.hero-bg`-Block im home-body; Conversion: `#home-contact-form`
+  (`form[data-contact-form]` → `public/home.js:262` → `fetch('/api/anfrage')`
+  → `dataLayer.push({event:'formular_senden', …})` in `home.js:48`).
+- Standort-Karten (`.city-card.location-card`), Review-Cards, Therapie-Grid
+  (`.svc-card`), KK-Akkordeon (`.kk-item`).
+
+### 3.2 Standorte (21 + 7 Kosten-Spokes)
+- Kanonischer Flow: `src/pages/standorte/[slug].astro` + `src/data/standorte.ts`
+  (`cro:true` = SG-Master-Layout) mit geteilten Komponenten
+  `src/components/standort/*` (Hero, UspGrid, Team, Beschwerden, Therapien,
+  Ablauf, Reviews, KrankenkassenTeam, IntroNap, UeberPraxis, WeitereStandorte,
+  FinalCta, KontaktForm). Migriert: kreuzlingen, frauenfeld, basel u. a.
+- Legacy-Zweig: captured Leaves `src/data/standort-leaves/*.html` (11 Dateien,
+  z. B. st-gallen, winterthur-*, zuerich-oerlikon, bottighofen) im selben
+  `[slug].astro`.
+- Hand-authored Ausnahmen: `luzern/` + `zuerich-bellevue/` (Pre-Opening,
+  Warteliste-Formular `[data-lu-waitlist]`), `zuerich-city/`,
+  Kosten-Spokes `*/kosten/` (msg-* Styles aus `src/data/massage-city.css?raw`).
+- Hero: `standort/Hero.astro` (`#generic-premium-hero`, `.sg-*`-Klassen aus
+  home.css). CTA: `openContactForm()` + WhatsApp; Sticky `#standort-mobile-cta`
+  (CSS-inaktiv) + sitewide `.scb-bar`.
+- **Echte Ausnahme St. Gallen:** Legacy-Leaf + `HeroLaunchSG.astro`
+  (Offer-Flow `#offer-form`, „30 Min. gratis“), OneDoc-Embed wird in
+  `[slug].astro` (Z. ~205) als `#online-buchen`-Sektion injiziert
+  (Widget-ID `7a0d6d1b…`, GA4 `G-NHZ8Y6V840` im Widget-Script), Sticky-CTA
+  rewired auf `#kontakt`/`#online-buchen` (`StickyCtaBar.astro`, sgPage-Regex).
+  Beim Redesign separat behandeln; OneDoc nur hier.
+
+### 3.3 Therapien (37)
+- `src/pages/therapien/[slug].astro` (SpaPage) + Leaves
+  `src/data/therapie-leaves/*.html`; Unterverzeichnisse für Akupunktur-
+  Subseiten (schwangerschaft, schaedelakupunktur …), `massage/*`-Methodenseiten,
+  Hub `therapien-body.html`. `buildTherapyLd()` für Schema.
+
+### 3.4 Beschwerden (117)
+- `src/pages/beschwerden/[slug].astro` (SpaPage) + `src/data/symptom-leaves/
+  *.html` (captured, pro Slug gebaut via Kalkschulter-Template-Generator) +
+  `beschwerden.ts` (Name/FAQs/Related) + `TITLES/DESCRIPTIONS`-Maps im Route-
+  File. 410-Gate: `public/beschwerden-keep.js` + `functions/beschwerden/`.
+  Hub `beschwerden-body.html` (Panels + A-Z-Directory, `data-alias`-Suche).
+- FAQ: `.cp-faq-item`-Akkordeon (onclick-toggle) + `parseLeafFaqs` → FAQPage-LD.
+- Auto-Linkblöcke am Leaf-Ende: haut-links, koerpersignale-links,
+  massage-links, fragen-links, library-links (je `src/data/*-links.ts`).
+
+### 3.5 Körpersignale (90)
+- `src/pages/koerpersignale/[slug].astro` (LayoutDe, scoped `<style>`) +
+  `src/data/koerpersignale.ts` (Interface inkl. optional `ctaHref`, `sources`).
+  Hero schlicht (`.cat`/`h1`/`.lead`), Body `set:html` mit
+  `:global(.wa-callout)`, FAQ `<details class="faq">`, CTA `.cta-card`
+  (`#formular`-Default), Related `.rel-card`-Grid, Quellen `.ks-sources`.
+
+### 3.6 Wissen (45) & Haut (37)
+- `wissen/[slug].astro` bzw. `haut/[slug].astro` (beide LayoutDe) +
+  `wissen.ts`/`wissen-herbst.ts`/`haut.ts`. Strukturell Zwillinge der
+  Körpersignale-Leaves (Autoren-Card, FAQ-details, cta-card). Details §5.
+
+### 3.7 Gesundheitsbibliothek (179 gesamt)
+- Hub `/gesundheitsbibliothek/` mit client-seitigem Suchindex
+  (`buildSearchIndex` + `SYNONYMS` in `gesundheitsbibliothek.ts`).
+- Fragen (40): `fragen/[slug].astro` + Hubs (`fragenHubs`) aus `fragen.ts`.
+- Untersuchungen (28): je eigene `.astro` (generiert, `kb-body`-Styles,
+  `LibraryRelated.astro`, `info-note`, CTA `/sprechstunde/` bei Diagnostik).
+- Befunde & Werte (59): `befunde-werte/[slug].astro` + `befunde-werte.ts`.
+- Was jetzt (19): `was-jetzt/[slug].astro` + `was-jetzt.ts`
+  (Selfcare-Module, `sources[]`, Kannibalisierungs-Pflichtfelder).
+- TCM verstehen (22): `tcm-verstehen/[sektion]/[...slug]`-Flow +
+  `tcm-verstehen.ts` (Entity-Modell, Scope-Ausnahme für Qi/Meridian-Begriffe).
+- Körper (9 Regionen), Perspektiven (1, noindex).
+
+### 3.8 Team (17)
+- `team/[slug].astro` (LayoutDe) + `src/data/therapeuten.ts`
+  (`teamCardHtml()` wird auch in Standort-Leaves injiziert — beim Redesign
+  Karte nur dort ändern).
+
+### 3.9 B2B / Professional / Regulatorik (~45)
+- `fachpersonen`, `praxiswissen` (15), `branche` (7), `regulatorik` (11),
+  `tools` (5), `karriere` (3) + noindex-Scaffolds (`jobs`, `verzeichnis`,
+  `weiterbildungen`, `marktplatz`, `community`, `akademie`).
+- Daten `src/data/pro/*` + `src/data/regulatorik/*`; Komponenten
+  `components/pro|b2b|reg/*`; Gate `scripts/check-professional.mjs`
+  (`REGULATORIK_VERIFIED`). Formulare: `ProSubmissionForm`,
+  `PartnerLeadForm`, `NachfolgeForm` → `functions/api/einreichung.js`.
+
+### 3.10 Partner-Präsentationen (4, privat)
+- `partner/[city].astro` + `partner/modell|praxisnachfolge` auf
+  `PartnerLayout` (Slide-Deck-UI, noindex). Eigenes visuelles System —
+  vom Patient:innen-Rebrand entkoppelt (pending Hyejin, ob überhaupt).
+
+### 3.11 English (50)
+- `en/*` auf `Layout.astro` (+ `Header/FooterEn`), Daten `locations.ts`,
+  `src/content/knowledge/*.md` (Content Collections). Hreflang-Paarung via
+  `deStandortPath/enLocationPath`.
+
+### 3.12 Sonstige
+- `visuals` (11, noindex + handout-Variante), `selbsttest`, `longevity`,
+  `sprechstunde`, `kontakt`, `krankenkassen`, Rechtliches (`DocPage.astro`).
+
+## 4. Conversion- & Tracking-Inventar (MUSS Extraktionen überleben)
+
+| Baustein | Hooks |
+|---|---|
+| Inline-Formulare | `form[data-contact-form]`, Felder `name/telefon/email/standort/behandlung`, Honeypot `website`, Hidden `quelle`, `anfrage_typ`; Handler `public/home.js:262` → `POST /api/anfrage` (`functions/api/anfrage.js`) |
+| dataLayer | `formular_senden` (`form_type`, `quelle`) `home.js:48`; Warteliste-Variante in Luzern-/Bellevue-Inline-Scripts; GTM `GTM-PZ92Q3KJ` + CookieYes via `HeadAnalytics.astro` |
+| Turnstile | `.cf-turnstile` (+ `data-ts-mounted`), `window.tcmTsToken`, Sitekey-Branch-Switch (`CF_PAGES_BRANCH`) |
+| SPA-Router/Nav | `nav('symptom'|'therapie'|'standort', slug)`, `openContactForm()`, `openTerminForm()`, `drawerNav()`, `#siteDrawer`, `#drawerOverlay`, `body.drawer-open`, `#mainNav` + `.nav-hidden` (header.js Hysterese), `__tcmNavShow/__tcmNavSync` |
+| Sticky-CTA | `.scb-bar/.scb-primary/.scb-row/.scb-off`, IntersectionObserver auf ersten Primär-CTA, Opt-out `[data-no-sticky-cta]`, SG-Sonderpfad (`#kontakt`/`#online-buchen`, `.scb-book`) |
+| Prefill | `prefillStandort()`/`prefillForm()` (`src/data/form-prefill.ts`), `select[name=standort]`-Preselect in `standort/KontaktForm.astro`, `?standort=`-Query |
+| Kontaktkanäle | `wa.me/41775236122` (+ Varianten mit text-Param), `tel:+41775236122`, `termine@tcm.ch` |
+| OneDoc (nur SG) | `iframe.od-widget`, Widget-ID `7a0d6d1b…`, postMessage-Höhe, GA4-Forwarding `G-NHZ8Y6V840` |
+| Warteliste | `[data-lu-waitlist]` (Luzern/Bellevue), `MassageWartelisteForm` (Luzern), `quelle=warteliste-*` |
+
+## 5. Wissen vs. Körpersignale (Detailvergleich)
+
+Beide Leaf-Templates (LayoutDe, scoped `<style>`) wurden regelweise
+verglichen (Selektor → Deklaration, normalisiert):
+
+- Wissen: 45 Regeln · Körpersignale: 55 Regeln · **43 Selektoren geteilt,
+  davon 43 mit IDENTISCHEN Deklarationen, 0 abweichend.**
+- Identisch u. a.: `.hero .lead`, `.cat`, `.kb-body`-Satz (p/h2/ul/li/strong/
+  `:global(a)`/`:global(.wa-callout*)`), `.faq`-Details-Akkordeon komplett,
+  `.cta-card*`, Autoren-Card (`.author-card/.avatar/.a-*`), `.back`, `.dot`.
+- Bewusste Unterschiede (klein): KS-only `.ks-sources*`, `.lib-row*`
+  (Körperregionen-Leiste), `.avatar--sm`; Wissen-only
+  `:global(.wa-pullquote)`; KS hat 2 zusätzliche strukturelle Blöcke, sonst
+  nichts Divergentes. Haut/Fragen nutzen denselben Stil-Satz in eigenen Kopien
+  (nicht Teil des Pilots, aber derselbe spätere Hebel).
+
+**Teilbarkeit:** Ja. Da 0 Deklarationen abweichen, ist ein gemeinsamer Block
+ohne Erscheinungsänderung möglich, wenn (a) die geteilten Regeln VOR den
+verbleibenden lokalen Regeln geladen werden und (b) die lokalen Regeln keine
+der geteilten Selektoren erneut definieren (ist heute der Fall). Vorbild im
+Repo: `massage-city.css?raw` + `<style set:html={css} is:inline>`.
+
+### Empfohlener Pilot (EINER, kleinstmöglich)
+
+**„library-article.css“: die 43 identischen Regeln aus Wissen + Körpersignale
+in eine geteilte Raw-CSS-Datei extrahieren.**
+
+- Betroffene Dateien: NEU `src/data/library-article.css`;
+  EDIT `src/pages/wissen/[slug].astro` + `src/pages/koerpersignale/[slug].astro`
+  (identische Regeln aus dem scoped `<style>` entfernen, stattdessen
+  `import css from '../../data/library-article.css?raw'` +
+  `<style set:html={css} is:inline>` vor dem Rest-`<style>`; dafür müssen die
+  betroffenen Selektoren im Rest-Block auf `:global()`-frei bleiben bzw. die
+  geteilten Regeln ohne Astro-Scoping auskommen — die 43 Regeln nutzen keine
+  Scoping-abhängigen Selektoren).
+- Erwarteter Nutzen: Hyejins Artikel-Redesign (Typo, FAQ, CTA-Card, Autoren-
+  Card) wird an EINER Stelle umgesetzt und wirkt sofort auf 135 Seiten
+  (45 Wissen + 90 KS); Folgeausbau auf Haut/Fragen (weitere 77) ist dann ein
+  Copy-Delete, kein neues Muster.
+- Risiken: Astro-Scoping entfällt für die geteilten Regeln → sie gelten
+  seitenweit; Selektoren sind aber präfix-spezifisch (`.kb-body`, `.cta-card`,
+  `.faq`, `.a-*`) und kollidieren laut Grep nicht mit home.css/header.css.
+  Zweites Risiko: Spezifitätsgleichstand bei künftigen lokalen Overrides →
+  Konvention: lokale Blöcke überschreiben nur mit zusätzlichem Selektor.
+- Verifikation: `npm run build`; Pixel-Vergleich (Screenshot-Diff 1440/390)
+  von je 1 Wissen-, 1 KS-Seite vor/nach; Grep, dass keine der 43 Regeln noch
+  doppelt existiert; bestehende QA-Battery (Overflow/Konsole).
+- Rollback: ein Commit, reiner Revert; keine Daten-/URL-Änderung.
+
+Umsetzung NICHT in diesem Task (Analyse only) — als erster Schritt von
+Step 3, idealerweise nachdem Hyejins Artikel-Design vorliegt (sonst wird
+1:1-Erscheinung extrahiert und später einmal umgestylt — auch ok).
+
+## 6. Pending Hyejin (Design-Entscheide, hier nur gesammelt)
+
+- Nav/Brand: `nav-rebrand.css`-Palette (#1ED760) vs. tokens-Grün — vereinheitlichen?
+- Hero-Familie: SG-Premium-Hero vs. generischer Standort-Hero vs. Library-Hero.
+- Karten-System: `.svc-card` / `.city-card` / `.rel-card` / `team-card` konsolidieren?
+- CTA-Hierarchie sitewide (Termin anfragen vs. WhatsApp-first vs. SG-Offer).
+- Partner-Decks: eigenes Design behalten oder ins neue System?
+- EN-Layout: eigenes `global.css`-System angleichen?
+- Typo-Skala & `--section-py`-Rhythmus: neue Werte → nur via tokens.css.
+
+Erstellt als Arbeitsgrundlage für Hyejins Figma; Zahlen/Verweise gelten für
+`d1a4436` und sind bei grösseren Content-Batches zu aktualisieren.
