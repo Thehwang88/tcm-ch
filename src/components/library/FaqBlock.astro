@@ -1,0 +1,28 @@
+---
+// Geteilter FAQ-Block der Bibliotheks-Leaves (Pilot Rebrand-Vorbereitung).
+// Markup + die 7 .faq-Regeln stammen byte-identisch aus wissen/[slug].astro und
+// koerpersignale/[slug].astro (Stand d1a4436); Scoping wandert mit der Komponente,
+// Erscheinung/Spezifität bleiben unverändert. FAQPage-JSON-LD bleibt in den Seiten.
+// Leeres faqs-Array rendert wie bisher nichts.
+export interface FaqItem { q: string; a: string }
+const { faqs } = Astro.props as { faqs: FaqItem[] };
+---
+{faqs.length > 0 && (
+  <section class="faq-block">
+    <h2>Häufige Fragen</h2>
+    <div class="faq">
+      {faqs.map((f) => (
+        <details><summary>{f.q}</summary><p>{f.a}</p></details>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .faq-block h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 8px 0 16px; letter-spacing: var(--tracking-heading); }
+  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
+  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq p { margin: 0 0 16px; font-size: 16px; color: var(--mid); }
+</style>
