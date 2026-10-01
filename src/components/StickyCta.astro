@@ -8,8 +8,20 @@ interface Props {
   /** Optional (SG-Pattern): Bar erst zeigen, wenn dieser Hero aus dem Viewport
    *  gescrollt ist (IntersectionObserver, threshold 0 – wie st-gallen-Leaf). */
   heroSelector?: string;
+  /** CARE-Variante (Sprint #1): ruhigeres Label + Tracking auf dem Form-Button.
+   *  Ohne diese Props rendert die Bar exakt wie bisher (Termin-Variante). */
+  formLabel?: string;
+  formOnclick?: string;
+  formCtaPos?: string;
 }
-const { prefill = 'Ich möchte gerne einen Termin anfragen.', formTarget = '#formular', heroSelector } = Astro.props;
+const {
+  prefill = 'Ich möchte gerne einen Termin anfragen.',
+  formTarget = '#formular',
+  heroSelector,
+  formLabel = 'Termin anfragen',
+  formOnclick,
+  formCtaPos,
+} = Astro.props;
 const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
 ---
 <div class:list={["sticky-cta", { "is-hidden": !!heroSelector }]} id="stickyCta" data-target={formTarget} data-hero={heroSelector}>
@@ -20,7 +32,7 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
     rel="noopener"
     onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'sticky_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'sticky_cta'})}"
   >WhatsApp</a>
-  <a class="sc-btn sc-btn--form" href={formTarget}>Termin anfragen</a>
+  <a class="sc-btn sc-btn--form" href={formTarget} onclick={formOnclick} data-care-cta={formCtaPos}>{formLabel}</a>
 </div>
 
 <style>

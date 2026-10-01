@@ -56,7 +56,15 @@ const breadcrumbLd = {
 };
 const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 
-const anliegen = `Ich habe folgendes Anliegen: ${data.symptom ?? data.title}. Ich möchte gerne einen Termin anfragen.`;
+// CARE (Sprint #1): Prefill nennt nur das Thema, keine Therapie-/Buchungsannahme.
+// Strukturierte Herkunft laeuft getrennt davon ueber TerminForm (quelle_detail/
+// formular) und uebersteht geloeschten Prefill.
+const topic = data.symptom ?? data.title;
+const formPrefill = `Mein Anliegen betrifft: ${topic}.\nWeitere Angaben: `;
+const waText = `Hallo, mein Anliegen betrifft: ${topic}.`;
+// Nur dataLayer (GTM ist kanonisch) - kein gtag-Doppelversand fuer das CARE-Event.
+const careClickJs = (pos: string) =>
+  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'koerpersignal_care',content_type:'koerpersignal',cta_position:'${pos}',source_path:location.pathname})`;
 
 // Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
 const libRegions = regionsForSignal(data.slug);
@@ -81,11 +89,20 @@ const libRegions = regionsForSignal(data.slug);
       <div class="wrap narrow">
         <div class="kb-body" set:html={data.bodyHtml} />
 
+        {/* CARE-Bridge: Artikel-Overrides (ctaTitle/Text/Label/Href) behalten
+            feldweise Vorrang vor den CARE-Defaults. */}
         <ArticleCta
-          title={data.ctaTitle ?? 'Beschwerden einordnen lassen?'}
-          text={data.ctaText ?? 'Schildere uns kurz, was du beobachtest. Wir sagen dir ehrlich, ob eine TCM-Behandlung bei dir sinnvoll ist oder zuerst eine ärztliche Abklärung gehört.'}
+          eyebrow="TCM.ch Care"
+          title={data.ctaTitle ?? 'Unsicher, was als Nächstes sinnvoll ist?'}
+          text={data.ctaText ?? 'Beschreibe uns kurz, was du bemerkst. Wir helfen dir kostenlos, den passenden nächsten Schritt zu finden – ob ärztliche Abklärung, TCM, Physiotherapie oder eine andere Anlaufstelle sinnvoll ist.'}
           primaryHref={data.ctaHref ?? '#formular'}
-          primaryLabel={data.ctaLabel ?? 'Termin anfragen'}
+          primaryLabel={data.ctaLabel ?? 'Anliegen schildern'}
+          primaryOnclick={careClickJs('article')}
+          primaryCtaPos="article"
+          secondaryHref="/standorte/"
+          secondaryLabel="Praxis in meiner Nähe finden"
+          trustLine="Kostenlos · unverbindlich · persönlich"
+          safetyNote="Bei akuten oder schweren Beschwerden wende dich direkt an eine Ärztin oder einen Arzt – im Notfall an die 144."
           waHref={waHref}
           waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'koerpersignal_content_cta'});if(typeof window.gtag==='function'){window.gtag('event','whatsapp_click',{quelle:'koerpersignal_content_cta'})}"
         />
@@ -136,8 +153,16 @@ const libRegions = regionsForSignal(data.slug);
       </div>
     </section>
 
-    <TerminForm heading="Abklären lassen?" intro="Beschreib kurz, was du spürst – wir sagen dir ehrlich, ob TCM hier sinnvoll ist." prefill={anliegen} />
-    <StickyCta prefill={anliegen} />
+    <TerminForm
+      heading="Anliegen schildern"
+      intro="Beschreib kurz, was du bemerkst – wir melden uns persönlich und sagen dir ehrlich, welcher nächste Schritt sinnvoll ist: ärztliche Abklärung, TCM oder eine andere Anlaufstelle."
+      prefill={formPrefill}
+      submitLabel="Anliegen senden"
+      formular="TCM.ch CARE – Körpersignal"
+      quelleDetail={`Körpersignal: ${topic} · Seite: ${path}/`}
+    />
+    {/* heroSelector: Bar erst nach dem Hero einblenden – lesen zuerst (CARE). */}
+    <StickyCta prefill={waText} formLabel="Hilfe erhalten" formOnclick={careClickJs('sticky')} formCtaPos="sticky" heroSelector=".hero" />
   </article>
 </LayoutDe>
 
