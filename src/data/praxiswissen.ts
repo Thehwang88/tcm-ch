@@ -542,6 +542,43 @@ export const PRAXISWISSEN: PwArticle[] = [
     ctaHref: '/partner/',
     ctaSecondary: { label: 'Tarif 590', href: '/regulatorik/tarif-590/' },
   },
+  {
+    slug: 'tcm-praxis-qualitaet-dokumentation',
+    category: 'betrieb',
+    title: 'Dokumentation und Qualität in der TCM-Praxis',
+    metaDesc: 'Was gehört in eine gute TCM-Behandlungsdokumentation? Praxisleitfaden zu Anamnese, Akupunkturpunkten, Einwilligung, Zwischenfällen, Datenschutz und Qualität.',
+    h1: 'Dokumentation und Qualität in der TCM-Praxis',
+    lead: 'Gute Dokumentation soll nicht möglichst viel Papier produzieren. Sie soll nachvollziehbar machen, was du vorgefunden, entschieden und behandelt hast. Gerade in einer TCM-Praxis gehören dazu neben der allgemeinen Anamnese auch die TCM-Einordnung, verwendete Akupunkturpunkte und Techniken, Reaktionen auf die Behandlung und der weitere Plan.',
+    shortAnswer: 'Eine brauchbare Behandlungsdokumentation beantwortet auch Wochen später die wichtigsten Fragen: Was war die Ausgangslage? Welche TCM-Einordnung wurde verwendet? Was wurde konkret behandelt? Wie reagierte die Patientin oder der Patient? Gab es Besonderheiten oder Zwischenfälle? Und was ist als Nächstes geplant? Ein einfaches Qualitätssystem baut auf genau dieser Nachvollziehbarkeit auf. Es schafft wiederholbare Abläufe für Behandlung, Sicherheit, Hygiene, Übergaben und den Umgang mit Abweichungen.',
+    datePublished: '2026-10-02', dateModified: '2026-10-02', readTime: '9 Min.',
+    keyTakeaways: [
+      'Dokumentiere nicht nur den Termin, sondern Ausgangslage, TCM-Einordnung, konkrete Behandlung, Reaktion und nächsten Schritt.',
+      'Bei Akupunktur gehören die tatsächlich verwendeten Punkte und relevanten Techniken in eine nachvollziehbare Verlaufsdokumentation.',
+      'Ärztliche Abklärungen, besondere Reaktionen und Zwischenfälle sollten im Verlauf erkennbar bleiben.',
+      'Gesundheitsdaten sind besonders schützenswerte Personendaten und benötigen angemessene organisatorische und technische Schutzmassnahmen.',
+      'Verwende keine pauschale Schweizer Aufbewahrungsfrist, sondern prüfe die für Standort und Tätigkeit geltenden Vorgaben.',
+      'Bei mehreren Therapeutinnen und Therapeuten braucht die Praxis einen gemeinsamen Mindeststandard für Dokumentation und Übergaben.',
+    ],
+    bodyHtml: BODY2.qualitaetDokumentation,
+    faq: [
+      { q: 'Was gehört in eine TCM-Behandlungsdokumentation?', a: 'Eine sinnvolle Dokumentation enthält die relevante Ausgangslage, medizinisch wichtige Informationen, die TCM-Anamnese und Arbeitshypothese, die konkret durchgeführte Behandlung, verwendete Akupunkturpunkte und Techniken, relevante Reaktionen sowie den weiteren Plan. Der genaue Umfang hängt von Behandlung und Situation ab.' },
+      { q: 'Muss ich jeden Akupunkturpunkt dokumentieren?', a: 'Für einen nachvollziehbaren Behandlungsverlauf ist es sinnvoll, die tatsächlich verwendeten Akupunkturpunkte festzuhalten. Eine Notiz wie «Akupunktur durchgeführt» zeigt später nicht, welche Behandlung tatsächlich stattgefunden hat. Welche formalen Dokumentationspflichten zusätzlich gelten, sollte für die konkrete Tätigkeit und den Kanton geprüft werden.' },
+      { q: 'Wie lange muss ich Patientendossiers aufbewahren?', a: 'Dafür sollte keine pauschale Frist für alle Schweizer TCM-Praxen verwendet werden. Die anwendbaren Anforderungen können von Kanton, Tätigkeit und Berufsstatus abhängen. Prüfe die konkrete Aufbewahrungsfrist für deinen Standort und deine Tätigkeit bei den zuständigen Stellen.' },
+      { q: 'Sind Patientendaten besonders schützenswert?', a: 'Ja. Gesundheitsdaten gelten nach dem Schweizer Datenschutzgesetz als besonders schützenswerte Personendaten. Patientendossiers sollten deshalb organisatorisch und technisch vor unberechtigtem Zugriff geschützt werden.' },
+      { q: 'Braucht eine kleine TCM-Praxis ein Qualitätshandbuch?', a: 'Nicht zwingend in Form eines umfangreichen Handbuchs. Entscheidend ist, dass wichtige Abläufe definiert, nachvollziehbar und im Alltag tatsächlich umgesetzt werden. Bei bewilligungspflichtigen Betrieben können zusätzliche kantonale Anforderungen an ein Qualitätssicherungssystem gelten.' },
+      { q: 'Was ändert sich bei mehreren Therapeutinnen und Therapeuten?', a: 'Gemeinsame Mindeststandards werden wichtiger. Erstanamnese, Verlauf, Punkte und Techniken, Änderungen des Behandlungsplans, Zwischenfälle und Übergaben sollten so dokumentiert sein, dass eine berechtigte Vertretung den relevanten Verlauf verstehen kann.' },
+    ],
+    sourceLinks: [
+      { label: 'EDÖB: Bekanntgabe von Patientendaten (Gesundheitsdaten als besonders schützenswerte Personendaten, Art. 5 Bst. c Ziff. 2 DSG)', url: 'https://www.edoeb.admin.ch/de/bekanntgabe-von-patientendaten', kind: 'official', nature: 'fact', accessed: '2026-10-02' },
+      { label: 'Fedlex: Bundesgesetz über den Datenschutz (DSG), SR 235.1', url: 'https://www.fedlex.admin.ch/eli/cc/2022/491/de', kind: 'official', nature: 'fact', accessed: '2026-10-02' },
+    ],
+    related: ['tcm-praxis-administration', 'tcm-praxis-team-aufbauen', 'tcm-praxis-eroeffnen'],
+    ctaTitle: 'Du baust deine Praxisabläufe gerade auf?',
+    ctaText: 'Die Checkliste ordnet Anerkennung, Bewilligung, Räume und Prozesse in eine sinnvolle Reihenfolge.',
+    ctaLabel: 'Zur Praxis-Checkliste',
+    ctaHref: '/praxiswissen/tcm-praxis-eroeffnen/',
+    ctaSecondary: { label: 'Praxisadministration', href: '/praxiswissen/tcm-praxis-administration/' },
+  },
 ];
 
 export const pwBySlug = (slug: string) => PRAXISWISSEN.find((a) => a.slug === slug);
