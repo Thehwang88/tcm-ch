@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-02",
   "totals": {
-    "healthPages": 499,
+    "healthPages": 503,
     "byType": {
       "hub": 6,
       "condition": 116,
@@ -10,7 +10,7 @@
       "question": 40,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 33,
+      "tcm_hub": 37,
       "selfcare": 19,
       "editorial": 80,
       "body_signal": 89,
@@ -1200,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 322,
+      "inboundContentLinks": 326,
       "outboundHealthLinks": 44
     },
     {
@@ -2140,7 +2140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 44,
+      "inboundContentLinks": 48,
       "outboundHealthLinks": 8
     },
     {
@@ -2150,7 +2150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 17
     },
     {
@@ -2300,7 +2300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
+      "inboundContentLinks": 40,
       "outboundHealthLinks": 15
     },
     {
@@ -2310,8 +2310,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/",
@@ -2320,8 +2320,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/tcm-anamnese/",
+      "type": "tcm_hub",
+      "title": "TCM-Anamnese: Wie die traditionelle Befunderhebung funktioniert | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/tcm-diagnose/",
+      "type": "tcm_hub",
+      "title": "TCM-Diagnose: Wie aus Befunden ein Muster entsteht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/",
@@ -2330,7 +2350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -2340,8 +2360,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 18
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/blut/",
+      "type": "tcm_hub",
+      "title": "Blut (Xue) in der TCM: Bedeutung im traditionellen Modell | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/fuenf-elemente/",
@@ -2350,8 +2380,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/funktionskreise/",
+      "type": "tcm_hub",
+      "title": "Funktionskreise in der TCM: Was Zang Fu bedeutet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/jing/",
@@ -2380,7 +2420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 10
     },
     {
@@ -2390,7 +2430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 10
     },
     {
@@ -2420,7 +2460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 6
     },
     {
@@ -2510,7 +2550,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 19
     },
     {
@@ -2520,7 +2560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -2530,7 +2570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -2550,7 +2590,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -2570,7 +2610,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -2580,7 +2620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2590,7 +2630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -2620,7 +2660,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
