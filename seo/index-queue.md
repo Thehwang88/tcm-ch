@@ -60,6 +60,9 @@ Regeln:
 - https://tcm.ch/praxiswissen/tcm-praxis-auslastung/
 - https://tcm.ch/praxiswissen/tcm-praxis-kennzahlen/
 - https://tcm.ch/praxiswissen/tcm-selbststaendig-oder-angestellt/
+- https://tcm.ch/regulatorik/betriebsbewilligung-praxis/
+- https://tcm.ch/branche/tcm-ausbildung-schweiz-system/
+- https://tcm.ch/praxiswissen/tcm-praxis-anfragen-bewertungen/
 - https://tcm.ch/partner/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/

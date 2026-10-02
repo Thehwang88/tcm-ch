@@ -51,7 +51,7 @@ export const REG_PAGES: RegPage[] = [
 <li>Planst du Arzneimittelabgabe?</li>
 <li>Arbeitest du über eine Einzelpraxis oder eine juristische Person (AG/GmbH)?</li>
 </ol>
-<p>Punkt 8 ist ein eigenes Thema: Ob eine Praxisgesellschaft zusätzlich eine Betriebsbewilligung braucht, ist kantonal sehr unterschiedlich. Diese Seite ist bei uns in Vorbereitung, bis wir die kantonalen Regeln verglichen haben.</p>
+<p>Punkt 8 ist ein eigenes Thema: Ob eine Praxisgesellschaft zusätzlich eine Betriebsbewilligung braucht, ist kantonal sehr unterschiedlich. Die Einordnung dazu: <a href="/regulatorik/betriebsbewilligung-praxis/">Betriebsbewilligung für TCM-Praxen</a>.</p>
 <h2>EMR ist keine BAB</h2>
 <p>Eine <a href="/regulatorik/emr/">EMR</a>- oder <a href="/regulatorik/asca/">ASCA</a>-Registrierung ersetzt keine kantonale Berufsausübungsbewilligung. Ebenso ist das <a href="/regulatorik/oda-am/">eidgenössische Diplom</a> nicht selbst die BAB – es ist ein Berufsabschluss, den Kantone in ihren Voraussetzungen berücksichtigen können.</p>
 <h2>Du wechselst den Kanton?</h2>
@@ -69,6 +69,83 @@ export const REG_PAGES: RegPage[] = [
     ouch: { label: 'Die Kantons-Lotterie', url: `${OUCH}/kantons-lotterie/` },
     sources: ['zhKomplementaer', 'zhAkupunktur', 'bgbm'],
     facts: [], lastReviewed: R, reviewIntervalMonths: 3,
+  },
+  {
+    slug: 'betriebsbewilligung-praxis', nav: 'Betriebsbewilligung',
+    title: 'Betriebsbewilligung für TCM-Praxen in der Schweiz',
+    metaDesc: 'Wann braucht eine TCM-Praxis eine Betriebsbewilligung? Überblick zu AG, GmbH, persönlicher BAB und kantonalen Unterschieden in der Schweiz.',
+    h1: 'Betriebsbewilligung für TCM-Praxen',
+    lead: 'Wer eine TCM-Praxis gründet, muss zwischen der persönlichen Berufsausübungsbewilligung und einer möglichen Bewilligung für den Betrieb unterscheiden. Ob eine zusätzliche Betriebsbewilligung nötig ist, hängt unter anderem vom Kanton, der Rechtsform und davon ab, in wessen Namen die Behandlungen erbracht werden.',
+    short: 'Eine Betriebsbewilligung ist nicht dasselbe wie die persönliche Berufsausübungsbewilligung. Ob deine TCM-Praxis eine Betriebsbewilligung benötigt, hängt insbesondere von Kanton, Tätigkeit und Organisationsform ab. Bei einer AG oder GmbH sollte die Frage vor der Betriebsaufnahme ausdrücklich geprüft werden.',
+    bodyHtml: `
+<h2>Berufsausübungsbewilligung und Betriebsbewilligung sind nicht dasselbe</h2>
+<p>Die <a href="/regulatorik/berufsausuebungsbewilligung/">Berufsausübungsbewilligung, kurz BAB</a>, betrifft grundsätzlich die Person, die einen bewilligungspflichtigen Gesundheitsberuf fachlich eigenverantwortlich ausübt.</p>
+<p>Eine Betriebsbewilligung betrifft dagegen den Betrieb oder die Trägerschaft einer Praxis. Relevant kann sie insbesondere werden, wenn Leistungen nicht im eigenen Namen einer einzelnen Therapeutin oder eines einzelnen Therapeuten erbracht werden, sondern im Namen und auf Rechnung einer juristischen Person wie einer AG oder GmbH.</p>
+<p>Wichtig ist jedoch: Die Voraussetzungen sind in der Schweiz nicht für alle Kantone und Berufsgruppen gleich geregelt.</p>
+<p>Eine persönliche BAB ersetzt deshalb nicht automatisch eine erforderliche Betriebsbewilligung. Umgekehrt bedeutet die Gründung einer AG oder GmbH nicht in jedem Kanton automatisch, dass für eine TCM-Praxis dieselbe Art von Betriebsbewilligung erforderlich ist.</p>
+<h2>Warum der Kanton entscheidend ist</h2>
+<p>Das Gesundheitsrecht wird in diesem Bereich wesentlich kantonal umgesetzt. Deshalb sollte die Bewilligungssituation immer für den konkreten Standort geprüft werden.</p>
+<p>Basel-Stadt ist ein gutes Beispiel: Wer dort eine Praxis der nichtärztlichen Alternativ- und Komplementärmedizin im Namen und auf Rechnung einer juristischen Person wie einer AG oder GmbH führt und entsprechende Leistungen erbringt, benötigt nach Angaben des Kantons eine Betriebsbewilligung.</p>
+<p>Der Kanton Zürich zeigt, warum eine schweizweite Pauschalaussage nicht funktioniert. Für die selbstständige Tätigkeit in der nichtärztlichen Alternativ- und Komplementärmedizin gelten dort andere Bewilligungsregeln. Deshalb muss immer geprüft werden, welche Vorschriften für die konkrete Tätigkeit, Berufsgruppe und Organisationsform gelten.</p>
+<h2>Wann solltest du die Betriebsbewilligung prüfen?</h2>
+<p>Eine Abklärung ist besonders sinnvoll, wenn du:</p>
+<ul>
+<li>eine TCM-Praxis als AG oder GmbH betreiben möchtest</li>
+<li>Therapeutinnen oder Therapeuten anstellst</li>
+<li>Leistungen im Namen und auf Rechnung einer Gesellschaft erbringst</li>
+<li>einen bestehenden Einzelbetrieb in eine juristische Person überführst</li>
+<li>einen zusätzlichen Standort eröffnest</li>
+<li>eine bestehende Praxis oder Gesellschaft übernimmst</li>
+<li>die fachliche Leitung eines Betriebs neu organisierst</li>
+</ul>
+<p>Entscheidend ist nicht allein der Handelsregistereintrag. Massgebend sind die kantonalen Vorgaben für die konkrete Tätigkeit.</p>
+<h2>Welche Unterlagen können verlangt werden?</h2>
+<p>Die Anforderungen unterscheiden sich nach Kanton. Je nach Bewilligungsverfahren können unter anderem folgende Unterlagen relevant sein:</p>
+<ul>
+<li>Handelsregisterauszug</li>
+<li>Betriebskonzept</li>
+<li>Beschreibung der Organisation und Verantwortlichkeiten</li>
+<li>Stellenplan</li>
+<li>Angaben zur fachlichen Leitung</li>
+<li>Nachweis geeigneter Praxisräume und Einrichtungen</li>
+<li>Berufshaftpflichtversicherung</li>
+<li>Qualitätssicherungssystem</li>
+<li>persönliche Bewilligungen der behandelnden Fachpersonen</li>
+</ul>
+<p>Basel-Stadt verlangt für die Betriebsbewilligung einer Praxis der nichtärztlichen Alternativ- und Komplementärmedizin beispielsweise unter anderem Handelsregisterauszug, Betriebskonzept, Stellenplan, Angaben zu Räumen und Ausrüstung, Haftpflichtnachweis und ein angemessenes Qualitätssicherungssystem.</p>
+<div class="pro-callout"><p>Diese Liste darf nicht ungeprüft auf andere Kantone übertragen werden.</p></div>
+<h2>AG oder GmbH: zuerst Bewilligungslage prüfen</h2>
+<p>Die Rechtsform sollte nicht isoliert von der Gesundheitsgesetzgebung geplant werden.</p>
+<p>Vor der <a href="/praxiswissen/tcm-praxis-eroeffnen/">Gründung</a> oder Umstrukturierung einer Praxis lohnt es sich deshalb, vier Fragen zu klären:</p>
+<ol>
+<li>Welche Tätigkeit wird am Standort tatsächlich ausgeübt?</li>
+<li>Welche persönlichen Bewilligungen benötigen die behandelnden Personen?</li>
+<li>In wessen Namen und auf wessen Rechnung werden die Leistungen erbracht?</li>
+<li>Welche Bewilligung verlangt der Standortkanton für diese Organisationsform?</li>
+</ol>
+<p>Gerade bei mehreren Therapeutinnen und Therapeuten oder mehreren Standorten kann diese Trennung wichtig werden.</p>
+<h2>Betriebsbewilligung bei mehreren Standorten</h2>
+<p>Eine Bewilligung für einen bestehenden Betrieb sollte nicht automatisch als Freigabe für einen weiteren Standort verstanden werden.</p>
+<p>Bei Expansionen können zusätzliche Gesuche, Meldungen oder Anpassungen erforderlich sein. Auch Änderungen bei Adresse, fachlicher Leitung oder Organisation können melde- oder bewilligungsrelevant sein.</p>
+<p>Prüfe deshalb einen neuen Standort vor Mietbeginn und Betriebsaufnahme mit der <a href="/regulatorik/kantone/">zuständigen kantonalen Stelle</a>.</p>
+<h2>Wie gehst du am besten vor?</h2>
+<ol>
+<li><strong>Standort festlegen.</strong> Die kantonale Zuständigkeit hängt vom Praxisstandort ab.</li>
+<li><strong>Persönliche Bewilligung prüfen.</strong> Kläre zuerst, welche Anforderungen für die behandelnden Therapeutinnen und Therapeuten gelten.</li>
+<li><strong>Rechts- und Abrechnungsstruktur definieren.</strong> Einzelunternehmen, Anstellung, AG und GmbH können unterschiedliche regulatorische Folgen haben.</li>
+<li><strong>Kantonale Betriebsanforderungen prüfen.</strong> Nutze die Informationen und Formulare der zuständigen Gesundheitsbehörde.</li>
+<li><strong>Unterlagen früh vorbereiten.</strong> Betriebskonzept, Qualitätssicherung, Versicherungsnachweise und Personalunterlagen können Zeit benötigen.</li>
+<li><strong>Erst nach Freigabe starten, wenn eine Bewilligung erforderlich ist.</strong> Wenn der Kanton eine Betriebsbewilligung verlangt, sollte der Betrieb nicht vor deren Erteilung aufgenommen werden.</li>
+</ol>`,
+    faq: [
+      { q: 'Braucht jede TCM-GmbH eine Betriebsbewilligung?', a: 'Nein, eine solche Aussage lässt sich für die ganze Schweiz nicht treffen. Die Regeln unterscheiden sich nach Kanton und Tätigkeit. Basel-Stadt verlangt beispielsweise für eine Praxis der nichtärztlichen Alternativ- und Komplementärmedizin, die im Namen und auf Rechnung einer juristischen Person geführt wird, eine Betriebsbewilligung.' },
+      { q: 'Reicht die Berufsausübungsbewilligung des Therapeuten?', a: 'Nicht zwingend. Persönliche Berufsausübungsbewilligung und Betriebsbewilligung regeln unterschiedliche Ebenen. Wenn eine Betriebsbewilligung vorgeschrieben ist, ersetzt die persönliche Bewilligung diese nicht automatisch.' },
+      { q: 'Muss ich die Betriebsbewilligung vor der Praxiseröffnung beantragen?', a: 'Wenn für deinen Betrieb eine Betriebsbewilligung erforderlich ist, sollte die Bewilligung vor Aufnahme des Betriebs vorliegen. Plane deshalb genügend Zeit für die kantonale Prüfung ein.' },
+      { q: 'Gilt eine Betriebsbewilligung automatisch für weitere Standorte?', a: 'Davon solltest du nicht ausgehen. Neue Standorte und Änderungen an einem bestehenden Betrieb können zusätzliche Bewilligungs- oder Meldepflichten auslösen. Prüfe dies mit der zuständigen kantonalen Behörde.' },
+    ],
+    cta: { title: 'Persönliche BAB prüfen', text: 'Wenn du noch nicht weisst, welche persönlichen Voraussetzungen in deinem Kanton gelten, beginne mit dem BAB-Navigator von TCM.ch. Er hilft dir, die regulatorische Ausgangslage für deine Tätigkeit einzuordnen. Die verbindliche Entscheidung über eine Bewilligung trifft die zuständige Behörde.', label: 'Zum BAB-Navigator', href: '/tools/bab-navigator/' },
+    sources: ['bsKomplementaer', 'zhKomplementaer'],
+    facts: [], lastReviewed: '2026-10-02', reviewIntervalMonths: 3,
   },
   {
     slug: 'oda-am', nav: 'OdA AM',

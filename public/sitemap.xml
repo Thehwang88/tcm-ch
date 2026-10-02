@@ -757,6 +757,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/branche/tcm-ausbildung-schweiz-system/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/branche/tcm-in-der-schweiz/</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -3115,6 +3121,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tcm.ch/praxiswissen/tcm-praxis-anfragen-bewertungen/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tcm.ch/praxiswissen/tcm-praxis-auslastung/</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -3188,6 +3200,12 @@
   </url>
   <url>
     <loc>https://tcm.ch/regulatorik/berufsausuebungsbewilligung/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tcm.ch/regulatorik/betriebsbewilligung-praxis/</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
