@@ -79,6 +79,11 @@ Regeln:
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/yang-mangel/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/leber-qi-stagnation/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/milz-qi-mangel/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/blut-mangel/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/blut-stase/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/feuchtigkeit/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/hitze/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/kaelte/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/
