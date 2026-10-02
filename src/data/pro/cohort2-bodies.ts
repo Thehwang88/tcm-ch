@@ -894,4 +894,242 @@ export const BODY2 = {
 </ol>
 
 <p>Wenn du das in dieser Reihenfolge machst, wirken die vielen Abkürzungen deutlich weniger chaotisch.</p>`,
+
+  ausbildungSystem: `
+<h2>Der Berufsabschluss</h2>
+<p>Die höhere Berufsbildung kennt den Abschluss:</p>
+<p><strong>Naturheilpraktikerin oder Naturheilpraktiker mit eidgenössischem Diplom</strong></p>
+<p>Innerhalb dieses Berufs gibt es verschiedene Fachrichtungen. Dazu gehört die Traditionelle Chinesische Medizin TCM.</p>
+<p>Die Höhere Fachprüfung wird von der <a href="/regulatorik/oda-am/">OdA Alternativmedizin</a> getragen. Die Prüfungsordnung wird im Rahmen des eidgenössischen Berufsbildungssystems vom Staatssekretariat für Bildung, Forschung und Innovation SBFI genehmigt und überwacht.</p>
+<h2>Der typische Ausbildungsweg</h2>
+<p>Der reguläre Weg führt über eine modulare Ausbildung.</p>
+<p>Die OdA AM strukturiert die Ausbildung in die Module M1 bis M7. Vereinfacht bilden sie unterschiedliche Kompetenzbereiche ab, die für die spätere Berufsausübung und den Weg zur Höheren Fachprüfung zusammengeführt werden.</p>
+<p>Wichtig ist dabei: M1 bis M7 sind nicht sieben aufeinanderfolgende Schuljahre. Es handelt sich um Module beziehungsweise Kompetenzbereiche mit definierten Anforderungen und Abschlüssen.</p>
+<p>Die detaillierten Inhalte und aktuellen Anforderungen ergeben sich aus den Modulbeschreibungen, Reglementen und Wegleitungen der OdA AM.</p>
+<h2>Was bedeuten M1 bis M7?</h2>
+<p>Die Module decken verschiedene Bereiche der Ausbildung und Berufsentwicklung ab.</p>
+<p>Dazu gehören unter anderem medizinische Grundlagen, die gewählte Fachrichtung, Gesundheit und Ethik, Praxisführung, therapeutische Kompetenzen, praktische Ausbildung und Mentorat.</p>
+<p>Für angehende TCM-Naturheilpraktikerinnen und Naturheilpraktiker ist insbesondere die Verbindung entscheidend: Fachwissen in TCM allein bildet nicht den gesamten eidgenössischen Berufsabschluss ab.</p>
+<p>Die jeweils gültigen Modulbeschreibungen der OdA AM sind für die exakte Zuordnung und die aktuellen Anforderungen massgebend.</p>
+<h2>Das Zertifikat OdA AM</h2>
+<p>Nach den erforderlichen Modulabschlüssen kann das Zertifikat OdA AM eine wichtige Etappe auf dem Weg zur Höheren Fachprüfung sein.</p>
+<p>Das Zertifikat ist nicht dasselbe wie das eidgenössische Diplom.</p>
+<p>Die OdA AM beschreibt das Zertifikat als Ausbildungsabschluss mit eigener Bedeutung im Berufsfeld. Es kann, zusammen mit den weiteren Voraussetzungen, den Zugang zur Höheren Fachprüfung ermöglichen.</p>
+<p>Für individuelle Ausbildungsbiografien können zusätzliche Bedingungen oder Gleichwertigkeitsverfahren relevant sein.</p>
+<h2>M7 und das Mentorat</h2>
+<p>Das Mentorat bildet einen eigenen Teil des Qualifikationswegs.</p>
+<p>Auch wer bereits andere Modulabschlüsse oder Gleichwertigkeiten besitzt, sollte deshalb die Anforderungen an M7 separat prüfen.</p>
+<p>Die aktuellen Zulassungsbedingungen zur Höheren Fachprüfung ergeben sich aus der geltenden Prüfungsordnung und Wegleitung der OdA AM.</p>
+<h2>Die Höhere Fachprüfung</h2>
+<p>Die Höhere Fachprüfung, kurz HFP, bildet den eidgenössischen Abschluss des Berufswegs.</p>
+<p>Die Prüfung soll feststellen, ob Kandidatinnen und Kandidaten über die Kompetenzen verfügen, die für die anspruchsvolle und verantwortungsvolle Berufstätigkeit gemäss Berufsbild erforderlich sind.</p>
+<p>Nach erfolgreichem Abschluss kann der geschützte eidgenössische Titel entsprechend der Prüfungsordnung geführt werden.</p>
+<h2>Gleichwertigkeitsverfahren</h2>
+<p>Nicht jede Person beginnt ihre Ausbildung bei null.</p>
+<p>Wer bereits relevante Ausbildungen, Berufsabschlüsse oder umfangreiche Praxiserfahrung mitbringt, kann je nach Situation prüfen lassen, ob bestehende Kompetenzen als gleichwertig anerkannt werden können.</p>
+<p>Die OdA AM führt dafür Gleichwertigkeitsverfahren.</p>
+<p>Wichtig: Übergangs- und Sonderregelungen können zeitlich befristet sein.</p>
+<p>Nach aktuellem Stand wurde das standardisierte Gleichwertigkeitsverfahren für Modulabschlüsse M1 bis M6 für bestimmte erfahrene Praktizierende bis Ende 2026 verlängert.</p>
+<h2>Ausbildung ist nicht dasselbe wie Berufsausübungsbewilligung</h2>
+<p>Ein häufiger Fehler ist, verschiedene Ebenen miteinander zu vermischen.</p>
+<div class="b2-tablewrap"><table><thead><tr><th>Ebene</th><th>Was sie bedeutet</th></tr></thead><tbody>
+<tr><td>Ausbildung</td><td>Belegt, welche fachlichen Kompetenzen und Abschlüsse erworben wurden.</td></tr>
+<tr><td>Zertifikat OdA AM</td><td>Ist eine Qualifikationsstufe innerhalb des Berufswegs der OdA AM.</td></tr>
+<tr><td>Eidgenössisches Diplom</td><td>Ist der Abschluss nach erfolgreicher Höherer Fachprüfung.</td></tr>
+<tr><td>Kantonale Berufsausübungsbewilligung</td><td>Regelt, ob und unter welchen Voraussetzungen eine Tätigkeit im jeweiligen Kanton ausgeübt werden darf.</td></tr>
+<tr><td>EMR oder andere Registrierungsstellen</td><td>Prüfen eigene Voraussetzungen für Registrierung beziehungsweise Qualitätslabel.</td></tr>
+<tr><td>Krankenversicherung</td><td>Entscheidet im Rahmen des jeweiligen Versicherungsprodukts über die Vergütung von Leistungen.</td></tr>
+</tbody></table></div>
+<p>Diese Ebenen können miteinander verbunden sein, sind aber nicht identisch. Was die kantonale Ebene konkret bedeutet, erklärt die Seite <a href="/regulatorik/berufsausuebungsbewilligung/">Berufsausübungsbewilligung</a>.</p>
+<h2>EMR-Anerkennung ist kein eidgenössisches Diplom</h2>
+<p>Das ErfahrungsMedizinische Register <a href="/regulatorik/emr/">EMR</a> führt ein eigenes Registrierungs- und Qualitätsverfahren.</p>
+<p>Eine EMR-Registrierung ist deshalb weder automatisch ein eidgenössischer Berufsabschluss noch eine kantonale Berufsausübungsbewilligung.</p>
+<p>Umgekehrt sollte auch bei einem staatlichen Berufsabschluss geprüft werden, welche Voraussetzungen für Registrierung und Versicherungsvergütung im konkreten Fall gelten.</p>
+<h2>Welcher Weg passt zu mir?</h2>
+<p>Wenn du eine TCM-Ausbildung planst, kläre zuerst dein Ziel.</p>
+<p>Möchtest du:</p>
+<ul>
+<li>neu in den Beruf einsteigen?</li>
+<li>bereits vorhandene Ausbildung anerkennen lassen?</li>
+<li>das Zertifikat OdA AM erreichen?</li>
+<li>zur Höheren Fachprüfung zugelassen werden?</li>
+<li>ein eidgenössisches Diplom erwerben?</li>
+<li>in einem bestimmten <a href="/regulatorik/kantone/">Kanton</a> selbstständig arbeiten?</li>
+<li>eine Anerkennung für die Zusatzversicherung erreichen?</li>
+</ul>
+<p>Je klarer das Ziel ist, desto einfacher lässt sich der passende Ausbildungs- und Anerkennungsweg bestimmen.</p>
+<h2>Bestehende Ausbildung aus dem Ausland</h2>
+<p>Bei ausländischen Abschlüssen sollte nicht davon ausgegangen werden, dass eine Ausbildung automatisch einem Schweizer Abschluss entspricht.</p>
+<p>Je nach Ziel können unterschiedliche Anerkennungs-, Gleichwertigkeits- oder Bewilligungsverfahren relevant sein.</p>
+<p>Entscheidend ist deshalb zuerst die Frage, wofür der Abschluss in der Schweiz verwendet werden soll. Eine ausführliche Einordnung bietet die Seite <a href="/branche/tcm-international-schweiz/">Als TCM-Therapeut:in aus dem Ausland in der Schweiz arbeiten</a>.</p>
+<h2>Kurz zusammengefasst</h2>
+<p>Das Schweizer TCM-Berufssystem besteht aus mehreren Ebenen.</p>
+<p>Der reguläre Weg zum eidgenössischen Diplom führt über die von der OdA AM definierte Ausbildung und die Höhere Fachprüfung. M1 bis M7 strukturieren wesentliche Teile dieses Wegs.</p>
+<p>Ausbildung, Zertifikat OdA AM, eidgenössisches Diplom, kantonale Bewilligung und Versicherungsanerkennung sollten dabei getrennt betrachtet werden.</p>`,
+
+  anfragenBewertungen: `
+<h2>Der wichtigste Unterschied: Sichtbarkeit ist noch keine Anfrage</h2>
+<p>Eine Praxis kann bei Google viele Impressionen und Websitebesuche erhalten, ohne daraus entsprechend viele Termine zu gewinnen.</p>
+<p>Deshalb sollten verschiedene Stufen getrennt betrachtet werden:</p>
+<div class="pro-callout"><p><strong>Sichtbarkeit → Besuch → Kontakt → qualifizierte Anfrage → Termin → Neupatient</strong></p></div>
+<p>Wer nur Websiteklicks misst, sieht nicht, an welcher Stelle Patientinnen und Patienten verloren gehen.</p>
+<p>Das gilt besonders für lokale Gesundheitsangebote. Ein Klick auf WhatsApp ist beispielsweise noch kein neuer Patient. Auch ein Telefonklick sagt zunächst nur, dass jemand versucht hat, Kontakt aufzunehmen.</p>
+<h2>1. Dort sichtbar sein, wo Patienten suchen</h2>
+<p>Für lokale TCM-Praxen sind insbesondere drei Bereiche relevant:</p>
+<h3>Google-Suche</h3>
+<p>Die eigene Website sollte klar zeigen:</p>
+<ul>
+<li>was die Praxis anbietet</li>
+<li>wo sie sich befindet</li>
+<li>wer behandelt</li>
+<li>wie die Anerkennung geregelt ist</li>
+<li>wie ein erster Termin abläuft</li>
+<li>wie Kontakt aufgenommen werden kann</li>
+</ul>
+<h3>Google Unternehmensprofil</h3>
+<p>Ein vollständiges Standortprofil hilft Menschen, Adresse, Öffnungszeiten, Bewertungen und Kontaktmöglichkeiten schnell zu finden.</p>
+<h3>Thematische Suchanfragen</h3>
+<p>Nicht jeder Patient sucht direkt nach «TCM Praxis Zürich» oder «Akupunktur St. Gallen».</p>
+<p>Viele beginnen mit einer Beschwerde oder einer Frage. Gute Informationsseiten können diese Menschen früher im Entscheidungsprozess erreichen und sie anschliessend zu einem passenden nächsten Schritt führen.</p>
+<h2>2. Jede Seite braucht einen klaren nächsten Schritt</h2>
+<p>Eine häufige Schwäche von Praxis-Websites ist nicht fehlender Traffic, sondern fehlende Orientierung.</p>
+<p>Nach dem Lesen sollte klar sein, was als Nächstes möglich ist.</p>
+<p>Je nach Seite kann das sein:</p>
+<ul>
+<li>Termin anfragen</li>
+<li>passenden Standort finden</li>
+<li>Therapeutin oder Therapeuten ansehen</li>
+<li>Versicherungsdeckung prüfen</li>
+<li>Frage stellen</li>
+<li>telefonisch Kontakt aufnehmen</li>
+</ul>
+<p>Nicht jede Informationsseite braucht einen aggressiven Buchungsbutton. Der nächste Schritt sollte zur Suchabsicht passen.</p>
+<h2>3. Kontakt so einfach wie möglich machen</h2>
+<p>Patientinnen und Patienten unterscheiden sich darin, wie sie Kontakt aufnehmen möchten.</p>
+<p>Eine Praxis sollte deshalb die wichtigsten Wege klar anbieten:</p>
+<ul>
+<li>Telefon</li>
+<li>Kontaktformular</li>
+<li>Online-Termin, falls vorhanden</li>
+<li>WhatsApp oder vergleichbarer Messenger, wenn betrieblich vorgesehen</li>
+</ul>
+<p>Wichtig ist weniger die Anzahl der Kanäle als deren zuverlässige Betreuung.</p>
+<p>Ein Kontaktweg, auf den niemand reagiert, kann schlechter sein als ein einfaches Formular mit einem klaren internen Prozess.</p>
+<h2>4. Reaktionszeit als Prozess organisieren</h2>
+<p>Eine Anfrage sollte nicht davon abhängen, ob gerade zufällig jemand Zeit hat.</p>
+<p>Definiere intern:</p>
+<ul>
+<li>Wer beantwortet neue Anfragen?</li>
+<li>Wo laufen sie zusammen?</li>
+<li>Wann werden sie kontrolliert?</li>
+<li>Wer übernimmt bei Abwesenheit?</li>
+<li>Wann wird telefonisch nachgefasst?</li>
+<li>Wie wird dokumentiert, ob daraus ein Termin entstanden ist?</li>
+</ul>
+<p>Das Ziel ist kein kompliziertes CRM. Für kleinere Praxen reicht oft ein einfacher, konsequent geführter Prozess.</p>
+<h2>5. Nicht nur Leads zählen</h2>
+<p>Marketingberichte können schnell besser aussehen, als die Realität in der Praxis ist.</p>
+<p>Ein Beispiel:</p>
+<p>Ein Patient klickt zweimal auf WhatsApp, einmal auf die Telefonnummer und sendet später ein Formular. In einem unbereinigten Tracking können daraus mehrere Conversions entstehen, obwohl es sich um eine einzige Person handelt.</p>
+<p>Deshalb lohnt es sich, mindestens drei Ebenen zu unterscheiden:</p>
+<div class="b2-tablewrap"><table><thead><tr><th>Ebene</th><th>Was sie misst</th></tr></thead><tbody>
+<tr><td>Digitale Aktion</td><td>Zum Beispiel Telefonklick, WhatsApp-Klick oder Formularstart.</td></tr>
+<tr><td>Tatsächliche Anfrage</td><td>Eine Person nimmt wirklich Kontakt mit der Praxis auf.</td></tr>
+<tr><td>Neupatient</td><td>Aus der Anfrage entsteht ein erster Termin.</td></tr>
+</tbody></table></div>
+<p>Für die Praxissteuerung ist die dritte Zahl meist die wichtigste.</p>
+<h2>6. Herkunft der Neupatienten erfassen</h2>
+<p>Eine einfache Frage beim Erstkontakt kann wertvoller sein als ein kompliziertes Dashboard:</p>
+<p><strong>Wie sind Sie auf uns aufmerksam geworden?</strong></p>
+<p>Mögliche Kategorien:</p>
+<ul>
+<li>Google</li>
+<li>Empfehlung</li>
+<li>Ärztin oder Arzt</li>
+<li>Versicherung oder Verzeichnis</li>
+<li>Social Media</li>
+<li>bereits Patient gewesen</li>
+<li>anderes</li>
+</ul>
+<p>Die Antwort ist nicht immer perfekt. Jemand kann empfohlen worden sein und anschliessend bei Google gesucht haben.</p>
+<p>Trotzdem entsteht über Monate ein nützliches Bild darüber, welche Kanäle tatsächlich neue Patienten bringen.</p>
+<h2>7. Bewertungen gehören zum Vertrauensaufbau</h2>
+<p>Bewertungen helfen potenziellen Patientinnen und Patienten, eine Praxis vor dem ersten Kontakt einzuschätzen.</p>
+<p>Dabei geht es nicht nur um die Durchschnittsnote. Hilfreich sind auch:</p>
+<ul>
+<li>Anzahl der Bewertungen</li>
+<li>Aktualität</li>
+<li>glaubwürdige Erfahrungsberichte</li>
+<li>professionelle Antworten der Praxis</li>
+<li>ein natürlicher Bewertungsverlauf</li>
+</ul>
+<p>Bewertungen sollten das reale Patientenerlebnis widerspiegeln.</p>
+<h2>8. So fragst du korrekt nach Google-Bewertungen</h2>
+<p>Google erlaubt Unternehmen, Kundinnen und Kunden um Bewertungen zu bitten, solange diese auf einer echten Erfahrung beruhen und die Bewertung nicht beeinflusst wird.</p>
+<p>Praktisch kann die Praxis einen direkten Bewertungslink oder QR-Code verwenden.</p>
+<p>Geeignete Momente können beispielsweise sein:</p>
+<ul>
+<li>nach einem abgeschlossenen Termin oder Behandlungsabschnitt</li>
+<li>in einer neutralen Dankesnachricht</li>
+<li>in einer allgemeinen Nachkommunikation</li>
+</ul>
+<p>Die Bitte sollte offen formuliert sein.</p>
+<p>Zum Beispiel:</p>
+<div class="pro-callout"><p>Wenn Sie Ihre Erfahrung mit unserer Praxis teilen möchten, können Sie uns hier bei Google bewerten. Ihr ehrliches Feedback hilft anderen Menschen bei der Orientierung.</p></div>
+<h2>9. Was du bei Bewertungen vermeiden solltest</h2>
+<p>Nicht sinnvoll und nach den Google-Richtlinien teilweise ausdrücklich unzulässig sind:</p>
+<ul>
+<li>Rabatte oder Geschenke für Bewertungen</li>
+<li>bezahlte Bewertungen</li>
+<li>nur zufriedene Patienten gezielt um positive Bewertungen bitten</li>
+<li>negative Bewertungen verhindern wollen</li>
+<li>vorgeben, welche Bewertung oder Formulierung jemand abgeben soll</li>
+<li>Mitarbeitende zu einer bestimmten Anzahl erbetener Bewertungen verpflichten</li>
+<li>künstliche Bewertungsprofile oder gekaufte Rezensionen</li>
+</ul>
+<p>Ein gesundes Bewertungssystem braucht keine Manipulation.</p>
+<h2>10. Auf Bewertungen antworten</h2>
+<p>Antworten zeigen, dass eine Praxis Feedback ernst nimmt.</p>
+<p>Bei positiven Bewertungen reicht eine kurze, persönliche und zurückhaltende Antwort.</p>
+<p>Bei kritischen Bewertungen sollte die Praxis sachlich bleiben und keine medizinischen oder persönlichen Details öffentlich bestätigen.</p>
+<p>Gerade im Gesundheitsbereich ist Zurückhaltung wichtig. Eine öffentliche Antwort ist nicht der richtige Ort, um einen konkreten Behandlungsverlauf zu diskutieren.</p>
+<h2>11. Ein einfaches Monats-Dashboard</h2>
+<p>Für viele TCM-Praxen reichen wenige Kennzahlen:</p>
+<ul>
+<li>neue Patienten</li>
+<li>tatsächliche Anfragen</li>
+<li>Anfragen nach Kanal</li>
+<li>Website-Formulare</li>
+<li>Telefonkontakte</li>
+<li>relevante Messenger-Anfragen</li>
+<li>Werbekosten</li>
+<li>neue Google-Bewertungen</li>
+<li>wichtigste Herkunft der Neupatienten</li>
+</ul>
+<p>Daraus lassen sich nützlichere Fragen ableiten:</p>
+<p>Wie viele tatsächliche Anfragen entstehen? Wie viele davon werden zu Erstterminen? Welche Standorte oder Kanäle liefern diese Patienten? Wie viel kostet ein tatsächlicher Neupatient?</p>
+<p>Das ist aussagekräftiger als eine möglichst grosse Zahl digitaler Conversions. Welche Kennzahlen sich für die Praxissteuerung insgesamt eignen, zeigt die Seite <a href="/praxiswissen/tcm-praxis-kennzahlen/">Praxis-Kennzahlen</a>.</p>
+<h2>12. Erst den Engpass finden, dann investieren</h2>
+<p>Mehr Werbebudget ist nicht immer die richtige Antwort.</p>
+<p>Wenn eine Praxis viele Impressionen, aber kaum Websitebesuche erhält, kann das Problem bei Ranking, Suchintention oder Snippet liegen.</p>
+<p>Wenn viele Menschen die Website besuchen, aber niemand Kontakt aufnimmt, sollte die Seite selbst geprüft werden.</p>
+<p>Wenn viele Anfragen eintreffen, aber wenige Termine entstehen, liegt der Engpass möglicherweise im Anfrageprozess.</p>
+<p>Wenn Termine entstehen, aber Patienten nicht erscheinen oder nicht wiederkommen, beginnt eine andere Fragestellung.</p>
+<p>Marketing funktioniert besser, wenn zuerst der Engpass identifiziert wird. Wie die gesamte Kette von der Sichtbarkeit bis zum Folgetermin zusammenhängt, beschreibt die Seite <a href="/praxiswissen/patienten-gewinnen-tcm-praxis/">Patienten gewinnen</a>.</p>
+<h2>Ein einfaches System für kleinere Praxen</h2>
+<p>Du brauchst am Anfang keine komplexe Marketing-Infrastruktur.</p>
+<p>Ein sinnvoller Grundaufbau kann so aussehen:</p>
+<ol>
+<li>vollständiges Google Unternehmensprofil</li>
+<li>klare Standortseite</li>
+<li>gut sichtbare Kontaktmöglichkeiten</li>
+<li>definierte Person für neue Anfragen</li>
+<li>einfache Erfassung der Anfragequelle</li>
+<li>monatliche Zahl der tatsächlichen Neupatienten</li>
+<li>kontinuierlicher, regelkonformer Bewertungsprozess</li>
+</ol>
+<p>Wenn diese Grundlagen funktionieren, können SEO, Google Ads, Automatisierung und weitere Kanäle gezielt darauf aufbauen.</p>
+<h2>Kurz zusammengefasst</h2>
+<p>Eine erfolgreiche Praxis optimiert nicht auf Klicks, sondern auf einen funktionierenden Weg vom ersten Kontaktpunkt bis zum tatsächlichen Neupatienten.</p>
+<p>Sichtbarkeit bringt Menschen zur Praxis. Klare Orientierung macht daraus Anfragen. Ein zuverlässiger interner Prozess macht daraus Termine. Echte Bewertungen schaffen zusätzlich Vertrauen für die nächsten Patientinnen und Patienten.</p>`,
 } as const;

@@ -26,13 +26,15 @@ export interface RegSource {
 }
 
 export const SOURCES = {
+  bsKomplementaer: { org: 'Gesundheitsdepartement Basel-Stadt', title: 'Bewilligungen für Berufe der Komplementärmedizin (inkl. Betriebsbewilligung für juristische Personen)', url: 'https://www.bs.ch/node/28402', kind: 'cantonal', precise: true, checked: '2026-10-02' },
   zhKomplementaer: { org: 'Kanton Zürich, Gesundheitsdirektion', title: 'Nichtärztliche Komplementärmedizin – Bewilligungen', url: 'https://www.zh.ch/de/gesundheit/gesundheitsberufe/bewilligungen/nichtaerztliche-komplementaermedizin.html', kind: 'cantonal', precise: true, checked: '2026-09-30' },
   zhAkupunktur: { org: 'Kanton Zürich, Gesundheitsdirektion', title: 'Merkblatt Akupunktur (PDF)', url: 'https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/gesundheit/gesundheitsberufe/merkblaetter_neu/merkblatt_akupunktur_nov_2023.pdf', kind: 'cantonal', precise: true, checked: '2026-09-30' },
   bgbm: { org: 'Schweizerische Eidgenossenschaft (Fedlex)', title: 'Bundesgesetz über den Binnenmarkt (BGBM), SR 943.02', url: 'https://www.fedlex.admin.ch/eli/cc/1996/1738_1738_1738/de', kind: 'federal', precise: true, checked: '2026-09-30' },
-  sbfiTitel: { org: 'SBFI', title: 'Berufsverzeichnis: Naturheilpraktiker/in mit eidg. Diplom (HFP)', url: 'https://www.sbfi.admin.ch/', kind: 'federal', precise: false, checked: null },
+  sbfiTitel: { org: 'SBFI', title: 'Berufsverzeichnis: Naturheilpraktiker/in mit eidgenössischem Diplom (HFP, inkl. Fachrichtung TCM)', url: 'https://www.becc.admin.ch/becc/public/bvz/beruf/show/85834', kind: 'federal', precise: true, checked: '2026-10-02' },
   odaAmHfp: { org: 'OdA AM', title: 'Höhere Fachprüfung Naturheilpraktiker:in – Prüfungsordnung und Wegleitung', url: 'https://www.oda-am.ch/de/hoehere-fachpruefung/reglemente/', kind: 'oda-am', precise: true, checked: '2026-09-30' },
   odaAmModule: { org: 'OdA AM', title: 'Module M1–M7 und Zertifikat OdA AM', url: 'https://www.oda-am.ch/de/module/', kind: 'oda-am', precise: true, checked: '2026-09-30' },
   odaAmM7: { org: 'OdA AM', title: 'Modul M7 – Berufspraxis unter Mentorat (inkl. Nachweisformular Berufspraxis)', url: 'https://www.oda-am.ch/de/no_cache/module/modul-m7/', kind: 'oda-am', precise: true, checked: '2026-09-30' },
+  odaAmGleichwertigkeit: { org: 'OdA AM', title: 'Gleichwertigkeitsverfahren zur Höheren Fachprüfung (inkl. Verlängerung M1–M6 bis Ende 2026)', url: 'https://www.oda-am.ch/de/hoehere-fachpruefung/gleichwertigkeitsverfahren/', kind: 'oda-am', precise: true, checked: '2026-10-02' },
   odaAmTarif590: { org: 'OdA AM', title: 'Tarif 590', url: 'https://www.oda-am.ch/de/beruf/tarif-590/', kind: 'oda-am', precise: true, checked: '2026-09-30' },
   sasisZsr: { org: 'santéservices / SASIS AG', title: 'Anträge und Mutationen Zahlstellenregister (ZSR)', url: 'https://www.santeservices.ch/branchensysteme/register/antraege/', kind: 'sasis', precise: true, checked: '2026-09-30' },
   refdataGln: { org: 'Stiftung Refdata', title: 'Partner-refdatabase – GLN für Fachpersonen', url: 'https://www.refdata.ch/de/partner/anmeldung/partner-refdatabase-fachpersonen-gln', kind: 'register', precise: true, checked: '2026-09-30' },
