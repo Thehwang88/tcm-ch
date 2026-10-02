@@ -84,6 +84,10 @@ Regeln:
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/feuchtigkeit/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/hitze/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/kaelte/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/tcm-anamnese/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/tcm-diagnose/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/blut/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/funktionskreise/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/
