@@ -37,6 +37,10 @@ for (const c of e.relatedConcepts ?? []) {
   const t = tcmEntityBySlug(c);
   if (t && t.status === 'published') rel.push({ href: `/gesundheitsbibliothek/tcm-verstehen/${t.section}/${t.slug}/`, label: t.nav, cat: 'Konzept' });
 }
+for (const c of e.relatedPatterns ?? []) {
+  const t = tcmEntityBySlug(c);
+  if (t && t.status === 'published') rel.push({ href: `/gesundheitsbibliothek/tcm-verstehen/${t.section}/${t.slug}/`, label: t.nav, cat: 'Muster' });
+}
 for (const c of e.relatedDiagnostics ?? []) {
   const t = tcmEntityBySlug(c);
   if (t && t.status === 'published') rel.push({ href: `/gesundheitsbibliothek/tcm-verstehen/${t.section}/${t.slug}/`, label: t.nav, cat: 'Diagnostik' });
