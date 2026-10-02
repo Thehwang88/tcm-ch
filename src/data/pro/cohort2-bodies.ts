@@ -550,7 +550,7 @@ export const BODY2 = {
 
 <p>Behandlungsdokumentation gehört nicht irgendwo in private Notizen oder WhatsApp.</p>
 
-<p>Definiere ein System, das zu deinen fachlichen und rechtlichen Anforderungen passt.</p>
+<p>Definiere ein System, das zu deinen fachlichen und rechtlichen Anforderungen passt. Wie das inhaltlich aussieht: <a href="/praxiswissen/tcm-praxis-qualitaet-dokumentation/">Dokumentation und Qualität in der TCM-Praxis</a>.</p>
 
 <p>Regulatorische Details gehören in den Bereich <a href="/regulatorik/">Regulatorik</a>.</p>
 
@@ -1132,4 +1132,217 @@ export const BODY2 = {
 <h2>Kurz zusammengefasst</h2>
 <p>Eine erfolgreiche Praxis optimiert nicht auf Klicks, sondern auf einen funktionierenden Weg vom ersten Kontaktpunkt bis zum tatsächlichen Neupatienten.</p>
 <p>Sichtbarkeit bringt Menschen zur Praxis. Klare Orientierung macht daraus Anfragen. Ein zuverlässiger interner Prozess macht daraus Termine. Echte Bewertungen schaffen zusätzlich Vertrauen für die nächsten Patientinnen und Patienten.</p>`,
+
+  qualitaetDokumentation: `
+<h2>Dokumentation ist Behandlungsqualität, nicht Bürokratie</h2>
+<p>Eine gute Dokumentation hilft dir zuerst im nächsten Termin.</p>
+<p>Du solltest schnell erkennen können, weshalb jemand gekommen ist, welche relevanten Informationen bekannt waren, wie du die Situation eingeordnet hast und was bei der letzten Behandlung gemacht wurde.</p>
+<p>Sie wird noch wichtiger, wenn Behandlungen über längere Zeit laufen, sich Beschwerden verändern oder mehrere Therapeutinnen und Therapeuten beteiligt sind.</p>
+<p>Dokumentation und Qualität hängen deshalb eng zusammen. Was nicht nachvollziehbar festgehalten wird, lässt sich später schwer beurteilen, übergeben oder verbessern.</p>
+<p>Dabei geht es nicht darum, jede Konsultation in einen langen Bericht zu verwandeln. Entscheidend ist, die Informationen festzuhalten, die für Behandlung, Verlauf und Sicherheit relevant sind.</p>
+<h2>Was in jede Behandlungsdokumentation gehört</h2>
+<p>Ein sinnvolles Patientendossier verbindet die medizinisch relevante Ausgangslage mit deiner TCM-Befunderhebung und der tatsächlich durchgeführten Behandlung.</p>
+<p>Der Umfang kann je nach Methode und Situation unterschiedlich sein. Die Grundstruktur sollte jedoch in der Praxis konsistent bleiben.</p>
+<h3>Medizinische Ausgangslage und Red Flags</h3>
+<p>Dokumentiere die Informationen, die für eine sichere Behandlung relevant sind.</p>
+<p>Dazu können je nach Situation gehören:</p>
+<ul>
+<li>Hauptbeschwerde und Verlauf</li>
+<li>relevante medizinische Diagnosen</li>
+<li>aktuelle Medikamente</li>
+<li>Allergien und bekannte Unverträglichkeiten</li>
+<li>Blutverdünner oder andere für invasive Verfahren relevante Medikamente</li>
+<li>Schwangerschaft oder mögliche Schwangerschaft, wenn behandlungsrelevant</li>
+<li>relevante Operationen oder Vorerkrankungen</li>
+<li>aktuelle medizinische Abklärungen</li>
+<li>auffällige Symptome oder Red Flags</li>
+<li>Gründe für eine ärztliche Abklärung</li>
+</ul>
+<p>Nicht jede Information muss bei jedem Termin neu erhoben werden. Wichtig ist, Veränderungen wahrzunehmen und relevante Angaben aktuell zu halten.</p>
+<p>Eine TCM-Einordnung sollte medizinische Warnzeichen nicht ersetzen. Wenn eine Beschwerde ärztlich abgeklärt werden sollte, gehört auch diese Entscheidung zum nachvollziehbaren Verlauf.</p>
+<h3>TCM-Anamnese und Arbeitshypothese</h3>
+<p>Zur TCM-Dokumentation gehört die traditionelle Einordnung, auf deren Grundlage du deine Behandlung planst.</p>
+<p>Je nach Arbeitsweise können dazu gehören:</p>
+<ul>
+<li>relevante TCM-Anamnese</li>
+<li>Zungenbefund</li>
+<li>Pulsbefund</li>
+<li>betroffene Funktionskreise oder Leitbahnen</li>
+<li>Muster beziehungsweise Arbeitshypothese</li>
+<li>Veränderung des Musters im Verlauf</li>
+<li>Behandlungsprinzip</li>
+</ul>
+<p>Die Dokumentation muss kein Lehrbuchtext sein.</p>
+<p>Sie sollte aber so konkret sein, dass deine therapeutische Entscheidung später nachvollziehbar bleibt.</p>
+<p>Wenn sich deine Arbeitshypothese verändert, sollte auch das im Verlauf erkennbar sein.</p>
+<h3>Durchgeführte Behandlung: Punkte, Techniken und Material</h3>
+<p>«Akupunktur durchgeführt» ist für eine gute Verlaufsdokumentation meist zu wenig.</p>
+<p>Halte fest, was tatsächlich gemacht wurde.</p>
+<p>Je nach Behandlung können dazu gehören:</p>
+<ul>
+<li>verwendete Akupunkturpunkte</li>
+<li>relevante Seitenangabe</li>
+<li>besondere Nadeltechnik, wenn relevant</li>
+<li>Elektroakupunktur</li>
+<li>Moxibustion</li>
+<li>Schröpfen</li>
+<li>Tuina oder andere manuelle Techniken</li>
+<li>weitere angewendete Verfahren</li>
+<li>besondere Materialien oder Produkte, wenn für den Verlauf relevant</li>
+</ul>
+<p>Bei Kräutertherapie sollte die Dokumentation zur tatsächlich abgegebenen oder verordneten Therapie passen. Die regulatorischen Fragen zur <a href="/regulatorik/chinesische-arzneimittel-abgabe/">Abgabe chinesischer Arzneimittel</a> bleiben ein eigenes Thema.</p>
+<h3>Reaktion, unerwünschte Ereignisse und Plan</h3>
+<p>Die Behandlung endet dokumentarisch nicht mit dem Setzen der letzten Nadel.</p>
+<p>Halte fest, wenn für den weiteren Verlauf relevant:</p>
+<ul>
+<li>unmittelbare Reaktion auf die Behandlung</li>
+<li>Veränderung seit der vorherigen Sitzung</li>
+<li>Verträglichkeit</li>
+<li>ungewöhnliche Reaktionen</li>
+<li>unerwünschte Ereignisse</li>
+<li>Änderungen des Behandlungsplans</li>
+<li>empfohlene medizinische Abklärung</li>
+<li>vereinbartes weiteres Vorgehen</li>
+</ul>
+<p>So entsteht über mehrere Termine ein tatsächlicher Verlauf und nicht nur eine Liste von Behandlungsdaten.</p>
+<h2>Aufklärung und Einwilligung bei invasiven Methoden</h2>
+<p>Akupunktur ist ein invasives Verfahren. Patientinnen und Patienten sollten verstehen, was gemacht wird und welche typischen Risiken oder Reaktionen damit verbunden sein können.</p>
+<p>Wie Aufklärung und Einwilligung konkret dokumentiert werden müssen, kann von Methode, Situation und den anwendbaren Vorgaben abhängen.</p>
+<p>Für die Praxis ist entscheidend, dass die Aufklärung nicht nur als Formalität betrachtet wird.</p>
+<p>Ein sinnvoller Prozess beantwortet beispielsweise:</p>
+<ul>
+<li>Welche Behandlung ist vorgesehen?</li>
+<li>Was wird dabei gemacht?</li>
+<li>Welche typischen Reaktionen oder Risiken sind relevant?</li>
+<li>Gibt es besondere individuelle Risiken?</li>
+<li>Gibt es Gründe, die Behandlung anzupassen oder nicht durchzuführen?</li>
+<li>Wurden Fragen der Patientin oder des Patienten geklärt?</li>
+</ul>
+<p>Bei Verfahren wie blutigem Schröpfen oder anderen invasiveren Anwendungen sollte die Aufklärung zur tatsächlich eingesetzten Methode passen.</p>
+<p>Diese Seite ersetzt keine kantonale oder berufsrechtliche Prüfung der konkreten Aufklärungspflichten.</p>
+<h2>Ärztliche Abklärung und Weiterverweisung dokumentieren</h2>
+<p>Gute TCM-Praxis bedeutet auch zu erkennen, wann die eigene Behandlung nicht der einzige oder nicht der nächste Schritt sein sollte.</p>
+<p>Wenn du aufgrund der Anamnese oder des Verlaufs eine medizinische Abklärung empfiehlst, dokumentiere die Empfehlung und den Grund dafür nachvollziehbar.</p>
+<p>Zum Beispiel:</p>
+<ul>
+<li>welches auffällige Zeichen vorlag</li>
+<li>welche Abklärung empfohlen wurde</li>
+<li>ob eine Behandlung zurückgestellt oder angepasst wurde</li>
+<li>welche Information die Patientin oder der Patient erhalten hat</li>
+</ul>
+<p>Du musst dabei keine medizinische Diagnose stellen, die ausserhalb deiner Kompetenz liegt.</p>
+<p>Entscheidend ist die nachvollziehbare Schnittstelle zwischen deiner Behandlung und einer notwendigen weiteren Abklärung.</p>
+<h2>Gesundheitsdaten schützen: das praktische Minimum</h2>
+<p>Patientendossiers enthalten Gesundheitsdaten. Diese gelten nach dem Schweizer Datenschutzrecht als besonders schützenswerte Personendaten.</p>
+<p>Das macht Datenschutz zu einem Teil guter Praxisorganisation.</p>
+<p>Im Alltag bedeutet das mindestens:</p>
+<ul>
+<li>Patientendaten nur Personen zugänglich machen, die sie für ihre Aufgabe benötigen</li>
+<li>Papierdossiers vor unbefugtem Zugriff schützen</li>
+<li>Bildschirme und Geräte nicht offen zugänglich lassen</li>
+<li>Benutzerkonten und Zugriffsrechte sinnvoll vergeben</li>
+<li>sichere Passwörter und geeignete technische Schutzmassnahmen verwenden</li>
+<li>bei digitalen Systemen prüfen, wie Daten gespeichert, übertragen und gesichert werden</li>
+<li>Patientendaten nicht unkontrolliert über private Geräte oder ungeeignete Kommunikationswege verteilen</li>
+</ul>
+<p>Diese Seite ist keine vollständige DSG-Compliance-Anleitung.</p>
+<p>Wenn du neue Software, Cloud-Dienste, externe Dienstleister oder umfangreiche digitale Prozesse einführst, sollte der Datenschutz separat geprüft werden.</p>
+<h2>Wie lange solltest du Behandlungsunterlagen aufbewahren?</h2>
+<p>Verwende für eine Schweizer TCM-Praxis nicht einfach eine pauschale Internetzahl.</p>
+<p>Welche Aufbewahrungspflichten gelten, kann von Kanton, Tätigkeit, Berufsstatus und weiteren rechtlichen Anforderungen abhängen.</p>
+<p>Prüfe deshalb die für deinen Standort und deine Tätigkeit geltenden Vorgaben bei den <a href="/regulatorik/kantone/">zuständigen Stellen</a>.</p>
+<p>Für dein Qualitätssystem ist zusätzlich wichtig, dass Aufbewahrung und spätere Löschung nicht dem Zufall überlassen werden.</p>
+<p>Definiere einen nachvollziehbaren Prozess:</p>
+<ol>
+<li>Welche Unterlagen gehören zum Patientendossier?</li>
+<li>Wo werden sie gespeichert?</li>
+<li>Wer hat Zugriff?</li>
+<li>Welche für dich geltende Aufbewahrungsfrist wurde geprüft?</li>
+<li>Was passiert nach Ablauf dieser Frist?</li>
+</ol>
+<p>Eine universelle Aufbewahrungsdauer für alle Schweizer TCM-Praxen nennen wir hier bewusst nicht.</p>
+<h2>Hygiene als dokumentierter Prozess</h2>
+<p>Hygiene sollte nicht davon abhängen, wer gerade im Behandlungszimmer arbeitet.</p>
+<p>Gerade bei Akupunktur und anderen invasiven Verfahren braucht eine Praxis klare, wiederholbare Abläufe.</p>
+<p>Dokumentierbar sind beispielsweise:</p>
+<ul>
+<li>verwendete Standardprozesse</li>
+<li>Umgang mit Einwegmaterial</li>
+<li>Entsorgung gebrauchter Nadeln</li>
+<li>Reinigung relevanter Flächen und Arbeitsbereiche</li>
+<li>Umgang mit Blutkontakt</li>
+<li>Vorgehen bei Nadelstichverletzungen</li>
+<li>Zuständigkeiten im Team</li>
+<li>Änderungen an internen Abläufen nach einem Zwischenfall</li>
+</ul>
+<p>Die konkreten Hygieneanforderungen richten sich nach Methode und den anwendbaren Vorgaben.</p>
+<p>Diese Seite beschreibt deshalb den Qualitätsprozess und ersetzt keine kantonale Hygiene- oder Bewilligungsvorschrift.</p>
+<h2>Zwischenfälle: dokumentieren statt improvisieren</h2>
+<p>Auch in einer gut geführten Praxis können unerwartete Situationen auftreten.</p>
+<p>Entscheidend ist, dass daraus kein improvisierter Einzelfall wird.</p>
+<p>Bei einem relevanten Zwischenfall sollte nachvollziehbar sein:</p>
+<ul>
+<li>was passiert ist</li>
+<li>wann es passiert ist</li>
+<li>welche Behandlung vorausging</li>
+<li>welche unmittelbaren Massnahmen getroffen wurden</li>
+<li>wie es der Patientin oder dem Patienten danach ging</li>
+<li>welche weitere Abklärung oder Information erfolgte</li>
+<li>ob der interne Prozess angepasst werden muss</li>
+</ul>
+<p>Das gilt nicht nur für schwerwiegende Ereignisse.</p>
+<p>Auch kleinere wiederkehrende Probleme können zeigen, dass ein Ablauf verbessert werden sollte.</p>
+<p>Ein Qualitätssystem beginnt dort, wo die Praxis aus solchen Ereignissen systematisch lernt.</p>
+<h2>Mehrere Therapeutinnen und Therapeuten, eine Dokumentation</h2>
+<p>Sobald mehrere Personen behandeln, wird ein gemeinsamer Dokumentationsstandard besonders wichtig.</p>
+<p>Eine Vertretung sollte den relevanten Verlauf verstehen können, ohne die ursprüngliche Therapeutin oder den ursprünglichen Therapeuten zuerst anrufen zu müssen.</p>
+<p>Dafür helfen gemeinsame Mindeststandards:</p>
+<ul>
+<li>gleiche Grundstruktur der Erstanamnese</li>
+<li>nachvollziehbare Verlaufsnotizen</li>
+<li>einheitliche Bezeichnung wichtiger Informationen</li>
+<li>dokumentierte Punkte und Techniken</li>
+<li>klar erkennbare Änderungen des Behandlungsplans</li>
+<li>geregelte Zugriffsrechte</li>
+<li>definierte Übergaben bei Therapeutenwechsel oder Vertretung</li>
+<li>ein gemeinsamer Prozess für Zwischenfälle</li>
+</ul>
+<p>Das bedeutet nicht, dass alle therapeutisch identisch arbeiten müssen.</p>
+<p>Die Behandlung kann individuell bleiben. Die Dokumentation sollte trotzdem für das Team verständlich sein.</p>
+<p>Die Frage, wann und wie du überhaupt eine zweite Therapeutin oder einen zweiten Therapeuten einstellst, gehört dagegen zum Thema <a href="/praxiswissen/tcm-praxis-team-aufbauen/">Teamaufbau</a>.</p>
+<h2>Ein Qualitätssystem, das eine kleine Praxis wirklich führt</h2>
+<p>Qualitätsmanagement muss für eine kleine TCM-Praxis kein dicker Ordner sein, den niemand öffnet.</p>
+<p>Ein brauchbares System beschreibt die wenigen Abläufe, die zuverlässig funktionieren müssen.</p>
+<p>Zum Beispiel:</p>
+<ol>
+<li>Erstanamnese und Aktualisierung relevanter Gesundheitsinformationen</li>
+<li>Behandlungs- und Verlaufsdokumentation</li>
+<li>Aufklärung und Einwilligung</li>
+<li>Erkennen und Weiterleiten medizinischer Warnzeichen</li>
+<li>Hygiene und Umgang mit invasiven Verfahren</li>
+<li>Umgang mit Zwischenfällen</li>
+<li>Schutz und Zugriff auf Patientendaten</li>
+<li>Übergaben zwischen Therapeutinnen und Therapeuten</li>
+<li>regelmässige Prüfung, ob die Abläufe noch funktionieren</li>
+</ol>
+<p>Für bestimmte <a href="/regulatorik/betriebsbewilligung-praxis/">Betriebsbewilligungen</a> kann ein Qualitätssicherungssystem auch regulatorisch relevant sein. Welche Anforderungen dabei gelten, muss für den konkreten Kanton und Betrieb geprüft werden.</p>
+<p>Die praktische Seite bleibt trotzdem dieselbe: Ein Qualitätssystem ist nur dann nützlich, wenn das Team danach arbeitet.</p>
+<h2>Papier oder Software?</h2>
+<p>Die Qualität der Dokumentation hängt nicht allein davon ab, ob sie auf Papier oder digital geführt wird.</p>
+<p>Beide Systeme müssen im Alltag ermöglichen, dass Informationen:</p>
+<ul>
+<li>nachvollziehbar</li>
+<li>auffindbar</li>
+<li>geschützt</li>
+<li>dem richtigen Patienten zugeordnet</li>
+<li>für berechtigte Personen zugänglich</li>
+<li>über den notwendigen Zeitraum verfügbar</li>
+</ul>
+<p>sind.</p>
+<p>Bei digitalen Lösungen kommen zusätzliche Fragen zu Zugriffsrechten, Datensicherung, Übertragung und eingesetzten Dienstleistern hinzu.</p>
+<p>Welche Praxissoftware, Agenda oder Abrechnungslösung du verwendest, bleibt ein eigenes Thema der <a href="/praxiswissen/tcm-praxis-administration/">Praxisadministration</a>.</p>
+<h2>Kurz zusammengefasst</h2>
+<p>Gute Dokumentation zeigt nicht nur, dass eine Behandlung stattgefunden hat. Sie macht sichtbar, warum du behandelt hast, was du gemacht hast, wie die Patientin oder der Patient reagiert hat und wie es weitergeht.</p>
+<p>Für eine TCM-Praxis gehören dazu insbesondere eine nachvollziehbare Anamnese, die TCM-Arbeitshypothese, verwendete Punkte und Techniken, relevante Reaktionen, medizinische Abklärungen und der weitere Plan.</p>
+<p>Ein einfaches Qualitätssystem baut darauf auf und sorgt dafür, dass Sicherheit, Hygiene, Datenschutz, Zwischenfälle und Übergaben nicht jedes Mal neu erfunden werden müssen.</p>`,
 } as const;

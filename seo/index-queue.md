@@ -63,6 +63,7 @@ Regeln:
 - https://tcm.ch/regulatorik/betriebsbewilligung-praxis/
 - https://tcm.ch/branche/tcm-ausbildung-schweiz-system/
 - https://tcm.ch/praxiswissen/tcm-praxis-anfragen-bewertungen/
+- https://tcm.ch/praxiswissen/tcm-praxis-qualitaet-dokumentation/
 - https://tcm.ch/partner/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/organuhr/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/qi/
