@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-30",
+  "generated": "2026-10-02",
   "totals": {
-    "healthPages": 488,
+    "healthPages": 494,
     "byType": {
       "hub": 6,
       "condition": 116,
@@ -10,7 +10,7 @@
       "question": 40,
       "body_region": 9,
       "perspective": 1,
-      "tcm_hub": 22,
+      "tcm_hub": 28,
       "selfcare": 19,
       "editorial": 80,
       "body_signal": 89,
@@ -1200,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 311,
+      "inboundContentLinks": 317,
       "outboundHealthLinks": 44
     },
     {
@@ -2140,7 +2140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
+      "inboundContentLinks": 39,
       "outboundHealthLinks": 8
     },
     {
@@ -2300,7 +2300,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 31,
       "outboundHealthLinks": 15
     },
     {
@@ -2390,7 +2390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 10
     },
     {
@@ -2420,7 +2420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 6
     },
     {
@@ -2507,11 +2507,71 @@
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/",
       "type": "tcm_hub",
       "title": "TCM-Muster &amp; Syndrome | TCM.ch",
-      "indexable": false,
+      "indexable": true,
       "canonicalTo": null,
-      "inSitemap": false,
-      "inboundContentLinks": 5,
+      "inSitemap": true,
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 14
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/leber-qi-stagnation/",
+      "type": "tcm_hub",
+      "title": "Leber-Qi-Stagnation in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/milz-qi-mangel/",
+      "type": "tcm_hub",
+      "title": "Milz-Qi-Mangel in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/qi-mangel/",
+      "type": "tcm_hub",
+      "title": "Qi-Mangel in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/qi-stagnation/",
+      "type": "tcm_hub",
+      "title": "Qi-Stagnation in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/yang-mangel/",
+      "type": "tcm_hub",
+      "title": "Yang-Mangel in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/gesundheitsbibliothek/tcm-verstehen/muster/yin-mangel/",
+      "type": "tcm_hub",
+      "title": "Yin-Mangel in der TCM: Bedeutung und Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/",
@@ -3246,7 +3306,7 @@
     {
       "url": "/koerpersignale/durchfall-am-morgen/",
       "type": "body_signal",
-      "title": "Jeden Morgen Durchfall: Ursachen vor oder nach dem Frühstück | TCM.ch",
+      "title": "Durchfall am Morgen: Ursachen und wann abklären | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3516,7 +3576,7 @@
     {
       "url": "/koerpersignale/knie-knackt-ohne-schmerzen/",
       "type": "body_signal",
-      "title": "Knie knackt beim Beugen oder Strecken – ohne Schmerzen | TCM.ch",
+      "title": "Knie knackt ohne Schmerzen: Ursachen und wann abklären | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
@@ -3716,7 +3776,7 @@
     {
       "url": "/koerpersignale/ohr-knackt-beim-schlucken/",
       "type": "body_signal",
-      "title": "Ohr knackt beim Schlucken: Ursachen und wann es normal ist | TCM.ch",
+      "title": "Ohr knackt beim Schlucken: Ursachen und wann abklären | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,

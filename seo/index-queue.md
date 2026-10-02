@@ -68,6 +68,13 @@ Regeln:
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/meridiane/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/pulsdiagnostik/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/qi-mangel/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/qi-stagnation/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/yin-mangel/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/yang-mangel/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/leber-qi-stagnation/
+- https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/muster/milz-qi-mangel/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/grundlagen/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/meridiane-punkte/
 - https://tcm.ch/gesundheitsbibliothek/tcm-verstehen/diagnostik/
