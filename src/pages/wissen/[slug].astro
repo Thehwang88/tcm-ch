@@ -17,7 +17,7 @@ const data = w ?? wissenBySlug(Astro.params.slug as string)!;
 
 const path = `/wissen/${data.slug}`;
 const url = new URL(path, site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, meine Frage betrifft: ${data.title}`)}`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich bin über Ihre Seite «${data.title}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const fmtMonthYear = (iso: string) => { const d = iso.split('-'); return d.length >= 2 ? `${MONTHS[parseInt(d[1], 10) - 1]} ${d[0]}` : iso; };

@@ -28,7 +28,8 @@ const url = new URL(`${path}/`, site.url).href;
 const title = (hub ?? frage)!.title;
 const metaDesc = (hub ?? frage)!.metaDesc;
 const h1 = hub ? hub.h1 : frage!.question;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, meine Frage betrifft: ${h1}`)}`;
+const waText = `Hallo, ich bin über Ihre Seite «${h1}» gekommen und habe dazu noch eine Frage. Können Sie mir kurz weiterhelfen?`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)}`;
 // CARE (Sprint #1B): neutraler Prefill ohne Termin-/Therapie-Annahme.
 const formPrefill = `Meine Frage betrifft: ${h1}\nWeitere Angaben: `;
 
@@ -164,7 +165,7 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
       formular="TCM.ch CARE – Patientenfrage"
       quelleDetail={`Patientenfrage: ${h1} · Seite: ${path}/`}
     />
-    <StickyCta prefill={`Hallo, meine Frage betrifft: ${h1}`} formLabel="Frage stellen" formOnclick={careClickJs('patientenfrage', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
+    <StickyCta prefill={waText} formLabel="Frage stellen" formOnclick={careClickJs('patientenfrage', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
   </article>
 </LayoutDe>
 

@@ -27,7 +27,8 @@ const { w } = Astro.props;
 const path = `/gesundheitsbibliothek/was-jetzt/${w.slug}`;
 // CARE (Sprint #1B): neutraler Prefill, keine Therapie-Annahme.
 const careTopic = w.title.replace(/[?!.]+$/, '');
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, mein Anliegen betrifft: ${careTopic}.`)}`;
+const waText = `Hallo, ich bin über Ihre Seite «${careTopic}» gekommen und würde gerne wissen, was für mich der passende nächste Schritt wäre. Können Sie mir kurz weiterhelfen?`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)}`;
 const formPrefill = `Mein Anliegen betrifft: ${careTopic}.\nWeitere Angaben: `;
 const url = `https://tcm.ch${path}/`;
 const isReal = w.status === 'published';
@@ -204,7 +205,7 @@ if (isReal && w.publishedAt) {
       formular="TCM.ch CARE – Was jetzt"
       quelleDetail={`Was jetzt: ${careTopic} · Seite: ${path}/`}
     />
-    <StickyCta prefill={`Hallo, mein Anliegen betrifft: ${careTopic}.`} formLabel="Hilfe erhalten" formOnclick={careClickJs('was_jetzt', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
+    <StickyCta prefill={waText} formLabel="Hilfe erhalten" formOnclick={careClickJs('was_jetzt', 'sticky')} formCtaPos="sticky" heroSelector=".hero" />
 </LayoutDe>
 
 <style>

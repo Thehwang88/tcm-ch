@@ -36,7 +36,7 @@ const indexable = isReal && b.indexable;
 // Anliegen zaehlt nur der Befund-Teil vor dem Doppelpunkt.
 const careTopic = b.title.split(':')[0].replace(/[?!.]+$/, '').trim();
 const formPrefill = `Mein Anliegen betrifft: ${careTopic}.\nWeitere Angaben: `;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich habe eine Frage zu einem Befund beziehungsweise Laborwert.')}`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich bin über Ihre Seite zu «${careTopic}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
 
 const relatedGroups: { label: string; items: BefundWertLink[] }[] = [
   { label: 'Beschwerden', items: b.relatedConditions ?? [] },

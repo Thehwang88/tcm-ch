@@ -23,7 +23,7 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
     </div>
     <div class="wac-body">
       <div class="wac-bubble">Hallo, ich bin Yuna vom TCM.ch Concierge. Hast du eine Frage zu Behandlung, Termin oder Krankenkasse? Schreib mir kurz.</div>
-      <a class="wac-cta" id="wac-cta" href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener">
+      <a class="wac-cta" id="wac-cta" href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hallo, ich interessiere mich für TCM und hätte gerne kurz Hilfe bei der passenden Behandlung oder Praxis. Können Sie mir weiterhelfen?')}`} target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WA_PATH}></path></svg>
         Chat auf WhatsApp starten
       </a>

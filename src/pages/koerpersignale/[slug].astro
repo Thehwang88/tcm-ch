@@ -20,7 +20,6 @@ export function getStaticPaths() {
 const { k: data } = Astro.props;
 const path = `/koerpersignale/${data.slug}`;
 const url = new URL(path, site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hallo, ich habe eine Frage zu einem Symptom, das ich bei mir beobachte.')}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const fmtMonthYear = (iso: string) => { const d = iso.split('-'); return d.length >= 2 ? `${MONTHS[parseInt(d[1], 10) - 1]} ${d[0]}` : iso; };
@@ -62,7 +61,8 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 // formular) und uebersteht geloeschten Prefill.
 const topic = data.symptom ?? data.title;
 const formPrefill = `Mein Anliegen betrifft: ${topic}.\nWeitere Angaben: `;
-const waText = `Hallo, mein Anliegen betrifft: ${topic}.`;
+const waText = `Hallo, ich bin über Ihre Seite «${topic}» gekommen. Können Sie mir sagen, ob TCM bei meinem Anliegen sinnvoll sein könnte?`;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(waText)}`;
 const careClick = (pos: 'article' | 'sticky') => careClickJs('koerpersignal', pos);
 
 // Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
