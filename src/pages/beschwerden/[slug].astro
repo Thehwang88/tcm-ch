@@ -301,6 +301,12 @@ prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
 // Rebrand-Pilot: byte-identisch duplizierter Standort-Karten-Block -> zentrale
 // Ausgabe (standort-cards.ts); 0/>1 Treffer brechen den Build ab (kein stiller Fallback).
 prefilledBody = replaceStandortCards(prefilledBody, slug!);
+// WhatsApp-Prefill (Konversions-Sprint): Die Legacy-Leaves verlinken wa.me OHNE
+// text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
+// Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
+// Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
+const waPrefill = encodeURIComponent(`Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
+prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);
 // CARE-Bridge VOR der bestehenden Inline-Kontakt-Sektion; Sektion bekommt den
 // #kontakt-Anker (Standorte-Pattern), damit der Primaer-CTA sauber scrollt.
 const KONTAKT_MARKER = '<section class="section contact-section-inline" style="background:var(--surface)">';

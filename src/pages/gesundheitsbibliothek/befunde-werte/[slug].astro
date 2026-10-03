@@ -6,6 +6,14 @@
 // Pflicht-Länge. Geplante Beiträge bauen nur im Dev-Server (noindex allein
 // reicht nicht), sind immer noindex und landen nie in Sitemap oder Suche.
 import LayoutDe from '../../../layouts/LayoutDe.astro';
+import ArticleCta from '../../../components/library/ArticleCta.astro';
+import TerminForm from '../../../components/TerminForm.astro';
+import { site } from '../../../data/site';
+// CARE-Rollout Befunde (bewusst OHNE careClickJs/Analytics: kein neuer
+// content_type, kein neues Event, kein data-care-cta - Tracking-Freeze).
+// Die Karte navigiert nur zu #formular; TerminForm behaelt sein bestehendes
+// Verhalten unveraendert.
+import { CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { befundeWerte, publishedBefundeWerte, KATEGORIE_LABELS } from '../../../data/befunde-werte';
 import type { BefundWert, BefundWertLink } from '../../../data/befunde-werte';
 
@@ -21,6 +29,14 @@ const path = `/gesundheitsbibliothek/befunde-werte/${b.slug}`;
 const url = `https://tcm.ch${path}/`;
 const isReal = b.status === 'published';
 const indexable = isReal && b.indexable;
+
+// CARE (Muster: koerpersignale/[slug].astro). Thema = Befund-Titel ohne
+// Schluss-Interpunktion; quelleDetail uebersteht geloeschten Prefill.
+// Titel folgen dem Muster «Ferritin zu niedrig: Was bedeutet …» - fuers
+// Anliegen zaehlt nur der Befund-Teil vor dem Doppelpunkt.
+const careTopic = b.title.split(':')[0].replace(/[?!.]+$/, '').trim();
+const formPrefill = `Mein Anliegen betrifft: ${careTopic}.\nWeitere Angaben: `;
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich bin über Ihre Seite zu «${careTopic}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
 
 const relatedGroups: { label: string; items: BefundWertLink[] }[] = [
   { label: 'Beschwerden', items: b.relatedConditions ?? [] },
@@ -130,6 +146,21 @@ if (isReal && b.publishedAt) {
               </ol>
             </div>
           )}
+
+          <ArticleCta
+            eyebrow={CARE_PERSON.eyebrowWithName}
+            portrait={CARE_PERSON.portrait}
+            portraitAlt={CARE_PERSON.portraitAlt}
+            title={CARE_PERSON.heading}
+            text={CARE_PERSON.body}
+            primaryHref="#formular"
+            primaryLabel="Anliegen schildern"
+            secondaryHref="/standorte/"
+            secondaryLabel="Praxis finden"
+            waHref={waHref}
+            trustLine={CARE_TRUST}
+            safetyNote={CARE_SAFETY}
+          />
         </div>
 
         {relatedGroups.length > 0 && (
@@ -147,6 +178,15 @@ if (isReal && b.publishedAt) {
         )}
       </div>
     </section>
+
+    <TerminForm
+      heading="Anliegen schildern"
+      intro="Beschreib kurz, worum es geht – wir melden uns persönlich und sagen dir ehrlich, welcher nächste Schritt sinnvoll ist: ärztliche Abklärung, TCM oder eine andere Anlaufstelle."
+      prefill={formPrefill}
+      submitLabel="Anliegen senden"
+      formular="TCM.ch CARE – Befund"
+      quelleDetail={`Befund: ${careTopic} · Seite: ${path}/`}
+    />
   </article>
 </LayoutDe>
 
