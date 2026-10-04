@@ -44,5 +44,26 @@ globalThis.BESCHWERDEN_KEEP = [
   // 29.09.2026 — Kohorte: Hypothyreose-Owner (extern gelieferter Content):
   "schilddruesenunterfunktion",
   // 29.09.2026 — Kohorte B: CVI-Owner (extern gelieferter Content):
-  "venenschwaeche"
+  "venenschwaeche",
+  // 04.10.2026 — Kohorte: Beschwerden-Expansion 20 (extern gelieferter Content):
+  "adenomyose",
+  "sibo",
+  "laktoseintoleranz",
+  "fruktoseintoleranz",
+  "zoeliakie",
+  "divertikulitis",
+  "gastroparese",
+  "funktionelle-dyspepsie",
+  "vaginismus",
+  "vulvodynie",
+  "dyspareunie",
+  "interstitielle-zystitis",
+  "pmdd",
+  "schilddruesenueberfunktion",
+  "morbus-bechterew",
+  "spondylose",
+  "gonarthrose",
+  "impingement-syndrom",
+  "patellaspitzensyndrom",
+  "costochondritis"
 ];

@@ -256,6 +256,26 @@ Regeln:
 - https://tcm.ch/therapien/massage/schwangerschaftsmassage/
 - https://tcm.ch/therapien/massage/klassische-massage/
 - https://tcm.ch/therapien/massage/deep-tissue-massage/
+- https://tcm.ch/beschwerden/adenomyose/
+- https://tcm.ch/beschwerden/sibo/
+- https://tcm.ch/beschwerden/laktoseintoleranz/
+- https://tcm.ch/beschwerden/fruktoseintoleranz/
+- https://tcm.ch/beschwerden/zoeliakie/
+- https://tcm.ch/beschwerden/divertikulitis/
+- https://tcm.ch/beschwerden/gastroparese/
+- https://tcm.ch/beschwerden/funktionelle-dyspepsie/
+- https://tcm.ch/beschwerden/vaginismus/
+- https://tcm.ch/beschwerden/vulvodynie/
+- https://tcm.ch/beschwerden/dyspareunie/
+- https://tcm.ch/beschwerden/interstitielle-zystitis/
+- https://tcm.ch/beschwerden/pmdd/
+- https://tcm.ch/beschwerden/schilddruesenueberfunktion/
+- https://tcm.ch/beschwerden/morbus-bechterew/
+- https://tcm.ch/beschwerden/spondylose/
+- https://tcm.ch/beschwerden/gonarthrose/
+- https://tcm.ch/beschwerden/impingement-syndrom/
+- https://tcm.ch/beschwerden/patellaspitzensyndrom/
+- https://tcm.ch/beschwerden/costochondritis/
 
 ## Geplant (noch nicht live)
 

@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-02",
+  "generated": "2026-10-04",
   "totals": {
-    "healthPages": 503,
+    "healthPages": 523,
     "byType": {
       "hub": 6,
-      "condition": 116,
+      "condition": 136,
       "library_hub": 1,
       "befund": 59,
       "question": 40,
@@ -31,7 +31,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 67,
-      "outboundHealthLinks": 122
+      "outboundHealthLinks": 142
     },
     {
       "url": "/beschwerden/achillessehnenentzuendung/",
@@ -42,6 +42,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 22
+    },
+    {
+      "url": "/beschwerden/adenomyose/",
+      "type": "condition",
+      "title": "Adenomyose: Beschwerden verstehen &amp; TCM begleitend nutzen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/akne/",
@@ -90,7 +100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 24,
       "outboundHealthLinks": 20
     },
     {
@@ -140,7 +150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 20
     },
     {
@@ -150,7 +160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 18
     },
     {
@@ -204,6 +214,16 @@
       "outboundHealthLinks": 12
     },
     {
+      "url": "/beschwerden/costochondritis/",
+      "type": "condition",
+      "title": "Costochondritis: Schmerzen am Brustkorb richtig einordnen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/crps/",
       "type": "condition",
       "title": "CRPS: komplexes regionales Schmerzsyndrom verstehen und behandeln",
@@ -220,8 +240,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/divertikulitis/",
+      "type": "condition",
+      "title": "Divertikulitis: Symptome, Behandlung &amp; Zeit nach dem Schub",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/durchblutungsstoerungen/",
@@ -234,13 +264,23 @@
       "outboundHealthLinks": 24
     },
     {
+      "url": "/beschwerden/dyspareunie/",
+      "type": "condition",
+      "title": "Dyspareunie: Schmerzen beim Geschlechtsverkehr abklären",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/eisenmangel/",
       "type": "condition",
       "title": "Eisenmangel – TCM-Begleitung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 15
     },
     {
@@ -250,8 +290,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/erschoepfung/",
@@ -310,8 +350,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/fruktoseintoleranz/",
+      "type": "condition",
+      "title": "Fruktoseintoleranz: Symptome, Test &amp; Ernährung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/funktionelle-dyspepsie/",
+      "type": "condition",
+      "title": "Funktionelle Dyspepsie &amp; Reizmagen: Beschwerden verstehen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/gastritis/",
@@ -320,8 +380,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/gastroparese/",
+      "type": "condition",
+      "title": "Gastroparese: Symptome, Ursachen &amp; begleitende Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/gewichtsmanagement/",
@@ -342,6 +412,16 @@
       "inSitemap": true,
       "inboundContentLinks": 6,
       "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/gonarthrose/",
+      "type": "condition",
+      "title": "Gonarthrose: Kniearthrose behandeln &amp; Schmerzen lindern",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/guertelrose/",
@@ -390,8 +470,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/heuschnupfen/",
@@ -420,8 +500,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/hitzewallungen/",
@@ -474,13 +554,23 @@
       "outboundHealthLinks": 20
     },
     {
+      "url": "/beschwerden/impingement-syndrom/",
+      "type": "condition",
+      "title": "Impingement-Syndrom der Schulter: Ursachen &amp; Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/inkontinenz/",
       "type": "condition",
       "title": "Inkontinenz – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 19
     },
     {
@@ -490,7 +580,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/interstitielle-zystitis/",
+      "type": "condition",
+      "title": "Interstitielle Zystitis: Blasenschmerzsyndrom verstehen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -510,7 +610,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 19
     },
     {
@@ -520,7 +620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 20
     },
     {
@@ -560,8 +660,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/kopfschmerzen/",
@@ -572,6 +672,16 @@
       "inSitemap": true,
       "inboundContentLinks": 28,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/laktoseintoleranz/",
+      "type": "condition",
+      "title": "Laktoseintoleranz: Symptome, Test &amp; Umgang im Alltag",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/lipoedem/",
@@ -620,7 +730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 9
     },
     {
@@ -642,6 +752,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/morbus-bechterew/",
+      "type": "condition",
+      "title": "Morbus Bechterew: Rückenschmerz &amp; ergänzende Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/morbus-crohn/",
@@ -680,7 +800,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 17
     },
     {
@@ -690,7 +810,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 163,
+      "inboundContentLinks": 165,
       "outboundHealthLinks": 31
     },
     {
@@ -734,6 +854,16 @@
       "outboundHealthLinks": 15
     },
     {
+      "url": "/beschwerden/patellaspitzensyndrom/",
+      "type": "condition",
+      "title": "Patellaspitzensyndrom: Knieschmerz bei Sport &amp; Belastung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/pcos/",
       "type": "condition",
       "title": "PCOS – TCM-Behandlung | TCM.ch",
@@ -764,14 +894,24 @@
       "outboundHealthLinks": 14
     },
     {
+      "url": "/beschwerden/pmdd/",
+      "type": "condition",
+      "title": "PMDD: wenn Beschwerden vor der Periode sehr stark werden",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/pms/",
       "type": "condition",
       "title": "PMS – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/polyneuropathie/",
@@ -810,8 +950,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/reizdarm/",
@@ -820,7 +960,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 34,
       "outboundHealthLinks": 21
     },
     {
@@ -840,7 +980,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 17
     },
     {
@@ -850,7 +990,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -880,7 +1020,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 16
     },
     {
@@ -890,8 +1030,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 183,
-      "outboundHealthLinks": 34
+      "inboundContentLinks": 187,
+      "outboundHealthLinks": 35
+    },
+    {
+      "url": "/beschwerden/schilddruesenueberfunktion/",
+      "type": "condition",
+      "title": "Schilddrüsenüberfunktion: Symptome, Ursachen &amp; Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/schilddruesenunterfunktion/",
@@ -900,7 +1050,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -930,7 +1080,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/schlafprobleme/",
       "inSitemap": false,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 16
     },
     {
@@ -960,8 +1110,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
-      "outboundHealthLinks": 22
+      "inboundContentLinks": 32,
+      "outboundHealthLinks": 23
     },
     {
       "url": "/beschwerden/schuppenflechte/",
@@ -1010,8 +1160,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/sibo/",
+      "type": "condition",
+      "title": "SIBO: Symptome, Abklärung &amp; TCM-Begleitung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/sinusitis/",
@@ -1050,8 +1210,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 22
+    },
+    {
+      "url": "/beschwerden/spondylose/",
+      "type": "condition",
+      "title": "Spondylose: Verschleiss der Wirbelsäule richtig einordnen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/sprunggelenkschmerzen/",
@@ -1070,7 +1240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 85,
+      "inboundContentLinks": 86,
       "outboundHealthLinks": 17
     },
     {
@@ -1110,8 +1280,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/vaginismus/",
+      "type": "condition",
+      "title": "Vaginismus: Schmerzen verstehen &amp; Behandlungsmöglichkeiten",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/venenschwaeche/",
@@ -1130,8 +1310,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 37,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 44,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/verstopfung/",
@@ -1140,8 +1320,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/vulvodynie/",
+      "type": "condition",
+      "title": "Vulvodynie: chronische Vulvaschmerzen verstehen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/wadenschmerzen/",
@@ -1184,13 +1374,23 @@
       "outboundHealthLinks": 13
     },
     {
+      "url": "/beschwerden/zoeliakie/",
+      "type": "condition",
+      "title": "Zöliakie: Symptome, Diagnose &amp; glutenfreie Ernährung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/zyklusbeschwerden/",
       "type": "condition",
       "title": "Unregelmässiger Zyklus &amp; Zyklusstörungen – TCM | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 12
     },
     {
@@ -2151,7 +2351,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 29,
-      "outboundHealthLinks": 17
+      "outboundHealthLinks": 18
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/",
@@ -2321,7 +2521,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/diagnostik/tcm-anamnese/",
@@ -2330,7 +2530,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -2340,7 +2540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 12
     },
     {
@@ -2370,7 +2570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 8
     },
     {
@@ -2381,7 +2581,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/funktionskreise/",
@@ -2390,7 +2590,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -2551,7 +2751,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 18,
-      "outboundHealthLinks": 19
+      "outboundHealthLinks": 20
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/blut-mangel/",
@@ -2561,7 +2761,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/blut-stase/",
@@ -2571,7 +2771,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/feuchtigkeit/",
@@ -2601,7 +2801,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/leber-qi-stagnation/",
@@ -2611,7 +2811,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/milz-qi-mangel/",
@@ -2621,7 +2821,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/qi-mangel/",
@@ -2631,7 +2831,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/muster/qi-stagnation/",
@@ -4130,7 +4330,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 149,
+      "inboundContentLinks": 169,
       "outboundHealthLinks": 17
     },
     {

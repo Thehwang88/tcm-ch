@@ -1795,6 +1795,782 @@ export const beschwerden: Beschwerde[] = [
     ]
   },
   {
+    "slug": "adenomyose",
+    "name": "Adenomyose",
+    "title": "Adenomyose: Beschwerden verstehen & TCM begleitend nutzen",
+    "metaDesc": "Adenomyose kann starke Regelschmerzen und Blutungen verursachen. Erfahre, wann ärztliche Abklärung wichtig ist und wie TCM Beschwerden ergänzend begleiten kann.",
+    "conditionName": "Adenomyose",
+    "lead": "Starke Regelschmerzen, Druck im Unterbauch und starke Blutungen können bei Adenomyose den Alltag erheblich belasten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "endometriose",
+        "label": "Endometriose"
+      },
+      {
+        "slug": "myome",
+        "label": "Myome"
+      },
+      {
+        "slug": "menstruationsbeschwerden",
+        "label": "Menstruationsbeschwerden"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      },
+      {
+        "slug": "eisenmangel",
+        "label": "Eisenmangel"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "kraeutertherapie",
+        "label": "Kräutertherapie"
+      },
+      {
+        "slug": "moxibustion",
+        "label": "Moxibustion"
+      }
+    ]
+  },
+  {
+    "slug": "sibo",
+    "name": "SIBO",
+    "title": "SIBO: Symptome, Abklärung & TCM-Begleitung",
+    "metaDesc": "SIBO kann Blähbauch, Bauchschmerzen und veränderten Stuhlgang verursachen. Diagnose, Behandlung und Möglichkeiten einer ergänzenden TCM-Begleitung.",
+    "conditionName": "SIBO (Dünndarmfehlbesiedlung)",
+    "lead": "Starker Blähbauch nach dem Essen, Bauchschmerzen und wechselnde Verdauung können zu einer Dünndarmfehlbesiedlung passen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "verstopfung",
+        "label": "Verstopfung"
+      },
+      {
+        "slug": "gastritis",
+        "label": "Gastritis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "kraeutertherapie",
+        "label": "Kräutertherapie"
+      },
+      {
+        "slug": "moxibustion",
+        "label": "Moxibustion"
+      }
+    ]
+  },
+  {
+    "slug": "laktoseintoleranz",
+    "name": "Laktoseintoleranz",
+    "title": "Laktoseintoleranz: Symptome, Test & Umgang im Alltag",
+    "metaDesc": "Laktoseintoleranz verursacht häufig Blähungen, Bauchschmerzen oder Durchfall nach Milchprodukten. Diagnose, Alltagstipps und ergänzende TCM-Begleitung.",
+    "conditionName": "Laktoseintoleranz",
+    "lead": "Wenn Milchprodukte regelmässig Blähungen, Bauchkrämpfe oder Durchfall auslösen, kann eine Laktoseintoleranz dahinterstecken.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "histaminintoleranz",
+        "label": "Histaminintoleranz"
+      },
+      {
+        "slug": "sibo",
+        "label": "SIBO"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "kraeutertherapie",
+        "label": "Kräutertherapie"
+      }
+    ]
+  },
+  {
+    "slug": "fruktoseintoleranz",
+    "name": "Fruktoseintoleranz",
+    "title": "Fruktoseintoleranz: Symptome, Test & Ernährung",
+    "metaDesc": "Fruktosemalabsorption kann Blähungen, Bauchschmerzen und Durchfall verursachen. Erfahre mehr über Diagnose, Ernährung und ergänzende TCM-Begleitung.",
+    "conditionName": "Fruktosemalabsorption",
+    "lead": "Beschwerden nach Obst, Säften oder fruktosereichen Lebensmitteln können zu einer Fruktosemalabsorption passen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "laktoseintoleranz",
+        "label": "Laktoseintoleranz"
+      },
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "sibo",
+        "label": "SIBO"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "kraeutertherapie",
+        "label": "Kräutertherapie"
+      }
+    ]
+  },
+  {
+    "slug": "zoeliakie",
+    "name": "Zöliakie",
+    "title": "Zöliakie: Symptome, Diagnose & glutenfreie Ernährung",
+    "metaDesc": "Zöliakie ist eine Autoimmunerkrankung durch Gluten. Symptome, Diagnostik, glutenfreie Ernährung und die klaren Grenzen komplementärer TCM-Begleitung.",
+    "conditionName": "Zöliakie",
+    "lead": "Zöliakie ist keine gewöhnliche Unverträglichkeit: Gluten löst eine Autoimmunreaktion im Dünndarm aus.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "eisenmangel",
+        "label": "Eisenmangel"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "laktoseintoleranz",
+        "label": "Laktoseintoleranz"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "divertikulitis",
+    "name": "Divertikulitis",
+    "title": "Divertikulitis: Symptome, Behandlung & Zeit nach dem Schub",
+    "metaDesc": "Divertikulitis verursacht häufig Schmerzen im linken Unterbauch. Wann ärztliche Behandlung nötig ist und wann komplementäre Begleitung infrage kommt.",
+    "conditionName": "Divertikulitis",
+    "lead": "Akute Divertikulitis gehört medizinisch abgeklärt. Komplementäre Behandlung kommt erst nach der Akutphase infrage.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "verstopfung",
+        "label": "Verstopfung"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "gastritis",
+        "label": "Gastritis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "gastroparese",
+    "name": "Gastroparese",
+    "title": "Gastroparese: Symptome, Ursachen & begleitende Behandlung",
+    "metaDesc": "Gastroparese führt zu verzögerter Magenentleerung, früher Sättigung und Übelkeit. Medizinische Abklärung und ergänzende symptomorientierte TCM-Begleitung.",
+    "conditionName": "Gastroparese",
+    "lead": "Frühe Sättigung, Übelkeit und langes Völlegefühl können bei einer verzögerten Magenentleerung auftreten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "uebelkeit",
+        "label": "Übelkeit"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "gastritis",
+        "label": "Gastritis"
+      },
+      {
+        "slug": "funktionelle-dyspepsie",
+        "label": "Funktionelle Dyspepsie (Reizmagen)"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "funktionelle-dyspepsie",
+    "name": "Funktionelle Dyspepsie (Reizmagen)",
+    "title": "Funktionelle Dyspepsie & Reizmagen: Beschwerden verstehen",
+    "metaDesc": "Reizmagen bzw. funktionelle Dyspepsie: Völlegefühl, frühe Sättigung und Oberbauchbeschwerden verstehen und Behandlungsmöglichkeiten kennenlernen.",
+    "conditionName": "Funktionelle Dyspepsie",
+    "lead": "Völlegefühl, frühe Sättigung oder Oberbauchdruck trotz unauffälliger Untersuchungen können zu einer funktionellen Dyspepsie passen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "gastritis",
+        "label": "Gastritis"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      },
+      {
+        "slug": "sibo",
+        "label": "SIBO"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "kraeutertherapie",
+        "label": "Kräutertherapie"
+      }
+    ]
+  },
+  {
+    "slug": "vaginismus",
+    "name": "Vaginismus",
+    "title": "Vaginismus: Schmerzen verstehen & Behandlungsmöglichkeiten",
+    "metaDesc": "Vaginismus kann Penetration schmerzhaft oder unmöglich machen. Ursachen, medizinische Abklärung, Beckenbodentherapie und ergänzende TCM-Begleitung.",
+    "conditionName": "Vaginismus",
+    "lead": "Wenn sich der Beckenboden bei Penetration unwillkürlich anspannt, können Untersuchung, Tampon oder Geschlechtsverkehr schwierig oder schmerzhaft werden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "dyspareunie",
+        "label": "Dyspareunie"
+      },
+      {
+        "slug": "vulvodynie",
+        "label": "Vulvodynie"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      },
+      {
+        "slug": "endometriose",
+        "label": "Endometriose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "vulvodynie",
+    "name": "Vulvodynie",
+    "title": "Vulvodynie: chronische Vulvaschmerzen verstehen",
+    "metaDesc": "Vulvodynie verursacht anhaltende Schmerzen oder Brennen im Vulvabereich. Diagnostik, Behandlung und mögliche ergänzende TCM-Begleitung.",
+    "conditionName": "Vulvodynie",
+    "lead": "Brennen, Stechen oder Berührungsschmerz im Vulvabereich kann bestehen, obwohl äusserlich wenig zu sehen ist.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "vaginismus",
+        "label": "Vaginismus"
+      },
+      {
+        "slug": "dyspareunie",
+        "label": "Dyspareunie"
+      },
+      {
+        "slug": "endometriose",
+        "label": "Endometriose"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "dyspareunie",
+    "name": "Dyspareunie",
+    "title": "Dyspareunie: Schmerzen beim Geschlechtsverkehr abklären",
+    "metaDesc": "Schmerzen beim Geschlechtsverkehr haben unterschiedliche Ursachen. Erfahre mehr über gynäkologische Abklärung, Beckenboden und ergänzende TCM-Begleitung.",
+    "conditionName": "Dyspareunie",
+    "lead": "Schmerzen beim Geschlechtsverkehr sind häufig, aber nicht etwas, das einfach ausgehalten werden muss.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "vaginismus",
+        "label": "Vaginismus"
+      },
+      {
+        "slug": "vulvodynie",
+        "label": "Vulvodynie"
+      },
+      {
+        "slug": "endometriose",
+        "label": "Endometriose"
+      },
+      {
+        "slug": "adenomyose",
+        "label": "Adenomyose"
+      },
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "interstitielle-zystitis",
+    "name": "Interstitielle Zystitis",
+    "title": "Interstitielle Zystitis: Blasenschmerzsyndrom verstehen",
+    "metaDesc": "Interstitielle Zystitis kann Harndrang, Blasendruck und Schmerzen ohne klassischen Infekt verursachen. Abklärung und ergänzende Behandlungsmöglichkeiten.",
+    "conditionName": "Interstitielle Zystitis / Bladder Pain Syndrome",
+    "lead": "Starker Harndrang und Blasenschmerz trotz wiederholt fehlendem Infektnachweis können zu einem Blasenschmerzsyndrom passen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "reizblase",
+        "label": "Reizblase"
+      },
+      {
+        "slug": "blasenentzuendung",
+        "label": "Blasenentzündung"
+      },
+      {
+        "slug": "inkontinenz",
+        "label": "Inkontinenz"
+      },
+      {
+        "slug": "vulvodynie",
+        "label": "Vulvodynie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "pmdd",
+    "name": "PMDD",
+    "title": "PMDD: wenn Beschwerden vor der Periode sehr stark werden",
+    "metaDesc": "PMDD verursacht ausgeprägte psychische und körperliche Beschwerden vor der Menstruation. Diagnose, Behandlung und ergänzende TCM-Begleitung.",
+    "conditionName": "Prämenstruelle dysphorische Störung (PMDD)",
+    "lead": "PMDD ist deutlich mehr als gewöhnliches PMS und kann Stimmung, Beziehungen und Alltag jeden Monat massiv beeinträchtigen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "pms",
+        "label": "PMS"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      },
+      {
+        "slug": "menstruationsbeschwerden",
+        "label": "Menstruationsbeschwerden"
+      },
+      {
+        "slug": "depressionen",
+        "label": "Depressionen"
+      },
+      {
+        "slug": "angststoerungen",
+        "label": "Angststörungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "schilddruesenueberfunktion",
+    "name": "Schilddrüsenüberfunktion",
+    "title": "Schilddrüsenüberfunktion: Symptome, Ursachen & Behandlung",
+    "metaDesc": "Hyperthyreose kann Herzrasen, Gewichtsverlust und Unruhe verursachen. Ursachen wie Morbus Basedow gehören medizinisch behandelt; TCM höchstens ergänzend.",
+    "conditionName": "Schilddrüsenüberfunktion (Hyperthyreose)",
+    "lead": "Bei einer Schilddrüsenüberfunktion produziert der Körper zu viele Schilddrüsenhormone – das gehört medizinisch abgeklärt und behandelt.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hashimoto",
+        "label": "Hashimoto"
+      },
+      {
+        "slug": "schilddruesenunterfunktion",
+        "label": "Schilddrüsenunterfunktion"
+      },
+      {
+        "slug": "schlafstoerungen",
+        "label": "Schlafstörungen"
+      },
+      {
+        "slug": "stress-burnout",
+        "label": "Stress &amp; Burnout"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "morbus-bechterew",
+    "name": "Morbus Bechterew",
+    "title": "Morbus Bechterew: Rückenschmerz & ergänzende Behandlung",
+    "metaDesc": "Morbus Bechterew verursacht entzündliche Rückenbeschwerden. Rheumatologische Behandlung bleibt zentral; TCM kann Schmerzen ergänzend begleiten.",
+    "conditionName": "Axiale Spondyloarthritis / Morbus Bechterew",
+    "lead": "Rückenschmerz, der in Ruhe schlechter und durch Bewegung besser wird, kann bei entzündlichen Wirbelsäulenerkrankungen auftreten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "isg-blockade",
+        "label": "ISG-Blockade"
+      },
+      {
+        "slug": "rheuma",
+        "label": "Rheuma"
+      },
+      {
+        "slug": "rheumatoide-arthritis",
+        "label": "Rheumatoide Arthritis"
+      },
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "spondylose",
+    "name": "Spondylose",
+    "title": "Spondylose: Verschleiss der Wirbelsäule richtig einordnen",
+    "metaDesc": "Spondylose beschreibt degenerative Veränderungen der Wirbelsäule. Symptome, Abklärung, Bewegung und ergänzende TCM-Schmerzbehandlung.",
+    "conditionName": "Spondylose",
+    "lead": "Verschleiss im Röntgenbild bedeutet nicht automatisch Schmerz – entscheidend ist, ob Befund und Beschwerden zusammenpassen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
+      {
+        "slug": "bandscheibenvorfall",
+        "label": "Bandscheibenvorfall"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      },
+      {
+        "slug": "schroepfen",
+        "label": "Schröpfen"
+      }
+    ]
+  },
+  {
+    "slug": "gonarthrose",
+    "name": "Gonarthrose",
+    "title": "Gonarthrose: Kniearthrose behandeln & Schmerzen lindern",
+    "metaDesc": "Gonarthrose ist Arthrose des Kniegelenks. Bewegung, Physiotherapie und medizinische Behandlung stehen im Zentrum; Akupunktur kann Schmerzen ergänzend lindern.",
+    "conditionName": "Kniearthrose (Gonarthrose)",
+    "lead": "Anlaufschmerz, Belastungsschmerz und zunehmende Steifigkeit können zu einer Kniearthrose passen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "rheuma",
+        "label": "Rheuma"
+      },
+      {
+        "slug": "patellaspitzensyndrom",
+        "label": "Patellaspitzensyndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "impingement-syndrom",
+    "name": "Impingement-Syndrom",
+    "title": "Impingement-Syndrom der Schulter: Ursachen & Behandlung",
+    "metaDesc": "Schulterschmerz beim Heben des Arms kann zu einem Impingement-Syndrom passen. Diagnose, Physiotherapie und ergänzende Akupunktur.",
+    "conditionName": "Schulter-Impingement",
+    "lead": "Wenn der Arm beim seitlichen oder oberen Anheben schmerzt, können gereizte Sehnen und Schleimbeutel beteiligt sein.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      },
+      {
+        "slug": "rotatorenmanschette",
+        "label": "Rotatorenmanschette"
+      },
+      {
+        "slug": "kalkschulter",
+        "label": "Kalkschulter"
+      },
+      {
+        "slug": "frozen-shoulder",
+        "label": "Frozen Shoulder"
+      },
+      {
+        "slug": "schleimbeutelentzuendung",
+        "label": "Schleimbeutelentzündung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "patellaspitzensyndrom",
+    "name": "Patellaspitzensyndrom",
+    "title": "Patellaspitzensyndrom: Knieschmerz bei Sport & Belastung",
+    "metaDesc": "Patellaspitzensyndrom verursacht belastungsabhängige Schmerzen unter der Kniescheibe. Trainingssteuerung, Physiotherapie und ergänzende Schmerzbehandlung.",
+    "conditionName": "Patellaspitzensyndrom",
+    "lead": "Schmerz direkt unter der Kniescheibe beim Springen, Laufen oder Treppensteigen kann von der Patellasehne kommen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "sehnenscheidenentzuendung",
+        "label": "Sehnenscheidenentzündung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "costochondritis",
+    "name": "Costochondritis",
+    "title": "Costochondritis: Schmerzen am Brustkorb richtig einordnen",
+    "metaDesc": "Costochondritis kann druckabhängige Schmerzen am Brustbein verursachen. Brustschmerz muss jedoch zuerst sicher medizinisch eingeordnet werden.",
+    "conditionName": "Costochondritis",
+    "lead": "Schmerzen an den Übergängen zwischen Rippen und Brustbein können vom Bewegungsapparat kommen – Brustschmerz darf trotzdem nie vorschnell selbst diagnostiziert werden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "interkostalneuralgie",
+        "label": "Interkostalneuralgie"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
     "slug": "nervenschmerzen",
     "name": "Nervenschmerzen",
     "title": "",
