@@ -219,3 +219,65 @@ console.log('  ->', OUT);
   errs.slice(0, 20).forEach((e) => console.log('    !', e));
   if (errs.length > 0) process.exitCode = 1;
 }
+
+// 7. Akupunktur-bei-Serie (Gate, 05.10.2026). Treatment-Decision-Artikel unter
+//    /wissen/: Registry src/data/wissen-akupunktur-bei.ts + Altartikel aus dem
+//    akupunkturSerieSlugs-Export. Prueft Slug-Dups, Kollision mit der
+//    410-Kill-Liste (public/wissen-kill.js), Meta-Description-Uniqueness ueber
+//    alle /wissen/-Seiten, related-Ziele, Map-Registration und Inbound-Pflicht
+//    (Cohort 01 braucht je mind. 1 Link aus einem Beschwerden-Leaf, sonst
+//    "Gefunden - nicht indexiert"). Verstoss => exitCode=1.
+{
+  const errs = [];
+  const reg = fs.readFileSync('src/data/wissen-akupunktur-bei.ts', 'utf8');
+  const regSlugs = [...reg.matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map((m) => m[1]);
+  const extraBlock = reg.split('akupunkturSerieSlugs')[1] ?? '';
+  const extraSlugs = [...extraBlock.matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]);
+  const serie = [...regSlugs, ...extraSlugs];
+  // A: Slug-Dups innerhalb der Serie
+  const seen = new Set();
+  for (const s of serie) { if (seen.has(s)) errs.push(`Serie: Slug doppelt: ${s}`); seen.add(s); }
+  // B: Route existiert + nicht auf der Kill-Liste (410)
+  const kill = new Set([...fs.readFileSync('public/wissen-kill.js', 'utf8').matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]));
+  for (const s of seen) {
+    if (!pages.has(`/wissen/${s}/`)) errs.push(`Serie: Route fehlt in dist: /wissen/${s}/`);
+    if (kill.has(s)) errs.push(`Serie: Slug steht auf der 410-Kill-Liste: ${s}`);
+  }
+  // C: Meta-Description-Uniqueness ueber alle indexierbaren /wissen/-Seiten
+  const byDesc = new Map();
+  for (const [url, p] of pages) {
+    if (!url.startsWith('/wissen/') || url === '/wissen/' || p.noindex) continue;
+    const html = fs.readFileSync(path.join(DIST, url.slice(1), 'index.html'), 'utf8');
+    const d = (html.match(/<meta[^>]+name=["']description["'][^>]*content=["']([^"']*)["']/i) || [])[1] ?? '';
+    if (d && byDesc.has(d)) errs.push(`Serie: metaDesc doppelt: ${byDesc.get(d)} / ${url}`);
+    else if (d) byDesc.set(d, url);
+  }
+  // D: related-Ziele der Registry muessen gebaute Routen sein
+  for (const m of reg.matchAll(/href: '(\/[^']+)'/g)) {
+    if (!pages.has(m[1])) errs.push(`Serie: related-Ziel fehlt: ${m[1]}`);
+  }
+  // E: Inbound-Pflicht Cohort 01 (mind. 1 Beschwerden-Leaf verlinkt den Artikel);
+  //    Altartikel (vor der Inbound-Doktrin) brauchen mind. 1 Health-Content-Inbound.
+  const COHORT01 = new Set([
+    'akupunktur-bei-knieschmerzen', 'akupunktur-bei-schulterschmerzen',
+    'akupunktur-bei-wechseljahresbeschwerden', 'akupunktur-bei-menstruationsbeschwerden',
+    'akupunktur-bei-tennisarm', 'akupunktur-bei-fersensporn',
+    'akupunktur-bei-kieferschmerzen', 'akupunktur-bei-reizdarm',
+    'akupunktur-bei-karpaltunnelsyndrom', 'akupunktur-bei-uebelkeit',
+  ]);
+  const mapCsv = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
+  for (const s of seen) {
+    const u = `/wissen/${s}/`;
+    if (!pages.has(u)) continue; // schon oben gemeldet
+    const inb = [...(inbound.get(u) ?? [])];
+    if (COHORT01.has(s)) {
+      if (!inb.some((l) => l.startsWith('/beschwerden/'))) errs.push(`Serie: kein Beschwerden-Inbound: ${u}`);
+      if (!mapCsv.includes(u)) errs.push(`Serie: fehlt in master-keyword-url-map.csv: ${u}`);
+    } else if (!inb.some((l) => classify(l))) {
+      errs.push(`Serie: kein Health-Content-Inbound: ${u}`);
+    }
+  }
+  console.log('  Wissen-Serie:', seen.size, 'Slugs,', errs.length, 'Fehler');
+  errs.slice(0, 20).forEach((e) => console.log('    !', e));
+  if (errs.length > 0) process.exitCode = 1;
+}

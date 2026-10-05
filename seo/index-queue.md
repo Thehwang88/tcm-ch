@@ -306,6 +306,16 @@ Regeln:
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/ogtt/
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/mammographie/
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/pap-abstrich/
+- https://tcm.ch/wissen/akupunktur-bei-knieschmerzen/
+- https://tcm.ch/wissen/akupunktur-bei-schulterschmerzen/
+- https://tcm.ch/wissen/akupunktur-bei-wechseljahresbeschwerden/
+- https://tcm.ch/wissen/akupunktur-bei-menstruationsbeschwerden/
+- https://tcm.ch/wissen/akupunktur-bei-tennisarm/
+- https://tcm.ch/wissen/akupunktur-bei-fersensporn/
+- https://tcm.ch/wissen/akupunktur-bei-kieferschmerzen/
+- https://tcm.ch/wissen/akupunktur-bei-reizdarm/
+- https://tcm.ch/wissen/akupunktur-bei-karpaltunnelsyndrom/
+- https://tcm.ch/wissen/akupunktur-bei-uebelkeit/
 
 ## Geplant (noch nicht live)
 

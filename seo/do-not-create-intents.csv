@@ -151,3 +151,15 @@ proteinurie / albuminurie (eigene Slugs),/gesundheitsbibliothek/befunde-werte/ei
 pap-test / krebsabstrich / gebärmutterhalsabstrich (eigene Slugs),/gesundheitsbibliothek/untersuchungen/pap-abstrich/,Pap-Abstrich-Seite besitzt den Untersuchungs-Intent,Synonym-URLs würden kannibalisieren,Keiner — Aliasse
 glukosetoleranztest / zuckerbelastungstest (eigene Slugs),/gesundheitsbibliothek/untersuchungen/ogtt/,oGTT-Seite besitzt den Test-Intent,Synonym-URLs würden kannibalisieren,Keiner — Aliasse
 mcas / mastzellaktivierungssyndrom,/beschwerden/histaminintoleranz/,Histaminintoleranz-Seite erklärt MCAS als Abgrenzungs-Abschnitt; umstrittene Diagnose ohne eigenen Owner,Eigene Seite würde Histamin-Intent splitten und Dünn-Content erzeugen,Keiner — Abschnitt auf histaminintoleranz
+akupunktur arthrose / gonarthrose / kniearthrose (eigene Slugs),/wissen/akupunktur-bei-knieschmerzen/,Knie-Artikel besitzt den Treatment-Intent inkl. Knie-OA-Evidenz,Synonym-Doorways würden die Serie splitten,Keiner — Aliasse
+akupunktur hüftarthrose / koxarthrose,"KEIN OWNER (offen, Cohort 01 Scope-Lock)",Bewusst NICHT auf den Knie-Artikel gemappt; eigener Owner erst nach separatem Entscheid,Vorschnelles Mapping würde Hüft-Intent falsch besetzen,Späterer eigener Artikel möglich
+akupunktur frozen shoulder / kalkschulter / impingement (eigene Slugs),/wissen/akupunktur-bei-schulterschmerzen/,Schulter-Umbrella besitzt den Treatment-Intent,Diagnose-Doorways würden splitten,Keiner — Aliasse
+akupunktur golferarm / epicondylitis (eigene Slugs),/wissen/akupunktur-bei-tennisarm/,Tennisarm-Artikel besitzt beide Epicondylitis-Formen,Synonym-Doorway,Keiner
+akupunktur plantarfasziitis (eigener Slug),/wissen/akupunktur-bei-fersensporn/,Fuss-Artikel besitzt Fersensporn UND Plantarfasziitis,Synonym-Doorway,Keiner
+akupunktur hitzewallungen / menopause (eigene Slugs),/wissen/akupunktur-bei-wechseljahresbeschwerden/,WJ-Artikel besitzt den vasomotorischen Treatment-Intent,hitzewallungen-Leaf würde kannibalisiert,Keiner
+akupunktur dysmenorrhoe / regelschmerzen / pms (eigene Slugs),/wissen/akupunktur-bei-menstruationsbeschwerden/,Menstruations-Artikel besitzt Dysmenorrhoe+PMS-Treatment-Intent,Synonym-Doorways,Keiner
+akupunktur cmd / kiefergelenk / zähneknirschen (eigene Slugs),/wissen/akupunktur-bei-kieferschmerzen/,Kiefer-Artikel besitzt CMD/Bruxismus-Treatment-Scope,Synonym-Doorways,Keiner
+akupunktur karpaltunnel (eigener Slug),/wissen/akupunktur-bei-karpaltunnelsyndrom/,KTS-Artikel besitzt den Treatment-Intent,Synonym-Doorway,Keiner
+akupressur übelkeit / p6 / akupressurband (eigene Slugs),/wissen/akupunktur-bei-uebelkeit/,P6-Artikel besitzt Nadel- UND Akupressur-Stimulation,Synonym-Doorways,Keiner
+akupunktur schwangerschaftsübelkeit,/therapien/akupunktur/schwangerschaft/,Schwangerschafts-Akupunktur-Owner; Übelkeits-Artikel verweist nur,Scope-Konflikt mit Schwangerschafts-Owner,Keiner
+hilft akupunktur bei [knie/schulter/wechseljahre/regelschmerzen/tennisarm/ferse/kiefer/reizdarm/kts/übelkeit] (eigene Slugs),jeweiliger /wissen/akupunktur-bei-*/-Artikel,Frage-Varianten gehören dem jeweiligen Treatment-Owner,Frage-Doorways,Keiner

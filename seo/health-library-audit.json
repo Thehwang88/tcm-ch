@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-05",
   "totals": {
-    "healthPages": 550,
+    "healthPages": 560,
     "byType": {
       "hub": 6,
       "condition": 154,
@@ -12,7 +12,7 @@
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
-      "editorial": 80,
+      "editorial": 90,
       "body_signal": 94,
       "therapy": 36,
       "visual": 10
@@ -40,7 +40,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 22
     },
     {
@@ -100,7 +100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 27,
       "outboundHealthLinks": 21
     },
     {
@@ -360,8 +360,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/fettleber/",
@@ -390,8 +390,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/fruktoseintoleranz/",
@@ -410,7 +410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -470,8 +470,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/guertelrose/",
@@ -560,8 +560,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/hoersturz/",
@@ -610,8 +610,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/inkontinenz/",
@@ -670,8 +670,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/karpaltunnelsyndrom/",
@@ -680,8 +680,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 24
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 25
     },
     {
       "url": "/beschwerden/kieferschmerzen/",
@@ -690,8 +690,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/kinderwunsch/",
@@ -710,8 +710,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 25,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/kopfschmerzen/",
@@ -830,8 +830,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/migraene/",
@@ -1030,8 +1030,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/pmdd/",
@@ -1050,8 +1050,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/polyneuropathie/",
@@ -1100,8 +1100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 34,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 35,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/restless-legs/",
@@ -1161,7 +1161,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 16
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/rueckenschmerzen/",
@@ -1180,7 +1180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1260,8 +1260,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 33,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/schuppenflechte/",
@@ -1320,7 +1320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 17
     },
     {
@@ -1420,8 +1420,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/tinnitus/",
@@ -1450,8 +1450,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/vaginismus/",
@@ -1480,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 45,
+      "inboundContentLinks": 46,
       "outboundHealthLinks": 20
     },
     {
@@ -1540,8 +1540,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 27,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/zaehneknirschen/",
@@ -1550,8 +1550,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/zoeliakie/",
@@ -2280,7 +2280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -3910,7 +3910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 11
     },
     {
@@ -4110,7 +4110,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -4610,7 +4610,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
+      "inboundContentLinks": 34,
       "outboundHealthLinks": 5
     },
     {
@@ -4620,8 +4620,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 298,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 305,
+      "outboundHealthLinks": 28
     },
     {
       "url": "/therapien/akupunktur/bauchakupunktur/",
@@ -4660,7 +4660,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 9
     },
     {
@@ -4960,7 +4960,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 116,
+      "inboundContentLinks": 117,
       "outboundHealthLinks": 14
     },
     {
@@ -5080,8 +5080,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 45,
-      "outboundHealthLinks": 45
+      "inboundContentLinks": 55,
+      "outboundHealthLinks": 55
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -5094,14 +5094,54 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/akupunktur-bei-fersensporn/",
+      "type": "editorial",
+      "title": "Akupunktur bei Fersensporn &amp; Plantarfasziitis | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-bei-heuschnupfen/",
       "type": "editorial",
       "title": "Akupunktur bei Heuschnupfen: Studienlage &amp; Nutzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/akupunktur-bei-karpaltunnelsyndrom/",
+      "type": "editorial",
+      "title": "Akupunktur beim Karpaltunnelsyndrom: Evidenz &amp; Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/akupunktur-bei-kieferschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Kieferschmerzen &amp; CMD | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-knieschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Knieschmerzen &amp; Kniearthrose: Was Studien zeigen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-bei-kopfschmerzen/",
@@ -5110,7 +5150,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-menstruationsbeschwerden/",
+      "type": "editorial",
+      "title": "Akupunktur bei Menstruationsbeschwerden &amp; PMS: ehrliche Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -5120,7 +5170,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-reizdarm/",
+      "type": "editorial",
+      "title": "Akupunktur bei Reizdarm: Was sie kann – und was nicht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -5130,7 +5190,47 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-schulterschmerzen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Schulterschmerzen: Nutzen, Grenzen &amp; Ablauf | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/akupunktur-bei-tennisarm/",
+      "type": "editorial",
+      "title": "Akupunktur bei Tennisarm &amp; Golferarm: Was Studien zeigen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-uebelkeit/",
+      "type": "editorial",
+      "title": "Akupunktur &amp; Akupressur gegen Übelkeit: Der Punkt P6 | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-wechseljahresbeschwerden/",
+      "type": "editorial",
+      "title": "Akupunktur bei Wechseljahresbeschwerden: Studienlage &amp; Ablauf | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -5160,7 +5260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 5
     },
     {
@@ -5220,7 +5320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -5330,7 +5430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 6
     },
     {

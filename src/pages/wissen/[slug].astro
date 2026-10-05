@@ -3,6 +3,8 @@ import LayoutDe from '../../layouts/LayoutDe.astro';
 import FaqBlock from '../../components/library/FaqBlock.astro';
 import AuthorCard from '../../components/library/AuthorCard.astro';
 import ArticleCta from '../../components/library/ArticleCta.astro';
+import TerminForm from '../../components/TerminForm.astro';
+import { akupunkturSerieSlugs } from '../../data/wissen-akupunktur-bei';
 import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../data/care';
 import { site } from '../../data/site';
 import { wissen, wissenBySlug } from '../../data/wissen';
@@ -85,6 +87,12 @@ const OUCH_ROWS: Record<string, { href: string; label: string }> = {
   'krankenkasse-tcm-was-wirklich-uebernommen-wird-2026': { href: `${OUCH_MAG}/insights/90-minuten-heuschnupfen/`, label: 'Warum Behandlungen 90 Minuten dauern – und was die Zusatzversicherung damit zu tun hat' },
 };
 const ouchRow = OUCH_ROWS[data.slug];
+
+// Treatment-Decision-Serie (Akupunktur bei X): zusaetzlich TerminForm nach dem
+// Befunde-Muster (PR #22) — rein statisches Formular, keine neuen Events.
+const isSerie = akupunkturSerieSlugs.includes(data.slug);
+const serieTopic = data.h1.split(':')[0].trim();
+const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angaben: `;
 ---
 <LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo}>
   <article>
@@ -154,6 +162,17 @@ const ouchRow = OUCH_ROWS[data.slug];
         {ouchRow && <div set:html={ouchMagRow(ouchRow.href, ouchRow.label)} />}
       </div>
     </section>
+
+    {isSerie && (
+      <TerminForm
+        heading="Anliegen schildern"
+        intro="Beschreib kurz, worum es geht – wir melden uns persönlich und sagen dir ehrlich, welcher nächste Schritt sinnvoll ist: ärztliche Abklärung, TCM oder eine andere Anlaufstelle."
+        prefill={serieFormPrefill}
+        submitLabel="Anliegen senden"
+        formular="TCM.ch CARE – Wissen"
+        quelleDetail={`Artikel: ${serieTopic} · Seite: ${path}/`}
+      />
+    )}
   </article>
 </LayoutDe>
 
