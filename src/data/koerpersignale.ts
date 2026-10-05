@@ -58,6 +58,7 @@ const DATEN10 = { datePublished: '2026-09-25', dateModified: '2026-09-25' };
 const DATEN11 = { datePublished: '2026-09-26', dateModified: '2026-09-26' };
 const DATEN12 = { datePublished: '2026-09-29', dateModified: '2026-09-29' };
 const DATEN13 = { datePublished: '2026-09-30', dateModified: '2026-09-30' };
+const DATEN14 = { datePublished: '2026-10-05', dateModified: '2026-10-05' };
 
 export const koerpersignale: Koerpersignal[] = [
   // ────────────────────────────────────────────── KOPF & SINNE
@@ -74,7 +75,7 @@ export const koerpersignale: Koerpersignal[] = [
     author: AUTOR,
     ...DATEN,
     bodyHtml: `<h2>Die kurze Antwort</h2>
-<p>Drehschwindel, der genau beim Umdrehen im Bett, beim Hinlegen oder beim Aufrichten auftritt und nach Sekunden wieder verschwindet, spricht am ehesten für einen <strong>gutartigen Lagerungsschwindel</strong>. Dabei geraten winzige Kalkkristalle im Gleichgewichtsorgan an eine Stelle, an die sie nicht gehören, und melden dem Gehirn bei bestimmten Kopfbewegungen eine Drehung, die gar nicht stattfindet.</p>
+<p>Drehschwindel, der genau beim Umdrehen im Bett, beim Hinlegen oder beim Aufrichten auftritt und nach Sekunden wieder verschwindet, spricht am ehesten für einen <strong><a href="/beschwerden/lagerungsschwindel/">gutartigen Lagerungsschwindel</a></strong>. Dabei geraten winzige Kalkkristalle im Gleichgewichtsorgan an eine Stelle, an die sie nicht gehören, und melden dem Gehirn bei bestimmten Kopfbewegungen eine Drehung, die gar nicht stattfindet.</p>
 <p>Das klingt beunruhigend, ist aber keine Erkrankung des Gehirns und kein Zeichen für einen Schlaganfall. Der Fachbegriff lautet benigner paroxysmaler Lagerungsschwindel, kurz BPLS. Er gehört zu den häufigsten Schwindelursachen überhaupt.</p>
 <h2>Woran du das Muster erkennst</h2>
 <p>Typisch für den Lagerungsschwindel sind vier Merkmale, die du selbst beobachten kannst:</p>
@@ -268,7 +269,7 @@ export const koerpersignale: Koerpersignal[] = [
     metaDesc: 'Ob Daumen, Ringfinger oder Kleinfinger taub sind, ist kein Zufall: Jeder Nerv versorgt bestimmte Finger. Was die Verteilung über die Ursache aussagt und wann du zum Arzt solltest.',
     h1: 'Warum sind ausgerechnet einzelne Finger taub?',
     category: 'Hände & Nerven',
-    lead: 'Nur der Daumen und der Zeigefinger. Oder nur Ring- und Kleinfinger. Wenn Taubheit einzelne Finger betrifft und andere auslässt, ist das eine wertvolle Information, denn die Verteilung zeigt oft ziemlich genau, welcher Nerv betroffen ist und wo das Problem sitzt.',
+    lead: 'Nur der Daumen und der Zeigefinger. Oder nur Ring- und Kleinfinger. Wenn Taubheit einzelne Finger betrifft und andere auslässt, ist das eine wertvolle Information, denn die Verteilung zeigt oft ziemlich genau, welcher Nerv betroffen ist und wo das Problem sitzt. Das gilt auch, wenn nur die Fingerspitzen taub sind.',
     readingTime: '7 Min.',
     ctaTitle: 'Taubheitsgefühl einordnen lassen?',
     author: AUTOR,
@@ -924,7 +925,7 @@ export const koerpersignale: Koerpersignal[] = [
     author: AUTOR,
     ...DATEN,
     bodyHtml: `<h2>Die Uhr ist der beste Hinweisgeber</h2>
-<p>Merk dir eine einfache Faustregel, mit der auch Rheumatolog:innen arbeiten: <strong>Anlaufsteifigkeit von wenigen Minuten</strong>, die nach dem ersten Bewegen verschwindet, spricht eher für Verschleiss oder Überlastung. <strong>Morgensteifigkeit, die deutlich länger als 30 bis 60 Minuten anhält</strong>, womöglich mit geschwollenen, warmen Gelenken, spricht für eine Entzündung und gehört abgeklärt. Diese eine Beobachtung sortiert die Ursachen besser als vieles andere.</p>
+<p>Merk dir eine einfache Faustregel, mit der auch Rheumatolog:innen arbeiten: <strong>Anlaufsteifigkeit von wenigen Minuten</strong>, die nach dem ersten Bewegen verschwindet, spricht eher für Verschleiss oder Überlastung. <strong>Morgensteifigkeit, die deutlich länger als 30 bis 60 Minuten anhält</strong>, womöglich mit geschwollenen, warmen Gelenken, spricht für eine Entzündung und gehört abgeklärt. Das gilt auch, wenn die Finger morgens vor allem geschwollen statt steif sind. Diese eine Beobachtung sortiert die Ursachen besser als vieles andere.</p>
 <h2>Warum Finger gerade morgens streiken</h2>
 <p>Über Nacht bewegt sich die Hand kaum. Gelenkflüssigkeit verteilt sich schlechter, Gewebswasser sammelt sich in den Fingern, und Kapseln und Sehnen stehen morgens praller und strammer da als tagsüber. Ein bisschen Anlaufzeit am Morgen ist deshalb normal, gerade mit zunehmendem Alter und nach handintensiven Tagen mit Garten, Werkzeug oder viel Tastatur.</p>
 <h2>Die häufigsten Erklärungen im Überblick</h2>
@@ -3029,7 +3030,7 @@ export const koerpersignale: Koerpersignal[] = [
     metaDesc: 'Nachts kribbeln die Beine und rauben dir den Schlaf? Von Liegeposition über Nerven bis Restless Legs: die häufigsten Muster und wann das Kribbeln abgeklärt gehört.',
     h1: 'Warum kribbeln meine Beine in der Nacht?',
     category: 'Muskeln & Beine',
-    lead: 'Kaum liegst du im Bett, beginnen die Beine zu kribbeln, wie Ameisenlaufen oder feines Prickeln. Nachts fällt jede Missempfindung stärker auf, weil die Ablenkung fehlt. Hier erfährst du, welche Muster hinter nächtlichem Beinkribbeln stecken können und wie du es vom Restless-Legs-Syndrom unterscheidest.',
+    lead: 'Kaum liegst du im Bett, beginnen die Beine zu kribbeln, wie Ameisenlaufen oder feines Prickeln. Nachts fällt jede Missempfindung stärker auf, weil die Ablenkung fehlt. Hier erfährst du, welche Muster hinter nächtlichem Beinkribbeln stecken können und wie du es vom Restless-Legs-Syndrom unterscheidest. Auch tagsüber auftretendes Kribbeln in den Beinen ordnest du mit denselben Mustern ein.',
     readingTime: '6 Min.',
     ctaTitle: 'Unruhige Beine und Schlaf gemeinsam anschauen?',
     author: AUTOR,
@@ -4501,6 +4502,198 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/muskelzucken/', label: 'Muskelzucken am Körper', cat: 'Körpersignal' },
       { href: '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/', label: 'Neurologische Untersuchung', cat: 'Untersuchung' },
       { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion', cat: 'Beschwerde' },
+    ],
+  },
+  {
+    slug: 'druck-auf-der-brust',
+    symptom: 'Druck auf der Brust',
+    title: 'Druck auf der Brust: Wann es ein Notfall ist',
+    metaDesc: 'Druck oder Enge auf der Brust kann harmlos sein – oder ein Notfall. Welche Warnzeichen sofort den Notruf 144 brauchen und welche Ursachen dahinterstecken können.',
+    h1: 'Was bedeutet Druck auf der Brust?',
+    category: 'Muskeln & Beine',
+    lead: 'Druck oder Enge auf der Brust hat viele mögliche Ursachen – von Muskulatur und Magen bis zu Herz und Psyche. Weil ein Herznotfall dazugehören kann, steht hier die Sicherheitsfrage an erster Stelle.',
+    readingTime: '6 Min.',
+    author: AUTOR,
+    ...DATEN14,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Zuerst: Ist es ein Notfall?</div><p>Neuer, starker oder unerklärter Druck auf der Brust – besonders zusammen mit Atemnot, kaltem Schweiss, Übelkeit, Schwächegefühl oder Schmerzen, die in Arm, Rücken oder Kiefer ausstrahlen – kann ein Herznotfall sein. In dieser Situation gilt in der Schweiz: sofort Notruf 144 wählen, nicht abwarten und nicht selbst fahren. Das gilt auch nachts und auch, wenn die Beschwerden wieder nachlassen.</p></div>
+<h2>Die kurze Antwort</h2>
+<p>Druck auf der Brust ist ein Sammelsignal: Er kann vom Herzen kommen, von der Lunge, von Speiseröhre und Magen, von der Brustwand – oder Ausdruck von Stress und Angst sein. Aus dem Gefühl allein lässt sich die Ursache nicht sicher bestimmen, auch nicht für erfahrene Fachpersonen ohne Untersuchung. Deshalb gehört neuer oder unklarer Brustdruck medizinisch eingeordnet.</p>
+<h2>Mögliche Richtungen – ohne Selbstdiagnose</h2>
+<ul>
+<li><strong>Herz und Gefässe:</strong> Druck oder Enge bei Belastung, mit Atemnot oder Ausstrahlung. Diese Möglichkeit wird immer zuerst geprüft.</li>
+<li><strong>Lunge und Atemwege:</strong> Druck mit Husten, Atemnot oder atemabhängigen Schmerzen, etwa bei Infekten oder <a href="/beschwerden/asthma/">Asthma</a>.</li>
+<li><strong>Speiseröhre und Magen:</strong> Brennen oder Druck hinter dem Brustbein, oft nach dem Essen oder im Liegen, etwa bei <a href="/beschwerden/sodbrennen/">Reflux</a>.</li>
+<li><strong>Brustwand:</strong> Druckempfindliche, bewegungs- oder atemabhängige Beschwerden, etwa bei <a href="/beschwerden/costochondritis/">Costochondritis</a> oder einer <a href="/beschwerden/interkostalneuralgie/">Interkostalneuralgie</a>.</li>
+<li><strong>Stress und Angst:</strong> Enge mit Herzklopfen, Unruhe und flacher Atmung, etwa bei <a href="/beschwerden/panikattacken/">Panikattacken</a> – eine Einordnung, die erst nach Ausschluss körperlicher Ursachen sicher ist.</li>
+</ul>
+<h2>Was bei der Abklärung passiert</h2>
+<p>Je nach Situation gehören dazu die ärztliche Untersuchung, ein <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG</a>, Blutwerte und bei Bedarf weitere Herz- oder Magen-Darm-Diagnostik. Hilfreich für die Einordnung ist deine Beobachtung: Wann tritt der Druck auf – bei Belastung, nach dem Essen, bei Bewegung des Oberkörpers, in Ruhe? Wie lange hält er an? Was begleitet ihn?</p>
+<h2>Wiederkehrender, bereits abgeklärter Druck</h2>
+<p>Ist eine ernsthafte Ursache ärztlich ausgeschlossen und bleibt ein wiederkehrendes Engegefühl – etwa bei Verspannung der Brustwand oder in Stressphasen – lohnt sich ein zweiter Blick auf Muskulatur, Atmung und Belastung. Atemübungen, Bewegung und Entspannungsverfahren sind hier oft wirksamer als weiteres Sorgen-Googeln.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Erst nach der medizinischen Abklärung: Bei bestätigt muskulärem Brustwandschmerz oder stressbedingter Enge kann eine ergänzende Behandlung mit <a href="/therapien/akupunktur/">Akupunktur</a> besprochen werden. Bei unklarem Brustdruck ist TCM nicht der richtige erste Schritt.</p>`,
+    faqs: [
+      { q: 'Wann muss ich bei Druck auf der Brust den Notruf wählen?', a: 'Bei neuem, starkem oder unerklärtem Brustdruck, besonders mit Atemnot, kaltem Schweiss, Übelkeit, Schwäche oder Ausstrahlung in Arm, Rücken oder Kiefer: sofort 144. Auch dann, wenn die Beschwerden wieder nachlassen.' },
+      { q: 'Kann Druck auf der Brust von Stress kommen?', a: 'Ja, Stress und Angst können Enge, Herzklopfen und flache Atmung auslösen. Diese Einordnung ist aber erst sicher, wenn körperliche Ursachen ärztlich ausgeschlossen wurden.' },
+      { q: 'Kann der Druck von der Muskulatur kommen?', a: 'Ja. Brustwand-Ursachen wie gereizte Rippenknorpel oder Muskelverspannungen sind häufig; typisch sind druckempfindliche, bewegungs- oder atemabhängige Beschwerden. Die Abgrenzung zum Herzen gehört trotzdem in ärztliche Hände.' },
+    ],
+    related: [
+      { href: '/beschwerden/costochondritis/', label: 'Costochondritis', cat: 'Beschwerde' },
+      { href: '/beschwerden/panikattacken/', label: 'Panikattacken', cat: 'Beschwerde' },
+      { href: '/koerpersignale/schmerzen-beim-tiefen-einatmen/', label: 'Schmerzen beim tiefen Einatmen', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG & Langzeit-EKG', cat: 'Untersuchung' },
+    ],
+  },
+  {
+    slug: 'lymphknoten-geschwollen-hals',
+    symptom: 'Geschwollene Lymphknoten am Hals',
+    title: 'Geschwollene Lymphknoten am Hals: Was steckt dahinter?',
+    metaDesc: 'Geschwollene Halslymphknoten sind meist Zeichen einer Abwehrreaktion. Wann sie harmlos sind, wie lange sie bleiben dürfen und wann eine Abklärung wichtig ist.',
+    h1: 'Was bedeuten geschwollene Lymphknoten am Hals?',
+    category: 'Hals & Mund',
+    lead: 'Tastbare Lymphknoten am Hals sind meist ein Zeichen, dass das Immunsystem arbeitet – etwa bei einer Erkältung. Entscheidend sind Verlauf, Beschaffenheit und Begleitsymptome.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN14,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Lymphknoten sind Filterstationen des Immunsystems. Bei Infekten im Hals-Nasen-Rachen-Raum – Erkältung, Halsentzündung, Zahnprobleme – schwellen die Knoten am Hals häufig an, sind druckempfindlich und gut verschieblich. Das ist eine normale Abwehrreaktion und bildet sich mit dem Infekt meist innert zwei bis drei Wochen zurück.</p>
+<h2>Was eher für eine harmlose Ursache spricht</h2>
+<ul>
+<li>gleichzeitiger oder kurz zurückliegender Infekt</li>
+<li>druckempfindliche, weiche, verschiebliche Knoten</li>
+<li>Rückgang innert weniger Wochen</li>
+</ul>
+<h2>Wann eine Abklärung wichtig ist</h2>
+<p>Ärztlich beurteilen lassen solltest du Lymphknoten, die über mehrere Wochen bestehen bleiben oder wachsen, die sich hart, höckrig oder unverschieblich anfühlen, sowie Schwellungen zusammen mit anhaltendem Fieber, Nachtschweiss, <a href="/koerpersignale/nachtschweiss-ohne-fieber/">ungewohntem nächtlichem Schwitzen</a> oder ungewolltem Gewichtsverlust. Auch ohne diese Zeichen gilt: Ein unklarer Knoten, der dich beunruhigt, darf angeschaut werden – die allermeisten Abklärungen enden mit einer harmlosen Erklärung.</p>
+<h2>Wie abgeklärt wird</h2>
+<p>Die Ärztin tastet die Knoten und das Umfeld ab, sucht nach Infektquellen und entscheidet je nach Befund über Blutwerte, <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> oder weitere Schritte. Oft genügt es, den Verlauf über einige Wochen zu beobachten.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Ein unklarer, anhaltend vergrösserter Lymphknoten gehört zuerst in medizinische Abklärung – er ist kein Fall für eine TCM-Behandlung. Geht es nach der Einordnung um wiederkehrende Infekte oder Erschöpfung, kann eine ergänzende Behandlung besprochen werden.</p>`,
+    faqs: [
+      { q: 'Wie lange dürfen Lymphknoten am Hals geschwollen sein?', a: 'Nach Infekten bilden sich die Knoten meist innert zwei bis drei Wochen zurück. Bleiben sie länger vergrössert oder wachsen sie, gehört das ärztlich beurteilt.' },
+      { q: 'Welche Lymphknoten sind verdächtig?', a: 'Knoten, die hart, höckrig oder nicht verschieblich sind, über Wochen bestehen oder wachsen, sowie Schwellungen mit Fieber, Nachtschweiss oder ungewolltem Gewichtsverlust sollten abgeklärt werden.' },
+      { q: 'Sind geschwollene Lymphknoten bei einer Erkältung normal?', a: 'Ja. Die Knoten filtern Krankheitserreger und schwellen bei Infekten im Hals-Nasen-Rachen-Raum häufig an – druckempfindlich und verschieblich. Das ist eine normale Abwehrreaktion.' },
+    ],
+    related: [
+      { href: '/beschwerden/immunschwaeche/', label: 'Immunschwäche & häufige Infekte', cat: 'Beschwerde' },
+      { href: '/koerpersignale/nachtschweiss-ohne-fieber/', label: 'Nachtschweiss ohne Fieber', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall', cat: 'Untersuchung' },
+      { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'Grosses Blutbild', cat: 'Untersuchung' },
+    ],
+  },
+  {
+    slug: 'appetitlosigkeit',
+    symptom: 'Appetitlosigkeit',
+    title: 'Appetitlosigkeit: Mögliche Ursachen & wann abklären',
+    metaDesc: 'Kein Hunger über Tage oder Wochen? Welche Ursachen hinter Appetitlosigkeit stecken können, wann sie harmlos ist und welche Warnzeichen eine Abklärung brauchen.',
+    h1: 'Was bedeutet anhaltende Appetitlosigkeit?',
+    category: 'Bauch & Verdauung',
+    lead: 'Vorübergehende Appetitlosigkeit kennt jeder – bei Infekten, Stress oder Hitze. Hält sie an oder kommt Gewichtsverlust dazu, verdient sie einen genaueren Blick.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN14,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Appetitlosigkeit ist ein Symptom, keine Diagnose. Kurzfristig ist sie meist harmlos: Akute Infekte, Stress, Sorgen oder Hitze dämpfen den Appetit vorübergehend. Anhaltende Appetitlosigkeit über Wochen kann dagegen viele Ursachen haben – von Magen-Darm-Problemen über Medikamente bis zu seelischer Belastung oder systemischen Erkrankungen – und gehört eingeordnet.</p>
+<h2>Häufige Zusammenhänge</h2>
+<ul>
+<li><strong>Akute Infekte:</strong> Appetit kehrt mit der Genesung zurück.</li>
+<li><strong>Magen und Verdauung:</strong> etwa <a href="/beschwerden/gastritis/">Gastritis</a>, <a href="/beschwerden/funktionelle-dyspepsie/">Reizmagen</a> oder frühes Völlegefühl.</li>
+<li><strong>Medikamente:</strong> zahlreiche Wirkstoffe dämpfen den Appetit – ein Blick auf die Medikamentenliste lohnt sich.</li>
+<li><strong>Psyche:</strong> Stress, Sorgen und <a href="/beschwerden/depressionen/">depressive Episoden</a> verändern das Essverhalten häufig.</li>
+<li><strong>Systemische Erkrankungen:</strong> länger dauernde Appetitlosigkeit kann Begleiterscheinung internistischer Erkrankungen sein.</li>
+</ul>
+<h2>Wann abklären?</h2>
+<p>Ärztlich beurteilen lassen solltest du Appetitlosigkeit, die länger als zwei bis drei Wochen anhält – besonders zusammen mit ungewolltem Gewichtsverlust, Schluckbeschwerden, anhaltender Übelkeit, Fieber, Nachtschweiss, deutlicher Schwäche oder wenn du kaum noch trinkst. Bei älteren Menschen ist nachlassender Appetit mit Gewichtsverlust generell ein Grund für einen Arztbesuch.</p>
+<h2>Wie abgeklärt wird</h2>
+<p>Dazu gehören Gespräch und Untersuchung, meist Blutwerte und je nach Verdacht weitere Diagnostik des Magen-Darm-Trakts. Die Medikamentenliste wird mit angeschaut.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Nach der Einordnung kann eine ergänzende Behandlung besprochen werden, wenn funktionelle Verdauungsbeschwerden, Stress oder Erschöpfung den Appetit erkennbar mitprägen – etwa mit <a href="/therapien/akupunktur/">Akupunktur</a>. Ein unklarer Gewichtsverlust gehört dagegen zuerst in medizinische Abklärung.</p>`,
+    faqs: [
+      { q: 'Wann ist Appetitlosigkeit ein Warnzeichen?', a: 'Wenn sie länger als zwei bis drei Wochen anhält oder mit ungewolltem Gewichtsverlust, Schluckbeschwerden, anhaltender Übelkeit, Fieber, Nachtschweiss oder deutlicher Schwäche einhergeht.' },
+      { q: 'Können Medikamente den Appetit nehmen?', a: 'Ja, zahlreiche Wirkstoffe dämpfen den Appetit. Bei neu aufgetretener Appetitlosigkeit lohnt sich ein Blick auf die Medikamentenliste, Anpassungen gehören in ärztliche Hände.' },
+      { q: 'Kann Stress den Appetit nehmen?', a: 'Ja. Stress, Sorgen und depressive Verstimmungen verändern das Essverhalten häufig, in beide Richtungen. Hält die Appetitlosigkeit an, gehört sie trotzdem medizinisch eingeordnet.' },
+    ],
+    related: [
+      { href: '/beschwerden/gastritis/', label: 'Gastritis', cat: 'Beschwerde' },
+      { href: '/beschwerden/funktionelle-dyspepsie/', label: 'Funktionelle Dyspepsie (Reizmagen)', cat: 'Beschwerde' },
+      { href: '/beschwerden/depressionen/', label: 'Depressive Verstimmung', cat: 'Beschwerde' },
+      { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'belegte-zunge',
+    symptom: 'Belegte Zunge',
+    title: 'Belegte Zunge: Was der Zungenbelag bedeutet',
+    metaDesc: 'Weisser oder gelblicher Belag auf der Zunge? Was dahinterstecken kann, wann ein Belag harmlos ist, wann er abgeklärt gehört – und was die TCM-Zungendiagnostik ist.',
+    h1: 'Meine Zunge ist belegt – was kann dahinterstecken?',
+    category: 'Hals & Mund',
+    lead: 'Ein leichter Zungenbelag ist normal und verändert sich im Tagesverlauf. Interessant wird es, wenn der Belag dick, verfärbt oder schmerzhaft ist – oder einfach nicht verschwindet.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN14,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Der Belag auf der Zunge besteht aus abgeschilferten Zellen, Nahrungsresten und Mikroorganismen – ein dünner weisslicher Film ist völlig normal, besonders morgens. Dicker wird der Belag etwa bei <a href="/koerpersignale/trockener-mund-nachts/">trockenem Mund</a>, bei weicher Kost (die Zunge reibt sich weniger ab), bei Infekten, durch Rauchen oder Kaffee und bei reduzierter Mundhygiene.</p>
+<h2>Was verschiedene Beläge bedeuten können</h2>
+<ul>
+<li><strong>Dünn und weisslich:</strong> normaler Biofilm, morgens stärker, nach dem Essen und Zähneputzen geringer.</li>
+<li><strong>Dick weiss, abwischbar mit roter, wunder Fläche darunter:</strong> kann zu einem Mundsoor (Candida-Pilz) passen, häufiger bei geschwächter Abwehr, Zahnprothesen oder nach Antibiotika – gehört ärztlich oder zahnärztlich angeschaut.</li>
+<li><strong>Gelblich-bräunlich:</strong> oft durch Rauchen, Kaffee, Tee oder Mundtrockenheit mitgeprägt.</li>
+<li><strong>Weisse Flecken, die sich nicht abwischen lassen, oder wunde, schmerzhafte Stellen:</strong> solche Veränderungen gehören zahnärztlich oder ärztlich beurteilt, besonders wenn sie länger als zwei Wochen bestehen.</li>
+</ul>
+<h2>Wann abklären?</h2>
+<p>Anhaltende, schmerzhafte oder ungewöhnliche Veränderungen an Zunge oder Mundschleimhaut – Beläge, die sich nicht abwischen lassen, wunde Stellen, Verhärtungen, anhaltendes <a href="/koerpersignale/zungenbrennen/">Zungenbrennen</a> – sollten nach spätestens zwei Wochen fachlich angeschaut werden. Ebenso ein dicker Belag mit Schluckbeschwerden oder deutlichem Krankheitsgefühl.</p>
+<h2>Was du selbst tun kannst</h2>
+<p>Regelmässige Mundhygiene inklusive sanfter Zungenreinigung, genug trinken, Rauchstopp und das Kauen fester Kost reduzieren den Belag meist deutlich.</p>
+<h2>Und was ist mit der TCM-Zungendiagnostik?</h2>
+<p>In der Traditionellen Chinesischen Medizin wird die Zunge als Teil der Musterdiagnostik betrachtet – Form, Farbe und Belag fliessen in die traditionelle Einordnung ein. Wichtig zur Einordnung: Das Zungenbild allein diagnostiziert keine westliche Erkrankung und beweist keine Organstörung. Was die traditionelle Zungenbetrachtung ist und was sie nicht leisten kann, erklärt unsere Seite <a href="/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/">Zungendiagnostik</a>.</p>`,
+    faqs: [
+      { q: 'Ist eine belegte Zunge normal?', a: 'Ein dünner weisslicher Belag ist normal, besonders morgens. Er besteht aus Zellen, Nahrungsresten und Mikroorganismen und nimmt mit Essen und Mundhygiene wieder ab.' },
+      { q: 'Wann sollte ich eine belegte Zunge abklären lassen?', a: 'Bei Belägen oder Flecken, die sich nicht abwischen lassen, wunden oder schmerzhaften Stellen, Verhärtungen oder Veränderungen, die länger als zwei Wochen bestehen – zahnärztlich oder ärztlich.' },
+      { q: 'Was sagt die Zunge in der TCM aus?', a: 'In der TCM fliesst das Zungenbild in die traditionelle Mustereinordnung ein. Es diagnostiziert aber keine westliche Erkrankung und beweist keine Organstörung – Details erklärt unsere Seite zur Zungendiagnostik.' },
+    ],
+    related: [
+      { href: '/gesundheitsbibliothek/tcm-verstehen/diagnostik/zungendiagnostik/', label: 'Zungendiagnostik (TCM verstehen)', cat: 'TCM verstehen' },
+      { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
+      { href: '/koerpersignale/trockener-mund-nachts/', label: 'Trockener Mund nachts', cat: 'Körpersignal' },
+      { href: '/koerpersignale/bitterer-geschmack-morgens/', label: 'Bitterer Geschmack am Morgen', cat: 'Körpersignal' },
+    ],
+  },
+  {
+    slug: 'blaue-flecken-ohne-grund',
+    symptom: 'Blaue Flecken ohne erkennbaren Grund',
+    title: 'Blaue Flecken ohne Grund: Wann abklären lassen?',
+    metaDesc: 'Immer wieder blaue Flecken ohne erinnerliche Stösse? Welche harmlosen Erklärungen es gibt, welche Rolle Medikamente und Blutplättchen spielen und wann zum Arzt.',
+    h1: 'Warum habe ich blaue Flecken ohne erkennbaren Grund?',
+    category: 'Hände & Nerven',
+    lead: 'Einzelne blaue Flecken ohne erinnerlichen Stoss sind meist harmlos – kleine Alltagsstösse bleiben oft unbemerkt. Häufen sie sich oder kommen andere Blutungszeichen dazu, gehört das abgeklärt.',
+    readingTime: '5 Min.',
+    author: AUTOR,
+    ...DATEN14,
+    bodyHtml: `<h2>Die kurze Antwort</h2>
+<p>Ein blauer Fleck entsteht, wenn kleine Gefässe unter der Haut verletzt werden und Blut ins Gewebe austritt. Viele «unerklärliche» Flecken haben eine banale Erklärung: Der auslösende Stoss war zu klein, um ihn zu bemerken. Mit dem Alter und bei dünner Haut entstehen Flecken zudem leichter, besonders an Unterarmen und Schienbeinen.</p>
+<h2>Was die Neigung zu blauen Flecken erhöht</h2>
+<ul>
+<li><strong>Medikamente:</strong> Blutverdünner, Aspirin und teils auch Schmerzmittel oder Kortison erhöhen die Blutungsneigung.</li>
+<li><strong>Alter und Hautbeschaffenheit:</strong> dünnere Haut und empfindlichere Gefässe.</li>
+<li><strong>Blutplättchen und Gerinnung:</strong> zu wenige oder schlecht funktionierende Blutplättchen – mehr dazu auf unserer Seite <a href="/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/">Thrombozyten niedrig</a> – sowie Gerinnungsstörungen.</li>
+<li><strong>Andere Erkrankungen:</strong> selten stecken Leber-, Blut- oder Gefässerkrankungen dahinter.</li>
+</ul>
+<h2>Wann abklären?</h2>
+<p>Ärztlich beurteilen lassen solltest du: auffallend viele oder grosse Flecken ohne erinnerliche Ursache, Flecken an ungewöhnlichen Stellen wie Rumpf oder Gesicht, zusätzlich Zahnfleisch- oder Nasenbluten, sehr lange Blutungen nach kleinen Verletzungen, punktförmige rote Einblutungen (Petechien) oder Flecken zusammen mit Fieber, Blässe oder deutlicher Müdigkeit. Auch unter Blutverdünnern gehört eine neue, deutliche Häufung angesprochen – die Medikamente aber nie eigenmächtig absetzen.</p>
+<h2>Wie abgeklärt wird</h2>
+<p>Meist genügen Gespräch, Untersuchung und Blutwerte – insbesondere ein <a href="/gesundheitsbibliothek/untersuchungen/grosses-blutbild/">Blutbild</a> mit Blutplättchen und Gerinnungstests –, um die Blutungsneigung einzuordnen.</p>
+<h2>Welche Rolle kann TCM spielen?</h2>
+<p>Eine unklare Blutungsneigung ist kein Einsatzgebiet für TCM: Zuerst gehört sie medizinisch abgeklärt. Zur Einordnung: Nach einer Akupunktur- oder Schröpfbehandlung können einzelne kleine Hämatome an den behandelten Stellen entstehen – das ist eine bekannte, harmlose Begleiterscheinung und etwas anderes als spontane blaue Flecken.</p>`,
+    faqs: [
+      { q: 'Sind blaue Flecken ohne Grund gefährlich?', a: 'Einzelne Flecken an Armen oder Beinen sind meist harmlos – kleine Stösse bleiben oft unbemerkt. Abklären lassen solltest du eine neue Häufung, grosse Flecken, ungewöhnliche Stellen oder zusätzliche Blutungszeichen.' },
+      { q: 'Welche Rolle spielen Medikamente?', a: 'Blutverdünner, Aspirin und weitere Medikamente erhöhen die Neigung zu blauen Flecken. Eine deutliche Häufung gehört angesprochen – Medikamente aber nie selbstständig absetzen.' },
+      { q: 'Welche Blutwerte werden geprüft?', a: 'Meist ein Blutbild mit Blutplättchen (Thrombozyten) und Gerinnungstests. Damit lässt sich die Blutungsneigung in der Regel gut einordnen.' },
+    ],
+    related: [
+      { href: '/gesundheitsbibliothek/befunde-werte/thrombozyten-niedrig/', label: 'Thrombozyten niedrig', cat: 'Befund' },
+      { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'Grosses Blutbild', cat: 'Untersuchung' },
+      { href: '/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/', label: 'Blaue Flecken nach Akupunktur', cat: 'Patientenfrage' },
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
     ],
   },
 ];

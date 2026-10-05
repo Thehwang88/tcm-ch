@@ -72,7 +72,7 @@ export interface BefundWert {
 export const HUB_INDEXABLE = true;
 
 // Anzeige-Reihenfolge der Hub-Gruppen (Phase: Cluster-Ausbau 24.09.2026).
-export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse', 'Elektrolyte', 'Stoffwechsel', 'Vitamine & Eisenspeicher', 'Entzündung', 'Schilddrüse', 'Niere & Blutdruck', 'Weitere Werte'];
+export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse', 'Elektrolyte', 'Stoffwechsel', 'Vitamine & Eisenspeicher', 'Entzündung', 'Schilddrüse', 'Niere & Blutdruck', 'Urin', 'Weitere Werte'];
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -375,6 +375,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Zeitnah medizinisch beurteilt gehören: Gelbfärbung von Haut oder Augen, sehr dunkler Urin oder heller, entfärbter Stuhl, starke Schmerzen im rechten Oberbauch, Fieber mit Schüttelfrost oder ausgeprägter Juckreiz am ganzen Körper. Solche Zeichen können auf einen Gallestau oder eine relevante Lebererkrankung hinweisen.</p>`,
     integrativeContextHtml: `<p>Bilirubin gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab. Erst wenn die Ursache ärztlich geklärt ist, kann sich die Frage nach einer komplementären Begleitung konkreter Beschwerden stellen.</p>`,
     relatedArticles: [
+      { href: '/beschwerden/gallensteine/', label: 'Gallensteine' },
       { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Wie lässt sich der Befund einordnen?' },
       { href: '/gesundheitsbibliothek/befunde-werte/gamma-gt-erhoeht/', label: 'Gamma-GT erhöht: Was bedeutet der Wert?' },
     ],
@@ -775,6 +776,7 @@ export const befundeWerte: BefundWert[] = [
     relatedSignals: [{ href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts' }],
     relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
     relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/', label: 'Folsäure zu niedrig' },
       { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht: Was bedeutet ein zu hoher MCV-Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
@@ -1425,7 +1427,7 @@ export const befundeWerte: BefundWert[] = [
     deck: 'Ein niedriger TSH-Wert bedeutet nicht automatisch Schilddrüsenüberfunktion. Entscheidend sind FT4, FT3, Medikamente, Verlauf und klinische Situation.',
     primaryPurpose: 'Einordnung des niedrigen TSH; tsh-erhoeht bleibt separater HIGH-Owner.',
     canonicalIntentOwner: [],
-    overlapNotes: 'tsh-erhoeht bleibt Owner des Hoch-Intents (beidseitig verlinkt). Diese Seite besitzt NUR den Niedrig-Intent; keine Hyperthyreose-Erkrankungs-Seite.',
+    overlapNotes: 'tsh-erhoeht bleibt Owner des Hoch-Intents (beidseitig verlinkt). Diese Seite besitzt NUR den Niedrig-Intent; Erkrankungs-Owner Hyperthyreose ist seit 10/2026 /beschwerden/schilddruesenueberfunktion/ (verlinkt).',
     suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
     shortAnswerHtml: `<p>TSH ist ein Steuerhormon, das wesentlich an der Regulation der Schilddrüse beteiligt ist. Ein niedriger TSH-Wert kann zu einer Schilddrüsenüberfunktion passen, beweist sie aber nicht. Für die Einordnung sind insbesondere FT4, FT3, Medikamente, Verlauf und die persönliche Situation wichtig.</p>`,
     bodyHtml: `<h2>Was ist TSH?</h2>
@@ -1443,6 +1445,7 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Eine ärztliche Einordnung ist besonders sinnvoll, wenn FT4 oder FT3 ebenfalls auffällig sind, Herzrasen oder Herzrhythmusstörungen auftreten, deutlicher Gewichtsverlust besteht, der Wert wiederholt niedrig ist oder du Schilddrüsenmedikamente einnimmst.</p>`,
     integrativeContextHtml: `<p>Blutbild- und Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein bestimmtes TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
+      { href: '/beschwerden/schilddruesenueberfunktion/', label: 'Schilddrüsenüberfunktion (Hyperthyreose)' },
       { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
       { href: '/koerpersignale/herzstolpern-in-ruhe/', label: 'Herzstolpern in Ruhe: Was steckt dahinter?' },
     ],
@@ -2086,6 +2089,8 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Der HbA1c-Wert selbst ist kein Notfall. Rasch medizinisch beurteilt gehören dagegen ausgeprägter Durst mit häufigem Wasserlassen, ungewollter Gewichtsverlust, starke Müdigkeit mit Übelkeit oder Erbrechen, tiefe oder auffällige Atmung sowie Verwirrtheit, unabhängig vom Laborwert.</p>`,
     integrativeContextHtml: `<p>Die Beurteilung des Zuckerstoffwechsels und die Entscheidung über eine Behandlung gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert HbA1c nicht und ersetzt weder Diagnostik noch eine notwendige Therapie. Erst auf Basis der ärztlichen Einordnung kann sich die Frage stellen, ob eine komplementäre Begleitung bei konkreten Beschwerden sinnvoll ist.</p>`,
     relatedArticles: [
+      { href: '/beschwerden/diabetes-typ-2/', label: 'Diabetes Typ 2' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ogtt/', label: 'oGTT (Glukosetoleranztest)' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
     ],
@@ -2120,6 +2125,8 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Sehr hohe gemessene Werte zusammen mit starker Übelkeit, Erbrechen, deutlicher Austrocknung, tiefer oder auffälliger Atmung, Verwirrtheit oder ausgeprägter allgemeiner Verschlechterung benötigen rasche medizinische Abklärung.</p>`,
     integrativeContextHtml: `<p>Ein erhöhter Blutzucker ist ein moderner medizinischer Messwert und lässt sich nicht direkt in ein TCM-Muster übersetzen. Akupunktur ersetzt weder Diagnostik noch notwendige medizinische Behandlung einer gestörten Blutzuckerregulation.</p>`,
     relatedArticles: [
+      { href: '/beschwerden/diabetes-typ-2/', label: 'Diabetes Typ 2' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ogtt/', label: 'oGTT (Glukosetoleranztest)' },
       { href: '/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/', label: 'HbA1c erhöht: Was bedeutet der Langzeitwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht: Was bedeutet das?' },
       { href: '/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/', label: 'Blutdruck 140/90: Was bedeutet dieser Wert?' },
@@ -2200,6 +2207,181 @@ export const befundeWerte: BefundWert[] = [
     ],
     relatedVisuals: [
       { href: '/visuals/bandscheibenvorfall-lws/', label: 'Visual: Bandscheibenvorfall LWS' },
+    ],
+  },
+  {
+    slug: 'folsaeure-zu-niedrig',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Folsäure zu niedrig: Was bedeutet ein Folsäuremangel?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-10-05',
+    deck: 'Ein tiefer Folsäurewert kann Blutbildung und Zellteilung betreffen. Was dahinterstecken kann, warum Vitamin B12 mitgeprüft wird und wie der Mangel behoben wird.',
+    primaryPurpose: 'Owner für den Niedrig-Intent Folsäure/Folat; Zwilling zu vitamin-b12-zu-niedrig.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'vitamin-b12-zu-niedrig bleibt B12-Owner (beidseitig verlinkt, gemeinsames Thema Makrozytose). eisenmangel bleibt Eisen-Owner. Kein Owner für Folsäure vorhanden (geprüft 05.10.2026).',
+    suggestedReviewerType: 'Ärztliche Review (Hausarztmedizin/Hämatologie)',
+    shortAnswerHtml: `<p>Folsäure (Folat) ist ein B-Vitamin, das der Körper für Zellteilung und Blutbildung braucht. Ein zu niedriger Wert kann durch einseitige Ernährung, Aufnahmestörungen im Darm, erhöhten Bedarf oder Medikamente entstehen. Die Behandlung richtet sich nach der Ursache; ein nachgewiesener Mangel wird in Absprache mit der Ärztin gezielt ausgeglichen.</p>`,
+    bodyHtml: `<h2>Wofür braucht der Körper Folsäure?</h2>
+<p>Folat ist an der Zellteilung beteiligt – besonders dort, wo sich Zellen rasch erneuern, etwa bei der Bildung der roten Blutkörperchen. Ein länger bestehender Mangel kann deshalb zu einer Blutarmut mit vergrösserten roten Blutkörperchen führen (makrozytäre Anämie); im Blutbild fällt dann oft ein erhöhtes <a href="/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/">MCV</a> auf.</p>
+<h2>Mögliche Ursachen eines tiefen Folsäurewerts</h2>
+<ul>
+<li>einseitige Ernährung mit wenig Gemüse, Salat und Hülsenfrüchten</li>
+<li>Aufnahmestörungen im Darm, etwa bei <a href="/beschwerden/zoeliakie/">Zöliakie</a> oder chronisch-entzündlichen Darmerkrankungen</li>
+<li>erhöhter Bedarf, insbesondere in der Schwangerschaft</li>
+<li>regelmässiger Alkoholkonsum</li>
+<li>bestimmte Medikamente, die den Folatstoffwechsel beeinflussen</li>
+</ul>
+<h2>Warum Vitamin B12 mitgeprüft wird</h2>
+<p>Folsäure- und <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin-B12-Mangel</a> können sich im Blutbild sehr ähnlich zeigen. Vor einer Folsäure-Behandlung sollte ein B12-Mangel erkannt sein, weil er mitbehandelt werden muss. Diese Einordnung gehört in ärztliche Hände.</p>
+<h2>Folsäure und Schwangerschaft</h2>
+<p>Rund um eine geplante oder bestehende Schwangerschaft hat Folsäure eine besondere Bedeutung für die kindliche Entwicklung. Empfehlungen zur Einnahme werden individuell ärztlich oder gynäkologisch besprochen.</p>
+<h2>Wie wird ein Mangel behoben?</h2>
+<p>Grundlage sind eine folatreiche Ernährung und – wenn angezeigt – ein ärztlich verordnetes Präparat. Ebenso wichtig ist die Behandlung der Ursache, etwa einer Aufnahmestörung im Darm.</p>`,
+    notProofHtml: `<p>Ein einzelner tiefer Folsäurewert ist noch keine Diagnose: Der Wert schwankt mit der Ernährung der letzten Tage und Wochen, und Referenzbereiche unterscheiden sich je nach Labor und Messmethode. Massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht – und die ärztliche Einordnung zusammen mit Blutbild, B12 und Beschwerden.</p>`,
+    followUpHtml: `<p>Je nach Situation werden Blutbild (inklusive MCV), Vitamin B12, Ferritin und weitere Werte geprüft; bei Verdacht auf eine Aufnahmestörung kann eine Abklärung des Magen-Darm-Trakts dazukommen. Den B12-Zwilling erklärt <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12 zu niedrig</a>.</p>`,
+    redFlagsHtml: `<p>Ärztlich besprechen solltest du den Befund insbesondere bei gleichzeitiger Blutarmut, bei Kinderwunsch oder Schwangerschaft, bei Verdauungserkrankungen, regelmässigem Alkoholkonsum oder wenn du Medikamente einnimmst, die den Folatstoffwechsel beeinflussen.</p>`,
+    integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und TCM ersetzt keine Folsäure-Substitution. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig' },
+      { href: '/gesundheitsbibliothek/befunde-werte/mcv-erhoeht/', label: 'MCV erhöht' },
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' },
+      { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung & Müdigkeit' },
+    ],
+  },
+  {
+    slug: 'blut-im-urin',
+    gruppe: 'Urin',
+    title: 'Blut im Urin (Hämaturie): Was bedeutet der Befund?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-10-05',
+    deck: 'Sichtbares Blut im Urin oder Blutnachweis im Teststreifen: mögliche Ursachen von Blasenentzündung bis Nierenstein – und warum der Befund abgeklärt gehört.',
+    primaryPurpose: 'Owner für den Befund Hämaturie (sichtbar und mikroskopisch); Start der Urin-Befund-Familie.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'urinuntersuchung bleibt Untersuchungs-/Prozedur-Owner. blasenentzuendung bleibt Erkrankungs-Owner HWI, nierensteine bleibt Stein-Owner, prostata bleibt Prostata-Owner (alle verlinkt). Kein Befund-Owner vorhanden (geprüft 05.10.2026).',
+    suggestedReviewerType: 'Ärztliche Review (Urologie/Nephrologie)',
+    shortAnswerHtml: `<p>Blut im Urin (Hämaturie) kann sichtbar sein (rötlicher Urin) oder nur im Teststreifen bzw. unter dem Mikroskop auffallen. Häufige Ursachen sind Harnwegsinfekte und Steine; es kommen aber auch andere Erkrankungen der Nieren, Blase oder Prostata infrage. Der Befund gehört ärztlich abgeklärt – sichtbares Blut ohne klare Erklärung besonders.</p>`,
+    bodyHtml: `<h2>Sichtbares und nicht sichtbares Blut</h2>
+<p>Von Makrohämaturie spricht man, wenn der Urin sichtbar rötlich oder bräunlich verfärbt ist. Bei der Mikrohämaturie ist das Blut nur im Teststreifen oder unter dem Mikroskop nachweisbar – oft ein Zufallsbefund einer <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a>.</p>
+<h2>Mögliche Ursachen</h2>
+<ul>
+<li><a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a> und andere Harnwegsinfekte, oft mit Brennen und Harndrang</li>
+<li><a href="/beschwerden/nierensteine/">Nieren- und Harnleitersteine</a>, oft mit Flankenschmerzen</li>
+<li>Erkrankungen der <a href="/beschwerden/prostata/">Prostata</a></li>
+<li>Nierenerkrankungen</li>
+<li>seltener Tumoren der Harnwege – einer der Gründe, weshalb unerklärtes sichtbares Blut abgeklärt gehört</li>
+<li>starke körperliche Belastung oder die Menstruation können das Resultat verfälschen</li>
+</ul>
+<h2>Warum «ohne Schmerzen» keine Entwarnung ist</h2>
+<p>Schmerzlose sichtbare Hämaturie ist nicht automatisch harmlos – im Gegenteil: Gerade sie sollte urologisch abgeklärt werden, auch wenn sie nur einmal aufgetreten ist. Fehlende Schmerzen sind kein Beweis für eine harmlose Ursache.</p>
+<h2>Wie wird abgeklärt?</h2>
+<p>Je nach Situation gehören dazu eine wiederholte Urinuntersuchung mit Urinkultur, Blutwerte (unter anderem <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Nierenwerte</a>), <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> und bei Bedarf eine Blasenspiegelung. Was sinnvoll ist, entscheidet die Ärztin anhand von Alter, Risikofaktoren und Begleitbefunden.</p>`,
+    notProofHtml: `<p>Ein positiver Teststreifen allein beweist keine Erkrankung: Auch Menstruationsblut, starke körperliche Belastung, bestimmte Lebensmittel oder Medikamente können das Resultat beeinflussen, und der Teststreifen kann auch auf Muskelfarbstoff reagieren. Deshalb wird der Befund in der Regel wiederholt und mikroskopisch bestätigt, bevor weitere Schritte folgen.</p>`,
+    followUpHtml: `<p>Üblich sind eine Kontrolle des Urins mit Mikroskopie und Kultur, Nierenwerte im Blut sowie je nach Situation Ultraschall oder Blasenspiegelung. Wie die Urinuntersuchung grundsätzlich funktioniert, erklärt die Seite <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich beurteilen lassen: sichtbares Blut im Urin ohne klare Erklärung, Blut zusammen mit Fieber oder Flankenschmerzen, kein Wasserlassen mehr möglich, Blutgerinnsel im Urin oder Blut im Urin unter Blutverdünnung. Bei Fieber mit Flankenschmerz oder Unmöglichkeit zu urinieren im Zweifel notfallmässig.</p>`,
+    integrativeContextHtml: `<p>Blut im Urin ist ein Abklärungsbefund, kein Einsatzgebiet für TCM: Die chinesische Medizin interpretiert solche Befunde nicht, und eine komplementäre Behandlung ist erst nach der urologischen bzw. nephrologischen Einordnung ein Thema, nie ihr Ersatz.</p>`,
+    relatedConditions: [
+      { href: '/beschwerden/blasenentzuendung/', label: 'Blasenentzündung' },
+      { href: '/beschwerden/nierensteine/', label: 'Nierensteine' },
+      { href: '/beschwerden/prostata/', label: 'Prostata-Beschwerden' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-im-urin/', label: 'Leukozyten im Urin' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin' },
+    ],
+  },
+  {
+    slug: 'leukozyten-im-urin',
+    gruppe: 'Urin',
+    title: 'Leukozyten im Urin: Was bedeutet der Befund?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-10-05',
+    deck: 'Weisse Blutkörperchen im Urin sprechen für eine Entzündung oder Infektion der Harnwege – beweisen sie aber nicht. Worauf es bei der Einordnung ankommt.',
+    primaryPurpose: 'Owner für den Befund Leukozyturie; Teil der Urin-Befund-Familie.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'leukozyten-erhoeht/-niedrig bleiben BLUT-Owner (anderes Material). urinuntersuchung bleibt Prozedur-Owner, blasenentzuendung bleibt HWI-Erkrankungs-Owner. Kein Owner für Urin-Leukozyten vorhanden (geprüft 05.10.2026).',
+    suggestedReviewerType: 'Ärztliche Review (Hausarztmedizin/Urologie)',
+    shortAnswerHtml: `<p>Leukozyten (weisse Blutkörperchen) im Urin können auf eine Entzündung oder Infektion der Harnwege hinweisen – zum Beispiel eine Blasenentzündung. Der Befund muss aber zusammen mit Beschwerden, Nitrit, Bakteriennachweis und der Probenqualität beurteilt werden: Auch Verunreinigungen der Probe können Leukozyten vortäuschen.</p>`,
+    bodyHtml: `<h2>Was bedeuten Leukozyten im Urin?</h2>
+<p>Weisse Blutkörperchen wandern dorthin, wo das Immunsystem arbeitet. Erscheinen sie vermehrt im Urin (Leukozyturie), spricht das für eine Entzündung in Nieren, Blase oder Harnröhre – am häufigsten im Rahmen eines Harnwegsinfekts wie der <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a>.</p>
+<h2>Der Kontext entscheidet</h2>
+<ul>
+<li><strong>Mit Beschwerden</strong> (Brennen, Harndrang, Unterbauchschmerzen) und Bakteriennachweis: typisches Bild eines Harnwegsinfekts.</li>
+<li><strong>Ohne Beschwerden:</strong> Leukozyten allein sind noch kein Behandlungsgrund; die Einordnung erfolgt ärztlich, teils mit Kontrolle und Urinkultur.</li>
+<li><strong>Leukozyten ohne Bakterien:</strong> kann bei bereits anbehandeltem Infekt, Verunreinigung oder selteneren Ursachen vorkommen und braucht je nach Situation weitere Abklärung.</li>
+</ul>
+<h2>Probenqualität nicht unterschätzen</h2>
+<p>Eine verunreinigte Probe – etwa durch Hautkeime oder Ausfluss – kann Leukozyten vortäuschen. Deshalb wird meist Mittelstrahlurin empfohlen und ein auffälliger Befund bei Bedarf mit frischer Probe und <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinkultur</a> wiederholt. Das relativiert den Einzelbefund, ohne ihn zu entwerten.</p>
+<h2>Besondere Situationen</h2>
+<p>In der Schwangerschaft, bei Fieber, Flankenschmerzen, bei Männern, Kindern oder liegendem Blasenkatheter wird ein auffälliger Urinbefund grosszügiger abgeklärt und behandelt – hier gehört die Beurteilung immer in ärztliche Hände.</p>`,
+    notProofHtml: `<p>Leukozyten im Urin beweisen keinen Harnwegsinfekt: Verunreinigte Proben, Ausfluss oder eine bereits laufende Behandlung können das Bild prägen, und umgekehrt schliesst ein unauffälliger Streifen einen Infekt nicht sicher aus. Entscheidend sind Beschwerden, Urinkultur und die ärztliche Gesamtbeurteilung.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen eine Wiederholung mit Mittelstrahlurin, eine Urinkultur mit Resistenzprüfung und bei Fieber oder Flankenschmerzen Blutwerte und Bildgebung. Die Grundlagen erklärt die Seite <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich beurteilen lassen: Fieber oder Schüttelfrost, Flankenschmerzen, Blut im Urin, Beschwerden in der Schwangerschaft, wiederkehrende Infekte sowie auffällige Befunde bei Männern, Kindern oder mit Blasenkatheter.</p>`,
+    integrativeContextHtml: `<p>Ein bakterieller Harnwegsinfekt wird medizinisch behandelt – TCM ersetzt diese Behandlung nicht und interpretiert Laborbefunde nicht. Bei wiederkehrender Reizblase ohne Infektnachweis kann nach der Abklärung eine komplementäre Begleitung besprochen werden.</p>`,
+    relatedConditions: [
+      { href: '/beschwerden/blasenentzuendung/', label: 'Blasenentzündung' },
+      { href: '/beschwerden/reizblase/', label: 'Reizblase' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie)' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/', label: 'Leukozyten im Blut erhöht' },
+    ],
+  },
+  {
+    slug: 'eiweiss-im-urin',
+    gruppe: 'Urin',
+    title: 'Eiweiss im Urin (Proteinurie): Was bedeutet der Befund?',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: '2026-10-05',
+    deck: 'Eiweiss im Urin kann vorübergehend und harmlos sein – oder ein früher Hinweis auf eine Nierenbelastung. Warum Wiederholung und Einordnung entscheidend sind.',
+    primaryPurpose: 'Owner für den Befund Proteinurie/Albuminurie; Teil der Urin-Befund-Familie.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'nierenwerte-erhoeht/kreatinin-erhoeht bleiben Blut-Nierenwert-Owner (verlinkt). urinuntersuchung bleibt Prozedur-Owner. diabetes-typ-2 und bluthochdruck bleiben Erkrankungs-Owner. Kein Proteinurie-Owner vorhanden (geprüft 05.10.2026).',
+    suggestedReviewerType: 'Ärztliche Review (Nephrologie)',
+    shortAnswerHtml: `<p>Normalerweise gelangt kaum Eiweiss in den Urin. Ein positiver Befund kann vorübergehend sein – etwa nach Sport oder bei Fieber – oder auf eine Belastung der Nierenfilter hinweisen, wie sie unter anderem bei Diabetes und Bluthochdruck vorkommt. Entscheidend ist die Wiederholung und die ärztliche Einordnung; eine anhaltende Proteinurie gehört abgeklärt.</p>`,
+    bodyHtml: `<h2>Warum Eiweiss im Urin auffällt</h2>
+<p>Die Nierenfilter halten Eiweisse normalerweise im Blut zurück. Erscheint Eiweiss im Urin (Proteinurie) – oder gezielt gemessen das kleine Eiweiss Albumin (Albuminurie) –, kann das ein früher Hinweis darauf sein, dass die Filter durchlässiger geworden sind.</p>
+<h2>Vorübergehend oder anhaltend?</h2>
+<ul>
+<li><strong>Vorübergehende Proteinurie:</strong> nach intensiver körperlicher Belastung, bei Fieber oder Flüssigkeitsmangel – meist harmlos und bei Kontrolle wieder verschwunden.</li>
+<li><strong>Orthostatische Proteinurie:</strong> vor allem bei Jugendlichen, nur im Stehen nachweisbar und in der Regel gutartig.</li>
+<li><strong>Anhaltende Proteinurie:</strong> in mehreren Proben nachweisbar – sie gehört abgeklärt, weil Nieren- oder Systemerkrankungen dahinterstehen können.</li>
+</ul>
+<h2>Typische Zusammenhänge</h2>
+<p>Zu den wichtigsten Ursachen einer anhaltenden Albuminurie gehören <a href="/beschwerden/diabetes-typ-2/">Diabetes</a> und <a href="/beschwerden/bluthochdruck/">Bluthochdruck</a> – beides Erkrankungen, bei denen der Urinbefund als Frühwarnsystem für die Nieren dient. Daneben kommen eigenständige Nierenerkrankungen infrage.</p>
+<h2>Wie wird abgeklärt?</h2>
+<p>Üblich sind die Wiederholung der Messung (oft als Albumin-Kreatinin-Quotient im Spontanurin), Blutwerte wie <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und je nach Situation Ultraschall oder eine nephrologische Beurteilung. Blutdruck und Blutzucker werden mitgeprüft.</p>`,
+    notProofHtml: `<p>Ein einmalig positiver Eiweiss-Befund beweist keine Nierenerkrankung: Sport, Fieber, Flüssigkeitsmangel oder eine verunreinigte Probe können das Resultat beeinflussen, und der Teststreifen misst nur grob. Deshalb wird der Befund wiederholt und quantifiziert, bevor Schlüsse gezogen werden.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen Albumin-Kreatinin-Quotient, Nierenwerte im Blut, Blutdruckmessung, Blutzucker/HbA1c und bei anhaltender Proteinurie eine nephrologische Abklärung. Die Blut-Seite erklärt <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin erhöht</a>.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich beurteilen lassen: Eiweiss zusammen mit geschwollenen Beinen oder Lidern, schäumendem Urin, Blut im Urin, stark erhöhtem Blutdruck, bekannter Diabetes- oder Nierenerkrankung sowie jede in Kontrollen anhaltende Proteinurie. In der Schwangerschaft gehört Eiweiss im Urin immer rasch in ärztliche Beurteilung.</p>`,
+    integrativeContextHtml: `<p>Die chinesische Medizin interpretiert Laborbefunde nicht, und TCM macht eine Nierenschädigung nicht rückgängig. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der nephrologischen Einordnung, nie ihr Ersatz.</p>`,
+    relatedConditions: [
+      { href: '/beschwerden/diabetes-typ-2/', label: 'Diabetes Typ 2' },
+      { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
+      { href: '/beschwerden/wassereinlagerungen/', label: 'Wassereinlagerungen' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie)' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-im-urin/', label: 'Leukozyten im Urin' },
     ],
   },
 ];
