@@ -165,3 +165,57 @@ dupTitles.forEach(([t, u]) => console.log('    -', t, '=>', u.join(' ')));
 console.log('  Kaputte Beziehungs-Slugs:', refReal.length);
 refReal.forEach((r) => console.log('    -', r.file, r.slug));
 console.log('  ->', OUT);
+
+// 6. Beschwerden-Hub-Konsistenz (Gate, 05.10.2026).
+//    Hintergrund: Zwei Insertion-Sprints erzeugten Phantom-Zeilen im A-Z
+//    (Label eines neuen Eintrags auf dupliziertem fremdem Slug), weil ein
+//    Row-Template-Regex über das Zeilenende hinausgriff und re.sub ohne
+//    count=1 alle Namen im Blob umschrieb. Das Audit oben sah nur URLs und
+//    hat das nicht erkannt. Dieser Block prueft die QUELLE des Hubs gegen
+//    das Leaf-Verzeichnis und setzt bei Verstoessen exitCode=1.
+{
+  const hub = fs.readFileSync('src/data/beschwerden-body.html', 'utf8');
+  const leafDir = 'src/data/symptom-leaves';
+  const leaves = new Set(fs.readdirSync(leafDir).filter((f) => f.endsWith('.html')).map((f) => f.slice(0, -5)));
+  const rowRe = /<div class="bx-complaint-row[^>]*onclick="nav\('symptom','([^']+)'\)"(?:\s+data-alias="([^"]*)")?[^>]*>\s*<div class="bx-cr-left"><div class="bx-cr-name">([^<]*)<\/div>/g;
+  const groups = [...hub.matchAll(/id="bx-group-(\w)"/g)].map((m) => ({ letter: m[1], start: m.index }));
+  const rows = [];
+  for (const m of hub.matchAll(rowRe)) {
+    let letter = '?';
+    for (const g of groups) if (g.start < m.index) letter = g.letter;
+    rows.push({ slug: m[1], alias: m[2] ?? '', name: m[3], letter });
+  }
+  const errs = [];
+  const bySlug = new Map();
+  for (const r of rows) bySlug.set(r.slug, (bySlug.get(r.slug) ?? 0) + 1);
+  // A: doppelte Slugs
+  for (const [s, n] of bySlug) if (n > 1) errs.push(`A-Z: Slug ${n}x gelistet: ${s}`);
+  // B/F: Row ohne existierendes Leaf (Phantom/kaputtes Ziel)
+  for (const r of rows) if (!leaves.has(r.slug)) errs.push(`A-Z: Row zeigt auf nicht existierendes Leaf: ${r.slug} ("${r.name}")`);
+  // C: Label<->Slug-Bijektion (ein Label darf nicht auf zwei Slugs stehen) + Buchstaben-Konsistenz
+  const byName = new Map();
+  for (const r of rows) {
+    if (byName.has(r.name) && byName.get(r.name) !== r.slug) errs.push(`A-Z: Label "${r.name}" auf zwei Slugs: ${byName.get(r.name)} / ${r.slug}`);
+    byName.set(r.name, r.slug);
+    const initial = r.name.normalize('NFD').replace(/\p{M}/gu, '')[0]?.toUpperCase();
+    if (initial && initial !== r.letter) errs.push(`A-Z: "${r.name}" (slug ${r.slug}) steht in Gruppe ${r.letter}`);
+  }
+  // D: identischer data-alias auf zwei Slugs
+  const byAlias = new Map();
+  for (const r of rows) {
+    if (!r.alias) continue;
+    if (byAlias.has(r.alias) && byAlias.get(r.alias) !== r.slug) errs.push(`A-Z: data-alias doppelt (${byAlias.get(r.alias)} / ${r.slug})`);
+    byAlias.set(r.alias, r.slug);
+  }
+  // E: erwartete Owner fehlen (Leaves ohne Row; kanonisierte Quell-Slugs ausgenommen,
+  //    deren Ziel gelistet ist)
+  const CANONICALIZED = new Set(['schlafstoerungen', 'burnout', 'heuschnupfen']);
+  for (const s of leaves) {
+    if (bySlug.has(s)) continue;
+    if (CANONICALIZED.has(s)) continue;
+    errs.push(`A-Z: Leaf fehlt im Hub: ${s}`);
+  }
+  console.log('  Beschwerden-Hub A-Z:', rows.length, 'Zeilen,', bySlug.size, 'Slugs,', errs.length, 'Fehler');
+  errs.slice(0, 20).forEach((e) => console.log('    !', e));
+  if (errs.length > 0) process.exitCode = 1;
+}
