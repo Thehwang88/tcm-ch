@@ -276,6 +276,36 @@ Regeln:
 - https://tcm.ch/beschwerden/impingement-syndrom/
 - https://tcm.ch/beschwerden/patellaspitzensyndrom/
 - https://tcm.ch/beschwerden/costochondritis/
+- https://tcm.ch/beschwerden/diabetes-typ-2/
+- https://tcm.ch/beschwerden/gallensteine/
+- https://tcm.ch/beschwerden/lagerungsschwindel/
+- https://tcm.ch/beschwerden/periorale-dermatitis/
+- https://tcm.ch/beschwerden/seborrhoisches-ekzem/
+- https://tcm.ch/beschwerden/kreisrunder-haarausfall/
+- https://tcm.ch/beschwerden/skoliose/
+- https://tcm.ch/beschwerden/koxarthrose/
+- https://tcm.ch/beschwerden/panikattacken/
+- https://tcm.ch/beschwerden/nierensteine/
+- https://tcm.ch/beschwerden/me-cfs/
+- https://tcm.ch/beschwerden/bakerzyste/
+- https://tcm.ch/beschwerden/niedriger-blutdruck/
+- https://tcm.ch/beschwerden/erektile-dysfunktion/
+- https://tcm.ch/beschwerden/eierstockzyste/
+- https://tcm.ch/beschwerden/kubitaltunnelsyndrom/
+- https://tcm.ch/beschwerden/vitiligo/
+- https://tcm.ch/beschwerden/scheidentrockenheit/
+- https://tcm.ch/koerpersignale/druck-auf-der-brust/
+- https://tcm.ch/koerpersignale/lymphknoten-geschwollen-hals/
+- https://tcm.ch/koerpersignale/appetitlosigkeit/
+- https://tcm.ch/koerpersignale/belegte-zunge/
+- https://tcm.ch/koerpersignale/blaue-flecken-ohne-grund/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/blut-im-urin/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/leukozyten-im-urin/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/ogtt/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/mammographie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/pap-abstrich/
 
 ## Geplant (noch nicht live)
 

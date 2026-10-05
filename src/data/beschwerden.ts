@@ -1795,6 +1795,650 @@ export const beschwerden: Beschwerde[] = [
     ]
   },
   {
+    "slug": "diabetes-typ-2",
+    "name": "Diabetes Typ 2",
+    "title": "Diabetes Typ 2: Symptome, Diagnose & Behandlung verstehen",
+    "metaDesc": "Typ-2-Diabetes entwickelt sich oft schleichend. Wie die Diagnose gestellt wird, warum Behandlung und Kontrollen zentral sind und wo TCM ergänzend begleiten kann.",
+    "conditionName": "Diabetes mellitus Typ 2",
+    "lead": "Diabetes Typ 2 ist eine chronische Stoffwechselerkrankung, bei der die Wirkung des Insulins nicht mehr ausreicht und der Blutzucker dauerhaft erhöht bleibt.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "gewichtsmanagement",
+        "label": "Gewichtsmanagement"
+      },
+      {
+        "slug": "fettleber",
+        "label": "Fettleber"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      },
+      {
+        "slug": "bluthochdruck",
+        "label": "Bluthochdruck"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "gallensteine",
+    "name": "Gallensteine",
+    "title": "Gallensteine: Symptome, Kolik & wann es dringend wird",
+    "metaDesc": "Viele Gallensteine machen nie Beschwerden. Woran du eine Gallenkolik erkennst, wie abgeklärt wird und wann Fieber oder Gelbsucht ein Alarmzeichen sind.",
+    "conditionName": "Cholelithiasis",
+    "lead": "Gallensteine sind Ablagerungen in der Gallenblase oder den Gallenwegen. Viele bleiben ein Zufallsbefund ohne Beschwerden – andere verursachen heftige, krampfartige Oberbauchschmerzen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "fettleber",
+        "label": "Fettleber"
+      },
+      {
+        "slug": "verdauungsprobleme",
+        "label": "Verdauungsprobleme"
+      },
+      {
+        "slug": "uebelkeit",
+        "label": "Übelkeit"
+      },
+      {
+        "slug": "sodbrennen",
+        "label": "Sodbrennen &amp; Reflux"
+      },
+      {
+        "slug": "blaehungen",
+        "label": "Blähungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "lagerungsschwindel",
+    "name": "Lagerungsschwindel",
+    "title": "Lagerungsschwindel (BPLS): Ursache, Manöver & Verlauf",
+    "metaDesc": "Kurzer Drehschwindel beim Umdrehen oder Aufrichten? Wie gutartiger Lagerungsschwindel entsteht, wie Lagerungsmanöver wie Epley helfen und wann abklären.",
+    "conditionName": "Benigner paroxysmaler Lagerungsschwindel (BPLS)",
+    "lead": "Beim gutartigen Lagerungsschwindel lösen bestimmte Kopf- und Lagewechsel kurze, heftige Drehschwindel-Attacken aus – unangenehm, aber meist gut behandelbar.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "tinnitus",
+        "label": "Tinnitus"
+      },
+      {
+        "slug": "uebelkeit",
+        "label": "Übelkeit"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "periorale-dermatitis",
+    "name": "Periorale Dermatitis",
+    "title": "Periorale Dermatitis: Ursachen, Abgrenzung & Behandlung",
+    "metaDesc": "Rötung und Knötchen um den Mund? Wie die periorale Dermatitis entsteht, warum Kosmetik und Kortison eine Rolle spielen und wie sie behandelt wird.",
+    "conditionName": "Periorale Dermatitis",
+    "lead": "Die periorale Dermatitis zeigt sich mit Rötungen und kleinen Knötchen um den Mund – oft bei sonst gepflegter Haut und häufig durch zu viel Pflege unterhalten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rosacea",
+        "label": "Rosacea"
+      },
+      {
+        "slug": "akne",
+        "label": "Akne"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "seborrhoisches-ekzem",
+    "name": "Seborrhoisches Ekzem",
+    "title": "Seborrhoisches Ekzem: Schuppen, Rötung & was hilft",
+    "metaDesc": "Schuppende Rötungen an Kopfhaut, Augenbrauen oder Nasenflügeln? Was hinter dem seborrhoischen Ekzem steckt, wie es behandelt wird und wovon es abzugrenzen ist.",
+    "conditionName": "Seborrhoische Dermatitis",
+    "lead": "Das seborrhoische Ekzem ist eine chronisch-wiederkehrende Hautentzündung mit fettigen Schuppen und Rötung – bevorzugt an Kopfhaut, Augenbrauen und Nasenflügeln.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "akne",
+        "label": "Akne"
+      },
+      {
+        "slug": "haarausfall",
+        "label": "Haarausfall"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "kreisrunder-haarausfall",
+    "name": "Kreisrunder Haarausfall",
+    "title": "Kreisrunder Haarausfall (Alopecia areata): Was dahintersteckt",
+    "metaDesc": "Plötzlich runde kahle Stellen? Alopecia areata ist eine autoimmune Form des Haarausfalls. Verlauf, dermatologische Abklärung und realistische Erwartungen.",
+    "conditionName": "Alopecia areata",
+    "lead": "Beim kreisrunden Haarausfall (Alopecia areata) entstehen plötzlich scharf begrenzte, runde kahle Stellen – eine immunologisch bedingte Erkrankung mit sehr unterschiedlichem Verlauf.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "haarausfall",
+        "label": "Haarausfall"
+      },
+      {
+        "slug": "stress-burnout",
+        "label": "Stress &amp; Burnout"
+      },
+      {
+        "slug": "schilddruesenunterfunktion",
+        "label": "Schilddrüsenunterfunktion"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "skoliose",
+    "name": "Skoliose",
+    "title": "Skoliose: Wirbelsäulenverkrümmung erkennen & behandeln",
+    "metaDesc": "Skoliose ist eine dreidimensionale Verkrümmung der Wirbelsäule. Wie sie erkannt wird, was Physiotherapie, Korsett oder OP leisten und wo TCM begleiten kann.",
+    "conditionName": "Skoliose",
+    "lead": "Skoliose bezeichnet eine dreidimensionale Verkrümmung und Verdrehung der Wirbelsäule – von leichten, oft harmlosen Formen bis zu behandlungsbedürftigen Verläufen im Wachstum.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "spondylose",
+        "label": "Spondylose"
+      },
+      {
+        "slug": "morbus-bechterew",
+        "label": "Morbus Bechterew"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "koxarthrose",
+    "name": "Koxarthrose",
+    "title": "Koxarthrose: Hüftarthrose erkennen, behandeln & bewegen",
+    "metaDesc": "Leistenschmerz, Anlaufschmerz, steife Hüfte? Wie Hüftarthrose diagnostiziert wird, warum Bewegung zentral bleibt und wie Akupunktur ergänzend begleiten kann.",
+    "conditionName": "Koxarthrose (Hüftarthrose)",
+    "lead": "Koxarthrose ist die Arthrose des Hüftgelenks: Der Gelenkknorpel verändert sich über Jahre, typisch sind Leistenschmerz, Anlaufschmerz und zunehmende Steifigkeit.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "isg-blockade",
+        "label": "ISG-Blockade"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "panikattacken",
+    "name": "Panikattacken",
+    "title": "Panikattacken: Symptome verstehen & wirksame Hilfe finden",
+    "metaDesc": "Herzrasen, Atemnot, Todesangst aus dem Nichts? Was bei einer Panikattacke passiert, wann körperliche Ursachen abgeklärt gehören und welche Behandlung hilft.",
+    "conditionName": "Panikattacken",
+    "lead": "Eine Panikattacke ist eine plötzliche Welle intensiver Angst mit heftigen Körpersymptomen – beängstigend, aber behandelbar.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "angststoerungen",
+        "label": "Angststörungen"
+      },
+      {
+        "slug": "stress-burnout",
+        "label": "Stress &amp; Burnout"
+      },
+      {
+        "slug": "schlafstoerungen",
+        "label": "Schlafstörungen"
+      },
+      {
+        "slug": "depressionen",
+        "label": "Depressionen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "nierensteine",
+    "name": "Nierensteine",
+    "title": "Nierensteine: Kolik erkennen, abklären & vorbeugen",
+    "metaDesc": "Wellenartige Flankenschmerzen bis in die Leiste? Wie Nierensteine entstehen, wann die Kolik ein Notfall ist und was nach der Akutphase hilft.",
+    "conditionName": "Nephrolithiasis",
+    "lead": "Nierensteine sind Ablagerungen aus Mineralsalzen in Niere und Harnwegen. Gerät ein Stein in den Harnleiter, kann eine äusserst schmerzhafte Kolik entstehen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "blasenentzuendung",
+        "label": "Blasenentzündung"
+      },
+      {
+        "slug": "prostata",
+        "label": "Prostatabeschwerden"
+      },
+      {
+        "slug": "reizblase",
+        "label": "Reizblase"
+      },
+      {
+        "slug": "gicht",
+        "label": "Gicht"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "me-cfs",
+    "name": "ME/CFS",
+    "title": "ME/CFS: Chronisches Fatigue-Syndrom verstehen & begleiten",
+    "metaDesc": "ME/CFS ist mehr als Müdigkeit: Kernmerkmal ist die Verschlechterung nach Belastung (PEM). Wie die Erkrankung eingeordnet wird und was bei der Begleitung zählt.",
+    "conditionName": "Myalgische Enzephalomyelitis / Chronisches Fatigue-Syndrom",
+    "lead": "ME/CFS ist eine komplexe chronische Multisystemerkrankung. Ihr Kernmerkmal: Schon geringe Anstrengung kann die Beschwerden Stunden bis Tage später deutlich verschlechtern.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      },
+      {
+        "slug": "long-covid",
+        "label": "Long Covid"
+      },
+      {
+        "slug": "schlafstoerungen",
+        "label": "Schlafstörungen"
+      },
+      {
+        "slug": "fibromyalgie",
+        "label": "Fibromyalgie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "bakerzyste",
+    "name": "Bakerzyste",
+    "title": "Bakerzyste: Schwellung in der Kniekehle richtig einordnen",
+    "metaDesc": "Spannungsgefühl oder Schwellung in der Kniekehle? Was eine Bakerzyste ist, warum oft das Kniegelenk dahintersteckt und wann die Wade zum Warnzeichen wird.",
+    "conditionName": "Baker-Zyste (Poplitealzyste)",
+    "lead": "Eine Bakerzyste ist eine flüssigkeitsgefüllte Aussackung in der Kniekehle – meist Folge eines gereizten Kniegelenks, etwa bei Arthrose oder Meniskusproblemen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "wadenschmerzen",
+        "label": "Wadenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "niedriger-blutdruck",
+    "name": "Niedriger Blutdruck",
+    "title": "Niedriger Blutdruck (Hypotonie): Ursachen & was hilft",
+    "metaDesc": "Schwindel, Schwäche, Schwarzwerden vor den Augen? Wann niedriger Blutdruck harmlos ist, welche Ursachen dahinterstecken können und wann abklären lassen.",
+    "conditionName": "Hypotonie",
+    "lead": "Ein niedriger Blutdruck ist bei vielen Menschen normal und harmlos – macht er aber Schwindel, Schwäche oder Ohnmachtsneigung, lohnt sich ein genauer Blick.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "erschoepfung",
+        "label": "Erschöpfung"
+      },
+      {
+        "slug": "bluthochdruck",
+        "label": "Bluthochdruck"
+      },
+      {
+        "slug": "durchblutungsstoerungen",
+        "label": "Durchblutungsstörungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "erektile-dysfunktion",
+    "name": "Erektile Dysfunktion",
+    "title": "Erektile Dysfunktion: Ursachen, Abklärung & Behandlung",
+    "metaDesc": "Erektionsprobleme sind häufig und behandelbar. Welche körperlichen und psychischen Ursachen mitspielen, warum das Herz mitgedacht wird und wo TCM begleiten kann.",
+    "conditionName": "Erektile Dysfunktion",
+    "lead": "Von erektiler Dysfunktion spricht man, wenn eine für den Geschlechtsverkehr ausreichende Erektion über längere Zeit nicht zustande kommt oder gehalten werden kann – ein häufiges, gut abklärbares Thema.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "prostata",
+        "label": "Prostatabeschwerden"
+      },
+      {
+        "slug": "stress-burnout",
+        "label": "Stress &amp; Burnout"
+      },
+      {
+        "slug": "diabetes-typ-2",
+        "label": "Diabetes Typ 2"
+      },
+      {
+        "slug": "bluthochdruck",
+        "label": "Bluthochdruck"
+      },
+      {
+        "slug": "schlafstoerungen",
+        "label": "Schlafstörungen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "eierstockzyste",
+    "name": "Eierstockzyste",
+    "title": "Eierstockzyste: Wann harmlos, wann abklären?",
+    "metaDesc": "Eierstockzysten sind häufig und oft harmlos. Welche Formen es gibt, welche Beschwerden möglich sind und wann plötzliche Unterbauchschmerzen ein Notfall sind.",
+    "conditionName": "Ovarialzyste",
+    "lead": "Zysten an den Eierstöcken sind häufig, entstehen oft im normalen Zyklus und bilden sich meist von selbst zurück – entscheidend ist die gynäkologische Einordnung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "pcos",
+        "label": "PCOS"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      },
+      {
+        "slug": "menstruationsbeschwerden",
+        "label": "Menstruationsbeschwerden"
+      },
+      {
+        "slug": "myome",
+        "label": "Myome"
+      },
+      {
+        "slug": "endometriose",
+        "label": "Endometriose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "kubitaltunnelsyndrom",
+    "name": "Kubitaltunnelsyndrom",
+    "title": "Kubitaltunnelsyndrom: Kribbeln in Ring- & Kleinfinger",
+    "metaDesc": "Kribbeln in Ring- und Kleinfinger, besonders bei gebeugtem Ellbogen? Wie die Einengung des Ulnarisnervs erkannt und behandelt wird – und was du selbst tun kannst.",
+    "conditionName": "Kubitaltunnelsyndrom (Sulcus-ulnaris-Syndrom)",
+    "lead": "Beim Kubitaltunnelsyndrom ist der Ellennerv (Nervus ulnaris) an der Innenseite des Ellbogens eingeengt – typisch sind Kribbeln und Taubheit in Ring- und Kleinfinger.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      },
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "tennisarm",
+        "label": "Tennisarm &amp; Golferarm"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "tuina",
+        "label": "Tuina"
+      }
+    ]
+  },
+  {
+    "slug": "vitiligo",
+    "name": "Vitiligo",
+    "title": "Vitiligo: Weisse Hautflecken verstehen & einordnen",
+    "metaDesc": "Scharf begrenzte weisse Flecken auf der Haut? Was bei Vitiligo passiert, wie die Pigmentstörung abgeklärt wird und welche Behandlungen es gibt.",
+    "conditionName": "Vitiligo",
+    "lead": "Bei Vitiligo verliert die Haut stellenweise ihr Pigment: Es entstehen scharf begrenzte weisse Flecken – körperlich meist harmlos, für viele Betroffene aber belastend.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "haarausfall",
+        "label": "Haarausfall"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "hashimoto",
+        "label": "Hashimoto"
+      },
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "scheidentrockenheit",
+    "name": "Scheidentrockenheit",
+    "title": "Scheidentrockenheit: Ursachen & was wirklich hilft",
+    "metaDesc": "Trockenheit, Brennen oder Schmerzen beim Sex? Welche Ursachen hinter Scheidentrockenheit stecken, was Befeuchtungsmittel und Hormone leisten und wann abklären.",
+    "conditionName": "Vaginale Trockenheit",
+    "lead": "Scheidentrockenheit ist häufig und gut behandelbar – besonders in den Wechseljahren, nach der Geburt oder unter bestimmten Medikamenten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      },
+      {
+        "slug": "dyspareunie",
+        "label": "Dyspareunie"
+      },
+      {
+        "slug": "hitzewallungen",
+        "label": "Hitzewallungen"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
     "slug": "adenomyose",
     "name": "Adenomyose",
     "title": "Adenomyose: Beschwerden verstehen & TCM begleitend nutzen",

@@ -1,0 +1,140 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 05.10.2026). Rein edukativ:
+// schulmedizinische Diagnostik/Vorsorge, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// YMYL: Krebsfrueherkennung — keine Angst-Rhetorik, keine TCM-Behandlungsabschnitte.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/mammographie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Mammographie: Ablauf, Screening & was das Resultat bedeutet';
+const description = 'Wie läuft eine Mammographie ab? Unterschied zwischen Screening und Abklärung, Kompression, Strahlenbelastung, Nachaufgebot und die Grenzen der Untersuchung.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-10-05', dateModified: '2026-10-05',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Mammographie', item: url },
+    ],
+  },
+];
+
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+  { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', label: 'Röntgen' },
+  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', label: 'MRT (MRI)' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Mammographie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Mammographie: Was bei der Untersuchung passiert</h1>
+        <p class="lead">Die Mammographie ist eine spezialisierte Röntgenuntersuchung des Brustgewebes. Sie wird zur Früherkennung (Screening) und zur Abklärung von Tastbefunden oder Beschwerden eingesetzt.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Die Mammographie ist eine schulmedizinische Untersuchung und wird radiologisch durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht durch und ersetzt keine Krebsfrüherkennung.</strong> Einen tastbaren Knoten oder neue Brustveränderungen lässt du bitte immer zuerst ärztlich abklären.</div>
+
+          <h2>Screening oder Abklärung?</h2>
+          <p>Die gleiche Untersuchung hat zwei verschiedene Einsatzgebiete:</p>
+          <ul>
+            <li><strong>Screening-Mammographie:</strong> Früherkennung bei Frauen ohne Beschwerden, meist ab einem bestimmten Alter in regelmässigen Abständen.</li>
+            <li><strong>Diagnostische Mammographie:</strong> gezielte Abklärung, wenn ein Tastbefund, Schmerzen, Hautveränderungen oder Absonderungen bestehen.</li>
+          </ul>
+          <p>In der Schweiz sind organisierte Brustkrebs-Screening-Programme kantonal unterschiedlich geregelt: In einigen Kantonen werden Frauen ab einem bestimmten Alter systematisch eingeladen, in anderen läuft die Früherkennung über die individuelle ärztliche Beratung. Was für dich gilt, klärst du am besten mit deiner Gynäkologin oder Hausärztin.</p>
+
+          <h2>Wie läuft die Untersuchung ab?</h2>
+          <p>Die Brust wird für wenige Sekunden zwischen zwei Platten leicht zusammengedrückt und in zwei Ebenen geröntgt. Die Kompression ist unangenehm, aber wichtig: Sie verbessert die Bildqualität und senkt die nötige Strahlendosis.</p>
+          <p>Die ganze Untersuchung dauert meist nur wenige Minuten. Ein Termin in der ersten Zyklushälfte ist oft angenehmer, weil die Brust dann weniger empfindlich ist.</p>
+
+          <h2>Wie hoch ist die Strahlenbelastung?</h2>
+          <p>Moderne Geräte arbeiten mit niedrigen Dosen; die Strahlenbelastung einer Mammographie ist gering und liegt in der Grössenordnung dessen, was Menschen über einige Monate aus natürlichen Quellen aufnehmen. Der mögliche Nutzen und die Risiken werden bei der Indikation ärztlich gegeneinander abgewogen – bei Schwangerschaft gibst du vorher Bescheid.</p>
+
+          <h2>Was bedeutet ein Nachaufgebot?</h2>
+          <p>Wirst du nach einem Screening zu einer Zusatzuntersuchung aufgeboten, ist das zunächst kein Krebsbefund: Meist braucht es ergänzende Aufnahmen oder einen <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a>, um eine unklare Stelle einzuordnen. Bei den allermeisten Nachaufgeboten bestätigt sich kein bösartiger Befund.</p>
+
+          <h2>Was die Mammographie kann – und was nicht</h2>
+          <p>Die Mammographie kann viele Veränderungen sichtbar machen, bevor sie tastbar sind. Sie ist aber nicht unfehlbar: Es gibt falsch-positive Befunde (Auffälligkeiten, die sich als harmlos erweisen) und falsch-negative (nicht jede Veränderung ist sichtbar, besonders bei dichtem Drüsengewebe). Je nach Situation ergänzen Ultraschall oder <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> die Abklärung.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Wichtig</div>
+            <p>Ein neuer Knoten, Einziehungen der Haut, Veränderungen der Brustwarze oder blutige Absonderungen gehören zeitnah in ärztliche Abklärung – unabhängig davon, wann die letzte Mammographie war und wie sie ausgefallen ist.</p>
+          </div>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Nichts im Sinne einer Alternative: Früherkennung und Abklärung von Brustveränderungen sind rein schulmedizinische Aufgaben. TCM ersetzt weder Mammographie noch Biopsie oder Therapie.</p>
+        </div>
+
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Fragen zur Früherkennung?</div>
+          <p>Ob und wann eine Mammographie für dich sinnvoll ist, besprichst du am besten mit deiner Gynäkologin oder in der ärztlichen Sprechstunde.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+</style>

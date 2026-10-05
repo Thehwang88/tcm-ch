@@ -65,5 +65,24 @@ globalThis.BESCHWERDEN_KEEP = [
   "gonarthrose",
   "impingement-syndrom",
   "patellaspitzensyndrom",
-  "costochondritis"
+  "costochondritis",
+  // 05.10.2026 — Health-Cohort 30 (Beschwerden-Anteil):
+  "diabetes-typ-2",
+  "gallensteine",
+  "lagerungsschwindel",
+  "periorale-dermatitis",
+  "seborrhoisches-ekzem",
+  "kreisrunder-haarausfall",
+  "skoliose",
+  "koxarthrose",
+  "panikattacken",
+  "nierensteine",
+  "me-cfs",
+  "bakerzyste",
+  "niedriger-blutdruck",
+  "erektile-dysfunktion",
+  "eierstockzyste",
+  "kubitaltunnelsyndrom",
+  "vitiligo",
+  "scheidentrockenheit"
 ];

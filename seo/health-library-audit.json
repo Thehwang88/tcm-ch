@@ -1,19 +1,19 @@
 {
-  "generated": "2026-10-04",
+  "generated": "2026-10-05",
   "totals": {
-    "healthPages": 523,
+    "healthPages": 550,
     "byType": {
       "hub": 6,
-      "condition": 136,
+      "condition": 154,
       "library_hub": 1,
-      "befund": 59,
+      "befund": 63,
       "question": 40,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
       "editorial": 80,
-      "body_signal": 89,
+      "body_signal": 94,
       "therapy": 36,
       "visual": 10
     }
@@ -30,8 +30,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 67,
-      "outboundHealthLinks": 142
+      "inboundContentLinks": 68,
+      "outboundHealthLinks": 160
     },
     {
       "url": "/beschwerden/achillessehnenentzuendung/",
@@ -60,7 +60,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 20
     },
     {
@@ -80,7 +80,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 12
     },
     {
@@ -100,8 +100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/asthma/",
@@ -110,7 +110,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
     },
     {
@@ -122,6 +122,16 @@
       "inSitemap": true,
       "inboundContentLinks": 6,
       "outboundHealthLinks": 16
+    },
+    {
+      "url": "/beschwerden/bakerzyste/",
+      "type": "condition",
+      "title": "Bakerzyste: Schwellung in der Kniekehle richtig einordnen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/bandscheibenvorfall/",
@@ -160,8 +170,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/bluthochdruck/",
@@ -170,7 +180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 16
     },
     {
@@ -220,8 +230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/crps/",
@@ -240,8 +250,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 13
+    },
+    {
+      "url": "/beschwerden/diabetes-typ-2/",
+      "type": "condition",
+      "title": "Diabetes Typ 2: Symptome, Diagnose &amp; Behandlung verstehen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/divertikulitis/",
@@ -260,7 +280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 24
     },
     {
@@ -270,7 +290,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/eierstockzyste/",
+      "type": "condition",
+      "title": "Eierstockzyste: Wann harmlos, wann abklären?",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
       "outboundHealthLinks": 5
     },
     {
@@ -280,7 +310,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 15
     },
     {
@@ -294,13 +324,23 @@
       "outboundHealthLinks": 17
     },
     {
+      "url": "/beschwerden/erektile-dysfunktion/",
+      "type": "condition",
+      "title": "Erektile Dysfunktion: Ursachen, Abklärung &amp; Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/erschoepfung/",
       "type": "condition",
       "title": "Erschöpfung – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 35,
       "outboundHealthLinks": 18
     },
     {
@@ -330,8 +370,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/fibromyalgie/",
@@ -340,7 +380,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 16
     },
     {
@@ -370,8 +410,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/gallensteine/",
+      "type": "condition",
+      "title": "Gallensteine: Symptome, Kolik &amp; wann es dringend wird",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/gastritis/",
@@ -380,7 +430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 20
     },
     {
@@ -400,7 +450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -410,7 +460,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 13
     },
     {
@@ -420,7 +470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -440,8 +490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/haemorrhoiden/",
@@ -470,7 +520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 14
     },
     {
@@ -510,7 +560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 17
     },
     {
@@ -530,8 +580,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/hyperhidrose/",
@@ -550,7 +600,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 20
     },
     {
@@ -580,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 5
     },
     {
@@ -630,7 +680,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 24
     },
     {
@@ -660,8 +710,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/kopfschmerzen/",
@@ -672,6 +722,46 @@
       "inSitemap": true,
       "inboundContentLinks": 28,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/koxarthrose/",
+      "type": "condition",
+      "title": "Koxarthrose: Hüftarthrose erkennen, behandeln &amp; bewegen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/kreisrunder-haarausfall/",
+      "type": "condition",
+      "title": "Kreisrunder Haarausfall (Alopecia areata): Was dahintersteckt",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/kubitaltunnelsyndrom/",
+      "type": "condition",
+      "title": "Kubitaltunnelsyndrom: Kribbeln in Ring- &amp; Kleinfinger",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/beschwerden/lagerungsschwindel/",
+      "type": "condition",
+      "title": "Lagerungsschwindel (BPLS): Ursache, Manöver &amp; Verlauf",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/laktoseintoleranz/",
@@ -710,7 +800,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
     },
     {
@@ -724,13 +814,23 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/beschwerden/me-cfs/",
+      "type": "condition",
+      "title": "ME/CFS: Chronisches Fatigue-Syndrom verstehen &amp; begleiten",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/menstruationsbeschwerden/",
       "type": "condition",
       "title": "Regelschmerzen &amp; starke Menstruation – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 9
     },
     {
@@ -760,7 +860,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -800,7 +900,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 17
     },
     {
@@ -810,7 +910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 165,
+      "inboundContentLinks": 168,
       "outboundHealthLinks": 31
     },
     {
@@ -820,7 +920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 18
     },
     {
@@ -840,8 +940,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/niedriger-blutdruck/",
+      "type": "condition",
+      "title": "Niedriger Blutdruck (Hypotonie): Ursachen &amp; was hilft",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/beschwerden/nierensteine/",
+      "type": "condition",
+      "title": "Nierensteine: Kolik erkennen, abklären &amp; vorbeugen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/osteoporose/",
@@ -852,6 +972,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 15
+    },
+    {
+      "url": "/beschwerden/panikattacken/",
+      "type": "condition",
+      "title": "Panikattacken: Symptome verstehen &amp; wirksame Hilfe finden",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/patellaspitzensyndrom/",
@@ -870,8 +1000,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/periorale-dermatitis/",
+      "type": "condition",
+      "title": "Periorale Dermatitis: Ursachen, Abgrenzung &amp; Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/piriformis-syndrom/",
@@ -920,8 +1060,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 31
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 32
     },
     {
       "url": "/beschwerden/prostata/",
@@ -930,7 +1070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 16
     },
     {
@@ -950,7 +1090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 17
     },
     {
@@ -1010,8 +1150,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 14,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/rotatorenmanschette/",
@@ -1030,8 +1170,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 187,
-      "outboundHealthLinks": 35
+      "inboundContentLinks": 190,
+      "outboundHealthLinks": 36
+    },
+    {
+      "url": "/beschwerden/scheidentrockenheit/",
+      "type": "condition",
+      "title": "Scheidentrockenheit: Ursachen &amp; was wirklich hilft",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/schilddruesenueberfunktion/",
@@ -1040,7 +1190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1050,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -1080,7 +1230,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/schlafprobleme/",
       "inSitemap": false,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 25,
       "outboundHealthLinks": 16
     },
     {
@@ -1120,7 +1270,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 18
     },
     {
@@ -1150,8 +1300,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 19,
+      "outboundHealthLinks": 22
+    },
+    {
+      "url": "/beschwerden/seborrhoisches-ekzem/",
+      "type": "condition",
+      "title": "Seborrhoisches Ekzem: Schuppen, Rötung &amp; was hilft",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/sehnenscheidenentzuendung/",
@@ -1184,13 +1344,23 @@
       "outboundHealthLinks": 19
     },
     {
+      "url": "/beschwerden/skoliose/",
+      "type": "condition",
+      "title": "Skoliose: Wirbelsäulenverkrümmung erkennen &amp; behandeln",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/beschwerden/sodbrennen/",
       "type": "condition",
       "title": "Sodbrennen &amp; Reflux – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 19
     },
     {
@@ -1220,7 +1390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1240,7 +1410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 86,
+      "inboundContentLinks": 89,
       "outboundHealthLinks": 17
     },
     {
@@ -1250,7 +1420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 20
     },
     {
@@ -1260,7 +1430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 13
     },
     {
@@ -1280,7 +1450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 16
     },
     {
@@ -1310,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 44,
+      "inboundContentLinks": 45,
       "outboundHealthLinks": 20
     },
     {
@@ -1322,6 +1492,16 @@
       "inSitemap": true,
       "inboundContentLinks": 14,
       "outboundHealthLinks": 17
+    },
+    {
+      "url": "/beschwerden/vitiligo/",
+      "type": "condition",
+      "title": "Vitiligo: Weisse Hautflecken verstehen &amp; einordnen",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/vulvodynie/",
@@ -1340,7 +1520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 17
     },
     {
@@ -1350,7 +1530,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 17
     },
     {
@@ -1360,7 +1540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 13
     },
     {
@@ -1380,7 +1560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
     },
     {
@@ -1390,7 +1570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 26,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 12
     },
     {
@@ -1400,7 +1580,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 326,
+      "inboundContentLinks": 333,
       "outboundHealthLinks": 44
     },
     {
@@ -1410,8 +1590,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 65,
-      "outboundHealthLinks": 62
+      "inboundContentLinks": 70,
+      "outboundHealthLinks": 66
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/alkalische-phosphatase-erhoeht/",
@@ -1450,8 +1630,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/blut-im-urin/",
+      "type": "befund",
+      "title": "Blut im Urin (Hämaturie): Was bedeutet der Befund? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/blutdruck-140-90/",
@@ -1470,8 +1660,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/",
@@ -1524,6 +1714,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/",
+      "type": "befund",
+      "title": "Eiweiss im Urin (Proteinurie): Was bedeutet der Befund? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/",
       "type": "befund",
       "title": "Eosinophile erhöht: Was bedeutet das? | TCM.ch",
@@ -1571,6 +1771,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 14,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/",
+      "type": "befund",
+      "title": "Folsäure zu niedrig: Was bedeutet ein Folsäuremangel? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 7
     },
     {
@@ -1650,7 +1860,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1680,8 +1890,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/hdl-niedrig/",
@@ -1720,7 +1930,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -1760,8 +1970,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 11
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-im-urin/",
+      "type": "befund",
+      "title": "Leukozyten im Urin: Was bedeutet der Befund? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-niedrig/",
@@ -1850,7 +2070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 8
     },
     {
@@ -1940,7 +2160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -1971,7 +2191,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/",
@@ -1980,8 +2200,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/",
@@ -2100,7 +2320,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 7
     },
     {
@@ -2550,7 +2770,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -3430,8 +3650,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 207,
-      "outboundHealthLinks": 90
+      "inboundContentLinks": 212,
+      "outboundHealthLinks": 95
+    },
+    {
+      "url": "/koerpersignale/appetitlosigkeit/",
+      "type": "body_signal",
+      "title": "Appetitlosigkeit: Mögliche Ursachen &amp; wann abklären | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/koerpersignale/arm-schlaeft-nachts-ein/",
@@ -3494,13 +3724,23 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/koerpersignale/belegte-zunge/",
+      "type": "body_signal",
+      "title": "Belegte Zunge: Was der Zungenbelag bedeutet | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/koerpersignale/bitterer-geschmack-morgens/",
       "type": "body_signal",
       "title": "Bitterer Geschmack morgens: Was kann dahinterstecken? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 10
     },
     {
@@ -3512,6 +3752,16 @@
       "inSitemap": true,
       "inboundContentLinks": 15,
       "outboundHealthLinks": 12
+    },
+    {
+      "url": "/koerpersignale/blaue-flecken-ohne-grund/",
+      "type": "body_signal",
+      "title": "Blaue Flecken ohne Grund: Wann abklären lassen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/koerpersignale/brennende-fuesse-nachts/",
@@ -3541,6 +3791,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/koerpersignale/druck-auf-der-brust/",
+      "type": "body_signal",
+      "title": "Druck auf der Brust: Wann es ein Notfall ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 8
     },
     {
@@ -3630,7 +3890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 13
     },
     {
@@ -3964,6 +4224,16 @@
       "outboundHealthLinks": 17
     },
     {
+      "url": "/koerpersignale/lymphknoten-geschwollen-hals/",
+      "type": "body_signal",
+      "title": "Geschwollene Lymphknoten am Hals: Was steckt dahinter? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/koerpersignale/magen-knurrt-staendig/",
       "type": "body_signal",
       "title": "Magen knurrt ständig: normal oder ein Zeichen? | TCM.ch",
@@ -4020,7 +4290,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 20,
       "outboundHealthLinks": 11
     },
     {
@@ -4110,7 +4380,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -4160,7 +4430,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 10
     },
     {
@@ -4180,8 +4450,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/schwindel-nach-dem-essen/",
@@ -4250,7 +4520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 11
     },
     {
@@ -4270,7 +4540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 14
     },
     {
@@ -4320,7 +4590,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 14,
       "outboundHealthLinks": 12
     },
     {
@@ -4330,7 +4600,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 169,
+      "inboundContentLinks": 187,
       "outboundHealthLinks": 17
     },
     {
@@ -4350,7 +4620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 296,
+      "inboundContentLinks": 298,
       "outboundHealthLinks": 12
     },
     {

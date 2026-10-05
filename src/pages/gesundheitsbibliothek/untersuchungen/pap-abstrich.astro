@@ -1,0 +1,149 @@
+---
+// Untersuchungen & Diagnostik Leaf (Kohorte 05.10.2026). Rein edukativ:
+// gynaekologische Vorsorge/Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// YMYL: Gebaermutterhalskrebs-Vorsorge — Pap-Zytologie und HPV-Test NICHT vermischen.
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+
+const path = '/gesundheitsbibliothek/untersuchungen/pap-abstrich';
+const url = `https://tcm.ch${path}/`;
+const title = 'Pap-Abstrich: Ablauf, Resultate & Unterschied zum HPV-Test';
+const description = 'Was passiert beim Pap-Abstrich? Wie der Krebsabstrich vom Gebärmutterhals abläuft, was auffällige Resultate bedeuten und worin er sich vom HPV-Test unterscheidet.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: title, description, url, inLanguage: 'de-CH',
+    datePublished: '2026-10-05', dateModified: '2026-10-05',
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Pap-Abstrich', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/zyklusbeschwerden/', label: 'Zyklusbeschwerden' },
+  { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+  { href: '/gesundheitsbibliothek/untersuchungen/mammographie/', label: 'Mammographie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Pap-Abstrich</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Pap-Abstrich: Was der Krebsabstrich zeigt</h1>
+        <p class="lead">Beim Pap-Abstrich werden Zellen vom Gebärmutterhals entnommen und im Labor auf Veränderungen untersucht. Die Untersuchung dient der Früherkennung von Zellveränderungen, aus denen sich Gebärmutterhalskrebs entwickeln könnte.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Der Pap-Abstrich ist eine gynäkologische Vorsorge- und Abklärungsuntersuchung. <strong>TCM.ch führt diese Untersuchung nicht durch und ersetzt keine Krebsvorsorge.</strong> Fragen zu Abstrich-Intervallen und Resultaten gehören in die gynäkologische Beratung.</div>
+
+          <h2>Was ist ein Pap-Abstrich?</h2>
+          <p>Mit einem kleinen Bürstchen oder Spatel werden bei der gynäkologischen Untersuchung Zellen vom Muttermund und aus dem Gebärmutterhalskanal entnommen. Im Labor wird geprüft, ob die Zellen normal aussehen oder Veränderungen zeigen (Zytologie, benannt nach dem Arzt Papanicolaou).</p>
+          <p>Die Entnahme dauert wenige Sekunden und ist meist nur kurz unangenehm; eine leichte Schmierblutung danach ist möglich und harmlos.</p>
+
+          <h2>Warum ist die Untersuchung wichtig?</h2>
+          <p>Gebärmutterhalskrebs entwickelt sich in der Regel langsam über Vorstufen – Zellveränderungen, die lange keine Beschwerden machen. Werden solche Vorstufen im Abstrich erkannt, lassen sie sich kontrollieren oder behandeln, bevor Krebs entsteht. Genau darin liegt der Wert der regelmässigen Vorsorge.</p>
+          <p>Hauptursache dieser Zellveränderungen sind anhaltende Infektionen mit bestimmten humanen Papillomaviren (HPV).</p>
+
+          <h2>Pap-Abstrich und HPV-Test: nicht dasselbe</h2>
+          <ul>
+            <li><strong>Pap-Abstrich (Zytologie):</strong> untersucht, ob die Zellen bereits Veränderungen zeigen.</li>
+            <li><strong>HPV-Test:</strong> untersucht, ob eine Infektion mit Hochrisiko-HPV-Typen vorliegt – also ein Risikofaktor, nicht die Zellveränderung selbst.</li>
+          </ul>
+          <p>Je nach Alter und Situation werden die beiden Tests einzeln oder kombiniert eingesetzt. Welche Strategie und welche Intervalle für dich passen, legt die Gynäkologin anhand der aktuellen Empfehlungen und deiner Vorgeschichte fest.</p>
+
+          <h2>Was bedeutet ein auffälliges Resultat?</h2>
+          <p>Ein auffälliger Pap-Befund heisst nicht Krebs: Meist handelt es sich um leichte Zellveränderungen, die sich von selbst zurückbilden können. Je nach Befund wird der Abstrich kontrolliert, ein HPV-Test ergänzt oder eine genauere Untersuchung des Muttermunds (Kolposkopie, gegebenenfalls mit Gewebeprobe) durchgeführt.</p>
+          <p>Wichtig ist, Kontrolltermine nach einem auffälligen Befund wirklich wahrzunehmen – gerade weil Vorstufen gut behandelbar sind.</p>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Unabhängig vom Abstrich gilt</div>
+            <p>Blutungen nach dem Geschlechtsverkehr, Blutungen ausserhalb der Menstruation oder nach der Menopause und ungewöhnlicher Ausfluss gehören gynäkologisch abgeklärt – auch bei unauffälligem letztem Abstrich.</p>
+          </div>
+
+          <h2>Und was hat das mit TCM zu tun?</h2>
+          <p>Nichts im Sinne einer Alternative: Die Früherkennung von Zellveränderungen am Gebärmutterhals ist eine rein schulmedizinische Aufgabe. TCM ersetzt weder Abstrich noch HPV-Test, Kolposkopie oder Behandlung.</p>
+        </div>
+
+        <LibraryRelated
+          label="Beschwerden"
+          title="Passende Themen"
+          links={rel1Links}
+          allHref="/beschwerden/"
+          allLabel="Alle Beschwerden"
+        />
+        <LibraryRelated
+          label="Untersuchungen"
+          title="Verwandte Untersuchungen"
+          links={rel2Links}
+          allHref="/gesundheitsbibliothek/untersuchungen/"
+          allLabel="Alle Untersuchungen"
+        />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Fragen zur gynäkologischen Vorsorge?</div>
+          <p>Abstrich-Intervalle und Resultate besprichst du am besten direkt mit deiner Gynäkologin oder in der ärztlichen Sprechstunde.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/sprechstunde/">Ärztliche Sprechstunde</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+</style>
