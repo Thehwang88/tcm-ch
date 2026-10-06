@@ -110,7 +110,7 @@ export const standorte: Record<string, Standort> = {
     nearby: [
       { slug: 'zuerich-oerlikon', plz: '8050', city: 'Zürich Oerlikon', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
       { slug: 'winterthur-marktgasse', plz: '8400', city: 'Winterthur Marktgasse', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
-      { slug: 'zuerich-bellevue', plz: 'Bald', city: 'Zürich City', desc: 'Neuer Standort im Zentrum, in Vorbereitung.' },
+      { slug: 'zuerich-city', plz: 'Bald', city: 'Zürich City', desc: 'Neuer Standort im Zentrum, in Vorbereitung.' },
     ],
   },
   kreuzlingen: {
@@ -731,7 +731,7 @@ export const standorte: Record<string, Standort> = {
         "desc": "Nahe Zürich"
       },
       {
-        "slug": "zuerich-bellevue",
+        "slug": "zuerich-city",
         "plz": "",
         "city": "Zürich City",
         "desc": "Neuer Standort im Zentrum - in Vorbereitung"
@@ -1389,7 +1389,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nearby": [
       {
-        "slug": "zuerich-bellevue",
+        "slug": "zuerich-city",
         "plz": "",
         "city": "Zürich City",
         "desc": "Neuer Standort im Zentrum - in Vorbereitung"
@@ -1584,7 +1584,7 @@ export const standorte: Record<string, Standort> = {
     },
     "nearby": [
       {
-        "slug": "zuerich-bellevue",
+        "slug": "zuerich-city",
         "plz": "",
         "city": "Zürich City",
         "desc": "Neuer Standort im Zentrum - in Vorbereitung"

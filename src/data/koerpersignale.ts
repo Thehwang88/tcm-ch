@@ -541,6 +541,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion', cat: 'Beschwerde' },
       { href: '/beschwerden/hitzewallungen/', label: 'Hitzewallungen', cat: 'Beschwerde' },
       { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-wechseljahresbeschwerden/', label: 'Akupunktur bei Wechseljahresbeschwerden', cat: 'Artikel' },
       { href: '/koerpersignale/starkes-schwitzen-ohne-sport/', label: 'Starkes Schwitzen ohne Sport', cat: 'Körpersignal' },
       { href: '/koerpersignale/zungenbrennen/', label: 'Zungenbrennen', cat: 'Körpersignal' },
     ],
@@ -1170,6 +1171,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
       { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
       { href: '/beschwerden/kieferschmerzen/', label: 'Kieferschmerzen und Zähneknirschen', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-kieferschmerzen/', label: 'Akupunktur bei Kieferschmerzen & CMD', cat: 'Artikel' },
     ],
   },
 
@@ -2519,6 +2521,7 @@ export const koerpersignale: Koerpersignal[] = [
       { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', label: 'Stuhlanalyse', cat: 'Untersuchung' },
       { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie: Ablauf der Darmspiegelung', cat: 'Untersuchung' },
       { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-reizdarm/', label: 'Akupunktur bei Reizdarm', cat: 'Artikel' },
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
       { href: '/koerpersignale/voellegefuehl-nach-dem-essen/', label: 'Völlegefühl nach dem Essen', cat: 'Körpersignal' },
       { href: '/koerpersignale/blaehbauch-am-abend/', label: 'Blähbauch am Abend', cat: 'Körpersignal' },

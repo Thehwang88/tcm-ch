@@ -166,3 +166,4 @@ hilft akupunktur bei [knie/schulter/wechseljahre/regelschmerzen/tennisarm/ferse/
 akupunktur-bern / tcm-bern / akupunktur-tcm-bern (eigene kommerzielle URLs),/standorte/bern/,Standortseite ist alleiniger kommerzieller Bern-Owner,Doorway-Konkurrenz zur eigenen Standortseite,Keiner
 chinesische-medizin-bern / traditionelle-chinesische-medizin-bern (eigene Slugs),/standorte/bern/,Synonym-Intents gehören dem Standort-Owner,Synonym-Doorways,Keiner
 tcm praxis bern / akupunktur praxis bern (eigene Slugs),/standorte/bern/,Praxis-Varianten gehören dem Standort-Owner,Doorways,Keiner
+standorte/zuerich-bellevue (Reaktivierung) / neue bellevue-Slugs,/standorte/zuerich-city/,"Bellevue-Entity stillgelegt (06.10.2026); City-Intent gehört /standorte/zuerich-city/, Stadt-Intent /akupunktur-tcm-zuerich/",Wiederbelebte Geister-Location würde erneut in GSC auftauchen,Keiner

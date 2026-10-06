@@ -281,3 +281,70 @@ console.log('  ->', OUT);
   errs.slice(0, 20).forEach((e) => console.log('    !', e));
   if (errs.length > 0) process.exitCode = 1;
 }
+
+// 8. Ownership-Gate (06.10.2026). Haelt stillgelegte Routen tot und zentrale
+//    Keyword-Owner eindeutig, damit Generatoren/Refactors die bereinigten
+//    Kannibalisierungen (Bellevue, Schröpfen, Zürich, Krankenkasse) nicht
+//    wieder einfuehren. Verstoss => exitCode=1.
+{
+  const errs = [];
+  // A: Stillgelegte Routen duerfen weder bauen noch in Sitemap/Links auftauchen;
+  //    fuer jede muss eine _redirects-Regel existieren.
+  const RETIRED = ['/standorte/zuerich-bellevue/', '/en/locations/zuerich-bellevue/', '/en/locations/zuerich-city/'];
+  const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
+  const redirects = fs.readFileSync('public/_redirects', 'utf8');
+  for (const r of RETIRED) {
+    if (pages.has(r)) errs.push(`Retired-Route baut noch: ${r}`);
+    if (sitemap.includes('https://tcm.ch' + r)) errs.push(`Retired-Route in Sitemap: ${r}`);
+    if (!redirects.includes(r.replace(/\/$/, ''))) errs.push(`Kein 301 in _redirects fuer: ${r}`);
+    if (inbound.get(r)?.size) errs.push(`Interne Links auf Retired-Route: ${r} (${[...inbound.get(r)][0]} …)`);
+  }
+  // B: Keyword-Map: kein primary_keyword darf zwei LIVE-Owner haben.
+  //    (Simple CSV-Zeilenparser genuegt: primary_keyword/status enthalten keine Kommas in Quotes-Faellen,
+  //    darum ueber csv-artiges Splitting mit Quote-Beachtung.)
+  const csvText = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
+  const parseLine = (line) => {
+    const out = []; let cur = ''; let q = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (q) { if (ch === '"') { if (line[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += ch; }
+      else if (ch === '"') q = true;
+      else if (ch === ',') { out.push(cur); cur = ''; }
+      else cur += ch;
+    }
+    out.push(cur); return out;
+  };
+  const lines = csvText.split('\n').filter((l) => l.trim());
+  const byKw = new Map();
+  const rowsByUrl = new Map();
+  for (const line of lines.slice(1)) {
+    const c = parseLine(line);
+    if (c.length < 20) continue;
+    rowsByUrl.set(c[0], c);
+    if (c[2] !== 'live') continue;
+    const kw = (c[5] || '').trim().toLowerCase();
+    if (!kw) continue;
+    if (byKw.has(kw)) errs.push(`Map: primary_keyword "${kw}" doppelt live: ${byKw.get(kw)} / ${c[0]}`);
+    else byKw.set(kw, c[0]);
+  }
+  // C: Gepinnte Head-Owner (Fix-Sprint 06.10.2026) muessen registriert, live und gebaut sein.
+  const PINNED = {
+    'schröpfen': '/therapien/schroepfen/',
+    'tcm zürich': '/akupunktur-tcm-zuerich/',
+    'akupunktur krankenkasse': '/krankenkassen/akupunktur/',
+    'massage krankenkasse': '/krankenkassen/massage/',
+    'shiatsu krankenkasse': '/krankenkassen/shiatsu/',
+    'tcm krankenkasse': '/krankenkassen/',
+    'tcm bern': '/standorte/bern/',
+  };
+  for (const [kw, url] of Object.entries(PINNED)) {
+    if (byKw.get(kw) !== url) errs.push(`Map: Owner fuer "${kw}" ist ${byKw.get(kw) ?? 'FEHLT'}, erwartet ${url}`);
+    if (!pages.has(url)) errs.push(`Owner-Route fehlt in dist: ${url}`);
+  }
+  // D: Die stillgelegte Bellevue-Map-Zeile darf nie wieder live/PRIMARY werden.
+  const bl = rowsByUrl.get('/standorte/zuerich-bellevue/');
+  if (bl && (bl[2] === 'live' || bl[13] === 'PRIMARY_OWNER')) errs.push('Map: Bellevue-Zeile wieder live/PRIMARY_OWNER');
+  console.log('  Ownership-Gate:', Object.keys(PINNED).length, 'Pins,', RETIRED.length, 'Retired,', errs.length, 'Fehler');
+  errs.slice(0, 20).forEach((e) => console.log('    !', e));
+  if (errs.length > 0) process.exitCode = 1;
+}

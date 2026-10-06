@@ -9,7 +9,7 @@
 import { clinics, type Clinic } from './locations';
 
 /** Reihenfolge im Dropdown; nicht gelistete Zürcher Standorte folgen danach. */
-const REIHENFOLGE = ['zuerich-bellevue', 'zuerich-oerlikon', 'zuerich-hoengg'];
+const REIHENFOLGE = ['zuerich-oerlikon', 'zuerich-hoengg'];
 
 /** Letzte Option: patient ist standortflexibel, wir wählen den passenden/frühesten Zürcher Standort.
  *  value bleibt unverändert (wird so an /api/anfrage bzw. ins Mail übergeben). */

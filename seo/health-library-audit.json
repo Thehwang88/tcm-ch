@@ -3861,7 +3861,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/koerpersignale/ein-fuss-kaelter-als-der-andere/",
@@ -4031,7 +4031,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 15,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/husten-nach-dem-essen/",
@@ -4341,7 +4341,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 8,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/ploetzlicher-harndrang-ohne-volle-blase/",
@@ -5130,7 +5130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -5180,7 +5180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
@@ -5230,7 +5230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
