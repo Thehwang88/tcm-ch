@@ -289,20 +289,56 @@ console.log('  ->', OUT);
 {
   const errs = [];
   // A: Stillgelegte Routen duerfen weder bauen noch in Sitemap/Links auftauchen;
-  //    fuer jede muss eine _redirects-Regel existieren.
-  const RETIRED = ['/standorte/zuerich-bellevue/', '/en/locations/zuerich-bellevue/', '/en/locations/zuerich-city/'];
+  //    fuer jede muss eine ECHTE _redirects-Regel existieren (Kommentare/Leerzeilen
+  //    zaehlen nicht - frueherer Substring-Check haette eine geloeschte Regel
+  //    uebersehen, solange die URL noch in einem Kommentar stand).
+  //    _redirects-Syntax hier: "<source> <destination> [status]" pro Zeile, '#'-Kommentare.
+  const parseRedirects = (text) => {
+    const rules = [];
+    for (const raw of text.split('\n')) {
+      const line = raw.split('#')[0].trim();
+      if (!line) continue;
+      const parts = line.split(/\s+/);
+      if (parts.length < 2) continue;
+      rules.push({ from: parts[0], to: parts[1], status: parts[2] ?? '301' });
+    }
+    return rules;
+  };
+  // Erwartete Redirects: Quelle (mit Slash) -> Ziel + Status; die slashlose
+  // Variante wird mitgeprueft, weil Cloudflare /x -> /x/ normalisiert.
+  const RETIRED = {
+    '/standorte/zuerich-bellevue/': { to: '/standorte/zuerich-city/', status: '301' },
+    '/en/locations/zuerich-bellevue/': { to: '/en/locations/', status: '301' },
+    '/en/locations/zuerich-city/': { to: '/en/locations/', status: '301' },
+  };
   const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
-  const redirects = fs.readFileSync('public/_redirects', 'utf8');
-  for (const r of RETIRED) {
+  const redirectRules = parseRedirects(fs.readFileSync('public/_redirects', 'utf8'));
+  const ruleFor = (src) => redirectRules.find((x) => x.from === src);
+  for (const [r, want] of Object.entries(RETIRED)) {
     if (pages.has(r)) errs.push(`Retired-Route baut noch: ${r}`);
     if (sitemap.includes('https://tcm.ch' + r)) errs.push(`Retired-Route in Sitemap: ${r}`);
-    if (!redirects.includes(r.replace(/\/$/, ''))) errs.push(`Kein 301 in _redirects fuer: ${r}`);
+    for (const src of [r, r.replace(/\/$/, '')]) {
+      const rule = ruleFor(src);
+      if (!rule) errs.push(`Keine _redirects-Regel fuer ${src}`);
+      else if (rule.to !== want.to || rule.status !== want.status) errs.push(`_redirects-Regel fuer ${src} abweichend: -> ${rule.to} ${rule.status} (erwartet ${want.to} ${want.status})`);
+    }
     if (inbound.get(r)?.size) errs.push(`Interne Links auf Retired-Route: ${r} (${[...inbound.get(r)][0]} …)`);
   }
+  // Selbsttest des Redirect-Parsers (Fixtures, keine Produktionsdateien):
+  // ein Kommentar mit der URL darf NICHT als Regel zaehlen.
+  {
+    const fx = parseRedirects('# alt: /standorte/zuerich-bellevue/ ist weg\n\n/a /b 301\n/c/   /d/\n');
+    if (fx.length !== 2 || fx[0].from !== '/a' || fx[0].to !== '/b' || fx[1].status !== '301') errs.push('Gate-Selbsttest: parseRedirects fehlerhaft');
+    if (fx.some((x) => x.from.includes('bellevue'))) errs.push('Gate-Selbsttest: Kommentar wurde als Regel geparst');
+  }
   // B: Keyword-Map: kein primary_keyword darf zwei LIVE-Owner haben.
-  //    (Simple CSV-Zeilenparser genuegt: primary_keyword/status enthalten keine Kommas in Quotes-Faellen,
-  //    darum ueber csv-artiges Splitting mit Quote-Beachtung.)
+  //    Format-Invariante der Map: EIN Datensatz pro physischer Zeile (so schreiben
+  //    alle Generatoren sie, csv.writer mit lineterminator='\n'). Quoted Kommas und
+  //    doppelte Anfuehrungszeichen ("") sind erlaubt; ein Zeilenumbruch INNERHALB
+  //    eines quoted Felds ist nicht unterstuetzt und muss laut scheitern statt
+  //    Datensaetze still zu verschlucken.
   const csvText = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
+  // parseLine: Rueckgabe null bei unbalancierten Quotes (= Indiz fuer Multiline-Feld).
   const parseLine = (line) => {
     const out = []; let cur = ''; let q = false;
     for (let i = 0; i < line.length; i++) {
@@ -312,14 +348,33 @@ console.log('  ->', OUT);
       else if (ch === ',') { out.push(cur); cur = ''; }
       else cur += ch;
     }
+    if (q) return null; // unbalanciert -> Multiline-Feld -> unsupported
     out.push(cur); return out;
   };
+  // Selbsttest des CSV-Parsers (Fixtures):
+  {
+    const ok = parseLine('/u/,a,"x, y",b');
+    if (!ok || ok.length !== 4 || ok[2] !== 'x, y') errs.push('Gate-Selbsttest: quoted comma fehlerhaft');
+    const esc = parseLine('a,"sagt ""hi""",b');
+    if (!esc || esc[1] !== 'sagt "hi"') errs.push('Gate-Selbsttest: escaped quote fehlerhaft');
+    const empty = parseLine('a,,c');
+    if (!empty || empty[1] !== '') errs.push('Gate-Selbsttest: leeres Feld fehlerhaft');
+    if (parseLine('a,"offen') !== null) errs.push('Gate-Selbsttest: unbalancierte Quotes nicht erkannt');
+  }
   const lines = csvText.split('\n').filter((l) => l.trim());
+  const header = parseLine(lines[0]);
+  const NCOLS = header ? header.length : 0;
+  if (!header || header[0] !== 'url' || header[5] !== 'primary_keyword' || header[2] !== 'status' || header[13] !== 'owner_status') {
+    errs.push('Map: Header-Format unerwartet (Spalten url/status/primary_keyword/owner_status nicht an erwarteter Position)');
+  }
   const byKw = new Map();
   const rowsByUrl = new Map();
+  let lineNo = 1;
   for (const line of lines.slice(1)) {
+    lineNo++;
     const c = parseLine(line);
-    if (c.length < 20) continue;
+    if (c === null) { errs.push(`Map: Zeile ${lineNo} hat unbalancierte Quotes (Multiline-Felder sind nicht unterstuetzt)`); continue; }
+    if (c.length !== NCOLS) { errs.push(`Map: Zeile ${lineNo} hat ${c.length} statt ${NCOLS} Spalten (${(c[0] || line).slice(0, 60)})`); continue; }
     rowsByUrl.set(c[0], c);
     if (c[2] !== 'live') continue;
     const kw = (c[5] || '').trim().toLowerCase();
@@ -344,7 +399,7 @@ console.log('  ->', OUT);
   // D: Die stillgelegte Bellevue-Map-Zeile darf nie wieder live/PRIMARY werden.
   const bl = rowsByUrl.get('/standorte/zuerich-bellevue/');
   if (bl && (bl[2] === 'live' || bl[13] === 'PRIMARY_OWNER')) errs.push('Map: Bellevue-Zeile wieder live/PRIMARY_OWNER');
-  console.log('  Ownership-Gate:', Object.keys(PINNED).length, 'Pins,', RETIRED.length, 'Retired,', errs.length, 'Fehler');
+  console.log('  Ownership-Gate:', Object.keys(PINNED).length, 'Pins,', Object.keys(RETIRED).length, 'Retired,', errs.length, 'Fehler');
   errs.slice(0, 20).forEach((e) => console.log('    !', e));
   if (errs.length > 0) process.exitCode = 1;
 }
