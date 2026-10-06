@@ -19,6 +19,7 @@ const desc: Record<string, string> = {
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
   'basel': 'Steinenvorstadt 73, 4051 Basel', 'luzern': 'Eröffnung 2027 · Warteliste offen',
+  'bern': 'In Vorbereitung · Interesse anmelden',
 };
 
 // Regionen-Gruppierung (crawlbare Karten, keine div-onclick).
@@ -27,6 +28,7 @@ const groups = [
   { label: 'Ostschweiz & Bodensee', ids: ['st-gallen', 'frauenfeld', 'kreuzlingen', 'wil', 'rorschach', 'bottighofen'] },
   { label: 'Basel & Nordwestschweiz', ids: ['basel'] },
   { label: 'Zentralschweiz', ids: ['luzern'] },
+  { label: 'Bern & Mittelland', ids: ['bern'] },
 ];
 const allIds = groups.flatMap((g) => g.ids);
 const card = (id: string) => {

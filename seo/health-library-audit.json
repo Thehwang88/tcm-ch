@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05",
+  "generated": "2026-10-06",
   "totals": {
     "healthPages": 560,
     "byType": {
@@ -30,7 +30,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 68,
+      "inboundContentLinks": 69,
       "outboundHealthLinks": 160
     },
     {
@@ -700,7 +700,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 44,
+      "inboundContentLinks": 45,
       "outboundHealthLinks": 5
     },
     {
@@ -710,7 +710,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 21
     },
     {
@@ -840,7 +840,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 140,
+      "inboundContentLinks": 142,
       "outboundHealthLinks": 18
     },
     {
@@ -910,7 +910,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 168,
+      "inboundContentLinks": 170,
       "outboundHealthLinks": 31
     },
     {
@@ -1170,7 +1170,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 190,
+      "inboundContentLinks": 192,
       "outboundHealthLinks": 36
     },
     {
@@ -1220,7 +1220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 133,
+      "inboundContentLinks": 134,
       "outboundHealthLinks": 21
     },
     {
@@ -1230,7 +1230,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/schlafprobleme/",
       "inSitemap": false,
-      "inboundContentLinks": 25,
+      "inboundContentLinks": 26,
       "outboundHealthLinks": 16
     },
     {
@@ -1260,7 +1260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
+      "inboundContentLinks": 34,
       "outboundHealthLinks": 24
     },
     {
@@ -1410,7 +1410,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 89,
+      "inboundContentLinks": 91,
       "outboundHealthLinks": 17
     },
     {
@@ -1480,7 +1480,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 46,
+      "inboundContentLinks": 48,
       "outboundHealthLinks": 20
     },
     {
@@ -1570,7 +1570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
+      "inboundContentLinks": 30,
       "outboundHealthLinks": 12
     },
     {
@@ -4600,7 +4600,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 187,
+      "inboundContentLinks": 188,
       "outboundHealthLinks": 17
     },
     {
@@ -4610,7 +4610,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 34,
+      "inboundContentLinks": 35,
       "outboundHealthLinks": 5
     },
     {
@@ -4620,7 +4620,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 305,
+      "inboundContentLinks": 306,
       "outboundHealthLinks": 28
     },
     {
@@ -4920,7 +4920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 69,
+      "inboundContentLinks": 70,
       "outboundHealthLinks": 14
     },
     {
@@ -4960,7 +4960,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 117,
+      "inboundContentLinks": 118,
       "outboundHealthLinks": 14
     },
     {
@@ -5140,7 +5140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -5200,7 +5200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 6
     },
     {

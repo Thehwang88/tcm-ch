@@ -316,6 +316,7 @@ Regeln:
 - https://tcm.ch/wissen/akupunktur-bei-reizdarm/
 - https://tcm.ch/wissen/akupunktur-bei-karpaltunnelsyndrom/
 - https://tcm.ch/wissen/akupunktur-bei-uebelkeit/
+- https://tcm.ch/standorte/bern/
 
 ## Geplant (noch nicht live)
 

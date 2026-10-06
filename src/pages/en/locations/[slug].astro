@@ -22,8 +22,14 @@ const mapsHref = street
   : null;
 
 const title = `Acupuncture & TCM in ${name} | TCM.ch`;
+// Pre-opening ohne bestätigtes Datum (openingNote 'In preparation', z. B. Bern):
+// neutrale Formulierung, KEIN Eröffnungsjahr erfinden. Datum-Claims bleiben auf
+// Standorte mit kommuniziertem Jahr beschränkt.
+const inPreparation = openingSoon && clinic.openingNote === 'In preparation';
 const description = openingSoon
-  ? `Acupuncture & TCM in ${name}, opening 2028. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
+  ? inPreparation
+    ? `Acupuncture & TCM in ${name}, location in preparation. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
+    : `Acupuncture & TCM in ${name}, opening 2028. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
   : `English-speaking acupuncture & TCM in ${name}. EMR-/ASCA-recognised, covered by insurance. Back pain, migraine, sleep and more.`;
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
@@ -68,7 +74,7 @@ const breadcrumbLd = {
       <h1>Acupuncture & TCM in {name}</h1>
       {openingSoon ? (
         <p class="lead">
-          Our {name} clinic is <strong>opening in 2028</strong>. Across TCM.ch you'll already find
+          Our {name} clinic is {inPreparation ? <strong>currently in preparation</strong> : <strong>opening in 2028</strong>}. Across TCM.ch you'll already find
           English-speaking, EMR-/ASCA-recognised practitioners offering acupuncture and Traditional
           Chinese Medicine - get in touch and we'll point you to your nearest open clinic.
         </p>
@@ -97,7 +103,7 @@ const breadcrumbLd = {
         <div class="card">
           <h3>Where to find us</h3>
           {openingSoon ? (
-            <p><strong>Opening 2028</strong><br />{city}, Switzerland</p>
+            <p><strong>{inPreparation ? 'Location in preparation' : 'Opening 2028'}</strong><br />{city}, Switzerland</p>
           ) : (
             <p>
               {street}<br />{postalCode} {city}<br />Switzerland

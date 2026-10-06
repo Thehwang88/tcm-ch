@@ -163,3 +163,6 @@ akupunktur karpaltunnel (eigener Slug),/wissen/akupunktur-bei-karpaltunnelsyndro
 akupressur übelkeit / p6 / akupressurband (eigene Slugs),/wissen/akupunktur-bei-uebelkeit/,P6-Artikel besitzt Nadel- UND Akupressur-Stimulation,Synonym-Doorways,Keiner
 akupunktur schwangerschaftsübelkeit,/therapien/akupunktur/schwangerschaft/,Schwangerschafts-Akupunktur-Owner; Übelkeits-Artikel verweist nur,Scope-Konflikt mit Schwangerschafts-Owner,Keiner
 hilft akupunktur bei [knie/schulter/wechseljahre/regelschmerzen/tennisarm/ferse/kiefer/reizdarm/kts/übelkeit] (eigene Slugs),jeweiliger /wissen/akupunktur-bei-*/-Artikel,Frage-Varianten gehören dem jeweiligen Treatment-Owner,Frage-Doorways,Keiner
+akupunktur-bern / tcm-bern / akupunktur-tcm-bern (eigene kommerzielle URLs),/standorte/bern/,Standortseite ist alleiniger kommerzieller Bern-Owner,Doorway-Konkurrenz zur eigenen Standortseite,Keiner
+chinesische-medizin-bern / traditionelle-chinesische-medizin-bern (eigene Slugs),/standorte/bern/,Synonym-Intents gehören dem Standort-Owner,Synonym-Doorways,Keiner
+tcm praxis bern / akupunktur praxis bern (eigene Slugs),/standorte/bern/,Praxis-Varianten gehören dem Standort-Owner,Doorways,Keiner

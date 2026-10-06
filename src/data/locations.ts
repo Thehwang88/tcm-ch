@@ -78,6 +78,11 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, openingSoon: true, openingNote: 'Opening 2027',
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
+  { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',
+    street: null, postalCode: null, phone: '+41 77 523 61 22',
+    openingHours: [], geo: { lat: 46.948, lng: 7.4474 }, openingSoon: true, openingNote: 'In preparation',
+    areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
+
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22',
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 },
