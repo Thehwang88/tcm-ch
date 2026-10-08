@@ -4772,4 +4772,7 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    <1520px: exakt bisheriges Verhalten. Rollback: diesen Block entfernen. */
 @media (min-width:1520px){
   #home-content .hero{ max-width:var(--max-wide) !important; }
+  /* Step 2: Standorte-Sektion der Homepage (id=s-standorte nur auf /);
+     .wrap-Basisregel traegt kein !important, ID-Spezifitaet genuegt. */
+  #home-content #s-standorte > .wrap{ max-width:var(--max-wide); }
 }
