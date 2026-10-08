@@ -182,6 +182,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/therapien/ohrakupunktur" body="" schema={schema}>
+<div class="therapie-scope">
   <style set:html={css} is:inline></style>
   <Fragment set:html={body} />
   <MassageAnfrageForm
@@ -191,4 +192,5 @@ const schema = [
     sub="Kurz schildern, wir melden uns mit einem Vorschlag, meist innert 24 bis 48 Stunden."
   />
   <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Team TCM.ch" />
+</div>
 </SpaPage>
