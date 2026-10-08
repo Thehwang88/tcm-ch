@@ -4818,3 +4818,51 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    definiert (ohne !important) — ID-Spezifitaet genuegt hier. */
 #home-content .glb-btn{background:var(--brand);color:var(--brand-black)}
 #home-content .glb-btn:hover{background:#14C97A;color:var(--brand-black)}
+
+/* ── REBRAND COLOR COHORT 03 (08.10.2026): dekorative Gruens der Homepage ────
+   (a) Scoped Custom Properties: innerhalb #home-content zeigen die Legacy-
+       Variablen auf die Softriver-Werte — die :root-Definitionen in tokens.css
+       und damit ALLE anderen Routen bleiben unveraendert. Primary-CTAs sind
+       durch Cohort 01/02 mit !important auf var(--brand) gepinnt und von
+       diesem Scoping unberuehrt. Das dunkle CTA-Band nutzt kein var(--blue).
+   (b) SVG-Shim (home-scoped): Praesentationsattribute verlieren gegen jede
+       CSS-Regel — faerbt die 82 Icon-fills/strokes ohne Markup-Massenedit;
+       alle betroffenen Icons liegen auf hellem Grund (dunkles Band: 0 Treffer).
+   Rollback: diesen Block entfernen (+ home-body-Literalwerte zuruecksetzen). */
+#home-content{
+  --blue:var(--brand-ink);
+  --blue-dark:#075C38;
+  --blue-light:var(--brand-tint);
+  --green-mint:var(--brand-tint);
+  --green-mid:#BDF4DC;
+  /* :root-Aliasse (--green:var(--blue) etc.) werden auf :root aufgeloest und
+     vererben den ALTEN Wert — darum hier ebenfalls re-aliasen (pj-stage-3,
+     Selbsttest-Button u.a. nutzen var(--green)). */
+  --green:var(--brand-ink);
+  --green-dark:#075C38;
+  --green-light:var(--brand-tint);
+}
+#home-content [fill="#2D9B6F"]{fill:var(--brand-ink)}
+#home-content [stroke="#2D9B6F"]{stroke:var(--brand-ink)}
+/* Offer-Puls-Dot: Inline-Literal wird 1:1 in 2 andere Seiten wiederverwendet
+   (akupunktur-in-der-naehe, therapien/shiatsu) — darum NICHT im Markup ersetzt,
+   sondern nur hier home-scoped uebersteuert (color-Property-!important wirkt
+   gezielt gegen die Inline-Deklaration). */
+#home-content [style*="background:#2D9B6F"]{background:var(--brand-ink)!important}
+/* (c) Literal-Hex-Reste: Regeln oben im Stack tragen color:#2D9B6F teils mit
+   !important (Eyebrow-Vereinheitlichung ~L4156) — hier home-scoped auf Ink.
+   Ausnahme .eyebrow.dark (CARE-Band, dunkler Grund): Mint als Akzent. */
+#home-content .section-label,
+#home-content .offer-eyebrow,
+#home-content .eyebrow{color:var(--brand-ink)!important}
+#home-content .eyebrow.dark{color:var(--brand)!important}
+#home-content .pj-num{color:var(--brand-ink);background:rgba(11,122,76,.08)}
+#home-content .pj-stage-2 .pj-num{background:#fff}
+#home-content .pj-stage-3 .pj-num{background:rgba(255,255,255,.16);color:#fff}
+/* (d) !important-Literalregeln (Icon-System L996, Accent-Bars L1008, L1035,
+   wa-alt): nur die auf der Homepage tatsaechlich vorkommenden Klassen. */
+#home-content .review-avatar,
+#home-content .next-step-num{background:rgba(11,122,76,.08)!important;color:var(--brand-ink)!important}
+#home-content .wa-value-pt svg{color:var(--brand-ink)!important}
+#home-content .svc-photo-top-bar{background:var(--brand)!important}
+#home-content .wa-concierge-wa-alt{color:var(--brand-ink)!important}
