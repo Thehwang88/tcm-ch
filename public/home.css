@@ -4830,39 +4830,62 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
        alle betroffenen Icons liegen auf hellem Grund (dunkles Band: 0 Treffer).
    Rollback: diesen Block entfernen (+ home-body-Literalwerte zuruecksetzen). */
 #home-content{
-  --blue:var(--brand-ink);
-  --blue-dark:#075C38;
-  --blue-light:var(--brand-tint);
+  /* Refinement 04: Ink ist keine Default-Praesentationsfarbe mehr —
+     Text/Links/Icons -> Rich Black, Tints -> Concrete. Nur das Offer-Band
+     behaelt den blassen Mint-Tint (--green-mint). */
+  --blue:var(--brand-black);
+  --blue-dark:var(--brand-black);
+  --blue-light:var(--brand-surface);
   --green-mint:var(--brand-tint);
   --green-mid:#BDF4DC;
   /* :root-Aliasse (--green:var(--blue) etc.) werden auf :root aufgeloest und
      vererben den ALTEN Wert — darum hier ebenfalls re-aliasen (pj-stage-3,
      Selbsttest-Button u.a. nutzen var(--green)). */
-  --green:var(--brand-ink);
-  --green-dark:#075C38;
-  --green-light:var(--brand-tint);
+  --green:var(--brand-black);
+  --green-dark:var(--brand-black);
+  --green-light:var(--brand-surface);
 }
-#home-content [fill="#2D9B6F"]{fill:var(--brand-ink)}
-#home-content [stroke="#2D9B6F"]{stroke:var(--brand-ink)}
+/* Review-Sterne (75 Polygon-fills) = selektiver Mint-Akzent; Check-/Icon-
+   strokes -> Rich Black. */
+#home-content [fill="#2D9B6F"]{fill:var(--brand)}
+#home-content [stroke="#2D9B6F"]{stroke:var(--brand-black)}
 /* Offer-Puls-Dot: Inline-Literal wird 1:1 in 2 andere Seiten wiederverwendet
    (akupunktur-in-der-naehe, therapien/shiatsu) — darum NICHT im Markup ersetzt,
    sondern nur hier home-scoped uebersteuert (color-Property-!important wirkt
    gezielt gegen die Inline-Deklaration). */
-#home-content [style*="background:#2D9B6F"]{background:var(--brand-ink)!important}
+#home-content [style*="background:#2D9B6F"]{background:var(--brand)!important}
 /* (c) Literal-Hex-Reste: Regeln oben im Stack tragen color:#2D9B6F teils mit
-   !important (Eyebrow-Vereinheitlichung ~L4156) — hier home-scoped auf Ink.
+   !important (Eyebrow-Vereinheitlichung ~L4156) — hier home-scoped auf Rich Black.
    Ausnahme .eyebrow.dark (CARE-Band, dunkler Grund): Mint als Akzent. */
 #home-content .section-label,
 #home-content .offer-eyebrow,
-#home-content .eyebrow{color:var(--brand-ink)!important}
+#home-content .eyebrow{color:var(--brand-black)!important}
 #home-content .eyebrow.dark{color:var(--brand)!important}
-#home-content .pj-num{color:var(--brand-ink);background:rgba(11,122,76,.08)}
+#home-content .pj-num{color:var(--brand-black);background:var(--brand-surface)}
 #home-content .pj-stage-2 .pj-num{background:#fff}
 #home-content .pj-stage-3 .pj-num{background:rgba(255,255,255,.16);color:#fff}
 /* (d) !important-Literalregeln (Icon-System L996, Accent-Bars L1008, L1035,
    wa-alt): nur die auf der Homepage tatsaechlich vorkommenden Klassen. */
 #home-content .review-avatar,
-#home-content .next-step-num{background:rgba(11,122,76,.08)!important;color:var(--brand-ink)!important}
-#home-content .wa-value-pt svg{color:var(--brand-ink)!important}
+#home-content .next-step-num{background:var(--brand-surface)!important;color:var(--brand-black)!important}
+#home-content .wa-value-pt svg{color:var(--brand-black)!important}
 #home-content .svc-photo-top-bar{background:var(--brand)!important}
-#home-content .wa-concierge-wa-alt{color:var(--brand-ink)!important}
+#home-content .wa-concierge-wa-alt{color:var(--brand-black)!important}
+/* ── REBRAND REFINEMENT 04 (08.10.2026): Sticky-/Floating-Conversion-Elemente.
+   StickyCtaBar (.scb-*, mobil) und WhatsAppConcierge (.wac-*, Desktop) sind
+   sitewide Komponenten AUSSERHALB #home-content — Homepage-Scoping darum via
+   body:has(#home-content) (#home-content existiert nur auf /; Browser ohne
+   :has() behalten das alte Gruen = graceful degradation). Softriver-Hierarchie:
+   Flaechen Rich Black, Aktionen Mint mit Rich-Black-Text. Keyframes bekommen
+   NEUE Namen (-brand) — die Original-Keyframes bleiben fuer andere Routen. */
+body:has(#home-content) .scb-primary{background:var(--brand);color:var(--brand-black);box-shadow:0 6px 18px rgba(26,226,136,.3);animation-name:scb-glow-brand}
+@keyframes scb-glow-brand{0%,100%{box-shadow:0 6px 18px rgba(26,226,136,.28)}50%{box-shadow:0 6px 26px rgba(26,226,136,.55)}}
+body:has(#home-content) .scb-out{color:var(--brand-black);border-color:rgba(2,11,16,.25)}
+body:has(#home-content) .wac-launch{background:var(--brand-black);color:var(--brand);box-shadow:0 8px 24px rgba(2,11,16,.28),0 2px 6px rgba(0,0,0,.14)}
+body:has(#home-content) .wac-launch:hover{box-shadow:0 12px 30px rgba(2,11,16,.38),0 2px 6px rgba(0,0,0,.14)}
+body:has(#home-content) .wac-launch:focus-visible{outline:3px solid rgba(26,226,136,.6)}
+body:has(#home-content) .wac-ring{animation-name:wac-pulse-brand}
+@keyframes wac-pulse-brand{0%{box-shadow:0 0 0 0 rgba(26,226,136,.45)}70%{box-shadow:0 0 0 16px rgba(26,226,136,0)}100%{box-shadow:0 0 0 0 rgba(26,226,136,0)}}
+body:has(#home-content) .wac-head{background:var(--brand-black)}
+body:has(#home-content) .wac-cta{background:var(--brand);color:var(--brand-black)}
+body:has(#home-content) .wac-cta:hover{background:#14C97A}
