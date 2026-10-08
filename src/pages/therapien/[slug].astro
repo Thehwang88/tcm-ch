@@ -100,7 +100,9 @@ const massageBlock = massageLinksHtml(
 // Softriver-Rebrand: Opt-in pro Therapie-Leaf. .therapie-scope remappt die
 // Legacy-Aliasse (Scope-Block in public/home.css); der neutrale Wrapper-div
 // umfasst auch die injizierten Bloecke nach dem #page-therapie-Div.
-const REBRANDED_THERAPY_SLUGS = new Set(['akupunktur']);
+const REBRANDED_THERAPY_SLUGS = new Set(['akupunktur',
+  // 4C: restliche Leaves
+  'akupressur', 'elektroakupunktur', 'gesichtsakupunktur', 'gua-sha', 'kraeutertherapie', 'moxibustion', 'physiotherapie', 'schroepfen', 'shiatsu', 'tuina']);
 const fullBody = prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!);
 const pageBody = REBRANDED_THERAPY_SLUGS.has(slug!) ? `<div class="therapie-scope">${fullBody}</div>` : fullBody;
 ---

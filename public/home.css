@@ -4992,6 +4992,9 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    Attribut-Shim nur im Standort-Scope, Quelle bleibt fuer andere Familien
    unveraendert. */
 #page-standort [stroke="#2D9B6F"],.standort-scope [stroke="#2D9B6F"],.hlsg [stroke="#2D9B6F"],.hlsg-offer-sec [stroke="#2D9B6F"],.symptom-scope [stroke="#2D9B6F"],.therapie-scope [stroke="#2D9B6F"]{stroke:var(--brand-black)}
+/* Shiatsu: [slug].astro kopiert den s-offer-Block 1:1 aus home-body.html
+   (Inline-Literal); gleiches Shim-Muster wie #home-content. */
+.therapie-scope [style*="background:#2D9B6F"]{background:var(--brand)!important}
 /* care-beschwerden.ts injiziert eine Inline-Border in alle Leaves — Shim nur
    im Symptom-Scope (!important noetig gegen Inline-Style), Quelle bleibt. */
 .symptom-scope [style*="rgba(45,155,111,.25)"]{border-color:rgba(2,11,16,.1)!important}
