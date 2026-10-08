@@ -132,38 +132,6 @@ Was passiert nach meiner Anfrage?
 
 </div>
 
-<!-- ── One-time Rebrand-Logo-Reveal (nur Homepage) ──
-     Zeigt einmalig pro Browser das alte Wordmark und wischt es mit einem
-     Mint-Sweep zum neuen offiziellen Logo frei. localStorage-Flag wird erst
-     nach Abschluss gesetzt; reduced-motion/Storage-Fehler/No-JS => sofort
-     neues Logo. Markup/Link/Alt des Header-Logos bleiben unveraendert. -->
-<style>
-#mainNav a.logo{position:relative}
-.logo-reveal{position:absolute;inset:0;background:#fff;display:flex;align-items:center;pointer-events:none;clip-path:inset(0 0 0 0);animation:srLogoWipe 1.5s cubic-bezier(.65,0,.35,1) forwards}
-.logo-reveal img{height:100%;width:auto;display:block}
-.logo-reveal-bar{position:absolute;top:-8%;bottom:-8%;left:-14%;width:13%;border-radius:4px;background:#1AE288;pointer-events:none;animation:srLogoBar 1.5s cubic-bezier(.65,0,.35,1) forwards}
-@keyframes srLogoWipe{0%,36%{clip-path:inset(0 0 0 0)}84%,100%{clip-path:inset(0 0 0 101%)}}
-@keyframes srLogoBar{0%,34%{left:-14%;opacity:1}84%{left:101%;opacity:1}100%{left:101%;opacity:0}}
-@media (prefers-reduced-motion: reduce){.logo-reveal,.logo-reveal-bar{display:none!important}}
-</style>
-<script>
-(function(){
-  try{
-    if(localStorage.getItem('tcmLogoRevealSeen'))return;
-    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var link=document.querySelector('#mainNav a.logo');if(!link)return;
-    var ov=document.createElement('span');ov.className='logo-reveal';ov.setAttribute('aria-hidden','true');
-    ov.innerHTML='<img src="/images/logo/tcm-kliniken-logo-wordmark.svg" alt="" width="104" height="51">';
-    var bar=document.createElement('span');bar.className='logo-reveal-bar';bar.setAttribute('aria-hidden','true');
-    link.appendChild(ov);link.appendChild(bar);
-    ov.addEventListener('animationend',function(){
-      try{localStorage.setItem('tcmLogoRevealSeen','1')}catch(_){}
-      ov.remove();bar.remove();
-    });
-  }catch(_){}
-})();
-</script>
-
 <!-- ── Dynamic Header (Homepage-Experiment): Weiss -> Mint nach dem Hero ──
      Sentinel = beide Hero-Panels via IntersectionObserver mit rootMargin
      -HeaderHoehe: Mint erst, wenn die Hero-Unterkante die Header-Unterkante
