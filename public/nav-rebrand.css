@@ -202,3 +202,21 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 /* Drawer: geplante Einträge + dezenter Partner-Akzent */
 .drw-pro-soon{display:flex;align-items:center;min-height:40px;padding:8px 20px 8px 32px;font-size:13.5px;color:#b0b0b0}
 .drw-links li a.drw-pro-accent{color:var(--nav-green-dark,#020B10);font-weight:700}
+
+/* ── Header-Polish: Desktop-Nav Typo + Spacing (3-Zonen-Balance).
+   Nav-Gruppe zentriert sich zwischen Logo und Actions (flex:1), kein
+   absolutes Zentrieren -> keine Kollision bei ungleichen Zonen. ── */
+@media(min-width:1024px){
+  #mainNav .nav-inner{gap:24px}
+  #mainNav .nav-links{flex:1 1 auto;justify-content:center;gap:8px;min-width:0}
+  #mainNav .nav-links a,#mainNav .nav-links button{font-size:15px;font-weight:600;padding:0 13px!important}
+  #mainNav .nav-more-btn{font-size:15px}
+  #mainNav .nav-right{gap:12px}
+}
+@media(min-width:1024px) and (max-width:1180px){
+  #mainNav .nav-inner{gap:14px}
+  #mainNav .nav-links{gap:2px}
+  #mainNav .nav-links a,#mainNav .nav-links button{font-size:14px;padding:0 6px!important}
+  #mainNav .nav-more-btn{font-size:14px}
+  #mainNav .nav-right{gap:8px}
+}
