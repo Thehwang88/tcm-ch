@@ -37,4 +37,4 @@ const schema = {
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
 ---
-<SpaPage title={title} description={description} path="/therapien" body={body + spezialBlock} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien" body={`<div class="therapie-scope">${body + spezialBlock}</div>`} schema={schema} />

@@ -4984,6 +4984,9 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 /* Therapie-Leaves: #page-therapie triggert denselben [id^="page-"]-Layer. */
 .therapie-scope #page-therapie .btn-primary,.therapie-scope #page-massage .btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
 .therapie-scope #page-therapie .btn-primary:hover,.therapie-scope #page-massage .btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
+/* Therapien-Hub: #page-therapien triggert denselben Layer. */
+.therapie-scope #page-therapien .btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
+.therapie-scope #page-therapien .btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
 .hlsg .hlsg-btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
 .hlsg .hlsg-btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
 #page-standort .btn-primary.btn-primary:hover,.standort-scope .btn-primary.btn-primary:hover,.hlsg .btn-primary.btn-primary:hover,.hlsg-offer-sec .btn-primary.btn-primary:hover,.symptom-scope .btn-primary.btn-primary:hover,.therapie-scope .btn-primary.btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
