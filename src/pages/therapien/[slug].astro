@@ -97,5 +97,11 @@ const massageBlock = massageLinksHtml(
   'Verwandte Massage-Techniken',
   'Wird in der Praxis oft kombiniert. Jede Seite erklärt, wofür die Technik taugt und wofür nicht.',
 );
+// Softriver-Rebrand: Opt-in pro Therapie-Leaf. .therapie-scope remappt die
+// Legacy-Aliasse (Scope-Block in public/home.css); der neutrale Wrapper-div
+// umfasst auch die injizierten Bloecke nach dem #page-therapie-Div.
+const REBRANDED_THERAPY_SLUGS = new Set(['akupunktur']);
+const fullBody = prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!);
+const pageBody = REBRANDED_THERAPY_SLUGS.has(slug!) ? `<div class="therapie-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!)} schema={schema} ogImage={OG_OVERRIDE[slug]} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]} />
