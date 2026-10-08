@@ -4978,6 +4978,9 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    Bloecken nach dem page-Div deckt die Klassen-Regel oben ab. */
 .symptom-scope #page-symptom .btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
 .symptom-scope #page-symptom .btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
+/* Hub: #page-beschwerden triggert denselben [id^="page-"]-Layer. */
+.symptom-scope #page-beschwerden .btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
+.symptom-scope #page-beschwerden .btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
 .hlsg .hlsg-btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
 .hlsg .hlsg-btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
 #page-standort .btn-primary.btn-primary:hover,.standort-scope .btn-primary.btn-primary:hover,.hlsg .btn-primary.btn-primary:hover,.hlsg-offer-sec .btn-primary.btn-primary:hover,.symptom-scope .btn-primary.btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}

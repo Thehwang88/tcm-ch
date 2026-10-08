@@ -12,4 +12,4 @@ const schema = {
   isPartOf: { '@type': 'WebSite', name: 'TCM.ch', url: 'https://tcm.ch/' },
 };
 ---
-<SpaPage title={title} description={description} path="/beschwerden" body={body} schema={schema} />
+<SpaPage title={title} description={description} path="/beschwerden" body={`<div class="symptom-scope">${body}</div>`} schema={schema} />
