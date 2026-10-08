@@ -82,6 +82,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/standorte/luzern" body="" schema={schema}>
+<div class="standort-scope">
 
   <!-- ── HERO (Struktur wie HeroLaunchSG: Copy links, Karte rechts) ── -->
   <section class="lu-hero">
@@ -132,22 +133,22 @@ const schema = [
   <section class="usp-grid-section" style="background:#fff;padding:48px 0;border-bottom:1px solid var(--border)">
     <div class="wrap"><div class="usp-grid">
       <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg></div>
+        <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg></div>
         <div class="usp-title">Krankenkassen-anerkannt</div>
         <div class="usp-sub">EMR und ASCA, Abrechnung über die Zusatzversicherung.</div>
       </div>
       <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+        <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
         <div class="usp-title">Über 2000 zufriedene Patienten</div>
         <div class="usp-sub">4,9★ bewertet, an zwölf Standorten.</div>
       </div>
       <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+        <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
         <div class="usp-title">Termine ab Eröffnung 2027</div>
         <div class="usp-sub">Warteliste zuerst, danach die offizielle Freigabe.</div>
       </div>
       <div class="usp-card">
-        <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+        <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <div class="usp-title">Keine Überweisung nötig</div>
         <div class="usp-sub">Du meldest dich direkt bei uns.</div>
       </div>
@@ -211,7 +212,7 @@ const schema = [
           <a href={`/therapien/${slug}/`} class="svc-card reveal"> <div class="svc-photo-wrap"> <img width={c.w} height={c.h} src={c.img} alt={`${c.name} bei TCM.ch`} class="svc-photo" loading="lazy" style={`object-position:${c.objectPos}`}> <div class="svc-photo-top-bar"></div> </div> <div class="svc-body"> <div class="svc-name">{c.name}</div> <div class="svc-tagline">{tagline}</div> <div class="svc-meta"> <span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>{c.time}</span> <span class="svc-badge svc-badge--ins">{c.ins}</span> </div> <div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div> </div> </a>
         ))}
       </div>
-      <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite <a href="/massage-luzern/" style="color:var(--blue);font-weight:700">Massage in Luzern</a>, die Warteliste läuft dort genauso.</p>
+      <p style="margin:22px 0 0;font-size:15px;line-height:1.6;color:var(--mid);max-width:72ch">Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite <a href="/massage-luzern/" style="color:var(--brand-black);font-weight:700">Massage in Luzern</a>, die Warteliste läuft dort genauso.</p>
     </div>
   </section>
 
@@ -244,17 +245,17 @@ const schema = [
       <p class="section-sub">So läuft es an allen unseren Standorten ab, und so wird es auch in Luzern laufen.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">1</div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14);color:#020B10;font-family:var(--font-sans);font-weight:800;font-size:18px">1</div>
           <div class="usp-title">Erstgespräch &amp; Anamnese, 60 Minuten</div>
           <div class="usp-sub">Wir hören zu, schauen Vorbefunde an und machen die TCM-Diagnostik. Eine erste Behandlung ist meist schon dabei.</div>
         </div>
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">2</div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14);color:#020B10;font-family:var(--font-sans);font-weight:800;font-size:18px">2</div>
           <div class="usp-title">Behandlungsplan</div>
           <div class="usp-sub">Du bekommst eine konkrete Einschätzung: welche Methoden, wie viele Sitzungen, in welchem Abstand und was das kostet.</div>
         </div>
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1);color:#2D9B6F;font-family:var(--font-sans);font-weight:800;font-size:18px">3</div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14);color:#020B10;font-family:var(--font-sans);font-weight:800;font-size:18px">3</div>
           <div class="usp-title">Folgetermine</div>
           <div class="usp-sub">Meist 45 bis 60 Minuten, anfangs wöchentlich. Nach vier bis sechs Sitzungen schauen wir gemeinsam, ob es wirkt.</div>
         </div>
@@ -280,17 +281,17 @@ const schema = [
       <p class="section-sub">Luzern wird kein Einzelkämpfer-Standort, sondern Teil eines Netzes, das seit Jahren läuft.</p>
       <div class="usp-grid" style="margin-top:28px">
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
           <div class="usp-title">14 Standorte in der Schweiz</div>
           <div class="usp-sub">Ziehst du um oder brauchst kurzfristig einen Termin, behandelt dich das nächste Team mit derselben Akte. <a href="/standorte/">Alle Standorte</a>.</div>
         </div>
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg></div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg></div>
           <div class="usp-title">Ärztliche Sprechstunde</div>
           <div class="usp-sub">Wenn eine schulmedizinische Abklärung nötig ist, läuft das intern über unsere <a href="/sprechstunde/">ärztliche Sprechstunde</a>, statt dich weiterzuschicken.</div>
         </div>
         <div class="usp-card">
-          <div class="usp-icon" style="background:rgba(45,155,111,.1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="7" y1="9" x2="17" y2="9"></line><line x1="7" y1="13" x2="13" y2="13"></line></svg></div>
+          <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="7" y1="9" x2="17" y2="9"></line><line x1="7" y1="13" x2="13" y2="13"></line></svg></div>
           <div class="usp-title">Abrechnung nach Tarif 590</div>
           <div class="usp-sub">Der anerkannte Tarif für Komplementärmedizin, nach Behandlungsdauer. Keine Pauschalen, keine Überraschungen auf der Rechnung.</div>
         </div>
@@ -306,7 +307,7 @@ const schema = [
       <div class="faq-list">
         {faqs.map((f) => (
           <details class="faq-item" style="border-bottom:1px solid var(--border);padding:18px 0">
-            <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--blue)">+</span></summary>
+            <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--brand-black)">+</span></summary>
             <div style="padding-top:14px;font-size:15px;line-height:1.7;color:var(--mid)">{f.a}</div>
           </details>
         ))}
@@ -315,7 +316,7 @@ const schema = [
   </section>
 
   <!-- ── END-CTA ── -->
-  <section class="cta-band" style="background:var(--blue);padding:48px 0">
+  <section class="cta-band" style="background:var(--brand-black);padding:48px 0">
     <div class="wrap" style="text-align:center">
       <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Einer der ersten Termine in Luzern?</h2>
       <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Trag dich mit deiner E-Mail ein. Wir melden uns, sobald die Terminvergabe startet, und du kommst vor allen anderen dran.</p>
@@ -343,7 +344,7 @@ const schema = [
 
   .lu-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue-light); color: var(--blue-dark); border: 1px solid rgba(45, 155, 111, .18);
+    background: var(--brand-surface); color: var(--brand-black); border: 1px solid rgba(2,11,16,.1);
     padding: 6px 13px; border-radius: var(--r-pill);
     font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
   }
@@ -351,25 +352,25 @@ const schema = [
     font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800;
     margin: 18px 0 14px; color: var(--charcoal);
   }
-  .lu-accent { color: var(--blue); }
+  .lu-accent { color: var(--brand-black); }
   .lu-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 44ch; line-height: 1.55; }
 
   .lu-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
   .lu-btn-primary {
-    background: var(--blue); color: #fff; border: none; text-decoration: none;
+    background: var(--brand); color: var(--brand-black); border: none; text-decoration: none;
     padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700;
     box-shadow: var(--sh-btn); transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
   }
-  .lu-btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .lu-btn-primary:hover { background: #14C97A; transform: translateY(-2px); }
   .lu-btn-ghost {
     background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
     padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
   }
-  .lu-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .lu-btn-ghost:hover { border-color: var(--brand-black); color: var(--brand-black); }
 
   .lu-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .lu-trust div { display: flex; align-items: center; gap: 7px; }
-  .lu-check { color: var(--blue); font-weight: 800; }
+  .lu-check { color: var(--brand-black); font-weight: 800; }
 
   .lu-card {
     position: relative; overflow: hidden;
@@ -391,13 +392,13 @@ const schema = [
     border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; font-size: 15px;
     background: #fff; font-family: inherit; color: var(--charcoal);
   }
-  .lu-wl-form input[type="email"]:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: transparent; }
+  .lu-wl-form input[type="email"]:focus { outline: 2px solid var(--brand-black); outline-offset: 1px; border-color: transparent; }
   .lu-wl-form button {
-    background: var(--blue); color: #fff; border: none; border-radius: 10px;
+    background: var(--brand); color: var(--brand-black); border: none; border-radius: 10px;
     padding: 14px; font-size: 15.5px; font-weight: 700; cursor: pointer;
     transition: background var(--t-fast) var(--ease-out);
   }
-  .lu-wl-form button:hover { background: var(--blue-dark); }
+  .lu-wl-form button:hover { background: #14C97A; }
   .lu-wl-form button:disabled { opacity: .65; cursor: default; }
   .lu-form-rule { font-size: 12px; color: var(--mid); text-align: center; }
   .lu-ts { min-height: 0; }
@@ -445,7 +446,7 @@ const schema = [
             // erzeugte Elemente nicht greifen (kein data-astro-cid).
             var ok = document.createElement('div');
             ok.style.cssText = 'text-align:center;padding:14px 4px';
-            ok.innerHTML = '<div aria-hidden="true" style="width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--blue-light);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">✓</div>' +
+            ok.innerHTML = '<div aria-hidden="true" style="width:44px;height:44px;margin:0 auto 12px;border-radius:50%;background:var(--brand-surface);color:var(--brand-black);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">✓</div>' +
               '<h3 style="font-size:19px;font-weight:800;color:var(--charcoal);margin:0 0 8px;letter-spacing:-.01em">Danke, du stehst auf der Liste.</h3>' +
               '<p style="font-size:14.5px;color:var(--mid);line-height:1.55">Wir melden uns per E-Mail, sobald die Termine in Luzern freigegeben sind.</p>';
             f.replaceWith(ok);
@@ -458,4 +459,5 @@ const schema = [
       });
     })();
   </script>
+</div>
 </SpaPage>

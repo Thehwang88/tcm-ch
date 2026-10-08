@@ -4948,3 +4948,34 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 @container (aspect-ratio < 0.99){
   #home-content .sr-hero-right img{object-fit:contain;object-position:center}
 }
+/* ── SOFTRIVER STANDORT VISUAL COMPLETION (Batch 3b.4) ──────────────────────
+   Alle /standorte/<slug>-Detailseiten (Leaf + data-driven) rendern im
+   Wrapper .page#page-standort. Wie beim Homepage-Muster werden die Legacy-
+   Aliasse NUR in diesem Scope re-mapped (Text/Icons/Links/Akzente -> Rich
+   Black, Tints -> Concrete); :root bleibt unveraendert, andere Familien
+   (Beschwerden/Therapien/Wissen, auch #page-standorte-Hub) unberuehrt.
+   Primary-Booking-CTA wird explizit Mint/Rich-Black (Alias-Remap allein
+   wuerde ihn schwarz/weiss machen). */
+#page-standort,.standort-scope,.hlsg,.hlsg-offer-sec{
+  --blue:var(--brand-black);
+  --blue-dark:var(--brand-black);
+  --blue-light:var(--brand-surface);
+  --green:var(--brand-black);
+  --green-dark:var(--brand-black);
+  --green-light:var(--brand-surface);
+  --green-mint:var(--brand-tint);
+}
+/* !important noetig: der bestehende [id^="page-"]-CTA-Layer pinnt background
+   mit !important und wuerde sonst (via Scope-Alias) schwarz statt Mint. */
+/* .btn-primary doppelt: der Legacy-Layer nutzt :not(#page-longevity) und
+   traegt damit ID-Spezifitaet (1,2,0) — die Verdopplung zieht gleich, die
+   spaetere Quelle gewinnt. */
+#page-standort .btn-primary.btn-primary,.standort-scope .btn-primary.btn-primary,.hlsg .btn-primary.btn-primary,.hlsg-offer-sec .btn-primary.btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
+.hlsg .hlsg-btn-primary{background:var(--brand)!important;color:var(--brand-black)!important}
+.hlsg .hlsg-btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
+#page-standort .btn-primary.btn-primary:hover,.standort-scope .btn-primary.btn-primary:hover,.hlsg .btn-primary.btn-primary:hover,.hlsg-offer-sec .btn-primary.btn-primary:hover{background:#14C97A!important;color:var(--brand-black)!important}
+#page-standort .btn-primary:focus-visible,.standort-scope .btn-primary:focus-visible{outline:3px solid rgba(2,11,16,.4);outline-offset:2px}
+/* Injizierte Shared-Bloecke (haut-/ks-Links u.a.) tragen Inline-Strokes —
+   Attribut-Shim nur im Standort-Scope, Quelle bleibt fuer andere Familien
+   unveraendert. */
+#page-standort [stroke="#2D9B6F"],.standort-scope [stroke="#2D9B6F"],.hlsg [stroke="#2D9B6F"],.hlsg-offer-sec [stroke="#2D9B6F"]{stroke:var(--brand-black)}

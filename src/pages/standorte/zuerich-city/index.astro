@@ -58,6 +58,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/standorte/zuerich-city" body="" schema={schema}>
+<div class="standort-scope">
 
   <!-- ── HERO ── -->
   <section class="zc-hero">
@@ -95,7 +96,7 @@ const schema = [
       <div class="faq-list">
         {faqs.map((f) => (
           <details class="faq-item" style="border-bottom:1px solid var(--border);padding:18px 0">
-            <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--blue)">+</span></summary>
+            <summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{f.q}<span style="font-size:20px;color:var(--brand-black)">+</span></summary>
             <div style="padding-top:14px;font-size:15px;line-height:1.7;color:var(--mid)">{f.a}</div>
           </details>
         ))}
@@ -109,7 +110,7 @@ const schema = [
   </section>
 
   <!-- ── END-CTA ── -->
-  <section class="cta-band" style="background:var(--blue);padding:48px 0">
+  <section class="cta-band" style="background:var(--brand-black);padding:48px 0">
     <div class="wrap" style="text-align:center">
       <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Dein Termin in Zürich</h2>
       <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Sag uns, wann es dir passt - wir finden den passenden Termin an einem unserer Zürcher Standorte.</p>
@@ -124,27 +125,28 @@ const schema = [
   .zc-hero-inner { max-width: 860px; margin: 0 auto; padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px); }
   .zc-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue-light); color: var(--blue-dark); border: 1px solid rgba(45, 155, 111, .18);
+    background: var(--brand-surface); color: var(--brand-black); border: 1px solid rgba(2,11,16,.1);
     padding: 6px 13px; border-radius: var(--r-pill);
     font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
   }
   .zc-h1 { font-size: clamp(2.1rem, 5.2vw, 3.2rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800; margin: 18px 0 14px; }
-  .zc-accent { color: var(--blue); }
+  .zc-accent { color: var(--brand-black); }
   .zc-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 62ch; line-height: 1.6; }
   .zc-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
   .zc-btn-primary {
-    background: var(--blue); color: #fff; text-decoration: none;
+    background: var(--brand); color: var(--brand-black); text-decoration: none;
     padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700; box-shadow: var(--sh-btn);
   }
-  .zc-btn-primary:hover { background: var(--blue-dark); }
+  .zc-btn-primary:hover { background: #14C97A; }
   .zc-btn-ghost {
     background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
     padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
   }
-  .zc-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
+  .zc-btn-ghost:hover { border-color: var(--brand-black); color: var(--brand-black); }
   .zc-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .zc-trust div { display: flex; align-items: center; gap: 7px; }
-  .zc-check { color: var(--blue); font-weight: 800; }
+  .zc-check { color: var(--brand-black); font-weight: 800; }
   @media (max-width: 767px) { .zc-hero { padding-top: 60px; } .zc-hero-inner { padding-left: 16px; padding-right: 16px; } .section { padding: 52px 0; } }
 </style>
+</div>
 </SpaPage>
