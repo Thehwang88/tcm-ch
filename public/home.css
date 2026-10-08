@@ -4932,7 +4932,10 @@ body:has(#home-content) .wac-cta:hover{background:#14C97A}
 @media(max-width:1023px){
   #home-content .sr-hero{grid-template-columns:1fr}
   #home-content .sr-hero-inner{padding:clamp(40px,8vw,72px) 24px;max-width:none}
-  #home-content .sr-hero-right{min-height:0}
+  /* container-type:size (Foto-Framing, Desktop) erzeugt Size-Containment:
+     mobil (statisches img im Flow) kollabierte die Spalte auf Hoehe 0 und die
+     Folgesektion rutschte unter das Foto -> Containment hier aufheben. */
+  #home-content .sr-hero-right{min-height:0;container-type:normal}
   #home-content .sr-hero-right img{position:static;width:100%;height:auto;aspect-ratio:auto}
   #home-content .sr-trust{row-gap:14px}
 }
