@@ -36,6 +36,7 @@ const schema = [
 ];
 ---
 <LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!VERFAHREN_HUB_INDEXABLE} robots={VERFAHREN_HUB_INDEXABLE ? undefined : 'noindex, follow'}>
+<div class="therapie-scope" style="--blue:var(--brand-black);--blue-dark:var(--brand-black);--blue-light:var(--brand-surface);--green:var(--brand-black);--green-dark:var(--brand-black);--green-light:var(--brand-surface);--green-mint:var(--brand-tint)">
   <section class="hero">
     <div class="wrap narrow">
       <div class="crumbs" role="navigation" aria-label="Breadcrumb">
@@ -113,6 +114,7 @@ const schema = [
 
     </div>
   </section>
+</div>
 </LayoutDe>
 
 <style>

@@ -40,7 +40,8 @@ const schema: object[] = [
 ];
 ---
 <LayoutDe title={title} description={metaDesc} path={path} schema={schema} noindex={!v.indexable} robots={v.indexable ? undefined : 'noindex, follow'}>
-  <article>
+  <!-- Softriver: LayoutDe laedt kein home.css -> Alias-Remap inline am Wrapper. -->
+  <article class="therapie-scope" style="--blue:var(--brand-black);--blue-dark:var(--brand-black);--blue-light:var(--brand-surface);--green:var(--brand-black);--green-dark:var(--brand-black);--green-light:var(--brand-surface);--green-mint:var(--brand-tint)">
     <section class="hero">
       <div class="wrap narrow">
         <div class="crumbs" role="navigation" aria-label="Breadcrumb">

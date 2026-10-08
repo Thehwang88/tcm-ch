@@ -39,6 +39,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/therapien/massage/deep-tissue-massage" body="" schema={schema}>
+<div class="therapie-scope">
   <style set:html={css} is:inline></style>
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Winterthur & St. Gallen" />
@@ -46,4 +47,5 @@ const schema = [
   <MassageAnfrageForm anfrageTyp="massage" quelle="deep-tissue-massage" />
   <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
+</div>
 </SpaPage>

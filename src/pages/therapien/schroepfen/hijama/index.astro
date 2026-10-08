@@ -39,4 +39,4 @@ const schema = [
   ] },
 ];
 ---
-<SpaPage title={title} description={description} path="/therapien/schroepfen/hijama" body={body + therapieTiefeHtml('hijama')} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien/schroepfen/hijama" body={`<div class="therapie-scope">${body + therapieTiefeHtml('hijama')}</div>`} schema={schema} />
