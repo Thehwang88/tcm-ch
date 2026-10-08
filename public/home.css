@@ -4789,3 +4789,32 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    Rollback: diesen Block entfernen. */
 #home-content .deh-btn--primary{background:var(--brand);color:var(--brand-black)}
 #home-content .deh-btn--primary:hover{background:#14C97A;color:var(--brand-black)}
+
+/* ── REBRAND COLOR COHORT 02 (08.10.2026): uebrige Primary-CTAs der Homepage ──
+   Das Hierarchy-Reinforcement-Layer (~L4212) vereinheitlicht vier CTA-Klassen
+   mit background/color/box-shadow !important — dieser Block uebernimmt exakt
+   denselben Selektorsatz (btn-primary 6x, wa-concierge-submit 1x; offer-cta/
+   hcd-primary derzeit ohne Home-Instanz, aber Teil des Layers) und gewinnt per
+   Reihenfolge. SVG-Pfeile nutzen stroke="currentColor" und erben den dunklen
+   Text. WhatsApp-CTAs (#25D366) und Sekundaer-Buttons unberuehrt.
+   Rollback: diesen Block entfernen. */
+#home-content .offer-cta,
+#home-content .wa-concierge-submit,
+#home-content .btn-primary,
+#home-content .hcd-primary{
+  background:var(--brand)!important;
+  color:var(--brand-black)!important;
+  box-shadow:0 8px 24px rgba(26,226,136,.35)!important;
+}
+#home-content .offer-cta:hover,
+#home-content .wa-concierge-submit:hover,
+#home-content .btn-primary:hover,
+#home-content .hcd-primary:hover{
+  background:#14C97A!important;
+  color:var(--brand-black)!important;
+  box-shadow:0 10px 28px rgba(26,226,136,.45)!important;
+}
+/* .glb-btn (2x: GB-Sektion + FAQ-Vorschau) ist inline im home-body-<style>
+   definiert (ohne !important) — ID-Spezifitaet genuegt hier. */
+#home-content .glb-btn{background:var(--brand);color:var(--brand-black)}
+#home-content .glb-btn:hover{background:#14C97A;color:var(--brand-black)}
