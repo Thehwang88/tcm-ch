@@ -43,14 +43,14 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
 
   /* Launcher */
   .wac-launch { position: relative; width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer;
-    background: var(--green, #2D9B6F); color: #fff; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 24px rgba(45,155,111,.32), 0 2px 6px rgba(0,0,0,.14); transition: transform .2s ease, box-shadow .2s ease; }
-  .wac-launch:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(45,155,111,.42), 0 2px 6px rgba(0,0,0,.14); }
+    background: var(--brand-black, #020B10); color: var(--brand, #1AE288); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(2,11,16,.28), 0 2px 6px rgba(0,0,0,.14); transition: transform .2s ease, box-shadow .2s ease; }
+  .wac-launch:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(2,11,16,.38), 0 2px 6px rgba(0,0,0,.14); }
   .wac-launch:active { transform: scale(.96); }
-  .wac-launch:focus-visible { outline: 3px solid rgba(45,155,111,.5); outline-offset: 3px; }
+  .wac-launch:focus-visible { outline: 3px solid rgba(26,226,136,.6); outline-offset: 3px; }
   .wac-launch svg { width: 32px; height: 32px; display: block; position: relative; z-index: 1; }
   .wac-ring { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; animation: wac-pulse 2.4s ease-out infinite; }
-  @keyframes wac-pulse { 0% { box-shadow: 0 0 0 0 rgba(45,155,111,.45); } 70% { box-shadow: 0 0 0 16px rgba(45,155,111,0); } 100% { box-shadow: 0 0 0 0 rgba(45,155,111,0); } }
+  @keyframes wac-pulse { 0% { box-shadow: 0 0 0 0 rgba(26,226,136,.45); } 70% { box-shadow: 0 0 0 16px rgba(26,226,136,0); } 100% { box-shadow: 0 0 0 0 rgba(26,226,136,0); } }
 
   /* Greeting bubble */
   .wac-greet { display: none; position: absolute; right: 74px; bottom: 8px; width: max-content; max-width: 240px;
@@ -66,7 +66,7 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
   .wac.is-open .wac-card { display: block; animation: wac-in .22s cubic-bezier(.16,1,.3,1) both; }
   @keyframes wac-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
   @keyframes wac-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  .wac-head { display: flex; align-items: center; gap: 12px; background: var(--green, #2D9B6F); color: #fff; padding: 16px; position: relative; }
+  .wac-head { display: flex; align-items: center; gap: 12px; background: var(--brand-black, #020B10); color: #fff; padding: 16px; position: relative; }
   .wac-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(255,255,255,.45); }
   .wac-head-text { flex: 1; min-width: 0; }
   .wac-name { font-weight: 700; font-size: 16px; line-height: 1.2; }
@@ -82,8 +82,8 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
     padding: 12px 14px; border-radius: 12px; border-top-left-radius: 3px; margin-bottom: 16px; }
   .wac-bubble::before { content: ""; position: absolute; left: -5px; top: 0; width: 10px; height: 10px; background: #f0f2f5; clip-path: polygon(100% 0, 0 0, 100% 100%); }
   .wac-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; box-sizing: border-box;
-    background: var(--green, #2D9B6F); color: #fff; text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 13px; border-radius: 12px; }
-  .wac-cta:hover { background: var(--green-dark, #1F7A54); }
+    background: var(--brand, #1AE288); color: var(--brand-black, #020B10); text-decoration: none; font-weight: 700; font-size: 14.5px; padding: 13px; border-radius: 12px; }
+  .wac-cta:hover { background: #14C97A; }
   .wac-cta svg { width: 18px; height: 18px; }
   .wac-reassure { text-align: center; font-size: 12px; color: #8a9299; margin-top: 10px; }
 

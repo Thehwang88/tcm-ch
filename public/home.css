@@ -4871,24 +4871,8 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 #home-content .wa-value-pt svg{color:var(--brand-black)!important}
 #home-content .svc-photo-top-bar{background:var(--brand)!important}
 #home-content .wa-concierge-wa-alt{color:var(--brand-black)!important}
-/* ── REBRAND REFINEMENT 04 (08.10.2026): Sticky-/Floating-Conversion-Elemente.
-   StickyCtaBar (.scb-*, mobil) und WhatsAppConcierge (.wac-*, Desktop) sind
-   sitewide Komponenten AUSSERHALB #home-content — Homepage-Scoping darum via
-   body:has(#home-content) (#home-content existiert nur auf /; Browser ohne
-   :has() behalten das alte Gruen = graceful degradation). Softriver-Hierarchie:
-   Flaechen Rich Black, Aktionen Mint mit Rich-Black-Text. Keyframes bekommen
-   NEUE Namen (-brand) — die Original-Keyframes bleiben fuer andere Routen. */
-body:has(#home-content) .scb-primary{background:var(--brand);color:var(--brand-black);box-shadow:0 6px 18px rgba(26,226,136,.3);animation-name:scb-glow-brand}
-@keyframes scb-glow-brand{0%,100%{box-shadow:0 6px 18px rgba(26,226,136,.28)}50%{box-shadow:0 6px 26px rgba(26,226,136,.55)}}
-body:has(#home-content) .scb-out{color:var(--brand-black);border-color:rgba(2,11,16,.25)}
-body:has(#home-content) .wac-launch{background:var(--brand-black);color:var(--brand);box-shadow:0 8px 24px rgba(2,11,16,.28),0 2px 6px rgba(0,0,0,.14)}
-body:has(#home-content) .wac-launch:hover{box-shadow:0 12px 30px rgba(2,11,16,.38),0 2px 6px rgba(0,0,0,.14)}
-body:has(#home-content) .wac-launch:focus-visible{outline:3px solid rgba(26,226,136,.6)}
-body:has(#home-content) .wac-ring{animation-name:wac-pulse-brand}
-@keyframes wac-pulse-brand{0%{box-shadow:0 0 0 0 rgba(26,226,136,.45)}70%{box-shadow:0 0 0 16px rgba(26,226,136,0)}100%{box-shadow:0 0 0 0 rgba(26,226,136,0)}}
-body:has(#home-content) .wac-head{background:var(--brand-black)}
-body:has(#home-content) .wac-cta{background:var(--brand);color:var(--brand-black)}
-body:has(#home-content) .wac-cta:hover{background:#14C97A}
+/* (Refinement-04-:has()-Overrides fuer scb/wac entfernt — die Komponenten
+   tragen die Softriver-Farben seit Color Batch 2 nativ auf allen Routen.) */
 /* ── SOFTRIVER HERO 50/50 (08.10.2026) ─────────────────────────────────────
    Neues Homepage-Hero: Mint-Panel links, Original-Teamfoto rechts, full-bleed.
    Markup nutzt frische sr-*-Klassen — die Legacy-Hero-Regeln (.hero/.deh-*)

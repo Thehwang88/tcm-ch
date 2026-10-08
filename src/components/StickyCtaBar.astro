@@ -32,22 +32,22 @@ const TEL = `tel:+${site.whatsapp}`;
   .scb-primary {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%; min-height: 48px; box-sizing: border-box; padding: 0 16px;
-    background: #2D9B6F; color: #fff; border-radius: 14px;
+    background: var(--brand, #1AE288); color: var(--brand-black, #020B10); border-radius: 14px;
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
-    text-decoration: none; box-shadow: 0 6px 18px rgba(45, 155, 111, .3);
+    text-decoration: none; box-shadow: 0 6px 18px rgba(26, 226, 136, .3);
     animation: scb-glow 2s ease-in-out infinite;
   }
   .scb-row { display: flex; gap: 8px; }
   .scb-out {
     flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     min-height: 48px; box-sizing: border-box; padding: 0 8px;
-    background: #fff; color: #1F7A54; border: 1.5px solid rgba(45, 155, 111, .4); border-radius: 14px;
+    background: #fff; color: var(--brand-black, #020B10); border: 1.5px solid rgba(2, 11, 16, .25); border-radius: 14px;
     font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none;
   }
   .scb-primary svg, .scb-out svg { flex-shrink: 0; }
   @keyframes scb-glow {
-    0%, 100% { box-shadow: 0 6px 18px rgba(45, 155, 111, .28); }
-    50% { box-shadow: 0 6px 26px rgba(45, 155, 111, .55); }
+    0%, 100% { box-shadow: 0 6px 18px rgba(26, 226, 136, .28); }
+    50% { box-shadow: 0 6px 26px rgba(26, 226, 136, .55); }
   }
   @media (max-width: 768px) {
     /* Hidden at top of page; JS toggles .is-visible once the hero scrolls out. */

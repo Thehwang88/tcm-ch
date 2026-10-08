@@ -89,15 +89,15 @@ const STANDORTE = [
   }
   .tf-field textarea { resize: vertical; line-height: 1.5; }
   .tf-field input:focus, .tf-field select:focus, .tf-field textarea:focus {
-    outline: none; border-color: #1e8a5f; box-shadow: 0 0 0 3px rgba(30,138,95,.15);
+    outline: none; border-color: var(--brand-black, #020B10); box-shadow: 0 0 0 3px rgba(26,226,136,.35);
   }
   .tf-submit {
     display: inline-flex; align-items: center; justify-content: center;
-    font: inherit; font-size: 15.5px; font-weight: 700; color: #fff;
-    background: #1e8a5f; border: none; border-radius: var(--r-btn);
+    font: inherit; font-size: 15.5px; font-weight: 700; color: var(--brand-black, #020B10);
+    background: var(--brand, #1AE288); border: none; border-radius: var(--r-btn);
     padding: 13px 28px; cursor: pointer; transition: background .15s ease;
   }
-  .tf-submit:hover { background: #187650; }
+  .tf-submit:hover { background: #14C97A; }
   .tf-form.is-sending .tf-submit { opacity: .6; pointer-events: none; }
   .tf-note { font-size: 12.5px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; }
   .tf-status { margin: 12px 0 0; font-size: 14.5px; font-weight: 600; }
