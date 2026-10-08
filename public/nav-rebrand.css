@@ -6,10 +6,10 @@
    Rebrand (Hero etc.) folgt separat. */
 
 :root{
-  --nav-green:#1ED760;
-  --nav-green-dark:#14532D;
-  --nav-green-soft:rgba(30,215,96,.12);
-  --nav-ink:#191414;
+  --nav-green:var(--brand,#1AE288);
+  --nav-green-dark:var(--brand-black,#020B10);
+  --nav-green-soft:rgba(26,226,136,.16);
+  --nav-ink:var(--brand-black,#020B10);
 }
 
 /* ── Desktop-Bar ── */
@@ -107,7 +107,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 
 /* ── Drawer: Basis ── */
 #siteDrawer{background:#fff}
-.drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(30,215,96,0) 100%)}
+.drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(26,226,136,0) 100%)}
 
 /* Audience-Switch im Drawer (gleiche Indikator-Mechanik) */
 .drw-aud{display:grid;position:relative;grid-template-columns:1fr 1fr;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin:14px 22px 6px;flex-shrink:0}
@@ -130,10 +130,10 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 /* Drawer-CTA: Markengrün, gross, sticky am unteren Rand des Scrollbereichs */
 .drw-group--cta{position:sticky;bottom:0;background:#fff;border-top:1px solid rgba(25,20,20,.08);padding:12px 18px calc(14px + env(safe-area-inset-bottom));margin-top:auto;box-shadow:0 -10px 24px rgba(25,20,20,.05)}
 .drw-cta-primary{background:var(--nav-green)!important;color:var(--nav-ink)!important;min-height:48px;border-radius:100px!important;font-size:15px;font-weight:700;box-shadow:none!important}
-.drw-cta-primary:hover{background:#19c556!important;color:var(--nav-ink)!important}
+.drw-cta-primary:hover{background:#14C97A!important;color:var(--nav-ink)!important}
 .drw-cta-primary svg{stroke:var(--nav-ink)}
 .drw-cta-secondary{border-radius:100px;min-height:44px}
-.drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(30,215,96,.4)}
+.drw-cta-wa{color:var(--nav-green-dark);border-color:rgba(26,226,136,.45)}
 
 /* ── Drawer-Scrolling-Fix ──────────────────────────────────────────────────
    header.css setzt .drw-body{overflow-y:hidden!important} und erlaubt Scrollen
@@ -180,11 +180,11 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 .nav-more-group--pro .pro-col-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(25,20,20,.42);padding:6px 12px 2px}
 #mainNav .nav-links .nav-more-group--pro a{padding:7px 12px!important;font-size:13.5px}
 #mainNav .nav-links .nav-more-group--pro a.pro-overview{font-size:14.5px;font-weight:700}
-#mainNav .nav-links .nav-more-group--pro a.pro-accent{color:var(--nav-green-dark,#1F7A54);font-weight:700;flex-direction:row;gap:4px}
+#mainNav .nav-links .nav-more-group--pro a.pro-accent{color:var(--nav-green-dark,#020B10);font-weight:700;flex-direction:row;gap:4px}
 .nav-more-group--pro .pro-soon{display:block;padding:7px 12px;font-size:13.5px;font-weight:500;color:rgba(25,20,20,.38);cursor:default}
 .nav-more-group--pro .pro-soon em,.drw-pro-soon em{font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(25,20,20,.32);margin-left:3px}
-#mainNav .nav-more-panel a:focus-visible{outline:2px solid var(--nav-green-dark,#1F7A54);outline-offset:-2px}
+#mainNav .nav-more-panel a:focus-visible{outline:2px solid var(--nav-green-dark,#020B10);outline-offset:-2px}
 @media (max-width:1100px){.nav-more-panel--mega{grid-template-columns:180px minmax(0,1fr)}.nav-more-group--pro .pro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Drawer: geplante Einträge + dezenter Partner-Akzent */
 .drw-pro-soon{display:flex;align-items:center;min-height:40px;padding:8px 20px 8px 32px;font-size:13.5px;color:#b0b0b0}
-.drw-links li a.drw-pro-accent{color:var(--nav-green-dark,#1F7A54);font-weight:700}
+.drw-links li a.drw-pro-accent{color:var(--nav-green-dark,#020B10);font-weight:700}

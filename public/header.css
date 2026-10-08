@@ -22,7 +22,7 @@
 
 /* ── DOTS & DECORATIVE ── */
 .cp-dot,.logo-dot,.drw-logo-dot,.b-a::before{background:#2D9B6F!important}
-.cp-sx-dot,.drw-acc-btn::before,.drw-link-arrow{background:#2D9B6F!important;opacity:.6}
+.cp-sx-dot{background:#2D9B6F!important;opacity:.6} .drw-link-arrow{background:var(--brand,#1AE288)!important;opacity:1;color:var(--brand-black,#020B10)}
 
 /* ── DRAWER ── */
 .drw-acc-btn.open .drw-acc-label{color:#374151!important}

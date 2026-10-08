@@ -1026,7 +1026,7 @@ p{color:#374151;line-height:1.6}
 /* ── DOTS & DECORATIVE ── */
 .drw-logo-dot,.b-a::before{background:#2D9B6F!important}
 .ev-dot,.founder-label::before,.signal-overline::before{background:#2D9B6F!important;border-color:#2D9B6F!important}
-.cp-sx-dot,.drw-acc-btn::before,.drw-link-arrow{background:#2D9B6F!important;opacity:.6}
+.cp-sx-dot{background:#2D9B6F!important;opacity:.6} .drw-link-arrow{background:var(--brand,#1AE288)!important;opacity:1;color:var(--brand-black,#020B10)}
 
 /* ── FORM FOCUS ── */
 .form-input:focus,.form-select:focus,.form-textarea:focus,.f-g input:focus,.f-g select:focus,.f-g textarea:focus{border-color:rgba(47,163,107,0.5)!important;box-shadow:0 0 0 3px rgba(47,163,107,0.06)!important}
