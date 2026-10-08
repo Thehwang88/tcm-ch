@@ -5043,7 +5043,10 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    Eigener Namensraum, aktuell nur St. Gallen (HeroLaunchSG). Mint-Panel,
    Rich-Black-Typo, Black-Pill-CTA; Offer-/Formular-Sektion darunter bleibt
    unveraendert. minmax(0,1fr) gegen Langwort-min-content (H4A-Lektion). ── */
-.lsr-hero{background:var(--brand,#1AE288);border-bottom:1px solid rgba(2,11,16,.12);padding-top:var(--header-h,76px);font-family:var(--font-sans)}
+.lsr-hero{background:var(--brand,#1AE288);border-bottom:1px solid rgba(2,11,16,.12);padding:var(--header-h,76px) 0 0;font-family:var(--font-sans)}
+/* Data-driven-Standorte: der Legacy-Sibling-Layer (#sg-premium-hero ~ section)
+   pinnt section-Padding mit !important — ID-Konter nur fuer den lsr-Hero. */
+#sg-premium-hero ~ .lsr-hero{padding:var(--header-h,76px) 0 0!important}
 .lsr-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(600px,66vh)}
 .lsr-left{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,72px) clamp(24px,4.5vw,72px);color:var(--brand-black,#020B10)}
 .lsr-eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(2,11,16,.6);margin-bottom:14px}

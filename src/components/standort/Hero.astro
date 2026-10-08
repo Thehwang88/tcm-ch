@@ -7,6 +7,29 @@ const heroH1 = data.seo?.h1 ?? `Akupunktur & TCM in <em>${data.stadt}</em>`;
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
+{data.slug === 'basel' ? (
+<section class="lsr-hero">
+  <div class="lsr-inner">
+    <div class="lsr-left">
+      <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span><span>{data.stadt}</span></div>
+      <span class="lsr-eyebrow">{eyebrow}</span>
+      <h1 class="lsr-h1" set:html={heroH1}></h1>
+      <p class="lsr-lead" set:html={data.hero.lead}></p>
+      <p class="lsr-lead" style="margin-bottom:22px" set:html={data.hero.sub}></p>
+      <div class="lsr-ctas">
+        <button class="lsr-btn-primary" onclick="openContactForm()">Termin anfragen</button>
+        <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
+      </div>
+      <div class="lsr-trust"><div><span class="lsr-check">✓</span> Termine oft innert 24h</div><div><span class="lsr-check">✓</span> Zusatzversicherung anerkannt</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
+      <p class="lsr-note">{data.hero.locationHook}</p>
+    </div>
+    <figure class="lsr-right">
+      <img src={data.hero.image} alt={data.hero.imageAlt ?? 'TCM.ch Behandlungsteam in der Klinik'} loading="eager" fetchpriority="high" decoding="async">
+      <figcaption>{data.hero.locationHook}</figcaption>
+    </figure>
+  </div>
+</section>
+) : (
 <div id="generic-premium-hero" class={`sg-active sg-city-${data.slug}`}>
   <div class="sg-city-banner"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><strong>{data.hero.banner}</strong><span class="sg-city-banner-sep">·</span><span class="sg-city-banner-sub">Ihre TCM.ch Klinik vor Ort</span></div>
   <div class="sg-inner">
@@ -31,3 +54,4 @@ const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${
     <div class="sg-mobile-trust">Krankenkassen anerkannt <span class="sg-tsep">·</span> Zentral in {data.stadt} <span class="sg-tsep">·</span> Termine oft innert 24h</div>
   </div>
 </div>
+)}
