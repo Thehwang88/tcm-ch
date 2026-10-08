@@ -4775,4 +4775,7 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
   /* Step 2: Standorte-Sektion der Homepage (id=s-standorte nur auf /);
      .wrap-Basisregel traegt kein !important, ID-Spezifitaet genuegt. */
   #home-content #s-standorte > .wrap{ max-width:var(--max-wide); }
+  /* Step 3: Therapien-Sektion der Homepage. Achtung: id=s-behandlungen existiert
+     auch auf /therapien/ — #home-content haelt den Scope auf / (dort einzig). */
+  #home-content #s-behandlungen > .wrap{ max-width:var(--max-wide); }
 }
