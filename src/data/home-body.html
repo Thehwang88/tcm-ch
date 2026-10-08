@@ -163,3 +163,35 @@ Was passiert nach meiner Anfrage?
   }catch(_){}
 })();
 </script>
+
+<!-- ── Dynamic Header (Homepage-Experiment): Weiss -> Mint nach dem Hero ──
+     Sentinel = beide Hero-Panels via IntersectionObserver mit rootMargin
+     -HeaderHoehe: Mint erst, wenn die Hero-Unterkante die Header-Unterkante
+     vollstaendig passiert hat (kein scrollY-Schwellwert). SPA-Unterseiten
+     (body.on-subpage) bleiben weiss; reduced-motion ohne Transition. -->
+<style>
+#mainNav{transition:background-color .22s ease,border-color .22s ease}
+#mainNav.nav-mint{background:var(--brand,#1AE288);border-bottom-color:rgba(2,11,16,.14)}
+#mainNav.nav-mint .nav-phone,#mainNav.nav-mint .nav-menu-btn,#mainNav.nav-mint #navMenuBtn,#mainNav.nav-mint .nav-lang{background:transparent!important;border-color:rgba(2,11,16,.35)!important}
+#mainNav.nav-mint .nav-audience{background:rgba(2,11,16,.08)}
+@media (prefers-reduced-motion: reduce){#mainNav{transition:none}}
+</style>
+<script>
+(function(){
+  var nav=document.getElementById('mainNav');if(!nav||!('IntersectionObserver'in window))return;
+  var heroes=[].slice.call(document.querySelectorAll('[data-audience-panel]'));if(!heroes.length)return;
+  var navH=Math.round(nav.getBoundingClientRect().height)||76;
+  var vis=new Map();
+  function homeActive(){return !document.body.classList.contains('on-subpage');}
+  function update(){
+    var anyHero=false;vis.forEach(function(v){if(v)anyHero=true;});
+    nav.classList.toggle('nav-mint', homeActive() && !anyHero);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){vis.set(e.target,e.isIntersecting);});
+    update();
+  },{root:null,rootMargin:(-navH)+'px 0px 0px 0px',threshold:0});
+  heroes.forEach(function(h){vis.set(h,true);io.observe(h);});
+  new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script>

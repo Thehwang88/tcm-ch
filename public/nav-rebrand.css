@@ -65,6 +65,14 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
   #navCtaBtn.nav-cta{padding:0 11px!important;font-size:15px!important}
 }
 
+/* ── Header-Redesign: Telefon-Icon (nur mobil), kein Mobile-CTA, 44px-Targets ── */
+.nav-phone{display:none}
+@media(max-width:900px){
+  #navCtaBtn.nav-cta{display:none!important}
+  .nav-phone{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(2,11,16,.18);color:var(--nav-ink);background:#fff;margin-left:auto}
+  .nav-phone:active{background:rgba(26,226,136,.16)}
+  .nav-menu-btn,#navMenuBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+}
 /* Burger-Button neutral statt grün umrandet */
 .nav-menu-btn,#navMenuBtn{border:1.5px solid rgba(25,20,20,.16)!important;color:var(--nav-ink)!important;border-radius:100px!important;background:#fff!important}
 .nav-menu-btn svg,#navMenuBtn svg{stroke:var(--nav-ink)!important}
@@ -90,6 +98,12 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 [data-audience="patient"] [data-aud="patient"]::before,[data-audience="therapist"] [data-aud="therapist"]::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nav-green);margin-right:6px;vertical-align:1px}
 /* Ausgeblendete Hero-Panels (Audience-Umschaltung auf der Startseite) */
 [data-audience-panel][hidden]{display:none!important}
+/* Header-Redesign: ohne sichtbaren Audience-Switch laeuft header.js'
+   setAudience() nicht mehr (early return) — das inline display:none fuer das
+   inaktive Hero-Panel entfaellt. Diese ID-starke Regel stellt sicher, dass
+   [hidden]-Panels auch gegen #home-content .hero-bg{display:block!important}
+   verborgen bleiben; die Audience-Logik selbst bleibt unangetastet. */
+#home-content .hero-bg[data-audience-panel][hidden]{display:none!important}
 
 /* ── "Mehr"-Dropdown ── */
 .nav-more-li{position:relative}
