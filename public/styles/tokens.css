@@ -54,6 +54,16 @@
   --tracking-hero: -0.02em;
 
   /* ── Layout / rhythm ───────────────────────────────────── */
+  /* ── Softriver Rebrand-Tokens (Color Pilot 01, 08.10.2026) — ADDITIV.
+     Bestehende Tokens/Aliasse unveraendert; Nutzung vorerst nur Homepage-Hero-CTA.
+     --brand ist eine FLAECHEN-Farbe (Text darauf immer --brand-black, 11.6:1);
+     --brand-ink ist der provisorische barrierefreie Text-/Link-Ableger (5.4:1 auf Weiss). */
+  --brand: #1AE288;
+  --brand-black: #020B10;
+  --brand-surface: #F2F4F2;
+  --brand-tint: #DFFBEE;
+  --brand-ink: #0B7A4C;
+
   --max: 1280px;
   --max-wide: 1440px;       /* Wide-Stufe fuer grosse Desktops (Step-1-Pilot: nur Homepage-Hero) */
   --pad-x: 40px;

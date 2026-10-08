@@ -4779,3 +4779,13 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
      auch auf /therapien/ — #home-content haelt den Scope auf / (dort einzig). */
   #home-content #s-behandlungen > .wrap{ max-width:var(--max-wide); }
 }
+
+/* ── REBRAND COLOR PILOT 01 (08.10.2026): NUR Hero-Primary-CTA der Homepage ──
+   .deh-btn--primary existiert ausschliesslich im Home-Hero (beide Audience-
+   Panels, text-only, kein SVG/Span im Button). Basisregeln stehen oben bei
+   ~L4456 ohne !important mit identischem Selektor — dieser Block gewinnt per
+   Reihenfolge. Text auf Mint zwingend dunkel (11.6:1 / Hover 9.1:1).
+   focus-visible/disabled bleiben unveraendert (keine eigenen Regeln im Bestand).
+   Rollback: diesen Block entfernen. */
+#home-content .deh-btn--primary{background:var(--brand);color:var(--brand-black)}
+#home-content .deh-btn--primary:hover{background:#14C97A;color:var(--brand-black)}
