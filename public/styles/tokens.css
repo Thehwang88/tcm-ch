@@ -55,6 +55,7 @@
 
   /* ── Layout / rhythm ───────────────────────────────────── */
   --max: 1280px;
+  --max-wide: 1440px;       /* Wide-Stufe fuer grosse Desktops (Step-1-Pilot: nur Homepage-Hero) */
   --pad-x: 40px;
   --section-y: 96px;
   --section-y-sm: 48px;

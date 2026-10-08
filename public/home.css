@@ -4763,3 +4763,13 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 @media (max-width:1100px){.tmc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.tmc .tmc-title{font-size:10.5px;letter-spacing:.03em!important}.tmc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tmc-body{padding:12px 12px 14px}.tmc-name{font-size:16px}.tmc-focus{font-size:12.5px}.tmc-badges span{font-size:10.5px;padding:2px 7px}.tmc-initials span{font-size:40px}}
 @media (max-width:420px){.tmc-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ── STEP-1 WIDTH PILOT (08.10.2026): Homepage-Hero auf grossen Desktops ──────
+   Scope: #home-content existiert ausschliesslich auf / (beide Audience-Panels).
+   !important ist noetig, weil der Top-Level-Reset-Layer weiter oben
+   max-width:var(--max)!important auf .hero setzt; dieser Block steht bewusst
+   am Dateiende und gewinnt per Spezifitaet + Reihenfolge.
+   <1520px: exakt bisheriges Verhalten. Rollback: diesen Block entfernen. */
+@media (min-width:1520px){
+  #home-content .hero{ max-width:var(--max-wide) !important; }
+}
