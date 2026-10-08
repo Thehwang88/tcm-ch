@@ -408,7 +408,10 @@ const selbsttestBlock = `<section class="section" style="background:#fff;padding
 // Softriver-Rebrand: Opt-in pro Leaf. .symptom-scope remappt die Legacy-Aliasse
 // (Scope-Block in public/home.css); der neutrale Wrapper-div umfasst auch die
 // injizierten Bloecke nach dem #page-symptom-Div. Rollout = Slugs ergaenzen.
-const REBRANDED_SLUGS = new Set(['migraene']);
+const REBRANDED_SLUGS = new Set(['migraene',
+  // K1 (Batch 3C.2): Variante C (Sterne+Bubbles) + Variante B (Bubbles)
+  'nackenschmerzen', 'rueckenschmerzen', 'schlafprobleme', 'stress-burnout', 'verdauungsprobleme', 'zyklusbeschwerden',
+  'allergien-heuschnupfen', 'angststoerungen', 'arthrose', 'burnout', 'erschoepfung', 'fibromyalgie', 'gewichtsmanagement', 'heuschnupfen', 'knieschmerzen', 'kopfschmerzen', 'menstruationsbeschwerden', 'pms', 'schlafstoerungen', 'schwangerschaftsbeschwerden', 'sehnenscheidenentzuendung', 'tinnitus', 'wechseljahre']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
