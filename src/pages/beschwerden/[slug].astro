@@ -411,7 +411,19 @@ const selbsttestBlock = `<section class="section" style="background:#fff;padding
 const REBRANDED_SLUGS = new Set(['migraene',
   // K1 (Batch 3C.2): Variante C (Sterne+Bubbles) + Variante B (Bubbles)
   'nackenschmerzen', 'rueckenschmerzen', 'schlafprobleme', 'stress-burnout', 'verdauungsprobleme', 'zyklusbeschwerden',
-  'allergien-heuschnupfen', 'angststoerungen', 'arthrose', 'burnout', 'erschoepfung', 'fibromyalgie', 'gewichtsmanagement', 'heuschnupfen', 'knieschmerzen', 'kopfschmerzen', 'menstruationsbeschwerden', 'pms', 'schlafstoerungen', 'schwangerschaftsbeschwerden', 'sehnenscheidenentzuendung', 'tinnitus', 'wechseljahre']);
+  'allergien-heuschnupfen', 'angststoerungen', 'arthrose', 'burnout', 'erschoepfung', 'fibromyalgie', 'gewichtsmanagement', 'heuschnupfen', 'knieschmerzen', 'kopfschmerzen', 'menstruationsbeschwerden', 'pms', 'schlafstoerungen', 'schwangerschaftsbeschwerden', 'sehnenscheidenentzuendung', 'tinnitus', 'wechseljahre',
+  // K2 (Batch 3C.3): Variante A
+  'achillessehnenentzuendung', 'adenomyose', 'akne', 'aphten', 'asthma', 'augenmigraene', 'bakerzyste', 'bandscheibenvorfall', 'bettnaessen', 'blaehungen', 'blasenentzuendung', 'bluthochdruck', 'cluster-kopfschmerzen', 'colitis-ulcerosa', 'copd', 'costochondritis', 'crps', 'depressionen', 'diabetes-typ-2', 'divertikulitis', 'durchblutungsstoerungen', 'dyspareunie',
+  // K3 (Batch 3C.3): Variante A
+  'eierstockzyste', 'eisenmangel', 'endometriose', 'erektile-dysfunktion', 'fazialisparese', 'fersensporn', 'fettleber', 'frozen-shoulder', 'fruktoseintoleranz', 'funktionelle-dyspepsie', 'gallensteine', 'gastritis', 'gastroparese', 'gicht', 'gonarthrose', 'guertelrose', 'haarausfall', 'haemorrhoiden', 'hallux-valgus', 'hashimoto', 'hexenschuss', 'histaminintoleranz',
+  // K4 (Batch 3C.3): Variante A
+  'hitzewallungen', 'hoersturz', 'hueftschmerzen', 'hyperhidrose', 'immunschwaeche', 'impingement-syndrom', 'inkontinenz', 'interkostalneuralgie', 'interstitielle-zystitis', 'ischias', 'isg-blockade', 'kalkschulter', 'karpaltunnelsyndrom', 'kieferschmerzen', 'koxarthrose', 'kreisrunder-haarausfall', 'kubitaltunnelsyndrom', 'lagerungsschwindel', 'laktoseintoleranz', 'lipoedem', 'lippenherpes', 'long-covid',
+  // K5 (Batch 3C.3): Variante A
+  'lymphoedem', 'me-cfs', 'mittelohrentzuendung', 'morbus-bechterew', 'morbus-crohn', 'morbus-meniere', 'morton-neurom', 'myome', 'nervenschmerzen', 'nesselsucht', 'neurodermitis', 'niedriger-blutdruck', 'nierensteine', 'osteoporose', 'panikattacken', 'patellaspitzensyndrom', 'pcos', 'periorale-dermatitis', 'piriformis-syndrom', 'plantarfasziitis', 'pmdd',
+  // K6 (Batch 3C.3): Variante A
+  'polyneuropathie', 'prostata', 'raynaud-syndrom', 'reizblase', 'reizdarm', 'restless-legs', 'rheuma', 'rheumatoide-arthritis', 'rhizarthrose', 'rosacea', 'rotatorenmanschette', 'scheidentrockenheit', 'schilddruesenueberfunktion', 'schilddruesenunterfunktion', 'schlafapnoe', 'schleimbeutelentzuendung', 'schleudertrauma', 'schulterschmerzen', 'schuppenflechte', 'schwere-beine', 'schwindel',
+  // K7 (Batch 3C.3): Variante A
+  'seborrhoisches-ekzem', 'sibo', 'sinusitis', 'skoliose', 'sodbrennen', 'spannungskopfschmerzen', 'spinalkanalstenose', 'spondylose', 'sprunggelenkschmerzen', 'tennisarm', 'trigeminusneuralgie', 'uebelkeit', 'vaginismus', 'venenschwaeche', 'verstopfung', 'vitiligo', 'vulvodynie', 'wadenschmerzen', 'wassereinlagerungen', 'zaehneknirschen', 'zoeliakie']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
