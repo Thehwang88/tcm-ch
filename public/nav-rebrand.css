@@ -13,16 +13,26 @@
 }
 
 /* ── Desktop-Bar ── */
-nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:none}
+nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.07);box-shadow:none}
+/* Content-Offsets folgen der Header-Hoehe (header.css/home.css setzen 68px;
+   Hub-Seiten restaurieren eigene 68px — .page-Prefix schlaegt deren spaeter
+   gebundelte Styles per Spezifitaet; Leaf-Premium-Heroes liegen bei 140px
+   und brauchen keine Anpassung). Nur Desktop >900px —
+   mobil gilt weiterhin die 80px-Regel unten. */
+@media(min-width:901px){
+  body > main, body > #home-content, #app{padding-top:var(--header-h,76px)}
+  .page#page-beschwerden,.page#page-standorte,.page#page-therapien{padding-top:var(--header-h,76px)}
+  #mainNav .logo img{width:140px}
+}
 #mainNav .nav-inner{gap:20px}
 #mainNav .nav-links{gap:6px}
-#mainNav .nav-links a,#mainNav .nav-links button{font-weight:600;color:var(--nav-ink);border-radius:100px;transition:background .15s ease,color .15s ease}
+#mainNav .nav-links a,#mainNav .nav-links button{font-weight:600;font-size:14px;color:var(--nav-ink);border-radius:100px;transition:background .15s ease,color .15s ease}
 #mainNav .nav-links a:hover,#mainNav .nav-links button:hover{background:var(--nav-green-soft);color:var(--nav-ink)}
 
 /* CTA: schwarze Pille (überschreibt die Ghost-Regel aus header.css).
    Explizite Höhe/Zentrierung, weil je nach Seite (home.css vs header.css)
    sonst min-height verloren geht und die Pille auf Textzeilenhöhe kollabiert. */
-#navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;min-height:44px!important;padding:0 22px!important;border-radius:100px!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;line-height:1!important}
+#navCtaBtn.nav-cta{background:var(--nav-ink)!important;color:#fff!important;border:none!important;font-weight:700!important;min-width:0!important;min-height:46px!important;padding:0 24px!important;font-size:14px!important;border-radius:100px!important;box-shadow:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;line-height:1!important}
 #navCtaBtn.nav-cta:hover{background:#000!important;border:none!important}
 /* ── Mobiler Header: ruhige, ausbalancierte Reihe Logo | CTA | Burger ──────
    80px hoch mit mehr Luft, CTA als 46px-Pille (klar primär, aber nicht
@@ -83,7 +93,7 @@ nav#mainNav{height:68px;border-bottom:1px solid rgba(25,20,20,.07);box-shadow:no
 
 /* ── "Mehr"-Dropdown ── */
 .nav-more-li{position:relative}
-.nav-more-btn{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--nav-ink);background:none;border:none;cursor:pointer;font-family:var(--font-sans);border-radius:100px;min-height:44px;padding:0 10px}
+.nav-more-btn{display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:600;color:var(--nav-ink);background:none;border:none;cursor:pointer;font-family:var(--font-sans);border-radius:100px;min-height:44px;padding:0 10px}
 .nav-more-btn:hover,.nav-more-btn[aria-expanded="true"]{background:var(--nav-green-soft)}
 .nav-more-btn svg{transition:transform .2s ease}
 .nav-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
