@@ -8,28 +8,27 @@
 // unten; das Kontaktformular am Seitenende (sg-kontakt-bottom) bleibt davon getrennt.
 const { sitekey } = Astro.props;
 ---
-<section class="hlsg">
-  <div class="hlsg-inner">
-    <div class="hlsg-copy">
-      <span class="hlsg-badge">TCM.ch Praxis · St. Gallen</span>
-      <h1 class="hlsg-h1">Akupunktur &amp; TCM in <span class="hlsg-accent">St. Gallen</span></h1>
-      <p class="hlsg-sub">Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht.</p>
-      <div class="hlsg-trust" style="margin-top:18px">
-        <div><span class="hlsg-check">✓</span> Krankenkassen anerkannt (EMR/ASCA)</div>
-        <div><span class="hlsg-check">✓</span> Oberer Graben 22, St. Gallen</div>
-        <div><span class="hlsg-check">✓</span> Kurzfristige Termine verfügbar</div>
+<section class="lsr-hero hlsg">
+  <div class="lsr-inner">
+    <div class="lsr-left">
+      <span class="lsr-eyebrow">TCM.ch Praxis · St. Gallen</span>
+      <h1 class="lsr-h1">Akupunktur &amp; TCM in <span class="lsr-accent">St. Gallen</span></h1>
+      <p class="lsr-lead">Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Unser Team aus der Schweiz und Südkorea begleitet dich persönlich, egal worum es geht.</p>
+      <div class="lsr-trust">
+        <div><span class="lsr-check">✓</span> Krankenkassen anerkannt (EMR/ASCA)</div>
+        <div><span class="lsr-check">✓</span> Oberer Graben 22, St. Gallen</div>
+        <div><span class="lsr-check">✓</span> Kurzfristige Termine verfügbar</div>
       </div>
-      <div class="hlsg-cta-row">
-        <a href="#offer-form" class="hlsg-btn-primary">30 Min. gratis Termin anfragen</a>
-        <a href="#online-buchen" class="hlsg-btn-ghost">Termin online buchen</a>
+      <div class="lsr-ctas">
+        <a href="#offer-form" class="lsr-btn-primary">30 Min. gratis Termin anfragen</a>
+        <a href="#online-buchen" class="lsr-btn-ghost">Termin online buchen</a>
       </div>
-      <p class="hlsg-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
-      <p style="margin-top:12px;font-size:14px;font-weight:600;color:var(--mid)">Erster Termin für Neupatient:innen kostenlos.</p>
-      <p style="margin-top:8px;font-size:14px;font-weight:600;color:var(--mid)"><b style="color:var(--charcoal)">Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
+      <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
+      <p class="lsr-note">Erster Termin für Neupatient:innen kostenlos.</p>
+      <p class="lsr-note"><b>Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
-
-    <figure class="hlsg-visual">
-      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="lazy" decoding="async">
+    <figure class="lsr-right">
+      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
       <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
     </figure>
   </div>
@@ -64,58 +63,31 @@ const { sitekey } = Astro.props;
 </section>
 
 <style>
-  .hlsg { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
+  
 
-  .hlsg-inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 5vw, 56px); align-items: center;
-  }
-  @media (max-width: 900px) { .hlsg-inner { grid-template-columns: 1fr; gap: 28px; } }
+  
 
-  .hlsg-visual { margin: 0; min-width: 0; }
-  .hlsg-visual img {
-    display: block; width: 100%; height: auto; max-width: 100%;
-    aspect-ratio: 4 / 3; object-fit: cover;
-    border-radius: var(--r-hero); border: 1px solid rgba(18, 33, 28, .08);
-    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .22);
-  }
-  .hlsg-visual figcaption {
-    margin-top: 10px; font-size: 13px; color: var(--mid); text-align: center;
-  }
+  
+  
+  
 
-  .hlsg-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--blue-light); color: var(--blue-dark); border: 1px solid rgba(45, 155, 111, .18);
-    padding: 6px 13px; border-radius: var(--r-pill);
-    font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  }
-  .hlsg-h1 {
-    font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800;
-    margin: 18px 0 14px; color: var(--charcoal);
-  }
-  .hlsg-accent { color: var(--blue); }
-  .hlsg-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 56ch; line-height: 1.55; }
+  
+  
+  
+  
 
-  .hlsg-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-  .hlsg-btn-primary {
-    background: var(--blue); color: #fff; border: none; text-decoration: none;
-    padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700;
-    box-shadow: var(--sh-btn); transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
-  }
-  .hlsg-btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
-  .hlsg-btn-ghost {
-    background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
-    padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
-  }
-  .hlsg-btn-ghost:hover { border-color: var(--blue); color: var(--blue-dark); }
+  
+  
+  
+  
+  
 
   .hlsg-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .hlsg-trust div { display: flex; align-items: center; gap: 7px; }
   .hlsg-check { color: var(--blue); font-weight: 800; }
 
-  .hlsg-tert { margin-top: 14px; font-size: 14px; color: var(--mid); }
-  .hlsg-tert a { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
+  
+  
 
   .hlsg-offer-sec { background: var(--surface); font-family: var(--font-sans); padding: 0 var(--pad-x) clamp(32px, 5vw, 56px); }
   .hlsg-offer-sec .hlsg-card { max-width: 520px; margin: 0 auto; }
@@ -169,16 +141,13 @@ const { sitekey } = Astro.props;
   .hlsg-success p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
 
   @media (max-width: 767px) {
-    .hlsg { padding-top: 60px; }
-    .hlsg-inner { padding-left: 16px; padding-right: 16px; }
     .hlsg-offer-sec { padding-left: 16px; padding-right: 16px; }
-    .hlsg-visual img { aspect-ratio: 3 / 2; }
     .hlsg-card { padding: 18px; }
     .hlsg-card, .hlsg-card * { max-width: 100%; }
     .hlsg-ts { max-width: 100%; overflow-x: auto; }
     .hlsg-form input, .hlsg-form button { width: 100%; }
   }
-  @media (prefers-reduced-motion: reduce) { .hlsg-btn-primary:hover { transform: none; } }
+  
 </style>
 
 <script is:inline>

@@ -5038,3 +5038,39 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
   .tsr-right img{position:absolute}
   .tsr-left{padding:32px 20px 28px}
 }
+
+/* ── Location-Hero (lsr): 50/50 Softriver-Variante fuer Standorte.
+   Eigener Namensraum, aktuell nur St. Gallen (HeroLaunchSG). Mint-Panel,
+   Rich-Black-Typo, Black-Pill-CTA; Offer-/Formular-Sektion darunter bleibt
+   unveraendert. minmax(0,1fr) gegen Langwort-min-content (H4A-Lektion). ── */
+.lsr-hero{background:var(--brand,#1AE288);border-bottom:1px solid rgba(2,11,16,.12);padding-top:var(--header-h,76px);font-family:var(--font-sans)}
+.lsr-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(600px,66vh)}
+.lsr-left{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,72px) clamp(24px,4.5vw,72px);color:var(--brand-black,#020B10)}
+.lsr-eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(2,11,16,.6);margin-bottom:14px}
+.lsr-h1{font-family:var(--font-sans);font-size:clamp(32px,3.9vw,54px);font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:var(--brand-black);margin:0 0 14px;overflow-wrap:break-word}
+.lsr-accent{font-style:italic;font-family:'Nunito',sans-serif}
+.lsr-lead{font-size:clamp(16px,1.3vw,18.5px);line-height:1.55;color:rgba(2,11,16,.82);margin:0 0 18px;max-width:54ch}
+.lsr-trust{display:flex;gap:10px 22px;flex-wrap:wrap;font-size:14px;font-weight:600;color:rgba(2,11,16,.78);margin-bottom:22px}
+.lsr-trust div{display:flex;align-items:center;gap:7px}
+.lsr-check{color:var(--brand-black);font-weight:800}
+.lsr-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.lsr-btn-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--brand-black,#020B10);color:#fff;border:none;border-radius:100px;min-height:52px;padding:0 28px;font-family:var(--font-sans);font-size:16px;font-weight:700;text-decoration:none;cursor:pointer;transition:background .15s ease,transform .15s ease}
+.lsr-btn-primary:hover{background:#1f2a30;transform:translateY(-1px)}
+.lsr-btn-primary:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.lsr-btn-ghost{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--brand-black);border:1.5px solid rgba(2,11,16,.45);border-radius:100px;min-height:52px;padding:0 24px;font-family:var(--font-sans);font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+.lsr-btn-ghost:hover{border-color:var(--brand-black);background:rgba(2,11,16,.05)}
+.lsr-btn-ghost:focus-visible{outline:3px solid rgba(2,11,16,.5);outline-offset:2px}
+.lsr-tert{font-size:14px;font-weight:600;color:rgba(2,11,16,.75);margin:0 0 10px}
+.lsr-tert a{color:var(--brand-black);text-decoration:underline}
+.lsr-note{font-size:14px;font-weight:600;color:rgba(2,11,16,.75);margin:0 0 6px}
+.lsr-note b{color:var(--brand-black)}
+.lsr-right{position:relative;margin:0;min-height:100%;container-type:size;background:linear-gradient(180deg,#a2a3a4,#afafaf)}
+.lsr-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;max-width:none}
+.lsr-right figcaption{position:absolute;left:0;right:0;bottom:0;padding:8px 14px;font-size:12.5px;color:#fff;background:linear-gradient(180deg,rgba(2,11,16,0),rgba(2,11,16,.55));text-align:left}
+@container (aspect-ratio < 0.99){.lsr-right img{object-fit:contain}}
+@media(max-width:900px){
+  .lsr-inner{grid-template-columns:1fr;min-height:0}
+  .lsr-right{min-height:0;height:300px;container-type:normal}
+  .lsr-right img{position:absolute}
+  .lsr-left{padding:32px 16px 26px}
+}
