@@ -4923,6 +4923,12 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
   #home-content .sr-hero-right img{position:static;width:100%;height:auto;aspect-ratio:auto}
   #home-content .sr-trust{row-gap:14px}
 }
+@media(max-width:767px){
+  /* Hero-Foto mobil: volle Viewport-Breite mit mehr Praesenz - 1:1 statt flachem 4:3.
+     1:1 ist die hoechste Ratio ohne Personen-Anschnitt (Team reicht bis ~12.5% an die
+     Bildraender); 4:5 wuerde den Kopf des linken Therapeuten beschneiden. */
+  #home-content .sr-hero-right img{aspect-ratio:1/1;height:auto;object-fit:cover;object-position:center center}
+}
 @media(max-width:480px){
   #home-content .sr-cta .sr-btn{width:100%}
   #home-content .sr-trust{flex-direction:column;align-items:flex-start;gap:12px}
