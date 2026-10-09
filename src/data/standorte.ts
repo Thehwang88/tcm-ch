@@ -201,6 +201,7 @@ export const standorte: Record<string, Standort> = {
   },
   "frauenfeld": {
     "cro": true,
+    "v2": true,
     "slug": "frauenfeld",
     "stadt": "Frauenfeld",
     "seo": {
@@ -1422,6 +1423,7 @@ export const standorte: Record<string, Standort> = {
   // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten, vor Eröffnung für Ohmstrasse 14 bestätigen.
   "zuerich-oerlikon": {
     "cro": true,
+    "v2": true,
     "praxisBilder": [
       { "src": "/images/standort-oerlikon.png", "alt": "TCM.ch Praxis Zürich Oerlikon", "label": "Oerlikon" }
     ],

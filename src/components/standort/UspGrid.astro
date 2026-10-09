@@ -1,5 +1,8 @@
 ---
 // Static trust strip - identical for every Standort.
+// Ausnahme: geplante Standorte (planned) ersetzen die Verfügbarkeits-Karte
+// durch den sachlich richtigen Status (keine Termin-Claims vor Eröffnung).
+const { planned = false } = Astro.props as { planned?: boolean };
 ---
 <section class="usp-grid-section" style="background:#fff;padding:48px 0;border-bottom:1px solid var(--border)"><div class="wrap"><div class="usp-grid">
   <div class="usp-card">
@@ -14,8 +17,8 @@
   </div>
   <div class="usp-card">
     <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-    <div class="usp-title">Kurzfristige Termine verfügbar</div>
-    <div class="usp-sub">Keine wochenlange Wartezeit.</div>
+    <div class="usp-title">{planned ? 'Anfragen bereits möglich' : 'Kurzfristige Termine verfügbar'}</div>
+    <div class="usp-sub">{planned ? 'Wir melden uns, sobald die Terminvergabe startet.' : 'Keine wochenlange Wartezeit.'}</div>
   </div>
   <div class="usp-card">
     <div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
