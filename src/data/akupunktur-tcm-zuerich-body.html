@@ -3,17 +3,17 @@
   .akz{padding-top:68px}
   /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
   .akzh .lsr-inner{min-height:min(560px,62vh)}
-  .akzh-side{display:flex;align-items:center;justify-content:center;padding:clamp(28px,4vw,56px)}
-  .akzh-card{background:#fff;border:1px solid rgba(2,11,16,.12);border-radius:var(--r-card);box-shadow:var(--sh-md);padding:26px 26px 20px;width:100%;max-width:440px}
-  .akzh-card-label{font-family:var(--font-sans);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.55);margin-bottom:12px}
+  .akzh-strip{background:#fff;border-bottom:1px solid rgba(2,11,16,.08)}
+  .akzh-strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px}
+  .akzh-strip .akzh-row{border-top:none;padding:14px 2px}
+  @media(max-width:860px){.akzh-strip-in{grid-template-columns:1fr}.akzh-strip .akzh-row{border-top:1px solid rgba(2,11,16,.08)}.akzh-strip .akzh-row:first-of-type{border-top:none}}
   .akzh-row{display:grid;grid-template-columns:1fr auto;grid-template-areas:'name arrow' 'status arrow';align-items:center;gap:2px 12px;padding:13px 2px;border-top:1px solid rgba(2,11,16,.08);text-decoration:none;color:var(--brand-black,#020B10)}
   .akzh-row:first-of-type{border-top:none}
   .akzh-row-name{grid-area:name;font-family:var(--font-sans);font-size:16.5px;font-weight:800;letter-spacing:-.01em}
   .akzh-row-status{grid-area:status;font-size:13px;color:rgba(2,11,16,.62)}
   .akzh-row-arrow{grid-area:arrow;font-size:18px;color:var(--brand-black);transition:transform .15s ease}
   .akzh-row:hover .akzh-row-arrow{transform:translateX(3px)}
-  .akzh-card-foot{font-size:13px;color:rgba(2,11,16,.6);border-top:1px solid rgba(2,11,16,.08);padding-top:14px;margin-top:2px}
-  @media(max-width:860px){.akzh .lsr-inner{grid-template-columns:1fr;min-height:0}.akzh-side{padding:0 16px 32px}.akzh .lsr-left{padding:32px 16px 22px}}
+  @media(max-width:860px){.akzh .lsr-inner{grid-template-columns:1fr;min-height:0}.akzh .lsr-right{min-height:0;height:300px}.akzh .lsr-left{padding:32px 16px 22px}}
   /* Karten: Chips und CTA-Zeile auf gemeinsamer Grundlinie */
   .zhx-praxis-pos{flex:initial}
   .zhx-praxis-tags{margin-top:auto}
@@ -24,6 +24,9 @@
   /* Softriver-CTA-Farben statt Legacy-Gruen - nur innerhalb .akz */
   .akz .btn-primary{background:var(--brand,#1AE288);color:var(--brand-black,#020B10);box-shadow:none}
   .akz .btn-primary:hover{background:#14C97A;color:var(--brand-black,#020B10)}
+  /* CTA-Band liegt im Dokument ausserhalb des (unbalancierten) .akz-Wrappers - eigene Regel. */
+  .cta-band .btn-primary{background:var(--brand,#1AE288);color:var(--brand-black,#020B10);box-shadow:none}
+  .cta-band .btn-primary:hover{background:#14C97A;color:var(--brand-black,#020B10)}
   .akz .btn-primary:focus-visible,.akz .btn-secondary:focus-visible,.akzh-row:focus-visible,.akz .lsr-btn-primary:focus-visible,.akz .lsr-btn-ghost:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:2px}
   @media(prefers-reduced-motion:reduce){.akzh-row-arrow{transition:none}}
   .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
@@ -90,17 +93,20 @@
         <p class="lsr-note">Bestehende Praxen in Höngg und Oerlikon · Weitere Standorte in Vorbereitung.</p>
         <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Oder ruf direkt an: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
       </div>
-      <div class="akzh-side">
-        <div class="akzh-card">
-          <div class="akzh-card-label">Standorte im Raum Zürich</div>
-          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Höngg</span><span class="akzh-row-status">Bestehende Praxis</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
-          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Oerlikon</span><span class="akzh-row-status">Praxis Hwang · TCM.ch ab 1.12.2026</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
-          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich City</span><span class="akzh-row-status">In Vorbereitung</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
-          <div class="akzh-card-foot">Egal wo: Wir finden den Termin, der zu dir passt.</div>
-        </div>
-      </div>
+      <figure class="lsr-right">
+        <img src="/images/team-hero.jpg" alt="Das Team von TCM.ch – sechs Therapeutinnen und Therapeuten" width="2000" height="1500" loading="eager" fetchpriority="high" decoding="async">
+        <figcaption>Das TCM.ch Behandlungsteam · Praxen des Netzwerks in Höngg und Oerlikon</figcaption>
+      </figure>
     </div>
   </section>
+  <!-- Kompakter Standort-Navigator (ehem. Hero-Panel) -->
+  <div class="akzh-strip">
+    <div class="wrap akzh-strip-in">
+      <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Höngg</span><span class="akzh-row-status">Bestehende Praxis</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+      <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Oerlikon</span><span class="akzh-row-status">Praxis Hwang · TCM.ch ab 1.12.2026</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+      <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich City</span><span class="akzh-row-status">In Vorbereitung</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
 
   <section style="background:#fff;border-bottom:1px solid var(--border);padding:36px 0">
     <div class="wrap" style="max-width:960px">
@@ -472,14 +478,14 @@
   </section>
 
   <!-- FINAL CTA -->
-  <section class="cta-band" style="background:var(--blue);padding:48px 0">
+  <section class="cta-band" style="background:#F2F4F2;padding:48px 0">
     <div class="wrap" style="text-align:center">
-      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Jetzt passenden Termin in Zürich finden</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Sag uns, wo du einen Termin suchst. Wir finden innerhalb unserer Zürcher Praxen den passenden Standort oder den nächsten freien Termin.</p>
+      <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#020B10;letter-spacing:-.03em;margin:0 0 8px">Jetzt passenden Termin in Zürich finden</h2>
+      <p style="font-size:15px;color:rgba(2,11,16,.7);margin:0 auto 28px;max-width:52ch">Sag uns, wo du einen Termin suchst. Wir finden innerhalb unserer Zürcher Praxen den passenden Standort oder den nächsten freien Termin.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn-white" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'end_cta'})" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Passenden Termin finden</a>
-        <a href="tel:+41775236122" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_end_cta'})" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">Direkt anrufen</a>
-        <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">WhatsApp</a>
+        <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'end_cta'})" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Passenden Termin finden</a>
+        <a href="tel:+41775236122" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_end_cta'})" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#020B10;text-decoration:none;padding:14px 18px;border:none;text-underline-offset:3px">Direkt anrufen</a>
+        <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20eine%20TCM-Praxis%20in%20Z%C3%BCrich." target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#020B10;text-decoration:none;padding:14px 18px;border:none;text-underline-offset:3px">WhatsApp</a>
       </div>
     </div>
   </section>
