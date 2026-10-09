@@ -28,7 +28,11 @@ const orderAll: Item[] = data.cro
       { icon: key('clock'), label: 'Öffnungszeiten', kind: 'hours' },
     ];
 // Standorte ohne bestätigte Öffnungszeiten (leeres Array) zeigen die Zeile nicht.
-const order = orderAll.filter((it) => it.kind !== 'hours' || data.nap.oeffnungszeiten.length > 0);
+// CRO-L3.3 (operative v2-Piloten, slim): Intro-Satz entfällt (dupliziert Hero/IntroNap,
+// trug einen unbelegten Verfügbarkeits-Claim); Tel/Mail entfallen im up-grid (stehen im
+// Kontaktblock und Footer) - Adresse, Öffnungszeiten, Map und Anfahrt bleiben.
+const slim = Boolean(data.v2 && !data.planned);
+const order = orderAll.filter((it) => (it.kind !== 'hours' || data.nap.oeffnungszeiten.length > 0) && !(slim && (it.kind === 'tel' || it.kind === 'mail')));
 const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 // CRO-L3-Images: Praxisbilder, die dasselbe Asset wie der Hero zeigen, nicht wiederholen
 // (normalisierter Pfadvergleich; Asset-Dateien bleiben unangetastet).
@@ -36,7 +40,7 @@ const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?
 const praxisBilder = (data.praxisBilder ?? []).filter((b) => norm(b.src) !== norm(data.hero.image));
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
-{(data.cro || data.praxisBilder) && (
+{(data.cro || data.praxisBilder) && !slim && (
   <div class="content-body" style="margin-bottom:18px"><p>{data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung – mit EMR- und ASCA-anerkannten Therapeut:innen nach demselben Prinzip wie an allen TCM.ch-Standorten. Anfragen sind bereits möglich.` : `Unsere Praxis an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.`}</p></div>
 )}
 {praxisBilder.length > 0 && (

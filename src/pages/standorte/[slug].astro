@@ -271,6 +271,9 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
                 Therapien → Ablauf → Reviews → KK → Intro/SEO → Praxis/Lage. Kräuter-Band und
                 das grosse "Warum TCM.ch" entfallen (Trust-Punkte sind in USP + Ablauf abgedeckt). */}
             <UspGrid planned={data.planned} />
+            {/* CRO-L3.3: Mint-Banner entfällt auf operativen v2-Piloten (UX-Hypothese;
+                gleiches Ziel wie Hero-CTA, keine eigenen Links/Events). */}
+            {!(data.v2 && !data.planned) && (
             <section class="section" style="padding:0;background:var(--bg)">
               <div class="wrap" style="padding-top:12px;padding-bottom:4px">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
@@ -282,6 +285,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
                 </div>
               </div>
             </section>
+            )}
             {data.aufEinenBlick && <Fragment set:html={data.aufEinenBlick} />}
             <Team data={data} />
             <Beschwerden data={data} />

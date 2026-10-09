@@ -248,16 +248,15 @@ function therapieScrollToForm(){ var el = document.querySelector("#page-therapie
   // Geplante Standorte ([data-planned] am Kontakt-Abschnitt) ebenfalls ohne: keine
   // Verfügbarkeits-/Scarcity-Claims, solange der Standort nicht eröffnet ist.
   if (!card || card.closest('#zh-funnel') || card.closest('[data-planned]') || document.querySelector('.form-trust-checklist')) return;
-  var items = ['Kassendeckung vorab geprüft', 'Termin in 24–48h', 'Ärztlich begleitet', 'Ehrlichkeits-Garantie'];
+  // CRO-L3.3: generische (seitenunabhängige) Injection -> nur status-neutrale Service-
+  // Aussagen. Kassen-/Anerkennungs-Claims gehören in den standortspezifischen,
+  // serverseitig belegten Block (KontaktForm, v2), nicht in eine Blanket-Injection.
+  var items = ['Unverbindliche Anfrage', 'Passende Praxis statt langem Suchen', 'Persönliche Begleitung'];
   var chk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
   var wrap = document.createElement('div');
   wrap.className = 'form-trust-checklist';
   wrap.innerHTML = items.map(function(t){ return '<span class="ftc-item">' + chk + t + '</span>'; }).join('');
-  var scar = document.createElement('div');
-  scar.className = 'form-trust-scarcity';
-  scar.textContent = 'Ersttermin-Slots pro Woche und Standort sind begrenzt. Anfragen werden in der Reihenfolge des Eingangs vergeben.';
   card.parentNode.insertBefore(wrap, card);
-  card.parentNode.insertBefore(scar, card);
 })();
 
 /* Contact forms (home + standorte): bind ONE AJAX submit handler by attribute, so every
