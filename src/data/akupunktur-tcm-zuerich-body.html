@@ -1,6 +1,31 @@
 <style>
   /* Layout-only helpers - design tokens only, no new colours/fonts/components. */
   .akz{padding-top:68px}
+  /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
+  .akzh .lsr-inner{min-height:min(560px,62vh)}
+  .akzh-side{display:flex;align-items:center;justify-content:center;padding:clamp(28px,4vw,56px)}
+  .akzh-card{background:#fff;border:1px solid rgba(2,11,16,.12);border-radius:var(--r-card);box-shadow:var(--sh-md);padding:26px 26px 20px;width:100%;max-width:440px}
+  .akzh-card-label{font-family:var(--font-sans);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.55);margin-bottom:12px}
+  .akzh-row{display:grid;grid-template-columns:1fr auto;grid-template-areas:'name arrow' 'status arrow';align-items:center;gap:2px 12px;padding:13px 2px;border-top:1px solid rgba(2,11,16,.08);text-decoration:none;color:var(--brand-black,#020B10)}
+  .akzh-row:first-of-type{border-top:none}
+  .akzh-row-name{grid-area:name;font-family:var(--font-sans);font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+  .akzh-row-status{grid-area:status;font-size:13px;color:rgba(2,11,16,.62)}
+  .akzh-row-arrow{grid-area:arrow;font-size:18px;color:var(--brand-black);transition:transform .15s ease}
+  .akzh-row:hover .akzh-row-arrow{transform:translateX(3px)}
+  .akzh-card-foot{font-size:13px;color:rgba(2,11,16,.6);border-top:1px solid rgba(2,11,16,.08);padding-top:14px;margin-top:2px}
+  @media(max-width:860px){.akzh .lsr-inner{grid-template-columns:1fr;min-height:0}.akzh-side{padding:0 16px 32px}.akzh .lsr-left{padding:32px 16px 22px}}
+  /* Karten: Chips und CTA-Zeile auf gemeinsamer Grundlinie */
+  .zhx-praxis-pos{flex:initial}
+  .zhx-praxis-tags{margin-top:auto}
+  /* Desktop: einheitliche Chip-Zone, damit Chip-Zeilen auf gleicher Hoehe BEGINNEN
+     (Zone = 2 Chip-Zeilen hoch; CTA-Grundlinie bleibt unveraendert). Mobil natuerlich. */
+  @media(min-width:1101px){.zhx-praxis-tags{min-height:69px;align-content:flex-start}}
+  .zhx-praxis-ctas .btn-primary,.zhx-praxis-ctas .btn-secondary{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;border-radius:100px}
+  /* Softriver-CTA-Farben statt Legacy-Gruen - nur innerhalb .akz */
+  .akz .btn-primary{background:var(--brand,#1AE288);color:var(--brand-black,#020B10);box-shadow:none}
+  .akz .btn-primary:hover{background:#14C97A;color:var(--brand-black,#020B10)}
+  .akz .btn-primary:focus-visible,.akz .btn-secondary:focus-visible,.akzh-row:focus-visible,.akz .lsr-btn-primary:focus-visible,.akz .lsr-btn-ghost:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){.akzh-row-arrow{transition:none}}
   .akz-hero{background:var(--green-mint);border-bottom:1px solid var(--border)}
   .akz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
   .akz-hero-img{width:100%;border-radius:var(--r-hero);box-shadow:var(--sh-md);aspect-ratio:4/3;object-fit:cover;display:block}
@@ -50,26 +75,28 @@
 
 <div class="akz">
 
-  <!-- HERO -->
-  <section class="section akz-hero">
-    <div class="wrap">
-      <div class="akz-hero-grid">
-        <div>
-          <div class="section-label">TCM.ch Zürich</div>
-          <h1 class="section-title" style="margin-bottom:18px">Akupunktur &amp; TCM in <em>Zürich</em></h1>
-          <p class="section-sub">Akupunktur & TCM in Höngg und Oerlikon – und bald im Zürcher Zentrum. Sag uns, wo du einen Termin suchst - wir finden die Praxis und den Termin, die am besten zu dir passen.</p>
-          <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-            <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Passenden Termin finden</a>
-            <a class="btn-secondary" href="tel:+41775236122" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Direkt anrufen</a>
-          </div>
-          <div class="akz-trust">
-            <span><b>Zusatzversicherung</b> anerkannt</span>
-            <span><b>Mehrere</b> Zürcher Standorte</span>
-            <span><b>Persönliche</b> Behandlung</span>
-          </div>
+  <!-- HERO (Softriver lsr-Familie; rechts faktischer Standort-Navigator statt Bild) -->
+  <section class="lsr-hero akzh">
+    <div class="lsr-inner">
+      <div class="lsr-left">
+        <span class="lsr-eyebrow">TCM.ch Zürich</span>
+        <h1 class="lsr-h1">Akupunktur &amp; TCM in <em class="lsr-accent">Zürich</em></h1>
+        <p class="lsr-lead">Wir helfen dir, die passende Praxis in Zürich zu finden – persönlich, unkompliziert und abgestimmt auf deinen Standortwunsch.</p>
+        <div class="lsr-ctas">
+          <a class="lsr-btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Termin anfragen</a>
+          <a class="lsr-btn-ghost" href="#standorte">Standorte entdecken</a>
         </div>
-        <div>
-          <img class="akz-hero-img" src="/images/hero-home.webp" alt="Beratungsgespräch in einer TCM.ch-Klinik in Zürich" loading="eager" width="640" height="480">
+        <div class="lsr-trust"><div><span class="lsr-check">✓</span> Zusatzversicherung anerkannt</div><div><span class="lsr-check">✓</span> Persönliche Behandlung</div></div>
+        <p class="lsr-note">Bestehende Praxen in Höngg und Oerlikon · Weitere Standorte in Vorbereitung.</p>
+        <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Oder ruf direkt an: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
+      </div>
+      <div class="akzh-side">
+        <div class="akzh-card">
+          <div class="akzh-card-label">Standorte im Raum Zürich</div>
+          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Höngg</span><span class="akzh-row-status">Bestehende Praxis</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich Oerlikon</span><span class="akzh-row-status">Praxis Hwang · TCM.ch ab 1.12.2026</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+          <a class="akzh-row" href="#standorte"><span class="akzh-row-name">Zürich City</span><span class="akzh-row-status">In Vorbereitung</span><span class="akzh-row-arrow" aria-hidden="true">→</span></a>
+          <div class="akzh-card-foot">Egal wo: Wir finden den Termin, der zu dir passt.</div>
         </div>
       </div>
     </div>
@@ -97,8 +124,8 @@
             <span style="align-self:flex-start;background:var(--green-mint);color:var(--blue-dark);border:1px solid rgba(45,155,111,.25);border-radius:999px;padding:4px 12px;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">Bestehende Praxis</span>
             <h3 class="zhx-praxis-name">Zürich Höngg</h3>
             <p class="zhx-praxis-addr">Limmattalstrasse 340, 8049 Zürich</p>
-            <p class="zhx-praxis-pos">Im Westen der Stadt: bestehende Praxis unseres Netzwerks (Praxis Hwang) - persönliche Behandlung in ruhiger Lage im Kreis 10.</p>
-            <div class="zhx-praxis-tags"><span class="zhx-tag">Ruhige Lage</span><span class="zhx-tag">Zusatzversicherung anerkannt</span><span class="zhx-tag">Erfahrenes TCM-Team</span></div>
+            <p class="zhx-praxis-pos">Bestehende Praxis unseres Netzwerks (Praxis Hwang) im Kreis 10 – persönliche Behandlung in ruhiger Lage.</p>
+            <div class="zhx-praxis-tags"><span class="zhx-tag">Ruhige Lage</span><span class="zhx-tag">Zusatzversicherung anerkannt</span></div>
             <div class="zhx-praxis-ctas">
               <a class="btn-primary" href="/standorte/zuerich-hoengg/#kontakt" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'zuerich-hoengg'})">Termin anfragen</a>
               <a class="btn-secondary" href="/standorte/zuerich-hoengg/">Standort ansehen</a>
@@ -107,10 +134,10 @@
         </div>
         <div class="zhx-praxis">
           <div class="zhx-praxis-body">
-            <span style="align-self:flex-start;background:var(--green-mint);color:var(--blue-dark);border:1px solid rgba(45,155,111,.25);border-radius:999px;padding:4px 12px;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">Heute: Praxis Hwang · TCM.ch ab 1.12.2026</span>
+            <span style="align-self:flex-start;background:var(--green-mint);color:var(--blue-dark);border:1px solid rgba(45,155,111,.25);border-radius:999px;padding:4px 12px;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">Praxis Hwang · TCM.ch ab 1.12.2026</span>
             <h3 class="zhx-praxis-name">Zürich Oerlikon</h3>
             <p class="zhx-praxis-addr"><strong>Heute für dich da:</strong> Praxis Hwang, Schulstrasse 3, 8050 Zürich<br><strong>Neu ab 1. Dezember 2026:</strong> TCM.ch Standort, Ohmstrasse 14</p>
-            <p class="zhx-praxis-pos">Zürich Nord, wenige Gehminuten vom Bahnhof Oerlikon. Heute behandelt dich hier die bestehende Praxis Hwang; der neue TCM.ch Standort an der Ohmstrasse öffnet am 1. Dezember 2026.</p>
+            <p class="zhx-praxis-pos">Wenige Gehminuten vom Bahnhof Oerlikon – heute behandelt dich hier die bestehende Praxis Hwang.</p>
             <div class="zhx-praxis-tags"><span class="zhx-tag">Sehr gut mit ÖV erreichbar</span><span class="zhx-tag">Zusatzversicherung anerkannt</span></div>
             <div class="zhx-praxis-ctas">
               <a class="btn-primary" href="/standorte/zuerich-oerlikon/#kontakt" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'zuerich-oerlikon'})">Termin anfragen</a>
@@ -123,8 +150,8 @@
             <span style="align-self:flex-start;background:var(--green-mint);color:var(--blue-dark);border:1px solid rgba(45,155,111,.25);border-radius:999px;padding:4px 12px;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px">In Vorbereitung</span>
             <h3 class="zhx-praxis-name">Zürich City</h3>
             <p class="zhx-praxis-addr">Neuer Standort im Zürcher Zentrum in Vorbereitung</p>
-            <p class="zhx-praxis-pos">Wir bauen unseren nächsten TCM.ch Standort im Zürcher Zentrum auf. Bereits jetzt kannst du anfragen - wir finden den passenden Termin an einem unserer Zürcher Standorte.</p>
-            <div class="zhx-praxis-tags"><span class="zhx-tag">Zusatzversicherung anerkannt</span><span class="zhx-tag">Anfragen bereits möglich</span></div>
+            <p class="zhx-praxis-pos">Wir bauen einen neuen TCM.ch Standort im Zürcher Zentrum auf. Du kannst dein Anliegen bereits jetzt anfragen.</p>
+            <div class="zhx-praxis-tags"><span class="zhx-tag">Anfragen bereits möglich</span></div>
             <div class="zhx-praxis-ctas">
               <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'zuerich-city-prep'})">Anfrage senden</a>
               <a class="btn-secondary" href="/standorte/zuerich-city/">Mehr erfahren</a>
