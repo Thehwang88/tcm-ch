@@ -8,7 +8,7 @@ import { clinics } from '../data/locations';
 import homeBody from '../data/home-body.html?raw';
 
 const url = 'https://tcm.ch/akupunktur-in-der-naehe/';
-const title = 'Akupunktur in deiner Nähe: 14 Standorte Schweiz | TCM.ch';
+const title = 'Akupunktur in deiner Nähe – Standorte in der Schweiz | TCM.ch';
 const description =
   'Akupunktur, TCM und Tuina-Massage in deiner Nähe: 13 EMR-/ASCA-anerkannte Standorte in der Deutschschweiz, von Zürich bis St. Gallen. Termin oft schon in 24 Stunden.';
 
@@ -49,7 +49,7 @@ const os = homeBody.indexOf('<section id="s-offer"');
 const offerBlock = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', os) + '</section>'.length) : '';
 
 const faqs = [
-  { q: 'Wo finde ich Akupunktur in meiner Nähe?', a: 'TCM.ch betreibt 14 Standorte in der Deutschschweiz, unter anderem in Zürich, Winterthur, St. Gallen, Frauenfeld und Kreuzlingen. Auf dieser Seite findest du alle Praxen mit Adresse und fragst direkt beim nächstgelegenen Standort einen Termin an.' },
+  { q: 'Wo finde ich Akupunktur in meiner Nähe?', a: 'TCM.ch betreibt eigene Standorte und Partnerpraxen in der Deutschschweiz, unter anderem in Zürich, Winterthur, St. Gallen, Frauenfeld und Kreuzlingen. Auf dieser Seite findest du alle Praxen mit Adresse und fragst direkt beim nächstgelegenen Standort einen Termin an.' },
   { q: 'Wie schnell bekomme ich einen Termin?', a: 'Auf deine Anfrage antworten wir meist innert einer Stunde. Ein Ersttermin ist je nach Standort oft schon innert 24 bis 48 Stunden möglich. Frag am besten über das Kontaktformular des Standorts an oder ruf uns an.' },
   { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Über die Zusatzversicherung für Komplementärmedizin beteiligen sich die meisten Kassen mit 80 bis 100 Prozent. Alle unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Deine Deckung prüfen wir auf Wunsch kostenlos, bevor Kosten entstehen.' },
   { q: 'Bieten alle Standorte dieselben Behandlungen an?', a: 'Akupunktur und TCM-Beratung gibt es an jedem Standort. Einzelne Methoden wie Tuina-Massage, Schröpfen oder Kräutertherapie variieren je nach Team vor Ort. Auf der jeweiligen Standortseite siehst du das genaue Angebot.' },
@@ -78,7 +78,7 @@ const body = `<div style="padding-top:68px">
     <div class="wrap" style="max-width:760px">
       <div class="section-label">Akupunktur · Medizinische TCM</div>
       <h1 class="section-title" style="margin-bottom:16px">Akupunktur in deiner Nähe</h1>
-      <p class="section-sub">Du suchst Akupunktur oder TCM in deiner Nähe? Wir sind ein Netzwerk aus 14 Praxen in der Deutschschweiz, von Zürich über Winterthur bis St. Gallen. Eine davon liegt fast sicher in deiner Nähe, und ein Termin ist oft schon innert 24 Stunden möglich.</p>
+      <p class="section-sub">Du suchst Akupunktur oder TCM in deiner Nähe? Wir sind ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz, von Zürich über Winterthur bis St. Gallen. Eine davon liegt fast sicher in deiner Nähe, und ein Termin ist oft schon innert 24 Stunden möglich.</p>
       <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
         <a class="btn-primary" href="${waHref}" rel="nofollow">Termin anfragen · Antwort in ~1h</a>
         <a class="btn-secondary" href="#standorte">Standort finden</a>
@@ -90,7 +90,7 @@ const body = `<div style="padding-top:68px">
     <div class="wrap">
       <div class="reveal" style="max-width:60ch;margin-bottom:36px">
         <div class="section-label">Standort-Finder</div>
-        <h2 class="section-title">Unsere 14 Standorte <em>in der Schweiz</em></h2>
+        <h2 class="section-title">Unsere Standorte <em>in der Schweiz</em></h2>
         <p class="section-sub">Wähle die Praxis in deiner Nähe. Alle Standorte sind EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.</p>
       </div>
       ${finderHtml}
@@ -102,7 +102,7 @@ const body = `<div style="padding-top:68px">
     <div class="wrap" style="max-width:760px">
       <div class="section-label">TCM in deiner Nähe</div>
       <h2 class="section-title">Warum "in der Nähe" bei uns <em>mehr ist als ein Standort</em></h2>
-      <p class="section-sub">Wenn du nach Akupunktur in deiner Nähe suchst, willst du zwei Dinge: einen kurzen Weg und eine Praxis, der du vertraust. Bei TCM.ch bekommst du beides. Wir sind kein einzelnes Studio, sondern ein Netzwerk aus 14 Praxen in der Deutschschweiz. TCM in deiner Nähe heisst bei uns konkret: in Zürich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach und Bottighofen. Die Chance ist gross, dass eine davon nur wenige Minuten von dir entfernt liegt. In <a href="/standorte/basel/">Basel</a> behandeln wir an der Steinenvorstadt 73. Dazu kommt ein Standort im Aufbau: <a href="/standorte/luzern/">Akupunktur Luzern</a> ab 2027, die Warteliste ist offen.</p>
+      <p class="section-sub">Wenn du nach Akupunktur in deiner Nähe suchst, willst du zwei Dinge: einen kurzen Weg und eine Praxis, der du vertraust. Bei TCM.ch bekommst du beides. Wir sind kein einzelnes Studio, sondern ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz. TCM in deiner Nähe heisst bei uns konkret: in Zürich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach und Bottighofen. Die Chance ist gross, dass eine davon nur wenige Minuten von dir entfernt liegt. In <a href="/standorte/basel/">Basel</a> behandeln wir an der Steinenvorstadt 73. Dazu kommt ein Standort im Aufbau: <a href="/standorte/luzern/">Akupunktur Luzern</a> ab 2027, die Warteliste ist offen.</p>
       <p class="section-sub" style="margin-top:16px">Was alle Standorte verbindet, ist der gleiche Anspruch. An jeder Praxis behandeln EMR- oder ASCA-registrierte Therapeutinnen und Therapeuten. Diese Register prüfen Ausbildung und Weiterbildung, und sie sind die Voraussetzung dafür, dass sich deine Zusatzversicherung an den Kosten beteiligt. Ob du in der Stadt Zürich oder am Bodensee zu uns kommst: Die Qualitätsstandards sind dieselben, und die Abrechnung über die <a href="/krankenkassen/">Zusatzversicherung</a> läuft überall gleich.</p>
       <p class="section-sub" style="margin-top:16px">Das häufigste Anliegen ist die klassische <a href="/therapien/akupunktur/">Akupunktur</a>, etwa bei Rücken- und Nackenschmerzen, Kopfschmerzen, Schlafproblemen oder stressbedingten Beschwerden. Viele Standorte bieten darüber hinaus <a href="/therapien/tuina/">Tuina-Massage</a>, <a href="/therapien/schroepfen/">Schröpfen</a>, <a href="/therapien/shiatsu/">Shiatsu</a> und chinesische Kräutertherapie an. An ausgewählten Praxen ist auch <a href="/therapien/schroepfen/hijama/">Hijama</a> möglich, das blutige Schröpfen. Welche Methoden dein nächstgelegenes Team anbietet, siehst du auf der jeweiligen Standortseite.</p>
       <p class="section-sub" style="margin-top:16px">Du musst nicht vorher wissen, welche Behandlung die richtige ist. Schildere uns kurz, worum es geht und wo du wohnst. Wir schlagen dir den passenden Standort in deiner Nähe vor und, wenn du möchtest, gleich einen Termin. Meist melden wir uns innert einer Stunde, und oft ist ein Ersttermin schon innert 24 bis 48 Stunden möglich.</p>
