@@ -5049,7 +5049,7 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 #sg-premium-hero ~ .lsr-hero{padding:var(--header-h,76px) 0 0!important}
 .lsr-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:min(600px,66vh)}
 .lsr-left{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,5vw,72px) clamp(24px,4.5vw,72px);color:var(--brand-black,#020B10)}
-.lsr-eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(2,11,16,.6);margin-bottom:14px}
+.lsr-eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(2,11,16,.64);margin-bottom:14px}
 .lsr-h1{font-family:var(--font-sans);font-size:clamp(32px,3.9vw,54px);font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:var(--brand-black);margin:0 0 14px;overflow-wrap:break-word}
 .lsr-accent{font-style:italic;font-family:'Nunito',sans-serif}
 .lsr-lead{font-size:clamp(16px,1.3vw,18.5px);line-height:1.55;color:rgba(2,11,16,.82);margin:0 0 18px;max-width:54ch}
@@ -5076,4 +5076,13 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
   .lsr-right{min-height:0;height:300px;container-type:normal}
   .lsr-right img{position:absolute}
   .lsr-left{padding:32px 16px 26px}
+}
+/* ── lsr Conversion-Hero (Bern/Luzern): Mint links, Lead-Formular-Karte rechts
+   statt Foto. Eigene Inner-Klassen; Photo-Hero-Geometrie (.lsr-inner/.lsr-left/
+   .lsr-right) bleibt unberuehrt. Natuerliche Hoehe — nie das Formular clippen. ── */
+.lsr-cinner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center;max-width:var(--max);margin:0 auto;padding:clamp(40px,5vw,64px) clamp(24px,4.5vw,72px) clamp(44px,5.5vw,72px)}
+.lsr-ccopy{min-width:0;color:var(--brand-black,#020B10)}
+.lsr-cform{min-width:0}
+@media(max-width:900px){
+  .lsr-cinner{grid-template-columns:1fr;gap:30px;padding:32px 16px 36px}
 }

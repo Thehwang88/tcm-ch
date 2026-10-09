@@ -84,26 +84,26 @@ const schema = [
 <SpaPage title={title} description={description} path="/standorte/luzern" body="" schema={schema}>
 <div class="standort-scope">
 
-  <!-- ── HERO (Struktur wie HeroLaunchSG: Copy links, Karte rechts) ── -->
-  <section class="lu-hero">
-    <div class="lu-hero-inner">
-      <div class="lu-hero-copy">
-        <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Luzern</span></div>
-        <span class="lu-badge">Standort Luzern · Eröffnung 2027</span>
-        <h1 class="lu-h1">TCM &amp; <span class="lu-accent">Akupunktur Luzern</span></h1>
-        <p class="lu-sub">Wir eröffnen 2027 eine Praxis in der Stadt Luzern, mit demselben Team und denselben Methoden wie an unseren zwölf bestehenden Standorten. Zentrale Lage, Bahnhof in Gehdistanz - die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
-        <div class="lu-cta-row">
-          <a href="#warteliste" class="lu-btn-primary">Auf die Warteliste</a>
-          <a href="/standorte/" class="lu-btn-ghost">Bestehende Standorte</a>
+  <!-- ── HERO (lsr Conversion-Variante: Mint-Panel links, Warteliste-Karte rechts) ── -->
+  <section class="lsr-hero">
+    <div class="lsr-cinner">
+      <div class="lsr-ccopy">
+        <div class="tsr-crumb"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Luzern</span></div>
+        <span class="lsr-eyebrow">Standort Luzern · Eröffnung 2027</span>
+        <h1 class="lsr-h1">TCM &amp; <span class="lsr-accent">Akupunktur Luzern</span></h1>
+        <p class="lsr-lead">Wir eröffnen 2027 eine Praxis in der Stadt Luzern, mit demselben Team und denselben Methoden wie an unseren zwölf bestehenden Standorten. Zentrale Lage, Bahnhof in Gehdistanz - die Adresse folgt nach Mietvertrag. Bis dahin behandeln wir dich gerne an einem Standort in deiner Nähe.</p>
+        <div class="lsr-ctas">
+          <a href="#warteliste" class="lsr-btn-primary">Auf die Warteliste</a>
+          <a href="/standorte/" class="lsr-btn-ghost">Bestehende Standorte</a>
         </div>
-        <div class="lu-trust">
-          <div><span class="lu-check">✓</span> EMR- und ASCA-anerkannt</div>
-          <div><span class="lu-check">✓</span> Krankenkasse 80 bis 100%</div>
-          <div><span class="lu-check">✓</span> Keine Überweisung nötig</div>
+        <div class="lsr-trust">
+          <div><span class="lsr-check">✓</span> EMR- und ASCA-anerkannt</div>
+          <div><span class="lsr-check">✓</span> Krankenkasse 80 bis 100%</div>
+          <div><span class="lsr-check">✓</span> Keine Überweisung nötig</div>
         </div>
       </div>
 
-      <div class="lu-hero-visual">
+      <div class="lsr-cform">
         <div class="lu-card" id="warteliste" style="scroll-margin-top:88px">
           <div class="lu-ribbon">2027</div>
           <div class="lu-card-h">Sichere dir einen der <span class="lu-accent">ersten Termine</span></div>
@@ -332,41 +332,10 @@ const schema = [
      damit kein Blau/Unterstrich durchschlägt. */
   .svc-card, .kt-feature { text-decoration: none; color: inherit; }
 
-  /* Hero-Styles 1:1 nach HeroLaunchSG.astro, eigener Prefix damit die SG-Komponente
-     unangetastet bleibt (Astro scoped diese Regeln auf diese Seite). */
-  .lu-hero { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
-  .lu-hero-inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 56px); align-items: center;
-  }
-  @media (max-width: 900px) { .lu-hero-inner { grid-template-columns: 1fr; gap: 32px; } }
-
-  .lu-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--brand-surface); color: var(--brand-black); border: 1px solid rgba(2,11,16,.1);
-    padding: 6px 13px; border-radius: var(--r-pill);
-    font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  }
-  .lu-h1 {
-    font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800;
-    margin: 18px 0 14px; color: var(--charcoal);
-  }
+  /* Hero-Shell kommt aus dem globalen lsr-Conversion-System (public/home.css);
+     hier bleiben nur die Karten-/Formular-Styles (lu-Prefix, Astro-scoped).
+     lu-accent/lu-trust/lu-check werden weiterhin in der Karte genutzt. */
   .lu-accent { color: var(--brand-black); }
-  .lu-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 44ch; line-height: 1.55; }
-
-  .lu-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-  .lu-btn-primary {
-    background: var(--brand); color: var(--brand-black); border: none; text-decoration: none;
-    padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700;
-    box-shadow: var(--sh-btn); transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
-  }
-  .lu-btn-primary:hover { background: #14C97A; transform: translateY(-2px); }
-  .lu-btn-ghost {
-    background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
-    padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
-  }
-  .lu-btn-ghost:hover { border-color: var(--brand-black); color: var(--brand-black); }
 
   .lu-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .lu-trust div { display: flex; align-items: center; gap: 7px; }
@@ -405,14 +374,13 @@ const schema = [
   .lu-form-err { font-size: 13px; color: #c0392b; line-height: 1.5; margin-top: 2px; }
 
   @media (max-width: 767px) {
-    .lu-hero { padding-top: 60px; }
-    .lu-hero-inner { padding-left: 16px; padding-right: 16px; }
     .lu-card { padding: 18px; }
+    /* Ribbon-Ecke freihalten, damit die Karten-Headline nicht darunter laeuft. */
+    .lu-card-h { padding-right: 52px; }
     .lu-card, .lu-card * { max-width: 100%; }
     .lu-ts { max-width: 100%; overflow-x: auto; }
     .lu-wl-form input[type="email"], .lu-wl-form button { width: 100%; }
   }
-  @media (prefers-reduced-motion: reduce) { .lu-btn-primary:hover { transform: none; } }
 </style>
 
   <script is:inline>

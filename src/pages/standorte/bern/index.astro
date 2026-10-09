@@ -88,26 +88,26 @@ const schema = [
 <SpaPage title={title} description={description} path="/standorte/bern" body="" schema={schema}>
 <div class="standort-scope">
 
-  <!-- ── HERO (Struktur wie /standorte/luzern/: Copy links, Interesse-Karte rechts) ── -->
-  <section class="be-hero">
-    <div class="be-hero-inner">
-      <div class="be-hero-copy">
-        <div class="sg-crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Bern</span></div>
-        <span class="be-badge">TCM.ch · Bern · In Vorbereitung</span>
-        <h1 class="be-h1">Akupunktur &amp; <span class="be-accent">TCM in Bern</span></h1>
-        <p class="be-sub">TCM.ch baut einen neuen Standort in Bern auf: medizinisch orientierte Traditionelle Chinesische Medizin mit Akupunktur und persönlicher Begleitung. Du kannst uns dein Anliegen bereits jetzt schildern – wir informieren dich über den Start und die passende Behandlungsmöglichkeit.</p>
-        <div class="be-cta-row">
-          <a href="#interesse" class="be-btn-primary">Termininteresse Bern</a>
-          <a href="/kontakt/" class="be-btn-ghost">Frage an TCM.ch</a>
+  <!-- ── HERO (lsr Conversion-Variante: Mint-Panel links, Interesse-Karte rechts) ── -->
+  <section class="lsr-hero">
+    <div class="lsr-cinner">
+      <div class="lsr-ccopy">
+        <div class="tsr-crumb"><a href="/" style="color:inherit">TCM.ch</a> › <a href="/standorte/" style="color:inherit">Standorte</a> › <span>Bern</span></div>
+        <span class="lsr-eyebrow">TCM.ch · Bern · In Vorbereitung</span>
+        <h1 class="lsr-h1">Akupunktur &amp; <span class="lsr-accent">TCM in Bern</span></h1>
+        <p class="lsr-lead">TCM.ch baut einen neuen Standort in Bern auf: medizinisch orientierte Traditionelle Chinesische Medizin mit Akupunktur und persönlicher Begleitung. Du kannst uns dein Anliegen bereits jetzt schildern – wir informieren dich über den Start und die passende Behandlungsmöglichkeit.</p>
+        <div class="lsr-ctas">
+          <a href="#interesse" class="lsr-btn-primary">Termininteresse Bern</a>
+          <a href="/kontakt/" class="lsr-btn-ghost">Frage an TCM.ch</a>
         </div>
-        <div class="be-trust">
-          <div><span class="be-check">✓</span> EMR- und ASCA-anerkannt</div>
-          <div><span class="be-check">✓</span> Krankenkasse 80 bis 100%</div>
-          <div><span class="be-check">✓</span> Keine Überweisung nötig</div>
+        <div class="lsr-trust">
+          <div><span class="lsr-check">✓</span> EMR- und ASCA-anerkannt</div>
+          <div><span class="lsr-check">✓</span> Krankenkasse 80 bis 100%</div>
+          <div><span class="lsr-check">✓</span> Keine Überweisung nötig</div>
         </div>
       </div>
 
-      <div class="be-hero-visual">
+      <div class="lsr-cform">
         <div class="be-card" id="interesse" style="scroll-margin-top:88px">
           <div class="be-ribbon">NEU</div>
           <div class="be-card-h">TCM.ch kommt <span class="be-accent">nach Bern</span></div>
@@ -316,41 +316,10 @@ const schema = [
   /* Karten sind <a> (crawlbar) statt div+onclick; Link-Default zurücksetzen. */
   .svc-card { text-decoration: none; color: inherit; }
 
-  /* Hero-Styles nach dem Luzern-/HeroLaunchSG-Muster, eigener be-Prefix
-     (Astro scoped diese Regeln auf diese Seite). */
-  .be-hero { padding-top: 68px; background: var(--surface); font-family: var(--font-sans); color: var(--charcoal); }
-  .be-hero-inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: clamp(32px, 6vw, 64px) var(--pad-x) clamp(40px, 7vw, 72px);
-    display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 56px); align-items: center;
-  }
-  @media (max-width: 900px) { .be-hero-inner { grid-template-columns: 1fr; gap: 32px; } }
-
-  .be-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--brand-surface); color: var(--brand-black); border: 1px solid rgba(2,11,16,.1);
-    padding: 6px 13px; border-radius: var(--r-pill);
-    font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  }
-  .be-h1 {
-    font-size: clamp(2.1rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.03em; font-weight: 800;
-    margin: 18px 0 14px; color: var(--charcoal);
-  }
+  /* Hero-Shell kommt aus dem globalen lsr-Conversion-System (public/home.css);
+     hier bleiben nur die Karten-/Formular-Styles (be-Prefix, Astro-scoped).
+     be-accent/be-trust/be-check werden weiterhin in der Karte genutzt. */
   .be-accent { color: var(--brand-black); }
-  .be-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mid); max-width: 48ch; line-height: 1.55; }
-
-  .be-cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-  .be-btn-primary {
-    background: var(--brand); color: var(--brand-black); border: none; text-decoration: none;
-    padding: 15px 24px; border-radius: var(--r-btn); font-size: 16px; font-weight: 700;
-    box-shadow: var(--sh-btn); transition: background var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
-  }
-  .be-btn-primary:hover { background: #14C97A; transform: translateY(-2px); }
-  .be-btn-ghost {
-    background: transparent; color: var(--charcoal); border: 1px solid var(--border); text-decoration: none;
-    padding: 15px 22px; border-radius: var(--r-btn); font-size: 16px; font-weight: 600;
-  }
-  .be-btn-ghost:hover { border-color: var(--brand-black); color: var(--brand-black); }
 
   .be-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
   .be-trust div { display: flex; align-items: center; gap: 7px; }
@@ -389,14 +358,13 @@ const schema = [
   .be-form-err { font-size: 13px; color: #c0392b; line-height: 1.5; margin-top: 2px; }
 
   @media (max-width: 767px) {
-    .be-hero { padding-top: 60px; }
-    .be-hero-inner { padding-left: 16px; padding-right: 16px; }
     .be-card { padding: 18px; }
+    /* Ribbon-Ecke freihalten, damit die Karten-Headline nicht darunter laeuft. */
+    .be-card-h { padding-right: 52px; }
     .be-card, .be-card * { max-width: 100%; }
     .be-ts { max-width: 100%; overflow-x: auto; }
     .be-wl-form input, .be-wl-form textarea, .be-wl-form button { width: 100%; }
   }
-  @media (prefers-reduced-motion: reduce) { .be-btn-primary:hover { transform: none; } }
 </style>
 
   <script is:inline>
