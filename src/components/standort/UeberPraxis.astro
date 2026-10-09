@@ -30,14 +30,18 @@ const orderAll: Item[] = data.cro
 // Standorte ohne bestätigte Öffnungszeiten (leeres Array) zeigen die Zeile nicht.
 const order = orderAll.filter((it) => it.kind !== 'hours' || data.nap.oeffnungszeiten.length > 0);
 const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
+// CRO-L3-Images: Praxisbilder, die dasselbe Asset wie der Hero zeigen, nicht wiederholen
+// (normalisierter Pfadvergleich; Asset-Dateien bleiben unangetastet).
+const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0].replace(/\/{2,}/g, '/');
+const praxisBilder = (data.praxisBilder ?? []).filter((b) => norm(b.src) !== norm(data.hero.image));
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && (
   <div class="content-body" style="margin-bottom:18px"><p>{data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung – mit EMR- und ASCA-anerkannten Therapeut:innen nach demselben Prinzip wie an allen TCM.ch-Standorten. Anfragen sind bereits möglich.` : `Unsere Praxis an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.`}</p></div>
 )}
-{data.praxisBilder && data.praxisBilder.length > 0 && (
+{praxisBilder.length > 0 && (
   <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
-  {data.praxisBilder.map((b) => (
+  {praxisBilder.map((b) => (
     <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
       <img src={b.src} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
       <figcaption style="position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px">{b.label}</figcaption>
