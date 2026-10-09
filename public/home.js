@@ -140,6 +140,7 @@ var msg = val.length > 0
 ? 'Hoi, ich habe aktuell ' + val + ' und bin mir nicht sicher, welche Behandlung oder Praxis für mich am besten ist. Könnt ihr mir kurz weiterhelfen?' + zuerichHint
 : 'Hoi, ich möchte gerne wissen, welche Behandlung oder Praxis für mich am besten passt. Könnt ihr mir kurz weiterhelfen?';
 window._heroComplaint = val;
+waTrack('chips', val.length>0);
 window.open('https://wa.me/41775236122?text=' + encodeURIComponent(msg), '_blank', 'noopener');
 }
 
@@ -262,3 +263,24 @@ function therapieScrollToForm(){ var el = document.querySelector("#page-therapie
 document.querySelectorAll('form[data-contact-form]').forEach(function(f){
   f.addEventListener('submit', function(e){ submitInlineFormGeneric(e, f); });
 });
+
+/* CRO-c1: einheitliches WhatsApp-Klick-Event (Interaktion, kein Lead).
+   quelle-Enum (stabil): chips | wa_section_generic | yuna | fab | form |
+   drawer | sticky | other. prefilled=true nur, wenn der Prefill
+   Nutzereingaben enthaelt (Chips/Freitext); Standardtexte = false.
+   Es werden KEINE Freitexte, Symptome oder Query-Parameter gesendet.
+   Verarbeitung/Collection steuert GTM (Consent via CookieYes). */
+function waTrack(quelle,prefilled){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'wa_click',quelle:quelle,prefilled:!!prefilled});}catch(e){}}
+document.addEventListener('click',function(ev){
+  var t=ev.target; if(!t||!t.closest) return;
+  var a=t.closest('a[href*="wa.me"]');
+  if(!a) return;
+  var q='other';
+  if(a.closest('#wac')||a.closest('.wa-fab')) q='fab';
+  else if(a.closest('.scb-bar')) q='sticky';
+  else if(a.closest('#siteDrawer')) q='drawer';
+  else if(a.closest('.home-cta-merged')) q='yuna';
+  else if(a.closest('.wa-section')) q='wa_section_generic';
+  else if(a.closest('#home-contact-form')||a.closest('.contact-section-inline')) q='form';
+  waTrack(q,false);
+},true);
