@@ -22,7 +22,7 @@ const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${
         <button class="lsr-btn-primary" onclick="openContactForm()">Termin anfragen</button>
         <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
       </div>
-      <div class="lsr-trust"><div><span class="lsr-check">✓</span> Termine oft innert 24h</div><div><span class="lsr-check">✓</span> Zusatzversicherung anerkannt</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
+      <div class="lsr-trust"><div><span class="lsr-check">✓</span> {data.planned ? 'Anfragen bereits möglich' : 'Termine oft innert 24h'}</div><div><span class="lsr-check">✓</span> Zusatzversicherung anerkannt</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <p class="lsr-note">{data.hero.locationHook}</p>
     </div>
     <figure class="lsr-right">

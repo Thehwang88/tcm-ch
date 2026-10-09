@@ -33,10 +33,10 @@ const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && (
-  <div class="content-body" style="margin-bottom:18px"><p>Unsere Praxis an der {data.nap.strasse} in {data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.</p></div>
+  <div class="content-body" style="margin-bottom:18px"><p>{data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung – mit EMR- und ASCA-anerkannten Therapeut:innen nach demselben Prinzip wie an allen TCM.ch-Standorten. Anfragen sind bereits möglich.` : `Unsere Praxis an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.`}</p></div>
 )}
 {data.praxisBilder && data.praxisBilder.length > 0 && (
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px">
+  <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
   {data.praxisBilder.map((b) => (
     <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
       <img src={b.src} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
@@ -54,7 +54,7 @@ const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
     {it.kind === 'hours' && <div class="up-val">{data.nap.oeffnungszeiten.map((o) => (<div>{o.tag} {o.zeit}</div>))}</div>}
   </div></div>
 ))}
-</div><div class="up-map">{data.nap.mapEmbed && <iframe src={data.nap.mapEmbed} width="100%" height="320" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Karte: TCM.ch ${data.stadt}, ${data.nap.strasse}`}></iframe>}</div>
+</div><div class="up-map">{data.nap.mapEmbed && <iframe src={data.nap.mapEmbed} width="100%" height={data.v2 ? '240' : '320'} style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Karte: TCM.ch ${data.stadt}, ${data.nap.strasse}`}></iframe>}</div>
 {data.cro && hasAnfahrt ? (
   <details class="up-transit-acc" style="margin-top:18px;border:1px solid var(--border);border-radius:12px;padding:0 16px;background:#fff">
     <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;font-family:var(--font-sans);font-size:15.5px;font-weight:700;color:var(--charcoal)">Anreise &amp; Parkieren<span aria-hidden="true" style="font-size:20px;color:var(--blue);font-weight:600">+</span></summary>

@@ -101,6 +101,8 @@ if (migrated) {
     memberOf: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
   };
   if (data.nap.strasse) medClinic.address = { '@type': 'PostalAddress', streetAddress: data.nap.strasse, postalCode: data.nap.plz, addressLocality: data.nap.ort, addressCountry: 'CH' };
+  // Geplante Standorte: Status auch in den strukturierten Daten, keine Verfügbarkeits-Claims.
+  if (data.planned) medClinic.description = `TCM-Praxis in Vorbereitung an der ${data.nap.strasse}, ${data.nap.ort}. Anfragen für den geplanten Start sind bereits möglich.`;
   if (data.nap.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: data.nap.geo.lat, longitude: data.nap.geo.lng };
   if (clinic?.openingHours?.length) medClinic.openingHours = clinic.openingHours;
   if (clinic?.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
@@ -219,15 +221,15 @@ if (migrated) {
     const kontaktMarker = '<section id="kontakt" class="section contact-section-inline"';
     const ki = sgBody.indexOf(kontaktMarker);
     const ke = ki >= 0 ? sgBody.indexOf('</section>', ki) : -1;
-    sgBody = ke >= 0
-      ? sgBody.slice(0, ke + 10) + onedocSection + sgBody.slice(ke + 10)
-      : sgBody.replace('<div id="standort-content">', '<div id="standort-content">' + onedocSection);
+    // Kein stiller Fallback: fehlt der Kontakt-Marker, bricht der Build ab, statt das
+    // OneDoc-Widget an einer falschen Position auszuliefern (CRO-L2.1 Injektions-Guard).
+    if (ke < 0) throw new Error('st-gallen: Kontakt-Marker für OneDoc-Injektion nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, ke + 10) + onedocSection + sgBody.slice(ke + 10);
     // SEO-Linkblöcke (Beschwerden-Chips + Haut-Cluster) VOR das Conversion-Ende
     // (Corinna-WA → OneDoc → Rückruf-Fallback), damit die Buchung die Seite abschliesst.
     const mi = sgBody.indexOf('<section class="sg-merged-cta">');
-    sgBody = mi >= 0
-      ? sgBody.slice(0, mi) + beschwerdenLinks + hautBlock + ksBlock + sgBody.slice(mi)
-      : sgBody + beschwerdenLinks + hautBlock + ksBlock;
+    if (mi < 0) throw new Error('st-gallen: sg-merged-cta-Marker für SEO-Linkblöcke nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, mi) + beschwerdenLinks + hautBlock + ksBlock + sgBody.slice(mi);
   }
   spaBody = (slug === 'st-gallen') ? sgBody : filledBody + beschwerdenLinks + hautBlock + ksBlock;
 }
@@ -239,6 +241,16 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema}>
     <div class="page active" id="page-standort" style="display:block">
       <Hero data={data} />
+      {data.planned && (
+      <section class="section" style="padding:0;background:var(--bg)">
+        <div class="wrap" style="padding-top:12px">
+          <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:14px;padding:16px 20px">
+            <div style="font-family:var(--font-sans);font-weight:800;font-size:15.5px;color:var(--black);margin-bottom:3px">Standort in Vorbereitung</div>
+            <div style="font-size:14.5px;color:var(--mid);line-height:1.55">Die Praxis in {data.stadt} ist noch nicht eröffnet. Du kannst dein Anliegen bereits jetzt anfragen – wir melden uns, sobald Termine möglich sind. Bis dahin behandeln wir dich gerne an einem unserer anderen Standorte.</div>
+          </div>
+        </div>
+      </section>
+      )}
       {!data.cro && (
       <section class="section" style="padding:0;background:var(--bg)">
         <div class="wrap" style="padding-top:12px;padding-bottom:4px">
@@ -278,6 +290,14 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
             {data.ablaufBlock && <Ablauf />}
             {data.reviews && <Reviews data={data} />}
             <KrankenkassenTeam data={data} />
+            {data.v2 && (
+              <Fragment>
+                {/* CRO-L2.1 (v2-Pilot): Conversion vor dem SEO-Teil - FinalCta + Formular direkt
+                    nach Krankenkassen; Intro/extraBlock/FAQ/UeberPraxis rutschen darunter. */}
+                <FinalCta data={data} />
+                <KontaktForm data={data} sitekey={turnstileSitekey} />
+              </Fragment>
+            )}
             <IntroNap data={data} />
             {data.extraBlock && <Fragment set:html={data.extraBlock} />}
           </Fragment>
@@ -316,12 +336,14 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
         <Fragment set:html={hautBlock} />
         <Fragment set:html={ksBlock} />
         {data.cro ? (
+          data.v2 ? null : (
           <Fragment>
             {/* CRO: menschlicher WhatsApp-CTA vor dem finalen Anfrage-Formular (= primärer
                 Buchungspfad dieses Standorts), Seite endet mit der Conversion. */}
             <FinalCta data={data} />
             <KontaktForm data={data} sitekey={turnstileSitekey} />
           </Fragment>
+          )
         ) : (
           <Fragment>
             <KontaktForm data={data} sitekey={turnstileSitekey} />

@@ -245,7 +245,9 @@ function therapieScrollToForm(){ var el = document.querySelector("#page-therapie
   if (document.getElementById('home-content')) return;            // skip the home
   var card = document.querySelector('.contact-section-inline .inline-form-card') || document.querySelector('.inline-form-card');
   // Zürich-Funnel (#zh-funnel) bewusst ohne Garantie-/Scarcity-Injection (Conversion-Redesign).
-  if (!card || card.closest('#zh-funnel') || document.querySelector('.form-trust-checklist')) return;
+  // Geplante Standorte ([data-planned] am Kontakt-Abschnitt) ebenfalls ohne: keine
+  // Verfügbarkeits-/Scarcity-Claims, solange der Standort nicht eröffnet ist.
+  if (!card || card.closest('#zh-funnel') || card.closest('[data-planned]') || document.querySelector('.form-trust-checklist')) return;
   var items = ['Kassendeckung vorab geprüft', 'Termin in 24–48h', 'Ärztlich begleitet', 'Ehrlichkeits-Garantie'];
   var chk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
   var wrap = document.createElement('div');
