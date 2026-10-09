@@ -5,6 +5,15 @@
 export function inlineBodyImage(html: string): string {
   const m = html.match(/<div class="therapie-img-wrap"[^>]*>\s*(<img[^>]*>)\s*<\/div>/);
   if (!m) return html;
+  // CRO-T1: Ist das Body-Bild dasselbe Asset wie das Hero-Bild (erstes <img> der Seite),
+  // wird es NICHT erneut in den Textfluss gezogen - das Duplikat entfällt ersatzlos
+  // (normalisierter Pfadvergleich; andere Bilder/Illustrationen bleiben unberührt).
+  const normSrc = (tag: string) => ((tag.match(/\ssrc="([^"]*)"/) || [])[1] || '').replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0];
+  // Hero-Bild gezielt aus dem tsr-Hero greifen (nicht irgendein erstes Bild/Logo);
+  // Fallback: erstes <img> vor dem Wrap (Leaf-Bodies beginnen mit dem tsr-Hero).
+  const heroTag = (html.match(/class="tsr-right"[^>]*>\s*(<img[^>]*>)/) || [, ''])[1] || (html.slice(0, m.index).match(/<img[^>]*>/) || [''])[0];
+  const wrapSrc = normSrc(m[1]);
+  if (wrapSrc && normSrc(heroTag) === wrapSrc) return html.replace(m[0], '');
   const img = m[1]
     .replace(/\sid="[^"]*"/, '')
     .replace(/\sstyle="[^"]*"/, '')
