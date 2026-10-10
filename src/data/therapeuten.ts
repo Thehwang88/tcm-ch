@@ -191,12 +191,11 @@ export const therapeuten: Therapeut[] = [
   {
     slug: 'markus-muschal',
     name: 'Markus Muschal',
-    titel: 'TCM-Therapeut',
-    cardFocus: ['Schröpfen & Moxa'],
+    titel: 'Physiotherapeut',
+    cardFocus: ['Physiotherapie'],
     bild: '/images/img-babaaaf33d55.webp',
     ortLabel: 'Frauenfeld',
     standorte: ['frauenfeld'],
-    methoden: ['Schröpfen', 'Moxibustion'],
   },
   {
     slug: 'johann-stueve',
