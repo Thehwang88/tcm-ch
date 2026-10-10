@@ -26,3 +26,18 @@
 /* Primär-CTA auf hellen Flaechen: Mint-Flaeche, Rich-Black-Text (11.6:1). */
 .tcm-btn--mint{background:var(--surface-brand);color:var(--text-on-brand)}
 .tcm-btn--mint:hover{background:var(--brand-hover);color:var(--text-on-brand)}
+
+/* ── DS-Cohort-2b (10.10.2026): Zürich-Funnel-CTAs (#s-standorte).
+   Paritaets-Nachbau der #home-content-!important-Schicht, die nach dem
+   Klassen-Swap nicht mehr greift - einzige gewollte Abweichung: Pill-Radius.
+   --lg ist der scoped Size/Glow-Modifier (48px, 15/26, Mint-Schatten),
+   damit die deployten 2a-Buttons unveraendert bleiben. */
+.tcm-btn--lg{min-height:48px;padding:15px 26px;gap:9px;letter-spacing:-0.01em;white-space:nowrap;box-shadow:0 8px 24px rgba(26,226,136,.35)}
+.tcm-btn--lg:hover{box-shadow:0 10px 28px rgba(26,226,136,.45)}
+.tcm-btn--outline{min-height:48px;background:transparent;color:#0d0d0d;border:1.5px solid rgba(13,13,13,.22);padding:14px 24px;font-size:15px;font-weight:600;white-space:nowrap}
+.tcm-btn--outline:hover{background:rgba(13,13,13,.06);border-color:rgba(13,13,13,.4);transform:none}
+@media(max-width:600px){#s-standorte .tcm-btn{justify-content:center;width:100%}}
+@media(prefers-reduced-motion:reduce){
+  .tcm-btn{transition:none}
+  .tcm-btn:hover,.tcm-btn:active{transform:none}
+}
