@@ -63,6 +63,15 @@
   --brand-surface: #F2F4F2;
   --brand-tint: #DFFBEE;
   --brand-ink: #0B7A4C;
+  /* ── DS-Cohort-1 (10.10.2026) — ADDITIV, noch ohne Konsumenten.
+     Nichts rendert anders, solange keine Regel diese Tokens nutzt.
+     Werte-Quelle: deployter Softriver-Stand (home.css); Freigabe der
+     Gesamtpalette steht unter Vorbehalt der Brand-Guidelines-PDF
+     (liegt ausserhalb des Repos - siehe docs/design-system.md). */
+  --brand-hover: #14C97A;          /* Hover/Active auf Mint-Flaechen (bisher 21x hartcodiert) */
+  --text-on-brand: var(--brand-black);   /* Text auf Mint, 11.6:1 */
+  --surface-brand: var(--brand);          /* semantischer Alias: Mint-Flaeche */
+  --surface-concrete: var(--brand-surface); /* helle Softriver-Flaeche (CTA-Baender) */
 
   --max: 1280px;
   --max-wide: 1440px;       /* Wide-Stufe fuer grosse Desktops (Step-1-Pilot: nur Homepage-Hero) */
@@ -102,3 +111,10 @@
 /* Responsive section rhythm (from the spacing pass) */
 @media (max-width: 900px) { :root { --section-py: 58px; } }
 @media (max-width: 600px) { :root { --section-py: 40px; } }
+
+/* ── Breakpoint-Kanon (DS-Cohort-1, dokumentarisch - CSS-Variablen koennen
+   keine Media-Queries parametrisieren). NEUE Regeln nutzen ausschliesslich:
+     600px (Phone klein) · 768px (Phone/Tablet-Grenze) · 900px (Tablet) ·
+     1024px (Desktop-Beginn) · 1280px (--max) · 1440px (--max-wide)
+   Bestand (560/640/767/840/1100 ...) wird opportunistisch migriert,
+   nie im Blindflug ersetzt. Details: docs/design-system.md */

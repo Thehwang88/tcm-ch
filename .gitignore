@@ -14,3 +14,7 @@ worker/
 
 Claude outputs/
 _png-backup/
+
+# DS-Cohort-1: Visual-Baseline-Skript versionieren (globales *.mjs-Ignore), Screenshots nie
+!scripts/visual-baseline.mjs
+.visual-baseline/
