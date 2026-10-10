@@ -188,8 +188,8 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 | Standorte (data-driven Template) | 10 | **W1 live** (`146e603`); offen: `btn-secondary` 14px, `#F7F8F9`-Flächen, div-city-cards |
 | Standorte (Ausnahmen: St. Gallen, Bottighofen, Bern, Luzern, Zürich City, Kosten ×5, Hub) | 11 | **W1B-1 lokal:** Zürich City FULL; Bern, Luzern, Kosten Frauenfeld/Kreuzlingen/Luzern/Zürich PARTIAL (nur Karten-Radien, Luzern kt-feature-Fläche); offen: Hub (nur Hover), Basel-Kosten (massage-city.css); geschützt: St. Gallen, Bottighofen |
 | Standort-Landingpages (`akupunktur-tcm-*`, `massage-*`, `akupunktur-in-der-naehe`, `akupunktur-st-gallen-kosten`) | 13 | offen; `/akupunktur-in-der-naehe/` nur city-card-Hover (W1) |
-| Therapien | 37 | 11 Leaves CRO-modernisiert (`.therapie-scope`); city-card-Hover (W1, 16 Routen); Rest W2 |
-| Beschwerden | 155 | `.symptom-scope`; city-card-Hover (W1, 153 Routen); Rest W3 |
+| Therapien | 37 | **Wave 2A+2B lokal** (Tokens, Flächen, Eyebrows, H2, Pillen-CTAs, Karten, Chips, FAQ, Formulare, Kontrast) — Template PARTIAL bis 2C (Hero/Layout) |
+| Beschwerden | 155 | **Wave 2A+2B lokal** (wie Therapien) — Template PARTIAL bis 2C (Hero/Layout) |
 | Gesundheitsbibliothek / Körpersignale / Wissen / Haut / Praxiswissen / Visuals | 201 / 95 / 55 / 37 / 17 / 11 | offen (W4) |
 | Team, Partner, Branche, Regulatorik, Tools, Karriere, Krankenkassen, Ergebnisse, Sonderseiten | ~60 | offen (W5) |
 | EN | 51 | offen (W5/W6) |
@@ -216,3 +216,33 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 **Behoben (B1):** `/datenschutz/` — SPA-Altlast nach dem Rechtstext (Modal, Legacy-Footer, ungeschlossenes `<script>`) entfernt; Shell-Footer und WhatsApp-FAB wieder vorhanden, Rechtstext byte-identisch.
 
 **Verbleibende Ausnahmen:** Sprechstunde-Panel-Footer bleibt Template-Sache. Footer-Brandleiste (Partner-Logos) und «QI CLUB»-Markenname unverändert. Live-404: `/404.html` läuft in eine Redirect-Schleife und unbekannte URLs liefern einen leeren 404-Body (Routing/Config, separates Ticket).
+
+## 14. Wave 2A+2B — Therapien & Beschwerden (Template-Layer)
+
+**Reichweite (Build 10.10.2026):** 192 Routen = `.symptom-scope` 155 (154 Beschwerde-Leaves + Hub) + `.therapie-scope` 37 (32 SpaPage + 5 LayoutDe: `akupunktur/{bauch,laser,schaedel}akupunktur`, `ynsa`, `verfahren`). Die Scope-Wrapper umschliessen die Seite zwischen Header und Footer und kommen auf keiner anderen Route vor. Nachweis: 0 Style-Änderungen auf den 45 übrigen SpaPage-Routen; 0 HTML-Änderungen auf den 187 SpaPage-Zielrouten (nur `/home.css`, `no-cache`); 5 LayoutDe-Seiten nur Scoped-Style-Diff.
+
+**Dateien:** `public/home.css` (Block «Wave 2A+2B», am Dateiende); Token-Zeile im Page-Style von `src/pages/therapien/akupunktur/[slug].astro` und `…/verfahren/index.astro`.
+
+**Regeln:**
+- *Tokens im Scope:* `--black`/`--charcoal` → Rich Black, `--surface` → Concrete, `--muted` → `--mid` (AA), `--border` → `rgba(2,11,16,.1)`, `--sh-md`/`--sh-lg` → ruhige Rich-Black-Schatten. Harte Legacy-Flächen: `.section:nth-child(even)` #FAFAFA → Concrete, `.sg-merged-cta` #0d0d0d → Rich Black.
+- *Eyebrow (`.section-label`):* 11px/700/.16em, `--brand-ink` (5.4:1 auf Weiss, ≈4.9:1 auf Concrete) mit 16×2px-Mint-Strich.
+- *H2:* `.section-title` mit `--tracking-heading`; Inhalts-H2 Figtree 800, Rich Black.
+- *CTAs:* `.btn-primary`, `.btn-secondary`, `.btn-white` als Pille (100px); Höhe und Padding unverändert; Secondary-Hover Concrete und Rich-Black-Rand.
+- *Karten:* `--r-card` 16px; Haarlinie `rgba(2,11,16,.1)`; Hover-Rand `rgba(2,11,16,.22)` statt Mint-Tint; Link-Karten mit Fokus-Ring.
+- *Chips:* Rand `rgba(2,11,16,.14)`, Hover Tint #DFFBEE; Fokus-Ring 3px `rgba(2,11,16,.55)` (auch FAQ-Buttons/-`summary`, A–Z).
+- *FAQ:* Radius 14px, Token-Rand. *Formularfelder:* Rand `rgba(2,11,16,.45)` (3:1, WCAG 1.4.11), Radius 12px, Fokus Rich-Black-Rand + Mint-Ring.
+- *WhatsApp:* Icon/Fläche bleiben #25D366; Text auf Weiss bzw. auf Grün in Rich Black.
+- *Spezifität:* `:not(#w2)` hebt Regeln auf ID-Spezifität, um die `[id^="page-"]:not(#page-longevity)`-Schicht (1,2,0 !important) per Quellreihenfolge zu schlagen.
+
+**Bewusst unverändert:** Hero-Struktur (nur Kontrastfarben in Crumb/Meta/Eyebrow/A–Z), Rating-Sterne Gold (freigegebene Ausnahme), WhatsApp-Markengrün für Icon/Fläche, Copy, Medizin-/Evidenz-/Red-Flag-Texte, Links, Formular-Logik, Sektionsreihenfolge.
+
+**Geometrie:** Eyebrows −1 bis −2px Höhe (11.5/12.5 → 11px), sonst keine Massänderung an Buttons, Karten, Textumbruch.
+
+**Accessibility-Status:** Content-Kontrast auf allen 192 Routen × 390/1440: 11'352 → 0 Textelemente unter AA (Rating-Sterne ausgenommen; Text auf Bildern nicht automatisch messbar). Fokus sichtbar auf Chips, FAQ, Karten-Links, Inputs.
+
+**Compliance-Zählung (getrennt):** Shell konform 761/761 · Template-Layer 2A/2B: 192/192 Therapie-/Beschwerde-Routen · voll konform (Shell + Template inkl. Hero/Layout): 0 dieser 192 bis Wave 2C. Kein «complete» aus Token-Assertions allein.
+
+**Verbleibende Lücken:** Hero-Varianten uneinheitlich (Beschwerde weiss/Foto, Therapie Mint, Massage eigene `msg-*`-Heroes, Hubs `bx-`/`hh-`); Sektionsdichte der Beschwerde-Leaves (≈16'000px bei 1440); `/akupunktur-kinder/` (Therapie-Markup ohne Scope) ausserhalb Wave 2; Massage-Stadtseiten `massage-*` und Krankenkassen-Seiten nutzen dieselben Komponenten ohne Scope.
+
+**Wave 2C (Richtung, freigegeben):** Beschwerde-Hero primär Concrete/Weiss mit kontrollierten Mint-Akzenten (verwandt, aber unterscheidbar vom Mint-Therapie-Hero); Sektions-Rhythmus und -Zusammenfassung, Lesebreite ≈68ch für Langtext, mobile Abstände; Markup-Änderungen in `beschwerden/[slug].astro` und den Leaf-Daten nur mit SEO-/Link-Paritätsnachweis.
+

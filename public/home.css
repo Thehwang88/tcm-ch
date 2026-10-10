@@ -5195,3 +5195,73 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 /* Legacy-Gruen-Tint der Zeit-/Micro-Badges (globale !important-Schicht) ->
    neutral wie .svc-badge--ins. */
 .standort-scope :is(.svc-badge--time,.kt-micro-badge){background:var(--brand-surface)!important;border-color:var(--border)!important}
+
+/* ══ Wave 2A+2B · Therapien + Beschwerden (.symptom-scope 155 · .therapie-scope 32 SpaPage-Routen) ══
+   Scope-Wrapper umschliessen die ganze Seite zwischen Header und Footer und existieren NUR auf
+   /beschwerden/* und /therapien/* — keine andere Route wird erreicht. Hero-Struktur unberuehrt
+   (nur Kontrast-Farben), Inhalte/Links/Formulare unveraendert. Spezifikation: docs/design-system.md §14.
+   :not(#w2) hebt Regeln auf ID-Spezifitaet, um die [id^="page-"]:not(#page-longevity)-Schicht
+   (1,2,0 !important) bei gleicher Spezifitaet per Quellreihenfolge zu schlagen. */
+
+/* 2A · Semantische Tokens (Muster wie .standort-scope) */
+:is(.symptom-scope,.therapie-scope){
+  --black:var(--brand-black);
+  --charcoal:var(--brand-black);
+  --surface:var(--brand-surface);
+  --muted:var(--mid);
+  --border:rgba(2,11,16,.1);
+  --sh-md:0 1px 2px rgba(2,11,16,.04),0 8px 24px rgba(2,11,16,.05);
+  --sh-lg:0 2px 4px rgba(2,11,16,.04),0 16px 40px rgba(2,11,16,.10);
+}
+
+/* 2A · Legacy-Flaechen mit harten Werten: Alternier-Grau #FAFAFA -> Concrete, Merged-CTA #0d0d0d -> Rich Black */
+:is(.symptom-scope,.therapie-scope) .section:nth-child(even){background:var(--brand-surface)}
+:is(.symptom-scope,.therapie-scope) .sg-merged-cta{background:var(--brand-black)}
+
+/* 2B · Eyebrow: Brand-Ink (5.4:1) mit Mint-Strich, wie Footer/Brand-Signature-Logik */
+:is(.symptom-scope,.therapie-scope) .section-label:not(#w2){font-size:11px!important;font-weight:700!important;letter-spacing:.16em!important;color:var(--brand-ink)!important}
+:is(.symptom-scope,.therapie-scope) .section-label::before{content:"";display:inline-block;width:16px;height:2px;border-radius:2px;background:var(--brand);vertical-align:middle;margin:-2px 10px 0 0}
+
+/* 2B · Ueberschriften: eine H2-Sprache (Figtree 800, --tracking-heading, Rich Black) */
+:is(.symptom-scope,.therapie-scope) .section-title:not(#w2){letter-spacing:var(--tracking-heading)!important;color:var(--brand-black)}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.cp-main,.section) h2:not(.section-title){font-weight:800;letter-spacing:var(--tracking-heading);color:var(--brand-black)}
+
+/* 2B · Marketing-CTAs als Pille (Hoehe/Padding unveraendert) */
+:is(.symptom-scope,.therapie-scope) :is(.btn-primary,.btn-secondary,.btn-white,.offer-cta):not(#w2){border-radius:100px!important}
+:is(.symptom-scope,.therapie-scope) .btn-secondary:not(#w2){color:var(--brand-black)!important;border-color:rgba(2,11,16,.24)!important}
+:is(.symptom-scope,.therapie-scope) .btn-secondary:not(#w2):hover{background:var(--brand-surface)!important;border-color:var(--brand-black)!important}
+:is(.symptom-scope,.therapie-scope) .btn-white{font-weight:700;color:var(--brand-black)}
+
+/* 2B · Karten: ein Radius, Rich-Black-Haarlinie, ruhiger Schatten (via Tokens), Hover-Rand neutral */
+:is(.symptom-scope,.therapie-scope) :is(.offer-card,.review-card,.svc-card,.usp-card,.location-card,.cp-review-card):not(#w2):hover{border-color:rgba(2,11,16,.22)!important}
+:is(.symptom-scope,.therapie-scope) :is(.content-card,.cp-sx-item,.cp-blick-item,.msg-std-card,.bx-cat-panel){border-color:var(--border);border-radius:var(--r-card)}
+:is(.symptom-scope,.therapie-scope) .cp-blick{background:var(--brand-surface);border-color:transparent}
+:is(.symptom-scope,.therapie-scope) .cp-blick-item{border-color:rgba(2,11,16,.08)}
+:is(.symptom-scope,.therapie-scope) a:is(.svc-card,.content-card,.location-card,.offer-card,.msg-std-card):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+
+/* 2B · Chips und Tags */
+:is(.symptom-scope,.therapie-scope) :is(.cl-chip,.sx-chip-link){border-color:rgba(2,11,16,.14);box-shadow:none;color:var(--brand-black);transition:background .15s ease,border-color .15s ease}
+:is(.symptom-scope,.therapie-scope) :is(.cl-chip,.sx-chip-link):hover{background:var(--brand-tint)!important;border-color:rgba(2,11,16,.3)!important}
+:is(.symptom-scope,.therapie-scope) :is(.cl-chip,.sx-chip-link,.cp-faq-q,.faq-q,.faq-item summary,.bx-az-btn,.bx-hero-az-l):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:2px}
+:is(.symptom-scope,.therapie-scope) .cp-local-tag{border-color:transparent}
+
+/* 2B · FAQ */
+:is(.symptom-scope,.therapie-scope) :is(.cp-faq-item,.faq-item){border-color:var(--border);border-radius:14px;overflow:hidden}
+
+/* 2B · Formular-Felder: 3:1-Rand (WCAG 1.4.11), 12px Radius, Mint-Fokusring */
+:is(.symptom-scope,.therapie-scope) :is(.form-input,.form-select,.form-textarea){border-color:rgba(2,11,16,.45);border-radius:12px}
+:is(.symptom-scope,.therapie-scope) :is(.form-input,.form-select,.form-textarea):not(#w2):focus{border-color:var(--brand-black)!important;box-shadow:0 0 0 3px rgba(26,226,136,.45)!important}
+
+/* 2B · WhatsApp: Markengruen bleibt fuer Icon/Flaeche, Text in Rich Black (AA) */
+:is(.symptom-scope,.therapie-scope) .form-wa-alt-new{color:var(--brand-black)}
+:is(.symptom-scope,.therapie-scope) .form-wa-alt-new svg{color:#25D366}
+:is(.symptom-scope,.therapie-scope) .sgm-cta{color:var(--brand-black)}
+
+/* 2A · Kontrast-Restfaelle mit harten Farben (Hero nur Farbe, keine Struktur) */
+:is(.symptom-scope,.therapie-scope) :is(.sg-crumb span:not(.sg-sep),.sg-meta-item):not(#w2){color:var(--mid)}
+:is(.symptom-scope,.therapie-scope) :is(.sg-crumb span.sg-sep,.breadcrumb-sep):not(#w2){color:rgba(2,11,16,.62)}
+:is(.symptom-scope,.therapie-scope) :is(.tsr-eyebrow,.bx-hero-chips-label,.bx-hero-az-label,.bx-hero-az-l){color:rgba(2,11,16,.75)}
+:is(.symptom-scope,.therapie-scope) .bx-letter-heading{color:var(--brand-ink)}
+:is(.symptom-scope,.therapie-scope) :is(.bx-cat-panel-az,.bx-cat-expand-btn){color:var(--mid)}
+:is(.symptom-scope,.therapie-scope) [style*="color:#8a919c"]{color:var(--mid)!important}
+:is(.symptom-scope,.therapie-scope) .sgm-meta{color:rgba(255,255,255,.62)}
