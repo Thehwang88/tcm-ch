@@ -75,14 +75,32 @@ Seiten: allergien-heuschnupfen, angststoerungen, arthrose, burnout, erschoepfung
   /beschwerden/, 0 × "gut untersucht" auf Erschöpfung; Qi-Erklärungen weiter auf allen 12 Seiten.
 - HTML-Struktur: `<div>`-Bilanz je Datei unverändert; Sidebar jetzt 10 Zeilen; Canonicals unverändert.
 
-## Nicht geändert, zur Kenntnis (ausserhalb dieses Auftrags)
+## Nachtrag: abschliessender medizinischer Fix (eng begrenzt)
 
-Auf denselben Seiten stehen weitere Wirkaussagen ohne Qi-Bezug, die vor einem nächsten Schritt geprüft
-werden sollten:
-- pms: "Akupunktur und Kräutertherapie bieten einen ganzheitlichen Ansatz **ohne Nebenwirkungen**" (sachlich falsch).
-- angststoerungen, stress-burnout: "Akupunktur aktiviert das parasympathische Nervensystem, senkt Cortisol".
-- heuschnupfen: "Akupunktur moduliert die Immunreaktion, senkt die Histaminausschüttung"; FAQ "Eine
-  Kombination ist wirksamer als nur während der Symptome zu behandeln".
-- arthrose: "Akupunktur reduziert Schmerzsignale, hemmt lokale Entzündungsmarker".
-- schlafstoerungen: Abschnittslabel "TCM – hier besonders wirksam".
-- erschoepfung: Patientenstimme "… haben die Erholung deutlich unterstützt" (Erfahrungsbericht, belassen).
+Nur die fünf freigegebenen Befunde, keine weiteren Inhalte. Bewertung der Evidenz:
+- Cortisolsenkung durch Akupunktur bei Angst/Stress: nur kleine, heterogene Studien, keine hochwertige
+  Evidenz für die konkrete Aussage → neutralisiert (inkl. der Mechanismus-Aussage im selben Satz).
+- Histaminausschüttung/Immunmodulation bei Heuschnupfen: keine hochwertige klinische Evidenz für den
+  Mechanismus → entfernt; Kombination "wirksamer": kein belegter Vergleich → Satz gestrichen.
+- "Hemmt lokale Entzündungsmarker" bei Arthrose: keine klinische Evidenz am Menschen → Teilaussage gestrichen.
+- "Ohne Nebenwirkungen" (PMS): absolute Sicherheitsbehauptung, sachlich falsch → gestrichen.
+- "TCM – hier besonders wirksam" (Schlafstörungen): Überschrift → "TCM begleitend" (bestehende Überschrift
+  von /beschwerden/erschoepfung/).
+
+| Seite | Vorher | Nachher |
+|---|---|---|
+| pms | Akupunktur und Kräutertherapie bieten einen ganzheitlichen Ansatz ohne Nebenwirkungen. | Akupunktur und Kräutertherapie bieten einen ganzheitlichen Ansatz. |
+| angststoerungen | Akupunktur aktiviert das parasympathische Nervensystem, senkt Cortisol und fördert Entspannung | Akupunktur wird ergänzend zur Entspannung eingesetzt |
+| stress-burnout | Akupunktur aktiviert das parasympathische Nervensystem, senkt Cortisol und fördert Entspannung | Akupunktur wird ergänzend zur Entspannung eingesetzt |
+| heuschnupfen | Akupunktur moduliert die Immunreaktion, senkt die Histaminausschüttung und lindert Nasenschleimhautentzündung | Akupunktur wird ergänzend zur Linderung der Nasenbeschwerden eingesetzt |
+| heuschnupfen (FAQ, sichtbar + FAQPage-Schema) | … In der akuten Saison hilft Akupunktur zur Symptomlinderung. Eine Kombination ist wirksamer als nur während der Symptome zu behandeln. | … In der akuten Saison hilft Akupunktur zur Symptomlinderung. |
+| arthrose | Akupunktur reduziert Schmerzsignale, hemmt lokale Entzündungsmarker und verbessert die Gelenkbeweglichkeit | Akupunktur reduziert Schmerzsignale und verbessert die Gelenkbeweglichkeit |
+| schlafstoerungen | Überschrift "TCM – hier besonders wirksam" | Überschrift "TCM begleitend" |
+
+Quellen: `src/data/symptom-leaves/` (sichtbarer Text) und für das FAQPage-Schema von Heuschnupfen
+`src/data/beschwerden.ts` (`faqs`). Weitere Kopien dieser Sätze in `bodyHtml` von `beschwerden.ts` werden
+nirgends ausgeliefert (0 Treffer in Build und Worker) und bleiben unverändert.
+
+Prüfung: Build ok (742 URLs), Health-Audit 0 Orphans / Ownership-Gate 0 Fehler, Professional-Check 0 Fehler,
+JSON-LD gültig. Red Flags und Abklärungshinweise: 171 Hinweis-Textknoten der 25 Leaf-Dateien gegen `main`
+verglichen, 170 identisch, 1 geändert ("nach ärztlicher Freigabe; gut untersucht" → "nach ärztlicher Freigabe").

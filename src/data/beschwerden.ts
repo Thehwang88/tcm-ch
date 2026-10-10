@@ -1000,7 +1000,7 @@ export const beschwerden: Beschwerde[] = [
     "faqs": [
       {
         "q": "Wann ist der beste Zeitpunkt für eine TCM-Behandlung bei Heuschnupfen?",
-        "a": "Idealerweise 4–6 Wochen vor der erwarteten Pollensaison mit einer Kräuterformel (Yu Ping Feng San) beginnen und präventiv Akupunktur machen. In der akuten Saison hilft Akupunktur zur Symptomlinderung. Eine Kombination ist wirksamer als nur während der Symptome zu behandeln."
+        "a": "Idealerweise 4–6 Wochen vor der erwarteten Pollensaison mit einer Kräuterformel (Yu Ping Feng San) beginnen und präventiv Akupunktur machen. In der akuten Saison hilft Akupunktur zur Symptomlinderung."
       },
       {
         "q": "Kann Akupunktur Heuschnupfen heilen?",
