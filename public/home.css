@@ -5140,3 +5140,35 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 .kkc-link{font-family:var(--font-sans);font-size:14.5px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:underline}
 .kkc-link:focus-visible{outline:3px solid rgba(2,11,16,.5);outline-offset:2px}
 @media(max-width:900px){.kkc-grid{grid-template-columns:1fr;gap:12px;margin-top:26px}.kkc-item{padding:16px 16px 14px}.kkc-a{font-size:13.5px;line-height:1.55}.kkc-q{font-size:15.5px}.kkc-foot{margin-top:16px}}
+
+/* ── WAVE 1 · STANDORT-TEMPLATE (10.10.2026) ─────────────────────────────
+   Scope-Hook .std-ds setzt NUR der data-driven Branch von
+   src/pages/standorte/[slug].astro (10 Routen aus standorte.ts). Leaf-
+   Routen (St. Gallen, Bottighofen), Kosten-/Hub-/Sonderseiten und alle
+   anderen Familien tragen die Klasse nicht -> keine Wirkung dort.
+   Alle Werte aus freigegebenen Homepage-Kohorten (2a/2b Pill, 3b-A
+   Flaechen, 3c-A/B/C Karten). */
+#page-standort.std-ds a.svc-card{color:inherit;text-decoration:none}
+#page-standort.std-ds .btn-primary:not(.form-submit){border-radius:999px!important}
+#page-standort.std-ds .sg-merged-cta{background:var(--brand-black)}
+#page-standort.std-ds .section:nth-child(even){background:#fff}
+#page-standort.std-ds .svc-card:hover{border-color:var(--brand-black)!important}
+#page-standort.std-ds .svc-card:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+
+/* Wave-1-Nachtrag: Standort-Karten (.city-card) sitewide auf die Homepage-
+   Hover-/Fokus-Sprache (3c-A/3c-B) - OPT-IN ueber bestehende Familien-Hooks
+   (Beschwerden 153, Therapien 16, Standort-Template 10, /standorte/,
+   /akupunktur-in-der-naehe/). Bewusst NICHT: St. Gallen, Bottighofen,
+   Zuerich-Hub, /akupunktur-tcm-st-gallen/ (geschuetzt) und Homepage (hat es
+   bereits). Nur border-color + Fokusring; translateY/Schatten bleiben. */
+.symptom-scope #symptom-cities-section .city-card:hover,
+.therapie-scope #therapie-cities-section .city-card:hover,
+#page-standort.std-ds .city-card:hover,
+#page-standorte #standorte-grid .city-card:hover,
+#standorte .city-card:hover{border-color:var(--brand-black)!important}
+.symptom-scope #symptom-cities-section .city-card:focus-visible,
+.therapie-scope #therapie-cities-section .city-card:focus-visible,
+#page-standort.std-ds .city-card:focus-visible,
+#page-standorte #standorte-grid .city-card:focus-visible,
+#standorte .city-card:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+

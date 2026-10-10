@@ -86,6 +86,16 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 
 Weitere Konsumenten von `home-body.html`: `BrandMarquee.astro`, `akupunktur-in-der-naehe.astro` (derzeit ohne Diff-Wirkung bei den bisherigen Kohorten). **Regel:** Bevor eine Änderung an `home-body.html` als «homepage-only» bezeichnet wird, ist ein Voll-Diff aller generierten Routen Pflicht und `grep -rl home-body src/` auszuwerten. Homepage-only-Styles in `ui.css` wirken in den kopierten Blöcken **nicht** (ui.css lädt nur auf `/`).
 
+### Wave 1 · Standort-Familie (10.10.2026, lokal, Freigabe ausstehend)
+
+**Template-Familie (maschinell verifiziert):** `src/pages/standorte/[slug].astro`, data-driven Branch aus `src/data/standorte.ts` = **10 Routen**: basel (cro/v2/planned), frauenfeld (cro/v2), winterthur-marktgasse (cro/v2), zuerich-oerlikon (cro/v2), kreuzlingen, rorschach, volketswil, wil, winterthur-muenzgasse, zuerich-hoengg (cro). Scope-Hook: Klasse `std-ds` am `#page-standort`-Wrapper, gesetzt nur im data-driven Branch.
+
+**Ausnahmen der Familie (unverändert):** Leaf-Branch `/standorte/st-gallen/` (Absolutschutz) und `/standorte/bottighofen/` (Leaf + Homepage-svc-grid-Slice); eigene Templates `/standorte/bern/` und `/standorte/luzern/` (Luzern-Template), `/standorte/zuerich-city/`, Kosten-Seiten (`/standorte/{basel,frauenfeld,kreuzlingen,luzern,zuerich}/kosten/`), Hub `/standorte/`, `/akupunktur-tcm-{basel,st-gallen,zuerich}/`, `/massage-*/`.
+
+**Änderungen (alle aus freigegebenen Homepage-Mustern, home.css-Block mit `#page-standort.std-ds`-Scope):** Karten-Anchors `a.svc-card` ohne UA-Linkblau/Unterstreichung (vorher sichtbar unterstrichen — echter Live-Bug); Marketing-`btn-primary` als Pill (Form-Submit bleibt 14px); Dark-Band `sg-merged-cta` `#0d0d0d`→Rich Black; Zebra-Sektionen `#FAFAFA`→Weiss; svc-Card-Hover Rich Black + Fokusring. **Nachtrag:** `.city-card`-Hover Rich Black + Fokusring per Opt-in über bestehende Familien-Hooks (Beschwerden 153, Therapien 16, Standort-Template 10, `/standorte/`, `/akupunktur-in-der-naehe/`); bewusst ausgenommen: Homepage (hat es bereits), St. Gallen, Bottighofen, Zürich-Hub, `/akupunktur-tcm-st-gallen/`.
+
+**Offene Issues Standort-Familie (nicht umgesetzt):** (1) Bottighofen svc-Cards ohne sichtbaren Tastatur-Fokus; (2) Bottighofen eigene Kräuter-Card `article role=button` ohne Enter; (3) Bottighofen 8 Leaf-eigene `div.svc-card role=button` ohne Enter; (4) `div.city-card` mit onclick (19 Routen inkl. Standort-Template) nicht tastaturfokussierbar; (5) Sektionsflächen `#F7F8F9` statt Concrete (Folgekohorte); (6) Fliesstext `#0d0d0d` statt `#020B10` (visuell vernachlässigbar).
+
 ## 6. Seiten-Archetypen
 
 | Archetyp | Quelle | Status |
@@ -146,3 +156,28 @@ node scripts/visual-baseline.mjs --compare .visual-baseline/A .visual-baseline/B
 ## 11. Migrationsstrategie (inkrementell)
 
 Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Dokument) → 2 Button-/CTA-Primitives (`ui.css`, nur Homepage) → 3 Sektions-Rhythmus Homepage → 4 Cards/Trust Homepage → 5 Nav/Footer → 6 Harmonisierung → 7 Rollout je Seitenfamilie (Therapien → Standorte → Hubs → Wissen → B2B). Jede Kohorte: eigener Branch ab main, ein Commit, Gates aus Abschnitt 9, separate Freigabe, Rollback = revert. Alte Klassen/Styles werden erst entfernt, wenn ihr letzter Konsument migriert ist (PurgeCSS bleibt deaktiviert bis zu einem eigenen Audit).
+
+## 12. Rebrand-Programm, Coverage & Abschluss-Kriterien (verbindlich)
+
+**North Star:** Das Redesign ist erst abgeschlossen, wenn JEDE öffentliche HTML-Route auditiert und in das freigegebene Designsystem gebracht ist. Konsistenz = gemeinsame Markensprache, nicht identische Layouts.
+
+**Wellen:** W1 Standorte · W2 Therapien · W3 Beschwerden · W4 Gesundheitsbibliothek/Körpersignale/Wissen · W5 Therapeut:innen, Hubs, B2B, Sondertemplates · **W6 Full-Site-Konsistenz-Audit & Remediation (Pflicht)**.
+
+**Pro Kohorte Pflicht:** Coverage-Matrix unten aktualisieren; Wirkung über **gerenderte computed styles** belegen (nicht über CSS-Quelländerungen); generated-route-Dependency-Check (siehe Build-Abhängigkeiten); Ausnahmen nur dokumentiert und begründet (zulässig z. B. WhatsApp-Grün, Rating-Gold, bildgetriebene Sonder-Heroes, klinische/B2B-Templates, funktionale Control-Varianten) — keine Ausnahme als Schlupfloch für Altbranding.
+
+**Abschluss-Gates (A–J):** A 100 % Routen enumeriert/klassifiziert · B 100 % automatisierte Brand-Assertions bestanden oder dokumentierte Ausnahme · C jedes Template/jede Ausnahme visuell geprüft · D keine offenen High-Severity-Inkonsistenzen · E Logos, Headings, Buttons, Cards, Forms, Flächen konform · F repräsentative Screenshots 360/390/430/768/1280/1440 bestanden · G Buchung, Formulare, CTAs, Analytics funktional · H SEO/Content/Canonical/Schema/Indexierbarkeit intakt · I A11y-Checks bestanden, Restgrenzen benannt · J finaler Route-Coverage-Report (getestet/bestanden/offen). Kein «complete» aus Stichproben-Screenshots allein.
+
+### Coverage-Matrix (Stand 10.10.2026, Build mit 767 HTML-Routen, davon 20 noindex)
+
+| Familie | Routen | Status |
+|---|---|---|
+| Homepage | 1 | Kohorten 1–3c live (Hero, CTAs, Flächen, Karten, Fokus, native Karten-Links) |
+| Standorte (data-driven Template) | 10 | **W1 lokal** (Karten, Pill-CTAs, Dark-Band, Flächen, Hover/Fokus) — Freigabe offen |
+| Standorte (Ausnahmen: St. Gallen, Bottighofen, Bern, Luzern, Zürich City, Kosten ×5, Hub) | 11 | St. Gallen/Bottighofen geschützt; übrige offen (W1-Folge); Hub nur city-card-Hover (W1) |
+| Standort-Landingpages (`akupunktur-tcm-*`, `massage-*`, `akupunktur-in-der-naehe`, `akupunktur-st-gallen-kosten`) | 13 | offen; `/akupunktur-in-der-naehe/` nur city-card-Hover (W1) |
+| Therapien | 37 | 11 Leaves CRO-modernisiert (`.therapie-scope`); city-card-Hover (W1, 16 Routen); Rest W2 |
+| Beschwerden | 155 | `.symptom-scope`; city-card-Hover (W1, 153 Routen); Rest W3 |
+| Gesundheitsbibliothek / Körpersignale / Wissen / Haut / Praxiswissen / Visuals | 201 / 95 / 55 / 37 / 17 / 11 | offen (W4) |
+| Team, Partner, Branche, Regulatorik, Tools, Karriere, Krankenkassen, Ergebnisse, Sonderseiten | ~60 | offen (W5) |
+| EN | 51 | offen (W5/W6) |
+| Legal (AGB, Impressum, Datenschutz) | 3 | offen (W6, niedrige Prio) |
