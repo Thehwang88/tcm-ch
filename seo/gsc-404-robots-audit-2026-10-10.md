@@ -56,13 +56,42 @@ nur als Zahl enthalten (keine URL-Liste).
 - Gefixt: `src/components/standort/KrankenkassenTeam.astro` verlinkte auf 10+ Standortseiten
   `/krankenkasse/` (301) statt `/krankenkassen/`.
 - 0 interne Links oder JSON-LD-URLs auf 404/410-Ziele, 0 auf die 80 GSC-URLs (ausser den 9 heute live).
-- Offen (nicht im Auftrag): 66 interne Links und 204 JSON-LD-URLs ohne Trailing Slash (je 1×308).
-  Grösster Block: JSON-LD `url`/`@id`/`item` in `/koerpersignale/`, `/wissen/`, `/haut/` aus
-  `new URL('/bereich/slug', site.url)` ohne `/`. Speist vermutlich "Seite mit Weiterleitung" (130).
+- Bereinigt (Commit 10ae1e4): 66 interne Links und 204 JSON-LD-URLs ohne Trailing Slash (je 1×308)
+  zeigen jetzt auf die kanonische Slash-Form. Quellen: Sprachumschalter in `Header.astro`,
+  Schema-`url` in 10 Templates und 10 Einzelseiten, 97 Linkziele in `src/content/knowledge/*.md`
+  und `src/data/wissen.ts` (nur wenn `dist/<pfad>/index.html` existiert; Query, Anker, Dateien,
+  `/api/`, externe URLs unberührt). Danach: 0 Slash-Hops in Links und JSON-LD.
+- Bekannt, bewusst unverändert: Die drei MERGED-Duplikate (`/beschwerden/schlafstoerungen|burnout|heuschnupfen/`)
+  kanonisieren auf ihren Owner, ihr Breadcrumb nennt die eigene URL. `/404/` (noindex) referenziert sich selbst.
 
-## Checks
+## Re-Check der 6 Redirects gegen die Ownership-Map (Stand nach Merge von main 146e603)
+
+Master-Map, Intent-Conflicts und Do-not-create seit Commit f0a7161 unverändert. Alle 6 Ziele sind
+`live`, indexierbar, selbst-kanonisch und in der Sitemap; kein konkurrierender Owner mit gleicher Intention.
+
+| Redirect | Ergebnis |
+|---|---|
+| kosten-krankenkasse St. Gallen → /akupunktur-st-gallen-kosten/ | PASS: PRIMARY_OWNER "akupunktur st. gallen kosten" |
+| kosten-krankenkasse Zürich → /standorte/zuerich/kosten/ | PASS: PRIMARY_OWNER "akupunktur kosten zürich" |
+| erfahrungen St. Gallen → /wissen/tcm-st-gallen-erfahrungen-ablauf/ | PASS: Owner "tcm st. gallen erfahrungen", Titel enthält "was dich erwartet"; Do-not-create weist genau diese Seite als Owner des Musters "tcm erfahrungen {stadt}" aus |
+| /therapien/akupunktur/zuerich-city → /standorte/zuerich-city/ | PASS: PRIMARY_OWNER, sekundär "akupunktur zürich city" |
+| /krankenkassen/css → /krankenkassen/ | PASS: gepinnter Owner "tcm krankenkasse" (health-audit Ownership-Gate). Der Kassenvergleich mit CSS-Zeile existiert nur dort (0 Treffer auf /krankenkassen/akupunktur/). Der bestehende Medium-Konflikt Hub ↔ Wissen-Deep-Dive wird nicht verschoben. |
+| naechtliches-schwitzen → /koerpersignale/nachtschweiss-ohne-fieber/ | PASS: PRIMARY_OWNER "nachtschweiss ohne fieber"; Do-not-create nennt dieselbe Seite als Owner |
+
+## Offene Entscheidungen (bewusst unverändert)
+
+| URL | Heute | Entscheidung nötig |
+|---|---|---|
+| /beschwerden/geschmacks-geruchsstoerungen | 301 → /beschwerden/long-covid/ (Alias 10.09.) | Intent passt nur teilweise. 410 oder belassen? |
+| /therapien/akupunktur/st-gallen | 410 | Exakter lokaler Intent, aber Ziel liegt im offenen HIGH-Konflikt St. Gallen. Nach GSC-Entscheid. |
+| /wissen/tcm-st-gallen-bahnhof-stadt-anfahrt-parking | 410 | Anfahrt gehört zur St.-Gallen-Standortseite (HIGH-Konflikt). Nach GSC-Entscheid. |
+| /wissen/tcm-arzt-st-gallen-vs-naturheilpraktiker-unterschied | 410 | Teil-Match zu /wissen/tcm-naturheilpraktiker-schweiz/. Redaktionell entscheiden. |
+
+## Checks (finaler Lauf nach Slash-Bereinigung)
 
 Build grün · Sitemap 742 URLs: alle 200, self-canonical, indexierbar, 0 Duplikate ·
-80/80 URLs getraced, max. 2 Hops (308→301 wie bestehende Aliase), 0 Loops ·
-Ownership-Gate PASS (alle Ziele Owner, in Sitemap, kein HIGH-Konflikt) · Master-Map,
-Do-not-create, Intent-Conflicts unverändert · `check-professional.mjs`: 0 Fehler.
+80/80 URLs getraced: 56× 410, 18× 200, 6× 404, max. 2 Hops, 0 Loops, identisch zum Stand vor
+der Slash-Bereinigung · 12/12 robots-URLs weiter blockiert · Interne Links: 0 auf 404/410,
+0 Slash-Hops · JSON-LD: 745 Blöcke, 0 ungültig, 0 Slash-Hops, Seiten-url = Canonical ·
+`health-audit.mjs`: 0 Orphans, 0 doppelte Titel, Ownership-Gate 0 Fehler ·
+`check-professional.mjs`: 0 Fehler · Master-Map, Do-not-create, Intent-Conflicts unverändert.
