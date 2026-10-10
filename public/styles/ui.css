@@ -58,6 +58,14 @@
 #home-content #s-standorte .city-card:hover,
 #home-content .svc-section .svc-card:hover{border-color:var(--brand-black)!important}
 
+/* ── DS-Cohort-3c-B (10.10.2026): sichtbarer Tastatur-Fokus fuer die Karten.
+   Keine konkurrierende Outline-Regel auf city-/svc-Cards (geprueft) -> ohne
+   !important. .55 Alpha ergibt auf Weiss ca. 4.5:1 (Fokus-Norm >= 3:1).
+   Bekannte Luecke (separat): svc-card ist <div role="button"> ohne
+   Enter/Space-Aktivierung - nicht Teil dieser Kohorte. */
+#home-content #s-standorte .city-card:focus-visible,
+#home-content .svc-section .svc-card:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
   .tcm-btn:hover,.tcm-btn:active{transform:none}

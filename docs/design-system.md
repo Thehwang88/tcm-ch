@@ -71,6 +71,8 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 
 **Cohort 3c-A (umgesetzt):** Karten-Angleichung Homepage — city-/svc-Card-Hover von Mint-Tint auf Rich-Black-Border (`#home-content`-Scope, Fremdrouten behalten Mint; translateY/Shadow unverändert); hf-item-Radius 14→`--r-card` 16 (Inline-Styleblock); Kassen-Kompakt-Box 14→16px + `#fafafa`→Weiss (inline). Kein neues Card-Primitive — die 16px/`--border`/`--sh-md`-Sprache ist de-facto-Standard, Shadow-Zweiteilung (Content- vs. Link-Karten) bewusst beibehalten.
 
+**Cohort 3c-B (umgesetzt):** `:focus-visible`-Ring für city- und svc-Cards der Homepage (3px `rgba(2,11,16,.55)`, Offset 3px; ui.css). **Bekannte Lücke:** die 8 svc-Cards sind `<div role="button" tabindex="0" onclick=…>` ohne Enter/Space-Aktivierung (kein keydown-Handler in home.js) — eigene Kohorte.
+
 ## 6. Seiten-Archetypen
 
 | Archetyp | Quelle | Status |
