@@ -260,6 +260,8 @@ export const therapeuten: Therapeut[] = [
     untertitel: 'Chiway Akademie · klinische Praktika in Südkorea',
     cardFocus: ['Schmerz & Bewegungsapparat', 'Frauenbeschwerden'],
     bild: '/images/Jiun%20Lee.webp',
+    ortLabel: 'Frauenfeld · Winterthur',
+    standorte: ['frauenfeld', 'winterthur-muenzgasse'],
     kurzbeschreibung: 'In der Schweiz ausgebildete Heilpraktikerin TCM mit klinischen Praktika in Südkorea und Weiterbildungen in SaAm-, Master-Tung- und Balance-Akupunktur.',
     schwerpunkte: ['Schmerztherapie und Bewegungsapparat', 'Frauenbeschwerden', 'Kopfschmerzen und Migräne', 'Innere Unruhe'],
     ausbildung: [
