@@ -132,7 +132,7 @@ export const kkThemen: KkThema[] = [
     kkTitle: 'Was du <em>zurückbekommst.</em>',
     kkProse: [
       'Über die Zusatzversicherung liegt die Rückerstattung für Akupunktur je nach Police meist zwischen 70 und 90 Prozent pro Sitzung, gedeckelt durch ein jährliches Maximum. Einige Kassen rechnen nach einem Höchstpreis pro Zeiteinheit ab, andere pauschal pro Behandlung.',
-      'Eine ärztliche Verordnung ist für diesen Weg nicht nötig. Wichtig ist die ZSR-Nummer der behandelnden Fachperson und ihr Eintrag im EMR- oder ASCA-Register. Beides bringen unsere Therapeut:innen mit, du musst da nichts prüfen.',
+      'Eine ärztliche Verordnung ist für diesen Weg nicht nötig (<a href="/gesundheitsbibliothek/fragen/ueberweisung-akupunktur/">braucht man für Akupunktur eine Überweisung?</a>). Wichtig ist die ZSR-Nummer der behandelnden Fachperson und ihr Eintrag im EMR- oder ASCA-Register. Beides bringen unsere Therapeut:innen mit, du musst da nichts prüfen.',
       'Wenn du ohnehin über einen Kassenwechsel nachdenkst: Der Unterschied zwischen einer guten und einer schwachen Komplementärmedizin-Deckung ist bei regelmässiger Akupunktur schnell vierstellig im Jahr. Der <a href="/krankenkassen/">Kassenvergleich</a> zeigt, wer was vorsieht.',
     ],
     kkFacts: [
