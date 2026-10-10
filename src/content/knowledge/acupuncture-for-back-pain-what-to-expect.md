@@ -37,7 +37,7 @@ Most back pain is mechanical and not dangerous, but a small number of cases are 
 - **Unexplained weight loss, fever, or a history of cancer** alongside new back pain.
 - **Pain that is severe at night, wakes you, or is steadily getting worse** rather than fluctuating.
 
-If none of these apply, you are most likely dealing with the everyday, non-specific kind of back pain, the type where scans often show nothing dramatic and the pain still hurts. That is the kind acupuncture is sometimes used for. You can read our fuller, evidence-aware overview on the [back pain conditions page](/en/conditions/back-pain).
+If none of these apply, you are most likely dealing with the everyday, non-specific kind of back pain, the type where scans often show nothing dramatic and the pain still hurts. That is the kind acupuncture is sometimes used for. You can read our fuller, evidence-aware overview on the [back pain conditions page](/en/conditions/back-pain/).
 
 ## What the evidence actually says
 
@@ -51,11 +51,11 @@ The first appointment is mostly conversation and examination. We ask what the pa
 
 For back pain specifically, a treatment often combines:
 
-- **[Acupuncture](/en/therapies/acupuncture)**, with fine needles placed around the back and sometimes the legs. Most people feel a small tap or a dull, heavy ache rather than sharp pain.
-- **[Tuina massage](/en/therapies/tuina-massage) or cupping** for the tight muscles that frequently come with back pain.
-- **[Electroacupuncture](/en/therapies/electroacupuncture)** in some cases, where a gentle electric pulse is added to the needles, sometimes used for more stubborn or longer-standing pain.
+- **[Acupuncture](/en/therapies/acupuncture/)**, with fine needles placed around the back and sometimes the legs. Most people feel a small tap or a dull, heavy ache rather than sharp pain.
+- **[Tuina massage](/en/therapies/tuina-massage/) or cupping** for the tight muscles that frequently come with back pain.
+- **[Electroacupuncture](/en/therapies/electroacupuncture/)** in some cases, where a gentle electric pulse is added to the needles, sometimes used for more stubborn or longer-standing pain.
 
-The needles usually stay in for 20 to 30 minutes while you rest. If you have never had acupuncture before, our guide to [what to expect at a first session](/en/knowledge/what-to-expect-first-acupuncture-session) walks through the whole experience.
+The needles usually stay in for 20 to 30 minutes while you rest. If you have never had acupuncture before, our guide to [what to expect at a first session](/en/knowledge/what-to-expect-first-acupuncture-session/) walks through the whole experience.
 
 ## How many sessions, and what "working" looks like
 
@@ -69,10 +69,10 @@ People often ask which is "better". It is the wrong question, because they do di
 
 ## What it costs and whether insurance covers it
 
-Acupuncture by an EMR- or ASCA-recognised practitioner is typically reimbursed through Swiss **supplementary** insurance for complementary medicine, not basic insurance, with how much you get back depending on your policy. We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland) and [health insurance for acupuncture](/en/health-insurance-acupuncture).
+Acupuncture by an EMR- or ASCA-recognised practitioner is typically reimbursed through Swiss **supplementary** insurance for complementary medicine, not basic insurance, with how much you get back depending on your policy. We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [health insurance for acupuncture](/en/health-insurance-acupuncture/).
 
 ## The honest bottom line
 
 If your back pain is the ordinary, persistent, non-specific kind, and you have no red flags, acupuncture is a low-risk thing to try as part of a plan built around staying active. It helps some people and not others, usually in the short term, and we will be straight with you about whether it is doing anything for you. If you have any of the warning signs above, please see a doctor first.
 
-When you are ready, you can [request an appointment](/en/contact) or find your nearest [clinic](/en/locations/).
+When you are ready, you can [request an appointment](/en/contact/) or find your nearest [clinic](/en/locations/).

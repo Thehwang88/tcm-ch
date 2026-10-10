@@ -17,7 +17,7 @@ const {
 } = therapy;
 
 const path = enTherapyPath(slug);
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const contactHref = `/en/contact/?therapie=${encodeURIComponent(name)}`;
 
 const _titleEmr = `${titleTerm} in Switzerland | EMR-recognised | TCM.ch`;

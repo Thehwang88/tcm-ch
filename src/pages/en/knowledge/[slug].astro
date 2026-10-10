@@ -15,7 +15,7 @@ const { Content } = await render(entry);
 const d = entry.data;
 
 const path = `/en/knowledge/${d.slug}`;
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 
 // Resolve related EN slugs -> live pages for cross-linking.
 const relatedConditions = d.relatedConditions.map(conditionBySlug).filter(Boolean);

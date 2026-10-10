@@ -25,7 +25,7 @@ relatedTherapies:
 
 Getting acupuncture reimbursed in Switzerland is usually straightforward, but the system assumes you already know how it works, which is little help when you have just arrived. The good news: if you have the right cover and a proper invoice, most of each session typically comes back to you. Here is how to actually claim it, step by step, without the guesswork.
 
-If you are still unsure whether you are covered at all, start with our plain-English overview of [health insurance for acupuncture](/en/health-insurance-acupuncture), then come back here for the claiming process.
+If you are still unsure whether you are covered at all, start with our plain-English overview of [health insurance for acupuncture](/en/health-insurance-acupuncture/), then come back here for the claiming process.
 
 ## Before your first appointment
 
@@ -80,6 +80,6 @@ A quick fix for most of these is to correct the detail and resubmit, or to check
 - **Track your annual limit** across the year so you are not surprised when cover runs out.
 - **Ask the clinic upfront** whether you pay and claim back, or whether they bill your insurer directly.
 
-That is the whole process. Once you have done it once, it becomes routine. For the underlying rules on what is and is not covered, see our [insurance guide](/en/health-insurance-acupuncture), and for typical prices, our guide to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland).
+That is the whole process. Once you have done it once, it becomes routine. For the underlying rules on what is and is not covered, see our [insurance guide](/en/health-insurance-acupuncture/), and for typical prices, our guide to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/).
 
-When you are ready, you can [request an appointment in English](/en/contact) or find your nearest [clinic](/en/locations/).
+When you are ready, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/).

@@ -3,7 +3,7 @@ import LayoutDe from '../layouts/LayoutDe.astro';
 import { site, standorte } from '../data/site';
 
 const path = '/zuweisen';
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const title = 'Online-Zuweisung';
 const description =
   'Weisen Sie Ihre Patient:innen online der TCM.ch zu: strukturiertes Formular mit Dokumenten-Upload, Bestätigung und Rückmeldung. Für Fachpersonen.';

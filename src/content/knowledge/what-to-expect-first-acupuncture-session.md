@@ -59,7 +59,7 @@ That heavy or tingling feeling is normal and is generally taken as a sign the po
 
 Once the needles are placed, usually somewhere between about 8 and 20 of them, they stay in for roughly 20 to 30 minutes while you rest. You will typically be lying down, warm and undisturbed. A lot of people find this part genuinely relaxing and a fair few drift off to sleep.
 
-Depending on what you are being treated for, the practitioner might gently stimulate a few needles, add gentle warmth, or combine acupuncture with related techniques like [cupping](/en/therapies/cupping) or [Tuina massage](/en/therapies/tuina-massage) for tight muscles. If you would like to know more about the treatment itself, our [acupuncture page](/en/therapies/acupuncture) goes into detail.
+Depending on what you are being treated for, the practitioner might gently stimulate a few needles, add gentle warmth, or combine acupuncture with related techniques like [cupping](/en/therapies/cupping/) or [Tuina massage](/en/therapies/tuina-massage/) for tight muscles. If you would like to know more about the treatment itself, our [acupuncture page](/en/therapies/acupuncture/) goes into detail.
 
 ## How you might feel afterwards
 
@@ -75,10 +75,10 @@ If you can, take the rest of the day gently, drink some water, and avoid intense
 
 Acupuncture is usually a course, not a single fix. Many people start with around six sessions and we check, together, whether anything is actually shifting. Some feel a difference quickly; others need a few treatments; some do not respond, and we will tell you that honestly rather than string it out. How much it helps differs genuinely from person to person.
 
-If you are coming in for something specific, it can help to read about it first. We have honest, evidence-aware pages on common reasons people try acupuncture, including [back pain](/en/conditions/back-pain) and [migraine and headaches](/en/conditions/migraine-headaches).
+If you are coming in for something specific, it can help to read about it first. We have honest, evidence-aware pages on common reasons people try acupuncture, including [back pain](/en/conditions/back-pain/) and [migraine and headaches](/en/conditions/migraine-headaches/).
 
 ## A quick word on safety
 
 Done by a trained practitioner using sterile, single-use needles, serious side effects are rare. The common ones are minor: small bruises, brief tiredness, the occasional light-headed moment. Tell us about pregnancy, blood thinners, bleeding disorders or implanted devices so we can adapt the treatment. And as with everything we do, if your symptoms are severe, sudden or getting worse, see a doctor first.
 
-When you are ready, you can [request an appointment in English](/en/contact) or find your nearest [clinic](/en/locations/).
+When you are ready, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/).
