@@ -211,4 +211,8 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 
 **Accessibility-Status (Batch 01):** Footer 0 Kontrastfehler auf 761 Routen × 390/1440 (vorher bis zu 47 Textelemente unter AA je Route, min. 1.5:1); Drawer 0 (vorher Labels 2.7:1, Beschreibungen 2.2:1); S1-Verhalten (Fokus-Falle, Escape + Fokus-Rückgabe, inert/visibility, reduced motion) unverändert verifiziert DE + EN.
 
-**Verbleibende Ausnahmen (offen, eigenes Ticket):** `/datenschutz/` — ungeschlossenes `<script>` in `src/data/legal/datenschutz.html` (Z. 180) verschluckt Shell-Footer, WhatsApp-FAB und Sticky-Bar; sichtbar ist nur ein eingebetteter Legacy-Footer. `/404.html` und `/selbsttest/` — Drawer rendert nicht als Overlay (vorbestehend). Sprechstunde: seiteneigener `.footer` im Panel bleibt Template-Sache. Footer-Brandleiste (Partner-Logos) und «QI CLUB»-Markenname unverändert.
+**Stacking (B2, behoben):** Root-Stacking-Kontext, alle Shell-Schichten sind direkte `body`-Kinder. Reihenfolge: Drawer 901 > Overlay 900 > Footer 600 > InsuranceBanner-Sticky 560 > Sticky-CTA/Concierge 540 > WhatsApp-FAB 500 > Header 200. Der Footer liegt über allen schwebenden Bottom-Controls, aber nie über dem offenen Drawer. Seiteneigene `<footer>`-Elemente in Shell-Seiten: `z-index:auto` (Sprechstunde-Panel).
+
+**Behoben (B1):** `/datenschutz/` — SPA-Altlast nach dem Rechtstext (Modal, Legacy-Footer, ungeschlossenes `<script>`) entfernt; Shell-Footer und WhatsApp-FAB wieder vorhanden, Rechtstext byte-identisch.
+
+**Verbleibende Ausnahmen:** Sprechstunde-Panel-Footer bleibt Template-Sache. Footer-Brandleiste (Partner-Logos) und «QI CLUB»-Markenname unverändert. Live-404: `/404.html` läuft in eine Redirect-Schleife und unbekannte URLs liefern einen leeren 404-Body (Routing/Config, separates Ticket).

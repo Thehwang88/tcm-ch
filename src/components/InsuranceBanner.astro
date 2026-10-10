@@ -99,7 +99,7 @@ const loc = location ? ` data-location={location}` : '';
 
   /* ── Sticky Mobile-Bar ─────────────────────────────────── */
   .ib-sticky {
-    position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 900;
+    position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 560; /* unter Footer (600) und Drawer-Overlay (900) */
     display: none; align-items: center; gap: 12px;
     background: var(--green-mint); border: 1px solid var(--green-mid);
     border-radius: 14px; padding: 10px 12px; box-shadow: var(--sh-md, 0 6px 24px rgba(0,0,0,.12));

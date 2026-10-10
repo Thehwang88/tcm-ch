@@ -11,7 +11,7 @@
   --ft-muted:rgba(255,255,255,.62);  /* Copy, Labels    ≈7:1 */
   --ft-rule:rgba(255,255,255,.12);
   background:var(--brand-black);color:var(--ft-text);
-  padding:104px 0 48px;position:relative;z-index:1010;
+  padding:104px 0 48px;position:relative;z-index:600; /* über Sticky-CTA (540) / FAB (500), unter Overlay (900) / Drawer (901) */
   font-family:var(--font-sans)
 }
 
@@ -54,6 +54,10 @@
 
 /* Fokus: sichtbarer Mint-Ring (≈11:1 auf Rich Black), einheitlich für alle Footer-Ziele */
 .site-footer a:focus-visible,.site-footer button:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:4px;color:var(--white)}
+
+/* Seiteneigener Panel-Footer der Sprechstunde erbt die Legacy-Regel footer{z-index:1010}
+   und würde sonst über Drawer/Overlay liegen (B2). */
+#page-sprechstunde footer.footer{z-index:auto}
 
 /* Tablet: Marke volle Breite, drei Linkspalten */
 @media(max-width:1024px){
