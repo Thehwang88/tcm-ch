@@ -4,7 +4,12 @@ export const site = {
   url: 'https://tcm.ch',
   email: 'termine@tcm.ch',
   whatsapp: '41775236122',
-  ogImage: 'https://tcm.ch/og-image.jpg?v=2',
+  // Versionierter Pfad statt ?v=: Social-Plattformen cachen Vorschauen pro URL.
+  ogImage: 'https://tcm.ch/og/tcm-ch-og-2026-10.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageType: 'image/jpeg',
+  ogImageAlt: 'TCM.ch Kliniken Logo',
   // Cloudflare Turnstile public sitekey (same as the DE SPA forms).
   turnstileSitekey: '0x4AAAAAADf8GZzWnvFzYvmx',
 };
