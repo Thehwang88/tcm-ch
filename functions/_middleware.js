@@ -9,7 +9,9 @@ export async function onRequest(context) {
     return new Response(null, { status: 301, headers: { Location: url.toString() } });
   }
   // Legacy junk paths outside the scoped section doorways -> 410 Gone (same body as those).
-  const GONE = new Set(['/SMS/online.html', '/Dhyana/Datenschutzerklaerung.pdf']);
+  // /suche: urlTemplate der WebSite-SearchAction der alten SPA (am 10.06.2026 entfernt, es gab nie
+  // eine Suchseite). Google crawlt den Platzhalter /suche?q={search_term_string} weiter.
+  const GONE = new Set(['/SMS/online.html', '/Dhyana/Datenschutzerklaerung.pdf', '/suche', '/suche/']);
   if (GONE.has(url.pathname)) {
     return new Response(
       "<!doctype html><meta charset=utf-8><title>Seite entfernt</title><p>Diese Seite existiert nicht mehr.",
