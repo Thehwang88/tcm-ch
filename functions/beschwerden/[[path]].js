@@ -23,6 +23,7 @@ const ALIAS = {
   "energiemangel-fatigue": "erschoepfung",
   "naechtliches-schwitzen": "/koerpersignale/nachtschweiss-ohne-fieber/",
   "geschmacks-geruchsstoerungen": "long-covid",
+  "achillessehne": "achillessehnenentzuendung",
 };
 
 function gone() {

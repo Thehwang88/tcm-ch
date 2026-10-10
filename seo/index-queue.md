@@ -19,8 +19,29 @@ Regeln:
   hat ein noindex-Tag — GSC lehnt die Anfrage ab ("Durch 'noindex'-Tag ausgeschlossen").
   Erst nach Entfernen des noindex wieder unter "Offen" eintragen.
 
+Was die Queue tatsächlich bewirkt (geprüft 10.10.2026, Routine "tcm.ch + physio.ch — Indexierung
+beantragen", täglich 08:00 UTC): Die Routine liest `C:\dev\tcm-ch\seo\index-queue.md` auf Simons
+Rechner, nicht diese Repo-Datei, und klickt pro URL in der GSC-URL-Prüfung "Indexierung beantragen"
+(ca. 11 URLs/Tag, Kontingent pro Google-Konto, geteilt mit physio.ch). Das ist eine Crawl-Anfrage,
+keine Indexierungsgarantie. Erledigt-Vermerke landen nur in der lokalen Kopie: Die Repo-Datei hat
+keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht massgeblich.
+Änderungen hier wirken erst, wenn die lokale Kopie gepullt bzw. abgeglichen wird
+(Ablauf: `seo/index-queue-sync.md`).
+
 ## Offen
 
+<!-- Priorität A aus seo/gsc-not-indexed-audit-2026-10-10.md: zuerst einreichen. -->
+- https://tcm.ch/beschwerden/schilddruesenunterfunktion/
+- https://tcm.ch/beschwerden/venenschwaeche/
+- https://tcm.ch/gesundheitsbibliothek/fragen/wie-oft-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/wann-wirkt-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/
+- https://tcm.ch/gesundheitsbibliothek/fragen/ueberweisung-akupunktur/
+- https://tcm.ch/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/
+- https://tcm.ch/gesundheitsbibliothek/fragen/tut-schroepfen-weh/
+- https://tcm.ch/regulatorik/kantone/
+<!-- Ende Priorität A -->
 - https://tcm.ch/koerpersignale/kribbeln-im-ruecken/
 - https://tcm.ch/koerpersignale/ohr-juckt-innen/
 - https://tcm.ch/koerpersignale/kiefer-knackt-beim-oeffnen/
