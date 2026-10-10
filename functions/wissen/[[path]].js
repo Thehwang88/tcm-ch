@@ -15,6 +15,7 @@ const ALIAS = {
   "akupunktur-st-gallen-kosten-krankenkasse": "/akupunktur-st-gallen-kosten/",
   "akupunktur-zuerich-kosten-krankenkasse": "/standorte/zuerich/kosten/",
   "akupunktur-st-gallen-erfahrungen-was-erwartet-dich": "/wissen/tcm-st-gallen-erfahrungen-ablauf/",
+  "akupunktur-winterthur-kosten-krankenkasse": "/wissen/akupunktur-winterthur-kosten/",
 };
 
 function gone() {
