@@ -1,0 +1,80 @@
+/* ── FOOTER REBRAND (Batch 01 · Shell) ─────────────────────────────────────
+   Presentation-Layer für den globalen Footer (.site-footer = src/data/footer.html
+   + FooterEn.astro). Wird als LETZTES Stylesheet geladen (LayoutDe, SpaPage,
+   Layout/EN) und überschreibt die Legacy-Footer-Regeln aus home.css/footer.css.
+   Gescoped auf .site-footer: seiteneigene Footer (Sprechstunde-Panel, Handouts,
+   Club, Partner) bleiben unberührt. Farben nur aus tokens.css; Spezifikation in
+   docs/design-system.md → «Global Shell». */
+
+.site-footer{
+  --ft-text:rgba(255,255,255,.74);   /* Links, Tagline  ≈10:1 auf Rich Black */
+  --ft-muted:rgba(255,255,255,.62);  /* Copy, Labels    ≈7:1 */
+  --ft-rule:rgba(255,255,255,.12);
+  background:var(--brand-black);color:var(--ft-text);
+  padding:104px 0 48px;position:relative;z-index:1010;
+  font-family:var(--font-sans)
+}
+
+/* Top-Grid: Marke | Beschwerden | Therapien | Standorte */
+.site-footer .footer-inner{
+  display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));
+  gap:56px;padding-bottom:72px;margin-bottom:36px;border-bottom:1px solid var(--ft-rule)
+}
+.site-footer .footer-logo{margin-bottom:0!important}
+.site-footer .footer-logo img{width:168px}
+.site-footer .footer-tagline{font-size:15px;line-height:1.6;color:var(--ft-text);max-width:300px;margin:24px 0 28px}
+.site-footer .footer-mail{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--white);text-decoration:none;font-size:15px;font-weight:600;
+  border-bottom:1px solid rgba(26,226,136,.55);transition:border-color var(--t-base),color var(--t-base)}
+.site-footer .footer-mail svg{color:var(--brand);flex-shrink:0}
+.site-footer .footer-mail:hover{border-bottom-color:var(--brand)}
+
+/* Spalten: Mint-Eyebrow wie Brand Signature, ruhiger 36px-Linkrhythmus */
+.site-footer .footer-col h4{font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin:0 0 18px;line-height:1.4}
+.site-footer .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0;margin:0;padding:0}
+.site-footer .footer-col ul a,.site-footer .footer-col ul button{
+  display:inline-flex;align-items:center;min-height:36px;padding:0!important;
+  font-size:14.5px;font-weight:500;line-height:1.35;color:var(--ft-text);text-decoration:none;
+  text-underline-offset:5px;text-decoration-thickness:1px;transition:color var(--t-base)
+}
+.site-footer .footer-col ul a:hover,.site-footer .footer-col ul button:hover{color:var(--white);text-decoration:underline;text-decoration-color:var(--brand)}
+.site-footer .footer-col ul a svg{opacity:.6!important}
+
+/* Bottom-Bar */
+.site-footer .footer-bottom{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px 32px}
+.site-footer .footer-copy{font-size:12.5px;line-height:1.6;color:var(--ft-muted)}
+.site-footer .footer-care{color:var(--ft-muted)}
+.site-footer .footer-legal{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
+.site-footer .footer-legal > a,.site-footer .footer-legal > button{
+  display:inline-flex;align-items:center;min-height:40px;padding:0!important;
+  font-size:13px;font-weight:500;color:var(--ft-text);text-decoration:none;white-space:nowrap;transition:color var(--t-base)
+}
+.site-footer .footer-legal > a:hover,.site-footer .footer-legal > button:hover{color:var(--white)}
+.site-footer .bm-label{color:var(--ft-muted)}
+.site-footer .footer-legal .bm-label a{color:rgba(255,255,255,.86)}
+
+/* Fokus: sichtbarer Mint-Ring (≈11:1 auf Rich Black), einheitlich für alle Footer-Ziele */
+.site-footer a:focus-visible,.site-footer button:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:4px;color:var(--white)}
+
+/* Tablet: Marke volle Breite, drei Linkspalten */
+@media(max-width:1024px){
+  .site-footer{padding-top:80px}
+  .site-footer .footer-inner{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 32px;padding-bottom:56px}
+  .site-footer .footer-brand-col{grid-column:1/-1}
+  .site-footer .footer-tagline{max-width:420px}
+}
+/* Mobile: Sticky-CTA-Abstand (88px aus home.css/footer.css) bleibt erhalten */
+@media(max-width:900px){
+  .site-footer{padding-top:64px!important}
+  .site-footer .footer-inner{padding-bottom:48px!important;margin-bottom:28px!important;gap:40px 24px!important}
+}
+@media(max-width:768px){
+  .site-footer .footer-bottom{flex-direction:column;align-items:flex-start;gap:16px}
+}
+@media(max-width:600px){
+  .site-footer .footer-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .site-footer .footer-col:last-child li:first-child{grid-column:1/-1}
+  .site-footer .footer-col:last-child{grid-column:1/-1}
+  .site-footer .footer-col:last-child ul{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px}
+  .site-footer .footer-col ul a,.site-footer .footer-col ul button{min-height:40px;font-size:14px}
+  .site-footer .footer-tagline{margin:20px 0 20px}
+}

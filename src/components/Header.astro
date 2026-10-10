@@ -251,22 +251,22 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
   .nav-links { display: none; list-style: none; margin: 0 0 0 auto; padding: 0; align-items: center; gap: 20px; }
   .nav-links li { display: flex; }
   .nav-links a { display: inline-flex; align-items: center; height: 44px; line-height: normal; padding: 0 8px; font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--mid); text-decoration: none; white-space: nowrap; transition: color .2s ease; }
-  .nav-links a:hover { color: var(--blue); }
+  .nav-links a:hover { color: var(--brand-black); }
 
   .nav-right { display: flex; align-items: center; flex-shrink: 0; }
   /* Secondary utility link (referrers / professionals) - not part of the 5-item patient nav. */
   .nav-util { font-size: 13px; font-weight: 600; color: var(--mid); text-decoration: none; white-space: nowrap; margin-right: 12px; transition: color .15s ease; }
-  .nav-util:hover { color: var(--blue); }
+  .nav-util:hover { color: var(--brand-black); }
   .nav-util-lang { color: var(--muted); font-weight: 500; }
   @media (max-width: 640px) { .nav-util { display: none; } }
   .nav-lang { font-size: 13px; font-weight: 700; line-height: normal; color: var(--mid); text-decoration: none; border: 1px solid var(--border); border-radius: 100px; padding: 5px 11px; margin-right: 4px; transition: color .15s ease, border-color .15s ease; }
-  .nav-lang:hover { color: var(--blue); border-color: var(--blue); }
+  .nav-lang:hover { color: var(--brand-black); border-color: var(--brand-black); }
   /* CTA: black pill, white text (DE .nav-cta). */
-  .nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; color: #0d0d0d; background: transparent; border: 1.5px solid rgba(13,13,13,.22); border-radius: var(--r-pill); text-decoration: none; white-space: nowrap; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
-  .nav-cta:hover { background: rgba(13,13,13,.06); border-color: rgba(13,13,13,.4); }
+  .nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; color: var(--brand-black); background: transparent; border: 1.5px solid rgba(2,11,16,.22); border-radius: var(--r-pill); text-decoration: none; white-space: nowrap; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+  .nav-cta:hover { background: rgba(2,11,16,.06); border-color: rgba(2,11,16,.4); }
   /* Burger: 42px green-outlined, always visible (DE shows it at every width). */
-  .nav-menu-btn { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--white); border: 1px solid var(--blue); color: var(--blue); cursor: pointer; padding: 0; margin-left: 10px; flex-shrink: 0; transition: background .15s ease; }
-  .nav-menu-btn:hover { background: var(--blue-light); }
+  .nav-menu-btn { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--white); border: 1px solid rgba(2,11,16,.16); color: var(--brand-black); cursor: pointer; padding: 0; margin-left: 10px; flex-shrink: 0; transition: background .15s ease; }
+  .nav-menu-btn:hover { background: rgba(26,226,136,.16); border-color: var(--brand-black); }
 
   @media (min-width: 1024px) { .nav-links { display: flex; } .nav-inner { gap: 32px; } }
   @media (max-width: 520px) {
@@ -319,28 +319,31 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
   .drw-section { border-bottom: 1px solid rgba(0,0,0,.06); }
   .drw-plain-links { list-style: none; padding: 6px 0; margin: 0; }
   .drw-plain-links a { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px 24px; line-height: normal; background: none; border: none; text-align: left; text-decoration: none; font-family: var(--font-sans); font-size: 14.5px; font-weight: 500; color: #1a1a1a; transition: color .2s ease, background .2s ease; }
-  .drw-plain-links a:hover { color: var(--blue); background: rgba(45,155,111,.05); }
-  .drw-link-arrow { margin-left: auto; display: inline-flex; opacity: 0; color: var(--blue); transition: opacity .15s ease, transform .15s var(--ease-out); }
+  .drw-plain-links a:hover { color: var(--brand-black); background: rgba(26,226,136,.12); }
+  .drw-link-arrow { margin-left: auto; display: inline-flex; opacity: 0; color: var(--brand-black); transition: opacity .15s ease, transform .15s var(--ease-out); }
   .drw-plain-links a:hover .drw-link-arrow { opacity: 1; transform: translateX(3px); }
 
   .drw-group--cta { padding: 14px 18px 16px; }
   .drw-cta-grid { display: flex; flex-direction: column; gap: 7px; }
-  .drw-cta-primary { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: #fff; padding: 12px 20px; line-height: normal; border-radius: var(--r-pill); font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s ease; }
-  .drw-cta-primary:hover { background: var(--blue-dark); }
+  .drw-cta-primary { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--brand); color: var(--brand-black); padding: 12px 20px; line-height: normal; border-radius: var(--r-pill); font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s ease; }
+  .drw-cta-primary:hover { background: var(--brand-hover); }
   .drw-cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
   .drw-cta-secondary { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 11px 14px; line-height: normal; border-radius: 9px; font-family: var(--font-sans); font-size: 12.5px; font-weight: 500; text-decoration: none; color: #3a3a3a; border: 1px solid var(--border); background: var(--white); transition: border-color .15s ease, color .15s ease; }
-  .drw-cta-secondary:hover { border-color: var(--blue); color: var(--blue); }
-  .drw-cta-wa { color: var(--blue); border-color: rgba(37,211,102,.25); }
+  .drw-cta-secondary:hover { border-color: var(--brand-black); color: var(--brand-black); }
+  .drw-cta-wa { color: var(--brand-black); border-color: rgba(37,211,102,.25); }
 
   /* EN drawer accordions - native <details>, no JS. Every child is a crawlable <a>. */
   .drw-en-acc { border: none; }
   .drw-en-sum { display: flex; align-items: center; gap: 10px; padding: 11px 24px; line-height: normal; font-family: var(--font-sans); font-size: 14.5px; font-weight: 500; color: #1a1a1a; cursor: pointer; list-style: none; user-select: none; transition: color .2s ease, background .2s ease; }
   .drw-en-sum::-webkit-details-marker { display: none; }
-  .drw-en-sum:hover { color: var(--blue); background: rgba(45,155,111,.05); }
+  .drw-en-sum:hover { color: var(--brand-black); background: rgba(26,226,136,.12); }
   .drw-en-chev { margin-left: auto; display: inline-flex; color: var(--muted); transition: transform var(--t-slow) var(--ease-out), color .2s ease; }
-  .drw-en-acc[open] .drw-en-chev { transform: rotate(180deg); color: var(--blue); }
+  .drw-en-acc[open] .drw-en-chev { transform: rotate(180deg); color: var(--brand-black); }
   .drw-en-sub { list-style: none; margin: 0; padding: 0 0 6px; }
   .drw-en-sub a { display: block; padding: 8px 24px 8px 38px; line-height: normal; font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: rgba(26,26,26,.72); text-decoration: none; transition: color .15s ease, background .15s ease; }
-  .drw-en-sub a:hover { color: var(--blue); background: rgba(45,155,111,.05); }
-  .drw-en-sub .drw-en-all { font-size: 12.5px; font-weight: 600; color: var(--blue); }
+  .drw-en-sub a:hover { color: var(--brand-black); background: rgba(26,226,136,.12); }
+  .drw-en-sub .drw-en-all { font-size: 12.5px; font-weight: 600; color: var(--brand-ink); }
+  /* Batch 01 · Shell: einheitlicher Fokus-Ring (wie DE-Header) */
+  #mainNav a:focus-visible, #mainNav button:focus-visible, #siteDrawer a:focus-visible, #siteDrawer button:focus-visible, #siteDrawer summary:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 2px; }
+  #siteDrawer .drw-plain-links a:focus-visible, #siteDrawer .drw-en-sum:focus-visible, #siteDrawer .drw-en-sub a:focus-visible { outline-offset: -3px; }
 </style>

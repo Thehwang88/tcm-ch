@@ -13,7 +13,7 @@
 }
 
 /* ── Desktop-Bar ── */
-nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.07);box-shadow:none}
+nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(2,11,16,.08);box-shadow:none}
 /* Content-Offsets folgen der Header-Hoehe (header.css/home.css setzen 68px;
    Hub-Seiten restaurieren eigene 68px — .page-Prefix schlaegt deren spaeter
    gebundelte Styles per Spezifitaet; Leaf-Premium-Heroes liegen bei 140px
@@ -46,7 +46,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
   #mainNav .logo{flex:0 0 auto}
   #mainNav .logo img{width:116px;height:auto;max-width:none}
   #navCtaBtn.nav-cta{min-height:46px!important;font-size:16px!important;padding:0 26px!important;min-width:0!important;margin-left:auto}
-  .nav-menu-btn,#navMenuBtn{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;border-radius:50%!important;border:1px solid rgba(25,20,20,.14)!important;margin-left:0!important;box-shadow:none!important}
+  .nav-menu-btn,#navMenuBtn{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;border-radius:50%!important;border:1px solid rgba(2,11,16,.14)!important;margin-left:0!important;box-shadow:none!important}
   .nav-menu-btn svg,#navMenuBtn svg{width:17px!important;height:17px!important}
   .hero-bg{min-height:calc(100vh - 80px)}
 }
@@ -74,12 +74,12 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
   .nav-menu-btn,#navMenuBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 }
 /* Burger-Button neutral statt grün umrandet */
-.nav-menu-btn,#navMenuBtn{border:1.5px solid rgba(25,20,20,.16)!important;color:var(--nav-ink)!important;border-radius:100px!important;background:#fff!important}
+.nav-menu-btn,#navMenuBtn{border:1.5px solid rgba(2,11,16,.16)!important;color:var(--nav-ink)!important;border-radius:100px!important;background:#fff!important}
 .nav-menu-btn svg,#navMenuBtn svg{stroke:var(--nav-ink)!important}
 .nav-menu-btn:hover,#navMenuBtn:hover{border-color:var(--nav-ink)!important;background:var(--nav-green-soft)!important}
 
 /* EN-Pille angleichen */
-#mainNav .nav-lang{color:var(--nav-ink)!important;border:1.5px solid rgba(25,20,20,.16)!important;font-weight:700!important}
+#mainNav .nav-lang{color:var(--nav-ink)!important;border:1.5px solid rgba(2,11,16,.16)!important;font-weight:700!important}
 #mainNav .nav-lang:hover{border-color:var(--nav-ink)!important;background:var(--nav-green-soft)!important}
 
 /* ── Audience-Switch: echter Zwei-Zustands-Schalter ─────────────────────────
@@ -87,11 +87,11 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
    gleich breiten Hälften (Grid 1fr/1fr); aktiv/inaktiv leitet sich rein aus
    data-audience am Container ab. Ohne JS bleibt der Default (Patient) stehen
    und die Optionen funktionieren als normale Links. */
-.nav-audience{display:none;position:relative;grid-template-columns:1fr 1fr;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin-right:10px;flex-shrink:0}
+.nav-audience{display:none;position:relative;grid-template-columns:1fr 1fr;background:rgba(2,11,16,.05);border-radius:100px;padding:3px;margin-right:10px;flex-shrink:0}
 @media(min-width:1180px){.nav-audience{display:grid}}
-.aud-ind{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#fff;border-radius:100px;box-shadow:0 1px 4px rgba(25,20,20,.12);transform:translateX(0);transition:transform .2s ease;pointer-events:none}
+.aud-ind{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:#fff;border-radius:100px;box-shadow:0 1px 4px rgba(2,11,16,.12);transform:translateX(0);transition:transform .2s ease;pointer-events:none}
 [data-audience="therapist"] .aud-ind{transform:translateX(100%)}
-.nav-aud-opt{position:relative;z-index:1;text-align:center;font-size:12.5px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:6px 13px;border-radius:100px;white-space:nowrap;transition:color .15s ease;line-height:1}
+.nav-aud-opt{position:relative;z-index:1;text-align:center;font-size:12.5px;font-weight:600;color:rgba(2,11,16,.62);text-decoration:none;padding:6px 13px;border-radius:100px;white-space:nowrap;transition:color .15s ease;line-height:1}
 .nav-aud-opt:hover{color:var(--nav-ink)}
 .nav-aud-opt:focus-visible,.drw-aud-opt:focus-visible{outline:2px solid var(--nav-green-dark);outline-offset:1px}
 [data-audience="patient"] [data-aud="patient"],[data-audience="therapist"] [data-aud="therapist"]{color:var(--nav-ink);font-weight:700}
@@ -111,24 +111,24 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 .nav-more-btn:hover,.nav-more-btn[aria-expanded="true"]{background:var(--nav-green-soft)}
 .nav-more-btn svg{transition:transform .2s ease}
 .nav-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-more-panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:300px;background:#fff;border:1px solid rgba(25,20,20,.1);border-radius:18px;box-shadow:0 18px 50px rgba(25,20,20,.14);padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:300}
+.nav-more-panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:300px;background:#fff;border:1px solid rgba(2,11,16,.1);border-radius:18px;box-shadow:0 18px 50px rgba(2,11,16,.14);padding:10px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:300}
 .nav-more-panel.open{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
-.nav-more-group + .nav-more-group{border-top:1px solid rgba(25,20,20,.07);margin-top:8px;padding-top:8px}
-.nav-more-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(25,20,20,.45);padding:6px 12px 4px}
+.nav-more-group + .nav-more-group{border-top:1px solid rgba(2,11,16,.07);margin-top:8px;padding-top:8px}
+.nav-more-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.62);padding:6px 12px 4px}
 #mainNav .nav-links .nav-more-panel a{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;gap:2px;padding:9px 12px!important;min-height:auto;border-radius:10px;font-size:14px;font-weight:600;color:var(--nav-ink);text-decoration:none;transition:background .12s ease}
 .nav-more-panel a:hover{background:var(--nav-green-soft)}
-.nav-more-desc{font-size:11.5px;font-weight:400;color:rgba(25,20,20,.5)}
+.nav-more-desc{font-size:11.5px;font-weight:400;color:rgba(2,11,16,.64)}
 
 /* ── Drawer: Basis ── */
 #siteDrawer{background:#fff}
 .drw-header::after{background:linear-gradient(90deg,var(--nav-green) 0%,rgba(26,226,136,0) 100%)}
 
 /* Audience-Switch im Drawer (gleiche Indikator-Mechanik) */
-.drw-aud{display:grid;position:relative;grid-template-columns:1fr 1fr;background:rgba(25,20,20,.05);border-radius:100px;padding:3px;margin:14px 22px 6px;flex-shrink:0}
-.drw-aud-opt{position:relative;z-index:1;text-align:center;font-size:13px;font-weight:600;color:rgba(25,20,20,.62);text-decoration:none;padding:9px 10px;border-radius:100px;line-height:1;transition:color .15s ease;min-height:auto}
+.drw-aud{display:grid;position:relative;grid-template-columns:1fr 1fr;background:rgba(2,11,16,.05);border-radius:100px;padding:3px;margin:14px 22px 6px;flex-shrink:0}
+.drw-aud-opt{position:relative;z-index:1;text-align:center;font-size:13px;font-weight:600;color:rgba(2,11,16,.62);text-decoration:none;padding:9px 10px;border-radius:100px;line-height:1;transition:color .15s ease;min-height:auto}
 
 /* Gruppen-Labels (rein visuell) */
-.drw-group-label{padding:16px 22px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(25,20,20,.42)}
+.drw-group-label{padding:16px 22px 4px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(2,11,16,.62)}
 
 /* Grün-Akzente im Drawer auf Markengrün umstellen */
 .drw-acc-btn::before{background:var(--nav-green)!important;opacity:1}
@@ -142,7 +142,7 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 .drw-logo-dot{background:var(--nav-green)!important}
 
 /* Drawer-CTA: Markengrün, gross, sticky am unteren Rand des Scrollbereichs */
-.drw-group--cta{position:sticky;bottom:0;background:#fff;border-top:1px solid rgba(25,20,20,.08);padding:12px 18px calc(14px + env(safe-area-inset-bottom));margin-top:auto;box-shadow:0 -10px 24px rgba(25,20,20,.05)}
+.drw-group--cta{position:sticky;bottom:0;background:#fff;border-top:1px solid rgba(2,11,16,.08);padding:12px 18px calc(14px + env(safe-area-inset-bottom));margin-top:auto;box-shadow:0 -10px 24px rgba(2,11,16,.05)}
 .drw-cta-primary{background:var(--nav-green)!important;color:var(--nav-ink)!important;min-height:48px;border-radius:100px!important;font-size:15px;font-weight:700;box-shadow:none!important}
 .drw-cta-primary:hover{background:#14C97A!important;color:var(--nav-ink)!important}
 .drw-cta-primary svg{stroke:var(--nav-ink)}
@@ -159,9 +159,9 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 .drw-body{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;
   overflow-y:auto!important;overflow-x:hidden;
   overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;scrollbar-color:rgba(25,20,20,.18) transparent}
+  scrollbar-width:thin;scrollbar-color:rgba(2,11,16,.18) transparent}
 .drw-body::-webkit-scrollbar{display:block;width:4px}
-.drw-body::-webkit-scrollbar-thumb{background:rgba(25,20,20,.18);border-radius:4px}
+.drw-body::-webkit-scrollbar-thumb{background:rgba(2,11,16,.18);border-radius:4px}
 .drw-body > .drw-group{flex-shrink:0}
 @media(max-width:900px){.drw-body{padding-bottom:0!important}}
 
@@ -188,19 +188,19 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
 
 /* ── «Mehr» als Mega-Panel: Patienten-Gruppe links, «Für Fachpersonen» (aus PRO_NAV) rechts ── */
 .nav-more-panel--mega{display:grid;grid-template-columns:210px minmax(0,1fr);gap:0 14px;width:min(900px,calc(100vw - 48px));padding:14px}
-.nav-more-panel--mega .nav-more-group + .nav-more-group{border-top:0;margin-top:0;padding-top:0;border-left:1px solid rgba(25,20,20,.07);padding-left:14px}
+.nav-more-panel--mega .nav-more-group + .nav-more-group{border-top:0;margin-top:0;padding-top:0;border-left:1px solid rgba(2,11,16,.07);padding-left:14px}
 .nav-more-group--pro .pro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px;margin-top:6px}
 .nav-more-group--pro .pro-col{display:flex;flex-direction:column;padding:4px 0 8px}
-.nav-more-group--pro .pro-col-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(25,20,20,.42);padding:6px 12px 2px}
+.nav-more-group--pro .pro-col-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.62);padding:6px 12px 2px}
 #mainNav .nav-links .nav-more-group--pro a{padding:7px 12px!important;font-size:13.5px}
 #mainNav .nav-links .nav-more-group--pro a.pro-overview{font-size:14.5px;font-weight:700}
 #mainNav .nav-links .nav-more-group--pro a.pro-accent{color:var(--nav-green-dark,#020B10);font-weight:700;flex-direction:row;gap:4px}
-.nav-more-group--pro .pro-soon{display:block;padding:7px 12px;font-size:13.5px;font-weight:500;color:rgba(25,20,20,.38);cursor:default}
-.nav-more-group--pro .pro-soon em,.drw-pro-soon em{font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(25,20,20,.32);margin-left:3px}
+.nav-more-group--pro .pro-soon{display:block;padding:7px 12px;font-size:13.5px;font-weight:500;color:rgba(2,11,16,.6);cursor:default}
+.nav-more-group--pro .pro-soon em,.drw-pro-soon em{font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(2,11,16,.6);margin-left:3px}
 #mainNav .nav-more-panel a:focus-visible{outline:2px solid var(--nav-green-dark,#020B10);outline-offset:-2px}
 @media (max-width:1100px){.nav-more-panel--mega{grid-template-columns:180px minmax(0,1fr)}.nav-more-group--pro .pro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Drawer: geplante Einträge + dezenter Partner-Akzent */
-.drw-pro-soon{display:flex;align-items:center;min-height:40px;padding:8px 20px 8px 32px;font-size:13.5px;color:#b0b0b0}
+.drw-pro-soon{display:flex;align-items:center;min-height:40px;padding:8px 20px 8px 32px;font-size:13.5px;color:rgba(2,11,16,.6)}
 .drw-links li a.drw-pro-accent{color:var(--nav-green-dark,#020B10);font-weight:700}
 
 /* ── Header-Polish: Desktop-Nav Typo + Spacing (3-Zonen-Balance).
@@ -239,3 +239,16 @@ nav#mainNav{height:var(--header-h,76px);border-bottom:1px solid rgba(25,20,20,.0
   html:root{scroll-behavior:auto}
   #siteDrawer,#drawerOverlay,.drw-acc-body,.drw-acc-body .drw-links li,.nav-more-panel,#mainNav .nav-links a,#mainNav .nav-links button,.nav-menu-btn,#navMenuBtn{transition:none!important}
 }
+
+/* ── Batch 01 · Shell-Harmonisierung (Header + Drawer) ──────────────────────
+   Semantische Rich-Black-Töne statt Legacy-Grau/-Grün, WCAG-AA-Kontrast für
+   Drawer-Beschreibungen, einheitlicher Fokus-Ring (Muster aus design-system.md:
+   3px Rich Black 55 % auf hellen Flächen). Keine Layout-/Höhenänderung. */
+.drw-acc-desc,.drw-acc-btn.open .drw-acc-desc,.drw-acc-btn:hover .drw-acc-desc{color:rgba(2,11,16,.62)!important}
+.drw-header{border-bottom-color:rgba(2,11,16,.08)}
+.drw-section{border-bottom-color:rgba(2,11,16,.07)}
+#mainNav a:focus-visible,#mainNav button:focus-visible,
+#siteDrawer a:focus-visible,#siteDrawer button:focus-visible{outline:3px solid rgba(2,11,16,.55)!important;outline-offset:2px}
+#siteDrawer .drw-acc-btn:focus-visible,#siteDrawer .drw-links a:focus-visible,#siteDrawer .drw-plain-links a:focus-visible{outline-offset:-3px}
+#mainNav .nav-more-panel a:focus-visible{outline-offset:-3px}
+#navCtaBtn.nav-cta:focus-visible,#siteDrawer .drw-cta-primary:focus-visible{outline:3px solid rgba(2,11,16,.55)!important;outline-offset:3px}

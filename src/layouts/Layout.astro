@@ -42,6 +42,7 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
     <link rel="stylesheet" href="/styles/tokens.css" />
     <!-- Shared dark footer styles (Footer.astro renders SPA markup; LayoutDe loads this too). -->
     <link rel="stylesheet" href="/footer.css" />
+    <link rel="stylesheet" href="/footer-rebrand.css" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}

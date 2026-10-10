@@ -28,7 +28,7 @@ const drwItem = (i: NavItem) => i.planned
   ? `<li><span class="drw-pro-soon" aria-disabled="true">${esc(i.label)} <em>bald</em></span></li>`
   : `<li><a href="${i.href}" onclick="drawerClose()"${i.accent ? ' class="drw-pro-accent"' : ''}>${esc(i.label)}${arrow}</a></li>`;
 const drawer =
-  `<div class="drw-group"><div class="drw-group-label">Für Fachpersonen</div>` +
+  `<div class="drw-group" role="group" aria-labelledby="drwGrpPro"><div class="drw-group-label" id="drwGrpPro">Für Fachpersonen</div>` +
   `<div class="drw-section"><ul class="drw-plain-links"><li><a href="${PRO_NAV_OVERVIEW.href}" onclick="drawerClose()">Übersicht Fachpersonen${arrow}</a></li></ul></div>` +
   PRO_NAV.map((g) =>
     `<div class="drw-section"><button class="drw-acc-btn" onclick="drawerToggle(this)" aria-expanded="false" aria-controls="drwPro-${g.id}">` +

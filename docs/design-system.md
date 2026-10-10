@@ -194,3 +194,21 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 | Team, Partner, Branche, Regulatorik, Tools, Karriere, Krankenkassen, Ergebnisse, Sonderseiten | ~60 | offen (W5) |
 | EN | 51 | offen (W5/W6) |
 | Legal (AGB, Impressum, Datenschutz) | 3 | offen (W6, niedrige Prio) |
+
+## 13. Global Shell (Header · Drawer · Footer) — Batch 01
+
+Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine Route kann eine konforme Shell und ein noch offenes Template haben (Coverage-Matrix oben = Templates).
+
+**Stacks & Konsumenten (Build 10.10.2026, 768 HTML):** LayoutDe 478 · SpaPage 229 + 3 Eigen-Heads mit Shell (Home, Longevity, Selbsttest) · EN `Layout.astro` 51 = **761 Shell-Routen**. Ohne Shell (unberührt): `/club/`, `/partner/bern/` (PartnerLayout), 5 Visual-Handouts.
+
+**Dateien:** Footer-Markup `src/data/footer.html` (DE) + `src/components/FooterEn.astro` (EN), beide `<footer class="site-footer">`; Footer-Layer `public/footer-rebrand.css` (als **letztes** Stylesheet in LayoutDe, SpaPage, Layout/EN und den 3 Eigen-Heads); Header/Drawer DE `public/nav-rebrand.css`; Header/Drawer EN scoped in `Header.astro`.
+
+**Footer-Spezifikation:** Fläche `--brand-black`; Logo `tcm-ch-logo-kliniken-mint.svg` (168px); Spalten-Labels 11px/700/.16em uppercase in `--brand` (wie Brand-Signature-Eyebrow, 11.6:1); Links 14.5px/500 `rgba(255,255,255,.74)` (≈10:1), Hover Weiss + Mint-Unterstreichung, 36px-Rhythmus (mobil 40px); Copy/Labels `rgba(255,255,255,.62)` (≈7:1); Trennlinie `rgba(255,255,255,.12)`; Grid Desktop `1.5fr + 3×1fr`, ≤1024 Marke voll + 3 Spalten, ≤600 2 Spalten (Standorte voll, Liste 2-spaltig); mobil bleibt der Sticky-CTA-Abstand (88px) erhalten. Keine Social-Icons ohne echte URLs.
+
+**Header/Drawer-Regeln:** Neutral-Töne nur als `rgba(2,11,16,α)` (Rich Black), keine `#191414`/Legacy-Grün-Reste; Sekundärtexte im Drawer/Mega-Panel α ≥ .6 (AA); Drawer-Gruppen `role="group"` + `aria-labelledby`; Header-Höhen (76/80px), Logo-Grössen, Nav-Struktur und Ziele unverändert. EN: nur semantische Farb-Tokens (Hover/Akzente Rich Black, Drawer-CTA Mint + Rich-Black-Text) — EN-Layout-Redesign = eigene Kohorte.
+
+**Fokus:** helle Flächen `outline:3px solid rgba(2,11,16,.55)` (Outline folgt der Elementform, kein Radius-Override); Footer `outline:3px solid var(--brand)` offset 3px.
+
+**Accessibility-Status (Batch 01):** Footer 0 Kontrastfehler auf 761 Routen × 390/1440 (vorher bis zu 47 Textelemente unter AA je Route, min. 1.5:1); Drawer 0 (vorher Labels 2.7:1, Beschreibungen 2.2:1); S1-Verhalten (Fokus-Falle, Escape + Fokus-Rückgabe, inert/visibility, reduced motion) unverändert verifiziert DE + EN.
+
+**Verbleibende Ausnahmen (offen, eigenes Ticket):** `/datenschutz/` — ungeschlossenes `<script>` in `src/data/legal/datenschutz.html` (Z. 180) verschluckt Shell-Footer, WhatsApp-FAB und Sticky-Bar; sichtbar ist nur ein eingebetteter Legacy-Footer. `/404.html` und `/selbsttest/` — Drawer rendert nicht als Overlay (vorbestehend). Sprechstunde: seiteneigener `.footer` im Panel bleibt Template-Sache. Footer-Brandleiste (Partner-Logos) und «QI CLUB»-Markenname unverändert.
