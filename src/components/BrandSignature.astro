@@ -58,19 +58,19 @@ const {
   </div>
 </section>
 <style>
-  .brand-signature{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:clamp(480px,46vw,680px);background:#14532d;color:#fff;overflow:hidden}
+  .brand-signature{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:clamp(480px,46vw,680px);background:#14532d;color:var(--white);overflow:hidden}
   .brand-signature--reverse .brand-signature__media{order:2}
-  .brand-signature__media{position:relative;overflow:hidden;background:#1ae288}
+  .brand-signature__media{position:relative;overflow:hidden;background:var(--brand)}
   .brand-signature__media > img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:var(--bs-pos,center)}
   .brand-signature__placeholder{position:absolute;inset:0;display:flex;align-items:flex-end;padding:clamp(32px,4.5vw,72px)}
   .brand-signature__placeholder img{display:block;width:clamp(132px,13vw,200px);height:auto}
   .brand-signature__content{display:flex;align-items:center;padding:clamp(48px,6vw,104px)}
   .brand-signature__inner{max-width:560px}
-  .brand-signature__eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;color:#1ae288;margin-bottom:clamp(20px,2.2vw,32px)}
-  .brand-signature h2{font-family:Figtree,Arial,sans-serif;font-size:clamp(44px,5.4vw,84px);font-weight:800;letter-spacing:-.045em;line-height:.98;margin:0 0 clamp(20px,2vw,28px);color:#fff}
+  .brand-signature__eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--brand);margin-bottom:clamp(20px,2.2vw,32px)}
+  .brand-signature h2{font-family:var(--font-sans);font-size:clamp(44px,5.4vw,84px);font-weight:800;letter-spacing:-.045em;line-height:.98;margin:0 0 clamp(20px,2vw,28px);color:var(--white)}
   .brand-signature p{font-size:clamp(17px,1.45vw,21px);line-height:1.55;max-width:24ch;color:rgba(255,255,255,.86);margin:0 0 clamp(32px,3.2vw,48px)}
-  .brand-signature__link{display:inline-flex;gap:14px;align-items:center;border-bottom:2px solid #1ae288;padding-bottom:8px;text-decoration:none;color:#fff;font-size:16px;font-weight:700}
-  .brand-signature__link:hover{color:#1ae288}
-  .brand-signature__link:focus-visible{color:#1ae288;outline:2px solid #1ae288;outline-offset:6px}
+  .brand-signature__link{display:inline-flex;gap:14px;align-items:center;border-bottom:2px solid var(--brand);padding-bottom:8px;text-decoration:none;color:var(--white);font-size:16px;font-weight:700}
+  .brand-signature__link:hover{color:var(--brand)}
+  .brand-signature__link:focus-visible{color:var(--brand);outline:2px solid var(--brand);outline-offset:6px}
   @media(max-width:760px){.brand-signature{grid-template-columns:1fr;min-height:0}.brand-signature__media{aspect-ratio:1/1}.brand-signature__media > img{object-position:var(--bs-pos-m,var(--bs-pos,center))}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:48px 24px 56px}.brand-signature h2{font-size:clamp(42px,12vw,56px)}}
 </style>
