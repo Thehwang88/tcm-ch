@@ -11,7 +11,7 @@ const { report } = Astro.props;
 const r = report ?? reportBySlug(Astro.params.slug as string)!;
 
 const path = `/ergebnisse/${r.slug}`;
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const isDraft = r.status === 'draft';
 
 const fmt = (iso: string) =>

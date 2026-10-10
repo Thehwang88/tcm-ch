@@ -18,7 +18,7 @@ const { w } = Astro.props;
 const data = w ?? wissenBySlug(Astro.params.slug as string)!;
 
 const path = `/wissen/${data.slug}`;
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich bin über Ihre Seite «${data.title}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
@@ -66,7 +66,7 @@ const breadcrumbLd = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
-    { '@type': 'ListItem', position: 2, name: 'Wissen', item: 'https://tcm.ch/wissen' },
+    { '@type': 'ListItem', position: 2, name: 'Wissen', item: 'https://tcm.ch/wissen/' },
     { '@type': 'ListItem', position: 3, name: data.h1, item: url },
   ],
 };

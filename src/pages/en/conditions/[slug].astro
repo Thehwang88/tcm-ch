@@ -15,7 +15,7 @@ const { condition } = Astro.props;
 const { slug, condition: name, keyword, lead, intro, howWeTreat, evidence, redFlags, related } = condition;
 
 const path = enConditionPath(slug);
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const contactHref = `/en/contact/?beschwerde=${encodeURIComponent(name)}`;
 
 const title = `Acupuncture for ${name} | TCM.ch`;

@@ -47,7 +47,7 @@ This is where most newcomers get caught out, so it is worth being precise. In Sw
 
 If you hold supplementary cover for complementary medicine, and your practitioner is **EMR or ASCA recognised**, you typically get a large share of each session reimbursed, often most of it, up to an annual limit set by your policy. The exact percentage and ceiling depend entirely on the plan you bought.
 
-We have written a full plain-English breakdown of how this works, including the basic-versus-supplementary split and what to check on your policy, here: **[Is acupuncture covered by health insurance in Switzerland?](/en/health-insurance-acupuncture)**. If you read one thing before booking, read that.
+We have written a full plain-English breakdown of how this works, including the basic-versus-supplementary split and what to check on your policy, here: **[Is acupuncture covered by health insurance in Switzerland?](/en/health-insurance-acupuncture/)**. If you read one thing before booking, read that.
 
 ## How to avoid a surprise bill
 
@@ -64,7 +64,7 @@ If you are unsure about your own policy, call your insurer and ask two questions
 
 That depends on what you are treating and on honest expectations. Acupuncture is one of the better-studied complementary therapies, with the most encouraging evidence for chronic pain and for reducing how often migraines happen. For many other uses the evidence is weaker or mixed. It is reasonable to try, not a guaranteed fix, and we would rather say that plainly than oversell it.
 
-If your reason for considering it is something like persistent [back pain](/en/conditions/back-pain), it can be worth trialling a short course, ideally alongside staying active, and reassessing whether it is actually helping you. You can read more about the treatment itself on our [acupuncture page](/en/therapies/acupuncture).
+If your reason for considering it is something like persistent [back pain](/en/conditions/back-pain/), it can be worth trialling a short course, ideally alongside staying active, and reassessing whether it is actually helping you. You can read more about the treatment itself on our [acupuncture page](/en/therapies/acupuncture/).
 
 ## Quick summary
 
@@ -73,4 +73,4 @@ If your reason for considering it is something like persistent [back pain](/en/c
 - Reimbursement requires an **EMR- or ASCA-recognised** practitioner, which all our clinics are.
 - Check your **annual limit and rate** before booking, and confirm whether you pay upfront or the clinic bills directly.
 
-Still weighing it up? You can [request an appointment](/en/contact) and ask about cost in plain English, or find your nearest [clinic](/en/locations/) first.
+Still weighing it up? You can [request an appointment](/en/contact/) and ask about cost in plain English, or find your nearest [clinic](/en/locations/) first.

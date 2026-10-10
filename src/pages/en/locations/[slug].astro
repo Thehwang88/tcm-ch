@@ -14,7 +14,7 @@ const { clinic } = Astro.props;
 const { id, name, city, region, street, postalCode, phone, openingHours, geo, openingSoon } = clinic;
 
 const path = enLocationPath(id);
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const telHref = 'tel:' + phone.replace(/\s+/g, '');
 const contactHref = `/en/contact/?standort=${encodeURIComponent(name)}`;
 const mapsHref = street

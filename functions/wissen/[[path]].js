@@ -9,6 +9,14 @@ import "../../public/wissen-kill.js";
 
 const KILL = new Set(globalThis.WISSEN_KILL);
 
+// Doorways, deren Suchintention heute exakt eine live, indexierbare Owner-Seite hat
+// (seo/master-keyword-url-map.csv): 301 statt 410. Bleiben in WISSEN_KILL gelistet.
+const ALIAS = {
+  "akupunktur-st-gallen-kosten-krankenkasse": "/akupunktur-st-gallen-kosten/",
+  "akupunktur-zuerich-kosten-krankenkasse": "/standorte/zuerich/kosten/",
+  "akupunktur-st-gallen-erfahrungen-was-erwartet-dich": "/wissen/tcm-st-gallen-erfahrungen-ablauf/",
+};
+
 function gone() {
   return new Response(
     "<!doctype html><meta charset=utf-8><title>Seite entfernt</title><p>Diese Seite existiert nicht mehr.",
@@ -21,5 +29,6 @@ export async function onRequest(context) {
   const segments = Array.isArray(raw) ? raw : (raw ? [raw] : []);
   if (segments.length === 0) return context.next(); // /wissen hub
   const slug = decodeURIComponent(segments[0]).toLowerCase();
+  if (ALIAS[slug]) return Response.redirect(new URL(ALIAS[slug], context.request.url).href, 301);
   return KILL.has(slug) ? gone() : context.next();
 }

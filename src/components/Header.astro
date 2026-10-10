@@ -24,7 +24,9 @@ const navLinks = isDe ? [
 ];
 
 // Language toggle: EN page → DE twin; DE page → EN twin (fallback to the other home).
-const langHref = isDe ? (PAIR_MAP[currentPath] ?? '/en/') : (PAIR_MAP_EN[currentPath] ?? '/');
+// PAIR_MAP-Werte sind teils ohne Slash: auf die kanonische Slash-Form bringen (wie hreflang in Layout.astro).
+const langTarget = isDe ? (PAIR_MAP[currentPath] ?? '/en/') : (PAIR_MAP_EN[currentPath] ?? '/');
+const langHref = langTarget.endsWith('/') ? langTarget : langTarget + '/';
 const langLabel = isDe ? 'EN' : 'DE';
 const langAria = isDe ? 'Switch to English' : 'Zur deutschen Seite wechseln';
 const langHreflang = isDe ? 'en' : 'de-CH';

@@ -38,7 +38,7 @@ That distinction matters, because it sets honest expectations for what a complem
 
 What many people get from acupuncture for stress is a genuine sense of **down-shifting** from a constant state of tension. The sessions themselves are calm and unhurried, and a lot of people find that protected, quiet time valuable on its own. It can also ease the physical knock-on effects of stress, the tight neck, the poor sleep, the tension headaches, which often feed the cycle.
 
-We are clear about the boundary, though. Acupuncture supports stress management. It does not, by itself, treat burnout, anxiety or depression, which need proper medical and psychological care. Our fuller, hedged overview is on the [stress and burnout conditions page](/en/conditions/stress-burnout).
+We are clear about the boundary, though. Acupuncture supports stress management. It does not, by itself, treat burnout, anxiety or depression, which need proper medical and psychological care. Our fuller, hedged overview is on the [stress and burnout conditions page](/en/conditions/stress-burnout/).
 
 ## What the evidence says
 
@@ -50,7 +50,7 @@ So we position it accurately: a supportive, low-risk option that many people fin
 
 Sessions are deliberately calm. We start by talking through how stress is actually affecting you, sleep, tension, headaches, gut, mood, then use fine needles while you rest quietly, usually for 20 to 30 minutes. Many people find the stillness restful in itself.
 
-Because stress so often shows up in the body, we frequently address the physical side too. Treatment may combine acupuncture with work on neck and shoulder tension, and we sometimes use calming, hands-on approaches like [Shiatsu](/en/therapies/shiatsu) or [acupressure](/en/therapies/acupressure) for people who prefer something needle-free. Where poor sleep is part of the picture, our page on [sleep problems](/en/conditions/sleep-problems) is worth a read.
+Because stress so often shows up in the body, we frequently address the physical side too. Treatment may combine acupuncture with work on neck and shoulder tension, and we sometimes use calming, hands-on approaches like [Shiatsu](/en/therapies/shiatsu/) or [acupressure](/en/therapies/acupressure/) for people who prefer something needle-free. Where poor sleep is part of the picture, our page on [sleep problems](/en/conditions/sleep-problems/) is worth a read.
 
 ## When to get proper support first
 
@@ -66,6 +66,6 @@ If you are burning out, the bigger levers are usually workload, recovery and som
 
 ## Cost and cover
 
-Treatment by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture) is typically reimbursed through supplementary insurance. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance) for the details.
+Treatment by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture/) is typically reimbursed through supplementary insurance. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
 
-If a calm, supportive treatment as part of managing stress appeals to you, you can [request an appointment in English](/en/contact) or find your nearest [clinic](/en/locations/).
+If a calm, supportive treatment as part of managing stress appeals to you, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/).

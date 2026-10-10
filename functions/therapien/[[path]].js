@@ -10,6 +10,12 @@
 // Real nested therapy sub-pages that must stay live (not doorway combos).
 const ALLOW = new Set(["schroepfen/blutiges-schroepfen", "schroepfen/hijama", "akupunktur/schwangerschaft", "akupunktur/verfahren", "akupunktur/schaedelakupunktur", "akupunktur/ynsa", "akupunktur/bauchakupunktur", "akupunktur/laserakupunktur", "physiotherapie/dry-needling", "physiotherapie/manuelle-therapie", "gua-sha/gesichts-gua-sha"]);
 
+// Therapie×Stadt-Doorways, deren lokale Suchintention exakt eine live Standortseite besitzt
+// (seo/master-keyword-url-map.csv): 301 statt 410.
+const ALIAS = {
+  "akupunktur/zuerich-city": "/standorte/zuerich-city/",
+};
+
 function gone() {
   return new Response(
     "<!doctype html><meta charset=utf-8><title>Seite entfernt</title><p>Diese Seite existiert nicht mehr.",
@@ -22,6 +28,8 @@ export async function onRequest(context) {
   const segments = Array.isArray(raw) ? raw : (raw ? [raw] : []);
   if (segments.length >= 2) {
     if (ALLOW.has(segments.join("/"))) return context.next(); // real nested sub-page
+    const alias = ALIAS[segments.join("/").toLowerCase()];
+    if (alias) return Response.redirect(new URL(alias, context.request.url).href, 301);
     if (segments[0] === "massage") return context.next();     // real /therapien/massage/* sub-pages (Astro static)
     return gone();                                            // /therapien/<t>/<stadt>(/...) -> gone
   }

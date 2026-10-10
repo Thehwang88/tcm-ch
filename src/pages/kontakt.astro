@@ -4,7 +4,7 @@ import TerminForm from '../components/TerminForm.astro';
 import { site } from '../data/site';
 
 const path = '/kontakt';
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const title = 'Kontakt – Termin anfragen bei TCM.ch';
 const description =
   'Termin bei TCM.ch anfragen – per WhatsApp, Telefon oder E-Mail. Antwort meist innert 30 Minuten, Termin oft innert 24 Stunden. EMR-/ASCA-anerkannt.';

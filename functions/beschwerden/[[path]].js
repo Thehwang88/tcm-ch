@@ -15,11 +15,13 @@ const KEEP = new Set(globalThis.BESCHWERDEN_KEEP);
 // Alte Slugs aus der Vor-Migrations-Site, die Google noch kennt und die heute eine
 // inhaltlich passende Seite haben. 301 statt 410, damit die Signale übernommen werden
 // statt verloren zu gehen. Ziel MUSS in KEEP stehen, sonst läuft der Redirect ins 410.
+// Werte mit führendem "/" sind absolute Ziele ausserhalb von /beschwerden/ (Owner laut
+// seo/master-keyword-url-map.csv).
 const ALIAS = {
   "sodbrennen-reflux": "sodbrennen",
   "blaehbauch": "blaehungen",
   "energiemangel-fatigue": "erschoepfung",
-  "naechtliches-schwitzen": "hitzewallungen",
+  "naechtliches-schwitzen": "/koerpersignale/nachtschweiss-ohne-fieber/",
   "geschmacks-geruchsstoerungen": "long-covid",
 };
 
@@ -48,7 +50,7 @@ export async function onRequest(context) {
   const alias = ALIAS[slug];
   if (alias) {
     return Response.redirect(
-      new URL("/beschwerden/" + alias + "/", context.request.url).href,
+      new URL(alias.startsWith("/") ? alias : "/beschwerden/" + alias + "/", context.request.url).href,
       301
     );
   }

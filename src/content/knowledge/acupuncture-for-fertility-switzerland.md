@@ -31,7 +31,7 @@ Trying to conceive is one of the most stressful things many people go through, a
 
 We use acupuncture as **supportive, complementary care** during a fertility journey, not as a fertility treatment in its own right. It may help with the stress and wellbeing side of a hard process. What it cannot reliably do is change whether conception or IVF succeeds. We would rather be clear about that than sell you false hope.
 
-You can read our fuller, hedged overview on the [fertility support conditions page](/en/conditions/fertility-support), which sits alongside this article.
+You can read our fuller, hedged overview on the [fertility support conditions page](/en/conditions/fertility-support/), which sits alongside this article.
 
 ## What the evidence says
 
@@ -45,7 +45,7 @@ If you choose to try acupuncture while trying to conceive or during IVF or ICSI,
 
 - coordinating with your fertility clinic's timeline and protocol rather than improvising our own,
 - focusing a good part of the work on the **stress and emotional load** of trying to conceive, which is real and often overlooked,
-- sometimes using related techniques such as [moxibustion](/en/therapies/moxibustion) as part of a calm, supportive session.
+- sometimes using related techniques such as [moxibustion](/en/therapies/moxibustion/) as part of a calm, supportive session.
 
 We will also always encourage proper investigation of **both partners**, because the biggest gains usually come from identifying and treating specific, diagnosable causes.
 
@@ -57,7 +57,7 @@ Acupuncture should never delay specialist fertility care. Please see a doctor, a
 - you have **very irregular or absent periods**, or known PCOS, endometriosis or thyroid issues,
 - you have a history of **miscarriage, pelvic infection or surgery** affecting fertility.
 
-Time genuinely matters with fertility. The right order is specialist assessment first, with acupuncture as optional support around it. If cycle-related symptoms are part of your picture, our page on [menstrual and cycle issues](/en/conditions/menstrual-issues) may also help.
+Time genuinely matters with fertility. The right order is specialist assessment first, with acupuncture as optional support around it. If cycle-related symptoms are part of your picture, our page on [menstrual and cycle issues](/en/conditions/menstrual-issues/) may also help.
 
 ## So why do people still find it worthwhile?
 
@@ -65,6 +65,6 @@ Because the journey is hard, and many people value a regular, calm, supportive s
 
 ## Cost and cover
 
-Acupuncture by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture) is typically reimbursed through supplementary insurance, whatever the reason for treatment, while your fertility clinic's medical care is handled separately. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance) for the details.
+Acupuncture by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture/) is typically reimbursed through supplementary insurance, whatever the reason for treatment, while your fertility clinic's medical care is handled separately. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
 
-If you would like supportive care alongside your fertility treatment, you can [request an appointment in English](/en/contact) or find your nearest [clinic](/en/locations/). And please, keep your fertility specialist at the centre of the plan.
+If you would like supportive care alongside your fertility treatment, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/). And please, keep your fertility specialist at the centre of the plan.

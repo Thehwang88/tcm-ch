@@ -24,7 +24,7 @@ const CANONICAL_TO: Record<string, string> = {
 };
 const canonicalTo = CANONICAL_TO[data.slug];
 
-const url = new URL(path, site.url).href;
+const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich habe eine Frage zu ${data.h1}.`)}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
