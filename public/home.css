@@ -5172,3 +5172,26 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 #page-standorte #standorte-grid .city-card:focus-visible,
 #standorte .city-card:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
 
+
+/* ── WAVE 1B-1 · .standort-scope (10.10.2026): Bern, Luzern, Zuerich City +
+   Kosten-Seiten Frauenfeld/Kreuzlingen/Luzern/Zuerich (Wrapper .akz traegt
+   den Hook; .akz allein ist NIE Selektor - teilt sich mit geschuetzten
+   Flagships). Konsumenten exakt 7 Routen. Text/Headings -> Rich Black,
+   neutrale Flaechen -> Concrete, Zebra -> Weiss (wie Wave 1), Tint-Box-Border
+   wie Homepage-Refinement, CTA-Schatten Mint (Werte des Standort-Templates),
+   --muted (#888, 3.2-3.5:1) -> --mid. */
+.standort-scope{--black:var(--brand-black);--surface:var(--brand-surface);--green-mid:#BDF4DC;--sh-btn:0 8px 24px rgba(26,226,136,.32);--sh-btn-hover:0 10px 28px rgba(26,226,136,.42);--muted:var(--mid)}
+.standort-scope .section:nth-child(even){background:#fff}
+/* Marketing-CTAs Pill (Formular-Submit ausgenommen); die Outline-CTAs im
+   Dark-Band tragen inline 12px. */
+.standort-scope :is(.btn-primary,.btn-secondary,.btn-white):not(.form-submit){border-radius:999px}
+.standort-scope .cta-band a{border-radius:999px!important}
+/* Kontrast auf Concrete (#6B7280 faellt dort unter 4.5:1): Labels Rich Black
+   wie Homepage/Standort-Template (!important gegen die globale
+   .section-label{color:#6B7280!important}-Schicht), USP-Subtext --mid. */
+.standort-scope .section-label{color:var(--brand-black)!important}
+.standort-scope .usp-sub{color:var(--mid)}
+.standort-scope .usp-card .usp-title{color:var(--brand-black)}
+/* Legacy-Gruen-Tint der Zeit-/Micro-Badges (globale !important-Schicht) ->
+   neutral wie .svc-badge--ins. */
+.standort-scope :is(.svc-badge--time,.kt-micro-badge){background:var(--brand-surface)!important;border-color:var(--border)!important}

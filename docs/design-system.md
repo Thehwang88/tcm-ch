@@ -83,18 +83,31 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 |---|---|---|
 | `<section id="s-offer">` | `/therapien/shiatsu/` | `src/pages/therapien/[slug].astro` slict den Block vor `therapie-cities-section` |
 | `<div class="svc-grid">` (8 Therapie-Karten) | `/standorte/bottighofen/` | `src/pages/standorte/[slug].astro` ersetzt das Leaf-Grid 1:1 durch das Homepage-Grid |
+| `<section id="s-offer">` | `/akupunktur-in-der-naehe/` | `src/pages/akupunktur-in-der-naehe.astro` (Z. 48–49) slict denselben Block (nachgetragen W1B-1-Preflight) |
 
-Weitere Konsumenten von `home-body.html`: `BrandMarquee.astro`, `akupunktur-in-der-naehe.astro` (derzeit ohne Diff-Wirkung bei den bisherigen Kohorten). **Regel:** Bevor eine Änderung an `home-body.html` als «homepage-only» bezeichnet wird, ist ein Voll-Diff aller generierten Routen Pflicht und `grep -rl home-body src/` auszuwerten. Homepage-only-Styles in `ui.css` wirken in den kopierten Blöcken **nicht** (ui.css lädt nur auf `/`).
+Weitere Konsumenten von `home-body.html`: `BrandMarquee.astro`. **Regel:** Bevor eine Änderung an `home-body.html` als «homepage-only» bezeichnet wird, ist ein Voll-Diff aller generierten Routen Pflicht und `grep -rl home-body src/` auszuwerten. Homepage-only-Styles in `ui.css` wirken in den kopierten Blöcken **nicht** (ui.css lädt nur auf `/`).
 
-### Wave 1 · Standort-Familie (10.10.2026, lokal, Freigabe ausstehend)
+### Wave 1 · Standort-Familie (10.10.2026, live `146e603`)
 
 **Template-Familie (maschinell verifiziert):** `src/pages/standorte/[slug].astro`, data-driven Branch aus `src/data/standorte.ts` = **10 Routen**: basel (cro/v2/planned), frauenfeld (cro/v2), winterthur-marktgasse (cro/v2), zuerich-oerlikon (cro/v2), kreuzlingen, rorschach, volketswil, wil, winterthur-muenzgasse, zuerich-hoengg (cro). Scope-Hook: Klasse `std-ds` am `#page-standort`-Wrapper, gesetzt nur im data-driven Branch.
 
-**Ausnahmen der Familie (unverändert):** Leaf-Branch `/standorte/st-gallen/` (Absolutschutz) und `/standorte/bottighofen/` (Leaf + Homepage-svc-grid-Slice); eigene Templates `/standorte/bern/` und `/standorte/luzern/` (Luzern-Template), `/standorte/zuerich-city/`, Kosten-Seiten (`/standorte/{basel,frauenfeld,kreuzlingen,luzern,zuerich}/kosten/`), Hub `/standorte/`, `/akupunktur-tcm-{basel,st-gallen,zuerich}/`, `/massage-*/`.
+**Ausnahmen der Familie (unverändert):** Leaf-Branch `/standorte/st-gallen/` (Absolutschutz) und `/standorte/bottighofen/` (Leaf + Homepage-svc-grid-Slice); eigene Templates `/standorte/bern/` und `/standorte/luzern/` (Luzern-Template), `/standorte/zuerich-city/`, Kosten-Seiten (`/standorte/{basel,frauenfeld,kreuzlingen,luzern,zuerich}/kosten/`) — Bern, Luzern, Zürich City und Kosten ×4 seit W1B-1 migriert (siehe unten), Hub `/standorte/`, `/akupunktur-tcm-{basel,st-gallen,zuerich}/`, `/massage-*/`.
 
 **Änderungen (alle aus freigegebenen Homepage-Mustern, home.css-Block mit `#page-standort.std-ds`-Scope):** Karten-Anchors `a.svc-card` ohne UA-Linkblau/Unterstreichung (vorher sichtbar unterstrichen — echter Live-Bug); Marketing-`btn-primary` als Pill (Form-Submit bleibt 14px); Dark-Band `sg-merged-cta` `#0d0d0d`→Rich Black; Zebra-Sektionen `#FAFAFA`→Weiss; svc-Card-Hover Rich Black + Fokusring. **Nachtrag:** `.city-card`-Hover Rich Black + Fokusring per Opt-in über bestehende Familien-Hooks (Beschwerden 153, Therapien 16, Standort-Template 10, `/standorte/`, `/akupunktur-in-der-naehe/`); bewusst ausgenommen: Homepage (hat es bereits), St. Gallen, Bottighofen, Zürich-Hub, `/akupunktur-tcm-st-gallen/`.
 
 **Offene Issues Standort-Familie (nicht umgesetzt):** (1) Bottighofen svc-Cards ohne sichtbaren Tastatur-Fokus; (2) Bottighofen eigene Kräuter-Card `article role=button` ohne Enter; (3) Bottighofen 8 Leaf-eigene `div.svc-card role=button` ohne Enter; (4) `div.city-card` mit onclick (19 Routen inkl. Standort-Template) nicht tastaturfokussierbar; (5) Sektionsflächen `#F7F8F9` statt Concrete (Folgekohorte); (6) Fliesstext `#0d0d0d` statt `#020B10` (visuell vernachlässigbar).
+
+### Wave 1B-1 · `.standort-scope`-Familie (10.10.2026, lokal, Freigabe ausstehend)
+
+**Kohorte (exakt 7 Routen):** `/standorte/{frauenfeld,kreuzlingen,luzern,zuerich}/kosten/`, `/standorte/bern/`, `/standorte/luzern/`, `/standorte/zuerich-city/`. **Hook:** bestehende Opt-in-Klasse `.standort-scope` (Alias-Remap Z. ~4969 + CTA-Regel); neu gesetzt nur am `<div class="akz">` der 4 Kosten-Bodies (`src/data/*-kosten-body.html`). `.akz` allein ist NIE Selektor (teilt sich mit `/akupunktur-st-gallen-kosten/`, `/akupunktur-tcm-st-gallen/`, `/akupunktur-tcm-zuerich/`). Reichweite build-verifiziert: `standort-scope` auf exakt 7 von 767 Routen.
+
+**Änderungen (home.css-Block «WAVE 1B-1», alle Selektoren mit `.standort-scope`):** Alias-Remap greift jetzt auch auf den Kosten-Seiten (Body-Links/CTA Legacy-Grün → Rich Black/Mint, CTA-Band `#2D9B6F` → Rich Black, Hero/Hinweisboxen `#EAF6F0` → Tint); Token-Remap `--black` → Rich Black, `--surface` → Concrete, `--muted` → `--mid`, `--green-mid` → `#BDF4DC` (Homepage-Wert), `--sh-btn(-hover)` → Mint-Schatten des Standort-Templates; Zebra `#FAFAFA` → Weiss (wie W1); Marketing-CTAs (`btn-primary/-secondary/-white`, Outline-CTAs im Dark-Band) Pill; `.section-label` Rich Black (wie Homepage/Template); `.usp-sub` `--mid`; `.usp-title` Rich Black; Zeit-/Micro-Badges Legacy-Grün-Tint → Concrete + `--border`.
+
+**Verifiziert (computed, 7 Routen × 360/390/430/768/1280/1440):** 0 Geometrie-Shifts, 0 Overflow; ausschliesslich Farb-/Flächen-/Radius-/CTA-Schatten-Transitions; 0 Legacy-Werte (`#2D9B6F`, `#1F7A54`, `rgba(47,163,107,…)`, `#EAF6F0`, `#F7F8F9`, `#FAFAFA`, `#0d0d0d`, `#888`) im routeneigenen Content; 0 Kontrast-Fails (AA) im routeneigenen Content (vorher 10/Kosten-Seite, 1 Bern, 1 Luzern); Tab-Reihenfolge, Ziele, dataLayer-Events, Akkordeons (Enter/Space, `<details>`), Wartelisten-Formulare Bern/Luzern (gemockter POST `/api/anfrage`, identischer Payload) paritätisch; einzige Fokus-Änderung: Kosten-CTA erhält den freigegebenen 3px-Rich-Black-Ring. HTML-Diff der Kosten-Seiten = nur die Klasse; Bern/Luzern/Zürich City byte-identisch.
+
+**Bewusst unverändert (dokumentierte Ausnahmen):** Formular-Submit der Wartelisten (10px, funktionale Control-Variante); WhatsApp-Grün; sitewide Chrome (Header, Footer `#0d0d0d`, Drawer, WhatsApp-Widget-CTA 12px, ~70 Kontrast-Fails pro Seite im Shared Chrome) → W6, nicht routenspezifisch.
+
+**Acceptance je Route:** `/standorte/zuerich-city/` **FULL** (routeneigener Content). Bern, Luzern, Kosten ×4 **PARTIAL** — offen nur Karten-Radien ausserhalb der 16px-Karte (Bern/Luzern `usp-card` 14px, `be-/lu-card` 24px; Kosten `akz-table-wrap` 14px) und Luzern `kt-feature`-Fläche `#F8FAF9` (nicht Palette). Severity: Low. Familienweit offen (auch Standort-Template): `btn-secondary` 14px und `#F7F8F9`-Flächen auf den 10 Template-Routen (W1-Nachzug).
 
 ## 6. Seiten-Archetypen
 
@@ -172,8 +185,8 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 | Familie | Routen | Status |
 |---|---|---|
 | Homepage | 1 | Kohorten 1–3c live (Hero, CTAs, Flächen, Karten, Fokus, native Karten-Links) |
-| Standorte (data-driven Template) | 10 | **W1 lokal** (Karten, Pill-CTAs, Dark-Band, Flächen, Hover/Fokus) — Freigabe offen |
-| Standorte (Ausnahmen: St. Gallen, Bottighofen, Bern, Luzern, Zürich City, Kosten ×5, Hub) | 11 | St. Gallen/Bottighofen geschützt; übrige offen (W1-Folge); Hub nur city-card-Hover (W1) |
+| Standorte (data-driven Template) | 10 | **W1 live** (`146e603`); offen: `btn-secondary` 14px, `#F7F8F9`-Flächen, div-city-cards |
+| Standorte (Ausnahmen: St. Gallen, Bottighofen, Bern, Luzern, Zürich City, Kosten ×5, Hub) | 11 | **W1B-1 lokal:** Zürich City FULL; Bern, Luzern, Kosten Frauenfeld/Kreuzlingen/Luzern/Zürich PARTIAL (nur Karten-Radien, Luzern kt-feature-Fläche); offen: Hub (nur Hover), Basel-Kosten (massage-city.css); geschützt: St. Gallen, Bottighofen |
 | Standort-Landingpages (`akupunktur-tcm-*`, `massage-*`, `akupunktur-in-der-naehe`, `akupunktur-st-gallen-kosten`) | 13 | offen; `/akupunktur-in-der-naehe/` nur city-card-Hover (W1) |
 | Therapien | 37 | 11 Leaves CRO-modernisiert (`.therapie-scope`); city-card-Hover (W1, 16 Routen); Rest W2 |
 | Beschwerden | 155 | `.symptom-scope`; city-card-Hover (W1, 153 Routen); Rest W3 |
