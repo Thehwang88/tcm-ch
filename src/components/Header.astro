@@ -187,8 +187,10 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
     if (!panel || !overlay || !burger) return;
     var closeBtn = panel.querySelector('.drw-close');
     var scrollY = 0;
+    panel.inert = true;
     function open() {
       panel.classList.add('open');
+      panel.inert = false;
       overlay.classList.add('open');
       scrollY = window.scrollY || window.pageYOffset || 0;
       document.body.style.position = 'fixed';
@@ -198,10 +200,11 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
       document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
       burger.setAttribute('aria-expanded', 'true');
-      if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 320);
+      if (closeBtn) setTimeout(function () { if (panel.classList.contains('open')) closeBtn.focus(); }, 320);
     }
     function close() {
       panel.classList.remove('open');
+      panel.inert = true;
       overlay.classList.remove('open');
       document.body.style.position = '';
       document.body.style.top = '';
@@ -212,12 +215,23 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
       window.scrollTo(0, scrollY);
       burger.setAttribute('aria-expanded', 'false');
     }
+    // Fokus zurueck auf den Burger nur bei echten Schliess-Aktionen (X, Overlay, Escape), nicht nach Link-Klick.
+    function dismiss() { close(); if (burger.getClientRects().length) burger.focus(); }
     burger.addEventListener('click', open);
-    overlay.addEventListener('click', close);
-    if (closeBtn) closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', dismiss);
+    if (closeBtn) closeBtn.addEventListener('click', dismiss);
     panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && panel.classList.contains('open')) close();
+      if (e.key === 'Escape' && panel.classList.contains('open')) dismiss();
+      if (e.key !== 'Tab' || !panel.classList.contains('open')) return;
+      var f = [].filter.call(panel.querySelectorAll('a[href],button:not([disabled]),summary,input:not([disabled]),[tabindex]:not([tabindex="-1"])'), function (el) {
+        return el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden';
+      });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1], a = document.activeElement;
+      if (!panel.contains(a)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
     });
   })();
 </script>
@@ -284,6 +298,14 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
      Shadow only when open, so no sliver leaks at the right edge when closed. */
   #siteDrawer { position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(420px, 100vw); z-index: 901; background: #f9f9f9; box-shadow: none; transform: translateX(100%); transition: transform var(--t-slow) var(--ease-out); display: flex; flex-direction: column; }
   #siteDrawer.open { transform: translateX(0); box-shadow: -1px 0 0 rgba(0,0,0,.05), -20px 0 60px rgba(0,0,0,.12); }
+  /* S1: geschlossener Drawer nicht fokussierbar; visibility erst nach dem Slide-out. */
+  #siteDrawer { transition: transform var(--t-slow) var(--ease-out), visibility 0s linear var(--t-slow); }
+  #siteDrawer:not(.open) { visibility: hidden; }
+  #siteDrawer.open { visibility: visible; transition-delay: 0s; }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+    #siteDrawer, #drawerOverlay, .drw-en-chev, .drw-link-arrow, .nav-links a, .nav-util, .nav-lang { transition: none; }
+  }
 
   .drw-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px 18px; border-bottom: 1px solid rgba(0,0,0,.07); flex-shrink: 0; background: var(--white); }
   .drw-logo-text { display: flex; flex-direction: column; gap: 4px; }

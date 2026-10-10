@@ -11,7 +11,7 @@ function nav(page, id){
 }
 
 function drawerOpen(){
-var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.add('open');
+var _d=document.getElementById('siteDrawer'); if(_d){_d.classList.add('open');_d.inert=false;}
 document.body.classList.add('drawer-open');
 if(window.__tcmNavShow) window.__tcmNavShow();
 var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.add('open');
@@ -24,15 +24,15 @@ document.body.style.width='100%';
 document.body.style.overflow='hidden';
 var btn=document.getElementById('navMenuBtn');
 if(btn) btn.setAttribute('aria-expanded','true');
-// focus trap
+// Fokus in den Drawer (nur falls er nach der Animation noch offen ist)
 setTimeout(function(){
-var first=document.querySelector('#siteDrawer .drw-close');
+var first=document.querySelector('#siteDrawer.open .drw-close');
 if(first) first.focus();
 },340);
 }
 
 function drawerClose(){
-var _d=document.getElementById('siteDrawer'); if(_d) _d.classList.remove('open');
+var _d=document.getElementById('siteDrawer'); if(_d){_d.classList.remove('open');_d.inert=true;}
 document.body.classList.remove('drawer-open');
 var _o=document.getElementById('drawerOverlay'); if(_o) _o.classList.remove('open');
 document.body.style.position='';
@@ -46,6 +46,37 @@ if(typeof window.__drawerScrollY==='number'){window.scrollTo({top:window.__drawe
 var btn=document.getElementById('navMenuBtn');
 if(btn) btn.setAttribute('aria-expanded','false');
 }
+
+/* Fokus zurueck auf den Menue-Button - nur fuer echte Schliess-Aktionen
+   (Escape, X-Button, Overlay), nie nach einer Link-Navigation. */
+function drawerRestoreFocus(){
+var b=document.getElementById('navMenuBtn');
+if(b&&b.getClientRects().length) b.focus();
+}
+
+/* S1 Navigations-A11y: geschlossene Panels inert, Fokus-Rueckgabe, Fokus-Falle (Tab-Wrap). */
+(function(){
+var d=document.getElementById('siteDrawer');
+if(d&&!d.classList.contains('open')) d.inert=true;
+var mp=document.getElementById('navMorePanel');
+if(mp&&!mp.classList.contains('open')) mp.inert=true;
+document.addEventListener('click',function(e){
+  if(e.target.closest&&e.target.closest('#siteDrawer .drw-close, #drawerOverlay')) drawerRestoreFocus();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Tab') return;
+  var dr=document.getElementById('siteDrawer');
+  if(!dr||!dr.classList.contains('open')) return;
+  var f=[].filter.call(dr.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select,textarea,summary,[tabindex]:not([tabindex="-1"])'),function(el){
+    return el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden';
+  });
+  if(!f.length) return;
+  var first=f[0], last=f[f.length-1], a=document.activeElement;
+  if(!dr.contains(a)){e.preventDefault();first.focus();}
+  else if(e.shiftKey&&a===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&a===last){e.preventDefault();first.focus();}
+});
+})();
 
 function drawerToggle(btn){
 var section=btn.closest('.drw-section');
@@ -94,12 +125,13 @@ function navMoreToggle(){
   var open=btn.getAttribute('aria-expanded')==='true';
   btn.setAttribute('aria-expanded', open?'false':'true');
   panel.classList.toggle('open', !open);
+  panel.inert=open;
 }
 (function(){
   function closeMore(){
     var btn=document.getElementById('navMoreBtn');
     var panel=document.getElementById('navMorePanel');
-    if(btn&&btn.getAttribute('aria-expanded')==='true'){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');}
+    if(btn&&btn.getAttribute('aria-expanded')==='true'){btn.setAttribute('aria-expanded','false');panel.classList.remove('open');panel.inert=true;}
   }
   document.addEventListener('click',function(e){
     var li=e.target.closest&&e.target.closest('.nav-more-li');
@@ -115,7 +147,7 @@ function navMoreToggle(){
     closeMore();
     if(inMore){var b=document.getElementById('navMoreBtn'); if(b) b.focus();}
     var d=document.getElementById('siteDrawer');
-    if(d&&d.classList.contains('open')&&typeof drawerClose==='function') drawerClose();
+    if(d&&d.classList.contains('open')&&typeof drawerClose==='function'){drawerClose();drawerRestoreFocus();}
   });
 })();
 
