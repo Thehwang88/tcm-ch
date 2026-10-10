@@ -104,3 +104,14 @@ nirgends ausgeliefert (0 Treffer in Build und Worker) und bleiben unverändert.
 Prüfung: Build ok (742 URLs), Health-Audit 0 Orphans / Ownership-Gate 0 Fehler, Professional-Check 0 Fehler,
 JSON-LD gültig. Red Flags und Abklärungshinweise: 171 Hinweis-Textknoten der 25 Leaf-Dateien gegen `main`
 verglichen, 170 identisch, 1 geändert ("nach ärztlicher Freigabe; gut untersucht" → "nach ärztlicher Freigabe").
+
+## Nachtrag 2: Evidenz-Check der zwei verbliebenen Formulierungen
+
+| Seite | Bezug | Vorher | Nachher | Bewertung |
+|---|---|---|---|---|
+| schlafstoerungen (Kurzüberblick "TCM-Begleitung") | Akupunktur und Kräuterformeln bei Insomnie | "… sind gut untersucht. Besonders wirksam bei stressassoziierter, nervöser und vegetativer Schlafstörung." | "… können bei Schlafstörungen ergänzend eingesetzt werden; die Studienlage ist uneinheitlich." | Systematische Reviews bewerten die Evidenz überwiegend als niedrig bzw. unzureichend; "besonders wirksam" ist eine unbelegte Überlegenheitsaussage |
+| knieschmerzen (Einleitung) | Schmerzreduktion, Entlastung der Muskelketten, Reha-Unterstützung | "Was gut untersucht begleitend möglich ist: …" | "Was begleitend möglich ist: …" | Schmerzeffekte bei Kniearthrose klein und in Sham-kontrollierten Studien uneinheitlich; Muskelketten/Reha nicht untersucht |
+
+Unverändert (nicht Teil des Auftrags): Kurzüberblick auf knieschmerzen "TCM – gut belegt: … mehrere positive
+RCTs und Cochrane-Review. Eines der stärksten orthopädischen TCM-Felder." sowie Kopien in `bodyHtml` von
+`src/data/beschwerden.ts` (werden nicht ausgeliefert).
