@@ -67,6 +67,8 @@ Ist-Zustand: 20+ verschiedene Queries in home.css (900×43, 768×27, 600×20, 56
 
 Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — Varianten `--solid` (Mint/Rich-Black), `--outline` (Rich-Black), `--ghost`, `--whatsapp` (geschütztes Grün), Grössen `--lg/--sm`. Migration je Sektion mit Klick-Ziel- und Tracking-Parität; alte Klassen bleiben, bis ihr letzter Konsument migriert ist. Kanonischer Radius (12px vs. Pill): **PENDING BRAND GUIDELINES / Entscheid Simon.**
 
+**Cohort 3b-A (umgesetzt):** Homepage-Flächenpalette auf exakt Weiss · Concrete · `--brand-tint` · Rich Black (+ Hero-Mint): wa-section und home-cta-Band `#0d0d0d`→`#020B10` (ui.css, `#home-content`-Scope), svc-section-Zebra-Unfall (`.section:nth-child(even)` global) nur auf der Homepage →Weiss, Formular-Sektion inline `--surface`→`--brand-surface`. home.css und alle Fremdrouten unberührt; s-offer/kkc waren bereits auf Token.
+
 ## 6. Seiten-Archetypen
 
 | Archetyp | Quelle | Status |

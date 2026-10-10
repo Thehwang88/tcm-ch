@@ -37,6 +37,17 @@
 .tcm-btn--outline{min-height:48px;background:transparent;color:#0d0d0d;border:1.5px solid rgba(13,13,13,.22);padding:14px 24px;font-size:15px;font-weight:600;white-space:nowrap}
 .tcm-btn--outline:hover{background:rgba(13,13,13,.06);border-color:rgba(13,13,13,.4);transform:none}
 @media(max-width:600px){#s-standorte .tcm-btn{justify-content:center;width:100%}}
+
+/* ── DS-Cohort-3b-A (10.10.2026): Homepage-Flaechen auf die Softriver-Palette.
+   Nur hier (ui.css laedt ausschliesslich auf der Homepage; ID-Scope schlaegt
+   die globalen Klassen-/Zebra-Regeln). home.css bleibt unangetastet:
+   - Dark-Baender von Legacy-#0d0d0d auf Rich Black (--brand-black);
+   - .svc-section neutralisiert NUR hier die globale
+     .section:nth-child(even)-Zebra-Regel (#FAFAFA -> Weiss). */
+#home-content .wa-section{background:var(--brand-black)}
+#home-content .cta-band.home-cta-merged{background:var(--brand-black)}
+#home-content .svc-section{background:#fff}
+
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
   .tcm-btn:hover,.tcm-btn:active{transform:none}
