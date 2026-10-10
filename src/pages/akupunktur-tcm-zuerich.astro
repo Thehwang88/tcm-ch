@@ -5,6 +5,7 @@ import SpaPage from '../layouts/SpaPage.astro';
 import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
 import { zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../data/zuerich-termin';
 import StickyCta from '../components/StickyCta.astro';
+import BrandSignature from '../components/BrandSignature.astro';
 
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
 // statt hartcodiert - noch nicht anfragbare Standorte (terminAb) erscheinen erst ab Stichtag.
@@ -14,6 +15,11 @@ const body = rawBody.replace(
   ZH_ALT,
   `<select class="form-select" name="standort" data-zh-termin="${zhTerminData({ html: true })}"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option data-zh-last>Anderer Standort / in meiner Nähe</option></select>`,
 ) + zhTerminScript;
+
+// Brand Signature direkt vor dem End-CTA (nach FAQ): Standortfinder, Quartiere und Funnel bleiben ungestört.
+const END_CTA = '<section class="cta-band" style="background:#F2F4F2;padding:48px 0">';
+const endCtaAt = body.lastIndexOf(END_CTA);
+if (endCtaAt < 0) throw new Error('akupunktur-tcm-zuerich: End-CTA nicht gefunden');
 
 const title = 'TCM Zürich & Akupunktur Zürich | TCM.ch';
 const description =
@@ -69,7 +75,8 @@ const schema = [
   },
 ];
 ---
-<SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body} schema={schema}>
+<SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body.slice(0, endCtaAt)} bodyAfter={body.slice(endCtaAt)} schema={schema}>
   <!-- Mobile Sticky-CTA (bestehende Komponente; erscheint erst nach dem Hero) -->
   <StickyCta prefill="Hallo, ich suche eine TCM-Praxis in Zürich." formTarget="#zh-funnel" heroSelector=".lsr-hero" />
+  <BrandSignature slot="body-insert" />
 </SpaPage>

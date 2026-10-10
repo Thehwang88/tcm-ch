@@ -23,8 +23,10 @@ interface Props {
    * Der Sitemap-Generator lässt solche Seiten automatisch weg (scripts/gen-sitemap.mjs).
    */
   canonicalTo?: string;
+  /** Optionaler zweiter Body-Teil: der Slot «body-insert» rendert zwischen body und bodyAfter. */
+  bodyAfter?: string;
 }
-const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo } = Astro.props;
+const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo, bodyAfter } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -34,6 +36,7 @@ const enTwin = canonicalTo ? null : enTwinPath(path); // EN alternate (null if n
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+const htmlAfter = bodyAfter?.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -90,7 +93,7 @@ const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <body>
     <DeHeader />
     <slot />
-    <Fragment set:html={html} />
+    <Fragment set:html={html} /><slot name="body-insert" />{htmlAfter && <Fragment set:html={htmlAfter} />}
     <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>

@@ -8,7 +8,6 @@
 import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
-import BrandSignature from '../components/BrandSignature.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
 
@@ -80,7 +79,6 @@ const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
   <body>
     <DeHeader />
     <Fragment set:html={homeHtml} />
-    <BrandSignature />
     <Footer />
     <script src="/header.js" is:inline defer></script>
     <script src="/home.js" is:inline defer></script>
