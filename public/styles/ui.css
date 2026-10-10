@@ -48,6 +48,16 @@
 #home-content .cta-band.home-cta-merged{background:var(--brand-black)}
 #home-content .svc-section{background:#fff}
 
+/* ── DS-Cohort-3c-A (10.10.2026): EINE Karten-Hover-Sprache auf der Homepage.
+   city-/svc-Cards hoverten Mint-Tint (prae-Refinement-04); hier - und nur
+   hier - auf die monochrome Rich-Black-Border der glb-/hf-Karten angeglichen.
+   translateY/Shadow/Transition der Legacy-Regeln bleiben unberuehrt
+   (nur border-color wird ueberschrieben); Fremdrouten behalten Mint. */
+/* !important + hoehere Spezifitaet noetig: die Legacy-Hover-Schicht
+   (#home-content .city-card:hover{...!important}) laedt nach ui.css. */
+#home-content #s-standorte .city-card:hover,
+#home-content .svc-section .svc-card:hover{border-color:var(--brand-black)!important}
+
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
   .tcm-btn:hover,.tcm-btn:active{transform:none}

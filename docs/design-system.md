@@ -69,6 +69,8 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 
 **Cohort 3b-A (umgesetzt):** Homepage-Flächenpalette auf exakt Weiss · Concrete · `--brand-tint` · Rich Black (+ Hero-Mint): wa-section und home-cta-Band `#0d0d0d`→`#020B10` (ui.css, `#home-content`-Scope), svc-section-Zebra-Unfall (`.section:nth-child(even)` global) nur auf der Homepage →Weiss, Formular-Sektion inline `--surface`→`--brand-surface`. home.css und alle Fremdrouten unberührt; s-offer/kkc waren bereits auf Token.
 
+**Cohort 3c-A (umgesetzt):** Karten-Angleichung Homepage — city-/svc-Card-Hover von Mint-Tint auf Rich-Black-Border (`#home-content`-Scope, Fremdrouten behalten Mint; translateY/Shadow unverändert); hf-item-Radius 14→`--r-card` 16 (Inline-Styleblock); Kassen-Kompakt-Box 14→16px + `#fafafa`→Weiss (inline). Kein neues Card-Primitive — die 16px/`--border`/`--sh-md`-Sprache ist de-facto-Standard, Shadow-Zweiteilung (Content- vs. Link-Karten) bewusst beibehalten.
+
 ## 6. Seiten-Archetypen
 
 | Archetyp | Quelle | Status |
