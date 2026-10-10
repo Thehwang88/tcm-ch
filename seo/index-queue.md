@@ -25,7 +25,8 @@ Rechner, nicht diese Repo-Datei, und klickt pro URL in der GSC-URL-Prüfung "Ind
 (ca. 11 URLs/Tag, Kontingent pro Google-Konto, geteilt mit physio.ch). Das ist eine Crawl-Anfrage,
 keine Indexierungsgarantie. Erledigt-Vermerke landen nur in der lokalen Kopie: Die Repo-Datei hat
 keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht massgeblich.
-Änderungen hier wirken erst, wenn die lokale Kopie gepullt bzw. abgeglichen wird.
+Änderungen hier wirken erst, wenn die lokale Kopie gepullt bzw. abgeglichen wird
+(Ablauf: `seo/index-queue-sync.md`).
 
 ## Offen
 
