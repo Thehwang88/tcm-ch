@@ -78,5 +78,13 @@ const schema = [
 <SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body.slice(0, endCtaAt)} bodyAfter={body.slice(endCtaAt)} schema={schema}>
   <!-- Mobile Sticky-CTA (bestehende Komponente; erscheint erst nach dem Hero) -->
   <StickyCta prefill="Hallo, ich suche eine TCM-Praxis in Zürich." formTarget="#zh-funnel" heroSelector=".lsr-hero" />
-  <BrandSignature slot="body-insert" />
+  <BrandSignature
+    slot="body-insert"
+    imageSrc="/images/tcm-ch-crew-zuerich-1254.webp"
+    imageSrcset="/images/tcm-ch-crew-zuerich-640.webp 640w, /images/tcm-ch-crew-zuerich-960.webp 960w, /images/tcm-ch-crew-zuerich-1254.webp 1254w"
+    imageWidth={1254}
+    imageHeight={1254}
+    imagePosition="47% 60%"
+    imageAlt="Drei Personen in grünen TCM.ch CREW Jacken auf einer Treppe in Zürich, mit dem Grossmünster im Hintergrund."
+  />
 </SpaPage>

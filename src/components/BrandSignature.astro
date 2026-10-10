@@ -5,6 +5,12 @@
  */
 interface Props {
   imageSrc?: string;
+  imageSrcset?: string;
+  imageSizes?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  /** CSS object-position, damit Motiv/Personen im Ausschnitt bleiben. */
+  imagePosition?: string;
   imageAlt?: string;
   eyebrow?: string;
   heading?: string;
@@ -15,6 +21,11 @@ interface Props {
 }
 const {
   imageSrc,
+  imageSrcset,
+  imageSizes = '(max-width: 760px) 100vw, 50vw',
+  imageWidth,
+  imageHeight,
+  imagePosition = 'center',
   imageAlt = 'Das TCM.ch Team',
   eyebrow = 'DAS IST TCM.CH',
   heading = 'Mehr als eine Praxis.',
@@ -27,7 +38,7 @@ const {
 <section class:list={['brand-signature', { 'brand-signature--reverse': reverse }]} aria-labelledby="brand-signature-title">
   <div class="brand-signature__media">
     {imageSrc ? (
-      <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+      <img src={imageSrc} srcset={imageSrcset} sizes={imageSrcset ? imageSizes : undefined} width={imageWidth} height={imageHeight} alt={imageAlt} loading="lazy" decoding="async" style={`object-position:${imagePosition}`} />
     ) : (
       <div class="brand-signature__placeholder">
         <img src="/images/logo/tcm-ch-logo-kliniken-black.svg" alt="TCM.ch Kliniken" width="846" height="289" loading="lazy" decoding="async" />
@@ -44,7 +55,7 @@ const {
   </div>
 </section>
 <style>
-  .brand-signature{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:clamp(480px,40vw,620px);background:#14532d;color:#fff;overflow:hidden}
+  .brand-signature{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:clamp(480px,46vw,680px);background:#14532d;color:#fff;overflow:hidden}
   .brand-signature--reverse .brand-signature__media{order:2}
   .brand-signature__media{position:relative;overflow:hidden;background:#1ae288}
   .brand-signature__media > img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
@@ -58,5 +69,5 @@ const {
   .brand-signature__link{display:inline-flex;gap:14px;align-items:center;border-bottom:2px solid #1ae288;padding-bottom:8px;text-decoration:none;color:#fff;font-size:16px;font-weight:700}
   .brand-signature__link:hover{color:#1ae288}
   .brand-signature__link:focus-visible{color:#1ae288;outline:2px solid #1ae288;outline-offset:6px}
-  @media(max-width:760px){.brand-signature{grid-template-columns:1fr;min-height:0}.brand-signature__media{aspect-ratio:4/3}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:48px 24px 56px}.brand-signature h2{font-size:clamp(42px,12vw,56px)}}
+  @media(max-width:760px){.brand-signature{grid-template-columns:1fr;min-height:0}.brand-signature__media{aspect-ratio:1/1}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:48px 24px 56px}.brand-signature h2{font-size:clamp(42px,12vw,56px)}}
 </style>
