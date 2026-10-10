@@ -1,0 +1,67 @@
+---
+/**
+ * Reusable editorial brand signature. Replace imageSrc with approved team
+ * photography after the Zürich shoot; keep the copy/layout consistent.
+ */
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  reverse?: boolean;
+}
+const {
+  imageSrc,
+  imageAlt = 'Das TCM.ch Team',
+  eyebrow = 'DAS IST TCM.CH',
+  heading = 'Moderne TCM. Gemeinsam gedacht.',
+  description = 'Menschen, die traditionelle chinesische Medizin mit einer modernen Haltung verbinden. Persönlich, engagiert und an mehreren Standorten in der Schweiz.',
+  ctaHref = '/ueber-uns/',
+  ctaLabel = 'TCM.ch kennenlernen',
+  reverse = false,
+} = Astro.props;
+---
+<section class:list={['brand-signature', { 'brand-signature--reverse': reverse }]} aria-labelledby="brand-signature-title">
+  <div class="brand-signature__media">
+    {imageSrc ? (
+      <img src={imageSrc} alt={imageAlt} loading="lazy" decoding="async" />
+    ) : (
+      <div class="brand-signature__placeholder" role="img" aria-label="Platzhalter für ein zukünftiges Teamfoto aus Zürich">
+        <span class="brand-signature__placeholder-mark">tcm.ch</span>
+        <span class="brand-signature__placeholder-note">BRAND PHOTOGRAPHY · COMING SOON</span>
+      </div>
+    )}
+  </div>
+  <div class="brand-signature__content">
+    <div class="brand-signature__inner">
+      <span class="brand-signature__eyebrow">{eyebrow}</span>
+      <h2 id="brand-signature-title">{heading}</h2>
+      <p>{description}</p>
+      <a href={ctaHref} class="brand-signature__link">{ctaLabel}<span aria-hidden="true">↗</span></a>
+    </div>
+    <span class="brand-signature__foot" aria-hidden="true">PEOPLE · PRACTICE · PROGRESS</span>
+  </div>
+</section>
+<style>
+  .brand-signature{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:470px;background:#14532d;color:#f5f7ef;overflow:hidden}
+  .brand-signature--reverse .brand-signature__media{order:2}
+  .brand-signature__media{position:relative;min-height:470px;overflow:hidden;background:#1ae288}
+  .brand-signature__media img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+  .brand-signature__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vw,64px);background:linear-gradient(135deg,#1ae288 0%,#21cb7c 65%,#159e63 100%);color:#071b13}
+  .brand-signature__placeholder:after{content:"";position:absolute;width:58%;aspect-ratio:1;border:1px solid rgba(7,27,19,.2);border-radius:50%;right:-16%;top:9%;pointer-events:none}
+  .brand-signature__placeholder-mark{font-family:Figtree,Arial,sans-serif;font-size:clamp(54px,8vw,130px);font-weight:800;letter-spacing:-.085em;line-height:1;position:relative;z-index:1}
+  .brand-signature__placeholder-note{font-size:11px;font-weight:800;letter-spacing:.18em;position:relative;z-index:1}
+  .brand-signature__content{padding:clamp(34px,5vw,86px);display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+  .brand-signature__inner{max-width:550px}
+  .brand-signature__eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;color:#70e9a6;margin-bottom:30px}
+  .brand-signature h2{font-family:Figtree,Arial,sans-serif;font-size:clamp(32px,3.6vw,58px);font-weight:800;letter-spacing:-.055em;line-height:1.08;margin:0 0 24px;color:inherit}
+  .brand-signature p{font-size:clamp(15px,1.25vw,18px);line-height:1.7;max-width:460px;color:rgba(255,255,255,.82);margin:0 0 32px}
+  .brand-signature__link{display:inline-flex;gap:22px;align-items:center;border-bottom:1px solid #70e9a6;padding-bottom:9px;text-decoration:none;color:#f5f7ef;font-size:15px;font-weight:750}
+  .brand-signature__link:hover,.brand-signature__link:focus-visible{color:#70e9a6}
+  .brand-signature__foot{font-size:10px;letter-spacing:.18em;font-weight:700;color:rgba(255,255,255,.48)}
+  @media(max-width:760px){.brand-signature{grid-template-columns:1fr}.brand-signature__media{min-height:300px;aspect-ratio:4/3}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:38px 25px 34px;gap:40px}.brand-signature__eyebrow{margin-bottom:20px}.brand-signature h2{font-size:clamp(34px,8vw,46px)}.brand-signature__placeholder-mark{font-size:clamp(60px,16vw,100px)}}
+  @media(prefers-reduced-motion:reduce){.brand-signature *{scroll-behavior:auto}}
+</style>
