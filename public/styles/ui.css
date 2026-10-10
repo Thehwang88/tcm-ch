@@ -66,6 +66,12 @@
 #home-content #s-standorte .city-card:focus-visible,
 #home-content .svc-section .svc-card:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
 
+/* ── DS-Cohort-3c-C (10.10.2026): Kraeuter-Feature-Card als native <a>.
+   Neutralisiert die UA-Link-Optik. Die 8 svc-Cards tragen die Paritaet
+   inline (Massage-Card-Praezedenz), weil ihr Grid zur Buildzeit auch nach
+   /standorte/bottighofen/ kopiert wird, wo ui.css nicht laedt. */
+#home-content a.kt-feature{color:inherit;text-decoration:none}
+
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
   .tcm-btn:hover,.tcm-btn:active{transform:none}

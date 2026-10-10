@@ -73,6 +73,19 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 
 **Cohort 3c-B (umgesetzt):** `:focus-visible`-Ring für city- und svc-Cards der Homepage (3px `rgba(2,11,16,.55)`, Offset 3px; ui.css). **Bekannte Lücke:** die 8 svc-Cards sind `<div role="button" tabindex="0" onclick=…>` ohne Enter/Space-Aktivierung (kein keydown-Handler in home.js) — eigene Kohorte.
 
+**Cohort 3c-C (umgesetzt):** Die 8 svc-Cards und die Kräutertherapie-Feature-Card der Homepage sind native `<a href="/therapien/<slug>/">` statt `div/article role="button" onclick="nav(…)"` (Massage-Card war bereits das Vorbild). Gewinn: Enter/Middle-Click/neuer Tab/Kontextmenü nativ, korrekte Link-Semantik, Funktion ohne JavaScript, kein verschachteltes interaktives Element und keine Doppel-Aktivierung mehr in der Kräuter-Card (innerer `<button class="kt-cta">` → `<span>`). Parität: die 8 svc-Anchors tragen `style="text-decoration:none;color:inherit"` inline (Massage-Präzedenz) — eine `a.svc-card`-Regel in der sitewide home.css hätte 106 Routen mit bestehenden Legacy-`<a class="svc-card">` getroffen; die Kräuter-Card nutzt die homepage-only Regel in ui.css. **Scope (explizit freigegeben):** Homepage **und** `/standorte/bottighofen/` (siehe Build-Abhängigkeiten). **SEO:** freigegeben +9 interne Links auf der Homepage, +8 auf Bottighofen; Ziele identisch zu `nav()`. **Bestand:** auf den übrigen Routen existieren `svc-card` weiterhin als Legacy-Implementierung (115 Routen mit der Klasse, 26 davon mit `onclick`) — unverändert, Migration nur in eigener Kohorte. **GTM:** Container liegt ausserhalb des Repos; klassenbasierte Click-Trigger matchen weiter, ein «Just Links»-Trigger würde für diese 9 Karten neu feuern — im GTM-Interface zu prüfen.
+
+### Build-Abhängigkeiten von `home-body.html` (PFLICHT-Check)
+
+`src/data/home-body.html` ist **nicht** homepage-exklusiv. Teile werden zur Buildzeit in andere Routen kopiert:
+
+| Quelle (home-body) | Ziel-Route | Mechanik |
+|---|---|---|
+| `<section id="s-offer">` | `/therapien/shiatsu/` | `src/pages/therapien/[slug].astro` slict den Block vor `therapie-cities-section` |
+| `<div class="svc-grid">` (8 Therapie-Karten) | `/standorte/bottighofen/` | `src/pages/standorte/[slug].astro` ersetzt das Leaf-Grid 1:1 durch das Homepage-Grid |
+
+Weitere Konsumenten von `home-body.html`: `BrandMarquee.astro`, `akupunktur-in-der-naehe.astro` (derzeit ohne Diff-Wirkung bei den bisherigen Kohorten). **Regel:** Bevor eine Änderung an `home-body.html` als «homepage-only» bezeichnet wird, ist ein Voll-Diff aller generierten Routen Pflicht und `grep -rl home-body src/` auszuwerten. Homepage-only-Styles in `ui.css` wirken in den kopierten Blöcken **nicht** (ui.css lädt nur auf `/`).
+
 ## 6. Seiten-Archetypen
 
 | Archetyp | Quelle | Status |
