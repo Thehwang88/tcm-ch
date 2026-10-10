@@ -1,0 +1,28 @@
+/* ============================================================
+   TCM.ch UI-Primitives (DS-Cohort-2a, 10.10.2026)
+   Namespaced (.tcm-*) gegen Kollisionen mit Legacy-.btn-Regeln.
+   Nutzt ausschliesslich Tokens aus /styles/tokens.css.
+   Geladen bisher NUR auf der Homepage (index.astro); sitewide-
+   Verlinkung erst mit der Nav/Footer-Kohorte.
+   Brand-Status: Pill = freigegeben (Hero-Referenz); Mint-Primär-CTA
+   auf Weiss folgt deployten Mustern, final PENDING BRAND GUIDELINES
+   (PDF liegt ausserhalb des Repos) - siehe docs/design-system.md §5.
+   ============================================================ */
+.tcm-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  /* Box-Metrik bewusst identisch zur Legacy-.glb-btn (46px hoch, padding 14/24):
+     Migration darf NICHTS verschieben; 46px erfuellt das 44px-Touch-Minimum. */
+  min-height:44px;padding:14px 24px;border:0;border-radius:var(--r-pill,999px);
+  font-family:var(--font-sans);font-size:15.5px;font-weight:700;line-height:normal;
+  text-decoration:none;cursor:pointer;
+  transition:background var(--t-base,200ms) var(--ease-in-out,ease),
+             color var(--t-base,200ms) var(--ease-in-out,ease),
+             transform var(--t-fast,150ms) var(--ease-out,ease);
+}
+.tcm-btn:hover{transform:translateY(-1px)}
+.tcm-btn:active{transform:translateY(0)}
+.tcm-btn:focus-visible{outline:3px solid rgba(2,11,16,.4);outline-offset:3px}
+
+/* Primär-CTA auf hellen Flaechen: Mint-Flaeche, Rich-Black-Text (11.6:1). */
+.tcm-btn--mint{background:var(--surface-brand);color:var(--text-on-brand)}
+.tcm-btn--mint:hover{background:var(--brand-hover);color:var(--text-on-brand)}

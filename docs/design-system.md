@@ -61,7 +61,9 @@ Ist-Zustand: 20+ verschiedene Queries in home.css (900×43, 768×27, 600×20, 56
 | Therapie-Hero | `.tsr-btn-primary`, `.tsr-btn-ghost` | 11 Therapieseiten |
 | Form | `.form-submit` | Formulare |
 
-Zielbild (Cohort 2): EIN `.btn`-System in neuem `public/styles/ui.css` — Varianten `--solid` (Mint/Rich-Black), `--outline` (Rich-Black), `--ghost`, `--whatsapp` (geschütztes Grün), Grössen `--lg/--sm`. Migration je Sektion mit Klick-Ziel- und Tracking-Parität; alte Klassen bleiben, bis ihr letzter Konsument migriert ist. Kanonischer Radius (12px vs. Pill): **PENDING BRAND GUIDELINES / Entscheid Simon.**
+**Cohort 2a (umgesetzt):** `public/styles/ui.css` mit namespaced `.tcm-btn` + `.tcm-btn--mint` (Pill 999px, min-height 44px, `--surface-brand`/`--text-on-brand`, Hover `--brand-hover`, `:focus-visible`-Outline). Erste Konsumenten: die beiden Homepage-`glb-btn` (Bibliothek- + FAQ-CTA). Befund dabei: Produktion renderte sie bereits Mint/Rich-Black (eine `#home-content .glb-btn`-Regel in home.css überschreibt die Inline-Farben per ID-Spezifität, nicht aber den Radius) — das sichtbare Delta der Migration ist exakt der freigegebene Wechsel 14px → Pill; Box-Metrik (46px, padding 14/24) bewusst identisch gehalten, null Layout-Shift. Die alten `.glb-btn`-Regeln (Inline-`<style>` im Body + home.css) bleiben vorerst als tote Regeln stehen (Dependency-Analyse: keine weiteren Konsumenten; Entfernung in einer Konsolidierungs-Kohorte). `ui.css` ist nur in `index.astro` verlinkt. s-offer-Buttons bewusst NICHT migriert (shiatsu-Slice ohne ui.css).
+
+Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — Varianten `--solid` (Mint/Rich-Black), `--outline` (Rich-Black), `--ghost`, `--whatsapp` (geschütztes Grün), Grössen `--lg/--sm`. Migration je Sektion mit Klick-Ziel- und Tracking-Parität; alte Klassen bleiben, bis ihr letzter Konsument migriert ist. Kanonischer Radius (12px vs. Pill): **PENDING BRAND GUIDELINES / Entscheid Simon.**
 
 ## 6. Seiten-Archetypen
 
