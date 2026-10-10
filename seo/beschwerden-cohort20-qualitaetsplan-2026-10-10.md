@@ -35,7 +35,10 @@ Median eigene Wörter /beschwerden/: 821. Der Ton ist medizinisch vorsichtig und
 | Kosten-Info doppelt (Abschnitt "Kosten und Krankenkasse" + FAQ "Was kostet die Behandlung") | alle 10 | 128 | Wiederholung, verwässert Eigenanteil |
 | Regionalblock "Wohnst du in …" (5 Städte, ~260 Wörter) | alle 10 | 59 | identischer Text, kein Bezug zur Beschwerde |
 
-Empfehlung: die beiden Kartentexte korrigieren (eigener, kleiner Commit zur Freigabe; 28 live Seiten,
+**Erledigt 10.10.2026:** Moxibustion-Karte jetzt "Wärmetherapie mit Beifuss, oft ergänzend eingesetzt"
+(26 Leaf-Dateien, davon 25 live; kinderwunsch.html wird nicht gebaut), Kräuter-Karte auf den 5 Seiten ohne
+Hautbezug jetzt "Auf deine Medikamente abgestimmt" (beides bestehende Formulierungen anderer Seiten).
+Akne und Schuppenflechte behalten den Hautbezug. Ursprüngliche Empfehlung: die beiden Kartentexte korrigieren (eigener, kleiner Commit zur Freigabe; 28 live Seiten,
 der Text steht je Leaf-Datei in `src/data/symptom-leaves/`, nicht zentral). Kosten-Dublette und Regionalblock nur auf den Pilotseiten testweise reduzieren und den
 Effekt messen, bevor die Vorlage angefasst wird.
 
