@@ -65,9 +65,10 @@ const clinicLd: Record<string, unknown> = {
 if (openingHours.length) clinicLd.openingHours = openingHours;
 // TCM.ch-operated location: same entity as the DE page (@id + name), so DE/EN describe one clinic.
 const deStandort = getStandort(id);
-if (!clinic.betreiber && deStandort?.seo?.schemaName) {
+const deName = clinic.schemaName ?? deStandort?.seo?.schemaName ?? (deStandort ? `TCM.ch ${deStandort.stadt}` : undefined);
+if (!clinic.betreiber && deName) {
   clinicLd['@id'] = `https://tcm.ch/standorte/${id}/`;
-  clinicLd.name = deStandort.seo.schemaName;
+  clinicLd.name = deName;
 }
 // Partner practice: describe the real operator entity (same @id as the DE page), TCM.ch as network only.
 if (clinic.betreiber) {

@@ -33,6 +33,8 @@ export interface Clinic {
    *  Praxistelefon); die TCM.ch-Nummer erscheint nur als «Terminkoordination TCM.ch».
    *  Keine Bewertungen der Betreiberin auf TCM.ch übernehmen. */
   betreiber?: { name: string; marke: string; url: string; telefon: string; quelle: string };
+  /** Schema-Name, falls die Seite nicht aus standorte.ts kommt (Legacy-Leaves St. Gallen, Bottighofen); DE und EN identisch. */
+  schemaName?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
   areaServed?: string[];
   /** Formular-Optionen, solange status 'planned' ist (statt der regulären Option), z. B. sofortige
@@ -44,11 +46,13 @@ export interface Clinic {
 export const clinics: Clinic[] = [
   { id: 'kreuzlingen', name: 'Kreuzlingen', city: 'Kreuzlingen', region: 'Lake Constance / Thurgau',
     street: 'Romanshornerstrasse 1', postalCode: '8280', phone: '+41 77 523 61 22',
+    // Betreiberin laut hwang.ch/standorte/kreuzlingen (abgerufen 11.10.2026).
+    betreiber: { name: 'Praxis Hwang Kreuzlingen', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/kreuzlingen', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
-    areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Konstanz', 'Meersburg'] },
+    areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Ermatingen', 'Konstanz'] },
 
   { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
-    street: 'Hauptstrasse 34', postalCode: '8598', phone: '+41 76 578 09 88',
+    street: 'Hauptstrasse 34', postalCode: '8598', phone: '+41 76 578 09 88', schemaName: 'TCM Pelican',
     openingHours: ['Mo 07:00-20:00', 'Tu-Fr 18:00-20:00', 'Sa 07:00-20:00'], geo: { lat: 47.6362, lng: 9.2167 }, status: 'operational',
     areaServed: ['Bottighofen', 'Kreuzlingen', 'Münsterlingen', 'Tägerwilen', 'Altnau', 'Konstanz', 'Frauenfeld'] },
 
@@ -79,6 +83,8 @@ export const clinics: Clinic[] = [
 
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
+    // Betreiberin laut hwang.ch/standorte/zurich-hongg (abgerufen 11.10.2026).
+    betreiber: { name: 'Praxis Hwang Zürich Höngg', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/zurich-hongg', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
@@ -111,7 +117,7 @@ export const clinics: Clinic[] = [
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
-    street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22',
+    street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM St. Gallen',
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
     areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 

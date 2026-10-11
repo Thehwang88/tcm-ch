@@ -138,16 +138,16 @@ export const standorte: Record<string, Standort> = {
     stadt: 'Kreuzlingen',
     seo: {
       title: 'TCM Kreuzlingen: Akupunktur & Chinesische Medizin | TCM.ch',
-      description: 'TCM Kreuzlingen, Romanshornerstrasse 1: Akupunktur, Tuina und Kräutertherapie der Partnerklinik von Praxis Hwang am Bodensee. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100%. Jetzt Termin anfragen.',
+      description: 'TCM & Akupunktur in Kreuzlingen, Romanshornerstrasse 1: Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. Anfrage und Terminkoordination über TCM.ch.',
       h1: 'TCM & Akupunktur <em>Kreuzlingen</em>',
-      schemaName: 'TCM.ch Kreuzlingen',
+      schemaName: 'Praxis Hwang Kreuzlingen',
     },
     hero: {
       banner: 'Standort Kreuzlingen',
       lead: 'Persönliche TCM, die dich wirklich ernst nimmt.',
-      sub: 'Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.',
+      sub: 'Die Praxis Hwang an der Romanshornerstrasse 1 ist Partnerpraxis im TCM.ch Netzwerk. Deine Anfrage koordinieren wir über TCM.ch.',
       image: '/images/hero-main.webp',
-      locationHook: 'Romanshornerstrasse 1, 8280 Kreuzlingen · Mo–Fr 7:30–19:30, Sa 7:30–16:30 · Partnerklinik von Praxis Hwang',
+      locationHook: 'Praxis Hwang · Romanshornerstrasse 1, 8280 Kreuzlingen · Öffnungszeiten laut Praxis: Mo–Fr 7:30–19:30, Sa 7:30–16:30',
     },
     nap: {
       strasse: 'Romanshornerstrasse 1',
@@ -163,27 +163,27 @@ export const standorte: Record<string, Standort> = {
       geo: { lat: 47.65, lng: 9.175 },
     },
     intro: {
-      body: '<h2>Deine TCM-Praxis in Kreuzlingen</h2><p>Kreuzlingen ist der langjährige Hauptstandort unseres Netzwerks. Hier hat TCM.ch angefangen, hier ist über die Jahre der grösste Teil unserer Erfahrung entstanden, und von hier aus sind die weiteren Praxen in der Ostschweiz gewachsen. Im Alltag merkst du das an eingespielten Abläufen, an einem Team, das sich kennt, und daran, dass sich auch kurzfristig noch ein Termin einrichten lässt.</p><p>TCM.ch Kreuzlingen ist eine <strong>Partnerklinik von <a href="https://hwang.ch/" target="_blank" rel="noopener">Praxis Hwang</a></strong>: Der Standort verbindet die langjährige lokale Erfahrung von Praxis Hwang mit dem TCM.ch Netzwerk für moderne Chinesische Medizin.</p><p>Behandelt wird an der Romanshornerstrasse 1, wenige Gehminuten vom Bahnhof Kreuzlingen. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur und individuell zusammengestellte Kräuterrezepturen. Wer chinesische Medizin in Kreuzlingen sucht, bekommt bei uns das vollständige Spektrum unter einem Dach statt einer einzelnen Methode.</p><p>Eine <strong>TCM-Praxis</strong> ist am Ende so gut wie die Leute, die darin arbeiten. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt, dein Akupunkteur hat eine geprüfte Ausbildung und eine eigene ZSR-Nummer. Deshalb übernimmt die Zusatzversicherung je nach Modell 80 bis 100 Prozent der Kosten. Was dein Vertrag hergibt, prüfen wir kostenlos, bevor du das erste Mal kommst. Alle Zahlen im Detail stehen unter <a href="/standorte/kreuzlingen/kosten/">Akupunktur Kosten Kreuzlingen</a>.</p>',
-      einzugsgebiet: '<h2>Wer aus der Region zu uns kommt</h2><p>Der grösste Teil unserer Patient:innen wohnt in Kreuzlingen selbst, in der Innenstadt, in Egelshofen, Kurzrickenbach oder Bernrain. Dazu kommen Menschen aus <strong>Tägerwilen</strong>, <strong>Bottighofen</strong>, <strong>Münsterlingen</strong> und <strong>Ermatingen</strong>, für die wir schlicht die nächste Adresse mit vollem TCM-Angebot sind. Wohnst du weiter Richtung mittlerer Thurgau, ist oft <a href="/standorte/frauenfeld/">TCM Frauenfeld</a> die kürzere Anfahrt.</p><p>Ein eigenes Thema ist <strong>Konstanz</strong>. Von der Grenze bis zu uns sind es wenige Minuten, und wir behandeln seit Jahren regelmässig deutsche Patient:innen und Grenzgänger:innen. Behandelt wird in der Schweiz, abgerechnet über eine Schweizer Zusatzversicherung: Wer hier arbeitet und entsprechend versichert ist, reicht die Rechnung genauso ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen und ohne Aufschlag. Was in deinem Fall gilt, klären wir vor dem ersten Termin, damit du weisst, woran du bist.</p>'
+      body: '<h2>Deine TCM-Praxis in Kreuzlingen</h2><p>Wer TCM in Kreuzlingen sucht, findet an der Romanshornerstrasse 1 die Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk.</p><p>Betreiberin der Praxis ist <strong><a href="https://www.hwang.ch/standorte/kreuzlingen" target="_blank" rel="noopener">Praxis Hwang</a></strong>. TCM.ch ist das Netzwerk dahinter: Über TCM.ch fragst du Termine an, wir koordinieren die Anfrage und beantworten Fragen zu Kosten und Krankenkasse.</p><p>Behandelt wird an der Romanshornerstrasse 1 in Kreuzlingen. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur und individuell zusammengestellte Kräuterrezepturen.</p><p>Eine <strong>TCM-Praxis</strong> ist am Ende so gut wie die Leute, die darin arbeiten. Die Registereinträge der Therapeut:innen sind oben bei jeder Person verlinkt. Ob und wie viel deine Zusatzversicherung übernimmt, hängt von Versicherer und Modell ab, häufig sind es 80 bis 100 Prozent. Was dein Vertrag hergibt, prüfen wir kostenlos, bevor du das erste Mal kommst. Alle Zahlen im Detail stehen unter <a href="/standorte/kreuzlingen/kosten/">Akupunktur Kosten Kreuzlingen</a>.</p>',
+      einzugsgebiet: '<h2>Wer aus der Region zu uns kommt</h2><p>Die Praxis liegt nah für ganz Kreuzlingen, von der Innenstadt über Egelshofen und Kurzrickenbach bis Bernrain. Kurz ist der Weg auch aus <strong>Tägerwilen</strong>, <strong>Bottighofen</strong>, <strong>Münsterlingen</strong>, <strong>Lengwil</strong>, <strong>Altnau</strong> und <strong>Ermatingen</strong>. Wohnst du weiter Richtung mittlerer Thurgau, ist oft <a href="/standorte/frauenfeld/">TCM Frauenfeld</a> die kürzere Anfahrt.</p><p>Ein eigenes Thema ist <strong>Konstanz</strong>. Die Grenze liegt nah. Behandelt wird in der Schweiz, abgerechnet über eine Schweizer Zusatzversicherung: Wer hier arbeitet und entsprechend versichert ist, reicht die Rechnung genauso ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen und ohne Aufschlag. Was in deinem Fall gilt, klären wir vor dem ersten Termin, damit du weisst, woran du bist.</p>'
     },
     anfahrt: {
-      oev: '<strong>Bahnhof Kreuzlingen</strong> und <strong>Bahnhof Kreuzlingen Hafen</strong> in wenigen Gehminuten erreichbar. S-Bahn-Linie S14 sowie Verbindungen nach Konstanz, Romanshorn und Schaffhausen. Mehrere Buslinien (Stadtbus Kreuzlingen) halten in der Nähe.',
-      autoParken: 'Anfahrt über A7 (Ausfahrt Kreuzlingen). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Stadthaus</strong>, <strong>Parkhaus Bärenplatz</strong>, Parkhaus Karussell.',
+      oev: 'Mit dem Zug bis <strong>Bahnhof Kreuzlingen</strong> oder <strong>Kreuzlingen Hafen</strong>, von dort weiter zur Romanshornerstrasse 1. Deine Verbindung planst du am einfachsten im SBB-Fahrplan.',
+      autoParken: '',
     },
     therapien: ['akupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'gesichtsakupunktur', 'elektroakupunktur', 'moxibustion', 'massage', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie'],
-    beschwerdenIntro: 'Diese Beschwerden sehen wir in unserer Praxis in Kreuzlingen besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
+    beschwerdenIntro: 'Häufige Anliegen, mit denen du in Kreuzlingen anfragen kannst. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.',
     beschwerden: ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'stress-burnout', 'reizdarm', 'kinderwunsch'],
     team: [],
     ablaufBlock: true,
     faqs: [
-      { q: 'Was bedeutet Partnerklinik von Praxis Hwang?', a: 'TCM.ch Kreuzlingen ist eine Partnerklinik von Praxis Hwang. Behandelt wirst du bei TCM.ch an der Romanshornerstrasse 1; der Standort verbindet die langjährige lokale Erfahrung von Praxis Hwang mit den Standards, der Terminvergabe und der Krankenkassen-Abrechnung des TCM.ch Netzwerks. Für dich ändert sich dadurch nichts am Ablauf: Termin anfragen, behandeln lassen, über die Zusatzversicherung abrechnen.' },
-      { q: 'Was kostet eine Behandlung in Kreuzlingen?', a: 'Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Das Erstgespräch dauert länger, bis zu 90 Minuten, und liegt entsprechend höher. Kräuterrezepturen werden separat nach Mischung verrechnet. Den Betrag nennen wir dir vorab, bevor behandelt wird.' },
-      { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Kreuzlingen EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos.' },
+      { q: 'Was bedeutet Partnerpraxis im TCM.ch Netzwerk?', a: 'Die Praxis an der Romanshornerstrasse 1 wird von Praxis Hwang betrieben. TCM.ch ist das Netzwerk dahinter: Über TCM.ch fragst du Termine an, wir koordinieren die Anfrage und beantworten Fragen zu Kosten und Krankenkasse. Behandelt wirst du von den Therapeut:innen der Praxis Hwang; die Praxis erreichst du auch direkt unter +41 79 837 46 81.' },
+      { q: 'Was kostet eine Behandlung in Kreuzlingen?', a: 'Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Wie lange das Erstgespräch dauert und was es kostet, sagen wir dir vor dem Termin. Kräuterrezepturen werden separat nach Mischung verrechnet. Den Betrag nennen wir dir vorab, bevor behandelt wird.' },
+      { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Wie viel übernommen wird, hängt von Modell, Jahreslimite und der Registrierung der behandelnden Fachperson ab, häufig sind es 80 bis 100 Prozent. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos.' },
       { q: 'Wie viele Sitzungen brauche ich?', a: 'Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir starten mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das, statt eine Serie weiterzuführen.' },
-      { q: 'Wie komme ich zu euch und wo kann ich parkieren?', a: 'Die Praxis liegt an der Romanshornerstrasse 1, wenige Gehminuten vom Bahnhof Kreuzlingen und vom Bahnhof Kreuzlingen Hafen. Mit dem Auto kommst du über die A7, Ausfahrt Kreuzlingen. Zum Parkieren stehen das Parkhaus Stadthaus, das Parkhaus Bärenplatz und das Parkhaus Karussell in wenigen Minuten Fussweg zur Verfügung.' },
+      { q: 'Wie komme ich zu euch?', a: 'Mit dem Zug bis Bahnhof Kreuzlingen oder Kreuzlingen Hafen, von dort weiter zur Romanshornerstrasse 1. Die passende Verbindung findest du im SBB-Fahrplan; zu Parkmöglichkeiten gibt dir die Praxis gern Auskunft.' },
       { q: 'Bekomme ich kurzfristig einen Termin?', a: 'Das hängt von der aktuellen Auslastung ab. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns persönlich mit einem Vorschlag.' },
-      { q: 'Begleitet ihr auch bei Kinderwunsch?', a: 'Ja. Kinderwunsch ist eines der häufigeren Anliegen in Kreuzlingen, sowohl auf natürlichem Weg als auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten mit deiner Gynäkologin zusammen, wenn du das möchtest.' },
-      { q: 'Kann ich als Patient:in aus Konstanz zu euch kommen?', a: 'Ja, das machen viele. Von Konstanz sind es wenige Minuten über die Grenze. Behandelt wird in der Schweiz, abgerechnet wird über eine Schweizer Zusatzversicherung: Grenzgänger:innen mit Schweizer Zusatzversicherung reichen die Rechnung ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen. Eine deutsche gesetzliche Kasse erstattet die Behandlung in der Regel nicht, private Tarife teilweise. Frag vorher bei uns nach, wir sagen dir, was in deinem Fall realistisch ist.' },
+      { q: 'Begleitet ihr auch bei Kinderwunsch?', a: 'Ja, sowohl auf natürlichem Weg als auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten mit deiner Gynäkologin zusammen, wenn du das möchtest.' },
+      { q: 'Kann ich als Patient:in aus Konstanz zu euch kommen?', a: 'Ja. Behandelt wird in der Schweiz, abgerechnet wird über eine Schweizer Zusatzversicherung: Grenzgänger:innen mit Schweizer Zusatzversicherung reichen die Rechnung ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen. Eine deutsche gesetzliche Kasse erstattet die Behandlung in der Regel nicht, private Tarife teilweise. Frag vorher bei uns nach, wir sagen dir, was in deinem Fall realistisch ist.' },
     ],
     wissenLink: { href: '/wissen/tcm-kreuzlingen-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Kreuzlingen abläuft, was sie kostet und was die Studien hergeben.' },
     massageLink: { href: '/massage-kreuzlingen/', text: 'Suchst du gezielt eine Behandlung gegen Verspannungen statt eine ganze TCM-Therapie? Dann findest du alle Angebote, Dauer und Preise auf der Seite', anchor: 'Massage in Kreuzlingen' },
@@ -722,13 +722,18 @@ export const standorte: Record<string, Standort> = {
     "cro": true,
     "ablaufBlock": true,
     "slug": "zuerich-hoengg",
+    "seo": {
+      "title": "TCM & Akupunktur Zürich Höngg | TCM.ch",
+      "description": "TCM & Akupunktur in Zürich Höngg, Limmattalstrasse 340: Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. Anfrage und Terminkoordination über TCM.ch.",
+      "schemaName": "Praxis Hwang Zürich Höngg"
+    },
     "stadt": "Zürich Höngg",
     "hero": {
       "banner": "Standort Zürich Höngg",
       "lead": "TCM mit Zeit, Ruhe und echtem Zuhören.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
+      "sub": "Die Praxis Hwang an der Limmattalstrasse 340 ist Partnerpraxis im TCM.ch Netzwerk. Deine Anfrage koordinieren wir über TCM.ch.",
       "image": "/images/hero-main.webp",
-      "locationHook": "Limmattalstrasse 340, 8049 Zürich"
+      "locationHook": "Praxis Hwang · Limmattalstrasse 340, 8049 Zürich · Öffnungszeiten laut Praxis: Mo–Fr 7:30–19:30, Sa 7:30–16:30"
     },
     "nap": {
       "strasse": "Limmattalstrasse 340",
@@ -749,12 +754,12 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – heute in Höngg und Oerlikon, ein Standort im Zentrum ist in Vorbereitung.</p><p>Unsere <strong>TCM-Praxis Zürich Höngg</strong> liegt im ruhigen Kreis 10, gut erreichbar mit Tram und Bus aus der ganzen Stadt Zürich. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus Höngg, Wipkingen und ganz Zürich</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Höngg</strong>, <strong>Wipkingen</strong>, <strong>Affoltern</strong>, <strong>Albisrieden</strong>, dem Kreis 5 und der Region Limmattal. Auch aus Schlieren, Dietikon, Regensdorf und Engstringen kommen Patient:innen regelmässig zu uns.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
+      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – heute in Höngg und Oerlikon, ein Standort im Zentrum ist in Vorbereitung.</p><p>Die <strong>Praxis Hwang Zürich Höngg</strong> an der Limmattalstrasse 340 im Kreis 10 ist Partnerpraxis im TCM.ch Netzwerk: Betreiberin ist <a href='https://www.hwang.ch/standorte/zurich-hongg' target='_blank' rel='noopener'>Praxis Hwang</a>, über TCM.ch fragst du Termine an und klärst Fragen zu Kosten und Krankenkasse. Angeboten werden unter anderem <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesische Kräutertherapie</strong>.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus Höngg, Wipkingen und ganz Zürich</h2><p>Die Praxis liegt nah für <strong>Höngg</strong>, <strong>Wipkingen</strong>, <strong>Affoltern</strong>, <strong>Albisrieden</strong>, den Kreis 5 und die Region Limmattal. Kurz ist der Weg auch aus Schlieren, Dietikon, Regensdorf und Engstringen.</p><p style=\"display:block\">Diese Partnerpraxis gehört zum <a href=\"/akupunktur-tcm-zuerich/\">TCM.ch Netzwerk in Zürich</a>. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": {
-      "oev": "<strong>Tram 13 und 17</strong> sowie <strong>Bus 38 und 46</strong> halten in unmittelbarer Nähe. Vom Zürich HB in ca. 15 Minuten erreichbar. Bahnhof Wipkingen (S-Bahn) in 10 Gehminuten.",
-      "autoParken": "Anfahrt über A1H (Hardturm-Wipkingen). Strassenparkplätze (blaue Zone, gebührenpflichtig) sowie Parkmöglichkeiten beim Migros Höngg."
+      "oev": "Mit Tram und Bus erreichbar; deine Verbindung zur Limmattalstrasse 340 planst du am einfachsten im ZVV-Fahrplan.",
+      "autoParken": ""
     },
     "therapien": [
       "akupunktur",
@@ -767,7 +772,7 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
-    "beschwerdenIntro": "Von Rücken bis Schlaf: Das sind die häufigsten Anliegen, mit denen Patient:innen in Zürich Höngg zu uns kommen.",
+    "beschwerdenIntro": "Von Rücken bis Schlaf: häufige Anliegen, mit denen du in Höngg anfragen kannst.",
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",

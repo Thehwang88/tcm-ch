@@ -151,7 +151,7 @@ if (migrated) {
 
   const medClinic: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
-    name: isPartner ? 'TCM Pelican' : slug === 'st-gallen' ? 'TCM St. Gallen' : `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
+    name: clinic?.schemaName ?? `TCM.ch ${name}`, url, inLanguage: 'de-CH', medicalSpecialty: 'TraditionalChineseMedicine',
   };
   if (clinic) {
     medClinic.telephone = clinic.phone;
