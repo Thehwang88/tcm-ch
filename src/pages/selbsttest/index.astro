@@ -159,6 +159,34 @@ const schema = [
 
       @media (min-width: 560px) { .st-section { padding-top: 40px; } .st-card { padding: 30px 30px 34px; } }
       @media (prefers-reduced-motion: reduce) { .st-screen.is-active { animation: none; } .st-prog-bar { transition: none; } }
+
+      /* Wave 6 · B4: Brand-System (nur Darstellung; Fragen-/Ergebnis-Logik und Markup unverändert) */
+      .st-card { border-color: rgba(2,11,16,.1); border-radius: 20px; box-shadow: 0 12px 28px rgba(2,11,16,.06); }
+      .st-h1, .st-q, .st-r-head, .st-offer-item { color: var(--brand-black); }
+      .st-top[hidden] { display: none; } /* hidden-Attribut der Startansicht respektieren (vorher von display:flex überdeckt) */
+      .st-prog { background: rgba(2,11,16,.08); }
+      .st-prog-bar { background: var(--brand-black); }
+      .st-step, .st-note, .st-r-label, .st-restart, .st-back { color: rgba(2,11,16,.62); }
+      .st-eyebrow { color: var(--brand-ink); font-size: 11px; letter-spacing: .16em; }
+      .st-lead, .st-r-text, .st-kasse { color: rgba(2,11,16,.72); }
+      .st-kasse { background: var(--brand-surface); }
+      .st-cta { background: var(--brand-black); color: #fff; border-radius: 999px; box-shadow: none; }
+      .st-cta:hover { background: #1f2a30; box-shadow: 0 10px 24px rgba(2,11,16,.18); }
+      .st-cta:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+      .st-opt { border-color: rgba(2,11,16,.18); border-radius: 16px; }
+      .st-opt:hover, .st-opt:active { border-color: var(--brand-black); background: var(--brand-tint); }
+      .st-opt:focus-visible { border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+      .st-opt svg { color: var(--brand-black); }
+      .st-method { background: var(--brand-tint); color: var(--brand-black); }
+      .st-method:hover { background: var(--brand); }
+      .st-method:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 2px; }
+      .st-offer-item svg { color: var(--brand-ink); }
+      .st-cta-secondary { color: var(--brand-black); border-color: rgba(2,11,16,.22); border-radius: 999px; }
+      .st-cta-secondary:hover { background: var(--brand-tint); border-color: rgba(2,11,16,.5); }
+      .st-cta-secondary:focus-visible { box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+      .st-back:focus-visible, .st-restart:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 2px; border-radius: 6px; }
+      body > .scb-bar:not(#w2) { border-top-color: rgba(2,11,16,.1); }
+      body > .scb-bar :is(.scb-primary,.scb-out):not(#w2) { border-radius: 999px; }
     </style>
 
     <script src="/header.js" is:inline defer></script>

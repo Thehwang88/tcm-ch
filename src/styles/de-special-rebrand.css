@@ -1,0 +1,113 @@
+/* ══ Wave 6 · B4 — Sonderseiten (LayoutDe): Kontakt, Zuweisen, Ergebnisse ×2, 404, Legal ×3, Visuals-Index, Visual-Viewer ×5
+   (11.10.2026, nur Präsentation). Nur von diesen Seiten importiert; Selektoren unter body > main, damit Header/Footer/Sticky
+   unberührt bleiben. Keine Markup-, Formular-, Tracking- oder Metadaten-Änderung. */
+body > main:not(#w2){--blue:var(--brand-black);--blue-dark:#1f2a30;--blue-light:var(--brand-tint);--green:var(--brand-black);--green-dark:#1f2a30;--green-light:var(--brand-tint);--green-mint:var(--brand-tint);--green-mid:rgba(2,11,16,.12);--border:rgba(2,11,16,.1);--surface:var(--brand-surface);--muted:rgba(2,11,16,.62);--mid:rgba(2,11,16,.72);--text-soft:rgba(2,11,16,.72);--text-muted:rgba(2,11,16,.62);--black:var(--brand-black);--ink:var(--brand-black)}
+/* Hero + Typo-Skala */
+body > main .hero:not(.hero--media):not(#w2){background:var(--brand-surface);border-bottom:1px solid rgba(2,11,16,.08);padding:clamp(56px,7vw,88px) 0 48px;margin-bottom:40px}
+body > main .hero h1:not(#w2){color:var(--brand-black)}
+body > main .hero p.lead:not(#w2){color:rgba(2,11,16,.72)}
+body > main .eyebrow:not(#w2){color:var(--brand-ink);font-size:11px;font-weight:700;letter-spacing:.16em}
+body > main .section h2:not(#w2){color:var(--brand-black)}
+/* Buttons: Rich-Black-Pille / Ghost-Pille, Fokusring */
+body > main .btn:not(#w2){border-radius:999px;box-shadow:none}
+body > main .btn--primary:not(#w2){background:var(--brand-black);color:#fff}
+body > main .btn--primary:not(#w2):hover{background:#1f2a30;box-shadow:0 10px 24px rgba(2,11,16,.18)}
+body > main .btn--ghost:not(#w2){background:#fff;color:var(--brand-black);border:1.5px solid rgba(2,11,16,.22)}
+body > main .btn--ghost:not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.5);color:var(--brand-black)}
+body > main :is(a,button,summary,input,select,textarea,[tabindex]):not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+body > main :is(input,select,textarea):not([type="checkbox"]):not([type="radio"]):not(#w2):focus-visible{outline:none;border-color:var(--brand-black);box-shadow:0 0 0 3px rgba(26,226,136,.35)}
+/* Textlinks */
+body > main :is(.kontakt-foot a,.zw-privacy a,.crumbs a,.doc-prose a,.vv-explain a,.prose p > a:not([class]),.note a):not(#w2){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px}
+body > main :is(.kontakt-foot a,.zw-privacy a,.crumbs a,.doc-prose a,.vv-explain a,.prose p > a:not([class]),.note a):not(#w2):hover{background:var(--brand-tint);text-decoration-color:var(--brand)}
+/* Hinweiskästen (Tint, Hairline, Mint-Kante) */
+body > main :is(.note,.zw-note):not(#w2){background:var(--brand-tint);border:1px solid rgba(2,11,16,.08);border-left:3px solid var(--brand);border-radius:0 16px 16px 0}
+body > main :is(.note strong,.zw-note strong):not(#w2){color:var(--brand-black)}
+/* Kontakt */
+body > main .channel:not(#w2){border-color:rgba(2,11,16,.1);border-radius:16px}
+body > main .channel:not(#w2):hover{border-color:rgba(2,11,16,.3);box-shadow:0 12px 28px rgba(2,11,16,.07)}
+body > main .channel--primary:not(#w2){background:var(--brand-black);border-color:var(--brand-black)}
+body > main .channel--primary:not(#w2):hover{background:#1f2a30;border-color:#1f2a30}
+body > main .channel--primary :is(.ch-label,.ch-sub):not(#w2){color:rgba(255,255,255,.78)}
+body > main .channel--primary .ch-go:not(#w2){color:var(--brand)}
+body > main .ch-label:not(#w2){color:var(--brand-ink);letter-spacing:.14em}
+body > main .ch-go:not(#w2){color:var(--brand-black);text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px}
+body > main .kontakt-foot:not(#w2){border-top-color:rgba(2,11,16,.1)}
+body > main :is(.tf-field input,.tf-field select,.tf-field textarea,.field input,.field select,.field textarea):not(#w2){border:1px solid rgba(2,11,16,.18);border-radius:12px;background:#fff;color:var(--brand-black)}
+body > main .tf-submit:not(#w2){border-radius:999px}
+body > main .tf-note:not(#w2){color:rgba(2,11,16,.62)}
+/* Zuweisen */
+body > main .zw-ind li:not(#w2){border-bottom-color:rgba(2,11,16,.1)}
+body > main .zw-ind li:not(#w2)::before{background:var(--brand)}
+body > main .zw-fieldset legend:not(#w2){color:var(--brand-ink);font-size:11px;letter-spacing:.16em}
+body > main .req:not(#w2){color:var(--brand-ink)}
+body > main .zw-upload:not(#w2){border-radius:12px;border-color:rgba(2,11,16,.22)}
+body > main .zw-upload:not(#w2):hover{border-color:var(--brand-black);background:var(--brand-tint)}
+body > main .zw-upload svg:not(#w2){color:var(--brand-black)}
+body > main .form-card:not(#w2){border-color:rgba(2,11,16,.1);border-radius:20px;box-shadow:none}
+body > main .form-card .btn--primary:not(#w2){width:auto}
+/* Ergebnisse */
+body > main .crumbs:not(#w2),body > main .crumbs span:not(#w2){color:rgba(2,11,16,.62)}
+body > main :is(.abbr,.byline,.disclaimer,.ph-label,.ph-value):not(#w2){color:rgba(2,11,16,.62)}
+body > main .faq details:not(#w2){border-color:rgba(2,11,16,.1);border-radius:16px}
+body > main .faq summary:not(#w2)::after{color:var(--brand-ink)}
+body > main :is(.instruments th,.results th):not(#w2){background:var(--brand-surface);color:var(--brand-black)}
+body > main :is(.instruments th,.instruments td,.results th,.results td):not(#w2){border-bottom-color:rgba(2,11,16,.1)}
+body > main .table-wrap.is-scrollx:not(#w2)::before{background:var(--brand-black)}
+body > main :is(.empty,.ph-card):not(#w2){border-color:rgba(2,11,16,.12);background:var(--brand-surface);border-radius:16px}
+body > main .disclaimer:not(#w2){border-top-color:rgba(2,11,16,.1)}
+/* 404 (Inline-Styles: Tokens greifen über das Remap; Label Brand-Ink) */
+body > main > section > div[style*="2D9B6F"]:not(#w2){color:var(--brand-ink)!important;font-size:11px!important;letter-spacing:.16em!important}
+body > main > section > div > a[style*="var(--blue"]:not(#w2):hover{background:#1f2a30!important}
+body > main > section > div > a[style*="var(--border"]:not(#w2):hover{background:var(--brand-tint)!important;border-color:rgba(2,11,16,.5)!important}
+/* Legal (DocPage, Inhalt byte-exakt) */
+body > main .doc-prose h1:not(#w2),body > main .doc-prose h2:not(#w2),body > main .doc-prose h3:not(#w2),body > main .doc-prose h4:not(#w2){color:var(--brand-black)}
+body > main .doc-prose p:not(#w2),body > main .doc-prose li:not(#w2){color:rgba(2,11,16,.8)}
+body > main .doc-prose th:not(#w2){background:var(--brand-surface);color:var(--brand-black)}
+body > main .doc-prose :is(th,td):not(#w2){border-color:rgba(2,11,16,.12)}
+body > main .doc-prose hr:not(#w2){border-top-color:rgba(2,11,16,.1)}
+/* Visuals-Index */
+body > main .vl-overline:not(#w2){color:var(--brand-ink);font-size:11px;letter-spacing:.16em}
+body > main .vl-search input:not(#w2){border-color:rgba(2,11,16,.18);box-shadow:none}
+body > main .vl-search input:not(#w2):focus{border-color:var(--brand-black);box-shadow:0 0 0 3px rgba(26,226,136,.35)}
+body > main .vl-cat:not(#w2){border-color:rgba(2,11,16,.18)}
+body > main .vl-cat:not(#w2):hover{border-color:var(--brand-black);color:var(--brand-black);background:var(--brand-tint)}
+body > main .vl-cat[aria-pressed="true"]:not(#w2){background:var(--brand-black);border-color:var(--brand-black);color:#fff}
+body > main .vcard:not(#w2){border-color:rgba(2,11,16,.1);border-radius:16px}
+body > main a.vcard:not(#w2):hover{border-color:rgba(2,11,16,.3);box-shadow:0 12px 28px rgba(2,11,16,.07)}
+body > main .vcard-cat:not(#w2){color:var(--brand-ink)}
+body > main .vcard-soon:not(#w2){border-color:rgba(2,11,16,.14);color:rgba(2,11,16,.72)}
+body > main .vl-request-btn:not(#w2){border-radius:999px;box-shadow:none;background:var(--brand-black);border-color:var(--brand-black);color:#fff}
+body > main .vl-request-btn:not(#w2):hover{background:#1f2a30}
+body > main .vl-request-btn--ghost:not(#w2){background:#fff;color:var(--brand-black);border-color:rgba(2,11,16,.22)}
+body > main .vl-request-btn--ghost:not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.5);color:var(--brand-black)}
+body > main .vl-disclaimer:not(#w2){color:rgba(2,11,16,.62)}
+body > main .vl-dialog:not(#w2){border-radius:20px}
+body > main .vl-dialog input:not(#w2),body > main .vl-dialog textarea:not(#w2){border:1px solid rgba(2,11,16,.18);border-radius:12px}
+/* Visual-Viewer (Illustrationen unverändert; Marker/Buttons/Chips Brand) */
+body > main .vv-more:not(#w2){border-radius:999px;box-shadow:none;background:var(--brand-black);color:#fff}
+body > main .vv-more:not(#w2):hover{background:#1f2a30}
+body > main .vv-ghost-btn:not(#w2){border-radius:999px;border-color:rgba(2,11,16,.22);color:var(--brand-black)}
+body > main .vv-ghost-btn:not(#w2):hover{border-color:var(--brand-black);background:var(--brand-tint);color:var(--brand-black)}
+body > main .vv-back:not(#w2):hover{color:var(--brand-black)}
+body > main .vv-control:not(#w2){border-color:rgba(2,11,16,.18)}
+body > main .vv-control:not(#w2):hover{border-color:var(--brand-black);color:var(--brand-black);background:var(--brand-tint)}
+body > main .vv-control.is-active:not(#w2){background:var(--brand-black);border-color:var(--brand-black);color:#fff}
+body > main .vv-marker-dot:not(#w2){background:rgba(26,226,136,.45);border-color:var(--brand-black)}
+body > main .vv-marker.is-active .vv-marker-dot:not(#w2){background:var(--brand-black)}
+body > main .vv-marker-label:not(#w2){border-color:rgba(2,11,16,.14)}
+body > main .vv-marker.is-active .vv-marker-label:not(#w2){background:var(--brand-black);border-color:var(--brand-black);color:#fff}
+body > main .vv-painstep-dot:not(#w2){background:var(--brand-black);color:#fff}
+body > main .vv-pain-list li + li:not(#w2)::before{color:var(--brand-ink)}
+body > main .vv-panel[data-panel="problem"] .vv-chip:not(#w2){color:var(--brand-ink);border-color:rgba(2,11,16,.12);background:var(--brand-tint)}
+body > main .vv-chip:not(#w2){border-color:rgba(2,11,16,.14)}
+body > main .vv-stage:not(#w2){border-color:rgba(2,11,16,.1)}
+body > main :is(.vv-box,.vv-pain-grid,.vv-related-card):not(#w2){border-color:rgba(2,11,16,.1);border-radius:16px}
+body > main .vv-related-card:not(#w2):hover{border-color:rgba(2,11,16,.3);box-shadow:0 12px 28px rgba(2,11,16,.07)}
+body > main .vv-box-title:not(#w2){color:var(--brand-ink)}
+body > main .vv-disclaimer:not(#w2){color:rgba(2,11,16,.62)}
+body > main .vv-switch-btn[aria-pressed="true"]:not(#w2){background:var(--brand-black);border-color:var(--brand-black);color:#fff}
+body > main :is(.vv-marker,.vv-control,.vv-ghost-btn,.vv-related-card,.vv-more,.vv-switch-btn,.vl-cat,.vl-request-btn,a.vcard):not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){body > main :is(.btn,.channel,.vcard,.vv-related-card,.vv-marker-dot):not(#w2){transition:none!important;transform:none!important}}
+/* Footer-Sticky (scb-bar, body-Kind) nur auf diesen Seiten: Hairline + Pillen wie B3-Scope */
+body > .scb-bar:not(#w2){border-top-color:rgba(2,11,16,.1)}
+body > .scb-bar :is(.scb-primary,.scb-out):not(#w2){border-radius:999px}
