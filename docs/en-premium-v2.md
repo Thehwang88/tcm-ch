@@ -114,10 +114,7 @@ are blocked while a request is pending. Backend validation remains unchanged.
 | Full brand PDF comparison | Text reviewed; primary palette agrees, Manrope vs deployed Figtree remains unresolved; visual PDF/layout comparison pending |
 
 No new route was added, so no new index-queue entry is required. No mass EN
-translation or generic city hub was created. Therapy, condition and knowledge
-content/design expansion remains the next milestone after the homepage and
-clinic design review; existing clinical claims across that older content have
-not been comprehensively re-audited in this implementation.
+translation or generic city hub was created. Therapy, condition and knowledge design/content expansion is now implemented below. This is an editorial improvement with linked sources, not a documented clinical review or a comprehensive systematic evidence update.
 
 Recommended review routes: `/en/`, `/en/locations/st-gallen/`,
 `/en/locations/basel/`, `/en/locations/zuerich-oerlikon/`, `/en/contact/`.
@@ -136,3 +133,47 @@ DE `team-hero.jpg`; St. Gallen reuses its dedicated `standort-stgallen.jpg`; oth
 clinic heroes prefer current `getStandort(id).hero.image` over the legacy mapping.
 Generic and planned-location images remain explicitly illustrative. Image reuse
 does not verify depicted staff identities. No German source was changed by this step.
+
+
+## Milestone D — full English route coverage (2026-10-11)
+
+User requested continuation across the full English site. All 51 existing EN routes
+now use the opt-in premium layout; no new routes or local search-intent owners added.
+
+- 11 therapy pages and 8 condition pages: shared split hero, real anchor navigation,
+  patient preparation, evidence references, explicit limitations, related topics and
+  a common inquiry section. Condition warning signs precede promotional treatment copy.
+- 3 discovery indexes: editorial introductions and shared image cards. Regional
+  near-me finder now separates operating clinics from planned/review statuses using
+  the central clinic data; removed invented appointment times and insurance percentages.
+- 9 knowledge articles: premium article layout and generated heading navigation.
+  Five practical guides rewritten (fees, claims, English care, safety and first visit);
+  four topic guides corrected and citations completed. Static modification dates updated
+  only for edited articles. Undocumented reviewer metadata removed.
+- Contact preserves treatment/condition query context as editable textarea text, capped
+  at 160 characters per field, without overwriting a pre-existing patient message.
+- EN 404 now uses the same hero/buttons. New components: ArticleNav, Sources, NextSteps;
+  new English-only reference data: en-editorial.ts. DE components/tokens remain untouched.
+- Existing DE image sources retained; facial acupuncture now uses the current DE crop,
+  and fertility uses the current DE hero. No images or practitioner identities invented.
+
+Evidence corrections include the differing low-back-pain guideline recommendations,
+low/very-low certainty in the cited 2016 period-pain review, the 2018 sham-controlled
+IVF trial, and explicit separation of general massage/acupuncture research from claims
+about individual variations. General reference links are not represented as proof of
+specific cosmetic, moxibustion or gua-sha outcomes. This is not an exhaustive literature
+review; older reviews are dated and linked, not described as new 2026 findings.
+
+Validation adds a premium-layout gate, rejection of unresolved citation placeholders,
+and actual form-handler tests for combined treatment/condition context, preserving
+patient-entered text and treating URL input as plain text. Browser/visual QA remains
+unavailable under the Sites skill in this environment. No claim of visual approval,
+clinical sign-off, live Turnstile verification or production deployment is made.
+
+
+Full-route verification: production build, EN link/schema/form/layout checks and
+Standort UX pass. All 715 non-English HTML pages remain byte-identical to current
+main c34cb98; sitemap URL set unchanged. Clinic-status gate additionally checked
+against the regional finder to ensure the planned-location section is not read as
+an operating clinic's status. Clinical-source links are explicit; no citation
+placeholders remain. Full browser and clinical review remain separate requirements.
