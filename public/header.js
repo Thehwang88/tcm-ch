@@ -216,11 +216,11 @@ function navMoreToggle(){
   setAudience('patient'); // Default, hält Optik und Panels konsistent
 })();
 
-/* "Jetzt Hilfe erhalten" CTA: open the home contact form if present, else go to /kontakt. */
+/* "Termin finden" CTA: on-page contact form (home, location pages, Zürich hub) if present, else /kontakt. */
 (function(){
   var cta = document.getElementById('navCtaBtn');
   if (cta) cta.addEventListener('click', function(){
-    if (document.getElementById('home-contact-form') && typeof openContactForm === 'function') { openContactForm(); }
+    if (document.querySelector('#home-contact-form, .inline-form-card') && typeof openContactForm === 'function') { openContactForm(); }
     else { window.location.href = '/kontakt'; }
   });
 })();

@@ -1,10 +1,18 @@
 ---
 import type { Standort } from '../../data/standorte';
+import { clinics } from '../../data/locations';
 const { data } = Astro.props as { data: Standort };
-const items = data.nearby ?? [];
+// Status aus src/data/locations.ts (clinic.status); zuerich-city hat (noch) keinen clinic-Eintrag = geplant.
+const STATUS_HINWEIS = { planned: 'Eröffnung geplant', review: 'Standort in Prüfung' } as const;
+const items = (data.nearby ?? []).map((n) => {
+  const status = clinics.find((c) => c.id === n.slug)?.status ?? (n.slug === 'zuerich-city' ? 'planned' : 'operational');
+  const hinweis = status === 'operational' ? '' : STATUS_HINWEIS[status];
+  const desc = hinweis && !/geplant|Vorbereitung|Prüfung|Eröffnung/i.test(n.desc) ? `${n.desc} · ${hinweis}` : n.desc;
+  return { ...n, desc, label: status === 'operational' ? 'Termin prüfen →' : 'Standort ansehen →' };
+});
 ---
 <section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">
 {items.map((n) => (
-  <div class="city-card location-card" onclick={`nav('standort','${n.slug}')`} style="cursor:pointer"><span class="location-plz">{n.plz}</span><div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">Termin prüfen →</span></div>
+  <a class="city-card location-card" href={`/standorte/${n.slug}/`}>{n.plz && <span class="location-plz">{n.plz}</span>}<div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">{n.label}</span></a>
 ))}
 </div></div></section>
