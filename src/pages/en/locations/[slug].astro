@@ -40,8 +40,6 @@ const description = openingSoon
     : `Acupuncture & TCM in ${name}: ${openingLabel}, not open yet. Register your interest now; we contact you once appointments are possible.`
   : `Acupuncture & TCM in ${name}: request your appointment in English. Billing via supplementary insurance, depending on your policy.`;
 
-const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
-
 // Hero image - DE heroBg where the Standort page has one, else a relevant existing asset.
 const image = locationImages[id];
 
@@ -107,7 +105,11 @@ const sgMethods = getPublicTherapistProfile(getTherapeut('corinna-reinhart')!).m
 const localMethods = deStandort?.therapien ?? (id==='st-gallen' ? Object.keys(methodNames).filter(key=>sgMethods.includes(methodNames[key])) : []);
 const localTherapies = therapies.filter(t=>localMethods.includes(t.deSlug));
 const localConditions = deStandort?.beschwerden?.length ? conditions.filter(c=>deStandort.beschwerden.includes(c.deSlug)) : conditions;
-const near = (deStandort?.nearby ?? []).map(n=>clinics.find(c=>c.id===n.slug)).filter((c):c is Clinic=>!!c && c.status==='operational' && c.id!==id);
+const curatedNear = (deStandort?.nearby ?? []).map(n=>clinics.find(c=>c.id===n.slug)).filter((c):c is Clinic=>!!c && c.status==='operational' && c.id!==id);
+// Legacy clinics have no Standort.nearby list. Rank central coordinates only;
+// do not turn straight-line proximity into a travel-time claim.
+const proximity = (c:Clinic) => Math.pow(c.geo.lat-geo.lat,2) + Math.pow((c.geo.lng-geo.lng)*Math.cos(geo.lat*Math.PI/180),2);
+const near = curatedNear.length ? curatedNear : clinics.filter(c=>c.status==='operational' && c.id!==id).sort((a,b)=>proximity(a)-proximity(b)).slice(0,3);
 const heroLead = openingSoon
   ? underReview ? `The status of this location is under review. It is not confirmed as an operating clinic. Ask us about an available practice nearby.`
     : `This location is not open yet. ${openingLabel}. Register your interest; we confirm when appointments become available.`

@@ -68,3 +68,56 @@ Insurance sources checked 2026-10-11: BAG physician complementary medicine
 https://www.bag.admin.ch/de/arztliche-komplementaermedizin ; CSS policy/method/provider
 requirements https://www.css.ch/en/private-customers/quick-easy/get-help/benefits-check/alternative-methods.html ;
 EMR quality label https://emr.ch/de/das-emr .
+
+## Implemented review candidate
+
+- Home: `src/pages/en/index.astro`.
+- Brand adapters: `src/components/en/{Premium,Hero,ClinicCard,Journey,Insurance}.astro`
+  and `src/styles/en-premium.css`; existing `BrandSignature` reused via props.
+- Local pages/index: `src/pages/en/locations/{[slug],index}.astro`.
+- Insurance and inquiry: `src/pages/en/{health-insurance-acupuncture,contact}.astro`.
+- Language resolution: `src/layouts/Layout.astro` tolerates trailing-slash variants
+  and emits no unrelated German-home twin for unpaired pages.
+- Trust correction: the three EN condition/therapy/knowledge templates no longer
+  render a generic medical reviewer or `lastReviewed` assertion without a
+  documented review. Article authors and publication/modification dates remain.
+- Gates: `scripts/check-en-premium.mjs`; clinic-status gate extended narrowly
+  for the exact English status label for Bern (which has no bespoke vorab list).
+
+The English form now includes all central clinic options. Exact query values
+preserve the distinction between the Oerlikon partner practice and new clinic;
+legacy name-only links select the new-clinic interest option. Payload fields,
+endpoint, Turnstile key and honeypot remain. `formular_senden` is emitted only
+on a successful `{ok:true}` response, without patient data. Duplicate submits
+are blocked while a request is pending. Backend validation remains unchanged.
+
+## Verification (2026-10-11)
+
+| Check | Result |
+| --- | --- |
+| `npm run build` | PASS — static Astro output, sitemap and Worker compile |
+| `node scripts/check-clinic-status.mjs` | PASS — zero failures |
+| `node scripts/check-standort-ux.mjs` | PASS — zero failures |
+| `node scripts/check-en-premium.mjs` | PASS — 51 EN pages; 50 JSON-LD script blocks parse; canonical/reciprocal DE links, internal links/anchors and image files resolve |
+| Form script in isolated VM with mocked network | PASS — every option prefilled; distinct Oerlikon paths; validation, missing token, honeypot, success/server/network failure and duplicate submission |
+| German regression | All 715 non-English HTML files byte-identical to pre-change production build |
+| Sitemap | URL set unchanged; date-only generator churn excluded from source commit |
+| `git diff --check` | PASS |
+| Browser/desktop/mobile screenshots | NOT RUN — supported control-browser skill unavailable in managed environment |
+| Live submission, Turnstile, GTM delivery | NOT RUN — mocks verify code behaviour, not production third-party services |
+| Full schema.org / Google rich-result validation | NOT RUN — local checks verify JSON and selected clinic identity/status invariants only |
+| Search Console refresh | Unavailable: Windsor discovery returned only Google Ads accounts; no Search Console connector/account |
+| Full brand PDF comparison | Pending — PDF not in checkout |
+
+No new route was added, so no new index-queue entry is required. No mass EN
+translation or generic city hub was created. Therapy, condition and knowledge
+content/design expansion remains the next milestone after the homepage and
+clinic design review; existing clinical claims across that older content have
+not been comprehensively re-audited in this implementation.
+
+Recommended review routes: `/en/`, `/en/locations/st-gallen/`,
+`/en/locations/basel/`, `/en/locations/zuerich-oerlikon/`, `/en/contact/`.
+Before GO: screenshots at 390px and 1440px (plus 360/768/1024 overflow checks),
+font and CTA comparison with DE, keyboard/mobile navigation, real Turnstile
+rendering and a mocked browser submission. Production merge/deploy stays blocked
+until the owner explicitly approves.
