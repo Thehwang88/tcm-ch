@@ -1,0 +1,90 @@
+/* ── EN REBRAND (Wave 6 · B2) ──────────────────────────────────────────────
+   Softriver brand system for the English site (Layout.astro only, 51 routes).
+   Loaded after global.css; selectors are prefixed with html[lang="en"] so they
+   out-rank the per-template scoped rules ([data-astro-cid] = 0,2,0) and never
+   reach a DE page. Design only: no copy, links, metadata or JS. */
+
+/* Tokens (page-local) */
+html[lang="en"] body { --ink: var(--brand-black); --black: var(--brand-black); --text: var(--brand-black); --mid: rgba(2,11,16,.72); --text-soft: rgba(2,11,16,.72); --muted: rgba(2,11,16,.62); --border: rgba(2,11,16,.1); --surface: var(--brand-surface); --blue: var(--brand-black); --blue-dark: var(--brand-ink); --blue-light: var(--brand-tint); color: var(--brand-black); }
+
+/* Hero: Concrete panel, brand typographic scale */
+html[lang="en"] main .hero { background: var(--brand-surface); border-bottom: 1px solid rgba(2,11,16,.08); padding: clamp(56px, 8vh, 96px) 0 clamp(44px, 6vh, 64px); }
+html[lang="en"] main .hero h1 { font-size: clamp(36px, 5vw, 62px); line-height: 1.02; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 0 0 18px; max-width: 16em; }
+html[lang="en"] main .hero p.lead { font-size: clamp(17px, 1.5vw, 19.5px); line-height: 1.6; color: rgba(2,11,16,.72); max-width: 34em; margin: 0 0 24px; }
+html[lang="en"] main .hero .hero__cta { margin-top: 4px; }
+html[lang="en"] main .hero-figure { margin: 36px 0 0; border-radius: 24px; box-shadow: 0 18px 40px rgba(2,11,16,.1); background: #fff; border: 1px solid rgba(2,11,16,.06); }
+html[lang="en"] main .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); margin: 0 0 16px; }
+html[lang="en"] main .eyebrow::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: var(--brand); flex-shrink: 0; }
+html[lang="en"] main .byline { color: rgba(2,11,16,.62); }
+html[lang="en"] main .byline .dates { color: rgba(2,11,16,.62); }
+
+/* Buttons: pills, Rich Black primary */
+html[lang="en"] main .btn { border-radius: 999px; font-weight: 700; }
+html[lang="en"] main .btn--primary { background: var(--brand-black); color: #fff; box-shadow: none; }
+html[lang="en"] main .btn--primary:hover { background: #1f2a30; color: #fff; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(2,11,16,.18); }
+html[lang="en"] main .btn--ghost { background: #fff; color: var(--brand-black); border: 1.5px solid rgba(2,11,16,.22); box-shadow: none; }
+html[lang="en"] main .btn--ghost:hover { background: var(--brand-tint); border-color: rgba(2,11,16,.5); color: var(--brand-black); }
+html[lang="en"] main .btn:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+
+/* Sections, headings */
+html[lang="en"] main .section { padding: clamp(56px, 8vh, 96px) 0; }
+html[lang="en"] main .section h2 { font-size: clamp(28px, 3.2vw, 42px); line-height: 1.08; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 0 0 20px; max-width: 18em; }
+html[lang="en"] main .section h2 em { color: var(--brand-ink); font-weight: 700; }
+
+/* Cards */
+html[lang="en"] main .card { border: 1px solid rgba(2,11,16,.1); border-radius: 16px; box-shadow: none; color: var(--brand-black); padding: 26px; }
+html[lang="en"] main .card:hover { border-color: rgba(2,11,16,.3); box-shadow: 0 12px 28px rgba(2,11,16,.07); transform: translateY(-2px); }
+html[lang="en"] main div.card:hover { transform: none; box-shadow: none; border-color: rgba(2,11,16,.1); }
+html[lang="en"] main a.card:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+html[lang="en"] main .card h3 { color: var(--brand-black); font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+html[lang="en"] main .card p { color: rgba(2,11,16,.72); line-height: 1.6; }
+html[lang="en"] main .card--media { padding: 0; }
+html[lang="en"] main .card--media .card-thumb { border-bottom: 1px solid rgba(2,11,16,.08); }
+html[lang="en"] main .card--media .card-body { padding: 22px 24px; }
+
+/* Prose + inline links (scoped per template → !important where global.css already forces) */
+html[lang="en"] main .prose h2, html[lang="en"] main .kb-body h2 { font-size: clamp(24px, 2.4vw, 30px) !important; line-height: 1.15 !important; letter-spacing: var(--tracking-heading) !important; color: var(--brand-black) !important; margin: 44px 0 14px; }
+html[lang="en"] main .prose h3, html[lang="en"] main .kb-body h3 { color: var(--brand-black); }
+html[lang="en"] main .prose p, html[lang="en"] main .prose li, html[lang="en"] main .kb-body p, html[lang="en"] main .kb-body li { color: rgba(2,11,16,.72) !important; line-height: 1.7; }
+html[lang="en"] main .prose strong, html[lang="en"] main .kb-body strong { color: var(--brand-black); }
+html[lang="en"] main .inline-link, html[lang="en"] main .kb-body a, html[lang="en"] main :is(p, li) > a:not(.btn):not(.card), html[lang="en"] main .form-card p a { color: var(--brand-black); font-weight: 600; text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; transition: background var(--t-base) ease; }
+html[lang="en"] main .inline-link:hover, html[lang="en"] main .kb-body a:hover, html[lang="en"] main :is(p, li) > a:not(.btn):not(.card):hover { background: var(--brand-tint); text-decoration: underline; }
+html[lang="en"] main .inline-link:focus-visible, html[lang="en"] main .kb-body a:focus-visible, html[lang="en"] main :is(p, li) > a:not(.btn):not(.card):focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; border-radius: 4px; }
+html[lang="en"] main .kb-body blockquote { border-left: 3px solid var(--brand); color: rgba(2,11,16,.72); }
+html[lang="en"] main .evidence-note { border-left: 3px solid var(--brand); color: rgba(2,11,16,.72); }
+html[lang="en"] main .xlinks, html[lang="en"] main .tldr { background: var(--brand-tint); border: 1px solid rgba(2,11,16,.08); border-radius: 16px; color: var(--brand-black); }
+html[lang="en"] main .xlinks strong, html[lang="en"] main .tldr strong { color: var(--brand-black); }
+html[lang="en"] main .redflags li::before { background: #B91C1C; }
+html[lang="en"] main .disclaimer { color: rgba(2,11,16,.62); border-top: 1px solid rgba(2,11,16,.1); }
+html[lang="en"] main .cta-row { gap: 12px; }
+
+/* FAQ */
+html[lang="en"] main .faq details { border: 1px solid rgba(2,11,16,.1) !important; border-radius: 16px !important; padding: 4px 20px; transition: border-color var(--t-base) ease; }
+html[lang="en"] main .faq details:hover, html[lang="en"] main .faq details[open] { border-color: rgba(2,11,16,.3) !important; }
+html[lang="en"] main .faq summary { color: var(--brand-black) !important; }
+html[lang="en"] main .faq summary:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: -3px; border-radius: 12px; }
+html[lang="en"] main .faq summary::after { color: var(--brand-ink); }
+html[lang="en"] main .faq p { color: rgba(2,11,16,.72); line-height: 1.65; }
+
+/* Forms (contact) */
+html[lang="en"] main .form-card { border: 1px solid rgba(2,11,16,.1); border-radius: 20px; box-shadow: none; padding: 32px; }
+html[lang="en"] main .field label { color: var(--brand-black); font-size: 13.5px; }
+html[lang="en"] main .field input, html[lang="en"] main .field select, html[lang="en"] main .field textarea { border: 1px solid rgba(2,11,16,.18); border-radius: 12px; color: var(--brand-black); }
+html[lang="en"] main .field input:focus, html[lang="en"] main .field select:focus, html[lang="en"] main .field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+html[lang="en"] main .req { color: var(--brand-ink); }
+html[lang="en"] main .form-status[data-state="success"] { background: var(--brand-tint); color: var(--brand-ink); border: 1px solid rgba(11,122,76,.3); border-radius: 12px; }
+html[lang="en"] main .form-status[data-state="error"] { border-radius: 12px; }
+
+/* Motion + mobile */
+@media (prefers-reduced-motion: reduce) {
+  html[lang="en"] main :is(.btn, .card, .faq details, .inline-link) { transition: none; }
+  html[lang="en"] main :is(.btn--primary:hover, .card:hover) { transform: none; }
+}
+@media (max-width: 820px) { html[lang="en"] main .hero { padding: 44px 0 36px; } }
+@media (max-width: 480px) {
+  html[lang="en"] main .hero h1 { font-size: clamp(30px, 8.4vw, 38px); }
+  html[lang="en"] main .section h2 { font-size: clamp(26px, 7.2vw, 32px); }
+  html[lang="en"] main .hero__cta .btn, html[lang="en"] main .cta-row .btn { width: 100%; justify-content: center; min-height: 48px; }
+  html[lang="en"] main .hero-figure { border-radius: 18px; }
+  html[lang="en"] main .form-card { padding: 22px 18px; border-radius: 16px; }
+}
