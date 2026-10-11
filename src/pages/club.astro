@@ -403,7 +403,7 @@ const schema = {
         --qi-bg: #FAF8F5;
         --qi-ink: #0d0d0d;
         --qi-red: #DA291C;
-        --qi-grey: #6b6661;
+        --qi-grey: #5c5853; /* Wave 6: 4.24 -> 5.9:1 auf Sand */
         --qi-grey-soft: #EDE9E3;
         --qi-max: 1280px;
         /* Spacing-System: Sektions-Padding, Headline->Subline, Headline->Block. */
@@ -536,6 +536,9 @@ const schema = {
       .qi-field label { display: block; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 7px; }
       .qi-field input { width: 100%; min-height: 52px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--qi-ink); background: var(--qi-bg); border: 2px solid var(--qi-ink); border-radius: 0; }
       .qi-field input:focus-visible { outline: 3px solid var(--qi-red); outline-offset: 1px; }
+      /* Wave 6 (a11y): sichtbarer Fokus für Links/Buttons (vorher UA-Default 1px) */
+      .qi :is(a,button):not(input):focus-visible { outline: 3px solid var(--qi-ink); outline-offset: 3px; }
+      .qi-btn--solid:focus-visible, .qi-nav-join:focus-visible { outline-color: var(--qi-red); }
       .qi-interests { border: none; padding: 0; margin: 6px 0 18px; }
       .qi-interests legend { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 0; margin-bottom: 10px; }
       .qi-optional { color: var(--qi-grey); font-weight: 600; letter-spacing: .06em; }
