@@ -28,6 +28,11 @@ export interface Clinic {
   status: ClinicStatus;
   /** Informational only (e.g. planned date); never used to switch status. */
   openingNote?: string;
+  /** Tatsächliche Betreiberin, wenn die Praxis NICHT von TCM.ch betrieben wird (Partnerpraxis).
+   *  Quelle der Angaben: Website der Betreiberin. Schema beschreibt dann diese Entität (Name, URL,
+   *  Praxistelefon); die TCM.ch-Nummer erscheint nur als «Terminkoordination TCM.ch».
+   *  Keine Bewertungen der Betreiberin auf TCM.ch übernehmen. */
+  betreiber?: { name: string; marke: string; url: string; telefon: string; quelle: string };
   /** schema.org areaServed (cities/municipalities); only set where curated. */
   areaServed?: string[];
   /** Formular-Optionen, solange status 'planned' ist (statt der regulären Option), z. B. sofortige
@@ -49,6 +54,8 @@ export const clinics: Clinic[] = [
 
   { id: 'frauenfeld', name: 'Frauenfeld', city: 'Frauenfeld', region: 'Thurgau',
     street: 'Rheinstrasse 25', postalCode: '8500', phone: '+41 77 523 61 22',
+    // Betreiberin laut hwang.ch/standorte/frauenfeld (abgerufen 11.10.2026): Adresse, Telefon, Öffnungszeiten.
+    betreiber: { name: 'Praxis Hwang Frauenfeld', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/frauenfeld', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
     areaServed: ['Frauenfeld', 'Matzingen', 'Stettfurt', 'Felben-Wellhausen', 'Müllheim', 'Pfyn', 'Aadorf', 'Eschlikon', 'Weinfelden', 'Amriswil'] },
 

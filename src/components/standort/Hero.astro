@@ -4,7 +4,7 @@ import { waHref } from '../../data/standorte';
 const { data } = Astro.props as { data: Standort };
 // Generische Bildwelt (keine Fotos des jeweiligen Standorts): Bildunterschrift «Symbolbild» statt Adresse.
 const symbolbild = data.planned || /\/(hero-main\.webp|basel-reception\.webp)$/.test(data.hero.image);
-const eyebrow = data.review ? `Standort in Prüfung · ${data.stadt}` : data.planned ? `Geplanter Standort · ${data.stadt}` : `TCM.ch Klinik · ${data.stadt}`;
+const eyebrow = data.betreiber ? `${data.betreiber.name} · Partnerpraxis im TCM.ch Netzwerk` : data.review ? `Standort in Prüfung · ${data.stadt}` : data.planned ? `Geplanter Standort · ${data.stadt}` : `TCM.ch Klinik · ${data.stadt}`;
 const heroH1 = data.seo?.h1 ?? `Akupunktur & TCM in <em>${data.stadt}</em>`;
 // Softriver lsr-Hero: Opt-in je Standort (Rollout L3 basel, L4 restliche neun).
 const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'zuerich-hoengg']);

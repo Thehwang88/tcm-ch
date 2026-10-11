@@ -62,6 +62,14 @@ const clinicLd: Record<string, unknown> = {
   },
 };
 if (openingHours.length) clinicLd.openingHours = openingHours;
+// Partner practice: describe the real operator entity (same @id as the DE page), TCM.ch as network only.
+if (clinic.betreiber) {
+  Object.assign(clinicLd, {
+    '@id': `${clinic.betreiber.url}#praxis`, name: clinic.betreiber.name, url: clinic.betreiber.url,
+    telephone: clinic.betreiber.telefon, sameAs: [clinic.betreiber.url],
+    memberOf: { '@id': 'https://tcm.ch/#org' }, brand: { '@type': 'Brand', name: clinic.betreiber.marke },
+  });
+}
 // Geplante Standorte: Status explizit im Schema, nie Öffnungszeiten (locations.ts status).
 if (openingSoon && !underReview) clinicLd.description = `${name}: ${openingLabel}. Not operating yet; no appointments at this address before the opening is confirmed.`;
 
@@ -114,6 +122,7 @@ const breadcrumbLd = {
             <p><strong>{inPreparation ? 'Location in preparation' : clinic.openingNote}</strong><br />{city}, Switzerland</p>
           ) : (
             <p>
+              {clinic.betreiber && (<><strong>{clinic.betreiber.name}</strong>, partner practice in the TCM.ch network<br />Practice phone: <a href={`tel:${clinic.betreiber.telefon.replace(/\s/g, '')}`} style="color:var(--blue);font-weight:600">{clinic.betreiber.telefon}</a><br /></>)}
               {street}<br />{postalCode} {city}<br />Switzerland
               {mapsHref && (<><br /><a href={mapsHref} target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Directions on Google Maps →</a></>)}
             </p>
@@ -121,7 +130,7 @@ const breadcrumbLd = {
         </div>
 
         <div class="card">
-          <h3>Opening hours</h3>
+          <h3>{clinic.betreiber ? 'Opening hours (as published by the practice)' : 'Opening hours'}</h3>
           {openingHours.length ? (
             <p>{openingHours.map((h) => (<>{formatHours(h)}<br /></>))}</p>
           ) : (

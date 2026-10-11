@@ -640,9 +640,10 @@ export const portraitHtml = (t: PublicTherapeut, cls: string, eager = false): st
  * Bild, Berufsbezeichnung, Name, max. 2 Fokusthemen, Standort, max. 2 Badges, «Profil ansehen».
  * Gesamte Karte klickbar → /team/<slug>/. Styles: .tmc-* in public/home.css.
  */
-export const teamCardHtml = (t: PublicTherapeut): string => {
+export const teamCardHtml = (t: PublicTherapeut, opts: { nurBelegt?: boolean } = {}): string => {
   const focus = (t.cardFocus ?? []).slice(0, 2);
-  const badges = activeRegs(t).slice(0, 2);
+  // nurBelegt (Standortseiten): nur Registereinträge mit öffentlich prüfbarem Profil-Link als Badge.
+  const badges = activeRegs(t).filter((r) => !opts.nurBelegt || r.profileUrl).slice(0, 2);
   return (
     `<a href="/team/${t.slug}/" class="tmc reveal" aria-label="Profil von ${esc(t.name)} ansehen">` +
     `<div class="tmc-photo">${portraitHtml(t, 'tmc-img')}</div>` +

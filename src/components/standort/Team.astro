@@ -21,7 +21,7 @@ const total = assigned.length + cards.length;
     <h2>Dein TCM Team in {data.stadt}</h2>
     <p>Die Therapeut:innen an diesem Standort, mit Profil und öffentlich prüfbarem Registereintrag.</p>
     <div class="team-grid">
-    <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t))).join('')} />
+    <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t), { nurBelegt: true })).join('')} />
     {cards.map((t) => t.profil ? (
       <a href={`/team/${t.profil}/`} class="team-card reveal team-card--link" aria-label={`Profil von ${t.name} ansehen`}> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <span class="team-cta">Profil ansehen</span> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </a>
     ) : (

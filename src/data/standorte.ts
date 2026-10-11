@@ -53,6 +53,8 @@ export interface Standort {
   planned?: boolean;
   /** Betriebsstatus nicht bestätigt (clinic.status 'review'); impliziert planned. Ebenfalls abgeleitet. */
   review?: boolean;
+  /** Betreiberin einer Partnerpraxis (abgeleitet aus clinic.betreiber, src/data/locations.ts). */
+  betreiber?: { name: string; marke: string; url: string; telefon: string; quelle: string };
   /** Optional zu `planned`: Banner-Titel/-Text (z. B. geplantes Datum, sofortige Alternative). Fallback = generischer Text. */
   plannedTitle?: string;
   plannedNote?: string;
@@ -194,18 +196,18 @@ export const standorte: Record<string, Standort> = {
     "slug": "frauenfeld",
     "stadt": "Frauenfeld",
     "seo": {
-      "title": "TCM & Akupunktur Frauenfeld | TCM.ch",
-      "description": "TCM und Akupunktur in Frauenfeld, Rheinstrasse 25: Partnerklinik von Praxis Hwang mit EMR-/ASCA-anerkannten Therapeut:innen. Krankenkasse 80 bis 100%. Termin online anfragen.",
+      "title": "TCM & Akupunktur Frauenfeld – Praxis Hwang, Rheinstrasse 25 | TCM.ch",
+      "description": "TCM & Akupunktur in Frauenfeld, Rheinstrasse 25: Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. EMR-registrierte Therapeut:innen, Anfrage über TCM.ch.",
       "h1": "TCM & Akupunktur in <em>Frauenfeld</em>",
-      "schemaName": "TCM.ch Frauenfeld"
+      "schemaName": "Praxis Hwang Frauenfeld"
     },
-    "aufEinenBlick": "<section class='section' style='padding:32px 0;background:var(--bg)'><div class='wrap reveal'><div class='section-label'>TCM Frauenfeld auf einen Blick</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Adresse & Zeiten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Rheinstrasse 25, 8500 Frauenfeld, wenige Minuten vom Bahnhof.<br>Mo bis Fr 7:30 bis 19:30, Sa 7:30 bis 16:30.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Behandlungen</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage, Kräuterrezepturen.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Vertrauen & Kosten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Partnerklinik von Praxis Hwang. EMR- und ASCA-anerkannt, Zusatzversicherung übernimmt je nach Modell 80 bis 100 Prozent.</div></div></div><div style='margin-top:16px'><button type='button' onclick='openContactForm()' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></button></div></div></section>",
+    "aufEinenBlick": "<section class='section' style='padding:32px 0;background:var(--bg)'><div class='wrap reveal'><div class='section-label'>TCM Frauenfeld auf einen Blick</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Adresse & Zeiten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Rheinstrasse 25, 8500 Frauenfeld.<br>Öffnungszeiten laut Praxis Hwang: Mo bis Fr 7:30 bis 19:30, Sa 7:30 bis 16:30.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Behandlungen</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage, Kräuterrezepturen.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Vertrauen & Kosten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Betrieben von Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. EMR-registrierte Therapeut:innen; die Zusatzversicherung übernimmt je nach Modell häufig 80 bis 100 Prozent.</div></div></div><div style='margin-top:16px'><button type='button' onclick='openContactForm()' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></button></div></div></section>",
     "hero": {
       "banner": "Standort Frauenfeld",
       "lead": "Zeit zum Zuhören, bevor wir behandeln.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
+      "sub": "Die Praxis Hwang an der Rheinstrasse 25 ist Partnerpraxis im TCM.ch Netzwerk: Therapeut:innen mit Ausbildung und Praxiserfahrung in der Schweiz und in Südkorea. Deine Anfrage koordinieren wir über TCM.ch.",
       "image": "/images/hero-main.webp",
-      "locationHook": "Rheinstrasse 25, 8500 Frauenfeld · Mo–Fr 7:30–19:30, Sa 7:30–16:30 · Partnerklinik von Praxis Hwang"
+      "locationHook": "Praxis Hwang · Rheinstrasse 25, 8500 Frauenfeld · Öffnungszeiten laut Praxis: Mo–Fr 7:30–19:30, Sa 7:30–16:30"
     },
     "nap": {
       "strasse": "Rheinstrasse 25",
@@ -227,12 +229,12 @@ export const standorte: Record<string, Standort> = {
       "geo": { "lat": 47.5567, "lng": 8.8983 }
     },
     "intro": {
-      "body": "<h2>Deine TCM-Praxis in Frauenfeld</h2><p>Wer Akupunktur in Frauenfeld sucht, findet sie an der Rheinstrasse 25: Unsere Praxis gehört zu den älteren Adressen im TCM.ch Netzwerk, ist aus der Arbeit am Bodensee herausgewachsen und versorgt heute den mittleren Thurgau, mit denselben Standards, demselben Behandlungsspektrum und derselben Abrechnung wie unsere übrigen Praxen. Neben Akupunktur gehören Tuina, Schröpfen und Kräuterrezepturen zum Angebot.</p><p>TCM.ch Frauenfeld ist eine <strong>Partnerklinik von <a href=\"https://hwang.ch/\" target=\"_blank\" rel=\"noopener\">Praxis Hwang</a></strong>: Der Standort verbindet die langjährige lokale Erfahrung von Praxis Hwang mit dem TCM.ch Netzwerk für moderne Chinesische Medizin.</p><p>Behandelt wird an der Rheinstrasse 25, gut erreichbar aus der ganzen Kantonshauptstadt und wenige Minuten vom Bahnhof Frauenfeld. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage und individuell zusammengestellte Kräuterrezepturen. Wer chinesische Medizin in Frauenfeld sucht, muss dafür nicht nach Winterthur oder Zürich fahren.</p><p>Eine <strong>TCM-Praxis</strong> steht und fällt mit der Ausbildung der Behandelnden. Unser Team ist EMR- und ASCA-anerkannt, dein Akupunkteur arbeitet unter eigener ZSR-Nummer. Deshalb übernimmt die Zusatzversicherung je nach Modell 80 bis 100 Prozent der Kosten. Was dein Vertrag konkret hergibt, prüfen wir kostenlos, bevor du den ersten Termin nimmst. Alle Zahlen im Detail stehen unter <a href=\"/standorte/frauenfeld/kosten/\">Akupunktur Kosten Frauenfeld</a>.</p>",
-      "einzugsgebiet": "<h2>Wer aus der Region zu uns kommt</h2><p>Der grösste Teil unserer Patient:innen kommt aus Frauenfeld selbst, aus der Innenstadt, aus Kurzdorf, Oberkirch, Herten und Erzenholz. Dazu kommen <strong>Islikon</strong>, <strong>Matzingen</strong>, <strong>Müllheim</strong> und <strong>Aadorf</strong>, alles kurze Wege mit Auto oder Bus.</p><p>Entlang der Achse Richtung Osten sind wir für <strong>Weinfelden</strong> und die <strong>Region Wil</strong> die naheliegende Adresse. Von Weinfelden bist du mit der S-Bahn in gut einer Viertelstunde hier, aus dem Raum Wil führt die Frauenfeld-Wil-Bahn direkt an den Bahnhof. Wer es umgekehrt näher hat, findet unsere Praxis in Wil auf der Seite <a href=\"/standorte/wil/\">TCM Wil</a>.</p>"
+      "body": "<h2>Deine TCM-Praxis in Frauenfeld</h2><p>Wer Akupunktur in Frauenfeld sucht, findet sie an der Rheinstrasse 25 in der Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. Neben Akupunktur gehören Tuina, Schröpfen und Kräuterrezepturen zum Angebot.</p><p>Betreiberin der Praxis ist <strong><a href=\"https://www.hwang.ch/standorte/frauenfeld\" target=\"_blank\" rel=\"noopener\">Praxis Hwang</a></strong>. TCM.ch ist das Netzwerk dahinter: Über TCM.ch fragst du Termine an, wir koordinieren die Anfrage und beantworten Fragen zu Kosten und Krankenkasse.</p><p>Behandelt wird an der Rheinstrasse 25 in Frauenfeld. Das Angebot umfasst Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage und individuell zusammengestellte Kräuterrezepturen. Wer chinesische Medizin in Frauenfeld sucht, muss dafür nicht nach Winterthur oder Zürich fahren.</p><p>Eine <strong>TCM-Praxis</strong> steht und fällt mit der Ausbildung der Behandelnden. Die Therapeut:innen mit TCM-Ausbildung sind beim EMR registriert, die Einträge sind oben bei jeder Person verlinkt. Ob und wie viel deine Zusatzversicherung übernimmt, hängt von Versicherer und Modell ab, häufig sind es 80 bis 100 Prozent. Was dein Vertrag konkret hergibt, prüfen wir kostenlos, bevor du den ersten Termin nimmst. Alle Zahlen im Detail stehen unter <a href=\"/standorte/frauenfeld/kosten/\">Akupunktur Kosten Frauenfeld</a>.</p>",
+      "einzugsgebiet": "<h2>Wer aus der Region zu uns kommt</h2><p>Die Praxis liegt in Frauenfeld und ist für die ganze Stadt naheliegend, von der Innenstadt über Kurzdorf, Oberkirch und Herten bis Erzenholz. Kurz ist der Weg auch aus <strong>Felben-Wellhausen</strong>, <strong>Matzingen</strong>, <strong>Stettfurt</strong>, <strong>Pfyn</strong>, <strong>Müllheim</strong> und <strong>Aadorf</strong>.</p><p>Auch aus <strong>Weinfelden</strong>, <strong>Amriswil</strong>, <strong>Eschlikon</strong> und der <strong>Region Wil</strong> ist Frauenfeld gut erreichbar; aus dem Raum Wil fährt die Frauenfeld-Wil-Bahn bis Frauenfeld. Wer es umgekehrt näher hat, findet unsere Praxis in Wil auf der Seite <a href=\"/standorte/wil/\">TCM Wil</a>.</p>"
     },
     "anfahrt": {
-      "oev": "<strong>Hauptbahnhof Frauenfeld</strong> in wenigen Gehminuten erreichbar. S-Bahn-Linien S30 (Winterthur–Frauenfeld–Romanshorn) und S35 sowie IR-Verbindungen halten im HB Frauenfeld. Frauenfeld-Wil-Bahn (FWB) ergänzt das Netz.",
-      "autoParken": "Anfahrt über A7 (Ausfahrt Frauenfeld-West oder Frauenfeld-Ost). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Marktplatz</strong>, <strong>Parkhaus Promenade</strong>, Parkhaus Bahnhof."
+      "oev": "Mit dem Zug bis <strong>Bahnhof Frauenfeld</strong> (SBB und Frauenfeld-Wil-Bahn), von dort weiter zur Rheinstrasse 25. Deine Verbindung planst du am einfachsten im SBB-Fahrplan.",
+      "autoParken": "Laut Praxis Hwang gibt es in unmittelbarer Nähe der Praxis Parkmöglichkeiten."
     },
     "therapien": [
       "akupunktur",
@@ -248,7 +250,7 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
-    "beschwerdenIntro": "Das sind die Anliegen, mit denen Patient:innen in Frauenfeld am häufigsten zu uns kommen. Jede Seite erklärt Ablauf, Wirkung und was die TCM realistisch leisten kann.",
+    "beschwerdenIntro": "Häufige Anliegen, mit denen du in der Praxis in Frauenfeld anfragen kannst. Jede Seite erklärt Ablauf, Wirkung und was die TCM realistisch leisten kann.",
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
@@ -260,14 +262,14 @@ export const standorte: Record<string, Standort> = {
     "team": [],
     "ablaufBlock": true,
     "faqs": [
-      { "q": "Was bedeutet Partnerklinik von Praxis Hwang?", "a": "TCM.ch Frauenfeld ist eine Partnerklinik von Praxis Hwang. Behandelt wirst du bei TCM.ch an der Rheinstrasse 25; der Standort verbindet die langjährige lokale Erfahrung von Praxis Hwang mit den Standards, der Terminvergabe und der Krankenkassen-Abrechnung des TCM.ch Netzwerks. Am Ablauf für dich ändert das nichts: Termin anfragen, behandeln lassen, über die Zusatzversicherung abrechnen." },
-      { "q": "Was kostet eine Behandlung in Frauenfeld?", "a": "Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Das Erstgespräch dauert länger, bis zu 90 Minuten, und liegt entsprechend höher. Kräuterrezepturen kommen separat nach Mischung dazu. Den Betrag nennen wir dir vorab, bevor behandelt wird." },
-      { "q": "Übernimmt die Krankenkasse die Behandlung?", "a": "Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Frauenfeld EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos." },
+      { "q": "Was bedeutet Partnerpraxis im TCM.ch Netzwerk?", "a": "Die Praxis an der Rheinstrasse 25 wird von Praxis Hwang betrieben. TCM.ch ist das Netzwerk dahinter: Über TCM.ch fragst du Termine an, wir koordinieren die Anfrage und beantworten Fragen zu Kosten und Krankenkasse. Behandelt wirst du von den Therapeut:innen der Praxis Hwang; die Praxis erreichst du auch direkt unter +41 79 837 46 81." },
+      { "q": "Was kostet eine Behandlung in Frauenfeld?", "a": "Eine Folgesitzung liegt bei rund 130 bis 160 Franken, abgerechnet nach dem anerkannten Tarif 590 in Zeiteinheiten von fünf Minuten. Wie lange das Erstgespräch dauert und was es kostet, sagen wir dir vor dem Termin. Kräuterrezepturen kommen separat nach Mischung dazu. Den Betrag nennen wir dir vorab, bevor behandelt wird." },
+      { "q": "Übernimmt die Krankenkasse die Behandlung?", "a": "Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Die Therapeut:innen mit TCM-Ausbildung sind beim EMR registriert; viele Zusatzversicherungen übernehmen dann häufig 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos." },
       { "q": "Wie viele Sitzungen brauche ich?", "a": "Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir beginnen mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das." },
-      { "q": "Wie erreiche ich die Praxis mit dem ÖV?", "a": "Vom Bahnhof Frauenfeld sind es wenige Minuten. Es halten die S-Bahn-Linien S30 zwischen Winterthur, Frauenfeld und Romanshorn sowie die S35, dazu IR-Verbindungen und die Frauenfeld-Wil-Bahn. Aus Weinfelden, Wil, Aadorf und Müllheim bist du damit ohne Umsteigen da." },
+      { "q": "Wie erreiche ich die Praxis mit dem ÖV?", "a": "Mit dem Zug bis Bahnhof Frauenfeld (SBB und Frauenfeld-Wil-Bahn), von dort weiter zur Rheinstrasse 25. Die passende Verbindung findest du im SBB-Fahrplan." },
       { "q": "Bekomme ich kurzfristig einen Termin?", "a": "Das hängt von der aktuellen Auslastung ab. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns persönlich mit einem Terminvorschlag. Wenn es in Frauenfeld eng wird, prüfen wir auch die Praxen in Wil und Kreuzlingen." },
       { "q": "Begleitet ihr auch bei Kinderwunsch?", "a": "Ja, auf natürlichem Weg wie auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten auf Wunsch mit deiner Gynäkologin zusammen." },
-      { "q": "Gibt es Parkplätze in der Nähe der Praxis?", "a": "Ja. Mit dem Auto kommst du über die A7, Ausfahrt Frauenfeld-West oder Frauenfeld-Ost. Zum Parkieren stehen das Parkhaus Marktplatz, das Parkhaus Promenade und das Parkhaus Bahnhof zur Verfügung, alle wenige Gehminuten entfernt. Wenn du knapp dran bist, sag kurz Bescheid, wir halten den Termin." }
+      { "q": "Gibt es Parkplätze in der Nähe der Praxis?", "a": "Laut Praxis Hwang gibt es in unmittelbarer Nähe der Praxis Parkmöglichkeiten. Wenn du knapp dran bist, sag der Praxis kurz Bescheid." }
     ],
     "wissenLink": { "href": "/wissen/tcm-frauenfeld-erfahrungen-ablauf/", "label": "Erfahrungen & Ablauf", "sub": "Wie eine TCM-Behandlung in Frauenfeld abläuft, was sie kostet und was die Studien hergeben." },
     "massageLink": { "href": "/massage-frauenfeld/", "text": "Geht es dir vor allem um Verspannungen und nicht um eine ganze TCM-Therapie? Dann findest du Angebote, Dauer und Preise auf der Seite", "anchor": "Massage in Frauenfeld" },
@@ -894,7 +896,7 @@ export const standorte: Record<string, Standort> = {
 // Betriebsstatus ausschliesslich aus src/data/locations.ts (clinic.status), nie aus einem Datum.
 for (const [slug, s] of Object.entries(standorte)) {
   const c = clinics.find((x) => x.id === slug);
-  if (c) { s.planned = c.status !== 'operational'; s.review = c.status === 'review'; }
+  if (c) { s.planned = c.status !== 'operational'; s.review = c.status === 'review'; s.betreiber = c.betreiber; }
 }
 
 export const getStandort = (slug: string) => standorte[slug];

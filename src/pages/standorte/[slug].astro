@@ -106,6 +106,16 @@ if (migrated) {
   if (data.nap.geo) medClinic.geo = { '@type': 'GeoCoordinates', latitude: data.nap.geo.lat, longitude: data.nap.geo.lng };
   if (clinic?.openingHours?.length) medClinic.openingHours = clinic.openingHours;
   if (clinic?.areaServed?.length) medClinic.areaServed = clinic.areaServed.map((a) => ({ '@type': 'City', name: a }));
+  // Partnerpraxis: Schema beschreibt die reale Entität der Betreiberin (Name, URL, Praxistelefon) statt
+  // einer zweiten «TCM.ch»-Klinik; TCM.ch nur als Netzwerk (memberOf). Gleiche @id auf DE und EN.
+  if (data.betreiber) {
+    Object.assign(medClinic, {
+      '@id': `${data.betreiber.url}#praxis`, name: data.betreiber.name, url: data.betreiber.url,
+      telephone: data.betreiber.telefon, sameAs: [data.betreiber.url],
+      memberOf: { '@id': 'https://tcm.ch/#org' },
+      brand: { '@type': 'Brand', name: data.betreiber.marke },
+    });
+  }
   const breadcrumb = {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
