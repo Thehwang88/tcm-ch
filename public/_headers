@@ -23,6 +23,8 @@
   Cache-Control: no-cache
 /footer-rebrand.css
   Cache-Control: no-cache
+/knowledge-rebrand.css
+  Cache-Control: no-cache
 /home.js
   Cache-Control: no-cache
 /header.js

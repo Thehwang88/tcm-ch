@@ -190,7 +190,8 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 | Standort-Landingpages (`akupunktur-tcm-*`, `massage-*`, `akupunktur-in-der-naehe`, `akupunktur-st-gallen-kosten`) | 13 | offen; `/akupunktur-in-der-naehe/` nur city-card-Hover (W1) |
 | Therapien | 37 | **Wave 2A+2B lokal** (Tokens, Flächen, Eyebrows, H2, Pillen-CTAs, Karten, Chips, FAQ, Formulare, Kontrast) — Template PARTIAL bis 2C (Hero/Layout) |
 | Beschwerden | 155 | **Wave 2A+2B lokal** (wie Therapien) — Template PARTIAL bis 2C (Hero/Layout) |
-| Gesundheitsbibliothek / Körpersignale / Wissen / Haut / Praxiswissen / Visuals | 201 / 95 / 55 / 37 / 17 / 11 | offen (W4) |
+| Gesundheitsbibliothek / Körpersignale / Wissen | 201 / 95 / 54 | **Wave 3 lokal** (§17): Artikel 297 + Hubs 53 = 350 Routen Template-Layer konform (Hero Concrete, Prosa 640px, Links, Labels, Karten, Boxen, CTA-Card, FAQ, Autor, Formular-Geometrie); kein TOC (Markup-Entscheid offen) |
+| `/wissen/` Hub (SpaPage) · Haut (`.haut-scope`, Gold-Sub-Brand) · Praxiswissen/Regulatorik/Branche (`.b2`, B2B) · Visuals | 1 / 37 / 37 / 11 | offen (W4b: Haut nach Design-Entscheid Gold vs. Brand; B2B separat; Visuals) |
 | Team, Partner, Branche, Regulatorik, Tools, Karriere, Krankenkassen, Ergebnisse, Sonderseiten | ~60 | offen (W5) |
 | EN | 51 | offen (W5/W6) |
 | Legal (AGB, Impressum, Datenschutz) | 3 | offen (W6, niedrige Prio) |
@@ -271,12 +272,12 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 |---|---|---|
 | `#symptom-premium-hero` (Beschwerde) | 137 (128 ohne Bild, 9 mit Foto) | Concrete-Fläche, Mint-Strich beim Eyebrow, Mint-Primär-CTA, weisse Meta-Pills, Foto 24px-Radius mit Mint-Akzentbalken; ohne Bild einspaltig (`:has()`), Textblock 820px |
 | `#symptom-hero.sub-hero` (Beschwerde) | 17 | Concrete statt Verlauf, Pill-Badge weiss, Meta-Pills, gleiche Typo |
-| `.tsr-hero` (Therapie, Mint) | 8 | Typo/Labels/Meta-Pills harmonisiert, Foto als 24px-Panel statt Vollbleed |
+| `.tsr-hero` (Therapie, Mint) | 11 (8 Basis + 3 Varianten `--solo` Elektro, `--kt` Kräuter, `--ga` Gesichtsakupunktur) | Typo/Labels/Meta-Pills harmonisiert, Foto als 24px-Panel statt Vollbleed; Varianten über die generischen `.tsr-hero`-Regeln abgedeckt (Nachweis 11.10.2026: Mint-Fläche, Rich-Black-Pill-CTA, Bild 24px; `--ga` behält ihre eigene H1-Clamp 30–52px) |
 | `#therapie-premium-hero` (vorher weiss) | 9 inkl. Hanbang | → Mint-led: Mint-Fläche, Rich-Black-Primär-CTA, Ghost-Sekundär, Meta-Pills, Foto 24px |
 | `section.msg-hero` (Massage/Ohrakupunktur) | 11 | → Mint-led, Crumb/CTAs/Trust-Pills im selben System; Inhalte, Anker und Formular-Links unverändert |
 | Hubs `.bx-hero` (/beschwerden/), `.hh-hero` (/therapien/) | 2 | unverändert (eigene Templates) |
 | LayoutDe `.hero` (Akupunktur-Unterseiten) | 5 | unverändert (kein home.css) |
-| `/akupunktur-kinder/` | 1 | unverändert (kein Scope) |
+| `/akupunktur-kinder/` | — | ausserhalb der 192 (kein Scope); nur zur Vollständigkeit |
 
 **Gemeinsame Hero-Sprache:** Eyebrow 11px/700/.16em (Brand-Ink + Mint-Strich auf hellen Flächen, Rich Black auf Mint); H1 Figtree 800, `clamp(38–40px, 4.6vw, 64px)`, line-height 1.02, `--tracking-heading`; Lead 18px/1.6 (`--mid` bzw. Rich Black 82 % auf Mint); Pillen-CTAs; Meta als Pills (weiss auf Concrete, weiss 55 % auf Mint); Bildradius 24px, Schatten `0 24px 60px` Rich Black 10–18 %. Mobil ≤768: Padding 32/36, H1 `clamp(32px, 8.4vw, 42px)`, Lead 16.5px, Foto 4:3, Silbentrennung (`hyphens:auto`, `lang="de-CH"`) für lange Titel, Crumb-Umbruch.
 
@@ -286,3 +287,38 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 
 **Ausnahmen/Risiken:** `:has()` ohne Support (ältere Browser) → bildlose Heroes bleiben zweispaltig wie bisher; Hubs und LayoutDe-Heroes folgen in einer eigenen Kohorte.
 
+**Hero-Zählung (abgeglichen 11.10.2026):** 137 + 17 + 11 + 9 + 11 = **185/192 Heroes im 2C-2-System**, 7 dokumentierte Ausnahmen (Hubs `/beschwerden/`, `/therapien/` · LayoutDe-Akupunktur-Unterseiten ×5). Die frühere Angabe «182/192, 10 Ausnahmen» war ein Zählfehler: die drei `.tsr-hero`-Varianten (`--solo`, `--kt`, `--ga`) waren in der Tabelle als «8» statt 11 geführt, und `/akupunktur-kinder/` wurde als Ausnahme mitgezählt, obwohl es nicht zu den 192 Scope-Routen gehört.
+
+
+## 17. Wave 3 — Gesundheitsbibliothek · Körpersignale · Wissen (Template-Layer, lokal)
+
+**Umsetzung:** neues Stylesheet `public/knowledge-rebrand.css`, in `LayoutDe.astro` nach `footer-rebrand.css` verlinkt (ein `<link>` auf allen 478 LayoutDe-Routen; `_headers` `no-cache` wie nav-/footer-rebrand). 0 Markup-, 0 Copy-, 0 Reihenfolge-Änderungen; keine Page-Scoped-Styles angefasst. Reichweite ausschliesslich über Strukturanker, die nur in den Wissensvorlagen vorkommen (Fingerprint über alle 478 LayoutDe-Routen):
+
+| Anker | Routen | Templates |
+|---|---|---|
+| `main > article:not([class])` (Artikel) | 297 = Bibliothek 149 · Körpersignale 94 · Wissen 54 | `koerpersignale/[slug]`, `wissen/[slug]`, `fragen/[slug]`, `was-jetzt/[slug]`, `befunde-werte/[slug]`, `untersuchungen/*` (27), `perspektiven/[slug]` + Shared `ArticleCta`, `AuthorCard`, `FaqBlock`, `LibraryRelated`, `TerminForm` |
+| `main > section.hero/.section > .wrap.narrow` (Hubs + TCM-verstehen-Leaves) | 53 = Bibliothek 52 · `/koerpersignale/` | `gesundheitsbibliothek/index`, `koerpersignale/index`, `koerper/[region]`, `fragen/`, `was-jetzt/`, `befunde-werte/`, `untersuchungen/`, `tcm-verstehen/`, `tcm-verstehen/[sektion]`, `tcm-verstehen/[sektion]/[slug]`, `perspektiven/` |
+
+**Ausgeschlossen (keine Stiländerung, per Sweep belegt):** `article.therapie-scope` (5 Akupunktur-Unterseiten, einzige andere `.wrap.narrow`-Konsumenten), `article/div.haut-scope` (37, Gold-Sub-Brand), `div.b2` (Praxiswissen 17 · Regulatorik 12 · Branche 8), `/wissen/` (SpaPage, `home.css`), Kontakt/Zuweisen/Ergebnisse (`section.hero` ohne `.wrap.narrow`), Legal, Team, Visuals. Spezifität: `:not(#w3)` über Astro-Scoped-Styles (`[data-astro-cid]` auf jedem Element); `!important` nur bei `.faq summary` (global.css pinnt `#0D0D0D!important`).
+
+**Designsystem (gerenderte computed styles, 21 Repräsentanten × 390/1440):**
+- Hero: Concrete-Fläche (`--brand-surface`) mit Hairline, Padding `clamp(48–72px) / clamp(40–52px)` (mobil 40/32); Eyebrow `.cat` 11px/700/.16em Brand-Ink + Mint-Strich; H1 Figtree 800 `clamp(32px, 4vw, 46px)`/1.06 Rich Black, max. 820px (mobil `clamp(28px, 7.6vw, 34px)`); Lead/Deck 18px/1.6 `--mid`, max. 680px (mobil 16.5px); Crumbs/Zurück/Meta Rich Black 60–70 % statt Grün; Hub-Hero-Bild 20px-Radius + weicher Schatten.
+- Prosa `.kb-body`: 16.5px/1.7 (mobil 16/1.65), Lesebreite 640px am Element (`p, ul, ol, h2, h3, blockquote, Callouts`), `.read` 640px; H2 `clamp(24px, 2.4vw, 30px)`/800, 48/14 Abstand; H3 18px/700; Gruppen-/Modultitel `clamp(22px, 2.2vw, 26px)`; `strong` Rich Black.
+- Inline-Links (Prosa, Quellen, Einordnung, Listen, Kurz-Boxen): Rich Black + 2px Mint-Unterstreichung, Hover Tint-Fläche; Listen-Links (`.q-list`, `.back`) ohne Dauer-Unterstreichung; Karten-Weiterlinks («Mehr →») Brand-Ink, Rich Black bei Karten-Hover. Kein Mint-Text.
+- Sektionslabels einheitlich 11px/700/.16em: Brand-Ink auf Weiss (`rel-label`, `ks-sources-label`, `lib-row-label`, `mr-label`, `a-label`, `diag-label`, `lib-rel-label`, `axis-label`), Rich Black auf Tint/Boxen (`box-label`, `ein-label`, `wa-callout-label`, `cta-eyebrow`); Karten-Kicker 10.5px/.14em Brand-Ink. **Sicherheits-Labels bleiben Amber** (`.box--warn`, `.about--safety`, `#92400E`/`#c8842a`).
+- Hinweis-/Kurz-Boxen (`.kurz`, `.short`, `.wa-callout`, `.info-note`): Tint-Fläche, 3px Mint-Kante, Radius 0/16; `.box` Hairline 16px; `.box--pro` Concrete; `.einordnung`/`.about` Mint-Kante (im Concrete-Hero weiss).
+- Karten (`rel-, cat-, hub-, sig-, diag-, region-, leaf-, p-card, feat, soon-card, author-card`): Hairline `rgba(2,11,16,.1)`, 16px, Standard-Hover (Rahmen .3, Schatten `0 12px 28px` 7 %, −2px); Chips Pill, Hover Tint; Fokus überall 3px Rich-Black-Ring (Sticky-CTA-Buttons ausgenommen).
+- CTA-Card Tint-Fläche, 20px, 28px Padding; `.btn` Pill 15px/700: Primär Mint/Rich Black (Hover `--brand-hover`, Lift), Ghost weiss/Rich Black (Hover Concrete). Autor-Avatar Rich Black; FAQ Hairline, Summary Rich Black, geöffnet Rahmen .28; Bibliothek-Suche Fokus Rich-Black-Rahmen + Mint-Ring. Terminformular: nur Submit-Pill, Feld-Radius 12px, Titel/Hinweis-Farbe; Felder, Logik, Tracking unverändert (Anker auch für `article + section.tf-section` in was-jetzt/befunde-werte; `/kontakt/` und Standorte unberührt).
+- Rhythmus: Hero → Inhalt 56px (mobil 40), Artikel-/Hub-Sektion unten 80px (mobil 56); Related 56/28.
+
+**QA (11.10.2026, Build `feat/wave3-knowledge`):** Build grün; `check-professional` 103 Einträge / 0 Fehler; `health-audit` 0 Fehler. Generated-Route-Diff gegen `91ea8a2`: 478 Routen nur `<link>`-Zeile, 508 byteidentisch, 0 sonstige HTML-Diffs (Titles, Metas, Canonicals, Schema, interne Links, noindex unverändert). Unrelated-Routen-Sweep (474 Checks SpaPage + Therapie/Beschwerde-Scope): 473 identisch, 1× ±1px Höhe (Silbentrennung). Text-/Link-/Tel-/WhatsApp-Parität der 350 Wissensrouten gerendert (siehe Report). Interaktion: Hover/Fokus auf Karten, Chips, Buttons, Prosa-Links, FAQ, Suche verifiziert; Formular-Submit (gemockt) sendet unverändert `POST /api/anfrage` + `dataLayer form_submit`; Sticky-CTA-Klassen unverändert; Overflow 360/390/430 = 0. Screenshots 360/390/430/768/1280/1440 für 14 Repräsentanten vorher/nachher; Seitenhöhen: Artikel mobil −3 bis −9 % (16.5px statt 17.5–20px), Desktop +2 bis +12 % (Hero-Fläche, Abstände).
+
+**Kontrast (Sweep 351 Wissensrouten × 390/1440):** 13'852 → 12 Textelemente unter AA, alle ausserhalb der Vorlagen-CSS: Inline-Styles im Inhalt (`.ouch-mag-row` «Aus dem Magazin» in 2 Wissen-Artikeln: `#8a919c`-Label, `var(--blue)`-Link — Markup-Sache, Content-HTML geschützt). Mobil-Overflow: vorbestehender Langwort-Überlauf (H1 «Wechseljahresbeschwerden», CTA-Card-Titel neben Portrait, 19px über 390px) per `overflow-wrap:anywhere` + `hyphens` behoben → 0.
+
+**Bewusst nicht:** kein Inhaltsverzeichnis (TOC = Markup-Entscheid, keine Vorlage hat eines → Vorschlag für Wave 3b), kein Hero-Umbau (Concrete-Fläche genügt der Hierarchie), keine Änderung an Krankheits- vs. Entscheidungsseiten-Struktur, keine Bilder.
+
+**Verbleibende Ausnahmen / nächste Batches:** Haut (`.haut-scope`, Gold-Palette → Design-Entscheid), `/wissen/`-Hub (SpaPage, 2 blaue Default-Links), Perspektiven «Demnächst»-Karten (nur Concrete-Fläche), B2B (`.b2`), Visuals; LayoutDe-Akupunktur-Unterseiten (teilen Klassen `.kb-body`, `.rel-card` — bewusst ausgeschlossen, eigener Batch mit `.therapie-scope`-Hook). `:has()`-Fallback: ohne Support bleibt nur die Hub-Hero-Fläche weiss (Artikel-Hero nutzt kein `:has()`).
+
+**Compliance-Zählung:** Shell 761/761 · Template-Layer Therapien/Beschwerden 192/192 · Heroes 2C-2 185/192 (§16) · **Wissens-Template-Layer 350/350 lokal** (Artikel 297 + Hubs 53), Hero-System Wissen 350/350 (Concrete) · gesamt Template-konform lokal 542 Routen von 767.
+
+**Wave-6-Abschluss (Wissen):** Freigabe + Release dieses Batches; TOC-Entscheid; Haut-Entscheid; LayoutDe-Akupunktur-Batch; danach Gate C (visuelle Prüfung aller 13 Wissens-Templates) und Gate J (Route-Report) für die Familie.
