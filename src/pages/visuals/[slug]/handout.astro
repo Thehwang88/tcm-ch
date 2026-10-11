@@ -383,6 +383,20 @@ const panels = [
         .sheet { width: 100%; min-height: 0; padding: 8mm; }
         .toolbar { padding: 12px 16px; }
       }
+      /* Wave 7 · Bildschirm schmal (nur screen, Druck unberührt): einspaltig, kein horizontaler Overflow */
+      @media screen and (max-width: 600px) {
+        /* Nur die zweispaltigen Vergleichs-Handouts (HWS/LWS); Einzelbild-Handouts unverändert */
+        body:has(.ho-compare:not(.ho-compare--single)) .sheet { padding: 6mm 5mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-head { flex-direction: column; gap: 4mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-titles { text-align: left; }
+        body:has(.ho-compare:not(.ho-compare--single)) :is(.ho-compare, .ho-bottom, .ho-pain-row) { grid-template-columns: minmax(0, 1fr); }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-compare { gap: 6mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-bottom { gap: 6mm; align-items: start; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-qr { text-align: left; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-qr-svg :global(svg) { margin: 0 0 3mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) :is(.ho-marker-label, .ho-painstep-label) { white-space: normal; max-width: 38vw; line-height: 1.2; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-foot { flex-direction: column; gap: 2mm; }
+      }
     </style>
   </body>
 </html>
