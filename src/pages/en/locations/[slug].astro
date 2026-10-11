@@ -3,7 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import { getStandort } from '../../../data/standorte';
 import { site } from '../../../data/site';
 import {
-  clinics, commonConditions, deStandortPath, enLocationPath, formatHours, locationImages, type Clinic,
+  clinics, enLocationPath, formatHours, locationImages, type Clinic,
 } from '../../../data/locations';
 
 export function getStaticPaths() {
@@ -18,7 +18,8 @@ const openingSoon = clinic.status !== 'operational';
 const path = enLocationPath(id);
 const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const telHref = 'tel:' + phone.replace(/\s+/g, '');
-const contactHref = `/en/contact/?standort=${encodeURIComponent(name)}`;
+const preselection = clinic.status === 'operational' ? name : (clinic.vorab?.at(-1)?.value ?? name);
+const contactHref = `/en/contact/?standort=${encodeURIComponent(preselection)}`;
 const mapsHref = street
   ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${street}, ${postalCode} ${city}`)}`
   : null;
@@ -52,7 +53,6 @@ const clinicLd: Record<string, unknown> = {
   url,
   telephone: phone,
   medicalSpecialty: 'TraditionalChineseMedicine',
-  availableLanguage: ['en', 'de-CH'],
   geo: { '@type': 'GeoCoordinates', latitude: geo.lat, longitude: geo.lng },
   address: {
     '@type': 'PostalAddress',
@@ -90,95 +90,63 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: `Acupuncture & TCM in ${name}`, item: url },
   ],
 };
+
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import ClinicCard from '../../../components/en/ClinicCard.astro';
+import Journey from '../../../components/en/Journey.astro';
+import Insurance from '../../../components/en/Insurance.astro';
+import { conditions, enConditionPath } from '../../../data/conditions';
+import { therapies, enTherapyPath } from '../../../data/therapies';
+import { therapeuten, getPublicTherapistProfile, getTherapeut } from '../../../data/therapeuten';
+const profiles = therapeuten.map(getPublicTherapistProfile).filter(t=>t.standorte?.includes(id));
+// SG still has a legacy DE page. Resolve only methods from its published lead profile,
+// not future staff or a network-wide default treatment list.
+const methodNames:Record<string,string> = {akupunktur:'Akupunktur',tuina:'Tuina',schroepfen:'Schröpfen',akupressur:'Akupressur',elektroakupunktur:'Elektroakupunktur'};
+const sgMethods = getPublicTherapistProfile(getTherapeut('corinna-reinhart')!).methoden ?? [];
+const localMethods = deStandort?.therapien ?? (id==='st-gallen' ? Object.keys(methodNames).filter(key=>sgMethods.includes(methodNames[key])) : []);
+const localTherapies = therapies.filter(t=>localMethods.includes(t.deSlug));
+const localConditions = deStandort?.beschwerden?.length ? conditions.filter(c=>deStandort.beschwerden.includes(c.deSlug)) : conditions;
+const near = (deStandort?.nearby ?? []).map(n=>clinics.find(c=>c.id===n.slug)).filter((c):c is Clinic=>!!c && c.status==='operational' && c.id!==id);
+const heroLead = openingSoon
+  ? underReview ? `The status of this location is under review. It is not confirmed as an operating clinic. Ask us about an available practice nearby.`
+    : `This location is not open yet. ${openingLabel}. Register your interest; we confirm when appointments become available.`
+  : `${clinic.betreiber ? clinic.betreiber.name + ' is a partner practice in the TCM.ch network.' : 'Explore your local acupuncture and TCM options.'} Request an appointment in English. We confirm the practitioner, treatment and consultation language with you.`;
+const faqs = [
+ {q:`Where is the ${name} location?`,a:street ? `${street}, ${postalCode} ${city}. ${openingSoon ? 'The location is not currently confirmed for appointments.' : 'Use the map link below for directions to this address.'}` : 'A practice address has not yet been announced.'},
+ {q:'Can I have my consultation in English?',a:'Please include English as your preferred consultation language in the request. The coordination team checks this with the practitioner before confirming your appointment.'},
+ {q:'Which appointment times are available?',a:openingSoon ? 'Appointments at this location are not confirmed. You can register interest or ask about an operating practice.' : 'Contact us with suitable days and times. Published opening hours do not show appointment availability; the team confirms your appointment separately.'},
+ {q:'What should I check before booking?',a:'Ask for the practitioner’s name, treatment fee, likely duration and cancellation conditions. If claiming insurance, confirm coverage for that practitioner and treatment with your insurer.'},
+];
 ---
-<Layout title={title} description={description} path={path} schema={underReview ? [breadcrumbLd] : [clinicLd, breadcrumbLd]}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - {region}</div>
-      <h1>Acupuncture & TCM in {name}</h1>
-      {openingSoon ? (
-        <p class="lead">
-          {underReview ? <>The status of our {name} location is <strong>under review</strong>; it is not confirmed as an operating clinic.</> : <>Our {name} clinic is {inPreparation ? <strong>currently in preparation</strong> : <>not open yet (<strong>{openingLabel}</strong>)</>}.</>} Across TCM.ch you'll already find
-          English-speaking, EMR-/ASCA-recognised practitioners offering acupuncture and Traditional
-          Chinese Medicine - get in touch and we'll point you to your nearest open clinic.
-        </p>
-      ) : (
-        <p class="lead">
-          Looking for acupuncture in {city}? At {clinic.betreiber ? clinic.betreiber.name : `our ${name} location`} you can request acupuncture,
-          Tuina, cupping and Chinese herbal medicine. The TCM.ch team coordinates your request in <strong>English</strong> or German,
-          for example for {conditionWords}.
-        </p>
-      )}
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href={telHref}>Call {phone}</a>
-      </div>
-      {image && (
-        <figure class="hero-figure">
-          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
-        </figure>
-      )}
+
+<Layout title={title} description={description} path={path} schema={underReview || !street ? [breadcrumbLd] : [clinicLd, breadcrumbLd]}>
+<Premium>
+  <Hero eyebrow={`${region} · ${openingSoon ? 'Location update' : 'Your local practice'}`} title={`Acupuncture & TCM in ${name}`} lead={heroLead} image={image?.src} imageAlt={image ? 'TCM.ch brand illustration; not a verified photograph of this location' : undefined} caption={image ? 'Illustrative brand image' : undefined} primaryHref={contactHref} primaryLabel={openingSoon ? 'Register your interest' : 'Request an appointment'} secondaryHref="#practical" secondaryLabel="Practical information" />
+  <section class="en-section" id="practical"><div class="wrap"><div class="en-grid">
+    <div class="en-card"><span class="en-label">Practice</span><h2>{clinic.betreiber?.name ?? clinic.schemaName ?? name}</h2>
+      {clinic.betreiber && <p>Partner practice in the TCM.ch network. <a href={clinic.betreiber.url}>Visit the practice website →</a></p>}
+      {street ? <p>{street}<br />{postalCode} {city}</p> : <p>Address to be announced.</p>}
+      {mapsHref && !openingSoon && <a class="en-link" href={mapsHref} target="_blank" rel="noopener">Directions on Google Maps →</a>}
     </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        <div class="card">
-          <h3>Where to find us</h3>
-          {openingSoon ? (
-            <p><strong>{inPreparation ? 'Location in preparation' : clinic.openingNote}</strong><br />{city}, Switzerland</p>
-          ) : (
-            <p>
-              {clinic.betreiber && (<><strong>{clinic.betreiber.name}</strong>, partner practice in the TCM.ch network<br />Practice phone: <a href={`tel:${clinic.betreiber.telefon.replace(/\s/g, '')}`} style="color:var(--blue);font-weight:600">{clinic.betreiber.telefon}</a><br /></>)}
-              {street}<br />{postalCode} {city}<br />Switzerland
-              {mapsHref && (<><br /><a href={mapsHref} target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Directions on Google Maps →</a></>)}
-            </p>
-          )}
-        </div>
-
-        <div class="card">
-          <h3>{clinic.betreiber ? 'Opening hours (as published by the practice)' : 'Opening hours'}</h3>
-          {openingHours.length ? (
-            <p>{openingHours.map((h) => (<>{formatHours(h)}<br /></>))}</p>
-          ) : (
-            <p>{openingSoon ? 'To be announced ahead of opening.' : 'By appointment. We confirm times with you when you get in touch.'}</p>
-          )}
-        </div>
-
-        <div class="card">
-          <h3>Insurance & costs</h3>
-          <p>
-            Our practitioners are EMR-/ASCA-recognised, so treatment is typically reimbursed through
-            supplementary insurance. <a href="/en/health-insurance-acupuncture/" style="color:var(--blue);font-weight:600">Is acupuncture covered by insurance? →</a>
-          </p>
-        </div>
-      </div>
+    <div class="en-card"><span class="en-label">Contact</span><h3>Arrange your visit</h3><p>TCM.ch coordinates your inquiry in English. Ask us to confirm treatment language, fees and access needs.</p>
+      <p><a class="en-link" href={`tel:+${site.whatsapp}`}>Call TCM.ch coordination</a></p>
+      {clinic.betreiber && <p>Practice direct: <a href={`tel:${clinic.betreiber.telefon.replace(/\s/g,'')}`}>{clinic.betreiber.telefon}</a></p>}
+      {!clinic.betreiber && phone.replace(/\D/g,'')!==site.whatsapp && <p>Practice direct: <a href={telHref}>{phone}</a></p>}
     </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2>What we treat in {city}</h2>
-      <p style="color:var(--mid);max-width:640px;margin:0 0 18px">
-        Some of the most common reasons patients come to us. These guides are currently in German.
-      </p>
-      <div class="cards">
-        {commonConditions.map((c) => (
-          <a class="card" href={`/beschwerden/${c.id}/`}>
-            <h3>{c.label}</h3>
-          </a>
-        ))}
-      </div>
+    <div class="en-card"><span class="en-label">Visit planning</span><h3>{openingSoon ? 'Location status' : 'Published opening hours'}</h3>
+      {openingSoon ? <p>{heroLead}</p> : openingHours.length ? <p>{openingHours.map(h=><>{formatHours(h)}<br /></>)}</p> : <p>Hours have not been published. Please contact us to agree a time.</p>}
+      {!openingSoon && <p class="en-note">Hours are not a live appointment calendar. Ask about step-free access or parking before travelling.</p>}
     </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment in {name}</a>
-        <a class="btn btn--ghost" href="/en/locations/">← All TCM.ch clinics</a>
-      </div>
-    </div>
-  </section>
+  </div>
+  {openingSoon && clinic.vorab && <div class="en-actions">{clinic.vorab.slice(0,-1).map(o=><a class="tcm-btn tcm-btn--mint" href={`/en/contact/?standort=${encodeURIComponent(o.value)}`}>{o.labelEn ?? o.label} →</a>)}</div>}
+  </div></section>
+  {profiles.length>0 && <section class="en-section en-concrete"><div class="wrap"><span class="en-label">People & qualifications</span><h2>{id==='basel' ? 'Designated clinic leadership' : 'Published practitioner profiles'}</h2><p class="en-intro">Learn about professional backgrounds. A published profile does not confirm a practitioner’s current availability.</p><div class="en-grid">{profiles.map(t=><article class="en-card">{t.bild && <img src={t.bild} alt={t.name} width="160" height="160" loading="lazy" style="width:160px;height:160px;object-fit:cover;border-radius:var(--r-card);margin-bottom:20px" />}<h3>{t.name}</h3>{id==='basel' && t.slug==='janine-schmieder' && <p>Designated clinic manager. Treatment availability is not confirmed by this role.</p>}<a class="en-link" href={`/team/${t.slug}/`} hreflang="de-CH">Qualifications & profile (German) →</a></article>)}</div></div></section>}
+  {!openingSoon && localTherapies.length>0 && <section class="en-section"><div class="wrap"><span class="en-label">Treatment options</span><h2>Treatments listed for {name}.</h2><p class="en-intro">The methods below come from the published location or practitioner information. Confirm your chosen method and practitioner when booking.</p><div class="en-grid">{localTherapies.map(t=><a class="en-card" href={enTherapyPath(t.slug)}><h3>{t.name}</h3><span class="en-card-link">What the treatment involves ↗</span></a>)}</div></div></section>}
+  {!openingSoon && <section class="en-section en-tint"><div class="wrap"><span class="en-label">Explore in English</span><h2>Start with your concern.</h2><p class="en-intro">These guides explain treatment options and limitations. Discuss suitability with your practitioner.</p><div class="en-grid">{localConditions.map(c=><a class="en-card" href={enConditionPath(c.slug)}><h3>{c.condition}</h3><span class="en-card-link">Read the guide ↗</span></a>)}</div></div></section>}
+  {!openingSoon && <Journey />}<Insurance />
+  <section class="en-section"><div class="wrap en-split"><div><span class="en-label">Plan your visit</span><h2>Questions about {name}.</h2></div><div class="en-faq">{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></section>
+  {near.length>0 && <section class="en-section en-concrete"><div class="wrap"><span class="en-label">More local options</span><h2>Other operating practices.</h2><div class="en-grid">{near.map(c=><ClinicCard clinic={c} />)}</div></div></section>}
+  <section class="en-section en-dark"><div class="wrap"><h2>{openingSoon ? 'Keep in touch about this location.' : `Your next step in ${name}.`}</h2><p>{openingSoon ? 'Register your interest or ask us about a currently operating practice.' : 'Send your preferred times and language. We’ll contact you to arrange the details.'}</p><div class="en-actions"><a class="tcm-btn tcm-btn--mint" href={contactHref}>{openingSoon ? 'Register your interest' : 'Request an appointment'} ↗</a><a href="/en/locations/" class="en-link">All locations →</a></div></div></section>
+</Premium>
 </Layout>

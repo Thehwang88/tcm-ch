@@ -1,61 +1,16 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { clinics, enLocationPath, locationImages } from '../../../data/locations';
-
-const path = '/en/locations/';
-
-const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
-    { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://tcm.ch/en/locations/' },
-  ],
-};
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import ClinicCard from '../../../components/en/ClinicCard.astro';
+import { clinics } from '../../../data/locations';
+const path='/en/locations/';
+const schema={'@context':'https://schema.org','@type':'CollectionPage',url:'https://tcm.ch/en/locations/',name:'Acupuncture and TCM clinics in Switzerland',inLanguage:'en'};
 ---
-<Layout
-  title="Acupuncture & TCM in Switzerland | Clinics | TCM.ch"
-  description="Find acupuncture & TCM near you in Switzerland: TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners, covered by insurance."
-  path={path}
-  schema={breadcrumbLd}
->
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Swiss TCM network</div>
-      <h1>Our acupuncture & TCM clinics across Switzerland</h1>
-      <p class="lead">
-        Clinics with English-speaking, EMR-/ASCA-recognised practitioners - acupuncture, Tuina,
-        cupping and Chinese herbal medicine, covered by supplementary insurance. Pick the location nearest you.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/health-insurance-acupuncture/">Is acupuncture covered by insurance? →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        {clinics.map((c) => (
-          <a class="card card--media" href={enLocationPath(c.id)}>
-            {locationImages[c.id] && (
-              <img class="card-thumb" src={locationImages[c.id].src} alt={locationImages[c.id].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{c.name}</h3>
-              <p>
-                {c.status !== 'operational'
-                  ? `${c.city} - ${(c.openingNote ?? 'in preparation').toLowerCase()}`
-                  : `${c.street}, ${c.postalCode} ${c.city}`}
-              </p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <p style="color:var(--mid);font-size:14px;margin-top:18px">
-        Not sure where to start? <a href="/en/conditions/" style="color:var(--blue);font-weight:600">See the conditions we treat →</a>
-      </p>
-    </div>
-  </section>
+<Layout title="Acupuncture & TCM Clinics in Switzerland | TCM.ch" description="Find an operating acupuncture or TCM practice in Switzerland. View addresses, partner practices and separate updates for planned locations." path={path} schema={schema}>
+<Premium>
+<Hero eyebrow="TCM.ch network" title="Find your local practice." lead="Choose a clinic, explore its published information and tell us what you need. We coordinate appointment requests in English." primaryHref="#open" primaryLabel="Explore open clinics" secondaryHref="/en/contact/" secondaryLabel="Help me choose" />
+<section class="en-section" id="open"><div class="wrap"><span class="en-label">Operating locations</span><h2>Explore our clinics and partner practices.</h2><div class="en-grid">{clinics.filter(c=>c.status==='operational').map(clinic=><ClinicCard clinic={clinic} />)}</div></div></section>
+<section class="en-section en-concrete" id="future"><div class="wrap"><span class="en-label">Location updates</span><h2>Planned locations & status checks.</h2><p class="en-intro">These locations are not confirmed as operating clinics. View the local page to register interest or find an alternative practice.</p><div class="en-grid">{clinics.filter(c=>c.status!=='operational').map(clinic=><ClinicCard clinic={clinic} />)}</div></div></section>
+</Premium>
 </Layout>
