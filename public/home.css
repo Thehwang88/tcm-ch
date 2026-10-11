@@ -5506,3 +5506,14 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
   .city-scope .akz-hero .section-title:not(#w2){font-size:clamp(30px,8vw,36px);line-height:1.1}
   .city-scope .akz-hero .section-sub:not(#w2){font-size:16.5px}
 }
+
+/* ══ Wave 6 · B0 Komponenten-Nachzug (11.10.2026) — Browser-Blau-/Legacy-Reste in Scope-Vorlagen ══ */
+:is(.therapie-scope,.city-scope) :is(.msg-kk-aside a,.msg-faq-a a):not(#w2){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px}
+:is(.therapie-scope,.city-scope) :is(.msg-kk-aside a,.msg-faq-a a):not(#w2):hover{background:var(--brand-tint)}
+.standort-scope .cl-links .cl-chip:not(#w2){border-color:rgba(2,11,16,.14);box-shadow:none;color:var(--brand-black);background:#fff}
+.standort-scope .cl-links .cl-chip:not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.3);color:var(--brand-black)}
+.standort-scope .cl-links .cl-chip:not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+.symptom-scope #page-symptom > p a:not([class]):not(#w2){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px}
+.symptom-scope #page-symptom > p a:not([class]):not(#w2):hover{background:var(--brand-tint)}
+.bx-hero-az-l{font-family:var(--font-sans)}
+:is(.therapie-scope,.city-scope) :is(.ib-cta,.ib-sticky-cta,.msg-kk-aside a,.msg-faq-a a):not(#w2):focus-visible,.symptom-scope #page-symptom > p a:not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px;border-radius:4px}
