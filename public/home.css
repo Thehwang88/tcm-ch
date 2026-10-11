@@ -5653,3 +5653,6 @@ body:has(> .symptom-scope > #page-beschwerden) .bx-cat-panel:not(#w2){border-col
 body:has(> .symptom-scope > #page-beschwerden) .bx-trust-item:not(#w2){border-color:rgba(2,11,16,.08);border-radius:12px}
 /* H1 auf Hub-/Leaf-Vorlagen: Rich Black statt #0d0d0d/var(--black) */
 body:has(> #page-kkhub) .kk-hero__copy h1:not(#w2),body:has(> .msg-page) .msg-h1:not(#w2),body:has(> .symptom-scope > #page-beschwerden) .bx-headline:not(#w2){color:var(--brand-black)}
+/* B3-Nachzug: Foto-Caption (lsr-right) — Verlauf kräftiger, damit weisser 12.5px-Text real ≥ 4.5:1 über dem Bild liegt (Pixelmessung) */
+body:is(:has(> #page-standort),:has(> .akz)) .lsr-right figcaption:not(#w2){background:linear-gradient(180deg,rgba(2,11,16,.3),rgba(2,11,16,.86));font-weight:500;padding-top:18px}
+body:has(> .symptom-scope > #page-beschwerden) .bx-az-btn:not(#w2){font-family:var(--font-sans)}
