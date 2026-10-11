@@ -574,12 +574,12 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Die <strong>Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Ob hier Termine möglich sind, klären wir derzeit. Für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> ist unser Standort an der Marktgasse da, mit <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesischer Kräutertherapie</strong>. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
+      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Die <strong>Münzgasse 2</strong> liegt im Herzen der Altstadt. Ob hier Termine möglich sind, klären wir derzeit. Für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> ist unser Standort an der Marktgasse da, mit <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesischer Kräutertherapie</strong>. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus ganz Winterthur und Umgebung</h2><p>Die Münzgasse erreichst du aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Oberwinterthur</strong>, <strong>Töss</strong>, <strong>Wülflingen</strong>, <strong>Seen</strong>, <strong>Veltheim</strong> und <strong>Mattenbach</strong>. Auch aus umliegenden Gemeinden wie Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon und Brütten bist du schnell da. Die zentrale Lage an der Münzgasse macht uns für die ganze Region erreichbar.</p>"
     },
     "anfahrt": {
-      "oev": "<strong>Hauptbahnhof Winterthur</strong>, 4 Gehminuten zur Praxis. S-Bahn-Linien S7, S8, S11, S12, S29, S30, S35 sowie alle IC- und IR-Verbindungen halten im HB Winterthur.",
-      "autoParken": "Anfahrt über A1 (Ausfahrt Winterthur-Töss oder Winterthur-Wülflingen). Parkmöglichkeiten in der Nähe: <strong>Parkhaus Neumarkt</strong> (3 Min. Fussweg), <strong>Parkhaus Untertor</strong> (4 Min.), Parkhaus Theater (6 Min.). Die Altstadt ist weitgehend Fussgängerzone."
+      "oev": "Zu Fuss vom <strong>Hauptbahnhof Winterthur</strong> durch die Altstadt erreichbar. Den genauen Weg zeigt dir die Karte.",
+      "autoParken": "Anfahrt über die A1. Die Altstadt ist weitgehend Fussgängerzone. Parkhäuser findest du am Altstadtrand."
     },
     "therapien": [
       "akupunktur",
@@ -633,7 +633,7 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Winterthur Marktgasse",
     "seo": {
       "title": "Akupunktur Winterthur: TCM-Praxis an der Marktgasse | TCM.ch",
-      "description": "Akupunktur & TCM in Winterthur, Marktgasse 78: Chinesische Medizin in der Altstadt, wenige Gehminuten vom Bahnhof. EMR-/ASCA-anerkannt, Mo bis Sa geöffnet. Jetzt Termin anfragen.",
+      "description": "Akupunktur & TCM in Winterthur, Marktgasse 78: Chinesische Medizin mitten in der Altstadt. Abrechnung über die Zusatzversicherung je nach Modell.",
       "h1": "Akupunktur & TCM in <em>Winterthur – Marktgasse</em>",
       "schemaName": "TCM Winterthur – TCM.ch"
     },
@@ -667,12 +667,12 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt und nur wenige Gehminuten vom Hauptbahnhof. Du erhältst hier das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt. Beide Winterthurer Adressen bieten auch <a href='/massage-winterthur/'>Massage in Winterthur</a> an, medizinisch oder zur Entspannung.</p><h2>Zwei Standorte in Winterthur</h2><p>Mit der Marktgasse 78 ergänzen wir unsere bestehende <a href='/standorte/winterthur-muenzgasse/'>Praxis an der Münzgasse</a>. So findest du in der Winterthurer Altstadt zwei gut erreichbare Anlaufstellen für TCM, wähle einfach den Standort, der für dich am bequemsten liegt.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon kommen Patient:innen regelmässig zu uns. Die Lage an der Marktgasse macht uns aus der ganzen Region gut erreichbar.</p>"
+      "body": "<h2>TCM Winterthur Marktgasse, Akupunktur &amp; TCM mitten in der Altstadt</h2><p>Unsere <strong>TCM-Praxis an der Marktgasse 78</strong> liegt direkt in der Altstadt. Angeboten werden Methoden der Traditionellen Chinesischen Medizin wie <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Medizinische und entspannende Angebote findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p><h2>Zwei Adressen in Winterthur</h2><p>Neben der Marktgasse 78 führen wir die <a href='/standorte/winterthur-muenzgasse/'>Münzgasse 2</a> als zweite Winterthurer Adresse. Welche Termine dort möglich sind, siehst du auf der jeweiligen Seite.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus ganz Winterthur und Umgebung</h2><p>Die Marktgasse erreichst du aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Veltheim</strong>, <strong>Töss</strong>, <strong>Oberwinterthur</strong>, <strong>Seen</strong>, <strong>Wülflingen</strong>, <strong>Mattenbach</strong> und <strong>Hegi</strong>. Aus umliegenden Gemeinden wie Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen und Illnau-Effretikon ist die Altstadt gut erreichbar.</p>"
     },
     "anfahrt": {
-      "oev": "<strong>Bahnhof Winterthur</strong> in 6 Gehminuten erreichbar, mit allen S-Bahn- und IC-Verbindungen. Der Stadtbus hält an der <strong>Haltestelle Stadthaus</strong>, 2 Gehminuten von der Praxis entfernt.",
-      "autoParken": "Parkmöglichkeiten in der Nähe: <strong>Parkhaus Altstadt</strong> und <strong>Parkhaus Untertor</strong>, je wenige Gehminuten entfernt."
+      "oev": "Zu Fuss vom <strong>Bahnhof Winterthur</strong> durch die Altstadt erreichbar. Den genauen Weg zeigt dir die Karte.",
+      "autoParken": "Die Altstadt ist weitgehend Fussgängerzone. Parkhäuser findest du am Altstadtrand."
     },
     "therapien": [
       "akupunktur",

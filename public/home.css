@@ -5148,7 +5148,7 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    anderen Familien tragen die Klasse nicht -> keine Wirkung dort.
    Alle Werte aus freigegebenen Homepage-Kohorten (2a/2b Pill, 3b-A
    Flaechen, 3c-A/B/C Karten). */
-#page-standort.std-ds a.svc-card{color:inherit;text-decoration:none}
+#page-standort a.svc-card{color:inherit;text-decoration:none}
 #page-standort.std-ds .btn-primary:not(.form-submit){border-radius:999px!important}
 #page-standort.std-ds .sg-merged-cta{background:var(--brand-black)}
 #page-standort.std-ds .section:nth-child(even){background:#fff}
