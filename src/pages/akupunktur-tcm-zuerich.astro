@@ -21,45 +21,40 @@ const END_CTA = '<section class="cta-band" style="background:#F2F4F2;padding:48p
 const endCtaAt = body.lastIndexOf(END_CTA);
 if (endCtaAt < 0) throw new Error('akupunktur-tcm-zuerich: End-CTA nicht gefunden');
 
-const title = 'TCM Zürich & Akupunktur Zürich | TCM.ch';
+const title = 'Akupunktur & TCM in Zürich – Praxen in Höngg & Oerlikon | TCM.ch';
 const description =
-  'Akupunktur & TCM in Zürich: Praxen in Höngg und Oerlikon (Praxis Hwang), neue TCM.ch Praxis beim Bahnhof Oerlikon geplant ab 1.12.2026. EMR-/ASCA-anerkannt.';
+  'Akupunktur & TCM in Zürich: Partnerpraxen der Praxis Hwang in Höngg und Oerlikon, neue TCM.ch Praxis Ohmstrasse 14 geplant ab 1.12.2026. Anfrage über TCM.ch.';
 
 const schema = [
+  // Hub = Zürcher Netzwerk-Übersicht, KEINE eigene physische Praxis: CollectionPage über die
+  // Organisation TCM.ch (@id aus dem Home-Schema) mit Liste der Zürcher Standortseiten. Die
+  // Praxis-Entitäten selbst stehen auf den Standortseiten (keine Dubletten, keine Adresse hier).
   {
     '@context': 'https://schema.org',
-    '@type': 'MedicalClinic',
-    name: 'TCM.ch – Akupunktur & TCM Zürich',
+    '@type': 'CollectionPage',
+    '@id': 'https://tcm.ch/akupunktur-tcm-zuerich/#webpage',
+    name: 'Akupunktur & TCM in Zürich',
     url: 'https://tcm.ch/akupunktur-tcm-zuerich/',
-    image: 'https://tcm.ch/og-image.jpg',
-    medicalSpecialty: ['TraditionalChineseMedicine', 'Acupuncture'],
-    telephone: '+41775236122',
-    email: 'termine@tcm.ch',
-    priceRange: '$$',
-    areaServed: [
-      { '@type': 'City', name: 'Zürich' },
-      { '@type': 'AdministrativeArea', name: 'Kanton Zürich' },
-    ],
-    // Nur die bestehende Praxis als department; der Ohmstrasse-Standort (Eröffnung
-    // 1.12.2026) und Zürich City (in Vorbereitung) erscheinen erst nach Eröffnung.
-    department: [
-      { '@type': 'MedicalClinic', name: 'TCM.ch Zürich Höngg', url: 'https://tcm.ch/standorte/zuerich-hoengg/', address: { '@type': 'PostalAddress', addressLocality: 'Zürich Höngg', postalCode: '8049', addressRegion: 'ZH', addressCountry: 'CH' } },
-    ],
-    availableService: [
-      { '@type': 'MedicalProcedure', name: 'Akupunktur' },
-      { '@type': 'MedicalProcedure', name: 'Traditionelle Chinesische Medizin' },
-      { '@type': 'MedicalProcedure', name: 'Tuina-Massage' },
-      { '@type': 'MedicalProcedure', name: 'Schröpfen' },
-      { '@type': 'MedicalProcedure', name: 'Moxibustion' },
-      { '@type': 'MedicalProcedure', name: 'Chinesische Kräutertherapie' },
-    ],
+    inLanguage: 'de-CH',
+    about: { '@id': 'https://tcm.ch/#org' },
+    publisher: { '@id': 'https://tcm.ch/#org' },
+    spatialCoverage: { '@type': 'City', name: 'Zürich' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Zürich Höngg – Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk', url: 'https://tcm.ch/standorte/zuerich-hoengg/' },
+        { '@type': 'ListItem', position: 2, name: 'Zürich Oerlikon – Praxis Hwang (Schulstrasse 3) und geplante TCM.ch Praxis (Ohmstrasse 14)', url: 'https://tcm.ch/standorte/zuerich-oerlikon/' },
+        { '@type': 'ListItem', position: 3, name: 'Zürich City – Standort in Vorbereitung', url: 'https://tcm.ch/standorte/zuerich-city/' },
+      ],
+    },
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://tcm.ch/' },
-      { '@type': 'ListItem', position: 2, name: 'TCM & Akupunktur Zürich', item: 'https://tcm.ch/akupunktur-tcm-zuerich/' },
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Standorte', item: 'https://tcm.ch/standorte/' },
+      { '@type': 'ListItem', position: 3, name: 'Zürich', item: 'https://tcm.ch/akupunktur-tcm-zuerich/' },
     ],
   },
   {
@@ -68,7 +63,7 @@ const schema = [
     mainEntity: [
       { '@type': 'Question', name: 'Muss ich wissen, welcher Standort der richtige ist?', acceptedAnswer: { '@type': 'Answer', text: 'Nein. Sag uns einfach, wo du in Zürich einen Termin suchst und was dir wichtig ist - nächste Praxis oder schnellster Termin. Wir schlagen dir den passenden Standort vor.' } },
       { '@type': 'Question', name: 'Kann ich einfach den nächsten freien Termin anfragen?', acceptedAnswer: { '@type': 'Answer', text: 'Ja. Wähle im Formular «Schnellster Termin» oder nutze den Shortcut «Nächsten Termin finden» - wir suchen den frühesten freien Termin an unseren Zürcher Standorten.' } },
-      { '@type': 'Question', name: 'Kann ich aus jedem Zürcher Quartier anfragen?', acceptedAnswer: { '@type': 'Answer', text: 'Ja. Unsere Netzwerk-Praxen in Höngg und Oerlikon sind mit dem ÖV aus der ganzen Stadt gut erreichbar; Patient:innen kommen aus allen Zürcher Quartieren zu uns.' } },
+      { '@type': 'Question', name: 'Kann ich aus jedem Zürcher Quartier anfragen?', acceptedAnswer: { '@type': 'Answer', text: 'Ja. Unsere Netzwerk-Praxen in Höngg und Oerlikon sind mit dem ÖV aus der ganzen Stadt erreichbar. Sag uns dein Quartier, wir schlagen dir die passende Praxis vor.' } },
       { '@type': 'Question', name: 'Werden die Kosten von der Zusatzversicherung übernommen?', acceptedAnswer: { '@type': 'Answer', text: 'Akupunktur und TCM laufen über die Zusatzversicherung, nicht über die Grundversicherung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt; je nach Kasse und Modell werden häufig 80 bis 100 Prozent übernommen. Wir prüfen deine Deckung kostenlos vor dem ersten Termin.' } },
       { '@type': 'Question', name: 'Was passiert, wenn am nächsten Standort nichts frei ist?', acceptedAnswer: { '@type': 'Answer', text: 'Dann bieten wir dir den nächsten freien Termin an einem anderen Zürcher Standort an. Du entscheidest, ob du lieber wartest oder ausweichst.' } },
     ],
