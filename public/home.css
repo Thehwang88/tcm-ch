@@ -5656,3 +5656,7 @@ body:has(> #page-kkhub) .kk-hero__copy h1:not(#w2),body:has(> .msg-page) .msg-h1
 /* B3-Nachzug: Foto-Caption (lsr-right) — Verlauf kräftiger, damit weisser 12.5px-Text real ≥ 4.5:1 über dem Bild liegt (Pixelmessung) */
 body:is(:has(> #page-standort),:has(> .akz)) .lsr-right figcaption:not(#w2){background:linear-gradient(180deg,rgba(2,11,16,.3),rgba(2,11,16,.86));font-weight:500;padding-top:18px}
 body:has(> .symptom-scope > #page-beschwerden) .bx-az-btn:not(#w2){font-family:var(--font-sans)}
+/* ══ Wave 7 · Longevity (Sub-Brand bleibt): Gold auf hellen Flächen → dunkles Gold #7d5f24 (5.9:1 auf Weiss, 5.4:1 auf Cream); Gold auf Forest (6.8:1) unverändert ══ */
+#page-longevity{--lng-champagne-ink:#7d5f24}
+#page-longevity :is(.lng-section-label,.lng-thesis-num,.lng-press-label,.lng-h2 em):not(.lng-section-dark *):not(.lng-cta-block *):not(.lng-hero *):not(#w2){color:var(--lng-champagne-ink)}
+#page-longevity .lng-section-label:not(.lng-section-dark *):not(.lng-cta-block *):not(.lng-hero *):not(#w2)::before{background:var(--lng-champagne-ink)}
