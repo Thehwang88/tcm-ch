@@ -5517,3 +5517,88 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 .symptom-scope #page-symptom > p a:not([class]):not(#w2):hover{background:var(--brand-tint)}
 .bx-hero-az-l{font-family:var(--font-sans)}
 :is(.therapie-scope,.city-scope) :is(.ib-cta,.ib-sticky-cta,.msg-kk-aside a,.msg-faq-a a):not(#w2):focus-visible,.symptom-scope #page-symptom > p a:not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px;border-radius:4px}
+
+/* ══ Wave 6 · B3 — Standorte · Hub · Funnels · Home · Kinder (11.10.2026, design only) ══
+   Scope = body of the 19 target routes (page wrappers sit beside appended sections, hence body:has()).
+   Visual layer only: no markup, booking, OneDoc, form, tracking or status changes. */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)){--surface:var(--brand-surface);--border:rgba(2,11,16,.1);--muted:rgba(2,11,16,.62);--mid:rgba(2,11,16,.72);--blue:var(--brand-black);--blue-dark:var(--brand-ink);--blue-light:var(--brand-tint);--green:var(--brand-black);--green-dark:#1f2a30;--green-mint:var(--brand-tint);--green-mid:rgba(2,11,16,.12)}
+/* Cards */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.svc-card,.city-card,.location-card,.usp-card,.contact-method-mini,.inline-form-card,.form-trust-checklist,.up-transit-acc,.glb-card,.hf-item,.offer-cardx,.kt-feature,.zhx-praxis,.next-steps,.scb-bar):not(#w2){border-color:rgba(2,11,16,.1)!important;box-shadow:none}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> #page-therapie)) :is(.svc-card,.city-card,.location-card,.usp-card,.glb-card,.hf-item,.offer-cardx,.zhx-praxis,.up-transit-acc):not(#w2){border-radius:16px}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> #page-therapie)) :is(.inline-form-card,.kt-feature):not(#w2){border-radius:20px}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(a.svc-card,a.city-card,a.location-card,a.glb-card,a.hf-item,a.kt-feature,a.contact-method-mini,a.offer-cardx):not(#w2):hover{border-color:rgba(2,11,16,.3)!important;box-shadow:0 12px 28px rgba(2,11,16,.07);transform:translateY(-2px);background:#fff}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.svc-cta,.up-transit,.next-steps):not(#w2){border-top-color:rgba(2,11,16,.1)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .svc-cta:not(#w2){color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .svc-badge--ins:not(#w2){background:#fff;border-color:rgba(2,11,16,.12);color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .svc-badge--time:not(#w2){background:var(--brand-tint);color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.cl-chip,.zhx-chip,.akz-chip):not(#w2){border:1px solid rgba(2,11,16,.14);background:#fff;color:var(--brand-black);box-shadow:none}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.cl-chip,.zhx-chip,.akz-chip):not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.3);color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .zhx-tag:not(#w2){background:var(--brand-tint);color:var(--brand-black);border:1px solid rgba(2,11,16,.08)}
+/* Meta, labels, links */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.location-plz,.loc-plz-dots,.inline-form-sub,.form-divider-quiet,.next-steps-label,.tmc-loc,.sg-crumb,.sg-crumb span,.sg-meta-item,.sg-sep,.a-label,.a-review,.svc-sub):not(#w2){color:rgba(2,11,16,.62)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .kk-ico:not(#w2){color:rgba(2,11,16,.72);background:rgba(2,11,16,.06)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .sgm-meta:not(#w2){color:rgba(255,255,255,.72)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .sgm-cta:not(#w2),body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .sgm-cta:not(#w2) span{color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.location-link,.body-link,.location-intro a,.svc-sub a,.up-transit-area a,.zhx-routing a:not(.btn-primary):not(.btn-secondary),.akz-txtlinks a,.kk-a a,.content-body a:not(.btn-primary):not(.btn-secondary):not(.tmc):not(:has(> div,> img,> figure)),.section-sub a,.subpage-sidebar p > a:not([class])):not(#w2){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px;transition:background var(--t-base) ease}
+#home-content p > a:not([class]):not(#w2){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.location-link,.body-link,.location-intro a,.svc-sub a,.up-transit-area a,.zhx-routing a:not(.btn-primary):not(.btn-secondary),.akz-txtlinks a,.kk-a a,.content-body a:not(.btn-primary):not(.btn-secondary):not(.tmc):not(:has(> div,> img,> figure)),.section-sub a):not(#w2):hover{background:var(--brand-tint)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.cp-tldr > div:first-child,.zhx-praxis-body > span,.zhx-steps span span,.faq-item summary span,.form-group > div:not([class]),#zh-extra-toggle,[style*="2D9B6F"]):not(#w2){color:var(--brand-ink)!important}
+#home-content div > div > span:not([class]):not(#w2){color:rgba(2,11,16,.62)}
+/* Surfaces */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cp-tldr:not(#w2){background:var(--brand-tint);border:1px solid rgba(2,11,16,.08);border-left:3px solid var(--brand);border-radius:0 16px 16px 0}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cm-icon-mini.cm-mail:not(#w2){background:var(--brand-black)!important;color:#fff}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) aside > div > div:first-child:not([class]):not(#w2){background:var(--brand-black)!important;color:#fff!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .usp-icon:not(#w2){background:rgba(26,226,136,.14)!important;color:var(--brand-black)!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .usp-icon svg:not(#w2){color:var(--brand-black);stroke:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .intake-trust-dot:not(#w2){background:var(--brand)!important;opacity:1}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cta-band > span:not(#w2){background:rgba(26,226,136,.16)!important}
+/* Buttons */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .btn-primary:not(.lsr-btn-primary):not(.hh-btn-primary):not(#w2){background:var(--brand-black)!important;color:#fff!important;border-radius:999px!important;box-shadow:none}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .btn-primary:not(.lsr-btn-primary):not(.hh-btn-primary):not(#w2):hover{background:#1f2a30!important;transform:translateY(-1px);box-shadow:0 10px 24px rgba(2,11,16,.18)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .btn-secondary:not(#w2){border:1.5px solid rgba(2,11,16,.22);background:#fff;color:var(--brand-black);border-radius:999px!important;box-shadow:none}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .btn-secondary:not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.5);color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.form-submit,.be-wl-form button,.lu-wl-form button,.hlsg-form button,.st-home-banner a,.scb-primary):not(#w2){border-radius:999px!important;font-family:var(--font-sans)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .hlsg-form input:not(#w2){border-color:rgba(2,11,16,.18)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .form-wa-alt-new:not(#w2){color:var(--brand-black);border:1.5px solid rgba(2,11,16,.18);background:#fff;border-radius:999px;font-weight:600}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .form-wa-alt-new:not(#w2):hover{background:var(--brand-tint);border-color:rgba(2,11,16,.4)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .form-wa-alt-new svg:not(#w2){color:#25D366}
+#home-content .wa-concierge-submit:not(#w2){background:var(--brand)!important;color:var(--brand-black)!important;border-radius:999px!important}
+#home-content .wa-concierge-submit:not(#w2):hover{background:var(--brand-hover,#14C97A)!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cta-band-btns .btn-white:not(#w2){background:#fff!important;color:var(--brand-black)!important;border-radius:999px}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cta-band-btns .btn-white svg:not(#w2){color:#25D366}
+/* Forms */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.form-input,.form-select,.form-textarea):not(#w2){border:1px solid rgba(2,11,16,.18)!important;border-radius:12px;background:#fff;color:var(--brand-black)}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.form-input,.form-select,.form-textarea):not(#w2):focus{border-color:var(--brand-black)!important;box-shadow:0 0 0 3px rgba(26,226,136,.35);outline:none;background:#fff}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(.form-input,.form-textarea):not(#w2)::placeholder{color:rgba(2,11,16,.45)}
+/* Kinder-Seite (SpaPage-Therapie ohne therapie-scope): Hero Concrete, Brand-Skala */
+body > #page-therapie #therapie-premium-hero:not(#w2){background:var(--brand-surface);border-bottom:1px solid rgba(2,11,16,.08)}
+body > #page-therapie .sg-title:not(#w2){color:var(--brand-black)}
+body > #page-therapie .sg-eyebrow:not(#w2){font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--brand-ink)!important}
+body > #page-therapie .sg-sub:not(#w2){color:rgba(2,11,16,.72)}
+body > #page-therapie .cp-cta-card:not(#w2){border:1px solid rgba(2,11,16,.1);border-radius:20px;background:var(--brand-surface)}
+body > #page-therapie .faq-item:not(#w2){border-color:rgba(2,11,16,.1);border-radius:16px}
+/* Fokus + Reduced Motion */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(a,button,summary,input,select,textarea):not(.lsr-hero *):not(.hh-hero *):not(#mainNav *):not(#siteDrawer *):not(#w2):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) :is(a.svc-card,a.city-card,a.location-card,a.glb-card,a.hf-item,a.kt-feature,a.contact-method-mini,.btn-primary,.btn-secondary):not(#w2):hover{transform:none;transition:none}}
+/* B3 Residuen (Probe-Lauf 2): Icon-Text auf Rich Black, Home-Trenner, Labels auf Concrete, Inline-Legacy-Rahmen, Sticky-CTA-Pille */
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cm-icon-mini.cm-mail:not(#w2){color:#fff!important}
+#home-content span[style*="var(--border)"]:not(#w2){color:rgba(2,11,16,.62)!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> #page-therapie)) :is(.section-label,.kt-intro-label,.svc-cta,.kk-cta-eyebrow):not(#w2){color:var(--brand-ink)!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> #page-therapie)) .section-label:not(#w2){font-size:11px;font-weight:700;letter-spacing:.16em}
+body:is(:has(> .akz)) .zhx-praxis-body > span:not(#w2){border-color:rgba(2,11,16,.1)!important;background:var(--brand-tint)!important}
+body:is(:has(> #page-standort),:has(> #page-standorte),:has(> #home-content),:has(> .akz),:has(> .standort-scope),:has(> #page-therapie)) .cp-tldr:not(#w2){background:var(--brand-tint)!important;border-color:rgba(2,11,16,.08)!important;border-left:3px solid var(--brand)!important}
+#standorte-zuerich:not(#w2){background:var(--brand-surface)!important;border-color:rgba(2,11,16,.1)!important}
+#stickyCta .sc-btn:not(#w2){border-radius:999px!important}
+/* SG-Sticky (scb-bar ist Footer-Komponente, body-Kind): "Termin online buchen" wird per Script eingefügt und ist auf den
+   city-scope-SG-Seiten (Funnel, Kosten) bisher unstyled (Browser-Blau) — Button-Stil aus dem SG-Leaf, als Pille, Hairline oben. */
+body:has(#online-buchen) > .scb-bar .scb-book:not(#w2){flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;min-height:48px;box-sizing:border-box;padding:0 8px;background:#fff;color:var(--brand-black);border:1.5px solid rgba(2,11,16,.25);border-radius:999px;font-family:var(--font-sans);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+body:has(#online-buchen) > .scb-bar:not(#w2){border-top-color:rgba(2,11,16,.1)}
+body:has(#online-buchen) > .scb-bar :is(.scb-primary,.scb-out):not(#w2){border-radius:999px}
+body:is(:has(> #page-standort),:has(> .standort-scope)) :is(.be-ribbon,.lu-ribbon):not(#w2){background:var(--brand-black);color:var(--brand)}
+/* Kinder-Hero: Template rechnet mit Bild-Spalte, Seite hat keine → einspaltig, Rhythmus wie Therapie-Seiten */
+body > #page-therapie #therapie-premium-hero.sg-active:not(#w2){padding:clamp(56px,7vw,96px) 24px}
+body > #page-therapie #therapie-premium-hero .sg-inner:not(#w2){grid-template-columns:minmax(0,1fr)}
+body > #page-therapie #therapie-premium-hero .sg-text:not(#w2){max-width:680px}
+/* SG-Funnel (city-scope): USP-Icons mit Legacy-Grün inline → Brand-Tint + Rich-Black-Stroke wie Standort-Template */
+body:has(> .city-scope):has(#online-buchen) .usp-icon:not(#w2){background:rgba(26,226,136,.14)!important;color:var(--brand-black)}
+body:has(> .city-scope):has(#online-buchen) .usp-icon svg:not(#w2){stroke:var(--brand-black)}
