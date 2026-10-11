@@ -179,6 +179,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/akupunktur-tcm-basel" body="" schema={schema}>
+  <div class="city-scope">
   <style set:html={css} is:inline></style>
   <Fragment set:html={body} />
   <MassageAnfrageForm
@@ -188,4 +189,5 @@ const schema = [
     heading="Termin <em>anfragen.</em>"
     sub="Wir melden uns für die Terminvereinbarung in Basel. Sonst nichts."
   />
+  </div>
 </SpaPage>

@@ -42,6 +42,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/massage-luzern" body="" schema={schema}>
+  <div class="city-scope">
   <style set:html={css} is:inline></style>
   <Fragment set:html={heroPart} />
   <InsuranceBanner variant="inline" location="Luzern" />
@@ -49,4 +50,5 @@ const schema = [
   <MassageWartelisteForm stadt="Luzern" jahr="2027" quelle="warteliste-luzern-massage" />
   <WhatsAppContact name="Brenda" image="/images/brenda-portrait.webp" imageAlt="Brenda, Massage-Team TCM.ch" />
   <InsuranceBanner variant="sticky" />
+  </div>
 </SpaPage>

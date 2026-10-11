@@ -190,7 +190,7 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 | Standort-Landingpages (`akupunktur-tcm-*`, `massage-*`, `akupunktur-in-der-naehe`, `akupunktur-st-gallen-kosten`) | 13 | offen; `/akupunktur-in-der-naehe/` nur city-card-Hover (W1) |
 | Therapien | 37 | **Wave 2A+2B lokal** (Tokens, Flächen, Eyebrows, H2, Pillen-CTAs, Karten, Chips, FAQ, Formulare, Kontrast) — Template PARTIAL bis 2C (Hero/Layout) |
 | Beschwerden | 155 | **Wave 2A+2B lokal** (wie Therapien) — Template PARTIAL bis 2C (Hero/Layout) |
-| Gesundheitsbibliothek / Körpersignale / Wissen | 201 / 95 / 54 | **Wave 3 lokal** (§17): Artikel 297 + Hubs 53 = 350 Routen Template-Layer konform (Hero Concrete, Prosa 640px, Links, Labels, Karten, Boxen, CTA-Card, FAQ, Autor, Formular-Geometrie); kein TOC (Markup-Entscheid offen) |
+| Gesundheitsbibliothek / Körpersignale / Wissen | 201 / 95 / 54 | **Wave 3 live `e951e74`** (§17): Artikel 297 + Hubs 53 = 350 Routen Template-Layer konform (Hero Concrete, Prosa 640px, Links, Labels, Karten, Boxen, CTA-Card, FAQ, Autor, Formular-Geometrie); kein TOC (Markup-Entscheid offen) |
 | `/wissen/` Hub (SpaPage) · Haut (`.haut-scope`, Gold-Sub-Brand) · Praxiswissen/Regulatorik/Branche (`.b2`, B2B) · Visuals | 1 / 37 / 37 / 11 | offen (W4b: Haut nach Design-Entscheid Gold vs. Brand; B2B separat; Visuals) |
 | Team, Partner, Branche, Regulatorik, Tools, Karriere, Krankenkassen, Ergebnisse, Sonderseiten | ~60 | offen (W5) |
 | EN | 51 | offen (W5/W6) |
@@ -290,7 +290,7 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 **Hero-Zählung (abgeglichen 11.10.2026):** 137 + 17 + 11 + 9 + 11 = **185/192 Heroes im 2C-2-System**, 7 dokumentierte Ausnahmen (Hubs `/beschwerden/`, `/therapien/` · LayoutDe-Akupunktur-Unterseiten ×5). Die frühere Angabe «182/192, 10 Ausnahmen» war ein Zählfehler: die drei `.tsr-hero`-Varianten (`--solo`, `--kt`, `--ga`) waren in der Tabelle als «8» statt 11 geführt, und `/akupunktur-kinder/` wurde als Ausnahme mitgezählt, obwohl es nicht zu den 192 Scope-Routen gehört.
 
 
-## 17. Wave 3 — Gesundheitsbibliothek · Körpersignale · Wissen (Template-Layer, lokal)
+## 17. Wave 3 — Gesundheitsbibliothek · Körpersignale · Wissen (Template-Layer, **live `e951e74`**, 11.10.2026)
 
 **Umsetzung:** neues Stylesheet `public/knowledge-rebrand.css`, in `LayoutDe.astro` nach `footer-rebrand.css` verlinkt (ein `<link>` auf allen 478 LayoutDe-Routen; `_headers` `no-cache` wie nav-/footer-rebrand). 0 Markup-, 0 Copy-, 0 Reihenfolge-Änderungen; keine Page-Scoped-Styles angefasst. Reichweite ausschliesslich über Strukturanker, die nur in den Wissensvorlagen vorkommen (Fingerprint über alle 478 LayoutDe-Routen):
 
@@ -319,6 +319,33 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 
 **Verbleibende Ausnahmen / nächste Batches:** Haut (`.haut-scope`, Gold-Palette → Design-Entscheid), `/wissen/`-Hub (SpaPage, 2 blaue Default-Links), Perspektiven «Demnächst»-Karten (nur Concrete-Fläche), B2B (`.b2`), Visuals; LayoutDe-Akupunktur-Unterseiten (teilen Klassen `.kb-body`, `.rel-card` — bewusst ausgeschlossen, eigener Batch mit `.therapie-scope`-Hook). `:has()`-Fallback: ohne Support bleibt nur die Hub-Hero-Fläche weiss (Artikel-Hero nutzt kein `:has()`).
 
-**Compliance-Zählung:** Shell 761/761 · Template-Layer Therapien/Beschwerden 192/192 · Heroes 2C-2 185/192 (§16) · **Wissens-Template-Layer 350/350 lokal** (Artikel 297 + Hubs 53), Hero-System Wissen 350/350 (Concrete) · gesamt Template-konform lokal 542 Routen von 767.
+**Compliance-Zählung:** Shell 761/761 · Template-Layer Therapien/Beschwerden 192/192 · Heroes 2C-2 185/192 (§16) · **Wissens-Template-Layer 350/350 live** (Artikel 297 + Hubs 53), Hero-System Wissen 350/350 (Concrete) · gesamt Template-konform lokal 542 Routen von 767.
 
-**Wave-6-Abschluss (Wissen):** Freigabe + Release dieses Batches; TOC-Entscheid; Haut-Entscheid; LayoutDe-Akupunktur-Batch; danach Gate C (visuelle Prüfung aller 13 Wissens-Templates) und Gate J (Route-Report) für die Familie.
+**Live-Verifikation 11.10.2026:** `/knowledge-rebrand.css` 200 · text/css · no-cache · byteidentisch; 17 Routen (Wissen, Home, geschützte) byteidentisch zum Release-Build; Formular-Endpoint unverändert (308 → 422 bei leerem Body).
+
+**Offener Content-Fix (separat, nicht Teil einer Design-Wave):** 3 Elemente in `/wissen/akupunktur-bei-rueckenschmerzen/` und `/wissen/krankenkasse-tcm-was-wirklich-uebernommen-wird-2026/` (`.ouch-mag-row` aus `src/data/ouch-links.ts`; dieselbe Zeile in `src/data/ueber-uns-body.html`): Label «Aus dem Magazin.» `#8a919c` 11px → 3.18:1, Link `var(--blue)` 15.5px → 3.48:1, Pfeil-Span. Vorbestehend, durch Wave 3 unverändert. Zweizeilige Korrektur im Inline-Style: `color:#8a919c` → `color:rgba(2,11,16,.62)` und `color:var(--blue,#2D9B6F)` → `color:var(--brand-black,#020B10);text-decoration:underline;text-decoration-color:var(--brand,#1AE288);text-decoration-thickness:2px;text-underline-offset:3px`.
+
+**Wave-6-Abschluss (Wissen):** TOC-Entscheid; Haut-Entscheid; LayoutDe-Akupunktur-Batch; danach Gate C (visuelle Prüfung aller 13 Wissens-Templates) und Gate J (Route-Report) für die Familie.
+
+## 18. Wave 4A — Standort- und City-Landingpages (Template-Layer, lokal)
+
+**Scope-Gate (34 Kandidaten = 21 `/standorte/*` + 13 Landingpages):**
+
+| Klasse | Routen | Behandlung |
+|---|---|---|
+| Standard-Standorte, W1 fertig (`#standort-flagship-hero`, datengetrieben) | 11 (basel, bottighofen, frauenfeld, kreuzlingen, rorschach, volketswil, wil, winterthur-marktgasse, winterthur-muenzgasse, zuerich-hoengg, zuerich-oerlikon) | unverändert (byteidentisch) |
+| Hub `/standorte/` (`.hh-hero`, Mint) | 1 | unverändert |
+| `.lsr-hero`-Standorte (`.standort-scope`, Mint-led) | 3 (bern, luzern, zuerich-city) | nur klassenlose Prosa-Links (`.wrap > p a`, `.usp-sub a`) von Browser-Default-Blau → Rich Black + Mint-Strich; Zürich City: Links waren bereits Rich Black, erhalten den Strich (bewusst, ein Link-System) |
+| **msg-Familie** (`massage-city.css`, City-Landing) | 10 (massage-{basel,frauenfeld,kreuzlingen,luzern,oerlikon,st-gallen,winterthur,zuerich}, akupunktur-tcm-basel, standorte/basel/kosten) | **`.city-scope`** → Mint-Hero wie Massage-Therapieseiten (2C-2), Prosa 2C-1, Pillen-CTAs, Karten/Chips/FAQ, InsuranceBanner-CTA Rich Black |
+| **akz-Familie** (Body-HTML mit Inline-`<style>`) | 6 (standorte/{frauenfeld,kreuzlingen,luzern,zuerich}/kosten, akupunktur-tcm-st-gallen, akupunktur-st-gallen-kosten) | **`.city-scope`** → Concrete-Hero (wie Beschwerden/Wissen), Brand-Ink-Eyebrow mit Mint-Strich, H1 clamp(34–52px), Bild 24px, Tabellen-Hairlines; OneDoc-Widget (St. Gallen ×2) unberührt (Script/Markup identisch, nur umgebende Flächen) |
+| `/akupunktur-in-der-naehe/` (Inline-Styles) | 1 | **`.city-scope`** → Inline-Tint-Hero → Concrete, CTA-Band Rich Black (Token-Remap `--blue`), City-Cards 16px |
+| Geschützt | `/standorte/st-gallen/` (Absolutschutz, OneDoc/GA4/Build-Guards), `/akupunktur-tcm-zuerich/` (eigener Funnel, Build-Guards) | unverändert (Sweep + Screenshots identisch) |
+| Nicht Standort | `/akupunktur-kinder/` (Therapie-Leaf) | ausserhalb |
+
+**Mechanik:** Wrapper `<div class="city-scope">` in 17 Astro-Vorlagen (Slot-Seiten: um die Fragments/Komponenten; Body-Prop-Seiten: um den Body-String) — einzige HTML-Änderung (17 Routen «wrapper-only», 751 HTML-Routen byteidentisch). `public/home.css`: die 69 `:is(.symptom-scope,.therapie-scope)`-Listen und die 19 `.therapie-scope .msg-*`-Regeln um `.city-scope` erweitert (Wirkung auf die bestehenden Scopes unverändert, Sweep-Nachweis), plus Block «Wave 4A» (Token-Remap `--green*`/`--blue*` → Brand, akz-Hero, Karten, Chips, InsuranceBanner, Kontrast-Nachzug, `.standort-scope`-Prosa-Links). `massage-city.css` nicht angefasst → 11 Massage-/Ohrakupunktur-Therapieseiten byteidentisch und im Sweep unverändert.
+
+**Bewusste Geometrie-/Layout-Änderungen:** msg-City-Heroes 38/26 → 72/64px Padding, H1 46 → 60px, Foto als 24px-Panel; akz-Heroes 96px Tint → Concrete 72/52px; Sektions-Rhythmus 80px (2C-1); Seitenhöhen Desktop +0.1 … +2.3 % (msg), −3.7 … −4.6 % (akz, naehe), mobil −0.2 … +1.2 %.
+
+**QA (11.10.2026):** Build grün; check-professional 103/0; health-audit 0. Route-Diff: 17 wrapper-only, 751 identisch, 0 sonstige; nur `home.css` geändert. Kontrollsweep (474 SpaPage-/Scope-Checks): 432 identisch, 2× ±1px Höhe (Silbentrennung), 40 City-Checks geändert = genau die 20 Zielrouten. Rendered-Parität 34 Standort-/Landing-Routen (Text, Links, tel, WhatsApp): 34/34 identisch. Formular (MassageAnfrageForm, gemockt): `POST /api/anfrage` Payload + `dataLayer formular_senden` identisch zu vorher; OneDoc-Script auf beiden St.-Gallen-Landingpages vorhanden und unverändert. Hover/Fokus auf Karten, Pillen, Buttons, Prosa-Links, FAQ, InsuranceBanner verifiziert; Overflow 360/390/430 = 0. Screenshots 15 Routen × 6 Breiten vorher/nachher inkl. geschützter Routen (St. Gallen, Zürich-Funnel, Basel-Flagship, Klassische Massage, Home: identische Höhen). Kontrast Kohorte (20 Routen × 390/1440): 431 → 0 Textelemente unter AA (Rich Black 62 % für Meta-Texte, WhatsApp-Alternativlink als Rich-Black-Text mit grünem Icon).
+
+**Verbleibende Ausnahmen:** `/standorte/st-gallen/` und `/akupunktur-tcm-zuerich/` (geschützt, bereits Mint-led); 11 Flagship-Standorte (W1, offen: `btn-secondary` 14px, `#F7F8F9`-Flächen, FIGCAPTION-Text auf Bild); Bern/Luzern-eigene Scoped-Styles (Karten 24px, bereits brand-nah).

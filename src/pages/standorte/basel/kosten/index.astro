@@ -147,6 +147,7 @@ const schema = [
 ];
 ---
 <SpaPage title={title} description={description} path="/standorte/basel/kosten" body="" schema={schema}>
+  <div class="city-scope">
   <style set:html={css} is:inline></style>
   <Fragment set:html={body} />
   <MassageAnfrageForm
@@ -156,4 +157,5 @@ const schema = [
     heading="Deckung <em>prüfen lassen.</em>"
     sub="Sag uns, wie du versichert bist. Wir melden uns mit einer Einschätzung - kostenlos und unverbindlich."
   />
+  </div>
 </SpaPage>
