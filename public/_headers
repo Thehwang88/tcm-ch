@@ -19,6 +19,10 @@
   Cache-Control: no-cache
 /footer.css
   Cache-Control: no-cache
+/nav-rebrand.css
+  Cache-Control: no-cache
+/footer-rebrand.css
+  Cache-Control: no-cache
 /home.js
   Cache-Control: no-cache
 /header.js
