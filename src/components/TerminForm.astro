@@ -21,7 +21,7 @@ const {
   prefill = '',
   standort = '',
   heading = 'Termin anfragen',
-  intro = 'Kurz ausfüllen – wir melden uns meist innert 30 Minuten mit Terminvorschlägen.',
+  intro = 'Kurz ausfüllen – wir melden uns persönlich mit Terminvorschlägen.',
   submitLabel = 'Termin anfragen',
   formular = '',
   quelleDetail = '',
@@ -234,7 +234,7 @@ const STANDORTE = [
         var data = null; try { data = await res.json(); } catch (e2) {}
         if (res.ok && data && data.ok) {
           form.reset();
-          show('success', 'Danke! Deine Anfrage ist bei uns – wir melden uns persönlich, meist innert 30 Minuten.');
+          show('success', 'Danke! Deine Anfrage ist bei uns – wir melden uns persönlich.');
         } else {
           show('error', 'Deine Anfrage konnte nicht gesendet werden. Versuch es nochmals oder ruf uns kurz an.');
         }

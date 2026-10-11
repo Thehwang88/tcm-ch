@@ -16,7 +16,7 @@ faq:
   - q: "Are English-speaking practitioners still covered by insurance?"
     a: "Yes, as long as they are EMR or ASCA recognised. The language you are treated in has no bearing on reimbursement. What matters for your supplementary insurance is the practitioner's recognition, not whether your appointment was in English or German."
   - q: "How do I book an appointment in English?"
-    a: "The simplest way is our English contact form. Tell us briefly what is going on and where you are based, and we usually reply within about an hour with a suitable practitioner and time at your nearest clinic. No German required at any point."
+    a: "The simplest way is our English contact form. Tell us briefly what is going on and where you are based, and we get back to you with a suitable practitioner and time at your nearest clinic. No German required at any point."
 relatedConditions: []
 relatedTherapies:
   - "acupuncture"
@@ -50,7 +50,7 @@ If you are not sure which is closest or most convenient, the locations page lays
 
 ## How booking in English works
 
-You do not need to navigate a German phone line. The simplest route is our [English contact form](/en/contact/): tell us briefly what is going on and roughly where you are, and we usually get back to you within about an hour with a practitioner and a time at your nearest clinic. The whole exchange, and the appointment, can be in English.
+You do not need to navigate a German phone line. The simplest route is our [English contact form](/en/contact/): tell us briefly what is going on and roughly where you are, and we get back to you with a practitioner and a time at your nearest clinic. The whole exchange, and the appointment, can be in English.
 
 ## Insurance, briefly
 

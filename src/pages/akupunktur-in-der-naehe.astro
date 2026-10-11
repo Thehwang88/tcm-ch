@@ -50,7 +50,7 @@ const offerBlock = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', o
 
 const faqs = [
   { q: 'Wo finde ich Akupunktur in meiner Nähe?', a: 'TCM.ch betreibt eigene Standorte und Partnerpraxen in der Deutschschweiz, unter anderem in Zürich, Winterthur, St. Gallen, Frauenfeld und Kreuzlingen. Auf dieser Seite findest du alle Praxen mit Adresse und fragst direkt beim nächstgelegenen Standort einen Termin an.' },
-  { q: 'Wie schnell bekomme ich einen Termin?', a: 'Auf deine Anfrage antworten wir meist innert einer Stunde. Frag am besten über das Kontaktformular des Standorts an oder ruf uns an.' },
+  { q: 'Wie schnell bekomme ich einen Termin?', a: 'Frag am besten über das Kontaktformular des Standorts an oder ruf uns an.' },
   { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Über die Zusatzversicherung für Komplementärmedizin beteiligen sich die meisten Kassen mit 80 bis 100 Prozent. Alle unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Deine Deckung prüfen wir auf Wunsch kostenlos, bevor Kosten entstehen.' },
   { q: 'Bieten alle Standorte dieselben Behandlungen an?', a: 'Akupunktur und TCM-Beratung gibt es an jedem Standort. Einzelne Methoden wie Tuina-Massage, Schröpfen oder Kräutertherapie variieren je nach Team vor Ort. Auf der jeweiligen Standortseite siehst du das genaue Angebot.' },
   { q: 'Was kostet eine Akupunktursitzung?', a: 'Den aktuellen Tarif erfährst du vor der ersten Behandlung, transparent und ohne versteckte Kosten. Mit Zusatzversicherung trägst du meist nur einen kleinen Selbstbehalt. Die Abklärung deiner Kassendeckung ist bei uns kostenlos.' },
@@ -80,7 +80,7 @@ const body = `<div style="padding-top:68px">
       <h1 class="section-title" style="margin-bottom:16px">Akupunktur in deiner Nähe</h1>
       <p class="section-sub">Du suchst Akupunktur oder TCM in deiner Nähe? Wir sind ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz, von <a href="/akupunktur-tcm-zuerich/">Zürich</a> über Winterthur bis St. Gallen. Wähle die Praxis, die für dich am besten erreichbar ist.</p>
       <div class="deh-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
-        <a class="btn-primary" href="${waHref}" rel="nofollow">Termin anfragen · Antwort in ~1h</a>
+        <a class="btn-primary" href="${waHref}" rel="nofollow">Termin anfragen</a>
         <a class="btn-secondary" href="#standorte">Standort finden</a>
       </div>
     </div>
@@ -122,7 +122,7 @@ const body = `<div style="padding-top:68px">
   <section class="cta-band" style="background:var(--blue);padding:48px 0">
     <div class="wrap" style="text-align:center">
       <h2 style="font-family:var(--font-sans);font-size:clamp(24px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.03em;margin:0 0 8px">Akupunktur in deiner Nähe finden?</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Schildere kurz dein Anliegen, wir melden uns mit einem Standort in deiner Nähe. Antwort in rund einer Stunde.</p>
+      <p style="font-size:15px;color:rgba(255,255,255,.8);margin:0 auto 28px;max-width:52ch">Schildere kurz dein Anliegen, wir melden uns mit einem Standort in deiner Nähe.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a class="btn-white" href="${waHref}" rel="nofollow" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 32px">Termin anfragen</a>
         <a href="tel:+41775236122" style="display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;text-decoration:none;padding:14px 24px;border:1.5px solid rgba(255,255,255,.4);border-radius:var(--r-btn)">+41 77 523 61 22</a>

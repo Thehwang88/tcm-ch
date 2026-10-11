@@ -3981,7 +3981,7 @@ export const koerpersignale: Koerpersignal[] = [
     ctaTitle: 'Druck im Oberbauch, aber du kannst ihn nicht richtig zuordnen?',
     ctaText: 'Für unklare Beschwerden kann ein strukturiertes Gespräch helfen. Wir sortieren, was medizinisch abgeklärt gehört und ob funktionelle Verdauungs- oder Spannungsbeschwerden ergänzend behandelt werden können.',
     ctaLabel: 'Beschwerden besprechen',
-    ctaHref: '/sprechstunde/',
+    ctaHref: '/kontakt/',
     author: AUTOR,
     ...DATEN12,
     bodyHtml: `<h2>Die kurze Antwort</h2>
@@ -4094,7 +4094,7 @@ export const koerpersignale: Koerpersignal[] = [
     ctaTitle: 'Die Stimme bleibt heiser und du kennst den Grund nicht?',
     ctaText: 'Wir helfen dir zu sortieren, ob zuerst eine HNO-Abklärung sinnvoll ist und welche bereits abgeklärten Begleitbeschwerden ergänzend behandelt werden können.',
     ctaLabel: 'Beschwerden einordnen lassen',
-    ctaHref: '/sprechstunde/',
+    ctaHref: '/kontakt/',
     author: AUTOR,
     ...DATEN12,
     bodyHtml: `<h2>Die kurze Antwort</h2>
