@@ -29,8 +29,11 @@ const title = `Acupuncture & TCM in ${name} | TCM.ch`;
 const inPreparation = openingSoon && clinic.openingNote === 'In preparation';
 // Datum/Jahr ausschliesslich aus clinic.openingNote (locations.ts), nie hartcodiert.
 const openingLabel = clinic.openingNote ?? 'In preparation';
+const underReview = clinic.status === 'review';
 const description = openingSoon
-  ? inPreparation
+  ? underReview
+    ? `Acupuncture & TCM in ${name}: status under review, not confirmed as an operating clinic. Send your request and we suggest an available practice nearby.`
+    : inPreparation
     ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest now; we contact you once appointments are possible.`
     : `Acupuncture & TCM in ${name}: ${openingLabel}, not open yet. Register your interest now; we contact you once appointments are possible.`
   : `English-speaking acupuncture & TCM in ${name}. EMR-/ASCA-recognised, covered by insurance. Back pain, migraine, sleep and more.`;
@@ -60,7 +63,7 @@ const clinicLd: Record<string, unknown> = {
 };
 if (openingHours.length) clinicLd.openingHours = openingHours;
 // Geplante Standorte: Status explizit im Schema, nie Öffnungszeiten (locations.ts status).
-if (openingSoon) clinicLd.description = `${name}: ${openingLabel}. Not operating yet; no appointments at this address before the opening is confirmed.`;
+if (openingSoon && !underReview) clinicLd.description = `${name}: ${openingLabel}. Not operating yet; no appointments at this address before the opening is confirmed.`;
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',
@@ -72,14 +75,14 @@ const breadcrumbLd = {
   ],
 };
 ---
-<Layout title={title} description={description} path={path} schema={[clinicLd, breadcrumbLd]}>
+<Layout title={title} description={description} path={path} schema={underReview ? [breadcrumbLd] : [clinicLd, breadcrumbLd]}>
   <section class="hero">
     <div class="wrap">
       <div class="eyebrow">TCM.ch - {region}</div>
       <h1>Acupuncture & TCM in {name}</h1>
       {openingSoon ? (
         <p class="lead">
-          Our {name} clinic is {inPreparation ? <strong>currently in preparation</strong> : <>not open yet (<strong>{openingLabel}</strong>)</>}. Across TCM.ch you'll already find
+          {underReview ? <>The status of our {name} location is <strong>under review</strong>; it is not confirmed as an operating clinic.</> : <>Our {name} clinic is {inPreparation ? <strong>currently in preparation</strong> : <>not open yet (<strong>{openingLabel}</strong>)</>}.</>} Across TCM.ch you'll already find
           English-speaking, EMR-/ASCA-recognised practitioners offering acupuncture and Traditional
           Chinese Medicine - get in touch and we'll point you to your nearest open clinic.
         </p>

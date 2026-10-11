@@ -49,6 +49,8 @@ export interface Standort {
   /** Standort noch nicht eröffnet: Status-Banner unter dem Hero, Formular als Anfrage «für den geplanten Start».
    *  NICHT hier setzen: wird unten aus clinic.status (src/data/locations.ts) abgeleitet. */
   planned?: boolean;
+  /** Betriebsstatus nicht bestätigt (clinic.status 'review'); impliziert planned. Ebenfalls abgeleitet. */
+  review?: boolean;
   /** Optional zu `planned`: Banner-Titel/-Text (z. B. geplantes Datum, sofortige Alternative). Fallback = generischer Text. */
   plannedTitle?: string;
   plannedNote?: string;
@@ -530,6 +532,8 @@ export const standorte: Record<string, Standort> = {
   },
   "winterthur-muenzgasse": {
     "cro": true,
+    "plannedTitle": "Standort in Prüfung",
+    "plannedNote": "Ob und ab wann an der Münzgasse 2 Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir trotzdem gern entgegen und schlagen dir eine passende Praxis in Winterthur vor, zum Beispiel <a href='/standorte/winterthur-marktgasse/'>an der Marktgasse 78</a>.",
     "ablaufBlock": true,
     "praxisBilder": [
       { "src": "/images/standort-winterthur-muenzgasse.jpg", "alt": "TCM.ch Praxis Winterthur Münzgasse", "label": "Münzgasse" }
@@ -538,14 +542,14 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Winterthur Münzgasse",
     "seo": {
       "title": "TCM Winterthur Münzgasse – Massage & Akupunktur",
-      "description": "TCM Winterthur Münzgasse: Massage, Tuina und Akupunktur an der Münzgasse 2, EMR-/ASCA-anerkannt, zentral in der Altstadt. Hauptstandort für Akupunktur & TCM ist die Praxis Marktgasse.",
+      "description": "Winterthur Münzgasse: Standort in Prüfung. Anfragen für Akupunktur, Tuina und Massage in Winterthur nehmen wir gern entgegen und schlagen dir eine passende Praxis vor, etwa an der Marktgasse 78.",
       "h1": "TCM <em>Winterthur Münzgasse</em> – Massage & Akupunktur",
       "schemaName": "TCM Praxis Winterthur Münzgasse – TCM.ch"
     },
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
       "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
-      "sub": "Massage, Tuina und Akupunktur an der Münzgasse 2 in der Altstadt, Termine nach Vereinbarung. Unser Hauptstandort für Akupunktur &amp; TCM in Winterthur ist die <a href=\"/standorte/winterthur-marktgasse/\" style=\"color:inherit;text-decoration:underline\">Praxis Marktgasse</a>.",
+      "sub": "Ob an der Münzgasse 2 Termine möglich sind, wird derzeit geprüft. Unser Hauptstandort für Akupunktur &amp; TCM in Winterthur ist die <a href=\"/standorte/winterthur-marktgasse/\" style=\"color:inherit;text-decoration:underline\">Praxis Marktgasse</a>.",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
     },
@@ -563,7 +567,7 @@ export const standorte: Record<string, Standort> = {
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <strong>TCM-Praxis an der Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Unseren zweiten Standort für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> findest du an der Marktgasse. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Die öffentlichen Registereinträge der Therapeut:innen findest du weiter unten. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
+      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Die <strong>Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Ob hier Termine möglich sind, klären wir derzeit. Für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> ist unser Standort an der Marktgasse da, mit <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesischer Kräutertherapie</strong>. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus ganz Winterthur und Umgebung</h2><p>Die Münzgasse erreichst du aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Oberwinterthur</strong>, <strong>Töss</strong>, <strong>Wülflingen</strong>, <strong>Seen</strong>, <strong>Veltheim</strong> und <strong>Mattenbach</strong>. Auch aus umliegenden Gemeinden wie Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon und Brütten bist du schnell da. Die zentrale Lage an der Münzgasse macht uns für die ganze Region erreichbar.</p>"
     },
     "anfahrt": {
@@ -887,7 +891,7 @@ export const standorte: Record<string, Standort> = {
 // Betriebsstatus ausschliesslich aus src/data/locations.ts (clinic.status), nie aus einem Datum.
 for (const [slug, s] of Object.entries(standorte)) {
   const c = clinics.find((x) => x.id === slug);
-  if (c) s.planned = c.status !== 'operational';
+  if (c) { s.planned = c.status !== 'operational'; s.review = c.status === 'review'; }
 }
 
 export const getStandort = (slug: string) => standorte[slug];

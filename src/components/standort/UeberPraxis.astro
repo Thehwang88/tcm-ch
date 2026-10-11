@@ -42,7 +42,7 @@ const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) =>
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && !slim && (
-  <div class="content-body" style="margin-bottom:18px"><p>{data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `Unsere Praxis an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.`}</p></div>
+  <div class="content-body" style="margin-bottom:18px"><p>{data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `Unsere Praxis an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik – mit EMR- und ASCA-anerkannten Therapeut:innen. Termine meist innert weniger Tage.`}</p></div>
 )}
 {praxisBilder.length > 0 && (
   <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>

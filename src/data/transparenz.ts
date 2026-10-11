@@ -30,16 +30,18 @@ const ICON = {
 const card = (icon: string, title: string, body: string) =>
   `<div class="usp-card"><div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon}</svg></div><div class="usp-title">${title}</div><div class="usp-sub content-body">${body}</div></div>`;
 
-/** Transparenz-Sektion für eine Standortseite. `planned` = Standort noch nicht eröffnet. */
-export function transparenzHtml(slug: string, planned = false): string {
+/** Transparenz-Sektion für eine Standortseite. `planned` = nicht als offen bestätigt; `review` = Betriebsstatus in Prüfung. */
+export function transparenzHtml(slug: string, planned = false, review = false): string {
   const regs = planned ? '' : registerLinks(slug);
   const reg = card(ICON.reg, 'Registrierung prüfbar', regs
     ? `Öffentlicher Registereintrag der Therapeut:innen an diesem Standort:${regs}`
     : `Zu jeder Fachperson mit Profil im <a href="/ueber-uns/#ueber-uns-team">Team</a> verlinken wir den öffentlichen Registereintrag.`);
   const kosten = card(ICON.tarif, 'Kosten vorab klar', `Abrechnung nach Tarif 590. Was deine Zusatzversicherung übernimmt, hängt von deiner Police ab: <a href="/krankenkassen/">Krankenkasse &amp; Kosten</a>.`);
   const ablauf = card(ICON.talk, 'Ehrliche Einschätzung', `Im Erstgespräch klären wir, ob TCM für dein Anliegen sinnvoll ist. Gehört etwas zuerst ärztlich abgeklärt, sagen wir dir das.`);
-  const anfrage = planned
+  const anfrage = review
+    ? card(ICON.mail, 'Unverbindlich anfragen', `Der Betrieb an diesem Standort ist noch nicht bestätigt. Wir schlagen dir eine passende Praxis in der Nähe vor.`)
+    : planned
     ? card(ICON.mail, 'Vormerken ohne Verpflichtung', `Wir melden uns, sobald an diesem Standort Termine möglich sind. Bis dahin nennen wir dir gern eine bestehende Praxis.`)
     : card(ICON.mail, 'Unverbindlich anfragen', `Deine Anfrage verpflichtet dich zu nichts. Wir melden uns persönlich und klären Termin und offene Fragen mit dir.`);
-  return `<section class="section" id="transparenz"><div class="wrap reveal"><div class="section-label">Transparenz</div><h2 class="section-title" style="margin-bottom:24px">Was du ${planned ? '<em>schon vor der Eröffnung</em>' : '<em>vorab</em>'} prüfen kannst.</h2><div class="usp-grid">${reg}${kosten}${ablauf}${anfrage}</div></div></section>`;
+  return `<section class="section" id="transparenz"><div class="wrap reveal"><div class="section-label">Transparenz</div><h2 class="section-title" style="margin-bottom:24px">Was du ${planned && !review ? '<em>schon vor der Eröffnung</em>' : '<em>vorab</em>'} prüfen kannst.</h2><div class="usp-grid">${reg}${kosten}${ablauf}${anfrage}</div></div></section>`;
 }

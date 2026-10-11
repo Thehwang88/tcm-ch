@@ -6,8 +6,7 @@
 // "tcm winterthur" / "akupunktur winterthur" in Title, H1 oder H2s (gehört
 // /standorte/...), und "tuina" generisch bleibt bei /therapien/tuina/.
 // Ein MedicalBusiness-Eintrag, bewusst nur die Marktgasse als kanonisches Ziel.
-// Die Münzgasse steht im Fliesstext, damit die Seite nicht auf zwei Entitäten
-// aufgeteilt wird.
+// Die Münzgasse (Status in Prüfung, src/data/locations.ts) wird nicht als Behandlungsadresse genannt.
 import SpaPage from '../../layouts/SpaPage.astro';
 import InsuranceBanner from '../../components/InsuranceBanner.astro';
 import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
@@ -26,7 +25,7 @@ const faqs = [
   { q: "Was ist der Unterschied zu einer Wellnessmassage?", a: "Der Ausgangspunkt. Im Wellnessbereich steht Erholung im Vordergrund, die Behandlung läuft flächig und gleichmässig ab. Bei uns beginnt jede Sitzung mit einer kurzen Befunderhebung, danach wird gezielt an den Strukturen gearbeitet, die Beschwerden machen. Das kann phasenweise unangenehm sein und ist auf ein Ziel hin geplant statt auf ein Wohlgefühl im Moment." },
   { q: "Welche Massage hilft bei Verspannungen im Nacken?", a: "Meist eine Kombination: medizinische Massage, um die Muskulatur zu lösen, dazu Tuina an den Übergängen zu Schulter und Hinterkopf, bei sehr festem Gewebe zusätzlich Schröpfen oder Gua Sha. Was in deinem Fall passt, entscheiden wir nach dem Abtasten, nicht vorher am Telefon." },
   { q: "Wie lange dauert eine Sitzung und was kostet sie?", a: "Eine medizinische Massage oder eine Tuina-Behandlung dauert 45 bis 60 Minuten und kostet rund 130 bis 160 Franken. Kürzere, lokal begrenzte Behandlungen wie Schröpfen oder Gua Sha liegen bei 30 bis 40 Minuten und rund 90 bis 120 Franken. Abgerechnet wird nach Tarif 590 nach tatsächlicher Dauer, in Einheiten von fünf Minuten." },
-  { q: "An welcher Adresse werde ich behandelt?", a: "In der Regel an der Marktgasse 78. Ist dort gerade nichts frei, weichen wir auf die Münzgasse 2 aus, ein paar Schritte weiter in derselben Altstadt. Das Team ist an beiden Adressen gleich ausgebildet, sag bei der Anfrage einfach, was dir zeitlich besser passt." },
+  { q: "An welcher Adresse werde ich behandelt?", a: "An der Marktgasse 78 in der Altstadt. Sag bei der Anfrage einfach, was dir zeitlich besser passt." },
 ];
 
 const schema = [

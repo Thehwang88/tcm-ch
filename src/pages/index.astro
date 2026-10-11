@@ -10,6 +10,8 @@ import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
+import { clinics } from '../data/locations';
+import { expandStandort } from '../data/standort-optionen';
 
 const title = 'TCM & Akupunktur Schweiz | Medizinische TCM | TCM.ch';
 const description =
@@ -25,7 +27,21 @@ const schema = [
 // (main, served on tcm.ch) keeps the real key. Fail-safe to the real key.
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
-const homeHtml = homeBody.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+// Standort-Select im Home-Formular status-bewusst aus src/data/locations.ts (clinic.status):
+// nicht operative Standorte erscheinen nur mit ihren vorab-Optionen (Partnerpraxis, Vormerkung, in Prüfung).
+const HOME_SELECT_RE = /(<select class="form-select" name="standort"><option value="">Standort auswählen<\/option>)([\s\S]*?)(<option value="andere">)/;
+if (!HOME_SELECT_RE.test(homeBody)) throw new Error('index.astro: Home-Standort-Select nicht gefunden');
+const homeSelect = (inner: string) => [...inner.matchAll(/<option value="([^"]+)">([^<]+)<\/option>/g)]
+  .flatMap(([, id, name]) => {
+    const c = clinics.find((x) => x.id === id);
+    if (!c || c.status === 'operational') return [`<option value="${id}">${name}</option>`];
+    // home.js sendet den Options-TEXT; value = id für die Vorauswahl (?standort=<id>) auf der Vormerk-Option (letzte).
+    const opts = expandStandort(c.name);
+    return opts.map((o, i) => `<option value="${i === opts.length - 1 ? id : `${id}-${i}`}">${o.label}</option>`);
+  }).join('');
+const homeHtml = homeBody
+  .replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b)
+  .replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 ---
 <!doctype html>
 <html lang="de-CH">

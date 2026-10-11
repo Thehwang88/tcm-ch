@@ -6,10 +6,11 @@
 // EN pages: /en/locations/<id>  (slug === DE id, so hreflang pairs 1:1).
 
 /** Betriebsstatus = EINZIGE Quelle der Wahrheit für Formulare, DE/EN-Seiten, Standortkarten und Schema.
- *  'operational' erst nach ausdrücklicher Bestätigung durch die Inhaber:in setzen. Eröffnungsdaten
+ *  'operational' erst nach ausdrücklicher Bestätigung durch die Inhaber:in setzen. 'planned' = angekündigt,
+ *  noch nicht offen. 'review' = Betriebsstatus nicht bestätigt (in Prüfung): nicht als offene Praxis zeigen. Eröffnungsdaten
  *  (openingNote) sind rein informativ und schalten NICHTS automatisch frei.
  *  Gate: node scripts/check-clinic-status.mjs (nach dem Build). */
-export type ClinicStatus = 'operational' | 'planned';
+export type ClinicStatus = 'operational' | 'planned' | 'review';
 
 export interface Clinic {
   id: string;            // slug, identical to DE standort slug
@@ -23,7 +24,7 @@ export interface Clinic {
   /** schema.org-valid openingHours lines (Mo Tu We Th Fr Sa Su); [] if not open. */
   openingHours: string[];
   geo: { lat: number; lng: number };
-  /** 'planned' = announced but not operating yet (no hours, no operational claims). */
+  /** 'planned' = announced, not operating yet; 'review' = business status unconfirmed. Both: no hours, no operational claims. */
   status: ClinicStatus;
   /** Informational only (e.g. planned date); never used to switch status. */
   openingNote?: string;
@@ -53,8 +54,10 @@ export const clinics: Clinic[] = [
 
   { id: 'winterthur-muenzgasse', name: 'Winterthur Münzgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
-    // Öffnungszeiten nicht verifiziert (Stand 11.10.2026): keine Angabe statt Template-Zeiten.
-    openingHours: [], geo: { lat: 47.4998, lng: 8.7290 }, status: 'operational',
+    // Betriebsstatus nicht bestätigt (Stand 11.10.2026): 'review' bis zur Bestätigung durch die Inhaber:in.
+    openingHours: [], status: 'review', openingNote: 'Status under review',
+    vorab: [{ value: 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', label: 'Winterthur Münzgasse (Standort in Prüfung)', labelEn: 'Winterthur Münzgasse (status under review)' }],
+    geo: { lat: 47.4998, lng: 8.7290 },
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
