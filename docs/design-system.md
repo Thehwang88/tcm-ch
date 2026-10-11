@@ -246,3 +246,18 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 
 **Wave 2C (Richtung, freigegeben):** Beschwerde-Hero primär Concrete/Weiss mit kontrollierten Mint-Akzenten (verwandt, aber unterscheidbar vom Mint-Therapie-Hero); Sektions-Rhythmus und -Zusammenfassung, Lesebreite ≈68ch für Langtext, mobile Abstände; Markup-Änderungen in `beschwerden/[slug].astro` und den Leaf-Daten nur mit SEO-/Link-Paritätsnachweis.
 
+## 15. Wave 2C-1 — Typografie & Inhalts-Rhythmus (Therapien & Beschwerden)
+
+**Reichweite:** dieselben 192 Routen wie §14 (`.symptom-scope` 155 · `.therapie-scope` 37). Nur CSS (`public/home.css`, Block «Wave 2C-1»); 0 HTML-Änderungen; Hero-Markup und Sektionsreihenfolge unverändert.
+
+**Regeln:**
+- *Fliesstext:* `.content-body`, `.therapie-text`, `.msg-prose` — 16.5px / 1.7, max. 640px (≈72–76 Zeichen bei 1440/768, 35–41 mobil); Absätze/Listen zusätzlich selbst auf 640px begrenzt (robust gegen seitenspezifische Container wie `.msg-kk-grid`). ≤768px: 16px / 1.65.
+- *Hierarchie:* H2 Figtree 800, `clamp(24px,2.4vw,30px)`, `--tracking-heading`, Rich Black, Abstand 48/14 (mobil 40/12); H3 18px/700.
+- *Inline-Links:* nur klassenlose `<a>` in Prosa (`.content-body`/`.therapie-text`/`.msg-prose` sowie `p`/klassenlose `div` direkt unter `.wrap`, inkl. Verschachtelung in strong/em/span): Rich Black 600, 2px Mint-Unterstreichung (Offset 3px), Hover Tint + Brand-Ink-Linie, Fokus 3px-Ring. Ursache des Browser-Blaus: SpaPage lädt `global.css` (`a{color:inherit}`) nicht. Buttons, Karten, Crumbs, Navigation tragen Klassen oder stehen direkt in `.wrap` und sind damit ausgeschlossen (nachgewiesen: 0 Style-Änderungen an klassierten Ankern/Buttons/Crumbs auf 8 Routen).
+- *Eyebrows:* `.cp-blick-label`, `.cp-blick-item-label`, `.sub-eyebrow`, `.sg-eyebrow` (Premium-Heroes), `.kt-intro-label` → 11px/700/.16em Brand-Ink (`!important` gegen die globale `#374151!important`-Schicht, home.css Z.1003); `.cp-blick-label` und `.sg-eyebrow` mit Mint-Strich. Auf Mint-Flächen (`.tsr-eyebrow`, `.hh-eyebrow`, `.bx-eyebrow`) Rich Black 11px/700/.16em.
+- *Rhythmus:* `.section` 80px (mobil 48) · Link-Module `.section.cl-related` 56px (mobil 36, `!important` gegen Inline-Padding) · `.related-section`/`#kontakt` 80 (56) · `.subpage-reviews` 64 (48) · `.cta-band` 88 (64).
+
+**Nicht angefasst (Ausnahmen):** LayoutDe-Akupunktur-Unterseiten (`.kb-body` 17.5px/720px, `.box-label`, `.rel-label` in Page-Styles), `/akupunktur-kinder/` (kein Scope), Hub-Heroes (`bx-`, `hh-`) ausser Eyebrow-Farbe, Premium-Hero-Layout (→ 2C-2).
+
+**Messwerte:** Rückenschmerzen 1440: 16'172 → 16'462px (+1.8%, grössere Schrift überwiegt die Modul-Kompaktierung); mobil 390: 25'036 → 26'258px. Kein Clipping, kein Overflow; vorbestehend bei 360px: `.content-card`-Grid auf Sub-Hero-Seiten ragt 30px über den Viewport (innerhalb `overflow:hidden`, unverändert).
+

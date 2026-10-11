@@ -5265,3 +5265,57 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 :is(.symptom-scope,.therapie-scope) :is(.bx-cat-panel-az,.bx-cat-expand-btn){color:var(--mid)}
 :is(.symptom-scope,.therapie-scope) [style*="color:#8a919c"]{color:var(--mid)!important}
 :is(.symptom-scope,.therapie-scope) .sgm-meta{color:rgba(255,255,255,.62)}
+
+/* ══ Wave 2C-1 · Typografie & Inhalts-Rhythmus (Therapien + Beschwerden) ══
+   Nur Prosa-, Label- und Abstands-Regeln in .symptom-scope/.therapie-scope; kein Hero-Markup,
+   keine Reihenfolge, keine Inhalte. Buttons/Karten/Crumbs/Navigation sind über Klassen-Negation
+   ausgeschlossen (Inline-Links = klassenlose <a> in p/li/klassenlosen div). docs/design-system.md §15. */
+
+/* Lesebreite + Fliesstext: 16.5px/1.7, max. 640px */
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose){max-width:640px}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) :is(p,li){font-size:16.5px;line-height:1.7;color:var(--mid)}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) li{margin-bottom:8px}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) strong{color:var(--brand-black);font-weight:700}
+/* H2/H3-Hierarchie in Prosa */
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) h2{font-family:var(--font-sans);font-size:clamp(24px,2.4vw,30px);font-weight:800;letter-spacing:var(--tracking-heading);line-height:1.15;color:var(--brand-black);margin:48px 0 14px}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) h2:first-child{margin-top:0}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) h3{font-family:var(--font-sans);font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.3;color:var(--brand-black);margin:28px 0 10px}
+/* Inline-Links: Rich Black + Mint-Unterstreichung (auch verschachtelt in strong/em/span) */
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose,.wrap > p,.wrap > div:not([class])) :is(p,li,div:not([class]),strong,em,span:not([class])) a:not([class]),
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) a:not([class]){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px;border-radius:2px;transition:background .15s ease,text-decoration-color .15s ease}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose,.wrap > p,.wrap > div:not([class])) :is(p,li,div:not([class]),strong,em,span:not([class])) a:not([class]):hover,
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) a:not([class]):hover{background:var(--brand-tint);text-decoration-color:var(--brand-ink)}
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose,.wrap > p,.wrap > div:not([class])) a:not([class]):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:2px}
+/* Eingefügte Textblöcke: <a> direkt in p / klassenlosem div unter .wrap (keine Karten-/Button-Anker, die tragen Klassen oder stehen direkt in .wrap) */
+:is(.symptom-scope,.therapie-scope) .wrap > :is(p,div:not([class])) a:not([class]){color:var(--brand-black);font-weight:600;text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:3px;border-radius:2px}
+:is(.symptom-scope,.therapie-scope) .wrap > :is(p,div:not([class])) a:not([class]):hover{background:var(--brand-tint);text-decoration-color:var(--brand-ink)}
+:is(.symptom-scope,.therapie-scope) .wrap > :is(p,div:not([class])) a:not([class]):focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:2px}
+/* Massage: Prosa im Krankenkassen-Grid (gestapelt ≤900px) ebenfalls auf 640px begrenzen */
+.therapie-scope .msg-kk-grid .msg-prose{max-width:640px}
+/* Robust gegen seitenspezifische Container-Breiten: Zeilenlänge am Absatz selbst begrenzen */
+:is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) :is(p,li,h2,h3,ul,ol){max-width:640px}
+/* Eyebrow-Vereinheitlichung (helle Flächen: Brand-Ink + Mint-Strich; Mint-Flächen: Rich Black) */
+:is(.symptom-scope,.therapie-scope) :is(.cp-blick-label,.cp-blick-item-label,.sub-eyebrow,#symptom-premium-hero .sg-eyebrow,#therapie-premium-hero .sg-eyebrow,.kt-intro-label){font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-ink);opacity:1}
+/* !important: globale Schicht pinnt .cp-blick-*-Labels auf #374151!important (home.css Z.1003) */
+:is(.symptom-scope,.therapie-scope) :is(.cp-blick-label,.cp-blick-item-label){color:var(--brand-ink)!important}
+:is(.symptom-scope,.therapie-scope) :is(.cp-blick-label,#symptom-premium-hero .sg-eyebrow,#therapie-premium-hero .sg-eyebrow)::before{content:"";display:inline-block;width:16px;height:2px;border-radius:2px;background:var(--brand);vertical-align:middle;margin:-2px 10px 0 0}
+:is(.symptom-scope,.therapie-scope) .sub-eyebrow--symptom{color:var(--brand-ink);border-color:rgba(26,226,136,.45)}
+:is(.symptom-scope,.therapie-scope) :is(.tsr-eyebrow,.hh-eyebrow,.bx-eyebrow){font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--brand-black)}
+:is(.symptom-scope,.therapie-scope) .bx-eyebrow-dot{background:var(--brand-black)}
+/* Sektions-Rhythmus: 80 Basis · 56 Link-Module · 64 Reviews · 88 CTA-Band (section.msg-hero = Massage-Hero, ausgenommen → 2C-2) */
+:is(.symptom-scope,.therapie-scope) .section:not(.msg-hero){padding:80px 0}
+:is(.symptom-scope,.therapie-scope) .section.cl-related{padding:56px 0!important}
+:is(.symptom-scope,.therapie-scope) .section.cl-related .section-sub{margin-bottom:0}
+:is(.symptom-scope,.therapie-scope) .section.cl-related .cl-links{margin-top:18px}
+:is(.symptom-scope,.therapie-scope) :is(.related-section,#kontakt.section){padding:80px 0}
+:is(.symptom-scope,.therapie-scope) .subpage-reviews{padding:64px 0}
+:is(.symptom-scope,.therapie-scope) .cta-band{padding:88px 0}
+@media(max-width:768px){
+  :is(.symptom-scope,.therapie-scope) .section:not(.msg-hero){padding:48px 0}
+  :is(.symptom-scope,.therapie-scope) .section.cl-related{padding:36px 0!important}
+  :is(.symptom-scope,.therapie-scope) :is(.related-section,#kontakt.section){padding:56px 0}
+  :is(.symptom-scope,.therapie-scope) .subpage-reviews{padding:48px 0}
+  :is(.symptom-scope,.therapie-scope) .cta-band{padding:64px 0}
+  :is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) :is(p,li){font-size:16px;line-height:1.65}
+  :is(.symptom-scope,.therapie-scope) :is(.content-body,.therapie-text,.msg-prose) h2{margin:40px 0 12px}
+}
