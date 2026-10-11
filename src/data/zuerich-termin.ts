@@ -1,9 +1,10 @@
 // Zürcher Terminpräferenz-Optionen - EINE Quelle für alle Zürich-Formulare.
 // Standorte kommen aus src/data/locations.ts (city === 'Zürich'). Neue Zürcher Praxis
 // = Eintrag in locations.ts; sie erscheint hier automatisch.
-// Status: Standorte mit clinic.terminAb in der Zukunft werden NICHT als Option gebaut.
-// Ab dem Datum schaltet sie das Inline-Script im Browser zu (ohne neuen Deploy);
-// beim nächsten Build steht sie dann ohnehin fest im HTML.
+// Status: allein clinic.status ('operational' | 'planned') entscheidet. Geplante Standorte erscheinen
+// mit ihren vorab-Optionen (sofortige Alternative + Vormerkung), nie als reguläre Terminoption.
+// KEINE datumsbasierte Freischaltung: ein Eröffnungsdatum ist rein informativ, bis die Inhaber:in
+// den Betrieb bestätigt (Regressionstest: scripts/check-clinic-status.mjs).
 // Öffnungszeiten schränken die Auswahl bewusst NICHT ein (kein "montags" o. Ä.) -
 // Verfügbarkeit klärt das Booking/Routing nach der Anfrage.
 import { clinics, type Clinic } from './locations';
@@ -20,28 +21,14 @@ const rank = (c: Clinic) => { const i = REIHENFOLGE.indexOf(c.id); return i < 0 
 export const zuerichStandorte = (): Clinic[] =>
   clinics.filter((c) => c.city === 'Zürich').sort((a, b) => rank(a) - rank(b));
 
-const heute = () => new Date().toISOString().slice(0, 10);
-const aktiv = (c: Clinic, tag = heute()) => !c.terminAb || c.terminAb <= tag;
+const aktiv = (c: Clinic) => c.status === 'operational';
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** Wert für data-zh-termin: komplette Reihenfolge inkl. geplanter Standorte (für das Zuschalten).
- *  In Astro-Attributen roh übergeben (Astro escaped selbst); in HTML-Strings mit { html: true }. */
-export const zhTerminData = (opts: { html?: boolean } = {}): string => {
-  const json = JSON.stringify(zuerichStandorte().map((c) => ({ name: c.name, ab: c.terminAb ?? null })));
-  return opts.html ? esc(json) : json;
-};
-
-/** <option>-Liste der aktuell anfragbaren Zürcher Standorte. Noch nicht eröffnete Standorte mit
- *  `vorab` erscheinen bis zum Stichtag mit ihren Vorab-Optionen (data-zh-bis); das Inline-Script
- *  entfernt diese ab terminAb und schaltet die reguläre Option zu. */
+/** <option>-Liste der Zürcher Standorte: operative als reguläre Option, geplante mit ihren vorab-Optionen. */
 export const zhStandortOptionsHtml = (selected?: string): string =>
   zuerichStandorte()
     .flatMap((c) => aktiv(c)
       ? [`<option value="${esc(c.name)}"${c.name === selected ? ' selected' : ''}>${esc(c.name)}</option>`]
-      : (c.vorab ?? []).map((o) => `<option value="${esc(o.value)}" data-zh-bis="${esc(c.terminAb!)}">${esc(o.label)}</option>`))
+      : (c.vorab ?? []).map((o) => `<option value="${esc(o.value)}">${esc(o.label)}</option>`))
     .join('');
-
-/** Schaltet Standorte, deren terminAb erreicht ist, im Browser zu (vor der nächsten Zürcher Option
- *  bzw. vor der mit data-zh-last markierten Schluss-Option). Idempotent. */
-export const zhTerminScript = `<script>(function(){var t=new Date().toISOString().slice(0,10);document.querySelectorAll('select[data-zh-termin]').forEach(function(sel){Array.prototype.slice.call(sel.querySelectorAll('option[data-zh-bis]')).forEach(function(o){if(o.getAttribute('data-zh-bis')<=t)o.remove()});var l;try{l=JSON.parse(sel.getAttribute('data-zh-termin'))}catch(e){return}var has=function(n){return Array.prototype.some.call(sel.options,function(o){return o.value===n})};l.forEach(function(o,i){if(!o.ab||o.ab>t||has(o.name))return;var nx=null;for(var k=i+1;k<l.length&&!nx;k++){nx=Array.prototype.find.call(sel.options,function(x){return x.value===l[k].name})||null}nx=nx||sel.querySelector('[data-zh-last]');sel.insertBefore(new Option(o.name,o.name),nx)})})})();</script>`;

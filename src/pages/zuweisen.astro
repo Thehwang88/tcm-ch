@@ -1,6 +1,7 @@
 ---
 import LayoutDe from '../layouts/LayoutDe.astro';
 import { site, standorte } from '../data/site';
+import { expandStandort } from '../data/standort-optionen';
 
 const path = '/zuweisen';
 const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
@@ -97,7 +98,7 @@ const schema = {
             <div class="field"><label for="standort">Wunsch-Standort</label>
               <select id="standort" name="standort">
                 <option value="">Keine Präferenz</option>
-                {standorte.map((s) => <option value={s.label}>{s.label}</option>)}
+                {standorte.flatMap((s) => expandStandort(s.label)).map((o) => <option value={o.value}>{o.label}</option>)}
               </select></div>
           </div>
           <div class="field"><label for="bemerkungen">Bemerkungen <span class="opt">(optional)</span></label>

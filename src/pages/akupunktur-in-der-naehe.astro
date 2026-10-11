@@ -35,7 +35,7 @@ const card = (id: string) => {
   const c = clinics.find((x) => x.id === id);
   if (!c) return '';
   const kurz = [c.street, desc[c.id]].filter(Boolean).join(' · ');
-  return `<a class="city-card location-card" href="/standorte/${c.id}/">${c.postalCode ? `<span class="location-plz">${c.postalCode}</span>` : ''}<div class="location-city">${c.name}</div><div class="location-desc">${kurz}</div><span class="location-link">${c.openingSoon && !c.vorab ? 'Standort ansehen →' : 'Termin prüfen →'}</span></a>`;
+  return `<a class="city-card location-card" href="/standorte/${c.id}/">${c.postalCode ? `<span class="location-plz">${c.postalCode}</span>` : ''}<div class="location-city">${c.name}</div><div class="location-desc">${kurz}</div><span class="location-link">${c.status !== 'operational' ? 'Standort ansehen →' : 'Termin prüfen →'}</span></a>`;
 };
 // Basel und Luzern sind seit dem 14-Standorte-Update reguläre clinics-Einträge
 // (postalCode null, deshalb rendert card() dort kein PLZ-Badge). Die frühere

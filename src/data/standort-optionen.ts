@@ -1,37 +1,18 @@
-// Formular-Optionen für Standorte, die noch nicht eröffnet sind (Stand 11.10.2026).
-// EINE Quelle für TerminForm, KontaktForm, MassageAnfrageForm, den Zürich-Funnel und die
-// captured Inline-Selects. Der value landet unverändert im Betreff der Anfrage
-// ("Terminanfrage – …"), damit das Team ohne Rückfrage richtig routet.
-// Nach bestätigter Eröffnung: Einträge hier zurück auf den reinen Standortnamen setzen.
-export type StandortOption = { value: string; label: string };
+// Status-bewusste Formular-Optionen. EINE Quelle für TerminForm, KontaktForm, MassageAnfrageForm
+// und den Zürich-Funnel. Steuerung ausschliesslich über clinic.status in src/data/locations.ts:
+// solange 'planned', erscheinen statt des Standortnamens die vorab-Optionen (sofortige Alternative +
+// Vormerkung). Kein Datum schaltet etwas frei. Captured Inline-Selects/Karten in den HTML-Bodies
+// prüft scripts/check-clinic-status.mjs gegen denselben Status.
+import { clinics } from './locations';
 
-export const OERLIKON_JETZT: StandortOption = {
-  value: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3',
-  label: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)',
-};
-export const OERLIKON_NEU: StandortOption = {
-  value: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung',
-  label: 'Zürich Oerlikon – neue Praxis (Eröffnung geplant 1.12.2026)',
-};
-export const BASEL_VORMERKEN: StandortOption = {
-  value: 'Basel – Vormerkung, Eröffnung geplant März 2027',
-  label: 'Basel (Eröffnung geplant März 2027)',
-};
-export const LUZERN_VORMERKEN: StandortOption = {
-  value: 'Luzern – Vormerkung, Eröffnung 2027',
-  label: 'Luzern (Eröffnung 2027)',
-};
+export type StandortOption = { value: string; label: string; labelEn?: string };
+
+const geplant = () => clinics.filter((c) => c.status !== 'operational' && c.vorab?.length);
 
 /** Ersetzt einen Standortnamen durch seine status-bewussten Optionen (sonst unverändert). */
 export const expandStandort = (name: string): StandortOption[] =>
-  name === 'Zürich Oerlikon' ? [OERLIKON_JETZT, OERLIKON_NEU]
-    : name === 'Basel' ? [BASEL_VORMERKEN]
-      : name === 'Luzern' ? [LUZERN_VORMERKEN]
-        : [{ value: name, label: name }];
+  geplant().find((c) => c.name === name)?.vorab ?? [{ value: name, label: name }];
 
-/** Vorauswahl auf Standortseiten geplanter Standorte (Slug → value). */
-export const PLANNED_PRESELECT: Record<string, string> = {
-  'zuerich-oerlikon': OERLIKON_NEU.value,
-  basel: BASEL_VORMERKEN.value,
-  luzern: LUZERN_VORMERKEN.value,
-};
+/** Vorauswahl auf Standortseiten geplanter Standorte (Slug → value der Vormerk-Option). */
+export const PLANNED_PRESELECT: Record<string, string> =
+  Object.fromEntries(geplant().map((c) => [c.id, c.vorab!.at(-1)!.value]));

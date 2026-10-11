@@ -11,7 +11,8 @@ export function getStaticPaths() {
 
 interface Props { clinic: Clinic }
 const { clinic } = Astro.props;
-const { id, name, city, region, street, postalCode, phone, openingHours, geo, openingSoon } = clinic;
+const { id, name, city, region, street, postalCode, phone, openingHours, geo } = clinic;
+const openingSoon = clinic.status !== 'operational';
 
 const path = enLocationPath(id);
 const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
@@ -30,8 +31,8 @@ const inPreparation = openingSoon && clinic.openingNote === 'In preparation';
 const openingLabel = clinic.openingNote ?? 'In preparation';
 const description = openingSoon
   ? inPreparation
-    ? `Acupuncture & TCM in ${name}, location in preparation. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
-    : `Acupuncture & TCM in ${name}: ${openingLabel}. English-speaking, EMR-/ASCA-recognised practitioners, covered by supplementary insurance.`
+    ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest now; we contact you once appointments are possible.`
+    : `Acupuncture & TCM in ${name}: ${openingLabel}, not open yet. Register your interest now; we contact you once appointments are possible.`
   : `English-speaking acupuncture & TCM in ${name}. EMR-/ASCA-recognised, covered by insurance. Back pain, migraine, sleep and more.`;
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
@@ -58,6 +59,8 @@ const clinicLd: Record<string, unknown> = {
   },
 };
 if (openingHours.length) clinicLd.openingHours = openingHours;
+// Geplante Standorte: Status explizit im Schema, nie Öffnungszeiten (locations.ts status).
+if (openingSoon) clinicLd.description = `${name}: ${openingLabel}. Not operating yet; no appointments at this address before the opening is confirmed.`;
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',

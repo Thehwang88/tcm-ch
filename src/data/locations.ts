@@ -5,7 +5,11 @@
 // DE Standort URL pattern (from the SPA router `buildRoute`): /standorte/<id>
 // EN pages: /en/locations/<id>  (slug === DE id, so hreflang pairs 1:1).
 
-import { OERLIKON_JETZT, OERLIKON_NEU } from './standort-optionen';
+/** Betriebsstatus = EINZIGE Quelle der Wahrheit für Formulare, DE/EN-Seiten, Standortkarten und Schema.
+ *  'operational' erst nach ausdrücklicher Bestätigung durch die Inhaber:in setzen. Eröffnungsdaten
+ *  (openingNote) sind rein informativ und schalten NICHTS automatisch frei.
+ *  Gate: node scripts/check-clinic-status.mjs (nach dem Build). */
+export type ClinicStatus = 'operational' | 'planned';
 
 export interface Clinic {
   id: string;            // slug, identical to DE standort slug
@@ -19,92 +23,95 @@ export interface Clinic {
   /** schema.org-valid openingHours lines (Mo Tu We Th Fr Sa Su); [] if not open. */
   openingHours: string[];
   geo: { lat: number; lng: number };
-  /** true = announced but not operating yet (no street / hours). */
-  openingSoon?: boolean;
+  /** 'planned' = announced but not operating yet (no hours, no operational claims). */
+  status: ClinicStatus;
+  /** Informational only (e.g. planned date); never used to switch status. */
   openingNote?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
   areaServed?: string[];
-  /** ISO-Datum (YYYY-MM-DD): erst ab diesem Tag als Terminoption im Termin-Funnel
-   *  angeboten (src/data/zuerich-termin.ts). Weglassen = Termine anfragbar. */
-  terminAb?: string;
-  /** Optionen, die VOR terminAb statt der regulären Option im Zürich-Funnel erscheinen
-   *  (z. B. sofortige Partnerpraxis + Vormerkung für die neue Praxis). */
-  vorab?: { value: string; label: string }[];
+  /** Formular-Optionen, solange status 'planned' ist (statt der regulären Option), z. B. sofortige
+   *  Partnerpraxis + Vormerkung. Letzte Option = Vorauswahl auf der eigenen Standortseite.
+   *  value landet unverändert im Betreff der Anfrage (Routing durchs Team). */
+  vorab?: { value: string; label: string; labelEn?: string }[];
 }
 
 export const clinics: Clinic[] = [
   { id: 'kreuzlingen', name: 'Kreuzlingen', city: 'Kreuzlingen', region: 'Lake Constance / Thurgau',
     street: 'Romanshornerstrasse 1', postalCode: '8280', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
     areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Konstanz', 'Meersburg'] },
 
   { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
     street: 'Hauptstrasse 34', postalCode: '8598', phone: '+41 76 578 09 88',
-    openingHours: ['Mo 07:00-20:00', 'Tu-Fr 18:00-20:00', 'Sa 07:00-20:00'], geo: { lat: 47.6362, lng: 9.2167 },
+    openingHours: ['Mo 07:00-20:00', 'Tu-Fr 18:00-20:00', 'Sa 07:00-20:00'], geo: { lat: 47.6362, lng: 9.2167 }, status: 'operational',
     areaServed: ['Bottighofen', 'Kreuzlingen', 'Münsterlingen', 'Tägerwilen', 'Altnau', 'Konstanz', 'Frauenfeld'] },
 
   { id: 'frauenfeld', name: 'Frauenfeld', city: 'Frauenfeld', region: 'Thurgau',
     street: 'Rheinstrasse 25', postalCode: '8500', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
     areaServed: ['Frauenfeld', 'Matzingen', 'Stettfurt', 'Felben-Wellhausen', 'Müllheim', 'Pfyn', 'Aadorf', 'Eschlikon', 'Weinfelden', 'Amriswil'] },
 
   { id: 'winterthur-muenzgasse', name: 'Winterthur Münzgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4998, lng: 8.7290 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4998, lng: 8.7290 }, status: 'operational',
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
   { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
     street: 'Lindenstrasse 2/1', postalCode: '8604', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3923, lng: 8.6970 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3923, lng: 8.6970 }, status: 'operational',
     areaServed: ['Volketswil', 'Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
 
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4040, lng: 8.4970 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
-    // Pre-Opening: Eröffnung geplant 1.12.2026 (noch nicht final bestätigt). Keine Öffnungszeiten bis zur
-    // Bestätigung; im Zürich-Funnel ab terminAb als reguläre Option, vorher als Vormerkung (vorab).
-    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, openingSoon: true, openingNote: 'Opening planned for 1 December 2026',
-    terminAb: '2026-12-01',
-    vorab: [OERLIKON_JETZT, OERLIKON_NEU],
+    // Pre-Opening: Eröffnung geplant 1.12.2026 (noch nicht final bestätigt). Bleibt 'planned', bis die
+    // Inhaber:in den Betrieb bestätigt; dann status 'operational' + verifizierte openingHours setzen.
+    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'planned', openingNote: 'Opening planned for 1 December 2026',
+    vorab: [
+      { value: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3', label: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)', labelEn: 'Zürich Oerlikon – partner practice Praxis Hwang (appointments now)' },
+      { value: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung', label: 'Zürich Oerlikon – neue Praxis (Eröffnung geplant 1.12.2026)', labelEn: 'Zürich Oerlikon – new clinic (opening planned 1 Dec 2026)' },
+    ],
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 }, openingSoon: true, openingNote: 'Opening planned for March 2027',
+    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 }, status: 'planned', openingNote: 'Opening planned for March 2027',
+    vorab: [{ value: 'Basel – Vormerkung, Eröffnung geplant März 2027', label: 'Basel (Eröffnung geplant März 2027)', labelEn: 'Basel (opening planned March 2027)' }],
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, openingSoon: true, openingNote: 'Opening in 2027',
+    openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, status: 'planned', openingNote: 'Opening in 2027',
+    vorab: [{ value: 'Luzern – Vormerkung, Eröffnung 2027', label: 'Luzern (Eröffnung 2027)', labelEn: 'Lucerne (opening 2027)' }],
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 46.948, lng: 7.4474 }, openingSoon: true, openingNote: 'In preparation',
+    openingHours: [], geo: { lat: 46.948, lng: 7.4474 }, status: 'planned', openingNote: 'In preparation',
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 },
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
     areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 
   { id: 'rorschach', name: 'Rorschach', city: 'Rorschach', region: 'Lake Constance',
     street: 'Pestalozzistrasse 11', postalCode: '9400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4783, lng: 9.4894 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
     areaServed: ['Rorschach', 'Rorschacherberg', 'Goldach', 'Arbon', 'Horn', 'Steinach', 'Tübach', 'Mörschwil', 'Heiden', 'Walzenhausen', 'Berneck', 'Au', 'Thal', 'Altstätten'] },
 
   { id: 'wil', name: 'Wil', city: 'Wil', region: 'Fürstenland',
     street: 'Obere Bahnhofstrasse 35', postalCode: '9500', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4625, lng: 9.0467 },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4625, lng: 9.0467 }, status: 'operational',
     areaServed: ['Wil', 'Bronschhofen', 'Rossrüti', 'Schwarzenbach', 'Uzwil', 'Flawil', 'Bütschwil', 'Münchwilen', 'Sirnach', 'Niederuzwil', 'Henau'] },
 ];
 

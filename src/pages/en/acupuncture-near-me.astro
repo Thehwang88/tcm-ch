@@ -69,7 +69,7 @@ const schema = [
               <a class="card" href={enLocationPath(c!.id)}>
                 <div class="card-body">
                   <h3>{c!.name}</h3>
-                  <p>{c!.openingSoon ? `${c!.city} (opening soon)` : `${c!.street}, ${c!.postalCode} ${c!.city}`}</p>
+                  <p>{c!.status !== 'operational' ? `${c!.city} (opening soon)` : `${c!.street}, ${c!.postalCode} ${c!.city}`}</p>
                 </div>
               </a>
             ))}

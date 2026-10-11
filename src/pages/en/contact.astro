@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { site, standorte } from '../../data/site';
+import { expandStandort } from '../../data/standort-optionen';
 
 const schema = {
   '@context': 'https://schema.org',
@@ -12,7 +13,7 @@ const schema = {
 ---
 <Layout
   title="Request an appointment"
-  description="Request a TCM appointment at one of our 12 Swiss clinics. Tell us briefly what's going on and your preferred location - we usually reply within ~1h."
+  description="Request a TCM appointment at one of our Swiss clinics. Tell us briefly what's going on and your preferred location; we get back to you personally."
   path="/en/contact"
   schema={schema}
 >
@@ -45,7 +46,7 @@ const schema = {
           <div class="field"><label for="c-loc">Location</label>
             <select id="c-loc" name="standort">
               <option value="">No preference</option>
-              {standorte.map((s) => <option value={s.label}>{s.label}</option>)}
+              {standorte.flatMap((s) => expandStandort(s.label)).map((o) => <option value={o.value}>{o.labelEn ?? o.label}</option>)}
             </select></div>
         </div>
 
@@ -69,7 +70,8 @@ const schema = {
       var sel = document.getElementById('c-loc');
       if (!sel) return;
       for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === pre) { sel.selectedIndex = i; break; }
+        // planned clinics: first status-aware option (e.g. partner practice) starts with the name
+        if (sel.options[i].value === pre || sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
       }
     })();
     document.getElementById('en-contact-form')?.addEventListener('submit', async function (e) {

@@ -18,7 +18,7 @@ interface Props {
   sub?: string;
 }
 const { anfrageTyp, quelle, heading, sub } = Astro.props;
-import { OERLIKON_JETZT, OERLIKON_NEU } from '../data/standort-optionen';
+import { expandStandort } from '../data/standort-optionen';
 ---
 <section id="anfrage" class="section contact-section-inline" style="background:var(--surface);border-top:1px solid var(--border)">
   <div class="wrap">
@@ -45,8 +45,7 @@ import { OERLIKON_JETZT, OERLIKON_NEU } from '../data/standort-optionen';
             <option value="">Standort auswählen</option>
             <option>Winterthur</option>
             <option>St. Gallen</option>
-            <option value={OERLIKON_JETZT.value}>{OERLIKON_JETZT.label}</option>
-            <option value={OERLIKON_NEU.value}>{OERLIKON_NEU.label}</option>
+            {expandStandort('Zürich Oerlikon').map((o) => <option value={o.value}>{o.label}</option>)}
             <option>Zürich Höngg</option>
             <option>Volketswil</option>
             <option>Frauenfeld</option>

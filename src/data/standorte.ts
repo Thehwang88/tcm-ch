@@ -10,6 +10,8 @@
 //   - nearby                    - curated WeitereStandorte cards ({slug, plz, city, desc}),
 //                                 lifted verbatim from the leaf (slug drives the nav link).
 
+import { clinics } from './locations';
+
 export interface Standort {
   slug: string;
   stadt: string;
@@ -44,7 +46,8 @@ export interface Standort {
   cro?: boolean;
   /** Opt-in (CRO-L2.1-Pilot): Formular direkt nach Krankenkassen, SEO-/Praxisinfo-Blöcke darunter, verdichtete UeberPraxis. */
   v2?: boolean;
-  /** Standort noch nicht eröffnet: Status-Banner unter dem Hero, Formular als Anfrage «für den geplanten Start». */
+  /** Standort noch nicht eröffnet: Status-Banner unter dem Hero, Formular als Anfrage «für den geplanten Start».
+   *  NICHT hier setzen: wird unten aus clinic.status (src/data/locations.ts) abgeleitet. */
   planned?: boolean;
   /** Optional zu `planned`: Banner-Titel/-Text (z. B. geplantes Datum, sofortige Alternative). Fallback = generischer Text. */
   plannedTitle?: string;
@@ -62,7 +65,6 @@ export const standorte: Record<string, Standort> = {
   basel: {
     cro: true,
     v2: true,
-    planned: true,
     plannedTitle: 'Eröffnung geplant: März 2027',
     slug: 'basel',
     stadt: 'Basel',
@@ -795,14 +797,13 @@ export const standorte: Record<string, Standort> = {
     ]
   },
   // Pre-Opening (Stand 11.10.2026): Eröffnung geplant 1.12.2026, finale Bestätigung ausstehend.
-  // Bis dahin: planned=true, keine Öffnungszeiten, keine Behandlungs-/Patient:innen-Aussagen für
-  // die Ohmstrasse; sofortige Option = Partnerpraxis Praxis Hwang, Schulstrasse 3.
-  // Nach bestätigter Eröffnung: planned/plannedTitle/plannedNote entfernen, verifizierte
-  // Öffnungszeiten eintragen, Pre-Opening-Formulierungen zurücknehmen.
+  // Bis dahin: status 'planned' (locations.ts), keine Öffnungszeiten, keine Behandlungs-/Patient:innen-
+  // Aussagen für die Ohmstrasse; sofortige Option = Partnerpraxis Praxis Hwang, Schulstrasse 3.
+  // Nach ausdrücklich bestätigter Eröffnung: status in locations.ts auf 'operational', verifizierte
+  // Öffnungszeiten eintragen, Pre-Opening-Formulierungen zurücknehmen. Das Datum schaltet nichts frei.
   "zuerich-oerlikon": {
     "cro": true,
     "v2": true,
-    "planned": true,
     "plannedTitle": "Eröffnung geplant: 1. Dezember 2026",
     "plannedNote": "Die neue TCM.ch Praxis an der Ohmstrasse 14 ist noch nicht eröffnet; das Datum ist noch nicht final bestätigt. Du kannst dich schon jetzt für einen Termin nach der Eröffnung vormerken lassen. Sofort einen Termin in Oerlikon bekommst du bei unserer Partnerpraxis <a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener'>Praxis Hwang an der Schulstrasse 3</a>.",
     "praxisBilder": [
@@ -891,6 +892,12 @@ export const standorte: Record<string, Standort> = {
     ]
   },
 };
+
+// Betriebsstatus ausschliesslich aus src/data/locations.ts (clinic.status), nie aus einem Datum.
+for (const [slug, s] of Object.entries(standorte)) {
+  const c = clinics.find((x) => x.id === slug);
+  if (c) s.planned = c.status !== 'operational';
+}
 
 export const getStandort = (slug: string) => standorte[slug];
 export const allStandortSlugs = () => Object.keys(standorte);

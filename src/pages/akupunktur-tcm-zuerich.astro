@@ -3,18 +3,18 @@
 export const prerender = true;
 import SpaPage from '../layouts/SpaPage.astro';
 import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
-import { zhStandortOptionsHtml, zhTerminData, zhTerminScript } from '../data/zuerich-termin';
+import { zhStandortOptionsHtml } from '../data/zuerich-termin';
 import StickyCta from '../components/StickyCta.astro';
 import BrandSignature from '../components/BrandSignature.astro';
 
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
-// statt hartcodiert - noch nicht anfragbare Standorte (terminAb) erscheinen erst ab Stichtag.
+// statt hartcodiert - geplante Standorte (clinic.status) nur mit Vormerk-/Partner-Optionen.
 const ZH_ALT = '<select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select>';
 if (!rawBody.includes(ZH_ALT)) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
 const body = rawBody.replace(
   ZH_ALT,
-  `<select class="form-select" name="standort" data-zh-termin="${zhTerminData({ html: true })}"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option data-zh-last>Anderer Standort / in meiner Nähe</option></select>`,
-) + zhTerminScript;
+  `<select class="form-select" name="standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option>Anderer Standort / in meiner Nähe</option></select>`,
+);
 
 // Brand Signature direkt vor dem End-CTA (nach FAQ): Standortfinder, Quartiere und Funnel bleiben ungestört.
 const END_CTA = '<section class="cta-band" style="background:#F2F4F2;padding:48px 0">';

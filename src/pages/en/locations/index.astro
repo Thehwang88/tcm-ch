@@ -45,7 +45,7 @@ const breadcrumbLd = {
             <div class="card-body">
               <h3>{c.name}</h3>
               <p>
-                {c.openingSoon
+                {c.status !== 'operational'
                   ? `${c.city} - ${(c.openingNote ?? 'in preparation').toLowerCase()}`
                   : `${c.street}, ${c.postalCode} ${c.city}`}
               </p>
