@@ -653,3 +653,63 @@ Je Familie (voll konform / n): Bibliothek+Körpersignale 296/296 · Beschwerden 
 5. Docs-Commit (dieser Abschnitt + Matrix).
 
 Jeder Schritt: `origin/main` erneut prüfen (`merge-base --is-ancestor`), normaler Push ohne Force, Live-Byte-Watch mit `curl --cacert`, Mirror-Render der Zielrouten; bei Abweichung sofortiger Revert des jeweiligen Commits. **STRICT STOP: nichts davon ist gepusht.**
+
+## 29. Wave 7 — Abschluss-Sprint: Longevity, Partner/Bern, Handouts (released), 404-Routing (nicht released, Preview ausstehend) — 11.10.2026
+
+**Basis:** `origin/main` = `b88c1235` (gefetcht, verifiziert); Worktree `tcm-ch-w7` (`feat/wave7-closure`), Clean-Build 766 Routen als Baseline. Vier isolierte lokale Commits in `feat/wave7-closure` (`171c7742` 404-Routing · `0b18381a` Partner/Bern · `879ac144` Handouts · `d5c796c5` Longevity). **Released** wurden die drei visuellen/a11y-Fixes als patch-identische Transplantate auf `b88c1235` (Branch `rel/wave7-closure`, Reihenfolge ohne Routing): **`7c52411f`** Partner/Bern (= 0b18381a) → **`51b55bce`** Handouts (= 879ac144) → **`1f3156f4`** Longevity (= d5c796c5); `functions/_middleware.js` und `wrangler.jsonc` sind gegenüber `b88c1235` unverändert. Das 404-Routing (`171c7742`) ist **nicht released** (siehe Kohorte 1) und bleibt im lokalen Branch. Backlog unverändert (Über-uns-Fakten, Kontakt/Zuweisen-Harness unter Turnstile, 2 KK-Konsolenfehler).
+
+### Kohorte 1 — Cloudflare 404-Routing (`171c7742`, NICHT released — Status: offen, gehostetes Preview ausstehend)
+
+**Befund live (b88c1235):** unbekannte Pfade → HTTP 404 mit **leerem Body**; `/404` → 308 `/404/` → 307 `/404` (Schleife); `/404.html` → 307. **Ursache bewiesen:** Workers static assets (`wrangler.jsonc`: `assets.directory=dist`, `run_worker_first=true`, kein `not_found_handling`) → Default `none` liefert leere 404; `html_handling` `auto-trailing-slash` leitet `/404/` und `/404.html` auf `/404`, während die Slash-Kanonisierung der Middleware `/404` auf `/404/` zurückleitet. Lokal in workerd (`wrangler dev --local`, identische Konfiguration) **exakt reproduziert**.
+
+**Korrektur (Middleware, minimal):** `/404`, `/404/`, `/404.html` → `dist/404.html` mit Status 404 (kein Redirect); nach `context.next()` wird ein 404 für GET/HEAD auf Seitenpfade (ohne Dateiendung oder `.html`, nicht `/api/*`) durch dieselbe Seite mit Status 404 ersetzt. Asset-Pfade behalten leere 404, `/api/*`, 308-Slash-Regel, `_redirects`-301, 410-Liste, www-301 unverändert; `wrangler.jsonc` unverändert.
+
+**Preview-Evidenz (workerd, nach Fix):** 29 Pfade geprüft — Tabelle in `scratchpad/w7/404-evidence.md`; Kernpunkte: unbekannte Pfade (verschachtelt, mit Query, `.html`) → 404 + Seite (72 923 B, `cache-control: no-cache`); `/404`-Varianten → 404 + Seite ohne Redirect; fehlende Bilder/CSS/JS → 404 leer; `/standorte/basel` 308 → `/`; `/krankenkasse` 301; `/suche`, `/sprechstunde/`, `/SMS/online.html` 410; `/beschwerden/doesnotexist/` 410 (Function); `POST /api/anfrage/` `{}` → 422 `missing_fields`, vollständiger Body ohne Secrets → 500 `no_api_key` (vor Turnstile, kein Versand); `POST /api/anfrage` → 308 wie Baseline; `HEAD /nope/` 404; `POST /nope/` 404 leer; www → 301. **Release-Gate nicht erfüllt:** Freigabe war an ein erfolgreich getestetes gehostetes Cloudflare-Preview gebunden; in dieser Umgebung gibt es keine Cloudflare-Credentials (`wrangler whoami`: not authenticated, keine `CLOUDFLARE_*`-Variablen), also kein Preview-Deployment. Der Commit wurde daher **nicht** veröffentlicht. **Live-Zustand unverändert:** unbekannte Pfade liefern weiterhin HTTP 404 mit leerem Body, `/404` ↔ `/404/` schleifen. Nächster Schritt (Inhaber): Preview-Deployment mit Account-Zugang oder bewusste Freigabe mit sofortiger Live-Matrix und Revert-Bereitschaft; Patch und Testmatrix liegen bereit (`feat/wave7-closure`, `scratchpad/w7/404-evidence.md`).
+
+### Kohorte 2 — Longevity (`d5c796c5` → released als `1f3156f4`)
+
+Sub-Brand (Dunkelgrün/Gold, H1 300) bleibt. Gold `#c9a96e` auf Forest `#0a1d12` misst 6.8:1 und bleibt; auf Cream/Weiss (Section-Labels in hellen Sektionen, Thesen-Nummern auf weissen Karten, Presse-Label auf `#f4efe6`, H2-Italics) neu **`#7d5f24`** (5.9:1 Weiss, 5.6:1 Cream, 5.2:1 Presse-Note). Scope `#page-longevity`, Ausschluss `.lng-section-dark *`, `.lng-cta-block *`, `.lng-hero *`. **Pixelmessung mit gerendertem Hintergrund** (`pix.mjs`, Text transparent, Box-Screenshot, Verläufe/Bilder inklusive, 390 + 1440): vorher rot 1.95–2.24 → nachher 5.2–5.9 (alle Labels/Nummern/Italics auf hell), Dunkelflächen-Gold 6.9–7.8, Hero-Eyebrow 6.2 (Pill-Rand drückt p5 auf 3.8), H1 16, H1-Italic 7.0, Lead 12.4, Dunkel-Body 13.6. Zensus 360/390/430/768/1280/1440: 12 → 4 Verstösse; die 4 Reste sind Hero-Elemente über Verlauf/Bild (Zensus misst dort den Seitenhintergrund; Pixelmessung 6.2–16). Overflow 0, Fokus 3px, Fonts Figtree (2–3 versteckte Arial-Knoten). **Nicht behoben (Brand-Abweichung, keine a11y-Frage):** H1 Gewicht 300. Status: dokumentierte Ausnahme, nicht WCAG-vollständig geprüft (nur Farbkontrast/Fokus/Overflow), nicht vom Inhaber freigegeben.
+
+### Kohorte 3 — Partner/Bern (`0b18381a` → released als `7c52411f`)
+
+Nur `partner.css` (Konsument ausschliesslich `/partner/[city]/` = `/partner/bern/`; 30 Kontrollmessungen auf B2B-/Partner-Hub-/Home-/Standort-/Club-/Handout-Routen ohne Style-Diff). Grau `#9a9a9a`/`#a3a3a3` → `#6b6b6b` (5.3:1), `#b0b0b0` → `#6f6f6f` (5.0:1), Trenner `#cfcfcf` → `#767676`, inaktive Kalendertage → `#8a8a8a`; Legacy-Grün im `.pp`-Scope → Brand-Ink `#0B7A4C` (Text 5.4:1; Diagramm-Füllungen/Linien ebenfalls), Hover `#075c38`, Tint, Fokusring 3px Rich Black, Feld-/Slider-Fokus Mint-Halo, CTA `.pp-btn` Rich Black. Zensus 360/390/430/768/1280/1440: AA-Verstösse 60–70 → **0**, Overflow 0. Präsentationsmodus (Toggle, `is-present`, Kapitelzähler 01→02→03→02 per Pfeiltasten), Entdecken-Modus, Simulator (13 Felder, 4 Szenarien, Ausgaben) vor/nach identisch; Mobil 390: Modus-Toggle wie bisher ausgeblendet. Inhalte, Zahlen, Rechtstexte, noindex unverändert. **Bleibt Ausnahme:** PartnerLayout ohne Shell, H1 Charcoal, Georgia-Akzent (3 Knoten).
+
+### Kohorte 4 — Handouts HWS/LWS (`879ac144` → released als `51b55bce`)
+
+`@media screen and (max-width:600px)`, gescoped `body:has(.ho-compare:not(.ho-compare--single))` (nur die zweispaltigen Vergleichs-Handouts): Kopf, Vergleich, Schmerzverlauf, QR einspaltig; Marker-Labels umbrechend. Overflow 360/390/430: HWS 110/80/40 → **0**, LWS 104/74/34 → **0**; 768/1440 unverändert; Einzelbild-Handouts (Ischias, Karpaltunnel, Nacken) byteidentisch im Render. **Druck:** `@media print`/`@page A4` unberührt; `emulateMediaType('print')` Blattgeometrie, Umbrüche, Textlänge, Bilder, Toolbar-Ausblendung identisch; PDF je 1 Seite 595.92 × 841.92 pt, Dateigrösse identisch. Mobil-Overflow und A4-Druck sind getrennte Befunde: Druck war und ist konform; Mobil jetzt 0.
+
+### Teil D — Gesamtaudit (766 Routen × 1440/390, final-dist `d5c796c5` = byteidentisch zum Release-Build `1f3156f4`)
+
+**Methode:** Zensus wie §25/§28 (1440 + 390, Bilder blockiert) über alle **766 Routen** des final-dist, plus 360/390/430/768/1280/1440 für Longevity, Partner/Bern und die fünf Handouts, Pixelmessungen für Longevity und die 13 Foto-Captions (Textband 11.2–17.9:1, unverändert zu §28). Kalibrierung unverändert: nur der Caption-Schlüssel (13 Routen, 26 Messungen), getrennt ausgewiesen.
+
+| Ebene | §28 (`4b7da650`) | **jetzt (`d5c796c5`)** | Bemerkung |
+|---|---|---|---|
+| Routen auditiert | 766 | **766** (1532 + 60 Zusatzmessungen) | |
+| **Voll konform strikt (Matrix-Regeln, ohne Kalibrierung)** | 748 | **750** | +2 Handouts (Overflow 390 = 0) |
+| **Voll konform inkl. Caption-Kalibrierung** | 761 | **763** | |
+| Hero konform | 763 | 763 | Club (Charcoal), Longevity (300), Partner/Bern |
+| Typo/Farben ohne Legacy | 764 | 764 | Longevity (3 Arial-Knoten), Partner/Bern (Georgia) |
+| Komponenten | 763 | 763 | Club, Longevity (kein CTA), Partner/Bern (Brand-Ink) |
+| AA-Kontrast 0 (1440+390) | 764 (751 unkalibriert) | **765** (752) | Rest: Longevity 8 = 4 Hero-Artefakte × 2 Breiten (Pixelmessung 6.2–16) |
+| Overflow 0 | 764 | **766** | Handouts HWS/LWS mobil behoben |
+| Fokus sichtbar | 766 | 766 | |
+| Shell | 708 | 708 | by design |
+| **Ausnahmen (dokumentiert, nicht freigegeben, nicht WCAG-vollständig geprüft)** | 5 | **3** | `/club/`, `/longevity/`, `/partner/bern/` |
+| **Kalibrierte Routen (13) mit Live-Pixelnachweis** | 13 | **13** | Textband 11.2–17.9:1, Bilder geladen/dekodiert (nachgemessen auf b88c1235-Build) |
+| **Nicht konform ohne Ausnahme** | 0 | **0** | |
+| **Regressionen** | 0 | **0** | |
+
+Je Familie (voll konform / n): Bibliothek+Körpersignale 296/296 · Beschwerden 155/155 · B2B 55/56 · Wissen 54/54 · EN 51/51 · Haut 37/37 · Therapien 37/37 · Standorte 21/21 · Team 17/17 · Sonderseiten 10/12 · Visuals 11/11 · City-Massage 8/8 · City-Akz 6/6 · Legal 3/3 · Home 1/1 · 404 1/1.
+
+**Die drei Ausnahmen einzeln:**
+- `/club/` — Sub-Brand QI CLUB: eigener Shell, Rot-Akzent, 0px-Buttons, Charcoal-H1; Kontrast 0, Fokus 3px (9e2c0dee). Geprüft, bewusst belassen; Freigabe Inhaber offen. Schwere: niedrig (Brand-Abweichung, kein a11y-Befund).
+- `/longevity/` — Sub-Brand: Gold auf hell seit `d5c796c5` AA (5.2–5.9, Pixelmessung); Hero-Reste sind Messartefakte (6.2–16 gemessen); offen: H1 Gewicht 300 (Brand), 3 versteckte Arial-Knoten. Schwere: niedrig; Freigabe offen.
+- `/partner/bern/` — private Präsentation, noindex: Kontrast seit `0b18381a` 0 Verstösse, Brand-Ink statt Legacy-Grün; offen: H1 Charcoal, Georgia-Akzent, kein Shell (by design). Schwere: niedrig; Freigabe offen.
+
+**Gates (Release-Build `1f3156f4`, `dist` byteidentisch zum auditierten `d5c796c5`-Build; `worker/index.js` unverändert gegenüber main):** Build ok · check-professional 103/0 · health-audit 0 · clinic-status 0 · standort-ux 0. Build-Diff gegen `b88c1235`: `home.css`, `partner/bern/index.html` (CSS-Hash), 5 Handouts (CSS-Hash; nur HWS/LWS rendern mobil anders), `worker/index.js` (Middleware; nicht in `dist`); **759 HTML byteidentisch**, Sitemap/robots/`_redirects`/`wrangler.jsonc` unverändert. Metadaten, Canonical, JSON-LD, Links, Formulare, Tracking unverändert (HTML-Diff = CSS-Hash). Keine Regression gegenüber Wellen 1–6 (0 Routen von konform zu nicht konform).
+
+### Release-Protokoll (11.10.2026, Fast-forward, normale Pushes, je Schritt live byteverifiziert)
+
+`b88c1235` (gefetcht, unverändert) → **`7c52411f`** Partner/Bern (live nach 90 s: `/partner/bern/` + `_city_` CSS-Chunk byteidentisch; `/`, `/standorte/basel/`, `/partner/`, Ischias-Handout unverändert) → **`51b55bce`** Handouts (live nach 60 s: HWS/LWS/Ischias-Handouts + `handout` CSS-Chunk byteidentisch) → **`1f3156f4`** Longevity (`home.css`): gepusht 16:15 UTC (`origin/main` = `1f3156f4`), **Workers-Build innerhalb von 20 min nicht deployt** (`home.css` live = Stand `b88c1235`, auch cache-busted); Status beim Schreiben dieses Eintrags: *Deployment ausstehend* — ggf. manueller Main-Build im Cloudflare-Dashboard nötig (vgl. CLAUDE.md-Hinweis 30.09.2026); Verifikation im Folgeeintrag → Docs (dieser Abschnitt). Nicht gepusht: `171c7742` (404-Routing). Worktrees: alle bestehenden erhalten (`tcm-ch-w7` mit der Originalkette, `tcm-ch-w7r` Release).
+
+**Bleibt offen (ehrlich):** 404-Routing live unverändert (leerer 404-Body, `/404`-Schleife) bis Preview/Freigabe; Kontakt/Zuweisen-Formulare im Offline-Harness unter Turnstile-Stub nicht sendbar (vor/nach identisch, Live-Verhalten nicht betroffen); 2 vorbestehende Konsolenfehler auf `/krankenkassen/`; Über-uns-Faktenvorschläge (`docs/ueber-uns-copy-proposals.md`) unverändert offen; drei Sub-Brand-Ausnahmen ohne Inhaber-Freigabe; keine Aussage «WCAG-konform» für die Site — geprüft wurden Farbkontrast, Fokus-Sichtbarkeit, Overflow und Tastatur-Interaktionen der Zielrouten.
