@@ -98,10 +98,14 @@ const options = [];
 for (const [p, s] of html) for (const o of s.matchAll(/<option[^>]*>([^<]+)<\/option>/g)) options.push([p, text(o[1])]);
 for (const c of m.clinics) {
   const allowed = new Set((c.vorab ?? []).flatMap((o) => [o.label, o.labelEn].filter(Boolean)));
+  // EN directory now includes every central clinic, including those with no
+  // bespoke vorab options (Bern). Only the exact status-derived label is valid.
+  const enFallback = !c.vorab?.length && c.status !== 'operational'
+    ? `${c.name} (${c.status === 'review' ? 'status under review' : 'in preparation'})` : null;
   const mine = options.filter(([, t]) => t === c.name || t.startsWith(c.name + ' ') || t.startsWith(c.name + ' –'));
   const bad = c.status === 'operational'
     ? mine.filter(([, t]) => STATUS_WORDS.test(t) || /Partnerpraxis|partner practice/.test(t))
-    : mine.filter(([, t]) => !allowed.has(t));
+    : mine.filter(([p, t]) => !allowed.has(t) && !(p === 'dist/en/contact/index.html' && t === enFallback));
   ok(bad.length === 0, `Optionen ${c.name} (${c.status}): ${mine.length} geprüft${bad.length ? `, falsch: "${bad[0][1]}" in ${bad[0][0]} (+${bad.length - 1})` : ''}`);
 }
 

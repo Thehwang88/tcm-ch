@@ -1,7 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { site, standorte } from '../../data/site';
+import { site } from '../../data/site';
+import { clinics } from '../../data/locations';
+import Premium from '../../components/en/Premium.astro';
+import Hero from '../../components/en/Hero.astro';
 import { expandStandort } from '../../data/standort-optionen';
+
+const options = clinics.flatMap(c => expandStandort(c.name).map(o => ({...o, labelEn: o.labelEn ?? (c.status === 'operational' ? c.name : `${c.name} (${c.status === 'review' ? 'status under review' : 'in preparation'})`)})));
 
 const schema = {
   '@context': 'https://schema.org',
@@ -17,15 +22,9 @@ const schema = {
   path="/en/contact"
   schema={schema}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch</div>
-      <h1>Request an appointment</h1>
-      <p class="lead">Tell us briefly what's going on and your preferred location - we'll get back to you personally.</p>
-    </div>
-  </section>
-
-  <section class="section">
+  <Premium>
+  <Hero eyebrow="Appointment coordination" title="Let’s find your next step." lead="Tell us your preferred location, times and consultation language. We’ll contact you personally to arrange the details." primaryHref="#en-contact-form" primaryLabel="Send your request" secondaryHref="/en/locations/" secondaryLabel="Explore clinics" />
+  <section class="en-section en-concrete">
     <div class="wrap">
       <form class="form-card" id="en-contact-form">
         <!-- Honeypot (leave empty) -->
@@ -46,22 +45,23 @@ const schema = {
           <div class="field"><label for="c-loc">Location</label>
             <select id="c-loc" name="standort">
               <option value="">No preference</option>
-              {standorte.flatMap((s) => expandStandort(s.label)).map((o) => <option value={o.value}>{o.labelEn ?? o.label}</option>)}
+              {options.map((o) => <option value={o.value}>{o.labelEn ?? o.label}</option>)}
             </select></div>
         </div>
 
         <div class="field"><label for="c-msg">Message <span class="req">*</span></label>
-          <textarea id="c-msg" name="anliegen" required placeholder="e.g. recurring neck pain, preferred times, any questions"></textarea></div>
+          <textarea id="c-msg" name="anliegen" required placeholder="e.g. your main concern, preferred times, English consultation, treatment preference"></textarea></div>
 
         <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin-bottom:14px"></div>
 
-        <button class="btn btn--primary" type="submit"><span class="btn-label">Send request</span></button>
+        <button class="tcm-btn tcm-btn--mint" type="submit"><span class="btn-label">Send request</span></button>
         <div class="form-status" role="status" aria-live="polite" hidden></div>
-        <p style="font-size:13px;color:var(--mid);margin-top:14px">Your data is treated confidentially and not shared. See our <a href="/datenschutz/" style="color:var(--blue)">privacy policy</a>.</p>
+        <p style="font-size:13px;color:var(--mid);margin-top:14px">We use your details to coordinate your inquiry with the relevant practice. See our <a href="/datenschutz/" style="color:var(--blue)">privacy policy</a>.</p>
       </form>
     </div>
   </section>
 
+  </Premium>
   <script is:inline>
     // Prefill the location dropdown from ?standort= (links from location pages).
     (function () {
@@ -69,14 +69,18 @@ const schema = {
       if (!pre) return;
       var sel = document.getElementById('c-loc');
       if (!sel) return;
-      for (var i = 0; i < sel.options.length; i++) {
-        // planned clinics: first status-aware option (e.g. partner practice) starts with the name
-        if (sel.options[i].value === pre || sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
+      var exact = Array.from(sel.options).findIndex(function(o) { return o.value === pre; });
+      if (exact >= 0) { sel.selectedIndex = exact; return; }
+      // Legacy name-only links select the final (new-location) option, never silently the partner practice.
+      for (var i = sel.options.length - 1; i >= 0; i--) {
+        if (sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
       }
     })();
     document.getElementById('en-contact-form')?.addEventListener('submit', async function (e) {
       e.preventDefault();
       var form = e.target;
+      if (form.classList.contains('is-sending') || !form.reportValidity()) return;
+      var submit = form.querySelector('button[type=submit]');
       var status = form.querySelector('.form-status');
       var label = form.querySelector('.btn-label');
       function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
@@ -86,7 +90,7 @@ const schema = {
       if (!token) { show('error', 'Please confirm you are human and try again.'); return; }
       var payload = {
         typ: 'termin',
-        name: form.name.value.trim(),
+        name: form.elements.namedItem('name').value.trim(),
         email: form.email.value.trim(),
         telefon: form.telefon.value.trim(),
         standort: form.standort.value,
@@ -95,11 +99,14 @@ const schema = {
         turnstileToken: token,
       };
       form.classList.add('is-sending');
+      submit.disabled = true;
       if (label) { label.dataset.orig = label.textContent; label.textContent = 'Sending…'; }
       try {
         var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         var data = null; try { data = await res.json(); } catch (_) {}
         if (res.ok && data && data.ok) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'formular_senden', form_type: 'termin', quelle: '/en/contact' });
           form.reset();
           show('success', 'Thank you! Your request has been received - we will get back to you personally.');
         } else {
@@ -109,9 +116,16 @@ const schema = {
         show('error', 'Connection error. Please try again.');
       } finally {
         form.classList.remove('is-sending');
+        submit.disabled = false;
         if (label && label.dataset.orig) label.textContent = label.dataset.orig;
         if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
       }
     });
   </script>
 </Layout>
+
+<style>
+  #en-contact-form { margin:0 auto; background:var(--white); scroll-margin-top:100px; }
+  #en-contact-form button:disabled { opacity:.6; cursor:wait; }
+  #en-contact-form input:focus-visible, #en-contact-form select:focus-visible, #en-contact-form textarea:focus-visible { outline:2px solid var(--brand-ink); outline-offset:2px; }
+</style>
