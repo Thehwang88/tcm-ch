@@ -180,7 +180,7 @@ Kohortenplan siehe Preflight-Report (Chat, 2026-10-10): 1 Foundations (dieses Do
 
 **Abschluss-Gates (A–J):** A 100 % Routen enumeriert/klassifiziert · B 100 % automatisierte Brand-Assertions bestanden oder dokumentierte Ausnahme · C jedes Template/jede Ausnahme visuell geprüft · D keine offenen High-Severity-Inkonsistenzen · E Logos, Headings, Buttons, Cards, Forms, Flächen konform · F repräsentative Screenshots 360/390/430/768/1280/1440 bestanden · G Buchung, Formulare, CTAs, Analytics funktional · H SEO/Content/Canonical/Schema/Indexierbarkeit intakt · I A11y-Checks bestanden, Restgrenzen benannt · J finaler Route-Coverage-Report (getestet/bestanden/offen). Kein «complete» aus Stichproben-Screenshots allein.
 
-### Coverage-Matrix (Stand 10.10.2026, Build mit 767 HTML-Routen, davon 20 noindex)
+### Coverage-Matrix (Stand 11.10.2026, Build `6a9eadf`+Wave 4: 766 HTML-Routen, davon 21 noindex; `/sprechstunde/` seit 6a9eadf stillgelegt)
 
 | Familie | Routen | Status |
 |---|---|---|
@@ -362,3 +362,21 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 **QA (11.10.2026):** Build grün; check-professional 103/0; health-audit 0. Hover/Fokus (CTA, Ghost, Standort-Buchen, Links, Crumbs, Register-Link, Details-Summary) verifiziert; Tastatur: erstes Tab-Ziel mit 3px-Ring; `prefers-reduced-motion: reduce` → kein Transform; Overflow 360/390/430 = 0; Portraits laden (630px, Alt «Name, Titel bei TCM.ch»); Initialen-Fallback Tint→Concrete. Screenshots 17 Profile ATF 390/1440 und 5 Repräsentanten × 6 Breiten vorher/nachher. Kontrast 17 Profile × 390/1440: 541 → 0 Textelemente unter AA (Crumb-Trenner 58 %, Meta-Texte Rich Black 62 %).
 
 **Bewusst nicht:** keine neuen Angaben, Spezialisierungen oder Qualifikationen; keine Nunito-Zitate ausser dem bestehenden `.tp-quote`-Slot; keine Änderung an Buchungszielen (WhatsApp-Team-Nummer bzw. `bookingUrl`).
+
+## 20. Wave 4 — Transplantation auf `6a9eadf` und Compliance-Stand (11.10.2026)
+
+**Basis-Wechsel:** Wave 4A/4B wurden lokal auf `e951e74` entwickelt (`89b20fc`, `64c866a`); `origin/main` ist zwischenzeitlich um 12 Local-SEO-Commits auf `6a9eadf` vorgerückt (298 Dateien: Trust-Claims, Betriebsstatus-Gate `locations.ts`/`check-clinic-status.mjs`, Zürich-Hub, `/sprechstunde/` 410). Überlappung mit Wave-4-Quellen: 10 Dateien, in allen Fällen nur Copy/Frontmatter/FAQ-Text bzw. eine `<p>`-Zeile (team/[slug]) gegen Wrapper-/Style-only-Änderungen → koexistent, SEO-Inhalt massgebend. Transplantation per `cherry-pick -x` in isoliertem Worktree `feat/wave4-rebase`: **4A `0f59902`** (aus 89b20fc), **4B `dee9aaf`** (aus 64c866a); hinzugefügte/entfernte Zeilenmengen identisch zum Original; alle neueren SEO-Zeilen erhalten («Wir melden uns persönlich» statt «innert Minuten»; Münzgasse «Standort in Prüfung»; Basel «Eröffnung geplant März 2027»).
+
+**Re-QA auf neuer Basis:** Build, check-professional 103/0, health-audit 0, **check-clinic-status 0** (neues Gate). Route-Diff 4A: 17 wrapper-only, 749 identisch, nur `home.css`; 4B: 17 Routen nur CSS-Hash, 749 identisch. Reichweite der erweiterten Selektoren im Build: `.symptom-scope` 155 · `.therapie-scope` 37 · `.city-scope` 17 · `.standort-scope` 3 (bern, luzern, zuerich-city) — 20 Zielrouten = 17 Wrapper-Routen (einzige HTML-Änderung) + 3 `.standort-scope`-Routen, deren Default-Blau-Prosa-Links per computed style von `rgb(0,0,238)` → Rich Black + Mint-Strich wechseln (Zürich City: bereits Rich Black, nur Strich). Kontrollsweep 474 Checks: 430 identisch, 2 transiente Höhen-Messungen (St. Gallen 1440, Bindegewebsmassage 390) bei Wiederholung 3× identisch (12357px / 7535px); City-Checks 40/40 geändert. Parität Text/Links/tel/WhatsApp 34/34 Standort-/Landing-Routen und 17/17 Profile; Formulare (massage, termin, deckung, allgemein) senden identische Payloads + `dataLayer formular_senden`; OneDoc-`widgetConfigs` auf St. Gallen ×3 byteidentisch; `/akupunktur-tcm-zuerich/`, `/standorte/basel/`, Klassische Massage, Home an 6 Breiten pixel-/höhenidentisch. Kontrast Kohorte 433 → 0, Profile 541 → 0; Overflow 0.
+
+**Compliance (766 Routen, getrennt geführt):**
+
+| Ebene | Konform | Offen / Ausnahmen |
+|---|---|---|
+| Shell (Header · Drawer · Footer) | 759/759 Shell-Konsumenten | 7 ohne Site-Shell (5 Visual-Handouts, `/club/`, `/partner/bern/`) — bewusst |
+| Template-Layer FULL | 576 = Therapien/Beschwerden 192 · Wissen 350 · City-Landing 17 · Team 17 | PARTIAL: Bern/Luzern/Zürich City 3 (Links), 11 Flagship-Standorte (W1), Kosten/Landing geschützt 2; offen: Haut 37, B2B 53+3, `/wissen/`-Hub, 5 LayoutDe-Akupunktur, EN 51, Legal 3, Sonderseiten |
+| Hero-System | 569 = 185 (2C-2) · 350 (Concrete, Wissen) · 17 (Mint msg / Concrete akz / Concrete naehe) · 17 (Team-Panel) | Mint-led, aber nicht formal abgenommen: Hubs `/beschwerden/`, `/therapien/`, `/standorte/`, 4 `.lsr-hero`, Funnel Zürich; alle übrigen offen |
+| Routen vollständig (Shell + Template + Hero) | 576 | — |
+| Geschützte Ausnahmen (nie generisch migrieren) | `/standorte/st-gallen/`, `/akupunktur-tcm-zuerich/`, B2B-Scaffolds (noindex) | — |
+
+Keine Route gilt als FULL allein durch CSS-Reichweite; Grundlage sind computed styles, Parität und Screenshots je Vorlage (§18/§19). Wave-6-Gesamtaudit bleibt Pflicht.
