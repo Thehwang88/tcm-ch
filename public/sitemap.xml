@@ -3631,12 +3631,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tcm.ch/sprechstunde/</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://tcm.ch/standorte/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>

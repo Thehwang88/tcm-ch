@@ -11,7 +11,10 @@ export async function onRequest(context) {
   // Legacy junk paths outside the scoped section doorways -> 410 Gone (same body as those).
   // /suche: urlTemplate der WebSite-SearchAction der alten SPA (am 10.06.2026 entfernt, es gab nie
   // eine Suchseite). Google crawlt den Platzhalter /suche?q={search_term_string} weiter.
-  const GONE = new Set(['/SMS/online.html', '/Dhyana/Datenschutzerklaerung.pdf', '/suche', '/suche/']);
+  // /sprechstunde: ärztliches Angebot nicht bestätigt (Arztprofil Platzhalter, KVG-Abrechnung unbelegt),
+  // am 11.10.2026 stillgelegt. Bewusst 410 statt Redirect (keine Umleitung von Arzt-Suchen auf TCM).
+  // Quelle (src/pages/sprechstunde.astro, src/data/sprechstunde-body.html) liegt in der Git-History.
+  const GONE = new Set(['/SMS/online.html', '/Dhyana/Datenschutzerklaerung.pdf', '/suche', '/suche/', '/sprechstunde', '/sprechstunde/']);
   if (GONE.has(url.pathname)) {
     return new Response(
       "<!doctype html><meta charset=utf-8><title>Seite entfernt</title><p>Diese Seite existiert nicht mehr.",
