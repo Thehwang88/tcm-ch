@@ -261,3 +261,28 @@ Shell-Compliance wird **getrennt** von Seiten-Template-Compliance geführt: eine
 
 **Messwerte:** Rückenschmerzen 1440: 16'172 → 16'462px (+1.8%, grössere Schrift überwiegt die Modul-Kompaktierung); mobil 390: 25'036 → 26'258px. Kein Clipping, kein Overflow; vorbestehend bei 360px: `.content-card`-Grid auf Sub-Hero-Seiten ragt 30px über den Viewport (innerhalb `overflow:hidden`, unverändert).
 
+## 16. Wave 2C-2 — Hero-Designsystem (Therapien Mint-led · Beschwerden Concrete/Weiss)
+
+**Umsetzung:** CSS-only (`public/home.css`, Block «Wave 2C-2») auf dem bestehenden Hero-Markup; die Heroes liegen in den Leaf-/Body-HTML-Dateien (`src/data/symptom-leaves/*`, `therapie-leaves/*`, `massage-*-body.html`), 0 HTML-Änderungen. Bilder bleiben die bestehenden Originalfotos.
+
+**Reichweite (192 Routen):**
+
+| Hero-System | Routen | Behandlung |
+|---|---|---|
+| `#symptom-premium-hero` (Beschwerde) | 137 (128 ohne Bild, 9 mit Foto) | Concrete-Fläche, Mint-Strich beim Eyebrow, Mint-Primär-CTA, weisse Meta-Pills, Foto 24px-Radius mit Mint-Akzentbalken; ohne Bild einspaltig (`:has()`), Textblock 820px |
+| `#symptom-hero.sub-hero` (Beschwerde) | 17 | Concrete statt Verlauf, Pill-Badge weiss, Meta-Pills, gleiche Typo |
+| `.tsr-hero` (Therapie, Mint) | 8 | Typo/Labels/Meta-Pills harmonisiert, Foto als 24px-Panel statt Vollbleed |
+| `#therapie-premium-hero` (vorher weiss) | 9 inkl. Hanbang | → Mint-led: Mint-Fläche, Rich-Black-Primär-CTA, Ghost-Sekundär, Meta-Pills, Foto 24px |
+| `section.msg-hero` (Massage/Ohrakupunktur) | 11 | → Mint-led, Crumb/CTAs/Trust-Pills im selben System; Inhalte, Anker und Formular-Links unverändert |
+| Hubs `.bx-hero` (/beschwerden/), `.hh-hero` (/therapien/) | 2 | unverändert (eigene Templates) |
+| LayoutDe `.hero` (Akupunktur-Unterseiten) | 5 | unverändert (kein home.css) |
+| `/akupunktur-kinder/` | 1 | unverändert (kein Scope) |
+
+**Gemeinsame Hero-Sprache:** Eyebrow 11px/700/.16em (Brand-Ink + Mint-Strich auf hellen Flächen, Rich Black auf Mint); H1 Figtree 800, `clamp(38–40px, 4.6vw, 64px)`, line-height 1.02, `--tracking-heading`; Lead 18px/1.6 (`--mid` bzw. Rich Black 82 % auf Mint); Pillen-CTAs; Meta als Pills (weiss auf Concrete, weiss 55 % auf Mint); Bildradius 24px, Schatten `0 24px 60px` Rich Black 10–18 %. Mobil ≤768: Padding 32/36, H1 `clamp(32px, 8.4vw, 42px)`, Lead 16.5px, Foto 4:3, Silbentrennung (`hyphens:auto`, `lang="de-CH"`) für lange Titel, Crumb-Umbruch.
+
+**Fokus/Kontrast:** Rich-Black-CTA auf Mint mit weissem 3px-Fokusring; Mint-CTA auf Concrete mit Rich-Black-Ring; min. Textkontrast in allen Heroes ≥ 4.87:1 (Trenner `›` 5.09:1). Kein Text auf Bildern.
+
+**Technik:** `:not(#w2)`-Spezifität gegen die `[id^="page-"]`-Schicht für Sekundär-Buttons; absolut positionierte `.tsr-right img` mit expliziten Breiten (`width:auto` streckt ersetzte Elemente nicht).
+
+**Ausnahmen/Risiken:** `:has()` ohne Support (ältere Browser) → bildlose Heroes bleiben zweispaltig wie bisher; Hubs und LayoutDe-Heroes folgen in einer eigenen Kohorte.
+
