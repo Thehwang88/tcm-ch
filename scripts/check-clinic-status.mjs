@@ -141,6 +141,52 @@ for (const c of m.clinics) {
   if (c.status !== 'operational') ok(!/openingHours/.test(ldOf(s)), `/en/locations/${c.id}/: kein openingHours im Schema`);
   if (c.status === 'review') ok(!/"MedicalClinic"/.test(ldOf(s)), `/en/locations/${c.id}/: kein MedicalClinic-Knoten`);
 }
+// 4e. Operative Standorte: nirgends Pre-Opening-Wording in Sätzen über den Standort (Name + Status-
+//     Formulierung innerhalb von 70 Zeichen, ohne dass dazwischen ein anderer nicht-operativer Standort steht).
+const PREOPEN = /Eröffnung|Vormerk|in Vorbereitung|noch nicht eröffnet|Warteliste|opening planned|not open yet|in preparation|Pre-Opening/i;
+const visible = (s) => text(s.replace(/<head[\s\S]*?<\/head>|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<\/option>/g, ' | '));
+const nichtOperativ = m.clinics.filter((c) => c.status !== 'operational').map((c) => c.name).concat(['Zürich City', 'Luzern', 'Bern']);
+const vis = new Map([...html].map(([p, s]) => [p, visible(s)]));
+for (const c of m.clinics.filter((x) => x.status === 'operational')) {
+  const hits = [];
+  for (const [p, t] of vis) {
+    for (const mm of t.matchAll(new RegExp(c.name.replace('.', '\\.') + '\\b', 'g'))) {
+      const win = t.slice(mm.index + c.name.length, mm.index + c.name.length + 70);
+      const cut = Math.min(...nichtOperativ.filter((n) => n !== c.name).map((n) => { const i = win.indexOf(n); return i < 0 ? 99 : i; }), win.search(/[.!?|·→]/) < 0 ? 99 : win.search(/[.!?|·→]/));
+      if (PREOPEN.test(win.slice(0, cut))) hits.push(`${p.replace('dist', '').replace('index.html', '')}: «${c.name}${win.slice(0, Math.min(cut, 60))}»`);
+    }
+  }
+  ok(hits.length === 0, `${c.name} (operational): kein Pre-Opening-Wording${hits.length ? ` – ${hits.length} Treffer, z. B. ${hits.slice(0, 3).join(' ; ')}` : ''}`);
+}
+
+// 4f. Formular-Vollständigkeit: Seiten eines Standorts (Pfad enthält die id) mit Standort-Auswahl bieten den
+//     Standort an (operativ: reguläre Option; nicht operativ: eine seiner vorab-Optionen).
+for (const c of m.clinics) {
+  const want = c.status === 'operational' ? [c.name] : (c.vorab ?? []).map((o) => o.label);
+  if (!want.length) continue;
+  const miss = [];
+  for (const [p, s] of html) {
+    if (!p.includes(`/${c.id}/`) && !p.includes(`-${c.id}/`) && !p.includes(`-${c.id}-`)) continue;
+    for (const sel of s.matchAll(/<select[^>]*name="standort"[^>]*>([\s\S]*?)<\/select>/g)) {
+      const opts = [...sel[1].matchAll(/<option[^>]*>([^<]+)<\/option>/g)].map((o) => text(o[1]));
+      if (!opts.some((o) => want.includes(o) || o === c.city)) miss.push(p.replace('dist', '').replace('index.html', ''));
+    }
+  }
+  ok(miss.length === 0, `${c.name}: Standort-Option in allen eigenen Formularen${miss.length ? ` – fehlt auf ${[...new Set(miss)].join(', ')}` : ''}`);
+}
+
+// 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
+const PINS = { basel: 'operational' }; // Basel aktiv laut Inhaber (12.10.2026)
+for (const [id, st] of Object.entries(PINS)) {
+  const c = m.clinics.find((x) => x.id === id);
+  ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);
+  const de = html.get(`dist/standorte/${id}/index.html`) ?? '', en = html.get(`dist/en/locations/${id}/index.html`) ?? '';
+  const ids = (s) => [...s.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+    .flatMap((x) => { const d = JSON.parse(x[1]); return Array.isArray(d) ? d : [d]; })
+    .filter((n) => n['@type'] === 'MedicalClinic').map((n) => n['@id']);
+  ok(ids(de).length > 0 && ids(de)[0] === ids(en)[0], `${id}: DE und EN beschreiben dieselbe Klinik-Entität (@id ${ids(de)[0]} / ${ids(en)[0]})`);
+}
+
 const hub = html.get('dist/akupunktur-tcm-zuerich/index.html');
 if (hub) ok(!/Ohmstrasse 14[\s\S]{0,400}openingHours/.test(ldOf(hub)), '/akupunktur-tcm-zuerich/: Ohmstrasse 14 ohne Öffnungszeiten im Schema');
 

@@ -95,8 +95,8 @@ export const clinics: Clinic[] = [
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 }, status: 'planned', openingNote: 'Opening planned for March 2027',
-    vorab: [{ value: 'Basel – Vormerkung, Eröffnung geplant März 2027', label: 'Basel (Eröffnung geplant März 2027)', labelEn: 'Basel (opening planned March 2027)' }],
+    // Aktiver Standort (Inhaberbestätigung 12.10.2026). Öffnungszeiten noch nicht bestätigt: keine Angabe.
+    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 }, status: 'operational',
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',

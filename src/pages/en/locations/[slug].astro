@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { getStandort } from '../../../data/standorte';
 import { site } from '../../../data/site';
 import {
   clinics, commonConditions, deStandortPath, enLocationPath, formatHours, locationImages, type Clinic,
@@ -36,7 +37,7 @@ const description = openingSoon
     : inPreparation
     ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest now; we contact you once appointments are possible.`
     : `Acupuncture & TCM in ${name}: ${openingLabel}, not open yet. Register your interest now; we contact you once appointments are possible.`
-  : `English-speaking acupuncture & TCM in ${name}. EMR-/ASCA-recognised, covered by insurance. Back pain, migraine, sleep and more.`;
+  : `Acupuncture & TCM in ${name}: request your appointment in English. Billing via supplementary insurance, depending on your policy.`;
 
 const conditionWords = 'back pain, neck pain, migraine, sleep problems, stress and digestive issues';
 
@@ -62,6 +63,12 @@ const clinicLd: Record<string, unknown> = {
   },
 };
 if (openingHours.length) clinicLd.openingHours = openingHours;
+// TCM.ch-operated location: same entity as the DE page (@id + name), so DE/EN describe one clinic.
+const deStandort = getStandort(id);
+if (!clinic.betreiber && deStandort?.seo?.schemaName) {
+  clinicLd['@id'] = `https://tcm.ch/standorte/${id}/`;
+  clinicLd.name = deStandort.seo.schemaName;
+}
 // Partner practice: describe the real operator entity (same @id as the DE page), TCM.ch as network only.
 if (clinic.betreiber) {
   Object.assign(clinicLd, {
@@ -96,9 +103,9 @@ const breadcrumbLd = {
         </p>
       ) : (
         <p class="lead">
-          Looking for acupuncture in {city}? At our {name} clinic you'll find <strong>English-speaking</strong>,
-          EMR-/ASCA-recognised practitioners offering acupuncture, Tuina, cupping and Chinese herbal medicine.
-          People come to us with {conditionWords} and more.
+          Looking for acupuncture in {city}? At {clinic.betreiber ? clinic.betreiber.name : `our ${name} location`} you can request acupuncture,
+          Tuina, cupping and Chinese herbal medicine. The TCM.ch team coordinates your request in <strong>English</strong> or German,
+          for example for {conditionWords}.
         </p>
       )}
       <div class="hero__cta">

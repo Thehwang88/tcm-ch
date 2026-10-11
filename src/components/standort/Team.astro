@@ -18,8 +18,8 @@ const total = assigned.length + cards.length;
 ---
 {total > 0 && (
   <section class="section" id={`team-${data.slug}`} style="scroll-margin-top:68px"><div class="wrap"><div class="content-body">
-    <h2>Dein TCM Team in {data.stadt}</h2>
-    <p>Die Therapeut:innen an diesem Standort, mit Profil und öffentlich prüfbarem Registereintrag.</p>
+    <h2>{data.teamTitel ?? `Dein TCM Team in ${data.stadt}`}</h2>
+    <p>{data.teamIntro ?? 'Die Therapeut:innen an diesem Standort, mit Profil und öffentlich prüfbarem Registereintrag.'}</p>
     <div class="team-grid">
     <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t), { nurBelegt: true })).join('')} />
     {cards.map((t) => t.profil ? (

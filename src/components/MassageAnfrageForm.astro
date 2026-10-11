@@ -16,9 +16,14 @@ interface Props {
   quelle?: string;
   heading?: string;
   sub?: string;
+  /** Vorauswahl im Standort-Select (Optionstext, z. B. «Basel» auf Basler Seiten). */
+  standort?: string;
 }
-const { anfrageTyp, quelle, heading, sub } = Astro.props;
+const { anfrageTyp, quelle, heading, sub, standort } = Astro.props;
 import { expandStandort } from '../data/standort-optionen';
+// Standort-Optionen status-bewusst (src/data/locations.ts): geplante Standorte erscheinen mit ihren Vormerk-Optionen.
+const optionen = ['Winterthur', 'St. Gallen', 'Zürich Oerlikon', 'Zürich Höngg', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'Wil', 'Rorschach', 'Basel']
+  .flatMap(expandStandort);
 ---
 <section id="anfrage" class="section contact-section-inline" style="background:var(--surface);border-top:1px solid var(--border)">
   <div class="wrap">
@@ -43,15 +48,7 @@ import { expandStandort } from '../data/standort-optionen';
         <div class="form-group"><label class="form-label">Standort</label>
           <select class="form-select" name="standort">
             <option value="">Standort auswählen</option>
-            <option>Winterthur</option>
-            <option>St. Gallen</option>
-            {expandStandort('Zürich Oerlikon').map((o) => <option value={o.value}>{o.label}</option>)}
-            <option>Zürich Höngg</option>
-            <option>Volketswil</option>
-            <option>Frauenfeld</option>
-            <option>Kreuzlingen</option>
-            <option>Wil</option>
-            <option>Rorschach</option>
+            {optionen.map((o) => <option value={o.value} selected={standort === o.label || standort === o.value}>{o.label}</option>)}
             <option>Andere / in meiner Nähe</option>
           </select>
         </div>

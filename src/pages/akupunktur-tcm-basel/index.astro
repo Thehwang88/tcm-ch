@@ -18,16 +18,15 @@ import MassageAnfrageForm from '../../components/MassageAnfrageForm.astro';
 import css from '../../data/massage-city.css?raw';
 
 const url = 'https://tcm.ch/akupunktur-tcm-basel/';
-const title = 'Akupunktur in Basel: Angebot, Ablauf & Kosten | TCM.ch';
-const description = 'Akupunktur und TCM in Basel, Steinenvorstadt 73: EMR-/ASCA-anerkannt, über die Zusatzversicherung abrechenbar. Jetzt Termin anfragen.';
+const title = 'Ablauf & Kosten: Akupunktur-Behandlung in Basel | TCM.ch';
+const description = 'Wie eine Akupunktur-Behandlung bei TCM.ch in Basel abläuft, was sie kostet und was die Zusatzversicherung übernimmt. Praxis Steinenvorstadt 73.';
 
 const faqs = [
   { q: 'Wo finde ich TCM.ch in Basel?', a: 'An der Steinenvorstadt 73, 4051 Basel, mitten in der Innenstadt. Frag deinen Termin über das Formular oder an termine@tcm.ch an.' },
-  { q: 'Was kann ich bis dahin machen?', a: 'Wenn du nicht warten willst: Unsere nächstgelegene Praxis erreichst du in gut einer Stunde. Für Anliegen, die keine Behandlung vor Ort brauchen, kannst du dich vorab per WhatsApp oder E-Mail bei uns melden, wir sagen dir ehrlich, ob sich der Weg lohnt.' },
-  { q: 'Übernimmt die Krankenkasse Akupunktur in Basel?', a: 'Über die Zusatzversicherung für Komplementärmedizin ja, in der Regel mit 70 bis 90 Prozent pro Sitzung. Unsere Therapeut:innen sind EMR- und ASCA-anerkannt und arbeiten unter anerkannter ZSR-Nummer. Die Grundversicherung übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit komplementärmedizinischer Weiterbildung.' },
+  { q: 'Übernimmt die Krankenkasse Akupunktur in Basel?', a: 'Über die Zusatzversicherung für Komplementärmedizin ja, in der Regel mit 70 bis 90 Prozent pro Sitzung. Voraussetzung ist, dass die behandelnde Fachperson bei EMR oder ASCA registriert ist. Die Grundversicherung übernimmt Akupunktur nur bei Ärztinnen und Ärzten mit komplementärmedizinischer Weiterbildung.' },
   { q: 'Was kostet eine Sitzung?', a: 'Abgerechnet wird nach Tarif 590 nach Dauer. Die Tarife sind im ganzen TCM.ch-Netzwerk identisch, unabhängig vom Standort. Die Details stehen auf der Kostenseite.' },
   { q: 'Brauche ich eine Überweisung vom Arzt?', a: 'Nein. Für die Abrechnung über die Zusatzversicherung genügt die Behandlung bei einer anerkannten Fachperson. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das.' },
-  { q: 'Behandelt ihr auch Menschen aus dem Baselbiet?', a: 'Ja. Basel-Stadt und Baselland sind mit dem ÖV eng verbunden, aus Liestal, Sissach, Binningen, Münchenstein, Reinach, Allschwil oder Riehen bist du in wenigen Minuten in der Stadt.' },
+  { q: 'Behandelt ihr auch Menschen aus dem Baselbiet?', a: 'Ja. Basel-Stadt und Baselland sind mit dem ÖV eng verbunden, aus Liestal, Sissach, Binningen, Münchenstein, Reinach, Allschwil oder Riehen kommst du mit dem ÖV in die Innenstadt.' },
 ];
 
 const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
@@ -43,16 +42,15 @@ const body = `
     <div class="msg-crumb"><a href="/">TCM.ch</a> <span>&rsaquo;</span> <a href="/standorte/">Standorte</a> <span>&rsaquo;</span> <span>Basel</span></div>
     <div class="msg-hero-grid">
       <div>
-        <h1 class="msg-h1">Akupunktur in Basel: <em>Angebot, Ablauf und Kosten.</em></h1>
+        <h1 class="msg-h1">Behandlung in Basel: <em>Ablauf und Kosten.</em></h1>
         <p class="msg-lead">Unsere Praxis liegt an der Steinenvorstadt 73, 4051 Basel. Hier steht, was du wissen solltest: wie wir arbeiten, was eine Behandlung kostet, was die Zusatzversicherung übernimmt und wie du zu deinem Termin kommst.</p>
         <div class="msg-hero-ctas">
           <a href="#anfrage" class="btn-primary">Termin anfragen</a>
-          <a href="/standorte/basel/" class="btn-secondary">Zum Standort Basel</a>
+          <a href="/standorte/basel/" class="btn-secondary">Akupunktur in Basel: Standort</a>
         </div>
         <div class="msg-hero-trust">
-          <span>${CHECK}EMR &amp; ASCA anerkannt</span>
+          <span>${CHECK}Abrechnung über Zusatzversicherung</span>
           <span>${CHECK}Steinenvorstadt 73, 4051 Basel</span>
-          <span>${CHECK}Krankenkasse 80 bis 100%</span>
         </div>
       </div>
     </div>
@@ -61,11 +59,11 @@ const body = `
 
 <section class="section">
   <div class="wrap">
-    <div class="section-label">Was entsteht</div>
+    <div class="section-label">Wie wir arbeiten</div>
     <h2 class="section-title">Eine TCM-Klinik, keine <em>Wohlfühlpraxis.</em></h2>
     <div class="msg-prose">
       <p>TCM.ch betreibt Praxen in der Deutschschweiz mit einem klaren Anspruch: chinesische Medizin als Behandlung, nicht als Wellness-Angebot. Das heisst bei uns Anamnese vor der ersten Nadel, ein Behandlungsplan mit einem definierten Zeitpunkt zur Überprüfung, und die Bereitschaft zu sagen, wenn eine Methode bei deinem Anliegen wenig bringt.</p>
-      <p>Alle Therapeut:innen sind EMR- und ASCA-anerkannt und arbeiten unter anerkannter ZSR-Nummer. Praktisch heisst das für dich, dass deine Zusatzversicherung sich beteiligt und du keine ärztliche Überweisung brauchst.</p>
+      <p>Abrechnen kannst du über deine Zusatzversicherung, wenn die behandelnde Fachperson bei EMR oder ASCA registriert ist. Eine ärztliche Überweisung brauchst du dafür nicht.</p>
       <p>Was wir nicht machen: Heilversprechen, Pakete, die im Voraus zu kaufen sind, und den Rat, ärztliche Therapien abzusetzen. Wenn dir das anderswo begegnet, ist es ein Warnzeichen.</p>
     </div>
   </div>
@@ -74,8 +72,8 @@ const body = `
 <section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="wrap">
     <div class="section-label">Behandlungen</div>
-    <h2 class="section-title">Was es in Basel <em>geben wird.</em></h2>
-    <p class="section-sub" style="margin-bottom:8px">Dasselbe Spektrum wie an unseren bestehenden Standorten. Jede Seite erklärt Ablauf, Wirkung und Grenzen.</p>
+    <h2 class="section-title">Behandlungen <em>in Basel.</em></h2>
+    <p class="section-sub" style="margin-bottom:8px">Das Behandlungsspektrum von TCM.ch. Jede Seite erklärt Ablauf, Wirkung und Grenzen.</p>
     <div class="msg-group"><div class="msg-arts">
       <a class="msg-art" href="/therapien/akupunktur/"><div class="msg-art-t">Akupunktur${ARROW}</div><div class="msg-art-d">Der Kern der Behandlung. Am häufigsten bei Schmerzen, Schlafproblemen und stressbedingten Beschwerden.</div></a>
       <a class="msg-art" href="/therapien/tuina/"><div class="msg-art-t">Tuina${ARROW}</div><div class="msg-art-d">Die manuelle Therapie der chinesischen Medizin, mit Druck-, Schiebe- und Dehngriffen am bekleideten Körper.</div></a>
@@ -132,10 +130,10 @@ const body = `
   <div class="wrap">
     <div class="section-label">Einzugsgebiet</div>
     <h2 class="section-title">Basel-Stadt und <em>Baselland.</em></h2>
-    <p class="section-sub" style="margin-bottom:6px">Die Region ist mit dem ÖV eng verbunden. Aus diesen Gemeinden bist du in wenigen Minuten in der Stadt:</p>
+    <p class="section-sub" style="margin-bottom:6px">Die Region ist mit dem ÖV eng verbunden. Aus diesen Gemeinden kommst du in die Basler Innenstadt:</p>
     <div class="msg-pills">${REGION.map((o) => `<span class="msg-pill" style="cursor:default">${o}</span>`).join('')}</div>
     <div class="msg-prose" style="margin-top:24px">
-      <p>Wir führen bewusst eine Praxis in der Stadt statt mehrerer kleiner in der Agglomeration. Aus Liestal bist du mit der S-Bahn in gut zwanzig Minuten am Bahnhof SBB, aus Sissach in gut dreissig. Das ist für die meisten näher als eine Praxis im eigenen Dorf, die nur zweimal pro Woche geöffnet hat.</p>
+      <p>Unsere Basler Praxis liegt in der Innenstadt und ist auch aus dem Baselbiet gut erreichbar, etwa aus Liestal oder Sissach mit der S-Bahn bis Basel SBB.</p>
     </div>
   </div>
 </section>
@@ -186,6 +184,7 @@ const schema = [
   <MassageAnfrageForm
     anfrageTyp="termin"
     quelle="termin-basel-akupunktur"
+    standort="Basel"
     heading="Termin <em>anfragen.</em>"
     sub="Wir melden uns für die Terminvereinbarung in Basel. Sonst nichts."
   />
