@@ -30,7 +30,7 @@ export function parseLeafFaqs(html: string): Faq[] {
 
   const hi = html.indexOf('Häufige Fragen');
   if (hi < 0) return out;
-  let end = html.indexOf('cp-reviews', hi);
+  let end = html.indexOf('subpage-sidebar', hi);
   if (end < 0) end = html.indexOf('contact-section', hi);
   if (end < 0) end = hi + 5000;
   const region = html.slice(hi, end);

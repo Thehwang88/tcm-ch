@@ -29,7 +29,7 @@ import Kraeuter from '../../components/standort/Kraeuter.astro';
 import Beschwerden from '../../components/standort/Beschwerden.astro';
 import Ablauf from '../../components/standort/Ablauf.astro';
 import KrankenkassenTeam from '../../components/standort/KrankenkassenTeam.astro';
-import Reviews from '../../components/standort/Reviews.astro';
+import { transparenzHtml } from '../../data/transparenz';
 import UeberPraxis from '../../components/standort/UeberPraxis.astro';
 import WarumTcm from '../../components/standort/WarumTcm.astro';
 import WeitereStandorte from '../../components/standort/WeitereStandorte.astro';
@@ -195,6 +195,7 @@ if (migrated) {
     ? `<section class="section cl-related" style="background:var(--surface)"><div class="wrap reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufige Beschwerden in ${lb.stadt}</h2><p class="section-sub">${lb.intro}</p><div class="cl-links">${lb.slugs.map((s, i) => `<a href="/beschwerden/${s}/" class="cl-chip">${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${symptomCards[s]?.name ?? s}</a>`).join('')}</div></div></section>`
     : '';
   const filledBody = prefillStandort(outBody, name)
+    .replace('<!--transparenz-->', transparenzHtml(slug!))
     .replace(
       /<button type="button" class="btn-primary" onclick="openTerminForm\(\)" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">([\s\S]*?)<\/button>/,
       `<a href="?standort=${encodeURIComponent(name)}" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;display:flex">$1</a>`,
@@ -292,7 +293,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
             <Therapien data={data} />
             {physioDachBlock && <Fragment set:html={physioDachBlock} />}
             {data.ablaufBlock && <Ablauf />}
-            {data.reviews && <Reviews data={data} />}
+            <Fragment set:html={transparenzHtml(data.slug, data.planned)} />
             <KrankenkassenTeam data={data} />
             {data.v2 && (
               <Fragment>
@@ -316,7 +317,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
             {data.ablaufBlock && <Ablauf />}
             <WarumTcm data={data} />
             <KrankenkassenTeam data={data} />
-            {data.reviews && <Reviews data={data} />}
+            <Fragment set:html={transparenzHtml(data.slug, data.planned)} />
           </Fragment>
         )}
         {data.faqs?.length && (

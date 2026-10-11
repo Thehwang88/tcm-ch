@@ -19,7 +19,7 @@ const total = assigned.length + cards.length;
 {total > 0 && (
   <section class="section" id={`team-${data.slug}`} style="scroll-margin-top:68px"><div class="wrap"><div class="content-body">
     <h2>Dein TCM Team in {data.stadt}</h2>
-    <p>Erfahrene Therapeut:innen und qualifizierte Ärzt:innen arbeiten hier Hand in Hand. Alle Behandlungen folgen klaren Standards des TCM.ch Netzwerks.</p>
+    <p>Die Therapeut:innen an diesem Standort, mit Profil und öffentlich prüfbarem Registereintrag.</p>
     <div class="team-grid">
     <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t))).join('')} />
     {cards.map((t) => t.profil ? (
