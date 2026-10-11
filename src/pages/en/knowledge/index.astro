@@ -27,56 +27,12 @@ const itemListLd = {
     url: new URL(`/en/knowledge/${a.data.slug}/`, 'https://tcm.ch').href,
   })),
 };
+
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import NextSteps from '../../../components/en/NextSteps.astro';
 ---
-<Layout
-  title="Knowledge: Acupuncture & TCM in Switzerland | TCM.ch"
-  description="Evidence-aware guides to acupuncture & TCM in Switzerland: costs, insurance, what to expect and treatment. For English-speaking patients."
-  path={path}
-  schema={[breadcrumbLd, itemListLd]}
-  enOnly={true}
->
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Knowledge</div>
-      <h1>Knowledge</h1>
-      <p class="lead">
-        Honest, evidence-aware guides to acupuncture and Traditional Chinese Medicine in Switzerland -
-        written in plain English for people new to the system. No cure claims, no mysticism: what helps,
-        what it costs, and when to see a doctor first.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">What we treat →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        {articles.map((a) => (
-          <a class="card card--media" href={`/en/knowledge/${a.data.slug}/`}>
-            {a.data.heroImage && (
-              <img class="card-thumb" src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{a.data.title}</h3>
-              <p>{a.data.description}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="index-xlinks">
-        <a class="inline-link" href="/en/conditions/">Conditions we treat →</a>
-        <a class="inline-link" href="/en/therapies/">Our therapies →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Insurance & costs →</a>
-      </div>
-    </div>
-  </section>
-</Layout>
-
-<style>
-  .index-xlinks { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; }
-  .inline-link { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 15px; }
-  .inline-link:hover { text-decoration: underline; }
-</style>
+<Layout title="Knowledge: Acupuncture & TCM in Switzerland | TCM.ch" description="Practical guides for English-speaking patients in Switzerland: understand fees, check insurance, prepare for treatment and weigh the evidence." path={path} schema={[breadcrumbLd,itemListLd]} enOnly={true}>
+<Premium><Hero eyebrow="TCM.ch · Knowledge" title="Clear answers before your first visit." lead="Practical guides for English-speaking patients in Switzerland: understand fees, check insurance, prepare for treatment and weigh the evidence." primaryHref="#explore" primaryLabel="Explore the guides" secondaryHref="/en/contact/" secondaryLabel="Ask a question"/>
+<section class="en-section"><div class="wrap en-split"><div><span class="en-label">New to Swiss healthcare?</span><h2>Start with the practical essentials.</h2><p>Understand the costs and coverage before committing to a course of treatment. Then explore what the consultation involves.</p></div><div class="en-topic-links"><a href="/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/">Fees & budgeting</a><a href="/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/">Making a claim</a><a href="/en/knowledge/what-to-expect-first-acupuncture-session/">Your first visit</a><a href="/en/knowledge/is-acupuncture-safe-side-effects-explained/">Safety & side effects</a></div></div></section>
+<section class="en-section en-concrete" id="explore"><div class="wrap"><span class="en-label">Explore knowledge</span><h2>All patient guides</h2><div class="en-grid">{articles.map(a=><a class="en-card en-card--image" href={`/en/knowledge/${a.data.slug}/`}>{a.data.heroImage && <img src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async"/>}<div class="en-card-body"><h3>{a.data.title}</h3><p>{a.data.description}</p><span class="en-card-link">Read the guide →</span></div></a>)}</div></div></section><NextSteps/></Premium></Layout>

@@ -23,55 +23,12 @@ const itemListLd = {
     url: new URL(enTherapyPath(t.slug), 'https://tcm.ch').href,
   })),
 };
+
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import NextSteps from '../../../components/en/NextSteps.astro';
 ---
-<Layout
-  title="TCM & Acupuncture Therapies in Switzerland | TCM.ch"
-  description="TCM therapies in Switzerland from English-speaking, EMR-/ASCA-recognised practitioners: acupuncture, cupping, Tuina, herbal medicine, moxibustion and more."
-  path={path}
-  schema={[breadcrumbLd, itemListLd]}
->
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Therapies</div>
-      <h1>Our TCM & acupuncture therapies</h1>
-      <p class="lead">
-        The treatments we offer across Switzerland. We are honest and evidence-aware: most are used as a
-        complementary approach, results vary, and we say plainly what each is - and is not - likely to do.
-        English-speaking, EMR-/ASCA-recognised practitioners.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">What we treat →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        {therapies.map((t) => (
-          <a class="card card--media" href={enTherapyPath(t.slug)}>
-            {therapyImages[t.slug] && (
-              <img class="card-thumb" src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{t.name}</h3>
-              <p>{t.summary}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <div class="index-xlinks">
-        <a class="inline-link" href="/en/conditions/">Conditions we treat →</a>
-        <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
-      </div>
-    </div>
-  </section>
-</Layout>
-
-<style>
-  .index-xlinks { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; }
-  .inline-link { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 15px; }
-  .inline-link:hover { text-decoration: underline; }
-</style>
+<Layout title="Therapies: Acupuncture & TCM in Switzerland | TCM.ch" description="Understand what each treatment involves, what the evidence can tell you and which questions to ask. Availability and practitioner qualifications are confirmed for your chosen clinic." path={path} schema={[breadcrumbLd,itemListLd]} >
+<Premium><Hero eyebrow="TCM.ch · Therapies" title="Explore acupuncture & TCM treatments" lead="Understand what each treatment involves, what the evidence can tell you and which questions to ask. Availability and practitioner qualifications are confirmed for your chosen clinic." primaryHref="#explore" primaryLabel="Explore the guides" secondaryHref="/en/contact/" secondaryLabel="Ask a question"/>
+<section class="en-section"><div class="wrap en-split"><div><span class="en-label">Start with the right question</span><h2>You do not need to choose a method first.</h2><p>Start with what you want help with. A consultation can clarify whether a treatment is suitable and whether medical assessment should come first.</p><a class="en-link" href="/en/conditions/">Browse conditions →</a></div><div><h3>Compare the practical details</h3><ul class="en-list"><li>What happens during treatment?</li><li>What evidence applies to your particular concern?</li><li>What are the risks, alternatives and total costs?</li><li>Is the method offered at your preferred practice?</li></ul></div></div></section>
+<section class="en-section en-concrete" id="explore"><div class="wrap"><span class="en-label">Explore therapies</span><h2>Find your starting point</h2><div class="en-grid">{therapies.map(t=><a class="en-card en-card--image" href={enTherapyPath(t.slug)}>{therapyImages[t.slug] && <img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async"/>}<div class="en-card-body"><h3>{t.name}</h3><p>{t.summary}</p><span class="en-card-link">Session, evidence & questions →</span></div></a>)}</div></div></section><NextSteps/></Premium></Layout>

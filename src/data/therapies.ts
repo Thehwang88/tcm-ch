@@ -32,7 +32,7 @@ export const REVIEWED_DATE = '2026-06-09';
 // Shared FAQ appended to every therapy page (display + FAQPage schema).
 export const INSURANCE_FAQ: TherapyFaq = {
   q: 'Is this covered by my insurance?',
-  a: 'Treatment by our EMR-/ASCA-recognised practitioners is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much you get back depends on your individual policy. Our insurance guide explains the basic-versus-supplementary split in plain English.',
+  a: 'Supplementary insurance may contribute to therapist-led treatment. Ask your insurer to confirm the named practitioner, method, policy limits and any conditions before booking. Registration alone does not guarantee reimbursement. Our insurance guide explains the details.',
 };
 
 export const therapies: Therapy[] = [
@@ -45,7 +45,7 @@ export const therapies: Therapy[] = [
     summary: 'The best-known TCM treatment - fine needles at specific points, used as a complementary approach.',
     lead: 'Acupuncture is the best-known treatment in Traditional Chinese Medicine. It is used as a complementary approach for a range of complaints, most often pain - results vary from person to person, and it is not a cure.',
     whatItIs: [
-      'Acupuncture involves placing very fine, sterile single-use needles at specific points on the body. It is one of the more researched complementary therapies, and in Switzerland it is widely covered through supplementary insurance when delivered by EMR-/ASCA-recognised practitioners.',
+      'Acupuncture involves placing very fine, sterile single-use needles at specific points on the body. It is one of the more researched complementary therapies, and its use should be discussed alongside your existing medical care.',
       'A typical course is a series of short sessions rather than a single visit. We use it as a complement to - not a replacement for - exercise, medication and the medical care you need, and we are honest that how much it helps differs from person to person.',
     ],
     whatToExpect: [
@@ -80,7 +80,7 @@ export const therapies: Therapy[] = [
       'Cupping commonly leaves round, bruise-like marks. These are not painful and usually fade over several days to a week. Tell us beforehand if you would prefer to avoid visible marks.',
     ],
     usedFor: 'Cupping is most often used for muscular tension and stiffness in the back, neck and shoulders, and is sometimes added when treating tension headaches that stem from a tight neck. It targets muscular symptoms rather than any underlying disease.',
-    evidence: 'The research on cupping is limited and of modest quality. Some studies suggest short-term relief for neck and back pain, but the effects are hard to separate from general massage and attention. We present it as a low-risk option that many people find directly loosens tight muscles, not as an established treatment.',
+    evidence: "NCCIH describes the pain evidence as weak. Cupping can cause skin damage, burns or infection; a temporary mark is not evidence of a therapeutic effect.",
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches', 'stress-burnout'],
     faqs: [
       { q: 'What are the round marks after cupping?', a: 'The circular marks are caused by the suction drawing blood toward the skin surface. They are not bruises in the usual sense and are generally not painful. They typically fade within a few days to a week. If you would rather avoid them, let us know and we can keep the suction lighter.' },
@@ -107,7 +107,7 @@ export const therapies: Therapy[] = [
       'A session typically lasts 45 to 60 minutes. Sharp pain is not the goal - tell your practitioner if the pressure is too strong and they will ease off.',
     ],
     usedFor: 'Tuina is most often used for back, neck and shoulder tension, stiffness from posture or overuse, and tension headaches linked to a tight neck. It is also sometimes used to support functional digestive complaints. It addresses muscular and functional symptoms, not underlying disease.',
-    evidence: 'Good-quality research specifically on Tuina is limited. Massage in general has reasonable evidence for short-term relief of muscular and low-back pain, and many people find Tuina directly eases tension. We are honest that the specific evidence is thin and present it as a sensible, low-risk complement.',
+    evidence: "Massage studies suggest possible short-term symptom relief, but findings for massage in general do not establish the effectiveness of Tuina specifically. Agree a clear treatment goal and review whether it helps.",
     conditions: ['back-pain', 'neck-pain', 'digestive-issues', 'stress-burnout'],
     faqs: [
       { q: 'How is Tuina different from a relaxing massage?', a: 'Tuina is applied with a therapeutic aim - easing specific areas of tension and stiffness - and tends to be firmer and more targeted than a spa massage. It often forms part of a wider TCM treatment alongside acupuncture, rather than being purely for relaxation, though many people still find it calming.' },
@@ -127,7 +127,7 @@ export const therapies: Therapy[] = [
     lead: 'Chinese herbal medicine uses individually prescribed plant-based formulas. It is used as a complementary approach, mainly for longer-term complaints - results vary, and it is not a cure.',
     whatItIs: [
       'A practitioner prescribes a formula, usually a combination of several plant-based ingredients, tailored to your symptoms and history. It commonly comes as granules dissolved in hot water, as a tea, or as tablets. It is the second main pillar of TCM after acupuncture.',
-      'We use only quality-controlled herbs from suppliers that test for contaminants, and we check for interactions with any conventional medicines you take. Herbal medicine is a complement to medical care, not a replacement, and your prescription is reviewed and adjusted over time.',
+      'Ask how products are sourced and quality checked, and have potential interactions with conventional medicines assessed before use. Herbal medicine is a complement to medical care, not a replacement, and your prescription is reviewed and adjusted over time.',
     ],
     whatToExpect: [
       'The first appointment is a detailed consultation about your symptoms, health history and current medication. From this the practitioner puts together an individual formula and explains how to prepare and take it.',
@@ -161,7 +161,7 @@ export const therapies: Therapy[] = [
       'Burning mugwort has a distinctive herbal smell, and the room is ventilated; smoke-free moxa can be used if you prefer. The treatment is usually painless and many people find it relaxing.',
     ],
     usedFor: 'Moxibustion is traditionally used for complaints associated with feeling cold or run-down, and is often applied as supportive care around fertility, cycle-related symptoms and digestive complaints. One of its better-known uses is helping turn a breech baby late in pregnancy, which should only be done under qualified guidance.',
-    evidence: 'The evidence is limited and mixed. The most-studied use - moxibustion for breech presentation - has some supportive but inconclusive trials and should only be done with professional supervision. For most other uses the research is weak. We present it as a gentle, low-risk complement, not a proven treatment.',
+    evidence: "We do not claim established benefit for the complaints listed here. Evidence for one use cannot be transferred to another. Discuss the heat, smoke and burn risks, especially during pregnancy, before deciding whether it is appropriate.",
     conditions: ['fertility-support', 'menstrual-issues', 'digestive-issues', 'stress-burnout'],
     faqs: [
       { q: 'Does moxibustion burn the skin?', a: 'It should not. The heat is applied carefully and the point is changed as soon as it feels too warm, so you feel a comfortable warmth rather than burning. With correct technique, skin burns do not occur. Tell your practitioner immediately if any spot feels too hot.' },
@@ -188,7 +188,7 @@ export const therapies: Therapy[] = [
       'The current usually runs for around 15 to 30 minutes while you rest. Tell your practitioner if the sensation becomes too strong and they will turn it down.',
     ],
     usedFor: 'Electroacupuncture is most often used for chronic pain, nerve-related pain and stubborn musculoskeletal complaints such as long-standing back, neck and joint pain that have not responded well to standard acupuncture. It is used for symptom relief, not to treat the underlying cause.',
-    evidence: 'There is moderate evidence that electroacupuncture can help with some chronic and post-operative pain, and it is one of the more studied acupuncture variations for pain. Quality still varies and it does not work for everyone. We use it as a reasonable option to trial for persistent pain, not a certainty.',
+    evidence: "Research on acupuncture does not establish that adding electrical stimulation is better for every condition. Ask why this variation is being proposed, what improvement to expect and when to reassess.",
     conditions: ['back-pain', 'neck-pain', 'migraine-headaches'],
     faqs: [
       { q: 'Can I feel the electric current?', a: 'Yes - most people feel a light tingling or a gentle rhythmic pulsing. The strength is set individually and should always feel comfortable, never painful. If it becomes too strong, tell your practitioner and they will reduce it immediately.' },
@@ -215,7 +215,7 @@ export const therapies: Therapy[] = [
       'Mild redness or the occasional tiny spot at a needle site is common and usually settles within an hour; small bruises are possible and fade over a few days. People who want visible results usually come for a course rather than a one-off.',
     ],
     usedFor: 'Facial acupuncture is used cosmetically, for skin appearance, tone and facial tension, and some people choose it as a gentler, substance-free option. It is sometimes combined with body acupuncture for stress or sleep. We do not present it as a treatment for any medical skin condition.',
-    evidence: 'The evidence for facial acupuncture is very limited - mostly small studies of low quality - so we cannot promise specific cosmetic results. Any effect tends to be subtle and gradual, and it is not comparable to injectables. We offer it as a low-risk, natural option for those who want it, while being honest about how little is proven.',
+    evidence: "We do not promise wrinkle reduction, lifting or other cosmetic results. Evidence about acupuncture for pain does not establish cosmetic benefit. Discuss bruising, discomfort and the limits of treatment before booking.",
     conditions: ['stress-burnout', 'sleep-problems', 'migraine-headaches'],
     faqs: [
       { q: 'Is facial acupuncture an alternative to Botox?', a: 'Not directly. It is a natural, substance-free option that some people prefer, but it works differently and does not produce the same results as Botox or fillers. Any effects are subtle and gradual. We are honest that it is not a like-for-like replacement.' },
@@ -235,19 +235,19 @@ export const therapies: Therapy[] = [
     lead: 'Acupressure stimulates the same points as acupuncture using finger pressure instead of needles. It is a gentle, complementary approach - results vary, and it is not a cure.',
     whatItIs: [
       'Acupressure works on the same points as acupuncture, but the practitioner applies focused pressure with the fingers or hands rather than inserting needles. This makes it gentle and needle-free, which suits people who are anxious about needles.',
-      'It is a low-risk complement to medical care, not a replacement for it. We can also show you a few points to press yourself at home, as a supplement to in-clinic treatment.',
+      'It is a complement to medical care, not a replacement for it. We can also show you a few points to press yourself at home, as a supplement to in-clinic treatment.',
     ],
     whatToExpect: [
       'After discussing your symptoms, the practitioner applies steady, focused pressure to selected points, often around the head, neck, hands or back. You feel a firm but tolerable pressure, and many people find it immediately relaxing.',
       'A session is calm and fully clothed, typically lasting 30 to 45 minutes. Tell your practitioner if any pressure feels too strong and they will ease off.',
     ],
     usedFor: 'Acupressure is most often used for tension headaches, nausea, mild stress and sleep difficulties, and as a gentle option for children, during pregnancy, or for anyone wary of needles. It is used for symptom relief rather than to treat an underlying condition.',
-    evidence: 'Evidence is limited but there are reasonable signals in a few areas - particularly acupressure for nausea, and some support for tension headaches and sleep. Effects are generally gentler than acupuncture. We offer it as a low-risk option, especially where needles are unwelcome, without overstating what it can do.',
+    evidence: "Evidence depends on the specific symptom and technique. The linked review of period pain could not establish benefit; it does not answer every other possible use. Needle-free treatment is not automatically effective or suitable.",
     conditions: ['migraine-headaches', 'sleep-problems', 'stress-burnout', 'digestive-issues'],
     faqs: [
       { q: 'How is acupressure different from acupuncture?', a: 'Acupressure uses finger pressure on the same points where acupuncture uses needles. It is gentler, needle-free and does not break the skin, which makes it a good option for people who are anxious about needles, as well as for children and during pregnancy. The effect is usually milder than acupuncture.' },
       { q: 'Can I do acupressure at home?', a: 'Yes - we are happy to show you a few simple points to press for things like tension headaches, nausea or stress. Self-acupressure is a useful supplement, though treatment with a practitioner is usually more thorough. It is best used alongside, not instead of, any medical care you need.' },
-      { q: 'Is acupressure safe in pregnancy?', a: 'It is popular in pregnancy, particularly for nausea, and is generally low-risk. Certain points are avoided, so it is best done by, or learned from, a trained practitioner. Always let us know you are pregnant so we can adapt the treatment.' },
+      { q: 'Is acupressure safe in pregnancy?', a: 'Discuss any proposed technique with a qualified practitioner and your maternity team first. Tell them you are pregnant; suitability depends on your circumstances, and self-treatment is not automatically safe.' },
     ],
     related: ['acupuncture', 'tuina-massage', 'shiatsu'],
   },
@@ -269,7 +269,7 @@ export const therapies: Therapy[] = [
       'A session usually lasts around 60 minutes. Let your practitioner know if any pressure feels too firm and they will adjust.',
     ],
     usedFor: 'Shiatsu is most often used for stress, general tension and sleep difficulties, and as supportive, calming care for back and neck tension. Many people value it simply as restful time. It supports wellbeing rather than treating any specific medical condition.',
-    evidence: 'High-quality evidence for Shiatsu is sparse. The most reasonable claim is that, like other forms of touch and relaxation, it can help people feel calmer and less tense in the short term. We present it honestly as a low-risk, supportive treatment for stress and tension, not a proven medical therapy.',
+    evidence: "General massage research does not prove a specific medical effect for Shiatsu. It may be chosen for relaxation, but it should not replace diagnosis or treatment of an ongoing health problem.",
     conditions: ['stress-burnout', 'sleep-problems', 'back-pain', 'neck-pain'],
     faqs: [
       { q: 'What do I wear for Shiatsu?', a: 'You stay fully clothed for the whole treatment, so loose, comfortable clothing in a soft fabric is ideal - avoid stiff jeans. Treatment is usually on a padded mat or a couch. There is no oil and no need to undress.' },
@@ -296,7 +296,7 @@ export const therapies: Therapy[] = [
       'Gua sha usually brings up temporary red or purplish marks where it is applied. These are not painful and typically fade within a few days. Tell us beforehand if you would rather avoid visible marks.',
     ],
     usedFor: 'Gua sha is most often used for muscular tension and stiffness in the neck, shoulders and upper back, and is sometimes added when a tight neck is feeding tension headaches. It targets muscular symptoms rather than any underlying disease.',
-    evidence: 'The evidence for gua sha is limited and of low quality, though a few small studies suggest short-term relief for neck and back tension. The effect is hard to separate from massage in general. We present it as a low-risk option that many people find loosens tight muscles, not an established treatment.',
+    evidence: "We do not claim established effectiveness for a specific condition. General massage evidence cannot be assumed to apply to skin scraping. Discuss skin reactions and suitability before treatment.",
     conditions: ['neck-pain', 'back-pain', 'migraine-headaches'],
     faqs: [
       { q: 'Why does gua sha leave red marks?', a: 'The firm scraping draws blood toward the skin surface, producing temporary red or purplish marks called "sha". They are expected, generally not painful, and usually fade within a few days. If you would prefer to avoid them, tell your practitioner and they can work more gently.' },
@@ -358,7 +358,7 @@ export const therapyImages: Record<string, { src: string; alt: string }> = {
   'chinese-herbal-medicine': { src: '/images/img-14a8b7c52ade.webp', alt: 'Dried herbs used in Chinese herbal medicine' },
   'moxibustion':             { src: '/images/moxibustion-hero.webp',  alt: 'Burning moxa (mugwort) used in moxibustion therapy' },
   'electroacupuncture':      { src: '/images/img-c69a8f9ce7f8.webp', alt: 'Acupuncture needles, as used in electroacupuncture' },
-  'facial-acupuncture':      { src: '/images/img-f7c771cf39ed.webp', alt: 'Facial (cosmetic) acupuncture treatment' },
+  'facial-acupuncture':      { src: '/images/img-gesichtsakupunktur-crop.webp', alt: 'Facial (cosmetic) acupuncture treatment' },
   'acupressure':             { src: '/images/img-5bf9460e0ca5.webp', alt: 'Acupressure, needle-free finger-pressure point stimulation' },
   'shiatsu':                 { src: '/images/img-7149f50cc917.webp', alt: 'Shiatsu, a Japanese pressure therapy' },
   'gua-sha':                 { src: '/images/img-0e38a23a362e.webp', alt: 'Gua sha, scraping technique over the skin' },

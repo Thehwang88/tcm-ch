@@ -30,7 +30,7 @@ export const REVIEWED_DATE = '2026-06-09';
 // Shared FAQ appended to every condition page (display + FAQPage schema).
 export const INSURANCE_FAQ: ConditionFaq = {
   q: 'Is acupuncture covered by my insurance?',
-  a: 'Treatment by our EMR-/ASCA-recognised practitioners is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much you get back depends on your individual policy. Our insurance guide explains the basic-versus-supplementary split in plain English.',
+  a: 'Supplementary insurance may contribute to therapist-led treatment. Ask your insurer to confirm the named practitioner, method, policy limits and any conditions before booking. Registration alone does not guarantee reimbursement. Our insurance guide explains the details.',
 };
 
 export const conditions: Condition[] = [
@@ -49,7 +49,7 @@ export const conditions: Condition[] = [
       'We start by asking what the pain actually stops you doing, screening for warning signs that need a doctor, and checking how you move. Treatment usually combines acupuncture with manual techniques like Tuina and, where it fits, cupping for tight muscles.',
       'Most people come for a short course of sessions rather than one-off treatment, and we reassess as we go. We will also talk about staying active between sessions - inactivity tends to make back pain worse, not better.',
     ],
-    evidence: 'Clinical guidelines and Cochrane reviews give a mixed but cautiously positive picture for chronic low-back pain: acupuncture may offer short-term relief for some people, while the evidence for acute back pain is weaker and part of the effect may be non-specific. We do not overstate this - it is a reasonable option to try, not a guaranteed fix.',
+    evidence: "Guidelines differ. NICE NG59 advises against acupuncture for low-back pain, while the NCCIH overview reports benefit in some chronic-pain studies. Any trial of treatment should be discussed alongside active rehabilitation and medical assessment.",
     redFlags: [
       'Back pain after a serious fall or accident',
       'Numbness, tingling or weakness in the legs, or loss of bladder or bowel control (seek urgent care)',
@@ -169,7 +169,7 @@ export const conditions: Condition[] = [
       'We start with what stress is actually doing to you - sleep, tension, headaches, gut, mood - and screen for signs that need medical or psychological support. Sessions are calm and unhurried; treatment often combines acupuncture with work on the physical knock-on effects like neck tension and poor sleep.',
       'We are honest about scope. Acupuncture can be a useful part of looking after yourself, but if you are burning out, the bigger levers are usually workload, recovery and sometimes therapy. We will encourage those alongside treatment, not instead of them.',
     ],
-    evidence: 'Evidence is mixed: some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and relaxation effects are hard to separate from the treatment itself. We position it as a supportive, low-risk option - not a substitute for therapy or medical care.',
+    evidence: "We do not present acupuncture as an established treatment for burnout. A relaxing appointment is not evidence that an underlying mental-health condition has been treated. Persistent distress needs appropriate medical or psychological support.",
     redFlags: [
       'Persistent low mood, loss of interest, or feeling hopeless for more than two weeks',
       'Panic attacks, or anxiety that stops you functioning day to day',
@@ -177,7 +177,7 @@ export const conditions: Condition[] = [
       'Physical symptoms like chest pain or breathlessness that need medical assessment',
     ],
     faqs: [
-      { q: 'Can acupuncture help with stress?', a: 'Many people find the sessions genuinely calming and use them as part of managing stress. The research is mixed and modest, so we present it as a low-risk support rather than a proven treatment. For burnout, anxiety or depression, it should not replace therapy or medical care.' },
+      { q: 'Can acupuncture help with stress?', a: 'Many people find the sessions genuinely calming and use them as part of managing stress. The research is mixed and modest, so we present it as a supportive option rather than a proven treatment. For burnout, anxiety or depression, it should not replace therapy or medical care.' },
       { q: 'Is this a treatment for burnout?', a: 'Not on its own. Acupuncture can help you feel calmer and ease physical knock-on effects like tension and poor sleep, but recovering from burnout usually needs changes to workload and recovery, and sometimes professional support. We will treat alongside those, and say so plainly.' },
       { q: 'What happens in a session?', a: 'It is calm and unhurried. We talk through how stress is affecting you, then use fine needles while you rest quietly, often for around 20 to 30 minutes. Many people find that time itself restful. We may also address related tension or sleep issues.' },
     ],
@@ -229,7 +229,7 @@ export const conditions: Condition[] = [
       'We start with your cycle pattern and what the symptoms stop you doing, and we check whether you have had a medical assessment for anything that needs it. Treatment is usually a course of acupuncture timed around your cycle, sometimes alongside work on stress and sleep.',
       'For something like suspected endometriosis or PCOS, we see acupuncture as possible symptom support only - diagnosis and treatment of the underlying condition belong with your doctor or gynaecologist, and we will say so.',
     ],
-    evidence: 'For period pain (primary dysmenorrhoea), some reviews suggest acupuncture may reduce pain, though the evidence is low-to-moderate quality and not conclusive. For PMS and broader cycle issues it is weaker still. We present it as a reasonable, low-risk option to try for symptom relief, not an established treatment.',
+    evidence: "The 2016 Cochrane review found insufficient evidence to establish effectiveness for primary period pain, with low or very low certainty. This does not establish benefit for endometriosis, fertility or all cycle problems.",
     redFlags: [
       'Severe period pain that disrupts your life, or pain that is getting worse over time (possible endometriosis)',
       'Very heavy bleeding, bleeding between periods, or bleeding after sex',
@@ -237,7 +237,7 @@ export const conditions: Condition[] = [
       'Fever with pelvic pain - seek medical care',
     ],
     faqs: [
-      { q: 'Can acupuncture help period pain?', a: 'Some studies suggest it may reduce period-pain intensity, though the evidence is low-to-moderate quality. Many people find it a reasonable, low-risk thing to try for symptom relief. It manages symptoms rather than treating any underlying cause, so persistent or severe pain still needs a medical check.' },
+      { q: 'Can acupuncture help period pain?', a: 'The 2016 Cochrane review found insufficient evidence to establish benefit for primary period pain. Persistent or severe pain needs medical assessment; acupuncture should not delay investigation of an underlying cause.' },
       { q: 'Could my symptoms be something more serious?', a: 'They can be. Severe or worsening period pain, very heavy or irregular bleeding, or bleeding between periods deserve a medical assessment - conditions like endometriosis, fibroids or PCOS need proper diagnosis. We treat symptoms alongside that, never as a substitute for gynaecological care.' },
       { q: 'When in my cycle should I come?', a: 'It varies. For period pain, many people have treatment in the run-up to their period as well as during it; we will usually plan a short course across a cycle or two and reassess. There is no single right schedule - we adapt to your pattern.' },
     ],
@@ -259,7 +259,7 @@ export const conditions: Condition[] = [
       'We work around your medical care and timeline, coordinating with whatever your fertility clinic is doing rather than cutting across it. Sessions often focus as much on managing the stress and emotional load of trying to conceive as on anything else, since that burden is real and frequently overlooked.',
       'We will always encourage proper medical investigation for both partners, because the biggest gains usually come from identifying and treating specific causes. Acupuncture sits alongside that as support.',
     ],
-    evidence: 'The evidence is mixed and much-debated. Large reviews of acupuncture around IVF have generally not shown a reliable improvement in pregnancy or live-birth rates, though some find a possible benefit and stress reduction is plausible. We are deliberately cautious: we offer it as supportive care, not as something that improves your odds of a baby.',
+    evidence: "A sham-controlled trial of 848 women undergoing IVF found no significant difference in live births. We do not promise improved pregnancy chances; any complementary care should fit around the fertility specialist’s plan.",
     redFlags: [
       'If you have been trying to conceive for over a year (or six months if over 35), see a doctor for assessment',
       'Very irregular or absent periods, or known PCOS, endometriosis or thyroid issues',
@@ -286,12 +286,12 @@ export const conditionBySlug = (slug: string): Condition | undefined =>
 // ── Shared images: SAME asset the DE Beschwerde page uses (SYMPTOMS[].img in
 // public/index.html), keyed by EN slug. English alt for EN SEO/accessibility. ──
 export const conditionImages: Record<string, { src: string; alt: string }> = {
-  'back-pain':          { src: '/images/img-f7f113048735.webp', alt: 'Patient receiving acupuncture for back pain at a TCM.ch clinic' },
+  'back-pain':          { src: '/images/img-f7f113048735.webp', alt: 'Illustrative image of acupuncture for back pain' },
   'neck-pain':          { src: '/images/img-49abc5b4795f.webp', alt: 'Acupuncture and TCM treatment for neck and shoulder tension' },
   'migraine-headaches': { src: '/images/img-fce33d67fc98.webp', alt: 'Acupuncture treatment used for migraine and headaches' },
   'sleep-problems':     { src: '/images/img-a8a0f2e64199.webp', alt: 'Calm TCM treatment setting used for sleep problems' },
   'stress-burnout':     { src: '/images/img-778d4dd19d39.webp', alt: 'Relaxing acupuncture session for stress and burnout' },
   'digestive-issues':   { src: '/images/img-5db981915fc8.webp', alt: 'TCM treatment for functional digestive issues' },
   'menstrual-issues':   { src: '/images/img-c225ce95a903.webp', alt: 'Acupuncture used for menstrual and cycle complaints' },
-  'fertility-support':  { src: '/images/img-9f85d23c07b4.webp', alt: 'Supportive TCM care during a fertility journey' },
+  'fertility-support':  { src: '/images/hero-main.webp', alt: 'Illustrative TCM.ch treatment setting' },
 };

@@ -1,0 +1,8 @@
+---
+interface Props { href?: string; }
+const { href = '/en/contact/' } = Astro.props;
+---
+<section class="en-section en-dark"><div class="wrap en-split">
+  <div><span class="en-label">Your next step</span><h2>Find care that fits your needs.</h2><p>Tell us your preferred clinic, consultation language and what you would like help with. The team will confirm the practitioner, fee and appointment details.</p><a class="tcm-btn tcm-btn--mint" href={href}>Request an appointment ↗</a></div>
+  <div><h3>Before you commit</h3><ul class="en-list"><li>Check which treatment your chosen practice offers.</li><li>Ask your insurer about the named practitioner and your policy.</li><li>Agree what you want to improve and when to review progress.</li></ul><a class="en-link" href="/en/knowledge/what-to-expect-first-acupuncture-session/">Read the first-visit guide →</a></div>
+</div></section>

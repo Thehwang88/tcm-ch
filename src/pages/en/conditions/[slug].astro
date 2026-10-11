@@ -20,7 +20,7 @@ const contactHref = `/en/contact/?beschwerde=${encodeURIComponent(name)}`;
 
 const title = `Acupuncture for ${name} | TCM.ch`;
 const h1 = `Acupuncture & TCM for ${name}`;
-const description = `Acupuncture for ${keyword} in Switzerland from English-speaking, EMR-/ASCA-recognised practitioners. How we treat it and when to see a doctor.`;
+const description = `Acupuncture and TCM for ${keyword}: treatment options, evidence, warning signs and practical questions for patients in Switzerland.`;
 
 // Condition-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
 const faqs = [...condition.faqs, INSURANCE_FAQ];
@@ -67,126 +67,22 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: h1, item: url },
   ],
 };
+
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import ArticleNav from '../../../components/en/ArticleNav.astro';
+import NextSteps from '../../../components/en/NextSteps.astro';
+import Sources from '../../../components/en/Sources.astro';
+import { editorialSources } from '../../../data/en-editorial';
 ---
 <Layout title={title} description={description} path={path} schema={[medicalLd, faqLd, breadcrumbLd]}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Conditions</div>
-      <h1>{h1}</h1>
-      <p class="lead">{lead}</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href={`tel:+${site.whatsapp}`}>Call us</a>
-      </div>
-      {image && (
-        <figure class="hero-figure">
-          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
-        </figure>
-      )}
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap prose">
-      {intro.map((p) => <p>{p}</p>)}
-
-      <h2>How we treat {name} at TCM.ch</h2>
-      {howWeTreat.map((p) => <p>{p}</p>)}
-
-      <h2>What the evidence says</h2>
-      <p>{evidence}</p>
-      <p class="evidence-note">
-        We base this on general clinical guidelines and systematic reviews (e.g. Cochrane, PubMed-indexed
-        research). The honest summary: studies vary in quality and findings, and individual results differ.
-      </p>
-
-      <h2>When to see a doctor first</h2>
-      <p>Acupuncture is a complement, not a substitute for medical assessment. See a doctor first if you have:</p>
-      <ul class="redflags">
-        {redFlags.map((r) => <li>{r}</li>)}
-      </ul>
-
-      <h2>FAQ</h2>
-      <div class="faq">
-        {faqs.map((f) => (
-          <details>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-
-      {relevantTherapies.length > 0 && (
-        <>
-          <h2>Therapies we might use</h2>
-          <p>Depending on what we find, treatment for {name.toLowerCase()} may draw on:</p>
-          <ul class="therapy-links">
-            {relevantTherapies.map((t) => (
-              <li><a class="inline-link" href={enTherapyPath(t.slug)}>{t.name} →</a></li>
-            ))}
-          </ul>
-          <p><a class="inline-link" href="/en/therapies/">See all therapies →</a></p>
-        </>
-      )}
-
-      <div class="xlinks">
-        <strong>Next steps:</strong>
-        <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">← All conditions</a>
-      </div>
-
-      <p class="disclaimer">
-        This page is general information, not medical advice, and does not promise any cure or specific
-        outcome. If symptoms are severe, sudden or worsening, see a doctor.
-      </p>
-    </div>
-  </section>
-
-  {relatedConditions.length > 0 && (
-    <section class="section">
-      <div class="wrap">
-        <h2>Related conditions</h2>
-        <div class="cards">
-          {relatedConditions.map((c) => (
-            <a class="card" href={enConditionPath(c.slug)}>
-              <h3>{c.condition}</h3>
-              <p>{c.summary}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-</Layout>
-
-<style>
-  .prose { max-width: 760px; }
-  .prose h2 { font-size: 26px; font-weight: 800; margin: 38px 0 14px; }
-  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .prose li { margin: 0 0 10px; }
-  .prose strong { color: var(--ink); }
-  .evidence-note { font-size: 15px; color: var(--text-soft); border-left: 3px solid var(--blue); padding-left: 14px; }
-  .redflags { list-style: none; padding-left: 0; }
-  .redflags li { position: relative; padding-left: 26px; }
-  .redflags li::before { content: '!'; position: absolute; left: 0; top: -1px; width: 18px; height: 18px; line-height: 18px; text-align: center; font-weight: 800; font-size: 12px; color: #fff; background: #c0392b; border-radius: 50%; }
-  .therapy-links { list-style: none; padding-left: 0; }
-  .therapy-links li { margin: 0 0 8px; }
-  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
-  .inline-link:hover { text-decoration: underline; }
-  .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45, 155, 111, .25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }
-  .xlinks strong { color: var(--blue-dark); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; }
-  .cta-row { margin: 32px 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
-</style>
+<Premium><div class="wrap en-breadcrumb"><a href="/en/">Home</a> / <a href="/en/conditions/">Conditions</a></div>
+<Hero eyebrow="Conditions · Patient guide" title={h1} lead={lead} image={image?.src} imageAlt={image?.alt} caption={image ? 'Illustrative treatment image' : undefined} primaryHref={contactHref} primaryLabel="Ask about treatment" secondaryHref="#evidence" secondaryLabel="Read the evidence" />
+<section class="en-section"><div class="wrap en-article-layout"><ArticleNav items={[{id:'overview',label:'Overview'},{id:'medical-care',label:'Medical assessment'},{id:'approach',label:'Your consultation'},{id:'evidence',label:'Evidence'},{id:'faq',label:'Questions'}]}/><article class="en-reading"><h2 id="overview">Understanding {name.toLowerCase()}</h2>{intro.map(p=><p>{p}</p>)}
+<h2 id="medical-care">When medical assessment comes first</h2><p>Acupuncture should not delay diagnosis. Seek medical assessment for the following warning signs; use emergency care for sudden or severe symptoms:</p><ul>{redFlags.map(r=><li>{r}</li>)}</ul>
+<h2 id="approach">Discussing a treatment plan</h2>{howWeTreat.map(p=><p>{p}</p>)}
+<div class="en-checklist"><h3>Make the first conversation useful</h3><p>Note when symptoms began, what makes them better or worse, treatments already tried and the change that would matter most to your daily life. Bring relevant reports and a medication list.</p><p>Agree a review point. If symptoms do not improve, or change in character, the plan needs reassessment.</p></div>
+<h2 id="evidence">Evidence and limitations</h2><p>{evidence}</p><Sources sources={editorialSources[slug] ?? []}/>
+{relevantTherapies.length > 0 && <><h2 id="options">Treatment options to discuss</h2><p>These methods may be discussed after assessment. The list does not mean each is effective for every cause of {name.toLowerCase()} or available at every clinic.</p><ul>{relevantTherapies.map(t=><li><a href={enTherapyPath(t.slug)}>{t.name}</a></li>)}</ul></>}
+<h2 id="faq">Your questions</h2><div class="en-faq">{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div><p class="en-note">General information, not a diagnosis or an individual treatment recommendation. No particular outcome is guaranteed.</p></article></div></section>
+{relatedConditions.length > 0 && <section class="en-section en-concrete"><div class="wrap"><span class="en-label">Keep exploring</span><h2>Related conditions</h2><div class="en-grid">{relatedConditions.map(c=><a class="en-card" href={enConditionPath(c.slug)}><h3>{c.condition}</h3><p>{c.summary}</p><span class="en-card-link">Read the guide →</span></a>)}</div></div></section>}<NextSteps href={contactHref}/></Premium></Layout>

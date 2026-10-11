@@ -63,6 +63,18 @@ const schema = {
 
   </Premium>
   <script is:inline>
+    // Carry the patient's selected topic into an editable message, never into HTML.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var message = document.getElementById('c-msg');
+      if (!message || message.value) return;
+      var context = [];
+      [['therapie', 'Treatment interest'], ['beschwerde', 'Main concern']].forEach(function(pair) {
+        var value = params.get(pair[0]);
+        if (value) context.push(pair[1] + ': ' + value.replace(/[\r\n]/g, ' ').slice(0, 160));
+      });
+      if (context.length) message.value = context.join('\n') + '\n';
+    })();
     // Prefill the location dropdown from ?standort= (links from location pages).
     (function () {
       var pre = new URLSearchParams(location.search).get('standort');

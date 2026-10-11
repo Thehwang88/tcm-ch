@@ -1,0 +1,5 @@
+---
+interface Props { sources: {label:string; url:string}[]; }
+const {sources} = Astro.props;
+---
+<aside class="en-source-note" aria-label="Sources and limitations"><strong>Sources & further reading</strong><ul>{sources.map(s=><li><a href={s.url}>{s.label}</a></li>)}</ul><p>These sources inform the discussion; they do not establish that every treatment suits every patient. Research findings and guideline recommendations can differ.</p></aside>

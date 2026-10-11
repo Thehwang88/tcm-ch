@@ -1,84 +1,57 @@
 ---
-title: "What to Expect at Your First Acupuncture Session"
-slug: "what-to-expect-first-acupuncture-session"
-description: "What actually happens at your first acupuncture appointment, whether it hurts, how the needles feel, and how to prepare. An honest, plain-English walkthrough."
-datePublished: "2026-06-09"
-dateModified: "2026-06-09"
-author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
-heroImage: "/images/img-4357832d6bef.webp"
-heroImageAlt: "An acupuncture treatment at a TCM.ch clinic"
+title: What to Expect at Your First Acupuncture Session
+slug: what-to-expect-first-acupuncture-session
+description: What actually happens at your first acupuncture appointment, whether it hurts, how the needles feel,
+  and how to prepare. An honest, plain-English walkthrough.
+datePublished: '2026-06-09'
+dateModified: '2026-10-11'
+author: TCM.ch Editorial Team
+heroImage: /images/img-4357832d6bef.webp
+heroImageAlt: An acupuncture treatment (illustrative image)
 faq:
-  - q: "Does acupuncture hurt?"
-    a: "For most people, no, not in the way you might fear. The needles are far thinner than the ones used for injections, and insertion usually feels like a quick tap or a dull, heavy ache rather than a sharp jab. Tell your practitioner if anything feels sharp and they will adjust it."
-  - q: "How long does a first appointment take?"
-    a: "Plan for around 60 to 75 minutes. A good chunk of that is the initial consultation: your history, symptoms and an examination before any needling. Follow-up sessions are usually shorter, often 30 to 45 minutes, because the assessment is already done."
-  - q: "How many sessions will I need?"
-    a: "There is no fixed number. Many people start with a short course of about six sessions and reassess whether it is helping. If you notice no change after several treatments, a good practitioner will say so honestly rather than keep going indefinitely."
-  - q: "What should I do before and after?"
-    a: "Eat something beforehand so you are not arriving hungry, wear loose clothing, and avoid alcohol right before. Afterwards, take it easy if you feel relaxed or a little light-headed, drink some water, and skip intense exercise for the rest of the day if you can."
+- q: How long will the first appointment take?
+  a: Ask your chosen practice to confirm the duration and what is included. The initial consultation and treatment
+    plan vary by practitioner and need.
+- q: Can I ask to stop?
+  a: Yes. Tell the practitioner if you are uncomfortable, feel unwell or want treatment to stop.
+- q: How many visits do I need?
+  a: There is no universal number. Discuss a goal and review point before agreeing to follow-ups, and reconsider
+    if the treatment is not helping.
 relatedConditions:
-  - "back-pain"
-  - "migraine-headaches"
+- back-pain
+- migraine-headaches
 relatedTherapies:
-  - "acupuncture"
+- acupuncture
 ---
 
-Most people booking their first acupuncture appointment have the same two questions running quietly in the background: *will it hurt*, and *what am I actually walking into*. Both are fair. Here is an honest walkthrough of what happens, what the needles feel like, and how to get the most out of the session, with nothing dressed up.
+Your first visit should help you understand whether acupuncture is a suitable option, what it involves and what it costs. Ask the practice to confirm the appointment length and fee beforehand; these are not identical across the network.
 
 ## Before you arrive
 
-There is very little you need to do, but a few small things help:
+Prepare a short symptom history, a medication list and any relevant medical reports. Note what you have tried and what you hope to improve. Tell the practice if you need an English-language consultation or have accessibility needs.
 
-- **Eat something** an hour or two beforehand. Arriving hungry makes the occasional light-headedness more likely.
-- **Wear loose, comfortable clothing.** Many points are on the lower legs, forearms, hands and back, so easy-to-roll-up sleeves and trousers save fuss.
-- **Skip alcohol** right before, and go easy on caffeine if it tends to make you jittery.
-- **Make a short mental list**: when your symptoms started, what makes them better or worse, and any medications you take. Your practitioner will ask.
+Wear clothing that allows comfortable access to the treatment area. Follow any preparation instructions from the practice; an NHS hospital guide includes eating before treatment and discussing relevant health conditions. [Guy’s and St Thomas’: acupuncture](https://www.guysandstthomas.nhs.uk/health-information/acupuncture).
 
-If you take blood thinners, are or might be pregnant, or have a bleeding disorder or a pacemaker, mention it early. It changes nothing about whether you can be treated in most cases, but it does change how.
+## Consultation and consent
 
-## The first part is just talking
+Expect questions about your concern and medical history, followed by an appropriate assessment. Explain pregnancy, bleeding problems, implanted devices and medication before treatment is proposed.
 
-Your first appointment is longer than the ones that follow, usually around 60 to 75 minutes, because most of it is a proper consultation. We ask about your main complaint, your general health, sleep, stress, digestion and medical history, then examine the relevant area and how you move. None of this is mystical. It is the same logic any sensible clinician uses: understand the problem before treating it.
+Ask what the practitioner recommends and why. Discuss alternatives, potential risks, the fee and when to review progress. You can ask questions, decline a technique or ask to stop. A traditional TCM explanation should be distinguished from a medical diagnosis and from research evidence.
 
-This is also the moment to be clear about expectations. We will tell you honestly whether acupuncture is a reasonable thing to try for your situation, roughly how many sessions it might take, and when something needs a doctor instead. We treat it as a complement to medical care, not a replacement for it.
+## During treatment
 
-## Does it actually hurt?
+Acupuncture uses fine needles inserted through the skin. The number, placement and time they remain depend on the proposed treatment. Ask the practitioner to explain the plan rather than expecting a fixed number of needles or a universal session length.
 
-This is the question that keeps people away, so let us be specific. Acupuncture needles are **nothing like injection or blood-test needles**. They are extremely fine, often around the thickness of a couple of hairs, and they are solid rather than hollow, so they part the skin rather than cutting it.
+You may notice a brief prick, pressure or other sensation. Report sharp or lasting pain or feeling unwell immediately. A strong sensation does not prove that treatment is working. Other methods, such as [cupping](/en/therapies/cupping/), should be discussed separately rather than added without explanation.
 
-When a needle goes in, most people feel one of these:
+## Afterwards
 
-- a quick tap or pinch that fades in a second,
-- a dull, heavy, slightly spreading ache around the point, sometimes called the "needle sensation", or
-- often, nothing at all.
+Ask about expected reactions, aftercare and whom to contact with concerns. Acupuncture can cause adverse effects; read the [safety guide](/en/knowledge/is-acupuncture-safe-side-effects-explained/) before deciding. If you feel faint or drowsy, allow time to recover and do not drive while impaired.
 
-That heavy or tingling feeling is normal and is generally taken as a sign the point is active. What you should **not** feel is a sharp, lasting or burning pain. If you do, say so. The practitioner will reposition or remove the needle. You are in control the whole time, and "that one feels sharp" is exactly the kind of feedback we want.
+New severe or worsening symptoms need medical assessment. Treatment should not interrupt necessary medication or specialist care.
 
-## What happens during the treatment
+## Decide whether to continue
 
-Once the needles are placed, usually somewhere between about 8 and 20 of them, they stay in for roughly 20 to 30 minutes while you rest. You will typically be lying down, warm and undisturbed. A lot of people find this part genuinely relaxing and a fair few drift off to sleep.
+Agree a specific goal, such as a change in symptoms or daily function, and a point to reassess. There is no universal course length or guaranteed response. If treatment is not helping, discuss stopping, changing the plan or seeking further assessment.
 
-Depending on what you are being treated for, the practitioner might gently stimulate a few needles, add gentle warmth, or combine acupuncture with related techniques like [cupping](/en/therapies/cupping/) or [Tuina massage](/en/therapies/tuina-massage/) for tight muscles. If you would like to know more about the treatment itself, our [acupuncture page](/en/therapies/acupuncture/) goes into detail.
-
-## How you might feel afterwards
-
-Reactions vary. Many people feel calm and a little spacey for an hour or so, others feel energised, and some notice nothing in particular at first. Mild, temporary effects are common and harmless:
-
-- slight tiredness or deep relaxation,
-- a small bruise or a spot of tenderness at a needle site,
-- brief light-headedness, especially if you stand up too quickly.
-
-If you can, take the rest of the day gently, drink some water, and avoid intense exercise. None of this is compulsory, but it tends to make the experience nicer.
-
-## How many sessions, and when to expect change
-
-Acupuncture is usually a course, not a single fix. Many people start with around six sessions and we check, together, whether anything is actually shifting. Some feel a difference quickly; others need a few treatments; some do not respond, and we will tell you that honestly rather than string it out. How much it helps differs genuinely from person to person.
-
-If you are coming in for something specific, it can help to read about it first. We have honest, evidence-aware pages on common reasons people try acupuncture, including [back pain](/en/conditions/back-pain/) and [migraine and headaches](/en/conditions/migraine-headaches/).
-
-## A quick word on safety
-
-Done by a trained practitioner using sterile, single-use needles, serious side effects are rare. The common ones are minor: small bruises, brief tiredness, the occasional light-headed moment. Tell us about pregnancy, blood thinners, bleeding disorders or implanted devices so we can adapt the treatment. And as with everything we do, if your symptoms are severe, sudden or getting worse, see a doctor first.
-
-When you are ready, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/).
+Confirm follow-up costs before booking. Our [cost guide](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [insurance overview](/en/health-insurance-acupuncture/) explain the practical questions. [Request an appointment](/en/contact/) when you are ready.

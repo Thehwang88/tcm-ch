@@ -1,28 +1,34 @@
 ---
-title: "Acupuncture for Migraines: What to Expect"
-slug: "acupuncture-for-migraines-what-to-expect"
-description: "What to expect from acupuncture for migraines and tension headaches: what the evidence says, how treatment works as prevention, the red flags that need a doctor, and cover."
-datePublished: "2026-06-09"
-dateModified: "2026-06-09"
-author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
-heroImage: "/images/img-fce33d67fc98.webp"
-heroImageAlt: "Acupuncture used for migraine and headaches"
+title: 'Acupuncture for Migraines: What to Expect'
+slug: acupuncture-for-migraines-what-to-expect
+description: 'What to expect from acupuncture for migraines and tension headaches: what the evidence says, how treatment
+  works as prevention, the red flags that need a doctor, and cover.'
+datePublished: '2026-06-09'
+dateModified: '2026-10-11'
+author: TCM.ch Editorial Team
+heroImage: /images/img-fce33d67fc98.webp
+heroImageAlt: Acupuncture used for migraine and headaches
 faq:
-  - q: "Is acupuncture proven for migraines?"
-    a: "The evidence here is relatively good. Reviews suggest acupuncture can reduce how often episodic migraines occur, sometimes comparably to preventive medication for some people. That said, it does not help everyone and studies vary in quality. We use it as prevention alongside your medical care, not a replacement for it."
-  - q: "Will acupuncture stop a migraine I already have?"
-    a: "We use it mainly to reduce how often migraines happen over time, not as a rescue treatment during an attack. For the acute attack itself, your prescribed medication is usually the right tool. The two approaches work alongside each other rather than competing."
-  - q: "How long before I know if it is helping?"
-    a: "Prevention takes time. We would usually look across a course of several weeks and compare your headache frequency before and after, ideally with a simple diary. If there is no meaningful change, we will tell you honestly rather than keep treating indefinitely."
-  - q: "Is migraine acupuncture covered by insurance?"
-    a: "Treatment by an EMR-/ASCA-recognised practitioner is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much comes back depends on your policy and annual limit. Check your cover before committing to a course of sessions."
+- q: Is acupuncture proven for migraines?
+  a: The 2016 Cochrane review supports a possible role in reducing episodic migraine frequency. It does not guarantee
+    benefit for an individual or replace medical assessment.
+- q: Will acupuncture stop a migraine I already have?
+  a: We use it mainly to reduce how often migraines happen over time, not as a rescue treatment during an attack.
+    For the acute attack itself, your prescribed medication is usually the right tool. The two approaches work alongside
+    each other rather than competing.
+- q: How long before I know if it is helping?
+  a: Prevention takes time. We would usually look across a course of several weeks and compare your headache frequency
+    before and after, ideally with a simple diary. If there is no meaningful change, we will tell you honestly rather
+    than keep treating indefinitely.
+- q: Is migraine acupuncture covered by insurance?
+  a: Coverage depends on your policy, the proposed treatment and the named practitioner. Ask your insurer for confirmation
+    before booking; EMR or ASCA registration alone does not guarantee payment.
 relatedConditions:
-  - "migraine-headaches"
-  - "neck-pain"
+- migraine-headaches
+- neck-pain
 relatedTherapies:
-  - "acupuncture"
-  - "electroacupuncture"
+- acupuncture
+- electroacupuncture
 ---
 
 Migraine is exhausting in a way that is hard to explain to anyone who has not had one. If medication alone is not enough, acupuncture is one of the options worth considering, and it happens to be one of the better-studied uses. This guide is honest about what it can do: mainly reducing how often attacks happen, not stopping one in its tracks. It also covers the headache warning signs that mean you should see a doctor first.
@@ -44,7 +50,7 @@ Migraine is a neurological condition, typically a throbbing, often one-sided hea
 
 ## What the evidence says
 
-This is one of the more favourable areas for acupuncture. Cochrane reviews have found that acupuncture can **reduce the frequency** of episodic migraine and tension-type headache, with effects that are at least comparable to some preventive medications for some patients. Quality still varies, and it does not work for everyone, but the evidence here is relatively encouraging compared with many other uses. [verify citation]
+The 2016 Cochrane review found that acupuncture can reduce episodic migraine frequency. This concerns prevention, not emergency treatment of an attack, and does not guarantee an individual response. [Cochrane review: episodic migraine prevention](https://pubmed.ncbi.nlm.nih.gov/27351677/).
 
 The key word is **prevention**. The realistic goal is fewer or milder episodes over time, not a guaranteed end to migraines.
 

@@ -1,32 +1,39 @@
 ---
-title: "Acupuncture for Stress and Burnout"
-slug: "acupuncture-for-stress-and-burnout"
-description: "An honest look at acupuncture for stress and burnout: what it can realistically help with, what the evidence says, when to get proper support, and how it is covered."
-datePublished: "2026-06-09"
-dateModified: "2026-06-09"
-author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
-heroImage: "/images/img-778d4dd19d39.webp"
-heroImageAlt: "A relaxing acupuncture session for stress and burnout"
+title: Acupuncture for Stress and Burnout
+slug: acupuncture-for-stress-and-burnout
+description: 'An honest look at acupuncture for stress and burnout: what it can realistically help with, what the
+  evidence says, when to get proper support, and how it is covered.'
+datePublished: '2026-06-09'
+dateModified: '2026-10-11'
+author: TCM.ch Editorial Team
+heroImage: /images/img-778d4dd19d39.webp
+heroImageAlt: A relaxing acupuncture session for stress and burnout
 faq:
-  - q: "Can acupuncture help with stress?"
-    a: "Many people find the sessions genuinely calming and use them as part of managing stress. The research is mixed and modest, so we present it as a low-risk support rather than a proven treatment. For burnout, anxiety or depression, it should not replace therapy or medical care."
-  - q: "Is acupuncture a treatment for burnout?"
-    a: "Not on its own. It can help you feel calmer and ease physical knock-on effects like tension and poor sleep, but recovering from burnout usually needs changes to workload and recovery, and sometimes professional support. We treat alongside those things and say so plainly."
-  - q: "What actually happens in a session?"
-    a: "It is calm and unhurried. We talk through how stress is affecting you, then place fine needles while you rest quietly, often for 20 to 30 minutes. Many people find that time itself restful. We may also address related issues like neck tension or disturbed sleep."
-  - q: "Is it covered by insurance?"
-    a: "Treatment by an EMR-/ASCA-recognised practitioner is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much comes back depends on your policy and annual limit. Check your cover before booking a course of sessions."
+- q: Can acupuncture help with stress?
+  a: Many people find the sessions genuinely calming and use them as part of managing stress. The research is mixed
+    and modest, so we present it as a supportive option rather than a proven treatment. For burnout, anxiety or
+    depression, it should not replace therapy or medical care.
+- q: Is acupuncture a treatment for burnout?
+  a: Not on its own. It can help you feel calmer and ease physical knock-on effects like tension and poor sleep,
+    but recovering from burnout usually needs changes to workload and recovery, and sometimes professional support.
+    We treat alongside those things and say so plainly.
+- q: What actually happens in a session?
+  a: It is calm and unhurried. We talk through how stress is affecting you, then place fine needles while you rest
+    quietly, often for 20 to 30 minutes. Many people find that time itself restful. We may also address related
+    issues like neck tension or disturbed sleep.
+- q: Is it covered by insurance?
+  a: Coverage depends on your policy, the proposed treatment and the named practitioner. Ask your insurer for confirmation
+    before booking; EMR or ASCA registration alone does not guarantee payment.
 relatedConditions:
-  - "stress-burnout"
-  - "sleep-problems"
+- stress-burnout
+- sleep-problems
 relatedTherapies:
-  - "acupuncture"
-  - "shiatsu"
-  - "acupressure"
+- acupuncture
+- shiatsu
+- acupressure
 ---
 
-Stress that never quite switches off is a common reason people try acupuncture, and it is one where being honest matters. Acupuncture can be a calming, low-risk support. It is not, on its own, a treatment for clinical burnout, anxiety or depression. This guide explains what it can realistically do, what the evidence suggests, and the signs that mean you need more than a relaxing treatment.
+Stress that never quite switches off is a common reason people try acupuncture, and it is one where being honest matters. Acupuncture can be a calming experience for some people. It is not, on its own, a treatment for clinical burnout, anxiety or depression. This guide explains what it can realistically do, what the evidence suggests, and the signs that mean you need more than a relaxing treatment.
 
 ## Stress, and where burnout differs
 
@@ -36,15 +43,15 @@ That distinction matters, because it sets honest expectations for what a complem
 
 ## What acupuncture can realistically do
 
-What many people get from acupuncture for stress is a genuine sense of **down-shifting** from a constant state of tension. The sessions themselves are calm and unhurried, and a lot of people find that protected, quiet time valuable on its own. It can also ease the physical knock-on effects of stress, the tight neck, the poor sleep, the tension headaches, which often feed the cycle.
+What many people get from acupuncture for stress is a genuine sense of **down-shifting** from a constant state of tension. The sessions themselves are calm and unhurried, and a lot of people find that protected, quiet time valuable on its own. Discuss physical symptoms such as neck pain or disturbed sleep separately; they may need their own assessment.
 
 We are clear about the boundary, though. Acupuncture supports stress management. It does not, by itself, treat burnout, anxiety or depression, which need proper medical and psychological care. Our fuller, hedged overview is on the [stress and burnout conditions page](/en/conditions/stress-burnout/).
 
 ## What the evidence says
 
-The research here is **mixed and modest**. Some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and the relaxation effect is hard to separate from the treatment itself. [verify citation]
+Research on acupuncture for anxiety remains limited and does not establish acupuncture as a treatment for burnout. Finding a session restful is different from treating a mental-health condition. [NCCIH: anxiety and complementary approaches](https://www.nccih.nih.gov/health/providers/digest/anxiety-and-complementary-health-approaches-science).
 
-So we position it accurately: a supportive, low-risk option that many people find calming, not a proven cure. If that is what you are looking for, it is a reasonable thing to try.
+So we position it accurately: a supportive option that many people find calming, not a proven cure. If that is what you are looking for, it is a reasonable thing to try.
 
 ## What a session is like
 

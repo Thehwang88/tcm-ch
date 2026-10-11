@@ -1,75 +1,56 @@
 ---
-title: "Is Acupuncture Safe? Side Effects Explained"
-slug: "is-acupuncture-safe-side-effects-explained"
-description: "An honest look at acupuncture safety: the common minor side effects, the rare serious risks, why a trained recognised practitioner matters, and who should take extra care."
-datePublished: "2026-06-09"
-dateModified: "2026-06-09"
-author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
-heroImage: "/images/img-c69a8f9ce7f8.webp"
-heroImageAlt: "Fine, single-use acupuncture needles"
+title: Is Acupuncture Safe? Side Effects Explained
+slug: is-acupuncture-safe-side-effects-explained
+description: 'An honest look at acupuncture safety: the common minor side effects, the rare serious risks, why a
+  trained recognised practitioner matters, and who should take extra care.'
+datePublished: '2026-06-09'
+dateModified: '2026-10-11'
+author: TCM.ch Editorial Team
+heroImage: /images/img-c69a8f9ce7f8.webp
+heroImageAlt: Fine, single-use acupuncture needles
 faq:
-  - q: "Is acupuncture safe?"
-    a: "When performed by a trained practitioner using sterile, single-use needles, acupuncture is considered low-risk and serious side effects are rare. Most reactions are minor and short-lived. The main thing within your control is choosing a properly qualified, recognised practitioner rather than an untrained one."
-  - q: "What are the common side effects of acupuncture?"
-    a: "The usual ones are minor: a small bruise or spot of tenderness at a needle site, brief tiredness or deep relaxation, and occasional light-headedness, especially if you stand up quickly. These typically settle within a few hours to a day and rarely stop people continuing treatment."
-  - q: "Can acupuncture cause serious harm?"
-    a: "Serious complications are rare and are strongly linked to untrained practitioners or poor technique. With sterile single-use needles and proper training, the risks of infection or injury are very low. Telling your practitioner your full medical history further reduces any risk."
-  - q: "Who should be cautious about acupuncture?"
-    a: "Tell your practitioner if you take blood thinners, have a bleeding disorder, are or might be pregnant, or have an implanted device such as a pacemaker. None of these necessarily rule out treatment, but they change how it is done. Honesty about your health lets us adapt safely."
+- q: Is acupuncture risk-free?
+  a: No. Minor effects and serious complications are possible. Ask the practitioner to explain the risks relevant
+    to you and the safeguards used.
+- q: Should I stop medication before treatment?
+  a: Do not stop prescribed medication without advice from the prescriber. Tell the practitioner what you take before
+    treatment.
+- q: What if I feel sharp pain?
+  a: Tell the practitioner immediately and ask them to stop or adjust treatment. You do not need to tolerate sharp
+    or lasting pain.
 relatedConditions:
-  - "back-pain"
+- back-pain
 relatedTherapies:
-  - "acupuncture"
-  - "electroacupuncture"
+- acupuncture
+- electroacupuncture
 ---
 
-"Is it safe?" is one of the first things people ask about acupuncture, and it deserves a straight answer rather than reassurance for its own sake. The honest version: done by a trained practitioner with sterile, single-use needles, acupuncture is considered low-risk, and the large majority of side effects are minor and short-lived. Serious problems are rare and are closely tied to untrained practitioners. Here is what to actually expect, and how to keep your own risk low.
+Acupuncture is not risk-free. The decision depends on the technique, the practitioner and your health. Ask about the likely benefits, alternatives and risks before giving consent, and tell the practitioner about your medication and medical history.
 
-## The common side effects
+## Possible side effects
 
-Most people have no trouble at all, but mild, temporary reactions are normal and nothing to worry about:
+Minor effects can include soreness, bruising or brief light-headedness. Serious complications, including infection and injury to internal organs, have also been reported. Proper technique and sterile single-use needles reduce avoidable risks but do not eliminate every risk. [NCCIH: acupuncture effectiveness and safety](https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety).
 
-- a **small bruise** or a spot of **tenderness** where a needle was placed,
-- **tiredness or deep relaxation** afterwards, sometimes for an hour or two,
-- brief **light-headedness or dizziness**, especially if you sit or stand up too quickly,
-- occasionally a tiny **bleeding point** when a needle comes out, easily dabbed away,
-- a short-lived feeling that symptoms flare slightly before settling.
+You should not have to endure sharp or persistent pain to make treatment effective. Tell the practitioner immediately if you feel unwell or want a needle removed.
 
-These typically pass within a few hours to a day. Taking it gently after a session, drinking some water, and not rushing off to intense exercise tends to make the experience smoother. Our [first-session guide](/en/knowledge/what-to-expect-first-acupuncture-session/) covers what the treatment itself feels like.
+## Information to share beforehand
 
-## The rare serious risks, in context
+Tell the practitioner about blood-thinning medication, bleeding problems, pregnancy, skin infection and any implanted electrical device. These details can affect whether a technique is suitable, including electrical stimulation. Do not stop prescribed medication to prepare for acupuncture without advice from its prescriber.
 
-It is fair to ask about the worst case, so here it is honestly. Serious complications from acupuncture, things like infection or, very rarely, injury from a needle inserted too deeply in the wrong place, do exist in the literature, but they are **rare and overwhelmingly linked to untrained practitioners or poor technique**. [verify citation]
+The NHS discusses circumstances requiring particular caution in its [complementary-therapy guidance](https://www.nhs.uk/tests-and-treatments/herbal-medicines-and-complementary-therapies/). Individual assessment is still necessary.
 
-This is exactly why two things matter so much:
+## Choosing a practitioner
 
-- **Sterile, single-use needles.** These are standard practice and effectively remove the infection risk that worried people decades ago. We use single-use needles for every patient.
-- **Proper training and recognition.** A practitioner who knows anatomy and technique is the main safeguard against the rare mechanical risks.
+Ask about training and experience with the proposed method, how needles are handled and what to do if a problem develops after leaving. Verify qualifications separately from insurance recognition: reimbursement rules are not a guarantee that treatment suits you.
 
-In other words, the single biggest factor in acupuncture safety is **who is holding the needle**.
+Request an explanation of the procedure and a chance to ask questions. You can decline a proposed technique or ask for treatment to stop.
 
-## Why EMR / ASCA recognition matters for safety
+## After the appointment
 
-In Switzerland, the EMR and ASCA recognition that lets your supplementary insurance reimburse treatment is not just an insurance formality. It signals that the practitioner has met training and quality standards. So the same recognition that gets you money back also tells you the person is properly qualified. Every practitioner across our [clinics](/en/locations/) holds it. You can read more about what it means in our [insurance guide](/en/health-insurance-acupuncture/).
+Ask the practice which reactions it expects and how to contact it with concerns. New severe or worsening symptoms need medical assessment, not reassurance based only on their timing after a session. Seek urgent care for breathing difficulty, chest pain, collapse or other severe symptoms.
 
-## Who should take extra care
+If you feel faint or unusually drowsy, wait until you feel well before leaving and follow the practitioner's advice. Do not drive while impaired.
 
-Acupuncture suits most people, but some situations call for adapting the treatment rather than avoiding it. Always tell your practitioner if you:
+## Keep your usual care in place
 
-- take **blood thinners** or have a **bleeding disorder** (we use gentler technique and fewer points),
-- are **pregnant or might be** (certain points and approaches are avoided),
-- have a **pacemaker or implanted defibrillator** (this mainly affects [electroacupuncture](/en/therapies/electroacupuncture/), which uses a mild current),
-- have a **weakened immune system** or skin infection in the area to be treated.
-
-None of these automatically rules you out. They simply change how we work. The more we know about your health and medications, the more safely we can treat you, which is why the first appointment always starts with a proper history.
-
-## Acupuncture as a complement, not a replacement
-
-Part of safety is using acupuncture for the right things. We treat it as a complement to medical care, not a substitute for it. For something like persistent [back pain](/en/conditions/back-pain/), it can be a reasonable, low-risk thing to try as part of a wider plan. But if symptoms are severe, sudden or worsening, a doctor comes first.
-
-## The bottom line
-
-For the vast majority of people, with a trained, recognised practitioner and single-use needles, acupuncture is a low-risk treatment whose side effects are usually limited to a bruise and a bit of tiredness. Choose your practitioner well, share your medical history, and the risks stay small.
-
-If you have questions about whether it is suitable for you, you can [request an appointment in English](/en/contact/) and ask, or find your nearest [clinic](/en/locations/).
+Acupuncture should not delay diagnosis or replace necessary medical care. Agree a goal and a review point, and reassess if the treatment is not helping. Our [first-visit guide](/en/knowledge/what-to-expect-first-acupuncture-session/) covers how to prepare; the [therapy guide](/en/therapies/acupuncture/) discusses the evidence.

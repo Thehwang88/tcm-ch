@@ -23,47 +23,12 @@ const itemListLd = {
     url: new URL(enConditionPath(c.slug), 'https://tcm.ch').href,
   })),
 };
----
-<Layout
-  title="Conditions We Treat with Acupuncture & TCM | TCM.ch"
-  description="What we treat with acupuncture & TCM in Switzerland: back pain, neck pain, migraine, sleep, stress, digestion and fertility. EMR-/ASCA-recognised."
-  path={path}
-  schema={[breadcrumbLd, itemListLd]}
->
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Conditions</div>
-      <h1>Conditions we treat with acupuncture & TCM</h1>
-      <p class="lead">
-        The conditions people most often come to us for. We are honest and evidence-aware: acupuncture and
-        Traditional Chinese Medicine are used as a complementary approach, results vary, and we flag when to
-        see a doctor first. English-speaking, EMR-/ASCA-recognised practitioners across Switzerland.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/locations/">Find a clinic near you →</a>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cards">
-        {conditions.map((c) => (
-          <a class="card card--media" href={enConditionPath(c.slug)}>
-            {conditionImages[c.slug] && (
-              <img class="card-thumb" src={conditionImages[c.slug].src} alt={conditionImages[c.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{c.condition}</h3>
-              <p>{c.summary}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-      <p style="color:var(--mid);font-size:14px;margin-top:18px">
-        Wondering about cost? <a href="/en/health-insurance-acupuncture/" style="color:var(--blue);font-weight:600">Is acupuncture covered by insurance? →</a>
-      </p>
-    </div>
-  </section>
-</Layout>
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import NextSteps from '../../../components/en/NextSteps.astro';
+---
+<Layout title="Conditions: Acupuncture & TCM in Switzerland | TCM.ch" description="Explore common reasons people consider acupuncture and TCM. Each guide explains treatment options, the limits of the evidence and when to see a doctor first." path={path} schema={[breadcrumbLd,itemListLd]} >
+<Premium><Hero eyebrow="TCM.ch · Conditions" title="Start with what is troubling you." lead="Explore common reasons people consider acupuncture and TCM. Each guide explains treatment options, the limits of the evidence and when to see a doctor first." primaryHref="#explore" primaryLabel="Explore the guides" secondaryHref="/en/contact/" secondaryLabel="Ask a question"/>
+<section class="en-section"><div class="wrap en-split"><div><span class="en-label">Care starts with understanding</span><h2>A symptom is a starting point, not a diagnosis.</h2><p>Similar symptoms can have different causes. Use these guides to prepare your questions, then discuss the right next step with a qualified professional.</p></div><div><h3>Prepare for your consultation</h3><p>Bring a short symptom timeline, any diagnosis or reports, your medication list and details of what you have tried. Tell us what improvement would matter most to you.</p><a class="en-link" href="/en/knowledge/what-to-expect-first-acupuncture-session/">Your first appointment →</a></div></div></section>
+<section class="en-section en-concrete" id="explore"><div class="wrap"><span class="en-label">Explore conditions</span><h2>Find your starting point</h2><div class="en-grid">{conditions.map(c=><a class="en-card en-card--image" href={enConditionPath(c.slug)}>{conditionImages[c.slug] && <img src={conditionImages[c.slug].src} alt={conditionImages[c.slug].alt} width="1120" height="746" loading="lazy" decoding="async"/>}<div class="en-card-body"><h3>{c.condition}</h3><p>{c.summary}</p><span class="en-card-link">Options, evidence & next steps →</span></div></a>)}</div></div></section><NextSteps/></Premium></Layout>

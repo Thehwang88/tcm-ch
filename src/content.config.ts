@@ -21,7 +21,7 @@ const knowledge = defineCollection({
     datePublished: z.string(),       // ISO date, static (no Date.now())
     dateModified: z.string(),
     author: z.string(),
-    reviewer: z.string(),            // shown with EMR/ASCA credential
+    reviewer: z.string().optional(), // only populate after a documented clinical review
     heroImage: z.string().optional(),    // /images/... (reused DE SPA asset)
     heroImageAlt: z.string().optional(), // English alt text
     deWissenUrl: z.string().url().optional(), // explicit DE twin, if one exists

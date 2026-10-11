@@ -20,13 +20,12 @@ const path = enTherapyPath(slug);
 const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const contactHref = `/en/contact/?therapie=${encodeURIComponent(name)}`;
 
-const _titleEmr = `${titleTerm} in Switzerland | EMR-recognised | TCM.ch`;
-const title = _titleEmr.length > 60 ? `${titleTerm} in Switzerland | TCM.ch` : _titleEmr;
+const title = `${titleTerm} in Switzerland | TCM.ch`;
 const h1 = name;
-const description = `English-speaking ${titleTerm} in Switzerland: what ${keyword} is, what to expect, and typical uses. EMR-/ASCA-recognised.`;
+const description = `${titleTerm} in Switzerland: what a session involves, evidence, practical questions and how to request an appointment.`;
 
 // Therapy-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
-const faqs = [...therapy.faqs, INSURANCE_FAQ];
+const faqs = [...therapy.faqs, ...(slug === 'physiotherapy' ? [] : [INSURANCE_FAQ])];
 
 // Conditions this therapy commonly supports (cross-link EN -> EN).
 const supportedConditions = therapy.conditions
@@ -48,7 +47,7 @@ const procedureLd = {
   inLanguage: 'en',
   description: lead,
   howPerformed: whatToExpect.join(' '),
-  procedureType: { '@type': 'MedicalProcedureType', name: 'Complementary or alternative medicine' },
+  procedureType: 'https://schema.org/TherapeuticProcedure',
 };
 
 const medicalLd = {
@@ -83,121 +82,23 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: h1, item: url },
   ],
 };
+
+import Premium from '../../../components/en/Premium.astro';
+import Hero from '../../../components/en/Hero.astro';
+import ArticleNav from '../../../components/en/ArticleNav.astro';
+import NextSteps from '../../../components/en/NextSteps.astro';
+import Sources from '../../../components/en/Sources.astro';
+import { editorialSources } from '../../../data/en-editorial';
 ---
 <Layout title={title} description={description} path={path} schema={[procedureLd, medicalLd, faqLd, breadcrumbLd]}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Therapies</div>
-      <h1>{h1}</h1>
-      <p class="lead">{lead}</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href={`tel:+${site.whatsapp}`}>Call us</a>
-      </div>
-      {image && (
-        <figure class="hero-figure">
-          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
-        </figure>
-      )}
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap prose">
-      <h2>What it is</h2>
-      {whatItIs.map((p) => <p>{p}</p>)}
-
-      <h2>What to expect in a session</h2>
-      {whatToExpect.map((p) => <p>{p}</p>)}
-
-      <h2>What it is typically used for</h2>
-      <p>{usedFor}</p>
-
-      <h2>What the evidence says</h2>
-      <p>{evidence}</p>
-      <p class="evidence-note">
-        We base this on general clinical guidelines and systematic reviews (e.g. Cochrane, PubMed-indexed
-        research). The honest summary: studies vary in quality and findings, and individual results differ.
-        We use {name} as a complement, not a substitute for medical assessment.
-      </p>
-
-      {supportedConditions.length > 0 && (
-        <>
-          <h2>Conditions it commonly supports</h2>
-          <p>People often try {name} as part of a wider approach for:</p>
-          <ul class="cond-links">
-            {supportedConditions.map((c) => (
-              <li><a class="inline-link" href={enConditionPath(c.slug)}>{c.condition} →</a></li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      <h2>FAQ</h2>
-      <div class="faq">
-        {faqs.map((f) => (
-          <details>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-
-      <div class="xlinks">
-        <strong>Next steps:</strong>
-        <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/therapies/">← All therapies</a>
-      </div>
-
-      <p class="disclaimer">
-        This page is general information, not medical advice, and does not promise any cure or specific
-        outcome. If symptoms are severe, sudden or worsening, see a doctor.
-      </p>
-    </div>
-  </section>
-
-  {relatedTherapies.length > 0 && (
-    <section class="section">
-      <div class="wrap">
-        <h2>Related therapies</h2>
-        <div class="cards">
-          {relatedTherapies.map((t) => (
-            <a class="card" href={enTherapyPath(t.slug)}>
-              <h3>{t.name}</h3>
-              <p>{t.summary}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-</Layout>
-
-<style>
-  .prose { max-width: 760px; }
-  .prose h2 { font-size: 26px; font-weight: 800; margin: 38px 0 14px; }
-  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .prose li { margin: 0 0 10px; }
-  .prose strong { color: var(--ink); }
-  .evidence-note { font-size: 15px; color: var(--text-soft); border-left: 3px solid var(--blue); padding-left: 14px; }
-  .cond-links { list-style: none; padding-left: 0; }
-  .cond-links li { margin: 0 0 8px; }
-  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
-  .inline-link:hover { text-decoration: underline; }
-  .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45, 155, 111, .25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }
-  .xlinks strong { color: var(--blue-dark); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; }
-  .cta-row { margin: 32px 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
-</style>
+<Premium><div class="wrap en-breadcrumb"><a href="/en/">Home</a> / <a href="/en/therapies/">Therapies</a></div>
+<Hero eyebrow="Therapies · Patient guide" title={h1} lead={lead} image={image?.src} imageAlt={image?.alt} caption={image ? 'Illustrative treatment image' : undefined} primaryHref={contactHref} primaryLabel="Ask about treatment" secondaryHref="#evidence" secondaryLabel="Read the evidence" />
+<section class="en-section"><div class="wrap en-article-layout"><ArticleNav items={[{id:'overview',label:'Overview'},{id:'session',label:'The session'},{id:'uses',label:'Uses'},{id:'evidence',label:'Evidence'},{id:'practical',label:'Before booking'},{id:'faq',label:'Questions'}]}/><article class="en-reading"><h2 id="overview">What is {name.toLowerCase()}?</h2>{whatItIs.map(p=><p>{p}</p>)}
+<h2 id="session">What happens in a session?</h2>{whatToExpect.map(p=><p>{p}</p>)}
+<div class="en-checklist"><h3>Questions worth asking</h3><ul><li>What are we trying to improve, and how will we measure it?</li><li>What alternatives are available, including not having this treatment?</li><li>What are the risks for my medical history and medication?</li><li>What is the full fee, and when will we review the plan?</li></ul></div>
+<h2 id="uses">Why people consider it</h2><p>{usedFor}</p>
+{supportedConditions.length > 0 && <><p>Explore the condition-specific context before choosing a method:</p><ul>{supportedConditions.map(c=><li><a href={enConditionPath(c!.slug)}>{c!.condition}</a></li>)}</ul></>}
+<h2 id="evidence">Evidence and limitations</h2><p>{evidence}</p><Sources sources={editorialSources[slug] ?? []}/>
+<h2 id="practical">Before booking</h2><p>Availability differs by practice. Tell us which method you are interested in; we will confirm whether your chosen location offers it. Bring your medication list and relevant medical reports, and tell the practitioner about pregnancy, recent procedures and any ongoing treatment.</p><p>Ask for the first-visit fee, follow-up fee and any additional product costs. <a href="/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/">Our cost guide</a> explains what to ask. {slug !== 'physiotherapy' && <a href="/en/health-insurance-acupuncture/">Check supplementary cover before committing.</a>}</p>
+<h2 id="faq">Your questions</h2><div class="en-faq">{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div><p class="en-note">General information, not a diagnosis or an individual treatment recommendation. No particular outcome is guaranteed.</p></article></div></section>
+{relatedTherapies.length > 0 && <section class="en-section en-concrete"><div class="wrap"><span class="en-label">Compare your options</span><h2>Related therapies</h2><div class="en-grid">{relatedTherapies.map(t=><a class="en-card" href={enTherapyPath(t.slug)}><h3>{t.name}</h3><p>{t.summary}</p><span class="en-card-link">Explore treatment →</span></a>)}</div></div></section>}<NextSteps href={contactHref}/></Premium></Layout>

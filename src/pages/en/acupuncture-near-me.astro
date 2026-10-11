@@ -6,9 +6,8 @@ import { clinics, enLocationPath } from '../../data/locations';
 
 const path = '/en/acupuncture-near-me';
 const url = `https://tcm.ch${path}/`;
-const title = 'Acupuncture Near Me: 13 TCM Clinics in Switzerland | TCM.ch';
-const description =
-  'Find acupuncture near you in Switzerland: TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners in Zurich, Winterthur, St. Gallen and beyond.';
+const title = 'Acupuncture Near Me in Switzerland | TCM.ch';
+const description = 'Find acupuncture by region in Switzerland. Compare operating practices, check location status and request an appointment in English.';
 
 const groups = [
   { label: 'Zurich & Winterthur', ids: ['zuerich-hoengg', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
@@ -21,11 +20,26 @@ const byId = (id: string) => clinics.find((c) => c.id === id);
 const allIds = groups.flatMap((g) => g.ids);
 
 const faqs = [
-  { q: 'Where can I find acupuncture near me in Switzerland?', a: 'TCM.ch runs clinics across German-speaking Switzerland, including Zurich, Winterthur, St. Gallen, Frauenfeld and Kreuzlingen. This page lists every location with its address, so you can contact the clinic closest to you directly.' },
-  { q: 'Do the practitioners speak English?', a: 'Yes. English-speaking practitioners are available at our locations, and appointments, intake and treatment can be done in English. Mention your language preference when booking and we will match you with the right therapist.' },
-  { q: 'Does Swiss health insurance cover acupuncture?', a: 'Basic insurance only covers acupuncture performed by licensed physicians. Most supplementary plans for complementary medicine cover a large share, typically 80 to 100 percent, of treatments by EMR- or ASCA-registered therapists. All our practitioners are registered, and we check your coverage for free.' },
-  { q: 'How quickly can I get an appointment?', a: 'Usually within a few days, sometimes sooner depending on the location. Contact the clinic directly through its page or by phone, and we get back to you personally.' },
-  { q: 'What does a session cost?', a: 'You will get the exact rate before your first treatment, with no hidden costs. With supplementary insurance most patients pay only a small share themselves. Checking whether your insurance covers the treatment is free, before any costs arise.' },
+  {
+    "q": "How do I choose a nearby practice?",
+    "a": "Compare the address, travel options and available treatments on the location page. Tell the team where you live or work and which times suit you."
+  },
+  {
+    "q": "Can I request a consultation in English?",
+    "a": "Yes. Include English as your preferred consultation language in your request. The team will confirm language availability with the proposed practitioner."
+  },
+  {
+    "q": "Are all listed locations open?",
+    "a": "No. Operating practices and locations in preparation or under review are labelled separately. An interest request for a planned location is not a confirmed appointment."
+  },
+  {
+    "q": "Is treatment covered by insurance?",
+    "a": "Check the named practitioner, proposed method and policy conditions with your insurer before booking. Registration alone does not guarantee payment."
+  },
+  {
+    "q": "How soon can I have an appointment?",
+    "a": "Availability depends on the practice and practitioner. The team will confirm a suitable time after receiving your request; this page does not show live appointment slots."
+  }
 ];
 
 const schema = [
@@ -41,100 +55,17 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'en',
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
+
+import Premium from '../../components/en/Premium.astro';
+import Hero from '../../components/en/Hero.astro';
+import ClinicCard from '../../components/en/ClinicCard.astro';
+import NextSteps from '../../components/en/NextSteps.astro';
 ---
-<Layout title={title} description={description} path={path} schema={schema}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Swiss TCM network</div>
-      <h1>Acupuncture Near You in Switzerland</h1>
-      <p class="lead">Looking for acupuncture or TCM near you? We are a network of clinics across German-speaking Switzerland, with English-speaking, EMR-/ASCA-recognised practitioners. Choose the clinic that is easiest for you to reach.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="#clinics">Find a clinic near you →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="clinics">
-    <div class="wrap">
-      <div class="prose" style="margin-bottom:28px">
-        <h2>Our clinics across Switzerland</h2>
-        <p>Pick the clinic closest to you. Every location is EMR-/ASCA-recognised and billable through supplementary insurance.</p>
-      </div>
-      {groups.map((g) => (
-        <div style="margin-bottom:28px">
-          <h3 style="font-size:18px;font-weight:800;color:var(--ink);margin:0 0 14px">{g.label}</h3>
-          <div class="cards">
-            {g.ids.map((id) => byId(id)).filter(Boolean).map((c) => (
-              <a class="card" href={enLocationPath(c!.id)}>
-                <div class="card-body">
-                  <h3>{c!.name}</h3>
-                  <p>{c!.status !== 'operational' ? `${c!.city} (${(c!.openingNote ?? 'in preparation').toLowerCase()})` : `${c!.street}, ${c!.postalCode} ${c!.city}`}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))}
-      <p style="color:var(--mid);font-size:14px;margin-top:6px">Not sure which location fits? We will book you into the nearest clinic. You can also browse <a href="/en/locations/" style="color:var(--blue);font-weight:600">all clinics</a> in detail.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap prose">
-      <h2>Finding acupuncture near you as a newcomer</h2>
-      <p>When you search for acupuncture near you, you want two things: a short trip and a practice you can trust. At TCM.ch you get both. We are not a single studio but a network of clinics across German-speaking Switzerland. In practice that means acupuncture near you in Zurich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach and Basel. Chances are one of them is only a few minutes away.</p>
-      <p>If you have recently moved to Switzerland, the insurance side is usually the part that feels unfamiliar, and it matters most. Swiss cover has two layers. Basic insurance is mandatory, but it only pays for acupuncture when a physician performs it. Therapist-led TCM, like ours, is reimbursed through optional supplementary insurance for complementary medicine. Most of these supplementary plans cover a large share of each session, typically 80 to 100 percent, as long as the practitioner is EMR- or ASCA-registered. All of ours are. We check your coverage for free before any costs arise, so there are no surprises. For many internationals that clarity is not a given elsewhere, and it is a good reason to sort out the paperwork before your first visit.</p>
-      <p>The most common reason people come to us is classic <a href="/en/therapies/acupuncture/">acupuncture</a>, for example for back and neck pain, headaches, sleep problems or stress-related complaints. Many locations also offer Tuina massage, cupping and Chinese herbal medicine. Which methods your nearest team provides is listed on each location page.</p>
-      <p>You do not need to know in advance which treatment is right. Tell us briefly what is going on and where you live. We suggest the location near you that fits, and, if you like, a first appointment. We get back to you personally, and a first session is often possible within 24 to 48 hours.</p>
-    </div>
-  </section>
-
-  <section class="section" style="background:var(--blue-light)">
-    <div class="wrap prose">
-      <div class="eyebrow">Start without risk</div>
-      <h2>Start without risk. We take care of the rest.</h2>
-      <p>You tell us what is going on. We organise the next step before you commit to anything.</p>
-      <ul>
-        <li><strong>Free insurance check.</strong> We confirm what your supplementary policy covers before any costs arise.</li>
-        <li><strong>An honest assessment.</strong> If TCM is not the right path for your situation, we say so at the first conversation and point you to a better option.</li>
-        <li><strong>A team from two worlds.</strong> Practitioners from Switzerland and South Korea, EMR-/ASCA-registered, working in English.</li>
-      </ul>
-      <p style="font-size:14px;color:var(--mid)">No subscription, no obligation. You decide after the first conversation.</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/health-insurance-acupuncture/">Is acupuncture covered by insurance? →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap prose">
-      <h2>FAQ</h2>
-      <div class="faq">
-        {faqs.map((f) => (
-          <details>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-</Layout>
-
-<style>
-  .prose { max-width: 760px; }
-  .prose h2 { font-size: 26px; font-weight: 800; margin: 0 0 14px; }
-  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .prose li { margin: 0 0 10px; }
-  .prose strong { color: var(--ink); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '\2013'; }
-  .faq p { margin: 0 0 16px; }
-  .cta-row { margin: 24px 0 0; display: flex; gap: 12px; flex-wrap: wrap; }
-</style>
+<Layout title={title} description={description} path={path} schema={schema}><Premium>
+<Hero eyebrow="Find your practice · Switzerland" title="Care closer to your everyday life." lead="Explore practices by region, check their current status and tell us where you would like an appointment. TCM.ch coordinates inquiries across its own and partner locations." primaryHref="#clinics" primaryLabel="Browse by region" secondaryHref="/en/contact/" secondaryLabel="Help me choose"/>
+<section class="en-section" id="clinics"><div class="wrap"><span class="en-label">Choose your region</span><h2>Operating practices</h2><p class="en-intro">Check each page for the actual operator, treatment options and practical information.</p>
+{groups.map(g=>{const current=g.ids.map(byId).filter(c=>c?.status==='operational');return current.length>0 && <div class="en-region"><h3>{g.label}</h3><div class="en-grid">{current.map(c=><ClinicCard clinic={c!}/>)}</div></div>;})}
+</div></section>
+<section class="en-section en-concrete"><div class="wrap"><h2>Planned locations &amp; status updates</h2><p>An interest request is not an appointment at an operating practice. Where a separate partner option exists, the location page explains the distinction.</p><div class="en-grid">{clinics.filter(c=>c.status!=='operational').map(c=><ClinicCard clinic={c}/>)}</div></div></section>
+<section class="en-section"><div class="wrap en-split"><div><h2>Choose for more than distance.</h2><p>Ask about your preferred language, treatment method, accessibility needs and appointment times. Confirm the proposed practitioner and fee before arranging travel.</p><a class="en-link" href="/en/health-insurance-acupuncture/">Understand Swiss insurance →</a></div><div><h2>Practical questions</h2><div class="en-faq">{faqs.map(f=><details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div></div></div></section><NextSteps/></Premium></Layout>
+<style>.en-region{margin-top:36px}.en-region h3{margin-bottom:20px}</style>
