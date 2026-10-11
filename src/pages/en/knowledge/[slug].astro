@@ -37,12 +37,6 @@ const articleLd = {
   datePublished: d.datePublished,
   dateModified: d.dateModified,
   author: { '@type': 'Organization', name: d.author, url: 'https://tcm.ch/en/' },
-  reviewedBy: {
-    '@type': 'Organization',
-    name: d.reviewer,
-    url: 'https://tcm.ch/en/',
-    description: 'EMR-/ASCA-recognised practitioners of Traditional Chinese Medicine in Switzerland.',
-  },
   publisher: {
     '@type': 'Organization',
     name: 'TCM.ch',
@@ -88,7 +82,7 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
       <div class="eyebrow">TCM.ch - Knowledge</div>
       <h1>{d.title}</h1>
       <p class="byline">
-        By {d.author} · Medically reviewed by {d.reviewer}<br />
+        By {d.author}<br />
         <span class="dates">
           Published {fmt(d.datePublished)}{d.dateModified !== d.datePublished && <> · Updated {fmt(d.dateModified)}</>}
         </span>

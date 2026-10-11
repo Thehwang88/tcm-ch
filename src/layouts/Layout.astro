@@ -29,7 +29,9 @@ const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 // verwirft den Cluster. Deshalb hier auf die kanonische Slash-Form bringen.
 const withSlash = (p: string) => (p.endsWith('/') ? p : p + '/');
 const enHref = canonical;
-const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path] ?? '/'), site.url).href;
+const dePath = deHrefProp ?? PAIR_MAP_EN[path] ?? PAIR_MAP_EN[path.replace(/\/$/, '')] ?? PAIR_MAP_EN[withSlash(path)];
+// No unrelated DE-home alternate for an unpaired EN page (e.g. the 404).
+const deHref = enOnly || !dePath ? null : new URL(withSlash(dePath), site.url).href;
 ---
 
 <!doctype html>
