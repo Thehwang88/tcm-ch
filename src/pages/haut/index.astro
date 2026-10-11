@@ -337,4 +337,60 @@ const schema = [
     .art-grid { grid-template-columns: 1fr; }
     .hero { padding: 36px 0; }
   }
+
+  /* ══ Wave 6 · B1 HAUT — Softriver brand system with deliberate gold accent (design only) ══ */
+  .haut-scope { --ink: var(--brand-black); --black: var(--brand-black); --mid: rgba(2,11,16,.72); --muted: rgba(2,11,16,.62); --border: rgba(2,11,16,.1); --surface: var(--brand-surface); --blue: var(--brand-black); --blue-dark: var(--brand-ink); --blue-light: var(--brand-tint); color: var(--brand-black); }
+  .btn { border-radius: 999px; font-weight: 700; }
+  .btn--primary { background: var(--brand-black); color: #fff; box-shadow: none; }
+  .btn--primary:hover { background: #1f2a30; color: #fff; transform: translateY(-1px); box-shadow: 0 10px 24px rgba(2,11,16,.18); }
+  .btn--ghost { background: #fff; color: var(--brand-black); border: 1.5px solid rgba(2,11,16,.22); box-shadow: none; }
+  .btn--ghost:hover { background: var(--h-porcelain); border-color: var(--h-bronze); color: var(--brand-black); }
+  .btn:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+  .cta-row { gap: 12px; }
+  @media (prefers-reduced-motion: reduce) { .btn, .btn--primary:hover { transition: none; transform: none; } }
+  @media (max-width: 480px) { .cta-row .btn { width: 100%; justify-content: center; min-height: 48px; } }
+  /* Hub hero: porcelain (gold family) with brand scale */
+  .hero { padding: clamp(48px, 7vh, 80px) 0; border-bottom: 1px solid rgba(2,11,16,.06); }
+  .hero-img img { border-radius: 24px; box-shadow: 0 18px 40px rgba(2,11,16,.1); }
+  .eyebrow, .sec-label, .story-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--h-bronze-dk); margin-bottom: 14px; }
+  .eyebrow::before, .sec-label::before, .story-label::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: var(--h-bronze); flex-shrink: 0; }
+  h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 0 0 20px; }
+  .hero .lead { font-size: clamp(17px, 1.5vw, 19.5px); line-height: 1.6; color: rgba(2,11,16,.72); max-width: 34em; }
+  .cta-row { margin-top: 26px; }
+  .cta-note { color: rgba(2,11,16,.62); }
+  .cta-note a { color: var(--brand-black); text-decoration: underline; text-decoration-color: var(--h-bronze); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .cta-note a:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+  .section h2 { color: var(--brand-black); }
+  .sec-intro { font-size: 16.5px; line-height: 1.7; color: rgba(2,11,16,.72); }
+  .band img, .craft-imgs img, .story-img img { border-radius: 24px; }
+  .band figcaption { color: rgba(2,11,16,.62); }
+  /* Treatment cards */
+  .treat { border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 28px; transition: border-color var(--t-base) ease, transform var(--t-base) ease, box-shadow var(--t-base) ease; }
+  .treat:hover { border-color: rgba(2,11,16,.3); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(2,11,16,.07); }
+  .t-name { color: var(--brand-black); letter-spacing: -.01em; }
+  .t-badge { border-radius: 999px; padding: 4px 10px; }
+  .t-text { color: rgba(2,11,16,.72); font-size: 15.5px; line-height: 1.6; }
+  .t-fuer li { color: rgba(2,11,16,.72); }
+  .t-kasse { color: rgba(2,11,16,.62); border-top-color: rgba(2,11,16,.1); }
+  /* Matcher + articles + story + closing */
+  .matcher { border-radius: 20px; }
+  .m-label { color: var(--brand-black); }
+  .m-rows, .m-row { border-color: var(--h-line); }
+  .m-thema { color: var(--brand-black); }
+  .m-ziel { color: rgba(2,11,16,.62); }
+  .m-row:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; border-radius: 8px; }
+  .m-note { color: rgba(2,11,16,.62); }
+  .art { border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 24px; transition: border-color var(--t-base) ease, transform var(--t-base) ease, box-shadow var(--t-base) ease; }
+  .art:hover { border-color: rgba(2,11,16,.3); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(2,11,16,.07); }
+  .art:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+  .a-title { color: var(--brand-black); }
+  .a-excerpt { color: rgba(2,11,16,.72); }
+  .a-meta { color: rgba(2,11,16,.62); }
+  .story-text h2 { font-size: clamp(26px, 2.8vw, 34px); line-height: 1.1; color: var(--brand-black); }
+  .story-text p { color: rgba(2,11,16,.72); font-size: 16.5px; line-height: 1.7; }
+  .closing { border-radius: 24px; }
+  .closing h2 { font-size: clamp(24px, 2.6vw, 30px); color: var(--brand-black); }
+  .closing p { color: rgba(2,11,16,.72); }
+  @media (prefers-reduced-motion: reduce) { .treat, .art { transition: none; } .treat:hover, .art:hover { transform: none; } }
+  @media (max-width: 640px) { h1 { font-size: clamp(30px, 8.4vw, 38px); } .hero-img img, .band img, .craft-imgs img, .story-img img, .closing { border-radius: 18px; } .treat { padding: 22px 18px; } }
 </style>

@@ -40,8 +40,12 @@ const description = openingSoon
     : `Acupuncture & TCM in ${name}: ${openingLabel}, not open yet. Register your interest now; we contact you once appointments are possible.`
   : `Acupuncture & TCM in ${name}: request your appointment in English. Billing via supplementary insurance, depending on your policy.`;
 
-// Hero image - DE heroBg where the Standort page has one, else a relevant existing asset.
-const image = locationImages[id];
+// Reuse the current German location hero, including the dedicated St. Gallen page.
+const deStandort = getStandort(id);
+const imageSrc = id === 'st-gallen' ? '/images/standort-stgallen.jpg' : deStandort?.hero.image ?? locationImages[id]?.src;
+const image = imageSrc ? { src: imageSrc } : undefined;
+// Generic/planned imagery must never imply a verified photograph of this clinic.
+const illustrativeImage = openingSoon || !deStandort || /\/(hero-main\.webp|basel-reception\.webp)$/.test(imageSrc ?? '');
 
 // ── JSON-LD: MedicalClinic + BreadcrumbList ──
 const clinicLd: Record<string, unknown> = {
@@ -62,7 +66,6 @@ const clinicLd: Record<string, unknown> = {
 };
 if (openingHours.length) clinicLd.openingHours = openingHours;
 // TCM.ch-operated location: same entity as the DE page (@id + name), so DE/EN describe one clinic.
-const deStandort = getStandort(id);
 const deName = clinic.schemaName ?? deStandort?.seo?.schemaName ?? (deStandort ? `TCM.ch ${deStandort.stadt}` : undefined);
 if (!clinic.betreiber && deName) {
   clinicLd['@id'] = `https://tcm.ch/standorte/${id}/`;
@@ -124,7 +127,7 @@ const faqs = [
 
 <Layout title={title} description={description} path={path} schema={underReview || !street ? [breadcrumbLd] : [clinicLd, breadcrumbLd]}>
 <Premium>
-  <Hero eyebrow={`${region} · ${openingSoon ? 'Location update' : 'Your local practice'}`} title={`Acupuncture & TCM in ${name}`} lead={heroLead} image={image?.src} imageAlt={image ? 'TCM.ch brand illustration; not a verified photograph of this location' : undefined} caption={image ? 'Illustrative brand image' : undefined} primaryHref={contactHref} primaryLabel={openingSoon ? 'Register your interest' : 'Request an appointment'} secondaryHref="#practical" secondaryLabel="Practical information" />
+  <Hero eyebrow={`${region} · ${openingSoon ? 'Location update' : 'Your local practice'}`} title={`Acupuncture & TCM in ${name}`} lead={heroLead} image={image?.src} imageWidth={id === 'st-gallen' ? 1447 : undefined} imageHeight={id === 'st-gallen' ? 1087 : undefined} imageAlt={image ? (illustrativeImage ? 'TCM.ch brand illustration; not a verified photograph of this location' : `TCM.ch ${name}: practice interior`) : undefined} caption={image && illustrativeImage ? 'Illustrative brand image' : undefined} primaryHref={contactHref} primaryLabel={openingSoon ? 'Register your interest' : 'Request an appointment'} secondaryHref="#practical" secondaryLabel="Practical information" />
   <section class="en-section" id="practical"><div class="wrap"><div class="en-grid">
     <div class="en-card"><span class="en-label">Practice</span><h2>{clinic.betreiber?.name ?? clinic.schemaName ?? name}</h2>
       {clinic.betreiber && <p>Partner practice in the TCM.ch network. <a href={clinic.betreiber.url}>Visit the practice website →</a></p>}

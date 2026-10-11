@@ -1,5 +1,5 @@
 ---
-interface Props { eyebrow:string; title:string; lead:string; image?:string; imageAlt?:string; caption?:string; primaryHref:string; primaryLabel:string; secondaryHref?:string; secondaryLabel?:string; }
+interface Props { eyebrow:string; title:string; lead:string; image?:string; imageAlt?:string; imageWidth?:number; imageHeight?:number; caption?:string; primaryHref:string; primaryLabel:string; secondaryHref?:string; secondaryLabel?:string; }
 const p = Astro.props;
 ---
 <section class:list={['en-hero',{'en-hero--plain':!p.image}]}>
@@ -9,7 +9,7 @@ const p = Astro.props;
       {p.secondaryHref && <a class="tcm-btn tcm-btn--outline" href={p.secondaryHref}>{p.secondaryLabel}</a>}</div>
     <slot />
   </div></div>
-  {p.image && <figure class="en-hero-media"><img src={p.image} alt={p.imageAlt ?? ''} width="1086" height="610" fetchpriority="high" loading="eager" decoding="async" />{p.caption && <figcaption>{p.caption}</figcaption>}</figure>}
+  {p.image && <figure class="en-hero-media"><img src={p.image} alt={p.imageAlt ?? ''} width={p.imageWidth ?? 1086} height={p.imageHeight ?? 610} fetchpriority="high" loading="eager" decoding="async" />{p.caption && <figcaption>{p.caption}</figcaption>}</figure>}
 </section>
 <style>
 /* Layout adapted from deployed sr-hero; type sizes use shared tokens. */

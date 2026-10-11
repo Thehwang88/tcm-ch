@@ -24,8 +24,12 @@ Branch: `feat/en-premium-v2`. No merge or deployment authorised.
 `home.css` Softriver hero, `BrandSignature.astro` are actual repository evidence.
 Use Figtree 800, existing type tokens, mint `--brand`, rich black
 `--brand-black`, concrete `--surface-concrete`, pill CTAs and 16px cards.
-The external complete brand-guidelines PDF is not present: full PDF compliance
-cannot be certified. Earlier `REBRAND_ARCHITECTURE.md` and `CLAUDE.md` contain
+The complete “TCM.ch Complete Brand Guidelines.pdf” (33 pages, uploaded 2026-10-07)
+was located during continuation. Its palette matches the deployed primary colours:
+Concrete #F2F4F2, Vivid Mint #1AE288, Rich Black #020B10. Page 22 specifies Manrope
+Regular/Medium, while the current DE implementation uses Figtree. This draft keeps
+shared deployed typography rather than creating an independent EN font system.
+Typography authority needs owner resolution before claiming full PDF compliance. Earlier `REBRAND_ARCHITECTURE.md` and `CLAUDE.md` contain
 obsolete colour/form/SPA claims; current source takes precedence.
 
 Reuse tokens, UI buttons, `BrandSignature` via its existing English-capable props,
@@ -100,14 +104,14 @@ are blocked while a request is pending. Backend validation remains unchanged.
 | `node scripts/check-standort-ux.mjs` | PASS — zero failures |
 | `node scripts/check-en-premium.mjs` | PASS — 51 EN pages; 50 JSON-LD script blocks parse; canonical/reciprocal DE links, internal links/anchors and image files resolve |
 | Form script in isolated VM with mocked network | PASS — every option prefilled; distinct Oerlikon paths; validation, missing token, honeypot, success/server/network failure and duplicate submission |
-| German regression | All 715 non-English HTML files byte-identical to pre-change production build |
+| German regression | All 715 non-English HTML files byte-identical to a fresh production build of current main `c34cb98` |
 | Sitemap | URL set unchanged; date-only generator churn excluded from source commit |
 | `git diff --check` | PASS |
 | Browser/desktop/mobile screenshots | NOT RUN — supported control-browser skill unavailable in managed environment |
 | Live submission, Turnstile, GTM delivery | NOT RUN — mocks verify code behaviour, not production third-party services |
 | Full schema.org / Google rich-result validation | NOT RUN — local checks verify JSON and selected clinic identity/status invariants only |
 | Search Console refresh | Unavailable: Windsor discovery returned only Google Ads accounts; no Search Console connector/account |
-| Full brand PDF comparison | Pending — PDF not in checkout |
+| Full brand PDF comparison | Text reviewed; primary palette agrees, Manrope vs deployed Figtree remains unresolved; visual PDF/layout comparison pending |
 
 No new route was added, so no new index-queue entry is required. No mass EN
 translation or generic city hub was created. Therapy, condition and knowledge
@@ -121,3 +125,14 @@ Before GO: screenshots at 390px and 1440px (plus 360/768/1024 overflow checks),
 font and CTA comparison with DE, keyboard/mobile navigation, real Turnstile
 rendering and a mocked browser submission. Production merge/deploy stays blocked
 until the owner explicitly approves.
+
+
+## Continuation: current main and German imagery
+
+Integrated main `c34cb98149eda61f0329bbba64108bcee85e0880`, including its shared
+EN rebrand stylesheet and German Wave 6/7 changes. The initial audit above describes
+the original baseline, not the subsequently integrated release. Homepage now reuses
+DE `team-hero.jpg`; St. Gallen reuses its dedicated `standort-stgallen.jpg`; other
+clinic heroes prefer current `getStandort(id).hero.image` over the legacy mapping.
+Generic and planned-location images remain explicitly illustrative. Image reuse
+does not verify depicted staff identities. No German source was changed by this step.

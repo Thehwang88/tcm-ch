@@ -222,3 +222,10 @@ main > article:not([class]) + section.tf-section:not(#w3) :is(a,button):focus-vi
   :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) .cta-head > div{min-width:0}
   :is(main > article:not([class]), main > :is(section.hero,section.section) > .wrap.narrow):not(#w3) :is(.cta-card-title,.cta-eyebrow){overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}
 }
+
+/* ══ Wave 6 · B0 — Magazin-Zeile (.ouch-mag-row, Inline-Styles) auf Wissen-Leaves: Rich Black + Mint-Strich ══ */
+.ouch-mag-row > div:first-child{color:rgba(2,11,16,.62)!important}
+.ouch-mag-row a{color:var(--brand-black)!important;text-decoration:underline!important;text-decoration-color:var(--brand)!important;text-decoration-thickness:2px;text-underline-offset:3px}
+.ouch-mag-row a span{color:var(--brand-black)}
+.ouch-mag-row a:hover{background:var(--brand-tint)}
+.ouch-mag-row a:focus-visible{outline:3px solid rgba(2,11,16,.55);outline-offset:3px}

@@ -132,12 +132,14 @@ const panels = [
     </script>
 
     <style>
+      /* Wave 6 · B4: Brand-Tokens (druckfest: Rich Black statt Legacy-Grün, Tint-Chips); Layout/Seitenumbruch/Inhalt unverändert. */
+      :root { --black: var(--brand-black); --blue: var(--brand-black); --blue-dark: #1f2a30; --blue-light: var(--brand-tint); --green-mid: rgba(2,11,16,.12); --border: rgba(2,11,16,.14); --mid: rgba(2,11,16,.72); --muted: rgba(2,11,16,.62); }
       * { box-sizing: border-box; }
       body {
         margin: 0;
         font-family: var(--font-sans);
         color: var(--black);
-        background: #E9E7E3;
+        background: var(--brand-surface);
       }
 
       .toolbar {
@@ -160,7 +162,7 @@ const panels = [
         background: var(--blue);
         color: var(--white);
         border: 0;
-        border-radius: var(--r-btn);
+        border-radius: 999px;
         padding: 11px 18px;
         font-family: var(--font-sans);
         font-size: 14.5px;
@@ -242,7 +244,7 @@ const panels = [
         color: var(--mid);
         margin-bottom: 4mm;
       }
-      .ho-chip--problem { color: var(--blue-dark); border-color: var(--green-mid); background: var(--blue-light); }
+      .ho-chip--problem { color: var(--brand-ink); border-color: var(--green-mid); background: var(--blue-light); }
       .ho-imgwrap { position: relative; }
       .ho-imgwrap :global(img) { display: block; width: 100%; height: auto; }
 
@@ -262,7 +264,7 @@ const panels = [
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: rgba(45,155,111,.25);
+        background: rgba(26,226,136,.45);
         border: 2px solid var(--blue);
         box-shadow: 0 0 0 2px rgba(255,255,255,.9);
         flex-shrink: 0;
@@ -380,6 +382,20 @@ const panels = [
       @media screen and (max-width: 860px) {
         .sheet { width: 100%; min-height: 0; padding: 8mm; }
         .toolbar { padding: 12px 16px; }
+      }
+      /* Wave 7 · Bildschirm schmal (nur screen, Druck unberührt): einspaltig, kein horizontaler Overflow */
+      @media screen and (max-width: 600px) {
+        /* Nur die zweispaltigen Vergleichs-Handouts (HWS/LWS); Einzelbild-Handouts unverändert */
+        body:has(.ho-compare:not(.ho-compare--single)) .sheet { padding: 6mm 5mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-head { flex-direction: column; gap: 4mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-titles { text-align: left; }
+        body:has(.ho-compare:not(.ho-compare--single)) :is(.ho-compare, .ho-bottom, .ho-pain-row) { grid-template-columns: minmax(0, 1fr); }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-compare { gap: 6mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-bottom { gap: 6mm; align-items: start; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-qr { text-align: left; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-qr-svg :global(svg) { margin: 0 0 3mm; }
+        body:has(.ho-compare:not(.ho-compare--single)) :is(.ho-marker-label, .ho-painstep-label) { white-space: normal; max-width: 38vw; line-height: 1.2; }
+        body:has(.ho-compare:not(.ho-compare--single)) .ho-foot { flex-direction: column; gap: 2mm; }
       }
     </style>
   </body>
