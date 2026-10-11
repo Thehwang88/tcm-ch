@@ -1,0 +1,12 @@
+---
+import { enLocationPath, type Clinic } from '../../data/locations';
+const { clinic:c } = Astro.props as {clinic:Clinic};
+---
+<a class="en-card" href={enLocationPath(c.id)}>
+  <span class="en-status">{c.status === 'operational' ? 'Open clinic' : c.status === 'review' ? 'Status under review' : 'Not open yet'}</span>
+  <h3>{c.name}</h3>
+  <p>{c.betreiber ? c.betreiber.name : c.schemaName ?? `TCM.ch ${c.name}`}{c.betreiber && <><br />Partner practice in the TCM.ch network</>}</p>
+  {c.street && <p>{c.street}<br />{c.postalCode} {c.city}</p>}
+  {c.status !== 'operational' && <p>{c.openingNote ?? 'In preparation'}</p>}
+  <span class="en-card-link">View clinic <span aria-hidden="true">↗</span></span>
+</a>

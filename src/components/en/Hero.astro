@@ -1,0 +1,29 @@
+---
+interface Props { eyebrow:string; title:string; lead:string; image?:string; imageAlt?:string; caption?:string; primaryHref:string; primaryLabel:string; secondaryHref?:string; secondaryLabel?:string; }
+const p = Astro.props;
+---
+<section class:list={['en-hero',{'en-hero--plain':!p.image}]}>
+  <div class="en-hero-copy"><div class="en-hero-inner">
+    <span class="en-label">{p.eyebrow}</span><h1>{p.title}</h1><p>{p.lead}</p>
+    <div class="en-actions"><a class="tcm-btn en-hero-solid" href={p.primaryHref}>{p.primaryLabel} <span aria-hidden="true">↗</span></a>
+      {p.secondaryHref && <a class="tcm-btn tcm-btn--outline" href={p.secondaryHref}>{p.secondaryLabel}</a>}</div>
+    <slot />
+  </div></div>
+  {p.image && <figure class="en-hero-media"><img src={p.image} alt={p.imageAlt ?? ''} width="1086" height="610" fetchpriority="high" loading="eager" decoding="async" />{p.caption && <figcaption>{p.caption}</figcaption>}</figure>}
+</section>
+<style>
+/* Layout adapted from deployed sr-hero; type sizes use shared tokens. */
+.en-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--brand);color:var(--brand-black)}
+.en-hero--plain{grid-template-columns:1fr}
+.en-hero-copy{display:flex;align-items:center}
+.en-hero-inner{width:100%;padding:clamp(48px,6vw,96px) clamp(24px,3vw,48px) clamp(48px,6vw,96px) max(40px,calc((100vw - var(--max))/2));}
+.en-hero h1{max-width:16ch;font-size:var(--fs-hero);font-weight:800;letter-spacing:var(--tracking-heading);line-height:var(--lh-tight)}
+.en-hero p{font-size:var(--fs-sub);max-width:46ch;line-height:1.55}
+.en-hero .en-hero-solid{background:var(--brand-black);color:var(--white);min-height:52px}
+.en-hero .en-hero-solid:hover{background:var(--charcoal)}
+.en-hero-media{margin:0;position:relative;min-height:480px;background:var(--surface-concrete)}
+.en-hero-media img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center}
+.en-hero-media figcaption{position:absolute;bottom:16px;left:16px;right:16px;background:var(--white);color:var(--mid);border-radius:var(--r-card);padding:8px 14px;font-size:var(--fs-small)}
+@media(max-width:1024px){.en-hero{grid-template-columns:1fr}.en-hero-inner{padding:48px 24px}.en-hero h1{max-width:23ch}.en-hero-media{min-height:0;aspect-ratio:16/9}.en-hero-media img{position:static;display:block;aspect-ratio:16/9}}
+@media(max-width:600px){.en-hero-media,.en-hero-media img{aspect-ratio:4/3}.en-hero-inner{padding:40px 24px}.en-hero-media figcaption{font-size:var(--fs-small)}}
+</style>
