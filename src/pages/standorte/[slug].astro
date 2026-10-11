@@ -238,7 +238,11 @@ if (migrated) {
 }
 
 const data = migrated as Standort;
-const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`) : '';
+const waTermin = migrated ? waHref(data.nap.telefon, data.review
+  ? `Hallo, ich suche einen Termin in ${data.stadt.split(' ')[0]}. Welche Praxis könnt ihr mir vorschlagen?`
+  : data.planned
+  ? `Hallo, ich interessiere mich für ${data.stadt}: Bitte meldet euch mit einer Praxis, in der jetzt ein Termin möglich ist, oder merkt mich für den neuen Standort vor.`
+  : `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`) : '';
 ---
 {migrated ? (
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema}>
@@ -262,7 +266,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
           <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
             <div>
               <div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:4px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div>
-              <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. Komm vorbei, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
+              <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. {data.planned ? 'Schreib uns' : 'Komm vorbei'}, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
             </div>
             <button type="button" onclick="openContactForm()" class="btn-primary" style="flex-shrink:0">Termin anfragen <span aria-hidden="true">→</span></button>
           </div>
@@ -284,7 +288,7 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px">
                   <div>
                     <div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:4px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div>
-                    <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. Komm vorbei, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
+                    <div style="font-size:14.5px;color:var(--mid);line-height:1.5;max-width:64ch">Du musst nicht wissen, welche Therapie du brauchst. {data.planned ? 'Schreib uns' : 'Komm vorbei'}, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div>
                   </div>
                   <button type="button" onclick="openContactForm()" class="btn-primary" style="flex-shrink:0">Termin anfragen <span aria-hidden="true">→</span></button>
                 </div>
@@ -303,12 +307,13 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
               <Fragment>
                 {/* CRO-L2.1 (v2-Pilot): Conversion vor dem SEO-Teil - FinalCta + Formular direkt
                     nach Krankenkassen; Intro/extraBlock/FAQ/UeberPraxis rutschen darunter. */}
+                {data.extraBlockVorFormular && data.extraBlock && <Fragment set:html={data.extraBlock} />}
                 <FinalCta data={data} />
                 <KontaktForm data={data} sitekey={turnstileSitekey} />
               </Fragment>
             )}
             <IntroNap data={data} />
-            {data.extraBlock && <Fragment set:html={data.extraBlock} />}
+            {data.extraBlock && !(data.v2 && data.extraBlockVorFormular) && <Fragment set:html={data.extraBlock} />}
           </Fragment>
         ) : (
           <Fragment>
