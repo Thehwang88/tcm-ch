@@ -2,6 +2,9 @@
 # not here: _redirects cannot match on hostname.
 
 # --- 301s ---
+# Wissen-Duplikat zu /akupunktur-in-der-naehe/ (seit 09/2026 kanonisiert; listete nicht existierende Standorte)
+/wissen/akupunktur-in-meiner-naehe-schweiz  /akupunktur-in-der-naehe/  301
+/wissen/akupunktur-in-meiner-naehe-schweiz/ /akupunktur-in-der-naehe/  301
 /akupunktur-tcm-winterthur /standorte/winterthur-marktgasse/  301
 /standorte/winterthur      /standorte/winterthur-marktgasse/  301
 # Slash-Varianten: Cloudflare normalisiert /x -> /x/, die Regeln oben greifen dann nicht

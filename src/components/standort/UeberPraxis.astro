@@ -37,7 +37,8 @@ const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 // CRO-L3-Images: Praxisbilder, die dasselbe Asset wie der Hero zeigen, nicht wiederholen
 // (normalisierter Pfadvergleich; Asset-Dateien bleiben unangetastet).
 const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0].replace(/\/{2,}/g, '/');
-const praxisBilder = (data.praxisBilder ?? []).filter((b) => norm(b.src) !== norm(data.hero.image));
+// Geplante Standorte: keine Praxisfotos (es gibt noch keine Praxis, die sie zeigen könnten).
+const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) => norm(b.src) !== norm(data.hero.image));
 ---
 <section class="up-sec"><div class="up-wrap"><h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && !slim && (

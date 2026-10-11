@@ -70,14 +70,10 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 3, name: data.h1, item: url },
   ],
 };
-// Kannibalisierungs-Auflösung: Der Artikel "akupunktur-in-meiner-naehe-schweiz" ist ein
-// Standort-Verzeichnis mit identischem Suchintent wie die Landingpage /akupunktur-in-der-naehe/
-// (sitewide verlinkt via Footer/Home, gleiche H2-Struktur "Standorte nach Region"). Gleiches
-// Muster wie MERGED in beschwerden/[slug].astro: Seite bleibt für Nutzer:innen bestehen,
-// kanonisiert auf die primäre URL und fällt aus der Sitemap.
-const CANONICAL_TO: Record<string, string> = {
-  'akupunktur-in-meiner-naehe-schweiz': '/akupunktur-in-der-naehe/',
-};
+// Kannibalisierungs-Auflösung (Muster wie MERGED in beschwerden/[slug].astro): slug → primäre URL.
+// akupunktur-in-meiner-naehe-schweiz (gleicher Intent wie /akupunktur-in-der-naehe/, listete nicht
+// existierende Standorte) ist seit 10/2026 per 301 umgeleitet (public/_redirects) und nicht mehr in wissen.ts.
+const CANONICAL_TO: Record<string, string> = {};
 const canonicalTo = CANONICAL_TO[data.slug];
 const schema = canonicalTo ? undefined : [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
 

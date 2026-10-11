@@ -92,7 +92,7 @@ if (migrated) {
   const stadt = data.stadt;
   const clinic = clinics.find((c) => c.id === slug);
   title = data.seo?.title ?? `TCM & Akupunktur ${data.titelZusatz ?? stadt} | TCM.ch`;
-  description = data.seo?.description ?? `TCM & Akupunktur in ${stadt}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+  description = data.seo?.description ?? `TCM & Akupunktur in ${stadt}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin direkt anfragen.`;
   // MedicalClinic fed from nap/geo; opening hours + areaServed from the clinic NAP record.
   const medClinic: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,
@@ -135,8 +135,8 @@ if (migrated) {
   description = isPartner
     ? 'TCM Pelican in Bottighofen: Akupunktur, Tuina und TCM, EMR-anerkannt, gut erreichbar bei Kreuzlingen am Bodensee. Geprüfte Partnerklinik im TCM.ch Netzwerk.'
     : slug === 'st-gallen'
-      ? 'Akupunktur & TCM in St. Gallen beim Bahnhof: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.'
-      : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin oft in 24 Stunden.`;
+      ? 'Akupunktur & TCM in St. Gallen beim Bahnhof: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin direkt anfragen.'
+      : `TCM & Akupunktur in ${name}: EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Termin direkt anfragen.`;
 
   const medClinic: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'MedicalClinic', '@id': url,

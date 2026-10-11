@@ -122,7 +122,7 @@ const breadcrumbLd = {
           {openingHours.length ? (
             <p>{openingHours.map((h) => (<>{formatHours(h)}<br /></>))}</p>
           ) : (
-            <p>To be announced ahead of opening. We usually reply to requests within ~1h.</p>
+            <p>{openingSoon ? 'To be announced ahead of opening.' : 'By appointment. We confirm times with you when you get in touch.'}</p>
           )}
         </div>
 

@@ -79,7 +79,7 @@ export const standorte: Record<string, Standort> = {
       lead: 'Unsere neue Praxis an der Steinenvorstadt 73, mitten in der Basler Innenstadt, ist in Vorbereitung: dasselbe Team-Prinzip und dieselben Methoden wie an unseren übrigen Standorten.',
       sub: 'Eröffnung geplant im März 2027. Abrechnung über die Zusatzversicherung; behandelt werden soll auf Deutsch und Englisch.',
       image: '/images/basel-reception.webp',
-      imageAlt: 'Empfangsbereich der TCM.ch Klinik Basel an der Steinenvorstadt 73',
+      imageAlt: 'Symbolbild: Empfangsbereich einer TCM.ch Praxis',
       locationHook: 'Steinenvorstadt 73 · 4051 Basel · mitten in der Innenstadt',
     },
     aufEinenBlick: "<section class='section' style='padding:32px 0;background:var(--bg)'><div class='wrap reveal'><div class='section-label'>TCM Basel auf einen Blick</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Adresse</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Steinenvorstadt 73, 4051 Basel,<br>mitten in der Basler Innenstadt. Standort in Vorbereitung.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Behandlungen</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Akupunktur, Gesichtsakupunktur, Schröpfen, Tuina, Akupressur, Shiatsu, Gua Sha, Kräuterrezepturen.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Vertrauen &amp; Kosten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>EMR- und ASCA-anerkannt. Zusatzversicherung? Wir helfen dir beim Check: Was übernommen wird, hängt von Kasse und Modell ab. <a href='/standorte/basel/kosten/' style='color:var(--blue);font-weight:700;text-decoration:none'>Kosten &amp; Krankenkasse</a></div></div></div><div style='margin-top:16px'><button type='button' onclick='openContactForm()' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></button></div></div></section>",
@@ -113,7 +113,7 @@ export const standorte: Record<string, Standort> = {
       { q: 'Gibt es Termine ausserhalb der Bürozeiten?', a: 'An unseren Standorten behandeln wir früh morgens, über Mittag und am Abend, dazu samstags, damit du für eine Sitzung keinen halben Arbeitstag brauchst. Frag den gewünschten Zeitraum einfach bei der Terminanfrage an.' },
     ],
     praxisBilder: [
-      { src: '/images/basel-reception.webp', alt: 'Empfangsbereich der TCM.ch Klinik Basel an der Steinenvorstadt 73', label: 'Empfang · Steinenvorstadt 73' },
+      { src: '/images/basel-reception.webp', alt: 'Symbolbild: Empfangsbereich einer TCM.ch Praxis', label: 'Symbolbild' },
     ],
     wissenLink: { href: '/wissen/tcm-basel-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Basel abläuft, was sie kostet und was die Studien hergeben.' },
     massageLink: { href: '/massage-basel/', text: 'Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite', anchor: 'Massage in Basel' },
@@ -172,7 +172,7 @@ export const standorte: Record<string, Standort> = {
       { q: 'Übernimmt die Krankenkasse die Behandlung?', a: 'Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Kreuzlingen EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos.' },
       { q: 'Wie viele Sitzungen brauche ich?', a: 'Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir starten mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das, statt eine Serie weiterzuführen.' },
       { q: 'Wie komme ich zu euch und wo kann ich parkieren?', a: 'Die Praxis liegt an der Romanshornerstrasse 1, wenige Gehminuten vom Bahnhof Kreuzlingen und vom Bahnhof Kreuzlingen Hafen. Mit dem Auto kommst du über die A7, Ausfahrt Kreuzlingen. Zum Parkieren stehen das Parkhaus Stadthaus, das Parkhaus Bärenplatz und das Parkhaus Karussell in wenigen Minuten Fussweg zur Verfügung.' },
-      { q: 'Bekomme ich kurzfristig einen Termin?', a: 'Meist ja. Weil Kreuzlingen unser grösster Standort ist, finden sich oft noch Plätze innert 24 bis 48 Stunden. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Vorschlag.' },
+      { q: 'Bekomme ich kurzfristig einen Termin?', a: 'Das hängt von der aktuellen Auslastung ab. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Vorschlag.' },
       { q: 'Begleitet ihr auch bei Kinderwunsch?', a: 'Ja. Kinderwunsch ist eines der häufigeren Anliegen in Kreuzlingen, sowohl auf natürlichem Weg als auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten mit deiner Gynäkologin zusammen, wenn du das möchtest.' },
       { q: 'Kann ich als Patient:in aus Konstanz zu euch kommen?', a: 'Ja, das machen viele. Von Konstanz sind es wenige Minuten über die Grenze. Behandelt wird in der Schweiz, abgerechnet wird über eine Schweizer Zusatzversicherung: Grenzgänger:innen mit Schweizer Zusatzversicherung reichen die Rechnung ein wie alle anderen. Ohne Schweizer Zusatzversicherung zahlst du selbst, zu denselben Tarifen. Eine deutsche gesetzliche Kasse erstattet die Behandlung in der Regel nicht, private Tarife teilweise. Frag vorher bei uns nach, wir sagen dir, was in deinem Fall realistisch ist.' },
     ],
@@ -261,7 +261,7 @@ export const standorte: Record<string, Standort> = {
       { "q": "Übernimmt die Krankenkasse die Behandlung?", "a": "Akupunktur und die übrigen TCM-Methoden laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unser Team in Frauenfeld EMR- und ASCA-anerkannt ist, übernehmen die meisten Zusatzversicherungen 80 bis 100 Prozent, je nach Modell und Jahreslimite. Schick uns Kasse und Modell, wir prüfen die Deckung kostenlos." },
       { "q": "Wie viele Sitzungen brauche ich?", "a": "Bei akuten Beschwerden zeigt sich meist nach vier bis sechs Terminen, ob die Behandlung greift. Chronische Themen brauchen eher acht bis zwölf Sitzungen. Wir beginnen mit ein bis zwei Terminen pro Woche und ziehen nach vier Sitzungen eine ehrliche Zwischenbilanz. Bewegt sich nichts, sagen wir dir das." },
       { "q": "Wie erreiche ich die Praxis mit dem ÖV?", "a": "Vom Bahnhof Frauenfeld sind es wenige Minuten. Es halten die S-Bahn-Linien S30 zwischen Winterthur, Frauenfeld und Romanshorn sowie die S35, dazu IR-Verbindungen und die Frauenfeld-Wil-Bahn. Aus Weinfelden, Wil, Aadorf und Müllheim bist du damit ohne Umsteigen da." },
-      { "q": "Bekomme ich kurzfristig einen Termin?", "a": "Meist innert 24 bis 48 Stunden. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Terminvorschlag. Wenn es in Frauenfeld eng wird, prüfen wir auch die Praxen in Wil und Kreuzlingen." },
+      { "q": "Bekomme ich kurzfristig einen Termin?", "a": "Das hängt von der aktuellen Auslastung ab. Am schnellsten geht es per WhatsApp oder Telefon: Sag uns Wunschtage und Tageszeit, wir melden uns in der Regel innert 30 Minuten mit einem Terminvorschlag. Wenn es in Frauenfeld eng wird, prüfen wir auch die Praxen in Wil und Kreuzlingen." },
       { "q": "Begleitet ihr auch bei Kinderwunsch?", "a": "Ja, auf natürlichem Weg wie auch begleitend zu einer Kinderwunschbehandlung an einer Klinik. Wir stimmen die Termine auf deinen Zyklus und auf laufende ärztliche Behandlungen ab und arbeiten auf Wunsch mit deiner Gynäkologin zusammen." },
       { "q": "Gibt es Parkplätze in der Nähe der Praxis?", "a": "Ja. Mit dem Auto kommst du über die A7, Ausfahrt Frauenfeld-West oder Frauenfeld-Ost. Zum Parkieren stehen das Parkhaus Marktplatz, das Parkhaus Promenade und das Parkhaus Bahnhof zur Verfügung, alle wenige Gehminuten entfernt. Wenn du knapp dran bist, sag kurz Bescheid, wir halten den Termin." }
     ],
@@ -545,7 +545,7 @@ export const standorte: Record<string, Standort> = {
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
       "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht. Unser Hauptstandort für Akupunktur &amp; TCM in Winterthur ist die <a href=\"/standorte/winterthur-marktgasse/\" style=\"color:inherit;text-decoration:underline\">Praxis Marktgasse</a>.",
+      "sub": "Massage, Tuina und Akupunktur an der Münzgasse 2 in der Altstadt, Termine nach Vereinbarung. Unser Hauptstandort für Akupunktur &amp; TCM in Winterthur ist die <a href=\"/standorte/winterthur-marktgasse/\" style=\"color:inherit;text-decoration:underline\">Praxis Marktgasse</a>.",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
     },
@@ -556,24 +556,15 @@ export const standorte: Record<string, Standort> = {
       "ort": "Winterthur",
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
-      "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
-      ],
+      "oeffnungszeiten": [],
       "geo": {
         "lat": 47.4998,
         "lng": 8.729
       }
     },
     "intro": {
-      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <strong>TCM-Praxis an der Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Unseren zweiten Standort für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> findest du an der Marktgasse. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Winterthur und Umgebung</h2><p>Zu unseren Patient:innen zählen Menschen aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Oberwinterthur</strong>, <strong>Töss</strong>, <strong>Wülflingen</strong>, <strong>Seen</strong>, <strong>Veltheim</strong> und <strong>Mattenbach</strong>. Aus umliegenden Gemeinden wie Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon und Brütten kommen Patient:innen regelmässig zu uns. Die zentrale Lage an der Münzgasse macht uns für die ganze Region erreichbar.</p>"
+      "body": "<h2>TCM Winterthur, Akupunktur, Tuina &amp; TCM-Klinik im Stadtzentrum</h2><p>Unsere <strong>TCM-Praxis an der Münzgasse 2</strong> liegt im Herzen der Altstadt, wenige Gehminuten vom Hauptbahnhof entfernt. Unseren zweiten Standort für <a href='/standorte/winterthur-marktgasse/'>TCM in Winterthur</a> findest du an der Marktgasse. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Die öffentlichen Registereinträge der Therapeut:innen findest du weiter unten. Gezielt eine Behandlung gesucht? Alle Angebote von medizinisch bis entspannend findest du unter <a href='/massage-winterthur/'>Massage in Winterthur</a>.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus ganz Winterthur und Umgebung</h2><p>Die Münzgasse erreichst du aus allen Stadtkreisen Winterthurs: <strong>Altstadt</strong>, <strong>Oberwinterthur</strong>, <strong>Töss</strong>, <strong>Wülflingen</strong>, <strong>Seen</strong>, <strong>Veltheim</strong> und <strong>Mattenbach</strong>. Auch aus umliegenden Gemeinden wie Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon und Brütten bist du schnell da. Die zentrale Lage an der Münzgasse macht uns für die ganze Region erreichbar.</p>"
     },
     "anfahrt": {
       "oev": "<strong>Hauptbahnhof Winterthur</strong>, 4 Gehminuten zur Praxis. S-Bahn-Linien S7, S8, S11, S12, S29, S30, S35 sowie alle IC- und IR-Verbindungen halten im HB Winterthur.",
@@ -590,7 +581,7 @@ export const standorte: Record<string, Standort> = {
       "gua-sha",
       "physiotherapie"
     ],
-    "beschwerdenIntro": "Diese Beschwerden sehen wir in unserer Praxis an der Münzgasse in Winterthur besonders oft. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.",
+    "beschwerdenIntro": "Häufige Anliegen, mit denen du zu uns kommen kannst. Auf den einzelnen Seiten findest du Ablauf, Wirkung und eine ehrliche Einordnung.",
     "beschwerden": [
       "rueckenschmerzen",
       "migraene",
@@ -820,7 +811,7 @@ export const standorte: Record<string, Standort> = {
     },
     "hero": {
       "banner": "Eröffnung geplant: 1. Dezember 2026",
-      "lead": "Deine Beschwerden bekommen hier die Zeit, die sie brauchen.",
+      "lead": "Akupunktur und TCM in Oerlikon: heute bei der Partnerpraxis, nach der Eröffnung auch an der Ohmstrasse 14.",
       "sub": "Die neue Praxis beim Bahnhof Oerlikon ist in Vorbereitung. Bis zur Eröffnung ist unsere Partnerpraxis Praxis Hwang an der Schulstrasse 3 in Oerlikon für dich da.",
       "image": "/images/hero-main.webp",
       "locationHook": "Ohmstrasse 14, 8050 Zürich · Eröffnung geplant 1. Dezember 2026"

@@ -53,7 +53,8 @@ export const clinics: Clinic[] = [
 
   { id: 'winterthur-muenzgasse', name: 'Winterthur Münzgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4998, lng: 8.7290 }, status: 'operational',
+    // Öffnungszeiten nicht verifiziert (Stand 11.10.2026): keine Angabe statt Template-Zeiten.
+    openingHours: [], geo: { lat: 47.4998, lng: 8.7290 }, status: 'operational',
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
@@ -136,10 +137,10 @@ export const commonConditions: { id: string; label: string }[] = [
 // photo. No new files, no duplicates.
 export const locationImages: Record<string, { src: string; alt: string }> = {
   'st-gallen':              { src: '/images/img-67b9921801f9.webp', alt: 'TCM.ch practitioners at the St. Gallen clinic' },
-  'rorschach':              { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Rorschach' },
-  'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners in Eastern Switzerland, Wil' },
-  'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
-  'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'TCM.ch clinic reception in Zürich' },
+  'rorschach':              { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
+  'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
+  'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
+  'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
