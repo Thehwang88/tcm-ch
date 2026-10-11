@@ -46,6 +46,9 @@ export interface Standort {
   v2?: boolean;
   /** Standort noch nicht eröffnet: Status-Banner unter dem Hero, Formular als Anfrage «für den geplanten Start». */
   planned?: boolean;
+  /** Optional zu `planned`: Banner-Titel/-Text (z. B. geplantes Datum, sofortige Alternative). Fallback = generischer Text. */
+  plannedTitle?: string;
+  plannedNote?: string;
   /** Praxisbilder für "Über die Praxis" (CRO-Layout): Reihenfolge = Anzeige-Reihenfolge. */
   praxisBilder?: { src: string; alt: string; label: string }[];
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
@@ -60,18 +63,19 @@ export const standorte: Record<string, Standort> = {
     cro: true,
     v2: true,
     planned: true,
+    plannedTitle: 'Eröffnung geplant: März 2027',
     slug: 'basel',
     stadt: 'Basel',
     seo: {
       title: 'TCM & Akupunktur Basel | TCM.ch',
-      description: 'Akupunktur und TCM in Basel, Steinenvorstadt 73 – Standort in Vorbereitung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung. Jetzt Anliegen anfragen.',
+      description: 'Akupunktur und TCM in Basel, Steinenvorstadt 73: Eröffnung geplant im März 2027. Abrechnung über die Zusatzversicherung. Jetzt für die Eröffnung vormerken lassen.',
       h1: 'Akupunktur & TCM in <em>Basel</em>',
       schemaName: 'TCM.ch Basel',
     },
     hero: {
       banner: 'Standort Basel',
       lead: 'Unsere neue Praxis an der Steinenvorstadt 73, mitten in der Basler Innenstadt, ist in Vorbereitung: dasselbe Team-Prinzip und dieselben Methoden wie an unseren übrigen Standorten.',
-      sub: 'EMR- und ASCA-anerkannt, Abrechnung über die Zusatzversicherung. Behandelt wird auf Deutsch und Englisch.',
+      sub: 'Eröffnung geplant im März 2027. Abrechnung über die Zusatzversicherung; behandelt werden soll auf Deutsch und Englisch.',
       image: '/images/basel-reception.webp',
       imageAlt: 'Empfangsbereich der TCM.ch Klinik Basel an der Steinenvorstadt 73',
       locationHook: 'Steinenvorstadt 73 · 4051 Basel · mitten in der Innenstadt',
@@ -99,7 +103,7 @@ export const standorte: Record<string, Standort> = {
     team: [],
     ablaufBlock: true,
     faqs: [
-      { q: 'Wo genau seid ihr in Basel?', a: 'Unsere geplante Praxis liegt an der Steinenvorstadt 73, 4051 Basel, mitten in der Basler Innenstadt. Der Standort ist in Vorbereitung und noch nicht eröffnet.' },
+      { q: 'Wo genau seid ihr in Basel?', a: 'Unsere geplante Praxis liegt an der Steinenvorstadt 73, 4051 Basel, mitten in der Basler Innenstadt. Der Standort ist in Vorbereitung und noch nicht eröffnet; die Eröffnung ist für März 2027 geplant.' },
       { q: 'Wie bekomme ich einen Termin in Basel?', a: 'Der Standort ist in Vorbereitung: Trag deine Angaben im Formular ein oder schreib direkt an termine@tcm.ch, dann melden wir uns, sobald Termine in Basel möglich sind. Bis dahin behandeln wir dich gerne an einem unserer anderen Standorte.' },
       { q: 'Was kostet Akupunktur in Basel?', a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Den konkreten Betrag nennen wir dir vor dem Termin.' },
       { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Weil unsere Therapeut:innen EMR- und ASCA-anerkannt sind, beteiligen sich viele Zusatzversicherungen, je nach Kasse und Modell häufig mit 80 bis 100 Prozent. Deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.' },
@@ -112,7 +116,7 @@ export const standorte: Record<string, Standort> = {
     wissenLink: { href: '/wissen/tcm-basel-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Basel abläuft, was sie kostet und was die Studien hergeben.' },
     massageLink: { href: '/massage-basel/', text: 'Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite', anchor: 'Massage in Basel' },
     nearby: [
-      { slug: 'zuerich-oerlikon', plz: '8050', city: 'Zürich Oerlikon', desc: 'Ohmstrasse 14, direkt beim Bahnhof Oerlikon.' },
+      { slug: 'zuerich-oerlikon', plz: '8050', city: 'Zürich Oerlikon', desc: 'Partnerpraxis heute · neue Praxis geplant ab 1.12.2026.' },
       { slug: 'winterthur-marktgasse', plz: '8400', city: 'Winterthur Marktgasse', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
       { slug: 'zuerich-city', plz: 'Bald', city: 'Zürich City', desc: 'Neuer Standort im Zentrum, in Vorbereitung.' },
     ],
@@ -473,7 +477,7 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Wil SG, Akupunktur, Tuina &amp; TCM-Klinik im Fürstenland</h2><p>Unsere <strong>TCM-Praxis Wil</strong> an der Marktgasse liegt im Herzen des Fürstenlandes, gut erreichbar aus dem ganzen Toggenburg, dem Thurgau und der Region St. Gallen. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
+      "body": "<h2>TCM Wil SG, Akupunktur, Tuina &amp; TCM-Klinik im Fürstenland</h2><p>Unsere <strong>TCM-Praxis Wil</strong> an der Oberen Bahnhofstrasse liegt im Herzen des Fürstenlandes, gut erreichbar aus dem ganzen Toggenburg, dem Thurgau und der Region St. Gallen. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus dem Fürstenland und der Ostschweiz</h2><p>Zu unseren Patient:innen zählen Menschen aus Wil und allen Stadtteilen: <strong>Innenstadt</strong>, <strong>Bronschhofen</strong>, <strong>Rossrüti</strong>, <strong>Schwarzenbach</strong>. Auch aus den umliegenden Gemeinden, <strong>Uzwil</strong>, <strong>Flawil</strong>, <strong>Bütschwil</strong>, <strong>Münchwilen TG</strong>, <strong>Sirnach</strong>, <strong>Niederuzwil</strong>, <strong>Henau</strong>, kommen Patient:innen regelmässig zu uns. Die zentrale Lage macht uns für das ganze Fürstenland und das untere Toggenburg erreichbar. Mehr zu Akupunktur und TCM in der Region findest du auf unserer Seite <a href=\"/akupunktur-tcm-st-gallen/\">Akupunktur &amp; TCM St. Gallen</a>.</p>"
     },
     "anfahrt": {
@@ -741,7 +745,7 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – mit Standorten in City, Oerlikon und Höngg.</p><p>Unsere <strong>TCM-Praxis Zürich Höngg</strong> liegt im ruhigen Kreis 10, gut erreichbar mit Tram und Bus aus der ganzen Stadt Zürich. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
+      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a> – heute in Höngg und Oerlikon, ein Standort im Zentrum ist in Vorbereitung.</p><p>Unsere <strong>TCM-Praxis Zürich Höngg</strong> liegt im ruhigen Kreis 10, gut erreichbar mit Tram und Bus aus der ganzen Stadt Zürich. Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus Höngg, Wipkingen und ganz Zürich</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Höngg</strong>, <strong>Wipkingen</strong>, <strong>Affoltern</strong>, <strong>Albisrieden</strong>, dem Kreis 5 und der Region Limmattal. Auch aus Schlieren, Dietikon, Regensdorf und Engstringen kommen Patient:innen regelmässig zu uns.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": {
@@ -790,14 +794,17 @@ export const standorte: Record<string, Standort> = {
       }
     ]
   },
-  // TODO(2026-12-01): Nach der Eröffnung entfernen: Eröffnungs-Badge im hero.banner,
-  // "Eröffnung 1. Dezember 2026" im locationHook und den "Neu ab 1.12.2026"-Zusatz auf
-  // Karte 1 im extraBlock ("Zwei Praxen in Oerlikon"). Der Block selbst und der permanente
-  // Partnersatz in anfahrt.autoParken bleiben dauerhaft.
-  // TODO: Öffnungszeiten sind Standard-Netzwerkzeiten, vor Eröffnung für Ohmstrasse 14 bestätigen.
+  // Pre-Opening (Stand 11.10.2026): Eröffnung geplant 1.12.2026, finale Bestätigung ausstehend.
+  // Bis dahin: planned=true, keine Öffnungszeiten, keine Behandlungs-/Patient:innen-Aussagen für
+  // die Ohmstrasse; sofortige Option = Partnerpraxis Praxis Hwang, Schulstrasse 3.
+  // Nach bestätigter Eröffnung: planned/plannedTitle/plannedNote entfernen, verifizierte
+  // Öffnungszeiten eintragen, Pre-Opening-Formulierungen zurücknehmen.
   "zuerich-oerlikon": {
     "cro": true,
     "v2": true,
+    "planned": true,
+    "plannedTitle": "Eröffnung geplant: 1. Dezember 2026",
+    "plannedNote": "Die neue TCM.ch Praxis an der Ohmstrasse 14 ist noch nicht eröffnet; das Datum ist noch nicht final bestätigt. Du kannst dich schon jetzt für einen Termin nach der Eröffnung vormerken lassen. Sofort einen Termin in Oerlikon bekommst du bei unserer Partnerpraxis <a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener'>Praxis Hwang an der Schulstrasse 3</a>.",
     "praxisBilder": [
       { "src": "/images/standort-oerlikon.png", "alt": "TCM.ch Praxis Zürich Oerlikon", "label": "Oerlikon" }
     ],
@@ -806,16 +813,16 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Zürich Oerlikon",
     "seo": {
       "title": "TCM Oerlikon – Akupunktur in Zürich Oerlikon | TCM.ch",
-      "description": "TCM Oerlikon, Ohmstrasse 14: Akupunktur & Chinesische Medizin in Zürich Oerlikon. EMR-/ASCA-anerkannt, Krankenkasse 80–100%, Mo–Sa geöffnet.",
+      "description": "TCM Oerlikon, Ohmstrasse 14: Eröffnung geplant am 1. Dezember 2026, Vormerkung schon jetzt. Sofort-Termine bei der Partnerpraxis Praxis Hwang, Schulstrasse 3.",
       "h1": "TCM <em>Oerlikon</em>: Akupunktur in Zürich Oerlikon",
       "schemaName": "TCM Oerlikon – TCM.ch"
     },
     "hero": {
-      "banner": "Neu: Eröffnung 1. Dezember 2026",
+      "banner": "Eröffnung geplant: 1. Dezember 2026",
       "lead": "Deine Beschwerden bekommen hier die Zeit, die sie brauchen.",
-      "sub": "Unser Team begleitet dich hier vor Ort, mit Erfahrung aus der Schweiz und Südkorea, viel Zeit und allen Methoden, die wir kennen. Egal, worum es geht.",
+      "sub": "Die neue Praxis beim Bahnhof Oerlikon ist in Vorbereitung. Bis zur Eröffnung ist unsere Partnerpraxis Praxis Hwang an der Schulstrasse 3 in Oerlikon für dich da.",
       "image": "/images/hero-main.webp",
-      "locationHook": "Ohmstrasse 14, 8050 Zürich · Eröffnung 1. Dezember 2026"
+      "locationHook": "Ohmstrasse 14, 8050 Zürich · Eröffnung geplant 1. Dezember 2026"
     },
     "nap": {
       "strasse": "Ohmstrasse 14",
@@ -824,22 +831,13 @@ export const standorte: Record<string, Standort> = {
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
-      "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
-      ],
+      "oeffnungszeiten": [],
       "geo": { "lat": 47.4112, "lng": 8.5459 }
     },
-    "extraBlock": "<section class='section' style='background:var(--surface)'><div class='wrap reveal'><div class='section-label'>Zwei Adressen</div><h2 class='section-title'>Zwei Praxen in Oerlikon, <em>ein Netzwerk.</em></h2><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px'><a href='#kontakt' style='display:block;background:#fff;border:1px solid var(--green-mid);border-radius:16px;padding:22px;text-decoration:none'><div style='font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:4px'>TCM.ch Oerlikon</div><div style='font-size:14px;color:var(--mid);margin-bottom:8px'>Ohmstrasse 14, 8050 Zürich</div><div style='font-size:14px;color:var(--mid);line-height:1.5'>Neu ab 1.12.2026, beim Bahnhof Oerlikon.</div><span style='display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--blue);font-family:var(--font-sans);font-weight:700;font-size:14.5px'>Termin anfragen <span aria-hidden='true'>→</span></span></a><a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener' style='display:block;background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;text-decoration:none'><div style='font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:4px'>Praxis Hwang</div><div style='font-size:14px;color:var(--mid);margin-bottom:8px'>Schulstrasse 3, 8050 Zürich</div><div style='font-size:14px;color:var(--mid);line-height:1.5'>Etablierte Partnerpraxis, Termine sofort verfügbar.</div><span style='display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--blue);font-family:var(--font-sans);font-weight:700;font-size:14.5px'>Zur Partnerpraxis <span aria-hidden='true'>→</span></span></a></div><p style='font-size:15px;color:var(--mid);line-height:1.6;margin-top:18px;max-width:72ch'>Beide Praxen gehören zum TCM.ch Netzwerk, gleiche Qualitätsstandards, gleiche Krankenkassen-Anerkennung. Nimm die Adresse, die für dich besser liegt.</p></div></section>",
+    "extraBlock": "<section class='section' style='background:var(--surface)'><div class='wrap reveal'><div class='section-label'>Zwei Adressen</div><h2 class='section-title'>Zwei Praxen in Oerlikon, <em>ein Netzwerk.</em></h2><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px'><a href='https://hwang.ch/standorte/zurich-oerlikon' target='_blank' rel='noopener' style='display:block;background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;text-decoration:none'><div style='font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:4px'>Praxis Hwang</div><div style='font-size:14px;color:var(--mid);margin-bottom:8px'>Schulstrasse 3, 8050 Zürich</div><div style='font-size:14px;color:var(--mid);line-height:1.5'>Bestehende Partnerpraxis: hier bekommst du schon heute einen Termin in Oerlikon.</div><span style='display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--blue);font-family:var(--font-sans);font-weight:700;font-size:14.5px'>Zur Partnerpraxis <span aria-hidden='true'>→</span></span></a><a href='#kontakt' style='display:block;background:#fff;border:1px solid var(--green-mid);border-radius:16px;padding:22px;text-decoration:none'><div style='font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:4px'>TCM.ch Oerlikon</div><div style='font-size:14px;color:var(--mid);margin-bottom:8px'>Ohmstrasse 14, 8050 Zürich</div><div style='font-size:14px;color:var(--mid);line-height:1.5'>Neue Praxis beim Bahnhof Oerlikon, Eröffnung geplant am 1. Dezember 2026.</div><span style='display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--blue);font-family:var(--font-sans);font-weight:700;font-size:14.5px'>Für die Eröffnung vormerken <span aria-hidden='true'>→</span></span></a></div><p style='font-size:15px;color:var(--mid);line-height:1.6;margin-top:18px;max-width:72ch'>Praxis Hwang ist Partnerpraxis im TCM.ch Netzwerk. Bis zur Eröffnung der Ohmstrasse 14 ist sie die direkte Adresse für Termine in Oerlikon.</p></div></section>",
     "intro": {
-      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p><strong>Neu ab 1. Dezember 2026:</strong> Unsere Praxis an der <strong>Ohmstrasse 14</strong> liegt wenige Gehminuten vom <strong>Bahnhof Oerlikon</strong>, einem der grössten ÖV-Knoten der Schweiz. Ob du mit der S-Bahn aus Zürich, dem Glattal oder von Winterthur kommst: Du bist in wenigen Minuten bei uns.</p><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>. Unseren Schwester-Standort findest du in <a href='/standorte/zuerich-hoengg/'>Höngg</a>.</p><p>Wir bieten das vollständige Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, TCM-Beratung, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur. Alle Therapeut:innen sind EMR- und ASCA-anerkannt. Medizinische und entspannende Behandlungen findest du gesammelt unter <a href='/massage-oerlikon/'>Massage in Oerlikon</a> und stadtweit unter <a href='/massage-zuerich/'>Massage in Zürich</a>.</p>",
-      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Zu unseren Patient:innen zählen Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf, kommen Patient:innen regelmässig zu uns. Die zentrale Lage am Bahnhof Oerlikon macht uns für ganz Zürich Nord und das Zürcher Unterland erreichbar. Für <strong>Neu-Oerlikon</strong> und den <strong>Glattpark</strong> sind wir die nächstgelegene Praxis, und wer beim Hallenstadion oder der Messe arbeitet, erreicht uns in der Mittagspause.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
+      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p><strong>Eröffnung geplant am 1. Dezember 2026:</strong> Unsere neue Praxis an der <strong>Ohmstrasse 14</strong> liegt wenige Gehminuten vom <strong>Bahnhof Oerlikon</strong>, einem der grössten ÖV-Knoten der Schweiz. Ob du mit der S-Bahn aus Zürich, dem Glattal oder von Winterthur kommst: Du bist in wenigen Minuten dort.</p><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>. Unseren Schwester-Standort findest du in <a href='/standorte/zuerich-hoengg/'>Höngg</a>.</p><p>Geplant ist das Spektrum der Traditionellen Chinesischen Medizin: <strong>Akupunktur</strong>, TCM-Beratung, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong>, <strong>chinesische Kräutertherapie</strong>, Moxibustion und Elektroakupunktur; den definitiven Umfang nennen wir zur Eröffnung. Medizinische und entspannende Behandlungen findest du gesammelt unter <a href='/massage-oerlikon/'>Massage in Oerlikon</a> und stadtweit unter <a href='/massage-zuerich/'>Massage in Zürich</a>.</p>",
+      "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Die neue Praxis liegt nah für Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf ist sie schnell erreichbar. Die zentrale Lage am Bahnhof Oerlikon macht sie für ganz Zürich Nord und das Zürcher Unterland gut erreichbar; für <strong>Neu-Oerlikon</strong> und den <strong>Glattpark</strong> liegt sie besonders nah, und wer beim Hallenstadion oder der Messe arbeitet, erreicht sie in der Mittagspause.</p><p style=\"display:block\">Diese Praxis gehört zum Netzwerk <a href=\"/akupunktur-tcm-zuerich/\">TCM Zürich</a> mit Standorten in der ganzen Stadt. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": {
       "oev": "<strong>Bahnhof Zürich Oerlikon</strong> in wenigen Gehminuten. S-Bahn S2, S5, S6, S7, S8, S9, S14, S15, S16, S19, S21, S24 sowie IC- und IR-Verbindungen halten in Oerlikon. <strong>Tram 10, 11, 14</strong> sowie zahlreiche Buslinien (Linie 32, 61, 62, 63, 75) ergänzen das Netz.",
@@ -856,10 +854,10 @@ export const standorte: Record<string, Standort> = {
       "gua-sha"
     ],
     "faqs": [
-      { "q": "Wo finde ich TCM in Oerlikon?", "a": "Unsere Praxis liegt an der Ohmstrasse 14, wenige Gehminuten vom Bahnhof Oerlikon, gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern und dem Glattpark. Die genaue Adresse und Öffnungszeiten findest du oben auf dieser Seite, Termine gibt es meist innert weniger Tage." },
-      { "q": "Welche Behandlungen bietet der Standort Oerlikon an?", "a": "Akupunktur und TCM-Beratung gehören fest zum Angebot, dazu je nach Team weitere Methoden wie Schröpfen oder Kräutertherapie. Was aktuell verfügbar ist, siehst du im Therapien-Block oben oder du fragst kurz per WhatsApp nach." },
-      { "q": "Zahlt die Krankenkasse die Behandlung in Oerlikon?", "a": "Über die Zusatzversicherung Komplementärmedizin beteiligen sich viele Kassen mit 80 bis 100 Prozent, unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
-      { "q": "Wie schnell bekomme ich in Oerlikon einen Termin?", "a": "Meist innert weniger Tage. Frag direkt über das Formular auf dieser Seite oder per WhatsApp an, wir melden uns in der Regel am gleichen Werktag mit einem Terminvorschlag." }
+      { "q": "Wo finde ich TCM in Oerlikon?", "a": "Unsere neue Praxis entsteht an der Ohmstrasse 14, wenige Gehminuten vom Bahnhof Oerlikon, gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern und dem Glattpark. Die Eröffnung ist für den 1. Dezember 2026 geplant. Bis dahin behandelt dich unsere Partnerpraxis Praxis Hwang an der Schulstrasse 3 in Oerlikon." },
+      { "q": "Welche Behandlungen bietet der Standort Oerlikon an?", "a": "Geplant sind Akupunktur und TCM-Beratung, dazu je nach Team weitere Methoden wie Schröpfen oder Kräutertherapie. Den definitiven Umfang nennen wir zur Eröffnung; frag gerne kurz per WhatsApp nach." },
+      { "q": "Zahlt die Krankenkasse die Behandlung in Oerlikon?", "a": "Über die Zusatzversicherung Komplementärmedizin beteiligen sich viele Kassen mit 80 bis 100 Prozent; wie viel deine Kasse übernimmt, hängt von deiner Police ab. Wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
+      { "q": "Wie schnell bekomme ich in Oerlikon einen Termin?", "a": "An der Ohmstrasse 14 vergeben wir Termine ab der Eröffnung (geplant 1. Dezember 2026); über das Formular auf dieser Seite merken wir dich dafür vor. Einen Termin vor der Eröffnung bekommst du bei unserer Partnerpraxis Praxis Hwang an der Schulstrasse 3." }
     ],
     "beschwerdenIntro": "Ob akut oder chronisch: Diese Themen begleiten wir in Zürich Oerlikon am häufigsten.",
     "beschwerden": [

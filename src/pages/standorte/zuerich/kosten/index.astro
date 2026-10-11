@@ -1,7 +1,7 @@
 ---
 // /standorte/zuerich/kosten/ - Kosten-/Krankenkassen-Seite für die Stadt Zürich.
 // Muster: /standorte/luzern/kosten/, Preise identisch (Tarif 590), Stadtbezug angepasst.
-// Zürich hat drei Praxen (City/Höngg/Oerlikon); Stadt-Owner ist /akupunktur-tcm-zuerich/,
+// Zürich: Höngg + Oerlikon (Ohmstrasse geplant ab 1.12.2026), City in Vorbereitung; Stadt-Owner ist /akupunktur-tcm-zuerich/,
 // deshalb Breadcrumb + interne Links dorthin statt auf ein (nicht existierendes)
 // /standorte/zuerich/. Owner-Eintrag: seo/master-keyword-url-map.csv.
 export const prerender = true;
@@ -11,7 +11,7 @@ import body from '../../../../data/zuerich-kosten-body.html?raw';
 const url = 'https://tcm.ch/standorte/zuerich/kosten/';
 const title = 'Akupunktur Kosten Zürich – Preise & Krankenkasse | TCM.ch';
 const description =
-  'Was kostet Akupunktur in Zürich? Rund CHF 130 bis 160 pro Sitzung nach Tarif 590, gleich in allen drei Praxen (City, Höngg, Oerlikon). Zusatzversicherung übernimmt meist 80 bis 100%.';
+  'Was kostet Akupunktur in Zürich? Rund CHF 130 bis 160 pro Sitzung nach Tarif 590, gleich an allen Zürcher Standorten. Zusatzversicherung übernimmt meist 80 bis 100%.';
 
 const faqs = [
   {
@@ -31,8 +31,8 @@ const faqs = [
     a: 'Nein. Du kannst direkt einen Termin anfragen, eine ärztliche Überweisung ist für die Behandlung nicht nötig. Wenn wir im Erstgespräch merken, dass dein Anliegen zuerst ärztlich abgeklärt gehört, sagen wir dir das ehrlich und verweisen dich weiter.',
   },
   {
-    q: 'Gelten die Preise an allen drei Zürcher Standorten?',
-    a: 'Ja. City, Höngg und Oerlikon rechnen alle nach Tarif 590 nach Behandlungsdauer ab, mit denselben Ansätzen. Es gibt keine Preisunterschiede zwischen den Quartieren.',
+    q: 'Gelten die Preise an allen Zürcher Standorten?',
+    a: 'Ja. Abgerechnet wird überall nach Tarif 590 nach Behandlungsdauer, mit denselben Ansätzen: heute in Höngg und Oerlikon, ab der Eröffnung auch an den neuen Standorten. Es gibt keine Preisunterschiede zwischen den Quartieren.',
   },
 ];
 

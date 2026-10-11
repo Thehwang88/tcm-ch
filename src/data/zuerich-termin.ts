@@ -32,13 +32,16 @@ export const zhTerminData = (opts: { html?: boolean } = {}): string => {
   return opts.html ? esc(json) : json;
 };
 
-/** <option>-Liste der aktuell anfragbaren Zürcher Standorte. */
+/** <option>-Liste der aktuell anfragbaren Zürcher Standorte. Noch nicht eröffnete Standorte mit
+ *  `vorab` erscheinen bis zum Stichtag mit ihren Vorab-Optionen (data-zh-bis); das Inline-Script
+ *  entfernt diese ab terminAb und schaltet die reguläre Option zu. */
 export const zhStandortOptionsHtml = (selected?: string): string =>
   zuerichStandorte()
-    .filter((c) => aktiv(c))
-    .map((c) => `<option value="${esc(c.name)}"${c.name === selected ? ' selected' : ''}>${esc(c.name)}</option>`)
+    .flatMap((c) => aktiv(c)
+      ? [`<option value="${esc(c.name)}"${c.name === selected ? ' selected' : ''}>${esc(c.name)}</option>`]
+      : (c.vorab ?? []).map((o) => `<option value="${esc(o.value)}" data-zh-bis="${esc(c.terminAb!)}">${esc(o.label)}</option>`))
     .join('');
 
 /** Schaltet Standorte, deren terminAb erreicht ist, im Browser zu (vor der nächsten Zürcher Option
  *  bzw. vor der mit data-zh-last markierten Schluss-Option). Idempotent. */
-export const zhTerminScript = `<script>(function(){var t=new Date().toISOString().slice(0,10);document.querySelectorAll('select[data-zh-termin]').forEach(function(sel){var l;try{l=JSON.parse(sel.getAttribute('data-zh-termin'))}catch(e){return}var has=function(n){return Array.prototype.some.call(sel.options,function(o){return o.value===n})};l.forEach(function(o,i){if(!o.ab||o.ab>t||has(o.name))return;var nx=null;for(var k=i+1;k<l.length&&!nx;k++){nx=Array.prototype.find.call(sel.options,function(x){return x.value===l[k].name})||null}nx=nx||sel.querySelector('[data-zh-last]');sel.insertBefore(new Option(o.name,o.name),nx)})})})();</script>`;
+export const zhTerminScript = `<script>(function(){var t=new Date().toISOString().slice(0,10);document.querySelectorAll('select[data-zh-termin]').forEach(function(sel){Array.prototype.slice.call(sel.querySelectorAll('option[data-zh-bis]')).forEach(function(o){if(o.getAttribute('data-zh-bis')<=t)o.remove()});var l;try{l=JSON.parse(sel.getAttribute('data-zh-termin'))}catch(e){return}var has=function(n){return Array.prototype.some.call(sel.options,function(o){return o.value===n})};l.forEach(function(o,i){if(!o.ab||o.ab>t||has(o.name))return;var nx=null;for(var k=i+1;k<l.length&&!nx;k++){nx=Array.prototype.find.call(sel.options,function(x){return x.value===l[k].name})||null}nx=nx||sel.querySelector('[data-zh-last]');sel.insertBefore(new Option(o.name,o.name),nx)})})})();</script>`;

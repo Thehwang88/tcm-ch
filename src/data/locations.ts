@@ -5,6 +5,8 @@
 // DE Standort URL pattern (from the SPA router `buildRoute`): /standorte/<id>
 // EN pages: /en/locations/<id>  (slug === DE id, so hreflang pairs 1:1).
 
+import { OERLIKON_JETZT, OERLIKON_NEU } from './standort-optionen';
+
 export interface Clinic {
   id: string;            // slug, identical to DE standort slug
   name: string;          // display name (unique per page) e.g. "Zürich Höngg"
@@ -25,6 +27,9 @@ export interface Clinic {
   /** ISO-Datum (YYYY-MM-DD): erst ab diesem Tag als Terminoption im Termin-Funnel
    *  angeboten (src/data/zuerich-termin.ts). Weglassen = Termine anfragbar. */
   terminAb?: string;
+  /** Optionen, die VOR terminAb statt der regulären Option im Zürich-Funnel erscheinen
+   *  (z. B. sofortige Partnerpraxis + Vormerkung für die neue Praxis). */
+  vorab?: { value: string; label: string }[];
 }
 
 export const clinics: Clinic[] = [
@@ -65,17 +70,21 @@ export const clinics: Clinic[] = [
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4112, lng: 8.5459 },
+    // Pre-Opening: Eröffnung geplant 1.12.2026 (noch nicht final bestätigt). Keine Öffnungszeiten bis zur
+    // Bestätigung; im Zürich-Funnel ab terminAb als reguläre Option, vorher als Vormerkung (vorab).
+    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, openingSoon: true, openingNote: 'Opening planned for 1 December 2026',
+    terminAb: '2026-12-01',
+    vorab: [OERLIKON_JETZT, OERLIKON_NEU],
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 },
+    openingHours: [], geo: { lat: 47.5528, lng: 7.5878 }, openingSoon: true, openingNote: 'Opening planned for March 2027',
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
-    openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, openingSoon: true, openingNote: 'Opening 2027',
+    openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, openingSoon: true, openingNote: 'Opening in 2027',
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',

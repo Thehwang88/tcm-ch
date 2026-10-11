@@ -10,15 +10,15 @@ import homeBody from '../data/home-body.html?raw';
 const url = 'https://tcm.ch/akupunktur-in-der-naehe/';
 const title = 'Akupunktur in deiner Nähe – Standorte in der Schweiz | TCM.ch';
 const description =
-  'Akupunktur, TCM und Tuina-Massage in deiner Nähe: 13 EMR-/ASCA-anerkannte Standorte in der Deutschschweiz, von Zürich bis St. Gallen. Termin oft schon in 24 Stunden.';
+  'Akupunktur, TCM und Tuina-Massage in deiner Nähe: EMR-/ASCA-anerkannte Therapeut:innen an Standorten in der Deutschschweiz, von Zürich bis St. Gallen. Termin oft schon in 24 Stunden.';
 
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
-   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Zürich Nord',
+   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Partnerpraxis heute · neue Praxis geplant ab 1.12.2026',
   'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Nahe Bahnhof', 'volketswil': 'Zürcher Oberland',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
-  'basel': 'Steinenvorstadt 73, 4051 Basel', 'luzern': 'Eröffnung 2027 · Warteliste offen',
+  'basel': 'Eröffnung geplant März 2027 · Vormerkung offen', 'luzern': 'Eröffnung 2027 · Warteliste offen',
   'bern': 'In Vorbereitung · Interesse anmelden',
 };
 
@@ -35,7 +35,7 @@ const card = (id: string) => {
   const c = clinics.find((x) => x.id === id);
   if (!c) return '';
   const kurz = [c.street, desc[c.id]].filter(Boolean).join(' · ');
-  return `<a class="city-card location-card" href="/standorte/${c.id}/">${c.postalCode ? `<span class="location-plz">${c.postalCode}</span>` : ''}<div class="location-city">${c.name}</div><div class="location-desc">${kurz}</div><span class="location-link">Termin prüfen →</span></a>`;
+  return `<a class="city-card location-card" href="/standorte/${c.id}/">${c.postalCode ? `<span class="location-plz">${c.postalCode}</span>` : ''}<div class="location-city">${c.name}</div><div class="location-desc">${kurz}</div><span class="location-link">${c.openingSoon && !c.vorab ? 'Standort ansehen →' : 'Termin prüfen →'}</span></a>`;
 };
 // Basel und Luzern sind seit dem 14-Standorte-Update reguläre clinics-Einträge
 // (postalCode null, deshalb rendert card() dort kein PLZ-Badge). Die frühere

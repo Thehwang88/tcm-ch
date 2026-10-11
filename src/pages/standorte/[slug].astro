@@ -246,8 +246,10 @@ const waTermin = migrated ? waHref(data.nap.telefon, `Hallo, ich möchte einen T
       <section class="section" style="padding:0;background:var(--bg)">
         <div class="wrap" style="padding-top:12px">
           <div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:14px;padding:16px 20px">
-            <div style="font-family:var(--font-sans);font-weight:800;font-size:15.5px;color:var(--black);margin-bottom:3px">Standort in Vorbereitung</div>
-            <div style="font-size:14.5px;color:var(--mid);line-height:1.55">Die Praxis in {data.stadt} ist noch nicht eröffnet. Du kannst dein Anliegen bereits jetzt anfragen – wir melden uns, sobald Termine möglich sind. Bis dahin behandeln wir dich gerne an einem unserer anderen Standorte.</div>
+            <div style="font-family:var(--font-sans);font-weight:800;font-size:15.5px;color:var(--black);margin-bottom:3px">{data.plannedTitle ?? 'Standort in Vorbereitung'}</div>
+            {data.plannedNote
+              ? <div class="content-body" style="font-size:14.5px;color:var(--mid);line-height:1.55" set:html={data.plannedNote} />
+              : <div style="font-size:14.5px;color:var(--mid);line-height:1.55">Die Praxis in {data.stadt} ist noch nicht eröffnet. Du kannst dein Anliegen bereits jetzt anfragen – wir melden uns, sobald Termine möglich sind. Bis dahin behandeln wir dich gerne an einem unserer anderen Standorte.</div>}
           </div>
         </div>
       </section>
