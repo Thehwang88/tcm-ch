@@ -7,13 +7,15 @@ const heroH1 = data.seo?.h1 ?? `Akupunktur & TCM in <em>${data.stadt}</em>`;
 // Softriver lsr-Hero: Opt-in je Standort (Rollout L3 basel, L4 restliche neun).
 const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'zuerich-hoengg']);
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
+// Zürcher Standorte hängen unter dem Stadt-Hub /akupunktur-tcm-zuerich/ (Hub-&-Spoke, wie /standorte/zuerich/kosten/).
+const zh = data.slug.startsWith('zuerich-');
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
 {LSR_SLUGS.has(data.slug) ? (
 <section class="lsr-hero">
   <div class="lsr-inner">
     <div class="lsr-left">
-      <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span><span>{data.stadt}</span></div>
+      <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="tsr-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
       <span class="lsr-eyebrow">{eyebrow}</span>
       <h1 class="lsr-h1" set:html={heroH1}></h1>
       <p class="lsr-lead" set:html={data.hero.lead}></p>
@@ -36,7 +38,7 @@ const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${
   <div class="sg-city-banner"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><strong>{data.hero.banner}</strong><span class="sg-city-banner-sep">·</span><span class="sg-city-banner-sub">Ihre TCM.ch Klinik vor Ort</span></div>
   <div class="sg-inner">
     <div class="sg-text">
-      <div class="sg-crumb"><button onclick="nav('home')">TCM.ch</button><span class="sg-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="sg-sep">›</span><span>{data.stadt}</span></div>
+      <div class="sg-crumb"><button onclick="nav('home')">TCM.ch</button><span class="sg-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="sg-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="sg-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
       <span class="sg-eyebrow">{eyebrow}</span>
       <p class="sg-title" set:html={heroH1}></p>
       <p class="sg-sub" set:html={data.hero.lead}></p>
