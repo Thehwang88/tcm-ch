@@ -444,3 +444,78 @@ Keine Route gilt als FULL allein durch CSS-Reichweite; Grundlage sind computed s
 **BrandMarquee-Kontrast — Empfehlung (nicht umgesetzt):** Konsumenten: `/` (`src/data/home-body.html` + `public/home.css:4663`), `/akademie/` und `/club/` (`src/components/BrandMarquee.astro`, `is:global`-Style). Label «Teil der TCM.ch Gruppe» `#8a8781` auf `#FAF9F7` = **3.40:1** (10px/700, AA 4.5 verlangt). Fix: `color: rgba(2,11,16,.62)` an beiden Stellen (Komponente + `home.css`) → **5.66:1** auf `#FAF9F7` (5.92 auf Weiss, 5.35 auf Concrete); Alternative Brand-Ink `#0B7A4C` 5.15:1. Zwei Zeilen, keine Geometrie; QA: Route-Diff erwartet 3 Routen (`/` HTML unverändert, nur `home.css`; Akademie/Club CSS-Hash), Kontrastsweep 2 → 0, Marquee-Animation/`prefers-reduced-motion` unverändert. Eigener Commit, eigene Freigabe.
 
 **Wave 6 — Pflicht-Gesamtaudit (vor weiterer Implementierung):** alle 766 Routen mit computed-style-Zensus (Buttons, Labels, Karten, Links, Heroes, Flächen) gegen das Softriver-System; Klassifikation FULL/PARTIAL/OFFEN pro Route mit Vorlage-Zuordnung; Kontrast- und Overflow-Sweep sitewide (nicht nur Kohorten); Haut 37, EN 51, Legal 3, Sonderseiten, `/wissen/`-Hub, LayoutDe-Akupunktur 5 und Flagship-Standorte 11 explizit bewerten; `/partner/bern/` und St. Gallen/Zürich-Funnel als geschützt dokumentieren; Ergebnis als Tabelle in diesem Dokument, bevor Wave 6 Design beginnt.
+
+## 25. Wave 6 — Gesamtaudit aller Routen (11.10.2026, lokal, keine Design-Änderung)
+
+**Basis:** `origin/main` = `51a53665` (gefetcht, verifiziert); Worktree `tcm-ch-w6` (`feat/wave6-audit`), Clean-Build **766 HTML-Routen** (986 Dateien; 220 Nicht-HTML: 97 webp, 33 css, 27 png, 17 js, 15 jpg, 12 avif, 7 svg, 6 mp4, sitemap, webmanifest). `_redirects`: 46 × 301, 1 × 410 (`/sprechstunde/`). 21 noindex-Routen (5 B2B-Scaffolds, 11 Visuals, `/partner/bern/`, `/404.html`, `/en/404/`, `/ergebnisse/rueckenschmerzen/`, `/gesundheitsbibliothek/perspektiven/`), 5 Routen mit Fremd-Canonical (`/404.html`, 3 Beschwerden-Aliasse, `/haut/rosacea/`). Layouts: LayoutDe 477 · SpaPage 231 · EN-Layout 51 · PartnerLayout 1 · Club (eigener Shell) 1 · Handouts ohne Shell 5. Vollständige Matrix: `docs/wave6-route-matrix.csv` (766 Zeilen, 36 Spalten: Route, Familie, Layout, Shell, noindex, Hero, H1, Typo/Farben, CTA, Karten, Formular, Links, Kontrast, Fokus, Overflow, Höhen, tel/WhatsApp/OneDoc/Formulare, Fixed-Elemente, Gesamtstatus, Ausnahme, Kohorte).
+
+**Methode:** gerenderter Zensus aller 766 Routen × 1440/390 (Puppeteer, computed styles, Fonts lokal, Bilder blockiert): Hero (H1-Grösse/Gewicht/Font/Farbe, Flächenfarbe, Foto), Farbklassen aller sichtbaren Text-/Flächen-/Rahmenknoten (Rich Black, Mint, Tint, Concrete, Brand-Ink, Legacy-Grün `#2D9B6F`/`#1F7A54`/`#E8F5EE`, Browser-Blau, Legacy-Grau, Gold, WhatsApp), Fonts, CTA-Geometrie (Fläche/Radius/Höhe), Karten-Radien/Rahmen, Formularfelder, Prosa-Link-Farben, AA-Kontrast, Fokus-Ring (CDP `focus-visible`), Overflow, Fixed/Sticky-Elemente, Header/Footer, tel/WhatsApp/OneDoc/Formulare. Plus 37 Repräsentanten/Anomalien × 6 Breiten als Screenshots (Scratchpad `w6/shots`, Familien-Sheets). Regelwerk kalibriert an abgenommenen Vorlagen (Beschwerden-Leaf, Team-Profil, B2B, Massage-City): toleriert werden Slate-Akzente, Meta-Grau ohne AA-Verstoss, Gold-Sterne, Hub-Suchfelder mit Unterstrich, 1–2 versteckte Arial-Knoten.
+
+**Ergebnis (Routen vollständig konform = Hero ∧ Typo/Farben ∧ Komponenten ∧ AA/Fokus ∧ Overflow ∧ Shell):**
+
+| Ebene | Zahl | Bemerkung |
+|---|---|---|
+| Shell (nav-rebrand + Rich-Black-Footer) | **708/766** | 58 ohne Shell by design: 51 EN (eigener Header ohne `nav-rebrand.css`), 5 Handouts, `/club/`, `/partner/bern/` |
+| Template-Abdeckung laut §24 (Stylesheet-Reichweite) | 632 | **nicht** gleich visuelle Konformität |
+| **Routen tatsächlich vollständig konform** | **595/766** | 37 Routen der 632 fallen durch (s. u.); keine Route ausserhalb der 632 ist voll konform |
+| Hero konform | 638 | |
+| Typo/Farben ohne Legacy-Grün/-Blau | 632 | |
+| Komponenten (CTA, Karten, Formular, Links) | 618 | |
+| AA-Kontrast 0 Verstösse (1440+390) | 634 | Summe Verstösse: EN 882 · Haut 610 · Wissen 438 (Hub 426) · Sonderseiten 186 · Standorte 148 · B2B 130 (Bern 128) · City-akz 104 · Legal 62 · Visuals 56 · Home 14 · 404 4 |
+| Overflow 0 (1440+390) | 763 | `/tools/bab-navigator/` 21px, zwei Handouts 74/80px (Druck-Layout) |
+| Fokus sichtbar | 765 | `/club/` (UA-Default 1px) |
+
+Je Familie (voll konform / n): Gesundheitsbibliothek+Körpersignale 296/296 · Beschwerden 153/155 · Team 17/17 · Wissen 51/54 · B2B 47/56 · Therapien 22/37 · City-Massage 0/8 · City-Akz 3/6 · Standorte 5/21 · Über uns 1/1 · Home 0/1 · Haut 0/37 · EN 0/51 · Sonderseiten 0/11 · Visuals 0/11 · Legal 0/3 · 404 0/1.
+
+**Die 37 Abweichungen innerhalb der 632 (Komponenten-Nachzug, geringes Risiko):** 18 × InsuranceBanner-CTA `.ib-cta` Rich Black mit 12px-Radius statt Pille (10 Massage-Therapien, 8 City-Massage); 9 × H1 in Legacy-Charcoal `#0d0d0d` (5 Akupunktur-Unterseiten `verfahren/bauch/laser/schaedel/ynsa`, 4 Tools `rn-*`); 7 × Legacy-Grün/-Blau-Reste (`/therapien/massage/`, `/massage-zuerich/`, `/beschwerden/wechseljahre/`, `/standorte/zuerich-city/`, 2 Wissen-Leaves mit 6 AA-Verstössen, `/beschwerden/`-Hub Font-Knoten); 2 × Formularfelder `rgb(157,150,142)`/0px (`/partner/modell/`, `/praxiswissen/praxisrechner/`); 2 × H1 Gewicht 700 (`/karriere/`, `/akademie/`); 1 × Overflow (`bab-navigator`). Wave 1–5-Verbesserungen sind sonst intakt (Hubs, Leaves, Profile, B2B, Über uns).
+
+**Sechs-Breiten-Höhen der Ausnahmen (px, 360/390/430/768/1280/1440):**
+
+| Route | 360 | 390 | 430 | 768 | 1280 | 1440 |
+|---|---|---|---|---|---|---|
+| `/en/` | 4079 | 3948 | 3695 | 3295 | 2826 | 2829 |
+| `/haut/` | 17942 | 17337 | 17175 | 13304 | 9271 | 9270 |
+| `/standorte/frauenfeld/` | 16583 | 16385 | 16103 | 14797 | 12144 | 12263 |
+| `/standorte/bern/` | 11828 | 11459 | 11067 | 9770 | 8190 | 8191 |
+| `/wissen/` | 31719 | 31626 | 31963 | 38078 | 12121 | 12123 |
+| `/kontakt/` | 3949 | 3925 | 3878 | 2861 | 2486 | 2487 |
+| `/krankenkassen/` | 8862 | 8793 | 8621 | 6164 | 5306 | 5306 |
+| `/club/` | 7966 | 7795 | 7606 | 7677 | 9193 | 9304 |
+| `/longevity/` | 7389 | 7116 | 6781 | 5418 | 4927 | 4930 |
+| `/akupunktur-kinder/` | 8255 | 7903 | 7499 | 5666 | 5695 | 5730 |
+| `/visuals/ischias/handout/` | 1045 | 989 | 946 | 924 | 1211 | 1211 |
+| `/partner/bern/` | 16375 | 16181 | 15986 | 16103 | 15943 | 16134 |
+| `/impressum/` | 4499 | 4417 | 4308 | 3458 | 3137 | 3137 |
+
+**Visuelle Befunde (Sheets `w6/sheet-*.png`):** EN: weisse Heroes, H1 50/800, Legacy-Grün-CTAs 14px, eigener Header ohne Rebrand-Styles, Footer bereits Rich Black, 882 AA-Verstösse. Haut: weisse Heroes mit Gold-Eyebrow (bewusst), Grün-CTAs 14px, Charcoal-Text, Karten mit Gold-Hairline `rgb(226,217,201)` (bewusst), 610 AA-Verstösse. Standorte-Flagships: Mint-Hero `lsr-hero` bereits brand, aber Karten `#e5e5e5`-Rahmen (27–35 je Seite), grüne Formular-Kacheln (Bern/Luzern), Mint-`btn-primary` 14px (Bottighofen, St. Gallen), 6–15 AA-Verstösse je Seite; `/standorte/`-Hub 47. Home: 44 Legacy-Rahmen, 14 AA, Formular `#e5e5e5`/14px. Wissen-Hub: komplett Legacy (426 AA, grüne Links, Charcoal-H1). Kontakt: grüne WhatsApp-Kachel + grüner Button. Krankenkassen ×4: grüne Pillen/Buttons, grüne Links, Legacy-Formulare. Ergebnisse/Selbsttest/Zuweisen/404: grüne 14px-Buttons, Charcoal-H1. Legal ×3: grüne Links. Visuals: Illustrations-Seiten mit Outline-Buttons, Handouts Druck-Layout. Club: eigene Sub-Brand-Shell (QI CLUB), Charcoal-Buttons 0px, Fokus UA-Default. Longevity: Dunkelgrün/Gold-Sub-Brand, H1 Gewicht 300.
+
+**Kohorten-Ranking (visuelle Divergenz × kommerzielle Wirkung × Template-Hebel × Risiko):**
+
+| Rang | Kohorte | Routen | Divergenz | Wirkung | Hebel | Risiko |
+|---|---|---|---|---|---|---|
+| 1 | **B0 Komponenten-Nachzug** | 32 (s. o. 37 abzgl. Bern) | gering | mittel (Massage/City-Conversion) | sehr hoch (3 Stylesheets) | sehr gering |
+| 2 | **B1 Haut** | 37 | hoch (Grün-CTAs, Charcoal) | hoch (K-Beauty-Funnel) | hoch (`.haut-scope`, 1 Vorlage + Hub) | gering; Gold-Differenzierung bleibt |
+| 3 | **B2 EN** | 51 | hoch | mittel-hoch (internationale Patient:innen, Versicherungs-Seiten) | hoch (`Layout.astro` + 5 Vorlagen) | gering; kein Text, keine Übersetzung |
+| 4 | **B3 Standorte/City/Home** | 20 (11 Flagships + Hub + Bern/Luzern/Zürich-City + Kinder + Zürich-Funnel + Basel-akz + Home) | mittel (Heroes ok, Karten/Formulare/Kontrast nicht) | **sehr hoch** (Buchung, OneDoc, Formulare) | mittel (`#page-standort`, `.standort-scope`, W1-Komponenten) | **hoch** → nur Komponenten-Layer, geschützte Routen byte-/funktionsgleich testen |
+| 5 | **B4 Sonderseiten/Hubs/Legal** | 30 (Wissen-Hub, Kontakt, Krankenkassen 4, Ergebnisse 2, Selbsttest, Zuweisen, 404, Legal 3, Visuals 11, Beschwerden-/Bibliothek-Hub-Suchfeld, Club, Longevity) | hoch, heterogen | mittel (Kontakt/Krankenkassen konvertieren) | gering (Einzelvorlagen) | mittel; Club/Longevity nur nach Sub-Brand-Entscheidung |
+| — | Ausnahme | 1 (`/partner/bern/`) | — | — | — | bleibt |
+
+Erwartete Abdeckung: nach B0 627/766 · B1 664 · B2 715 · B3 735 · B4 760–765 (Club/Longevity/Handouts je nach Entscheidung).
+
+**Umsetzungsplan (4 Batches, je eigener Worktree, eigener Commit, volle Gates + Route-Diff-Klassifikation + Paritäten + Kontrast/Fokus/Overflow + 6 Breiten; STRICT STOP vor Release):**
+
+*B0 — Komponenten-Nachzug (Prompt):* «Nur CSS: `.ib-cta`/`.ib-sticky-cta` auf 999px-Pille (home.css, City-Scope-Regel beibehalten); H1-Farbe Rich Black für `/therapien/akupunktur/{verfahren,bauchakupunktur,laserakupunktur,schaedelakupunktur,ynsa}/` (LayoutDe-Vorlage) und `tool-wizard.css` (`rn-*`-H1, Charcoal → Rich Black); `.ak-hero h1`/`.pt-hero-text h1` `font-weight:800`; Formularfelder `.b2-calc`/`/partner/modell/` auf b2b-Feldstil; Legacy-Grün-Reste auf `/therapien/massage/`, `/massage-zuerich/`, `/beschwerden/wechseljahre/`, `/standorte/zuerich-city/` (je 1–3 Knoten, per Matrix-Spalte `ctaInfo`/`linkLegacy` lokalisieren); 2 Wissen-Leaves AA (6 Treffer); `bab-navigator` 390px-Overflow. Erwarteter Route-Diff: ≤ 40 Routen CSS-Hash, 0 HTML-Textänderung.»
+
+*B1 — Haut (Prompt):* «`.haut-scope` (37 Routen, 1 Leaf-Vorlage + Hub): Gold bleibt als Eyebrow/Akzent/Karten-Hairline; CTAs `btn--primary` → Rich-Black-Pille, Ghost → Hairline-Pille; Text Charcoal → Rich Black, Meta ≥ 62 %; Hero Typo-Skala wie Beschwerden-Concrete-Hero (H1 `clamp(38px,5vw,64px)`), Fläche Weiss/Concrete nach Wahl; Prosa-Links Rich Black + Gold- oder Mint-Strich (Entscheidung: Gold im Haut-Kontext); Formulare/Sticky-CTA wie 4A; Kontrast 610 → 0. Medizinische Inhalte, Preise, `/haut/rosacea/`-Canonical unverändert.»
+
+*B2 — EN (Prompt):* «`src/layouts/Layout.astro` + EN-Vorlagen (Home, Conditions 9, Therapies 11, Locations 15, Knowledge 10, Contact, Insurance, 404): Header auf Rebrand-Shell (nav-rebrand-Parität, Drawer), CTAs Rich-Black-/Mint-Pillen, Heroes Concrete mit Brand-Skala, Karten Hairline 16px, Links Rich Black + Mint, Formular `/en/contact/` wie Kontakt-Vorlage, Kontrast 882 → 0. Keine Übersetzungs-/Textänderung, hreflang/Canonicals unverändert; Rendered-Text-Parität 51/51 Pflicht.»
+
+*B3 — Standorte/City/Home (Prompt):* «Komponenten-Layer in `#page-standort`/`.standort-scope`/`.city-scope`/Home: Karten `#e5e5e5` → `rgba(2,11,16,.1)`, Formular-Kacheln (Bern/Luzern) Tint statt Grün, `btn-primary` 14px → Pille (Bottighofen, St. Gallen, Hub), Kontrast 148 + 14 + 104 → 0, Legacy-Grün-Links in Zürich-Funnel/Kinder. Geschützt: `/standorte/st-gallen/`, `/akupunktur-tcm-zuerich/` (OneDoc-`widgetConfigs` byteidentisch, Funnel-JS unverändert), Betriebsstatus-Texte wortgleich; Formular-Mocks (massage/termin/deckung/allgemein) Payload-identisch; Clinic-Status- und Standort-UX-Gate Pflicht.»
+
+*B4 — Sonderseiten/Hubs/Legal (Prompt):* «Einzelvorlagen: Wissen-Hub (SpaPage, 426 AA, Hero Concrete + Karten), Kontakt (WhatsApp-Kachel Rich Black mit grünem Icon, Button Pille, Felder 12px), Krankenkassen ×4 (Pillen, Links, Rechner-Felder), Ergebnisse ×2, Selbsttest, Zuweisen (Formular), 404/EN-404, Legal ×3 (Links Rich Black + Mint-Strich, H1 Rich Black), Visuals ×6 (Outline-Buttons → Ghost-Pillen; Handouts ×5 unverändert, Druck), Beschwerden-/Bibliothek-Hub-Suchfeld (Radius/Hairline). Club und Longevity erst nach Entscheidung «Sub-Brand behalten vs. angleichen» (Club: eigener Shell und Rot-Akzent; Longevity: Dunkelgrün/Gold).»
+
+**Ausnahmen (explizit):** `/partner/bern/` (Präsentation, noindex); 5 Handouts (Druck, kein Shell, Overflow by design); `/club/` und `/longevity/` (Sub-Brands, Entscheidung offen); Haut-Gold (bewusst); `/standorte/st-gallen/`, `/akupunktur-tcm-zuerich/` (geschützt, nur Komponenten-Layer); BrandMarquee `.bm-label` im Footer (`#8a8781` auf Rich Black 5.5:1, konform).
+
+**Wave 6 Teil A (lokal):** BrandMarquee-Label `rgba(2,11,16,.62)` in `BrandMarquee.astro` + `home.css` — Commit `967d1cf7`; Konsumenten `/`, `/akademie/`, `/club/`; Kontrast 3.40 → 5.66; Höhen/Text/Animation/`prefers-reduced-motion` identisch; Build-Diff: `home.css` + 2 Routen (Inline-`is:global`-Style), 764 Routen byteidentisch; Gates grün. Nicht gepusht.
+
+**Teil B (read-only):** `docs/ueber-uns-copy-proposals.md` — exakte Vorher/Nachher-Texte, Evidenz, Schwere (H: EMR/ASCA-Pauschale, Hwang-Standorte, «sofort geklärt»; M: Arzt-Claim, Presse, tcmd/aku; N: Gründer-Rollen — Impressum «Co-Founder», Registry «Inhaber TCM.ch»).
