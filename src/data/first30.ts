@@ -4,7 +4,7 @@
 //
 // Betrieb (Team): Die verifizierte Zahl bestätigter FIRST-30-Termine wird NUR hier gepflegt, aus der
 // Praxis-Agenda, nie geschätzt. Ablauf: docs/cro/07-first30-winter-2026.md.
-//   confirmedClaims: null → Indikator zeigt nur "Limitierte FIRST 30 Vorweihnachtsgeschenke" (kein Prozent, kein Restbestand).
+//   confirmedClaims: null → Indikator zeigt nur "30 limitierte Willkommensgeschenke" (kein Balken, kein Prozent, kein Restbestand).
 //   confirmedClaims: 27   → "27 / 30 Geschenke vergeben", Balken 90 %, "Nur noch 3 Geschenke verfügbar", NUR wenn aus Agenda belegt.
 //   confirmedClaims: 30 → bei laufender Kampagne Warteliste (statt freie Plätze). Nur campaignActive: false schliesst manuell.
 //   totalAllocation 30 folgt der ausdrücklichen Inhaber-Anweisung (27/28 von 30 Konzept). Die 30 Termine müssen vor Launch operativ tatsächlich bereitstehen.
@@ -84,7 +84,7 @@ export const first30State = (): First30State => {
     : soldOut ? `Alle ${max} Geschenke vergeben`
     : `${reserved} von ${max} Geschenken vergeben · Nur noch ${remaining} verfügbar`;
   const indicator: First30Indicator = reserved == null
-    ? { mode: 'unverified', pct: 0, head: 'Limitierte FIRST 30 Vorweihnachtsgeschenke', sub: `Maximal ${max} Geschenke in dieser Edition` }
+    ? { mode: 'unverified', pct: 0, head: `${max} limitierte Willkommensgeschenke`, sub: '' }
     : soldOut
     ? { mode: 'full', pct: 100, head: `${max} / ${max} Geschenke vergeben`, sub: campaign === 'closed' ? 'Die Edition ist beendet' : 'Alle Geschenke vergeben · Warteliste möglich' }
     : { mode: 'verified', pct: Math.round((reserved / max) * 100), head: `${reserved} / ${max} Geschenke vergeben`, sub: `Nur noch ${remaining} ${remaining === 1 ? 'Geschenk' : 'Geschenke'} verfügbar` };

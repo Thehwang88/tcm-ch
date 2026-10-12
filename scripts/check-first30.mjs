@@ -61,7 +61,7 @@ if (st.showCampaign) {
   const expectedHero = st.campaign === 'soldout-waitlist' ? 'soldout' : st.reserved == null ? 'max-only' : 'verified';
   ok(new RegExp(`data-first30="${expectedHero}"`).test(sg) && !/hlsg-card/.test(sg), `Promo-Hero Zustand ${st.campaign} / ${expectedHero}, regulärer Hero fehlt`);
 if (FIRST30.confirmedClaims == null) {
-  ok(vis.includes(`Nur ${FIRST30.totalAllocation} exklusive Geschenke`) && /data-mode="unverified"/.test(sg) && vis.includes('Limitierte FIRST 30 Vorweihnachtsgeschenke'), 'nur Maximum kommuniziert; Indikator unverifiziert ("Limitierte FIRST 30 Vorweihnachtsgeschenke")');
+  ok(/data-mode="unverified"/.test(sg) && vis.includes(`${FIRST30.totalAllocation} limitierte Willkommensgeschenke`) && !/Limitierte FIRST 30 Vorweihnachtsgeschenke/.test(vis), 'nur Maximum kommuniziert; Indikator unverifiziert ("30 limitierte Willkommensgeschenke")');
   ok(!/f30-avail-bar/.test(sg) && !/\d+ \/ \d+ Geschenke vergeben/.test(vis) && !/Nur noch \d+ (Geschenke? verfügbar|verfügbar|übrig)/.test(vis) && !/%/.test(text(sg.slice(sg.indexOf('data-f30-avail'), sg.indexOf('</div>', sg.indexOf('data-f30-avail'))))), 'kein Balken, kein "x / 30 vergeben", kein Restbestand, kein Prozent');
 } else {
   ok(new RegExp(`data-confirmed="${FIRST30.confirmedClaims}"`).test(sg) && vis.includes(st.indicator.head) && vis.includes(st.indicator.sub), `Indikator: "${st.indicator.head}" · "${st.indicator.sub}"`);
@@ -75,7 +75,7 @@ console.log('2. Claims');
 ok(/once-a-year/i.test(vis) === FIRST30.onceAYearApproved, `"Once-a-Year" nur nach Freigabe (approved=${FIRST30.onceAYearApproved})`);
 ok(!/jährlich/i.test(vis) || FIRST30.onceAYearApproved, '"jährlich" nur nach Freigabe');
 ok(/<span[^>]*data-f30-timer\b/.test(sg) === FIRST30.dailyCutoff.approved, `Countdown nur mit bestätigtem Cutoff (approved=${FIRST30.dailyCutoff.approved})`);
-ok(FIRST30.dailyCutoff.approved || text(sg.slice(sg.indexOf('data-f30-wa'), sg.indexOf('</a>', sg.indexOf('data-f30-wa')))).includes(st.scarcityText), 'ohne Cutoff: passende Kapazitäts- ODER Wartelistenaussage im WhatsApp-Button');
+ok(FIRST30.dailyCutoff.approved || !/f30-wa-strip/.test(sg), 'ohne Cutoff: kein Strip im WhatsApp-Button (Kapazität nur im Verfügbarkeits-Indikator)');
 ok(!/läuft ab|Angebot endet|nur heute/i.test(vis), 'kein Angebots-Ablauf-Wording');
 
 console.log('3. Formulare');
@@ -89,7 +89,7 @@ ok(/name="f30b_wahl" value="ERSTTERMIN_REGULAER_SG"[^>]*checked/.test(bottom) &&
 ok(/name="angebot_id" value="ERSTTERMIN_REGULAER_SG"/.test(bottom) && /name="quelle" value="sg-kontakt-bottom"/.test(bottom) && /name="wunschzeit"/.test(bottom), 'unteres Formular: hidden angebot_id regulär, quelle sg-kontakt-bottom, Wunschzeit');
 ok(sg.indexOf('data-f30-bottom') < sg.indexOf('class="inline-form-card"') && sg.indexOf('<fieldset class="f30b"') > sg.indexOf('id="kontakt"'), 'Wähler steht ÜBER der Formularkarte innerhalb #kontakt');
 ok(/id="online-buchen"/.test(sg) && /onedoc\.ch\/de\/widget/.test(sg), 'OneDoc-Widget (reguläre Buchung) vorhanden');
-ok((sg.match(/data-offer="first30"/g) ?? []).length >= 4 && /data-offer="regular"/.test(sg), 'FIRST-30-CTAs (Leaf, Desktop-Pill) und regulärer CTA mit data-offer');
+ok((sg.match(/data-offer="first30"/g) ?? []).length >= 4, 'FIRST-30-CTAs (Leaf, Desktop-Pill) mit data-offer; regulärer Weg über OneDoc-Link + unteren Wähler');
 
 console.log('4. Scope + WhatsApp');
 const pages = []; const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && pages.push(p); } }; walk('dist');
@@ -108,8 +108,9 @@ ok(/"@type":\s*"MedicalClinic"/.test(sg) && (!mainSg || JSON.stringify((sg.match
 const h1 = text(meta(sg, /<h1[^>]*>([\s\S]*?)<\/h1>/) || '');
 ok(/St\. Gallen/.test(h1) && /TCM/.test(h1), `H1 trägt Ort und Fach: "${h1}"`);
 ok((sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine H1');
-ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Du zahlst CHF 0.–') && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM in St. Gallen geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
-ok((vis.match(/CHF 0\.–/g) ?? []).length >= 4 && !/CHF 0\.-[^–]/.test(vis), 'einheitliche Preisangabe CHF 0.– in Hero, Floating, Wähler');
+ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Ja, ich möchte mein Geschenk!') && vis.includes('30 Minuten · CHF 0.–') && !/Du zahlst CHF 0/.test(vis) && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM in St. Gallen geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
+const heroVis = text(sg.slice(sg.indexOf('class="lsr-hero f30-hero"'), sg.indexOf('</section>', sg.indexOf('class="lsr-hero f30-hero"'))));
+ok((heroVis.match(/CHF 0\.–/g) ?? []).length === 1 && (vis.match(/CHF 0\.–/g) ?? []).length >= 3 && !/CHF 0\.-[^–]/.test(vis), `ein Preisanker im Hero (${(heroVis.match(/CHF 0\.–/g) ?? []).length}×), einheitlich CHF 0.– in Floating + Wähler`);
 
 } else {
   console.log('2–4. Geschlossene Kampagne: regulärer Hero, keine Geschenk-CTAs');
