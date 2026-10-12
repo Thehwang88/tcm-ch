@@ -11,6 +11,7 @@
 // the leaves + legacy branch can be deleted.
 import SpaPage from '../../layouts/SpaPage.astro';
 import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
+import HeroStandardSG from '../../components/HeroStandardSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import homeBody from '../../data/home-body.html?raw';
@@ -25,6 +26,8 @@ import UspGrid from '../../components/standort/UspGrid.astro';
 import Team from '../../components/standort/Team.astro';
 import ClinicalLead from '../../components/standort/ClinicalLead.astro';
 import { clinicalLeadHtml } from '../../data/clinical-lead';
+import { first30BottomSelectorHtml, first30State } from '../../data/first30';
+const first30 = first30State();
 import IntroNap from '../../components/standort/IntroNap.astro';
 import Therapien from '../../components/standort/Therapien.astro';
 import Kraeuter from '../../components/standort/Kraeuter.astro';
@@ -235,6 +238,23 @@ if (migrated) {
     const te = ti >= 0 ? sgBody.indexOf('</section>', ti) : -1;
     if (te < 0) throw new Error('st-gallen: Team-Marker für Clinical-Lead-Injektion nicht gefunden - Leaf geändert?');
     sgBody = sgBody.slice(0, te + 10) + leadHtml + sgBody.slice(te + 10);
+    // FIRST 30 (nur solange der Kampagnen-Hero gezeigt wird): Angebots-Wähler ÜBER dem unteren Kontaktformular und
+    // Leaf-CTAs auf das Geschenk umgestellt. Geschlossene Kampagne = Leaf unverändert (reguläre CTAs → #offer-form).
+    if (first30.showCampaign) {
+      const bc = '<div class="inline-form-card">';
+      const bi = sgBody.indexOf(bc);
+      if (bi < 0) throw new Error('st-gallen: inline-form-card-Marker für den FIRST-30-Wähler nicht gefunden - Leaf geändert?');
+      sgBody = sgBody.slice(0, bi) + first30BottomSelectorHtml() + sgBody.slice(bi);
+      const giftLabel = first30.campaign === 'soldout-waitlist' ? 'FIRST 30 Warteliste' : 'FIRST 30 Geschenk anfragen';
+      sgBody = sgBody
+        .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="btn-primary" data-offer="first30">${giftLabel}</a>`)
+        .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="sgcta-free" data-offer="first30">${giftLabel}</a>`);
+    }
+    // FIRST 30 Hero hat keine Fotohälfte mehr: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
+    const uh = '<h2 class="up-h2">Über die Praxis</h2>';
+    const ui = sgBody.indexOf(uh);
+    if (ui < 0) throw new Error('st-gallen: Über-die-Praxis-Marker für das Praxisfoto nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, ui + uh.length) + '<figure class="up-photo"><img src="/images/standort-stgallen.jpg" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>' + sgBody.slice(ui + uh.length);
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
     if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
@@ -398,6 +418,6 @@ const waTermin = migrated ? waHref(data.nap.telefon, data.review
   </SpaPage>
 ) : (
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
-    {slug === 'st-gallen' && <HeroLaunchSG sitekey={turnstileSitekey} />}
+    {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} />)}
   </SpaPage>
 )}
