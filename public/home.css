@@ -5674,3 +5674,18 @@ body:has(> .symptom-scope > #page-beschwerden) .bx-az-btn:not(#w2){font-family:v
   .hh-inner{min-height:max(min(560px,62vh),clamp(560px,calc(var(--hero-hub) - var(--header-h,76px)),800px))}
   .tsr-inner{min-height:max(min(560px,62vh),clamp(560px,calc(var(--hero-detail) - var(--header-h,76px)),720px))}
 }
+/* ── Clinical Lead, netzwerkweit (src/data/clinical-lead.ts) ── */
+.section.cl-lead-sec{padding:0 0 64px}
+.cl-lead{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:center;background:#fff;border:1px solid #e8e8e8;border-radius:18px;padding:22px 26px}
+.cl-lead--noimg{grid-template-columns:1fr}
+.cl-lead-media{width:120px;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#f5f5f3}
+.cl-lead-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.cl-lead-body{max-width:72ch}
+.cl-lead-label{font-family:var(--font-sans);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink,#0B7A4C);margin:0 0 6px;line-height:1.3}
+.cl-lead-name{font-family:var(--font-sans);font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--brand-black,#020B10);line-height:1.2}
+.cl-lead-role{font-size:13.5px;font-weight:700;color:#555;margin-top:2px}
+.cl-lead-text{font-size:15px;line-height:1.6;color:var(--mid);margin:10px 0 0}
+.cl-lead-note{font-size:13px;line-height:1.5;color:#6b6b6b;margin:8px 0 0}
+.cl-lead-cta{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:none}
+.cl-lead-cta:hover{text-decoration:underline}
+@media (max-width:640px){.cl-lead{grid-template-columns:88px 1fr;gap:16px;padding:18px}.cl-lead--noimg{grid-template-columns:1fr}.cl-lead-media{width:88px}.section.cl-lead-sec{padding:0 0 48px}}

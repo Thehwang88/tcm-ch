@@ -9,6 +9,7 @@
 // Statischer Pfad, deshalb greift standorte/[slug].astro hier nicht (Luzern ist nicht in standorte.ts).
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
+import ClinicalLead from '../../../components/standort/ClinicalLead.astro';
 import { symptomCards } from '../../../data/symptom-cards';
 import { therapyCards } from '../../../data/therapy-cards';
 
@@ -163,6 +164,8 @@ const schema = [
       <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">Zentrale Lage, Bahnhof in Gehdistanz - Adresse folgt nach Mietvertrag.</p>
     </div>
   </section>
+
+  <ClinicalLead slug="luzern" />
 
   <!-- ── EINZUGSGEBIET ── -->
   <section class="section" style="background:var(--surface)">
