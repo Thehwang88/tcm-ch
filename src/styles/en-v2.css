@@ -342,3 +342,13 @@ html[lang="en"] #mainNav :is(.nav-cta, .nav-lang, .nav-menu-btn, .nav-phone, .na
 @media (max-width: 389px) { html[lang="en"] #mainNav .logo img { width: 96px; } }
 @media (max-width: 349px) { html[lang="en"] #mainNav { padding: 0 14px; } html[lang="en"] #mainNav .nav-inner { gap: 10px; } html[lang="en"] #mainNav .logo img { width: 80px; } }
 @media (prefers-reduced-motion: reduce) { html[lang="en"] #mainNav .nav-links a, html[lang="en"] #mainNav .nav-phone { transition: none; } }
+
+/* ── HERO SIZING · spacious desktops (= DE rules in home.css, tokens --hero-* in tokens.css).
+   HeroSplit sets data-hero from the route family; below 1280px nothing changes and the outer
+   max() keeps the existing min(600px,66vh) floor so no viewport gets a shorter hero. ── */
+@media (min-width: 1280px) {
+  html[lang="en"] .ev-hero--split[data-hero="city"] .ev-hero__inner { min-height: max(min(600px, 66vh), clamp(560px, calc(var(--hero-city) - var(--en-header-h, 76px)), 900px)); }
+  html[lang="en"] .ev-hero--split[data-hero="location"] .ev-hero__inner { min-height: max(min(600px, 66vh), clamp(600px, calc(var(--hero-location) - var(--en-header-h, 76px)), 880px)); }
+  html[lang="en"] .ev-hero--split[data-hero="hub"] .ev-hero__inner { min-height: max(min(600px, 66vh), clamp(560px, calc(var(--hero-hub) - var(--en-header-h, 76px)), 800px)); }
+  html[lang="en"] .ev-hero--split[data-hero="detail"] .ev-hero__inner { min-height: max(min(600px, 66vh), clamp(560px, calc(var(--hero-detail) - var(--en-header-h, 76px)), 720px)); }
+}
