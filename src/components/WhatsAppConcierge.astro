@@ -26,9 +26,7 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
     <div class="wac-body">
       <div class="wac-bubble">{en ? 'Hello, I am Yuna from the TCM.ch concierge. Do you have a question about treatment, appointments or insurance? Just write to me.' : 'Hallo, ich bin Yuna vom TCM.ch Concierge. Hast du eine Frage zu Behandlung, Termin oder Krankenkasse? Schreib mir kurz.'}</div>
       <a class="wac-cta" id="wac-cta" href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(en ? 'Hello, I am interested in TCM and would like some quick help choosing the right treatment or clinic. Can you help?' : 'Hallo, ich interessiere mich für TCM und hätte gerne kurz Hilfe bei der passenden Behandlung oder Praxis. Können Sie mir weiterhelfen?')}`} target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WA_PATH}></path></svg>
-        {en ? 'Start a WhatsApp chat' : 'Chat auf WhatsApp starten'}
-      </a>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WA_PATH}></path></svg>{en ? '\nStart a WhatsApp chat\n' : '\nChat auf WhatsApp starten\n'}</a>
       <div class="wac-reassure">{en ? 'Free and non-binding' : 'Kostenlos und unverbindlich'}</div>
     </div>
   </div>
