@@ -36,6 +36,7 @@ EN: `HeroSplit.astro` derives `data-hero="city|location|hub|detail|editorial"` f
 ## 3. Results
 
 - 217 route × viewport renders: 59 heroes grew, 144 unchanged, **0 shrank**; mobile 390 and tablet 768 byte-identical in metrics.
+- The remaining 14 renders are `/beschwerden/rueckenschmerzen/` and `/akupunktur-in-der-naehe/` at all 7 viewports: both pages have no element matching the audit's hero selectors (Concrete Wave 2C-2 leaf and the legacy near-me layout), so no height was recorded; they are outside this change and their built HTML is byte-identical to main.
 - At every desktop viewport the hero CTAs stay in view and the next section (Zürich clinic strip, location USP cards, hub lists, EN USP strip) starts inside the first viewport.
 - No horizontal overflow on any render. Team photo heads intact on the Zürich hubs at 1920/2560; Basel reception sign fully visible at 2560.
 - DE HTML byte-identical to main (only `home.css` and `tokens.css` change); EN pages differ only by the `data-hero` attribute and the CSS bundle hash. No tracking file, layout, page or data file touched.
