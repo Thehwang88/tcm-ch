@@ -106,6 +106,28 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
   ok((src.match(/addEventListener\('en-form'/g) || []).length === 1, 'T6 one EnAnalytics script');
   await page.close();
 }
+// T7 Clinic finder (near-me): city → clinic → request link preselects the form; planned city → register interest
+{
+  const page = await open('/en/acupuncture-near-me/');
+  ok((await page.$$eval('form', (f) => f.length)) === 1, 'T7 exactly one form on near-me');
+  await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Basel"]').click(); });
+  const vis = await page.evaluate(() => [...document.querySelectorAll('.ev-finder__clinic')].filter((c) => !c.hidden).map((c) => c.querySelector('strong').textContent));
+  ok(JSON.stringify(vis) === JSON.stringify(['Basel', 'No preference']), `T7 Basel shows Basel + no-preference only, got ${JSON.stringify(vis)}`);
+  await page.evaluate(() => { document.querySelector('input[name="finder-treatment"][value="Cupping"]').click(); });
+  ok(await clickNoNav(page, '.ev-finder__clinic[data-city="Basel"] a[data-finder-pick]'), 'T7 Basel request link exists');
+  let ev = await events(page);
+  ok(ev.length === 1 && ev[0].cta_type === 'booking' && ev[0].cta_target === '#appointment', `T7 finder request → one booking cta_click (#appointment), got ${JSON.stringify(ev)}`);
+  ok((await page.$eval('#en-nearme-form [name="standort"]', (s) => s.value)) === 'Basel', 'T7 finder preselects Basel in the form');
+  ok((await page.$eval('#en-nearme-form [name="anliegen"]', (t) => t.value)) === 'Treatment interest: Cupping. ', 'T7 treatment interest prefilled in the message');
+  await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Bern"]').click(); });
+  const bern = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-city') === 'Bern'); return c ? { status: c.getAttribute('data-status'), label: c.querySelector('a[data-finder-pick]').textContent.trim(), pick: c.querySelector('a[data-finder-pick]').getAttribute('data-pick') } : null; });
+  ok(bern && bern.status === 'planned' && /Send a request/.test(bern.label) && bern.pick === '', `T7 planned Bern offers no bookable option (no vorab), got ${JSON.stringify(bern)}`);
+  await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Luzern"]').click(); });
+  const lu = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-city') === 'Luzern'); return c ? c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick') : null; });
+  ok(lu === 'Register interest|Luzern – Vormerkung, Eröffnung 2027', `T7 planned Luzern → register interest with its vorab value, got ${JSON.stringify(lu)}`);
+  ok((await events(page)).length === 1, 'T7 finder choices emit no events (only the request link does)');
+  await page.close();
+}
 // T4/T5 Form
 const PII = { name: 'Test Person', email: 'test.person@example.ch', tel: '+41 79 123 45 67', msg: 'Confidential complaint text 12345' };
 async function submit(p, formSel) {
