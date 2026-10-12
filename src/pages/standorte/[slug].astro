@@ -25,6 +25,7 @@ import UspGrid from '../../components/standort/UspGrid.astro';
 import Team from '../../components/standort/Team.astro';
 import ClinicalLead from '../../components/standort/ClinicalLead.astro';
 import { clinicalLeadHtml } from '../../data/clinical-lead';
+import { first30BottomSelectorHtml } from '../../data/first30';
 import IntroNap from '../../components/standort/IntroNap.astro';
 import Therapien from '../../components/standort/Therapien.astro';
 import Kraeuter from '../../components/standort/Kraeuter.astro';
@@ -235,6 +236,16 @@ if (migrated) {
     const te = ti >= 0 ? sgBody.indexOf('</section>', ti) : -1;
     if (te < 0) throw new Error('st-gallen: Team-Marker für Clinical-Lead-Injektion nicht gefunden - Leaf geändert?');
     sgBody = sgBody.slice(0, te + 10) + leadHtml + sgBody.slice(te + 10);
+    // FIRST 30: Angebots-Wähler (regulär / Wintergeschenk) ÜBER dem bestehenden unteren Kontaktformular.
+    const bc = '<div class="inline-form-card">';
+    const bi = sgBody.indexOf(bc);
+    if (bi < 0) throw new Error('st-gallen: inline-form-card-Marker für den FIRST-30-Wähler nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, bi) + first30BottomSelectorHtml() + sgBody.slice(bi);
+    // FIRST 30 Hero hat keine Fotohälfte mehr: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
+    const uh = '<h2 class="up-h2">Über die Praxis</h2>';
+    const ui = sgBody.indexOf(uh);
+    if (ui < 0) throw new Error('st-gallen: Über-die-Praxis-Marker für das Praxisfoto nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, ui + uh.length) + '<figure class="up-photo"><img src="/images/standort-stgallen.jpg" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>' + sgBody.slice(ui + uh.length);
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
     if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);

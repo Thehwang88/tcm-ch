@@ -28,7 +28,29 @@ export async function onRequestPost({ request, env }) {
     const _akademie = d.quelle === 'akademie' || d.quelle === 'qi-club' || d.quelle === 'praxisnachfolge';
     // Zürich-Routing-Funnel: Name + Telefon ODER E-Mail genügt (eines von beidem).
     const _zhRouting = d.anfrage_typ === 'zuerich-routing';
-    if (_zhRouting) {
+    // Angebots-/Terminart (FIRST 30 Pre-Christmas Edition 2026, St. Gallen): der Code aus dem Formular wird
+    // ausschliesslich gegen diese Whitelist aufgelöst; Preis-, Umfang- und Berechtigungstexte kommen NIE vom
+    // Client (d.angebot wird überschrieben). Unbekannter Code → 422. Quelle der Codes: src/data/first30.ts.
+    const OFFERS = {
+      FIRST30_WINTER_2026_SG: { art: 'FIRST 30 PRE-CHRISTMAS EDITION', terminart: 'Kostenloser 30-Minuten-Termin (neue Patient:innen, einmal pro Person, Termin nach persönlicher Bestätigung)', angebot: 'FIRST 30 Pre-Christmas Edition 2026 – kostenloser 30-Minuten-Termin – St. Gallen', betreff: ' · FIRST 30' },
+      FIRST30_WINTER_2026_SG_WARTELISTE: { art: 'FIRST 30 WARTELISTE', terminart: 'Warteliste für das FIRST 30 Vorweihnachtsgeschenk (alle Geschenke vergeben)', angebot: 'FIRST 30 Pre-Christmas Edition 2026 – Warteliste – St. Gallen', betreff: ' · FIRST 30 Warteliste' },
+      ERSTTERMIN_REGULAER_SG: { art: 'REGULÄRER ERSTTERMIN', terminart: 'Reguläre kostenpflichtige Erstanfrage', angebot: 'Regulärer Ersttermin – St. Gallen', betreff: '' },
+    };
+    let offer = null;
+    const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
+    if (offerId) {
+      offer = OFFERS[offerId];
+      if (!offer) return J({ error: 'invalid_offer' }, 422);
+      d.angebot = offer.angebot;
+    }
+    // Phone-only FIRST 30 (ausschliesslich Hero-Formular launch-hero-sg mit FIRST-30-ID): nur eine gültige
+    // Telefonnummer ist Pflicht, kein Name wird erfunden. Alle anderen Formulare/Standorte: Regeln unverändert.
+    const _first30Phone = _launchSG && offer && offerId.indexOf('FIRST30_WINTER_2026_SG') === 0;
+    const _phoneOk = (s) => { const t = String(s || '').trim(); const digits = t.replace(/\D/g, ''); return /^\+?[0-9 ()\/.\-]{7,24}$/.test(t) && digits.length >= 7 && digits.length <= 15; };
+    if (_first30Phone && !_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
+    if (_first30Phone) {
+      // Telefon bereits oben validiert.
+    } else if (_zhRouting) {
       if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
     } else if (_warteliste) {
       if (!d.email) return J({ error: 'missing_fields' }, 422);
@@ -59,11 +81,14 @@ export async function onRequestPost({ request, env }) {
     if (!tsResult.success) return J({ error: 'turnstile_failed' }, 403);
 
     const rows = [
+      // Angebotsklassifikation zuoberst, damit das Praxisteam FIRST 30 und reguläre Anfragen sofort unterscheidet.
+      ['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined],
+      ['Angebots-ID', offer ? offerId : undefined],
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
       ['Standort', d.standort],
       ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
-      ['Behandlung / Anliegen', d.behandlung || d.anliegen],
+      ['Behandlung / Anliegen', d.behandlung || d.anliegen], ['Wunschzeit', d.wunschzeit],
       ['Angebot', d.angebot], ['Seite', d.seite],
       // Partner-B2B (quelle=partner-b2b, /partner/): Qualifikationsfelder. Nur gesetzt, wenn vorhanden.
       ['Praxis-Website', d.praxis_url], ['Klinische Erfahrung (Jahre)', d.erfahrung],
@@ -77,7 +102,8 @@ export async function onRequestPost({ request, env }) {
     ];
     const html =
       '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
-      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage</h2>' +
+      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage' + (offer ? ' — ' + esc(offer.art) : '') + '</h2>' +
+      (offer ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid ' + (offer.betreff ? '#813548' : '#2D9B6F') + ';background:#f6f6f6"><strong>' + esc(offer.art) + '</strong> · ' + esc(d.standort || 'St. Gallen') + ' · ' + esc(offer.terminart) + '</p>' : '') +
       '<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">' +
       rows.filter(([, v]) => v != null && String(v).trim() !== '')
         .map(([k, v]) => '<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>' +
@@ -97,13 +123,15 @@ export async function onRequestPost({ request, env }) {
       ? 'Warteliste – ' + (d.standort || 'Standort offen') + ' (' + d.email + ')'
       : d.typ === 'termin'
         ? 'Terminanfrage – ' + (d.standort || 'Standort offen')
-        : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + d.name + ')';
+        : 'Neue Anfrage — ' + (d.standort || 'Standort offen') + ' (' + (d.name || d.telefon || 'ohne Name') + ')';
     // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
     // als eigene Zeile im HTML-Body (rows oben).
     if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
     // Formularname (z. B. Hero-Gratis-30min-StGallen) vorne im Betreff, damit im
     // Postfach sofort sichtbar ist, welches Formular gefeuert hat.
     if (d.formular) subject = '[' + String(d.formular).replace(/[\r\n]+/g, ' ').slice(0, 60) + '] ' + subject;
+    // FIRST 30: Suffix am Ende des Betreffs (bestehender Formular-Präfix und Betreffaufbau bleiben unverändert).
+    if (offer && offer.betreff) subject += offer.betreff;
     const body = {
       from: FROM,
       to: [TO],
