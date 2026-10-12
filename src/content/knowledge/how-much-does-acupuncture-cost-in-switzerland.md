@@ -5,14 +5,14 @@ description: "What acupuncture really costs in Switzerland, how supplementary in
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/krankenkasse-hero.png"
 heroImageAlt: "Bright Swiss TCM practice with acupuncture needles and a tablet"
 faq:
   - q: "How much is one acupuncture session in Switzerland?"
     a: "Most sessions run somewhere between roughly CHF 120 and CHF 200, billed by the time used rather than a flat rate. The first appointment often costs more because it includes a longer assessment. Ask the clinic for its exact per-minute rate before you book."
   - q: "Will my insurance pay for acupuncture?"
-    a: "Usually only through supplementary insurance for complementary medicine, not basic insurance. If your practitioner is EMR or ASCA recognised and your policy includes complementary cover, you typically get a large share back. Check your specific policy and annual limit first."
+    a: "Usually only through supplementary insurance for complementary medicine, not basic insurance. Reimbursement may be available if your policy includes complementary cover and the treating practitioner holds a recognition your insurer accepts (EMR or ASCA); how much depends on your plan. Check your specific policy and annual limit first."
   - q: "Do I need a doctor's referral to claim?"
     a: "For supplementary insurance, usually not. The key requirement is that the practitioner holds the right recognition (EMR or ASCA) and your policy covers complementary medicine. Basic insurance is different and applies only in narrow, doctor-led situations. Confirm with your insurer."
   - q: "Why is the first session more expensive?"
@@ -45,7 +45,7 @@ This is where most newcomers get caught out, so it is worth being precise. In Sw
 - **Basic insurance (Grundversicherung)** is mandatory and the same for everyone. It covers acupuncture only in narrow situations, essentially when it is delivered by a doctor with a specific qualification. For most people seeing a TCM practitioner, basic insurance does **not** pay.
 - **Supplementary insurance (Zusatzversicherung)** is optional and covers complementary medicine, including acupuncture and the wider TCM therapies. This is the route that pays for almost everyone who comes to us.
 
-If you hold supplementary cover for complementary medicine, and your practitioner is **EMR or ASCA recognised**, you typically get a large share of each session reimbursed, often most of it, up to an annual limit set by your policy. The exact percentage and ceiling depend entirely on the plan you bought.
+If you hold supplementary cover for complementary medicine, and your practitioner is **EMR or ASCA recognised**, part of each session may be reimbursed, up to an annual limit set by your policy. The exact percentage and ceiling depend entirely on the plan you bought.
 
 We have written a full plain-English breakdown of how this works, including the basic-versus-supplementary split and what to check on your policy, here: **[Is acupuncture covered by health insurance in Switzerland?](/en/health-insurance-acupuncture/)**. If you read one thing before booking, read that.
 
@@ -55,7 +55,7 @@ A few minutes of checking saves awkwardness later:
 
 1. **Confirm you have supplementary cover for complementary medicine.** Look for "Komplementärmedizin", "alternative medicine" or similar in your policy. Not every plan includes it.
 2. **Check your annual limit and reimbursement rate.** Policies often cap complementary medicine at a set amount per year and pay a percentage up to that cap.
-3. **Make sure the practitioner is EMR or ASCA recognised.** This is the prerequisite for reimbursement. All practitioners across our [clinics](/en/locations/) hold this recognition.
+3. **Make sure the practitioner is EMR or ASCA recognised.** This is the prerequisite for reimbursement. Recognition is practitioner-specific; we tell you which recognition the practitioner treating you holds before you book.
 4. **Ask whether you pay the clinic and claim back, or whether it bills your insurer directly.** This varies, and it affects your cash flow even when the final cost is the same.
 
 If you are unsure about your own policy, call your insurer and ask two questions: "Does my supplementary plan cover EMR/ASCA acupuncture?" and "What is my annual limit for complementary medicine?" Those two answers tell you most of what you need.
@@ -70,7 +70,7 @@ If your reason for considering it is something like persistent [back pain](/en/c
 
 - Expect roughly **CHF 120 to CHF 200** per session, billed by time, with the first visit costing more.
 - **Supplementary insurance** for complementary medicine is what pays, not basic insurance.
-- Reimbursement requires an **EMR- or ASCA-recognised** practitioner, which all our clinics are.
+- Reimbursement requires a practitioner with a recognition your insurer accepts (**EMR or ASCA**); we confirm this for you per practitioner.
 - Check your **annual limit and rate** before booking, and confirm whether you pay upfront or the clinic bills directly.
 
 Still weighing it up? You can [request an appointment](/en/contact/) and ask about cost in plain English, or find your nearest [clinic](/en/locations/) first.

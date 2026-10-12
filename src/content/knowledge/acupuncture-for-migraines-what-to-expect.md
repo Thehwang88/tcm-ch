@@ -5,7 +5,7 @@ description: "What to expect from acupuncture for migraines and tension headache
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-fce33d67fc98.webp"
 heroImageAlt: "Acupuncture used for migraine and headaches"
 faq:
@@ -16,7 +16,7 @@ faq:
   - q: "How long before I know if it is helping?"
     a: "Prevention takes time. We would usually look across a course of several weeks and compare your headache frequency before and after, ideally with a simple diary. If there is no meaningful change, we will tell you honestly rather than keep treating indefinitely."
   - q: "Is migraine acupuncture covered by insurance?"
-    a: "Treatment by an EMR-/ASCA-recognised practitioner is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much comes back depends on your policy and annual limit. Check your cover before committing to a course of sessions."
+    a: "Reimbursement may be available through Swiss supplementary insurance for complementary medicine, not basic insurance, depending on your policy, annual limit and the individual practitioner's recognition (EMR/ASCA). Check your cover before committing to a course of sessions."
 relatedConditions:
   - "migraine-headaches"
   - "neck-pain"
@@ -65,6 +65,6 @@ Prevention is only meaningful if you can see a change, so we track it. A simple 
 
 ## Cost and cover
 
-Treatment by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture/) is typically reimbursed through supplementary insurance. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
+Reimbursement may be available through [supplementary insurance](/en/health-insurance-acupuncture/), depending on your policy and the individual practitioner's recognition. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
 
 If frequent migraines or tension headaches are wearing you down, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/). And if any of the red flags above apply, please see a doctor first.

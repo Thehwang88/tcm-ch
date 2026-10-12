@@ -5,7 +5,7 @@ description: "A step-by-step guide to claiming acupuncture back from Swiss suppl
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/krankenkasse-hero.png"
 heroImageAlt: "Bright Swiss TCM practice with acupuncture needles and a tablet"
 faq:
@@ -32,7 +32,7 @@ If you are still unsure whether you are covered at all, start with our plain-Eng
 Two checks now save a rejected claim later:
 
 - **Confirm you have supplementary insurance for complementary medicine.** This is the cover that pays for acupuncture. Look for "Komplementärmedizin" or "alternative medicine" in your policy. Basic insurance generally will not cover it.
-- **Make sure the practitioner is EMR or ASCA recognised.** This recognition is the single most important requirement for reimbursement. Every practitioner across our [clinics](/en/locations/) holds it.
+- **Make sure the practitioner is EMR or ASCA recognised.** This recognition is the single most important requirement for reimbursement. Recognition is practitioner-specific; ask us and we confirm it for the practitioner treating you.
 
 It is also worth knowing your **annual limit** and **reimbursement rate** for complementary medicine, since policies cap how much they pay per year and refund a percentage up to that cap.
 

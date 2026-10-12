@@ -5,7 +5,7 @@ description: "An honest, evidence-aware look at acupuncture as supportive care d
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-9f85d23c07b4.webp"
 heroImageAlt: "Supportive TCM care during a fertility journey"
 faq:
@@ -16,7 +16,7 @@ faq:
   - q: "Should I see a fertility doctor as well?"
     a: "Yes, and ideally first. Proper medical assessment of both partners is where the real progress comes from, and time matters, especially over 35. Use acupuncture as support around that care, never as a replacement for it or a reason to delay specialist investigation."
   - q: "Is fertility acupuncture covered by insurance?"
-    a: "Acupuncture by an EMR-/ASCA-recognised practitioner is typically reimbursed through Swiss supplementary insurance for complementary medicine, whatever the reason for treatment. How much you get back depends on your policy and annual limit. The fertility-specific medical care is handled separately by your clinic and insurer."
+    a: "Reimbursement may be available through Swiss supplementary insurance for complementary medicine, depending on your policy, annual limit and the individual practitioner's recognition (EMR/ASCA), whatever the reason for treatment. The fertility-specific medical care is handled separately by your clinic and insurer."
 relatedConditions:
   - "fertility-support"
   - "menstrual-issues"
@@ -65,6 +65,6 @@ Because the journey is hard, and many people value a regular, calm, supportive s
 
 ## Cost and cover
 
-Acupuncture by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture/) is typically reimbursed through supplementary insurance, whatever the reason for treatment, while your fertility clinic's medical care is handled separately. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
+Reimbursement may be available through [supplementary insurance](/en/health-insurance-acupuncture/), depending on your policy and the individual practitioner's recognition, whatever the reason for treatment, while your fertility clinic's medical care is handled separately. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
 
 If you would like supportive care alongside your fertility treatment, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/). And please, keep your fertility specialist at the centre of the plan.

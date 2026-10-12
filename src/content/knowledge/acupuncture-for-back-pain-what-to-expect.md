@@ -5,7 +5,7 @@ description: "An honest look at acupuncture for back pain in Switzerland: what t
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-f7f113048735.webp"
 heroImageAlt: "Acupuncture for back pain at a TCM.ch clinic"
 faq:
@@ -69,7 +69,7 @@ People often ask which is "better". It is the wrong question, because they do di
 
 ## What it costs and whether insurance covers it
 
-Acupuncture by an EMR- or ASCA-recognised practitioner is typically reimbursed through Swiss **supplementary** insurance for complementary medicine, not basic insurance, with how much you get back depending on your policy. We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [health insurance for acupuncture](/en/health-insurance-acupuncture/).
+Reimbursement may be available through Swiss **supplementary** insurance for complementary medicine, not basic insurance, depending on your policy, the treatment and the individual practitioner's recognition (EMR/ASCA). We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [health insurance for acupuncture](/en/health-insurance-acupuncture/).
 
 ## The honest bottom line
 
