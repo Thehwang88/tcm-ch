@@ -6,7 +6,7 @@
 // Praxis-Agenda, nie geschätzt. Ablauf: docs/cro/07-first30-winter-2026.md.
 //   confirmedClaims: null → Indikator zeigt nur "Limitierte FIRST 30 Vorweihnachtsgeschenke" (kein Prozent, kein Restbestand).
 //   confirmedClaims: 8    → "8 / 10 Geschenke vergeben", Balken 80 %, "Nur noch 2 Geschenke verfügbar" (einmalige Einblend-Animation).
-//   confirmedClaims: 10 oder campaignActive: false → FIRST 30 wird zur explizit beschrifteten Warteliste; regulär bleibt.
+//   confirmedClaims: 10 → bei laufender Kampagne Warteliste (statt freie Plätze). Nur campaignActive: false schliesst manuell.
 //   totalAllocation 10 ist die genehmigte Kapazität; 30 ist ein Vorschlag und NICHT freigegeben.
 // Design-Vorschau (nur lokale Review-Builds, nie Produktion): src/data/first30.preview.json temporär auf claims 8 / cutoff true setzen.
 // Countdown im WhatsApp-Button NUR bei bestätigtem täglichem Bearbeitungs-Cutoff (dailyCutoff.approved); kein Angebots-
@@ -24,11 +24,11 @@ export const FIRST30 = {
   confirmedClaims: null as number | null,
   verifiedAt: '',   // z. B. '2026-11-20 09:00'
   verifiedBy: '',   // z. B. 'Corinna R.'
-  /** false, sobald die Edition offiziell beendet ist → regulärer St.-Gallen-Hero (HeroStandardSG), kein Geschenk-CTA mehr. */
+  /** MANUELLER KILL-SWITCH. Kampagne bleibt auch nach Weihnachten sichtbar und Anfragen bleiben möglich,
+   *  bis der Inhaber diesen Wert ausdrücklich auf false setzt und eine neue Version deployed wird.
+   *  Keine automatische Datums-/Uhrzeit-Schliessung und kein serverseitiges Ablehnen legitimer Anfragen.
+   *  Veraltete/offene Anfragen müssen vom Team gegen die Agenda geprüft werden, keine Buchungsgarantie. */
   campaignActive: true,
-  /** Offizielles Kampagnenende (ISO-Datum, Europe/Zurich), NUR nach Inhaber-Freigabe; leer = kein Enddatum. Nach diesem Datum
-   *  gilt die Kampagne beim nächsten Build als geschlossen (statische Seite: Rebuild/Merge nötig, siehe docs/cro/07). */
-  campaignEnd: '',
   /** Ausverkauft (confirmedClaims >= totalAllocation): true = explizit beschriftete Warteliste, false = Kampagnen-Hero weg, regulärer Hero. */
   waitlistEnabled: true,
   /** "The Once-a-Year Edition" / "jährlich" nur nach Inhaber-Bestätigung, dass 2026 keine weitere FIRST-30-Aktion läuft. */
@@ -70,12 +70,12 @@ export const first30State = (): First30State => {
   const prevCutoff = preview.cutoff === true;
   const prevActive = (preview as any).campaignActive;
   const active = typeof prevActive === 'boolean' ? prevActive : FIRST30.campaignActive;
-  const ended = !!FIRST30.campaignEnd && new Date().toISOString().slice(0, 10) > FIRST30.campaignEnd;
   const reserved = prevReserved ?? FIRST30.confirmedClaims;
   const max = FIRST30.totalAllocation;
   const remaining = reserved == null ? null : Math.max(0, max - reserved);
   const full = reserved != null && reserved >= max;
-  const campaign: First30CampaignState = (!active || ended) ? 'closed' : full ? (FIRST30.waitlistEnabled ? 'soldout-waitlist' : 'soldout-closed') : 'active';
+  // Nie automatisch wegen Kalenderdatum beenden: ausschliesslich manueller campaignActive-Switch.
+  const campaign: First30CampaignState = !active ? 'closed' : full ? (FIRST30.waitlistEnabled ? 'soldout-waitlist' : 'soldout-closed') : 'active';
   const soldOut = campaign !== 'active';
   const cutoffApproved = FIRST30.dailyCutoff.approved || prevCutoff;
   const scarcityText = campaign === 'closed' ? 'Die Pre-Christmas Edition 2026 ist beendet'
