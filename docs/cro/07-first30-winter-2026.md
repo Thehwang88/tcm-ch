@@ -68,8 +68,16 @@ The campaign has **no automatic expiry**. It stays visible until the owner expli
 
 If the promotion continues after Christmas, revisit the seasonal public-facing brand name manually; do not auto-end or silently roll over the year.
 
+## Owner launch decision — 12 October 2026
+
+**Supersedes the original 9 November baseline-release recommendation.** The owner explicitly requested an immediate FIRST 30 launch on 12 October 2026, accepting the interruption of the 12.10.–8.11. regular-funnel measurement window. This experiment starts on the actual production release date; retain the partial pre-launch observations, but do not present them as a completed 4-week baseline.
+
+**Operational checks that remain necessary:** confirm that St. Gallen can honor up to 30 complimentary 30-minute appointments, verify that WhatsApp +41 77 523 61 22 reaches the St. Gallen appointment team, test phone-only submissions and the Resend mailbox, review Swiss health-service advertising/billing and consent handling, review Franca's GTM event mapping, and configure Cloudflare WAF rate limiting on POST /api/anfrage. None of these dashboard/team verifications is performed by a GitHub merge. Record the outcome and any incident in the clinic launch log. The page must never state an unverified 27/30 or 28/30 claimed count; `confirmedClaims:null` stays in production until agenda-backed verification.
+
+**Release verification:** Full local production build (767 pages), existing gates and UI QA (134 PASS / 0 FAIL) were reported green on code head `8a16ab26`. The changes to application source after that SHA are comments only; new commits change the code-side release gate and documentation. Syntax of the new release-gate script was checked; the full build and runtime QA were not independently rerun on the last draft head. Owner elected to proceed with the current release candidate.
+
 ## Baseline protection
-The regular-funnel baseline (12.10.–8.11.2026, review 9.11., `docs/cro/04`) is interrupted the moment this PR is merged. Recommendation: do not merge before the review on 9.11. unless the owner explicitly chooses to interrupt the baseline.
+The owner explicitly elected immediate launch on 12.10.2026, overriding the original 9.11. review hold. Preserve partial pre-launch data separately; evaluate this campaign by actual confirmed and attended new-patient appointments, cancellations, no-shows, and follow-on paid care.
 
 ## Approvals still open before release
 free appointment offer · exact 30-minute scope · 30 genuinely available slots (to be verified operationally) · WhatsApp number routing to the St. Gallen team · once-a-year claim · daily processing cutoff (countdown) · patient confirmation / no-show process · Swiss healthcare advertising and billing compliance (free medical service) · Franca GTM/mailbox review (T9) · rate limiting on `/api/anfrage`.
