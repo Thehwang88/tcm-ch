@@ -4,6 +4,8 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSplit from '../../components/en/HeroSplit.astro';
 import CtaBand from '../../components/en/CtaBand.astro';
+import ClinicFinder from '../../components/en/ClinicFinder.astro';
+import AppointmentForm from '../../components/en/AppointmentForm.astro';
 import { clinics, enLocationPath } from '../../data/locations';
 
 const path = '/en/acupuncture-near-me';
@@ -49,7 +51,7 @@ const schema = [
     eyebrow="TCM.ch · Swiss clinic network"
     h1="Acupuncture near you in <em>Switzerland</em>"
     lead="Looking for acupuncture or TCM near you? We are a network of clinics and partner practices across German-speaking Switzerland, with requests and appointment coordination in English. Choose the location that is easiest for you to reach."
-    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#clinics', label: 'Find a clinic near you', kind: 'outline' }]}
+    ctas={[{ href: '#finder', label: 'Find the right clinic' }, { href: '#appointment', label: 'Request an appointment', kind: 'outline' }]}
     trust={['Personal reply in English', 'Supplementary insurance: depends on your policy', 'No referral needed']}
     image={{ src: '/images/standorte-hero.webp', alt: 'Reception area of a TCM.ch clinic', caption: 'TCM.ch clinic' }}
     crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Acupuncture near me' }]}
@@ -78,7 +80,18 @@ const schema = [
     </div>
   </section>
 
-  <section class="ev-section ev-section--tint">
+  <section class="ev-section ev-section--tint" id="finder">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">Find the right clinic</p>
+        <h2 class="ev-h2">Three quick choices, then your request.</h2>
+        <p class="ev-sub">City, treatment interest, clinic. Open locations and verified partner practices take requests; planned locations only register interest. Nothing is booked automatically.</p>
+      </div>
+      <ClinicFinder formAnchor="#appointment" />
+    </div>
+  </section>
+
+  <section class="ev-section">
     <div class="wrap">
       <div class="ev-article">
         <h2 style="margin-top:0">Finding acupuncture near you as a newcomer</h2>
@@ -116,6 +129,27 @@ const schema = [
     </div>
   </section>
 
-  <CtaBand text="Tell us where you live and what is going on; we suggest the nearest clinic and reply personally in English or German." secondary={{ href: '/en/health-insurance-acupuncture/', label: 'Insurance & costs' }} />
+  <section class="ev-section ev-final" id="appointment">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">Appointment</p>
+        <h2 class="ev-h2">Request an appointment <em>near you.</em></h2>
+        <p class="ev-sub">Pick a location or leave it to us. We reply personally in English or German; the appointment is fixed once you confirm.</p>
+      </div>
+      <div class="ev-split">
+        <AppointmentForm id="en-nearme-form" source={path + '/'} heading="" intro="" />
+        <aside class="ev-panel" aria-label="Direct contact">
+          <h3>Prefer to talk?</h3>
+          <p><a href="tel:+41775236122">+41 77 523 61 22</a><br /><a href="mailto:termine@tcm.ch">termine@tcm.ch</a></p>
+          <a class="ev-btn ev-btn--wa" href="https://wa.me/41775236122?text=Hello%2C%20I%20am%20looking%20for%20a%20TCM%20clinic%20near%20me." target="_blank" rel="noopener">WhatsApp</a>
+          <hr />
+          <h3>Insurance</h3>
+          <p style="font-size:14px;color:rgba(2,11,16,.68)">Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner's recognition. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="In Zürich?" text="All Zürich practices on one page: tell us your district or ask for the next available appointment." primary={{ href: '/en/acupuncture-zurich/', label: 'Acupuncture in Zürich' }} secondary={{ href: '/en/health-insurance-acupuncture/', label: 'Insurance & costs' }} />
 </Layout>
 

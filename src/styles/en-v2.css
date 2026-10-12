@@ -230,3 +230,37 @@ html[lang="en"] .ev-disclaimer { font-size: 14px; color: rgba(2,11,16,.62); bord
 html[lang="en"] .ev-form, html[lang="en"] .ev-field { min-width: 0; }
 html[lang="en"] .ev-field select { max-width: 100%; min-width: 0; }
 @media (max-width: 1024px) { html[lang="en"] .ev-split { grid-template-columns: minmax(0,1fr); } }
+
+/* ── Wave 3: practitioners, clinic finder ── */
+html[lang="en"] .ev-practitioner__head { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+html[lang="en"] .ev-practitioner__head img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid rgba(2,11,16,.1); }
+html[lang="en"] .ev-practitioner__initials { width: 72px; height: 72px; border-radius: 50%; background: var(--brand-tint); color: var(--brand-ink); display: grid; place-items: center; font-weight: 800; font-size: 20px; flex-shrink: 0; }
+html[lang="en"] .ev-practitioner h3 { margin: 0 0 2px; }
+html[lang="en"] .ev-practitioner__title { font-size: 14px; color: rgba(2,11,16,.68); margin: 0; }
+html[lang="en"] .ev-practitioner__meta { font-size: 14px; margin: 8px 0 0; color: rgba(2,11,16,.72); }
+html[lang="en"] .ev-practitioner__meta a { color: var(--brand-black); font-weight: 600; text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+html[lang="en"] .ev-finder { background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 20px; padding: 26px; }
+html[lang="en"] .ev-finder__step { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+html[lang="en"] .ev-finder__step[hidden] { display: none; }
+html[lang="en"] .ev-finder__step legend { font-size: 17px; font-weight: 800; color: var(--brand-black); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+html[lang="en"] .ev-finder__step legend em { font-style: normal; font-weight: 500; color: rgba(2,11,16,.6); font-size: 14px; }
+html[lang="en"] .ev-finder__num { width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: var(--brand-black); display: inline-grid; place-items: center; font-size: 13px; font-weight: 800; }
+html[lang="en"] .ev-finder__options { display: flex; flex-wrap: wrap; gap: 8px; }
+html[lang="en"] .ev-finder__opt { position: relative; }
+html[lang="en"] .ev-finder__opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+html[lang="en"] .ev-finder__opt span { display: inline-block; padding: 9px 14px; border: 1.5px solid rgba(2,11,16,.18); border-radius: 999px; font-size: 14.5px; font-weight: 600; color: var(--brand-black); background: #fff; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+html[lang="en"] .ev-finder__opt input:checked + span { background: var(--brand-black); color: #fff; border-color: var(--brand-black); }
+html[lang="en"] .ev-finder__opt input:focus-visible + span { outline: 3px solid rgba(2,11,16,.55); outline-offset: 2px; }
+html[lang="en"] .ev-finder__clinics { display: grid; gap: 10px; }
+html[lang="en"] .ev-finder__clinic { display: flex; justify-content: space-between; gap: 16px; align-items: center; border: 1px solid rgba(2,11,16,.1); border-radius: 14px; padding: 14px 16px; }
+html[lang="en"] .ev-finder__clinic[hidden] { display: none; }
+html[lang="en"] .ev-finder__clinic strong { font-size: 16px; color: var(--brand-black); }
+html[lang="en"] .ev-finder__clinic p { font-size: 14px; color: rgba(2,11,16,.68); margin: 4px 0 0; }
+html[lang="en"] .ev-finder__actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+html[lang="en"] .ev-finder__actions .ev-btn { min-height: 40px; padding: 0 14px; font-size: 14px; }
+html[lang="en"] .ev-finder__note { font-size: 14px; color: rgba(2,11,16,.7); margin: 10px 0 0; }
+@media (max-width: 600px) {
+  html[lang="en"] .ev-finder { padding: 18px 16px; }
+  html[lang="en"] .ev-finder__clinic { flex-direction: column; align-items: stretch; }
+  html[lang="en"] .ev-finder__actions { justify-content: flex-start; }
+}

@@ -274,15 +274,4 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
 
   <CtaBand title="Rather ask first?" text="Yuna from the TCM.ch concierge answers questions about treatment, appointments and insurance on WhatsApp, free and without obligation." primary={{ href: wa, label: 'Ask on WhatsApp', external: true }} secondary={{ href: telHref, label: `Call ${phone}` }} />
 
-  <script is:inline>
-    // Practice selector → preselect the matching option in the single appointment form (click still scrolls to #zh-funnel).
-    document.addEventListener('click', function (e) {
-      var a = e.target && e.target.closest ? e.target.closest('a[data-pick]') : null;
-      if (!a) return;
-      var sel = document.querySelector('#en-zurich-form [name="standort"]');
-      if (!sel) return;
-      var v = a.getAttribute('data-pick');
-      for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === v) { sel.selectedIndex = i; break; } }
-    });
-  </script>
 </Layout>

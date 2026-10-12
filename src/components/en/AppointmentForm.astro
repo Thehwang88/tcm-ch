@@ -51,6 +51,13 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
         if (sel.options[i].value === pre || sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
       }
     }
+    // Any link with data-pick (practice selector, clinic finder) preselects the matching option in THIS form.
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[data-pick]') : null;
+      if (!a || !sel) return;
+      var v = a.getAttribute('data-pick') || '';
+      for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === v) { sel.selectedIndex = i; break; } }
+    });
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       var status = form.querySelector('.ev-form__status');
