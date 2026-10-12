@@ -21,7 +21,8 @@ console.log('1. Kapazität');
 const pv = JSON.parse(readFileSync('src/data/first30.preview.json', 'utf8'));
 ok(pv.claims === null && pv.cutoff === false && pv.campaignActive === null && !/data-first30-preview/.test(sg), 'kein Vorschau-Build (first30.preview.json: claims null, cutoff false, campaignActive null) in dist');
 ok(st.campaign === 'active' && /data-first30="max-only"/.test(sg) && !/hlsg-card/.test(sg), `Kampagnenzustand ${st.campaign}: Kampagnen-Hero gerendert, regulärer Hero nicht`);
-if (FIRST30.campaignEnd) { const ended = new Date().toISOString().slice(0, 10) > FIRST30.campaignEnd; ok(!ended || st.campaign === 'closed', `campaignEnd ${FIRST30.campaignEnd}: ${ended ? 'überschritten → geschlossen' : 'noch nicht erreicht'}`); } else console.log('  · kein campaignEnd gesetzt (nur nach Freigabe)');
+ok(FIRST30.campaignActive === true && !Object.prototype.hasOwnProperty.call(FIRST30, 'campaignEnd'), 'manueller Betrieb: Kampagne aktiv bis zur expliziten Schliessung; kein automatisches Ablaufdatum');
+ok(FIRST30.waitlistEnabled === true, 'bei vollständiger Zuteilung weiterlaufender Wartelistenmodus statt automatischer Schliessung');
 ok(FIRST30.totalAllocation === 10, `Gesamtkapazität 10 (genehmigt); aktuell ${FIRST30.totalAllocation}`);
 if (FIRST30.confirmedClaims == null) {
   ok(vis.includes(`Nur ${FIRST30.totalAllocation} exklusive Geschenke`) && /data-mode="unverified"/.test(sg) && vis.includes('Limitierte FIRST 30 Vorweihnachtsgeschenke'), 'nur Maximum kommuniziert; Indikator unverifiziert ("Limitierte FIRST 30 Vorweihnachtsgeschenke")');
@@ -81,8 +82,13 @@ let res = await post({ ...hero0, angebot_id: 'FIRST30_WINTER_2026_SG', angebot: 
 let mail = sent[sent.length - 1];
 ok(res.status === 200 && /FIRST 30 PRE-CHRISTMAS EDITION/.test(mail.html) && mail.html.indexOf('Anfrageart') < mail.html.indexOf('>Telefon<') && /FIRST 30 Pre-Christmas Edition 2026 – kostenloser 30-Minuten-Termin – St\. Gallen/.test(mail.html) && !/CLIENT TEXT/.test(mail.html) && !/>Name</.test(mail.html), 'FIRST 30 phone-only: akzeptiert ohne Name, Klassifikation zuoberst, kanonisches Angebot, kein erfundener Name');
 ok(mail.subject.startsWith('[Hero-Gratis-30min-StGallen] Neue Anfrage — St. Gallen') && mail.subject.endsWith(' · FIRST 30'), `Betreff: "${mail.subject}"`);
+// Auch spätere gültige Anfragen werden weiterhin entgegengenommen; das Team prüft Kapazität/Anspruch persönlich.
+res = await post({ ...hero0, zeit: '2027-01-05T10:00:00Z', angebot_id: 'FIRST30_WINTER_2026_SG' });
+mail = sent[sent.length - 1];
+ok(res.status === 200 && /FIRST 30 PRE-CHRISTMAS EDITION/.test(mail.html), 'gültige FIRST-30-Anfrage bleibt auch nach Weihnachten empfangbar (kein Datumssperrfilter)');
 res = await post({ ...hero0, telefon: '12', angebot_id: 'FIRST30_WINTER_2026_SG' }); ok(res.status === 422 && (await res.json()).error === 'invalid_phone', 'FIRST 30 phone-only: ungültige Nummer → 422 invalid_phone');
-res = await post({ ...hero0, angebot_id: 'FIRST30_WINTER_2026_SG', website: 'spam' }); ok(res.status === 200 && sent.length === 1, 'Honeypot: 200 ohne Mailversand');
+const beforeSpam = sent.length;
+res = await post({ ...hero0, angebot_id: 'FIRST30_WINTER_2026_SG', website: 'spam' }); ok(res.status === 200 && sent.length === beforeSpam, 'Honeypot: 200 ohne Mailversand');
 res = await post({ ...hero0, angebot_id: 'ERSTTERMIN_REGULAER_SG' }); ok(res.status === 422 && (await res.json()).error === 'missing_fields', 'launch-hero-sg mit regulärer ID: Name bleibt Pflicht (phone-only NUR für FIRST 30)');
 res = await post({ telefon: '079 123 45 67', standort: 'St. Gallen', quelle: 'sg-kontakt-bottom', angebot_id: 'FIRST30_WINTER_2026_SG', turnstileToken: 't' }); ok(res.status === 422, 'unteres Formular mit FIRST-30-ID ohne Name/E-Mail: Regeln unverändert (422)');
 res = await post({ name: 'Test Person', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'St. Gallen', quelle: 'sg-kontakt-bottom', angebot_id: 'FIRST30_WINTER_2026_SG', wunschzeit: 'Do Nachmittag', turnstileToken: 't' }); mail = sent[sent.length - 1];
