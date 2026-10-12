@@ -1,117 +1,106 @@
 ---
-// Hero for the St. Gallen standort page only — TCM.ch FIRST 30 · Pre-Christmas Edition 2026 (WhatsApp-first, phone-only fallback).
-// Mobile first (390px): Ribbon → Headline → Scarcity → EIN Feld (Telefon) → Geschenk-CTA → Microcopy/Consent.
-// Desktop 50/50: links Angebot + Leistungen, rechts die Geschenkkarte mit dem Ein-Feld-Formular.
+// Hero for the St. Gallen standort page only — TCM.ch FIRST 30 · Pre-Christmas Edition 2026 (brand-aligned V2).
+// Architektur = regulärer St.-Gallen-Hero (.lsr-hero/.lsr-inner/.lsr-left aus home.css, Mint-Fläche, Figtree 800,
+// Nunito-Akzent): links die kurze Einführung + drei Leistungen, rechts statt Foto die kompakte Geschenkkarte (Pine).
+// Mobile first (390px): Eyebrow → H1 → Lead → Karte (Wert → Verfügbarkeit → WhatsApp-CTA) → Leistungen. Desktop: Telefonfeld
+// primär, WhatsApp sekundär. Saisonale Akzente (Gold/Burgund) nur in der kleinen Schleife.
 // Tracking-tragende Identifier sind UNVERÄNDERT: form name/data-name "Hero-Gratis-30min-StGallen",
 // hidden quelle=launch-hero-sg, Quelle/Seite, dataLayer-Push formular_senden {form_type:'allgemein',
 // quelle:'launch-hero-sg'} genau einmal nach HTTP ok. Payload: angebot_id + angebot (Server-Whitelist,
-// functions/api/anfrage.js; phone-only nur für launch-hero-sg + FIRST-30-ID). Kein Countdown, keine
-// erfundene Verfügbarkeit: Kapazitätstexte ausschliesslich aus src/data/first30.ts.
+// functions/api/anfrage.js; phone-only nur für launch-hero-sg + FIRST-30-ID). Kein Countdown ohne bestätigten Cutoff,
+// keine erfundene Verfügbarkeit: Kapazitätstexte ausschliesslich aus src/data/first30.ts.
 // Zusätzlich steuert der Script unten den Angebots-Wähler des unteren Formulars (data-f30-bottom) und die
 // FIRST-30-CTAs der Seite (data-offer): #offer-form → Hero-Telefonfeld, #kontakt → unteres Formular mit Vorauswahl.
-import { FIRST30, first30State, GIFT_SVG } from '../data/first30';
+import { first30State, GIFT_SVG } from '../data/first30';
 import { campaignCtaFor } from '../data/campaign-cta';
 const { sitekey } = Astro.props;
 const st = first30State();
 const ind = st.indicator;
-const ctaLabel = st.soldOut ? 'Auf die FIRST 30 Warteliste' : 'Mein Wintergeschenk anfragen';
+const ctaLabel = st.soldOut ? 'Auf die FIRST 30 Warteliste' : 'Ja, ich möchte mein Geschenk!';
 const cta = campaignCtaFor('st-gallen');
 const WA_SVG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>';
 const waMain = st.soldOut ? 'Auf die FIRST 30 Warteliste' : 'Ja, ich will mein Geschenk!';
+const waDesk = st.soldOut ? 'Warteliste per WhatsApp' : 'Geschenk per WhatsApp anfragen';
 const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 ---
-<section class="f30-hero" id="first30" data-first30={st.soldOut ? 'soldout' : st.reserved == null ? 'max-only' : 'verified'} data-first30-preview={st.preview ? '1' : undefined}>
-  <div class="f30-inner">
-    <div class="f30-left">
-      <p class="f30-ribbonpill"><span class="f30-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg> FIRST 30 · Pre-Christmas Edition 2026</span><span class="f30-eyebrow2">{FIRST30.identity}</span></p>
-      <h1 class="f30-h1">Weihnachten kommt dieses Jahr früher. <span class="f30-h2"><em>30 Minuten TCM in St. Gallen geschenkt.</em></span></h1>
-      <p class="f30-sub">Dein persönliches Vorweihnachtsgeschenk bei TCM.ch St. Gallen. Schon jetzt. Ganz ohne Verpflichtung.</p>
-      <p class="f30-value"><span class="f30-value-big">30 Min. · CHF 0.–</span><span class="f30-value-s">{st.scarcityText}</span></p>
+<section class="lsr-hero f30-hero" id="first30" data-first30={st.soldOut ? 'soldout' : st.reserved == null ? 'max-only' : 'verified'} data-first30-preview={st.preview ? '1' : undefined}>
+  <div class="lsr-inner f30-inner">
+    <div class="lsr-left f30-intro">
+      <span class="lsr-eyebrow f30-pill">FIRST 30 · Vorweihnachts-Edition</span>
+      <h1 class="lsr-h1 f30-h1">Weihnachten kommt dieses Jahr früher. <span class="f30-h2"><em class="lsr-accent">30 Minuten TCM in St. Gallen geschenkt.</em></span></h1>
+      <p class="lsr-lead f30-lead">Entdecke TCM ganz persönlich – 30 Minuten für dich, kostenlos und unverbindlich.</p>
+    </div>
 
-      <div class="f30-desk">
-        <div class="f30-pricebar" aria-label="Preis und Umfang">
-          <span class="f30-pricebar-price">CHF 0.–</span>
-          <span class="f30-pricebar-meta"><b>Du zahlst CHF 0.–</b> für 30 Minuten persönliche TCM-Erfahrung<br>Für Menschen, die schon länger etwas für sich tun möchten</span>
+    <div class="f30-right">
+      <div class="f30-card" id="offer-form" style="scroll-margin-top:84px">
+        <div class="f30-ribbon" aria-hidden="true"><span>{st.ribbon}</span></div>
+        <p class="f30-card-eyebrow"><span aria-hidden="true">🎁</span> Dein Vorweihnachtsgeschenk</p>
+        <p class="f30-value"><span class="f30-value-big">30 Minuten · CHF 0.–</span><span class="f30-value-s">Persönliche TCM-Einführung in St. Gallen</span></p>
+        <div class={`f30-avail f30-avail--${ind.mode}`} data-f30-avail data-mode={ind.mode} data-pct={ind.pct} data-confirmed={st.reserved ?? ''} data-total={st.max} role="group" aria-label="Verfügbarkeit der Geschenke">
+          <p class="f30-avail-h">{ind.mode === 'unverified' ? <Fragment><span class="f30-avail-ic" aria-hidden="true"><Fragment set:html={GIFT_SVG} /></span>{ind.head}</Fragment> : <Fragment><b class="f30-avail-n" data-f30-count={st.reserved ?? 0}>{st.reserved ?? 0}</b> / {st.max} Geschenke vergeben</Fragment>}</p>
+          {ind.mode !== 'unverified' && <div class="f30-avail-bar" aria-hidden="true"><span class="f30-avail-fill" style={`--f30-pct:${ind.pct}%`}></span></div>}
+          {ind.sub && <p class="f30-avail-s">{ind.sub}</p>}
         </div>
-        <ol class="f30-stack" aria-label="Die fünf Leistungen des Willkommenspakets">
-          <li><span>1</span>Persönliches Gespräch über deine Beschwerden</li>
-          <li><span>2</span>Individuelle TCM-Kurzeinschätzung</li>
-          <li><span>3</span>Erste kurze Anwendung, wenn fachlich und zeitlich möglich</li>
-          <li><span>4</span>Drei persönliche Empfehlungen für deinen Alltag</li>
-          <li><span>5</span>Unterstützung beim Zusatzversicherungs-Check</li>
-        </ol>
-        <ul class="f30-trust">
-          <li>Nur für neue Patient:innen · einmal pro Person</li>
-          <li>Keine Verpflichtung zur Weiterbehandlung</li>
-          <li>EMR-/ASCA-anerkannte Therapeut:innen</li>
-          <li>Oberer Graben 22 · Mo–Sa 07:30–19:30 · So 08:00–17:00</li>
-        </ul>
-        <p class="f30-tert"><a href="#online-buchen" class="f30-link">Lieber regulär buchen? Online-Termin wählen</a> · <a href="#kontakt" data-offer="regular" class="f30-link">Regulärer Ersttermin anfragen</a></p>
-        <p class="f30-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
-        <p class="f30-note">Ein Vorweihnachtsgeschenk, das du sofort anfragen kannst: Termine sind ab jetzt möglich, nicht erst an Weihnachten. Einmal pro Person, nur für neue Patient:innen.</p>
+        <div class="f30-body">
+          {cta && (
+            <div class="f30-wa">
+              <p class="f30-or f30-d" aria-hidden="true"><span>Oder direkt via WhatsApp</span></p>
+              <a href={cta.whatsappHref} class="f30-cta f30-cta--wa" target="_blank" rel="noopener" data-f30-wa data-cta-position="hero" aria-label={`${waMain} – WhatsApp öffnet sich mit einer vorbereiteten Nachricht, die du selbst sendest.`}>
+                <span class="f30-wa-top">
+                  <span class="f30-wa-m"><span aria-hidden="true">🎁</span> {waMain}</span>
+                  <span class="f30-wa-d"><span class="f30-wa-dic" aria-hidden="true"><Fragment set:html={WA_SVG} /></span>{waDesk} <span aria-hidden="true">→</span></span>
+                </span>
+                {st.cutoffApproved && (
+                  <span class="f30-wa-strip" data-f30-timer data-cutoff={st.cutoffTime} data-days={st.cutoffDays}>
+                    <span class="f30-wa-strip-live" data-f30-timer-live>
+                      <span class="f30-wa-strip-l"><Fragment set:html={CLOCK_SVG} /> Heutige Anfragefrist</span>
+                      <span class="f30-wa-count" aria-hidden="true"><b data-f30-h>--</b>:<b data-f30-m>--</b></span>
+                      <span class="f30-sr" aria-live="polite" data-f30-sr></span>
+                    </span>
+                    <span class="f30-wa-strip-closed" data-f30-timer-closed hidden>Anfragen weiterhin möglich · Bearbeitung am nächsten Arbeitstag</span>
+                  </span>
+                )}
+              </a>
+              <p class="f30-cta-sub f30-m">Via WhatsApp anfragen · Nachricht vorbereitet</p>
+              <p class="f30-cta-sub2 f30-m">Nur ein Klick zu WhatsApp. Keine Verpflichtung.</p>
+              <p class="f30-alt f30-alt--form f30-m"><a href="#f30-tel" data-f30-showform data-cta-position="hero_form_fallback">Lieber ohne WhatsApp? Telefonnummer hinterlassen</a></p>
+            </div>
+          )}
+          <div class="f30-formwrap" data-f30-formwrap>
+            <form class="f30-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form data-f30-offer={st.gift.id} novalidate>
+              <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="f30-hp">
+              <input type="hidden" name="quelle" value="launch-hero-sg">
+              <input type="hidden" name="standort" value="St. Gallen">
+              <input type="hidden" name="angebot_id" value={st.gift.id}>
+              <input type="hidden" name="Angebot" value={st.gift.label}>
+              <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
+              <input type="hidden" name="Seite" value="/standort/st-gallen">
+              <label class="f30-label" for="f30-tel">Deine Telefonnummer</label>
+              <input id="f30-tel" type="tel" name="telefon" placeholder="z. B. 079 123 45 67" autocomplete="tel" inputmode="tel" required aria-describedby="f30-consent">
+              <div class="cf-turnstile f30-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
+              <button type="submit" class="f30-cta"><span aria-hidden="true">🎁</span> <span data-f30-cta>{ctaLabel}</span></button>
+              <p class="f30-cta-sub2">Wir melden uns persönlich zur Terminvereinbarung.</p>
+              <p class="f30-consent" id="f30-consent">Mit dem Absenden stimmst du zu, dass das Praxisteam von TCM.ch St. Gallen dich unter dieser Nummer telefonisch oder per WhatsApp zur Terminvereinbarung kontaktiert. <a href="/datenschutz/">Datenschutz</a></p>
+              <p class="f30-form-err" role="alert" hidden></p>
+            </form>
+          </div>
+        </div>
+        <p class="f30-alt"><a href="#online-buchen">Lieber regulär buchen? Online-Termin wählen</a></p>
+        <p class="f30-disclaimer">Für neue Patient:innen, einmal pro Person. Keine Verpflichtung. Termin nach persönlicher Bestätigung.</p>
+        <details class="f30-terms">
+          <summary>Alle Konditionen</summary>
+          <p>Der 30-Minuten-Termin ist ein Termin für neue Patient:innen (einmal pro Person) und garantiert keine vollständige Erstbehandlung und kein bestimmtes medizinisches Ergebnis; eine Anwendung hängt von der fachlichen Eignung und der verfügbaren Zeit ab. Ein Termin ist erst nach Bestätigung durch die Praxis vereinbart. Eine WhatsApp-Nachricht oder Anfrage ist keine Reservierung; die Anzahl verfügbarer Geschenke wird von der Praxis manuell nach bestätigten Terminen aktualisiert. Keine Verpflichtung zur Weiterbehandlung. EMR-/ASCA-anerkannte Therapeut:innen · Oberer Graben 22, St. Gallen · Mo–Sa 07:30–19:30, So 08:00–17:00.</p>
+        </details>
       </div>
     </div>
 
-    <div class="f30-cardwrap">
-      <div class="f30-card" id="offer-form" style="scroll-margin-top:84px">
-        <div class="f30-ribbon" aria-hidden="true"><span>{st.ribbon}</span></div>
-        <p class="f30-card-eyebrow">FIRST 30 · Pre-Christmas Edition 2026</p>
-        <div class="f30-price"><span class="f30-price-big">30 Min. · CHF 0.–</span><span class="f30-price-meta">Du zahlst CHF 0.–<br>Persönlich &amp; unverbindlich</span></div>
-        <div class="f30-body">
-        <div class={`f30-avail f30-avail--${ind.mode}`} data-f30-avail data-mode={ind.mode} data-pct={ind.pct} data-confirmed={st.reserved ?? ''} data-total={st.max} role="group" aria-label="Verfügbarkeit der Geschenke">
-          <p class="f30-avail-h">{ind.mode === 'unverified' ? ind.head : <Fragment><b class="f30-avail-n" data-f30-count={st.reserved ?? 0}>{st.reserved ?? 0}</b> / {st.max} Geschenke vergeben</Fragment>}</p>
-          {ind.mode !== 'unverified' && <div class="f30-avail-bar" aria-hidden="true"><span class="f30-avail-fill" style={`--f30-pct:${ind.pct}%`}></span></div>}
-          <p class="f30-avail-s">{ind.sub}</p>
-        </div>
-        {cta && (
-          <div class="f30-wa">
-            <a href={cta.whatsappHref} class="f30-cta f30-cta--wa" target="_blank" rel="noopener" data-f30-wa data-cta-position="hero" aria-label={`${waMain} WhatsApp öffnet sich mit einer vorbereiteten Nachricht, die du selbst sendest. ${st.cutoffApproved ? 'Heutige Anfragefrist siehe Countdown.' : st.scarcityText + '.'}`}>
-              <span class="f30-wa-top">
-                <span class="f30-cta-ic" aria-hidden="true"><Fragment set:html={GIFT_SVG} /></span>
-                <span class="f30-wa-txt"><span class="f30-wa-main">{waMain}</span><span class="f30-wa-sup"><Fragment set:html={WA_SVG} /> WhatsApp öffnen · Nachricht vorbereitet</span></span>
-                <span class="f30-cta-arrow" aria-hidden="true">→</span>
-              </span>
-              {st.cutoffApproved ? (
-                <span class="f30-wa-strip" data-f30-timer data-cutoff={st.cutoffTime} data-days={st.cutoffDays}>
-                  <span class="f30-wa-strip-live" data-f30-timer-live>
-                    <span class="f30-wa-strip-l"><Fragment set:html={CLOCK_SVG} /> Heutige Anfragefrist</span>
-                    <span class="f30-wa-count" aria-hidden="true"><b data-f30-h>--</b>:<b data-f30-m>--</b></span>
-                    <span class="f30-sr" aria-live="polite" data-f30-sr></span>
-                  </span>
-                  <span class="f30-wa-strip-closed" data-f30-timer-closed hidden>Anfragen weiterhin möglich · Bearbeitung am nächsten Arbeitstag</span>
-                </span>
-              ) : (
-                <span class="f30-wa-strip"><span class="f30-wa-strip-l"><Fragment set:html={GIFT_SVG} /> {st.scarcityText}</span></span>
-              )}
-            </a>
-            <p class="f30-cta-sub">Kein Formular. Keine Verpflichtung.</p>
-            <p class="f30-cta-sub2">Termin nach persönlicher Bestätigung. Du sendest die Nachricht selbst in WhatsApp.</p>
-            <p class="f30-alt f30-alt--form"><a href="#f30-tel" data-f30-showform data-cta-position="hero_form_fallback">Lieber ohne WhatsApp? Kurzes Kontaktformular nutzen</a></p>
-          </div>
-        )}
-        <div class="f30-formwrap" data-f30-formwrap>
-        <form class="f30-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form data-f30-offer={st.gift.id} novalidate>
-          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="f30-hp">
-          <input type="hidden" name="quelle" value="launch-hero-sg">
-          <input type="hidden" name="standort" value="St. Gallen">
-          <input type="hidden" name="angebot_id" value={st.gift.id}>
-          <input type="hidden" name="Angebot" value={st.gift.label}>
-          <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
-          <input type="hidden" name="Seite" value="/standort/st-gallen">
-          <label class="f30-label" for="f30-tel">Deine Telefonnummer</label>
-          <input id="f30-tel" type="tel" name="telefon" placeholder="z. B. 079 123 45 67" autocomplete="tel" inputmode="tel" required aria-describedby="f30-consent">
-          <div class="cf-turnstile f30-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
-          <button type="submit" class="f30-cta"><span class="f30-cta-ic" aria-hidden="true"><Fragment set:html={GIFT_SVG} /></span><span data-f30-cta>{ctaLabel}</span><span class="f30-cta-arrow" aria-hidden="true">→</span></button>
-          <p class="f30-cta-sub">Nur deine Nummer. Wir erledigen den Rest.</p>
-          <p class="f30-cta-sub2">Wir kontaktieren dich zur Terminvereinbarung. Keine Verpflichtung.</p>
-          <p class="f30-consent" id="f30-consent">Mit dem Absenden stimmst du zu, dass das Praxisteam von TCM.ch St. Gallen dich unter dieser Nummer telefonisch oder per WhatsApp zur Terminvereinbarung kontaktiert. <a href="/datenschutz/">Datenschutz</a></p>
-          <p class="f30-form-err" role="alert" hidden></p>
-        </form>
-        </div>
-        </div>
-        <p class="f30-alt"><a href="#online-buchen">Lieber regulär buchen? Online-Termin wählen</a></p>
-        <p class="f30-disclaimer">Der 30-Minuten-Termin ist ein Termin für neue Patient:innen (einmal pro Person) und garantiert keine vollständige Erstbehandlung und kein bestimmtes medizinisches Ergebnis; eine Anwendung hängt von der fachlichen Eignung und der verfügbaren Zeit ab. Ein Termin ist erst nach Bestätigung durch die Praxis vereinbart. Eine WhatsApp-Nachricht oder Anfrage ist keine Reservierung; die Anzahl verfügbarer Geschenke wird von der Praxis manuell nach bestätigten Terminen aktualisiert.</p>
-      </div>
+    <div class="lsr-left f30-more">
+      <ul class="f30-benefits" aria-label="Das Geschenk umfasst">
+        <li><span class="lsr-check" aria-hidden="true">✓</span> Persönliches Gespräch &amp; TCM-Kurzeinschätzung</li>
+        <li><span class="lsr-check" aria-hidden="true">✓</span> Individuelle Tipps für deinen Alltag</li>
+        <li><span class="lsr-check" aria-hidden="true">✓</span> Erste Anwendung, wenn fachlich sinnvoll und zeitlich möglich</li>
+      </ul>
+      <p class="f30-trustline">Für neue Patient:innen · Einmal pro Person · Anerkannte Therapeut:innen</p>
     </div>
   </div>
 </section>
@@ -139,195 +128,169 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
 )}
 
 <style>
+  /* Tokens: Mint-Fläche + Brand-Black wie der reguläre Hero (public/styles/tokens.css); Karte in Pine/Ivory,
+     Akzentgrün für Balken/Checks, Gold/Burgund nur in der kleinen Schleife. */
   .f30-hero {
-    --f30-ox: #541D2B; --f30-bg: #813548; --f30-gold: #F0CB91; --f30-ivory: #FFF9F3;
-    --f30-gold-deep: #C9A268; --f30-ink: #2a0f16;
-    position: relative; isolation: isolate; overflow: hidden;
-    background: var(--f30-ivory); color: var(--f30-ink); font-family: var(--font-sans);
-    padding: calc(var(--header-h, 76px) + clamp(24px, 4vw, 56px)) 0 clamp(32px, 5vw, 64px);
-    border-bottom: 1px solid rgba(84, 29, 43, .12);
+    --f30-pine: #14532D; --f30-pine-deep: #0E3D21; --f30-accent: #2E9E6B; --f30-ivory: #FFF9F3;
+    --f30-gold: #F0CB91; --f30-ox: #541D2B; --f30-mint: var(--brand, #1AE288); --f30-black: var(--brand-black, #020B10);
+    --f30-ivory-72: rgba(255, 249, 243, .84); --f30-ivory-18: rgba(255, 249, 243, .18);
+    font-family: var(--font-sans);
   }
-  .f30-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background: radial-gradient(900px 520px at 78% 42%, rgba(129, 53, 72, .16), transparent 70%), radial-gradient(520px 320px at 10% 100%, rgba(240, 203, 145, .28), transparent 70%); }
-  .f30-inner { max-width: var(--max, 1280px); margin: 0 auto; padding: 0 var(--pad-x, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
-  .f30-left { max-width: 600px; }
-  .f30-ribbonpill { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; }
-  .f30-pill { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--f30-ox);
-    background: linear-gradient(180deg, #F7DDB0, var(--f30-gold)); border: 1px solid var(--f30-gold-deep); box-shadow: 0 6px 14px -8px rgba(84, 29, 43, .5); }
-  .f30-pill svg { color: var(--f30-bg); }
-  .f30-eyebrow2 { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(84, 29, 43, .66); }
-  .f30-h1 { font-size: clamp(36px, 4.8vw, 62px); font-weight: 800; letter-spacing: -.025em; line-height: 1.02; color: var(--f30-ox); margin: 0 0 12px; }
-  .f30-h1 em { font-style: italic; font-family: 'Nunito', var(--font-sans); font-weight: 700; color: var(--f30-bg); }
-  .f30-h2 { display: block; font-size: clamp(20px, 2.2vw, 28px); font-weight: 700; letter-spacing: 0; margin: 8px 0 0; color: var(--f30-bg); font-family: 'Nunito', var(--font-sans); font-style: italic; line-height: 1.2; }
-  .f30-sub { font-size: clamp(16px, 1.6vw, 19px); line-height: 1.5; font-weight: 600; color: rgba(42, 15, 22, .86); margin: 0 0 12px; max-width: 46ch; }
-  .f30-value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 0 0 16px; }
-  .f30-value-big { font-size: clamp(22px, 2.4vw, 28px); font-weight: 800; letter-spacing: -.02em; color: var(--f30-ox); font-variant-numeric: tabular-nums; }
-  .f30-value-s { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--f30-bg); }
-  .f30-pricebar { display: flex; align-items: center; gap: 14px; margin: 0 0 16px; padding: 10px 14px; border-radius: 14px; border: 1px solid rgba(201, 162, 104, .6); background: rgba(255, 255, 255, .6); }
-  .f30-pricebar-price { font-size: 30px; font-weight: 800; letter-spacing: -.03em; color: var(--f30-bg); line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .f30-pricebar-meta { font-size: 13.5px; line-height: 1.35; color: rgba(42, 15, 22, .82); border-left: 1px solid rgba(201, 162, 104, .7); padding-left: 12px; }
-  .f30-pricebar-meta b { color: var(--f30-ox); }
-  .f30-stack { list-style: none; margin: 0 0 14px; padding: 14px 16px; display: grid; gap: 7px; border: 1px solid rgba(201, 162, 104, .55); border-radius: 14px; background: rgba(255, 255, 255, .55); }
-  .f30-stack li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 600; color: var(--f30-ox); line-height: 1.35; }
-  .f30-stack li span { flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 11.5px; font-weight: 800; color: var(--f30-ox); background: linear-gradient(145deg, #F7DDB0, var(--f30-gold)); border: 1px solid var(--f30-gold-deep); }
-  .f30-trust { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: rgba(42, 15, 22, .78); }
-  .f30-trust li::before { content: '✓'; color: var(--f30-bg); font-weight: 800; margin-right: 5px; }
-  .f30-tert { font-size: 14px; margin: 0 0 10px; color: rgba(42, 15, 22, .8); }
-  .f30-tert a, .f30-alt a { color: var(--f30-ox); font-weight: 700; text-decoration: underline; text-decoration-color: var(--f30-gold-deep); text-underline-offset: 3px; }
-  .f30-note { font-size: 12.5px; line-height: 1.5; color: rgba(42, 15, 22, .66); margin: 0 0 6px; max-width: 60ch; }
+  .f30-hero .f30-inner { grid-template-areas: 'intro card' 'more card'; grid-template-rows: auto auto; align-content: center; }
+  .f30-intro { grid-area: intro; justify-content: flex-end; padding-bottom: 0; }
+  .f30-more { grid-area: more; justify-content: flex-start; padding-top: 18px; }
+  .f30-right { grid-area: card; align-self: center; padding: clamp(32px, 4vw, 56px) clamp(24px, 4.5vw, 72px) clamp(32px, 4vw, 56px) 0; }
+  .f30-hero .lsr-eyebrow { margin-bottom: 12px; }
+  .f30-h1 { margin-bottom: 14px; }
+  .f30-h2 { display: block; font-size: clamp(20px, 2vw, 28px); font-weight: 700; letter-spacing: -.005em; line-height: 1.2; margin-top: 8px; }
+  .f30-h2 em { font-weight: 700; }
+  .f30-lead { margin-bottom: 0; }
+  .f30-benefits { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; max-width: 54ch; }
+  .f30-benefits li { display: flex; align-items: flex-start; gap: 9px; font-size: 15px; font-weight: 600; line-height: 1.4; color: rgba(2, 11, 16, .82); }
+  .f30-benefits .lsr-check { flex-shrink: 0; line-height: 1.4; }
+  .f30-trustline { font-size: 13px; font-weight: 600; color: rgba(2, 11, 16, .66); margin: 0; }
 
   /* ── Geschenkkarte ── */
-  .f30-cardwrap { position: relative; }
-  .f30-cardwrap::before { content: ''; position: absolute; inset: 8% 4% -4%; z-index: -1; border-radius: 32px; filter: blur(36px); background: rgba(129, 53, 72, .4); }
-  .f30-card { position: relative; overflow: hidden; border-radius: 22px; padding: clamp(22px, 2.6vw, 34px);
-    background: linear-gradient(160deg, #6A2638 0%, var(--f30-ox) 55%, #3E1420 100%); color: var(--f30-ivory);
-    border: 1px solid rgba(240, 203, 145, .55); box-shadow: 0 30px 70px -24px rgba(84, 29, 43, .7), inset 0 1px 0 rgba(255, 249, 243, .18); }
-  .f30-card::before { content: ''; position: absolute; inset: 7px; border-radius: 16px; border: 1px solid rgba(240, 203, 145, .28); pointer-events: none; }
-  .f30-card::after { content: ''; position: absolute; left: -30%; top: -60%; width: 70%; height: 220%; transform: rotate(18deg); pointer-events: none;
-    background: linear-gradient(90deg, transparent, rgba(255, 249, 243, .07), transparent); }
-  .f30-ribbon { position: absolute; top: 24px; right: -54px; width: 220px; transform: rotate(45deg); z-index: 2; text-align: center;
-    background: linear-gradient(180deg, #F7DDB0, var(--f30-gold) 55%, var(--f30-gold-deep)); color: var(--f30-ox);
-    font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 7px 0; box-shadow: 0 6px 16px -6px rgba(0, 0, 0, .45); }
-  .f30-ribbon::before, .f30-ribbon::after { content: ''; position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(84, 29, 43, .35); }
-  .f30-ribbon::before { left: 24px; } .f30-ribbon::after { right: 24px; }
-  .f30-card-eyebrow { position: relative; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--f30-gold); margin: 0 0 10px; padding-right: 70px; }
-  .f30-price { position: relative; display: flex; align-items: center; gap: 14px; margin: 0 0 12px; }
-  .f30-price-big { font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -.03em; color: var(--f30-gold); line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .f30-price-meta { font-size: 13px; line-height: 1.35; color: rgba(255, 249, 243, .85); border-left: 1px solid rgba(240, 203, 145, .4); padding-left: 12px; }
-  /* ── Verfügbarkeits-Indikator (über dem Geschenk-CTA; Werte ausschliesslich aus first30.ts) ── */
-  .f30-avail { order: 0; position: relative; padding: 10px 12px; border: 1px solid rgba(240, 203, 145, .45); border-radius: 12px; background: rgba(0, 0, 0, .14); box-shadow: inset 0 1px 0 rgba(255, 249, 243, .08); }
-  .f30-avail-h { font-size: 13.5px; font-weight: 800; color: var(--f30-ivory); margin: 0 0 7px; letter-spacing: .01em; font-variant-numeric: tabular-nums; }
-  .f30-avail-n { display: inline-block; min-width: 2ch; text-align: right; color: var(--f30-gold); font-size: 16px; }
-  .f30-avail-bar { height: 7px; border-radius: 4px; background: rgba(255, 249, 243, .14); border: 1px solid rgba(240, 203, 145, .4); overflow: hidden; margin: 0 0 7px; }
-  .f30-avail-fill { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, #F7DDB0, var(--f30-gold) 60%, var(--f30-gold-deep)); box-shadow: 0 0 10px rgba(240, 203, 145, .5); transition: width 1.1s cubic-bezier(.2, .8, .2, 1); }
+  .f30-card { position: relative; overflow: hidden; max-width: 520px; margin: 0 auto; border-radius: 22px; padding: clamp(22px, 2.4vw, 30px);
+    background: var(--f30-pine); color: var(--f30-ivory); border: 1px solid rgba(2, 11, 16, .18);
+    box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .45), inset 0 1px 0 rgba(255, 249, 243, .12); }
+  .f30-ribbon { position: absolute; top: 18px; right: 18px; z-index: 2; background: var(--f30-gold); color: var(--f30-ox); font-size: 9.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+  .f30-card-eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--f30-mint); margin: 0 0 10px; padding-right: 60px; }
+  .f30-value { display: flex; flex-direction: column; gap: 4px; margin: 0 0 14px; }
+  .f30-value-big { font-size: clamp(26px, 2.3vw, 32px); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; color: var(--f30-ivory); font-variant-numeric: tabular-nums; }
+  .f30-value-s { font-size: 14px; font-weight: 600; color: var(--f30-ivory-72); }
+  /* Verfügbarkeit: Werte ausschliesslich aus first30.ts; ohne verifizierte Zahl nur das Maximum, kein Balken. */
+  .f30-avail { padding: 10px 0; border-top: 1px solid var(--f30-ivory-18); border-bottom: 1px solid var(--f30-ivory-18); margin: 0 0 14px; }
+  .f30-avail-h { font-size: 13.5px; font-weight: 700; color: var(--f30-ivory); margin: 0; font-variant-numeric: tabular-nums; line-height: 22px; }
+  .f30-avail-ic { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--f30-mint); color: var(--f30-black); vertical-align: top; margin-right: 8px; }
+  .f30-avail-ic svg { width: 13px; height: 13px; }
+  .f30-avail-n { display: inline-block; min-width: 2ch; text-align: right; color: var(--f30-mint); font-size: 16px; margin-right: 2px; }
+  .f30-avail-bar { height: 6px; border-radius: 3px; background: rgba(255, 249, 243, .14); overflow: hidden; margin: 8px 0 6px; }
+  .f30-avail-fill { display: block; height: 100%; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--f30-accent), var(--f30-mint)); transition: width 1.1s cubic-bezier(.2, .8, .2, 1); }
   .f30-avail.is-in .f30-avail-fill { width: var(--f30-pct, 0%); }
-  .f30-avail--unverified .f30-avail-h { font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--f30-gold); margin-bottom: 3px; }
-  .f30-avail-s { font-size: 12.5px; font-weight: 700; color: rgba(255, 249, 243, .85); margin: 0; }
+  .f30-avail-s { font-size: 12.5px; font-weight: 600; color: var(--f30-ivory-72); margin: 0; }
   @media (prefers-reduced-motion: reduce) { .f30-avail-fill { transition: none; } }
 
+  .f30-body { display: flex; flex-direction: column; gap: 12px; }
+  .f30-formwrap { order: 1; }
+  .f30-wa { order: 2; display: flex; flex-direction: column; gap: 6px; }
   .f30-form { position: relative; display: flex; flex-direction: column; gap: 10px; }
   .f30-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  .f30-label { font-size: 13px; font-weight: 800; color: var(--f30-gold); letter-spacing: .04em; margin: 0 0 -4px; }
-  .f30-form input[type="tel"] { width: 100%; border: 1px solid rgba(240, 203, 145, .55); border-radius: 12px; padding: 15px 16px; font-size: 18px; line-height: 1.2; min-height: 54px;
-    background: var(--f30-ivory); color: var(--f30-ink); font-family: inherit; letter-spacing: .02em; }
-  .f30-form input::placeholder { color: rgba(42, 15, 22, .5); }
-  .f30-form input:focus { outline: 3px solid var(--f30-gold); outline-offset: 1px; border-color: transparent; }
-  .f30-form input[aria-invalid="true"] { outline: 3px solid #FFB3B3; outline-offset: 1px; }
+  .f30-label { font-size: 13px; font-weight: 700; color: var(--f30-ivory); margin: 0 0 -4px; }
+  .f30-form input[type="tel"] { width: 100%; border: 1px solid rgba(2, 11, 16, .2); border-radius: 12px; padding: 14px 16px; font-size: 18px; line-height: 1.2; min-height: 54px;
+    background: var(--f30-ivory); color: var(--f30-black); font-family: inherit; letter-spacing: .02em; }
+  .f30-form input::placeholder { color: rgba(2, 11, 16, .45); }
+  .f30-form input:focus-visible { outline: 3px solid var(--f30-mint); outline-offset: 2px; }
+  .f30-form input[aria-invalid="true"] { outline: 3px solid #FFB3B3; outline-offset: 2px; }
   .f30-ts { min-height: 0; }
 
-  .f30-cta { position: relative; overflow: hidden; isolation: isolate; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 58px; padding: 15px 18px; border: 1px solid rgba(255, 249, 243, .55); border-radius: 14px; cursor: pointer;
-    background: linear-gradient(180deg, #F9E3BF 0%, var(--f30-gold) 50%, #D9B377 100%); color: var(--f30-ox);
-    font-family: inherit; font-size: 17px; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; text-align: center;
-    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .55), 0 1px 0 rgba(255, 255, 255, .6) inset, 0 -2px 0 rgba(84, 29, 43, .18) inset, 0 0 24px -6px rgba(240, 203, 145, .5);
-    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }
-  .f30-cta::after { content: ''; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0;
-    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .55) 50%, transparent 70%); background-size: 240% 100%; background-position: 120% 0; transition: opacity .2s ease; }
-  .f30-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -14px rgba(0, 0, 0, .6), 0 0 0 4px rgba(240, 203, 145, .22), 0 1px 0 rgba(255, 255, 255, .6) inset; filter: saturate(1.05); }
-  .f30-cta:hover::after { opacity: 1; animation: f30-sheen .9s ease-out 1; }
-  .f30-cta:hover .f30-cta-arrow { transform: translateX(4px); }
+  .f30-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 54px; padding: 12px 22px; border: none; border-radius: 100px; cursor: pointer;
+    background: var(--f30-mint); color: var(--f30-black); font-family: inherit; font-size: 16.5px; font-weight: 700; letter-spacing: -.005em; line-height: 1.2; text-align: center; text-decoration: none;
+    box-shadow: 0 10px 24px -12px rgba(2, 11, 16, .55); transition: background .15s ease, transform .15s ease; }
+  .f30-cta:hover { background: var(--brand-hover, #14C97A); transform: translateY(-1px); }
   .f30-cta:active { transform: translateY(0); }
   .f30-cta:focus-visible { outline: 3px solid var(--f30-ivory); outline-offset: 3px; }
-  .f30-cta:disabled { cursor: progress; filter: grayscale(.2); transform: none; }
-  .f30-cta-ic { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--f30-ox); color: var(--f30-gold); flex-shrink: 0; }
-  .f30-cta-ic svg { width: 17px; height: 17px; }
-  .f30-cta-arrow { font-weight: 800; transition: transform .18s ease; }
-  @keyframes f30-sheen { from { background-position: 120% 0; } to { background-position: -40% 0; } }
-  .f30-cta-sub { font-size: 13.5px; font-weight: 800; text-align: center; color: var(--f30-gold); margin: 2px 0 0; letter-spacing: .01em; }
-  .f30-cta-sub2 { font-size: 12.5px; text-align: center; color: rgba(255, 249, 243, .82); margin: 0; }
-  .f30-consent { font-size: 11.5px; line-height: 1.45; color: rgba(255, 249, 243, .66); text-align: center; margin: 2px 0 0; }
-  .f30-consent a { color: var(--f30-gold); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  .f30-cta:disabled { cursor: progress; opacity: .85; transform: none; }
+  .f30-cta-sub { font-size: 13px; font-weight: 700; text-align: center; color: var(--f30-ivory); margin: 2px 0 0; }
+  .f30-cta-sub2 { font-size: 13px; line-height: 1.5; text-align: center; color: var(--f30-ivory-72); margin: 0; }
+  .f30-consent { font-size: 12.5px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 2px 0 0; }
+  .f30-consent a, .f30-alt a, .f30-terms summary { color: var(--f30-ivory); font-weight: 700; text-decoration: underline; text-decoration-color: var(--f30-mint); text-underline-offset: 3px; }
+  .f30-consent a:focus-visible, .f30-alt a:focus-visible, .f30-terms summary:focus-visible { outline: 3px solid var(--f30-mint); outline-offset: 2px; border-radius: 4px; }
   .f30-form-err { font-size: 13px; color: #FFD9D9; background: rgba(0, 0, 0, .22); border: 1px solid rgba(255, 217, 217, .4); border-radius: 10px; padding: 8px 10px; line-height: 1.45; margin: 0; }
-  .f30-body { position: relative; display: flex; flex-direction: column; gap: 14px; }
-  .f30-wa { order: 2; display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid rgba(240, 203, 145, .3); }
-  .f30-formwrap { order: 1; }
-  .f30-cta--wa { text-decoration: none; flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
-  .f30-wa-top { display: flex; align-items: center; gap: 12px; padding: 13px 16px 11px; min-height: 64px; }
-  .f30-wa-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; text-align: left; }
-  .f30-wa-main { font-size: 17.5px; font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
-  .f30-wa-sup { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; color: rgba(84, 29, 43, .78); }
-  .f30-wa-sup svg { width: 14px; height: 14px; color: #1aa84d; }
-  .f30-cta--wa .f30-cta-arrow { margin-left: auto; }
-  .f30-wa-strip { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 38px; padding: 7px 14px; border-top: 1px solid rgba(84, 29, 43, .22); background: rgba(84, 29, 43, .07); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--f30-ox); }
+
+  /* WhatsApp: mobil primär (Mint), Desktop sekundär (Outline) unter dem Telefonfeld. */
+  .f30-cta--wa { flex-direction: column; align-items: stretch; gap: 0; padding: 0; background: transparent; color: var(--f30-ivory); border: 1.5px solid rgba(255, 249, 243, .45); box-shadow: none; font-size: 15px; font-weight: 600; min-height: 48px; }
+  .f30-cta--wa:hover { background: rgba(255, 249, 243, .08); border-color: var(--f30-ivory); transform: none; }
+  .f30-cta--wa:focus-visible { outline: 3px solid var(--f30-mint); }
+  .f30-wa-top { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 18px; }
+  .f30-wa-m { display: none; }
+  .f30-wa-d { display: inline-flex; align-items: center; gap: 8px; }
+  .f30-wa-dic { display: grid; place-items: center; color: #25D366; }
+  .f30-wa-dic svg { width: 17px; height: 17px; }
+  .f30-or { display: flex; align-items: center; gap: 12px; margin: 6px 0 0; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 249, 243, .55); }
+  .f30-or::before, .f30-or::after { content: ''; flex: 1; height: 1px; background: var(--f30-ivory-18); }
+  .f30-m { display: none; }
+  .f30-wa-strip { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 36px; padding: 6px 14px; border-top: 1px solid rgba(2, 11, 16, .16); background: rgba(2, 11, 16, .07); font-size: 12px; font-weight: 700; color: inherit; border-radius: 0 0 100px 100px; }
   .f30-wa-strip-live, .f30-wa-strip-closed { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; }
   .f30-wa-strip-live[hidden], .f30-wa-strip-closed[hidden] { display: none; }
-  .f30-wa-strip-closed { text-transform: none; letter-spacing: 0; font-weight: 700; justify-content: center; text-align: center; }
+  .f30-wa-strip-closed { justify-content: center; text-align: center; }
   .f30-wa-strip-l { display: inline-flex; align-items: center; gap: 7px; }
-  .f30-wa-strip-l svg { color: var(--f30-bg); flex-shrink: 0; }
-  .f30-wa-count { display: inline-flex; align-items: center; min-width: 62px; justify-content: center; padding: 3px 8px; border-radius: 8px; background: linear-gradient(180deg, #6A2638, var(--f30-ox)); border: 1px solid rgba(240, 203, 145, .7); color: var(--f30-ivory); box-shadow: 0 0 10px rgba(240, 203, 145, .3); font-variant-numeric: tabular-nums; font-size: 14px; letter-spacing: .04em; line-height: 1; }
+  .f30-wa-count { display: inline-flex; align-items: center; min-width: 58px; justify-content: center; padding: 3px 8px; border-radius: 8px; background: var(--f30-black); color: var(--f30-mint); font-variant-numeric: tabular-nums; font-size: 13.5px; letter-spacing: .04em; line-height: 1; }
   .f30-wa-count b { display: inline-block; min-width: 2ch; text-align: center; font-weight: 800; }
   .f30-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+  .f30-alt { text-align: center; font-size: 13.5px; margin: 14px 0 0; }
   .f30-alt--form { margin: 4px 0 0; }
-  .f30-alt { position: relative; text-align: center; font-size: 13.5px; margin: 14px 0 0; }
-  .f30-alt a { color: var(--f30-ivory); text-decoration-color: var(--f30-gold); }
-  .f30-disclaimer { position: relative; font-size: 11px; line-height: 1.45; color: rgba(255, 249, 243, .58); margin: 10px 0 0; }
-  .f30-success { position: relative; text-align: center; padding: 14px 4px; color: var(--f30-ivory); }
-  .f30-success-check { width: 48px; height: 48px; margin: 0 auto 12px; border-radius: 50%; background: var(--f30-gold); color: var(--f30-ox); display: grid; place-items: center; font-size: 24px; font-weight: 800; }
+  .f30-disclaimer { font-size: 13px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 10px 0 0; }
+  .f30-terms { margin: 8px 0 0; text-align: center; font-size: 12.5px; line-height: 1.6; color: var(--f30-ivory-72); }
+  .f30-terms summary { cursor: pointer; font-weight: 600; list-style: none; display: inline; }
+  .f30-terms summary::-webkit-details-marker { display: none; }
+  .f30-terms p { margin: 8px 0 0; text-align: left; }
+  .f30-success { text-align: center; padding: 14px 4px; color: var(--f30-ivory); }
+  .f30-success-check { width: 48px; height: 48px; margin: 0 auto 12px; border-radius: 50%; background: var(--f30-mint); color: var(--f30-black); display: grid; place-items: center; font-size: 24px; font-weight: 800; }
   .f30-success h3 { font-size: 20px; font-weight: 800; margin: 0 0 8px; letter-spacing: -.01em; color: var(--f30-ivory); }
-  .f30-success p { font-size: 14.5px; line-height: 1.55; color: rgba(255, 249, 243, .85); margin: 0; }
+  .f30-success p { font-size: 14.5px; line-height: 1.55; color: var(--f30-ivory-72); margin: 0; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .f30-cta, .f30-cta-arrow { transition: none; }
-    .f30-cta:hover { transform: none; }
-    .f30-cta:hover::after { animation: none; opacity: 0; }
-    .f30-cta:hover .f30-cta-arrow { transform: none; }
+  @media (prefers-reduced-motion: reduce) { .f30-cta { transition: none; } .f30-cta:hover { transform: none; } }
+
+  @media (max-width: 1023px) { .f30-card { padding: 20px; } }
+  @media (max-width: 900px) {
+    .f30-hero .f30-inner { grid-template-areas: 'intro' 'card' 'more'; grid-template-rows: auto; }
+    .f30-intro { padding: 22px 16px 14px; }
+    .f30-right { padding: 0 16px 6px; align-self: start; }
+    .f30-more { padding: 16px 16px 26px; }
+    .f30-card { max-width: 560px; }
+    .f30-h1 { font-size: clamp(30px, 8.2vw, 40px); margin-bottom: 8px; }
+    .f30-h2 { font-size: 20px; margin-top: 6px; }
+    .f30-lead { font-size: 15.5px; }
   }
-  @media (max-width: 1023px) {
-    .f30-inner { grid-template-columns: 1fr; gap: 22px; }
-    .f30-left { max-width: 680px; }
-    .f30-cardwrap { max-width: 560px; }
+  @media (max-width: 767px) {
+    .f30-hero { padding-top: var(--header-h, 76px); }
+    .f30-card { padding: 18px 16px; border-radius: 18px; }
+    .f30-card, .f30-card * { max-width: 100%; }
+    .f30-ts { max-width: 100%; overflow-x: auto; }
+    .f30-ribbon { position: static; display: inline-block; margin: 0 0 10px; }
+    .f30-card-eyebrow { padding-right: 0; }
+    .f30-value { margin-bottom: 12px; }
+    .f30-avail { margin-bottom: 12px; }
+    .f30-wa { order: 1; }
+    .f30-formwrap { order: 2; }
+    .f30-formwrap:not(.is-open) { display: none; }
+    .f30-m { display: block; }
+    .f30-d { display: none; }
+    .f30-wa-m { display: inline; }
+    .f30-wa-d { display: none; }
+    .f30-wa-top { min-height: 56px; font-size: 17px; padding: 12px 18px; }
+    .f30-wa-strip { border-radius: 0 0 28px 28px; }
+    .f30-cta--wa { border-radius: 28px; background: var(--f30-mint); color: var(--f30-black); border: none; box-shadow: 0 10px 24px -12px rgba(2, 11, 16, .55); font-weight: 700; min-height: 56px; }
+    .f30-cta--wa:hover { background: var(--brand-hover, #14C97A); border-color: transparent; }
+    .f30-cta--wa:focus-visible { outline: 3px solid var(--f30-ivory); }
   }
-  /* ── Schwebender Geschenk-CTA ── */
+
+  /* ── Schwebender Geschenk-CTA (Pine/Mint) ── */
   .f30-float { position: fixed; z-index: 540; display: flex; align-items: stretch; gap: 6px; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .28s ease, transform .32s cubic-bezier(.16, 1, .3, 1); font-family: var(--font-sans); }
   .f30-float[hidden] { display: none; }
   .f30-float.is-on { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .f30-float--m { left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
-  .f30-float-card { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; min-height: 66px; padding: 10px 14px; border-radius: 18px; text-decoration: none; color: #FFF9F3;
-    background: linear-gradient(160deg, #6A2638 0%, #541D2B 55%, #3E1420 100%); border: 1px solid rgba(240, 203, 145, .65);
-    box-shadow: 0 18px 40px -14px rgba(84, 29, 43, .75), 0 0 22px -4px rgba(240, 203, 145, .35), inset 0 1px 0 rgba(255, 249, 243, .14); }
-  .f30-float-card:focus-visible, .f30-float-pill:focus-visible { outline: 3px solid #F0CB91; outline-offset: 3px; }
-  .f30-float-ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #F0CB91; color: #541D2B; flex-shrink: 0; }
+  .f30-float-card { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; border-radius: 18px; text-decoration: none; color: #FFF9F3;
+    background: #14532D; border: 1px solid rgba(26, 226, 136, .45); box-shadow: 0 18px 40px -14px rgba(2, 11, 16, .6), inset 0 1px 0 rgba(255, 249, 243, .12); }
+  .f30-float-card:focus-visible, .f30-float-pill:focus-visible { outline: 3px solid #1AE288; outline-offset: 3px; }
+  .f30-float-ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #1AE288; color: #020B10; flex-shrink: 0; }
   .f30-float-ic svg { width: 20px; height: 20px; }
   .f30-float-txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .f30-float-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #F0CB91; }
   .f30-float-main { font-size: 16px; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; color: #FFF9F3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .f30-float-sec { font-size: 12px; font-weight: 700; color: rgba(255, 249, 243, .8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .f30-float-sec { font-size: 12px; font-weight: 700; color: rgba(255, 249, 243, .78); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .f30-float-arrow { margin-left: auto; color: #25D366; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 249, 243, .1); flex-shrink: 0; }
-  .f30-float-x { flex: 0 0 40px; min-height: 44px; border-radius: 14px; border: 1px solid rgba(84, 29, 43, .25); background: rgba(255, 249, 243, .96); color: #541D2B; font-size: 22px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 10px 24px -12px rgba(84, 29, 43, .5); }
-  .f30-float-x:focus-visible { outline: 3px solid #813548; outline-offset: 2px; }
+  .f30-float-x { flex: 0 0 40px; min-height: 44px; border-radius: 14px; border: 1px solid rgba(2, 11, 16, .2); background: rgba(255, 249, 243, .97); color: #020B10; font-size: 22px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 10px 24px -12px rgba(2, 11, 16, .45); }
+  .f30-float-x:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
   .f30-float--d { display: none; right: 88px; bottom: 24px; align-items: center; }
   .f30-float-pill { display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; text-decoration: none; color: #FFF9F3; min-height: 56px;
-    background: linear-gradient(160deg, #6A2638 0%, #541D2B 60%, #3E1420 100%); border: 1px solid rgba(240, 203, 145, .7);
-    box-shadow: 0 16px 36px -14px rgba(84, 29, 43, .7), 0 0 20px -4px rgba(240, 203, 145, .35); transition: transform .18s ease, box-shadow .18s ease; }
-  .f30-float-pill:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -14px rgba(84, 29, 43, .8), 0 0 26px -2px rgba(240, 203, 145, .5); }
+    background: #14532D; border: 1px solid rgba(26, 226, 136, .5); box-shadow: 0 16px 36px -14px rgba(2, 11, 16, .6); transition: transform .18s ease, box-shadow .18s ease; }
+  .f30-float-pill:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -14px rgba(2, 11, 16, .7); }
   .f30-float--d .f30-float-main { font-size: 14.5px; }
   .f30-float--d .f30-float-sec { font-size: 11.5px; }
   .f30-float--d .f30-float-x { flex-basis: 34px; min-height: 34px; font-size: 18px; border-radius: 50%; margin-left: 6px; }
   @media (min-width: 769px) { .f30-float--m { display: none; } .f30-float--d { display: flex; } .f30-float--d[hidden] { display: none; } }
   @media (prefers-reduced-motion: reduce) { .f30-float { transition: none; transform: none; } .f30-float-pill { transition: none; } .f30-float-pill:hover { transform: none; } }
-
-  @media (max-width: 767px) {
-    .f30-hero { padding-top: calc(var(--header-h, 76px) + 14px); padding-bottom: 26px; }
-    .f30-wa { order: 1; padding-top: 0; border-top: 0; }
-    .f30-wa-main { font-size: 17px; }
-    .f30-value { margin-bottom: 0; }
-    .f30-formwrap { order: 2; }
-    .f30-formwrap:not(.is-open) { display: none; }
-    .f30-inner { padding: 0 16px; gap: 14px; }
-    .f30-ribbonpill { margin-bottom: 10px; }
-    .f30-eyebrow2 { display: none; }
-    .f30-h1 { font-size: clamp(30px, 8.4vw, 38px); margin-bottom: 6px; }
-    .f30-h2 { font-size: 20px; margin-top: 6px; }
-    .f30-sub { font-size: 15px; margin-bottom: 10px; }
-    .f30-desk { display: none; }
-    .f30-card { padding: 18px 16px 18px; border-radius: 18px; }
-    .f30-ribbon { top: 18px; right: -60px; font-size: 9.5px; padding: 6px 0; }
-    .f30-price { display: none; }
-    .f30-card-eyebrow { margin-bottom: 8px; }
-    .f30-card-eyebrow { padding-right: 60px; }
-    .f30-cta { min-height: 58px; font-size: 16.5px; }
-    .f30-card, .f30-card * { max-width: 100%; }
-    .f30-ts { max-width: 100%; overflow-x: auto; }
-  }
 </style>
 
 <script is:inline>
@@ -386,7 +349,7 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
         })
         .catch(function (err) {
           sending = false;
-          if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); if (ctaText) ctaText.textContent = btn.dataset.label || 'Mein Wintergeschenk anfragen'; }
+          if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); if (ctaText) ctaText.textContent = btn.dataset.label || 'Ja, ich möchte mein Geschenk!'; }
           if (window.turnstile && ts.el) { try { window.turnstile.reset(ts.el); } catch (_) {} }
           showErr(err && err.message === 'invalid_phone' ? 'Bitte gib eine gültige Telefonnummer an.' : 'Senden fehlgeschlagen. Bitte nochmal versuchen oder per WhatsApp oder Telefon melden.');
         });
