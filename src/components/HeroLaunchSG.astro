@@ -305,6 +305,8 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-float--d .f30-float-sec { display: none; }
   .f30-float--d .f30-float-x { flex-basis: 36px; min-height: 36px; font-size: 18px; border-radius: 50%; margin-left: 2px; }
   @media (min-width: 769px) { .f30-float--m { display: none; } .f30-float--d { display: flex; } .f30-float--d[hidden] { display: none; } }
+  /* Strip shown → page end must stay reachable above the taller sticky (128px reserved by StickyCtaBar + strip row). */
+  @media (max-width: 768px) { :global(body.f30-strip-on) { padding-bottom: calc(176px + env(safe-area-inset-bottom, 0px)); } }
   @media (prefers-reduced-motion: reduce) { .f30-float { transition: none; transform: none; } .f30-float-pill { transition: none; } .f30-float-pill:hover { transform: none; } }
 </style>
 
@@ -496,6 +498,8 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
           fl.classList.toggle('is-on', show);
           fl.setAttribute('aria-hidden', show ? 'false' : 'true');
         }
+        // Reserve the strip's extra height below the page content (StickyCtaBar reserves only its own 128px).
+        document.body.classList.toggle('f30-strip-on', !!(mobileFloat && !mobileFloat.hidden));
       };
       new IntersectionObserver(function (es) { es.forEach(function (x) { cardIn = x.isIntersecting; }); apply(); }, { threshold: 0.05 }).observe(cardEl);
       if (kEl) new IntersectionObserver(function (es) { es.forEach(function (x) { kIn = x.isIntersecting; }); apply(); }, { threshold: 0.05 }).observe(kEl);
