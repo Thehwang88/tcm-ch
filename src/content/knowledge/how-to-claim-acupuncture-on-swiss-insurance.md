@@ -56,7 +56,7 @@ Send the invoice to your **supplementary** insurer, which may or may not be the 
 - through their **online portal**, or
 - by **post**.
 
-The app is usually fastest. Submit reasonably promptly, as insurers have deadlines for how long after treatment a claim can be filed. Check your policy for the exact window. [verify citation]
+The app is usually fastest. Submit reasonably promptly, as insurers have deadlines for how long after treatment a claim can be filed. Check your policy conditions for the exact window: many insurers ask for prompt submission, and claims under Swiss supplementary insurance are in any case subject to the statutory limitation period of the Insurance Contract Act (five years since the 2022 revision).
 
 ## Step 3: Reimbursement
 

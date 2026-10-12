@@ -40,7 +40,7 @@ These typically pass within a few hours to a day. Taking it gently after a sessi
 
 ## The rare serious risks, in context
 
-It is fair to ask about the worst case, so here it is honestly. Serious complications from acupuncture, things like infection or, very rarely, injury from a needle inserted too deeply in the wrong place, do exist in the literature, but they are **rare and overwhelmingly linked to untrained practitioners or poor technique**. [verify citation]
+It is fair to ask about the worst case, so here it is honestly. Serious complications from acupuncture, things like infection or, very rarely, injury from a needle inserted too deeply in the wrong place, do exist in the literature, but they are **very rare**: a cumulative review of prospective safety surveys (2004) put serious adverse events at roughly 0.05 per 10,000 treatments, and many of the serious cases reported in the literature involve inadequate training, hygiene or technique.
 
 This is exactly why two things matter so much:
 

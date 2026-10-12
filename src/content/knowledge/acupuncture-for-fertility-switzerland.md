@@ -35,7 +35,7 @@ You can read our fuller, hedged overview on the [fertility support conditions pa
 
 ## What the evidence says
 
-This is a much-debated area, so precision matters. Large reviews of acupuncture used around IVF have **generally not shown a reliable improvement** in pregnancy or live-birth rates. Some individual studies suggest a possible benefit, and the reduction in stress that many people report is plausible and worthwhile in itself, but the overall picture does not support claims that acupuncture boosts your odds of a baby. [verify citation]
+This is a much-debated area, so precision matters. Large reviews of acupuncture used around IVF have **generally not shown a reliable improvement** in pregnancy or live-birth rates. Some individual studies suggest a possible benefit, and the reduction in stress that many people report is plausible and worthwhile in itself, but the overall picture does not support claims that acupuncture boosts your odds of a baby. This is the conclusion of the Cochrane review of acupuncture alongside assisted reproduction (2013) and of a large Australian randomised trial published in JAMA in 2018, which found no improvement in live births.
 
 So the reasonable summary is this: it is a low-risk thing some people find supportive, with no dependable effect on success rates. That honesty is the point.
 

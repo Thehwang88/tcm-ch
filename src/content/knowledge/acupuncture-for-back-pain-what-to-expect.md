@@ -41,7 +41,7 @@ If none of these apply, you are most likely dealing with the everyday, non-speci
 
 ## What the evidence actually says
 
-This is where honesty matters more than enthusiasm. The picture for chronic, non-specific lower-back pain is **mixed but cautiously positive**. Cochrane reviews and clinical guidelines suggest acupuncture may give some people short-term relief from chronic low-back pain, while the evidence for sudden, acute back pain is weaker. Part of the effect may be non-specific, meaning it comes from the attention, rest and expectation around treatment as much as the needling itself. [verify citation]
+This is where honesty matters more than enthusiasm. The picture for chronic, non-specific lower-back pain is **mixed but cautiously positive**. Cochrane reviews and clinical guidelines suggest acupuncture may give some people short-term relief from chronic low-back pain, while the evidence for sudden, acute back pain is weaker. Part of the effect may be non-specific, meaning it comes from the attention, rest and expectation around treatment as much as the needling itself. The main source for this is the Cochrane review of acupuncture for chronic non-specific low back pain (2020), which found modest short-term benefits of low to moderate certainty; for acute low back pain, Cochrane found the evidence insufficient.
 
 What that means in plain terms: acupuncture is a reasonable option to trial for ongoing back pain, ideally alongside staying active, not a guaranteed fix and not a replacement for movement, physiotherapy or medical care. We would rather you came in with realistic expectations than oversold ones.
 

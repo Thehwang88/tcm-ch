@@ -44,7 +44,7 @@ Migraine is a neurological condition, typically a throbbing, often one-sided hea
 
 ## What the evidence says
 
-This is one of the more favourable areas for acupuncture. Cochrane reviews have found that acupuncture can **reduce the frequency** of episodic migraine and tension-type headache, with effects that are at least comparable to some preventive medications for some patients. Quality still varies, and it does not work for everyone, but the evidence here is relatively encouraging compared with many other uses. [verify citation]
+This is one of the more favourable areas for acupuncture. Cochrane reviews have found that acupuncture can **reduce the frequency** of episodic migraine and tension-type headache, with effects that are at least comparable to some preventive medications for some patients. Quality still varies, and it does not work for everyone, but the evidence here is relatively encouraging compared with many other uses. The key sources are the Cochrane reviews of acupuncture for the prevention of episodic migraine and of tension-type headache (both 2016).
 
 The key word is **prevention**. The realistic goal is fewer or milder episodes over time, not a guaranteed end to migraines.
 

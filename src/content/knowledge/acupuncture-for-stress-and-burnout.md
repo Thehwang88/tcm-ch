@@ -42,7 +42,7 @@ We are clear about the boundary, though. Acupuncture supports stress management.
 
 ## What the evidence says
 
-The research here is **mixed and modest**. Some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and the relaxation effect is hard to separate from the treatment itself. [verify citation]
+The research here is **mixed and modest**. Some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and the relaxation effect is hard to separate from the treatment itself. Systematic reviews of acupuncture for anxiety and stress-related symptoms consistently describe the available trials as small, heterogeneous and at risk of bias, so no firm conclusion is possible yet.
 
 So we position it accurately: a supportive, low-risk option that many people find calming, not a proven cure. If that is what you are looking for, it is a reasonable thing to try.
 
