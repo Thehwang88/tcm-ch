@@ -11,7 +11,7 @@ Two journeys, one form.
 | 1 | Hero `#heroPatient` | unchanged approved hero | unchanged | none |
 | 2 | Clinic finder `#s-standorte` | Zürich box unchanged; "Weitere Standorte" cards ordered **operational first** (Winterthur Marktgasse, Volketswil, Frauenfeld, Kreuzlingen, Bottighofen, St. Gallen, Rorschach, Wil, Basel), then Münzgasse (in Prüfung), Luzern (2027), Bern (in Vorbereitung) | same order, single column | **order only** (markup, hrefs, onclicks untouched) |
 | 3 | Treatments `#s-behandlungen` | unchanged | unchanged | moved up from 5 to 3 |
-| 4 | Insurance strip + `#krankenkasse` | strip headline hedged: "Zusatzversicherung: meist 80–100 % der Kosten übernommen." | same | moved up from 9/10 to 4; one claim corrected |
+| 4 | Insurance strip + `#krankenkasse` | strip headline replaced: "Viele Zusatzversicherungen beteiligen sich an den Kosten – je nach Police und Anerkennung deiner Therapeut:in." (no percentage, no entitlement implied) | same | moved up from 9/10 to 4; one claim corrected |
 | 5 | Offer `#s-offer` | unchanged (scarcity sentence flagged for approval) | same | moved up |
 | 6 | **Form `#home-contact-form`** | unchanged markup, fields, Turnstile, handler | same; sticky bar still scrolls here | moved up from 11 to 6 (≈ 45 % depth instead of 79 %) |
 | 7 | FAQ `#haeufige-fragen` | unchanged | same | below the form |
