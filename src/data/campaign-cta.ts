@@ -1,7 +1,7 @@
 // Kampagnen-Konfiguration für den schwebenden Geschenk-CTA (mobile Karte / Desktop-Pill), standortbezogen.
 // Nur Standorte mit Eintrag und enabled=true erhalten einen Promotions-CTA; alle anderen Seiten behalten die
 // reguläre Sticky-Bar (StickyCtaBar.astro) unverändert. Gerendert wird der CTA vom Standort-Hero (HeroLaunchSG),
-// der auf der Kampagnenseite die reguläre Sticky-Bar ersetzt (scb-off), nie stapelt.
+// der auf der Kampagnenseite mobil als kleine Zusatzzeile IN der regulären Sticky-Bar erscheint (nie scb-off).
 import { FIRST30, first30State } from './first30';
 import { site } from './site';
 
@@ -21,8 +21,8 @@ export interface CampaignCta {
   whatsappMessage: string;
 }
 
-const WA_MESSAGE = 'Hallo TCM.ch! 🎁 Ich möchte gerne das FIRST 30 Vorweihnachtsgeschenk in St. Gallen anfragen (30 Minuten, CHF 0.–). Ist noch eines verfügbar? Vielen Dank!';
-const WA_MESSAGE_WAITLIST = 'Hallo TCM.ch! 🎁 Ich möchte mich für die Warteliste des FIRST 30 Vorweihnachtsgeschenks in St. Gallen vormerken lassen (30 Minuten, CHF 0.–). Vielen Dank!';
+const WA_MESSAGE = '🎁 Hallo TCM.ch! Ich möchte das FIRST 30 Vorweihnachtsgeschenk in St. Gallen anfragen (30 Minuten, CHF 0.–). Bitte meldet euch bei mir zur Terminvereinbarung. Vielen Dank!';
+const WA_MESSAGE_WAITLIST = '🎁 Hallo TCM.ch! Ich möchte mich für die Warteliste des FIRST 30 Vorweihnachtsgeschenks in St. Gallen vormerken lassen (30 Minuten, CHF 0.–). Vielen Dank!';
 
 export const campaignCtaFor = (locationId: string): CampaignCta | undefined => {
   if (locationId !== 'st-gallen') return undefined;
