@@ -10,6 +10,9 @@ import { getTherapeut, getPublicTherapistProfile, type PublicTherapeut } from '.
 import { locationContent } from './en/locations-content';
 
 export const CLINICAL_LEAD_SLUG = 'seongsu-kim';
+/** Kompakte Kartenvariante (480×600 WebP, 4:5 wie das Original) nur für den Clinical-Lead-Block; das Profil und die
+ *  Teamkarten nutzen weiterhin das Original /images/Seongsu-Kim.png. */
+export const CLINICAL_LEAD_CARD_IMG = '/images/Seongsu-Kim-card.webp';
 
 export const clinicalLead = (): PublicTherapeut => {
   const t = getTherapeut(CLINICAL_LEAD_SLUG);
@@ -47,7 +50,7 @@ export interface ClinicalLeadCopy {
 export const clinicalLeadCopy = (lang: 'de' | 'en', ctx: ClinicalLeadContext): ClinicalLeadCopy => {
   const p = clinicalLead();
   const localCard = ctx.treatsHere && ctx.status === 'operational';
-  const img = !localCard && p.bild ? { src: p.bild, alt: lang === 'de' ? `${p.name}, Senior Clinical Lead TCM.ch` : `${p.name}, Senior Clinical Lead, TCM.ch` } : undefined;
+  const img = !localCard && p.bild ? { src: CLINICAL_LEAD_CARD_IMG, alt: lang === 'de' ? `${p.name}, Senior Clinical Lead TCM.ch` : `${p.name}, Senior Clinical Lead, TCM.ch` } : undefined;
   const base = { name: p.name, role: 'Senior Clinical Lead · TCM.ch', href: `/team/${p.slug}/`, img };
   if (lang === 'de') {
     const note = localCard
@@ -93,7 +96,7 @@ export const clinicalLeadHtml = (id: string): string => {
   return (
     `<section class="section cl-lead-sec" id="clinical-lead" data-clinical-lead="${ctx.status}" aria-labelledby="cl-lead-h"><div class="wrap">` +
     `<div class="cl-lead${c.img ? '' : ' cl-lead--noimg'}">` +
-    (c.img ? `<div class="cl-lead-media"><img src="${c.img.src}" alt="${esc(c.img.alt)}" width="630" height="840" loading="lazy" decoding="async" class="cl-lead-img"></div>` : '') +
+    (c.img ? `<div class="cl-lead-media"><img src="${c.img.src}" alt="${esc(c.img.alt)}" width="480" height="600" loading="lazy" decoding="async" class="cl-lead-img"></div>` : '') +
     `<div class="cl-lead-body"><h2 id="cl-lead-h" class="cl-lead-label">${esc(c.label)}</h2>` +
     `<div class="cl-lead-name">${esc(c.name)}</div><div class="cl-lead-role">${esc(c.role)}</div>` +
     `<p class="cl-lead-text">${esc(c.text)}</p><p class="cl-lead-note">${esc(c.note)}</p>` +
