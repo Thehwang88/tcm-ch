@@ -10,7 +10,7 @@
 //   totalAllocation 30 folgt der ausdrücklichen Inhaber-Anweisung (27/28 von 30 Konzept). Die 30 Termine müssen vor Launch operativ tatsächlich bereitstehen.
 // Design-Vorschau (nur lokale Review-Builds, nie Produktion): src/data/first30.preview.json temporär auf claims 27 oder 28 / cutoff true setzen.
 // Countdown im WhatsApp-Button NUR bei bestätigtem täglichem Bearbeitungs-Cutoff (dailyCutoff.approved); kein Angebots-
-// Ablauf, kein Reset-Trick. Design-Vorschau: FIRST30_PREVIEW_CUTOFF=1.
+// Ablauf, kein Reset-Trick. Design-Vorschau ausschliesslich über first30.preview.json (lokal, nie Produktion).
 
 import preview from './first30.preview.json';
 
