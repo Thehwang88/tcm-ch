@@ -1,0 +1,25 @@
+---
+// Network-wide clinical lead (src/data/clinical-lead.ts), kept separate from the local practitioners
+// (Practitioners.astro, built from therapeuten[].standorte[]). Same data and status rules as the DE block.
+import { clinicalLeadContext, clinicalLeadCopy } from '../../data/clinical-lead';
+interface Props { clinicId: string }
+const ctx = clinicalLeadContext(Astro.props.clinicId);
+const c = ctx ? clinicalLeadCopy('en', ctx) : undefined;
+---
+{ctx && c && (
+  <section class="ev-section ev-clead-sec" id="clinical-lead" data-clinical-lead={ctx.status} aria-labelledby="ev-clead-h">
+    <div class="wrap">
+      <div class={`ev-card ev-clead${c.img ? '' : ' ev-clead--noimg'}`}>
+        {c.img && <div class="ev-clead__media"><img src={c.img.src} alt={c.img.alt} width="480" height="600" loading="lazy" decoding="async" /></div>}
+        <div class="ev-clead__body">
+          <p class="ev-label" id="ev-clead-h">{c.label}</p>
+          <h3 class="ev-clead__name">{c.name}</h3>
+          <p class="ev-clead__role">{c.role}</p>
+          <p class="ev-clead__text">{c.text}</p>
+          <p class="ev-clead__note">{c.note}</p>
+          <p class="ev-practitioner__meta"><a href={c.href} hreflang="de">{c.cta}</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+)}

@@ -1,0 +1,6 @@
+---
+// Netzwerkweite klinische Leitung (src/data/clinical-lead.ts), getrennt vom lokalen Team (Team.astro).
+import { clinicalLeadHtml } from '../../data/clinical-lead';
+const { slug } = Astro.props as { slug: string };
+---
+<Fragment set:html={clinicalLeadHtml(slug)} />
