@@ -137,10 +137,10 @@ One GTM container `GTM-PZ92Q3KJ` (`HeadAnalytics.astro`), no `gtag` config in co
 
 1. Any change to tracking code, event timing or payloads (see Franca document).
 2. Finder → form preselect carry-over (requires wiring `nav()`/`openContactForm(null,id)` on `/`).
-3. Removal/rewording of "Ersttermin-Slots … begrenzt" and "Ehrlichkeits-Garantie" (offer block is reused on `/therapien/shiatsu/` and `/akupunktur-in-der-naehe/`).
+3. ~~Removal/rewording of "Ersttermin-Slots … begrenzt" and "Ehrlichkeits-Garantie"~~ — approved and implemented 12.10.2026 (scarcity sentence removed, "Unser Versprechen: ehrliche Einschätzung" on `/`, `/therapien/shiatsu/`, `/akupunktur-in-der-naehe/`; the separate mention on `/selbsttest/` is untouched).
 4. St. Gallen meta description correction ("beim Bahnhof" → Altstadt) and hidden `Seite` field path (`HeroLaunchSG.astro:57`, inside the form payload → tracking-adjacent).
 5. Team visibility on `review` locations (Winterthur Münzgasse).
 6. Basel "vorgesehen"/"designierte Standortleiterin" wording on an operational page (owner verification).
-7. St. Gallen free-first-appointment offer ("30 Min. gratis", "Dein erster Termin ist gratis", "Erster Termin für Neupatient:innen kostenlos", `angebot`/`formular` payload fields) — validity to be confirmed by the owner; the dead `GRATIS_REST=14` counter script (dated 20.07.2026) renders no element but still ships in the page source. Existing claims left untouched.
+7. ~~St. Gallen free-first-appointment offer~~ — decision 12.10.2026: promotion discontinued; St. Gallen now runs a regular first-appointment funnel (PR #35). Open for Franca: form name, `Quelle`/`Seite` payload values (tracking doc T8).
 8. St. Gallen migration to the data-driven template.
 9. Hours for Basel; opening date for Oerlikon (data owner).

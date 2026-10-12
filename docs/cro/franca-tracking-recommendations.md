@@ -50,6 +50,11 @@ Stand 12.10.2026 · Repo state 2b06a955 · **This document is not a deployment i
 ### T7 — Hidden field `Seite=/standort/st-gallen` (HeroLaunchSG.astro:57)
 - Singular path, so GA4/CRM filters on `seite` miss the real `/standorte/st-gallen/` route. Payload field only; fix together with T5.
 
+### T8 — St. Gallen hero form: payload values after the end of the free-offer promotion (implemented in PR #35, values only)
+- Current (PR #35): the hidden field key `Angebot` is unchanged; its value is now `Ersttermin-Anfrage (Hero St. Gallen)` instead of `GRATIS 30 Min Erstbehandlung (Hero St. Gallen)`, because the free 30-minute offer was discontinued. The `formular_senden` push (`form_type: 'allgemein'`, `quelle: 'launch-hero-sg'`) and its timing are untouched.
+- Still unchanged and flagged for review: the form name `Hero-Gratis-30min-StGallen` (sent as `formular`), `Quelle="Hero St. Gallen Neueroeffnung"` (sent as `quelle_detail`) and `Seite="/standort/st-gallen"` (singular path, sent as `seite`). They are tracking-bearing identifiers and were not renamed; if GTM/CRM filters match on them, a coordinated rename is proposed (e.g. `Hero-Ersttermin-StGallen`, `Hero St. Gallen`, `/standorte/st-gallen/`).
+- Why it matters: lead emails and any GA4/CRM segmentation keyed on the `angebot` value must now read the new string; historical rows keep the old value.
+
 ## C. Future measurement specification (not implemented)
 
 Goal: one funnel per brand × location × landing page × source/medium × campaign × device × CTA position, separating (1) Ads conversion, (2) GA4 contact event, (3) successful inquiry (`data.ok`), (4) qualified lead, (5) confirmed appointment, (6) new patient.
