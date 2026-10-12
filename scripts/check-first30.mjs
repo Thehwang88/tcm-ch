@@ -99,7 +99,20 @@ const waLinks = [...sg.matchAll(/href="(https:\/\/wa\.me\/41775236122\?text=[^"]
 ok(waLinks.length === 2 && waLinks.every((h) => h === cta.whatsappHref), `2 WhatsApp-Geschenk-CTAs (Hero + Floating) mit identischem Deeplink auf ${'41775236122'}`);
 const decoded = decodeURIComponent(new URL(cta.whatsappHref).searchParams.get('text') || '');
 ok(decoded === cta.whatsappMessage && /FIRST 30/.test(decoded) && /St\. Gallen/.test(decoded) && /30 Minuten/.test(decoded) && /CHF 0/.test(decoded) && !/Beschwerde|Diagnose|Versicherung|Symptom/i.test(decoded), `Nachricht korrekt kodiert (ä/ö/ü/Emoji) und ohne Gesundheitsdaten: "${decoded.replace(/\n/g, ' / ')}"`);
-ok((sg.match(/<div[^>]*data-f30-float="mobile"/g) ?? []).length === 1 && (sg.match(/<div[^>]*data-f30-float="desktop"/g) ?? []).length === 1 && (sg.match(/<button[^>]*data-f30-dismiss/g) ?? []).length === 2, 'je ein schwebender CTA mobil/desktop mit Dismiss');
+ok((sg.match(/<div[^>]*data-f30-float="mobile"/g) ?? []).length === 1 && (sg.match(/<div[^>]*data-f30-float="desktop"/g) ?? []).length === 1 && (sg.match(/<button[^>]*data-f30-dismiss/g) ?? []).length === 2, 'je ein kompakter FIRST-30-Zusatz mobil/desktop mit eigenem Dismiss');
+const heroSrc = readFileSync('src/components/HeroLaunchSG.astro', 'utf8');
+ok(/class="scb-bar"/.test(sg) && /class="scb-primary"/.test(sg) && /class="scb-row"/.test(sg), 'normale Sticky-Leiste (Ersttermin + Kontaktzeile) auf der St.-Gallen-Seite vorhanden');
+ok(/bar\.insertBefore\(mobileFloat, bar\.firstChild\)/.test(heroSrc)
+   && /\.f30-float--m\s*\{\s*position:\s*static/.test(heroSrc)
+   && !/bar\.classList\.add\(['"]scb-off['"]\)/.test(heroSrc),
+   'mobiler Geschenk-Hinweis innerhalb der normalen Sticky-Leiste; kein scb-off/zweites Fixed-Overlay');
+ok(/fl\.hidden\s*=\s*!show/.test(heroSrc)
+   && /sessionStorage\.setItem\('f30-float-dismissed', '1'\)/.test(heroSrc)
+   && /first30_cta_dismiss/.test(heroSrc)
+   && !/bar\.classList\.(add|remove|toggle)\(['"]scb-off/.test(heroSrc),
+   'X schliesst ausschliesslich den FIRST-30-Zusatz (ohne Sticky-Verlust oder unsichtbare Leerzeile)');
+ok(/@media \(min-width: 1024px\)\s*\{\s*\.f30-intro, \.f30-more/.test(heroSrc),
+   'Hero-Inhalt nur auf Desktop höher positioniert, mobile Layout unverändert');
 const mainSg = (() => { try { return readFileSync('/home/user/tcm-ch-lead/dist/standorte/st-gallen/index.html', 'utf8'); } catch { return ''; } })();
 const meta = (s, re) => (s.match(re) || [])[1];
 ok(meta(sg, /<title>([^<]*)/) === 'Akupunktur & TCM St. Gallen | TCM.ch Kliniken' || /St\. Gallen/.test(meta(sg, /<title>([^<]*)/) || ''), `Title unverändert ortsbezogen: "${meta(sg, /<title>([^<]*)/)}"`);
