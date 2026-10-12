@@ -54,6 +54,7 @@ Stand 12.10.2026 · Repo state 2b06a955 · **This document is not a deployment i
 - Current (PR #35): the hidden field key `Angebot` is unchanged; its value is now `Ersttermin-Anfrage (Hero St. Gallen)` instead of `GRATIS 30 Min Erstbehandlung (Hero St. Gallen)`, because the free 30-minute offer was discontinued. The `formular_senden` push (`form_type: 'allgemein'`, `quelle: 'launch-hero-sg'`) and its timing are untouched.
 - Still unchanged and flagged for review: the form name `Hero-Gratis-30min-StGallen` (sent as `formular`), `Quelle="Hero St. Gallen Neueroeffnung"` (sent as `quelle_detail`) and `Seite="/standort/st-gallen"` (singular path, sent as `seite`). They are tracking-bearing identifiers and were not renamed; if GTM/CRM filters match on them, a coordinated rename is proposed (e.g. `Hero-Ersttermin-StGallen`, `Hero St. Gallen`, `/standorte/st-gallen/`).
 - Why it matters: lead emails and any GA4/CRM segmentation keyed on the `angebot` value must now read the new string; historical rows keep the old value.
+- **Release gate (owner decision 12.10.2026):** before PR #35 is released, Franca checks GTM (variables, triggers, lookup tables) and the CRM/e-mail routing for any dependency on the old `angebot` string `GRATIS 30 Min Erstbehandlung (Hero St. Gallen)`; if one exists, it is updated in the same change window. Event names, form identifiers and `quelle` values stay unchanged.
 
 ## C. Future measurement specification (not implemented)
 
