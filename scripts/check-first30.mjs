@@ -1,5 +1,5 @@
-// Gate: TCM.ch FIRST 30 · Winter Gift Edition 2026 (St. Gallen). Nach `npm run build`: node scripts/check-first30.mjs
-//  1. Kapazität: ohne verifizierte Zahl nur das Maximum (30); nie gefüllte Segmente, behauptete 27/30 oder 28/30 oder Restbestand.
+// Gate: TCM.ch FIRST 30 · Pre-Christmas Edition 2026 (St. Gallen). Nach `npm run build`: node scripts/check-first30.mjs
+//  1. Zustandsabhängig: aktiv mit/ohne verifizierte Zahl, 30/30 mit Warteliste, ausverkauft-geschlossen, manuell geschlossen.
 //  2. Claims: "Once-a-Year" nur nach Freigabe; Countdown nur mit bestätigtem Cutoff; kein Vorschau-Build in Produktion.
 //  3. Formulare: Hero (phone-only) mit kanonischer ID, Tracking-Identifier unverändert; unteres Formular mit Wähler + ID.
 //  4. Scope: FIRST-30-Markup nur auf /standorte/st-gallen/; WhatsApp-Deeplink korrekt (Nummer, Text, Kodierung).
@@ -20,24 +20,36 @@ const vis = text(sg);
 console.log('1. Kapazität');
 const pv = JSON.parse(readFileSync('src/data/first30.preview.json', 'utf8'));
 ok(pv.claims === null && pv.cutoff === false && pv.campaignActive === null && !/data-first30-preview/.test(sg), 'kein Vorschau-Build (first30.preview.json: claims null, cutoff false, campaignActive null) in dist');
-ok(st.campaign === 'active' && /data-first30="max-only"/.test(sg) && !/hlsg-card/.test(sg), `Kampagnenzustand ${st.campaign}: Kampagnen-Hero gerendert, regulärer Hero nicht`);
-ok(FIRST30.campaignActive === true && !Object.prototype.hasOwnProperty.call(FIRST30, 'campaignEnd'), 'manueller Betrieb: Kampagne aktiv bis zur expliziten Schliessung; kein automatisches Ablaufdatum');
-ok(FIRST30.waitlistEnabled === true, 'bei vollständiger Zuteilung weiterlaufender Wartelistenmodus statt automatischer Schliessung');
-ok(FIRST30.confirmedClaims === null || (Number.isInteger(FIRST30.confirmedClaims) && FIRST30.confirmedClaims >= 0 && FIRST30.confirmedClaims <= FIRST30.totalAllocation), 'Vergabezähler nur null oder echte, plausible bestätigte Vergaben (0–30)');
-ok(FIRST30.totalAllocation === 30, `Gesamtkapazität 30 (Inhaberentscheid; klinische Verfügbarkeit vor Launch bestätigen); aktuell ${FIRST30.totalAllocation}`);
+// Das Gate muss jede legitime, manuell deploybare Konfiguration prüfen (27/30, 30/30, CLOSED).
+// Keine automatische Datums-Schliessung und kein Produktions-Zähler ohne Verifikation.
+const full = FIRST30.confirmedClaims != null && FIRST30.confirmedClaims >= FIRST30.totalAllocation;
+const expectedState = !FIRST30.campaignActive ? 'closed' : full ? (FIRST30.waitlistEnabled ? 'soldout-waitlist' : 'soldout-closed') : 'active';
+ok(!Object.prototype.hasOwnProperty.call(FIRST30, 'campaignEnd'), 'kein automatisch ablaufendes Kampagnen-Enddatum');
+ok(typeof FIRST30.campaignActive === 'boolean' && typeof FIRST30.waitlistEnabled === 'boolean', 'Lifecycle-Switches sind manuell gesetzte Booleans');
+ok(FIRST30.confirmedClaims === null || (Number.isInteger(FIRST30.confirmedClaims) && FIRST30.confirmedClaims >= 0 && FIRST30.confirmedClaims <= FIRST30.totalAllocation), 'bestätigte Vergaben null oder Integer 0–30');
+ok(FIRST30.confirmedClaims == null || (!!FIRST30.verifiedAt && !!FIRST30.verifiedBy), 'verifizierter Zähler hat verifiedAt und verifiedBy');
+ok(FIRST30.totalAllocation === 30, `Gesamtkapazität 30 (betriebliche Verfügbarkeit vor Launch prüfen); aktuell ${FIRST30.totalAllocation}`);
+ok(st.campaign === expectedState, `zustandsabhängig: erwarteter Zustand ${expectedState}, gerendert ${st.campaign}`);
+ok(st.showCampaign === (expectedState === 'active' || expectedState === 'soldout-waitlist'), 'Kampagnen-Hero nur für active/soldout-waitlist');
+if (st.showCampaign) {
+  const expectedHero = st.campaign === 'soldout-waitlist' ? 'soldout' : st.reserved == null ? 'max-only' : 'verified';
+  ok(new RegExp(`data-first30="${expectedHero}"`).test(sg) && !/hlsg-card/.test(sg), `Promo-Hero Zustand ${st.campaign} / ${expectedHero}, regulärer Hero fehlt`);
 if (FIRST30.confirmedClaims == null) {
   ok(vis.includes(`Nur ${FIRST30.totalAllocation} exklusive Geschenke`) && /data-mode="unverified"/.test(sg) && vis.includes('Limitierte FIRST 30 Vorweihnachtsgeschenke'), 'nur Maximum kommuniziert; Indikator unverifiziert ("Limitierte FIRST 30 Vorweihnachtsgeschenke")');
   ok(!/f30-avail-bar/.test(sg) && !/\d+ \/ \d+ Geschenke vergeben/.test(vis) && !/Nur noch \d+ (Geschenke? verfügbar|verfügbar|übrig)/.test(vis) && !/%/.test(text(sg.slice(sg.indexOf('data-f30-avail'), sg.indexOf('</div>', sg.indexOf('data-f30-avail'))))), 'kein Balken, kein "x / 30 vergeben", kein Restbestand, kein Prozent');
 } else {
   ok(new RegExp(`data-confirmed="${FIRST30.confirmedClaims}"`).test(sg) && vis.includes(st.indicator.head) && vis.includes(st.indicator.sub), `Indikator: "${st.indicator.head}" · "${st.indicator.sub}"`);
   ok(!!FIRST30.verifiedAt && !!FIRST30.verifiedBy, 'verifizierte Zahl trägt verifiedAt + verifiedBy');
+  if (st.campaign === 'soldout-waitlist') {
+    ok(st.reserved === st.max && /Auf die FIRST 30 Warteliste/.test(vis) && !/Nur noch 0 (Geschenke? verfügbar|verfügbar)/.test(vis), 'bei 30/30 Warteliste statt unhaltbarer Verfügbarkeitsbehauptung');
+  }
 }
 
 console.log('2. Claims');
 ok(/once-a-year/i.test(vis) === FIRST30.onceAYearApproved, `"Once-a-Year" nur nach Freigabe (approved=${FIRST30.onceAYearApproved})`);
 ok(!/jährlich/i.test(vis) || FIRST30.onceAYearApproved, '"jährlich" nur nach Freigabe');
 ok(/<span[^>]*data-f30-timer\b/.test(sg) === FIRST30.dailyCutoff.approved, `Countdown nur mit bestätigtem Cutoff (approved=${FIRST30.dailyCutoff.approved})`);
-ok(FIRST30.dailyCutoff.approved || /Nur 30 exklusive Geschenke/.test(text(sg.slice(sg.indexOf('data-f30-wa'), sg.indexOf('</a>', sg.indexOf('data-f30-wa'))))), 'ohne Cutoff: 30er-Kapazitätsaussage im WhatsApp-Button');
+ok(FIRST30.dailyCutoff.approved || text(sg.slice(sg.indexOf('data-f30-wa'), sg.indexOf('</a>', sg.indexOf('data-f30-wa')))).includes(st.scarcityText), 'ohne Cutoff: passende Kapazitäts- ODER Wartelistenaussage im WhatsApp-Button');
 ok(!/läuft ab|Angebot endet|nur heute/i.test(vis), 'kein Angebots-Ablauf-Wording');
 
 console.log('3. Formulare');
@@ -72,6 +84,23 @@ ok(/St\. Gallen/.test(h1) && /TCM/.test(h1), `H1 trägt Ort und Fach: "${h1}"`);
 ok((sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine H1');
 ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Du zahlst CHF 0.–') && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM in St. Gallen geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
 ok((vis.match(/CHF 0\.–/g) ?? []).length >= 4 && !/CHF 0\.-[^–]/.test(vis), 'einheitliche Preisangabe CHF 0.– in Hero, Floating, Wähler');
+
+} else {
+  console.log('2–4. Geschlossene Kampagne: regulärer Hero, keine Geschenk-CTAs');
+  ok(st.campaign === 'closed' || st.campaign === 'soldout-closed', `geschlossener Zustand: ${st.campaign}`);
+  ok(/class="lsr-hero hlsg"/.test(sg) && /class="hlsg-card"/.test(sg) && /Akupunktur &amp; TCM in/.test(sg), 'regulärer St.-Gallen-Hero statt FIRST 30');
+  ok(!/class="f30-hero"/.test(sg) && !/data-f30-bottom|data-f30-float|data-f30-wa/.test(sg), 'kein Promo-Hero, Geschenk-Wähler oder schwebender Geschenk-CTA');
+  ok(!/data-offer="first30"|FIRST30_WINTER_2026_SG/.test(sg), 'keine alte Geschenk-ID oder Geschenk-CTA im geschlossenen HTML');
+  ok(/name="Hero-Gratis-30min-StGallen"/.test(sg) && /data-sg-hero-form/.test(sg) && /name="name"/.test(sg) && /name="telefon"/.test(sg), 'reguläres Hero-Formular und Identifikatoren vorhanden');
+  ok(/id="online-buchen"/.test(sg) && /onedoc\.ch\/de\/widget/.test(sg) && /id="kontakt"/.test(sg), 'OneDoc und unteres Kontaktformular unverändert');
+  ok(/<h1[^>]*>Akupunktur &amp; TCM in/.test(sg) && (sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine reguläre St.-Gallen-H1');
+  const closedTitle = (sg.match(/<title>([^<]*)/) || [])[1] || '';
+  ok(/St\. Gallen/.test(closedTitle) && /rel="canonical" href="https:\/\/tcm\.ch\/standorte\/st-gallen\/"/.test(sg) && /"@type":\s*"MedicalClinic"/.test(sg), 'Titel, Canonical und MedicalClinic-Schema bleiben erhalten');
+  ok(cta === undefined, 'kein saisonaler CTA nach Kampagnen-Schliessung');
+  const pagesClosed = []; const walkClosed = (dir) => { for (const n of readdirSync(dir)) { const p = join(dir, n); statSync(p).isDirectory() ? walkClosed(p) : p.endsWith('.html') && pagesClosed.push(p); } }; walkClosed('dist');
+  const leaksClosed = pagesClosed.filter(p => p !== 'dist/standorte/st-gallen/index.html' && /FIRST30_WINTER_2026_SG|data-f30-float|data-f30-bottom/.test(readFileSync(p, 'utf8')));
+  ok(leaksClosed.length === 0, `geschlossener Zustand: ${leaksClosed.length} fremde Seiten mit FIRST-30-Teasern`);
+}
 
 console.log('5. API');
 const { onRequestPost } = await import('../functions/api/anfrage.js');
