@@ -61,6 +61,9 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
       var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
       var token = tokenEl && tokenEl.value ? tokenEl.value : '';
       if (!token) { show('error', 'Please confirm you are human and try again.'); return; }
+      var loc = form.standort.value || '';
+      function track(ev, extra) { try { document.dispatchEvent(new CustomEvent('en-form', { detail: Object.assign({ event: ev, form_id: 'en-appointment', herkunft: form.dataset.source, standort: loc }, extra || {}) })); } catch (_) {} }
+      track('form_submit');
       var payload = {
         typ: 'termin',
         name: form.name.value.trim(),
@@ -78,11 +81,14 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
         var data = null; try { data = await res.json(); } catch (_) {}
         if (res.ok && data && data.ok) {
           form.reset();
+          track('form_submit_success');
           show('success', 'Thank you! Your request has been received. We will get back to you personally.');
         } else {
+          track('form_submit_error', { reason: 'server' });
           show('error', (data && data.error) || 'Could not send your request. Please try again or call us.');
         }
       } catch (err) {
+        track('form_submit_error', { reason: 'network' });
         show('error', 'Connection error. Please try again.');
       } finally {
         form.classList.remove('is-sending');

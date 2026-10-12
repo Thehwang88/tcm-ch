@@ -122,7 +122,7 @@ const faqLd = {
 };
 const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, faqLd];
 ---
-<Layout title={title} description={description} path={path} schema={schema}>
+<Layout title={title} description={description} path={path} schema={schema} location={id}>
   <HeroSplit eyebrow={eyebrow} h1={h1} lead={content.lead} sub={content.sub} ctas={ctas} trust={trust} note={locationHook} image={hero} crumbs={crumbs} />
   <StatusBanner clinic={clinic} />
   <UspStrip planned={planned} review={underReview} partner={!!partner} />

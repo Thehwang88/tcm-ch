@@ -1,0 +1,25 @@
+---
+// EN conversion-event layer (GTM-PZ92Q3KJ dataLayer, same container as DE). Rendered once by Layout.astro.
+// Events carry lang:'en' + page_path so EN acquisition can be reported separately from DE.
+//   cta_click            booking CTA (form anchor / contact page), tel: or wa.me click  → click, not a booking
+//   form_submit          submit attempt (mirrors DE TerminForm: GTM form-submit trigger)
+//   form_submit_success  server accepted the request (= qualified inquiry; a booking is confirmed off-site)
+// No PII in events. Consent is handled by CookieYes before GTM fires tags.
+---
+<script is:inline>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    var path = location.pathname;
+    function push(ev) { ev.lang = 'en'; ev.page_path = path; window.dataLayer.push(ev); }
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var loc = a.getAttribute('data-location') || (document.body.getAttribute('data-location') || '');
+      if (href.indexOf('tel:') === 0) push({ event: 'cta_click', cta_type: 'phone', location: loc, label: a.textContent.trim().slice(0, 60) });
+      else if (href.indexOf('wa.me') !== -1) push({ event: 'cta_click', cta_type: 'whatsapp', location: loc, label: a.textContent.trim().slice(0, 60) });
+      else if (href === '#appointment' || href.indexOf('/en/contact') === 0) push({ event: 'cta_click', cta_type: 'booking', location: loc, label: a.textContent.trim().slice(0, 60) });
+    }, true);
+    document.addEventListener('en-form', function (e) { push(e.detail); });
+  })();
+</script>

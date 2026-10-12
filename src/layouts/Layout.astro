@@ -5,6 +5,7 @@ import '../styles/en-v2.css';
 import Header from '../components/Header.astro';
 import FooterEn from '../components/FooterEn.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
+import EnAnalytics from '../components/en/EnAnalytics.astro';
 import { site, PAIR_MAP_EN } from '../data/site';
 
 interface Props {
@@ -15,9 +16,10 @@ interface Props {
   noindex?: boolean;
   enOnly?: boolean;   // EN-only page (no DE twin): self-canonical, x-default=en
   deHref?: string;    // explicit DE twin URL (overrides the pair map)
+  location?: string;  // clinic id for conversion events (location pages)
 }
 
-const { title, description = '', path, schema, noindex = false, enOnly = false, deHref: deHrefProp } = Astro.props;
+const { title, description = '', path, schema, noindex = false, enOnly = false, deHref: deHrefProp, location } = Astro.props;
 const canonical = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 
@@ -88,7 +90,8 @@ const deHref = enOnly ? null : new URL(withSlash(deHrefProp ?? PAIR_MAP_EN[path]
 
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
-  <body>
+  <body data-location={location ?? ''}>
+    <EnAnalytics />
     <Header currentPath={path} />
     <main>
       <slot />
