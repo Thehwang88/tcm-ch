@@ -68,7 +68,7 @@ ok(/"@type":\s*"MedicalClinic"/.test(sg) && (!mainSg || JSON.stringify((sg.match
 const h1 = text(meta(sg, /<h1[^>]*>([\s\S]*?)<\/h1>/) || '');
 ok(/St\. Gallen/.test(h1) && /TCM/.test(h1), `H1 trägt Ort und Fach: "${h1}"`);
 ok((sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine H1');
-ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Du zahlst CHF 0.–') && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
+ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Du zahlst CHF 0.–') && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM in St. Gallen geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
 ok((vis.match(/CHF 0\.–/g) ?? []).length >= 4 && !/CHF 0\.-[^–]/.test(vis), 'einheitliche Preisangabe CHF 0.– in Hero, Floating, Wähler');
 
 console.log('5. API');
