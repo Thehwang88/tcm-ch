@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroSplit from '../../components/en/HeroSplit.astro';
+import CtaBand from '../../components/en/CtaBand.astro';
 
 const path = '/en/health-insurance-acupuncture';
 const url = `https://tcm.ch${path}/`;
@@ -7,11 +9,11 @@ const url = `https://tcm.ch${path}/`;
 const faqs = [
   {
     q: 'I just moved to Switzerland - am I covered for acupuncture?',
-    a: 'Your mandatory basic insurance only covers acupuncture when a doctor with complementary-medicine training performs it. Therapist-led TCM, like ours, is covered through optional supplementary insurance for complementary medicine. If you only have basic cover, you likely need to add that supplementary product first.',
+    a: 'Your mandatory basic insurance only covers acupuncture when a doctor with complementary-medicine training performs it. For therapist-led TCM, like ours, reimbursement may be available through optional supplementary insurance for complementary medicine, depending on your policy, the treatment and the individual practitioner\'s recognition. If you only have basic cover, you likely need to add that supplementary product first.',
   },
   {
     q: 'Do I need supplementary insurance for TCM?',
-    a: 'For therapist-delivered TCM, yes in practice. Basic insurance does not reimburse it. A complementary-medicine supplementary policy (Zusatzversicherung) is what covers treatments at our clinics - and only when the practitioner is EMR- or ASCA-recognised, which ours are.',
+    a: 'For therapist-delivered TCM, yes in practice. Basic insurance does not reimburse it. A complementary-medicine supplementary policy (Zusatzversicherung) is what may reimburse treatments at our clinics, and only when the treating practitioner holds a recognition your insurer accepts (usually EMR or ASCA). We tell you before your first appointment whether yours does.',
   },
   {
     q: 'How do I claim reimbursement?',
@@ -19,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Are your practitioners recognised by my insurer?',
-    a: 'Our practitioners hold EMR and/or ASCA recognition, which nearly all Swiss supplementary insurers reference for complementary medicine. Recognition is the key requirement, but each policy sets its own terms. We are happy to help you check your specific cover before you book.',
+    a: 'Recognition is practitioner-specific: EMR and ASCA are the registers most Swiss supplementary insurers reference for complementary medicine, and each policy sets its own terms. We tell you which recognition the practitioner treating you holds and help you check your specific cover before you book.',
   },
 ];
 
@@ -51,24 +53,23 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
   path={path}
   schema={[faqSchema, breadcrumbSchema]}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - for expats in Switzerland</div>
-      <h1>Does Swiss health insurance cover acupuncture and TCM?</h1>
-      <p class="lead">The Swiss system has two layers, and which one pays for acupuncture depends on who treats you. Here's the honest version.</p>
-      <figure class="hero-figure">
-        <img src="/images/krankenkasse-hero.png" alt="Bright Swiss TCM practice with acupuncture needles and a tablet for insurance billing" width="1120" height="746" loading="eager" decoding="async" />
-      </figure>
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · For expats in Switzerland"
+    h1="Does Swiss health insurance cover <em>acupuncture</em> and TCM?"
+    lead="The Swiss system has two layers, and which one pays for acupuncture depends on who treats you. Here is the honest version."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#faq', label: 'Jump to FAQ', kind: 'outline' }]}
+    trust={['Supplementary insurance, not basic', 'Recognition checked per practitioner', 'We check your cover with you']}
+    image={{ src: '/images/krankenkasse-hero.png', alt: 'Bright Swiss TCM practice with acupuncture needles and a tablet for insurance billing', caption: 'Illustrative image' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Insurance & costs' }]}
+  />
 
   <section class="section">
     <div class="wrap prose">
       <div class="tldr">
         <strong>In short:</strong> Basic insurance (<em>Grundversicherung</em>) only covers acupuncture and TCM when a
         doctor with complementary-medicine training performs it. Therapist-delivered TCM - like at our clinics - is
-        covered through supplementary insurance (<em>Zusatzversicherung</em>) for complementary medicine. Our
-        practitioners are EMR-/ASCA-recognised, which is the key requirement. How much you get back depends on your policy.
+        reimbursed, if at all, through supplementary insurance (<em>Zusatzversicherung</em>) for complementary medicine,
+        depending on your policy, the treatment and the individual practitioner's recognition (EMR/ASCA). We tell you before your first appointment where you stand.
       </div>
 
       <h2>Basic vs. supplementary insurance</h2>
@@ -130,7 +131,7 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
         <a class="inline-link" href="/krankenkassen/">See per-insurer details (German) →</a>
       </p>
 
-      <h2>FAQ</h2>
+      <h2 id="faq">FAQ</h2>
       <div class="faq">
         {faqs.map((f) => (
           <details>
@@ -152,6 +153,7 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
       </p>
     </div>
   </section>
+  <CtaBand title="Unsure about your cover?" text="Send us your insurer and policy model with your request; we tell you what to expect before any costs arise. Personal reply in English or German." secondary={{ href: '/en/locations/', label: 'Find a clinic' }} />
 </Layout>
 
 <style>

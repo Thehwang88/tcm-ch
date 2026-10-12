@@ -67,7 +67,7 @@ export const clinics: Clinic[] = [
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
     // Betriebsstatus nicht bestätigt (Stand 11.10.2026): 'review' bis zur Bestätigung durch die Inhaber:in.
     openingHours: [], status: 'review', openingNote: 'Status under review',
-    vorab: [{ value: 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', label: 'Winterthur Münzgasse (Standort in Prüfung)', labelEn: 'Winterthur Münzgasse (status under review)' }],
+    vorab: [{ value: 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', label: 'Winterthur Münzgasse (Standort in Prüfung)', labelEn: 'Winterthur Münzgasse (confirmation pending)' }],
     geo: { lat: 47.4998, lng: 8.7290 },
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 

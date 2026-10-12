@@ -32,7 +32,7 @@ export const REVIEWED_DATE = '2026-06-09';
 // Shared FAQ appended to every therapy page (display + FAQPage schema).
 export const INSURANCE_FAQ: TherapyFaq = {
   q: 'Is this covered by my insurance?',
-  a: 'Treatment by our EMR-/ASCA-recognised practitioners is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much you get back depends on your individual policy. Our insurance guide explains the basic-versus-supplementary split in plain English.',
+  a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. How much you get back depends on your individual policy; we tell you the treating practitioner\'s recognition (EMR/ASCA) before your first appointment. Our insurance guide explains the basic-versus-supplementary split in plain English.',
 };
 
 export const therapies: Therapy[] = [
@@ -328,7 +328,7 @@ export const therapies: Therapy[] = [
     faqs: [
       { q: 'Can I combine physiotherapy with acupuncture?', a: 'Yes - that is one of the advantages of treating both at the same clinic. Acupuncture and manual therapy can ease pain and tension, while physiotherapy builds the strength and movement that support longer-term recovery. We coordinate the two so they complement rather than duplicate each other.' },
       { q: 'Do I have to do exercises at home?', a: 'For most problems, yes - the home exercises are usually what drives lasting recovery, while in-clinic treatment supports the process. We keep the plan realistic and tailored to your goals, and adjust it as you progress. Passive treatment alone rarely achieves as much.' },
-      { q: 'Is physiotherapy covered differently from TCM?', a: 'Often, yes. Physiotherapy can be covered through basic insurance with a medical referral, whereas TCM treatments are typically reimbursed through supplementary insurance. Cover depends on your policy and situation - we can talk through what applies to you, and our insurance guide explains the split.' },
+      { q: 'Is physiotherapy covered differently from TCM?', a: 'Often, yes. Physiotherapy can be covered through basic insurance with a medical referral, whereas for TCM treatments reimbursement may be available through supplementary insurance, depending on your policy and the practitioner\'s recognition. Cover depends on your policy and situation - we can talk through what applies to you, and our insurance guide explains the split.' },
     ],
     related: ['acupuncture', 'tuina-massage', 'electroacupuncture'],
   },

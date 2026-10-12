@@ -24,7 +24,7 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
         <a href="/en/" class="footer-logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;margin-bottom:10px">
           <img src="/images/logo/tcm-ch-logo-kliniken-mint.svg" alt="TCM Kliniken – TCM.ch" width="168" height="57" style="display:block;height:auto">
         </a>
-        <p class="footer-tagline">TCM network in German-speaking Switzerland. EMR-/ASCA-recognised practitioners.</p>
+        <p class="footer-tagline">TCM network in German-speaking Switzerland. Requests in English or German.</p>
         <a href={`mailto:${site.email}`} class="footer-mail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>{site.email}</a>
       </div>
 
@@ -50,6 +50,7 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
         <h4>Locations</h4>
         <ul id="footer-locations">
           <li><a href="/en/acupuncture-near-me/">Acupuncture near me</a></li>
+          <li><a href="/en/acupuncture-zurich/">Acupuncture in Zürich</a></li>
           {clinics.map((c) => (
             <li><a href={enLocationPath(c.id)}><Fragment set:html={pin} />{c.name}</a></li>
           ))}
@@ -69,6 +70,15 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
     </div>
   </div>
 </footer>
-<WhatsAppFab />
-<WhatsAppConcierge />
-<StickyCtaBar />
+<WhatsAppFab lang="en" />
+<WhatsAppConcierge lang="en" />
+<StickyCtaBar lang="en" />
+<script is:inline>
+  // EN prefill for the concierge CTA (the shared widget builds a German prefill from the page title).
+  (function () {
+    var cta = document.getElementById('wac-cta');
+    if (!cta) return;
+    var t = (document.title || '').replace(/\s*[|–-]\s*TCM\.ch.*$/i, '').trim() || 'TCM.ch';
+    cta.href = 'https://wa.me/41775236122?text=' + encodeURIComponent('Hello, I am on the page "' + t + '" on tcm.ch and have a question.');
+  })();
+</script>

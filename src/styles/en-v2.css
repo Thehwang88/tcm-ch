@@ -1,0 +1,178 @@
+/* ── EN V2 (Wave 1) ───────────────────────────────────────────────────────────
+   English platform components, mirroring the approved DE Softriver patterns
+   (home .sr-hero, Standort .lsr-hero, hub .hh-hero, USP grid, CTA band).
+   Namespace .ev-*; every rule is prefixed html[lang="en"] so nothing reaches a
+   DE page. Tokens only from /styles/tokens.css (Mint = surface, Rich Black text,
+   --brand-ink for Mint-on-white text). Loaded by Layout.astro after en-rebrand.css. */
+
+/* ── Split hero (Mint left, photo right) ── */
+html[lang="en"] .ev-hero { background: var(--brand); border-bottom: 1px solid rgba(2,11,16,.12); color: var(--brand-black); font-family: var(--font-sans); }
+html[lang="en"] .ev-hero__inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); min-height: min(600px, 66vh); }
+html[lang="en"] .ev-hero--home .ev-hero__inner { min-height: min(680px, calc(100vh - 68px)); }
+html[lang="en"] .ev-hero__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px,5vw,72px) clamp(24px,4.5vw,72px); }
+html[lang="en"] .ev-hero--home .ev-hero__copy { max-width: 640px; margin-left: auto; }
+html[lang="en"] .ev-crumb { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; font-size: 13px; font-weight: 600; color: rgba(2,11,16,.72); margin: 0 0 16px; padding: 0; list-style: none; }
+html[lang="en"] .ev-crumb a { color: inherit; text-decoration: none; }
+html[lang="en"] .ev-crumb a:hover { color: var(--brand-black); text-decoration: underline; }
+html[lang="en"] .ev-crumb li + li::before { content: '›'; margin-right: 7px; opacity: .6; }
+html[lang="en"] .ev-eyebrow { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(2,11,16,.64); margin: 0 0 14px; }
+html[lang="en"] .ev-hero h1 { font-family: var(--font-sans); font-size: clamp(32px,3.9vw,54px); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; color: var(--brand-black); margin: 0 0 14px; max-width: 14em; overflow-wrap: break-word; }
+html[lang="en"] .ev-hero--home h1 { font-size: clamp(38px,4.6vw,64px); }
+html[lang="en"] .ev-hero h1 em { font-style: italic; font-family: 'Nunito', sans-serif; }
+html[lang="en"] .ev-lead { font-size: clamp(16px,1.3vw,18.5px); line-height: 1.55; color: rgba(2,11,16,.82); margin: 0 0 18px; max-width: 54ch; }
+html[lang="en"] .ev-lead strong { color: var(--brand-black); }
+html[lang="en"] .ev-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin: 4px 0 18px; }
+html[lang="en"] .ev-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 28px; border-radius: 999px; font-family: var(--font-sans); font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer; border: 2px solid var(--brand-black); transition: background .15s ease, transform .15s ease, border-color .15s ease; }
+html[lang="en"] .ev-btn--solid { background: var(--brand-black); color: #fff; }
+html[lang="en"] .ev-btn--solid:hover { background: #1f2a30; border-color: #1f2a30; color: #fff; transform: translateY(-1px); }
+html[lang="en"] .ev-btn--outline { background: transparent; color: var(--brand-black); }
+html[lang="en"] .ev-btn--outline:hover { background: rgba(2,11,16,.08); transform: translateY(-1px); }
+html[lang="en"] .ev-btn--wa { background: #fff; color: var(--brand-black); border-color: rgba(2,11,16,.25); }
+html[lang="en"] .ev-btn--wa:hover { border-color: var(--brand-black); transform: translateY(-1px); }
+html[lang="en"] .ev-btn--wa svg { color: #25D366; }
+html[lang="en"] .ev-btn:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+html[lang="en"] .ev-hero .ev-btn--solid:focus-visible { outline-color: #fff; }
+html[lang="en"] .ev-trust { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 16px; padding: 0; font-size: 14px; font-weight: 600; color: rgba(2,11,16,.78); }
+html[lang="en"] .ev-trust li { display: flex; align-items: center; gap: 7px; }
+html[lang="en"] .ev-trust svg { flex-shrink: 0; color: var(--brand-black); }
+html[lang="en"] .ev-note { font-size: 14px; font-weight: 600; color: rgba(2,11,16,.75); margin: 0; }
+html[lang="en"] .ev-note b { color: var(--brand-black); }
+html[lang="en"] .ev-hero__media { position: relative; margin: 0; min-height: 100%; container-type: size; background: linear-gradient(180deg,#a2a3a4,#afafaf); }
+html[lang="en"] .ev-hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; max-width: none; }
+html[lang="en"] .ev-hero__media figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 7px 14px; font-size: 12.5px; font-weight: 600; color: #fff; background: rgba(2,11,16,.86); }
+@container (aspect-ratio < 0.99) { html[lang="en"] .ev-hero__media img { object-fit: contain; } }
+
+/* Compact hub variant (no photo) */
+html[lang="en"] .ev-hero--hub .ev-hero__inner { min-height: 0; display: block; }
+html[lang="en"] .ev-hero--hub .ev-hero__copy { max-width: var(--max); margin: 0 auto; padding: clamp(40px,5vw,64px) var(--pad-x); }
+
+/* ── Status banner (planned / under review) ── */
+html[lang="en"] .ev-status { background: #fff; border-bottom: 1px solid rgba(2,11,16,.1); }
+html[lang="en"] .ev-status__in { display: flex; gap: 14px; align-items: flex-start; padding: 18px 0; }
+html[lang="en"] .ev-status__dot { flex-shrink: 0; width: 10px; height: 10px; margin-top: 7px; border-radius: 50%; background: var(--brand-ink); }
+html[lang="en"] .ev-status__in p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(2,11,16,.78); }
+html[lang="en"] .ev-status__in strong { color: var(--brand-black); }
+
+/* ── USP strip ── */
+html[lang="en"] .ev-usp { background: #fff; border-bottom: 1px solid rgba(2,11,16,.1); padding: 40px 0; }
+html[lang="en"] .ev-usp__grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+html[lang="en"] .ev-usp__card { display: flex; gap: 14px; align-items: flex-start; }
+html[lang="en"] .ev-usp__icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--brand-tint); display: grid; place-items: center; color: var(--brand-black); }
+html[lang="en"] .ev-usp__title { font-size: 15.5px; font-weight: 800; color: var(--brand-black); margin: 2px 0 3px; }
+html[lang="en"] .ev-usp__sub { font-size: 14px; line-height: 1.5; color: rgba(2,11,16,.68); margin: 0; }
+
+/* ── Section chrome ── */
+html[lang="en"] .ev-section { padding: clamp(52px,7vh,88px) 0; }
+html[lang="en"] .ev-section--tint { background: var(--brand-surface); }
+html[lang="en"] .ev-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--brand-ink); margin: 0 0 14px; }
+html[lang="en"] .ev-label::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: var(--brand); }
+html[lang="en"] .ev-h2 { font-size: clamp(28px,3.2vw,42px); line-height: 1.08; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 0 0 14px; max-width: 18em; }
+html[lang="en"] .ev-h2 em { font-style: italic; font-family: 'Nunito', sans-serif; color: var(--brand-ink); }
+html[lang="en"] .ev-sub { font-size: 17px; line-height: 1.6; color: rgba(2,11,16,.72); margin: 0 0 28px; max-width: 60ch; }
+html[lang="en"] .ev-sub a, html[lang="en"] .ev-prose a:not(.ev-btn) { color: var(--brand-black); font-weight: 600; text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+html[lang="en"] .ev-sub a:hover, html[lang="en"] .ev-prose a:not(.ev-btn):hover { background: var(--brand-tint); }
+
+/* ── Card grids ── */
+html[lang="en"] .ev-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+html[lang="en"] .ev-grid--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+html[lang="en"] .ev-grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+html[lang="en"] .ev-card { display: block; background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 24px; color: var(--brand-black); text-decoration: none; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+html[lang="en"] a.ev-card:hover { border-color: rgba(2,11,16,.3); box-shadow: 0 12px 28px rgba(2,11,16,.07); transform: translateY(-2px); }
+html[lang="en"] a.ev-card:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: 3px; }
+html[lang="en"] .ev-card h3 { font-size: 18px; font-weight: 800; letter-spacing: -.01em; color: var(--brand-black); margin: 0 0 6px; }
+html[lang="en"] .ev-card p { font-size: 15px; line-height: 1.55; color: rgba(2,11,16,.7); margin: 0; }
+html[lang="en"] .ev-card--media { padding: 0; overflow: hidden; }
+html[lang="en"] .ev-card--media img { display: block; width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid rgba(2,11,16,.08); }
+html[lang="en"] .ev-card--media .ev-card__body { padding: 20px 22px 22px; }
+html[lang="en"] .ev-card__meta { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(2,11,16,.6); margin: 0 0 6px; }
+html[lang="en"] .ev-card__arrow { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--brand-black); }
+html[lang="en"] .ev-badge { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; background: var(--brand-tint); color: var(--brand-ink); margin-left: 8px; vertical-align: middle; }
+html[lang="en"] .ev-badge--neutral { background: var(--brand-surface); color: rgba(2,11,16,.7); }
+
+/* ── NAP / info panel ── */
+html[lang="en"] .ev-split { display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 48px; align-items: start; }
+html[lang="en"] .ev-panel { background: var(--brand-tint); border: 1px solid rgba(2,11,16,.1); border-radius: 20px; padding: 26px; position: sticky; top: 84px; }
+html[lang="en"] .ev-panel h3 { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(2,11,16,.6); margin: 0 0 10px; }
+html[lang="en"] .ev-panel h3 + * { margin-top: 0; }
+html[lang="en"] .ev-panel p, html[lang="en"] .ev-panel li { font-size: 15px; line-height: 1.6; color: var(--brand-black); margin: 0 0 8px; }
+html[lang="en"] .ev-panel ul { list-style: none; padding: 0; margin: 0 0 18px; }
+html[lang="en"] .ev-panel li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(2,11,16,.08); padding: 5px 0; }
+html[lang="en"] .ev-panel li span:last-child { font-weight: 600; white-space: nowrap; }
+html[lang="en"] .ev-panel a:not(.ev-btn) { color: var(--brand-black); font-weight: 600; text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+html[lang="en"] .ev-panel .ev-btn { width: 100%; margin-top: 6px; }
+html[lang="en"] .ev-panel hr { border: 0; border-top: 1px solid rgba(2,11,16,.1); margin: 18px 0; }
+html[lang="en"] .ev-prose p { font-size: 17px; line-height: 1.7; color: rgba(2,11,16,.74); margin: 0 0 16px; max-width: 64ch; }
+html[lang="en"] .ev-prose h2 { font-size: clamp(24px,2.4vw,30px); line-height: 1.15; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 0 0 14px; }
+html[lang="en"] .ev-prose h2 + p { margin-top: 0; }
+html[lang="en"] .ev-prose h3 { font-size: 19px; font-weight: 800; color: var(--brand-black); margin: 26px 0 8px; }
+html[lang="en"] .ev-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+html[lang="en"] .ev-chips li { font-size: 13.5px; font-weight: 600; padding: 7px 12px; border: 1px solid rgba(2,11,16,.14); border-radius: 999px; background: #fff; color: rgba(2,11,16,.8); }
+
+/* ── Steps (how it works) ── */
+html[lang="en"] .ev-steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+html[lang="en"] .ev-steps li { background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 22px; }
+html[lang="en"] .ev-steps li::before { counter-increment: step; content: counter(step, decimal-leading-zero); display: block; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: var(--brand-ink); margin-bottom: 10px; }
+html[lang="en"] .ev-steps h3 { font-size: 17px; font-weight: 800; margin: 0 0 6px; color: var(--brand-black); }
+html[lang="en"] .ev-steps p { font-size: 14.5px; line-height: 1.55; color: rgba(2,11,16,.7); margin: 0; }
+
+/* ── FAQ (native details) ── */
+html[lang="en"] .ev-faq details { border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 4px 20px; margin: 0 0 10px; background: #fff; transition: border-color .15s ease; }
+html[lang="en"] .ev-faq details:hover, html[lang="en"] .ev-faq details[open] { border-color: rgba(2,11,16,.3); }
+html[lang="en"] .ev-faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; font-size: 16.5px; font-weight: 700; color: var(--brand-black); }
+html[lang="en"] .ev-faq summary::-webkit-details-marker { display: none; }
+html[lang="en"] .ev-faq summary::after { content: '+'; font-size: 22px; font-weight: 400; color: var(--brand-ink); flex-shrink: 0; }
+html[lang="en"] .ev-faq details[open] summary::after { content: '−'; }
+html[lang="en"] .ev-faq summary:focus-visible { outline: 3px solid rgba(2,11,16,.55); outline-offset: -3px; border-radius: 12px; }
+html[lang="en"] .ev-faq p { font-size: 15.5px; line-height: 1.65; color: rgba(2,11,16,.72); margin: 0 0 16px; }
+
+/* ── CTA band (Mint surface, Rich Black text) ── */
+html[lang="en"] .ev-cta { background: var(--brand); color: var(--brand-black); padding: clamp(48px,7vh,80px) 0; border-top: 1px solid rgba(2,11,16,.12); }
+html[lang="en"] .ev-cta__in { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 28px; align-items: center; }
+html[lang="en"] .ev-cta h2 { font-size: clamp(26px,3vw,40px); line-height: 1.08; letter-spacing: var(--tracking-heading); margin: 0 0 8px; color: var(--brand-black); }
+html[lang="en"] .ev-cta p { font-size: 16.5px; line-height: 1.55; color: rgba(2,11,16,.8); margin: 0; max-width: 56ch; }
+html[lang="en"] .ev-cta .ev-ctas { margin: 0; }
+
+/* ── Appointment form (shared DE/EN endpoint, EN labels) ── */
+html[lang="en"] .ev-form { background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 20px; padding: 32px; max-width: 760px; }
+html[lang="en"] .ev-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+html[lang="en"] .ev-field { display: flex; flex-direction: column; gap: 6px; margin: 0 0 16px; }
+html[lang="en"] .ev-field label { font-size: 13.5px; font-weight: 700; color: var(--brand-black); }
+html[lang="en"] .ev-field input, html[lang="en"] .ev-field select, html[lang="en"] .ev-field textarea { font: inherit; font-size: 16px; color: var(--brand-black); background: #fff; border: 1px solid rgba(2,11,16,.18); border-radius: 12px; padding: 12px 14px; width: 100%; }
+html[lang="en"] .ev-field textarea { min-height: 120px; resize: vertical; }
+html[lang="en"] .ev-field input:focus, html[lang="en"] .ev-field select:focus, html[lang="en"] .ev-field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+html[lang="en"] .ev-req { color: var(--brand-ink); }
+html[lang="en"] .ev-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+html[lang="en"] .ev-form__status { margin-top: 14px; padding: 12px 14px; border-radius: 12px; font-size: 15px; }
+html[lang="en"] .ev-form__status[data-state="success"] { background: var(--brand-tint); color: var(--brand-ink); border: 1px solid rgba(11,122,76,.3); }
+html[lang="en"] .ev-form__status[data-state="error"] { background: #fff1f1; color: #8a1c1c; border: 1px solid rgba(185,28,28,.3); }
+html[lang="en"] .ev-form__fine { font-size: 13px; color: rgba(2,11,16,.62); margin: 14px 0 0; }
+html[lang="en"] .ev-form__fine a { color: var(--brand-black); font-weight: 600; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  html[lang="en"] .ev-grid--4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  html[lang="en"] .ev-steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  html[lang="en"] .ev-split { grid-template-columns: 1fr; }
+  html[lang="en"] .ev-panel { position: static; }
+}
+@media (max-width: 900px) {
+  html[lang="en"] .ev-hero__inner, html[lang="en"] .ev-hero--home .ev-hero__inner { grid-template-columns: 1fr; min-height: 0; }
+  html[lang="en"] .ev-hero__media { min-height: 0; height: 300px; container-type: normal; }
+  html[lang="en"] .ev-hero__copy, html[lang="en"] .ev-hero--home .ev-hero__copy { padding: 32px 16px 26px; max-width: none; margin: 0; }
+  html[lang="en"] .ev-hero--hub .ev-hero__copy { padding: 36px 16px 30px; }
+  html[lang="en"] .ev-grid, html[lang="en"] .ev-usp__grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  html[lang="en"] .ev-cta__in { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  html[lang="en"] .ev-grid, html[lang="en"] .ev-grid--4, html[lang="en"] .ev-grid--2, html[lang="en"] .ev-usp__grid, html[lang="en"] .ev-steps, html[lang="en"] .ev-form__row { grid-template-columns: 1fr; }
+  html[lang="en"] .ev-ctas .ev-btn { width: 100%; }
+  html[lang="en"] .ev-trust { flex-direction: column; gap: 10px; }
+  html[lang="en"] .ev-hero__media { height: 240px; }
+  html[lang="en"] .ev-form { padding: 22px 18px; border-radius: 16px; }
+  html[lang="en"] .ev-panel { padding: 20px; }
+  html[lang="en"] .ev-section { padding: 44px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[lang="en"] :is(.ev-btn, .ev-card, .ev-faq details) { transition: none; }
+  html[lang="en"] :is(.ev-btn:hover, a.ev-card:hover) { transform: none; }
+}

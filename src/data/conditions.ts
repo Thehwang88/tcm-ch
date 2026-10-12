@@ -30,7 +30,7 @@ export const REVIEWED_DATE = '2026-06-09';
 // Shared FAQ appended to every condition page (display + FAQPage schema).
 export const INSURANCE_FAQ: ConditionFaq = {
   q: 'Is acupuncture covered by my insurance?',
-  a: 'Treatment by our EMR-/ASCA-recognised practitioners is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much you get back depends on your individual policy. Our insurance guide explains the basic-versus-supplementary split in plain English.',
+  a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. How much you get back depends on your individual policy; we tell you the treating practitioner\'s recognition (EMR/ASCA) before your first appointment. Our insurance guide explains the basic-versus-supplementary split in plain English.',
 };
 
 export const conditions: Condition[] = [

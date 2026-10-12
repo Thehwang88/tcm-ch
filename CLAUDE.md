@@ -74,6 +74,13 @@
 - Do NOT queue: `noindex` pages, and pages that canonicalise elsewhere (currently /haut/rosacea/ → /beschwerden/rosacea/).
 - Internal links matter more than the queue: a new page needs links from pages Google crawls daily (Standorte, Beschwerden-Leaves) or it stays "Gefunden – nicht indexiert". See `src/data/haut-links.ts` for the pattern.
 
+## EN / Bilingual (DE ⇄ EN)
+- German is authoritative. Registry `src/data/i18n/registry.ts` (status, DE sources, images, links); workflow + gate in `docs/i18n.md`.
+- EN routes stay `/en/…`; pairs via `src/data/site.ts` PAIR_MAP. EN V2 shell: `src/styles/en-v2.css` + `src/components/en/*`, approved tokens only.
+- After build: `node scripts/check-i18n.mjs` (hreflang/canonical/sitemap/German-chrome/Outdated). `--update` only in the commit that publishes reviewed EN copy.
+- EN analytics contract: `node scripts/test-en-analytics.mjs` after build (booking/phone/WhatsApp clicks, form stages, no PII).
+- No EN facts outside `locations.ts`/`standorte.ts`; no auto-publish (statuses Missing → Draft → Needs clinical review → Approved → Published).
+
 ## Professional / B2B Layer
 - Architecture: `seo/professional-architecture.md`; topic registry `seo/professional-topic-map.csv`; code `src/data/pro/`.
 - Planned topics are NEVER built without approval. Noindex scaffolds (/jobs/, /verzeichnis/, /weiterbildungen/, /marktplatz/, /community/) hold no entries.

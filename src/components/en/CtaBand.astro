@@ -1,0 +1,17 @@
+---
+// Mint CTA band (Rich Black text), mirrors DE CtaBand/FinalCta. Links only; no availability claims.
+interface Props { title?: string; text?: string; primary?: { href: string; label: string }; secondary?: { href: string; label: string; external?: boolean } }
+const {
+  title = 'Request an appointment',
+  text = 'Tell us briefly what is going on and where you would like to be seen. We reply personally in English or German.',
+  primary = { href: '/en/contact/', label: 'Request an appointment' },
+  secondary,
+} = Astro.props;
+---
+<section class="ev-cta"><div class="wrap"><div class="ev-cta__in">
+  <div><h2>{title}</h2><p>{text}</p></div>
+  <div class="ev-ctas">
+    <a class="ev-btn ev-btn--solid" href={primary.href}>{primary.label}</a>
+    {secondary && <a class="ev-btn ev-btn--outline" href={secondary.href} target={secondary.external ? '_blank' : undefined} rel={secondary.external ? 'noopener' : undefined}>{secondary.label}</a>}
+  </div>
+</div></div></section>

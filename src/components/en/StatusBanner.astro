@@ -1,0 +1,21 @@
+---
+// Pre-opening / under-review banner. Copy derives from clinic.status + openingNote only (no invented dates).
+import type { Clinic } from '../../data/locations';
+const { clinic } = Astro.props as { clinic: Clinic };
+const review = clinic.status === 'review';
+const inPrep = clinic.openingNote === 'In preparation' || !clinic.openingNote;
+const partnerNow = clinic.vorab?.find((v) => /partner/i.test(v.value));
+---
+{clinic.status !== 'operational' && (
+  <div class="ev-status"><div class="wrap"><div class="ev-status__in">
+    <span class="ev-status__dot" aria-hidden="true"></span>
+    <p>
+      {review ? (
+        <><strong>Status under review.</strong> This address is not confirmed as an operating clinic. Send us your request and we suggest an available TCM.ch practice nearby.</>
+      ) : (
+        <><strong>{inPrep ? 'Location in preparation.' : `${clinic.openingNote}.`}</strong> Not open yet, so no appointments at this address for now.
+          {partnerNow ? <> Appointments are already possible at the partner practice in the area; choose it in the form below.</> : <> Register your interest below and we contact you once appointments are possible.</>}</>
+      )}
+    </p>
+  </div></div></div>
+)}

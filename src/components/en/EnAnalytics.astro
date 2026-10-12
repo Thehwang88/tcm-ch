@@ -1,0 +1,42 @@
+---
+// EN conversion-event layer (GTM-PZ92Q3KJ dataLayer, same container as DE). Rendered once by Layout.astro.
+// Events carry lang:'en' + page_path (+ location = clinic id on location pages) so EN acquisition can be
+// reported separately from DE. Funnel stages:
+//   cta_click            intent click, never a submission: cta_type booking | phone | whatsapp.
+//                        booking = a link to an EN appointment form (same-page anchor whose target contains a
+//                        form with a location select, e.g. #appointment, #zh-funnel) or to /en/contact.
+//   form_submit          submit attempt (stage inquiry_attempt; mirrors the DE TerminForm event)
+//   form_submit_success  /api/anfrage answered HTTP ok + {ok:true} (stage inquiry_received). Qualified lead and
+//                        booked patient are decided by the team after contact and are NOT client-side events.
+//   form_submit_error    server or network failure (reason only).
+// No PII: only static link labels, clinic ids and page paths are sent. One push per click (capture phase,
+// first anchor only). Consent is handled by CookieYes before GTM fires tags.
+---
+<script is:inline>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    var path = location.pathname;
+    var pageLoc = document.body.getAttribute('data-location') || '';
+    function push(ev) { ev.lang = 'en'; ev.page_path = path; if (ev.location === undefined) ev.location = pageLoc; window.dataLayer.push(ev); }
+    function isBookingTarget(href) {
+      if (href.indexOf('/en/contact') === 0) return true;
+      if (href.charAt(0) !== '#' || href.length < 2) return false;
+      var t = document.getElementById(href.slice(1));
+      if (!t) return false;
+      return !!(t.matches && t.matches('form') ? t.querySelector('[name="standort"]') : t.querySelector('form [name="standort"]'));
+    }
+    document.addEventListener('click', function (e) {
+      if (e.evTracked) return;
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      e.evTracked = true;
+      var href = a.getAttribute('href') || '';
+      var loc = a.getAttribute('data-location') || (document.body.getAttribute('data-location') || '');
+      var label = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      if (href.indexOf('tel:') === 0) push({ event: 'cta_click', cta_type: 'phone', location: loc, label: label });
+      else if (href.indexOf('wa.me') !== -1) push({ event: 'cta_click', cta_type: 'whatsapp', location: loc, label: label });
+      else if (isBookingTarget(href)) push({ event: 'cta_click', cta_type: 'booking', cta_target: href.indexOf('#') === 0 ? href : '/en/contact/', location: loc, label: label });
+    }, true);
+    document.addEventListener('en-form', function (e) { push(e.detail); });
+  })();
+</script>
