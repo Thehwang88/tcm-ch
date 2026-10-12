@@ -2,6 +2,11 @@
   "page:home": {
     "src/data/home-body.html": "5f6899bbbf35d3af"
   },
+  "page:zurich": {
+    "src/pages/akupunktur-tcm-zuerich.astro": "2a761189579fc3b4",
+    "src/data/akupunktur-tcm-zuerich-body.html": "fedd4c5dc0736dd0",
+    "src/data/zuerich-termin.ts": "e39ce4e4ed809871"
+  },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
     "src/data/locations.ts": "c5b19a77624b2fcc"

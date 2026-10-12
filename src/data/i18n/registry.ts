@@ -8,29 +8,33 @@
 //   id            content identity ("location:basel", "therapy:acupuncture", "page:home")
 //   type/intent   page family + search intent
 //   de / en       canonical URL paths (slash form). de === null → EN-only page (self x-default)
-//   status        translation workflow status of the EN copy currently in the repo
+//   editorial     translation workflow status of the EN copy in the repo (people decide this)
+//   publication   deployment state of the EN URL on production (release commits flip this)
 //   sources       DE master sources (files / data keys) hashed by scripts/check-i18n.mjs;
-//                 a changed German source flips the EN entry to "Outdated" in --check mode
+//                 a changed German source flips the entry to "Outdated" in --check mode
 //   images        shared image refs reused from the DE page (no EN-only imagery)
 //   links         related EN entries (navigation/cross-link relationships)
-//   hreflang      eligible for reciprocal hreflang (needs a DE twin + Published/Approved copy)
-//   sitemap       eligible for the sitemap (Published only; Draft/Review never auto-publish)
 //
-// Workflow (docs/i18n.md): Missing → Draft → Needs clinical review → Approved → Published.
-// "Outdated" is computed, never hand-set. Nothing auto-publishes: a status change is a commit.
+// Two axes, deliberately separate:
+//   editorial:   Missing → Draft → Needs clinical review → Approved        (+ computed: Outdated)
+//   publication: Unpublished | Published                                   (= live on main / tcm.ch)
+// Gate semantics (scripts/check-i18n.mjs):
+//   - built in dist           ⇔ editorial ≠ Missing
+//   - Draft / Needs review in dist → WARN (never on main; --strict fails)
+//   - hreflang reciprocal      ⇔ de !== null && editorial === 'Approved'
+//   - sitemap                  ⇔ editorial === 'Approved'
+//   - publication 'Published' with editorial ≠ 'Approved' → FAIL (live page without approved copy)
+// Nothing auto-publishes: a status change is a reviewed commit.
 
 import { clinics, deStandortPath, enLocationPath, locationImages } from '../locations';
 import { therapies, deTherapyPath, enTherapyPath, therapyImages } from '../therapies';
 import { conditions, deConditionPath, enConditionPath } from '../conditions';
 import { standorte } from '../standorte';
 
-export type TranslationStatus =
-  | 'Missing'
-  | 'Draft'
-  | 'Needs clinical review'
-  | 'Approved'
-  | 'Published'
-  | 'Outdated';
+export type EditorialStatus = 'Missing' | 'Draft' | 'Needs clinical review' | 'Approved';
+export type PublicationStatus = 'Unpublished' | 'Published';
+/** Legacy union kept for callers/docs; "Outdated" is only ever computed by the gate. */
+export type TranslationStatus = EditorialStatus | PublicationStatus | 'Outdated';
 
 export type PageType =
   | 'home' | 'hub' | 'location' | 'therapy' | 'condition' | 'knowledge'
@@ -44,7 +48,8 @@ export interface LocalizationEntry {
   intent: Intent;
   de: string | null;
   en: string;
-  status: TranslationStatus;
+  editorial: EditorialStatus;
+  publication: PublicationStatus;
   /** DE master sources: "path" (whole file) or "path#key" (named export entry, bundled by the gate). */
   sources: string[];
   images: string[];
@@ -57,62 +62,64 @@ export interface LocalizationEntry {
 
 const slash = (p: string) => (p.endsWith('/') ? p : p + '/');
 
-// ── Status overrides. Default for every registered route is 'Published' (all 51 EN routes
-// are live and indexed). Wave 1 (EN V2) rewrote the pages below; they ship as 'Approved'
-// pending the merge GO, which is the publication step. Flip to 'Published' in the release commit.
-const WAVE1_STATUS: TranslationStatus = 'Approved';
-const STATUS_OVERRIDES: Record<string, TranslationStatus> = {
-  'page:home': WAVE1_STATUS,
-  'hub:locations': WAVE1_STATUS,
-  'hub:therapies': WAVE1_STATUS,
-  'page:contact': WAVE1_STATUS,
-  'page:insurance': WAVE1_STATUS,
-  ...Object.fromEntries(clinics.map((c) => [`location:${c.id}`, WAVE1_STATUS])),
-  ...Object.fromEntries(therapies.map((t) => [`therapy:${t.slug}`, WAVE1_STATUS])),
+// ── Editorial overrides. Every EN route that is live today is 'Approved' + 'Published' (it was
+// reviewed before it went live). Wave 1 (EN V2) rewrote 30 pages and added the Zürich funnel: their
+// copy is 'Approved' (editorial review done on this branch); publication stays as it is on
+// production until the release commit flips the new page to 'Published'.
+const EDITORIAL: Record<string, EditorialStatus> = {};
+const PUBLICATION: Record<string, PublicationStatus> = {
+  'page:zurich': 'Unpublished', // new in Wave 1; flip to Published in the release commit
 };
-
-const status = (id: string): TranslationStatus => STATUS_OVERRIDES[id] ?? 'Published';
+const editorial = (id: string): EditorialStatus => EDITORIAL[id] ?? 'Approved';
+const publication = (id: string): PublicationStatus => PUBLICATION[id] ?? 'Published';
+const st = (id: string) => ({ editorial: editorial(id), publication: publication(id) });
 
 const staticEntries: LocalizationEntry[] = [
   {
     id: 'page:home', type: 'home', intent: 'conversion', de: '/', en: '/en/',
-    status: status('page:home'), sources: ['src/data/home-body.html'],
-    images: ['/images/team-hero.jpg'], links: { related: ['hub:locations', 'hub:therapies', 'hub:conditions', 'page:insurance'] },
+    ...st('page:home'), sources: ['src/data/home-body.html'],
+    images: ['/images/team-hero.jpg'], links: { related: ['hub:locations', 'hub:therapies', 'hub:conditions', 'page:insurance', 'page:zurich'] },
     clinical: false, note: 'Wave 1: mirrors the DE Softriver split hero (Mint + team photo).',
   },
   {
+    id: 'page:zurich', type: 'hub', intent: 'conversion', de: '/akupunktur-tcm-zuerich/', en: '/en/acupuncture-zurich/',
+    ...st('page:zurich'), sources: ['src/pages/akupunktur-tcm-zuerich.astro', 'src/data/akupunktur-tcm-zuerich-body.html', 'src/data/zuerich-termin.ts'],
+    images: ['/images/tcm-ch-crew-zuerich-west-1254.webp'], links: { parent: 'hub:locations', related: ['location:zuerich-hoengg', 'location:zuerich-oerlikon', 'page:contact'] },
+    clinical: false, note: 'Citywide Zürich funnel (hub & spoke), counterpart of /akupunktur-tcm-zuerich/. No clinic entity, no address.',
+  },
+  {
     id: 'hub:locations', type: 'hub', intent: 'navigation', de: '/standorte/', en: '/en/locations/',
-    status: status('hub:locations'), sources: ['src/pages/standorte/index.astro', 'src/data/locations.ts'],
+    ...st('hub:locations'), sources: ['src/pages/standorte/index.astro', 'src/data/locations.ts'],
     images: Object.values(locationImages).map((i) => i.src), links: { parent: 'page:home' }, clinical: false,
   },
   {
     id: 'hub:therapies', type: 'hub', intent: 'navigation', de: '/therapien/', en: '/en/therapies/',
-    status: status('hub:therapies'), sources: ['src/pages/therapien/index.astro'],
+    ...st('hub:therapies'), sources: ['src/pages/therapien/index.astro'],
     images: Object.values(therapyImages).map((i) => i.src), links: { parent: 'page:home' }, clinical: false,
   },
   {
     id: 'hub:conditions', type: 'hub', intent: 'navigation', de: '/beschwerden/', en: '/en/conditions/',
-    status: status('hub:conditions'), sources: ['src/pages/beschwerden/index.astro'],
+    ...st('hub:conditions'), sources: ['src/pages/beschwerden/index.astro'],
     images: [], links: { parent: 'page:home' }, clinical: false,
   },
   {
     id: 'hub:knowledge', type: 'hub', intent: 'informational', de: null, en: '/en/knowledge/',
-    status: status('hub:knowledge'), sources: [], images: [], links: { parent: 'page:home' }, clinical: false,
+    ...st('hub:knowledge'), sources: [], images: [], links: { parent: 'page:home' }, clinical: false,
     note: 'EN-only hub: the DE /wissen/ library is a different editorial product (no 1:1 twin).',
   },
   {
     id: 'page:contact', type: 'contact', intent: 'transactional', de: '/kontakt/', en: '/en/contact/',
-    status: status('page:contact'), sources: ['src/pages/kontakt.astro', 'src/data/standort-optionen.ts', 'src/data/locations.ts'],
+    ...st('page:contact'), sources: ['src/pages/kontakt.astro', 'src/data/standort-optionen.ts', 'src/data/locations.ts'],
     images: [], links: { parent: 'page:home', related: ['hub:locations'] }, clinical: false,
   },
   {
     id: 'page:insurance', type: 'insurance', intent: 'informational', de: '/krankenkassen/', en: '/en/health-insurance-acupuncture/',
-    status: status('page:insurance'), sources: ['src/pages/krankenkassen/index.astro'],
+    ...st('page:insurance'), sources: ['src/pages/krankenkassen/index.astro'],
     images: ['/images/krankenkasse-hero.png'], links: { parent: 'page:home' }, clinical: false,
   },
   {
     id: 'page:near-me', type: 'near-me', intent: 'navigation', de: '/akupunktur-in-der-naehe/', en: '/en/acupuncture-near-me/',
-    status: status('page:near-me'), sources: ['src/pages/akupunktur-in-der-naehe.astro', 'src/data/locations.ts'],
+    ...st('page:near-me'), sources: ['src/pages/akupunktur-in-der-naehe.astro', 'src/data/locations.ts'],
     images: [], links: { parent: 'hub:locations' }, clinical: false,
   },
 ];
@@ -122,10 +129,10 @@ const locationEntries: LocalizationEntry[] = clinics.map((c) => {
   return {
     id: `location:${c.id}`, type: 'location', intent: 'conversion',
     de: slash(deStandortPath(c.id)), en: enLocationPath(c.id),
-    status: status(`location:${c.id}`),
+    ...st(`location:${c.id}`),
     sources: [`src/data/locations.ts#clinics.${c.id}`, ...(de ? [`src/data/standorte.ts#standorte.${c.id}`] : [])],
     images: [de?.hero.image ?? locationImages[c.id]?.src].filter(Boolean) as string[],
-    links: { parent: 'hub:locations', related: ['page:contact', 'page:insurance'] },
+    links: { parent: 'hub:locations', related: ['page:contact', 'page:insurance', ...(c.city === 'Zürich' ? ['page:zurich'] : [])] },
     clinical: false,
     note: de ? undefined : 'DE page is a captured leaf (no standorte.ts entry): EN uses clinic data + shared imagery only.',
   };
@@ -134,7 +141,7 @@ const locationEntries: LocalizationEntry[] = clinics.map((c) => {
 const therapyEntries: LocalizationEntry[] = therapies.map((t) => ({
   id: `therapy:${t.slug}`, type: 'therapy', intent: 'informational',
   de: slash(deTherapyPath(t.deSlug)), en: enTherapyPath(t.slug),
-  status: status(`therapy:${t.slug}`),
+  ...st(`therapy:${t.slug}`),
   sources: [`src/data/therapie-leaves/${t.deSlug}.html`],
   images: [therapyImages[t.slug]?.src].filter(Boolean) as string[],
   links: { parent: 'hub:therapies', related: t.related.map((r) => `therapy:${r}`) },
@@ -144,7 +151,7 @@ const therapyEntries: LocalizationEntry[] = therapies.map((t) => ({
 const conditionEntries: LocalizationEntry[] = conditions.map((c) => ({
   id: `condition:${c.slug}`, type: 'condition', intent: 'informational',
   de: slash(deConditionPath(c.deSlug)), en: enConditionPath(c.slug),
-  status: status(`condition:${c.slug}`),
+  ...st(`condition:${c.slug}`),
   sources: [`src/data/symptom-leaves/${c.deSlug}.html`],
   images: [],
   links: { parent: 'hub:conditions', related: c.related.map((r) => `condition:${r}`) },
@@ -166,7 +173,7 @@ export const KNOWLEDGE_SLUGS = [
 ];
 const knowledgeEntries: LocalizationEntry[] = KNOWLEDGE_SLUGS.map((s) => ({
   id: `knowledge:${s}`, type: 'knowledge', intent: 'informational', de: null, en: `/en/knowledge/${s}/`,
-  status: status(`knowledge:${s}`), sources: [], images: [], links: { parent: 'hub:knowledge' }, clinical: true,
+  ...st(`knowledge:${s}`), sources: [], images: [], links: { parent: 'hub:knowledge' }, clinical: true,
 }));
 
 export const REGISTRY: LocalizationEntry[] = [
@@ -177,12 +184,21 @@ export const byId = (id: string) => REGISTRY.find((e) => e.id === id);
 export const byEn = (en: string) => REGISTRY.find((e) => e.en === slash(en));
 export const byDe = (de: string) => REGISTRY.find((e) => e.de === slash(de));
 
-/** Reciprocal hreflang eligibility: DE twin exists and the EN copy is at least Approved. */
-export const hreflangEligible = (e: LocalizationEntry) =>
-  e.de !== null && (e.status === 'Published' || e.status === 'Approved');
+/** Reciprocal hreflang eligibility: DE twin exists and the EN copy is editorially approved. */
+export const hreflangEligible = (e: LocalizationEntry) => e.de !== null && e.editorial === 'Approved';
+/** Sitemap eligibility: approved copy only (Draft / Needs review never reach the sitemap). */
+export const sitemapEligible = (e: LocalizationEntry) => e.editorial === 'Approved';
+/** Pages that may exist in dist at all. */
+export const buildable = (e: LocalizationEntry) => e.editorial !== 'Missing';
 
-/** Sitemap eligibility: Published only (Approved = awaiting release GO; the release commit flips it). */
-export const sitemapEligible = (e: LocalizationEntry) => e.status === 'Published' || e.status === 'Approved';
+/** Registry totals, for docs/reports and the gate summary. */
+export const counts = () => ({
+  entries: REGISTRY.length,
+  pairs: REGISTRY.filter((e) => e.de !== null).length,
+  enOnly: REGISTRY.filter((e) => e.de === null).length,
+  published: REGISTRY.filter((e) => e.publication === 'Published').length,
+  unpublished: REGISTRY.filter((e) => e.publication === 'Unpublished').length,
+});
 
 // Route ownership: one owner per EN path and per DE path. Throws at build time on duplicates.
 (() => {

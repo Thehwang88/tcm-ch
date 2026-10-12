@@ -3,7 +3,8 @@
 // Events carry lang:'en' + page_path so EN acquisition can be reported separately from DE.
 //   cta_click            booking CTA (form anchor / contact page), tel: or wa.me click  → click, not a booking
 //   form_submit          submit attempt (mirrors DE TerminForm: GTM form-submit trigger)
-//   form_submit_success  server accepted the request (= qualified inquiry; a booking is confirmed off-site)
+//   form_submit_success  /api/anfrage answered ok:true (= inquiry received). Qualified lead and booked patient are
+//                        decided by the team after contact and are NOT client-side events (see docs/i18n.md §5).
 // No PII in events. Consent is handled by CookieYes before GTM fires tags.
 ---
 <script is:inline>

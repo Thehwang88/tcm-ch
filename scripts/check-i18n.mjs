@@ -7,7 +7,8 @@
 //
 // Checks (FAIL = exit 1):
 //   R1 route ownership: every built /en/ route is owned by exactly one registry entry (404 excluded)
-//   R2 status: 'Missing' entries must not be built; Draft / Needs clinical review are warned (never on main)
+//   R2 status: editorial 'Missing' must not be built; Draft / Needs clinical review are warned (FAIL with --strict,
+//      never on main); publication 'Published' requires editorial 'Approved'
 //   S1 <html lang="en">, exactly one <h1>, non-empty unique <title> + meta description
 //   S2 canonical = self (slash form, https://tcm.ch)
 //   S3 hreflang: en = self; DE twin → de-CH = DE URL, x-default = DE URL, and the DE page links back
@@ -43,7 +44,7 @@ writeFileSync(entry, [
 const bundle = join(outDir, 'bundle.mjs');
 execFileSync(join(ROOT, 'node_modules/.bin/esbuild'), [entry, '--bundle', '--format=esm', '--platform=node', `--outfile=${bundle}`, '--log-level=error']);
 const mod = await import(pathToFileURL(bundle).href + `?t=${Date.now()}`);
-const { REGISTRY, hreflangEligible, sitemapEligible } = mod;
+const { REGISTRY, hreflangEligible, sitemapEligible, buildable, counts } = mod;
 
 const fails = [];
 const warns = [];
@@ -131,9 +132,10 @@ const GERMAN_CHROME = /\b(Termin anfragen|Termin finden|Termin vereinbaren|Stand
 for (const e of REGISTRY) {
   const file = join(DIST, e.en, 'index.html');
   const built = existsSync(file);
-  if (e.status === 'Missing') { if (built) fail(`R2 ${e.id} is Missing but built at ${e.en}`); continue; }
-  if (!built) { fail(`R2 ${e.id} (${e.status}) not built: ${e.en}`); continue; }
-  if (e.status === 'Draft' || e.status === 'Needs clinical review') warn(`R2 ${e.id} built with status "${e.status}" - must not reach main`);
+  if (e.publication === 'Published' && e.editorial !== 'Approved') fail(`R2 ${e.id} is Published but editorial status is "${e.editorial}"`);
+  if (!buildable(e)) { if (built) fail(`R2 ${e.id} is editorial Missing but built at ${e.en}`); continue; }
+  if (!built) { fail(`R2 ${e.id} (${e.editorial}/${e.publication}) not built: ${e.en}`); continue; }
+  if (e.editorial === 'Draft' || e.editorial === 'Needs clinical review') (STRICT ? fail : warn)(`R2 ${e.id} built with editorial status "${e.editorial}" - must not reach main`);
 
   const html = readFileSync(file, 'utf8');
   const head = html.slice(0, html.indexOf('</head>'));
@@ -152,7 +154,7 @@ for (const e of REGISTRY) {
   else if (descs.has(desc)) fail(`S1 ${e.en}: duplicate description with ${descs.get(desc)}`);
   else descs.set(desc, e.en);
   const noindex = /<meta\s[^>]*name="robots"[^>]*noindex/.test(head);
-  if (noindex) fail(`S1 ${e.en}: noindex on a registered page (registry says ${e.status})`);
+  if (noindex) fail(`S1 ${e.en}: noindex on a registered page (editorial ${e.editorial})`);
 
   // S2
   const canon = links(head, 'canonical').map((t) => attr(t, 'href'));
@@ -181,7 +183,7 @@ for (const e of REGISTRY) {
   // S4
   const inMap = sitemap.includes(`<loc>${self}</loc>`);
   if (sitemapEligible(e) && !inMap) fail(`S4 ${e.en}: eligible but missing from public/sitemap.xml`);
-  if (!sitemapEligible(e) && inMap) fail(`S4 ${e.en}: status ${e.status} but listed in sitemap`);
+  if (!sitemapEligible(e) && inMap) fail(`S4 ${e.en}: editorial ${e.editorial} but listed in sitemap`);
 
   // S5
   if (!/<script type="application\/ld\+json"/.test(head)) fail(`S5 ${e.en}: no JSON-LD`);
@@ -201,9 +203,9 @@ finish();
 function finish() {
   for (const w of warns) console.log('WARN  ' + w);
   for (const f of fails) console.log('FAIL  ' + f);
-  const n = REGISTRY.length;
-  const byStatus = {};
-  for (const e of REGISTRY) byStatus[e.status] = (byStatus[e.status] || 0) + 1;
-  console.log(`i18n: ${n} entries ${JSON.stringify(byStatus)} · outdated ${outdated.length} · warnings ${warns.length} · failures ${fails.length}`);
+  const c = counts();
+  const ed = {};
+  for (const e of REGISTRY) ed[e.editorial] = (ed[e.editorial] || 0) + 1;
+  console.log(`i18n: ${c.entries} entries (${c.pairs} DE⇄EN pairs, ${c.enOnly} EN-only) · editorial ${JSON.stringify(ed)} · publication published ${c.published} / unpublished ${c.unpublished} · outdated ${outdated.length} · warnings ${warns.length} · failures ${fails.length}`);
   process.exit(fails.length ? 1 : 0);
 }
