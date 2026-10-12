@@ -1,6 +1,6 @@
 {
   "page:home": {
-    "src/data/home-body.html": "5f6899bbbf35d3af"
+    "src/data/home-body.html": "39e51227183e7c72"
   },
   "page:zurich": {
     "src/pages/akupunktur-tcm-zuerich.astro": "2a761189579fc3b4",
