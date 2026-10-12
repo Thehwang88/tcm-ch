@@ -1,5 +1,5 @@
 // Gate: TCM.ch FIRST 30 · Winter Gift Edition 2026 (St. Gallen). Nach `npm run build`: node scripts/check-first30.mjs
-//  1. Kapazität: ohne verifizierte Zahl nur das Maximum; nie gefüllte Segmente, "x von 10 vergeben" oder Restbestand.
+//  1. Kapazität: ohne verifizierte Zahl nur das Maximum (30); nie gefüllte Segmente, behauptete 27/30 oder 28/30 oder Restbestand.
 //  2. Claims: "Once-a-Year" nur nach Freigabe; Countdown nur mit bestätigtem Cutoff; kein Vorschau-Build in Produktion.
 //  3. Formulare: Hero (phone-only) mit kanonischer ID, Tracking-Identifier unverändert; unteres Formular mit Wähler + ID.
 //  4. Scope: FIRST-30-Markup nur auf /standorte/st-gallen/; WhatsApp-Deeplink korrekt (Nummer, Text, Kodierung).
@@ -23,10 +23,11 @@ ok(pv.claims === null && pv.cutoff === false && pv.campaignActive === null && !/
 ok(st.campaign === 'active' && /data-first30="max-only"/.test(sg) && !/hlsg-card/.test(sg), `Kampagnenzustand ${st.campaign}: Kampagnen-Hero gerendert, regulärer Hero nicht`);
 ok(FIRST30.campaignActive === true && !Object.prototype.hasOwnProperty.call(FIRST30, 'campaignEnd'), 'manueller Betrieb: Kampagne aktiv bis zur expliziten Schliessung; kein automatisches Ablaufdatum');
 ok(FIRST30.waitlistEnabled === true, 'bei vollständiger Zuteilung weiterlaufender Wartelistenmodus statt automatischer Schliessung');
-ok(FIRST30.totalAllocation === 10, `Gesamtkapazität 10 (genehmigt); aktuell ${FIRST30.totalAllocation}`);
+ok(FIRST30.confirmedClaims === null || (Number.isInteger(FIRST30.confirmedClaims) && FIRST30.confirmedClaims >= 0 && FIRST30.confirmedClaims <= FIRST30.totalAllocation), 'Vergabezähler nur null oder echte, plausible bestätigte Vergaben (0–30)');
+ok(FIRST30.totalAllocation === 30, `Gesamtkapazität 30 (Inhaberentscheid; klinische Verfügbarkeit vor Launch bestätigen); aktuell ${FIRST30.totalAllocation}`);
 if (FIRST30.confirmedClaims == null) {
   ok(vis.includes(`Nur ${FIRST30.totalAllocation} exklusive Geschenke`) && /data-mode="unverified"/.test(sg) && vis.includes('Limitierte FIRST 30 Vorweihnachtsgeschenke'), 'nur Maximum kommuniziert; Indikator unverifiziert ("Limitierte FIRST 30 Vorweihnachtsgeschenke")');
-  ok(!/f30-avail-bar/.test(sg) && !/\d+ \/ \d+ Geschenke vergeben/.test(vis) && !/Nur noch \d+ (Geschenke? verfügbar|verfügbar|übrig)/.test(vis) && !/%/.test(text(sg.slice(sg.indexOf('data-f30-avail'), sg.indexOf('</div>', sg.indexOf('data-f30-avail'))))), 'kein Balken, kein "x / 10 vergeben", kein Restbestand, kein Prozent');
+  ok(!/f30-avail-bar/.test(sg) && !/\d+ \/ \d+ Geschenke vergeben/.test(vis) && !/Nur noch \d+ (Geschenke? verfügbar|verfügbar|übrig)/.test(vis) && !/%/.test(text(sg.slice(sg.indexOf('data-f30-avail'), sg.indexOf('</div>', sg.indexOf('data-f30-avail'))))), 'kein Balken, kein "x / 30 vergeben", kein Restbestand, kein Prozent');
 } else {
   ok(new RegExp(`data-confirmed="${FIRST30.confirmedClaims}"`).test(sg) && vis.includes(st.indicator.head) && vis.includes(st.indicator.sub), `Indikator: "${st.indicator.head}" · "${st.indicator.sub}"`);
   ok(!!FIRST30.verifiedAt && !!FIRST30.verifiedBy, 'verifizierte Zahl trägt verifiedAt + verifiedBy');
@@ -36,7 +37,7 @@ console.log('2. Claims');
 ok(/once-a-year/i.test(vis) === FIRST30.onceAYearApproved, `"Once-a-Year" nur nach Freigabe (approved=${FIRST30.onceAYearApproved})`);
 ok(!/jährlich/i.test(vis) || FIRST30.onceAYearApproved, '"jährlich" nur nach Freigabe');
 ok(/<span[^>]*data-f30-timer\b/.test(sg) === FIRST30.dailyCutoff.approved, `Countdown nur mit bestätigtem Cutoff (approved=${FIRST30.dailyCutoff.approved})`);
-ok(FIRST30.dailyCutoff.approved || /Nur 10 exklusive Geschenke/.test(text(sg.slice(sg.indexOf('data-f30-wa'), sg.indexOf('</a>', sg.indexOf('data-f30-wa'))))), 'ohne Cutoff: Kapazitätsaussage im WhatsApp-Button');
+ok(FIRST30.dailyCutoff.approved || /Nur 30 exklusive Geschenke/.test(text(sg.slice(sg.indexOf('data-f30-wa'), sg.indexOf('</a>', sg.indexOf('data-f30-wa'))))), 'ohne Cutoff: 30er-Kapazitätsaussage im WhatsApp-Button');
 ok(!/läuft ab|Angebot endet|nur heute/i.test(vis), 'kein Angebots-Ablauf-Wording');
 
 console.log('3. Formulare');
