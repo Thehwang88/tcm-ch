@@ -4,7 +4,7 @@
   },
   "page:zurich": {
     "src/pages/akupunktur-tcm-zuerich.astro": "2a761189579fc3b4",
-    "src/data/akupunktur-tcm-zuerich-body.html": "fedd4c5dc0736dd0",
+    "src/data/akupunktur-tcm-zuerich-body.html": "491145534f2039de",
     "src/data/zuerich-termin.ts": "e39ce4e4ed809871"
   },
   "hub:locations": {
