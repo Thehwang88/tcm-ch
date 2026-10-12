@@ -68,7 +68,7 @@ const slash = (p: string) => (p.endsWith('/') ? p : p + '/');
 // production until the release commit flips the new page to 'Published'.
 const EDITORIAL: Record<string, EditorialStatus> = {};
 const PUBLICATION: Record<string, PublicationStatus> = {
-  'page:zurich': 'Unpublished', // new in Wave 1; flip to Published in the release commit
+  // 'page:zurich' went live with the EN V2 Wave 1 release (PR #29).
 };
 const editorial = (id: string): EditorialStatus => EDITORIAL[id] ?? 'Approved';
 const publication = (id: string): PublicationStatus => PUBLICATION[id] ?? 'Published';

@@ -30,6 +30,8 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/en/acupuncture-zurich/ — 12.10.2026 (EN Zürich-Funnel, Twin von /akupunktur-tcm-zuerich/; PR #29)
+
 <!-- Priorität A aus seo/gsc-not-indexed-audit-2026-10-10.md: zuerst einreichen. -->
 - https://tcm.ch/beschwerden/schilddruesenunterfunktion/
 - https://tcm.ch/beschwerden/venenschwaeche/
@@ -340,9 +342,6 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/standorte/bern/
 
 ## Geplant (noch nicht live)
-
-<!-- EN V2 Wave 1 (Branch feat/en-v2-sprint1-20261012): nach dem Release-GO nach «Offen» verschieben. -->
-- https://tcm.ch/en/acupuncture-zurich/ — 12.10.2026 (EN Zürich-Funnel, Twin von /akupunktur-tcm-zuerich/; erst nach Merge live)
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 Stand 20.09.2026: Kontingent ist wieder verfuegbar — erste erfolgreiche Einreichungen seit 16.09.
