@@ -318,7 +318,9 @@ const waTermin = migrated ? waHref(data.nap.telefon, data.review
             </section>
             )}
             {data.aufEinenBlick && <Fragment set:html={data.aufEinenBlick} />}
-            <Team data={data} />
+            {/* Lokales Behandlungsteam nur auf operativen Standorten (Status-Gate 4h); die Zuordnungen in
+                therapeuten.ts bleiben bestehen. Die netzwerkweite klinische Leitung ist davon getrennt. */}
+            {!data.planned && !data.review && <Team data={data} />}
             <ClinicalLead slug={data.slug} />
             <Beschwerden data={data} />
             <Therapien data={data} />

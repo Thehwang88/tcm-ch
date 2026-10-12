@@ -187,6 +187,20 @@ for (const [id, st] of Object.entries(PINS)) {
   ok(ids(de).length > 0 && ids(de)[0] === ids(en)[0], `${id}: DE und EN beschreiben dieselbe Klinik-Entität (@id ${ids(de)[0]} / ${ids(en)[0]})`);
 }
 
+// 4h. Lokales Behandlungsteam nur auf operativen Standorten (DE Team.astro, EN Practitioners.astro);
+//     die netzwerkweite klinische Leitung (data-clinical-lead) ist davon getrennt und steht auf jeder Standortseite.
+for (const c of m.clinics) {
+  const de = html.get(`dist/standorte/${c.id}/index.html`), en = html.get(`dist/en/locations/${c.id}/index.html`);
+  if (de) {
+    if (c.status !== 'operational') ok(!new RegExp(`id="team-${c.id}"|class="tmc `).test(de), `/standorte/${c.id}/: keine lokalen Team-Karten (Status ${c.status})`);
+    ok(new RegExp(`data-clinical-lead="${c.status}"`).test(de) && (de.match(/data-clinical-lead=/g) ?? []).length === 1, `/standorte/${c.id}/: genau ein Clinical-Lead-Block mit Status ${c.status}`);
+  }
+  if (en) {
+    if (c.status !== 'operational') ok(!/id="practitioners"/.test(en), `/en/locations/${c.id}/: keine lokalen Practitioner-Karten (Status ${c.status})`);
+    ok(new RegExp(`data-clinical-lead="${c.status}"`).test(en) && (en.match(/data-clinical-lead=/g) ?? []).length === 1, `/en/locations/${c.id}/: genau ein Clinical-Lead-Block mit Status ${c.status}`);
+  }
+}
+
 const hub = html.get('dist/akupunktur-tcm-zuerich/index.html');
 if (hub) ok(!/Ohmstrasse 14[\s\S]{0,400}openingHours/.test(ldOf(hub)), '/akupunktur-tcm-zuerich/: Ohmstrasse 14 ohne Öffnungszeiten im Schema');
 
