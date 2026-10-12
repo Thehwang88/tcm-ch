@@ -11,7 +11,6 @@ const path = '/en/locations/';
 const open = clinics.filter((c) => c.status === 'operational');
 const upcoming = clinics.filter((c) => c.status !== 'operational');
 const thumb = (id: string) => locationContent[id]?.hero ?? (getStandort(id) ? { src: getStandort(id)!.hero.image, alt: `TCM.ch clinic ${id}` } : locationImages[id]);
-const regions = [...new Set(open.map((c) => c.region))];
 
 const breadcrumbLd = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
@@ -46,21 +45,19 @@ const itemListLd = {
       <p class="ev-label">Open now</p>
       <h2 class="ev-h2">Clinics and partner practices</h2>
       <p class="ev-sub">Each page shows the address, published opening hours, the treatments offered and a form for your request. Partner practices are independent; TCM.ch coordinates your request.</p>
-      {regions.map((r) => (
-        <>
-          <h3 style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.6);margin:28px 0 12px">{r}</h3>
-          <div class="ev-grid">
-            {open.filter((c) => c.region === r).map((c) => (
-              <a class="ev-card ev-card--media" href={enLocationPath(c.id)}>
-                {thumb(c.id) && <img src={thumb(c.id)!.src} alt={thumb(c.id)!.alt} width="1120" height="746" loading="lazy" decoding="async" />}
-                <div class="ev-card__body">
-                  <span class="ev-card__meta">{c.postalCode} {c.city}</span>
-                  <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
-                  <p>{c.betreiber ? `${c.betreiber.name} · ${c.street}` : c.street}</p>
-                  <span class="ev-card__arrow">Details &amp; appointment →</span>
-                </div>
-              </a>
-            ))}
+      <div class="ev-grid">
+        {open.map((c) => (
+          <a class="ev-card ev-card--media" href={enLocationPath(c.id)}>
+            {thumb(c.id) && <img src={thumb(c.id)!.src} alt={thumb(c.id)!.alt} width="1120" height="746" loading="lazy" decoding="async" />}
+            <div class="ev-card__body">
+              <span class="ev-card__meta">{c.postalCode} {c.city} · {c.region}</span>
+              <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
+              <p>{c.betreiber ? `${c.betreiber.name} · ${c.street}` : c.street}</p>
+              <span class="ev-card__arrow">Details &amp; appointment →</span>
+            </div>
+          </a>
+        ))}
+      </div>
           </div>
         </>
       ))}
