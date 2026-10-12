@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
+import HeroSplit from '../../../components/en/HeroSplit.astro';
+import CtaBand from '../../../components/en/CtaBand.astro';
 import { site } from '../../../data/site';
 import { conditionBySlug, enConditionPath } from '../../../data/conditions';
 import { therapyBySlug, enTherapyPath } from '../../../data/therapies';
@@ -41,7 +43,7 @@ const articleLd = {
     '@type': 'Organization',
     name: d.reviewer,
     url: 'https://tcm.ch/en/',
-    description: 'EMR-/ASCA-recognised practitioners of Traditional Chinese Medicine in Switzerland.',
+    description: 'Practitioners of Traditional Chinese Medicine in Switzerland; recognition (EMR/ASCA) is practitioner-specific.',
   },
   publisher: {
     '@type': 'Organization',
@@ -83,100 +85,73 @@ const schema = [articleLd, breadcrumbLd, ...(faqLd ? [faqLd] : [])];
   enOnly={!d.deWissenUrl}
   deHref={d.deWissenUrl}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Knowledge</div>
-      <h1>{d.title}</h1>
-      <p class="byline">
-        By {d.author} · Medically reviewed by {d.reviewer}<br />
-        <span class="dates">
-          Published {fmt(d.datePublished)}{d.dateModified !== d.datePublished && <> · Updated {fmt(d.dateModified)}</>}
-        </span>
-      </p>
-      {d.heroImage && (
-        <figure class="hero-figure">
-          <img src={d.heroImage} alt={d.heroImageAlt ?? d.title} width="1120" height="746" loading="eager" decoding="async" />
-        </figure>
-      )}
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · Knowledge"
+    h1={d.title}
+    lead={d.description}
+    sub={`By ${d.author} · Medically reviewed by ${d.reviewer} · Published ${fmt(d.datePublished)}${d.dateModified !== d.datePublished ? ` · Updated ${fmt(d.dateModified)}` : ''}`}
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '/en/locations/', label: 'Find a clinic', kind: 'outline' }]}
+    image={d.heroImage ? { src: d.heroImage, alt: d.heroImageAlt ?? d.title, caption: 'TCM.ch clinic' } : undefined}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { href: '/en/knowledge/', label: 'Knowledge' }, { label: d.title }]}
+  />
 
-  <section class="section">
+  <section class="ev-section">
     <div class="wrap">
-      <article class="kb-body prose">
-        <Content />
-      </article>
+      <div class="ev-split">
+        <div>
+          <article class="ev-article kb-body">
+            <Content />
+          </article>
 
-      {d.faq.length > 0 && (
-        <div class="prose" style="margin-top:8px">
-          <h2>Frequently asked questions</h2>
-          <div class="faq">
-            {d.faq.map((f) => (
-              <details>
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
+          {d.faq.length > 0 && (
+            <div class="ev-article" style="margin-top:8px">
+              <h2>Frequently asked questions</h2>
+              <div class="ev-faq">
+                {d.faq.map((f) => (
+                  <details>
+                    <summary>{f.q}</summary>
+                    <p>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="ev-article">
+            <div class="ev-note-box">
+              <strong>Read next:</strong>
+              {relatedConditions.map((c) => (
+                <a href={enConditionPath(c.slug)}>{c.condition}</a>
+              ))}
+              {relatedTherapies.map((t) => (
+                <a href={enTherapyPath(t.slug)}>{t.name}</a>
+              ))}
+              <a href="/en/health-insurance-acupuncture/">Insurance &amp; costs</a>
+              <a href="/en/locations/">Find a clinic</a>
+            </div>
+            <p class="ev-disclaimer">
+              This article is general information, not medical advice, and does not promise any cure or specific
+              outcome. If symptoms are severe, sudden or worsening, see a doctor.
+            </p>
           </div>
         </div>
-      )}
 
-      {(relatedConditions.length > 0 || relatedTherapies.length > 0) && (
-        <div class="prose" style="margin-top:8px">
-          <div class="xlinks">
-            <strong>Read next:</strong>
-            {relatedConditions.map((c) => (
-              <a class="inline-link" href={enConditionPath(c.slug)}>{c.condition} →</a>
-            ))}
-            {relatedTherapies.map((t) => (
-              <a class="inline-link" href={enTherapyPath(t.slug)}>{t.name} →</a>
-            ))}
-            <a class="inline-link" href="/en/health-insurance-acupuncture/">Insurance & costs →</a>
-            <a class="inline-link" href="/en/locations/">Find a clinic →</a>
-          </div>
-        </div>
-      )}
-
-      <div class="prose">
-        <div class="cta-row">
-          <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-          <a class="btn btn--ghost" href="/en/knowledge/">← All articles</a>
-        </div>
-        <p class="disclaimer">
-          This article is general information, not medical advice, and does not promise any cure or specific
-          outcome. If symptoms are severe, sudden or worsening, see a doctor.
-        </p>
+        <aside class="ev-panel" aria-label="Appointments">
+          <h3>Request an appointment</h3>
+          <p>Tell us briefly what is going on and where you live. We suggest a clinic and a time, and reply personally in English or German.</p>
+          <a class="ev-btn ev-btn--solid" href="/en/contact/">Request an appointment</a>
+          <a class="ev-btn ev-btn--wa" href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hello, I have a question about acupuncture and TCM.')}`} target="_blank" rel="noopener" style="margin-top:10px;width:100%">WhatsApp</a>
+          <hr />
+          <h3>Where</h3>
+          <p style="font-size:14px"><a href="/en/acupuncture-zurich/">Acupuncture in Zürich</a> · <a href="/en/locations/">All locations</a></p>
+          <hr />
+          <h3>Insurance</h3>
+          <p style="font-size:14px;color:rgba(2,11,16,.68)">Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner's recognition. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
+        </aside>
       </div>
     </div>
   </section>
+
+  <CtaBand text="Questions after reading? Tell us briefly what is going on; we reply personally in English or German and suggest the nearest clinic." secondary={{ href: '/en/knowledge/', label: 'All articles' }} />
 </Layout>
 
-<style>
-  .byline { font-size: 14.5px; color: var(--text-soft); line-height: 1.5; max-width: 660px; margin: 6px 0 0; }
-  .byline .dates { color: var(--muted); }
-  .prose { max-width: 760px; }
-  .cta-row { margin: 32px 0 24px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .disclaimer { font-size: 14px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 18px; }
-  .inline-link { color: var(--blue); font-weight: 700; text-decoration: none; }
-  .inline-link:hover { text-decoration: underline; }
-  .xlinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 18px 22px; margin: 28px 0 0; }
-  .xlinks strong { color: var(--blue-dark); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '–'; }
-  .faq p { margin: 0 0 16px; }
-
-  /* Rendered markdown (Content) - scoped to the article body. */
-  .kb-body :global(h2) { font-size: 26px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
-  .kb-body :global(h3) { font-size: 20px; font-weight: 700; color: var(--ink); margin: 28px 0 10px; }
-  .kb-body :global(p) { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .kb-body :global(ul), .kb-body :global(ol) { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .kb-body :global(li) { margin: 0 0 10px; }
-  .kb-body :global(strong) { color: var(--ink); }
-  .kb-body :global(a) { color: var(--blue); font-weight: 700; text-decoration: none; }
-  .kb-body :global(a:hover) { text-decoration: underline; }
-  .kb-body :global(blockquote) { border-left: 3px solid var(--blue); padding-left: 16px; margin: 0 0 18px; color: var(--text-soft); }
-  .kb-body :global(h2:first-child), .kb-body :global(p:first-child) { margin-top: 0; }
-</style>

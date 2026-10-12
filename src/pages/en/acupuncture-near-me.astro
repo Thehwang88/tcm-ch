@@ -2,13 +2,15 @@
 // /en/acupuncture-near-me/ - EN twin of /akupunktur-in-der-naehe/.
 // Same data source (clinics), same structure mirrored. hreflang pair via PAIR_MAP in site.ts.
 import Layout from '../../layouts/Layout.astro';
+import HeroSplit from '../../components/en/HeroSplit.astro';
+import CtaBand from '../../components/en/CtaBand.astro';
 import { clinics, enLocationPath } from '../../data/locations';
 
 const path = '/en/acupuncture-near-me';
 const url = `https://tcm.ch${path}/`;
-const title = 'Acupuncture Near Me: 13 TCM Clinics in Switzerland | TCM.ch';
+const title = 'Acupuncture Near Me: TCM.ch Locations in Switzerland | TCM.ch';
 const description =
-  'Find acupuncture near you in Switzerland: TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners in Zurich, Winterthur, St. Gallen and beyond.';
+  'Find acupuncture near you in Switzerland: TCM.ch clinics and partner practices in Zürich, Winterthur, St. Gallen, Basel and beyond, with requests in English.';
 
 const groups = [
   { label: 'Zurich & Winterthur', ids: ['zuerich-hoengg', 'zuerich-oerlikon', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
@@ -22,10 +24,10 @@ const allIds = groups.flatMap((g) => g.ids);
 
 const faqs = [
   { q: 'Where can I find acupuncture near me in Switzerland?', a: 'TCM.ch runs clinics across German-speaking Switzerland, including Zurich, Winterthur, St. Gallen, Frauenfeld and Kreuzlingen. This page lists every location with its address, so you can contact the clinic closest to you directly.' },
-  { q: 'Do the practitioners speak English?', a: 'Yes. English-speaking practitioners are available at our locations, and appointments, intake and treatment can be done in English. Mention your language preference when booking and we will match you with the right therapist.' },
-  { q: 'Does Swiss health insurance cover acupuncture?', a: 'Basic insurance only covers acupuncture performed by licensed physicians. Most supplementary plans for complementary medicine cover a large share, typically 80 to 100 percent, of treatments by EMR- or ASCA-registered therapists. All our practitioners are registered, and we check your coverage for free.' },
-  { q: 'How quickly can I get an appointment?', a: 'Usually within a few days, sometimes sooner depending on the location. Contact the clinic directly through its page or by phone, and we get back to you personally.' },
-  { q: 'What does a session cost?', a: 'You will get the exact rate before your first treatment, with no hidden costs. With supplementary insurance most patients pay only a small share themselves. Checking whether your insurance covers the treatment is free, before any costs arise.' },
+  { q: 'Do the practitioners speak English?', a: 'Requests, replies and appointment coordination are in English or German. Tell us that you would like to be treated in English and we take it into account when suggesting a practice.' },
+  { q: 'Does Swiss health insurance cover acupuncture?', a: 'Not through basic insurance, unless a doctor with the relevant training performs it. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. We tell you the treating practitioner\'s recognition (EMR/ASCA) and check your cover with you before the first appointment.' },
+  { q: 'How quickly can I get an appointment?', a: 'That depends on the location and current capacity. Send your request through the location page, the form or WhatsApp with your preferred days and times; we reply personally with a proposal, and the appointment is fixed once you confirm.' },
+  { q: 'What does a session cost?', a: 'You get the exact rate before your first treatment. What you pay yourself depends on your supplementary insurance policy and the practitioner\'s recognition; we check this with you beforehand. Our cost article explains typical session prices in Switzerland.' },
 ];
 
 const schema = [
@@ -43,98 +45,77 @@ const schema = [
 ];
 ---
 <Layout title={title} description={description} path={path} schema={schema}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Swiss TCM network</div>
-      <h1>Acupuncture Near You in Switzerland</h1>
-      <p class="lead">Looking for acupuncture or TCM near you? We are a network of clinics across German-speaking Switzerland, with English-speaking, EMR-/ASCA-recognised practitioners. Choose the clinic that is easiest for you to reach.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="#clinics">Find a clinic near you →</a>
-      </div>
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · Swiss clinic network"
+    h1="Acupuncture near you in <em>Switzerland</em>"
+    lead="Looking for acupuncture or TCM near you? We are a network of clinics and partner practices across German-speaking Switzerland, with requests and appointment coordination in English. Choose the location that is easiest for you to reach."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#clinics', label: 'Find a clinic near you', kind: 'outline' }]}
+    trust={['Personal reply in English', 'Supplementary insurance: depends on your policy', 'No referral needed']}
+    image={{ src: '/images/standorte-hero.webp', alt: 'Reception area of a TCM.ch clinic', caption: 'TCM.ch clinic' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Acupuncture near me' }]}
+  />
 
-  <section class="section" id="clinics">
+  <section class="ev-section" id="clinics">
     <div class="wrap">
-      <div class="prose" style="margin-bottom:28px">
-        <h2>Our clinics across Switzerland</h2>
-        <p>Pick the clinic closest to you. Every location is EMR-/ASCA-recognised and billable through supplementary insurance.</p>
-      </div>
+      <p class="ev-label">Locations</p>
+      <h2 class="ev-h2">Our clinics and partner practices across Switzerland</h2>
+      <p class="ev-sub">Pick the location closest to you. Partner practices are independent practices in the TCM.ch network; TCM.ch coordinates your request. Planned locations are marked and cannot be booked yet.</p>
       {groups.map((g) => (
         <div style="margin-bottom:28px">
-          <h3 style="font-size:18px;font-weight:800;color:var(--ink);margin:0 0 14px">{g.label}</h3>
-          <div class="cards">
+          <h3 style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.6);margin:0 0 12px">{g.label}</h3>
+          <div class="ev-grid">
             {g.ids.map((id) => byId(id)).filter(Boolean).map((c) => (
-              <a class="card" href={enLocationPath(c!.id)}>
-                <div class="card-body">
-                  <h3>{c!.name}</h3>
-                  <p>{c!.status !== 'operational' ? `${c!.city} (${(c!.openingNote ?? 'in preparation').toLowerCase()})` : `${c!.street}, ${c!.postalCode} ${c!.city}`}</p>
-                </div>
+              <a class="ev-card" href={enLocationPath(c!.id)}>
+                <span class="ev-card__meta">{c!.postalCode ? `${c!.postalCode} ${c!.city}` : c!.city}</span>
+                <h3>{c!.name}{c!.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}{c!.status !== 'operational' && <span class="ev-badge">{c!.status === 'review' ? 'Under review' : 'Planned'}</span>}</h3>
+                <p>{c!.status !== 'operational' ? (c!.status === 'review' ? 'Status under review; not confirmed as an operating clinic.' : (c!.openingNote ?? 'In preparation')) : c!.betreiber ? `${c!.betreiber.name} · ${c!.street}` : `${c!.street}`}</p>
               </a>
             ))}
           </div>
         </div>
       ))}
-      <p style="color:var(--mid);font-size:14px;margin-top:6px">Not sure which location fits? We will book you into the nearest clinic. You can also browse <a href="/en/locations/" style="color:var(--blue);font-weight:600">all clinics</a> in detail.</p>
+      <p class="ev-sub" style="margin:8px 0 0">Not sure which location fits? Tell us where you live and we suggest the nearest clinic. In Zürich, use the <a href="/en/acupuncture-zurich/">Zürich page</a>; you can also browse <a href="/en/locations/">all locations</a> in detail.</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap prose">
-      <h2>Finding acupuncture near you as a newcomer</h2>
-      <p>When you search for acupuncture near you, you want two things: a short trip and a practice you can trust. At TCM.ch you get both. We are not a single studio but a network of clinics across German-speaking Switzerland. In practice that means acupuncture near you in Zurich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach and Basel. Chances are one of them is only a few minutes away.</p>
-      <p>If you have recently moved to Switzerland, the insurance side is usually the part that feels unfamiliar, and it matters most. Swiss cover has two layers. Basic insurance is mandatory, but it only pays for acupuncture when a physician performs it. Therapist-led TCM, like ours, is reimbursed through optional supplementary insurance for complementary medicine. Most of these supplementary plans cover a large share of each session, typically 80 to 100 percent, as long as the practitioner is EMR- or ASCA-registered. All of ours are. We check your coverage for free before any costs arise, so there are no surprises. For many internationals that clarity is not a given elsewhere, and it is a good reason to sort out the paperwork before your first visit.</p>
-      <p>The most common reason people come to us is classic <a href="/en/therapies/acupuncture/">acupuncture</a>, for example for back and neck pain, headaches, sleep problems or stress-related complaints. Many locations also offer Tuina massage, cupping and Chinese herbal medicine. Which methods your nearest team provides is listed on each location page.</p>
-      <p>You do not need to know in advance which treatment is right. Tell us briefly what is going on and where you live. We suggest the location near you that fits, and, if you like, a first appointment. We get back to you personally, and a first session is often possible within 24 to 48 hours.</p>
-    </div>
-  </section>
-
-  <section class="section" style="background:var(--blue-light)">
-    <div class="wrap prose">
-      <div class="eyebrow">Start without risk</div>
-      <h2>Start without risk. We take care of the rest.</h2>
-      <p>You tell us what is going on. We organise the next step before you commit to anything.</p>
-      <ul>
-        <li><strong>Free insurance check.</strong> We confirm what your supplementary policy covers before any costs arise.</li>
-        <li><strong>An honest assessment.</strong> If TCM is not the right path for your situation, we say so at the first conversation and point you to a better option.</li>
-        <li><strong>A team from two worlds.</strong> Practitioners from Switzerland and South Korea, EMR-/ASCA-registered, working in English.</li>
-      </ul>
-      <p style="font-size:14px;color:var(--mid)">No subscription, no obligation. You decide after the first conversation.</p>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/health-insurance-acupuncture/">Is acupuncture covered by insurance? →</a>
+  <section class="ev-section ev-section--tint">
+    <div class="wrap">
+      <div class="ev-article">
+        <h2 style="margin-top:0">Finding acupuncture near you as a newcomer</h2>
+        <p>When you search for acupuncture near you, you want two things: a short trip and a practice you can trust. TCM.ch is not a single studio but a network of clinics and partner practices across German-speaking Switzerland: Zürich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, Bottighofen, St. Gallen, Wil, Rorschach and Basel. Chances are one of them is only a few minutes away.</p>
+        <p>If you have recently moved to Switzerland, the insurance side is usually the part that feels unfamiliar, and it matters most. Swiss cover has two layers. Basic insurance is mandatory, but it only pays for acupuncture when a physician with the relevant training performs it. For therapist-led TCM, reimbursement may be available through supplementary insurance for complementary medicine, depending on your policy, the treatment and the individual practitioner's recognition. We tell you where you stand before the first appointment; our <a href="/en/health-insurance-acupuncture/">insurance guide</a> explains the split in plain English.</p>
+        <p>The most common reason people come to us is classic <a href="/en/therapies/acupuncture/">acupuncture</a>, for example for back and neck pain, headaches, sleep problems or stress-related complaints. Many locations also offer <a href="/en/therapies/tuina-massage/">Tuina massage</a>, <a href="/en/therapies/cupping/">cupping</a> and <a href="/en/therapies/chinese-herbal-medicine/">Chinese herbal medicine</a>.</p>
+        <p>You do not need to know in advance which treatment is right. Tell us briefly what is going on and where you live. We suggest the location near you that fits and, if you like, a first appointment. We reply personally; the appointment is fixed once you confirm.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap prose">
-      <h2>FAQ</h2>
-      <div class="faq">
-        {faqs.map((f) => (
-          <details>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
+  <section class="ev-section">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">Start without risk</p>
+        <h2 class="ev-h2">Start without risk. <em>We take care of the rest.</em></h2>
+        <p class="ev-sub">You tell us what is going on. We organise the next step before you commit to anything.</p>
+      </div>
+      <div class="ev-kk">
+        <div class="ev-kk__item"><h3>Insurance check first</h3><p>We tell you which recognition the treating practitioner holds and what your supplementary policy may reimburse, before any costs arise.</p></div>
+        <div class="ev-kk__item"><h3>An honest assessment</h3><p>If TCM is not the right path for your situation, we say so at the first conversation and point you to a better option.</p></div>
+        <div class="ev-kk__item"><h3>A team from two worlds</h3><p>Practitioners trained in Switzerland and South Korea, with requests and coordination in English.</p></div>
+      </div>
+      <p class="ev-sub" style="margin:22px auto 0;text-align:center">No subscription, no obligation. You decide after the first conversation.</p>
+    </div>
+  </section>
+
+  <section class="ev-section ev-section--tint" id="faq">
+    <div class="wrap">
+      <p class="ev-label">FAQ</p>
+      <h2 class="ev-h2">Questions before your first appointment.</h2>
+      <div class="ev-faq" style="max-width:820px">
+        {faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
       </div>
     </div>
   </section>
+
+  <CtaBand text="Tell us where you live and what is going on; we suggest the nearest clinic and reply personally in English or German." secondary={{ href: '/en/health-insurance-acupuncture/', label: 'Insurance & costs' }} />
 </Layout>
 
-<style>
-  .prose { max-width: 760px; }
-  .prose h2 { font-size: 26px; font-weight: 800; margin: 0 0 14px; }
-  .prose p { font-size: 17px; color: var(--mid); margin: 0 0 16px; }
-  .prose ul { font-size: 17px; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
-  .prose li { margin: 0 0 10px; }
-  .prose strong { color: var(--ink); }
-  .faq details { border: 1px solid var(--border); border-radius: var(--r-btn); padding: 4px 18px; margin: 0 0 12px; }
-  .faq summary { font-weight: 700; color: var(--ink); cursor: pointer; padding: 14px 0; list-style: none; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; float: right; color: var(--blue); font-weight: 800; }
-  .faq details[open] summary::after { content: '\2013'; }
-  .faq p { margin: 0 0 16px; }
-  .cta-row { margin: 24px 0 0; display: flex; gap: 12px; flex-wrap: wrap; }
-</style>
