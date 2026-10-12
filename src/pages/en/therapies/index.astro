@@ -1,27 +1,21 @@
 ---
+// /en/therapies/ — EN V2 therapy hub (mirrors DE /therapien/ hub: Mint hero + photo, media cards).
 import Layout from '../../../layouts/Layout.astro';
+import HeroSplit from '../../../components/en/HeroSplit.astro';
+import CtaBand from '../../../components/en/CtaBand.astro';
 import { therapies, enTherapyPath, therapyImages } from '../../../data/therapies';
 
 const path = '/en/therapies/';
-
 const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
     { '@type': 'ListItem', position: 2, name: 'Therapies', item: 'https://tcm.ch/en/therapies/' },
   ],
 };
-
 const itemListLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  itemListElement: therapies.map((t, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    name: t.titleTerm,
-    url: new URL(enTherapyPath(t.slug), 'https://tcm.ch').href,
-  })),
+  '@context': 'https://schema.org', '@type': 'ItemList',
+  itemListElement: therapies.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.titleTerm, url: new URL(enTherapyPath(t.slug), 'https://tcm.ch').href })),
 };
 ---
 <Layout
@@ -30,48 +24,41 @@ const itemListLd = {
   path={path}
   schema={[breadcrumbLd, itemListLd]}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Therapies</div>
-      <h1>Our TCM & acupuncture therapies</h1>
-      <p class="lead">
-        The treatments we offer across Switzerland. We are honest and evidence-aware: most are used as a
-        complementary approach, results vary, and we say plainly what each is - and is not - likely to do.
-        English-speaking, EMR-/ASCA-recognised practitioners.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">What we treat →</a>
-      </div>
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · Therapies"
+    h1="Our TCM &amp; acupuncture <em>therapies</em>"
+    lead="Which method fits which complaint, what a session is like and what the evidence says. Honest, without cure promises."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#all', label: 'Browse therapies', kind: 'outline' }]}
+    trust={['EMR-/ASCA-recognised practitioners', 'Billed via supplementary insurance', 'English-speaking requests']}
+    image={{ src: '/images/therapien-hero.webp', alt: 'Acupuncture treatment at a TCM.ch clinic', caption: 'TCM.ch clinic' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Therapies' }]}
+  />
 
-  <section class="section">
+  <section class="ev-section" id="all">
     <div class="wrap">
-      <div class="cards">
+      <p class="ev-label">All methods</p>
+      <h2 class="ev-h2">{therapies.length} therapies, one standard.</h2>
+      <p class="ev-sub">Every page covers what the method is, what to expect, typical uses and an honest evidence summary. Availability per location is shown on the <a href="/en/locations/">location pages</a>.</p>
+      <div class="ev-grid ev-grid--4">
         {therapies.map((t) => (
-          <a class="card card--media" href={enTherapyPath(t.slug)}>
-            {therapyImages[t.slug] && (
-              <img class="card-thumb" src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{t.name}</h3>
-              <p>{t.summary}</p>
-            </div>
+          <a class="ev-card ev-card--media" href={enTherapyPath(t.slug)}>
+            {therapyImages[t.slug] && <img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />}
+            <div class="ev-card__body"><h3>{t.name}</h3><p>{t.summary}</p></div>
           </a>
         ))}
       </div>
-      <div class="index-xlinks">
-        <a class="inline-link" href="/en/conditions/">Conditions we treat →</a>
-        <a class="inline-link" href="/en/locations/">Find a clinic near you →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Is this covered by insurance? →</a>
+    </div>
+  </section>
+
+  <section class="ev-section ev-section--tint">
+    <div class="wrap">
+      <div class="ev-grid">
+        <a class="ev-card" href="/en/conditions/"><h3>Conditions we treat</h3><p>Back pain, migraine, sleep, fertility and more: which methods we typically combine, and the limits.</p></a>
+        <a class="ev-card" href="/en/locations/"><h3>Find a clinic</h3><p>Clinics and partner practices across German-speaking Switzerland, with the treatments offered at each.</p></a>
+        <a class="ev-card" href="/en/health-insurance-acupuncture/"><h3>Is this covered by insurance?</h3><p>Basic versus supplementary cover, EMR/ASCA recognition and how reimbursement works.</p></a>
       </div>
     </div>
   </section>
-</Layout>
 
-<style>
-  .index-xlinks { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; }
-  .inline-link { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 15px; }
-  .inline-link:hover { text-decoration: underline; }
-</style>
+  <CtaBand text="Not sure which method fits? Tell us what is going on; the practitioner decides with you at the first appointment. We reply personally in English or German." />
+</Layout>

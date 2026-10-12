@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroSplit from '../../components/en/HeroSplit.astro';
+import CtaBand from '../../components/en/CtaBand.astro';
 
 const path = '/en/health-insurance-acupuncture';
 const url = `https://tcm.ch${path}/`;
@@ -51,16 +53,15 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
   path={path}
   schema={[faqSchema, breadcrumbSchema]}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - for expats in Switzerland</div>
-      <h1>Does Swiss health insurance cover acupuncture and TCM?</h1>
-      <p class="lead">The Swiss system has two layers, and which one pays for acupuncture depends on who treats you. Here's the honest version.</p>
-      <figure class="hero-figure">
-        <img src="/images/krankenkasse-hero.png" alt="Bright Swiss TCM practice with acupuncture needles and a tablet for insurance billing" width="1120" height="746" loading="eager" decoding="async" />
-      </figure>
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · For expats in Switzerland"
+    h1="Does Swiss health insurance cover <em>acupuncture</em> and TCM?"
+    lead="The Swiss system has two layers, and which one pays for acupuncture depends on who treats you. Here is the honest version."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#faq', label: 'Jump to FAQ', kind: 'outline' }]}
+    trust={['EMR/ASCA recognised', 'Supplementary insurance, not basic', 'We check your cover with you']}
+    image={{ src: '/images/krankenkasse-hero.png', alt: 'Bright Swiss TCM practice with acupuncture needles and a tablet for insurance billing', caption: 'Illustrative image' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Insurance & costs' }]}
+  />
 
   <section class="section">
     <div class="wrap prose">
@@ -130,7 +131,7 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
         <a class="inline-link" href="/krankenkassen/">See per-insurer details (German) →</a>
       </p>
 
-      <h2>FAQ</h2>
+      <h2 id="faq">FAQ</h2>
       <div class="faq">
         {faqs.map((f) => (
           <details>
@@ -152,6 +153,7 @@ const insurers = ['CSS', 'Helsana', 'SWICA', 'Sanitas', 'Concordia', 'Visana', '
       </p>
     </div>
   </section>
+  <CtaBand title="Unsure about your cover?" text="Send us your insurer and policy model with your request; we tell you what to expect before any costs arise. Personal reply in English or German." secondary={{ href: '/en/locations/', label: 'Find a clinic' }} />
 </Layout>
 
 <style>

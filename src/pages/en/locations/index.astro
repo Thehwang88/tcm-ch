@@ -1,61 +1,99 @@
 ---
+// /en/locations/ — EN V2 location directory (mirrors DE /standorte/ hub: Mint hero + photo, status-aware cards).
 import Layout from '../../../layouts/Layout.astro';
+import HeroSplit from '../../../components/en/HeroSplit.astro';
+import CtaBand from '../../../components/en/CtaBand.astro';
 import { clinics, enLocationPath, locationImages } from '../../../data/locations';
+import { getStandort } from '../../../data/standorte';
+import { locationContent } from '../../../data/en/locations-content';
 
 const path = '/en/locations/';
+const open = clinics.filter((c) => c.status === 'operational');
+const upcoming = clinics.filter((c) => c.status !== 'operational');
+const thumb = (id: string) => locationContent[id]?.hero ?? (getStandort(id) ? { src: getStandort(id)!.hero.image, alt: `TCM.ch clinic ${id}` } : locationImages[id]);
+const regions = [...new Set(open.map((c) => c.region))];
 
 const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
     { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://tcm.ch/en/locations/' },
   ],
 };
+const itemListLd = {
+  '@context': 'https://schema.org', '@type': 'ItemList', name: 'TCM.ch clinics in Switzerland',
+  itemListElement: clinics.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: `Acupuncture & TCM in ${c.name}`, url: `https://tcm.ch${enLocationPath(c.id)}` })),
+};
 ---
 <Layout
-  title="Acupuncture & TCM in Switzerland | Clinics | TCM.ch"
-  description="Find acupuncture & TCM near you in Switzerland: TCM.ch clinics with English-speaking, EMR-/ASCA-recognised practitioners, covered by insurance."
+  title="Acupuncture & TCM Clinics in Switzerland | Locations | TCM.ch"
+  description="All TCM.ch locations in German-speaking Switzerland: Zürich, Winterthur, St. Gallen, Basel, Thurgau and Lake Constance. English-speaking requests, EMR-/ASCA-recognised practitioners."
   path={path}
-  schema={breadcrumbLd}
+  schema={[breadcrumbLd, itemListLd]}
 >
-  <section class="hero">
+  <HeroSplit
+    eyebrow="TCM.ch · Swiss clinic network"
+    h1="Acupuncture & TCM clinics across <em>Switzerland</em>"
+    lead="Clinics and partner practices in German-speaking Switzerland. Pick the location closest to you; requests are welcome in English or German."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '#open', label: 'See all locations', kind: 'outline' }]}
+    trust={['EMR-/ASCA-recognised practitioners', 'Billed via supplementary insurance', 'Personal reply in English']}
+    image={{ src: '/images/standorte-hero.webp', alt: 'Reception area of a TCM.ch clinic', caption: 'TCM.ch clinic' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Locations' }]}
+  />
+
+  <section class="ev-section" id="open">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch - Swiss TCM network</div>
-      <h1>Our acupuncture & TCM clinics across Switzerland</h1>
-      <p class="lead">
-        Clinics with English-speaking, EMR-/ASCA-recognised practitioners - acupuncture, Tuina,
-        cupping and Chinese herbal medicine, covered by supplementary insurance. Pick the location nearest you.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/health-insurance-acupuncture/">Is acupuncture covered by insurance? →</a>
+      <p class="ev-label">Open now</p>
+      <h2 class="ev-h2">Clinics and partner practices</h2>
+      <p class="ev-sub">Each page shows the address, published opening hours, the treatments offered and a form for your request. Partner practices are independent; TCM.ch coordinates your request.</p>
+      {regions.map((r) => (
+        <>
+          <h3 style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.6);margin:28px 0 12px">{r}</h3>
+          <div class="ev-grid">
+            {open.filter((c) => c.region === r).map((c) => (
+              <a class="ev-card ev-card--media" href={enLocationPath(c.id)}>
+                {thumb(c.id) && <img src={thumb(c.id)!.src} alt={thumb(c.id)!.alt} width="1120" height="746" loading="lazy" decoding="async" />}
+                <div class="ev-card__body">
+                  <span class="ev-card__meta">{c.postalCode} {c.city}</span>
+                  <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
+                  <p>{c.betreiber ? `${c.betreiber.name} · ${c.street}` : c.street}</p>
+                  <span class="ev-card__arrow">Details &amp; appointment →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </>
+      ))}
+    </div>
+  </section>
+
+  <section class="ev-section ev-section--tint" id="upcoming">
+    <div class="wrap">
+      <p class="ev-label">In preparation</p>
+      <h2 class="ev-h2">Planned and under-review locations</h2>
+      <p class="ev-sub">Not open yet. You can register your interest now; we contact you once appointments are possible, or suggest the nearest open clinic.</p>
+      <div class="ev-grid">
+        {upcoming.map((c) => (
+          <a class="ev-card" href={enLocationPath(c.id)}>
+            <span class="ev-card__meta">{c.city}</span>
+            <h3>{c.name}<span class="ev-badge">{c.status === 'review' ? 'Under review' : 'Planned'}</span></h3>
+            <p>{c.status === 'review' ? 'Status under review; not confirmed as an operating clinic.' : (c.openingNote ?? 'In preparation')}</p>
+            <span class="ev-card__arrow">Register your interest →</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="ev-section">
     <div class="wrap">
-      <div class="cards">
-        {clinics.map((c) => (
-          <a class="card card--media" href={enLocationPath(c.id)}>
-            {locationImages[c.id] && (
-              <img class="card-thumb" src={locationImages[c.id].src} alt={locationImages[c.id].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{c.name}</h3>
-              <p>
-                {c.status !== 'operational'
-                  ? `${c.city} - ${(c.openingNote ?? 'in preparation').toLowerCase()}`
-                  : `${c.street}, ${c.postalCode} ${c.city}`}
-              </p>
-            </div>
-          </a>
-        ))}
+      <div class="ev-grid">
+        <a class="ev-card" href="/en/acupuncture-near-me/"><h3>Acupuncture near me</h3><p>All addresses on one page, for choosing the clinic that is easiest to reach.</p></a>
+        <a class="ev-card" href="/en/health-insurance-acupuncture/"><h3>Insurance &amp; costs</h3><p>Basic versus supplementary insurance, what EMR/ASCA means and how reimbursement works.</p></a>
+        <a class="ev-card" href="/en/conditions/"><h3>Conditions</h3><p>Back pain, migraine, sleep, fertility and more: what TCM can realistically help with.</p></a>
       </div>
-      <p style="color:var(--mid);font-size:14px;margin-top:18px">
-        Not sure where to start? <a href="/en/conditions/" style="color:var(--blue);font-weight:600">See the conditions we treat →</a>
-      </p>
     </div>
   </section>
+
+  <CtaBand text="Not sure which location fits? Tell us where you live and what is going on; we suggest the nearest clinic and reply personally in English or German." />
 </Layout>

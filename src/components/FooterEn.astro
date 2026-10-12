@@ -69,6 +69,15 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
     </div>
   </div>
 </footer>
-<WhatsAppFab />
-<WhatsAppConcierge />
-<StickyCtaBar />
+<WhatsAppFab lang="en" />
+<WhatsAppConcierge lang="en" />
+<StickyCtaBar lang="en" />
+<script is:inline>
+  // EN prefill for the concierge CTA (the shared widget builds a German prefill from the page title).
+  (function () {
+    var cta = document.getElementById('wac-cta');
+    if (!cta) return;
+    var t = (document.title || '').replace(/\s*[|–-]\s*TCM\.ch.*$/i, '').trim() || 'TCM.ch';
+    cta.href = 'https://wa.me/41775236122?text=' + encodeURIComponent('Hello, I am on the page "' + t + '" on tcm.ch and have a question.');
+  })();
+</script>

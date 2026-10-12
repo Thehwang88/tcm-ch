@@ -1,0 +1,94 @@
+---
+// Shared EN appointment form (contact page + location pages). Same endpoint, payload and
+// status-aware location options as the DE forms (/api/anfrage, Turnstile, standort-optionen.ts).
+import { site } from '../../data/site';
+import { clinics } from '../../data/locations';
+interface Props { id?: string; preselect?: string; source: string; heading?: string; intro?: string; therapy?: string }
+const { id = 'en-appointment-form', preselect = '', source, heading = 'Request an appointment', intro, therapy } = Astro.props;
+// Status-aware options from the single clinic source: operational → clinic name (same value as the DE forms);
+// planned/review → the vorab options (DE value for team routing, English label). No vorab → no option.
+const options = [
+  ...clinics.filter((c) => c.status === 'operational').map((c) => ({ value: c.name, label: c.name })),
+  ...clinics.filter((c) => c.status !== 'operational').flatMap((c) => (c.vorab ?? []).map((o) => ({ value: o.value, label: o.labelEn ?? o.label }))),
+];
+const uid = id.replace(/[^a-z0-9-]/gi, '');
+---
+<form class="ev-form" id={uid} data-source={source} data-preselect={preselect} novalidate>
+  {heading && <h2 class="ev-h2" style="font-size:clamp(24px,2.4vw,30px);margin-bottom:8px">{heading}</h2>}
+  {intro && <p class="ev-sub" style="margin-bottom:22px">{intro}</p>}
+  <div class="ev-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+  <div class="ev-form__row">
+    <div class="ev-field"><label for={`${uid}-name`}>Name <span class="ev-req">*</span></label>
+      <input id={`${uid}-name`} type="text" name="name" required autocomplete="name" placeholder="Anna Example" /></div>
+    <div class="ev-field"><label for={`${uid}-email`}>Email <span class="ev-req">*</span></label>
+      <input id={`${uid}-email`} type="email" name="email" required autocomplete="email" inputmode="email" placeholder="anna@example.ch" /></div>
+  </div>
+  <div class="ev-form__row">
+    <div class="ev-field"><label for={`${uid}-phone`}>Phone <span class="ev-req">*</span></label>
+      <input id={`${uid}-phone`} type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="+41 79 000 00 00" /></div>
+    <div class="ev-field"><label for={`${uid}-loc`}>Location</label>
+      <select id={`${uid}-loc`} name="standort">
+        <option value="">No preference</option>
+        {options.map((o) => <option value={o.value} selected={preselect !== '' && o.value === preselect}>{o.labelEn ?? o.label}</option>)}
+      </select></div>
+  </div>
+  <div class="ev-field"><label for={`${uid}-msg`}>Message <span class="ev-req">*</span></label>
+    <textarea id={`${uid}-msg`} name="anliegen" required placeholder={therapy ? `e.g. interest in ${therapy}, preferred times, any questions` : 'e.g. recurring neck pain, preferred times, any questions'}></textarea></div>
+  <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin-bottom:14px"></div>
+  <button class="ev-btn ev-btn--solid" type="submit"><span class="ev-btn__label">Send request</span></button>
+  <div class="ev-form__status" role="status" aria-live="polite" hidden></div>
+  <p class="ev-form__fine">Your data is treated confidentially and not shared. See our <a href="/datenschutz/" hreflang="de">privacy policy (German)</a>.</p>
+</form>
+<script is:inline define:vars={{ uid }}>
+  (function () {
+    var form = document.getElementById(uid);
+    if (!form) return;
+    // Prefill from ?standort= (links from location pages) when no fixed preselect is set.
+    var pre = form.dataset.preselect || new URLSearchParams(location.search).get('standort');
+    var sel = form.querySelector('[name="standort"]');
+    if (pre && sel && !form.dataset.preselect) {
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === pre || sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
+      }
+    }
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var status = form.querySelector('.ev-form__status');
+      var label = form.querySelector('.ev-btn__label');
+      function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (form.querySelector('[name="website"]').value.trim() !== '') return; // honeypot
+      var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
+      var token = tokenEl && tokenEl.value ? tokenEl.value : '';
+      if (!token) { show('error', 'Please confirm you are human and try again.'); return; }
+      var payload = {
+        typ: 'termin',
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        telefon: form.telefon.value.trim(),
+        standort: form.standort.value,
+        anliegen: form.anliegen.value.trim(),
+        quelle: form.dataset.source,
+        turnstileToken: token,
+      };
+      form.classList.add('is-sending');
+      if (label) { label.dataset.orig = label.textContent; label.textContent = 'Sending…'; }
+      try {
+        var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        var data = null; try { data = await res.json(); } catch (_) {}
+        if (res.ok && data && data.ok) {
+          form.reset();
+          show('success', 'Thank you! Your request has been received. We will get back to you personally.');
+        } else {
+          show('error', (data && data.error) || 'Could not send your request. Please try again or call us.');
+        }
+      } catch (err) {
+        show('error', 'Connection error. Please try again.');
+      } finally {
+        form.classList.remove('is-sending');
+        if (label && label.dataset.orig) label.textContent = label.dataset.orig;
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
+      }
+    });
+  })();
+</script>

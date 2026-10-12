@@ -1,5 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import HeroSplit from '../../../components/en/HeroSplit.astro';
+import CtaBand from '../../../components/en/CtaBand.astro';
 import { site } from '../../../data/site';
 import {
   therapies, INSURANCE_FAQ, REVIEWED_DATE, enTherapyPath, therapyBySlug, therapyImages, type Therapy,
@@ -92,22 +94,15 @@ const breadcrumbLd = {
 };
 ---
 <Layout title={title} description={description} path={path} schema={[procedureLd, medicalLd, faqLd, breadcrumbLd]}>
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Therapies</div>
-      <h1>{h1}</h1>
-      <p class="lead">{lead}</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href={`tel:+${site.whatsapp}`}>Call us</a>
-      </div>
-      {image && (
-        <figure class="hero-figure">
-          <img src={image.src} alt={image.alt} width="1120" height="746" loading="eager" decoding="async" />
-        </figure>
-      )}
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · Therapies"
+    h1={h1}
+    lead={lead}
+    ctas={[{ href: contactHref, label: 'Request an appointment' }, { href: '/en/locations/', label: 'Find a clinic', kind: 'outline' }]}
+    trust={['EMR-/ASCA-recognised practitioners', 'Billed via supplementary insurance', 'English-speaking requests']}
+    image={image ? { src: image.src, alt: image.alt, caption: 'TCM.ch clinic' } : undefined}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { href: '/en/therapies/', label: 'Therapies' }, { label: name }]}
+  />
 
   <section class="section">
     <div class="wrap prose">
@@ -157,8 +152,8 @@ const breadcrumbLd = {
       </div>
 
       <div class="cta-row">
-        <a class="btn btn--primary" href={contactHref}>Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/therapies/">← All therapies</a>
+        <a class="ev-btn ev-btn--solid" href={contactHref}>Request an appointment</a>
+        <a class="ev-btn ev-btn--outline" href="/en/therapies/">All therapies</a>
       </div>
 
       <p class="disclaimer">
@@ -169,20 +164,23 @@ const breadcrumbLd = {
   </section>
 
   {relatedTherapies.length > 0 && (
-    <section class="section">
+    <section class="ev-section ev-section--tint">
       <div class="wrap">
-        <h2>Related therapies</h2>
-        <div class="cards">
+        <p class="ev-label">Related</p>
+        <h2 class="ev-h2">Related therapies</h2>
+        <div class="ev-grid">
           {relatedTherapies.map((t) => (
-            <a class="card" href={enTherapyPath(t.slug)}>
-              <h3>{t.name}</h3>
-              <p>{t.summary}</p>
+            <a class="ev-card ev-card--media" href={enTherapyPath(t.slug)}>
+              {therapyImages[t.slug] && <img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />}
+              <div class="ev-card__body"><h3>{t.name}</h3><p>{t.summary}</p></div>
             </a>
           ))}
         </div>
       </div>
     </section>
   )}
+
+  <CtaBand title={`Interested in ${name}?`} text="Tell us briefly what is going on and where you would like to be seen. The practitioner decides with you at the first appointment whether this method is sensible." primary={{ href: contactHref, label: 'Request an appointment' }} secondary={{ href: '/en/locations/', label: 'Find a clinic' }} />
 </Layout>
 
 <style>

@@ -1,117 +1,84 @@
 ---
+// /en/contact/ — EN V2 shared appointment experience: Mint hero, status-aware form (same endpoint as DE),
+// direct channels (WhatsApp, phone, email) and location picker. DE twin: /kontakt/ (PAIR_MAP).
 import Layout from '../../layouts/Layout.astro';
-import { site, standorte } from '../../data/site';
-import { expandStandort } from '../../data/standort-optionen';
+import HeroSplit from '../../components/en/HeroSplit.astro';
+import AppointmentForm from '../../components/en/AppointmentForm.astro';
+import { site } from '../../data/site';
+import { clinics, enLocationPath } from '../../data/locations';
+import { waHref } from '../../data/standorte';
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'ContactPage',
-  name: 'Request an appointment - TCM.ch',
-  url: 'https://tcm.ch/en/contact/',
-  inLanguage: 'en',
-};
+const path = '/en/contact';
+const open = clinics.filter((c) => c.status === 'operational');
+const upcoming = clinics.filter((c) => c.status !== 'operational');
+const phone = '+41 77 523 61 22';
+const wa = waHref(phone, 'Hello, I would like to request an appointment.');
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'ContactPage', name: 'Request an appointment - TCM.ch', url: 'https://tcm.ch/en/contact/', inLanguage: 'en',
+    about: { '@id': 'https://tcm.ch/#org' } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://tcm.ch/en/' },
+    { '@type': 'ListItem', position: 2, name: 'Request an appointment', item: 'https://tcm.ch/en/contact/' },
+  ] },
+];
 ---
 <Layout
-  title="Request an appointment"
-  description="Request a TCM appointment at one of our Swiss clinics. Tell us briefly what's going on and your preferred location; we get back to you personally."
-  path="/en/contact"
+  title="Request an Appointment · Acupuncture & TCM | TCM.ch"
+  description="Request a TCM appointment at one of our Swiss clinics in English: tell us briefly what is going on and your preferred location. Personal reply, no referral needed."
+  path={path}
   schema={schema}
 >
-  <section class="hero">
+  <HeroSplit
+    variant="hub"
+    eyebrow="TCM.ch · Appointments"
+    h1="Request an <em>appointment</em>"
+    lead="Tell us briefly what is going on and your preferred location. We reply personally in English or German, usually with a concrete suggestion for a clinic and a time."
+    ctas={[{ href: '#appointment', label: 'Go to the form' }, { href: wa, label: 'WhatsApp', kind: 'wa', external: true }]}
+    trust={['No referral needed', 'Billed via supplementary insurance', 'Personal reply, not a bot']}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Request an appointment' }]}
+  />
+
+  <section class="ev-section" id="appointment">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch</div>
-      <h1>Request an appointment</h1>
-      <p class="lead">Tell us briefly what's going on and your preferred location - we'll get back to you personally.</p>
+      <div class="ev-split">
+        <AppointmentForm id="en-contact-form" source="/en/contact" heading="Your request" intro="Required fields are marked. Pick a location if you already know where you would like to be seen; otherwise we suggest the nearest clinic." />
+        <aside class="ev-panel" aria-label="Direct contact">
+          <h3>Prefer to talk?</h3>
+          <p><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <a class="ev-btn ev-btn--wa" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+          <hr />
+          <h3>What happens next</h3>
+          <p>We read every request personally and reply with a suggested clinic and time. For planned locations we register your interest and suggest an open clinic nearby if you prefer.</p>
+          <hr />
+          <h3>Costs &amp; insurance</h3>
+          <p style="font-size:14px;color:rgba(2,11,16,.68)">Treatment is billed through supplementary insurance for complementary medicine; what is reimbursed depends on your policy. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="ev-section ev-section--tint" id="locations">
     <div class="wrap">
-      <form class="form-card" id="en-contact-form">
-        <!-- Honeypot (leave empty) -->
-        <div class="hp" aria-hidden="true">
-          <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
-        </div>
-
-        <div class="form-row">
-          <div class="field"><label for="c-name">Name <span class="req">*</span></label>
-            <input id="c-name" type="text" name="name" required autocomplete="name" placeholder="Anna Müller" /></div>
-          <div class="field"><label for="c-email">Email <span class="req">*</span></label>
-            <input id="c-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="anna@example.ch" /></div>
-        </div>
-
-        <div class="form-row">
-          <div class="field"><label for="c-phone">Phone <span class="req">*</span></label>
-            <input id="c-phone" type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="+41 79 000 00 00" /></div>
-          <div class="field"><label for="c-loc">Location</label>
-            <select id="c-loc" name="standort">
-              <option value="">No preference</option>
-              {standorte.flatMap((s) => expandStandort(s.label)).map((o) => <option value={o.value}>{o.labelEn ?? o.label}</option>)}
-            </select></div>
-        </div>
-
-        <div class="field"><label for="c-msg">Message <span class="req">*</span></label>
-          <textarea id="c-msg" name="anliegen" required placeholder="e.g. recurring neck pain, preferred times, any questions"></textarea></div>
-
-        <div class="cf-turnstile" data-sitekey={site.turnstileSitekey} style="margin-bottom:14px"></div>
-
-        <button class="btn btn--primary" type="submit"><span class="btn-label">Send request</span></button>
-        <div class="form-status" role="status" aria-live="polite" hidden></div>
-        <p style="font-size:13px;color:var(--mid);margin-top:14px">Your data is treated confidentially and not shared. See our <a href="/datenschutz/" style="color:var(--blue)">privacy policy</a>.</p>
-      </form>
+      <p class="ev-label">Where</p>
+      <h2 class="ev-h2">Choose a location</h2>
+      <p class="ev-sub">Each location page has its own form with the clinic preselected, plus address, opening hours and the treatments offered there.</p>
+      <div class="ev-grid ev-grid--4">
+        {open.map((c) => (
+          <a class="ev-card" href={enLocationPath(c.id)}>
+            <span class="ev-card__meta">{c.postalCode} {c.city}</span>
+            <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
+            <p>{c.street}</p>
+          </a>
+        ))}
+        {upcoming.map((c) => (
+          <a class="ev-card" href={enLocationPath(c.id)}>
+            <span class="ev-card__meta">{c.city}</span>
+            <h3>{c.name}<span class="ev-badge">{c.status === 'review' ? 'Under review' : 'Planned'}</span></h3>
+            <p>{c.status === 'review' ? 'Status under review' : (c.openingNote ?? 'In preparation')}</p>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
-
-  <script is:inline>
-    // Prefill the location dropdown from ?standort= (links from location pages).
-    (function () {
-      var pre = new URLSearchParams(location.search).get('standort');
-      if (!pre) return;
-      var sel = document.getElementById('c-loc');
-      if (!sel) return;
-      for (var i = 0; i < sel.options.length; i++) {
-        // planned clinics: first status-aware option (e.g. partner practice) starts with the name
-        if (sel.options[i].value === pre || sel.options[i].value.indexOf(pre + ' – ') === 0) { sel.selectedIndex = i; break; }
-      }
-    })();
-    document.getElementById('en-contact-form')?.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      var form = e.target;
-      var status = form.querySelector('.form-status');
-      var label = form.querySelector('.btn-label');
-      function show(state, msg) { status.hidden = false; status.setAttribute('data-state', state); status.textContent = msg; }
-      if (form.querySelector('[name="website"]').value.trim() !== '') return; // honeypot
-      var tokenEl = form.querySelector('[name="cf-turnstile-response"]');
-      var token = tokenEl && tokenEl.value ? tokenEl.value : '';
-      if (!token) { show('error', 'Please confirm you are human and try again.'); return; }
-      var payload = {
-        typ: 'termin',
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        telefon: form.telefon.value.trim(),
-        standort: form.standort.value,
-        anliegen: form.anliegen.value.trim(),
-        quelle: '/en/contact',
-        turnstileToken: token,
-      };
-      form.classList.add('is-sending');
-      if (label) { label.dataset.orig = label.textContent; label.textContent = 'Sending…'; }
-      try {
-        var res = await fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-        var data = null; try { data = await res.json(); } catch (_) {}
-        if (res.ok && data && data.ok) {
-          form.reset();
-          show('success', 'Thank you! Your request has been received - we will get back to you personally.');
-        } else {
-          show('error', (data && data.error) || 'Could not send your request. Please try again or call us.');
-        }
-      } catch (err) {
-        show('error', 'Connection error. Please try again.');
-      } finally {
-        form.classList.remove('is-sending');
-        if (label && label.dataset.orig) label.textContent = label.dataset.orig;
-        if (window.turnstile) { try { window.turnstile.reset(); } catch (_) {} }
-      }
-    });
-  </script>
 </Layout>

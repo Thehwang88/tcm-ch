@@ -1,5 +1,6 @@
 ---
 import { PAIR_MAP, PAIR_MAP_EN, site } from '../data/site';
+import { clinics, enLocationPath } from '../data/locations';
 interface Props { currentPath: string; lang?: 'en' | 'de'; }
 const { currentPath, lang = 'en' } = Astro.props;
 const isDe = lang === 'de';
@@ -68,19 +69,8 @@ const enDrawer = [
     { href: '/en/therapies/physiotherapy/', label: 'Physiotherapy' },
   ] },
   { label: 'Locations', hubHref: '/en/locations/', children: [
-    { href: '/en/locations/zuerich-oerlikon/', label: 'Zürich Oerlikon' },
-    { href: '/en/locations/zuerich-hoengg/', label: 'Zürich Höngg' },
-    
-    { href: '/en/locations/winterthur-muenzgasse/', label: 'Winterthur Münzgasse' },
-    { href: '/en/locations/winterthur-marktgasse/', label: 'Winterthur Marktgasse' },
-    { href: '/en/locations/st-gallen/', label: 'St. Gallen' },
-    { href: '/en/locations/frauenfeld/', label: 'Frauenfeld' },
-    { href: '/en/locations/kreuzlingen/', label: 'Kreuzlingen' },
-    { href: '/en/locations/bottighofen/', label: 'Bottighofen' },
-    { href: '/en/locations/rorschach/', label: 'Rorschach' },
-    { href: '/en/locations/wil/', label: 'Wil' },
-    { href: '/en/locations/volketswil/', label: 'Volketswil' },
-    { href: '/en/locations/basel/', label: 'Basel' },
+    ...clinics.filter((c) => c.status === 'operational').map((c) => ({ href: enLocationPath(c.id), label: c.name })),
+    ...clinics.filter((c) => c.status !== 'operational').map((c) => ({ href: enLocationPath(c.id), label: `${c.name} (${c.status === 'review' ? 'status pending' : 'planned'})` })),
   ] },
   { label: 'Knowledge', hubHref: '/en/knowledge/', children: [
     { href: '/en/knowledge/what-to-expect-first-acupuncture-session/', label: 'Your First Session' },

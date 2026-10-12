@@ -1,10 +1,17 @@
 ---
+// /en/ — EN V2 homepage. Mirrors the DE home Softriver split hero (Mint + team photo) and the
+// DE section flow: locations → therapies → conditions → how it works → insurance → knowledge → CTA.
 import Layout from '../../layouts/Layout.astro';
-import { site } from '../../data/site';
+import HeroSplit from '../../components/en/HeroSplit.astro';
+import CtaBand from '../../components/en/CtaBand.astro';
+import { clinics, enLocationPath } from '../../data/locations';
+import { therapies, enTherapyPath, therapyImages } from '../../data/therapies';
+import { conditions, enConditionPath } from '../../data/conditions';
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalOrganization',
+  '@id': 'https://tcm.ch/#org',
   name: 'TCM.ch',
   url: 'https://tcm.ch/en/',
   logo: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png',
@@ -12,58 +19,124 @@ const schema = {
   areaServed: { '@type': 'Country', name: 'Switzerland' },
   availableLanguage: ['de-CH', 'en'],
 };
-
-const pillars = [
-  { h: 'Conditions', p: 'Back pain, migraine, sleep, fertility and more - what TCM can realistically help with.', href: '/en/conditions/' },
-  { h: 'Therapies', p: 'Acupuncture, Tuina, cupping, Chinese herbal medicine - methods and when they fit.', href: '/en/therapies/' },
-  { h: 'Locations', p: 'Clinics in Zürich, Winterthur, St. Gallen, Basel and the wider region. Lucerne is in preparation.', href: '/en/locations/' },
-  { h: 'Knowledge', p: 'Evidence-based articles from the practitioners who do these treatments daily.', href: '/en/knowledge/' },
+const open = clinics.filter((c) => c.status === 'operational');
+const upcoming = clinics.filter((c) => c.status !== 'operational');
+const featuredTherapies = ['acupuncture', 'cupping', 'tuina-massage', 'chinese-herbal-medicine'].map((s) => therapies.find((t) => t.slug === s)!);
+const steps = [
+  { h: 'Tell us what is going on', p: 'Form, WhatsApp or phone, in English or German. A short description of your complaint and preferred times is enough.' },
+  { h: 'Personal reply', p: 'We suggest a clinic and a time, and clarify questions about costs and insurance beforehand.' },
+  { h: 'First appointment', p: 'A thorough case history and TCM assessment, then an honest view of what is sensible and what is not.' },
+  { h: 'Treatment plan', p: 'Usually a short series of sessions, reassessed as we go. We say so if we think we cannot help.' },
+];
+const articles = [
+  { href: '/en/knowledge/what-to-expect-first-acupuncture-session/', h: 'Your first session', p: 'What happens at a first acupuncture appointment, step by step.' },
+  { href: '/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/', h: 'Cost in Switzerland', p: 'Typical session prices, tariff 590 and what insurers reimburse.' },
+  { href: '/en/knowledge/english-speaking-acupuncturist-switzerland/', h: 'English-speaking acupuncturist', p: 'How to find one, and what EMR/ASCA recognition means for you.' },
 ];
 ---
 <Layout
-  title="Acupuncture & Traditional Chinese Medicine in Switzerland | TCM.ch"
-  description="English-speaking acupuncture & TCM across Switzerland: EMR-/ASCA-recognised practitioners, covered by supplementary insurance."
+  title="Acupuncture & TCM in Switzerland · English-speaking clinics | TCM.ch"
+  description="English-speaking acupuncture & Traditional Chinese Medicine across German-speaking Switzerland: EMR-/ASCA-recognised practitioners, billed via supplementary insurance. Request an appointment."
   path="/en/"
   schema={schema}
 >
-  <section class="hero">
+  <HeroSplit
+    variant="home"
+    eyebrow="Traditional Chinese Medicine"
+    h1="Modern TCM<br>for a new<br>generation."
+    lead="Medical acupuncture and Traditional Chinese Medicine. Experienced practitioners. Clinics across German-speaking Switzerland, with requests in English."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '/en/conditions/', label: 'Explore conditions', kind: 'outline' }]}
+    trust={['EMR/ASCA recognised', 'Qualified practitioners', 'Locations across Switzerland']}
+    image={{ src: '/images/team-hero.jpg', alt: 'The TCM.ch team: six practitioners', width: 2000, height: 1500 }}
+  />
+
+  <section class="ev-section" id="locations">
     <div class="wrap">
-      <div class="eyebrow">TCM.ch - Swiss TCM network</div>
-      <h1>Acupuncture & Traditional Chinese Medicine in Switzerland</h1>
-      <p class="lead">English-speaking acupuncture and Traditional Chinese Medicine across Switzerland - clinics with EMR-/ASCA-recognised practitioners, covered by supplementary insurance.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/locations/">Find a clinic</a>
+      <p class="ev-label">Our locations</p>
+      <h2 class="ev-h2">TCM &amp; acupuncture across <em>Switzerland.</em></h2>
+      <p class="ev-sub">Clinics and partner practices in German-speaking Switzerland. Choose the one that suits you best; each page lists the address, opening hours and treatments.</p>
+      <div class="ev-grid ev-grid--4">
+        {open.map((c) => (
+          <a class="ev-card" href={enLocationPath(c.id)}>
+            <span class="ev-card__meta">{c.postalCode} {c.city}</span>
+            <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
+            <p>{c.street}</p>
+          </a>
+        ))}
+        {upcoming.map((c) => (
+          <a class="ev-card" href={enLocationPath(c.id)}>
+            <span class="ev-card__meta">{c.city}</span>
+            <h3>{c.name}<span class="ev-badge">{c.status === 'review' ? 'Under review' : 'Planned'}</span></h3>
+            <p>{c.status === 'review' ? 'Status under review' : (c.openingNote ?? 'In preparation')}</p>
+          </a>
+        ))}
       </div>
-      <figure class="hero-figure">
-        <img src="/images/img-abe1bc75aeab.webp" alt="A TCM.ch practitioner in conversation with a patient" width="1086" height="1448" loading="eager" decoding="async" />
-      </figure>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/locations/">All locations</a> · <a href="/en/acupuncture-near-me/">Acupuncture near me</a></p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="ev-section ev-section--tint" id="therapies">
     <div class="wrap">
-      <h2>Explore TCM.ch</h2>
-      <div class="cards">
-        {pillars.map((c) => (
-          <a class="card" href={c.href}>
-            <h3>{c.h}</h3>
-            <p>{c.p}</p>
+      <p class="ev-label">Therapies</p>
+      <h2 class="ev-h2">Methods we use, and <em>when they fit.</em></h2>
+      <p class="ev-sub">Acupuncture, cupping, Tuina, Chinese herbal medicine and more. Every page explains the method, what a session is like and what the evidence says.</p>
+      <div class="ev-grid ev-grid--4">
+        {featuredTherapies.map((t) => (
+          <a class="ev-card ev-card--media" href={enTherapyPath(t.slug)}>
+            <img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
+            <div class="ev-card__body"><h3>{t.name}</h3><p>{t.summary}</p></div>
           </a>
+        ))}
+      </div>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/therapies/">All {therapies.length} therapies</a></p>
+    </div>
+  </section>
+
+  <section class="ev-section" id="conditions">
+    <div class="wrap">
+      <p class="ev-label">Conditions</p>
+      <h2 class="ev-h2">What TCM can <em>realistically</em> help with.</h2>
+      <p class="ev-sub">Honest, evidence-aware guides: how we work, how many sessions are realistic and when to see a doctor first.</p>
+      <div class="ev-grid ev-grid--4">
+        {conditions.map((c) => (
+          <a class="ev-card" href={enConditionPath(c.slug)}><h3>{c.condition}</h3><p>{c.summary}</p></a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="ev-section ev-section--tint" id="how-it-works">
     <div class="wrap">
-      <div class="eyebrow">Why TCM.ch</div>
-      <div class="cards">
-        <div class="card"><h3>EMR / ASCA recognised</h3><p>Our practitioners are EMR-/ASCA-recognised - the prerequisite for reimbursement through supplementary insurance.</p></div>
-        <a class="card" href="/en/health-insurance-acupuncture/"><h3>Does insurance cover acupuncture? →</h3><p>How Swiss basic vs. supplementary insurance covers acupuncture and TCM - a plain-English guide for expats.</p></a>
-        <a class="card" href="/en/acupuncture-near-me/"><h3>Acupuncture near you →</h3><p>Find your closest clinic in German-speaking Switzerland, with English-speaking practitioners.</p></a>
-        <div class="card"><h3>Personal reply</h3><p>Tell us briefly what's going on - we get back to you personally with a suggested appointment.</p></div>
+      <p class="ev-label">How it works</p>
+      <h2 class="ev-h2">From request to first appointment.</h2>
+      <ol class="ev-steps">
+        {steps.map((s) => <li><h3>{s.h}</h3><p>{s.p}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="ev-section" id="insurance">
+    <div class="wrap">
+      <p class="ev-label">Insurance &amp; costs</p>
+      <h2 class="ev-h2">Covered by supplementary insurance, <em>depending on your policy.</em></h2>
+      <div class="ev-grid">
+        <div class="ev-card"><h3>EMR / ASCA recognised</h3><p>Our practitioners hold EMR and/or ASCA recognition, the prerequisite for reimbursement through Swiss supplementary insurance for complementary medicine.</p></div>
+        <a class="ev-card" href="/en/health-insurance-acupuncture/"><h3>Does insurance cover acupuncture?</h3><p>Basic versus supplementary cover, what EMR/ASCA means and how reimbursement works, in plain English.</p><span class="ev-card__arrow">Read the guide →</span></a>
+        <a class="ev-card" href="/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/"><h3>How to claim</h3><p>Pay the clinic, receive an itemised invoice, submit it to your insurer. The steps, and what to check first.</p><span class="ev-card__arrow">Read the article →</span></a>
       </div>
     </div>
   </section>
+
+  <section class="ev-section ev-section--tint" id="knowledge">
+    <div class="wrap">
+      <p class="ev-label">Knowledge</p>
+      <h2 class="ev-h2">Written by the people who do this daily.</h2>
+      <div class="ev-grid">
+        {articles.map((a) => <a class="ev-card" href={a.href}><h3>{a.h}</h3><p>{a.p}</p></a>)}
+      </div>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/knowledge/">All articles</a></p>
+    </div>
+  </section>
+
+  <CtaBand secondary={{ href: '/en/locations/', label: 'Find a clinic' }} />
 </Layout>
