@@ -25,7 +25,7 @@ const { sitekey } = Astro.props;
         <a href="#online-buchen" class="lsr-btn-ghost">Termin direkt online buchen</a>
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
-      <p class="lsr-note">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung vereinbart.</p>
+      <p class="lsr-note hlsg-note-confirm">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung vereinbart.</p>
       <p class="lsr-note"><b>Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
     <div class="lsr-right hlsg-formcol">
@@ -58,14 +58,6 @@ const { sitekey } = Astro.props;
   </div>
 </section>
 
-<section class="hlsg-photo-sec" aria-label="Über die Praxis">
-  <div class="hlsg-photo-wrap">
-    <figure class="hlsg-photo">
-      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="lazy" decoding="async">
-      <figcaption><span class="hlsg-photo-label">Über die Praxis</span> TCM.ch St. Gallen · Oberer Graben 22 · wenige Gehminuten vom Bahnhof</figcaption>
-    </figure>
-  </div>
-</section>
 
 <style>
   
@@ -95,25 +87,13 @@ const { sitekey } = Astro.props;
   
 
   /* Pilot: form-led 50/50 hero. Right column holds the compact first-appointment card on the Mint surface;
-     the clinic photo moves into an "Über die Praxis" band directly below the hero. Mobile: copy, then card, then photo. */
+     the clinic photo lives in the leaf's "Über die Praxis" section (figure.up-photo). Mobile: copy, then card;
+     redundant copy is hidden on phones (hero primary CTA, confirmation note and card description repeat what the card/lead say). */
   .hlsg .lsr-right.hlsg-formcol { position: relative; min-height: 0; height: auto; container-type: normal; background: transparent;
     display: flex; align-items: center; justify-content: center; padding: clamp(28px, 4vw, 56px) clamp(24px, 4.5vw, 72px) clamp(28px, 4vw, 56px) 0; }
   .hlsg .hlsg-formcol .hlsg-card { width: 100%; max-width: 520px; margin: 0; }
-  .hlsg-photo-sec { background: var(--surface); padding: clamp(24px, 3vw, 40px) var(--pad-x) 0; font-family: var(--font-sans); }
-  .hlsg-photo-wrap { max-width: var(--max); margin: 0 auto; }
-  .hlsg-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 7; background: linear-gradient(180deg,#a2a3a4,#afafaf); }
-  .hlsg-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
-  .hlsg-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 11px 18px; font-size: 13px; font-weight: 600; color: #fff;
-    background: rgba(2,11,16,.86); }
-  .hlsg-photo-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-right: 10px; opacity: .85; }
   @media (max-width: 1023px) {
     .hlsg .lsr-right.hlsg-formcol { padding: 0 24px 32px; }
-    .hlsg-photo-sec { padding-left: 24px; padding-right: 24px; }
-    .hlsg-photo { aspect-ratio: 16 / 9; border-radius: 18px; }
-  }
-  @media (max-width: 767px) {
-    .hlsg-photo-sec { padding-left: 16px; padding-right: 16px; }
-    .hlsg-photo { aspect-ratio: 4 / 3; }
   }
 
   .hlsg-card {
@@ -165,7 +145,17 @@ const { sitekey } = Astro.props;
   .hlsg-success p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
 
   @media (max-width: 767px) {
-    .hlsg .lsr-right.hlsg-formcol { padding-left: 16px; padding-right: 16px; }
+    .hlsg .lsr-left { padding-bottom: 8px; }
+    .hlsg .lsr-lead { margin-bottom: 12px; }
+    .hlsg .lsr-trust { margin-bottom: 14px; gap: 6px 16px; }
+    .hlsg .lsr-ctas { margin-bottom: 10px; }
+    .hlsg .lsr-ctas .lsr-btn-primary { display: none; }   /* the card follows directly */
+    .hlsg .lsr-note.hlsg-note-confirm { display: none; }  /* repeated under the card */
+    .hlsg .lsr-tert { margin-bottom: 6px; }
+    .hlsg .hlsg-offer-note { display: none; }             /* repeats the hero lead */
+    .hlsg .hlsg-offer-big { margin: 4px 0 10px; }
+    .hlsg .hlsg-trust { gap: 7px; margin-bottom: 12px; }
+    .hlsg .lsr-right.hlsg-formcol { padding-left: 16px; padding-right: 16px; padding-bottom: 20px; }
     .hlsg-card { padding: 18px; }
     .hlsg-card, .hlsg-card * { max-width: 100%; }
     .hlsg-ts { max-width: 100%; overflow-x: auto; }
