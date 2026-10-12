@@ -1,5 +1,5 @@
 {
-  "_": "PREVIEW ONLY",
-  "claims": 8,
-  "cutoff": true
+  "_": "Nur für lokale Design-Vorschauen (docs/cro/07). Produktion: claims null, cutoff false. Das Gate check-first30.mjs erzwingt das.",
+  "claims": null,
+  "cutoff": false
 }
