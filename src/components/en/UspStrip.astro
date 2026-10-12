@@ -5,8 +5,8 @@ const shield = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stro
 const clock = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 const chat = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
 const items = [
-  { icon: shield, title: planned ? 'Billed via supplementary insurance' : 'Recognised by Swiss insurers',
-    sub: review ? 'At the practice we suggest for you.' : planned ? 'Applies to treatment once open, or at the partner practice today.' : 'EMR-/ASCA-recognised practitioners; reimbursement depends on your supplementary policy.' },
+  { icon: shield, title: 'Supplementary insurance',
+    sub: review ? 'At the practice we suggest: reimbursement may be available, depending on your policy and the practitioner\'s recognition.' : planned ? 'Once open, or at the partner practice today: reimbursement may be available, depending on your policy and the practitioner\'s recognition.' : 'Reimbursement may be available, depending on your policy, treatment and the practitioner\'s recognition.' },
   { icon: clock, title: planned ? 'Requests already possible' : 'Request an appointment directly',
     sub: review ? 'We suggest a suitable practice nearby.' : planned ? 'We contact you as soon as appointments open.' : partner ? 'TCM.ch coordinates your request with the practice.' : 'By WhatsApp, phone or the form below.' },
   { icon: chat, title: 'No referral needed', sub: 'Contact us in English or German; a personal reply, not a bot.' },

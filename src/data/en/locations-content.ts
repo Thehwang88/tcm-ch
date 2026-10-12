@@ -23,7 +23,7 @@ export interface LocationContent {
 }
 
 const SESSION_PRICE = 'A follow-up session is typically around CHF 130 to 160, billed under the recognised tariff 590 by treatment time. The first consultation takes longer because of the case history and costs accordingly more. We tell you the exact amount before your appointment.';
-const INSURANCE = 'Acupuncture and the other TCM methods are billed through supplementary insurance for complementary medicine, not basic insurance. How much is reimbursed depends on your insurer, your policy and the practitioner\'s EMR/ASCA registration; many policies cover a large share. We check your cover with you before any costs arise.';
+const INSURANCE = 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. We tell you which recognition (EMR/ASCA) the treating practitioner holds and check your cover with you before any costs arise.';
 const SESSIONS = 'For acute complaints it is usually clear after four to six sessions whether the treatment is helping. Chronic issues tend to need eight to twelve sessions. We start with one or two appointments a week and give you an honest interim assessment after four sessions.';
 const PARTNER_FAQ = (practice: string, street: string, phone: string): LocationFaq => ({
   q: 'What does "partner practice in the TCM.ch network" mean?',
@@ -37,12 +37,12 @@ const BOOK_FAQ = (name: string): LocationFaq => ({
 export const locationContent: Record<string, LocationContent> = {
   basel: {
     lead: 'Our Basel clinic at Steinenvorstadt 73, in the middle of the city centre: the same approach and the same methods as at our other locations.',
-    sub: 'Billed through supplementary insurance, depending on your insurer and policy. Requests are welcome in English or German.',
+    sub: 'Reimbursement may be available through supplementary insurance, depending on your policy. Requests are welcome in English or German.',
     about: [
       'Our Basel clinic is at Steinenvorstadt 73. Treatment follows the same principle as at every TCM.ch location: plenty of time per appointment and a clear diagnostic process.',
       'At your first appointment we take time to listen, look at any existing findings and carry out a TCM assessment. Only then do we decide whether acupuncture, cupping, Tuina or a herbal prescription makes sense, and in which order. If we think we cannot help you, we say so and point you elsewhere.',
       'Requests are possible in English or German. Being able to describe your symptoms precisely matters, especially during the case history.',
-      'What your supplementary insurance covers depends on your insurer and policy; we work it out with you beforehand. See our <a href="/en/health-insurance-acupuncture/">insurance guide</a>.',
+      'Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. We work it out with you beforehand; see our <a href="/en/health-insurance-acupuncture/">insurance guide</a>.',
     ],
     area: 'The clinic is easy to reach from Grossbasel and Kleinbasel, from Gundeli, St. Johann, St. Alban and Bachletten, and from Riehen, Allschwil, Binningen, Münchenstein, Birsfelden and Reinach. From Weil am Rhein, Lörrach and Grenzach-Wyhlen on the German side and Saint-Louis, Hégenheim and Mulhouse on the French side, the Basel city centre is often closer than the next larger centre at home.',
     faqs: [
@@ -63,14 +63,14 @@ export const locationContent: Record<string, LocationContent> = {
       'If you are looking for TCM in Kreuzlingen, you will find Praxis Hwang at Romanshornerstrasse 1, a partner practice in the TCM.ch network. Praxis Hwang runs the practice; TCM.ch is the network behind it. You request appointments through TCM.ch, we coordinate the request and answer questions about costs and insurance.',
       'The range includes acupuncture, Tuina, cupping, gua sha, moxibustion, electroacupuncture and individually composed herbal prescriptions. A TCM practice is only as good as the people in it; the practitioners\' public register entries are linked on the German page.',
     ],
-    area: 'The practice is close for all of Kreuzlingen, from the town centre via Egelshofen and Kurzrickenbach to Bernrain, and a short trip from Tägerwilen, Bottighofen, Münsterlingen, Lengwil, Altnau and Ermatingen. Konstanz is just across the border: treatment takes place in Switzerland and is billed through Swiss supplementary insurance.',
+    area: 'The practice is close for all of Kreuzlingen, from the town centre via Egelshofen and Kurzrickenbach to Bernrain, and a short trip from Tägerwilen, Bottighofen, Münsterlingen, Lengwil, Altnau and Ermatingen. Konstanz is just across the border: treatment takes place in Switzerland, and any reimbursement runs through a Swiss supplementary insurance policy.',
     faqs: [
       PARTNER_FAQ('Praxis Hwang', 'Romanshornerstrasse 1', '+41 79 837 46 81'),
       { q: 'What does a treatment cost in Kreuzlingen?', a: SESSION_PRICE + ' Herbal prescriptions are billed separately by formula.' },
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
       { q: 'How do I get there?', a: 'By train to Kreuzlingen or Kreuzlingen Hafen station, then on to Romanshornerstrasse 1. The practice is happy to advise on parking.' },
-      { q: 'Can I come from Konstanz?', a: 'Yes. Treatment takes place in Switzerland and is billed through Swiss supplementary insurance: cross-border commuters with Swiss supplementary cover submit the invoice like everyone else. Without Swiss supplementary insurance you pay yourself, at the same tariffs.' },
+      { q: 'Can I come from Konstanz?', a: 'Yes. Treatment takes place in Switzerland; reimbursement, where available, runs through a Swiss supplementary insurance policy, so cross-border commuters with Swiss supplementary cover submit the invoice like everyone else. Without Swiss supplementary insurance you pay yourself, at the same tariffs.' },
     ],
     nearby: ['frauenfeld', 'wil', 'st-gallen'],
   },
@@ -98,7 +98,7 @@ export const locationContent: Record<string, LocationContent> = {
     lead: 'Your TCM clinic with calm and experience.',
     sub: 'Our team looks after you on site, with experience from Switzerland and South Korea, plenty of time and every method we know.',
     about: [
-      'Our Rorschach clinic lies directly on the eastern shore of Lake Constance, easy to reach from the whole Rhine valley, Appenzell and the St. Gallen region. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. All practitioners are EMR-/ASCA-recognised.',
+      'Our Rorschach clinic lies directly on the eastern shore of Lake Constance, easy to reach from the whole Rhine valley, Appenzell and the St. Gallen region. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. Practitioner recognition (EMR/ASCA) is checked for you before the first appointment.',
     ],
     area: 'Our patients come from Rorschach, Rorschacherberg, Goldach and the Lake Constance region, from Arbon, Horn, Steinach, Tübach and Mörschwil, from the Rhine valley (Heiden, Walzenhausen, Berneck, Au, Thal, Altstätten) and from nearby Vorarlberg.',
     faqs: [
@@ -114,7 +114,7 @@ export const locationContent: Record<string, LocationContent> = {
     lead: 'Here you get time, not a standard solution.',
     sub: 'Our team looks after you on site, with experience from Switzerland and South Korea, plenty of time and every method we know.',
     about: [
-      'Our Volketswil clinic is centrally located in the Zürcher Oberland, easy to reach from the whole Glattal and the Uster/Dübendorf area. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. All practitioners are EMR-/ASCA-recognised.',
+      'Our Volketswil clinic is centrally located in the Zürcher Oberland, easy to reach from the whole Glattal and the Uster/Dübendorf area. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. Practitioner recognition (EMR/ASCA) is checked for you before the first appointment.',
     ],
     area: 'Our patients come from all parts of Volketswil (Zentrum, Gutenswil, Hegnau, Kindhausen) and from Uster, Dübendorf, Schwerzenbach, Greifensee, Wangen-Brüttisellen, Pfäffikon ZH and Mönchaltorf.',
     faqs: [
@@ -130,7 +130,7 @@ export const locationContent: Record<string, LocationContent> = {
     lead: 'Medical TCM, personal and unhurried.',
     sub: 'Our team looks after you on site, with experience from Switzerland and South Korea, plenty of time and every method we know.',
     about: [
-      'Our Wil clinic at Obere Bahnhofstrasse 35 lies in the heart of the Fürstenland, easy to reach from the whole Toggenburg, Thurgau and the St. Gallen region. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. All practitioners are EMR-/ASCA-recognised.',
+      'Our Wil clinic at Obere Bahnhofstrasse 35 lies in the heart of the Fürstenland, easy to reach from the whole Toggenburg, Thurgau and the St. Gallen region. We offer the full range of Traditional Chinese Medicine: acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. Practitioner recognition (EMR/ASCA) is checked for you before the first appointment.',
     ],
     area: 'Our patients come from all parts of Wil (town centre, Bronschhofen, Rossrüti, Schwarzenbach) and from Uzwil, Flawil, Bütschwil, Münchwilen TG, Sirnach, Niederuzwil and Henau.',
     faqs: [
@@ -214,7 +214,7 @@ export const locationContent: Record<string, LocationContent> = {
     lead: 'Acupuncture and TCM in the centre of St. Gallen, with time for a thorough assessment.',
     sub: 'Our clinic at Oberer Graben 22 in the city centre. Requests are welcome in English or German.',
     about: [
-      'Our St. Gallen clinic at Oberer Graben 22 lies in the city centre; the Oberer Graben bus stop is right outside. We offer acupuncture, cupping, Tuina massage, Chinese herbal medicine and related methods. All practitioners are EMR-/ASCA-recognised.',
+      'Our St. Gallen clinic at Oberer Graben 22 lies in the city centre; the Oberer Graben bus stop is right outside. We offer acupuncture, cupping, Tuina massage, Chinese herbal medicine and related methods. Practitioner recognition (EMR/ASCA) is checked for you before the first appointment.',
     ],
     area: 'Our patients come from St. Gallen and from Gaiserwald, Wittenbach, Mörschwil, Goldach, Eggersriet, Gossau, Herisau, Teufen and Speicher.',
     faqs: [

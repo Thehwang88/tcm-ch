@@ -73,12 +73,12 @@ const description = planned
     ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest; we contact you once appointments are possible.`
     : `Acupuncture & TCM in ${name}: ${openingLabel}. Not open yet; register your interest and we contact you once appointments are possible.`
   : partner
-  ? `Acupuncture & TCM in ${name}: ${partner.name}, ${street}. Partner practice in the TCM.ch network, requests in English. Billed via supplementary insurance.`
-  : `Acupuncture & TCM in ${name}, ${street}: EMR-/ASCA-recognised practitioners, requests in English. Billed via supplementary insurance, depending on your policy.`;
+  ? `Acupuncture & TCM in ${name}: ${partner.name}, ${street}. Partner practice in the TCM.ch network, requests in English. Reimbursement may be available via supplementary insurance, depending on your policy.`
+  : `Acupuncture & TCM in ${name}, ${street}: requests in English, personal reply. Reimbursement may be available via supplementary insurance, depending on your policy.`;
 const locationHook = street ? `${street} · ${postalCode} ${city}` : `${city} · ${openingLabel}`;
 const trust = planned
-  ? ['Requests already possible', 'Billed via supplementary insurance', 'Personal reply in English']
-  : ['Request by WhatsApp or phone', 'Supplementary insurance recognised', 'Personal reply in English'];
+  ? ['Requests already possible', 'Insurance cover checked with you', 'Personal reply in English']
+  : ['Request by WhatsApp or phone', 'Supplementary insurance: depends on your policy', 'Personal reply in English'];
 const crumbs = [{ href: '/en/', label: 'TCM.ch' }, { href: '/en/locations/', label: 'Locations' }, ...(city === 'Zürich' ? [{ href: '/en/acupuncture-zurich/', label: 'Zürich' }] : []), { label: name }];
 const primaryLabel = underReview ? 'Send your request' : planned ? 'Register your interest' : 'Request an appointment';
 const ctas = [
@@ -168,7 +168,7 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
           <a class="ev-btn ev-btn--solid" href="#appointment">{primaryLabel}</a>
           <a class="ev-btn ev-btn--wa" href={waTermin} target="_blank" rel="noopener" style="margin-top:10px;width:100%">WhatsApp</a>
           <hr />
-          <p style="font-size:14px;color:rgba(2,11,16,.68)">Insurance: EMR-/ASCA-recognised practitioners; reimbursement through supplementary insurance depends on your policy. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
+          <p style="font-size:14px;color:rgba(2,11,16,.68)">Insurance: Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner's recognition. We check this with you before the first appointment. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
         </aside>
       </div>
     </div>

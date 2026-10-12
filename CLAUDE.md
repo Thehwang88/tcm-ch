@@ -78,6 +78,7 @@
 - German is authoritative. Registry `src/data/i18n/registry.ts` (status, DE sources, images, links); workflow + gate in `docs/i18n.md`.
 - EN routes stay `/en/…`; pairs via `src/data/site.ts` PAIR_MAP. EN V2 shell: `src/styles/en-v2.css` + `src/components/en/*`, approved tokens only.
 - After build: `node scripts/check-i18n.mjs` (hreflang/canonical/sitemap/German-chrome/Outdated). `--update` only in the commit that publishes reviewed EN copy.
+- EN analytics contract: `node scripts/test-en-analytics.mjs` after build (booking/phone/WhatsApp clicks, form stages, no PII).
 - No EN facts outside `locations.ts`/`standorte.ts`; no auto-publish (statuses Missing → Draft → Needs clinical review → Approved → Published).
 
 ## Professional / B2B Layer

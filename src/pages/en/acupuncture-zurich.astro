@@ -36,7 +36,7 @@ const faqs = [
   { q: 'Do I need to know which practice is the right one?', a: 'No. Tell us where in Zürich you are looking for an appointment and what matters to you, the nearest practice or the earliest slot. We suggest the practice that fits.' },
   { q: 'Can I simply ask for the next available appointment?', a: 'Yes. Choose "Next available appointment in Zürich" in the form; we look for the earliest free slot at our Zürich practices and get back to you personally.' },
   { q: 'Can I ask from any Zürich district?', a: 'Yes. The network practices in Höngg and Oerlikon are reachable by public transport from the whole city. Tell us your district and we suggest the practice that fits.' },
-  { q: 'Are the costs covered by supplementary insurance?', a: 'Acupuncture and TCM are billed through supplementary insurance, not basic insurance. The practitioners are EMR-/ASCA-recognised; how much is reimbursed depends on your insurer and policy, and many policies cover a large share. We check your cover with you before the first appointment.' },
+  { q: 'Are the costs covered by supplementary insurance?', a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. We check the treating practitioner\'s recognition and your cover with you before the first appointment.' },
   { q: 'What if nothing is free at the nearest practice?', a: 'Then we offer you the next available appointment at another Zürich practice. You decide whether to wait or switch.' },
   { q: 'Is there a TCM.ch practice in the city centre?', a: 'A city-centre location is in preparation; there is no confirmed address or date yet, so it cannot be booked. Until then we treat you in Höngg and Oerlikon.' },
 ];
@@ -75,7 +75,7 @@ const schema = [
     lead="You do not need to know which of our practices is the right one. Tell us where in Zürich you are looking for an appointment; we check our practices and find the option that fits."
     sub="Today in Höngg and Oerlikon (Praxis Hwang partner practices); a new TCM.ch clinic in Oerlikon and a city-centre location are in preparation."
     ctas={[{ href: '#zh-funnel', label: 'Find an appointment' }, { href: wa, label: 'WhatsApp', kind: 'wa', external: true }]}
-    trust={['Request by WhatsApp or phone', 'Supplementary insurance recognised', 'Personal reply in English']}
+    trust={['Request by WhatsApp or phone', 'Supplementary insurance: depends on your policy', 'Personal reply in English']}
     note="Prefer to talk? Call <b>+41 77 523 61 22</b>."
     image={{ src: '/images/tcm-ch-crew-zuerich-west-1254.webp', alt: 'The TCM.ch team in Zürich West', caption: 'TCM.ch team, Zürich' }}
     crumbs={[{ href: '/en/', label: 'TCM.ch' }, { href: '/en/locations/', label: 'Locations' }, { label: 'Zürich' }]}
@@ -145,7 +145,7 @@ const schema = [
           </a>
         ))}
       </div>
-      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/therapies/">All therapies</a> · <a href="/en/health-insurance-acupuncture/">Supplementary insurance? We help you check.</a></p>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/therapies/">All therapies</a> · <a href="/en/health-insurance-acupuncture/">Supplementary insurance? We check your cover with you.</a></p>
     </div>
   </section>
 

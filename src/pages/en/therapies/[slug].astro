@@ -25,7 +25,7 @@ const contactHref = `/en/contact/?therapie=${encodeURIComponent(name)}`;
 const _titleEmr = `${titleTerm} in Switzerland | EMR-recognised | TCM.ch`;
 const title = _titleEmr.length > 60 ? `${titleTerm} in Switzerland | TCM.ch` : _titleEmr;
 const h1 = name;
-const description = `English-speaking ${titleTerm} in Switzerland: what ${keyword} is, what to expect, and typical uses. EMR-/ASCA-recognised.`;
+const description = `English-speaking ${titleTerm} in Switzerland: what ${keyword} is, what to expect, and typical uses. Reimbursement may be available via supplementary insurance.`;
 
 // Therapy-specific FAQs + the shared insurance FAQ (display + schema stay in sync).
 const faqs = [...therapy.faqs, INSURANCE_FAQ];
@@ -68,7 +68,7 @@ const medicalLd = {
     '@type': 'Organization',
     name: 'TCM.ch',
     url: 'https://tcm.ch/en/',
-    description: 'EMR-/ASCA-recognised practitioners of Traditional Chinese Medicine in Switzerland.',
+    description: 'Practitioners of Traditional Chinese Medicine in Switzerland; recognition (EMR/ASCA) is practitioner-specific.',
   },
 };
 
@@ -99,7 +99,7 @@ const breadcrumbLd = {
     h1={h1}
     lead={lead}
     ctas={[{ href: contactHref, label: 'Request an appointment' }, { href: '/en/locations/', label: 'Find a clinic', kind: 'outline' }]}
-    trust={['EMR-/ASCA-recognised practitioners', 'Billed via supplementary insurance', 'English-speaking requests']}
+    trust={['Supplementary insurance: depends on your policy', 'Recognition checked per practitioner', 'English-speaking requests']}
     image={image ? { src: image.src, alt: image.alt, caption: 'TCM.ch clinic' } : undefined}
     crumbs={[{ href: '/en/', label: 'TCM.ch' }, { href: '/en/therapies/', label: 'Therapies' }, { label: name }]}
   />
