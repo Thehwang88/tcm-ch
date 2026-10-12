@@ -133,7 +133,7 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-hero {
     --f30-pine: #14532D; --f30-pine-deep: #0E3D21; --f30-accent: #2E9E6B; --f30-ivory: #FFF9F3;
     --f30-gold: #F0CB91; --f30-ox: #541D2B; --f30-mint: var(--brand, #1AE288); --f30-black: var(--brand-black, #020B10);
-    --f30-ivory-72: rgba(255, 249, 243, .72); --f30-ivory-18: rgba(255, 249, 243, .18);
+    --f30-ivory-72: rgba(255, 249, 243, .84); --f30-ivory-18: rgba(255, 249, 243, .18);
     font-family: var(--font-sans);
   }
   .f30-hero .f30-inner { grid-template-areas: 'intro card' 'more card'; grid-template-rows: auto auto; align-content: center; }
@@ -192,8 +192,8 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-cta:focus-visible { outline: 3px solid var(--f30-ivory); outline-offset: 3px; }
   .f30-cta:disabled { cursor: progress; opacity: .85; transform: none; }
   .f30-cta-sub { font-size: 13px; font-weight: 700; text-align: center; color: var(--f30-ivory); margin: 2px 0 0; }
-  .f30-cta-sub2 { font-size: 12.5px; text-align: center; color: var(--f30-ivory-72); margin: 0; }
-  .f30-consent { font-size: 11.5px; line-height: 1.45; color: rgba(255, 249, 243, .62); text-align: center; margin: 2px 0 0; }
+  .f30-cta-sub2 { font-size: 13px; line-height: 1.5; text-align: center; color: var(--f30-ivory-72); margin: 0; }
+  .f30-consent { font-size: 12.5px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 2px 0 0; }
   .f30-consent a, .f30-alt a, .f30-terms summary { color: var(--f30-ivory); font-weight: 700; text-decoration: underline; text-decoration-color: var(--f30-mint); text-underline-offset: 3px; }
   .f30-consent a:focus-visible, .f30-alt a:focus-visible, .f30-terms summary:focus-visible { outline: 3px solid var(--f30-mint); outline-offset: 2px; border-radius: 4px; }
   .f30-form-err { font-size: 13px; color: #FFD9D9; background: rgba(0, 0, 0, .22); border: 1px solid rgba(255, 217, 217, .4); border-radius: 10px; padding: 8px 10px; line-height: 1.45; margin: 0; }
@@ -220,11 +220,11 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
   .f30-alt { text-align: center; font-size: 13.5px; margin: 14px 0 0; }
   .f30-alt--form { margin: 4px 0 0; }
-  .f30-disclaimer { font-size: 12px; line-height: 1.45; color: var(--f30-ivory-72); text-align: center; margin: 10px 0 0; }
-  .f30-terms { margin: 6px 0 0; text-align: center; font-size: 11.5px; line-height: 1.45; color: rgba(255, 249, 243, .62); }
+  .f30-disclaimer { font-size: 13px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 10px 0 0; }
+  .f30-terms { margin: 8px 0 0; text-align: center; font-size: 12.5px; line-height: 1.6; color: var(--f30-ivory-72); }
   .f30-terms summary { cursor: pointer; font-weight: 600; list-style: none; display: inline; }
   .f30-terms summary::-webkit-details-marker { display: none; }
-  .f30-terms p { margin: 6px 0 0; text-align: left; }
+  .f30-terms p { margin: 8px 0 0; text-align: left; }
   .f30-success { text-align: center; padding: 14px 4px; color: var(--f30-ivory); }
   .f30-success-check { width: 48px; height: 48px; margin: 0 auto 12px; border-radius: 50%; background: var(--f30-mint); color: var(--f30-black); display: grid; place-items: center; font-size: 24px; font-weight: 800; }
   .f30-success h3 { font-size: 20px; font-weight: 800; margin: 0 0 8px; letter-spacing: -.01em; color: var(--f30-ivory); }

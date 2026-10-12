@@ -5713,9 +5713,9 @@ body:has(> .symptom-scope > #page-beschwerden) .bx-az-btn:not(#w2){font-family:v
 .f30b-opt--gift input:checked+.f30b-box{border-color:#1AE288;box-shadow:0 0 0 1px #1AE288 inset,0 14px 30px -16px rgba(2,11,16,.5)}
 .f30b-opt--gift input:focus-visible+.f30b-box{outline-color:#14532D}
 .f30b-opt--gift:hover .f30b-box{border-color:rgba(26,226,136,.9)}
-.f30b-summary{margin:12px 0 0;padding:12px 14px;border-radius:14px;border:1px solid rgba(201,162,104,.6);background:#FFF9F3;color:#2a0f16}
+.f30b-summary{margin:12px 0 0;padding:12px 14px;border-radius:14px;border:1px solid rgba(20,83,45,.28);background:#FFF9F3;color:#020B10}
 .f30b-summary p{font-size:13.5px;line-height:1.5;margin:0}
-.f30b-summary strong{color:#541D2B}
+.f30b-summary strong{color:#14532D}
 .f30b-summary[hidden]{display:none}
 html body .btn-primary.f30b-cta:not(#w2):not(#w3){background:#14532D!important;color:#FFF9F3!important;border:1px solid rgba(26,226,136,.5)!important;box-shadow:0 14px 30px -12px rgba(2,11,16,.5)!important}
 html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!important}
