@@ -1,0 +1,6 @@
+week,from,to,ga4_landing_sessions_total,ga4_sessions_google_cpc,ga4_sessions_google_organic,ga4_sessions_direct,ga4_sessions_other,ga4_sessions_mobile,ga4_sessions_desktop,ads_cost_chf_sg_search,ads_cost_chf_pmax_sg_win,ga4_event_formular_senden_hero,ga4_event_formular_senden_bottom,ga4_event_wa_click,ga4_event_phone_click,inquiries_hero_form,inquiries_bottom_form,inquiries_whatsapp_attributed,inquiries_phone_attributed,inquiries_source_unknown,onedoc_bookings,confirmed_first_appointments_total,cancellations,no_shows,attended_first_appointments,followup_bookings_within_8_weeks,kpi_attended_per_100_sessions,kpi_inquiry_to_booking_rate,kpi_booking_to_attendance_rate,kpi_cost_per_attended_paid_chf,notes
+W1,2026-10-12,2026-10-18,,,,,,,,,,,,,,,,,,,,,,,,,=E/D*100 (attended/sessions*100),=(W/(Q+R+S+T+U+V)) (confirmed/all inquiries incl. OneDoc),=(Z/W) (attended/confirmed),=K/attended_from_paid (only if source known),
+W2,2026-10-19,2026-10-25,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+W3,2026-10-26,2026-11-01,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+W4,2026-11-02,2026-11-09,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+TOTAL,2026-10-12,2026-11-09,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
