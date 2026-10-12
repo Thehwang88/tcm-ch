@@ -31,6 +31,32 @@ ok(FIRST30.confirmedClaims == null || (!!FIRST30.verifiedAt && !!FIRST30.verifie
 ok(FIRST30.totalAllocation === 30, `Gesamtkapazität 30 (betriebliche Verfügbarkeit vor Launch prüfen); aktuell ${FIRST30.totalAllocation}`);
 ok(st.campaign === expectedState, `zustandsabhängig: erwarteter Zustand ${expectedState}, gerendert ${st.campaign}`);
 ok(st.showCampaign === (expectedState === 'active' || expectedState === 'soldout-waitlist'), 'Kampagnen-Hero nur für active/soldout-waitlist');
+// Reine Zustandsmatrix: testet die Modell- und CTA-Logik ohne Produktionsdateien oder Preview-Schalter zu ändern.
+const originalState = { active: FIRST30.campaignActive, count: FIRST30.confirmedClaims, waitlist: FIRST30.waitlistEnabled };
+const modelCases = [
+  ['unverified', true, null, true, 'active', 'unverified', true],
+  ['27/30', true, 27, true, 'active', 'verified', true],
+  ['28/30', true, 28, true, 'active', 'verified', true],
+  ['30/30-waitlist', true, 30, true, 'soldout-waitlist', 'full', true],
+  ['30/30-closed', true, 30, false, 'soldout-closed', 'full', false],
+  ['manual-closed', false, null, true, 'closed', 'unverified', false],
+  ['manual-closed-full', false, 30, true, 'closed', 'full', false],
+];
+try {
+  for (const [label, active, count, waitlist, wanted, indicatorMode, visible] of modelCases) {
+    FIRST30.campaignActive = active;
+    FIRST30.confirmedClaims = count;
+    FIRST30.waitlistEnabled = waitlist;
+    const state = m.first30State();
+    const currentCta = m.campaignCtaFor('st-gallen');
+    ok(state.campaign === wanted && state.indicator.mode === indicatorMode && state.showCampaign === visible && (!!currentCta) === visible,
+      `Modellzustand ${label}: ${wanted}, Indikator ${indicatorMode}, Geschenk-CTA ${visible ? 'sichtbar' : 'verborgen'}`);
+  }
+} finally {
+  FIRST30.campaignActive = originalState.active;
+  FIRST30.confirmedClaims = originalState.count;
+  FIRST30.waitlistEnabled = originalState.waitlist;
+}
 if (st.showCampaign) {
   const expectedHero = st.campaign === 'soldout-waitlist' ? 'soldout' : st.reserved == null ? 'max-only' : 'verified';
   ok(new RegExp(`data-first30="${expectedHero}"`).test(sg) && !/hlsg-card/.test(sg), `Promo-Hero Zustand ${st.campaign} / ${expectedHero}, regulärer Hero fehlt`);
