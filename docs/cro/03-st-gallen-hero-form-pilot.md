@@ -10,8 +10,8 @@ On high-intent clinic landing pages, a compact first-appointment form in the rig
 
 - **Hero right half** now holds the existing compact card `#offer-form` ("Dein Ersttermin in St. Gallen"; name, phone, optional e-mail, optional preferred time, Turnstile; primary "Ersttermin anfragen"; reassurance "Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung … vereinbart."). Same form element, name, hidden fields, submit handler and `formular_senden` push as PR #35.
 - **Hero left half** unchanged: eyebrow, H1, lead, trust ticks (EMR/ASCA, address, direct request), CTAs "Ersttermin anfragen" → `#offer-form` and "Termin direkt online buchen" → `#online-buchen` (existing OneDoc widget further down, not embedded in the hero), tel/WhatsApp fallback, opening hours.
-- **Clinic photo** (`/images/standort-stgallen.jpg`, authentic) moves into an "Über die Praxis" band directly below the hero: full content width, 24px radius, caption "TCM.ch St. Gallen · Oberer Graben 22 · wenige Gehminuten vom Bahnhof", lazy-loaded.
-- **Mobile/tablet** (<1024px): headline and trust first, then the card, then the photo; existing mobile bar (Ersttermin anfragen / OneDoc / call) and WhatsApp FAB untouched.
+- **Clinic photo** (`/images/standort-stgallen.jpg`, authentic) moves into the existing "Über die Praxis" section of the page (`figure.up-photo`, existing leaf styles: card radius, max-height 380px, lazy-loaded) directly above address, opening hours, phone, e-mail and the map, with the caption "TCM.ch St. Gallen · Oberer Graben 22 · wenige Gehminuten vom Bahnhof". No second photo hero under the first hero; the USP cards follow the hero immediately.
+- **Mobile/tablet** (<1024px): headline and trust first, then the card. On phones (≤767px) the copy that the card repeats is hidden (hero primary CTA, confirmation note, card description) and spacing is tightened; the OneDoc CTA, tel/WhatsApp links, hours, all four fields, Turnstile and the mobile bar stay. Hero height at 390: 1382px (first pilot) → 1107px.
 - Nothing else on the page changes; the bottom `#kontakt` form and the OneDoc widget `#online-buchen` stay where they are.
 
 ## Status-aware protection
@@ -20,12 +20,12 @@ On high-intent clinic landing pages, a compact first-appointment form in the rig
 
 ## Measurements (local build, A = PR #35 state, B = pilot)
 
-| Viewport | A hero / form top | B hero / form top | B photo band | Next section (USP) | Overflow |
+| Viewport | A hero / form top | B hero / form top | B photo | Next section (USP) top | Overflow |
 |---|---|---|---|---|---|
-| 390×844 | 998 / 998 (below hero) | 1382 / 697 (in hero) | 1406 (358×269) | 1675 | none |
-| 768×1024 | 774 / 774 | 1160 / 473 | 1184 (720×405) | 1589 | none |
-| 1440×900 | 677 / 677 | 850 / 132 (in first viewport) | 890 (1280×560) | 1450 | none |
-| 1920×1080 | 779 / 779 | 850 / 132 | 890 (1280×560) | 1450 | none |
+| 390×844 | 998 / 998 (below hero) | 1107 / 534 (in hero) | in "Über die Praxis" (342×257) | 1112 | none |
+| 768×1024 | 774 / 774 | 1176 / 473 | in "Über die Praxis" | 1176 | none |
+| 1440×900 | 677 / 677 | 866 / 132 (first viewport) | in "Über die Praxis" (920×380) | 866 | none |
+| 1920×1080 | 779 / 779 | 866 / 132 | in "Über die Praxis" | 866 | none |
 
 Form card 520×661 (desktop), same as before. Hero CTAs in view at every width. Page load in the local harness ~2 s (no OneDoc in the hero; widget loads where it did before).
 
@@ -34,10 +34,13 @@ Form card 520×661 (desktop), same as before. Hero CTAs in view at every width. 
 - Build 767 pages; gates: standort-ux 0, clinic-status 0, i18n strict 0, analytics 47/47.
 - St. Gallen: identical onclick sets, `dataLayer` (11), GTM (1), `data-sg-hero-form`, form name, Turnstile (5), form `name` attributes (28), wa.me (12), tel (7), OneDoc (1), `#online-buchen`, `#offer-form`, photo asset, title, canonical, H1, JSON-LD identical to the PR #35 build; href set identical except the page's own CSS chunk.
 - Form states with mocked API: success card after HTTP ok with `formular_senden {quelle:'launch-hero-sg'}`; error state on HTTP 500 with the button re-enabled; validation message on empty name/phone.
-- Accessibility census 390/768/1280/1440: 0 contrast failures (the previous figcaption item is resolved by the solid caption bar), 0 overflow, 0 console errors.
+- Accessibility census 390/768/1280/1440: 0 contrast failures, 0 overflow, 0 console errors.
+- Mobile form usability (390×844, touch): all four inputs and the submit button 320×47px (≥44px targets), 16px input font (no iOS zoom), `type=tel` / `type=email` keyboards, Turnstile container present in the card, submit button not covered by the fixed mobile bar at tap time (hit test = button), successful submission shows the success card and pushes `formular_senden {quelle:'launch-hero-sg'}`.
 - Other location pages: the component's scoped CSS is now served as the shared `_slug_` stylesheet link instead of an inline `<style>` (Astro inlining threshold); rendered output unchanged.
 
-## Evaluation plan (read-only analytics, no GTM/GA4 changes)
+## Release order and evaluation plan (read-only analytics, no GTM/GA4 changes)
+
+PR #38 stays in draft during the regular-booking baseline period after PR #35 is released; it is not merged directly after #35. Baseline and pilot use the same definitions: inquiries received, confirmed appointments, cancellations, no-shows, attended first treatments, follow-up bookings.
 
 1. Baseline window: 4 weeks of `/standorte/st-gallen/` before release (GA4: sessions by source/medium and device; `formular_senden` with `quelle = launch-hero-sg` vs bottom form; `wa_click`/phone events; OneDoc widget events as already bridged by the widget).
 2. Pilot window: same metrics for 4–6 weeks after release; same Ads campaigns and budgets (coordinate with Franca so campaign changes are logged).
@@ -48,5 +51,5 @@ Form card 520×661 (desktop), same as before. Hero CTAs in view at every width. 
 ## Open points for approval
 
 - Release order: PR #35 first, then this branch (re-verified against the new main).
-- Whether the "Erste Akupunktur noch in derselben Sitzung" bullet in the card should stay (it is a process statement, not an offer).
+- Bullet wording adopted from the owner review: "Falls medizinisch sinnvoll, kann die erste Behandlung bereits beim Ersttermin stattfinden." (via PR #35).
 - Franca: form name `Hero-Gratis-30min-StGallen`, `Quelle` and `Seite` payload values (see tracking doc T8) if the team wants clean source labels for the booking log.
