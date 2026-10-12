@@ -19,7 +19,7 @@ const bundle = async (patchLocations) => {
     b.onLoad({ filter: /src[\\/]data[\\/]locations\.ts$/ }, (a) => ({ contents: patchLocations(readFileSync(a.path, 'utf8')), loader: 'ts' }));
   } }] : [];
   const r = await build({
-    stdin: { contents: `export * from './src/data/locations'; export * from './src/data/standort-optionen'; export * from './src/data/zuerich-termin'; export { getStandort } from './src/data/standorte';`, resolveDir: process.cwd(), loader: 'ts' },
+    stdin: { contents: `export * from './src/data/locations'; export * from './src/data/standort-optionen'; export * from './src/data/zuerich-termin'; export { getStandort } from './src/data/standorte'; export { therapeuten } from './src/data/therapeuten'; export { CLINICAL_LEAD_SLUG } from './src/data/clinical-lead';`, resolveDir: process.cwd(), loader: 'ts' },
     bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent', plugins,
   });
   return import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64') + '#' + Math.random());
@@ -198,6 +198,25 @@ for (const c of m.clinics) {
   if (en) {
     if (c.status !== 'operational') ok(!/id="practitioners"/.test(en), `/en/locations/${c.id}/: keine lokalen Practitioner-Karten (Status ${c.status})`);
     ok(new RegExp(`data-clinical-lead="${c.status}"`).test(en) && (en.match(/data-clinical-lead=/g) ?? []).length === 1, `/en/locations/${c.id}/: genau ein Clinical-Lead-Block mit Status ${c.status}`);
+  }
+}
+
+// 4i. Lokale Teamkarten (DE .tmc-Karten der Seite, EN id="practitioners") entsprechen GENAU den kanonischen
+//     Zuordnungen therapeuten[].standorte[] - auch auf Legacy-Leaves (St. Gallen). Die netzwerkweite klinische
+//     Leitung erscheint nur dort als lokale Karte, wo sie kanonisch zugeordnet ist (Frauenfeld).
+const tmcLinks = (s) => [...new Set([...s.matchAll(/href="\/team\/([a-z0-9-]+)\/" class="tmc/g)].map((x) => x[1]))].sort();
+const enLinks = (s) => { const i = s.search(/<section[^>]*id="practitioners"/); if (i < 0) return []; return [...new Set([...s.slice(i, s.indexOf('</section>', i)).matchAll(/href="\/team\/([a-z0-9-]+)\/"/g)].map((x) => x[1]))].sort(); };
+for (const c of m.clinics.filter((x) => x.status === 'operational')) {
+  const canon = m.therapeuten.filter((t) => (t.standorte ?? []).includes(c.id)).map((t) => t.slug).sort();
+  const de = html.get(`dist/standorte/${c.id}/index.html`), en = html.get(`dist/en/locations/${c.id}/index.html`);
+  if (de) {
+    const links = tmcLinks(de);
+    ok(JSON.stringify(links) === JSON.stringify(canon), `/standorte/${c.id}/: lokale Teamkarten (.tmc) = kanonische Zuordnung [${canon}] (gefunden [${links}])`);
+    ok(links.includes(m.CLINICAL_LEAD_SLUG) === canon.includes(m.CLINICAL_LEAD_SLUG), `/standorte/${c.id}/: Clinical Lead als lokale Karte nur bei kanonischer Zuordnung (${canon.includes(m.CLINICAL_LEAD_SLUG) ? 'ja' : 'nein'})`);
+  }
+  if (en) {
+    const links = enLinks(en);
+    ok(JSON.stringify(links) === JSON.stringify(canon), `/en/locations/${c.id}/: Practitioner-Karten = kanonische Zuordnung [${canon}] (gefunden [${links}])`);
   }
 }
 

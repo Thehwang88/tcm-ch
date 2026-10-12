@@ -14,7 +14,7 @@ import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import homeBody from '../../data/home-body.html?raw';
-import { getTherapeut, teamCardHtml, getPublicTherapistProfile } from '../../data/therapeuten';
+import { getTherapeut, therapeuten, teamCardHtml, getPublicTherapistProfile } from '../../data/therapeuten';
 import { getStandort, waHref, telHref, standorte } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
 import { hautLinksFor, hautLinksHtml } from '../../data/haut-links';
@@ -174,17 +174,17 @@ if (migrated) {
   function endOfDiv(html: string, i: number) { const rx = /<div\b|<\/div>/g; rx.lastIndex = i; let d = 0; let m: RegExpExecArray | null; while ((m = rx.exec(html))) { if (m[0] === '</div>') { d--; if (d === 0) return m.index + 6; } else d++; } return html.length; }
   let outBody = body;
   if (slug === 'st-gallen') {
-    // Die hartcodierten Teamkarten des Leafs durch generierte Karten aus
-    // src/data/therapeuten.ts ersetzen - komplette Karte verlinkt auf /team/<slug>/.
+    // Lokales Team ausschliesslich aus den kanonischen Zuordnungen therapeuten[].standorte[]
+    // (gleiche Quelle wie Team.astro und EN Practitioners.astro; Gate check-clinic-status 4i).
+    // Keine hartcodierte Slug-Liste, kein stiller Fallback: fehlt der Grid-Marker, bricht der Build ab.
     const tg0 = outBody.indexOf('<div class="team-grid">');
-    if (tg0 >= 0) {
-      const cards = ['corinna-reinhart', 'astrid-lenggenhager']
-        .map((s) => getTherapeut(s))
-        .filter((x): x is NonNullable<typeof x> => !!x)
-        .map((x) => teamCardHtml(getPublicTherapistProfile(x)))
-        .join('');
-      outBody = outBody.slice(0, tg0) + '<div class="team-grid">' + cards + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
-    }
+    if (tg0 < 0) throw new Error('st-gallen: team-grid-Marker für die kanonischen Teamkarten nicht gefunden - Leaf geändert?');
+    const cards = therapeuten
+      .filter((t) => t.standorte?.includes('st-gallen'))
+      .map((t) => teamCardHtml(getPublicTherapistProfile(t)))
+      .join('');
+    if (!cards) throw new Error('st-gallen: keine Therapeut:innen mit standorte[] st-gallen in therapeuten.ts');
+    outBody = outBody.slice(0, tg0) + '<div class="team-grid">' + cards + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
   }
   if (slug === 'bottighofen') {
     const emanuela = getTherapeut('emanuela-pelican');
