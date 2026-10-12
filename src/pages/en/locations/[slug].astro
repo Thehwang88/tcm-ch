@@ -8,6 +8,7 @@ import StatusBanner from '../../../components/en/StatusBanner.astro';
 import UspStrip from '../../../components/en/UspStrip.astro';
 import AppointmentForm from '../../../components/en/AppointmentForm.astro';
 import CtaBand from '../../../components/en/CtaBand.astro';
+import Practitioners from '../../../components/en/Practitioners.astro';
 import { getStandort, waHref } from '../../../data/standorte';
 import { site } from '../../../data/site';
 import { clinics, enLocationPath, formatHours, locationImages, type Clinic } from '../../../data/locations';
@@ -174,7 +175,9 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
     </div>
   </section>
 
-  <section class="ev-section ev-section--tint" id="therapies">
+  {!planned && <Practitioners clinicId={id} clinicName={name} />}
+
+  <section class="ev-section ev-section" id="therapies">
     <div class="wrap">
       <p class="ev-label">Treatments</p>
       <h2 class="ev-h2">{planned ? `Planned treatments in ${name}` : `Treatments in ${name}`}</h2>

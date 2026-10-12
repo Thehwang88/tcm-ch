@@ -1,0 +1,43 @@
+---
+// EN practitioner cards for a clinic, built ONLY from the public whitelist in src/data/therapeuten.ts
+// (getPublicTherapistProfile). Nothing is translated that could change meaning: professional titles are shown
+// as published, languages are mapped, registrations shown only when status is 'anerkannt' (recognised).
+// No bios, no qualifications lists (German-only until reviewed) — the DE profile is linked and labelled.
+import { therapeuten, getPublicTherapistProfile, activeRegs, initials } from '../../data/therapeuten';
+interface Props { clinicId: string; clinicName: string }
+const { clinicId, clinicName } = Astro.props;
+const LANG: Record<string, string> = { Deutsch: 'German', Englisch: 'English', Schweizerdeutsch: 'Swiss German', Französisch: 'French', Italienisch: 'Italian', Japanisch: 'Japanese', Polnisch: 'Polish', Slowakisch: 'Slovak', Koreanisch: 'Korean', Spanisch: 'Spanish', Chinesisch: 'Chinese', Mandarin: 'Mandarin', Portugiesisch: 'Portuguese', Russisch: 'Russian' };
+const team = therapeuten
+  .filter((t) => (t.standorte ?? []).includes(clinicId))
+  .map((t) => getPublicTherapistProfile(t))
+  .map((p) => ({
+    slug: p.slug, name: p.name, title: p.titel, img: p.bild, ini: initials(p.name),
+    languages: (p.sprachen ?? []).map((l) => LANG[l] ?? l),
+    regs: activeRegs(p).map((r) => r.organisation),
+  }));
+---
+{team.length > 0 && (
+  <section class="ev-section ev-section--tint" id="practitioners">
+    <div class="wrap">
+      <p class="ev-label">Practitioners</p>
+      <h2 class="ev-h2">Who treats you in {clinicName}</h2>
+      <p class="ev-sub">Verified, as published by the practitioners themselves. Recognition is shown per practitioner; full profiles are currently in German.</p>
+      <div class="ev-grid">
+        {team.map((t) => (
+          <article class="ev-card ev-practitioner">
+            <div class="ev-practitioner__head">
+              {t.img ? <img src={t.img} alt={`Portrait of ${t.name}`} width="96" height="96" loading="lazy" decoding="async" /> : <span class="ev-practitioner__initials" aria-hidden="true">{t.ini}</span>}
+              <div>
+                <h3>{t.name}</h3>
+                <p class="ev-practitioner__title" lang="de">{t.title}</p>
+              </div>
+            </div>
+            {t.languages.length > 0 && <p class="ev-practitioner__meta"><strong>Languages:</strong> {t.languages.join(', ')}</p>}
+            {t.regs.length > 0 && <ul class="ev-badges" aria-label="Recognition">{t.regs.map((r) => <li>{r} recognised</li>)}</ul>}
+            <p class="ev-practitioner__meta"><a href={`/team/${t.slug}/`} hreflang="de">Full profile (German)</a></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
