@@ -5,7 +5,7 @@ description: "What actually happens at your first acupuncture appointment, wheth
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-4357832d6bef.webp"
 heroImageAlt: "An acupuncture treatment at a TCM.ch clinic"
 faq:

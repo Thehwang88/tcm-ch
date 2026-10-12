@@ -1,15 +1,16 @@
 ---
-// /en/acupuncture-zurich/ — citywide Zürich acquisition funnel (hub & spoke → the Zürich practices).
-// Counterpart of DE /akupunktur-tcm-zuerich/ (PAIR_MAP). NO clinic entity, no address, no hours here:
-// the practice entities live on the location pages. Zürich City is "in preparation" (DE page only,
-// no address) and is never offered as an appointment option. Form options come from zuerich-termin.ts.
+// /en/acupuncture-zurich/ — Zürich flagship funnel (Wave 2). Structure mirrors the DE homepage section
+// rhythm (split hero → trust strip → location discovery → therapies → conditions → steps → insurance →
+// local context → FAQ → final inline form + CTA). Counterpart of DE /akupunktur-tcm-zuerich/ (PAIR_MAP).
+// NO clinic entity, no address, no hours here: practice entities live on the location pages.
+// Facts only from locations.ts / zuerich-termin.ts; Zürich City is "in preparation" and never bookable.
 import Layout from '../../layouts/Layout.astro';
 import HeroSplit from '../../components/en/HeroSplit.astro';
 import UspStrip from '../../components/en/UspStrip.astro';
 import AppointmentForm from '../../components/en/AppointmentForm.astro';
 import CtaBand from '../../components/en/CtaBand.astro';
 import { site } from '../../data/site';
-import { enLocationPath, type Clinic } from '../../data/locations';
+import { enLocationPath, formatHours, type Clinic } from '../../data/locations';
 import { zuerichStandorte, ZH_FLEXIBEL } from '../../data/zuerich-termin';
 import { waHref } from '../../data/standorte';
 import { therapies, enTherapyPath, therapyImages } from '../../data/therapies';
@@ -18,10 +19,14 @@ import { conditions, enConditionPath } from '../../data/conditions';
 const path = '/en/acupuncture-zurich/';
 const url = site.url + path;
 const zh: Clinic[] = zuerichStandorte();
+const hoengg = zh.find((c) => c.id === 'zuerich-hoengg')!;
+const oerlikon = zh.find((c) => c.id === 'zuerich-oerlikon')!;
 const phone = '+41 77 523 61 22';
+const telHref = 'tel:' + phone.replace(/\s/g, '');
 const wa = waHref(phone, 'Hello, I am looking for a TCM practice in Zürich.');
+const INSURANCE = "Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner's recognition.";
 
-// Form options: operational Zürich practices → name; planned → vorab options (EN label, DE value);
+// Form options: operational Zürich practices → name; planned → vorab options (EN label, DE routing value);
 // plus the flexible option (same value as the DE funnel so routing stays identical).
 const options = [
   ...zh.flatMap((c) => c.status === 'operational'
@@ -29,20 +34,20 @@ const options = [
     : (c.vorab ?? []).map((o) => ({ value: o.value, label: o.labelEn ?? o.label }))),
   { value: ZH_FLEXIBEL.value, label: 'Next available appointment in Zürich' },
 ];
+const oerlikonPartner = oerlikon.vorab?.find((o) => /partner/i.test(o.value));
+const oerlikonNew = oerlikon.vorab?.find((o) => !/partner/i.test(o.value));
 const districts = ['City / Centre', 'Stadelhofen', 'Seefeld', 'Hottingen', 'Enge', 'Wiedikon', 'Altstetten', 'Zürich West', 'Wollishofen', 'Oerlikon', 'Höngg', 'Unterstrass', 'Oberstrass', 'Schwamendingen', 'Affoltern', 'Albisrieden', 'Zürichberg'];
-const featured = ['acupuncture', 'cupping', 'tuina-massage', 'chinese-herbal-medicine'].map((s) => therapies.find((t) => t.slug === s)!);
-const topConditions = ['back-pain', 'neck-pain', 'migraine-headaches', 'sleep-problems', 'stress-burnout', 'fertility-support'].map((s) => conditions.find((c) => c.slug === s)!);
+const featured = ['acupuncture', 'chinese-herbal-medicine', 'tuina-massage', 'cupping'].map((s) => therapies.find((t) => t.slug === s)!);
+const topConditions = ['back-pain', 'neck-pain', 'migraine-headaches', 'stress-burnout', 'sleep-problems', 'fertility-support'].map((s) => conditions.find((c) => c.slug === s)!);
 const faqs = [
-  { q: 'Do I need to know which practice is the right one?', a: 'No. Tell us where in Zürich you are looking for an appointment and what matters to you, the nearest practice or the earliest slot. We suggest the practice that fits.' },
-  { q: 'Can I simply ask for the next available appointment?', a: 'Yes. Choose "Next available appointment in Zürich" in the form; we look for the earliest free slot at our Zürich practices and get back to you personally.' },
-  { q: 'Can I ask from any Zürich district?', a: 'Yes. The network practices in Höngg and Oerlikon are reachable by public transport from the whole city. Tell us your district and we suggest the practice that fits.' },
-  { q: 'Are the costs covered by supplementary insurance?', a: 'Not through basic insurance. Reimbursement may be available through Swiss supplementary insurance, depending on your policy, treatment and the individual practitioner\'s recognition. We check the treating practitioner\'s recognition and your cover with you before the first appointment.' },
-  { q: 'What if nothing is free at the nearest practice?', a: 'Then we offer you the next available appointment at another Zürich practice. You decide whether to wait or switch.' },
-  { q: 'Is there a TCM.ch practice in the city centre?', a: 'A city-centre location is in preparation; there is no confirmed address or date yet, so it cannot be booked. Until then we treat you in Höngg and Oerlikon.' },
+  { q: 'Which Zürich practice should I choose?', a: 'You do not have to decide. Tell us your district and what matters to you, the nearest practice or the earliest slot, and we suggest the practice that fits. Today that is Höngg (Limmattalstrasse 340) or Oerlikon (Praxis Hwang, Schulstrasse 3); both are partner practices in the TCM.ch network.' },
+  { q: 'Can I request the earliest available appointment?', a: 'Yes. Choose "Next available appointment in Zürich" in the form. We look for the earliest free slot at our Zürich practices and get back to you personally with a proposal.' },
+  { q: 'Can I communicate in English?', a: 'Yes. Requests, replies and appointment coordination are in English or German, as you prefer. Tell us if you would like to be treated in English and we take that into account when suggesting a practice.' },
+  { q: 'Does supplementary insurance reimburse acupuncture?', a: 'Not through basic insurance. ' + INSURANCE + ' We tell you which recognition (EMR/ASCA) the treating practitioner holds and check your cover with you before the first appointment.' },
+  { q: 'Are the city-centre and the new Oerlikon clinics open?', a: `No. The new TCM.ch clinic at ${oerlikon.street} in Oerlikon is in preparation (${oerlikon.openingNote?.toLowerCase() ?? 'date not confirmed'}, not yet final); you can register your interest for it. A city-centre location is also in preparation, with no confirmed address or date. Neither can be booked today. Until then we treat you at the partner practices in Höngg and Oerlikon.` },
+  { q: 'What happens after I submit the form?', a: 'We read your request personally and reply, usually with a concrete suggestion for a practice and a time. Nothing is booked automatically: your appointment is confirmed by the team once you agree to the proposal. You can also reach us on WhatsApp or by phone.' },
 ];
-const practiceDesc = (c: Clinic) => c.status === 'operational'
-  ? (c.betreiber ? `${c.betreiber.name}, ${c.street}. Partner practice; TCM.ch coordinates your request.` : `${c.street}, ${c.postalCode} ${c.city}.`)
-  : `Partner practice Praxis Hwang, Schulstrasse 3 today; new TCM.ch clinic at ${c.street} planned (${c.openingNote ?? 'in preparation'}).`;
+const hoenggHours = hoengg.openingHours.map(formatHours);
 
 const schema = [
   {
@@ -51,8 +56,9 @@ const schema = [
     about: { '@id': 'https://tcm.ch/#org' }, publisher: { '@id': 'https://tcm.ch/#org' },
     spatialCoverage: { '@type': 'City', name: 'Zürich' },
     mainEntity: { '@type': 'ItemList', itemListElement: [
-      ...zh.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.betreiber ? `${c.name} – ${c.betreiber.name}, partner practice in the TCM.ch network` : `${c.name} – Praxis Hwang (Schulstrasse 3) and planned TCM.ch clinic (${c.street})`, url: `https://tcm.ch${enLocationPath(c.id)}` })),
-      { '@type': 'ListItem', position: zh.length + 1, name: 'Zürich City – location in preparation (German page)', url: 'https://tcm.ch/standorte/zuerich-city/' },
+      { '@type': 'ListItem', position: 1, name: `Zürich Höngg – ${hoengg.betreiber?.name}, partner practice in the TCM.ch network`, url: `https://tcm.ch${enLocationPath(hoengg.id)}` },
+      { '@type': 'ListItem', position: 2, name: `Zürich Oerlikon – Praxis Hwang (Schulstrasse 3) and planned TCM.ch clinic (${oerlikon.street})`, url: `https://tcm.ch${enLocationPath(oerlikon.id)}` },
+      { '@type': 'ListItem', position: 3, name: 'Zürich City – location in preparation (German page)', url: 'https://tcm.ch/standorte/zuerich-city/' },
     ] },
   },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -62,102 +68,221 @@ const schema = [
   ] },
   { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'en', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
+const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
 ---
 <Layout
-  title="Acupuncture & TCM in Zürich · Höngg & Oerlikon practices | TCM.ch"
-  description="Acupuncture & TCM in Zürich in English: Praxis Hwang partner practices in Höngg and Oerlikon, new TCM.ch clinic at Ohmstrasse 14 planned. Tell us your district; we find the appointment."
+  title="Acupuncture & TCM in Zürich · English-speaking appointments | TCM.ch"
+  description="Acupuncture & TCM in Zürich in English: partner practices in Höngg and Oerlikon, a new TCM.ch clinic in preparation. Tell us your district or ask for the next available appointment."
   path={path}
   schema={schema}
 >
+  <!-- 1 · Split hero (DE homepage .sr-hero concept: Mint left, team photo right) -->
   <HeroSplit
+    variant="home"
     eyebrow="TCM.ch · Zürich"
-    h1="Acupuncture &amp; TCM in <em>Zürich</em>"
-    lead="You do not need to know which of our practices is the right one. Tell us where in Zürich you are looking for an appointment; we check our practices and find the option that fits."
-    sub="Today in Höngg and Oerlikon (Praxis Hwang partner practices); a new TCM.ch clinic in Oerlikon and a city-centre location are in preparation."
+    h1="Acupuncture &amp; TCM<br>in <em>Zürich.</em>"
+    lead="Medical acupuncture and Traditional Chinese Medicine for people living in Zürich. Tell us what is going on and where you are; we find the practice and the appointment that fit, in English."
     ctas={[{ href: '#zh-funnel', label: 'Find an appointment' }, { href: wa, label: 'WhatsApp', kind: 'wa', external: true }]}
-    trust={['Request by WhatsApp or phone', 'Supplementary insurance: depends on your policy', 'Personal reply in English']}
-    note="Prefer to talk? Call <b>+41 77 523 61 22</b>."
-    image={{ src: '/images/tcm-ch-crew-zuerich-west-1254.webp', alt: 'The TCM.ch team in Zürich West', caption: 'TCM.ch team, Zürich' }}
-    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { href: '/en/locations/', label: 'Locations' }, { label: 'Zürich' }]}
+    trust={['Personal reply in English', 'Practices in Höngg and Oerlikon', 'No referral needed']}
+    note={`Prefer to talk? Call <b>${phone}</b>.`}
+    image={{ src: '/images/team-hero.jpg', alt: 'The TCM.ch team: six practitioners', width: 2000, height: 1500 }}
   />
-  <UspStrip />
 
+  <!-- 2 · Trust / USP strip -->
+  <UspStrip items={[
+    { icon: 'chat', title: 'Personal appointment coordination', sub: 'A person reads your request and replies with a concrete proposal. Nothing is booked automatically.' },
+    { icon: 'users', title: 'Qualified practitioners', sub: 'Trained in TCM, experienced in Switzerland. Recognition (EMR/ASCA) is practitioner-specific; we tell you before you book.' },
+    { icon: 'pin', title: 'Zürich locations', sub: 'Höngg (district 10) and Oerlikon (district 11) today, reachable by public transport from the whole city.' },
+    { icon: 'shield', title: 'Supplementary insurance guidance', sub: 'Reimbursement may be available depending on your policy. We check your cover with you first.' },
+  ]} />
+
+  <!-- 3 · Find your Zürich practice (DE home location discovery, Zürich-specific) -->
   <section class="ev-section" id="practices">
     <div class="wrap">
-      <p class="ev-label">Our practices in Zürich</p>
-      <h2 class="ev-h2">Two practices today, more in preparation.</h2>
+      <p class="ev-label">Find your Zürich practice</p>
+      <h2 class="ev-h2">Two practices today, <em>more in preparation.</em></h2>
+      <p class="ev-sub">Choose a practice, or let us pick the earliest slot for you. Partner practices are independent practices in the TCM.ch network; TCM.ch coordinates your request.</p>
       <div class="ev-grid">
-        {zh.map((c) => (
-          <a class="ev-card" href={enLocationPath(c.id)}>
-            <span class="ev-card__meta">{c.postalCode} {c.city}</span>
-            <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}{c.status !== 'operational' && <span class="ev-badge">Planned</span>}</h3>
-            <p>{practiceDesc(c)}</p>
-            <span class="ev-card__arrow">Details &amp; appointment →</span>
-          </a>
-        ))}
-        <a class="ev-card" href="/standorte/zuerich-city/" hreflang="de">
-          <span class="ev-card__meta">Zürich</span>
-          <h3>Zürich City<span class="ev-badge">In preparation</span><span class="ev-badge ev-badge--neutral">DE</span></h3>
-          <p>A city-centre location is in preparation: no confirmed address or date yet, not bookable. Details on the German page.</p>
-        </a>
+        <div class="ev-pick">
+          <span class="ev-card__meta">{hoengg.postalCode} Zürich · District 10</span>
+          <h3>Zürich Höngg <span class="ev-badge ev-badge--neutral">Partner practice</span></h3>
+          <p class="ev-pick__addr">{hoengg.betreiber?.name}, {hoengg.street}</p>
+          <p>Open now. Published hours: {hoenggHours.join(', ')}. Acupuncture, cupping, Tuina and Chinese herbal medicine.</p>
+          <div class="ev-pick__actions">
+            <a class="ev-btn ev-btn--solid" href="#zh-funnel" data-pick={hoengg.name}>Request here</a>
+            <a class="ev-pick__link" href={enLocationPath(hoengg.id)}>Practice details</a>
+          </div>
+        </div>
+        <div class="ev-pick">
+          <span class="ev-card__meta">{oerlikon.postalCode} Zürich · District 11</span>
+          <h3>Zürich Oerlikon <span class="ev-badge ev-badge--neutral">Partner practice today</span></h3>
+          <p class="ev-pick__addr">Praxis Hwang, Schulstrasse 3</p>
+          <p>Appointments now at the partner practice. Separately, a new TCM.ch clinic at {oerlikon.street} is in preparation ({oerlikon.openingNote?.toLowerCase()}, not yet final) and cannot be booked yet; you can register your interest.</p>
+          <div class="ev-pick__actions">
+            {oerlikonPartner && <a class="ev-btn ev-btn--solid" href="#zh-funnel" data-pick={oerlikonPartner.value}>Request here</a>}
+            {oerlikonNew && <a class="ev-btn ev-btn--outline" href="#zh-funnel" data-pick={oerlikonNew.value}>Register interest in the new clinic</a>}
+            <a class="ev-pick__link" href={enLocationPath(oerlikon.id)}>Location details</a>
+          </div>
+        </div>
+        <div class="ev-pick ev-pick--muted">
+          <span class="ev-card__meta">Zürich · Centre</span>
+          <h3>Zürich City <span class="ev-badge">In preparation</span></h3>
+          <p class="ev-pick__addr">No confirmed address or date</p>
+          <p>A city-centre location is in preparation. It is not bookable, and we do not announce an address, team or opening date before they are confirmed. Until then we treat you in Höngg and Oerlikon.</p>
+          <div class="ev-pick__actions">
+            <a class="ev-btn ev-btn--outline" href="#zh-funnel" data-pick={ZH_FLEXIBEL.value}>Next available in Zürich</a>
+            <a class="ev-pick__link" href="/standorte/zuerich-city/" hreflang="de">Details (German)</a>
+          </div>
+        </div>
       </div>
+      <p class="ev-sub" style="margin:22px 0 0">Not sure? Ask for the <a href="#zh-funnel" data-pick={ZH_FLEXIBEL.value}>next available appointment in Zürich</a> and we choose for you. Other regions: <a href="/en/locations/">all TCM.ch locations</a>.</p>
     </div>
   </section>
 
-  <section class="ev-section ev-section--tint" id="zh-funnel">
+  <!-- 4 · Treatments (DE home svc-cards) -->
+  <section class="ev-section ev-section--tint" id="treatments">
     <div class="wrap">
+      <p class="ev-label">Our therapies</p>
+      <h2 class="ev-h2">How we treat.</h2>
+      <p class="ev-sub">Methods of Traditional Chinese Medicine offered at our Zürich practices. Each page explains the method, what a session is like and what the evidence says, without cure promises.</p>
+      <div class="ev-grid ev-grid--4">
+        {featured.map((t) => (
+          <a class="ev-card ev-card--media" href={enTherapyPath(t.slug)}>
+            <div class="ev-card__photo"><img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" /></div>
+            <div class="ev-card__body"><h3>{t.name}</h3><p>{t.summary}</p><ul class="ev-badges"><li>Supplementary insurance</li><li>Zürich</li></ul><span class="ev-card__arrow">Learn more →</span></div>
+          </a>
+        ))}
+      </div>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/therapies/">All therapies</a></p>
+    </div>
+  </section>
+
+  <!-- 5 · Conditions (DE home condition discovery) -->
+  <section class="ev-section" id="conditions">
+    <div class="wrap">
+      <p class="ev-label">What we can help with</p>
+      <h2 class="ev-h2">Many come to us when conventional care <em>reaches its limits.</em></h2>
+      <p class="ev-sub">We tell you honestly whether TCM makes sense in your case. Each guide explains how we work, how many sessions are realistic and when to see a doctor first.</p>
+      <div class="ev-grid">
+        {topConditions.map((c) => <a class="ev-card" href={enConditionPath(c.slug)}><h3>{c.condition}</h3><p>{c.summary}</p><span class="ev-card__arrow">Read the guide →</span></a>)}
+      </div>
+      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/conditions/">All conditions</a></p>
+    </div>
+  </section>
+
+  <!-- 6 · How appointments work (DE home pj-funnel) -->
+  <section class="ev-section ev-section--tint" id="how-it-works">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">How it works</p>
+        <h2 class="ev-h2">From your request to a confirmed appointment.</h2>
+        <p class="ev-sub">Three steps, one personal contact. No automatic booking.</p>
+      </div>
+      <ol class="ev-steps ev-steps--3">
+        <li><h3>Tell us what you need</h3><p>Form, WhatsApp or phone, in English or German. Your complaint in a sentence, your district and preferred times are enough.</p></li>
+        <li><h3>We identify the suitable Zürich practice</h3><p>We check Höngg and Oerlikon for the fit and the earliest slot, and clarify insurance questions beforehand.</p></li>
+        <li><h3>Confirm your appointment with the team</h3><p>You receive a concrete proposal and confirm it with us. Only then is your appointment fixed.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7 · Insurance and costs (DE home kkc grid) -->
+  <section class="ev-section" id="insurance">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">Insurance &amp; costs</p>
+        <h2 class="ev-h2">Does my insurance reimburse <em>the treatment?</em></h2>
+      </div>
+      <div class="ev-kk">
+        <div class="ev-kk__item"><h3>Supplementary insurance</h3><p>{INSURANCE} Check with your insurer, or let us help.</p></div>
+        <div class="ev-kk__item"><h3>Practitioner recognition</h3><p>EMR and ASCA are the registers most Swiss supplementary insurers reference. Recognition is practitioner-specific, so we tell you which recognition the practitioner treating you holds before your first appointment.</p></div>
+        <div class="ev-kk__item"><h3>Basic insurance</h3><p>Mandatory basic insurance covers acupuncture only when a doctor with the relevant training performs it. Therapist-led TCM, as at our practices, is not reimbursed through basic insurance.</p></div>
+      </div>
+      <p class="ev-sub" style="margin:22px auto 0;text-align:center"><a href="/en/health-insurance-acupuncture/">The full insurance guide in plain English</a> · <a href="/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/">What acupuncture costs in Switzerland</a></p>
+    </div>
+  </section>
+
+  <!-- 8 · Zürich local context (DE Zürich page: districts, practices, crew photo) -->
+  <section class="ev-section ev-offer" id="zurich">
+    <div class="wrap">
+      <img class="ev-offer__img" src="/images/tcm-ch-crew-zuerich-west-1254.webp" srcset="/images/tcm-ch-crew-zuerich-west-640.webp 640w, /images/tcm-ch-crew-zuerich-west-960.webp 960w, /images/tcm-ch-crew-zuerich-west-1254.webp 1254w" sizes="(max-width: 1280px) 100vw, 1200px" alt="The TCM.ch team in Zürich West" width="1254" height="627" loading="lazy" decoding="async" />
       <div class="ev-split">
-        <AppointmentForm id="en-zurich-form" source={path} options={options} anyLabel="No preference, please recommend" heading="Find an appointment in Zürich" intro="Choose a practice or the next available appointment. Tell us your district and what matters to you; we reply personally in English or German." />
-        <aside class="ev-panel" aria-label="Zürich districts">
-          <h3>Across the whole of Zürich</h3>
-          <p style="font-size:14.5px">Whichever district you are in, we check which practice fits you best.</p>
-          <ul class="ev-chips" style="margin-bottom:16px">{districts.map((d) => <li>{d}</li>)}</ul>
-          <p style="font-size:14px;color:rgba(2,11,16,.68)">Your district is not listed? You can still request an appointment from anywhere in Zürich.</p>
+        <div class="ev-prose">
+          <p class="ev-label">Across the whole of Zürich</p>
+          <h2 class="ev-h2">For residents and international patients in Zürich.</h2>
+          <p>Whichever district you live or work in, we check which practice fits you best and how quickly you can be seen. Both current practices are reachable by public transport from the whole city.</p>
+          <ul class="ev-chips">{districts.map((d) => <li>{d}</li>)}</ul>
+          <p style="margin-top:14px">Your district is not listed? You can still request an appointment from anywhere in Zürich and the surrounding Glattal and Limmattal.</p>
+          <h3>Partner practices and planned clinics, explained</h3>
+          <p>A <strong>partner practice</strong> is an independent practice in the TCM.ch network: you are treated by its practitioners, and TCM.ch coordinates your request and answers questions about costs and insurance. A <strong>planned clinic</strong> is a TCM.ch location in preparation: it is not open, has no appointments and no published team until the owner confirms the opening.</p>
+        </div>
+        <aside class="ev-panel" aria-label="Zürich practices">
+          <h3>Höngg · District 10</h3>
+          <p><strong>{hoengg.betreiber?.name}</strong><br />{hoengg.street}, {hoengg.postalCode} Zürich<br />{hoenggHours.join(' · ')}</p>
+          <p><a href={enLocationPath(hoengg.id)}>Practice details</a></p>
           <hr />
-          <h3>Prefer to talk?</h3>
-          <p><a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
-          <a class="ev-btn ev-btn--wa" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+          <h3>Oerlikon · District 11</h3>
+          <p><strong>Praxis Hwang</strong>, partner practice<br />Schulstrasse 3, 8050 Zürich</p>
+          <p><strong>New TCM.ch clinic</strong> (in preparation)<br />{oerlikon.street}, {oerlikon.postalCode} Zürich, a few minutes' walk from Oerlikon station. {oerlikon.openingNote}, not yet final.</p>
+          <p><a href={enLocationPath(oerlikon.id)}>Location details</a></p>
+          <hr />
+          <h3>Zürich City</h3>
+          <p>In preparation. No address, team or date confirmed yet.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <section class="ev-section" id="conditions">
-    <div class="wrap">
-      <p class="ev-label">What we can help with</p>
-      <h2 class="ev-h2">Many come to us when conventional care reaches its limits.</h2>
-      <p class="ev-sub">We tell you honestly whether TCM makes sense in your case. Each guide explains how we work and where the limits lie.</p>
-      <div class="ev-grid">
-        {topConditions.map((c) => <a class="ev-card" href={enConditionPath(c.slug)}><h3>{c.condition}</h3><p>{c.summary}</p></a>)}
-      </div>
-    </div>
-  </section>
-
-  <section class="ev-section ev-section--tint" id="treatments">
-    <div class="wrap">
-      <p class="ev-label">Treatments in Zürich</p>
-      <h2 class="ev-h2">Acupuncture, and more than needles.</h2>
-      <div class="ev-grid ev-grid--4">
-        {featured.map((t) => (
-          <a class="ev-card ev-card--media" href={enTherapyPath(t.slug)}>
-            <img src={therapyImages[t.slug].src} alt={therapyImages[t.slug].alt} width="1120" height="746" loading="lazy" decoding="async" />
-            <div class="ev-card__body"><h3>{t.name}</h3><p>{t.summary}</p></div>
-          </a>
-        ))}
-      </div>
-      <p class="ev-sub" style="margin:22px 0 0"><a href="/en/therapies/">All therapies</a> · <a href="/en/health-insurance-acupuncture/">Supplementary insurance? We check your cover with you.</a></p>
-    </div>
-  </section>
-
+  <!-- 9 · FAQ -->
   <section class="ev-section" id="faq">
     <div class="wrap">
       <p class="ev-label">FAQ</p>
-      <h2 class="ev-h2">The essentials in brief.</h2>
+      <h2 class="ev-h2">Questions before your first appointment.</h2>
       <div class="ev-faq" style="max-width:820px">
         {faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
       </div>
     </div>
   </section>
 
-  <CtaBand title="Find the right appointment in Zürich" text="Tell us your district or ask for the next available slot. We reply personally in English or German." primary={{ href: '#zh-funnel', label: 'Find an appointment' }} secondary={{ href: wa, label: 'WhatsApp', external: true }} />
+  <!-- 10 · Final conversion (DE home inline form section): ONE form on the page -->
+  <section class="ev-section ev-final" id="zh-funnel">
+    <div class="wrap">
+      <div class="ev-center">
+        <p class="ev-label">Find an appointment</p>
+        <h2 class="ev-h2">Request your appointment in <em>Zürich.</em></h2>
+        <p class="ev-sub">Choose a practice or the next available appointment. We reply personally in English or German; nothing is booked until you confirm.</p>
+      </div>
+      <div class="ev-split">
+        <AppointmentForm id="en-zurich-form" source={path} options={options} anyLabel="No preference, please recommend" heading="" intro="" />
+        <aside class="ev-panel" aria-label="Direct contact">
+          <h3>Prefer to talk?</h3>
+          <p><a href={telHref}>{phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <a class="ev-btn ev-btn--wa" href={wa} target="_blank" rel="noopener">WhatsApp</a>
+          <hr />
+          <h3>What you can expect</h3>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="display:flex;gap:8px;border:0;padding:4px 0"><Fragment set:html={check} /><span>A personal reply, not an automated booking</span></li>
+            <li style="display:flex;gap:8px;border:0;padding:4px 0"><Fragment set:html={check} /><span>A concrete practice and time proposal</span></li>
+            <li style="display:flex;gap:8px;border:0;padding:4px 0"><Fragment set:html={check} /><span>Insurance questions clarified beforehand</span></li>
+          </ul>
+          <hr />
+          <p style="font-size:13px;color:rgba(2,11,16,.62)">Your data is used only to handle your request and is not shared. Protected by Cloudflare Turnstile. See our <a href="/datenschutz/" hreflang="de">privacy policy (German)</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Rather ask first?" text="Yuna from the TCM.ch concierge answers questions about treatment, appointments and insurance on WhatsApp, free and without obligation." primary={{ href: wa, label: 'Ask on WhatsApp', external: true }} secondary={{ href: telHref, label: `Call ${phone}` }} />
+
+  <script is:inline>
+    // Practice selector → preselect the matching option in the single appointment form (click still scrolls to #zh-funnel).
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[data-pick]') : null;
+      if (!a) return;
+      var sel = document.querySelector('#en-zurich-form [name="standort"]');
+      if (!sel) return;
+      var v = a.getAttribute('data-pick');
+      for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].value === v) { sel.selectedIndex = i; break; } }
+    });
+  </script>
 </Layout>

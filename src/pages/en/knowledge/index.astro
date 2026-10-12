@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
+import HeroSplit from '../../../components/en/HeroSplit.astro';
+import CtaBand from '../../../components/en/CtaBand.astro';
 
 const path = '/en/knowledge/';
 
@@ -35,48 +37,41 @@ const itemListLd = {
   schema={[breadcrumbLd, itemListLd]}
   enOnly={true}
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">TCM.ch - Knowledge</div>
-      <h1>Knowledge</h1>
-      <p class="lead">
-        Honest, evidence-aware guides to acupuncture and Traditional Chinese Medicine in Switzerland -
-        written in plain English for people new to the system. No cure claims, no mysticism: what helps,
-        what it costs, and when to see a doctor first.
-      </p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="/en/contact/">Request an appointment</a>
-        <a class="btn btn--ghost" href="/en/conditions/">What we treat →</a>
-      </div>
-    </div>
-  </section>
+  <HeroSplit
+    eyebrow="TCM.ch · Knowledge"
+    h1="Knowledge: acupuncture &amp; TCM in <em>Switzerland</em>"
+    lead="Honest, evidence-aware guides written in plain English for people new to the Swiss system. No cure claims: what helps, what it costs, and when to see a doctor first."
+    ctas={[{ href: '/en/contact/', label: 'Request an appointment' }, { href: '/en/conditions/', label: 'What we treat', kind: 'outline' }]}
+    image={{ src: '/images/img-73bf15a4e741.webp', alt: 'A TCM.ch therapist in conversation with a patient', caption: 'TCM.ch clinic' }}
+    crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Knowledge' }]}
+  />
 
-  <section class="section">
+  <section class="ev-section" id="articles">
     <div class="wrap">
-      <div class="cards">
+      <p class="ev-label">All articles</p>
+      <h2 class="ev-h2">Treatment decisions, costs and what to expect.</h2>
+      <p class="ev-sub">Treatment-decision articles ("acupuncture for X") live here; the condition itself is explained in the <a href="/en/conditions/">condition guides</a>.</p>
+      <div class="ev-grid">
         {articles.map((a) => (
-          <a class="card card--media" href={`/en/knowledge/${a.data.slug}/`}>
-            {a.data.heroImage && (
-              <img class="card-thumb" src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async" />
-            )}
-            <div class="card-body">
-              <h3>{a.data.title}</h3>
-              <p>{a.data.description}</p>
-            </div>
+          <a class="ev-card ev-card--media" href={`/en/knowledge/${a.data.slug}/`}>
+            {a.data.heroImage && <img src={a.data.heroImage} alt={a.data.heroImageAlt ?? a.data.title} width="1120" height="746" loading="lazy" decoding="async" />}
+            <div class="ev-card__body"><h3>{a.data.title}</h3><p>{a.data.description}</p></div>
           </a>
         ))}
       </div>
-      <div class="index-xlinks">
-        <a class="inline-link" href="/en/conditions/">Conditions we treat →</a>
-        <a class="inline-link" href="/en/therapies/">Our therapies →</a>
-        <a class="inline-link" href="/en/health-insurance-acupuncture/">Insurance & costs →</a>
+    </div>
+  </section>
+
+  <section class="ev-section ev-section--tint">
+    <div class="wrap">
+      <div class="ev-grid">
+        <a class="ev-card" href="/en/conditions/"><h3>Conditions we treat</h3><p>Back pain, neck pain, migraine, sleep, stress, digestion and fertility: honest guides with red flags.</p></a>
+        <a class="ev-card" href="/en/therapies/"><h3>Our therapies</h3><p>Acupuncture, cupping, Tuina, Chinese herbal medicine and more: what each method is and when it fits.</p></a>
+        <a class="ev-card" href="/en/health-insurance-acupuncture/"><h3>Insurance &amp; costs</h3><p>Basic versus supplementary cover, practitioner recognition (EMR/ASCA) and how reimbursement works.</p></a>
       </div>
     </div>
   </section>
+
+  <CtaBand text="Questions the articles do not answer? Tell us briefly what is going on; we reply personally in English or German." secondary={{ href: '/en/acupuncture-zurich/', label: 'Acupuncture in Zürich' }} />
 </Layout>
 
-<style>
-  .index-xlinks { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; }
-  .inline-link { color: var(--blue); font-weight: 600; text-decoration: none; font-size: 15px; }
-  .inline-link:hover { text-decoration: underline; }
-</style>

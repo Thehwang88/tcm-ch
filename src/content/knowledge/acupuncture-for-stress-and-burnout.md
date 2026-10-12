@@ -5,7 +5,7 @@ description: "An honest look at acupuncture for stress and burnout: what it can 
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-778d4dd19d39.webp"
 heroImageAlt: "A relaxing acupuncture session for stress and burnout"
 faq:
@@ -16,7 +16,7 @@ faq:
   - q: "What actually happens in a session?"
     a: "It is calm and unhurried. We talk through how stress is affecting you, then place fine needles while you rest quietly, often for 20 to 30 minutes. Many people find that time itself restful. We may also address related issues like neck tension or disturbed sleep."
   - q: "Is it covered by insurance?"
-    a: "Treatment by an EMR-/ASCA-recognised practitioner is typically reimbursed through Swiss supplementary insurance for complementary medicine, not basic insurance. How much comes back depends on your policy and annual limit. Check your cover before booking a course of sessions."
+    a: "Reimbursement may be available through Swiss supplementary insurance for complementary medicine, not basic insurance, depending on your policy, annual limit and the individual practitioner's recognition (EMR/ASCA). Check your cover before booking a course of sessions."
 relatedConditions:
   - "stress-burnout"
   - "sleep-problems"
@@ -42,7 +42,7 @@ We are clear about the boundary, though. Acupuncture supports stress management.
 
 ## What the evidence says
 
-The research here is **mixed and modest**. Some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and the relaxation effect is hard to separate from the treatment itself. [verify citation]
+The research here is **mixed and modest**. Some trials suggest acupuncture may reduce stress and anxiety symptoms in the short term, but the studies are often small and prone to bias, and the relaxation effect is hard to separate from the treatment itself. Systematic reviews of acupuncture for anxiety and stress-related symptoms consistently describe the available trials as small, heterogeneous and at risk of bias, so no firm conclusion is possible yet.
 
 So we position it accurately: a supportive, low-risk option that many people find calming, not a proven cure. If that is what you are looking for, it is a reasonable thing to try.
 
@@ -66,6 +66,6 @@ If you are burning out, the bigger levers are usually workload, recovery and som
 
 ## Cost and cover
 
-Treatment by an [EMR-/ASCA-recognised practitioner](/en/health-insurance-acupuncture/) is typically reimbursed through supplementary insurance. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
+Reimbursement may be available through [supplementary insurance](/en/health-insurance-acupuncture/), depending on your policy and the individual practitioner's recognition. See our guides to [acupuncture costs](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [claiming on insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/) for the details.
 
 If a calm, supportive treatment as part of managing stress appeals to you, you can [request an appointment in English](/en/contact/) or find your nearest [clinic](/en/locations/).

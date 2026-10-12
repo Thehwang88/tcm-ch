@@ -56,6 +56,7 @@ html[lang="en"] .ev-status__in strong { color: var(--brand-black); }
 /* ── USP strip ── */
 html[lang="en"] .ev-usp { background: #fff; border-bottom: 1px solid rgba(2,11,16,.1); padding: 40px 0; }
 html[lang="en"] .ev-usp__grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+html[lang="en"] .ev-usp__grid--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
 html[lang="en"] .ev-usp__card { display: flex; gap: 14px; align-items: flex-start; }
 html[lang="en"] .ev-usp__icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--brand-tint); display: grid; place-items: center; color: var(--brand-black); }
 html[lang="en"] .ev-usp__title { font-size: 15.5px; font-weight: 800; color: var(--brand-black); margin: 2px 0 3px; }
@@ -160,11 +161,11 @@ html[lang="en"] .ev-form__fine a { color: var(--brand-black); font-weight: 600; 
   html[lang="en"] .ev-hero__media { min-height: 0; height: 300px; container-type: normal; }
   html[lang="en"] .ev-hero__copy, html[lang="en"] .ev-hero--home .ev-hero__copy { padding: 32px 16px 26px; max-width: none; margin: 0; }
   html[lang="en"] .ev-hero--hub .ev-hero__copy { padding: 36px 16px 30px; }
-  html[lang="en"] .ev-grid, html[lang="en"] .ev-usp__grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  html[lang="en"] .ev-grid, html[lang="en"] .ev-usp__grid, html[lang="en"] .ev-usp__grid--4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
   html[lang="en"] .ev-cta__in { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  html[lang="en"] .ev-grid, html[lang="en"] .ev-grid--4, html[lang="en"] .ev-grid--2, html[lang="en"] .ev-usp__grid, html[lang="en"] .ev-steps, html[lang="en"] .ev-form__row { grid-template-columns: 1fr; }
+  html[lang="en"] .ev-grid, html[lang="en"] .ev-grid--4, html[lang="en"] .ev-grid--2, html[lang="en"] .ev-usp__grid, html[lang="en"] .ev-usp__grid--4, html[lang="en"] .ev-steps, html[lang="en"] .ev-form__row { grid-template-columns: 1fr; }
   html[lang="en"] .ev-ctas .ev-btn { width: 100%; }
   html[lang="en"] .ev-trust { flex-direction: column; gap: 10px; }
   html[lang="en"] .ev-hero__media { height: 240px; }
@@ -176,3 +177,56 @@ html[lang="en"] .ev-form__fine a { color: var(--brand-black); font-weight: 600; 
   html[lang="en"] :is(.ev-btn, .ev-card, .ev-faq details) { transition: none; }
   html[lang="en"] :is(.ev-btn:hover, a.ev-card:hover) { transform: none; }
 }
+
+/* ── Wave 2: Zürich flagship + hub patterns (mirrors DE home svc-cards, offer band, pj-funnel, kkc grid) ── */
+html[lang="en"] .ev-card--media .ev-card__photo { position: relative; }
+html[lang="en"] .ev-card--media .ev-card__photo::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--brand); }
+html[lang="en"] .ev-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+html[lang="en"] .ev-badges li { font-size: 11.5px; font-weight: 700; letter-spacing: .03em; padding: 4px 9px; border-radius: 999px; background: var(--brand-surface); color: rgba(2,11,16,.72); display: inline-flex; align-items: center; gap: 5px; }
+html[lang="en"] .ev-pick { display: flex; flex-direction: column; gap: 10px; background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 22px 22px 20px; }
+html[lang="en"] .ev-pick--muted { background: var(--brand-surface); }
+html[lang="en"] .ev-pick h3 { font-size: 19px; font-weight: 800; letter-spacing: -.01em; margin: 0; color: var(--brand-black); }
+html[lang="en"] .ev-pick p { font-size: 15px; line-height: 1.55; color: rgba(2,11,16,.72); margin: 0; }
+html[lang="en"] .ev-pick__addr { font-size: 14px; color: var(--brand-black); font-weight: 600; margin: 0; }
+html[lang="en"] .ev-pick__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+html[lang="en"] .ev-pick__actions .ev-btn { min-height: 42px; padding: 0 16px; font-size: 14px; }
+html[lang="en"] .ev-pick__link { font-size: 14px; font-weight: 700; color: var(--brand-black); text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; align-self: center; }
+html[lang="en"] .ev-offer { background: var(--brand-tint); border-top: 1px solid rgba(2,11,16,.08); border-bottom: 1px solid rgba(2,11,16,.08); }
+html[lang="en"] .ev-offer__img { width: 100%; height: 380px; object-fit: cover; object-position: center 25%; border-radius: 16px; display: block; margin: 0 0 32px; }
+html[lang="en"] .ev-center { text-align: center; max-width: 720px; margin: 0 auto 36px; }
+html[lang="en"] .ev-center .ev-label { justify-content: center; }
+html[lang="en"] .ev-center .ev-h2 { margin-left: auto; margin-right: auto; }
+html[lang="en"] .ev-center .ev-sub { margin-left: auto; margin-right: auto; }
+html[lang="en"] .ev-steps--3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+html[lang="en"] .ev-kk { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+html[lang="en"] .ev-kk__item { background: #fff; border: 1px solid rgba(2,11,16,.1); border-radius: 16px; padding: 22px; }
+html[lang="en"] .ev-kk__item h3 { font-size: 17px; font-weight: 800; margin: 0 0 8px; color: var(--brand-black); }
+html[lang="en"] .ev-kk__item p { font-size: 14.5px; line-height: 1.6; color: rgba(2,11,16,.72); margin: 0; }
+html[lang="en"] .ev-final { background: var(--brand-surface); border-top: 1px solid rgba(2,11,16,.08); }
+html[lang="en"] .ev-final .ev-form { background: #fff; }
+html[lang="en"] .ev-final .ev-panel { background: #fff; }
+html[lang="en"] .ev-byline { font-size: 14.5px; color: rgba(2,11,16,.68); line-height: 1.5; margin: 0 0 18px; }
+html[lang="en"] .ev-article { max-width: 760px; }
+html[lang="en"] .ev-article :is(h2) { font-size: clamp(24px,2.4vw,30px); line-height: 1.15; letter-spacing: var(--tracking-heading); color: var(--brand-black); margin: 40px 0 14px; }
+html[lang="en"] .ev-article :is(h3) { font-size: 20px; font-weight: 800; color: var(--brand-black); margin: 28px 0 10px; }
+html[lang="en"] .ev-article :is(p, li) { font-size: 17px; line-height: 1.7; color: rgba(2,11,16,.74); }
+html[lang="en"] .ev-article p { margin: 0 0 16px; }
+html[lang="en"] .ev-article :is(ul, ol) { padding-left: 22px; margin: 0 0 18px; }
+html[lang="en"] .ev-article li { margin: 0 0 8px; }
+html[lang="en"] .ev-article strong { color: var(--brand-black); }
+html[lang="en"] .ev-article a:not(.ev-btn) { color: var(--brand-black); font-weight: 600; text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+html[lang="en"] .ev-article a:not(.ev-btn):hover { background: var(--brand-tint); }
+html[lang="en"] .ev-article blockquote { border-left: 3px solid var(--brand); padding-left: 16px; margin: 0 0 18px; color: rgba(2,11,16,.72); }
+html[lang="en"] .ev-article .evidence-note { font-size: 15px; border-left: 3px solid var(--brand); padding-left: 14px; }
+html[lang="en"] .ev-article ul.redflags { list-style: none; padding-left: 0; }
+html[lang="en"] .ev-article ul.redflags li { position: relative; padding-left: 22px; }
+html[lang="en"] .ev-article ul.redflags li::before { content: ''; position: absolute; left: 0; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: #B91C1C; }
+html[lang="en"] .ev-note-box { background: var(--brand-tint); border: 1px solid rgba(2,11,16,.08); border-radius: 16px; padding: 18px 22px; margin: 28px 0; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+html[lang="en"] .ev-note-box strong { color: var(--brand-black); }
+html[lang="en"] .ev-disclaimer { font-size: 14px; color: rgba(2,11,16,.62); border-top: 1px solid rgba(2,11,16,.1); padding-top: 18px; margin-top: 28px; }
+@media (max-width: 1024px) { html[lang="en"] .ev-kk, html[lang="en"] .ev-steps--3 { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { html[lang="en"] .ev-offer__img { height: 240px; } }
+/* Long <option> labels must never widen the form (select intrinsic width = longest option) */
+html[lang="en"] .ev-form, html[lang="en"] .ev-field { min-width: 0; }
+html[lang="en"] .ev-field select { max-width: 100%; min-width: 0; }
+@media (max-width: 1024px) { html[lang="en"] .ev-split { grid-template-columns: minmax(0,1fr); } }

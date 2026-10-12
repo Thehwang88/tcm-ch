@@ -1,11 +1,11 @@
 ---
 title: "Finding an English-Speaking Acupuncturist in Switzerland"
 slug: "english-speaking-acupuncturist-switzerland"
-description: "How to find an English-speaking, EMR-/ASCA-recognised acupuncturist in Zürich, Basel and across Switzerland, what to check before booking, and how insurance works."
+description: "How to find an English-speaking acupuncturist in Zürich, Basel and across Switzerland, what to check before booking, and how insurance works."
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-73bf15a4e741.webp"
 heroImageAlt: "A TCM.ch therapist in conversation with a patient"
 faq:
@@ -14,7 +14,7 @@ faq:
   - q: "Do I need to speak German to get acupuncture in Switzerland?"
     a: "No. While much of Swiss healthcare runs in the local language, you can find English-speaking TCM practitioners, especially in larger cities. Being treated in a language you are fluent in is genuinely important for a medical-style consultation, so it is worth seeking out."
   - q: "Are English-speaking practitioners still covered by insurance?"
-    a: "Yes, as long as they are EMR or ASCA recognised. The language you are treated in has no bearing on reimbursement. What matters for your supplementary insurance is the practitioner's recognition, not whether your appointment was in English or German."
+    a: "The language you are treated in has no bearing on reimbursement. What matters for your supplementary insurance is your policy and the individual practitioner's recognition (EMR/ASCA), not whether your appointment was in English or German."
   - q: "How do I book an appointment in English?"
     a: "The simplest way is our English contact form. Tell us briefly what is going on and where you are based, and we get back to you with a suitable practitioner and time at your nearest clinic. No German required at any point."
 relatedConditions: []
@@ -34,7 +34,7 @@ All of that works far better in a language you are comfortable in. Describing sy
 
 Three things matter when choosing:
 
-- **EMR or ASCA recognition.** This is the Swiss recognition that signals a vetted, qualified practitioner, and it is also the prerequisite for your supplementary insurance to reimburse treatment. Every practitioner across our network holds it.
+- **EMR or ASCA recognition.** This is the Swiss recognition that signals a vetted, qualified practitioner, and it is also the prerequisite for your supplementary insurance to reimburse treatment. Recognition is practitioner-specific; we tell you which recognition the practitioner treating you holds before you book.
 - **English-speaking consultations.** Confirm you can have the intake and the treatment itself in English, not just a few words at reception.
 - **A convenient location.** You are more likely to complete a useful course of treatment if the clinic is near home or work.
 
@@ -54,7 +54,7 @@ You do not need to navigate a German phone line. The simplest route is our [Engl
 
 ## Insurance, briefly
 
-Being treated in English changes nothing about your cover. What matters is that the practitioner is EMR or ASCA recognised, which all of ours are, and that you hold supplementary insurance for complementary medicine. We explain the full picture in our [insurance guide](/en/health-insurance-acupuncture/) and walk through the claims process in [how to claim acupuncture on Swiss insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/).
+Being treated in English changes nothing about your cover. What matters is the individual practitioner's recognition (EMR or ASCA), which we confirm for you before you book, and that you hold supplementary insurance for complementary medicine. We explain the full picture in our [insurance guide](/en/health-insurance-acupuncture/) and walk through the claims process in [how to claim acupuncture on Swiss insurance](/en/knowledge/how-to-claim-acupuncture-on-swiss-insurance/).
 
 ## What you can come in for
 

@@ -62,9 +62,17 @@ const clickNth = (page, sel, n) => page.evaluate((s, i) => { const el = document
   ok(await clickNoNav(page, '.ev-hero a[href="#zh-funnel"]'), 'T1 hero #zh-funnel CTA exists');
   let ev = await events(page);
   ok(ev.length === 1 && ev[0].event === 'cta_click' && ev[0].cta_type === 'booking' && ev[0].cta_target === '#zh-funnel', `T1 hero → one booking cta_click (#zh-funnel), got ${JSON.stringify(ev)}`);
-  ok(await clickNoNav(page, '.ev-cta a[href="#zh-funnel"]'), 'T1 CTA band #zh-funnel exists');
+  // Wave 2: practice selector cards link to #zh-funnel with data-pick → booking click + form preselect
+  ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich Höngg"]'), 'T1 selector card (Höngg) exists');
   ev = await events(page);
-  ok(ev.length === 2 && ev[1].cta_type === 'booking', `T1 CTA band → second booking event, got ${ev.length}`);
+  ok(ev.length === 2 && ev[1].cta_type === 'booking' && ev[1].cta_target === '#zh-funnel', `T1 selector card → second booking event (#zh-funnel), got ${JSON.stringify(ev[1])}`);
+  const picked = await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value);
+  ok(picked === 'Zürich Höngg', `T1 selector preselects the form option, got ${JSON.stringify(picked)}`);
+  ok(await clickNoNav(page, '.ev-pick a[data-pick="Zürich – nächster freier Termin"]'), 'T1 flexible selector exists');
+  ok((await page.$eval('#en-zurich-form [name="standort"]', (s) => s.value)) === 'Zürich – nächster freier Termin', 'T1 flexible option preselected (DE routing value)');
+  ok((await events(page)).length === 3, 'T1 one event per selector click');
+  ok((await page.$$eval('form', (f) => f.length)) === 1, 'T1 exactly one form on the Zürich page');
+  ev = await events(page);
   ok(ev.every((e) => e.event !== 'form_submit' && e.event !== 'form_submit_success'), 'T1 clicks are never form events');
   ok(await clickNoNav(page, '.ev-panel a[href*="wa.me"]'), 'T1 WhatsApp link exists');
   ok(await clickNoNav(page, '.ev-panel a[href^="tel:"]'), 'T1 tel link exists');

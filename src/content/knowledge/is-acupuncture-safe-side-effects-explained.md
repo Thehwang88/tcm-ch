@@ -5,7 +5,7 @@ description: "An honest look at acupuncture safety: the common minor side effect
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-c69a8f9ce7f8.webp"
 heroImageAlt: "Fine, single-use acupuncture needles"
 faq:
@@ -40,7 +40,7 @@ These typically pass within a few hours to a day. Taking it gently after a sessi
 
 ## The rare serious risks, in context
 
-It is fair to ask about the worst case, so here it is honestly. Serious complications from acupuncture, things like infection or, very rarely, injury from a needle inserted too deeply in the wrong place, do exist in the literature, but they are **rare and overwhelmingly linked to untrained practitioners or poor technique**. [verify citation]
+It is fair to ask about the worst case, so here it is honestly. Serious complications from acupuncture, things like infection or, very rarely, injury from a needle inserted too deeply in the wrong place, do exist in the literature, but they are **very rare**: a cumulative review of prospective safety surveys (2004) put serious adverse events at roughly 0.05 per 10,000 treatments, and many of the serious cases reported in the literature involve inadequate training, hygiene or technique.
 
 This is exactly why two things matter so much:
 
@@ -51,7 +51,7 @@ In other words, the single biggest factor in acupuncture safety is **who is hold
 
 ## Why EMR / ASCA recognition matters for safety
 
-In Switzerland, the EMR and ASCA recognition that lets your supplementary insurance reimburse treatment is not just an insurance formality. It signals that the practitioner has met training and quality standards. So the same recognition that gets you money back also tells you the person is properly qualified. Every practitioner across our [clinics](/en/locations/) holds it. You can read more about what it means in our [insurance guide](/en/health-insurance-acupuncture/).
+In Switzerland, the EMR and ASCA recognition that lets your supplementary insurance reimburse treatment is not just an insurance formality. It signals that the practitioner has met training and quality standards. So the same recognition that gets you money back also tells you the person is properly qualified. Recognition is practitioner-specific; we tell you which recognition the practitioner treating you holds. You can read more about what it means in our [insurance guide](/en/health-insurance-acupuncture/).
 
 ## Who should take extra care
 

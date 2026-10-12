@@ -5,7 +5,7 @@ description: "An honest look at acupuncture for back pain in Switzerland: what t
 datePublished: "2026-06-09"
 dateModified: "2026-06-09"
 author: "TCM.ch Editorial Team"
-reviewer: "TCM.ch clinical team (EMR-/ASCA-recognised practitioners)"
+reviewer: "TCM.ch clinical team"
 heroImage: "/images/img-f7f113048735.webp"
 heroImageAlt: "Acupuncture for back pain at a TCM.ch clinic"
 faq:
@@ -41,7 +41,7 @@ If none of these apply, you are most likely dealing with the everyday, non-speci
 
 ## What the evidence actually says
 
-This is where honesty matters more than enthusiasm. The picture for chronic, non-specific lower-back pain is **mixed but cautiously positive**. Cochrane reviews and clinical guidelines suggest acupuncture may give some people short-term relief from chronic low-back pain, while the evidence for sudden, acute back pain is weaker. Part of the effect may be non-specific, meaning it comes from the attention, rest and expectation around treatment as much as the needling itself. [verify citation]
+This is where honesty matters more than enthusiasm. The picture for chronic, non-specific lower-back pain is **mixed but cautiously positive**. Cochrane reviews and clinical guidelines suggest acupuncture may give some people short-term relief from chronic low-back pain, while the evidence for sudden, acute back pain is weaker. Part of the effect may be non-specific, meaning it comes from the attention, rest and expectation around treatment as much as the needling itself. The main source for this is the Cochrane review of acupuncture for chronic non-specific low back pain (2020), which found modest short-term benefits of low to moderate certainty; for acute low back pain, Cochrane found the evidence insufficient.
 
 What that means in plain terms: acupuncture is a reasonable option to trial for ongoing back pain, ideally alongside staying active, not a guaranteed fix and not a replacement for movement, physiotherapy or medical care. We would rather you came in with realistic expectations than oversold ones.
 
@@ -69,7 +69,7 @@ People often ask which is "better". It is the wrong question, because they do di
 
 ## What it costs and whether insurance covers it
 
-Acupuncture by an EMR- or ASCA-recognised practitioner is typically reimbursed through Swiss **supplementary** insurance for complementary medicine, not basic insurance, with how much you get back depending on your policy. We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [health insurance for acupuncture](/en/health-insurance-acupuncture/).
+Reimbursement may be available through Swiss **supplementary** insurance for complementary medicine, not basic insurance, depending on your policy, the treatment and the individual practitioner's recognition (EMR/ASCA). We explain the full picture, including typical session prices, in our guides to [acupuncture costs in Switzerland](/en/knowledge/how-much-does-acupuncture-cost-in-switzerland/) and [health insurance for acupuncture](/en/health-insurance-acupuncture/).
 
 ## The honest bottom line
 
