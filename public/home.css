@@ -5660,3 +5660,17 @@ body:has(> .symptom-scope > #page-beschwerden) .bx-az-btn:not(#w2){font-family:v
 #page-longevity{--lng-champagne-ink:#7d5f24}
 #page-longevity :is(.lng-section-label,.lng-thesis-num,.lng-press-label,.lng-h2 em):not(.lng-section-dark *):not(.lng-cta-block *):not(.lng-hero *):not(#w2){color:var(--lng-champagne-ink)}
 #page-longevity .lng-section-label:not(.lng-section-dark *):not(.lng-cta-block *):not(.lng-hero *):not(#w2)::before{background:var(--lng-champagne-ink)}
+
+/* ── HERO SIZING · spacious desktops (DE families; EN mirrors this in en-v2.css) ──
+   Below 1280px nothing changes. From 1280px the split heroes grow with the viewport
+   (tokens --hero-* in tokens.css), clamped so short viewports keep today's minimum and
+   very large monitors never get an empty hero: city 74svh (560–900px), location 72svh
+   (600–880px), hub 66svh (560–800px), treatment detail 60svh (560–720px). The outer max()
+   keeps today's min(…vh) floor so no viewport renders a shorter hero than before; browsers
+   without svh keep the previous rules. The home .sr-hero stays 100svh. */
+@media (min-width:1280px){
+  .lsr-inner{min-height:max(min(600px,66vh),clamp(600px,calc(var(--hero-location) - var(--header-h,76px)),880px))}
+  .akzh.lsr-hero .lsr-inner{min-height:max(min(560px,62vh),clamp(560px,calc(var(--hero-city) - var(--header-h,76px)),900px))}
+  .hh-inner{min-height:max(min(560px,62vh),clamp(560px,calc(var(--hero-hub) - var(--header-h,76px)),800px))}
+  .tsr-inner{min-height:max(min(560px,62vh),clamp(560px,calc(var(--hero-detail) - var(--header-h,76px)),720px))}
+}
