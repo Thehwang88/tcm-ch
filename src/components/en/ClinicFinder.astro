@@ -40,7 +40,7 @@ const featured = ['acupuncture', 'tuina-massage', 'cupping', 'chinese-herbal-med
             <p>{c.status === 'operational' ? (c.betreiber ? `${c.betreiber.name}, ${c.street}` : `${c.street}, ${c.postalCode} ${c.city}`) : c.status === 'review' ? 'Not confirmed as an operating clinic; we suggest an available practice nearby.' : 'Not open yet: no appointments at this address. You can register your interest.'}</p>
           </div>
           <div class="ev-finder__actions">
-            {pick(c) ? <a class="ev-btn ev-btn--solid" href={formAnchor} data-pick={pick(c)} data-finder-pick>{c.status === 'operational' ? 'Request here' : 'Register interest'}</a> : <a class="ev-btn ev-btn--outline" href={formAnchor} data-pick="" data-finder-pick>Send a request</a>}
+            {pick(c) ? <a class={`ev-btn ${c.status === 'operational' ? 'ev-btn--solid' : 'ev-btn--outline'}`} href={formAnchor} data-pick={pick(c)} data-finder-pick>{c.status === 'operational' ? 'Request here' : c.status === 'review' ? 'Send a request' : 'Register interest'}</a> : <a class="ev-btn ev-btn--outline" href={formAnchor} data-pick="" data-finder-pick>Send a request</a>}
             <a class="ev-pick__link" href={enLocationPath(c.id)}>Details</a>
           </div>
         </div>

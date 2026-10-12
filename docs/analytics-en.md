@@ -3,7 +3,7 @@
 Scope: English pages under `/en/` only. Source: `src/components/en/EnAnalytics.astro` (dataLayer) and
 `src/components/en/AppointmentForm.astro` (form stages). Container: the existing GTM-PZ92Q3KJ, consent via CookieYes.
 Nothing in this document is configured live by the repo; the dataLayer contract is tested by
-`node scripts/test-en-analytics.mjs` (offline, 43 assertions).
+`node scripts/test-en-analytics.mjs` (offline, 47 assertions).
 
 ## Events and parameters
 
