@@ -3,11 +3,11 @@
 // status-aware location options as the DE forms (/api/anfrage, Turnstile, standort-optionen.ts).
 import { site } from '../../data/site';
 import { clinics } from '../../data/locations';
-interface Props { id?: string; preselect?: string; source: string; heading?: string; intro?: string; therapy?: string }
-const { id = 'en-appointment-form', preselect = '', source, heading = 'Request an appointment', intro, therapy } = Astro.props;
+interface Props { id?: string; preselect?: string; source: string; heading?: string; intro?: string; therapy?: string; options?: { value: string; label: string }[]; anyLabel?: string }
+const { id = 'en-appointment-form', preselect = '', source, heading = 'Request an appointment', intro, therapy, options: optionsProp, anyLabel = 'No preference' } = Astro.props;
 // Status-aware options from the single clinic source: operational → clinic name (same value as the DE forms);
 // planned/review → the vorab options (DE value for team routing, English label). No vorab → no option.
-const options = [
+const options = optionsProp ?? [
   ...clinics.filter((c) => c.status === 'operational').map((c) => ({ value: c.name, label: c.name })),
   ...clinics.filter((c) => c.status !== 'operational').flatMap((c) => (c.vorab ?? []).map((o) => ({ value: o.value, label: o.labelEn ?? o.label }))),
 ];
@@ -28,7 +28,7 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
       <input id={`${uid}-phone`} type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="+41 79 000 00 00" /></div>
     <div class="ev-field"><label for={`${uid}-loc`}>Location</label>
       <select id={`${uid}-loc`} name="standort">
-        <option value="">No preference</option>
+        <option value="">{anyLabel}</option>
         {options.map((o) => <option value={o.value} selected={preselect !== '' && o.value === preselect}>{o.labelEn ?? o.label}</option>)}
       </select></div>
   </div>
@@ -63,7 +63,7 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
       if (!token) { show('error', 'Please confirm you are human and try again.'); return; }
       var loc = form.standort.value || '';
       function track(ev, extra) { try { document.dispatchEvent(new CustomEvent('en-form', { detail: Object.assign({ event: ev, form_id: 'en-appointment', herkunft: form.dataset.source, standort: loc }, extra || {}) })); } catch (_) {} }
-      track('form_submit');
+      track('form_submit', { stage: 'inquiry_attempt' });
       var payload = {
         typ: 'termin',
         name: form.name.value.trim(),
@@ -81,7 +81,7 @@ const uid = id.replace(/[^a-z0-9-]/gi, '');
         var data = null; try { data = await res.json(); } catch (_) {}
         if (res.ok && data && data.ok) {
           form.reset();
-          track('form_submit_success');
+          track('form_submit_success', { stage: 'inquiry_received' });
           show('success', 'Thank you! Your request has been received. We will get back to you personally.');
         } else {
           track('form_submit_error', { reason: 'server' });

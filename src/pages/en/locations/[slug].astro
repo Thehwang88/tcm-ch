@@ -60,7 +60,9 @@ const nearby = (content.nearby ?? []).map((s) => clinics.find((c) => c.id === s)
 // ── Copy ──
 const openingLabel = clinic.openingNote ?? 'In preparation';
 const inPreparation = planned && (clinic.openingNote === 'In preparation' || !clinic.openingNote);
-const eyebrow = partner ? `${partner.name} · partner practice in the TCM.ch network`
+// Partner clinic without a betreiber record (Bottighofen: TCM Pelican, independent practice) → labelled from content.
+const partnerLabel = partner?.name ?? content.partnerClinic;
+const eyebrow = partnerLabel ? `${partnerLabel} · partner ${partner ? 'practice' : 'clinic'} in the TCM.ch network`
   : underReview ? `Status under review · ${city}` : planned ? `Planned location · ${city}` : `TCM.ch clinic · ${city}`;
 const h1 = `Acupuncture & TCM in <em>${name}</em>`;
 const title = partner ? `Acupuncture & TCM ${name} · ${partner.marke} | TCM.ch` : `Acupuncture & TCM ${name} | TCM.ch`;
@@ -69,7 +71,7 @@ const description = planned
     ? `Acupuncture & TCM in ${name}: status under review, not confirmed as an operating clinic. Send your request and we suggest an available practice nearby.`
     : inPreparation
     ? `Acupuncture & TCM in ${name}: location in preparation, not open yet. Register your interest; we contact you once appointments are possible.`
-    : `Acupuncture & TCM in ${name}: ${openingLabel.toLowerCase()}, not open yet. Register your interest; we contact you once appointments are possible.`
+    : `Acupuncture & TCM in ${name}: ${openingLabel}. Not open yet; register your interest and we contact you once appointments are possible.`
   : partner
   ? `Acupuncture & TCM in ${name}: ${partner.name}, ${street}. Partner practice in the TCM.ch network, requests in English. Billed via supplementary insurance.`
   : `Acupuncture & TCM in ${name}, ${street}: EMR-/ASCA-recognised practitioners, requests in English. Billed via supplementary insurance, depending on your policy.`;
@@ -77,9 +79,10 @@ const locationHook = street ? `${street} · ${postalCode} ${city}` : `${city} ·
 const trust = planned
   ? ['Requests already possible', 'Billed via supplementary insurance', 'Personal reply in English']
   : ['Request by WhatsApp or phone', 'Supplementary insurance recognised', 'Personal reply in English'];
-const crumbs = [{ href: '/en/', label: 'TCM.ch' }, { href: '/en/locations/', label: 'Locations' }, { label: name }];
+const crumbs = [{ href: '/en/', label: 'TCM.ch' }, { href: '/en/locations/', label: 'Locations' }, ...(city === 'Zürich' ? [{ href: '/en/acupuncture-zurich/', label: 'Zürich' }] : []), { label: name }];
+const primaryLabel = underReview ? 'Send your request' : planned ? 'Register your interest' : 'Request an appointment';
 const ctas = [
-  { href: '#appointment', label: planned ? 'Register your interest' : 'Request an appointment', kind: 'solid' as const },
+  { href: '#appointment', label: primaryLabel, kind: 'solid' as const },
   { href: waTermin, label: 'WhatsApp', kind: 'wa' as const, external: true },
 ];
 
@@ -131,8 +134,8 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
     <div class="wrap">
       <div class="ev-split">
         <div class="ev-prose">
-          <p class="ev-label">About this {partner ? 'practice' : 'clinic'}</p>
-          <h2 class="ev-h2">{planned ? `TCM.ch in ${name}` : `Your TCM ${partner ? 'practice' : 'clinic'} in ${name}`}</h2>
+          <p class="ev-label">About this {partnerLabel ? 'partner ' + (partner ? 'practice' : 'clinic') : 'clinic'}</p>
+          <h2 class="ev-h2">{planned ? `TCM.ch in ${name}` : partnerLabel ? `${partnerLabel} in ${name}` : `Your TCM clinic in ${name}`}</h2>
           {content.about.map((p) => <p set:html={p} />)}
           {content.area && (
             <>
@@ -144,11 +147,11 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
         </div>
 
         <aside class="ev-panel" aria-label={`Contact details ${name}`}>
-          <h3>{partner ? 'Address (partner practice)' : 'Address'}</h3>
+          <h3>{partner ? 'Address (partner practice)' : content.partnerClinic ? 'Address (partner clinic)' : underReview ? 'Address (status under review)' : planned && street ? 'Planned address' : planned ? 'Location' : 'Address'}</h3>
           {street ? (
             <p>{partner && <><strong>{partner.name}</strong><br /></>}{street}<br />{postalCode} {city}, Switzerland</p>
           ) : (
-            <p><strong>{inPreparation ? 'Location in preparation' : openingLabel}</strong><br />{city}, Switzerland</p>
+            <p><strong>No address yet</strong><br />{inPreparation ? 'Location in preparation' : openingLabel}<br />{city}, Switzerland</p>
           )}
           {mapsHref && !planned && <p><a href={mapsHref} target="_blank" rel="noopener">Directions on Google Maps</a></p>}
 
@@ -156,13 +159,13 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
           {openingHours.length ? (
             <ul>{openingHours.map((h) => { const [d, t] = formatHours(h).split(' '); return <li><span>{d}</span><span>{t}</span></li>; })}</ul>
           ) : (
-            <p>{planned ? 'To be announced ahead of opening.' : 'By appointment. We confirm times with you when you get in touch.'}</p>
+            <p>{underReview ? 'Not confirmed. Send your request and we suggest an available practice nearby.' : planned ? 'To be announced ahead of opening.' : 'By appointment. We confirm times with you when you get in touch.'}</p>
           )}
 
           <h3 style="margin-top:18px">Contact</h3>
-          <p>TCM.ch appointment coordination:<br /><a href={telHref}>{phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p>{content.partnerClinic ? `Practice phone (${content.partnerClinic}):` : partnerLabel ? 'TCM.ch appointment coordination:' : 'Appointments:'}<br /><a href={telHref}>{phone}</a><br /><a href={`mailto:${site.email}`}>{site.email}</a></p>
           {partner && <p>Practice phone: <a href={`tel:${partner.telefon.replace(/\s/g, '')}`}>{partner.telefon}</a></p>}
-          <a class="ev-btn ev-btn--solid" href="#appointment">{planned ? 'Register your interest' : 'Request an appointment'}</a>
+          <a class="ev-btn ev-btn--solid" href="#appointment">{primaryLabel}</a>
           <a class="ev-btn ev-btn--wa" href={waTermin} target="_blank" rel="noopener" style="margin-top:10px;width:100%">WhatsApp</a>
           <hr />
           <p style="font-size:14px;color:rgba(2,11,16,.68)">Insurance: EMR-/ASCA-recognised practitioners; reimbursement through supplementary insurance depends on your policy. <a href="/en/health-insurance-acupuncture/">How it works</a></p>
@@ -219,8 +222,8 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
     <div class="wrap">
       <p class="ev-label">Appointment</p>
       <AppointmentForm id={`en-location-form-${id}`} preselect={preselect} source={path}
-        heading={planned ? `Register your interest for ${name}` : `Request an appointment in ${name}`}
-        intro={planned ? (PLANNED_PRESELECT[id] ? 'We contact you as soon as appointments are possible, or suggest an open clinic nearby if you prefer.' : `Leave the location on “No preference” and mention ${name} in your message; we register your interest and suggest an open clinic nearby if you prefer.`) : 'Tell us briefly what is going on and your preferred times. We reply personally in English or German.'} />
+        heading={underReview ? `Send your request for ${city}` : planned ? `Register your interest for ${name}` : `Request an appointment in ${name}`}
+        intro={underReview ? 'This address is not confirmed; we suggest an available TCM.ch practice nearby and reply personally in English or German.' : planned ? (PLANNED_PRESELECT[id] ? 'We contact you as soon as appointments are possible, or suggest an open clinic nearby if you prefer.' : `Leave the location on “No preference” and mention ${name} in your message; we register your interest and suggest an open clinic nearby if you prefer.`) : 'Tell us briefly what is going on and your preferred times. We reply personally in English or German.'} />
     </div>
   </section>
 
@@ -243,8 +246,19 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
     </section>
   )}
 
-  <CtaBand title={planned ? `Interested in ${name}?` : `Ready for an appointment in ${name}?`}
-    text={planned ? 'Register your interest, or let us suggest the nearest open TCM.ch clinic. We reply personally in English or German.' : 'Tell us briefly what is going on and your preferred times. We reply personally in English or German.'}
-    primary={{ href: '#appointment', label: planned ? 'Register your interest' : 'Request an appointment' }}
+  {city === 'Zürich' && (
+    <section class="ev-section" id="zurich">
+      <div class="wrap">
+        <div class="ev-grid ev-grid--2">
+          <a class="ev-card" href="/en/acupuncture-zurich/"><h3>Not sure which Zürich practice?</h3><p>Tell us your district or ask for the next available appointment; we suggest the practice that fits.</p><span class="ev-card__arrow">Acupuncture in Zürich →</span></a>
+          <a class="ev-card" href="/en/contact/"><h3>Any other location</h3><p>Request an appointment at any TCM.ch clinic; we reply personally in English or German.</p><span class="ev-card__arrow">Request an appointment →</span></a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand title={underReview ? `Looking for TCM in ${city}?` : planned ? `Interested in ${name}?` : `Ready for an appointment in ${name}?`}
+    text={underReview ? 'Send your request; we suggest an available TCM.ch practice nearby and reply personally in English or German.' : planned ? 'Register your interest, or let us suggest the nearest open TCM.ch clinic. We reply personally in English or German.' : 'Tell us briefly what is going on and your preferred times. We reply personally in English or German.'}
+    primary={{ href: '#appointment', label: primaryLabel }}
     secondary={{ href: waTermin, label: 'WhatsApp', external: true }} />
 </Layout>

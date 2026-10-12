@@ -18,6 +18,8 @@ export interface LocationContent {
   hero?: { src: string; alt: string; caption: string; symbolic?: boolean };
   /** Curated nearby EN location slugs (DE nearby filtered to clinics with an EN page). */
   nearby?: string[];
+  /** Independent partner clinic without a betreiber record in locations.ts (display label only; schema unchanged). */
+  partnerClinic?: string;
 }
 
 const SESSION_PRICE = 'A follow-up session is typically around CHF 130 to 160, billed under the recognised tariff 590 by treatment time. The first consultation takes longer because of the case history and costs accordingly more. We tell you the exact amount before your appointment.';
@@ -238,6 +240,7 @@ export const locationContent: Record<string, LocationContent> = {
       BOOK_FAQ('Bottighofen'),
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
     ],
+    partnerClinic: 'TCM Pelican',
     hero: { src: '/images/bottighofen-hero.webp', alt: 'TCM Pelican practice in Bottighofen', caption: 'Hauptstrasse 34, Bottighofen' },
     nearby: ['kreuzlingen', 'frauenfeld', 'rorschach'],
   },

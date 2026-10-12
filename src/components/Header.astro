@@ -69,6 +69,7 @@ const enDrawer = [
     { href: '/en/therapies/physiotherapy/', label: 'Physiotherapy' },
   ] },
   { label: 'Locations', hubHref: '/en/locations/', children: [
+    { href: '/en/acupuncture-zurich/', label: 'Zürich (all practices)' },
     ...clinics.filter((c) => c.status === 'operational').map((c) => ({ href: enLocationPath(c.id), label: c.name })),
     ...clinics.filter((c) => c.status !== 'operational').map((c) => ({ href: enLocationPath(c.id), label: `${c.name} (${c.status === 'review' ? 'status pending' : 'planned'})` })),
   ] },

@@ -50,6 +50,7 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
         <h4>Locations</h4>
         <ul id="footer-locations">
           <li><a href="/en/acupuncture-near-me/">Acupuncture near me</a></li>
+          <li><a href="/en/acupuncture-zurich/">Acupuncture in Zürich</a></li>
           {clinics.map((c) => (
             <li><a href={enLocationPath(c.id)}><Fragment set:html={pin} />{c.name}</a></li>
           ))}
