@@ -3,7 +3,8 @@
 // (green = --blue, green-deep = --blue-dark, ink = --charcoal). Renders via
 // SpaPage's <slot/>, above the (hero-stripped) standort body. One primary CTA
 // Primär "Ersttermin anfragen" (#offer-form, kompakte Sektion direkt unter dem Hero; reguläre Ersttermin-Anfrage, kein Gratis-Angebot mehr),
-// sekundär #online-buchen → OneDoc. Das Hero-Leadformular (quelle=launch-hero-sg,
+// sekundär #online-buchen → OneDoc. PILOT (feat/sg-hero-form-pilot): die Formular-Karte sitzt in der rechten
+// Hero-Hälfte, das Praxisfoto in einem "Über die Praxis"-Band direkt darunter. Das Hero-Leadformular (quelle=launch-hero-sg,
 // form[data-sg-hero-form]) ist unverändert das frühere Original inkl. Submit-Handler
 // unten; das Kontaktformular am Seitenende (sg-kontakt-bottom) bleibt davon getrennt.
 const { sitekey } = Astro.props;
@@ -27,15 +28,8 @@ const { sitekey } = Astro.props;
       <p class="lsr-note">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung vereinbart.</p>
       <p class="lsr-note"><b>Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
-    <figure class="lsr-right">
-      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
-      <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="hlsg-offer-sec">
-  <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
+    <div class="lsr-right hlsg-formcol">
+  <div class="hlsg-card" id="offer-form" style="scroll-margin-top:96px">
     <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Dein Ersttermin in St. Gallen</div>
     <p class="hlsg-offer-note" style="margin-bottom:14px">Akupunktur und TCM bei qualifizierten Therapeutinnen und Therapeuten. Wir melden uns persönlich mit einem passenden Terminvorschlag.</p>
     <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
@@ -59,6 +53,17 @@ const { sitekey } = Astro.props;
       <p class="hlsg-form-rule">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung per WhatsApp oder Telefon vereinbart.</p>
       <p class="hlsg-form-err" role="alert" hidden></p>
     </form>
+  </div>
+    </div>
+  </div>
+</section>
+
+<section class="hlsg-photo-sec" aria-label="Über die Praxis">
+  <div class="hlsg-photo-wrap">
+    <figure class="hlsg-photo">
+      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="lazy" decoding="async">
+      <figcaption><span class="hlsg-photo-label">Über die Praxis</span> TCM.ch St. Gallen · Oberer Graben 22 · wenige Gehminuten vom Bahnhof</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -89,8 +94,27 @@ const { sitekey } = Astro.props;
   
   
 
-  .hlsg-offer-sec { background: var(--surface); font-family: var(--font-sans); padding: 0 var(--pad-x) clamp(32px, 5vw, 56px); }
-  .hlsg-offer-sec .hlsg-card { max-width: 520px; margin: 0 auto; }
+  /* Pilot: form-led 50/50 hero. Right column holds the compact first-appointment card on the Mint surface;
+     the clinic photo moves into an "Über die Praxis" band directly below the hero. Mobile: copy, then card, then photo. */
+  .hlsg .lsr-right.hlsg-formcol { position: relative; min-height: 0; height: auto; container-type: normal; background: transparent;
+    display: flex; align-items: center; justify-content: center; padding: clamp(28px, 4vw, 56px) clamp(24px, 4.5vw, 72px) clamp(28px, 4vw, 56px) 0; }
+  .hlsg .hlsg-formcol .hlsg-card { width: 100%; max-width: 520px; margin: 0; }
+  .hlsg-photo-sec { background: var(--surface); padding: clamp(24px, 3vw, 40px) var(--pad-x) 0; font-family: var(--font-sans); }
+  .hlsg-photo-wrap { max-width: var(--max); margin: 0 auto; }
+  .hlsg-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 7; background: linear-gradient(180deg,#a2a3a4,#afafaf); }
+  .hlsg-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
+  .hlsg-photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 11px 18px; font-size: 13px; font-weight: 600; color: #fff;
+    background: rgba(2,11,16,.86); }
+  .hlsg-photo-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-right: 10px; opacity: .85; }
+  @media (max-width: 1023px) {
+    .hlsg .lsr-right.hlsg-formcol { padding: 0 24px 32px; }
+    .hlsg-photo-sec { padding-left: 24px; padding-right: 24px; }
+    .hlsg-photo { aspect-ratio: 16 / 9; border-radius: 18px; }
+  }
+  @media (max-width: 767px) {
+    .hlsg-photo-sec { padding-left: 16px; padding-right: 16px; }
+    .hlsg-photo { aspect-ratio: 4 / 3; }
+  }
 
   .hlsg-card {
     position: relative; overflow: hidden;
@@ -141,7 +165,7 @@ const { sitekey } = Astro.props;
   .hlsg-success p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
 
   @media (max-width: 767px) {
-    .hlsg-offer-sec { padding-left: 16px; padding-right: 16px; }
+    .hlsg .lsr-right.hlsg-formcol { padding-left: 16px; padding-right: 16px; }
     .hlsg-card { padding: 18px; }
     .hlsg-card, .hlsg-card * { max-width: 100%; }
     .hlsg-ts { max-width: 100%; overflow-x: auto; }
