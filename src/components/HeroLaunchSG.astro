@@ -107,12 +107,12 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
 
 {cta && (
   <Fragment>
-    {/* Schwebender Geschenk-CTA (Kampagnen-Config src/data/campaign-cta.ts): mobile = WhatsApp-Karte, Desktop = Pill → Formular.
-        Ersetzt auf dieser Seite die reguläre Sticky-Bar (scb-off), erscheint erst, wenn die Geschenkkarte aus dem Bild ist. */}
+    {/* Mobiler FIRST-30-Hinweis wird per JS ALS ZUSATZ in die reguläre .scb-bar verschoben.
+        Der normale Termin-/WhatsApp-/Anrufen-Sticky bleibt aktiv. Desktop: separater kompakter Pill-CTA. */}
     <div class="f30-float f30-float--m" data-f30-float="mobile" data-campaign={cta.campaignId} hidden>
       <a href={cta.whatsappHref} target="_blank" rel="noopener" class="f30-float-card" data-f30-wa data-cta-position="floating_mobile" aria-label={`${cta.eyebrow}: ${cta.main}, ${cta.secondary}. Öffnet WhatsApp mit vorbereiteter Nachricht`}>
         <span class="f30-float-ic" aria-hidden="true"><Fragment set:html={GIFT_SVG} /></span>
-        <span class="f30-float-txt"><span class="f30-float-main">{cta.main}</span><span class="f30-float-sec">{cta.secondary}</span></span>
+        <span class="f30-float-txt"><span class="f30-float-main">{st.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span></span>
         <span class="f30-float-arrow" aria-hidden="true"><Fragment set:html={WA_SVG} /></span>
       </a>
       <button type="button" class="f30-float-x" data-f30-dismiss aria-label="Geschenk-Hinweis für diese Sitzung schliessen">×</button>
@@ -139,6 +139,8 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-hero .f30-inner { grid-template-areas: 'intro card' 'more card'; grid-template-rows: auto auto; align-content: center; }
   .f30-intro { grid-area: intro; justify-content: flex-end; padding-bottom: 0; }
   .f30-more { grid-area: more; justify-content: flex-start; padding-top: 18px; }
+  /* Desktop: left message sits 40px higher against the gift card. Mobile layout is unchanged. */
+  @media (min-width: 1024px) { .f30-intro, .f30-more { position: relative; top: -40px; } }
   .f30-right { grid-area: card; align-self: center; padding: clamp(32px, 4vw, 56px) clamp(24px, 4.5vw, 72px) clamp(32px, 4vw, 56px) 0; }
   .f30-hero .lsr-eyebrow { margin-bottom: 12px; }
   .f30-h1 { margin-bottom: 14px; }
@@ -151,7 +153,7 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-trustline { font-size: 13px; font-weight: 600; color: rgba(2, 11, 16, .66); margin: 0; }
 
   /* ── Geschenkkarte ── */
-  .f30-card { position: relative; overflow: hidden; max-width: 520px; margin: 0 auto; border-radius: 22px; padding: clamp(22px, 2.4vw, 30px);
+  .f30-card { position: relative; overflow: hidden; max-width: 520px; margin: 0 auto; border-radius: 22px; padding: clamp(20px, 2.1vw, 26px);
     background: var(--f30-pine); color: var(--f30-ivory); border: 1px solid rgba(2, 11, 16, .18);
     box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .45), inset 0 1px 0 rgba(255, 249, 243, .12); }
   .f30-ribbon { position: absolute; top: 18px; right: 18px; z-index: 2; background: var(--f30-gold); color: var(--f30-ox); font-size: 9.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
@@ -171,7 +173,7 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-avail-s { font-size: 12.5px; font-weight: 600; color: var(--f30-ivory-72); margin: 0; }
   @media (prefers-reduced-motion: reduce) { .f30-avail-fill { transition: none; } }
 
-  .f30-body { display: flex; flex-direction: column; gap: 12px; }
+  .f30-body { display: flex; flex-direction: column; gap: 10px; }
   .f30-formwrap { order: 1; }
   .f30-wa { order: 2; display: flex; flex-direction: column; gap: 6px; }
   .f30-form { position: relative; display: flex; flex-direction: column; gap: 10px; }
@@ -218,10 +220,10 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-wa-count { display: inline-flex; align-items: center; min-width: 58px; justify-content: center; padding: 3px 8px; border-radius: 8px; background: var(--f30-black); color: var(--f30-mint); font-variant-numeric: tabular-nums; font-size: 13.5px; letter-spacing: .04em; line-height: 1; }
   .f30-wa-count b { display: inline-block; min-width: 2ch; text-align: center; font-weight: 800; }
   .f30-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
-  .f30-alt { text-align: center; font-size: 13.5px; margin: 14px 0 0; }
+  .f30-alt { text-align: center; font-size: 13.5px; margin: 10px 0 0; }
   .f30-alt--form { margin: 4px 0 0; }
-  .f30-disclaimer { font-size: 13px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 10px 0 0; }
-  .f30-terms { margin: 8px 0 0; text-align: center; font-size: 12.5px; line-height: 1.6; color: var(--f30-ivory-72); }
+  .f30-disclaimer { font-size: 13px; line-height: 1.55; color: var(--f30-ivory-72); text-align: center; margin: 7px 0 0; }
+  .f30-terms { margin: 5px 0 0; text-align: center; font-size: 12.5px; line-height: 1.6; color: var(--f30-ivory-72); }
   .f30-terms summary { cursor: pointer; font-weight: 600; list-style: none; display: inline; }
   .f30-terms summary::-webkit-details-marker { display: none; }
   .f30-terms p { margin: 8px 0 0; text-align: left; }
@@ -270,7 +272,20 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-float { position: fixed; z-index: 540; display: flex; align-items: stretch; gap: 6px; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .28s ease, transform .32s cubic-bezier(.16, 1, .3, 1); font-family: var(--font-sans); }
   .f30-float[hidden] { display: none; }
   .f30-float.is-on { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .f30-float--m { left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+  /* Mobile: ADD-ON inside the original sitewide sticky bar, never a second fixed overlay. */
+  .f30-float--m { position: static; inset: auto; z-index: auto; width: 100%; box-sizing: border-box;
+    margin: 0; transform: none; gap: 6px; }
+  .f30-float--m[hidden] { display: none !important; }
+  .f30-float--m .f30-float-card { min-height: 40px; padding: 6px 10px; border-radius: 12px;
+    background: #F0FFF7; color: #14532D; border: 1px solid rgba(20, 83, 45, .24); box-shadow: none; gap: 8px; }
+  .f30-float--m .f30-float-ic { width: 26px; height: 26px; background: #14532D; color: #FFF9F3; }
+  .f30-float--m .f30-float-ic svg { width: 15px; height: 15px; }
+  .f30-float--m .f30-float-main { color: #14532D; font-size: 13px; font-weight: 800; }
+  .f30-float--m .f30-float-arrow { width: 24px; height: 24px; color: #14532D;
+    background: rgba(20, 83, 45, .08); }
+  .f30-float--m .f30-float-arrow svg { width: 15px; height: 15px; }
+  .f30-float--m .f30-float-x { flex: 0 0 40px; min-height: 40px; border-radius: 12px; box-shadow: none; font-size: 20px; }
+  .f30-float--m .f30-float-x:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
   .f30-float-card { flex: 1 1 auto; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; border-radius: 18px; text-decoration: none; color: #FFF9F3;
     background: #14532D; border: 1px solid rgba(26, 226, 136, .45); box-shadow: 0 18px 40px -14px rgba(2, 11, 16, .6), inset 0 1px 0 rgba(255, 249, 243, .12); }
   .f30-float-card:focus-visible, .f30-float-pill:focus-visible { outline: 3px solid #1AE288; outline-offset: 3px; }
@@ -283,13 +298,15 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-float-x { flex: 0 0 40px; min-height: 44px; border-radius: 14px; border: 1px solid rgba(2, 11, 16, .2); background: rgba(255, 249, 243, .97); color: #020B10; font-size: 22px; font-weight: 700; line-height: 1; cursor: pointer; box-shadow: 0 10px 24px -12px rgba(2, 11, 16, .45); }
   .f30-float-x:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
   .f30-float--d { display: none; right: 88px; bottom: 24px; align-items: center; }
-  .f30-float-pill { display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; text-decoration: none; color: #FFF9F3; min-height: 56px;
+  .f30-float-pill { display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; text-decoration: none; color: #FFF9F3; min-height: 44px;
     background: #14532D; border: 1px solid rgba(26, 226, 136, .5); box-shadow: 0 16px 36px -14px rgba(2, 11, 16, .6); transition: transform .18s ease, box-shadow .18s ease; }
   .f30-float-pill:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -14px rgba(2, 11, 16, .7); }
-  .f30-float--d .f30-float-main { font-size: 14.5px; }
-  .f30-float--d .f30-float-sec { font-size: 11.5px; }
-  .f30-float--d .f30-float-x { flex-basis: 34px; min-height: 34px; font-size: 18px; border-radius: 50%; margin-left: 6px; }
+  .f30-float--d .f30-float-main { font-size: 13.5px; }
+  .f30-float--d .f30-float-sec { display: none; }
+  .f30-float--d .f30-float-x { flex-basis: 36px; min-height: 36px; font-size: 18px; border-radius: 50%; margin-left: 2px; }
   @media (min-width: 769px) { .f30-float--m { display: none; } .f30-float--d { display: flex; } .f30-float--d[hidden] { display: none; } }
+  /* Strip shown → page end must stay reachable above the taller sticky (128px reserved by StickyCtaBar + strip row). */
+  @media (max-width: 768px) { :global(body.f30-strip-on) { padding-bottom: calc(176px + env(safe-area-inset-bottom, 0px)); } }
   @media (prefers-reduced-motion: reduce) { .f30-float { transition: none; transform: none; } .f30-float-pill { transition: none; } .f30-float-pill:hover { transform: none; } }
 </style>
 
@@ -462,18 +479,27 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
       tick(); setInterval(tick, 1000);
     }
 
-    // ── Schwebender Geschenk-CTA (Kampagne): ersetzt die reguläre Sticky-Bar auf dieser Seite; sichtbar erst,
-    //    wenn die Geschenkkarte aus dem Bild ist; aus, solange Karte/unteres Formular sichtbar oder ein Feld fokussiert ist;
-    //    Dismiss gilt für die Browser-Sitzung (sessionStorage). ──
-    var floats = document.querySelectorAll('[data-f30-float]'), bar = document.querySelector('.scb-bar'), cardEl = document.getElementById('offer-form'), kEl = document.getElementById('kontakt');
+    // ── FIRST-30-ZUSATZ zum normalen Sticky: niemals .scb-off setzen! Mobil wird die kleine
+    //    Geschenkjeile in die bestehende .scb-bar eingefügt; Termin/WhatsApp/Anrufen bleiben erhalten.
+    //    Desktop bleibt nur die kompakte Geschenk-Pill. X schliesst ausschliesslich den Zusatz.
+    //    Der reguläre Sticky behält seine eigene Sichtbarkeitslogik (und funktioniert auch nach Dismiss). ──
+    var floats = document.querySelectorAll('[data-f30-float]'), bar = document.querySelector('.scb-bar');
+    var mobileFloat = document.querySelector('[data-f30-float="mobile"]');
+    var cardEl = document.getElementById('offer-form'), kEl = document.getElementById('kontakt');
     var dismissed = false; try { dismissed = sessionStorage.getItem('f30-float-dismissed') === '1'; } catch (_) {}
+    if (bar && mobileFloat) bar.insertBefore(mobileFloat, bar.firstChild);
     if (floats.length && cardEl && 'IntersectionObserver' in window) {
-      if (bar) bar.classList.add('scb-off');
       var cardIn = true, kIn = false, focused = false;
       var apply = function () {
         var on = !dismissed && !cardIn && !kIn && !focused;
-        for (var i = 0; i < floats.length; i++) { floats[i].hidden = false; floats[i].classList.toggle('is-on', on); floats[i].setAttribute('aria-hidden', on ? 'false' : 'true'); }
-        document.body.classList.toggle('f30-float-on', on);
+        for (var i = 0; i < floats.length; i++) {
+          var fl = floats[i], show = on && (fl !== mobileFloat || !!bar);
+          fl.hidden = !show; // hidden ADD-ON never takes empty space in the original sticky bar.
+          fl.classList.toggle('is-on', show);
+          fl.setAttribute('aria-hidden', show ? 'false' : 'true');
+        }
+        // Reserve the strip's extra height below the page content (StickyCtaBar reserves only its own 128px).
+        document.body.classList.toggle('f30-strip-on', !!(mobileFloat && !mobileFloat.hidden));
       };
       new IntersectionObserver(function (es) { es.forEach(function (x) { cardIn = x.isIntersecting; }); apply(); }, { threshold: 0.05 }).observe(cardEl);
       if (kEl) new IntersectionObserver(function (es) { es.forEach(function (x) { kIn = x.isIntersecting; }); apply(); }, { threshold: 0.05 }).observe(kEl);
