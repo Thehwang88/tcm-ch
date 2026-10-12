@@ -1,0 +1,146 @@
+{
+  "page:home": {
+    "src/data/home-body.html": "5f6899bbbf35d3af"
+  },
+  "hub:locations": {
+    "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
+    "src/data/locations.ts": "c5b19a77624b2fcc"
+  },
+  "hub:therapies": {
+    "src/pages/therapien/index.astro": "72ce4330908c0c52"
+  },
+  "hub:conditions": {
+    "src/pages/beschwerden/index.astro": "ee0f10d3ca3125a7"
+  },
+  "hub:knowledge": {},
+  "page:contact": {
+    "src/pages/kontakt.astro": "475f2382a59ae236",
+    "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
+    "src/data/locations.ts": "c5b19a77624b2fcc"
+  },
+  "page:insurance": {
+    "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
+  },
+  "page:near-me": {
+    "src/pages/akupunktur-in-der-naehe.astro": "78e47238a3ce07f8",
+    "src/data/locations.ts": "c5b19a77624b2fcc"
+  },
+  "location:kreuzlingen": {
+    "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
+    "src/data/standorte.ts#standorte.kreuzlingen": "5681fb8705812506"
+  },
+  "location:bottighofen": {
+    "src/data/locations.ts#clinics.bottighofen": "6371dfa639711fb6"
+  },
+  "location:frauenfeld": {
+    "src/data/locations.ts#clinics.frauenfeld": "9e2e8c5d720bd94c",
+    "src/data/standorte.ts#standorte.frauenfeld": "8dfa259ca66fdc06"
+  },
+  "location:winterthur-muenzgasse": {
+    "src/data/locations.ts#clinics.winterthur-muenzgasse": "ecebab1207b47461",
+    "src/data/standorte.ts#standorte.winterthur-muenzgasse": "4ecf87f5dad6b016"
+  },
+  "location:winterthur-marktgasse": {
+    "src/data/locations.ts#clinics.winterthur-marktgasse": "91285a3dfab360c1",
+    "src/data/standorte.ts#standorte.winterthur-marktgasse": "068712ff29e861e6"
+  },
+  "location:volketswil": {
+    "src/data/locations.ts#clinics.volketswil": "9f102b6ba7c54055",
+    "src/data/standorte.ts#standorte.volketswil": "962f6782f2e29535"
+  },
+  "location:zuerich-hoengg": {
+    "src/data/locations.ts#clinics.zuerich-hoengg": "4b7aac1523cf4e8f",
+    "src/data/standorte.ts#standorte.zuerich-hoengg": "48067c32225802fa"
+  },
+  "location:zuerich-oerlikon": {
+    "src/data/locations.ts#clinics.zuerich-oerlikon": "881e6ae157c76247",
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "011c9210c1bff3fa"
+  },
+  "location:basel": {
+    "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
+    "src/data/standorte.ts#standorte.basel": "b39216375bdb5e7b"
+  },
+  "location:luzern": {
+    "src/data/locations.ts#clinics.luzern": "bb4c27b3123c64e2"
+  },
+  "location:bern": {
+    "src/data/locations.ts#clinics.bern": "b4b3286320225e71"
+  },
+  "location:st-gallen": {
+    "src/data/locations.ts#clinics.st-gallen": "d0347d159b11272e"
+  },
+  "location:rorschach": {
+    "src/data/locations.ts#clinics.rorschach": "795f34ea6f32d299",
+    "src/data/standorte.ts#standorte.rorschach": "b880105b59b1f395"
+  },
+  "location:wil": {
+    "src/data/locations.ts#clinics.wil": "218c8e5f07367b5e",
+    "src/data/standorte.ts#standorte.wil": "de92951cde129255"
+  },
+  "therapy:acupuncture": {
+    "src/data/therapie-leaves/akupunktur.html": "07615c43e90abbfd"
+  },
+  "therapy:cupping": {
+    "src/data/therapie-leaves/schroepfen.html": "b18b2807e198d90e"
+  },
+  "therapy:tuina-massage": {
+    "src/data/therapie-leaves/tuina.html": "06581b27ed1b6de6"
+  },
+  "therapy:chinese-herbal-medicine": {
+    "src/data/therapie-leaves/kraeutertherapie.html": "248ab4d58d317d91"
+  },
+  "therapy:moxibustion": {
+    "src/data/therapie-leaves/moxibustion.html": "bdc6959e1cb5870c"
+  },
+  "therapy:electroacupuncture": {
+    "src/data/therapie-leaves/elektroakupunktur.html": "caeb00c7e9b0099d"
+  },
+  "therapy:facial-acupuncture": {
+    "src/data/therapie-leaves/gesichtsakupunktur.html": "a61c8d3ded487499"
+  },
+  "therapy:acupressure": {
+    "src/data/therapie-leaves/akupressur.html": "0184182ed53ed369"
+  },
+  "therapy:shiatsu": {
+    "src/data/therapie-leaves/shiatsu.html": "e3f0eed10dde1ff8"
+  },
+  "therapy:gua-sha": {
+    "src/data/therapie-leaves/gua-sha.html": "746fc5cf164c1e3c"
+  },
+  "therapy:physiotherapy": {
+    "src/data/therapie-leaves/physiotherapie.html": "87aaf4b0d6b452a4"
+  },
+  "condition:back-pain": {
+    "src/data/symptom-leaves/rueckenschmerzen.html": "b9a2d7d0aa6b3513"
+  },
+  "condition:neck-pain": {
+    "src/data/symptom-leaves/nackenschmerzen.html": "7521a1d8aeca43b2"
+  },
+  "condition:migraine-headaches": {
+    "src/data/symptom-leaves/migraene.html": "f26a3ff62e49b925"
+  },
+  "condition:sleep-problems": {
+    "src/data/symptom-leaves/schlafprobleme.html": "89b0c2508b0692c7"
+  },
+  "condition:stress-burnout": {
+    "src/data/symptom-leaves/stress-burnout.html": "d3ed7f3a9442c8eb"
+  },
+  "condition:digestive-issues": {
+    "src/data/symptom-leaves/verdauungsprobleme.html": "1660cc0bbc9d583d"
+  },
+  "condition:menstrual-issues": {
+    "src/data/symptom-leaves/zyklusbeschwerden.html": "573cbc51c9f6f393"
+  },
+  "condition:fertility-support": {
+    "src/data/symptom-leaves/kinderwunsch.html": "a006452e1844872b"
+  },
+  "knowledge:what-to-expect-first-acupuncture-session": {},
+  "knowledge:how-much-does-acupuncture-cost-in-switzerland": {},
+  "knowledge:how-to-claim-acupuncture-on-swiss-insurance": {},
+  "knowledge:is-acupuncture-safe-side-effects-explained": {},
+  "knowledge:english-speaking-acupuncturist-switzerland": {},
+  "knowledge:acupuncture-for-back-pain-what-to-expect": {},
+  "knowledge:acupuncture-for-migraines-what-to-expect": {},
+  "knowledge:acupuncture-for-stress-and-burnout": {},
+  "knowledge:acupuncture-for-fertility-switzerland": {}
+}
