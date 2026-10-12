@@ -33,6 +33,19 @@ const relatedConditions = related.map(conditionBySlug).filter(Boolean) as Condit
 // Therapies commonly used for this condition (cross-link back to therapy pages).
 const relevantTherapies = therapiesForCondition(slug);
 
+// Treatment-decision articles (Knowledge owns 'acupuncture for X' intent; this page owns the condition).
+const ARTICLES: Record<string, { href: string; label: string }[]> = {
+  'back-pain': [{ href: '/en/knowledge/acupuncture-for-back-pain-what-to-expect/', label: 'Acupuncture for back pain: what to expect' }],
+  'migraine-headaches': [{ href: '/en/knowledge/acupuncture-for-migraines-what-to-expect/', label: 'Acupuncture for migraines: what to expect' }],
+  'stress-burnout': [{ href: '/en/knowledge/acupuncture-for-stress-and-burnout/', label: 'Acupuncture for stress and burnout' }],
+  'fertility-support': [{ href: '/en/knowledge/acupuncture-for-fertility-switzerland/', label: 'Acupuncture for fertility in Switzerland: an honest guide' }],
+};
+const articles = [
+  ...(ARTICLES[slug] ?? []),
+  { href: '/en/knowledge/what-to-expect-first-acupuncture-session/', label: 'What to expect at your first session' },
+  { href: '/en/knowledge/is-acupuncture-safe-side-effects-explained/', label: 'Is acupuncture safe? Side effects explained' },
+];
+
 // Hero image - same asset the DE Beschwerde page uses.
 const image = conditionImages[slug];
 
@@ -132,6 +145,11 @@ const breadcrumbLd = {
               <p><a href="/en/therapies/">See all therapies</a></p>
             </>
           )}
+
+          <h2>Read next</h2>
+          <ul>
+            {articles.map((a) => <li><a href={a.href}>{a.label}</a></li>)}
+          </ul>
 
           <div class="ev-note-box">
             <strong>Next steps:</strong>

@@ -1,0 +1,85 @@
+---
+// Lightweight clinic finder: City → treatment interest → clinic → appointment request.
+// Native fieldsets/radios (keyboard + screen reader), progressive disclosure via a small inline script,
+// data from clinics[] only (status-aware), no availability claims, no storage, no new analytics events:
+// the final "Request" button is a link to the page's appointment form (#appointment) → booking cta_click,
+// and it preselects the clinic (data-pick) and a treatment-interest prefix in the message (data-prefill).
+import { clinics, type Clinic } from '../../data/locations';
+import { therapies } from '../../data/therapies';
+import { enLocationPath } from '../../data/locations';
+interface Props { formAnchor?: string }
+const { formAnchor = '#appointment' } = Astro.props;
+const cityOrder = ['Zürich', 'Winterthur', 'Volketswil', 'Basel', 'St. Gallen', 'Wil', 'Rorschach', 'Frauenfeld', 'Kreuzlingen', 'Bottighofen', 'Luzern', 'Bern'];
+const cities = [...new Set(clinics.map((c) => c.city))].sort((a, b) => cityOrder.indexOf(a) - cityOrder.indexOf(b));
+const statusLabel = (c: Clinic) => c.status === 'operational' ? (c.betreiber ? 'Open · partner practice' : 'Open') : c.status === 'review' ? 'Status under review' : `Planned · ${c.openingNote ?? 'in preparation'}`;
+const pick = (c: Clinic) => c.status === 'operational' ? c.name : (c.vorab?.[c.vorab.length - 1]?.value ?? '');
+const featured = ['acupuncture', 'tuina-massage', 'cupping', 'chinese-herbal-medicine', 'facial-acupuncture', 'shiatsu'].map((s) => therapies.find((t) => t.slug === s)!);
+---
+<div class="ev-finder" id="clinic-finder" data-anchor={formAnchor}>
+  <fieldset class="ev-finder__step" data-step="1">
+    <legend><span class="ev-finder__num">1</span> Where do you live or work?</legend>
+    <div class="ev-finder__options">
+      {cities.map((city) => <label class="ev-finder__opt"><input type="radio" name="finder-city" value={city} /><span>{city}</span></label>)}
+      <label class="ev-finder__opt"><input type="radio" name="finder-city" value="*" /><span>Anywhere / not sure</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="ev-finder__step" data-step="2" hidden>
+    <legend><span class="ev-finder__num">2</span> What are you interested in? <em>(optional)</em></legend>
+    <div class="ev-finder__options">
+      {featured.map((t) => <label class="ev-finder__opt"><input type="radio" name="finder-treatment" value={t.name} /><span>{t.name}</span></label>)}
+      <label class="ev-finder__opt"><input type="radio" name="finder-treatment" value="" checked /><span>Not sure yet</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="ev-finder__step" data-step="3" hidden>
+    <legend><span class="ev-finder__num">3</span> Choose a clinic</legend>
+    <div class="ev-finder__clinics">
+      {clinics.map((c) => (
+        <div class="ev-finder__clinic" data-city={c.city} data-status={c.status}>
+          <div>
+            <strong>{c.name}</strong><span class={`ev-badge${c.status === 'operational' ? ' ev-badge--neutral' : ''}`}>{statusLabel(c)}</span>
+            <p>{c.status === 'operational' ? (c.betreiber ? `${c.betreiber.name}, ${c.street}` : `${c.street}, ${c.postalCode} ${c.city}`) : c.status === 'review' ? 'Not confirmed as an operating clinic; we suggest an available practice nearby.' : 'Not open yet: no appointments at this address. You can register your interest.'}</p>
+          </div>
+          <div class="ev-finder__actions">
+            {pick(c) ? <a class={`ev-btn ${c.status === 'operational' ? 'ev-btn--solid' : 'ev-btn--outline'}`} href={formAnchor} data-pick={pick(c)} data-finder-pick>{c.status === 'operational' ? 'Request here' : c.status === 'review' ? 'Send a request' : 'Register interest'}</a> : <a class="ev-btn ev-btn--outline" href={formAnchor} data-pick="" data-finder-pick>Send a request</a>}
+            <a class="ev-pick__link" href={enLocationPath(c.id)}>Details</a>
+          </div>
+        </div>
+      ))}
+      <div class="ev-finder__clinic ev-finder__clinic--any" data-city="*">
+        <div><strong>No preference</strong><p>Tell us where you live in the message; we suggest the nearest open clinic and reply personally.</p></div>
+        <div class="ev-finder__actions"><a class="ev-btn ev-btn--solid" href={formAnchor} data-pick="" data-finder-pick>Send a request</a></div>
+      </div>
+    </div>
+    <p class="ev-finder__note" data-finder-empty hidden>No TCM.ch location in this city yet. Choose "Anywhere / not sure" and we suggest the nearest clinic.</p>
+  </fieldset>
+</div>
+<script is:inline>
+  (function () {
+    var root = document.getElementById('clinic-finder');
+    if (!root) return;
+    var steps = root.querySelectorAll('.ev-finder__step');
+    var clinicsEl = root.querySelectorAll('.ev-finder__clinic');
+    var empty = root.querySelector('[data-finder-empty]');
+    function show(n) { for (var i = 0; i < steps.length; i++) { if (+steps[i].getAttribute('data-step') <= n) steps[i].hidden = false; } }
+    root.addEventListener('change', function (e) {
+      var t = e.target;
+      if (t.name === 'finder-city') {
+        var city = t.value, any = 0;
+        for (var i = 0; i < clinicsEl.length; i++) {
+          var c = clinicsEl[i]; var match = city === '*' ? true : c.getAttribute('data-city') === city || c.classList.contains('ev-finder__clinic--any');
+          c.hidden = !match; if (match && !c.classList.contains('ev-finder__clinic--any')) any++;
+        }
+        if (empty) empty.hidden = !(city !== '*' && any === 0);
+        show(3);
+        var s2 = root.querySelector('[data-step="2"]'); if (s2) s2.querySelector('input').focus();
+      }
+    });
+    root.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[data-finder-pick]') : null;
+      if (!a) return;
+      var tr = root.querySelector('input[name="finder-treatment"]:checked');
+      var msg = document.querySelector(root.getAttribute('data-anchor') + ' textarea[name="anliegen"]');
+      if (msg && tr && tr.value && !msg.value) msg.value = 'Treatment interest: ' + tr.value + '. ';
+    });
+  })();
+</script>
