@@ -75,7 +75,7 @@ const TEL = `tel:+${site.whatsapp}`;
     // Aktionsleiste: beliebiges Element mit data-no-sticky-cta auf der Seite.
     if (document.querySelector('[data-no-sticky-cta]')) { bar.classList.add('scb-off'); return; }
     var primary = bar.querySelector('.scb-primary');
-    // SG-Seiten: EIN Funnel-Wording ("Gratis Termin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
+    // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
     // CARE-Seiten (Marker aus dem CARE-Adapter, z.B. Beschwerden): ruhigeres
     // Label + Ein-Event-Tracking (nur dataLayer); Ziel bleibt das On-Page-Formular
@@ -96,7 +96,7 @@ const TEL = `tel:+${site.whatsapp}`;
     if (primary && sgPage) {
       for (var i = 0; i < primary.childNodes.length; i++) {
         var tn = primary.childNodes[i];
-        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Gratis Termin anfragen ';
+        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Ersttermin anfragen ';
       }
     }
     // SG-Seiten mit OneDoc-Widget: Primär → #kontakt-Formular (Fallback: Widget), "Termin online buchen" als
