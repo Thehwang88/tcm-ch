@@ -5,10 +5,10 @@
 // Betrieb (Team): Die verifizierte Zahl bestätigter FIRST-30-Termine wird NUR hier gepflegt, aus der
 // Praxis-Agenda, nie geschätzt. Ablauf: docs/cro/07-first30-winter-2026.md.
 //   confirmedClaims: null → Indikator zeigt nur "Limitierte FIRST 30 Vorweihnachtsgeschenke" (kein Prozent, kein Restbestand).
-//   confirmedClaims: 8    → "8 / 10 Geschenke vergeben", Balken 80 %, "Nur noch 2 Geschenke verfügbar" (einmalige Einblend-Animation).
-//   confirmedClaims: 10 → bei laufender Kampagne Warteliste (statt freie Plätze). Nur campaignActive: false schliesst manuell.
-//   totalAllocation 10 ist die genehmigte Kapazität; 30 ist ein Vorschlag und NICHT freigegeben.
-// Design-Vorschau (nur lokale Review-Builds, nie Produktion): src/data/first30.preview.json temporär auf claims 8 / cutoff true setzen.
+//   confirmedClaims: 27   → "27 / 30 Geschenke vergeben", Balken 90 %, "Nur noch 3 Geschenke verfügbar", NUR wenn aus Agenda belegt.
+//   confirmedClaims: 30 → bei laufender Kampagne Warteliste (statt freie Plätze). Nur campaignActive: false schliesst manuell.
+//   totalAllocation 30 folgt der ausdrücklichen Inhaber-Anweisung (27/28 von 30 Konzept). Die 30 Termine müssen vor Launch operativ tatsächlich bereitstehen.
+// Design-Vorschau (nur lokale Review-Builds, nie Produktion): src/data/first30.preview.json temporär auf claims 27 oder 28 / cutoff true setzen.
 // Countdown im WhatsApp-Button NUR bei bestätigtem täglichem Bearbeitungs-Cutoff (dailyCutoff.approved); kein Angebots-
 // Ablauf, kein Reset-Trick. Design-Vorschau: FIRST30_PREVIEW_CUTOFF=1.
 
@@ -19,8 +19,9 @@ export const FIRST30 = {
   identity: 'Dein exklusives Vorweihnachtsgeschenk',
   standort: 'St. Gallen',
   /** Genehmigte Gesamtkapazität dieser Edition (fix, keine Wochenkontingente). */
-  totalAllocation: 10,
-  /** Vom Team verifizierte, bestätigte FIRST-30-Termine (Agenda). null = nicht verifiziert. Nie automatisch erhöht. */
+  totalAllocation: 30,
+  /** Vom Team verifizierte, bestätigte FIRST-30-Termine (Agenda). null = nicht verifiziert. Nie automatisch erhöht.
+   *  Die gewünschten 27/30 bzw. 28/30 sind nur zulässig, wenn diese 27/28 Vergaben wirklich bestätigt wurden. */
   confirmedClaims: null as number | null,
   verifiedAt: '',   // z. B. '2026-11-20 09:00'
   verifiedBy: '',   // z. B. 'Corinna R.'
