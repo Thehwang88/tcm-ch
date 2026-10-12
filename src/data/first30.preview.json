@@ -1,5 +1,6 @@
 {
-  "_": "Nur für lokale Design-Vorschauen (docs/cro/07). Produktion: claims null, cutoff false. Das Gate check-first30.mjs erzwingt das.",
+  "_": "Nur für lokale Design-Vorschauen (docs/cro/07). Produktion: claims null, cutoff false, campaignActive null. Das Gate check-first30.mjs erzwingt das.",
   "claims": null,
-  "cutoff": false
+  "cutoff": false,
+  "campaignActive": null
 }

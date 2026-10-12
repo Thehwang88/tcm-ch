@@ -25,8 +25,9 @@ const WA_MESSAGE = 'Hallo TCM.ch! 🎁 Ich möchte gerne das FIRST 30 Vorweihnac
 const WA_MESSAGE_WAITLIST = 'Hallo TCM.ch! 🎁 Ich möchte mich für die Warteliste des FIRST 30 Vorweihnachtsgeschenks in St. Gallen vormerken lassen (30 Minuten, CHF 0.–). Vielen Dank!';
 
 export const campaignCtaFor = (locationId: string): CampaignCta | undefined => {
-  if (locationId !== 'st-gallen' || !FIRST30.campaignActive) return undefined;
+  if (locationId !== 'st-gallen') return undefined;
   const st = first30State();
+  if (!st.showCampaign) return undefined;
   const msg = st.soldOut ? WA_MESSAGE_WAITLIST : WA_MESSAGE;
   return {
     locationId, campaignId: FIRST30.offers.first30.id, enabled: true, available: !st.soldOut,

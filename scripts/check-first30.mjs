@@ -19,7 +19,9 @@ const vis = text(sg);
 
 console.log('1. Kapazität');
 const pv = JSON.parse(readFileSync('src/data/first30.preview.json', 'utf8'));
-ok(pv.claims === null && pv.cutoff === false && !/data-first30-preview/.test(sg), 'kein Vorschau-Build (first30.preview.json: claims null, cutoff false) in dist');
+ok(pv.claims === null && pv.cutoff === false && pv.campaignActive === null && !/data-first30-preview/.test(sg), 'kein Vorschau-Build (first30.preview.json: claims null, cutoff false, campaignActive null) in dist');
+ok(st.campaign === 'active' && /data-first30="max-only"/.test(sg) && !/hlsg-card/.test(sg), `Kampagnenzustand ${st.campaign}: Kampagnen-Hero gerendert, regulärer Hero nicht`);
+if (FIRST30.campaignEnd) { const ended = new Date().toISOString().slice(0, 10) > FIRST30.campaignEnd; ok(!ended || st.campaign === 'closed', `campaignEnd ${FIRST30.campaignEnd}: ${ended ? 'überschritten → geschlossen' : 'noch nicht erreicht'}`); } else console.log('  · kein campaignEnd gesetzt (nur nach Freigabe)');
 ok(FIRST30.totalAllocation === 10, `Gesamtkapazität 10 (genehmigt); aktuell ${FIRST30.totalAllocation}`);
 if (FIRST30.confirmedClaims == null) {
   ok(vis.includes(`Nur ${FIRST30.totalAllocation} exklusive Geschenke`) && /data-mode="unverified"/.test(sg) && vis.includes('Limitierte FIRST 30 Vorweihnachtsgeschenke'), 'nur Maximum kommuniziert; Indikator unverifiziert ("Limitierte FIRST 30 Vorweihnachtsgeschenke")');
@@ -58,6 +60,14 @@ ok(waLinks.length === 2 && waLinks.every((h) => h === cta.whatsappHref), `2 What
 const decoded = decodeURIComponent(new URL(cta.whatsappHref).searchParams.get('text') || '');
 ok(decoded === cta.whatsappMessage && /FIRST 30/.test(decoded) && /St\. Gallen/.test(decoded) && /30 Minuten/.test(decoded) && /CHF 0/.test(decoded) && !/Beschwerde|Diagnose|Versicherung|Symptom/i.test(decoded), `Nachricht korrekt kodiert (ä/ö/ü/Emoji) und ohne Gesundheitsdaten: "${decoded.replace(/\n/g, ' / ')}"`);
 ok((sg.match(/<div[^>]*data-f30-float="mobile"/g) ?? []).length === 1 && (sg.match(/<div[^>]*data-f30-float="desktop"/g) ?? []).length === 1 && (sg.match(/<button[^>]*data-f30-dismiss/g) ?? []).length === 2, 'je ein schwebender CTA mobil/desktop mit Dismiss');
+const mainSg = (() => { try { return readFileSync('/home/user/tcm-ch-lead/dist/standorte/st-gallen/index.html', 'utf8'); } catch { return ''; } })();
+const meta = (s, re) => (s.match(re) || [])[1];
+ok(meta(sg, /<title>([^<]*)/) === 'Akupunktur & TCM St. Gallen | TCM.ch Kliniken' || /St\. Gallen/.test(meta(sg, /<title>([^<]*)/) || ''), `Title unverändert ortsbezogen: "${meta(sg, /<title>([^<]*)/)}"`);
+ok(meta(sg, /rel="canonical" href="([^"]*)"/) === 'https://tcm.ch/standorte/st-gallen/', 'Canonical unverändert');
+ok(/"@type":\s*"MedicalClinic"/.test(sg) && (!mainSg || JSON.stringify((sg.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || [])) === JSON.stringify((mainSg.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || []))), 'JSON-LD (MedicalClinic etc.) identisch zum main-Build');
+const h1 = text(meta(sg, /<h1[^>]*>([\s\S]*?)<\/h1>/) || '');
+ok(/St\. Gallen/.test(h1) && /TCM/.test(h1), `H1 trägt Ort und Fach: "${h1}"`);
+ok((sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine H1');
 ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Du zahlst CHF 0.–') && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
 ok((vis.match(/CHF 0\.–/g) ?? []).length >= 4 && !/CHF 0\.-[^–]/.test(vis), 'einheitliche Preisangabe CHF 0.– in Hero, Floating, Wähler');
 
@@ -80,6 +90,18 @@ ok(res.status === 200 && /FIRST 30 PRE-CHRISTMAS EDITION/.test(mail.html) && /Wu
 res = await post({ name: 'Test Person', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'St. Gallen', quelle: 'sg-kontakt-bottom', angebot_id: 'ERSTTERMIN_REGULAER_SG', turnstileToken: 't' }); mail = sent[sent.length - 1];
 ok(res.status === 200 && /REGULÄRER ERSTTERMIN/.test(mail.html) && /Regulärer Ersttermin – St\. Gallen/.test(mail.html) && !/gratis|kostenlos|FIRST 30/.test(mail.html) && !/FIRST 30/.test(mail.subject), 'regulär: keine Gratis-/FIRST-30-Kennzeichnung');
 res = await post({ ...hero0, name: 'X', angebot_id: 'FREE_FOREVER' }); ok(res.status === 422 && (await res.json()).error === 'invalid_offer', 'unbekannte Angebots-ID → 422 invalid_offer');
+// Scope: FIRST-30-ID nur mit St. Gallen + St.-Galler Quelle
+const forged = [
+  ['Basel-Formular', { name: 'X', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'Basel', quelle: '/standorte/basel/', angebot_id: 'FIRST30_WINTER_2026_SG', turnstileToken: 't' }],
+  ['Home-Formular mit St. Gallen', { name: 'X', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'St. Gallen', quelle: '/', angebot_id: 'FIRST30_WINTER_2026_SG', turnstileToken: 't' }],
+  ['Hero-Quelle, anderer Standort', { ...hero0, standort: 'Zürich Höngg', angebot_id: 'FIRST30_WINTER_2026_SG' }],
+  ['Hero-Quelle, Standort leer', { ...hero0, standort: '', angebot_id: 'FIRST30_WINTER_2026_SG' }],
+  ['Kontakt-Quelle, Warteliste-ID, anderer Standort', { name: 'X', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'Wil', quelle: 'sg-kontakt-bottom', angebot_id: 'FIRST30_WINTER_2026_SG_WARTELISTE', turnstileToken: 't' }],
+  ['Reguläre SG-ID aus Basel', { name: 'X', telefon: '079 123 45 67', email: 'a@b.ch', standort: 'Basel', quelle: '/standorte/basel/', angebot_id: 'ERSTTERMIN_REGULAER_SG', turnstileToken: 't' }],
+];
+for (const [label, body] of forged) { const before = sent.length; const r2 = await post(body); const j = await r2.json(); ok(r2.status === 422 && j.error === 'invalid_offer_scope' && sent.length === before, `gefälschter Scope (${label}) → 422 invalid_offer_scope, keine Mail`); }
+res = await post({ ...hero0, angebot_id: 'FIRST30_WINTER_2026_SG', angebot: 'GRATIS FÜR IMMER', preis: '0', berechtigt: 'ja', verfuegbar: '99' }); mail = sent[sent.length - 1];
+ok(res.status === 200 && !/GRATIS FÜR IMMER|berechtigt|verfuegbar|99/.test(mail.html), 'Client-Text zu Preis/Berechtigung/Kapazität wird nie übernommen');
 res = await post({ name: 'Test Person', telefon: '079', email: 'a@b.ch', standort: 'Basel', quelle: '/standorte/basel/', turnstileToken: 't' }); mail = sent[sent.length - 1];
 ok(res.status === 200 && !/Anfrageart/.test(mail.html), 'andere Standorte/Formulare ohne ID: Mail-Format unverändert');
 globalThis.fetch = realFetch;

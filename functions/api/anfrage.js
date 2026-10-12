@@ -36,11 +36,15 @@ export async function onRequestPost({ request, env }) {
       FIRST30_WINTER_2026_SG_WARTELISTE: { art: 'FIRST 30 WARTELISTE', terminart: 'Warteliste für das FIRST 30 Vorweihnachtsgeschenk (alle Geschenke vergeben)', angebot: 'FIRST 30 Pre-Christmas Edition 2026 – Warteliste – St. Gallen', betreff: ' · FIRST 30 Warteliste' },
       ERSTTERMIN_REGULAER_SG: { art: 'REGULÄRER ERSTTERMIN', terminart: 'Reguläre kostenpflichtige Erstanfrage', angebot: 'Regulärer Ersttermin – St. Gallen', betreff: '' },
     };
+    // Alle Angebots-IDs sind an St. Gallen gebunden: nur mit standort 'St. Gallen' UND einer St.-Galler Quelle
+    // (Hero launch-hero-sg, unteres Formular sg-kontakt-bottom) gültig; jede andere Kombination → 422 invalid_offer_scope.
+    const OFFER_SOURCES = ['launch-hero-sg', 'sg-kontakt-bottom'];
     let offer = null;
     const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
     if (offerId) {
       offer = OFFERS[offerId];
       if (!offer) return J({ error: 'invalid_offer' }, 422);
+      if (String(d.standort || '').trim() !== 'St. Gallen' || OFFER_SOURCES.indexOf(String(d.quelle || '').trim()) < 0) return J({ error: 'invalid_offer_scope' }, 422);
       d.angebot = offer.angebot;
     }
     // Phone-only FIRST 30 (ausschliesslich Hero-Formular launch-hero-sg mit FIRST-30-ID): nur eine gültige

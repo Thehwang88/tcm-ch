@@ -24,8 +24,13 @@ export const FIRST30 = {
   confirmedClaims: null as number | null,
   verifiedAt: '',   // z. B. '2026-11-20 09:00'
   verifiedBy: '',   // z. B. 'Corinna R.'
-  /** false, sobald die Edition offiziell beendet ist: Geschenk-Anfragen werden zur Warteliste, regulär bleibt. */
+  /** false, sobald die Edition offiziell beendet ist → regulärer St.-Gallen-Hero (HeroStandardSG), kein Geschenk-CTA mehr. */
   campaignActive: true,
+  /** Offizielles Kampagnenende (ISO-Datum, Europe/Zurich), NUR nach Inhaber-Freigabe; leer = kein Enddatum. Nach diesem Datum
+   *  gilt die Kampagne beim nächsten Build als geschlossen (statische Seite: Rebuild/Merge nötig, siehe docs/cro/07). */
+  campaignEnd: '',
+  /** Ausverkauft (confirmedClaims >= totalAllocation): true = explizit beschriftete Warteliste, false = Kampagnen-Hero weg, regulärer Hero. */
+  waitlistEnabled: true,
   /** "The Once-a-Year Edition" / "jährlich" nur nach Inhaber-Bestätigung, dass 2026 keine weitere FIRST-30-Aktion läuft. */
   onceAYearApproved: false,
   /** Täglicher Bearbeitungs-Cutoff (Anfragen bis dahin werden am selben Tag für eine Bestätigung geprüft). Nur aktiv,
@@ -39,7 +44,11 @@ export const FIRST30 = {
 } as const;
 
 export interface First30Indicator { mode: 'unverified' | 'verified' | 'full'; pct: number; head: string; sub: string }
+export type First30CampaignState = 'active' | 'soldout-waitlist' | 'soldout-closed' | 'closed';
 export interface First30State {
+  campaign: First30CampaignState;
+  /** true, wenn der Kampagnen-Hero gerendert wird (active oder soldout-waitlist). */
+  showCampaign: boolean;
   max: number;
   reserved: number | null;
   remaining: number | null;
@@ -59,23 +68,29 @@ export const first30State = (): First30State => {
   // Vorschau-Werte (nur lokale Review-Builds) aus first30.preview.json; Produktion hält claims null / cutoff false.
   const prevReserved = typeof preview.claims === 'number' ? preview.claims : null;
   const prevCutoff = preview.cutoff === true;
+  const prevActive = (preview as any).campaignActive;
+  const active = typeof prevActive === 'boolean' ? prevActive : FIRST30.campaignActive;
+  const ended = !!FIRST30.campaignEnd && new Date().toISOString().slice(0, 10) > FIRST30.campaignEnd;
   const reserved = prevReserved ?? FIRST30.confirmedClaims;
   const max = FIRST30.totalAllocation;
   const remaining = reserved == null ? null : Math.max(0, max - reserved);
-  const soldOut = !FIRST30.campaignActive || (reserved != null && reserved >= max);
+  const full = reserved != null && reserved >= max;
+  const campaign: First30CampaignState = (!active || ended) ? 'closed' : full ? (FIRST30.waitlistEnabled ? 'soldout-waitlist' : 'soldout-closed') : 'active';
+  const soldOut = campaign !== 'active';
   const cutoffApproved = FIRST30.dailyCutoff.approved || prevCutoff;
-  const scarcityText = !FIRST30.campaignActive ? 'Die Pre-Christmas Edition 2026 ist beendet'
+  const scarcityText = campaign === 'closed' ? 'Die Pre-Christmas Edition 2026 ist beendet'
     : reserved == null ? `Nur ${max} exklusive Geschenke`
     : soldOut ? `Alle ${max} Geschenke vergeben`
     : `${reserved} von ${max} Geschenken vergeben · Nur noch ${remaining} verfügbar`;
   const indicator: First30Indicator = reserved == null
     ? { mode: 'unverified', pct: 0, head: 'Limitierte FIRST 30 Vorweihnachtsgeschenke', sub: `Maximal ${max} Geschenke in dieser Edition` }
     : soldOut
-    ? { mode: 'full', pct: 100, head: `${max} / ${max} Geschenke vergeben`, sub: !FIRST30.campaignActive ? 'Die Edition ist beendet' : 'Alle Geschenke vergeben · Warteliste möglich' }
+    ? { mode: 'full', pct: 100, head: `${max} / ${max} Geschenke vergeben`, sub: campaign === 'closed' ? 'Die Edition ist beendet' : 'Alle Geschenke vergeben · Warteliste möglich' }
     : { mode: 'verified', pct: Math.round((reserved / max) * 100), head: `${reserved} / ${max} Geschenke vergeben`, sub: `Nur noch ${remaining} ${remaining === 1 ? 'Geschenk' : 'Geschenke'} verfügbar` };
   return {
+    campaign, showCampaign: campaign === 'active' || campaign === 'soldout-waitlist',
     max, reserved, remaining, soldOut, indicator,
-    onceAYear: FIRST30.onceAYearApproved, preview: prevReserved != null || prevCutoff, scarcityText,
+    onceAYear: FIRST30.onceAYearApproved, preview: prevReserved != null || prevCutoff || typeof prevActive === 'boolean', scarcityText,
     cutoffApproved, cutoffTime: FIRST30.dailyCutoff.time, cutoffDays: FIRST30.dailyCutoff.days.join(''),
     ribbon: FIRST30.onceAYearApproved ? 'Once-a-Year Edition' : 'Pre-Christmas',
     gift: soldOut ? FIRST30.offers.waitlist : FIRST30.offers.first30,
@@ -94,6 +109,7 @@ const CAL_SVG = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" str
  */
 export const first30BottomSelectorHtml = (): string => {
   const st = first30State();
+  if (!st.showCampaign) return '';
   const O = FIRST30.offers;
   const giftTitle = st.soldOut ? 'FIRST 30 Warteliste' : 'FIRST 30 Vorweihnachtsgeschenk';
   const giftSub = st.soldOut ? `Alle ${st.max} Geschenke vergeben · Warteliste` : '30 Minuten · CHF 0.–';
