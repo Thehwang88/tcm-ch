@@ -1,10 +1,14 @@
 ---
 // Trust strip mirroring the DE Standort UspGrid. Status-aware: no availability claims pre-opening.
-const { planned = false, review = false, partner = false } = Astro.props as { planned?: boolean; review?: boolean; partner?: boolean };
+interface UspItem { icon?: 'shield' | 'clock' | 'chat' | 'pin' | 'users'; title: string; sub: string }
+const { planned = false, review = false, partner = false, items: itemsProp } = Astro.props as { planned?: boolean; review?: boolean; partner?: boolean; items?: UspItem[] };
 const shield = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>`;
 const clock = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 const chat = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-const items = [
+const pin = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const users = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+const ICONS: Record<string, string> = { shield, clock, chat, pin, users };
+const items = itemsProp ? itemsProp.map((i) => ({ icon: ICONS[i.icon ?? 'shield'], title: i.title, sub: i.sub })) : [
   { icon: shield, title: 'Supplementary insurance',
     sub: review ? 'At the practice we suggest: reimbursement may be available, depending on your policy and the practitioner\'s recognition.' : planned ? 'Once open, or at the partner practice today: reimbursement may be available, depending on your policy and the practitioner\'s recognition.' : 'Reimbursement may be available, depending on your policy, treatment and the practitioner\'s recognition.' },
   { icon: clock, title: planned ? 'Requests already possible' : 'Request an appointment directly',
@@ -12,7 +16,7 @@ const items = [
   { icon: chat, title: 'No referral needed', sub: 'Contact us in English or German; a personal reply, not a bot.' },
 ];
 ---
-<section class="ev-usp"><div class="wrap"><div class="ev-usp__grid">
+<section class="ev-usp"><div class="wrap"><div class={`ev-usp__grid${items.length === 4 ? ' ev-usp__grid--4' : ''}`}>
   {items.map((i) => (
     <div class="ev-usp__card">
       <div class="ev-usp__icon"><Fragment set:html={i.icon} /></div>
