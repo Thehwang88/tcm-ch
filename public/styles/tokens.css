@@ -75,7 +75,12 @@
 
   --max: 1280px;
   --max-wide: 1440px;       /* Wide-Stufe fuer grosse Desktops (Step-1-Pilot: nur Homepage-Hero) */
-  --header-h: 76px;         /* massgebliche Desktop-Header-Hoehe (Nav + Content-Offsets + Hero-Rechnung) */
+  --header-h: 76px;
+  /* Hero sizing per page family on spacious desktops (>=1280px): share of the viewport the hero may take; the min/max clamps live with the family rules (home.css / en-v2.css). */
+  --hero-city: 74svh;
+  --hero-location: 72svh;
+  --hero-hub: 66svh;
+  --hero-detail: 60svh;         /* massgebliche Desktop-Header-Hoehe (Nav + Content-Offsets + Hero-Rechnung) */
   --pad-x: 40px;
   --section-y: 96px;
   --section-y-sm: 48px;
