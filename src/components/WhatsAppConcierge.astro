@@ -2,36 +2,38 @@
 // Desktop-only WhatsApp concierge widget (Yuna). Rendered once site-wide via Footer.
 // Hidden below 1024px (mobile/tablet keep the bottom-bar / FAB). The wa.me prefill is
 // built client-side from the page title, so no prop threading is needed.
+const { lang = 'de' } = Astro.props as { lang?: 'de' | 'en' };
+const en = lang === 'en';
 const WA_NUMBER = '41775236122';
 const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z';
 ---
 <div class="wac" id="wac">
-  <div class="wac-greet" id="wac-greet" role="button" tabindex="0" aria-label="Chat mit Yuna öffnen">
-    <button class="wac-greet-x" id="wac-greet-x" type="button" aria-label="Hinweis schliessen">×</button>
-    <span>Hallo, hast du eine Frage? Schreib mir kurz. Yuna</span>
+  <div class="wac-greet" id="wac-greet" role="button" tabindex="0" aria-label={en ? 'Open chat with Yuna' : 'Chat mit Yuna öffnen'}>
+    <button class="wac-greet-x" id="wac-greet-x" type="button" aria-label={en ? 'Dismiss' : 'Hinweis schliessen'}>×</button>
+    <span>{en ? 'Hello, do you have a question? Just write to me. Yuna' : 'Hallo, hast du eine Frage? Schreib mir kurz. Yuna'}</span>
   </div>
 
-  <div class="wac-card" id="wac-card" role="dialog" aria-modal="false" aria-label="WhatsApp Concierge mit Yuna">
+  <div class="wac-card" id="wac-card" role="dialog" aria-modal="false" aria-label={en ? 'WhatsApp concierge with Yuna' : 'WhatsApp Concierge mit Yuna'}>
     <div class="wac-head">
       <img class="wac-avatar" src="/images/yuna-concierge.webp" width="44" height="44" alt="Yuna, TCM.ch Concierge" loading="lazy" decoding="async" />
       <div class="wac-head-text">
         <div class="wac-name">Yuna</div>
         <div class="wac-sub">TCM.ch Concierge</div>
-        <div class="wac-status"><span class="wac-dot" aria-hidden="true"></span>Persönliche Antwort per WhatsApp</div>
+        <div class="wac-status"><span class="wac-dot" aria-hidden="true"></span>{en ? 'Personal reply on WhatsApp' : 'Persönliche Antwort per WhatsApp'}</div>
       </div>
-      <button class="wac-close" id="wac-close" type="button" aria-label="Chat schliessen">×</button>
+      <button class="wac-close" id="wac-close" type="button" aria-label={en ? 'Close chat' : 'Chat schliessen'}>×</button>
     </div>
     <div class="wac-body">
-      <div class="wac-bubble">Hallo, ich bin Yuna vom TCM.ch Concierge. Hast du eine Frage zu Behandlung, Termin oder Krankenkasse? Schreib mir kurz.</div>
-      <a class="wac-cta" id="wac-cta" href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hallo, ich interessiere mich für TCM und hätte gerne kurz Hilfe bei der passenden Behandlung oder Praxis. Können Sie mir weiterhelfen?')}`} target="_blank" rel="noopener">
+      <div class="wac-bubble">{en ? 'Hello, I am Yuna from the TCM.ch concierge. Do you have a question about treatment, appointments or insurance? Just write to me.' : 'Hallo, ich bin Yuna vom TCM.ch Concierge. Hast du eine Frage zu Behandlung, Termin oder Krankenkasse? Schreib mir kurz.'}</div>
+      <a class="wac-cta" id="wac-cta" href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(en ? 'Hello, I am interested in TCM and would like some quick help choosing the right treatment or clinic. Can you help?' : 'Hallo, ich interessiere mich für TCM und hätte gerne kurz Hilfe bei der passenden Behandlung oder Praxis. Können Sie mir weiterhelfen?')}`} target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WA_PATH}></path></svg>
-        Chat auf WhatsApp starten
+        {en ? 'Start a WhatsApp chat' : 'Chat auf WhatsApp starten'}
       </a>
-      <div class="wac-reassure">Kostenlos und unverbindlich</div>
+      <div class="wac-reassure">{en ? 'Free and non-binding' : 'Kostenlos und unverbindlich'}</div>
     </div>
   </div>
 
-  <button class="wac-launch" id="wac-launch" type="button" aria-label="WhatsApp Concierge mit Yuna" aria-expanded="false" aria-haspopup="dialog">
+  <button class="wac-launch" id="wac-launch" type="button" aria-label={en ? 'WhatsApp concierge with Yuna' : 'WhatsApp Concierge mit Yuna'} aria-expanded="false" aria-haspopup="dialog">
     <span class="wac-ring" aria-hidden="true"></span>
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={WA_PATH}></path></svg>
   </button>

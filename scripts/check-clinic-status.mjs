@@ -162,7 +162,7 @@ for (const c of m.clinics.filter((x) => x.status === 'operational')) {
 // 4f. Formular-Vollständigkeit: Seiten eines Standorts (Pfad enthält die id) mit Standort-Auswahl bieten den
 //     Standort an (operativ: reguläre Option; nicht operativ: eine seiner vorab-Optionen).
 for (const c of m.clinics) {
-  const want = c.status === 'operational' ? [c.name] : (c.vorab ?? []).map((o) => o.label);
+  const want = c.status === 'operational' ? [c.name] : (c.vorab ?? []).flatMap((o) => [o.label, o.labelEn].filter(Boolean));
   if (!want.length) continue;
   const miss = [];
   for (const [p, s] of html) {
