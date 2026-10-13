@@ -30,6 +30,12 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-bei-ischias/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
+- https://tcm.ch/wissen/akupunktur-bei-endometriose/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
+- https://tcm.ch/wissen/akupunktur-bei-fibromyalgie/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
+- https://tcm.ch/wissen/akupunktur-bei-tinnitus/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
+- https://tcm.ch/wissen/akupunktur-bei-polyneuropathie/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
+- https://tcm.ch/wissen/akupunktur-bei-hueftschmerzen/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
 - https://tcm.ch/en/acupuncture-zurich/ — 12.10.2026 (EN Zürich-Funnel, Twin von /akupunktur-tcm-zuerich/; PR #29)
 
 <!-- Priorität A aus seo/gsc-not-indexed-audit-2026-10-10.md: zuerst einreichen. -->

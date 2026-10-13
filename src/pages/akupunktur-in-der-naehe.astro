@@ -8,9 +8,9 @@ import { clinics } from '../data/locations';
 import homeBody from '../data/home-body.html?raw';
 
 const url = 'https://tcm.ch/akupunktur-in-der-naehe/';
-const title = 'Akupunktur in deiner Nähe – Standorte in der Schweiz | TCM.ch';
+const title = 'Akupunktur in deiner Nähe: TCM-Praxen in der Deutschschweiz | TCM.ch';
 const description =
-  'Akupunktur, TCM und Tuina-Massage in deiner Nähe: EMR-/ASCA-anerkannte Therapeut:innen an Standorten in der Deutschschweiz, von Zürich bis St. Gallen.';
+  'Akupunktur, TCM und Tuina-Massage in deiner Nähe: EMR-/ASCA-registrierte Therapeut:innen in Zürich, Winterthur, St. Gallen, Frauenfeld, Kreuzlingen und Basel. Standort wählen oder Termin anfragen, wir empfehlen die nächste Praxis.';
 
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
@@ -18,7 +18,7 @@ const desc: Record<string, string> = {
   'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Standort in Prüfung', 'volketswil': 'Zürcher Oberland',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
-  'basel': 'Innenstadt', 'luzern': 'Eröffnung 2027 · Warteliste offen',
+  'basel': 'Innenstadt · Steinenvorstadt 73', 'luzern': 'Eröffnung 2027 · Warteliste offen',
   'bern': 'In Vorbereitung · Interesse anmelden',
 };
 
@@ -51,7 +51,8 @@ const offerBlock = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', o
 const faqs = [
   { q: 'Wo finde ich Akupunktur in meiner Nähe?', a: 'TCM.ch betreibt eigene Standorte und Partnerpraxen in der Deutschschweiz, unter anderem in Zürich, Winterthur, St. Gallen, Frauenfeld und Kreuzlingen. Auf dieser Seite findest du alle Praxen mit Adresse und fragst direkt beim nächstgelegenen Standort einen Termin an.' },
   { q: 'Wie schnell bekomme ich einen Termin?', a: 'Frag am besten über das Kontaktformular des Standorts an oder ruf uns an.' },
-  { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Über die Zusatzversicherung für Komplementärmedizin beteiligen sich die meisten Kassen mit 80 bis 100 Prozent. Alle unsere Therapeutinnen und Therapeuten sind EMR- oder ASCA-registriert. Deine Deckung prüfen wir auf Wunsch kostenlos, bevor Kosten entstehen.' },
+  { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Akupunktur und TCM bei EMR- oder ASCA-registrierten Therapeut:innen laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung; Anteil und Jahresmaximum stehen in deiner Police. Nur ärztliche Akupunktur wird über die Grundversicherung vergütet. Deine Deckung prüfen wir auf Wunsch kostenlos, bevor Kosten entstehen.' },
+  { q: 'Gibt es in meiner Nähe auch Tuina oder chinesische Massage?', a: 'Tuina, die manuelle Methode der TCM, gehört an den meisten Standorten mit TCM-Team zum Angebot und lässt sich mit Akupunktur kombinieren. Ob eine Praxis Tuina, Schröpfen oder Kräutertherapie anbietet, steht auf der jeweiligen Standortseite.' },
   { q: 'Bieten alle Standorte dieselben Behandlungen an?', a: 'Akupunktur und TCM-Beratung gibt es an jedem Standort. Einzelne Methoden wie Tuina-Massage, Schröpfen oder Kräutertherapie variieren je nach Team vor Ort. Auf der jeweiligen Standortseite siehst du das genaue Angebot.' },
   { q: 'Was kostet eine Akupunktursitzung?', a: 'Den aktuellen Tarif erfährst du vor der ersten Behandlung, transparent und ohne versteckte Kosten. Mit Zusatzversicherung trägst du meist nur einen kleinen Selbstbehalt. Die Abklärung deiner Kassendeckung ist bei uns kostenlos.' },
 ];
@@ -91,7 +92,7 @@ const body = `<div style="padding-top:68px">
       <div class="reveal" style="max-width:60ch;margin-bottom:36px">
         <div class="section-label">Standort-Finder</div>
         <h2 class="section-title">Unsere Standorte <em>in der Schweiz</em></h2>
-        <p class="section-sub">Wähle die Praxis in deiner Nähe. Alle Standorte sind EMR-/ASCA-anerkannt und über die Zusatzversicherung abrechenbar.</p>
+        <p class="section-sub">Wähle die Praxis in deiner Nähe. An allen operativen Standorten behandeln EMR- oder ASCA-registrierte Therapeut:innen; die Abrechnung läuft über die Zusatzversicherung. Geplante Standorte sind als solche gekennzeichnet.</p>
       </div>
       ${finderHtml}
       <p class="section-sub" style="margin-top:24px">Nicht sicher, welcher Standort passt? Wir buchen dich in die nächste Klinik in deiner Nähe ein. Sieh dir auch <a href="/standorte/">alle Standorte</a> im Detail an. Im Thurgau ist <a href="/standorte/frauenfeld/">TCM Frauenfeld</a> die zentrale Adresse. Schwanger? Dann findest du auf der Seite zur <a href="/therapien/akupunktur/schwangerschaft/">Akupunktur in der Schwangerschaft</a>, was ab welcher Woche möglich ist.</p>
@@ -104,7 +105,7 @@ const body = `<div style="padding-top:68px">
       <h2 class="section-title">Warum "in der Nähe" bei uns <em>mehr ist als ein Standort</em></h2>
       <p class="section-sub">Wenn du nach Akupunktur in deiner Nähe suchst, willst du zwei Dinge: einen kurzen Weg und eine Praxis, der du vertraust. Bei TCM.ch bekommst du beides. Wir sind kein einzelnes Studio, sondern ein Netzwerk aus eigenen und Partnerpraxen in der Deutschschweiz. TCM in deiner Nähe heisst bei uns konkret: in Zürich, Winterthur, Volketswil, Frauenfeld, Kreuzlingen, St. Gallen, Wil, Rorschach und Bottighofen. Die Chance ist gross, dass eine davon nur wenige Minuten von dir entfernt liegt. In <a href="/standorte/basel/">Basel</a> behandeln wir an der Steinenvorstadt 73. Dazu kommt ein Standort im Aufbau: <a href="/standorte/luzern/">Akupunktur Luzern</a> ab 2027, die Warteliste ist offen.</p>
       <p class="section-sub" style="margin-top:16px">Was alle Standorte verbindet, ist der gleiche Anspruch. An jeder Praxis behandeln EMR- oder ASCA-registrierte Therapeutinnen und Therapeuten. Diese Register prüfen Ausbildung und Weiterbildung, und sie sind die Voraussetzung dafür, dass sich deine Zusatzversicherung an den Kosten beteiligt. Ob du in der Stadt Zürich oder am Bodensee zu uns kommst: Die Qualitätsstandards sind dieselben, und die Abrechnung über die <a href="/krankenkassen/">Zusatzversicherung</a> läuft überall gleich.</p>
-      <p class="section-sub" style="margin-top:16px">Das häufigste Anliegen ist die klassische <a href="/therapien/akupunktur/">Akupunktur</a>, etwa bei Rücken- und Nackenschmerzen, Kopfschmerzen, Schlafproblemen oder stressbedingten Beschwerden. Viele Standorte bieten darüber hinaus <a href="/therapien/tuina/">Tuina-Massage</a>, <a href="/therapien/schroepfen/">Schröpfen</a>, <a href="/therapien/shiatsu/">Shiatsu</a> und chinesische Kräutertherapie an. An ausgewählten Praxen ist auch <a href="/therapien/schroepfen/hijama/">Hijama</a> möglich, das blutige Schröpfen. Welche Methoden dein nächstgelegenes Team anbietet, siehst du auf der jeweiligen Standortseite.</p>
+      <p class="section-sub" style="margin-top:16px">Das häufigste Anliegen ist die klassische <a href="/therapien/akupunktur/">Akupunktur</a>, etwa bei <a href="/beschwerden/rueckenschmerzen/">Rücken-</a> und <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>, Kopfschmerzen, <a href="/beschwerden/schlafprobleme/">Schlafproblemen</a> oder stressbedingten Beschwerden; was die Krankenkasse dabei übernimmt, steht unter <a href="/krankenkassen/akupunktur/">Akupunktur &amp; Krankenkasse</a>. Viele Standorte bieten darüber hinaus <a href="/therapien/tuina/">Tuina-Massage</a>, <a href="/therapien/schroepfen/">Schröpfen</a>, <a href="/therapien/shiatsu/">Shiatsu</a> und chinesische Kräutertherapie an. An ausgewählten Praxen ist auch <a href="/therapien/schroepfen/hijama/">Hijama</a> möglich, das blutige Schröpfen. Welche Methoden dein nächstgelegenes Team anbietet, siehst du auf der jeweiligen Standortseite.</p>
       <p class="section-sub" style="margin-top:16px">Du musst nicht vorher wissen, welche Behandlung die richtige ist. Schildere uns kurz, worum es geht und wo du wohnst. Wir schlagen dir den passenden Standort in deiner Nähe vor und, wenn du möchtest, gleich einen Termin. Wir melden uns persönlich mit einem Terminvorschlag.</p>
     </div>
   </section>

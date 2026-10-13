@@ -28,6 +28,7 @@ const AUTOR = {
 
 const DATEN = { datePublished: '2026-09-02', dateModified: '2026-09-02', lastReviewed: '2026-09-02' };
 const DATEN2 = { datePublished: '2026-10-05', dateModified: '2026-10-05', lastReviewed: '2026-10-05' };
+const DATEN3 = { datePublished: '2026-10-13', dateModified: '2026-10-13', lastReviewed: '2026-10-13' };
 
 export const wissenAkupunkturBei: Wissen[] = [
   // ────────────────────────────────────────────────────────── KOPFSCHMERZEN
@@ -612,6 +613,288 @@ export const wissenAkupunkturBei: Wissen[] = [
     ],
   },
 
+  // ══════════════════════════════════════════════════════════ COHORT 02 (13.10.2026)
+  // Sechs weitere Treatment-Decision-Artikel. Auswahl: Beschwerdeseiten mit laufender
+  // Nachfrage nach "akupunktur <beschwerde>" (Semrush CH 10/2026: je 10–30/Monat, KD 0)
+  // und ohne bestehenden Wissen-Owner. Jede Studienangabe wurde am 13.10.2026 gegen die
+  // Primärquelle (PubMed/PMC bzw. Cochrane Library) geprüft; keine Heilversprechen.
+  // ────────────────────────────────────────────────────────── ISCHIAS
+  {
+    slug: 'akupunktur-bei-ischias',
+    title: 'Akupunktur bei Ischias: Studienlage, Grenzen & Ablauf',
+    metaDesc: 'Akupunktur bei Ischiasschmerzen: Was zwei Meta-Analysen zeigen, warum die Evidenz trotz vieler Studien unsicher bleibt und bei welchen Warnzeichen du sofort ärztlich abklären musst.',
+    region: 'Schweizweit',
+    excerpt: 'Viele Studien, wenig Sicherheit: Akupunktur kann bei Ischias ein ergänzender Baustein sein, ersetzt aber weder Abklärung noch Bewegung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Ischias: Studienlage, Grenzen & Ablauf',
+    lead: 'Ein ziehender Schmerz vom Gesäss bis ins Bein, oft mit Kribbeln oder Taubheit: Ischias ist ein Nervenschmerz, kein Rückenschmerz im engeren Sinn. Hier steht, was die Studien zu Akupunktur hergeben, wo ihre Grenzen liegen und wann du nicht zu uns, sondern zuerst in die Notaufnahme gehörst.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Ischiasschmerzen einordnen lassen?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Erst die Einordnung: Ischias ist ein Nervenschmerz</h2>
+<p>Der Ischiasnerv verlässt die Lendenwirbelsäule aus mehreren Nervenwurzeln und zieht über das Gesäss bis in den Fuss. Wird eine dieser Wurzeln gereizt oder bedrängt, meist durch einen Bandscheibenvorfall, eine Verengung des Wirbelkanals oder eine Reizung im Gesässbereich, entsteht der typische ausstrahlende Schmerz. Was das von einem gewöhnlichen Kreuzschmerz unterscheidet und welche Ursachen dahinterstecken können, erklärt die Seite <a href="/beschwerden/ischias/">Ischias</a>.</p>
+<p>Für die Behandlungsentscheidung ist das wichtig: Akupunktur arbeitet am Schmerz und an der Muskulatur, nicht an der Bandscheibe. Sie kann Beschwerden lindern, während der Körper den eigentlichen Auslöser verarbeitet. Sie ersetzt keine Abklärung, wenn neurologische Ausfälle im Spiel sind.</p>
+<h2>Was die Studien zeigen</h2>
+<p>Zu Akupunktur bei Ischias gibt es inzwischen viele randomisierte Studien, aber ihre Qualität ist das Problem. Eine Meta-Analyse von <a href="https://pubmed.ncbi.nlm.nih.gov/26576192/" target="_blank" rel="noopener">Qin et al. (2015)</a> wertete 11 Studien mit 962 Teilnehmenden aus. Akupunktur schnitt gegenüber Schmerzmitteln wie Ibuprofen oder Diclofenac besser ab, und als Ergänzung zur Medikation verstärkte sie deren Effekt. Die Autor:innen selbst nennen die Evidenz jedoch begrenzt: kleine Studien, unklare Randomisierung, keine Verblindung der Patient:innen.</p>
+<p>Eine aktuellere Auswertung von <a href="https://pubmed.ncbi.nlm.nih.gov/36845439/" target="_blank" rel="noopener">Zhang et al. (2023)</a> umfasste 30 Studien mit 2662 Teilnehmenden und kam zu ähnlich positiven Zahlen: weniger Schmerz, weniger Rückfälle, weniger Nebenwirkungen als unter Medikamenten. Nach dem GRADE-System war die Sicherheit der Evidenz für die Schmerzintensität aber sehr niedrig, fast alle Studien stammten aus China, und nur zwei verglichen Akupunktur mit einer Scheinakupunktur.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Die Richtung der Ergebnisse ist über viele Studien hinweg konsistent, die Belastbarkeit nicht. Weil Scheinakupunktur-Vergleiche fast fehlen, lässt sich nicht sagen, wie viel des Effekts auf die Nadelung und wie viel auf Erwartung und Zuwendung zurückgeht. Internationale Leitlinien zu Kreuzschmerzen mit Ausstrahlung sprechen deshalb keine klare Empfehlung für Akupunktur aus.</p></div>
+<h2>Warnzeichen, bei denen Akupunktur nicht der erste Schritt ist</h2>
+<p>Ein Teil der Ischiasbeschwerden gehört sofort in ärztliche Hände. Geh in die Notaufnahme oder ruf den Notfalldienst, wenn du eines dieser Zeichen bemerkst: eine neu aufgetretene Blasen- oder Darmschwäche, Taubheit im Bereich von Gesäss, Damm oder Innenseite der Oberschenkel, eine rasch zunehmende Lähmung im Bein oder Fuss. Das können Hinweise auf ein Cauda-equina-Syndrom sein, bei dem Stunden zählen.</p>
+<p>Auch ohne Notfall gilt: Bei Kraftverlust, bei Schmerzen nach einem Sturz, bei Fieber oder bei Beschwerden, die nach vier bis sechs Wochen nicht nachlassen, braucht es eine ärztliche Untersuchung, oft mit Bildgebung. Was ein <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> dabei zeigt und was nicht, erklären wir in der Gesundheitsbibliothek. Für die ersten Tage mit akuten Schmerzen gibt es den Leitfaden <a href="/gesundheitsbibliothek/was-jetzt/ischias-schmerzen/">Was tun bei Ischias-Schmerzen</a>.</p>
+<h2>Wo Akupunktur sinnvoll sein kann</h2>
+<p>Realistisch ist Akupunktur bei Ischias ein ergänzender Baustein in drei Situationen: wenn die Abklärung keine Operationsindikation ergeben hat und du die Wartezeit auf Besserung überbrücken willst; wenn Schmerzmittel nicht ausreichen oder nicht vertragen werden; und wenn die Muskulatur in Gesäss und Lendenbereich so verspannt ist, dass sie den Nerv zusätzlich reizt. In diesem letzten Fall kombinieren wir die Nadelung oft mit <a href="/therapien/tuina/">Tuina</a>, weil die manuelle Arbeit am Piriformis und an der tiefen Gesässmuskulatur direkt dort ansetzt.</p>
+<p>Akupunktur ersetzt nicht die Bewegung. Die wichtigste Massnahme bei Ischias ohne Warnzeichen ist, in Bewegung zu bleiben und die Rückenmuskulatur gezielt aufzubauen. Wer bereits in der <a href="/therapien/physiotherapie/">Physiotherapie</a> ist, kann Akupunktur parallel nutzen; die beiden Behandlungen behindern sich nicht.</p>
+<h2>Wie wir behandeln</h2>
+<p>Vor der ersten Nadel klären wir, ob eine ärztliche Diagnose vorliegt, ob Bildgebung gemacht wurde und ob Taubheit oder Kraftverlust bestehen. Dann wird genadelt: am unteren Rücken, im Gesäss und entlang des Schmerzverlaufs am Bein, meist mit acht bis fünfzehn Nadeln, die 20 bis 30 Minuten liegen bleiben. Bei ausgeprägtem Nervenschmerz setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei kälteempfindlichen Beschwerden ergänzend Moxibustion.</p>
+<p>Typisch sind ein bis zwei Sitzungen pro Woche über vier bis sechs Wochen. Nach vier Sitzungen ziehen wir Bilanz: Hat sich die Ausstrahlung verkürzt, brauchst du weniger Schmerzmittel, schläfst du besser? Wenn nicht, besprechen wir offen, ob eine andere Methode oder eine erneute ärztliche Beurteilung sinnvoller ist.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin; wie viel deine Police übernimmt, hängt von Kasse und Modell ab. Ärztliche Akupunktur durch Fachärzt:innen mit entsprechender Weiterbildung kann über die Grundversicherung abgerechnet werden. Die Unterschiede erklärt die Seite <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>. Deine Deckung prüfen wir vor dem ersten Termin.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Ischias?', a: 'Zwei Meta-Analysen (2015 und 2023) zeigen weniger Schmerz als unter Schmerzmitteln, die Sicherheit der Evidenz ist aber niedrig bis sehr niedrig, weil Scheinakupunktur-Vergleiche fast fehlen. Als ergänzender Baustein ist Akupunktur vertretbar, als alleinige Behandlung nicht belegt.' },
+      { q: 'Wann darf ich mit Ischias nicht zur Akupunktur?', a: 'Bei Blasen- oder Darmschwäche, Taubheit im Gesäss- oder Dammbereich oder rasch zunehmender Lähmung gehörst du sofort in die Notaufnahme. Auch bei Kraftverlust, Fieber oder Schmerzen nach einem Sturz zuerst ärztlich abklären.' },
+      { q: 'Kann Akupunktur einen Bandscheibenvorfall heilen?', a: 'Nein. Akupunktur wirkt auf Schmerz und Muskulatur, nicht auf die Bandscheibe. Ob ein Vorfall von selbst abheilt oder operiert werden muss, entscheidet die ärztliche Beurteilung.' },
+      { q: 'Wie viele Sitzungen sind realistisch?', a: 'Meist ein bis zwei Termine pro Woche über vier bis sechs Wochen. Nach vier Sitzungen sollte sich etwas bewegen, sonst wird das Vorgehen neu beurteilt.' },
+      { q: 'Akupunktur oder Physiotherapie bei Ischias?', a: 'Beides, wenn möglich. Physiotherapie baut die Rückenmuskulatur auf und ist bei Ischias ohne Warnzeichen die wichtigste Massnahme; Akupunktur kann parallel den Schmerz dämpfen.' },
+    ],
+    related: [
+      { href: '/beschwerden/ischias/', label: 'Ischias', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/was-jetzt/ischias-schmerzen/', label: 'Was tun bei Ischias-Schmerzen', cat: 'Soforthilfe' },
+      { href: '/koerpersignale/bein-wird-beim-sitzen-taub/', label: 'Bein wird beim Sitzen taub', cat: 'Körpersignal' },
+      { href: '/wissen/akupunktur-bei-rueckenschmerzen/', label: 'Akupunktur bei Rückenschmerzen', cat: 'Studienlage' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── ENDOMETRIOSE
+  {
+    slug: 'akupunktur-bei-endometriose',
+    title: 'Akupunktur bei Endometriose: Was die Studien zeigen',
+    metaDesc: 'Akupunktur bei Endometriose: Was ein Cochrane-Review und eine Meta-Analyse zu Schmerzen zeigen, warum die Evidenz schwach bleibt und wie eine ergänzende Behandlung neben der gynäkologischen Therapie aussieht.',
+    region: 'Schweizweit',
+    excerpt: 'Hinweise auf weniger Schmerz, aber kaum verblindete Studien: Akupunktur kann Endometriose-Beschwerden ergänzend lindern, heilt die Erkrankung aber nicht.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Endometriose: Was die Studien zeigen',
+    lead: 'Endometriose ist eine chronische, gynäkologische Erkrankung, bei der Akupunktur oft als Ergänzung angefragt wird. Hier steht ehrlich, was die Forschung hergibt, was sie nicht hergibt und wie eine Behandlung neben Hormontherapie oder Operation sinnvoll eingebettet wird.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Endometriose-Schmerzen ergänzend behandeln?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Was bei Endometriose passiert</h2>
+<p>Gewebe, das der Gebärmutterschleimhaut ähnelt, siedelt sich ausserhalb der Gebärmutter an, reagiert auf den Zyklus und löst Entzündung, Verwachsungen und Schmerz aus. Typisch sind starke Regelschmerzen, Schmerzen beim Sex, beim Stuhlgang oder chronische Unterbauchschmerzen, oft verbunden mit unerfülltem Kinderwunsch. Die Diagnose stellt die Gynäkologie, häufig erst nach Jahren und manchmal erst per Bauchspiegelung. Die Erkrankung selbst, ihre Formen und die schulmedizinischen Optionen beschreibt die Seite <a href="/beschwerden/endometriose/">Endometriose</a>.</p>
+<p>Das Entscheidende vorweg: Akupunktur verändert die Endometrioseherde nicht. Sie ist eine Behandlung des Schmerzes und der Begleitbeschwerden, nicht der Erkrankung.</p>
+<h2>Was die Studien zeigen</h2>
+<p>Der <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD007864.pub2/full" target="_blank" rel="noopener">Cochrane-Review zu Akupunktur bei Endometriose-Schmerzen (Zhu et al., 2011)</a> fand nur eine einzige Studie, die den Einschlusskriterien genügte: 67 Teilnehmerinnen, Ohrakupunktur im Vergleich mit chinesischen Kräutern. Die Akupunkturgruppe hatte tiefere Schmerzwerte, bei schwerer Dysmenorrhö deutlicher als bei leichter. Die Autor:innen bewerten die Evidenz als begrenzt und fordern verblindete Studien mit Scheinakupunktur.</p>
+<p>Eine spätere Meta-Analyse von <a href="https://doi.org/10.1371/journal.pone.0186616" target="_blank" rel="noopener">Xu et al. (2017)</a> fasste 10 Studien mit 589 Patientinnen zusammen. Im Mittel lag die Schmerzreduktion unter Akupunktur um 1,36 Punkte auf einer Skala von 0 bis 10 über den Vergleichsgruppen. Nur eine der zehn Studien verwendete jedoch eine Placebo-Kontrolle; die übrigen verglichen mit Medikamenten oder Kräutern, was keine Verblindung erlaubt, und die Gruppen waren klein.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Die Hinweise auf weniger Schmerz sind konsistent, aber methodisch schwach. Ein Unterschied von gut einem Punkt auf der Schmerzskala ist spürbar, aber kein Ersatz für eine wirksame Hormontherapie oder, wenn nötig, eine Operation. Seriös ist deshalb nur die Formulierung: Akupunktur kann Endometriose-Schmerzen ergänzend lindern, mit unsicherer Evidenz.</p></div>
+<h2>Wann die gynäkologische Behandlung Vorrang hat</h2>
+<p>Bei Verdacht auf Endometriose gehört die Abklärung zuerst in die Gynäkologie, nicht in die TCM-Praxis. Das gilt besonders, wenn Schmerzen rasch zunehmen, wenn Blut im Stuhl oder Urin auftritt, wenn Fieber dazukommt oder wenn ein Kinderwunsch im Raum steht und die Zeit drängt. Eine laufende Hormontherapie wird wegen Akupunktur nicht abgesetzt; wenn du das erwägst, besprich es mit deiner Ärztin.</p>
+<p>Bei Endometriose und Kinderwunsch ist die Situation nochmals anders: Hier ist die Evidenz für Akupunktur dünn und die Zeitfrage oft entscheidend. Was wir dazu sagen können, steht auf der Seite <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a>.</p>
+<h2>Wie eine ergänzende Behandlung aussieht</h2>
+<p>Wir planen die Behandlung entlang deines Zyklus. In der Woche vor und während der Menstruation steht die Schmerzlinderung im Vordergrund: Nadeln am Unterbauch, am unteren Rücken und an Punkten an Beinen und Händen, die in den Studien zu Regelschmerzen am häufigsten verwendet wurden. Zwischen den Blutungen arbeiten wir an Verspannungen im Beckenboden und im unteren Rücken, die chronische Unterbauchschmerzen oft verstärken, und an Schlaf und Erschöpfung, die bei Endometriose häufig mitlaufen.</p>
+<p>Viele Patientinnen nutzen ergänzend eine <a href="/therapien/kraeutertherapie/">chinesische Kräuterrezeptur</a>. Auch hier gilt: Die Studienlage ist schwach, Wechselwirkungen mit Hormonpräparaten klären wir vorher, und Kräuter sind keine Alternative zur ärztlichen Therapie.</p>
+<h2>Ablauf und was du erwarten kannst</h2>
+<p>Realistisch ist ein Versuch über zwei bis drei Zyklen mit je zwei bis vier Sitzungen. Beurteilt wird nicht ein Gefühl, sondern konkret: Schmerzstärke an den schlimmsten Tagen, Bedarf an Schmerzmitteln, Ausfalltage. Zeigt sich nach drei Zyklen keine Veränderung, sagen wir dir das und raten nicht zu endlosen Serien.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin; der Umfang hängt von deiner Police ab. Die gynäkologische Behandlung der Endometriose selbst ist Sache der Grundversicherung. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Endometriose?', a: 'Studien zeigen Hinweise auf weniger Schmerz, im Mittel gut einen Punkt auf der Schmerzskala. Die Evidenz ist schwach, weil fast keine verblindeten Studien existieren. Akupunktur ist eine ergänzende Schmerzbehandlung, keine Therapie der Erkrankung.' },
+      { q: 'Kann Akupunktur Endometriose heilen?', a: 'Nein. Sie verändert die Endometrioseherde nicht. Behandelt werden Schmerz und Begleitbeschwerden, parallel zur gynäkologischen Therapie.' },
+      { q: 'Kann ich Akupunktur mit Hormontherapie kombinieren?', a: 'Ja. Die Hormontherapie wird nicht abgesetzt. Bei Kräuterrezepturen prüfen wir mögliche Wechselwirkungen vorher.' },
+      { q: 'Wie lange dauert ein Behandlungsversuch?', a: 'Meist zwei bis drei Zyklen mit je zwei bis vier Sitzungen, mit klarer Zwischenbilanz anhand von Schmerzstärke und Schmerzmittelbedarf.' },
+      { q: 'Was ist mit Endometriose und Kinderwunsch?', a: 'Hier drängt oft die Zeit, und die Evidenz für Akupunktur ist dünn. Die Planung gehört in die Kinderwunschklinik; TCM kann begleiten, nicht ersetzen.' },
+    ],
+    related: [
+      { href: '/beschwerden/endometriose/', label: 'Endometriose', cat: 'Beschwerde' },
+      { href: '/beschwerden/adenomyose/', label: 'Adenomyose', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-menstruationsbeschwerden/', label: 'Akupunktur bei Menstruationsbeschwerden', cat: 'Studienlage' },
+      { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── FIBROMYALGIE
+  {
+    slug: 'akupunktur-bei-fibromyalgie',
+    title: 'Akupunktur bei Fibromyalgie: Was der Cochrane-Review zeigt',
+    metaDesc: 'Akupunktur bei Fibromyalgie: Was der Cochrane-Review zu Schmerz, Steifigkeit und Schlaf zeigt, warum Elektroakupunktur besser abschneidet und wo die Behandlung im multimodalen Konzept Platz hat.',
+    region: 'Schweizweit',
+    excerpt: 'Kurzfristig weniger Schmerz und Steifigkeit, vor allem mit Elektroakupunktur, aber keine anhaltende Wirkung nach sechs Monaten: so nüchtern fällt der Cochrane-Review aus.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Fibromyalgie: Was der Cochrane-Review zeigt',
+    lead: 'Schmerzen am ganzen Körper, Erschöpfung, schlechter Schlaf: Fibromyalgie ist real, chronisch und schwer zu behandeln. Akupunktur gehört zu den am besten untersuchten ergänzenden Methoden. Hier steht, was die Daten tragen und was nicht.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Fibromyalgie ergänzend behandeln?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Was Fibromyalgie ausmacht</h2>
+<p>Fibromyalgie ist ein chronisches Schmerzsyndrom: ausgedehnte Schmerzen in Muskeln und Weichteilen, dazu Erschöpfung, nicht erholsamer Schlaf, Konzentrationsstörungen und häufig Reizdarm oder Kopfschmerzen. Es gibt keinen Laborwert, der die Diagnose beweist; sie wird klinisch gestellt, nachdem andere Erkrankungen ausgeschlossen sind. Hintergründe, Diagnosekriterien und die empfohlene multimodale Behandlung beschreibt die Seite <a href="/beschwerden/fibromyalgie/">Fibromyalgie</a>.</p>
+<p>Für die Behandlungsentscheidung heisst das: Keine einzelne Methode heilt Fibromyalgie. Bewegung, Schulung, Schlaf und, wenn nötig, Medikamente bilden die Basis. Akupunktur ist ein möglicher Baustein daneben.</p>
+<h2>Was der Cochrane-Review zeigt</h2>
+<p>Der <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD007070.pub2/full" target="_blank" rel="noopener">Cochrane-Review von Deare et al. (CD007070)</a> wertete neun randomisierte Studien mit 395 Teilnehmenden aus. Die Ergebnisse, sortiert nach Vergleich:</p>
+<p>Gegenüber keiner Behandlung oder Standardtherapie verbesserte Akupunktur Schmerz und Steifigkeit, mit niedriger bis moderater Qualität der Evidenz. Gegenüber Scheinakupunktur war echte Akupunktur dagegen nicht überlegen, mit einer Ausnahme: weniger Steifigkeit nach einem Monat. Elektroakupunktur schnitt für Schmerz, Steifigkeit, Wohlbefinden, Schlaf und Erschöpfung wahrscheinlich besser ab als manuelle Akupunktur, allerdings auf Basis kleiner Studien, eine davon mit nur 13 Teilnehmenden. Manuelle Akupunktur allein verbesserte Schmerz und Funktion wahrscheinlich nicht.</p>
+<p>Zwei Punkte sind für dich besonders wichtig: Die Effekte hielten bis etwa einen Monat an und waren nach sechs Monaten nicht mehr nachweisbar. Und Akupunktur war sicher, schwere Nebenwirkungen wurden keine berichtet.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Fibromyalgie ist eines der Beschwerdebilder, bei denen der Unterschied zwischen echter und Scheinakupunktur klein ist. Das spricht dafür, dass ein guter Teil der Wirkung über Zuwendung, Erwartung und das Nervensystem läuft, nicht über die genaue Punktwahl. Für Patient:innen ist das weniger wichtig als für Forschende: Entscheidend ist, ob es dir mit der Behandlung besser geht und ob der Nutzen den Aufwand rechtfertigt.</p></div>
+<h2>Wann zuerst rheumatologisch oder schmerzmedizinisch</h2>
+<p>Bevor Fibromyalgie behandelt wird, muss sie diagnostiziert sein. Entzündliche Rheumaerkrankungen, Schilddrüsenstörungen, Vitamin-D-Mangel oder Polymyalgie können ähnliche Beschwerden machen und brauchen eine andere Behandlung. Neu aufgetretene, rasch zunehmende Schmerzen, geschwollene Gelenke, Fieber, ungewollter Gewichtsverlust oder Muskelschwäche gehören ärztlich abgeklärt. Auch bei bestehender Diagnose bleibt die rheumatologische oder schmerzmedizinische Begleitung die Basis, die wir ergänzen.</p>
+<h2>Wie wir behandeln</h2>
+<p>Bei Fibromyalgie arbeiten wir anders als bei einem lokalen Schmerz: weniger Nadeln, sanftere Stimulation, längere Pausen. Viele Betroffene reagieren empfindlich auf Reize; eine zu kräftige erste Sitzung kann die Beschwerden vorübergehend verstärken. Gestützt auf die Cochrane-Daten setzen wir, wenn du es verträgst, <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> mit niedriger Frequenz ein. Ergänzend kommen sanfte manuelle Techniken infrage, kein tiefes Kneten.</p>
+<p>Weil Schlaf bei Fibromyalgie ein eigener Hebel ist, nehmen wir ihn bewusst mit in den Behandlungsplan auf; was Akupunktur bei <a href="/wissen/akupunktur-schlafprobleme/">Schlafproblemen</a> realistisch leisten kann, steht in einem eigenen Artikel.</p>
+<h2>Ablauf und Sitzungen</h2>
+<p>Ein sinnvoller Versuch umfasst sechs bis acht Sitzungen über etwa sechs Wochen. Wir messen nicht nur Schmerz, sondern auch Steifigkeit am Morgen, Schlafqualität und Belastbarkeit im Alltag. Weil die Wirkung laut Studienlage nicht lange anhält, besprechen wir vorher, ob Auffrischungssitzungen für dich sinnvoll und bezahlbar sind. Eine Dauerbehandlung ohne messbaren Nutzen empfehlen wir nicht.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, mit einem Jahresmaximum je nach Police. Gerade bei einer chronischen Erkrankung lohnt es sich, dieses Maximum vorher zu kennen. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Fibromyalgie?', a: 'Laut Cochrane-Review verbessert sie Schmerz und Steifigkeit gegenüber keiner Behandlung, ist aber gegenüber Scheinakupunktur kaum überlegen. Die Wirkung hält etwa einen Monat an. Sie ist ein möglicher Baustein, keine Heilung.' },
+      { q: 'Ist Elektroakupunktur besser als normale Akupunktur?', a: 'Nach den Cochrane-Daten wahrscheinlich ja, für Schmerz, Steifigkeit, Schlaf und Erschöpfung. Die zugrunde liegenden Studien sind jedoch klein.' },
+      { q: 'Kann die Behandlung die Schmerzen verstärken?', a: 'Eine zu intensive erste Sitzung kann vorübergehend mehr Beschwerden auslösen. Deshalb beginnen wir mit wenigen Nadeln und sanfter Stimulation.' },
+      { q: 'Wie lange hält die Wirkung an?', a: 'In den Studien bis etwa einen Monat; nach sechs Monaten war kein Unterschied mehr messbar. Ob Auffrischungen sinnvoll sind, besprechen wir vorher.' },
+      { q: 'Ersetzt Akupunktur Bewegung und Medikamente?', a: 'Nein. Bewegung, Schulung, Schlaf und je nach Situation Medikamente bleiben die Basis der multimodalen Behandlung.' },
+    ],
+    related: [
+      { href: '/beschwerden/fibromyalgie/', label: 'Fibromyalgie', cat: 'Beschwerde' },
+      { href: '/therapien/elektroakupunktur/', label: 'Elektroakupunktur', cat: 'Therapie' },
+      { href: '/wissen/akupunktur-schlafprobleme/', label: 'Akupunktur bei Schlafproblemen', cat: 'Studienlage' },
+      { href: '/beschwerden/stress-burnout/', label: 'Stress & Burnout', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── TINNITUS
+  {
+    slug: 'akupunktur-bei-tinnitus',
+    title: 'Akupunktur bei Tinnitus: Evidenz ehrlich eingeordnet',
+    metaDesc: 'Akupunktur bei Tinnitus: Warum die Studienlage trotz vieler Arbeiten schwach ist, was gegen Scheinakupunktur herauskam, wann der HNO-Arzt zuerst dran ist und was eine Behandlung realistisch leisten kann.',
+    region: 'Schweizweit',
+    excerpt: 'Viele Studien, schwache Qualität, kein klarer Vorteil gegenüber Scheinakupunktur: Bei Tinnitus ist Akupunktur höchstens ein ergänzender Versuch.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Tinnitus: Evidenz ehrlich eingeordnet',
+    lead: 'Ein Pfeifen oder Rauschen, das nicht aufhört, treibt viele Menschen zu Behandlungen, deren Nutzen nicht belegt ist. Akupunktur gehört dazu. Hier steht, was die Studien hergeben, warum wir keine Versprechen machen und was dennoch sinnvoll sein kann.',
+    readingTime: '7 Min.',
+    ctaTitle: 'Tinnitus begleiten lassen?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Erst die Abklärung beim HNO-Arzt</h2>
+<p>Tinnitus ist ein Symptom, keine Diagnose. Ein neu aufgetretenes Ohrgeräusch, besonders einseitig, mit Hörverlust, Schwindel oder Druckgefühl, gehört innerhalb weniger Tage zur HNO-Ärztin: Ein Hörsturz lässt sich nur früh behandeln, und seltene Ursachen müssen ausgeschlossen werden. Ein pulssynchrones Geräusch, das im Takt des Herzschlags klopft, braucht eine eigene Abklärung. Was in den ersten Tagen zu tun ist, steht unter <a href="/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/">Neuer Tinnitus: erste Schritte</a>; die Erkrankung insgesamt erklärt die Seite <a href="/beschwerden/tinnitus/">Tinnitus</a>.</p>
+<p>Akupunktur kommt, wenn überhaupt, erst danach ins Spiel: bei chronischem Tinnitus, der ärztlich abgeklärt ist und bei dem es um den Umgang mit dem Geräusch geht.</p>
+<h2>Was die Studien zeigen</h2>
+<p>Die bis heute meistzitierte Übersicht stammt von <a href="https://doi.org/10.1186/1472-6882-12-97" target="_blank" rel="noopener">Kim et al. (2012)</a>: neun randomisierte Studien, in denen Akupunktur die einzige Behandlung war. In den fünf Studien mit Scheinakupunktur als Vergleich fand sich keine statistisch bedeutsame Verbesserung. Zwei Studien zu einer einzelnen Schädelakupunktur-Sitzung meldeten zwar Effekte, wurden von den Autor:innen aber wegen hohen Verzerrungsrisikos als wenig verlässlich eingestuft. Die methodische Qualität war insgesamt schlecht: kleine Gruppen, keine Fallzahlplanung, lückenhafte Berichte über Nebenwirkungen.</p>
+<p>Eine <a href="https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2022.1061431/full" target="_blank" rel="noopener">Übersicht über 14 systematische Reviews (Frontiers in Neurology, 2022)</a> kam zehn Jahre später zum gleichen Bild: Die Richtung der Ergebnisse ist tendenziell positiv, aber nach GRADE war keines der Ergebnisse von hoher Qualität, die meisten von niedriger oder sehr niedriger.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Für Tinnitus können wir Akupunktur nicht als wirksam bezeichnen. Was sich sagen lässt: Sie ist sicher, und manche Menschen berichten, dass sie das Geräusch als weniger belastend empfinden, oft verbunden mit besserem Schlaf und weniger Anspannung. Ob das an der Nadelung liegt oder an der Ruhe und Zuwendung der Sitzung, lässt sich aus den Studien nicht ableiten. Die einzige Behandlung mit belegtem Nutzen für die Lebensqualität ist die kognitive Verhaltenstherapie.</p></div>
+<h2>Wo ein Versuch vertretbar ist</h2>
+<p>Vertretbar ist Akupunktur bei chronischem, abgeklärtem Tinnitus, wenn du sie als Ergänzung verstehst und nicht als Hoffnung auf Stille. Am ehesten profitieren Menschen, bei denen das Geräusch mit Verspannungen im Nacken und Kiefer, mit Stress oder mit Schlafproblemen verknüpft ist. Dort behandeln wir weniger das Ohr als das Umfeld: Nacken, Kiefermuskulatur, Anspannung, Schlaf. Was bei <a href="/beschwerden/stress-burnout/">Stress</a> und <a href="/wissen/akupunktur-schlafprobleme/">Schlafproblemen</a> realistisch ist, steht auf den jeweiligen Seiten.</p>
+<p>Nicht sinnvoll ist Akupunktur als Ersatz für Hörgeräteversorgung bei Hörverlust, für die Behandlung eines Hörsturzes oder für eine Verhaltenstherapie, die dir empfohlen wurde.</p>
+<h2>Wie wir behandeln</h2>
+<p>Vor der ersten Sitzung wollen wir den HNO-Befund und den <a href="/gesundheitsbibliothek/untersuchungen/hoertest/">Hörtest</a> sehen. Genadelt wird rund um das Ohr, am Nacken und an Punkten an Händen und Füssen; bei ausgeprägter Kiefer- oder Nackenverspannung kombinieren wir mit manuellen Techniken. Wir vereinbaren vorher ein klar begrenztes Paket von sechs Sitzungen und messen den Erfolg nicht an der Lautstärke des Geräuschs, sondern daran, wie stark es dich im Alltag und beim Einschlafen stört. Bleibt das nach sechs Sitzungen gleich, beenden wir die Behandlung.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin; der Umfang hängt von deiner Police ab. Die HNO-Abklärung und die Hörgeräteversorgung laufen über die Grundversicherung beziehungsweise die Invaliden- oder AHV-Versicherung. Details zur Akupunktur unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Tinnitus?', a: 'Gegenüber Scheinakupunktur zeigten die Studien keinen bedeutsamen Vorteil, und die Qualität der Evidenz ist niedrig bis sehr niedrig. Akupunktur kann höchstens ein ergänzender Versuch sein, vor allem wenn Nacken, Stress oder Schlaf mitspielen.' },
+      { q: 'Kann Akupunktur das Ohrgeräusch zum Verschwinden bringen?', a: 'Dafür gibt es keinen Beleg. Realistisch ist allenfalls, dass das Geräusch als weniger belastend empfunden wird.' },
+      { q: 'Wann muss ich mit Tinnitus zum HNO-Arzt?', a: 'Bei neu aufgetretenem, einseitigem Tinnitus, bei Hörverlust, Schwindel, Druckgefühl oder einem pulssynchronen Geräusch innerhalb weniger Tage. Akupunktur kommt erst nach der Abklärung infrage.' },
+      { q: 'Wie viele Sitzungen sind sinnvoll?', a: 'Wir vereinbaren ein begrenztes Paket von sechs Sitzungen und messen, wie stark dich das Geräusch im Alltag stört. Ohne Veränderung beenden wir die Behandlung.' },
+      { q: 'Was hilft nachweislich bei chronischem Tinnitus?', a: 'Die kognitive Verhaltenstherapie ist die Behandlung mit belegtem Nutzen für die Lebensqualität. Bei Hörverlust kommt die Hörgeräteversorgung dazu.' },
+    ],
+    related: [
+      { href: '/beschwerden/tinnitus/', label: 'Tinnitus', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/', label: 'Neuer Tinnitus: erste Schritte', cat: 'Soforthilfe' },
+      { href: '/koerpersignale/herzschlag-im-ohr/', label: 'Herzschlag im Ohr', cat: 'Körpersignal' },
+      { href: '/beschwerden/hoersturz/', label: 'Hörsturz', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── POLYNEUROPATHIE
+  {
+    slug: 'akupunktur-bei-polyneuropathie',
+    title: 'Akupunktur bei Polyneuropathie: Evidenz & Grenzen',
+    metaDesc: 'Akupunktur bei Polyneuropathie: Was der Cochrane-Review zu Nervenschmerzen zeigt, was Studien zur Neuropathie nach Chemotherapie hergeben, wo die Grenzen liegen und was vor jeder Behandlung abgeklärt sein muss.',
+    region: 'Schweizweit',
+    excerpt: 'Für Nervenschmerzen reicht die Evidenz laut Cochrane nicht aus; bei Neuropathie nach Chemotherapie gibt es Hinweise auf weniger Schmerz. Akupunktur ist ergänzend, nie ursächlich.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Polyneuropathie: Evidenz & Grenzen',
+    lead: 'Brennende Füsse, Kribbeln, Taubheit, die langsam aufwärts wandert: Polyneuropathie hat viele Ursachen, und die Behandlung der Ursache steht immer an erster Stelle. Was Akupunktur bei den Beschwerden leisten kann, ist weniger klar, als viele Angebote suggerieren.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Polyneuropathie ergänzend begleiten lassen?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Zuerst die Ursache</h2>
+<p>Polyneuropathie bedeutet, dass viele periphere Nerven gleichzeitig geschädigt sind, meist beginnend an den Füssen. Die häufigsten Ursachen in der Schweiz sind Diabetes, Alkohol, Chemotherapie und Vitamin-B12-Mangel; daneben gibt es entzündliche, erbliche und medikamentöse Formen. Weil die Behandlung der Ursache den Verlauf bestimmt, gehört die Abklärung in die Neurologie, mit <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a> und Laborwerten. Was dabei untersucht wird und wie die Erkrankung verläuft, beschreibt die Seite <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
+<p>Akupunktur ersetzt davon nichts. Sie zielt auf die Beschwerden, vor allem auf Schmerz und Missempfindungen, nicht auf die Nervenschädigung.</p>
+<h2>Was die Studien zeigen</h2>
+<p>Der <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD012057.pub2/full" target="_blank" rel="noopener">Cochrane-Review zu Akupunktur bei neuropathischen Schmerzen (Ju et al., 2017)</a> fand sechs Studien mit 462 Erwachsenen, die chronische periphere Nervenschmerzen hatten. Das Fazit ist deutlich: Die Daten reichen nicht aus, um Akupunktur zu empfehlen oder abzulehnen, weder allgemein noch für eine bestimmte Neuropathie. Die Qualität der Evidenz wurde als sehr niedrig eingestuft, wegen fehlender Verblindung, kleiner Gruppen und Abbrüchen in den Vergleichsgruppen.</p>
+<p>Etwas besser sieht es bei der Neuropathie nach Chemotherapie aus. Eine Meta-Analyse von <a href="https://pubmed.ncbi.nlm.nih.gov/31833790/" target="_blank" rel="noopener">Chien et al. (2019)</a> über sechs Studien mit 386 Patient:innen fand weniger Schmerz und weniger Nervensymptome unter Akupunktur; die Autor:innen fordern wegen der kleinen Fallzahlen grössere Studien. Eine Auswertung von 2022 bestätigte den Effekt auf Schmerz, fand aber gegenüber Placebo-Akupunktur keinen Unterschied bei der Nervenfunktion selbst.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Für Schmerz und Missempfindungen gibt es Hinweise auf einen Nutzen, für die Nervenfunktion nicht. Wer dir verspricht, Akupunktur könne geschädigte Nerven regenerieren, bewegt sich ausserhalb der Studienlage. Realistisch ist ein ergänzender Versuch zur Schmerzlinderung, mit ehrlicher Zwischenbilanz.</p></div>
+<h2>Wann Akupunktur nicht der richtige Schritt ist</h2>
+<p>Rasch fortschreitende Taubheit oder Schwäche, Gangunsicherheit mit Stürzen, Beschwerden nach einer Infektion oder eine Neuropathie ohne bekannte Ursache gehören neurologisch abgeklärt, bevor irgendjemand nadelt. Bei Diabetes ist die Einstellung des Blutzuckers der wichtigste Hebel; Akupunktur ändert daran nichts. Bei laufender Chemotherapie stimmen wir jede Behandlung mit dem onkologischen Team ab.</p>
+<p>Ein praktischer Punkt: Wo die Haut taub ist, spürst du Verletzungen nicht. Wir nadeln deshalb zurückhaltend an Stellen mit fehlendem Gefühl, verzichten dort auf starke Stimulation und raten dir ohnehin zur täglichen Fussinspektion, wie sie bei diabetischer Neuropathie empfohlen wird.</p>
+<h2>Wie wir behandeln</h2>
+<p>Wir wollen Diagnose, Ursache und aktuelle Medikation kennen und fragen nach dem Befund der Nervenleitmessung. Behandelt wird an Beinen und Füssen, oft ergänzt durch Punkte am Rumpf und an den Händen. Bei Schmerz im Vordergrund setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei ausgeprägter Kälteempfindlichkeit <a href="/therapien/moxibustion/">Moxibustion</a>. Was nachts an brennenden Füssen anders ist als tagsüber, erklärt das Körpersignal <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
+<h2>Ablauf und Sitzungen</h2>
+<p>Ein Versuch umfasst meist sechs bis acht Sitzungen über sechs bis acht Wochen. Beurteilt werden Schmerzstärke, nächtliche Beschwerden, Schlaf und Gehstrecke. Verbessert sich davon nach sechs Sitzungen nichts, brechen wir ab und sagen dir das. Eine Dauerbehandlung, um einer fortschreitenden Erkrankung hinterherzulaufen, ist kein Behandlungsplan.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, mit einem Jahresmaximum je nach Police. Die neurologische Abklärung und die Behandlung der Ursache laufen über die Grundversicherung. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Polyneuropathie?', a: 'Für Nervenschmerzen reicht die Evidenz laut Cochrane-Review nicht aus, um Akupunktur zu empfehlen oder abzulehnen. Bei Neuropathie nach Chemotherapie gibt es Hinweise auf weniger Schmerz. Ein ergänzender Versuch ist vertretbar, mehr nicht.' },
+      { q: 'Kann Akupunktur geschädigte Nerven heilen?', a: 'Nein. Studien zeigen allenfalls weniger Schmerz und Missempfindungen, keine Verbesserung der Nervenfunktion gegenüber Placebo.' },
+      { q: 'Was muss vor der Behandlung abgeklärt sein?', a: 'Die Ursache. Dazu gehören Nervenleitmessung und Laborwerte in der Neurologie. Bei Diabetes bleibt die Blutzuckereinstellung der wichtigste Hebel.' },
+      { q: 'Ist Akupunktur bei tauben Füssen gefährlich?', a: 'Bei fachgerechter Anwendung nicht, aber wir nadeln an gefühllosen Stellen zurückhaltend, weil du Verletzungen dort nicht spürst.' },
+      { q: 'Hilft TCM auch bei Neuropathie nach Chemotherapie?', a: 'Dafür gibt es die vergleichsweise beste Evidenz, vor allem für Schmerz. Die Behandlung wird mit dem onkologischen Team abgestimmt.' },
+    ],
+    related: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie', cat: 'Beschwerde' },
+      { href: '/koerpersignale/brennende-fuesse-nachts/', label: 'Brennende Füsse nachts', cat: 'Körpersignal' },
+      { href: '/gesundheitsbibliothek/untersuchungen/nervenleitmessung/', label: 'Nervenleitmessung (NLG)', cat: 'Untersuchung' },
+      { href: '/therapien/elektroakupunktur/', label: 'Elektroakupunktur', cat: 'Therapie' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── HÜFTSCHMERZEN
+  {
+    slug: 'akupunktur-bei-hueftschmerzen',
+    title: 'Akupunktur bei Hüftschmerzen & Hüftarthrose: Studienlage',
+    metaDesc: 'Akupunktur bei Hüftschmerzen und Hüftarthrose: Was der Cochrane-Review von 2018 zeigt, warum der Unterschied zu Scheinakupunktur klein ist, wo Bewegung wichtiger ist und wann du ärztlich abklären musst.',
+    region: 'Schweizweit',
+    excerpt: 'Als Ergänzung zur Hausarztbehandlung möglicherweise weniger Schmerz, gegenüber Scheinakupunktur kaum ein Unterschied: Bei Hüftarthrose ist Akupunktur ein Baustein neben Bewegung, kein Ersatz.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Hüftschmerzen & Hüftarthrose: Studienlage',
+    lead: 'Hüftschmerzen beim Gehen, beim Aufstehen oder nachts beim Liegen auf der Seite haben sehr unterschiedliche Ursachen. Für die häufigste, die Hüftarthrose, gibt es einen Cochrane-Review zu Akupunktur. Hier steht, was er zeigt, wo die Grenzen liegen und wann die Hüfte zuerst ärztlich angeschaut werden muss.',
+    readingTime: '8 Min.',
+    ctaTitle: 'Hüftschmerzen einordnen lassen?',
+    author: AUTOR,
+    reviewerName: 'Corinna Reinhart',
+    ...DATEN3,
+    bodyHtml: `<h2>Welche Hüfte? Erst die Ursache</h2>
+<p>Schmerz in der Leiste, der beim Gehen zunimmt und die Beweglichkeit einschränkt, spricht für das Hüftgelenk selbst, am häufigsten für eine <a href="/beschwerden/koxarthrose/">Koxarthrose</a>. Schmerz aussen an der Hüfte, der nachts beim Liegen auf der Seite stört, kommt meist von Sehnen und Schleimbeuteln am grossen Rollhügel. Und Schmerz, der vom Rücken ins Gesäss ausstrahlt, hat oft gar nichts mit der Hüfte zu tun. Die Unterscheidung bestimmt die Behandlung; die Seite <a href="/beschwerden/hueftschmerzen/">Hüftschmerzen</a> führt durch die häufigsten Ursachen.</p>
+<p>Akupunktur kann bei allen drei Mustern den Schmerz beeinflussen, verändert aber weder Knorpel noch Sehne. Darum ist sie bei Hüftschmerzen immer ein Baustein neben Bewegung, nie die Hauptbehandlung.</p>
+<h2>Was der Cochrane-Review zeigt</h2>
+<p>Der <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD013010/full" target="_blank" rel="noopener">Cochrane-Review zu Akupunktur bei Hüftarthrose (Manheimer et al., 2018)</a> wertete sechs Studien mit 413 Teilnehmenden aus. Die Ergebnisse sind nüchtern: Gegenüber Scheinakupunktur machte echte Akupunktur nach etwa acht Wochen wahrscheinlich wenig oder keinen Unterschied bei Schmerz und Funktion. Als Ergänzung zur hausärztlichen Routinebehandlung verbesserte Akupunktur Schmerz und Funktion möglicherweise. Ob sie besser ist als Bewegungsberatung oder entzündungshemmende Medikamente, bleibt unklar.</p>
+<p>Die Autor:innen weisen ausdrücklich darauf hin, dass ein Teil des berichteten Nutzens wahrscheinlich auf die höheren Erwartungen der Teilnehmenden an die Akupunktur zurückgeht. Nebenwirkungen waren gering.</p>
+<div class="wa-callout"><div class="wa-callout-label">Einordnung</div><p>Für die Hüfte ist die Evidenz schwächer als für das Knie, wo grössere Studien einen moderaten Effekt zeigen. Wer Akupunktur bei Hüftarthrose versucht, sollte das mit realistischer Erwartung tun: etwas weniger Schmerz im Alltag, nicht die Rückkehr eines gesunden Gelenks. Was beim Knie anders aussieht, steht im Artikel <a href="/wissen/akupunktur-bei-knieschmerzen/">Akupunktur bei Knieschmerzen</a>.</p></div>
+<h2>Wann die Hüfte zuerst ärztlich angeschaut werden muss</h2>
+<p>Hüftschmerzen nach einem Sturz, bei Fieber, bei ungewolltem Gewichtsverlust oder bei nächtlichem Ruheschmerz, der mit Bewegung nicht besser wird, gehören ärztlich abgeklärt, bevor irgendjemand nadelt. Dasselbe gilt für Hüftschmerzen bei Kindern und Jugendlichen, bei Menschen mit Kortisontherapie oder hohem Alkoholkonsum, wo eine Hüftkopfnekrose ausgeschlossen werden muss, und bei rasch zunehmender Einschränkung des Gehens. Bei fortgeschrittener Arthrose ist die Prothese oft die bessere Entscheidung; Akupunktur darf sie nicht unnötig verzögern.</p>
+<h2>Wo Akupunktur sinnvoll sein kann</h2>
+<p>Vertretbar ist ein Versuch bei leichter bis mittlerer Hüftarthrose, wenn du Schmerzmittel reduzieren willst oder nicht verträgst, und bei Sehnen- oder Schleimbeutelreizungen aussen an der Hüfte, wo wir die Nadelung mit manueller Arbeit an Gesäss- und Oberschenkelmuskulatur kombinieren. In beiden Fällen bleibt Bewegung die wichtigste Massnahme: Kräftigung der Hüftmuskulatur und ein angepasstes Gehpensum. Wer dafür Anleitung braucht, ist in der <a href="/therapien/physiotherapie/">Physiotherapie</a> richtig; Akupunktur kann parallel laufen.</p>
+<h2>Wie wir behandeln</h2>
+<p>Wir klären zuerst, welches der drei Muster vorliegt und ob eine ärztliche Diagnose mit Bildgebung besteht. Genadelt wird rund um die Hüfte, im Gesäss, am Oberschenkel und an Fernpunkten am Unterschenkel; bei ausgeprägter Muskelverhärtung ergänzen wir <a href="/therapien/tuina/">Tuina</a>, bei kälteempfindlichen Gelenken Moxibustion. Ein Versuch umfasst sechs bis acht Sitzungen über etwa sechs Wochen. Gemessen wird nicht ein Gefühl, sondern Gehstrecke, Treppensteigen, Nachtschlaf und Schmerzmittelbedarf. Ohne Veränderung nach sechs Sitzungen beenden wir die Behandlung.</p>
+<h2>Kosten und Krankenkasse</h2>
+<p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin; wie viel deine Police übernimmt, hängt von Kasse und Modell ab. Physiotherapie auf ärztliche Verordnung läuft über die Grundversicherung. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
+    faqs: [
+      { q: 'Hilft Akupunktur bei Hüftarthrose?', a: 'Laut Cochrane-Review möglicherweise als Ergänzung zur hausärztlichen Behandlung, gegenüber Scheinakupunktur aber kaum. Ein Versuch bei leichter bis mittlerer Arthrose ist vertretbar, mit realistischer Erwartung.' },
+      { q: 'Kann Akupunktur eine Hüftprothese vermeiden?', a: 'Nein. Bei fortgeschrittener Arthrose ist die Operation oft die bessere Entscheidung, und Akupunktur darf sie nicht unnötig verzögern.' },
+      { q: 'Warum schmerzt meine Hüfte nachts beim Liegen auf der Seite?', a: 'Meist liegt die Ursache aussen am grossen Rollhügel, an Sehnen und Schleimbeuteln, nicht im Gelenk. Das wird anders behandelt als eine Arthrose.' },
+      { q: 'Wie viele Sitzungen sind realistisch?', a: 'Sechs bis acht Sitzungen über etwa sechs Wochen, gemessen an Gehstrecke, Treppensteigen und Schmerzmittelbedarf.' },
+      { q: 'Akupunktur oder Physiotherapie bei Hüftschmerzen?', a: 'Bewegung und Kräftigung sind die Basis, dafür ist Physiotherapie da. Akupunktur kann parallel den Schmerz dämpfen.' },
+    ],
+    related: [
+      { href: '/beschwerden/hueftschmerzen/', label: 'Hüftschmerzen', cat: 'Beschwerde' },
+      { href: '/beschwerden/koxarthrose/', label: 'Koxarthrose (Hüftarthrose)', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-knieschmerzen/', label: 'Akupunktur bei Knieschmerzen', cat: 'Studienlage' },
+      { href: '/gesundheitsbibliothek/koerper/huefte-bein-fuss/', label: 'Hüfte, Bein & Fuss', cat: 'Körperregion' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
 ];
 
 // Alle Treatment-Decision-Artikel der Serie (inkl. Alt-Artikel in wissen.ts):

@@ -3,8 +3,8 @@
     "src/data/home-body.html": "45d860898c1c8188"
   },
   "page:zurich": {
-    "src/pages/akupunktur-tcm-zuerich.astro": "2a761189579fc3b4",
-    "src/data/akupunktur-tcm-zuerich-body.html": "491145534f2039de",
+    "src/pages/akupunktur-tcm-zuerich.astro": "2cab5d569205ef39",
+    "src/data/akupunktur-tcm-zuerich-body.html": "cff0ce2c20b57505",
     "src/data/zuerich-termin.ts": "e39ce4e4ed809871"
   },
   "hub:locations": {
@@ -27,7 +27,7 @@
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
-    "src/pages/akupunktur-in-der-naehe.astro": "78e47238a3ce07f8",
+    "src/pages/akupunktur-in-der-naehe.astro": "d755fe876b7a3461",
     "src/data/locations.ts": "c5b19a77624b2fcc"
   },
   "location:kreuzlingen": {
@@ -39,7 +39,7 @@
   },
   "location:frauenfeld": {
     "src/data/locations.ts#clinics.frauenfeld": "9e2e8c5d720bd94c",
-    "src/data/standorte.ts#standorte.frauenfeld": "8dfa259ca66fdc06"
+    "src/data/standorte.ts#standorte.frauenfeld": "917db6d6c925cd41"
   },
   "location:winterthur-muenzgasse": {
     "src/data/locations.ts#clinics.winterthur-muenzgasse": "ecebab1207b47461",
@@ -47,7 +47,7 @@
   },
   "location:winterthur-marktgasse": {
     "src/data/locations.ts#clinics.winterthur-marktgasse": "91285a3dfab360c1",
-    "src/data/standorte.ts#standorte.winterthur-marktgasse": "068712ff29e861e6"
+    "src/data/standorte.ts#standorte.winterthur-marktgasse": "29b6225ecb8be5e5"
   },
   "location:volketswil": {
     "src/data/locations.ts#clinics.volketswil": "9f102b6ba7c54055",
@@ -59,11 +59,11 @@
   },
   "location:zuerich-oerlikon": {
     "src/data/locations.ts#clinics.zuerich-oerlikon": "881e6ae157c76247",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "011c9210c1bff3fa"
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "b12f919dc930f961"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
-    "src/data/standorte.ts#standorte.basel": "b39216375bdb5e7b"
+    "src/data/standorte.ts#standorte.basel": "a3d1edf662a4d828"
   },
   "location:luzern": {
     "src/data/locations.ts#clinics.luzern": "bb4c27b3123c64e2"
@@ -83,13 +83,13 @@
     "src/data/standorte.ts#standorte.wil": "de92951cde129255"
   },
   "therapy:acupuncture": {
-    "src/data/therapie-leaves/akupunktur.html": "07615c43e90abbfd"
+    "src/data/therapie-leaves/akupunktur.html": "f6ad9f2557bfaf07"
   },
   "therapy:cupping": {
     "src/data/therapie-leaves/schroepfen.html": "b18b2807e198d90e"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "06581b27ed1b6de6"
+    "src/data/therapie-leaves/tuina.html": "b10777b4beadd89a"
   },
   "therapy:chinese-herbal-medicine": {
     "src/data/therapie-leaves/kraeutertherapie.html": "248ab4d58d317d91"
