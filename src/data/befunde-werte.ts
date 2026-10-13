@@ -89,7 +89,7 @@ export const PUBLISHED_LABORWERTE_2026_10: string | undefined = '2026-10-13';
 // Welle 2 (redaktionelles Paket 13.10.2026, 12 Seiten: 8 Befunde + 4 Untersuchungen).
 // RELEASE-SCHRITT: beim Go-Live auf das reale Veröffentlichungsdatum setzen ('YYYY-MM-DD');
 // erst dann erscheinen Article-/MedicalWebPage-Daten. Nur Publikation, keine fachliche Prüfung.
-export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = undefined;
+export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = '2026-10-13';
 
 export const befundeWerte: BefundWert[] = [
   {
