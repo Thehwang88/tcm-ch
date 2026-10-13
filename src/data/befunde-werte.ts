@@ -84,7 +84,7 @@ export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse
 // RELEASE-SCHRITT: beim Go-Live auf das reale Veröffentlichungsdatum setzen
 // (Format 'YYYY-MM-DD'), erst dann erscheint das bestehende Article-Schema.
 // Keine Reviewer-Angabe, kein Review-Datum: das Datum ist nur die Publikation.
-export const PUBLISHED_LABORWERTE_2026_10: string | undefined = undefined;
+export const PUBLISHED_LABORWERTE_2026_10: string | undefined = '2026-10-13';
 
 export const befundeWerte: BefundWert[] = [
   {
