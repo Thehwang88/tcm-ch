@@ -12,6 +12,7 @@ import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
+import { first30State } from '../data/first30';
 
 const title = 'TCM & Akupunktur Schweiz | Medizinische TCM | TCM.ch';
 const description =
@@ -39,9 +40,24 @@ const homeSelect = (inner: string) => [...inner.matchAll(/<option value="([^"]+)
     const opts = expandStandort(c.name);
     return opts.map((o, i) => `<option value="${i === opts.length - 1 ? id : `${id}-${i}`}">${o.label}</option>`);
   }).join('');
-const homeHtml = homeBody
+const homeHtmlBase = homeBody
   .replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b)
   .replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+
+// Nur während der real geöffneten St.-Gallen-Edition: dezenter Hinweis IN der bestehenden
+// Standort-Karte. Kein nationales Hero-Banner, kein zweites Promo-Element und keine
+// Werbeaussage für andere Standorte. Wenn geschlossen/ausverkauft ohne Warteliste, unverändert.
+const homeFirst30 = first30State();
+const SG_HOME_CARD = /<a href="\/standorte\/st-gallen\/" class="city-card location-card" onclick="event\.preventDefault\(\); nav\('standort','st-gallen'\)" style="cursor:pointer"><span class="location-plz">9000<\/span><div class="location-city">St\. Gallen<\/div><div class="location-desc">Ostschweiz<\/div><span class="location-link">Termin prüfen →<\/span><\/a>/g;
+if (homeFirst30.showCampaign && [...homeHtmlBase.matchAll(SG_HOME_CARD)].length !== 1) throw new Error('index.astro: St.-Gallen-Standortkarte für FIRST 30 nicht eindeutig');
+const homeHtml = homeFirst30.showCampaign
+  ? homeHtmlBase.replace(SG_HOME_CARD, (card) => card
+    // Direkt zum Kampagnen-Hero statt durch die alte nav()-Weiterleitung ohne Hash.
+    .replace('href="/standorte/st-gallen/"', 'href="/standorte/st-gallen/#first30"')
+    .replace(' onclick="event.preventDefault(); nav(\'standort\',\'st-gallen\')"', '')
+    .replace('<span class="location-link">Termin prüfen →</span>',
+      `<span class="home-first30-tag"><span aria-hidden="true">🎁</span> ${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span><span class="location-link">${homeFirst30.soldOut ? 'Zur Warteliste →' : 'Geschenk ansehen →'}</span>`))
+  : homeHtmlBase;
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -58,7 +74,13 @@ const homeHtml = homeBody
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
     /* restore the SPA #app{padding-top:68px} offset so the full-bleed hero clears the fixed 68px header */
-    #home-content{padding-top:68px}</style>
+    #home-content{padding-top:68px}
+    /* Das Geschenk erscheint nur auf der SG-Standortkarte, nicht als nationaler Claim. */
+    #home-content .home-first30-tag{display:inline-flex;align-items:center;gap:6px;max-width:100%;margin-top:9px;padding:5px 9px;
+      background:#F0FBF4;color:#14532D;border:1px solid rgba(20,83,45,.24);border-radius:10px;
+      font-family:var(--font-sans);font-size:12px;font-weight:750;line-height:1.35;white-space:normal;text-align:left}
+    #home-content .home-first30-tag span[aria-hidden]{flex-shrink:0}
+    </style>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

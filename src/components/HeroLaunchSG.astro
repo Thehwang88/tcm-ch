@@ -26,9 +26,9 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
 <section class="lsr-hero f30-hero" id="first30" data-first30={st.soldOut ? 'soldout' : st.reserved == null ? 'max-only' : 'verified'} data-first30-preview={st.preview ? '1' : undefined}>
   <div class="lsr-inner f30-inner">
     <div class="lsr-left f30-intro">
-      <span class="lsr-eyebrow f30-pill">FIRST 30 · Vorweihnachts-Edition</span>
-      <h1 class="lsr-h1 f30-h1">Weihnachten kommt dieses Jahr früher. <span class="f30-h2"><em class="lsr-accent">30 Minuten TCM in St. Gallen geschenkt.</em></span></h1>
-      <p class="lsr-lead f30-lead">Entdecke TCM ganz persönlich – 30 Minuten für dich, kostenlos und unverbindlich.</p>
+      <span class="lsr-eyebrow f30-pill">TCM.ch Klinik · St. Gallen · FIRST 30</span>
+      <h1 class="lsr-h1 f30-h1"><span class="f30-h1-service">Akupunktur &amp; TCM in St. Gallen</span> Weihnachten kommt dieses Jahr früher. <span class="f30-h2"><em class="lsr-accent">30 Minuten TCM in St. Gallen geschenkt.</em></span></h1>
+      <p class="lsr-lead f30-lead">Entdecke TCM bei anerkannten Therapeut:innen am Oberen Graben 22 – kostenlos und unverbindlich.</p>
     </div>
 
     <div class="f30-right">
@@ -144,6 +144,10 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
   .f30-right { grid-area: card; align-self: center; padding: clamp(32px, 4vw, 56px) clamp(24px, 4.5vw, 72px) clamp(32px, 4vw, 56px) 0; }
   .f30-hero .lsr-eyebrow { margin-bottom: 12px; }
   .f30-h1 { margin-bottom: 14px; }
+  /* Sichtbarer Keyword-Kontext IM einzigen H1, bewusst typografisch untergeordnet.
+     Ads-Besucher erkennen Praxis, Akupunktur, Marke und Standort, ohne die Kampagnenheadline zu verdrängen. */
+  .f30-h1-service { display: block; font-size: clamp(13px, 1.25vw, 16px); font-weight: 750;
+    line-height: 1.4; letter-spacing: .01em; color: var(--f30-pine); margin-bottom: 8px; }
   .f30-h2 { display: block; font-size: clamp(20px, 2vw, 28px); font-weight: 700; letter-spacing: -.005em; line-height: 1.2; margin-top: 8px; }
   .f30-h2 em { font-weight: 700; }
   .f30-lead { margin-bottom: 0; }
@@ -242,6 +246,7 @@ const CLOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
     .f30-more { padding: 16px 16px 26px; }
     .f30-card { max-width: 560px; }
     .f30-h1 { font-size: clamp(30px, 8.2vw, 40px); margin-bottom: 8px; }
+    .f30-h1-service { font-size: 13px; margin-bottom: 5px; }
     .f30-h2 { font-size: 20px; margin-top: 6px; }
     .f30-lead { font-size: 15.5px; }
   }
