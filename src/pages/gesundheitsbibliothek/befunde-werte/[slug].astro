@@ -134,6 +134,8 @@ if (isReal && b.publishedAt) {
             </aside>
           )}
 
+          {b.faqHtml && <div class="kb-body faq" set:html={b.faqHtml} />}
+
           <div class="hinweis">Ein Labor- oder Bildbefund ist für sich allein keine Diagnose. Die Einordnung hier ersetzt keine ärztliche Beurteilung.</div>
 
           {b.sources && b.sources.length > 0 && (

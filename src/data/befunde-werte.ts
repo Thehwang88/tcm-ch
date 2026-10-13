@@ -63,6 +63,7 @@ export interface BefundWert {
   notProofHtml?: string;      // Was der Befund NICHT beweist
   redFlagsHtml?: string;      // Wann eine (dringliche) Abklärung sinnvoll ist
   followUpHtml?: string;      // Welche weiteren Untersuchungen infrage kommen
+  faqHtml?: string;           // Sichtbare Häufige Fragen (reines HTML, kein FAQ-Schema)
   sources?: { label: string; url?: string }[];
   publishedAt?: string;
   updatedAt?: string;
@@ -80,6 +81,9 @@ export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse
 
 // Laborwerte-Welle 13.10.2026 (redaktionelles Paket, 8 Leaves): Publikationsdatum
 // erst bei tatsächlicher Veröffentlichung setzen (ein Wert für alle acht Einträge).
+// RELEASE-SCHRITT: beim Go-Live auf das reale Veröffentlichungsdatum setzen
+// (Format 'YYYY-MM-DD'), erst dann erscheint das bestehende Article-Schema.
+// Keine Reviewer-Angabe, kein Review-Datum: das Datum ist nur die Publikation.
 export const PUBLISHED_LABORWERTE_2026_10: string | undefined = undefined;
 
 export const befundeWerte: BefundWert[] = [
@@ -2427,6 +2431,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Ein auffälliger Wert ist deshalb Anlass für ein Gespräch, kein abschliessendes Urteil über deinen <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a>.</p>`,
     redFlagsHtml: `<p>Ein niedriger AMH-Wert allein ist kein Notfall. Wenn deine Periode länger ausbleibt, deutlich unregelmässig wird oder du bei unerfülltem Kinderwunsch einen auffälligen Befund erhalten hast, vereinbare eine gynäkologische Abklärung. Warte damit nicht auf einen vermeintlich besseren Wert durch Nahrungsergänzungsmittel.</p>`,
     followUpHtml: `<p>Nimm den vollständigen Laborbericht mit Einheit und Referenzbereich mit. Frage, welche konkrete Entscheidung der Wert unterstützen soll. Je nach Fragestellung werden Ultraschall, Zyklusgeschichte und weitere Werte ergänzt. Der <a href="/gesundheitsbibliothek/befunde-werte/fsh-wert/">FSH-Wert</a> beantwortet eine verwandte, aber andere Frage. Welche Untersuchungen grundsätzlich infrage kommen, erklärt die Seite zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Kann ich mit niedrigem AMH schwanger werden?</strong></p>
+<p>Ja, ein niedriger AMH-Wert schliesst eine natürliche Schwangerschaft nicht aus. Er erlaubt allein keine zuverlässige Aussage über deine persönliche Chance.</p>
+<p><strong>Muss AMH an einem bestimmten Zyklustag gemessen werden?</strong></p>
+<p>Für AMH ist der Zyklustag meist weniger entscheidend als für FSH. Halte dich trotzdem an die Vorgaben der untersuchenden Praxis.</p>
+<p><strong>Ist ein hoher AMH-Wert immer gut?</strong></p>
+<p>Nein. Die Bedeutung hängt von der Fragestellung ab. Ein höherer Wert kann auch im Zusammenhang mit PCOS stehen.</p>`,
     sources: [
       { label: 'ASRM, Testing and interpreting measures of ovarian reserve, 2020', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/testing-and-interpreting-measures-of-ovarian-reserve-a-committee-opinion-2020/' },
       { label: 'MedlinePlus, Anti-Müllerian Hormone Test', url: 'https://medlineplus.gov/lab-tests/anti-mullerian-hormone-test/' },
@@ -2471,6 +2482,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Manchmal trägt sogenanntes Makroprolaktin zum Messwert bei. Diese Form wirkt biologisch weniger stark. Ob eine entsprechende Laborprüfung sinnvoll ist, entscheidet die ärztliche Abklärung.</p>`,
     redFlagsHtml: `<p>Bei anhaltendem Milchfluss, ausbleibender Periode oder wiederholt erhöhtem Prolaktin ist eine ärztliche Besprechung sinnvoll. Plötzlich starke Kopfschmerzen zusammen mit neuen Sehproblemen gehören sofort medizinisch beurteilt. Bei schweren akuten Beschwerden rufe 144.</p>`,
     followUpHtml: `<p>Die Abklärung kann eine erneute Prolaktinmessung, einen Schwangerschaftstest, Schilddrüsen- und Nierenwerte umfassen. Bei begründetem Verdacht folgt gegebenenfalls ein <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>. Welche Hormone für welche Fragestellung geprüft werden, erklärt der <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>. Die weitere Behandlung richtet sich nach der Ursache.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Kann Stress Prolaktin erhöhen?</strong></p>
+<p>Ja. Auch die Situation bei der Blutentnahme kann den Wert beeinflussen. Eine anhaltende Erhöhung sollte trotzdem nicht ungeprüft auf Stress geschoben werden.</p>
+<p><strong>Bedeutet erhöhtes Prolaktin einen Tumor?</strong></p>
+<p>Nein. Medikamente, Schwangerschaft und andere Ursachen kommen ebenfalls infrage.</p>
+<p><strong>Kann ich mein Medikament vor der Kontrolle weglassen?</strong></p>
+<p>Nicht eigenständig. Besprich die Einnahme und mögliche Änderungen mit der verschreibenden Praxis.</p>`,
     sources: [
       { label: 'Endocrine Society, Hyperprolactinemia', url: 'https://www.endocrine.org/patient-engagement/endocrine-library/hyperprolactinemia' },
       { label: 'MedlinePlus, Prolactin Levels', url: 'https://medlineplus.gov/lab-tests/prolactin-levels/' },
@@ -2515,6 +2533,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Wenn die Reserve eingeschätzt werden soll, können der <a href="/gesundheitsbibliothek/befunde-werte/amh-wert/">AMH-Wert</a> und Ultraschallbefunde ergänzende Informationen liefern. Diese Tests messen unterschiedliche Aspekte.</p>`,
     redFlagsHtml: `<p>Wenn deine Periode länger ausbleibt oder sich deutlich verändert, lass die Ursache gynäkologisch abklären. Ein auffälliger FSH-Wert sollte besonders dann besprochen werden, wenn er nicht zu Alter und Zyklusverlauf passt. Der Laborwert allein ist kein Notfall.</p>`,
     followUpHtml: `<p>Frage zuerst, weshalb FSH bestimmt wurde und ob die Blutentnahme zum vorgesehenen Zeitpunkt stattgefunden hat. Je nach Situation werden weitere Hormone, ein Schwangerschaftstest oder ein Ultraschall ergänzt. Die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> hilft, einzelne Messungen von einer gezielten Abklärung zu unterscheiden.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>An welchem Zyklustag wird FSH gemessen?</strong></p>
+<p>Das hängt von der Fragestellung ab. Für die Reservebeurteilung wird häufig die frühe Zyklusphase gewählt. Die untersuchende Praxis legt den Zeitpunkt fest.</p>
+<p><strong>Heisst ein hoher FSH-Wert, dass ich nicht schwanger werden kann?</strong></p>
+<p>Nein. Der Wert allein erlaubt diese Schlussfolgerung nicht.</p>
+<p><strong>Wird FSH auch bei Männern untersucht?</strong></p>
+<p>Ja. Es kann bei der Abklärung der Hodenfunktion und von Fruchtbarkeitsproblemen eine Rolle spielen.</p>`,
     sources: [
       { label: 'MedlinePlus, Follicle-Stimulating Hormone Levels Test', url: 'https://medlineplus.gov/lab-tests/follicle-stimulating-hormone-fsh-levels-test/' },
       { label: 'ASRM, Fertility evaluation of infertile women, 2021', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-evaluation-of-infertile-women-a-committee-opinion-2021/' },
@@ -2559,6 +2584,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Aus einem positiven Test lässt sich nicht ableiten, dass Jod, Selen oder andere Präparate für dich nötig sind. Eine Nahrungsergänzung sollte nicht allein mit dem Ziel begonnen werden, den Antikörperwert zu senken.</p>`,
     redFlagsHtml: `<p>Ein erhöhter Antikörperwert ohne akute Beschwerden ist normalerweise kein Notfall. Besprich den Befund mit deiner Hausarzt- oder endokrinologischen Praxis. Bei Kinderwunsch oder Schwangerschaft gehört der Schilddrüsenbefund zeitnah in die gynäkologische beziehungsweise ärztliche Betreuung.</p>`,
     followUpHtml: `<p>Nimm frühere TSH- und fT4-Werte mit. Frage, ob die Funktion derzeit normal ist und wann sie erneut kontrolliert werden soll. Ein Ultraschall kann je nach Fragestellung ergänzend sinnvoll sein, ist aber nicht allein wegen jeder positiven Antikörpermessung erforderlich. Die Seite zur <a href="/beschwerden/schilddruesenunterfunktion/">Schilddrüsenunterfunktion</a> erklärt den Unterschied zwischen Autoimmunbefund und Hormonmangel.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Brauche ich bei hohen TPO-Antikörpern Schilddrüsenhormone?</strong></p>
+<p>Nicht allein aufgrund der Antikörper. Entscheidend sind die Funktionswerte und deine ärztlich beurteilte Situation.</p>
+<p><strong>Muss ich TPO-Antikörper regelmässig messen lassen?</strong></p>
+<p>Zur Verlaufskontrolle steht meist die Schilddrüsenfunktion im Vordergrund. Der Kontrollplan wird individuell festgelegt.</p>
+<p><strong>Sind TPO-Antikörper dasselbe wie TSH?</strong></p>
+<p>Nein. TPO-Antikörper betreffen Autoimmunität, TSH die hormonelle Steuerung.</p>`,
     sources: [
       { label: 'American Thyroid Association, Hashimoto’s Thyroiditis', url: 'https://www.thyroid.org/hashimotos-thyroiditis/' },
       { label: 'MedlinePlus, Thyroid Antibody Tests', url: 'https://medlineplus.gov/lab-tests/thyroid-antibody-tests/' },
@@ -2602,6 +2634,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Antikörper beantworten eine andere Frage: Die Seite zu <a href="/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/">TPO-Antikörpern</a> erklärt Hinweise auf Autoimmunität. Die Kombination „TSH erhöht, fT4 normal“ bleibt auf der Seite <a href="/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/">TSH erhöht</a> eingeordnet.</p>`,
     redFlagsHtml: `<p>Auffällige Werte sollten mit der behandelnden Praxis besprochen werden. Bei starken akuten Beschwerden wie Brustschmerzen, ausgeprägter Atemnot oder Bewusstseinsstörungen brauchst du sofort medizinische Hilfe, unabhängig vom Laborwert.</p>`,
     followUpHtml: `<p>Vergleiche nicht nur Zahlen, sondern auch Messdatum, Einheit und Medikamenteneinnahme. Frage, ob die Werte zu deiner Situation passen und ob eine Kontrolle nötig ist. Ändere Schilddrüsenmedikamente nicht selbst anhand eines Online-Vergleichs. Welche Tests für welche Frage eingesetzt werden, zeigt die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Was bedeutet das „f“ bei fT3 und fT4?</strong></p>
+<p>Es bezeichnet den freien, nicht an Transporteiweisse gebundenen Anteil im Blut.</p>
+<p><strong>Muss fT3 immer mitbestimmt werden?</strong></p>
+<p>Nein. Ob der Wert zusätzliche Information bringt, hängt von der Fragestellung ab.</p>
+<p><strong>Sind die Referenzwerte in jedem Labor gleich?</strong></p>
+<p>Nein. Methode und Einheit können sich unterscheiden. Massgeblich ist der Bereich auf deinem Laborbericht.</p>`,
     sources: [
       { label: 'NIDDK, Thyroid Tests', url: 'https://www.niddk.nih.gov/health-information/diagnostic-tests/thyroid' },
       { label: 'American Thyroid Association, Thyroid Function Tests', url: 'https://www.thyroid.org/thyroid-function-tests/' },
@@ -2649,6 +2688,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Beginne oder erhöhe Eisenpräparate nicht nur aufgrund dieses Werts. Bei unklaren Befunden kann zusätzliche Eisenzufuhr unpassend sein.</p>`,
     redFlagsHtml: `<p>Ein auffälliger Laborwert ohne akute Beschwerden wird mit der untersuchenden Praxis besprochen. Deutliche Atemnot, Brustschmerzen, Ohnmacht oder starke Blutungen gehören sofort medizinisch beurteilt. Bei schweren akuten Beschwerden rufe 144.</p>`,
     followUpHtml: `<p>Nimm Ferritin, Blutbild, frühere Messungen und deine Präparateliste mit. Je nach Befund werden eine Kontrolle, <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> oder weitere Untersuchungen ergänzt. Frage ausdrücklich, ob zu wenig gespeichertes Eisen, eingeschränkte Verfügbarkeit oder eine mögliche Überladung abgeklärt werden soll.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist Transferrinsättigung dasselbe wie Ferritin?</strong></p>
+<p>Nein. Die Sättigung betrifft den Eisentransport, Ferritin vor allem die Speicherbeurteilung und den Entzündungskontext.</p>
+<p><strong>Kann die Sättigung niedrig sein, obwohl Ferritin normal ist?</strong></p>
+<p>Ja. Besonders bei Entzündung müssen beide Werte im Zusammenhang betrachtet werden.</p>
+<p><strong>Heisst ein hoher Wert, dass ich Hämochromatose habe?</strong></p>
+<p>Nein. Wiederholt erhöhte Werte können eine gezielte Abklärung begründen, stellen allein aber keine Diagnose.</p>`,
     sources: [
       { label: 'Mayo Clinic Laboratories, Iron and Total Iron-Binding Capacity', url: 'https://www.mayocliniclabs.com/test-catalog/overview/621385' },
       { label: 'University of Rochester Medical Center, Transferrin', url: 'https://www.urmc.rochester.edu/encyclopedia/content?contentid=transferrin&contenttypeid=167' },
@@ -2693,6 +2739,13 @@ export const befundeWerte: BefundWert[] = [
 <p>Für PCOS ist wichtig: Die internationale Leitlinie empfiehlt die routinemässige Messung mit den klinisch verfügbaren Insulintests nicht zur Beurteilung von Insulinresistenz. Ein HOMA-Wert ist deshalb keine Pflichtuntersuchung für jede Frau mit PCOS.</p>`,
     redFlagsHtml: `<p>Der Index allein ist kein Notfall. Wenn du jedoch starken Durst und häufiges Wasserlassen zusammen mit deutlicher Schwäche bemerkst, solltest du zeitnah ärztlich abgeklärt werden. Bei Erbrechen, Bewusstseinsveränderung oder schwerer akuter Verschlechterung brauchst du sofort medizinische Hilfe.</p>`,
     followUpHtml: `<p>Frage, weshalb HOMA bestimmt wurde und ob das Ergebnis eine konkrete medizinische Entscheidung verändert. Für die Beurteilung des Zuckerstoffwechsels kommen je nach Situation <a href="/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/">Blutzucker</a>, <a href="/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/">HbA1c</a> oder ein <a href="/gesundheitsbibliothek/untersuchungen/ogtt/">oGTT</a> infrage. Diese Untersuchungen beantworten andere Fragen und werden nicht durch HOMA ersetzt.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ab welchem HOMA-Wert habe ich Insulinresistenz?</strong></p>
+<p>Es gibt keine für alle Methoden und Menschen gültige Diagnosegrenze. Einordnung und Konsequenzen gehören in die Befundbesprechung.</p>
+<p><strong>Ist ein hoher HOMA-Index gleichbedeutend mit Diabetes?</strong></p>
+<p>Nein. Die Diabetesdiagnostik beruht auf dafür vorgesehenen Glukose- beziehungsweise HbA1c-Untersuchungen.</p>
+<p><strong>Braucht jede Person mit PCOS einen HOMA-Test?</strong></p>
+<p>Nein. Die internationale PCOS-Leitlinie empfiehlt solche routinemässigen Insulinmessungen nicht.</p>`,
     sources: [
       { label: 'Matthews et al., Homeostasis model assessment, 1985', url: 'https://doi.org/10.1007/BF00280883' },
       { label: 'University of Oxford, HOMA2-Modell und vorgesehene Anwendung', url: 'https://process.innovation.ox.ac.uk/software/p/2112/homa2-calculator/1' },
@@ -2740,6 +2793,13 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Eine neu deutlich niedrigere eGFR oder eine rasche Verschlechterung sollte zeitnah ärztlich besprochen werden. Bei deutlich weniger Urin zusammen mit schwerem Krankheitsgefühl, ausgeprägter Atemnot oder Bewusstseinsstörungen brauchst du sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
     followUpHtml: `<p>Nimm frühere Kreatinin- und eGFR-Werte sowie eine Liste deiner Medikamente und Präparate mit. Frage, ob eine Kontrollmessung, eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> oder weitere Diagnostik nötig ist.</p>
 <p>Ändere Medikamente oder Trinkmengen nicht eigenständig mit dem Ziel, eine Laborzahl zu verbessern. Die passende Massnahme richtet sich nach der Ursache und deiner gesundheitlichen Situation.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist eGFR ein direkt gemessener Wert?</strong></p>
+<p>Meist nicht. Das „e“ steht für estimated, also geschätzt. Die Berechnung verwendet Laborwerte und weitere Angaben.</p>
+<p><strong>Bedeutet eine eGFR unter 90 automatisch eine Nierenerkrankung?</strong></p>
+<p>Nein. Die Zahl muss mit Verlauf, Alter und weiteren Befunden beurteilt werden.</p>
+<p><strong>Soll ich bei einem niedrigen Wert einfach mehr trinken?</strong></p>
+<p>Nicht pauschal. Die passende Trinkmenge hängt von deiner Situation ab. Lass Ursache und Massnahmen ärztlich klären.</p>`,
     sources: [
       { label: 'KDIGO, CKD Guideline Executive Summary, 2024', url: 'https://kdigo.org/wp-content/uploads/2017/02/KDIGO-2024-CKD-Guideline-Executive-Summary.pdf' },
       { label: 'National Kidney Foundation, Estimated GFR', url: 'https://www.kidney.org/kidney-topics/estimated-glomerular-filtration-rate-egfr' },
