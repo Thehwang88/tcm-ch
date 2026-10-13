@@ -11,9 +11,9 @@ export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
 
 const url = 'https://tcm.ch/standorte/zuerich-city/';
-const title = 'TCM & Akupunktur Zürich City & Zentrum | TCM.ch';
+const title = 'TCM & Akupunktur Zürich City: Standort im Zentrum in Vorbereitung | TCM.ch';
 const description =
-  'Zürich City: neuer TCM.ch Standort im Zentrum in Vorbereitung, noch ohne Adresse. Termine jetzt in Höngg und Oerlikon (Praxis Hwang) über TCM.ch anfragen.';
+  'Zürich City: Der TCM.ch Standort im Zürcher Zentrum ist in Vorbereitung, noch ohne Adresse und Eröffnungsdatum. Akupunktur und TCM gibt es jetzt in Höngg und Oerlikon (Praxis Hwang); Termin über TCM.ch anfragen.';
 
 const faqs = [
   {
@@ -26,7 +26,15 @@ const faqs = [
   },
   {
     q: 'Zahlt die Krankenkasse die Behandlung?',
-    a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin. Bei den meisten Kassen sind 80 bis 100 Prozent gedeckt; deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.',
+    a: 'Akupunktur bei EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Anteil und Jahresmaximum stehen in deiner Police; deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.',
+  },
+  {
+    q: 'Was heisst «in Vorbereitung» konkret?',
+    a: 'Es gibt für Zürich City noch keine bestätigte Adresse, kein Eröffnungsdatum und kein Team, das wir nennen könnten. Diese Seite verspricht deshalb nichts, was es noch nicht gibt. Sobald Adresse und Eröffnung feststehen, ergänzen wir sie hier; wer sich jetzt per Formular meldet, erfährt es als Erste:r.',
+  },
+  {
+    q: 'Welche Zürcher Praxis ist vom Zentrum aus am schnellsten erreichbar?',
+    a: 'Vom Hauptbahnhof aus ist Oerlikon mit der S-Bahn in wenigen Minuten erreichbar, Höngg mit Tram und Bus. Sag uns, wo in der Stadt du bist und wann es dir passt; wir schlagen dir die Praxis mit dem kürzesten Weg oder dem nächsten freien Termin vor.',
   },
 ];
 
@@ -74,7 +82,7 @@ const schema = [
         </div>
         <div class="lsr-trust">
           <div><span class="lsr-check">✓</span> EMR- und ASCA-anerkannt</div>
-          <div><span class="lsr-check">✓</span> Krankenkasse 80 bis 100%</div>
+          <div><span class="lsr-check">✓</span> Zusatzversicherung je nach Police</div>
           <div><span class="lsr-check">✓</span> Keine Überweisung nötig</div>
         </div>
       </div>
@@ -111,6 +119,9 @@ const schema = [
         <a href="/akupunktur-tcm-zuerich/" class="cl-chip">TCM Zürich</a>
         <a href="/standorte/zuerich/kosten/" class="cl-chip">Kosten &amp; Krankenkasse Zürich</a>
         <a href="/therapien/akupunktur/" class="cl-chip">Akupunktur</a>
+        <a href="/standorte/zuerich-oerlikon/" class="cl-chip">TCM Oerlikon</a>
+        <a href="/standorte/zuerich-hoengg/" class="cl-chip">TCM Höngg</a>
+        <a href="/akupunktur-in-der-naehe/" class="cl-chip">Akupunktur in der Nähe</a>
       </div>
     </div>
   </section>
