@@ -68,7 +68,7 @@ if (isReal && b.publishedAt) {
   });
 }
 ---
-<LayoutDe title={`${b.title} | TCM.ch`} description={b.deck} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
+<LayoutDe title={`${b.metaTitle ?? b.title} | TCM.ch`} description={b.metaDescription ?? b.deck} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
@@ -133,6 +133,8 @@ if (isReal && b.publishedAt) {
               <div class="kb-body" set:html={b.integrativeContextHtml} />
             </aside>
           )}
+
+          {b.faqHtml && <div class="kb-body faq" set:html={b.faqHtml} />}
 
           <div class="hinweis">Ein Labor- oder Bildbefund ist für sich allein keine Diagnose. Die Einordnung hier ersetzt keine ärztliche Beurteilung.</div>
 
