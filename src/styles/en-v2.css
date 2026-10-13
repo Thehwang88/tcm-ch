@@ -193,6 +193,11 @@ html[lang="en"] .ev-pick__actions .ev-btn { min-height: 42px; padding: 0 16px; f
 html[lang="en"] .ev-pick__link { font-size: 14px; font-weight: 700; color: var(--brand-black); text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 2px; text-underline-offset: 3px; align-self: center; }
 html[lang="en"] .ev-offer { background: var(--brand-tint); border-top: 1px solid rgba(2,11,16,.08); border-bottom: 1px solid rgba(2,11,16,.08); }
 html[lang="en"] .ev-offer__img { width: 100%; height: 380px; object-fit: cover; object-position: center 25%; border-radius: 16px; display: block; margin: 0 0 32px; }
+html[lang="en"] .ev-brand { display: grid; grid-template-columns: minmax(0,400px) minmax(0,1fr); gap: 40px; align-items: center; margin: 0 0 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(2,11,16,.08); }
+html[lang="en"] .ev-brand__media img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; object-position: center 32%; border-radius: 16px; }
+html[lang="en"] .ev-brand__title { font-size: clamp(26px,3vw,38px); line-height: 1.1; letter-spacing: var(--tracking-heading); font-weight: 800; color: var(--brand-black); margin: 0 0 12px; }
+html[lang="en"] .ev-brand__title em { font-style: italic; font-family: 'Nunito', sans-serif; color: var(--brand-ink); }
+html[lang="en"] .ev-brand__text { font-size: 17px; line-height: 1.7; color: rgba(2,11,16,.74); margin: 0; max-width: 56ch; }
 html[lang="en"] .ev-center { text-align: center; max-width: 720px; margin: 0 auto 36px; }
 html[lang="en"] .ev-center .ev-label { justify-content: center; }
 html[lang="en"] .ev-center .ev-h2 { margin-left: auto; margin-right: auto; }
@@ -226,6 +231,7 @@ html[lang="en"] .ev-note-box strong { color: var(--brand-black); }
 html[lang="en"] .ev-disclaimer { font-size: 14px; color: rgba(2,11,16,.62); border-top: 1px solid rgba(2,11,16,.1); padding-top: 18px; margin-top: 28px; }
 @media (max-width: 1024px) { html[lang="en"] .ev-kk, html[lang="en"] .ev-steps--3 { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { html[lang="en"] .ev-offer__img { height: 240px; } }
+@media (max-width: 768px) { html[lang="en"] .ev-brand { grid-template-columns: 1fr; gap: 22px; } html[lang="en"] .ev-brand__media img { aspect-ratio: 16/10; } }
 /* Long <option> labels must never widen the form (select intrinsic width = longest option) */
 html[lang="en"] .ev-form, html[lang="en"] .ev-field { min-width: 0; }
 html[lang="en"] .ev-field select { max-width: 100%; min-width: 0; }
