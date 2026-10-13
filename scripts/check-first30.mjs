@@ -14,6 +14,7 @@ const r = await build({ stdin: { contents: `export * from './src/data/first30'; 
 const m = await import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64'));
 const { FIRST30 } = m; const st = m.first30State(); const cta = m.campaignCtaFor('st-gallen');
 const sg = readFileSync('dist/standorte/st-gallen/index.html', 'utf8');
+const home = readFileSync('dist/index.html', 'utf8');
 const text = (s) => s.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
 const vis = text(sg);
 
@@ -120,6 +121,15 @@ ok(meta(sg, /rel="canonical" href="([^"]*)"/) === 'https://tcm.ch/standorte/st-g
 ok(/"@type":\s*"MedicalClinic"/.test(sg) && (!mainSg || JSON.stringify((sg.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || [])) === JSON.stringify((mainSg.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || []))), 'JSON-LD (MedicalClinic etc.) identisch zum main-Build');
 const h1 = text(meta(sg, /<h1[^>]*>([\s\S]*?)<\/h1>/) || '');
 ok(/St\. Gallen/.test(h1) && /TCM/.test(h1), `H1 trägt Ort und Fach: "${h1}"`);
+ok(/Akupunktur &amp; TCM in St\. Gallen/.test(sg) && /TCM\.ch Klinik · St\. Gallen · FIRST 30/.test(vis)
+   && /Weihnachten kommt dieses Jahr früher\./.test(h1),
+   'H1 und Hero tragen sichtbar Klinik/TCM.ch, Akupunktur, St. Gallen UND die unveränderte Weihnachtsheadline');
+ok((home.match(/class="home-first30-tag"/g) ?? []).length === 1
+   && /href="\/standorte\/st-gallen\/#first30"/.test(home)
+   && !/href="\/standorte\/st-gallen\/#first30"[^>]*onclick=/.test(home)
+   && (st.soldOut ? /FIRST 30 · Warteliste/.test(home) && /Zur Warteliste →/.test(home)
+                  : /FIRST 30 · 30 Min\. geschenkt/.test(home) && /Geschenk ansehen →/.test(home)),
+   'Homepage: EIN dezenter, verlinkter FIRST-30-Hinweis NUR bei St. Gallen; bei 30/30 Warteliste statt Geschenkversprechen');
 ok((sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine H1');
 ok(vis.includes('Ja, ich will mein Geschenk!') && vis.includes('Ja, ich möchte mein Geschenk!') && vis.includes('30 Minuten · CHF 0.–') && !/Du zahlst CHF 0/.test(vis) && vis.includes('Weihnachten kommt dieses Jahr früher.') && vis.includes('30 Minuten TCM in St. Gallen geschenkt.') && !/Winter Gift Edition|Herbst-Winter/.test(vis), 'finale Hero-Copy (Pre-Christmas Edition, Headline, Preis, CTA), keine alten Editionsnamen');
 const heroVis = text(sg.slice(sg.indexOf('class="lsr-hero f30-hero"'), sg.indexOf('</section>', sg.indexOf('class="lsr-hero f30-hero"'))));
@@ -137,6 +147,10 @@ ok((heroVis.match(/CHF 0\.–/g) ?? []).length === 1 && (vis.match(/CHF 0\.–/g
   const closedTitle = (sg.match(/<title>([^<]*)/) || [])[1] || '';
   ok(/St\. Gallen/.test(closedTitle) && /rel="canonical" href="https:\/\/tcm\.ch\/standorte\/st-gallen\/"/.test(sg) && /"@type":\s*"MedicalClinic"/.test(sg), 'Titel, Canonical und MedicalClinic-Schema bleiben erhalten');
   ok(cta === undefined, 'kein saisonaler CTA nach Kampagnen-Schliessung');
+  ok(!/class="home-first30-tag"/.test(home)
+     && !/href="\/standorte\/st-gallen\/#first30"/.test(home)
+     && /href="\/standorte\/st-gallen\/"/.test(home),
+     'Homepage: nach manueller Schliessung bzw. soldout-closed kein FIRST-30-Hinweis; Standortkarte regulär');
   const pagesClosed = []; const walkClosed = (dir) => { for (const n of readdirSync(dir)) { const p = join(dir, n); statSync(p).isDirectory() ? walkClosed(p) : p.endsWith('.html') && pagesClosed.push(p); } }; walkClosed('dist');
   const leaksClosed = pagesClosed.filter(p => p !== 'dist/standorte/st-gallen/index.html' && /FIRST30_WINTER_2026_SG|data-f30-float|data-f30-bottom/.test(readFileSync(p, 'utf8')));
   ok(leaksClosed.length === 0, `geschlossener Zustand: ${leaksClosed.length} fremde Seiten mit FIRST-30-Teasern`);
