@@ -86,6 +86,11 @@ export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse
 // Keine Reviewer-Angabe, kein Review-Datum: das Datum ist nur die Publikation.
 export const PUBLISHED_LABORWERTE_2026_10: string | undefined = '2026-10-13';
 
+// Welle 2 (redaktionelles Paket 13.10.2026, 12 Seiten: 8 Befunde + 4 Untersuchungen).
+// RELEASE-SCHRITT: beim Go-Live auf das reale Veröffentlichungsdatum setzen ('YYYY-MM-DD');
+// erst dann erscheinen Article-/MedicalWebPage-Daten. Nur Publikation, keine fachliche Prüfung.
+export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = undefined;
+
 export const befundeWerte: BefundWert[] = [
   {
     slug: 'crp-erhoeht',
@@ -278,7 +283,9 @@ export const befundeWerte: BefundWert[] = [
 <p>Mögliche Ursachen reichen von vorübergehenden Veränderungen bis zu Fettleber, Medikamentenwirkungen, Alkohol, Virusinfektionen, Erkrankungen der Gallenwege und anderen Lebererkrankungen. Auch intensive Muskelbelastung kann einzelne Werte beeinflussen.</p>
 <p>Welche Ursache wahrscheinlich ist, lässt sich nicht aus einem einzelnen Laborwert ableiten.</p>`,
     notProofHtml: `<p>Ein erhöhter Laborwert zeigt nicht automatisch, wie gut die Leber insgesamt funktioniert und beweist keine bestimmte Erkrankung. Umgekehrt können manche Lebererkrankungen bestehen, obwohl einzelne Werte nur gering verändert sind.</p>`,
-    followUpHtml: `<p>Je nach Befund können Werte kontrolliert, Medikamente und Risikofaktoren überprüft oder weitere Blutuntersuchungen durchgeführt werden. Bei bestimmten Konstellationen kommen Ultraschall oder andere Untersuchungen hinzu.</p>`,
+    followUpHtml: `<p>Je nach Befund können Werte kontrolliert, Medikamente und Risikofaktoren überprüft oder weitere Blutuntersuchungen durchgeführt werden. Bei bestimmten Konstellationen kommen Ultraschall oder andere Untersuchungen hinzu.</p>
+<p>Ein <a href="/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/">niedriger Albuminwert im Blut</a> ist ein anderer Befund als erhöhte Leberenzyme und braucht eine eigene Einordnung.</p>
+<p>Bei bestimmten Fragen zur Leberfunktion werden zusätzlich Gerinnungsbefunde wie <a href="/gesundheitsbibliothek/befunde-werte/inr-quick/">INR und Quick</a> eingeordnet.</p>`,
     redFlagsHtml: `<p>Neu auffällige Leberwerte sollten ärztlich eingeordnet werden. Besonders wichtig ist eine rasche Abklärung bei Gelbfärbung von Haut oder Augen, sehr dunklem Urin, starken Oberbauchschmerzen, wiederholtem Erbrechen, ausgeprägter Benommenheit oder deutlicher allgemeiner Verschlechterung.</p>`,
     integrativeContextHtml: `<p>TCM-Begriffe wie „Leber-Qi“ sind traditionelle Konzepte und nicht mit modernen Leberwerten gleichzusetzen. Aus einem erhöhten Laborwert lässt sich kein TCM-Muster ableiten. Die medizinische Abklärung des Laborbefunds steht deshalb an erster Stelle.</p>`,
     relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
@@ -785,7 +792,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Warum der Serumwert allein oft nicht reicht</h2>
 <p>Im unteren Graubereich kann das Serum-B12 normal aussehen, obwohl auf Zellebene ein Mangel besteht, und umgekehrt. Je nach Situation zieht die Ärztin deshalb Zusatzwerte wie Holotranscobalamin oder Methylmalonsäure sowie das Blutbild bei. Relevante Begleiterscheinungen können Blutarmut und Nervensymptome wie Kribbeln in Händen und Füssen oder Gangunsicherheit sein.</p>`,
     notProofHtml: `<p>Ein einzelner tiefer Serumwert beweist noch keinen behandlungsbedürftigen Mangel, und ein grenzwertig normaler Wert schliesst ihn nicht aus. Müdigkeit allein ist kein Beweis für einen B12-Mangel; die Zuordnung von Beschwerden gehört zur ärztlichen Beurteilung.</p>`,
-    followUpHtml: `<p>Üblich sind Zusatzwerte (je nach Labor Holotranscobalamin oder Methylmalonsäure), das Blutbild, die Suche nach der Ursache (Ernährung, Magen-Darm, Medikamente) und bei bestätigtem Mangel eine <strong>ärztlich festgelegte Substitution mit Verlaufskontrolle</strong>. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind Zusatzwerte (je nach Labor Holotranscobalamin oder Methylmalonsäure), das Blutbild, die Suche nach der Ursache (Ernährung, Magen-Darm, Medikamente) und bei bestätigtem Mangel eine <strong>ärztlich festgelegte Substitution mit Verlaufskontrolle</strong>. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p><a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">Homocystein erhöht</a> kann einen Mangelhinweis ergänzen, ist aber kein spezifischer B12-Nachweis.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich gehören ein tiefer B12-Wert zusammen mit Kribbeln oder Taubheit in Händen oder Füssen, Gangunsicherheit, Gedächtnisproblemen oder einer Blutarmut: Nervensymptome sollen nicht abgewartet werden, weil sie bei langem Bestehen bleiben können.</p>`,
     integrativeContextHtml: `<p>Abklärung und Substitution eines B12-Mangels gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Substitution.</p>`,
     relatedSignals: [{ href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts' }],
@@ -824,7 +832,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Warum die Begleitwerte entscheiden</h2>
 <p>Der Hb-Wert sagt, DASS weniger roter Blutfarbstoff da ist, nicht warum. Die Grösse der roten Blutkörperchen (MCV), Ferritin, B12/Folsäure, Retikulozyten und Entzündungswerte grenzen die Ursache ein. Genau deshalb wird ein tiefer Hb-Wert nie isoliert behandelt, sondern zuerst eingeordnet.</p>`,
     notProofHtml: `<p>Ein tiefer Hb-Wert beweist keinen Eisenmangel; Eisen auf Verdacht einzunehmen kann die Abklärung verschleiern und bei falscher Ursache schaden. Er beweist auch keine ernste Erkrankung: Von der Verdünnung in der Schwangerschaft bis zum banalen Infekt gibt es viele Erklärungen. Umgekehrt schliesst ein normaler Hb-Wert leere Eisenspeicher nicht aus.</p>`,
-    followUpHtml: `<p>Üblich sind das vollständige Blutbild mit Zellgrössen, <strong>Ferritin</strong> und je nach Bild B12/Folsäure, Retikulozyten und Entzündungswerte; bei unklarem Blutverlust die gezielte Quellensuche. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind das vollständige Blutbild mit Zellgrössen, <strong>Ferritin</strong> und je nach Bild B12/Folsäure, Retikulozyten und Entzündungswerte; bei unklarem Blutverlust die gezielte Quellensuche. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/retikulozyten/">Retikulozyten</a> helfen einzuschätzen, wie die Neubildung roter Blutkörperchen auf eine Blutarmut reagiert.</p>`,
     redFlagsHtml: `<p>Zeitnah medizinisch gehören ein deutlich tiefer Wert, rasche Verschlechterung, Atemnot in Ruhe, Brustschmerz, Ohnmacht, schwarzer Stuhl oder sichtbares Blut im Stuhl sowie ein tiefer Hb-Wert bei Männern und Frauen nach der Menopause ohne erkennbare Ursache: Dort gehört immer die Quelle gesucht.</p>`,
     integrativeContextHtml: `<p>Abklärung und Behandlung einer Blutarmut gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Hb-Wert nicht, und der TCM-Begriff Blut ist nicht mit dem Laborwert gleichzusetzen.</p>`,
     relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
@@ -1193,7 +1202,8 @@ export const befundeWerte: BefundWert[] = [
 <p>Ja. Bestimmte Medikamente können Kreatinin oder die Nierenfunktion beeinflussen. Medikamente sollten deshalb bei der Interpretation berücksichtigt werden. Ändere oder stoppe verschriebene Medikamente aber nicht aufgrund eines Laborwertes selbstständig.</p>`,
     notProofHtml: `<p>Ein erhöhtes Kreatinin ist keine Diagnose einer Nierenerkrankung. Der Wert wird auch durch Muskelmasse, Flüssigkeitshaushalt, Belastung und Medikamente beeinflusst. Umgekehrt schliesst ein normales Kreatinin, besonders bei geringer Muskelmasse, eine beginnende Einschränkung nicht sicher aus. Referenzbereiche unterscheiden sich je nach Labor, Methode und persönlichen Faktoren; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
     followUpHtml: `<p>Üblich sind eine Wiederholungsmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), die eGFR, je nach Situation Harnstoff, Elektrolyte, eine Urinuntersuchung inklusive Albumin sowie der Vergleich mit früheren Werten und die Durchsicht der Medikamentenliste.</p>
-<p>Aus Kreatinin wird häufig die <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> berechnet, eine Schätzung der Nierenfilterleistung.</p>`,
+<p>Aus Kreatinin wird häufig die <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> berechnet, eine Schätzung der Nierenfilterleistung.</p>
+<p>In ausgewählten Situationen wird zusätzlich <a href="/gesundheitsbibliothek/befunde-werte/cystatin-c/">Cystatin C</a> bestimmt und für eine kombinierte eGFR-Berechnung verwendet.</p>`,
     redFlagsHtml: `<p>Besonders wichtig ist eine ärztliche Einordnung bei neu deutlich erhöhtem Wert, sinkender eGFR, Veränderungen der Urinmenge, Schwellungen, Atemnot, ausgeprägter Schwäche, auffälligen Elektrolyten oder bekannten Nierenerkrankungen.</p>`,
     integrativeContextHtml: `<p>Kreatinin und eGFR gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Nieren-Laborwerte nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
@@ -2258,7 +2268,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Wie wird ein Mangel behoben?</h2>
 <p>Grundlage sind eine folatreiche Ernährung und – wenn angezeigt – ein ärztlich verordnetes Präparat. Ebenso wichtig ist die Behandlung der Ursache, etwa einer Aufnahmestörung im Darm.</p>`,
     notProofHtml: `<p>Ein einzelner tiefer Folsäurewert ist noch keine Diagnose: Der Wert schwankt mit der Ernährung der letzten Tage und Wochen, und Referenzbereiche unterscheiden sich je nach Labor und Messmethode. Massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht – und die ärztliche Einordnung zusammen mit Blutbild, B12 und Beschwerden.</p>`,
-    followUpHtml: `<p>Je nach Situation werden Blutbild (inklusive MCV), Vitamin B12, Ferritin und weitere Werte geprüft; bei Verdacht auf eine Aufnahmestörung kann eine Abklärung des Magen-Darm-Trakts dazukommen. Den B12-Zwilling erklärt <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12 zu niedrig</a>.</p>`,
+    followUpHtml: `<p>Je nach Situation werden Blutbild (inklusive MCV), Vitamin B12, Ferritin und weitere Werte geprüft; bei Verdacht auf eine Aufnahmestörung kann eine Abklärung des Magen-Darm-Trakts dazukommen. Den B12-Zwilling erklärt <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12 zu niedrig</a>.</p>
+<p>Ein <a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">erhöhter Homocysteinwert</a> kann auch andere Ursachen haben und sollte nicht allein als Folatmangel interpretiert werden.</p>`,
     redFlagsHtml: `<p>Ärztlich besprechen solltest du den Befund insbesondere bei gleichzeitiger Blutarmut, bei Kinderwunsch oder Schwangerschaft, bei Verdauungserkrankungen, regelmässigem Alkoholkonsum oder wenn du Medikamente einnimmst, die den Folatstoffwechsel beeinflussen.</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und TCM ersetzt keine Folsäure-Substitution. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
@@ -2385,7 +2396,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Wie wird abgeklärt?</h2>
 <p>Üblich sind die Wiederholung der Messung (oft als Albumin-Kreatinin-Quotient im Spontanurin), Blutwerte wie <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und je nach Situation Ultraschall oder eine nephrologische Beurteilung. Blutdruck und Blutzucker werden mitgeprüft.</p>`,
     notProofHtml: `<p>Ein einmalig positiver Eiweiss-Befund beweist keine Nierenerkrankung: Sport, Fieber, Flüssigkeitsmangel oder eine verunreinigte Probe können das Resultat beeinflussen, und der Teststreifen misst nur grob. Deshalb wird der Befund wiederholt und quantifiziert, bevor Schlüsse gezogen werden.</p>`,
-    followUpHtml: `<p>Je nach Situation folgen Albumin-Kreatinin-Quotient, Nierenwerte im Blut, Blutdruckmessung, Blutzucker/HbA1c und bei anhaltender Proteinurie eine nephrologische Abklärung. Die Blut-Seite erklärt <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin erhöht</a>.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen Albumin-Kreatinin-Quotient, Nierenwerte im Blut, Blutdruckmessung, Blutzucker/HbA1c und bei anhaltender Proteinurie eine nephrologische Abklärung. Die Blut-Seite erklärt <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin erhöht</a>.</p>
+<p>Albuminverlust über den Urin und <a href="/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/">niedriges Albumin im Blut</a> sind unterschiedliche Befunde, die je nach Situation gemeinsam betrachtet werden.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich beurteilen lassen: Eiweiss zusammen mit geschwollenen Beinen oder Lidern, schäumendem Urin, Blut im Urin, stark erhöhtem Blutdruck, bekannter Diabetes- oder Nierenerkrankung sowie jede in Kontrollen anhaltende Proteinurie. In der Schwangerschaft gehört Eiweiss im Urin immer rasch in ärztliche Beurteilung.</p>`,
     integrativeContextHtml: `<p>Die chinesische Medizin interpretiert Laborbefunde nicht, und TCM macht eine Nierenschädigung nicht rückgängig. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der nephrologischen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [
@@ -2792,7 +2804,8 @@ export const befundeWerte: BefundWert[] = [
 <p>Zur Beurteilung gehört deshalb häufig auch ein Urinbefund, insbesondere Albumin im Urin. Die Seite <a href="/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/">Eiweiss im Urin</a> erklärt diesen ergänzenden Befund. Den gesamten Laborzusammenhang ordnet <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a> ein.</p>`,
     redFlagsHtml: `<p>Eine neu deutlich niedrigere eGFR oder eine rasche Verschlechterung sollte zeitnah ärztlich besprochen werden. Bei deutlich weniger Urin zusammen mit schwerem Krankheitsgefühl, ausgeprägter Atemnot oder Bewusstseinsstörungen brauchst du sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
     followUpHtml: `<p>Nimm frühere Kreatinin- und eGFR-Werte sowie eine Liste deiner Medikamente und Präparate mit. Frage, ob eine Kontrollmessung, eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> oder weitere Diagnostik nötig ist.</p>
-<p>Ändere Medikamente oder Trinkmengen nicht eigenständig mit dem Ziel, eine Laborzahl zu verbessern. Die passende Massnahme richtet sich nach der Ursache und deiner gesundheitlichen Situation.</p>`,
+<p>Ändere Medikamente oder Trinkmengen nicht eigenständig mit dem Ziel, eine Laborzahl zu verbessern. Die passende Massnahme richtet sich nach der Ursache und deiner gesundheitlichen Situation.</p>
+<p>Wenn Kreatinin allein kein klares Bild liefert, kann <a href="/gesundheitsbibliothek/befunde-werte/cystatin-c/">Cystatin C</a> die Einschätzung ergänzen.</p>`,
     faqHtml: `<h2>Häufige Fragen</h2>
 <p><strong>Ist eGFR ein direkt gemessener Wert?</strong></p>
 <p>Meist nicht. Das „e“ steht für estimated, also geschätzt. Die Berechnung verwendet Laborwerte und weitere Angaben.</p>
@@ -2812,6 +2825,409 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin (Proteinurie): Was bedeutet der Befund?' },
       { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'cystatin-c',
+    gruppe: 'Niere & Blutdruck',
+    title: 'Cystatin C: Was sagt der Nierenwert?',
+    metaTitle: 'Cystatin C: Nierenwert verstehen',
+    metaDescription: 'Cystatin C ergänzt die Einschätzung der Nierenfunktion. Wann der Wert hilfreich ist, wie er mit Kreatinin zusammenhängt und weshalb der Verlauf zählt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'Cystatin C kann helfen, die Nierenfilterleistung genauer einzuschätzen. Der Wert wird meist zusammen mit Kreatinin, eGFR und Urinbefunden beurteilt.',
+    primaryPurpose: 'Einordnung des Laborwerts Cystatin C als ergänzender Nierenmarker; egfr bleibt Schätzungs-Owner, kreatinin-erhoeht eigener Marker.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026 gegen Map und Guards). egfr und kreatinin-erhoeht beidseitig verlinkt. Aliasse: cystatin c, cystatin c erhöht, cystatin-c-wert.',
+    suggestedReviewerType: 'Ärztliche Review (Nephrologie)',
+    shortAnswerHtml: `<p>Cystatin C ist ein Eiweiss, das von vielen Körperzellen gebildet und über die Nieren gefiltert wird. Wenn die Filterleistung sinkt, kann seine Konzentration im Blut steigen. Der Wert kann die Einschätzung der Nierenfunktion ergänzen, besonders wenn Kreatinin allein kein klares Bild liefert.</p>`,
+    bodyHtml: `<h2>Warum ein zweiter Nierenwert?</h2>
+<p><a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> ist unter anderem von der Muskelmasse abhängig. Bei sehr geringer oder ausgeprägter Muskelmasse kann die daraus berechnete Filterleistung weniger genau sein. Cystatin C ist von der Muskelmasse weniger abhängig und kann in solchen Situationen zusätzliche Information bringen.</p>
+<p>Der Test ist deshalb nicht einfach ein „besserer Kreatinintest“ für alle. Ob er gebraucht wird, hängt davon ab, welche Frage die ärztliche Abklärung beantworten soll.</p>
+<h2>Cystatin C und eGFR</h2>
+<p>Aus Cystatin C lässt sich eine geschätzte glomeruläre Filtrationsrate berechnen. Häufig wird eine Formel verwendet, die Kreatinin und Cystatin C gemeinsam berücksichtigt. Diese Kombination kann genauer sein als Kreatinin allein.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> bleibt trotzdem eine Schätzung. Ein Unterschied zwischen den Berechnungen ist Anlass, die Ausgangswerte und ihre möglichen Einflüsse zu prüfen, nicht sich die günstigere Zahl auszusuchen.</p>`,
+    contextHtml: `<p>Cystatin C wird meist in mg/l angegeben. Verwende den Referenzbereich auf deinem Laborbericht. Alter, Erkrankungen, Medikamente und die verwendete Berechnungsformel können für die Einordnung wichtig sein.</p>
+<p>Auch Cystatin C wird nicht ausschliesslich von der Nierenfilterleistung bestimmt. Beispielsweise können bestimmte Behandlungen und Erkrankungen den Wert beeinflussen. Gib deshalb deine vollständige Medikamenten- und Präparateliste an.</p>`,
+    notProofHtml: `<p>Ein erhöhter Cystatin-C-Wert beweist für sich allein keine chronische Nierenerkrankung. Entscheidend sind Verlauf, weitere Befunde und die medizinische Situation.</p>
+<p>Auch ein unauffälliger Wert ersetzt keine Untersuchung auf <a href="/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/">Eiweiss im Urin</a>, wenn diese wegen eines Risikos oder anderer Befunde sinnvoll ist. Blut- und Urinuntersuchungen ergänzen sich.</p>`,
+    redFlagsHtml: `<p>Besprich einen neuen oder wiederholt auffälligen Befund mit der untersuchenden Praxis. Deutlich weniger Urin zusammen mit schwerem Krankheitsgefühl, ausgeprägter Atemnot oder Bewusstseinsstörungen braucht sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Nimm frühere Kreatinin-, Cystatin-C- und eGFR-Werte mit. Frage, ob die kombinierte Berechnung und eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> für deine Situation sinnvoll sind. Die Familienübersicht <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a> erklärt den Zusammenhang.</p>
+<p>Verändere Medikamente oder Trinkmengen nicht eigenständig, um den Wert zu beeinflussen. Die passende Massnahme richtet sich nach der Ursache.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist Cystatin C immer genauer als Kreatinin?</strong></p>
+<p>Nein. In bestimmten Situationen liefert es zusätzliche Information. Oft ist die gemeinsame Berechnung hilfreicher als ein einzelner Marker.</p>
+<p><strong>Sind Cystatin C und eGFR dasselbe?</strong></p>
+<p>Nein. Cystatin C ist eine gemessene Konzentration im Blut. eGFR ist eine daraus oder aus anderen Werten berechnete Schätzung.</p>
+<p><strong>Brauche ich den Test bei jedem auffälligen Kreatininwert?</strong></p>
+<p>Nicht automatisch. Die untersuchende Praxis entscheidet, ob er eine offene Frage klären kann.</p>`,
+    sources: [
+      { label: 'National Kidney Foundation, Cystatin C', url: 'https://www.kidney.org/kidney-topics/cystatin-c' },
+      { label: 'NIDDK, Glomerular Filtration Rate Equations, geprüft Mai 2025', url: 'https://www.niddk.nih.gov/research-funding/research-programs/kidney-clinical-research-epidemiology/laboratory/glomerular-filtration-rate-equations' },
+      { label: 'KDIGO, CKD Guideline Executive Summary, 2024', url: 'https://kdigo.org/wp-content/uploads/2017/02/KDIGO-2024-CKD-Guideline-Executive-Summary.pdf' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/egfr/', label: 'eGFR: Was bedeutet die geschätzte Nierenfunktion?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin (Proteinurie): Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'retikulozyten',
+    gruppe: 'Blutbild',
+    title: 'Retikulozyten: Was zeigen die jungen roten Blutkörperchen?',
+    metaTitle: 'Retikulozyten: Blutwert richtig einordnen',
+    metaDescription: 'Retikulozyten zeigen, wie die Bildung roter Blutkörperchen reagiert. Warum absolute Zahl, Hämoglobin und Zeitpunkt für die Einordnung wichtig sind.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'Der Retikulozytenwert ergänzt die Abklärung einer Blutarmut. Er hilft zu verstehen, ob das Knochenmark auf einen erhöhten Bedarf reagiert.',
+    primaryPurpose: 'Einordnung der Retikulozytenzahl (erhöht/niedrig); Blutbild, Hämoglobin, MCV/RDW bleiben eigene Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). haemoglobin-zu-niedrig und grosses-blutbild verlinkt. Aliasse: retikulozyten, retikulozyten erhöht/niedrig.',
+    suggestedReviewerType: 'Ärztliche Review (Hämatologie)',
+    shortAnswerHtml: `<p>Retikulozyten sind junge rote Blutkörperchen. Sie werden im Knochenmark gebildet und gelangen ins Blut, bevor sie vollständig ausgereift sind. Ihre Zahl gibt Hinweise auf die Neubildung roter Blutkörperchen. Sie wird besonders dann betrachtet, wenn eine Blutarmut abgeklärt oder ein Verlauf kontrolliert wird.</p>`,
+    bodyHtml: `<h2>Was kann eine erhöhte Zahl bedeuten?</h2>
+<p>Wenn der Körper nach einem Blutverlust oder verstärktem Abbau roter Blutkörperchen mehr Zellen nachbildet, können Retikulozyten zunehmen. Auch nach Beginn einer wirksamen Behandlung eines Mangels kann die Neubildung ansteigen.</p>
+<p>Ein höherer Wert ist deshalb nicht automatisch schlecht. Entscheidend ist, ob die Reaktion zur Situation und zum Zeitpunkt der Blutentnahme passt.</p>
+<h2>Was kann eine niedrige Zahl bedeuten?</h2>
+<p>Bei einer Blutarmut können wenige Retikulozyten darauf hinweisen, dass die Neubildung nicht ausreichend auf den Bedarf reagiert. Dafür kommen unterschiedliche Ursachen infrage, etwa fehlende Baustoffe oder Erkrankungen, die die Blutbildung beeinflussen.</p>
+<p>Ob überhaupt eine Anämie vorliegt, wird unter anderem anhand von <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a> beurteilt. Retikulozyten erklären eine andere Ebene des Befunds.</p>`,
+    contextHtml: `<p><strong>Prozentwert oder absolute Zahl?</strong></p>
+<p>Auf dem Bericht können Retikulozyten als Anteil oder als absolute Zahl stehen. Diese Angaben sind nicht austauschbar. Wenn die Gesamtzahl roter Blutkörperchen verändert ist, kann ein Prozentwert allein einen irreführenden Eindruck vermitteln.</p>
+<p>Für die Einordnung wird der gesamte Befund betrachtet, gegebenenfalls mit zusätzlichen berechneten oder gemessenen Parametern. Nutze deshalb den vollständigen Laborbericht und nicht nur einen markierten Einzelwert.</p>`,
+    notProofHtml: `<p>Der Retikulozytenwert allein unterscheidet nicht sicher zwischen Eisenmangel, Vitaminmangel, Blutverlust und anderen Ursachen. Er ist auch kein eigenständiger Krebstest.</p>
+<p>Ein Wert im Referenzbereich muss bei bestehender Blutarmut nicht automatisch eine angemessene Reaktion bedeuten. Die Zahl wird zur Höhe der Anämie und zum zeitlichen Verlauf in Beziehung gesetzt.</p>`,
+    redFlagsHtml: `<p>Besprich auffällige Werte besonders dann, wenn gleichzeitig Hämoglobin niedrig ist oder neue Beschwerden auftreten. Starke Atemnot, Brustschmerzen, Ohnmacht oder erhebliche Blutungen brauchen sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Zur Abklärung können <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a>, <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12</a>, <a href="/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/">Folsäure</a> oder weitere Werte beitragen. Welche davon sinnvoll sind, hängt vom Blutbild und deiner Vorgeschichte ab.</p>
+<p>Frage, ob der Wert eine mangelnde Neubildung oder eine verstärkte Nachproduktion vermuten lässt. Die Seite zum <a href="/gesundheitsbibliothek/untersuchungen/grosses-blutbild/">grossen Blutbild</a> erklärt die grundlegenden Zellgruppen; Retikulozyten können als zusätzliche Untersuchung bestimmt werden.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Sind hohe Retikulozyten immer ein Problem?</strong></p>
+<p>Nein. Sie können eine passende Reaktion auf Blutverlust oder eine Behandlung anzeigen.</p>
+<p><strong>Gehören Retikulozyten automatisch zum grossen Blutbild?</strong></p>
+<p>Nicht zwingend. Sie können gezielt zusätzlich angefordert werden.</p>
+<p><strong>Kann ich aus dem Wert einen Eisenmangel erkennen?</strong></p>
+<p>Nicht allein. Dafür werden passende Eisenwerte und der übrige Blutbefund berücksichtigt.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Reticulocyte Count', url: 'https://medlineplus.gov/lab-tests/reticulocyte-count/' },
+      { label: 'Mayo Clinic Laboratories, Reticulocyte Profile', url: 'https://www.mayocliniclabs.com/test-catalog/overview/616856' },
+      { label: 'MedlinePlus, Reticulocyte count, ergänzende Patienteninformation', url: 'https://medlineplus.gov/ency/article/003637.htm' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/grosses-blutbild/', label: 'grossen Blutbild' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/', label: 'Folsäure zu niedrig: Was bedeutet ein Folsäuremangel?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'albumin-zu-niedrig',
+    gruppe: 'Leber & Enzyme',
+    title: 'Albumin im Blut zu niedrig: Was bedeutet das?',
+    metaTitle: 'Albumin im Blut zu niedrig: Bedeutung',
+    metaDescription: 'Niedriges Albumin hat verschiedene mögliche Ursachen. Warum der Blutwert allein keinen Ernährungsmangel beweist und Urinbefunde eine andere Frage beantworten.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'Albumin ist ein wichtiges Eiweiss im Blut. Ein niedriger Wert braucht eine Einordnung von Entzündung, Organfunktion und weiteren möglichen Einflüssen.',
+    primaryPurpose: 'Einordnung des Laborwerts Albumin im Blut zu niedrig; keine Albuminurie-/Proteinurie-Aliasse (eiweiss-im-urin bleibt Owner).',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). leberwerte-erhoeht und eiweiss-im-urin verlinkt; Guard proteinurie/albuminurie bleibt bei eiweiss-im-urin. Aliasse: albumin niedrig, albumin im blut zu niedrig.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin)',
+    shortAnswerHtml: `<p>Albumin wird in der Leber gebildet und erfüllt im Blut unter anderem Transportaufgaben. Es hilft auch, Flüssigkeit in den Blutgefässen zu halten. Eine niedrige Konzentration kann verschiedene Ursachen haben. Sie beweist nicht allein, dass du zu wenig Eiweiss isst oder mangelernährt bist.</p>`,
+    bodyHtml: `<h2>Warum kann Albumin sinken?</h2>
+<p>Bei entzündlichen oder schweren Erkrankungen verändern sich Bildung und Verteilung von Albumin. Auch eine eingeschränkte Herstellung in der Leber oder Eiweissverluste, beispielsweise über die Nieren, können eine Rolle spielen.</p>
+<p>Deshalb wird der Wert nicht nur mit der Ernährung, sondern auch mit Beschwerden und anderen Laborbefunden betrachtet. Die Übersichten <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a> und <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a> erklären verwandte Befundfragen.</p>
+<h2>Albumin im Blut und Albumin im Urin</h2>
+<p>Ein niedriger Albuminwert im Blut ist nicht dasselbe wie Albumin im Urin. Im Blut geht es um die Konzentration eines wichtigen Eiweisses. Im Urin geht es darum, ob und wie viel Eiweiss ausgeschieden wird.</p>
+<p>Diese Befunde können zusammenhängen, müssen es aber nicht. Der Urinbefund bleibt auf der Seite <a href="/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/">Eiweiss im Urin</a> eingeordnet.</p>`,
+    contextHtml: `<p>Auf dem Laborbericht steht Albumin meist in g/l oder g/dl. Diese Einheiten darfst du nicht direkt vergleichen. Auch die Flüssigkeitssituation kann die gemessene Konzentration beeinflussen.</p>
+<p>Ein Vergleich mit früheren Werten hilft, einen neuen Befund von einer länger bestehenden Veränderung zu unterscheiden. Nimm den gesamten Bericht mit, nicht nur den Albuminwert.</p>`,
+    notProofHtml: `<p><strong>Kein alleiniger Ernährungstest</strong></p>
+<p>Die Fachgesellschaft ASPEN warnt davor, Albumin als Ersatzmass für Körperprotein, Muskelmasse oder Ernährungszustand zu verwenden. Ein niedriger Wert kann bei Menschen auftreten, die ausreichend ernährt sind, aber eine entzündliche Erkrankung haben.</p>
+<p>Das bedeutet nicht, dass Ernährung unwichtig ist. Bei Verdacht auf Mangelernährung werden zusätzlich Gewichtsverlauf, Nahrungsaufnahme und weitere klinische Informationen beurteilt. Ein Proteinshake ist keine automatische Lösung für jeden niedrigen Albuminwert.</p>`,
+    redFlagsHtml: `<p>Neu auftretende Wassereinlagerungen, unbeabsichtigter Gewichtsverlust oder ein wiederholt niedriger Wert sollten ärztlich besprochen werden. Ausgeprägte Atemnot, Verwirrtheit oder eine schwere akute Verschlechterung brauchen sofort medizinische Hilfe.</p>`,
+    followUpHtml: `<p>Je nach Fragestellung werden Leber- und Nierenbefunde, <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> oder die Eiweissausscheidung im Urin ergänzt. Die Auswahl richtet sich nach der möglichen Ursache, nicht nach einem pauschalen Testpaket.</p>
+<p>Frage, ob der Wert eher eine Entzündungsreaktion, einen Verlust oder eine verringerte Bildung vermuten lässt. Eine Ernährungsberatung kann bei passendem Befund sinnvoll sein, ersetzt aber keine Abklärung der Organfunktion.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bedeutet niedriges Albumin, dass ich zu wenig Protein esse?</strong></p>
+<p>Nicht automatisch. Entzündung, Organfunktion und Eiweissverluste können den Wert ebenfalls beeinflussen.</p>
+<p><strong>Ist Albumin im Urin dasselbe wie Albumin im Blut?</strong></p>
+<p>Nein. Es sind unterschiedliche Messungen mit unterschiedlichen Fragestellungen.</p>
+<p><strong>Kann ich den Wert mit Nahrungsergänzung normalisieren?</strong></p>
+<p>Das lässt sich aus dem Wert allein nicht entscheiden. Zuerst muss die Ursache eingeordnet werden.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Albumin Blood Test', url: 'https://medlineplus.gov/lab-tests/albumin-blood-test/' },
+      { label: 'ASPEN, The Use of Visceral Proteins as Nutrition Markers, 2021, inklusive Korrektur', url: 'https://pubmed.ncbi.nlm.nih.gov/33125793/' },
+      { label: 'MedlinePlus, Total Protein and Albumin/Globulin Ratio', url: 'https://medlineplus.gov/lab-tests/total-protein-and-albumin-globulin-a-g-ratio/' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin (Proteinurie): Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'homocystein-erhoeht',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Homocystein erhöht: Was bedeutet der Wert?',
+    metaTitle: 'Homocystein erhöht: Ursachen und Einordnung',
+    metaDescription: 'Erhöhtes Homocystein kann mit Vitaminmangel oder eingeschränkter Nierenfunktion zusammenhängen. Warum der Wert allein weder Ursache noch Behandlung festlegt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'Homocystein ist ein Zwischenprodukt des Stoffwechsels. Eine Erhöhung ist kein eigenständiger Nachweis für einen Vitaminmangel oder eine Gefässerkrankung.',
+    primaryPurpose: 'Einordnung des Laborbefunds Homocystein erhöht; B12-/Folatbefunde bleiben getrennt, keine MTHFR-Unterseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). vitamin-b12-zu-niedrig und folsaeure-zu-niedrig verlinkt. Aliasse: homocystein erhöht, homocystein zu hoch.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
+    shortAnswerHtml: `<p>Homocystein entsteht beim Abbau der Aminosäure Methionin. Für seine weitere Verarbeitung benötigt der Körper unter anderem bestimmte B-Vitamine. Ein erhöhter Blutwert kann deshalb bei Vitaminmangel vorkommen. Auch andere Einflüsse, insbesondere die Nierenfunktion, müssen berücksichtigt werden.</p>`,
+    bodyHtml: `<h2>Welche Ursachen kommen infrage?</h2>
+<p>Ein Mangel an Vitamin B12 oder Folat kann mit höherem Homocystein zusammenhängen. Der Wert allein sagt aber nicht, welches Vitamin fehlt. Deshalb werden passende Untersuchungen und deine gesundheitliche Situation gemeinsam betrachtet.</p>
+<p>Die Seiten <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12 zu niedrig</a> und <a href="/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/">Folsäure zu niedrig</a> erklären die jeweiligen Befunde. Sie sind nicht durch einen Homocysteinwert ersetzbar.</p>
+<p>Eine eingeschränkte Nierenfunktion kann die Konzentration ebenfalls erhöhen. Bei dieser Frage hilft der Zusammenhang mit <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> und weiteren Nierenbefunden.</p>
+<h2>Ist der Wert ein Herzinfarkt-Test?</h2>
+<p>Nein. Höhere Homocysteinwerte wurden in Studien mit Herz-Kreislauf-Risiken in Verbindung gebracht. Daraus folgt nicht, dass die Messung für alle Menschen als Vorsorgetest sinnvoll ist oder einen bevorstehenden Herzinfarkt anzeigt.</p>
+<p>Auch das Senken einer Laborzahl ist nicht automatisch gleichbedeutend mit einem gesundheitlichen Nutzen. Studien zu B-Vitaminen zeigten keinen allgemeinen Nachweis, dass diese Massnahmen Herzinfarkte verhindern oder die Sterblichkeit senken.</p>`,
+    contextHtml: `<p>Nimm den Befund mit Einheit und Laborreferenzbereich mit. Gib an, ob du bereits Vitamine oder andere Präparate einnimmst. Solche Angaben sind wichtig, bevor ein Wert als Mangelhinweis beurteilt wird.</p>
+<p>Für den Vergleich zählen Zeitpunkt und Vorbereitung der Blutentnahme. Frage die untersuchende Praxis, ob und unter welchen Bedingungen eine Kontrolle sinnvoll ist.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Homocystein beweist weder einen B12-Mangel noch eine Thrombose. Es legt auch nicht automatisch fest, dass du hoch dosierte B-Vitamine oder einen genetischen Test brauchst.</p>
+<p>Wenn ein Vitaminmangel bestätigt ist, wird er gezielt behandelt. Das ist eine andere Entscheidung als die pauschale Einnahme eines Präparats, nur um Homocystein zu senken.</p>`,
+    redFlagsHtml: `<p>Besprich einen auffälligen Wert besonders dann, wenn gleichzeitig Blutbildveränderungen oder neue neurologische Beschwerden vorliegen. Anhaltende Taubheit, Gangunsicherheit oder deutliche Schwäche sollten zeitnah ärztlich beurteilt werden.</p>
+<p>Bei plötzlich auftretender Lähmung, Sprachstörung, Brustschmerzen oder schwerer Atemnot brauchst du sofort medizinische Hilfe. Warte in dieser Situation nicht auf einen weiteren Laborwert.</p>`,
+    followUpHtml: `<p>Je nach Ausgangslage werden B12, Folat, Blutbild und Nierenfunktion geprüft. Bei unklarer B12-Situation können zusätzliche Marker sinnvoll sein; deren Auswahl gehört in die ärztliche Abklärung.</p>
+<p>Frage, welche Ursache hinter der Erhöhung vermutet wird und ob das Testergebnis eine konkrete Entscheidung verändert. Bring deine Präparateliste mit und ändere Dosierungen nicht eigenständig.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Beweist erhöhtes Homocystein einen B12-Mangel?</strong></p>
+<p>Nein. Auch Folatmangel und andere Ursachen können den Wert beeinflussen.</p>
+<p><strong>Soll ich vorsorglich hoch dosierte B-Vitamine nehmen?</strong></p>
+<p>Nicht allein aufgrund dieser Zahl. Eine passende Behandlung richtet sich nach einem eingeordneten oder bestätigten Mangel.</p>
+<p><strong>Ist Homocystein ein Test auf ein Blutgerinnsel?</strong></p>
+<p>Nein. Der Wert diagnostiziert keine Thrombose oder Lungenembolie.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Homocysteine Test', url: 'https://medlineplus.gov/lab-tests/homocysteine-test/' },
+      { label: 'NIH Office of Dietary Supplements, Vitamin B12', url: 'https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/' },
+      { label: 'Cochrane, Homocysteine-lowering interventions, 2017', url: 'https://doi.org/10.1002/14651858.CD006612.pub5' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/egfr/', label: 'eGFR: Was bedeutet die geschätzte Nierenfunktion?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/folsaeure-zu-niedrig/', label: 'Folsäure zu niedrig: Was bedeutet ein Folsäuremangel?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'inr-quick',
+    gruppe: 'Weitere Werte',
+    title: 'INR und Quick: Was bedeuten die Gerinnungswerte?',
+    metaTitle: 'INR und Quick: Gerinnungswerte verstehen',
+    metaDescription: 'INR und Quick beschreiben eine Gerinnungsuntersuchung. Warum Medikamente und ein individuell festgelegter Zielbereich für die Einordnung wichtig sind.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'INR und Quick helfen bei bestimmten Fragen zur Blutgerinnung. Ein persönlicher Therapiezielbereich ist nicht dasselbe wie der Referenzbereich ohne Behandlung.',
+    primaryPurpose: 'Gemeinsame Einordnung von INR und Quick (Prothrombinzeit im Befundkontext); keine INR-/Quick-Duplikate.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). aptt ist Schwester-Befund, fragen/akupunktur-blutverduenner bleibt Behandlungsfrage-Owner. Aliasse: inr wert, quick wert, prothrombinzeit.',
+    suggestedReviewerType: 'Ärztliche Review (Hämatologie/Innere Medizin)',
+    shortAnswerHtml: `<p>INR und Quick sind verschiedene Darstellungen einer Untersuchung der Gerinnungszeit. Sie werden unter anderem zur Kontrolle bestimmter gerinnungshemmender Medikamente eingesetzt. Der passende Wert hängt deshalb davon ab, ob du solche Medikamente einnimmst und weshalb die Untersuchung erfolgt ist.</p>`,
+    bodyHtml: `<h2>Was wird untersucht?</h2>
+<p>Im Labor wird gemessen, wie lange eine Blutprobe unter festgelegten Bedingungen bis zur Gerinnselbildung braucht. Die INR, ausgeschrieben International Normalized Ratio, dient der standardisierten Darstellung dieses Ergebnisses. Quick wird üblicherweise als Prozentwert angegeben.</p>
+<p>Bei verlängerter Gerinnungszeit steigt typischerweise die INR, während der Quick-Wert sinkt. Die Zahlen sind keine Prozentangabe darüber, wie „dick“ oder „dünn“ dein Blut ist.</p>
+<h2>Mit Medikament oder ohne Medikament?</h2>
+<p>Bei einer Behandlung mit Vitamin-K-Antagonisten wird ein persönlicher INR-Zielbereich festgelegt. Ein Wert ausserhalb des Referenzbereichs für unbehandelte Menschen kann dann beabsichtigt sein.</p>
+<p>Ohne eine solche Behandlung kann eine Abweichung andere Fragen aufwerfen, beispielsweise zu Gerinnungsfaktoren, Leberfunktion oder Vitamin-K-Versorgung. Die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a> erklärt verwandte Befunde, ersetzt aber keine Gerinnungsabklärung.</p>`,
+    contextHtml: `<p>Teile der Praxis den genauen Namen deiner Medikamente und den Zeitpunkt der letzten Einnahme mit. „Blutverdünner“ ist dafür zu ungenau: Unterschiedliche Präparate wirken verschieden und brauchen unterschiedliche Kontrollen.</p>
+<p>INR ist vor allem für die Kontrolle von Vitamin-K-Antagonisten etabliert. Sie ist kein universeller Wirkspiegel für alle gerinnungshemmenden Medikamente. Für direkt wirkende orale Antikoagulantien können andere Verfahren erforderlich sein.</p>`,
+    notProofHtml: `<p>Eine unauffällige INR schliesst nicht jede Blutungsneigung aus. Sie zeigt auch nicht sicher, dass die Wirkung eines direkt wirkenden Antikoagulans fehlt. Eine auffällige INR legt ohne klinischen Kontext keine eigenständige Dosisänderung fest.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/aptt/">aPTT</a> untersucht einen anderen Teil des Gerinnungssystems. Beide Verfahren können sich ergänzen; keines beschreibt allein die gesamte Blutstillung.</p>`,
+    redFlagsHtml: `<p>Wenn du unter Gerinnungshemmern einen Wert ausserhalb deines vereinbarten Zielbereichs erhältst, kontaktiere die behandelnde Praxis gemäss deinem Kontrollplan. Ändere die Dosis nicht aufgrund einer allgemeinen Internet-Tabelle.</p>
+<p>Starke oder nicht stillbare Blutungen, Bluterbrechen, Ohnmacht oder neue schwere Beschwerden nach einer Kopfverletzung brauchen sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Halte den persönlichen Zielbereich, bisherige Werte und die Medikamentenliste bereit. Besprich auch neue Medikamente, Kräuterpräparate und Nahrungsergänzungsmittel mit der behandelnden Praxis.</p>
+<p>Vor Eingriffen oder einer Nadelbehandlung ist eine Gerinnungshemmung anzugeben. Was bei Akupunktur dabei berücksichtigt werden muss, erklärt <a href="/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/">Akupunktur mit Blutverdünnern</a>. Setze ein Gerinnungsmedikament niemals eigenständig für einen Termin ab.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist ein erhöhter INR-Wert immer krankhaft?</strong></p>
+<p>Nein. Unter bestimmten Medikamenten kann ein höherer Zielbereich beabsichtigt sein. Entscheidend ist dein individueller Behandlungsplan.</p>
+<p><strong>Zeigt die INR die Wirkung jedes Blutverdünners?</strong></p>
+<p>Nein. Sie eignet sich nicht als allgemeiner Wirkspiegel aller Gerinnungshemmer.</p>
+<p><strong>Darf ich bei einem auffälligen Wert die Dosis ändern?</strong></p>
+<p>Nur nach deinem ausdrücklich vereinbarten ärztlichen Dosierungsplan. Ein allgemeiner Online-Text ersetzt diesen nicht.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Prothrombin Time Test and INR', url: 'https://medlineplus.gov/lab-tests/prothrombin-time-test-and-inr-ptinr/' },
+      { label: 'Viollier, Quick + INR', url: 'https://www.viollier.ch/de/analysis/20175' },
+      { label: 'SISET/FCSA/SIBioC/SIPMeL, Position Paper on laboratory testing with direct oral anticoagulants', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6125231/' },
+      { label: 'University Hospital Basel, Diagnostische Hämatologie', url: 'https://www.unispital-basel.ch/labormedizin/angebot/diagnostische-haematologie' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/aptt/', label: 'aPTT: Was bedeutet eine verlängerte Gerinnungszeit?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte?' },
+    ],
+  },
+  {
+    slug: 'aptt',
+    gruppe: 'Weitere Werte',
+    title: 'aPTT: Was bedeutet eine verlängerte Gerinnungszeit?',
+    metaTitle: 'aPTT verlängert: Gerinnungswert einordnen',
+    metaDescription: 'Die aPTT untersucht einen Teil der Blutgerinnung. Warum ein verlängerter Wert nicht automatisch Blutungsgefahr bedeutet und weitere Befunde wichtig sind.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'Eine verlängerte aPTT hat unterschiedliche mögliche Ursachen. Medikamente, Gerinnungsfaktoren und Messbedingungen müssen gemeinsam betrachtet werden.',
+    primaryPurpose: 'Einordnung der aPTT (verlängert) als Gerinnungsbefund; inr-quick eigener Owner, nicht alle Gerinnungsbefunde absorbieren.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). inr-quick Schwester-Befund, koerpersignale/blaue-flecken-ohne-grund verlinkt. Aliasse: aptt, ptt (dieser Test), aptt verlängert.',
+    suggestedReviewerType: 'Ärztliche Review (Hämatologie/Innere Medizin)',
+    shortAnswerHtml: `<p>aPTT steht für aktivierte partielle Thromboplastinzeit. Der Test misst, wie lange eine Blutprobe unter bestimmten Laborbedingungen bis zur Gerinnung braucht. Ein verlängerter Wert kann auf Veränderungen von Gerinnungsfaktoren oder auf hemmende Einflüsse hinweisen. Er ist aber kein direktes Mass für deine gesamte Blutungsgefahr.</p>`,
+    bodyHtml: `<h2>Warum wird aPTT gemessen?</h2>
+<p>Die Untersuchung kann bei ungeklärter Blutungsneigung, auffälligen Vorbefunden oder bestimmten medikamentösen Behandlungen eingesetzt werden. Unter anderem kann sie zur Überwachung von unfraktioniertem Heparin beitragen.</p>
+<p>Sie untersucht andere Gerinnungsfaktoren als <a href="/gesundheitsbibliothek/befunde-werte/inr-quick/">INR und Quick</a>. Deshalb werden die Ergebnisse häufig gemeinsam eingeordnet.</p>
+<h2>Was kann eine Verlängerung erklären?</h2>
+<p>Mögliche Ursachen sind fehlende oder verminderte Gerinnungsfaktoren, bestimmte Medikamente oder Stoffe, die den Test beeinflussen. Auch Probleme bei Entnahme und Verarbeitung einer Probe können die Messung verändern.</p>
+<p>Manche Antikörper, beispielsweise ein Lupus-Antikoagulans, verlängern die Gerinnungszeit im Labor. Daraus lässt sich nicht einfach folgern, dass die Person im Alltag stärker blutet. Der Name allein ist auch keine Diagnose eines systemischen Lupus.</p>`,
+    contextHtml: `<p>Die aPTT wird meist in Sekunden angegeben. Der Referenzbereich hängt vom Laborverfahren ab. Vergleiche deinen Wert deshalb mit dem Bereich auf deinem Bericht.</p>
+<p>Informiere die untersuchende Praxis über alle Gerinnungshemmer und die letzte Einnahme. Bestimmte Medikamente verändern Gerinnungstests oder deren Interpretation. Ein pauschal „normaler“ Wert beantwortet nicht jede Frage zu ihrer Wirkung.</p>`,
+    notProofHtml: `<p>Eine verlängerte aPTT beweist keine bestimmte Erkrankung. Umgekehrt schliesst eine unauffällige Messung nicht sämtliche Gerinnungsstörungen oder Medikamentenwirkungen aus.</p>
+<p>Wenn du <a href="/koerpersignale/blaue-flecken-ohne-grund/">blaue Flecken ohne erkennbaren Grund</a> bemerkst, gehören auch Blutplättchen, Medikamente und andere Befunde zur Abklärung. Die aPTT allein erklärt das Symptom nicht zuverlässig.</p>`,
+    redFlagsHtml: `<p>Wiederholte Blutungen, ungewöhnlich grosse Hämatome oder ein neu auffälliger Wert sollten ärztlich besprochen werden. Starke, nicht stillbare Blutungen oder eine schwere akute Verschlechterung brauchen sofort medizinische Hilfe.</p>
+<p>Bei Gerinnungshemmung solltest du vor Eingriffen den Behandlungsplan der zuständigen Praxis einholen. Setze Medikamente nicht eigenständig ab.</p>`,
+    followUpHtml: `<p>Eine Kontrollprobe oder zusätzliche Gerinnungstests können helfen. In bestimmten Situationen wird ein Mischversuch durchgeführt: Das Labor prüft, wie sich die Gerinnungszeit nach Mischung mit normalem Plasma verändert. Daraus können sich Hinweise auf die weitere Untersuchung ergeben.</p>
+<p>Frage, ob ein Medikamenteneffekt, eine Faktorveränderung oder eine andere Ursache vermutet wird. Für eine geplante Nadelbehandlung ist die Seite <a href="/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/">Akupunktur mit Blutverdünnern</a> ergänzend relevant; sie ersetzt keine Gerinnungsbeurteilung.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bedeutet eine verlängerte aPTT automatisch hohe Blutungsgefahr?</strong></p>
+<p>Nein. Die Ursache entscheidet über die Bedeutung. Manche Einflüsse verlängern den Labortest ohne entsprechende Blutungsneigung.</p>
+<p><strong>Ist aPTT dasselbe wie INR?</strong></p>
+<p>Nein. Beide untersuchen unterschiedliche Teile des Gerinnungssystems.</p>
+<p><strong>Reicht eine normale aPTT, um Medikamentenwirkung auszuschliessen?</strong></p>
+<p>Nein. Bei manchen Gerinnungshemmern sind gezielte andere Untersuchungen erforderlich.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Partial Thromboplastin Time Test', url: 'https://medlineplus.gov/lab-tests/partial-thromboplastin-time-ptt-test/' },
+      { label: 'Mayo Clinic Laboratories, Activated Partial Thromboplastin Time', url: 'https://www.mayocliniclabs.com/test-catalog/overview/602172' },
+      { label: 'SISET/FCSA/SIBioC/SIPMeL, Direct oral anticoagulants and laboratory testing', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6125231/' },
+      { label: 'University Hospital Zurich, Gerinnungsdiagnostik', url: 'https://www.usz.ch/fachbereich/medizinische-onkologie-und-haematologie/angebot/gerinnung/' },
+    ],
+    relatedSignals: [
+      { href: '/koerpersignale/blaue-flecken-ohne-grund/', label: 'blaue Flecken ohne erkennbaren Grund' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/inr-quick/', label: 'INR und Quick: Was bedeuten die Gerinnungswerte?' },
+    ],
+  },
+  {
+    slug: 'nt-probnp',
+    gruppe: 'Weitere Werte',
+    title: 'NT-proBNP erhöht: Was sagt der Wert über das Herz?',
+    metaTitle: 'NT-proBNP erhöht: Herzbefund verstehen',
+    metaDescription: 'NT-proBNP hilft bei der Abklärung einer möglichen Herzschwäche. Warum Beschwerden, Nierenfunktion und Herzultraschall für die Einordnung dazugehören.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'NT-proBNP ist ein Marker, der bei Belastung des Herzens ansteigen kann. Eine erhöhte Zahl allein stellt noch keine Herzdiagnose.',
+    primaryPurpose: 'Einordnung des Laborwerts NT-proBNP (BNP erklärt, keine zweite BNP-URL).',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). echokardiografie und ekg verlinkt. Aliasse: nt probnp, nt-probnp erhöht.',
+    suggestedReviewerType: 'Ärztliche Review (Kardiologie)',
+    shortAnswerHtml: `<p>NT-proBNP ist ein im Blut messbarer Marker, der im Zusammenhang mit der Bildung des Hormons BNP entsteht. Bei erhöhter Belastung der Herzwände kann seine Konzentration steigen. Der Test hilft insbesondere bei der Abklärung einer möglichen Herzschwäche. Er wird mit Beschwerden, Untersuchung und weiteren Befunden zusammen bewertet.</p>`,
+    bodyHtml: `<h2>Warum wird der Wert bestimmt?</h2>
+<p>Bei Atemnot, Wassereinlagerungen oder vermuteter Herzschwäche kann NT-proBNP zusätzliche Information liefern. Solche Beschwerden haben auch andere mögliche Ursachen. Deshalb ist der Test Teil einer Abklärung und kein Ersatz für sie.</p>
+<p>Ein erhöhter Wert kann Anlass für eine <a href="/gesundheitsbibliothek/untersuchungen/echokardiografie/">Echokardiografie</a> sein. Dieser Herzultraschall untersucht unter anderem Pumpfunktion und Herzklappen.</p>
+<h2>Was beeinflusst die Höhe?</h2>
+<p>Alter, Nierenfunktion und weitere Erkrankungen können die Konzentration beeinflussen. Auch bei eingeschränkter <a href="/gesundheitsbibliothek/befunde-werte/egfr/">Nierenfunktion</a> kann der Wert erhöht sein. Er muss daher nicht ausschliesslich eine bestimmte Stärke der Herzschwäche abbilden.</p>
+<p>BNP und NT-proBNP sind verwandte, aber unterschiedliche Marker. Zahlen aus beiden Tests dürfen nicht direkt miteinander verglichen werden.</p>`,
+    contextHtml: `<p><strong>Warum es nicht die eine Grenzwerttabelle gibt</strong></p>
+<p>Für akute Beschwerden und für die Abklärung einer länger bestehenden möglichen Herzschwäche gelten unterschiedliche medizinische Entscheidungswege. Auch Alter und Begleiterkrankungen gehören dazu.</p>
+<p>Auf dem Bericht können pg/ml oder ng/l stehen; diese beiden Einheiten sind zahlenmässig gleichwertig. Trotzdem müssen Test und medizinischer Kontext beim Vergleich übereinstimmen. Ein allgemeiner Referenzbereich ersetzt keinen Diagnoseweg.</p>`,
+    notProofHtml: `<p>Ein erhöhter NT-proBNP-Wert beweist allein keine Herzschwäche und sagt nicht zuverlässig, welche Form vorliegt. Er ist auch kein Herzinfarkt-Test.</p>
+<p>Ein niedrigerer Wert kann eine Herzschwäche in bestimmten Situationen weniger wahrscheinlich machen, ersetzt bei anhaltenden Beschwerden aber keine ärztliche Beurteilung. Einzelne Zahlen sollten deshalb nicht zur Selbstentwarnung verwendet werden.</p>`,
+    redFlagsHtml: `<p>Neue oder zunehmende Atemnot und ausgeprägte Wassereinlagerungen gehören zeitnah ärztlich beurteilt. Bei schwerer Atemnot in Ruhe, Brustschmerzen, Ohnmacht oder bläulichen Lippen brauchst du sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>
+<p>Warte bei solchen Beschwerden nicht auf einen Routinetermin oder eine erneute Blutmessung.</p>`,
+    followUpHtml: `<p>Zur Abklärung können ein <a href="/gesundheitsbibliothek/untersuchungen/ekg/">EKG</a>, Herzultraschall und weitere Laborwerte gehören. Nimm frühere Befunde und deine Medikamentenliste mit.</p>
+<p>Frage, weshalb der Wert bestimmt wurde, ob er zur aktuellen Situation passt und welche Untersuchung als Nächstes nötig ist. Medikamente oder Trinkmengen sollten nicht eigenständig verändert werden, nur um NT-proBNP zu senken.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist NT-proBNP dasselbe wie BNP?</strong></p>
+<p>Nein. Die Marker sind verwandt, haben aber unterschiedliche Messwerte und Entscheidungsgrenzen.</p>
+<p><strong>Bedeutet ein hoher Wert automatisch Herzschwäche?</strong></p>
+<p>Nein. Er muss mit Beschwerden, Nierenfunktion und weiteren Untersuchungen beurteilt werden.</p>
+<p><strong>Kann ich damit einen Herzinfarkt ausschliessen?</strong></p>
+<p>Nein. NT-proBNP ist kein alleiniger Test zur Herzinfarktdiagnostik.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Natriuretic Peptide Tests', url: 'https://medlineplus.gov/lab-tests/natriuretic-peptide-tests-bnp-nt-probnp/' },
+      { label: 'Mayo Clinic Laboratories, NT-Pro B-Type Natriuretic Peptide', url: 'https://www.mayocliniclabs.com/test-catalog/overview/615897' },
+      { label: 'NICE, Chronic heart failure, aktuelle Empfehlungen', url: 'https://www.nice.org.uk/guidance/ng106/chapter/recommendations' },
+      { label: 'NHLBI, Heart Failure Symptoms', url: 'https://www.nhlbi.nih.gov/health/heart-failure/symptoms' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/echokardiografie/', label: 'Echokardiografie' },
+      { href: '/gesundheitsbibliothek/untersuchungen/ekg/', label: 'EKG' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/egfr/', label: 'eGFR: Was bedeutet die geschätzte Nierenfunktion?' },
+    ],
+  },
+  {
+    slug: 'd-dimere-erhoeht',
+    gruppe: 'Weitere Werte',
+    title: 'D-Dimere erhöht: Was bedeutet der Befund?',
+    metaTitle: 'D-Dimere erhöht: Bedeutung und Abklärung',
+    metaDescription: 'Erhöhte D-Dimere beweisen kein Blutgerinnsel. Wie der Test mit Beschwerden und Untersuchungen eingeordnet wird und wann sofortige Hilfe nötig ist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10_W2,
+    deck: 'D-Dimere helfen in bestimmten Diagnosewegen bei der Abklärung von Blutgerinnseln. Eine erhöhte Zahl ist unspezifisch und muss medizinisch eingeordnet werden.',
+    primaryPurpose: 'Einordnung des Laborbefunds D-Dimere erhöht; kein Thrombose-Selbsttest, keine Grenzwertvarianten.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). duplexsonografie und wadenschmerzen verlinkt. Aliasse: d dimere erhöht, d-dimer-test im Befundkontext.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Angiologie)',
+    shortAnswerHtml: `<p>D-Dimere sind Bestandteile, die beim Abbau von vernetztem Fibrin entstehen. Fibrin ist Teil eines Blutgerinnsels. Ein erhöhter Wert kann bei einem Gerinnsel vorkommen, hat aber auch andere mögliche Ursachen. Bei plötzlich schwerer Atemnot, Brustschmerzen oder Ohnmacht rufe 144 und warte nicht auf einen weiteren Test.</p>`,
+    bodyHtml: `<h2>Warum werden D-Dimere gemessen?</h2>
+<p>Der Test wird unter anderem bei Verdacht auf eine tiefe Venenthrombose oder Lungenembolie verwendet. Entscheidend ist zunächst, wie wahrscheinlich eine solche Erkrankung anhand von Beschwerden, Untersuchung und Vorgeschichte ist.</p>
+<p>Bei passend niedriger klinischer Wahrscheinlichkeit kann ein negativer Test innerhalb eines geeigneten Diagnosewegs helfen, ein Gerinnsel auszuschliessen. Das ist keine Anleitung, bei verdächtigen Beschwerden selbst einen Test zu bestellen und danach Entwarnung zu geben.</p>
+<h2>Warum kann der Wert auch ohne Thrombose steigen?</h2>
+<p>D-Dimere können beispielsweise bei Entzündung, nach Operationen oder Verletzungen, in der Schwangerschaft und mit zunehmendem Alter erhöht sein. Eine Erhöhung nennt deshalb weder den Ort noch die Ursache einer möglichen Gerinnselbildung.</p>
+<p>Auch <a href="/beschwerden/wadenschmerzen/">Wadenschmerzen</a> allein beweisen keine Thrombose. Neue einseitige Schwellung oder Schmerzen müssen aber medizinisch eingeordnet werden.</p>`,
+    contextHtml: `<p><strong>Einheit und Testverfahren zählen</strong></p>
+<p>D-Dimere können in unterschiedlichen Einheiten und mit verschiedenen Bezugsgrössen angegeben werden, etwa FEU oder DDU. Diese Angaben darfst du nicht ohne Weiteres vergleichen.</p>
+<p>In bestimmten ärztlichen Diagnosewegen werden altersangepasste Entscheidungsgrenzen verwendet. Ob das für deine Situation passt, hängt von Test und klinischer Einschätzung ab. Eine universelle Tabelle für die Selbstdiagnose ist dafür ungeeignet.</p>`,
+    notProofHtml: `<p>Eine hohe Zahl beweist weder eine Thrombose noch eine Lungenembolie. Sie legt auch nicht automatisch fest, dass Gerinnungshemmer nötig sind.</p>
+<p>Ein negativer Test ist nicht bei jeder Ausgangssituation ausreichend. Bei höherem klinischem Verdacht können weitere Untersuchungen erforderlich sein, statt sich auf den Laborwert allein zu verlassen.</p>`,
+    redFlagsHtml: `<p>Ein neu geschwollenes, schmerzendes oder deutlich anders aussehendes Bein sollte zeitnah ärztlich beurteilt werden. Plötzliche Atemnot, Brustschmerzen, Bluthusten oder Ohnmacht brauchen sofort medizinische Hilfe.</p>
+<p>Wenn der Test bereits wegen eines akuten Verdachts angefordert wurde, halte dich an den unmittelbar vereinbarten Abklärungsplan. Eine Kontrollmessung in einigen Wochen ist kein Ersatz für eine erforderliche akute Diagnostik.</p>`,
+    followUpHtml: `<p>Je nach Verdacht wird eine <a href="/gesundheitsbibliothek/untersuchungen/duplexsonografie/">Duplexsonografie</a> der Beinvenen oder eine gezielte Bildgebung des Brustkorbs eingesetzt. Die allgemeine Seite zum <a href="/gesundheitsbibliothek/untersuchungen/ct/">CT</a> erklärt das Verfahren, nicht die persönliche Indikation.</p>
+<p>Frage die untersuchende Praxis, welche Erkrankung ausgeschlossen oder bestätigt werden soll und ob die Bildgebung bereits organisiert ist. Behandle eine vermutete Thrombose nicht selbst mit Massage, Nahrungsergänzung oder eigenständig begonnenen Medikamenten.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bedeuten hohe D-Dimere immer ein Blutgerinnsel?</strong></p>
+<p>Nein. Verschiedene Situationen können den Wert erhöhen.</p>
+<p><strong>Kann ein negativer Test eine Thrombose ausschliessen?</strong></p>
+<p>Nur im passenden ärztlichen Diagnoseweg. Die klinische Wahrscheinlichkeit und das verwendete Verfahren sind entscheidend.</p>
+<p><strong>Sind alle D-Dimer-Zahlen direkt vergleichbar?</strong></p>
+<p>Nein. Einheiten, Bezugsgrössen und Testverfahren können sich unterscheiden.</p>`,
+    sources: [
+      { label: 'MedlinePlus, D-Dimer Test', url: 'https://medlineplus.gov/lab-tests/d-dimer-test/' },
+      { label: 'NICE, Venous thromboembolic diseases, Diagnoseempfehlungen', url: 'https://www.nice.org.uk/guidance/ng158/chapter/Recommendations' },
+      { label: 'NHLBI, Pulmonary Embolism', url: 'https://www.nhlbi.nih.gov/health/pulmonary-embolism' },
+      { label: 'NICE, Altersanpassung und Begründung', url: 'https://www.nice.org.uk/guidance/NG158/chapter/rationale-and-impact' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/wadenschmerzen/', label: 'Wadenschmerzen' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/ct/', label: 'CT' },
+      { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', label: 'Duplexsonografie' },
     ],
   },
 ];
