@@ -33,6 +33,27 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   'cluster-kopfschmerzen': [
     { slug: 'was-hilft-gegen-kopfschmerzen', label: 'Unsicher, welche Kopfschmerzart? Der Überblick' },
   ],
+  ischias: [
+    { slug: 'akupunktur-bei-ischias', label: 'Akupunktur bei Ischias: Studienlage, Grenzen und Ablauf' },
+  ],
+  endometriose: [
+    { slug: 'akupunktur-bei-endometriose', label: 'Akupunktur bei Endometriose: was die Studien zeigen' },
+  ],
+  fibromyalgie: [
+    { slug: 'akupunktur-bei-fibromyalgie', label: 'Akupunktur bei Fibromyalgie: was der Cochrane-Review zeigt' },
+  ],
+  tinnitus: [
+    { slug: 'akupunktur-bei-tinnitus', label: 'Akupunktur bei Tinnitus: Evidenz ehrlich eingeordnet' },
+  ],
+  polyneuropathie: [
+    { slug: 'akupunktur-bei-polyneuropathie', label: 'Akupunktur bei Polyneuropathie: Evidenz und Grenzen' },
+  ],
+  hueftschmerzen: [
+    { slug: 'akupunktur-bei-hueftschmerzen', label: 'Akupunktur bei Hüftschmerzen und Hüftarthrose: die Studienlage' },
+  ],
+  koxarthrose: [
+    { slug: 'akupunktur-bei-hueftschmerzen', label: 'Akupunktur bei Hüftarthrose: was der Cochrane-Review zeigt' },
+  ],
   schlafprobleme: [
     { slug: 'akupunktur-schlafprobleme', label: 'Akupunktur bei Schlafproblemen: Studien und Ablauf' },
     { slug: 'muedigkeit-im-herbst', label: 'Müdigkeit im Herbst: Licht, Zeitumstellung und was hilft' },
