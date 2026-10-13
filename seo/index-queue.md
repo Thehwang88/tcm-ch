@@ -354,6 +354,18 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/homa-index/
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/egfr/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/cystatin-c/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/helicobacter-test/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/zoeliakie-test/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/hpv-test/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/retikulozyten/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/inr-quick/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/aptt/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/nt-probnp/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/d-dimere-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/biopsie/
 
 ## Geplant (noch nicht live)
 

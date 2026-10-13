@@ -1,0 +1,159 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 2, redaktionelles Paket 13.10.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch. Texte 1:1 aus dem
+// Paket; Publikationsdatum ueber PUBLISHED_LABORWERTE_2026_10_W2 (Schema nur mit gesetztem Datum).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_LABORWERTE_2026_10_W2 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/biopsie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Biopsie: Ablauf, Gewebeprobe und Ergebnis';
+const description = 'Bei einer Biopsie wird Gewebe untersucht. Welche Verfahren es gibt, was das Ergebnis aussagen kann und warum Vorbereitung und Nachsorge unterschiedlich sind.';
+const published = PUBLISHED_LABORWERTE_2026_10_W2;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Biopsie: Was passiert bei einer Gewebeprobe?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Biopsie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/mammographie/', label: 'Mammographie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+];
+const rel3Links = [
+  { href: '/gesundheitsbibliothek/befunde-werte/inr-quick/', label: 'INR und Quick: Was bedeuten die Gerinnungswerte?' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Biopsie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Biopsie: Was passiert bei einer Gewebeprobe?</h1>
+        <p class="lead">Eine Biopsie klärt eine konkrete Gewebefrage. Dass eine Probe empfohlen wird, bedeutet noch nicht, dass eine bösartige Erkrankung vorliegt.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Biopsie wird ärztlich veranlasst und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Bei einer Biopsie wird eine kleine Gewebeprobe entnommen und im Labor untersucht. Sie kann helfen, entzündliche, gutartige und bösartige Veränderungen auseinanderzuhalten. Der Ablauf hängt davon ab, welches Organ untersucht wird und wie die Probe entnommen werden soll.</p>
+          </div>
+
+          <h2>Warum reicht ein Bild manchmal nicht?</h2>
+          <p><a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a>, CT oder andere Bilder können eine auffällige Stelle zeigen. Sie beantworten aber nicht immer, welche Zellen dort vorhanden sind. Eine Gewebeprobe liefert zusätzliche Information über den Aufbau des untersuchten Gewebes.</p>
+          <p>Der Auftrag kann eine mögliche Tumorerkrankung betreffen, aber auch Entzündung oder andere Veränderungen. Eine Biopsieempfehlung ist deshalb noch keine Krebsdiagnose.</p>
+          <h2>Welche Formen gibt es?</h2>
+          <p>Eine Probe kann mit einer Nadel unter Bildkontrolle gewonnen werden. Bei einer Stanzbiopsie wird ein kleines Gewebestück entnommen. Bei anderen Verfahren wird während einer Spiegelung oder eines operativen Eingriffs Gewebe gewonnen.</p>
+          <p>Bei einer <a href="/gesundheitsbibliothek/untersuchungen/gastroskopie/">Gastroskopie</a> können beispielsweise Schleimhautproben entnommen werden. Eine Probe nach einem auffälligen Brustbefund folgt einem anderen Ablauf; die Seite zur <a href="/gesundheitsbibliothek/untersuchungen/mammographie/">Mammographie</a> erklärt die vorausgehende Bildgebung.</p>
+
+          <h2>Vorbereitung ist nicht bei jeder Biopsie gleich</h2>
+          <p>Ob du nüchtern sein musst, eine örtliche Betäubung oder Sedierung bekommst und danach begleitet werden solltest, hängt vom Verfahren ab. Die untersuchende Einrichtung gibt dir die konkreten Vorgaben.</p>
+          <p>Informiere sie über Gerinnungshemmer, andere Medikamente, Allergien und relevante Erkrankungen. Setze Medikamente nicht eigenständig ab. Bei manchen Eingriffen werden Gerinnungsbefunde wie <a href="/gesundheitsbibliothek/befunde-werte/inr-quick/">INR und Quick</a> berücksichtigt.</p>
+
+          <h2>Grenzen</h2>
+          <p>Die Aussagekraft hängt davon ab, ob die Probe die gesuchte Stelle ausreichend erfasst und genügend Material enthält. Ein unklarer oder nicht repräsentativer Befund kann deshalb weitere Abklärung erfordern.</p>
+          <p>Auch „gutartig“ und „bösartig“ sind nicht die einzigen möglichen Ergebnisse. Je nach Fragestellung enthält der Bericht Angaben zu Entzündung, Gewebeveränderungen oder weiteren Eigenschaften. Die behandelnde Praxis ordnet ihn mit Bildgebung und Vorgeschichte ein.</p>
+
+          <h2>Wann eine Abklärung wichtig ist</h2>
+          <p>Blutung, Infektion oder Schmerzen sind mögliche Risiken, deren Bedeutung vom Eingriff abhängt. Nimm den individuellen Nachsorgeplan ernst.</p>
+          <p>Anhaltende stärkere Blutungen, zunehmende Schwellung, Fieber oder deutlich stärker werdende Schmerzen nach dem Eingriff müssen medizinisch abgeklärt werden. Bei schwerer Atemnot, Kreislaufzusammenbruch oder anderen schweren akuten Beschwerden rufe 144.</p>
+
+          <h2>Nächste Schritte</h2>
+          <p>Frage vor der Untersuchung, welches Gewebe entnommen wird, welche Frage beantwortet werden soll und wie du dich vorbereitest. Kläre auch, wer das Ergebnis mit dir bespricht.</p>
+          <p>Bis das Labor den Befund fertiggestellt hat, kann es mehrere Tage oder länger dauern. Ein ausbleibender Anruf ist keine sichere Entwarnung. Melde dich bei der zuständigen Stelle, wenn der vereinbarte Zeitpunkt für die Rückmeldung überschritten ist.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Bedeutet eine Biopsie, dass Krebs vermutet wird?</h3>
+          <p>Das kann eine Fragestellung sein, ist aber nicht die einzige. Auch entzündliche oder andere Veränderungen werden mit Gewebeproben untersucht.</p>
+          <h3>Ist eine Biopsie immer schmerzhaft?</h3>
+          <p>Das hängt vom Verfahren und der Betäubung ab. Die Einrichtung erklärt dir, was bei deinem Eingriff zu erwarten ist.</p>
+          <h3>Darf ich Gerinnungshemmer vorher absetzen?</h3>
+          <p>Nicht eigenständig. Die zuständige Praxis legt den Medikamentenplan für den Eingriff fest.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.usz.ch/fachbereich/diagnostische-interventionelle-radiologie/angebot/ultraschall-sonographie-gezielte-biopsie-und-drainagen/" target="_blank" rel="noopener">University Hospital Zurich, Ultraschallgezielte Biopsie</a></li>
+            <li><a href="https://www.cancer.gov/about-cancer/diagnosis-staging/diagnosis" target="_blank" rel="noopener">National Cancer Institute, Tests and Procedures Used to Diagnose Cancer</a></li>
+            <li><a href="https://www.guysandstthomas.nhs.uk/health-information/biopsy-interventional-radiology-department" target="_blank" rel="noopener">Guy’s and St Thomas’ NHS Foundation Trust, Biopsy overview</a></li>
+            <li><a href="https://www.guysandstthomas.nhs.uk/health-information/biopsy-interventional-radiology-department/after-having-biopsy" target="_blank" rel="noopener">Guy’s and St Thomas’ NHS Foundation Trust, After having a biopsy</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+        <LibraryRelated label="Befunde &amp; Werte" title="Verwandte Befunde" links={rel3Links} allHref="/gesundheitsbibliothek/befunde-werte/" allLabel="Alle Befunde" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Unsicher, was der nächste Schritt ist?</div>
+          <p>Diese Untersuchung wird ärztlich veranlasst und beurteilt. Wenn du nach der Abklärung wissen möchtest, ob eine ergänzende Behandlung sinnvoll ist, helfen wir bei der Einordnung.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/standorte/">Praxis finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

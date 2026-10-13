@@ -4685,6 +4685,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Ärztlich beurteilen lassen solltest du: auffallend viele oder grosse Flecken ohne erinnerliche Ursache, Flecken an ungewöhnlichen Stellen wie Rumpf oder Gesicht, zusätzlich Zahnfleisch- oder Nasenbluten, sehr lange Blutungen nach kleinen Verletzungen, punktförmige rote Einblutungen (Petechien) oder Flecken zusammen mit Fieber, Blässe oder deutlicher Müdigkeit. Auch unter Blutverdünnern gehört eine neue, deutliche Häufung angesprochen – die Medikamente aber nie eigenmächtig absetzen.</p>
 <h2>Wie abgeklärt wird</h2>
 <p>Meist genügen Gespräch, Untersuchung und Blutwerte – insbesondere ein <a href="/gesundheitsbibliothek/untersuchungen/grosses-blutbild/">Blutbild</a> mit Blutplättchen und Gerinnungstests –, um die Blutungsneigung einzuordnen.</p>
+<p>Je nach Situation werden neben dem Blutbild Gerinnungstests wie die <a href="/gesundheitsbibliothek/befunde-werte/aptt/">aPTT</a> geprüft.</p>
 <h2>Welche Rolle kann TCM spielen?</h2>
 <p>Eine unklare Blutungsneigung ist kein Einsatzgebiet für TCM: Zuerst gehört sie medizinisch abgeklärt. Zur Einordnung: Nach einer Akupunktur- oder Schröpfbehandlung können einzelne kleine Hämatome an den behandelten Stellen entstehen – das ist eine bekannte, harmlose Begleiterscheinung und etwas anderes als spontane blaue Flecken.</p>`,
     faqs: [
