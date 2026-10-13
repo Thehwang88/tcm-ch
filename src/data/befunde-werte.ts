@@ -31,6 +31,10 @@ export interface BefundWertLink {
 export interface BefundWert {
   slug: string;
   title: string;
+  /** Optionaler SEO-Title (ohne « | TCM.ch»); Fallback: title. */
+  metaTitle?: string;
+  /** Optionale Meta-Description; Fallback: deck. */
+  metaDescription?: string;
   category: BefundWertKategorie;
   /** Thematische Hub-Gruppe (nur Anzeige-Label, keine URL). Fallback: 'Weitere Werte'. */
   gruppe?: string;
@@ -73,6 +77,10 @@ export const HUB_INDEXABLE = true;
 
 // Anzeige-Reihenfolge der Hub-Gruppen (Phase: Cluster-Ausbau 24.09.2026).
 export const GRUPPEN_ORDER = ['Blutbild', 'Leber & Enzyme', 'Bauchspeicheldrüse', 'Elektrolyte', 'Stoffwechsel', 'Vitamine & Eisenspeicher', 'Entzündung', 'Schilddrüse', 'Niere & Blutdruck', 'Urin', 'Weitere Werte'];
+
+// Laborwerte-Welle 13.10.2026 (redaktionelles Paket, 8 Leaves): Publikationsdatum
+// erst bei tatsächlicher Veröffentlichung setzen (ein Wert für alle acht Einträge).
+export const PUBLISHED_LABORWERTE_2026_10: string | undefined = undefined;
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -139,7 +147,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Einzelwert oder Verlauf?</h2>
 <p>Ein einzelner TSH-Wert ist eine Momentaufnahme, und der Wert schwankt auch bei Gesunden. Für die Einordnung zählen der Referenzbereich deines Labors, eine <strong>Kontrollmessung</strong> nach einigen Wochen bis Monaten, das fT4 und je nach Situation weitere Werte sowie deine Beschwerden. Erst dieses Gesamtbild trägt eine Entscheidung.</p>`,
     notProofHtml: `<p>Ein erhöhtes TSH beweist <strong>keine Schilddrüsenerkrankung</strong> und erklärt nicht automatisch Müdigkeit, Gewichtszunahme oder Stimmungstief, auch wenn diese Verknüpfung oft gezogen wird. Solche Beschwerden haben viele mögliche Ursachen. Umgekehrt schliesst ein normales TSH nicht jede Schilddrüsenfrage aus. Die Zuordnung von Beschwerden zu einem Laborwert ist eine ärztliche Aufgabe.</p>`,
-    followUpHtml: `<p>Der übliche nächste Schritt ist unspektakulär: eine <strong>Kontrollmessung</strong> mit fT4 nach einigen Wochen bis Monaten, dazu das Gespräch über Beschwerden und Medikamente. Je nach Ergebnis folgen gezielt weitere Werte oder ein Ultraschall der Schilddrüse. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Der übliche nächste Schritt ist unspektakulär: eine <strong>Kontrollmessung</strong> mit fT4 nach einigen Wochen bis Monaten, dazu das Gespräch über Beschwerden und Medikamente. Je nach Ergebnis folgen gezielt weitere Werte oder ein Ultraschall der Schilddrüse. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/ft3-ft4/">freien Schilddrüsenhormone fT3 und fT4</a> ergänzen die Funktionsbeurteilung; <a href="/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/">TPO-Antikörper</a> können Hinweise auf eine autoimmune Ursache geben.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich besprechen solltest du den Befund, wenn gleichzeitig deutliche Beschwerden bestehen, etwa ausgeprägte Müdigkeit und Verlangsamung, starkes Frieren, deutliche Gewichtsveränderung, eine sichtbare Schwellung am Hals oder Schluckbeschwerden. In der Schwangerschaft oder bei Kinderwunsch gehört ein erhöhtes TSH immer und ohne Verzögerung in ärztliche Hände.</p>`,
     integrativeContextHtml: `<p>Schilddrüsenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert TSH nicht und stellt daraus keine Diagnosen. Erst wenn ärztlich geklärt ist, was hinter dem Befund steckt, kann sich die Frage stellen, ob eine komplementäre Behandlung, bezogen auf die Diagnose und deine konkreten Beschwerden, sinnvoll ist. Das besprechen wir ehrlich im Einzelfall.</p>`,
     relatedSignals: [
@@ -333,7 +342,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Einzelwert oder Verlauf?</h2>
 <p>Für die Einordnung zählen der Vergleich mit früheren Werten, eine Kontrollmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), oft ein Urintest auf Eiweiss und der klinische Kontext wie Blutdruck und Diabetes. Ein einmalig leicht auffälliger Wert bei gutem Befinden wird häufig zuerst kontrolliert.</p>`,
     notProofHtml: `<p>Ein einmalig erhöhtes Kreatinin beweist keine chronische Nierenerkrankung, und eine einzelne eGFR-Zahl ist keine Prozentangabe der "Nierengesundheit". Umgekehrt schliessen normale Werte eine beginnende Nierenschädigung nicht sicher aus; dafür braucht es je nach Risiko zusätzlich den Urin-Befund.</p>`,
-    followUpHtml: `<p>Üblich sind eine <strong>Wiederholungsmessung</strong>, ein Urintest (u.a. auf Eiweiss/Albumin), Blutdruckkontrolle, die Durchsicht der Medikamente und je nach Situation ein Ultraschall der Nieren. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Wiederholungsmessung</strong>, ein Urintest (u.a. auf Eiweiss/Albumin), Blutdruckkontrolle, die Durchsicht der Medikamente und je nach Situation ein Ultraschall der Nieren. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p>Wie die <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> berechnet und im Verlauf beurteilt wird, erklärt die eigene Befundseite.</p>`,
     redFlagsHtml: `<p>Zeitnah medizinisch beurteilt gehören: deutlich weniger oder kein Urin, starke Wassereinlagerungen, Atemnot, Übelkeit mit Verwirrtheit, Flankenschmerzen mit Fieber oder ein rasch angestiegener Wert. Solche Konstellationen können auf eine akute Nierenschädigung oder eine Infektion hinweisen.</p>`,
     integrativeContextHtml: `<p>Nierenwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Kreatinin und eGFR nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
@@ -552,7 +562,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Welche Werte helfen bei der Einordnung?</h2>
 <p>Vor allem die <strong>Transferrinsättigung</strong> (erhöht bei echter Eisenüberladung, meist normal bei Entzündung), Entzündungswerte, Leberwerte und das Blutbild. Erst dieses Set trennt "Eisenproblem" von "Ferritin als Entzündungs- oder Leberzeichen". Der gegenteilige Befund ist hier erklärt: <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin zu niedrig</a>.</p>`,
     notProofHtml: `<p>Ein erhöhtes Ferritin beweist keine Hämochromatose und keine Eisenüberladung; ohne erhöhte Transferrinsättigung ist Eisen oft gar nicht das Thema. Es beweist auch keine bestimmte Entzündung oder Lebererkrankung. Und: Eisenpräparate einzunehmen oder abzusetzen ist auf Basis dieses Werts allein nie die richtige Konsequenz.</p>`,
-    followUpHtml: `<p>Üblich sind die <strong>Transferrinsättigung</strong>, CRP, Leberwerte und Blutbild, eine Kontrollmessung mit Abstand zu Infekten und je nach Konstellation weitere gezielte Abklärung (bei Verdacht auf Hämochromatose auch genetisch). Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Transferrinsättigung</strong>, CRP, Leberwerte und Blutbild, eine Kontrollmessung mit Abstand zu Infekten und je nach Konstellation weitere gezielte Abklärung (bei Verdacht auf Hämochromatose auch genetisch). Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/">Transferrinsättigung</a> kann helfen, einen erhöhten Ferritinwert im Eisenhaushalt einzuordnen.</p>`,
     redFlagsHtml: `<p>Zügig besprechen solltest du sehr hohe oder rasch steigende Werte, ein erhöhtes Ferritin zusammen mit deutlich erhöhten Leberwerten, Gelenkschmerzen, ausgeprägter Müdigkeit oder bekannter familiärer Eisenspeicherkrankheit.</p>`,
     integrativeContextHtml: `<p>Die Abklärung eines erhöhten Ferritins gehört in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Wert nicht und behandelt keine Eisenüberladung. Eine komplementäre Begleitung ist höchstens nach der ärztlichen Einordnung ein Thema.</p>`,
     relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
@@ -1177,7 +1188,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Können Medikamente Kreatinin beeinflussen?</h2>
 <p>Ja. Bestimmte Medikamente können Kreatinin oder die Nierenfunktion beeinflussen. Medikamente sollten deshalb bei der Interpretation berücksichtigt werden. Ändere oder stoppe verschriebene Medikamente aber nicht aufgrund eines Laborwertes selbstständig.</p>`,
     notProofHtml: `<p>Ein erhöhtes Kreatinin ist keine Diagnose einer Nierenerkrankung. Der Wert wird auch durch Muskelmasse, Flüssigkeitshaushalt, Belastung und Medikamente beeinflusst. Umgekehrt schliesst ein normales Kreatinin, besonders bei geringer Muskelmasse, eine beginnende Einschränkung nicht sicher aus. Referenzbereiche unterscheiden sich je nach Labor, Methode und persönlichen Faktoren; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
-    followUpHtml: `<p>Üblich sind eine Wiederholungsmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), die eGFR, je nach Situation Harnstoff, Elektrolyte, eine Urinuntersuchung inklusive Albumin sowie der Vergleich mit früheren Werten und die Durchsicht der Medikamentenliste.</p>`,
+    followUpHtml: `<p>Üblich sind eine Wiederholungsmessung unter besseren Bedingungen (ausreichend getrunken, ohne vorherige intensive Belastung), die eGFR, je nach Situation Harnstoff, Elektrolyte, eine Urinuntersuchung inklusive Albumin sowie der Vergleich mit früheren Werten und die Durchsicht der Medikamentenliste.</p>
+<p>Aus Kreatinin wird häufig die <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> berechnet, eine Schätzung der Nierenfilterleistung.</p>`,
     redFlagsHtml: `<p>Besonders wichtig ist eine ärztliche Einordnung bei neu deutlich erhöhtem Wert, sinkender eGFR, Veränderungen der Urinmenge, Schwellungen, Atemnot, ausgeprägter Schwäche, auffälligen Elektrolyten oder bekannten Nierenerkrankungen.</p>`,
     integrativeContextHtml: `<p>Kreatinin und eGFR gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert Nieren-Laborwerte nicht, und der TCM-Begriff Niere ist nicht mit dem Organbefund gleichzusetzen. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedConditions: [{ href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' }],
@@ -2049,7 +2061,8 @@ export const befundeWerte: BefundWert[] = [
 <h2>Welche anderen Werte helfen?</h2>
 <p>Zur Einordnung werden häufig Blutbild und weitere Parameter des Eisenstoffwechsels betrachtet. Ob bereits eine Blutarmut besteht, lässt sich beispielsweise nicht am Ferritin allein erkennen.</p>
 <h2>Niedriges Ferritin und Eisenmangel</h2>
-<p>Ein deutlich vermindertes Ferritin passt häufig zu leeren oder reduzierten Eisenspeichern. Für das Krankheitsbild und seine Behandlung gibt es auf TCM.ch eine eigene Seite zu <a href="/beschwerden/eisenmangel/">Eisenmangel</a>. Diese Befundseite erklärt dagegen ausschliesslich den Laborwert.</p>`,
+<p>Ein deutlich vermindertes Ferritin passt häufig zu leeren oder reduzierten Eisenspeichern. Für das Krankheitsbild und seine Behandlung gibt es auf TCM.ch eine eigene Seite zu <a href="/beschwerden/eisenmangel/">Eisenmangel</a>. Diese Befundseite erklärt dagegen ausschliesslich den Laborwert.</p>
+<p>Die <a href="/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/">Transferrinsättigung</a> ist ein ergänzender Befund und nicht mit Ferritin gleichzusetzen.</p>`,
     redFlagsHtml: `<p>Bei niedrigem Ferritin sollte nicht nur der Wert selbst betrachtet werden. Entscheidend ist auch, warum die Eisenspeicher reduziert sind. Besonders bei Männern, nach der Menopause oder bei unerklärtem beziehungsweise wiederkehrendem Eisenmangel kann eine gezielte ärztliche Ursachenabklärung notwendig sein.</p>`,
     integrativeContextHtml: `<p>Ein Laborwert wie Ferritin lässt sich nicht direkt in ein traditionelles TCM-Muster übersetzen. Die medizinische Abklärung des Eisenstatus und möglicher Ursachen steht im Vordergrund.</p>`,
     relatedConditions: [{ href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' }],
@@ -2085,7 +2098,8 @@ export const befundeWerte: BefundWert[] = [
 <li><strong>Störfaktoren:</strong> Zustände, die die Lebensdauer der roten Blutkörperchen verändern (etwa Blutarmut, Eisenmangel oder bestimmte Blutkrankheiten), können den Wert verfälschen, in beide Richtungen. Auch das gehört in die ärztliche Beurteilung.</li>
 </ul>`,
     notProofHtml: `<p>Ein einzelner erhöhter HbA1c beweist keinen Diabetes und sagt nichts darüber, wie sich dein Blutzucker an einem bestimmten Tag verhält. Umgekehrt schliesst ein unauffälliger HbA1c kurzfristige Blutzuckerspitzen nicht aus. Und er erklärt aktuelle Beschwerden wie Müdigkeit oder Durst nicht automatisch; das gehört klinisch eingeordnet.</p>`,
-    followUpHtml: `<p>Üblich sind eine <strong>Bestätigungs- oder Verlaufsmessung</strong>, je nach Situation Nüchternblutzucker oder weitere Werte, das Gespräch über Risikofaktoren (Gewicht, Blutdruck, Blutfette, Familiengeschichte) und daraus die gemeinsame Entscheidung über Kontrollintervalle. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Bestätigungs- oder Verlaufsmessung</strong>, je nach Situation Nüchternblutzucker oder weitere Werte, das Gespräch über Risikofaktoren (Gewicht, Blutdruck, Blutfette, Familiengeschichte) und daraus die gemeinsame Entscheidung über Kontrollintervalle. Eine Übersicht über gängige Abklärungen findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
+<p>Der <a href="/gesundheitsbibliothek/befunde-werte/homa-index/">HOMA-Index</a> beantwortet eine andere Frage und ersetzt die Beurteilung des Zuckerstoffwechsels anhand von HbA1c nicht.</p>`,
     redFlagsHtml: `<p>Der HbA1c-Wert selbst ist kein Notfall. Rasch medizinisch beurteilt gehören dagegen ausgeprägter Durst mit häufigem Wasserlassen, ungewollter Gewichtsverlust, starke Müdigkeit mit Übelkeit oder Erbrechen, tiefe oder auffällige Atmung sowie Verwirrtheit, unabhängig vom Laborwert.</p>`,
     integrativeContextHtml: `<p>Die Beurteilung des Zuckerstoffwechsels und die Entscheidung über eine Behandlung gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert HbA1c nicht und ersetzt weder Diagnostik noch eine notwendige Therapie. Erst auf Basis der ärztlichen Einordnung kann sich die Frage stellen, ob eine komplementäre Begleitung bei konkreten Beschwerden sinnvoll ist.</p>`,
     relatedArticles: [
@@ -2382,6 +2396,362 @@ export const befundeWerte: BefundWert[] = [
       { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht' },
       { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie)' },
       { href: '/gesundheitsbibliothek/befunde-werte/leukozyten-im-urin/', label: 'Leukozyten im Urin' },
+    ],
+  },
+  {
+    slug: 'amh-wert',
+    gruppe: 'Weitere Werte',
+    title: 'AMH-Wert: Was sagt er über die Eizellreserve?',
+    metaTitle: 'AMH-Wert: Aussagekraft und Grenzen',
+    metaDescription: 'AMH gibt Hinweise auf die Eizellreserve, aber keine sichere Schwangerschaftsprognose. So werden niedrige und hohe Werte im Zusammenhang eingeordnet.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'Ein AMH-Wert kann bei der Kinderwunschabklärung helfen. Er zählt keine Eizellen und sagt nicht zuverlässig voraus, ob du natürlich schwanger wirst.',
+    primaryPurpose: 'Einordnung des Laborwerts AMH (ovarielle Reserve), keine Kinderwunsch-Beratungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner für den Befund-Intent AMH (geprüft 13.10.2026 gegen Map und Guards). kinderwunsch und pcos bleiben Erkrankungs-Owner (verlinkt); fsh-wert ist Schwester-Befund (beidseitig verlinkt). Aliasse: amh, amh wert, anti-müller-hormon.',
+    suggestedReviewerType: 'Ärztliche Review (Gynäkologie/Reproduktionsmedizin)',
+    shortAnswerHtml: `<p>AMH steht für Anti-Müller-Hormon. Bei Frauen wird es in kleinen heranwachsenden Follikeln der Eierstöcke gebildet. Der Blutwert gibt Hinweise auf die sogenannte ovarielle Reserve. Er ist besonders hilfreich, wenn eine Kinderwunschbehandlung geplant wird. Ein niedriger AMH-Wert bedeutet aber nicht automatisch, dass eine natürliche Schwangerschaft ausgeschlossen ist.</p>`,
+    bodyHtml: `<h2>Was wird mit AMH untersucht?</h2>
+<p>Die ovarielle Reserve beschreibt die noch vorhandene Eizellmenge, nicht deren Qualität. AMH ist ein indirekter Marker: Der Test erfasst ein Hormon im Blut, keine genaue Zahl verbliebener Eizellen. Für die Einordnung können auch Alter, Zyklusverlauf und Ultraschallbefunde wichtig sein.</p>
+<p>Bei einer künstlichen Befruchtung kann AMH helfen einzuschätzen, wie die Eierstöcke voraussichtlich auf eine hormonelle Stimulation reagieren. Das ist eine andere Frage als die Wahrscheinlichkeit, ohne Behandlung schwanger zu werden.</p>
+<h2>AMH niedrig oder hoch: Was bedeutet das?</h2>
+<p>Ein niedriger Wert kann zu einer verminderten Reserve passen. Ob und welche Konsequenzen daraus entstehen, wird in der gynäkologischen Abklärung besprochen. Ein höherer Wert kann unter anderem bei <a href="/beschwerden/pcos/">PCOS</a> vorkommen. Er beweist PCOS jedoch nicht allein und ist keine Garantie für eine Schwangerschaft.</p>`,
+    contextHtml: `<p><strong>Warum es keine passende Normtabelle für alle gibt</strong></p>
+<p>AMH verändert sich mit dem Alter. Ausserdem müssen Messmethode und Einheit berücksichtigt werden. Werte in ng/ml und pmol/l darfst du nicht direkt vergleichen.</p>
+<p>AMH ist weniger vom Zyklustag abhängig als einige andere Hormone. Hormonelle Verhütung kann die gemessene Konzentration jedoch beeinflussen. Teile der behandelnden Praxis deshalb mit, welche Medikamente und Verhütungsmittel du verwendest.</p>`,
+    notProofHtml: `<p><strong>Was der Wert nicht beantworten kann</strong></p>
+<p>AMH ist kein zuverlässiger Einzeltest für deine aktuelle natürliche Fruchtbarkeit. Er sagt weder die Qualität einzelner Eizellen noch den genauen Zeitpunkt der Menopause voraus. Auch eine vorzeitige Einschränkung der Eierstockfunktion wird nicht allein anhand von AMH diagnostiziert.</p>
+<p>Ein auffälliger Wert ist deshalb Anlass für ein Gespräch, kein abschliessendes Urteil über deinen <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a>.</p>`,
+    redFlagsHtml: `<p>Ein niedriger AMH-Wert allein ist kein Notfall. Wenn deine Periode länger ausbleibt, deutlich unregelmässig wird oder du bei unerfülltem Kinderwunsch einen auffälligen Befund erhalten hast, vereinbare eine gynäkologische Abklärung. Warte damit nicht auf einen vermeintlich besseren Wert durch Nahrungsergänzungsmittel.</p>`,
+    followUpHtml: `<p>Nimm den vollständigen Laborbericht mit Einheit und Referenzbereich mit. Frage, welche konkrete Entscheidung der Wert unterstützen soll. Je nach Fragestellung werden Ultraschall, Zyklusgeschichte und weitere Werte ergänzt. Der <a href="/gesundheitsbibliothek/befunde-werte/fsh-wert/">FSH-Wert</a> beantwortet eine verwandte, aber andere Frage. Welche Untersuchungen grundsätzlich infrage kommen, erklärt die Seite zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>.</p>`,
+    sources: [
+      { label: 'ASRM, Testing and interpreting measures of ovarian reserve, 2020', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/testing-and-interpreting-measures-of-ovarian-reserve-a-committee-opinion-2020/' },
+      { label: 'MedlinePlus, Anti-Müllerian Hormone Test', url: 'https://medlineplus.gov/lab-tests/anti-mullerian-hormone-test/' },
+      { label: 'ASRM/ESHRE, Evidence-based guideline: Premature Ovarian Insufficiency, 2025', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/evidence-based-guideline-premature-ovarian-insufficiency--2024/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch' },
+      { href: '/beschwerden/pcos/', label: 'PCOS' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/fsh-wert/', label: 'FSH-Wert: Warum der Zeitpunkt wichtig ist' },
+    ],
+  },
+  {
+    slug: 'prolaktin-erhoeht',
+    gruppe: 'Weitere Werte',
+    title: 'Prolaktin erhöht: Ursachen und nächste Schritte',
+    metaTitle: 'Prolaktin erhöht: Was bedeutet der Befund?',
+    metaDescription: 'Prolaktin kann durch Schwangerschaft, Medikamente oder andere Ursachen erhöht sein. Was bei der Einordnung zählt und wann weitere Abklärung sinnvoll ist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'Ein erhöhtes Prolaktin hat verschiedene mögliche Ursachen. Entscheidend sind Beschwerden, Medikamente, Messbedingungen und gegebenenfalls eine Kontrollmessung.',
+    primaryPurpose: 'Einordnung des Laborbefunds Prolaktin erhöht (Hyperprolaktinämie im Befundkontext), keine Erkrankungsseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). zyklusbeschwerden, kinderwunsch und schilddruesenunterfunktion bleiben Erkrankungs-Owner (verlinkt). Aliasse: prolaktin erhöht, hyperprolaktinämie (Befundkontext).',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Gynäkologie)',
+    shortAnswerHtml: `<p>Prolaktin ist ein Hormon aus der Hirnanhangsdrüse. Es spielt unter anderem bei der Milchbildung eine Rolle. In Schwangerschaft und Stillzeit steigt es natürlicherweise an. Ausserhalb dieser Situationen kann ein erhöhter Wert verschiedene Gründe haben. Ein einzelner auffälliger Befund beweist weder eine Erkrankung der Hirnanhangsdrüse noch, dass du sofort eine Behandlung brauchst.</p>`,
+    bodyHtml: `<h2>Welche Ursachen kommen infrage?</h2>
+<p>Zu den möglichen Einflüssen gehören Stress rund um die Blutentnahme, körperliche Belastung und bestimmte Medikamente. Auch eine <a href="/beschwerden/schilddruesenunterfunktion/">Schilddrüsenunterfunktion</a> oder eine eingeschränkte Nierenfunktion können mit erhöhtem Prolaktin zusammenhängen.</p>
+<p>Eine weitere mögliche Ursache ist ein Prolaktinom. Das ist ein meist gutartiger Tumor der Hirnanhangsdrüse, der Prolaktin produziert. Ob ein solcher Befund vorliegt, lässt sich aus einem leicht erhöhten Einzelwert nicht ablesen.</p>
+<h2>Welche Beschwerden können dazugehören?</h2>
+<p>Erhöhtes Prolaktin kann mit unregelmässiger oder ausbleibender Periode, Milchfluss ausserhalb der Stillzeit und Problemen beim Kinderwunsch verbunden sein. Bei Männern sind unter anderem verminderte Libido und Erektionsprobleme möglich. Es gibt aber auch Menschen ohne deutliche Beschwerden.</p>
+<p>Die Ursachen solcher Symptome sind vielfältig. Der Wert wird deshalb mit dem Verlauf deiner <a href="/beschwerden/zyklusbeschwerden/">Zyklusbeschwerden</a> und den übrigen Untersuchungen zusammen betrachtet.</p>`,
+    contextHtml: `<p>Prolaktin schwankt im Tagesverlauf. Bei einer Kontrollmessung können Zeitpunkt, Ruhe vor der Blutentnahme und die Vorgaben des Labors wichtig sein. Ob du nüchtern kommen sollst, sagt dir die untersuchende Praxis.</p>
+<p>Nimm eine vollständige Medikamentenliste mit. Setze Medikamente nicht selbst ab, um den Wert zu verändern. Auch wenn ein Medikament als Ursache infrage kommt, muss eine Änderung mit der verschreibenden Ärztin oder dem Arzt abgestimmt werden.</p>`,
+    notProofHtml: `<p>Ein erhöhter Prolaktinwert bedeutet nicht automatisch, dass ein MRT nötig ist. Zuerst wird geprüft, ob die Erhöhung bestätigt ist und ob andere Erklärungen vorliegen.</p>
+<p>Manchmal trägt sogenanntes Makroprolaktin zum Messwert bei. Diese Form wirkt biologisch weniger stark. Ob eine entsprechende Laborprüfung sinnvoll ist, entscheidet die ärztliche Abklärung.</p>`,
+    redFlagsHtml: `<p>Bei anhaltendem Milchfluss, ausbleibender Periode oder wiederholt erhöhtem Prolaktin ist eine ärztliche Besprechung sinnvoll. Plötzlich starke Kopfschmerzen zusammen mit neuen Sehproblemen gehören sofort medizinisch beurteilt. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Die Abklärung kann eine erneute Prolaktinmessung, einen Schwangerschaftstest, Schilddrüsen- und Nierenwerte umfassen. Bei begründetem Verdacht folgt gegebenenfalls ein <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>. Welche Hormone für welche Fragestellung geprüft werden, erklärt der <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>. Die weitere Behandlung richtet sich nach der Ursache.</p>`,
+    sources: [
+      { label: 'Endocrine Society, Hyperprolactinemia', url: 'https://www.endocrine.org/patient-engagement/endocrine-library/hyperprolactinemia' },
+      { label: 'MedlinePlus, Prolactin Levels', url: 'https://medlineplus.gov/lab-tests/prolactin-levels/' },
+      { label: 'NIDDK, Prolactinoma', url: 'https://www.niddk.nih.gov/health-information/endocrine-diseases/prolactinoma' },
+      { label: 'Endocrine Society, Diagnosis and Treatment of Hyperprolactinemia, 2011', url: 'https://academic.oup.com/jcem/article/96/2/273/2709487' },
+      { label: 'Pituitary Society, Consensus Statement, 2023, inklusive Korrektur', url: 'https://www.nature.com/articles/s41574-023-00886-5' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion' },
+      { href: '/beschwerden/zyklusbeschwerden/', label: 'Zyklusbeschwerden' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+      { href: '/gesundheitsbibliothek/untersuchungen/mrt/', label: 'MRT' },
+    ],
+  },
+  {
+    slug: 'fsh-wert',
+    gruppe: 'Weitere Werte',
+    title: 'FSH-Wert: Warum der Zeitpunkt wichtig ist',
+    metaTitle: 'FSH-Wert: Zyklustag und Bedeutung',
+    metaDescription: 'FSH wird im Zusammenhang mit Zyklus, Alter und weiteren Hormonen bewertet. Was hohe oder niedrige Werte aussagen können und wo der Test Grenzen hat.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'FSH ist ein Steuerhormon. Derselbe Messwert kann je nach Zyklusphase und Lebenssituation unterschiedlich eingeordnet werden.',
+    primaryPurpose: 'Einordnung des Laborwerts FSH inklusive Zyklustag-Abhängigkeit; kinderwunsch und wechseljahre bleiben Erkrankungs-Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). amh-wert ist Schwester-Befund (beidseitig verlinkt). Aliasse: fsh wert, fsh erhöht/niedrig im Befundkontext.',
+    suggestedReviewerType: 'Ärztliche Review (Gynäkologie/Reproduktionsmedizin)',
+    shortAnswerHtml: `<p>FSH bedeutet follikelstimulierendes Hormon. Es wird in der Hirnanhangsdrüse gebildet und steuert bei Frauen die Entwicklung von Follikeln in den Eierstöcken mit. Bei Männern ist es an der Regulation der Spermienbildung beteiligt. Ein FSH-Wert lässt sich deshalb nur zusammen mit der konkreten Fragestellung verstehen.</p>`,
+    bodyHtml: `<h2>Warum wird FSH gemessen?</h2>
+<p>FSH kann Teil der Abklärung bei ausbleibender oder unregelmässiger Periode, unerfülltem Kinderwunsch oder vermuteten Veränderungen der Eierstockfunktion sein. Es wird häufig gemeinsam mit weiteren Hormonen beurteilt, beispielsweise LH und Estradiol.</p>
+<p>Ein höherer FSH-Wert kann dazu passen, dass die Eierstöcke weniger stark auf hormonelle Signale reagieren. Ein niedriger Wert kann unter anderem auf Veränderungen der hormonellen Steuerung hinweisen. Welche Erklärung zutrifft, ergibt sich nicht aus FSH allein.</p>
+<h2>Zyklusphase und Lebensalter gehören dazu</h2>
+<p>Während des Zyklus verändert sich FSH. Ein Messwert aus der Zyklusmitte lässt sich nicht ohne Weiteres mit einem Wert vom Zyklusbeginn vergleichen. Bei Fragen zur Eizellreserve wird FSH häufig in der frühen Zyklusphase bestimmt.</p>
+<p>Nach der Menopause sind höhere FSH-Werte erwartbar. Bei jüngeren Frauen muss derselbe Befund anders eingeordnet werden. Mehr zum grösseren Zusammenhang findest du unter <a href="/beschwerden/wechseljahre/">Wechseljahre</a> und <a href="/beschwerden/zyklusbeschwerden/">Zyklusbeschwerden</a>.</p>`,
+    contextHtml: `<p>Notiere den Zyklustag der Blutentnahme und ob du Hormone oder Verhütungsmittel einnimmst. Der Laborbericht sollte Einheit und Referenzbereich enthalten.</p>
+<p>FSH kann zwischen verschiedenen Zyklen schwanken. Auch Estradiol beeinflusst die Interpretation eines zur Reservebeurteilung gemessenen FSH. Ein einzelner scheinbar unauffälliger Wert beantwortet deshalb nicht jede Frage zur Eierstockfunktion.</p>`,
+    notProofHtml: `<p>FSH ist kein zuverlässiger Einzeltest für die Wahrscheinlichkeit einer natürlichen Schwangerschaft. Ein hoher Wert bedeutet nicht automatisch Unfruchtbarkeit. Ein normaler Wert garantiert umgekehrt weder eine normale Eizellreserve noch eine Schwangerschaft.</p>
+<p>Wenn die Reserve eingeschätzt werden soll, können der <a href="/gesundheitsbibliothek/befunde-werte/amh-wert/">AMH-Wert</a> und Ultraschallbefunde ergänzende Informationen liefern. Diese Tests messen unterschiedliche Aspekte.</p>`,
+    redFlagsHtml: `<p>Wenn deine Periode länger ausbleibt oder sich deutlich verändert, lass die Ursache gynäkologisch abklären. Ein auffälliger FSH-Wert sollte besonders dann besprochen werden, wenn er nicht zu Alter und Zyklusverlauf passt. Der Laborwert allein ist kein Notfall.</p>`,
+    followUpHtml: `<p>Frage zuerst, weshalb FSH bestimmt wurde und ob die Blutentnahme zum vorgesehenen Zeitpunkt stattgefunden hat. Je nach Situation werden weitere Hormone, ein Schwangerschaftstest oder ein Ultraschall ergänzt. Die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> hilft, einzelne Messungen von einer gezielten Abklärung zu unterscheiden.</p>`,
+    sources: [
+      { label: 'MedlinePlus, Follicle-Stimulating Hormone Levels Test', url: 'https://medlineplus.gov/lab-tests/follicle-stimulating-hormone-fsh-levels-test/' },
+      { label: 'ASRM, Fertility evaluation of infertile women, 2021', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-evaluation-of-infertile-women-a-committee-opinion-2021/' },
+      { label: 'ASRM/ESHRE, Premature Ovarian Insufficiency, 2025', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/evidence-based-guideline-premature-ovarian-insufficiency--2024/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre' },
+      { href: '/beschwerden/zyklusbeschwerden/', label: 'Zyklusbeschwerden' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/amh-wert/', label: 'AMH-Wert: Was sagt er über die Eizellreserve?' },
+    ],
+  },
+  {
+    slug: 'tpo-antikoerper-erhoeht',
+    gruppe: 'Schilddrüse',
+    title: 'TPO-Antikörper erhöht: Was bedeutet das?',
+    metaTitle: 'TPO-Antikörper erhöht: Bedeutung',
+    metaDescription: 'Erhöhte TPO-Antikörper können auf Schilddrüsenautoimmunität hinweisen. Warum TSH und fT4 wichtig sind und der Antikörperwert allein nicht reicht.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'TPO-Antikörper geben Hinweise auf eine Autoimmunreaktion. Sie zeigen nicht direkt, wie gut deine Schilddrüse Hormone produziert.',
+    primaryPurpose: 'Einordnung des Laborbefunds TPO-Antikörper erhöht; hashimoto bleibt Erkrankungs-Owner, tsh-erhoeht bleibt TSH-Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). hashimoto (Erkrankung) und tsh-erhoeht/ft3-ft4 (Funktionswerte) verlinkt. Aliasse: tpo antikörper, anti-tpo, tpo-ak im Befundkontext.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
+    shortAnswerHtml: `<p>TPO ist die Abkürzung für Thyreoperoxidase, ein Enzym der Schilddrüse. TPO-Antikörper sind Antikörper gegen dieses Enzym. Ein erhöhter Befund kann eine autoimmune Schilddrüsenerkrankung unterstützen, häufig im Zusammenhang mit Hashimoto. Ob bereits eine Unterfunktion besteht, wird dagegen vor allem anhand von TSH und fT4 eingeordnet.</p>`,
+    bodyHtml: `<h2>Antikörper und Schilddrüsenfunktion sind zwei verschiedene Fragen</h2>
+<p>Antikörpertests helfen dabei, die Ursache einer Schilddrüsenveränderung zu verstehen. Funktionswerte zeigen, wie die hormonelle Regulation aktuell aussieht. Deshalb können TPO-Antikörper erhöht sein, obwohl TSH und fT4 noch im Referenzbereich liegen.</p>
+<p>Die Erkrankung selbst erklärt die Seite zu <a href="/beschwerden/hashimoto/">Hashimoto</a>. Hier geht es um den Antikörperbefund und darum, welche Schlüsse du daraus ziehen kannst.</p>
+<h2>Ist ein sehr hoher Wert automatisch schlimmer?</h2>
+<p>Die Höhe der TPO-Antikörper ist kein einfaches Mass für die Stärke deiner Beschwerden oder den aktuellen Hormonbedarf. Ein hoher Wert allein legt deshalb weder eine Medikamentendosis fest noch erklärt er jede Müdigkeit.</p>
+<p>Für die Funktion sind unter anderem <a href="/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/">TSH</a> und die <a href="/gesundheitsbibliothek/befunde-werte/ft3-ft4/">freien Schilddrüsenhormone fT3 und fT4</a> relevant. Ärztlich werden zusätzlich Verlauf und Beschwerden berücksichtigt.</p>`,
+    contextHtml: `<p>Der Grenzwert für einen positiven Antikörpertest hängt von der Labormethode ab. Vergleiche Zahlen aus verschiedenen Laboren deshalb nicht ohne deren Referenzbereiche.</p>
+<p>Bei bekanntem positivem TPO-Befund ist eine fortlaufende Wiederholung der Antikörpermessung zur Steuerung einer Unterfunktion meist nicht hilfreich. Die Kontrolle der Schilddrüsenfunktion beantwortet die entscheidende Frage, ob ausreichend Hormone vorhanden sind.</p>`,
+    notProofHtml: `<p>TPO-Antikörper allein beweisen keine aktuelle Unterfunktion. Sie sind auch kein allgemeiner Test für sämtliche Autoimmunerkrankungen und kein Krebsmarker.</p>
+<p>Aus einem positiven Test lässt sich nicht ableiten, dass Jod, Selen oder andere Präparate für dich nötig sind. Eine Nahrungsergänzung sollte nicht allein mit dem Ziel begonnen werden, den Antikörperwert zu senken.</p>`,
+    redFlagsHtml: `<p>Ein erhöhter Antikörperwert ohne akute Beschwerden ist normalerweise kein Notfall. Besprich den Befund mit deiner Hausarzt- oder endokrinologischen Praxis. Bei Kinderwunsch oder Schwangerschaft gehört der Schilddrüsenbefund zeitnah in die gynäkologische beziehungsweise ärztliche Betreuung.</p>`,
+    followUpHtml: `<p>Nimm frühere TSH- und fT4-Werte mit. Frage, ob die Funktion derzeit normal ist und wann sie erneut kontrolliert werden soll. Ein Ultraschall kann je nach Fragestellung ergänzend sinnvoll sein, ist aber nicht allein wegen jeder positiven Antikörpermessung erforderlich. Die Seite zur <a href="/beschwerden/schilddruesenunterfunktion/">Schilddrüsenunterfunktion</a> erklärt den Unterschied zwischen Autoimmunbefund und Hormonmangel.</p>`,
+    sources: [
+      { label: 'American Thyroid Association, Hashimoto’s Thyroiditis', url: 'https://www.thyroid.org/hashimotos-thyroiditis/' },
+      { label: 'MedlinePlus, Thyroid Antibody Tests', url: 'https://medlineplus.gov/lab-tests/thyroid-antibody-tests/' },
+      { label: 'American Thyroid Association, Thyroid Function Tests', url: 'https://www.thyroid.org/thyroid-function-tests/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/hashimoto/', label: 'Hashimoto' },
+      { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ft3-ft4/', label: 'fT3 und fT4: Was bedeuten die freien Schilddrüsenwerte?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'ft3-ft4',
+    gruppe: 'Schilddrüse',
+    title: 'fT3 und fT4: Was bedeuten die freien Schilddrüsenwerte?',
+    metaTitle: 'fT3 und fT4: Schilddrüsenwerte verstehen',
+    metaDescription: 'fT3 und fT4 werden mit TSH und dem Laborreferenzbereich bewertet. Was die freien Schilddrüsenhormone zeigen und warum einzelne Zahlen nicht ausreichen.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'Freie Schilddrüsenhormone ergänzen die Beurteilung der Schilddrüsenfunktion. Wichtig ist ihre Kombination mit TSH, Beschwerden und Messbedingungen.',
+    primaryPurpose: 'Gemeinsamer Owner für die freien Schilddrüsenhormone fT3 und fT4; TSH-Kombinationsintents bleiben bei tsh-erhoeht/tsh-niedrig.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). schilddruesenunterfunktion/schilddruesenueberfunktion bleiben Erkrankungs-Owner, tsh-erhoeht/tsh-niedrig bleiben TSH-Owner (verlinkt).',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
+    shortAnswerHtml: `<p>fT4 und fT3 sind die nicht an Transporteiweisse gebundenen Anteile der Schilddrüsenhormone T4 und T3 im Blut. Das „f“ steht für frei. Die Werte werden nicht isoliert bewertet: TSH, Laborreferenzen und die konkrete medizinische Situation gehören dazu.</p>`,
+    bodyHtml: `<h2>Warum werden freie Hormone gemessen?</h2>
+<p>Ein grosser Teil der Schilddrüsenhormone ist im Blut an Eiweisse gebunden. Veränderungen dieser Transporteiweisse können Gesamtwerte beeinflussen, beispielsweise in der Schwangerschaft. Freie Hormonwerte helfen, die Funktion ergänzend einzuordnen.</p>
+<p>T4 wird von der Schilddrüse gebildet und im Körper teilweise in T3 umgewandelt. Die Steuerung erfolgt unter anderem über TSH aus der Hirnanhangsdrüse. Deshalb beantwortet ein kompletter Befund mehr als ein einzelner Hormonwert.</p>
+<h2>Was bedeuten auffällige Kombinationen?</h2>
+<p>Ein erhöhtes TSH zusammen mit erniedrigtem fT4 passt häufig zu einer primären <a href="/beschwerden/schilddruesenunterfunktion/">Schilddrüsenunterfunktion</a>. Niedriges TSH mit erhöhten Schilddrüsenhormonen kann zu einer <a href="/beschwerden/schilddruesenueberfunktion/">Überfunktion</a> passen.</p>
+<p>Nicht jede Kombination folgt diesem Muster. Krankheiten ausserhalb der Schilddrüse, Medikamente und Veränderungen der hormonellen Steuerung können die Interpretation beeinflussen. Ein niedriger fT4-Wert bei nicht erhöhtem TSH gehört deshalb ebenfalls ärztlich eingeordnet.</p>`,
+    contextHtml: `<p><strong>Warum Referenzbereich und Einnahme wichtig sind</strong></p>
+<p>fT3 und fT4 werden je nach Labor mit unterschiedlichen Methoden und Einheiten gemessen. Nutze den Referenzbereich auf deinem Bericht, nicht eine beliebige Tabelle aus dem Internet.</p>
+<p>Teile der Praxis mit, welche Schilddrüsenmedikamente und Nahrungsergänzungsmittel du einnimmst. Biotin kann bestimmte Laborverfahren stören. Ob vor der Blutentnahme etwas pausiert werden muss und wann du Medikamente einnehmen sollst, klärst du mit der behandelnden Praxis.</p>`,
+    notProofHtml: `<p>fT3 ist kein allgemeiner Einzeltest für Müdigkeit oder eine vermeintlich schlechte „Umwandlung“. Bei der Abklärung einer Unterfunktion ist es oft weniger hilfreich als TSH und fT4. Ein normaler T3-Wert schliesst eine Unterfunktion nicht in jeder Situation aus.</p>
+<p>Antikörper beantworten eine andere Frage: Die Seite zu <a href="/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/">TPO-Antikörpern</a> erklärt Hinweise auf Autoimmunität. Die Kombination „TSH erhöht, fT4 normal“ bleibt auf der Seite <a href="/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/">TSH erhöht</a> eingeordnet.</p>`,
+    redFlagsHtml: `<p>Auffällige Werte sollten mit der behandelnden Praxis besprochen werden. Bei starken akuten Beschwerden wie Brustschmerzen, ausgeprägter Atemnot oder Bewusstseinsstörungen brauchst du sofort medizinische Hilfe, unabhängig vom Laborwert.</p>`,
+    followUpHtml: `<p>Vergleiche nicht nur Zahlen, sondern auch Messdatum, Einheit und Medikamenteneinnahme. Frage, ob die Werte zu deiner Situation passen und ob eine Kontrolle nötig ist. Ändere Schilddrüsenmedikamente nicht selbst anhand eines Online-Vergleichs. Welche Tests für welche Frage eingesetzt werden, zeigt die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>.</p>`,
+    sources: [
+      { label: 'NIDDK, Thyroid Tests', url: 'https://www.niddk.nih.gov/health-information/diagnostic-tests/thyroid' },
+      { label: 'American Thyroid Association, Thyroid Function Tests', url: 'https://www.thyroid.org/thyroid-function-tests/' },
+      { label: 'Endocrine Society, Hormone Replacement in Hypopituitarism', url: 'https://www.endocrine.org/clinical-practice-guidelines/hormone-replacement-in-hypopituitarism' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/schilddruesenueberfunktion/', label: 'Schilddrüsenüberfunktion' },
+      { href: '/beschwerden/schilddruesenunterfunktion/', label: 'Schilddrüsenunterfunktion' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/', label: 'TPO-Antikörper erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-erhoeht/', label: 'TSH erhöht: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'transferrinsaettigung',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Transferrinsättigung: Was sagt der Eisenwert?',
+    metaTitle: 'Transferrinsättigung: Niedrig oder erhöht?',
+    metaDescription: 'Die Transferrinsättigung zeigt, wie stark das Eisentransportprotein beladen ist. So wird sie mit Ferritin, Blutbild und Entzündungswerten eingeordnet.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'Die Transferrinsättigung ergänzt die Beurteilung des Eisenhaushalts. Sie ist weder mit Ferritin noch mit dem einzelnen Eisenwert im Blut gleichzusetzen.',
+    primaryPurpose: 'Einordnung der Transferrinsättigung (niedrig/erhöht); Transferrin nur als Kontext, Ferritin bleibt bei den Ferritin-Owners.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). ferritin-erhoeht/ferritin-zu-niedrig bleiben Ferritin-Owner, eisenmangel bleibt Erkrankungs-Owner (verlinkt). Aliasse: tsat, transferrinsättigung niedrig/erhöht.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Hämatologie)',
+    shortAnswerHtml: `<p>Transferrin ist ein Eiweiss, das Eisen im Blut transportiert. Die Transferrinsättigung beschreibt den Anteil seiner Eisenbindungsplätze, die mit Eisen belegt sind. Ein niedriger Wert kann auf zu wenig verfügbares Eisen hinweisen. Ein erhöhter Wert kann Anlass sein, eine mögliche Eisenüberladung abzuklären. Beides wird mit anderen Befunden zusammen bewertet.</p>`,
+    bodyHtml: `<h2>Transferrin, Sättigung und Ferritin: Was ist der Unterschied?</h2>
+<p>Transferrin beschreibt das Transporteiweiss. Die Sättigung zeigt dessen Beladung. Ferritin hilft dagegen bei der Einschätzung der Eisenspeicher, kann aber auch im Zusammenhang mit Entzündung ansteigen.</p>
+<p>Deshalb sind <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin zu niedrig</a> und <a href="/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/">Ferritin erhöht</a> eigene Befunde. Ein normaler oder erhöhter Ferritinwert beantwortet nicht in jeder Situation, wie gut Eisen verfügbar ist.</p>
+<h2>Was kann eine niedrige Sättigung bedeuten?</h2>
+<p>Eine niedrige Transferrinsättigung kann bei Eisenmangel vorkommen. Auch bei entzündlichen Erkrankungen kann weniger Eisen für die Blutbildung verfügbar sein. Um diese Situationen auseinanderzuhalten, werden unter anderem Ferritin, Blutbild und gegebenenfalls Entzündungswerte betrachtet.</p>
+<p>Die Seite zu <a href="/beschwerden/eisenmangel/">Eisenmangel</a> erklärt die Erkrankung und mögliche Ursachen. Ein niedriger Sättigungswert allein legt noch keine Behandlung fest.</p>
+<h2>Was kann ein hoher Wert bedeuten?</h2>
+<p>Bei wiederholt erhöhter Sättigung wird geprüft, ob eine Eisenüberladung vorliegen könnte. Eine mögliche Ursache ist eine erbliche Hämochromatose. Für deren Diagnose braucht es jedoch mehr als eine einzelne Zahl, etwa die Einordnung von Ferritin und gegebenenfalls weitere gezielte Untersuchungen.</p>`,
+    contextHtml: `<p>Der Sättigungswert wird aus Messungen des Eisenhaushalts berechnet und meist in Prozent angegeben. Blutentnahmebedingungen und die Einnahme von Eisenpräparaten können für die Interpretation wichtig sein. Halte dich an die Vorbereitungsvorgaben der untersuchenden Praxis.</p>
+<p>Es gibt keinen einzelnen Internet-Grenzwert, der jede Situation korrekt einordnet. Referenzbereiche und die Frage, weshalb gemessen wurde, gehören zum Befund.</p>`,
+    notProofHtml: `<p>Eine niedrige Sättigung beweist keine Blutarmut. Ob eine Anämie vorliegt, wird unter anderem anhand von <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a> beurteilt. Eine erhöhte Sättigung beweist umgekehrt nicht allein eine erbliche Eisenüberladung.</p>
+<p>Beginne oder erhöhe Eisenpräparate nicht nur aufgrund dieses Werts. Bei unklaren Befunden kann zusätzliche Eisenzufuhr unpassend sein.</p>`,
+    redFlagsHtml: `<p>Ein auffälliger Laborwert ohne akute Beschwerden wird mit der untersuchenden Praxis besprochen. Deutliche Atemnot, Brustschmerzen, Ohnmacht oder starke Blutungen gehören sofort medizinisch beurteilt. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Nimm Ferritin, Blutbild, frühere Messungen und deine Präparateliste mit. Je nach Befund werden eine Kontrolle, <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> oder weitere Untersuchungen ergänzt. Frage ausdrücklich, ob zu wenig gespeichertes Eisen, eingeschränkte Verfügbarkeit oder eine mögliche Überladung abgeklärt werden soll.</p>`,
+    sources: [
+      { label: 'Mayo Clinic Laboratories, Iron and Total Iron-Binding Capacity', url: 'https://www.mayocliniclabs.com/test-catalog/overview/621385' },
+      { label: 'University of Rochester Medical Center, Transferrin', url: 'https://www.urmc.rochester.edu/encyclopedia/content?contentid=transferrin&contenttypeid=167' },
+      { label: 'EASL, Clinical Practice Guidelines on haemochromatosis, 2022', url: 'https://pubmed.ncbi.nlm.nih.gov/35662478/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-erhoeht/', label: 'Ferritin erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/', label: 'Hämoglobin zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'homa-index',
+    gruppe: 'Stoffwechsel',
+    title: 'HOMA-Index: Was sagt er über Insulinresistenz?',
+    metaTitle: 'HOMA-Index: Aussagekraft und Grenzen',
+    metaDescription: 'HOMA-IR wird aus nüchtern gemessenen Werten berechnet. Was der Index schätzt, warum Grenzwerte variieren und weshalb er allein keine Diagnose liefert.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'Der HOMA-Index ist ein Modell zur Einschätzung der Insulinresistenz. Er ist kein eigenständiger Diabetes- oder PCOS-Test.',
+    primaryPurpose: 'Einordnung des HOMA-Index (Insulinresistenz-Schätzung); hba1c-erhoeht/blutzucker-erhoeht bleiben Zucker-Owner.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). diabetes-typ-2 und pcos bleiben Erkrankungs-Owner, hba1c-erhoeht/blutzucker-erhoeht bleiben Zuckerwert-Owner (verlinkt). Aliasse: homa index, homa-ir; HOMA2 nur als Modellkontext.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Diabetologie)',
+    shortAnswerHtml: `<p>HOMA steht für Homeostasis Model Assessment. Wenn im Laborbericht vom HOMA-Index die Rede ist, ist häufig HOMA-IR gemeint. Dieser Index schätzt Insulinresistenz anhand nüchtern gemessener Glukose- und Insulinwerte. Er misst nicht direkt, wie empfindlich jede Zelle deines Körpers auf Insulin reagiert.</p>`,
+    bodyHtml: `<h2>Was bedeutet Insulinresistenz?</h2>
+<p>Insulin hilft bei der Regulation des Blutzuckers. Bei Insulinresistenz reagieren bestimmte Gewebe weniger stark auf seine Wirkung. Der Körper kann darauf zunächst mit einer höheren Insulinausschüttung reagieren.</p>
+<p>HOMA setzt die nüchternen Ausgangswerte in ein mathematisches Modell ein. Das kann in Forschung und ausgewählten medizinischen Fragestellungen hilfreich sein. Ein Modellwert bleibt jedoch eine Schätzung, keine vollständige Beschreibung deines Stoffwechsels.</p>
+<h2>HOMA-IR und HOMA2 sind nicht dasselbe</h2>
+<p>Die ursprüngliche HOMA-Berechnung und das weiterentwickelte HOMA2-Modell unterscheiden sich. Du solltest Ergebnisse aus verschiedenen Verfahren deshalb nicht ungeprüft vergleichen. Auch die Glukoseeinheit ist wichtig: mmol/l und mg/dl sind nicht austauschbar.</p>
+<p>Diese Seite erklärt einen vorhandenen Befund. Sie bietet keinen Rechner, weil eine korrekt ausgerechnete Zahl ohne passenden Mess- und Behandlungskontext leicht falsch interpretiert wird.</p>`,
+    contextHtml: `<p><strong>Warum es keine universelle Diagnosegrenze gibt</strong></p>
+<p>Die Einordnung hängt unter anderem vom verwendeten Verfahren, der Insulinmessung und der untersuchten Population ab. Ein Grenzwert aus einem Online-Rechner ist deshalb keine allgemeingültige Grenze zwischen gesund und krank.</p>
+<p>Die Ausgangswerte müssen unter den vorgesehenen nüchternen Bedingungen erhoben worden sein. Wenn diese Bedingungen nicht erfüllt waren, gehört das in die Befundbesprechung.</p>`,
+    notProofHtml: `<p>Ein erhöhter HOMA-IR beweist weder <a href="/beschwerden/diabetes-typ-2/">Diabetes Typ 2</a> noch <a href="/beschwerden/pcos/">PCOS</a>. Ein unauffälliger Index schliesst umgekehrt nicht jede Störung des Zuckerstoffwechsels aus.</p>
+<p>Für PCOS ist wichtig: Die internationale Leitlinie empfiehlt die routinemässige Messung mit den klinisch verfügbaren Insulintests nicht zur Beurteilung von Insulinresistenz. Ein HOMA-Wert ist deshalb keine Pflichtuntersuchung für jede Frau mit PCOS.</p>`,
+    redFlagsHtml: `<p>Der Index allein ist kein Notfall. Wenn du jedoch starken Durst und häufiges Wasserlassen zusammen mit deutlicher Schwäche bemerkst, solltest du zeitnah ärztlich abgeklärt werden. Bei Erbrechen, Bewusstseinsveränderung oder schwerer akuter Verschlechterung brauchst du sofort medizinische Hilfe.</p>`,
+    followUpHtml: `<p>Frage, weshalb HOMA bestimmt wurde und ob das Ergebnis eine konkrete medizinische Entscheidung verändert. Für die Beurteilung des Zuckerstoffwechsels kommen je nach Situation <a href="/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/">Blutzucker</a>, <a href="/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/">HbA1c</a> oder ein <a href="/gesundheitsbibliothek/untersuchungen/ogtt/">oGTT</a> infrage. Diese Untersuchungen beantworten andere Fragen und werden nicht durch HOMA ersetzt.</p>`,
+    sources: [
+      { label: 'Matthews et al., Homeostasis model assessment, 1985', url: 'https://doi.org/10.1007/BF00280883' },
+      { label: 'University of Oxford, HOMA2-Modell und vorgesehene Anwendung', url: 'https://process.innovation.ox.ac.uk/software/p/2112/homa2-calculator/1' },
+      { label: 'International Evidence-based PCOS Guideline, 2023', url: 'https://integration.asrm.org/globalassets/_asrm/practice-guidance/practice-guidelines/pdf/recommendations_from_the_2023_int_evidence-based_guideline_on_pcos.pdf' },
+      { label: 'NIDDK, Symptoms & Causes of Diabetes', url: 'https://www.niddk.nih.gov/health-information/diabetes/overview/symptoms-causes' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/diabetes-typ-2/', label: 'Diabetes Typ 2' },
+      { href: '/beschwerden/pcos/', label: 'PCOS' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/ogtt/', label: 'Oraler Glukosetoleranztest (oGTT)' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/blutzucker-erhoeht/', label: 'Blutzucker erhöht: Was bedeutet der Messwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/hba1c-erhoeht/', label: 'HbA1c erhöht: Was bedeutet der Langzeitwert?' },
+    ],
+  },
+  {
+    slug: 'egfr',
+    gruppe: 'Niere & Blutdruck',
+    title: 'eGFR: Was bedeutet die geschätzte Nierenfunktion?',
+    metaTitle: 'eGFR: Nierenfunktion richtig einordnen',
+    metaDescription: 'eGFR schätzt die Nierenfilterleistung. Warum Verlauf und Urinbefunde dazugehören und ein einzelner niedriger Wert keine chronische Erkrankung beweist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_LABORWERTE_2026_10,
+    deck: 'eGFR ist eine Schätzung der Nierenfilterleistung. Entscheidend sind ihr Verlauf, die Berechnungsgrundlage und weitere Hinweise auf Nierenschäden.',
+    primaryPurpose: 'Einordnung der geschätzten glomerulären Filtrationsrate (eGFR); kreatinin-erhoeht bleibt Kreatinin-Owner, nierenwerte-erhoeht bleibt Umbrella.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Kein bestehender Owner (geprüft 13.10.2026). kreatinin-erhoeht, nierenwerte-erhoeht und eiweiss-im-urin beidseitig verlinkt. Aliasse: egfr, geschätzte glomeruläre filtrationsrate.',
+    suggestedReviewerType: 'Ärztliche Review (Nephrologie)',
+    shortAnswerHtml: `<p>eGFR bedeutet geschätzte glomeruläre Filtrationsrate. Sie wird meist aus Kreatinin im Blut und weiteren Angaben berechnet. Die Zahl hilft einzuschätzen, wie gut die Nieren filtern. Ein einzelner niedriger Wert zeigt aber nicht allein, ob eine chronische Nierenerkrankung vorliegt.</p>`,
+    bodyHtml: `<h2>Warum steht eGFR neben Kreatinin?</h2>
+<p><a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> ist ein Blutwert, der für die Berechnung verwendet wird. eGFR übersetzt ihn mithilfe einer Formel in eine geschätzte Filterleistung. Die beiden Angaben sind deshalb verbunden, aber nicht identisch.</p>
+<p>Ein höheres Kreatinin führt in der üblichen Berechnung zu einer niedrigeren eGFR. Das Ergebnis kann auch von Faktoren beeinflusst werden, die mit der Kreatininkonzentration zusammenhängen, etwa der Muskelmasse.</p>
+<h2>Warum der Verlauf wichtiger ist als eine einzelne Zahl</h2>
+<p>Eine neue Abweichung wird anders beurteilt als ein über längere Zeit stabiler Befund. Frühere Messungen helfen zu erkennen, ob sich die Nierenfunktion verändert hat.</p>
+<p>Nach der KDIGO-Leitlinie darf eine chronische Erkrankung nicht einfach aus einem einzelnen auffälligen eGFR- oder Urinbefund abgeleitet werden. Für die chronische Einordnung muss eine entsprechende Veränderung über mindestens drei Monate bestehen oder anderweitig belegt sein. Das bedeutet nicht, dass man bei einer neuen Verschlechterung drei Monate mit der Abklärung warten soll.</p>`,
+    contextHtml: `<p>Die übliche Einheit lautet ml/min/1,73 m². Die Schätzung ist damit auf eine standardisierte Körperoberfläche bezogen. Achte beim Vergleich auch darauf, welche Formel verwendet wurde.</p>
+<p>Bei besonderen Umständen kann Kreatinin die Filterleistung weniger genau abbilden. Dann kann eine Berechnung mit Cystatin C, häufig zusammen mit Kreatinin, zusätzliche Information liefern. Eine ärztliche Entscheidung wird deshalb nicht allein durch einen beliebigen Online-Rechner getroffen.</p>`,
+    notProofHtml: `<p>Eine eGFR zwischen 60 und 89 beweist ohne weitere Hinweise nicht automatisch eine chronische Nierenerkrankung. Umgekehrt schliesst eine höhere eGFR Nierenschäden nicht vollständig aus.</p>
+<p>Zur Beurteilung gehört deshalb häufig auch ein Urinbefund, insbesondere Albumin im Urin. Die Seite <a href="/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/">Eiweiss im Urin</a> erklärt diesen ergänzenden Befund. Den gesamten Laborzusammenhang ordnet <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte erhöht</a> ein.</p>`,
+    redFlagsHtml: `<p>Eine neu deutlich niedrigere eGFR oder eine rasche Verschlechterung sollte zeitnah ärztlich besprochen werden. Bei deutlich weniger Urin zusammen mit schwerem Krankheitsgefühl, ausgeprägter Atemnot oder Bewusstseinsstörungen brauchst du sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
+    followUpHtml: `<p>Nimm frühere Kreatinin- und eGFR-Werte sowie eine Liste deiner Medikamente und Präparate mit. Frage, ob eine Kontrollmessung, eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> oder weitere Diagnostik nötig ist.</p>
+<p>Ändere Medikamente oder Trinkmengen nicht eigenständig mit dem Ziel, eine Laborzahl zu verbessern. Die passende Massnahme richtet sich nach der Ursache und deiner gesundheitlichen Situation.</p>`,
+    sources: [
+      { label: 'KDIGO, CKD Guideline Executive Summary, 2024', url: 'https://kdigo.org/wp-content/uploads/2017/02/KDIGO-2024-CKD-Guideline-Executive-Summary.pdf' },
+      { label: 'National Kidney Foundation, Estimated GFR', url: 'https://www.kidney.org/kidney-topics/estimated-glomerular-filtration-rate-egfr' },
+      { label: 'National Kidney Foundation, GFR/ACR und chronische Einordnung', url: 'https://www.kidney.org/professionals/gfr_calculator' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/eiweiss-im-urin/', label: 'Eiweiss im Urin (Proteinurie): Was bedeutet der Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/', label: 'Kreatinin erhöht: Was bedeutet ein hoher Kreatininwert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/', label: 'Nierenwerte erhöht: Was bedeutet der Befund?' },
     ],
   },
 ];

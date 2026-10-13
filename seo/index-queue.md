@@ -346,6 +346,14 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/wissen/akupunktur-bei-karpaltunnelsyndrom/
 - https://tcm.ch/wissen/akupunktur-bei-uebelkeit/
 - https://tcm.ch/standorte/bern/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/amh-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/prolaktin-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/fsh-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/ft3-ft4/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/homa-index/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/egfr/
 
 ## Geplant (noch nicht live)
 

@@ -68,7 +68,7 @@ if (isReal && b.publishedAt) {
   });
 }
 ---
-<LayoutDe title={`${b.title} | TCM.ch`} description={b.deck} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
+<LayoutDe title={`${b.metaTitle ?? b.title} | TCM.ch`} description={b.metaDescription ?? b.deck} path={path} schema={schema} noindex={!indexable} robots={indexable ? undefined : 'noindex, follow'}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
