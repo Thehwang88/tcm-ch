@@ -1,0 +1,154 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 3, redaktionelles Paket 14.10.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch. Texte 1:1 aus dem
+// Paket; Publikationsdatum ueber PUBLISHED_WELLE_3_2026_10 (Schema-Daten nur mit gesetztem Datum).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_3_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/leberelastografie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Leberelastografie: FibroScan und Befund';
+const description = 'Die Leberelastografie misst die Steifigkeit der Leber. Was FibroScan zeigt, wie die Untersuchung abläuft und warum ein Wert allein keine Diagnose liefert.';
+const published = PUBLISHED_WELLE_3_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Leberelastografie: Was zeigt ein FibroScan?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Leberelastografie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/fettleber/', label: 'Fettleber' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/biopsie/', label: 'Biopsie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+];
+const rel3Links = [
+  { href: '/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/', label: 'Leberwerte erhöht: Was bedeuten ALT, AST, GGT und andere Werte?' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Leberelastografie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Leberelastografie: Was zeigt ein FibroScan?</h1>
+        <p class="lead">Die Messung kann Hinweise auf eine Vernarbung der Leber geben. Sie wird mit anderen Befunden zusammen beurteilt.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Leberelastografie wird ärztlich veranlasst und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Die Leberelastografie misst, wie steif das Lebergewebe ist. Eine erhöhte Steifigkeit kann zu einer Vernarbung, auch Fibrose genannt, passen. Sie kann aber weitere Einflüsse haben. Der Messwert ist deshalb kein alleiniger Nachweis für eine bestimmte Erkrankung oder ein festes Krankheitsstadium.</p>
+          </div>
+
+          <h2>Was wird gemessen?</h2>
+          <p>Bei ultraschallbasierten Verfahren wird die Ausbreitung von Wellen im Gewebe ausgewertet. FibroScan ist ein bekanntes System für eine solche Messung. Andere Verfahren verwenden andere Geräte oder Bildgebung; ihre Ergebnisse und Grenzwerte lassen sich nicht beliebig gleichsetzen.</p>
+          <p>Eine gewöhnliche <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschalluntersuchung</a> zeigt andere Informationen. Die Elastografie ergänzt diese bei passenden Fragestellungen, etwa bei einer bekannten oder vermuteten chronischen Lebererkrankung.</p>
+
+          <h2>Vorbereitung und Ablauf</h2>
+          <p>Die durchführende Stelle sagt dir, ob und wie lange du vorher nüchtern sein sollst. Meist liegst du auf dem Rücken; der rechte Oberbauch wird freigemacht. Eine Sonde wird auf die Haut gesetzt und führt mehrere Messungen durch. Das Verfahren kommt ohne Gewebeentnahme aus.</p>
+          <p>Je nach Gerät können zusätzlich Hinweise auf Fett in der Leber erhoben werden. Fettmenge und Vernarbung sind aber unterschiedliche Fragen. Eine <a href="/beschwerden/fettleber/">Fettleber</a> lässt sich nicht durch einen einzigen Zahlenwert vollständig beurteilen.</p>
+
+          <h2>Was ein Ergebnis nicht beweist</h2>
+          <p>Entzündung, Stauung und andere Bedingungen können die Lebersteifigkeit beeinflussen. Auch Messqualität und verwendetes Gerät sind relevant. Ein hoher Wert darf deshalb nicht ohne Kontext direkt als «Leberzirrhose» übersetzt werden.</p>
+          <p>Die Fachpraxis berücksichtigt unter anderem <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte</a>, Vorgeschichte und weitere Untersuchungen. Manchmal kann eine <a href="/gesundheitsbibliothek/untersuchungen/biopsie/">Biopsie</a> sinnvoll sein, sie ist aber nicht automatisch der nächste Schritt jeder auffälligen Messung.</p>
+
+          <h2>Wann eine Abklärung wichtig ist</h2>
+          <p>Ein auffälliger Befund sollte mit der veranlassenden Praxis besprochen werden. Gelbfärbung der Haut, deutliche Verschlechterung, Bluterbrechen oder Bewusstseinsveränderungen benötigen rasche beziehungsweise sofortige medizinische Hilfe. Warte dann nicht auf einen geplanten Routine-Scan.</p>
+
+          <h2>Nächste Schritte</h2>
+          <p>Frage nach Messqualität, möglicher Bedeutung und geplantem Verlauf. Für spätere Vergleiche sind Verfahren und Bedingungen wichtig. TCM.ch führt diese Untersuchung nicht selbst durch. Eine ergänzende Behandlung ersetzt weder die Ursachenbehandlung einer Lebererkrankung noch notwendige Kontrollen.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Ist FibroScan dasselbe wie eine Biopsie?</h3>
+          <p>Nein. FibroScan misst nicht invasiv Eigenschaften des Gewebes. Eine Biopsie untersucht eine entnommene Gewebeprobe.</p>
+          <h3>Beweist ein hoher Wert eine Zirrhose?</h3>
+          <p>Nicht allein. Andere Einflüsse und die Messqualität müssen mitbeurteilt werden.</p>
+          <h3>Kann ich Werte verschiedener Geräte vergleichen?</h3>
+          <p>Nicht ohne fachliche Einordnung. Verfahren und Grenzwerte können sich unterscheiden.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://medlineplus.gov/lab-tests/elastography/" target="_blank" rel="noopener">MedlinePlus: Elastography</a></li>
+            <li><a href="https://easl.eu/publication/easl-clinical-practice-guidelines-on-non-invasive-tests-for-evaluation-of-liver-disease-severity-and-prognosis-2021-update/" target="_blank" rel="noopener">EASL: Non-invasive tests for evaluation of liver disease severity and prognosis, 2021</a></li>
+            <li><a href="https://www.usz.ch/sprechstunde/sprechstunde-hepatologie/" target="_blank" rel="noopener">Universitätsspital Zürich: Hepatologiesprechstunde, Lebersteifigkeitsmessung</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+        <LibraryRelated label="Befunde &amp; Werte" title="Verwandte Befunde" links={rel3Links} allHref="/gesundheitsbibliothek/befunde-werte/" allLabel="Alle Befunde" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Unsicher, was der nächste Schritt ist?</div>
+          <p>Diese Untersuchung wird ärztlich veranlasst und beurteilt. Wenn du nach der Abklärung wissen möchtest, ob eine ergänzende Behandlung sinnvoll ist, helfen wir bei der Einordnung.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/standorte/">Praxis finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

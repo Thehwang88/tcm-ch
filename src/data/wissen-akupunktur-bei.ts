@@ -19,6 +19,7 @@
 //
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
+import { PUBLISHED_WELLE_3_2026_10 } from './befunde-werte';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -29,6 +30,14 @@ const AUTOR = {
 const DATEN = { datePublished: '2026-09-02', dateModified: '2026-09-02', lastReviewed: '2026-09-02' };
 const DATEN2 = { datePublished: '2026-10-05', dateModified: '2026-10-05', lastReviewed: '2026-10-05' };
 const DATEN3 = { datePublished: '2026-10-13', dateModified: '2026-10-13', lastReviewed: '2026-10-13' };
+// Welle 3 (14.10.2026): neutrale Redaktion, kein Reviewer, kein lastReviewed. Datum ueber die
+// Kohorten-Konstante (leer bis Release; Template laesst leere Daten weg).
+const REDAKTION = {
+  name: 'Redaktion TCM.ch',
+  role: 'Redaktionelle Einordnung',
+  bio: 'Redaktionelle Einordnung auf Basis der im Artikel verlinkten Quellen. Keine ärztliche Diagnose und keine individuelle Therapieempfehlung.',
+};
+const DATEN_W3 = { datePublished: PUBLISHED_WELLE_3_2026_10 ?? '', dateModified: PUBLISHED_WELLE_3_2026_10 ?? '' };
 
 export const wissenAkupunkturBei: Wissen[] = [
   // ────────────────────────────────────────────────────────── KOPFSCHMERZEN
@@ -499,6 +508,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Ablauf und Sitzungen</h2>
 <p>Ein Behandlungsversuch sollte anhand konkreter Beschwerden beurteilt werden: Schmerz, Blähungen, Stuhldrang und Einschränkungen im Alltag.</p>
 <p>Bleibt eine relevante Veränderung aus, sollte die Behandlung nicht routinemässig fortgesetzt werden.</p>
+<p>Die Daten zu <a href="/wissen/akupunktur-bei-verstopfung/">Akupunktur bei chronischer funktioneller Verstopfung</a> betreffen ein anderes Beschwerdebild und dürfen nicht einfach auf Reizdarm übertragen werden.</p>
 <h2>Kosten & Krankenkasse</h2>
 <p>Nichtärztliche Akupunktur fällt in der Schweiz grundsätzlich in den Bereich der Zusatzversicherung. Die konkrete Vergütung hängt vom individuellen Vertrag und der Anerkennung der Fachperson ab.</p>`,
     faqs: [
@@ -596,6 +606,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Wie wir behandeln</h2>
 <p>Bei einer Behandlung klären wir zuerst Anlass und Ursache der Übelkeit. P6 kann Bestandteil der Akupunktur sein; je nach Situation werden weitere Punkte individuell ergänzt.</p>
 <p>Bei postoperativer oder therapiebedingter Übelkeit erfolgt Akupunktur nur ergänzend zur medizinischen Versorgung.</p>
+<p>Die Frage nach Nutzen bei Übelkeit ersetzt nicht die gesonderte Prüfung der <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Sicherheit während einer Chemotherapie</a>.</p>
 <h2>Kosten & Krankenkasse</h2>
 <p>Für nichtärztliche Akupunktur hängt die Vergütung von der persönlichen Zusatzversicherung und der Anerkennung des Therapeuten ab. Akupressur-Selbsthilfe ist davon natürlich unabhängig.</p>`,
     faqs: [
@@ -833,6 +844,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Wir wollen Diagnose, Ursache und aktuelle Medikation kennen und fragen nach dem Befund der Nervenleitmessung. Behandelt wird an Beinen und Füssen, oft ergänzt durch Punkte am Rumpf und an den Händen. Bei Schmerz im Vordergrund setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei ausgeprägter Kälteempfindlichkeit <a href="/therapien/moxibustion/">Moxibustion</a>. Was nachts an brennenden Füssen anders ist als tagsüber, erklärt das Körpersignal <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Ein Versuch umfasst meist sechs bis acht Sitzungen über sechs bis acht Wochen. Beurteilt werden Schmerzstärke, nächtliche Beschwerden, Schlaf und Gehstrecke. Verbessert sich davon nach sechs Sitzungen nichts, brechen wir ab und sagen dir das. Eine Dauerbehandlung, um einer fortschreitenden Erkrankung hinterherzulaufen, ist kein Behandlungsplan.</p>
+<p>Die Sicherheitsplanung bei <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während einer Chemotherapie</a> muss zusätzlich mit dem Onkologie-Team abgestimmt werden.</p>
 <h2>Kosten und Krankenkasse</h2>
 <p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, mit einem Jahresmaximum je nach Police. Die neurologische Abklärung und die Behandlung der Ursache laufen über die Grundversicherung. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
     faqs: [
@@ -893,6 +905,269 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/wissen/akupunktur-bei-knieschmerzen/', label: 'Akupunktur bei Knieschmerzen', cat: 'Studienlage' },
       { href: '/gesundheitsbibliothek/koerper/huefte-bein-fuss/', label: 'Hüfte, Bein & Fuss', cat: 'Körperregion' },
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-VERSTOPFUNG (Welle 3)
+  {
+    slug: 'akupunktur-bei-verstopfung',
+    title: 'Akupunktur bei Verstopfung: Nutzen und Grenzen',
+    metaDesc: 'Bei chronischer funktioneller Verstopfung gibt es positive Studien zur Elektroakupunktur. Was das für dich bedeutet und wann medizinische Abklärung Vorrang hat.',
+    region: 'Schweizweit',
+    excerpt: 'Für eine bestimmte Form chronischer Verstopfung gibt es gute Studienhinweise. Daraus wird kein Versprechen für jede Ursache und jede Behandlung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Verstopfung: Wann kann sie ergänzend sinnvoll sein?',
+    lead: 'Für eine bestimmte Form chronischer Verstopfung gibt es gute Studienhinweise. Daraus wird kein Versprechen für jede Ursache und jede Behandlung.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Behandlung bei Verstopfung besprechen',
+    ctaText: 'Wenn die Ursache geklärt ist, kannst du anfragen, ob Akupunktur zu deiner bisherigen Behandlung und deinen Zielen passt. Ein Behandlungsversuch wird mit dir geplant und überprüft.',
+    ctaLabel: 'Passende Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W3,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Akupunktur kann bei chronischer funktioneller Verstopfung als ergänzende Behandlung erwogen werden. Eine grosse kontrollierte Studie zeigte einen Nutzen von Elektroakupunktur. Das gilt nicht automatisch für jede Verstopfung, und es ersetzt weder die Ursachenklärung noch wirksame Standardbehandlungen.</p></div>
+<h2>Erst die Ursache klären</h2>
+<p>Verstopfung kann mit Ernährung, Medikamenten und unterschiedlichen Erkrankungen zusammenhängen. Auch die Koordination des Beckenbodens kann relevant sein. Die Übersicht <a href="/beschwerden/verstopfung/">Verstopfung</a> hilft, Beschwerden und Abklärung einzuordnen.</p>
+<p>Dieser Artikel behandelt die Entscheidung für Akupunktur bei einer bereits eingeordneten chronischen funktionellen Verstopfung. Eine neue starke Verschlechterung ist eine andere Situation. Bei heftigen Bauchschmerzen, Erbrechen oder einem stark geblähten Bauch mit fehlendem Stuhl- und Windabgang brauchst du rasch medizinische Hilfe. Blut im Stuhl, unbeabsichtigter Gewichtsverlust und eine anhaltende neue Veränderung gehören ebenfalls ärztlich abgeklärt.</p>
+<h2>Was wurde untersucht?</h2>
+<p>In einer 2016 veröffentlichten randomisierten Studie wurden 1’075 Erwachsene mit schwerer chronischer funktioneller Verstopfung untersucht. Elektroakupunktur wurde mit einer Scheinbehandlung verglichen. Das Protokoll umfasste 28 Sitzungen über acht Wochen. Die Gruppe mit Elektroakupunktur hatte im Mittel mehr vollständige spontane Stuhlentleerungen als die Vergleichsgruppe.</p>
+<p>Das ist ein konkreter Studienhinweis und keine Garantie für den einzelnen Menschen. Die Studie untersuchte ein bestimmtes Protokoll in chinesischen Kliniken. Behandelnde konnten nicht verblindet werden; sehr langfristige Effekte waren nicht geklärt. Aus dem Ergebnis folgt auch nicht, dass wenige manuelle Sitzungen dieselbe Wirkung haben.</p>
+<h2>Wie passt das zur üblichen Behandlung?</h2>
+<p>Je nach Ursache gehören Ernährung, Bewegung, geeignete Ballaststoffe und Medikamente zur Behandlung. Für chronische idiopathische Verstopfung gibt es evidenzbasierte medikamentöse Optionen. Bei einer Entleerungsstörung kann wiederum eine gezielte Behandlung des Beckenbodens wichtig sein.</p>
+<p>Akupunktur sollte deshalb als ergänzender Versuch eingeordnet werden. Medikamente oder bereits hilfreiche Massnahmen werden nicht eigenständig abgesetzt. Wenn deine Beschwerden vor allem zu <a href="/beschwerden/reizdarm/">Reizdarm</a> passen, lies die gesonderte Einordnung zu <a href="/wissen/akupunktur-bei-reizdarm/">Akupunktur bei Reizdarm</a>. Die Evidenz ist nicht für beide Beschwerdebilder gleich.</p>
+<h2>Woran du einen sinnvollen Versuch erkennst</h2>
+<p>Vor Beginn wird festgelegt, was sich verbessern soll: beispielsweise weniger starkes Pressen, mehr vollständige Entleerungen oder weniger belastende Bauchbeschwerden. Ein einfaches Stuhl- und Beschwerdeprotokoll hilft bei der Bewertung.</p>
+<p>Du solltest wissen, welche Form der <a href="/therapien/akupunktur/">Akupunktur</a> geplant ist und wann der Nutzen überprüft wird. Eine Serie ohne erkennbares Ziel und ohne Zwischenbilanz ist keine gute Behandlungsplanung. Bleibt ein relevanter Nutzen aus, werden Vorgehen und Alternativen besprochen.</p>
+<h2>Vor einer Anfrage</h2>
+<p>Bring bekannte Diagnosen, Medikamentenliste und bisherige Behandlungsversuche mit. Frage nach Erfahrung mit diesem Beschwerdebild und nach dem geplanten Vorgehen. <a href="/krankenkassen/akupunktur/">Kosten und Versicherung</a> sollten vor Beginn geklärt sein; eine Kostenübernahme ist keine Wirksamkeitsgarantie.</p>
+<p>Wenn die Ursache geklärt ist und du einen ergänzenden Versuch erwägst, kannst du über den <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> eine passende Anfrage stellen. Die Studie ist keine Zusage, dass jede Praxis genau dieses Protokoll anbietet.</p>
+<h2>Häufige Fragen</h2>
+<h3>Hilft Akupunktur bei jeder Verstopfung?</h3>
+<p>Nein. Ursache und Beschwerdebild sind entscheidend; die genannten Daten betreffen chronische funktionelle Verstopfung.</p>
+<h3>Muss ich 28 Sitzungen buchen?</h3>
+<p>Nein. Das war das untersuchte Studienprotokoll, kein Buchungspaket und keine persönliche Therapieempfehlung.</p>
+<h3>Kann ich meine Abführmittel dann absetzen?</h3>
+<p>Änderungen deiner bisherigen Behandlung besprichst du mit den zuständigen Fachpersonen. Akupunktur ersetzt wirksame Massnahmen nicht automatisch.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/27618593/" target="_blank" rel="noopener">Liu et al., Annals of Internal Medicine 2016: shamkontrollierte Studie</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10542656/" target="_blank" rel="noopener">AGA/ACG 2023: Pharmacological Management of Chronic Idiopathic Constipation</a></li>
+<li><a href="https://www.worldgastroenterology.org/UserFiles/file/guidelines/constipation-english-2025.pdf" target="_blank" rel="noopener">World Gastroenterology Organisation 2025: Constipation guideline</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/reizdarm/', label: 'Reizdarm', cat: 'Beschwerde' },
+      { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/wissen/akupunktur-bei-reizdarm/', label: 'Akupunktur bei Reizdarm', cat: 'Artikel' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-PROSTATITIS (Welle 3)
+  {
+    slug: 'akupunktur-bei-prostatitis',
+    title: 'Akupunktur bei Prostatitis und CPPS',
+    metaDesc: 'Bei chronischem nichtbakteriellem Beckenschmerz gibt es positive Akupunkturstudien. Was damit gemeint ist und warum eine Infektion zuerst behandelt wird.',
+    region: 'Schweizweit',
+    excerpt: 'Gemeint ist hier das chronische, nichtbakterielle Beckenschmerzsyndrom. Eine akute Prostatainfektion braucht eine andere Behandlung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei chronischer Prostatitis: Für wen ist sie eine Option?',
+    lead: 'Gemeint ist hier das chronische, nichtbakterielle Beckenschmerzsyndrom. Eine akute Prostatainfektion braucht eine andere Behandlung.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Unterstützung bei chronischem Beckenschmerz',
+    ctaText: 'Wenn Infektion und andere behandlungsbedürftige Ursachen abgeklärt sind, kannst du anfragen, ob ein Akupunkturversuch in deinen bestehenden Behandlungsplan passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W3,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei chronischer nichtbakterieller Prostatitis beziehungsweise chronischem Beckenschmerzsyndrom kann Akupunktur eine ergänzende Option sein. Eine grössere kontrollierte Studie zeigte eine bessere Symptomverbesserung als Scheinakupunktur. Eine akute bakterielle Prostatitis wird damit nicht behandelt.</p></div>
+<h2>Welche Form von Prostatitis ist gemeint?</h2>
+<p>Schmerzen im Damm, Becken oder Genitalbereich und Beschwerden beim Wasserlassen können unterschiedliche Ursachen haben. Der Begriff «Prostatitis» wird im Alltag für verschiedene Situationen verwendet. Eine Infektion und ein chronisches Beckenschmerzsyndrom ohne nachgewiesene bakterielle Ursache sind nicht gleichzusetzen.</p>
+<p>Die medizinische Abklärung steht deshalb am Anfang. Der Überblick <a href="/beschwerden/prostata/">Prostatabeschwerden</a> beschreibt das Umfeld. Ein <a href="/gesundheitsbibliothek/befunde-werte/psa-wert/">PSA-Wert</a> beantwortet wiederum eine andere Frage und ist kein alleiniger Nachweis für die Ursache deiner Schmerzen.</p>
+<h2>Was sagen die Studien?</h2>
+<p>Eine 2021 veröffentlichte randomisierte Studie untersuchte Männer mit mässig bis stark ausgeprägtem CP/CPPS. Akupunktur wurde mit einer Scheinbehandlung verglichen. Das untersuchte Vorgehen umfasste 20 Sitzungen über acht Wochen. Die Beschwerden besserten sich in der Akupunkturgruppe häufiger; der Unterschied bestand auch in der Nachbeobachtung.</p>
+<p>Die Ergebnisse sprechen für einen möglichen ergänzenden Nutzen bei dieser klar definierten Gruppe. Sie beweisen keine Heilung der Prostata, keine Beseitigung von Bakterien und keinen Nutzen gegen Prostatakrebs. Die Wirkung eines bestimmten Studienprotokolls darf auch nicht auf jede beliebige Behandlungsserie übertragen werden.</p>
+<h2>Teil eines gemeinsamen Behandlungsplans</h2>
+<p>Chronischer Beckenschmerz kann mehrere Faktoren umfassen. Je nach Befund werden urologische Behandlung, Schmerztherapie und andere Massnahmen kombiniert. Bei beteiligter Muskulatur kann eine gezielte physiotherapeutische Behandlung relevant sein. Der Plan sollte zu deinen konkreten Befunden passen.</p>
+<p>Akupunktur ist ein möglicher Baustein, kein Anlass, eine hilfreiche oder notwendige Behandlung zu beenden. Auch eine <a href="/beschwerden/reizblase/">Reizblase</a> oder ein Blasenschmerzsyndrom braucht eine passende Einordnung, statt sämtliche Beschwerden als Prostatitis zu behandeln.</p>
+<h2>Wann Akupunktur warten muss</h2>
+<p>Fieber, Schüttelfrost, starke neue Schmerzen oder die Unfähigkeit, Urin zu lassen, gehören rasch medizinisch beurteilt. Bei Verdacht auf eine akute Infektion hat die ärztliche Behandlung Vorrang. Ein geplanter Akupunkturtermin ist dann nicht der passende erste Schritt.</p>
+<h2>Was du vor Beginn besprechen solltest</h2>
+<p>Bring Befunde, Medikamentenliste und bisherige Behandlungsversuche mit. Lege mit den Behandelnden fest, woran Nutzen gemessen wird, etwa Schmerzen, Alltagseinschränkung oder Beschwerden beim Wasserlassen. Eine Zwischenbilanz verhindert, dass du ohne erkennbaren Nutzen immer weiterbehandelst.</p>
+<p>Informationen zu <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/krankenkassen/akupunktur/">Versicherung</a> helfen bei der Vorbereitung. Über den <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> kannst du eine ergänzende Behandlung anfragen; die erforderliche Erfahrung und Eignung werden vor Beginn geklärt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ersetzt Akupunktur Antibiotika?</h3>
+<p>Nein. Bei einer behandlungsbedürftigen bakteriellen Infektion bleibt die medizinische Therapie führend.</p>
+<h3>Gilt die Studie für jede Art von Beckenschmerz?</h3>
+<p>Nein. Sie betraf Männer mit CP/CPPS, nicht jede gynäkologische, urologische oder neurologische Schmerzursache.</p>
+<h3>Wie viele Sitzungen brauche ich?</h3>
+<p>Das hängt von Situation und Plan ab. Die 20 Studiensitzungen sind keine persönliche Vorgabe; Ziele und Überprüfung werden individuell besprochen.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/34399062/" target="_blank" rel="noopener">Sun et al., Annals of Internal Medicine 2021: Efficacy of Acupuncture for CP/CPPS</a></li>
+<li><a href="https://www.auanet.org/guidelines-and-quality/guidelines/male-chronic-pelvic-pain" target="_blank" rel="noopener">AUA 2025: Diagnosis and Management of Male Chronic Pelvic Pain</a></li>
+<li><a href="https://www.eu-openscience.europeanurology.com/article/S2666-1683%2822%2902126-7/fulltext" target="_blank" rel="noopener">Qin et al. 2022: systematische Übersicht zu CP/CPPS</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/prostata/', label: 'Prostatabeschwerden', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/befunde-werte/psa-wert/', label: 'PSA-Wert: Was bedeutet ein erhöhter Befund?', cat: 'Befund' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-ANGSTSTOERUNGEN (Welle 3)
+  {
+    slug: 'akupunktur-bei-angststoerungen',
+    title: 'Akupunktur bei Angststörungen: Ehrliche Einordnung',
+    metaDesc: 'Akupunktur wird bei Angst untersucht, die Evidenz bleibt begrenzt. Was als ergänzende Unterstützung infrage kommt und warum Psychotherapie wichtig bleibt.',
+    region: 'Schweizweit',
+    excerpt: 'Ein ruhiger Behandlungstermin kann angenehm sein. Das ist etwas anderes als der Nachweis, dass eine Angststörung damit zuverlässig behandelt wird.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Angststörungen: Was kannst du realistisch erwarten?',
+    lead: 'Ein ruhiger Behandlungstermin kann angenehm sein. Das ist etwas anderes als der Nachweis, dass eine Angststörung damit zuverlässig behandelt wird.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Unterstützung bei Angst besprechen',
+    ctaText: 'Wenn du Akupunktur zusätzlich zu deinem bestehenden Behandlungsplan erwägst, kannst du eine Anfrage stellen. Sag dabei, was dich belastet und welche Unterstützung du bereits erhältst.',
+    ctaLabel: 'Passende Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W3,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Akupunktur kann bei Angst als ergänzende Unterstützung erwogen werden. Studien zeigen mögliche Verbesserungen, ihre Aussagekraft ist jedoch begrenzt. Eine wirksame Psychotherapie und gegebenenfalls medikamentöse Behandlung werden dadurch nicht ersetzt.</p></div>
+<h2>Entspannung und Angstbehandlung sind nicht dasselbe</h2>
+<p>Sorgen, starke körperliche Anspannung und Vermeidung können den Alltag erheblich einschränken. Ob eine <a href="/beschwerden/angststoerungen/">Angststörung</a> vorliegt und welche Behandlung passt, sollte fachlich geklärt werden. <a href="/beschwerden/panikattacken/">Panikattacken</a> brauchen ebenfalls eine passende Einordnung; neue körperliche Symptome dürfen nicht vorschnell als «nur Angst» erklärt werden.</p>
+<p>Eine Behandlung kann sich ruhig und unterstützend anfühlen, ohne die Ursache einer Angststörung ausreichend zu behandeln. Für die Entscheidung zählt deshalb nicht nur, ob du dich direkt danach entspannter fühlst, sondern ob sich dein Alltag langfristig verbessert.</p>
+<h2>Wie sicher ist die Evidenz?</h2>
+<p>Eine systematische Übersicht von 2021 fand Hinweise auf eine Verbesserung von Angstsymptomen gegenüber verschiedenen Vergleichsbedingungen. Die Studien unterschieden sich jedoch in Vorgehen und Qualität. Solche Unterschiede und Schwierigkeiten bei der Verblindung begrenzen die Sicherheit der Schlussfolgerungen.</p>
+<p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p>
+<h2>Was weiterhin Vorrang hat</h2>
+<p>Für Angststörungen gibt es etablierte Behandlungen. Dazu gehört insbesondere eine passende Psychotherapie; je nach Situation werden Medikamente erwogen. Den Behandlungsplan solltest du mit den zuständigen Fachpersonen abstimmen. Eine laufende Therapie nicht aus eigener Entscheidung beenden, weil du etwas Ergänzendes ausprobieren möchtest.</p>
+<p>Bei neuem starken Brustschmerz, Ohnmacht oder anderen akuten Warnzeichen ist medizinische Abklärung wichtiger als ein Akupunkturtermin. Wenn Angst den Alltag zunehmend verhindert oder du dich nicht sicher fühlst, brauchst du zeitnah professionelle Hilfe.</p>
+<h2>Wie ein ergänzender Versuch aussehen kann</h2>
+<p>Vereinbare konkrete Ziele: beispielsweise weniger belastende Anspannung oder besseren Schlaf, ohne die Ziele deiner Psychotherapie aus dem Blick zu verlieren. Lege einen Zeitpunkt für die gemeinsame Bewertung fest. Ein Versuch ohne relevante Besserung muss nicht endlos weitergehen.</p>
+<p>Wenn Nadeln selbst Angst auslösen, erwähne das schon bei der Anfrage. Die Seite <a href="/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/">Angst vor Akupunkturnadeln</a> erklärt, wie du deine Grenzen ansprechen kannst. Niemand muss eine Behandlung aushalten oder fortsetzen, die sich nicht sicher anfühlt.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Frage nach dem realistischen Ziel und der Zusammenarbeit mit deiner bisherigen Versorgung. Kläre <a href="/krankenkassen/akupunktur/">Kosten und Versicherung</a> vorher. Über den <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> kannst du ergänzende Unterstützung anfragen. Eine Anfrage ist kein Versprechen, dass Akupunktur für dein Beschwerdebild die richtige Behandlung ist.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur eine Angststörung heilen?</h3>
+<p>Ein verlässlicher Heilungsnachweis besteht nicht. Die Behandlung kann höchstens ergänzend eingeordnet werden.</p>
+<h3>Soll ich Psychotherapie dafür pausieren?</h3>
+<p>Nein. Ergänzende Massnahmen sollten den bestehenden Plan unterstützen, nicht eine wirksame Behandlung verdrängen.</p>
+<h3>Was, wenn ich Angst vor den Nadeln habe?</h3>
+<p>Sag es frühzeitig. Ablauf, Alternativen und deine Grenzen müssen gemeinsam besprochen werden; du kannst jederzeit stoppen.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/33516258/" target="_blank" rel="noopener">Yang et al. 2021: Effectiveness of acupuncture on anxiety disorder, systematische Übersicht</a></li>
+<li><a href="https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1682400/full" target="_blank" rel="noopener">Jiang et al. 2025: Meta-analysis of randomized controlled trials in generalized anxiety disorder</a></li>
+<li><a href="https://www.nice.org.uk/guidance/cg113" target="_blank" rel="noopener">NICE CG113: Generalised anxiety disorder and panic disorder in adults</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/angststoerungen/', label: 'Angststörung', cat: 'Beschwerde' },
+      { href: '/beschwerden/panikattacken/', label: 'Panikattacken', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/fragen/angst-vor-akupunktur-nadeln/', label: 'Angst vor Akupunkturnadeln', cat: 'Frage' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-DEPRESSIONEN (Welle 3)
+  {
+    slug: 'akupunktur-bei-depressionen',
+    title: 'Akupunktur bei Depressionen: Nutzen und Grenzen',
+    metaDesc: 'Die Studien zu Akupunktur bei Depressionen sind unsicher. Welche ergänzende Rolle möglich ist und warum Psychotherapie und Medikamente nicht ersetzt werden.',
+    region: 'Schweizweit',
+    excerpt: 'Bei Depressionen zählt eine verlässliche Versorgung. Akupunktur sollte höchstens ein abgestimmter Zusatz sein, kein Ersatz für notwendige Behandlung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Depressionen: Welche ergänzende Rolle ist möglich?',
+    lead: 'Bei Depressionen zählt eine verlässliche Versorgung. Akupunktur sollte höchstens ein abgestimmter Zusatz sein, kein Ersatz für notwendige Behandlung.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Unterstützung besprechen',
+    ctaText: 'Wenn du medizinisch oder psychotherapeutisch begleitet wirst, kannst du fragen, ob Akupunktur als Ergänzung zu deinen Zielen passt. In einer akuten Krise hat unmittelbare professionelle Hilfe Vorrang.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W3,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Die Evidenz für Akupunktur bei Depressionen ist unsicher. Es gibt Hinweise auf Symptomverbesserungen, aber keinen verlässlichen Nachweis, dass sie etablierte Behandlungen ersetzen kann. Wenn du sie erwägst, dann als abgestimmte Ergänzung zu medizinischer und psychotherapeutischer Versorgung.</p></div>
+<h2>Die Depression zuerst ernst nehmen</h2>
+<p>Eine Depression ist mehr als ein schlechter Tag. Wenn Interesse, Antrieb oder Stimmung über längere Zeit deutlich verändert sind, ist fachliche Hilfe wichtig. Die Übersicht <a href="/beschwerden/depressionen/">Depressionen</a> beschreibt das Beschwerdebild und die Rolle der Abklärung.</p>
+<p>Dieser Artikel beantwortet die Frage nach einer ergänzenden Behandlung. Er ist keine Anleitung, eine Diagnose selbst zu stellen oder Antidepressiva zu verändern. Wenn du dich akut nicht sicher fühlst oder befürchtest, dir etwas anzutun, hole sofort professionelle Hilfe und bleibe damit nicht allein. Ein späterer Akupunkturtermin reicht dann nicht aus.</p>
+<h2>Was die Forschung tatsächlich zeigt</h2>
+<p>Ein Cochrane-Review von 2018 fand Hinweise auf eine Verbesserung der Depressionsschwere gegenüber keiner beziehungsweise üblicher Behandlung. Gegenüber Kontrollakupunktur war der Unterschied kleiner. Vergleiche mit Medikamenten und Psychotherapie blieben wegen sehr niedriger Evidenzqualität unsicher.</p>
+<p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p>
+<h2>Was nicht verdrängt werden darf</h2>
+<p>Die Behandlung einer Depression hängt unter anderem von Schwere, Verlauf und deinen Bedürfnissen ab. Psychotherapie, Medikamente und weitere fachlich empfohlene Massnahmen haben ihren Platz. Eine ergänzende Behandlung sollte diesen Plan nicht verzögern oder unnötig verkomplizieren.</p>
+<p>Auch wenn du Medikamente schlecht verträgst oder bisher wenig Nutzen erlebt hast, ist die nächste Entscheidung mit den zuständigen Fachpersonen zu treffen. Das ist kein Grund, Medikamente eigenständig abzusetzen oder eine unbewiesene Alternative als gleichwertig anzusehen.</p>
+<h2>Ein Versuch mit klaren Grenzen</h2>
+<p>Wenn du Akupunktur ausprobieren möchtest, besprecht konkrete Ziele und einen überschaubaren Prüfzeitraum. Es kann sinnvoll sein, Veränderungen von Schlaf, Anspannung und Alltag zu dokumentieren. Diese Bereiche sind jedoch nicht gleichbedeutend mit einer ausreichenden Behandlung der Depression.</p>
+<p>Bei zunehmender Verschlechterung wird nicht einfach die nächste Sitzung abgewartet. Es braucht eine zeitnahe Rückmeldung an die behandelnde medizinische oder psychotherapeutische Fachperson. Ebenso ist ein ausbleibender Nutzen Anlass, den ergänzenden Versuch zu überdenken.</p>
+<h2>Vor einer Anfrage</h2>
+<p>Bring Informationen über laufende Behandlungen und Medikamente mit. Sage, welche Ziele du hast und welche Belastung aktuell im Vordergrund steht. Informationen zu <a href="/therapien/akupunktur/">Akupunktur</a> und <a href="/krankenkassen/akupunktur/">Kosten</a> helfen bei einer informierten Entscheidung. Über den <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> kannst du eine ergänzende Unterstützung anfragen; medizinische Krisenversorgung wird dort nicht ersetzt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur eine Alternative zu Antidepressiva?</h3>
+<p>Nicht als gleichwertiger Ersatz auf Grundlage der verfügbaren Evidenz. Änderungen der Behandlung gehören mit der zuständigen Fachperson besprochen.</p>
+<h3>Gilt Entspannung nach einer Sitzung als Behandlungserfolg?</h3>
+<p>Sie kann angenehm sein. Entscheidend sind aber relevante und anhaltende Veränderungen deiner Beschwerden und deines Alltags.</p>
+<h3>Was passiert, wenn es mir schlechter geht?</h3>
+<p>Wende dich zeitnah an deine medizinische oder psychotherapeutische Betreuung. Bei akuter Gefährdung ist sofortige Hilfe nötig, nicht das Abwarten weiterer Sitzungen.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD004046_acupuncture-depression" target="_blank" rel="noopener">Cochrane 2018: Acupuncture for depression, CD004046</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10108109/" target="_blank" rel="noopener">Chen et al. 2022: Efficacy and safety of acupuncture for depression, systematische Übersicht</a></li>
+<li><a href="https://www.nice.org.uk/guidance/ng222" target="_blank" rel="noopener">NICE NG222: Depression in adults, treatment and management</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/depressionen/', label: 'Depressionen', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+    ],
+  },
+  // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-REIZBLASE (Welle 3)
+  {
+    slug: 'akupunktur-bei-reizblase',
+    title: 'Akupunktur bei Reizblase: Studien und Grenzen',
+    metaDesc: 'Hilft Akupunktur bei überaktiver Blase? Die Evidenz ist begrenzt. Was vor einem Versuch abgeklärt und mit der bisherigen Therapie abgestimmt werden sollte.',
+    region: 'Schweizweit',
+    excerpt: 'Harndrang lässt sich behandeln. Ob Akupunktur zusätzlich hilft, ist nach der bisherigen Forschung nicht zuverlässig vorherzusagen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Reizblase: Ist ein ergänzender Versuch sinnvoll?',
+    lead: 'Harndrang lässt sich behandeln. Ob Akupunktur zusätzlich hilft, ist nach der bisherigen Forschung nicht zuverlässig vorherzusagen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Behandlung bei Reizblase besprechen',
+    ctaText: 'Wenn Infektion und andere Ursachen abgeklärt sind, kannst du anfragen, ob ein zeitlich begrenzter Akupunkturversuch zu deinem Behandlungsplan passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W3,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Für Akupunktur bei überaktiver Blase gibt es Hinweise auf mögliche Verbesserungen, die Evidenzsicherheit ist jedoch niedrig. Sie ist kein zuverlässig belegter Ersatz für etablierte Massnahmen. Ein ergänzender Versuch braucht eine vorherige Abklärung und überprüfbare Ziele.</p></div>
+<h2>Nicht jeder Harndrang ist eine Reizblase</h2>
+<p>Plötzlicher starker Harndrang und häufiges Wasserlassen können zu einer überaktiven Blase passen. Eine Infektion, andere Erkrankungen oder Medikamente können ähnliche Beschwerden verursachen. Die Übersicht <a href="/beschwerden/reizblase/">Reizblase</a> erklärt die Einordnung.</p>
+<p>Schmerzen und Brennen, Fieber oder <a href="/gesundheitsbibliothek/befunde-werte/blut-im-urin/">Blut im Urin</a> gehören zuerst medizinisch abgeklärt. Wenn du trotz starken Drangs keinen Urin lassen kannst, brauchst du rasch Hilfe. Ein Akupunkturversuch darf die Suche nach einer behandelbaren Ursache nicht verzögern.</p>
+<h2>Wie gut sind die Daten?</h2>
+<p>Der Cochrane-Review von 2022 bewertete Studien zur Akupunktur bei Erwachsenen mit überaktiver Blase. Ein möglicher kleiner Vorteil gegenüber Medikamenten wurde mit niedriger Evidenzsicherheit beschrieben. Für zentrale Beschwerden wie Drang und Inkontinenzereignisse waren manche Vergleiche sehr unsicher.</p>
+<p>Das ist keine belastbare Grundlage für eine Erfolgsquote. Unterschiedliche Studien, Vergleichsbehandlungen und Messungen erschweren die Übertragung. Dass in den eingeschlossenen Studien keine schweren Nebenwirkungen beobachtet wurden, beweist auch nicht, dass jede Behandlung für jede Person risikofrei ist.</p>
+<h2>Was zur üblichen Versorgung gehört</h2>
+<p>Die Auswahl richtet sich nach Diagnose und Belastung. Blasentraining, passende Verhaltensmassnahmen und je nach Situation Medikamente oder weitere Verfahren können wichtig sein. Welche Option für dich sinnvoll ist, besprichst du mit der zuständigen Fachperson.</p>
+<p>Eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> beantwortet diagnostische Fragen, nicht die Frage nach dem Nutzen einer Akupunktur. Bei vorwiegenden Blasenschmerzen ist zudem die Abgrenzung zur <a href="/beschwerden/interstitielle-zystitis/">interstitiellen Zystitis</a> wichtig. Studien zur überaktiven Blase werden nicht einfach auf dieses Beschwerdebild übertragen.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Dokumentiere beispielsweise Harndrang, Toilettengänge und die Belastung im Alltag. Lege mit den Behandelnden fest, welches Ziel realistisch ist und wann der Versuch bewertet wird. Ein Blasentagebuch kann dabei helfen, Veränderungen von einem wechselhaften Verlauf zu unterscheiden.</p>
+<p>Akupunktur wird mit der bisherigen Versorgung abgestimmt. Bei fehlendem relevantem Nutzen ist es sinnvoll, andere Optionen zu besprechen. Medikamente nicht selbst absetzen und nicht absichtlich zu wenig trinken, um einen scheinbar besseren Messwert zu erreichen.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Diagnosen, Medikamentenliste und vorhandene Befunde mit. Frage nach Erfahrung mit dem Beschwerdebild, Grenzen und geplantem Prüfzeitraum. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vor Beginn. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage; eine urologische Untersuchung wird dadurch nicht ersetzt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur bei Reizblase zuverlässig wirksam?</h3>
+<p>Das lässt sich nach der bisherigen Forschung nicht sicher sagen. Ein möglicher Nutzen bleibt individuell und unsicher.</p>
+<h3>Gilt das auch für jede Inkontinenz?</h3>
+<p>Nein. Überaktive Blase und beispielsweise Belastungsinkontinenz sind unterschiedliche Situationen und dürfen nicht gleichgesetzt werden.</p>
+<h3>Wann sollte ich den Versuch beenden?</h3>
+<p>Wenn der vereinbarte Prüfzeitraum keinen relevanten Nutzen zeigt oder Beschwerden zunehmen, wird der Plan neu bewertet.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD013519_acupuncture-treating-overactive-bladder-adults" target="_blank" rel="noopener">Cochrane 2022: Acupuncture for treating overactive bladder in adults, CD013519</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/36148895/" target="_blank" rel="noopener">PubMed, vollständige Review-Metadaten</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/interstitielle-zystitis/', label: 'interstitiellen Zystitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie): Was bedeutet der Befund?', cat: 'Befund' },
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung', cat: 'Untersuchung' },
     ],
   },
 ];

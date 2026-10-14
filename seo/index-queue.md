@@ -366,6 +366,26 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/nt-probnp/
 - https://tcm.ch/gesundheitsbibliothek/befunde-werte/d-dimere-erhoeht/
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/biopsie/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/psa-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/cortisol-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/progesteron-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/estradiol-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/testosteron-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/zink-wert/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/holotranscobalamin/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/vitamin-b6-wert/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/spermiogramm/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/hysteroskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/lumbalpunktion/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/leberelastografie/
+- https://tcm.ch/wissen/akupunktur-bei-verstopfung/
+- https://tcm.ch/wissen/akupunktur-bei-prostatitis/
+- https://tcm.ch/wissen/akupunktur-bei-angststoerungen/
+- https://tcm.ch/wissen/akupunktur-bei-depressionen/
+- https://tcm.ch/wissen/akupunktur-bei-reizblase/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-herzschrittmacher/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-diabetes-sicherheit/
 
 ## Geplant (noch nicht live)
 

@@ -98,7 +98,7 @@
     "src/data/therapie-leaves/moxibustion.html": "bdc6959e1cb5870c"
   },
   "therapy:electroacupuncture": {
-    "src/data/therapie-leaves/elektroakupunktur.html": "caeb00c7e9b0099d"
+    "src/data/therapie-leaves/elektroakupunktur.html": "cab5d4733470e390"
   },
   "therapy:facial-acupuncture": {
     "src/data/therapie-leaves/gesichtsakupunktur.html": "a61c8d3ded487499"
@@ -134,7 +134,7 @@
     "src/data/symptom-leaves/verdauungsprobleme.html": "1660cc0bbc9d583d"
   },
   "condition:menstrual-issues": {
-    "src/data/symptom-leaves/zyklusbeschwerden.html": "0a9b7b0051005aad"
+    "src/data/symptom-leaves/zyklusbeschwerden.html": "689e9bab0fd3f39b"
   },
   "condition:fertility-support": {
     "src/data/symptom-leaves/kinderwunsch.html": "a006452e1844872b"

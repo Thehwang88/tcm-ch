@@ -91,6 +91,11 @@ export const PUBLISHED_LABORWERTE_2026_10: string | undefined = '2026-10-13';
 // erst dann erscheinen Article-/MedicalWebPage-Daten. Nur Publikation, keine fachliche Prüfung.
 export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = '2026-10-13';
 
+// Welle 3 (redaktionelles Paket 14.10.2026, 20 Seiten: 8 Befunde, 4 Untersuchungen, 5 Wissen, 3 Fragen).
+// RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD'). Bis dahin keine Schema-Daten.
+// Nur Publikation, keine fachliche Prüfung. Bisherige Konstanten unverändert.
+export const PUBLISHED_WELLE_3_2026_10: string | undefined = undefined;
+
 export const befundeWerte: BefundWert[] = [
   {
     slug: 'crp-erhoeht',
@@ -285,7 +290,8 @@ export const befundeWerte: BefundWert[] = [
     notProofHtml: `<p>Ein erhöhter Laborwert zeigt nicht automatisch, wie gut die Leber insgesamt funktioniert und beweist keine bestimmte Erkrankung. Umgekehrt können manche Lebererkrankungen bestehen, obwohl einzelne Werte nur gering verändert sind.</p>`,
     followUpHtml: `<p>Je nach Befund können Werte kontrolliert, Medikamente und Risikofaktoren überprüft oder weitere Blutuntersuchungen durchgeführt werden. Bei bestimmten Konstellationen kommen Ultraschall oder andere Untersuchungen hinzu.</p>
 <p>Ein <a href="/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/">niedriger Albuminwert im Blut</a> ist ein anderer Befund als erhöhte Leberenzyme und braucht eine eigene Einordnung.</p>
-<p>Bei bestimmten Fragen zur Leberfunktion werden zusätzlich Gerinnungsbefunde wie <a href="/gesundheitsbibliothek/befunde-werte/inr-quick/">INR und Quick</a> eingeordnet.</p>`,
+<p>Bei bestimmten Fragen zur Leberfunktion werden zusätzlich Gerinnungsbefunde wie <a href="/gesundheitsbibliothek/befunde-werte/inr-quick/">INR und Quick</a> eingeordnet.</p>
+<p>Bei passenden Fragestellungen liefert eine <a href="/gesundheitsbibliothek/untersuchungen/leberelastografie/">Leberelastografie</a> ergänzende Informationen zur Steifigkeit des Lebergewebes.</p>`,
     redFlagsHtml: `<p>Neu auffällige Leberwerte sollten ärztlich eingeordnet werden. Besonders wichtig ist eine rasche Abklärung bei Gelbfärbung von Haut oder Augen, sehr dunklem Urin, starken Oberbauchschmerzen, wiederholtem Erbrechen, ausgeprägter Benommenheit oder deutlicher allgemeiner Verschlechterung.</p>`,
     integrativeContextHtml: `<p>TCM-Begriffe wie „Leber-Qi“ sind traditionelle Konzepte und nicht mit modernen Leberwerten gleichzusetzen. Aus einem erhöhten Laborwert lässt sich kein TCM-Muster ableiten. Die medizinische Abklärung des Laborbefunds steht deshalb an erster Stelle.</p>`,
     relatedConditions: [{ href: '/beschwerden/fettleber/', label: 'Fettleber' }],
@@ -793,7 +799,8 @@ export const befundeWerte: BefundWert[] = [
 <p>Im unteren Graubereich kann das Serum-B12 normal aussehen, obwohl auf Zellebene ein Mangel besteht, und umgekehrt. Je nach Situation zieht die Ärztin deshalb Zusatzwerte wie Holotranscobalamin oder Methylmalonsäure sowie das Blutbild bei. Relevante Begleiterscheinungen können Blutarmut und Nervensymptome wie Kribbeln in Händen und Füssen oder Gangunsicherheit sein.</p>`,
     notProofHtml: `<p>Ein einzelner tiefer Serumwert beweist noch keinen behandlungsbedürftigen Mangel, und ein grenzwertig normaler Wert schliesst ihn nicht aus. Müdigkeit allein ist kein Beweis für einen B12-Mangel; die Zuordnung von Beschwerden gehört zur ärztlichen Beurteilung.</p>`,
     followUpHtml: `<p>Üblich sind Zusatzwerte (je nach Labor Holotranscobalamin oder Methylmalonsäure), das Blutbild, die Suche nach der Ursache (Ernährung, Magen-Darm, Medikamente) und bei bestätigtem Mangel eine <strong>ärztlich festgelegte Substitution mit Verlaufskontrolle</strong>. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>
-<p><a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">Homocystein erhöht</a> kann einen Mangelhinweis ergänzen, ist aber kein spezifischer B12-Nachweis.</p>`,
+<p><a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">Homocystein erhöht</a> kann einen Mangelhinweis ergänzen, ist aber kein spezifischer B12-Nachweis.</p>
+<p>Der Laborwert <a href="/gesundheitsbibliothek/befunde-werte/holotranscobalamin/">Holotranscobalamin</a>, auch Holo-TC oder aktives B12 genannt, beschreibt einen bestimmten verfügbaren Anteil des Vitamins.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich gehören ein tiefer B12-Wert zusammen mit Kribbeln oder Taubheit in Händen oder Füssen, Gangunsicherheit, Gedächtnisproblemen oder einer Blutarmut: Nervensymptome sollen nicht abgewartet werden, weil sie bei langem Bestehen bleiben können.</p>`,
     integrativeContextHtml: `<p>Abklärung und Substitution eines B12-Mangels gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Substitution.</p>`,
     relatedSignals: [{ href: '/koerpersignale/beine-kribbeln-nachts/', label: 'Beine kribbeln nachts' }],
@@ -2544,7 +2551,9 @@ export const befundeWerte: BefundWert[] = [
     notProofHtml: `<p>FSH ist kein zuverlässiger Einzeltest für die Wahrscheinlichkeit einer natürlichen Schwangerschaft. Ein hoher Wert bedeutet nicht automatisch Unfruchtbarkeit. Ein normaler Wert garantiert umgekehrt weder eine normale Eizellreserve noch eine Schwangerschaft.</p>
 <p>Wenn die Reserve eingeschätzt werden soll, können der <a href="/gesundheitsbibliothek/befunde-werte/amh-wert/">AMH-Wert</a> und Ultraschallbefunde ergänzende Informationen liefern. Diese Tests messen unterschiedliche Aspekte.</p>`,
     redFlagsHtml: `<p>Wenn deine Periode länger ausbleibt oder sich deutlich verändert, lass die Ursache gynäkologisch abklären. Ein auffälliger FSH-Wert sollte besonders dann besprochen werden, wenn er nicht zu Alter und Zyklusverlauf passt. Der Laborwert allein ist kein Notfall.</p>`,
-    followUpHtml: `<p>Frage zuerst, weshalb FSH bestimmt wurde und ob die Blutentnahme zum vorgesehenen Zeitpunkt stattgefunden hat. Je nach Situation werden weitere Hormone, ein Schwangerschaftstest oder ein Ultraschall ergänzt. Die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> hilft, einzelne Messungen von einer gezielten Abklärung zu unterscheiden.</p>`,
+    followUpHtml: `<p>Frage zuerst, weshalb FSH bestimmt wurde und ob die Blutentnahme zum vorgesehenen Zeitpunkt stattgefunden hat. Je nach Situation werden weitere Hormone, ein Schwangerschaftstest oder ein Ultraschall ergänzt. Die Übersicht zum <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> hilft, einzelne Messungen von einer gezielten Abklärung zu unterscheiden.</p>
+<p>Ein <a href="/gesundheitsbibliothek/befunde-werte/progesteron-wert/">Progesteron-Wert</a> beantwortet eine andere Frage als FSH und wird zu einem passenden Zeitpunkt im Zyklus beurteilt.</p>
+<p>Zur Interpretation von FSH kann auch der gleichzeitig gemessene <a href="/gesundheitsbibliothek/befunde-werte/estradiol-wert/">Estradiol-Wert</a> wichtig sein.</p>`,
     faqHtml: `<h2>Häufige Fragen</h2>
 <p><strong>An welchem Zyklustag wird FSH gemessen?</strong></p>
 <p>Das hängt von der Fragestellung ab. Für die Reservebeurteilung wird häufig die frühe Zyklusphase gewählt. Die untersuchende Praxis legt den Zeitpunkt fest.</p>
@@ -3009,7 +3018,9 @@ export const befundeWerte: BefundWert[] = [
     redFlagsHtml: `<p>Besprich einen auffälligen Wert besonders dann, wenn gleichzeitig Blutbildveränderungen oder neue neurologische Beschwerden vorliegen. Anhaltende Taubheit, Gangunsicherheit oder deutliche Schwäche sollten zeitnah ärztlich beurteilt werden.</p>
 <p>Bei plötzlich auftretender Lähmung, Sprachstörung, Brustschmerzen oder schwerer Atemnot brauchst du sofort medizinische Hilfe. Warte in dieser Situation nicht auf einen weiteren Laborwert.</p>`,
     followUpHtml: `<p>Je nach Ausgangslage werden B12, Folat, Blutbild und Nierenfunktion geprüft. Bei unklarer B12-Situation können zusätzliche Marker sinnvoll sein; deren Auswahl gehört in die ärztliche Abklärung.</p>
-<p>Frage, welche Ursache hinter der Erhöhung vermutet wird und ob das Testergebnis eine konkrete Entscheidung verändert. Bring deine Präparateliste mit und ändere Dosierungen nicht eigenständig.</p>`,
+<p>Frage, welche Ursache hinter der Erhöhung vermutet wird und ob das Testergebnis eine konkrete Entscheidung verändert. Bring deine Präparateliste mit und ändere Dosierungen nicht eigenständig.</p>
+<p>Bei einer B12-Fragestellung kann je nach Situation auch <a href="/gesundheitsbibliothek/befunde-werte/holotranscobalamin/">Holotranscobalamin</a> zur Einordnung beitragen.</p>
+<p>Ein auffälliger <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b6-wert/">Vitamin-B6-Wert</a> ist im Kontext von Ernährung und Supplementen zu beurteilen; mehr B6 ist nicht automatisch besser.</p>`,
     faqHtml: `<h2>Häufige Fragen</h2>
 <p><strong>Beweist erhöhtes Homocystein einen B12-Mangel?</strong></p>
 <p>Nein. Auch Folatmangel und andere Ursachen können den Wert beeinflussen.</p>
@@ -3228,6 +3239,349 @@ export const befundeWerte: BefundWert[] = [
     relatedDiagnostics: [
       { href: '/gesundheitsbibliothek/untersuchungen/ct/', label: 'CT' },
       { href: '/gesundheitsbibliothek/untersuchungen/duplexsonografie/', label: 'Duplexsonografie' },
+    ],
+  },
+  {
+    slug: 'psa-wert',
+    gruppe: 'Weitere Werte',
+    title: 'PSA-Wert: Was bedeutet ein erhöhter Befund?',
+    metaTitle: 'PSA-Wert erhöht: Bedeutung und Abklärung',
+    metaDescription: 'Ein erhöhter PSA-Wert bedeutet nicht automatisch Krebs. Erfahre, was den Wert beeinflusst und welche Fragen bei der urologischen Abklärung wichtig sind.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'PSA ist ein Hinweis aus der Prostata. Entscheidend sind Verlauf, Beschwerden und die gemeinsame Abklärung, nicht eine Zahl allein.',
+    primaryPurpose: 'Einordnung des Laborbefunds (PSA-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'PSA-Laborbefund, kein Prostatakrebs- oder Prostatitis-Owner. /beschwerden/prostata/ bleibt Beschwerde-Owner. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Urologie)',
+    shortAnswerHtml: `<p>Ein erhöhter PSA-Wert ist kein Krebsnachweis. PSA kann auch bei einer gutartigen Vergrösserung oder Entzündung der Prostata steigen. Ein unauffälliger Wert schliesst Krebs nicht sicher aus. Ob eine Kontrolle oder weitere Untersuchung nötig ist, beurteilt die Urologie anhand deines Befunds und deiner Vorgeschichte.</p>`,
+    bodyHtml: `<p>PSA steht für prostataspezifisches Antigen. Dieses Eiweiss wird in der Prostata gebildet und lässt sich im Blut messen. Die Untersuchung kommt sowohl bei Fragen zur Früherkennung als auch bei der Kontrolle einer bereits bekannten Erkrankung zum Einsatz. Das sind unterschiedliche Situationen: Ein Wert nach einer Krebsbehandlung wird anders beurteilt als ein erster Früherkennungstest.</p>
+<p>Auf deinem Befund können Gesamt-PSA und weitere Angaben stehen. Einzelne Zusatzwerte können die Einordnung unterstützen, liefern aber ebenfalls keine Diagnose. Eine Internettabelle mit einem festen Grenzwert beantwortet nicht, was dein persönlicher Befund bedeutet.</p>`,
+    contextHtml: `<p>Alter, Grösse der Prostata, Medikamente, eine Entzündung und bestimmte Ereignisse vor der Blutentnahme können die Beurteilung beeinflussen. Sag bei der Abklärung deshalb, ob du kürzlich einen Infekt, eine Untersuchung der Harnwege oder Beschwerden beim Wasserlassen hattest. Medikamente setzt du dafür nicht selbst ab.</p>
+<p>Ein PSA-Test kann zu weiterer Diagnostik führen, obwohl kein behandlungsbedürftiger Krebs vorliegt. Vor einer Früherkennung lohnt sich deshalb ein Gespräch über Nutzen, Unsicherheiten und mögliche Folgen.</p>`,
+    notProofHtml: `<p>PSA zeigt weder sicher Krebs noch dessen Gefährlichkeit. Auch ein Anstieg im Verlauf ist zuerst ein Anlass zur Einordnung. Je nach Situation kommen Kontrolle, Bildgebung und gegebenenfalls eine <a href="/gesundheitsbibliothek/untersuchungen/biopsie/">Biopsie</a> infrage. Nicht jeder erhöhte Wert führt direkt zu einer Gewebeprobe.</p>`,
+    redFlagsHtml: `<p>Einen neu auffälligen Wert besprichst du mit der veranlassenden Praxis. Bei Fieber und deutlichen Schmerzen beim Wasserlassen oder wenn du plötzlich keinen Urin mehr lassen kannst, brauchst du rasch medizinische Hilfe. Sichtbares <a href="/gesundheitsbibliothek/befunde-werte/blut-im-urin/">Blut im Urin</a> sollte ebenfalls ärztlich abgeklärt werden.</p>`,
+    followUpHtml: `<p>Bring den Originalbefund, ältere Messungen und deine Medikamentenliste mit. Frage, warum PSA gemessen wurde, ob eine Kontrolle sinnvoll ist und welche Entscheidung vom Ergebnis abhängt. Unsere Übersicht zu <a href="/beschwerden/prostata/">Prostatabeschwerden</a> ordnet die Symptome ein. TCM ersetzt die urologische Diagnostik nicht und ist keine Methode, einen PSA-Wert gezielt zu senken.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bedeutet ein hoher PSA-Wert immer Krebs?</strong></p>
+<p>Nein. Auch gutartige Veränderungen können PSA erhöhen. Der Wert allein erlaubt keine Diagnose.</p>
+<p><strong>Soll ich den Test selbst wiederholen?</strong></p>
+<p>Besprich Zeitpunkt und Bedingungen mit der Praxis. Eine unkoordinierte Reihe von Selbsttests schafft oft mehr Unsicherheit als Klarheit.</p>
+<p><strong>Kann Akupunktur den PSA-Wert behandeln?</strong></p>
+<p>Der Wert ist keine eigenständige Beschwerde. Zuerst muss geklärt werden, warum er auffällig ist; eine Senkung durch Akupunktur wird hier nicht versprochen.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Prostate-Specific Antigen Test', url: 'https://medlineplus.gov/lab-tests/prostate-specific-antigen-psa-test/' },
+      { label: 'National Cancer Institute: PSA Test', url: 'https://www.cancer.gov/types/prostate/psa-fact-sheet' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/prostata/', label: 'Prostatabeschwerden' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/biopsie/', label: 'Biopsie' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie): Was bedeutet der Befund?' },
+    ],
+  },
+  {
+    slug: 'cortisol-wert',
+    gruppe: 'Weitere Werte',
+    title: 'Cortisol-Wert: Was bedeutet der Befund?',
+    metaTitle: 'Cortisol-Wert: Erhöht oder niedrig einordnen',
+    metaDescription: 'Cortisol hängt von Tageszeit, Probe und Medikamenten ab. Was ein auffälliger Wert bedeutet und warum er allein weder Stress noch Burnout nachweist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Cortisol ist messbar. Wie belastet du bist, lässt sich daraus nicht mit einer einzelnen Zahl ablesen.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Cortisol-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Messwertkontext; /untersuchungen/hormontest/ bleibt Testübersicht, /beschwerden/stress-burnout/ bleibt Beschwerde-Owner. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
+    shortAnswerHtml: `<p>Ein hoher oder niedriger Cortisol-Wert lässt sich nur mit Tageszeit, Probenart und medizinischer Fragestellung beurteilen. Cortisol verändert sich im Tagesverlauf und unter Belastung. Eine einzelne Blut- oder Speichelprobe beweist weder chronischen Stress noch Burnout.</p>`,
+    bodyHtml: `<p>Cortisol wird in den Nebennieren gebildet. Es ist unter anderem an Stoffwechsel und Stressreaktionen beteiligt. Ärztlich veranlasste Tests können klären helfen, ob eine Erkrankung mit zu viel oder zu wenig Cortisol vorliegt.</p>
+<p>Gemessen wird je nach Frage in Blut, Speichel oder über eine Urinsammlung. Diese Ergebnisse sind nicht beliebig austauschbar. Ein Wert am Morgen gehört zu einem anderen Messkontext als eine späte Speichelprobe. Auch der Laborbereich muss zum Verfahren passen.</p>`,
+    contextHtml: `<p>Notiere Entnahmezeit, Schlafrhythmus und eingenommene Medikamente. Besonders wichtig sind Kortisonpräparate, auch wenn sie als Spray, Creme oder Injektion verwendet werden. Veränderungen einer verordneten Behandlung gehören in ärztliche Hände.</p>
+<p>Bei Verdacht auf ein Cushing-Syndrom reicht ein zufällig gemessener Cortisol-Wert nicht als zuverlässiger Suchtest. Die Fachpraxis wählt dafür geeignete Tests und beurteilt auffällige Ergebnisse weiter. Die allgemeine Übersicht <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> erklärt, warum gezielte Fragen hilfreicher sind als grosse Hormonpakete.</p>`,
+    notProofHtml: `<p>Die Bezeichnung «Nebennierenschwäche» oder «Adrenal Fatigue» ist keine wissenschaftlich anerkannte Diagnose für Erschöpfung. Das bedeutet nicht, dass deine Beschwerden eingebildet sind. Es bedeutet, dass ihre Ursache sorgfältig gesucht werden sollte. Eine echte Nebenniereninsuffizienz ist eine andere, medizinisch wichtige Erkrankung.</p>`,
+    redFlagsHtml: `<p>Besprich einen auffälligen Befund mit der veranlassenden Praxis. Bei ausgeprägter Schwäche mit Erbrechen, deutlicher Kreislaufverschlechterung oder Bewusstseinsstörung brauchst du sofort medizinische Hilfe, insbesondere bei bekannter Nebennierenerkrankung.</p>`,
+    followUpHtml: `<p>Bring den Befund mitsamt Referenzbereich und Entnahmebedingungen mit. Frage, ob er zur ursprünglichen Fragestellung passt und ob eine kontrollierte Wiederholung oder ein Funktionstest nötig ist. Bei <a href="/beschwerden/erschoepfung/">Erschöpfung</a> oder <a href="/beschwerden/stress-burnout/">Stress und Burnout</a> sollte die Unterstützung an deinen Beschwerden und deinem Alltag ansetzen, nicht an einem versprochenen «Cortisol-Reset».</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist Cortisol bei Stress immer erhöht?</strong></p>
+<p>Eine Belastung kann Cortisol beeinflussen. Aus einem Einzelwert lässt sich jedoch keine verlässliche Aussage über dein dauerhaftes Stressniveau ableiten.</p>
+<p><strong>Sind Speicheltests grundsätzlich sinnlos?</strong></p>
+<p>Nein. Sie haben bei bestimmten ärztlichen Fragestellungen einen Platz. Ein frei gekauftes «Stressprofil» ist damit nicht automatisch ein geeigneter Diagnoseweg.</p>
+<p><strong>Kann TCM den Wert normalisieren?</strong></p>
+<p>Für diesen Befund wird keine Normalisierung zugesagt. Eine echte hormonelle Erkrankung braucht die entsprechende medizinische Behandlung.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Cortisol Test', url: 'https://medlineplus.gov/lab-tests/cortisol-test/' },
+      { label: 'Endocrine Society: Adrenal Fatigue', url: 'https://www.endocrine.org/patient-engagement/endocrine-library/adrenal-fatigue' },
+      { label: 'Endocrine Society: Diagnosis of Cushing\'s Syndrome', url: 'https://www.endocrine.org/clinical-practice-guidelines/diagnosis-of-cushing-syndrome' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung' },
+      { href: '/beschwerden/stress-burnout/', label: 'Stress und Burnout' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+  },
+  {
+    slug: 'progesteron-wert',
+    gruppe: 'Weitere Werte',
+    title: 'Progesteron-Wert: Wann ist die Messung aussagekräftig?',
+    metaTitle: 'Progesteron-Wert: Zyklus und Befund verstehen',
+    metaDescription: 'Progesteron schwankt im Zyklus. Erfahre, warum der Messzeitpunkt entscheidend ist und ein niedriger Einzelwert nicht automatisch einen Mangel bedeutet.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Beim Progesteron gehört die Zahl immer zum Zykluszeitpunkt. Ein Standardtag passt nicht zu jedem Zyklus.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Progesteron-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Progesteron-Laborbefund; Kinderwunsch und Zyklusbeschwerden bleiben bestehende Beschwerde-Owner. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Gynäkologie/Endokrinologie)',
+    shortAnswerHtml: `<p>Progesteron ist vor dem Eisprung normalerweise niedrig und steigt danach an. Ein niedriger Befund kann deshalb zum normalen Zyklus passen. Entscheidend sind Messzeitpunkt, Zyklusverlauf und die Frage, die mit dem Test beantwortet werden soll.</p>`,
+    bodyHtml: `<p>Nach dem Eisprung bildet vor allem der Gelbkörper Progesteron. Das Hormon bereitet die Gebärmutterschleimhaut auf eine mögliche Schwangerschaft vor. In der Schwangerschaft gelten wieder andere Bedingungen.</p>
+<p>Ein gezielt gewählter Progesteron-Test kann Hinweise darauf geben, ob ein Eisprung stattgefunden hat. Für diese Frage wird häufig ungefähr eine Woche vor der erwarteten nächsten Periode gemessen. «Tag 21» ist daher keine allgemeine Regel für alle Frauen: Bei längeren oder unregelmässigen Zyklen liegt der passende Zeitpunkt anders.</p>`,
+    contextHtml: `<p>Wichtig sind der Beginn deiner letzten Periode, die übliche Zykluslänge, mögliche Eisprunghinweise und Medikamente. Auch Hormonbehandlungen beeinflussen die Einordnung. Bei <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a> betrachtet die Fachpraxis mehrere Faktoren, nicht nur Progesteron.</p>
+<p>Die Ausschüttung kann kurzfristig schwanken. Eine Messung ist deshalb eine Momentaufnahme. Die Interpretation von <a href="/gesundheitsbibliothek/befunde-werte/fsh-wert/">FSH</a> und <a href="/gesundheitsbibliothek/befunde-werte/estradiol-wert/">Estradiol</a> folgt jeweils anderen Fragen und Messbedingungen.</p>`,
+    notProofHtml: `<p>Ein einzelner Wert beurteilt weder zuverlässig die gesamte Qualität der zweiten Zyklushälfte noch die Wahrscheinlichkeit einer Schwangerschaft. Auch die Bezeichnung «Progesteronmangel» darf nicht allein aus einer unpassend getimten Probe entstehen. Nahrungsergänzungen oder Hormone solltest du nicht aufgrund eines Online-Rechners beginnen.</p>`,
+    redFlagsHtml: `<p>Bei anhaltend unregelmässigen oder ausbleibenden Blutungen ist eine gynäkologische Abklärung sinnvoll. Starke Unterbauchschmerzen, Kreislaufprobleme oder Blutungen bei möglicher Schwangerschaft gehören rasch medizinisch beurteilt. Auf eine spätere Hormonkontrolle zu warten ist dann keine sichere Lösung.</p>`,
+    followUpHtml: `<p>Bring Befund, Zyklusdaten und eine Liste deiner Hormonpräparate mit. Frage, welche konkrete Aussage die Messung erlaubt und ob der Zeitpunkt zur Fragestellung passte. Die Übersicht <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a> hilft bei der Vorbereitung. Eine TCM-Behandlung kann nicht als garantierte Korrektur eines Progesteron-Werts angeboten werden.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist Progesteron an Tag 21 immer zu messen?</strong></p>
+<p>Nein. Der passende Zeitpunkt hängt vom tatsächlichen Zyklus und der Frage ab, häufig von der erwarteten nächsten Blutung.</p>
+<p><strong>Beweist ein niedriger Wert einen fehlenden Eisprung?</strong></p>
+<p>Nicht ohne passenden Zeitpunkt und Kontext. Vor dem Eisprung ist ein niedriger Wert normal.</p>
+<p><strong>Soll ich Progesteron vorsorglich nehmen?</strong></p>
+<p>Eine Behandlung gehört individuell gynäkologisch entschieden. Der Laborwert allein ist keine Anleitung für eine Selbstbehandlung.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Progesterone Test', url: 'https://medlineplus.gov/lab-tests/progesterone-test/' },
+      { label: 'ASRM: Fertility evaluation of infertile women, 2021', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-evaluation-of-infertile-women-a-committee-opinion-2021/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/estradiol-wert/', label: 'Estradiol-Wert: Was bedeutet E2 im Befund?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/fsh-wert/', label: 'FSH-Wert: Warum der Zeitpunkt wichtig ist' },
+    ],
+  },
+  {
+    slug: 'estradiol-wert',
+    gruppe: 'Weitere Werte',
+    title: 'Estradiol-Wert: Was bedeutet E2 im Befund?',
+    metaTitle: 'Estradiol-Wert: Östrogenbefund einordnen',
+    metaDescription: 'Estradiol verändert sich mit Zyklus, Lebensphase und Hormonbehandlung. Was E2 im Befund bedeutet und warum ein Einzelwert keine Hormondiagnose liefert.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Estradiol gehört zu den Östrogenen. Ob ein Wert passend ist, hängt von der Situation ab, in der er gemessen wurde.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Estradiol-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'E2-Messwert, kein Wechseljahre-/PCOS-/Kinderwunsch-Owner; Östrogen als Suchsynonym hier nur im Laborkontext. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Gynäkologie/Endokrinologie)',
+    shortAnswerHtml: `<p>Estradiol, häufig als E2 bezeichnet, ist ein Östrogen. Der Blutwert verändert sich im Zyklus und in verschiedenen Lebensphasen. «Hoch» oder «niedrig» lässt sich daher nur mit Referenzbereich, Messzeitpunkt, Beschwerden und möglichen Hormonpräparaten beurteilen.</p>`,
+    bodyHtml: `<p>Östrogene sind eine Gruppe von Hormonen. Estradiol ist eines davon und spielt unter anderem bei Zyklus, Knochen und Fortpflanzung eine Rolle. Östrogene kommen bei allen Menschen vor, in unterschiedlichen Konzentrationen und Zusammenhängen.</p>
+<p>Eine E2-Messung kann Bestandteil einer gezielten hormonellen Abklärung oder der Überwachung einer Behandlung sein. Auf dem Laborblatt sind Einheit und der für deine Situation passende Bereich wichtig. Die Zahl aus einem anderen Labor oder einer anderen Zyklusphase ist kein verlässlicher Vergleich.</p>`,
+    contextHtml: `<p>Sag, an welchem Zyklustag die Probe entnommen wurde und ob du hormonell verhütest oder eine Hormontherapie erhältst. Ein Wert während einer solchen Behandlung kann nicht einfach wie ein unbehandelter Zyklus interpretiert werden.</p>
+<p>Bei bestimmten Fragestellungen wird E2 zusammen mit <a href="/gesundheitsbibliothek/befunde-werte/fsh-wert/">FSH</a> betrachtet. <a href="/gesundheitsbibliothek/befunde-werte/progesteron-wert/">Progesteron</a> beantwortet wiederum eine andere Frage. Der Zweck einer Messung sollte vor der Suche nach einem «optimalen» Zielwert geklärt sein.</p>`,
+    notProofHtml: `<p>Ein einzelner Estradiol-Wert beweist weder eine allgemeine «Östrogendominanz» noch erklärt er jede Gewichtsschwankung, Müdigkeit oder Stimmungslage. Auch die eigene Fruchtbarkeit lässt sich daraus nicht zuverlässig vorhersagen. Mehr Tests sind nicht automatisch eine bessere Abklärung.</p>`,
+    redFlagsHtml: `<p>Ausbleibende Perioden, unerwartete Blutungen oder ausgeprägte neue Beschwerden sollten gynäkologisch eingeordnet werden. Blutungen nach den Wechseljahren gehören unabhängig von einem vermeintlich beruhigenden Hormonwert abgeklärt. Ein E2-Ergebnis ersetzt diese Untersuchung nicht.</p>`,
+    followUpHtml: `<p>Bring den Befund, deine Zyklusdaten und Angaben zu Hormonpräparaten mit. Frage, welche Entscheidung das Ergebnis unterstützen soll. Informationen zu Beschwerden findest du bei <a href="/beschwerden/wechseljahre/">Wechseljahren</a> und <a href="/beschwerden/pcos/">PCOS</a>. Diese Erkrankungsseiten und die ärztliche Abklärung bleiben wichtiger als der Versuch, isoliert eine Zahl zu verändern.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist ein höherer Wert immer besser?</strong></p>
+<p>Nein. Es gibt keinen für alle Situationen gültigen Optimalwert. Einordnung und Nutzen einer Behandlung hängen vom Kontext ab.</p>
+<p><strong>Sind Estradiol und Östrogen dasselbe?</strong></p>
+<p>Estradiol ist eines der Östrogene. Der genaue Name des gemessenen Hormons gehört zur Interpretation.</p>
+<p><strong>Kann ich aus E2 erkennen, ob ich schwanger werden kann?</strong></p>
+<p>Nicht zuverlässig. Eine Fertilitätsabklärung berücksichtigt weitere Befunde und beide Partner, wenn das relevant ist.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Estrogen Levels Test', url: 'https://medlineplus.gov/lab-tests/estrogen-levels-test/' },
+      { label: 'ASRM: Fertility evaluation of infertile women, 2021', url: 'https://www.asrm.org/practice-guidance/practice-committee-documents/fertility-evaluation-of-infertile-women-a-committee-opinion-2021/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/pcos/', label: 'PCOS' },
+      { href: '/beschwerden/wechseljahre/', label: 'Wechseljahren' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/fsh-wert/', label: 'FSH-Wert: Warum der Zeitpunkt wichtig ist' },
+      { href: '/gesundheitsbibliothek/befunde-werte/progesteron-wert/', label: 'Progesteron-Wert: Wann ist die Messung aussagekräftig?' },
+    ],
+  },
+  {
+    slug: 'testosteron-wert',
+    gruppe: 'Weitere Werte',
+    title: 'Testosteron-Wert: Was bedeutet der Laborbefund?',
+    metaTitle: 'Testosteron-Wert: Niedrig oder erhöht verstehen',
+    metaDescription: 'Ein Testosteron-Wert braucht Beschwerden und Messkontext. Erfahre, warum bei Männern oft eine morgendliche Kontrolle nötig ist und Selbstbehandlung riskant ist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Ein auffälliger Testosteron-Wert ist ein Ausgangspunkt für die Abklärung, keine automatische Erklärung für Müdigkeit oder fehlende Lust.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Testosteron-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Messwert bei allen Geschlechtern; keine eigene Hypogonadismus-/PCOS-/Erektionsbehandlungsseite. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Andrologie)',
+    shortAnswerHtml: `<p>Ein niedriger Testosteron-Wert allein reicht bei Männern nicht für die Diagnose eines Testosteronmangels. Dazu gehören passende Beschwerden und wiederholt eindeutig niedrige Messungen unter geeigneten Bedingungen. Ein erhöhter Befund wird ebenfalls im Zusammenhang mit Medikamenten und der individuellen Situation beurteilt.</p>`,
+    bodyHtml: `<p>Testosteron beeinflusst unter anderem Sexualfunktion, Knochen und Muskulatur. Es kommt auch bei Frauen vor, normalerweise in geringeren Mengen. Laborberichte können Gesamt-Testosteron und Angaben zum freien oder verfügbaren Anteil enthalten. Diese Werte beantworten nicht genau dieselbe Frage.</p>
+<p>Bei Männern mit Verdacht auf einen Mangel empfehlen Fachleitlinien eine morgendliche Messung und bei auffälligem Ergebnis eine Bestätigung. Nicht jede einzelne niedrige Zahl ist eine dauerhafte hormonelle Störung. Für Frauen gelten andere Fragestellungen und Referenzbereiche; eine Männer-Normalwerttabelle hilft dort nicht.</p>`,
+    contextHtml: `<p>Akute Erkrankungen, Schlaf, Medikamente und die Bindung des Hormons im Blut können die Interpretation verändern. Zur weiteren Abklärung können zusätzliche Hormone und eine Untersuchung nötig sein. Sag auch, ob du Testosteron, anabole Substanzen oder frei gekaufte «Booster» verwendest.</p>
+<p>Bei <a href="/beschwerden/pcos/">PCOS</a> können Androgene Teil der Abklärung sein. Bei <a href="/beschwerden/erektile-dysfunktion/">erektiler Dysfunktion</a> kommen hingegen viele hormonelle und nicht hormonelle Ursachen infrage. Der Laborbefund sollte nicht vorschnell zum einzigen Erklärungsmodell werden.</p>`,
+    notProofHtml: `<p>Testosteron ist kein allgemeiner Leistungswert. Mehr bedeutet nicht automatisch mehr Gesundheit. Eine Therapie kann unerwünschte Wirkungen haben und bei bestehendem Kinderwunsch besonders problematisch sein, weil zugeführtes Testosteron die Spermienproduktion beeinträchtigen kann.</p>`,
+    redFlagsHtml: `<p>Besprich anhaltende Beschwerden und einen auffälligen Befund mit der Hausarzt-, urologischen, gynäkologischen oder endokrinologischen Praxis. Ein rascher Beginn deutlicher Vermännlichungszeichen bei Frauen sollte zeitnah gynäkologisch beurteilt werden. Dringliche neue Symptome gehören unabhängig vom Hormonwert untersucht.</p>`,
+    followUpHtml: `<p>Bring Originalbefund, Entnahmezeit und Medikamentenliste mit. Frage, ob eine Kontrollmessung unter passenden Bedingungen nötig ist und welche Ursachen geprüft werden sollen. Bei <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a> erwähnst du diesen ausdrücklich vor einer möglichen Hormonbehandlung. Akupunktur ist kein Ersatz für eine indizierte endokrinologische Therapie.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Muss jeder niedrige Wert behandelt werden?</strong></p>
+<p>Nein. Beschwerden, Wiederholungsmessung, Ursache und mögliche Risiken gehören zur Entscheidung.</p>
+<p><strong>Warum ist die Uhrzeit wichtig?</strong></p>
+<p>Bei Männern schwankt Testosteron im Tagesverlauf. Eine passend geplante morgendliche Kontrolle verbessert die Vergleichbarkeit.</p>
+<p><strong>Sind Testosteron-Booster eine gute Lösung?</strong></p>
+<p>Nicht als Selbstbehandlung eines Laborbefunds. Lass Ursache und tatsächlichen Behandlungsbedarf klären, besonders bei Kinderwunsch.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Testosterone Levels Test', url: 'https://medlineplus.gov/lab-tests/testosterone-levels-test/' },
+      { label: 'Endocrine Society: Testosterone Therapy for Hypogonadism', url: 'https://www.endocrine.org/clinical-practice-guidelines/testosterone-therapy' },
+      { label: 'Endocrine Society: Hypogonadism in Men', url: 'https://www.endocrine.org/patient-engagement/endocrine-library/hypogonadism' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/erektile-dysfunktion/', label: 'erektiler Dysfunktion' },
+      { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch' },
+      { href: '/beschwerden/pcos/', label: 'PCOS' },
+    ],
+  },
+  {
+    slug: 'zink-wert',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Zink-Wert: Was bedeutet ein niedriger Befund?',
+    metaTitle: 'Zink-Wert im Blut: Niedrigen Befund einordnen',
+    metaDescription: 'Ein niedriger Zink-Wert braucht Kontext. Was die Blutmessung aussagt, welche Einflüsse wichtig sind und warum hoch dosierte Präparate riskant sein können.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Zink ist wichtig. Der Blutwert allein zeigt aber nicht die gesamte Versorgung und erklärt nicht jedes Haut- oder Haarproblem.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Zink-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Blutbefund; keine generische Zinkmangel-Symptomseite, Haarausfall bleibt /beschwerden/haarausfall/. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
+    shortAnswerHtml: `<p>Ein niedriger Zink-Wert kann zu einer unzureichenden Versorgung passen. Er sollte mit Ernährung, Beschwerden und den Bedingungen der Blutentnahme eingeordnet werden. Die Messung im Blut bildet die gesamte Zinkversorgung nur begrenzt ab.</p>`,
+    bodyHtml: `<p>Zink ist ein Spurenelement und an vielen Vorgängen im Körper beteiligt. Unter anderem benötigen Haut, Immunsystem und zahlreiche Enzyme Zink. Dein Körper braucht regelmässige Zufuhr über die Ernährung, aber nicht möglichst hohe Mengen.</p>
+<p>Im Labor wird meist Zink in Serum oder Plasma gemessen. Die Verfahren und Bereiche können sich unterscheiden. Ein Wert aus einer anderen Probenart lässt sich deshalb nicht ohne Weiteres vergleichen. Auch Zeitpunkt und aktuelle gesundheitliche Situation gehören zur Interpretation.</p>`,
+    contextHtml: `<p>Eine eingeschränkte Ernährung, Probleme bei der Aufnahme im Darm oder bestimmte Erkrankungen können eine unzureichende Versorgung begünstigen. Gleichzeitig beeinflussen Entzündung und andere Faktoren die Konzentration im Blut. Bei Darmproblemen hilft die ärztliche Abklärung mehr als ein isoliertes Spurenelementpaket.</p>
+<p>Bei <a href="/beschwerden/zoeliakie/">Zöliakie</a> oder anderen Aufnahmeproblemen wird die Versorgung im Gesamtbild beurteilt. <a href="/beschwerden/haarausfall/">Haarausfall</a> kann viele Ursachen haben und ist kein Beweis für einen Zinkmangel.</p>`,
+    notProofHtml: `<p>Ein einzelner niedriger Wert erklärt nicht automatisch Müdigkeit, häufige Infekte oder eine Hauterkrankung. Umgekehrt ist ein scheinbar passender Wert keine Garantie, dass jede Frage zur Ernährung geklärt ist. Weitere Untersuchungen richten sich nach Beschwerden, nicht nach der Anzahl verfügbarer Tests.</p>`,
+    redFlagsHtml: `<p>Bei anhaltendem Durchfall, Gewichtsverlust oder ausgeprägten neuen Beschwerden sollte nach der Ursache gesucht werden. Besprich auch längerfristige oder hoch dosierte Supplemente: Zu viel Zink kann unter anderem die Kupferversorgung beeinträchtigen.</p>`,
+    followUpHtml: `<p>Bring den Befund und alle verwendeten Präparate mit, inklusive Multivitaminen. Frage, ob der Wert kontrolliert werden soll und ob eine gezielte Ernährungskorrektur oder Behandlung sinnvoll ist. Je nach Beschwerden können beispielsweise <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> oder andere Befunde relevant sein; eine beliebige Kombination auf eigene Faust ist nicht nötig.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Kann ich Zink einfach vorsorglich hoch dosieren?</strong></p>
+<p>Das ist keine sichere Abkürzung. Hohe Mengen können schaden und andere Nährstoffe beeinflussen.</p>
+<p><strong>Beweist Zink im Blut die gesamte Versorgung?</strong></p>
+<p>Nein. Die Konzentration ist ein begrenzter Marker und braucht klinischen Kontext.</p>
+<p><strong>Sind meine Haarprobleme damit erklärt?</strong></p>
+<p>Nicht automatisch. Ein Haarproblem und ein auffälliger Wert können zusammenhängen, müssen es aber nicht.</p>`,
+    sources: [
+      { label: 'NIH Office of Dietary Supplements: Zinc, Health Professional Fact Sheet', url: 'https://ods.od.nih.gov/factsheets/Zinc-HealthProfessional/' },
+      { label: 'NIH Office of Dietary Supplements: Zinc, Consumer Fact Sheet', url: 'https://ods.od.nih.gov/factsheets/Zinc-Consumer/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/haarausfall/', label: 'Haarausfall' },
+      { href: '/beschwerden/zoeliakie/', label: 'Zöliakie' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/', label: 'Ferritin zu niedrig: Was bedeutet der Laborwert?' },
+    ],
+  },
+  {
+    slug: 'holotranscobalamin',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Holotranscobalamin: Was bedeutet Holo-TC?',
+    metaTitle: 'Holotranscobalamin: Holo-TC und aktives B12',
+    metaDescription: 'Holo-TC misst den verfügbaren Anteil von Vitamin B12. Wie der Befund eingeordnet wird und warum Beschwerden und ergänzende Tests wichtig bleiben.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Aktives B12 ist ein bestimmter Laborwert. Er beantwortet eine engere Frage als die allgemeine Diagnose eines Vitamin-B12-Mangels.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Holotranscobalamin); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Holo-TC-Messwert; /vitamin-b12-zu-niedrig/ behält generischen B12-Mangel-/Serum-B12-Intent. MMA keine neue URL. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
+    shortAnswerHtml: `<p>Holotranscobalamin, kurz Holo-TC, bezeichnet den an ein Transportprotein gebundenen, für Zellen verfügbaren Anteil von Vitamin B12. Ein niedriger Wert kann einen Mangelverdacht unterstützen. Die Diagnose hängt aber auch von Beschwerden und gegebenenfalls ergänzenden Untersuchungen ab.</p>`,
+    bodyHtml: `<p>Beim Gesamt-B12-Test wird mehr als der direkt verfügbare Anteil erfasst. Holo-TC wird deshalb auch «aktives B12» genannt. Je nach medizinischer Situation und Labor kann Gesamt-B12 oder aktives B12 als erster Test verwendet werden.</p>
+<p>Ein Holo-TC-Ergebnis braucht den passenden Referenzbereich. Es gibt keine für alle Labore und Situationen gültige Internetgrenze. Ein Graubereich ist eine Information für die weitere Abklärung, kein Beweis, dass du zwangsläufig Spritzen brauchst.</p>`,
+    contextHtml: `<p>Ernährung, Erkrankungen von Magen oder Darm und bestimmte Medikamente können bei einem B12-Mangel eine Rolle spielen. Auch bereits eingenommene B12-Präparate beeinflussen Testergebnisse. Sag deshalb vor der Untersuchung, was du verwendest, und ändere verordnete Medikamente nicht selbst.</p>
+<p>Bei unklarem Ergebnis kann die Fachpraxis je nach Situation weitere Marker wie Methylmalonsäure berücksichtigen. <a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">Homocystein</a> ist ebenfalls ein Marker, hat aber weitere mögliche Einflussfaktoren. Ein einzelner Zusatzwert ersetzt keine Ursachenklärung.</p>`,
+    notProofHtml: `<p>Die allgemeine Einordnung eines <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin-B12-Mangels</a> gehört zum bestehenden Übersichtsartikel. Holo-TC ist nicht automatisch der «beste» Test für jede Person. Auch ein Blutbild ohne typische Veränderungen schliesst relevante B12-Probleme nicht zuverlässig aus.</p>`,
+    redFlagsHtml: `<p>Neue oder zunehmende Taubheit, Gangunsicherheit oder andere Nervensymptome sollten zeitnah medizinisch beurteilt werden. Bei deutlichen Symptomen darf eine Behandlung nicht unnötig verzögert werden, nur weil weitere Laborwerte noch fehlen. Den konkreten Ablauf legt die behandelnde Praxis fest.</p>`,
+    followUpHtml: `<p>Bring Befund, Präparateliste und die Beschreibung deiner Beschwerden mit. Frage, was bei dir für einen Mangel spricht, welche Ursache geprüft wird und wie eine mögliche Behandlung kontrolliert werden soll. Bei <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a> bleibt die neurologische und internistische Abklärung wichtig. TCM ersetzt eine nötige B12-Gabe nicht.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Sind Holo-TC und Gesamt-B12 dasselbe?</strong></p>
+<p>Nein. Holo-TC erfasst einen bestimmten verfügbaren Anteil, Gesamt-B12 einen breiteren Anteil im Blut.</p>
+<p><strong>Brauche ich bei einem niedrigen Wert immer Spritzen?</strong></p>
+<p>Nicht automatisch. Ursache, Symptome und Aufnahmefähigkeit beeinflussen die Wahl der Behandlung.</p>
+<p><strong>Soll ich vor dem Test B12 absetzen?</strong></p>
+<p>Besprich die Testplanung und laufende Präparate mit der Praxis. Verordnete Behandlung nicht selbst unterbrechen.</p>`,
+    sources: [
+      { label: 'NICE NG239: Vitamin B12 deficiency in over 16s, 2024', url: 'https://www.nice.org.uk/guidance/ng239' },
+      { label: 'NICE MIB40: Active B12 assay, technische Erläuterung des Messprinzips, 2015; aktuelle Versorgung nach NG239', url: 'https://www.nice.org.uk/guidance/mib40' },
+      { label: 'MedlinePlus: Methylmalonic Acid Test', url: 'https://medlineplus.gov/lab-tests/methylmalonic-acid-mma-test/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/', label: 'Homocystein erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'vitamin-b6-wert',
+    gruppe: 'Vitamine & Eisenspeicher',
+    title: 'Vitamin-B6-Wert: Was bedeutet der Befund?',
+    metaTitle: 'Vitamin-B6-Wert: Niedrig oder erhöht verstehen',
+    metaDescription: 'Vitamin B6 kann zu niedrig oder durch Präparate zu hoch sein. Was der Blutwert aussagt und warum Kribbeln nicht einfach mit mehr B-Vitaminen behandelt wird.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_3_2026_10,
+    deck: 'Bei Vitamin B6 ist nicht nur ein Mangel relevant. Auch längerfristig zu viel aus Präparaten kann problematisch werden.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Vitamin-B6-Wert); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'B6-/PLP-Laborbefund; keine neue Neuropathie-/Homocystein-Seite. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Labormedizin)',
+    shortAnswerHtml: `<p>Ein Vitamin-B6-Wert wird zusammen mit Beschwerden, Ernährung und Supplementen beurteilt. Sowohl unzureichende Versorgung als auch eine übermässige Einnahme können relevant sein. Mehr B6 ist deshalb nicht automatisch besser, auch wenn ein Präparat als «Nerven-Vitamin» beworben wird.</p>`,
+    bodyHtml: `<p>Vitamin B6 umfasst mehrere verwandte Verbindungen. Für die Laborbeurteilung wird häufig Pyridoxal-5-Phosphat, abgekürzt PLP, gemessen. Welche Form untersucht wurde, steht auf dem Laborbericht.</p>
+<p>B6 ist unter anderem an Stoffwechselvorgängen und der Funktion des Nervensystems beteiligt. Ein gezielter Test kann bei einer passenden Fragestellung sinnvoll sein. Ein einzelner Wert ersetzt aber keine neurologische Untersuchung bei neuen Nervensymptomen.</p>`,
+    contextHtml: `<p>Wichtig sind alle Präparate, die B6 enthalten. Es kann in einem B-Komplex, Magnesiumprodukt und Multivitamin gleichzeitig vorkommen. Die Gesamtmenge wird leicht übersehen. Bring deshalb die Verpackungen oder Fotos der Inhaltsangaben mit.</p>
+<p>Ein auffälliger Wert sollte zur eingenommenen Menge und zum Zeitpunkt der Probe passen. Die Laborzahl allein bestimmt nicht, ob deine Beschwerden durch B6 verursacht werden. Bei <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a> müssen auch andere Ursachen geprüft werden.</p>`,
+    notProofHtml: `<p>Ein erhöhter B6-Wert ist kein Beweis für eine gute «Nervenversorgung». Längerfristig hohe Mengen aus Supplementen können Nervenschäden verursachen. Ebenso lässt sich aus Kribbeln allein kein B6-Mangel ableiten. Auch <a href="/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/">Vitamin B12</a> und weitere Ursachen können eine Rolle spielen.</p>`,
+    redFlagsHtml: `<p>Bei neuem oder zunehmendem Kribbeln, Taubheit oder Gangunsicherheit ist eine zeitnahe medizinische Abklärung sinnvoll. Sag ausdrücklich, welche Nahrungsergänzungen du verwendest. Verordnete Arzneimittel nicht selbst verändern; bei frei gekauften Präparaten klärst du das weitere Vorgehen mit Praxis oder Apotheke.</p>`,
+    followUpHtml: `<p>Bring den Originalbefund und eine vollständige Produktliste mit. Frage, ob eine Supplementquelle das Ergebnis erklären kann und wie der Verlauf kontrolliert werden sollte. Ein <a href="/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/">erhöhtes Homocystein</a> ist keine pauschale Aufforderung, hoch dosiertes B6 einzunehmen. Keine individuelle Dosierung lässt sich aus dieser Seite ableiten.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist zu viel B6 möglich, obwohl es wasserlöslich ist?</strong></p>
+<p>Ja. Wasserlöslichkeit bedeutet nicht, dass hohe Supplementmengen auf Dauer harmlos sind.</p>
+<p><strong>Beweist ein hoher Wert eine Vergiftung?</strong></p>
+<p>Nicht allein. Beschwerden, Einnahme und Verlauf müssen zusammen beurteilt werden.</p>
+<p><strong>Hilft ein B-Komplex bei Kribbeln?</strong></p>
+<p>Nicht pauschal. Ohne Ursachenklärung kann eine zusätzliche B6-Zufuhr sogar das falsche Vorgehen sein.</p>`,
+    sources: [
+      { label: 'NIH Office of Dietary Supplements: Vitamin B6, Health Professional Fact Sheet', url: 'https://ods.od.nih.gov/factsheets/VitaminB6-HealthProfessional/' },
+      { label: 'MedlinePlus: Vitamin B Test', url: 'https://medlineplus.gov/lab-tests/vitamin-b-test/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/polyneuropathie/', label: 'Polyneuropathie' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/', label: 'Homocystein erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
     ],
   },
 ];

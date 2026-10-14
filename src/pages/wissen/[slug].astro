@@ -36,8 +36,9 @@ const articleLd = {
   description: data.metaDesc,
   url,
   inLanguage: 'de-CH',
-  datePublished: data.datePublished,
-  dateModified: data.dateModified,
+  // Welle 3: leere Daten bis Release weglassen (keine erfundenen Schema-Daten).
+  ...(data.datePublished ? { datePublished: data.datePublished } : {}),
+  ...(data.dateModified ? { dateModified: data.dateModified } : {}),
   // Redaktions-Artikel (kein persönlicher Reviewer): Organisation als Autor, kein
   // reviewedBy, kein lastReviewed. Nie Credentials/Reviews erfinden.
   ...(data.lastReviewed ? { lastReviewed: data.lastReviewed } : {}),
@@ -101,7 +102,7 @@ const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angabe
         <div class="meta-row">
           <span class="m-author">{data.author.name}</span>
           <span class="dot"></span><span>{data.readingTime} Lesezeit</span>
-          <span class="dot"></span><span>Aktualisiert {fmtMonthYear(data.dateModified)}</span>
+          {data.dateModified && <><span class="dot"></span><span>Aktualisiert {fmtMonthYear(data.dateModified)}</span></>}
           {data.reviewerName && <><span class="dot"></span><span>Geprüft durch {data.reviewerName}</span></>}
         </div>
       </div>
@@ -138,7 +139,7 @@ const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angabe
           author={data.author}
           review={data.reviewerName
             ? `Medizinisch geprüft durch ${data.reviewerName} · zuletzt aktualisiert ${fmtMonthYear(data.lastReviewed!)}`
-            : `Allgemeine Einordnung, keine ärztliche Diagnose · zuletzt aktualisiert ${fmtMonthYear(data.dateModified)}`}
+            : data.dateModified ? `Allgemeine Einordnung, keine ärztliche Diagnose · zuletzt aktualisiert ${fmtMonthYear(data.dateModified)}` : 'Allgemeine Einordnung, keine ärztliche Diagnose'}
         />
 
         <FaqBlock faqs={data.faqs} />
