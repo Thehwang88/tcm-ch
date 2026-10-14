@@ -75,7 +75,7 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
         </div>
         <div class="cat">{hub ? 'Fragen-Kategorie' : 'Patientenfrage'}</div>
         <h1>{h1}</h1>
-        <p class="lead">{hub ? hub.lead : ''}</p>
+        <p class="lead">{hub ? hub.lead : (frage?.deck ?? '')}</p>
         {frage && <div class="kurz kb-body" set:html={frage.kurz} />}
       </div>
     </section>
