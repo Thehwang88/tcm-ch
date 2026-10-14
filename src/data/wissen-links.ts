@@ -84,6 +84,12 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   hexenschuss: [
     { slug: 'hexenschuss-was-tun', label: 'Hexenschuss: Was jetzt sofort hilft' },
   ],
+  // Welle 3 (14.10.2026)
+  verstopfung: [{ slug: 'akupunktur-bei-verstopfung', label: 'Akupunktur bei Verstopfung: Nutzen und Grenzen' }],
+  prostata: [{ slug: 'akupunktur-bei-prostatitis', label: 'Akupunktur bei Prostatitis und CPPS' }],
+  angststoerungen: [{ slug: 'akupunktur-bei-angststoerungen', label: 'Akupunktur bei Angststörungen' }],
+  depressionen: [{ slug: 'akupunktur-bei-depressionen', label: 'Akupunktur bei Depressionen' }],
+  reizblase: [{ slug: 'akupunktur-bei-reizblase', label: 'Akupunktur bei Reizblase' }],
 };
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
