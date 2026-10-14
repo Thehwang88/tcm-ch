@@ -399,6 +399,22 @@ console.log('  ->', OUT);
   // D: Die stillgelegte Bellevue-Map-Zeile darf nie wieder live/PRIMARY werden.
   const bl = rowsByUrl.get('/standorte/zuerich-bellevue/');
   if (bl && (bl[2] === 'live' || bl[13] === 'PRIMARY_OWNER')) errs.push('Map: Bellevue-Zeile wieder live/PRIMARY_OWNER');
+  // E: CSV-Struktur der Guard-/Intent-Dateien (Regression PR #48, 14.10.2026): jede
+  //    nichtleere Zeile muss exakt die Spaltenzahl der Kopfzeile haben und darf keine
+  //    unbalancierten Quotes tragen. Unquoted Kommas in Freitextfeldern (Reason,
+  //    Notes) verschieben sonst still alle Folgespalten. CRLF und LF werden beide
+  //    akzeptiert (Dateien haben historisch gemischte Zeilenenden).
+  for (const f of ['seo/do-not-create-intents.csv', 'seo/intent-conflicts.csv', 'seo/unowned-search-intents.csv']) {
+    if (!fs.existsSync(f)) continue;
+    const ls = fs.readFileSync(f, 'utf8').split(/\r?\n/);
+    const hdr = parseLine(ls[0]); if (!hdr) { errs.push(`CSV ${f}: Kopfzeile unparsebar`); continue; }
+    ls.forEach((l, i) => {
+      if (!l.trim()) return;
+      const c = parseLine(l);
+      if (c === null) errs.push(`CSV ${f}: Zeile ${i + 1} hat unbalancierte Quotes`);
+      else if (c.length !== hdr.length) errs.push(`CSV ${f}: Zeile ${i + 1} hat ${c.length} statt ${hdr.length} Spalten (${(c[0] || '').slice(0, 50)})`);
+    });
+  }
   console.log('  Ownership-Gate:', Object.keys(PINNED).length, 'Pins,', Object.keys(RETIRED).length, 'Retired,', errs.length, 'Fehler');
   errs.slice(0, 20).forEach((e) => console.log('    !', e));
   if (errs.length > 0) process.exitCode = 1;

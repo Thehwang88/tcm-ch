@@ -94,7 +94,7 @@ export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = '2026-10-13';
 // Welle 3 (redaktionelles Paket 14.10.2026, 20 Seiten: 8 Befunde, 4 Untersuchungen, 5 Wissen, 3 Fragen).
 // RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD'). Bis dahin keine Schema-Daten.
 // Nur Publikation, keine fachliche Prüfung. Bisherige Konstanten unverändert.
-export const PUBLISHED_WELLE_3_2026_10: string | undefined = undefined;
+export const PUBLISHED_WELLE_3_2026_10: string | undefined = '2026-10-14';
 
 export const befundeWerte: BefundWert[] = [
   {
