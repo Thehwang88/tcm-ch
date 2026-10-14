@@ -1,0 +1,150 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 3, redaktionelles Paket 14.10.2026). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch. Texte 1:1 aus dem
+// Paket; Publikationsdatum ueber PUBLISHED_WELLE_3_2026_10 (Schema-Daten nur mit gesetztem Datum).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_3_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/lumbalpunktion';
+const url = `https://tcm.ch${path}/`;
+const title = 'Lumbalpunktion: Ablauf, Liquor und Risiken';
+const description = 'Bei einer Lumbalpunktion wird Nervenwasser untersucht. Was dabei passiert, welche Vorbereitung nötig ist und welche Beschwerden danach abgeklärt werden.';
+const published = PUBLISHED_WELLE_3_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Lumbalpunktion: Was passiert bei der Untersuchung?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Lumbalpunktion', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', label: 'MRT' },
+  { href: '/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/', label: 'neurologische Untersuchung' },
+];
+const rel3Links = [
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Lumbalpunktion</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Lumbalpunktion: Was passiert bei der Untersuchung?</h1>
+        <p class="lead">Eine Probe des Nervenwassers kann Fragen beantworten, die ein Bluttest oder eine Aufnahme allein offenlassen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Lumbalpunktion wird ärztlich veranlasst und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir helfen aber dabei, Beschwerden einzuordnen und sagen ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Bei einer Lumbalpunktion wird im unteren Rücken eine kleine Menge Nervenwasser, auch Liquor genannt, entnommen. Die Probe kann Hinweise auf Entzündungen und weitere Erkrankungen des Nervensystems liefern. Ob die Untersuchung nötig und sicher ist, beurteilt das behandelnde Team vorher.</p>
+          </div>
+
+          <h2>Was wird untersucht?</h2>
+          <p>Liquor umgibt Gehirn und Rückenmark. Welche Bestandteile im Labor analysiert werden, hängt von der medizinischen Frage ab. Ein einzelner auffälliger Liquorwert ist deshalb nicht für jede Person gleich zu interpretieren.</p>
+          <p>Die Untersuchung ergänzt gegebenenfalls eine <a href="/gesundheitsbibliothek/untersuchungen/neurologische-untersuchung/">neurologische Untersuchung</a> oder eine <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a>. Sie ist kein allgemeiner Gesundheitscheck und wird nicht allein durchgeführt, weil eine Blutuntersuchung unauffällig war.</p>
+
+          <h2>Vorbereitung und Ablauf</h2>
+          <p>Vor der Punktion werden Medikamente, Blutungsrisiken und weitere mögliche Gegenanzeigen geprüft. Sag insbesondere, ob du Blutverdünner verwendest. Setze diese nicht selbst ab; das Team legt fest, welche Anpassung nötig ist.</p>
+          <p>Die Punktion erfolgt meist im Liegen mit gekrümmtem Rücken oder im Sitzen. Die Haut wird gereinigt und in der Regel örtlich betäubt. Eine Nadel wird im unteren Rücken zwischen Wirbeln eingeführt, unterhalb des üblichen Endes des Rückenmarks. Anschliessend wird die benötigte Liquormenge entnommen. Sage sofort, wenn du ungewöhnliche Schmerzen oder einschiessende Beschwerden bemerkst.</p>
+
+          <h2>Was ein Befund nicht beweist</h2>
+          <p>Nicht jede neurologische Erkrankung lässt sich durch Liquor diagnostizieren. Auch ein unauffälliger Befund beendet nicht automatisch jede weitere Abklärung. Die Ergebnisse werden mit Beschwerden, Untersuchung und gegebenenfalls Bildern zusammengeführt.</p>
+          <p>Nach der Punktion können Kopfschmerzen auftreten, die häufig im Stehen stärker sind. Eine Lumbalpunktion ist ein medizinischer Eingriff mit möglichen Risiken; konkrete Vorbereitung und Nachsorge richten sich nach deiner Situation, nicht nach einer pauschalen Internetanleitung.</p>
+
+          <h2>Wann eine Abklärung wichtig ist</h2>
+          <p>Halte dich an die Nachsorgehinweise der durchführenden Stelle. Starke oder anhaltende Kopfschmerzen, Fieber, neue Schwäche oder Gefühlsstörungen sollten rasch beurteilt werden. Akute neurologische Ausfälle sind ein Grund für sofortige medizinische Hilfe.</p>
+
+          <h2>Nächste Schritte</h2>
+          <p>Frage vorher, welche Diagnose geprüft wird und wann du die Resultate bekommst. Organisiere Begleitung oder Heimweg entsprechend den Vorgaben. TCM.ch führt keine Lumbalpunktionen durch. Neue Beschwerden nach dem Eingriff gehören zunächst zum behandelnden medizinischen Team, nicht direkt in eine ergänzende Akupunkturbehandlung.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Wird ins Rückenmark gestochen?</h3>
+          <p>Die übliche Punktion erfolgt im unteren Rücken unterhalb des Rückenmarks. Das Team erklärt dir die genaue Durchführung und die verbleibenden Risiken.</p>
+          <h3>Kann ich Blutverdünner vorher selbst pausieren?</h3>
+          <p>Nein. Das Vorgehen muss mit den zuständigen medizinischen Fachpersonen abgestimmt sein.</p>
+          <h3>Sind Kopfschmerzen danach immer harmlos?</h3>
+          <p>Kopfschmerzen können vorkommen. Starke, anhaltende oder ungewöhnliche Beschwerden sollten trotzdem abgeklärt werden.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.nhs.uk/tests-and-treatments/lumbar-puncture/" target="_blank" rel="noopener">NHS: Lumbar puncture</a></li>
+            <li><a href="https://www.hey.nhs.uk/patient-leaflet/lumbar-puncture/" target="_blank" rel="noopener">Hull University Teaching Hospitals: Lumbar puncture</a></li>
+            <li><a href="https://www.usz.ch/fachbereich/neurologie/angebot/liquorlabor/" target="_blank" rel="noopener">Universitätsspital Zürich: Liquorlabor</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Unsicher, was der nächste Schritt ist?</div>
+          <p>Diese Untersuchung wird ärztlich veranlasst und beurteilt. Wenn du nach der Abklärung wissen möchtest, ob eine ergänzende Behandlung sinnvoll ist, helfen wir bei der Einordnung.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/standorte/">Praxis finden</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

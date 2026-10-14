@@ -11,6 +11,7 @@ import ArticleCta from '../../../components/library/ArticleCta.astro';
 import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { site } from '../../../data/site';
 import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
+import { PUBLISHED_WELLE_3_2026_10 } from '../../../data/befunde-werte';
 import type { Frage, FragenHub } from '../../../data/fragen';
 
 export function getStaticPaths() {
@@ -42,8 +43,8 @@ const pageLd = {
   description: metaDesc,
   url,
   inLanguage: 'de-CH',
-  datePublished: FRAGEN_DATEN.datePublished,
-  dateModified: FRAGEN_DATEN.dateModified,
+  // Welle-3-Fragen: Daten aus der Kohorten-Konstante, bis Release ohne Schema-Daten.
+  ...(frage?.cohort === 'welle-3' ? (PUBLISHED_WELLE_3_2026_10 ? { datePublished: PUBLISHED_WELLE_3_2026_10, dateModified: PUBLISHED_WELLE_3_2026_10 } : {}) : { datePublished: FRAGEN_DATEN.datePublished, dateModified: FRAGEN_DATEN.dateModified }),
   author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
   publisher: {
     '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
