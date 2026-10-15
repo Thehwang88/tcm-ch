@@ -3,7 +3,7 @@
 // Hinweise «Unverbindliche Anfrage…» und «Geöffnet: …», entfernt auf Inhaber-Wunsch; Öffnungszeiten stehen in «Über
 // die Praxis» und im Schema). Rechte Hälfte (seit 16.10.2026 wieder): ursprüngliches Praxisfoto aus 4adc79c8.
 // Darunter: die drei SG-USPs als kompakte Reihe und die Kontaktsektion mit der bisherigen Hero-Buchungsbox
-// (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante) und den kanonischen Praxisangaben
+// (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante, Rückruf dauerhaft offen) und den kanonischen Praxisangaben
 // («Über die Praxis» aus dem Leaf, nicht dupliziert). Mobile: Box vor den Praxisangaben (= DOM-Reihenfolge).
 // Bestehende Identifier bleiben: quelle=launch-hero-sg, Formularname, Quelle/Seite-Felder (Messplan docs/cro/04),
 // Instanz sg-hero, Anker #offer-form (Karte), #first30 (alte Kampagnenlinks), #kf-sg-hero-fields.
@@ -13,7 +13,7 @@ const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
   quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
   quelleDetail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen',
-  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true,
+  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true, rueckrufOffen: true, ruhig: true,
 });
 ---
 <section class="lsr-hero hlsg">
@@ -75,7 +75,7 @@ const card = renderKontaktForm({
   .sgk { background: var(--surface); padding: clamp(24px, 4vw, 56px) 16px; }
   .sgk-inner { max-width: var(--max, 1280px); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .sgk-formcol { min-width: 0; }
-  .sgk-formcol .kf { width: 100%; max-width: 560px; margin: 0 auto; box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .35); }
+  .sgk-formcol .kf { width: 100%; max-width: 560px; margin: 0 auto; }
   .sgk-info { min-width: 0; max-width: 720px; width: 100%; margin: 0 auto; }
   .sgk-info .up-h2 { margin-top: 0; }
   @media (min-width: 1024px) {

@@ -91,7 +91,7 @@
       var t = effType();
       card.classList.toggle('kf--checkin', t === 'checkin'); card.classList.toggle('kf--behandlung', t === 'behandlung');
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });
-      if (submitBtn) submitBtn.innerHTML = SUBMIT[t] + ' <span aria-hidden="true">→</span>';
+      if (submitBtn) submitBtn.innerHTML = (t ? SUBMIT[t] : card.getAttribute('data-kf-submit-leer') || SUBMIT['']) + ' <span aria-hidden="true">→</span>';
       // Check-in nur für freigegebene Standorte (globale Formulare: abhängig von der Auswahl).
       if (rCheckin && !fixedName) {
         var ok = checkinAllowed(); var o = opt();
@@ -186,7 +186,8 @@
     // ── Kompakter SG-Hero: Rückruf-Bereich und optionale Angaben als Disclosures (ohne JS: alles offen) ──
     var rrBtn = form.querySelector('[data-kf-rr]'), rrBox = rrBtn && document.getElementById(rrBtn.getAttribute('aria-controls'));
     var optBtn = form.querySelector('[data-kf-opt]'), optBox = optBtn && document.getElementById(optBtn.getAttribute('aria-controls'));
-    var setOpen = function (btn, box, open) { if (!btn || !box) return; btn.setAttribute('aria-expanded', String(open)); box.hidden = !open; };
+    // Nur bei echter Zustandsänderung schreiben (kein Attribut-Rauschen/Layoutsprung beim Laden).
+    var setOpen = function (btn, box, open) { if (!btn || !box) return; if (btn.getAttribute('aria-expanded') !== String(open)) btn.setAttribute('aria-expanded', String(open)); if (box.hidden !== !open) box.hidden = !open; };
     // Rückruf-Bereich öffnet nur (bleibt für diesen Seitenbesuch offen); der dann überflüssige Öffnungsbutton verschwindet.
     // Ruhiges Einblenden (nur Opazität/Versatz, keine Höhenbegrenzung); nie beim initialen Laden; reduced motion: per CSS aus.
     var animIn = function (box) { box.classList.remove('kf-anim'); void box.offsetWidth; box.classList.add('kf-anim'); };
@@ -200,20 +201,27 @@
       if (r.top < top || r.bottom > innerHeight - 96) window.scrollTo(0, Math.max(0, scrollY + r.top - top));
     };
     var openRr = function (focusTel) { showRr(true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); reveal(telIn); }, 60); };
+    // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann optionale Angaben (und ggf. Rückruf) offen.
+    var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { return (x.value || '').trim() !== ''; });
+    if (optBtn && optBox) {
+      optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled);
+      optBtn.addEventListener('click', function () { var o = optBtn.getAttribute('aria-expanded') !== 'true'; setOpen(optBtn, optBox, o); if (o) animIn(optBox); });
+      optBox.addEventListener('animationend', function () { optBox.classList.remove('kf-anim'); });
+    }
     if (rrBtn && rrBox) {
-      // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann Rückruf + optionale Angaben offen.
-      var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { return (x.value || '').trim() !== ''; });
       rrBtn.hidden = false; setOpen(rrBtn, rrBox, false);
       // Prefill oder gültige Terminart-Vorauswahl öffnen ohne Fokus/Scroll; Kachelwahl ebenso (Wechsel lässt offen).
       if (prefilled || radios.some(function (x) { return x.checked; })) showRr();
       radios.forEach(function (r) { r.addEventListener('change', function () { showRr(true); }); });
-      if (optBtn) { optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled); }
       // Explizit öffnen: keine Terminart wählen; Fokus auf den Bereich (nicht Telefon → keine Tastatur), damit er nicht verloren geht.
       rrBtn.addEventListener('click', function () { showRr(true); rrBox.focus({ preventScroll: true }); });
-      if (optBtn) optBtn.addEventListener('click', function () { var o = optBtn.getAttribute('aria-expanded') !== 'true'; setOpen(optBtn, optBox, o); if (o) animIn(optBox); });
-      [rrBox, optBox].forEach(function (b) { if (b) b.addEventListener('animationend', function () { b.classList.remove('kf-anim'); }); });
-      // Anfrage-Anker dieser Karte (#offer-form, Feldanker #kf-sg-hero-fields, alte Kampagnenanker davor) öffnen den Rückruf-Bereich und fokussieren Telefon.
-      var anchors = ['#' + card.id, '#' + rrBox.id]; var prev = card.previousElementSibling;
+      rrBox.addEventListener('animationend', function () { rrBox.classList.remove('kf-anim'); });
+    }
+    // Kompakte Karte: Anfrage-Anker (#offer-form, Feldanker #kf-…-fields, alte Kampagnenanker davor) öffnen ggf. den
+    // Rückruf-Bereich und fokussieren Telefon unter dem fixen Header (auch bei dauerhaft offenem Bereich).
+    var fieldsBox = form.querySelector('.kf-fields');
+    if (card.classList.contains('kf--kompakt') && fieldsBox) {
+      var anchors = ['#' + card.id, '#' + fieldsBox.id]; var prev = card.previousElementSibling;
       while (prev && prev.classList.contains('kf-compat-anchor')) { anchors.push('#' + prev.id); prev = prev.previousElementSibling; }
       var isOurs = function (h) { return anchors.indexOf(h) >= 0; };
       document.addEventListener('click', function (e) {
