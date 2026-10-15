@@ -128,17 +128,20 @@
 .kf--ruhig .kf-sec-h{margin:0 0 10px;font-size:15px;font-weight:800;line-height:1.3;color:var(--kf-ink)}
 .kf--ruhig .kf-sec-h--2{margin:20px 0 10px}
 .kf--ruhig .kf-opts{gap:10px}
-.kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{background:#fff;border:1.5px solid var(--kf-line);box-shadow:none;transition:border-color .15s ease}
-.kf--ruhig .kf-opt--checkin{background:#F7FCF9}
+.kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{border:1.5px solid var(--kf-line);box-shadow:none;transition:border-color .15s ease}
+.kf--ruhig .kf-opt--behandlung,.kf--ruhig .kf-opt--behandlung.is-checked{background:#F7FCF9}
+.kf--ruhig .kf-opt--checkin,.kf--ruhig .kf-opt--checkin.is-checked{background:#fff}
 .kf--ruhig .kf-opt.is-checked{border-color:var(--kf-ink);box-shadow:inset 0 0 0 1px var(--kf-ink)}
-.kf--ruhig .kf-opt--behandlung.is-checked{background:#fff}
-.kf--ruhig .kf-opt--checkin.is-checked{background:#F7FCF9}
-.kf--ruhig .kf-tagline{display:block;font-size:13.5px;font-weight:700;letter-spacing:.01em;line-height:1.35;color:var(--blue-dark,#1F7A54)}
-.kf--ruhig .kf-opt-h{margin:6px 0 4px}
-.kf--ruhig .kf-benefits{margin-top:10px}
+.kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{padding:16px 48px 16px 16px}
+.kf--ruhig .kf-radio{top:16px;right:14px}
+.kf--ruhig .kf-opt-t{margin:0 0 6px;font-size:17px;font-weight:800;line-height:1.3}
+.kf--ruhig .kf-opt-d{font-size:15px;line-height:1.5}
+.kf--ruhig .kf-opt-d + .kf-opt-d{margin-top:6px}
+.kf--ruhig .kf-opt-note{display:block;margin-top:6px;font-size:14px;font-weight:700;color:var(--kf-ink)}
 .kf--ruhig .kf-star{color:var(--kf-err)}
 .kf--ruhig .kf-legal--kurz{margin:8px 0 0;font-size:13px}
 .kf--ruhig .kf-legal--kurz a{display:inline-flex;align-items:center;min-height:24px;color:var(--kf-mid)}
 .kf--ruhig .kf-legal--kurz a:focus-visible{outline:3px solid var(--kf-ink);outline-offset:2px;border-radius:4px}
 .kf--ruhig .kf-onedoc{margin-bottom:0}
+@media (max-width:360px){.kf--ruhig .kf-opt,.kf--ruhig .kf-opt--checkin{padding:14px 42px 14px 14px}.kf--ruhig .kf-radio{top:14px;right:12px}}
 @media (prefers-reduced-motion:reduce){.kf--ruhig .kf-opt{transition:none}}

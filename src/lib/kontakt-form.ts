@@ -44,10 +44,13 @@ export interface KontaktFormOpts {
    *  «Weitere Angaben · optional» ist bereits im HTML eingeklappt (ohne JS per noscript offen); Button ohne Auswahl
    *  «Termin anfragen», Terminart beim Absenden Pflicht. */
   rueckrufOffen?: boolean;
-  /** Nur SG-Standortseite (beide Formulare): ruhige Gestaltung. Schlichte Angebotszeile statt Geschenk-Badge,
+  /** Nur SG-Standortseite (beide Formulare): ruhige Gestaltung. Erstbehandlung zuerst, eigene Angebotstexte ohne Badge,
    *  Abschnittsüberschriften statt Schrittmarker, gekürzte Hinweise (kompakter Datenschutz-Link), «Telefonnummer *»,
    *  Telefonlink statt grossem Anruf-Button. Styling ausschliesslich über .kf--ruhig. */
   ruhig?: boolean;
+  /** Nur SG unten (sg-unten): ohne OneDoc-Alternativbereich im Formular (Trennlinie, Button, Hinweis); das echte
+   *  OneDoc-Widget #online-buchen folgt direkt darunter. Formular endet nach Anfragebutton + Datenschutz. */
+  ohneOnedocAlternative?: boolean;
   /** Bestehender WhatsApp-Link der ersetzten Karte (bleibt als Textlink erhalten). */
   waHref?: string;
   cardStyle?: string;
@@ -103,23 +106,32 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const RO = K && !!o.rueckrufOffen;
   const optOffen = !!(o.anliegen ?? '').trim();
   const Q = !!o.ruhig;
-  const ohneB = Q ? ', ohne Behandlung' : '';
+  // Ruhig (SG): eigene, vom Inhaber bestätigte Angebotstexte; Erstbehandlung zuerst (dezent mint), Check-in als zweite Option.
   const tileCheckin = onlyBehandlung ? '' :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
-    `<span class="kf-opt-body">${Q ? `<span class="kf-tagline">Kostenloser TCM-Check-in · 30 Minuten</span>` : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>`}` +
-    (K ? `<span class="kf-opt-h">Finde heraus, ob TCM zu dir passt.</span><span class="kf-opt-d">30 Minuten persönliche TCM-Anamnese und Diagnostik${ohneB}.</span>`
-       : `<span class="kf-opt-h">Dein Anliegen verstehen. Deinen nächsten Schritt finden.</span><span class="kf-opt-d">30 Minuten für eine persönliche TCM-Anamnese und Diagnostik${ohneB}.</span>`) +
-    `<span class="kf-benefits" role="list">` +
-    ['Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', K ? 'Persönliche Empfehlung' : 'Persönliche Empfehlung zum weiteren Vorgehen'].map((t) => `<span class="kf-benefit" role="listitem">${CHECK}<span>${t}</span></span>`).join('') +
-    `<span class="kf-benefit" role="listitem">${CHECK}<span>Krankenkassen-Check${Q ? '' : `<span class="kf-benefit-sub">Hilfe bei der Abklärung deiner Zusatzversicherung.</span>`}</span></span></span>` +
-    (Q ? '' : `<span class="kf-opt-foot">Kostenlos · ohne Behandlung · ohne Verpflichtung</span>`) +
+    `<span class="kf-opt-body">` +
+    (Q ? `<span class="kf-opt-t">Noch unsicher? Kostenloser TCM-Check-in</span>` +
+      `<span class="kf-opt-d">30 Minuten für deine Fragen und eine persönliche Einschätzung, ob TCM zu deinem Anliegen passt.</span>` +
+      `<span class="kf-opt-d">Inklusive Zungen- und Pulsdiagnostik, persönlicher Empfehlung und Krankenkassen-Check.</span>` +
+      `<span class="kf-opt-note">Ohne Behandlung.</span>`
+    : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
+      (K ? `<span class="kf-opt-h">Finde heraus, ob TCM zu dir passt.</span><span class="kf-opt-d">30 Minuten persönliche TCM-Anamnese und Diagnostik.</span>`
+         : `<span class="kf-opt-h">Dein Anliegen verstehen. Deinen nächsten Schritt finden.</span><span class="kf-opt-d">30 Minuten für eine persönliche TCM-Anamnese und Diagnostik.</span>`) +
+      `<span class="kf-benefits" role="list">` +
+      ['Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', K ? 'Persönliche Empfehlung' : 'Persönliche Empfehlung zum weiteren Vorgehen'].map((t) => `<span class="kf-benefit" role="listitem">${CHECK}<span>${t}</span></span>`).join('') +
+      `<span class="kf-benefit" role="listitem">${CHECK}<span>Krankenkassen-Check<span class="kf-benefit-sub">Hilfe bei der Abklärung deiner Zusatzversicherung.</span></span></span></span>` +
+      `<span class="kf-opt-foot">Kostenlos · ohne Behandlung · ohne Verpflichtung</span>`) +
     (fixed ? '' : `<span class="kf-scope" data-kf-scope>Derzeit nur in ${esc(scopeNames)}</span>`) +
     `</span></label>`;
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span><span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span></span></label>`;
+    `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span>` +
+    (Q ? `<span class="kf-opt-d">Deine Beschwerden besprechen, mit TCM-Diagnostik einordnen und direkt mit der ersten Behandlung starten.</span>` +
+      `<span class="kf-opt-d">Mit persönlicher Empfehlung für das weitere Vorgehen.</span>`
+    : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
+    `</span></label>`;
 
   const select = fixed ? '' :
     `<div class="kf-field"><label class="kf-label" for="${p}-standort">Standort <span aria-hidden="true">*</span></label>` +
@@ -171,7 +183,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? (K ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : select) +
     (Q && !K ? `<p class="kf-sec-h" aria-hidden="true">Terminart wählen</p>` : '') +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
-    tileCheckin + tileBehandlung + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
+    (Q ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
@@ -199,7 +211,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (Q ? legalKurz : K ? legal + note : note + legal) +
     `<p class="kf-err" role="alert" data-kf-err hidden></p>` +
     // Kompakt: Turnstile ausserhalb des aufklappbaren Bereichs, damit das Widget nicht in einem verborgenen Container rendert.
-    `</div>` + (K ? ts : '') + (sgOd ? onedocPanel : '') + `</form>` +
+    `</div>` + (K ? ts : '') + (sgOd && !o.ohneOnedocAlternative ? onedocPanel : '') + `</form>` +
     // Ruhig (SG): Formular endet nach OneDoc; Anrufwege stehen im Hero und bei den Praxisangaben.
     (Q ? '' : `<div class="kf-call"><p class="kf-call-h">Lieber anrufen?</p>` +
     `<a class="kf-btn kf-btn--outline" href="${telHref(fixedTel)}" data-kf-tel>${PHONE}<span data-kf-tel-text>${esc(fixedTel)}</span></a>` +

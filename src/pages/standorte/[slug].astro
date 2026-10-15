@@ -290,7 +290,7 @@ if (migrated) {
     // Gemeinsames Kontaktformular (15.10.2026) ersetzt die untere Leaf-Karte (#kontakt); Hero-Formular: HeroStandardSG.
     // Bestehende Identifier: quelle=sg-kontakt-bottom, Wunschzeit; Anker #kontakt (Sektion) + #first30-kontakt (alte Links).
     sgBody = upgradeLegacyForms(sgBody, { path: '/standorte/st-gallen/', standortId: 'st-gallen', instancePrefix: 'sg-unten',
-      extra: { wunschzeit: true, compatAnchors: ['first30-kontakt'], onedocBeideTerminarten: true, ruhig: true } });
+      extra: { wunschzeit: true, compatAnchors: ['first30-kontakt'], onedocBeideTerminarten: true, ruhig: true, ohneOnedocAlternative: true } });
     if ((sgBody.match(/data-kf-instance="sg-unten"/g) || []).length !== 1 || /<form class="inline-form"/.test(sgBody))
       throw new Error('st-gallen: untere Kontaktkarte nicht eindeutig auf das gemeinsame Formular umgestellt - Leaf geändert?');
     // FIRST 30 Hero hat keine Fotohälfte: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
