@@ -258,11 +258,16 @@ if (migrated) {
   const leadHtml = clinicalLeadHtml(slug!);
   let sgBody = filledBody;
   if (slug === 'st-gallen') {
-    // Beschwerden-Karten (Startseiten-Komponente svc-card, 8 Kerntehmen aus symptom-cards.ts in
-    // Startseiten-Reihenfolge) direkt VOR dem Team; ersetzt die frühere Chip-Liste.
+    // Reihenfolge: Therapien -> Team -> Beschwerden-Karten (Startseiten-Komponente svc-card, 8 Kernthemen aus
+    // symptom-cards.ts in Startseiten-Reihenfolge, inkl. CTA). Im Leaf folgt die Therapie-Sektion direkt aufs Team.
     const ti = sgBody.indexOf('<section class="section" id="team-st-gallen"');
     if (ti < 0) throw new Error('st-gallen: Team-Marker für die Beschwerden-Karten nicht gefunden - Leaf geändert?');
-    sgBody = sgBody.slice(0, ti) + sgBeschwerdenHtml + sgBody.slice(ti);
+    const thi = sgBody.indexOf('<section', ti + 1);
+    const the = sgBody.indexOf('</section>', thi) + 10;
+    const thSec = sgBody.slice(thi, the);
+    if (!thSec.startsWith('<section class="section svc-section">') || !thSec.includes('Unsere <em>Therapien</em> in St. Gallen') || !thSec.includes('id="sg-more-therapien-btn"'))
+      throw new Error('st-gallen: Therapie-Sektion folgt nicht direkt auf das Team - Leaf geändert?');
+    sgBody = sgBody.slice(0, ti) + thSec + sgBody.slice(ti, thi) + sgBeschwerdenHtml + sgBody.slice(the);
     // FIRST 30 (nur solange der Kampagnen-Hero gezeigt wird): Angebots-Wähler ÜBER dem unteren Kontaktformular und
     // Leaf-CTAs auf das Geschenk umgestellt. Geschlossene Kampagne = Leaf unverändert (reguläre CTAs → #offer-form).
     if (first30.showCampaign) {
