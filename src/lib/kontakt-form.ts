@@ -36,6 +36,10 @@ export interface KontaktFormOpts {
   compatAnchors?: string[];
   /** Nur /standorte/st-gallen/ (Hero + unten): OneDoc für beide Terminarten und schon ohne Auswahl (sekundärer Link). */
   onedocBeideTerminarten?: boolean;
+  /** Nur SG-Hero: kompakte Karte. Angebotstexte gekürzt (alle vier Vorteile bleiben sichtbar), Rückruf-Anfrage hinter
+   *  «Lieber Rückruf anfragen» und optionale Felder hinter «Weitere Angaben · optional» (echte Disclosure-Buttons;
+   *  ohne JavaScript bleibt alles offen). OneDoc bleibt dauerhaft erreichbar. */
+  heroKompakt?: boolean;
   /** Bestehender WhatsApp-Link der ersetzten Karte (bleibt als Textlink erhalten). */
   waHref?: string;
   cardStyle?: string;
@@ -87,14 +91,15 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const scopeNames = checkinStandortNamen().join(', ');
   const hidden = (n: string, v?: string) => (v ? `<input type="hidden" name="${n}" value="${esc(v)}">` : '');
 
+  const K = !!o.heroKompakt;
   const tileCheckin = onlyBehandlung ? '' :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
     `<span class="kf-opt-body"><span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
-    `<span class="kf-opt-h">Dein Anliegen verstehen. Deinen nächsten Schritt finden.</span>` +
-    `<span class="kf-opt-d">30 Minuten für eine persönliche TCM-Anamnese und Diagnostik.</span>` +
+    (K ? `<span class="kf-opt-h">Finde heraus, ob TCM zu dir passt.</span><span class="kf-opt-d">30 Minuten persönliche TCM-Anamnese und Diagnostik.</span>`
+       : `<span class="kf-opt-h">Dein Anliegen verstehen. Deinen nächsten Schritt finden.</span><span class="kf-opt-d">30 Minuten für eine persönliche TCM-Anamnese und Diagnostik.</span>`) +
     `<span class="kf-benefits" role="list">` +
-    ['Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', 'Persönliche Empfehlung zum weiteren Vorgehen'].map((t) => `<span class="kf-benefit" role="listitem">${CHECK}<span>${t}</span></span>`).join('') +
+    ['Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', K ? 'Persönliche Empfehlung' : 'Persönliche Empfehlung zum weiteren Vorgehen'].map((t) => `<span class="kf-benefit" role="listitem">${CHECK}<span>${t}</span></span>`).join('') +
     `<span class="kf-benefit" role="listitem">${CHECK}<span>Krankenkassen-Check<span class="kf-benefit-sub">Hilfe bei der Abklärung deiner Zusatzversicherung.</span></span></span></span>` +
     `<span class="kf-opt-foot">Kostenlos · ohne Behandlung · ohne Verpflichtung</span>` +
     (fixed ? '' : `<span class="kf-scope" data-kf-scope>Derzeit nur in ${esc(scopeNames)}</span>`) +
@@ -102,7 +107,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span><span class="kf-opt-d">Für alle, die direkt mit der Behandlung starten möchten.</span></span></label>`;
+    `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span><span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span></span></label>`;
 
   const select = fixed ? '' :
     `<div class="kf-field"><label class="kf-label" for="${p}-standort">Standort <span aria-hidden="true">*</span></label>` +
@@ -121,21 +126,24 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     ` data-kf-od-default="${esc(onedoc!.href)}"` +
     (onedoc!.direkt?.checkin ? ` data-kf-od-checkin="${esc(onedoc!.direkt.checkin)}"` : '') +
     (onedoc!.direkt?.behandlung ? ` data-kf-od-behandlung="${esc(onedoc!.direkt.behandlung)}"` : '') + `>` +
-    `<a class="kf-link kf-od-link" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span data-kf-od-label>Termin online buchen</span> <span aria-hidden="true">→</span></a>` +
+    `<a class="kf-link kf-od-link" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span class="kf-lt" data-kf-od-label>Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a>` +
     `<p class="kf-hint">Direkt bei OneDoc.</p>` +
-    `<a class="kf-link" href="#${p}-fields" data-kf-to-fields>Lieber einen Termin anfragen <span aria-hidden="true">↓</span></a></div>`
+    (K ? '' : `<a class="kf-link" href="#${p}-fields" data-kf-to-fields><span class="kf-lt">Lieber einen Termin anfragen</span> <span class="kf-arrow" aria-hidden="true">↓</span></a>`) + `</div>`
   : (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
     `<div class="kf-onedoc" data-kf-onedoc-panel hidden>` +
     `<a class="kf-btn kf-btn--primary" href="${esc(onedoc?.href ?? '#')}" data-kf-onedoc${onedoc ? ` data-kf-onedoc-anchor="${onedoc.anchor}"` : ''}>Freie Termine ansehen <span aria-hidden="true">→</span></a>` +
     `<p class="kf-hint">Ersttermin mit Behandlung direkt bei OneDoc buchen.</p>` +
     `<a class="kf-link" href="#${p}-fields" data-kf-to-fields>Lieber einen Termin anfragen <span aria-hidden="true">↓</span></a></div>` : '';
 
+  const ts = `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>`;
+  const note = `<p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>`;
+  const legal = `<p class="kf-legal">Deine Angaben verwenden wir nur zur Bearbeitung deiner Anfrage. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>`;
   const field = (name: string, label: string, input: string, hint = '') =>
     `<div class="kf-field"><label class="kf-label" for="${p}-${name}">${label}</label>${input}${hint}<p class="kf-ferr" id="${p}-${name}-err" hidden></p></div>`;
 
   return (
     (o.compatAnchors ?? []).map((a) => `<span id="${esc(a)}" class="kf-compat-anchor" aria-hidden="true"></span>`).join('') +
-    `<div class="inline-form-card kf${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}" data-kf-conv="${o.conv ?? 'formular_senden'}"` +
+    `<div class="inline-form-card kf${K ? ' kf--kompakt' : ''}${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}" data-kf-conv="${o.conv ?? 'formular_senden'}"` +
     (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}" data-kf-standort-art="behandlung"` : ' data-kf-global="1"') +
     (fixed && checkinOk ? ' data-kf-checkin="1"' : '') + (o.autoprefill ? ` data-kf-autoprefill="${o.autoprefill}"` : '') +
     ` data-kf-scope-names="${esc(scopeNames)}"` + (o.cardStyle ? ` style="${esc(o.cardStyle)}"` : '') + `>` +
@@ -143,30 +151,34 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<form class="kf-form" novalidate data-kf-form${o.formId ? ` id="${esc(o.formId)}"` : ''}${o.formName ? ` name="${esc(o.formName)}" data-name="${esc(o.formName)}"` : ''} aria-labelledby="${p}-h">` +
     `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>` +
     `<p class="kf-intro">Wähle, was gerade zu dir passt.</p>` +
-    (fixed ? `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>` : select) +
+    (fixed ? (K ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     tileCheckin + tileBehandlung + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
     onedocPanel +
+    // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
+    (K ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
     field('tel', 'Telefon <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-tel" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err">`, `<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`) +
+    (K ? `<button type="button" class="kf-disclose kf-disclose--sub" id="${p}-opt-btn" aria-expanded="true" aria-controls="${p}-opt" data-kf-opt hidden><span>Weitere Angaben · optional</span><span class="kf-chev" aria-hidden="true"></span></button><div class="kf-optgroup" id="${p}-opt">` : '') +
     field('name', 'Dein Name <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname">`) +
     field('email', 'E-Mail <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@beispiel.ch" aria-describedby="${p}-email-err">`) +
     field('anliegen', 'Dein Anliegen <span class="kf-opt-l">· optional</span>', `<textarea class="kf-input kf-textarea" id="${p}-anliegen" name="anliegen" rows="2" placeholder="Was möchtest du uns mitgeben?">${esc(o.anliegen ?? '')}</textarea>`) +
     (o.wunschzeit ? field('wunschzeit', 'Wunschzeit <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
+    (K ? `</div>` : '') +
     `<p class="kf-req"><span aria-hidden="true">*</span> Pflichtfeld</p>` +
     `<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="kf-hp">` +
     (fixed ? hidden('standort', fixed.name) : '') +
     hidden('quelle', o.quelle) + hidden('formular', o.formular) + hidden('quelle_detail', o.quelleDetail) + hidden('seite', o.seite) +
     hidden('anfrage_typ', o.anfrageTyp) + hidden('typ', o.typ) + `<input type="hidden" name="cta_pos" value="">` +
-    `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>` +
+    (K ? '' : ts) +
     `<button type="submit" class="kf-btn kf-btn--primary kf-submit" data-kf-submit>Anfrage senden <span aria-hidden="true">→</span></button>` +
-    `<p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>` +
-    `<p class="kf-legal">Deine Angaben verwenden wir nur zur Bearbeitung deiner Anfrage. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>` +
+    (K ? legal + note : note + legal) +
     `<p class="kf-err" role="alert" data-kf-err hidden></p>` +
-    `</div></form>` +
+    // Kompakt: Turnstile ausserhalb des aufklappbaren Bereichs, damit das Widget nicht in einem verborgenen Container rendert.
+    `</div>` + (K ? ts : '') + `</form>` +
     `<div class="kf-call"><p class="kf-call-h">Lieber anrufen?</p>` +
     `<a class="kf-btn kf-btn--outline" href="${telHref(fixedTel)}" data-kf-tel>${PHONE}<span data-kf-tel-text>${esc(fixedTel)}</span></a>` +
     (o.waHref ? `<a class="kf-wa" href="${esc(o.waHref)}" target="_blank" rel="noopener">oder per WhatsApp schreiben</a>` : '') +

@@ -182,6 +182,33 @@
     });
     sync();
 
+    // ── Kompakter SG-Hero: Rückruf-Bereich und optionale Angaben als Disclosures (ohne JS: alles offen) ──
+    var rrBtn = form.querySelector('[data-kf-rr]'), rrBox = rrBtn && document.getElementById(rrBtn.getAttribute('aria-controls'));
+    var optBtn = form.querySelector('[data-kf-opt]'), optBox = optBtn && document.getElementById(optBtn.getAttribute('aria-controls'));
+    var setOpen = function (btn, box, open) { if (!btn || !box) return; btn.setAttribute('aria-expanded', String(open)); box.hidden = !open; };
+    var openFor = function (el) { if (!el) return; if (rrBox && rrBox.contains(el)) setOpen(rrBtn, rrBox, true); if (optBox && optBox.contains(el)) setOpen(optBtn, optBox, true); };
+    var telIn = form.querySelector('[name="telefon"]');
+    var openRr = function (focusTel) { setOpen(rrBtn, rrBox, true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); }, 60); };
+    if (rrBtn && rrBox) {
+      // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann Rückruf + optionale Angaben offen.
+      var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { return (x.value || '').trim() !== ''; });
+      rrBtn.hidden = false; setOpen(rrBtn, rrBox, !!prefilled);
+      if (optBtn) { optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled); }
+      rrBtn.addEventListener('click', function () { setOpen(rrBtn, rrBox, rrBtn.getAttribute('aria-expanded') !== 'true'); });
+      if (optBtn) optBtn.addEventListener('click', function () { setOpen(optBtn, optBox, optBtn.getAttribute('aria-expanded') !== 'true'); });
+      // Anfrage-Anker dieser Karte (#offer-form, alte Kampagnenanker davor) öffnen den Rückruf-Bereich und fokussieren Telefon.
+      var anchors = ['#' + card.id]; var prev = card.previousElementSibling;
+      while (prev && prev.classList.contains('kf-compat-anchor')) { anchors.push('#' + prev.id); prev = prev.previousElementSibling; }
+      var isOurs = function (h) { return anchors.indexOf(h) >= 0; };
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href*="#"]') : null; if (!a) return;
+        var u; try { u = new URL(a.getAttribute('href'), location.href); } catch (x) { return; }
+        if (u.pathname === location.pathname && isOurs(u.hash)) openRr(true);
+      });
+      window.addEventListener('hashchange', function () { if (isOurs(location.hash)) openRr(true); });
+      if (isOurs(location.hash) || (legacyFirst30 && ft && location.hash !== '#first30-kontakt')) openRr(isOurs(location.hash));
+    }
+
     var toFields = form.querySelector('[data-kf-to-fields]');
     if (toFields) toFields.addEventListener('click', function (e) {
       e.preventDefault(); var f = document.getElementById('kf-' + inst + '-fields'); var tel = form.querySelector('[name="telefon"]');
@@ -207,7 +234,7 @@
       if (em && !emailOk(em)) fail('email', 'Bitte prüfe deine E-Mail-Adresse.');
       if (first) {
         var fe = first === 'terminart' ? (radios.filter(function (r) { return !r.disabled; })[0]) : form.querySelector('[name="' + first + '"]');
-        if (fe) fe.focus();
+        if (fe) { openFor(fe); fe.focus(); }
         return;
       }
       var tsEl = form.querySelector('.cf-turnstile'); var tsIn = form.querySelector('[name="cf-turnstile-response"]'); var token = tsIn ? tsIn.value : '';

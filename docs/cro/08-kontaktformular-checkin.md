@@ -120,3 +120,17 @@ Darunter «Direkt bei OneDoc.» und «Lieber einen Termin anfragen ↓» (Sprung
 **Umschalten nach Verifikation:** In `src/data/kontakt-angebote.mjs` → `ONEDOC['st-gallen'].direkt.checkin` / `.behandlung` den in der OneDoc-Verwaltung verifizierten Direktlink eintragen. Dann wechselt die Beschriftung automatisch auf «Kostenlosen TCM-Check-in online buchen →» bzw. «Ersttermin online buchen →» (im Browser-Test mit Platzhaltern geprüft). OneDoc-Terminarten und Kalenderregeln wurden nicht verändert.
 
 Tracking: `onedoc_click` je Klick genau einmal, neu mit `terminart` (`keine`/`checkin`/`behandlung`); keine Conversion. Homepage und andere Seiten unverändert (OneDoc dort weiterhin nur bei Behandlung + St. Gallen).
+
+## Kompakter SG-Hero (`heroKompakt`, 15.10.2026, Draft)
+Nur `/standorte/st-gallen/` Hero (`HeroStandardSG.astro`). Gleicher Renderer, gleiche Engine; unteres SG-Formular unverändert offen.
+- Angebotskacheln gekürzt (alle vier Vorteile sichtbar), «Standort:» entfällt, ein OneDoc-Element «Termin online buchen →» + «Direkt bei OneDoc.» (ohne Auswahl Link, mit Auswahl Primärbutton; PR-#55-Logik).
+- «Lieber Rückruf anfragen» (Button, `aria-expanded`/`aria-controls`, initial zu): Telefon * → Hinweis → «Weitere Angaben · optional» (Name, E-Mail, Anliegen, Wunschzeit) → «* Pflichtfeld» → Submit → Datenschutz → «noch kein Termin gebucht».
+- Ohne JS: Buttons `hidden`, alles offen. Anker `#offer-form`, `#first30`, `?first30=1` öffnen den Bereich und fokussieren Telefon; Fehler öffnen ihren Bereich. Aufklappen pusht kein Event.
+- Pfeile (Hero + unten): Text `.kf-lt` unterstrichen, `.kf-arrow` ohne Unterstreichung.
+- Linke Hero-Hälfte ohne «Unverbindliche Anfrage …» und «Geöffnet: …» (Öffnungszeiten bleiben in «Über die Praxis» und im Schema).
+
+| Viewport | Hero vorher → nachher | Karte vorher → nachher | OneDoc-Y vorher → nachher |
+|---|---|---|---|
+| 1440×900 | 1734 → 944 | 1545 → 755 | 740 → 614 |
+| 390×844 | 2419 → 1496 | 1691 → 870 | 1431 → 1188 |
+| 320×700 | 2650 → 1723 | 1898 → 1073 | 1627 → 1395 |
