@@ -34,6 +34,8 @@ export interface KontaktFormOpts {
   formName?: string;
   /** Zusätzliche Anker vor der Karte (Kompatibilität alter Links, z. B. ['first30']). */
   compatAnchors?: string[];
+  /** Nur /standorte/st-gallen/ (Hero + unten): OneDoc für beide Terminarten und schon ohne Auswahl (sekundärer Link). */
+  onedocBeideTerminarten?: boolean;
   /** Bestehender WhatsApp-Link der ersetzten Karte (bleibt als Textlink erhalten). */
   waHref?: string;
   cardStyle?: string;
@@ -48,7 +50,7 @@ export const ZENTRAL_TEL = fmtTel(site.whatsapp);
 
 export const clinicById = (id: string) => clinics.find((c) => c.id === id);
 export const checkinFreigegeben = (id?: string) => !!id && Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, id);
-const onedocFor = (id?: string) => (id && (ONEDOC as Record<string, { href: string; anchor: string }>)[id]) || null;
+const onedocFor = (id?: string) => (id && (ONEDOC as Record<string, { href: string; anchor: string; direkt?: { checkin: string | null; behandlung: string | null } }>)[id]) || null;
 
 const GIFT = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>';
 const CHECK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -111,7 +113,18 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `</select>` +
     `<p class="kf-ferr" id="${p}-standort-err" hidden></p></div>`;
 
-  const onedocPanel = (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
+  const sgOd = !!(o.onedocBeideTerminarten && fixed && onedoc);
+  const onedocPanel = sgOd ?
+    // SG-Seite: EIN Buchungselement, je nach Zustand sekundärer Link (ohne Auswahl) oder Hauptbutton (mit Auswahl).
+    // Direktlinks je Termintyp nur aus der Konfiguration (verifiziert); sonst gemeinsame SG-Auswahl, neutral beschriftet.
+    `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel data-kf-od-mode="sg"` +
+    ` data-kf-od-default="${esc(onedoc!.href)}"` +
+    (onedoc!.direkt?.checkin ? ` data-kf-od-checkin="${esc(onedoc!.direkt.checkin)}"` : '') +
+    (onedoc!.direkt?.behandlung ? ` data-kf-od-behandlung="${esc(onedoc!.direkt.behandlung)}"` : '') + `>` +
+    `<a class="kf-link kf-od-link" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span data-kf-od-label>Termin online buchen</span> <span aria-hidden="true">→</span></a>` +
+    `<p class="kf-hint">Direkt bei OneDoc.</p>` +
+    `<a class="kf-link" href="#${p}-fields" data-kf-to-fields>Lieber einen Termin anfragen <span aria-hidden="true">↓</span></a></div>`
+  : (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
     `<div class="kf-onedoc" data-kf-onedoc-panel hidden>` +
     `<a class="kf-btn kf-btn--primary" href="${esc(onedoc?.href ?? '#')}" data-kf-onedoc${onedoc ? ` data-kf-onedoc-anchor="${onedoc.anchor}"` : ''}>Freie Termine ansehen <span aria-hidden="true">→</span></a>` +
     `<p class="kf-hint">Ersttermin mit Behandlung direkt bei OneDoc buchen.</p>` +

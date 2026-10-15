@@ -78,7 +78,15 @@ export const CHECKIN_FREIGABE = {
 /** Verifizierte OneDoc-Kalender für «Ersttermin mit Behandlung». Nur bestehende Ziele, keine erfundenen Kalender.
  *  href = Seite mit eingebettetem OneDoc-Widget; auf dieser Seite selbst springt der Button zum Anker. */
 export const ONEDOC = {
-  'st-gallen': { href: '/standorte/st-gallen/#online-buchen', anchor: 'online-buchen', terminart: 'behandlung' },
+  'st-gallen': {
+    href: '/standorte/st-gallen/#online-buchen', anchor: 'online-buchen', terminart: 'behandlung',
+    /** Seit 15.10.2026 sind auf der SG-Seite beide Terminarten über OneDoc buchbar (Inhaber). Direktlinks je OneDoc-Termintyp
+     *  NUR eintragen, wenn in der OneDoc-Verwaltung verifiziert (keine geratenen Links/Parameter). Solange null, führen alle
+     *  Zustände zur gemeinsamen SG-Auswahl (eingebettetes Widget #online-buchen) mit neutraler Beschriftung
+     *  «Termin online buchen →»; mit verifiziertem Link wechselt die Beschriftung automatisch auf
+     *  «Kostenlosen TCM-Check-in online buchen →» bzw. «Ersttermin online buchen →». */
+    direkt: { checkin: null, behandlung: null },
+  },
 };
 
 export const checkinStandortNamen = () => Object.values(CHECKIN_FREIGABE).map((f) => f.name);

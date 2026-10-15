@@ -103,3 +103,20 @@ Linke Hälfte wörtlich aus Commit `4adc79c8` (`src/components/HeroLaunchSG.astr
 
 ## i18n
 `src/data/locations.ts` erhielt nur das Steuerfeld `vorab[].art` (Münzgasse, Oerlikon ×2, Luzern); `value`, `label` und `labelEn` sind unverändert. Geprüft: alle 52 EN-Seiten byte-identisch zum main-Build, EN-Formulare (`AppointmentForm.astro`) nutzen die neuen IDs nicht. Daher keine EN-Textänderung nötig; die sechs betroffenen Fingerprints (hub:locations, page:contact, page:near-me, location:winterthur-muenzgasse, location:zuerich-oerlikon, location:luzern) wurden nach dieser Prüfung mit `check-i18n.mjs --update` neu erfasst.
+
+## OneDoc auf der SG-Seite für beide Terminarten (15.10.2026, Draft)
+Laut Inhaber sind auf `/standorte/st-gallen/` beide Terminarten über OneDoc buchbar, auch der kostenlose TCM-Check-in. Umgesetzt nur in den zwei SG-Formularen (Hero, unten; Option `onedocBeideTerminarten`):
+
+| Zustand | Element (genau eines) | Ziel |
+|---|---|---|
+| ohne Auswahl | sekundärer Link «Termin online buchen →» | gemeinsame SG-Auswahl (eingebettetes Widget `#online-buchen`) |
+| Check-in gewählt | Hauptbutton «Termin online buchen →» | gemeinsame SG-Auswahl |
+| Ersttermin gewählt | Hauptbutton «Termin online buchen →» | gemeinsame SG-Auswahl |
+
+Darunter «Direkt bei OneDoc.» und «Lieber einen Termin anfragen ↓» (Sprung zum Anfrageformular).
+
+**Verifikation der OneDoc-Ziele:** Die angemeldete Chrome-Sitzung (OneDoc-Verwaltung) war in der Arbeitsumgebung nicht verfügbar. Öffentlich geprüft (ohne Anmeldung, ohne Buchung): Widget `7a0d6d1b…` und Praxisprofil `onedoc.ch/de/praxis-fur-alternative-medizin/st-gallen/ebfrb/tcm-ch-st-gallen` listen keine Termintypen und keine Direktlinks je Behandlungsgrund; die Behandlungsgründe lädt die Widget-App erst zur Laufzeit. Daher keine geratenen Links/Parameter, sondern der vorgesehene Fallback: gemeinsame SG-Auswahl, neutrale Beschriftung, keine behauptete Vorauswahl.
+
+**Umschalten nach Verifikation:** In `src/data/kontakt-angebote.mjs` → `ONEDOC['st-gallen'].direkt.checkin` / `.behandlung` den in der OneDoc-Verwaltung verifizierten Direktlink eintragen. Dann wechselt die Beschriftung automatisch auf «Kostenlosen TCM-Check-in online buchen →» bzw. «Ersttermin online buchen →» (im Browser-Test mit Platzhaltern geprüft). OneDoc-Terminarten und Kalenderregeln wurden nicht verändert.
+
+Tracking: `onedoc_click` je Klick genau einmal, neu mit `terminart` (`keine`/`checkin`/`behandlung`); keine Conversion. Homepage und andere Seiten unverändert (OneDoc dort weiterhin nur bei Behandlung + St. Gallen).

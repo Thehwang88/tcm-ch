@@ -36,6 +36,8 @@
 .kf-ziel-t{font-size:15px;line-height:1.5;color:var(--kf-mid);margin:0}
 .kf-note-scope{font-size:14px;color:var(--kf-mid);margin:8px 0 0;line-height:1.45}
 .kf-onedoc{margin:14px 0 4px;padding:14px;border-radius:16px;background:var(--kf-mint);border:1px solid var(--kf-mint-line)}
+.kf-onedoc--sg .kf-od-link{font-size:16px}
+.kf-onedoc--sg .kf-hint{margin:6px 0 2px}
 .kf-hint{font-size:14px;color:var(--kf-mid);margin:8px 0 6px;line-height:1.45}
 .kf-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--kf-ink);text-decoration:underline;text-underline-offset:3px}
 .kf-fields{margin-top:16px;outline:none;scroll-margin-top:96px}

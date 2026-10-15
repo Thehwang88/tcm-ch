@@ -82,9 +82,16 @@ const sgHero = sg.slice(sg.indexOf('data-kf-instance="sg-hero"'), sg.indexOf('/k
 const t = text(sgHero);
 for (const s of ['Wie können wir dir helfen?', 'Wähle, was gerade zu dir passt.', 'Kostenloser TCM-Check-in', 'Dein Anliegen verstehen. Deinen nächsten Schritt finden.', '30 Minuten für eine persönliche TCM-Anamnese und Diagnostik.',
   'Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', 'Persönliche Empfehlung zum weiteren Vorgehen', 'Krankenkassen-Check', 'Hilfe bei der Abklärung deiner Zusatzversicherung.',
-  'Kostenlos · ohne Behandlung · ohne Verpflichtung', 'Ersttermin mit Behandlung', 'Für alle, die direkt mit der Behandlung starten möchten.', 'Freie Termine ansehen', 'Ersttermin mit Behandlung direkt bei OneDoc buchen.',
+  'Kostenlos · ohne Behandlung · ohne Verpflichtung', 'Ersttermin mit Behandlung', 'Für alle, die direkt mit der Behandlung starten möchten.', 'Termin online buchen', 'Direkt bei OneDoc.',
   'Lieber einen Termin anfragen', 'Wir rufen dich zur Terminvereinbarung zurück.', '* Pflichtfeld', 'Mit deiner Anfrage ist noch kein Termin gebucht.', 'Lieber anrufen?', '+41 77 523 61 22']) ok(t.includes(s), `Text: «${s}»`);
 ok(/placeholder="Deine Telefonnummer"/.test(sgHero) && /placeholder="Vor- und Nachname"/.test(sgHero) && /placeholder="name@beispiel\.ch"/.test(sgHero) && /placeholder="Was möchtest du uns mitgeben\?"[^>]*>|rows="2"[^>]*placeholder="Was möchtest du uns mitgeben\?"/.test(sgHero), 'Platzhalter exakt, Anliegen zweizeilig');
+// SG-Seite: beide Terminarten über OneDoc, EIN Buchungselement je Instanz, gemeinsame SG-Auswahl solange keine
+// verifizierten Direktlinks konfiguriert sind (keine geratenen OneDoc-Links/Parameter).
+const sgCards = [...sg.matchAll(/<div class="inline-form-card kf[^"]*"[^>]*data-kf-instance="(sg-hero|sg-unten)"[\s\S]*?<script src="\/kontakt-form\.js"/g)].map((m) => m[0]);
+ok(sgCards.length === 2 && sgCards.every((c) => (c.match(/data-kf-onedoc[ >]/g) || []).length === 1 && /data-kf-od-mode="sg"/.test(c) && !/data-kf-onedoc-panel[^>]*hidden/.test(c.match(/<div class="kf-onedoc[^>]*>/)[0])), 'SG Hero + unten: genau ein OneDoc-Element, schon ohne Auswahl sichtbar');
+ok(ONEDOC['st-gallen'].direkt.checkin === null && ONEDOC['st-gallen'].direkt.behandlung === null ? sgCards.every((c) => !/data-kf-od-(checkin|behandlung)=/.test(c) && /data-kf-od-default="\/standorte\/st-gallen\/#online-buchen"/.test(c)) : true, 'ohne verifizierte Direktlinks: gemeinsame SG-Auswahl, keine termintyp-spezifischen Ziele im Markup');
+const globalCards = [...html.entries()].filter(([p]) => p !== 'dist/standorte/st-gallen/index.html').map(([, s]) => s).filter((s) => /data-kf-od-mode="sg"/.test(s));
+ok(globalCards.length === 0 && /Freie Termine ansehen/.test(html.get('dist/index.html')) && /Ersttermin mit Behandlung direkt bei OneDoc buchen\./.test(html.get('dist/akupunktur-tcm-st-gallen/index.html')), 'andere Seiten (Homepage, SG-Landingpage) unverändert: OneDoc nur bei Behandlung');
 ok(/text-transform:uppercase/.test(read('public/kontakt-form.css').match(/\.kf-tag\{[^}]*\}/)[0]), 'Label als KOSTENLOSER TCM-CHECK-IN (Versalien per CSS)');
 const visSg = text(sg);
 ok(!/31\. Oktober|FIRST 30|Vorweihnacht|Weihnachten|limitierte|Nur noch \d|geschenkt/i.test(visSg), 'SG sichtbar ohne FIRST-30-, Weihnachts-, Frist- oder Kapazitätstexte');
