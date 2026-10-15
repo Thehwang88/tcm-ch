@@ -285,6 +285,6 @@ document.addEventListener('click',function(ev){
   else if(a.closest('#siteDrawer')) q='drawer';
   else if(a.closest('.home-cta-merged')) q='yuna';
   else if(a.closest('.wa-section')) q='wa_section_generic';
-  else if(a.closest('#home-contact-form')||a.closest('.contact-section-inline')) q='form';
+  else if(a.closest('#home-contact-form')||a.closest('.contact-section-inline')||a.closest('[data-kf-kontakt-alt]')) q='form';
   waTrack(q,false);
 },true);

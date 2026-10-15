@@ -51,6 +51,9 @@ export interface KontaktFormOpts {
   /** Nur SG unten (sg-unten): ohne OneDoc-Alternativbereich im Formular (Trennlinie, Button, Hinweis); das echte
    *  OneDoc-Widget #online-buchen folgt direkt darunter. Formular endet nach Anfragebutton + Datenschutz. */
   ohneOnedocAlternative?: boolean;
+  /** Nur SG oben (sg-hero): dezente Textlinks «Anrufen · WhatsApp» unter OneDoc; Überschrift «Oder direkt Kontakt
+   *  aufnehmen». tel aus dem festen Standort, wa = bestehendes kanonisches SG-WhatsApp-Ziel (inkl. Nachrichtentext). */
+  kontaktLinks?: { wa: string };
   /** Bestehender WhatsApp-Link der ersetzten Karte (bleibt als Textlink erhalten). */
   waHref?: string;
   cardStyle?: string;
@@ -147,13 +150,16 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     // SG-Seite: EIN Buchungselement, je nach Zustand sekundärer Link (ohne Auswahl) oder Hauptbutton (mit Auswahl).
     // Direktlinks je Termintyp nur aus der Konfiguration (verifiziert); sonst gemeinsame SG-Auswahl, neutral beschriftet.
     // Beide SG-Formulare: OneDoc unter dem Anfragebereich, dauerhaft sekundär (umrandet), Trennlinie «Oder direkt online buchen».
-    `<p class="kf-od-sep"><span>Oder direkt online buchen</span></p>` +
+    `<p class="kf-od-sep"><span>${o.kontaktLinks ? 'Oder direkt Kontakt aufnehmen' : 'Oder direkt online buchen'}</span></p>` +
     `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel data-kf-od-mode="sg" data-kf-od-sekundaer` +
     ` data-kf-od-default="${esc(onedoc!.href)}"` +
     (onedoc!.direkt?.checkin ? ` data-kf-od-checkin="${esc(onedoc!.direkt.checkin)}"` : '') +
     (onedoc!.direkt?.behandlung ? ` data-kf-od-behandlung="${esc(onedoc!.direkt.behandlung)}"` : '') + `>` +
     `<a class="kf-btn kf-btn--outline" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span class="kf-lt" data-kf-od-label>Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a>` +
-    `<p class="kf-hint">Direkt bei OneDoc.</p></div>`
+    `<p class="kf-hint">Direkt bei OneDoc.</p>` +
+    // Tracking: Anrufen → phone_click (data-kf-tel, kontakt-form.js); WhatsApp → globales wa_click (home.js, quelle form).
+    (o.kontaktLinks ? `<p class="kf-alt" data-kf-kontakt-alt><a href="${telHref(fixed!.phone)}" data-kf-tel>Anrufen</a><span class="kf-alt-sep" aria-hidden="true">·</span><a href="${esc(o.kontaktLinks.wa)}" target="_blank" rel="noopener">WhatsApp</a></p>` : '') +
+    `</div>`
   : (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
     `<div class="kf-onedoc" data-kf-onedoc-panel hidden>` +
     `<a class="kf-btn kf-btn--primary" href="${esc(onedoc?.href ?? '#')}" data-kf-onedoc${onedoc ? ` data-kf-onedoc-anchor="${onedoc.anchor}"` : ''}>Freie Termine ansehen <span aria-hidden="true">→</span></a>` +

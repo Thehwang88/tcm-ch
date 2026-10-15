@@ -9,11 +9,13 @@
 // Instanz sg-hero, Anker #offer-form (Karte), #first30 (alte Kampagnenlinks), #kf-sg-hero-fields.
 import { renderKontaktForm } from '../lib/kontakt-form';
 const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
+// Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Buchungsbox).
+const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
   quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
   quelleDetail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen',
-  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true, rueckrufOffen: true, ruhig: true,
+  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true, rueckrufOffen: true, ruhig: true, kontaktLinks: { wa: SG_WA },
 });
 ---
 <section class="lsr-hero hlsg">
@@ -31,7 +33,7 @@ const card = renderKontaktForm({
         <a href="#offer-form" class="lsr-btn-primary">Ersttermin anfragen</a>
         <a href="#online-buchen" class="lsr-btn-ghost">Termin direkt online buchen</a>
       </div>
-      <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
+      <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener">WhatsApp</a></p>
     </div>
     <figure class="lsr-right">
       <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
