@@ -639,6 +639,70 @@ await to(pg, 2500); await settle();
 ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar'); return b.classList.contains('is-visible') && !b.inert && b.querySelector('.scb-primary').getAttribute('href') !== '#offer-form'; }), 'andere Standortseite (Basel): bisherige Bar-Logik unverändert');
 await pg.close();
 
+console.log('R. DE-Homepage Mobile: Sticky-Bar aus, solange die Formularsektion #home-contact-form sichtbar ist');
+{
+  const HB = (pg) => pg.evaluate(() => { const b = document.querySelector('.scb-bar'), c = getComputedStyle(b); return { on: b.classList.contains('is-visible'), inert: b.inert === true, op: +c.opacity, pe: c.pointerEvents }; });
+  const HY = (pg, e) => pg.evaluate((e) => { const r = document.getElementById('home-contact-form').getBoundingClientRect(); return Math.round((e === 'top' ? r.top : r.bottom) + scrollY); }, e);
+  const go = async (pg, y) => { await pg.evaluate((y) => { document.documentElement.style.scrollBehavior = 'auto'; scrollTo(0, y); }, y); await new Promise((r) => setTimeout(r, 450)); };
+  const stable = async (pg) => { for (let k = 0, last = -1; k < 40; k++) { const y = await pg.evaluate(() => scrollY); if (y === last && k > 3) break; last = y; await new Promise((r) => setTimeout(r, 150)); } await new Promise((r) => setTimeout(r, 400)); };
+  const appEv = (pg) => pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  for (const w of [320, 390]) {
+    ({ pg, calls } = await open('/', { width: w })); const vh = w < 500 ? 844 : 900;
+    let b = await HB(pg); ok(!b.on && b.inert && b.op === 0, `${w}px Home initial (Hero): Bar aus, inert`);
+    const ft = await HY(pg, 'top');
+    await go(pg, Math.max(0, ft - vh - 200)); b = await HB(pg); ok(b.on && !b.inert && b.pe === 'auto', `${w}px vor der Formularsektion: Bar an (bisherige Logik)`);
+    await go(pg, ft - vh + 20); b = await HB(pg); ok(!b.on && b.inert && b.pe === 'none', `${w}px Formularsektion kommt ins Bild (20 px): Bar aus, nicht klick-/tabbar`);
+    await go(pg, ft + 200); b = await HB(pg); ok(!b.on, `${w}px mitten im Formular: Bar aus`);
+    // Standort/Terminart, Validierungsfehler → Sektion wächst; weiterhin aus solange sichtbar
+    await sel(pg, 'home', 'St. Gallen'); await pick(pg, 'home', 'behandlung'); await submit(pg, 'home'); await new Promise((r) => setTimeout(r, 300));
+    await go(pg, (await HY(pg, 'bottom')) - 30); b = await HB(pg); ok(!b.on && calls.length === 0, `${w}px Standort/Terminart gewählt + Validierungsfehler, Sektionsende im Bild: Bar aus, kein Versand`);
+    ok(await pg.evaluate(() => !!document.activeElement.closest('#home-contact-form')), `${w}px Fehlerfokus liegt im Formular (Bar bleibt auch dadurch aus)`);
+    await pg.evaluate(() => document.activeElement.blur());
+    await go(pg, (await HY(pg, 'bottom')) + 20); b = await HB(pg); ok(b.on, `${w}px Fokus verlassen, nach der Formularsektion (Ende 20 px über dem Rand): Bar wieder an`);
+    await go(pg, ft + 300); b = await HB(pg); ok(!b.on, `${w}px zurück ins Formular: Bar aus`);
+    await go(pg, Math.max(0, ft - vh - 200)); b = await HB(pg); ok(b.on, `${w}px zurück über dem Formular: Bar an`);
+    // Eingabefokus + Tastatur
+    await pg.$eval(`${card('home')} [name=name]`, (i) => i.focus({ preventScroll: true })); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(!b.on, `${w}px Formularfeld fokussiert: Bar aus`);
+    await pg.$eval(`${card('home')} [name=name]`, (i) => i.blur()); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(b.on, `${w}px Fokus verlassen: Bar wieder an`);
+    await pg.evaluate(() => { Object.defineProperty(window.visualViewport, 'height', { configurable: true, get: () => innerHeight * 0.5 }); window.visualViewport.dispatchEvent(new Event('resize')); }); await new Promise((r) => setTimeout(r, 350));
+    b = await HB(pg); ok(!b.on, `${w}px Bildschirmtastatur (simuliert): Bar aus`);
+    await pg.evaluate(() => { delete window.visualViewport.height; window.visualViewport.dispatchEvent(new Event('resize')); }); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(b.on, `${w}px Tastatur zu: Bar an`);
+    ok((await appEv(pg)).length === 0, `${w}px Sichtbarkeitswechsel: keine Events`);
+    // Bestehende Ziele/Tracking: Primär → Formular (bisheriger Scroll-Handler + Prefill), WA 1× wa_click sticky
+    const hrefs = await pg.$$eval('.scb-bar a', (as) => as.map((a) => a.getAttribute('href').replace(/\?.*$/, '')).join('|'));
+    ok(hrefs === '/kontakt/|https://wa.me/41775236122|tel:+41775236122', `${w}px Bar-Ziele unverändert (${hrefs})`);
+    await pg.$eval('.scb-bar a.scb-out[href^="https://wa.me"]', (x) => { x.addEventListener('click', (e) => e.preventDefault(), { once: true }); x.click(); });
+    let e1 = await appEv(pg); ok(e1.length === 1 && e1[0].event === 'wa_click' && e1[0].quelle === 'sticky', `${w}px WhatsApp in der Bar: 1× wa_click quelle sticky`);
+    await pg.$eval(`${card('home')} [name=anliegen]`, (t) => { t.value = ''; });
+    await pg.$eval('.scb-bar .scb-primary', (x) => x.click()); await stable(pg);
+    b = await HB(pg); e1 = await appEv(pg);
+    ok(!b.on && e1.length === 1 && calls.length === 0 && await pg.$eval(`${card('home')} [name=anliegen]`, (t) => t.value === 'Ich interessiere mich für einen Termin.'), `${w}px Bar-Primär: bisheriges Ziel (Formular, Prefill unverändert), danach Bar aus, kein Zusatz-Event/Versand`);
+    await pg.close();
+    // Erfolgsmeldung: Sektion bleibt beobachtet
+    ({ pg, calls } = await open('/', { width: w }));
+    await sel(pg, 'home', 'St. Gallen'); await pick(pg, 'home', 'behandlung'); await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home'); await new Promise((r) => setTimeout(r, 400));
+    await go(pg, await HY(pg, 'top')); b = await HB(pg);
+    ok(calls.length === 1 && !!(await pg.$(`${card('home')} .kf-success:not([hidden])`)) && !b.on, `${w}px Erfolgsmeldung (gemockt): Sektion im Bild, Bar aus`);
+    await go(pg, (await HY(pg, 'bottom')) + 20); b = await HB(pg); ok(b.on, `${w}px nach der Sektion mit Erfolgsmeldung: Bar an`);
+    await pg.close();
+    // Direkte Anker + Reload
+    for (const h of ['#home-contact-form', '#kf-home-fields']) { ({ pg, calls } = await open('/' + h, { width: w })); await stable(pg); b = await HB(pg); ok(!b.on && b.inert, `${w}px Einstieg ${h}: Bar sofort aus`); await pg.close(); }
+    ({ pg, calls } = await open('/', { width: w }));
+    await go(pg, (await HY(pg, 'top')) + 100); await pg.reload({ waitUntil: 'load' }); await stable(pg); b = await HB(pg);
+    ok((await pg.evaluate(() => scrollY)) > 1000 && !b.on, `${w}px Reload mit Position im Formular: Bar aus`);
+    await go(pg, (await HY(pg, 'bottom')) + 50); await pg.reload({ waitUntil: 'load' }); await stable(pg); b = await HB(pg);
+    ok(b.on, `${w}px Reload mit Position nach dem Formular: Bar an`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/', { width: 1440 }));
+  ok(await pg.evaluate(() => getComputedStyle(document.querySelector('.scb-bar')).display === 'none'), '1440px Home: keine Mobile-Bar (Desktop unverändert)');
+  await pg.close();
+  ({ pg, calls } = await open('/kontakt/'));
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; scrollTo(0, 99999); }); await new Promise((r) => setTimeout(r, 450));
+  ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar'); return !b.inert && b.getAttribute('aria-hidden') === null; }), 'andere Seite (/kontakt/): Bar ohne Home-Formularlogik (kein inert/aria-hidden)');
+  await pg.close();
+}
+
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
 for (const g of [true, false]) {
   ({ pg, calls } = await open('/kontakt/', { gtag: g }));
