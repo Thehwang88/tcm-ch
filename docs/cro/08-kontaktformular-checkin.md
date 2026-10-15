@@ -137,3 +137,6 @@ Nur `/standorte/st-gallen/` Hero (`HeroStandardSG.astro`). Gleicher Renderer, gl
 | 1440×900 | 1734 → 974 | 1545 → 785 | 740 → 644 |
 | 390×844 | 2419 → 1526 | 1691 → 900 | 1431 → 1218 |
 | 320×700 | 2650 → 1768 | 1898 → 1117 | 1627 → 1440 |
+
+## SG-Formulare: Reihenfolge und Aktionshierarchie (15.10.2026)
+Beide SG-Formulare (Hero + unten, `onedocBeideTerminarten`): 1 Terminart → 2 Rückruf-Anfrage (Telefon *, optionale Angaben, neongrüner Anfrage-Button, Datenschutz/Hinweis) → Trennlinie «Oder direkt online buchen» + OneDoc als umrandeter Sekundärbutton «Termin online buchen →» / «Direkt bei OneDoc.» → «Lieber anrufen?». OneDoc immer sichtbar (auch ohne Wahl), nie gefüllt; Ziel-/Fallback-Logik (PR #55) unverändert. Hero: Schritt 2 heisst «Rückruf anfragen», Aufklapp-Logik bleibt nur im Hero; unteres Formular vollständig offen ohne Schrittmarker, Sprunglink «Lieber einen Termin anfragen ↓» entfällt (Felder stehen jetzt davor).

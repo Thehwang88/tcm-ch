@@ -53,7 +53,7 @@ ok(calls.length === 0 && (await ev(pg, 'formular_senden')).length === 0, 'ohne T
 ok(await pg.$eval('#kf-sg-hero-ta-err', (e) => !e.hidden && /wähle/.test(e.textContent)), 'Fehlermeldung Terminart sichtbar');
 await pick(pg, 'sg-hero', 'checkin');
 ok(await pg.$eval(`${card('sg-hero')} [data-kf-submit]`, (b) => b.textContent.trim() === 'TCM-Check-in anfragen →'), 'Submit-Text Check-in');
-ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => !a.closest('[data-kf-onedoc-panel]').hidden && a.classList.contains('kf-btn--primary') && a.textContent.trim() === 'Termin online buchen →' && a.getAttribute('href') === '#online-buchen'), 'Check-in: OneDoc-Button (neutral, gemeinsame SG-Auswahl)');
+ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => !a.closest('[data-kf-onedoc-panel]').hidden && a.classList.contains('kf-btn--outline') && !a.classList.contains('kf-btn--primary') && a.textContent.trim() === 'Termin online buchen →' && a.getAttribute('href') === '#online-buchen'), 'Check-in: OneDoc sekundär umrandet (neutral, gemeinsame SG-Auswahl)');
 ok(await pg.$eval(card('sg-unten'), (c) => !c.querySelector('input[name=terminart]:checked')), 'SG unten unbeeinflusst vom Hero');
 await submit(pg, 'sg-hero');
 let c0 = calls[0] || {};
@@ -229,6 +229,13 @@ await pg.evaluate(() => openContactForm(null, 'Zürich Oerlikon – Partnerpraxi
 ok(await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value) === OERL_P, 'openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option');
 await pg.close();
 
+/** Reihenfolge in DOM und Darstellung: Terminart → (Rückruf-Button | Telefon … Anfrage-Button) → Trennlinie → OneDoc → Anrufen. */
+const orderOk = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), v = (e) => !!(e && (e.offsetWidth || e.offsetHeight));
+  const els = ['.kf-opts', '[data-kf-rr]', '[name=telefon]', '[data-kf-submit]', '.kf-od-sep', '[data-kf-onedoc]', '.kf-od-sep + .kf-onedoc .kf-hint', '[data-kf-tel]'].map((s) => c.querySelector(s)).filter(v);
+  if (!els.some((e) => e.matches('[data-kf-onedoc]')) || !els.some((e) => e.matches('.kf-od-sep'))) return false;
+  return els.every((e, k) => k === 0 || (els[k - 1].compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING && e.getBoundingClientRect().top >= els[k - 1].getBoundingClientRect().bottom - 1)); }, card(i));
+/** Innerhalb der Karte ist höchstens der Anfrage-Button neongrün gefüllt. */
+const neonOnlySubmit = (pg, i) => pg.evaluate((C) => [...document.querySelectorAll(C + ' a, ' + C + ' button')].filter((e) => (e.offsetWidth || e.offsetHeight) && getComputedStyle(e).backgroundColor === 'rgb(26, 226, 136)').every((e) => e.hasAttribute('data-kf-submit')), card(i));
 console.log('L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)');
 for (const w of [390, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
@@ -237,18 +244,21 @@ for (const w of [390, 1440]) {
       hint: p.querySelector('.kf-hint').textContent.trim(), alt: p.querySelector('[data-kf-to-fields]')?.textContent.trim() ?? null, rr: !!p.closest('[data-kf]').querySelector('[data-kf-rr]') }; });
   for (const i of ['sg-hero', 'sg-unten']) {
     let s0 = await od(i);
-    ok(s0.shown && /kf-link/.test(s0.cls) && !/kf-btn--primary/.test(s0.cls) && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1 && s0.hint === 'Direkt bei OneDoc.' && (i === 'sg-hero' ? s0.alt === null && s0.rr : s0.alt === 'Lieber einen Termin anfragen ↓' && !s0.rr), `${w}px ${i} ohne Auswahl: sekundärer Link «Termin online buchen →», «Direkt bei OneDoc.», ${i === 'sg-hero' ? '«Lieber Rückruf anfragen»' : '«Lieber einen Termin anfragen ↓»'}`);
+    ok(s0.shown && s0.cls === 'kf-btn kf-btn--outline' && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1 && s0.hint === 'Direkt bei OneDoc.' && s0.alt === null && s0.rr === (i === 'sg-hero'), `${w}px ${i} ohne Auswahl: OneDoc sichtbar, sekundär umrandet «Termin online buchen →», «Direkt bei OneDoc.», kein Sprunglink`);
+    ok(await orderOk(pg, i), `${w}px ${i} ohne Auswahl: Reihenfolge Terminart → ${i === 'sg-hero' ? 'Rückruf-Button' : 'Telefon → Anfrage-Button'} → «Oder direkt online buchen» → OneDoc → Lieber anrufen (DOM = sichtbar)`);
+    ok(await neonOnlySubmit(pg, i), `${w}px ${i} ohne Auswahl: keine andere Aktion neongrün gefüllt`);
     await type(pg, i, 'telefon', '+41 79 123 45 67'); await type(pg, i, 'anliegen', 'Test-Eingabe');
     for (const t of ['checkin', 'behandlung']) {
       await pick(pg, i, t); s0 = await od(i);
-      ok(s0.shown && /kf-btn--primary/.test(s0.cls) && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1, `${w}px ${i} ${t}: genau ein Hauptbutton «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)`);
+      ok(s0.shown && s0.cls === 'kf-btn kf-btn--outline' && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1, `${w}px ${i} ${t}: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)`);
+      ok(await orderOk(pg, i) && await neonOnlySubmit(pg, i), `${w}px ${i} ${t}: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc → Anrufen; nur Anfrage-Button neongrün`);
     }
     ok(await pg.$eval(`${card(i)} [name=telefon]`, (x) => x.value === '+41 79 123 45 67') && await pg.$eval(`${card(i)} [name=anliegen]`, (x) => x.value.endsWith('Test-Eingabe')), `${w}px ${i}: Eingaben bleiben beim Wechsel erhalten`);
   }
   await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
   const oc = await sends(pg, 'onedoc_click'); const o1 = (await ev(pg, 'onedoc_click'))[0] || {};
   ok(total(oc) === 1 && o1.terminart === 'behandlung' && o1.standort === 'st-gallen' && (await ev(pg, 'formular_senden')).length === 0, `${w}px: OneDoc-Klick → genau 1 onedoc_click (terminart ${o1.terminart}), keine Conversion`);
-  ok(await pg.$eval(card('sg-unten'), (c) => c.querySelector('[data-kf-onedoc]').classList.contains('kf-btn--primary')) && await pg.$eval(card('sg-hero'), (c) => c.querySelector('#kf-sg-hero-ta-behandlung').checked), `${w}px: Hero und unten unabhängig`);
+  ok(await pg.$eval(card('sg-unten'), (c) => c.querySelector('#kf-sg-unten-ta-behandlung').checked) && await pg.$eval(card('sg-hero'), (c) => c.querySelector('#kf-sg-hero-ta-behandlung').checked && !c.querySelector('#kf-sg-hero-ta-checkin').checked), `${w}px: Hero und unten unabhängig`);
   await pg.close();
 }
 // Umschaltlogik für später verifizierte Direktlinks: Platzhalter-Ziele NUR im Test-DOM (.invalid), nie im Produkt.
@@ -259,7 +269,7 @@ await pick(pg, 'sg-unten', 'checkin'); const l1 = await lbl(); await pick(pg, 's
 ok(l1 === 'Kostenlosen TCM-Check-in online buchen → | https://test.invalid/checkin' && l2 === 'Ersttermin online buchen → | https://test.invalid/ersttermin', `mit konfigurierten Direktlinks: spezifische Beschriftung + Ziel (${l1} / ${l2})`);
 await pg.close();
 ({ pg, calls } = await open('/standorte/st-gallen/?first30=1'));
-ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => a.classList.contains('kf-btn--primary')) && await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => a.classList.contains('kf-link')), 'Prefill ?first30=1 (Check-in im Hero) → Hero-Button, unten weiterhin Link');
+ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => a.className === 'kf-btn kf-btn--outline') && await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => a.className === 'kf-btn kf-btn--outline') && await pg.$eval(card('sg-hero'), (c) => c.querySelector('#kf-sg-hero-ta-checkin').checked), 'Prefill ?first30=1 (Check-in im Hero): OneDoc in beiden Formularen sekundär');
 await pg.close();
 ({ pg, calls } = await open('/'));
 await sel(pg, 'home', 'St. Gallen'); await pick(pg, 'home', 'checkin');
@@ -309,8 +319,9 @@ for (const w of [390, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
   await pg.focus('#kf-sg-hero-ta-checkin'); await pg.keyboard.press('Space'); x = await st(pg);
   ok(x.rr === 'true' && !x.rrVis && x.checked === 'checkin' && x.active === 'kf-sg-hero-ta-checkin', `${w}px Leertaste auf Kachel: öffnet, Fokus bleibt auf der Kachel`);
-  const seq = []; for (let i = 0; i < 3; i++) { await pg.keyboard.press('Tab'); seq.push((await st(pg)).active); }
-  ok(seq.indexOf('kf-sg-hero-tel') > 0 && seq.indexOf('kf-sg-hero-rr-btn') < 0, `${w}px Tab-Reihenfolge danach logisch (${seq.join(' → ')})`);
+  const seq = []; for (let i = 0; i < 8; i++) { await pg.keyboard.press('Tab'); seq.push(await pg.evaluate(() => { const a = document.activeElement; return a.id || (a.hasAttribute('data-kf-submit') && 'submit') || (a.hasAttribute('data-kf-onedoc') && 'onedoc') || (a.hasAttribute('data-kf-tel') && 'call') || (a.closest('.kf-legal') && 'legal') || a.tagName; })); }
+  const want = ['kf-sg-hero-tel', 'kf-sg-hero-opt-btn', 'submit', 'onedoc', 'call']; const wp = want.map((x) => seq.indexOf(x));
+  ok(seq[0] === 'kf-sg-hero-tel' && wp.every((v, k) => v >= 0 && (k === 0 || v > wp[k - 1])) && seq.indexOf('kf-sg-hero-rr-btn') < 0, `${w}px Tab-Reihenfolge = sichtbare Reihenfolge (${seq.join(' → ')})`);
   await pg.close();
   // Explizit öffnen vor der Wahl: keine Terminart, Button weg, Bereich bleibt offen; Absenden ohne Wahl → Auswahlvalidierung
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
@@ -334,8 +345,8 @@ for (const w of [320, 390, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
   const g = await pg.evaluate((H) => { const c = document.querySelector(H), st = [...c.querySelectorAll('.kf-step')], fs = c.querySelector('.kf-opts'), od = c.querySelector('.kf-onedoc');
     const fits = st.every((e) => e.scrollWidth <= e.clientWidth + 1 && e.getBoundingClientRect().right <= c.getBoundingClientRect().right);
-    return { t: st.map((e) => e.textContent.trim()), order: st.length === 2 && st[0].nextElementSibling === fs && st[1].nextElementSibling === od, fits, fz: st.length && parseFloat(getComputedStyle(st[0]).fontSize), intro: /Wähle, was gerade zu dir passt/.test(c.textContent), odVis: !!od.offsetHeight }; }, H);
-  ok(g.t.join('|') === '1Terminart wählen|2Online buchen oder Rückruf anfragen' && g.order && g.fits && g.fz >= 14 && !g.intro && g.odVis, `${w}px Schritte «1 Terminart wählen» über den Kacheln, «2 Online buchen oder Rückruf anfragen» über OneDoc, ohne Overflow, Einleitung ersetzt, OneDoc ohne Wahl erreichbar`);
+    return { t: st.map((e) => e.textContent.trim()), order: st.length === 2 && st[0].nextElementSibling === fs && st[1].nextElementSibling === c.querySelector('[data-kf-rr]') && c.querySelector('.kf-od-sep').nextElementSibling === od && od.querySelector('.kf-btn--outline'), fits, fz: st.length && parseFloat(getComputedStyle(st[0]).fontSize), intro: /Wähle, was gerade zu dir passt/.test(c.textContent), odVis: !!od.offsetHeight }; }, H);
+  ok(g.t.join('|') === '1Terminart wählen|2Rückruf anfragen' && g.order && g.fits && g.fz >= 14 && !g.intro && g.odVis, `${w}px Schritte «1 Terminart wählen» über den Kacheln, «2 Rückruf anfragen» über dem Rückruf-Button, OneDoc unter «Oder direkt online buchen», ohne Overflow, OneDoc ohne Wahl erreichbar`);
   const box = () => pg.$$eval(`${H} .kf-opt`, (ls) => ls.map((l) => { const r = l.getBoundingClientRect(), cs = getComputedStyle(l); return [r.x + scrollX, r.y + scrollY, r.width, r.height, cs.borderTopWidth].join(); }).join('|'));
   const b0 = await box();
   if (w === 390) { await pg.hover(`${H} .kf-opt--behandlung`); await new Promise((r) => setTimeout(r, 300));
@@ -429,14 +440,14 @@ await pg.close();
 ({ pg, calls } = await open('/standorte/st-gallen/'));
 await pg.$eval(`${H} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
 ok(total(await sends(pg, 'onedoc_click')) === 1 && (await ev(pg, 'formular_senden')).length === 0 && calls.length === 0, 'Hero OneDoc-Klick (Rückruf zu): genau 1 onedoc_click, keine Conversion, kein Versand');
-ok(await pg.$eval(card('sg-unten'), (c) => !c.querySelector('[data-kf-rr],[data-kf-opt]') && !!c.querySelector('[name=telefon]').offsetHeight && !!c.querySelector('[name=name]').offsetHeight && !!c.querySelector('.kf-ort') && /Lieber einen Termin anfragen/.test(c.textContent) && /Für alle, die direkt mit der Behandlung starten möchten\./.test(c.textContent)), 'unteres SG-Formular vollständig offen und inhaltlich unverändert');
+ok(await pg.$eval(card('sg-unten'), (c) => !c.querySelector('[data-kf-rr],[data-kf-opt]') && !!c.querySelector('[name=telefon]').offsetHeight && !!c.querySelector('[name=name]').offsetHeight && !!c.querySelector('[name=email]').offsetHeight && !!c.querySelector('[name=anliegen]').offsetHeight && !!c.querySelector('[name=wunschzeit]').offsetHeight && !!c.querySelector('.kf-ort') && !c.querySelector('.kf-step,[data-kf-to-fields]') && /Wähle, was gerade zu dir passt\./.test(c.textContent) && /Für alle, die direkt mit der Behandlung starten möchten\./.test(c.textContent)), 'unteres SG-Formular vollständig offen, alle Felder, Originaltexte, ohne Hero-Schritte/Aufklappen');
 // Pfeile ohne Unterstreichung (Hero + unten), Linktext unterstrichen; gefüllter Button ohne Unterstreichung
 const deco = (sel) => pg.$$eval(sel, (as) => as.map((a) => ({ a: getComputedStyle(a).textDecorationLine, t: getComputedStyle(a.querySelector('.kf-lt')).textDecorationLine, r: getComputedStyle(a.querySelector('.kf-arrow')).textDecorationLine })));
-const d1 = await deco('[data-kf-od-mode="sg"] a.kf-link');
-ok(d1.length === 3 && d1.every((d) => d.a === 'none' && d.t === 'underline' && d.r === 'none'), `SG Hero + unten: Pfeile → / ↓ ohne Unterstreichung, Linktext unterstrichen (${d1.length} Links)`);
+const d1 = await deco('[data-kf-od-mode="sg"] a[data-kf-onedoc]');
+ok(d1.length === 2 && d1.every((d) => d.a === 'none' && d.t === 'none' && d.r === 'none'), `SG Hero + unten: OneDoc-Buttons ohne Unterstreichung, Pfeil ohne Unterstreichung (${d1.length})`);
 await pick(pg, 'sg-unten', 'behandlung');
 const d2 = await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => [getComputedStyle(a).textDecorationLine, getComputedStyle(a.querySelector('.kf-lt')).textDecorationLine].join());
-ok(d2 === 'none,none', 'gefüllter OneDoc-Button ohne Unterstreichung');
+ok(d2 === 'none,none', 'OneDoc-Button nach Auswahl ohne Unterstreichung');
 await pg.close();
 // Verdeckung durch fixe Elemente (Header, mobile Leiste, WhatsApp) an 390 px
 ({ pg, calls } = await open('/standorte/st-gallen/'));
