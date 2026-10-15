@@ -122,13 +122,14 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const onedocPanel = sgOd ?
     // SG-Seite: EIN Buchungselement, je nach Zustand sekundärer Link (ohne Auswahl) oder Hauptbutton (mit Auswahl).
     // Direktlinks je Termintyp nur aus der Konfiguration (verifiziert); sonst gemeinsame SG-Auswahl, neutral beschriftet.
-    `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel data-kf-od-mode="sg"` +
+    // Beide SG-Formulare: OneDoc unter dem Anfragebereich, dauerhaft sekundär (umrandet), Trennlinie «Oder direkt online buchen».
+    `<p class="kf-od-sep"><span>Oder direkt online buchen</span></p>` +
+    `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel data-kf-od-mode="sg" data-kf-od-sekundaer` +
     ` data-kf-od-default="${esc(onedoc!.href)}"` +
     (onedoc!.direkt?.checkin ? ` data-kf-od-checkin="${esc(onedoc!.direkt.checkin)}"` : '') +
     (onedoc!.direkt?.behandlung ? ` data-kf-od-behandlung="${esc(onedoc!.direkt.behandlung)}"` : '') + `>` +
-    `<a class="kf-link kf-od-link" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span class="kf-lt" data-kf-od-label>Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a>` +
-    `<p class="kf-hint">Direkt bei OneDoc.</p>` +
-    (K ? '' : `<a class="kf-link" href="#${p}-fields" data-kf-to-fields><span class="kf-lt">Lieber einen Termin anfragen</span> <span class="kf-arrow" aria-hidden="true">↓</span></a>`) + `</div>`
+    `<a class="kf-btn kf-btn--outline" href="${esc(onedoc!.href)}" data-kf-onedoc data-kf-onedoc-anchor="${onedoc!.anchor}"><span class="kf-lt" data-kf-od-label>Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a>` +
+    `<p class="kf-hint">Direkt bei OneDoc.</p></div>`
   : (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
     `<div class="kf-onedoc" data-kf-onedoc-panel hidden>` +
     `<a class="kf-btn kf-btn--primary" href="${esc(onedoc?.href ?? '#')}" data-kf-onedoc${onedoc ? ` data-kf-onedoc-anchor="${onedoc.anchor}"` : ''}>Freie Termine ansehen <span aria-hidden="true">→</span></a>` +
@@ -158,8 +159,8 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
-    (K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Online buchen oder Rückruf anfragen</p>` : '') +
-    onedocPanel +
+    (K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
+    (sgOd ? '' : onedocPanel) +
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
@@ -180,7 +181,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (K ? legal + note : note + legal) +
     `<p class="kf-err" role="alert" data-kf-err hidden></p>` +
     // Kompakt: Turnstile ausserhalb des aufklappbaren Bereichs, damit das Widget nicht in einem verborgenen Container rendert.
-    `</div>` + (K ? ts : '') + `</form>` +
+    `</div>` + (K ? ts : '') + (sgOd ? onedocPanel : '') + `</form>` +
     `<div class="kf-call"><p class="kf-call-h">Lieber anrufen?</p>` +
     `<a class="kf-btn kf-btn--outline" href="${telHref(fixedTel)}" data-kf-tel>${PHONE}<span data-kf-tel-text>${esc(fixedTel)}</span></a>` +
     (o.waHref ? `<a class="kf-wa" href="${esc(o.waHref)}" target="_blank" rel="noopener">oder per WhatsApp schreiben</a>` : '') +

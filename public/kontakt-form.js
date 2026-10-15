@@ -107,7 +107,8 @@
         var anc = odBtn.getAttribute('data-kf-onedoc-anchor');
         if (!direct && anc && document.getElementById(anc)) odHref = '#' + anc; // gleiche Seite: eingebettete SG-Auswahl
         odBtn.setAttribute('href', odHref);
-        odBtn.className = t ? 'kf-btn kf-btn--primary' : 'kf-link kf-od-link';
+        // Kompakter SG-Hero: OneDoc immer sekundär (Anfrage-Button ist die einzige gefüllte Hauptaktion).
+        odBtn.className = panel.hasAttribute('data-kf-od-sekundaer') ? 'kf-btn kf-btn--outline' : t ? 'kf-btn kf-btn--primary' : 'kf-link kf-od-link';
         odBtn.querySelector('[data-kf-od-label]').textContent = direct ? (t === 'checkin' ? 'Kostenlosen TCM-Check-in online buchen' : 'Ersttermin online buchen') : 'Termin online buchen';
         panel.hidden = false;
       } else
