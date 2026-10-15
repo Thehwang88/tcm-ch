@@ -105,3 +105,14 @@
 .kf-disclose[aria-expanded="true"] .kf-chev{transform:rotate(-135deg);margin-top:4px}
 .kf-optgroup{margin-top:4px}
 @media (min-width:600px){.kf--kompakt{padding:22px 24px 20px}.kf--kompakt .kf-opt--checkin{padding:16px 52px 16px 18px}}
+/* Kompakter SG-Hero: Schrittführung, Auswahl-Rückmeldung, ruhiges Einblenden (keine Höhenänderung durch Auswahl). */
+.kf--kompakt .kf-step{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:14px;font-weight:700;line-height:1.3;color:var(--kf-ink)}
+.kf--kompakt .kf-step--2{margin:14px 0 8px}
+.kf--kompakt .kf-step--2 + .kf-onedoc{margin-top:0}
+.kf-step-n{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--kf-neon);color:var(--kf-ink);font-size:12.5px;font-weight:800;line-height:1}
+.kf--kompakt .kf-opt{transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease}
+.kf--kompakt .kf-opt.is-checked{background:var(--kf-mint)}
+@media (hover:hover){.kf--kompakt .kf-opt:not(.is-checked):not(.is-disabled):hover{border-color:rgba(2,11,16,.4)}}
+@keyframes kf-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.kf--kompakt .kf-anim{animation:kf-in .18s ease-out}
+@media (prefers-reduced-motion:reduce){.kf--kompakt .kf-anim{animation:none}.kf--kompakt .kf-opt{transition:none}}

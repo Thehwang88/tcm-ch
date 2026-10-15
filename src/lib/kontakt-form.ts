@@ -150,13 +150,15 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<link rel="stylesheet" href="/kontakt-form.css">` +
     `<form class="kf-form" novalidate data-kf-form${o.formId ? ` id="${esc(o.formId)}"` : ''}${o.formName ? ` name="${esc(o.formName)}" data-name="${esc(o.formName)}"` : ''} aria-labelledby="${p}-h">` +
     `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>` +
-    `<p class="kf-intro">Wähle, was gerade zu dir passt.</p>` +
+    // Kompakt: Schrittmarker ersetzt die Einleitung (Klasse kf-intro bleibt als JS-Einfügepunkt); Legend nennt Schritt 1 für Screenreader.
+    (K ? `<p class="kf-intro kf-step" aria-hidden="true"><span class="kf-step-n">1</span>Terminart wählen</p>` : `<p class="kf-intro">Wähle, was gerade zu dir passt.</p>`) +
     (fixed ? (K ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     tileCheckin + tileBehandlung + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
+    (K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Online buchen oder Rückruf anfragen</p>` : '') +
     onedocPanel +
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +

@@ -128,9 +128,12 @@ Nur `/standorte/st-gallen/` Hero (`HeroStandardSG.astro`). Gleicher Renderer, gl
 - Ohne JS: Buttons `hidden`, alles offen. Anker `#offer-form`, `#first30`, `?first30=1` öffnen den Bereich und fokussieren Telefon; Fehler öffnen ihren Bereich. Aufklappen pusht kein Event.
 - Pfeile (Hero + unten): Text `.kf-lt` unterstrichen, `.kf-arrow` ohne Unterstreichung.
 - Linke Hero-Hälfte ohne «Unverbindliche Anfrage …» und «Geöffnet: …» (Öffnungszeiten bleiben in «Über die Praxis» und im Schema).
+- Kachelwahl (Zeiger, Tastatur) oder gültige Vorauswahl öffnet den Rückruf-Bereich automatisch – ohne Fokuswechsel, Scrollsprung oder Tastatur-Popup; der Öffnungsbutton verschwindet, der Bereich bleibt für den Seitenbesuch offen. «Lieber Rückruf anfragen» öffnet ohne Terminart (Fokus auf den Bereich, nicht auf Telefon).
+- Feldanker `#kf-sg-hero-fields` wie `#offer-form`: Laden, Klick (auch erneut), Hash-Wechsel → offen, Telefon fokussiert und unter dem Sticky-Header sichtbar.
+- Schrittmarker «1 Terminart wählen» (ersetzt die Einleitung) und «2 Online buchen oder Rückruf anfragen» (über OneDoc, keine Sperre). Auswahl: gefülltes Radio, Rahmen + Mint, 180 ms Transition, Hover-Rahmen nur bei `(hover: hover)`, keine Grössenänderung. Erstes Öffnen von Rückruf/optionalen Angaben: 180 ms Ein-Blenden (Opazität/Versatz, keine Max-Höhe); nicht beim Laden; `prefers-reduced-motion: reduce` ohne Animation.
 
 | Viewport | Hero vorher → nachher | Karte vorher → nachher | OneDoc-Y vorher → nachher |
 |---|---|---|---|
-| 1440×900 | 1734 → 944 | 1545 → 755 | 740 → 614 |
-| 390×844 | 2419 → 1496 | 1691 → 870 | 1431 → 1188 |
-| 320×700 | 2650 → 1723 | 1898 → 1073 | 1627 → 1395 |
+| 1440×900 | 1734 → 974 | 1545 → 785 | 740 → 644 |
+| 390×844 | 2419 → 1526 | 1691 → 900 | 1431 → 1218 |
+| 320×700 | 2650 → 1768 | 1898 → 1117 | 1627 → 1440 |

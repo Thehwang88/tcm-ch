@@ -186,18 +186,33 @@
     var rrBtn = form.querySelector('[data-kf-rr]'), rrBox = rrBtn && document.getElementById(rrBtn.getAttribute('aria-controls'));
     var optBtn = form.querySelector('[data-kf-opt]'), optBox = optBtn && document.getElementById(optBtn.getAttribute('aria-controls'));
     var setOpen = function (btn, box, open) { if (!btn || !box) return; btn.setAttribute('aria-expanded', String(open)); box.hidden = !open; };
-    var openFor = function (el) { if (!el) return; if (rrBox && rrBox.contains(el)) setOpen(rrBtn, rrBox, true); if (optBox && optBox.contains(el)) setOpen(optBtn, optBox, true); };
+    // Rückruf-Bereich öffnet nur (bleibt für diesen Seitenbesuch offen); der dann überflüssige Öffnungsbutton verschwindet.
+    // Ruhiges Einblenden (nur Opazität/Versatz, keine Höhenbegrenzung); nie beim initialen Laden; reduced motion: per CSS aus.
+    var animIn = function (box) { box.classList.remove('kf-anim'); void box.offsetWidth; box.classList.add('kf-anim'); };
+    var showRr = function (anim) { if (!rrBtn || !rrBox) return; var was = rrBox.hidden; setOpen(rrBtn, rrBox, true); rrBtn.hidden = true; if (anim === true && was) animIn(rrBox); };
+    var openFor = function (el) { if (!el) return; if (rrBox && rrBox.contains(el)) showRr(true); if (optBox && optBox.contains(el)) setOpen(optBtn, optBox, true); };
     var telIn = form.querySelector('[name="telefon"]');
-    var openRr = function (focusTel) { setOpen(rrBtn, rrBox, true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); }, 60); };
+    // Telefon fokussieren und unter dem Sticky-Header bzw. über unteren Sticky-Leisten sichtbar halten.
+    var reveal = function (el) {
+      var box = (el.closest && el.closest('.kf-field')) || el, r = box.getBoundingClientRect();
+      var top = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76) + 16;
+      if (r.top < top || r.bottom > innerHeight - 96) window.scrollTo(0, Math.max(0, scrollY + r.top - top));
+    };
+    var openRr = function (focusTel) { showRr(true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); reveal(telIn); }, 60); };
     if (rrBtn && rrBox) {
       // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann Rückruf + optionale Angaben offen.
       var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { return (x.value || '').trim() !== ''; });
-      rrBtn.hidden = false; setOpen(rrBtn, rrBox, !!prefilled);
+      rrBtn.hidden = false; setOpen(rrBtn, rrBox, false);
+      // Prefill oder gültige Terminart-Vorauswahl öffnen ohne Fokus/Scroll; Kachelwahl ebenso (Wechsel lässt offen).
+      if (prefilled || radios.some(function (x) { return x.checked; })) showRr();
+      radios.forEach(function (r) { r.addEventListener('change', function () { showRr(true); }); });
       if (optBtn) { optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled); }
-      rrBtn.addEventListener('click', function () { setOpen(rrBtn, rrBox, rrBtn.getAttribute('aria-expanded') !== 'true'); });
-      if (optBtn) optBtn.addEventListener('click', function () { setOpen(optBtn, optBox, optBtn.getAttribute('aria-expanded') !== 'true'); });
-      // Anfrage-Anker dieser Karte (#offer-form, alte Kampagnenanker davor) öffnen den Rückruf-Bereich und fokussieren Telefon.
-      var anchors = ['#' + card.id]; var prev = card.previousElementSibling;
+      // Explizit öffnen: keine Terminart wählen; Fokus auf den Bereich (nicht Telefon → keine Tastatur), damit er nicht verloren geht.
+      rrBtn.addEventListener('click', function () { showRr(true); rrBox.focus({ preventScroll: true }); });
+      if (optBtn) optBtn.addEventListener('click', function () { var o = optBtn.getAttribute('aria-expanded') !== 'true'; setOpen(optBtn, optBox, o); if (o) animIn(optBox); });
+      [rrBox, optBox].forEach(function (b) { if (b) b.addEventListener('animationend', function () { b.classList.remove('kf-anim'); }); });
+      // Anfrage-Anker dieser Karte (#offer-form, Feldanker #kf-sg-hero-fields, alte Kampagnenanker davor) öffnen den Rückruf-Bereich und fokussieren Telefon.
+      var anchors = ['#' + card.id, '#' + rrBox.id]; var prev = card.previousElementSibling;
       while (prev && prev.classList.contains('kf-compat-anchor')) { anchors.push('#' + prev.id); prev = prev.previousElementSibling; }
       var isOurs = function (h) { return anchors.indexOf(h) >= 0; };
       document.addEventListener('click', function (e) {
