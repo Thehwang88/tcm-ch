@@ -89,6 +89,29 @@ export const clinicalLeadCopy = (lang: 'de' | 'en', ctx: ClinicalLeadContext): C
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** DE-Block als HTML-String (data-driven Template, Legacy-Leaves, Luzern/Bern). Styles: .cl-lead* in public/home.css. */
+/**
+ * Kompakte Kartenvariante für ein einheitliches Teamraster (St. Gallen, 15.10.2026): gleiche Daten und
+ * derselbe Marker (id="clinical-lead", data-clinical-lead) wie clinicalLeadHtml, aber als Karte statt
+ * eigener Sektion. Bewusst KEINE .tmc-Karte: lokale Teamkarten bleiben den kanonischen
+ * therapeuten[].standorte[]-Zuordnungen vorbehalten (Gate check-clinic-status 4h/4i).
+ */
+export const clinicalLeadCardHtml = (id: string): string => {
+  const ctx = clinicalLeadContext(id);
+  if (!ctx) return '';
+  const c = clinicalLeadCopy('de', ctx);
+  const sentences = c.text.split(/(?<=\.)\s+/);
+  const short = sentences[sentences.length - 1];
+  return (
+    `<div class="sg-lead-card reveal" id="clinical-lead" data-clinical-lead="${ctx.status}" aria-labelledby="cl-lead-h">` +
+    (c.img ? `<div class="sg-lead-photo"><img src="${c.img.src}" alt="${esc(c.img.alt)}" width="480" height="600" loading="lazy" decoding="async"></div>` : '') +
+    `<div class="sg-lead-body"><h3 id="cl-lead-h" class="sg-lead-label">${esc(c.label)}</h3>` +
+    `<div class="sg-lead-name">${esc(c.name)}</div><div class="sg-lead-role">${esc(c.role)}</div>` +
+    `<p class="sg-lead-text">${esc(short)}</p><p class="sg-lead-note">${esc(c.note)}</p>` +
+    `<a class="sg-lead-cta" href="${c.href}">${esc(c.cta)} <span aria-hidden="true">→</span></a>` +
+    `</div></div>`
+  );
+};
+
 export const clinicalLeadHtml = (id: string): string => {
   const ctx = clinicalLeadContext(id);
   if (!ctx) return '';
