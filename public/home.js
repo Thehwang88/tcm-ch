@@ -11,7 +11,7 @@ function openContactForm(prefillBeschwerde, prefillStandort){
   if(!t) return;
   if(prefillStandort){
     var sel = t.querySelector('select[name="standort"]');
-    if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===prefillStandort){ sel.selectedIndex=i; break; } } }
+    if(sel){ for(var i=0;i<sel.options.length;i++){ var _o=sel.options[i]; if(_o.value===prefillStandort||_o.getAttribute('data-id')===prefillStandort){ sel.selectedIndex=i; sel.dispatchEvent(new Event('change')); break; } } }
   }
   t.scrollIntoView({behavior:'smooth',block:'start'});
 }

@@ -19,6 +19,8 @@ Stand 12.10.2026 · Repo state 2b06a955 · **This document is not a deployment i
 
 ## B. Findings
 
+> **15.10.2026 (Draft-PR gemeinsames Kontaktformular):** T1 und T2 sind code-seitig für alle umgestellten Formulare behoben (Conversion nur nach `data.ok`, Honeypot ohne Versand/Event). Neue Event-Parameter `terminart`, `standort`; neues Event `onedoc_click`; `first30_*` entfällt. Details und GTM-Prüfpunkte: `docs/cro/08-kontaktformular-checkin.md`.
+
 ### T1 — `form_submit` fires before backend confirmation (TerminForm)
 - Current: `TerminForm.astro:208` pushes `form_submit` after client validation, then fetches `/api/anfrage` at `:233`. Failed Turnstile (403), validation (422) and server errors (500) are still counted.
 - Why it matters: if GTM maps `form_submit` to a GA4 key event or an Ads conversion, Ads optimises toward attempts, not received inquiries; error spikes look like conversion spikes.
