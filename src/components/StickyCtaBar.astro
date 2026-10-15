@@ -128,6 +128,38 @@ const TEL = `tel:+${site.whatsapp}`;
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
+    // Deutsche SG-Standortseite: Bar erst NACH der oberen Buchungsbox (deren tatsaechliches Ende, inkl. aufgeklappter
+    // Felder/Fehler), aus sobald unteres Formular (#kontakt) oder OneDoc (#online-buchen) im Bild sind, bei fokussierten
+    // Eingabefeldern bzw. offener Bildschirmtastatur. Verborgen = inert (nicht klick-/tabbar). Primaer → obere Box.
+    var sgBox = /^\/standorte\/st-gallen\/?$/.test(location.pathname) && document.querySelector('[data-kf-instance="sg-hero"]');
+    if (sgBox) {
+      if (primary) primary.setAttribute('href', '#offer-form');
+      var stops = [document.getElementById('kontakt'), document.getElementById('online-buchen')].filter(Boolean);
+      var typing = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select, [contenteditable="true"]')); };
+      var keyboard = function () { var vv = window.visualViewport; return !!(vv && vv.height < window.innerHeight * 0.75); };
+      var setVis = function (on) {
+        if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);
+        bar.inert = !on; if (on) bar.removeAttribute('aria-hidden'); else bar.setAttribute('aria-hidden', 'true');
+      };
+      var decide = function () {
+        var vh = window.innerHeight;
+        var past = sgBox.getBoundingClientRect().bottom <= 0;
+        var inStop = stops.some(function (e) { var r = e.getBoundingClientRect(); return r.top < vh && r.bottom > 0; });
+        setVis(past && !inStop && !typing() && !keyboard());
+      };
+      var raf = 0, sched = function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; decide(); }); };
+      setVis(false); decide();
+      if ('IntersectionObserver' in window) { var sio = new IntersectionObserver(sched, { threshold: [0, 1] }); sio.observe(sgBox); stops.forEach(function (e) { sio.observe(e); }); }
+      if ('ResizeObserver' in window) new ResizeObserver(sched).observe(sgBox);
+      window.addEventListener('scroll', sched, { passive: true });
+      window.addEventListener('resize', sched);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', sched);
+      document.addEventListener('focusin', sched);
+      document.addEventListener('focusout', function () { setTimeout(sched, 0); });
+      window.addEventListener('pageshow', sched); window.addEventListener('load', sched); window.addEventListener('hashchange', sched);
+      return;
+    }
+
     // Sichtbarkeits-Logik: Sticky-CTA nur zeigen, wenn der normale Primaer-CTA
     // der Seite NICHT sichtbar ist (keine doppelten CTAs). Beobachtet wird der
     // erste Primaer-CTA im Above-the-fold-Bereich; Fallback bleibt der sichtbare
