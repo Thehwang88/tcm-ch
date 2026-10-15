@@ -187,7 +187,11 @@ if (migrated) {
     const cards = therapeuten
       .filter((t) => t.standorte?.includes('st-gallen'))
       .map((t) => teamCardHtml(getPublicTherapistProfile(t)))
-      .join('');
+      .join('')
+      // Schmale Mobile-Karten: bedingte Trennstellen nur im sichtbaren Titel-/Namenstext (nicht in alt/aria-label),
+      // damit lange Wörter sauber mit Trennstrich statt mitten im Wort umbrechen.
+      .replace(/(<div class="tmc-(?:title|name)">)([^<]*)(<\/div>)/g, (_m, a: string, txt: string, b: string) =>
+        a + txt.replace(/Naturheilpraktikerin/g, 'Naturheil&shy;praktikerin').replace(/Lenggenhager/g, 'Lenggen&shy;hager') + b);
     if (!cards) throw new Error('st-gallen: keine Therapeut:innen mit standorte[] st-gallen in therapeuten.ts');
     // Ein einheitliches Teamraster: klinische Leitung (netzwerkweit, eigener Marker, keine .tmc-Karte) zuerst,
     // danach die lokalen Karten; die separate Clinical-Lead-Sektion entfällt für St. Gallen.

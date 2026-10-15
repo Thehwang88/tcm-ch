@@ -5768,7 +5768,28 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #team-st-gallen .sg-lead-card p{margin:8px 0 0!important;font-size:13.5px!important;line-height:1.45!important;color:#555}
 #team-st-gallen .sg-lead-card p.sg-lead-note{font-size:13px!important;color:#666}
 @media(max-width:1023px){#team-st-gallen .sg-team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
-@media(max-width:640px){#team-st-gallen .sg-team-grid{grid-template-columns:minmax(0,1fr);gap:14px}#team-st-gallen .sg-team-grid .tmc-photo,#team-st-gallen .sg-lead-photo{aspect-ratio:4/3}#team-st-gallen .sg-team-grid .tmc-img,#team-st-gallen .sg-lead-photo img{object-position:center 18%}#team-st-gallen .sg-team-grid .tmc-body,#team-st-gallen .sg-lead-body{padding:16px 16px 18px}}
+/* Mobile (≤ 640 px): Kim über die volle Breite, darunter Corinna und Astrid nebeneinander (HTML-Reihenfolge bleibt).
+   Kein Abschneiden: globale .tmc-Zeilenbegrenzungen/Auslassungspunkte hier aufgehoben; Texte brechen sauber um. */
+@media(max-width:640px){
+  #team-st-gallen .sg-team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #team-st-gallen .sg-lead-card{grid-column:1 / -1}
+  #team-st-gallen .sg-lead-photo{aspect-ratio:4/3}
+  #team-st-gallen .sg-lead-photo img{object-position:center 18%}
+  #team-st-gallen .sg-lead-body{padding:16px 16px 14px}
+  #team-st-gallen .sg-team-grid .tmc-photo{aspect-ratio:4/5}
+  #team-st-gallen .sg-team-grid .tmc-initials span{font-size:40px}
+  #team-st-gallen .sg-team-grid .tmc-body{padding:12px 12px 14px}
+  #team-st-gallen .sg-team-grid .tmc .tmc-title,#team-st-gallen .sg-team-grid .tmc .tmc-name,#team-st-gallen .sg-team-grid .tmc .tmc-focus{display:block!important;-webkit-line-clamp:none;overflow:visible;min-height:0;overflow-wrap:break-word}
+  #team-st-gallen .sg-team-grid .tmc .tmc-name{font-size:17px;hyphens:manual}
+  #team-st-gallen .sg-team-grid .tmc .tmc-loc{white-space:normal;overflow:visible;text-overflow:clip;align-items:flex-start}
+  #team-st-gallen .sg-team-grid .tmc .tmc-loc svg{margin-top:3px}
+  #team-st-gallen .sg-team-grid .tmc .tmc-badges{flex-wrap:wrap}
+  #team-st-gallen .sg-team-grid .tmc-cta,#team-st-gallen .sg-lead-cta:not(#w2):not(#w3){display:block;min-height:44px;padding-top:12px;line-height:1.35}
+  /* Pfeil nie allein in neue Zeile: Linktext bleibt einzeilig; passt «Profil ansehen →» (≈ 116 px) nicht, entfällt nur der dekorative Pfeil. */
+  #team-st-gallen .sg-team-grid .tmc-body{container-type:inline-size}
+  #team-st-gallen .sg-team-grid .tmc-cta{white-space:nowrap}
+}
+@container (max-width:119px){#team-st-gallen .sg-team-grid .tmc-cta > span[aria-hidden="true"]{display:none}}
 #page-standort .section.sg-weiterlesen{padding:8px 0 40px}
 #page-standort .sg-wl{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;border-top:1px solid var(--border);padding-top:18px;font-size:14px;line-height:1.5}
 #page-standort .sg-wl .sg-wl-label{font-family:var(--font-sans);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin:0 4px 0 0}

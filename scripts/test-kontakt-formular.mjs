@@ -533,7 +533,7 @@ for (const w of [320, 390, 768, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: w === 768 ? 1024 : undefined }));
   await pg.evaluate(async () => { document.querySelectorAll('#team-st-gallen img').forEach((i) => { i.loading = 'eager'; }); await Promise.all([...document.querySelectorAll('#team-st-gallen img')].map((i) => i.complete ? 0 : new Promise((r) => { i.onload = i.onerror = r; }))); });
   const T = await pg.evaluate(() => { const g = document.querySelector('#team-st-gallen .sg-team-grid'), cards = [...g.children], r = (e) => e.getBoundingClientRect();
-    const name = (c) => (c.querySelector('.tmc-name, .sg-lead-name') || {}).textContent;
+    const name = (c) => ((c.querySelector('.tmc-name, .sg-lead-name') || {}).textContent || '').replace(/\u00AD/g, '');
     const ph = cards.map((c) => c.querySelector('.tmc-photo, .sg-lead-photo')), img = cards.map((c) => c.querySelector('img'));
     const cs = cards.map((c) => getComputedStyle(c));
     return { names: cards.map(name).join('|'), lead: cards[0].matches('.sg-lead-card[data-clinical-lead="operational"]') && !cards[0].matches('.tmc') && cards.slice(1).every((c) => c.matches('a.tmc')),
@@ -545,12 +545,27 @@ for (const w of [320, 390, 768, 1440]) {
       hrefs: [cards[0].querySelector('.sg-lead-cta').getAttribute('href'), cards[1].getAttribute('href'), cards[2].getAttribute('href')].join('|'),
       ow: document.documentElement.scrollWidth > innerWidth || g.scrollWidth > g.clientWidth + 1 };
   });
-  const cols = w >= 1024 ? 3 : w > 640 ? 2 : 1;
+  const cols = w >= 1024 ? 3 : 2;
   ok(T.names === 'Seongsu Kim|Corinna Reinhart|Astrid Lenggenhager' && T.lead, `${w}px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc`);
-  ok(new Set(T.tops.slice(0, cols)).size === 1 && (cols === 3 || T.tops[cols] > T.tops[0]) && new Set(T.widths).size === 1 && !T.ow, `${w}px ${cols} Spalte(n), gleich breite Karten (${T.widths.join('/')}), kein Overflow/Slider`);
-  ok(T.photoTop && new Set(T.ratios).size === 1 && T.fit && T.astrid, `${w}px Porträt oben, einheitliches Format (${T.ratios[0]}, Bildhöhe ${T.ph[0]} px), cover; Astrid neutraler Platzhalter`);
+  if (w <= 640) {
+    ok(Math.abs(T.widths[0] - T.gw) <= 1 && T.tops[1] === T.tops[2] && T.tops[1] > T.tops[0] && T.widths[1] === T.widths[2] && T.widths[1] < T.gw / 2 && !T.ow, `${w}px Mobile: Kim volle Breite (${T.widths[0]} px), darunter Corinna + Astrid nebeneinander, gleich breit (${T.widths[1]} px), kein Overflow`);
+    ok(T.photoTop && T.ratios[0] === 1.33 && T.ratios[1] === T.ratios[2] && T.ratios[1] === 0.8 && T.fit && T.astrid, `${w}px Porträts oben, proportional (Kim ${T.ratios[0]}, Corinna/Astrid ${T.ratios[1]}), cover; Astrid neutraler Platzhalter`);
+    const clip = await pg.evaluate(() => [...document.querySelectorAll('#team-st-gallen .sg-team-grid *')].filter((e) => e.children.length === 0 && e.textContent.trim() && (e.scrollWidth > e.clientWidth + 1 || getComputedStyle(e).textOverflow === 'ellipsis' && getComputedStyle(e).overflow === 'hidden' || getComputedStyle(e).webkitLineClamp !== 'none' && getComputedStyle(e).webkitLineClamp !== '')).map((e) => e.className || e.tagName));
+    const fz = await pg.evaluate(() => { const g = (s) => parseFloat(getComputedStyle(document.querySelector('#team-st-gallen ' + s)).fontSize); return [g('.tmc .tmc-name'), g('.tmc .tmc-focus'), g('.tmc .tmc-title'), g('.tmc-cta')]; });
+    const ctas = await pg.evaluate(() => [...document.querySelectorAll('#team-st-gallen .tmc-cta, #team-st-gallen .sg-lead-cta')].map((a) => { const r = a.getBoundingClientRect(), c = a.closest('.tmc, .sg-lead-card').getBoundingClientRect(); return [Math.round(r.height), Math.round(c.bottom - r.bottom)]; }));
+    ok(clip.length === 0 && fz[0] >= 16 && fz[1] >= 12.5 && fz[2] >= 10.5 && fz[3] >= 13.5, `${w}px keine abgeschnittenen Texte/Auslassungspunkte (${clip.join(',') || 'keine'}); Schrift nicht unter Mobile-Standard (${fz.join('/')})`);
+    const cta = await pg.evaluate(() => [...document.querySelectorAll('#team-st-gallen .tmc-cta')].map((a) => { const r = a.getBoundingClientRect(), ar = a.querySelector('span[aria-hidden="true"]'), lh = parseFloat(getComputedStyle(a).lineHeight);
+      const rg = document.createRange(); rg.selectNodeContents(a); return { lines: new Set([...rg.getClientRects()].filter((x) => x.width > 0).map((x) => Math.round(x.top))).size, arrow: !!(ar && ar.getClientRects().length), fits: a.scrollWidth <= a.clientWidth + 1, txt: a.textContent.replace(/\s+/g, ' ').trim(), href: a.closest('a').getAttribute('href'), fs: parseFloat(getComputedStyle(a).fontSize) }; }));
+    ok(cta.every((c) => c.lines === 1 && c.fits && c.txt.startsWith('Profil ansehen') && c.fs >= 14) && cta.every((c) => c.arrow === (w >= 390)), `${w}px Profillink einzeilig, ${w >= 390 ? 'Pfeil sichtbar (passt)' : 'Pfeil ausgeblendet (passt nicht)'}, kein Umbruch, Schrift ≥ 14 px (${cta.map((c) => c.lines + 'Z/' + (c.arrow ? '→' : '–')).join(' ')})`);
+    await pg.focus('#team-st-gallen a.tmc'); ok(await pg.evaluate(() => { const a = document.activeElement; return a.matches('a.tmc[href^="/team/"]') && getComputedStyle(a).outlineStyle !== 'none'; }), `${w}px Profilkarte fokussierbar mit sichtbarem Fokus, Ziel /team/…`);
+    ok(ctas.every((c) => c[0] >= 44) && ctas[1][1] === ctas[2][1], `${w}px Profillinks ≥ 44 px hoch, bei Corinna/Astrid einheitlich unten platziert (${ctas.map((c) => c.join('@')).join(' ')})`);
+  } else {
+    ok(new Set(T.tops.slice(0, cols)).size === 1 && (cols === 3 || T.tops[cols] > T.tops[0]) && new Set(T.widths).size === 1 && !T.ow, `${w}px ${cols} Spalte(n), gleich breite Karten (${T.widths.join('/')}), kein Overflow/Slider`);
+    ok(T.photoTop && new Set(T.ratios).size === 1 && T.fit && T.astrid, `${w}px Porträt oben, einheitliches Format (${T.ratios[0]}, Bildhöhe ${T.ph[0]} px), cover; Astrid neutraler Platzhalter`);
+  }
   ok(new Set(T.border.split('|')).size === 1 && new Set(T.cta.map((c) => c.split(',').slice(0, 3).join())).size === 1 && new Set(T.cta.map((c) => c.split(',')[3])).size === 1, `${w}px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (${T.cta[0]})`);
   ok(/Klinische Leitung · TCM\.ch Netzwerk/.test(T.bodyTxt) && /Die Behandlung in St\. Gallen übernimmt das Praxisteam vor Ort; seine Rolle gilt netzwerkweit\./.test(T.bodyTxt) && !/St\. Gallen\s*EMR|tmc-loc/.test(T.bodyTxt) && T.hrefs === '/team/seongsu-kim/|/team/corinna-reinhart/|/team/astrid-lenggenhager/', `${w}px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten`);
+  if (w === 390) ok(await pg.evaluate(() => !document.querySelector('.sg-team-card') && !/Deine Therapeut:innen|Team ansehen/.test(document.body.innerText) && !!document.getElementById('team-st-gallen') && !!document.querySelector('.sg-kosten-card') && (() => { const k = document.querySelector('.sg-kosten-card').getBoundingClientRect(), n = document.querySelector('.sg-kosten-card').nextElementSibling.getBoundingClientRect(); return n.top - k.bottom <= 32; })()), 'separate Karte «Deine Therapeut:innen · Team ansehen» entfernt, ohne Leerfläche; #team-st-gallen bleibt');
   if (w === 1440) { ok(Math.abs(T.gw - T.wrap) <= 2 || T.gw <= T.wrap, `${w}px Sektion an der Inhaltsbreite (${T.gw}/${T.wrap})`);
     await pg.focus('#team-st-gallen .sg-lead-cta'); const seq = []; for (let k = 0; k < 2; k++) { await pg.keyboard.press('Tab'); seq.push(await pg.evaluate(() => document.activeElement.getAttribute('href'))); }
     ok(seq.join('|') === '/team/corinna-reinhart/|/team/astrid-lenggenhager/' && await pg.$eval('#team-st-gallen .sg-lead-cta', (a) => { a.focus(); const c = getComputedStyle(a); return c.outlineStyle !== 'none'; }), `Tastatur: Kim-Profil → Corinna → Astrid (${seq.join(' → ')}), sichtbarer Fokus`); }
