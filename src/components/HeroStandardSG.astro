@@ -1,13 +1,14 @@
 ---
 // Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne aus Commit 4adc79c8 (ohne die
 // Hinweise «Unverbindliche Anfrage…» und «Geöffnet: …», entfernt auf Inhaber-Wunsch; Öffnungszeiten stehen in «Über
-// die Praxis» und im Schema). Rechts: kompakte Karte (heroKompakt).
-// (HeroLaunchSG.astro, «fix(st-gallen): first-treatment bullet …», 12.10.2026). Rechte Hälfte (seit 15.10.2026):
-// gemeinsames Kontaktformular (src/lib/kontakt-form.ts) mit kostenlosem TCM-Check-in (SG freigegeben) und
-// «Ersttermin mit Behandlung» (OneDoc). Anker-Kompatibilität: #offer-form (Karte), #first30 (alte Kampagnenlinks).
-// Bestehende Identifier bleiben: quelle=launch-hero-sg, Formularname, Quelle/Seite-Felder (Messplan docs/cro/04).
+// die Praxis» und im Schema). Rechte Hälfte (seit 16.10.2026 wieder): ursprüngliches Praxisfoto aus 4adc79c8.
+// Darunter: die drei SG-USPs als kompakte Reihe und die Kontaktsektion mit der bisherigen Hero-Buchungsbox
+// (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante) und den kanonischen Praxisangaben
+// («Über die Praxis» aus dem Leaf, nicht dupliziert). Mobile: Box vor den Praxisangaben (= DOM-Reihenfolge).
+// Bestehende Identifier bleiben: quelle=launch-hero-sg, Formularname, Quelle/Seite-Felder (Messplan docs/cro/04),
+// Instanz sg-hero, Anker #offer-form (Karte), #first30 (alte Kampagnenlinks), #kf-sg-hero-fields.
 import { renderKontaktForm } from '../lib/kontakt-form';
-const { sitekey } = Astro.props;
+const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
   quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
@@ -32,19 +33,85 @@ const card = renderKontaktForm({
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
     </div>
-    <div class="hlsg-formcol" set:html={card} />
+    <figure class="lsr-right">
+      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
+      <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
+    </figure>
+  </div>
+</section>
+{uspHtml && <section class="sgu" aria-label="Darum TCM.ch St. Gallen"><div class="sgu-wrap" set:html={uspHtml} /></section>}
+<section class="sgk" id="sg-kontakt-praxis">
+  <div class="sgk-inner">
+    <div class="sgk-formcol" set:html={card} />
+    {praxisHtml && <div class="sgk-info" set:html={praxisHtml} />}
   </div>
 </section>
 
 <style is:global>
-  .hlsg .hlsg-formcol { display: flex; align-items: center; justify-content: center; min-width: 0;
-    padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 56px); }
-  .hlsg .hlsg-formcol .kf { width: 100%; max-width: 560px; box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .35); }
-  @media (min-width: 901px) {
-    .hlsg .lsr-left { align-self: start; position: sticky; top: calc(var(--header-h, 76px) + 24px); }
+  /* Hero: Höhe nach Inhalt (keine Vollbild-Mindesthöhe), Foto füllt die rechte Hälfte. */
+  .hlsg .lsr-inner, .hlsg.lsr-hero .lsr-inner { min-height: 0; }
+  @media (max-width: 900px) { .hlsg .lsr-right { height: 240px; } }
+
+  /* USP-Reihe: Desktop drei nebeneinander, Mobile kompakte Zeilen statt hoher Karten. */
+  .sgu { background: #fff; border-bottom: 1px solid var(--border); padding: 20px 16px; }
+  .sgu-wrap { max-width: var(--max, 1280px); margin: 0 auto; }
+  .sgu .usp-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: none; }
+  .sgu .usp-card { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; row-gap: 0; align-items: center; padding: 14px 16px; }
+  .sgu .usp-icon { grid-row: 1 / span 2; }
+  .sgu .usp-card:hover { transform: none; box-shadow: none; }
+  .sgu .usp-icon { flex-shrink: 0; width: 40px; height: 40px; margin: 0; }
+  .sgu .usp-title { margin: 0; }
+  .sgu .usp-sub { margin: 2px 0 0; }
+  @media (max-width: 760px) {
+    .sgu { padding: 8px 16px; }
+    .sgu .usp-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .sgu .usp-card { background: none; border: 0; border-radius: 0; padding: 10px 0; column-gap: 12px; row-gap: 0; }
+    .sgu .usp-card + .usp-card { border-top: 1px solid var(--border); }
+    .sgu .usp-icon { width: 32px; height: 32px; }
+    .sgu .usp-icon svg { width: 18px; height: 18px; }
   }
-  @media (max-width: 900px) {
-    .hlsg .lsr-inner { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-    .hlsg .hlsg-formcol { padding: 0 16px 32px; }
+
+  /* Kontaktsektion: Desktop Praxisangaben links, Buchungsbox rechts (oben bündig); darunter gestapelt, Box zuerst. */
+  .sgk { background: var(--surface); padding: clamp(24px, 4vw, 56px) 16px; }
+  .sgk-inner { max-width: var(--max, 1280px); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .sgk-formcol { min-width: 0; }
+  .sgk-formcol .kf { width: 100%; max-width: 560px; margin: 0 auto; box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .35); }
+  .sgk-info { min-width: 0; max-width: 720px; width: 100%; margin: 0 auto; }
+  .sgk-info .up-h2 { margin-top: 0; }
+  @media (min-width: 1024px) {
+    .sgk-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 520px); grid-template-areas: "info form"; gap: clamp(32px, 4vw, 64px); align-items: start; padding: 0 clamp(8px, 2vw, 40px); }
+    .sgk-info { grid-area: info; max-width: none; margin: 0; }
+    .sgk-formcol { grid-area: form; }
+    .sgk-formcol .kf { margin: 0; }
+    /* Nur per JS gesetzt, wenn die ganze Box ins Fenster passt und die Sektion Scrollstrecke bietet. */
+    .sgk-formcol.is-sticky { position: sticky; top: var(--sgk-top, 92px); }
   }
 </style>
+<script is:inline>
+  // Sticky-Box nur ab 1024 px, nur wenn die komplette Box (inkl. aufgeklappter Bereiche/Fehler) unter dem fixen Header
+  // ins Fenster passt und die Praxisspalte eine sinnvolle Scrollstrecke bietet; sonst normales Mitscrollen.
+  (function () {
+    var col = document.querySelector('.sgk-formcol'), info = document.querySelector('.sgk-info');
+    if (!col || !info || !window.matchMedia) return;
+    var mq = window.matchMedia('(min-width: 1024px)');
+    var headerH = function () {
+      var h = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76;
+      var nav = document.querySelector('nav');
+      if (nav && getComputedStyle(nav).position === 'fixed') h = Math.max(h, nav.getBoundingClientRect().bottom);
+      return h;
+    };
+    var update = function () {
+      var top = Math.round(headerH() + 16), box = col.querySelector('.kf');
+      var fits = box && box.offsetHeight <= window.innerHeight - top - 16;
+      var room = info.offsetHeight - col.offsetHeight >= 120;
+      var on = mq.matches && fits && room;
+      col.style.setProperty('--sgk-top', top + 'px');
+      col.classList.toggle('is-sticky', !!on);
+    };
+    update();
+    window.addEventListener('resize', update);
+    if (mq.addEventListener) mq.addEventListener('change', update);
+    if (window.ResizeObserver) { var ro = new ResizeObserver(update); ro.observe(col); ro.observe(info); }
+    window.addEventListener('load', update);
+  })();
+</script>

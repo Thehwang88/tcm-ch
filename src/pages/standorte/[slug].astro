@@ -91,6 +91,7 @@ let title: string;
 let description: string;
 let schema: object;
 let spaBody = '';
+let sgUspHtml = '', sgPraxisHtml = '';
 
 if (migrated) {
   // ── Data-driven branch ──────────────────────────────────────────────
@@ -292,11 +293,12 @@ if (migrated) {
       extra: { wunschzeit: true, compatAnchors: ['first30-kontakt'], onedocBeideTerminarten: true } });
     if ((sgBody.match(/data-kf-instance="sg-unten"/g) || []).length !== 1 || /<form class="inline-form"/.test(sgBody))
       throw new Error('st-gallen: untere Kontaktkarte nicht eindeutig auf das gemeinsame Formular umgestellt - Leaf geändert?');
-    // FIRST 30 Hero hat keine Fotohälfte mehr: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
+    // FIRST 30 Hero hat keine Fotohälfte: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
+    // Regulärer Hero (HeroStandardSG) zeigt das Foto selbst → hier nicht wiederholen.
     const uh = '<h2 class="up-h2">Über die Praxis</h2>';
     const ui = sgBody.indexOf(uh);
     if (ui < 0) throw new Error('st-gallen: Über-die-Praxis-Marker für das Praxisfoto nicht gefunden - Leaf geändert?');
-    sgBody = sgBody.slice(0, ui + uh.length) + '<figure class="up-photo"><img src="/images/standort-stgallen.jpg" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>' + sgBody.slice(ui + uh.length);
+    if (first30.showCampaign) sgBody = sgBody.slice(0, ui + uh.length) + '<figure class="up-photo"><img src="/images/standort-stgallen.jpg" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>' + sgBody.slice(ui + uh.length);
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
     if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
@@ -314,6 +316,25 @@ if (migrated) {
     // OneDoc direkt nach dem Formular, danach nur noch der kompakte Weiterlesen-Bereich (15.10.2026:
     // Beschwerden-Chips und Haut-Block entfallen, Körpersignale als Textlinks statt Grosssektion).
     sgBody = sgBody.slice(0, ke + 10) + onedocSection + sgWeiterlesenHtml + sgBody.slice(ke + 10);
+    // Regulärer Hero (16.10.2026): USP-Reihe und «Über die Praxis» werden aus dem Leaf VERSCHOBEN (nicht kopiert) und von
+    // HeroStandardSG direkt unter dem Hero gerendert: USPs kompakt, Praxisangaben neben der Buchungsbox.
+    // Die USP-CTA-Wiederholung (#offer-form / #online-buchen) entfällt, die Box folgt unmittelbar.
+    if (!first30.showCampaign) {
+      const us0 = sgBody.indexOf('<section class="usp-grid-section"');
+      const us1 = us0 >= 0 ? sgBody.indexOf('</section>', us0) + 10 : -1;
+      const usSec = us0 >= 0 ? sgBody.slice(us0, us1) : '';
+      const ug = usSec.indexOf('<div class="usp-grid">');
+      if (ug < 0 || (usSec.match(/class="usp-card"/g) || []).length !== 3 || !usSec.includes('class="sg-cta-repeat"'))
+        throw new Error('st-gallen: USP-Sektion (3 Karten + CTA-Wiederholung) nicht gefunden - Leaf geändert?');
+      sgUspHtml = usSec.slice(ug, endOfDiv(usSec, ug));
+      sgBody = sgBody.slice(0, us0) + sgBody.slice(us1);
+      const up0 = sgBody.indexOf('<section class="up-sec"><div class="up-wrap">');
+      const up1 = up0 >= 0 ? sgBody.indexOf('</div></section>', up0) : -1;
+      if (up1 < 0 || !sgBody.slice(up0, up1).includes(uh) || /<section/.test(sgBody.slice(up0 + 8, up1)))
+        throw new Error('st-gallen: Über-die-Praxis-Sektion nicht eindeutig gefunden - Leaf geändert?');
+      sgPraxisHtml = sgBody.slice(up0 + '<section class="up-sec"><div class="up-wrap">'.length, up1);
+      sgBody = sgBody.slice(0, up0) + sgBody.slice(up1 + '</div></section>'.length);
+    }
   }
   // Andere Legacy-Leaves (Bottighofen): Block vor dem Kontaktformular, sonst vor den Beschwerden-Links.
   const km = filledBody.indexOf('<section id="kontakt" class="section contact-section-inline"');
@@ -463,6 +484,6 @@ const waTermin = migrated ? waHref(data.nap.telefon, data.review
   </SpaPage>
 ) : (
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
-    {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} />)}
+    {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} uspHtml={sgUspHtml} praxisHtml={sgPraxisHtml} />)}
   </SpaPage>
 )}

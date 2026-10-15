@@ -12,7 +12,7 @@ let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  
 // gtag-Stub wie das echte gtag.js-Snippet: legt Argumente in den dataLayer UND protokolliert jeden Aufruf.
 // So wird ein zweiter Versandweg sichtbar, auch wenn er nicht als {event} im dataLayer landet.
 const GTAG_STUB = `window.dataLayer = window.dataLayer || []; window.__gtagCalls = []; window.gtag = function () { window.__gtagCalls.push([].slice.call(arguments)); window.dataLayer.push(arguments); };`;
-async function open(u, { status = 200, body = { ok: true }, width = 390, referer, gtag = false, mutate, js = true } = {}) {
+async function open(u, { status = 200, body = { ok: true }, width = 390, height, referer, gtag = false, mutate, js = true } = {}) {
   const pg = await br.newPage(); const calls = [];
   if (gtag) await pg.evaluateOnNewDocument(GTAG_STUB);
   await pg.setRequestInterception(true);
@@ -21,7 +21,7 @@ async function open(u, { status = 200, body = { ok: true }, width = 390, referer
     if (mutate && r.url().split('?')[0].split('#')[0] === origin + u.split('?')[0].split('#')[0]) return r.respond({ status: 200, contentType: 'text/html', body: mutate(fs.readFileSync(path.join(dist, u.split('?')[0].split('#')[0], 'index.html'), 'utf8')) });
     if (r.url().startsWith(origin)) return r.continue(); return r.abort();
   });
-  await pg.setViewport({ width, height: width < 500 ? 844 : 900, isMobile: width < 500, hasTouch: width < 500 });
+  await pg.setViewport({ width, height: height || (width < 500 ? 844 : 900), isMobile: width < 500, hasTouch: width < 500 });
   if (!js) await pg.setJavaScriptEnabled(false);
   if (referer) await pg.setExtraHTTPHeaders({ referer });
   await pg.goto(origin + u, { waitUntil: 'load', referer });
@@ -493,5 +493,74 @@ for (const g of [true, false]) {
   await pg.close();
 }
 
+
+console.log('N. SG: Hero mit Praxisfoto, USP-Reihe, Kontaktsektion (Buchungsbox + Praxisangaben), Sticky');
+{
+  const sgHtml = fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8');
+  const ids = [...sgHtml.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = [...new Set(ids.filter((x, k) => ids.indexOf(x) !== k))];
+  ok(dup.length === 0, `SG: keine doppelten IDs (${dup.join(',') || '–'})`);
+  ok((sgHtml.match(/data-kf-instance="/g) || []).length === 2 && /data-kf-instance="sg-hero"/.test(sgHtml) && /data-kf-instance="sg-unten"/.test(sgHtml), 'SG: genau zwei Formularinstanzen (sg-hero, sg-unten)');
+  ok((sgHtml.match(/standort-stgallen\.jpg/g) || []).length === 1 && (sgHtml.match(/Über die Praxis/g) || []).length === 1 && (sgHtml.match(/class="usp-grid-section"|class="sg-cta-repeat"/g) || []).length === 0, 'SG: Praxisfoto nur im Hero, «Über die Praxis» nur einmal, alter USP-Block + CTA-Wiederholung entfernt');
+}
+const layout = (pg) => pg.evaluate(() => { const r = (s) => { const e = document.querySelector(s); if (!e) return null; const b = e.getBoundingClientRect(); return { t: Math.round(b.top + scrollY), b: Math.round(b.bottom + scrollY), l: Math.round(b.left), r: Math.round(b.right), h: Math.round(b.height) }; };
+  const hero = document.querySelector('.lsr-hero.hlsg'), sgu = document.querySelector('.sgu'), sgk = document.querySelector('#sg-kontakt-praxis'), card = document.querySelector('[data-kf-instance="sg-hero"]'), info = document.querySelector('.sgk-info');
+  const seq = hero && hero.nextElementSibling === sgu && sgu.nextElementSibling === sgk && sgk.contains(card) && sgk.contains(info) && (card.compareDocumentPosition(info) & 4);
+  const t = info.textContent; const has = ['Oberer Graben 22, 9000 St. Gallen', 'Mo – Sa 07:30-19:30', 'So 08:00-17:00', '+41 77 523 61 22', 'termine@tcm.ch', 'Bewertungen auf Google ansehen', 'Anreise & Parkieren', 'Mehr zu Akupunktur & TCM in St. Gallen', 'Erfahrungen & Ablauf'].every((x) => t.includes(x));
+  const links = ['a[href^="https://www.google.com/maps/search"]', 'a[href="tel:+41775236122"]', 'a[href="mailto:termine@tcm.ch"]', 'iframe[src*="google.com/maps"]', 'a[href^="https://www.google.com/maps/place"]', 'details.up-transit-acc', 'a[href="/akupunktur-tcm-st-gallen/"]', 'a[href="/wissen/tcm-st-gallen-erfahrungen-ablauf/"]'].every((s) => info.querySelector(s));
+  return { hero: r('.lsr-hero.hlsg'), img: !!hero.querySelector('figure.lsr-right img[src="/images/standort-stgallen.jpg"]') && !hero.querySelector('form'), usp: document.querySelectorAll('.sgu .usp-card').length, uspCards: [...document.querySelectorAll('.sgu .usp-card')].map((c) => { const b = c.getBoundingClientRect(); return [Math.round(b.top), Math.round(b.height)]; }),
+    card: r('[data-kf-instance="sg-hero"]'), info: r('.sgk-info'), h2: r('.sgk-info .up-h2'), sgk: r('#sg-kontakt-praxis'), seq: !!seq, has, links, ow: document.documentElement.scrollWidth > innerWidth, pos: getComputedStyle(document.querySelector('.sgk-formcol')).position, ih: innerHeight }; });
+for (const w of [320, 390, 768, 1440]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: w === 768 ? 1024 : undefined })); await new Promise((r) => setTimeout(r, 200));
+  const L = await layout(pg);
+  ok(L.seq && L.img && L.usp === 3 && L.has && L.links && !L.ow, `${w}px Reihenfolge Hero (Foto, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow`);
+  if (w >= 1024) {
+    ok(L.uspCards.every((c) => c[0] === L.uspCards[0][0]) && L.uspCards.every((c) => c[1] <= 90), `${w}px USPs nebeneinander, kompakt (${L.uspCards.map((c) => c[1]).join('/')} px)`);
+    ok(L.info.r <= L.card.l && Math.abs(L.info.t - L.card.t) <= 2, `${w}px Praxisangaben links, Box rechts, oben bündig (${L.info.t}/${L.card.t})`);
+    ok(L.hero.h <= 700, `${w}px Hero kompakt (${L.hero.h} px, keine Vollbildhöhe)`);
+  } else {
+    const uh = await pg.$eval('.sgu', (e) => Math.round(e.getBoundingClientRect().height));
+    ok(uh <= 240, `${w}px USPs kompakt (${uh} px gesamt, keine hohen Karten)`);
+    ok(L.card.b <= L.info.t && L.pos !== 'sticky', `${w}px Box vor Praxisangaben und Karte, kein Sticky (Box ${L.card.t}–${L.card.b}, Praxis ab ${L.info.t})`);
+  }
+  // Zustände: initial, beide Kacheln, optionale Angaben, Validierungsfehler → kein Overflow, Aktionen nicht verdeckt
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; });
+  const covered = () => pg.evaluate((H) => ['[data-kf-onedoc]', '[data-kf-submit]', '[data-kf-tel]', '[name=telefon]', '[data-kf-opt]'].map((s) => { const t = document.querySelector(H + ' ' + s); if (!t || !(t.offsetWidth || t.offsetHeight)) return [s, true]; t.scrollIntoView({ block: 'center' }); const b = t.getBoundingClientRect(); const h = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2); return [s, h === t || t.contains(h)]; }).filter((x) => !x[1]).map((x) => x[0]), H);
+  let cv = await covered(); ok(!cv.length, `${w}px initial: Aktionen sichtbar (${cv.join(',') || 'ok'})`);
+  for (const t of ['checkin', 'behandlung']) { await pick(pg, 'sg-hero', t); cv = await covered(); ok(!cv.length && !(await layout(pg)).ow, `${w}px ${t} gewählt: kein Overflow, Aktionen sichtbar (${cv.join(',') || 'ok'})`); }
+  await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); cv = await covered(); ok(!cv.length && !(await layout(pg)).ow, `${w}px optionale Angaben offen: kein Overflow, Aktionen sichtbar`);
+  await submit(pg, 'sg-hero'); cv = await covered();
+  ok(calls.length === 0 && await pg.$eval('#kf-sg-hero-tel', (i) => document.activeElement === i && i.getAttribute('aria-invalid') === 'true') && !cv.length && !(await layout(pg)).ow, `${w}px Validierungsfehler: kein Versand, Fokus Telefon, Aktionen sichtbar`);
+  await pg.close();
+}
+// Sticky (≥1024): nur wenn die ganze Box ins Fenster passt und Scrollstrecke da ist; endet in der Sektion; schaltet nach Aufklappen ab.
+const stickyState = (pg) => pg.evaluate(() => { const col = document.querySelector('.sgk-formcol'), box = col.querySelector('.kf'), info = document.querySelector('.sgk-info');
+  const top = parseFloat(col.style.getPropertyValue('--sgk-top')) || 0; const fits = box.offsetHeight <= innerHeight - top - 16; const room = info.offsetHeight - col.offsetHeight >= 120;
+  return { on: col.classList.contains('is-sticky'), pos: getComputedStyle(col).position, fits, room, top, boxH: box.offsetHeight, hdr: (() => { const n = document.querySelector('nav'); return n && getComputedStyle(n).position === 'fixed' ? Math.round(n.getBoundingClientRect().bottom) : 0; })() }; });
+for (const [w, h] of [[1440, 700], [1440, 900], [1440, 1300], [1280, 1400]]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: h })); await new Promise((r) => setTimeout(r, 300));
+  let s0 = await stickyState(pg);
+  ok(s0.on === (s0.fits && s0.room) && (s0.on ? s0.pos === 'sticky' : s0.pos !== 'sticky'), `${w}×${h} Ausgangszustand: Sticky ${s0.on ? 'an' : 'aus'} (Box ${s0.boxH} px, passt ${s0.fits}, Strecke ${s0.room})`);
+  // Mehr Scrollstrecke: «Anreise & Parkieren» öffnen (Praxisspalte wächst) → Sticky nur, wenn die Box passt.
+  await pg.$eval('.sgk-info details.up-transit-acc', (d) => { d.open = true; }); await new Promise((r) => setTimeout(r, 300));
+  s0 = await stickyState(pg);
+  ok(s0.on === (s0.fits && s0.room) && (s0.on ? s0.pos === 'sticky' : s0.pos !== 'sticky') && s0.top >= s0.hdr + 8, `${w}×${h} Anreise offen: Sticky ${s0.on ? 'an' : 'aus'} (Box ${s0.boxH} px, passt ${s0.fits}, Strecke ${s0.room}, top ${s0.top} ≥ Header ${s0.hdr})`);
+  if (s0.on) {
+    const r = await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; const sec = document.querySelector('#sg-kontakt-praxis'), info = document.querySelector('.sgk-info'); scrollTo(0, info.getBoundingClientRect().top + scrollY + 200); const c = document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect();
+      const a = { top: Math.round(c.top), bottom: Math.round(c.bottom) }; scrollTo(0, sec.getBoundingClientRect().bottom + scrollY); const c2 = document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect(); return { ...a, endOk: c2.bottom <= sec.getBoundingClientRect().bottom + 1, ih: innerHeight }; });
+    ok(Math.abs(r.top - s0.top) <= 1 && r.bottom <= r.ih && r.endOk, `${w}×${h}: Box haftet unter dem Header (top ${r.top}), komplett sichtbar, endet mit der Sektion`);
+    await pg.evaluate(() => scrollTo(0, 0)); await pick(pg, 'sg-hero', 'checkin'); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 300));
+    const s1 = await stickyState(pg); ok(s1.on === (s1.fits && s1.room) && (!s1.on || s1.boxH <= h - s1.top - 16), `${w}×${h}: nach Auswahl + optionalen Angaben (Box ${s1.boxH} px) Sticky ${s1.on ? 'an (passt)' : 'aus (scrollt normal)'}`);
+  }
+  ok(calls.length === 0 && await noApp(pg), `${w}×${h}: Layout/Sticky ohne Versand oder Event`);
+  await pg.close();
+}
+// Hero-CTAs + Anker zur verschobenen Box
+({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
+ok(await pg.evaluate(() => { const a = [...document.querySelectorAll('.lsr-left a')].map((x) => x.getAttribute('href')); return a.includes('#offer-form') && a.includes('#online-buchen') && !!document.getElementById('online-buchen') && !!document.querySelector('#online-buchen iframe, #online-buchen [data-onedoc], #online-buchen a[href*="onedoc"]'); }), 'Hero-CTAs: «Ersttermin anfragen» → #offer-form, «Termin direkt online buchen» → OneDoc-Widget #online-buchen');
+await pg.focus(`${H} [data-kf-tel]`); await pg.keyboard.press('Tab');
+ok(await pg.evaluate(() => { const a = document.activeElement; const i = document.querySelector('.sgk-info'); return i.contains(a) && a === i.querySelector('a, button, summary, iframe'); }), 'Tastatur: nach «Lieber anrufen?» (letzte Aktion der Box) folgt der erste Link der Praxisangaben');
+await pg.focus('.lsr-tert a[href^="https://wa.me"]'); await pg.keyboard.press('Tab');
+ok(await pg.evaluate(() => { const a = document.activeElement; return !!a.closest('.sgu, #sg-kontakt-praxis'); }), 'Tastatur: nach dem Hero folgt die Kontaktsektion (keine versteckten Ziele dazwischen)');
+await pg.close();
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);
