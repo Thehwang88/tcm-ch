@@ -90,7 +90,8 @@ ok(/name="f30b_wahl" value="ERSTTERMIN_REGULAER_SG"[^>]*checked/.test(bottom) &&
 ok(/name="angebot_id" value="ERSTTERMIN_REGULAER_SG"/.test(bottom) && /name="quelle" value="sg-kontakt-bottom"/.test(bottom) && /name="wunschzeit"/.test(bottom), 'unteres Formular: hidden angebot_id regulär, quelle sg-kontakt-bottom, Wunschzeit');
 ok(sg.indexOf('data-f30-bottom') < sg.indexOf('class="inline-form-card"') && sg.indexOf('<fieldset class="f30b"') > sg.indexOf('id="kontakt"'), 'Wähler steht ÜBER der Formularkarte innerhalb #kontakt');
 ok(/id="online-buchen"/.test(sg) && /onedoc\.ch\/de\/widget/.test(sg), 'OneDoc-Widget (reguläre Buchung) vorhanden');
-ok((sg.match(/data-offer="first30"/g) ?? []).length >= 4, 'FIRST-30-CTAs (Leaf, Desktop-Pill) mit data-offer; regulärer Weg über OneDoc-Link + unteren Wähler');
+// 3 statt 4 seit 15.10.2026: der Ablauf-Block samt wiederholtem FIRST-30-CTA wurde durch die FAQ vor #kontakt ersetzt.
+ok((sg.match(/data-offer="first30"/g) ?? []).length >= 3, 'FIRST-30-CTAs (Leaf, Desktop-Pill) mit data-offer; regulärer Weg über OneDoc-Link + unteren Wähler');
 
 console.log('4. Scope + WhatsApp');
 const pages = []; const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && pages.push(p); } }; walk('dist');
