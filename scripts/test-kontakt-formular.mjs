@@ -74,7 +74,7 @@ ok(await pg.$eval(`${card('sg-unten')} [data-kf-submit]`, (b) => b.textContent.t
 await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
 let od = await ev(pg, 'onedoc_click'), ph;
 ok(od.length === 1 && od[0].standort === 'st-gallen' && od[0].form_instance === 'sg-hero' && (await ev(pg, 'formular_senden')).length === 0, 'onedoc_click (obere Box) genau 1×, Standort-ID, keine Conversion');
-ok(await pg.evaluate(() => !document.querySelector('[data-kf-instance^="sg-"] [data-kf-tel], [data-kf-instance^="sg-"] .kf-call') && !!document.querySelector('.lsr-tert a[href="tel:+41775236122"]') && !!document.querySelector('.sgk-info a[href="tel:+41775236122"]')), 'SG-Formulare ohne «Lieber anrufen?»; Telefon tel:+41775236122 im Hero und bei den Praxisangaben');
+ok(await pg.evaluate(() => !document.querySelector('[data-kf-instance^="sg-"] .kf-call, [data-kf-instance="sg-unten"] [data-kf-tel]') && document.querySelectorAll('[data-kf-instance="sg-hero"] [data-kf-tel]').length === 1 && !!document.querySelector('[data-kf-instance="sg-hero"] .kf-alt [data-kf-tel]') && !!document.querySelector('.lsr-tert a[href="tel:+41775236122"]') && !!document.querySelector('.sgk-info a[href="tel:+41775236122"]')), 'SG-Formulare ohne «Lieber anrufen?»-Block (oben nur Textlink «Anrufen»); Telefon tel:+41775236122 im Hero und bei den Praxisangaben');
 { const p2 = await open('/', { width: 1440 }); await p2.pg.$eval(`${card('home')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); }); ph = await ev(p2.pg, 'phone_click');
   ok(ph.length === 1 && ph[0].quelle === 'kontaktformular' && ph[0].form_instance === 'home', 'phone_click (Formular mit Anrufbereich, Startseite) unverändert getrackt'); await p2.pg.close(); }
 for (const [n, v] of [['telefon', '079 123 45 67'], ['name', 'Test Person'], ['email', 'test@beispiel.ch'], ['anliegen', 'Rücken'], ['wunschzeit', 'Do Nachmittag']]) await type(pg, 'sg-unten', n, v);
@@ -237,7 +237,7 @@ const orderOk = (pg, i) => pg.evaluate((C) => { const c = document.querySelector
   return els.every((e, k) => k === 0 || (els[k - 1].compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING && e.getBoundingClientRect().top >= els[k - 1].getBoundingClientRect().bottom - 1)); }, card(i));
 /** Innerhalb der Karte ist höchstens der Anfrage-Button neongrün gefüllt. */
 /** Formular endet nach OneDoc: kein Anrufbereich, letztes sichtbares Element der Karte ist der OneDoc-Bereich. */
-const endsAfterOd = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), f = c.querySelector('form'); return !c.querySelector('.kf-call, [data-kf-tel]') && f.lastElementChild.matches('.kf-onedoc') && c.lastElementChild.tagName === 'SCRIPT' && c.lastElementChild.previousElementSibling === f; }, card(i));
+const endsAfterOd = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), f = c.querySelector('form'); return !c.querySelector('.kf-call') && [...c.querySelectorAll('[data-kf-tel]')].every((t) => t.closest('.kf-onedoc .kf-alt')) && f.lastElementChild.matches('.kf-onedoc') && c.lastElementChild.tagName === 'SCRIPT' && c.lastElementChild.previousElementSibling === f; }, card(i));
 const neonOnlySubmit = (pg, i) => pg.evaluate((C) => [...document.querySelectorAll(C + ' a, ' + C + ' button')].filter((e) => (e.offsetWidth || e.offsetHeight) && getComputedStyle(e).backgroundColor === 'rgb(26, 226, 136)').every((e) => e.hasAttribute('data-kf-submit')), card(i));
 console.log('L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)');
 for (const w of [390, 1440]) {
@@ -296,7 +296,7 @@ const st = (pg) => pg.evaluate((H) => { const c = document.querySelector(H); con
   const rr = c.querySelector('[data-kf-rr]'), opt = c.querySelector('[data-kf-opt]'), fs = c.querySelector('.kf-fields');
   return { rr: vis(fs) && !fs.hidden ? 'true' : 'false', rrBtn: !!rr, rrVis: vis(rr), fields: vis(c.querySelector('.kf-fields')), tel: vis(c.querySelector('[name=telefon]')),
     opt: opt.getAttribute('aria-expanded'), optCtl: opt.getAttribute('aria-controls'), name: vis(c.querySelector('[name=name]')), checked: (c.querySelector('input[name=terminart]:checked') || {}).value || '',
-    submit: c.querySelector('[data-kf-submit]').textContent.trim(), od: vis(c.querySelector('[data-kf-onedoc]')), call: vis(c.querySelector('[data-kf-tel]')), ort: !!c.querySelector('.kf-ort'), active: document.activeElement && (document.activeElement.id || document.activeElement.tagName) }; }, H);
+    submit: c.querySelector('[data-kf-submit]').textContent.trim(), od: vis(c.querySelector('[data-kf-onedoc]')), call: vis(c.querySelector('.kf-call')), ort: !!c.querySelector('.kf-ort'), active: document.activeElement && (document.activeElement.id || document.activeElement.tagName) }; }, H);
 /** Fokus nicht in ein Eingabefeld/den Bereich verschoben (native Radio-Fokussierung durch die Kachel ist erlaubt). */
 const noField = (a) => !/^kf-sg-hero-(tel|name|email|anliegen|wunschzeit|fields)$/.test(a) && !/INPUT|TEXTAREA/.test(a);
 const pos = (pg) => pg.evaluate(() => ({ y: Math.round(scrollY), a: document.activeElement && (document.activeElement.id || document.activeElement.tagName) }));
@@ -498,6 +498,36 @@ for (const w of [390, 1440]) {
   await pgl.close();
 }
 
+console.log('O. SG obere Box: Kontakt-Textlinks «Anrufen · WhatsApp» unter OneDoc');
+for (const w of [320, 390, 1440]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
+  const A = () => pg.evaluate((H) => { const c = document.querySelector(H), alt = c.querySelector('.kf-alt'), [tel, wa] = alt ? [...alt.querySelectorAll('a')] : [], sep = alt && alt.querySelector('.kf-alt-sep');
+    const r = (e) => e.getBoundingClientRect(), sub = c.querySelector('[data-kf-submit]'), od = c.querySelector('[data-kf-onedoc]'), hint = c.querySelector('.kf-onedoc .kf-hint');
+    const cs = (e) => getComputedStyle(e);
+    return { sep: c.querySelector('.kf-od-sep').textContent.trim(), n: alt ? alt.querySelectorAll('a').length : 0, tel: tel && tel.getAttribute('href'), telTxt: tel && tel.textContent.trim(), wa: wa && wa.getAttribute('href'), waTxt: wa && wa.textContent.trim(), dot: sep && sep.getAttribute('aria-hidden') === 'true' && sep.textContent.trim() === '·',
+      order: r(sub).bottom <= r(od).top && r(od).bottom <= r(hint).top + 1 && r(hint).bottom <= r(alt).top + 1, same: Math.abs(r(tel).top - r(wa).top) < 2, h: [r(tel).height, r(wa).height], vis: !!(tel.offsetHeight && wa.offsetHeight),
+      neon: cs(sub).backgroundColor === 'rgb(26, 226, 136)' && cs(od).backgroundColor === 'rgb(255, 255, 255)' && cs(tel).backgroundColor === 'rgba(0, 0, 0, 0)' && cs(wa).backgroundColor === 'rgba(0, 0, 0, 0)' && cs(alt).borderTopStyle === 'none' && cs(alt).backgroundColor === 'rgba(0, 0, 0, 0)',
+      fs: parseFloat(cs(tel).fontSize), ow: document.documentElement.scrollWidth > innerWidth, unten: !document.querySelector('[data-kf-instance="sg-unten"] .kf-alt, [data-kf-instance="sg-unten"] .kf-od-sep') }; }, H);
+  let a = await A();
+  ok(a.sep === 'Oder direkt Kontakt aufnehmen' && a.n === 2 && a.tel === 'tel:+41775236122' && a.telTxt === 'Anrufen' && a.wa === 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.' && a.waTxt === 'WhatsApp' && a.dot && a.unten,
+    `${w}px «Oder direkt Kontakt aufnehmen»; Textlinks «Anrufen» (tel:+41775236122) · «WhatsApp» (kanonisches SG-Ziel + Text), Punkt dekorativ; unten ohne Alternativbereich`);
+  ok(a.order && a.neon && a.vis && !a.ow && a.fs >= 14, `${w}px Hierarchie: neongrüner Anfrage-Button → umrandeter OneDoc-Button → «Direkt bei OneDoc.» → kleine Textlinks (ohne Hintergrund/Linie), kein Overflow`);
+  ok(a.same && a.h.every((x) => x >= 44), `${w}px Links nebeneinander, Touchfläche ≥ 44 px (${a.h.join('/')})`);
+  await pg.focus(`${H} .kf-alt a`); ok(await pg.$eval(`${H} .kf-alt a`, (e) => { const c = getComputedStyle(e); return c.outlineStyle !== 'none' && parseFloat(c.outlineWidth) >= 2; }), `${w}px sichtbarer Tastaturfokus auf den Textlinks`);
+  for (const t of ['behandlung', 'checkin']) { await pick(pg, 'sg-hero', t); a = await A(); ok(a.vis && a.n === 2, `${w}px Links auch nach Wahl «${t}» sichtbar`); }
+  // Tracking: je Klick genau ein Event, keine Conversion, keine Personendaten
+  await pg.evaluate(() => { window.dataLayer = window.dataLayer.filter((e) => !(e && e.event && !/^gtm\./.test(e.event))); });
+  await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67');
+  await pg.$eval(`${H} .kf-alt [data-kf-tel]`, (x) => { x.addEventListener('click', (e) => e.preventDefault(), { once: true }); x.click(); });
+  let evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(evs.length === 1 && evs[0].event === 'phone_click' && evs[0].quelle === 'kontaktformular' && evs[0].form_instance === 'sg-hero' && evs[0].standort === 'st-gallen' && Object.keys(evs[0]).sort().join() === 'event,form_instance,quelle,standort', `${w}px «Anrufen»: genau 1 phone_click (quelle kontaktformular, sg-hero, st-gallen), keine Personendaten`);
+  await pg.$eval(`${H} .kf-alt a[href^="https://wa.me"]`, (x) => { x.addEventListener('click', (e) => e.preventDefault(), { once: true }); x.click(); });
+  evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(evs.length === 2 && evs[1].event === 'wa_click' && evs[1].quelle === 'form' && evs[1].prefilled === false && Object.keys(evs[1]).sort().join() === 'event,prefilled,quelle', `${w}px «WhatsApp»: genau 1 wa_click (bestehende Konvention, quelle form), keine Personendaten`);
+  ok(calls.length === 0 && total(await sends(pg, 'formular_senden')) === 0 && await pg.$eval('#kf-sg-hero-tel', (i) => i.value === '+41 79 123 45 67'), `${w}px Kontaktlinks: kein Versand, keine Conversion, Eingaben erhalten`);
+  await pg.close();
+}
+
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
 for (const g of [true, false]) {
   ({ pg, calls } = await open('/kontakt/', { gtag: g }));
@@ -593,8 +623,10 @@ for (const [w, h] of [[1440, 700], [1440, 900], [1440, 1300], [1280, 1400]]) {
 // Hero-CTAs + Anker zur verschobenen Box
 ({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
 ok(await pg.evaluate(() => { const a = [...document.querySelectorAll('.lsr-left a')].map((x) => x.getAttribute('href')); return a.includes('#offer-form') && a.includes('#online-buchen') && !!document.getElementById('online-buchen') && !!document.querySelector('#online-buchen iframe, #online-buchen [data-onedoc], #online-buchen a[href*="onedoc"]'); }), 'Hero-CTAs: «Ersttermin anfragen» → #offer-form, «Termin direkt online buchen» → OneDoc-Widget #online-buchen');
-await pg.focus(`${H} [data-kf-onedoc]`); await pg.keyboard.press('Tab');
-ok(await pg.evaluate(() => { const a = document.activeElement; const i = document.querySelector('.sgk-info'); return i.contains(a) && a === i.querySelector('a, button, summary, iframe'); }), 'Tastatur: nach OneDoc (letzte Aktion der Box) folgt der erste Link der Praxisangaben');
+await pg.focus(`${H} [data-kf-onedoc]`); const altSeq = []; for (let k = 0; k < 2; k++) { await pg.keyboard.press('Tab'); altSeq.push(await pg.evaluate(() => document.activeElement.textContent.trim())); }
+ok(altSeq.join('|') === 'Anrufen|WhatsApp', `Tastatur: OneDoc → Anrufen → WhatsApp (${altSeq.join(' → ')})`);
+await pg.keyboard.press('Tab');
+ok(await pg.evaluate(() => { const a = document.activeElement; const i = document.querySelector('.sgk-info'); return i.contains(a) && a === i.querySelector('a, button, summary, iframe'); }), 'Tastatur: nach WhatsApp (letzte Aktion der Box) folgt der erste Link der Praxisangaben');
 await pg.focus('.lsr-tert a[href^="https://wa.me"]'); await pg.keyboard.press('Tab');
 ok(await pg.evaluate(() => { const a = document.activeElement; return !!a.closest('.sgu, #sg-kontakt-praxis'); }), 'Tastatur: nach dem Hero folgt die Kontaktsektion (keine versteckten Ziele dazwischen)');
 await pg.close();
