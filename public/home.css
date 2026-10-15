@@ -5776,3 +5776,9 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #page-standort .sg-th-more{text-align:center;margin-top:24px}
 #page-standort .sg-th-more-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#fff;border:1px solid var(--border,#E5E7EB);border-radius:999px;font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:#0d0d0d;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 #page-standort .sg-th-more-btn:hover{border-color:var(--blue)}
+
+/* St. Gallen: FAQ «Fragen zu deinem ersten Termin» (kompakt, vor #kontakt) */
+#page-standort #sg-faq.kk-section{padding:72px 0;background:var(--white,#fff)}
+#page-standort #sg-faq .kk-header{margin-bottom:28px}
+#page-standort #sg-faq .kk-a a{color:var(--black);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+@media(max-width:600px){#page-standort #sg-faq.kk-section{padding:48px 0}#page-standort #sg-faq .kk-header{margin-bottom:20px}}
