@@ -528,6 +528,35 @@ for (const w of [320, 390, 1440]) {
   await pg.close();
 }
 
+console.log('P. SG-Teamsektion: Kim, Corinna, Astrid; gleich breite Karten, Porträt oben');
+for (const w of [320, 390, 768, 1440]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: w === 768 ? 1024 : undefined }));
+  await pg.evaluate(async () => { document.querySelectorAll('#team-st-gallen img').forEach((i) => { i.loading = 'eager'; }); await Promise.all([...document.querySelectorAll('#team-st-gallen img')].map((i) => i.complete ? 0 : new Promise((r) => { i.onload = i.onerror = r; }))); });
+  const T = await pg.evaluate(() => { const g = document.querySelector('#team-st-gallen .sg-team-grid'), cards = [...g.children], r = (e) => e.getBoundingClientRect();
+    const name = (c) => (c.querySelector('.tmc-name, .sg-lead-name') || {}).textContent;
+    const ph = cards.map((c) => c.querySelector('.tmc-photo, .sg-lead-photo')), img = cards.map((c) => c.querySelector('img'));
+    const cs = cards.map((c) => getComputedStyle(c));
+    return { names: cards.map(name).join('|'), lead: cards[0].matches('.sg-lead-card[data-clinical-lead="operational"]') && !cards[0].matches('.tmc') && cards.slice(1).every((c) => c.matches('a.tmc')),
+      tops: cards.map((c) => Math.round(r(c).top)), widths: cards.map((c) => Math.round(r(c).width)), gw: Math.round(r(g).width), wrap: Math.round(r(document.querySelector('#team-st-gallen .wrap')).width),
+      photoTop: cards.every((c, k) => r(ph[k]).top <= r(c).top + 2 && r(ph[k]).width >= r(c).width - 2), ratios: ph.map((p) => +(r(p).width / r(p).height).toFixed(2)), ph: ph.map((p) => Math.round(r(p).height)),
+      fit: img.filter(Boolean).every((i) => getComputedStyle(i).objectFit === 'cover' && i.naturalWidth > 0), astrid: !!cards[2].querySelector('.tmc-initials') && !cards[2].querySelector('img'),
+      border: cs.map((c) => c.borderLeftColor + '/' + c.borderLeftWidth).join('|'), bodyTxt: cards[0].textContent.replace(/\s+/g, ' '),
+      cta: cards.map((c) => { const a = c.matches('a') ? c.querySelector('.tmc-cta') : c.querySelector('.sg-lead-cta'); const s = getComputedStyle(a); return [s.fontSize, s.fontWeight, s.textDecorationLine, Math.round(r(c).bottom - r(a).bottom)].join(); }),
+      hrefs: [cards[0].querySelector('.sg-lead-cta').getAttribute('href'), cards[1].getAttribute('href'), cards[2].getAttribute('href')].join('|'),
+      ow: document.documentElement.scrollWidth > innerWidth || g.scrollWidth > g.clientWidth + 1 };
+  });
+  const cols = w >= 1024 ? 3 : w > 640 ? 2 : 1;
+  ok(T.names === 'Seongsu Kim|Corinna Reinhart|Astrid Lenggenhager' && T.lead, `${w}px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc`);
+  ok(new Set(T.tops.slice(0, cols)).size === 1 && (cols === 3 || T.tops[cols] > T.tops[0]) && new Set(T.widths).size === 1 && !T.ow, `${w}px ${cols} Spalte(n), gleich breite Karten (${T.widths.join('/')}), kein Overflow/Slider`);
+  ok(T.photoTop && new Set(T.ratios).size === 1 && T.fit && T.astrid, `${w}px Porträt oben, einheitliches Format (${T.ratios[0]}, Bildhöhe ${T.ph[0]} px), cover; Astrid neutraler Platzhalter`);
+  ok(new Set(T.border.split('|')).size === 1 && new Set(T.cta.map((c) => c.split(',').slice(0, 3).join())).size === 1 && new Set(T.cta.map((c) => c.split(',')[3])).size === 1, `${w}px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (${T.cta[0]})`);
+  ok(/Klinische Leitung · TCM\.ch Netzwerk/.test(T.bodyTxt) && /Die Behandlung in St\. Gallen übernimmt das Praxisteam vor Ort; seine Rolle gilt netzwerkweit\./.test(T.bodyTxt) && !/St\. Gallen\s*EMR|tmc-loc/.test(T.bodyTxt) && T.hrefs === '/team/seongsu-kim/|/team/corinna-reinhart/|/team/astrid-lenggenhager/', `${w}px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten`);
+  if (w === 1440) { ok(Math.abs(T.gw - T.wrap) <= 2 || T.gw <= T.wrap, `${w}px Sektion an der Inhaltsbreite (${T.gw}/${T.wrap})`);
+    await pg.focus('#team-st-gallen .sg-lead-cta'); const seq = []; for (let k = 0; k < 2; k++) { await pg.keyboard.press('Tab'); seq.push(await pg.evaluate(() => document.activeElement.getAttribute('href'))); }
+    ok(seq.join('|') === '/team/corinna-reinhart/|/team/astrid-lenggenhager/' && await pg.$eval('#team-st-gallen .sg-lead-cta', (a) => { a.focus(); const c = getComputedStyle(a); return c.outlineStyle !== 'none'; }), `Tastatur: Kim-Profil → Corinna → Astrid (${seq.join(' → ')}), sichtbarer Fokus`); }
+  await pg.close();
+}
+
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
 for (const g of [true, false]) {
   ({ pg, calls } = await open('/kontakt/', { gtag: g }));
