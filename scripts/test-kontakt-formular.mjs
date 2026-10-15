@@ -41,13 +41,13 @@ const pick = (pg, i, v) => pg.$eval(`${card(i)} label[for$="ta-${v}"]`, (l) => l
 const type = (pg, i, n, v) => pg.$eval(`${card(i)} [name="${n}"]`, (el, v) => { el.value += v; el.dispatchEvent(new Event('input')); }, v);
 const submit = async (pg, i) => { await pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 500)); };
 /** Kompakter SG-Hero: Rückruf-Bereich per Button öffnen (wie Nutzer:innen). */
-const openRr = (pg, i = 'sg-hero') => pg.$eval(`${card(i)} [data-kf-rr]`, (b) => { if (b.getAttribute('aria-expanded') !== 'true') b.click(); });
+const openRr = (pg, i = 'sg-hero') => pg.evaluate((C) => { const b = document.querySelector(C + ' [data-kf-rr]'); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); }, card(i));
 const sel = (pg, i, v) => pg.select(`${card(i)} select[name="standort"]`, v);
 
 console.log('A. SG-Hero: nur Telefon + Check-in');
 let { pg, calls } = await open('/standorte/st-gallen/'); await openRr(pg);
 ok(await pg.$eval(card('sg-hero'), (c) => !c.querySelector('input[name=terminart]:checked')), 'ohne Vorgabe: keine Kachel vorgewählt');
-ok(await pg.$eval(`${card('sg-hero')} [data-kf-submit]`, (b) => b.textContent.trim().startsWith('Anfrage senden')), 'Submit neutral ohne Auswahl');
+ok(await pg.$eval(`${card('sg-hero')} [data-kf-submit]`, (b) => b.textContent.trim() === 'Termin anfragen →') && await pg.$eval(`${card('sg-unten')} [data-kf-submit]`, (b) => b.textContent.trim() === 'Termin anfragen →'), 'Submit ohne Auswahl: beide SG-Formulare «Termin anfragen →»');
 await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero');
 ok(calls.length === 0 && (await ev(pg, 'formular_senden')).length === 0, 'ohne Terminart: kein Versand, kein Event');
 ok(await pg.$eval('#kf-sg-hero-ta-err', (e) => !e.hidden && /wähle/.test(e.textContent)), 'Fehlermeldung Terminart sichtbar');
@@ -71,11 +71,12 @@ console.log('B. SG unten: Behandlung, optionale Felder ausgefüllt, OneDoc, Tele
 await pick(pg, 'sg-unten', 'behandlung');
 ok(await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => a.getAttribute('href') === '#online-buchen' && !a.closest('[data-kf-onedoc-panel]').hidden), 'OneDoc-Button → eingebettetes Widget #online-buchen');
 ok(await pg.$eval(`${card('sg-unten')} [data-kf-submit]`, (b) => b.textContent.trim() === 'Ersttermin anfragen →'), 'Submit-Text Behandlung');
-await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); }); await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
-let od = await ev(pg, 'onedoc_click'), ph = await ev(pg, 'phone_click');
+await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
+let od = await ev(pg, 'onedoc_click'), ph;
 ok(od.length === 1 && od[0].standort === 'st-gallen' && od[0].form_instance === 'sg-unten', 'onedoc_click getrackt (Standort-ID)');
-ok(ph.length === 1 && ph[0].quelle === 'kontaktformular', 'phone_click getrackt');
-ok(await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => a.getAttribute('href') === 'tel:+41775236122'), 'SG-Telefon tel:+41775236122');
+ok(await pg.evaluate(() => !document.querySelector('[data-kf-instance^="sg-"] [data-kf-tel], [data-kf-instance^="sg-"] .kf-call') && !!document.querySelector('.lsr-tert a[href="tel:+41775236122"]') && !!document.querySelector('.sgk-info a[href="tel:+41775236122"]')), 'SG-Formulare ohne «Lieber anrufen?»; Telefon tel:+41775236122 im Hero und bei den Praxisangaben');
+{ const p2 = await open('/', { width: 1440 }); await p2.pg.$eval(`${card('home')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); }); ph = await ev(p2.pg, 'phone_click');
+  ok(ph.length === 1 && ph[0].quelle === 'kontaktformular' && ph[0].form_instance === 'home', 'phone_click (Formular mit Anrufbereich, Startseite) unverändert getrackt'); await p2.pg.close(); }
 for (const [n, v] of [['telefon', '079 123 45 67'], ['name', 'Test Person'], ['email', 'test@beispiel.ch'], ['anliegen', 'Rücken'], ['wunschzeit', 'Do Nachmittag']]) await type(pg, 'sg-unten', n, v);
 await submit(pg, 'sg-unten'); c0 = calls[0] || {};
 ok(calls.length === 1 && c0.angebot_id === 'ERSTTERMIN_BEHANDLUNG' && c0.name === 'Test Person' && c0.email === 'test@beispiel.ch' && c0.anliegen === 'Rücken' && c0.wunschzeit === 'Do Nachmittag' && c0.quelle === 'sg-kontakt-bottom', 'Payload Behandlung mit optionalen Feldern, quelle sg-kontakt-bottom');
@@ -229,12 +230,14 @@ await pg.evaluate(() => openContactForm(null, 'Zürich Oerlikon – Partnerpraxi
 ok(await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value) === OERL_P, 'openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option');
 await pg.close();
 
-/** Reihenfolge in DOM und Darstellung: Terminart → (Rückruf-Button | Telefon … Anfrage-Button) → Trennlinie → OneDoc → Anrufen. */
+/** Reihenfolge in DOM und Darstellung: Terminart → (Rückruf-Button | Telefon … Anfrage-Button) → Trennlinie → OneDoc (Formular endet danach). */
 const orderOk = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), v = (e) => !!(e && (e.offsetWidth || e.offsetHeight));
   const els = ['.kf-opts', '[data-kf-rr]', '[name=telefon]', '[data-kf-submit]', '.kf-od-sep', '[data-kf-onedoc]', '.kf-od-sep + .kf-onedoc .kf-hint', '[data-kf-tel]'].map((s) => c.querySelector(s)).filter(v);
   if (!els.some((e) => e.matches('[data-kf-onedoc]')) || !els.some((e) => e.matches('.kf-od-sep'))) return false;
   return els.every((e, k) => k === 0 || (els[k - 1].compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING && e.getBoundingClientRect().top >= els[k - 1].getBoundingClientRect().bottom - 1)); }, card(i));
 /** Innerhalb der Karte ist höchstens der Anfrage-Button neongrün gefüllt. */
+/** Formular endet nach OneDoc: kein Anrufbereich, letztes sichtbares Element der Karte ist der OneDoc-Bereich. */
+const endsAfterOd = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), f = c.querySelector('form'); return !c.querySelector('.kf-call, [data-kf-tel]') && f.lastElementChild.matches('.kf-onedoc') && c.lastElementChild.tagName === 'SCRIPT' && c.lastElementChild.previousElementSibling === f; }, card(i));
 const neonOnlySubmit = (pg, i) => pg.evaluate((C) => [...document.querySelectorAll(C + ' a, ' + C + ' button')].filter((e) => (e.offsetWidth || e.offsetHeight) && getComputedStyle(e).backgroundColor === 'rgb(26, 226, 136)').every((e) => e.hasAttribute('data-kf-submit')), card(i));
 console.log('L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)');
 for (const w of [390, 1440]) {
@@ -244,14 +247,14 @@ for (const w of [390, 1440]) {
       hint: p.querySelector('.kf-hint').textContent.trim(), alt: p.querySelector('[data-kf-to-fields]')?.textContent.trim() ?? null, rr: !!p.closest('[data-kf]').querySelector('[data-kf-rr]') }; });
   for (const i of ['sg-hero', 'sg-unten']) {
     let s0 = await od(i);
-    ok(s0.shown && s0.cls === 'kf-btn kf-btn--outline' && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1 && s0.hint === 'Direkt bei OneDoc.' && s0.alt === null && s0.rr === (i === 'sg-hero'), `${w}px ${i} ohne Auswahl: OneDoc sichtbar, sekundär umrandet «Termin online buchen →», «Direkt bei OneDoc.», kein Sprunglink`);
-    ok(await orderOk(pg, i), `${w}px ${i} ohne Auswahl: Reihenfolge Terminart → ${i === 'sg-hero' ? 'Rückruf-Button' : 'Telefon → Anfrage-Button'} → «Oder direkt online buchen» → OneDoc → Lieber anrufen (DOM = sichtbar)`);
-    ok(await neonOnlySubmit(pg, i), `${w}px ${i} ohne Auswahl: keine andere Aktion neongrün gefüllt`);
+    ok(s0.shown && s0.cls === 'kf-btn kf-btn--outline' && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1 && s0.hint === 'Direkt bei OneDoc.' && s0.alt === null && s0.rr === false, `${w}px ${i} ohne Auswahl: OneDoc sichtbar, sekundär umrandet «Termin online buchen →», «Direkt bei OneDoc.», kein Sprunglink`);
+    ok(await orderOk(pg, i), `${w}px ${i} ohne Auswahl: Reihenfolge Terminart → Telefon → Anfrage-Button → «Oder direkt online buchen» → OneDoc → Lieber anrufen (DOM = sichtbar)`);
+    ok(await neonOnlySubmit(pg, i) && await endsAfterOd(pg, i), `${w}px ${i} ohne Auswahl: nur Anfrage-Button neongrün; Formular endet nach OneDoc`);
     await type(pg, i, 'telefon', '+41 79 123 45 67'); await type(pg, i, 'anliegen', 'Test-Eingabe');
     for (const t of ['checkin', 'behandlung']) {
       await pick(pg, i, t); s0 = await od(i);
       ok(s0.shown && s0.cls === 'kf-btn kf-btn--outline' && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1, `${w}px ${i} ${t}: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)`);
-      ok(await orderOk(pg, i) && await neonOnlySubmit(pg, i), `${w}px ${i} ${t}: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc → Anrufen; nur Anfrage-Button neongrün`);
+      ok(await orderOk(pg, i) && await neonOnlySubmit(pg, i), `${w}px ${i} ${t}: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc (Formular endet danach); nur Anfrage-Button neongrün`);
     }
     ok(await pg.$eval(`${card(i)} [name=telefon]`, (x) => x.value === '+41 79 123 45 67') && await pg.$eval(`${card(i)} [name=anliegen]`, (x) => x.value.endsWith('Test-Eingabe')), `${w}px ${i}: Eingaben bleiben beim Wechsel erhalten`);
   }
@@ -278,34 +281,37 @@ await pick(pg, 'home', 'behandlung');
 ok(await pg.$eval(`${card('home')} [data-kf-onedoc]`, (a) => a.textContent.trim() === 'Freie Termine ansehen →' && a.getAttribute('href') === '/standorte/st-gallen/#online-buchen'), 'Homepage unverändert: Behandlung + SG → «Freie Termine ansehen →»');
 await pg.close();
 
-console.log('M. Kompakter SG-Hero (Rückruf + optionale Angaben als Disclosures)');
+console.log('M. Kompakte SG-Box (Rückruf dauerhaft offen, optionale Angaben als Disclosure)');
 const H = card('sg-hero');
 const st = (pg) => pg.evaluate((H) => { const c = document.querySelector(H); const vis = (e) => !!(e && (e.offsetWidth || e.offsetHeight || e.getClientRects().length));
-  const rr = c.querySelector('[data-kf-rr]'), opt = c.querySelector('[data-kf-opt]');
-  return { rr: rr.getAttribute('aria-expanded'), rrCtl: rr.getAttribute('aria-controls'), rrVis: vis(rr), fields: vis(c.querySelector('.kf-fields')), tel: vis(c.querySelector('[name=telefon]')),
+  const rr = c.querySelector('[data-kf-rr]'), opt = c.querySelector('[data-kf-opt]'), fs = c.querySelector('.kf-fields');
+  return { rr: vis(fs) && !fs.hidden ? 'true' : 'false', rrBtn: !!rr, rrVis: vis(rr), fields: vis(c.querySelector('.kf-fields')), tel: vis(c.querySelector('[name=telefon]')),
     opt: opt.getAttribute('aria-expanded'), optCtl: opt.getAttribute('aria-controls'), name: vis(c.querySelector('[name=name]')), checked: (c.querySelector('input[name=terminart]:checked') || {}).value || '',
     submit: c.querySelector('[data-kf-submit]').textContent.trim(), od: vis(c.querySelector('[data-kf-onedoc]')), call: vis(c.querySelector('[data-kf-tel]')), ort: !!c.querySelector('.kf-ort'), active: document.activeElement && (document.activeElement.id || document.activeElement.tagName) }; }, H);
 /** Fokus nicht in ein Eingabefeld/den Bereich verschoben (native Radio-Fokussierung durch die Kachel ist erlaubt). */
 const noField = (a) => !/^kf-sg-hero-(tel|name|email|anliegen|wunschzeit|fields)$/.test(a) && !/INPUT|TEXTAREA/.test(a);
 const pos = (pg) => pg.evaluate(() => ({ y: Math.round(scrollY), a: document.activeElement && (document.activeElement.id || document.activeElement.tagName) }));
-for (const w of [390, 1440]) {
+for (const w of [320, 390, 768, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
   let x = await st(pg);
   const txt = await pg.$eval(H, (c) => c.textContent.replace(/\s+/g, ' '));
-  ok(x.rr === 'false' && x.rrVis && !x.fields && !x.tel && x.od && x.call && !x.checked && !x.ort, `${w}px initial: Rückruf geschlossen, «Lieber Rückruf anfragen» sichtbar, OneDoc + Anruf sichtbar, keine Vorauswahl, kein «Standort:»`);
-  ok(['KOSTENLOSER TCM-CHECK-IN', 'Finde heraus, ob TCM zu dir passt.', '30 Minuten persönliche TCM-Anamnese und Diagnostik.', 'Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', 'Persönliche Empfehlung', 'Krankenkassen-Check', 'Hilfe bei der Abklärung deiner Zusatzversicherung.', 'Kostenlos · ohne Behandlung · ohne Verpflichtung', 'Ersttermin mit Behandlung', 'Gespräch und erste Behandlung.', 'Termin online buchen', 'Direkt bei OneDoc.', 'Lieber Rückruf anfragen', 'Lieber anrufen?'].every((t) => txt.toUpperCase().includes(t.toUpperCase())), `${w}px Angebotstexte vollständig sichtbar (alle vier Vorteile)`);
-  ok(x.rrCtl === 'kf-sg-hero-fields' && x.optCtl === 'kf-sg-hero-opt' && await pg.$eval(H, (c) => c.querySelector('[data-kf-rr]').tagName === 'BUTTON' && c.querySelector('[data-kf-opt]').tagName === 'BUTTON'), `${w}px echte Buttons mit aria-controls und eindeutigen IDs`);
-  // Tastatur: geschlossener Bereich nicht per Tab erreichbar
-  await pg.focus(`${H} [data-kf-rr]`); await pg.keyboard.press('Tab'); x = await st(pg);
-  ok(x.active !== 'kf-sg-hero-tel' && !(await pg.evaluate((H) => document.querySelector(H).querySelector('.kf-fields').contains(document.activeElement), H)), `${w}px geschlossen: Tab überspringt den Rückruf-Bereich (Fokus: ${x.active})`);
+  ok(x.rr === 'true' && !x.rrBtn && x.fields && x.tel && x.opt === 'false' && !x.name && x.submit === 'Termin anfragen →' && x.od && !x.call && !x.checked && !x.ort, `${w}px initial: Rückruf offen (Telefon, Anfrage-Button «Termin anfragen →»), kein Öffnungsbutton, optionale Angaben zu, OneDoc sichtbar, kein Anrufbereich, keine Vorauswahl, kein «Standort:»`);
+  ok(await pg.$eval(H, (c) => { const lab = c.querySelector('label[for="kf-sg-hero-tel"]'), st = lab.querySelector('.kf-star'); return lab.textContent.replace(/\s+/g, ' ').trim() === 'Telefonnummer *' && getComputedStyle(st).color === 'rgb(179, 38, 30)' && !/optional/.test(lab.textContent) && c.querySelector('[name=telefon]').getAttribute('aria-required') === 'true'; }) && await pg.$eval(H, (c) => c.querySelector('.kf-legal--kurz a[href="/datenschutz/"]').textContent.trim() === 'Datenschutz' && !!c.querySelector('.kf-legal--kurz').offsetHeight && !c.querySelector('.kf-note') && !c.querySelector('[name=telefon]').closest('[hidden]') && ['name', 'email', 'anliegen', 'wunschzeit'].every((n) => !c.querySelector(`[name=${n}]`).required) && c.querySelector('[name=telefon]').required), `${w}px initial: «Telefonnummer *» (roter Stern, required, aria-required, ohne «optional»), kompakter Link «Datenschutz», kein «noch kein Termin»-Hinweis; Telefon einziges Pflichtfeld`);
+  ok(['Kostenloser TCM-Check-in · 30 Minuten', 'Finde heraus, ob TCM zu dir passt.', '30 Minuten persönliche TCM-Anamnese und Diagnostik, ohne Behandlung.', 'Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', 'Persönliche Empfehlung', 'Krankenkassen-Check', 'Ersttermin mit Behandlung', 'Gespräch und erste Behandlung.', 'Termin online buchen', 'Direkt bei OneDoc.', 'Terminart wählen', 'Rückruf anfragen', 'Weitere Angaben · optional'].every((t) => txt.includes(t)) && !['Lieber Rückruf anfragen', 'Hilfe bei der Abklärung deiner Zusatzversicherung.', 'Kostenlos · ohne Behandlung · ohne Verpflichtung', 'Deine Angaben verwenden wir nur', 'Mit deiner Anfrage ist noch kein Termin gebucht.', 'Lieber anrufen?'].some((t) => txt.includes(t)) && !(await pg.$(`${H} .kf-tag, ${H} .kf-step`)), `${w}px Angebot vollständig (alle vier Leistungen, «Kostenlos»/«30 Minuten» im Titel, «ohne Behandlung»), entfernte Texte/Badge/Schrittmarker fehlen`);
+  ok(x.optCtl === 'kf-sg-hero-opt' && await pg.$eval(H, (c) => c.querySelector('[data-kf-opt]').tagName === 'BUTTON' && !c.querySelector('[data-kf-rr], [aria-controls="kf-sg-hero-fields"]') && !c.querySelector('.kf-fields').hasAttribute('aria-expanded')), `${w}px «Weitere Angaben» echter Button mit aria-controls; keine Disclosure-Steuerung für den offenen Rückruf-Bereich`);
+  // Tastatur ohne Auswahl: Kachel → Telefon → Weitere Angaben → Anfrage → OneDoc (Formular endet danach); eingeklappte optionale Felder nicht erreichbar
+  await pg.focus('#kf-sg-hero-ta-behandlung');
+  const seq0 = []; for (let i = 0; i < 8; i++) { await pg.keyboard.press('Tab'); seq0.push(await pg.evaluate(() => { const a = document.activeElement; return a.id || (a.hasAttribute('data-kf-submit') && 'submit') || (a.hasAttribute('data-kf-onedoc') && 'onedoc') || (a.hasAttribute('data-kf-tel') && 'call') || (a.closest('.kf-legal') && 'legal') || a.tagName; })); }
+  const want0 = ['kf-sg-hero-tel', 'kf-sg-hero-opt-btn', 'submit', 'legal', 'onedoc']; const wp0 = want0.map((v) => seq0.indexOf(v));
+  ok(seq0[0] === 'kf-sg-hero-tel' && wp0.every((v, k) => v >= 0 && (k === 0 || v > wp0[k - 1])) && !seq0.some((v) => /kf-sg-hero-(name|email|anliegen|wunschzeit)/.test(v)), `${w}px Tab ohne Auswahl = sichtbare Reihenfolge, eingeklappte Felder übersprungen (${seq0.join(' → ')})`);
   await pg.close();
-  // Kachelwahl (Zeiger) öffnet automatisch: kein Fokus, kein Scroll, Button weg; Wechsel erhält Daten + offenen Zustand
+  // Kachelwahl (Zeiger): kein Fokus, kein Scroll, Bereich bleibt offen; Wechsel erhält Daten + Zustand der optionalen Angaben
   for (const [first, second] of [['checkin', 'behandlung'], ['behandlung', 'checkin']]) {
     ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
     await pg.evaluate((H) => { document.documentElement.style.scrollBehavior = 'auto'; const c = document.querySelector(H); scrollTo(0, c.getBoundingClientRect().top + scrollY - 120); document.activeElement && document.activeElement.blur(); }, H);
     const p0 = await pos(pg); await pick(pg, 'sg-hero', first); x = await st(pg); const p1 = await pos(pg);
     const lab = { checkin: 'TCM-Check-in anfragen →', behandlung: 'Ersttermin anfragen →' };
-    ok(x.rr === 'true' && !x.rrVis && x.fields && x.tel && x.od && x.opt === 'false' && !x.name && x.checked === first && x.submit === lab[first] && p1.y === p0.y && noField(p1.a), `${w}px Wahl ${first}: Rückruf offen, Button weg, OneDoc sichtbar, optionale zu, «${lab[first]}», Scroll/Fokus unverändert (${p0.y}→${p1.y}, ${p1.a})`);
+    ok(x.rr === 'true' && !x.rrVis && x.fields && x.tel && x.od && x.opt === 'false' && !x.name && x.checked === first && x.submit === lab[first] && p1.y === p0.y && noField(p1.a), `${w}px Wahl ${first}: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «${lab[first]}», Scroll/Fokus unverändert (${p0.y}→${p1.y}, ${p1.a})`);
     await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); await type(pg, 'sg-hero', 'name', 'Test Person'); await type(pg, 'sg-hero', 'wunschzeit', 'Mo früh');
     await pg.evaluate(() => document.activeElement && document.activeElement.blur());
     const p2 = await pos(pg); await pick(pg, 'sg-hero', second); x = await st(pg); const p3 = await pos(pg);
@@ -318,22 +324,24 @@ for (const w of [390, 1440]) {
   // Tastatur: Kachel per Leertaste → Fokus bleibt auf der Kachel, Tab führt über OneDoc zu Telefon (kein versteckter Button dazwischen)
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
   await pg.focus('#kf-sg-hero-ta-checkin'); await pg.keyboard.press('Space'); x = await st(pg);
-  ok(x.rr === 'true' && !x.rrVis && x.checked === 'checkin' && x.active === 'kf-sg-hero-ta-checkin', `${w}px Leertaste auf Kachel: öffnet, Fokus bleibt auf der Kachel`);
+  ok(x.rr === 'true' && !x.rrVis && x.checked === 'checkin' && x.active === 'kf-sg-hero-ta-checkin', `${w}px Leertaste auf Kachel: wählt, Rückruf offen, Fokus bleibt auf der Kachel`);
   const seq = []; for (let i = 0; i < 8; i++) { await pg.keyboard.press('Tab'); seq.push(await pg.evaluate(() => { const a = document.activeElement; return a.id || (a.hasAttribute('data-kf-submit') && 'submit') || (a.hasAttribute('data-kf-onedoc') && 'onedoc') || (a.hasAttribute('data-kf-tel') && 'call') || (a.closest('.kf-legal') && 'legal') || a.tagName; })); }
-  const want = ['kf-sg-hero-tel', 'kf-sg-hero-opt-btn', 'submit', 'onedoc', 'call']; const wp = want.map((x) => seq.indexOf(x));
+  const want = ['kf-sg-hero-tel', 'kf-sg-hero-opt-btn', 'submit', 'legal', 'onedoc']; const wp = want.map((x) => seq.indexOf(x));
   ok(seq[0] === 'kf-sg-hero-tel' && wp.every((v, k) => v >= 0 && (k === 0 || v > wp[k - 1])) && seq.indexOf('kf-sg-hero-rr-btn') < 0, `${w}px Tab-Reihenfolge = sichtbare Reihenfolge (${seq.join(' → ')})`);
   await pg.close();
-  // Explizit öffnen vor der Wahl: keine Terminart, Button weg, Bereich bleibt offen; Absenden ohne Wahl → Auswahlvalidierung
+  // Absenden ohne Terminart: kein Versand, verständlicher Fehler an der Auswahl, Fokus auf die Auswahl; Wahl löscht den Fehler
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
-  await pg.focus(`${H} [data-kf-rr]`); await pg.keyboard.press('Enter'); x = await st(pg);
-  ok(x.rr === 'true' && !x.rrVis && x.fields && x.tel && !x.checked && x.od && x.opt === 'false' && x.submit === 'Anfrage senden →' && x.active === 'kf-sg-hero-fields', `${w}px «Lieber Rückruf anfragen» (Enter): offen, keine Terminart, Button weg, Fokus im Bereich (keine Tastatur)`);
-  await pg.keyboard.press('Tab'); x = await st(pg); ok(x.active === 'kf-sg-hero-tel', `${w}px Tab nach dem Öffnen → Telefonfeld`);
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; });
   await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero'); x = await st(pg);
-  ok(calls.length === 0 && x.rr === 'true' && await pg.$eval(H, (c) => [...c.querySelectorAll('.kf-opts .kf-ferr')].some((e) => !!e.offsetHeight && e.textContent.trim())), `${w}px Absenden ohne Terminart: kein Versand, Auswahlfehler sichtbar, Bereich bleibt offen`);
+  const er = await pg.$eval(H, (c) => { const e = c.querySelector('#kf-sg-hero-ta-err'), fs = c.querySelector('.kf-opts'); if (!e.hidden) e.scrollIntoView({ block: 'center' }); const b = e.getBoundingClientRect(); const h = document.elementFromPoint(b.left + 4, b.top + b.height / 2);
+    return { t: e.hidden ? '' : e.textContent.trim(), inFs: fs.contains(e), desc: (fs.getAttribute('aria-describedby') || '').includes('kf-sg-hero-ta-err'), vis: h === e || e.contains(h) }; });
+  ok(calls.length === 0 && er.t === 'Bitte wähle aus, wie wir dir helfen können.' && er.inFs && er.desc && er.vis && x.active === 'kf-sg-hero-ta-checkin' && x.submit === 'Termin anfragen →' && (await ev(pg, 'formular_senden')).length === 0, `${w}px Absenden ohne Terminart: kein Versand, Fehler «${er.t}» an der Auswahl (sichtbar, aria-describedby), Fokus auf der Auswahl`);
+  await pick(pg, 'sg-hero', 'behandlung'); x = await st(pg);
+  ok(await pg.$eval('#kf-sg-hero-ta-err', (e) => e.hidden || !e.textContent.trim()) && x.submit === 'Ersttermin anfragen →' && await pg.$eval('#kf-sg-hero-tel', (i) => i.value === '+41 79 123 45 67'), `${w}px danach Wahl: Fehler weg, «Ersttermin anfragen →», Telefon erhalten`);
   await pg.close();
   // Gültige explizite Vorauswahl öffnet ohne Fokus/Scroll
   ({ pg, calls } = await open('/standorte/st-gallen/?terminart=behandlung', { width: w })); await new Promise((r) => setTimeout(r, 300)); x = await st(pg); const pv = await pos(pg);
-  ok(x.rr === 'true' && !x.rrVis && x.checked === 'behandlung' && x.submit === 'Ersttermin anfragen →' && x.opt === 'false' && pv.y === 0 && pv.a === 'BODY', `${w}px ?terminart=behandlung: Rückruf offen, Button weg, kein Fokus, kein Scroll`);
+  ok(x.rr === 'true' && !x.rrVis && x.checked === 'behandlung' && x.submit === 'Ersttermin anfragen →' && x.opt === 'false' && pv.y === 0 && pv.a === 'BODY', `${w}px ?terminart=behandlung: vorgewählt, Rückruf offen, kein Fokus, kein Scroll`);
   await pg.close();
 }
 const telSeen = (pg) => pg.evaluate(() => { const t = document.getElementById('kf-sg-hero-tel'), r = t.closest('.kf-field').getBoundingClientRect(), tr = t.getBoundingClientRect();
@@ -343,10 +351,10 @@ const noApp = (pg) => pg.evaluate(() => window.dataLayer.filter((e) => e && e.ev
 // Schrittführung, Auswahl-Rückmeldung, ruhiges Einblenden
 for (const w of [320, 390, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
-  const g = await pg.evaluate((H) => { const c = document.querySelector(H), st = [...c.querySelectorAll('.kf-step')], fs = c.querySelector('.kf-opts'), od = c.querySelector('.kf-onedoc');
+  const g = await pg.evaluate((H) => { const c = document.querySelector(H), st = [...c.querySelectorAll('.kf-sec-h')], fs = c.querySelector('.kf-opts'), od = c.querySelector('.kf-onedoc');
     const fits = st.every((e) => e.scrollWidth <= e.clientWidth + 1 && e.getBoundingClientRect().right <= c.getBoundingClientRect().right);
-    return { t: st.map((e) => e.textContent.trim()), order: st.length === 2 && st[0].nextElementSibling === fs && st[1].nextElementSibling === c.querySelector('[data-kf-rr]') && c.querySelector('.kf-od-sep').nextElementSibling === od && od.querySelector('.kf-btn--outline'), fits, fz: st.length && parseFloat(getComputedStyle(st[0]).fontSize), intro: /Wähle, was gerade zu dir passt/.test(c.textContent), odVis: !!od.offsetHeight }; }, H);
-  ok(g.t.join('|') === '1Terminart wählen|2Rückruf anfragen' && g.order && g.fits && g.fz >= 14 && !g.intro && g.odVis, `${w}px Schritte «1 Terminart wählen» über den Kacheln, «2 Rückruf anfragen» über dem Rückruf-Button, OneDoc unter «Oder direkt online buchen», ohne Overflow, OneDoc ohne Wahl erreichbar`);
+    return { t: st.map((e) => e.textContent.trim()), order: st.length === 2 && st[0].nextElementSibling === fs && st[1].nextElementSibling === c.querySelector('.kf-fields') && c.querySelector('.kf-od-sep').nextElementSibling === od && od.querySelector('.kf-btn--outline'), fits, fz: st.length && parseFloat(getComputedStyle(st[0]).fontSize), intro: /Wähle, was gerade zu dir passt/.test(c.textContent), odVis: !!od.offsetHeight }; }, H);
+  ok(g.t.join('|') === 'Terminart wählen|Rückruf anfragen' && g.order && g.fits && g.fz >= 14 && !g.intro && g.odVis, `${w}px Überschriften «Terminart wählen» über den Kacheln, «Rückruf anfragen» direkt über den offenen Rückruf-Feldern, OneDoc unter «Oder direkt online buchen», ohne Overflow, OneDoc ohne Wahl erreichbar`);
   const box = () => pg.$$eval(`${H} .kf-opt`, (ls) => ls.map((l) => { const r = l.getBoundingClientRect(), cs = getComputedStyle(l); return [r.x + scrollX, r.y + scrollY, r.width, r.height, cs.borderTopWidth].join(); }).join('|'));
   const b0 = await box();
   if (w === 390) { await pg.hover(`${H} .kf-opt--behandlung`); await new Promise((r) => setTimeout(r, 300));
@@ -362,8 +370,10 @@ for (const w of [320, 390, 1440]) {
   const sel = await pg.evaluate((H) => { const c = document.querySelector(H), l = c.querySelector('.kf-opt--behandlung'), cs = getComputedStyle(l), f = c.querySelector('.kf-fields');
     return { checked: l.classList.contains('is-checked') && c.querySelector('#kf-sg-hero-ta-behandlung').checked, bc: cs.borderTopColor, sh: cs.boxShadow, bg: cs.backgroundColor, tr: cs.transitionDuration}; }, H); sel.anim = animNow;
   const b1 = await box();
-  ok(sel.checked && sel.bc === 'rgb(2, 11, 16)' && /rgb\(26, 226, 136\)/.test(sel.sh) && sel.bg === 'rgb(240, 252, 246)' && /0\.18s/.test(sel.tr) && b1 === b0, `${w}px Auswahl: Radio gefüllt, klarer Rahmen + Mint, Transition 180 ms, keine Grössen-/Positions-/Rahmenbreitenänderung`);
-  ok(sel.anim, `${w}px Rückruf-Bereich blendet beim ersten Öffnen ruhig ein (kf-in, 180 ms)`);
+  const un = await pg.$eval(`${H} .kf-opt--checkin`, (l) => { const cs = getComputedStyle(l); return [cs.boxShadow, cs.backgroundColor, cs.borderTopColor].join('|'); });
+  ok(sel.checked && sel.bc === 'rgb(2, 11, 16)' && sel.sh === 'rgb(2, 11, 16) 0px 0px 0px 1px inset' && sel.bg === 'rgb(255, 255, 255)' && /0\.15s/.test(sel.tr) && b1 === b0, `${w}px Auswahl: Radio gefüllt, klarer dunkler Rand (inset, kein Schatten), Ersttermin-Kachel bleibt weiss, keine Grössen-/Positions-/Rahmenbreitenänderung`);
+  ok(un === 'none|rgb(247, 252, 249)|rgba(2, 11, 16, 0.1)', `${w}px nicht gewählte Gratis-Kachel: sehr leicht mint, neutraler Rand, kein Schatten (${un})`);
+  ok(!sel.anim, `${w}px Rückruf-Bereich bereits offen: Kachelwahl animiert/verschiebt ihn nicht`);
   const after = await pg.evaluate((H) => { const f = document.querySelector(H).querySelector('.kf-fields'), cs = getComputedStyle(f); return !f.classList.contains('kf-anim') && cs.overflow === 'visible' && cs.maxHeight === 'none' && f.scrollHeight <= f.clientHeight + 1 && !!document.querySelector(H + ' [data-kf-submit]').offsetHeight; }, H);
   ok(after, `${w}px nach der Animation: kein Abschneiden, keine Maximalhöhe, kein innerer Scrollbereich, Submit sichtbar`);
   await pick(pg, 'sg-hero', 'checkin'); ok(!(await pg.$eval(`${H} .kf-fields`, (f) => f.classList.contains('kf-anim'))), `${w}px Kachelwechsel animiert nicht erneut`);
@@ -383,12 +393,12 @@ ok(await pg.$eval(`${H} .kf-fields`, (f) => !f.hidden && !f.classList.contains('
 await pg.close();
 // Telefon-only-Anfrage aus dem kompakten Hero
 ({ pg, calls } = await open('/standorte/st-gallen/'));
-await pg.$eval(`${H} [data-kf-rr]`, (b) => b.click()); await pick(pg, 'sg-hero', 'behandlung'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero'); c0 = calls[0] || {};
+await pick(pg, 'sg-hero', 'behandlung'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero'); c0 = calls[0] || {};
 ok(calls.length === 1 && c0.angebot_id === 'ERSTTERMIN_BEHANDLUNG' && c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Gratis-30min-StGallen' && !('name' in c0) && !('email' in c0) && !('wunschzeit' in c0) && (await ev(pg, 'formular_senden')).length === 1, 'Telefon-only (optionale Angaben zu): Payload ohne Name/E-Mail/Wunschzeit, Identifier erhalten, genau 1 formular_senden');
 await pg.close();
 // Fehlerfokus: Fehler im geschlossenen optionalen Bereich öffnet ihn und fokussiert das Feld
 ({ pg, calls } = await open('/standorte/st-gallen/'));
-await pg.$eval(`${H} [data-kf-rr]`, (b) => b.click()); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); await type(pg, 'sg-hero', 'email', 'kaputt'); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click());
+await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); await type(pg, 'sg-hero', 'email', 'kaputt'); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click());
 await pick(pg, 'sg-hero', 'checkin'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero');
 ok(calls.length === 0 && (await st(pg)).opt === 'true' && await pg.$eval('#kf-sg-hero-email', (i) => document.activeElement === i && i.getAttribute('aria-invalid') === 'true'), 'Fehler in geschlossenen optionalen Angaben → Bereich öffnet, Fokus auf E-Mail');
 await pg.$eval('#kf-sg-hero-email', (i) => { i.value = ''; }); await pg.$eval('#kf-sg-hero-tel', (i) => { i.value = '12'; }); await submit(pg, 'sg-hero');
@@ -399,9 +409,9 @@ await pg.close();
 await pg.$eval('.lsr-left a[href="#offer-form"]', (a) => a.click()); await new Promise((r) => setTimeout(r, 400));
 ok((await st(pg)).rr === 'true' && (await st(pg)).active === 'kf-sg-hero-tel', 'Hero-CTA «Ersttermin anfragen» (#offer-form) → Rückruf offen, Fokus Telefon');
 await pg.close();
-for (const [u, want, label] of [['/standorte/st-gallen/#offer-form', { rr: 'true', checked: '' }, 'Direktlink #offer-form'], ['/standorte/st-gallen/#first30', { rr: 'true', checked: 'checkin' }, 'alter Link #first30 (Übergang + Check-in)'], ['/standorte/st-gallen/?first30=1', { rr: 'true', checked: 'checkin' }, 'alter Link ?first30=1'], ['/standorte/st-gallen/#first30-kontakt', { rr: 'false', checked: '' }, '#first30-kontakt (Ziel: unteres Formular)']]) {
+for (const [u, want, label] of [['/standorte/st-gallen/#offer-form', { rr: 'true', checked: '' }, 'Direktlink #offer-form'], ['/standorte/st-gallen/#first30', { rr: 'true', checked: 'checkin' }, 'alter Link #first30 (Übergang + Check-in)'], ['/standorte/st-gallen/?first30=1', { rr: 'true', checked: 'checkin' }, 'alter Link ?first30=1'], ['/standorte/st-gallen/#first30-kontakt', { rr: 'true', checked: '' }, '#first30-kontakt (Ziel: unteres Formular; Hero ohne Wahl)']]) {
   ({ pg, calls } = await open(u)); await new Promise((r) => setTimeout(r, 300)); const y = await st(pg);
-  ok(y.rr === want.rr && y.checked === want.checked && (want.rr === 'false' || y.tel), `${label}: Rückruf ${want.rr === 'true' ? 'offen' : 'zu'}${want.checked ? ', Check-in gewählt' : ''}`);
+  ok(y.rr === want.rr && !y.rrBtn && y.checked === want.checked && y.tel, `${label}: Rückruf offen${want.checked ? ', Check-in gewählt' : ', keine Wahl'}`);
   await pg.close();
 }
 // Prefill optionaler Angaben (build-time Wert im Feld) → Bereich offen, Wert sichtbar
@@ -422,7 +432,7 @@ for (const width of [390, 1440]) {
   await pg.$eval('#t-fa', (a) => a.click()); await new Promise((r) => setTimeout(r, 400)); y = await st(pg);
   const keep = () => pg.evaluate(() => document.getElementById('kf-sg-hero-tel').value === '+41 79 111 22 33' && document.querySelector('#kf-sg-hero-fields [name=name]').value === 'Test');
   ok(y.rr === 'true' && y.opt === 'false' && y.checked === 'behandlung' && await keep() && await telSeen(pg), `${width}: Klick auf Seitenlink #kf-sg-hero-fields → Rückruf offen, Fokus Telefon sichtbar, Eingaben + Terminwahl unverändert`);
-  ok(!y.rrVis, `${width}: Öffnungsbutton nach Ankeröffnung ausgeblendet (Bereich bleibt offen)`);
+  ok(!y.rrBtn, `${width}: kein Öffnungsbutton, Bereich bleibt offen`);
   await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; document.activeElement.blur(); scrollTo(0, 0); });
   await pg.$eval('#t-fa', (a) => a.click()); await new Promise((r) => setTimeout(r, 400)); y = await st(pg);
   ok(y.rr === 'true' && y.checked === 'behandlung' && await keep() && await telSeen(pg) && (await pg.evaluate(() => location.hash)) === '#kf-sg-hero-fields', `${width}: erneuter Klick auf denselben Anker (Hash unverändert, weggescrollt) → Fokus Telefon sichtbar`);
@@ -453,15 +463,28 @@ await pg.close();
 ({ pg, calls } = await open('/standorte/st-gallen/'));
 await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; });
 const vis0 = (H, s) => { const t = document.querySelector(H + ' ' + s); t.scrollIntoView({ block: 'center' }); const b = t.getBoundingClientRect(); const h = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2); return h === t || t.contains(h); };
-const rrHit = await pg.evaluate(vis0, H, '[data-kf-rr]');
+const rrHit = await pg.evaluate(vis0, H, '[name=telefon]');
 await pick(pg, 'sg-hero', 'checkin');
-const hits = [['[data-kf-rr] (vor Wahl)', rrHit], ...await pg.evaluate((H) => ['[data-kf-onedoc]', '[data-kf-opt]', '[data-kf-submit]', '[data-kf-tel]', '#kf-sg-hero-ta-behandlung'].map((s) => { const e = document.querySelector(H + ' ' + s); const t = s.startsWith('#') ? e.closest('label') : e; t.scrollIntoView({ block: 'center' }); const b = t.getBoundingClientRect(); const h = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2); return [s, h === t || t.contains(h)]; }), H)];
+const hits = [['[name=telefon] (vor Wahl)', rrHit], ...await pg.evaluate((H) => ['[data-kf-onedoc]', '[data-kf-opt]', '[data-kf-submit]', '.kf-legal--kurz a', '#kf-sg-hero-ta-behandlung'].map((s) => { const e = document.querySelector(H + ' ' + s); const t = s.startsWith('#') ? e.closest('label') : e; t.scrollIntoView({ block: 'center' }); const b = t.getBoundingClientRect(); const h = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2); return [s, h === t || t.contains(h)]; }), H)];
 ok(hits.every(([, v]) => v), `390px: Aktionen nicht verdeckt (${hits.map(([s, v]) => s + (v ? '✓' : '✗')).join(' ')})`);
 await pg.close();
 // Ohne JavaScript: Anfrageoberfläche zugänglich
 ({ pg, calls } = await open('/standorte/st-gallen/', { js: false }));
-ok(await pg.$eval(H, (c) => !c.querySelector('[data-kf-rr]').offsetHeight && !!c.querySelector('[name=telefon]').offsetHeight && !!c.querySelector('[name=name]').offsetHeight && !!c.querySelector('[data-kf-submit]').offsetHeight), 'ohne JS: Disclosure-Buttons verborgen, Telefon/optionale Felder/Absenden sichtbar');
+ok(await pg.$eval(H, (c) => !c.querySelector('[data-kf-rr]') && !c.querySelector('[data-kf-opt]').offsetHeight && !!c.querySelector('[name=telefon]').offsetHeight && !!c.querySelector('[name=name]').offsetHeight && !!c.querySelector('[name=wunschzeit]').offsetHeight && !!c.querySelector('[data-kf-submit]').offsetHeight), 'ohne JS: Telefon, optionale Felder (noscript) und Absenden sichtbar, Toggle verborgen');
 await pg.close();
+
+// Laden ohne nachträgliches Auf-/Zuklappen: keine hidden/aria-expanded-Änderung in der Box, Kartenhöhe stabil
+for (const w of [390, 1440]) {
+  const pgl = await br.newPage(); await pgl.setRequestInterception(true); pgl.on('request', (r) => (r.url().startsWith(origin) ? r.continue() : r.abort()));
+  await pgl.evaluateOnNewDocument(() => { window.__mut = []; window.__h = []; const mo = new MutationObserver(() => { const c = document.querySelector('[data-kf-instance="sg-hero"]'); if (c && !window.__obs) { window.__obs = 1;
+    new MutationObserver((ms) => ms.forEach((m) => window.__mut.push(m.attributeName + ':' + (m.target.id || m.target.className)))).observe(c, { attributes: true, subtree: true, attributeFilter: ['hidden', 'aria-expanded'] });
+    new ResizeObserver((e) => window.__h.push(Math.round(e[0].contentRect.height))).observe(c); } }); mo.observe(document, { childList: true, subtree: true }); });
+  await pgl.setViewport({ width: w, height: w < 500 ? 844 : 900, isMobile: w < 500, hasTouch: w < 500 });
+  await pgl.goto(origin + '/standorte/st-gallen/', { waitUntil: 'load' }); await new Promise((r) => setTimeout(r, 400));
+  const lj = await pgl.evaluate(() => ({ mut: window.__mut, h: [...new Set(window.__h)] }));
+  ok(lj.mut.length === 0 && lj.h.length === 1, `${w}px Laden: Box ohne nachträgliches Auf-/Zuklappen (${lj.mut.join(',') || 'keine Änderung'}), Höhe stabil (${lj.h.join('→')})`);
+  await pgl.close();
+}
 
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
 for (const g of [true, false]) {
@@ -485,10 +508,11 @@ for (const g of [true, false]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { gtag: g })); await openRr(pg);
   await pick(pg, 'sg-hero', 'checkin'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await pg.$eval(`${card('sg-hero')} [name=website]`, (i) => { i.value = 'bot'; }); await submit(pg, 'sg-hero');
   ok(calls.length === 0 && total(await sends(pg, 'formular_senden')) === 0, `${g ? 'mit' : 'ohne'} gtag: Honeypot → 0 formular_senden`);
-  await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
   await pick(pg, 'sg-unten', 'behandlung');
   await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
-  const pc = await sends(pg, 'phone_click'), oc = await sends(pg, 'onedoc_click');
+  const oc = await sends(pg, 'onedoc_click');
+  const ph2 = await open('/', { gtag: g, width: 1440 }); await ph2.pg.$eval(`${card('home')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
+  const pc = await sends(ph2.pg, 'phone_click'); await ph2.pg.close();
   ok(pc.dl === 1 && total(pc) === 1 && oc.dl === 1 && total(oc) === 1, `${g ? 'mit' : 'ohne'} gtag: phone_click und onedoc_click je genau 1× über dataLayer`);
   await pg.close();
 }
@@ -545,7 +569,7 @@ for (const [w, h] of [[1440, 700], [1440, 900], [1440, 1300], [1280, 1400]]) {
   s0 = await stickyState(pg);
   ok(s0.on === (s0.fits && s0.room) && (s0.on ? s0.pos === 'sticky' : s0.pos !== 'sticky') && s0.top >= s0.hdr + 8, `${w}×${h} Anreise offen: Sticky ${s0.on ? 'an' : 'aus'} (Box ${s0.boxH} px, passt ${s0.fits}, Strecke ${s0.room}, top ${s0.top} ≥ Header ${s0.hdr})`);
   if (s0.on) {
-    const r = await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; const sec = document.querySelector('#sg-kontakt-praxis'), info = document.querySelector('.sgk-info'); scrollTo(0, info.getBoundingClientRect().top + scrollY + 200); const c = document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect();
+    const r = await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; const sec = document.querySelector('#sg-kontakt-praxis'), info = document.querySelector('.sgk-info'), col = document.querySelector('.sgk-formcol'); const top = parseFloat(col.style.getPropertyValue('--sgk-top')) || 0; scrollTo(0, info.getBoundingClientRect().top + scrollY - top + Math.max(1, Math.floor((info.offsetHeight - col.offsetHeight) / 2))); const c = document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect();
       const a = { top: Math.round(c.top), bottom: Math.round(c.bottom) }; scrollTo(0, sec.getBoundingClientRect().bottom + scrollY); const c2 = document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect(); return { ...a, endOk: c2.bottom <= sec.getBoundingClientRect().bottom + 1, ih: innerHeight }; });
     ok(Math.abs(r.top - s0.top) <= 1 && r.bottom <= r.ih && r.endOk, `${w}×${h}: Box haftet unter dem Header (top ${r.top}), komplett sichtbar, endet mit der Sektion`);
     await pg.evaluate(() => scrollTo(0, 0)); await pick(pg, 'sg-hero', 'checkin'); await pg.$eval(`${H} [data-kf-opt]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 300));
@@ -557,8 +581,8 @@ for (const [w, h] of [[1440, 700], [1440, 900], [1440, 1300], [1280, 1400]]) {
 // Hero-CTAs + Anker zur verschobenen Box
 ({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
 ok(await pg.evaluate(() => { const a = [...document.querySelectorAll('.lsr-left a')].map((x) => x.getAttribute('href')); return a.includes('#offer-form') && a.includes('#online-buchen') && !!document.getElementById('online-buchen') && !!document.querySelector('#online-buchen iframe, #online-buchen [data-onedoc], #online-buchen a[href*="onedoc"]'); }), 'Hero-CTAs: «Ersttermin anfragen» → #offer-form, «Termin direkt online buchen» → OneDoc-Widget #online-buchen');
-await pg.focus(`${H} [data-kf-tel]`); await pg.keyboard.press('Tab');
-ok(await pg.evaluate(() => { const a = document.activeElement; const i = document.querySelector('.sgk-info'); return i.contains(a) && a === i.querySelector('a, button, summary, iframe'); }), 'Tastatur: nach «Lieber anrufen?» (letzte Aktion der Box) folgt der erste Link der Praxisangaben');
+await pg.focus(`${H} [data-kf-onedoc]`); await pg.keyboard.press('Tab');
+ok(await pg.evaluate(() => { const a = document.activeElement; const i = document.querySelector('.sgk-info'); return i.contains(a) && a === i.querySelector('a, button, summary, iframe'); }), 'Tastatur: nach OneDoc (letzte Aktion der Box) folgt der erste Link der Praxisangaben');
 await pg.focus('.lsr-tert a[href^="https://wa.me"]'); await pg.keyboard.press('Tab');
 ok(await pg.evaluate(() => { const a = document.activeElement; return !!a.closest('.sgu, #sg-kontakt-praxis'); }), 'Tastatur: nach dem Hero folgt die Kontaktsektion (keine versteckten Ziele dazwischen)');
 await pg.close();
