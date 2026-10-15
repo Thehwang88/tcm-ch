@@ -5745,10 +5745,6 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 /* ── St. Gallen Standortseite (15.10.2026): Beschwerden-Karten, kompaktes Team, Therapie-Links, Weiterlesen ── */
 #sg-beschwerden .sg-bs-cta{text-align:center;margin-top:28px}
 #sg-beschwerden .sg-bs-cta .btn-primary{display:inline-flex;align-items:center;gap:8px}
-#page-standort .sg-more-th{margin:22px 0 0;text-align:center;font-size:14.5px;line-height:1.7;color:var(--mid)}
-#page-standort .sg-more-th span{font-weight:700;color:var(--black)}
-#page-standort .sg-more-th a{color:var(--black);font-weight:600;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
-#page-standort .sg-more-th a:hover{text-decoration-color:var(--blue)}
 #team-st-gallen .content-body{max-width:none}
 #team-st-gallen .sg-team-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px!important;align-items:stretch}
 #team-st-gallen .sg-team-grid .tmc,#team-st-gallen .sg-lead-card{flex-direction:row;align-items:flex-start;height:100%}
@@ -5775,3 +5771,8 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #page-standort .sg-wl a{color:var(--black);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
 #page-standort .sg-wl a:hover{text-decoration-color:var(--blue)}
 #page-standort .sg-wl a.sg-wl-all{font-weight:700;text-decoration:none;color:var(--blue-dark,#1F7A54)}
+
+#page-standort .sg-more-grid{margin-top:20px}
+#page-standort .sg-th-more{text-align:center;margin-top:24px}
+#page-standort .sg-th-more-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#fff;border:1px solid var(--border,#E5E7EB);border-radius:999px;font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:#0d0d0d;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+#page-standort .sg-th-more-btn:hover{border-color:var(--blue)}
