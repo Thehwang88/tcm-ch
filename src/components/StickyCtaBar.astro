@@ -131,12 +131,13 @@ const TEL = `tel:+${site.whatsapp}`;
     // Deutsche SG-Standortseite: Bar erst NACH der oberen Buchungsbox (deren tatsaechliches Ende, inkl. aufgeklappter
     // Felder/Fehler), aus sobald unteres Formular (#kontakt) oder OneDoc (#online-buchen) im Bild sind, bei fokussierten
     // Eingabefeldern bzw. offener Bildschirmtastatur. Verborgen = inert (nicht klick-/tabbar). Primaer → obere Box.
+    // Gemeinsam (SG-Standortseite, DE-Homepage): Eingabefokus / Bildschirmtastatur halten die Bar verborgen.
+    var typing = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select, [contenteditable="true"]')); };
+    var keyboard = function () { var vv = window.visualViewport; return !!(vv && vv.height < window.innerHeight * 0.75); };
     var sgBox = /^\/standorte\/st-gallen\/?$/.test(location.pathname) && document.querySelector('[data-kf-instance="sg-hero"]');
     if (sgBox) {
       if (primary) primary.setAttribute('href', '#offer-form');
       var stops = [document.getElementById('kontakt'), document.getElementById('online-buchen')].filter(Boolean);
-      var typing = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select, [contenteditable="true"]')); };
-      var keyboard = function () { var vv = window.visualViewport; return !!(vv && vv.height < window.innerHeight * 0.75); };
       var setVis = function (on) {
         if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);
         bar.inert = !on; if (on) bar.removeAttribute('aria-hidden'); else bar.setAttribute('aria-hidden', 'true');
@@ -184,9 +185,35 @@ const TEL = `tel:+${site.whatsapp}`;
       break;                                                 // nur den ersten sichtbaren pruefen
     }
     if (!target) target = hero;
-    if (!('IntersectionObserver' in window) || !target) { bar.classList.add('is-visible'); return; }
+    // DE-Homepage: zusaetzlich verborgen, solange irgendein Teil der Formularsektion (#home-contact-form, inkl.
+    // dynamischer Felder/Hinweise/Erfolgsmeldung) im Bild ist, bei Eingabefokus und offener Bildschirmtastatur;
+    // verborgen = inert (nicht klick-/tabbar). Sonst gilt unveraendert die bisherige Hero-CTA-Logik (baseOn).
+    var homeForm = location.pathname === '/' && document.getElementById('home-contact-form');
+    var baseOn = false;
+    var apply = function () {
+      var on = baseOn;
+      if (homeForm) {
+        var r = homeForm.getBoundingClientRect();
+        on = on && !(r.top < window.innerHeight && r.bottom > 0) && !typing() && !keyboard();
+        bar.inert = !on; if (on) bar.removeAttribute('aria-hidden'); else bar.setAttribute('aria-hidden', 'true');
+      }
+      if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);
+    };
+    if (homeForm) apply();
+    if (!('IntersectionObserver' in window) || !target) { baseOn = true; apply(); return; }
     new IntersectionObserver(function (entries) {
-      bar.classList.toggle('is-visible', !entries[0].isIntersecting);
+      baseOn = !entries[0].isIntersecting; apply();
     }, { threshold: 0 }).observe(target);
+    if (homeForm) {
+      var hraf = 0, hsched = function () { if (!hraf) hraf = requestAnimationFrame(function () { hraf = 0; apply(); }); };
+      new IntersectionObserver(hsched, { threshold: [0, 1] }).observe(homeForm);
+      if ('ResizeObserver' in window) new ResizeObserver(hsched).observe(homeForm);
+      window.addEventListener('scroll', hsched, { passive: true });
+      window.addEventListener('resize', hsched);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', hsched);
+      document.addEventListener('focusin', hsched);
+      document.addEventListener('focusout', function () { setTimeout(hsched, 0); });
+      window.addEventListener('pageshow', hsched); window.addEventListener('load', hsched); window.addEventListener('hashchange', hsched);
+    }
   })();
 </script>
