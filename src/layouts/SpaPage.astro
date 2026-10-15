@@ -6,6 +6,7 @@ import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import { site, enTwinPath } from '../data/site';
+import { upgradeLegacyForms, clinicById } from '../lib/kontakt-form';
 
 interface Props {
   title: string;
@@ -35,8 +36,15 @@ const enTwin = canonicalTo ? null : enTwinPath(path); // EN alternate (null if n
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
-const html = body.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
-const htmlAfter = bodyAfter?.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+// Gemeinsames Kontaktformular (15.10.2026): allgemeine Legacy-Karten (Beschwerden, Therapien, Krankenkassen, Kosten-
+// und Standort-Landingpages) werden beim Build ersetzt; Massage-Anfragen, Zürich-Funnel und Wartelisten bleiben.
+// Standort-Landingpages /akupunktur-tcm-<id>/ erhalten den festen (operativen) Standort, /standorte/<id>/… die Vorauswahl.
+const lp = path.match(/^\/akupunktur-tcm-([a-z-]+)\/?$/); const lc = lp ? clinicById(lp[1]) : undefined;
+const sp = path.match(/^\/standorte\/([a-z-]+)\//);
+const kfFixed = lc?.status === 'operational' ? lc.id : undefined;
+const kfCtx = (prefix: string) => ({ path, standortId: kfFixed, instancePrefix: prefix, extra: !kfFixed && sp && clinicById(sp[1]) ? { preselectStandort: sp[1] } : {} });
+const html = upgradeLegacyForms(body, kfCtx(kfFixed ? 'standort' : 'leaf')).replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
+const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey) : undefined;
 ---
 <!doctype html>
 <html lang="de-CH">

@@ -1,5 +1,7 @@
 # TCM.ch FIRST 30 · Pre-Christmas Edition 2026 — St. Gallen (campaign operations)
 
+> **15.10.2026:** Für neue Anfragen abgelöst durch den kostenlosen TCM-Check-in im gemeinsamen Kontaktformular (`docs/cro/08-kontaktformular-checkin.md`). `campaignActive: false`; IDs und Server-Whitelist bleiben für offene Browser-Tabs gültig.
+
 Branch `feat/first30-winter-2026-sg` · scope `/standorte/st-gallen/` only · status: draft PR, not released. Internal campaign identifier stays `FIRST30_WINTER_2026_SG` (stable key for reporting); the public name is "FIRST 30 · Pre-Christmas Edition 2026 / Dein exklusives Vorweihnachtsgeschenk".
 
 ## Live-page reconciliation (12.10.2026, main d72c857c)

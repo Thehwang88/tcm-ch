@@ -27,6 +27,7 @@ import Team from '../../components/standort/Team.astro';
 import ClinicalLead from '../../components/standort/ClinicalLead.astro';
 import { clinicalLeadHtml, clinicalLeadCardHtml } from '../../data/clinical-lead';
 import { first30BottomSelectorHtml, first30State } from '../../data/first30';
+import { upgradeLegacyForms, clinicById } from '../../lib/kontakt-form';
 const first30 = first30State();
 import IntroNap from '../../components/standort/IntroNap.astro';
 import Therapien from '../../components/standort/Therapien.astro';
@@ -285,6 +286,12 @@ if (migrated) {
         .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="btn-primary" data-offer="first30">${giftLabel}</a>`)
         .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="sgcta-free" data-offer="first30">${giftLabel}</a>`);
     }
+    // Gemeinsames Kontaktformular (15.10.2026) ersetzt die untere Leaf-Karte (#kontakt); Hero-Formular: HeroStandardSG.
+    // Bestehende Identifier: quelle=sg-kontakt-bottom, Wunschzeit; Anker #kontakt (Sektion) + #first30-kontakt (alte Links).
+    sgBody = upgradeLegacyForms(sgBody, { path: '/standorte/st-gallen/', standortId: 'st-gallen', instancePrefix: 'sg-unten',
+      extra: { wunschzeit: true, compatAnchors: ['first30-kontakt'] } });
+    if ((sgBody.match(/data-kf-instance="sg-unten"/g) || []).length !== 1 || /<form class="inline-form"/.test(sgBody))
+      throw new Error('st-gallen: untere Kontaktkarte nicht eindeutig auf das gemeinsame Formular umgestellt - Leaf geändert?');
     // FIRST 30 Hero hat keine Fotohälfte mehr: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
     const uh = '<h2 class="up-h2">Über die Praxis</h2>';
     const ui = sgBody.indexOf(uh);
@@ -310,7 +317,10 @@ if (migrated) {
   }
   // Andere Legacy-Leaves (Bottighofen): Block vor dem Kontaktformular, sonst vor den Beschwerden-Links.
   const km = filledBody.indexOf('<section id="kontakt" class="section contact-section-inline"');
-  const legacyBody = km >= 0 ? filledBody.slice(0, km) + leadHtml + filledBody.slice(km) : filledBody + leadHtml;
+  const legacyBody0 = km >= 0 ? filledBody.slice(0, km) + leadHtml + filledBody.slice(km) : filledBody + leadHtml;
+  // Gemeinsames Kontaktformular auch auf den übrigen Legacy-Leaves (Bottighofen): fester Standort, wenn operativ.
+  const legacyClinic = clinicById(slug!);
+  const legacyBody = upgradeLegacyForms(legacyBody0, { path: `/standorte/${slug}/`, standortId: legacyClinic?.status === 'operational' ? slug : undefined, instancePrefix: 'standort' });
   spaBody = (slug === 'st-gallen') ? sgBody : legacyBody + beschwerdenLinks + hautBlock + ksBlock;
 }
 

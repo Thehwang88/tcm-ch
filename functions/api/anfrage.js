@@ -1,5 +1,7 @@
 // PRODUCTION — POST /api/anfrage → Resend email to termine@tcm.ch
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
+// Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
+import { OFFER_BY_ID, ZIELART_FUER, zielFuer } from '../../src/data/kontakt-angebote.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -39,9 +41,29 @@ export async function onRequestPost({ request, env }) {
     // Alle Angebots-IDs sind an St. Gallen gebunden: nur mit standort 'St. Gallen' UND einer St.-Galler Quelle
     // (Hero launch-hero-sg, unteres Formular sg-kontakt-bottom) gültig; jede andere Kombination → 422 invalid_offer_scope.
     const OFFER_SOURCES = ['launch-hero-sg', 'sg-kontakt-bottom'];
+    const _phoneOk = (s) => { const t = String(s || '').trim(); const digits = t.replace(/\D/g, ''); return /^\+?[0-9 ()\/.\-]{7,24}$/.test(t) && digits.length >= 7 && digits.length <= 15; };
+    const _emailOk = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '').trim());
     let offer = null;
     const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
-    if (offerId) {
+    // Gemeinsames Kontaktformular (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG, VORMERKUNG, STANDORT_ANFRAGE, ROUTING_ANFRAGE).
+    // Pflicht ist NUR eine gültige Telefonnummer plus ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
+    // die Angebots-ID muss zur Zielart passen (Vormerkung/Anfrage/Routing nie als Behandlung, Check-in nur für das
+    // freigegebene reguläre Ziel). Name, E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert.
+    const neu = offerId ? OFFER_BY_ID[offerId] : null;
+    if (neu) {
+      const ort = String(d.standort || '').trim();
+      if (!ort) return J({ error: 'missing_standort' }, 422);
+      const ziel = zielFuer(ort);
+      if (!ziel) return J({ error: 'invalid_standort' }, 422);
+      if (d.standort_id != null && String(d.standort_id).trim() !== ziel.id) return J({ error: 'invalid_standort' }, 422);
+      if (ZIELART_FUER[neu.terminart] !== ziel.art || (neu.terminart === 'checkin' && !ziel.checkin)) return J({ error: 'invalid_offer_scope' }, 422);
+      d.standort_id = ziel.id;
+      if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
+      if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
+      offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff };
+      d.angebot = offer.angebot;
+    } else if (offerId) {
+      // Historische IDs (FIRST 30 / regulär SG): unverändert, damit offene Browser-Tabs weiter zugestellt werden.
       offer = OFFERS[offerId];
       if (!offer) return J({ error: 'invalid_offer' }, 422);
       if (String(d.standort || '').trim() !== 'St. Gallen' || OFFER_SOURCES.indexOf(String(d.quelle || '').trim()) < 0) return J({ error: 'invalid_offer_scope' }, 422);
@@ -49,10 +71,11 @@ export async function onRequestPost({ request, env }) {
     }
     // Phone-only FIRST 30 (ausschliesslich Hero-Formular launch-hero-sg mit FIRST-30-ID): nur eine gültige
     // Telefonnummer ist Pflicht, kein Name wird erfunden. Alle anderen Formulare/Standorte: Regeln unverändert.
-    const _first30Phone = _launchSG && offer && offerId.indexOf('FIRST30_WINTER_2026_SG') === 0;
-    const _phoneOk = (s) => { const t = String(s || '').trim(); const digits = t.replace(/\D/g, ''); return /^\+?[0-9 ()\/.\-]{7,24}$/.test(t) && digits.length >= 7 && digits.length <= 15; };
+    const _first30Phone = _launchSG && offer && !neu && offerId.indexOf('FIRST30_WINTER_2026_SG') === 0;
     if (_first30Phone && !_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
-    if (_first30Phone) {
+    if (neu) {
+      // Telefon, Standort und ggf. E-Mail bereits oben validiert.
+    } else if (_first30Phone) {
       // Telefon bereits oben validiert.
     } else if (_zhRouting) {
       if (!d.name || (!d.telefon && !d.email)) return J({ error: 'missing_fields' }, 422);
@@ -89,7 +112,7 @@ export async function onRequestPost({ request, env }) {
       ['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined],
       ['Angebots-ID', offer ? offerId : undefined],
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
-      ['Standort', d.standort],
+      ['Standort', d.standort], ['Standort-ID', d.standort_id],
       ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen], ['Wunschzeit', d.wunschzeit],

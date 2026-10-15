@@ -29,7 +29,9 @@ export const FIRST30 = {
    *  bis der Inhaber diesen Wert ausdrücklich auf false setzt und eine neue Version deployed wird.
    *  Keine automatische Datums-/Uhrzeit-Schliessung und kein serverseitiges Ablehnen legitimer Anfragen.
    *  Veraltete/offene Anfragen müssen vom Team gegen die Agenda geprüft werden, keine Buchungsgarantie. */
-  campaignActive: true,
+  // 15.10.2026: FIRST 30 für neue SG-Anfragen abgelöst durch den kostenlosen TCM-Check-in (src/data/kontakt-angebote.mjs).
+  // IDs/Server-Whitelist bleiben für offene Browser-Tabs gültig; die Seite rendert den regulären Hero mit neuem Formular.
+  campaignActive: false,
   /** Ausverkauft (confirmedClaims >= totalAllocation): true = explizit beschriftete Warteliste, false = Kampagnen-Hero weg, regulärer Hero. */
   waitlistEnabled: true,
   /** "The Once-a-Year Edition" / "jährlich" nur nach Inhaber-Bestätigung, dass 2026 keine weitere FIRST-30-Aktion läuft. */

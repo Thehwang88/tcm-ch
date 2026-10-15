@@ -1,8 +1,17 @@
 ---
-// Regulärer St.-Gallen-Hero (Stand main vor der FIRST-30-Kampagne). Wird gerendert, wenn die Kampagne
-// geschlossen ist (campaignActive=false durch den Inhaber, oder ausverkauft ohne Warteliste);
-// HeroLaunchSG.astro ist der Kampagnen-Hero. Formular, Identifier und Tracking unverändert (quelle=launch-hero-sg).
+// Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne, wörtlich aus Commit 4adc79c8
+// (HeroLaunchSG.astro, «fix(st-gallen): first-treatment bullet …», 12.10.2026). Rechte Hälfte (seit 15.10.2026):
+// gemeinsames Kontaktformular (src/lib/kontakt-form.ts) mit kostenlosem TCM-Check-in (SG freigegeben) und
+// «Ersttermin mit Behandlung» (OneDoc). Anker-Kompatibilität: #offer-form (Karte), #first30 (alte Kampagnenlinks).
+// Bestehende Identifier bleiben: quelle=launch-hero-sg, Formularname, Quelle/Seite-Felder (Messplan docs/cro/04).
+import { renderKontaktForm } from '../lib/kontakt-form';
 const { sitekey } = Astro.props;
+const card = renderKontaktForm({
+  instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
+  quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
+  quelleDetail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen',
+  wunschzeit: true, sitekey, headingTag: 'h2',
+});
 ---
 <section class="lsr-hero hlsg">
   <div class="lsr-inner">
@@ -23,171 +32,19 @@ const { sitekey } = Astro.props;
       <p class="lsr-note">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung vereinbart.</p>
       <p class="lsr-note"><b>Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
-    <figure class="lsr-right">
-      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
-      <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
-    </figure>
+    <div class="hlsg-formcol" set:html={card} />
   </div>
 </section>
 
-<section class="hlsg-offer-sec">
-  <div class="hlsg-card" id="offer-form" style="scroll-margin-top:80px">
-    <div class="hlsg-offer-big" style="font-size:clamp(1.4rem,2.6vw,1.85rem)">Dein Ersttermin in St. Gallen</div>
-    <p class="hlsg-offer-note" style="margin-bottom:14px">Akupunktur und TCM bei qualifizierten Therapeutinnen und Therapeuten. Wir melden uns persönlich mit einem passenden Terminvorschlag.</p>
-    <div class="hlsg-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
-      <div><span class="hlsg-check">✓</span> TCM-Check &amp; ausführliches Erstgespräch</div>
-      <div><span class="hlsg-check">✓</span> Diagnostik durch anerkannte Therapeut:innen</div>
-      <div><span class="hlsg-check">✓</span> Falls medizinisch sinnvoll, kann die erste Behandlung bereits beim Ersttermin stattfinden.</div>
-      <div><span class="hlsg-check">✓</span> Ehrliche Einschätzung, ob TCM bei dir hilft. Wenn nicht, sagen wir es dir.</div>
-    </div>
-    <form class="hlsg-form" name="Hero-Gratis-30min-StGallen" data-name="Hero-Gratis-30min-StGallen" data-sg-hero-form novalidate>
-      <input type="hidden" name="quelle" value="launch-hero-sg">
-      <input type="hidden" name="standort" value="St. Gallen">
-      <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name">
-      <input type="tel" name="telefon" placeholder="Handynummer" aria-label="Handynummer" autocomplete="tel">
-      <input type="email" name="email" placeholder="E-Mail (optional)" aria-label="E-Mail" autocomplete="email" inputmode="email">
-      <input type="text" name="wunschzeit" placeholder="Wunschzeit (z. B. Do Nachmittag)" aria-label="Wunschzeit">
-      <div class="cf-turnstile hlsg-ts" data-sitekey={sitekey} data-appearance="interaction-only"></div>
-      <input type="hidden" name="Angebot" value="Ersttermin-Anfrage (Hero St. Gallen)">
-      <input type="hidden" name="Quelle" value="Hero St. Gallen Neueroeffnung">
-      <input type="hidden" name="Seite" value="/standort/st-gallen">
-      <button type="submit">Ersttermin anfragen</button>
-      <p class="hlsg-form-rule">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung per WhatsApp oder Telefon vereinbart.</p>
-      <p class="hlsg-form-err" role="alert" hidden></p>
-    </form>
-  </div>
-</section>
-
-<style>
-  
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  .hlsg-trust { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
-  .hlsg-trust div { display: flex; align-items: center; gap: 7px; }
-  .hlsg-check { color: var(--blue); font-weight: 800; }
-
-  
-  
-
-  .hlsg-offer-sec { background: var(--surface); font-family: var(--font-sans); padding: 0 var(--pad-x) clamp(32px, 5vw, 56px); }
-  .hlsg-offer-sec .hlsg-card { max-width: 520px; margin: 0 auto; }
-
-  .hlsg-card {
-    position: relative; overflow: hidden;
-    background: linear-gradient(160deg, #ffffff, #f2f5f0);
-    border: 1px solid rgba(18, 33, 28, .08); border-radius: var(--r-hero);
-    padding: 32px; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .18);
+<style is:global>
+  .hlsg .hlsg-formcol { display: flex; align-items: center; justify-content: center; min-width: 0;
+    padding: clamp(28px, 4vw, 56px) clamp(16px, 4vw, 56px); }
+  .hlsg .hlsg-formcol .kf { width: 100%; max-width: 560px; box-shadow: 0 24px 60px -24px rgba(2, 11, 16, .35); }
+  @media (min-width: 901px) {
+    .hlsg .lsr-left { align-self: start; position: sticky; top: calc(var(--header-h, 76px) + 24px); }
   }
-  .hlsg-ribbon {
-    position: absolute; top: 16px; right: -42px;
-    background: #FFC107; color: #2a2109; font-weight: 800; font-size: 11.5px; letter-spacing: .08em;
-    padding: 6px 48px; transform: rotate(45deg); box-shadow: 0 6px 18px -6px rgba(0, 0, 0, .3);
+  @media (max-width: 900px) {
+    .hlsg .lsr-inner { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .hlsg .hlsg-formcol { padding: 0 16px 32px; }
   }
-  .hlsg-offer-tag {
-    display: inline-block; background: var(--charcoal); color: #fff;
-    font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    padding: 6px 11px; border-radius: 6px;
-  }
-  .hlsg-offer-big { font-size: clamp(1.6rem, 3vw, 2.05rem); font-weight: 800; letter-spacing: -.02em; margin: 14px 0 5px; line-height: 1.1; }
-  .hlsg-free { color: var(--blue); }
-  .hlsg-offer-note { color: var(--mid); font-size: 14.5px; }
-  .hlsg-scarcity { color: var(--blue-dark); font-weight: 800; }
-  .hlsg-proof { margin-top: 8px; font-size: 13px; color: var(--mid); }
-  .hlsg-stars { color: #FFC107; letter-spacing: 1px; margin-right: 4px; }
-  .hlsg-divider { height: 1px; background: var(--border); margin: 22px 0; }
-
-  .hlsg-form { display: flex; flex-direction: column; gap: 10px; }
-  .hlsg-form input {
-    border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; font-size: 15px;
-    background: #fff; font-family: inherit; color: var(--charcoal);
-  }
-  .hlsg-form input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: transparent; }
-  .hlsg-form button {
-    background: var(--blue); color: #fff; border: none; border-radius: 10px;
-    padding: 14px; font-size: 15.5px; font-weight: 700; cursor: pointer;
-    transition: background var(--t-fast) var(--ease-out);
-  }
-  .hlsg-form button:hover { background: var(--blue-dark); }
-  .hlsg-form-rule { font-size: 12px; color: var(--mid); text-align: center; }
-  .hlsg-ts { min-height: 0; }
-  .hlsg-form-err { font-size: 13px; color: #c0392b; line-height: 1.5; margin-top: 2px; }
-  .hlsg-success { text-align: center; padding: 14px 4px; }
-  .hlsg-success-check {
-    width: 44px; height: 44px; margin: 0 auto 12px; border-radius: 50%;
-    background: var(--blue-light); color: var(--blue-dark);
-    display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800;
-  }
-  .hlsg-success h3 { font-size: 19px; font-weight: 800; color: var(--charcoal); margin: 0 0 8px; letter-spacing: -.01em; }
-  .hlsg-success p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
-
-  @media (max-width: 767px) {
-    .hlsg-offer-sec { padding-left: 16px; padding-right: 16px; }
-    .hlsg-card { padding: 18px; }
-    .hlsg-card, .hlsg-card * { max-width: 100%; }
-    .hlsg-ts { max-width: 100%; overflow-x: auto; }
-    .hlsg-form input, .hlsg-form button { width: 100%; }
-  }
-  
 </style>
-
-<script is:inline>
-  (function () {
-    var f = document.querySelector('[data-sg-hero-form]');
-    if (!f) return;
-    var btn = f.querySelector('button[type="submit"]');
-    var errEl = f.querySelector('.hlsg-form-err');
-    var val = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-    var showErr = function (m) { if (errEl) { errEl.textContent = m; errEl.hidden = false; } };
-    f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (errEl) errEl.hidden = true;
-      var name = val('name'), telefon = val('telefon');
-      if (!name || !telefon) { showErr('Bitte Name und Handynummer angeben.'); return; }
-      // Turnstile token (managed/interaction-only widget; same reader as the site forms).
-      var ts = window.tcmTsToken ? window.tcmTsToken(f)
-        : { el: f.querySelector('.cf-turnstile'), token: (f.querySelector('[name="cf-turnstile-response"]') || {}).value || '' };
-      if (ts.el && !ts.token) { showErr('Kurz bestätigen, dass du kein Roboter bist, dann nochmal senden.'); return; }
-      var data = {
-        name: name, telefon: telefon, email: val('email'), behandlung: val('wunschzeit'),
-        standort: 'St. Gallen', quelle: 'launch-hero-sg',
-        formular: f.getAttribute('name') || '', angebot: val('Angebot'),
-        quelle_detail: val('Quelle'), seite: val('Seite'),
-        zeit: new Date().toISOString(), turnstileToken: ts.token,
-      };
-      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Wird gesendet…'; }
-      fetch('/api/anfrage', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { if (!r.ok) throw new Error('bad_status'); return r.json().catch(function () { return {}; }); })
-        .then(function () {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'formular_senden', form_type: 'allgemein', quelle: 'launch-hero-sg' });
-          var ok = document.createElement('div');
-          ok.className = 'hlsg-success';
-          ok.innerHTML = '<div class="hlsg-success-check" aria-hidden="true">✓</div>' +
-            '<h3>Danke, deine Anfrage ist da.</h3>' +
-            '<p>Wir melden uns in Kürze per WhatsApp oder Telefon mit einem passenden Terminvorschlag für St. Gallen.</p>';
-          f.replaceWith(ok); // inline success in the card; no scroll/redirect
-        })
-        .catch(function () {
-          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Ersttermin anfragen'; }
-          if (window.turnstile && ts.el) { try { window.turnstile.reset(ts.el); } catch (_) {} }
-          showErr('Senden fehlgeschlagen. Bitte per WhatsApp oder Telefon melden.');
-        });
-    });
-  })();
-</script>
