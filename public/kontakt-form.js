@@ -99,6 +99,18 @@
         if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
         if (!ok && rCheckin.checked) { rCheckin.checked = false; return sync(); }
       }
+      // SG-Seite (data-kf-od-mode="sg"): beide Terminarten über OneDoc; EIN Element: ohne Auswahl sekundärer Link,
+      // mit Auswahl Hauptbutton. Spezifische Beschriftung nur mit verifiziertem Direktlink, sonst neutral + gemeinsame Auswahl.
+      if (panel && odBtn && panel.getAttribute('data-kf-od-mode') === 'sg') {
+        var direct = t ? panel.getAttribute('data-kf-od-' + t) : null;
+        var odHref = direct || panel.getAttribute('data-kf-od-default');
+        var anc = odBtn.getAttribute('data-kf-onedoc-anchor');
+        if (!direct && anc && document.getElementById(anc)) odHref = '#' + anc; // gleiche Seite: eingebettete SG-Auswahl
+        odBtn.setAttribute('href', odHref);
+        odBtn.className = t ? 'kf-btn kf-btn--primary' : 'kf-link kf-od-link';
+        odBtn.querySelector('[data-kf-od-label]').textContent = direct ? (t === 'checkin' ? 'Kostenlosen TCM-Check-in online buchen' : 'Ersttermin online buchen') : 'Termin online buchen';
+        panel.hidden = false;
+      } else
       // OneDoc nur bei «Ersttermin mit Behandlung» UND passendem, verifiziertem Kalender (global: erst nach Standortwahl).
       if (panel && odBtn) {
         var href = '';
@@ -175,7 +187,7 @@
       e.preventDefault(); var f = document.getElementById('kf-' + inst + '-fields'); var tel = form.querySelector('[name="telefon"]');
       if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (tel) setTimeout(function () { tel.focus({ preventScroll: true }); }, 350);
     });
-    if (odBtn) odBtn.addEventListener('click', function () { push({ event: 'onedoc_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId() }); });
+    if (odBtn) odBtn.addEventListener('click', function () { push({ event: 'onedoc_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId(), terminart: effType() || 'keine' }); });
     if (telBtn) telBtn.addEventListener('click', function () { push({ event: 'phone_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId() }); });
 
     form.addEventListener('submit', function (e) {

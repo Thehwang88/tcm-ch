@@ -49,7 +49,7 @@ ok(calls.length === 0 && (await ev(pg, 'formular_senden')).length === 0, 'ohne T
 ok(await pg.$eval('#kf-sg-hero-ta-err', (e) => !e.hidden && /wähle/.test(e.textContent)), 'Fehlermeldung Terminart sichtbar');
 await pick(pg, 'sg-hero', 'checkin');
 ok(await pg.$eval(`${card('sg-hero')} [data-kf-submit]`, (b) => b.textContent.trim() === 'TCM-Check-in anfragen →'), 'Submit-Text Check-in');
-ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc-panel]`, (p) => p.hidden), 'Check-in: kein OneDoc-Angebot');
+ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => !a.closest('[data-kf-onedoc-panel]').hidden && a.classList.contains('kf-btn--primary') && a.textContent.trim() === 'Termin online buchen →' && a.getAttribute('href') === '#online-buchen'), 'Check-in: OneDoc-Button (neutral, gemeinsame SG-Auswahl)');
 ok(await pg.$eval(card('sg-unten'), (c) => !c.querySelector('input[name=terminart]:checked')), 'SG unten unbeeinflusst vom Hero');
 await submit(pg, 'sg-hero');
 let c0 = calls[0] || {};
@@ -223,6 +223,45 @@ await pg.close();
 await new Promise((r) => setTimeout(r, 700));
 await pg.evaluate(() => openContactForm(null, 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3'));
 ok(await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value) === OERL_P, 'openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option');
+await pg.close();
+
+console.log('L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)');
+for (const w of [390, 1440]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
+  const od = (i) => pg.$eval(`${card(i)} [data-kf-onedoc-panel]`, (p) => { const a = p.querySelector('[data-kf-onedoc]'); const vis = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
+    return { shown: !p.hidden && vis(a), cls: a.className, label: a.textContent.trim(), href: a.getAttribute('href'), n: [...p.closest('[data-kf]').querySelectorAll('a')].filter((x) => vis(x) && /online buchen|Freie Termine/.test(x.textContent)).length,
+      hint: p.querySelector('.kf-hint').textContent.trim(), alt: p.querySelector('[data-kf-to-fields]').textContent.trim() }; });
+  for (const i of ['sg-hero', 'sg-unten']) {
+    let s0 = await od(i);
+    ok(s0.shown && /kf-link/.test(s0.cls) && !/kf-btn--primary/.test(s0.cls) && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1 && s0.hint === 'Direkt bei OneDoc.' && s0.alt === 'Lieber einen Termin anfragen ↓', `${w}px ${i} ohne Auswahl: sekundärer Link «Termin online buchen →», «Direkt bei OneDoc.», «Lieber einen Termin anfragen ↓»`);
+    await type(pg, i, 'telefon', '+41 79 123 45 67'); await type(pg, i, 'anliegen', 'Test-Eingabe');
+    for (const t of ['checkin', 'behandlung']) {
+      await pick(pg, i, t); s0 = await od(i);
+      ok(s0.shown && /kf-btn--primary/.test(s0.cls) && s0.label === 'Termin online buchen →' && s0.href === '#online-buchen' && s0.n === 1, `${w}px ${i} ${t}: genau ein Hauptbutton «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)`);
+    }
+    ok(await pg.$eval(`${card(i)} [name=telefon]`, (x) => x.value === '+41 79 123 45 67') && await pg.$eval(`${card(i)} [name=anliegen]`, (x) => x.value.endsWith('Test-Eingabe')), `${w}px ${i}: Eingaben bleiben beim Wechsel erhalten`);
+  }
+  await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
+  const oc = await sends(pg, 'onedoc_click'); const o1 = (await ev(pg, 'onedoc_click'))[0] || {};
+  ok(total(oc) === 1 && o1.terminart === 'behandlung' && o1.standort === 'st-gallen' && (await ev(pg, 'formular_senden')).length === 0, `${w}px: OneDoc-Klick → genau 1 onedoc_click (terminart ${o1.terminart}), keine Conversion`);
+  ok(await pg.$eval(card('sg-unten'), (c) => c.querySelector('[data-kf-onedoc]').classList.contains('kf-btn--primary')) && await pg.$eval(card('sg-hero'), (c) => c.querySelector('#kf-sg-hero-ta-behandlung').checked), `${w}px: Hero und unten unabhängig`);
+  await pg.close();
+}
+// Umschaltlogik für später verifizierte Direktlinks: Platzhalter-Ziele NUR im Test-DOM (.invalid), nie im Produkt.
+({ pg, calls } = await open('/standorte/st-gallen/'));
+await pg.$eval(`${card('sg-unten')} [data-kf-onedoc-panel]`, (p) => { p.setAttribute('data-kf-od-checkin', 'https://test.invalid/checkin'); p.setAttribute('data-kf-od-behandlung', 'https://test.invalid/ersttermin'); });
+const lbl = () => pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => [a.textContent.trim(), a.getAttribute('href')].join(' | '));
+await pick(pg, 'sg-unten', 'checkin'); const l1 = await lbl(); await pick(pg, 'sg-unten', 'behandlung'); const l2 = await lbl();
+ok(l1 === 'Kostenlosen TCM-Check-in online buchen → | https://test.invalid/checkin' && l2 === 'Ersttermin online buchen → | https://test.invalid/ersttermin', `mit konfigurierten Direktlinks: spezifische Beschriftung + Ziel (${l1} / ${l2})`);
+await pg.close();
+({ pg, calls } = await open('/standorte/st-gallen/?first30=1'));
+ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => a.classList.contains('kf-btn--primary')) && await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => a.classList.contains('kf-link')), 'Prefill ?first30=1 (Check-in im Hero) → Hero-Button, unten weiterhin Link');
+await pg.close();
+({ pg, calls } = await open('/'));
+await sel(pg, 'home', 'St. Gallen'); await pick(pg, 'home', 'checkin');
+ok(await pg.$eval(`${card('home')} [data-kf-onedoc-panel]`, (p) => p.hidden), 'Homepage unverändert: Check-in mit SG ohne OneDoc');
+await pick(pg, 'home', 'behandlung');
+ok(await pg.$eval(`${card('home')} [data-kf-onedoc]`, (a) => a.textContent.trim() === 'Freie Termine ansehen →' && a.getAttribute('href') === '/standorte/st-gallen/#online-buchen'), 'Homepage unverändert: Behandlung + SG → «Freie Termine ansehen →»');
 await pg.close();
 
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
