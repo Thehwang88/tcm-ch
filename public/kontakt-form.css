@@ -150,3 +150,7 @@
 .kf--ruhig .kf-alt a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--kf-ink);font-weight:700;text-decoration:underline;text-underline-offset:3px;border-radius:8px}
 .kf--ruhig .kf-alt a:focus-visible{outline:3px solid var(--kf-ink);outline-offset:0}
 .kf--ruhig .kf-alt-sep{color:var(--kf-mid)}
+/* Mobile: dekorative Icons vor «Anrufen» / «WhatsApp» (bestehende SVGs, Linkfarbe); Desktop ohne Icons. */
+.kf--ruhig .kf-alt a{gap:6px}
+.kf--ruhig .kf-alt-ic{flex-shrink:0;width:17px;height:17px;display:none}
+@media (max-width:767px){.kf--ruhig .kf-alt-ic{display:block}}

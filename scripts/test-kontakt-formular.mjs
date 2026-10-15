@@ -528,6 +528,74 @@ for (const w of [320, 390, 1440]) {
   await pg.close();
 }
 
+console.log('Q. SG Mobile: Sticky-CTA-Bar erst nach der oberen Box, aus bei unterem Formular/OneDoc/Eingabe; Icons Kontaktlinks');
+const bar = (pg) => pg.evaluate(() => { const b = document.querySelector('.scb-bar'), c = getComputedStyle(b); return { on: b.classList.contains('is-visible'), inert: b.inert === true, op: +c.opacity, pe: c.pointerEvents, aria: b.getAttribute('aria-hidden') }; });
+const to = (pg, y) => pg.evaluate((y) => { document.documentElement.style.scrollBehavior = 'auto'; scrollTo(0, y); }, y);
+const settle = () => new Promise((r) => setTimeout(r, 450));
+const docY = (pg, sel, edge) => pg.evaluate((sel, edge) => { const r = document.querySelector(sel).getBoundingClientRect(); return Math.round((edge === 'top' ? r.top : r.bottom) + scrollY); }, sel, edge);
+for (const w of [320, 390]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
+  let b = await bar(pg);
+  ok(!b.on && b.inert && b.op === 0 && b.pe === 'none' && b.aria === 'true', `${w}px initial (Hero): Bar aus, inert, nicht klickbar`);
+  const boxTop = await docY(pg, H, 'top'), boxEnd = await docY(pg, H, 'bottom');
+  await to(pg, boxTop - 50); await settle(); b = await bar(pg); ok(!b.on && b.inert, `${w}px obere Box sichtbar: Bar aus`);
+  await to(pg, boxEnd - 20); await settle(); b = await bar(pg); ok(!b.on, `${w}px Ende der Box noch im Bild: Bar aus`);
+  await to(pg, boxEnd + 20); await settle(); b = await bar(pg); ok(b.on && !b.inert && b.op === 1 && b.pe === 'auto' && b.aria === null, `${w}px Box-Ende über dem oberen Rand: Bar an, bedienbar`);
+  await to(pg, boxTop + 100); await settle(); b = await bar(pg); ok(!b.on && b.inert, `${w}px zurück zur oberen Box: Bar aus`);
+  // Zusatzfelder + Fehler vergrössern die Box: Entscheidung folgt dem tatsächlichen Ende
+  await pg.$eval(`${H} [data-kf-opt]`, (x) => x.click()); await pg.$eval(`${H} [data-kf-submit]`, (x) => x.click()); await settle();
+  const boxEnd2 = await docY(pg, H, 'bottom');
+  await to(pg, boxEnd + 20); await settle(); b = await bar(pg); ok(boxEnd2 > boxEnd + 100 && !b.on, `${w}px offene Zusatzfelder + Fehler (Box +${boxEnd2 - boxEnd} px): an alter Position Bar aus`);
+  await to(pg, boxEnd2 + 20); await settle(); b = await bar(pg); ok(b.on, `${w}px nach dem neuen Box-Ende: Bar an`);
+  // Unteres Formular und OneDoc
+  for (const id of ['kontakt', 'online-buchen']) { const t = await docY(pg, '#' + id, 'top'); await to(pg, t - 400); await settle(); b = await bar(pg); ok(!b.on && b.inert, `${w}px #${id} sichtbar: Bar aus`); }
+  const team = await docY(pg, '#team-st-gallen', 'top'); await to(pg, team); await settle(); b = await bar(pg); ok(b.on, `${w}px zwischen Box und unterem Formular (Team): Bar an`);
+  // Schnelles Scrollen (Sprünge ohne Pause)
+  for (const y of [0, 99999, team, boxTop, team]) await to(pg, y); await new Promise((r) => setTimeout(r, 120)); b = await bar(pg); ok(b.on, `${w}px schnelles Hin- und Herscrollen: Zustand entspricht Endposition`);
+  // Eingabefokus und Bildschirmtastatur
+  await pg.$eval('[data-kf-instance="sg-unten"] [name=name]', (i) => i.focus({ preventScroll: true })); await settle(); b = await bar(pg); ok(!b.on, `${w}px Eingabefeld fokussiert: Bar aus`);
+  await pg.$eval('[data-kf-instance="sg-unten"] [name=name]', (i) => i.blur()); await settle(); b = await bar(pg); ok(b.on, `${w}px Fokus verlassen: Bar wieder an (Position neu entschieden)`);
+  const kb = await pg.evaluate(() => { const vv = window.visualViewport; if (!vv) return 'n/a'; try { Object.defineProperty(vv, 'height', { configurable: true, get: () => innerHeight * 0.5 }); vv.dispatchEvent(new Event('resize')); return 'ok'; } catch (e) { return 'n/a'; } });
+  await settle(); b = await bar(pg); ok(kb === 'ok' && !b.on, `${w}px Bildschirmtastatur (visualViewport verkleinert): Bar aus`);
+  await pg.evaluate(() => { delete window.visualViewport.height; window.visualViewport.dispatchEvent(new Event('resize')); }); await settle(); b = await bar(pg); ok(b.on, `${w}px Tastatur geschlossen: Bar wieder an`);
+  // Keine Events durch Sichtbarkeitswechsel; Primär → obere Box mit Telefonfokus; WA-Klick 1×
+  ok(calls.length === 0 && await noApp(pg), `${w}px Sichtbarkeitswechsel: keine Events, kein Versand`);
+  const hrefs = await pg.$$eval('.scb-bar a', (as) => as.map((a) => a.getAttribute('href').replace(/\?.*$/, '')).join('|'));
+  ok(hrefs === '#offer-form|#online-buchen|https://wa.me/41775236122|tel:+41775236122', `${w}px Bar-Ziele: Anfrage → #offer-form (obere Box), OneDoc, WhatsApp, Anrufen (${hrefs})`);
+  await pg.$eval('.scb-bar a.scb-out[href^="https://wa.me"]', (x) => { x.addEventListener('click', (e) => e.preventDefault(), { once: true }); x.click(); });
+  let ev2 = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(ev2.length === 1 && ev2[0].event === 'wa_click' && ev2[0].quelle === 'sticky', `${w}px WhatsApp in der Bar: genau 1 wa_click (quelle sticky)`);
+  await pg.$eval('.scb-bar .scb-primary', (x) => x.click()); await settle();
+  b = await bar(pg); ev2 = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).length);
+  ok(await pg.evaluate(() => document.activeElement && document.activeElement.id === 'kf-sg-hero-tel') && !b.on && ev2 === 1 && (await ev(pg, 'formular_senden')).length === 0, `${w}px Bar «Ersttermin anfragen» → obere Box, Telefon fokussiert, Bar aus, kein Zusatz-Event`);
+  // Verdeckung: bei sichtbarer Bar bleibt Seiteninhalt erreichbar (Seitenende über der Bar)
+  await to(pg, team); await settle();
+  ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar').getBoundingClientRect(); return parseFloat(getComputedStyle(document.body).paddingBottom) >= b.height - 1; }), `${w}px Bar überdeckt keinen Inhalt dauerhaft (Body-Abstand ≥ Barhöhe)`);
+  // Icons Kontaktlinks
+  const ic = await pg.evaluate((H) => { const as = [...document.querySelectorAll(H + ' .kf-alt a')], r = (e) => e.getBoundingClientRect(); return as.map((a) => { const s = a.querySelector('svg.kf-alt-ic'), cs = getComputedStyle(s); return { txt: a.textContent.trim(), aria: s.getAttribute('aria-hidden'), foc: s.getAttribute('focusable'), w: Math.round(r(s).width), col: cs.color === getComputedStyle(a).color, mid: Math.abs((r(s).top + r(s).bottom) / 2 - (r(a.querySelector('span')).top + r(a.querySelector('span')).bottom) / 2) <= 2, left: r(s).right <= r(a.querySelector('span')).left, h: Math.round(r(a).height), top: Math.round(r(a).top) }; }).concat([{ ow: document.documentElement.scrollWidth > innerWidth }]); }, H);
+  const [i1, i2, o2] = ic;
+  ok(i1.txt === 'Anrufen' && i2.txt === 'WhatsApp' && [i1, i2].every((x) => x.aria === 'true' && x.foc === 'false' && x.w >= 16 && x.w <= 18 && x.col && x.mid && x.left && x.h >= 44) && i1.top === i2.top && !o2.ow, `${w}px Kontaktlinks mit Icon (Telefonhörer/WhatsApp, ${i1.w} px, dekorativ, Linkfarbe, mittig), nebeneinander, ≥ 44 px, kein Overflow`);
+  await pg.close();
+}
+// Direkter Einstieg und wiederhergestellte Scrollposition
+for (const [hsh, want] of [['#team-st-gallen', true], ['#sg-faq', false], ['#kontakt', false], ['#online-buchen', false], ['#offer-form', false], ['#kf-sg-hero-fields', false]]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/' + hsh));
+  for (let k = 0, last = -1; k < 40; k++) { const y = await pg.evaluate(() => scrollY); if (y === last && k > 3) break; last = y; await new Promise((r) => setTimeout(r, 150)); } await settle();
+  const b = await bar(pg); ok(b.on === want, `Einstieg ${hsh}: Bar ${want ? 'an' : 'aus'}`); await pg.close();
+}
+({ pg, calls } = await open('/standorte/st-gallen/'));
+await to(pg, await docY(pg, '#team-st-gallen', 'top')); await settle(); await pg.reload({ waitUntil: 'load' }); await settle();
+ok((await pg.evaluate(() => scrollY)) > 1000 && (await bar(pg)).on, 'wiederhergestellte Scrollposition (Reload): Bar korrekt an');
+await pg.close();
+// Desktop und andere Seiten unverändert
+({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
+ok(await pg.evaluate(() => getComputedStyle(document.querySelector('.scb-bar')).display === 'none' && [...document.querySelectorAll('[data-kf-instance="sg-hero"] .kf-alt-ic')].every((s) => getComputedStyle(s).display === 'none')), '1440px: keine Mobile-Bar, Kontaktlinks ohne Icons (Desktop unverändert)');
+await pg.close();
+({ pg, calls } = await open('/standorte/basel/'));
+await to(pg, 2500); await settle();
+ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar'); return b.classList.contains('is-visible') && !b.inert && b.querySelector('.scb-primary').getAttribute('href') !== '#offer-form'; }), 'andere Standortseite (Basel): bisherige Bar-Logik unverändert');
+await pg.close();
+
 console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
 for (const g of [true, false]) {
   ({ pg, calls } = await open('/kontakt/', { gtag: g }));
@@ -565,7 +633,7 @@ console.log('N. SG: Hero mit Praxisfoto, USP-Reihe, Kontaktsektion (Buchungsbox 
   const sgHtml = fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8');
   const ids = [...sgHtml.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = [...new Set(ids.filter((x, k) => ids.indexOf(x) !== k))];
   ok(dup.length === 0, `SG: keine doppelten IDs (${dup.join(',') || '–'})`);
-  ok((sgHtml.match(/data-kf-instance="/g) || []).length === 2 && /data-kf-instance="sg-hero"/.test(sgHtml) && /data-kf-instance="sg-unten"/.test(sgHtml), 'SG: genau zwei Formularinstanzen (sg-hero, sg-unten)');
+  ok((sgHtml.match(/ data-kf-instance="/g) || []).length === 2 && /data-kf-instance="sg-hero"/.test(sgHtml) && /data-kf-instance="sg-unten"/.test(sgHtml), 'SG: genau zwei Formularinstanzen (sg-hero, sg-unten)');
   ok((sgHtml.match(/standort-stgallen\.jpg/g) || []).length === 1 && (sgHtml.match(/Über die Praxis/g) || []).length === 1 && (sgHtml.match(/class="usp-grid-section"|class="sg-cta-repeat"/g) || []).length === 0, 'SG: Praxisfoto nur im Hero, «Über die Praxis» nur einmal, alter USP-Block + CTA-Wiederholung entfernt');
 }
 const layout = (pg) => pg.evaluate(() => { const r = (s) => { const e = document.querySelector(s); if (!e) return null; const b = e.getBoundingClientRect(); return { t: Math.round(b.top + scrollY), b: Math.round(b.bottom + scrollY), l: Math.round(b.left), r: Math.round(b.right), h: Math.round(b.height) }; };
