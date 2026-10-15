@@ -189,11 +189,11 @@ if (migrated) {
       .map((t) => teamCardHtml(getPublicTherapistProfile(t)))
       .join('');
     if (!cards) throw new Error('st-gallen: keine Therapeut:innen mit standorte[] st-gallen in therapeuten.ts');
-    // Ein einheitliches Teamraster (15.10.2026): lokale Karten + klinische Leitung als dritte Karte
-    // (eigener Marker, keine .tmc-Karte); die separate Clinical-Lead-Sektion entfällt für St. Gallen.
+    // Ein einheitliches Teamraster: klinische Leitung (netzwerkweit, eigener Marker, keine .tmc-Karte) zuerst,
+    // danach die lokalen Karten; die separate Clinical-Lead-Sektion entfällt für St. Gallen.
     const leadCard = clinicalLeadCardHtml('st-gallen');
     if (!leadCard) throw new Error('st-gallen: Clinical-Lead-Karte leer - clinics/therapeuten prüfen');
-    outBody = outBody.slice(0, tg0) + '<div class="team-grid sg-team-grid">' + cards + leadCard + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
+    outBody = outBody.slice(0, tg0) + '<div class="team-grid sg-team-grid">' + leadCard + cards + '</div>' + outBody.slice(endOfDiv(outBody, tg0));
   }
   if (slug === 'bottighofen') {
     const emanuela = getTherapeut('emanuela-pelican');

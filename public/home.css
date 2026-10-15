@@ -5746,25 +5746,29 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 #sg-beschwerden .sg-bs-cta{text-align:center;margin-top:28px}
 #sg-beschwerden .sg-bs-cta .btn-primary{display:inline-flex;align-items:center;gap:8px}
 #team-st-gallen .content-body{max-width:none}
-#team-st-gallen .sg-team-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px!important;align-items:stretch}
-#team-st-gallen .sg-team-grid .tmc,#team-st-gallen .sg-lead-card{flex-direction:row;align-items:flex-start;height:100%}
-#team-st-gallen .sg-team-grid .tmc-photo,#team-st-gallen .sg-lead-photo{flex:0 0 84px;width:84px;height:105px;aspect-ratio:auto;margin:16px 0 16px 16px;border-radius:12px;overflow:hidden;background:#f5f5f3}
-#team-st-gallen .sg-lead-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-#team-st-gallen .sg-team-grid .tmc-initials span{font-size:26px}
-#team-st-gallen .sg-team-grid .tmc-body,#team-st-gallen .sg-lead-body{flex:1;min-width:0;padding:16px 16px 16px 14px;display:flex;flex-direction:column}
-#team-st-gallen .sg-team-grid .tmc .tmc-title{min-height:0;font-size:10.5px}
-#team-st-gallen .sg-team-grid .tmc .tmc-name{font-size:17px;margin-top:4px!important}
-#team-st-gallen .sg-team-grid .tmc .tmc-focus{min-height:0;font-size:13px;margin-top:6px!important}
-#team-st-gallen .sg-team-grid .tmc .tmc-badges{margin-top:8px!important}
-#team-st-gallen .sg-team-grid .tmc-cta,#team-st-gallen .sg-lead-cta{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:none}
-#team-st-gallen .sg-lead-card{display:flex;background:#fff;border:1px solid #e8e8e8;border-left:3px solid var(--brand,#1AE288);border-radius:18px;overflow:hidden}
-#team-st-gallen .sg-lead-card .sg-lead-label{font-family:var(--font-sans);font-size:10.5px!important;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-ink,#0B7A4C);line-height:1.35;margin:0!important}
-#team-st-gallen .sg-lead-name{font-family:'Figtree',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em;color:#111;line-height:1.2;margin-top:4px}
-#team-st-gallen .sg-lead-role{font-size:12.5px;color:#555;margin-top:2px}
-#team-st-gallen .sg-lead-card p{margin:6px 0 0!important;font-size:13px!important;line-height:1.45!important;color:#555}
-#team-st-gallen .sg-lead-card p.sg-lead-note{font-size:12.5px!important;color:#666}
-@media(max-width:900px){#team-st-gallen .sg-team-grid{grid-template-columns:minmax(0,1fr);gap:12px}}
-@media(max-width:760px){#team-st-gallen .sg-team-grid .tmc-photo,#team-st-gallen .sg-lead-photo{flex-basis:64px;width:64px;height:80px;margin:14px 0 14px 14px;border-radius:10px}#team-st-gallen .sg-team-grid .tmc-initials span{font-size:22px}#team-st-gallen .sg-team-grid .tmc-body,#team-st-gallen .sg-lead-body{padding:14px 14px 14px 12px}#team-st-gallen .sg-team-grid .tmc .tmc-name,#team-st-gallen .sg-lead-name{font-size:16px}}
+/* Team (16.10.2026): drei gleich breite Karten, Porträt oben (einheitlich 4:5, Gesicht im oberen Drittel), Text darunter;
+   klinische Leitung zuerst, gleiche Gestaltung wie die lokalen Karten (keine Sonderumrandung). */
+#team-st-gallen .sg-team-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px!important;align-items:stretch;overflow:visible}
+#team-st-gallen .sg-team-grid .tmc,#team-st-gallen .sg-lead-card{display:flex;flex-direction:column;align-items:stretch;min-width:0;height:100%;background:#fff;border:1px solid #e8e8e8;border-radius:18px;overflow:hidden}
+#team-st-gallen .sg-team-grid .tmc:hover{transform:none}
+#team-st-gallen .sg-team-grid .tmc-photo,#team-st-gallen .sg-lead-photo{flex:none;width:100%;height:auto;aspect-ratio:4/5;margin:0;border-radius:0;overflow:hidden;background:#f5f5f3}
+#team-st-gallen .sg-team-grid .tmc-img,#team-st-gallen .sg-lead-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+#team-st-gallen .sg-team-grid .tmc-initials{display:flex;align-items:center;justify-content:center}
+#team-st-gallen .sg-team-grid .tmc-initials span{font-size:56px}
+#team-st-gallen .sg-team-grid .tmc-body,#team-st-gallen .sg-lead-body{flex:1;min-width:0;padding:18px 20px 20px;display:flex;flex-direction:column}
+#team-st-gallen .sg-team-grid .tmc .tmc-title,#team-st-gallen .sg-lead-card .sg-lead-label{min-height:0;font-family:var(--font-sans);font-size:11px!important;font-weight:700;letter-spacing:.06em!important;text-transform:uppercase!important;color:#555;line-height:1.4;margin:0!important;hyphens:auto;-webkit-hyphens:auto}
+#team-st-gallen .sg-team-grid .tmc .tmc-name,#team-st-gallen .sg-lead-name{font-family:'Figtree',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em;color:#111;line-height:1.2;margin-top:6px!important}
+#team-st-gallen .sg-team-grid .tmc .tmc-focus,#team-st-gallen .sg-lead-role{min-height:0;font-size:13.5px;color:#555;line-height:1.45;margin-top:6px!important}
+#team-st-gallen .sg-team-grid .tmc .tmc-badges{margin-top:10px!important}
+#team-st-gallen .sg-team-grid .tmc-cta,#team-st-gallen .sg-lead-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:none}
+/* Kims Profillink wie die .tmc-Links (globale Inhaltslink-Unterstreichung schliesst nur .tmc aus). */
+#team-st-gallen .sg-lead-cta:not(#w2):not(#w3){align-self:flex-start;font-weight:700;color:var(--brand-black,#020B10);text-decoration:none}
+#team-st-gallen .sg-lead-cta:not(#w2):not(#w3):hover{text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:1px}
+#team-st-gallen .sg-lead-cta:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:3px;border-radius:4px}
+#team-st-gallen .sg-lead-card p{margin:8px 0 0!important;font-size:13.5px!important;line-height:1.45!important;color:#555}
+#team-st-gallen .sg-lead-card p.sg-lead-note{font-size:13px!important;color:#666}
+@media(max-width:1023px){#team-st-gallen .sg-team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media(max-width:640px){#team-st-gallen .sg-team-grid{grid-template-columns:minmax(0,1fr);gap:14px}#team-st-gallen .sg-team-grid .tmc-photo,#team-st-gallen .sg-lead-photo{aspect-ratio:4/3}#team-st-gallen .sg-team-grid .tmc-img,#team-st-gallen .sg-lead-photo img{object-position:center 18%}#team-st-gallen .sg-team-grid .tmc-body,#team-st-gallen .sg-lead-body{padding:16px 16px 18px}}
 #page-standort .section.sg-weiterlesen{padding:8px 0 40px}
 #page-standort .sg-wl{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;border-top:1px solid var(--border);padding-top:18px;font-size:14px;line-height:1.5}
 #page-standort .sg-wl .sg-wl-label{font-family:var(--font-sans);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin:0 4px 0 0}
