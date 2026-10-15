@@ -9,8 +9,12 @@ const srv = http.createServer((q, s) => { let p = decodeURIComponent(q.url.split
 await new Promise((r) => srv.listen(0, '127.0.0.1', r)); const origin = 'http://127.0.0.1:' + srv.address().port;
 const br = await puppeteer.launch({ executablePath: process.env.CHROMIUM || '/opt/pw-browsers/chromium', headless: true, args: ['--no-sandbox', '--no-proxy-server'] });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
-async function open(u, { status = 200, body = { ok: true }, width = 390, referer } = {}) {
+// gtag-Stub wie das echte gtag.js-Snippet: legt Argumente in den dataLayer UND protokolliert jeden Aufruf.
+// So wird ein zweiter Versandweg sichtbar, auch wenn er nicht als {event} im dataLayer landet.
+const GTAG_STUB = `window.dataLayer = window.dataLayer || []; window.__gtagCalls = []; window.gtag = function () { window.__gtagCalls.push([].slice.call(arguments)); window.dataLayer.push(arguments); };`;
+async function open(u, { status = 200, body = { ok: true }, width = 390, referer, gtag = false } = {}) {
   const pg = await br.newPage(); const calls = [];
+  if (gtag) await pg.evaluateOnNewDocument(GTAG_STUB);
   await pg.setRequestInterception(true);
   pg.on('request', (r) => {
     if (r.url().startsWith(origin + '/api/anfrage')) { calls.push(JSON.parse(r.postData() || '{}')); return r.respond({ status, contentType: 'application/json', body: JSON.stringify(body) }); }
@@ -24,6 +28,13 @@ async function open(u, { status = 200, body = { ok: true }, width = 390, referer
 }
 const card = (i) => `[data-kf-instance="${i}"]`;
 const ev = (pg, name) => pg.evaluate((n) => window.dataLayer.filter((e) => e && e.event === n), name);
+/** Alle Versandwege eines Events: dataLayer-Objekte, gtag-Argument-Pushes im dataLayer, gtag-Aufrufe. */
+const sends = (pg, name) => pg.evaluate((n) => {
+  const isArgs = (e) => e && typeof e === 'object' && !Array.isArray(e) && typeof e.length === 'number' && e[0] === 'event';
+  return { dl: window.dataLayer.filter((e) => e && e.event === n).length, args: window.dataLayer.filter((e) => isArgs(e) && e[1] === n).length,
+    gtag: (window.__gtagCalls || []).filter((c) => c[0] === 'event' && c[1] === n).length };
+}, name);
+const total = (x) => x.dl + x.args + x.gtag;
 const pick = (pg, i, v) => pg.$eval(`${card(i)} label[for$="ta-${v}"]`, (l) => l.click());
 const type = (pg, i, n, v) => pg.$eval(`${card(i)} [name="${n}"]`, (el, v) => { el.value += v; el.dispatchEvent(new Event('input')); }, v);
 const submit = async (pg, i) => { await pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 500)); };
@@ -45,7 +56,7 @@ let c0 = calls[0] || {};
 ok(calls.length === 1 && c0.angebot_id === 'TCM_CHECKIN' && c0.standort === 'St. Gallen' && c0.telefon === '+41 79 123 45 67' && !('name' in c0) && !('email' in c0) && !('anliegen' in c0), `Payload phone-only: ${JSON.stringify({ a: c0.angebot_id, s: c0.standort, q: c0.quelle, f: c0.formular })}`);
 ok(c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Gratis-30min-StGallen' && c0.quelle_detail === 'Hero St. Gallen Neueroeffnung' && c0.seite === '/standort/st-gallen', 'Hero-Identifier (quelle/formular/Quelle/Seite) erhalten');
 let fs0 = await ev(pg, 'formular_senden');
-ok(fs0.length === 1 && fs0[0].quelle === 'launch-hero-sg' && fs0[0].terminart === 'checkin' && fs0[0].standort === 'St. Gallen' && !JSON.stringify(fs0).includes('79 123'), `genau 1 formular_senden ohne PII: ${JSON.stringify(fs0[0])}`);
+ok(fs0.length === 1 && fs0[0].quelle === 'launch-hero-sg' && fs0[0].terminart === 'checkin' && fs0[0].standort === 'st-gallen' && !JSON.stringify(fs0).includes('79 123'), `genau 1 formular_senden ohne PII: ${JSON.stringify(fs0[0])}`);
 ok((await ev(pg, 'first30_phone_form_submit')).length === 0, 'kein first30_*-Event');
 ok(await pg.$eval(card('sg-hero'), (c) => /Kostenloser TCM-Check-in in St\. Gallen/.test(c.querySelector('.kf-success').textContent) && /noch kein Termin gebucht/.test(c.textContent)), 'Erfolgsmeldung nennt Terminart + Hinweis');
 ok(await pg.$eval(card('sg-unten'), (c) => !!c.querySelector('[data-kf-form]')), 'SG unten nach Hero-Versand unverändert');
@@ -58,7 +69,7 @@ ok(await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => a.getAttribute(
 ok(await pg.$eval(`${card('sg-unten')} [data-kf-submit]`, (b) => b.textContent.trim() === 'Ersttermin anfragen →'), 'Submit-Text Behandlung');
 await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); }); await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
 let od = await ev(pg, 'onedoc_click'), ph = await ev(pg, 'phone_click');
-ok(od.length === 1 && od[0].standort === 'St. Gallen' && od[0].form_instance === 'sg-unten', 'onedoc_click getrackt');
+ok(od.length === 1 && od[0].standort === 'st-gallen' && od[0].form_instance === 'sg-unten', 'onedoc_click getrackt (Standort-ID)');
 ok(ph.length === 1 && ph[0].quelle === 'kontaktformular', 'phone_click getrackt');
 ok(await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => a.getAttribute('href') === 'tel:+41775236122'), 'SG-Telefon tel:+41775236122');
 for (const [n, v] of [['telefon', '079 123 45 67'], ['name', 'Test Person'], ['email', 'test@beispiel.ch'], ['anliegen', 'Rücken'], ['wunschzeit', 'Do Nachmittag']]) await type(pg, 'sg-unten', n, v);
@@ -157,6 +168,92 @@ await pg.close();
 ({ pg } = await open('/standorte/st-gallen/#first30-kontakt'));
 ok(await pg.$eval(card('sg-unten'), (c) => /beendet/.test(c.textContent) && c.querySelector('#kf-sg-unten-ta-checkin').checked), '#first30-kontakt: Übergang im unteren Formular');
 await pg.close();
+
+console.log('I. Standortstatus und Anfrageart (global, Homepage)');
+const OERL_P = 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3';
+const OERL_N = 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung';
+const LUZ = 'Luzern – Vormerkung, Eröffnung 2027';
+const MUENZ = 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)';
+const ANDERE = 'Andere / in meiner Nähe';
+const visible = (pg, i, s) => pg.$eval(`${card(i)} ${s}`, (e) => !e.hidden && !e.closest('[hidden]'));
+const submitText = (pg, i) => pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.textContent.trim());
+for (const [label, value, art, angebot, btn, okRe] of [
+  ['Oerlikon Partnerpraxis', OERL_P, 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Zürich Oerlikon – Partnerpraxis/],
+  ['Oerlikon neue Praxis', OERL_N, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Zürich Oerlikon – neue Praxis/],
+  ['Luzern', LUZ, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Luzern/],
+  ['Winterthur Münzgasse', MUENZ, 'anfrage', 'STANDORT_ANFRAGE', 'Anfrage senden →', /Deine Anfrage zu Winterthur Münzgasse/],
+  ['Andere / in meiner Nähe', ANDERE, 'routing', 'ROUTING_ANFRAGE', 'Passende Praxis anfragen →', /passende Praxis in deiner Nähe/],
+]) {
+  ({ pg, calls } = await open('/', { gtag: true }));
+  await sel(pg, 'home', value);
+  const tilesShown = await visible(pg, 'home', '.kf-opts');
+  if (art === 'behandlung') {
+    ok(tilesShown && await pg.$eval('#kf-home-ta-checkin', (r) => r.disabled) && await pg.$eval(`${card('home')} [data-kf-onedoc-panel]`, (p) => p.hidden), `${label}: Kacheln sichtbar, Check-in gesperrt, kein OneDoc`);
+    await pick(pg, 'home', 'behandlung');
+  } else {
+    ok(!tilesShown && await visible(pg, 'home', '[data-kf-ziel]') && !(await pg.$eval(card('home'), (c) => /Kostenlos|Diagnostik direkt|Freie Termine/.test(c.querySelector('[data-kf-ziel]').textContent))), `${label}: keine Check-in-/Behandlungskacheln, Zielhinweis ohne Gratis-/Behandlungsangebot`);
+  }
+  ok(await submitText(pg, 'home') === btn, `${label}: Button «${btn}»`);
+  await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home'); c0 = calls[0] || {};
+  ok(calls.length === 1 && c0.standort === value && c0.standort_id === (value === ANDERE ? 'andere' : value.startsWith('Zürich Oerlikon') ? 'zuerich-oerlikon' : value.startsWith('Luzern') ? 'luzern' : 'winterthur-muenzgasse') && c0.angebot_id === angebot, `${label}: Payload kanonisch {standort:"${c0.standort}", standort_id:${c0.standort_id}, angebot_id:${c0.angebot_id}}`);
+  const fsx = await ev(pg, 'formular_senden');
+  ok(fsx.length === 1 && fsx[0].terminart === art && fsx[0].standort === c0.standort_id && total(await sends(pg, 'formular_senden')) === 1, `${label}: genau 1 formular_senden (terminart ${art}, standort-ID), kein gtag-Zweitversand`);
+  ok(okRe.test(await pg.$eval(card('home'), (c) => c.querySelector('.kf-success')?.textContent || '')), `${label}: Bestätigung mit derselben Bedeutung`);
+  await pg.close();
+}
+
+console.log('J. Prefill mehrerer Optionen desselben Standorts');
+for (const [u, want, label] of [
+  ['/?standort=zuerich-oerlikon', OERL_N, 'Slug → Standardziel (Vormerkung neue Praxis, wie bisher PLANNED_PRESELECT)'],
+  ['/?standort=' + encodeURIComponent(OERL_P), OERL_P, 'expliziter Partnerpraxis-Wert bleibt Partnerpraxis'],
+  ['/?standort=' + encodeURIComponent('Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)'), OERL_P, 'sichtbares Label → richtige Option'],
+  ['/?standort=zuerich-oerlikon-0', OERL_P, 'Altwert der früheren Homepage-Liste (<id>-0)'],
+  ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
+  ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
+]) {
+  ({ pg, calls } = await open(u)); await new Promise((r) => setTimeout(r, 700));
+  const v = await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value);
+  ok(v === want, `${label}: ${v}`);
+  await pg.close();
+}
+({ pg, calls } = await open('/kontakt/?von=/standorte/zuerich-oerlikon/'));
+ok(await pg.$eval('#terminform select[name=standort]', (s) => s.value) === OERL_N, 'TerminForm ?von=/standorte/zuerich-oerlikon/ → Standardziel wie bisher');
+await pg.close();
+({ pg, calls } = await open('/?standort=' + encodeURIComponent(OERL_P)));
+await new Promise((r) => setTimeout(r, 700));
+await pg.evaluate(() => openContactForm(null, 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3'));
+ok(await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value) === OERL_P, 'openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option');
+await pg.close();
+
+console.log('K. Conversion über genau einen Versandweg (mit und ohne gtag)');
+for (const g of [true, false]) {
+  ({ pg, calls } = await open('/kontakt/', { gtag: g }));
+  await sel(pg, 'terminform', 'St. Gallen'); await pick(pg, 'terminform', 'checkin');
+  await type(pg, 'terminform', 'telefon', '12'); await submit(pg, 'terminform');
+  ok(total(await sends(pg, 'form_submit')) === 0, `${g ? 'mit' : 'ohne'} gtag: Validierungsfehler → 0 form_submit`);
+  await pg.$eval('#kf-terminform-tel', (i) => { i.value = '+41 79 123 45 67'; });
+  await pg.$eval(`${card('terminform')} [data-kf-submit]`, (b) => { b.click(); b.click(); }); await new Promise((r) => setTimeout(r, 600));
+  const x = await sends(pg, 'form_submit');
+  ok(calls.length === 1 && x.dl === 1 && x.args === 0 && x.gtag === 0, `${g ? 'mit' : 'ohne'} gtag: Erfolg + Doppelklick → genau 1 form_submit (dataLayer ${x.dl}, gtag-Args ${x.args}, gtag-Aufrufe ${x.gtag})`);
+  const fs1 = (await ev(pg, 'form_submit'))[0] || {};
+  ok(fs1.form_id === 'terminform' && fs1.herkunft === '/kontakt/' && fs1.terminart === 'checkin' && fs1.standort === 'st-gallen' && !/79 123|@/.test(JSON.stringify(await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event)))), `${g ? 'mit' : 'ohne'} gtag: Parameter form_id/herkunft/terminart/standort, keine Personendaten im dataLayer`);
+  await pg.close();
+  for (const [st, b] of [[500, { error: 'resend_failed' }], [422, { error: 'invalid_offer_scope' }]]) {
+    ({ pg, calls } = await open('/kontakt/', { gtag: g, status: st, body: b }));
+    await sel(pg, 'terminform', 'Basel'); await pick(pg, 'terminform', 'behandlung'); await type(pg, 'terminform', 'telefon', '+41 79 123 45 67'); await submit(pg, 'terminform');
+    ok(calls.length === 1 && total(await sends(pg, 'form_submit')) === 0, `${g ? 'mit' : 'ohne'} gtag: API ${st} → 0 form_submit`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/standorte/st-gallen/', { gtag: g }));
+  await pick(pg, 'sg-hero', 'checkin'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await pg.$eval(`${card('sg-hero')} [name=website]`, (i) => { i.value = 'bot'; }); await submit(pg, 'sg-hero');
+  ok(calls.length === 0 && total(await sends(pg, 'formular_senden')) === 0, `${g ? 'mit' : 'ohne'} gtag: Honeypot → 0 formular_senden`);
+  await pg.$eval(`${card('sg-unten')} [data-kf-tel]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
+  await pick(pg, 'sg-unten', 'behandlung');
+  await pg.$eval(`${card('sg-unten')} [data-kf-onedoc]`, (a) => { a.addEventListener('click', (e) => e.preventDefault(), { once: true }); a.click(); });
+  const pc = await sends(pg, 'phone_click'), oc = await sends(pg, 'onedoc_click');
+  ok(pc.dl === 1 && total(pc) === 1 && oc.dl === 1 && total(oc) === 1, `${g ? 'mit' : 'ohne'} gtag: phone_click und onedoc_click je genau 1× über dataLayer`);
+  await pg.close();
+}
 
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);

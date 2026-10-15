@@ -10,7 +10,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { build } from 'esbuild';
-import { TERMINARTEN, CHECKIN_FREIGABE, ONEDOC, checkinStandortNamen } from '../src/data/kontakt-angebote.mjs';
+import { TERMINARTEN, CHECKIN_FREIGABE, ONEDOC, checkinStandortNamen, kontaktZiele } from '../src/data/kontakt-angebote.mjs';
 
 let fails = 0;
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
@@ -30,7 +30,16 @@ for (const [id, o] of Object.entries(ONEDOC)) {
   const page = html.get(`dist${o.href.split('#')[0]}index.html`) ?? '';
   ok(new RegExp(`id="${o.anchor}"`).test(page) && /onedoc\.ch\/de\/widget/.test(page), `OneDoc ${id}: ${o.href} mit eingebettetem Widget`);
 }
-ok(TERMINARTEN.checkin.id === 'TCM_CHECKIN' && TERMINARTEN.behandlung.id === 'ERSTTERMIN_BEHANDLUNG', 'Terminart-IDs stabil (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG)');
+ok(TERMINARTEN.checkin.id === 'TCM_CHECKIN' && TERMINARTEN.behandlung.id === 'ERSTTERMIN_BEHANDLUNG' && TERMINARTEN.vormerkung.id === 'VORMERKUNG' && TERMINARTEN.anfrage.id === 'STANDORT_ANFRAGE' && TERMINARTEN.routing.id === 'ROUTING_ANFRAGE', 'Anfrage-IDs stabil (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG, VORMERKUNG, STANDORT_ANFRAGE, ROUTING_ANFRAGE)');
+const Z = kontaktZiele(); const zv = (v) => Z.find((z) => z.value === v);
+ok(new Set(Z.map((z) => z.value)).size === Z.length, `${Z.length} kanonische Ziele mit eindeutigem value`);
+const badZiel = Z.filter((z) => { const c = clinics.find((x) => x.id === z.id); return z.id !== 'andere' && (!c || (c.status === 'operational' ? z.art !== 'behandlung' || z.value !== c.name : !(c.vorab ?? []).some((o) => o.value === z.value))); });
+ok(badZiel.length === 0, 'Ziele = operative Standorte (Name) bzw. vorab-Werte nicht operativer Standorte aus locations.ts');
+ok(zv('Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3')?.art === 'behandlung' && zv('Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung')?.art === 'vormerkung' && !zv('Zürich Oerlikon'), 'Oerlikon: Partnerpraxis (Behandlung) und neue Praxis (Vormerkung) getrennt, kein Ziel «Zürich Oerlikon»');
+ok(zv('Luzern – Vormerkung, Eröffnung 2027')?.art === 'vormerkung' && zv('Winterthur Münzgasse – Anfrage (Standort in Prüfung)')?.art === 'anfrage' && zv('Andere / in meiner Nähe')?.art === 'routing', 'Luzern Vormerkung · Münzgasse Anfrage · «Andere» Routing');
+ok(Z.filter((z) => z.checkin).map((z) => z.value).join() === checkinStandortNamen().join(), 'Check-in nur am regulären Ziel freigegebener Standorte');
+const nonOpTreat = Z.filter((z) => z.art === 'behandlung' && clinics.find((c) => c.id === z.id)?.status !== 'operational');
+ok(nonOpTreat.every((z) => clinics.find((c) => c.id === z.id).vorab.find((o) => o.value === z.value).art === 'behandlung'), `Behandlung an nicht operativem Standort nur mit expliziter vorab-art (${nonOpTreat.map((z) => z.value).join('; ')})`);
 
 console.log('2. Flächen');
 const inst = (s) => [...s.matchAll(/data-kf-instance="([^"]+)"/g)].map((m) => m[1]);
@@ -50,6 +59,10 @@ const ALLOWED_LEGACY = (p, f) => /name="anfrage_typ" value="(massage|zuerich-rou
 const legacy = [];
 for (const [p, s] of html) for (const m of s.matchAll(/<form class="inline-form"[\s\S]*?<\/form>/g)) if (!ALLOWED_LEGACY(p, m[0])) legacy.push(p.replace('dist', ''));
 ok(legacy.length === 0, `kein allgemeines Altformular mehr${legacy.length ? ': ' + legacy.slice(0, 5).join(', ') : ''}`);
+const homeSel = (html.get('dist/index.html').match(/<select[^>]*id="kf-home-standort"[\s\S]*?<\/select>/) || [''])[0];
+const homeOpts = [...homeSel.matchAll(/<option value="([^"]*)" data-id="([^"]*)" data-art="([^"]*)"/g)].map((m) => [m[1].replace(/&amp;/g, '&'), m[2], m[3]]);
+ok(homeOpts.length === Z.length && homeOpts.every(([v, id, a], i) => Z[i].value === v && Z[i].id === id && Z[i].art === a), `globale Auswahl = kanonische Ziele (value, Standort-ID, Zielart; ${homeOpts.length} Optionen)`);
+ok((homeSel.match(/ selected/g) || []).length === 0 && !/<option value="Zürich Oerlikon"/.test(homeSel), 'keine Mehrfach-/Pseudo-Vorauswahl in der globalen Auswahl');
 const tfOld = pages.filter((p) => /class="tf-form"/.test(html.get(p)));
 ok(tfOld.length === 0, 'kein altes TerminForm-Markup (.tf-form)');
 
@@ -91,6 +104,8 @@ const iOk = js.indexOf("if (!(res.ok && res.j && res.j.ok))"); const iConv = js.
 ok(iOk > 0 && iConv > iOk && iConv2 > iOk && (js.match(/event: 'formular_senden'/g) || []).length === 1 && (js.match(/event: 'form_submit'/g) || []).length === 1, 'Conversion-Events nur nach Server-Bestätigung, je genau eine Push-Stelle');
 ok(!/telefon|email|anliegen|name:/.test(js.slice(js.indexOf("event: 'formular_senden'") - 10, js.indexOf("event: 'formular_senden'") + 160)), 'Conversion-Event ohne Telefon/E-Mail/Name/Anliegen');
 ok(!/first30_/.test(js), 'kein first30_*-Event für neue Anfragen');
+ok(!/gtag\s*\(/.test(js.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, '')), 'genau ein Versandweg: kein gtag()-Aufruf neben dataLayer.push');
+ok(/data\.standort = tg\.value; data\.standort_id = tg\.id;/.test(js) && !/standort: data\.standort/.test(js), 'Client sendet kanonischen value + Standort-ID; Analytics nur Standort-ID');
 
 console.log('5. API (Turnstile + Resend gemockt)');
 const { onRequestPost } = await import('../functions/api/anfrage.js');
@@ -114,6 +129,33 @@ for (const [label, body, code] of [
   ['ohne Standort', { ...base, standort: '', telefon: '+41 79 123 45 67', angebot_id: 'ERSTTERMIN_BEHANDLUNG' }, 'missing_standort'],
 ]) { [st, j] = await post(body); ok(st === 422 && j.error === code, `${label} → 422 ${code}`); }
 ok(sent.length === before, 'abgelehnte Anfragen erzeugen keine Mail');
+const tel = '+41 79 123 45 67'; const P = 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3', N = 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung';
+const LU = 'Luzern – Vormerkung, Eröffnung 2027', MZ = 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', AN = 'Andere / in meiner Nähe';
+for (const [label, ort, id, angebot, code, art] of [
+  ['Oerlikon Partnerpraxis + Ersttermin', P, 'zuerich-oerlikon', 'ERSTTERMIN_BEHANDLUNG', 200, 'ERSTTERMIN MIT BEHANDLUNG'],
+  ['Oerlikon neue Praxis + Vormerkung', N, 'zuerich-oerlikon', 'VORMERKUNG', 200, 'VORMERKUNG (STANDORT NOCH NICHT OFFEN)'],
+  ['Luzern + Vormerkung', LU, 'luzern', 'VORMERKUNG', 200, 'VORMERKUNG (STANDORT NOCH NICHT OFFEN)'],
+  ['Münzgasse + Anfrage', MZ, 'winterthur-muenzgasse', 'STANDORT_ANFRAGE', 200, 'ANFRAGE (STANDORT IN PRÜFUNG)'],
+  ['«Andere» + Routing', AN, 'andere', 'ROUTING_ANFRAGE', 200, 'ROUTING-ANFRAGE (KEIN STANDORT GEWÄHLT)'],
+  ['Oerlikon neue Praxis + Ersttermin', N, 'zuerich-oerlikon', 'ERSTTERMIN_BEHANDLUNG', 'invalid_offer_scope'],
+  ['Oerlikon Partnerpraxis + Check-in', P, 'zuerich-oerlikon', 'TCM_CHECKIN', 'invalid_offer_scope'],
+  ['Oerlikon Partnerpraxis + Vormerkung', P, 'zuerich-oerlikon', 'VORMERKUNG', 'invalid_offer_scope'],
+  ['Luzern + Ersttermin', LU, 'luzern', 'ERSTTERMIN_BEHANDLUNG', 'invalid_offer_scope'],
+  ['Luzern + Check-in', LU, 'luzern', 'TCM_CHECKIN', 'invalid_offer_scope'],
+  ['Münzgasse + Ersttermin', MZ, 'winterthur-muenzgasse', 'ERSTTERMIN_BEHANDLUNG', 'invalid_offer_scope'],
+  ['«Andere» + Ersttermin', AN, 'andere', 'ERSTTERMIN_BEHANDLUNG', 'invalid_offer_scope'],
+  ['St. Gallen + Vormerkung', 'St. Gallen', 'st-gallen', 'VORMERKUNG', 'invalid_offer_scope'],
+  ['Basel + Routing', 'Basel', 'basel', 'ROUTING_ANFRAGE', 'invalid_offer_scope'],
+  ['Pseudo-Ziel «Zürich Oerlikon»', 'Zürich Oerlikon', undefined, 'ERSTTERMIN_BEHANDLUNG', 'invalid_standort'],
+  ['unbekannter Ort', 'Fakeort', undefined, 'ERSTTERMIN_BEHANDLUNG', 'invalid_standort'],
+  ['manipulierter Label-Text', 'Luzern (Eröffnung 2027)', undefined, 'VORMERKUNG', 'invalid_standort'],
+  ['Standort-ID passt nicht zum Ziel', 'St. Gallen', 'basel', 'TCM_CHECKIN', 'invalid_standort'],
+]) {
+  const n0 = sent.length; const body = { ...base, quelle: '/', standort: ort, telefon: tel, angebot_id: angebot, ...(id ? { standort_id: id } : {}) };
+  [st, j, mail] = await post(body);
+  if (code === 200) ok(st === 200 && sent.length === n0 + 1 && mail.html.includes(`<strong>${art}</strong>`) && mail.html.includes(`>${ort}<`) && mail.html.includes(`>${id}<`), `${label} → 200, Mail «${art}», Standort kanonisch + ID`);
+  else ok(st === 422 && j.error === code && sent.length === n0, `${label} → 422 ${code}, keine Mail`);
+}
 [st, j, mail] = await post({ ...base, telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN', angebot: 'GRATIS FÜR IMMER' });
 ok(st === 200 && !/GRATIS FÜR IMMER/.test(mail.html), 'Angebotstext kommt nie vom Client');
 [st, j, mail] = await post({ ...base, telefon: '+41 79 123 45 67', angebot_id: 'FIRST30_WINTER_2026_SG' });

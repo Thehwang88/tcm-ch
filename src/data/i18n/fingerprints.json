@@ -9,7 +9,7 @@
   },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
-    "src/data/locations.ts": "c5b19a77624b2fcc"
+    "src/data/locations.ts": "61cc979b1bf2a2d6"
   },
   "hub:therapies": {
     "src/pages/therapien/index.astro": "72ce4330908c0c52"
@@ -21,14 +21,14 @@
   "page:contact": {
     "src/pages/kontakt.astro": "475f2382a59ae236",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
-    "src/data/locations.ts": "c5b19a77624b2fcc"
+    "src/data/locations.ts": "61cc979b1bf2a2d6"
   },
   "page:insurance": {
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
     "src/pages/akupunktur-in-der-naehe.astro": "d755fe876b7a3461",
-    "src/data/locations.ts": "c5b19a77624b2fcc"
+    "src/data/locations.ts": "61cc979b1bf2a2d6"
   },
   "location:kreuzlingen": {
     "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
@@ -42,7 +42,7 @@
     "src/data/standorte.ts#standorte.frauenfeld": "917db6d6c925cd41"
   },
   "location:winterthur-muenzgasse": {
-    "src/data/locations.ts#clinics.winterthur-muenzgasse": "ecebab1207b47461",
+    "src/data/locations.ts#clinics.winterthur-muenzgasse": "18d0ef4ed16a2a5e",
     "src/data/standorte.ts#standorte.winterthur-muenzgasse": "4ecf87f5dad6b016"
   },
   "location:winterthur-marktgasse": {
@@ -58,7 +58,7 @@
     "src/data/standorte.ts#standorte.zuerich-hoengg": "48067c32225802fa"
   },
   "location:zuerich-oerlikon": {
-    "src/data/locations.ts#clinics.zuerich-oerlikon": "881e6ae157c76247",
+    "src/data/locations.ts#clinics.zuerich-oerlikon": "96b56144fb61f867",
     "src/data/standorte.ts#standorte.zuerich-oerlikon": "b12f919dc930f961"
   },
   "location:basel": {
@@ -66,7 +66,7 @@
     "src/data/standorte.ts#standorte.basel": "a3d1edf662a4d828"
   },
   "location:luzern": {
-    "src/data/locations.ts#clinics.luzern": "bb4c27b3123c64e2"
+    "src/data/locations.ts#clinics.luzern": "e1eac8017104a07f"
   },
   "location:bern": {
     "src/data/locations.ts#clinics.bern": "b4b3286320225e71"

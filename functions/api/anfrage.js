@@ -1,7 +1,7 @@
 // PRODUCTION — POST /api/anfrage → Resend email to termine@tcm.ch
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
-import { OFFER_BY_ID, checkinStandortNamen } from '../../src/data/kontakt-angebote.mjs';
+import { OFFER_BY_ID, ZIELART_FUER, zielFuer } from '../../src/data/kontakt-angebote.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -45,14 +45,19 @@ export async function onRequestPost({ request, env }) {
     const _emailOk = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '').trim());
     let offer = null;
     const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
-    // Gemeinsames Kontaktformular: TCM_CHECKIN / ERSTTERMIN_BEHANDLUNG. Pflicht ist NUR eine gültige Telefonnummer
-    // plus eindeutiger Standort; Name, E-Mail, Anliegen optional (nichts wird erfunden). Eine angegebene E-Mail wird
-    // validiert. Check-in nur für freigegebene Standorte (CHECKIN_FREIGABE). Texte kommen nie vom Client.
+    // Gemeinsames Kontaktformular (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG, VORMERKUNG, STANDORT_ANFRAGE, ROUTING_ANFRAGE).
+    // Pflicht ist NUR eine gültige Telefonnummer plus ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
+    // die Angebots-ID muss zur Zielart passen (Vormerkung/Anfrage/Routing nie als Behandlung, Check-in nur für das
+    // freigegebene reguläre Ziel). Name, E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert.
     const neu = offerId ? OFFER_BY_ID[offerId] : null;
     if (neu) {
       const ort = String(d.standort || '').trim();
       if (!ort) return J({ error: 'missing_standort' }, 422);
-      if (neu.terminart === 'checkin' && checkinStandortNamen().indexOf(ort) < 0) return J({ error: 'invalid_offer_scope' }, 422);
+      const ziel = zielFuer(ort);
+      if (!ziel) return J({ error: 'invalid_standort' }, 422);
+      if (d.standort_id != null && String(d.standort_id).trim() !== ziel.id) return J({ error: 'invalid_standort' }, 422);
+      if (ZIELART_FUER[neu.terminart] !== ziel.art || (neu.terminart === 'checkin' && !ziel.checkin)) return J({ error: 'invalid_offer_scope' }, 422);
+      d.standort_id = ziel.id;
       if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
       if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
       offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff };
@@ -107,7 +112,7 @@ export async function onRequestPost({ request, env }) {
       ['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined],
       ['Angebots-ID', offer ? offerId : undefined],
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
-      ['Standort', d.standort],
+      ['Standort', d.standort], ['Standort-ID', d.standort_id],
       ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen], ['Wunschzeit', d.wunschzeit],

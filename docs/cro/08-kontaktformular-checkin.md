@@ -42,23 +42,49 @@ Freischalten: Eintrag in `CHECKIN_FREIGABE` (Name exakt wie im Formular). Server
 
 OneDoc: einziger verifizierter Kalender ist das St.-Galler Widget (`/standorte/st-gallen/#online-buchen`). Er wird nur bei «Ersttermin mit Behandlung» angeboten, auf globalen Formularen erst nach Wahl von St. Gallen. Kein Gratis-Termintyp in OneDoc verifiziert, daher läuft der Check-in immer über die Anfrage.
 
+## Standort-Ziele und Anfrageart (Review 15.10.2026)
+Quelle: `kontaktZiele()` in `src/data/kontakt-angebote.mjs`, abgeleitet aus `src/data/locations.ts` (`status`, `vorab[].art`). Dieselbe Liste speist Auswahl, Client, Server und Gates.
+
+| Ziel (kanonischer `value`, geht unverändert an Server und Mail) | Standort-ID | Zielart | Kacheln | Button | Angebots-ID |
+|---|---|---|---|---|---|
+| operativer Standort (z. B. `St. Gallen`, `Basel`, Partnerpraxen Kreuzlingen/Frauenfeld/Höngg) | Slug | behandlung | Check-in (nur freigegeben) + Ersttermin | Check-in / Ersttermin anfragen | `TCM_CHECKIN` / `ERSTTERMIN_BEHANDLUNG` |
+| `Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3` | zuerich-oerlikon | behandlung (explizit `art`) | Ersttermin (Check-in gesperrt), kein OneDoc | Ersttermin anfragen | `ERSTTERMIN_BEHANDLUNG` |
+| `Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung` | zuerich-oerlikon | vormerkung | keine | Vormerkung senden | `VORMERKUNG` |
+| `Luzern – Vormerkung, Eröffnung 2027` | luzern | vormerkung | keine | Vormerkung senden | `VORMERKUNG` |
+| `Winterthur Münzgasse – Anfrage (Standort in Prüfung)` | winterthur-muenzgasse | anfrage | keine | Anfrage senden | `STANDORT_ANFRAGE` |
+| `Andere / in meiner Nähe` | andere | routing | keine | Passende Praxis anfragen | `ROUTING_ANFRAGE` |
+
+Bei Vormerkung, Anfrage und Routing sind die Kacheln ausgeblendet; ein neutraler Hinweis benennt die Bedeutung (Vormerkung: «Eine Behandlung oder Diagnostik vor der Eröffnung ist damit nicht verbunden.»). Bestätigung und Mail-Klassifikation folgen derselben Zielart. Prefill: exakter `value` > sichtbares Label > Standort-ID (Standardziel = letzte vorab-Option, wie bisher `PLANNED_PRESELECT`) > Altwert `<id>-<n>`; eine explizite Partnerpraxis-Auswahl springt nie auf die Vormerkung.
+
 ## Server-Vertrag `/api/anfrage`
-- Neue IDs `TCM_CHECKIN`, `ERSTTERMIN_BEHANDLUNG` (aus `kontakt-angebote.mjs`): Pflicht nur gültige Telefonnummer (7–15 Ziffern, `+41`, `0041`, internationale Vorwahlen, Leerzeichen) und nicht leerer Standort. Name, E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert (422 `invalid_email`). Check-in nur für freigegebene Standorte (422 `invalid_offer_scope`), ohne Standort 422 `missing_standort`.
-- Mail an termine@tcm.ch: Anfrageart / Terminart / Angebots-ID zuoberst, Betreff-Suffix « · TCM-Check-in» bzw. « · Ersttermin mit Behandlung». `reply_to` nur bei angegebener E-Mail. Keine Patientenmail (gab es nie).
-- Historische IDs `FIRST30_WINTER_2026_SG`, `…_WARTELISTE`, `ERSTTERMIN_REGULAER_SG` bleiben mit unveränderten Regeln gültig (offene Browser-Tabs), werden von keinem Formular mehr gesendet.
+- Neue IDs (`TCM_CHECKIN`, `ERSTTERMIN_BEHANDLUNG`, `VORMERKUNG`, `STANDORT_ANFRAGE`, `ROUTING_ANFRAGE`): Pflicht nur gültige Telefonnummer (7–15 Ziffern, `+41`, `0041`, internationale Vorwahlen, Leerzeichen) und ein **kanonisches Ziel**. Unbekannter oder manipulierter Standortwert (auch Label-Text statt `value`, Pseudo-Ziel «Zürich Oerlikon») → 422 `invalid_standort`; `standort_id`, die nicht zum Ziel passt → 422 `invalid_standort`; Angebots-ID passt nicht zur Zielart (z. B. Ersttermin für Luzern, Check-in für die Oerlikon-Partnerpraxis, Vormerkung für St. Gallen) → 422 `invalid_offer_scope`; leerer Standort → 422 `missing_standort`. Name, E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert (422 `invalid_email`).
+- Mail an termine@tcm.ch: Anfrageart / Terminart / Angebots-ID zuoberst, Zeilen «Standort» (kanonischer value) und «Standort-ID», Betreff-Suffix je Art (« · TCM-Check-in», « · Ersttermin mit Behandlung», « · Vormerkung», « · Standort in Prüfung», « · Routing»). `reply_to` nur bei angegebener E-Mail. Keine Patientenmail.
+- Historische IDs `FIRST30_WINTER_2026_SG`, `…_WARTELISTE`, `ERSTTERMIN_REGULAER_SG` bleiben mit unveränderten Regeln gültig (offene Browser-Tabs), werden von keinem Formular mehr gesendet. Spezialformular-Verträge (Massage, Zürich-Routing, Wartelisten, Akademie, Partner, Praxisnachfolge) unverändert.
 - Honeypot, Turnstile, Formular-Präfix im Betreff unverändert.
 
-## Tracking (Franca) — Code-Seite, keine GTM/GA4/Ads-Änderung
+## Tracking — Code-Seite (keine GTM/GA4/Ads-Änderung)
+**Ein Versandweg:** alle Events gehen ausschliesslich per `window.dataLayer.push` an GTM. Der frühere zusätzliche `gtag('event','form_submit',…)`-Aufruf des Standardformulars ist entfernt (er wäre bei vorhandenem `gtag` ein zweiter Versand gewesen; auf den gebauten Seiten definiert der Code selbst kein `gtag`).
+
 | Event | Vorher | Nachher |
 |---|---|---|
-| `formular_senden` | home.js-Familie + SG-Hero, nach HTTP-ok (auch Honeypot-Antwort) | gleiche Flächen, **genau einmal nach `res.ok && data.ok`**, Honeypot sendet nicht; Parameter `form_type`, `quelle` unverändert, **neu** `terminart` (`checkin`/`behandlung`) und `standort` (Ortsname) |
-| `form_submit {form_id:'terminform', herkunft}` | TerminForm, **vor** dem Versand (zählte Fehlversuche, T1) | nur nach Server-Bestätigung; neu `terminart`, `standort`. gtag-Fallback unverändert |
-| `first30_*` | SG-Kampagne | entfällt für neue Anfragen |
-| `phone_click` | bestehender Name (Zürich-CTAs) | auch am Anruf-Button: `{quelle:'kontaktformular', form_instance, standort}` |
-| `onedoc_click` | – (nur Widget-eigene Events) | **neu** am Button «Freie Termine ansehen»: `{quelle:'kontaktformular', form_instance, standort}`; der Link zeigt weiterhin auf `#online-buchen`, bestehende Klick-Trigger auf diese URL greifen weiter |
+| `formular_senden` | home.js-Familie + SG-Hero, nach HTTP-ok (auch Honeypot-Antwort) | gleiche Flächen, genau einmal nach `res.ok && data.ok`, Honeypot sendet nicht; `form_type`, `quelle` unverändert; neu `terminart` (`checkin`/`behandlung`/`vormerkung`/`anfrage`/`routing`) und `standort` (**Standort-ID**, z. B. `st-gallen`, `andere`) |
+| `form_submit {form_id:'terminform', herkunft}` | TerminForm, **vor** dem Versand, plus gtag-Aufruf falls vorhanden | nur nach Server-Bestätigung, nur dataLayer; neu `terminart`, `standort` (ID) |
+| `first30_whatsapp_click`, `first30_cta_click`, `first30_cta_dismiss`, `first30_bottom_select`, `first30_phone_form_submit`, `first30_bottom_form_submit` | SG-Kampagne | **abgeschaltet** (Kampagnen-Hero/Pill/Wähler nicht mehr gerendert) |
+| `phone_click` | bestehender Name (Zürich-CTAs) | auch am Anruf-Button: `{quelle:'kontaktformular', form_instance, standort (ID)}` |
+| `onedoc_click` | – (nur Widget-eigene Events) | neu am Button «Freie Termine ansehen»: `{quelle:'kontaktformular', form_instance, standort (ID)}`; Link weiterhin `#online-buchen` |
 | `quelle` | `launch-hero-sg`, `sg-kontakt-bottom`, Pfad, `Beschwerde: …`, `Therapie: …`, `?quelle=` | unverändert |
 
-Keine Telefonnummern, E-Mails, Namen oder Anliegen in Events. **Für Franca zu prüfen** (nicht im Repo sichtbar): (1) Wenn GTM `form_submit` als Conversion zählt, sinkt die Zahl ab Release auf echte Erfolge (T1-Korrektur, Lernphase Ads). (2) Etwaige Trigger/Tabellen auf `first30_*` oder `angebot = FIRST 30 …` liefern ab Release nichts mehr. (3) `terminart`/`standort` als Event-Parameter optional als Dimension anlegen. (4) GTM-Formular-Trigger auf `name="Hero-Gratis-30min-StGallen"` bleiben möglich (Name erhalten).
+Keine Telefonnummern, E-Mails, Namen, Anliegen oder freien Standort-Texte in Events.
+
+**Im Code und mit Mocks nachgewiesen** (`scripts/test-kontakt-formular.mjs`, gemocktes `/api/anfrage`, externe Requests blockiert): je erfolgreichem Versand genau ein logisches Conversion-Ereignis über den dataLayer, auch mit einem realistisch instrumentierten `gtag`-Stub (Argumente in den dataLayer + Aufrufprotokoll) kein zweiter Versand; 0 Ereignisse bei Validierungsfehler, API 422/500, Honeypot; Doppelklick = 1; `onedoc_click` und `phone_click` je 1×; keine Personendaten im dataLayer. Eine Mutation (zusätzlicher gtag-Aufruf) wird vom Test erkannt.
+
+**Noch nicht geprüft — Francas GTM-/Ads-Setup** (nicht im Repo sichtbar, nichts veröffentlicht):
+1. Zählt GTM `form_submit` als Key-Event/Ads-Conversion, sinkt die Zahl ab Release auf echte Erfolge (vorher inkl. Fehlversuche). Lernphase/Annotation einplanen.
+2. Falls ein GTM-Tag zusätzlich auf einen gtag-Aufruf reagierte, entfällt dieser Pfad; der dataLayer-Event bleibt.
+3. Trigger, Variablen oder Tabellen auf `first30_*` oder auf `angebot = FIRST 30 …` liefern ab Release nichts mehr; Berichte mit diesen Events enden am Release-Datum.
+4. Neue Parameter `terminart`/`standort` (ID statt Ortsname) und das Event `onedoc_click` sind ungemappt, bis Franca sie anlegt.
+5. GTM-Formular-Trigger auf `name="Hero-Gratis-30min-StGallen"` bleiben möglich (Name erhalten), sehen aber jetzt das neue Formular.
+6. Ob die tatsächliche Verarbeitung (Consent/CookieYes, GA4-Key-Events, Ads-Conversion-Aktionen) korrekt einmal zählt, ist erst in GTM-Preview auf `/`, `/kontakt/` und `/standorte/st-gallen/` nachweisbar.
 
 ## Prefill
 | Einstieg | Wirkung |
@@ -74,3 +100,6 @@ Prefill wird einmal beim Laden gesetzt; Kachelwechsel überschreiben keine Einga
 
 ## SG-Hero
 Linke Hälfte wörtlich aus Commit `4adc79c8` (`src/components/HeroLaunchSG.astro`, 12.10.2026, letzter regulärer Stand vor `1531b7fe` FIRST 30): Eyebrow «TCM.ch Praxis · St. Gallen», H1 «Akupunktur & TCM in St. Gallen», Lead «Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Wir begleiten dich persönlich, egal worum es geht.», Trust «Krankenkassen anerkannt (EMR/ASCA) · Oberer Graben 22, St. Gallen · Termin direkt anfragen», CTAs «Ersttermin anfragen» / «Termin direkt online buchen», «Anrufen · WhatsApp», Hinweis zur unverbindlichen Anfrage, Öffnungszeiten Mo–Sa 07:30–19:30 · So 08:00–17:00 (deckungsgleich mit Schema und «Über die Praxis»). Rechte Hälfte: gemeinsames Formular. `FIRST30.campaignActive = false` schaltet Kampagnen-Hero, Pill/Strip, Homepage-Tag, Leaf-Geschenk-CTAs und unteren Wähler ab.
+
+## i18n
+`src/data/locations.ts` erhielt nur das Steuerfeld `vorab[].art` (Münzgasse, Oerlikon ×2, Luzern); `value`, `label` und `labelEn` sind unverändert. Geprüft: alle 52 EN-Seiten byte-identisch zum main-Build, EN-Formulare (`AppointmentForm.astro`) nutzen die neuen IDs nicht. Daher keine EN-Textänderung nötig; die sechs betroffenen Fingerprints (hub:locations, page:contact, page:near-me, location:winterthur-muenzgasse, location:zuerich-oerlikon, location:luzern) wurden nach dieser Prüfung mit `check-i18n.mjs --update` neu erfasst.

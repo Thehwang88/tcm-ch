@@ -11,7 +11,10 @@ function openContactForm(prefillBeschwerde, prefillStandort){
   if(!t) return;
   if(prefillStandort){
     var sel = t.querySelector('select[name="standort"]');
-    if(sel){ for(var i=0;i<sel.options.length;i++){ var _o=sel.options[i]; if(_o.value===prefillStandort||_o.getAttribute('data-id')===prefillStandort){ sel.selectedIndex=i; sel.dispatchEvent(new Event('change')); break; } } }
+    // Gemeinsames Kontaktformular: dieselbe Auswahl-Logik wie kontakt-form.js (exakter value > Label > Standard-Ziel der ID),
+    // damit eine Vorab-/Partnerpraxis-Option nie auf eine andere Option desselben Standorts springt.
+    if(sel && typeof window.kfPickOption==='function' && sel.closest('[data-kf]')){ var _k=window.kfPickOption(sel,prefillStandort); if(_k>0){ sel.selectedIndex=_k; sel.dispatchEvent(new Event('change')); } }
+    else if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===prefillStandort){ sel.selectedIndex=i; break; } } }
   }
   t.scrollIntoView({behavior:'smooth',block:'start'});
 }

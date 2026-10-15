@@ -40,7 +40,11 @@ export interface Clinic {
   /** Formular-Optionen, solange status 'planned' ist (statt der regulären Option), z. B. sofortige
    *  Partnerpraxis + Vormerkung. Letzte Option = Vorauswahl auf der eigenen Standortseite.
    *  value landet unverändert im Betreff der Anfrage (Routing durchs Team). */
-  vorab?: { value: string; label: string; labelEn?: string }[];
+  vorab?: { value: string; label: string; labelEn?: string;
+    /** Bedeutung der Option im Kontaktformular (Auswahl, Button, Bestätigung, Mail, Server-Validierung):
+     *  'behandlung' = sofort verfügbare Praxis (z. B. Partnerpraxis), 'vormerkung' = Termininteresse nach Eröffnung,
+     *  'anfrage' = neutrale Anfrage ohne Behandlungszusage (Standort in Prüfung). Fehlt sie: review → anfrage, planned → vormerkung. */
+    art?: 'behandlung' | 'vormerkung' | 'anfrage' }[];
 }
 
 export const clinics: Clinic[] = [
@@ -67,7 +71,7 @@ export const clinics: Clinic[] = [
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
     // Betriebsstatus nicht bestätigt (Stand 11.10.2026): 'review' bis zur Bestätigung durch die Inhaber:in.
     openingHours: [], status: 'review', openingNote: 'Status under review',
-    vorab: [{ value: 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', label: 'Winterthur Münzgasse (Standort in Prüfung)', labelEn: 'Winterthur Münzgasse (confirmation pending)' }],
+    vorab: [{ value: 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', label: 'Winterthur Münzgasse (Standort in Prüfung)', labelEn: 'Winterthur Münzgasse (confirmation pending)', art: 'anfrage' }],
     geo: { lat: 47.4998, lng: 8.7290 },
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 
@@ -94,8 +98,8 @@ export const clinics: Clinic[] = [
     // Inhaber:in den Betrieb bestätigt; dann status 'operational' + verifizierte openingHours setzen.
     openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'planned', openingNote: 'Opening planned for 1 December 2026',
     vorab: [
-      { value: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3', label: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)', labelEn: 'Zürich Oerlikon – partner practice Praxis Hwang (appointments now)' },
-      { value: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung', label: 'Zürich Oerlikon – neue Praxis (Eröffnung geplant 1.12.2026)', labelEn: 'Zürich Oerlikon – new clinic (opening planned 1 Dec 2026)' },
+      { value: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3', label: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)', labelEn: 'Zürich Oerlikon – partner practice Praxis Hwang (appointments now)', art: 'behandlung' },
+      { value: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung', label: 'Zürich Oerlikon – neue Praxis (Eröffnung geplant 1.12.2026)', labelEn: 'Zürich Oerlikon – new clinic (opening planned 1 Dec 2026)', art: 'vormerkung' },
     ],
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
@@ -108,7 +112,7 @@ export const clinics: Clinic[] = [
   { id: 'luzern', name: 'Luzern', city: 'Luzern', region: 'Central Switzerland',
     street: null, postalCode: null, phone: '+41 77 523 61 22',
     openingHours: [], geo: { lat: 47.0502, lng: 8.3093 }, status: 'planned', openingNote: 'Opening in 2027',
-    vorab: [{ value: 'Luzern – Vormerkung, Eröffnung 2027', label: 'Luzern (Eröffnung 2027)', labelEn: 'Lucerne (opening 2027)' }],
+    vorab: [{ value: 'Luzern – Vormerkung, Eröffnung 2027', label: 'Luzern (Eröffnung 2027)', labelEn: 'Lucerne (opening 2027)', art: 'vormerkung' }],
     areaServed: ['Luzern', 'Kriens', 'Emmen', 'Emmenbrücke', 'Horw', 'Ebikon', 'Littau', 'Meggen'] },
 
   { id: 'bern', name: 'Bern', city: 'Bern', region: 'Bern-Mittelland',

@@ -1,17 +1,37 @@
 /* TCM.ch · Gemeinsames Kontaktformular (15.10.2026). Initialisiert JEDE Instanz [data-kf] einzeln (eigene IDs,
    eigener Zustand: SG-Hero und SG unten beeinflussen sich nicht). Markup: src/lib/kontakt-form.ts.
-   Tracking (keine Personendaten, keine Freitexte):
+   Standort-Ziele (src/data/kontakt-angebote.mjs): jede Option trägt value (kanonisch, geht unverändert an Server/Mail),
+   data-id (Standort-ID) und data-art (behandlung | vormerkung | anfrage | routing). Nicht-Behandlungsziele blenden die
+   Kacheln aus und senden ihre eigene Anfrageart; Button, Bestätigung und Mail tragen dieselbe Bedeutung.
+   Tracking (keine Personendaten, keine Freitexte), EIN Versandweg: window.dataLayer.push (GTM). Kein gtag-Aufruf.
    - Conversion GENAU EINMAL nach Server-Bestätigung (res.ok && data.ok), nie bei Validierungs-/Versandfehler:
        data-kf-conv="formular_senden" → {event:'formular_senden', form_type, quelle, terminart, standort}   (home.js-Vertrag)
        data-kf-conv="form_submit"     → {event:'form_submit', form_id:'terminform', herkunft, terminart, standort} (TerminForm-Vertrag)
+     terminart ∈ checkin | behandlung | vormerkung | anfrage | routing; standort = Standort-ID (z. B. 'st-gallen', 'andere').
    - {event:'onedoc_click', quelle:'kontaktformular', form_instance, standort} beim OneDoc-Button
    - {event:'phone_click', quelle:'kontaktformular', form_instance, standort} beim Anruf-Button (bestehender Event-Name) */
 (function () {
   'use strict';
   if (window.__kfLoaded) return; window.__kfLoaded = true;
 
-  var SUBMIT = { '': 'Anfrage senden', checkin: 'TCM-Check-in anfragen', behandlung: 'Ersttermin anfragen' };
-  var ANGEBOT = { checkin: 'TCM_CHECKIN', behandlung: 'ERSTTERMIN_BEHANDLUNG' };
+  var SUBMIT = { '': 'Anfrage senden', checkin: 'TCM-Check-in anfragen', behandlung: 'Ersttermin anfragen', vormerkung: 'Vormerkung senden', anfrage: 'Anfrage senden', routing: 'Passende Praxis anfragen' };
+  var ANGEBOT = { checkin: 'TCM_CHECKIN', behandlung: 'ERSTTERMIN_BEHANDLUNG', vormerkung: 'VORMERKUNG', anfrage: 'STANDORT_ANFRAGE', routing: 'ROUTING_ANFRAGE' };
+  var ZIEL = {
+    vormerkung: ['Vormerkung', 'Dieser Standort ist noch nicht eröffnet. Wir merken dich vor und melden uns, sobald dort Termine möglich sind. Eine Behandlung oder Diagnostik vor der Eröffnung ist damit nicht verbunden.'],
+    anfrage: ['Anfrage', 'Der Betrieb an diesem Standort ist noch nicht bestätigt. Wir melden uns und schlagen dir eine passende Praxis in der Nähe vor.'],
+    routing: ['Passende Praxis finden', 'Wir schlagen dir eine passende Praxis in deiner Nähe vor und melden uns bei dir.'],
+  };
+  /** Option für einen Prefill-Wert: exakter value > Label > Standort-ID (Standardziel data-default) > Altwert «<id>-<n>».
+   *  Eine explizite Vorab-/Partnerpraxis-Auswahl springt so nie auf eine andere Option desselben Standorts. */
+  var pickOption = function (sel, v) {
+    if (!sel || !v) return -1; v = String(v).trim(); var o = sel.options, i, m;
+    for (i = 1; i < o.length; i++) if (o[i].value === v) return i;
+    for (i = 1; i < o.length; i++) if (o[i].text.trim() === v) return i;
+    for (i = 1; i < o.length; i++) if (o[i].getAttribute('data-id') === v && o[i].getAttribute('data-default') === '1') return i;
+    if ((m = v.match(/^(.+)-(\d+)$/))) { var same = [], n = +m[2]; for (i = 1; i < o.length; i++) if (o[i].getAttribute('data-id') === m[1]) same.push(i); if (same[n] != null) return same[n]; }
+    return -1;
+  };
+  window.kfPickOption = pickOption;
   var phoneOk = function (s) { var t = String(s || '').trim(); var d = t.replace(/\D/g, ''); return /^\+?[0-9 ()\/.\-]{7,24}$/.test(t) && d.length >= 7 && d.length <= 15; };
   var emailOk = function (s) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '').trim()); };
   var push = function (o) { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push(o); } catch (e) {} };
@@ -39,7 +59,16 @@
 
     var chosen = function () { var r = radios.filter(function (x) { return x.checked; })[0]; return r ? r.value : ''; };
     var opt = function () { return sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null; };
-    var standortLabel = function () { if (fixedName) return fixedName; var o = opt(); return o ? o.text.trim() : ''; };
+    var fixedId = card.getAttribute('data-kf-standort-id') || '';
+    var zielBox = form.querySelector('[data-kf-ziel]'); var opts = form.querySelector('.kf-opts');
+    /** Gewähltes Ziel: {value (kanonisch), id, art, label}; fest = operativer Standort der Seite. */
+    var target = function () {
+      if (fixedName) return { value: fixedName, id: fixedId, art: 'behandlung', label: fixedName };
+      var o = opt(); return o ? { value: o.value, id: o.getAttribute('data-id') || '', art: o.getAttribute('data-art') || 'behandlung', label: o.text.trim() } : null;
+    };
+    /** Effektive Anfrageart: Behandlungsziele → gewählte Kachel; sonst die Zielart selbst. */
+    var effType = function () { var tg = target(); return tg && tg.art !== 'behandlung' ? tg.art : chosen(); };
+    var standortId = function () { var tg = target(); return tg ? tg.id : ''; };
     var checkinAllowed = function () { if (fixedName) return fixedCheckin; var o = opt(); return !o || o.getAttribute('data-checkin') === '1'; };
 
     function fieldErr(name, msg) {
@@ -52,7 +81,14 @@
     function clearErrs() { ['terminart', 'standort', 'telefon', 'email'].forEach(function (n) { fieldErr(n, ''); }); if (errBox) errBox.hidden = true; }
 
     function sync() {
-      var t = chosen();
+      var tg = target(); var nonTreat = !!(tg && tg.art !== 'behandlung');
+      // Vormerkung / Standort in Prüfung / Routing: keine Check-in- oder Behandlungskacheln, Bedeutung sichtbar benannt.
+      if (opts) opts.hidden = nonTreat;
+      if (zielBox) {
+        zielBox.hidden = !nonTreat;
+        if (nonTreat) { var zt = ZIEL[tg.art] || ZIEL.anfrage; zielBox.querySelector('[data-kf-ziel-h]').textContent = zt[0] + (tg.art === 'routing' ? '' : ': ' + tg.label); zielBox.querySelector('[data-kf-ziel-t]').textContent = zt[1]; }
+      }
+      var t = effType();
       card.classList.toggle('kf--checkin', t === 'checkin'); card.classList.toggle('kf--behandlung', t === 'behandlung');
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });
       if (submitBtn) submitBtn.innerHTML = SUBMIT[t] + ' <span aria-hidden="true">→</span>';
@@ -60,7 +96,7 @@
       if (rCheckin && !fixedName) {
         var ok = checkinAllowed(); var o = opt();
         rCheckin.disabled = !ok; var tile = rCheckin.closest('.kf-opt'); if (tile) tile.classList.toggle('is-disabled', !ok);
-        if (scopeNote) scopeNote.hidden = ok || !o;
+        if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
         if (!ok && rCheckin.checked) { rCheckin.checked = false; return sync(); }
       }
       // OneDoc nur bei «Ersttermin mit Behandlung» UND passendem, verifiziertem Kalender (global: erst nach Standortwahl).
@@ -87,11 +123,7 @@
 
     // ── Prefill (einmalig beim Laden; spätere Kachelwechsel überschreiben keine Eingaben) ──
     var q = qs();
-    var setStandort = function (v) {
-      if (!sel || !v) return false;
-      for (var i = 0; i < sel.options.length; i++) { var o = sel.options[i]; if (o.value === v || o.text.trim() === v || o.getAttribute('data-id') === v) { sel.selectedIndex = i; return true; } }
-      return false;
-    };
+    var setStandort = function (v) { var i = pickOption(sel, v); if (i > 0) { sel.selectedIndex = i; return true; } return false; };
     if (sel && !opt()) setStandort(q.get('standort'));
     var explicit = q.get('terminart');
     var legacyFirst30 = q.get('first30') === '1' || /^#first30(-kontakt)?$/.test(location.hash);
@@ -143,17 +175,18 @@
       e.preventDefault(); var f = document.getElementById('kf-' + inst + '-fields'); var tel = form.querySelector('[name="telefon"]');
       if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (tel) setTimeout(function () { tel.focus({ preventScroll: true }); }, 350);
     });
-    if (odBtn) odBtn.addEventListener('click', function () { push({ event: 'onedoc_click', quelle: 'kontaktformular', form_instance: inst, standort: standortLabel() }); });
-    if (telBtn) telBtn.addEventListener('click', function () { push({ event: 'phone_click', quelle: 'kontaktformular', form_instance: inst, standort: standortLabel() }); });
+    if (odBtn) odBtn.addEventListener('click', function () { push({ event: 'onedoc_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId() }); });
+    if (telBtn) telBtn.addEventListener('click', function () { push({ event: 'phone_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId() }); });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (sending || sent) return;
       clearErrs();
       var hp = form.querySelector('[name="website"]'); if (hp && hp.value.trim() !== '') return; // Honeypot: still, kein Versand, kein Event
-      var t = chosen(); var first = null; var fail = function (n, msg) { fieldErr(n, msg); if (!first) first = n; };
+      var tg = target(); var t = effType(); var first = null; var fail = function (n, msg) { fieldErr(n, msg); if (!first) first = n; };
       if (sel && !opt()) fail('standort', 'Bitte wähle einen Standort.');
-      if (!t) fail('terminart', 'Bitte wähle aus, wie wir dir helfen können.');
+      if (!t && tg) fail('terminart', 'Bitte wähle aus, wie wir dir helfen können.');
+      else if (!t) { /* Standort fehlt: Kacheln erst nach Standortwahl relevant */ }
       else if (t === 'checkin' && !checkinAllowed()) fail('terminart', 'Der kostenlose TCM-Check-in ist derzeit nur in ' + scopeNames + ' verfügbar.');
       var tel = form.querySelector('[name="telefon"]').value.trim();
       if (!tel) fail('telefon', 'Bitte gib deine Telefonnummer an.');
@@ -172,7 +205,8 @@
         if (!el.name || el.type === 'radio' || el.name === 'website' || el.name === 'cf-turnstile-response') return;
         var v = (el.value || '').trim(); if (v) data[el.name] = v;
       });
-      data.standort = standortLabel();
+      // Kanonischer Zielwert (bisheriger option.value) für Server, Routing und Mail; ID separat.
+      data.standort = tg.value; data.standort_id = tg.id;
       data.angebot_id = ANGEBOT[t];
       if (!data.quelle) data.quelle = location.pathname || '/';
       if (!data.seite) data.seite = location.pathname;
@@ -187,17 +221,20 @@
         .then(function (res) {
           if (!(res.ok && res.j && res.j.ok)) throw new Error((res.j && res.j.error) || 'bad_status');
           sent = true;
-          if (conv === 'form_submit') {
-            push({ event: 'form_submit', form_id: 'terminform', herkunft: data.quelle, terminart: t, standort: data.standort });
-            if (typeof window.gtag === 'function') { try { window.gtag('event', 'form_submit', { form_id: 'terminform', herkunft: data.quelle }); } catch (e2) {} }
-          } else {
-            push({ event: 'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle, terminart: t, standort: data.standort });
-          }
+          // EIN Versandweg (dataLayer → GTM). Bewusst kein zusätzlicher gtag('event', …): das wäre ein zweiter Versand.
+          if (conv === 'form_submit') push({ event: 'form_submit', form_id: 'terminform', herkunft: data.quelle, terminart: t, standort: tg.id });
+          else push({ event: 'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle, terminart: t, standort: tg.id });
           var ok = document.createElement('div'); ok.className = 'kf-success'; ok.setAttribute('role', 'status'); ok.tabIndex = -1;
           ok.innerHTML = '<div class="kf-success-ic" aria-hidden="true">✓</div><p class="kf-success-h">Danke, deine Anfrage ist bei uns.</p>' +
             '<p data-kf-ok-text></p><p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>';
-          var ort = data.standort && data.standort.indexOf('Andere') !== 0 ? ' in ' + data.standort : '';
-          ok.querySelector('[data-kf-ok-text]').textContent = 'Deine Anfrage: ' + (t === 'checkin' ? 'Kostenloser TCM-Check-in' : 'Ersttermin mit Behandlung') + ort + '. Wir rufen dich zur Terminvereinbarung zurück.';
+          var OK = {
+            checkin: 'Deine Anfrage: Kostenloser TCM-Check-in in ' + tg.label + '. Wir rufen dich zur Terminvereinbarung zurück.',
+            behandlung: 'Deine Anfrage: Ersttermin mit Behandlung in ' + tg.label + '. Wir rufen dich zur Terminvereinbarung zurück.',
+            vormerkung: 'Deine Vormerkung: ' + tg.label + '. Wir melden uns, sobald dort Termine möglich sind.',
+            anfrage: 'Deine Anfrage zu ' + tg.label + '. Wir melden uns und schlagen dir eine passende Praxis vor.',
+            routing: 'Deine Anfrage für eine passende Praxis in deiner Nähe. Wir melden uns mit einem Vorschlag.',
+          };
+          ok.querySelector('[data-kf-ok-text]').textContent = OK[t];
           form.replaceWith(ok); ok.focus({ preventScroll: true });
         })
         .catch(function (err) {
@@ -207,7 +244,8 @@
           var code = String(err && err.message || '');
           if (errBox) {
             errBox.textContent = code === 'invalid_phone' ? 'Bitte prüfe deine Telefonnummer.' : code === 'invalid_email' ? 'Bitte prüfe deine E-Mail-Adresse.'
-              : code === 'invalid_offer_scope' ? 'Der kostenlose TCM-Check-in ist für diesen Standort nicht verfügbar.'
+              : code === 'invalid_offer_scope' ? 'Diese Anfrageart ist für den gewählten Standort nicht verfügbar.'
+              : code === 'invalid_standort' || code === 'missing_standort' ? 'Bitte wähle einen Standort aus der Liste.'
               : 'Das hat gerade nicht geklappt. Bitte versuch es nochmals oder ruf uns an.';
             errBox.hidden = false;
           }

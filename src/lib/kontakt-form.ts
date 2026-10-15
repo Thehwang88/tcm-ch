@@ -3,9 +3,8 @@
 // allgemeinen Leaf-Formulare (Beschwerden, Therapien, Krankenkassen …) via upgradeLegacyForms() in SpaPage.
 // Client-Logik: public/kontakt-form.js · Styles: public/kontakt-form.css · Angebote/Freigaben: src/data/kontakt-angebote.mjs
 import { clinics } from '../data/locations';
-import { expandStandort } from '../data/standort-optionen';
 import { site } from '../data/site';
-import { TERMINARTEN, CHECKIN_FREIGABE, ONEDOC, checkinStandortNamen } from '../data/kontakt-angebote.mjs';
+import { TERMINARTEN, CHECKIN_FREIGABE, ONEDOC, checkinStandortNamen, kontaktZiele } from '../data/kontakt-angebote.mjs';
 
 export type KfConv = 'formular_senden' | 'form_submit';
 export interface KontaktFormOpts {
@@ -47,9 +46,6 @@ const telHref = (t: string) => 'tel:' + t.replace(/[^\d+]/g, '');
 /** Zentrale Terminkoordination (bestehende Kontaktlogik der globalen Formulare). */
 export const ZENTRAL_TEL = fmtTel(site.whatsapp);
 
-/** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
-const GLOBAL_ORDER = ['zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
-
 export const clinicById = (id: string) => clinics.find((c) => c.id === id);
 export const checkinFreigegeben = (id?: string) => !!id && Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, id);
 const onedocFor = (id?: string) => (id && (ONEDOC as Record<string, { href: string; anchor: string }>)[id]) || null;
@@ -58,14 +54,27 @@ const GIFT = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke
 const CHECK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg>';
 const PHONE = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.42 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>';
 
-const globalOptions = () => GLOBAL_ORDER.map(clinicById).filter(Boolean).flatMap((c) =>
-  expandStandort(c!.name).map((o) => ({ ...o, id: c!.id, tel: c!.phone, checkin: o.label === c!.name && checkinFreigegeben(c!.id), onedoc: o.label === c!.name ? onedocFor(c!.id)?.href ?? '' : '' })));
+// Kanonische Ziele (src/data/kontakt-angebote.mjs, abgeleitet aus locations.ts) + OneDoc nur für Ziele der Art
+// «behandlung» des regulären Standorts (nie für Partnerpraxis-, Vormerk- oder Routing-Ziele).
+const globalOptions = () => kontaktZiele().map((z: any) => ({ ...z, tel: z.tel ?? ZENTRAL_TEL,
+  onedoc: z.art === 'behandlung' && z.value === clinicById(z.id)?.name ? onedocFor(z.id)?.href ?? '' : '' }));
+/** Vorauswahl: exakter kanonischer value > sichtbares Label > Standort-ID (dann das Standard-Ziel dieses Standorts,
+ *  wie PLANNED_PRESELECT) > Altwert «<id>-<n>» der früheren Homepage-Liste. Nie mehrere Optionen markieren. */
+export const pickZiel = (opts: { value: string; label: string; id: string; standard: boolean }[], v?: string) => {
+  if (!v) return -1;
+  let i = opts.findIndex((x) => x.value === v); if (i >= 0) return i;
+  i = opts.findIndex((x) => x.label === v); if (i >= 0) return i;
+  i = opts.findIndex((x) => x.id === v && x.standard); if (i >= 0) return i;
+  const m = v.match(/^(.+)-(\d+)$/); if (m) { const same = opts.filter((x) => x.id === m[1]); if (same[+m[2]]) return opts.indexOf(same[+m[2]]); }
+  return -1;
+};
 
 export function renderKontaktForm(o: KontaktFormOpts): string {
   const inst = o.instance.replace(/[^a-z0-9-]/gi, '-');
   const p = `kf-${inst}`;
   const fixed = o.standortId ? clinicById(o.standortId) : undefined;
   if (o.standortId && !fixed) throw new Error(`kontakt-form: unbekannter Standort ${o.standortId}`);
+  if (fixed && fixed.status !== 'operational') throw new Error(`kontakt-form: fester Standort ${fixed.id} ist nicht operativ (Vormerk-Formular verwenden)`);
   const checkinOk = fixed ? checkinFreigegeben(fixed.id) : true; // global: Kachel sichtbar, Wahl an Freigabe gebunden
   const onlyBehandlung = !!fixed && !checkinOk;
   const pre = onlyBehandlung ? 'behandlung' : o.terminart;
@@ -97,11 +106,9 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<div class="kf-field"><label class="kf-label" for="${p}-standort">Standort <span aria-hidden="true">*</span></label>` +
     `<select class="kf-input kf-select" id="${p}-standort" name="standort" required aria-describedby="${p}-standort-err">` +
     `<option value="">Standort auswählen</option>` +
-    globalOptions().map((x) => {
-      const sel = o.preselectStandort && (o.preselectStandort === x.value || o.preselectStandort === x.label || o.preselectStandort === x.id) ? ' selected' : '';
-      return `<option value="${esc(x.value)}" data-id="${x.id}" data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${sel}>${esc(x.label)}</option>`;
-    }).join('') +
-    `<option value="Andere / in meiner Nähe" data-id="andere" data-tel="${esc(ZENTRAL_TEL)}">Andere / in meiner Nähe</option></select>` +
+    (() => { const opts = globalOptions(); const pi = pickZiel(opts, o.preselectStandort); return opts.map((x: any, i: number) =>
+      `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${i === pi ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); })() +
+    `</select>` +
     `<p class="kf-ferr" id="${p}-standort-err" hidden></p></div>`;
 
   const onedocPanel = (fixed ? onedoc : globalOptions().some((x) => x.onedoc)) ?
@@ -116,7 +123,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   return (
     (o.compatAnchors ?? []).map((a) => `<span id="${esc(a)}" class="kf-compat-anchor" aria-hidden="true"></span>`).join('') +
     `<div class="inline-form-card kf${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}" data-kf-conv="${o.conv ?? 'formular_senden'}"` +
-    (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}"` : ' data-kf-global="1"') +
+    (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}" data-kf-standort-art="behandlung"` : ' data-kf-global="1"') +
     (fixed && checkinOk ? ' data-kf-checkin="1"' : '') + (o.autoprefill ? ` data-kf-autoprefill="${o.autoprefill}"` : '') +
     ` data-kf-scope-names="${esc(scopeNames)}"` + (o.cardStyle ? ` style="${esc(o.cardStyle)}"` : '') + `>` +
     `<link rel="stylesheet" href="/kontakt-form.css">` +
@@ -127,6 +134,8 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     tileCheckin + tileBehandlung + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
+    // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
+    (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
     onedocPanel +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
     field('tel', 'Telefon <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-tel" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err">`, `<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`) +
