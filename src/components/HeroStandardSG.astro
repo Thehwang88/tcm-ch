@@ -1,5 +1,7 @@
 ---
-// Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne, wörtlich aus Commit 4adc79c8
+// Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne aus Commit 4adc79c8 (ohne die
+// Hinweise «Unverbindliche Anfrage…» und «Geöffnet: …», entfernt auf Inhaber-Wunsch; Öffnungszeiten stehen in «Über
+// die Praxis» und im Schema). Rechts: kompakte Karte (heroKompakt).
 // (HeroLaunchSG.astro, «fix(st-gallen): first-treatment bullet …», 12.10.2026). Rechte Hälfte (seit 15.10.2026):
 // gemeinsames Kontaktformular (src/lib/kontakt-form.ts) mit kostenlosem TCM-Check-in (SG freigegeben) und
 // «Ersttermin mit Behandlung» (OneDoc). Anker-Kompatibilität: #offer-form (Karte), #first30 (alte Kampagnenlinks).
@@ -10,7 +12,7 @@ const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
   quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
   quelleDetail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen',
-  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true,
+  wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true,
 });
 ---
 <section class="lsr-hero hlsg">
@@ -29,8 +31,6 @@ const card = renderKontaktForm({
         <a href="#online-buchen" class="lsr-btn-ghost">Termin direkt online buchen</a>
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122">Anrufen</a> · <a href="https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen." target="_blank" rel="noopener">WhatsApp</a></p>
-      <p class="lsr-note">Unverbindliche Anfrage. Ein Termin ist erst nach unserer Bestätigung vereinbart.</p>
-      <p class="lsr-note"><b>Geöffnet:</b> Mo–Sa 07:30–19:30 Uhr · So 08:00–17:00 Uhr</p>
     </div>
     <div class="hlsg-formcol" set:html={card} />
   </div>
