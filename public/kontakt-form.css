@@ -171,6 +171,8 @@
    Karte .kf.kf--ruhig + .kf-kopf wie oben (gleiche Regeln). Diese Formulare behalten Markup-Klassen, Felder, Handler
    (home.js submitInlineFormGeneric, data-contact-form, Wartelisten-Skripte) und Versand; hier nur die Darstellung ihrer
    bestehenden Bausteine. :not(#w2):not(#w3):not(#w4) überstimmt die Seiten-Skins aus home.css und den Astro-Komponenten. */
+/* Breite nur aus dem Layout (nicht aus Feld-Mindestbreiten): sonst sprengen 16-px-Felder schmale Grid-Spalten (320 px). */
+.kf.kf-huelle{contain:inline-size}
 .kf-huelle form{display:block;gap:0;margin:0}
 .kf-huelle .kf-kopf:not(#w2){max-width:none!important;width:auto}
 .kf-huelle .kf-kopf .inline-form-title:not(#w2):not(#w3):not(#w4){margin:0 0 4px;font-family:inherit;font-size:clamp(1.35rem,1.1rem + 1vw,1.7rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff;text-align:left}
@@ -184,7 +186,7 @@
 .kf-huelle textarea:not(#w2):not(#w3):not(#w4){min-height:0;resize:vertical}
 .kf-huelle :is(input,select,textarea):not(#w2):not(#w3):not(#w4):focus{outline:none!important;border-color:var(--kf-ink)!important;box-shadow:0 0 0 3px rgba(26,226,136,.45)!important}
 .kf-huelle :is(input,select,textarea)[aria-invalid="true"]:not(#w2):not(#w3):not(#w4){border-color:var(--kf-err)}
-.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin:4px 0 0;padding:14px 20px;border-radius:14px!important;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-transform:none;letter-spacing:0;background:var(--kf-neon)!important;color:var(--kf-ink)!important;border:1.5px solid var(--kf-neon)!important;box-shadow:none!important;cursor:pointer}
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin:4px 0 0;padding:14px 20px;border-radius:14px!important;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-transform:none;letter-spacing:0;white-space:normal!important;text-align:center;background:var(--kf-neon)!important;color:var(--kf-ink)!important;border:1.5px solid var(--kf-neon)!important;box-shadow:none!important;cursor:pointer}
 .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{background:#14C97A!important;border-color:#14C97A!important}
 .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):focus-visible{outline:3px solid var(--kf-ink);outline-offset:3px}
 .kf-huelle :is(.form-submit,form button[type=submit])[disabled]:not(#w2):not(#w3):not(#w4){opacity:.65;cursor:progress}
