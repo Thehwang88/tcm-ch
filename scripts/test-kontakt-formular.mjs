@@ -285,9 +285,9 @@ ok(await pg.$eval(`${card('sg-hero')} [data-kf-onedoc]`, (a) => a.className === 
 await pg.close();
 ({ pg, calls } = await open('/'));
 await sel(pg, 'home', 'St. Gallen'); await pick(pg, 'home', 'checkin');
-ok(await pg.$eval(`${card('home')} [data-kf-onedoc-panel]`, (p) => p.hidden), 'Homepage unverändert: Check-in mit SG ohne OneDoc');
+ok(await pg.$eval(`${card('home')} [data-kf-onedoc-panel]`, (p) => p.hidden), 'Homepage: Check-in mit SG ohne OneDoc');
 await pick(pg, 'home', 'behandlung');
-ok(await pg.$eval(`${card('home')} [data-kf-onedoc]`, (a) => a.textContent.trim() === 'Freie Termine ansehen →' && a.getAttribute('href') === '/standorte/st-gallen/#online-buchen'), 'Homepage unverändert: Behandlung + SG → «Freie Termine ansehen →»');
+ok(await pg.$eval(`${card('home')} [data-kf-onedoc]`, (a) => a.textContent.replace(/\s+/g, ' ').trim() === 'Termin online buchen →' && a.className === 'kf-btn kf-btn--outline' && a.getAttribute('href') === '/standorte/st-gallen/#online-buchen' && !a.closest('[hidden]')), 'Homepage (ruhig): Behandlung + SG → OneDoc «Termin online buchen →» umrandet, bestehendes SG-Ziel');
 await pg.close();
 
 console.log('M. Kompakte SG-Box (Rückruf dauerhaft offen, optionale Angaben als Disclosure)');
@@ -662,8 +662,8 @@ console.log('R. DE-Homepage Mobile: Sticky-Bar aus, solange die Formularsektion 
     await go(pg, ft + 300); b = await HB(pg); ok(!b.on, `${w}px zurück ins Formular: Bar aus`);
     await go(pg, Math.max(0, ft - vh - 200)); b = await HB(pg); ok(b.on, `${w}px zurück über dem Formular: Bar an`);
     // Eingabefokus + Tastatur
-    await pg.$eval(`${card('home')} [name=name]`, (i) => i.focus({ preventScroll: true })); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(!b.on, `${w}px Formularfeld fokussiert: Bar aus`);
-    await pg.$eval(`${card('home')} [name=name]`, (i) => i.blur()); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(b.on, `${w}px Fokus verlassen: Bar wieder an`);
+    await pg.$eval(`${card('home')} [name=telefon]`, (i) => i.focus({ preventScroll: true })); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(!b.on, `${w}px Formularfeld fokussiert: Bar aus`);
+    await pg.$eval(`${card('home')} [name=telefon]`, (i) => i.blur()); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(b.on, `${w}px Fokus verlassen: Bar wieder an`);
     await pg.evaluate(() => { Object.defineProperty(window.visualViewport, 'height', { configurable: true, get: () => innerHeight * 0.5 }); window.visualViewport.dispatchEvent(new Event('resize')); }); await new Promise((r) => setTimeout(r, 350));
     b = await HB(pg); ok(!b.on, `${w}px Bildschirmtastatur (simuliert): Bar aus`);
     await pg.evaluate(() => { delete window.visualViewport.height; window.visualViewport.dispatchEvent(new Event('resize')); }); await new Promise((r) => setTimeout(r, 350)); b = await HB(pg); ok(b.on, `${w}px Tastatur zu: Bar an`);
@@ -835,6 +835,86 @@ for (const w of [320, 390, 768, 1440]) {
   ok(b0.split(',')[0] === c0.split(',')[0] && /false,false$/.test(b0), 'ohne Auswahl: Mint-Kachel hat denselben neutralen Rand wie der Check-in, nicht gewählt');
   await pick(pg, 'sg-unten', 'checkin'); await new Promise((r) => setTimeout(r, 250));
   ok(/^rgb\(2, 11, 16\),true,true$/.test(await bc('sg-unten', 'checkin')) && /false,false$/.test(await bc('sg-hero', 'checkin')) && /false,false$/.test(await bc('sg-hero', 'behandlung')) && await submitText(pg, 'sg-hero') === 'Termin anfragen →', 'Auswahl unten: gefülltes Radio + dunkler Rand nur dort; obere Box unberührt («Termin anfragen →»)');
+  await pg.close();
+}
+console.log('T. DE-Homepage: ruhige Formularbox (global, Standortauswahl vor den Kacheln, alle Zielarten)');
+{
+  const C = card('home');
+  const st = (pg) => pg.$eval(C, (c) => { const v = (e) => !!(e && !e.closest('[hidden]') && (e.offsetWidth || e.offsetHeight)); const tiles = [...c.querySelectorAll('.kf-opt')];
+    return { taH: v(c.querySelector('[data-kf-ta-h]')), opts: v(c.querySelector('.kf-opts')), tiles: tiles.filter(v).map((l) => l.querySelector('input').value).join(), checked: [...c.querySelectorAll('input[name=terminart]')].filter((x) => x.checked).map((x) => x.value).join(),
+      ziel: v(c.querySelector('[data-kf-ziel]')) ? c.querySelector('[data-kf-ziel-h]').textContent : '', note: v(c.querySelector('[data-kf-scope-note]')), alt: v(c.querySelector('[data-kf-alt-wrap]')), od: v(c.querySelector('[data-kf-onedoc]')), odHref: c.querySelector('[data-kf-onedoc]').getAttribute('href'),
+      tel: v(c.querySelector('[data-kf-tel]')) ? c.querySelector('[data-kf-tel]').getAttribute('href') : '', wa: v(c.querySelector('[data-kf-wa]')), sep: v(c.querySelector('[data-kf-wa-sep]')), submit: c.querySelector('[data-kf-submit]').textContent.replace(/\s+/g, ' ').trim(), sel: c.querySelector('select[name=standort]').selectedIndex }; });
+  for (const w of [320, 390, 768, 1440]) {
+    ({ pg, calls } = await open('/', { width: w }));
+    const g = await pg.$eval(C, (c) => { const k = c.querySelector('.kf-kopf'), rc = c.getBoundingClientRect(), rk = k.getBoundingClientRect(), s = c.querySelector('select[name=standort]'), h = c.querySelector('[data-kf-ta-h]'), f = c.querySelector('.kf-opts');
+      return { bg: getComputedStyle(k).backgroundColor, flush: Math.abs(rk.left - rc.left - 1) <= 1 && Math.abs(rc.right - rk.right - 1) <= 1 && Math.abs(rk.top - rc.top - 1) <= 1, order: s.getBoundingClientRect().bottom < h.getBoundingClientRect().top && h.getBoundingClientRect().bottom <= f.getBoundingClientRect().top + 1,
+        noOv: [k, s, ...c.querySelectorAll('.kf-opt, .kf-opt-t, .kf-opt-d, .kf-submit, .kf-input')].every((e) => e.scrollWidth <= e.clientWidth + 1 && e.getBoundingClientRect().right <= rc.right + 0.5) && document.documentElement.scrollWidth <= innerWidth,
+        opt: c.querySelector('[data-kf-opt]').getAttribute('aria-expanded') === 'false' && c.querySelector('#kf-home-opt').hidden, telVis: !!c.querySelector('[name=telefon]').offsetHeight, fz: parseFloat(getComputedStyle(c.querySelector('.kf-opt-d')).fontSize), legal: getComputedStyle(c.querySelector('.kf-legal--kurz a')).textDecorationColor === getComputedStyle(c.querySelector('.kf-legal--kurz a')).color };
+    });
+    const x = await st(pg);
+    ok(g.bg === 'rgb(2, 11, 16)' && g.flush && g.order && g.noOv && g.opt && g.telVis && g.fz >= 15 && g.legal, `${w}px Home initial: schwarzer Kopf bündig, Standort vor «Terminart wählen» vor Kacheln, Telefon sichtbar, optionale Angaben zu, kein Überlauf, Datenschutz-Link ohne globalen Neon-Unterstrich`);
+    ok(x.sel === 0 && x.tiles === 'behandlung,checkin' && !x.checked && !x.alt && x.submit === 'Termin anfragen →' && x.taH, `${w}px Home initial: keine Standort-/Terminart-Vorauswahl (kein Auto-SG), Erstbehandlung zuerst, Alternativen erst nach Zielwahl, «Termin anfragen →»`);
+    await pg.close();
+  }
+  // Zielarten + Standortwechsel (390 px)
+  ({ pg, calls } = await open('/', { width: 390 }));
+  await sel(pg, 'home', 'St. Gallen'); let x = await st(pg);
+  ok(x.tiles === 'behandlung,checkin' && x.alt && x.tel === 'tel:+41775236122' && x.wa && x.sep && !x.od && !x.note, 'SG: beide Kacheln, Anrufen (kanonische Nummer) · WhatsApp, OneDoc erst mit Behandlung');
+  await pick(pg, 'home', 'behandlung'); x = await st(pg);
+  ok(x.od && x.odHref === '/standorte/st-gallen/#online-buchen' && x.submit === 'Ersttermin anfragen →', 'SG + Behandlung: OneDoc (bestehender SG-Kalender), Button «Ersttermin anfragen →»');
+  await pick(pg, 'home', 'checkin'); x = await st(pg);
+  ok(!x.od && x.submit === 'TCM-Check-in anfragen →' && x.checked === 'checkin', 'SG + Check-in: kein OneDoc, Button «TCM-Check-in anfragen →»');
+  await type(pg, 'home', 'telefon', '+41 79 000 00 00');
+  await sel(pg, 'home', 'Zürich Höngg'); x = await st(pg);
+  ok(x.tiles === 'behandlung' && !x.checked && x.note && !x.od && x.submit === 'Termin anfragen →' && x.tel === 'tel:+41775236122' && x.wa && await pg.$eval(`${C} [name=telefon]`, (i) => i.value === '+41 79 000 00 00') && !(await pg.$eval(C, (c) => /Zungen- und Pulsdiagnostik/.test([...c.querySelectorAll('.kf-opt')].filter((l) => !l.hidden).map((l) => l.textContent).join('')))), 'Wechsel SG→Zürich Höngg nach Check-in-Wahl: Check-in-Kachel weg und abgewählt (keine Gratis-Diagnostik), Hinweis «nur in St. Gallen», kein OneDoc, Eingabe bleibt');
+  await pick(pg, 'home', 'behandlung'); x = await st(pg);
+  ok(!x.od && x.submit === 'Ersttermin anfragen →', 'andere operative Praxis + Behandlung: kein OneDoc (kein Kalender konfiguriert)');
+  await sel(pg, 'home', 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3'); x = await st(pg);
+  ok(x.tiles === 'behandlung' && x.checked === 'behandlung' && !x.od && x.alt && !x.ziel, 'Partnerpraxis: Behandlungsziel ohne Check-in, kein OneDoc, Kontaktlinks mit kanonischer Nummer');
+  await sel(pg, 'home', 'Bottighofen'); x = await st(pg);
+  ok(x.tel === 'tel:+41765780988' && !x.wa && !x.sep && x.alt, 'Bottighofen: Anrufen mit eigener kanonischer Nummer, WhatsApp ausgeblendet (keine pauschale Nummer)');
+  await sel(pg, 'home', 'Luzern – Vormerkung, Eröffnung 2027'); x = await st(pg);
+  ok(!x.taH && !x.opts && /^Vormerkung: Luzern/.test(x.ziel) && x.submit === 'Vormerkung senden →' && !x.od && x.alt, 'Vormerkung (Luzern): keine «Terminart wählen»/Kacheln, Vormerk-Text, «Vormerkung senden →», kein OneDoc');
+  await sel(pg, 'home', 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)'); x = await st(pg);
+  ok(!x.opts && /^Anfrage: Winterthur Münzgasse/.test(x.ziel) && x.submit === 'Anfrage senden →' && !x.od, 'Standort in Prüfung: Anfrage-Text, «Anfrage senden →»');
+  await sel(pg, 'home', 'Andere / in meiner Nähe'); x = await st(pg);
+  ok(!x.opts && x.ziel === 'Passende Praxis finden' && x.submit === 'Passende Praxis anfragen →' && !x.od, 'Routing: «Passende Praxis finden», «Passende Praxis anfragen →»');
+  await sel(pg, 'home', 'St. Gallen'); x = await st(pg);
+  ok(x.taH && x.tiles === 'behandlung,checkin' && x.checked === 'behandlung' && x.od && !x.ziel && x.wa, 'zurück zu SG: Kacheln und Überschrift wieder da, Auswahl erhalten, OneDoc wieder sichtbar');
+  ok(calls.length === 0 && await noApp(pg), 'Zielwechsel: kein Versand, keine App-Events');
+  // Tracking der Alternativen: je Klick genau ein Event, ohne Personendaten
+  await pg.evaluate((C) => { document.querySelector(C + ' [data-kf-tel]').addEventListener('click', (e) => e.preventDefault()); document.querySelector(C + ' [data-kf-wa]').addEventListener('click', (e) => e.preventDefault()); document.querySelector(C + ' [data-kf-onedoc]').addEventListener('click', (e) => e.preventDefault()); }, C);
+  await pg.$eval(`${C} [data-kf-tel]`, (a) => a.click()); await pg.$eval(`${C} [data-kf-wa]`, (a) => a.click()); await pg.$eval(`${C} [data-kf-onedoc]`, (a) => a.click());
+  const ev = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(ev.length === 3 && ev[0].event === 'phone_click' && ev[0].form_instance === 'home' && ev[0].standort === 'st-gallen' && ev[1].event === 'wa_click' && ev[1].quelle === 'form' && ev[2].event === 'onedoc_click' && ev[2].standort === 'st-gallen' && ev[2].terminart === 'behandlung' && !JSON.stringify(ev).includes('79 000'), `Anrufen/WhatsApp/OneDoc: je genau ein Event (phone_click, wa_click, onedoc_click), keine Personendaten (${ev.map((e) => e.event).join(',')})`);
+  await pg.close();
+  // Validierung ohne Standort: verständlich, kein Auto-SG, kein Versand
+  ({ pg, calls } = await open('/', { width: 390 }));
+  await type(pg, 'home', 'telefon', '+41 79 000 00 00'); await submit(pg, 'home');
+  ok(calls.length === 0 && await pg.$eval(`${C} #kf-home-standort-err`, (e) => !e.hidden && e.textContent === 'Bitte wähle einen Standort.') && await pg.evaluate(() => document.activeElement && document.activeElement.id === 'kf-home-standort') && (await st(pg)).sel === 0, 'ohne Standort: Fehler «Bitte wähle einen Standort.», Fokus auf Auswahl, keine SG-Automatik, kein Versand');
+  await sel(pg, 'home', 'St. Gallen'); await submit(pg, 'home');
+  ok(calls.length === 0 && await pg.$eval(`${C} #kf-home-ta-err`, (e) => !e.hidden) && await pg.evaluate(() => document.activeElement && document.activeElement.id === 'kf-home-ta-behandlung'), 'SG ohne Terminart: Fehler, Fokus auf erste Kachel (Erstbehandlung)');
+  // Gemockter Erfolg: genau ein Versand + genau eine Conversion ohne Personendaten
+  await pick(pg, 'home', 'checkin'); await submit(pg, 'home'); await new Promise((r) => setTimeout(r, 300));
+  const conv = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'formular_senden'));
+  ok(calls.length === 1 && calls[0].standort === 'St. Gallen' && calls[0].standort_id === 'st-gallen' && calls[0].angebot_id === 'TCM_CHECKIN' && conv.length === 1 && conv[0].terminart === 'checkin' && conv[0].standort === 'st-gallen' && !JSON.stringify(conv).includes('79 000') && await pg.$eval('#home-contact-form', (s) => /Kostenloser TCM-Check-in in St\. Gallen/.test(s.textContent)), 'gemockter Erfolg (SG Check-in): 1 Anfrage mit kanonischen Werten, formular_senden genau 1× ohne Personendaten, Bestätigung');
+  await pg.close();
+  // Prefill: Standort + Terminart, Anliegen (home.js) öffnet optionale Angaben
+  ({ pg, calls } = await open('/?standort=st-gallen&terminart=checkin', { width: 390 }));
+  x = await st(pg); ok(x.sel > 0 && x.checked === 'checkin' && x.submit === 'TCM-Check-in anfragen →', 'Prefill ?standort=st-gallen&terminart=checkin: SG + Check-in gewählt');
+  await pg.close();
+  ({ pg, calls } = await open('/?standort=luzern', { width: 390 }));
+  x = await st(pg); ok(/^Vormerkung: Luzern/.test(x.ziel) && !x.opts, 'Prefill ?standort=luzern: Vormerkung ohne Kacheln');
+  await pg.close();
+  ({ pg, calls } = await open('/?anliegen=Nackenschmerzen&quelle=selbsttest', { width: 390 })); await new Promise((r) => setTimeout(r, 500));
+  ok(await pg.$eval(C, (c) => !c.querySelector('#kf-home-opt').hidden && c.querySelector('[data-kf-opt]').getAttribute('aria-expanded') === 'true' && c.querySelector('[name=anliegen]').value === 'Nackenschmerzen' && !!c.querySelector('[name=anliegen]').offsetHeight), 'Prefill ?anliegen= (home.js): «Weitere Angaben» aufgeklappt, Anliegen sichtbar');
+  await pg.close();
+  // Tastatur: Disclosure per Enter, Standortauswahl erreichbar
+  ({ pg, calls } = await open('/', { width: 1440 }));
+  await pg.focus(`${C} [data-kf-opt]`); await pg.keyboard.press('Enter'); await new Promise((r) => setTimeout(r, 200));
+  ok(await pg.$eval(C, (c) => !c.querySelector('#kf-home-opt').hidden && !!c.querySelector('[name=name]').offsetHeight), 'Tastatur: «Weitere Angaben · optional» per Enter geöffnet');
+  await pg.focus(`${C} select[name=standort]`); await pg.keyboard.press('Tab');
+  ok(await pg.evaluate(() => document.activeElement && document.activeElement.name === 'terminart'), 'Tastatur: nach der Standortauswahl folgen die Terminart-Kacheln');
   await pg.close();
 }
 console.log(`\n${pass} PASS / ${fails} FAIL`);
