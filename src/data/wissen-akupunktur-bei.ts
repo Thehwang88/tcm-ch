@@ -1413,11 +1413,11 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Was Leitlinie und Studien zeigen</h2>
 <p><strong>Leitlinie:</strong> Die American Academy of Sleep Medicine hat 2024 die Behandlungsoptionen systematisch bewertet. Für Akupunktur reichten die Daten nicht für eine Empfehlung, weder dafür noch dagegen.</p>
 <p><strong>Cochrane-Review:</strong> Eine Übersicht von 2008 fand nur zwei Studien mit insgesamt 170 Personen, beide mit methodischen Mängeln. Die Autoren schlossen, dass sich nicht beurteilen lässt, ob Akupunktur wirksam und sicher ist.</p>
-<p><strong>Neuere Einzelstudie:</strong> Eine chinesische Studie von 2024 mit 66 Personen verglich zwei Akupunkturformen miteinander, ohne Scheinbehandlung und ohne Gruppe ohne Akupunktur, über einen Monat mit täglichen Sitzungen. Ob Akupunktur überhaupt besser wirkt als keine oder eine Scheinbehandlung, beantwortet dieses Design nicht.</p>
+<p><strong>Neuere Einzelstudie:</strong> Eine chinesische Studie von 2024 mit 66 Personen verglich zwei Akupunkturformen miteinander, ohne Scheinbehandlung und ohne Gruppe ohne Akupunktur, über einen Monat mit Sitzungen an sechs Tagen pro Woche. Ob Akupunktur überhaupt besser wirkt als keine oder eine Scheinbehandlung, beantwortet dieses Design nicht.</p>
 <h2>Was daraus nicht folgt</h2>
 <p>Einzelne Studien bei Menschen unter Dialyse betreffen eine besondere Situation mit eigener Behandlung. Sie lassen sich nicht auf andere Betroffene übertragen. Ebenso wenig sind Erfahrungen mit Massagen, Wärme oder Kombinationsbehandlungen ein Beleg für Akupunktur.</p>
 <h2>Was zuerst zählt</h2>
-<p>Die Leitlinie empfiehlt, bei allen Betroffenen mit relevanten Beschwerden die Eisenwerte zu prüfen, einschliesslich <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> und <a href="/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/">Transferrinsättigung</a>, idealerweise morgens. Danach geht es um verstärkende Faktoren wie Alkohol, Koffein, bestimmte Medikamente und eine unbehandelte Schlafapnoe. Medikamente und Eisengaben werden ärztlich entschieden. Nimm Eisen nicht auf eigene Faust ein.</p>
+<p>Die Leitlinie empfiehlt, bei allen Betroffenen mit relevanten Beschwerden die Eisenwerte zu prüfen, einschliesslich <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> und <a href="/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/">Transferrinsättigung</a>, idealerweise morgens. Danach geht es um verstärkende Faktoren wie Alkohol, Koffein, bestimmte Medikamente und eine unbehandelte Schlafapnoe. Die Laborwerte bestimmen mit, ob und wie Eisen gegeben wird; das entscheidet die Ärztin, ebenso über Medikamente.</p>
 <h2>Wenn du trotzdem einen Versuch erwägst</h2>
 <p>Ein Versuch kommt höchstens ergänzend in Frage, wenn die ärztliche Abklärung erfolgt ist. Lege vorher fest, was sich ändern soll, zum Beispiel Einschlafdauer oder Beschwerdeabende pro Woche, und wann bilanziert wird. Bleibt ein Effekt aus, wird der Versuch beendet.</p>
 <h2>Risiken und Nebenwirkungen</h2>
@@ -1428,7 +1428,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h3>Wird Akupunktur bei Restless Legs empfohlen?</h3>
 <p>Nein. Die US-Leitlinie von 2024 spricht wegen unzureichender Daten keine Empfehlung aus.</p>
 <h3>Warum sind Eisenwerte so wichtig?</h3>
-<p>Ein Eisenmangel kann die Beschwerden verstärken. Die Leitlinie nennt dafür eigene Grenzwerte, die von den üblichen abweichen; die Beurteilung gehört in ärztliche Hand.</p>
+<p>Eisenmangel spielt beim Restless-Legs-Syndrom eine Rolle, und die Eisenwerte beeinflussen die Wahl der Behandlung. Die Leitlinie nennt dafür eigene Schwellenwerte; die Beurteilung gehört in ärztliche Hand.</p>
 <h3>Gilt das auch für Restless Legs bei Dialyse?</h3>
 <p>Für Menschen unter Dialyse gelten eigene Empfehlungen. Besprich das mit deinem Nephrologie-Team.</p>
 <h2>Quellen</h2>
@@ -1561,10 +1561,10 @@ export const wissenAkupunkturBei: Wissen[] = [
     title: 'Akupunktur bei Gelenkschmerzen durch Aromatasehemmer',
     metaDesc: 'Gelenkschmerzen unter Aromatasehemmern nach Brustkrebs: Eine grosse US-Studie fand mit Akupunktur etwas weniger Schmerzen. Was das bedeutet und was vorher zu klären ist.',
     region: 'Schweizweit',
-    excerpt: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Effekt war moderat.',
+    excerpt: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur etwas weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Unterschied war klein, seine klinische Bedeutung unsicher.',
     category: 'Beschwerden verstehen',
     h1: 'Akupunktur bei Gelenkschmerzen unter Aromatasehemmern: Was ist belegt?',
-    lead: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Effekt war moderat.',
+    lead: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur etwas weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Unterschied war klein, seine klinische Bedeutung unsicher.',
     readingTime: '4 Min.',
     ctaTitle: 'Ergänzung mit dem Onkologie-Team abstimmen',
     ctaText: 'Wenn dein Onkologie-Team einverstanden ist, kannst du anfragen, ob ein begrenzter Akupunkturversuch bei Gelenkschmerzen zu deiner Situation passt.',
@@ -1572,24 +1572,24 @@ export const wissenAkupunkturBei: Wissen[] = [
     ctaHref: '/akupunktur-in-der-naehe/',
     author: REDAKTION,
     ...DATEN_W4,
-    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei Frauen mit hormonempfindlichem Brustkrebs, die unter einem Aromatasehemmer Gelenkschmerzen entwickelten, verringerte Akupunktur in einer grossen US-Studie die Schmerzen stärker als Schein- oder keine Akupunktur, auch nach einem Jahr. Der Unterschied war moderat und seine klinische Bedeutung unsicher. Ein Versuch wird immer mit dem Onkologie-Team abgestimmt.</p></div>
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei Frauen mit hormonempfindlichem Brustkrebs, die unter einem Aromatasehemmer Gelenkschmerzen entwickelten, verringerte Akupunktur in einer grossen US-Studie die Schmerzen stärker als Schein- oder keine Akupunktur, auch nach einem Jahr. Der Unterschied war klein und blieb unter der vorab als klinisch bedeutsam festgelegten Schwelle. Ein Versuch wird immer mit dem Onkologie-Team abgestimmt.</p></div>
 <h2>Worum es hier geht</h2>
 <p>Aromatasehemmer wie Anastrozol, Letrozol oder Exemestan senken das Rückfallrisiko bei hormonempfindlichem Brustkrebs. Gelenkschmerzen und Steifigkeit gehören zu den häufigen Nebenwirkungen und können dazu führen, dass die Behandlung abgebrochen wird. Dieser Artikel beantwortet nur eine Frage: Kann Akupunktur bei diesen Gelenkschmerzen helfen? Allgemeine Sicherheitsfragen rund um Akupunktur während einer Krebsbehandlung beantwortet die Seite <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während Chemotherapie</a>.</p>
 <h2>Was die Studie zeigt</h2>
-<p>An der Studie nahmen 226 Frauen an elf Zentren in den USA teil. Sie hatten Brustkrebs im Stadium I bis III, nahmen einen Aromatasehemmer und hatten seitdem deutliche Gelenkschmerzen. Sie erhielten über zwölf Wochen echte Akupunktur, eine Scheinakupunktur mit oberflächlichen Nadeln an anderen Punkten oder zunächst keine Behandlung.</p>
+<p>An der Studie nahmen 226 Frauen an elf Zentren in den USA teil. Sie hatten Brustkrebs im Stadium I bis III, nahmen einen Aromatasehemmer und hatten seitdem Gelenkschmerzen. Sie erhielten über zwölf Wochen echte Akupunktur, eine Scheinakupunktur mit oberflächlichen Nadeln an anderen Punkten oder zunächst keine Behandlung.</p>
 <ul>
 <li>Nach sechs Wochen war der stärkste Schmerz mit echter Akupunktur um knapp einen Punkt auf einer Skala von 0 bis 10 geringer als in den beiden Vergleichsgruppen. Die vorab festgelegte Schwelle von zwei Punkten wurde nicht erreicht.</li>
 <li>Eine Auswertung nach 52 Wochen zeigte weiterhin rund einen Punkt Unterschied. Diese Auswertung war nicht der ursprünglich geplante Hauptendpunkt; Funktionstests unterschieden sich nicht.</li>
-<li>Blaue Flecken traten mit echter Akupunktur häufiger auf. Schwere Nebenwirkungen wurden nicht berichtet.</li>
+<li>Blaue Flecken traten mit echter Akupunktur häufiger auf.</li>
 </ul>
 <h2>Was daraus nicht folgt</h2>
 <p>Die Ergebnisse gelten für Gelenkschmerzen, die unter einem Aromatasehemmer neu aufgetreten oder stärker geworden sind. Sie lassen sich nicht auf andere Nebenwirkungen, andere Krebsarten oder Gelenkschmerzen anderer Ursache übertragen. Akupunktur behandelt den Krebs nicht.</p>
 <h2>Was zuerst zählt</h2>
-<p>Sprich Gelenkschmerzen früh mit deinem Onkologie-Team an, bevor du eine Einnahme pausierst oder abbrichst. Mögliche Schritte sind Bewegung und Training, Schmerzmittel nach Absprache oder ein Wechsel des Präparats. Andere Ursachen wie Arthrose oder entzündliche Gelenkerkrankungen werden mitbedacht.</p>
+<p>Sprich Gelenkschmerzen früh mit deinem Onkologie-Team an, bevor du eine Einnahme pausierst oder abbrichst. Untersucht wurden unter anderem Bewegung und verschiedene Medikamente, mit gemischten Ergebnissen; welche Schritte passen, entscheidet das Onkologie-Team. Andere Ursachen wie Arthrose oder entzündliche Gelenkerkrankungen werden mitbedacht.</p>
 <h2>Sicherheit vor dem Termin</h2>
-<p>Vor einem Versuch klärst du mit dem Onkologie-Team, ob aktuell etwas dagegen spricht, etwa ein verändertes Blutbild, ein Lymphödemrisiko am operierten Arm oder bestrahlte Haut. Die Behandelnden sollten Erfahrung mit onkologischen Patientinnen haben.</p>
+<p>Vor einem Versuch klärst du mit dem Onkologie-Team, ob aus onkologischer Sicht aktuell etwas dagegen spricht. Die Behandelnden sollten Erfahrung mit onkologischen Patientinnen haben.</p>
 <h2>Risiken und Nebenwirkungen</h2>
-<p>In der Studie traten blaue Flecken mit echter Akupunktur häufiger auf. Am Arm der operierten Seite und auf bestrahlter Haut wird je nach Situation nicht gestochen; das klärt das Behandlungsteam vorher. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<p>In der Studie traten blaue Flecken mit echter Akupunktur häufiger auf. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
 <h2>Vor einer Terminentscheidung</h2>
 <p>Bring Therapieplan, aktuelle Befunde und Medikamentenliste mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
 <h2>Häufige Fragen</h2>

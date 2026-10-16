@@ -96,10 +96,9 @@ export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = '2026-10-13';
 // Nur Publikation, keine fachliche Prüfung. Bisherige Konstanten unverändert.
 export const PUBLISHED_WELLE_3_2026_10: string | undefined = '2026-10-14';
 
-// Welle 4 (16.10.2026, Draft: 8 Befunde, 6 Untersuchungen, 8 Wissen; die 12 Beschwerden tragen kein Datum).
-// RELEASE-SCHRITT: erst beim tatsächlichen Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
-// Bis dahin undefined: keine Schema-Daten, kein «Aktualisiert». Nur Publikation, keine fachliche Prüfung.
-export const PUBLISHED_WELLE_4_2026_10: string | undefined = undefined;
+// Welle 4 (8 Befunde, 6 Untersuchungen, 8 Wissen; die 12 Beschwerden tragen kein Datum).
+// Go-Live 16.10.2026 (Europe/Zurich). Nur Publikation, keine fachliche Prüfung.
+export const PUBLISHED_WELLE_4_2026_10: string | undefined = '2026-10-16';
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -3774,17 +3773,17 @@ export const befundeWerte: BefundWert[] = [
     shortAnswerHtml: `<p>Parathormon, kurz PTH, wird von den Nebenschilddrüsen gebildet und hebt den Calciumspiegel im Blut. Ob ein PTH-Wert passend ist, hängt vom gleichzeitig gemessenen Calcium ab. Ein erhöhter Wert kann bei Vitamin-D-Mangel, Nierenerkrankungen oder einer überaktiven Nebenschilddrüse vorkommen. Die Ursache klärt die Ärztin mit weiteren Werten.</p>`,
     bodyHtml: `<p>Die vier kleinen Nebenschilddrüsen liegen am Hals hinter der Schilddrüse. Sinkt das Calcium im Blut, schütten sie Parathormon aus. PTH setzt Calcium aus den Knochen frei, fördert die Aufnahme über den Darm und hilft den Nieren, Calcium zurückzuhalten. Steigt das Calcium wieder, sinkt normalerweise auch das PTH.</p>
 <p>Gemessen wird PTH im Blut, meist als intaktes PTH. Häufige Anlässe sind ein auffälliger <a href="/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/">Calciumwert</a>, ein niedriges Phosphat, eine chronische Nierenerkrankung oder eine ausgeprägte <a href="/beschwerden/osteoporose/">Osteoporose</a> ohne klare Ursache. Ob du nüchtern sein oder zu einer bestimmten Zeit kommen sollst, sagt dir die Praxis.</p>`,
-    contextHtml: `<p>Referenzbereiche unterscheiden sich zwischen Laboren und Messverfahren. Für Verlaufskontrollen ist es deshalb sinnvoll, im selben Labor zu messen. Wichtig ist die Kombination: Ein PTH im Normbereich kann bei gleichzeitig erhöhtem Calcium bereits unpassend hoch sein. Ein erhöhtes PTH mit niedrigem oder normalem Calcium passt dagegen eher zu einer Reaktion des Körpers, etwa bei <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Mangel</a>, geringer Calciumaufnahme oder eingeschränkter Nierenfunktion.</p>`,
-    notProofHtml: `<p>Ein einzelner erhöhter PTH-Wert beweist keinen Tumor der Nebenschilddrüse. Ein niedriger Wert ist für sich allein keine Unterfunktion. Aus dem Befund lässt sich auch keine Vitamin-D- oder Calcium-Dosierung ableiten. Präparate nimmst du nur nach ärztlicher Empfehlung ein.</p>`,
+    contextHtml: `<p>Referenzbereiche unterscheiden sich zwischen Laboren und Messverfahren. Für Verlaufskontrollen ist es deshalb sinnvoll, im selben Labor zu messen. Wichtig ist die Kombination: Ein PTH im Normbereich kann bei gleichzeitig erhöhtem Calcium bereits unpassend hoch sein. Ein erhöhtes PTH mit niedrigem Calcium passt dagegen eher zu einer Reaktion des Körpers, etwa bei <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Mangel</a>, geringer Calciumaufnahme oder eingeschränkter Nierenfunktion.</p>`,
+    notProofHtml: `<p>Ein einzelner erhöhter PTH-Wert beweist keinen Tumor der Nebenschilddrüse. Ein niedriger Wert ist für sich allein keine Unterfunktion. Aus dem Befund lässt sich auch keine Vitamin-D- oder Calcium-Dosierung ableiten. Ob Präparate sinnvoll sind, entscheidet die Ärztin.</p>`,
     redFlagsHtml: `<p>Rasch ärztlich beurteilt werden sollten Zeichen eines stark veränderten Calciums: ausgeprägter Durst, häufiges Wasserlassen, Übelkeit, Verwirrtheit oder starke Schwäche bei hohem Calcium sowie Kribbeln um den Mund, Muskelkrämpfe oder Herzrhythmusstörungen bei niedrigem Calcium. Bei Bewusstseinsstörung oder Krampfanfall wähle den Notruf 144.</p>`,
-    followUpHtml: `<p>Meist werden Calcium, Phosphat, Vitamin D, <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> mitbestimmt, teils auch Magnesium und Calcium im Urin. Bei Verdacht auf eine überaktive Nebenschilddrüse folgt eine endokrinologische Abklärung, gegebenenfalls mit Bildgebung der Nebenschilddrüsen. Bei Osteoporose kann eine <a href="/gesundheitsbibliothek/untersuchungen/knochendichtemessung/">Knochendichtemessung</a> dazugehören.</p>`,
+    followUpHtml: `<p>Calcium wird fast immer mitbestimmt; je nach Fragestellung kommen Phosphat, Magnesium, Vitamin D sowie Werte der Nierenfunktion wie <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> dazu. Besteht Verdacht auf eine Veränderung der Nebenschilddrüsen, kann eine Bildgebung folgen.</p>`,
     faqHtml: `<h2>Häufige Fragen</h2>
 <p><strong>Warum wird Calcium immer mitgemessen?</strong></p>
 <p>Weil PTH auf das Calcium reagiert. Erst beide Werte zusammen zeigen, ob die Nebenschilddrüsen passend arbeiten.</p>
 <p><strong>Kann Vitamin-D-Mangel das PTH erhöhen?</strong></p>
-<p>Ja, das ist ein häufiger Grund. Ob und wie Vitamin D ergänzt wird, entscheidet die Ärztin.</p>
+<p>Ja, Vitamin-D-Mangel ist eine mögliche Ursache. Ob und wie Vitamin D ergänzt wird, entscheidet die Ärztin.</p>
 <p><strong>Sind erhöhte PTH-Werte bei Nierenerkrankungen normal?</strong></p>
-<p>Bei chronischen Nierenerkrankungen sind sie häufig. Die Zielwerte legt das nephrologische Team fest.</p>`,
+<p>Bei chronischen Nierenerkrankungen kann PTH erhöht sein und wird deshalb regelmässig kontrolliert. Die Beurteilung übernimmt das nephrologische Team.</p>`,
     sources: [
       { label: 'MedlinePlus: Parathyroid Hormone (PTH) Test', url: 'https://medlineplus.gov/lab-tests/parathyroid-hormone-pth-test/' },
       { label: 'MedlinePlus: Parathyroid hormone (PTH) blood test', url: 'https://medlineplus.gov/ency/article/003690.htm' },
@@ -3897,20 +3896,20 @@ export const befundeWerte: BefundWert[] = [
     canonicalIntentOwner: [],
     overlapNotes: 'Hormonbefund; /untersuchungen/hormontest/ bleibt Testübersicht, /beschwerden/pcos/ bleibt Erkrankungs-Owner, /befunde-werte/testosteron-wert/ und /cortisol-wert/ verlinkt. Geprüft 16.10.2026 gegen Map und Guards.',
     suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
-    shortAnswerHtml: `<p>DHEA-S wird vor allem in den Nebennieren gebildet und ist eine Vorstufe von Sexualhormonen. Der Wert ist in jungen Jahren am höchsten und sinkt danach. Erhöhte Werte können bei PCOS, angeborenen Störungen der Nebennieren oder selten bei Tumoren vorkommen, niedrige bei einer Unterfunktion der Nebennieren oder Hirnanhangdrüse. Die Einordnung hängt von Alter, Geschlecht und Beschwerden ab.</p>`,
-    bodyHtml: `<p>DHEA-S ist die Speicherform von Dehydroepiandrosteron. Es wird zu einem kleineren Teil auch in Eierstöcken und Hoden gebildet und kann in Testosteron und Östrogene umgewandelt werden. Der Wert gibt deshalb Hinweise auf die Hormonproduktion der Nebennieren.</p>
+    shortAnswerHtml: `<p>DHEA-S wird vor allem in den Nebennieren gebildet und ist eine Vorstufe von Sexualhormonen. Der Wert ist in jungen Jahren am höchsten und sinkt danach. Erhöhte Werte können bei PCOS, angeborenen Störungen der Nebennieren oder bei Tumoren der Nebenniere, selten der Eierstöcke, vorkommen, niedrige bei einer Unterfunktion der Nebennieren oder Hirnanhangdrüse. Die Einordnung hängt von Alter, Geschlecht und Beschwerden ab.</p>`,
+    bodyHtml: `<p>DHEA-S (Dehydroepiandrosteronsulfat) ist ein männliches Sexualhormon, das auch bei Frauen vorkommt. Es wird zu einem kleineren Teil auch in Eierstöcken und Hoden gebildet und kann in Testosteron und Östrogene umgewandelt werden. Der Wert gibt deshalb Hinweise auf die Hormonproduktion der Nebennieren.</p>
 <p>Anlass für den Test sind bei Frauen etwa vermehrte Körper- und Gesichtsbehaarung, Akne, Zyklusstörungen oder Haarausfall am Oberkopf, bei Kindern eine zu frühe oder verspätete Pubertät. Auch bei Verdacht auf eine Funktionsstörung der Nebennieren wird DHEA-S bestimmt. Eine besondere Vorbereitung ist meist nicht nötig.</p>`,
-    contextHtml: `<p>Die Referenzbereiche unterscheiden sich stark nach Alter und Geschlecht und zwischen Laboren. Ein Wert, der mit 25 Jahren normal ist, kann mit 60 hoch sein und umgekehrt. Hormonpräparate, darunter frei erhältliche DHEA-Produkte, können das Ergebnis verändern. Gib deshalb alle Präparate und Medikamente an.</p>`,
-    notProofHtml: `<p>Ein erhöhter DHEA-S-Wert beweist kein PCOS und keinen Tumor. Ein niedriger Wert im höheren Alter ist meist normal und keine Erklärung für Müdigkeit oder Lustlosigkeit. Aus dem Befund lässt sich keine Empfehlung für DHEA-Präparate ableiten; deren Einnahme sollte ärztlich besprochen werden.</p>`,
-    redFlagsHtml: `<p>Rasch ärztlich abklären solltest du eine schnell zunehmende Behaarung, Stimmvertiefung oder deutliche Veränderungen des Körpers innerhalb weniger Monate. Starke Schwäche, Gewichtsverlust, Erbrechen, Schwindel und Salzhunger können auf eine Nebenniereninsuffizienz hinweisen und brauchen rasche Abklärung.</p>`,
-    followUpHtml: `<p>Häufig werden weitere Hormone mitbestimmt, etwa <a href="/gesundheitsbibliothek/befunde-werte/testosteron-wert/">Testosteron</a>, je nach Fragestellung <a href="/gesundheitsbibliothek/befunde-werte/cortisol-wert/">Cortisol</a> und Hormone der Hirnanhangdrüse. Bei sehr hohen Werten kann eine Bildgebung der Nebennieren oder Eierstöcke folgen. Eine Übersicht über Hormonbestimmungen gibt die Seite <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>; bei Zyklusstörungen ist die Abgrenzung zu <a href="/beschwerden/pcos/">PCOS</a> wichtig.</p>`,
+    contextHtml: `<p>Die Referenzbereiche unterscheiden sich stark nach Alter und Geschlecht und zwischen Laboren. Ein Wert, der mit 25 Jahren normal ist, kann mit 60 hoch sein und umgekehrt. DHEA-haltige Präparate und Kortisonpräparate können das Ergebnis verändern. Gib deshalb alle Präparate und Medikamente an.</p>`,
+    notProofHtml: `<p>Ein erhöhter DHEA-S-Wert beweist kein PCOS und keinen Tumor. Ein niedriger Wert im höheren Alter ist meist altersbedingt; ob Beschwerden wie verminderte Lust damit zusammenhängen, klärt die Ärztin. Aus dem Befund lässt sich keine Empfehlung für DHEA-Präparate ableiten; deren Einnahme sollte ärztlich besprochen werden.</p>`,
+    redFlagsHtml: `<p>Ärztlich abklären solltest du bei Frauen eine zunehmende Körper- und Gesichtsbehaarung, eine Stimmvertiefung oder eine deutliche Zunahme der Muskulatur. Ungewollter Gewichtsverlust, Übelkeit und Erbrechen, Schwindel, Austrocknung und Salzhunger können auf eine Nebenniereninsuffizienz hinweisen und brauchen rasche Abklärung.</p>`,
+    followUpHtml: `<p>Häufig werden weitere Hormone mitbestimmt, etwa <a href="/gesundheitsbibliothek/befunde-werte/testosteron-wert/">Testosteron</a>, je nach Fragestellung <a href="/gesundheitsbibliothek/befunde-werte/cortisol-wert/">Cortisol</a> und Hormone der Hirnanhangdrüse. Besteht Verdacht auf einen Tumor, folgt eine weitere Abklärung. Eine Übersicht über Hormonbestimmungen gibt die Seite <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>; bei Zyklusstörungen ist die Abgrenzung zu <a href="/beschwerden/pcos/">PCOS</a> wichtig.</p>`,
     faqHtml: `<h2>Häufige Fragen</h2>
 <p><strong>Ist ein niedriger DHEA-S-Wert im Alter normal?</strong></p>
 <p>Ja. Der Wert sinkt mit den Jahren deutlich. Für sich allein ist das kein Krankheitszeichen.</p>
 <p><strong>Sollte ich DHEA einnehmen, wenn der Wert niedrig ist?</strong></p>
 <p>Daraus folgt keine Empfehlung. Hormonpräparate können Nebenwirkungen haben und gehören in ärztliche Absprache.</p>
 <p><strong>Hat jede Frau mit PCOS ein erhöhtes DHEA-S?</strong></p>
-<p>Nein. Manche haben erhöhte Werte, andere nicht. Die Diagnose stützt sich auf mehrere Kriterien.</p>`,
+<p>Nicht unbedingt. Ein erhöhter Wert kann zu PCOS passen, die Diagnose stützt sich aber nicht auf diesen Wert allein.</p>`,
     sources: [
       { label: 'MedlinePlus: DHEA Sulfate Test', url: 'https://medlineplus.gov/lab-tests/dhea-sulfate-test/' },
       { label: 'MedlinePlus: DHEA-sulfate test', url: 'https://medlineplus.gov/ency/article/003717.htm' },

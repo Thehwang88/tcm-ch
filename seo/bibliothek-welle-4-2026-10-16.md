@@ -553,10 +553,49 @@ Nesselsucht-Korrektur: PubMed (E-utilities) bestätigt PMID 37956431 (DOI 10.732
 
 QA nach Review: Build ok (Sitemap 822, dist 846). Alle Gates wie oben 0 Fehler (test-kontakt-formular 630/0, API gemockt). Kohortenprüfung 34 URLs: 0 Befunde. Map 828 à 21 Spalten. Kein Layout geändert, Overflow-Prüfung nicht wiederholt.
 
-## Offene medizinische Fragen (ärztliche Review empfohlen)
+## Medizinische Prüfung vor Release (16.10.2026, Commit 6)
 
-- Chronischer Husten: Aussagen zu Hustenkontrolltherapie und Neuromodulatoren aus dem ERS-Abstract; Detailempfehlungen bitte pneumologisch prüfen.
-- Meniskusriss/Arthroskopie: Einordnung der BMJ-Leitlinie (2017) gegen neuere Daten prüfen, besonders für traumatische Risse bei Jüngeren.
-- Aromatasehemmer: klinische Relevanz von rund einem Punkt Schmerzdifferenz onkologisch einordnen lassen; Hinweise zu Lymphödemarm und bestrahlter Haut prüfen.
-- Restless Legs: Leitlinie ist US-amerikanisch (AASM); Schweizer Praxis zur Eisensubstitution ärztlich abgleichen.
-- Befunde: Referenzbereiche bewusst ohne Zahlen (laborabhängig); Formulierungen zu PTH/Calcium und DHEA-S endokrinologisch gegenlesen.
+Geprüft gegen die Originalquellen (Volltext, wo frei verfügbar; sonst nur Aussagen aus dem Abstract). Keine ärztliche Freigabe behauptet; geprüft wurde die Quellentreue. Unbelegte Details wurden gestrichen oder enger formuliert.
+
+| Seite | Konkrete Aussage | Quelle und Fundstelle | Ergebnis | Änderung oder verbleibende Frage |
+|---|---|---|---|---|
+| /beschwerden/chronischer-husten/ | Hustenkontrolltherapie «logopädisch» empfohlen | Morice 2020 (ERS), Volltext PMC6942543, Question 7 | Zu eng: Empfehlung bedingt, Physiotherapie oder Logopädie, erfahrene Fachpersonen | «schlägt einen Versuch vor, durch erfahrene Fachpersonen der Physiotherapie oder Logopädie» |
+| /beschwerden/chronischer-husten/ | Medikamente gegen Nervenüberempfindlichkeit «in ausgewählten Fällen» | ERS Question 6 (Morphin niedrig dosiert, Gabapentin/Pregabalin bei refraktärem Husten Erwachsener) | Belegt | Als «Versuch erwägen, Nutzen und Nebenwirkungen wägt die Fachärztin ab» formuliert; keine Wirkstoffe oder Dosen genannt |
+| /beschwerden/chronischer-husten/ | Hustenreiz durch «Sprechen oder Lachen» | ERS Abstract/Volltext nennt kalte Luft, Parfum, Rauch, Bleichmittel | Nicht belegt | Gestrichen |
+| /beschwerden/chronischer-husten/ | Reflux «auch ohne typisches Sodbrennen» | ERS Volltext: nicht saurer Reflux als mögliche Ursache | Enger | «Rückfluss aus dem Magen, nicht nur in Form von Sodbrennen» |
+| /beschwerden/chronischer-husten/ | Übersicht 2025: 30 Studien «meist aus China» | Lee 2025, Volltext PMC11815682, Results | Falsch: alle Studien aus China; auch Kinder eingeschlossen | «alle aus China», «Ursachen wie Altersgruppen sehr unterschiedlich» |
+| /beschwerden/chronischer-husten/ | Warnzeichen Heiserkeit > 3 Wochen, Nachtschweiss, Raucherhusten, hohes Fieber | NHS Cough (Urgent/Non-urgent advice) | In zitierten Quellen nicht belegt | Liste auf NHS-Warnzeichen reduziert (Bluthusten, Atemnot/Brustschmerz, rasch schlimmer, Gewichtsverlust, Immunschwäche); NHS-Link auf neue URL /symptoms/cough/ |
+| /beschwerden/meniskusriss/, /gesundheitsbibliothek/untersuchungen/arthroskopie/ | BMJ-Leitlinie rät «fast immer» von Arthroskopie ab | Siemieniuk 2017, Volltext PMC5426368, «What you need to know» und Definition | Belegt, Geltungsbereich fehlte | Ausnahmen ergänzt: objektiv blockiertes Knie, Sportverletzungen Jüngerer, schwere Knieverletzungen |
+| /beschwerden/meniskusriss/ | Traumatische Risse 18 bis 45 Jahre: frühe Teilentfernung nicht besser; 4 von 10 später operiert | van der Graaf 2022, Volltext PMC9304087, Abstract und Methods | Belegt (41 %), aber nur isolierte Risse ohne Arthrose | Population präzisiert; «nähbare Risse und Blockaden werden häufig operiert» ersetzt durch: in der Studie ausgeschlossen, Orthopädie entscheidet |
+| /beschwerden/meniskusriss/ | Degenerativ: 140 Personen, 35 bis 60, 12 Wochen Training gleichwertig | Kise 2016, Abstract | Belegt | Keine |
+| /beschwerden/meniskusriss/ | FAQ «heilt schlecht im Innenbereich» | Keine der Quellen | Nicht belegt | Ersetzt durch «hängt von Art und Lage ab; Beschwerden besserten sich in den Studien auch ohne frühe Operation» |
+| /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | Effekt «moderat» | Hershman 2018 Abstract (JAMA): 0,92 bzw. 0,96 Punkte, klinisch bedeutsam vorab 2 Punkte, «uncertain clinical importance» | Zu positiv | «klein, unter der vorab festgelegten Schwelle, klinische Bedeutung unsicher» (Kurzantwort, Lead, Excerpt) |
+| /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | 52 Wochen rund ein Punkt, Funktionstests ohne Unterschied | Hershman 2022, Volltext PMC9652759 | Belegt | Keine |
+| /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | «Schwere Nebenwirkungen nicht berichtet» | 2018 nur Abstract verfügbar (Bluterguss Grad 1) | Nicht prüfbar | Gestrichen |
+| /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | Lymphödemarm, bestrahlte Haut, Blutbild | Keine der Quellen | Nicht belegt | Gestrichen; Vorabklärung neutral mit dem Onkologie-Team |
+| /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | «Bewegung, Schmerzmittel, Präparatwechsel» | Hershman 2022 Discussion: Bewegung und Medikamente untersucht, gemischte Ergebnisse | Präparatwechsel nicht belegt | «untersucht, gemischte Ergebnisse; Onkologie-Team entscheidet»; keine Gleichsetzung mit Krebsbehandlung (Satz «Akupunktur behandelt den Krebs nicht» bleibt) |
+| /wissen/akupunktur-bei-restless-legs/ | AASM: keine Empfehlung zu Akupunktur | Winkelman 2025, Volltext PMC11701286: «insufficient and inconclusive evidence» | Belegt | Keine |
+| /wissen/akupunktur-bei-restless-legs/ | Eisenwerte inkl. Ferritin und Transferrinsättigung, morgens; Alkohol, Koffein, Medikamente, Schlafapnoe | AASM Good Practice Statements 1 und 2 | Belegt | Keine |
+| /wissen/akupunktur-bei-restless-legs/ | «Nimm Eisen nicht auf eigene Faust ein»; Grenzwerte «weichen von üblichen ab» | AASM: Eisenwerte bestimmen die Wahl der Eisengabe; eigene Schwellen | Eigenständige Handlungsanweisung, Vergleich nicht belegt | Ohne Imperativ und ohne Vergleich: «Laborwerte bestimmen mit, ob und wie Eisen gegeben wird; das entscheidet die Ärztin»; keine Dosierung, keine Aussage zur Schweizer Praxis |
+| /wissen/akupunktur-bei-restless-legs/ | Guan 2024 «tägliche Sitzungen» | Guan 2024 Abstract | Ungenau | «an sechs Tagen pro Woche» |
+| /gesundheitsbibliothek/befunde-werte/parathormon/ | Auslegung immer mit Calcium; Normbereich-PTH kann bei hohem Calcium unpassend sein | MedlinePlus PTH Test und Encyclopedia 003690 | Belegt | Keine |
+| /gesundheitsbibliothek/befunde-werte/parathormon/ | Erhöhtes PTH mit «niedrigem oder normalem» Calcium; Vitamin-D-Mangel «häufiger Grund»; bei Nierenerkrankung «häufig»; Urin-Calcium, Knochendichte, Endokrinologie | MedlinePlus: sekundär = hohes PTH mit niedrigem Calcium; Vitamin D, Niere als mögliche Ursachen; CKD-Überwachung | Teils nicht belegt | Auf Quellenaussagen reduziert; Interpretation mit Calcium, Nierenfunktion (Kreatinin, eGFR) und Vitamin D; keine Diagnose aus Einzelwert; Präparate nur nach ärztlicher Entscheidung |
+| /gesundheitsbibliothek/befunde-werte/dheas-wert/ | Alters-, geschlechts- und laborabhängige Bereiche | MedlinePlus Encyclopedia 003717 (Normal Results) | Belegt | Keine Zahlen übernommen |
+| /gesundheitsbibliothek/befunde-werte/dheas-wert/ | Niedriger Wert im Alter «keine Erklärung für Lustlosigkeit» | MedlinePlus: altersbedingt niedriges DHEAS kann mit verminderter Lust einhergehen | Widerspricht der Quelle | «meist altersbedingt; ob Beschwerden wie verminderte Lust damit zusammenhängen, klärt die Ärztin» |
+| /gesundheitsbibliothek/befunde-werte/dheas-wert/ | Tumoren «selten», «Speicherform», «schnell zunehmend», Bildgebung, PCOS-FAQ | MedlinePlus: Nebennierentumor, selten Eierstocktumor; Symptomliste ohne Zeitangabe | Teils nicht belegt | Auf Quellenaussagen reduziert; DHEA-Präparate weiterhin keine Empfehlung (MedlinePlus: keine verlässliche Evidenz, mögliche Nebenwirkungen) |
+
+Ergebnis: Keine wesentliche Aussage benötigt nach der Korrektur eine offene ärztliche Entscheidung. Kein inhaltlicher Release-Blocker.
+
+## Release (16.10.2026, Commit 6)
+
+Veröffentlichungsdatum: `PUBLISHED_WELLE_4_2026_10 = '2026-10-16'` (Go-Live-Tag Europe/Zurich). Ältere Kohorten-Konstanten unverändert. Das Datum erscheint nur über die vorgesehenen Templates: Wissen und Untersuchungen mit datePublished und dateModified, Befunde mit datePublished (Template setzt dateModified nur bei updatedAt), Beschwerden ohne Datum. Keine Reviewer, keine medizinische Freigabe im Schema.
+
+Lokale Prüfungen auf dem Release-Stand (in diesem Schritt tatsächlich ausgeführt):
+
+- Build ok: Sitemap 822 URLs (main 788, +34), dist 846 Seiten (+34), 0 entfernt. Build-Diff gegen main 8f2dfabc: 72 bestehende Seiten geändert (verlinkende Seiten, Hubs, Suche, Bestandstext Sehnenscheidenentzündung), keine `/en/`-Seite, SG und Formular-CSS byte-identisch.
+- Gates: health-audit 0 Fehler, check-i18n --strict 0 failures, test-en-analytics 47/47, check-kontakt-formular 0, check-clinic-status 0, check-standort-ux 0, check-first30 0, check-professional 0. test-kontakt-formular (API gemockt): zwei Läufe 629/1 bei paralleler Rechenlast (Rand-Farbprüfung der SG-Formularkachel direkt nach dem Laden, CSS-Übergang 0,15 s), dritter Lauf 630/0; main 630/0; SG-HTML und Formular-CSS unverändert.
+- Kohortenprüfung 34 URLs: 0 Befunde (Title eindeutig, Meta, eine H1, Canonical, indexierbar, 3 FAQs, kein FAQPage-/Question-Schema, Datumsfelder wie erwartet, Quellen, keine Em-Dashes/ß/Platzhalter/Qi-Begriffe, alle Linkziele gültig, mindestens zwei Inbound-Links aus Bestandsseiten).
+- Overflow 34 × 390/1440 px plus 320 px je Layoutfamilie: 72 Prüfungen, 0 Overflow, 0 JS-Fehler. Geänderte Passagen (8 Stellen) bei 390 und 1440 px als Screenshot geprüft; kein Layout geändert, daher keine zusätzliche 320-px-Prüfung.
+- CSVs: Map 828 à 21 Spalten, Guards 201 à 5; Welle-4-Owner-URLs einzeln und im Build vorhanden.
+
+Separater UX-Punkt (nicht in diesem PR): Auf Untersuchungsseiten erscheint die globale mobile Sticky-Leiste aus LayoutDe («Termin abklären», WhatsApp, Anrufen), obwohl die Seiten selbst keinen Buchungs-CTA haben. Unverändert gelassen.
