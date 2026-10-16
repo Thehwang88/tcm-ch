@@ -313,6 +313,8 @@ Title: ANA positiv: Antinukleäre Antikörper verstehen | TCM.ch
 
 Quellen:
 
+- MedlinePlus: ANA (Antinuclear Antibody) Test: https://medlineplus.gov/lab-tests/ana-antinuclear-antibody-test/
+- MedlinePlus: Antinuclear antibody panel: https://medlineplus.gov/ency/article/003535.htm
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -325,6 +327,8 @@ Title: Rheumafaktor positiv oder erhöht: Einordnung | TCM.ch
 
 Quellen:
 
+- MedlinePlus: Rheumatoid Factor (RF) Test: https://medlineplus.gov/lab-tests/rheumatoid-factor-rf-test/
+- MedlinePlus: CCP Antibody Test: https://medlineplus.gov/lab-tests/ccp-antibody-test/
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -338,6 +342,8 @@ Title: Anti-CCP-Antikörper positiv: Einordnung | TCM.ch
 
 Quellen:
 
+- MedlinePlus: CCP Antibody Test: https://medlineplus.gov/lab-tests/ccp-antibody-test/
+- MedlinePlus: Rheumatoid Factor (RF) Test: https://medlineplus.gov/lab-tests/rheumatoid-factor-rf-test/
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -351,6 +357,8 @@ Title: HLA-B27 positiv: Einordnung des Befunds | TCM.ch
 
 Quellen:
 
+- MedlinePlus: HLA-B27 antigen: https://medlineplus.gov/ency/article/003551.htm
+- NHS: Ankylosing spondylitis: https://www.nhs.uk/conditions/ankylosing-spondylitis/
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -363,6 +371,8 @@ Title: Parathormon erhöht oder niedrig: PTH verstehen | TCM.ch
 
 Quellen:
 
+- MedlinePlus: Parathyroid Hormone (PTH) Test: https://medlineplus.gov/lab-tests/parathyroid-hormone-pth-test/
+- MedlinePlus: Parathyroid hormone (PTH) blood test: https://medlineplus.gov/ency/article/003690.htm
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -375,6 +385,7 @@ Title: Apolipoprotein B (ApoB) erhöht: Einordnung | TCM.ch
 
 Quellen:
 
+- MedlinePlus: Apolipoprotein B: https://medlineplus.gov/ency/article/003502.htm
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -387,6 +398,8 @@ Title: Haptoglobin niedrig oder erhöht: Einordnung | TCM.ch
 
 Quellen:
 
+- MedlinePlus: Haptoglobin (HP) Test: https://medlineplus.gov/lab-tests/haptoglobin-hp-test/
+- MedlinePlus: Haptoglobin blood test: https://medlineplus.gov/ency/article/003634.htm
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
@@ -399,6 +412,8 @@ Title: DHEA-S erhöht oder niedrig: Wert einordnen | TCM.ch
 
 Quellen:
 
+- MedlinePlus: DHEA Sulfate Test: https://medlineplus.gov/lab-tests/dhea-sulfate-test/
+- MedlinePlus: DHEA-sulfate test: https://medlineplus.gov/ency/article/003717.htm
 
 Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
 
