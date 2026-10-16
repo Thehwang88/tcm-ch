@@ -1,14 +1,18 @@
 ---
 import type { Standort } from '../../data/standorte';
 import { symptomCards } from '../../data/symptom-cards';
+// SG-Vorlage: Kartenstil und Abschnittshierarchie wie «Wobei können wir helfen?» in St. Gallen (svc-header, svc-grid,
+// CTA aufs untere Formular); Inhalte, Ankertexte und «Alle Beschwerden» bleiben lokal.
 const { data } = Astro.props as { data: Standort };
+const ctaLabel = data.review ? 'Passende Praxis anfragen' : data.planned ? `Anfrage für ${data.stadt} stellen` : `Termin in ${data.stadt} anfragen`;
+const arrow = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 const cards = data.beschwerden.map((slug) => ({ slug, c: symptomCards[slug] })).filter((x) => x.c);
 // Anchor texts alternate "Akupunktur bei X" / "TCM bei X" so no single pattern dominates.
 const anchor = (i: number, name: string) => `${i % 2 === 0 ? 'Akupunktur' : 'TCM'} bei ${name}`;
 const intro = data.beschwerdenIntro ?? `Häufige Beschwerden, bei denen TCM in ${data.stadt} wirksam hilft.`;
 ---
-<section class="section" style="background: var(--surface);"><div class="wrap"><div class="reveal"><div class="section-label">Beschwerden</div><h2 class="section-title">Häufige Beschwerden in <em>{data.stadt}</em></h2><p class="section-sub">{intro}</p></div><div class="card-grid reveal">
+<section class="section svc-section std-beschwerden" id={`beschwerden-${data.slug}`} style="background:var(--surface)"><div class="wrap"><div class="svc-header reveal"><div><div class="section-label">Beschwerden</div><h2 class="section-title">Häufige Beschwerden in <em>{data.stadt}</em></h2></div><p class="svc-sub">{intro}</p></div><div class="svc-grid">
 {cards.map(({ slug, c }, i) => (
-  <a href={`/beschwerden/${slug}/`} class="svc-card reveal"><div class="svc-photo-top-bar"></div><div class="svc-photo-wrap"><img loading="lazy" decoding="async" src={c.img} alt={`${c.name} mit TCM behandeln in ${data.stadt}`} style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;"></div><div class="svc-body"><div class="svc-name">{anchor(i, c.name)}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div></a>
+  <a class="svc-card reveal" href={`/beschwerden/${slug}/`} style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src={c.img} alt={`${c.name} mit TCM behandeln in ${data.stadt}`} class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">{anchor(i, c.name)}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <Fragment set:html={arrow} /></div></div></a>
 ))}
-</div><div style="text-align:center;margin-top:24px"><a href="/beschwerden/" class="btn-secondary" style="display:inline-flex">Alle Beschwerden ansehen →</a></div></div></section>
+</div><div class="std-bs-cta reveal"><a href="#kontakt" class="btn-primary">{ctaLabel} <span aria-hidden="true">→</span></a><a href="/beschwerden/" class="std-bs-all">Alle Beschwerden ansehen <span aria-hidden="true">→</span></a></div></div></section>
