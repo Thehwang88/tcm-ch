@@ -96,6 +96,10 @@ export const PUBLISHED_LABORWERTE_2026_10_W2: string | undefined = '2026-10-13';
 // Nur Publikation, keine fachliche Prüfung. Bisherige Konstanten unverändert.
 export const PUBLISHED_WELLE_3_2026_10: string | undefined = '2026-10-14';
 
+// Welle 4 (8 Befunde, 6 Untersuchungen, 8 Wissen; die 12 Beschwerden tragen kein Datum).
+// Go-Live 16.10.2026 (Europe/Zurich). Nur Publikation, keine fachliche Prüfung.
+export const PUBLISHED_WELLE_4_2026_10: string | undefined = '2026-10-16';
+
 export const befundeWerte: BefundWert[] = [
   {
     slug: 'crp-erhoeht',
@@ -125,7 +129,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Leicht erhöht oder deutlich erhöht?</h2>
 <p>Grundsätzlich gilt: Je höher der Wert, desto wahrscheinlicher steckt eine relevante entzündliche Ursache dahinter, und ein leicht erhöhter Wert hat viele mögliche, oft harmlose Erklärungen. Feste Grenzwerte, die für alle Menschen und Situationen gelten, gibt es aber nicht: Referenzbereiche unterscheiden sich je nach Labor und Messmethode, und die Bewertung hängt immer vom Zusammenhang ab. Verlass dich deshalb auf den Referenzbereich auf deinem Laborbefund und auf die ärztliche Einordnung, nicht auf universelle Tabellen aus dem Internet.</p>`,
     notProofHtml: `<p>Ein erhöhtes CRP beweist <strong>keine bestimmte Diagnose</strong>: keine bestimmte Infektion, keinen bestimmten Entzündungsort, keinen Tumor und keine chronische Erkrankung. Es beweist auch nicht, dass etwas Ernstes vorliegt: Nach einem Infekt kann der Wert noch erhöht sein, obwohl du dich schon wieder gesund fühlst. Umgekehrt schliesst ein normales CRP nicht jede Erkrankung aus. Der Wert ist ein Hinweisgeber, kein Urteil.</p>`,
-    followUpHtml: `<p>Wie es weitergeht, hängt vom Gesamtbild ab. Häufige nächste Schritte sind: den Wert nach einiger Zeit <strong>kontrollieren</strong>, um den Verlauf zu sehen, ihn mit weiteren Werten wie dem Blutbild kombinieren oder gezielt nach einer Ursache suchen, wenn Beschwerden bestehen. Bei einem leicht erhöhten Wert ohne Symptome ist die Verlaufskontrolle oft wichtiger als jede Einzelmessung. Welche Untersuchungen infrage kommen, entscheidet die Ärztin oder der Arzt anhand von Anamnese und Befund; eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Wie es weitergeht, hängt vom Gesamtbild ab. Häufige nächste Schritte sind: den Wert nach einiger Zeit <strong>kontrollieren</strong>, um den Verlauf zu sehen, ihn mit weiteren Werten wie dem Blutbild kombinieren oder gezielt nach einer Ursache suchen, wenn Beschwerden bestehen. Bei einem leicht erhöhten Wert ohne Symptome ist die Verlaufskontrolle oft wichtiger als jede Einzelmessung. Welche Untersuchungen infrage kommen, entscheidet die Ärztin oder der Arzt anhand von Anamnese und Befund; eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>. Bei Gelenkbeschwerden gehören oft auch Antikörper wie <a href="/gesundheitsbibliothek/befunde-werte/ana-antikoerper/">ANA</a> oder der <a href="/gesundheitsbibliothek/befunde-werte/rheumafaktor/">Rheumafaktor</a> dazu.</p>`,
     redFlagsHtml: `<p>Für die Dringlichkeit zählt nicht die Zahl allein, sondern dein Zustand. Ärztliche Abklärung zeitnah suchen solltest du bei erhöhtem CRP zusammen mit hohem oder anhaltendem Fieber, Schüttelfrost, starken Schmerzen, rascher Verschlechterung des Allgemeinzustands, Atemnot oder wenn du dich insgesamt zunehmend krank fühlst. Auch ein wiederholt erhöhter Wert ohne erkennbare Ursache gehört abgeklärt, nur eben ohne Dringlichkeit.</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert CRP nicht und stellt daraus keine Diagnosen. Erst wenn die Ursache ärztlich eingeordnet ist, kann sich die Frage stellen, ob eine komplementäre Behandlung, bezogen auf die diagnostizierte Erkrankung und deine konkreten Beschwerden, sinnvoll ist. Das besprechen wir ehrlich im Einzelfall.</p>`,
     relatedConditions: [{ href: '/beschwerden/immunschwaeche/', label: 'Immunschwäche & Infektanfälligkeit' }],
@@ -761,7 +765,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Warum die Dosierung nicht aus dem Internet stammen sollte</h2>
 <p>Wie viel substituiert wird, hängt vom gemessenen Wert, vom Grund des Mangels, von Begleiterkrankungen und Medikamenten ab. Sehr hohe Eigendosierungen über lange Zeit können schaden. Sinnvoll ist deshalb: Wert ärztlich einordnen lassen, Substitution und Kontrolle gemeinsam festlegen.</p>`,
     notProofHtml: `<p>Ein tiefer Vitamin-D-Wert erklärt nicht automatisch Müdigkeit, Muskel- oder Stimmungsbeschwerden; diese haben viele mögliche Ursachen und verdienen eine eigene Einordnung. Umgekehrt schliesst ein normaler Wert eine Knochenstoffwechsel-Frage nicht in jedem Fall ab.</p>`,
-    followUpHtml: `<p>Je nach Situation folgen eine <strong>ärztlich begleitete Substitution mit Verlaufskontrolle</strong>, bei Verdacht auf Aufnahme- oder Verwertungsstörungen weitere Werte (etwa Kalzium, Nieren- und Leberwerte) und die Suche nach der Ursache. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen eine <strong>ärztlich begleitete Substitution mit Verlaufskontrolle</strong>, bei Verdacht auf Aufnahme- oder Verwertungsstörungen weitere Werte (etwa Kalzium, Nieren- und Leberwerte) und die Suche nach der Ursache. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>. Ein erhöhtes <a href="/gesundheitsbibliothek/befunde-werte/parathormon/">Parathormon (PTH)</a> kann eine Reaktion auf einen Vitamin-D-Mangel sein und wird zusammen mit Calcium beurteilt.</p>`,
     redFlagsHtml: `<p>Der Wert selbst ist kein Notfall. Ärztlich besprochen gehören ausgeprägte Knochen- oder Muskelschmerzen, Knochenbrüche ohne adäquaten Anlass, wiederholte Stürze im Alter oder ein tiefer Wert bei bekannter Magen-Darm-, Leber- oder Nierenerkrankung.</p>`,
     integrativeContextHtml: `<p>Die Beurteilung des Vitamin-D-Status und die Substitution gehören in die schulmedizinische Betreuung: Die chinesische Medizin interpretiert den Laborwert nicht und ersetzt keine Substitution.</p>`,
     relatedArticles: [
@@ -1026,7 +1030,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Wie der Wert sinnvoll gelesen wird</h2>
 <p>Immer im Set: Beschwerden, Blutbild, Leber- und Muskelwerte, Entzündungsmarker. Die Frage ist nie "Was bedeutet die LDH?", sondern "Zu welchem Gesamtbild passt sie?".</p>`,
     notProofHtml: `<p>Eine erhöhte LDH beweist keine bestimmte Erkrankung, keinen Herzinfarkt, keine Leber- oder Tumorerkrankung, und sie lokalisiert kein Organ. Ein isolierter, leicht erhöhter Wert nach Sport oder mit hämolytischer Probe ist ein häufiger, meist banaler Befund.</p>`,
-    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung mit sauberer Abnahme und ohne vorherige intensive Belastung</strong> sowie die passenden Begleitwerte je nach Verdacht. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind eine <strong>Kontrollmessung mit sauberer Abnahme und ohne vorherige intensive Belastung</strong> sowie die passenden Begleitwerte je nach Verdacht. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>. Bei Verdacht auf einen vermehrten Abbau roter Blutkörperchen gehört <a href="/gesundheitsbibliothek/befunde-werte/haptoglobin/">Haptoglobin</a> zu den typischen Begleitwerten.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich gehören deutlich oder anhaltend erhöhte Werte zusammen mit B-Symptomen (Fieber, Nachtschweiss, Gewichtsverlust), Blässe und Müdigkeit, dunklem Urin nach extremer Belastung oder auffälligen weiteren Befunden.</p>`,
     integrativeContextHtml: `<p>Die LDH gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und leitet daraus keine Diagnosen ab.</p>`,
     relatedArticles: [
@@ -1167,7 +1171,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Einzelwert oder Verlauf?</h2>
 <p>Für die Einordnung zählen die Bestätigungsmessung, Albumin, Parathormon, Vitamin-D-Status, Nierenwerte und die Medikamenten- und Supplementliste. Viele leichte Erhöhungen entpuppen sich bei der Kontrolle als Mess- oder Bindungseffekt.</p>`,
     notProofHtml: `<p>Ein erhöhter Calciumwert beweist weder eine Nebenschilddrüsen- noch eine Tumorerkrankung; nicht selten relativiert ihn schon die Albumin-Korrektur. Er ist auch kein Grund, Calcium- oder Vitamin-D-Präparate eigenmächtig zu verändern, wohl aber, sie ärztlich zu besprechen.</p>`,
-    followUpHtml: `<p>Üblich sind die <strong>Bestätigung (albuminkorrigiert oder ionisiert)</strong>, Parathormon, <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Status</a>, <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte</a> und die Supplement-/Medikamentenliste. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Bestätigung (albuminkorrigiert oder ionisiert)</strong>, <a href="/gesundheitsbibliothek/befunde-werte/parathormon/">Parathormon</a>, <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Status</a>, <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte</a> und die Supplement-/Medikamentenliste. Eine Übersicht findest du unter <a href="/gesundheitsbibliothek/#diagnostik">Untersuchungen &amp; Diagnostik</a>.</p>`,
     redFlagsHtml: `<p>Zügig beurteilt gehören deutlich erhöhte Werte sowie erhöhte Werte zusammen mit starkem Durst und viel Wasserlassen, Übelkeit, Verstopfung, Knochenschmerzen, Verwirrtheit oder ausgeprägter Müdigkeit.</p>`,
     integrativeContextHtml: `<p>Auch der Calciumhaushalt gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und ersetzt keine Abklärung der Nebenschilddrüsen.</p>`,
     relatedArticles: [
@@ -1648,7 +1652,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Merkt man ein hohes LDL?</h2>
 <p>In der Regel nicht: Erhöhte Blutfette verursachen lange keine Symptome. Genau deshalb wird das Lipidprofil im Rahmen von Vorsorgeuntersuchungen bestimmt und im Verlauf verglichen.</p>`,
     notProofHtml: `<p>Ein erhöhtes LDL ist keine Diagnose einer Gefässerkrankung und sagt allein nichts über den Zustand deiner Gefässe aus. Umgekehrt bedeutet ein normales LDL keinen Freipass: Das Herz-Kreislauf-Risiko entsteht aus dem Zusammenspiel mehrerer Faktoren. Beginne oder ändere keine Medikamente aufgrund eines Laborwertes selbstständig. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
-    followUpHtml: `<p>Üblich sind eine Bestätigungsmessung, das vollständige Lipidprofil inklusive <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceriden</a> und <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, Blutdruck- und Blutzuckerwerte, TSH sowie eine ärztliche Risikoabschätzung; je nach Profil folgen Lebensstilmassnahmen und gegebenenfalls eine medikamentöse Beratung.</p>`,
+    followUpHtml: `<p>Üblich sind eine Bestätigungsmessung, das vollständige Lipidprofil inklusive <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceriden</a> und <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, Blutdruck- und Blutzuckerwerte, TSH sowie eine ärztliche Risikoabschätzung; je nach Profil folgen Lebensstilmassnahmen und gegebenenfalls eine medikamentöse Beratung. In bestimmten Situationen, etwa bei erhöhten Triglyceriden, kann zusätzlich <a href="/gesundheitsbibliothek/befunde-werte/apolipoprotein-b/">Apolipoprotein B</a> bestimmt werden.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich besprochen gehören sehr hohe Werte, eine auffällige Familiengeschichte mit frühen Herzinfarkten sowie ein erhöhtes LDL zusammen mit weiteren Risikofaktoren wie Bluthochdruck, Diabetes oder Rauchen. Brustschmerzen oder Atemnot sind unabhängig vom Laborwert ein Notfall (Telefon 144).</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
@@ -1849,7 +1853,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Warum zählt der Kontext?</h2>
 <p>Eine stark beschleunigte Senkung mit passenden Beschwerden, etwa neuen Kopfschmerzen an den Schläfen, Sehstörungen und Kauschmerzen bei älteren Menschen, hat ein anderes Gewicht als eine mässige Erhöhung bei gutem Befinden. Die Einordnung gehört deshalb in die ärztliche Gesamtschau.</p>`,
     notProofHtml: `<p>Eine erhöhte Blutsenkung ist keine Diagnose und kein Tumormarker: Sie ist bei vielen harmlosen Zuständen erhöht, steigt mit dem Alter und kann in der Schwangerschaft physiologisch beschleunigt sein. Umgekehrt schliesst eine normale Senkung eine Erkrankung nicht aus. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht.</p>`,
-    followUpHtml: `<p>Üblich sind die gemeinsame Beurteilung mit CRP und Blutbild (u.a. <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, da Blutarmut die Senkung beschleunigt), je nach Beschwerdebild weitere gezielte Tests sowie eine Verlaufskontrolle statt Einzelwert-Bewertung.</p>`,
+    followUpHtml: `<p>Üblich sind die gemeinsame Beurteilung mit CRP und Blutbild (u.a. <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, da Blutarmut die Senkung beschleunigt), je nach Beschwerdebild weitere gezielte Tests sowie eine Verlaufskontrolle statt Einzelwert-Bewertung. Bei Verdacht auf eine entzündliche Gelenkerkrankung kommen gezielte Tests wie <a href="/gesundheitsbibliothek/befunde-werte/rheumafaktor/">Rheumafaktor</a> und <a href="/gesundheitsbibliothek/befunde-werte/anti-ccp/">Anti-CCP</a> hinzu.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich gehören: eine stark beschleunigte Senkung, B-Symptome wie Fieber, Nachtschweiss oder ungewollter Gewichtsverlust, neue Schläfenkopfschmerzen mit Seh- oder Kaubeschwerden (bei über 50-Jährigen dringlich) sowie anhaltend unklare Beschwerden mit wiederholt erhöhten Entzündungswerten.</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
@@ -2013,7 +2017,7 @@ export const befundeWerte: BefundWert[] = [
 <h2>Wer sollte den Wert mit dem Arzt besprechen?</h2>
 <p>Besonders sinnvoll ist die Besprechung bei früher Herz-Kreislauf-Erkrankung in der Familie, bei eigener Gefässerkrankung trotz guter Cholesterinwerte oder wenn der Wert im Rahmen einer Risikoabklärung auffällig war.</p>`,
     notProofHtml: `<p>Ein erhöhtes Lp(a) ist keine Diagnose und kein Schicksalsurteil: Es ist ein Risikofaktor unter mehreren, dessen Bedeutung vom Gesamtprofil abhängt. Umgekehrt schliesst ein normales Lp(a) ein Herz-Kreislauf-Risiko nicht aus. Beginne oder ändere keine Medikamente aufgrund dieses Werts selbstständig. Referenzbereiche unterscheiden sich je nach Labor und Messmethode; massgeblich ist der Referenzbereich auf deinem eigenen Laborbericht. Für Lp(a) sind zudem die Messeinheiten uneinheitlich (mg/dl vs. nmol/l), was Vergleiche zwischen Laboren erschwert.</p>`,
-    followUpHtml: `<p>Üblich sind das vollständige Lipidprofil (<a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Cholesterin</a>, LDL, <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceride</a>), Blutdruck und Blutzucker sowie eine ärztliche Gesamtrisiko-Beurteilung; eine ständige Wiederholung der Lp(a)-Messung ist meist unnötig.</p>`,
+    followUpHtml: `<p>Üblich sind das vollständige Lipidprofil (<a href="/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/">Cholesterin</a>, LDL, <a href="/gesundheitsbibliothek/befunde-werte/hdl-niedrig/">HDL</a>, <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceride</a>), Blutdruck und Blutzucker sowie eine ärztliche Gesamtrisiko-Beurteilung; eine ständige Wiederholung der Lp(a)-Messung ist meist unnötig. Lp(a) ist nicht dasselbe wie <a href="/gesundheitsbibliothek/befunde-werte/apolipoprotein-b/">ApoB</a>, das die Zahl der cholesterintragenden Partikel abbildet.</p>`,
     redFlagsHtml: `<p>Zeitnah ärztlich gehören ein hoher Wert zusammen mit familiären Frühinfarkten oder eigener Gefässerkrankung. Brustschmerzen, Atemnot oder neurologische Ausfälle sind unabhängig vom Laborwert ein Notfall (Telefon 144).</p>`,
     integrativeContextHtml: `<p>Laborwerte gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert solche Werte nicht, und aus einer Laborabweichung lässt sich kein TCM-Muster ableiten. Eine komplementäre Begleitung ist, wenn überhaupt, ein Thema nach der ärztlichen Einordnung, nie ihr Ersatz.</p>`,
     relatedArticles: [
@@ -2911,7 +2915,7 @@ export const befundeWerte: BefundWert[] = [
 <p>Ob überhaupt eine Anämie vorliegt, wird unter anderem anhand von <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a> beurteilt. Retikulozyten erklären eine andere Ebene des Befunds.</p>`,
     contextHtml: `<p><strong>Prozentwert oder absolute Zahl?</strong></p>
 <p>Auf dem Bericht können Retikulozyten als Anteil oder als absolute Zahl stehen. Diese Angaben sind nicht austauschbar. Wenn die Gesamtzahl roter Blutkörperchen verändert ist, kann ein Prozentwert allein einen irreführenden Eindruck vermitteln.</p>
-<p>Für die Einordnung wird der gesamte Befund betrachtet, gegebenenfalls mit zusätzlichen berechneten oder gemessenen Parametern. Nutze deshalb den vollständigen Laborbericht und nicht nur einen markierten Einzelwert.</p>`,
+<p>Für die Einordnung wird der gesamte Befund betrachtet, gegebenenfalls mit zusätzlichen berechneten oder gemessenen Parametern. Nutze deshalb den vollständigen Laborbericht und nicht nur einen markierten Einzelwert. Bei Verdacht auf einen vermehrten Zerfall roter Blutkörperchen wird oft zusätzlich <a href="/gesundheitsbibliothek/befunde-werte/haptoglobin/">das Haptoglobin</a> bestimmt.</p>`,
     notProofHtml: `<p>Der Retikulozytenwert allein unterscheidet nicht sicher zwischen Eisenmangel, Vitaminmangel, Blutverlust und anderen Ursachen. Er ist auch kein eigenständiger Krebstest.</p>
 <p>Ein Wert im Referenzbereich muss bei bestehender Blutarmut nicht automatisch eine angemessene Reaktion bedeuten. Die Zahl wird zur Höhe der Anämie und zum zeitlichen Verlauf in Beziehung gesetzt.</p>`,
     redFlagsHtml: `<p>Besprich auffällige Werte besonders dann, wenn gleichzeitig Hämoglobin niedrig ist oder neue Beschwerden auftreten. Starke Atemnot, Brustschmerzen, Ohnmacht oder erhebliche Blutungen brauchen sofort medizinische Hilfe. Bei schweren akuten Beschwerden rufe 144.</p>`,
@@ -3435,7 +3439,7 @@ export const befundeWerte: BefundWert[] = [
     bodyHtml: `<p>Testosteron beeinflusst unter anderem Sexualfunktion, Knochen und Muskulatur. Es kommt auch bei Frauen vor, normalerweise in geringeren Mengen. Laborberichte können Gesamt-Testosteron und Angaben zum freien oder verfügbaren Anteil enthalten. Diese Werte beantworten nicht genau dieselbe Frage.</p>
 <p>Bei Männern mit Verdacht auf einen Mangel empfehlen Fachleitlinien eine morgendliche Messung und bei auffälligem Ergebnis eine Bestätigung. Nicht jede einzelne niedrige Zahl ist eine dauerhafte hormonelle Störung. Für Frauen gelten andere Fragestellungen und Referenzbereiche; eine Männer-Normalwerttabelle hilft dort nicht.</p>`,
     contextHtml: `<p>Akute Erkrankungen, Schlaf, Medikamente und die Bindung des Hormons im Blut können die Interpretation verändern. Zur weiteren Abklärung können zusätzliche Hormone und eine Untersuchung nötig sein. Sag auch, ob du Testosteron, anabole Substanzen oder frei gekaufte «Booster» verwendest.</p>
-<p>Bei <a href="/beschwerden/pcos/">PCOS</a> können Androgene Teil der Abklärung sein. Bei <a href="/beschwerden/erektile-dysfunktion/">erektiler Dysfunktion</a> kommen hingegen viele hormonelle und nicht hormonelle Ursachen infrage. Der Laborbefund sollte nicht vorschnell zum einzigen Erklärungsmodell werden.</p>`,
+<p>Bei <a href="/beschwerden/pcos/">PCOS</a> können Androgene Teil der Abklärung sein, dazu kann auch <a href="/gesundheitsbibliothek/befunde-werte/dheas-wert/">DHEA-S</a> aus den Nebennieren gehören. Bei <a href="/beschwerden/erektile-dysfunktion/">erektiler Dysfunktion</a> kommen hingegen viele hormonelle und nicht hormonelle Ursachen infrage. Der Laborbefund sollte nicht vorschnell zum einzigen Erklärungsmodell werden.</p>`,
     notProofHtml: `<p>Testosteron ist kein allgemeiner Leistungswert. Mehr bedeutet nicht automatisch mehr Gesundheit. Eine Therapie kann unerwünschte Wirkungen haben und bei bestehendem Kinderwunsch besonders problematisch sein, weil zugeführtes Testosteron die Spermienproduktion beeinträchtigen kann.</p>`,
     redFlagsHtml: `<p>Besprich anhaltende Beschwerden und einen auffälligen Befund mit der Hausarzt-, urologischen, gynäkologischen oder endokrinologischen Praxis. Ein rascher Beginn deutlicher Vermännlichungszeichen bei Frauen sollte zeitnah gynäkologisch beurteilt werden. Dringliche neue Symptome gehören unabhängig vom Hormonwert untersucht.</p>`,
     followUpHtml: `<p>Bring Originalbefund, Entnahmezeit und Medikamentenliste mit. Frage, ob eine Kontrollmessung unter passenden Bedingungen nötig ist und welche Ursachen geprüft werden sollen. Bei <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a> erwähnst du diesen ausdrücklich vor einer möglichen Hormonbehandlung. Akupunktur ist kein Ersatz für eine indizierte endokrinologische Therapie.</p>`,
@@ -3582,6 +3586,344 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [
       { href: '/gesundheitsbibliothek/befunde-werte/homocystein-erhoeht/', label: 'Homocystein erhöht: Was bedeutet der Wert?' },
       { href: '/gesundheitsbibliothek/befunde-werte/vitamin-b12-zu-niedrig/', label: 'Vitamin B12 zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  // ──────────────────────────────────────────── WELLE 4 (Draft, Publikationsdatum über PUBLISHED_WELLE_4_2026_10)
+  {
+    slug: 'ana-antikoerper',
+    gruppe: 'Entzündung',
+    title: 'ANA-Antikörper positiv: Was bedeutet der Befund?',
+    metaTitle: 'ANA positiv: Antinukleäre Antikörper verstehen',
+    metaDescription: 'ANA positiv heisst nicht automatisch Autoimmunerkrankung. Was Titer und Muster aussagen, warum gesunde Menschen positiv sein können und welche Abklärung folgt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'Ein positiver ANA-Test ist häufig und für sich allein keine Diagnose. Entscheidend sind Beschwerden, Untersuchung und gezielte Folgetests.',
+    primaryPurpose: 'Einordnung des Laborbefunds (antinukleäre Antikörper, ANA); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Autoantikörper-Befund; Erkrankungs-Intents bleiben bei /beschwerden/rheuma/ und /beschwerden/rheumatoide-arthritis/. Geprüft 16.10.2026 gegen Map, Guards und Konfliktliste: kein bestehender Owner für ANA.',
+    suggestedReviewerType: 'Ärztliche Review (Rheumatologie/Labormedizin)',
+    shortAnswerHtml: `<p>ANA sind Antikörper, die sich gegen Bestandteile des Zellkerns richten. Ein positiver Test kann bei Autoimmunerkrankungen wie Lupus vorkommen, aber auch bei gesunden Menschen, nach Infekten oder unter bestimmten Medikamenten. Ohne passende Beschwerden und weitere Befunde ist ein positiver ANA-Test keine Diagnose.</p>`,
+    bodyHtml: `<p>Antinukleäre Antikörper, kurz ANA, werden meist mit einem Immunfluoreszenztest im Blut gesucht. Der Befund enthält oft einen <strong>Titer</strong>, zum Beispiel 1:80 oder 1:640, und ein <strong>Muster</strong>, also wie die Antikörper im Mikroskop leuchten. Ein höherer Titer bedeutet, dass die Antikörper auch bei stärkerer Verdünnung noch nachweisbar sind.</p>
+<p>Ärztinnen und Ärzte veranlassen den Test, wenn Beschwerden zu einer Autoimmunerkrankung passen könnten, etwa Gelenkschmerzen und Schwellungen, Hautausschläge, unerklärtes Fieber, ausgeprägte Müdigkeit oder Muskelschmerzen. Am häufigsten geht es um den Verdacht auf einen systemischen Lupus erythematodes.</p>`,
+    contextHtml: `<p>Ab welchem Titer ein Ergebnis als positiv gilt, legt das Labor fest; Methoden und Grenzwerte unterscheiden sich. Niedrige Titer kommen bei gesunden Menschen häufig vor und werden mit dem Alter häufiger, besonders bei Frauen. Auch Virusinfekte, andere Erkrankungen und manche Medikamente, etwa bestimmte Entwässerungsmittel oder die Pille, können das Ergebnis beeinflussen. Bring deshalb eine vollständige Medikamentenliste mit.</p>`,
+    notProofHtml: `<p>Ein positiver ANA-Test beweist keine Autoimmunerkrankung. Ein negativer Test macht sie weniger wahrscheinlich, schliesst sie aber nicht in jedem Fall aus. Auch die Höhe des Titers sagt nicht, wie schwer eine Erkrankung ist. Ein auffälliges Muster ist ein Hinweis für weitere Tests, keine Diagnose.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich besprechen solltest du einen positiven Befund, wenn zusätzlich geschwollene Gelenke, Fieber, neue Hautausschläge, Atemnot, Brustschmerzen beim Atmen, schäumender Urin oder Schwellungen an den Beinen auftreten. Diese Zeichen können auf eine Organbeteiligung hinweisen.</p>`,
+    followUpHtml: `<p>Je nach Beschwerden folgen gezielte Antikörpertests, Entzündungswerte wie <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> oder <a href="/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/">BSG</a>, ein <a href="/gesundheitsbibliothek/untersuchungen/grosses-blutbild/">grosses Blutbild</a>, eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> und gegebenenfalls eine rheumatologische Beurteilung. Bei Gelenkbeschwerden werden oft auch <a href="/gesundheitsbibliothek/befunde-werte/rheumafaktor/">Rheumafaktor</a> und <a href="/gesundheitsbibliothek/befunde-werte/anti-ccp/">Anti-CCP</a> bestimmt. Ohne Beschwerden ist eine wiederholte Kontrolle eines niedrigen positiven Titers meist nicht nötig; das entscheidet die Ärztin.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bin ich krank, wenn mein ANA-Test positiv ist?</strong></p>
+<p>Nicht automatisch. Viele gesunde Menschen haben ANA im Blut. Entscheidend ist, ob Beschwerden und weitere Befunde dazu passen.</p>
+<p><strong>Was bedeutet der Titer 1:160?</strong></p>
+<p>Er beschreibt, wie stark die Probe verdünnt werden kann und die Antikörper noch nachweisbar sind. Wie das zu bewerten ist, hängt vom Labor und von deinen Beschwerden ab.</p>
+<p><strong>Kann sich ein positiver ANA-Test wieder normalisieren?</strong></p>
+<p>Nach Infekten können ANA vorübergehend auftreten. Ob eine Kontrolle sinnvoll ist, entscheidet die behandelnde Ärztin.</p>`,
+    sources: [
+      { label: 'MedlinePlus: ANA (Antinuclear Antibody) Test', url: 'https://medlineplus.gov/lab-tests/ana-antinuclear-antibody-test/' },
+      { label: 'MedlinePlus: Antinuclear antibody panel', url: 'https://medlineplus.gov/ency/article/003535.htm' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/rheuma/', label: 'Rheuma' },
+      { href: '/beschwerden/trockene-augen/', label: 'Trockene Augen' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/rheumafaktor/', label: 'Rheumafaktor: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'rheumafaktor',
+    gruppe: 'Entzündung',
+    title: 'Rheumafaktor: Was bedeutet der Wert?',
+    metaTitle: 'Rheumafaktor positiv oder erhöht: Einordnung',
+    metaDescription: 'Rheumafaktor positiv heisst nicht sicher rheumatoide Arthritis, negativ schliesst sie nicht aus. Wie der Wert mit Anti-CCP, Beschwerden und Untersuchung gelesen wird.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'Der Rheumafaktor hilft bei der Abklärung von Gelenkbeschwerden. Allein ist er weder ein Beweis noch ein sicherer Ausschluss.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Rheumafaktor); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: ['/beschwerden/rheumatoide-arthritis/'],
+    overlapNotes: 'Laborbefund; Erkrankungs-Intent rheumatoide Arthritis bleibt bei /beschwerden/rheumatoide-arthritis/ (verlinkt). Geprüft 16.10.2026 gegen Map und Guards: kein Befund-Owner für Rheumafaktor.',
+    suggestedReviewerType: 'Ärztliche Review (Rheumatologie/Labormedizin)',
+    shortAnswerHtml: `<p>Der Rheumafaktor ist ein Antikörper, der bei vielen Menschen mit rheumatoider Arthritis erhöht ist, aber auch bei anderen Erkrankungen, chronischen Infekten und bei Gesunden vorkommt. Umgekehrt haben manche Menschen mit rheumatoider Arthritis keinen erhöhten Rheumafaktor. Der Wert wird deshalb immer mit Beschwerden, Untersuchung und weiteren Tests beurteilt.</p>`,
+    bodyHtml: `<p>Der Rheumafaktor, abgekürzt RF, richtet sich gegen körpereigene Antikörper vom Typ IgG. Er wird im Blut gemessen, entweder als positiv oder negativ oder als Zahl mit dem Referenzbereich des Labors. Eine spezielle Vorbereitung ist meist nicht nötig.</p>
+<p>Der Test wird vor allem veranlasst, wenn Gelenke schmerzen, anschwellen und morgens steif sind, typischerweise an Händen und Füssen auf beiden Seiten. Die Erkrankung selbst beschreibt die Seite <a href="/beschwerden/rheumatoide-arthritis/">rheumatoide Arthritis</a>.</p>`,
+    contextHtml: `<p>Ein erhöhter Rheumafaktor kann auch bei Sjögren-Syndrom, Lupus, chronischen Infektionen wie Hepatitis C oder Tuberkulose, bei einer Herzklappenentzündung und bei manchen Krebserkrankungen vorkommen. Auch gesunde Menschen können Rheumafaktor im Blut haben. Höhere Werte machen eine zugehörige Erkrankung wahrscheinlicher, beweisen sie aber nicht. Messmethoden und Referenzbereiche unterscheiden sich zwischen Laboren.</p>`,
+    notProofHtml: `<p>Ein positiver Rheumafaktor ohne passende Beschwerden ist keine Diagnose und kein Grund für eine Behandlung. Ein negativer Rheumafaktor schliesst eine rheumatoide Arthritis nicht aus. Auch über den Verlauf einer bekannten Erkrankung sagt ein einzelner Wert wenig aus.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich abklären solltest du geschwollene, überwärmte Gelenke, Morgensteifigkeit über längere Zeit, Fieber oder deutliche Müdigkeit, unabhängig vom Laborwert. Ein plötzlich heisses, sehr schmerzhaftes Gelenk mit Fieber gehört am gleichen Tag beurteilt.</p>`,
+    followUpHtml: `<p>Häufig wird zusätzlich <a href="/gesundheitsbibliothek/befunde-werte/anti-ccp/">Anti-CCP</a> bestimmt; die Kombination ist aussagekräftiger als der Rheumafaktor allein. Dazu kommen Entzündungswerte wie <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> und <a href="/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/">BSG</a>, eine körperliche Untersuchung der Gelenke und je nach Befund <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgen</a> oder <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a>. Bei Verdacht auf eine entzündliche Gelenkerkrankung ist eine frühe rheumatologische Beurteilung sinnvoll.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Habe ich Rheuma, wenn der Rheumafaktor positiv ist?</strong></p>
+<p>Nicht zwingend. Der Rheumafaktor kommt auch bei anderen Erkrankungen und bei Gesunden vor.</p>
+<p><strong>Kann ich rheumatoide Arthritis haben, obwohl der Rheumafaktor negativ ist?</strong></p>
+<p>Ja. Ein Teil der Betroffenen hat keinen erhöhten Rheumafaktor. Beschwerden und Untersuchung bleiben entscheidend.</p>
+<p><strong>Gibt es Rheumafaktor-Tests für zu Hause?</strong></p>
+<p>Es gibt Einsendetests. Das Ergebnis braucht trotzdem eine ärztliche Einordnung zusammen mit Beschwerden und Untersuchung.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Rheumatoid Factor (RF) Test', url: 'https://medlineplus.gov/lab-tests/rheumatoid-factor-rf-test/' },
+      { label: 'MedlinePlus: CCP Antibody Test', url: 'https://medlineplus.gov/lab-tests/ccp-antibody-test/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/rheumatoide-arthritis/', label: 'Rheumatoide Arthritis' },
+      { href: '/beschwerden/rheuma/', label: 'Rheuma' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/anti-ccp/', label: 'Anti-CCP: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/ana-antikoerper/', label: 'ANA-Antikörper positiv' },
+    ],
+  },
+  {
+    slug: 'anti-ccp',
+    gruppe: 'Entzündung',
+    title: 'Anti-CCP: Was bedeutet der Wert?',
+    metaTitle: 'Anti-CCP-Antikörper positiv: Einordnung',
+    metaDescription: 'Anti-CCP-Antikörper sind recht spezifisch für rheumatoide Arthritis. Was ein positiver Wert zusammen mit dem Rheumafaktor bedeutet und welche Abklärung folgt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'Anti-CCP gehört zu den aussagekräftigeren Bluttests bei Verdacht auf rheumatoide Arthritis. Die Diagnose stellt aber nicht der Wert allein.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Anti-CCP-Antikörper, ACPA); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: ['/beschwerden/rheumatoide-arthritis/'],
+    overlapNotes: 'Laborbefund; Erkrankungs-Intent bleibt bei /beschwerden/rheumatoide-arthritis/. Abgrenzung zu /befunde-werte/rheumafaktor/: anderer Antikörper, beide Seiten verlinkt. Geprüft 16.10.2026 gegen Map und Guards.',
+    suggestedReviewerType: 'Ärztliche Review (Rheumatologie/Labormedizin)',
+    shortAnswerHtml: `<p>Anti-CCP-Antikörper finden sich bei den meisten Menschen mit rheumatoider Arthritis und nur selten ohne diese Erkrankung. Ein positiver Wert macht sie bei passenden Gelenkbeschwerden deshalb wahrscheinlicher. Die Diagnose stützt sich trotzdem auf Beschwerden, Untersuchung und weitere Befunde.</p>`,
+    bodyHtml: `<p>CCP steht für cyclisches citrulliniertes Peptid. Die Antikörper dagegen, auch ACPA genannt, sind Autoantikörper: Sie richten sich gegen körpereigenes Gewebe, unter anderem in den Gelenken. Gemessen wird im Blut, häufig zusammen mit dem <a href="/gesundheitsbibliothek/befunde-werte/rheumafaktor/">Rheumafaktor</a>.</p>
+<p>Anlass sind meist Gelenkschmerzen, Schwellungen und Morgensteifigkeit, oder wenn andere Tests eine <a href="/beschwerden/rheumatoide-arthritis/">rheumatoide Arthritis</a> weder bestätigen noch ausschliessen konnten. Vor der Blutentnahme solltest du angeben, welche Medikamente und Nahrungsergänzungen du nimmst.</p>`,
+    contextHtml: `<p>Zusammen mit dem Rheumafaktor ergibt sich ein Bild: Sind bei passenden Beschwerden beide positiv, ist eine rheumatoide Arthritis wahrscheinlich. Ist Anti-CCP positiv und der Rheumafaktor negativ, kann das auf ein frühes Stadium hinweisen. Sind beide negativ, ist die Erkrankung weniger wahrscheinlich, aber nicht ausgeschlossen. Seltener kommt Anti-CCP auch bei anderen Autoimmunerkrankungen, aktiver Tuberkulose oder chronischen Lungenerkrankungen vor. Grenzwerte hängen vom Labor ab.</p>`,
+    notProofHtml: `<p>Ein positiver Anti-CCP-Wert ohne Gelenkbeschwerden ist keine Diagnose. Er kann ein Hinweis sein, Beschwerden aufmerksam zu beobachten, ist aber kein Anlass für eine vorsorgliche Behandlung ohne fachärztliche Beurteilung. Die Höhe des Werts misst nicht die Krankheitsaktivität.</p>`,
+    redFlagsHtml: `<p>Geschwollene Gelenke, Morgensteifigkeit, die länger anhält, oder neue Gelenkbeschwerden an beiden Händen sollten zeitnah ärztlich und gegebenenfalls rheumatologisch beurteilt werden, unabhängig vom Laborwert.</p>`,
+    followUpHtml: `<p>Je nach Situation folgen Entzündungswerte wie <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> und <a href="/gesundheitsbibliothek/befunde-werte/bsg-erhoeht/">BSG</a>, eine Untersuchung der Gelenke, <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgen</a> oder <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> der Gelenke und gegebenenfalls weitere Antikörper wie <a href="/gesundheitsbibliothek/befunde-werte/ana-antikoerper/">ANA</a>. Bring frühere Befunde mit, damit Verläufe vergleichbar sind.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist Anti-CCP aussagekräftiger als der Rheumafaktor?</strong></p>
+<p>Anti-CCP kommt ohne rheumatoide Arthritis seltener vor. Am aussagekräftigsten ist die Kombination beider Tests mit Beschwerden und Untersuchung.</p>
+<p><strong>Was bedeutet Anti-CCP positiv ohne Beschwerden?</strong></p>
+<p>Das ist keine Diagnose. Besprich mit deiner Ärztin, worauf du achten solltest und ob eine Kontrolle sinnvoll ist.</p>
+<p><strong>Kann ich den Wert senken?</strong></p>
+<p>Ziel der Behandlung ist nicht ein Laborwert, sondern die Kontrolle der Entzündung, wenn eine Erkrankung vorliegt.</p>`,
+    sources: [
+      { label: 'MedlinePlus: CCP Antibody Test', url: 'https://medlineplus.gov/lab-tests/ccp-antibody-test/' },
+      { label: 'MedlinePlus: Rheumatoid Factor (RF) Test', url: 'https://medlineplus.gov/lab-tests/rheumatoid-factor-rf-test/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/rheumatoide-arthritis/', label: 'Rheumatoide Arthritis' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/rheumafaktor/', label: 'Rheumafaktor: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'hla-b27',
+    gruppe: 'Entzündung',
+    title: 'HLA-B27 positiv: Was bedeutet der Befund?',
+    metaTitle: 'HLA-B27 positiv: Einordnung des Befunds',
+    metaDescription: 'HLA-B27 ist ein vererbtes Merkmal und keine Krankheit. Was ein positiver Befund bei Rückenschmerzen bedeutet und warum viele Träger nie erkranken.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'HLA-B27 ist ein vererbtes Merkmal der weissen Blutkörperchen. Es erhöht das Risiko für bestimmte entzündliche Erkrankungen, ist aber selbst keine Krankheit.',
+    primaryPurpose: 'Einordnung des Laborbefunds (HLA-B27); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: ['/beschwerden/morbus-bechterew/'],
+    overlapNotes: 'Genetischer Laborbefund; Erkrankungs-Intent axiale Spondyloarthritis bleibt bei /beschwerden/morbus-bechterew/. Geprüft 16.10.2026 gegen Map und Guards.',
+    suggestedReviewerType: 'Ärztliche Review (Rheumatologie)',
+    shortAnswerHtml: `<p>Ein positiver HLA-B27-Befund bedeutet, dass du ein bestimmtes vererbtes Merkmal trägst. Er erhöht die Wahrscheinlichkeit für entzündliche Erkrankungen der Wirbelsäule und Gelenke, die Spondyloarthritiden. Viele Menschen mit HLA-B27 erkranken jedoch nie. Die Diagnose ergibt sich nur aus Beschwerden, Untersuchung und Bildgebung.</p>`,
+    bodyHtml: `<p>HLA steht für humanes Leukozytenantigen. Diese Eiweisse auf der Oberfläche von Zellen helfen dem Immunsystem, Eigenes von Fremdem zu unterscheiden. Welche HLA-Merkmale du hast, ist vererbt und ändert sich im Leben nicht. Der Test muss deshalb nicht wiederholt werden.</p>
+<p>Ärztinnen veranlassen den Test meist, um Gelenk- oder Rückenschmerzen, Steifigkeit oder Schwellungen einzuordnen, wenn eine Spondyloarthritis infrage kommt. Dazu gehören der <a href="/beschwerden/morbus-bechterew/">Morbus Bechterew</a>, eine Entzündung der Kreuz-Darmbein-Gelenke, Gelenkentzündungen bei Psoriasis oder chronisch-entzündlichen Darmerkrankungen und reaktive Arthritiden nach Infekten. Auch bei einer Regenbogenhautentzündung des Auges kann der Befund eine Rolle spielen.</p>`,
+    contextHtml: `<p>Der Befund lautet positiv oder negativ, eine Höhe gibt es nicht. Oft wird er zusammen mit Entzündungswerten, Rheumafaktor, Anti-CCP und Röntgenbildern beurteilt. Ausserhalb der Rheumatologie wird HLA-Typisierung auch vor Organ- oder Stammzelltransplantationen eingesetzt; das ist eine andere Fragestellung.</p>`,
+    notProofHtml: `<p>Ein positiver Befund ist keine Diagnose eines Morbus Bechterew. Ein negativer Befund schliesst eine Spondyloarthritis nicht aus. Bei Rückenschmerzen ohne entzündliche Merkmale ist der Test wenig hilfreich, weil er das Risiko nur verschiebt und keine Ursache benennt.</p>`,
+    redFlagsHtml: `<p>Zeitnah augenärztlich abklären solltest du ein schmerzhaftes, gerötetes und lichtempfindliches Auge mit verschwommener Sicht, besonders bei bekanntem HLA-B27. Rückenschmerzen mit Fieber, ungewolltem Gewichtsverlust oder neuen Lähmungen gehören ebenfalls rasch beurteilt.</p>`,
+    followUpHtml: `<p>Bei Verdacht auf eine entzündliche Wirbelsäulenerkrankung folgen Entzündungswerte wie <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a>, eine rheumatologische Untersuchung und je nach Befund ein <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> der Kreuz-Darmbein-Gelenke oder <a href="/gesundheitsbibliothek/untersuchungen/roentgen/">Röntgen</a>. Für Familienmitglieder ist ein Test ohne Beschwerden in der Regel nicht sinnvoll.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bekomme ich Morbus Bechterew, wenn ich HLA-B27 habe?</strong></p>
+<p>Nicht zwingend. Viele Menschen mit HLA-B27 bleiben gesund. Das Merkmal erhöht nur die Wahrscheinlichkeit.</p>
+<p><strong>Muss HLA-B27 kontrolliert werden?</strong></p>
+<p>Nein. Das Merkmal ist vererbt und verändert sich nicht.</p>
+<p><strong>Sollten sich meine Kinder testen lassen?</strong></p>
+<p>Ohne Beschwerden meist nicht. Besprich das bei Fragen mit der Rheumatologin oder Hausärztin.</p>`,
+    sources: [
+      { label: 'MedlinePlus: HLA-B27 antigen', url: 'https://medlineplus.gov/ency/article/003551.htm' },
+      { label: 'NHS: Ankylosing spondylitis', url: 'https://www.nhs.uk/conditions/ankylosing-spondylitis/' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/morbus-bechterew/', label: 'Morbus Bechterew' },
+      { href: '/beschwerden/rueckenschmerzen/', label: 'Rückenschmerzen' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/crp-erhoeht/', label: 'CRP erhöht: Was bedeutet das?' },
+    ],
+  },
+  {
+    slug: 'parathormon',
+    gruppe: 'Elektrolyte',
+    title: 'Parathormon (PTH): Was bedeutet der Wert?',
+    metaTitle: 'Parathormon erhöht oder niedrig: PTH verstehen',
+    metaDescription: 'Parathormon wird immer mit Calcium gelesen. Was ein erhöhter oder niedriger PTH-Wert bedeuten kann, welche Rolle Vitamin D und Nieren spielen und was folgt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'Parathormon steuert den Calciumspiegel im Blut. Ohne gleichzeitig gemessenes Calcium lässt sich der Wert kaum beurteilen.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Parathormon, PTH); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Hormonbefund; /befunde-werte/calcium-zu-hoch/ bleibt Calcium-Owner (verlinkt). Kein Beschwerden-Owner für Nebenschilddrüse. Geprüft 16.10.2026 gegen Map und Guards.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Nephrologie)',
+    shortAnswerHtml: `<p>Parathormon, kurz PTH, wird von den Nebenschilddrüsen gebildet und hebt den Calciumspiegel im Blut. Ob ein PTH-Wert passend ist, hängt vom gleichzeitig gemessenen Calcium ab. Ein erhöhter Wert kann bei Vitamin-D-Mangel, Nierenerkrankungen oder einer überaktiven Nebenschilddrüse vorkommen. Die Ursache klärt die Ärztin mit weiteren Werten.</p>`,
+    bodyHtml: `<p>Die vier kleinen Nebenschilddrüsen liegen am Hals hinter der Schilddrüse. Sinkt das Calcium im Blut, schütten sie Parathormon aus. PTH setzt Calcium aus den Knochen frei, fördert die Aufnahme über den Darm und hilft den Nieren, Calcium zurückzuhalten. Steigt das Calcium wieder, sinkt normalerweise auch das PTH.</p>
+<p>Gemessen wird PTH im Blut, meist als intaktes PTH. Häufige Anlässe sind ein auffälliger <a href="/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/">Calciumwert</a>, ein niedriges Phosphat, eine chronische Nierenerkrankung oder eine ausgeprägte <a href="/beschwerden/osteoporose/">Osteoporose</a> ohne klare Ursache. Ob du nüchtern sein oder zu einer bestimmten Zeit kommen sollst, sagt dir die Praxis.</p>`,
+    contextHtml: `<p>Referenzbereiche unterscheiden sich zwischen Laboren und Messverfahren. Für Verlaufskontrollen ist es deshalb sinnvoll, im selben Labor zu messen. Wichtig ist die Kombination: Ein PTH im Normbereich kann bei gleichzeitig erhöhtem Calcium bereits unpassend hoch sein. Ein erhöhtes PTH mit niedrigem Calcium passt dagegen eher zu einer Reaktion des Körpers, etwa bei <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Mangel</a>, geringer Calciumaufnahme oder eingeschränkter Nierenfunktion.</p>`,
+    notProofHtml: `<p>Ein einzelner erhöhter PTH-Wert beweist keinen Tumor der Nebenschilddrüse. Ein niedriger Wert ist für sich allein keine Unterfunktion. Aus dem Befund lässt sich auch keine Vitamin-D- oder Calcium-Dosierung ableiten. Ob Präparate sinnvoll sind, entscheidet die Ärztin.</p>`,
+    redFlagsHtml: `<p>Rasch ärztlich beurteilt werden sollten Zeichen eines stark veränderten Calciums: ausgeprägter Durst, häufiges Wasserlassen, Übelkeit, Verwirrtheit oder starke Schwäche bei hohem Calcium sowie Kribbeln um den Mund, Muskelkrämpfe oder Herzrhythmusstörungen bei niedrigem Calcium. Bei Bewusstseinsstörung oder Krampfanfall wähle den Notruf 144.</p>`,
+    followUpHtml: `<p>Calcium wird fast immer mitbestimmt; je nach Fragestellung kommen Phosphat, Magnesium, Vitamin D sowie Werte der Nierenfunktion wie <a href="/gesundheitsbibliothek/befunde-werte/kreatinin-erhoeht/">Kreatinin</a> und <a href="/gesundheitsbibliothek/befunde-werte/egfr/">eGFR</a> dazu. Besteht Verdacht auf eine Veränderung der Nebenschilddrüsen, kann eine Bildgebung folgen.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Warum wird Calcium immer mitgemessen?</strong></p>
+<p>Weil PTH auf das Calcium reagiert. Erst beide Werte zusammen zeigen, ob die Nebenschilddrüsen passend arbeiten.</p>
+<p><strong>Kann Vitamin-D-Mangel das PTH erhöhen?</strong></p>
+<p>Ja, Vitamin-D-Mangel ist eine mögliche Ursache. Ob und wie Vitamin D ergänzt wird, entscheidet die Ärztin.</p>
+<p><strong>Sind erhöhte PTH-Werte bei Nierenerkrankungen normal?</strong></p>
+<p>Bei chronischen Nierenerkrankungen kann PTH erhöht sein und wird deshalb regelmässig kontrolliert. Die Beurteilung übernimmt das nephrologische Team.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Parathyroid Hormone (PTH) Test', url: 'https://medlineplus.gov/lab-tests/parathyroid-hormone-pth-test/' },
+      { label: 'MedlinePlus: Parathyroid hormone (PTH) blood test', url: 'https://medlineplus.gov/ency/article/003690.htm' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/osteoporose/', label: 'Osteoporose' },
+      { href: '/beschwerden/nierensteine/', label: 'Nierensteine' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/', label: 'Calcium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'apolipoprotein-b',
+    gruppe: 'Stoffwechsel',
+    title: 'Apolipoprotein B: Was bedeutet der Wert?',
+    metaTitle: 'Apolipoprotein B (ApoB) erhöht: Einordnung',
+    metaDescription: 'ApoB zählt die Partikel, die Cholesterin in die Gefässwand tragen können. Was ein erhöhter Wert neben LDL bedeutet und warum er nur im Gesamtrisiko zählt.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'ApoB ergänzt die üblichen Cholesterinwerte. Er wird im Zusammenhang mit dem gesamten Herz-Kreislauf-Risiko beurteilt, nicht als isolierte Zahl.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Apolipoprotein B, ApoB); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Lipid-Laborbefund; Abgrenzung zu /befunde-werte/ldl-erhoeht/, /cholesterin-erhoeht/ und /lipoprotein-a-erhoeht/ (verlinkt, eigener Messwert). Geprüft 16.10.2026 gegen Map und Guards: kein ApoB-Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Kardiologie/Innere Medizin)',
+    shortAnswerHtml: `<p>Apolipoprotein B ist ein Eiweiss auf den Fettpartikeln, die Cholesterin zu den Geweben transportieren, darunter LDL. Ein erhöhter ApoB-Wert spricht für mehr solcher Partikel und kann auf ein höheres Risiko für Gefässerkrankungen hinweisen, auch wenn das LDL nicht auffällig erscheint. Bewertet wird er immer im Gesamtbild deines Herz-Kreislauf-Risikos.</p>`,
+    bodyHtml: `<p>Jedes Partikel der Familie, zu der LDL gehört, trägt genau ein ApoB-Molekül. ApoB misst deshalb, wie viele dieser Partikel im Blut zirkulieren, während <a href="/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/">LDL-Cholesterin</a> angibt, wie viel Cholesterin sie transportieren. Meist passen beide Werte zusammen. Gehen sie auseinander, etwa bei erhöhten <a href="/gesundheitsbibliothek/befunde-werte/triglyceride-erhoeht/">Triglyceriden</a> oder Diabetes, kann ApoB zusätzliche Information liefern.</p>
+<p>Der Test wird vor allem veranlasst, um die Art einer Fettstoffwechselstörung genauer zu bestimmen, bei familiärer Belastung oder um zu beurteilen, ob eine laufende Behandlung ausreicht. Die Praxis sagt dir, ob du vorher einige Stunden nüchtern sein sollst.</p>`,
+    contextHtml: `<p>Referenzbereiche und Zielwerte unterscheiden sich zwischen Laboren und Leitlinien. Welcher Zielwert für dich gilt, hängt von deinem Gesamtrisiko ab, also von Alter, Blutdruck, Rauchen, Diabetes, Nierenfunktion, familiärer Belastung und bereits bekannten Gefässerkrankungen. Wie viel ApoB über die Standardwerte hinaus beiträgt, ist nicht in jeder Situation geklärt. Für Fachgesellschaften ist er vor allem eine Hilfe bei der Risikoeinschätzung und Behandlungssteuerung.</p>`,
+    notProofHtml: `<p>Ein erhöhter ApoB-Wert ist keine Diagnose einer Herzerkrankung und kein Beweis für verengte Gefässe. Ein normaler Wert schliesst ein Risiko nicht aus, etwa bei erhöhtem <a href="/gesundheitsbibliothek/befunde-werte/lipoprotein-a-erhoeht/">Lipoprotein(a)</a> oder anderen Risikofaktoren. Aus dem Wert allein lässt sich keine Medikamentenentscheidung ableiten.</p>`,
+    redFlagsHtml: `<p>Brustschmerz oder Druck auf der Brust, Atemnot, Ausstrahlung in Arm oder Kiefer, plötzliche Lähmungen oder Sprachstörungen sind ein Notfall: Notruf 144. Sehr hohe Cholesterinwerte schon in jungen Jahren oder Herzinfarkte früh in der Familie sollten ärztlich besprochen werden.</p>`,
+    followUpHtml: `<p>Besprich den Befund mit der Hausärztin zusammen mit dem vollständigen Lipidprofil, Blutdruck, Blutzucker und Rauchstatus. Je nach Situation wird das Gesamtrisiko berechnet, Lipoprotein(a) einmalig bestimmt oder eine familiäre Hypercholesterinämie geprüft. Lebensstil und gegebenenfalls Medikamente werden dann am Gesamtrisiko ausgerichtet.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist ApoB besser als LDL?</strong></p>
+<p>ApoB kann in bestimmten Situationen genauer sein, etwa bei erhöhten Triglyceriden. Für viele Menschen genügen die Standardwerte. Was bei dir sinnvoll ist, entscheidet die Ärztin.</p>
+<p><strong>Muss ich nüchtern sein?</strong></p>
+<p>Manche Praxen bitten um einige Stunden Nüchternheit. Halte dich an die Anweisung der Praxis.</p>
+<p><strong>Ist ApoB dasselbe wie Lipoprotein(a)?</strong></p>
+<p>Nein. Lipoprotein(a) ist ein eigener, weitgehend vererbter Partikeltyp und wird separat gemessen.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Apolipoprotein B', url: 'https://medlineplus.gov/ency/article/003502.htm' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/bluthochdruck/', label: 'Bluthochdruck' },
+      { href: '/beschwerden/diabetes-typ-2/', label: 'Diabetes Typ 2' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ldl-erhoeht/', label: 'LDL erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/lipoprotein-a-erhoeht/', label: 'Lipoprotein(a) erhöht' },
+      { href: '/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/', label: 'Cholesterin erhöht' },
+    ],
+  },
+  {
+    slug: 'haptoglobin',
+    gruppe: 'Blutbild',
+    title: 'Haptoglobin: Was bedeutet der Wert?',
+    metaTitle: 'Haptoglobin niedrig oder erhöht: Einordnung',
+    metaDescription: 'Ein niedriges Haptoglobin kann auf vermehrten Abbau roter Blutkörperchen hinweisen. Wie der Wert mit LDH, Bilirubin und Retikulozyten gelesen wird.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'Haptoglobin hilft vor allem bei der Frage, ob rote Blutkörperchen vermehrt zerfallen. Aussagekräftig ist der Wert nur zusammen mit weiteren Blutwerten.',
+    primaryPurpose: 'Einordnung des Laborbefunds (Haptoglobin); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Hämolyse-Laborbefund; Abgrenzung zu /befunde-werte/ldh-erhoeht/, /bilirubin-erhoeht/, /retikulozyten/ und /haemoglobin-zu-niedrig/ (verlinkt). Geprüft 16.10.2026 gegen Map und Guards: kein Owner.',
+    suggestedReviewerType: 'Ärztliche Review (Hämatologie/Labormedizin)',
+    shortAnswerHtml: `<p>Haptoglobin ist ein Eiweiss aus der Leber, das freies Hämoglobin im Blut bindet. Werden rote Blutkörperchen vermehrt abgebaut, wird Haptoglobin verbraucht und der Wert sinkt. Ein niedriger Wert kann deshalb auf eine hämolytische Anämie hinweisen, aber auch bei Lebererkrankungen vorkommen. Erhöhte Werte treten oft bei Entzündungen auf.</p>`,
+    bodyHtml: `<p>Hämoglobin befindet sich normalerweise in den roten Blutkörperchen. Zerfallen sie, gelangt Hämoglobin ins Blut. Haptoglobin bindet es, und die Leber entfernt den Komplex. Bei einem verstärkten Zerfall, der Hämolyse, wird mehr Haptoglobin verbraucht, als die Leber nachbilden kann.</p>
+<p>Ärztinnen veranlassen den Test meist bei Verdacht auf eine hämolytische Anämie, etwa bei Blutarmut mit Gelbfärbung von Haut oder Augen, dunklem Urin oder bei einer möglichen Reaktion nach einer Bluttransfusion. Eine Vorbereitung ist meist nicht nötig.</p>`,
+    contextHtml: `<p>Referenzbereiche hängen vom Labor ab. Bei Säuglingen in den ersten Lebensmonaten sind niedrige Werte normal. Haptoglobin kann bei Entzündungen ansteigen. Auch Lebererkrankungen, starker Blutverlust, Nierenfunktion und manche Medikamente beeinflussen den Wert.</p>`,
+    notProofHtml: `<p>Ein niedriger Haptoglobin-Wert allein beweist keine Hämolyse und benennt keine Ursache. Ein erhöhter Wert ist kein eigenständiger Krankheitsnachweis; für die Beurteilung von Entzündungen werden andere Werte wie <a href="/gesundheitsbibliothek/befunde-werte/crp-erhoeht/">CRP</a> herangezogen.</p>`,
+    redFlagsHtml: `<p>Rasch ärztlich abklären solltest du neue Gelbfärbung von Haut oder Augen, dunklen Urin, starke Müdigkeit mit Atemnot oder Herzrasen, Fieber oder Beschwerden nach einer Bluttransfusion. Bei Atemnot in Ruhe, Brustschmerz oder Bewusstseinsstörung wähle den Notruf 144.</p>`,
+    followUpHtml: `<p>Für die Frage nach einer Hämolyse werden typischerweise <a href="/gesundheitsbibliothek/befunde-werte/haemoglobin-zu-niedrig/">Hämoglobin</a>, ein <a href="/gesundheitsbibliothek/untersuchungen/grosses-blutbild/">grosses Blutbild</a> mit Blutausstrich, <a href="/gesundheitsbibliothek/befunde-werte/retikulozyten/">Retikulozyten</a>, <a href="/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/">LDH</a> und <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin</a> zusammen beurteilt. Je nach Ergebnis folgen weitere Tests, etwa auf Antikörper gegen rote Blutkörperchen, und eine hämatologische Abklärung.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Bedeutet niedriges Haptoglobin immer eine Hämolyse?</strong></p>
+<p>Nein. Auch Lebererkrankungen und andere Faktoren können den Wert senken. Erst die Kombination mit weiteren Werten gibt Klarheit.</p>
+<p><strong>Was bedeutet erhöhtes Haptoglobin?</strong></p>
+<p>Es steigt häufig bei Entzündungen. Für sich allein wird es selten zur Diagnose genutzt.</p>
+<p><strong>Ist ein niedriger Wert bei Babys normal?</strong></p>
+<p>In den ersten Lebensmonaten ja. Die Beurteilung übernimmt die Kinderärztin.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Haptoglobin (HP) Test', url: 'https://medlineplus.gov/lab-tests/haptoglobin-hp-test/' },
+      { label: 'MedlinePlus: Haptoglobin blood test', url: 'https://medlineplus.gov/ency/article/003634.htm' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/ldh-erhoeht/', label: 'LDH erhöht: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/retikulozyten/', label: 'Retikulozyten' },
+      { href: '/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/', label: 'Bilirubin erhöht' },
+    ],
+  },
+  {
+    slug: 'dheas-wert',
+    gruppe: 'Weitere Werte',
+    title: 'DHEA-S-Wert: Was bedeutet der Befund?',
+    metaTitle: 'DHEA-S erhöht oder niedrig: Wert einordnen',
+    metaDescription: 'DHEA-S stammt vor allem aus den Nebennieren und sinkt mit dem Alter. Was erhöhte oder niedrige Werte bedeuten können, etwa bei PCOS, und warum Präparate nicht die Antwort sind.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_WELLE_4_2026_10,
+    deck: 'DHEA-S ist ein Hormon der Nebennieren, das mit dem Alter natürlich abnimmt. Ein auffälliger Wert wird zusammen mit Beschwerden und anderen Hormonen beurteilt.',
+    primaryPurpose: 'Einordnung des Laborbefunds (DHEA-S, Dehydroepiandrosteronsulfat); keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Hormonbefund; /untersuchungen/hormontest/ bleibt Testübersicht, /beschwerden/pcos/ bleibt Erkrankungs-Owner, /befunde-werte/testosteron-wert/ und /cortisol-wert/ verlinkt. Geprüft 16.10.2026 gegen Map und Guards.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie)',
+    shortAnswerHtml: `<p>DHEA-S wird vor allem in den Nebennieren gebildet und ist eine Vorstufe von Sexualhormonen. Der Wert ist in jungen Jahren am höchsten und sinkt danach. Erhöhte Werte können bei PCOS, angeborenen Störungen der Nebennieren oder bei Tumoren der Nebenniere, selten der Eierstöcke, vorkommen, niedrige bei einer Unterfunktion der Nebennieren oder Hirnanhangdrüse. Die Einordnung hängt von Alter, Geschlecht und Beschwerden ab.</p>`,
+    bodyHtml: `<p>DHEA-S (Dehydroepiandrosteronsulfat) ist ein männliches Sexualhormon, das auch bei Frauen vorkommt. Es wird zu einem kleineren Teil auch in Eierstöcken und Hoden gebildet und kann in Testosteron und Östrogene umgewandelt werden. Der Wert gibt deshalb Hinweise auf die Hormonproduktion der Nebennieren.</p>
+<p>Anlass für den Test sind bei Frauen etwa vermehrte Körper- und Gesichtsbehaarung, Akne, Zyklusstörungen oder Haarausfall am Oberkopf, bei Kindern eine zu frühe oder verspätete Pubertät. Auch bei Verdacht auf eine Funktionsstörung der Nebennieren wird DHEA-S bestimmt. Eine besondere Vorbereitung ist meist nicht nötig.</p>`,
+    contextHtml: `<p>Die Referenzbereiche unterscheiden sich stark nach Alter und Geschlecht und zwischen Laboren. Ein Wert, der mit 25 Jahren normal ist, kann mit 60 hoch sein und umgekehrt. DHEA-haltige Präparate und Kortisonpräparate können das Ergebnis verändern. Gib deshalb alle Präparate und Medikamente an.</p>`,
+    notProofHtml: `<p>Ein erhöhter DHEA-S-Wert beweist kein PCOS und keinen Tumor. Ein niedriger Wert im höheren Alter ist meist altersbedingt; ob Beschwerden wie verminderte Lust damit zusammenhängen, klärt die Ärztin. Aus dem Befund lässt sich keine Empfehlung für DHEA-Präparate ableiten; deren Einnahme sollte ärztlich besprochen werden.</p>`,
+    redFlagsHtml: `<p>Ärztlich abklären solltest du bei Frauen eine zunehmende Körper- und Gesichtsbehaarung, eine Stimmvertiefung oder eine deutliche Zunahme der Muskulatur. Ungewollter Gewichtsverlust, Übelkeit und Erbrechen, Schwindel, Austrocknung und Salzhunger können auf eine Nebenniereninsuffizienz hinweisen und brauchen rasche Abklärung.</p>`,
+    followUpHtml: `<p>Häufig werden weitere Hormone mitbestimmt, etwa <a href="/gesundheitsbibliothek/befunde-werte/testosteron-wert/">Testosteron</a>, je nach Fragestellung <a href="/gesundheitsbibliothek/befunde-werte/cortisol-wert/">Cortisol</a> und Hormone der Hirnanhangdrüse. Besteht Verdacht auf einen Tumor, folgt eine weitere Abklärung. Eine Übersicht über Hormonbestimmungen gibt die Seite <a href="/gesundheitsbibliothek/untersuchungen/hormontest/">Hormontest</a>; bei Zyklusstörungen ist die Abgrenzung zu <a href="/beschwerden/pcos/">PCOS</a> wichtig.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Ist ein niedriger DHEA-S-Wert im Alter normal?</strong></p>
+<p>Ja. Der Wert sinkt mit den Jahren deutlich. Für sich allein ist das kein Krankheitszeichen.</p>
+<p><strong>Sollte ich DHEA einnehmen, wenn der Wert niedrig ist?</strong></p>
+<p>Daraus folgt keine Empfehlung. Hormonpräparate können Nebenwirkungen haben und gehören in ärztliche Absprache.</p>
+<p><strong>Hat jede Frau mit PCOS ein erhöhtes DHEA-S?</strong></p>
+<p>Nicht unbedingt. Ein erhöhter Wert kann zu PCOS passen, die Diagnose stützt sich aber nicht auf diesen Wert allein.</p>`,
+    sources: [
+      { label: 'MedlinePlus: DHEA Sulfate Test', url: 'https://medlineplus.gov/lab-tests/dhea-sulfate-test/' },
+      { label: 'MedlinePlus: DHEA-sulfate test', url: 'https://medlineplus.gov/ency/article/003717.htm' },
+    ],
+    relatedConditions: [
+      { href: '/beschwerden/pcos/', label: 'PCOS' },
+      { href: '/beschwerden/haarausfall/', label: 'Haarausfall' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/hormontest/', label: 'Hormontest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/testosteron-wert/', label: 'Testosteron-Wert' },
+      { href: '/gesundheitsbibliothek/befunde-werte/cortisol-wert/', label: 'Cortisol-Wert' },
     ],
   },
 ];

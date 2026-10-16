@@ -98,7 +98,7 @@
     "src/data/therapie-leaves/moxibustion.html": "bdc6959e1cb5870c"
   },
   "therapy:electroacupuncture": {
-    "src/data/therapie-leaves/elektroakupunktur.html": "cab5d4733470e390"
+    "src/data/therapie-leaves/elektroakupunktur.html": "cda147011450828d"
   },
   "therapy:facial-acupuncture": {
     "src/data/therapie-leaves/gesichtsakupunktur.html": "a61c8d3ded487499"
@@ -116,7 +116,7 @@
     "src/data/therapie-leaves/physiotherapie.html": "87aaf4b0d6b452a4"
   },
   "condition:back-pain": {
-    "src/data/symptom-leaves/rueckenschmerzen.html": "b9a2d7d0aa6b3513"
+    "src/data/symptom-leaves/rueckenschmerzen.html": "b00deac2b81e4138"
   },
   "condition:neck-pain": {
     "src/data/symptom-leaves/nackenschmerzen.html": "7521a1d8aeca43b2"

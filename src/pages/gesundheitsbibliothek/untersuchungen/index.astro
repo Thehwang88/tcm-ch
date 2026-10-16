@@ -30,6 +30,7 @@ const groups = [
   { title: 'Bildgebung', leaves: [
     { href: '/gesundheitsbibliothek/untersuchungen/mammographie/', name: 'Mammographie', text: 'Röntgenuntersuchung der Brust: Screening, Ablauf, Kompression und was ein Nachaufgebot bedeutet.' },
     { href: '/gesundheitsbibliothek/untersuchungen/mrt/', name: 'MRT (MRI)', text: 'Ablauf, Vorbereitung, Kontrastmittel und warum nicht jeder Befund die Schmerzen erklärt.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/arthroskopie/', name: 'Arthroskopie', text: 'Gelenkspiegelung: Ablauf, Narkoseformen, Risiken und wann sie bei Kniebeschwerden wenig bringt.' },
     { href: '/gesundheitsbibliothek/untersuchungen/ct/', name: 'CT (Computer­tomografie)', text: 'Schnittbilder in Sekunden: wann das CT erste Wahl ist und wann das MRT übernimmt.' },
     { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', name: 'Röntgen', text: 'Knochen und Gelenke im Bild: Ablauf, Strahlenbelastung im Verhältnis und Grenzen bei Weichteilen.' },
     { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', name: 'Ultraschall', text: 'Bauch, Schilddrüse, Sehnen und Gefässe in Echtzeit, ganz ohne Strahlung.' },
@@ -52,6 +53,8 @@ const groups = [
   ]},
   { title: 'Lunge, Schlaf & Atmung', leaves: [
     { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', name: 'Lungenfunktion (Spirometrie)', text: 'Wie viel Luft, wie schnell: der Basistest bei Husten, Atemnot und Asthma-Verdacht.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/bronchoskopie/', name: 'Bronchoskopie', text: 'Lungenspiegelung: Gründe, Vorbereitung, Spülung und Gewebeprobe, Risiken.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/laryngoskopie/', name: 'Laryngoskopie', text: 'Kehlkopfspiegelung bei Heiserkeit: Varianten von Spiegel bis Endoskop und was sie zeigt.' },
     { href: '/gesundheitsbibliothek/untersuchungen/schlaflabor/', name: 'Schlaflabor', text: 'Eine Nacht unter Messung: Atmung, Sauerstoff, Schlafphasen und Bewegungen.' },
     { href: '/gesundheitsbibliothek/untersuchungen/blutgasanalyse/', name: 'Blutgasanalyse', text: 'Sauerstoff, CO2 und Säure-Basen-Haushalt: die Schnellanalyse bei Atem- und Stoffwechselfragen.' },
   ]},
@@ -59,6 +62,7 @@ const groups = [
     { href: '/gesundheitsbibliothek/untersuchungen/leberelastografie/', name: 'Leberelastografie (FibroScan)', text: 'Messung der Lebersteifigkeit (FibroScan): Vorbereitung, Ergebnis und was es nicht beweist.' },
     { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', name: 'Gastroskopie (Magenspiegelung)', text: 'Der direkte Blick in Speiseröhre und Magen: Vorbereitung, Sedierung, Biopsien.' },
     { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', name: 'Koloskopie (Darmspiegelung)', text: 'Vorsorge und Abklärung: Darmvorbereitung, Ablauf, Polypenentfernung und was danach gilt.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/kapselendoskopie/', name: 'Kapselendoskopie', text: 'Die Kamerakapsel für den Dünndarm: Vorbereitung, Ablauf und was sie nicht kann.' },
     { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', name: 'Stuhlanalyse', text: 'Calprotectin, Erreger oder verborgenes Blut: welcher Stuhltest welche Frage beantwortet.' },
     { href: '/gesundheitsbibliothek/untersuchungen/helicobacter-test/', name: 'Helicobacter-Test', text: 'Atemtest, Stuhltest oder Gewebeprobe: wie H. pylori nachgewiesen wird und warum die Kontrolle nach der Behandlung wichtig ist.' },
     { href: '/gesundheitsbibliothek/untersuchungen/zoeliakie-test/', name: 'Zöliakie-Test', text: 'Antikörper im Blut und gegebenenfalls Gewebeproben: der Diagnoseweg und warum Gluten vor dem Test wichtig ist.' },
@@ -74,6 +78,8 @@ const groups = [
     { href: '/gesundheitsbibliothek/untersuchungen/pap-abstrich/', name: 'Pap-Abstrich', text: 'Der Krebsabstrich vom Gebärmutterhals: Ablauf, Resultate und der Unterschied zum HPV-Test.' },
     { href: '/gesundheitsbibliothek/untersuchungen/spermiogramm/', name: 'Spermiogramm', text: 'Untersuchung der Samenprobe bei Fragen zur männlichen Fruchtbarkeit: Vorbereitung, Werte und Grenzen.' },
     { href: '/gesundheitsbibliothek/untersuchungen/hysteroskopie/', name: 'Hysteroskopie', text: 'Gebärmutterspiegelung: wann sie gemacht wird, Ablauf, Schmerzen und was sie zeigen kann.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/laparoskopie/', name: 'Laparoskopie', text: 'Bauchspiegelung: Diagnose und Behandlung per Schlüssellochtechnik, Ablauf, Narkose und Erholung.' },
+    { href: '/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/', name: 'Eileiterdurchgängigkeit (HSG, HyCoSy)', text: 'Eileiter prüfen mit Röntgen (HSG) oder Ultraschall (HyCoSy): Unterschiede, Ablauf und Grenzen.' },
     { href: '/gesundheitsbibliothek/untersuchungen/hpv-test/', name: 'HPV-Test', text: 'Virusnachweis am Gebärmutterhals: wie die Probe entnommen wird und was ein positives oder negatives Ergebnis bedeutet.' },
     { href: '/gesundheitsbibliothek/untersuchungen/biopsie/', name: 'Biopsie', text: 'Die Gewebeentnahme: warum ein Bild manchmal nicht reicht, welche Formen es gibt und was im Labor untersucht wird.' },
   ]},

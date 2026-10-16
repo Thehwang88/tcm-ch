@@ -152,6 +152,19 @@ const TITLES: Record<string, string> = {
   crps: 'CRPS: komplexes regionales Schmerzsyndrom verstehen und behandeln',
   interkostalneuralgie: 'Interkostalneuralgie: Nervenschmerz zwischen den Rippen',
   bettnaessen: 'Bettnässen bei Kindern: Ursachen, Abklärung und Behandlung',
+  // Welle 4 (16.10.2026, Draft)
+  'schnappfinger': 'Schnappfinger: Ursachen, Abklärung und Behandlung',
+  'steissbeinschmerzen': 'Steissbeinschmerzen: Ursachen, Sitzen und Behandlung',
+  'tarsaltunnelsyndrom': 'Tarsaltunnelsyndrom: Kribbeln und Brennen an der Fusssohle',
+  'meralgia-paraesthetica': 'Meralgia paraesthetica: Brennen am äusseren Oberschenkel',
+  'trockene-augen': 'Trockene Augen: Ursachen, Abklärung und Behandlung',
+  'bizepssehnenentzuendung': 'Bizepssehnenentzündung: Schmerz vorne an der Schulter',
+  'patellofemorales-schmerzsyndrom': 'Patellofemorales Schmerzsyndrom: Schmerz hinter der Kniescheibe',
+  'pudendusneuralgie': 'Pudendusneuralgie: Nervenschmerz im Becken verstehen',
+  'beckenbodenverspannung': 'Beckenbodenverspannung: wenn der Beckenboden nicht loslässt',
+  'meniskusriss': 'Meniskusriss: Symptome, Abklärung und wann operieren',
+  'thoracic-outlet-syndrom': 'Thoracic-Outlet-Syndrom: Kribbeln, Schwere und kalte Hand',
+  'chronischer-husten': 'Chronischer Husten: Ursachen und Abklärung ab acht Wochen',
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -283,6 +296,19 @@ const DESCRIPTIONS: Record<string, string> = {
   crps: 'CRPS oder Morbus Sudeck: starke Schmerzen, Überempfindlichkeit, Schwellung und Bewegungsprobleme. Frühzeitige multidisziplinäre Behandlung ist entscheidend.',
   interkostalneuralgie: 'Interkostalneuralgie: brennender oder stechender Nervenschmerz entlang der Rippen. Brustschmerz zuerst sicher abklären, danach gezielt behandeln.',
   bettnaessen: 'Bettnässen oder Enuresis bei Kindern: häufig, behandelbar und kein Grund für Schuld. Wann abklären, was hilft und welche Rolle Akupunktur ergänzend haben kann.',
+  // Welle 4 (16.10.2026, Draft)
+  'schnappfinger': 'Ein Finger bleibt hängen und schnellt dann auf? So entsteht ein Schnappfinger, wie er untersucht wird und welche Behandlungen von Schiene bis Eingriff infrage kommen.',
+  'steissbeinschmerzen': 'Steissbeinschmerzen beim Sitzen oder Aufstehen? Häufige Ursachen, wie Kokzygodynie abgeklärt wird, was im Alltag entlastet und welche Warnzeichen wichtig sind.',
+  'tarsaltunnelsyndrom': 'Brennen, Kribbeln oder Taubheit an der Fusssohle? Beim Tarsaltunnelsyndrom wird ein Nerv hinter dem Innenknöchel eingeengt. Ursachen, Abklärung und Behandlung.',
+  'meralgia-paraesthetica': 'Taubheit oder Brennen an der Aussenseite des Oberschenkels? Meralgia paraesthetica entsteht durch einen eingeengten Hautnerv. Ursachen, Abklärung und Behandlung.',
+  'trockene-augen': 'Brennen, Fremdkörpergefühl, verschwommene Sicht? Was hinter trockenen Augen steckt, was im Alltag hilft, wann eine Augenärztin nötig ist und welche Warnzeichen zählen.',
+  'bizepssehnenentzuendung': 'Schmerzen vorne an der Schulter beim Heben oder Tragen? Wie eine Bizepssehnenentzündung entsteht, wie sie untersucht wird und welche Behandlung zuerst sinnvoll ist.',
+  'patellofemorales-schmerzsyndrom': 'Knieschmerz vorne beim Treppensteigen, Hocken oder langen Sitzen? Was das patellofemorale Schmerzsyndrom ist und warum gezieltes Training die Behandlung trägt.',
+  'pudendusneuralgie': 'Brennender Schmerz im Intimbereich oder Damm, schlimmer im Sitzen? Wie eine Pudendusneuralgie erkannt wird, welche Abklärung nötig ist und welche Behandlungen es gibt.',
+  'beckenbodenverspannung': 'Schmerzen im Becken, Druck beim Wasserlösen, Schmerzen beim Sex? Ein überaktiver, verspannter Beckenboden kann dahinterstecken. Abklärung und Behandlung im Überblick.',
+  'meniskusriss': 'Meniskusriss nach Verdrehen oder durch Verschleiss? Typische Symptome, was MRT-Befunde bedeuten und warum Training oft gleich gut abschneidet wie eine Arthroskopie.',
+  'thoracic-outlet-syndrom': 'Kribbeln im Arm, schnelle Ermüdung, kalte oder verfärbte Hand? Wie das Thoracic-Outlet-Syndrom entsteht, welche Formen es gibt und wann es dringend wird.',
+  'chronischer-husten': 'Husten seit mehr als acht Wochen? Häufige Ursachen wie Asthma, Reflux und Nasenrachen, wie abgeklärt wird, welche Warnzeichen zählen und was bei Reizhusten hilft.',
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
@@ -305,6 +331,8 @@ function renderSymptomFaq(faqs: { q: string; a: string }[], label: string) {
   const items = faqs.map((f) => `<details class="faq-item" style="border-bottom:1px solid var(--border);padding:18px 0"><summary style="cursor:pointer;font-size:16.5px;font-weight:600;color:var(--black);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">${f.q}<span style="font-size:20px;color:var(--blue);transition:transform .2s">+</span></summary><div style="padding-top:14px;font-size:15px;line-height:1.7;color:var(--mid)">${f.a}</div></details>`).join('');
   return `<div id="symptom-faq-section"><section style="background:#fff;padding:56px 0"><div class="wrap" style="max-width:820px"><div class="section-label">Häufige Fragen</div><h2 class="section-title" style="margin-bottom:24px">FAQ zu <em>${label}</em></h2><div class="faq-list">${items}</div></div></section></div>`;
 }
+// Welle 4 (16.10.2026): FAQs sichtbar im Leaf, bewusst ohne FAQPage-Schema.
+const NO_FAQ_SCHEMA = new Set(['schnappfinger', 'steissbeinschmerzen', 'tarsaltunnelsyndrom', 'meralgia-paraesthetica', 'trockene-augen', 'bizepssehnenentzuendung', 'patellofemorales-schmerzsyndrom', 'pudendusneuralgie', 'beckenbodenverspannung', 'meniskusriss', 'thoracic-outlet-syndrom', 'chronischer-husten']);
 // FAQPage from entry.faqs when present, else from the leaf's own visible accordion.
 // schlafstoerungen has entry.faqs but no accordion in the leaf -> render one (faqBlock).
 let faqBlock = '';
@@ -314,7 +342,7 @@ if (entry?.faqs?.length) {
   if (!parseLeafFaqs(body).length) faqBlock = renderSymptomFaq(entry.faqs, name);
 } else {
   const leafFaqs = parseLeafFaqs(body);
-  if (leafFaqs.length) schema.push(faqPageSchema(leafFaqs));
+  if (leafFaqs.length && !NO_FAQ_SCHEMA.has(slug!)) schema.push(faqPageSchema(leafFaqs));
 }
 // "Verwandte Beschwerden" cross-link block - interlinks the /beschwerden/ leaf pages
 // (SEO: lift them out of "discovered, not crawled"). Built from the real related[] data,
@@ -423,7 +451,9 @@ const REBRANDED_SLUGS = new Set(['migraene',
   // K6 (Batch 3C.3): Variante A
   'polyneuropathie', 'prostata', 'raynaud-syndrom', 'reizblase', 'reizdarm', 'restless-legs', 'rheuma', 'rheumatoide-arthritis', 'rhizarthrose', 'rosacea', 'rotatorenmanschette', 'scheidentrockenheit', 'schilddruesenueberfunktion', 'schilddruesenunterfunktion', 'schlafapnoe', 'schleimbeutelentzuendung', 'schleudertrauma', 'schulterschmerzen', 'schuppenflechte', 'schwere-beine', 'schwindel',
   // K7 (Batch 3C.3): Variante A
-  'seborrhoisches-ekzem', 'sibo', 'sinusitis', 'skoliose', 'sodbrennen', 'spannungskopfschmerzen', 'spinalkanalstenose', 'spondylose', 'sprunggelenkschmerzen', 'tennisarm', 'trigeminusneuralgie', 'uebelkeit', 'vaginismus', 'venenschwaeche', 'verstopfung', 'vitiligo', 'vulvodynie', 'wadenschmerzen', 'wassereinlagerungen', 'zaehneknirschen', 'zoeliakie']);
+  'seborrhoisches-ekzem', 'sibo', 'sinusitis', 'skoliose', 'sodbrennen', 'spannungskopfschmerzen', 'spinalkanalstenose', 'spondylose', 'sprunggelenkschmerzen', 'tennisarm', 'trigeminusneuralgie', 'uebelkeit', 'vaginismus', 'venenschwaeche', 'verstopfung', 'vitiligo', 'vulvodynie', 'wadenschmerzen', 'wassereinlagerungen', 'zaehneknirschen', 'zoeliakie',
+  // Welle 4 (16.10.2026)
+  'schnappfinger', 'steissbeinschmerzen', 'tarsaltunnelsyndrom', 'meralgia-paraesthetica', 'trockene-augen', 'bizepssehnenentzuendung', 'patellofemorales-schmerzsyndrom', 'pudendusneuralgie', 'beckenbodenverspannung', 'meniskusriss', 'thoracic-outlet-syndrom', 'chronischer-husten']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---

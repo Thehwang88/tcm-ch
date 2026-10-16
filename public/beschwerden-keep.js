@@ -84,5 +84,9 @@ globalThis.BESCHWERDEN_KEEP = [
   "eierstockzyste",
   "kubitaltunnelsyndrom",
   "vitiligo",
-  "scheidentrockenheit"
+  "scheidentrockenheit",
+  // 16.10.2026 — Welle 4 (Draft, 12 Diagnose-Owner):
+  "schnappfinger", "steissbeinschmerzen", "tarsaltunnelsyndrom", "meralgia-paraesthetica",
+  "trockene-augen", "bizepssehnenentzuendung", "patellofemorales-schmerzsyndrom", "pudendusneuralgie",
+  "beckenbodenverspannung", "meniskusriss", "thoracic-outlet-syndrom", "chronischer-husten"
 ];

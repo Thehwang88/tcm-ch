@@ -90,6 +90,27 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   angststoerungen: [{ slug: 'akupunktur-bei-angststoerungen', label: 'Akupunktur bei Angststörungen' }],
   depressionen: [{ slug: 'akupunktur-bei-depressionen', label: 'Akupunktur bei Depressionen' }],
   reizblase: [{ slug: 'akupunktur-bei-reizblase', label: 'Akupunktur bei Reizblase' }],
+  neurodermitis: [
+    { slug: 'akupunktur-bei-neurodermitis', label: 'Akupunktur bei Neurodermitis: was Studien zeigen' },
+  ],
+  sehnenscheidenentzuendung: [
+    { slug: 'akupunktur-bei-sehnenscheidenentzuendung', label: 'Akupunktur bei Sehnenscheidenentzündung: Studienlage' },
+  ],
+  achillessehnenentzuendung: [
+    { slug: 'akupunktur-bei-achillessehnenbeschwerden', label: 'Akupunktur bei Achillessehnenbeschwerden: zwei kleine Studien' },
+  ],
+  blasenentzuendung: [
+    { slug: 'akupunktur-bei-wiederkehrenden-blasenentzuendungen', label: 'Akupunktur bei wiederkehrenden Blasenentzündungen' },
+  ],
+  'restless-legs': [
+    { slug: 'akupunktur-bei-restless-legs', label: 'Akupunktur bei Restless Legs: Leitlinie und Studien' },
+  ],
+  fazialisparese: [
+    { slug: 'akupunktur-bei-fazialisparese', label: 'Akupunktur bei Fazialisparese: was belegt ist' },
+  ],
+  nesselsucht: [
+    { slug: 'akupunktur-bei-nesselsucht', label: 'Akupunktur bei Nesselsucht: die grosse Studie eingeordnet' },
+  ],
 };
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -386,6 +386,40 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-herzschrittmacher/
 - https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/
 - https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-diabetes-sicherheit/
+- https://tcm.ch/beschwerden/schnappfinger/
+- https://tcm.ch/beschwerden/steissbeinschmerzen/
+- https://tcm.ch/beschwerden/tarsaltunnelsyndrom/
+- https://tcm.ch/beschwerden/meralgia-paraesthetica/
+- https://tcm.ch/beschwerden/trockene-augen/
+- https://tcm.ch/beschwerden/bizepssehnenentzuendung/
+- https://tcm.ch/beschwerden/patellofemorales-schmerzsyndrom/
+- https://tcm.ch/beschwerden/pudendusneuralgie/
+- https://tcm.ch/beschwerden/beckenbodenverspannung/
+- https://tcm.ch/beschwerden/meniskusriss/
+- https://tcm.ch/beschwerden/thoracic-outlet-syndrom/
+- https://tcm.ch/beschwerden/chronischer-husten/
+- https://tcm.ch/wissen/akupunktur-bei-neurodermitis/
+- https://tcm.ch/wissen/akupunktur-bei-sehnenscheidenentzuendung/
+- https://tcm.ch/wissen/akupunktur-bei-achillessehnenbeschwerden/
+- https://tcm.ch/wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/
+- https://tcm.ch/wissen/akupunktur-bei-restless-legs/
+- https://tcm.ch/wissen/akupunktur-bei-fazialisparese/
+- https://tcm.ch/wissen/akupunktur-bei-nesselsucht/
+- https://tcm.ch/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/ana-antikoerper/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/rheumafaktor/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/anti-ccp/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/hla-b27/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/parathormon/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/apolipoprotein-b/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/haptoglobin/
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/dheas-wert/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/laparoskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/arthroskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/kapselendoskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/bronchoskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/laryngoskopie/
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/
 
 ## Geplant (noch nicht live)
 

@@ -121,7 +121,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
     `<span class="kf-opt-body">` +
-    (Q ? `<span class="kf-opt-t">Kostenloser TCM-Check-in</span><span class="kf-opt-dur">30 Minuten</span>` +
+    (Q ? `<span class="kf-opt-t">${TERMINARTEN.checkin.label}</span><span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten</span>` +
       `<span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>` +
       `<span class="kf-opt-note">Ohne Behandlung.</span>`
     : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
@@ -136,7 +136,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span>` +
+    `<span class="kf-opt-body"><span class="kf-opt-t">${TERMINARTEN.behandlung.label}</span>` + (Q ? `<span class="kf-opt-dur">${TERMINARTEN.behandlung.dauerMin} Minuten</span>` : '') +
     (Q ? `<span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>`
     : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
     `</span></label>`;
