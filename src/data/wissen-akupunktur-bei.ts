@@ -404,7 +404,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Systematische Übersichten beschreiben positive Signale für Akupunktur bei plantarem Fersenschmerz. Die Zahl und Qualität der Studien ist jedoch begrenzt, und unterschiedliche Akupunkturverfahren erschweren eindeutige Aussagen.</p>
 <p>Die Forschung erlaubt daher eher die Aussage, dass Akupunktur kurzfristig zur Schmerzlinderung beitragen <strong>kann</strong>, als die Behauptung einer gesicherten dauerhaften Wirkung.</p>
 <h2>Was zusätzlich wichtig ist</h2>
-<p>Belastungssteuerung, geeignetes Schuhwerk, Dehnung und gegebenenfalls physiotherapeutische Massnahmen können je nach Befund wichtige Bestandteile sein.</p>
+<p>Belastungssteuerung, geeignetes Schuhwerk, Dehnung und gegebenenfalls physiotherapeutische Massnahmen können je nach Befund wichtige Bestandteile sein. Schmerzt eher die Sehne oberhalb der Ferse, gilt eine eigene Studienlage, siehe <a href="/wissen/akupunktur-bei-achillessehnenbeschwerden/">Akupunktur bei Achillessehnenbeschwerden</a>.</p>
 <p>Akupunktur sollte diese Faktoren ergänzen und nicht ersetzen.</p>
 <h2>Wie wir behandeln</h2>
 <p>Wir prüfen, wann der Schmerz auftritt, wo er lokalisiert ist und welche Belastungen ihn verstärken.</p>
@@ -552,7 +552,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Bei milden oder moderaten Beschwerden kann Akupunktur als ergänzender konservativer Versuch diskutiert werden.</p>
 <p>Sie sollte aber nicht isoliert betrachtet werden. Eine Nachtschiene und andere etablierte konservative Massnahmen können je nach Befund wichtig sein.</p>
 <h2>Wann eine Operation nicht verzögert werden sollte</h2>
-<p>Bei zunehmender Taubheit, Muskelschwäche, Muskelabbau am Daumenballen oder objektiv deutlicher Nervenschädigung ist eine fachärztliche Beurteilung wichtig.</p>
+<p>Bei zunehmender Taubheit, Muskelschwäche, Muskelabbau am Daumenballen oder objektiv deutlicher Nervenschädigung ist eine fachärztliche Beurteilung wichtig. Schmerzt dagegen die Daumenseite des Handgelenks ohne Kribbeln, passt das eher zu einer Sehnenscheidenentzündung; die Studien dazu ordnet der Artikel <a href="/wissen/akupunktur-bei-sehnenscheidenentzuendung/">Akupunktur bei Sehnenscheidenentzündung</a> ein.</p>
 <p>Akupunktur darf eine medizinisch notwendige operative Entlastung nicht verzögern.</p>
 <h2>Wie wir behandeln</h2>
 <p>Vor Beginn interessiert uns, ob die Diagnose gesichert ist, wie stark Sensibilitätsstörungen ausgeprägt sind und ob bereits neurologische Untersuchungen oder Nervenleitmessungen vorliegen.</p>
@@ -846,7 +846,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Wir wollen Diagnose, Ursache und aktuelle Medikation kennen und fragen nach dem Befund der Nervenleitmessung. Behandelt wird an Beinen und Füssen, oft ergänzt durch Punkte am Rumpf und an den Händen. Bei Schmerz im Vordergrund setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei ausgeprägter Kälteempfindlichkeit <a href="/therapien/moxibustion/">Moxibustion</a>. Was nachts an brennenden Füssen anders ist als tagsüber, erklärt das Körpersignal <a href="/koerpersignale/brennende-fuesse-nachts/">Brennende Füsse nachts</a>.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Ein Versuch umfasst meist sechs bis acht Sitzungen über sechs bis acht Wochen. Beurteilt werden Schmerzstärke, nächtliche Beschwerden, Schlaf und Gehstrecke. Verbessert sich davon nach sechs Sitzungen nichts, brechen wir ab und sagen dir das. Eine Dauerbehandlung, um einer fortschreitenden Erkrankung hinterherzulaufen, ist kein Behandlungsplan.</p>
-<p>Die Sicherheitsplanung bei <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während einer Chemotherapie</a> muss zusätzlich mit dem Onkologie-Team abgestimmt werden.</p>
+<p>Die Sicherheitsplanung bei <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während einer Chemotherapie</a> muss zusätzlich mit dem Onkologie-Team abgestimmt werden. Für Gelenkschmerzen unter Aromatasehemmern nach Brustkrebs gibt es eine eigene grosse Studie, siehe <a href="/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/">Akupunktur bei Gelenkschmerzen durch Aromatasehemmer</a>.</p>
 <h2>Kosten und Krankenkasse</h2>
 <p>Akupunktur bei unseren nichtärztlichen, EMR- oder ASCA-registrierten Therapeut:innen läuft über die Zusatzversicherung für Komplementärmedizin, mit einem Jahresmaximum je nach Police. Die neurologische Abklärung und die Behandlung der Ursache laufen über die Grundversicherung. Details unter <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>`,
     faqs: [
@@ -1141,7 +1141,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Plötzlicher starker Harndrang und häufiges Wasserlassen können zu einer überaktiven Blase passen. Eine Infektion, andere Erkrankungen oder Medikamente können ähnliche Beschwerden verursachen. Die Übersicht <a href="/beschwerden/reizblase/">Reizblase</a> erklärt die Einordnung.</p>
 <p>Schmerzen und Brennen, Fieber oder <a href="/gesundheitsbibliothek/befunde-werte/blut-im-urin/">Blut im Urin</a> gehören zuerst medizinisch abgeklärt. Wenn du trotz starken Drangs keinen Urin lassen kannst, brauchst du rasch Hilfe. Ein Akupunkturversuch darf die Suche nach einer behandelbaren Ursache nicht verzögern.</p>
 <h2>Wie gut sind die Daten?</h2>
-<p>Der Cochrane-Review von 2022 bewertete Studien zur Akupunktur bei Erwachsenen mit überaktiver Blase. Ein möglicher kleiner Vorteil gegenüber Medikamenten wurde mit niedriger Evidenzsicherheit beschrieben. Für zentrale Beschwerden wie Drang und Inkontinenzereignisse waren manche Vergleiche sehr unsicher.</p>
+<p>Der Cochrane-Review von 2022 bewertete Studien zur Akupunktur bei Erwachsenen mit überaktiver Blase. Ein möglicher kleiner Vorteil gegenüber Medikamenten wurde mit niedriger Evidenzsicherheit beschrieben. Für zentrale Beschwerden wie Drang und Inkontinenzereignisse waren manche Vergleiche sehr unsicher. Für wiederkehrende Blasenentzündungen gibt es eine eigene Studie, eingeordnet unter <a href="/wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/">Akupunktur bei wiederkehrenden Blasenentzündungen</a>.</p>
 <p>Das ist keine belastbare Grundlage für eine Erfolgsquote. Unterschiedliche Studien, Vergleichsbehandlungen und Messungen erschweren die Übertragung. Dass in den eingeschlossenen Studien keine schweren Nebenwirkungen beobachtet wurden, beweist auch nicht, dass jede Behandlung für jede Person risikofrei ist.</p>
 <h2>Was zur üblichen Versorgung gehört</h2>
 <p>Die Auswahl richtet sich nach Diagnose und Belastung. Blasentraining, passende Verhaltensmassnahmen und je nach Situation Medikamente oder weitere Verfahren können wichtig sein. Welche Option für dich sinnvoll ist, besprichst du mit der zuständigen Fachperson.</p>
@@ -1268,7 +1268,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Das lässt sich aus den Studien nicht ableiten. Sinnvoll ist ein kurzer, klar begrenzter Versuch mit Prüfzeitpunkt.</p>
 <h2>Quellen</h2>
 <ul>
-<li><a href="https://pubmed.ncbi.nlm.nih.gov/24929455/" target="_blank" rel="noopener">Hadianfard et al. 2014: Acupuncture versus methylprednisolone injection in De Quervain's tenosynovitis, Journal of Acupuncture and Meridian Studies</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/24929455/" target="_blank" rel="noopener">Hadianfard et al. 2014: Efficacy of acupuncture versus local methylprednisolone acetate injection in De Quervain's tenosynovitis, randomized controlled trial</a></li>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/38932434/" target="_blank" rel="noopener">Qin et al. 2024: Systematic review and meta-analysis of acupuncture for De Quervain's tenosynovitis, Postgraduate Medical Journal</a></li>
 <li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
 </ul>`,

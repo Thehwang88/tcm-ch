@@ -1248,7 +1248,7 @@ export const beschwerden: Beschwerde[] = [
       },
       {
         "q": "Kann Akupunktur eine Fazialisparese heilen?",
-        "a": "Das lässt sich nicht versprechen. Die Datenlage zu Akupunktur bei Fazialisparese ist begrenzt. Sie kann nach medizinischer Abklärung ergänzend besprochen werden, ersetzt aber weder die Diagnose noch eine zeitkritische ärztliche Behandlung."
+        "a": "Das lässt sich nicht versprechen. Die Datenlage zu Akupunktur bei Fazialisparese ist begrenzt. Sie kann nach medizinischer Abklärung ergänzend besprochen werden, ersetzt aber weder die Diagnose noch eine zeitkritische ärztliche Behandlung. Einordnung der Studien im Artikel Akupunktur bei Fazialisparese."
       },
       {
         "q": "Wie lange dauert die Erholung?",
