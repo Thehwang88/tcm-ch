@@ -190,7 +190,7 @@ if(!isOpen){a.classList.add('open');btn.classList.add('open');btn.setAttribute('
     if(_anl||_qz){
       var _form=document.querySelector('#home-contact-form form');
       if(_form){
-        if(_anl){ var _ta=_form.querySelector('textarea[name="anliegen"]'); if(_ta){ _ta.value=_anl; } }
+        if(_anl){ var _ta=_form.querySelector('textarea[name="anliegen"]'); if(_ta){ _ta.value=_anl; _ta.dispatchEvent(new Event('input',{bubbles:true})); } }
         if(_qz){ var _h=_form.querySelector('input[name="quelle"]'); if(!_h){ _h=document.createElement('input'); _h.type='hidden'; _h.name='quelle'; _form.appendChild(_h); } _h.value=_qz; }
         setTimeout(function(){ openContactForm(); },300);
       }

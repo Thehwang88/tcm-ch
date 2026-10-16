@@ -50,9 +50,7 @@ const card = renderKontaktForm({
 </section>
 
 <style is:global>
-  /* Hero: Höhe nach Inhalt (keine Vollbild-Mindesthöhe), Foto füllt die rechte Hälfte. */
-  .hlsg .lsr-inner, .hlsg.lsr-hero .lsr-inner { min-height: 0; }
-  @media (max-width: 900px) { .hlsg .lsr-right { height: 240px; } }
+  /* Hero: Höhen, Abstände und Foto-Ausschnitt aus den regulären Standort-Heros (.lsr-* in home.css), keine SG-Ausnahme. */
 
   /* USP-Reihe: Desktop drei nebeneinander, Mobile kompakte Zeilen statt hoher Karten. */
   .sgu { background: #fff; border-bottom: 1px solid var(--border); padding: 20px 16px; }

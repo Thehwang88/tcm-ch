@@ -61,6 +61,9 @@
     var opt = function () { return sel && sel.selectedIndex > 0 ? sel.options[sel.selectedIndex] : null; };
     var fixedId = card.getAttribute('data-kf-standort-id') || '';
     var zielBox = form.querySelector('[data-kf-ziel]'); var opts = form.querySelector('.kf-opts');
+    // Ruhig global (Homepage): Überschrift «Terminart wählen» und Alternativen-Block unter dem Anfragebutton.
+    var taH = form.querySelector('[data-kf-ta-h]'); var altWrap = form.querySelector('[data-kf-alt-wrap]');
+    var ruhig = card.classList.contains('kf--ruhig');
     /** Gewähltes Ziel: {value (kanonisch), id, art, label}; fest = operativer Standort der Seite. */
     var target = function () {
       if (fixedName) return { value: fixedName, id: fixedId, art: 'behandlung', label: fixedName };
@@ -84,6 +87,7 @@
       var tg = target(); var nonTreat = !!(tg && tg.art !== 'behandlung');
       // Vormerkung / Standort in Prüfung / Routing: keine Check-in- oder Behandlungskacheln, Bedeutung sichtbar benannt.
       if (opts) opts.hidden = nonTreat;
+      if (taH) taH.hidden = nonTreat;
       if (zielBox) {
         zielBox.hidden = !nonTreat;
         if (nonTreat) { var zt = ZIEL[tg.art] || ZIEL.anfrage; zielBox.querySelector('[data-kf-ziel-h]').textContent = zt[0] + (tg.art === 'routing' ? '' : ': ' + tg.label); zielBox.querySelector('[data-kf-ziel-t]').textContent = zt[1]; }
@@ -96,6 +100,8 @@
       if (rCheckin && !fixedName) {
         var ok = checkinAllowed(); var o = opt();
         rCheckin.disabled = !ok; var tile = rCheckin.closest('.kf-opt'); if (tile) tile.classList.toggle('is-disabled', !ok);
+        // Ruhig: nicht freigegebene Ziele zeigen die Check-in-Kachel gar nicht (keine Gratis-Diagnostik suggerieren).
+        if (tile && ruhig) tile.hidden = !ok;
         if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
         if (!ok && rCheckin.checked) { rCheckin.checked = false; return sync(); }
       }
@@ -123,6 +129,16 @@
         if (href && anchor && document.getElementById(anchor)) href = '#' + anchor; // gleiche Seite: eingebettetes Widget
         if (href) odBtn.setAttribute('href', href);
         panel.hidden = !href;
+      }
+      // Ruhig global: Alternativen erst mit gewähltem Ziel; Anrufen = kanonische Nummer des Ziels (data-tel),
+      // WhatsApp nur bei identischer Nummer; Block nur, wenn OneDoc oder Anrufen verfügbar ist.
+      if (altWrap) {
+        var ao = opt(), at = ao ? ao.getAttribute('data-tel') || '' : '', altRow = altWrap.querySelector('[data-kf-kontakt-alt]');
+        if (telBtn && at) telBtn.setAttribute('href', 'tel:' + at.replace(/[^\d+]/g, ''));
+        var waA = altWrap.querySelector('[data-kf-wa]'), waOk = !!(waA && at && waA.getAttribute('data-kf-wa') === at.replace(/\D/g, ''));
+        if (waA) { waA.hidden = !waOk; var wsep = altWrap.querySelector('[data-kf-wa-sep]'); if (wsep) wsep.hidden = !waOk; }
+        if (altRow) altRow.hidden = !at;
+        altWrap.hidden = !at && (!panel || panel.hidden);
       }
       // Anrufen: Nummer des gewählten Standorts (global), sonst zentrale Terminkoordination.
       if (sel && telBtn && telText) {
@@ -207,6 +223,8 @@
       optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled);
       optBtn.addEventListener('click', function () { var o = optBtn.getAttribute('aria-expanded') !== 'true'; setOpen(optBtn, optBox, o); if (o) animIn(optBox); });
       optBox.addEventListener('animationend', function () { optBox.classList.remove('kf-anim'); });
+      // Späterer Prefill (z. B. home.js ?anliegen=, meldet sich per input-Event): Angaben sichtbar machen.
+      form.addEventListener('input', function (e) { if (optBox.hidden && optBox.contains(e.target) && (e.target.value || '').trim()) setOpen(optBtn, optBox, true); });
     }
     if (rrBtn && rrBox) {
       rrBtn.hidden = false; setOpen(rrBtn, rrBox, false);

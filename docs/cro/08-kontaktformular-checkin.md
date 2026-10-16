@@ -166,3 +166,16 @@ Beide SG-Formulare (Hero + unten, `onedocBeideTerminarten`): 1 Terminart → 2 R
 - Zwischenüberschrift «Rückruf anfragen» entfernt (Renderer): nach den Kacheln folgt direkt «Telefonnummer *», Abstand 20 px (`.kf--ruhig .kf-fields`).
 - Angebot (ersetzt die langen Texte vollständig): Erstbehandlung «Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.»; Check-in «Kostenloser TCM-Check-in» · «30 Minuten» · «Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.» · «Ohne Behandlung.».
 - Unverändert: IDs, Formularnamen, `quelle`, Terminart-Schlüssel, Angebots-IDs, Prefill, Anker, Fehlerfokus, Versand, Tracking, OneDoc, Sticky-Logik.
+
+## Homepage-Formular: ruhige Gestaltung wie SG (16.10.2026)
+
+- `#home-contact-form` (Instanz `home`) rendert mit `ruhig: true`; global (ohne `standortId`) → Variante «ruhig global» (`QG` im Renderer). Gleicher schwarzer Kopf, gleiche kurze Angebotstexte, Erstbehandlung zuerst.
+- Reihenfolge: Kopf → Standortauswahl (roter Stern) → «Terminart wählen» → Kacheln → «Telefonnummer *» → «Weitere Angaben · optional» (eingeklappt; Prefill öffnet, auch späteres `?anliegen=` aus home.js per input-Event) → Button → Datenschutz.
+- Keine SG-Standortlogik: keine Vorauswahl, kein `data-kf-od-mode="sg"`. Check-in-Kachel nur für freigegebene Ziele (`data-checkin`, aktuell SG); bei anderen Zielen ausgeblendet und abgewählt, Hinweis «nur in St. Gallen» bleibt. Vormerkung/Anfrage/Routing: Überschrift und Kacheln aus, bisherige Ziel-Texte und Buttons.
+- «Oder direkt Kontakt aufnehmen» erst mit gewähltem Ziel: OneDoc nur bei «Ersttermin mit Behandlung» + verifiziertem Kalender (`data-onedoc`, aktuell SG), Anrufen = kanonische Nummer des Ziels (`data-tel`), WhatsApp (bestehender zentraler Link) nur bei identischer Nummer (Bottighofen: ohne).
+- Events unverändert: `phone_click`, `wa_click` (quelle form), `onedoc_click`, `formular_senden` je genau 1×, ohne Personendaten.
+
+## Turnstile in den ruhigen Formularen (16.10.2026)
+
+- Messung (echtes Turnstile-Skript, Cloudflare-Testschlüssel, `/api` gemockt): Besteht Turnstile ohne Interaktion, ist der Container 0 px hoch (iframe 1×1), es bleibt nur der Rand von 10 px → keine Leerfläche. Die gemeldeten ~70 px (69 px = 65 px iframe + 4 px Inline-Grundlinie, plus 10 px Rand) entstehen nur, wenn Turnstile eine Interaktion verlangt; dann zeigt das Widget «Verify you are human» und muss sichtbar bleiben. Headless-Browser aus der Cloud-Umgebung erhalten mit dem echten Schlüssel immer diese Interaktion.
+- Echter Fehler im Interaktionszustand bei 320 px: Das 300-px-Widget wurde in der SG-Box um 50/66 px abgeschnitten und verbreiterte die Homepage-Karte auf 338 px (Seitenüberlauf). Lösung nur in ruhigen Karten: Ist der Container schmaler als 300 px, setzt ein Inline-Skript am Kartenende vor dem impliziten Rendern `data-size="compact"` (150×140, vollständig sichtbar). Sonst unverändert; kein Verstecken/Clipping, Token, Validierung, `reset()` unverändert. Andere Formulare (z. B. /kontakt/) unverändert.

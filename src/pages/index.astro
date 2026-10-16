@@ -43,7 +43,7 @@ const homeSelect = (inner: string) => [...inner.matchAll(/<option value="([^"]+)
   }).join('');
 // Gemeinsames Kontaktformular (15.10.2026) ersetzt die Karte in #home-contact-form (globale Standortauswahl,
 // Check-in nur für freigegebene Standorte). Prefill ?standort= / ?anliegen= / ?quelle= (home.js) bleibt erhalten.
-const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b), { path: '/', instancePrefix: 'home' });
+const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a, inner, b) => a + homeSelect(inner) + b), { path: '/', instancePrefix: 'home', extra: { ruhig: true } });
 if ((homeUpgraded.match(/data-kf-instance="home"/g) || []).length !== 1) throw new Error('index.astro: Home-Kontaktkarte nicht eindeutig umgestellt');
 const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 
