@@ -992,5 +992,65 @@ console.log('V. Rollout: ruhige Gestaltung auf allen Patienten-Formulartypen');
   ok(await pg.evaluate(() => !!document.querySelector('form.inline-form[onsubmit*="submitInlineFormGeneric"]') && !document.querySelector('form.inline-form [data-kf]')), 'Massage-Anfrage unverändert (eigener Handler)');
   await pg.close();
 }
+console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfung, Wartelisten (Darstellung, Pflichtfelder, Prefill, Fehler, Erfolg)');
+{
+  const H = '[data-kf-huelle]';
+  const FAM = [
+    ['massage', '/massage-basel/', 'Passende Behandlung anfragen', 'form.inline-form[onsubmit*="submitInlineFormGeneric"]', 'name,email,telefon', '#anfrage'],
+    ['zuerich-funnel', '/akupunktur-tcm-zuerich/', 'Termin bei TCM.ch finden', 'form[data-contact-form]', 'name', '#zh-funnel'],
+    ['vorbereitung', '/standorte/zuerich-oerlikon/', 'Anfrage für Zürich Oerlikon', 'form[data-contact-form]', 'name,telefon,email', '#kontakt'],
+    ['pruefung', '/standorte/winterthur-muenzgasse/', 'Passende Praxis anfragen', 'form[data-contact-form]', 'name,telefon,email', '#kontakt'],
+    ['warteliste', '/standorte/bern/', 'Vormerken für Bern', 'form[data-be-interesse]', 'email', '#interesse'],
+    ['warteliste', '/standorte/luzern/', 'Warteliste Luzern', 'form[data-lu-waitlist]', 'email', '#warteliste'],
+    ['warteliste', '/massage-luzern/', 'Warteliste Luzern', 'form[data-mw-waitlist]', 'email', null],
+  ];
+  for (const [fam, u, titel, F, req, anchor] of FAM) for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open(u, { width: w }));
+    const g = await pg.evaluate((H, F) => { const c = document.querySelector(H), k = c.querySelector('.kf-kopf'), f = c.querySelector(F), rc = c.getBoundingClientRect(), rk = k.getBoundingClientRect(); const b = f.querySelector('button[type=submit], .form-submit'), cb = getComputedStyle(b);
+      return { fam: c.getAttribute('data-kf-huelle'), kopf: getComputedStyle(k).backgroundColor, h: k.querySelector('.kf-h').textContent.trim(), flush: Math.abs(rk.left - rc.left - 1) <= 1 && Math.abs(rc.right - rk.right - 1) <= 1 && Math.abs(rk.top - rc.top - 1) <= 1, card: getComputedStyle(c).backgroundColor,
+        btn: cb.backgroundColor + '|' + cb.color, btnW: Math.round(b.getBoundingClientRect().width) >= Math.round(f.getBoundingClientRect().width) - 2, req: [...f.querySelectorAll('[required]')].map((e) => e.name).join(','),
+        labels: [...f.querySelectorAll('input:not([type=hidden]):not([name=website]), textarea, select')].filter((e) => !e.closest('[hidden]')).every((e) => (e.labels && e.labels.length) || e.getAttribute('aria-label')),
+        fz: Math.min(...[...f.querySelectorAll('input:not([type=hidden]):not([name=website]), textarea, select')].filter((e) => e.offsetHeight).map((e) => parseFloat(getComputedStyle(e).fontSize))),
+        ov: document.documentElement.scrollWidth <= innerWidth && [...c.querySelectorAll('*')].every((e) => e.getBoundingClientRect().right <= rc.right + 1 || getComputedStyle(e).position === 'absolute'),
+        alt: [...c.querySelectorAll('.kf-alt a')].map((a) => a.getAttribute('href').replace(/\?.*/, '')).join(' '), ts: (() => { const t = c.querySelector('.cf-turnstile'); return t ? [t.getAttribute('data-size') || 'normal', t.clientWidth] : null; })() }; }, H, F);
+    ok(g.fam === fam && g.kopf === 'rgb(2, 11, 16)' && g.h === titel && g.flush && g.card === 'rgb(255, 255, 255)' && g.btn === 'rgb(26, 226, 136)|rgb(2, 11, 16)' && g.btnW && g.labels && g.fz >= 16 && g.ov, `${w}px ${u}: Hülle (Kopf «${titel}», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow`);
+    ok(g.req === req && (!g.ts || (g.ts[1] < 300 ? g.ts[0] === 'compact' : g.ts[0] === 'normal')) && g.alt.split(' ').filter(Boolean).every((h) => /^(tel:\+41\d{9}|https:\/\/wa\.me\/41\d{9})$/.test(h)), `${w}px ${u}: Pflichtfelder unverändert (${req}), Turnstile ${g.ts ? g.ts.join('/') : '—'}, Kontaktlinks kanonisch (${g.alt || 'keine'})`);
+    await pg.close();
+  }
+  // Prefill/Zielwahl, Anker, Tastatur, Funnel-Titel
+  ({ pg, calls } = await open('/massage-basel/', { width: 390 }));
+  ok(await pg.$eval(`${H} select[name=standort]`, (s) => s.options[s.selectedIndex].text === 'Basel'), 'Massage Basel: Standort-Vorauswahl Basel erhalten');
+  await pg.focus(`${H} [name=name]`); await pg.keyboard.press('Tab');
+  ok(await pg.evaluate(() => document.activeElement.name === 'email'), 'Massage: Tastatur Name → E-Mail');
+  await pg.close();
+  ({ pg, calls } = await open('/akupunktur-tcm-zuerich/', { width: 390 }));
+  await pg.evaluate(() => window.zhQuartier && window.zhQuartier('Enge')); await new Promise((r) => setTimeout(r, 300));
+  ok(await pg.evaluate((H) => document.querySelector(H + ' .kf-kopf .inline-form-title').textContent === 'Termin nahe Enge finden' && document.querySelector(H + ' [name=quartier]').value === 'Enge' && /Termin nahe Enge finden/.test(document.querySelector(H + ' .form-submit').textContent), H), 'Zürich-Funnel: Quartier-Chip setzt Titel im neuen Kopf, Feld und Button wie bisher');
+  await pg.$eval('#zh-extra-toggle', (b) => b.click()); await new Promise((r) => setTimeout(r, 200));
+  ok(await pg.evaluate(() => !document.getElementById('zh-extra').hidden && document.getElementById('zh-extra-toggle').getAttribute('aria-expanded') === 'true'), 'Zürich-Funnel: «Weitere Angaben» klappt wie bisher auf');
+  await pg.close();
+  for (const [u, a] of [['/massage-basel/', 'anfrage'], ['/standorte/bern/', 'interesse'], ['/standorte/luzern/', 'warteliste'], ['/akupunktur-tcm-zuerich/', 'zh-funnel'], ['/standorte/zuerich-oerlikon/', 'kontakt']]) {
+    ({ pg, calls } = await open(`${u}#${a}`, { width: 390 }));
+    for (let k = 0, last = -1; k < 30; k++) { const y = await pg.evaluate(() => scrollY); if (y === last && k > 4) break; last = y; await new Promise((r) => setTimeout(r, 200)); }
+    ok(await pg.evaluate((a) => { const e = document.getElementById(a); const r = e.getBoundingClientRect(); return !!e && r.top < innerHeight && r.bottom > 0; }, a), `Anker ${u}#${a} erreichbar`);
+    await pg.close();
+  }
+  // Fehler + gemockter Erfolg (je Familie einmal); Versand-Payload siehe Vergleich gegen main im PR
+  for (const [u, F, fill, okRe, ev] of [
+    ['/massage-basel/', 'form.inline-form', { name: 'Test', email: 't@example.ch', telefon: '+41 79 000 00 00' }, /Das war's schon/, 'formular_senden'],
+    ['/akupunktur-tcm-zuerich/', 'form[data-contact-form]', { name: 'Test', telefon: '+41 79 000 00 00' }, /Danke/, 'zh_funnel_submit'],
+    ['/standorte/bern/', 'form[data-be-interesse]', { email: 't@example.ch' }, /Danke/, null],
+    ['/standorte/luzern/', 'form[data-lu-waitlist]', { email: 't@example.ch' }, /Danke/, 'formular_senden'],
+  ]) {
+    ({ pg, calls } = await open(u, { width: 390 }));
+    await pg.evaluate((F) => { document.querySelectorAll(F + ' .cf-turnstile').forEach((t) => { if (!t.querySelector('[name=cf-turnstile-response]')) { const i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'test-token'; t.appendChild(i); } }); }, F);
+    if (!/massage-basel/.test(u)) { await pg.$eval(`${F} button[type=submit]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 400));
+      ok(calls.length === 0 && await pg.evaluate((F) => [...document.querySelectorAll(F + ' [role=alert]')].some((e) => !e.hidden && e.textContent.trim()), F), `${u}: leer absenden → Fehlermeldung (role=alert), kein Versand`); }
+    await pg.evaluate((F, v) => { const f = document.querySelector(F); for (const [n, x] of Object.entries(v)) { const e = f.querySelector(`[name=${n}]`); e.value = x; } (f.querySelector('button[type=submit]')).click(); }, F, fill); await new Promise((r) => setTimeout(r, 900));
+    const evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).map((e) => e.event));
+    ok(calls.length === 1 && okRe.test(await pg.evaluate(() => document.body.innerText)) && (ev === null ? !evs.includes('formular_senden') : evs.filter((e) => e === ev).length === 1) && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('000 00 00') && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('example.ch'), `${u}: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (${evs.join(',') || 'keine'}), keine Personendaten im dataLayer`);
+    await pg.close();
+  }
+}
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);
