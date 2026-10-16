@@ -105,26 +105,22 @@ const schema = [
       </div>
 
       <div class="lsr-cform">
-        <div class="lu-card" id="warteliste" style="scroll-margin-top:88px">
-          <div class="lu-ribbon">2027</div>
-          <div class="lu-card-h">Sichere dir einen der <span class="lu-accent">ersten Termine</span></div>
-          <p class="lu-note" style="margin-bottom:14px">Eine E-Mail genügt. Wir melden uns, sobald die Terminvergabe in Luzern startet.</p>
-          <div class="lu-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
-            <div><span class="lu-check">✓</span> Du hörst als Erstes vom Eröffnungstermin</div>
-            <div><span class="lu-check">✓</span> Terminwahl vor der offiziellen Freigabe</div>
-            <div><span class="lu-check">✓</span> Keine Anzahlung, keine Verpflichtung</div>
-          </div>
-          <div class="lu-divider"></div>
+        <div class="lu-card kf kf--ruhig kf-huelle" data-kf-huelle="warteliste" id="warteliste" style="scroll-margin-top:88px">
+          <!-- Gemeinsame Hülle (kontakt-form.css): Warteliste, kein Termin- oder Behandlungsversprechen vor Eröffnung. -->
+          <link rel="stylesheet" href="/kontakt-form.css" />
+          <div class="kf-kopf"><h2 class="kf-h">Warteliste Luzern</h2><p class="kf-kopf-sub">Eine E-Mail genügt. Wir melden uns, sobald die Terminvergabe in Luzern startet (geplant 2027).</p></div>
+          <ul class="kf-huelle-liste"><li>Du hörst als Erstes vom Eröffnungstermin</li><li>Terminwahl vor der offiziellen Freigabe</li><li>Keine Anzahlung, keine Verpflichtung</li></ul>
           <form class="lu-wl-form" data-lu-waitlist novalidate>
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
             <input type="hidden" name="quelle" value="warteliste-luzern" />
             <input type="hidden" name="standort" value="Luzern" />
-            <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
+            <div class="kf-field"><label class="kf-label" for="lu-email">E-Mail-Adresse <span class="kf-star" aria-hidden="true">*</span></label><input id="lu-email" name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" /></div>
             <div class="cf-turnstile lu-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
             <button type="submit">Auf die Warteliste</button>
             <p class="lu-form-rule">Keine Werbung, keine Weitergabe. Nur eine Nachricht, wenn Luzern startet.</p>
             <p class="lu-form-err" role="alert" hidden></p>
           </form>
+          <script is:inline>(function(c){var e=c&&c.querySelector('.cf-turnstile');if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode)</script>
         </div>
       </div>
     </div>

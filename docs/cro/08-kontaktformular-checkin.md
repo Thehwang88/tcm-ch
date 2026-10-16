@@ -186,3 +186,14 @@ Beide SG-Formulare (Hero + unten, `onedocBeideTerminarten`): 1 Terminart → 2 R
 - Feste Standorte: keine Standortwahl; Check-in nur bei Freigabe (sonst wie bisher nur «Ersttermin mit Behandlung»); «Oder direkt Kontakt aufnehmen» mit kanonischer Standortnummer, WhatsApp nur bei gleicher Nummer, OneDoc nur mit konfiguriertem Kalender und bei Behandlung (seitenintern #online-buchen, wenn eingebettet). Ersetzt den früheren Block «Lieber anrufen?».
 - Zusatzangaben eingeklappt; Prefill öffnet. Generischer TerminForm-Fülltext «Ich möchte gerne einen Termin anfragen.» wird unverändert gesendet, öffnet aber nicht (data-kf-generisch). SG unten: `zusatzOffen`.
 - Unverändert (eigene Formulare, nicht über den Renderer): Massage-Anfragen (submitInlineFormGeneric), Zürich-Funnel (data-contact-form: Oerlikon, Winterthur Münzgasse, akupunktur-tcm-zuerich), Wartelisten (Bern, Luzern, Massage Luzern), Karriere, Partner/Praxisnachfolge, Zuweisen, Akademie, Club, Community/Pro, Visuals, Rechner, EN-Formulare (ev-form).
+
+## Gemeinsame Hülle für Spezialformulare (16.10.2026)
+
+- Klasse `kf kf--ruhig kf-huelle` + `data-kf-huelle="<familie>"` auf der bestehenden Karte, `.kf-kopf` statt alter Kopfzeile, `<link href="/kontakt-form.css">`; Darstellung der bestehenden Bausteine (`.form-input`, `.form-submit`, Wartelisten-Felder) im Block «Hülle» in `public/kontakt-form.css`. Keine Kopie des Standardformulars, kein neuer Versandweg.
+- Familien: `massage` (MassageAnfrageForm, 18 Seiten), `zuerich-funnel` (/akupunktur-tcm-zuerich/, Titel bleibt per `.inline-form-title` dynamisch), `vorbereitung` (Zürich Oerlikon), `pruefung` (Winterthur Münzgasse), `warteliste` (Bern, Luzern, Massage Luzern).
+- Erhalten: Felder, Pflichtfelder, Feldnamen, versteckte Routing-Felder (`anfrage_typ`, `formular`, `quelle`, `standort`), Handler (`submitInlineFormGeneric`, `data-contact-form`, Wartelisten-Skripte), Events, Erfolgsmeldungen. Payload/Events/Validierung gegen main verglichen: identisch.
+- Texte nach Zweck: Wartelisten «Vormerken für Bern» / «Warteliste Luzern», Buttons «Termininteresse senden» / «Auf die Warteliste»; Vorbereitung «Anfrage für <Stadt>», Prüfung «Passende Praxis anfragen», Button «Anfrage senden →». Bern: «Ehrliche Einschätzung zu deinem Anliegen» → «Persönliche Nachricht zum Start» (keine Beratung vor Eröffnung suggerieren).
+- Labels mit Feldern verknüpft (`for`/`id`), Wartelisten mit sichtbaren Labels; Turnstile kompakt bei < 300 px.
+- Sticky: `.scb-bar` (StickyCtaBar) und `.ib-sticky` (InsuranceBanner) aus, solange eine Formularsektion (`[data-kf]`, `[data-kf-huelle]`) sichtbar ist, bei Eingabefokus oder Tastatur; dann inert/aria-hidden. Homepage und SG unverändert.
+- Bekannt, nicht geändert (bestehendes Verhalten): Vorbereitungs-/Prüfungsformulare (`data-contact-form`, novalidate) senden auch leer; Bern sendet kein `formular_senden`.
+- EN: eigene `ev-form`-Formulare (17 Seiten) unverändert → ausstehende Übersetzungswelle.

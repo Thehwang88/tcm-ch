@@ -166,3 +166,41 @@
 .kf--ruhig .kf-alt a{gap:6px}
 .kf--ruhig .kf-alt-ic{flex-shrink:0;width:17px;height:17px;display:none}
 @media (max-width:767px){.kf--ruhig .kf-alt-ic{display:block}}
+
+/* ── Hülle für Spezialformulare (Massage-Anfrage, Zürich-Funnel, Standorte in Vorbereitung/Prüfung, Wartelisten) ──
+   Karte .kf.kf--ruhig + .kf-kopf wie oben (gleiche Regeln). Diese Formulare behalten Markup-Klassen, Felder, Handler
+   (home.js submitInlineFormGeneric, data-contact-form, Wartelisten-Skripte) und Versand; hier nur die Darstellung ihrer
+   bestehenden Bausteine. :not(#w2):not(#w3):not(#w4) überstimmt die Seiten-Skins aus home.css und den Astro-Komponenten. */
+.kf-huelle form{display:block;gap:0;margin:0}
+.kf-huelle .kf-kopf:not(#w2){max-width:none!important;width:auto}
+.kf-huelle .kf-kopf .inline-form-title:not(#w2):not(#w3):not(#w4){margin:0 0 4px;font-family:inherit;font-size:clamp(1.35rem,1.1rem + 1vw,1.7rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff;text-align:left}
+.kf-huelle .form-group{margin:0 0 12px;min-width:0}
+.kf-huelle .form-row-2{display:grid;grid-template-columns:minmax(0,1fr);gap:0 12px}
+@media (min-width:600px){.kf-huelle .form-row-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kf-huelle :is(.form-label,.kf-label):not(#w2):not(#w3):not(#w4){display:block;font-size:15px;font-weight:700;line-height:1.35;margin:0 0 6px;color:var(--kf-ink);text-transform:none;letter-spacing:0}
+.kf-huelle :is(.termin-opt,.kf-opt-l):not(#w2):not(#w3):not(#w4){font-weight:500;color:var(--kf-mid)}
+.kf-huelle .kf-field{margin:0 0 12px}
+.kf-huelle :is(input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([name=website]),select,textarea):not(#w2):not(#w3):not(#w4){display:block;width:100%;max-width:100%;margin:0;font:inherit;font-size:16px;line-height:1.4;color:var(--kf-ink);background:#fff;border:1.5px solid var(--kf-line);border-radius:12px;padding:12px 14px;min-height:48px;box-shadow:none}
+.kf-huelle textarea:not(#w2):not(#w3):not(#w4){min-height:0;resize:vertical}
+.kf-huelle :is(input,select,textarea):not(#w2):not(#w3):not(#w4):focus{outline:none!important;border-color:var(--kf-ink)!important;box-shadow:0 0 0 3px rgba(26,226,136,.45)!important}
+.kf-huelle :is(input,select,textarea)[aria-invalid="true"]:not(#w2):not(#w3):not(#w4){border-color:var(--kf-err)}
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin:4px 0 0;padding:14px 20px;border-radius:14px!important;font:inherit;font-size:16.5px;font-weight:800;line-height:1.2;text-transform:none;letter-spacing:0;background:var(--kf-neon)!important;color:var(--kf-ink)!important;border:1.5px solid var(--kf-neon)!important;box-shadow:none!important;cursor:pointer}
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{background:#14C97A!important;border-color:#14C97A!important}
+.kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):focus-visible{outline:3px solid var(--kf-ink);outline-offset:3px}
+.kf-huelle :is(.form-submit,form button[type=submit])[disabled]:not(#w2):not(#w3):not(#w4){opacity:.65;cursor:progress}
+.kf-huelle .cf-turnstile-wrap{margin:0 0 10px}
+.kf-huelle .cf-turnstile{max-width:100%}
+/* Hinweise unter dem Button, Fehler */
+.kf-huelle :is(.termin-under-btn,.be-form-rule,.lu-form-rule,.mw-rule):not(#w2):not(#w3):not(#w4){font-size:13px;line-height:1.45;color:var(--kf-mid);text-align:center;margin:8px 0 0}
+.kf-huelle :is(.form-send-err,.be-form-err,.lu-form-err,.mw-err):not(#w2):not(#w3):not(#w4){font-size:14px!important;font-weight:600;color:var(--kf-err)!important;line-height:1.45;margin:8px 0 0!important}
+/* Ruhige Vorteilsliste (Wartelisten) und Funnel-Schritte */
+.kf-huelle .kf-huelle-liste{display:grid;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.kf-huelle .kf-huelle-liste li{position:relative;padding-left:24px;font-size:15px;line-height:1.45;color:var(--kf-ink)}
+.kf-huelle .kf-huelle-liste li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--kf-ink)}
+.kf-huelle .form-group > div[style*="uppercase"]:not(#w2):not(#w3):not(#w4){color:var(--kf-mid)!important}
+.kf-huelle #zh-extra-toggle:not(#w2):not(#w3):not(#w4){display:inline-flex;align-items:center;min-height:44px;color:var(--kf-ink)!important;text-decoration:underline;text-underline-offset:3px}
+.kf-huelle #zh-extra-toggle:focus-visible{outline:3px solid var(--kf-ink);outline-offset:2px;border-radius:6px}
+/* Kontaktalternativen: bestehende Links (Klassen bleiben für Tracking), Darstellung wie «Anrufen · WhatsApp» */
+.kf-huelle .kf-alt a:not(#w2):not(#w3):not(#w4){display:inline-flex;align-items:center;gap:6px;width:auto;min-height:44px;margin:0;padding:0 10px;background:none;border:0;box-shadow:none;border-radius:8px;font-size:14.5px;font-weight:700;color:var(--kf-ink);text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:auto;text-underline-offset:3px}
+.kf-huelle .kf-alt a:not(#w2):not(#w3):not(#w4) strong{font-weight:700;color:inherit}
+.kf-huelle .kf-alt svg{flex-shrink:0;opacity:1;color:currentColor}

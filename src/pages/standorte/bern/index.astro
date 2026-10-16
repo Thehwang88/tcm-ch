@@ -109,28 +109,24 @@ const schema = [
       </div>
 
       <div class="lsr-cform">
-        <div class="be-card" id="interesse" style="scroll-margin-top:88px">
-          <div class="be-ribbon">NEU</div>
-          <div class="be-card-h">TCM.ch kommt <span class="be-accent">nach Bern</span></div>
-          <p class="be-note" style="margin-bottom:14px">Schilder uns kurz dein Anliegen. Wir melden uns persönlich, sobald die Terminvergabe in Bern startet.</p>
-          <div class="be-trust" style="flex-direction:column;gap:9px;margin:0 0 16px">
-            <div><span class="be-check">✓</span> Du erfährst den Start als Erstes</div>
-            <div><span class="be-check">✓</span> Ehrliche Einschätzung zu deinem Anliegen</div>
-            <div><span class="be-check">✓</span> Keine Anzahlung, keine Verpflichtung</div>
-          </div>
-          <div class="be-divider"></div>
+        <div class="be-card kf kf--ruhig kf-huelle" data-kf-huelle="warteliste" id="interesse" style="scroll-margin-top:88px">
+          <!-- Gemeinsame Hülle (kontakt-form.css): Interesse-Vormerkung, kein Termin- oder Behandlungsversprechen vor Eröffnung. -->
+          <link rel="stylesheet" href="/kontakt-form.css" />
+          <div class="kf-kopf"><h2 class="kf-h">Vormerken für Bern</h2><p class="kf-kopf-sub">Schilder uns kurz dein Anliegen. Wir melden uns persönlich, sobald die Terminvergabe in Bern startet.</p></div>
+          <ul class="kf-huelle-liste"><li>Du erfährst den Start als Erstes</li><li>Persönliche Nachricht zum Start</li><li>Keine Anzahlung, keine Verpflichtung</li></ul>
           <form class="be-wl-form" data-be-interesse novalidate>
             <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
             <input type="hidden" name="quelle" value="warteliste-bern" />
             <input type="hidden" name="standort" value="Bern" />
-            <input name="name" type="text" autocomplete="name" placeholder="Dein Name (optional)" aria-label="Name" />
-            <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
-            <textarea name="behandlung" rows="2" placeholder="Dein Anliegen (optional – musst du nicht genau wissen)" aria-label="Anliegen"></textarea>
+            <div class="kf-field"><label class="kf-label" for="be-email">E-Mail-Adresse <span class="kf-star" aria-hidden="true">*</span></label><input id="be-email" name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" /></div>
+            <div class="kf-field"><label class="kf-label" for="be-name">Name <span class="kf-opt-l">· optional</span></label><input id="be-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname" /></div>
+            <div class="kf-field"><label class="kf-label" for="be-anliegen">Dein Anliegen <span class="kf-opt-l">· optional</span></label><textarea id="be-anliegen" name="behandlung" rows="2" placeholder="Musst du nicht genau wissen"></textarea></div>
             <div class="cf-turnstile be-ts" data-sitekey={turnstileSitekey} data-appearance="interaction-only"></div>
             <button type="submit">Termininteresse senden</button>
             <p class="be-form-rule">Keine Werbung, keine Weitergabe. Nur eine Nachricht, wenn Bern startet.</p>
             <p class="be-form-err" role="alert" hidden></p>
           </form>
+          <script is:inline>(function(c){var e=c&&c.querySelector('.cf-turnstile');if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode)</script>
         </div>
       </div>
     </div>
