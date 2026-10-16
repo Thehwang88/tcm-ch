@@ -194,7 +194,8 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
-    (Q ? `<p class="kf-sec-h kf-sec-h--2">Rückruf anfragen</p>` : K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
+    // Ruhig (SG): keine Zwischenüberschrift, nach den Kacheln folgt direkt «Telefonnummer *».
+    (Q ? '' : K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
     (sgOd ? '' : onedocPanel) +
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K && !RO ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +

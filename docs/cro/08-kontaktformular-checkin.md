@@ -163,5 +163,6 @@ Beide SG-Formulare (Hero + unten, `onedocBeideTerminarten`): 1 Terminart → 2 R
 - Nur `ruhig` (beide SG-Formulare, /standorte/st-gallen/). Gleicher Renderer, keine zweite Implementierung.
 - Kopf Near-Black (`--kf-ink` #020B10), bündig zum Kartenrand: Überschrift «Dein nächster Schritt beginnt hier.» (bleibt `kf-h`, `id=…-h`, benennt das Formular per `aria-labelledby`), Subline «Direkt starten oder TCM zuerst kennenlernen.». Höhe nach Inhalt, kein Logo.
 - Ersetzt im SG-Formular: «Wie können wir dir helfen?», unten «Wähle, was gerade zu dir passt.» und «Standort: St. Gallen». Weisser Bereich beginnt mit «Terminart wählen» (Klasse `kf-intro`, Einfügepunkt FIRST-30-Hinweis).
+- Zwischenüberschrift «Rückruf anfragen» entfernt (Renderer): nach den Kacheln folgt direkt «Telefonnummer *», Abstand 20 px (`.kf--ruhig .kf-fields`).
 - Angebot (ersetzt die langen Texte vollständig): Erstbehandlung «Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.»; Check-in «Kostenloser TCM-Check-in» · «30 Minuten» · «Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.» · «Ohne Behandlung.».
 - Unverändert: IDs, Formularnamen, `quelle`, Terminart-Schlüssel, Angebots-IDs, Prefill, Anker, Fehlerfokus, Versand, Tracking, OneDoc, Sticky-Logik.
