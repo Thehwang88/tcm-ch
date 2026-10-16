@@ -509,7 +509,7 @@ Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nic
 | /beschwerden/neurodermitis/ | /wissen/akupunktur-bei-neurodermitis/ | akupunktur neurodermitis |
 | /beschwerden/sehnenscheidenentzuendung/ | /wissen/akupunktur-bei-sehnenscheidenentzuendung/ | akupunktur sehnenscheidenentzündung |
 | /beschwerden/achillessehnenentzuendung/ | /wissen/akupunktur-bei-achillessehnenbeschwerden/ | (kein Alias in der Map, Intent neu zugeordnet) |
-| /beschwerden/blasenentzuendung/ | /wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/ | akupunktur blasenentzündung |
+| /beschwerden/blasenentzuendung/ | /wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/ | keiner (generischer Begriff nicht übertragen, siehe Review-Korrekturen) |
 | /beschwerden/restless-legs/ | /wissen/akupunktur-bei-restless-legs/ | akupunktur restless legs |
 | /beschwerden/fazialisparese/ | /wissen/akupunktur-bei-fazialisparese/ | (kein Alias in der Map, Intent neu zugeordnet) |
 | /beschwerden/nesselsucht/ | /wissen/akupunktur-bei-nesselsucht/ | akupunktur nesselsucht (urtikaria) |
@@ -527,15 +527,31 @@ Langzeit-EKG (EKG-Seite), Calprotectin (Stuhlanalyse, Guard bestand), Differenti
 - Gates: health-audit 0 Fehler (A-Z 166/166, Wissen-Serie 36, Ownership-Gate 0), check-i18n --strict 0 failures, test-en-analytics 47/47, check-kontakt-formular 0, test-kontakt-formular ok (API gemockt, keine echte Anfrage), check-clinic-status 0, check-standort-ux 0, check-first30 0, check-professional 0.
 - Kohortenprüfung (34 URLs): Title eindeutig, Meta vorhanden, genau eine H1, Canonical selbstreferenzierend, kein noindex, 3 sichtbare FAQs je Seite (102), kein FAQPage-/Question-Schema, kein datePublished, Quellenblock sichtbar, keine Em-Dashes/ß/Platzhalter/Qi-Begriffe im Haupttext, alle Linkziele gültig, mindestens zwei kontextuelle Inbound-Links aus Bestandsseiten.
 - Overflow (Puppeteer, statischer dist-Server): 34 × 390 px und 34 × 1440 px, dazu 320 px je Layoutfamilie (Beschwerde, Wissen, Befund, Untersuchung): 72 Prüfungen, 0 Overflow, 0 JS-Fehler.
-- CSVs: Map 828 Zeilen à 21 Spalten, Guards 197 à 5 (bestehende Leerzeile 170 unverändert), Konflikte 36 à 8, Unowned 7 à 12; mit csv-Parser geprüft.
+- CSVs: Map 828 Zeilen à 21 Spalten, Guards 197 à 5 (bestehende Leerzeile 170 unverändert; nach Review 201, siehe unten), Konflikte 36 à 8, Unowned 7 à 12; mit csv-Parser geprüft.
 
 ## Abweichungen
 
 - Umfang: Beschwerden 466 bis 582 Wörter Haupttext (plus Kurzantwort), Wissen 515 bis 573, Befunde 316 bis 394, Untersuchungen 397 bis 497. Unter der Zielspanne, bewusst nicht aufgefüllt; jede Seite beantwortet ihre Frage mit Grenzen, Warnzeichen, FAQ und Quellen.
 - Beschwerden-Vorlage: geteilte Leaf-Vorlage übernommen. Kohortenspezifisch angepasst: Meta-Pille «Ärztliche Abklärung zuerst» statt «Häufig behandelt», USP ohne Prozentangabe zur Zusatzversicherung, Methodenblock «Was ergänzend infrage kommt» statt «Diese Behandlungen helfen». Unverändert aus der Vorlage: H1-Zusatz «TCM.ch Behandlung Schweiz», «Kostenlos & unverbindlich» unter den bestehenden Kontaktwegen, Regionalblock.
 - Untersuchungen: kein Buchungs-CTA im Inhalt; die globale mobile Sticky-Leiste («Termin abklären», WhatsApp, Anrufen) aus LayoutDe erscheint wie auf allen bestehenden Untersuchungsseiten. Nicht angefasst (globales Layout).
-- Nesselsucht: Die Korrekturnotiz zur Annals-Studie (PMID 38109741) existiert, ihr Inhalt war nicht abrufbar (Verlag 403, kein Abstract). Im Text als «Inhalt nicht einsehbar» benannt.
 - Meralgia paraesthetica: NINDS und Cleveland Clinic waren nicht abrufbar; Zweitquelle ist ein Fallbericht mit Literaturübersicht (Cureus 2021).
+
+## Review-Korrekturen (16.10.2026, Commit 5)
+
+Aliasse (Map, Guards, Bibliothekssuche, Beschwerden-Hub):
+
+- Patellofemorales Schmerzsyndrom: «Läuferknie» entfernt (auf /beschwerden/knieschmerzen/ als Iliotibialband-Syndrom beschrieben), keiner anderen Seite zugeordnet. «Chondropathia patellae» nicht reserviert. Neu: «schmerz um die kniescheibe». Sichtbarer Bestandstext auf /beschwerden/sehnenscheidenentzuendung/ («Patellasehne (Läuferknie)») auf Patellaspitzensyndrom korrigiert und verlinkt.
+- Wiederkehrende Blasenentzündungen: Primär «akupunktur wiederkehrende blasenentzündungen», dazu «akupunktur rezidivierende zystitis», «akupunktur blasenentzündung vorbeugen». Generische Begriffe («akupunktur blasenentzündung», «akupunktur harnwegsinfekt», «akupunktur zystitis») weder übernommen noch neu zugeordnet; Condition-Intent, Akutinfekt und Warnzeichen bleiben bei /beschwerden/blasenentzuendung/.
+- Neurodermitis: «akupunktur ekzem» ersetzt durch «akupunktur atopisches ekzem» / «akupunktur atopische dermatitis»; andere Ekzemformen bleiben eigenständig.
+- Weitere Gleichsetzungen entfernt: «Tendovaginitis stenosans» (umfasst De Quervain), «Sicca-Syndrom» (Sjögren-Kontext), «Gesichtslähmung» im Wissen-Artikel (zentrale Ursachen), «Halsrippe» (Ursache), «Reizhusten» / «husten seit wochen» (Körpersignal bzw. andere Zeitgrenze), «Steissbeinprellung» (Ursache), «stroboskopie» und «hsg» ohne Kontext, Symptomphrasen («brennen fusssohle», «oberschenkel aussen taub», «beckenschmerz beim sitzen», «unruhige beine»). Als reine Suchhilfe bleiben Sicca, Steissbeinprellung und die bestehenden Bestandsaliasse der Owner im Index.
+
+Guards: Die gemeinsame Untersuchungszeile ist in fünf Zeilen mit je genau einer kanonischen Owner-URL aufgeteilt (Laparoskopie, Arthroskopie, Bronchoskopie, Laryngoskopie, Kapselendoskopie). Guards jetzt 201 Zeilen à 5 Spalten, Zeilenenden je Zeile erhalten, mit csv-Parser geprüft; alle Welle-4-Owner-URLs existieren im Build, keine «+»-Werte (zwei ältere «+»-Zeilen ausserhalb von Welle 4 unverändert).
+
+Anker: Die fünf Condition-Owner mit Akupunktur-Ankern (Neurodermitis, Nesselsucht, Restless Legs, Sehnenscheidenentzündung, Blasenentzündung) tragen jetzt Zustands- und Abklärungsanker; die Akupunktur-Anker liegen nur bei den Wissen-Artikeln. Achillessehne und Fazialisparese waren bereits neutral. Bidirektionale Links unverändert.
+
+Nesselsucht-Korrektur: PubMed (E-utilities) bestätigt PMID 37956431 (DOI 10.7326/M23-1043, Ann Intern Med 2023;176(12):1617-1624) und die Korrektur PMID 38109741 (DOI 10.7326/L23-0469, Ann Intern Med 2024;177(2):268, online 19.12.2023). Crossref-Metadaten und der Korrekturtext (über OpenAlex, Verlagsseite gibt 403) zeigen: Im Abschnitt Statistische Analyse stand «Effektgrösse 4», richtig ist 0,4 (Fallzahlplanung). Ergebnisse, Effektgrössen unter der MCID, Nebenwirkungen und Grenzen sind nicht betroffen. Der interne Satz zur «nicht einsehbaren» Korrektur ist aus dem Patiententext entfernt; die Quellenangabe nennt jetzt den Inhalt («betrifft die Fallzahlplanung im Methodenteil»). Kein inhaltlicher Release-Blocker aus der Korrektur.
+
+QA nach Review: Build ok (Sitemap 822, dist 846). Alle Gates wie oben 0 Fehler (test-kontakt-formular 630/0, API gemockt). Kohortenprüfung 34 URLs: 0 Befunde. Map 828 à 21 Spalten. Kein Layout geändert, Overflow-Prüfung nicht wiederholt.
 
 ## Offene medizinische Fragen (ärztliche Review empfohlen)
 

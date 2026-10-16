@@ -1523,7 +1523,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <li>Beide Unterschiede lagen unter der Grenze, ab der eine Veränderung als klinisch bedeutsam gilt.</li>
 <li>Etwa jede siebte Person in der Akupunkturgruppe berichtete leichte, vorübergehende Nebenwirkungen.</li>
 </ul>
-<p>Die Autorinnen und Autoren nennen selbst Grenzen: keine vollständige Verblindung, selbst berichtete Ergebnisse, kurze Nachbeobachtung und eingeschränkte Übertragbarkeit, weil Antihistaminika während der Studie nicht erlaubt waren. Zur Studie ist eine Korrekturnotiz erschienen; ihr Inhalt war für diesen Artikel nicht einsehbar.</p>
+<p>Die Autorinnen und Autoren nennen selbst Grenzen: keine vollständige Verblindung, selbst berichtete Ergebnisse, kurze Nachbeobachtung und eingeschränkte Übertragbarkeit, weil Antihistaminika während der Studie nicht erlaubt waren.</p>
 <h2>Was daraus nicht folgt</h2>
 <p>Die Studie betrifft die chronische spontane Form. Für akute Nesselsucht, körperlich ausgelöste Formen wie Druck- oder Kälteurtikaria und für Schwellungen ohne Quaddeln sagt sie nichts aus. Auch eine Wirkung zusätzlich zu Antihistaminika wurde nicht geprüft.</p>
 <h2>Was die Behandlung trägt</h2>
@@ -1546,7 +1546,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Quellen</h2>
 <ul>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/37956431/" target="_blank" rel="noopener">Zheng et al. 2023: Efficacy of acupuncture for chronic spontaneous urticaria, randomized controlled trial, Annals of Internal Medicine</a></li>
-<li><a href="https://pubmed.ncbi.nlm.nih.gov/38109741/" target="_blank" rel="noopener">Correction: Efficacy of acupuncture for chronic spontaneous urticaria, Annals of Internal Medicine 2024</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38109741/" target="_blank" rel="noopener">Correction: Efficacy of acupuncture for chronic spontaneous urticaria, Annals of Internal Medicine 2024 (betrifft die Fallzahlplanung im Methodenteil)</a></li>
 <li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
 </ul>`,
     faqs: [],
