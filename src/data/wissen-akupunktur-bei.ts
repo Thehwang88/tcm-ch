@@ -19,7 +19,7 @@
 //
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
-import { PUBLISHED_WELLE_3_2026_10 } from './befunde-werte';
+import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10 } from './befunde-werte';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -38,6 +38,8 @@ const REDAKTION = {
   bio: 'Redaktionelle Einordnung auf Basis der im Artikel verlinkten Quellen. Keine ärztliche Diagnose und keine individuelle Therapieempfehlung.',
 };
 const DATEN_W3 = { datePublished: PUBLISHED_WELLE_3_2026_10 ?? '', dateModified: PUBLISHED_WELLE_3_2026_10 ?? '' };
+// Welle 4 (16.10.2026): gleiche Regel, eigene Kohorten-Konstante (undefined bis Release).
+const DATEN_W4 = { datePublished: PUBLISHED_WELLE_4_2026_10 ?? '', dateModified: PUBLISHED_WELLE_4_2026_10 ?? '' };
 
 export const wissenAkupunkturBei: Wissen[] = [
   // ────────────────────────────────────────────────────────── KOPFSCHMERZEN
@@ -1168,6 +1170,446 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/beschwerden/reizblase/', label: 'Reizblase', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/befunde-werte/blut-im-urin/', label: 'Blut im Urin (Hämaturie): Was bedeutet der Befund?', cat: 'Befund' },
       { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung', cat: 'Untersuchung' },
+    ],
+  },
+  // ──────────────────────────────────────────── WELLE 4 (Draft, Redaktion ohne Reviewer)
+  {
+    slug: 'akupunktur-bei-neurodermitis',
+    title: 'Akupunktur bei Neurodermitis: was Studien zeigen',
+    metaDesc: 'Hilft Akupunktur bei Neurodermitis? Zwei kontrollierte Studien mit gemischten Ergebnissen: Was sie zu Juckreiz und Hautbild zeigen und wo die Grenzen liegen.',
+    region: 'Schweizweit',
+    excerpt: 'Zu Akupunktur bei Neurodermitis gibt es wenige, kleine Studien. Hinweise betreffen vor allem den Juckreiz, beim Hautbild sind die Ergebnisse uneinheitlich.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Neurodermitis: Kann sie Juckreiz und Ekzem lindern?',
+    lead: 'Zu Akupunktur bei Neurodermitis gibt es wenige, kleine Studien. Hinweise betreffen vor allem den Juckreiz, beim Hautbild sind die Ergebnisse uneinheitlich.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzende Behandlung bei Neurodermitis besprechen',
+    ctaText: 'Wenn deine Hautbehandlung steht und der Juckreiz trotzdem belastet, kannst du anfragen, ob ein zeitlich begrenzter Akupunkturversuch zu deinem Plan passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei Erwachsenen mit leichter bis mittelschwerer Neurodermitis gibt es Hinweise, dass Akupunktur Juckreiz lindern kann. Ob sie das Ekzem selbst verbessert, ist unklar: Eine kleine Studie fand einen Effekt, eine grössere nicht. Akupunktur ersetzt keine Hautpflege und keine ärztlich verordnete Therapie.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Neurodermitis, auch atopische Dermatitis, ist eine chronisch-entzündliche Hauterkrankung mit Schüben und starkem Juckreiz. Was die Erkrankung ist, wie sie erkannt und behandelt wird, erklärt die Seite <a href="/beschwerden/neurodermitis/">Neurodermitis</a>. Dieser Artikel beantwortet nur eine Frage: Ist ein ergänzender Akupunkturversuch sinnvoll?</p>
+<h2>Was die Studien zeigen</h2>
+<p><strong>Kleine Studie mit Scheinakupunktur:</strong> In einer koreanischen Studie von 2021 erhielten 36 Erwachsene zwischen 19 und 38 Jahren mit leichter bis mittelschwerer Neurodermitis vier Wochen lang zweimal pro Woche echte oder Scheinakupunktur. Das Hautbild, gemessen mit dem SCORAD-Wert, verbesserte sich in der Akupunkturgruppe deutlicher. Die Nachbeobachtung dauerte nur vier Wochen, und die Gruppe war sehr klein.</p>
+<p><strong>Grössere offene Studie:</strong> Eine Studie der Charité Berlin von 2022 verglich bei 121 Erwachsenen Akupunktur, Osteopathie und keine Zusatzbehandlung, jeweils zusätzlich zur üblichen Versorgung. Nach zwölf Wochen unterschied sich der Schweregrad der Neurodermitis nicht zwischen den Gruppen. Der Juckreiz war in der Akupunkturgruppe geringer. Weil die Teilnehmenden wussten, welche Behandlung sie erhielten, und Juckreiz selbst eingeschätzt wird, ist dieser Unterschied vorsichtig zu lesen. Kosteneffektiv war die Zusatzbehandlung nicht.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Daten stammen von Erwachsenen mit leichter bis mittelschwerer Erkrankung. Für Kinder, schwere Verläufe oder Menschen unter moderner Systemtherapie lassen sie sich nicht übertragen. Es gibt keine belastbare Aussage dazu, ob Akupunktur Schübe verhindert oder Kortisoncremes einspart. In der Berliner Studie zeigte sich dazu nur ein nicht gesicherter Trend.</p>
+<h2>Was die Behandlung trägt</h2>
+<p>Grundlage bleiben rückfettende Pflege, das Meiden persönlicher Auslöser und eine entzündungshemmende Behandlung im Schub nach dermatologischer Verordnung. Bei schweren Verläufen kommen weitere Therapien infrage. Verordnete Cremes oder Medikamente setzt du nicht wegen eines Akupunkturversuchs ab.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Lege vorher fest, was sich ändern soll, zum Beispiel Juckreiz auf einer Skala von 0 bis 10, Schlaf oder Kratzattacken. Vereinbare einen Prüfzeitpunkt, etwa nach vier bis sechs Sitzungen. Behandelt wird nicht auf entzündeter, nässender oder offener Haut. Bei Anzeichen einer Hautinfektion, etwa Eiterbläschen, Krusten oder Fieber, gehst du zuerst zur Ärztin.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Bei Neurodermitis ist die Hautbarriere gestört und anfälliger für Infektionen. Deshalb wird nicht in entzündete, nässende oder aufgekratzte Haut gestochen, und auf Hygiene wird besonders geachtet. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring die Diagnose und deine aktuelle Behandlung mit und frage nach Erfahrung mit Hauterkrankungen und Hygienemassnahmen. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vor Beginn. Über den <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> findest du eine Praxis für eine ergänzende Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Hilft Akupunktur gegen den Juckreiz bei Neurodermitis?</h3>
+<p>Es gibt Hinweise aus zwei Studien. Gesichert ist der Effekt nicht, und er kann individuell ausbleiben.</p>
+<h3>Kann ich meine Kortisoncreme durch Akupunktur ersetzen?</h3>
+<p>Nein. Akupunktur ist höchstens eine Ergänzung. Änderungen an der Behandlung besprichst du mit der Dermatologin.</p>
+<h3>Ist Akupunktur bei Kindern mit Neurodermitis untersucht?</h3>
+<p>Die hier beschriebenen Studien betrafen Erwachsene. Für Kinder lassen sich die Ergebnisse nicht übertragen.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/33926433/" target="_blank" rel="noopener">Park et al. 2021: Acupuncture in mild to moderate atopic dermatitis, randomized sham-controlled trial, BMC Complementary Medicine and Therapies</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/35875898/" target="_blank" rel="noopener">Rotter et al. 2022: Acupuncture and osteopathic medicine for atopic dermatitis, three-armed randomized trial, Clinical and Experimental Dermatology</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+      { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-nesselsucht/', label: 'Akupunktur bei Nesselsucht', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-sehnenscheidenentzuendung',
+    title: 'Akupunktur bei Sehnenscheidenentzündung: Studienlage',
+    metaDesc: 'Akupunktur bei Sehnenscheidenentzündung: Die Daten stammen fast nur zur Form am Daumen (De Quervain). Was sie zeigen, was nicht und wie ein Versuch geprüft wird.',
+    region: 'Schweizweit',
+    excerpt: 'Studien zur Akupunktur bei Sehnenscheidenentzündung betreffen fast ausschliesslich die Form am Daumen. Für andere Sehnen fehlen Daten.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Sehnenscheidenentzündung: Was ist belegt?',
+    lead: 'Studien zur Akupunktur bei Sehnenscheidenentzündung betreffen fast ausschliesslich die Form am Daumen. Für andere Sehnen fehlen Daten.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzende Behandlung der Sehnenreizung besprechen',
+    ctaText: 'Wenn die Diagnose steht, kannst du anfragen, ob ein begrenzter Akupunkturversuch neben Schonung, Schiene oder Physiotherapie sinnvoll ist.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Fast alle Studien betreffen die Sehnenscheidenentzündung am Daumen, die Tendovaginitis de Quervain. Dort deuten kleine Studien auf eine Schmerzlinderung hin, ohne Vorteil gegenüber einer Kortisoninjektion. Für Sehnenreizungen an anderen Stellen lässt sich daraus nichts ableiten.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Eine Sehnenscheidenentzündung kann an vielen Sehnen von Hand, Fuss oder Unterarm auftreten. Ursachen, Formen und Behandlung erklärt die Seite <a href="/beschwerden/sehnenscheidenentzuendung/">Sehnenscheidenentzündung</a>. Hier geht es um die Frage, ob Akupunktur ergänzend sinnvoll sein kann.</p>
+<h2>Was die Studien zeigen</h2>
+<p><strong>Akupunktur oder Kortison:</strong> In einer iranischen Studie von 2014 mit 30 Personen mit De-Quervain-Sehnenscheidenentzündung erhielt eine Gruppe fünf Akupunktursitzungen, die andere eine einzelne Kortisoninjektion. Nach sechs Wochen hatten sich Schmerz und Funktion in beiden Gruppen gebessert, mit der Injektion etwas deutlicher. Eine Scheinbehandlung gab es nicht, die Nachbeobachtung war kurz.</p>
+<p><strong>Zusammenfassung von 14 Studien:</strong> Eine Meta-Analyse von 2024 mit 851 Personen, überwiegend aus chinesischen Studien, fand gegenüber schmerzlindernden Salben eine stärkere Schmerzabnahme mit Akupunktur. Gegenüber Kortisoninjektionen zeigte sich kein Unterschied. Die Autorinnen und Autoren bewerten Menge und Qualität der Studien als begrenzt und fordern weitere Forschung.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Ergebnisse gelten für den Daumen und das Handgelenk an der Daumenseite. Sie lassen sich nicht auf einen <a href="/beschwerden/schnappfinger/">Schnappfinger</a>, auf Sehnen am Fuss, am Unterarm oder auf eine bakterielle Sehnenscheidenentzündung übertragen. Auch Dry Needling oder Kombinationen mit anderen Verfahren sind nicht dasselbe wie die untersuchte Akupunktur.</p>
+<h2>Was die Behandlung trägt</h2>
+<p>Üblich sind Entlastung, eine Schiene, Schmerzmittel nach Absprache, Handtherapie und bei anhaltenden Beschwerden eine Kortisoninjektion. Ein Eingriff kommt in Frage, wenn diese Schritte nicht ausreichen. Ein Akupunkturversuch ist höchstens eine Ergänzung, etwa für Menschen, die eine Injektion zunächst vermeiden möchten, und das nach ärztlicher Besprechung.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Notiere vorher Schmerz bei typischen Griffen, etwa beim Öffnen eines Glases, und eine Funktionseinschränkung im Alltag. Vereinbare einen Prüfzeitpunkt nach wenigen Wochen. Bessert sich nichts relevant, werden andere Optionen besprochen.</p>
+<h2>Wann zuerst ärztlich abklären</h2>
+<p>Rötung, Überwärmung, Schwellung entlang einer Sehne, Fieber oder Beschwerden nach einer Verletzung oder einem Schnitt gehören am gleichen Tag ärztlich beurteilt. Eine infektiöse Sehnenscheidenentzündung ist ein Notfall und kein Fall für Akupunktur.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>An Hand und Handgelenk liegen Sehnen, Nerven und Gefässe dicht beieinander. Kribbeln oder ein elektrisierendes Gefühl während der Sitzung meldest du sofort. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Diagnose und bisherige Behandlung mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Wirkt Akupunktur so gut wie eine Kortisonspritze?</h3>
+<p>In den wenigen Vergleichsstudien zum Daumen zeigte sich kein klarer Unterschied, eine Einzelstudie sah die Injektion etwas vorne. Belastbar ist das nicht.</p>
+<h3>Gilt das auch für Sehnenscheidenentzündungen am Fuss?</h3>
+<p>Nein. Die Studien betreffen fast nur den Daumen; für andere Stellen fehlen Daten.</p>
+<h3>Wie viele Sitzungen sind sinnvoll?</h3>
+<p>Das lässt sich aus den Studien nicht ableiten. Sinnvoll ist ein kurzer, klar begrenzter Versuch mit Prüfzeitpunkt.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/24929455/" target="_blank" rel="noopener">Hadianfard et al. 2014: Acupuncture versus methylprednisolone injection in De Quervain's tenosynovitis, Journal of Acupuncture and Meridian Studies</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38932434/" target="_blank" rel="noopener">Qin et al. 2024: Systematic review and meta-analysis of acupuncture for De Quervain's tenosynovitis, Postgraduate Medical Journal</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/sehnenscheidenentzuendung/', label: 'Sehnenscheidenentzündung', cat: 'Beschwerde' },
+      { href: '/beschwerden/schnappfinger/', label: 'Schnappfinger', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-karpaltunnelsyndrom/', label: 'Akupunktur bei Karpaltunnelsyndrom', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-achillessehnenbeschwerden',
+    title: 'Akupunktur bei Achillessehnenbeschwerden: Studien',
+    metaDesc: 'Akupunktur bei Achillessehnenschmerzen: zwei kleine Studien, ein Vergleich mit Training, ein Zusatz zum Training. Was sie zeigen und warum das Training zentral bleibt.',
+    region: 'Schweizweit',
+    excerpt: 'Zwei kleine Studien deuten auf Schmerzlinderung hin. Die Grundlage der Behandlung bleibt das gezielte Belastungstraining der Sehne.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Achillessehnenbeschwerden: Ergänzung zum Training?',
+    lead: 'Zwei kleine Studien deuten auf Schmerzlinderung hin. Die Grundlage der Behandlung bleibt das gezielte Belastungstraining der Sehne.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzung zum Sehnentraining besprechen',
+    ctaText: 'Wenn Schmerzen das Training an der Achillessehne erschweren, kannst du anfragen, ob ein begrenzter Akupunkturversuch ergänzend passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei chronischen Achillessehnenbeschwerden gibt es zwei kleine Studien mit positiven Signalen für Akupunktur. Keine davon war verblindet oder gross genug, um den Nutzen sicher zu belegen. Akupunktur kann ein Training der Sehne ergänzen, aber nicht ersetzen.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Schmerzen an der Achillessehne entstehen meist durch Überlastung. Formen, Abklärung und Behandlung erklärt die Seite <a href="/beschwerden/achillessehnenentzuendung/">Achillessehnenentzündung</a>. Hier geht es nur um die Frage, ob Akupunktur ergänzend hilft.</p>
+<h2>Was die Studien zeigen</h2>
+<p><strong>Akupunktur statt exzentrischem Training:</strong> In einer chinesischen Studie von 2013 mit 64 Personen mit chronischer Achillessehnenreizung verbesserten sich Schmerz und Funktion nach acht Wochen mit Akupunktur deutlicher als mit exzentrischem Training, und der Unterschied hielt bis 24 Wochen an. Die Studie war nicht verblindet, und Vergleiche gegen eine aktive Behandlung, deren Durchführung schwer zu kontrollieren ist, sind anfällig für Verzerrungen.</p>
+<p><strong>Elektroakupunktur als Zusatz:</strong> Eine US-Studie von 2023 untersuchte 52 Personen mit Beschwerden am Sehnenansatz an der Ferse. Alle trainierten exzentrisch; eine Gruppe erhielt in den ersten vier Terminen zusätzlich <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a>. Kurzfristig berichtete diese Gruppe weniger Schmerz beim Üben. Bei der Funktion nach zwölf Wochen gab es keinen Unterschied.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Studien sind klein, in einem Fall ohne Scheinbehandlung und mit kurzer Nachbeobachtung. Ein Ersatz des Trainings lässt sich daraus nicht ableiten. Auch für einen akuten Riss oder einen Teilriss der Achillessehne gelten diese Daten nicht.</p>
+<h2>Was die Behandlung trägt</h2>
+<p>Im Zentrum steht ein schrittweises Belastungstraining der Sehne, zum Beispiel exzentrisch, angeleitet in der <a href="/therapien/physiotherapie/">Physiotherapie</a>. Dazu kommen Belastungssteuerung im Sport und passendes Schuhwerk. Weitere Verfahren werden je nach Verlauf ergänzt.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Notiere Morgensteifigkeit, Schmerz bei den ersten Schritten und Schmerz beim Training. Vereinbare einen Prüfzeitpunkt nach einigen Sitzungen. Das Training läuft während des Versuchs weiter.</p>
+<h2>Wann zuerst ärztlich abklären</h2>
+<p>Ein plötzlicher Knall oder Peitschenschlag in der Wade, eine tastbare Lücke in der Sehne oder Probleme beim Zehenstand können auf einen Riss hinweisen. Eine geschwollene, schmerzhafte Wade, Rötung, Überwärmung oder Fieber gehören ebenfalls rasch abgeklärt.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Nimmst du Blutverdünner, sag das vor der ersten Sitzung, weil blaue Flecken dann häufiger sein können. Elektroakupunktur ist bei Herzschrittmachern oder anderen Implantaten nur nach Rücksprache möglich. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Diagnose, Trainingsplan und Hinweise zu Blutverdünnern mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann ich das Training durch Akupunktur ersetzen?</h3>
+<p>Nein. Das Training ist die Grundlage. Akupunktur kann es höchstens ergänzen, wenn Schmerzen das Üben erschweren.</p>
+<h3>Hilft Akupunktur beim Riss der Achillessehne?</h3>
+<p>Dazu gibt es keine Daten. Ein Riss braucht eine ärztliche oder chirurgische Behandlung.</p>
+<h3>Ist Elektroakupunktur besser als klassische Akupunktur?</h3>
+<p>Das lässt sich aus den beiden Studien nicht beurteilen, sie haben unterschiedliche Fragen untersucht.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/23263998/" target="_blank" rel="noopener">Zhang et al. 2013: Acupuncture for chronic Achilles tendinopathy, randomized controlled study, Chinese Journal of Integrative Medicine</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/37095788/" target="_blank" rel="noopener">Hawks et al. 2023: Insertional Achilles tendinopathy and adjunct electroacupuncture, randomized controlled trial, Medical Acupuncture</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/achillessehnenentzuendung/', label: 'Achillessehnenentzündung', cat: 'Beschwerde' },
+      { href: '/beschwerden/fersensporn/', label: 'Fersensporn', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-fersensporn/', label: 'Akupunktur bei Fersensporn', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-wiederkehrenden-blasenentzuendungen',
+    title: 'Akupunktur bei wiederkehrenden Blasenentzündungen',
+    metaDesc: 'Kann Akupunktur wiederkehrenden Blasenentzündungen vorbeugen? Eine Studie bei Frauen mit gemischten Ergebnissen: was sie zeigt und was vor einem Versuch wichtig ist.',
+    region: 'Schweizweit',
+    excerpt: 'Eine Studie bei Frauen mit wiederkehrenden unkomplizierten Infekten fand nach einem Jahr weniger Infekte mit Akupunktur. Bestätigt ist das noch nicht.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei wiederkehrenden Blasenentzündungen: Vorbeugung möglich?',
+    lead: 'Eine Studie bei Frauen mit wiederkehrenden unkomplizierten Infekten fand nach einem Jahr weniger Infekte mit Akupunktur. Bestätigt ist das noch nicht.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Vorbeugung ergänzend besprechen',
+    ctaText: 'Wenn wiederkehrende Infekte urologisch oder gynäkologisch abgeklärt sind, kannst du anfragen, ob ein vorbeugender Akupunkturversuch zu deinem Plan passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Eine österreichische Studie bei Frauen mit wiederkehrenden unkomplizierten Blasenentzündungen fand mit Akupunktur zusätzlich zu Cranberry-Produkten über zwölf Monate weniger Infekte. Nach sechs Monaten war der Unterschied noch nicht gesichert. Eine einzelne, offene Studie reicht nicht für eine feste Empfehlung. Ein akuter Infekt wird nicht mit Akupunktur behandelt.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Was eine Blasenentzündung ist, wie sie erkannt und behandelt wird, erklärt die Seite <a href="/beschwerden/blasenentzuendung/">Blasenentzündung</a>. Dieser Artikel behandelt nur die Frage, ob Akupunktur bei Frauen mit häufigen Rückfällen vorbeugend sinnvoll sein kann.</p>
+<h2>Was die Studie zeigt</h2>
+<p>In der Studie von 2024 wurden 137 Frauen mit wiederkehrenden unkomplizierten Harnwegsinfekten in eine Akupunktur- und eine Kontrollgruppe aufgeteilt. Alle erhielten die Empfehlung, Cranberry-Produkte zu verwenden. Die Akupunkturgruppe bekam zwölf Sitzungen über 18 Wochen mit festgelegten Körper- und Ohrpunkten.</p>
+<ul>
+<li>Nach sechs Monaten waren 59 Prozent der Akupunkturgruppe und 46 Prozent der Kontrollgruppe infektfrei. Dieser Unterschied war statistisch nicht gesichert.</li>
+<li>Zwischen dem sechsten und zwölften Monat waren 66 gegenüber 45 Prozent infektfrei, ein gesicherter Unterschied.</li>
+<li>Die Zahl der Infekte nach zwölf Monaten war in der Akupunkturgruppe geringer.</li>
+</ul>
+<p>Es gab keine Scheinakupunktur, die Teilnehmerinnen wussten also, welche Behandlung sie erhielten. Nicht alle konnten bis zum Ende ausgewertet werden. Die Autorinnen und Autoren halten weitere Studien für nötig.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Ergebnisse gelten für Frauen mit unkomplizierten Infekten. Sie lassen sich nicht auf Männer, Schwangere, Kinder, Menschen mit Katheter oder auf komplizierte Infekte übertragen. Bei Blasenschmerzen ohne Infektnachweis ist eher an eine <a href="/beschwerden/interstitielle-zystitis/">interstitielle Zystitis</a> oder eine <a href="/beschwerden/reizblase/">Reizblase</a> zu denken; dafür gilt diese Studie nicht.</p>
+<h2>Was zur Vorbeugung gehört</h2>
+<p>Bei häufigen Rückfällen wird zuerst geklärt, ob wirklich Infekte vorliegen, etwa mit <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinkultur</a>, und ob es begünstigende Faktoren gibt. Je nach Situation werden verschiedene vorbeugende Massnahmen besprochen, mit und ohne Antibiotika. Diese Entscheidungen gehören in ärztliche Hand.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Führe einen Kalender mit bestätigten Infekten und Antibiotikagaben im Jahr davor und während des Versuchs. Weil die Studie Effekte erst nach Monaten zeigte, braucht die Beurteilung Zeit. Lege mit den Behandelnden fest, wann bilanziert wird.</p>
+<h2>Wann sofort ärztlich abklären</h2>
+<p>Fieber, Schüttelfrost, Flankenschmerzen, Blut im Urin, Beschwerden in der Schwangerschaft oder bei Männern gehören ärztlich beurteilt. Einen akuten Infekt behandelt Akupunktur nicht.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Ein Versuch ersetzt nicht die rasche Behandlung eines neuen Infekts. Treten während der Behandlungsserie Infektzeichen auf, geht die ärztliche Beurteilung vor. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Befunde und eine Liste der bisherigen Infekte mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur eine akute Blasenentzündung behandeln?</h3>
+<p>Dafür gibt es keine Belege. Ein akuter Infekt gehört ärztlich beurteilt.</p>
+<h3>Ersetzt Akupunktur eine vorbeugende Antibiotikabehandlung?</h3>
+<p>Das ist nicht untersucht. Sprich jede Änderung mit deiner Ärztin ab.</p>
+<h3>Wie lange dauert ein vorbeugender Versuch?</h3>
+<p>In der Studie dauerte die Behandlung 18 Wochen, und Effekte zeigten sich erst später. Ein kurzer Versuch wäre kaum aussagekräftig.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39060726/" target="_blank" rel="noopener">Ots, Gold et al. 2024: Segmental acupuncture for prevention of recurrent urinary tract infections, randomised clinical trial, International Urogynecology Journal</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/blasenentzuendung/', label: 'Blasenentzündung', cat: 'Beschwerde' },
+      { href: '/beschwerden/interstitielle-zystitis/', label: 'Interstitielle Zystitis', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung', cat: 'Untersuchung' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-restless-legs',
+    title: 'Akupunktur bei Restless Legs: Leitlinie und Studien',
+    metaDesc: 'Hilft Akupunktur beim Restless-Legs-Syndrom? Die US-Schlafmedizin sieht keine ausreichende Grundlage für eine Empfehlung. Was Studien zeigen und was zuerst zählt.',
+    region: 'Schweizweit',
+    excerpt: 'Eine aktuelle Leitlinie sieht für Akupunktur bei Restless Legs keine ausreichende Evidenz. Vorrang haben Eisenwerte, Auslöser und bewährte Behandlungen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Restless Legs: Was die Evidenz sagt',
+    lead: 'Eine aktuelle Leitlinie sieht für Akupunktur bei Restless Legs keine ausreichende Evidenz. Vorrang haben Eisenwerte, Auslöser und bewährte Behandlungen.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzung nach der Abklärung besprechen',
+    ctaText: 'Wenn Eisenwerte und Auslöser geprüft sind und du ergänzend etwas versuchen möchtest, kannst du anfragen, ob ein begrenzter Versuch sinnvoll ist.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Die Leitlinie der American Academy of Sleep Medicine von 2024 sieht die Evidenz zu Akupunktur beim Restless-Legs-Syndrom als unzureichend und uneindeutig an und spricht keine Empfehlung aus. Auch ein älterer Cochrane-Review kam zu keinem Schluss. Wichtiger sind die Prüfung der Eisenwerte und das Erkennen von Auslösern.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Beim Restless-Legs-Syndrom treten in Ruhe, vor allem abends, unangenehme Empfindungen und ein Bewegungsdrang in den Beinen auf. Diagnose und Behandlung erklärt die Seite <a href="/beschwerden/restless-legs/">Restless Legs</a>. Hier geht es nur um die Frage, ob Akupunktur ergänzend sinnvoll ist.</p>
+<h2>Was Leitlinie und Studien zeigen</h2>
+<p><strong>Leitlinie:</strong> Die American Academy of Sleep Medicine hat 2024 die Behandlungsoptionen systematisch bewertet. Für Akupunktur reichten die Daten nicht für eine Empfehlung, weder dafür noch dagegen.</p>
+<p><strong>Cochrane-Review:</strong> Eine Übersicht von 2008 fand nur zwei Studien mit insgesamt 170 Personen, beide mit methodischen Mängeln. Die Autoren schlossen, dass sich nicht beurteilen lässt, ob Akupunktur wirksam und sicher ist.</p>
+<p><strong>Neuere Einzelstudie:</strong> Eine chinesische Studie von 2024 mit 66 Personen verglich zwei Akupunkturformen miteinander, ohne Scheinbehandlung und ohne Gruppe ohne Akupunktur, über einen Monat mit täglichen Sitzungen. Ob Akupunktur überhaupt besser wirkt als keine oder eine Scheinbehandlung, beantwortet dieses Design nicht.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Einzelne Studien bei Menschen unter Dialyse betreffen eine besondere Situation mit eigener Behandlung. Sie lassen sich nicht auf andere Betroffene übertragen. Ebenso wenig sind Erfahrungen mit Massagen, Wärme oder Kombinationsbehandlungen ein Beleg für Akupunktur.</p>
+<h2>Was zuerst zählt</h2>
+<p>Die Leitlinie empfiehlt, bei allen Betroffenen mit relevanten Beschwerden die Eisenwerte zu prüfen, einschliesslich <a href="/gesundheitsbibliothek/befunde-werte/ferritin-zu-niedrig/">Ferritin</a> und <a href="/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/">Transferrinsättigung</a>, idealerweise morgens. Danach geht es um verstärkende Faktoren wie Alkohol, Koffein, bestimmte Medikamente und eine unbehandelte Schlafapnoe. Medikamente und Eisengaben werden ärztlich entschieden. Nimm Eisen nicht auf eigene Faust ein.</p>
+<h2>Wenn du trotzdem einen Versuch erwägst</h2>
+<p>Ein Versuch kommt höchstens ergänzend in Frage, wenn die ärztliche Abklärung erfolgt ist. Lege vorher fest, was sich ändern soll, zum Beispiel Einschlafdauer oder Beschwerdeabende pro Woche, und wann bilanziert wird. Bleibt ein Effekt aus, wird der Versuch beendet.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Bei Restless Legs fällt die Behandlung oft in den Abend. Wenn das Liegen während der Sitzung den Bewegungsdrang auslöst, sprich das an; die Lagerung kann angepasst werden. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Laborwerte und Medikamentenliste mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Wird Akupunktur bei Restless Legs empfohlen?</h3>
+<p>Nein. Die US-Leitlinie von 2024 spricht wegen unzureichender Daten keine Empfehlung aus.</p>
+<h3>Warum sind Eisenwerte so wichtig?</h3>
+<p>Ein Eisenmangel kann die Beschwerden verstärken. Die Leitlinie nennt dafür eigene Grenzwerte, die von den üblichen abweichen; die Beurteilung gehört in ärztliche Hand.</p>
+<h3>Gilt das auch für Restless Legs bei Dialyse?</h3>
+<p>Für Menschen unter Dialyse gelten eigene Empfehlungen. Besprich das mit deinem Nephrologie-Team.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39324694/" target="_blank" rel="noopener">Winkelman et al. 2025: Treatment of restless legs syndrome and periodic limb movement disorder, AASM clinical practice guideline, Journal of Clinical Sleep Medicine</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/18843716/" target="_blank" rel="noopener">Cui et al. 2008: Acupuncture for restless legs syndrome, Cochrane Database of Systematic Reviews</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39331896/" target="_blank" rel="noopener">Guan et al. 2024: He Tiao Du Ren An Shen acupuncture for restless leg syndrome, randomized trial, Medicine</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/restless-legs/', label: 'Restless Legs', cat: 'Beschwerde' },
+      { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/', label: 'Transferrinsättigung', cat: 'Befund' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-fazialisparese',
+    title: 'Akupunktur bei Fazialisparese: was belegt ist',
+    metaDesc: 'Akupunktur bei Gesichtslähmung (Bell-Parese): Ein Cochrane-Review fand keine verwertbaren Belege, eine neuere Studie betrifft chronische Verläufe. Grenzen und Ablauf.',
+    region: 'Schweizweit',
+    excerpt: 'Bei akuter Gesichtslähmung haben Abklärung, Kortison nach ärztlicher Entscheidung und Augenschutz Vorrang. Für Akupunktur fehlen belastbare Belege.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Fazialisparese: Wann sie besprochen werden kann',
+    lead: 'Bei akuter Gesichtslähmung haben Abklärung, Kortison nach ärztlicher Entscheidung und Augenschutz Vorrang. Für Akupunktur fehlen belastbare Belege.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzung nach ärztlicher Behandlung besprechen',
+    ctaText: 'Wenn die Lähmung ärztlich abgeklärt und behandelt ist, kannst du anfragen, ob ein begrenzter ergänzender Versuch zu deiner Situation passt.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Ein Cochrane-Review fand die Studien zu Akupunktur bei Bell-Parese zu mangelhaft für eine Aussage. Eine neuere Studie zu chronischen Verläufen nach über einem Jahr zeigte Verbesserungen mit Elektroakupunktur gegenüber Elektrostimulation der Haut. Für die akute Lähmung ersetzt Akupunktur keine ärztliche Behandlung.</p></div>
+<h2>Zuerst: eine Gesichtslähmung ist ein Notfall</h2>
+<p>Hängt ein Mundwinkel oder schliesst ein Auge plötzlich nicht mehr, muss sofort ein Schlaganfall ausgeschlossen werden. Wähle bei zusätzlichen Zeichen wie Sprach-, Seh- oder Armstörungen den Notruf 144. Wie eine Fazialisparese abgeklärt und behandelt wird und warum der Augenschutz wichtig ist, erklärt die Seite <a href="/beschwerden/fazialisparese/">Fazialisparese</a>.</p>
+<h2>Was die Studien zeigen</h2>
+<p><strong>Cochrane-Review:</strong> Die Übersicht von 2010 schloss sechs Studien mit 537 Personen ein. Keine berichtete die Endpunkte, die der Review vorgesehen hatte, und Mängel bei Zufallszuteilung, Verblindung und Berichterstattung verhinderten zuverlässige Schlüsse. Die Autorinnen und Autoren hielten keine Aussage zur Wirksamkeit für möglich.</p>
+<p><strong>Chronische Verläufe:</strong> Eine chinesische Studie von 2024 untersuchte 60 Personen, deren Gesichtslähmung sich nach zwölf Monaten nicht zurückgebildet hatte. Eine Gruppe erhielt 18 Sitzungen <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a>, die andere eine elektrische Stimulation über die Haut. Die Gesichtssymmetrie in einem Nervenindex verbesserte sich mit Elektroakupunktur stärker, auch nach 24 Wochen. In einer zweiten Bewertungsskala zeigte sich nach sechs Wochen kein Unterschied. Die Gruppe war klein, und Elektrostimulation ist keine Scheinbehandlung.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Studie zu chronischen Verläufen sagt nichts über die akute Phase. Daraus lässt sich nicht ableiten, dass Akupunktur die Erholung in den ersten Wochen beschleunigt. Auch Lähmungen durch Verletzung, Tumor, Gürtelrose oder Borreliose sind andere Situationen.</p>
+<h2>Was die Behandlung trägt</h2>
+<p>In der akuten Phase entscheidet die Ärztin rasch über Kortison und je nach Ursache weitere Medikamente. Der Schutz des Auges mit Tropfen, Salbe und nachts einem Uhrglasverband ist zentral. Später kann <a href="/therapien/physiotherapie/">Physiotherapie</a> mit Übungen für die Gesichtsmuskulatur helfen. Bei ausbleibender Erholung können spezialisierte Zentren weitere Optionen prüfen.</p>
+<h2>Wenn du einen Versuch erwägst</h2>
+<p>Ein ergänzender Versuch kann nach der ärztlichen Akutbehandlung besprochen werden, am ehesten bei anhaltender Schwäche. Lege vorher fest, woran Fortschritt gemessen wird, etwa Fotos mit standardisierten Gesichtsbewegungen, und wann bilanziert wird. Das Auge bleibt geschützt.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Im Gesicht und rund um das Auge wird besonders vorsichtig behandelt. Ein Auge, das sich nicht vollständig schliesst, braucht weiterhin seinen Schutz, auch während der Sitzung. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Diagnose, Verlauf und Augenbefund mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Sollte ich bei einer frischen Gesichtslähmung zuerst zur Akupunktur?</h3>
+<p>Nein. Zuerst kommt die sofortige ärztliche Abklärung. Über Kortison entscheidet die Ärztin in den ersten Tagen.</p>
+<h3>Hilft Akupunktur, wenn die Lähmung nach Monaten bleibt?</h3>
+<p>Eine kleine Studie zu chronischen Verläufen zeigte Verbesserungen mit Elektroakupunktur. Belastbar ist das noch nicht.</p>
+<h3>Was ist mit dem Auge während der Behandlung?</h3>
+<p>Der Augenschutz bleibt wichtig, solange sich das Lid nicht vollständig schliesst. Rötung oder Schmerzen am Auge gehören ärztlich beurteilt.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/20687071/" target="_blank" rel="noopener">Chen et al. 2010: Acupuncture for Bell's palsy, Cochrane Database of Systematic Reviews</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38134327/" target="_blank" rel="noopener">Li et al. 2024: Electroacupuncture with intermittent wave stimulation for chronic Bell's palsy, randomized controlled trial, Postgraduate Medical Journal</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/fazialisparese/', label: 'Fazialisparese', cat: 'Beschwerde' },
+      { href: '/beschwerden/guertelrose/', label: 'Gürtelrose', cat: 'Beschwerde' },
+      { href: '/therapien/elektroakupunktur/', label: 'Elektroakupunktur', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-nesselsucht',
+    title: 'Akupunktur bei Nesselsucht: Studie und Grenzen',
+    metaDesc: 'Akupunktur bei chronischer Nesselsucht: Eine grosse Studie fand messbare, aber klinisch nicht relevante Unterschiede. Was das bedeutet und was die Behandlung trägt.',
+    region: 'Schweizweit',
+    excerpt: 'Eine grosse Studie fand mit Akupunktur weniger Quaddeln und Juckreiz als mit Scheinakupunktur. Der Unterschied lag aber unter der Schwelle, die Betroffene deutlich spüren.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Nesselsucht: Was die grosse Studie zeigt',
+    lead: 'Eine grosse Studie fand mit Akupunktur weniger Quaddeln und Juckreiz als mit Scheinakupunktur. Der Unterschied lag aber unter der Schwelle, die Betroffene deutlich spüren.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzung zur Urtikaria-Behandlung besprechen',
+    ctaText: 'Wenn deine Nesselsucht ärztlich behandelt wird und du ergänzend etwas versuchen möchtest, kannst du anfragen, ob ein begrenzter Versuch sinnvoll ist.',
+    ctaLabel: 'Praxis finden',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>In einer grossen Studie zur chronischen spontanen Urtikaria verbesserte Akupunktur die Krankheitsaktivität stärker als Scheinakupunktur oder Abwarten. Der Unterschied erreichte aber nicht die Schwelle für einen klinisch bedeutsamen Effekt. Akupunktur ist damit kein Ersatz für die ärztliche Stufentherapie.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Bei chronischer Nesselsucht treten über mehr als sechs Wochen immer wieder Quaddeln, Juckreiz oder Schwellungen auf. Formen, Auslöser und Behandlung erklärt die Seite <a href="/beschwerden/nesselsucht/">Nesselsucht</a>. Hier geht es nur um die Frage, ob Akupunktur ergänzend sinnvoll ist.</p>
+<h2>Was die Studie zeigt</h2>
+<p>Die Studie wurde 2023 in den Annals of Internal Medicine veröffentlicht. 330 Personen mit chronischer spontaner Urtikaria aus drei chinesischen Kliniken erhielten vier Wochen lang Akupunktur, Scheinakupunktur oder keine Behandlung, gefolgt von vier Wochen Nachbeobachtung. Gemessen wurde der Wochenwert der Urtikaria-Aktivität, der Quaddeln und Juckreiz zusammenfasst.</p>
+<ul>
+<li>Mit Akupunktur sank der Wert stärker als mit Scheinakupunktur und als ohne Behandlung.</li>
+<li>Beide Unterschiede lagen unter der Grenze, ab der eine Veränderung als klinisch bedeutsam gilt.</li>
+<li>Etwa jede siebte Person in der Akupunkturgruppe berichtete leichte, vorübergehende Nebenwirkungen.</li>
+</ul>
+<p>Die Autorinnen und Autoren nennen selbst Grenzen: keine vollständige Verblindung, selbst berichtete Ergebnisse, kurze Nachbeobachtung und eingeschränkte Übertragbarkeit, weil Antihistaminika während der Studie nicht erlaubt waren. Zur Studie ist eine Korrekturnotiz erschienen; ihr Inhalt war für diesen Artikel nicht einsehbar.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Studie betrifft die chronische spontane Form. Für akute Nesselsucht, körperlich ausgelöste Formen wie Druck- oder Kälteurtikaria und für Schwellungen ohne Quaddeln sagt sie nichts aus. Auch eine Wirkung zusätzlich zu Antihistaminika wurde nicht geprüft.</p>
+<h2>Was die Behandlung trägt</h2>
+<p>Die übliche Behandlung erfolgt stufenweise, beginnend mit nicht müde machenden Antihistaminika, deren Dosis ärztlich angepasst werden kann, und weiteren Optionen bei unzureichender Wirkung. Ein Tagebuch zu Schüben und möglichen Verstärkern hilft der Ärztin bei der Steuerung.</p>
+<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Erfasse die Krankheitsaktivität vorher und während des Versuchs, etwa mit einem Wochenwert für Quaddeln und Juckreiz. Lege einen Prüfzeitpunkt fest und ändere die Medikamente nicht eigenmächtig.</p>
+<h2>Wann sofort Hilfe holen</h2>
+<p>Schwellung von Zunge, Lippen oder Rachen, Atemnot, Schluckbeschwerden oder Kreislaufprobleme sind ein Notfall. Wähle den Notruf 144.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>Bei Nesselsucht können Reize auf der Haut Quaddeln auslösen. In der grossen Studie berichtete etwa jede siebte Person leichte, vorübergehende Nebenwirkungen. Sag vorher, wenn bei dir Druck oder Reibung Schübe auslösen. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Diagnose und aktuelle Medikation mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Hilft Akupunktur bei chronischer Nesselsucht?</h3>
+<p>Die grösste Studie fand einen messbaren, aber kleinen Effekt, der unter der Schwelle für einen spürbaren Unterschied lag.</p>
+<h3>Kann ich Antihistaminika weglassen?</h3>
+<p>Nein. Änderungen an der Medikation besprichst du mit deiner Ärztin.</p>
+<h3>Gilt das auch für akute Nesselsucht?</h3>
+<p>Nein. Die Studie betraf nur die chronische spontane Form.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/37956431/" target="_blank" rel="noopener">Zheng et al. 2023: Efficacy of acupuncture for chronic spontaneous urticaria, randomized controlled trial, Annals of Internal Medicine</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38109741/" target="_blank" rel="noopener">Correction: Efficacy of acupuncture for chronic spontaneous urticaria, Annals of Internal Medicine 2024</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/nesselsucht/', label: 'Nesselsucht', cat: 'Beschwerde' },
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-neurodermitis/', label: 'Akupunktur bei Neurodermitis', cat: 'Artikel' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-aromatasehemmer-gelenkschmerzen',
+    title: 'Akupunktur bei Gelenkschmerzen durch Aromatasehemmer',
+    metaDesc: 'Gelenkschmerzen unter Aromatasehemmern nach Brustkrebs: Eine grosse US-Studie fand mit Akupunktur etwas weniger Schmerzen. Was das bedeutet und was vorher zu klären ist.',
+    region: 'Schweizweit',
+    excerpt: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Effekt war moderat.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Gelenkschmerzen unter Aromatasehemmern: Was ist belegt?',
+    lead: 'Eine grosse Studie bei Frauen mit Brustkrebs unter Aromatasehemmern fand mit Akupunktur weniger Gelenkschmerzen als mit Schein- oder keiner Akupunktur. Der Effekt war moderat.',
+    readingTime: '4 Min.',
+    ctaTitle: 'Ergänzung mit dem Onkologie-Team abstimmen',
+    ctaText: 'Wenn dein Onkologie-Team einverstanden ist, kannst du anfragen, ob ein begrenzter Akupunkturversuch bei Gelenkschmerzen zu deiner Situation passt.',
+    ctaLabel: 'Eignung anfragen',
+    ctaHref: '/akupunktur-in-der-naehe/',
+    author: REDAKTION,
+    ...DATEN_W4,
+    bodyHtml: `<div class="wa-callout"><div class="wa-callout-label">Kurz gesagt</div><p>Bei Frauen mit hormonempfindlichem Brustkrebs, die unter einem Aromatasehemmer Gelenkschmerzen entwickelten, verringerte Akupunktur in einer grossen US-Studie die Schmerzen stärker als Schein- oder keine Akupunktur, auch nach einem Jahr. Der Unterschied war moderat und seine klinische Bedeutung unsicher. Ein Versuch wird immer mit dem Onkologie-Team abgestimmt.</p></div>
+<h2>Worum es hier geht</h2>
+<p>Aromatasehemmer wie Anastrozol, Letrozol oder Exemestan senken das Rückfallrisiko bei hormonempfindlichem Brustkrebs. Gelenkschmerzen und Steifigkeit gehören zu den häufigen Nebenwirkungen und können dazu führen, dass die Behandlung abgebrochen wird. Dieser Artikel beantwortet nur eine Frage: Kann Akupunktur bei diesen Gelenkschmerzen helfen? Allgemeine Sicherheitsfragen rund um Akupunktur während einer Krebsbehandlung beantwortet die Seite <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während Chemotherapie</a>.</p>
+<h2>Was die Studie zeigt</h2>
+<p>An der Studie nahmen 226 Frauen an elf Zentren in den USA teil. Sie hatten Brustkrebs im Stadium I bis III, nahmen einen Aromatasehemmer und hatten seitdem deutliche Gelenkschmerzen. Sie erhielten über zwölf Wochen echte Akupunktur, eine Scheinakupunktur mit oberflächlichen Nadeln an anderen Punkten oder zunächst keine Behandlung.</p>
+<ul>
+<li>Nach sechs Wochen war der stärkste Schmerz mit echter Akupunktur um knapp einen Punkt auf einer Skala von 0 bis 10 geringer als in den beiden Vergleichsgruppen. Die vorab festgelegte Schwelle von zwei Punkten wurde nicht erreicht.</li>
+<li>Eine Auswertung nach 52 Wochen zeigte weiterhin rund einen Punkt Unterschied. Diese Auswertung war nicht der ursprünglich geplante Hauptendpunkt; Funktionstests unterschieden sich nicht.</li>
+<li>Blaue Flecken traten mit echter Akupunktur häufiger auf. Schwere Nebenwirkungen wurden nicht berichtet.</li>
+</ul>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Ergebnisse gelten für Gelenkschmerzen, die unter einem Aromatasehemmer neu aufgetreten oder stärker geworden sind. Sie lassen sich nicht auf andere Nebenwirkungen, andere Krebsarten oder Gelenkschmerzen anderer Ursache übertragen. Akupunktur behandelt den Krebs nicht.</p>
+<h2>Was zuerst zählt</h2>
+<p>Sprich Gelenkschmerzen früh mit deinem Onkologie-Team an, bevor du eine Einnahme pausierst oder abbrichst. Mögliche Schritte sind Bewegung und Training, Schmerzmittel nach Absprache oder ein Wechsel des Präparats. Andere Ursachen wie Arthrose oder entzündliche Gelenkerkrankungen werden mitbedacht.</p>
+<h2>Sicherheit vor dem Termin</h2>
+<p>Vor einem Versuch klärst du mit dem Onkologie-Team, ob aktuell etwas dagegen spricht, etwa ein verändertes Blutbild, ein Lymphödemrisiko am operierten Arm oder bestrahlte Haut. Die Behandelnden sollten Erfahrung mit onkologischen Patientinnen haben.</p>
+<h2>Risiken und Nebenwirkungen</h2>
+<p>In der Studie traten blaue Flecken mit echter Akupunktur häufiger auf. Am Arm der operierten Seite und auf bestrahlter Haut wird je nach Situation nicht gestochen; das klärt das Behandlungsteam vorher. Häufig sind kleine blaue Flecken, kurzes Nachbluten oder Müdigkeit nach der Sitzung. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
+<h2>Vor einer Terminentscheidung</h2>
+<p>Bring Therapieplan, aktuelle Befunde und Medikamentenliste mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur die Wirkung des Aromatasehemmers beeinträchtigen?</h3>
+<p>Dazu machen die Studien keine Aussage. Deshalb gehört jede ergänzende Behandlung ins Gespräch mit dem Onkologie-Team.</p>
+<h3>Wie viele Sitzungen wurden in der Studie gemacht?</h3>
+<p>Zwölf Wochen lang, zuerst zweimal, dann einmal pro Woche. Das ist kein festes Schema für jede Patientin.</p>
+<h3>Hilft Akupunktur auch gegen Hitzewallungen durch die Antihormontherapie?</h3>
+<p>Das ist eine andere Frage mit eigener Studienlage und wird hier nicht beantwortet.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://jamanetwork.com/journals/jama/fullarticle/2687355" target="_blank" rel="noopener">Hershman et al. 2018: Effect of acupuncture vs sham acupuncture or waitlist control on joint pain related to aromatase inhibitors, JAMA</a></li>
+<li><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2798317" target="_blank" rel="noopener">Hershman et al. 2022: Comparison of acupuncture vs sham acupuncture or waiting list control for aromatase inhibitor-related joint pain, 52-week results, JAMA Network Open</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/', label: 'Akupunktur während Chemotherapie', cat: 'Frage' },
+      { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
+      { href: '/beschwerden/lymphoedem/', label: 'Lymphödem', cat: 'Beschwerde' },
     ],
   },
 ];

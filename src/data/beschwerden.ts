@@ -3304,6 +3304,454 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "therapies": []
+  },
+  {
+    "slug": "schnappfinger",
+    "name": "Schnappfinger",
+    "title": "Schnappfinger: Ursachen, Abklärung und Behandlung",
+    "metaDesc": "Ein Finger bleibt hängen und schnellt dann auf? So entsteht ein Schnappfinger, wie er untersucht wird und welche Behandlungen von Schiene bis Eingriff infrage kommen.",
+    "conditionName": "Schnappfinger",
+    "lead": "Ein Finger oder Daumen bleibt beim Strecken hängen und springt dann ruckartig auf. Meist steckt eine Engstelle an der Beugesehne dahinter, die gut behandelbar ist.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sehnenscheidenentzuendung",
+        "label": "Sehnenscheidenentzündung"
+      },
+      {
+        "slug": "rhizarthrose",
+        "label": "Rhizarthrose"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      },
+      {
+        "slug": "rheumatoide-arthritis",
+        "label": "Rheumatoide Arthritis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "steissbeinschmerzen",
+    "name": "Steissbeinschmerzen",
+    "title": "Steissbeinschmerzen: Ursachen, Sitzen und Behandlung",
+    "metaDesc": "Steissbeinschmerzen beim Sitzen oder Aufstehen? Häufige Ursachen, wie Kokzygodynie abgeklärt wird, was im Alltag entlastet und welche Warnzeichen wichtig sind.",
+    "conditionName": "Steissbeinschmerzen",
+    "lead": "Schmerzen am unteren Ende der Wirbelsäule, besonders im Sitzen, sind häufig nach Stürzen oder Geburten. Meist bessern sie sich mit Entlastung und gezielter Behandlung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "isg-blockade",
+        "label": "ISG-Blockade"
+      },
+      {
+        "slug": "piriformis-syndrom",
+        "label": "Piriformis-Syndrom"
+      },
+      {
+        "slug": "haemorrhoiden",
+        "label": "Hämorrhoiden"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "tarsaltunnelsyndrom",
+    "name": "Tarsaltunnelsyndrom",
+    "title": "Tarsaltunnelsyndrom: Kribbeln und Brennen an der Fusssohle",
+    "metaDesc": "Brennen, Kribbeln oder Taubheit an der Fusssohle? Beim Tarsaltunnelsyndrom wird ein Nerv hinter dem Innenknöchel eingeengt. Ursachen, Abklärung und Behandlung.",
+    "conditionName": "Tarsaltunnelsyndrom",
+    "lead": "Ein eingeengter Nerv hinter dem Innenknöchel kann Brennen und Kribbeln an Fusssohle und Zehen auslösen. Die Diagnose ist anspruchsvoll, weil andere Ursachen ähnlich wirken.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      },
+      {
+        "slug": "plantarfasziitis",
+        "label": "Plantarfasziitis"
+      },
+      {
+        "slug": "morton-neurom",
+        "label": "Morton-Neurom"
+      },
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "meralgia-paraesthetica",
+    "name": "Meralgia paraesthetica",
+    "title": "Meralgia paraesthetica: Brennen am äusseren Oberschenkel",
+    "metaDesc": "Taubheit oder Brennen an der Aussenseite des Oberschenkels? Meralgia paraesthetica entsteht durch einen eingeengten Hautnerv. Ursachen, Abklärung und Behandlung.",
+    "conditionName": "Meralgia paraesthetica",
+    "lead": "Brennen, Kribbeln oder ein taubes Hautgefühl an der Aussenseite des Oberschenkels: Oft ist ein Hautnerv an der Leiste eingeengt. Kraft und Reflexe bleiben normal.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "ischias",
+        "label": "Ischias"
+      },
+      {
+        "slug": "bandscheibenvorfall",
+        "label": "Bandscheibenvorfall"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "trockene-augen",
+    "name": "Trockene Augen",
+    "title": "Trockene Augen: Ursachen, Abklärung und Behandlung",
+    "metaDesc": "Brennen, Fremdkörpergefühl, verschwommene Sicht? Was hinter trockenen Augen steckt, was im Alltag hilft, wann eine Augenärztin nötig ist und welche Warnzeichen zählen.",
+    "conditionName": "Trockene Augen",
+    "lead": "Trockene Augen brennen, jucken oder fühlen sich sandig an. Häufig spielen Bildschirmarbeit, trockene Luft oder die Lidranddrüsen mit. Manchmal steckt eine Erkrankung dahinter.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "allergien-heuschnupfen",
+        "label": "Allergien & Heuschnupfen"
+      },
+      {
+        "slug": "rheumatoide-arthritis",
+        "label": "Rheumatoide Arthritis"
+      },
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      },
+      {
+        "slug": "migraene",
+        "label": "Migräne"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "bizepssehnenentzuendung",
+    "name": "Bizepssehnenentzündung",
+    "title": "Bizepssehnenentzündung: Schmerz vorne an der Schulter",
+    "metaDesc": "Schmerzen vorne an der Schulter beim Heben oder Tragen? Wie eine Bizepssehnenentzündung entsteht, wie sie untersucht wird und welche Behandlung zuerst sinnvoll ist.",
+    "conditionName": "Bizepssehnenentzündung",
+    "lead": "Die lange Bizepssehne verläuft vorne über die Schulter. Ist sie gereizt, schmerzt die Schulter beim Heben, Tragen und Überkopfarbeiten. Oft ist sie Teil eines grösseren Schulterproblems.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      },
+      {
+        "slug": "impingement-syndrom",
+        "label": "Impingement-Syndrom"
+      },
+      {
+        "slug": "rotatorenmanschette",
+        "label": "Rotatorenmanschette"
+      },
+      {
+        "slug": "kalkschulter",
+        "label": "Kalkschulter"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "patellofemorales-schmerzsyndrom",
+    "name": "Patellofemorales Schmerzsyndrom",
+    "title": "Patellofemorales Schmerzsyndrom: Schmerz hinter der Kniescheibe",
+    "metaDesc": "Knieschmerz vorne beim Treppensteigen, Hocken oder langen Sitzen? Was das patellofemorale Schmerzsyndrom ist und warum gezieltes Training die Behandlung trägt.",
+    "conditionName": "Patellofemorales Schmerzsyndrom",
+    "lead": "Schmerzen hinter oder um die Kniescheibe, besonders bei Treppen, Hocke und langem Sitzen. Häufig bei Jugendlichen und jungen Erwachsenen. Training von Hüfte und Knie ist der Kern.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "patellaspitzensyndrom",
+        "label": "Patellaspitzensyndrom"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "bakerzyste",
+        "label": "Bakerzyste"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "pudendusneuralgie",
+    "name": "Pudendusneuralgie",
+    "title": "Pudendusneuralgie: Nervenschmerz im Becken verstehen",
+    "metaDesc": "Brennender Schmerz im Intimbereich oder Damm, schlimmer im Sitzen? Wie eine Pudendusneuralgie erkannt wird, welche Abklärung nötig ist und welche Behandlungen es gibt.",
+    "conditionName": "Pudendusneuralgie",
+    "lead": "Brennende oder stechende Schmerzen im Genitalbereich, Damm oder After, die im Sitzen zunehmen, können vom Pudendusnerv ausgehen. Die Diagnose braucht Geduld und Ausschluss anderer Ursachen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "beckenbodenverspannung",
+        "label": "Beckenbodenverspannung"
+      },
+      {
+        "slug": "vulvodynie",
+        "label": "Vulvodynie"
+      },
+      {
+        "slug": "prostata",
+        "label": "Prostatabeschwerden"
+      },
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "beckenbodenverspannung",
+    "name": "Beckenbodenverspannung",
+    "title": "Beckenbodenverspannung: wenn der Beckenboden nicht loslässt",
+    "metaDesc": "Schmerzen im Becken, Druck beim Wasserlösen, Schmerzen beim Sex? Ein überaktiver, verspannter Beckenboden kann dahinterstecken. Abklärung und Behandlung im Überblick.",
+    "conditionName": "Beckenbodenverspannung",
+    "lead": "Nicht jeder Beckenboden ist zu schwach. Ist er dauerhaft angespannt und kann nicht entspannen, entstehen Schmerzen, Blasen- und Darmbeschwerden. Beckenbodentherapie ist die erste Wahl.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "vaginismus",
+        "label": "Vaginismus"
+      },
+      {
+        "slug": "dyspareunie",
+        "label": "Dyspareunie"
+      },
+      {
+        "slug": "interstitielle-zystitis",
+        "label": "Interstitielle Zystitis"
+      },
+      {
+        "slug": "pudendusneuralgie",
+        "label": "Pudendusneuralgie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "meniskusriss",
+    "name": "Meniskusriss",
+    "title": "Meniskusriss: Symptome, Abklärung und wann operieren",
+    "metaDesc": "Meniskusriss nach Verdrehen oder durch Verschleiss? Typische Symptome, was MRT-Befunde bedeuten und warum Training oft gleich gut abschneidet wie eine Arthroskopie.",
+    "conditionName": "Meniskusriss",
+    "lead": "Ein Meniskusriss entsteht durch Verdrehen des Knies oder durch Verschleiss. Nicht jeder Riss braucht eine Operation; bei vielen Formen ist gezieltes Training gleichwertig.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "bakerzyste",
+        "label": "Bakerzyste"
+      },
+      {
+        "slug": "patellofemorales-schmerzsyndrom",
+        "label": "Patellofemorales Schmerzsyndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "thoracic-outlet-syndrom",
+    "name": "Thoracic-Outlet-Syndrom",
+    "title": "Thoracic-Outlet-Syndrom: Kribbeln, Schwere und kalte Hand",
+    "metaDesc": "Kribbeln im Arm, schnelle Ermüdung, kalte oder verfärbte Hand? Wie das Thoracic-Outlet-Syndrom entsteht, welche Formen es gibt und wann es dringend wird.",
+    "conditionName": "Thoracic-Outlet-Syndrom",
+    "lead": "Nerven oder Blutgefässe werden zwischen Schlüsselbein, erster Rippe und Halsmuskeln eingeengt. Das kann Kribbeln, Schwäche oder Durchblutungsstörungen im Arm auslösen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      },
+      {
+        "slug": "kubitaltunnelsyndrom",
+        "label": "Kubitaltunnelsyndrom"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "chronischer-husten",
+    "name": "Chronischer Husten",
+    "title": "Chronischer Husten: Ursachen und Abklärung ab acht Wochen",
+    "metaDesc": "Husten seit mehr als acht Wochen? Häufige Ursachen wie Asthma, Reflux und Nasenrachen, wie abgeklärt wird, welche Warnzeichen zählen und was bei Reizhusten hilft.",
+    "conditionName": "Chronischer Husten",
+    "lead": "Hält Husten bei Erwachsenen länger als acht Wochen an, gilt er als chronisch. Dann lohnt sich eine strukturierte Abklärung. Häufig finden sich behandelbare Ursachen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "asthma",
+        "label": "Asthma"
+      },
+      {
+        "slug": "sodbrennen",
+        "label": "Sodbrennen"
+      },
+      {
+        "slug": "sinusitis",
+        "label": "Sinusitis"
+      },
+      {
+        "slug": "copd",
+        "label": "COPD"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);

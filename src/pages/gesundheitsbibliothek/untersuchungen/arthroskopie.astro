@@ -1,0 +1,150 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 4, 16.10.2026, Draft). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch; kein Buchungs-CTA.
+// Publikationsdatum ueber PUBLISHED_WELLE_4_2026_10 (undefined bis Release, dann erst Schema-Daten).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_4_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/arthroskopie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Arthroskopie: Gelenkspiegelung, Ablauf und Grenzen';
+const description = 'Bei der Arthroskopie wird ein Gelenk mit einer Kamera untersucht und oft behandelt. Ablauf, Narkoseformen, Risiken und wann eine Kniespiegelung wenig bringt.';
+const published = PUBLISHED_WELLE_4_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Arthroskopie: Was passiert bei einer Gelenkspiegelung?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Arthroskopie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/meniskusriss/', label: 'Meniskusriss' },
+  { href: '/beschwerden/knieschmerzen/', label: 'Knieschmerzen' },
+  { href: '/beschwerden/gonarthrose/', label: 'Gonarthrose' },
+  { href: '/beschwerden/schulterschmerzen/', label: 'Schulterschmerzen' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/mrt/', label: 'MRT' },
+  { href: '/gesundheitsbibliothek/untersuchungen/roentgen/', label: 'Röntgen' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Arthroskopie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Arthroskopie: Was passiert bei einer Gelenkspiegelung?</h1>
+        <p class="lead">Über kleine Schnitte wird eine Kamera in ein Gelenk eingeführt. Heute dient die Arthroskopie meist der Behandlung, seltener der reinen Diagnose.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Arthroskopie wird ärztlich veranlasst, chirurgisch durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht durch und bietet sie nicht an.</strong></div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Bei einer Arthroskopie führt die Chirurgin über Schnitte von wenigen Millimetern eine Kamera ins Gelenk und kann mit feinen Instrumenten Schäden behandeln. Am häufigsten betrifft sie das Knie, aber auch Schulter, Hüfte, Sprunggelenk, Handgelenk und Ellbogen. Je nach Eingriff dauert sie 30 Minuten bis drei Stunden.</p>
+          </div>
+
+          <h2>Warum wird sie gemacht?</h2>
+          <p>Eine Arthroskopie kann helfen, Ursachen von Gelenkschmerzen, Schwellung, Steifigkeit oder Blockaden zu klären und Schäden zu reparieren, etwa nach Sportverletzungen. Weil Ultraschall und <a href="/gesundheitsbibliothek/untersuchungen/mrt/">MRT</a> viele Fragen ohne Eingriff beantworten, wird sie heute meist dann gemacht, wenn eine Behandlung im Gelenk geplant ist.</p>
+          <h2>Wo der Nutzen begrenzt ist</h2>
+          <p>Bei verschleissbedingten Kniebeschwerden, also Arthrose oder degenerativen Meniskusrissen, rät eine internationale Leitlinie im BMJ von einer Arthroskopie in fast allen Fällen ab. Studien fanden gegenüber konservativer Behandlung keinen bedeutsamen Vorteil. Mehr dazu auf den Seiten <a href="/beschwerden/meniskusriss/">Meniskusriss</a> und <a href="/beschwerden/gonarthrose/">Gonarthrose</a>. Bei einer echten Blockade des Knies oder bestimmten Verletzungen kann ein Eingriff dagegen sinnvoll sein.</p>
+          <h2>Vorbereitung</h2>
+          <p>Du erhältst von der Klinik Informationen zu Ort und Zeit, Voruntersuchungen, Essen und Trinken am Eingriffstag und zum Umgang mit Medikamenten. Informiere über eine mögliche Schwangerschaft. Dusche am Abend vorher oder am Morgen. Massgeblich ist immer die Vorbereitung der durchführenden Stelle.</p>
+          <h2>Ablauf</h2>
+          <p>Je nach Gelenk und Eingriff erfolgt die Arthroskopie in Vollnarkose, mit einer Rückenmarksnarkose oder örtlicher Betäubung. Über Schnitte von etwa zwei bis drei Millimetern werden Kamera und Instrumente eingeführt. Danach werden die Schnitte mit Pflaster oder Nähten verschlossen. Viele Menschen gehen nach wenigen Stunden nach Hause; nach einer Narkose darfst du nicht selbst Auto fahren.</p>
+          <h2>Risiken</h2>
+          <p>Komplikationen sind selten. Möglich sind Reaktionen auf die Narkose, Gelenkschmerzen, Taubheit oder Kribbeln, Infektionen und Blutgerinnsel. Wie lange die Erholung dauert, hängt davon ab, was im Gelenk gemacht wurde.</p>
+          <h2>Wann rasch Hilfe holen?</h2>
+          <p>Melde dich bei der Klinik oder ärztlich bei Fieber oder Schüttelfrost, starken oder zunehmenden Gelenkschmerzen, übelriechender Flüssigkeit aus der Wunde, starker Schwellung oder Rötung oder einer schmerzhaften, geschwollenen Wade. Bei plötzlicher Atemnot oder Brustschmerz wähle den Notruf 144.</p>
+          <h2>Nächster Schritt</h2>
+          <p>Frage vor dem Eingriff, was genau im Gelenk gemacht werden soll, welche Alternativen es gibt und wie die Nachbehandlung aussieht. TCM.ch führt keine Arthroskopie durch. Orientierung zu Gelenkbeschwerden findest du auf den passenden Beschwerdeseiten.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Ist eine Kniearthroskopie bei Arthrose sinnvoll?</h3>
+          <p>Bei verschleissbedingten Beschwerden meist nicht. Die Leitlinie im BMJ rät in fast allen Fällen davon ab; Training und andere konservative Massnahmen stehen im Vordergrund.</p>
+          <h3>Bin ich bei der Arthroskopie wach?</h3>
+          <p>Das hängt von Gelenk und Eingriff ab. Möglich sind Vollnarkose, Rückenmarksnarkose oder örtliche Betäubung.</p>
+          <h3>Wie gross sind die Narben?</h3>
+          <p>Die Schnitte sind meist nur wenige Millimeter lang.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.nhs.uk/tests-and-treatments/arthroscopy/" target="_blank" rel="noopener">NHS: Arthroscopy</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/28490431/" target="_blank" rel="noopener">Siemieniuk et al. 2017: Arthroscopic surgery for degenerative knee arthritis and meniscal tears, BMJ</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Nächster Schritt</div>
+          <p>Vorbereitung und Ablauf legt die durchführende Stelle fest; ihre Anweisungen haben Vorrang. Die Bibliothek hilft dir, Beschwerden und Befunde einzuordnen.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/beschwerden/knieschmerzen/">Knieschmerzen einordnen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

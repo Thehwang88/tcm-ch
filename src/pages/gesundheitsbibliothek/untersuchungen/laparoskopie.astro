@@ -1,0 +1,149 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 4, 16.10.2026, Draft). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch; kein Buchungs-CTA.
+// Publikationsdatum ueber PUBLISHED_WELLE_4_2026_10 (undefined bis Release, dann erst Schema-Daten).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_4_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/laparoskopie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Laparoskopie: Ablauf und Erholung bei Bauchspiegelung';
+const description = 'Eine Laparoskopie ist Diagnose und oft zugleich Behandlung per Schlüssellochtechnik. Ablauf, Narkose, Erholung und welche Fragen du vorher klären solltest.';
+const published = PUBLISHED_WELLE_4_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Laparoskopie: Was passiert bei einer Bauchspiegelung?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Laparoskopie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/endometriose/', label: 'Endometriose' },
+  { href: '/beschwerden/eierstockzyste/', label: 'Eierstockzyste' },
+  { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/hysteroskopie/', label: 'Hysteroskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/', label: 'Eileiterdurchgängigkeit' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Laparoskopie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Laparoskopie: Was passiert bei einer Bauchspiegelung?</h1>
+        <p class="lead">Bei der Bauchspiegelung schaut die Chirurgin mit einer Kamera durch kleine Schnitte in Bauch oder Becken. Sie kann der Diagnose dienen und oft gleich behandeln.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Laparoskopie wird ärztlich veranlasst, in der Klinik durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht durch und bietet sie nicht an.</strong></div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Für eine Laparoskopie wird in Vollnarkose meist am Bauchnabel ein kleiner Schnitt gesetzt. Gas hebt die Bauchdecke an, eine Kamera überträgt Bilder auf einen Bildschirm. Weitere kleine Schnitte erlauben es, Gewebe zu entnehmen oder direkt zu operieren. Eine reine Diagnose-Laparoskopie dauert oft 30 bis 60 Minuten.</p>
+          </div>
+
+          <h2>Warum wird sie gemacht?</h2>
+          <p>Diagnostisch hilft die Laparoskopie, wenn Bildgebung keine klare Antwort gibt, etwa bei Verdacht auf <a href="/beschwerden/endometriose/">Endometriose</a>, bei unklaren Unterbauchschmerzen, einer Entzündung im Becken oder in der Kinderwunschabklärung zur Beurteilung der Eileiter. Therapeutisch wird die Technik für viele Operationen genutzt, etwa an Blinddarm, Gallenblase, Eierstöcken oder Gebärmutter.</p>
+          <p>Ob eine Laparoskopie nur zur Diagnose dient oder eine Behandlung vorgesehen ist, sollte vorher klar besprochen sein. Davon hängen Dauer, Risiken und Erholung ab.</p>
+          <h2>Vorbereitung</h2>
+          <p>Die Klinik gibt dir genaue Anweisungen. Häufig gehören dazu Nüchternheit vor der Narkose, Absprachen zu Blutverdünnern und anderen Medikamenten und der Rat, nicht zu rauchen. Organisiere eine Begleitung für den Heimweg; nach der Narkose darfst du nicht selbst Auto fahren. Bei abweichenden Angaben gilt immer die Vorbereitung der durchführenden Stelle.</p>
+          <h2>Ablauf</h2>
+          <p>Du schläfst während des Eingriffs. Über einen kleinen Schnitt meist am Nabel wird Gas in den Bauch geleitet, damit Platz entsteht. Dann wird das Laparoskop eingeführt. Für Instrumente kommen bei Bedarf weitere kleine Schnitte hinzu. Am Ende wird das Gas abgelassen, die Schnitte werden genäht oder geklebt.</p>
+          <h2>Nach dem Eingriff</h2>
+          <p>Viele Menschen können am selben oder am nächsten Tag nach Hause. Übelkeit, Müdigkeit, Halsschmerzen von der Narkose, Blähungen, Bauchkrämpfe und Schmerzen in der Schulter durch das restliche Gas sind häufig und klingen in der Regel ab. Nach einer reinen Diagnose-Laparoskopie dauert die Erholung oft bis zehn Tage, nach einer Operation länger.</p>
+          <h2>Grenzen und Risiken</h2>
+          <p>Die Laparoskopie zeigt die Oberfläche der Organe in Bauch und Becken, nicht das Innere der Gebärmutterhöhle; dafür gibt es die <a href="/gesundheitsbibliothek/untersuchungen/hysteroskopie/">Hysteroskopie</a>. Ein unauffälliger Befund erklärt nicht jede Schmerzursache. Komplikationen sind selten. Möglich sind etwa der Wechsel zu einem offenen Eingriff mit grösserem Schnitt, ein Narbenbruch, Verletzungen von Organen wie der Blase oder von Blutgefässen, Blutgerinnsel und Reaktionen auf die Narkose. Über deine individuellen Risiken wirst du vorher aufgeklärt.</p>
+          <h2>Wann sofort Hilfe holen?</h2>
+          <p>Melde dich bei der Klinik oder hole medizinische Hilfe bei Fieber, zunehmenden Bauchschmerzen, Rötung oder Ausfluss an den Schnitten, anhaltendem Erbrechen, Atemnot oder einer geschwollenen, schmerzhaften Wade.</p>
+          <h2>Nächster Schritt</h2>
+          <p>Frage vor dem Eingriff, welche Frage die Laparoskopie beantworten soll, was mit Gewebeproben passiert und wann du das Ergebnis erhältst. TCM.ch führt keine Laparoskopie durch. Wenn nach der Diagnose Fragen zur Behandlung von Beschwerden bleiben, findest du Orientierung bei den passenden Beschwerdeseiten.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Ist eine Laparoskopie dasselbe wie eine Hysteroskopie?</h3>
+          <p>Nein. Die Laparoskopie schaut von aussen durch die Bauchdecke auf die Organe. Die Hysteroskopie betrachtet die Gebärmutterhöhle über den Gebärmutterhals.</p>
+          <h3>Warum tut nach einer Laparoskopie die Schulter weh?</h3>
+          <p>Restliches Gas im Bauch kann Nerven reizen, deren Schmerz in die Schulter ausstrahlt. Das bessert sich meist innerhalb weniger Tage.</p>
+          <h3>Kann man Endometriose ohne Laparoskopie feststellen?</h3>
+          <p>Manchmal geben Ultraschall oder MRT deutliche Hinweise. Ob eine Laparoskopie nötig ist, hängt von Beschwerden, Befunden und Kinderwunsch ab.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.nhs.uk/tests-and-treatments/laparoscopy/" target="_blank" rel="noopener">NHS: Laparoscopy (keyhole surgery)</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Nächster Schritt</div>
+          <p>Vorbereitung und Ablauf legt die durchführende Stelle fest; ihre Anweisungen haben Vorrang. Die Bibliothek hilft dir, Beschwerden und Befunde einzuordnen.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/beschwerden/endometriose/">Endometriose verstehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>
