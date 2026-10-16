@@ -47,7 +47,7 @@
   },
   "location:winterthur-marktgasse": {
     "src/data/locations.ts#clinics.winterthur-marktgasse": "91285a3dfab360c1",
-    "src/data/standorte.ts#standorte.winterthur-marktgasse": "29b6225ecb8be5e5"
+    "src/data/standorte.ts#standorte.winterthur-marktgasse": "3b2f44b0d175ea22"
   },
   "location:volketswil": {
     "src/data/locations.ts#clinics.volketswil": "9f102b6ba7c54055",
