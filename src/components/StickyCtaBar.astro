@@ -185,16 +185,21 @@ const TEL = `tel:+${site.whatsapp}`;
       break;                                                 // nur den ersten sichtbaren pruefen
     }
     if (!target) target = hero;
-    // DE-Homepage: zusaetzlich verborgen, solange irgendein Teil der Formularsektion (#home-contact-form, inkl.
-    // dynamischer Felder/Hinweise/Erfolgsmeldung) im Bild ist, bei Eingabefokus und offener Bildschirmtastatur;
+    // Patientenformulare: zusaetzlich verborgen, solange irgendein Teil einer Formularsektion im Bild ist (Homepage:
+    // #home-contact-form wie bisher; sonst die Sektion jeder Karte des gemeinsamen Formulars bzw. der gemeinsamen Huelle
+    // fuer Massage, Zuerich-Funnel, Vorbereitung und Wartelisten), bei Eingabefokus und offener Bildschirmtastatur;
     // verborgen = inert (nicht klick-/tabbar). Sonst gilt unveraendert die bisherige Hero-CTA-Logik (baseOn).
-    var homeForm = location.pathname === '/' && document.getElementById('home-contact-form');
+    var formSecs = location.pathname === '/'
+      ? [document.getElementById('home-contact-form')].filter(Boolean)
+      : [].slice.call(document.querySelectorAll('[data-kf], [data-kf-huelle]')).map(function (c) { return c.closest('section') || c; })
+          .filter(function (e, i, a) { return a.indexOf(e) === i; });
+    var homeForm = formSecs.length ? formSecs[0] : null;
+    var inForm = function () { return formSecs.some(function (e) { var r = e.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; }); };
     var baseOn = false;
     var apply = function () {
       var on = baseOn;
       if (homeForm) {
-        var r = homeForm.getBoundingClientRect();
-        on = on && !(r.top < window.innerHeight && r.bottom > 0) && !typing() && !keyboard();
+        on = on && !inForm() && !typing() && !keyboard();
         bar.inert = !on; if (on) bar.removeAttribute('aria-hidden'); else bar.setAttribute('aria-hidden', 'true');
       }
       if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);
@@ -206,8 +211,8 @@ const TEL = `tel:+${site.whatsapp}`;
     }, { threshold: 0 }).observe(target);
     if (homeForm) {
       var hraf = 0, hsched = function () { if (!hraf) hraf = requestAnimationFrame(function () { hraf = 0; apply(); }); };
-      new IntersectionObserver(hsched, { threshold: [0, 1] }).observe(homeForm);
-      if ('ResizeObserver' in window) new ResizeObserver(hsched).observe(homeForm);
+      var hio = new IntersectionObserver(hsched, { threshold: [0, 1] }); formSecs.forEach(function (e) { hio.observe(e); });
+      if ('ResizeObserver' in window) { var hro = new ResizeObserver(hsched); formSecs.forEach(function (e) { hro.observe(e); }); }
       window.addEventListener('scroll', hsched, { passive: true });
       window.addEventListener('resize', hsched);
       if (window.visualViewport) window.visualViewport.addEventListener('resize', hsched);
