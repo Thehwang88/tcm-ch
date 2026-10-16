@@ -634,9 +634,9 @@ await pg.close();
 ({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
 ok(await pg.evaluate(() => getComputedStyle(document.querySelector('.scb-bar')).display === 'none' && [...document.querySelectorAll('[data-kf-instance="sg-hero"] .kf-alt-ic')].every((s) => getComputedStyle(s).display === 'none')), '1440px: keine Mobile-Bar, Kontaktlinks ohne Icons (Desktop unverändert)');
 await pg.close();
-({ pg, calls } = await open('/standorte/basel/'));
+({ pg, calls } = await open('/beschwerden/rueckenschmerzen/'));
 await to(pg, 2500); await settle();
-ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar'); return b.classList.contains('is-visible') && !b.inert && b.querySelector('.scb-primary').getAttribute('href') !== '#offer-form'; }), 'andere Standortseite (Basel): bisherige Bar-Logik unverändert');
+ok(await pg.evaluate(() => { const b = document.querySelector('.scb-bar'); return !document.querySelector('[data-std-box-oben]') && b.querySelector('.scb-primary').getAttribute('href') !== '#offer-form' && b.querySelector('.scb-primary').getAttribute('href') !== '#anfrage-box'; }), 'Nicht-Standortseite (Beschwerde-Leaf): keine SG-/Standort-Box-Logik, Ziel unverändert');
 await pg.close();
 
 console.log('R. DE-Homepage Mobile: Sticky-Bar aus, solange die Formularsektion #home-contact-form sichtbar ist');
@@ -1049,6 +1049,60 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
     await pg.evaluate((F, v) => { const f = document.querySelector(F); for (const [n, x] of Object.entries(v)) { const e = f.querySelector(`[name=${n}]`); e.value = x; } (f.querySelector('button[type=submit]')).click(); }, F, fill); await new Promise((r) => setTimeout(r, 900));
     const evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).map((e) => e.event));
     ok(calls.length === 1 && okRe.test(await pg.evaluate(() => document.body.innerText)) && (ev === null ? !evs.includes('formular_senden') : evs.filter((e) => e === ev).length === 1) && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('000 00 00') && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('example.ch'), `${u}: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (${evs.join(',') || 'keine'}), keine Personendaten im dataLayer`);
+    await pg.close();
+  }
+}
+
+console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
+{
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon'];
+  for (const slug of STD) {
+    const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
+    const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
+    const box = html.indexOf('<div data-std-box-oben'), info = html.indexOf('class="sgk-info"'), unten = html.indexOf('id="kontakt"');
+    ok(dup.length === 0 && box > html.indexOf('class="lsr-hero') && box < info && info < unten && html.indexOf('class="sgu"') < box && (html.match(/<div data-std-box-oben/g) || []).length === 1,
+      `/standorte/${slug}/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs${dup.length ? ' (' + [...new Set(dup)].join(', ') + ')' : ''}`);
+    ok(!/data-kf-onedoc|kf-onedoc|online-buchen|onedoc\.ch|kf-opt--checkin|TCM-Check-in|launch-hero-sg|sg-kontakt-bottom|Corinna|Lenggenhager/.test(html.replace(/<script[\s\S]*?<\/script>/g, '')),
+      `/standorte/${slug}/: kein OneDoc, kein Check-in, keine SG-Kennungen/Personen`);
+  }
+  // Operativer Standort (Rorschach): obere Box = gemeinsames Formular, nur Telefon Pflicht, fester Standort, Versand gemockt.
+  ({ pg, calls } = await open('/standorte/rorschach/', { width: 390 }));
+  const O = card('standort-oben');
+  ok(await pg.$eval(O, (c) => c.id === 'anfrage-box' && c.classList.contains('kf--ruhig') && getComputedStyle(c.querySelector('.kf-kopf')).backgroundColor !== 'rgba(0, 0, 0, 0)' && c.querySelectorAll('[required]').length === 1 && !!c.querySelector('input[name=telefon][required]') && c.querySelector('input[name=terminart][value=behandlung]').checked && c.getAttribute('data-kf-standort-id') === 'rorschach'),
+    'Rorschach obere Box: ruhig (schwarzer Kopf), Telefon einziges Pflichtfeld, Ersttermin vorgewählt, Standort fest');
+  await submit(pg, 'standort-oben');
+  ok(calls.length === 0 && await pg.$eval('#kf-standort-oben-tel-err', (e) => !e.hidden && e.textContent.trim().length > 0), 'leer absenden: Fehlermeldung Telefon, kein Versand');
+  await type(pg, 'standort-oben', 'telefon', '+41 79 000 00 00'); await submit(pg, 'standort-oben');
+  c0 = calls[0] || {};
+  fs0 = await ev(pg, 'formular_senden');
+  ok(calls.length === 1 && c0.standort === 'Rorschach' && c0.standort_id === 'rorschach' && c0.angebot_id === 'ERSTTERMIN_BEHANDLUNG' && c0.quelle_detail === 'Anfragebox oben' && (c0.quelle === undefined || c0.quelle === '/standorte/rorschach/'),
+    `obere Box Versand (Mock): ${JSON.stringify({ s: c0.standort, id: c0.standort_id, a: c0.angebot_id, q: c0.quelle, qd: c0.quelle_detail })}`);
+  ok(fs0.length === 1 && fs0[0].standort === 'rorschach' && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('000 00 00') && await pg.$eval(O, (c) => !!c.querySelector('.kf-success')), 'genau 1 formular_senden, keine Personendaten im dataLayer, Erfolgsmeldung');
+  ok(await pg.$eval(card('standort'), (c) => !!c.querySelector('[data-kf-form]')), 'unteres Formular nach Versand oben unverändert');
+  await pg.close();
+  // Sticky: operativ (Rorschach) und geplant (Oerlikon) bei 320/390
+  for (const [u, sel] of [['/standorte/rorschach/', '[data-std-box-oben]'], ['/standorte/zuerich-oerlikon/', '[data-std-box-oben]']]) for (const w of [320, 390]) {
+    ({ pg, calls } = await open(u, { width: w }));
+    let b = await bar(pg);
+    ok(!b.on && b.inert && b.op === 0 && b.pe === 'none', `${u} ${w}px Hero: Bar aus, inert`);
+    const bt = await docY(pg, sel, 'top'), be = await docY(pg, sel, 'bottom');
+    await to(pg, bt - 50); await settle(); b = await bar(pg); ok(!b.on && b.inert, `${u} ${w}px obere Box im Bild: Bar aus`);
+    await to(pg, be - 20); await settle(); b = await bar(pg); ok(!b.on, `${u} ${w}px Box-Ende noch sichtbar: Bar aus`);
+    await to(pg, be + 20); await settle(); b = await bar(pg); ok(b.on && !b.inert && b.op === 1, `${u} ${w}px nach der Box: Bar an, bedienbar`);
+    const kt = await docY(pg, '#kontakt', 'top'); await to(pg, kt - 400); await settle(); b = await bar(pg); ok(!b.on && b.inert, `${u} ${w}px unteres Formular (#kontakt) im Bild: Bar aus`);
+    await to(pg, be + 20); await settle();
+    await pg.$eval('#kontakt input[name=telefon]', (i) => i.focus({ preventScroll: true })); await settle(); b = await bar(pg); ok(!b.on, `${u} ${w}px Eingabefokus: Bar aus`);
+    await pg.$eval('#kontakt input[name=telefon]', (i) => i.blur()); await settle(); b = await bar(pg); ok(b.on, `${u} ${w}px Fokus weg: Bar wieder an`);
+    const kb = await pg.evaluate(() => { const vv = window.visualViewport; if (!vv) return 'n/a'; Object.defineProperty(vv, 'height', { configurable: true, get: () => innerHeight * 0.5 }); vv.dispatchEvent(new Event('resize')); return 'ok'; });
+    await settle(); b = await bar(pg); ok(kb === 'ok' && !b.on, `${u} ${w}px Bildschirmtastatur: Bar aus`);
+    await pg.evaluate(() => { delete window.visualViewport.height; window.visualViewport.dispatchEvent(new Event('resize')); }); await settle();
+    ok(calls.length === 0 && await noApp(pg), `${u} ${w}px Sichtbarkeitswechsel: keine Events, kein Versand`);
+    ok(await pg.$eval('.scb-bar .scb-primary', (a) => a.getAttribute('href') === '#anfrage-box') && await pg.$eval('.lsr-hero .lsr-btn-primary', (a) => a.getAttribute('href') === '#anfrage-box'), `${u} ${w}px Hero- und Bar-Ziel: obere Box (#anfrage-box)`);
+    await pg.$eval('.scb-bar .scb-primary', (x) => x.click()); await settle();
+    ok((await ev(pg, 'formular_senden')).length === 0 && calls.length === 0, `${u} ${w}px Bar-Klick: keine Conversion`);
+    // Turnstile bei 320 px vollständig: Container passt in die Karte (Widget kompakt, wenn < 300 px Platz)
+    ok(await pg.evaluate(() => [...document.querySelectorAll('[data-std-box-oben] .cf-turnstile, #kontakt .cf-turnstile')].every((t) => { const c = t.closest('.kf'), r = t.getBoundingClientRect(), rc = c.getBoundingClientRect(); return (t.clientWidth >= 300 || t.getAttribute('data-size') === 'compact') && r.right <= rc.right + 0.5 && r.left >= rc.left - 0.5; })),
+      `${u} ${w}px Turnstile-Container in beiden Karten innerhalb der Karte (kompakt unter 300 px)`);
     await pg.close();
   }
 }
