@@ -135,8 +135,12 @@ const TEL = `tel:+${site.whatsapp}`;
     var typing = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select, [contenteditable="true"]')); };
     var keyboard = function () { var vv = window.visualViewport; return !!(vv && vv.height < window.innerHeight * 0.75); };
     var sgBox = /^\/standorte\/st-gallen\/?$/.test(location.pathname) && document.querySelector('[data-kf-instance="sg-hero"]');
+    // Deutsche Standortseiten nach der SG-Vorlage: dieselbe Logik mit deren oberer Anfragebox ([data-std-box-oben]);
+    // Primaer → #anfrage-box (der bestehende Klick-Handler oben scrollt dorthin und behaelt Prefill/Quelle).
+    var stdBox = !sgBox && /^\/standorte\/[a-z-]+\/?$/.test(location.pathname) && document.querySelector('[data-std-box-oben]');
+    if (stdBox) sgBox = stdBox;
     if (sgBox) {
-      if (primary) primary.setAttribute('href', '#offer-form');
+      if (primary) primary.setAttribute('href', stdBox ? '#anfrage-box' : '#offer-form');
       var stops = [document.getElementById('kontakt'), document.getElementById('online-buchen')].filter(Boolean);
       var setVis = function (on) {
         if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);

@@ -643,7 +643,8 @@ export const standorte: Record<string, Standort> = {
       "banner": "Standort Winterthur Marktgasse",
       "lead": "Kurz vorbeikommen, in Ruhe klären, was dir hilft.",
       "sub": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Marktgasse 78, wenige Gehminuten vom Hauptbahnhof. <em style=\"font-style:italic;opacity:.85\">EMR-/ASCA-registrierte Therapeut:innen, Abrechnung über die Zusatzversicherung.</em>",
-      "image": "/images/hero-main.webp",
+      "image": "/images/standort-winterthur.jpg",
+      "imageAlt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
       "locationHook": "Marktgasse 78, 8400 Winterthur"
     },
     "nap": {

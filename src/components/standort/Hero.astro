@@ -1,6 +1,8 @@
 ---
 import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
+// SG-Vorlage: Reihenfolge wie der St.-Galler Hero (Vertrauenspunkte vor den Buttons), Hauptbutton springt zur
+// Anfragebox direkt unter dem Hero (#anfrage-box), Beschriftung nach Betriebsstatus.
 const { data } = Astro.props as { data: Standort };
 // Generische Bildwelt (keine Fotos des jeweiligen Standorts): Bildunterschrift «Symbolbild» statt Adresse.
 const symbolbild = data.planned || /\/(hero-main\.webp|basel-reception\.webp)$/.test(data.hero.image);
@@ -22,14 +24,14 @@ const zh = data.slug.startsWith('zuerich-');
       <h1 class="lsr-h1" set:html={heroH1}></h1>
       <p class="lsr-lead" set:html={data.hero.lead}></p>
       <p class="lsr-lead" style="margin-bottom:22px" set:html={data.hero.sub}></p>
+      <div class="lsr-trust"><div><span class="lsr-check">✓</span> {data.planned ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <div class="lsr-ctas">
-        <button class="lsr-btn-primary" onclick="openContactForm()">Termin anfragen</button>
+        <a href="#anfrage-box" class="lsr-btn-primary">{data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen'}</a>
         <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
       </div>
-      <div class="lsr-trust"><div><span class="lsr-check">✓</span> {data.planned ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <p class="lsr-note">{data.hero.locationHook}</p>
     </div>
-    <figure class="lsr-right">
+    <figure class={symbolbild ? 'lsr-right' : 'lsr-right lsr-right--foto'}>
       <img src={data.hero.image} alt={data.hero.imageAlt ?? 'Symbolbild: Empfangsbereich einer TCM.ch Praxis'} loading="eager" fetchpriority="high" decoding="async">
       <figcaption>{symbolbild ? 'Symbolbild' : data.hero.locationHook}</figcaption>
     </figure>
