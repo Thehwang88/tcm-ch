@@ -1,0 +1,146 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 4, 16.10.2026, Draft). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch; kein Buchungs-CTA.
+// Publikationsdatum ueber PUBLISHED_WELLE_4_2026_10 (undefined bis Release, dann erst Schema-Daten).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_4_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/kapselendoskopie';
+const url = `https://tcm.ch${path}/`;
+const title = 'Kapselendoskopie: Dünndarm mit der Kamerakapsel';
+const description = 'Bei der Kapselendoskopie schluckst du eine Kamerakapsel, die Bilder vom Verdauungstrakt aufnimmt. Wann sie sinnvoll ist, Vorbereitung, Ablauf und Grenzen.';
+const published = PUBLISHED_WELLE_4_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Kapselendoskopie: Wie funktioniert die Kamerakapsel?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Kapselendoskopie', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/morbus-crohn/', label: 'Morbus Crohn' },
+  { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' },
+  { href: '/beschwerden/zoeliakie/', label: 'Zöliakie' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/koloskopie/', label: 'Koloskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/stuhlanalyse/', label: 'Stuhlanalyse' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Kapselendoskopie</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Kapselendoskopie: Wie funktioniert die Kamerakapsel?</h1>
+        <p class="lead">Eine Kapsel mit Minikamera wandert durch den Verdauungstrakt und fotografiert dabei. Sie zeigt vor allem den Dünndarm, den Magen- und Darmspiegelung kaum erreichen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Kapselendoskopie wird ärztlich veranlasst und gastroenterologisch ausgewertet. <strong>TCM.ch führt diese Untersuchung nicht durch und bietet sie nicht an.</strong></div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Du schluckst eine Kapsel etwa in der Grösse einer grossen Vitamintablette. Sie sendet Bilder an ein Aufzeichnungsgerät, das du am Körper trägst. Die Kapsel wird nicht verdaut und meist innerhalb eines Tages mit dem Stuhl ausgeschieden. Gewebeproben kann sie nicht entnehmen.</p>
+          </div>
+
+          <h2>Warum wird sie gemacht?</h2>
+          <p>Die Kapselendoskopie zeigt Abschnitte des Verdauungstrakts, die bei einer <a href="/gesundheitsbibliothek/untersuchungen/gastroskopie/">Magenspiegelung</a> oder <a href="/gesundheitsbibliothek/untersuchungen/koloskopie/">Darmspiegelung</a> nicht einsehbar sind. Gesucht wird nach Blutungsquellen, Geschwüren, Polypen, Tumoren oder Entzündungen, etwa bei <a href="/beschwerden/morbus-crohn/">Morbus Crohn</a>. Auch bei <a href="/beschwerden/zoeliakie/">Zöliakie</a> oder wenn bei unerklärtem Blutverlust, etwa mit <a href="/beschwerden/eisenmangel/">Eisenmangel</a>, Magen- und Darmspiegelung unauffällig waren, kann sie eine Rolle spielen.</p>
+          <h2>Vorbereitung</h2>
+          <p>Die durchführende Praxis sagt dir genau, was zu tun ist; ihre Anweisungen haben Vorrang. Häufig gehören dazu eine Darmreinigung, nur klare Flüssigkeit am Vortag und rund zwölf Stunden nichts essen oder trinken vor dem Schlucken. Informiere die Praxis über alle Medikamente, Schluckbeschwerden, frühere Darmverschlüsse oder Bauchoperationen und über einen Herzschrittmacher oder andere Implantate.</p>
+          <h2>Ablauf</h2>
+          <p>Du schluckst die Kapsel im Sitzen mit etwas Wasser. Ein Aufzeichnungsgerät an Hüfte oder Schulter empfängt die Bilder, teils über Klebeelektroden. Die meisten Alltagsaktivitäten sind möglich, schwere körperliche Arbeit und Sport aber nicht. Wann du wieder essen und trinken darfst, sagt dir die Praxis. Später werden die Tausenden Bilder ausgewertet; bis zum Ergebnis kann bis zu eine Woche vergehen.</p>
+          <h2>Grenzen und Risiken</h2>
+          <p>Die Kapsel kann keine Gewebeprobe entnehmen und nichts behandeln. Ein Befund braucht deshalb oft eine weitere Untersuchung, etwa eine spezielle Dünndarmspiegelung. Selten bleibt die Kapsel an einer Engstelle hängen. Wenn du sie nach zwei Wochen nicht ausgeschieden hast und es nicht auf den Bildern sichtbar ist, melde dich; eine Röntgenkontrolle kann nötig sein. Solange sich die Kapsel im Körper befindet, darf kein MRT gemacht werden.</p>
+          <h2>Wann sofort Hilfe holen?</h2>
+          <p>Melde dich umgehend bei der Praxis, wenn du nach dem Schlucken der Kapsel Fieber, Schluckbeschwerden, Erbrechen, Brust- oder Bauchschmerzen bekommst. Bleibt die Kapsel an einer Engstelle hängen, kann selten eine Operation nötig sein.</p>
+          <h2>Nächster Schritt</h2>
+          <p>Frage, welche Frage die Kapsel beantworten soll und was bei einem auffälligen Befund folgt. TCM.ch führt keine Kapselendoskopie durch. Orientierung zu Verdauungsbeschwerden findest du auf den passenden Beschwerdeseiten.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Tut eine Kapselendoskopie weh?</h3>
+          <p>Die meisten Menschen empfinden sie als angenehm. Schlucken ist der einzige aktive Schritt.</p>
+          <h3>Ersetzt die Kapsel eine Darmspiegelung?</h3>
+          <p>Nein. Sie ergänzt Magen- und Darmspiegelung vor allem für den Dünndarm und kann keine Proben entnehmen.</p>
+          <h3>Was passiert mit der Kapsel?</h3>
+          <p>Sie wird mit dem Stuhl ausgeschieden und ist für den einmaligen Gebrauch bestimmt.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://medlineplus.gov/ency/article/007642.htm" target="_blank" rel="noopener">MedlinePlus: Capsule endoscopy</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Nächster Schritt</div>
+          <p>Vorbereitung und Ablauf legt die durchführende Stelle fest; ihre Anweisungen haben Vorrang. Die Bibliothek hilft dir, Beschwerden und Befunde einzuordnen.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/beschwerden/eisenmangel/">Eisenmangel verstehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

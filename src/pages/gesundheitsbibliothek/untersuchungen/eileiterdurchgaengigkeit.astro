@@ -1,0 +1,151 @@
+---
+// Untersuchungen & Diagnostik Leaf (Welle 4, 16.10.2026, Draft). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch; kein Buchungs-CTA.
+// Publikationsdatum ueber PUBLISHED_WELLE_4_2026_10 (undefined bis Release, dann erst Schema-Daten).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_WELLE_4_2026_10 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit';
+const url = `https://tcm.ch${path}/`;
+const title = 'Eileiter prüfen: HSG und HyCoSy im Vergleich';
+const description = 'Sind die Eileiter durchgängig? HSG (Röntgen) und HyCoSy (Ultraschall) sind zwei unterschiedliche Verfahren. Ablauf, Vorbereitung, Risiken und Grenzen.';
+const published = PUBLISHED_WELLE_4_2026_10;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Eileiterdurchgängigkeit prüfen: Wie unterscheiden sich HSG und HyCoSy?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Eileiterdurchgängigkeit', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/kinderwunsch/', label: 'Kinderwunsch' },
+  { href: '/beschwerden/endometriose/', label: 'Endometriose' },
+  { href: '/beschwerden/pcos/', label: 'PCOS' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/laparoskopie/', label: 'Laparoskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/hysteroskopie/', label: 'Hysteroskopie' },
+  { href: '/gesundheitsbibliothek/untersuchungen/spermiogramm/', label: 'Spermiogramm' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Eileiterdurchgängigkeit</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Eileiterdurchgängigkeit prüfen: Wie unterscheiden sich HSG und HyCoSy?</h1>
+        <p class="lead">In der Kinderwunschabklärung wird oft geprüft, ob die Eileiter offen sind. Zwei häufige Verfahren nutzen ein Kontrastmittel, unterscheiden sich aber in Bildgebung und Strahlung.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Eileiterprüfung wird gynäkologisch oder reproduktionsmedizinisch veranlasst und durchgeführt. <strong>TCM.ch führt diese Untersuchung nicht durch und bietet sie nicht an.</strong></div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Bei der <strong>Hysterosalpingografie (HSG)</strong> wird ein jodhaltiges Kontrastmittel durch den Gebärmutterhals gegeben und mit Röntgenbildern verfolgt. Bei der <strong>Hysterosalpingo-Kontrastsonografie (HyCoSy)</strong> wird eine im Ultraschall sichtbare Flüssigkeit verwendet und mit vaginalem Ultraschall beobachtet, ohne Röntgenstrahlung. Beide sind ambulant und ohne Narkose möglich. Eine Laparoskopie ist die operative Alternative.</p>
+          </div>
+
+          <h2>Warum wird sie gemacht?</h2>
+          <p>Verschlossene oder vernarbte Eileiter können eine Schwangerschaft erschweren. Die Prüfung gehört deshalb häufig zur <a href="/beschwerden/kinderwunsch/">Kinderwunschabklärung</a>, nachdem Zyklus, Hormonwerte und beim Partner ein <a href="/gesundheitsbibliothek/untersuchungen/spermiogramm/">Spermiogramm</a> betrachtet wurden. Beide Verfahren können auch Hinweise auf Veränderungen in der Gebärmutterhöhle geben.</p>
+          <h2>HSG: mit Röntgen</h2>
+          <p>Ein dünner Katheter wird durch den Gebärmutterhals eingeführt und mit einem kleinen Ballon gehalten. Das Kontrastmittel fliesst in die Gebärmutter und durch die Eileiter; mehrere Röntgenbilder zeigen, ob es aus den Enden austritt. Die Strahlendosis ist gering. Wer schon einmal auf jodhaltiges Kontrastmittel reagiert hat, muss das vorher sagen.</p>
+          <h2>HyCoSy: mit Ultraschall</h2>
+          <p>Zuerst erfolgt ein vaginaler Ultraschall. Dann wird über einen Katheter eine im Ultraschall sichtbare Flüssigkeit eingebracht und ihr Weg durch Gebärmutter und Eileiter beobachtet. Die Untersuchung dauert etwa 20 Minuten und kommt ohne Röntgenstrahlen aus. Ein voller Darm kann die Sicht auf die Eileiter erschweren.</p>
+          <h2>Vorbereitung</h2>
+          <p>Die durchführende Stelle legt den Termin fest; ihre Anweisungen gelten. Häufig wird die Untersuchung nach der Periode und vor dem Eisprung geplant, weil keine Schwangerschaft bestehen darf. Vorher werden Infektionen wie Chlamydien und Gonorrhö ausgeschlossen, damit keine Keime in die Eileiter gelangen. Oft wird empfohlen, eine Stunde vorher ein einfaches Schmerzmittel einzunehmen; welches, bespricht die Praxis mit dir. Während einer Blutung ist die Untersuchung meist nicht möglich.</p>
+          <h2>Was sich anfühlt und was danach kommt</h2>
+          <p>Periodenähnliche Krämpfe während und kurz nach der Untersuchung sind häufig. Etwas Flüssigkeit oder Schmierblutung danach ist normal; bring eine Binde mit. Selten treten eine Beckeninfektion oder starke Schmerzen auf, die eine Behandlung brauchen.</p>
+          <h2>Grenzen</h2>
+          <p>Manchmal lässt sich die Untersuchung nicht vollständig durchführen, etwa wenn der Katheter nicht hält. Stoppt das Kontrastmittel am Eileiterabgang, kann das eine echte Blockade oder ein vorübergehender Muskelkrampf sein. In solchen Fällen oder bei Hinweisen auf Vernarbungen kann eine <a href="/gesundheitsbibliothek/untersuchungen/laparoskopie/">Laparoskopie</a> folgen. Offene Eileiter bedeuten nicht automatisch, dass sie normal funktionieren.</p>
+          <h2>Wann rasch Hilfe holen?</h2>
+          <p>Fieber, zunehmende Unterbauchschmerzen, übelriechender Ausfluss oder starkes Unwohlsein in den Tagen danach sollten rasch ärztlich beurteilt werden.</p>
+          <h2>Nächster Schritt</h2>
+          <p>Frage, welches Verfahren für dich vorgesehen ist, warum und wie das Ergebnis die weitere Planung beeinflusst. TCM.ch führt keine Eileiterprüfung durch. Orientierung zum Thema findest du auf der Seite zum Kinderwunsch.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Ist HyCoSy dasselbe wie HSG?</h3>
+          <p>Nein. Beide prüfen die Eileiter mit Kontrastmittel, die HSG aber mit Röntgen, die HyCoSy mit Ultraschall ohne Strahlung.</p>
+          <h3>Tut die Eileiterprüfung weh?</h3>
+          <p>Häufig treten periodenähnliche Krämpfe auf. Ein Schmerzmittel vorher kann helfen; besprich das mit der Praxis.</p>
+          <h3>Was passiert, wenn ein Eileiter verschlossen erscheint?</h3>
+          <p>Das kann ein Krampf oder eine echte Blockade sein. Je nach Situation folgen weitere Untersuchungen, etwa eine Laparoskopie.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://flipbooks.leedsth.nhs.uk/LN004389.pdf" target="_blank" rel="noopener">Leeds Teaching Hospitals NHS Trust: Hysterosalpingography (HSG), Information for patients</a></li>
+            <li><a href="https://www.leedsth.nhs.uk/patients/resources/hysterosalpingo-contrast-sonography-hycosy/" target="_blank" rel="noopener">Leeds Teaching Hospitals NHS Trust: Hysterosalpingo Contrast Sonography (HyCoSy)</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Nächster Schritt</div>
+          <p>Vorbereitung und Ablauf legt die durchführende Stelle fest; ihre Anweisungen haben Vorrang. Die Bibliothek hilft dir, Beschwerden und Befunde einzuordnen.</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="/beschwerden/kinderwunsch/">Kinderwunsch verstehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>
