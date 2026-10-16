@@ -130,10 +130,10 @@
         if (href) odBtn.setAttribute('href', href);
         panel.hidden = !href;
       }
-      // Ruhig global: Alternativen erst mit gewähltem Ziel; Anrufen = kanonische Nummer des Ziels (data-tel),
+      // Ruhig: Alternativen (global erst mit gewähltem Ziel); Anrufen = kanonische Nummer des Ziels bzw. festen Standorts,
       // WhatsApp nur bei identischer Nummer; Block nur, wenn OneDoc oder Anrufen verfügbar ist.
       if (altWrap) {
-        var ao = opt(), at = ao ? ao.getAttribute('data-tel') || '' : '', altRow = altWrap.querySelector('[data-kf-kontakt-alt]');
+        var ao = opt(), at = fixedName ? altWrap.getAttribute('data-kf-alt-tel') || '' : ao ? ao.getAttribute('data-tel') || '' : '', altRow = altWrap.querySelector('[data-kf-kontakt-alt]');
         if (telBtn && at) telBtn.setAttribute('href', 'tel:' + at.replace(/[^\d+]/g, ''));
         var waA = altWrap.querySelector('[data-kf-wa]'), waOk = !!(waA && at && waA.getAttribute('data-kf-wa') === at.replace(/\D/g, ''));
         if (waA) { waA.hidden = !waOk; var wsep = altWrap.querySelector('[data-kf-wa-sep]'); if (wsep) wsep.hidden = !waOk; }
@@ -187,8 +187,10 @@
         else if ((m = von.match(/^\/massage-([a-z-]+)\/?/))) { txt = 'Ich möchte gerne einen Massage-Termin in ' + ortName(m[1]) + ' anfragen.'; }
         else if ((m = von.match(/^\/akupunktur-(?:tcm-)?([a-z-]+?)(?:-kosten)?\/?$/))) { txt = 'Ich möchte gerne einen Akupunktur-Termin in ' + ortName(m[1]) + ' anfragen.'; }
       }
-      if (!txt && !hasPf) txt = 'Ich möchte gerne einen Termin anfragen.';
-      if (ta && txt && !ta.value) ta.value = txt;
+      var generisch = !txt && !hasPf;
+      if (generisch) txt = 'Ich möchte gerne einen Termin anfragen.';
+      // Generischer Fülltext (ohne Herkunft) wird unverändert gesendet, öffnet aber die eingeklappten Angaben nicht.
+      if (ta && txt && !ta.value) { ta.value = txt; if (generisch) ta.setAttribute('data-kf-generisch', txt); }
       if (!qh) { qh = document.createElement('input'); qh.type = 'hidden'; qh.name = 'quelle'; form.appendChild(qh); }
       if (!qh.value) qh.value = herkunft;
     }
@@ -218,7 +220,7 @@
     };
     var openRr = function (focusTel) { showRr(true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); reveal(telIn); }, 60); };
     // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann optionale Angaben (und ggf. Rückruf) offen.
-    var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { return (x.value || '').trim() !== ''; });
+    var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { var v = (x.value || '').trim(); return v !== '' && v !== x.getAttribute('data-kf-generisch'); });
     if (optBtn && optBox) {
       optBtn.hidden = false; setOpen(optBtn, optBox, !!prefilled);
       optBtn.addEventListener('click', function () { var o = optBtn.getAttribute('aria-expanded') !== 'true'; setOpen(optBtn, optBox, o); if (o) animIn(optBox); });

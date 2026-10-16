@@ -926,10 +926,71 @@ for (const w of [320, 390, 1440]) {
   const hm = await pg.evaluate(() => { const t = document.querySelector('[data-kf-instance="home"] .kf-ts'); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; });
   await pg.close();
   ({ pg, calls } = await open('/kontakt/', { width: w }));
-  const km = await pg.evaluate(() => document.querySelector('[data-kf-instance="terminform"] .kf-ts').getAttribute('data-size'));
+  const km = await pg.evaluate(() => { const t = document.querySelector('[data-kf-instance="terminform"] .kf-ts'); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; });
   await pg.close();
-  const all = [...sg, hm];
-  ok(all.every(([s, cw]) => (cw < 300 ? s === 'compact' : s === 'normal')) && (w > 320 || all.every(([s]) => s === 'compact')) && km === null, `${w}px Turnstile-Grösse je nach Platz (SG oben ${sg[0].join('/')}, SG unten ${sg[1].join('/')}, Home ${hm.join('/')}); /kontakt/ unverändert`);
+  const all = [...sg, hm, km];
+  ok(all.every(([s, cw]) => (cw < 300 ? s === 'compact' : s === 'normal')) && (w > 320 || all.every(([s]) => s === 'compact')), `${w}px Turnstile-Grösse je nach Platz (SG oben ${sg[0].join('/')}, SG unten ${sg[1].join('/')}, Home ${hm.join('/')}, /kontakt/ ${km.join('/')})`);
+}
+console.log('V. Rollout: ruhige Gestaltung auf allen Patienten-Formulartypen');
+{
+  const S = (pg, C) => pg.$eval(C, (c) => { const v = (e) => !!(e && !e.closest('[hidden]') && (e.offsetWidth || e.offsetHeight)); return { kopf: !!c.querySelector('.kf-kopf') && getComputedStyle(c.querySelector('.kf-kopf')).backgroundColor === 'rgb(2, 11, 16)', sel: !!c.querySelector('select[name=standort]'),
+    tiles: [...c.querySelectorAll('.kf-opt')].filter(v).map((l) => l.querySelector('input').value).join(), checked: [...c.querySelectorAll('input[name=terminart]')].filter((x) => x.checked).map((x) => x.value).join(), optZu: !!c.querySelector('.kf-optgroup') && c.querySelector('.kf-optgroup').hidden,
+    alt: v(c.querySelector('[data-kf-alt-wrap]')), tel: v(c.querySelector('[data-kf-tel]')) ? c.querySelector('[data-kf-tel]').getAttribute('href') : '', wa: v(c.querySelector('[data-kf-wa]')), od: v(c.querySelector('[data-kf-onedoc]')), odHref: (c.querySelector('[data-kf-onedoc]') || { getAttribute: () => '' }).getAttribute('href'),
+    submit: c.querySelector('[data-kf-submit]').textContent.replace(/\s+/g, ' ').trim(), short: /Persönliches Gespräch, TCM-Diagnostik und erste Behandlung\./.test(c.textContent) && !/Wie können wir dir helfen|Lieber anrufen|Rückruf anfragen/.test(c.textContent.replace('Lieber Rückruf anfragen', '')), ov: document.documentElement.scrollWidth <= innerWidth }; });
+  // /kontakt/ (TerminForm, global, form_submit)
+  for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open('/kontakt/', { width: w })); const C = card('terminform'); let x = await S(pg, C);
+    ok(x.kopf && x.sel && x.tiles === 'behandlung,checkin' && !x.checked && x.optZu && !x.alt && x.submit === 'Termin anfragen →' && x.short && x.ov, `${w}px /kontakt/: ruhig, Standort + Kacheln, keine Vorauswahl, Zusatzangaben zu (generischer Fülltext öffnet nicht), Alternativen erst nach Zielwahl, kein Overflow`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/kontakt/', { width: 390 })); let C = card('terminform');
+  await sel(pg, 'terminform', 'Basel'); let x = await S(pg, C);
+  ok(x.alt && x.tel === 'tel:+41775236122' && !x.wa && x.tiles === 'behandlung', '/kontakt/ Basel: Anrufen (kanonische Nummer), kein WhatsApp (TerminForm hatte keins), kein Check-in');
+  await pick(pg, 'terminform', 'behandlung'); await type(pg, 'terminform', 'telefon', '+41 79 000 00 00'); await submit(pg, 'terminform'); await new Promise((r) => setTimeout(r, 300));
+  const fs1 = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'form_submit'));
+  ok(calls.length === 1 && calls[0].anliegen === 'Ich möchte gerne einen Termin anfragen.' && calls[0].typ === 'termin' && calls[0].standort_id === 'basel' && calls[0].angebot_id === 'ERSTTERMIN_BEHANDLUNG' && fs1.length === 1 && fs1[0].form_id === 'terminform' && !JSON.stringify(fs1).includes('79 000'), '/kontakt/ gemockter Erfolg: Versanddaten unverändert (generischer Anliegen-Text, typ termin), form_submit genau 1× ohne Personendaten');
+  await pg.close();
+  ({ pg, calls } = await open('/kontakt/?von=/standorte/frauenfeld/', { width: 390 })); x = await S(pg, card('terminform'));
+  ok(!x.optZu && await pg.$eval(card('terminform'), (c) => /Termin in Frauenfeld/.test(c.querySelector('[name=anliegen]').value) && c.querySelector('select[name=standort]').selectedIndex > 0), '/kontakt/?von=/standorte/frauenfeld/: Herkunfts-Prefill gesetzt, Standort vorgewählt, Zusatzangaben sichtbar');
+  await pg.close();
+  // Fester Standort (Basel): ohne Standortwahl, lokale Kontaktwege
+  for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open('/standorte/basel/', { width: w })); x = await S(pg, card('standort'));
+    ok(x.kopf && !x.sel && x.tiles === 'behandlung' && x.alt && x.tel === 'tel:+41775236122' && x.wa && !x.od && x.short && x.ov, `${w}px Standort Basel: ruhig, nur Behandlung (kein Check-in), Anrufen · WhatsApp lokal, kein OneDoc, kein Overflow`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/standorte/basel/', { width: 390 }));
+  await pg.evaluate((C) => { document.querySelector(C + ' [data-kf-tel]').addEventListener('click', (e) => e.preventDefault()); document.querySelector(C + ' [data-kf-wa]').addEventListener('click', (e) => e.preventDefault()); }, card('standort'));
+  await pg.$eval(`${card('standort')} [data-kf-tel]`, (a) => a.click()); await pg.$eval(`${card('standort')} [data-kf-wa]`, (a) => a.click());
+  let ev = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(ev.length === 2 && ev[0].event === 'phone_click' && ev[0].form_instance === 'standort' && ev[0].standort === 'basel' && ev[1].event === 'wa_click', `Standort Basel: Anrufen/WhatsApp je genau 1 Event (${ev.map((e) => e.event).join(',')})`);
+  await type(pg, 'standort', 'telefon', '+41 79 000 00 00'); await submit(pg, 'standort'); await new Promise((r) => setTimeout(r, 300));
+  const fsB = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'formular_senden'));
+  ok(calls.length === 1 && calls[0].standort_id === 'basel' && fsB.length === 1 && fsB[0].standort === 'basel' && fsB[0].terminart === 'behandlung', 'Standort Basel gemockter Erfolg: 1 Anfrage, formular_senden 1×');
+  await pg.close();
+  // Bottighofen (eigene Nummer)
+  ({ pg, calls } = await open('/standorte/bottighofen/', { width: 390 })); x = await S(pg, card('standort'));
+  ok(x.kopf && x.tel === 'tel:+41765780988' && x.alt, `Bottighofen: Anrufen mit eigener Nummer${x.wa ? ', WhatsApp gleiche Nummer' : ', WhatsApp nur bei gleicher Nummer (hier aus)'}`);
+  await pg.close();
+  // SG-Landingpage (fest SG): Check-in erlaubt, OneDoc bei Behandlung
+  ({ pg, calls } = await open('/akupunktur-tcm-st-gallen/', { width: 390 })); C = card('standort'); x = await S(pg, C);
+  ok(x.tiles === 'behandlung,checkin' && !x.checked && !x.od && x.alt, 'SG-Landingpage: beide Kacheln, keine Vorauswahl, OneDoc erst mit Behandlung');
+  await pick(pg, 'standort', 'behandlung'); x = await S(pg, C);
+  ok(x.od && x.odHref === '#online-buchen' && await pg.evaluate(() => !!document.getElementById('online-buchen')) && x.submit === 'Ersttermin anfragen →', 'SG-Landingpage + Behandlung: OneDoc umrandet → eingebettetes SG-Widget auf derselben Seite (#online-buchen)');
+  await pg.close();
+  // Leaf (global, vorbelegtes Anliegen) + Krankenkassen-Anfrage
+  ({ pg, calls } = await open('/therapien/tuina/', { width: 390 })); x = await S(pg, card('leaf'));
+  ok(x.kopf && x.sel && !x.optZu && await pg.$eval(card('leaf'), (c) => c.querySelector('[name=anliegen]').value.trim() !== ''), 'Leaf /therapien/tuina/: ruhig, global, vorbelegtes Anliegen → Zusatzangaben sichtbar');
+  await pg.close();
+  ({ pg, calls } = await open('/krankenkassen/akupunktur/', { width: 390 })); x = await S(pg, card('anfrage'));
+  ok(x.kopf && x.sel && x.short && x.ov, 'Krankenkassen-Anfrage: ruhig, global');
+  await sel(pg, 'anfrage', 'Luzern – Vormerkung, Eröffnung 2027'); x = await S(pg, card('anfrage'));
+  ok(!x.tiles && x.submit === 'Vormerkung senden →', 'Krankenkassen-Anfrage Vormerkung: Bedeutung erhalten');
+  await pg.close();
+  // Ausnahmen funktional unverändert (kein gemeinsamer Renderer)
+  ({ pg, calls } = await open('/massage-basel/', { width: 390 }));
+  ok(await pg.evaluate(() => !!document.querySelector('form.inline-form[onsubmit*="submitInlineFormGeneric"]') && !document.querySelector('form.inline-form [data-kf]')), 'Massage-Anfrage unverändert (eigener Handler)');
+  await pg.close();
 }
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);
