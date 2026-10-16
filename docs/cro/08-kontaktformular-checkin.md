@@ -157,3 +157,11 @@ Beide SG-Formulare (Hero + unten, `onedocBeideTerminarten`): 1 Terminart → 2 R
 
 ## DE-Homepage Mobile: Sticky-Bar und Formularsektion (16.10.2026, Draft)
 `StickyCtaBar.astro`, nur Pfad `/`: Die bisherige Hero-CTA-Logik bleibt Basis; zusätzlich verborgen (inert + aria-hidden), solange irgendein Teil von `section#home-contact-form` (Intro, Formular inkl. dynamischer Felder/Fehler/Erfolgsmeldung) im Bild ist, bei fokussiertem Eingabefeld und offener Bildschirmtastatur. Beobachtung per IntersectionObserver/ResizeObserver + rAF-gedrosseltem Scroll, Neuentscheid bei Fokus, visualViewport, pageshow, load, hashchange. Ziele (`/kontakt/` → Formular-Scroll mit Prefill), WhatsApp/Anrufen und Tracking unverändert.
+
+## SG-Formulare: Kopfbereich und kurze Angebotstexte (16.10.2026)
+
+- Nur `ruhig` (beide SG-Formulare, /standorte/st-gallen/). Gleicher Renderer, keine zweite Implementierung.
+- Kopf Near-Black (`--kf-ink` #020B10), bündig zum Kartenrand: Überschrift «Dein nächster Schritt beginnt hier.» (bleibt `kf-h`, `id=…-h`, benennt das Formular per `aria-labelledby`), Subline «Direkt starten oder TCM zuerst kennenlernen.». Höhe nach Inhalt, kein Logo.
+- Ersetzt im SG-Formular: «Wie können wir dir helfen?», unten «Wähle, was gerade zu dir passt.» und «Standort: St. Gallen». Weisser Bereich beginnt mit «Terminart wählen» (Klasse `kf-intro`, Einfügepunkt FIRST-30-Hinweis).
+- Angebot (ersetzt die langen Texte vollständig): Erstbehandlung «Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.»; Check-in «Kostenloser TCM-Check-in» · «30 Minuten» · «Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.» · «Ohne Behandlung.».
+- Unverändert: IDs, Formularnamen, `quelle`, Terminart-Schlüssel, Angebots-IDs, Prefill, Anker, Fehlerfokus, Versand, Tracking, OneDoc, Sticky-Logik.
