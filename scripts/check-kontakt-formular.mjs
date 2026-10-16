@@ -178,9 +178,9 @@ globalThis.fetch = async (url, init) => { if (String(url).includes('turnstile'))
 const post = async (d) => { const res = await onRequestPost({ request: new Request('https://tcm.ch/api/anfrage', { method: 'POST', body: JSON.stringify(d) }), env: { RESEND_API_KEY: 'x', TURNSTILE_SECRET: 'y' } }); return [res.status, await res.json(), sent[sent.length - 1]]; };
 const base = { standort: 'St. Gallen', quelle: 'launch-hero-sg', turnstileToken: 't' };
 let [st, j, mail] = await post({ ...base, telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN' });
-ok(st === 200 && /KOSTENLOSER TCM-CHECK-IN/.test(mail.html) && /Kostenloser TCM-Check-in – St\. Gallen/.test(mail.html) && mail.subject.endsWith(' · TCM-Check-in') && !mail.reply_to && !/>Name</.test(mail.html), 'nur Telefon + Check-in SG → 200, Mail klassifiziert, kein reply_to, kein erfundener Name');
+ok(st === 200 && /KOSTENLOSER TCM-CHECK-IN/.test(mail.html) && /Kostenloser TCM-Check-in – St\. Gallen/.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.' && />30 Minuten</.test(mail.html) && />kostenlos, ohne Behandlung</.test(mail.html) && !mail.reply_to && !/>Name</.test(mail.html), 'nur Telefon + Check-in SG → 200, Betreff/Dauer/Kosten aus Terminart, kein reply_to, kein erfundener Name');
 [st, j, mail] = await post({ ...base, telefon: '0041 79 123 45 67', angebot_id: 'ERSTTERMIN_BEHANDLUNG', name: 'Test', email: 'a@b.ch', anliegen: 'Rücken', wunschzeit: 'Do' });
-ok(st === 200 && /ERSTTERMIN MIT BEHANDLUNG/.test(mail.html) && mail.reply_to === 'a@b.ch' && /Wunschzeit/.test(mail.html) && /Rücken/.test(mail.html) && mail.subject.endsWith(' · Ersttermin mit Behandlung'), 'Behandlung mit allen optionalen Feldern → 200, reply_to, Wunschzeit/Anliegen in Mail');
+ok(st === 200 && /ERSTTERMIN MIT BEHANDLUNG/.test(mail.html) && mail.reply_to === 'a@b.ch' && /Wunschzeit/.test(mail.html) && /Rücken/.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.' && />60 Minuten</.test(mail.html) && />kostenpflichtig, Abrechnung nach Tarif</.test(mail.html), 'Behandlung mit allen optionalen Feldern → 200, reply_to, Wunschzeit/Anliegen, 60 Minuten, kostenpflichtig');
 [st, j] = await post({ ...base, standort: 'Wil', quelle: 'Beschwerde: Akne', telefon: '+49 30 1234 5678', angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
 ok(st === 200, 'Behandlung an anderem Standort, internationale Nummer → 200');
 const before = sent.length;
@@ -217,7 +217,7 @@ for (const [label, ort, id, angebot, code, art] of [
 ]) {
   const n0 = sent.length; const body = { ...base, quelle: '/', standort: ort, telefon: tel, angebot_id: angebot, ...(id ? { standort_id: id } : {}) };
   [st, j, mail] = await post(body);
-  if (code === 200) ok(st === 200 && sent.length === n0 + 1 && mail.html.includes(`<strong>${art}</strong>`) && mail.html.includes(`>${ort}<`) && mail.html.includes(`>${id}<`), `${label} → 200, Mail «${art}», Standort kanonisch + ID`);
+  if (code === 200) ok(st === 200 && sent.length === n0 + 1 && mail.html.includes(`>${art}<`) && mail.html.includes(`>${ort}<`) && mail.html.includes(`>${id}<`) && mail.subject.startsWith('Neue Anfrage · ') && !/\[/.test(mail.subject), `${label} → 200, Mail «${art}», Standort kanonisch + ID, Betreff ohne Formularpräfix`);
   else ok(st === 422 && j.error === code && sent.length === n0, `${label} → 422 ${code}, keine Mail`);
 }
 [st, j, mail] = await post({ ...base, telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN', angebot: 'GRATIS FÜR IMMER' });

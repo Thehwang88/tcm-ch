@@ -1,7 +1,7 @@
 // PRODUCTION — POST /api/anfrage → Resend email to termine@tcm.ch
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
-import { OFFER_BY_ID, ZIELART_FUER, zielFuer } from '../../src/data/kontakt-angebote.mjs';
+import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff } from '../../src/data/kontakt-angebote.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -60,7 +60,8 @@ export async function onRequestPost({ request, env }) {
       d.standort_id = ziel.id;
       if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
       if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
-      offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff };
+      offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff,
+        label: neu.label, anzeige: neu.anzeige || neu.label, dauerMin: neu.dauerMin, kosten: neu.kosten, mailBetreff: terminBetreff(neu, ziel) };
       d.angebot = offer.angebot;
     } else if (offerId) {
       // Historische IDs (FIRST 30 / regulär SG): unverändert, damit offene Browser-Tabs weiter zugestellt werden.
@@ -107,16 +108,17 @@ export async function onRequestPost({ request, env }) {
     const tsResult = await tsVerify.json().catch(() => ({}));
     if (!tsResult.success) return J({ error: 'turnstile_failed' }, 403);
 
+    // Terminart zuoberst und lesbar (gemeinsames Formular: Terminart, Dauer, Kosten aus kontakt-angebote.mjs, nie vom
+    // Client); historische Angebots-IDs (FIRST 30 / regulär SG) behalten ihre bisherigen Zeilen.
     const rows = [
-      // Angebotsklassifikation zuoberst, damit das Praxisteam FIRST 30 und reguläre Anfragen sofort unterscheidet.
-      ['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined],
-      ['Angebots-ID', offer ? offerId : undefined],
+      ...(neu ? [['Terminart', offer.label], ['Dauer', offer.dauerMin ? offer.dauerMin + ' Minuten' : undefined], ['Kosten', offer.kosten]]
+        : [['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined]]),
+      ['Standort', d.standort],
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],
-      ['Standort', d.standort], ['Standort-ID', d.standort_id],
       ['Aktuelle Situation', d.situation], ['Nachricht', d.nachricht],
       ['Interessen', d.interessen], ['Einwilligung Updates', d.consent],
       ['Behandlung / Anliegen', d.behandlung || d.anliegen], ['Wunschzeit', d.wunschzeit],
-      ['Angebot', d.angebot], ['Seite', d.seite],
+      ['Angebot', d.angebot],
       // Partner-B2B (quelle=partner-b2b, /partner/): Qualifikationsfelder. Nur gesetzt, wenn vorhanden.
       ['Praxis-Website', d.praxis_url], ['Klinische Erfahrung (Jahre)', d.erfahrung],
       ['Anerkennung', d.anerkennung], ['Räume / Team', d.raeume_team],
@@ -124,19 +126,29 @@ export async function onRequestPost({ request, env }) {
       ['Warum Partnerschaft', d.motivation],
       // Praxisnachfolge (quelle=praxisnachfolge): kein Umsatzfeld.
       ['Praxis aktiv seit', d.aktiv_seit], ['Gewünschter Zeitraum', d.zeitraum], ['Gewünschter Übergang', d.uebergang],
-      ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
-      ['Formular', d.formular], ['Zeit', d.zeit],
     ];
-    const html =
-      '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
-      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage' + (offer ? ' — ' + esc(offer.art) : '') + '</h2>' +
-      (offer ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid ' + (offer.betreff ? '#813548' : '#2D9B6F') + ';background:#f6f6f6"><strong>' + esc(offer.art) + '</strong> · ' + esc(d.standort || 'St. Gallen') + ' · ' + esc(offer.terminart) + '</p>' : '') +
-      '<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">' +
-      rows.filter(([, v]) => v != null && String(v).trim() !== '')
+    // Technische Angaben (Quelle, Formular-Identifier, IDs) getrennt und klar beschriftet: nicht im Betreff, nicht in
+    // der Terminart-Kopfzeile. Werte unverändert, damit Auswertung und Zuordnung weiter funktionieren.
+    const tech = [
+      ['Anfrageart (Code)', neu ? offer.art : undefined], ['Beschreibung', neu ? offer.terminart : undefined],
+      ['Angebots-ID', offer ? offerId : undefined], ['Standort-ID', d.standort_id],
+      ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
+      ['Seite', d.seite], ['Formular', d.formular], ['Zeit', d.zeit],
+    ];
+    const table = (list) => '<table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">' +
+      list.filter(([, v]) => v != null && String(v).trim() !== '')
         .map(([k, v]) => '<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top"><strong>' +
           esc(k) + '</strong></td><td style="padding:4px 0">' + esc(v).replace(/\n/g, '<br>') + '</td></tr>')
-        .join('') +
-      '</table></body></html>';
+        .join('') + '</table>';
+    const html =
+      '<!doctype html><html lang="de"><head><meta charset="utf-8"></head><body>' +
+      '<h2 style="font-family:sans-serif;margin:0 0 12px">Neue TCM.ch Anfrage' + (offer ? ' — ' + esc(neu ? offer.anzeige : offer.art) : '') + '</h2>' +
+      (neu ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid #2D9B6F;background:#f6f6f6"><strong>' + esc(offer.anzeige) + '</strong> · ' + esc(d.standort) + (offer.kosten ? ' · ' + esc(offer.kosten) : '') + '</p>'
+        : offer ? '<p style="font-family:sans-serif;font-size:14px;margin:0 0 12px;padding:8px 12px;border-left:4px solid ' + (offer.betreff ? '#813548' : '#2D9B6F') + ';background:#f6f6f6"><strong>' + esc(offer.art) + '</strong> · ' + esc(d.standort || 'St. Gallen') + ' · ' + esc(offer.terminart) + '</p>' : '') +
+      table(rows) +
+      '<h3 style="font-family:sans-serif;font-size:13px;color:#666;margin:20px 0 6px">Technische Angaben</h3>' +
+      table(tech) +
+      '</body></html>';
 
     let subject = d.quelle === 'partner-b2b'
       ? 'Partner-Anfrage – ' + (d.situation || 'Situation offen') + ' (' + d.name + (d.wunschstadt ? ', ' + d.wunschstadt : '') + ')'
@@ -154,11 +166,16 @@ export async function onRequestPost({ request, env }) {
     // Massage-Anfragen (anfrage_typ==='massage') im Betreff markieren; quelle steht bereits
     // als eigene Zeile im HTML-Body (rows oben).
     if (d.anfrage_typ === 'massage') subject = '[Massage] ' + subject;
-    // Formularname (z. B. Hero-Gratis-30min-StGallen) vorne im Betreff, damit im
-    // Postfach sofort sichtbar ist, welches Formular gefeuert hat.
-    if (d.formular) subject = '[' + String(d.formular).replace(/[\r\n]+/g, ' ').slice(0, 60) + '] ' + subject;
-    // FIRST 30: Suffix am Ende des Betreffs (bestehender Formular-Präfix und Betreffaufbau bleiben unverändert).
-    if (offer && offer.betreff) subject += offer.betreff;
+    if (neu) {
+      // Gemeinsames Formular: Betreff nur aus validierter Terminart + kanonischem Ziel. Der Formularname
+      // (z. B. Hero-Gratis-30min-StGallen) steht nur noch unter «Technische Angaben».
+      subject = (d.anfrage_typ === 'massage' ? '[Massage] ' : '') + offer.mailBetreff;
+    } else {
+      // Übrige Formulare und historische IDs: Formularname vorne im Betreff wie bisher.
+      if (d.formular) subject = '[' + String(d.formular).replace(/[\r\n]+/g, ' ').slice(0, 60) + '] ' + subject;
+      // FIRST 30: Suffix am Ende des Betreffs (bestehender Formular-Präfix und Betreffaufbau bleiben unverändert).
+      if (offer && offer.betreff) subject += offer.betreff;
+    }
     const body = {
       from: FROM,
       to: [TO],
