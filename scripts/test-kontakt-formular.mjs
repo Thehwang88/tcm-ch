@@ -237,7 +237,7 @@ const orderOk = (pg, i) => pg.evaluate((C) => { const c = document.querySelector
   return els.every((e, k) => k === 0 || (els[k - 1].compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING && e.getBoundingClientRect().top >= els[k - 1].getBoundingClientRect().bottom - 1)); }, card(i));
 /** Innerhalb der Karte ist höchstens der Anfrage-Button neongrün gefüllt. */
 /** Formular endet nach OneDoc: kein Anrufbereich, letztes sichtbares Element der Karte ist der OneDoc-Bereich. */
-const endsAfterOd = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), f = c.querySelector('form'); return !c.querySelector('.kf-call') && [...c.querySelectorAll('[data-kf-tel]')].every((t) => t.closest('.kf-onedoc .kf-alt')) && f.lastElementChild.matches('.kf-onedoc') && c.lastElementChild.tagName === 'SCRIPT' && c.lastElementChild.previousElementSibling === f; }, card(i));
+const endsAfterOd = (pg, i) => pg.evaluate((C) => { const c = document.querySelector(C), f = c.querySelector('form'); return !c.querySelector('.kf-call') && [...c.querySelectorAll('[data-kf-tel]')].every((t) => t.closest('.kf-onedoc .kf-alt')) && f.lastElementChild.matches('.kf-onedoc') && c.lastElementChild.tagName === 'SCRIPT' && [...c.children].filter((e) => e.tagName !== 'SCRIPT').pop() === f; }, card(i));
 const neonOnlySubmit = (pg, i) => pg.evaluate((C) => [...document.querySelectorAll(C + ' a, ' + C + ' button')].filter((e) => (e.offsetWidth || e.offsetHeight) && getComputedStyle(e).backgroundColor === 'rgb(26, 226, 136)').every((e) => e.hasAttribute('data-kf-submit')), card(i));
 console.log('L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)');
 for (const w of [390, 1440]) {
@@ -916,6 +916,20 @@ console.log('T. DE-Homepage: ruhige Formularbox (global, Standortauswahl vor den
   await pg.focus(`${C} select[name=standort]`); await pg.keyboard.press('Tab');
   ok(await pg.evaluate(() => document.activeElement && document.activeElement.name === 'terminart'), 'Tastatur: nach der Standortauswahl folgen die Terminart-Kacheln');
   await pg.close();
+}
+console.log('U. Turnstile in ruhigen Karten: Kompakt-Grösse nur, wenn das 300-px-Widget nicht passt');
+for (const w of [320, 390, 1440]) {
+  ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
+  const sg = await pg.evaluate(() => ['sg-hero', 'sg-unten'].map((i) => { const t = document.querySelector(`[data-kf-instance="${i}"] .kf-ts`); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; }));
+  await pg.close();
+  ({ pg, calls } = await open('/', { width: w }));
+  const hm = await pg.evaluate(() => { const t = document.querySelector('[data-kf-instance="home"] .kf-ts'); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; });
+  await pg.close();
+  ({ pg, calls } = await open('/kontakt/', { width: w }));
+  const km = await pg.evaluate(() => document.querySelector('[data-kf-instance="terminform"] .kf-ts').getAttribute('data-size'));
+  await pg.close();
+  const all = [...sg, hm];
+  ok(all.every(([s, cw]) => (cw < 300 ? s === 'compact' : s === 'normal')) && (w > 320 || all.every(([s]) => s === 'compact')) && km === null, `${w}px Turnstile-Grösse je nach Platz (SG oben ${sg[0].join('/')}, SG unten ${sg[1].join('/')}, Home ${hm.join('/')}); /kontakt/ unverändert`);
 }
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);

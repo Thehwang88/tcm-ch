@@ -180,7 +180,12 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (waNr ? `<span class="kf-alt-sep" aria-hidden="true" data-kf-wa-sep>·</span><a href="${esc(o.waHref!)}" target="_blank" rel="noopener" data-kf-wa="${waNr}">${WA_ICON}<span>WhatsApp</span></a>` : '') +
     `</p></div>` : '';
 
+  // Ruhig (SG, Homepage): verlangt Turnstile eine Interaktion, ist das Standard-Widget 300 px breit und würde in schmalen
+  // Karten (z. B. 320 px Viewport: 234–252 px Inhalt) abgeschnitten bzw. die Karte verbreitern. Dann offizielle Grösse
+  // «compact» (150×140). Inline am Kartenende (Karte dann vollständig geparst, kein Zwischen-Paint), weil Turnstile
+  // implizit schon vor DOMContentLoaded rendert (kontakt-form.js ist dafür zu spät).
   const ts = `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>`;
+  const tsSize = Q ? `<script>(function(e){if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode.querySelector('.kf-ts'))</script>` : '';
   const note = `<p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>`;
   const legalKurz = `<p class="kf-legal kf-legal--kurz"><a href="/datenschutz/">Datenschutz</a></p>`;
   const legal = `<p class="kf-legal">Deine Angaben verwenden wir nur zur Bearbeitung deiner Anfrage. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>`;
@@ -241,7 +246,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<a class="kf-btn kf-btn--outline" href="${telHref(fixedTel)}" data-kf-tel>${PHONE}<span data-kf-tel-text>${esc(fixedTel)}</span></a>` +
     (o.waHref ? `<a class="kf-wa" href="${esc(o.waHref)}" target="_blank" rel="noopener">oder per WhatsApp schreiben</a>` : '') +
     `</div>`) +
-    `<script src="/kontakt-form.js" defer></script></div>`
+    tsSize + `<script src="/kontakt-form.js" defer></script></div>`
   );
 }
 
