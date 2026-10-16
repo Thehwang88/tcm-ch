@@ -111,14 +111,13 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const RO = K && !!o.rueckrufOffen;
   const optOffen = !!(o.anliegen ?? '').trim();
   const Q = !!o.ruhig;
-  // Ruhig (SG): eigene, vom Inhaber bestätigte Angebotstexte; Erstbehandlung zuerst (dezent mint), Check-in als zweite Option.
+  // Ruhig (SG): kurze Angebotstexte (Mockup 16.10.2026); Erstbehandlung zuerst (dezent mint), Check-in als zweite Option.
   const tileCheckin = onlyBehandlung ? '' :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
     `<span class="kf-opt-body">` +
-    (Q ? `<span class="kf-opt-t">Noch unsicher? Kostenloser TCM-Check-in</span>` +
-      `<span class="kf-opt-d">30 Minuten für deine Fragen und eine persönliche Einschätzung, ob TCM zu deinem Anliegen passt.</span>` +
-      `<span class="kf-opt-d">Inklusive Zungen- und Pulsdiagnostik, persönlicher Empfehlung und Krankenkassen-Check.</span>` +
+    (Q ? `<span class="kf-opt-t">Kostenloser TCM-Check-in</span><span class="kf-opt-dur">30 Minuten</span>` +
+      `<span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>` +
       `<span class="kf-opt-note">Ohne Behandlung.</span>`
     : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
       (K ? `<span class="kf-opt-h">Finde heraus, ob TCM zu dir passt.</span><span class="kf-opt-d">30 Minuten persönliche TCM-Anamnese und Diagnostik.</span>`
@@ -133,8 +132,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
     `<span class="kf-opt-body"><span class="kf-opt-t">Ersttermin mit Behandlung</span>` +
-    (Q ? `<span class="kf-opt-d">Deine Beschwerden besprechen, mit TCM-Diagnostik einordnen und direkt mit der ersten Behandlung starten.</span>` +
-      `<span class="kf-opt-d">Mit persönlicher Empfehlung für das weitere Vorgehen.</span>`
+    (Q ? `<span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>`
     : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
     `</span></label>`;
 
@@ -183,19 +181,21 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     ` data-kf-scope-names="${esc(scopeNames)}"` + (o.cardStyle ? ` style="${esc(o.cardStyle)}"` : '') + `>` +
     `<link rel="stylesheet" href="/kontakt-form.css">` +
     `<form class="kf-form" novalidate data-kf-form${o.formId ? ` id="${esc(o.formId)}"` : ''}${o.formName ? ` name="${esc(o.formName)}" data-name="${esc(o.formName)}"` : ''} aria-labelledby="${p}-h">` +
-    `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>` +
+    // Ruhig (SG): schwarzer Kopfbereich mit Überschrift und Subline, darunter weisser Formularbereich.
+    (Q ? `<div class="kf-kopf"><${H} class="kf-h" id="${p}-h">Dein nächster Schritt beginnt hier.</${H}><p class="kf-kopf-sub">Direkt starten oder TCM zuerst kennenlernen.</p></div>`
+      : `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>`) +
     // Kompakt: Schrittmarker ersetzt die Einleitung (Klasse kf-intro bleibt als JS-Einfügepunkt); Legend nennt Schritt 1 für Screenreader.
     // Ruhig (SG): schlichte Abschnittsüberschrift statt Schrittmarker; Legend nennt «Terminart wählen» für Screenreader.
-    (K && Q ? `<p class="kf-intro kf-sec-h" aria-hidden="true">Terminart wählen</p>`
+    (Q ? `<p class="kf-intro kf-sec-h" aria-hidden="true">Terminart wählen</p>`
       : K ? `<p class="kf-intro kf-step" aria-hidden="true"><span class="kf-step-n">1</span>Terminart wählen</p>` : `<p class="kf-intro">Wähle, was gerade zu dir passt.</p>`) +
-    (fixed ? (K ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : select) +
-    (Q && !K ? `<p class="kf-sec-h" aria-hidden="true">Terminart wählen</p>` : '') +
+    (fixed ? (K || Q ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     (Q ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
-    (Q ? `<p class="kf-sec-h kf-sec-h--2">Rückruf anfragen</p>` : K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
+    // Ruhig (SG): keine Zwischenüberschrift, nach den Kacheln folgt direkt «Telefonnummer *».
+    (Q ? '' : K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
     (sgOd ? '' : onedocPanel) +
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K && !RO ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
