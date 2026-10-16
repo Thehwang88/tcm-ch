@@ -27,6 +27,10 @@ export const TERMINARTEN = {
     art: 'KOSTENLOSER TCM-CHECK-IN',
     beschreibung: 'Kostenloser TCM-Check-in: 30 Minuten persönliche TCM-Anamnese und Diagnostik, ohne Behandlung, ohne Verpflichtung',
     betreff: ' · TCM-Check-in',
+    /** Lesbare Terminart für Formular und Mail (Betreff, Kopfzeile). Dauer bestätigt: 30 Minuten, ohne Behandlung. */
+    dauerMin: 30,
+    anzeige: 'Kostenloser TCM-Check-in · 30 Minuten',
+    kosten: 'kostenlos, ohne Behandlung',
     submit: 'TCM-Check-in anfragen →',
   },
   behandlung: {
@@ -36,6 +40,10 @@ export const TERMINARTEN = {
     art: 'ERSTTERMIN MIT BEHANDLUNG',
     beschreibung: 'Ersttermin mit Behandlung (kostenpflichtig, Abrechnung nach Tarif)',
     betreff: ' · Ersttermin mit Behandlung',
+    /** Dauer bestätigt: 60 Minuten, kostenpflichtig. */
+    dauerMin: 60,
+    anzeige: 'Ersttermin mit Behandlung · 60 Minuten',
+    kosten: 'kostenpflichtig, Abrechnung nach Tarif',
     submit: 'Ersttermin anfragen →',
   },
   vormerkung: {
@@ -54,6 +62,7 @@ export const TERMINARTEN = {
     art: 'ANFRAGE (STANDORT IN PRÜFUNG)',
     beschreibung: 'Neutrale Anfrage – Betrieb am Standort nicht bestätigt, keine Behandlungszusage; passende Praxis vorschlagen',
     betreff: ' · Standort in Prüfung',
+    anzeige: 'Anfrage · Standort in Prüfung',
     submit: 'Anfrage senden →',
   },
   routing: {
@@ -63,6 +72,7 @@ export const TERMINARTEN = {
     art: 'ROUTING-ANFRAGE (KEIN STANDORT GEWÄHLT)',
     beschreibung: 'Passende Praxis in der Nähe vorschlagen – kein Praxisstatus zugesagt',
     betreff: ' · Routing',
+    anzeige: 'Anfrage passende Praxis',
     submit: 'Passende Praxis anfragen →',
   },
 };
@@ -114,3 +124,11 @@ export const kontaktZiele = () => {
   return out;
 };
 export const zielFuer = (value) => kontaktZiele().find((z) => z.value === String(value ?? '').trim());
+
+/** Betreff der Benachrichtigung, NUR aus serverseitig validierter Terminart und kanonischem Ziel gebaut
+ *  (nie aus Formularname oder Client-Label). Ort = kanonisches Options-Label ohne Klammerzusatz.
+ *  Beispiel: «Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.» */
+export const terminBetreff = (t, ziel) => {
+  const ort = String(ziel.label).replace(/\s*\([^)]*\)\s*$/, '').trim();
+  return 'Neue Anfrage · ' + ort + ' · ' + t.label + (t.dauerMin ? ' · ' + t.dauerMin + ' Min.' : t.anzeige && t.anzeige !== t.label ? ' · ' + t.anzeige.replace(t.label + ' · ', '') : '');
+};
