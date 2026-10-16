@@ -926,10 +926,131 @@ for (const w of [320, 390, 1440]) {
   const hm = await pg.evaluate(() => { const t = document.querySelector('[data-kf-instance="home"] .kf-ts'); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; });
   await pg.close();
   ({ pg, calls } = await open('/kontakt/', { width: w }));
-  const km = await pg.evaluate(() => document.querySelector('[data-kf-instance="terminform"] .kf-ts').getAttribute('data-size'));
+  const km = await pg.evaluate(() => { const t = document.querySelector('[data-kf-instance="terminform"] .kf-ts'); return [t.getAttribute('data-size') || 'normal', t.clientWidth]; });
   await pg.close();
-  const all = [...sg, hm];
-  ok(all.every(([s, cw]) => (cw < 300 ? s === 'compact' : s === 'normal')) && (w > 320 || all.every(([s]) => s === 'compact')) && km === null, `${w}px Turnstile-Grösse je nach Platz (SG oben ${sg[0].join('/')}, SG unten ${sg[1].join('/')}, Home ${hm.join('/')}); /kontakt/ unverändert`);
+  const all = [...sg, hm, km];
+  ok(all.every(([s, cw]) => (cw < 300 ? s === 'compact' : s === 'normal')) && (w > 320 || all.every(([s]) => s === 'compact')), `${w}px Turnstile-Grösse je nach Platz (SG oben ${sg[0].join('/')}, SG unten ${sg[1].join('/')}, Home ${hm.join('/')}, /kontakt/ ${km.join('/')})`);
+}
+console.log('V. Rollout: ruhige Gestaltung auf allen Patienten-Formulartypen');
+{
+  const S = (pg, C) => pg.$eval(C, (c) => { const v = (e) => !!(e && !e.closest('[hidden]') && (e.offsetWidth || e.offsetHeight)); return { kopf: !!c.querySelector('.kf-kopf') && getComputedStyle(c.querySelector('.kf-kopf')).backgroundColor === 'rgb(2, 11, 16)', sel: !!c.querySelector('select[name=standort]'),
+    tiles: [...c.querySelectorAll('.kf-opt')].filter(v).map((l) => l.querySelector('input').value).join(), checked: [...c.querySelectorAll('input[name=terminart]')].filter((x) => x.checked).map((x) => x.value).join(), optZu: !!c.querySelector('.kf-optgroup') && c.querySelector('.kf-optgroup').hidden,
+    alt: v(c.querySelector('[data-kf-alt-wrap]')), tel: v(c.querySelector('[data-kf-tel]')) ? c.querySelector('[data-kf-tel]').getAttribute('href') : '', wa: v(c.querySelector('[data-kf-wa]')), od: v(c.querySelector('[data-kf-onedoc]')), odHref: (c.querySelector('[data-kf-onedoc]') || { getAttribute: () => '' }).getAttribute('href'),
+    submit: c.querySelector('[data-kf-submit]').textContent.replace(/\s+/g, ' ').trim(), short: /Persönliches Gespräch, TCM-Diagnostik und erste Behandlung\./.test(c.textContent) && !/Wie können wir dir helfen|Lieber anrufen|Rückruf anfragen/.test(c.textContent.replace('Lieber Rückruf anfragen', '')), ov: document.documentElement.scrollWidth <= innerWidth }; });
+  // /kontakt/ (TerminForm, global, form_submit)
+  for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open('/kontakt/', { width: w })); const C = card('terminform'); let x = await S(pg, C);
+    ok(x.kopf && x.sel && x.tiles === 'behandlung,checkin' && !x.checked && x.optZu && !x.alt && x.submit === 'Termin anfragen →' && x.short && x.ov, `${w}px /kontakt/: ruhig, Standort + Kacheln, keine Vorauswahl, Zusatzangaben zu (generischer Fülltext öffnet nicht), Alternativen erst nach Zielwahl, kein Overflow`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/kontakt/', { width: 390 })); let C = card('terminform');
+  await sel(pg, 'terminform', 'Basel'); let x = await S(pg, C);
+  ok(x.alt && x.tel === 'tel:+41775236122' && !x.wa && x.tiles === 'behandlung', '/kontakt/ Basel: Anrufen (kanonische Nummer), kein WhatsApp (TerminForm hatte keins), kein Check-in');
+  await pick(pg, 'terminform', 'behandlung'); await type(pg, 'terminform', 'telefon', '+41 79 000 00 00'); await submit(pg, 'terminform'); await new Promise((r) => setTimeout(r, 300));
+  const fs1 = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'form_submit'));
+  ok(calls.length === 1 && calls[0].anliegen === 'Ich möchte gerne einen Termin anfragen.' && calls[0].typ === 'termin' && calls[0].standort_id === 'basel' && calls[0].angebot_id === 'ERSTTERMIN_BEHANDLUNG' && fs1.length === 1 && fs1[0].form_id === 'terminform' && !JSON.stringify(fs1).includes('79 000'), '/kontakt/ gemockter Erfolg: Versanddaten unverändert (generischer Anliegen-Text, typ termin), form_submit genau 1× ohne Personendaten');
+  await pg.close();
+  ({ pg, calls } = await open('/kontakt/?von=/standorte/frauenfeld/', { width: 390 })); x = await S(pg, card('terminform'));
+  ok(!x.optZu && await pg.$eval(card('terminform'), (c) => /Termin in Frauenfeld/.test(c.querySelector('[name=anliegen]').value) && c.querySelector('select[name=standort]').selectedIndex > 0), '/kontakt/?von=/standorte/frauenfeld/: Herkunfts-Prefill gesetzt, Standort vorgewählt, Zusatzangaben sichtbar');
+  await pg.close();
+  // Fester Standort (Basel): ohne Standortwahl, lokale Kontaktwege
+  for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open('/standorte/basel/', { width: w })); x = await S(pg, card('standort'));
+    ok(x.kopf && !x.sel && x.tiles === 'behandlung' && x.alt && x.tel === 'tel:+41775236122' && x.wa && !x.od && x.short && x.ov, `${w}px Standort Basel: ruhig, nur Behandlung (kein Check-in), Anrufen · WhatsApp lokal, kein OneDoc, kein Overflow`);
+    await pg.close();
+  }
+  ({ pg, calls } = await open('/standorte/basel/', { width: 390 }));
+  await pg.evaluate((C) => { document.querySelector(C + ' [data-kf-tel]').addEventListener('click', (e) => e.preventDefault()); document.querySelector(C + ' [data-kf-wa]').addEventListener('click', (e) => e.preventDefault()); }, card('standort'));
+  await pg.$eval(`${card('standort')} [data-kf-tel]`, (a) => a.click()); await pg.$eval(`${card('standort')} [data-kf-wa]`, (a) => a.click());
+  let ev = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)));
+  ok(ev.length === 2 && ev[0].event === 'phone_click' && ev[0].form_instance === 'standort' && ev[0].standort === 'basel' && ev[1].event === 'wa_click', `Standort Basel: Anrufen/WhatsApp je genau 1 Event (${ev.map((e) => e.event).join(',')})`);
+  await type(pg, 'standort', 'telefon', '+41 79 000 00 00'); await submit(pg, 'standort'); await new Promise((r) => setTimeout(r, 300));
+  const fsB = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'formular_senden'));
+  ok(calls.length === 1 && calls[0].standort_id === 'basel' && fsB.length === 1 && fsB[0].standort === 'basel' && fsB[0].terminart === 'behandlung', 'Standort Basel gemockter Erfolg: 1 Anfrage, formular_senden 1×');
+  await pg.close();
+  // Bottighofen (eigene Nummer)
+  ({ pg, calls } = await open('/standorte/bottighofen/', { width: 390 })); x = await S(pg, card('standort'));
+  ok(x.kopf && x.tel === 'tel:+41765780988' && x.alt, `Bottighofen: Anrufen mit eigener Nummer${x.wa ? ', WhatsApp gleiche Nummer' : ', WhatsApp nur bei gleicher Nummer (hier aus)'}`);
+  await pg.close();
+  // SG-Landingpage (fest SG): Check-in erlaubt, OneDoc bei Behandlung
+  ({ pg, calls } = await open('/akupunktur-tcm-st-gallen/', { width: 390 })); C = card('standort'); x = await S(pg, C);
+  ok(x.tiles === 'behandlung,checkin' && !x.checked && !x.od && x.alt, 'SG-Landingpage: beide Kacheln, keine Vorauswahl, OneDoc erst mit Behandlung');
+  await pick(pg, 'standort', 'behandlung'); x = await S(pg, C);
+  ok(x.od && x.odHref === '#online-buchen' && await pg.evaluate(() => !!document.getElementById('online-buchen')) && x.submit === 'Ersttermin anfragen →', 'SG-Landingpage + Behandlung: OneDoc umrandet → eingebettetes SG-Widget auf derselben Seite (#online-buchen)');
+  await pg.close();
+  // Leaf (global, vorbelegtes Anliegen) + Krankenkassen-Anfrage
+  ({ pg, calls } = await open('/therapien/tuina/', { width: 390 })); x = await S(pg, card('leaf'));
+  ok(x.kopf && x.sel && !x.optZu && await pg.$eval(card('leaf'), (c) => c.querySelector('[name=anliegen]').value.trim() !== ''), 'Leaf /therapien/tuina/: ruhig, global, vorbelegtes Anliegen → Zusatzangaben sichtbar');
+  await pg.close();
+  ({ pg, calls } = await open('/krankenkassen/akupunktur/', { width: 390 })); x = await S(pg, card('anfrage'));
+  ok(x.kopf && x.sel && x.short && x.ov, 'Krankenkassen-Anfrage: ruhig, global');
+  await sel(pg, 'anfrage', 'Luzern – Vormerkung, Eröffnung 2027'); x = await S(pg, card('anfrage'));
+  ok(!x.tiles && x.submit === 'Vormerkung senden →', 'Krankenkassen-Anfrage Vormerkung: Bedeutung erhalten');
+  await pg.close();
+  // Ausnahmen funktional unverändert (kein gemeinsamer Renderer)
+  ({ pg, calls } = await open('/massage-basel/', { width: 390 }));
+  ok(await pg.evaluate(() => !!document.querySelector('form.inline-form[onsubmit*="submitInlineFormGeneric"]') && !document.querySelector('form.inline-form [data-kf]')), 'Massage-Anfrage unverändert (eigener Handler)');
+  await pg.close();
+}
+console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfung, Wartelisten (Darstellung, Pflichtfelder, Prefill, Fehler, Erfolg)');
+{
+  const H = '[data-kf-huelle]';
+  const FAM = [
+    ['massage', '/massage-basel/', 'Passende Behandlung anfragen', 'form.inline-form[onsubmit*="submitInlineFormGeneric"]', 'name,email,telefon', '#anfrage'],
+    ['zuerich-funnel', '/akupunktur-tcm-zuerich/', 'Termin bei TCM.ch finden', 'form[data-contact-form]', 'name', '#zh-funnel'],
+    ['vorbereitung', '/standorte/zuerich-oerlikon/', 'Anfrage für Zürich Oerlikon', 'form[data-contact-form]', 'name,telefon,email', '#kontakt'],
+    ['pruefung', '/standorte/winterthur-muenzgasse/', 'Passende Praxis anfragen', 'form[data-contact-form]', 'name,telefon,email', '#kontakt'],
+    ['warteliste', '/standorte/bern/', 'Vormerken für Bern', 'form[data-be-interesse]', 'email', '#interesse'],
+    ['warteliste', '/standorte/luzern/', 'Warteliste Luzern', 'form[data-lu-waitlist]', 'email', '#warteliste'],
+    ['warteliste', '/massage-luzern/', 'Warteliste Luzern', 'form[data-mw-waitlist]', 'email', null],
+  ];
+  for (const [fam, u, titel, F, req, anchor] of FAM) for (const w of [320, 390, 1440]) {
+    ({ pg, calls } = await open(u, { width: w }));
+    const g = await pg.evaluate((H, F) => { const c = document.querySelector(H), k = c.querySelector('.kf-kopf'), f = c.querySelector(F), rc = c.getBoundingClientRect(), rk = k.getBoundingClientRect(); const b = f.querySelector('button[type=submit], .form-submit'), cb = getComputedStyle(b);
+      return { fam: c.getAttribute('data-kf-huelle'), kopf: getComputedStyle(k).backgroundColor, h: k.querySelector('.kf-h').textContent.trim(), flush: Math.abs(rk.left - rc.left - 1) <= 1 && Math.abs(rc.right - rk.right - 1) <= 1 && Math.abs(rk.top - rc.top - 1) <= 1, card: getComputedStyle(c).backgroundColor,
+        btn: cb.backgroundColor + '|' + cb.color, btnW: Math.round(b.getBoundingClientRect().width) >= Math.round(f.getBoundingClientRect().width) - 2, req: [...f.querySelectorAll('[required]')].map((e) => e.name).join(','),
+        labels: [...f.querySelectorAll('input:not([type=hidden]):not([name=website]), textarea, select')].filter((e) => !e.closest('[hidden]')).every((e) => (e.labels && e.labels.length) || e.getAttribute('aria-label')),
+        fz: Math.min(...[...f.querySelectorAll('input:not([type=hidden]):not([name=website]), textarea, select')].filter((e) => e.offsetHeight).map((e) => parseFloat(getComputedStyle(e).fontSize))),
+        ov: document.documentElement.scrollWidth <= innerWidth && rc.right <= innerWidth + 0.5 && [...c.querySelectorAll('*')].every((e) => e.getBoundingClientRect().right <= rc.right + 1 || getComputedStyle(e).position === 'absolute') && [b, ...f.querySelectorAll('label, .kf-h')].every((e) => e.scrollWidth <= e.clientWidth + 1),
+        alt: [...c.querySelectorAll('.kf-alt a')].map((a) => a.getAttribute('href').replace(/\?.*/, '')).join(' '), ts: (() => { const t = c.querySelector('.cf-turnstile'); return t ? [t.getAttribute('data-size') || 'normal', t.clientWidth] : null; })() }; }, H, F);
+    ok(g.fam === fam && g.kopf === 'rgb(2, 11, 16)' && g.h === titel && g.flush && g.card === 'rgb(255, 255, 255)' && g.btn === 'rgb(26, 226, 136)|rgb(2, 11, 16)' && g.btnW && g.labels && g.fz >= 16 && g.ov, `${w}px ${u}: Hülle (Kopf «${titel}», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow`);
+    ok(g.req === req && (!g.ts || (g.ts[1] < 300 ? g.ts[0] === 'compact' : g.ts[0] === 'normal')) && g.alt.split(' ').filter(Boolean).every((h) => /^(tel:\+41\d{9}|https:\/\/wa\.me\/41\d{9})$/.test(h)), `${w}px ${u}: Pflichtfelder unverändert (${req}), Turnstile ${g.ts ? g.ts.join('/') : '—'}, Kontaktlinks kanonisch (${g.alt || 'keine'})`);
+    await pg.close();
+  }
+  // Prefill/Zielwahl, Anker, Tastatur, Funnel-Titel
+  ({ pg, calls } = await open('/massage-basel/', { width: 390 }));
+  ok(await pg.$eval(`${H} select[name=standort]`, (s) => s.options[s.selectedIndex].text === 'Basel'), 'Massage Basel: Standort-Vorauswahl Basel erhalten');
+  await pg.focus(`${H} [name=name]`); await pg.keyboard.press('Tab');
+  ok(await pg.evaluate(() => document.activeElement.name === 'email'), 'Massage: Tastatur Name → E-Mail');
+  await pg.close();
+  ({ pg, calls } = await open('/akupunktur-tcm-zuerich/', { width: 390 }));
+  await pg.evaluate(() => window.zhQuartier && window.zhQuartier('Enge')); await new Promise((r) => setTimeout(r, 300));
+  ok(await pg.evaluate((H) => document.querySelector(H + ' .kf-kopf .inline-form-title').textContent === 'Termin nahe Enge finden' && document.querySelector(H + ' [name=quartier]').value === 'Enge' && /Termin nahe Enge finden/.test(document.querySelector(H + ' .form-submit').textContent), H), 'Zürich-Funnel: Quartier-Chip setzt Titel im neuen Kopf, Feld und Button wie bisher');
+  await pg.$eval('#zh-extra-toggle', (b) => b.click()); await new Promise((r) => setTimeout(r, 200));
+  ok(await pg.evaluate(() => !document.getElementById('zh-extra').hidden && document.getElementById('zh-extra-toggle').getAttribute('aria-expanded') === 'true'), 'Zürich-Funnel: «Weitere Angaben» klappt wie bisher auf');
+  await pg.close();
+  for (const [u, a] of [['/massage-basel/', 'anfrage'], ['/standorte/bern/', 'interesse'], ['/standorte/luzern/', 'warteliste'], ['/akupunktur-tcm-zuerich/', 'zh-funnel'], ['/standorte/zuerich-oerlikon/', 'kontakt']]) {
+    ({ pg, calls } = await open(`${u}#${a}`, { width: 390 }));
+    for (let k = 0, last = -1; k < 30; k++) { const y = await pg.evaluate(() => scrollY); if (y === last && k > 4) break; last = y; await new Promise((r) => setTimeout(r, 200)); }
+    ok(await pg.evaluate((a) => { const e = document.getElementById(a); const r = e.getBoundingClientRect(); return !!e && r.top < innerHeight && r.bottom > 0; }, a), `Anker ${u}#${a} erreichbar`);
+    await pg.close();
+  }
+  // Fehler + gemockter Erfolg (je Familie einmal); Versand-Payload siehe Vergleich gegen main im PR
+  for (const [u, F, fill, okRe, ev] of [
+    ['/massage-basel/', 'form.inline-form', { name: 'Test', email: 't@example.ch', telefon: '+41 79 000 00 00' }, /Das war's schon/, 'formular_senden'],
+    ['/akupunktur-tcm-zuerich/', 'form[data-contact-form]', { name: 'Test', telefon: '+41 79 000 00 00' }, /Danke/, 'zh_funnel_submit'],
+    ['/standorte/bern/', 'form[data-be-interesse]', { email: 't@example.ch' }, /Danke/, null],
+    ['/standorte/luzern/', 'form[data-lu-waitlist]', { email: 't@example.ch' }, /Danke/, 'formular_senden'],
+  ]) {
+    ({ pg, calls } = await open(u, { width: 390 }));
+    await pg.evaluate((F) => { document.querySelectorAll(F + ' .cf-turnstile').forEach((t) => { if (!t.querySelector('[name=cf-turnstile-response]')) { const i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'test-token'; t.appendChild(i); } }); }, F);
+    if (!/massage-basel/.test(u)) { await pg.$eval(`${F} button[type=submit]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 400));
+      ok(calls.length === 0 && await pg.evaluate((F) => [...document.querySelectorAll(F + ' [role=alert]')].some((e) => !e.hidden && e.textContent.trim()), F), `${u}: leer absenden → Fehlermeldung (role=alert), kein Versand`); }
+    await pg.evaluate((F, v) => { const f = document.querySelector(F); for (const [n, x] of Object.entries(v)) { const e = f.querySelector(`[name=${n}]`); e.value = x; } (f.querySelector('button[type=submit]')).click(); }, F, fill); await new Promise((r) => setTimeout(r, 900));
+    const evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).map((e) => e.event));
+    ok(calls.length === 1 && okRe.test(await pg.evaluate(() => document.body.innerText)) && (ev === null ? !evs.includes('formular_senden') : evs.filter((e) => e === ev).length === 1) && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('000 00 00') && !JSON.stringify(await pg.evaluate(() => window.dataLayer)).includes('example.ch'), `${u}: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (${evs.join(',') || 'keine'}), keine Personendaten im dataLayer`);
+    await pg.close();
+  }
 }
 console.log(`\n${pass} PASS / ${fails} FAIL`);
 await br.close(); srv.close(); process.exit(fails ? 1 : 0);

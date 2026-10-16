@@ -7,7 +7,7 @@
 //
 // Props:
 //   stadt  -> Anzeigename + <input name="standort">
-//   jahr   -> Eröffnungsjahr, erscheint im Ribbon
+//   jahr   -> Eröffnungsjahr, erscheint in der Unterzeile des Kopfs
 //   quelle -> <input name="quelle">, z.B. "warteliste-luzern-massage"
 import { site } from '../data/site';
 interface Props {
@@ -31,20 +31,21 @@ const { stadt, jahr, quelle } = Astro.props;
         </ul>
         <p class="mw-alt">Du brauchst früher eine Behandlung? Frag an einem unserer bestehenden Standorte an. <a href="/standorte/">Alle Standorte ansehen</a>.</p>
       </div>
-      <div class="mw-card">
-        <div class="mw-ribbon">{jahr}</div>
-        <div class="mw-card-h">Auf die Warteliste</div>
-        <p class="mw-note">Eine E-Mail genügt. Keine Werbung, keine Weitergabe.</p>
+      <div class="mw-card kf kf--ruhig kf-huelle" data-kf-huelle="warteliste">
+        {/* Gemeinsame Hülle (kontakt-form.css): Warteliste, kein Termin- oder Behandlungsversprechen vor Eröffnung. */}
+        <link rel="stylesheet" href="/kontakt-form.css" />
+        <div class="kf-kopf"><h3 class="kf-h">Warteliste {stadt}</h3><p class="kf-kopf-sub">Eine E-Mail genügt. Keine Werbung, keine Weitergabe (geplant {jahr}).</p></div>
         <form class="mw-form" data-mw-waitlist novalidate>
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
           <input type="hidden" name="quelle" value={quelle} />
           <input type="hidden" name="standort" value={stadt} />
-          <input name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" aria-label="E-Mail-Adresse" />
+          <div class="kf-field"><label class="kf-label" for="mw-email">E-Mail-Adresse <span class="kf-star" aria-hidden="true">*</span></label><input id="mw-email" name="email" type="email" autocomplete="email" required placeholder="deine@email.ch" /></div>
           <div class="cf-turnstile mw-ts" data-sitekey={site.turnstileSitekey} data-appearance="interaction-only"></div>
           <button type="submit">Auf die Warteliste</button>
           <p class="mw-rule">Nur eine Nachricht, wenn {stadt} startet.</p>
           <p class="mw-err" role="alert" hidden></p>
         </form>
+        <script is:inline>(function(c){var e=c&&c.querySelector('.cf-turnstile');if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode)</script>
       </div>
     </div>
   </div>

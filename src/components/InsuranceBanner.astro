@@ -105,6 +105,7 @@ const loc = location ? ` data-location={location}` : '';
     border-radius: 14px; padding: 10px 12px; box-shadow: var(--sh-md, 0 6px 24px rgba(0,0,0,.12));
     opacity: 0; transform: translateY(16px);
   }
+  .ib-sticky.is-guarded { visibility: hidden; opacity: 0 !important; pointer-events: none; }
   .ib-sticky.is-shown {
     opacity: 1; transform: none;
     transition: opacity var(--t-slow, 300ms) var(--ease-out), transform var(--t-slow, 300ms) var(--ease-out);
@@ -173,6 +174,23 @@ const loc = location ? ` data-location={location}` : '';
         try { sessionStorage.setItem(KEY, '1'); } catch (_) {}
       });
       if (!dismissed) window.addEventListener('scroll', maybeShow, { passive: true });
+      // Patientenformulare: Leiste aus, solange eine Formularsektion sichtbar ist, bei Eingabefokus oder offener
+      // Bildschirmtastatur (wie .scb-bar); ausgeblendet = inert/aria-hidden (nicht klick-/tabbar). Danach wieder wie bisher.
+      var fSecs = [].slice.call(document.querySelectorAll('[data-kf], [data-kf-huelle]')).map(function (c) { return c.closest('section') || c; });
+      if (fSecs.length) {
+        var tip = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select')); };
+        var kbd = function () { var vv = window.visualViewport; return !!(vv && vv.height < window.innerHeight * 0.75); };
+        var guard = function () {
+          var off = tip() || kbd() || fSecs.some(function (e) { var r = e.getBoundingClientRect(); return r.top < window.innerHeight && r.bottom > 0; });
+          if (sticky.classList.contains('is-guarded') !== off) sticky.classList.toggle('is-guarded', off);
+          sticky.inert = off; if (off) sticky.setAttribute('aria-hidden', 'true'); else sticky.removeAttribute('aria-hidden');
+        };
+        var graf = 0, gs = function () { if (!graf) graf = requestAnimationFrame(function () { graf = 0; guard(); }); };
+        ['scroll', 'resize'].forEach(function (ev) { window.addEventListener(ev, gs, { passive: true }); });
+        if (window.visualViewport) window.visualViewport.addEventListener('resize', gs);
+        document.addEventListener('focusin', gs); document.addEventListener('focusout', function () { setTimeout(gs, 0); });
+        guard();
+      }
     }
   })();
 </script>

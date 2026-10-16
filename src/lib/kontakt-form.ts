@@ -44,11 +44,13 @@ export interface KontaktFormOpts {
    *  «Weitere Angaben · optional» ist bereits im HTML eingeklappt (ohne JS per noscript offen); Button ohne Auswahl
    *  «Termin anfragen», Terminart beim Absenden Pflicht. */
   rueckrufOffen?: boolean;
-  /** SG-Standortseite (beide Formulare) und Homepage: ruhige Gestaltung. Schwarzer Kopf, Erstbehandlung zuerst, kurze
+  /** Standard für alle Patienten-Kontaktformulare (seit Rollout 16.10.2026; `false` = alte Gestaltung): ruhige Gestaltung. Schwarzer Kopf, Erstbehandlung zuerst, kurze
    *  Angebotstexte ohne Badge, gekürzte Hinweise (kompakter Datenschutz-Link), «Telefonnummer *», kein Anruf-Block.
    *  Global (ohne standortId, Homepage): Standortauswahl vor den Kacheln, optionale Angaben eingeklappt, Check-in-Kachel
    *  nur für freigegebene Ziele, OneDoc/Kontaktlinks nur mit kanonischen Daten des gewählten Ziels. Styling über .kf--ruhig. */
   ruhig?: boolean;
+  /** Nur SG unten (sg-unten): optionale Angaben offen statt eingeklappt. */
+  zusatzOffen?: boolean;
   /** Nur SG unten (sg-unten): ohne OneDoc-Alternativbereich im Formular (Trennlinie, Button, Hinweis); das echte
    *  OneDoc-Widget #online-buchen folgt direkt darunter. Formular endet nach Anfragebutton + Datenschutz. */
   ohneOnedocAlternative?: boolean;
@@ -111,9 +113,9 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const K = !!o.heroKompakt;
   const RO = K && !!o.rueckrufOffen;
   const optOffen = !!(o.anliegen ?? '').trim();
-  const Q = !!o.ruhig;
-  const QG = Q && !fixed; // ruhig + global (Homepage): keine SG-spezifische Standortlogik
-  const OE = RO || QG; // «Weitere Angaben · optional» als eingeklappte Disclosure
+  const Q = o.ruhig !== false;
+  const QG = Q && !fixed; // ruhig + global (Homepage, /kontakt/, Leaves): keine SG-spezifische Standortlogik
+  const OE = RO || (Q && !o.zusatzOffen); // «Weitere Angaben · optional» als eingeklappte Disclosure
   // Ruhig (SG): kurze Angebotstexte (Mockup 16.10.2026); Erstbehandlung zuerst (dezent mint), Check-in als zweite Option.
   const tileCheckin = onlyBehandlung ? '' :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
@@ -169,15 +171,19 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<p class="kf-hint">Ersttermin mit Behandlung direkt bei OneDoc buchen.</p>` +
     `<a class="kf-link" href="#${p}-fields" data-kf-to-fields>Lieber einen Termin anfragen <span aria-hidden="true">↓</span></a></div>` : '';
 
-  // Ruhig global: Alternativen unter dem Anfragebutton wie in der oberen SG-Box. Sichtbar erst mit gewähltem Ziel:
-  // OneDoc nur mit verifiziertem Kalender (data-onedoc, nur «Ersttermin mit Behandlung»), Anrufen mit der kanonischen
-  // Nummer des Ziels (data-tel), WhatsApp nur, wenn die bestehende WhatsApp-Nummer dieselbe ist (sonst ausgeblendet).
+  // Ruhig (ohne SG-OneDoc-Panel): Alternativen unter dem Anfragebutton wie in der oberen SG-Box. OneDoc nur mit
+  // verifiziertem Kalender und nur bei «Ersttermin mit Behandlung» (wie bisher). Anrufen: fester Standort = dessen
+  // kanonische Nummer (sofort sichtbar); global = Nummer des gewählten Ziels (data-tel), Block erst nach Zielwahl.
+  // WhatsApp nur, wenn die bestehende WhatsApp-Nummer dieselbe ist (keine fremde/pauschale Nummer).
+  const QA = Q && !sgOd;
   const waNr = (o.waHref ?? '').match(/wa\.me\/(\d+)/)?.[1] ?? '';
-  const altGlobal = QG ?
-    `<div class="kf-alt-wrap" data-kf-alt-wrap hidden><p class="kf-od-sep"><span>Oder direkt Kontakt aufnehmen</span></p>` +
-    (globalOptions().some((x) => x.onedoc) ? `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel hidden><a class="kf-btn kf-btn--outline" href="#" data-kf-onedoc><span class="kf-lt">Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a><p class="kf-hint">Direkt bei OneDoc.</p></div>` : '') +
-    `<p class="kf-alt" data-kf-kontakt-alt hidden><a href="${telHref(ZENTRAL_TEL)}" data-kf-tel>${PHONE.replace('<svg ', '<svg class="kf-alt-ic" ')}<span>Anrufen</span></a>` +
-    (waNr ? `<span class="kf-alt-sep" aria-hidden="true" data-kf-wa-sep>·</span><a href="${esc(o.waHref!)}" target="_blank" rel="noopener" data-kf-wa="${waNr}">${WA_ICON}<span>WhatsApp</span></a>` : '') +
+  const fixedNr = fixed ? fixed.phone.replace(/\D/g, '') : '';
+  const odAlt = fixed ? onedoc : globalOptions().some((x) => x.onedoc) ? { href: '#', anchor: '' } : null;
+  const altRuhig = QA ?
+    `<div class="kf-alt-wrap" data-kf-alt-wrap${fixed ? ` data-kf-alt-tel="${esc(fixed.phone)}"` : ' hidden'}><p class="kf-od-sep"><span>Oder direkt Kontakt aufnehmen</span></p>` +
+    (odAlt ? `<div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel hidden><a class="kf-btn kf-btn--outline" href="${esc(odAlt.href)}" data-kf-onedoc${odAlt.anchor ? ` data-kf-onedoc-anchor="${odAlt.anchor}"` : ''}><span class="kf-lt">Termin online buchen</span> <span class="kf-arrow" aria-hidden="true">→</span></a><p class="kf-hint">Direkt bei OneDoc.</p></div>` : '') +
+    `<p class="kf-alt" data-kf-kontakt-alt${fixed ? '' : ' hidden'}><a href="${telHref(fixed ? fixed.phone : ZENTRAL_TEL)}" data-kf-tel>${PHONE.replace('<svg ', '<svg class="kf-alt-ic" ')}<span>Anrufen</span></a>` +
+    (waNr ? `<span class="kf-alt-sep" aria-hidden="true" data-kf-wa-sep${fixed && waNr !== fixedNr ? ' hidden' : ''}>·</span><a href="${esc(o.waHref!)}" target="_blank" rel="noopener" data-kf-wa="${waNr}"${fixed && waNr !== fixedNr ? ' hidden' : ''}>${WA_ICON}<span>WhatsApp</span></a>` : '') +
     `</p></div>` : '';
 
   // Ruhig (SG, Homepage): verlangt Turnstile eine Interaktion, ist das Standard-Widget 300 px breit und würde in schmalen
@@ -217,7 +223,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
     // Ruhig (SG): keine Zwischenüberschrift, nach den Kacheln folgt direkt «Telefonnummer *».
     (Q ? '' : K ? `<p class="kf-step kf-step--2"><span class="kf-step-n" aria-hidden="true">2</span>Rückruf anfragen</p>` : '') +
-    (sgOd || QG ? '' : onedocPanel) +
+    (sgOd || QA ? '' : onedocPanel) +
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K && !RO ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
@@ -240,7 +246,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (Q ? legalKurz : K ? legal + note : note + legal) +
     `<p class="kf-err" role="alert" data-kf-err hidden></p>` +
     // Kompakt: Turnstile ausserhalb des aufklappbaren Bereichs, damit das Widget nicht in einem verborgenen Container rendert.
-    `</div>` + (K ? ts : '') + (sgOd && !o.ohneOnedocAlternative ? onedocPanel : altGlobal) + `</form>` +
+    `</div>` + (K ? ts : '') + (sgOd ? (o.ohneOnedocAlternative ? '' : onedocPanel) : altRuhig) + `</form>` +
     // Ruhig (SG): Formular endet nach OneDoc; Anrufwege stehen im Hero und bei den Praxisangaben.
     (Q ? '' : `<div class="kf-call"><p class="kf-call-h">Lieber anrufen?</p>` +
     `<a class="kf-btn kf-btn--outline" href="${telHref(fixedTel)}" data-kf-tel>${PHONE}<span data-kf-tel-text>${esc(fixedTel)}</span></a>` +
