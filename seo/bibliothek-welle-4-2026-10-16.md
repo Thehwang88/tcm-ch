@@ -1,0 +1,531 @@
+# Bibliothek Welle 4 (16.10.2026): 34 Seiten, Draft
+
+Basis: `main` 8f2dfabcb32b63632dcc831435bc65a048dce987. Branch `content/wave-34-beschwerden-wissen-befunde`. Status: Draft, nicht gemergt, nicht deployt.
+
+Redaktion ohne Autor:in oder Reviewer. Kohorten-Konstante `PUBLISHED_WELLE_4_2026_10` (src/data/befunde-werte.ts) bleibt `undefined` bis zum Release; Wissen, Befunde und Untersuchungen geben bis dahin kein `datePublished` aus. Beschwerden-Leaves tragen kein Datum. Kein FAQPage-/Question-Schema für die Kohorte (Beschwerden: `NO_FAQ_SCHEMA` in `src/pages/beschwerden/[slug].astro`; übrige Templates rendern FAQ nur als HTML).
+
+## Beschwerden
+
+### /beschwerden/schnappfinger/
+
+Title: Schnappfinger: Ursachen, Abklärung und Behandlung
+
+Quellen:
+
+- NHS: Trigger finger: https://www.nhs.uk/conditions/trigger-finger/
+- Donati et al. 2024: From diagnosis to rehabilitation of trigger finger, BMC Musculoskeletal Disorders: https://pubmed.ncbi.nlm.nih.gov/39716186/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/sehnenscheidenentzuendung/ («Schnappfinger»)
+- /koerpersignale/finger-morgens-steif/ («schnellender Finger»)
+
+### /beschwerden/steissbeinschmerzen/
+
+Title: Steissbeinschmerzen: Ursachen, Sitzen und Behandlung
+
+Quellen:
+
+- NHS: Tailbone (coccyx) pain: https://www.nhs.uk/conditions/tailbone-coccyx-pain/
+- Foye 2017: Coccydynia: Tailbone Pain, Physical Medicine and Rehabilitation Clinics of North America: https://pubmed.ncbi.nlm.nih.gov/28676363/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/isg-blockade/ («Steissbeinschmerzen»)
+- /beschwerden/piriformis-syndrom/ («Kokzygodynie»)
+
+### /beschwerden/tarsaltunnelsyndrom/
+
+Title: Tarsaltunnelsyndrom: Kribbeln und Brennen an der Fusssohle
+
+Quellen:
+
+- Sha 2024: Tarsal Tunnel Syndrome, a comprehensive review, Iowa Orthopaedic Journal: https://pubmed.ncbi.nlm.nih.gov/39811161/
+- MedlinePlus: Tarsal tunnel syndrome: https://medlineplus.gov/ency/article/000792.htm
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/nervenschmerzen/ («Tarsaltunnelsyndrom»)
+- /beschwerden/polyneuropathie/ («Tarsaltunnelsyndrom»)
+- /koerpersignale/zehen-kribbeln/ («Tarsaltunnelsyndrom»)
+
+### /beschwerden/meralgia-paraesthetica/
+
+Title: Meralgia paraesthetica: Brennen am äusseren Oberschenkel
+
+Quellen:
+
+- Solomons et al. 2022: Meralgia Paresthetica, Current Pain and Headache Reports: https://pubmed.ncbi.nlm.nih.gov/35622311/
+- Kesserwani 2021: Meralgia Paresthetica, a case report with an update on anatomy, pathology, and therapy, Cureus: https://pubmed.ncbi.nlm.nih.gov/33880277/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/nervenschmerzen/ («Meralgia paraesthetica»)
+- /koerpersignale/bein-wird-beim-sitzen-taub/ («Meralgia paraesthetica»)
+
+### /beschwerden/trockene-augen/
+
+Title: Trockene Augen: Ursachen, Abklärung und Behandlung
+
+Quellen:
+
+- NHS: Dry eyes: https://www.nhs.uk/conditions/dry-eyes/
+- Jones et al. 2025: TFOS DEWS III, Management and Therapy, American Journal of Ophthalmology: https://pubmed.ncbi.nlm.nih.gov/40467022/
+- Kim et al. 2018: Optimizing acupuncture treatment for dry eye syndrome, a systematic review, BMC Complementary and Alternative Medicine: https://pubmed.ncbi.nlm.nih.gov/29724255/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /koerpersignale/augenlid-zuckt/ («trockene Augen»)
+- /koerpersignale/druck-hinter-den-augen/ («Ein gestörter Tränenfilm»)
+
+### /beschwerden/bizepssehnenentzuendung/
+
+Title: Bizepssehnenentzündung: Schmerz vorne an der Schulter
+
+Quellen:
+
+- AAOS OrthoInfo: Biceps Tendinitis: https://orthoinfo.aaos.org/en/diseases--conditions/biceps-tendinitis/
+- McDevitt et al. 2024: Physical therapy interventions for biceps tendinopathy, a scoping review, Brazilian Journal of Physical Therapy: https://pubmed.ncbi.nlm.nih.gov/38219522/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/impingement-syndrom/ («Bizepssehnenentzündung»)
+- /beschwerden/schulterschmerzen/ («lange Bizepssehne»)
+
+### /beschwerden/patellofemorales-schmerzsyndrom/
+
+Title: Patellofemorales Schmerzsyndrom: Schmerz hinter der Kniescheibe
+
+Quellen:
+
+- van der Heijden et al. 2015: Exercise for treating patellofemoral pain syndrome, Cochrane Database of Systematic Reviews: https://pubmed.ncbi.nlm.nih.gov/25603546/
+- Collins et al. 2018: Consensus statement on exercise therapy and physical interventions for patellofemoral pain, British Journal of Sports Medicine: https://pubmed.ncbi.nlm.nih.gov/29925502/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/knieschmerzen/ («patellofemorales Schmerzsyndrom»)
+- /beschwerden/patellaspitzensyndrom/ («patellofemorales Schmerzsyndrom»)
+
+### /beschwerden/pudendusneuralgie/
+
+Title: Pudendusneuralgie: Nervenschmerz im Becken verstehen
+
+Quellen:
+
+- NHS: Pudendal neuralgia: https://www.nhs.uk/conditions/pudendal-neuralgia/
+- Labat et al. 2008: Diagnostic criteria for pudendal neuralgia by pudendal nerve entrapment (Nantes criteria), Neurourology and Urodynamics: https://pubmed.ncbi.nlm.nih.gov/17828787/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/prostata/ («Pudendusneuralgie»)
+- /beschwerden/vulvodynie/ («Reizung des Pudendusnervs»)
+
+### /beschwerden/beckenbodenverspannung/
+
+Title: Beckenbodenverspannung: wenn der Beckenboden nicht loslässt
+
+Quellen:
+
+- Torosis et al. 2024: A Treatment Algorithm for High-Tone Pelvic Floor Dysfunction, Obstetrics and Gynecology: https://pubmed.ncbi.nlm.nih.gov/38387036/
+- Afyouni et al. 2025: Urologic manifestations of nonrelaxing pelvic floor dysfunction, Current Urology Reports: https://pubmed.ncbi.nlm.nih.gov/41094314/
+- Frawley et al. 2021: ICS report on the terminology for pelvic floor muscle assessment, Neurourology and Urodynamics: https://pubmed.ncbi.nlm.nih.gov/33844342/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/dyspareunie/ («Beckenbodenanspannung»)
+- /beschwerden/vaginismus/ («überaktiven Beckenboden»)
+- /koerpersignale/druckgefuehl-im-unterbauch/ («Beckenbodenverspannung»)
+
+### /beschwerden/meniskusriss/
+
+Title: Meniskusriss: Symptome, Abklärung und wann operieren
+
+Quellen:
+
+- Siemieniuk et al. 2017: Arthroscopic surgery for degenerative knee arthritis and meniscal tears, a clinical practice guideline, BMJ: https://pubmed.ncbi.nlm.nih.gov/28490431/
+- Kise et al. 2016: Exercise therapy versus arthroscopic partial meniscectomy for degenerative meniscal tear, BMJ: https://pubmed.ncbi.nlm.nih.gov/27440192/
+- Englund et al. 2008: Incidental meniscal findings on knee MRI in middle-aged and elderly persons, New England Journal of Medicine: https://pubmed.ncbi.nlm.nih.gov/18784100/
+- van der Graaf et al. 2022: Arthroscopic partial meniscectomy versus physical therapy for traumatic meniscal tears in a young study population, British Journal of Sports Medicine: https://pubmed.ncbi.nlm.nih.gov/35676079/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/bakerzyste/ («Meniskusschäden»)
+- /beschwerden/knieschmerzen/ («Meniskusriss»)
+- /gesundheitsbibliothek/untersuchungen/mrt/ («Meniskusriss»)
+
+### /beschwerden/thoracic-outlet-syndrom/
+
+Title: Thoracic-Outlet-Syndrom: Kribbeln, Schwere und kalte Hand
+
+Quellen:
+
+- NHS: Thoracic outlet syndrome: https://www.nhs.uk/conditions/thoracic-outlet-syndrome/
+- Panther et al. 2022: Thoracic outlet syndrome, a review, Journal of Shoulder and Elbow Surgery: https://pubmed.ncbi.nlm.nih.gov/35963513/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /koerpersignale/arm-schlaeft-nachts-ein/ («Thoracic-Outlet-Syndrom»)
+- /koerpersignale/kribbeln-vom-nacken-in-den-arm/ («Thoracic-Outlet-Syndrom»)
+
+### /beschwerden/chronischer-husten/
+
+Title: Chronischer Husten: Ursachen und Abklärung ab acht Wochen
+
+Quellen:
+
+- Morice et al. 2020: ERS guidelines on the diagnosis and treatment of chronic cough in adults and children, European Respiratory Journal: https://pubmed.ncbi.nlm.nih.gov/31515408/
+- NHS: Cough: https://www.nhs.uk/conditions/cough/
+- Lee et al. 2025: Acupuncture-related therapy for chronic cough, a systematic review and meta-analysis, Integrative Medicine Research: https://pubmed.ncbi.nlm.nih.gov/39944112/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /koerpersignale/husten-nach-dem-essen/ («chronischem Husten»)
+- /koerpersignale/trockener-husten/ («chronischer Husten»)
+
+## Wissen (Akupunktur-Entscheidung)
+
+### /wissen/akupunktur-bei-neurodermitis/
+
+Title: Akupunktur bei Neurodermitis: was Studien zeigen | TCM.ch
+
+Quellen:
+
+- Park et al. 2021: Acupuncture in mild to moderate atopic dermatitis, randomized sham-controlled trial, BMC Complementary Medicine and Therapies: https://pubmed.ncbi.nlm.nih.gov/33926433/
+- Rotter et al. 2022: Acupuncture and osteopathic medicine for atopic dermatitis, three-armed randomized trial, Clinical and Experimental Dermatology: https://pubmed.ncbi.nlm.nih.gov/35875898/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/neurodermitis/ («Akupunktur bei Neurodermitis»)
+- /koerpersignale/juckreiz-nachts-ohne-ausschlag/ («Akupunktur bei Neurodermitis»)
+
+### /wissen/akupunktur-bei-sehnenscheidenentzuendung/
+
+Title: Akupunktur bei Sehnenscheidenentzündung: Studienlage | TCM.ch
+
+Quellen:
+
+- Hadianfard et al. 2014: Efficacy of acupuncture versus local methylprednisolone acetate injection in De Quervain's tenosynovitis, randomized controlled trial: https://pubmed.ncbi.nlm.nih.gov/24929455/
+- Qin et al. 2024: Systematic review and meta-analysis of acupuncture for De Quervain's tenosynovitis, Postgraduate Medical Journal: https://pubmed.ncbi.nlm.nih.gov/38932434/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/sehnenscheidenentzuendung/ («Akupunktur bei Sehnenscheidenentzündung»)
+- /wissen/akupunktur-bei-karpaltunnelsyndrom/ («Akupunktur bei Sehnenscheidenentzündung»)
+
+### /wissen/akupunktur-bei-achillessehnenbeschwerden/
+
+Title: Akupunktur bei Achillessehnenbeschwerden: Studien | TCM.ch
+
+Quellen:
+
+- Zhang et al. 2013: Acupuncture for chronic Achilles tendinopathy, randomized controlled study, Chinese Journal of Integrative Medicine: https://pubmed.ncbi.nlm.nih.gov/23263998/
+- Hawks et al. 2023: Insertional Achilles tendinopathy and adjunct electroacupuncture, randomized controlled trial, Medical Acupuncture: https://pubmed.ncbi.nlm.nih.gov/37095788/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/achillessehnenentzuendung/ («Akupunktur bei Achillessehnenbeschwerden»)
+- /therapien/elektroakupunktur/ («Akupunktur bei Achillessehnenbeschwerden»)
+- /wissen/akupunktur-bei-fersensporn/ («Akupunktur bei Achillessehnenbeschwerden»)
+
+### /wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/
+
+Title: Akupunktur bei wiederkehrenden Blasenentzündungen | TCM.ch
+
+Quellen:
+
+- Ots, Gold et al. 2024: Segmental acupuncture for prevention of recurrent urinary tract infections, randomised clinical trial, International Urogynecology Journal: https://pubmed.ncbi.nlm.nih.gov/39060726/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/blasenentzuendung/ («Akupunktur bei wiederkehrenden Blasenentzündungen»)
+- /wissen/akupunktur-bei-reizblase/ («Akupunktur bei wiederkehrenden Blasenentzündungen»)
+
+### /wissen/akupunktur-bei-restless-legs/
+
+Title: Akupunktur bei Restless Legs: Leitlinie und Studien | TCM.ch
+
+Quellen:
+
+- Winkelman et al. 2025: Treatment of restless legs syndrome and periodic limb movement disorder, AASM clinical practice guideline, Journal of Clinical Sleep Medicine: https://pubmed.ncbi.nlm.nih.gov/39324694/
+- Cui et al. 2008: Acupuncture for restless legs syndrome, Cochrane Database of Systematic Reviews: https://pubmed.ncbi.nlm.nih.gov/18843716/
+- Guan et al. 2024: He Tiao Du Ren An Shen acupuncture for restless leg syndrome, randomized trial, Medicine: https://pubmed.ncbi.nlm.nih.gov/39331896/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/restless-legs/ («Akupunktur bei Restless Legs»)
+- /koerpersignale/beine-kribbeln-nachts/ («Akupunktur bei Restless Legs»)
+
+### /wissen/akupunktur-bei-fazialisparese/
+
+Title: Akupunktur bei Fazialisparese: was belegt ist | TCM.ch
+
+Quellen:
+
+- Chen et al. 2010: Acupuncture for Bell's palsy, Cochrane Database of Systematic Reviews: https://pubmed.ncbi.nlm.nih.gov/20687071/
+- Li et al. 2024: Electroacupuncture with intermittent wave stimulation for chronic Bell's palsy, randomized controlled trial, Postgraduate Medical Journal: https://pubmed.ncbi.nlm.nih.gov/38134327/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/fazialisparese/ («Akupunktur bei Fazialisparese»)
+- /therapien/elektroakupunktur/ («Akupunktur bei Fazialisparese»)
+
+### /wissen/akupunktur-bei-nesselsucht/
+
+Title: Akupunktur bei Nesselsucht: Studie und Grenzen | TCM.ch
+
+Quellen:
+
+- Zheng et al. 2023: Efficacy of acupuncture for chronic spontaneous urticaria, randomized controlled trial, Annals of Internal Medicine: https://pubmed.ncbi.nlm.nih.gov/37956431/
+- Correction: Efficacy of acupuncture for chronic spontaneous urticaria, Annals of Internal Medicine 2024: https://pubmed.ncbi.nlm.nih.gov/38109741/
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/nesselsucht/ («Akupunktur bei Nesselsucht»)
+- /koerpersignale/juckreiz-nachts-ohne-ausschlag/ («Akupunktur bei Nesselsucht»)
+
+### /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/
+
+Title: Akupunktur bei Gelenkschmerzen durch Aromatasehemmer | TCM.ch
+
+Quellen:
+
+- Hershman et al. 2018: Effect of acupuncture vs sham acupuncture or waitlist control on joint pain related to aromatase inhibitors, JAMA: https://jamanetwork.com/journals/jama/fullarticle/2687355
+- Hershman et al. 2022: Comparison of acupuncture vs sham acupuncture or waiting list control for aromatase inhibitor-related joint pain, 52-week results, JAMA Network Open: https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2798317
+- NCCIH: Acupuncture, effectiveness and safety: https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/ («Akupunktur bei Gelenkschmerzen durch Aromatasehemmer»)
+- /wissen/akupunktur-bei-polyneuropathie/ («Akupunktur bei Gelenkschmerzen durch Aromatasehemmer»)
+
+## Befunde & Werte
+
+### /gesundheitsbibliothek/befunde-werte/ana-antikoerper/
+
+Title: ANA positiv: Antinukleäre Antikörper verstehen | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/rheuma/ («antinukleäre Antikörper (ANA)»)
+- /gesundheitsbibliothek/befunde-werte/crp-erhoeht/ («ANA»)
+
+### /gesundheitsbibliothek/befunde-werte/rheumafaktor/
+
+Title: Rheumafaktor positiv oder erhöht: Einordnung | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/rheumatoide-arthritis/ («der Rheumafaktor»)
+- /gesundheitsbibliothek/befunde-werte/bsg-erhoeht/ («Rheumafaktor»)
+- /gesundheitsbibliothek/befunde-werte/crp-erhoeht/ («Rheumafaktor»)
+
+### /gesundheitsbibliothek/befunde-werte/anti-ccp/
+
+Title: Anti-CCP-Antikörper positiv: Einordnung | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/rheuma/ («Anti-CCP-Antikörper»)
+- /beschwerden/rheumatoide-arthritis/ («Anti-CCP»)
+- /gesundheitsbibliothek/befunde-werte/bsg-erhoeht/ («Anti-CCP»)
+
+### /gesundheitsbibliothek/befunde-werte/hla-b27/
+
+Title: HLA-B27 positiv: Einordnung des Befunds | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/morbus-bechterew/ («HLA-B27-Befund»)
+- /beschwerden/rueckenschmerzen/ («HLA-B27»)
+
+### /gesundheitsbibliothek/befunde-werte/parathormon/
+
+Title: Parathormon erhöht oder niedrig: PTH verstehen | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/ («Parathormon»)
+- /gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/ («Parathormon (PTH)»)
+
+### /gesundheitsbibliothek/befunde-werte/apolipoprotein-b/
+
+Title: Apolipoprotein B (ApoB) erhöht: Einordnung | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/befunde-werte/ldl-erhoeht/ («Apolipoprotein B»)
+- /gesundheitsbibliothek/befunde-werte/lipoprotein-a-erhoeht/ («ApoB»)
+
+### /gesundheitsbibliothek/befunde-werte/haptoglobin/
+
+Title: Haptoglobin niedrig oder erhöht: Einordnung | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/befunde-werte/ldh-erhoeht/ («Haptoglobin»)
+- /gesundheitsbibliothek/befunde-werte/retikulozyten/ («das Haptoglobin»)
+
+### /gesundheitsbibliothek/befunde-werte/dheas-wert/
+
+Title: DHEA-S erhöht oder niedrig: Wert einordnen | TCM.ch
+
+Quellen:
+
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/pcos/ («DHEA-S-Wert»)
+- /gesundheitsbibliothek/befunde-werte/testosteron-wert/ («DHEA-S»)
+
+## Untersuchungen
+
+### /gesundheitsbibliothek/untersuchungen/laparoskopie/
+
+Title: Laparoskopie: Ablauf und Erholung bei Bauchspiegelung | TCM.ch
+
+Quellen:
+
+- NHS: Laparoscopy (keyhole surgery): https://www.nhs.uk/tests-and-treatments/laparoscopy/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/endometriose/ («Bauchspiegelung (Laparoskopie)»)
+- /gesundheitsbibliothek/untersuchungen/hysteroskopie/ («Bauchspiegelung»)
+
+### /gesundheitsbibliothek/untersuchungen/arthroskopie/
+
+Title: Arthroskopie: Gelenkspiegelung, Ablauf und Grenzen | TCM.ch
+
+Quellen:
+
+- NHS: Arthroscopy: https://www.nhs.uk/tests-and-treatments/arthroscopy/
+- Siemieniuk et al. 2017: Arthroscopic surgery for degenerative knee arthritis and meniscal tears, BMJ: https://pubmed.ncbi.nlm.nih.gov/28490431/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/knieschmerzen/ («Arthroskopie»)
+- /gesundheitsbibliothek/untersuchungen/mrt/ («Gelenkspiegelung»)
+
+### /gesundheitsbibliothek/untersuchungen/kapselendoskopie/
+
+Title: Kapselendoskopie: Dünndarm mit der Kamerakapsel | TCM.ch
+
+Quellen:
+
+- MedlinePlus: Capsule endoscopy: https://medlineplus.gov/ency/article/007642.htm
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/untersuchungen/gastroskopie/ («Kapselendoskopie»)
+- /gesundheitsbibliothek/untersuchungen/koloskopie/ («Kamerakapsel»)
+
+### /gesundheitsbibliothek/untersuchungen/bronchoskopie/
+
+Title: Bronchoskopie: Lungenspiegelung, Ablauf und Vorbereitung | TCM.ch
+
+Quellen:
+
+- MedlinePlus: Bronchoscopy: https://medlineplus.gov/ency/article/003857.htm
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /beschwerden/copd/ («Lungenspiegelung»)
+- /gesundheitsbibliothek/untersuchungen/lungenfunktion/ («Bronchoskopie»)
+
+### /gesundheitsbibliothek/untersuchungen/laryngoskopie/
+
+Title: Laryngoskopie: Kehlkopfspiegelung bei Heiserkeit | TCM.ch
+
+Quellen:
+
+- MedlinePlus: Laryngoscopy and nasolaryngoscopy: https://medlineplus.gov/ency/article/007507.htm
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /koerpersignale/heiserkeit-ohne-erkaeltung/ («Laryngoskopie»)
+- /koerpersignale/klossgefuehl-im-hals/ («Kehlkopfspiegelung»)
+
+### /gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/
+
+Title: Eileiter prüfen: HSG und HyCoSy im Vergleich | TCM.ch
+
+Quellen:
+
+- Leeds Teaching Hospitals NHS Trust: Hysterosalpingography (HSG), Information for patients: https://flipbooks.leedsth.nhs.uk/LN004389.pdf
+- Leeds Teaching Hospitals NHS Trust: Hysterosalpingo Contrast Sonography (HyCoSy): https://www.leedsth.nhs.uk/patients/resources/hysterosalpingo-contrast-sonography-hycosy/
+
+Inbound (kontextuell, Bestandsseiten; Hub-, Regions- und Suchregistrierungen nicht mitgezählt):
+
+- /gesundheitsbibliothek/untersuchungen/hysteroskopie/ («HSG oder HyCoSy»)
+- /gesundheitsbibliothek/untersuchungen/spermiogramm/ («Prüfung der Eileiterdurchgängigkeit»)
+
+## Ownership-Übertragungen (Artikel 13 bis 19 des Auftrags)
+
+| Condition-Owner (bleibt) | Akupunktur-Entscheidung neu | übertragener Alias |
+|---|---|---|
+| /beschwerden/neurodermitis/ | /wissen/akupunktur-bei-neurodermitis/ | akupunktur neurodermitis |
+| /beschwerden/sehnenscheidenentzuendung/ | /wissen/akupunktur-bei-sehnenscheidenentzuendung/ | akupunktur sehnenscheidenentzündung |
+| /beschwerden/achillessehnenentzuendung/ | /wissen/akupunktur-bei-achillessehnenbeschwerden/ | (kein Alias in der Map, Intent neu zugeordnet) |
+| /beschwerden/blasenentzuendung/ | /wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/ | akupunktur blasenentzündung |
+| /beschwerden/restless-legs/ | /wissen/akupunktur-bei-restless-legs/ | akupunktur restless legs |
+| /beschwerden/fazialisparese/ | /wissen/akupunktur-bei-fazialisparese/ | (kein Alias in der Map, Intent neu zugeordnet) |
+| /beschwerden/nesselsucht/ | /wissen/akupunktur-bei-nesselsucht/ | akupunktur nesselsucht (urtikaria) |
+| /gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/ | /wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/ | enge Abgrenzung, kein Alias |
+
+Auf den sieben Beschwerden-Seiten wurden die Akupunktur-Passagen gekürzt und verlinkt, nicht gelöscht; unbelegte Sitzungs- und Wirkangaben («acht bis zwölf Sitzungen üblich», «stärkt die Abwehrkraft», «8 bis 10 Sitzungen, Akupunktur als Basis») wurden neutralisiert. Map: Alias aus `secondary_keywords` entfernt, Wissen-URL in `supporting_urls`, Notiz ergänzt. Guards: je ein Synonym-Guard pro Akupunktur-Intent, Synonym-Guards für neue Owner, dazu Langzeit-EKG, Differentialblutbild und myofasziales Schmerzsyndrom gemäss Auftrag.
+
+## Bewusst nicht angelegt
+
+Langzeit-EKG (EKG-Seite), Calprotectin (Stuhlanalyse, Guard bestand), Differentialblutbild (grosses Blutbild), myofasziales Schmerzsyndrom (Triggerpunkt-Artikel), keine weiteren Migräne-, Kinderwunsch-, Schlaf-, Rücken-, Kniearthrose-, Frozen-Shoulder- oder CMD-Akupunkturvarianten. Keine Konflikte in Map, Guards, Konflikt- und Unowned-Liste gefunden; die Konfliktdoku blieb unverändert.
+
+## QA (Stand Commit 3, lokal gebaut)
+
+- Build: ok. Sitemap 822 URLs (Basis 788, +34). dist: 846 Seiten (Basis 812, +34), 0 entfernt, 73 bestehende Seiten geändert (verlinkende Seiten, Hubs, Regionen, Bibliothekssuche, Wissen-Hub, Sitemap), keine `/en/`-Seite geändert.
+- Gates: health-audit 0 Fehler (A-Z 166/166, Wissen-Serie 36, Ownership-Gate 0), check-i18n --strict 0 failures, test-en-analytics 47/47, check-kontakt-formular 0, test-kontakt-formular ok (API gemockt, keine echte Anfrage), check-clinic-status 0, check-standort-ux 0, check-first30 0, check-professional 0.
+- Kohortenprüfung (34 URLs): Title eindeutig, Meta vorhanden, genau eine H1, Canonical selbstreferenzierend, kein noindex, 3 sichtbare FAQs je Seite (102), kein FAQPage-/Question-Schema, kein datePublished, Quellenblock sichtbar, keine Em-Dashes/ß/Platzhalter/Qi-Begriffe im Haupttext, alle Linkziele gültig, mindestens zwei kontextuelle Inbound-Links aus Bestandsseiten.
+- Overflow (Puppeteer, statischer dist-Server): 34 × 390 px und 34 × 1440 px, dazu 320 px je Layoutfamilie (Beschwerde, Wissen, Befund, Untersuchung): 72 Prüfungen, 0 Overflow, 0 JS-Fehler.
+- CSVs: Map 828 Zeilen à 21 Spalten, Guards 197 à 5 (bestehende Leerzeile 170 unverändert), Konflikte 36 à 8, Unowned 7 à 12; mit csv-Parser geprüft.
+
+## Abweichungen
+
+- Umfang: Beschwerden 466 bis 582 Wörter Haupttext (plus Kurzantwort), Wissen 515 bis 573, Befunde 316 bis 394, Untersuchungen 397 bis 497. Unter der Zielspanne, bewusst nicht aufgefüllt; jede Seite beantwortet ihre Frage mit Grenzen, Warnzeichen, FAQ und Quellen.
+- Beschwerden-Vorlage: geteilte Leaf-Vorlage übernommen. Kohortenspezifisch angepasst: Meta-Pille «Ärztliche Abklärung zuerst» statt «Häufig behandelt», USP ohne Prozentangabe zur Zusatzversicherung, Methodenblock «Was ergänzend infrage kommt» statt «Diese Behandlungen helfen». Unverändert aus der Vorlage: H1-Zusatz «TCM.ch Behandlung Schweiz», «Kostenlos & unverbindlich» unter den bestehenden Kontaktwegen, Regionalblock.
+- Untersuchungen: kein Buchungs-CTA im Inhalt; die globale mobile Sticky-Leiste («Termin abklären», WhatsApp, Anrufen) aus LayoutDe erscheint wie auf allen bestehenden Untersuchungsseiten. Nicht angefasst (globales Layout).
+- Nesselsucht: Die Korrekturnotiz zur Annals-Studie (PMID 38109741) existiert, ihr Inhalt war nicht abrufbar (Verlag 403, kein Abstract). Im Text als «Inhalt nicht einsehbar» benannt.
+- Meralgia paraesthetica: NINDS und Cleveland Clinic waren nicht abrufbar; Zweitquelle ist ein Fallbericht mit Literaturübersicht (Cureus 2021).
+
+## Offene medizinische Fragen (ärztliche Review empfohlen)
+
+- Chronischer Husten: Aussagen zu Hustenkontrolltherapie und Neuromodulatoren aus dem ERS-Abstract; Detailempfehlungen bitte pneumologisch prüfen.
+- Meniskusriss/Arthroskopie: Einordnung der BMJ-Leitlinie (2017) gegen neuere Daten prüfen, besonders für traumatische Risse bei Jüngeren.
+- Aromatasehemmer: klinische Relevanz von rund einem Punkt Schmerzdifferenz onkologisch einordnen lassen; Hinweise zu Lymphödemarm und bestrahlter Haut prüfen.
+- Restless Legs: Leitlinie ist US-amerikanisch (AASM); Schweizer Praxis zur Eisensubstitution ärztlich abgleichen.
+- Befunde: Referenzbereiche bewusst ohne Zahlen (laborabhängig); Formulierungen zu PTH/Calcium und DHEA-S endokrinologisch gegenlesen.

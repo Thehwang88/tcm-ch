@@ -3746,6 +3746,7 @@ export const befundeWerte: BefundWert[] = [
 <p>Ohne Beschwerden meist nicht. Besprich das bei Fragen mit der Rheumatologin oder Hausärztin.</p>`,
     sources: [
       { label: 'MedlinePlus: HLA-B27 antigen', url: 'https://medlineplus.gov/ency/article/003551.htm' },
+      { label: 'NHS: Ankylosing spondylitis', url: 'https://www.nhs.uk/conditions/ankylosing-spondylitis/' },
     ],
     relatedConditions: [
       { href: '/beschwerden/morbus-bechterew/', label: 'Morbus Bechterew' },
@@ -3870,6 +3871,7 @@ export const befundeWerte: BefundWert[] = [
 <p>In den ersten Lebensmonaten ja. Die Beurteilung übernimmt die Kinderärztin.</p>`,
     sources: [
       { label: 'MedlinePlus: Haptoglobin (HP) Test', url: 'https://medlineplus.gov/lab-tests/haptoglobin-hp-test/' },
+      { label: 'MedlinePlus: Haptoglobin blood test', url: 'https://medlineplus.gov/ency/article/003634.htm' },
     ],
     relatedConditions: [
       { href: '/beschwerden/eisenmangel/', label: 'Eisenmangel' },
@@ -3911,6 +3913,7 @@ export const befundeWerte: BefundWert[] = [
 <p>Nein. Manche haben erhöhte Werte, andere nicht. Die Diagnose stützt sich auf mehrere Kriterien.</p>`,
     sources: [
       { label: 'MedlinePlus: DHEA Sulfate Test', url: 'https://medlineplus.gov/lab-tests/dhea-sulfate-test/' },
+      { label: 'MedlinePlus: DHEA-sulfate test', url: 'https://medlineplus.gov/ency/article/003717.htm' },
     ],
     relatedConditions: [
       { href: '/beschwerden/pcos/', label: 'PCOS' },
