@@ -420,6 +420,26 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/bronchoskopie/
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/laryngoskopie/
 - https://tcm.ch/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/
+- https://tcm.ch/beschwerden/hallux-rigidus/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/laeuferknie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/schienbeinkantensyndrom/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/gluteale-tendinopathie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/tfcc-laesion/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/proximale-hamstring-tendinopathie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/adduktorentendinopathie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/peronealsehnen-tendinopathie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/tibialis-posterior-tendinopathie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/metatarsalgie/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/spondylolisthese/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/psoriasis-arthritis/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/dyshidrotisches-ekzem/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/kontaktdermatitis/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/akne-inversa/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/lichen-sclerosus/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/vestibulaere-migraene/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/vestibularisneuritis/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/hyperakusis/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/burning-mouth-syndrom/ — 18.10.2026 (Beschwerden Welle 5)
 
 ## Geplant (noch nicht live)
 

@@ -3752,6 +3752,702 @@ export const beschwerden: Beschwerde[] = [
         "label": "Akupunktur"
       }
     ]
+  },
+  {
+    "slug": "hallux-rigidus",
+    "name": "Hallux rigidus",
+    "title": "Hallux rigidus: Symptome und Behandlung",
+    "metaDesc": "Hallux rigidus: Arthrose im Grosszehengrundgelenk. Typische Beschwerden, Abklärung, Behandlung von Schuh bis Operation und die Grenzen ergänzender TCM.",
+    "conditionName": "Hallux rigidus",
+    "lead": "Beim Hallux rigidus ist das Grundgelenk der Grosszehe verschlissen und wird steif. Das Abrollen schmerzt, oft bildet sich ein Knochenhöcker auf dem Gelenk.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hallux-valgus",
+        "label": "Hallux valgus"
+      },
+      {
+        "slug": "gicht",
+        "label": "Gicht"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "metatarsalgie",
+        "label": "Metatarsalgie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "laeuferknie",
+    "name": "Läuferknie",
+    "title": "Läuferknie (Iliotibialband-Syndrom): Symptome und Behandlung",
+    "metaDesc": "Läuferknie (Iliotibialband-Syndrom): Schmerz aussen am Knie beim Laufen. Ursachen, Abgrenzung, Abklärung, Behandlung mit Training und Grenzen ergänzender TCM.",
+    "conditionName": "Läuferknie",
+    "lead": "Beim Läuferknie reizt ein straffes Band an der Aussenseite des Oberschenkels das Knie. Typisch ist Schmerz aussen am Knie beim Laufen, beim Bergabgehen und auf Treppen abwärts.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "patellofemorales-schmerzsyndrom",
+        "label": "Patellofemorales Schmerzsyndrom"
+      },
+      {
+        "slug": "patellaspitzensyndrom",
+        "label": "Patellaspitzensyndrom"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Kniearthrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "schienbeinkantensyndrom",
+    "name": "Schienbeinkantensyndrom",
+    "title": "Schienbeinkantensyndrom: Symptome und Behandlung",
+    "metaDesc": "Schienbeinkantensyndrom: Belastungsschmerz an der inneren Schienbeinkante. Ursachen, Abgrenzung zur Stressfraktur, Behandlung und ergänzende Möglichkeiten.",
+    "conditionName": "Schienbeinkantensyndrom",
+    "lead": "Das Schienbeinkantensyndrom ist ein Überlastungsschmerz entlang der inneren Schienbeinkante, meist nach mehr Training. Es heilt in der Regel mit Pause und schrittweisem Aufbau.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "wadenschmerzen",
+        "label": "Wadenschmerzen"
+      },
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      },
+      {
+        "slug": "achillessehnenentzuendung",
+        "label": "Achillessehnenentzündung"
+      },
+      {
+        "slug": "plantarfasziitis",
+        "label": "Plantarfasziitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "gluteale-tendinopathie",
+    "name": "Gluteale Tendinopathie",
+    "title": "Gluteale Tendinopathie: Symptome und Behandlung",
+    "metaDesc": "Gluteale Tendinopathie: Schmerz aussen an der Hüfte, beim Seitenliegen und Treppensteigen. Ursachen, Abklärung, Training als Basis und Grenzen ergänzender TCM.",
+    "conditionName": "Gluteale Tendinopathie",
+    "lead": "Bei der glutealen Tendinopathie sind die Sehnen der Gesässmuskeln am äusseren Hüftknochen gereizt. Typisch sind Schmerz beim Liegen auf der Seite, beim Aufstehen und auf Treppen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "schleimbeutelentzuendung",
+        "label": "Schleimbeutelentzündung"
+      },
+      {
+        "slug": "koxarthrose",
+        "label": "Koxarthrose"
+      },
+      {
+        "slug": "piriformis-syndrom",
+        "label": "Piriformis-Syndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "tfcc-laesion",
+    "name": "TFCC-Läsion",
+    "title": "TFCC-Läsion: Symptome und Behandlung",
+    "metaDesc": "TFCC-Läsion: Schmerz an der Kleinfingerseite des Handgelenks nach Verletzung oder Verschleiss. Abklärung, Schiene oder Operation und Grenzen ergänzender TCM.",
+    "conditionName": "TFCC-Läsion",
+    "lead": "Der TFCC ist ein Knorpel-Band-Komplex an der Kleinfingerseite des Handgelenks. Ist er verletzt oder verschlissen, schmerzt das Drehen des Unterarms und das Abstützen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sehnenscheidenentzuendung",
+        "label": "Sehnenscheidenentzündung"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      },
+      {
+        "slug": "rhizarthrose",
+        "label": "Rhizarthrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "proximale-hamstring-tendinopathie",
+    "name": "Proximale Hamstring-Tendinopathie",
+    "title": "Proximale Hamstring-Tendinopathie: Symptome und Behandlung",
+    "metaDesc": "Proximale Hamstring-Tendinopathie: tiefer Schmerz am Sitzbeinhöcker beim Sitzen und Laufen. Abgrenzung zu Ischias, Abklärung, Belastungsaufbau und Grenzen der TCM.",
+    "conditionName": "Proximale Hamstring-Tendinopathie",
+    "lead": "Bei der proximalen Hamstring-Tendinopathie ist der Sehnenansatz der hinteren Oberschenkelmuskeln am Sitzbeinhöcker gereizt. Typisch ist tiefer Gesässschmerz beim Sitzen, Laufen und Bergauflaufen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "piriformis-syndrom",
+        "label": "Piriformis-Syndrom"
+      },
+      {
+        "slug": "ischias",
+        "label": "Ischias"
+      },
+      {
+        "slug": "steissbeinschmerzen",
+        "label": "Steissbeinschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "adduktorentendinopathie",
+    "name": "Adduktorentendinopathie",
+    "title": "Adduktorentendinopathie: Symptome und Behandlung",
+    "metaDesc": "Adduktorentendinopathie: Leistenschmerz durch überlastete Sehnen der Oberschenkelinnenseite. Abgrenzung, Abklärung, aktives Training und Grenzen ergänzender TCM.",
+    "conditionName": "Adduktorentendinopathie",
+    "lead": "Bei der Adduktorentendinopathie sind die Sehnenansätze der inneren Oberschenkelmuskeln am Schambein überlastet. Typisch ist Leistenschmerz beim Sprinten, Schiessen und Richtungswechseln.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "koxarthrose",
+        "label": "Koxarthrose"
+      },
+      {
+        "slug": "beckenbodenverspannung",
+        "label": "Beckenbodenverspannung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "peronealsehnen-tendinopathie",
+    "name": "Peronealsehnen-Tendinopathie",
+    "title": "Peronealsehnen-Tendinopathie: Symptome und Behandlung",
+    "metaDesc": "Peronealsehnen-Tendinopathie: Schmerz hinter dem Aussenknöchel nach Umknicken oder Überlastung. Riss und Schnappen erkennen, Abklärung, Behandlung, Grenzen der TCM.",
+    "conditionName": "Peronealsehnen-Tendinopathie",
+    "lead": "Die Peronealsehnen laufen hinter dem Aussenknöchel und stabilisieren den Fuss. Sind sie gereizt, schmerzt die Aussenseite von Knöchel und Fuss beim Gehen und Belasten.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      },
+      {
+        "slug": "achillessehnenentzuendung",
+        "label": "Achillessehnenentzündung"
+      },
+      {
+        "slug": "sehnenscheidenentzuendung",
+        "label": "Sehnenscheidenentzündung"
+      },
+      {
+        "slug": "tarsaltunnelsyndrom",
+        "label": "Tarsaltunnelsyndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "tibialis-posterior-tendinopathie",
+    "name": "Tibialis-posterior-Tendinopathie",
+    "title": "Tibialis-posterior-Tendinopathie: Symptome und Behandlung",
+    "metaDesc": "Tibialis-posterior-Tendinopathie: Schmerz am Innenknöchel, später Knick-Senkfuss. Ursachen, Abklärung, Einlagen und Training sowie Grenzen ergänzender TCM.",
+    "conditionName": "Tibialis-posterior-Tendinopathie",
+    "lead": "Die Tibialis-posterior-Sehne hält das Fussgewölbe. Ist sie überlastet, schmerzt der Innenknöchel beim Gehen. Unbehandelt kann das Gewölbe einsinken.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      },
+      {
+        "slug": "tarsaltunnelsyndrom",
+        "label": "Tarsaltunnelsyndrom"
+      },
+      {
+        "slug": "plantarfasziitis",
+        "label": "Plantarfasziitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "metatarsalgie",
+    "name": "Metatarsalgie",
+    "title": "Metatarsalgie: Symptome und Behandlung",
+    "metaDesc": "Metatarsalgie: Schmerz unter dem Vorfussballen beim Stehen und Gehen. Häufige Ursachen, Abklärung, was Schuhe und Einlagen leisten und Grenzen ergänzender TCM.",
+    "conditionName": "Metatarsalgie",
+    "lead": "Metatarsalgie bezeichnet Schmerz unter den Mittelfussköpfchen, dem Ballen hinter den Zehen. Dahinter stecken verschiedene Ursachen, die unterschiedlich behandelt werden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "morton-neurom",
+        "label": "Morton-Neurom"
+      },
+      {
+        "slug": "hallux-valgus",
+        "label": "Hallux valgus"
+      },
+      {
+        "slug": "hallux-rigidus",
+        "label": "Hallux rigidus"
+      },
+      {
+        "slug": "plantarfasziitis",
+        "label": "Plantarfasziitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "spondylolisthese",
+    "name": "Wirbelgleiten",
+    "title": "Wirbelgleiten (Spondylolisthese): Symptome und Behandlung",
+    "metaDesc": "Wirbelgleiten (Spondylolisthese): ein Wirbel verschiebt sich nach vorne. Beschwerden, Abgrenzung zum Bandscheibenvorfall, Abklärung, Behandlung und Grenzen der TCM.",
+    "conditionName": "Wirbelgleiten",
+    "lead": "Beim Wirbelgleiten rutscht ein Wirbel gegenüber dem darunterliegenden nach vorne, meist in der Lendenwirbelsäule. Viele spüren nichts, andere haben Rücken- und Beinschmerzen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "spondylose",
+        "label": "Spondylose"
+      },
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      },
+      {
+        "slug": "bandscheibenvorfall",
+        "label": "Bandscheibenvorfall"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "psoriasis-arthritis",
+    "name": "Psoriasis-Arthritis",
+    "title": "Psoriasis-Arthritis: Symptome und Behandlung",
+    "metaDesc": "Psoriasis-Arthritis: Gelenkentzündung bei Schuppenflechte mit Schmerz, Schwellung und Steifigkeit. Zeichen, rheumatologische Abklärung, Behandlung, Grenzen der TCM.",
+    "conditionName": "Psoriasis-Arthritis",
+    "lead": "Die Psoriasis-Arthritis ist eine entzündliche Gelenkerkrankung, die bei Menschen mit Schuppenflechte auftreten kann. Früh erkannt und behandelt lassen sich Gelenkschäden oft vermeiden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      },
+      {
+        "slug": "rheuma",
+        "label": "Rheuma"
+      },
+      {
+        "slug": "rheumatoide-arthritis",
+        "label": "Rheumatoide Arthritis"
+      },
+      {
+        "slug": "gicht",
+        "label": "Gicht"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "dyshidrotisches-ekzem",
+    "name": "Dyshidrotisches Ekzem",
+    "title": "Dyshidrotisches Ekzem: Symptome und Behandlung",
+    "metaDesc": "Dyshidrotisches Ekzem (Pompholyx): juckende Bläschen an Händen und Füssen in Schüben. Auslöser, Abgrenzung zu Pilz und Psoriasis, Behandlung und Grenzen der TCM.",
+    "conditionName": "Dyshidrotisches Ekzem",
+    "lead": "Beim dyshidrotischen Ekzem bilden sich in Schüben stark juckende Bläschen an Handflächen, Fingerseiten oder Fusssohlen. Die Erkrankung ist nicht ansteckend und meist langwierig.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      },
+      {
+        "slug": "kontaktdermatitis",
+        "label": "Kontaktdermatitis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "kontaktdermatitis",
+    "name": "Kontaktdermatitis",
+    "title": "Kontaktdermatitis: Symptome und Behandlung",
+    "metaDesc": "Kontaktdermatitis: Ekzem durch Reizstoffe oder Kontaktallergene, meist an Händen und Gesicht. Irritativ oder allergisch, Epikutantest, Behandlung, Grenzen der TCM.",
+    "conditionName": "Kontaktdermatitis",
+    "lead": "Eine Kontaktdermatitis entsteht, wo die Haut mit einem Reizstoff oder einem Allergen in Berührung kommt. Wird der Auslöser gefunden und gemieden, heilt die Haut meist ab.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "seborrhoisches-ekzem",
+        "label": "Seborrhoisches Ekzem"
+      },
+      {
+        "slug": "dyshidrotisches-ekzem",
+        "label": "Dyshidrotisches Ekzem"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "akne-inversa",
+    "name": "Akne inversa",
+    "title": "Akne inversa: Symptome und Behandlung",
+    "metaDesc": "Akne inversa (Hidradenitis suppurativa): schmerzhafte Knoten und Abszesse in Hautfalten. Ursachen, Abklärung, dermatologische Behandlung und Grenzen ergänzender TCM.",
+    "conditionName": "Akne inversa",
+    "lead": "Akne inversa ist eine chronische, schubweise Hautkrankheit mit schmerzhaften Knoten, Abszessen und Narben in Hautfalten. Sie hat mit gewöhnlicher Akne wenig gemein und braucht dermatologische Behandlung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "akne",
+        "label": "Akne"
+      },
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "pcos",
+        "label": "PCOS"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "lichen-sclerosus",
+    "name": "Lichen sclerosus",
+    "title": "Lichen sclerosus: Symptome und Behandlung",
+    "metaDesc": "Lichen sclerosus: juckende, weisse Hautstellen meist im Genitalbereich. Zeichen bei allen Geschlechtern, Abklärung, Kortisonsalbe, Kontrollen und Grenzen der TCM.",
+    "conditionName": "Lichen sclerosus",
+    "lead": "Lichen sclerosus ist eine chronische Hautentzündung, die vor allem den Genital- und Analbereich betrifft. Sie ist nicht ansteckend, braucht aber eine konsequente fachärztliche Behandlung und Kontrollen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "vulvodynie",
+        "label": "Vulvodynie"
+      },
+      {
+        "slug": "scheidentrockenheit",
+        "label": "Scheidentrockenheit"
+      },
+      {
+        "slug": "dyspareunie",
+        "label": "Dyspareunie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "vestibulaere-migraene",
+    "name": "Vestibuläre Migräne",
+    "title": "Vestibuläre Migräne: Symptome und Behandlung",
+    "metaDesc": "Vestibuläre Migräne: Schwindelattacken mit Migränebezug, oft ohne Kopfschmerz. Kriterien, Abgrenzung zu Lagerungsschwindel und Menière, Behandlung, Grenzen der TCM.",
+    "conditionName": "Vestibuläre Migräne",
+    "lead": "Bei der vestibulären Migräne löst die Migräne Schwindelattacken aus, mit oder ohne Kopfschmerz. Sie gehört zu den häufigsten Ursachen von wiederkehrendem Schwindel bei Erwachsenen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "migraene",
+        "label": "Migräne"
+      },
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "morbus-meniere",
+        "label": "Morbus Menière"
+      },
+      {
+        "slug": "lagerungsschwindel",
+        "label": "Lagerungsschwindel"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "vestibularisneuritis",
+    "name": "Vestibularisneuritis",
+    "title": "Vestibularisneuritis: Symptome und Behandlung",
+    "metaDesc": "Vestibularisneuritis: plötzlicher, tagelanger Drehschwindel durch Ausfall des Gleichgewichtsnervs. Abgrenzung zum Schlaganfall, Behandlung, Reha und Grenzen der TCM.",
+    "conditionName": "Vestibularisneuritis",
+    "lead": "Bei der Vestibularisneuritis fällt der Gleichgewichtsnerv eines Ohrs akut aus. Die Folge ist heftiger Drehschwindel mit Übelkeit über Tage, der sich meist innerhalb von Wochen zurückbildet.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "lagerungsschwindel",
+        "label": "Lagerungsschwindel"
+      },
+      {
+        "slug": "morbus-meniere",
+        "label": "Morbus Menière"
+      },
+      {
+        "slug": "hoersturz",
+        "label": "Hörsturz"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "hyperakusis",
+    "name": "Hyperakusis",
+    "title": "Hyperakusis: Symptome und Behandlung",
+    "metaDesc": "Hyperakusis: Alltagsgeräusche wirken unerträglich laut oder schmerzhaft. Abgrenzung zu Tinnitus und Misophonie, HNO-Abklärung, Therapie und Grenzen der TCM.",
+    "conditionName": "Hyperakusis",
+    "lead": "Bei Hyperakusis werden normale Alltagsgeräusche als viel zu laut, unangenehm oder schmerzhaft empfunden. Behandelbar ist sie vor allem mit Hör- und Verhaltenstherapie.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "tinnitus",
+        "label": "Tinnitus"
+      },
+      {
+        "slug": "hoersturz",
+        "label": "Hörsturz"
+      },
+      {
+        "slug": "morbus-meniere",
+        "label": "Morbus Menière"
+      },
+      {
+        "slug": "fazialisparese",
+        "label": "Fazialisparese"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "burning-mouth-syndrom",
+    "name": "Burning-Mouth-Syndrom",
+    "title": "Burning-Mouth-Syndrom: Symptome und Behandlung",
+    "metaDesc": "Burning-Mouth-Syndrom: chronisches Brennen im Mund bei unauffälliger Schleimhaut. Abgrenzung zu anderen Ursachen, Abklärung, Behandlung und Grenzen ergänzender TCM.",
+    "conditionName": "Burning-Mouth-Syndrom",
+    "lead": "Beim Burning-Mouth-Syndrom brennt Zunge oder Mund über Monate, obwohl die Schleimhaut gesund aussieht. Die Diagnose wird gestellt, wenn andere Ursachen ausgeschlossen sind.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "eisenmangel",
+        "label": "Eisenmangel"
+      },
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      },
+      {
+        "slug": "sodbrennen",
+        "label": "Sodbrennen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);
