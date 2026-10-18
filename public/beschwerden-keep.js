@@ -88,5 +88,11 @@ globalThis.BESCHWERDEN_KEEP = [
   // 16.10.2026 — Welle 4 (Draft, 12 Diagnose-Owner):
   "schnappfinger", "steissbeinschmerzen", "tarsaltunnelsyndrom", "meralgia-paraesthetica",
   "trockene-augen", "bizepssehnenentzuendung", "patellofemorales-schmerzsyndrom", "pudendusneuralgie",
-  "beckenbodenverspannung", "meniskusriss", "thoracic-outlet-syndrom", "chronischer-husten"
+  "beckenbodenverspannung", "meniskusriss", "thoracic-outlet-syndrom", "chronischer-husten",
+  // Welle 5 (20 Diagnose-Owner):
+  "hallux-rigidus", "laeuferknie", "schienbeinkantensyndrom", "gluteale-tendinopathie",
+  "tfcc-laesion", "proximale-hamstring-tendinopathie", "adduktorentendinopathie", "peronealsehnen-tendinopathie",
+  "tibialis-posterior-tendinopathie", "metatarsalgie", "spondylolisthese", "psoriasis-arthritis",
+  "dyshidrotisches-ekzem", "kontaktdermatitis", "akne-inversa", "lichen-sclerosus",
+  "vestibulaere-migraene", "vestibularisneuritis", "hyperakusis", "burning-mouth-syndrom"
 ];
