@@ -172,7 +172,7 @@ export const wissenKraeuter: Wissen[] = [
     ...DATEN_K,
     bodyHtml: `<h2>Was zu MaZiRenWan untersucht wurde</h2>
 <p>Eine randomisierte, verblindete Studie verglich MaZiRenWan bei 291 Menschen mit funktioneller Verstopfung mit Senna und Placebo. Die Behandlung dauerte acht Wochen, anschliessend folgte eine weitere Beobachtungsphase.</p>
-<p>Nach acht Wochen erreichten 68 Prozent unter MaZiRenWan den definierten Behandlungserfolg, gegenüber 33 Prozent unter Placebo. Gegenüber Senna mit 57,7 Prozent war der Unterschied statistisch nicht signifikant.</p>
+<p>Nach acht Wochen erreichten 68 Prozent unter MaZiRenWan den definierten Behandlungserfolg, gegenüber 33 Prozent unter Placebo. Gegenüber Senna mit 57,7 Prozent war der Unterschied statistisch nicht signifikant; das belegt keine Gleichwertigkeit der beiden Mittel.</p>
 <p>Als Erfolg galt dabei mindestens ein zusätzlicher vollständiger spontaner Stuhlgang pro Woche gegenüber dem Ausgangswert. Das ist keine Heilungsquote und kein Beleg, dass alle Beschwerden verschwanden.</p>
 <h2>Warum die Ursache trotzdem wichtig bleibt</h2>
 <p>Verstopfung kann unter anderem mit Ernährung, Bewegung, veränderten Gewohnheiten oder Medikamenten zusammenhängen. Die passende Behandlung hängt deshalb von mehr ab als der Häufigkeit des Stuhlgangs.</p>
@@ -218,7 +218,7 @@ export const wissenKraeuter: Wissen[] = [
     ...DATEN_K,
     bodyHtml: `<h2>Welche Schmerzen wurden untersucht?</h2>
 <p>Primäre Dysmenorrhö bezeichnet Regelschmerzen ohne festgestellte zugrunde liegende Erkrankung. Davon zu unterscheiden sind Beschwerden beispielsweise bei <a href="/beschwerden/endometriose/">Endometriose</a> oder <a href="/beschwerden/adenomyose/">Adenomyose</a>.</p>
-<p>Eine Cochrane-Übersicht fand vielversprechende Hinweise auf eine Schmerzlinderung durch chinesische Kräuter bei primärer Dysmenorrhö. Die Autor:innen betonten jedoch die überwiegend niedrige methodische Qualität der Studien. Die Übersicht ist zudem älter und liefert keine sichere Empfehlung für eine bestimmte aktuelle Verordnung.</p>
+<p>Eine Cochrane-Übersicht fand vielversprechende Hinweise auf eine Schmerzlinderung durch chinesische Kräuter bei primärer Dysmenorrhö. Die Autor:innen betonten jedoch die überwiegend niedrige methodische Qualität der Studien. Die Übersicht stammt aus dem Jahr 2008 und liefert keine sichere Empfehlung für eine bestimmte aktuelle Verordnung.</p>
 <p>Diese Ergebnisse belegen weder eine Behandlung der Endometriose noch einen allgemeinen Ausgleich von Hormonen.</p>
 <h2>Wann die gynäkologische Abklärung vorgeht</h2>
 <p>Wenn deine Blutungen schmerzhafter, stärker oder unregelmässig werden, solltest du das ärztlich besprechen. Auch Zwischenblutungen oder Schmerzen beim Geschlechtsverkehr, Wasserlassen oder Stuhlgang gehören abgeklärt.</p>
