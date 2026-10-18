@@ -443,6 +443,17 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-schlafstoerungen/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-reizdarm/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-verstopfung/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-regelschmerzen/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-allergischem-schnupfen/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/akupunktur-oder-kraeutertherapie/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/tcm-granulat-dekokt-tabletten/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-qualitaet-schweiz/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+- https://tcm.ch/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/ — vorbereitet, noch nicht veröffentlicht (Kräutercluster 10; beim Release nach «Offen» mit Datum verschieben)
+
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 Stand 20.09.2026: Kontingent ist wieder verfuegbar — erste erfolgreiche Einreichungen seit 16.09.
 Die Kandidatenliste vom 18.09. ist vollstaendig abgearbeitet (2 eingereicht, 3 waren bereits
