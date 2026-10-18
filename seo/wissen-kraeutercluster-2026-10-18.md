@@ -1,6 +1,6 @@
 # Wissen: Kräutercluster, zehn Artikel zur chinesischen Kräutertherapie (18.10.2026)
 
-Branch `content/kraeuter-cluster-10`, HEAD `35b61d1c (Textstand; Bericht im Folgecommit)`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
+Branch `content/kraeuter-cluster-10`, HEAD `807be275 (Textstand; Bericht im Folgecommit)`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
 
 Textpaket: `dd1b8533-TCM-ch-Kraeutercluster-10-Artikel-Claude-Prompt.txt` (Stand 18.10.2026), 1:1 übernommen (Titles, Metas, H1, Text, FAQ, Quellen). Umsetzung im bestehenden Wissen-Modell (`src/data/wissen-kraeuter.ts`, gemerged in `wissen.ts`, Template `src/pages/wissen/[slug].astro`), nicht in der Akupunktur-bei-Serie. Semrush ist blockiert: keine Suchvolumen, Keyword-Difficulty oder Conversion-Prognosen; der Cluster ist eine strategische Hypothese.
 
@@ -95,8 +95,8 @@ Alle Quellen wurden am 18.10.2026 erneut geöffnet; Korrekturen/Rücknahmen für
 | Quelle | Zugriff | trägt |
 |---|---|---|
 | Swissmedic. Asiatische Arzneimittel (https://www.swissmedic.ch/swissmedic/de/home/kpa/asiatische-am.html) | Volltext (Swissmedic-Seite) | Asiatische Arzneimittel: vereinfachte Zulassung mit Indikation, ohne Indikation, Meldeverfahren. |
-| Swissmedic. Anforderungen an die Qualitätsdokumentation von asiatischen Arzneimitteln (https://www.swissmedic.ch/dam/swissmedic/it/dokumente/zulassung/KPA/anforderungen_andiequalitaetsdokumentationvonasiatischenarzneimi.pdf.download.pdf/anforderungen_andiequalitaetsdokumentationvonasiatischenarzneimi.pdf) | Abgerufen (PDF, 95 KB), nicht im Detail gelesen; als Referenz zur Qualitätsdokumentation | Dient nur als Verweis; die Aussage «Stoffe, Zubereitungen, Darreichungsformen werden unterschieden» stützt sich auf die Seite «Vereinfachte Zulassung ohne Indikation». |
-| Swissmedic. Handbuch HOMANT Asia HMV4 (https://www.swissmedic.ch/dam/swissmedic/en/dokumente/zulassung/KPA/zl103_00_003d_hb_handbuch_homant_asia.pdf.download.pdf/ZL103_00_003d_HB_Handbuch_HOMANT_Asia_HMV4.pdf) | Abgerufen (PDF, 468 KB), nicht im Detail gelesen; Referenz | Dient nur als Verweis (Handbuch HOMANT Asia). |
+| Swissmedic. Anforderungen an die Qualitätsdokumentation von asiatischen Arzneimitteln (https://www.swissmedic.ch/dam/swissmedic/it/dokumente/zulassung/KPA/anforderungen_andiequalitaetsdokumentationvonasiatischenarzneimi.pdf.download.pdf/anforderungen_andiequalitaetsdokumentationvonasiatischenarzneimi.pdf) | Volltext (PDF, 3 496 Wörter, Merkblatt Stand 27.11.2006, per pdftotext gelesen) | Definitionen: «Zubereitungen aus Stoffen … wie namentlich wässrige Dekokte, Granulate aus Dekokten»; Granulate gemäss Ph.Eur. als feste, trockene Aggregate zum Einnehmen; Granulate/Zubereitungen werden zu Kapseln oder Tabletten weiterverarbeitet (Zwischen- vs. Fertigprodukt, arzneiformspezifische Prüfungen). Trägt: Dekokt = wässrige Abkochung, Granulat kann aus Dekokt entstehen, Tabletten/Kapseln enthalten Zubereitungen oder Granulate; Qualitätsdokumentation gilt für jede Form. |
+| Swissmedic. Handbuch HOMANT Asia HMV4 (https://www.swissmedic.ch/dam/swissmedic/en/dokumente/zulassung/KPA/zl103_00_003d_hb_handbuch_homant_asia.pdf.download.pdf/ZL103_00_003d_HB_Handbuch_HOMANT_Asia_HMV4.pdf) | Volltext (PDF, 4 231 Wörter, Handbuch HOMANT Asia HMV4 Version 1.1, gültig ab 17.07.2024, per pdftotext gelesen) | Abschliessende Auswahllisten: Darreichungsformen Pulver, Granulat, Tabletten, Kapseln, flüssige Zubereitung (Dekokt), Salbe; Wirkstoffarten ganzer/zerkleinerter Stoff, pulverisierter Stoff, Granulat aus Stoff pulverisiert, Granulat aus angetrocknetem Wasserauszug (mit/ohne Träger). Trägt: «Nicht jedes Pulver wird gleich zubereitet», «Granulat ist nicht unbedingt gemahlenes Kraut», Unterscheidung von Stoffen, Zubereitungen und Darreichungsformen. |
 
 ### /wissen/chinesische-kraeuter-qualitaet-schweiz/
 
@@ -120,6 +120,7 @@ Besonders geprüft: Reizdarm-Seite enthält den negativen primären Endpunkt der
 - Zwei Präzisierungen nach Quellenprüfung (sonst keine Änderung an Titles, Metas, H1, Fliesstext, FAQ oder Quellen):
   - Regelschmerzen: «Die Übersicht ist zudem älter und …» → «Die Übersicht stammt aus dem Jahr 2008 und …» (Cochrane CD005288.pub3, publiziert 16.04.2008; Alter offen genannt).
   - Verstopfung: «Gegenüber Senna mit 57,7 Prozent war der Unterschied statistisch nicht signifikant.» → «… statistisch nicht signifikant; das belegt keine Gleichwertigkeit der beiden Mittel.» (Zhong 2019: p=0,14, Nichtunterlegenheit nicht geprüft).
+- Review 18.10.2026 (Folgecommit): Rezepturnamen «Tongxie Yaofang» und «MaZiRenWan» aus `secondary_keywords` (Map) und aus der Synonymliste der Guards entfernt; sie bleiben als Suchhilfe in der Bibliothekssuche und sind in Map-Notiz und Guard-Begründung als «Suchhilfe, kein Synonym, nicht reserviert» bezeichnet. Semantik-Gate `ksem.py` prüft Rezepturnamen jetzt in Map-Keywords und Guard-Synonymen. Wissen-Hub `/wissen/`: Datumssegment der Karte wird nur gerendert, wenn `datePublished` gesetzt ist (vorher «NaN. undefined» bei leerem Datum); kein Datum eingesetzt, Sortierung unverändert (Karten ohne Datum am Ende).
 - Zugriffslücken: Cochrane Library (DOI-Seite) HTTP 412, PubMed-HTML 403, BMJ-Open-Seite 403, Mayo/Springer nicht betroffen; genutzt wurden Cochrane-Kurzfassung (cochrane.org), PubMed E-utilities, PMC und Europe PMC. Europe PMC listet für CD005288.pub3 ein «Update of» (pub2, 2007) und einen Kommentar (Explore 2008), keine Rücknahme; für Frontiers 2022 (PMID 36091782) und alle übrigen PMIDs keine Korrektur. Ein fehlender Treffer ist keine Bestätigung, dass keine existiert.
 ## 5. Bestandsänderungen (exakt)
 
@@ -146,7 +147,7 @@ Nur Link-Ergänzungen und Registrierungen; keine Änderung an H1, Titles, Metas,
 
 Gerendert: Beschwerden-Chips «Wirkt das wirklich? Zum Nachlesen» (wissen-links.ts) auf sechs Beschwerde-Leaves, Weiterlesen-Karten auf fünf Akupunktur-Artikeln, drei Verweissätze im Winterthur-Kräuterartikel, drei «Mehr»-Karten auf der Nebenwirkungen-Frage. Registrierungen: Bibliothekssuche (10 Einträge), Keyword-Map (10 Zeilen), Guards (10 Zeilen), Index-Queue «Geplant (noch nicht live)» (10 Zeilen, vorbereitet, nicht eingereicht/indexiert). Wissen-Hub und Sitemap entstehen automatisch aus `wissen.ts`.
 
-## 6. Prüfungen auf dem PR-HEAD `35b61d1c (Textstand; Bericht im Folgecommit)`
+## 6. Prüfungen auf dem PR-HEAD `807be275 (Textstand; Bericht im Folgecommit)`
 
 - `npm run build`: grün (Sitemap + Worker).
 - Gates:
@@ -169,8 +170,8 @@ Gerendert: Beschwerden-Chips «Wirkt das wirklich? Zum Nachlesen» (wissen-links
 
 ## 7. Einschränkungen und offene Punkte
 
-- Veröffentlichungsdatum ungesetzt: Bis `PUBLISHED_KRAEUTER_2026_10` gesetzt ist, zeigen die Hub-Karten auf `/wissen/` für die zehn Artikel ein leeres Datum («NaN. undefined», gleiche Datumslogik wie bei den Akupunktur-bei-Wellen vor Release). Beim Release: Konstante setzen, Queue-Zeilen nach «Offen» mit Datum verschieben.
-- Formulartest `test-kontakt-formular`: siehe Gate-Zeile; der bekannte ResizeObserver-Flacker (auf main reproduziert, PR #71) ist unabhängig von dieser Änderung; ein grüner Rerun wäre keine Ursachenbehebung.
+- Veröffentlichungsdatum ungesetzt: Hub-Karten auf `/wissen/` zeigen für die zehn Artikel kein Datumssegment (Karten am Listenende). Beim Release: `PUBLISHED_KRAEUTER_2026_10` setzen, Queue-Zeilen nach «Offen» mit Datum verschieben.
+- Formulartest `test-kontakt-formular` auf dem Review-Stand: Lauf 1 702/703 mit dem bekannten Flacker-Check «ohne Auswahl: Mint-Kachel hat denselben neutralen Rand wie der Check-in» (Style-Messung vor dem Stylesheet, auf main in PR #71 dokumentiert), Lauf 2 703/703. Dieser Branch ändert keine Komponenten-, Formular-, Script- oder Functions-Dateien (`git diff --name-only origin/main` enthält nur `seo/`, `src/data/` und `src/pages/wissen/index.astro`). Der grüne Rerun ist keine Ursachenbehebung; Assertion unverändert. Logs: `/tmp/claude-0/-home-user-tcm-ch/7256a291-45a8-5985-b8d0-3822d9872d66/scratchpad/kqa/gate-test-kontakt-formular.run1.log` (Lauf 1), `/tmp/claude-0/-home-user-tcm-ch/7256a291-45a8-5985-b8d0-3822d9872d66/scratchpad/kqa/gate-test-kontakt-formular.log` (Lauf 2).
 - Keine ärztliche Prüfung erfolgt oder behauptet; Autorin ist die Redaktion, keine Reviewer-Angaben.
 - Semrush blockiert: keine Nachfragedaten; Priorisierung innerhalb des Clusters nicht belegt.
 - Standortbezogene Kräuter-CTAs bewusst nicht gesetzt (keine verifizierte Angebots-/Fachpersonenzuordnung); alle CTAs führen auf die neutrale Kontaktanfrage.
