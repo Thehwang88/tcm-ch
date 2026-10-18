@@ -1,6 +1,6 @@
 # Wissen: Kräutercluster, zehn Artikel zur chinesischen Kräutertherapie (18.10.2026)
 
-Branch `content/kraeuter-cluster-10`, HEAD `3f189ca8`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
+Branch `content/kraeuter-cluster-10`, HEAD `35b61d1c (Textstand; Bericht im Folgecommit)`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
 
 Textpaket: `dd1b8533-TCM-ch-Kraeutercluster-10-Artikel-Claude-Prompt.txt` (Stand 18.10.2026), 1:1 übernommen (Titles, Metas, H1, Text, FAQ, Quellen). Umsetzung im bestehenden Wissen-Modell (`src/data/wissen-kraeuter.ts`, gemerged in `wissen.ts`, Template `src/pages/wissen/[slug].astro`), nicht in der Akupunktur-bei-Serie. Semrush ist blockiert: keine Suchvolumen, Keyword-Difficulty oder Conversion-Prognosen; der Cluster ist eine strategische Hypothese.
 
@@ -11,8 +11,8 @@ Textpaket: `dd1b8533-TCM-ch-Kraeutercluster-10-Artikel-Claude-Prompt.txt` (Stand
 | 1 | /wissen/chinesische-kraeuter-bei-schlafstoerungen/ | Chinesische Kräuter bei Schlafstörungen: Nutzen & Grenzen | 150 | 438 | 3 |
 | 2 | /wissen/chinesische-kraeuter-bei-reizdarm/ | Chinesische Kräuter bei Reizdarm: Studien & Grenzen | 155 | 416 | 3 |
 | 3 | /wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/ | Chinesische Kräuter bei Reizmagen: Studien & Einordnung | 159 | 395 | 3 |
-| 4 | /wissen/chinesische-kraeuter-bei-verstopfung/ | Chinesische Kräuter bei Verstopfung: Nutzen & Risiken | 145 | 386 | 3 |
-| 5 | /wissen/chinesische-kraeuter-bei-regelschmerzen/ | Chinesische Kräuter bei Regelschmerzen: Evidenz & Grenzen | 162 | 358 | 3 |
+| 4 | /wissen/chinesische-kraeuter-bei-verstopfung/ | Chinesische Kräuter bei Verstopfung: Nutzen & Risiken | 145 | 393 | 3 |
+| 5 | /wissen/chinesische-kraeuter-bei-regelschmerzen/ | Chinesische Kräuter bei Regelschmerzen: Evidenz & Grenzen | 162 | 360 | 3 |
 | 6 | /wissen/chinesische-kraeuter-bei-allergischem-schnupfen/ | Chinesische Kräuter bei Heuschnupfen: Studien & Grenzen | 149 | 361 | 3 |
 | 7 | /wissen/akupunktur-oder-kraeutertherapie/ | Akupunktur oder Kräutertherapie: Was passt zu dir? | 161 | 380 | 2 |
 | 8 | /wissen/tcm-granulat-dekokt-tabletten/ | TCM-Granulat, Dekokt oder Tabletten: die Unterschiede | 149 | 387 | 3 |
@@ -117,11 +117,10 @@ Besonders geprüft: Reizdarm-Seite enthält den negativen primären Endpunkt der
 
 ## 4. Abweichungen vom Textpaket
 
-- Inhaltlich keine Änderung an Titles, Metas, H1, Fliesstext, FAQ-Fragen/-Antworten oder Quellen. Prüfung aller Quellenaussagen ergab keine ungedeckte Aussage.
-- Technisch: Markdown zu HTML; erster Absatz als Lead im Hero (nicht doppelt im Body); FAQ als H3/Absatz; Quellenlabels ohne abschliessenden Punkt/Doppelpunkt, URLs mit `target=_blank rel=noopener`; redaktioneller Hinweis (Verstopfung) entfernt und nicht veröffentlicht.
-- Template-Felder, die das Paket nicht vorgibt: `category` (Indikationen «Beschwerden verstehen», Methoden «Therapien verstehen»), `readingTime` (Wörter/200), `excerpt` = Lead, Weiterlesen-Karten (bestehende Beschwerde-/Therapie-/Artikelseiten), Artikel-CTA mit eigenem Text: «Beratung zur Kräutertherapie anfragen» / «Schildere kurz dein Anliegen … Wir klären, welche Fachperson und welcher Standort für eine Kräuterberatung infrage kommen. Umfang und Kosten des Termins werden vorab besprochen.» (Ziel `/kontakt/`, bestehender Weg, keine neuen Terminarten/Prefill/Events). Die sitewide Trust-Zeile des Artikel-CTA («Kostenlos · unverbindlich · persönlich») bezieht sich auf die Anfrage über TCM.ch Care, nicht auf die Kräuterberatung; sie ist Template-Bestand und unverändert.
-- Interne Links aus dem Paket wurden gegen Build und Canonical geprüft: alle Ziele existieren und sind kanonisch (`/beschwerden/schlafprobleme/`, `/beschwerden/allergien-heuschnupfen/`, `/beschwerden/funktionelle-dyspepsie/`, `/beschwerden/menstruationsbeschwerden/`, `/krankenkassen/`, `/kontakt/`, Akupunktur-bei-Artikel, Allergietest, Nebenwirkungen-Frage).
-
+- Zwei Präzisierungen nach Quellenprüfung (sonst keine Änderung an Titles, Metas, H1, Fliesstext, FAQ oder Quellen):
+  - Regelschmerzen: «Die Übersicht ist zudem älter und …» → «Die Übersicht stammt aus dem Jahr 2008 und …» (Cochrane CD005288.pub3, publiziert 16.04.2008; Alter offen genannt).
+  - Verstopfung: «Gegenüber Senna mit 57,7 Prozent war der Unterschied statistisch nicht signifikant.» → «… statistisch nicht signifikant; das belegt keine Gleichwertigkeit der beiden Mittel.» (Zhong 2019: p=0,14, Nichtunterlegenheit nicht geprüft).
+- Zugriffslücken: Cochrane Library (DOI-Seite) HTTP 412, PubMed-HTML 403, BMJ-Open-Seite 403, Mayo/Springer nicht betroffen; genutzt wurden Cochrane-Kurzfassung (cochrane.org), PubMed E-utilities, PMC und Europe PMC. Europe PMC listet für CD005288.pub3 ein «Update of» (pub2, 2007) und einen Kommentar (Explore 2008), keine Rücknahme; für Frontiers 2022 (PMID 36091782) und alle übrigen PMIDs keine Korrektur. Ein fehlender Treffer ist keine Bestätigung, dass keine existiert.
 ## 5. Bestandsänderungen (exakt)
 
 Nur Link-Ergänzungen und Registrierungen; keine Änderung an H1, Titles, Metas, FAQ oder medizinischen Abschnitten. `src/data/therapie-leaves/kraeutertherapie.html` wurde bewusst **nicht** angefasst (DE-Quelle mit EN-Paar, Fingerprint in `src/data/i18n/fingerprints.json`; ein Edit würde `check-i18n` F1 auslösen).
@@ -147,7 +146,7 @@ Nur Link-Ergänzungen und Registrierungen; keine Änderung an H1, Titles, Metas,
 
 Gerendert: Beschwerden-Chips «Wirkt das wirklich? Zum Nachlesen» (wissen-links.ts) auf sechs Beschwerde-Leaves, Weiterlesen-Karten auf fünf Akupunktur-Artikeln, drei Verweissätze im Winterthur-Kräuterartikel, drei «Mehr»-Karten auf der Nebenwirkungen-Frage. Registrierungen: Bibliothekssuche (10 Einträge), Keyword-Map (10 Zeilen), Guards (10 Zeilen), Index-Queue «Geplant (noch nicht live)» (10 Zeilen, vorbereitet, nicht eingereicht/indexiert). Wissen-Hub und Sitemap entstehen automatisch aus `wissen.ts`.
 
-## 6. Prüfungen auf dem PR-HEAD `3f189ca8`
+## 6. Prüfungen auf dem PR-HEAD `35b61d1c (Textstand; Bericht im Folgecommit)`
 
 - `npm run build`: grün (Sitemap + Worker).
 - Gates:
