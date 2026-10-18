@@ -57,10 +57,12 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
   schlafprobleme: [
     { slug: 'akupunktur-schlafprobleme', label: 'Akupunktur bei Schlafproblemen: Studien und Ablauf' },
     { slug: 'muedigkeit-im-herbst', label: 'Müdigkeit im Herbst: Licht, Zeitumstellung und was hilft' },
+    { slug: 'chinesische-kraeuter-bei-schlafstoerungen', label: 'Chinesische Kräuter bei Schlafstörungen: Nutzen und Grenzen' },
   ],
   'allergien-heuschnupfen': [
     { slug: 'akupunktur-bei-heuschnupfen', label: 'Akupunktur bei Heuschnupfen: Studienlage und Nutzen' },
     { slug: 'erkaeltung-grippe-allergie', label: 'Erkältung, Grippe oder Allergie? Die Unterschiede' },
+    { slug: 'chinesische-kraeuter-bei-allergischem-schnupfen', label: 'Chinesische Kräuter bei Heuschnupfen: Studien und Grenzen' },
   ],
   erschoepfung: [
     { slug: 'muedigkeit-im-herbst', label: 'Müdigkeit im Herbst: Licht, Zeitumstellung und was hilft' },
@@ -85,7 +87,13 @@ export const WISSEN_FOR_BESCHWERDE: Record<string, WissenLink[]> = {
     { slug: 'hexenschuss-was-tun', label: 'Hexenschuss: Was jetzt sofort hilft' },
   ],
   // Welle 3 (14.10.2026)
-  verstopfung: [{ slug: 'akupunktur-bei-verstopfung', label: 'Akupunktur bei Verstopfung: Nutzen und Grenzen' }],
+  verstopfung: [
+    { slug: 'akupunktur-bei-verstopfung', label: 'Akupunktur bei Verstopfung: Nutzen und Grenzen' },
+    { slug: 'chinesische-kraeuter-bei-verstopfung', label: 'Chinesische Kräuter bei Verstopfung: Nutzen und Risiken' },
+  ],
+  reizdarm: [{ slug: 'chinesische-kraeuter-bei-reizdarm', label: 'Chinesische Kräuter bei Reizdarm: Studien und Grenzen' }],
+  'funktionelle-dyspepsie': [{ slug: 'chinesische-kraeuter-bei-funktioneller-dyspepsie', label: 'Chinesische Kräuter bei Reizmagen: Studien und Einordnung' }],
+  menstruationsbeschwerden: [{ slug: 'chinesische-kraeuter-bei-regelschmerzen', label: 'Chinesische Kräuter bei Regelschmerzen: Evidenz und Grenzen' }],
   prostata: [{ slug: 'akupunktur-bei-prostatitis', label: 'Akupunktur bei Prostatitis und CPPS' }],
   angststoerungen: [{ slug: 'akupunktur-bei-angststoerungen', label: 'Akupunktur bei Angststörungen' }],
   depressionen: [{ slug: 'akupunktur-bei-depressionen', label: 'Akupunktur bei Depressionen' }],

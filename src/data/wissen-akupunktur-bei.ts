@@ -333,6 +333,7 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/beschwerden/pms/', label: 'PMS', cat: 'Beschwerde' },
       { href: '/gesundheitsbibliothek/fragen/akupunktur-waehrend-periode/', label: 'Akupunktur während der Periode', cat: 'Patientenfrage' },
       { href: '/wissen/akupunktur-bei-wechseljahresbeschwerden/', label: 'Akupunktur bei Wechseljahresbeschwerden', cat: 'Artikel' },
+      { href: '/wissen/chinesische-kraeuter-bei-regelschmerzen/', label: 'Chinesische Kräuter bei Regelschmerzen', cat: 'Artikel' },
     ],
   },
   {
@@ -524,6 +525,8 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/beschwerden/verdauungsprobleme/', label: 'Verdauungsprobleme', cat: 'Beschwerde' },
       { href: '/beschwerden/funktionelle-dyspepsie/', label: 'Funktionelle Dyspepsie (Reizmagen)', cat: 'Beschwerde' },
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/wissen/chinesische-kraeuter-bei-reizdarm/', label: 'Chinesische Kräuter bei Reizdarm', cat: 'Artikel' },
+      { href: '/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/', label: 'Chinesische Kräuter bei Reizmagen', cat: 'Artikel' },
     ],
   },
   {
@@ -961,6 +964,7 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/beschwerden/verstopfung/', label: 'Verstopfung', cat: 'Beschwerde' },
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
       { href: '/wissen/akupunktur-bei-reizdarm/', label: 'Akupunktur bei Reizdarm', cat: 'Artikel' },
+      { href: '/wissen/chinesische-kraeuter-bei-verstopfung/', label: 'Chinesische Kräuter bei Verstopfung', cat: 'Artikel' },
     ],
   },
   // ────────────────────────────────────────────────────────── AKUPUNKTUR-BEI-PROSTATITIS (Welle 3)
