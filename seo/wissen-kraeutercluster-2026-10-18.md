@@ -1,6 +1,6 @@
 # Wissen: Kräutercluster, zehn Artikel zur chinesischen Kräutertherapie (18.10.2026)
 
-Branch `content/kraeuter-cluster-10`, HEAD `(Commit 3, dieser Commit)`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
+Branch `content/kraeuter-cluster-10`, HEAD `3f189ca8`, Basis main `bddea458` (am 18.10.2026 geprüft). Draft-PR, Integration auf dem Branch angewendet; **nicht veröffentlicht**, STOP vor Ready/Merge/Deployment.
 
 Textpaket: `dd1b8533-TCM-ch-Kraeutercluster-10-Artikel-Claude-Prompt.txt` (Stand 18.10.2026), 1:1 übernommen (Titles, Metas, H1, Text, FAQ, Quellen). Umsetzung im bestehenden Wissen-Modell (`src/data/wissen-kraeuter.ts`, gemerged in `wissen.ts`, Template `src/pages/wissen/[slug].astro`), nicht in der Akupunktur-bei-Serie. Semrush ist blockiert: keine Suchvolumen, Keyword-Difficulty oder Conversion-Prognosen; der Cluster ist eine strategische Hypothese.
 
@@ -147,7 +147,7 @@ Nur Link-Ergänzungen und Registrierungen; keine Änderung an H1, Titles, Metas,
 
 Gerendert: Beschwerden-Chips «Wirkt das wirklich? Zum Nachlesen» (wissen-links.ts) auf sechs Beschwerde-Leaves, Weiterlesen-Karten auf fünf Akupunktur-Artikeln, drei Verweissätze im Winterthur-Kräuterartikel, drei «Mehr»-Karten auf der Nebenwirkungen-Frage. Registrierungen: Bibliothekssuche (10 Einträge), Keyword-Map (10 Zeilen), Guards (10 Zeilen), Index-Queue «Geplant (noch nicht live)» (10 Zeilen, vorbereitet, nicht eingereicht/indexiert). Wissen-Hub und Sitemap entstehen automatisch aus `wissen.ts`.
 
-## 6. Prüfungen auf dem PR-HEAD `(Commit 3, dieser Commit)`
+## 6. Prüfungen auf dem PR-HEAD `3f189ca8`
 
 - `npm run build`: grün (Sitemap + Worker).
 - Gates:
