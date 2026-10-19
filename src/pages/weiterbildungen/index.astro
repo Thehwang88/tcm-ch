@@ -10,7 +10,7 @@ const cats = [
   { id: 'akademie', label: 'Angebote von TCM.ch', text: 'M7-Mentorat, Praktikum und Weiterbildung von TCM.ch selbst.', route: { label: 'Zur Akademie', href: '/akademie/' } },
 ];
 ---
-<LayoutDe title="TCM Weiterbildungen & Veranstaltungen Schweiz (im Aufbau) | TCM.ch" description="Neutrales Verzeichnis für TCM-Kurse, Kongresse, Workshops und Webinare in der Schweiz. Moderiert, Anerkennungen nur mit Beleg. Im Aufbau." path="/weiterbildungen" noindex={true} robots="noindex, follow">
+<LayoutDe stickyCta={false} title="TCM Weiterbildungen & Veranstaltungen Schweiz (im Aufbau) | TCM.ch" description="Neutrales Verzeichnis für TCM-Kurse, Kongresse, Workshops und Webinare in der Schweiz. Moderiert, Anerkennungen nur mit Beleg. Im Aufbau." path="/weiterbildungen" noindex={true} robots="noindex, follow">
   <ProHub id="weiterbildungen" h1="Weiterbildungen und Veranstaltungen für TCM-Fachpersonen." lead="Ein neutrales Verzeichnis für Kurse und Events der ganzen Branche. Angebote von TCM.ch selbst findest du in der Akademie – sie werden hier klar gekennzeichnet."
     cats={cats}
     rules={['Nur reale Angebote mit Anbieter, Datum und Link zur Ausschreibung.', 'Anerkennungen und Credits nur mit Beleg.', 'Vergangene Veranstaltungen werden archiviert.', 'Keine doppelten Einträge desselben Kurses.']}

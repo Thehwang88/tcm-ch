@@ -67,7 +67,7 @@ const schema = [
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<LayoutDe title={title} description={description} path={path} schema={schema} turnstile={true}>
+<LayoutDe stickyCta={false} title={title} description={description} path={path} schema={schema} turnstile={true}>
   <!-- 1. HERO -->
   <section class="pt-hero" aria-label="Karriere bei TCM.ch">
     <img class="pt-hero-bg" src="/images/partner-hero.webp" alt="Team der TCM.ch Kliniken im Austausch" width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" />

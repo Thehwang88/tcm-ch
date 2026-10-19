@@ -68,7 +68,7 @@ const careClick = (pos: 'article' | 'sticky') => careClickJs('koerpersignal', po
 // Gesundheitsbibliothek: passende Körperregion-Hubs (datengetrieben, kein Hardcoding pro Seite).
 const libRegions = regionsForSignal(data.slug);
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} turnstile={true}>
+<LayoutDe stickyCta={false} title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} turnstile={true}>
   <article>
     <section class="hero">
       <div class="wrap narrow">

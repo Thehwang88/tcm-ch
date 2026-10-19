@@ -11,7 +11,7 @@ const cats = [
   { id: 'schulen', label: 'Schulen', text: 'Ausbildungsanbieter mit belegten Anerkennungswegen. Keine Rankings.', submit: 'profil' },
 ];
 ---
-<LayoutDe title="TCM Fachpersonen & Organisationen Schweiz (im Aufbau) | TCM.ch" description="Professionelles Verzeichnis auf TCM.ch: Fachpersonen, Kliniken, Mentor:innen und Schulen der Schweizer TCM – nur Opt-in, ohne Rankings. Im Aufbau." path="/verzeichnis" noindex={true} robots="noindex, follow">
+<LayoutDe stickyCta={false} title="TCM Fachpersonen & Organisationen Schweiz (im Aufbau) | TCM.ch" description="Professionelles Verzeichnis auf TCM.ch: Fachpersonen, Kliniken, Mentor:innen und Schulen der Schweizer TCM – nur Opt-in, ohne Rankings. Im Aufbau." path="/verzeichnis" noindex={true} robots="noindex, follow">
   <ProHub id="verzeichnis" h1="TCM-Fachpersonen & Organisationen in der Schweiz." lead="Ein professionelles Verzeichnis auf TCM.ch – für Vernetzung, nicht für Rankings. Nur wer sich selbst einträgt und zustimmt, erscheint. Unabhängige Fachpersonen werden klar von TCM.ch-Team und -Partnern unterschieden."
     cats={cats}
     rules={['Opt-in: keine gescrapten oder ungefragten Profile.', 'Keine «beste Therapeut:in»-Listen, keine Bewertungen, Sortierung ohne Qualitätsanspruch.', 'Jedes Profil zeigt «Zuletzt aktualisiert» und woher die Angaben stammen.', 'Kontaktdaten nur mit ausdrücklicher Freigabe öffentlich.', 'Filterkombinationen (Kanton, Sprache, Methode) werden nicht als eigene Seiten indexiert.']}

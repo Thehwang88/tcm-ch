@@ -75,10 +75,8 @@ const TEL = `tel:+${site.whatsapp}`;
     // Opt-out fuer App-artige Buchungs-/Matching-Flows mit eigener persistenter
     // Aktionsleiste: beliebiges Element mit data-no-sticky-cta auf der Seite.
     if (document.querySelector('[data-no-sticky-cta]')) { bar.classList.add('scb-off'); return; }
-    // Sprint 2A (Routen-Kontext): Seiten mit eigener Sticky-Aktion (Team-Profile: .tp-sticky, Koerpersignale: #stickyCta)
-    // und B2B-Routen (/partner/*, /zuweisen/) zeigen die Patienten-Leiste nicht; dort wird auch kein Platz reserviert.
-    var p = location.pathname;
-    if (/^\/(team|koerpersignale)\/[^/]+\/?$/.test(p) || /^\/(partner|zuweisen)(\/|$)/.test(p)) { bar.classList.add('scb-off'); return; }
+    // Platz unter dem Inhalt nur reservieren, wenn die Leiste auf dieser Seite aktiv ist (siehe body.scb-reserve im CSS).
+    // Seiten mit eigener Sticky-Aktion und B2B-Seiten setzen stickyCta={false} am LayoutDe (-> data-no-sticky-cta).
     document.body.classList.add('scb-reserve');
     var primary = bar.querySelector('.scb-primary');
     // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.

@@ -31,7 +31,7 @@ const schema = [
 ];
 const officialIds = (b.sources ?? []).filter((i) => i !== 'fachverbandKantone');
 ---
-<LayoutDe title={b.title} description={b.metaDesc} path={path} schema={schema}>
+<LayoutDe stickyCta={false} title={b.title} description={b.metaDesc} path={path} schema={schema}>
   <div class="b2">
     <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
       <div class="b2-wrap">

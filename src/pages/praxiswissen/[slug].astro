@@ -33,7 +33,7 @@ const schema = [
 const quotes = renderableQuotes(a.expertQuotes);
 const dateLabel = new Date(a.dateModified).toLocaleDateString('de-CH', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<LayoutDe title={a.title} description={a.metaDesc} path={path} schema={schema}>
+<LayoutDe stickyCta={false} title={a.title} description={a.metaDesc} path={path} schema={schema}>
   <div class="b2">
     <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
       <div class="b2-wrap">
