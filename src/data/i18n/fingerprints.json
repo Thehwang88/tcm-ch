@@ -19,7 +19,7 @@
   },
   "hub:knowledge": {},
   "page:contact": {
-    "src/pages/kontakt.astro": "475f2382a59ae236",
+    "src/pages/kontakt.astro": "67f1fd0da83c924d",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
     "src/data/locations.ts": "61cc979b1bf2a2d6"
   },
