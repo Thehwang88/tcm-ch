@@ -21,7 +21,7 @@
 }
 .tcm-btn:hover{transform:translateY(-1px)}
 .tcm-btn:active{transform:translateY(0)}
-.tcm-btn:focus-visible{outline:3px solid rgba(2,11,16,.4);outline-offset:3px}
+.tcm-btn:focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:var(--focus-ring-offset,3px)}
 
 /* Primär-CTA auf hellen Flaechen: Mint-Flaeche, Rich-Black-Text (11.6:1). */
 .tcm-btn--mint{background:var(--surface-brand);color:var(--text-on-brand)}
@@ -71,6 +71,41 @@
    inline (Massage-Card-Praezedenz), weil ihr Grid zur Buildzeit auch nach
    /standorte/bottighofen/ kopiert wird, wo ui.css nicht laedt. */
 #home-content a.kt-feature{color:inherit;text-decoration:none}
+
+/* ── CTA-System Wave 0 (19.10.2026): kanonischer Variantensatz, nur Tokens, keine Konsumenten ausser
+   den bestehenden Homepage-Buttons (--mint/--outline/--lg bleiben rechnerisch identisch).
+   Regel (docs/design-system.md §5): --primary (Rich Black) ist der Standard auf Weiss/Concrete;
+   --mint bzw. --on-dark nur auf Rich-Black-Flaechen und als einziger Formular-Submit; WhatsApp nie
+   gefuellt auf Patientenseiten; "buchen" nur, wo ein Kalender existiert. */
+.tcm-btn--primary{background:var(--brand-black,#020B10);color:#fff}
+.tcm-btn--primary:hover{background:var(--btn-black-hover,#1F2A30);color:#fff}
+.tcm-btn--on-dark.tcm-btn--primary{background:var(--surface-brand,#1AE288);color:var(--text-on-brand,#020B10)}
+.tcm-btn--on-dark.tcm-btn--primary:hover{background:var(--brand-hover,#14C97A);color:var(--text-on-brand,#020B10)}
+.tcm-btn--on-dark.tcm-btn--outline{color:#fff;border-color:var(--btn-outline-light,rgba(255,255,255,.45))}
+.tcm-btn--on-dark.tcm-btn--outline:hover{background:rgba(255,255,255,.08);border-color:#fff;color:#fff}
+.tcm-btn--on-dark:focus-visible{outline:var(--focus-ring-on-dark,3px solid #fff)}
+/* WhatsApp: Outline-Pill mit geschuetzter WhatsApp-Glyphe (EN-Muster .ev-btn--wa), nie gefuellt. */
+.tcm-btn--whatsapp{min-height:var(--btn-h-md,48px);background:#fff;color:var(--brand-black,#020B10);border:1.5px solid rgba(2,11,16,.25);padding:14px 24px;font-size:15px;font-weight:600;white-space:nowrap}
+.tcm-btn--whatsapp:hover{border-color:var(--brand-black,#020B10);background:#fff;color:var(--brand-black,#020B10)}
+.tcm-btn--whatsapp svg{color:var(--wa-green,#25D366);width:18px;height:18px;flex-shrink:0}
+/* Groessen: --sm (Header/Kompakt, 40px, Touch-Minimum 44px auf Touch-Geraeten), --lg existiert (48px Glow), --hero (52px Hero-Pill). */
+.tcm-btn--sm{min-height:var(--btn-h-sm,40px);padding:0 var(--btn-px-sm,16px);font-size:14px}
+@media(pointer:coarse){.tcm-btn--sm{min-height:44px}}
+.tcm-btn--hero{min-height:var(--btn-h-lg,52px);padding:0 var(--btn-px-lg,28px);font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+/* Icon-only (Sticky-Leiste): quadratisch, Text nur fuer Screenreader (Markup liefert .tcm-sr + aria-label). */
+.tcm-btn--icon{flex:0 0 var(--btn-h-md,48px);width:var(--btn-h-md,48px);min-height:var(--btn-h-md,48px);padding:0;gap:0}
+.tcm-btn--icon svg{width:19px;height:19px;flex-shrink:0}
+.tcm-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.tcm-btn--block{display:flex;width:100%}
+/* Zustaende: disabled / busy (Formular-Submit setzt disabled + aria-busy, Label "Wird gesendet…"). */
+.tcm-btn[disabled],.tcm-btn[aria-disabled="true"],.tcm-btn[aria-busy="true"]{opacity:.6;cursor:progress;pointer-events:none;transform:none;box-shadow:none}
+/* Gruppe: 10px Abstand, unter 600px gestapelt und volle Breite. */
+.tcm-btn-group{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+@media(max-width:600px){.tcm-btn-group .tcm-btn{width:100%}}
+/* Tertiaer-Link: Rich Black, 2px Mint-Unterstreichung (EN-Prosa-Muster), 44px Trefferflaeche. */
+.tcm-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--brand-black,#020B10);font-family:var(--font-sans);font-weight:600;font-size:15px;text-decoration:underline;text-decoration-color:var(--brand,#1AE288);text-decoration-thickness:2px;text-underline-offset:3px;border-radius:4px}
+.tcm-link:hover{background:var(--brand-tint,#DFFBEE)}
+.tcm-link:focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:2px}
 
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
