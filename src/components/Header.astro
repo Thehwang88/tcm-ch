@@ -227,9 +227,45 @@ const chev = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke
     });
   })();
 </script>
+<script is:inline>
+  /* Mobile header hide/reveal (<=1023px), same rules as the DE header (public/header.js): y<=20 always visible,
+     ~10px accumulated downward scroll (from y>90) hides, ~6px upward reveals; paused while the drawer locks the body
+     (position:fixed) and while focus is inside the header. rAF-throttled, one passive scroll listener. */
+  (function () {
+    var nav = document.getElementById('mainNav');
+    if (!nav) return;
+    var mq = window.matchMedia('(max-width:1023px)');
+    var lastY = window.scrollY || 0, acc = 0, ticking = false;
+    function isHidden() { return nav.classList.contains('nav-hidden'); }
+    function show() { nav.classList.remove('nav-hidden'); }
+    function hide() { if (nav.contains(document.activeElement)) return; nav.classList.add('nav-hidden'); }
+    function onScroll() {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = window.scrollY || 0;
+        if (!mq.matches) { lastY = y; if (isHidden()) show(); return; }
+        if (document.body.style.position === 'fixed') { lastY = y; acc = 0; return; }
+        var d = y - lastY; lastY = y;
+        if (y <= 20) { acc = 0; show(); return; }
+        if (d === 0) return;
+        if ((d > 0) !== (acc > 0)) acc = 0;
+        acc += d;
+        if (acc > 10 && y > 90 && !isHidden()) hide();
+        else if (acc < -6 && isHidden()) show();
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    nav.addEventListener('focusin', show);
+    if (mq.addEventListener) mq.addEventListener('change', function () { if (!mq.matches) show(); });
+  })();
+</script>
 
 <style>
   /* ── Header bar: 1:1 with the DE SPA #mainNav (verified against its computed styles). ── */
+  /* Hide/reveal on scroll (<=1023px): transform only, no layout shift (same as DE nav-rebrand.css). */
+  @media (max-width: 1023px) { #mainNav { transition: transform .2s ease; } #mainNav.nav-hidden { transform: translateY(-100%); } }
+  @media (prefers-reduced-motion: reduce) { #mainNav { transition: none; } }
   #mainNav { position: sticky; top: 0; z-index: 200; height: 68px; display: flex; align-items: center; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,.06); padding: 0 40px; }
   .nav-inner { width: 100%; max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: 16px; }
 
