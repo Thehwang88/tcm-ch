@@ -175,3 +175,12 @@ Gerendert: Beschwerden-Chips «Wirkt das wirklich? Zum Nachlesen» (wissen-links
 - Keine ärztliche Prüfung erfolgt oder behauptet; Autorin ist die Redaktion, keine Reviewer-Angaben.
 - Semrush blockiert: keine Nachfragedaten; Priorisierung innerhalb des Clusters nicht belegt.
 - Standortbezogene Kräuter-CTAs bewusst nicht gesetzt (keine verifizierte Angebots-/Fachpersonenzuordnung); alle CTAs führen auf die neutrale Kontaktanfrage.
+
+
+## Release 19.10.2026
+
+Release von geprüftem Draft-HEAD `86757a7f`, Basis main `bddea458`. Durch den Eigentümer am 19.10.2026 freigegeben. `PUBLISHED_KRAEUTER_2026_10` auf `2026-10-19` gesetzt; genau zehn Queue-Einträge von «Geplant» nach «Offen» verschoben. Weder eingereicht noch als indexiert markiert. Historische Draft-Angaben oben beschreiben den Vorabstand. Keine weiteren Text-, Layout-, Formular- oder Trackingänderungen. Finale Release-Prüfung und Deployment-Ergebnis stehen in der aktualisierten PR-Beschreibung.
+
+Release-Verifikation durch Codex: frischer vollständiger Build inkl. Worker erfolgreich; health-audit, i18n strict, Kontaktformular-, Clinic-Status-, Standort-UX-, FIRST-30- und Professional-Gates erfolgreich. Eigene statische Kohortenprüfung: 10/10, je 3 sichtbare FAQs, je 2 Bestands-Inbound, korrekte Canonicals, vorhandene interne Linkziele, kein FAQ-/Question-Schema, kein reviewedBy; datePublished/dateModified jeweils 2026-10-19; alle 10 in der Sitemap (852 URLs); Hub ohne NaN/undefined. CSV-Spaltenzahlen korrekt (Leerzeile ignoriert).
+
+Neue Browser-Läufe von Kontaktformular-, Mailbetreff- und EN-Analytics-Test in dieser Umgebung nicht ausführbar: Chromium scheitert vor Testbeginn mit «socket() failed: Operation not permitted». Keine Assertions geändert. Die zuvor dokumentierten Browser-/Overflow-Ergebnisse von Claude auf dem inhaltlich freigegebenen Draft bleiben die letzte Browserprüfung; sie wurden von Codex nicht erneut bestätigt. Release-Diff gegen 86757a7f: ausschliesslich Publikationskonstante, Queue und dieser Bericht.

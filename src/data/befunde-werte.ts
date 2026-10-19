@@ -99,9 +99,9 @@ export const PUBLISHED_WELLE_3_2026_10: string | undefined = '2026-10-14';
 // Welle 4 (8 Befunde, 6 Untersuchungen, 8 Wissen; die 12 Beschwerden tragen kein Datum).
 // Go-Live 16.10.2026 (Europe/Zurich). Nur Publikation, keine fachliche Prüfung.
 export const PUBLISHED_WELLE_4_2026_10: string | undefined = '2026-10-16';
-// Kräutercluster (10 Wissen-Artikel, Draft 18.10.2026): bis zum Release undefined => datePublished/dateModified leer,
-// kein Schema-Datum. Beim Release auf das Veröffentlichungsdatum setzen.
-export const PUBLISHED_KRAEUTER_2026_10: string | undefined = undefined;
+// Kräutercluster (10 Wissen-Artikel): Veröffentlichung 19.10.2026 (Europe/Zurich).
+// Nur Publikationsdatum, keine fachliche Prüfung.
+export const PUBLISHED_KRAEUTER_2026_10: string | undefined = '2026-10-19';
 
 export const befundeWerte: BefundWert[] = [
   {
