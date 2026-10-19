@@ -576,6 +576,9 @@ export const fragen: Frage[] = [
     mehr: [
       { href: '/therapien/kraeutertherapie/', label: 'Kräutertherapie', cat: 'Therapie' },
       { href: '/gesundheitsbibliothek/fragen/wann-zuerst-zum-arzt/', label: 'Wann zuerst zum Arzt?', cat: 'Frage' },
+      { href: '/wissen/chinesische-kraeuter-qualitaet-schweiz/', label: 'Qualität und Zulassung chinesischer Kräuter', cat: 'Artikel' },
+      { href: '/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/', label: 'Online kaufen oder verordnen lassen?', cat: 'Artikel' },
+      { href: '/wissen/tcm-granulat-dekokt-tabletten/', label: 'Granulat, Dekokt oder Tabletten?', cat: 'Artikel' },
     ],
   },
   {

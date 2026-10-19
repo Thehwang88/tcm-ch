@@ -30,6 +30,17 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-schlafstoerungen/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-reizdarm/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-verstopfung/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-regelschmerzen/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-allergischem-schnupfen/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/akupunktur-oder-kraeutertherapie/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/tcm-granulat-dekokt-tabletten/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-qualitaet-schweiz/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+- https://tcm.ch/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/ — veröffentlicht 19.10.2026 (Kräutercluster 10; Einreichung und Indexierung offen)
+
 - https://tcm.ch/wissen/akupunktur-bei-ischias/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
 - https://tcm.ch/wissen/akupunktur-bei-endometriose/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
 - https://tcm.ch/wissen/akupunktur-bei-fibromyalgie/ — 13.10.2026 (Akupunktur-bei-Serie Cohort 02)
@@ -442,6 +453,7 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/beschwerden/burning-mouth-syndrom/ — 18.10.2026 (Beschwerden Welle 5)
 
 ## Geplant (noch nicht live)
+
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 Stand 20.09.2026: Kontingent ist wieder verfuegbar — erste erfolgreiche Einreichungen seit 16.09.
