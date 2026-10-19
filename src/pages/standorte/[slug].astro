@@ -258,7 +258,7 @@ if (migrated) {
         if (!c) throw new Error(`st-gallen: symptomCards.${s} fehlt`);
         return `<a class="svc-card reveal" href="/beschwerden/${s}/" style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src="${c.img}" alt="${escH(c.name)}" class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">${escH(c.name)}</div><div class="svc-tagline">${escH(c.tagline)}</div><div class="svc-cta">Mehr erfahren ${svcArrow}</div></div></a>`;
       }).join('') +
-      '</div><div class="sg-bs-cta reveal"><a href="#kontakt" class="btn-primary">Termin in St. Gallen anfragen <span aria-hidden="true">→</span></a></div></div></section>'
+      '</div><div class="sg-bs-cta reveal"><a href="#kontakt" class="btn-primary tcm-btn tcm-btn--primary tcm-btn--lg">Termin in St. Gallen anfragen <span aria-hidden="true">→</span></a></div></div></section>'
     : '';
   const sgWlLinks = ksLinksFor(slug! + 'ks', 6);
   const sgWeiterlesenHtml = slug === 'st-gallen'
