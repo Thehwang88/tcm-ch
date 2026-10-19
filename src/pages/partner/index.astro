@@ -52,7 +52,7 @@ const schema = [
     mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<LayoutDe title={title} description={description} path={path} schema={schema} turnstile={true}>
+<LayoutDe stickyCta={false} title={title} description={description} path={path} schema={schema} turnstile={true}>
   <div class="b2">
     <section class="b2-hero">
       <div class="b2-wrap">

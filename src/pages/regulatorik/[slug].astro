@@ -32,7 +32,7 @@ const schema = [
     mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<LayoutDe title={p.title} description={p.metaDesc} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
+<LayoutDe stickyCta={false} title={p.title} description={p.metaDesc} path={path} schema={schema} noindex={!REGULATORIK_VERIFIED} robots="noindex, follow">
   <div class="b2">
     <article class="b2-hero b2-hero--sm" style="padding-bottom:40px">
       <div class="b2-wrap">

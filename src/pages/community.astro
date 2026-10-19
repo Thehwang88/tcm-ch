@@ -11,7 +11,7 @@ const description = 'Profil anmelden, Stelle oder Praxis inserieren, Raum anbiet
 const open = SUBMISSION_TYPES.filter((t) => t.publicNow);
 const later = SUBMISSION_TYPES.filter((t) => !t.publicNow);
 ---
-<LayoutDe title={title} description={description} path="/community" noindex={true} robots="noindex, follow" turnstile={true}>
+<LayoutDe stickyCta={false} title={title} description={description} path="/community" noindex={true} robots="noindex, follow" turnstile={true}>
   <div class="b2">
     <section class="b2-hero b2-hero--sm">
       <div class="b2-wrap">

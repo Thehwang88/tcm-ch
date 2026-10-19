@@ -12,7 +12,7 @@ const cats = [
   { id: 'tcmch', label: 'Stellen bei TCM.ch', text: 'Rollen im TCM.ch Netzwerk.', route: { label: 'Karriere bei TCM.ch', href: '/karriere/' } },
 ];
 ---
-<LayoutDe title="TCM Stellenmarkt Schweiz (im Aufbau) | TCM.ch" description="Nationaler Stellenmarkt für TCM-Fachpersonen in der Schweiz: moderierte Inserate von Praxen und Kliniken. Im Aufbau." path="/jobs" noindex={true} robots="noindex, follow">
+<LayoutDe stickyCta={false} title="TCM Stellenmarkt Schweiz (im Aufbau) | TCM.ch" description="Nationaler Stellenmarkt für TCM-Fachpersonen in der Schweiz: moderierte Inserate von Praxen und Kliniken. Im Aufbau." path="/jobs" noindex={true} robots="noindex, follow">
   <ProHub id="jobs" h1="Der Stellenmarkt für TCM in der Schweiz." lead={`Hier entsteht ein neutraler Stellenmarkt für die ganze Branche – Stellen von TCM.ch und von anderen Praxen, jede vor Veröffentlichung geprüft. Aktuell ${JOBS.length ? JOBS.length + ' Inserate' : 'noch keine externen Inserate'}.`}
     cats={cats}
     rules={['Nur echte Stellen mit echtem Arbeitgeber, Ort und Bewerbungsweg.', 'Lohnangaben nur, wenn der Arbeitgeber sie liefert.', 'Abgelaufene Stellen werden als «nicht mehr aktiv» markiert und nicht mehr indexiert.', 'Keine unzulässig diskriminierenden Anforderungen.']}

@@ -17,6 +17,9 @@ interface Props {
   /** Robots-Wert wenn noindex gesetzt ist (z.B. 'noindex, follow' für teilbare Tools). */
   robots?: string;
   turnstile?: boolean;   // load Cloudflare Turnstile (pages with a protected form)
+  /** false = geteilte Patienten-Sticky-Leiste (.scb-bar) auf dieser Seite aus (rendert data-no-sticky-cta auf <main>):
+   *  Seiten mit eigener Sticky-Aktion (Team-Profile, Koerpersignale) und B2B-/Fachpersonen-Seiten. Default true. */
+  stickyCta?: boolean;
   /** Per-page OG-Bild (absolute URL); Default: site.ogImage. */
   ogImage?: string;
   /**
@@ -28,7 +31,7 @@ interface Props {
   canonicalTo?: string;
 }
 
-const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, canonicalTo, ogImage = site.ogImage } = Astro.props;
+const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, stickyCta = true, canonicalTo, ogImage = site.ogImage } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -98,7 +101,7 @@ const year = 2026;
   <body>
     <DeHeader />
 
-    <main>
+    <main data-no-sticky-cta={stickyCta ? undefined : ''}>
       <slot />
     </main>
 

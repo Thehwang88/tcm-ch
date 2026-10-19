@@ -56,7 +56,8 @@ const TEL = `tel:+${site.whatsapp}`;
       transition: transform .35s cubic-bezier(.16, 1, .3, 1), opacity .3s ease;
     }
     .scb-bar.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
-    body { padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px)); }
+    /* Platz unter dem Inhalt nur auf Seiten, auf denen die Leiste aktiv ist (Klasse setzt das Skript unten). */
+    :global(body.scb-reserve) { padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px)); }
   }
   @media (prefers-reduced-motion: reduce) {
     .scb-primary { animation: none; }
@@ -74,6 +75,9 @@ const TEL = `tel:+${site.whatsapp}`;
     // Opt-out fuer App-artige Buchungs-/Matching-Flows mit eigener persistenter
     // Aktionsleiste: beliebiges Element mit data-no-sticky-cta auf der Seite.
     if (document.querySelector('[data-no-sticky-cta]')) { bar.classList.add('scb-off'); return; }
+    // Platz unter dem Inhalt nur reservieren, wenn die Leiste auf dieser Seite aktiv ist (siehe body.scb-reserve im CSS).
+    // Seiten mit eigener Sticky-Aktion und B2B-Seiten setzen stickyCta={false} am LayoutDe (-> data-no-sticky-cta).
+    document.body.classList.add('scb-reserve');
     var primary = bar.querySelector('.scb-primary');
     // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
