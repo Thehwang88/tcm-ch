@@ -10,6 +10,7 @@
 import { conditions, enConditionPath } from '../data/conditions';
 import { therapies, enTherapyPath } from '../data/therapies';
 import { clinics, enLocationPath } from '../data/locations';
+const year = new Date().getFullYear();
 import { site } from '../data/site';
 import WhatsAppFab from './WhatsAppFab.astro';
 import WhatsAppConcierge from './WhatsAppConcierge.astro';
@@ -59,7 +60,7 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 TCM.ch · All rights reserved · Switzerland <span class="footer-care-sep">&nbsp;·&nbsp;</span> <span class="footer-care">Part of the TCM.ch CARE System</span></div>
+      <div class="footer-copy">© {year} TCM.ch · All rights reserved · Switzerland <span class="footer-care-sep">&nbsp;·&nbsp;</span> <span class="footer-care">Part of the TCM.ch CARE System</span></div>
       <div class="footer-legal">
         <a href="/datenschutz/">Privacy</a>
         <a href="/impressum/">Legal notice</a>

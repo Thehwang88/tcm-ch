@@ -96,7 +96,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
           {heroChips.length > 0 && <div class="tp-pills">{heroChips.map((s) => <span class="tp-pill">{s}</span>)}</div>}
           {badges.length > 0 && <div class="tp-pills">{badges.map((r) => <span class="tp-pill tp-pill--badge">{r.organisation}</span>)}</div>}
           <div class="tp-cta-row">
-            <a class="tp-cta" href={booking} target="_blank" rel="noopener"><Fragment set:html={WA} />Termin buchen</a>
+            <a class="tp-cta" href={booking} target="_blank" rel="noopener"><Fragment set:html={WA} />Termin anfragen</a>
             {primaryLoc && <a class="tp-cta tp-cta--sec" href={`/standorte/${primaryLoc.id}/`}>Standort ansehen</a>}
           </div>
           <p class="tp-trust">Kostenübernahme abhängig von Methode und Zusatzversicherung. <a href="/krankenkassen/">Wir prüfen deine Deckung gerne vorab.</a></p>
@@ -235,7 +235,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
                   <p class="tp-loc-name">TCM.ch {c!.name}</p>
                   <p class="tp-loc-addr">{[c!.street, [c!.postalCode, c!.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')}</p>
                 </div>
-                <div class="tp-loc-actions"><a href={`/standorte/${c!.id}/`}>Standort ansehen</a><a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin buchen</a></div>
+                <div class="tp-loc-actions"><a href={`/standorte/${c!.id}/`}>Standort ansehen</a><a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin anfragen</a></div>
               </div>
             ))}
           </div>
@@ -245,13 +245,13 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
       <section class="tp-final">
         <h2>Termin bei {vorname} anfragen</h2>
         <p>Unkompliziert per WhatsApp. Wir melden uns persönlich.</p>
-        <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a>
+        <a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin anfragen</a>
       </section>
 
       <p class="tp-back"><a href="/ueber-uns/#ueber-uns-team">← Alle Therapeut:innen ansehen</a></p>
     </div>
 
-    <div class="tp-sticky"><a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin buchen</a></div>
+    <div class="tp-sticky"><a class="tp-cta" href={booking} target="_blank" rel="noopener">Termin anfragen</a></div>
   </article>
 </LayoutDe>
 
