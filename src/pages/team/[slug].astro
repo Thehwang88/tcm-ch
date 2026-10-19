@@ -370,5 +370,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
     .tp-final { padding: 36px 20px; border-radius: 20px; }
     .tp-sticky { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(2,11,16,.1); }
     .tp-sticky .tp-cta { width: 100%; }
+    /* Platz fuer die eigene Leiste (die geteilte .scb-bar ist auf Team-Profilen aus). */
+    :global(body) { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
   }
 </style>
