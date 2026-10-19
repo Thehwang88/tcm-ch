@@ -75,6 +75,38 @@ Zielbild (Cohort 2): EIN `.tcm-btn`-System in neuem `public/styles/ui.css` — V
 
 **Cohort 3c-C (umgesetzt):** Die 8 svc-Cards und die Kräutertherapie-Feature-Card der Homepage sind native `<a href="/therapien/<slug>/">` statt `div/article role="button" onclick="nav(…)"` (Massage-Card war bereits das Vorbild). Gewinn: Enter/Middle-Click/neuer Tab/Kontextmenü nativ, korrekte Link-Semantik, Funktion ohne JavaScript, kein verschachteltes interaktives Element und keine Doppel-Aktivierung mehr in der Kräuter-Card (innerer `<button class="kt-cta">` → `<span>`). Parität: die 8 svc-Anchors tragen `style="text-decoration:none;color:inherit"` inline (Massage-Präzedenz) — eine `a.svc-card`-Regel in der sitewide home.css hätte 106 Routen mit bestehenden Legacy-`<a class="svc-card">` getroffen; die Kräuter-Card nutzt die homepage-only Regel in ui.css. **Scope (explizit freigegeben):** Homepage **und** `/standorte/bottighofen/` (siehe Build-Abhängigkeiten). **SEO:** freigegeben +9 interne Links auf der Homepage, +8 auf Bottighofen; Ziele identisch zu `nav()`. **Bestand:** auf den übrigen Routen existieren `svc-card` weiterhin als Legacy-Implementierung (115 Routen mit der Klasse, 26 davon mit `onclick`) — unverändert, Migration nur in eigener Kohorte. **GTM:** Container liegt ausserhalb des Repos; klassenbasierte Click-Trigger matchen weiter, ein «Just Links»-Trigger würde für diese 9 Karten neu feuern — im GTM-Interface zu prüfen.
 
+### CTA-System Wave 0 (19.10.2026, Branch `feat/cta-system-wave0`) — kanonische Button-Spezifikation
+
+**Status:** Fundament (APPROVED-Tokens, additive Regeln). Keine Migration bestehender Buttons; `ui.css` wird von allen vier Layouts geladen (nach `tokens.css`), Kollisionsinventar: `ui.css` enthält nur `.tcm-*`-Selektoren sowie `#home-content`-/`#s-standorte`-gescopte Regeln (beide IDs existieren ausschliesslich auf `/`) — Screenshot-/Computed-Style-Vergleich 21 Routen × 320/390/768/1440 vorher/nachher: keine Abweichung ausser der Sticky-Leiste (siehe unten).
+
+**Tokens (tokens.css, additiv):** `--btn-h-sm 40px · --btn-h-md 48px · --btn-h-lg 52px · --btn-px-sm/md/lg 16/24/28px · --btn-black-hover #1F2A30 · --btn-outline rgba(2,11,16,.45) · --btn-outline-soft rgba(2,11,16,.22) · --btn-outline-light rgba(255,255,255,.45) · --wa-green #25D366 · --focus-ring 3px solid rgba(2,11,16,.55) · --focus-ring-offset 3px · --focus-ring-on-dark 3px solid #fff`.
+
+**Varianten (`public/styles/ui.css`, Basis `.tcm-btn`: inline-flex, Pill, Figtree 700 15.5px, 14/24 Padding, Hover translateY(-1px), `:focus-visible` = `--focus-ring`):**
+
+| Rolle | Klassen | Fläche | Füllung / Text | Rand | Höhe | Hover |
+|---|---|---|---|---|---|---|
+| Primär (Standard auf Weiss/Concrete) | `tcm-btn tcm-btn--primary` | hell | Rich Black / Weiss | – | 46 (Basis) · `--lg` 48 · `--hero` 52 | `--btn-black-hover` |
+| Primär auf dunkel / einziger Formular-Submit | `tcm-btn tcm-btn--mint` (Bestand) bzw. `tcm-btn--primary tcm-btn--on-dark` | Rich Black | Mint / Rich Black (11.6:1) | – | wie oben | `--brand-hover` |
+| Sekundär | `tcm-btn tcm-btn--outline` | hell | transparent / Rich Black | 1.5px `--btn-outline-soft` (Bestand Homepage; Zielwert `--btn-outline` = Entscheid Pilot 1) | 48 | rgba(13,13,13,.06) |
+| Sekundär auf dunkel | `tcm-btn tcm-btn--outline tcm-btn--on-dark` | dunkel | transparent / Weiss | 1.5px `--btn-outline-light` | 48 | rgba(255,255,255,.08) |
+| WhatsApp | `tcm-btn tcm-btn--whatsapp` + SVG | beliebig | Weiss / Rich Black, Glyphe `--wa-green` | 1.5px rgba(2,11,16,.25) | 48 | Rand Rich Black |
+| Klein (Header) | `… tcm-btn--sm` | | | | 40 (44 bei `pointer:coarse`) | |
+| Icon-only (Sticky) | `… tcm-btn--icon` + `<span class="tcm-sr">` + `aria-label` | | | | 48×48 | |
+| Volle Breite | `… tcm-btn--block` | | | | | |
+| Tertiär | `tcm-link` | | Rich Black, 2px Mint-Unterstreichung | | 44 Trefferfläche | `--brand-tint` |
+| Zustände | `[disabled]`, `[aria-disabled=true]`, `[aria-busy=true]` → opacity .6, cursor progress, kein Transform | | | | | |
+| Gruppe | `.tcm-btn-group` 10px Gap, ≤600px gestapelt 100 % | | | | | |
+
+**Regeln:** eine Primäraktion pro Viewport; Schwarz ist Standard auf hellen Flächen, Mint nur auf Rich-Black-Flächen und als einziger Formular-Submit (`.kf-btn` bleibt die funktionale 14px-Control-Variante); WhatsApp nie gefüllt auf Patientenseiten (Ausnahme FAB); «buchen» nur mit echtem Kalender (OneDoc SG); Navigation als `<a>`, JS-Aktionen als `<button type=button>`; Icon links 18px `aria-hidden`; nie Text zugunsten von Icons entfernen (ausser Sticky-Icon-Buttons mit sr-Text); `prefers-reduced-motion` ohne Transform; Mindest-Trefferfläche 44px auf Touch.
+
+**Fokus-Nachrüstung (Wave 0, nur `:focus-visible`, keine statische Änderung):** `.scb-primary/.scb-out/.scb-book` (geteilte Sticky-Leiste), `.sc-btn` (CARE-Leiste), `.ib-cta/.ib-sticky-cta/.ib-help` (Versicherungsbanner), `.wa-fab`, `.sgm-cta`. Geprüft (CSSOM-Probe, 18 Routen): alle übrigen Button-Klassen (`.btn-*`, `.btn--*`, `.kf-btn`, `.ev-btn`, `.tsr/.lsr/.hh-btn`, `.tp-cta`, `.nav-cta`, `.drw-cta-*`, `.wac-launch`, `.tcm-btn`) besassen bereits einen Ring. Offen: Chips (`cl-chip`, `sx-chip-link`), `lng-cta-*`, SG-Leaf `sg-th-more-btn`, Krankenkassen `.cta`.
+
+**Sticky-Leiste:** `.scb-primary`/`.scb-out` rendern jetzt sitewide `--r-pill` (vorher 14px, von Seiten-Scopes in home.css/de-special-rebrand/selbsttest nur auf Home, Standorten, SG und Sonderseiten auf 999px überschrieben). Verhalten, Markup, Events unverändert.
+
+**Analytics-Abhängigkeiten (dokumentiert, nicht verändert):** repo-seitig keine Klick-Trigger auf Button-Klassen; `home.js` `wa_click.quelle` hängt an Container-Klassen/IDs (`.scb-bar`, `.wa-fab`, `#wac`, `#siteDrawer`, `.home-cta-merged`, `.wa-section`, `#home-contact-form`, `.contact-section-inline`, `[data-kf-kontakt-alt]`); `kontakt-form.js` setzt `kf-btn`-Klassen am OneDoc-Element per Script (Z. ~117); EN `cta_click.label` und `first30_*` tragen den sichtbaren Text als Parameter. GTM `GTM-PZ92Q3KJ` liegt ausserhalb des Repos: **vor jeder Umbenennung getrackter Klassen oder Labels Container exportieren und auf Click-Classes-/Click-Text-Trigger prüfen.**
+
+**Nächster Schritt (Pilot 1, separater Branch, Freigabe nötig):** Standort-Template (`src/pages/standorte/[slug].astro`, 10 datengetriebene Routen) – Hero `lsr-btn-*` → `tcm-btn--primary/--outline tcm-btn--hero`, Sektions-CTAs → `tcm-btn--primary` (Entscheid Mint→Schwarz auf Weiss offen), `.btn-secondary` → `tcm-btn--outline`; Formular (`.kf-btn`), Sticky-Leiste, St. Gallen, Bottighofen unverändert.
+
 ### Build-Abhängigkeiten von `home-body.html` (PFLICHT-Check)
 
 `src/data/home-body.html` ist **nicht** homepage-exklusiv. Teile werden zur Buildzeit in andere Routen kopiert:

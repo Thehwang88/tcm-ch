@@ -73,6 +73,23 @@
   --surface-brand: var(--brand);          /* semantischer Alias: Mint-Flaeche */
   --surface-concrete: var(--brand-surface); /* helle Softriver-Flaeche (CTA-Baender) */
 
+  /* ── CTA-System Wave 0 (19.10.2026) — ADDITIV, Konsumenten: ui.css-Varianten + Fokusringe.
+     Werte = deployte Softriver-Buttons (Hero-Pill 52px, Sektions-Pill 48px, Header 40-44px, Hover-Schwarz #1F2A30 bisher 11x hartcodiert). */
+  --btn-h-sm: 40px;
+  --btn-h-md: 48px;
+  --btn-h-lg: 52px;
+  --btn-px-sm: 16px;
+  --btn-px-md: 24px;
+  --btn-px-lg: 28px;
+  --btn-black-hover: #1F2A30;
+  --btn-outline: rgba(2,11,16,.45);        /* kanonischer Outline-Rand auf hellen Flaechen (Hero-Ghost-Wert) */
+  --btn-outline-soft: rgba(2,11,16,.22);   /* Bestand: Sektions-Outline (Homepage, Standorte) */
+  --btn-outline-light: rgba(255,255,255,.45);
+  --wa-green: #25D366;                      /* geschuetzt: nur Glyphe/FAB */
+  --focus-ring: 3px solid rgba(2,11,16,.55);
+  --focus-ring-offset: 3px;
+  --focus-ring-on-dark: 3px solid #fff;
+
   --max: 1280px;
   --max-wide: 1440px;       /* Wide-Stufe fuer grosse Desktops (Step-1-Pilot: nur Homepage-Hero) */
   --header-h: 76px;

@@ -53,6 +53,7 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
   .sc-btn--wa:hover { background: #14C97A; }
   .sc-btn--form { color: var(--brand-black, #020B10); border: 1.5px solid var(--brand-black, #020B10); background: #fff; }
   .sc-btn--form:hover { background: rgba(2,11,16,.06); }
+  .sc-btn:focus-visible { outline: var(--focus-ring, 3px solid rgba(2,11,16,.55)); outline-offset: 2px; }
   @media (max-width: 767px) {
     .sticky-cta { display: flex; }
     /* Platz fuer diese Leiste; auf Seiten mit aktiver .scb-bar gilt deren groessere Reservierung (body.scb-reserve). */

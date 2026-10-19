@@ -31,7 +31,7 @@ const TEL = `tel:+${site.whatsapp}`;
   .scb-primary {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     flex: 1 1 auto; min-width: 0; min-height: 48px; box-sizing: border-box; padding: 0 14px; white-space: nowrap;
-    background: var(--brand, #1AE288); color: var(--brand-black, #020B10); border-radius: 14px;
+    background: var(--brand, #1AE288); color: var(--brand-black, #020B10); border-radius: var(--r-pill, 999px);
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
     text-decoration: none; box-shadow: 0 6px 18px rgba(26, 226, 136, .3);
     animation: scb-glow 2s ease-in-out infinite;
@@ -40,11 +40,13 @@ const TEL = `tel:+${site.whatsapp}`;
   .scb-out {
     flex: 0 0 48px; width: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 0;
     min-height: 48px; box-sizing: border-box; padding: 0;
-    background: #fff; color: var(--brand-black, #020B10); border: 1.5px solid rgba(2, 11, 16, .25); border-radius: 14px;
+    background: #fff; color: var(--brand-black, #020B10); border: 1.5px solid rgba(2, 11, 16, .25); border-radius: var(--r-pill, 999px);
     font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none;
   }
   .scb-primary svg, .scb-out svg { flex-shrink: 0; }
   .scb-out svg { width: 19px; height: 19px; }
+  /* Wave 0: sichtbarer Tastaturfokus (bisher nur der UA-Ring); Radius sitewide Pill statt 14px/999px je nach Seiten-Scope. */
+  .scb-primary:focus-visible, .scb-out:focus-visible, :global(.scb-bar .scb-book:focus-visible) { outline: var(--focus-ring, 3px solid rgba(2, 11, 16, .55)); outline-offset: 2px; }
   /* Icon-Buttons: Text nur fuer Screenreader (aria-label bleibt zusaetzlich gesetzt). */
   .scb-lbl { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   /* Schmale Geraete (<=359px): Primaer ohne Icon und mit knapperem Innenabstand, Icon-Buttons 44px (Touch-Minimum). */
