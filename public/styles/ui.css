@@ -107,6 +107,36 @@
 .tcm-link:hover{background:var(--brand-tint,#DFFBEE)}
 .tcm-link:focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:2px}
 
+/* ── Tertiaer-Link auf Mint-/dunklen Flaechen: Unterstreichung in Textfarbe (Mint waere unsichtbar), dezenter Hover. */
+.tcm-link--on-brand{text-decoration-color:currentColor}
+.tcm-link--on-brand:hover{background:rgba(2,11,16,.06)}
+/* WhatsApp-Variante auf dunkler Flaeche: weisse Pille ohne Rand. */
+.tcm-btn--on-dark.tcm-btn--whatsapp,.tcm-btn--on-dark.tcm-btn--whatsapp:hover{border-color:transparent;background:#fff;color:var(--brand-black,#020B10)}
+
+/* ── CTA-System Pilot 1 · St. Gallen (19.10.2026). Legacy-Klassen bleiben am Element (GTM-Container nicht geprueft),
+   die kanonischen Werte gewinnen ueber Scope-Spezifitaet: .hlsg = SG-Hero (HeroStandardSG), #page-standort.sg-ds = SG-Leaf.
+   Kein anderer Standort traegt diese Hooks. Ziele, Labels, Anker, data-Attribute, Events unveraendert. */
+.hlsg .lsr-btn-primary.tcm-btn--primary:not(#w2){border-radius:var(--r-pill,999px)}
+.hlsg .lsr-btn-primary.tcm-btn--primary:not(#w2):hover{background:var(--btn-black-hover,#1F2A30)}
+.hlsg .lsr-btn-ghost.tcm-btn--outline:not(#w2){border-radius:var(--r-pill,999px);border:1.5px solid var(--btn-outline,rgba(2,11,16,.45));color:var(--brand-black,#020B10)}
+.hlsg .lsr-btn-ghost.tcm-btn--outline:not(#w2):hover{background:rgba(2,11,16,.05);border-color:var(--brand-black,#020B10)}
+/* Fokus auf der Mint-Flaeche: Rich-Black-Ring (weiss auf Mint ~1.6:1, Token ~4.6:1). */
+.hlsg :is(.lsr-btn-primary,.lsr-btn-ghost).tcm-btn:not(#w2):focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:3px}
+.hlsg .lsr-tert a.tcm-link:not(#w2){font-size:14px;font-weight:600;color:var(--brand-black,#020B10);text-decoration-color:currentColor;text-decoration-thickness:1.5px;padding:0 4px;margin:0 -4px}
+/* Sektions-Primaer (Beschwerden-Band, Concrete): Rich Black statt der Scope-Mint-Regel (#page-standort .btn-primary.btn-primary !important). */
+#page-standort.sg-ds .btn-primary.tcm-btn--primary:not(#w2){background:var(--brand-black,#020B10)!important;color:#fff!important;border-radius:var(--r-pill,999px)!important;box-shadow:none}
+#page-standort.sg-ds .btn-primary.tcm-btn--primary:not(#w2):hover{background:var(--btn-black-hover,#1F2A30)!important;color:#fff!important;transform:translateY(-1px)}
+#page-standort.sg-ds .btn-primary.tcm-btn--primary:not(#w2):focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:3px}
+/* Therapien-Aufklapper: kanonische Outline-Pille statt Hairline-Weiss. */
+#page-standort.sg-ds .sg-th-more-btn.tcm-btn--outline:not(#w2){min-height:48px;padding:14px 24px;background:#fff;border:1.5px solid var(--btn-outline-soft,rgba(2,11,16,.22));color:var(--brand-black,#020B10);font-size:15px;font-weight:600;box-shadow:none}
+#page-standort.sg-ds .sg-th-more-btn.tcm-btn--outline:not(#w2):hover{background:rgba(2,11,16,.05);border-color:var(--brand-black,#020B10)}
+/* WhatsApp-Band (Rich Black): WhatsApp als erkennbare Kontakt-Alternative, weisse Pille mit gruener Glyphe statt gruen gefuellt. */
+#page-standort.sg-ds .sgm-cta.tcm-btn--whatsapp:not(#w2){min-height:52px;padding:0 28px;gap:9px;background:#fff;color:var(--brand-black,#020B10);border:1.5px solid transparent;box-shadow:none;font-size:16px;font-weight:700}
+#page-standort.sg-ds .sgm-cta.tcm-btn--whatsapp:not(#w2):hover{background:#fff;color:var(--brand-black,#020B10);transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+#page-standort.sg-ds .sgm-cta.tcm-btn--whatsapp:not(#w2) svg{color:var(--wa-green,#25D366)}
+/* Spezifitaet > home.css Z. 5612 (Scope-Fokusregel mit 4 IDs): weisser Ring auf Rich Black. */
+#page-standort.sg-ds .sgm-cta.tcm-btn--whatsapp:not(#w2):not(#w3):not(#w4):not(#w5):focus-visible{outline:var(--focus-ring-on-dark,3px solid #fff);outline-offset:3px}
+
 @media(prefers-reduced-motion:reduce){
   .tcm-btn{transition:none}
   .tcm-btn:hover,.tcm-btn:active{transform:none}
