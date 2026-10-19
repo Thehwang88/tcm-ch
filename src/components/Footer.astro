@@ -7,8 +7,11 @@ import footer from '../data/footer.html?raw';
 import WhatsAppFab from './WhatsAppFab.astro';
 import WhatsAppConcierge from './WhatsAppConcierge.astro';
 import StickyCtaBar from './StickyCtaBar.astro';
+// Copyright year is stamped at build time (the site is rebuilt on every push).
+const year = new Date().getFullYear();
+const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`);
 ---
-<Fragment set:html={footer} />
+<Fragment set:html={footerHtml} />
 <WhatsAppFab />
 <WhatsAppConcierge />
 <StickyCtaBar />
