@@ -481,3 +481,36 @@ Je Host-Seite ein neuer Absatz nach dem ersten Absatz unter dem genannten `<h2>`
 - /beschwerden/zervikale-radikulopathie/: 2 (/beschwerden/bandscheibenvorfall/, /beschwerden/thoracic-outlet-syndrom/)
 - /beschwerden/zervikogener-kopfschmerz/: 2 (/beschwerden/kopfschmerzen/, /beschwerden/spannungskopfschmerzen/)
 
+
+## 8. Prüfungen (20.10.2026)
+
+### 8A. PR-Stand (HEAD dieses Branches, Patch NICHT angewendet)
+
+- `npm run build`: grün inklusive Sitemap (852 → 872 URLs, die 20 neuen enthalten) und Worker-Bundle. `public/sitemap.xml` wird vom Build regeneriert und ist im Repo (wie auf main) nicht auf aktuellem Stand; nicht committet (wie Welle 5).
+- Gates auf dem Branch-dist: `health-audit` Ownership-Gate 7 Pins, 3 Retired, 0 Fehler · `check-i18n` 51 Einträge, 0 outdated, 0 warnings, 0 failures (mit dem generierten Sitemap; mit der veralteten committeten `public/sitemap.xml` meldet S4 einen vorbestehenden Befund für /en/acupuncture-zurich/, unabhängig von dieser Welle) · `test-en-analytics` 47/0 · `check-kontakt-formular` 0 Fehler · `test-anfrage-betreff` 86/0 · `check-clinic-status` 0 · `check-standort-ux` 0 · `check-first30` 0 · `check-professional` grün.
+- Kohortenprüfung der 20 URLs gegen das Branch-dist: 0 Befunde (Canonical, genau 1 H1, kein noindex, kein FAQ-/Question-Schema, kein datePublished, 3 sichtbare FAQ, Quellenblock, Em-Dash/ß/Qi/Yin/Yang/Meridian, Titles eindeutig, alle internen Linkziele im dist vorhanden).
+- Build-Diff main `7f4d9761` → Branch: Seiten 877 → 897, hinzugefügt 20 (= die 20 URLs), entfernt keine; geändert 9 (Hub A-Z, Bibliotheks-Startseite, 7 Regionsseiten); Bestands-Leaves, EN, Standorte, Formulare: 0 Änderungen. Inbound aus Bestand je neuer Seite: 0 (erwartet, Patch nicht angewendet; Hub/Bibliothek/Suche verlinken bereits).
+- Overflow 320/390/768/1440 px, alle 20 Seiten: 80 Prüfungen, 0 Overflow, pageerrors 0. Screenshots (390 und 1440 je Seite): `/tmp/claude-0/-home-user-tcm-ch/7256a291-45a8-5985-b8d0-3822d9872d66/scratchpad/w6/shots-pr`.
+- CSV-Parsing (`csv`-Modul): Keyword-Map 878 Zeilen à 21 Spalten; Guards 251 Zeilen à 5 Spalten (Ausnahme: Leerzeile 170, vorbestehend).
+- `test-kontakt-formular` (Puppeteer, gemockt): Lauf 1 702/703 (einziger Fehler «1440px Laden: Box ohne nachträgliches Auf-/Zuklappen (keine Änderung), Höhe stabil (0→912)», derselbe bekannte Mess-Timing-Befund der SG-Hero-Box wie in Welle 5, Abschnitt 5B; die SG-Seite ist im Build-Diff gegenüber main unverändert), Lauf 2 auf demselben dist 703/703. Assertion und Erwartung unverändert; keine Testabschwächung. Logs: `/tmp/claude-0/tkf-pr.log`, `/tmp/claude-0/tkf-pr2.log`.
+
+### 8B. Integrierter Teststand (Worktree auf HEAD + `git apply seo/welle-6-links.patch`)
+
+- Patch wendet sauber an (`git apply --check`); nach Entfernen der 30 Sätze sind alle 30 Host-Dateien byteidentisch mit main.
+- `npm run build` grün; alle neun Gates identisch grün wie 8A (`check-i18n` 0 failures: die Host-Edits betreffen keine fingerprinted DE-Quellen).
+- Gerenderte Inbound-Links aus Bestandsseiten: genau 2 je neuer Seite (20/20, Abschnitt 7).
+- 30 Host-Seiten: Title, Meta-Description, H1, Canonical, Formular- und Tracking-Marker im Build unverändert gegenüber dem PR-Stand (0 Abweichungen).
+- Host-Absätze gerendert: 80 Prüfungen (40 Link-Ziele × 390/1440 px), Link überall sichtbar, 0 Overflow. Overflow der 20 neuen Seiten im integrierten Stand: 80 Prüfungen, 0 Overflow, pageerrors 0. Screenshots: `.../scratchpad/w6/shots-int` (inkl. `host-<slug>-390.png`).
+
+### 8C. Nicht verfügbar / nicht gemacht
+
+- Keine Semrush-Suchvolumen oder Keyword Difficulty (API-Guthaben 0 laut Audit); keine Rankingprognose. Core Web Vitals/Lighthouse nicht gemessen (kein CrUX-Key, kein echtes Gerät); Overflow-Prüfung im Headless-Chromium ist kein Gerätetest.
+- Keine ärztliche Freigabe, keine Google-Freigabe. Quellen teils nur als Abstract gelesen (je Zeile markiert); PubMed-Suche nur englisch, nur PubMed.
+- Keine echten Anfragen, Mails, Buchungen, Conversions; GTM/GA4/Ads/OneDoc/EN/Standorte unberührt. Keine Gates abgeschwächt, kein Amend, kein Force-Push.
+- Bestehende Artikel nicht umgeschrieben. Index-Queue ohne Datum (Release-Schritt). Patch nicht angewendet.
+
+## 9. Release-Schritte (nur nach ausdrücklichem GO)
+
+1. Ready → Review → Merge (normaler Merge-Commit).
+2. Separater Commit: `git apply seo/welle-6-links.patch`, Patch entfernen, `seo/index-queue.md`: 20 URLs von «Geplant» nach «Offen» mit Veröffentlichungsdatum.
+3. Live-Check der 20 URLs (200, Canonical, Title, Indexierbarkeit, H1, FAQ, Quellen), Sitemap, Hub- und Inbound-Verlinkung, 390/1440 px; GSC über die tägliche Queue (bis 10 URLs/Tag).
