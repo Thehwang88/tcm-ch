@@ -6,7 +6,7 @@ Nur `/beschwerden/<slug>/` über das bestehende Leaf-Template (`src/data/symptom
 
 ## 0. Status
 
-**Draft-PR, nicht Ready, kein Merge, kein Deployment.** Drei Commits: (1) 20 Leaves + `beschwerden.ts` + Renderer-Maps, (2) Link-/Ownership-Plan als nicht angewendeter Patch `seo/welle-6-links.patch` (30 Host-Seiten, 30 neue Absätze, 40 Links; Bestandsseiten im PR byteidentisch mit main), (3) Registrierungen (Keep-Liste, Hub A-Z inkl. neuer Buchstabengruppe Q, Bibliothekssuche und Körperregionen, Keyword-Map, Guards, Index-Queue unter «Geplant (noch nicht live)» ohne Datum) plus diese Doku. Keine ärztliche Freigabe erfolgt oder behauptet; keine Google-Freigabe; Suchvolumen/Difficulty unbekannt (Semrush-API-Guthaben 0 laut Audit), keine Rankingprognose.
+**Integrierter Stand (GO vom 20.10.2026), Draft-PR, nicht Ready, kein Merge, kein Deployment.** Commits: (1) 20 Leaves + `beschwerden.ts` + Renderer-Maps, (2) Link-/Ownership-Plan zunächst als Patch, seit Commit `c3be164b` angewendet und entfernt (30 Host-Seiten, 30 neue Absätze, 40 Links, genau 2 Inbound je neuer Seite; Host-Quellen nach Entfernen der Sätze byteidentisch mit main), (3) Registrierungen (Keep-Liste, Hub A-Z inkl. neuer Buchstabengruppe Q, Bibliothekssuche und Körperregionen, Keyword-Map, Guards, Index-Queue unter «Geplant (noch nicht live)» ohne Datum) plus diese Doku. Keine ärztliche Freigabe erfolgt oder behauptet; keine Google-Freigabe; Suchvolumen/Difficulty unbekannt (Semrush-API-Guthaben 0 laut Audit), keine Rankingprognose.
 
 ## 1. Textpaket
 
@@ -31,7 +31,7 @@ Nur `/beschwerden/<slug>/` über das bestehende Leaf-Template (`src/data/symptom
 | 17 | /beschwerden/lichen-planus/ | Lichen ruber planus: Symptome und Behandlung | 154 | 934 | 4 | B |
 | 18 | /beschwerden/notalgia-paraesthetica/ | Notalgia paraesthetica: Symptome und Behandlung | 160 | 971 | 5 | B |
 | 19 | /beschwerden/brachioradialer-pruritus/ | Brachioradialer Pruritus: Symptome und Behandlung | 160 | 963 | 5 | B |
-| 20 | /beschwerden/pppd/ | Persistierender postural-perzeptiver Schwindel (PPPD): Symptome und Behandlung | 158 | 948 | 7 | B |
+| 20 | /beschwerden/pppd/ | Persistierender postural-perzeptiver Schwindel (PPPD): Symptome und Behandlung | 158 | 949 | 7 | B |
 
 Wörter = sichtbarer Text inkl. Kurzantwort und FAQ, ohne Navigation/Sidebar. Aufbau je Seite wie Welle 5: Kurzantwort, Definition/Abgrenzung (Brief-Begriffe «nicht als Synonyme reservieren» ausdrücklich abgegrenzt und bestehende Owner verlinkt), Beschwerden, Ursachen/Differenzialdiagnosen, Abklärung, Standardbehandlung, «Kann TCM ergänzend helfen?», Warnzeichen, nächster Schritt, 3 FAQ mit sichtbaren Antworten, Quellen. H1 «X: Beschwerden, Abklärung und Behandlung», Title «X: Symptome und Behandlung». Metas 154 bis 165 Zeichen.
 
@@ -436,9 +436,9 @@ Prüfung je Seite (people-first, Spam/Scaled, AI-Guidance, QRG YMYL/E-E-A-T): ei
 6. `seo/index-queue.md`: 20 URLs unter «Geplant (noch nicht live)» ohne Datum; Verschiebung nach «Offen» mit Veröffentlichungsdatum erst im freigegebenen Release-Schritt.
 7. Kein neues Datum, kein FAQ-Schema, keine Änderung an Bestandsseiten, Formularen, Tracking, Standortfakten, Angeboten, EN.
 
-## 7. Link-/Ownership-Plan (Commit 2, Patch `seo/welle-6-links.patch`, NICHT angewendet)
+## 7. Link-/Ownership-Plan (Commit 2 als Patch; angewendet in Commit `c3be164b`, Patchdatei entfernt)
 
-Je Host-Seite ein neuer Absatz nach dem ersten Absatz unter dem genannten `<h2>`. Alle Sätze sind als Hinweis formuliert («kann», «Hinweis, kein Beweis», «klärt die Untersuchung»), keine Diagnose aus einem Einzelsymptom (Review-Korrektur 20.10.2026); nach Entfernen der Sätze sind alle 30 Host-Dateien byteidentisch mit main (geprüft). Abweichungen vom Brief: `nackenschmerzen` und `rueckenschmerzen` haben EN-Paare (Fingerprints in `src/data/i18n/`, Edit würde den i18n-Gate-Fingerprint brechen und ein EN-Re-Review auslösen; wie `migraene` in Welle 5 bewusst nicht angefasst). Ersatz-Hosts: zervikogener Kopfschmerz → `kopfschmerzen`; zervikale Radikulopathie → `thoracic-outlet-syndrom`; Fasettensyndrom → `isg-blockade`. Die neuen Seiten verlinken ihrerseits auf Nackenschmerzen bzw. Rückenschmerzen. Anwendung erst nach ausdrücklicher Freigabe (`git apply seo/welle-6-links.patch`), nie vor Veröffentlichung der Zielseiten.
+Je Host-Seite ein neuer Absatz nach dem ersten Absatz unter dem genannten `<h2>`. Alle Sätze sind als Hinweis formuliert («kann», «Hinweis, kein Beweis», «klärt die Untersuchung»), keine Diagnose aus einem Einzelsymptom (Review-Korrektur 20.10.2026); nach Entfernen der Sätze sind alle 30 Host-Dateien byteidentisch mit main (geprüft). Abweichungen vom Brief: `nackenschmerzen` und `rueckenschmerzen` haben EN-Paare (Fingerprints in `src/data/i18n/`, Edit würde den i18n-Gate-Fingerprint brechen und ein EN-Re-Review auslösen; wie `migraene` in Welle 5 bewusst nicht angefasst). Ersatz-Hosts: zervikogener Kopfschmerz → `kopfschmerzen`; zervikale Radikulopathie → `thoracic-outlet-syndrom`; Fasettensyndrom → `isg-blockade`. Die neuen Seiten verlinken ihrerseits auf Nackenschmerzen bzw. Rückenschmerzen. Angewendet nach GO vom 20.10.2026; die Zielseiten gehen mit demselben Merge live wie die Verweissätze.
 
 | Quelldatei | URL | Anker | Neuer Satz | Ziel(e) |
 |---|---|---|---|---|
@@ -546,4 +546,21 @@ Je Host-Seite ein neuer Absatz nach dem ersten Absatz unter dem genannten `<h2>`
 | Review-Runde 2: Rektusdiastase | «Akupunktur schliesst die Lücke nicht und ersetzt das Übungsprogramm nicht.» → «Ein verlässlicher Nachweis, dass Akupunktur eine Rektusdiastase schliesst, fehlt; das Übungsprogramm ersetzt sie nicht.» (Abschnitt 3 angepasst) | Wu 2025, Liu 2022 (Abstracts) | – |
 | Review-Runde 2: Prüfung | Build grün; Kohortenprüfung der 20 URLs 0 Befunde; gezielte Prüfung der 6 geänderten Seiten (Notfallstufe ohne Kombination, Satz vorhanden); Nachkorrektur PPPD: «Ohnmacht; Brustschmerz oder Herzrasen» statt «Schwindel mit Ohnmacht …», erneut gebaut und geprüft. Link-Patch unverändert und nicht angewendet; Gates aus Runde 1 gelten (nur Leaf-Texte geändert). | – | – |
 | Review-Runde 3: PPPD, Herzrasen | Nur die Herzrasen-Formulierung präzisiert: 144-Stufe «Brustschmerz oder Druck in der Brust, der länger als 15 Minuten anhält, Atemnot oder Ohnmacht (möglicher Herzinfarkt); anhaltendes Herzrasen zusammen mit Schwindel, Atemnot oder Brustenge (mögliche gefährliche Rhythmusstörung)»; Zeitnah-Stufe neu «kurzes Herzklopfen oder Herzrasen ohne Begleitbeschwerden (ärztlich abklären, kein Notfall)». Hirnschlag-Einzelzeichen unverändert. Gezielter Check im dist: Sätze vorhanden, 3 FAQ, keine verbotenen Zeichen; Build grün. | Schweizerische Herzstiftung «Herzinfarkt» (Brustschmerz > 15 Minuten, Atemnot, Notruf 144) und «Herzrhythmusstörungen» (meiste Störungen nicht unmittelbar gefährlich, Abklärung bei Herzrasen, Kammertachykardie als Notfall), beide neu im Quellenblock | Die Herzstiftung nennt bei Rhythmusstörungen die 144 nicht ausdrücklich; die Zuordnung «anhaltend mit Schwindel/Atemnot/Brustenge → 144» folgt ihrer Einstufung der Kammertachykardie als Notfall. |
+| Review-Runde 4: PPPD | 144-Stufe: «anhaltender Brustschmerz oder Druck in der Brust, Atemnot oder Ohnmacht (möglicher Herzinfarkt: sofort 144, nicht abwarten)» statt 15-Minuten-Angabe; Zeitnah-Stufe: «kurzes Herzklopfen oder Herzrasen ohne Begleitbeschwerden: Beschwerden und Verlauf ärztlich beurteilen lassen» statt «kein Notfall». Commit `863edf92`. | Herzstiftung «Herzinfarkt», «Herzrhythmusstörungen» (bereits im Quellenblock) | – |
+
+## 11. Integration (GO 20.10.2026, Commit `c3be164b`)
+
+- `git apply seo/welle-6-links.patch` auf HEAD `863edf92`, Patchdatei entfernt. 30 Bestands-Leaves erhalten je einen Kontextabsatz (40 Links). Host-Quellen nach Entfernen der Sätze byteidentisch mit main 7f4d9761 (30/30).
+- Build grün (Sitemap 852 → 872 URLs, Worker-Bundle). Gates auf dem integrierten dist: health-audit (7 Pins, 3 Retired, 0 Fehler), check-i18n (51 Einträge, 0 outdated/warnings/failures), test-en-analytics 47/0, check-kontakt-formular 0 Fehler, test-anfrage-betreff 86/0, check-clinic-status 0, check-standort-ux 0, check-first30 0, check-professional grün. `test-kontakt-formular` 703/703.
+- Kohortenprüfung 20 URLs: 0 Befunde (Canonical, 1 H1, kein noindex, kein FAQ-/Question-Schema, kein datePublished, 3 FAQ, Quellenblock, keine verbotenen Zeichen, Notfallstufen ohne Symptomkombination, Titles eindeutig, alle Linkziele im dist).
+- Inbound aus Bestand: genau 2 je neuer Seite (20/20), 40 Links, 30 Hosts. Hosts: Title, Meta, H1, Canonical, Formular-, Tracking- und WhatsApp-Marker unverändert gegenüber main (0 Abweichungen). EN: 0 geänderte Seiten.
+- Build-Diff main 7f4d9761 → Branch: Seiten 877 → 897, hinzugefügt 20 (= die 20 Slugs), entfernt 0, geändert 39 = 30 Hosts + Hub A-Z + Bibliotheks-Startseite + 7 Regionsseiten; unerwartet 0.
+- CSV: Keyword-Map 878 Zeilen à 21 Spalten, Guards 251 Zeilen à 5 Spalten (Leerzeile 170 vorbestehend). Queue: 20 URLs unter «Geplant (noch nicht live)», 0 unter «Offen», kein Datum; kein Schema-Datum auf den Leaves.
+- Overflow 320/390/768/1440 der 20 Seiten: 80 Prüfungen, 0 Overflow, 0 pageerrors. Host-Absätze: 80 Prüfungen (40 Ziele × 390/1440 px), Link überall sichtbar, 0 Overflow. Screenshots: `/tmp/claude-0/-home-user-tcm-ch/7256a291-45a8-5985-b8d0-3822d9872d66/scratchpad/w6/shots-final` (Seiten 390/1440 und `host-<slug>-390.png`).
+- Nicht gemacht: Ready, Merge, Deployment, Queue-Datum, Schema-Datum, Änderungen an EN, Formularen, Tracking, Standortdaten; keine Gates abgeschwächt; keine echten Anfragen.
+
+## 12. Release-Schritte (nur nach GO)
+
+1. Ready → Review → Merge (normaler Merge-Commit).
+2. Nach dem Merge: `seo/index-queue.md`, 20 URLs von «Geplant» nach «Offen» mit Veröffentlichungsdatum (eigener Commit); Live-Check der 20 URLs (200, Canonical, Title, Indexierbarkeit, H1, FAQ, Quellen), Sitemap, Hub- und Inbound-Verlinkung, 390/1440 px; GSC über die tägliche Queue (bis 10 URLs/Tag).
 
