@@ -4448,6 +4448,766 @@ export const beschwerden: Beschwerde[] = [
         "label": "Akupunktur"
       }
     ]
+  },
+  {
+    "slug": "okzipitalneuralgie",
+    "name": "Okzipitalneuralgie",
+    "title": "Okzipitalneuralgie: Symptome und Behandlung",
+    "metaDesc": "Okzipitalneuralgie: einschiessender Nervenschmerz am Hinterkopf. Diagnose nach ICHD-3 mit Nervenblockade, Behandlung mit Medikamenten und Grenzen ergänzender TCM.",
+    "conditionName": "Okzipitalneuralgie",
+    "lead": "Einschiessende, stechende Schmerzattacken am Hinterkopf mit berührungsempfindlicher Kopfhaut: Was dahintersteckt, wie die Neurologie die Diagnose sichert und welche Behandlungen belegt sind.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "kopfschmerzen",
+        "label": "Kopfschmerzen"
+      },
+      {
+        "slug": "trigeminusneuralgie",
+        "label": "Trigeminusneuralgie"
+      },
+      {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "zervikogener-kopfschmerz",
+    "name": "Zervikogener Kopfschmerz",
+    "title": "Zervikogener Kopfschmerz: Symptome und Behandlung",
+    "metaDesc": "Zervikogener Kopfschmerz: Kopfschmerz mit belegter Ursache in der Halswirbelsäule. Abklärung nach ICHD-3, Übungen und Physiotherapie, Grenzen ergänzender TCM.",
+    "conditionName": "Zervikogener Kopfschmerz",
+    "lead": "Einseitiger Kopfschmerz, der vom Nacken aufsteigt und bei Kopfbewegung zunimmt: Wann er wirklich von der Halswirbelsäule kommt, wie das geprüft wird und was gegen ihn hilft.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      },
+      {
+        "slug": "migraene",
+        "label": "Migräne"
+      },
+      {
+        "slug": "kopfschmerzen",
+        "label": "Kopfschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "zervikale-radikulopathie",
+    "name": "Zervikale Radikulopathie",
+    "title": "Zervikale Radikulopathie: Symptome und Behandlung",
+    "metaDesc": "Zervikale Radikulopathie: gereizte Nervenwurzel an der Halswirbelsäule mit Ausstrahlung in Arm und Hand. Abklärung, konservative Behandlung, Grenzen ergänzender TCM.",
+    "conditionName": "Zervikale Radikulopathie",
+    "lead": "Schmerz vom Nacken in Arm oder Hand, dazu Kribbeln, Taubheit oder Schwäche: Wie eine gereizte Nervenwurzel erkannt wird, warum die meisten Fälle ohne Operation abheilen und wann es eilt.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "bandscheibenvorfall",
+        "label": "Bandscheibenvorfall"
+      },
+      {
+        "slug": "thoracic-outlet-syndrom",
+        "label": "Thoracic-outlet-Syndrom"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "fasettensyndrom",
+    "name": "Fasettensyndrom",
+    "title": "Fasettensyndrom: Symptome und Behandlung",
+    "metaDesc": "Fasettensyndrom (Facettensyndrom): Rückenschmerz aus den kleinen Wirbelgelenken. Diagnostische Blockade, Behandlung nach Leitlinie und Grenzen ergänzender TCM.",
+    "conditionName": "Fasettensyndrom",
+    "lead": "Tiefer Rückenschmerz neben der Wirbelsäule, stärker beim Rückbeugen und Drehen: Wann die kleinen Wirbelgelenke die Quelle sind, warum ein Verschleissbild das nicht beweist und wie behandelt wird.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      },
+      {
+        "slug": "spondylose",
+        "label": "Spondylose"
+      },
+      {
+        "slug": "isg-blockade",
+        "label": "ISG-Blockade"
+      },
+      {
+        "slug": "spinalkanalstenose",
+        "label": "Spinalkanalstenose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "hueftimpingement",
+    "name": "Hüftimpingement (FAI)",
+    "title": "Hüftimpingement (FAI): Symptome und Behandlung",
+    "metaDesc": "Hüftimpingement (FAI): Leistenschmerz beim Beugen und Drehen, warum Knochenform allein keine Diagnose ist, Abklärung, Physiotherapie, Grenzen ergänzender TCM.",
+    "conditionName": "Hüftimpingement (FAI)",
+    "lead": "Beim Hüftimpingement stossen Hüftkopf und Pfannenrand bei bestimmten Bewegungen aneinander. Von einem Syndrom spricht man nur, wenn Beschwerden, Befund und Bild zusammenpassen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "koxarthrose",
+        "label": "Koxarthrose"
+      },
+      {
+        "slug": "impingement-syndrom",
+        "label": "Impingement-Syndrom (Schulter)"
+      },
+      {
+        "slug": "adduktorentendinopathie",
+        "label": "Adduktorentendinopathie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "pes-anserinus-bursitis",
+    "name": "Pes-anserinus-Bursitis",
+    "title": "Pes-anserinus-Bursitis: Symptome und Behandlung",
+    "metaDesc": "Pes-anserinus-Bursitis: Druckschmerz an der Knieinnenseite unter dem Gelenkspalt, Abgrenzung zu Meniskus und Arthrose, Behandlung, Grenzen ergänzender TCM.",
+    "conditionName": "Pes-anserinus-Bursitis",
+    "lead": "Die Pes-anserinus-Bursitis ist eine Reizung des Schleimbeutels an der Knieinnenseite, wo drei Sehnen am Schienbein ansetzen. Sie wird fast immer ohne Operation behandelt.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "schleimbeutelentzuendung",
+        "label": "Schleimbeutelentzündung"
+      },
+      {
+        "slug": "meniskusriss",
+        "label": "Meniskusriss"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "haglundferse",
+    "name": "Haglundferse",
+    "title": "Haglundferse: Symptome und Behandlung",
+    "metaDesc": "Haglundferse: Knochenhöcker hinten an der Ferse, Druckschmerz durch Schuhe, Abgrenzung zu Achillessehne und Fersensporn, Behandlung, Grenzen ergänzender TCM.",
+    "conditionName": "Haglundferse",
+    "lead": "Die Haglundferse ist ein Knochenhöcker am hinteren Fersenbein. Schmerz entsteht erst, wenn Schuhrand und Achillessehne darüber reiben und Schleimbeutel oder Sehnenansatz sich entzünden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "achillessehnenentzuendung",
+        "label": "Achillessehnenentzündung"
+      },
+      {
+        "slug": "fersensporn",
+        "label": "Fersensporn"
+      },
+      {
+        "slug": "plantarfasziitis",
+        "label": "Plantarfasziitis"
+      },
+      {
+        "slug": "schleimbeutelentzuendung",
+        "label": "Schleimbeutelentzündung"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "sesamoiditis",
+    "name": "Sesamoiditis",
+    "title": "Sesamoiditis: Symptome und Behandlung",
+    "metaDesc": "Sesamoiditis: Schmerz unter dem Grosszehengrundgelenk durch gereizte Sesambeine, Abgrenzung zum Bruch, Röntgen, Entlastung, Polster, Tapen, Grenzen ergänzender TCM.",
+    "conditionName": "Sesamoiditis",
+    "lead": "Bei der Sesamoiditis sind die zwei kleinen Sesambeine unter dem Grosszehengrundgelenk überlastet und gereizt. Ein Bruch muss vorher ausgeschlossen werden; die meisten Beschwerden heilen ohne Operation.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "metatarsalgie",
+        "label": "Metatarsalgie"
+      },
+      {
+        "slug": "hallux-rigidus",
+        "label": "Hallux rigidus"
+      },
+      {
+        "slug": "hallux-valgus",
+        "label": "Hallux valgus"
+      },
+      {
+        "slug": "gicht",
+        "label": "Gicht"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "radialtunnelsyndrom",
+    "name": "Radialtunnelsyndrom",
+    "title": "Radialtunnelsyndrom: Symptome und Behandlung",
+    "metaDesc": "Radialtunnelsyndrom: Schmerz aussen am Unterarm durch gereizten Speichennerv, oft als Tennisarm verkannt. Abgrenzung, Abklärung, Behandlung, Grenzen ergänzender TCM.",
+    "conditionName": "Radialtunnelsyndrom",
+    "lead": "Dumpfer Schmerz aussen am Unterarm, einige Zentimeter unter dem Ellbogen, ohne Lähmung: Das Radialtunnelsyndrom wird leicht mit dem Tennisarm verwechselt und anders behandelt.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "tennisarm",
+        "label": "Tennisarm"
+      },
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "kubitaltunnelsyndrom",
+        "label": "Kubitaltunnelsyndrom"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "loge-de-guyon-syndrom",
+    "name": "Loge-de-Guyon-Syndrom",
+    "title": "Loge-de-Guyon-Syndrom: Symptome und Behandlung",
+    "metaDesc": "Loge-de-Guyon-Syndrom: Ellennerv am Handgelenk eingeengt, Kribbeln in Klein- und Ringfinger. Abgrenzung zum Ellbogen, Abklärung, Behandlung, Grenzen ergänzender TCM.",
+    "conditionName": "Loge-de-Guyon-Syndrom",
+    "lead": "Kribbeln in Klein- und Ringfinger mit normalem Gefühl am Handrücken: Beim Loge-de-Guyon-Syndrom ist der Ellennerv am Handgelenk eingeengt, nicht am Ellbogen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "kubitaltunnelsyndrom",
+        "label": "Kubitaltunnelsyndrom"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      },
+      {
+        "slug": "tfcc-laesion",
+        "label": "TFCC-Läsion"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "plica-syndrom-knie",
+    "name": "Plica-Syndrom am Knie",
+    "title": "Plica-Syndrom am Knie: Symptome und Behandlung",
+    "metaDesc": "Plica-Syndrom am Knie: gereizte Schleimhautfalte, Schmerz innen oberhalb des Gelenkspalts. Zufallsbefund oder Ursache? Abklärung, Therapie, Grenzen ergänzender TCM.",
+    "conditionName": "Plica-Syndrom am Knie",
+    "lead": "Fast jedes Knie hat Schleimhautfalten, und die meisten machen nie Beschwerden. Beim Plica-Syndrom ist die innere Falte verdickt und klemmt beim Beugen ein.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "patellofemorales-schmerzsyndrom",
+        "label": "Patellofemorales Schmerzsyndrom"
+      },
+      {
+        "slug": "meniskusriss",
+        "label": "Meniskusriss"
+      },
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "laeuferknie",
+        "label": "Läuferknie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "quadrizepssehnen-tendinopathie",
+    "name": "Quadrizepssehnen-Tendinopathie",
+    "title": "Quadrizepssehnen-Tendinopathie: Symptome und Behandlung",
+    "metaDesc": "Quadrizepssehnen-Tendinopathie: Belastungsschmerz am oberen Kniescheibenpol, nicht unten wie beim Patellaspitzensyndrom. Abklärung, Übungen, Grenzen ergänzender TCM.",
+    "conditionName": "Quadrizepssehnen-Tendinopathie",
+    "lead": "Schmerz direkt oberhalb der Kniescheibe beim Springen, Treppe abwärts oder in der Hocke: Die Quadrizepssehne reagiert auf Überlastung, und sie ist nicht die Patellasehne.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "patellaspitzensyndrom",
+        "label": "Patellaspitzensyndrom"
+      },
+      {
+        "slug": "knieschmerzen",
+        "label": "Knieschmerzen"
+      },
+      {
+        "slug": "patellofemorales-schmerzsyndrom",
+        "label": "Patellofemorales Schmerzsyndrom"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Kniearthrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "schnappende-huefte",
+    "name": "Schnappende Hüfte (Coxa saltans)",
+    "title": "Schnappende Hüfte (Coxa saltans): Symptome und Behandlung",
+    "metaDesc": "Schnappende Hüfte (Coxa saltans): Sehne springt über Knochen. Wann Schmerz oder Gelenk abgeklärt werden, Dehnung, Physiotherapie und Grenzen ergänzender TCM.",
+    "conditionName": "Schnappende Hüfte (Coxa saltans)",
+    "lead": "Ein Schnappen in der Hüfte ist meist harmlos. Behandelt wird erst, wenn Schmerz, eine Schleimbeutelreizung oder ein Gelenkproblem dazukommen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "gluteale-tendinopathie",
+        "label": "Gluteale Tendinopathie"
+      },
+      {
+        "slug": "schleimbeutelentzuendung",
+        "label": "Schleimbeutelentzündung"
+      },
+      {
+        "slug": "koxarthrose",
+        "label": "Koxarthrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "rektusdiastase",
+    "name": "Rektusdiastase",
+    "title": "Rektusdiastase: Symptome und Behandlung",
+    "metaDesc": "Rektusdiastase: Abstand der geraden Bauchmuskeln nach der Schwangerschaft. Fingertest, Abgrenzung zum Bruch, Übungen, Physiotherapie und Grenzen ergänzender TCM.",
+    "conditionName": "Rektusdiastase",
+    "lead": "Nach der Geburt stehen die geraden Bauchmuskeln oft auseinander. Meist schliesst sich die Lücke von selbst; bleibt sie breit, hilft ein aufbauendes Übungsprogramm.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwangerschaftsbeschwerden",
+        "label": "Schwangerschaftsbeschwerden"
+      },
+      {
+        "slug": "inkontinenz",
+        "label": "Inkontinenz"
+      },
+      {
+        "slug": "beckenbodenverspannung",
+        "label": "Beckenbodenverspannung"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "symphysenschmerzen-schwangerschaft",
+    "name": "Symphysenschmerzen in der Schwangerschaft",
+    "title": "Symphysenschmerzen in der Schwangerschaft: Symptome und Behandlung",
+    "metaDesc": "Symphysenschmerzen in der Schwangerschaft: Schmerz vorne am Becken als Beckengürtelschmerz. Abklärung, Physiotherapie, Gurt, Geburt und Grenzen ergänzender TCM.",
+    "conditionName": "Symphysenschmerzen in der Schwangerschaft",
+    "lead": "Schmerz an der Schambeinfuge gehört meist zum Beckengürtelschmerz der Schwangerschaft. Das Kind ist nicht gefährdet; Hebamme oder Gynäkologin klären ab, Physiotherapie und Gurt helfen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwangerschaftsbeschwerden",
+        "label": "Schwangerschaftsbeschwerden"
+      },
+      {
+        "slug": "isg-blockade",
+        "label": "ISG-Blockade"
+      },
+      {
+        "slug": "adduktorentendinopathie",
+        "label": "Adduktorentendinopathie"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "nummulaeres-ekzem",
+    "name": "Nummuläres Ekzem",
+    "title": "Nummuläres Ekzem: Symptome und Behandlung",
+    "metaDesc": "Nummuläres Ekzem: münzförmige, stark juckende Herde an Beinen und Armen. Abgrenzung zu Hautpilz und Neurodermitis, Abklärung, Kortison; Grenzen ergänzender TCM.",
+    "conditionName": "Nummuläres Ekzem",
+    "lead": "Münzförmige, scharf begrenzte und stark juckende Herde, meist an Unterschenkeln und Armen. Was dahintersteckt, wie es sich von Hautpilz und Neurodermitis unterscheidet und wie es behandelt wird.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "kontaktdermatitis",
+        "label": "Kontaktdermatitis"
+      },
+      {
+        "slug": "dyshidrotisches-ekzem",
+        "label": "Dyshidrotisches Ekzem"
+      },
+      {
+        "slug": "venenschwaeche",
+        "label": "Venenschwäche"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "lichen-planus",
+    "name": "Lichen ruber planus",
+    "title": "Lichen ruber planus: Symptome und Behandlung",
+    "metaDesc": "Lichen ruber planus: violette Knötchen auf der Haut, weisse Streifen im Mund. Formen, Hautprobe, Kortison, Schleimhautkontrollen; Grenzen ergänzender TCM.",
+    "conditionName": "Lichen ruber planus",
+    "lead": "Flache violette Knötchen auf der Haut, weisse Netzzeichnungen im Mund, Veränderungen an Genitalien, Nägeln oder Kopfhaut. Welche Formen es gibt, wie die Diagnose gesichert wird und warum Schleimhautbefunde kontrolliert werden.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "lichen-sclerosus",
+        "label": "Lichen sclerosus"
+      },
+      {
+        "slug": "burning-mouth-syndrom",
+        "label": "Burning-Mouth-Syndrom"
+      },
+      {
+        "slug": "schuppenflechte",
+        "label": "Schuppenflechte"
+      },
+      {
+        "slug": "haarausfall",
+        "label": "Haarausfall"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "notalgia-paraesthetica",
+    "name": "Notalgia paraesthetica",
+    "title": "Notalgia paraesthetica: Symptome und Behandlung",
+    "metaDesc": "Notalgia paraesthetica: Juckreiz neben dem Schulterblatt aus gereizten Hautnerven. Abgrenzung zu Ekzem und Pilz, Abklärung, Behandlung; Grenzen ergänzender TCM.",
+    "conditionName": "Notalgia paraesthetica",
+    "lead": "Ein scharf begrenzter, hartnäckiger Juckreiz neben dem Schulterblatt, oft mit Brennen und einem braunen Fleck. Warum die Nerven und nicht die Haut die Ursache sind und was dagegen hilft.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "kontaktdermatitis",
+        "label": "Kontaktdermatitis"
+      },
+      {
+        "slug": "guertelrose",
+        "label": "Gürtelrose"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "brachioradialer-pruritus",
+    "name": "Brachioradialer Pruritus",
+    "title": "Brachioradialer Pruritus: Symptome und Behandlung",
+    "metaDesc": "Brachioradialer Pruritus: Juckreiz und Brennen am Unterarm ohne Ausschlag. Sonne und Halswirbelsäule als Faktoren, Abklärung, Therapie; Grenzen ergänzender TCM.",
+    "conditionName": "Brachioradialer Pruritus",
+    "lead": "Juckreiz, Brennen oder Kribbeln an der Aussenseite des Unterarms, ohne eigentlichen Ausschlag, oft im Sommer schlimmer. Welche Rolle Sonne und Halswirbelsäule spielen und wie abgeklärt und behandelt wird.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "kontaktdermatitis",
+        "label": "Kontaktdermatitis"
+      },
+      {
+        "slug": "nackenschmerzen",
+        "label": "Nackenschmerzen"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
+  },
+  {
+    "slug": "pppd",
+    "name": "Persistierender postural-perzeptiver Schwindel (PPPD)",
+    "title": "Persistierender postural-perzeptiver Schwindel (PPPD): Symptome und Behandlung",
+    "metaDesc": "PPPD: anhaltender Schwankschwindel über drei Monate nach Bárány-Kriterien. Abklärung in Neurologie und HNO, vestibuläre Reha, KVT und Grenzen ergänzender TCM.",
+    "conditionName": "Persistierender postural-perzeptiver Schwindel (PPPD)",
+    "lead": "PPPD ist ein anhaltender Schwank- oder Benommenheitsschwindel, der nach einer akuten Störung bestehen bleibt. Er ist nicht eingebildet und lässt sich mit vestibulärer Rehabilitation, Verhaltenstherapie und Medikamenten behandeln.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      },
+      {
+        "slug": "vestibulaere-migraene",
+        "label": "Vestibuläre Migräne"
+      },
+      {
+        "slug": "lagerungsschwindel",
+        "label": "Lagerungsschwindel"
+      },
+      {
+        "slug": "vestibularisneuritis",
+        "label": "Vestibularisneuritis"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      },
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      }
+    ]
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);
