@@ -94,5 +94,11 @@ globalThis.BESCHWERDEN_KEEP = [
   "tfcc-laesion", "proximale-hamstring-tendinopathie", "adduktorentendinopathie", "peronealsehnen-tendinopathie",
   "tibialis-posterior-tendinopathie", "metatarsalgie", "spondylolisthese", "psoriasis-arthritis",
   "dyshidrotisches-ekzem", "kontaktdermatitis", "akne-inversa", "lichen-sclerosus",
-  "vestibulaere-migraene", "vestibularisneuritis", "hyperakusis", "burning-mouth-syndrom"
+  "vestibulaere-migraene", "vestibularisneuritis", "hyperakusis", "burning-mouth-syndrom",
+  // Welle 6 (20 Diagnose-Owner, Draft 20.10.2026):
+  "okzipitalneuralgie", "zervikogener-kopfschmerz", "zervikale-radikulopathie", "fasettensyndrom",
+  "hueftimpingement", "pes-anserinus-bursitis", "haglundferse", "sesamoiditis",
+  "radialtunnelsyndrom", "loge-de-guyon-syndrom", "plica-syndrom-knie", "quadrizepssehnen-tendinopathie",
+  "schnappende-huefte", "rektusdiastase", "symphysenschmerzen-schwangerschaft", "nummulaeres-ekzem",
+  "lichen-planus", "notalgia-paraesthetica", "brachioradialer-pruritus", "pppd"
 ];

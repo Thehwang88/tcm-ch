@@ -454,6 +454,28 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+Welle 6 (Draft-PR vom 20.10.2026, Basis 7f4d9761; Veröffentlichungsdatum erst im freigegebenen Release-Schritt setzen, dann nach «Offen» verschieben):
+- https://tcm.ch/beschwerden/okzipitalneuralgie/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/zervikogener-kopfschmerz/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/zervikale-radikulopathie/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/fasettensyndrom/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/hueftimpingement/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/pes-anserinus-bursitis/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/haglundferse/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/sesamoiditis/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/radialtunnelsyndrom/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/loge-de-guyon-syndrom/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/plica-syndrom-knie/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/quadrizepssehnen-tendinopathie/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/schnappende-huefte/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/rektusdiastase/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/symphysenschmerzen-schwangerschaft/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/nummulaeres-ekzem/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/lichen-planus/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/notalgia-paraesthetica/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/brachioradialer-pruritus/ — geplant (Beschwerden Welle 6, noch nicht live)
+- https://tcm.ch/beschwerden/pppd/ — geplant (Beschwerden Welle 6, noch nicht live)
+
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 Stand 20.09.2026: Kontingent ist wieder verfuegbar — erste erfolgreiche Einreichungen seit 16.09.
