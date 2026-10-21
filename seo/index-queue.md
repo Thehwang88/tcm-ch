@@ -474,6 +474,21 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/akupunktur-oder-physiotherapie/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-oder-osteopathie/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-oder-schroepfen/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/tuina-oder-physiotherapie/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-metallallergie/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-mit-gelenkprothese/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-immunsuppression/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nach-operation/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/moxibustion-sicherheit/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/ — vorbereitet 21.10.2026 (Entscheidungsfragen-Kohorte, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")
 Stand 20.09.2026: Kontingent ist wieder verfuegbar — erste erfolgreiche Einreichungen seit 16.09.
