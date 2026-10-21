@@ -22,7 +22,8 @@
 //                 Runde ausgebucht (bestätigte ≥ reservierte) → ehrlicher Hinweis, Anfrage für reguläre Termine bleibt.
 //   Nie: Countdown-Resets, Zufallszahlen, erfundene Buchungs-Hinweise, CHF-Vergleichswerte, Blink-/Puls-Warnungen,
 //        Aussagen, das Angebot ende endgültig, solange es weitergeführt wird.
-// Vorschau (nur lokale Review-/QA-Builds): HERBST_SG_PREVIEW=active|soldout|live|between|next. Produktion setzt das nie.
+// Vorschau (nur lokale Review-/QA-Builds): HERBST_SG_PREVIEW=active|soldout|live|between|next (Kontingent-Modus simuliert) | anfrage.
+// Produktion setzt das nie.
 import { KAMPAGNEN } from './kontakt-angebote.mjs';
 import rundenJson from './tcm360-runden.json';
 
@@ -31,17 +32,30 @@ export const HERBST_SG = {
   label: KAMPAGNEN.sg_tcm360_herbst_2026.label,
   standortId: 'st-gallen',
   stadt: 'St. Gallen',
-  /** Manueller Angebotsschalter (nur mit allen Freigaben, siehe approvals + docs/cro/10). */
-  offerActive: false,
+  /** Manueller Angebotsschalter. Inhaber-Freigabe zum Launch 21.10.2026 (docs/cro/10 §1). */
+  offerActive: true,
+  /** Buchungsmodus (Inhaber-Entscheid 21.10.2026):
+   *  'anfrage'    = Anfrage-Modus: 360°-Termine nur als unverbindliche Anfrage; KEINE Rundenfrist als «offen für bestätigte
+   *                 Termine», keine Kapazitäts-/Restzahl-Texte, Rundenzeile immer neutral («360°-Termine auf Anfrage ·
+   *                 unverbindlich»). Erlaubt ohne capacityConfirmed. Runden-ID wird intern zur Messung zugeordnet.
+   *  'kontingent' = verifiziertes Kontingent (capacityConfirmed + reservierteTermine): Rundenfrist und Kapazitätstext sichtbar. */
+  bookingMode: 'anfrage' as 'anfrage' | 'kontingent',
+  // Jede Freigabe nur mit Beleg (Name, Datum, Quelle) in docs/cro/10 §1; nie, um das Gate zu erfüllen.
   approvals: {
-    /** Format bestätigt und werberechtlich geprüft (erst dann wird eine Dauer angezeigt). */
-    formatConfirmed: false,
-    /** Separat reservierte 360°-Termine und Personal je Runde bestätigt. */
+    /** Inhaber-Freigabe 21.10.2026: kommerzielles Angebot, Format ca. 20 Min. (Kurzcheck mit Fokus auf das Hauptanliegen,
+     *  Zungen-/Pulsdiagnostik, Fragen, Praxis-Einblick), ohne Behandlung. Keine unabhängige werberechtliche Prüfung; das Gate
+     *  verbietet Diagnose-/Garantie-/Knappheits-Claims im Wortlaut. */
+    formatConfirmed: true,
+    /** Separat reservierte 360°-Termine und Personal je Runde (reservierteTermine in tcm360-runden.json). Beleg: OFFEN →
+     *  Launch im Anfrage-Modus (bookingMode 'anfrage'), keine Kapazitätsaussagen. */
     capacityConfirmed: false,
-    /** Kapazitäts-/Fristen-/Abgrenzungs-Claims geprüft. */
-    claimsReviewed: false,
-    /** Datenschutz/Consent für Kampagnenfelder (kampagne, runde, UTM) geprüft. */
-    privacyReviewed: false,
+    /** Inhaber-Freigabe des Patienten-Wortlauts 21.10.2026 + automatisiertes Gate (keine medizinischen Untersuchungs-/
+     *  Diagnose-Claims, keine Dringlichkeits-/Preisvergleichs-Muster, neutraler Status ohne Verfügbarkeitszusage). */
+    claimsReviewed: true,
+    /** Prüfung 21.10.2026 gegen die Datenschutzerklärung (Ziff. 2 Kontaktformular-Daten, Ziff. 3 Zweck Terminanfrage,
+     *  Resend-Versand, Turnstile, Ziff. 7 GA4/GTM nur nach Einwilligung via CookieYes): kampagne/runde/utm sind Zuordnungs-
+     *  daten der Anfrage in derselben Mail; keine Gesundheits- oder Kontaktdaten an GTM/GA4/Ads. Keine Textänderung nötig. */
+    privacyReviewed: true,
   },
   /** Vorgeschlagene Dauer des 360°-Termins (ca. 20 Min.), NUR angezeigt mit approvals.formatConfirmed. */
   dauerMin: 20,
@@ -62,6 +76,8 @@ export interface HerbstState {
   soldOut: boolean;
   preview: string;
   ready: boolean;
+  /** 'anfrage' = nur unverbindliche Anfragen, keine Kapazitäts-/Fristaussagen; 'kontingent' = verifiziertes Kontingent. */
+  bookingMode: 'anfrage' | 'kontingent';
   /** Aktuelle Buchungsrunde (Build-Zeit); '' = keine. Der Client setzt das Feld «runde» mit derselben Logik. */
   rundeId: string;
   rundeKind: RundeKind;
@@ -96,7 +112,9 @@ export const herbstState = (): HerbstState => {
   const preview = (typeof process !== 'undefined' && process.env.HERBST_SG_PREVIEW) || '';
   const now = Date.now();
   const A = HERBST_SG.approvals;
-  const ready = A.formatConfirmed && A.capacityConfirmed && A.claimsReviewed && A.privacyReviewed;
+  // Kapazitäts-Freigabe nur im Kontingent-Modus nötig; im Anfrage-Modus gibt es keine Kapazitätsaussage.
+  const anfrage = HERBST_SG.bookingMode === 'anfrage' && !preview || preview === 'anfrage';
+  const ready = A.formatConfirmed && A.claimsReviewed && A.privacyReviewed && (A.capacityConfirmed || HERBST_SG.bookingMode === 'anfrage');
   let show = HERBST_SG.offerActive && ready;
   let runden: Runde[] = RUNDEN;
   let live = { remaining: HERBST_SG.live.remaining as number | null, verifiedAt: HERBST_SG.live.verifiedAt as string };
@@ -110,17 +128,19 @@ export const herbstState = (): HerbstState => {
     if (preview === 'live') { live = { remaining: 7, verifiedAt: iso(now - 60 * 60 * 1000) }; dauerText = `ca. ${HERBST_SG.dauerMin} Minuten`; }
     if (preview === 'between') runden = [{ ...base, ende: iso(now - 60 * 60 * 1000), status: 'beendet' }];
     if (preview === 'next') runden = [{ ...base, ende: iso(now - 60 * 60 * 1000), status: 'beendet' }, { ...base, id: 'runde-vorschau-2', start: iso(now + 3 * DAY), ende: iso(now + 12 * DAY), status: 'geplant', bestaetigteBuchungen: null }];
+    if (preview === 'anfrage') { runden = [{ ...base, reservierteTermine: null, bestaetigteBuchungen: null, verifiziertAm: '', verifiziertVon: '' }]; dauerText = `ca. ${HERBST_SG.dauerMin} Minuten`; }
   }
   const { kind, runde } = pickRunde(runden, now);
-  const liveOk = live.remaining != null && !!live.verifiedAt && now - ms(live.verifiedAt) <= DAY && now - ms(live.verifiedAt) >= 0;
-  const soldOut = show && kind === 'aktuell' && ((liveOk && (live.remaining as number) <= 0) || rundeSoldOut(runde!));
+  const liveOk = !anfrage && live.remaining != null && !!live.verifiedAt && now - ms(live.verifiedAt) <= DAY && now - ms(live.verifiedAt) >= 0;
+  const soldOut = !anfrage && show && kind === 'aktuell' && ((liveOk && (live.remaining as number) <= 0) || rundeSoldOut(runde!));
   const mode: HerbstMode = !show ? 'off' : soldOut ? 'soldout' : 'active';
-  const rundeText = !show ? '' : kind === 'aktuell' ? (runde!.hinweis || `Aktuelle Buchungsrunde bis ${fmtDate(runde!.ende)}`)
+  // Anfrage-Modus: nie eine Runde als «offen für bestätigte Termine» bewerben → immer neutraler Status.
+  const rundeText = !show ? '' : anfrage ? NEUTRAL_TEXT : kind === 'aktuell' ? (runde!.hinweis || `Aktuelle Buchungsrunde bis ${fmtDate(runde!.ende)}`)
     : kind === 'naechste' ? (runde!.hinweis || `Nächste Buchungsrunde ab ${fmtDate(runde!.start)}`) : NEUTRAL_TEXT;
-  const scarcityKind = !show || soldOut || kind !== 'aktuell' ? 'none' : liveOk && (live.remaining as number) > 0 ? 'live' : runde!.reservierteTermine != null ? 'quota' : 'none';
+  const scarcityKind = !show || anfrage || soldOut || kind !== 'aktuell' ? 'none' : liveOk && (live.remaining as number) > 0 ? 'live' : runde!.reservierteTermine != null ? 'quota' : 'none';
   const scarcity = scarcityKind === 'live' ? `Noch ${live.remaining} 360°-Termine verfügbar`
     : scarcityKind === 'quota' ? 'Spezielle 360°-Termine – begrenzte Kapazität' : '';
-  return { show, mode, soldOut, preview, ready, rundeId: kind === 'aktuell' ? runde!.id : '', rundeKind: kind, rundeText, scarcity, scarcityKind, dauerText,
+  return { show, mode, soldOut, preview, ready, bookingMode: anfrage ? 'anfrage' : 'kontingent', rundeId: kind === 'aktuell' ? runde!.id : '', rundeKind: kind, rundeText, scarcity, scarcityKind, dauerText,
     rundenClient: runden.map((r) => ({ id: r.id, start: ms(r.start), ende: ms(r.ende), status: r.status, soldOut: rundeSoldOut(r), quota: r.reservierteTermine != null, hinweis: r.hinweis || '' })) };
 };
 
@@ -141,7 +161,7 @@ export const HERBST_COPY = {
     { t: 'Exklusiver Praxis-Einblick', d: 'Kurze Vorstellung der Praxis St. Gallen und der Behandlungsmöglichkeiten, wenn möglich mit den anwesenden Fachpersonen.' },
   ],
   /** Kompakte Vorteile (Sheet). */
-  benefits: ['Persönlicher TCM-Konstitutionscheck', 'Zungen- und Pulsdiagnostik', 'Antworten auf deine TCM-Fragen', 'Praxis und Behandlungsmöglichkeiten kennenlernen'],
+  benefits: ['Persönlicher TCM-Konstitutionscheck', 'Zungen- und Pulsdiagnostik', 'Antworten auf deine TCM-Fragen', 'Praxis kennenlernen'],
   noTreatment: 'Keine Akupunktur, Massage oder andere Behandlung inbegriffen. Keine Behandlungspflicht.',
   boundary: '360° steht für die ganzheitliche Sicht der TCM: ein kurzer, auf dein Hauptanliegen fokussierter Kurzcheck, keine umfassende medizinische Untersuchung. Er ersetzt keine ärztliche Diagnostik und dient der persönlichen Orientierung aus Sicht der TCM.',
   bannerEyebrow: 'St. Gallen · Herbst Special',

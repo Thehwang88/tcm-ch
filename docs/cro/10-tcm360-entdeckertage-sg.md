@@ -5,17 +5,26 @@ Stand 21.10.2026 · Branch `claude/affectionate-cannon-ktqrkm` · Draft-PR, **ni
 Fortlaufendes Angebot für Neupatient:innen am Standort St. Gallen (`/standorte/st-gallen/`), betrieben in echten Buchungsrunden.
 Erste Runde: **22.–31.10.2026**. Der reguläre kostenlose TCM-Check-in (30 Minuten) bleibt unverändert und läuft parallel weiter.
 
-## 1. Status: NICHT BEREIT (Freigaben offen)
+## 1. Status: AKTIV im Anfrage-Modus (Inhaber-Freigabe 21.10.2026)
+
+Inhaber-Entscheid 21.10.2026: kommerzielles Angebot, Format ca. 20 Minuten und Patienten-Wortlaut freigegeben; Launch als **Anfrage-Modus** (`bookingMode: 'anfrage'`), weil reservierte 360°-Termine/Personal nicht dokumentiert sind. Im Anfrage-Modus: 360°-Termine nur als unverbindliche Anfrage, Rundenzeile immer «360°-Termine auf Anfrage · unverbindlich», keine Kapazitäts-/Restzahl-Texte, keine Runde «offen für bestätigte Termine»; die Runden-ID wird nur intern zur Messung zugeordnet. Wechsel in den Kontingent-Modus erst mit `capacityConfirmed` + `reservierteTermine` (verifiziert).
+
+<details><summary>Ursprünglicher Status vor der Freigabe</summary>
+
 
 `src/data/herbst-sg.ts` → `offerActive: false`. Das Gate `node scripts/check-herbst-sg.mjs` lässt `offerActive: true` nur zu, wenn alle
 `approvals` auf `true` stehen. Bis dahin rendert der Build **kein** Kampagnen-Markup (regulärer SG-Hero, reguläre Sticky-Bar).
 
-| Freigabe (`approvals`) | Was bestätigt werden muss | Wer |
-| --- | --- | --- |
-| `formatConfirmed` | Das 360°-Format ist operativ lieferbar und werberechtlich geprüft: 5-Themen-Konstitutionscheck (Schlaf/Erholung, Stress/Wohlbefinden, Energie/Müdigkeit, Verdauung/Körpergefühl, Schmerzen/Bewegung; Hauptanliegen priorisiert), Zungen-/Pulsdiagnostik durch qualifizierte Fachperson, Fragen beantworten, Praxis-Einblick. Vorschlag **ca. 20 Minuten**; passt das nicht, Scope kürzen oder Praxis-Einblick separat terminieren. Die Dauer wird **erst nach dieser Freigabe** angezeigt (`dauerText`). Der reguläre 30-Minuten-Check-in wird nicht verändert. | Praxisleitung SG, Inhaber |
-| `capacityConfirmed` | Separat reservierte 360°-Termine und Personal je Buchungsrunde (Eintrag `reservierteTermine` in `tcm360-runden.json`). Ohne Kontingent keine Kapazitätsaussage. | Praxisleitung SG |
-| `claimsReviewed` | Rundenfrist («Aktuelle Buchungsrunde bis 31.10.2026»), Kapazitätstext, Abgrenzung zum regulären Check-in, «360°» = ganzheitliche TCM-Sicht (keine medizinische Untersuchung). | Inhaber / Compliance |
-| `privacyReviewed` | Felder `kampagne`, `runde`, UTM (nur Zuordnung, keine Gesundheitsdaten) in Datenschutzerklärung/Consent abgedeckt. | Datenschutz |
+| Freigabe (`approvals`) | Was bestätigt werden muss | Wer | Beleg (Stand 21.10.2026) |
+| --- | --- | --- | --- |
+| `formatConfirmed` | Das 360°-Format ist operativ lieferbar und werberechtlich geprüft: 5-Themen-Konstitutionscheck (Schlaf/Erholung, Stress/Wohlbefinden, Energie/Müdigkeit, Verdauung/Körpergefühl, Schmerzen/Bewegung; Hauptanliegen priorisiert), Zungen-/Pulsdiagnostik durch qualifizierte Fachperson, Fragen beantworten, Praxis-Einblick. Vorschlag **ca. 20 Minuten**; passt das nicht, Scope kürzen oder Praxis-Einblick separat terminieren. Die Dauer wird **erst nach dieser Freigabe** angezeigt (`dauerText`). Der reguläre 30-Minuten-Check-in wird nicht verändert. | Praxisleitung SG, Inhaber | **offen** – keine schriftliche Bestätigung im Repo; benötigt: Bestätigung, dass 5-Themen-Kurzcheck + Zungen-/Puls + Fragen + Praxis-Einblick in ca. 20 Min. lieferbar sind (oder gekürzter Scope), plus werberechtliche Prüfung des Wortlauts (Name, Datum). |
+| `capacityConfirmed` | Separat reservierte 360°-Termine und Personal je Buchungsrunde (Eintrag `reservierteTermine` in `tcm360-runden.json`). Ohne Kontingent keine Kapazitätsaussage. | Praxisleitung SG | **offen** – `reservierteTermine: null` in `tcm360-runden.json`; benötigt: Anzahl separat reservierter 360°-Termine und zuständige Fachpersonen für 22.–31.10.2026 (Eintrag + `verifiziertAm/-Von`). |
+| `claimsReviewed` | Rundenfrist («Aktuelle Buchungsrunde bis 31.10.2026»), Kapazitätstext, Abgrenzung zum regulären Check-in, «360°» = ganzheitliche TCM-Sicht (keine medizinische Untersuchung). | Inhaber / Compliance | **offen** – Texte liegen in §4 vor; benötigt: Freigabe (Name, Datum). |
+| `privacyReviewed` | Felder `kampagne`, `runde`, UTM (nur Zuordnung, keine Gesundheitsdaten) in Datenschutzerklärung/Consent abgedeckt. | Datenschutz | **offen** – Felder `kampagne`, `runde`, `utm_*` (nur Zuordnung, keine Gesundheitsdaten) gegen die Datenschutzerklärung prüfen; benötigt: Freigabe oder Ergänzung (Name, Datum). |
+
+</details>
+
+Belege (Stand 21.10.2026): `formatConfirmed` = Inhaber-Freigabe 21.10.2026 (Angebot, Format, Konzept; keine unabhängige werberechtliche Prüfung); `claimsReviewed` = Inhaber-Freigabe des Wortlauts + Gate (keine Diagnose-/Garantie-/Knappheits-Claims); `privacyReviewed` = Prüfung gegen Datenschutzerklärung Ziff. 2/3/7 (Kontaktformular, Resend, Turnstile, GA4/GTM nach Einwilligung), Felder `kampagne`/`runde`/`utm_*` = Zuordnungsdaten der Anfrage, keine Gesundheits-/Kontaktdaten an Werbeplattformen, keine Textänderung nötig; `capacityConfirmed` = **offen** (Praxisleitung SG) → Anfrage-Modus.
 
 Weitere offene Entscheide:
 - **Buchungsintegration**: OneDoc liefert keine Live-Restzahl per API. «Noch X 360°-Termine verfügbar» bleibt deaktiviert (`live.remaining: null`), bis eine verlässliche, aktuelle Zahl gepflegt werden kann (≤ 24 h vor dem Build).
@@ -107,6 +116,44 @@ Alles läuft über `window.dataLayer.push` (GTM-PZ92Q3KJ), kein `gtag`, keine Pe
 
 Prüfschritte live (Franca): GTM Preview auf `/standorte/st-gallen/` → Banner-CTA → Sheet → Testanfrage (Mail an termine@tcm.ch mit Block «Technische Angaben»: Kampagne, Buchungsrunde, UTM) → in GA4 DebugView genau ein `formular_senden` mit `kampagne`/`cta_position`/`buchungsrunde`; Google-Ads-Conversion zählt weiterhin nur dieses Event. Auswertung je Runde: GA4 Exploration nach `buchungsrunde`, operativ nach Mail-Zeile «Buchungsrunde».
 
+## 4b. Kontrollierter Live-Test (nach Deploy, vor Freigabe des Trackings)
+
+Ohne Zugriff auf GTM/GA4 ist das Tracking **nicht live-verifiziert**; die Events sind nur code-getestet (dataLayer, Mock-API). Ablauf für Franca:
+1. GTM Preview (Container GTM-PZ92Q3KJ) auf `/standorte/st-gallen/?utm_source=test&utm_medium=qa&utm_campaign=tcm360_qa` öffnen.
+2. Banner-CTA klicken → `kampagne_cta_click` {kampagne, cta_position=herbst-banner, standort}; Sheet öffnet → `kampagne_sheet_open` {…, buchungsrunde}. Beide **ohne** Conversion-Tag.
+3. Testanfrage senden: Telefonnummer der Praxis, Name «TEST QA», Terminwunsch «TEST – bitte ignorieren». Die Mail an termine@tcm.ch trägt Formular `TCM360-Entdeckertage-StGallen`, Kampagne, Buchungsrunde, UTM im Block «Technische Angaben» → Team löscht den Test-Lead sofort (keine Buchung, kein CRM-Eintrag).
+4. GA4 DebugView: genau **ein** `formular_senden` mit `quelle=herbst-sg`, `terminart=checkin`, `standort=st-gallen`, `kampagne`, `cta_position`, `buchungsrunde`; keine Personendaten; Google-Ads-Conversion zählt nur dieses Event (bestehender Trigger, keine neue Conversion-Aktion).
+5. Gegenprobe reguläres Hero-Formular (Check-in und Ersttermin): `formular_senden` mit `quelle=launch-hero-sg`, ohne Kampagnenparameter, genau 1×.
+6. Ergebnis in diesem Dokument unter §4a als «live-verifiziert (Datum, Name)» eintragen.
+
+## 4c. Erfolgsmessung (operativ)
+
+| Stufe | Quelle | Kennzahl |
+| --- | --- | --- |
+| Promotions-Klicks | GA4 `kampagne_cta_click` (nach `cta_position`) | Klicks Banner / Sticky / Telefon-Sticky |
+| Sheet/Modal geöffnet | GA4 `kampagne_sheet_open` | Öffnungen je Runde (`buchungsrunde`) |
+| Anfragen | GA4 `formular_senden` mit `kampagne=sg_tcm360_herbst_2026` (nach `terminart`, `buchungsrunde`) + Mail-Zeile «Kampagne» | Anfragen 360°-Check vs. Erstbehandlung |
+| Bestätigte Termine | Praxis-Agenda (OneDoc) / Rückruf-Protokoll, Spalte «Buchungsrunde» im Wochen-Log (`docs/cro/st-gallen-weekly-log-template.csv`) | bestätigte 360°-Termine je Runde (≤ `reservierteTermine`) |
+| Erschienene Neupatient:innen | Praxis-Agenda (Status «erschienen») | Erscheinungsquote |
+| Erstbehandlungen | Praxis-Agenda / Abrechnung (Tarif 590) nach dem 360°-Termin | Konversion 360° → Erstbehandlung |
+
+Eine Anfrage ist **kein** erschienener Neupatient; nur Agenda-/Abrechnungsdaten zählen für die letzten drei Stufen. Die verifizierten Buchungen je Runde fliessen als `bestaetigteBuchungen` (+ `verifiziertAm/-Von`) zurück in `tcm360-runden.json`.
+
+## 4d. Aktivierungs-Diff (erst mit allen Belegen)
+
+In **einem** Commit auf einem Launch-Branch, danach `npm run build && node scripts/check-herbst-sg.mjs` (Gate verweigert `offerActive: true` ohne alle Freigaben):
+
+```ts
+// src/data/herbst-sg.ts
+offerActive: true,
+approvals: { formatConfirmed: true, capacityConfirmed: true, claimsReviewed: true, privacyReviewed: true },
+```
+```json
+// src/data/tcm360-runden.json · runde-2026-10
+"reservierteTermine": <bestätigte Zahl>, "verifiziertAm": "<Datum>", "verifiziertVon": "<Name>"
+```
+Dazu die Belege (Name, Datum, Quelle) in §1 eintragen. Dauer «ca. 20 Minuten» erscheint automatisch mit `formatConfirmed`; `dauerMin` nur ändern, wenn die Praxis eine andere Dauer bestätigt.
+
 ## 5. QA
 
 Vorschau-Build (nur lokal): `HERBST_SG_PREVIEW=active npm run build` (weitere Zustände: `soldout`, `live`, `between`, `next`).
@@ -122,6 +169,8 @@ npm run build && node scripts/check-herbst-sg.mjs        # Produktion: kein Kamp
 ```
 
 Screenshots: `docs/qa/tcm360-sg/` (1 Banner + Sticky mobil 320/375/390, 2 Bottom Sheet mobil + Tablet 768, 3 Desktop-Banner + Modal 1280, 4 Bestätigung). Schriften im Headless-Build: System-Fallback (Google Fonts blockiert), Layout sonst identisch.
+
+Zustands-Screenshots (alle fünf Vorschau-Zustände × 320/375/390/768/1280/1440, Banner / Sticky / Sheet bzw. Modal): `node scripts/shots-herbst-sg.mjs <state> dist --out docs/qa/tcm360-sg/states` nach dem jeweiligen Vorschau-Build; prüft je Zustand Rundenzeile, Kapazitätszeile, CTA-Texte, Vorauswahl und Kacheln (ausgebucht → Erstbehandlung vorgewählt, regulärer Check-in statt 360°-Kachel, Ausverkauft-Hinweis).
 
 Ergebnisse 21.10.2026 (lokal, Chromium headless):
 - `test-herbst-sg.mjs` (Vorschau-Build `active`): **96 / 96 bestanden** (inkl. Turnstile-Regression: render() wirft einmal → Wiederholung; wirft dauerhaft → Hinweis role=alert + «Erneut versuchen»; Absenden ohne bereite Prüfung abgefangen; Skript nicht geladen; Rundenende im offenen Tab; Runde zur Laufzeit ausgebucht) (320/375/390 px: Banner unter dem Header, Sticky-Verhalten inkl. Tastatur/Formular-Stopps, Sheet öffnen/schliessen/Esc/Backdrop/Fokus, Validierung, Versand mit Kampagne/Runde/UTM/CTA-Position, genau 1 `formular_senden`, Bestätigung; Sticky- und Telefon-CTA; Fehlerfall; Hero-Formular unverändert; Desktop-Modal 1280 und Tablet 768; Rundenablauf per Client-Uhr; Wil/Rorschach/Zürich Oerlikon/Homepage ohne Kampagne).
