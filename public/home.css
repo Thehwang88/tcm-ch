@@ -5116,9 +5116,11 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
    inset 2px unten: das Video bleibt in der gemalten Fläche strikt kleiner als das Poster, sonst wird sein erster Frame
    durch Subpixel-Rundung zum (späteren) LCP-Kandidaten; das Poster bleibt LCP-Element. */
 .lsr-right--video img{object-fit:cover}
-.lsr-right--video video{position:absolute;inset:0 0 2px 0;width:100%;height:calc(100% - 2px);object-fit:cover;object-position:var(--hv-pos,center 50%);display:block;max-width:none;opacity:0;transition:opacity .6s ease;pointer-events:none;background:transparent}
+.lsr-right--video video{position:absolute;inset:0 0 2px 0;width:100%;height:calc(100% - 2px);object-fit:cover;object-position:var(--hv-pos,center 50%);display:block;max-width:none;opacity:0;transition:opacity .25s ease;pointer-events:none;background:transparent}
 .lsr-right--video.is-playing video{opacity:1}
-@media(max-width:900px){.lsr-right--video video{object-position:var(--hv-pos-m,center 40%)}}
+/* Poster-Bild mit demselben Fokus wie das Video (Standbild des ersten Frames): deckungsgleicher Übergang, kein Bildsprung. */
+.lsr-right--video img{object-position:var(--hv-pos,center 50%)}
+@media(max-width:900px){.lsr-right--video video,.lsr-right--video img{object-position:var(--hv-pos-m,center 40%)}}
 @media(prefers-reduced-motion:reduce){.lsr-right--video video{display:none}}
 @media(max-width:900px){
   .lsr-inner{grid-template-columns:1fr;min-height:0}

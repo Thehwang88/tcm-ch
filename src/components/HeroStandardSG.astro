@@ -1,8 +1,8 @@
 ---
 // Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne aus Commit 4adc79c8 (ohne die
 // Hinweise «Unverbindliche Anfrage…» und «Geöffnet: …», entfernt auf Inhaber-Wunsch; Öffnungszeiten stehen in «Über
-// die Praxis» und im Schema). Rechte Hälfte: gemeinsames Hero-Video (standort/HeroMedia.astro), Praxisfoto als Poster
-// und in «Über die Praxis» (standorte/[slug].astro).
+// die Praxis» und im Schema). Rechte Hälfte: gemeinsames Hero-Video (standort/HeroMedia.astro) mit Video-Standbild als
+// Poster; das Praxisfoto steht in «Über die Praxis» (standorte/[slug].astro).
 // Darunter: die drei SG-USPs als kompakte Reihe und die Kontaktsektion mit der bisherigen Hero-Buchungsbox
 // (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante, Rückruf dauerhaft offen) und den kanonischen Praxisangaben
 // («Über die Praxis» aus dem Leaf, nicht dupliziert). Mobile: Box vor den Praxisangaben (= DOM-Reihenfolge).
@@ -38,7 +38,7 @@ const card = renderKontaktForm({
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122" class="tcm-link tcm-link--on-brand">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener" class="tcm-link tcm-link--on-brand">WhatsApp</a></p>
     </div>
-    <HeroMedia id="sg-hero-media" poster="/images/standort-stgallen.webp" posterSrcset="/images/standort-stgallen-800.webp 800w, /images/standort-stgallen.webp 1447w" posterAlt="TCM.ch Kliniken St. Gallen – Empfangsbereich" />
+    <HeroMedia id="sg-hero-media" />
   </div>
 </section>
 <KontaktPraxis>

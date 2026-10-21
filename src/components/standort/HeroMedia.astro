@@ -1,20 +1,21 @@
 ---
 // Rechte Hero-Hälfte als Video (gemeinsames hwang.ch-Footage, src/data/hero-video.ts) statt Foto. Geometrie bleibt die
-// der .lsr-right-Fotohälfte (home.css), d. h. keine Höhen-/Layoutänderung. Das Poster (bisheriges Hero-Bild) ist das
-// LCP-Element und bleibt sichtbar, bis das Video seinen ersten Frame rendert; kein autoplay-Attribut + preload="none":
-// vor window.load werden 0 Video-Bytes geladen; Start siehe Script unten (voll sichtbar oder erster Scroll). Mobile ≤900px bekommt die 640er-Rendition. Fallback (Autoplay-Block,
-// Save-Data, prefers-reduced-motion): Poster bleibt stehen. Keine Caption: das Footage stammt nicht aus dem jeweiligen Standort.
-import { HERO_VIDEO_BASE } from '../../data/hero-video';
-const { poster, posterSrcset, posterSizes = '(max-width:900px) 100vw, 50vw', posterAlt, posterWidth = 1447, posterHeight = 1087,
-  objectPositionDesktop = 'center 50%', objectPositionMobile = 'center 40%', id = 'std-hero-media' } = Astro.props as {
-  poster: string; posterSrcset?: string; posterSizes?: string; posterAlt: string; posterWidth?: number; posterHeight?: number;
-  objectPositionDesktop?: string; objectPositionMobile?: string; id?: string;
+// der .lsr-right-Fotohälfte (home.css), d. h. keine Höhen-/Layoutänderung. Poster = Standbild des ersten Video-Frames
+// (HERO_VIDEO_POSTER): dasselbe Bild als Fallback-<img> (LCP-Element, eager) und als <video poster>, damit zwischen Poster
+// und erstem bewegten Frame kein Bildwechsel sichtbar ist (bisher: Standortfoto → Video = sichtbarer «Flash»). Das
+// Standortfoto bleibt in «Über die Praxis». Kein autoplay-Attribut + preload="none": vor window.load werden 0 Video-Bytes
+// geladen; Start siehe Script unten (voll sichtbar oder erster Scroll). Mobile ≤900px bekommt die 640er-Rendition.
+// Fallback (Autoplay-Block, Save-Data, prefers-reduced-motion): Poster bleibt stehen. Keine Caption: das Footage stammt
+// nicht aus dem jeweiligen Standort. Bild und Video teilen Fokus (--hv-pos/--hv-pos-m), damit der Übergang deckungsgleich ist.
+import { HERO_VIDEO_BASE, HERO_VIDEO_POSTER } from '../../data/hero-video';
+const { posterSizes = '(max-width:900px) 100vw, 50vw', objectPositionDesktop = 'center 50%', objectPositionMobile = 'center 40%', id = 'std-hero-media' } = Astro.props as {
+  posterSizes?: string; objectPositionDesktop?: string; objectPositionMobile?: string; id?: string;
 };
-const V = HERO_VIDEO_BASE;
+const V = HERO_VIDEO_BASE; const P = HERO_VIDEO_POSTER;
 ---
 <figure class="lsr-right lsr-right--video" id={id} data-hero-video style={`--hv-pos:${objectPositionDesktop};--hv-pos-m:${objectPositionMobile}`}>
-  <img src={poster} srcset={posterSrcset} sizes={posterSrcset ? posterSizes : undefined} alt={posterAlt} width={posterWidth} height={posterHeight} loading="eager" fetchpriority="high" decoding="async">
-  <video muted playsinline loop preload="none" poster={poster} aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback width="1280" height="720">
+  <img src={P.src} srcset={P.srcset} sizes={posterSizes} alt={P.alt} width={P.width} height={P.height} loading="eager" fetchpriority="high" decoding="async" data-hero-poster>
+  <video muted playsinline loop preload="none" poster={P.src} aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback width="1280" height="720">
     <source src={`${V}-640.webm`} type="video/webm" media="(max-width:900px)">
     <source src={`${V}-640.mp4`} type="video/mp4" media="(max-width:900px)">
     <source src={`${V}-1280.webm`} type="video/webm">

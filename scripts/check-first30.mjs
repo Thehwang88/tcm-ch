@@ -146,8 +146,8 @@ ok((heroVis.match(/CHF 0\.–/g) ?? []).length === 1 && (vis.match(/CHF 0\.–/g
   const k0 = sg.indexOf('<section class="sgk" id="sg-kontakt-praxis">');
   const heroSec = k0 >= 0 ? sg.slice(k0, sg.indexOf('</section>', k0)) : '';
   const between = k0 >= 0 ? sg.slice(sg.indexOf('class="lsr-hero hlsg"'), k0) : '';
-  ok(/class="lsr-hero hlsg"/.test(sg) && /Akupunktur &amp; TCM in/.test(hero) && /src="\/images\/standort-stgallen\.(jpg|webp)"/.test(hero) && !/data-kf-instance/.test(hero) && !/<form|data-kf-instance/.test(between.slice(hero.length))
-     && /data-kf-instance="sg-hero"/.test(heroSec) && /id="offer-form"/.test(heroSec) && /id="first30"/.test(heroSec), 'regulärer St.-Gallen-Hero mit Praxisfoto; Buchungsbox (Anker #offer-form, #first30) direkt darunter in der Kontaktsektion statt FIRST 30');
+  ok(/class="lsr-hero hlsg"/.test(sg) && /Akupunktur &amp; TCM in/.test(hero) && /src="\/videos\/hero-praxis\/hwang-praxis-poster-1280\.webp"/.test(hero) && !/\/images\/standort-stgallen/.test(hero) && !/data-kf-instance/.test(hero) && !/<form|data-kf-instance/.test(between.slice(hero.length))
+     && /data-kf-instance="sg-hero"/.test(heroSec) && /id="offer-form"/.test(heroSec) && /id="first30"/.test(heroSec), 'regulärer St.-Gallen-Hero mit Video-Standbild als Poster (Praxisfoto nur in «Über die Praxis»); Buchungsbox (Anker #offer-form, #first30) direkt darunter in der Kontaktsektion statt FIRST 30');
   ok(!/class="f30-hero"/.test(sg) && !/data-f30-bottom|data-f30-float|data-f30-wa/.test(sg), 'kein Promo-Hero, Geschenk-Wähler oder schwebender Geschenk-CTA');
   ok(!/data-offer="first30"|FIRST30_WINTER_2026_SG/.test(sg), 'keine alte Geschenk-ID oder Geschenk-CTA im geschlossenen HTML');
   ok(/name="Hero-Gratis-30min-StGallen"/.test(heroSec) && /name="quelle" value="launch-hero-sg"/.test(heroSec) && /name="quelle_detail" value="Hero St\. Gallen Neueroeffnung"/.test(heroSec) && /name="seite" value="\/standort\/st-gallen"/.test(heroSec)
