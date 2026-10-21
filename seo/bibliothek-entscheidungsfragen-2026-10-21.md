@@ -6,7 +6,7 @@ Branch `claude/bibliothek-entscheidungsfragen-2026-10-21`, Basis main `62c972794
 
 **Draft-PR, vollständig integriert (Texte, Links, Registrierungen, Prüfskript). Nicht Ready, kein Merge, kein Deployment, kein GSC-Submit.** Datumskonstante `PUBLISHED_ENTSCHEIDUNGEN_2026_10` ist `undefined`: keine Schema-Daten, kein sichtbares Datum, Index-Queue unter «Geplant».
 
-- Commits: (1) Texte + Datenmodell `64743ee2`, (2) Inbound-Links `36fd620f`, (3) Registrierungen, Prüfskript, Bericht (dieser Commit), (4) Korrektur Tabellen-Scroll im Wissen-Template (Folgecommit).
+- Commits: (1) Texte + Datenmodell `64743ee2`, (2) Inbound-Links `36fd620f`, (3) Registrierungen, Bericht und Korrektur Tabellen-Scroll im Wissen-Template `0227665b` (geplant als zwei Commits; `git add` lehnte das Prüfskript wegen `*.mjs` in `.gitignore` ab, die bereits gestagten Registrierungen gingen in den Korrektur-Commit), (4) Prüfskript `scripts/check-entscheidungsfragen.mjs` als Folgecommit `a40ddf31` (explizit getrackt wie die übrigen `scripts/*.mjs`), (5) dieser Doku-Folgecommit (Abschnitte 0 und 8a). Kein Amend, kein Rewrite.
 - Arbeitsbaum vor Commit 1: sauber (kein fremder Rest). Offene PRs geprüft: #38 (SG-Hero), #15 (Commercial Sprint 1, berührt `fragen.ts`, Keyword-Map, Index-Queue, `therapie-leaves/akupunktur.html`), #1 (Cloudflare Workers). Keine Kollision mit den neuen Dateien; bei #15 sind nur additive Zeilen in denselben Dateien betroffen (Merge-Konflikt möglich, kein inhaltlicher Konflikt). `therapie-leaves/*` wurden hier nicht angefasst.
 - Finaler Umfang: **14 neue Seiten** (4 Wissen-Vergleiche, 10 Fragen), davon 11 aus der Entscheidungsmatrix und **3 Ersatzthemen**. 9 ursprüngliche Kandidaten ausgeschieden (Briefing), 6 weitere Ersatzkandidaten nach Prüfung verworfen. Die Zahl 20 wurde bewusst nicht erzwungen.
 
@@ -142,7 +142,7 @@ Geprüfte Fassungen: Spam Policies (Stand 28.08.2026; «Scaled content abuse», 
 
 Je Seite gleich geprüft: eigener Patientenbedarf (Methodenwahl oder konkrete Sicherheitsfrage vor einem Termin), eigenständiger Mehrwert gegenüber dem gesichteten Bestand (Abschnitte 1 und 2), passender Zweck (Entscheidung, nicht Beschwerde oder Behandlungsversprechen), Quellenpassung (Abschnitt 4, Aussagen den Quellen zugeordnet, Grenzen benannt), YMYL-Sicherheit (Warnzeichen mit medizinischem Schritt, keine Dosen, keine Absetzfristen, keine Freigaben), keine kopierte Antwort, keine Doorway-/Skalierungsvariante (jede Seite eigene Entscheidung, Alias-Sperren in `do-not-create-intents.csv`), keine falsche E-E-A-T-Behauptung (Redaktionsangabe, kein Reviewer), hilfreicher nächster Schritt (CTA passend: Behandlungsweg besprechen bzw. zuerst Ärztin/Apotheke/OP-Team). Nicht verfügbar: Semrush-Volumina/KD, CWV, CRM-Daten. Nachfrage und Conversion sind nicht bewiesen.
 
-## 7. Registrierungen (Commit 3)
+## 7. Registrierungen (Commit `0227665b`)
 
 - `seo/master-keyword-url-map.csv`: 14 Zeilen (21 Spalten, csv-geschrieben), Owner-Status PRIMARY_OWNER, source_confidence medium, Hinweis «Suchvolumen nicht verfügbar».
 - `seo/do-not-create-intents.csv`: 14 Alias-/Varianten-Sperren mit Owner (Schreibvarianten, keine Methoden- oder Erkrankungsnamen reserviert).
@@ -166,13 +166,21 @@ Je Seite gleich geprüft: eigener Patientenbedarf (Methodenwahl oder konkrete Si
 
 ### 8a. test-kontakt-formular, Wiederholung
 
-Wird nach Abschluss der Läufe hier nachgetragen (Branch allein, danach main-Basis; gleicher unveränderter Test).
+Gleicher unveränderter Test (`scripts/test-kontakt-formular.mjs`), nacheinander allein ausgeführt, keine parallelen Browserläufe:
+
+| Lauf | Build | Ergebnis |
+|---|---|---|
+| Branch (`0227665b`, dist) | Kohorte | 703 PASS / 0 FAIL, Exit 0 |
+| main-Basis (`62c97279`, Worktree `/home/user/tcm-main`) | Ausgangsstand | 702 PASS / 1 FAIL, Exit 1 |
+
+Einziger ✗ auf main: «390px Laden: Box ohne nachträgliches Auf-/Zuklappen (keine Änderung), Höhe stabil (0→963)», Abschnitt SG obere Box. Die Messung lief vor dem ersten Layout (Höhe 0), danach stabil 963 px; derselbe Punkt bestand auf dem Branch (963). Einstufung: zeitabhängige Messung im Test, kein Befund der Kohorte und kein Befund des Ausgangsstands (Lauf 1 auf dem Branch zeigte unter Parallellast andere, ebenfalls zeitabhängige Abweichungen). Die zwei ✗ aus Lauf 1 (SG-Hero-Höhe, Telefon-only) und der Abbruch in Abschnitt U traten bei keinem der beiden Einzelläufe auf. Nicht geändert: Test, Formulare, Standortseiten. Hinweis für den Bestand (Abschnitt 9): die 390px-Lademessung könnte auf das erste Layout warten; nicht ungefragt angepasst.
 
 ## 9. Befunde im Bestand (nicht ungefragt geändert)
 
 - `fragen/[slug].astro` zeigte für alle Fragen, auch Welle 3 (publiziert 14.10.2026), fix «zuletzt aktualisiert September 2026». Für die neue Kohorte behoben (kein Datum bis Release, danach Kohortendatum); Altbestand bewusst unverändert, Korrektur separat zu entscheiden.
 - `public/sitemap.xml` im Repo trägt lastmod 2026-10-06 für alle URLs; der Build generiert sie neu. Unkritisch für Deploy, aber Diff-Rauschen.
 - `/wissen/akupunktur-bei-uebelkeit/` enthält einen Gedankenstrich im Bestandstext (nicht von dieser Kohorte).
+- `scripts/test-kontakt-formular.mjs`: die 390px-Lademessung der SG oberen Box misst gelegentlich vor dem ersten Layout (0→963, einmal auf main, nicht auf dem Branch); zeitabhängig, siehe Abschnitt 8a.
 - Offener PR #15 berührt `fragen.ts`, Keyword-Map und Index-Queue; beim Merge beider PRs textuelle Konflikte in diesen Dateien möglich.
 
 ## 10. Release-Schritte (nur nach ausdrücklichem GO)
