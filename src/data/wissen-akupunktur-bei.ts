@@ -264,6 +264,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Nein.</p>
 <p>Eine Hormontherapie hat eine andere Wirkweise und kann bei geeigneten Patientinnen sehr wirksam gegen vasomotorische Beschwerden sein. Ob sie infrage kommt, ist eine individuelle medizinische Entscheidung.</p>
 <p>Akupunktur kann eine Alternative oder Ergänzung sein, wenn eine Frau sie bevorzugt oder eine Hormontherapie nicht gewünscht beziehungsweise nicht geeignet ist. Sie sollte aber nicht als gleichwertiger hormoneller Ersatz dargestellt werden.</p>
+<p>Eine Rezeptur ist eine eigene Behandlungsentscheidung; die passende Forschung ordnet <a href="/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/">chinesische Kräuter bei Wechseljahresbeschwerden</a> ein.</p>
 <h2>Wie wir behandeln</h2>
 <p>Wir erfassen zunächst, welche Beschwerden tatsächlich im Vordergrund stehen: Hitzewallungen, Nachtschweiss, Schlaf, Unruhe oder andere Symptome.</p>
 <p>Die TCM-Behandlung wird anschliessend individuell aufgebaut. Gleichzeitig achten wir darauf, neue oder ungewöhnliche Beschwerden nicht automatisch den Wechseljahren zuzuschreiben.</p>
@@ -712,7 +713,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Bei Endometriose und Kinderwunsch ist die Situation nochmals anders: Hier ist die Evidenz für Akupunktur dünn und die Zeitfrage oft entscheidend. Was wir dazu sagen können, steht auf der Seite <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a>.</p>
 <h2>Wie eine ergänzende Behandlung aussieht</h2>
 <p>Wir planen die Behandlung entlang deines Zyklus. In der Woche vor und während der Menstruation steht die Schmerzlinderung im Vordergrund: Nadeln am Unterbauch, am unteren Rücken und an Punkten an Beinen und Händen, die in den Studien zu Regelschmerzen am häufigsten verwendet wurden. Zwischen den Blutungen arbeiten wir an Verspannungen im Beckenboden und im unteren Rücken, die chronische Unterbauchschmerzen oft verstärken, und an Schlaf und Erschöpfung, die bei Endometriose häufig mitlaufen.</p>
-<p>Viele Patientinnen nutzen ergänzend eine <a href="/therapien/kraeutertherapie/">chinesische Kräuterrezeptur</a>. Auch hier gilt: Die Studienlage ist schwach, Wechselwirkungen mit Hormonpräparaten klären wir vorher, und Kräuter sind keine Alternative zur ärztlichen Therapie.</p>
+<p>Viele Patientinnen nutzen ergänzend eine <a href="/therapien/kraeutertherapie/">chinesische Kräuterrezeptur</a>. Auch hier gilt: Die Studienlage ist schwach, Wechselwirkungen mit Hormonpräparaten klären wir vorher, und Kräuter sind keine Alternative zur ärztlichen Therapie. Wenn zusätzlich eine Rezeptur vorgeschlagen wird, beantwortet <a href="/wissen/chinesische-kraeuter-bei-endometriose/">chinesische Kräuter bei Endometriose</a> die eigene Evidenzfrage dazu; eine kombinierte Behandlung belegt nicht automatisch die Wirkung jedes Bestandteils.</p>
 <h2>Ablauf und was du erwarten kannst</h2>
 <p>Realistisch ist ein Versuch über zwei bis drei Zyklen mit je zwei bis vier Sitzungen. Beurteilt wird nicht ein Gefühl, sondern konkret: Schmerzstärke an den schlimmsten Tagen, Bedarf an Schmerzmitteln, Ausfalltage. Zeigt sich nach drei Zyklen keine Veränderung, sagen wir dir das und raten nicht zu endlosen Serien.</p>
 <h2>Kosten und Krankenkasse</h2>
@@ -1208,6 +1209,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Die Daten stammen von Erwachsenen mit leichter bis mittelschwerer Erkrankung. Für Kinder, schwere Verläufe oder Menschen unter moderner Systemtherapie lassen sie sich nicht übertragen. Es gibt keine belastbare Aussage dazu, ob Akupunktur Schübe verhindert oder Kortisoncremes einspart. In der Berliner Studie zeigte sich dazu nur ein nicht gesicherter Trend.</p>
 <h2>Was die Behandlung trägt</h2>
 <p>Grundlage bleiben rückfettende Pflege, das Meiden persönlicher Auslöser und eine entzündungshemmende Behandlung im Schub nach dermatologischer Verordnung. Bei schweren Verläufen kommen weitere Therapien infrage. Verordnete Cremes oder Medikamente setzt du nicht wegen eines Akupunkturversuchs ab.</p>
+<p>Die Studien zu Nadeln sind kein Beleg für eine Rezeptur; dafür gibt es die gesonderte Einordnung <a href="/wissen/chinesische-kraeuter-bei-neurodermitis/">chinesische Kräuter bei Neurodermitis</a>.</p>
 <h2>So bleibt ein Versuch überprüfbar</h2>
 <p>Lege vorher fest, was sich ändern soll, zum Beispiel Juckreiz auf einer Skala von 0 bis 10, Schlaf oder Kratzattacken. Vereinbare einen Prüfzeitpunkt, etwa nach vier bis sechs Sitzungen. Behandelt wird nicht auf entzündeter, nässender oder offener Haut. Bei Anzeichen einer Hautinfektion, etwa Eiterbläschen, Krusten oder Fieber, gehst du zuerst zur Ärztin.</p>
 <h2>Risiken und Nebenwirkungen</h2>
@@ -1601,6 +1603,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>In der Studie traten blaue Flecken mit echter Akupunktur häufiger auf. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
 <h2>Vor einer Terminentscheidung</h2>
 <p>Bring Therapieplan, aktuelle Befunde und Medikamentenliste mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<p>Wenn neben Gelenkschmerzen vor allem Erschöpfung belastet, ist das eine andere Behandlungsfrage; die gesonderte Einordnung steht unter <a href="/wissen/akupunktur-bei-krebsbedingter-fatigue/">Akupunktur bei krebsbedingter Fatigue</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Kann Akupunktur die Wirkung des Aromatasehemmers beeinträchtigen?</h3>
 <p>Dazu machen die Studien keine Aussage. Deshalb gehört jede ergänzende Behandlung ins Gespräch mit dem Onkologie-Team.</p>
