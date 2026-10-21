@@ -83,7 +83,7 @@ Keine Telefonnummern, E-Mails, Namen, Anliegen oder freien Standort-Texte in Eve
 2. Falls ein GTM-Tag zusätzlich auf einen gtag-Aufruf reagierte, entfällt dieser Pfad; der dataLayer-Event bleibt.
 3. Trigger, Variablen oder Tabellen auf `first30_*` oder auf `angebot = FIRST 30 …` liefern ab Release nichts mehr; Berichte mit diesen Events enden am Release-Datum.
 4. Neue Parameter `terminart`/`standort` (ID statt Ortsname) und das Event `onedoc_click` sind ungemappt, bis Franca sie anlegt.
-5. GTM-Formular-Trigger auf `name="Hero-Gratis-30min-StGallen"` bleiben möglich (Name erhalten), sehen aber jetzt das neue Formular.
+5. GTM-Formular-Trigger auf `name="Hero-Gratis-30min-StGallen"` bleiben möglich (Name erhalten), sehen aber jetzt das neue Formular. **Update 21.10.2026:** Das reguläre SG-Hero-Formular heisst neutral `Hero-Termin-StGallen` (`formName`/`formular`), `quelle_detail` = «Hero St. Gallen · reguläres Terminformular», `seite` = `/standorte/st-gallen/`; `quelle=launch-hero-sg`, Instanz `sg-hero`, Anker und Event-Namen unverändert. Terminart/Dauer/Kosten kommen weiterhin nur aus der Angebots-ID. Ein GTM-Trigger, der auf den alten Formularnamen filtert (falls vorhanden), muss auf `Hero-Termin-StGallen` umgestellt werden; der dataLayer-Vertrag `formular_senden` + `quelle=launch-hero-sg` ist davon nicht betroffen.
 6. Ob die tatsächliche Verarbeitung (Consent/CookieYes, GA4-Key-Events, Ads-Conversion-Aktionen) korrekt einmal zählt, ist erst in GTM-Preview auf `/`, `/kontakt/` und `/standorte/st-gallen/` nachweisbar.
 
 ## Prefill

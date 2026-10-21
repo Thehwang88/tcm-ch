@@ -6,7 +6,7 @@
 // Darunter: die drei SG-USPs als kompakte Reihe und die Kontaktsektion mit der bisherigen Hero-Buchungsbox
 // (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante, Rückruf dauerhaft offen) und den kanonischen Praxisangaben
 // («Über die Praxis» aus dem Leaf, nicht dupliziert). Mobile: Box vor den Praxisangaben (= DOM-Reihenfolge).
-// Bestehende Identifier bleiben: quelle=launch-hero-sg, Formularname, Quelle/Seite-Felder (Messplan docs/cro/04),
+// Bestehende Identifier bleiben: quelle=launch-hero-sg (Messplan docs/cro/04); Formularname/Quelle-Detail/Seite seit 21.10.2026 neutral (Hero-Termin-StGallen),
 // Instanz sg-hero, Anker #offer-form (Karte), #first30 (alte Kampagnenlinks), #kf-sg-hero-fields.
 import { renderKontaktForm } from '../lib/kontakt-form';
 import KontaktPraxis from './standort/KontaktPraxis.astro';
@@ -16,8 +16,11 @@ const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
-  quelle: 'launch-hero-sg', formName: 'Hero-Gratis-30min-StGallen', formular: 'Hero-Gratis-30min-StGallen',
-  quelleDetail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen',
+  // Neutraler Formular-Identifier (21.10.2026): das Hero-Formular trägt beide Terminarten (Ersttermin 60 Min. kostenpflichtig,
+  // Check-in 30 Min. kostenlos); Terminart/Dauer/Kosten kommen ausschliesslich aus der serverseitigen Angebots-ID (anfrage.js),
+  // nie aus dem Formularnamen. quelle=launch-hero-sg und Instanz sg-hero bleiben (GA4-Filter, API-Kompatibilität).
+  quelle: 'launch-hero-sg', formName: 'Hero-Termin-StGallen', formular: 'Hero-Termin-StGallen',
+  quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',
   wunschzeit: true, sitekey, headingTag: 'h2', onedocBeideTerminarten: true, heroKompakt: true, rueckrufOffen: true, ruhig: true, kontaktLinks: { wa: SG_WA },
 });
 ---

@@ -150,10 +150,10 @@ ok((heroVis.match(/CHF 0\.–/g) ?? []).length === 1 && (vis.match(/CHF 0\.–/g
      && /data-kf-instance="sg-hero"/.test(heroSec) && /id="offer-form"/.test(heroSec) && /id="first30"/.test(heroSec), 'regulärer St.-Gallen-Hero mit Video-Standbild als Poster (Praxisfoto nur in «Über die Praxis»); Buchungsbox (Anker #offer-form, #first30) direkt darunter in der Kontaktsektion statt FIRST 30');
   ok(!/class="f30-hero"/.test(sg) && !/data-f30-bottom|data-f30-float|data-f30-wa/.test(sg), 'kein Promo-Hero, Geschenk-Wähler oder schwebender Geschenk-CTA');
   ok(!/data-offer="first30"|FIRST30_WINTER_2026_SG/.test(sg), 'keine alte Geschenk-ID oder Geschenk-CTA im geschlossenen HTML');
-  ok(/name="Hero-Gratis-30min-StGallen"/.test(heroSec) && /name="quelle" value="launch-hero-sg"/.test(heroSec) && /name="quelle_detail" value="Hero St\. Gallen Neueroeffnung"/.test(heroSec) && /name="seite" value="\/standort\/st-gallen"/.test(heroSec)
+  ok(/name="Hero-Termin-StGallen"/.test(heroSec) && /name="quelle" value="launch-hero-sg"/.test(heroSec) && /name="quelle_detail" value="Hero St\. Gallen · reguläres Terminformular"/.test(heroSec) && /name="seite" value="\/standorte\/st-gallen\/"/.test(heroSec)
      && /name="telefon"[^>]*required/.test(heroSec) && /name="name"/.test(heroSec) && !/name="name"[^>]*required/.test(heroSec) && /href="\/datenschutz\/"/.test(heroSec)
      && /data-kf-angebot="TCM_CHECKIN"/.test(heroSec) && /data-kf-angebot="ERSTTERMIN_BEHANDLUNG"/.test(heroSec) && !/FIRST30_|data-sg-hero-form/.test(heroSec),
-     'Hero-Formular: bestehende Identifier (Formularname, quelle, Quelle, Seite), Telefon Pflicht, Name optional, neue Terminarten, keine FIRST-30-ID');
+     'Hero-Formular: neutraler Formularname Hero-Termin-StGallen (21.10.2026), quelle=launch-hero-sg erhalten, Quelle-Detail/Seite kanonisch, Telefon Pflicht, Name optional, neue Terminarten, keine FIRST-30-ID');
   ok(/id="online-buchen"/.test(sg) && /onedoc\.ch\/de\/widget/.test(sg) && /id="kontakt"/.test(sg), 'OneDoc und unteres Kontaktformular unverändert');
   ok(/<h1[^>]*>Akupunktur &amp; TCM in/.test(sg) && (sg.match(/<h1[\s>]/g) || []).length === 1, 'genau eine reguläre St.-Gallen-H1');
   const closedTitle = (sg.match(/<title>([^<]*)/) || [])[1] || '';

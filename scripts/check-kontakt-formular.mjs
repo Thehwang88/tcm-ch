@@ -188,6 +188,14 @@ ok(st === 200 && /KOSTENLOSER TCM-CHECK-IN/.test(mail.html) && /Kostenloser TCM-
 ok(st === 200 && /ERSTTERMIN MIT BEHANDLUNG/.test(mail.html) && mail.reply_to === 'a@b.ch' && /Wunschzeit/.test(mail.html) && /Rücken/.test(mail.html) && mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.' && />60 Minuten</.test(mail.html) && />kostenpflichtig, Abrechnung nach Tarif</.test(mail.html), 'Behandlung mit allen optionalen Feldern → 200, reply_to, Wunschzeit/Anliegen, 60 Minuten, kostenpflichtig');
 [st, j] = await post({ ...base, standort: 'Wil', quelle: 'Beschwerde: Akne', telefon: '+49 30 1234 5678', angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
 ok(st === 200, 'Behandlung an anderem Standort, internationale Nummer → 200');
+// Neutraler SG-Hero-Identifier (21.10.2026): Terminart/Dauer/Kosten NUR aus der Angebots-ID, Formularname nur unter «Technische Angaben».
+const heroNeu = { ...base, formular: 'Hero-Termin-StGallen', quelle_detail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/', telefon: '+41 79 123 45 67' };
+[st, j, mail] = await post({ ...heroNeu, angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
+ok(st === 200 && mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.' && />60 Minuten</.test(mail.html) && />kostenpflichtig, Abrechnung nach Tarif</.test(mail.html) && /Formular<\/strong><\/td><td[^>]*>Hero-Termin-StGallen</.test(mail.html) && /Quelle \(Detail\)<\/strong><\/td><td[^>]*>Hero St\. Gallen · reguläres Terminformular</.test(mail.html) && /Seite<\/strong><\/td><td[^>]*>\/standorte\/st-gallen\//.test(mail.html) && !/Gratis|30min|30 Minuten/.test(mail.html), 'SG-Hero neutral, Ersttermin mit Behandlung: 60 Min., kostenpflichtig; Formular «Hero-Termin-StGallen» nur technisch, kein «Gratis/30min»');
+[st, j, mail] = await post({ ...heroNeu, angebot_id: 'TCM_CHECKIN' });
+ok(st === 200 && mail.subject === 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.' && />30 Minuten</.test(mail.html) && />kostenlos, ohne Behandlung</.test(mail.html) && /Formular<\/strong><\/td><td[^>]*>Hero-Termin-StGallen</.test(mail.html), 'SG-Hero neutral, Check-in: 30 Min., kostenlos; gleicher Formularname, Klassifikation aus der Angebots-ID');
+[st, j, mail] = await post({ ...base, formular: 'Hero-Gratis-30min-StGallen', quelle_detail: 'Hero St. Gallen Neueroeffnung', seite: '/standort/st-gallen', telefon: '+41 79 123 45 67', angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
+ok(st === 200 && mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.' && /Hero-Gratis-30min-StGallen/.test(mail.html), 'historischer Formularname aus offenen Tabs weiterhin zustellbar (nur technisch)');
 const before = sent.length;
 for (const [label, body, code] of [
   ['ungültige Nummer', { ...base, telefon: '12', angebot_id: 'TCM_CHECKIN' }, 'invalid_phone'],

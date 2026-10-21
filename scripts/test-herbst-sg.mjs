@@ -150,7 +150,7 @@ console.log('3. Reguläres SG-Hero-Formular unverändert neben der Kampagne');
   // Synthetischer Klick (Layout verschiebt sich beim Nachladen der Hero-Medien; echte Klicks auf dieses Formular prüft test-kontakt-formular.mjs).
   await pg.type('#kf-sg-hero-tel', '079 123 45 67'); await pg.$eval('[data-kf-instance="sg-hero"] [data-kf-submit]', (b) => b.click()); await sleep(400);
   const c = calls[0] || {}; const fs1 = await ev(pg, 'formular_senden');
-  ok(calls.length === 1 && c.quelle === 'launch-hero-sg' && c.formular === 'Hero-Gratis-30min-StGallen' && c.angebot_id === 'TCM_CHECKIN' && !('kampagne' in c) && !('runde' in c) && !('utm_source' in c), 'Hero-Formular: bisherige Identifier, keine Kampagnenfelder');
+  ok(calls.length === 1 && c.quelle === 'launch-hero-sg' && c.formular === 'Hero-Termin-StGallen' && c.angebot_id === 'TCM_CHECKIN' && !('kampagne' in c) && !('runde' in c) && !('utm_source' in c), 'Hero-Formular: bisherige Identifier, keine Kampagnenfelder');
   ok(fs1.length === 1 && fs1[0].quelle === 'launch-hero-sg' && !('kampagne' in fs1[0]) && !('buchungsrunde' in fs1[0]) && (await ev(pg, 'kampagne_sheet_open')).length === 0, 'Hero-Formular: formular_senden genau 1× im bisherigen Format, Sheet nie automatisch geöffnet');
   await pg.close();
 }
