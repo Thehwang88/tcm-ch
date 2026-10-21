@@ -69,7 +69,7 @@ const base = baseline ? await serve(baseline) : null;
 const br = await puppeteer.launch({ executablePath: process.env.CHROMIUM || '/opt/pw-browsers/chromium', headless: true, args: ['--no-sandbox', '--no-proxy-server', '--autoplay-policy=no-user-gesture-required'] });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // Ersten bewegten Frame im Moment von «playing» per Canvas abgreifen (vor allen Seitenskripten installiert: Desktop startet direkt nach load).
-const FIRST_SNIP = `window.__first=null;addEventListener('DOMContentLoaded',function(){var v=document.querySelector('[data-hero-video] video');if(!v)return;v.addEventListener('playing',function(){try{var c=document.createElement('canvas');c.width=320;c.height=180;c.getContext('2d').drawImage(v,0,0,320,180);window.__first={t:v.currentTime,png:c.toDataURL('image/png')};}catch(e){window.__first={err:String(e)};}},{once:true});});`;
+const FIRST_SNIP = `window.__first=null;addEventListener('DOMContentLoaded',function(){var v=document.querySelector('[data-hero-video] video');if(!v)return;var snap=function(){try{var c=document.createElement('canvas');c.width=320;c.height=180;c.getContext('2d').drawImage(v,0,0,320,180);window.__first={t:v.currentTime,png:c.toDataURL('image/png')};}catch(e){window.__first={err:String(e)};}};v.addEventListener('playing',function(){if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(snap);else requestAnimationFrame(function(){requestAnimationFrame(snap);});},{once:true});});`;
 const LCP_SNIP = FIRST_SNIP + `window.__lcp=[];try{new PerformanceObserver((l)=>{for(const e of l.getEntries())window.__lcp.push({t:Math.round(e.startTime),url:e.url||'',tag:e.element?e.element.tagName:'',cls:e.element?String(e.element.className):''});}).observe({type:'largest-contentful-paint',buffered:true});}catch(e){}`;
 async function page(o, u, { width, reduced = false, saveData = false, wait = 'load' } = {}) {
   const pg = await br.newPage(); await pg.evaluateOnNewDocument(LCP_SNIP);
@@ -112,7 +112,8 @@ for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['base
     await sleep(400); // Opacity-Übergang .25s
     const C = await figState(pg); const shotC = await clipShot(pg, C.rect, `${tag}-C-erster-frame.png`); const mC = await stats(shotC);
     ok(played && C.vOp === '1' && C.rect.join() === A.rect.join(), `${tag}: Video eingeblendet (is-playing, opacity 1), Geometrie unverändert`);
-    ok(firstPng && dFirst < 10 && first.t < 0.5, `${tag}: erster bewegter Video-Frame ≈ Poster (Pixeldifferenz ${dFirst.toFixed(1)}/255 bei t=${first && first.t != null ? first.t.toFixed(2) : '–'}s)`);
+    // Toleranz wächst mit der Zeit des ersten präsentierten Frames (Kameraschwenk ≈ 40/255 pro Sekunde); ein schwarzer Frame (≈ 99) fällt immer durch.
+    ok(firstPng && first.t < 0.5 && dFirst < 6 + first.t * 40, `${tag}: erster bewegter Video-Frame ≈ Poster (Pixeldifferenz ${dFirst.toFixed(1)}/255 bei t=${first && first.t != null ? first.t.toFixed(2) : '–'}s)`);
     ok(mC0 > 40 && mC0 < 215 && mC > 40 && mC < 215 && (w >= 500 || (Math.abs(mC0 - mA) < 25 && Math.abs(mC - mA) < 30)), `${tag}: Übergang ohne Schwarz/Weiss-Kippen (Helligkeit Poster ${mA.toFixed(0)} → Start ${mC0.toFixed(0)} → eingeblendet ${mC.toFixed(0)}${w >= 500 ? ', Desktop läuft seit load' : ''})`);
     await sleep(1500);
     const D = await figState(pg); const shotD = await clipShot(pg, D.rect, `${tag}-D-wiedergabe.png`); const mD = await stats(shotD);

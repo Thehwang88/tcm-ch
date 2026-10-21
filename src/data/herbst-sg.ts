@@ -33,14 +33,16 @@ export const HERBST_SG = {
   stadt: 'St. Gallen',
   /** Manueller Angebotsschalter (nur mit allen Freigaben, siehe approvals + docs/cro/10). */
   offerActive: false,
+  // Jede Freigabe nur mit Beleg (Name, Datum, Quelle) in docs/cro/10 §1 auf true setzen; nie, um das Gate zu erfüllen.
+  // Stand 21.10.2026: alle vier offen (Praxisleitung SG / Inhaber / Compliance / Datenschutz) → Angebot NICHT BEREIT.
   approvals: {
-    /** Format bestätigt und werberechtlich geprüft (erst dann wird eine Dauer angezeigt). */
+    /** Format bestätigt und werberechtlich geprüft (erst dann wird eine Dauer angezeigt). Beleg: offen. */
     formatConfirmed: false,
-    /** Separat reservierte 360°-Termine und Personal je Runde bestätigt. */
+    /** Separat reservierte 360°-Termine und Personal je Runde bestätigt (reservierteTermine in tcm360-runden.json). Beleg: offen. */
     capacityConfirmed: false,
-    /** Kapazitäts-/Fristen-/Abgrenzungs-Claims geprüft. */
+    /** Kapazitäts-/Fristen-/Abgrenzungs-Claims geprüft. Beleg: offen. */
     claimsReviewed: false,
-    /** Datenschutz/Consent für Kampagnenfelder (kampagne, runde, UTM) geprüft. */
+    /** Datenschutz/Consent für Kampagnenfelder (kampagne, runde, UTM) geprüft. Beleg: offen. */
     privacyReviewed: false,
   },
   /** Vorgeschlagene Dauer des 360°-Termins (ca. 20 Min.), NUR angezeigt mit approvals.formatConfirmed. */
@@ -141,7 +143,7 @@ export const HERBST_COPY = {
     { t: 'Exklusiver Praxis-Einblick', d: 'Kurze Vorstellung der Praxis St. Gallen und der Behandlungsmöglichkeiten, wenn möglich mit den anwesenden Fachpersonen.' },
   ],
   /** Kompakte Vorteile (Sheet). */
-  benefits: ['Persönlicher TCM-Konstitutionscheck', 'Zungen- und Pulsdiagnostik', 'Antworten auf deine TCM-Fragen', 'Praxis und Behandlungsmöglichkeiten kennenlernen'],
+  benefits: ['Persönlicher TCM-Konstitutionscheck', 'Zungen- und Pulsdiagnostik', 'Antworten auf deine TCM-Fragen', 'Praxis kennenlernen'],
   noTreatment: 'Keine Akupunktur, Massage oder andere Behandlung inbegriffen. Keine Behandlungspflicht.',
   boundary: '360° steht für die ganzheitliche Sicht der TCM: ein kurzer, auf dein Hauptanliegen fokussierter Kurzcheck, keine umfassende medizinische Untersuchung. Er ersetzt keine ärztliche Diagnostik und dient der persönlichen Orientierung aus Sicht der TCM.',
   bannerEyebrow: 'St. Gallen · Herbst Special',
