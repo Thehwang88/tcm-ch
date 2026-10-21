@@ -103,6 +103,16 @@
         rCheckin.disabled = !ok; var tile = rCheckin.closest('.kf-opt'); if (tile) tile.classList.toggle('is-disabled', !ok);
         // Ruhig: nicht freigegebene Ziele zeigen die Check-in-Kachel gar nicht (keine Gratis-Diagnostik suggerieren).
         if (tile && ruhig) tile.hidden = !ok;
+        // St. Gallen gewählt → St.-Galler Wortlaut (TCM 360°-Check-in); sonst bisheriger Wortlaut. Klassifikation unverändert.
+        if (tile && tile.hasAttribute('data-kf-sg-t')) {
+          var sgSel = !!(o && o.getAttribute('data-id') === 'st-gallen');
+          ['t', 'dur', 'd', 'note'].forEach(function (k) {
+            var el = tile.querySelector('.kf-opt-' + k); if (!el) return;
+            if (!el.hasAttribute('data-kf-std')) el.setAttribute('data-kf-std', el.textContent);
+            var want = sgSel ? tile.getAttribute('data-kf-sg-' + k) : el.getAttribute('data-kf-std');
+            if (el.textContent !== want) el.textContent = want;
+          });
+        }
         if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
         if (!ok && rCheckin.checked) { rCheckin.checked = false; return sync(); }
       }

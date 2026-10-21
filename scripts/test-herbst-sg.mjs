@@ -144,7 +144,7 @@ console.log('2. Sticky-CTA öffnet das Sheet; Telefon-CTA; Fehlerfall; Hintergru
 console.log('3. Reguläres SG-Hero-Formular unverändert neben der Kampagne');
 {
   const { pg, calls } = await open(SG, { width: 390 });
-  ok(await pg.$eval('[data-kf-instance="sg-hero"] .kf-opt--checkin', (e) => /Kostenloser TCM-Check-in/.test(e.textContent) && /30 Minuten/.test(e.textContent)), 'Hero-Formular: regulärer Check-in «30 Minuten» unverändert');
+  ok(await pg.$eval('[data-kf-instance="sg-hero"] .kf-opt--checkin', (e) => /Kostenloser TCM 360°-Check-in/.test(e.textContent) && /30 Minuten · CHF 0\.–/.test(e.textContent)), 'Hero-Formular: regulärer Check-in «Kostenloser TCM 360°-Check-in · 30 Minuten» (Klassifikation TCM_CHECKIN)');
   await pg.$eval('[data-kf-instance="sg-hero"] label[for$="ta-checkin"]', (l) => l.click());
   await pg.evaluate(() => { document.querySelectorAll('[data-kf-instance="sg-hero"] .cf-turnstile').forEach((t) => { const i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'TEST-TOKEN'; t.appendChild(i); }); });
   // Synthetischer Klick (Layout verschiebt sich beim Nachladen der Hero-Medien; echte Klicks auf dieses Formular prüft test-kontakt-formular.mjs).

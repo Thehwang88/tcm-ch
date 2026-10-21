@@ -57,13 +57,19 @@ const TEL = `tel:+${site.whatsapp}`;
     .scb-row { gap: 6px; }
     .scb-bar { gap: 6px; padding-left: 10px; padding-right: 10px; }
   }
-  /* St. Gallen (OneDoc): vier Aktionen in zwei kompakten Zeilen. Zeile 1 Primaer + Icons, Zeile 2 «Termin online buchen»
-     ueber die volle Breite (display:contents laesst .scb-row-Kinder direkt umbrechen; Spezifitaet > SG-Leaf-Regeln). */
-  .scb-bar.scb-bar--sg { flex-wrap: wrap; row-gap: 6px; }
-  .scb-bar.scb-bar--sg .scb-row { display: contents; }
-  .scb-bar.scb-bar--sg .scb-row .scb-out:not(#w2) { order: 2; }
-  /* .scb-book wird per Skript erzeugt (ohne Astro-Scope-Attribut), daher :global. */
-  :global(.scb-bar.scb-bar--sg .scb-row .scb-book:not(#w2)) { order: 3; flex: 1 1 100%; width: 100%; min-height: 40px; font-size: 14px; }
+  /* St. Gallen: Primaer mit zwei Zeilen (Pin + «Termin anfragen» / dezente Unterzeile «Auch als Gratis 360°-Check»),
+     ca. 60px hoch, gleiche Pille, Farbe und Breite; Unterzeile kleiner, dunkel, zentriert, ohne Animation/Badge. */
+  .scb-primary.scb-primary--sg { min-height: 60px; padding: 6px 14px; line-height: 1.15; }
+  :global(.scb-primary--sg .scb-txt) { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+  :global(.scb-primary--sg .scb-l1) { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+  :global(.scb-primary--sg .scb-l2) { font-size: 11.5px; font-weight: 600; letter-spacing: 0; color: rgba(2, 11, 16, .78); }
+  :global(.scb-primary--sg .scb-l2-short) { display: none; }
+  @media (max-width: 359px) {
+    :global(.scb-primary--sg .scb-l1) { font-size: 14.5px; }
+    :global(.scb-primary--sg .scb-l2) { font-size: 11px; }
+    :global(.scb-primary--sg .scb-l2-long) { display: none; }
+    :global(.scb-primary--sg .scb-l2-short) { display: inline; }
+  }
   @keyframes scb-glow {
     0%, 100% { box-shadow: 0 6px 18px rgba(26, 226, 136, .28); }
     50% { box-shadow: 0 6px 26px rgba(26, 226, 136, .55); }
@@ -78,7 +84,8 @@ const TEL = `tel:+${site.whatsapp}`;
     .scb-bar.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
     /* Platz unter dem Inhalt nur auf Seiten, auf denen die Leiste aktiv ist (Klasse setzt das Skript unten). */
     :global(body.scb-reserve) { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
-    :global(body.scb-reserve.scb-reserve--sg) { padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
+    /* SG: Primaer ca. 60px hoch → Leiste ca. 76px; Platz unter dem Inhalt entsprechend groesser. */
+    :global(body.scb-reserve.scb-reserve--sg) { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   }
   @media (prefers-reduced-motion: reduce) {
     .scb-primary { animation: none; }
@@ -118,27 +125,24 @@ const TEL = `tel:+${site.whatsapp}`;
         window.dataLayer.push({ event: 'hilfeerhalten_click', quelle: ct + '_care', content_type: ct, cta_position: 'sticky', source_path: location.pathname });
       });
     }
+    // SG-Seiten (21.10.2026, Konsolidierung TCM 360°): Hauptlabel «Termin anfragen» mit dezenter zweiter Zeile
+    // «Auch als Gratis 360°-Check» (≤359px: «Gratis 360° möglich»); genau drei Bedienelemente (Primär, WhatsApp, Anrufen),
+    // kein zweiter OneDoc-Button mehr in der Leiste (OneDoc bleibt im Hero, im Formular und als Widget erreichbar).
     if (primary && sgPage) {
       for (var i = 0; i < primary.childNodes.length; i++) {
         var tn = primary.childNodes[i];
-        if (tn.nodeType === 3 && tn.textContent.trim()) tn.textContent = ' Ersttermin anfragen ';
+        if (tn.nodeType === 3 && tn.textContent.trim()) {
+          var txt = document.createElement('span'); txt.className = 'scb-txt';
+          txt.innerHTML = '<span class="scb-l1">Termin anfragen</span><span class="scb-l2"><span class="scb-l2-long">Auch als Gratis 360°-Check</span><span class="scb-l2-short">Gratis 360° möglich</span></span>';
+          primary.replaceChild(txt, tn); primary.classList.add('scb-primary--sg'); document.body.classList.add('scb-reserve--sg'); break;
+        }
       }
     }
-    // SG-Seiten mit OneDoc-Widget: Primär → #kontakt-Formular (Fallback: Widget), "Termin online buchen" als
-    // sekundärer Button in der Icon-Zeile (.scb-book, Styles im SG-Leaf). Der Formular-Scroll-Handler unten
+    // SG-Seiten mit OneDoc-Widget: Primär → #kontakt-Formular (Fallback: Widget). Der Formular-Scroll-Handler unten
     // entfällt, damit er den Anchor nicht hijackt; bestehende WA-/Tel-Links (Tracking-Hooks) unverändert.
     var toOnedoc = sgPage && document.getElementById('online-buchen');
     if (primary && toOnedoc) {
-      bar.classList.add('scb-bar--sg'); document.body.classList.add('scb-reserve--sg');
       primary.setAttribute('href', document.getElementById('kontakt') ? '#kontakt' : '#online-buchen');
-      var row = bar.querySelector('.scb-row');
-      if (row && !row.querySelector('.scb-book')) {
-        var book = document.createElement('a');
-        book.className = 'scb-book';
-        book.setAttribute('href', '#online-buchen');
-        book.textContent = 'Termin online buchen';
-        row.insertBefore(book, row.firstChild);
-      }
     }
     if (primary && !toOnedoc) primary.addEventListener('click', function (e) {
       // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.

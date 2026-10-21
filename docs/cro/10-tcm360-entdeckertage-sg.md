@@ -5,7 +5,11 @@ Stand 21.10.2026 · Branch `claude/affectionate-cannon-ktqrkm` · Draft-PR, **ni
 Fortlaufendes Angebot für Neupatient:innen am Standort St. Gallen (`/standorte/st-gallen/`), betrieben in echten Buchungsrunden.
 Erste Runde: **22.–31.10.2026**. Der reguläre kostenlose TCM-Check-in (30 Minuten) bleibt unverändert und läuft parallel weiter.
 
-## 1. Status: AKTIV im Anfrage-Modus (Inhaber-Freigabe 21.10.2026)
+## 0. Status 21.10.2026 (abends): KAMPAGNE DEAKTIVIERT – konsolidiert in den regulären Check-in
+
+Inhaber-Entscheid: **ein** Gratis-Angebot statt zwei. `offerActive: false` (kein Banner, kein Sheet/Modal, keine Kampagnen-Sticky, keine Rundenzeile). Die 360°-Vorteile stehen jetzt im regulären kostenlosen 30-Minuten-Check-in **nur für St. Gallen** (Kacheltitel «Kostenloser TCM 360°-Check-in · 30 Minuten · CHF 0.–», `src/lib/kontakt-form.ts` → `CHECKIN_SG`): fest auf den SG-Formularen (Hero/unten); Homepage, /kontakt/ und andere Standorte zeigen den bisherigen Wortlaut («Kostenloser TCM-Check-in · 30 Minuten») und wechseln clientseitig erst bei gewähltem Standort St. Gallen (`data-kf-sg-*`, `public/kontakt-form.js`). SG-Sticky-Bar: genau drei Bedienelemente (Termin anfragen mit Unterzeile «Auch als Gratis 360°-Check», WhatsApp, Telefon), kein OneDoc-Button in der Leiste; Angebots-ID `TCM_CHECKIN`, Dauer, Mail-Klassifikation («Kostenloser TCM-Check-in · 30 Min.»), `Hero-Termin-StGallen`, `launch-hero-sg`, `formular_senden` und alle Klick-Events unverändert. Kampagnen-Kennungen, Server-Whitelist `KAMPAGNEN` und `tcm360-runden.json` bleiben für historische Anfragen und Attribution bestehen (keine Löschung). Reaktivierung nur per neuem Inhaber-Entscheid (`offerActive: true`, Gate).
+
+## 1. Status zuvor: AKTIV im Anfrage-Modus (Inhaber-Freigabe 21.10.2026, abgelöst)
 
 Inhaber-Entscheid 21.10.2026: kommerzielles Angebot, Format ca. 20 Minuten und Patienten-Wortlaut freigegeben; Launch als **Anfrage-Modus** (`bookingMode: 'anfrage'`), weil reservierte 360°-Termine/Personal nicht dokumentiert sind. Im Anfrage-Modus: 360°-Termine nur als unverbindliche Anfrage, Rundenzeile immer «360°-Termine auf Anfrage · unverbindlich», keine Kapazitäts-/Restzahl-Texte, keine Runde «offen für bestätigte Termine»; die Runden-ID wird nur intern zur Messung zugeordnet. Wechsel in den Kontingent-Modus erst mit `capacityConfirmed` + `reservierteTermine` (verifiziert).
 
