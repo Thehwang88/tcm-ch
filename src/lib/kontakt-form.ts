@@ -74,6 +74,8 @@ const telHref = (t: string) => 'tel:' + t.replace(/[^\d+]/g, '');
 export const ZENTRAL_TEL = fmtTel(site.whatsapp);
 
 export const clinicById = (id: string) => clinics.find((c) => c.id === id);
+/** Patientenwortlaut (Kacheltitel) des kostenlosen 30-Minuten-Check-ins; Backend-Label/Klassifikation bleibt TERMINARTEN.checkin.label. */
+export const CHECKIN_TITEL = 'Kostenloser TCM 360°-Check-in';
 export const checkinFreigegeben = (id?: string) => !!id && Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, id);
 const onedocFor = (id?: string) => (id && (ONEDOC as Record<string, { href: string; anchor: string; direkt?: { checkin: string | null; behandlung: string | null } }>)[id]) || null;
 
@@ -126,16 +128,18 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const tileCheckin = onlyBehandlung ? '' : HB ?
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">${esc(HB.soldOut ? TERMINARTEN.checkin.label : HB.copy.tileCheckin)}</span>` +
-    (HB.soldOut ? `<span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten · nach Verfügbarkeit</span><span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>`
+    `<span class="kf-opt-body"><span class="kf-opt-t">${esc(HB.soldOut ? CHECKIN_TITEL : HB.copy.tileCheckin)}</span>` +
+    (HB.soldOut ? `<span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten · CHF 0.– · nach Verfügbarkeit</span><span class="kf-opt-d">Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.</span>`
       : `<span class="kf-opt-dur">CHF 0.–${HB.dauerText ? ' · ' + esc(HB.dauerText) : ''}</span><span class="kf-opt-d">${esc(HB.copy.tileCheckinD)}</span>`) +
     `<span class="kf-opt-note">Ohne Behandlung, ohne Verpflichtung.</span></span></label>` :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
     `<span class="kf-opt-body">` +
-    (Q ? `<span class="kf-opt-t">${TERMINARTEN.checkin.label}</span><span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten</span>` +
-      `<span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>` +
-      `<span class="kf-opt-note">Ohne Behandlung.</span>`
+    // Patientenwortlaut des kostenlosen Check-ins (Konsolidierung 21.10.2026: 360°-Vorteile im regulären 30-Minuten-Check-in);
+    // Klassifikation, Angebots-ID TCM_CHECKIN, Dauer, Mail-Label (TERMINARTEN.checkin.label) und Versand unverändert.
+    (Q ? `<span class="kf-opt-t">${CHECKIN_TITEL}</span><span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten · CHF 0.–</span>` +
+      `<span class="kf-opt-d">Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.</span>` +
+      `<span class="kf-opt-note">Ohne Behandlung. Unverbindlich.</span>`
     : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
       (K ? `<span class="kf-opt-h">Finde heraus, ob TCM zu dir passt.</span><span class="kf-opt-d">30 Minuten persönliche TCM-Anamnese und Diagnostik.</span>`
          : `<span class="kf-opt-h">Dein Anliegen verstehen. Deinen nächsten Schritt finden.</span><span class="kf-opt-d">30 Minuten für eine persönliche TCM-Anamnese und Diagnostik.</span>`) +

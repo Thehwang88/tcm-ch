@@ -32,8 +32,10 @@ export const HERBST_SG = {
   label: KAMPAGNEN.sg_tcm360_herbst_2026.label,
   standortId: 'st-gallen',
   stadt: 'St. Gallen',
-  /** Manueller Angebotsschalter. Inhaber-Freigabe zum Launch 21.10.2026 (docs/cro/10 §1). */
-  offerActive: true,
+  /** Manueller Angebotsschalter. Launch 21.10.2026 (Anfrage-Modus), am selben Tag per Inhaber-Entscheid DEAKTIVIERT: ein einziges
+   *  Gratis-Angebot, die 360°-Vorteile stehen im regulären 30-Minuten-Check-in (src/lib/kontakt-form.ts, CHECKIN_TITEL).
+   *  Kennungen, Server-Whitelist (KAMPAGNEN) und Runden bleiben für historische Anfragen/Attribution erhalten. */
+  offerActive: false,
   /** Buchungsmodus (Inhaber-Entscheid 21.10.2026):
    *  'anfrage'    = Anfrage-Modus: 360°-Termine nur als unverbindliche Anfrage; KEINE Rundenfrist als «offen für bestätigte
    *                 Termine», keine Kapazitäts-/Restzahl-Texte, Rundenzeile immer neutral («360°-Termine auf Anfrage ·

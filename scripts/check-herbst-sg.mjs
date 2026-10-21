@@ -92,7 +92,7 @@ if (shown) {
   ok(!/Nur noch \d|Restplätze|nur heute|letzte Chance|endet (für immer|endgültig)|statt CHF|\d+ ?%|Countdown/i.test(vis), 'keine unzulässigen Dringlichkeits-/Preisvergleichs-Muster');
   ok(st.bookingMode !== 'anfrage' || !/Aktuelle Buchungsrunde|Nächste Buchungsrunde|begrenzte Kapazität|Noch \d+ 360°/.test(vis), 'Anfrage-Modus: keine Rundenfrist, keine Kapazität, keine Restzahl im sichtbaren Text');
   ok(vis.includes(HERBST_COPY.bannerH) && vis.includes(st.soldOut ? HERBST_COPY.sheetSubSoldout : HERBST_COPY.bannerSub) && vis.includes(HERBST_COPY.name) && vis.includes(HERBST_COPY.headline) === false && vis.includes(HERBST_COPY.offer) && vis.includes(HERBST_COPY.support) && HERBST_COPY.components.every((k) => vis.includes(k.t)) && vis.includes(HERBST_COPY.reassurance) && vis.includes(HERBST_COPY.noTreatment) && vis.includes(HERBST_COPY.boundary), 'Launch-Copy (Banner, Name, Angebot, Erklärung, vier Bausteine, Reassurance, keine Behandlung, 360°-Abgrenzung) exakt');
-  ok(st.dauerText ? vis.includes(st.dauerText) : !/\b\d+ Minuten\b/.test(vis.replace(/TCM-Check-in \(30 Minuten\)|60 Minuten · kostenpflichtig|30 Minuten · nach Verfügbarkeit/g, '')), st.dauerText ? `Dauer «${st.dauerText}» (Format freigegeben)` : 'keine 360°-Dauer ohne Freigabe (nur regulärer 30-Minuten-Check-in und 60-Minuten-Erstbehandlung benannt)');
+  ok(st.dauerText ? vis.includes(st.dauerText) : !/\b\d+ Minuten\b/.test(vis.replace(/TCM-Check-in \(30 Minuten\)|60 Minuten · kostenpflichtig|30 Minuten · CHF 0\.– · nach Verfügbarkeit/g, '')), st.dauerText ? `Dauer «${st.dauerText}» (Format freigegeben)` : 'keine 360°-Dauer ohne Freigabe (nur regulärer 30-Minuten-Check-in und 60-Minuten-Erstbehandlung benannt)');
   console.log('4. Sheet-Formular');
   const card = (sg.match(/<div class="inline-form-card kf kf--ruhig kf--herbst"[^>]*data-kf-instance="sg-herbst"[\s\S]*?<script src="\/kontakt-form\.js" defer><\/script><\/div>/) || [''])[0];
   ok(card && /data-kf-standort="St\. Gallen" data-kf-standort-id="st-gallen"/.test(card) && /data-kf-checkin="1"/.test(card) && /data-kf-conv="formular_senden"/.test(card), 'gemeinsamer Renderer (ruhig + herbst), fester Standort St. Gallen, Check-in freigegeben, Conversion formular_senden');
@@ -110,7 +110,7 @@ if (shown) {
   ok(/<span class="kf-eyebrow">St\. Gallen Special<\/span><h2 class="kf-h" id="kf-sg-herbst-h">(Dein TCM 360°-Termin|Termin in St\. Gallen anfragen)<\/h2>/.test(card), 'Sheet-Kopf: Label «St. Gallen Special», Überschrift h2');
   // Reguläre SG-Formulare unverändert (Texte des Check-ins).
   const hero = sg.slice(sg.indexOf('data-kf-instance="sg-hero"'), sg.indexOf('/kontakt-form.js', sg.indexOf('data-kf-instance="sg-hero"')));
-  ok(/Kostenloser TCM-Check-in<\/span><span class="kf-opt-dur">30 Minuten<\/span>/.test(hero) && !/360|kampagne|runde/.test(hero), 'regulärer Check-in im SG-Hero unverändert (30 Minuten, keine Kampagnenfelder)');
+  ok(/Kostenloser TCM 360°-Check-in<\/span><span class="kf-opt-dur">30 Minuten · CHF 0\.–<\/span>/.test(hero) && !/kampagne|runde|Entdeckertage/.test(hero), 'regulärer Check-in im SG-Hero (30 Minuten, TCM_CHECKIN, keine Kampagnenfelder)');
 }
 
 console.log('5. API');

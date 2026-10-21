@@ -86,7 +86,7 @@ const sgUnten = sg.slice(sg.indexOf('data-kf-instance="sg-unten"'), sg.indexOf('
 const t = text(sgUnten);
 const tH = text(sgHero);
 // Kurze Angebotstexte (Mockup 16.10.2026); die bisherigen langen SG-Texte stehen in GONE.
-const OFFER = ['Ersttermin mit Behandlung', 'Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.', 'Kostenloser TCM-Check-in', '30 Minuten', 'Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.', 'Ohne Behandlung.'];
+const OFFER = ['Ersttermin mit Behandlung', 'Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.', 'Kostenloser TCM 360°-Check-in', '30 Minuten · CHF 0.–', 'Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.', 'Ohne Behandlung. Unverbindlich.'];
 const KOPF = ['Dein nächster Schritt beginnt hier.', 'Direkt starten oder TCM zuerst kennenlernen.'];
 const OLD_SG = ['Wie können wir dir helfen?', 'Wähle, was gerade zu dir passt.', 'Standort: St. Gallen', 'Noch unsicher?', 'Deine Beschwerden besprechen', 'Mit persönlicher Empfehlung für das weitere Vorgehen.', '30 Minuten für deine Fragen', 'Inklusive Zungen- und Pulsdiagnostik'];
 const OLD_OFFER = ['Kostenloser TCM-Check-in · 30 Minuten', 'Finde heraus, ob TCM zu dir passt.', 'Dein Anliegen verstehen.', 'Gespräch zu deinen Beschwerden', 'TCM-Zungen- und Pulsdiagnostik', 'Persönliche Empfehlung zum weiteren Vorgehen', 'Gespräch und erste Behandlung.', 'Für alle, die direkt mit der Behandlung starten möchten.', 'TCM-Anamnese'];

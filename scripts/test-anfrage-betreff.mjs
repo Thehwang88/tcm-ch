@@ -61,7 +61,7 @@ for (const [label, f, subj, dauer, kosten] of SCEN) {
   const r = await flow(f);
   const p = r.calls[0] || {};
   ok(r.calls.length === 1, `genau ein Versand (${p.angebot_id}, Quelle ${p.quelle}${p.formular ? ', Formular ' + p.formular : ''})`);
-  if (f.terminart) ok(r.tile === (f.terminart === 'checkin' ? 'Kostenloser TCM-Check-in · 30 Minuten' : 'Ersttermin mit Behandlung · 60 Minuten'), `Formular-Kachel «${r.tile}»`);
+  if (f.terminart) ok(r.tile === (f.terminart === 'checkin' ? 'Kostenloser TCM 360°-Check-in · 30 Minuten · CHF 0.–' : 'Ersttermin mit Behandlung · 60 Minuten'), `Formular-Kachel «${r.tile}»`);
   ok(r.events.length === 1, `genau ein Tracking-Event (${r.events.map((e) => e.event).join(', ')})`);
   ok(!r.events.some((e) => JSON.stringify(e).includes('79 123')), 'keine Telefonnummer im dataLayer');
   const s = await server(p);
