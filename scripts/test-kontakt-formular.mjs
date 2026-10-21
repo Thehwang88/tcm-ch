@@ -490,11 +490,15 @@ for (const w of [390, 1440]) {
   const pgl = await br.newPage(); await pgl.setRequestInterception(true); pgl.on('request', (r) => (r.url().startsWith(origin) ? r.continue() : r.abort()));
   await pgl.evaluateOnNewDocument(() => { window.__mut = []; window.__h = []; const mo = new MutationObserver(() => { const c = document.querySelector('[data-kf-instance="sg-hero"]'); if (c && !window.__obs) { window.__obs = 1;
     new MutationObserver((ms) => ms.forEach((m) => window.__mut.push(m.attributeName + ':' + (m.target.id || m.target.className)))).observe(c, { attributes: true, subtree: true, attributeFilter: ['hidden', 'aria-expanded'] });
-    new ResizeObserver((e) => window.__h.push(Math.round(e[0].contentRect.height))).observe(c); } }); mo.observe(document, { childList: true, subtree: true }); });
+    new ResizeObserver((e) => window.__h.push([window.__ready ? 'post' : 'pre', Math.round(e[0].contentRect.height)])).observe(c); } }); mo.observe(document, { childList: true, subtree: true }); });
   await pgl.setViewport({ width: w, height: w < 500 ? 844 : 900, isMobile: w < 500, hasTouch: w < 500 });
-  await pgl.goto(origin + '/standorte/st-gallen/', { waitUntil: 'load' }); await new Promise((r) => setTimeout(r, 400));
-  const lj = await pgl.evaluate(() => ({ mut: window.__mut, h: [...new Set(window.__h)] }));
-  ok(lj.mut.length === 0 && lj.h.length === 1, `${w}px Laden: Box ohne nachträgliches Auf-/Zuklappen (${lj.mut.join(',') || 'keine Änderung'}), Höhe stabil (${lj.h.join('→')})`);
+  await pgl.goto(origin + '/standorte/st-gallen/', { waitUntil: 'load' });
+  // Layout-Bereitschaft: Stylesheets sind mit `load` da, Schriften über document.fonts.ready, dann zwei Frames; ab hier zählen Höhenänderungen
+  const h0 = await pgl.evaluate(async () => { await document.fonts.ready; await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))); window.__ready = 1; return Math.round(document.querySelector('[data-kf-instance="sg-hero"]').getBoundingClientRect().height); });
+  await new Promise((r) => setTimeout(r, 400));
+  const lj = await pgl.evaluate(() => ({ mut: window.__mut, pre: [...new Set(window.__h.filter((x) => x[0] === 'pre').map((x) => x[1]))], post: [...new Set(window.__h.filter((x) => x[0] === 'post').map((x) => x[1]))] }));
+  const hs = [...new Set([h0, ...lj.post])];
+  ok(lj.mut.length === 0 && hs.length === 1, `${w}px Laden: Box ohne nachträgliches Auf-/Zuklappen (${lj.mut.join(',') || 'keine Änderung'}), Höhe nach Layout-Bereitschaft stabil (${hs.join('→')}${lj.pre.length ? `; vor Bereitschaft ${lj.pre.join('→')}` : ''})`);
   await pgl.close();
 }
 
@@ -735,25 +739,44 @@ for (const g of [true, false]) {
 }
 
 
-console.log('N. SG: Hero mit Praxisfoto, USP-Reihe, Kontaktsektion (Buchungsbox + Praxisangaben), Sticky');
+console.log('N. SG: Hero mit Praxisvideo (Foto als Poster/Fallback, seit #79), USP-Reihe, Kontaktsektion (Buchungsbox + Praxisangaben), Sticky');
 {
   const sgHtml = fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8');
   const ids = [...sgHtml.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = [...new Set(ids.filter((x, k) => ids.indexOf(x) !== k))];
   ok(dup.length === 0, `SG: keine doppelten IDs (${dup.join(',') || '–'})`);
   ok((sgHtml.match(/ data-kf-instance="/g) || []).length === 2 && /data-kf-instance="sg-hero"/.test(sgHtml) && /data-kf-instance="sg-unten"/.test(sgHtml), 'SG: genau zwei Formularinstanzen (sg-hero, sg-unten)');
-  ok((sgHtml.match(/standort-stgallen\.jpg/g) || []).length === 1 && (sgHtml.match(/Über die Praxis/g) || []).length === 1 && (sgHtml.match(/class="usp-grid-section"|class="sg-cta-repeat"/g) || []).length === 0, 'SG: Praxisfoto nur im Hero, «Über die Praxis» nur einmal, alter USP-Block + CTA-Wiederholung entfernt');
+  // Hero-Medien gemäss #79 (d9c829da, d321c9e4): Foto bleibt LCP/Poster/Fallback, genau ein Video ohne autoplay/controls, Start per Skript nach load
+  const heroHtml = (sgHtml.match(/<section class="lsr-hero hlsg">[\s\S]*?<\/section>/) || [''])[0];
+  const fig = (heroHtml.match(/<figure class="lsr-right lsr-right--video" id="sg-hero-media">[\s\S]*?<\/figure>/) || [''])[0];
+  const vTags = fig.match(/<video\b[^>]*>/g) || []; const v = vTags[0] || '';
+  ok(vTags.length === 1 && (sgHtml.match(/<video\b/g) || []).length === 1 && /\bmuted\b/.test(v) && /\bplaysinline\b/.test(v) && /\bloop\b/.test(v) && /preload="none"/.test(v) && /poster="\/images\/standort-stgallen\.jpg"/.test(v) && /aria-hidden="true"/.test(v) && /tabindex="-1"/.test(v) && !/\bautoplay\b/.test(v) && !/\bcontrols\b/.test(v), 'SG: genau ein Hero-Video (muted, playsinline, loop, preload=none, Poster = Praxisfoto, aria-hidden, ohne autoplay/controls)');
+  const srcs = [...fig.matchAll(/<source src="([^"]+)" type="([^"]+)"(?: media="([^"]+)")?>/g)].map((m) => [m[1], m[2], m[3] || '']);
+  const SRCS = [['/videos/hero-sg/hwang-praxis-640.webm', 'video/webm', '(max-width:900px)'], ['/videos/hero-sg/hwang-praxis-640.mp4', 'video/mp4', '(max-width:900px)'], ['/videos/hero-sg/hwang-praxis-1280.webm', 'video/webm', ''], ['/videos/hero-sg/hwang-praxis-1280.mp4', 'video/mp4', '']];
+  ok(JSON.stringify(srcs) === JSON.stringify(SRCS) && srcs.every(([f]) => fs.existsSync(path.join(dist, f)) && fs.statSync(path.join(dist, f)).size > 100000), 'SG: vier Video-Quellen in dieser Reihenfolge (640 webm/mp4 nur ≤900px, 1280 webm/mp4), Dateien im Build');
+  ok((fig.match(/<img\b[^>]*>/g) || []).length === 1 && /<img src="\/images\/standort-stgallen\.jpg"[^>]*loading="eager"[^>]*fetchpriority="high"/.test(fig) && fig.indexOf('<img') < fig.indexOf('<video') && (sgHtml.match(/standort-stgallen\.jpg/g) || []).length === 2 && !/<figcaption/.test(sgHtml), 'SG: Praxisfoto genau einmal als Fallback-Bild vor dem Video (eager, fetchpriority high) und einmal als Poster, keine Caption');
+  const css = fs.readFileSync(path.join(dist, 'home.css'), 'utf8');
+  ok(/getElementById\('sg-hero-media'\)/.test(sgHtml) && /prefers-reduced-motion: reduce/.test(sgHtml) && /saveData/.test(sgHtml) && /addEventListener\('load',start,\{once:true\}\)/.test(sgHtml) && /addEventListener\('playing'/.test(sgHtml) && /classList\.add\('is-playing'\)/.test(sgHtml) && /\.hlsg \.lsr-right--video video\{[^}]*opacity:0/.test(css) && /\.hlsg \.lsr-right--video\.is-playing video\{opacity:1\}/.test(css) && /prefers-reduced-motion:reduce\)\{\.hlsg \.lsr-right--video video\{display:none\}/.test(css), 'SG: Startskript nach load (Einblendung beim ersten Frame, Stopp bei reduced motion/Save-Data) und Video-Stil (unsichtbar bis is-playing, reduced motion ausgeblendet)');
+  ok(!/<form\b/.test(heroHtml) && !/data-kf-instance/.test(heroHtml), 'SG: kein Formular im Hero');
+  ok((sgHtml.match(/Über die Praxis/g) || []).length === 1 && (sgHtml.match(/class="usp-grid-section"|class="sg-cta-repeat"/g) || []).length === 0, 'SG: «Über die Praxis» nur einmal, alter USP-Block + CTA-Wiederholung entfernt');
 }
 const layout = (pg) => pg.evaluate(() => { const r = (s) => { const e = document.querySelector(s); if (!e) return null; const b = e.getBoundingClientRect(); return { t: Math.round(b.top + scrollY), b: Math.round(b.bottom + scrollY), l: Math.round(b.left), r: Math.round(b.right), h: Math.round(b.height) }; };
   const hero = document.querySelector('.lsr-hero.hlsg'), sgu = document.querySelector('.sgu'), sgk = document.querySelector('#sg-kontakt-praxis'), card = document.querySelector('[data-kf-instance="sg-hero"]'), info = document.querySelector('.sgk-info');
-  const seq = hero && hero.nextElementSibling === sgu && sgu.nextElementSibling === sgk && sgk.contains(card) && sgk.contains(info) && (card.compareDocumentPosition(info) & 4);
+  const next = (e) => { let n = e && e.nextElementSibling; while (n && n.tagName === 'SCRIPT') n = n.nextElementSibling; return n; }; // Inline-Startskript des Hero-Videos (#79) zählt nicht als Layoutblock
+  const seq = hero && next(hero) === sgu && next(sgu) === sgk && sgk.contains(card) && sgk.contains(info) && (card.compareDocumentPosition(info) & 4);
+  const figEl = hero && hero.querySelector('figure#sg-hero-media.lsr-right--video'), imgEl = figEl && figEl.querySelector('img[src="/images/standort-stgallen.jpg"]'), vEl = figEl && figEl.querySelector('video');
+  const cover = (e) => { if (!figEl || !e) return false; const f = figEl.getBoundingClientRect(), b = e.getBoundingClientRect(); return f.width > 0 && f.height > 0 && Math.abs(b.left - f.left) <= 2 && Math.abs(b.top - f.top) <= 2 && Math.abs(b.width - f.width) <= 2 && Math.abs(b.height - f.height) <= 2; };
+  const media = !!imgEl && !!vEl && !hero.querySelector('form') && cover(imgEl) && cover(vEl) && vEl.muted && vEl.loop && vEl.playsInline && vEl.preload === 'none' && !vEl.autoplay && !vEl.controls && figEl.querySelectorAll('video').length === 1;
+  const vid = vEl ? { src: vEl.currentSrc || '', playing: !vEl.paused && vEl.readyState >= 2, cls: figEl.classList.contains('is-playing'), op: getComputedStyle(vEl).opacity } : null;
   const t = info.textContent; const has = ['Oberer Graben 22, 9000 St. Gallen', 'Mo – Sa 07:30-19:30', 'So 08:00-17:00', '+41 77 523 61 22', 'termine@tcm.ch', 'Bewertungen auf Google ansehen', 'Anreise & Parkieren', 'Mehr zu Akupunktur & TCM in St. Gallen', 'Erfahrungen & Ablauf'].every((x) => t.includes(x));
   const links = ['a[href^="https://www.google.com/maps/search"]', 'a[href="tel:+41775236122"]', 'a[href="mailto:termine@tcm.ch"]', 'iframe[src*="google.com/maps"]', 'a[href^="https://www.google.com/maps/place"]', 'details.up-transit-acc', 'a[href="/akupunktur-tcm-st-gallen/"]', 'a[href="/wissen/tcm-st-gallen-erfahrungen-ablauf/"]'].every((s) => info.querySelector(s));
-  return { hero: r('.lsr-hero.hlsg'), img: !!hero.querySelector('figure.lsr-right img[src="/images/standort-stgallen.jpg"]') && !hero.querySelector('form'), usp: document.querySelectorAll('.sgu .usp-card').length, uspCards: [...document.querySelectorAll('.sgu .usp-card')].map((c) => { const b = c.getBoundingClientRect(); return [Math.round(b.top), Math.round(b.height)]; }),
+  return { hero: r('.lsr-hero.hlsg'), img: media, vid, usp: document.querySelectorAll('.sgu .usp-card').length, uspCards: [...document.querySelectorAll('.sgu .usp-card')].map((c) => { const b = c.getBoundingClientRect(); return [Math.round(b.top), Math.round(b.height)]; }),
     card: r('[data-kf-instance="sg-hero"]'), info: r('.sgk-info'), h2: r('.sgk-info .up-h2'), sgk: r('#sg-kontakt-praxis'), seq: !!seq, has, links, ow: document.documentElement.scrollWidth > innerWidth, pos: getComputedStyle(document.querySelector('.sgk-formcol')).position, ih: innerHeight }; });
 for (const w of [320, 390, 768, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: w === 768 ? 1024 : undefined })); await new Promise((r) => setTimeout(r, 200));
   const L = await layout(pg);
-  ok(L.seq && L.img && L.usp === 3 && L.has && L.links && !L.ow, `${w}px Reihenfolge Hero (Foto, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow`);
+  ok(L.seq && L.img && L.usp === 3 && L.has && L.links && !L.ow, `${w}px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow`);
+  // Rendition je Breite (Quellenwahl des Browsers), Einblendung (is-playing, Opacity > 0 während/nach dem 0.6-s-Fade) nur bei laufendem Video; ob Autoplay im Headless-Browser startet, ist umgebungsabhängig und wird nicht verlangt
+  ok(!!L.vid && (!L.vid.src || L.vid.src.includes(w <= 900 ? 'hwang-praxis-640.' : 'hwang-praxis-1280.')) && (L.vid.cls === L.vid.playing) && (L.vid.cls ? parseFloat(L.vid.op) > 0 : L.vid.op === '0'), `${w}px Hero-Video: Rendition ${w <= 900 ? '640' : '1280'} (${L.vid && L.vid.src ? L.vid.src.split('/').pop() : 'noch keine Quelle'}), ${L.vid && L.vid.cls ? 'läuft, eingeblendet' : 'nicht gestartet, Foto sichtbar'}`);
   if (w >= 1024) {
     ok(L.uspCards.every((c) => c[0] === L.uspCards[0][0]) && L.uspCards.every((c) => c[1] <= 90), `${w}px USPs nebeneinander, kompakt (${L.uspCards.map((c) => c[1]).join('/')} px)`);
     ok(L.info.r <= L.card.l && Math.abs(L.info.t - L.card.t) <= 2, `${w}px Praxisangaben links, Box rechts, oben bündig (${L.info.t}/${L.card.t})`);
