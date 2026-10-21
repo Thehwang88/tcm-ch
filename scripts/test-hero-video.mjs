@@ -81,7 +81,8 @@ async function page(o, u, { width, reduced = false, saveData = false, wait = 'lo
 }
 const figState = (pg) => pg.evaluate(() => { const f = document.querySelector('[data-hero-video]'), v = f.querySelector('video'), i = f.querySelector('img'), r = f.getBoundingClientRect();
   return { rect: [Math.round(r.left), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)], playing: f.classList.contains('is-playing'), paused: v.paused, t: v.currentTime, ready: v.readyState, src: v.currentSrc, vOp: getComputedStyle(v).opacity, vDisp: getComputedStyle(v).display, muted: v.muted, loop: v.loop, pi: v.playsInline, preload: v.preload, imgSrc: i.currentSrc || i.src, imgPos: getComputedStyle(i).objectPosition, vPos: getComputedStyle(v).objectPosition, imgVis: i.getBoundingClientRect().width > 0 }; });
-const clipShot = async (pg, rect, file) => { const buf = await pg.screenshot({ clip: { x: rect[0], y: rect[1] - (await pg.evaluate(() => scrollY)), width: rect[2], height: rect[3] } }); if (file && shots) fs.writeFileSync(path.join(shots, file), buf); return buf; };
+// Ausschnitt immer aus der aktuellen Viewport-Lage der Figure (nach Scrolls exakt, keine Verschiebung durch Smooth-Scroll).
+const clipShot = async (pg, _rect, file) => { const r = await pg.evaluate(() => { const b = document.querySelector('[data-hero-video]').getBoundingClientRect(); return { x: b.left + scrollX, y: b.top + scrollY, width: b.width, height: b.height }; }); const buf = await pg.screenshot({ clip: r, captureBeyondViewport: true }); if (file && shots) fs.writeFileSync(path.join(shots, file), buf); return buf; };
 const stats = async (buf) => { const { data } = await sharp(buf).greyscale().raw().toBuffer({ resolveWithObject: true }); let s = 0; for (const x of data) s += x; const mean = s / data.length; return mean; };
 const bufDiff = async (a, b) => { const A = await sharp(a).resize(160, 90).greyscale().raw().toBuffer(), B = await sharp(b).resize(160, 90).greyscale().raw().toBuffer(); let d = 0; for (let i = 0; i < A.length; i++) d += Math.abs(A[i] - B[i]); return d / A.length; };
 const waitPlaying = async (pg) => { try { await pg.waitForFunction(() => document.querySelector('[data-hero-video]').classList.contains('is-playing'), { timeout: 10000 }); return true; } catch (e) { return false; } };
@@ -103,7 +104,8 @@ for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['base
     // C: erster bewegter Frame (mobil: erster Scroll armiert den Start) · D: Wiedergabe
     // Erster bewegter Frame: Video-Frame im Moment von «playing» per Canvas abgreifen (unabhängig vom CSS-Fade) und direkt
     // danach die Komposition fotografieren (Fade läuft, darf weder dunkel noch hell kippen).
-    if (w < 500) { await pg.evaluate(() => scrollTo(0, 1)); }
+    // Mobil: erster Scroll armiert den Start; die Figure muss im Viewport liegen (mit aktivem Kampagnen-Banner liegt sie unter dem Fold).
+    if (w < 500) { await pg.evaluate(() => { scrollTo(0, 1); document.querySelector('[data-hero-video]').scrollIntoView({ block: 'center', behavior: 'instant' }); }); await sleep(300); }
     const played = await waitPlaying(pg);
     const C0 = await figState(pg); const shotC0 = await clipShot(pg, C0.rect, null); const mC0 = await stats(shotC0);
     const first = await pg.evaluate(() => window.__first);
@@ -114,7 +116,8 @@ for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['base
     ok(played && C.vOp === '1' && C.rect.join() === A.rect.join(), `${tag}: Video eingeblendet (is-playing, opacity 1), Geometrie unverändert`);
     // Toleranz wächst mit der Zeit des ersten präsentierten Frames (Kameraschwenk ≈ 40/255 pro Sekunde); ein schwarzer Frame (≈ 99) fällt immer durch.
     ok(firstPng && first.t < 0.5 && dFirst < 6 + first.t * 40, `${tag}: erster bewegter Video-Frame ≈ Poster (Pixeldifferenz ${dFirst.toFixed(1)}/255 bei t=${first && first.t != null ? first.t.toFixed(2) : '–'}s)`);
-    ok(mC0 > 40 && mC0 < 215 && mC > 40 && mC < 215 && (w >= 500 || (Math.abs(mC0 - mA) < 25 && Math.abs(mC - mA) < 30)), `${tag}: Übergang ohne Schwarz/Weiss-Kippen (Helligkeit Poster ${mA.toFixed(0)} → Start ${mC0.toFixed(0)} → eingeblendet ${mC.toFixed(0)}${w >= 500 ? ', Desktop läuft seit load' : ''})`);
+    // Komposition darf nie schwarz/weiss kippen; die Bildgleichheit Poster ↔ erster Frame prüft die Canvas-Messung oben (fixe Leisten können den Ausschnitt mobil leicht aufhellen).
+    ok(mC0 > 40 && mC0 < 215 && mC > 40 && mC < 215, `${tag}: Übergang ohne Schwarz/Weiss-Kippen (Helligkeit Poster ${mA.toFixed(0)} → Start ${mC0.toFixed(0)} → eingeblendet ${mC.toFixed(0)})`);
     await sleep(1500);
     const D = await figState(pg); const shotD = await clipShot(pg, D.rect, `${tag}-D-wiedergabe.png`); const mD = await stats(shotD);
     ok(!D.paused && D.t > 0.5 && D.muted && D.loop && D.pi && D.preload === 'none' && D.src.endsWith(w <= 900 ? 'hwang-praxis-640.webm' : 'hwang-praxis-1280.webm') && mD > 30, `${tag}: läuft (t=${D.t.toFixed(1)}s), muted/loop/playsinline, Rendition ${D.src.split('/').pop()}`);

@@ -26,14 +26,19 @@ for (const [pv, mode, kind, sc, textRe] of [
   ['soldout', 'soldout', 'aktuell', 'none', /^Aktuelle Buchungsrunde bis/],
   ['live', 'active', 'aktuell', 'live', /^Aktuelle Buchungsrunde bis/],
   ['between', 'active', 'keine', 'none', new RegExp('^' + NEUTRAL_TEXT + '$')],
-  ['next', 'active', 'naechste', 'none', /^Nächste Buchungsrunde ab \d\d\.\d\d\.\d{4}$/]]) {
+  ['next', 'active', 'naechste', 'none', /^Nächste Buchungsrunde ab \d\d\.\d\d\.\d{4}$/],
+  ['anfrage', 'active', 'aktuell', 'none', new RegExp('^' + NEUTRAL_TEXT + '$')]]) {
   const s = withPreview(pv, () => m.herbstState());
   ok(s.show && s.mode === mode && s.rundeKind === kind && s.scarcityKind === sc && textRe.test(s.rundeText) && (kind === 'aktuell' ? !!s.rundeId : s.rundeId === ''), `Vorschau ${pv}: mode ${mode}, Runde ${kind} («${s.rundeText}»), Kapazität ${sc}${sc === 'live' ? ` («${s.scarcity}»)` : ''}, Feld runde ${kind === 'aktuell' ? 'gesetzt' : 'leer'}`);
 }
 const prod = withPreview('', () => m.herbstState());
-const A = HERBST_SG.approvals; const ready = A.formatConfirmed && A.capacityConfirmed && A.claimsReviewed && A.privacyReviewed;
-ok(prod.show === (HERBST_SG.offerActive && ready), `Produktion: Markup nur mit offerActive (${HERBST_SG.offerActive}) UND allen Freigaben (${ready ? 'erteilt' : 'NICHT BEREIT: ' + Object.entries(A).filter(([, v]) => !v).map(([k]) => k).join(', ')}) → show ${prod.show}`);
-ok(!HERBST_SG.offerActive || ready, 'offerActive darf nur mit allen Freigaben gesetzt sein');
+const A = HERBST_SG.approvals; const anfrageMode = HERBST_SG.bookingMode === 'anfrage';
+const ready = A.formatConfirmed && A.claimsReviewed && A.privacyReviewed && (A.capacityConfirmed || anfrageMode);
+ok(['anfrage', 'kontingent'].includes(HERBST_SG.bookingMode), `Buchungsmodus ${HERBST_SG.bookingMode}`);
+ok(prod.show === (HERBST_SG.offerActive && ready), `Produktion: Markup nur mit offerActive (${HERBST_SG.offerActive}) UND Freigaben (${ready ? 'erteilt' + (anfrageMode ? ', Anfrage-Modus ohne Kapazitäts-Freigabe' : '') : 'NICHT BEREIT: ' + Object.entries(A).filter(([, v]) => !v).map(([k]) => k).join(', ')}) → show ${prod.show}`);
+ok(!HERBST_SG.offerActive || ready, 'offerActive nur mit Format-, Claims- und Datenschutz-Freigabe und (Kapazitäts-Freigabe oder Anfrage-Modus)');
+ok(!anfrageMode || (prod.scarcityKind === 'none' && (!prod.show || prod.rundeText === NEUTRAL_TEXT)), 'Anfrage-Modus: keine Kapazitätsaussage, Rundenzeile immer neutral');
+ok(anfrageMode || !HERBST_SG.offerActive || RUNDEN.some((x) => x.status !== 'beendet' && x.reservierteTermine != null), 'Kontingent-Modus nur mit reservierten Terminen');
 ok(prod.scarcityKind !== 'live' || (HERBST_SG.live.remaining > 0 && !!HERBST_SG.live.verifiedAt), 'Live-Zahl nur mit remaining > 0 und verifiedAt');
 ok(prod.dauerText === '' || A.formatConfirmed, 'Dauer nur mit freigegebenem Format');
 // Runden-Regeln mit echten Daten: beendete Runde kippt in neutral/nächste, nie Reset.
@@ -56,7 +61,7 @@ const src = ['src/components/HerbstBannerSG.astro', 'src/components/HerbstSheetS
 const code = src.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\/|<!--[\s\S]*?-->/g, ' ');
 ok(!/countdown|setInterval|Math\.random|Restplätze|nur heute|letzte Chance|gerade gebucht|statt CHF|animation:[^;]*(pulse|blink)/i.test(code), 'kein Countdown, keine Zufallszahlen, keine Fake-Buchungen, kein CHF-Vergleich, kein Blinken/Pulsen');
 ok(!/(?<![\w-])(Qi|Yin|Yang|Meridian)/.test(src) && !/heil(t|ung)\b/i.test(src), 'keine energetische Sprache, keine Heilversprechen');
-ok(!/Ganzkörperuntersuchung|Gesundheitscheck|Komplettdiagnose|Früherkennung|Diagnose(?!n)|ersetzt (den|die) Arzt/i.test(src.replace(/Zungen- und Pulsdiagnos|Pulsdiagnos|TCM-Diagnos/g, '')), 'keine medizinischen Untersuchungs-/Diagnose-Claims (360° = ganzheitliche TCM-Sicht)');
+ok(!/Ganzkörperuntersuchung|Gesundheitscheck|Komplettdiagnose|Früherkennung|Diagnose(?!n)|ersetzt (den|die) Arzt/i.test(code.replace(/Zungen- und Pulsdiagnos|Pulsdiagnos|TCM-Diagnos/g, '')), 'keine medizinischen Untersuchungs-/Diagnose-Claims im Wortlaut (360° = ganzheitliche TCM-Sicht; Kommentare ausgeklammert)');
 ok(/TCM-Kompass|Discovery Experience|Mitnehmen/i.test(src) === false, 'kein TCM-Kompass / keine Discovery-Experience-Reste');
 ok(!/verfügbar|frei|neue Termine/i.test(NEUTRAL_TEXT) && /unverbindlich/.test(NEUTRAL_TEXT), `neutraler Status ohne Verfügbarkeitszusage («${NEUTRAL_TEXT}»)`);
 ok(/kurzer, auf dein Hauptanliegen fokussierter Kurzcheck, keine umfassende medizinische Untersuchung/.test(HERBST_COPY.boundary), '360° als kurze, priorisierte Orientierung beschrieben (keine umfassende Untersuchung)');
@@ -85,6 +90,7 @@ if (shown) {
   ok((vis.match(new RegExp(st.rundeText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length === 3 && vis.includes(HERBST_COPY.rundeNote), `Rundenzeile «${st.rundeText}» in Banner, Modal-Spalte und Sheet + Abgrenzung zum regulären Check-in`);
   ok(st.scarcity ? vis.includes(st.scarcity) : !/Noch \d+ 360°-Termine|begrenzte Kapazität/.test(vis), st.scarcity ? `Kapazitätstext genau wie Modell: «${st.scarcity}»` : 'kein Kapazitätstext ohne Verifikation/Kontingent');
   ok(!/Nur noch \d|Restplätze|nur heute|letzte Chance|endet (für immer|endgültig)|statt CHF|\d+ ?%|Countdown/i.test(vis), 'keine unzulässigen Dringlichkeits-/Preisvergleichs-Muster');
+  ok(st.bookingMode !== 'anfrage' || !/Aktuelle Buchungsrunde|Nächste Buchungsrunde|begrenzte Kapazität|Noch \d+ 360°/.test(vis), 'Anfrage-Modus: keine Rundenfrist, keine Kapazität, keine Restzahl im sichtbaren Text');
   ok(vis.includes(HERBST_COPY.bannerH) && vis.includes(st.soldOut ? HERBST_COPY.sheetSubSoldout : HERBST_COPY.bannerSub) && vis.includes(HERBST_COPY.name) && vis.includes(HERBST_COPY.headline) === false && vis.includes(HERBST_COPY.offer) && vis.includes(HERBST_COPY.support) && HERBST_COPY.components.every((k) => vis.includes(k.t)) && vis.includes(HERBST_COPY.reassurance) && vis.includes(HERBST_COPY.noTreatment) && vis.includes(HERBST_COPY.boundary), 'Launch-Copy (Banner, Name, Angebot, Erklärung, vier Bausteine, Reassurance, keine Behandlung, 360°-Abgrenzung) exakt');
   ok(st.dauerText ? vis.includes(st.dauerText) : !/\b\d+ Minuten\b/.test(vis.replace(/TCM-Check-in \(30 Minuten\)|60 Minuten · kostenpflichtig|30 Minuten · nach Verfügbarkeit/g, '')), st.dauerText ? `Dauer «${st.dauerText}» (Format freigegeben)` : 'keine 360°-Dauer ohne Freigabe (nur regulärer 30-Minuten-Check-in und 60-Minuten-Erstbehandlung benannt)');
   console.log('4. Sheet-Formular');

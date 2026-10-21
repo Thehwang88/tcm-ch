@@ -21,6 +21,7 @@ const EXPECT = {
   soldout: { mode: 'soldout', runde: /^Aktuelle Buchungsrunde bis/, sc: '', cta: 'Termin anfragen →', sticky: 'Termin anfragen →', checked: 'behandlung', tile: 'Kostenloser TCM-Check-in', submit: 'Erstbehandlung anfragen →', soldoutNote: true },
   between: { mode: 'active', runde: /^360°-Termine auf Anfrage · unverbindlich$/, sc: '', cta: 'Gratis 360°-Termin anfragen →', sticky: 'Gratis 360°-Check →', checked: 'checkin', tile: 'Gratis TCM 360°-Check', submit: 'Gratis 360°-Termin anfragen →' },
   next: { mode: 'active', runde: /^Nächste Buchungsrunde ab \d\d\.\d\d\.\d{4}$/, sc: '', cta: 'Gratis 360°-Termin anfragen →', sticky: 'Gratis 360°-Check →', checked: 'checkin', tile: 'Gratis TCM 360°-Check', submit: 'Gratis 360°-Termin anfragen →' },
+  anfrage: { mode: 'active', runde: /^360°-Termine auf Anfrage · unverbindlich$/, sc: '', cta: 'Gratis 360°-Termin anfragen →', sticky: 'Gratis 360°-Check →', checked: 'checkin', tile: 'Gratis TCM 360°-Check', submit: 'Gratis 360°-Termin anfragen →' },
 }[state];
 ok(mode === EXPECT.mode, `Build-Zustand ${EXPECT.mode}`);
 const t = (s) => s.replace(/\s+/g, ' ').trim();

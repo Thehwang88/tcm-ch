@@ -5,7 +5,12 @@ Stand 21.10.2026 · Branch `claude/affectionate-cannon-ktqrkm` · Draft-PR, **ni
 Fortlaufendes Angebot für Neupatient:innen am Standort St. Gallen (`/standorte/st-gallen/`), betrieben in echten Buchungsrunden.
 Erste Runde: **22.–31.10.2026**. Der reguläre kostenlose TCM-Check-in (30 Minuten) bleibt unverändert und läuft parallel weiter.
 
-## 1. Status: NICHT BEREIT (Freigaben offen)
+## 1. Status: AKTIV im Anfrage-Modus (Inhaber-Freigabe 21.10.2026)
+
+Inhaber-Entscheid 21.10.2026: kommerzielles Angebot, Format ca. 20 Minuten und Patienten-Wortlaut freigegeben; Launch als **Anfrage-Modus** (`bookingMode: 'anfrage'`), weil reservierte 360°-Termine/Personal nicht dokumentiert sind. Im Anfrage-Modus: 360°-Termine nur als unverbindliche Anfrage, Rundenzeile immer «360°-Termine auf Anfrage · unverbindlich», keine Kapazitäts-/Restzahl-Texte, keine Runde «offen für bestätigte Termine»; die Runden-ID wird nur intern zur Messung zugeordnet. Wechsel in den Kontingent-Modus erst mit `capacityConfirmed` + `reservierteTermine` (verifiziert).
+
+<details><summary>Ursprünglicher Status vor der Freigabe</summary>
+
 
 `src/data/herbst-sg.ts` → `offerActive: false`. Das Gate `node scripts/check-herbst-sg.mjs` lässt `offerActive: true` nur zu, wenn alle
 `approvals` auf `true` stehen. Bis dahin rendert der Build **kein** Kampagnen-Markup (regulärer SG-Hero, reguläre Sticky-Bar).
@@ -16,6 +21,10 @@ Erste Runde: **22.–31.10.2026**. Der reguläre kostenlose TCM-Check-in (30 Min
 | `capacityConfirmed` | Separat reservierte 360°-Termine und Personal je Buchungsrunde (Eintrag `reservierteTermine` in `tcm360-runden.json`). Ohne Kontingent keine Kapazitätsaussage. | Praxisleitung SG | **offen** – `reservierteTermine: null` in `tcm360-runden.json`; benötigt: Anzahl separat reservierter 360°-Termine und zuständige Fachpersonen für 22.–31.10.2026 (Eintrag + `verifiziertAm/-Von`). |
 | `claimsReviewed` | Rundenfrist («Aktuelle Buchungsrunde bis 31.10.2026»), Kapazitätstext, Abgrenzung zum regulären Check-in, «360°» = ganzheitliche TCM-Sicht (keine medizinische Untersuchung). | Inhaber / Compliance | **offen** – Texte liegen in §4 vor; benötigt: Freigabe (Name, Datum). |
 | `privacyReviewed` | Felder `kampagne`, `runde`, UTM (nur Zuordnung, keine Gesundheitsdaten) in Datenschutzerklärung/Consent abgedeckt. | Datenschutz | **offen** – Felder `kampagne`, `runde`, `utm_*` (nur Zuordnung, keine Gesundheitsdaten) gegen die Datenschutzerklärung prüfen; benötigt: Freigabe oder Ergänzung (Name, Datum). |
+
+</details>
+
+Belege (Stand 21.10.2026): `formatConfirmed` = Inhaber-Freigabe 21.10.2026 (Angebot, Format, Konzept; keine unabhängige werberechtliche Prüfung); `claimsReviewed` = Inhaber-Freigabe des Wortlauts + Gate (keine Diagnose-/Garantie-/Knappheits-Claims); `privacyReviewed` = Prüfung gegen Datenschutzerklärung Ziff. 2/3/7 (Kontaktformular, Resend, Turnstile, GA4/GTM nach Einwilligung), Felder `kampagne`/`runde`/`utm_*` = Zuordnungsdaten der Anfrage, keine Gesundheits-/Kontaktdaten an Werbeplattformen, keine Textänderung nötig; `capacityConfirmed` = **offen** (Praxisleitung SG) → Anfrage-Modus.
 
 Weitere offene Entscheide:
 - **Buchungsintegration**: OneDoc liefert keine Live-Restzahl per API. «Noch X 360°-Termine verfügbar» bleibt deaktiviert (`live.remaining: null`), bis eine verlässliche, aktuelle Zahl gepflegt werden kann (≤ 24 h vor dem Build).

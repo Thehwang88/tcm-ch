@@ -53,7 +53,7 @@ const card = renderKontaktForm({
 </div>
 <i hidden data-no-sticky-cta data-hsg-marker></i>
 <i hidden data-hsg-end></i>
-<script is:inline define:vars={{ KAMP: HERBST_SG.id, RUNDEN: st.rundenClient, NEUTRAL: NEUTRAL_TEXT }}>
+<script is:inline define:vars={{ KAMP: HERBST_SG.id, RUNDEN: st.rundenClient, NEUTRAL: NEUTRAL_TEXT, ANFRAGE: st.bookingMode === 'anfrage' }}>
   (function () {
     var html = document.documentElement;
     var dlg = document.getElementById('hsg-sheet'); if (!dlg) return;
@@ -74,10 +74,11 @@ const card = renderKontaktForm({
     };
     var applyRunde = function () {
       var p = pick(Date.now());
-      var text = p.kind === 'aktuell' ? (p.r.hinweis || 'Aktuelle Buchungsrunde bis ' + fmt(p.r.ende)) : p.kind === 'naechste' ? (p.r.hinweis || 'Nächste Buchungsrunde ab ' + fmt(p.r.start)) : NEUTRAL;
+      // Anfrage-Modus (kein verifiziertes Kontingent): immer neutraler Status, nie eine Runde als offen für bestätigte Termine.
+      var text = ANFRAGE ? NEUTRAL : p.kind === 'aktuell' ? (p.r.hinweis || 'Aktuelle Buchungsrunde bis ' + fmt(p.r.ende)) : p.kind === 'naechste' ? (p.r.hinweis || 'Nächste Buchungsrunde ab ' + fmt(p.r.start)) : NEUTRAL;
       [].forEach.call(document.querySelectorAll('[data-hsg-runde]'), function (e) { if (e.textContent !== text) e.textContent = text; });
       // Kapazitätszeile nur mit laufender Runde (Build-Zeit verifiziert); nach Rundenende ausblenden.
-      [].forEach.call(document.querySelectorAll('[data-hsg-sc]'), function (e) { e.hidden = p.kind !== 'aktuell' || p.r.soldOut; });
+      [].forEach.call(document.querySelectorAll('[data-hsg-sc]'), function (e) { e.hidden = ANFRAGE || p.kind !== 'aktuell' || p.r.soldOut; });
       var ri = dlg.querySelector('[data-kf-runde]'); if (ri) ri.value = p.kind === 'aktuell' ? p.r.id : '';
       return p;
     };
