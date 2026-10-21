@@ -8,7 +8,8 @@ Stand: Draft-PR, nicht Ready, nicht gemergt, nicht deployed. Kein GSC-Submit, ke
 - Drei Commits, kein Amend, kein Rebase, kein Force-Push:
   1. `b6e24b3d` Inhalte und Datenmodell (9 Einträge in `wissen-kraeuter.ts` und `wissen-akupunktur-bei.ts`, Kohortenkonstante `PUBLISHED_WISSEN_NEUN_2026_10 = undefined` in `befunde-werte.ts`).
   2. `65528160` Kontextlinks aus 19 Bestandsseiten, Ownership COPD-Alias.
-  3. dieser Commit: Registrierungen (Map, Do-not-create, Index-Queue, Bibliothekssuche, Health-Audit-JSON), Prüfskript `scripts/check-wissen-neun.mjs`, Bericht.
+  3. `9a5fd9ca` Registrierungen (Map, Do-not-create, Index-Queue, Bibliothekssuche, Health-Audit-JSON), Prüfskript `scripts/check-wissen-neun.mjs`, Bericht.
+  4. Review-Folgecommit 21.10.2026 (drei Textstellen in 05, 08, 09, Quellenmatrix, Abschnitte 4b und 7b dieses Berichts).
 - Texte aus dem Textpaket wortgetreu übernommen (Markdown zu HTML, typografische Apostrophe vereinheitlicht, Quellen-IDs durch sichtbare Labels mit Zugriffsangabe ersetzt). Inhaltliche Änderungen nur die in Abschnitt 4 dokumentierten.
 - Autor auf allen neun Seiten: «Redaktion TCM.ch» mit Vermerk «Redaktionelle Einordnung». Keine Fachautorenschaft, kein Datum (Konstante undefined, FAQs im Body, `faqs: []`, kein FAQPage-Schema).
 - Offene PRs bei Start (#38 SG-Hero-Pilot, #15 Commercial-Sprint, #1 Cloudflare-Konfiguration): keiner berührt die neun Slugs, die Kräuter- oder Akupunktur-bei-Dateien oder die Hostseiten.
@@ -21,13 +22,13 @@ Stand: Draft-PR, nicht Ready, nicht gemergt, nicht deployed. Kein GSC-Submit, ke
 | 02 | /wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/ | Chinesische Kräuter bei Wechseljahren: Was ist belegt? (54) | 149 | 550 / 625 | 3 | Beschwerden verstehen |
 | 03 | /wissen/chinesische-kraeuter-bei-neurodermitis/ | Chinesische Kräuter bei Neurodermitis: Nutzen und Risiken (57) | 156 | 564 / 637 | 4 | Beschwerden verstehen |
 | 04 | /wissen/chinesische-kraeuter-bei-schuppenflechte/ | Chinesische Kräuter bei Schuppenflechte: Was ist belegt? (56) | 158 | 584 / 629 | 3 | Beschwerden verstehen |
-| 05 | /wissen/chinesische-kraeuter-bei-endometriose/ | Chinesische Kräuter bei Endometriose: Nutzen und Grenzen (56) | 160 | 638 / 731 | 5 | Beschwerden verstehen |
+| 05 | /wissen/chinesische-kraeuter-bei-endometriose/ | Chinesische Kräuter bei Endometriose: Nutzen und Grenzen (56) | 160 | 638 / 785 | 5 | Beschwerden verstehen |
 | 06 | /wissen/chinesische-kraeuter-bei-pcos/ | Chinesische Kräuter bei PCOS und Kinderwunsch: Evidenz (54) | 160 | 630 / 679 | 3 | Beschwerden verstehen |
 | 07 | /wissen/akupunktur-bei-trockenen-augen/ | Akupunktur bei trockenen Augen: Studien und Grenzen (51) | 152 | 592 / 651 | 4 | Beschwerden verstehen |
-| 08 | /wissen/akupunktur-bei-krebsbedingter-fatigue/ | Akupunktur bei krebsbedingter Fatigue: Was ist belegt? (54) | 159 | 698 / 852 | 7 | Beschwerden verstehen |
-| 09 | /wissen/akupunktur-bei-copd/ | Akupunktur bei COPD: Studien zu Atemnot und Grenzen (51) | 156 | 652 / 781 | 6 | Beschwerden verstehen |
+| 08 | /wissen/akupunktur-bei-krebsbedingter-fatigue/ | Akupunktur bei krebsbedingter Fatigue: Was ist belegt? (54) | 159 | 698 / 925 | 7 | Beschwerden verstehen |
+| 09 | /wissen/akupunktur-bei-copd/ | Akupunktur bei COPD: Studien zu Atemnot und Grenzen (51) | 156 | 652 / 807 | 6 | Beschwerden verstehen |
 
-«Wörter Text» = Fliesstext ohne Quellenblock (Lesezeit 3 Min.), «gebaut» = Prüfskript auf dem gebauten Artikel inklusive FAQ und Quellenlabels. Alle Titles und Metas eindeutig gegenüber dem Bestand (Prüfskript). 01 bis 06 laufen in der Kräuter-Serie (`wissen-kraeuter.ts`, jetzt 16 Slugs), 07 bis 09 in der Akupunktur-bei-Serie (`akupunkturSerieSlugs`, jetzt 34; Health-Audit Wissen-Serie 39 Slugs).
+«Wörter Text» = Fliesstext ohne Quellenblock (Lesezeit 3 Min.; 05, 08, 09 nach Review-Durchgang 1 länger), «gebaut» = Prüfskript auf dem gebauten Artikel inklusive FAQ und Quellenlabels. Alle Titles und Metas eindeutig gegenüber dem Bestand (Prüfskript). 01 bis 06 laufen in der Kräuter-Serie (`wissen-kraeuter.ts`, jetzt 16 Slugs), 07 bis 09 in der Akupunktur-bei-Serie (`akupunkturSerieSlugs`, jetzt 34; Health-Audit Wissen-Serie 39 Slugs).
 
 ## 3. Vorprüfung je Artikel (21.10.2026)
 
@@ -83,8 +84,8 @@ Zugriffsebenen aus der erneuten Prüfung (nicht aus Teil C übernommen). Snapsho
 | S29 | Meta-Analyse Brustkrebs-Fatigue, Medicine 2026, PMID 42363469 | PubMed-Abstract (neu) | 08 |
 | S30 | Meta-Analyse Fatigue, Frontiers in Oncology 2026, PMID 42164120 | PubMed-Abstract (neu) | 08 |
 | S31 | Suzuki et al., ERJ Open Research 2025, DOI 10.1183/23120541.00668-2024 | Abstract über Crossref; Verlagsseite beim Abruf gesperrt (neu) | 09 |
-| S32 | Meta-Analyse TCM bei Endometrioseschmerz 2025, PMID 41268238 | PubMed-Abstract; Volltext nicht abrufbar (neu) | 05 |
-| S33 | Pilotstudie Akupunktur vs. Sham bei Brustkrebs-Fatigue, BMC Complement Med Ther 2026, PMID 41821024 | PubMed-Abstract (neu) | 08 |
+| S32 | Meta-Analyse TCM bei Endometrioseschmerz, Am J Transl Res 2025;17(10), PMID 41268238, PMC12628223 | Verlagsvolltext als PDF über DOI 10.62347/RHXV3554 (e-Century), Tabelle 2 und Limitationen gelesen; PMC-Seite und PMC-XML beim Abruf gesperrt (reCAPTCHA, Verlag erlaubt kein XML) (neu; im ersten Durchgang nur Abstract) | 05 |
+| S33 | Pilotstudie Akupunktur vs. Sham bei Brustkrebs-Fatigue, BMC Complement Med Ther 2026, PMID 41821024 | PubMed-Abstract vollständig gelesen (Methoden, Ergebnisse Woche 6 und Follow-up, Schlussfolgerung) (neu) | 08 |
 
 S27 wird im Textpaket nicht verwendet. Alle Aussagen aus Teil C wurden an den Quellen bestätigt; S17 bewusst mit dem Ergebnisabschnitt (SGRQ ohne Gruppen-/Interaktionseffekt) und nicht mit der stärkeren Abstract-Schlussfolgerung übernommen; S16 bestätigt zwei Zentren in Chengdu und fehlende Nachbeobachtung.
 
@@ -98,6 +99,16 @@ Textkorrekturen und Ergänzungen (Vorher → Nachher, Quelle):
 | 05 | «Sie zeigen aber nicht, wie gut die Kräuter selbst gegenüber Placebo oder einer gynäkologischen Standardbehandlung wirken.» | gleicher Satz, ergänzt um die Meta-Analyse 2025 (elf Studien, 1'401 Teilnehmerinnen; weniger Regelschmerzen und Dyspareunie, stark uneinheitlich, kein klarer Effekt auf Beckenschmerzen; Präparate und Vergleiche aus dem Abstract nicht ablesbar). | Aktualisierungssuche; S32 PubMed-Abstract. |
 
 Keine weiteren Sachfehler gefunden. Keine Dosierungen, Rezepte, Behandlungsdauern oder Erfolgsaussagen ergänzt. Notrufnummer 144 wie im Textpaket.
+
+### 4b. Review-Durchgang 1 (21.10.2026, drei Punkte)
+
+| Nr | Vorher | Nachher | Grund, Quelle |
+|---|---|---|---|
+| 08 | «Eine kleine Pilotstudie mit Scheinakupunktur bei 68 Brustkrebspatientinnen fand nach sechs Wochen keinen Unterschied zwischen echter und Scheinakupunktur. Das Leitlinienfazit von 2024 ändert sich dadurch nicht.» | Pilotstudie 2026, zwei Zentren, 68 Patientinnen, nicht eindringende Scheinakupunktur; nach sechs Wochen beide Gruppen ähnlich weniger Fatigue ohne statistisch gesicherten Unterschied; in der Nachbeobachtung bis Woche zehn stärkere Rückgänge bei Fatigue sowie Angst- und Depressionswerten in der Akupunkturgruppe mit wachsendem Abstand; Übertragbarkeit begrenzt, kein garantierter Erfolg. Leitlinie 2024 beurteilte den damaligen Evidenzstand; neuere Übersichten und Pilotstudie darin nicht enthalten, ob sie die Bewertung verändern, ist offen. | S33 Abstract vollständig: Woche 6 BFI 6.69 vs. 6.19, p = 0.223; Follow-up BFI Δ −1.28 (p = 0.011), FS-14 Δ −1.81, HADS-A/-D signifikant; «time-dependent advantage». Kein Leitlinienupdate behauptet. |
+| 05 | «Eine Meta-Analyse von 2025 mit elf Studien und 1'401 Teilnehmerinnen berichtet unter Kräuterbehandlungen weniger Regelschmerzen und weniger Schmerzen beim Geschlechtsverkehr, bei stark uneinheitlichen Studien und ohne klaren Effekt auf Beckenschmerzen; welche Präparate dort eingeschlossen wurden, liess sich nur auf Abstract-Ebene prüfen.» | Eingegrenzt: Die Übersicht fasst unter «chinesische Kräutermedizin» chinesische Rezepturen und Fertigpräparate (China, UK) sowie iranische Studien mit Knoblauchtabletten, Kamille- und Leinsamenkapseln und Astaxanthin zusammen; gepoolte Ergebnisse zu Regelschmerzen und Dyspareunie deshalb kein spezifischer Wirknachweis für chinesische Kräuter; Autor:innen nennen uneinheitliche Zusammensetzung, Dosierung, Dauer und fehlende Untergruppenanalysen; Beckenschmerz ohne klaren Effekt. | S32 Volltext Tabelle 2: Leng 2024 Sanjie-Kapsel, Flower 2011 individualisierte CHM (UK), Lian 2009 Quyu-Jiedu-Granulat, Ruan 2021 SanJieZhenTong, Rostami 2023 Astaxanthin (Iran), Yang 2006 Yiweining, Zhao 2020 Huoxue-Xiaoyi/Bushen-Zhuyun, Zhong 2019 DanDa Fukang, Amirsalari 2021 Knoblauch (Iran), Zhao 2013 Guifu/Danchi, Khalajinia 2024 Kamille/Leinsamen (Iran); Limitationen: «significant differences in composition, dosages, and treatment courses», «no subgroup analysis … on different TCM types». |
+| 09 | «ohne Scheinakupunktur und bei so kleiner Gruppe ist das ein Hinweis, kein Nachweis.» | «Als randomisierter Vergleich liefert sie Evidenz für den untersuchten Zusatznutzen gegenüber üblicher Versorgung allein; ohne Scheinakupunktur trennt sie den spezifischen Nadeleffekt aber nicht sicher von unspezifischen Effekten der Behandlung ab, und bei so kleiner Gruppe bleibt die Aussage vorläufig.» | Präzisierung ohne neue Quelle; S31 (RCT, 45 Teilnehmende, usual care als Kontrolle, kein Sham). |
+
+Sichtbare Quellenlabels angepasst: S32 «Verlagsvolltext als PDF über DOI, Tabelle 2 geprüft» mit Journal, S33 «PubMed-Abstract, vollständig gelesen».
 
 ## 5. Kontextlinks
 
@@ -154,6 +165,17 @@ Vollständige Ankersätze: Ausgabe von `node scripts/check-wissen-neun.mjs --bas
 - Overflow (Puppeteer, lokaler Server, Drittskripte geblockt): 9 Artikel bei 320/390/768/1440 px und 17 Hosts bei 390/1440 px: 70 OK / 0 Fehler, 0 JS-Fehler, je eine H1, Autor sichtbar, keine Fachautorenschaft. Screenshots `scratchpad/ef/shots-neun/` (nicht im Repo).
 - Build-Diff gegen frischen main-Build `9e5a914c`: 9 neu, 0 entfernt, 20 geändert: die sieben Leaves (copd, endometriose, neurodermitis, pcos, schuppenflechte, trockene-augen, wechseljahre), Fragen akupunktur-waehrend-chemotherapie und tcm-kraeuter-immunsuppressiva, Untersuchung lungenfunktion, Was-jetzt migraene-im-anflug, Körpersignal augenlid-zuckt, Wissen aromatasehemmer-gelenkschmerzen, akupunktur-bei-endometriose/-neurodermitis/-wechseljahresbeschwerden, migraene-tcm, pcos-akupunktur-tcm, was-hilft-gegen-kopfschmerzen, `/wissen/`-Hub. Keine weiteren Seiten verändert; Templates, CTA, Formulare, Tracking unberührt.
 - Keine echten Anfragen, Mails, Buchungen oder Test-Conversions. `public/sitemap.xml` nicht manuell angepasst (wird vom Build geschrieben).
+
+### 7b. Prüfungen nach Review-Durchgang 1 (21.10.2026, finaler Build)
+
+- main unverändert (`9e5a914c`), Branch-HEAD vor dem Folgecommit `9a5fd9ca`; keine zwischenzeitlichen Änderungen auf main oder im Branch.
+- `npm run build`: grün, Sitemap 895 URLs. `check-wissen-neun --base-sitemap`: OK, 9/9, je 2 Kontext-Hosts (05: 785, 08: 925, 09: 807 Wörter gebaut).
+- `health-audit` 0 (Wissen-Serie 39 Slugs, Ownership 0), `check-first30`, `check-professional` (103), `check-clinic-status`, `check-standort-ux`, `check-kontakt-formular`: 0 Fehler. `test-en-analytics` 47/0, `test-anfrage-betreff` 86/0, `check-entscheidungsfragen --base-sitemap` OK.
+- `check-i18n --strict`: unverändert 1 Failure, Bestandsbefund Outdated `location:winterthur-marktgasse` (#81, `standorte.ts`). Fingerprints nicht angefasst; die EN-Prüfung der Winterthur-Daten ist ein eigener Schritt ausserhalb dieses PR.
+- `test-kontakt-formular` (vollständig): 704 PASS / 8 FAIL, dieselben 8 SG-Hero-Assertions wie in Abschnitt 7 (Bestandsbefund #80-Test vs. #81-Markup, auf main identisch). Keine Assertion gestrichen; Test-Folgecommit separat.
+- Overflow der drei geänderten Artikel bei 320/390/768/1440 px (Puppeteer, lokaler Server, Drittskripte geblockt): 12 OK / 0 Fehler, 0 JS-Fehler, je eine H1, Autor sichtbar. Ein erster Lauf meldete 12 falsch-positive «Gedankenstrich»-Treffer, weil die temporäre Regex auf das ganze `<main>` zielte und den Template-Hinweis «… Arzt – im Notfall an die 144» sowie Formular-Standortlabels traf; Artikeltexte sind frei von Gedankenstrichen (`check-wissen-neun` prüft den Artikelkörper).
+- Build-Diff gegen frischen main-Build: 9 neu, 0 entfernt, 20 geändert, Liste identisch mit Abschnitt 7.
+- Keine echten Anfragen, Mails, Buchungen oder Test-Conversions.
 
 ## 8. Ausschlüsse und Abweichungen
 
