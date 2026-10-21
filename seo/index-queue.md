@@ -30,6 +30,16 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-migraene/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-neurodermitis/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-schuppenflechte/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-endometriose/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-pcos/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/akupunktur-bei-trockenen-augen/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/akupunktur-bei-krebsbedingter-fatigue/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+- https://tcm.ch/wissen/akupunktur-bei-copd/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
+
 - https://tcm.ch/wissen/akupunktur-oder-physiotherapie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
 - https://tcm.ch/wissen/akupunktur-oder-osteopathie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
 - https://tcm.ch/wissen/akupunktur-oder-schroepfen/ — 21.10.2026 (Entscheidungsfragen-Kohorte)

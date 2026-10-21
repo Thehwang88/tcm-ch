@@ -19,7 +19,7 @@
 //
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
-import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10 } from './befunde-werte';
+import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10 } from './befunde-werte';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -38,6 +38,8 @@ const REDAKTION = {
   bio: 'Redaktionelle Einordnung auf Basis der im Artikel verlinkten Quellen. Keine ärztliche Diagnose und keine individuelle Therapieempfehlung.',
 };
 const DATEN_W3 = { datePublished: PUBLISHED_WELLE_3_2026_10 ?? '', dateModified: PUBLISHED_WELLE_3_2026_10 ?? '' };
+// Neun-Artikel-Paket 21.10.2026 (Artikel 07 bis 09; eigene Kohorten-Konstante, neutrale Redaktion)
+const DATEN_N = { datePublished: PUBLISHED_WISSEN_NEUN_2026_10 ?? '', dateModified: PUBLISHED_WISSEN_NEUN_2026_10 ?? '' };
 // Welle 4 (16.10.2026): gleiche Regel, eigene Kohorten-Konstante (undefined bis Release).
 const DATEN_W4 = { datePublished: PUBLISHED_WELLE_4_2026_10 ?? '', dateModified: PUBLISHED_WELLE_4_2026_10 ?? '' };
 
@@ -262,6 +264,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Nein.</p>
 <p>Eine Hormontherapie hat eine andere Wirkweise und kann bei geeigneten Patientinnen sehr wirksam gegen vasomotorische Beschwerden sein. Ob sie infrage kommt, ist eine individuelle medizinische Entscheidung.</p>
 <p>Akupunktur kann eine Alternative oder Ergänzung sein, wenn eine Frau sie bevorzugt oder eine Hormontherapie nicht gewünscht beziehungsweise nicht geeignet ist. Sie sollte aber nicht als gleichwertiger hormoneller Ersatz dargestellt werden.</p>
+<p>Eine Rezeptur ist eine eigene Behandlungsentscheidung; die passende Forschung ordnet <a href="/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/">chinesische Kräuter bei Wechseljahresbeschwerden</a> ein.</p>
 <h2>Wie wir behandeln</h2>
 <p>Wir erfassen zunächst, welche Beschwerden tatsächlich im Vordergrund stehen: Hitzewallungen, Nachtschweiss, Schlaf, Unruhe oder andere Symptome.</p>
 <p>Die TCM-Behandlung wird anschliessend individuell aufgebaut. Gleichzeitig achten wir darauf, neue oder ungewöhnliche Beschwerden nicht automatisch den Wechseljahren zuzuschreiben.</p>
@@ -710,7 +713,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Bei Endometriose und Kinderwunsch ist die Situation nochmals anders: Hier ist die Evidenz für Akupunktur dünn und die Zeitfrage oft entscheidend. Was wir dazu sagen können, steht auf der Seite <a href="/beschwerden/kinderwunsch/">Kinderwunsch</a>.</p>
 <h2>Wie eine ergänzende Behandlung aussieht</h2>
 <p>Wir planen die Behandlung entlang deines Zyklus. In der Woche vor und während der Menstruation steht die Schmerzlinderung im Vordergrund: Nadeln am Unterbauch, am unteren Rücken und an Punkten an Beinen und Händen, die in den Studien zu Regelschmerzen am häufigsten verwendet wurden. Zwischen den Blutungen arbeiten wir an Verspannungen im Beckenboden und im unteren Rücken, die chronische Unterbauchschmerzen oft verstärken, und an Schlaf und Erschöpfung, die bei Endometriose häufig mitlaufen.</p>
-<p>Viele Patientinnen nutzen ergänzend eine <a href="/therapien/kraeutertherapie/">chinesische Kräuterrezeptur</a>. Auch hier gilt: Die Studienlage ist schwach, Wechselwirkungen mit Hormonpräparaten klären wir vorher, und Kräuter sind keine Alternative zur ärztlichen Therapie.</p>
+<p>Viele Patientinnen nutzen ergänzend eine <a href="/therapien/kraeutertherapie/">chinesische Kräuterrezeptur</a>. Auch hier gilt: Die Studienlage ist schwach, Wechselwirkungen mit Hormonpräparaten klären wir vorher, und Kräuter sind keine Alternative zur ärztlichen Therapie. Wenn zusätzlich eine Rezeptur vorgeschlagen wird, beantwortet <a href="/wissen/chinesische-kraeuter-bei-endometriose/">chinesische Kräuter bei Endometriose</a> die eigene Evidenzfrage dazu; eine kombinierte Behandlung belegt nicht automatisch die Wirkung jedes Bestandteils.</p>
 <h2>Ablauf und was du erwarten kannst</h2>
 <p>Realistisch ist ein Versuch über zwei bis drei Zyklen mit je zwei bis vier Sitzungen. Beurteilt wird nicht ein Gefühl, sondern konkret: Schmerzstärke an den schlimmsten Tagen, Bedarf an Schmerzmitteln, Ausfalltage. Zeigt sich nach drei Zyklen keine Veränderung, sagen wir dir das und raten nicht zu endlosen Serien.</p>
 <h2>Kosten und Krankenkasse</h2>
@@ -1206,6 +1209,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Die Daten stammen von Erwachsenen mit leichter bis mittelschwerer Erkrankung. Für Kinder, schwere Verläufe oder Menschen unter moderner Systemtherapie lassen sie sich nicht übertragen. Es gibt keine belastbare Aussage dazu, ob Akupunktur Schübe verhindert oder Kortisoncremes einspart. In der Berliner Studie zeigte sich dazu nur ein nicht gesicherter Trend.</p>
 <h2>Was die Behandlung trägt</h2>
 <p>Grundlage bleiben rückfettende Pflege, das Meiden persönlicher Auslöser und eine entzündungshemmende Behandlung im Schub nach dermatologischer Verordnung. Bei schweren Verläufen kommen weitere Therapien infrage. Verordnete Cremes oder Medikamente setzt du nicht wegen eines Akupunkturversuchs ab.</p>
+<p>Die Studien zu Nadeln sind kein Beleg für eine Rezeptur; dafür gibt es die gesonderte Einordnung <a href="/wissen/chinesische-kraeuter-bei-neurodermitis/">chinesische Kräuter bei Neurodermitis</a>.</p>
 <h2>So bleibt ein Versuch überprüfbar</h2>
 <p>Lege vorher fest, was sich ändern soll, zum Beispiel Juckreiz auf einer Skala von 0 bis 10, Schlaf oder Kratzattacken. Vereinbare einen Prüfzeitpunkt, etwa nach vier bis sechs Sitzungen. Behandelt wird nicht auf entzündeter, nässender oder offener Haut. Bei Anzeichen einer Hautinfektion, etwa Eiterbläschen, Krusten oder Fieber, gehst du zuerst zur Ärztin.</p>
 <h2>Risiken und Nebenwirkungen</h2>
@@ -1599,6 +1603,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>In der Studie traten blaue Flecken mit echter Akupunktur häufiger auf. Schwere Komplikationen sind selten; sie wurden vor allem bei unsterilen Nadeln oder unsachgemässer Behandlung beschrieben. Mehr dazu unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen von Akupunktur</a>.</p>
 <h2>Vor einer Terminentscheidung</h2>
 <p>Bring Therapieplan, aktuelle Befunde und Medikamentenliste mit. Kläre <a href="/krankenkassen/akupunktur/">Versicherung und Kosten</a> vorab. Der <a href="/akupunktur-in-der-naehe/">Praxisfinder</a> hilft bei einer ergänzenden Anfrage.</p>
+<p>Wenn neben Gelenkschmerzen vor allem Erschöpfung belastet, ist das eine andere Behandlungsfrage; die gesonderte Einordnung steht unter <a href="/wissen/akupunktur-bei-krebsbedingter-fatigue/">Akupunktur bei krebsbedingter Fatigue</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Kann Akupunktur die Wirkung des Aromatasehemmers beeinträchtigen?</h3>
 <p>Dazu machen die Studien keine Aussage. Deshalb gehört jede ergänzende Behandlung ins Gespräch mit dem Onkologie-Team.</p>
@@ -1617,6 +1622,181 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/', label: 'Akupunktur während Chemotherapie', cat: 'Frage' },
       { href: '/beschwerden/arthrose/', label: 'Arthrose', cat: 'Beschwerde' },
       { href: '/beschwerden/lymphoedem/', label: 'Lymphödem', cat: 'Beschwerde' },
+    ],
+  },
+  // Neun-Artikel-Paket 21.10.2026: 07 trockene Augen, 08 krebsbedingte Fatigue, 09 stabile COPD (Texte Teil B, Quellen Teil C)
+  {
+    slug: 'akupunktur-bei-trockenen-augen',
+    title: 'Akupunktur bei trockenen Augen: Studien und Grenzen',
+    metaDesc: 'Akupunktur bei trockenen Augen: Was kontrollierte Studien zeigen, warum Tränenfilmwerte nicht alles sagen und wann augenärztliche Abklärung Vorrang hat.',
+    region: 'Schweizweit',
+    excerpt: 'Du verwendest bereits Augentropfen und fragst dich, ob Akupunktur zusätzlich helfen könnte. Es gibt kontrollierte Studien, ihre Ergebnisse sind jedoch nicht einheitlich. Wichtig ist, ob nicht nur ein Messwert, sondern dein Alltag spürbar besser wird.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei trockenen Augen: Sinnvolle Ergänzung zu Augentropfen?',
+    lead: 'Du verwendest bereits Augentropfen und fragst dich, ob Akupunktur zusätzlich helfen könnte. Es gibt kontrollierte Studien, ihre Ergebnisse sind jedoch nicht einheitlich. Wichtig ist, ob nicht nur ein Messwert, sondern dein Alltag spürbar besser wird.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Eine ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine augenärztliche Diagnose, laufende Behandlung und mögliche Eingriffe. Wir klären, welche Fachperson eine Beratung übernehmen kann. Eine spezielle Augenbehandlung an jedem Standort wird damit nicht zugesagt.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Akupunktur ist kein gesicherter Ersatz für Augentropfen oder eine augenärztliche Behandlung. Einzelne Studien berichten Vorteile, andere zeigen gegenüber Scheinakupunktur keinen klaren Unterschied. Ein Behandlungsversuch kommt deshalb allenfalls als besprochene Ergänzung infrage, mit begrenzter Erwartung und einem klaren Prüfziel.</p>
+<p>Die Ursachen und die medizinische Einordnung bleiben auf der Seite zu <a href="/beschwerden/trockene-augen/">trockenen Augen</a>. Dieser Artikel beantwortet die Methodenentscheidung.</p>
+<h2>Warum die Vergleichsgruppe wichtig ist</h2>
+<p>Eine randomisierte Studie von 2010 untersuchte 42 Personen mit mittelschweren bis schweren trockenen Augen. Nach drei Wochen zeigten sich zwischen echter und Scheinakupunktur keine statistisch klaren Unterschiede bei Beschwerden, Tränenfilmstabilität oder Tränenproduktion. Verbesserungen innerhalb einer Gruppe waren deshalb kein Nachweis einer Überlegenheit der echten Akupunktur.</p>
+<p>Eine andere Studie von 2022 betraf 90 Menschen mit trockenen Augen nach einer Kataraktoperation. Nach acht Wochen war die Tränenfilmstabilität unter echter Akupunktur besser als unter Scheinakupunktur. Ein Vorteil beim Beschwerdefragebogen bestand nach acht, aber nicht mehr nach zwölf Wochen. Die besondere Gruppe nach einer Operation lässt sich nicht auf alle Ursachen trockener Augen übertragen.</p>
+<p>Diese Ergebnisse dürfen nicht zu einer einheitlichen Erfolgsgeschichte zusammengezogen werden. Sie betreffen verschiedene Menschen, Abläufe und Endpunkte.</p>
+<h2>Bessere Messwerte sind nicht automatisch weniger Beschwerden</h2>
+<p>Bei trockenen Augen werden unter anderem Tränenfilm und Beschwerden erfasst. Für deine Entscheidung ist wichtig, was sich im Alltag ändern soll: länger lesen können, weniger störendes Brennen oder weniger Unterbrechungen bei Bildschirmarbeit. Ein statistisch anderer Messwert beantwortet diese Fragen nicht allein.</p>
+<p>Bitte die Fachperson deshalb um ein konkretes Ziel und einen vereinbarten Zeitpunkt zur Bewertung. Wenn sich Beschwerden nicht verändern, sollte nicht allein ein erklärtes «Energieungleichgewicht» als Grund für immer weitere Termine dienen. Die Daten begründen keine garantierte Zahl von Sitzungen bis zur Wirkung.</p>
+<h2>Die augenärztliche Behandlung bleibt die Grundlage</h2>
+<p>Trockene Augen haben unterschiedliche mögliche Auslöser, darunter Kontaktlinsen, Medikamente, Umgebungsbedingungen oder andere Erkrankungen. Bei anhaltenden Beschwerden ist die Ursache zu prüfen. Je nach Situation gehören etwa Tränenersatz und Lidpflege zum Behandlungsplan.</p>
+<p>Setze verordnete Augentropfen nicht selbst ab. Bringe zur Beratung mit, was du bereits benutzt und was die Augenärztin festgestellt hat. Nach einer Augenoperation sollte das operierende Team in die Entscheidung einbezogen werden; die positive postoperative Studie ist keine allgemeine Freigabe für frühe Termine nach jedem Eingriff.</p>
+<p>Die Methode und allgemeine Risiken beschreibt <a href="/therapien/akupunktur/">Akupunktur</a>. Dieser Artikel gibt keine Anleitung zu Nadeln am Auge und bestätigt keine besondere Qualifikation einer konkreten Praxis.</p>
+<h2>Wann du nicht auf einen Termin warten solltest</h2>
+<p>Bei plötzlichem Sehverlust oder schweren akuten Augenbeschwerden sofort eine Augennotfallstelle beziehungsweise Notfallstation aufsuchen. Ein stark schmerzendes oder deutlich gerötetes Auge mit Lichtempfindlichkeit oder neuer Sehänderung braucht dringliche augenärztliche Beurteilung. Behandle das nicht einfach als bekannte Trockenheit.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur meine Augentropfen ersetzen?</h3>
+<p>Die genannten Studien begründen keinen eigenständigen Ersatz. Eine Änderung gehört zur augenärztlichen Betreuung. Kläre vor einem Versuch, welche Behandlung unverändert weiterläuft.</p>
+<h3>Gilt das auch bei Sjögren-Syndrom oder nach jeder Augenoperation?</h3>
+<p>Nein. Die genannten Gruppen sind nicht beliebig austauschbar. Die Ursache und die Behandlungsgeschichte bestimmen mit, ob die vorliegenden Daten überhaupt zu deiner Situation passen.</p>
+<h3>Ist damit Augenakupunktur nach einer bestimmten Methode gemeint?</h3>
+<p>Nein. Unterschiedliche Nadelverfahren und Laserakupunktur dürfen nicht als dieselbe Intervention behandelt werden. Frage, welches Verfahren vorgeschlagen wird und welche passende Evidenz dafür vorliegt.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Über die <a href="/kontakt/">Kontaktseite</a> kannst du eine ergänzende Beratung anfragen. Nenne bitte die Diagnose und die laufende augenärztliche Behandlung, damit vorab geklärt werden kann, ob eine passende Fachperson verfügbar ist.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/21070615/" target="_blank" rel="noopener">Shin et al. Acupuncture for treating dry eye: a randomized placebo-controlled trial. Acta Ophthalmologica, 2010. PMID 21070615. (PubMed-Abstract)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/36347150/" target="_blank" rel="noopener">Kong et al. Randomized, sham-controlled trial of acupuncture for post-cataract surgery dry eye disease. Complementary Therapies in Clinical Practice, 2022. PMID 36347150. (PubMed-Abstract)</a></li>
+<li><a href="https://www.nhs.uk/symptoms/dry-eyes/" target="_blank" rel="noopener">NHS. Dry eyes. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nhs.uk/symptoms/eye-pain/" target="_blank" rel="noopener">NHS. Eye pain. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/trockene-augen/', label: 'Trockene Augen', cat: 'Beschwerde' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Akupunktur: Nebenwirkungen', cat: 'Frage' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-operation/', label: 'Akupunktur nach einer Operation', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-krebsbedingter-fatigue',
+    title: 'Akupunktur bei krebsbedingter Fatigue: Was ist belegt?',
+    metaDesc: 'Akupunktur bei krebsbedingter Fatigue: Was Studien und Leitlinien zeigen, warum Akupressur getrennt zählt und was vor einer ergänzenden Beratung zu klären ist.',
+    region: 'Schweizweit',
+    excerpt: 'Die Erschöpfung bleibt, obwohl du dich ausruhst. Wenn du während oder nach einer Krebsbehandlung nach zusätzlicher Unterstützung suchst, ist eine ehrliche Einordnung wichtig: Für Akupunktur ist die Evidenz nicht so eindeutig, wie manche Angebote vermuten lassen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei krebsbedingter Fatigue: Was ist belegt?',
+    lead: 'Die Erschöpfung bleibt, obwohl du dich ausruhst. Wenn du während oder nach einer Krebsbehandlung nach zusätzlicher Unterstützung suchst, ist eine ehrliche Einordnung wichtig: Für Akupunktur ist die Evidenz nicht so eindeutig, wie manche Angebote vermuten lassen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Beratung in Abstimmung mit deinem Behandlungsteam',
+    ctaText: 'Nenne die Krebsbehandlung und die Empfehlung deines Behandlungsteams. Wir prüfen, ob eine passende Fachperson für eine ergänzende Beratung verfügbar ist. Eine Tumorbehandlung oder besondere onkologische Spezialisierung wird damit nicht angeboten oder zugesagt.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Einzelne Studien berichten weniger krebsbedingte Fatigue unter Akupunktur. Eine verlässliche allgemeine Empfehlung lässt sich daraus bisher nicht ableiten. Die ASCO-SIO-Leitlinie von 2024 spricht wegen unzureichender oder uneinheitlicher Evidenz keine Empfehlung für oder gegen Akupunktur zur Fatigue bei Erwachsenen nach Abschluss der Krebsbehandlung aus; ihre Evidenztabelle nennt dazu zwei Studien mit 399 Teilnehmenden, eine positive und eine negative.</p>
+<p>Das bedeutet nicht, dass niemand eine Verbesserung erleben kann. Es bedeutet, dass ein Angebot diese Unsicherheit offenlassen muss. Eine zusätzliche Behandlung darf die onkologische Abklärung und Betreuung nicht ersetzen.</p>
+<h2>Was mit krebsbedingter Fatigue gemeint ist</h2>
+<p>Krebsbedingte Fatigue kann durch die Erkrankung oder ihre Behandlung entstehen. Sie lässt sich durch Schlaf und Ruhe oft nicht vollständig beheben und kann selbst bei geringer Aktivität stark sein. Andere behandelbare Faktoren können mitwirken, etwa Blutarmut, Schmerzen oder Schlafprobleme.</p>
+<p>Neue oder zunehmende Erschöpfung gehört deshalb zuerst zum Behandlungsteam. Unsere allgemeine Seite zu <a href="/beschwerden/erschoepfung/">Erschöpfung</a> ersetzt diese onkologische Einordnung nicht. Die Ergebnisse dieses Artikels dürfen auch nicht auf ME/CFS oder Long Covid übertragen werden.</p>
+<h2>Warum positive Einzelstudien nicht die ganze Antwort sind</h2>
+<p>Eine britische randomisierte Studie mit 302 Brustkrebspatientinnen verglich sechs Wochen Akupunktur zusätzlich zur üblichen Versorgung mit üblicher Versorgung allein. Nach sechs Wochen berichtete die Akupunkturgruppe weniger allgemeine Fatigue. Es gab aber keinen Vergleich mit Scheinakupunktur.</p>
+<p>Ein solcher alltagsnaher Vergleich ist relevant, trennt den spezifischen Nadeleffekt jedoch nicht von anderen Unterschieden zwischen den Behandlungsgruppen. Er beantwortet auch nicht jede Frage zur Dauer des Nutzens oder zur Übertragbarkeit auf andere Krebsarten und Behandlungsphasen.</p>
+<p>Die Leitlinie von 2024 empfiehlt unter anderem angepasste Bewegung, kognitive Verhaltenstherapie und achtsamkeitsbasierte Programme. Die jeweils passende Auswahl gehört in den Behandlungsplan. Für Akupunktur reichen ihre Daten nicht für eine Empfehlung. Empfehlungen zu Akupressur dürfen nicht auf Nadeln übertragen werden: Es sind unterschiedliche Verfahren.</p>
+<p>Neuere Übersichten aus dem Jahr 2026 fassen mehr Studien zusammen: eine mit 13 Studien und 963 Brustkrebspatientinnen, eine mit 28 Studien zu verschiedenen Krebsarten. Beide berichten im Mittel weniger Fatigue unter Akupunktur, stufen die Verlässlichkeit aber als niedrig bis sehr niedrig ein und nennen Verzerrungsrisiken sowie Hinweise auf Publikationsbias. Eine kleine Pilotstudie von 2026 an zwei Zentren verglich bei 68 Brustkrebspatientinnen echte Akupunktur mit nicht eindringender Scheinakupunktur: Nach sechs Wochen Behandlung hatten beide Gruppen ähnlich weniger Fatigue, ohne statistisch gesicherten Unterschied. In der Nachbeobachtung bis Woche zehn berichtete die Akupunkturgruppe dann stärkere Rückgänge bei Fatigue sowie bei Angst- und Depressionswerten, mit wachsendem Abstand zur Scheingruppe. Bei dieser Grösse bleibt die Übertragbarkeit begrenzt, und ein Erfolg ist damit nicht garantiert. Die Leitlinie von 2024 beurteilte den damals verfügbaren Evidenzstand; diese neueren Übersichten und die Pilotstudie sind darin nicht enthalten, und ob sie die Leitlinienbewertung verändern, ist offen.</p>
+<h2>Die Frage nach dem Nutzen kommt nach der Sicherheitsprüfung</h2>
+<p>Eine mögliche ergänzende Behandlung muss mit dem onkologischen Team abgestimmt werden. Behandlungsphase, Medikamente und aktuelle Befunde gehören vor dem Termin auf den Tisch. Die konkreten Sicherheitsfragen behandelt <a href="/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/">Akupunktur während Chemotherapie</a>.</p>
+<p>Nach Entfernung oder Bestrahlung von Lymphknoten kommt eine eigene regionale Vorsichtsfrage hinzu. Welche Informationen dafür nötig sind, steht unter <a href="/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/">Akupunktur nach Lymphknotenentfernung</a>. Ein allgemeiner Artikel ist keine individuelle Freigabe.</p>
+<p>Wenn eine Beratung infrage kommt, sollte sie Aufwand und mögliches Ziel ehrlich abwägen. Gerade bei Fatigue kann die Anreise selbst belastend sein. Bitte vorab um eine Einschätzung, ob der zusätzliche Termin in deinen bestehenden Plan passt und woran ihr einen möglichen Nutzen festmachen würdet.</p>
+<h2>Keine automatische Kombination mit Kräutern</h2>
+<p>Ein Gespräch über Akupunktur ist keine Freigabe für zusätzliche Präparate. Für chinesische Kräuter ist eine eigene produktbezogene Prüfung nötig. Das gilt besonders bei laufender medikamentöser Krebsbehandlung. Allgemeine Informationen zu pflanzlichen Produkten dürfen nicht als Beleg für ihre Eignung im konkreten onkologischen Plan verwendet werden.</p>
+<h2>Häufige Fragen</h2>
+<h3>Behandelt Akupunktur damit den Krebs?</h3>
+<p>Nein. Die hier diskutierte Frage betrifft das Symptom Fatigue. Eine Veränderung der Erschöpfung ist kein Nachweis einer Wirkung auf den Tumor.</p>
+<h3>Warum wird Akupressur teilweise anders bewertet?</h3>
+<p>Akupressur verwendet Druck statt Nadeln. Die Forschung und die Empfehlungen müssen für jedes Verfahren getrennt gelesen werden. Eine Empfehlung zur Selbstakupressur begründet keine Empfehlung für Akupunktur.</p>
+<h3>Kann ich trotzdem eine Beratung anfragen?</h3>
+<p>Ja, nachdem die zusätzliche Massnahme mit deinem Behandlungsteam besprochen wurde. Vorab muss geklärt werden, ob eine passende Fachperson verfügbar ist und ob der zusätzliche Aufwand für dich vertretbar erscheint.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Beginne beim onkologischen Behandlungsteam. Wenn eine ergänzende Beratung gewünscht ist, kannst du über die <a href="/kontakt/">Kontaktseite</a> nach einer passenden Ansprechperson fragen. Die Anfrage ist keine Zusage einer spezialisierten onkologischen Behandlung.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38754041/" target="_blank" rel="noopener">Bower et al. Management of Fatigue in Adult Survivors of Cancer: ASCO-Society for Integrative Oncology Guideline Update. Journal of Clinical Oncology, 2024. PMID 38754041. DOI 10.1200/JCO.24.00541. (PubMed-Abstract und PMC-Volltext mit Empfehlungstabelle)</a></li>
+<li><a href="https://www.cancer.gov/about-cancer/treatment/side-effects/fatigue" target="_blank" rel="noopener">National Cancer Institute. Cancer Fatigue. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/23109700/" target="_blank" rel="noopener">Molassiotis et al. Acupuncture for cancer-related fatigue in patients with breast cancer: a pragmatic randomized controlled trial. Journal of Clinical Oncology, 2012. PMID 23109700. (PubMed-Abstract)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know" target="_blank" rel="noopener">NCCIH. Traditional Chinese Medicine: What You Need To Know. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42363469/" target="_blank" rel="noopener">Effects of acupuncture on cancer-related fatigue and quality of life in breast cancer survivors: a systematic review and meta-analysis of randomized controlled trials. Medicine, 2026. PMID 42363469. (PubMed-Abstract)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42164120/" target="_blank" rel="noopener">Effectiveness of acupuncture for cancer-related fatigue: a systematic review and meta-analysis. Frontiers in Oncology, 2026. PMID 42164120. (PubMed-Abstract)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/41821024/" target="_blank" rel="noopener">Acupuncture vs. sham acupuncture for cancer-related fatigue in patients with breast cancer: a double-center, randomized, single-blind pilot study. BMC Complementary Medicine and Therapies, 2026. PMID 41821024. (PubMed-Abstract, vollständig gelesen)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-waehrend-chemotherapie/', label: 'Akupunktur während Chemotherapie', cat: 'Frage' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/', label: 'Akupunktur nach Lymphknotenentfernung', cat: 'Frage' },
+      { href: '/beschwerden/erschoepfung/', label: 'Erschöpfung', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/', label: 'Akupunktur bei Gelenkschmerzen durch Aromatasehemmer', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-copd',
+    title: 'Akupunktur bei COPD: Studien zu Atemnot und Grenzen',
+    metaDesc: 'Akupunktur bei stabiler COPD: Was kontrollierte Studien zu Atemnot und Belastbarkeit zeigen und weshalb Inhalation und Lungenrehabilitation wichtig bleiben.',
+    region: 'Schweizweit',
+    excerpt: 'Du möchtest im Alltag wieder besser zurechtkommen und fragst dich, ob Akupunktur zusätzlich helfen kann. Es gibt Studien mit günstigen Ergebnissen. Sie begründen aber weder eine Heilung der COPD noch einen Ersatz für die pneumologische Behandlung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei stabiler COPD: Kann sie Belastungsatemnot lindern?',
+    lead: 'Du möchtest im Alltag wieder besser zurechtkommen und fragst dich, ob Akupunktur zusätzlich helfen kann. Es gibt Studien mit günstigen Ergebnissen. Sie begründen aber weder eine Heilung der COPD noch einen Ersatz für die pneumologische Behandlung.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung bei stabiler COPD anfragen',
+    ctaText: 'Nenne deine COPD-Diagnose, laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuer oder stärkerer Atemnot ist zuerst die medizinische Beurteilung nötig.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Akupunktur kann als zusätzliche Möglichkeit besprochen werden, wenn eine COPD ärztlich diagnostiziert und stabil behandelt ist. Kleinere kontrollierte Studien berichten Vorteile bei einzelnen Messgrössen. Wie dauerhaft und für wen sie im Alltag relevant sind, ist noch nicht ausreichend geklärt.</p>
+<p>Inhalativa, ein vereinbarter Notfallplan und eine empfohlene Lungenrehabilitation werden dadurch nicht ersetzt. Die grundlegende Einordnung gehört zur Seite <a href="/beschwerden/copd/">COPD</a>. Hier geht es um die zusätzliche Methodenentscheidung, nicht um die Behandlung akuter Atemnot.</p>
+<h2>Was eine Studie mit Scheinakupunktur zeigte</h2>
+<p>Eine 2024 veröffentlichte Studie aus zwei chinesischen Zentren teilte 74 Menschen mit COPD echter oder Scheinakupunktur zu. Beide Gruppen erhielten weiter ihre medikamentöse Behandlung. Vorgesehen waren 36 Sitzungen über zwölf Wochen. Beim primären Lungenfunktionsmass zeigte sich ein Unterschied zugunsten der echten Akupunktur.</p>
+<p>Die Studie war klein und hatte keine anschliessende Nachbeobachtung. Ob sich damit der langfristige Verlauf, schwere Verschlechterungen oder andere wichtige Endpunkte verändern, blieb ungeklärt. Sie belegt deshalb nicht, dass COPD dauerhaft aufgehalten oder geschädigtes Lungengewebe wiederhergestellt wird.</p>
+<h2>Belastbarkeit und Lebensqualität sind eigene Ergebnisse</h2>
+<p>Eine weitere randomisierte Studie von 2025 schloss 150 Menschen mit stabiler COPD ein. Verglichen wurden Akupunktur, konventionelle Medikamente und ihre Kombination. Die Kombination schnitt unter anderem bei der Gehstrecke im Sechs-Minuten-Test besser ab als Medikamente allein. Für die SGRQ-Lebensqualitätsskala zeigte der Abstract dagegen keinen Gruppen- oder Interaktionseffekt. Eine japanische Studie über ein Jahr mit 45 Teilnehmenden verglich wöchentliche Akupunktur zusätzlich zur üblichen Versorgung mit üblicher Versorgung allein und berichtete nach 52 Wochen eine deutlich bessere Lebensqualität im SGRQ; Als randomisierter Vergleich liefert sie Evidenz für den untersuchten Zusatznutzen gegenüber üblicher Versorgung allein; ohne Scheinakupunktur trennt sie den spezifischen Nadeleffekt aber nicht sicher von unspezifischen Effekten der Behandlung ab, und bei so kleiner Gruppe bleibt die Aussage vorläufig.</p>
+<p>Damit lässt sich nicht einfach behaupten, alle erfassten Bereiche seien besser geworden. Eine längere Gehstrecke, ein Lungenfunktionswert und weniger Atemnot beim Anziehen sind verschiedene Ergebnisse. Für deine Entscheidung zählt, ob ein möglicher Effekt zu deinem persönlichen Alltagsziel passt.</p>
+<h2>Was im bestehenden Behandlungsplan bleibt</h2>
+<p>Zu den etablierten COPD-Massnahmen gehören Rauchstopp, passende Medikamente und Lungenrehabilitation. Die Erkrankung ist nicht heilbar, lässt sich aber behandeln. Eine Ergänzung soll diesen Plan unterstützen, nicht die medizinische Betreuung umgehen.</p>
+<p>Bringe zur Beratung den aktuellen Medikamentenplan, Befunde und Informationen über bisherige Verschlechterungen mit. Sage, ob du Sauerstoff verwendest und wie belastbar du bei der Anreise bist. Die <a href="/gesundheitsbibliothek/untersuchungen/lungenfunktion/">Spirometrie</a> ist eine medizinische Untersuchung der Lungenfunktion; eine subjektiv leichtere Atmung ersetzt ihren Befund nicht.</p>
+<p>Frage nach dem konkreten Vorgehen und dem vorgesehenen Prüfzeitpunkt. Die intensive Behandlung einer Studie ist kein automatisch notwendiges Terminpaket für dich. Auch die Tatsache, dass eine Methode in einer Studie zusätzlich eingesetzt wurde, rechtfertigt keine eigenständige Reduktion deiner Inhalativa.</p>
+<h2>Was vor einer Nadelbehandlung zu klären ist</h2>
+<p>Aktuelle Infekte, Hautprobleme, Medikamente und andere Erkrankungen gehören in die Anamnese. Allgemeine Risiken erklärt die Seite zu <a href="/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/">Nebenwirkungen der Akupunktur</a>. Eine «nebenwirkungsfreie» Behandlung wird hier nicht versprochen.</p>
+<p>Mehr Atemnot als üblich braucht noch am selben Tag medizinischen Rat. Bei schwerer Atemnot, blauen oder grauen Lippen, Brustenge oder plötzlicher Verwirrtheit sofort 144 wählen. Warte bei solchen einzelnen Warnzeichen nicht auf einen Akupunkturtermin.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur COPD heilen?</h3>
+<p>Nein. Die genannten Studien belegen keine Heilung und keine Wiederherstellung geschädigter Lungenbereiche. Sie untersuchen mögliche zusätzliche Effekte auf bestimmte Messgrössen und Beschwerden.</p>
+<h3>Kann ich danach weniger inhalieren?</h3>
+<p>Eine Änderung der verordneten Medikamente gehört ausschliesslich zur pneumologischen Betreuung. Ein positiver Verlauf während einer ergänzenden Behandlung ist kein Grund für eine selbstständige Reduktion.</p>
+<h3>Ist das bei einem akuten Schub sinnvoll?</h3>
+<p>Dieser Artikel betrifft stabile COPD. Neue oder verstärkte Atemnot muss medizinisch beurteilt werden. Ein akuter Schub ist keine Situation für eine selbst gewählte ergänzende Behandlung.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Wenn deine COPD stabil behandelt ist und du eine Ergänzung besprechen möchtest, kannst du über die <a href="/kontakt/">Kontaktseite</a> eine Beratung anfragen. Nenne deine Diagnose und das konkrete Ziel, damit vorab die Eignung einer Beratung geprüft werden kann.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://link.springer.com/article/10.1186/s12906-024-04630-y" target="_blank" rel="noopener">Xu et al. Effectiveness and safety of acupuncture as an adjunctive therapy for chronic obstructive pulmonary disease: a randomised controlled trial. BMC Complementary Medicine and Therapies, 2024. PMID 39227880. DOI 10.1186/s12906-024-04630-y. (Volltext PMC; Abstract und Limitationen geprüft)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39956529/" target="_blank" rel="noopener">Li et al. Effect of acupuncture on patients with chronic obstructive pulmonary disease: A multicenter randomized controlled trial. Complementary Therapies in Medicine, 2025. PMID 39956529. (PubMed-Abstract)</a></li>
+<li><a href="https://www.nhs.uk/conditions/chronic-obstructive-pulmonary-disease-copd/" target="_blank" rel="noopener">NHS. Chronic obstructive pulmonary disease (COPD). Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nhs.uk/symptoms/shortness-of-breath/" target="_blank" rel="noopener">NHS. Shortness of breath. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know" target="_blank" rel="noopener">NCCIH. Traditional Chinese Medicine: What You Need To Know. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://doi.org/10.1183/23120541.00668-2024" target="_blank" rel="noopener">Suzuki et al. Effectiveness of a long-term acupuncture treatment in patients with chronic obstructive pulmonary disease: a randomised controlled trial. ERJ Open Research, 2025. DOI 10.1183/23120541.00668-2024. (Abstract über Crossref; Verlagsseite beim Abruf gesperrt)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/copd/', label: 'COPD', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion (Spirometrie)', cat: 'Untersuchung' },
+      { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Akupunktur: Nebenwirkungen', cat: 'Frage' },
     ],
   },
 ];

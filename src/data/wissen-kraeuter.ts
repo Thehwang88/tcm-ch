@@ -4,7 +4,7 @@
 // Quellen im bodyHtml, faqs: [] => kein FAQPage-Schema). KEIN Teil der Akupunktur-bei-Serie.
 // Datum bis Release ungesetzt (PUBLISHED_KRAEUTER_2026_10 in befunde-werte.ts).
 import type { Wissen } from './wissen';
-import { PUBLISHED_KRAEUTER_2026_10 } from './befunde-werte';
+import { PUBLISHED_KRAEUTER_2026_10, PUBLISHED_WISSEN_NEUN_2026_10 } from './befunde-werte';
 
 const REDAKTION = {
   name: 'Redaktion TCM.ch',
@@ -12,6 +12,8 @@ const REDAKTION = {
   bio: 'Redaktionelle Einordnung auf Basis der im Artikel verlinkten Quellen. Keine ärztliche Diagnose und keine individuelle Therapieempfehlung.',
 };
 const DATEN_K = { datePublished: PUBLISHED_KRAEUTER_2026_10 ?? '', dateModified: PUBLISHED_KRAEUTER_2026_10 ?? '' };
+// Neun-Artikel-Paket 21.10.2026 (Artikel 01 bis 06, Kräuter-Entscheidungen; eigene Kohorten-Konstante)
+const DATEN_N = { datePublished: PUBLISHED_WISSEN_NEUN_2026_10 ?? '', dateModified: PUBLISHED_WISSEN_NEUN_2026_10 ?? '' };
 
 export const wissenKraeuter: Wissen[] = [
   {
@@ -479,6 +481,336 @@ export const wissenKraeuter: Wissen[] = [
       { href: '/wissen/chinesische-kraeuter-qualitaet-schweiz/', label: 'Qualität chinesischer Kräuter in der Schweiz', cat: 'Artikel' },
       { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'Nebenwirkungen und Wechselwirkungen', cat: 'Frage' },
       { href: '/krankenkassen/', label: 'Kosten und Krankenkasse', cat: 'Übersicht' },
+    ],
+  },
+  // Neun-Artikel-Paket 21.10.2026: Kräuter-Entscheidungen 01 bis 06 (Texte Teil B, Quellen Teil C; Kohorte PUBLISHED_WISSEN_NEUN_2026_10)
+  {
+    slug: 'chinesische-kraeuter-bei-migraene',
+    title: 'Chinesische Kräuter bei Migräne: Nutzen und Grenzen',
+    metaDesc: 'Chinesische Kräuter zur Migränevorbeugung: Was Studien zeigen, warum die Rezeptur zählt und was du vor einer ergänzenden Behandlung klären solltest.',
+    region: 'Schweizweit',
+    excerpt: 'Du suchst eine zusätzliche Möglichkeit, Migräneattacken vorzubeugen. Zu einzelnen chinesischen Kräuterpräparaten gibt es positive Studien. Ob sie zu deiner Behandlung passen, entscheidet sich aber an mehr als einem Studienergebnis.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei Migräne: Was ist zur Vorbeugung belegt?',
+    lead: 'Du suchst eine zusätzliche Möglichkeit, Migräneattacken vorzubeugen. Zu einzelnen chinesischen Kräuterpräparaten gibt es positive Studien. Ob sie zu deiner Behandlung passen, entscheidet sich aber an mehr als einem Studienergebnis.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Kräuterberatung bei Migräne anfragen',
+    ctaText: 'Nenne deine bisherige Migränebehandlung und was du zusätzlich klären möchtest. Wir helfen dir, eine passende Fachperson für die Beratung zu finden. Ob eine Rezeptur infrage kommt, wird im Gespräch geprüft.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Chinesische Kräuter sind keine einheitliche Migränebehandlung. Studien untersuchen konkrete Zusammensetzungen, nicht jede individuell angepasste Rezeptur. Es gibt Hinweise auf weniger Attacken unter einzelnen Präparaten. Ein gesicherter Ersatz für deine Akutmedikamente oder eine ärztlich vereinbarte Vorbeugung lässt sich daraus nicht ableiten.</p>
+<p>Dieser Artikel hilft bei der Entscheidung über Kräuter. Die Einordnung deiner Beschwerden bleibt auf der Seite zu <a href="/beschwerden/migraene/">Migräne</a>. Die andere Methode behandeln wir getrennt unter <a href="/wissen/migraene-tcm-warum-akupunktur-nicht-fuer-jeden/">Akupunktur bei Migräne</a>.</p>
+<h2>Was die Forschung untersucht hat</h2>
+<p>Eine systematische Übersicht von 2022 schloss 18 randomisierte Studien mit 3'015 Erwachsenen ein. Verglichen wurden oral eingenommene chinesische Kräuterpräparate mit Placebo. Die Suche reichte bis Mai 2021. Für Attackenhäufigkeit und Schmerzstärke berichtete die Übersicht Vorteile, die Vertrauenswürdigkeit wichtiger Ergebnisse wurde als moderat eingestuft.</p>
+<p>Die Auswertung zeigt zugleich Grenzen: Rezepturen und Ergebnisse unterschieden sich deutlich, die Nachbeobachtung war auf vier Wochen begrenzt. Für Migränetage und weniger Bedarf an Akutmedikamenten waren die Aussagen weniger gesichert. Ein positiver Mittelwert beantwortet deshalb weder die Frage nach langfristigem Nutzen noch die nach deiner konkreten Mischung.</p>
+<h2>Attackenvorbeugung ist etwas anderes als Akutbehandlung</h2>
+<p>Wenn du mitten in einer Attacke steckst, brauchst du deinen vereinbarten Akutplan. Die hier besprochene Forschung ist keine Anleitung, ein Kräuterprodukt statt eines verordneten Akutmittels einzunehmen. Die ärztliche Migränebehandlung unterscheidet ebenfalls zwischen Hilfe während einer Attacke und Vorbeugung.</p>
+<p>Für ein Beratungsgespräch ist deshalb eine konkrete Frage hilfreich: Geht es um weniger Attacken, besser erträgliche Attacken oder darum, eine bisherige Vorbeugung wegen Nebenwirkungen zu besprechen? Diese Ziele verlangen unterschiedliche Entscheidungen. Eine gewünschte Medikamentenumstellung gehört zur behandelnden Ärztin oder zum behandelnden Arzt.</p>
+<h2>Mit welchen Angaben die Beratung sinnvoll beginnt</h2>
+<p>Bringe dein Kopfschmerztagebuch, vorhandene Befunde und eine vollständige Medikamentenliste mit. Notiere auch bereits ausprobierte Vorbeugungen und warum du sie beendet hast. So muss das Gespräch nicht bei null anfangen.</p>
+<p>Frage bei einer vorgeschlagenen Rezeptur nach Zusammensetzung, Bezugsquelle, Einnahmeplan und dem vereinbarten Prüfzeitpunkt. Ein nachvollziehbarer Plan soll erklären, woran ihr einen Nutzen erkennt und wann ihr nicht weiterbehandelt. Ein festes Paket über viele Monate lässt sich aus der genannten Übersicht nicht begründen.</p>
+<p>Zur <a href="/therapien/kraeutertherapie/">chinesischen Kräutertherapie</a> gehört eine eigene Produktentscheidung. Informiere Apotheke und behandelnde Fachpersonen über geplante Kräuter, insbesondere wenn du bereits Medikamente einnimmst. Eine natürliche Herkunft schliesst Wechselwirkungen nicht aus.</p>
+<h2>Wann die Abklärung vorgeht</h2>
+<p>Neue oder deutlich veränderte Kopfschmerzen gehören ärztlich beurteilt. Bei schlagartig einsetzendem extremem Kopfschmerz oder neu auftretender Lähmung, Sprachstörung oder Sehverlust sofort 144 wählen. Ein solches einzelnes Warnzeichen darf nicht als bekannte Migräne abgetan werden.</p>
+<h2>Häufige Fragen</h2>
+<h3>Sind Kräuter besser als Akupunktur gegen Migräne?</h3>
+<p>Die genannte Übersicht beantwortet diesen Vergleich nicht. Sie prüft Kräuter gegen Placebo. Für die Entscheidung müssen beide Methoden mit ihrer jeweils eigenen Evidenz und deinen Zielen betrachtet werden.</p>
+<h3>Kann ich damit meine bisherigen Medikamente absetzen?</h3>
+<p>Ändere deine verordnete Behandlung nicht aufgrund eines Artikels. Besprich ausdrücklich, ob es um eine Ergänzung oder einen ärztlich begleiteten Wechsel geht.</p>
+<h3>Welche Rezeptur soll ich kaufen?</h3>
+<p>Diese Seite empfiehlt kein Produkt. Die Zusammensetzung muss zur individuellen Prüfung gehören. Hinweise zu Bezugswegen findest du unter <a href="/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/">Kräuter online kaufen oder verordnen lassen</a>.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Du möchtest eine zusätzliche Option besprechen, ohne deine bisherige Behandlung aus dem Blick zu verlieren? Über die <a href="/kontakt/">Kontaktseite</a> kannst du eine Kräuterberatung anfragen. Was bei einer möglichen Beteiligung zu prüfen ist, erklärt <a href="/krankenkassen/">Krankenkasse und TCM</a>.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9296769/" target="_blank" rel="noopener">Lyu et al. Efficacy and Safety of Oral Chinese Herbal Medicine for Migraine: A Systematic Review and Meta-Analyses Using Robust Variance Estimation Model. Frontiers in Neurology, 2022. PMID 35873759. (Volltext PMC; Abstract, Limitationen und Schlussfolgerung geprüft)</a></li>
+<li><a href="https://www.nhs.uk/conditions/migraine/" target="_blank" rel="noopener">NHS. Migraine. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nhs.uk/tests-and-treatments/herbal-medicines-and-complementary-therapies/" target="_blank" rel="noopener">NHS. Herbal medicines and complementary therapies. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/migraene/', label: 'Migräne', cat: 'Beschwerde' },
+      { href: '/wissen/migraene-tcm-warum-akupunktur-nicht-fuer-jeden/', label: 'Akupunktur bei Migräne', cat: 'Wissen' },
+      { href: '/therapien/kraeutertherapie/', label: 'Chinesische Kräutertherapie', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'TCM-Kräuter: Nebenwirkungen', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'chinesische-kraeuter-bei-wechseljahresbeschwerden',
+    title: 'Chinesische Kräuter bei Wechseljahren: Was ist belegt?',
+    metaDesc: 'Chinesische Kräuter bei Wechseljahresbeschwerden: Studien zu Hitzewallungen, Grenzen des Hormonvergleichs und Fragen vor einer persönlichen Beratung.',
+    region: 'Schweizweit',
+    excerpt: 'Du möchtest Hitzewallungen oder andere Wechseljahresbeschwerden lindern und suchst nach einer Behandlung, die zu dir passt. Chinesische Kräuter werden dafür angeboten. Ihr Nutzen ist jedoch je nach Präparat und Ziel unterschiedlich gut untersucht.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei Wechseljahresbeschwerden: Eine Alternative zu Hormonen?',
+    lead: 'Du möchtest Hitzewallungen oder andere Wechseljahresbeschwerden lindern und suchst nach einer Behandlung, die zu dir passt. Chinesische Kräuter werden dafür angeboten. Ihr Nutzen ist jedoch je nach Präparat und Ziel unterschiedlich gut untersucht.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Deine Fragen zur Kräutertherapie besprechen',
+    ctaText: 'Schildere, welche Beschwerden dich belasten und welche Behandlungen du bereits nutzt. Wir klären mit dir, welche Fachperson für eine ergänzende Beratung infrage kommt.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Chinesische Kräuter sind kein nachgewiesen gleichwertiger Ersatz für eine menopausale Hormontherapie. Die Forschung liefert für einzelne Beschwerden und Präparate Hinweise, aber keine allgemeine Zusage. «Ohne Hormone» bedeutet auch nicht automatisch «ohne Risiken».</p>
+<p>Die medizinische Einordnung bleibt auf unserer Seite zu <a href="/beschwerden/wechseljahre/">Wechseljahren</a>. Hier geht es darum, was du vor einer Entscheidung über Kräuter wissen solltest.</p>
+<h2>Was ältere und neuere Übersichten zeigen</h2>
+<p>Eine Cochrane-Übersicht von 2016 wertete 22 randomisierte Studien mit 2'902 Frauen aus. Für Hitzewallungen und ähnliche Beschwerden reichten die Daten nicht für eine klare Aussage gegenüber Placebo oder Hormontherapie. Auch die Sicherheit blieb unzureichend geklärt. Die zugrunde liegende Suche endete im März 2015.</p>
+<p>Eine neuere Übersicht von 2026 berücksichtigt Forschung bis Ende 2024 zu verschiedenen komplementären Verfahren. Sie beschreibt für chinesische Kräuter bei bestimmten Beschwerdeskalen und Schlafmassen auch Hinweise mit moderater Evidenzsicherheit, bewertet die Gesamtlage aber weiter als begrenzt. Das ist keine pauschale Bestätigung jeder Rezeptur und kein Nachweis einer Gleichwertigkeit mit Hormonen.</p>
+<p>Die praktische Konsequenz: Frage nicht nur, ob «TCM bei Wechseljahren hilft». Frage, welches Präparat für welches konkrete Ziel vorgeschlagen wird und wie belastbar die passende Untersuchung ist.</p>
+<h2>Deine Entscheidung muss nicht auf Hormone oder Kräuter reduziert werden</h2>
+<p>Wenn eine Hormontherapie für dich nicht infrage kommt oder du sie nicht möchtest, lohnt ein ärztliches Gespräch über weitere Möglichkeiten. Der NHS beschreibt auch nicht hormonelle Behandlungswege. Eine Abneigung gegen eine Option verpflichtet dich nicht zur nächsten beworbenen Alternative.</p>
+<p>Geht es vor allem um <a href="/beschwerden/hitzewallungen/">Hitzewallungen</a>, um Schlaf oder um mehrere Beschwerden gleichzeitig? Ein Gesamtwert in einer Studie sagt nicht, dass jeder einzelne dieser Bereiche besser wird. Besprich deshalb das für dich wichtigste Ziel zuerst.</p>
+<h2>Was vor einer Rezeptur geprüft werden sollte</h2>
+<p>Bringe eine Liste laufender Behandlungen und bereits gekaufter Präparate mit. Wenn du Hormone einnimmst, sollen beide behandelnden Seiten davon wissen. Auch pflanzliche Mittel können mit Medikamenten wechselwirken; «zusätzlich» ist keine automatische Freigabe.</p>
+<p>Lass dir Zusammensetzung, Einnahmeplan und Kosten verständlich erklären. Vereinbart, wie ihr den Verlauf festhaltet. Du könntest beispielsweise die Zahl störender Hitzewallungen und ihre Auswirkung auf deinen Alltag notieren. Das ist ein Gesprächswerkzeug, keine Garantie, dass sich die Werte durch Kräuter verändern.</p>
+<p>Die <a href="/wissen/tcm-granulat-dekokt-tabletten/">Darreichungsformen Granulat, Dekokt und Tabletten</a> unterscheiden sich im Alltag. Welche Form bequemer ist, beweist aber keine stärkere Wirkung. Für die andere Methode gibt es einen eigenen Artikel zu <a href="/wissen/akupunktur-bei-wechseljahresbeschwerden/">Akupunktur bei Wechseljahresbeschwerden</a>.</p>
+<h2>Häufige Fragen</h2>
+<h3>Sind chinesische Kräuter pflanzliche Hormone?</h3>
+<p>Die Bezeichnung ist irreführend. Eine Kräutermischung ist keine standardisierte Hormontherapie. Entscheidend sind ihre konkreten Bestandteile und die dazu passende Untersuchung.</p>
+<h3>Kann ich Kräuter zusätzlich zu meiner Hormontherapie nehmen?</h3>
+<p>Das lässt sich nicht für alle Kombinationen beantworten. Lass das konkrete Präparat vor Beginn mit deiner behandelnden Fachperson oder Apotheke prüfen. Dieser Artikel bestätigt keine Kombination als sicher.</p>
+<h3>Wie lange sollte ich es ausprobieren?</h3>
+<p>Eine allgemeine Frist für jede Mischung ist nicht belegt. Bitte vor Beginn um einen vereinbarten Prüfzeitpunkt und Kriterien für Fortführung, Änderung oder Beendigung.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Wenn du eine <a href="/therapien/kraeutertherapie/">Kräuterberatung</a> erwägst, kannst du über die <a href="/kontakt/">Kontaktseite</a> deine Fragen und die bisherige Behandlung nennen. Die Beratung soll eine nachvollziehbare Entscheidung ermöglichen. Sie verpflichtet dich nicht, eine Rezeptur zu beginnen.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD009023_title-chinese-herbal-medicines-menopausal-symptoms" target="_blank" rel="noopener">Zhu, Liew und Liu. Chinese herbal medicine for menopausal symptoms. Cochrane Database of Systematic Reviews, 2016. CD009023. (Cochrane-Zusammenfassung und Abstract)</a></li>
+<li><a href="https://doi.org/10.1080/13697137.2025.2584061" target="_blank" rel="noopener">Maunder et al. Complementary therapies for management of menopausal symptoms: a systematic review to inform the update of the International Menopause Society recommendations on women's midlife health. Climacteric, 2026. PMID 41498229. DOI 10.1080/13697137.2025.2584061. (Abstract im Publikationsverzeichnis der University of Bristol)</a></li>
+<li><a href="https://www.nhs.uk/conditions/menopause-and-perimenopause/treatment/" target="_blank" rel="noopener">NHS. Treatment for menopause and perimenopause. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/wechseljahre/', label: 'Wechseljahre', cat: 'Beschwerde' },
+      { href: '/beschwerden/hitzewallungen/', label: 'Hitzewallungen', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-wechseljahresbeschwerden/', label: 'Akupunktur bei Wechseljahresbeschwerden', cat: 'Wissen' },
+      { href: '/therapien/kraeutertherapie/', label: 'Chinesische Kräutertherapie', cat: 'Therapie' },
+    ],
+  },
+  {
+    slug: 'chinesische-kraeuter-bei-neurodermitis',
+    title: 'Chinesische Kräuter bei Neurodermitis: Nutzen und Risiken',
+    metaDesc: 'Chinesische Kräuter bei Neurodermitis: Was aktuelle Studien zeigen, warum Einnahme und Hautanwendung getrennt zählen und was vor einer Beratung wichtig ist.',
+    region: 'Schweizweit',
+    excerpt: 'Wenn Juckreiz und Schübe trotz Behandlung belasten, ist der Wunsch nach einer weiteren Möglichkeit verständlich. Chinesische Kräuter werden zum Einnehmen und für die Haut angeboten. Für beide Wege muss die Evidenz getrennt betrachtet werden.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei Neurodermitis: Nutzen, Risiken und Grenzen',
+    lead: 'Wenn Juckreiz und Schübe trotz Behandlung belasten, ist der Wunsch nach einer weiteren Möglichkeit verständlich. Chinesische Kräuter werden zum Einnehmen und für die Haut angeboten. Für beide Wege muss die Evidenz getrennt betrachtet werden.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Kräuterberatung bei Neurodermitis anfragen',
+    ctaText: 'Beschreibe deine bisherige Hautbehandlung und was du zusätzlich klären möchtest. Wir prüfen, welche Fachperson eine Beratung übernehmen kann. Eine Rezeptur ist kein automatischer nächster Schritt.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Ein gesicherter allgemeiner Nutzen chinesischer Kräuter bei Neurodermitis lässt sich aus der Forschung nicht ableiten. Einzelne Ergebnisse sind positiv, andere zeigen keinen klaren Vorteil. Besonders wichtig: Ein Ergebnis für eine Creme beweist nicht die Wirkung einer Mischung zum Einnehmen.</p>
+<p>Was die Erkrankung ausmacht und wann sie abgeklärt gehört, erklärt <a href="/beschwerden/neurodermitis/">Neurodermitis</a>. Dieser Artikel konzentriert sich auf die Entscheidung über Kräuter.</p>
+<h2>Was sich seit der älteren Cochrane-Übersicht getan hat</h2>
+<p>Cochrane schloss 2013 insgesamt 28 Studien mit 2'306 Kindern und Erwachsenen ein. Die meisten hatten ein hohes Verzerrungsrisiko, die Ergebnisse unterschieden sich stark. Die Autor:innen fanden keinen abschliessenden Wirksamkeitsnachweis für die orale oder äusserliche Anwendung. Auch unerwünschte Ereignisse wurden berichtet.</p>
+<p>Eine Übersicht von 2025 beschränkte sich auf registrierte randomisierte Studien und schloss sieben Untersuchungen mit 862 Teilnehmenden ein. Bei äusserlicher Anwendung zeigte sich gegenüber Placebo ein Vorteil auf einer ärztlich bewerteten Hautskala, mit niedriger Evidenzsicherheit. Beim Juckreiz und bei der gesundheitsbezogenen Lebensqualität war dagegen kein statistisch klarer Unterschied nachgewiesen. In den Kräutergruppen wurden mehr unerwünschte Ereignisse berichtet. Die Autor:innen sahen nur begrenzte Grundlage für eine Änderung der Versorgung.</p>
+<p>Das ist keine Aussage, dass jede Anwendung nutzlos wäre. Es reicht aber nicht für das Versprechen, Kräuter würden zuverlässig den Juckreiz stoppen oder die Haut «von innen heilen».</p>
+<h2>Entscheidend ist, was du tatsächlich verbessern möchtest</h2>
+<p>Ein besserer Hautscore und eine ruhigere Nacht sind nicht dasselbe. Im Gespräch sollte klar werden, ob dich vor allem Juckreiz, Schlafunterbrechungen oder sichtbare Hautveränderungen belasten. Bitte um eine Erklärung, welche Daten überhaupt zu diesem Ziel und zum vorgeschlagenen Produkt passen.</p>
+<p>Für einen möglichen Verlauf kannst du notieren, wie häufig der Juckreiz deinen Schlaf unterbricht und welche Hautbehandlungen du verwendest. Ein solches Protokoll hilft bei der gemeinsamen Bewertung, ohne eine Wirkung vorauszusetzen. Wenn gleichzeitig die dermatologische Behandlung geändert wird, lässt sich eine Verbesserung nicht einfach den Kräutern zuschreiben.</p>
+<h2>Bestehende Hautbehandlung erhalten</h2>
+<p>Die Behandlung der Neurodermitis richtet sich nach Schwere und Verlauf. Hautpflege und verordnete Therapien gehören weiter in den dermatologischen Plan. Ein ergänzendes Produkt ist kein Anlass, sie eigenständig zu ersetzen.</p>
+<p>Bei einer Kräuterberatung sollten Produktname, Bestandteile und Bezugsquelle nachvollziehbar sein. Allgemeine Informationen zu <a href="/wissen/chinesische-kraeuter-qualitaet-schweiz/">Qualität chinesischer Arzneimittel in der Schweiz</a> ersetzen die Prüfung des konkreten Präparats nicht. Risiken und Wechselwirkungen behandelt die Seite zu <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">Nebenwirkungen chinesischer Kräuter</a>.</p>
+<p>Wird die Haut plötzlich deutlich schlechter, schmerzhaft oder heiss, entstehen Bläschen oder Eiterstellen oder kommt Fieber hinzu, braucht es noch am selben Tag eine ärztliche Beurteilung. Warte dann nicht auf eine Kräuterwirkung.</p>
+<h2>Häufige Fragen</h2>
+<h3>Sind Kräutercremes und Kräuter zum Einnehmen austauschbar?</h3>
+<p>Nein. Anwendung und Zusammensetzung unterscheiden sich. Ergebnisse für eine äusserliche Zubereitung dürfen nicht als Beleg für eine orale Rezeptur verwendet werden.</p>
+<h3>Kann ich damit Kortison oder andere Hautmedikamente ersetzen?</h3>
+<p>Dieser Artikel begründet keinen Ersatz. Eine gewünschte Änderung gehört zur behandelnden dermatologischen Fachperson. Besprich Nebenwirkungen oder Sorgen offen, statt die Therapie selbst zu beenden.</p>
+<h3>Ist Akupunktur die besser belegte Alternative?</h3>
+<p>Eine allgemeine Rangliste lässt sich aus diesen Kräuterstudien nicht ableiten. Die separate Frage behandelt <a href="/wissen/akupunktur-bei-neurodermitis/">Akupunktur bei Neurodermitis</a>.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Für eine ergänzende <a href="/therapien/kraeutertherapie/">Kräuterberatung</a> kannst du über die <a href="/kontakt/">Kontaktseite</a> deine Diagnose und laufende Behandlung nennen. Das Ziel ist zuerst eine begründete Entscheidung darüber, ob überhaupt ein zusätzlicher Versuch sinnvoll ist.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD008642_chinese-herbal-medicine-taken-mouth-or-applied-skin-atopic-eczema-children-and-adults" target="_blank" rel="noopener">Gu et al. Chinese herbal medicine for atopic eczema. Cochrane Database of Systematic Reviews, 2013. CD008642. (Cochrane-Zusammenfassung und Abstract)</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/dth/9920370" target="_blank" rel="noopener">Coyle et al. Chinese Herbal Medicine for Atopic Dermatitis: A Systematic Review of Registered Randomised Controlled Trials. Dermatologic Therapy, 2025. Article 9920370. DOI 10.1155/dth/9920370. (Abstract über Crossref; Verlagsseite beim Abruf gesperrt)</a></li>
+<li><a href="https://www.nhs.uk/conditions/atopic-eczema/" target="_blank" rel="noopener">NHS. Atopic eczema. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know" target="_blank" rel="noopener">NCCIH. Traditional Chinese Medicine: What You Need To Know. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-neurodermitis/', label: 'Akupunktur bei Neurodermitis', cat: 'Wissen' },
+      { href: '/therapien/kraeutertherapie/', label: 'Chinesische Kräutertherapie', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/', label: 'TCM-Kräuter: Nebenwirkungen', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'chinesische-kraeuter-bei-schuppenflechte',
+    title: 'Chinesische Kräuter bei Schuppenflechte: Was ist belegt?',
+    metaDesc: 'Chinesische Kräuter bei Schuppenflechte: Studien zu oralen Rezepturen, Grenzen der Ergebnisse und wichtige Fragen zur ergänzenden dermatologischen Behandlung.',
+    region: 'Schweizweit',
+    excerpt: 'Du möchtest zusätzlich zu deiner Hautbehandlung etwas gegen Schuppenflechte tun. Zu chinesischen Kräutern gibt es Studien mit positiven Ergebnissen. Sie belegen aber weder eine Heilung noch, dass jede Rezeptur zu jeder Psoriasis passt.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei Schuppenflechte: Was bringt die ergänzende Behandlung?',
+    lead: 'Du möchtest zusätzlich zu deiner Hautbehandlung etwas gegen Schuppenflechte tun. Zu chinesischen Kräutern gibt es Studien mit positiven Ergebnissen. Sie belegen aber weder eine Heilung noch, dass jede Rezeptur zu jeder Psoriasis passt.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Kräuterberatung bei Schuppenflechte anfragen',
+    ctaText: 'Nenne deine Hautdiagnose und die laufenden Therapien. Wir klären, welche Fachperson eine ergänzende Beratung übernehmen kann. Die dermatologische Behandlung bleibt dabei Teil der Entscheidung.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Für einzelne chinesische Kräuterpräparate gibt es Hinweise auf bessere Hautwerte bei Psoriasis vulgaris. Die untersuchten Mischungen und die Qualität der Studien unterscheiden sich jedoch stark. Daraus entsteht keine allgemeine Empfehlung und kein Grund, eine wirksame dermatologische Behandlung selbst abzusetzen.</p>
+<p>Für das Beschwerdebild und die medizinische Abklärung bleibt die Seite zu <a href="/beschwerden/schuppenflechte/">Schuppenflechte</a> zuständig. Hier geht es um die zusätzliche Entscheidung für oder gegen eine orale Kräuterrezeptur.</p>
+<h2>Was der Placebovergleich zeigt</h2>
+<p>Eine 2017 veröffentlichte systematische Übersicht schloss sieben randomisierte Studien zu oralen chinesischen Kräutern gegenüber Placebo ein. Keine Studie verwendete dieselbe Mischung wie eine andere. Bei einem zusammengefassten Mass für deutliche Hautbesserung war der Vorteil statistisch nicht klar gesichert. Andere Auswertungen zu Hautscores zeigten Vorteile, waren aber ausgesprochen uneinheitlich.</p>
+<p>Die Autor:innen sahen möglichen Nutzen, begrenzten ihre Schlussfolgerungen jedoch wegen unterschiedlicher Präparate, Messgrössen und Studienqualität. Das rechtfertigt keine pauschale Aussage wie «chinesische Kräuter wirken gegen Psoriasis». Ein Ergebnis für einen bestimmten Hautscore ist zudem kein Nachweis für dauerhafte Beschwerdefreiheit oder weniger Rückfälle.</p>
+<h2>Ergänzung und Ersatz sind unterschiedliche Entscheidungen</h2>
+<p>Welche Behandlung bei Psoriasis infrage kommt, hängt unter anderem von Art, Schwere und betroffenen Stellen ab. Die dermatologischen Möglichkeiten reichen von Hautpräparaten über Lichtbehandlung bis zu systemischen Therapien.</p>
+<p>Wenn du Kräuter erwägst, sollte klar sein, was zusätzlich erreicht werden soll. Eine Rezeptur als Ergänzung zu einer laufenden Therapie ist eine andere Fragestellung als ein Ersatz. Auch Forschung zu einer Kombination beweist nicht, dass die Kräuter allein denselben Nutzen hätten.</p>
+<p>Notiere vor der Beratung, welche Hautstellen besonders belasten und ob Juckreiz, Schmerzen oder der Alltag im Vordergrund stehen. Bitte die Fachperson, den vorgeschlagenen Versuch mit einem konkreten Prüfziel zu verbinden. Ein Fotoverlauf kann im Gespräch hilfreich sein; er ersetzt keine medizinische Bewertung.</p>
+<h2>Die vollständige Medikamentenliste gehört dazu</h2>
+<p>Bringe auch Lichttherapie, Spritzen, Tabletten und äusserliche Mittel zur Sprache. Unter bestimmten Medikamenten kann eine zusätzliche Kräutereinnahme problematisch sein. Bei <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/">Immunsuppressiva</a> braucht es deshalb eine konkrete Abstimmung mit Behandlungsteam und Apotheke. Die dortige Information ersetzt nicht die Prüfung deiner Mischung.</p>
+<p>Lass dir die Bestandteile und den Bezugsweg erklären. Die <a href="/wissen/chinesische-kraeuter-qualitaet-schweiz/">Qualität chinesischer Arzneimittel</a> ist eine eigene Frage neben der Wirksamkeit. Eine nachvollziehbare Herstellung allein beweist noch keinen Nutzen bei Schuppenflechte.</p>
+<h2>Welche Beschwerden zuerst medizinisch beurteilt werden müssen</h2>
+<p>Wiederkehrende Gelenkschmerzen, Schwellungen oder Steifigkeit sollten ärztlich abgeklärt werden. Sie können auf eine <a href="/beschwerden/psoriasis-arthritis/">Psoriasis-Arthritis</a> hinweisen, für die Hautstudien keine Behandlungsempfehlung liefern.</p>
+<p>Wenn die Haut rasch stark rot wird, ausgedehnte eitrige Pusteln entstehen oder Fieber und deutliches Krankheitsgefühl hinzukommen, ist eine sofortige medizinische Beurteilung auf einer Notfallstation nötig. Bei schwerem Allgemeinzustand 144 wählen. Das ist keine Situation, um erst einen ergänzenden Versuch abzuwarten.</p>
+<h2>Häufige Fragen</h2>
+<h3>Sind chinesische Kräuter eine Alternative zu Biologika?</h3>
+<p>Die hier besprochene Übersicht belegt keine Gleichwertigkeit. Ein gewünschter Wechsel gehört in die dermatologische Betreuung und darf nicht allein aus einem positiven Kräuterergebnis abgeleitet werden.</p>
+<h3>Gilt das auch für Psoriasis-Arthritis?</h3>
+<p>Nein. Dieser Artikel behandelt die Kräuterentscheidung bei Plaque-Psoriasis der Haut. Eine Gelenkbeteiligung ist eine eigene Erkrankungs- und Behandlungsfrage.</p>
+<h3>Welche Mischung ist die wirksamste?</h3>
+<p>Die Unterschiede zwischen Studien erlauben keine zuverlässige Rangliste für deinen Fall. Frage nach der Begründung für das konkret vorgeschlagene Produkt, statt nach einem allgemeinen «Psoriasis-Kraut» zu suchen.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Über die <a href="/kontakt/">Kontaktseite</a> kannst du eine Beratung zur <a href="/therapien/kraeutertherapie/">Kräutertherapie</a> anfragen. Nenne dabei deine bisherige Behandlung. Ob eine Ergänzung vertretbar und sinnvoll ist, muss vor einer Einnahme geklärt sein.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/27366921/" target="_blank" rel="noopener">Parker et al. Oral Chinese herbal medicine versus placebo for psoriasis vulgaris: A systematic review. Journal of Dermatological Treatment, 2017. PMID 27366921. (PubMed-Abstract)</a></li>
+<li><a href="https://www.nhs.uk/conditions/psoriasis/" target="_blank" rel="noopener">NHS. Psoriasis. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know" target="_blank" rel="noopener">NCCIH. Traditional Chinese Medicine: What You Need To Know. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/schuppenflechte/', label: 'Schuppenflechte', cat: 'Beschwerde' },
+      { href: '/beschwerden/psoriasis-arthritis/', label: 'Psoriasis-Arthritis', cat: 'Beschwerde' },
+      { href: '/therapien/kraeutertherapie/', label: 'Chinesische Kräutertherapie', cat: 'Therapie' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/', label: 'TCM-Kräuter unter Immunsuppressiva', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'chinesische-kraeuter-bei-endometriose',
+    title: 'Chinesische Kräuter bei Endometriose: Nutzen und Grenzen',
+    metaDesc: 'Chinesische Kräuter bei Endometriose: Was Studien zu Schmerzen zeigen, weshalb Kombinationen keine Einzelwirkung beweisen und was du vor Beginn klären solltest.',
+    region: 'Schweizweit',
+    excerpt: 'Du möchtest Schmerzen besser bewältigen und suchst eine zusätzliche Möglichkeit zur gynäkologischen Behandlung. Chinesische Kräuter werden bei Endometriose eingesetzt. Die Studienlage trägt jedoch keine Heilungs- oder Fruchtbarkeitsversprechen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei Endometriose: Was lässt sich realistisch erwarten?',
+    lead: 'Du möchtest Schmerzen besser bewältigen und suchst eine zusätzliche Möglichkeit zur gynäkologischen Behandlung. Chinesische Kräuter werden bei Endometriose eingesetzt. Die Studienlage trägt jedoch keine Heilungs- oder Fruchtbarkeitsversprechen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Kräuterberatung bei Endometriose anfragen',
+    ctaText: 'Schildere dein Behandlungsziel und die laufende gynäkologische Therapie. Wir prüfen, welche Fachperson eine ergänzende Beratung übernehmen kann. Geplante Eingriffe oder eine Kinderwunschbehandlung bitte vorab nennen.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Es gibt Hinweise auf eine mögliche Schmerzlinderung durch einzelne chinesische Kräuterbehandlungen. Wie zuverlässig dieser Nutzen ist und auf welche Rezepturen er sich übertragen lässt, bleibt begrenzt geklärt. Aus den Studien lässt sich nicht ableiten, dass Kräuter Endometrioseherde beseitigen oder eine Schwangerschaft wahrscheinlicher machen.</p>
+<p>Die Diagnose und die gynäkologische Behandlung gehören zur Seite <a href="/beschwerden/endometriose/">Endometriose</a>. Die Entscheidung über Nadeln behandelt <a href="/wissen/akupunktur-bei-endometriose/">Akupunktur bei Endometriose</a>.</p>
+<h2>Was die älteren kontrollierten Studien hergeben</h2>
+<p>Die Cochrane-Übersicht von 2012 enthielt zwei chinesische Studien mit insgesamt 158 Frauen und operativ bestätigter Endometriose. Verglichen wurden Kräuterbehandlungen mit Gestrinon oder Danazol, nicht mit Placebo. Ein Teil der Anwendungen fand nach einer Operation statt; teilweise wurden zusätzlich Kräutereinläufe eingesetzt.</p>
+<p>Die Ergebnisse lieferten Hinweise auf Nutzen bei bestimmten Schmerzen, waren aber wegen kleiner Studien und begrenzter Qualität vorsichtig zu interpretieren. Ein nicht nachgewiesener Unterschied zu einem Medikament belegt keine Gleichwertigkeit. Die Ergebnisse sind auch keine Grundlage, heute jede orale Rezeptur als Alternative zur aktuellen Behandlung zu empfehlen.</p>
+<h2>Warum auch neuere Kombinationen genau gelesen werden müssen</h2>
+<p>Eine Übersicht von 2025 prüfte Akupunktur zusammen mit Kräutern gegenüber Kräutern allein. Solche Untersuchungen können eine Frage zur zusätzlichen Nadelbehandlung beantworten. Sie zeigen aber nicht, wie gut die Kräuter selbst gegenüber Placebo oder einer gynäkologischen Standardbehandlung wirken. Eine Meta-Analyse von 2025 mit elf Studien und 1'401 Teilnehmerinnen fasst unter dem Begriff chinesische Kräutermedizin sehr unterschiedliche Präparate zusammen: chinesische Rezepturen und Fertigpräparate aus China und Grossbritannien, aber auch Studien aus dem Iran mit Knoblauchtabletten, Kamille- und Leinsamenkapseln oder Astaxanthin. Die gepoolten Ergebnisse zu Regelschmerzen und Schmerzen beim Geschlechtsverkehr sind deshalb kein spezifischer Wirknachweis für chinesische Kräuter; die Autorinnen und Autoren nennen selbst die stark unterschiedlichen Zusammensetzungen, Dosierungen und Behandlungsdauern sowie das Fehlen von Untergruppenanalysen als Grenze, und für Beckenschmerzen zeigte sich kein klarer Effekt.</p>
+<p>Für deine Entscheidung zählt daher nicht allein, ob ein Artikel positive Ergebnisse nennt. Entscheidend ist, ob die untersuchte Behandlung mit dem vorgeschlagenen Vorgehen vergleichbar ist. Eine Kombination, eine Anwendung nach einer Operation und eine einzelne orale Rezeptur sind keine austauschbaren Verfahren.</p>
+<h2>Schmerzen, Herde und Kinderwunsch nicht gleichsetzen</h2>
+<p>Ein niedrigerer Schmerzscore ist wichtig, bedeutet aber nicht, dass Endometriose verschwunden ist. Auch weniger Schmerzen, weniger Rückfälle und eine Lebendgeburt sind unterschiedliche Ziele. Bitte um eine klare Erklärung, welches Ziel mit einer zusätzlichen Behandlung überhaupt verfolgt wird.</p>
+<p>Die gynäkologischen Optionen richten sich auch danach, ob aktuell ein Kinderwunsch besteht. Hormonelle Behandlungen, Schmerzbehandlung und Operationen werden individuell besprochen. Eine Kräuterberatung darf diese Entscheidung nicht verzögern. Die Forschung zu <a href="/wissen/chinesische-kraeuter-bei-regelschmerzen/">primären Regelschmerzen</a> ist zudem nicht automatisch auf Endometriose übertragbar.</p>
+<h2>Was vor der Beratung auf den Tisch gehört</h2>
+<p>Bringe Befunde, einen vorhandenen Operationsbericht, deine Medikamentenliste und den Verlauf der Beschwerden mit. Wenn du bereits einen Termin für einen Eingriff oder eine Kinderwunschbehandlung hast, soll das vor der Rezepturentscheidung bekannt sein.</p>
+<p>Bei einer geplanten Operation gehören alle Präparate in das Vorbereitungsgespräch. Wer eine Pause und den Wiederbeginn festlegt, erklärt <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/">TCM-Kräuter vor einer Operation</a>. Für eine Einnahme parallel zu Hormonen oder anderen Medikamenten ist eine konkrete Prüfung erforderlich; dieser Artikel gibt keine Kombination frei.</p>
+<p>Vereinbart ein nachvollziehbares Prüfziel. Ein Symptomtagebuch kann helfen, Alltag, Schmerzen und Einnahmen zu besprechen. Eine vorab versprochene Zahl von Zyklen bis zum Erfolg wäre durch die genannten Daten nicht gedeckt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Können chinesische Kräuter Endometriose heilen?</h3>
+<p>Aus der hier besprochenen Forschung lässt sich kein Heilungsnachweis ableiten. Eine ergänzende Entscheidung betrifft mögliche Beschwerden, nicht die Zusage, dass die Erkrankung verschwindet.</p>
+<h3>Sind die Ergebnisse auf Adenomyose übertragbar?</h3>
+<p>Nein. Eine andere Diagnose braucht eine eigene Bewertung. Die allgemeinen Unterschiede erklärt die Seite zu <a href="/beschwerden/adenomyose/">Adenomyose</a>.</p>
+<h3>Kann ich Kräuter statt meiner Hormonbehandlung nehmen?</h3>
+<p>Die Studien begründen keinen eigenständigen Austausch. Besprich Wünsche und Nebenwirkungen mit deiner gynäkologischen Fachperson. Wenn eine Ergänzung erwogen wird, müssen beide Behandelnden den vollständigen Plan kennen.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Eine Anfrage zur <a href="/therapien/kraeutertherapie/">Kräuterberatung</a> kannst du über die <a href="/kontakt/">Kontaktseite</a> stellen. Nenne, was du erreichen möchtest und welche gynäkologische Behandlung bereits läuft. Zuerst wird geklärt, ob eine zusätzliche Beratung für deine Situation passt.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD006568_chinese-herbs-endometriosis" target="_blank" rel="noopener">Flower et al. Chinese herbal medicine for endometriosis. Cochrane Database of Systematic Reviews, 2012. CD006568. (Cochrane-Zusammenfassung und Abstract)</a></li>
+<li><a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1649980/full" target="_blank" rel="noopener">Xu et al. Acupuncture combined with Chinese herbal medicine versus Chinese herbal medicine alone to improve clinical efficacy in treating endometriosis-associated pain: a systematic review and meta-analysis. Frontiers in Medicine, 2025. DOI 10.3389/fmed.2025.1649980. (Verlagsvolltext und Abstract)</a></li>
+<li><a href="https://www.nhs.uk/conditions/endometriosis/" target="_blank" rel="noopener">NHS. Endometriosis. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nhs.uk/tests-and-treatments/herbal-medicines-and-complementary-therapies/" target="_blank" rel="noopener">NHS. Herbal medicines and complementary therapies. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/41268238/" target="_blank" rel="noopener">Efficacy and safety of traditional Chinese medicine for endometriosis-related pain: a meta-analysis. American Journal of Translational Research, 2025. PMID 41268238. (Verlagsvolltext als PDF über DOI, Tabelle 2 geprüft)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/endometriose/', label: 'Endometriose', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-endometriose/', label: 'Akupunktur bei Endometriose', cat: 'Wissen' },
+      { href: '/wissen/chinesische-kraeuter-bei-regelschmerzen/', label: 'Chinesische Kräuter bei Regelschmerzen', cat: 'Wissen' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/', label: 'TCM-Kräuter vor einer Operation', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'chinesische-kraeuter-bei-pcos',
+    title: 'Chinesische Kräuter bei PCOS und Kinderwunsch: Evidenz',
+    metaDesc: 'Chinesische Kräuter bei PCOS und Kinderwunsch: Was die Forschung zu Schwangerschaft und Lebendgeburt aussagt und was vor einer ergänzenden Beratung wichtig ist.',
+    region: 'Schweizweit',
+    excerpt: 'Du möchtest bei PCOS deinen Kinderwunsch unterstützen und überlegst, chinesische Kräuter einzunehmen. Gerade hier lohnt es sich, genau hinzusehen: Ein regelmässigerer Zyklus, ein Eisprung und eine Lebendgeburt sind unterschiedliche Ergebnisse.',
+    category: 'Beschwerden verstehen',
+    h1: 'Chinesische Kräuter bei PCOS und Kinderwunsch: Was zeigen die Studien?',
+    lead: 'Du möchtest bei PCOS deinen Kinderwunsch unterstützen und überlegst, chinesische Kräuter einzunehmen. Gerade hier lohnt es sich, genau hinzusehen: Ein regelmässigerer Zyklus, ein Eisprung und eine Lebendgeburt sind unterschiedliche Ergebnisse.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Kräuterberatung bei PCOS besprechen',
+    ctaText: 'Nenne deine PCOS-Diagnose, aktuelle Medikamente und eine allfällige Kinderwunschbehandlung. Wir klären, welche Fachperson die Beratung übernehmen kann. Eine Verbesserung der Schwangerschaftschance wird nicht zugesagt.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_N,
+    bodyHtml: `<h2>Kurz gesagt</h2>
+<p>Für chinesische Kräuter bei PCOS mit Kinderwunsch fehlt ein verlässlicher Nachweis, dass sie die Chance auf eine Lebendgeburt erhöhen. Einzelne Studien berichten andere günstige Ergebnisse. Sie beantworten aber nicht automatisch die für dich wichtigste Frage: ob am Ende häufiger ein Kind geboren wird.</p>
+<p>Die allgemeinen Grundlagen findest du auf der Seite zu <a href="/beschwerden/pcos/">PCOS</a>. Der Überblick <a href="/wissen/pcos-akupunktur-tcm/">PCOS und TCM</a> ordnet weitere Methoden ein. Dieser Artikel konzentriert sich auf Kräuter bei bestehendem Kinderwunsch.</p>
+<h2>Was Cochrane geprüft hat</h2>
+<p>Die 2021 veröffentlichte Cochrane-Übersicht berücksichtigte acht randomisierte Studien mit 609 Frauen mit PCOS und eingeschränkter Fruchtbarkeit. Die Suche reichte bis Juni 2020. Untersucht wurden unterschiedliche Kräuterbehandlungen, allein oder zusätzlich zu medizinischen Verfahren.</p>
+<p>Keine der eingeschlossenen Studien berichtete die Lebendgeburtenrate. Schwangerschaft wurde zwar erfasst, Nebenwirkungen aber nur in einer Studie. Die Evidenzsicherheit war niedrig bis sehr niedrig. Für einzelne Kombinationen gab es Hinweise auf mehr Schwangerschaften, insgesamt jedoch keine verlässliche Grundlage für eine Empfehlung. Eine allgemein sichere Anwendung wurde damit ebenfalls nicht nachgewiesen.</p>
+<p>Das betrifft eine konkrete Gruppe und Fragestellung. Die Übersicht sagt nicht, ob jede andere PCOS-Beschwerde auf Kräuter anspricht. Umgekehrt darf eine Verbesserung eines Laborwerts nicht als Beleg für höhere Fruchtbarkeit ausgegeben werden.</p>
+<h2>Vor einer Rezeptur das Ziel klar benennen</h2>
+<p>Frage im Gespräch ausdrücklich, welches Ergebnis angestrebt und wie es überprüft werden soll. Geht es um Beschwerden während einer bereits laufenden Kinderwunschbehandlung oder um die Hoffnung, eine solche Behandlung zu ersetzen? Diese Unterscheidung muss vor der Einnahme geklärt sein.</p>
+<p>«Den Zyklus regulieren» ist als alleinige Begründung zu ungenau. Ein Blutungsereignis ist noch keine Aussage über Eisprung, Schwangerschaft oder Lebendgeburt. Bitte darum, Nutzen und Unsicherheit in verständlichen Worten zu besprechen, ohne aus einem Zwischenwert einen Behandlungserfolg abzuleiten.</p>
+<h2>Laufende Behandlung vollständig angeben</h2>
+<p>Die Kräuterberatung soll nicht parallel im Unwissen über den gynäkologischen Plan stattfinden. Bringe Befunde, Medikamentenliste und gegebenenfalls den Ablauf deiner Kinderwunschklinik mit. Geplante Änderungen und bereits gekaufte Produkte gehören ebenfalls ins Gespräch.</p>
+<p>Wenn du Metformin oder andere Medikamente einnimmst, lass ein geplantes Kräuterprodukt vor Beginn durch Apotheke und Behandlungsteam prüfen. Eine zusätzliche Einnahme kann Wechselwirkungen verursachen. Eine neue Rezeptur während einer Stimulation sollte nicht ohne Abstimmung begonnen werden. Das ist eine Frage des gemeinsamen Behandlungsplans, keine Freigabe durch diesen Artikel.</p>
+<p>Ein schriftlicher <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/">Einnahmeplan für TCM-Kräuter</a> macht Bestandteile, Anwendung und Ansprechpartner nachvollziehbar. Er ist jedoch kein Wirksamkeitsnachweis. Auch Herkunft und <a href="/wissen/chinesische-kraeuter-qualitaet-schweiz/">Qualität der Präparate</a> müssen von der Frage nach einem Nutzen getrennt werden.</p>
+<h2>Welche Erwartung seriös ist</h2>
+<p>Eine Beratung kann die Möglichkeiten und Grenzen einer Ergänzung klären. Sie kann auch ergeben, dass aktuell keine Rezeptur empfohlen wird. Eine versprochene Schwangerschaft, eine fest zugesagte Zahl von Zyklen oder ein angeblich notwendiges Kräuterpaket lassen sich aus der genannten Übersicht nicht rechtfertigen.</p>
+<p>Wenn du allgemeine Fragen zu einer Begleitung hast, findest du die Abgrenzung unter <a href="/wissen/kinderwunsch-akupunktur-tcm/">Kinderwunsch und TCM</a>. Dieser Artikel begründet keine Verzögerung einer ärztlich empfohlenen Fruchtbarkeitsabklärung.</p>
+<h2>Häufige Fragen</h2>
+<h3>Können chinesische Kräuter meine Schwangerschaftschance erhöhen?</h3>
+<p>Die Daten reichen nicht für eine verlässliche persönliche Zusage. Besonders wichtig ist, dass in der genannten Übersicht keine Studie die Lebendgeburtenrate berichtete.</p>
+<h3>Kann ich damit Metformin oder eine Stimulation ersetzen?</h3>
+<p>Die beschriebenen Studien begründen keinen eigenständigen Ersatz. Wenn du eine Änderung möchtest, besprich sie mit deiner behandelnden gynäkologischen oder endokrinologischen Fachperson.</p>
+<h3>Ist eine natürliche Rezeptur bei Kinderwunsch automatisch unbedenklich?</h3>
+<p>Nein. Die genaue Zusammensetzung und die laufende Behandlung müssen geprüft werden. Eine Anwendung nach Eintritt einer Schwangerschaft braucht eine neue medizinische Beurteilung und ist durch diesen Artikel nicht freigegeben.</p>
+<h2>Deinen nächsten Schritt klären</h2>
+<p>Über die <a href="/kontakt/">Kontaktseite</a> kannst du eine <a href="/therapien/kraeutertherapie/">Kräuterberatung</a> anfragen. Nenne PCOS, Kinderwunsch und die bereits beteiligte Praxis oder Klinik, damit die Beratung mit dem bestehenden Plan abgestimmt werden kann.</p>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://www.cochrane.org/evidence/CD007535_chinese-herbal-medicines-subfertile-women-polycystic-ovarian-syndrome" target="_blank" rel="noopener">Zhou et al. Chinese herbal medicines for subfertile women with polycystic ovarian syndrome. Cochrane Database of Systematic Reviews, 2021. CD007535. (Cochrane-Zusammenfassung und Abstract)</a></li>
+<li><a href="https://www.nhs.uk/tests-and-treatments/herbal-medicines-and-complementary-therapies/" target="_blank" rel="noopener">NHS. Herbal medicines and complementary therapies. Patienteninformation. (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know" target="_blank" rel="noopener">NCCIH. Traditional Chinese Medicine: What You Need To Know. (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/pcos/', label: 'PCOS', cat: 'Beschwerde' },
+      { href: '/wissen/pcos-akupunktur-tcm/', label: 'PCOS und TCM', cat: 'Wissen' },
+      { href: '/wissen/kinderwunsch-akupunktur-tcm/', label: 'Kinderwunsch und TCM', cat: 'Wissen' },
+      { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/', label: 'TCM-Kräuter einnehmen: Einnahmeplan', cat: 'Frage' },
     ],
   },
 ];

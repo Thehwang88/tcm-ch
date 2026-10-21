@@ -106,6 +106,9 @@ export const PUBLISHED_KRAEUTER_2026_10: string | undefined = '2026-10-19';
 // RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD'). Bis dahin undefined =>
 // keine Schema-Daten, kein sichtbares Datum. Nur Publikation, keine fachliche Prüfung.
 export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = '2026-10-21';
+// Neun Wissen-Artikel (Textpaket 21.10.2026: sechs Kräuter-Entscheidungen, drei Akupunktur-bei):
+// Draft, bis zum Release undefined => keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: Datum setzen.
+export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
 
 export const befundeWerte: BefundWert[] = [
   {
