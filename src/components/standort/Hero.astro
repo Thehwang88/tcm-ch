@@ -36,7 +36,7 @@ const video = heroVideo(data);
       <p class="lsr-note">{data.hero.locationHook}</p>
     </div>
     {video ? (
-    <HeroMedia poster={data.hero.image} posterAlt={data.hero.imageAlt ?? 'Symbolbild: Empfangsbereich einer TCM.ch Praxis'} posterWidth={1448} posterHeight={1086} />
+    <HeroMedia />
     ) : (
     <figure class={symbolbild ? 'lsr-right' : 'lsr-right lsr-right--foto'}>
       <img src={data.hero.image} alt={data.hero.imageAlt ?? 'Symbolbild: Empfangsbereich einer TCM.ch Praxis'} loading="eager" fetchpriority="high" decoding="async">

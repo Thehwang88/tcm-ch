@@ -13,3 +13,12 @@ export const heroVideo = (d: Pick<Standort, 'slug' | 'planned' | 'review'>) => H
 export const isSymbolbild = (src: string) => /\/(hero-main\.webp|basel-reception\.webp)$/.test(src || '');
 
 export const HERO_VIDEO_BASE = '/videos/hero-praxis/hwang-praxis';
+/** Poster = Standbild des ERSTEN Frames des Videos (ffmpeg -ss 0, identisch in allen Renditionen): Fallback-<img> (LCP) und
+ *  <video poster>, damit der Übergang Poster → bewegtes Bild nahtlos ist (kein Wechsel vom Standortfoto). Standortfotos bleiben
+ *  in «Über die Praxis». Erzeugt mit sharp aus dem 1280er-Frame (1280×720 q82, 640×360 q80). */
+export const HERO_VIDEO_POSTER = {
+  src: `${HERO_VIDEO_BASE}-poster-1280.webp`,
+  srcset: `${HERO_VIDEO_BASE}-poster-640.webp 640w, ${HERO_VIDEO_BASE}-poster-1280.webp 1280w`,
+  width: 1280, height: 720,
+  alt: 'Symbolbild: Behandlung in einer TCM.ch Praxis (Standbild aus dem Praxisvideo)',
+} as const;
