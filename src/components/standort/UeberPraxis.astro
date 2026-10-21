@@ -1,6 +1,7 @@
 ---
 import type { Standort } from '../../data/standorte';
 import { telHref } from '../../data/standorte';
+import { heroVideo, isSymbolbild } from '../../data/hero-video';
 // SG-Vorlage: ohne eigene <section>-Hülle, als Praxisspalte im Kontaktbereich (Slot info in KontaktPraxis.astro), wie in
 // St. Gallen mit Telefon und E-Mail und voller Kartenhöhe.
 const { data } = Astro.props as { data: Standort };
@@ -40,7 +41,8 @@ const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 // (normalisierter Pfadvergleich; Asset-Dateien bleiben unangetastet).
 const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0].replace(/\/{2,}/g, '/');
 // Geplante Standorte: keine Praxisfotos (es gibt noch keine Praxis, die sie zeigen könnten).
-const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) => norm(b.src) !== norm(data.hero.image));
+// Hero-Video (hero-video.ts): das Praxisfoto ist nur noch Poster, also hier zeigen (echte Praxisfotos, nie Symbolbilder).
+const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) => heroVideo(data) ? !isSymbolbild(b.src) : norm(b.src) !== norm(data.hero.image));
 ---
 <h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && !slim && (
@@ -50,7 +52,7 @@ const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) =>
   <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
   {praxisBilder.map((b) => (
     <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
-      <img src={b.src} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
+      <img src={b.src} srcset={b.srcset} sizes={b.srcset ? '(max-width:1023px) 100vw, 720px' : undefined} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
       <figcaption style="position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px">{b.label}</figcaption>
     </figure>
   ))}

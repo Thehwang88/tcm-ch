@@ -299,12 +299,12 @@ if (migrated) {
       extra: { wunschzeit: true, compatAnchors: ['first30-kontakt'], onedocBeideTerminarten: true, ruhig: true, ohneOnedocAlternative: true, zusatzOffen: true } });
     if ((sgBody.match(/data-kf-instance="sg-unten"/g) || []).length !== 1 || /<form class="inline-form"/.test(sgBody))
       throw new Error('st-gallen: untere Kontaktkarte nicht eindeutig auf das gemeinsame Formular umgestellt - Leaf geändert?');
-    // FIRST 30 Hero hat keine Fotohälfte: Praxisfoto in «Über die Praxis» (bestehende .up-photo-Styles des Leafs).
-    // Regulärer Hero (HeroStandardSG) zeigt das Foto selbst → hier nicht wiederholen.
+    // Praxisfoto in «Über die Praxis»: der FIRST-30-Hero hat keine Fotohälfte, der reguläre Hero zeigt seit dem
+    // gemeinsamen Hero-Video (HeroMedia) das Foto nur noch als Poster. Markup wie praxisBilder in UeberPraxis.astro.
     const uh = '<h2 class="up-h2">Über die Praxis</h2>';
     const ui = sgBody.indexOf(uh);
     if (ui < 0) throw new Error('st-gallen: Über-die-Praxis-Marker für das Praxisfoto nicht gefunden - Leaf geändert?');
-    if (first30.showCampaign) sgBody = sgBody.slice(0, ui + uh.length) + '<figure class="up-photo"><img src="/images/standort-stgallen.jpg" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>' + sgBody.slice(ui + uh.length);
+    sgBody = sgBody.slice(0, ui + uh.length) + '<figure style="margin:0 0 22px;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative"><img src="/images/standort-stgallen.webp" srcset="/images/standort-stgallen-800.webp 800w, /images/standort-stgallen.webp 1447w" sizes="(max-width:1023px) 100vw, 720px" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block"><figcaption style="position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px">Oberer Graben 22</figcaption></figure>' + sgBody.slice(ui + uh.length);
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
     if (h0 >= 0 && c0 > h0) sgBody = sgBody.slice(0, h0) + sgBody.slice(c0);
