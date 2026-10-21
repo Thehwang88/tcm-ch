@@ -488,6 +488,15 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-migraene/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-neurodermitis/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-schuppenflechte/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-endometriose/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-pcos/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-trockenen-augen/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-krebsbedingter-fatigue/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-copd/ — vorbereitet 21.10.2026 (Neun-Artikel-Paket, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")

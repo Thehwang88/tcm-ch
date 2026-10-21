@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-21",
   "totals": {
-    "healthPages": 689,
+    "healthPages": 698,
     "byType": {
       "hub": 6,
       "condition": 206,
@@ -12,7 +12,7 @@
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
-      "editorial": 122,
+      "editorial": 131,
       "body_signal": 94,
       "therapy": 36,
       "visual": 10
@@ -60,7 +60,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -290,8 +290,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/costochondritis/",
@@ -400,8 +400,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 14,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/erektile-dysfunktion/",
@@ -420,7 +420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 36,
+      "inboundContentLinks": 37,
       "outboundHealthLinks": 20
     },
     {
@@ -680,7 +680,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 18
     },
     {
@@ -1060,7 +1060,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 132,
+      "inboundContentLinks": 133,
       "outboundHealthLinks": 18
     },
     {
@@ -1160,8 +1160,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 25
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 26
     },
     {
       "url": "/beschwerden/niedriger-blutdruck/",
@@ -1260,8 +1260,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 17,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/periorale-dermatitis/",
@@ -1390,7 +1390,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 8
     },
     {
@@ -1660,8 +1660,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/schwangerschaftsbeschwerden/",
@@ -1920,8 +1920,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/uebelkeit/",
@@ -2040,8 +2040,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 32,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/zaehneknirschen/",
@@ -3140,7 +3140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -3150,7 +3150,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 10
     },
     {
@@ -3160,7 +3160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 13
     },
     {
@@ -3190,8 +3190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-waehrend-periode/",
@@ -3420,7 +3420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -3440,8 +3440,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/",
@@ -3450,7 +3450,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 14
     },
     {
@@ -3470,7 +3470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -4151,7 +4151,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 2,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/muskelverspannungen/",
@@ -4661,7 +4661,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/bauch-fuehlt-sich-hart-an/",
@@ -5590,7 +5590,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 328,
+      "inboundContentLinks": 330,
       "outboundHealthLinks": 39
     },
     {
@@ -5730,7 +5730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 128,
+      "inboundContentLinks": 134,
       "outboundHealthLinks": 8
     },
     {
@@ -6050,8 +6050,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 87,
-      "outboundHealthLinks": 87
+      "inboundContentLinks": 96,
+      "outboundHealthLinks": 96
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -6090,8 +6090,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/akupunktur-bei-copd/",
+      "type": "editorial",
+      "title": "Akupunktur bei COPD: Studien zu Atemnot und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/akupunktur-bei-depressionen/",
@@ -6110,8 +6120,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/akupunktur-bei-fazialisparese/",
@@ -6214,6 +6224,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/akupunktur-bei-krebsbedingter-fatigue/",
+      "type": "editorial",
+      "title": "Akupunktur bei krebsbedingter Fatigue: Was ist belegt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-bei-menstruationsbeschwerden/",
       "type": "editorial",
       "title": "Akupunktur bei Menstruationsbeschwerden &amp; PMS: ehrliche Einordnung | TCM.ch",
@@ -6250,8 +6270,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/akupunktur-bei-polyneuropathie/",
@@ -6354,6 +6374,16 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/wissen/akupunktur-bei-trockenen-augen/",
+      "type": "editorial",
+      "title": "Akupunktur bei trockenen Augen: Studien und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-bei-uebelkeit/",
       "type": "editorial",
       "title": "Akupunktur &amp; Akupressur gegen Übelkeit: Der Punkt P6 | TCM.ch",
@@ -6380,8 +6410,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-wiederkehrenden-blasenentzuendungen/",
@@ -6494,6 +6524,16 @@
       "outboundHealthLinks": 4
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-endometriose/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Endometriose: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Reizmagen: Studien &amp; Einordnung | TCM.ch",
@@ -6504,13 +6544,43 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-migraene/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Migräne: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-neurodermitis/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Neurodermitis: Nutzen und Risiken | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-pcos/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei PCOS und Kinderwunsch: Evidenz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-regelschmerzen/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Regelschmerzen: Evidenz &amp; Grenzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -6534,6 +6604,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-schuppenflechte/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Schuppenflechte: Was ist belegt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-verstopfung/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Verstopfung: Nutzen &amp; Risiken | TCM.ch",
@@ -6544,13 +6624,23 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Wechseljahren: Was ist belegt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/",
       "type": "editorial",
       "title": "Chinesische Kräuter online kaufen: Was vorher wichtig ist | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 4
     },
     {
@@ -6560,7 +6650,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 5
     },
     {
@@ -6670,7 +6760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     },
     {
@@ -6700,8 +6790,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/muedigkeit-im-herbst/",
@@ -6730,8 +6820,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/schmerzen-unterer-ruecken/",
@@ -6800,7 +6890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 6
     },
     {
@@ -6901,7 +6991,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/wissen/wie-lange-bleiben-akupunkturnadeln-drin/",
