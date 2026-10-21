@@ -861,7 +861,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/kopfschmerzen/",
@@ -1001,7 +1001,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/beschwerden/me-cfs/",
@@ -3091,7 +3091,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-herzschrittmacher/",
@@ -3120,7 +3120,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -3136,11 +3136,11 @@
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/",
       "type": "question",
-      "title": "Akupunktur nach Lymphknotenentfernung: Was gilt am Arm? | TCM.ch",
+      "title": "Akupunktur nach Lymphknotenentfernung: Was vorab klären? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 8
     },
     {
@@ -3161,7 +3161,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 20,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 13
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/",
@@ -3310,8 +3310,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/muedigkeit-nach-akupunktur/",
@@ -3361,7 +3361,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/",
@@ -3420,7 +3420,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 8
     },
     {
@@ -3440,7 +3440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -3451,7 +3451,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 13,
-      "outboundHealthLinks": 13
+      "outboundHealthLinks": 14
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/",
@@ -3470,7 +3470,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 7
     },
     {
@@ -3481,7 +3481,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tut-akupunktur-weh/",
@@ -6091,7 +6091,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-depressionen/",
@@ -6171,7 +6171,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 10
     },
     {
       "url": "/wissen/akupunktur-bei-karpaltunnelsyndrom/",
@@ -6400,8 +6400,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/akupunktur-oder-kraeutertherapie/",
@@ -6411,7 +6411,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-oder-osteopathie/",
@@ -6440,7 +6440,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 9
     },
     {
@@ -6641,7 +6641,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/heizungsluft-trockene-schleimhaeute/",
@@ -6880,7 +6880,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
