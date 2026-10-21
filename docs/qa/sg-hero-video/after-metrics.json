@@ -1,0 +1,230 @@
+{
+  "390": {
+    "before": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "heroH": 917.578125,
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 3.5,
+      "vw": 640,
+      "vh": 360,
+      "src": "/videos/hero-sg/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "opacity": "1",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "readyState": 4
+    },
+    "overflow": false,
+    "scrollW": 390,
+    "h1": true,
+    "ctas": 2,
+    "lcp": {
+      "t": 664,
+      "el": "IMG",
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0551,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200",
+      "/videos/hero-sg/hwang-praxis-640.webm 206"
+    ],
+    "shifted": false
+  },
+  "768": {
+    "before": {
+      "x": 0,
+      "y": 438.1875,
+      "w": 768,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 438.1875,
+      "w": 768,
+      "h": 300
+    },
+    "heroH": 739.1875,
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 3.5,
+      "vw": 640,
+      "vh": 360,
+      "src": "/videos/hero-sg/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "opacity": "1",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "readyState": 4
+    },
+    "overflow": false,
+    "scrollW": 768,
+    "h1": true,
+    "ctas": 2,
+    "lcp": {
+      "t": 292,
+      "el": "IMG",
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200",
+      "/videos/hero-sg/hwang-praxis-640.webm 206"
+    ],
+    "shifted": false
+  },
+  "1440": {
+    "before": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "media": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "heroH": 677,
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 3.42,
+      "vw": 1280,
+      "vh": 720,
+      "src": "/videos/hero-sg/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "opacity": "1",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "readyState": 4
+    },
+    "overflow": false,
+    "scrollW": 1440,
+    "h1": true,
+    "ctas": 2,
+    "lcp": {
+      "t": 316,
+      "el": "IMG",
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200",
+      "/videos/hero-sg/hwang-praxis-1280.webm 206"
+    ],
+    "shifted": false
+  },
+  "390-reduced-motion": {
+    "before": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "heroH": 917.578125,
+    "video": {
+      "paused": true,
+      "muted": true,
+      "t": 0,
+      "vw": 0,
+      "vh": 0,
+      "src": "/videos/hero-sg/hwang-praxis-640.webm",
+      "playing": false,
+      "display": "none",
+      "opacity": "0",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "readyState": 0
+    },
+    "overflow": false,
+    "scrollW": 390,
+    "h1": true,
+    "ctas": 2,
+    "lcp": {
+      "t": 352,
+      "el": "IMG",
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  },
+  "1440-reduced-motion": {
+    "before": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "media": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "heroH": 677,
+    "video": {
+      "paused": true,
+      "muted": true,
+      "t": 0,
+      "vw": 0,
+      "vh": 0,
+      "src": "/videos/hero-sg/hwang-praxis-1280.webm",
+      "playing": false,
+      "display": "none",
+      "opacity": "0",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "readyState": 0
+    },
+    "overflow": false,
+    "scrollW": 1440,
+    "h1": true,
+    "ctas": 2,
+    "lcp": {
+      "t": 360,
+      "el": "IMG",
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  }
+}
