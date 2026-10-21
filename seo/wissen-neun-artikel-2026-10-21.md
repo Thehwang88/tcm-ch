@@ -1,6 +1,6 @@
 # Neun-Artikel-Paket /wissen/ (21.10.2026): Bericht zum Draft-PR
 
-Stand: Draft-PR, nicht Ready, nicht gemergt, nicht deployed. Kein GSC-Submit, keine Live-Daten.
+Stand: Freigabe «merge to main» am 21.10.2026 nach Review 1; Release-Commit auf dem Branch, danach Ready und normaler Merge von PR #82 (Abschnitt 10). Kein GSC-Submit durch diesen PR (tägliche Queue).
 
 ## 1. Rahmen
 
@@ -188,3 +188,7 @@ Vollständige Ankersätze: Ausgabe von `node scripts/check-wissen-neun.mjs --bas
 1. Review des Draft-PR, dann Ready.
 2. Im Release-Commit `PUBLISHED_WISSEN_NEUN_2026_10` auf das Live-Datum setzen, die 9 Queue-Zeilen von «Geplant» nach «Offen» verschieben.
 3. Nach Deploy Live-Check der 9 URLs (200, indexierbar, Canonical), dann tägliche GSC-Queue.
+
+## 10. Release (21.10.2026)
+
+Freigabe «merge to main» nach Review 1 (`dc169d12`). Release-Commit auf dem Branch: `PUBLISHED_WISSEN_NEUN_2026_10 = '2026-10-21'`, 9 Queue-Zeilen von «Geplant» nach «Offen» (21.10.2026, PR #82), Keyword-Map-Notiz «veröffentlicht 21.10.2026». Vorher Build, `check-wissen-neun` und `health-audit` auf dem Release-Stand. Danach PR #82 Ready, normaler Merge in main, Cloudflare-Build, Live-Check der 9 URLs (200, indexierbar, Canonical, Datum). Bestandsbefunde SG-Hero-Test und Winterthur-i18n bleiben offen und separat (Abschnitte 7, 7b).
