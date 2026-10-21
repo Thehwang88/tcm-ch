@@ -5112,9 +5112,11 @@ a.team-card--link:hover .team-cta svg{transform:translateX(2px)}
 @container (aspect-ratio < 0.99){.lsr-right img{object-fit:contain}}
 /* Standort-Hero-Video (standort/HeroMedia.astro, alle Standorte mit Video): liegt über dem Poster-Foto und wird erst nach
    dem ersten gerenderten Frame eingeblendet (is-playing); Foto bleibt Poster/Fallback, immer cover (nie contain wie das
-   Foto in Hochformat-Containern). Fokus per --hv-pos/--hv-pos-m. Reduced motion: statisches Foto. */
+   Foto in Hochformat-Containern). Fokus per --hv-pos/--hv-pos-m. Reduced motion: statisches Foto.
+   inset 2px unten: das Video bleibt in der gemalten Fläche strikt kleiner als das Poster, sonst wird sein erster Frame
+   durch Subpixel-Rundung zum (späteren) LCP-Kandidaten; das Poster bleibt LCP-Element. */
 .lsr-right--video img{object-fit:cover}
-.lsr-right--video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hv-pos,center 50%);display:block;max-width:none;opacity:0;transition:opacity .6s ease;pointer-events:none;background:transparent}
+.lsr-right--video video{position:absolute;inset:0 0 2px 0;width:100%;height:calc(100% - 2px);object-fit:cover;object-position:var(--hv-pos,center 50%);display:block;max-width:none;opacity:0;transition:opacity .6s ease;pointer-events:none;background:transparent}
 .lsr-right--video.is-playing video{opacity:1}
 @media(max-width:900px){.lsr-right--video video{object-position:var(--hv-pos-m,center 40%)}}
 @media(prefers-reduced-motion:reduce){.lsr-right--video video{display:none}}
