@@ -1,0 +1,162 @@
+{
+  "390": {
+    "before": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "heroH": 917.578125,
+    "video": null,
+    "overflow": false,
+    "scrollW": 390,
+    "h1": true,
+    "ctas": 2,
+    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
+    "lcp": {
+      "t": 824,
+      "el": "IMG",
+      "url": "http://localhost:41731/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0551,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  },
+  "768": {
+    "before": {
+      "x": 0,
+      "y": 438.1875,
+      "w": 768,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 438.1875,
+      "w": 768,
+      "h": 300
+    },
+    "heroH": 739.1875,
+    "video": null,
+    "overflow": false,
+    "scrollW": 768,
+    "h1": true,
+    "ctas": 2,
+    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
+    "lcp": {
+      "t": 384,
+      "el": "IMG",
+      "url": "http://localhost:41731/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0004,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  },
+  "1440": {
+    "before": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "media": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "heroH": 677,
+    "video": null,
+    "overflow": false,
+    "scrollW": 1440,
+    "h1": true,
+    "ctas": 2,
+    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
+    "lcp": {
+      "t": 412,
+      "el": "IMG",
+      "url": "http://localhost:41731/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0002,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  },
+  "390-reduced-motion": {
+    "before": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "media": {
+      "x": 0,
+      "y": 616.578125,
+      "w": 390,
+      "h": 300
+    },
+    "heroH": 917.578125,
+    "video": null,
+    "overflow": false,
+    "scrollW": 390,
+    "h1": true,
+    "ctas": 2,
+    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
+    "lcp": {
+      "t": 432,
+      "el": "IMG",
+      "url": "http://localhost:41731/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  },
+  "1440-reduced-motion": {
+    "before": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "media": {
+      "x": 720,
+      "y": 76,
+      "w": 720,
+      "h": 600
+    },
+    "heroH": 677,
+    "video": null,
+    "overflow": false,
+    "scrollW": 1440,
+    "h1": true,
+    "ctas": 2,
+    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
+    "lcp": {
+      "t": 360,
+      "el": "IMG",
+      "url": "http://localhost:41731/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0002,
+    "mediaReqs": [
+      "/images/standort-stgallen.jpg 200",
+      "/site.webmanifest 200"
+    ],
+    "shifted": false
+  }
+}
