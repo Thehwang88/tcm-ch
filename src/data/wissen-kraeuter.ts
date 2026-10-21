@@ -309,7 +309,7 @@ export const wissenKraeuter: Wissen[] = [
     bodyHtml: `<h2>Der praktische Unterschied</h2>
 <p>Bei der <a href="/therapien/akupunktur/">Akupunktur</a> werden feine Nadeln an ausgewählten Körperstellen eingesetzt. Die Behandlung findet während eines Termins statt.</p>
 <p>Bei der <a href="/therapien/kraeutertherapie/">chinesischen Kräutertherapie</a> wird ein Arzneimittel verordnet, das nach einem individuellen Plan angewendet wird. Zusammensetzung, Darreichungsform und Anwendung gehören zur Verordnung.</p>
-<p>Für deine Entscheidung ist deshalb auch wichtig, was im Alltag umsetzbar ist. Wie gut passen wiederkehrende Praxistermine? Möchtest und kannst du einen Einnahmeplan zuverlässig einhalten? Gibt es Medikamente oder Erkrankungen, die bei der Auswahl berücksichtigt werden müssen?</p>
+<p>Für deine Entscheidung ist deshalb auch wichtig, was im Alltag umsetzbar ist. Wie gut passen wiederkehrende Praxistermine? Möchtest und kannst du einen Einnahmeplan zuverlässig einhalten? Gibt es Medikamente oder Erkrankungen, die bei der Auswahl berücksichtigt werden müssen? Was ein vollständiger Einnahmeplan enthalten muss, steht unter <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/">TCM-Kräuter einnehmen: Einnahmeplan</a>.</p>
 <h2>Welche Methode ist wirksamer?</h2>
 <p>Eine pauschale Rangliste wäre unseriös. Die Studienlage hängt vom Beschwerdebild und der konkreten Behandlung ab.</p>
 <p>Für Akupunktur gibt es bei bestimmten Schmerzbeschwerden und Kopfschmerzformen Hinweise auf einen Nutzen. Bei chinesischen Kräutern sind die Ergebnisse je nach Präparat und Anwendung unterschiedlich und häufig durch die Studienqualität begrenzt. Das erlaubt keinen allgemeinen Schluss, eine der beiden Methoden sei grundsätzlich besser.</p>
