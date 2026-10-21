@@ -16,7 +16,7 @@
     "video": {
       "paused": false,
       "muted": true,
-      "t": 3.47,
+      "t": 3.5,
       "vw": 640,
       "vh": 360,
       "src": "/videos/hero-sg/hwang-praxis-640.webm",
@@ -32,11 +32,10 @@
     "scrollW": 390,
     "h1": true,
     "ctas": 2,
-    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
     "lcp": {
-      "t": 684,
+      "t": 664,
       "el": "IMG",
-      "url": "http://localhost:42541/images/standort-stgallen.jpg"
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
     },
     "cls": 0.0551,
     "mediaReqs": [
@@ -63,7 +62,7 @@
     "video": {
       "paused": false,
       "muted": true,
-      "t": 3.49,
+      "t": 3.5,
       "vw": 640,
       "vh": 360,
       "src": "/videos/hero-sg/hwang-praxis-640.webm",
@@ -79,13 +78,12 @@
     "scrollW": 768,
     "h1": true,
     "ctas": 2,
-    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
     "lcp": {
-      "t": 272,
+      "t": 292,
       "el": "IMG",
-      "url": "http://localhost:42541/images/standort-stgallen.jpg"
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
     },
-    "cls": 0.0004,
+    "cls": 0,
     "mediaReqs": [
       "/images/standort-stgallen.jpg 200",
       "/site.webmanifest 200",
@@ -110,7 +108,7 @@
     "video": {
       "paused": false,
       "muted": true,
-      "t": 3.46,
+      "t": 3.42,
       "vw": 1280,
       "vh": 720,
       "src": "/videos/hero-sg/hwang-praxis-1280.webm",
@@ -126,17 +124,16 @@
     "scrollW": 1440,
     "h1": true,
     "ctas": 2,
-    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
     "lcp": {
-      "t": 304,
+      "t": 316,
       "el": "IMG",
-      "url": "http://localhost:42541/images/standort-stgallen.jpg"
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
     },
-    "cls": 0.041,
+    "cls": 0,
     "mediaReqs": [
       "/images/standort-stgallen.jpg 200",
-      "/videos/hero-sg/hwang-praxis-1280.webm 206",
-      "/site.webmanifest 200"
+      "/site.webmanifest 200",
+      "/videos/hero-sg/hwang-praxis-1280.webm 206"
     ],
     "shifted": false
   },
@@ -173,11 +170,10 @@
     "scrollW": 390,
     "h1": true,
     "ctas": 2,
-    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
     "lcp": {
-      "t": 260,
+      "t": 352,
       "el": "IMG",
-      "url": "http://localhost:42541/images/standort-stgallen.jpg"
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
     },
     "cls": 0,
     "mediaReqs": [
@@ -219,13 +215,12 @@
     "scrollW": 1440,
     "h1": true,
     "ctas": 2,
-    "caption": "TCM.ch St. Gallen · Oberer Graben 22",
     "lcp": {
-      "t": 392,
+      "t": 360,
       "el": "IMG",
-      "url": "http://localhost:42541/images/standort-stgallen.jpg"
+      "url": "http://localhost:36799/images/standort-stgallen.jpg"
     },
-    "cls": 0.0002,
+    "cls": 0,
     "mediaReqs": [
       "/images/standort-stgallen.jpg 200",
       "/site.webmanifest 200"
