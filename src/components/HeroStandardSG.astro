@@ -36,12 +36,23 @@ const card = renderKontaktForm({
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122" class="tcm-link tcm-link--on-brand">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener" class="tcm-link tcm-link--on-brand">WhatsApp</a></p>
     </div>
-    <figure class="lsr-right">
+    <figure class="lsr-right lsr-right--video" id="sg-hero-media">
       <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
+      {/* Hero-Video (hwang.ch Startseite, Original 1920x1080 aus den Webflow-Assets; hier ohne Ton, 25 fps).
+          Kein autoplay-Attribut + preload="none": das Foto bleibt LCP, das Video startet erst nach window.load
+          per Skript unten. Bis zum ersten gerenderten Frame bleibt das Foto sichtbar (Fallback bei Autoplay-Block,
+          Save-Data, prefers-reduced-motion). Mobile ≤900px bekommt die 640er-Rendition. */}
+      <video muted playsinline loop preload="none" poster="/images/standort-stgallen.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback width="1280" height="720">
+        <source src="/videos/hero-sg/hwang-praxis-640.webm" type="video/webm" media="(max-width:900px)">
+        <source src="/videos/hero-sg/hwang-praxis-640.mp4" type="video/mp4" media="(max-width:900px)">
+        <source src="/videos/hero-sg/hwang-praxis-1280.webm" type="video/webm">
+        <source src="/videos/hero-sg/hwang-praxis-1280.mp4" type="video/mp4">
+      </video>
       <figcaption>TCM.ch St. Gallen · Oberer Graben 22</figcaption>
     </figure>
   </div>
 </section>
+<script is:inline>(function(){var f=document.getElementById('sg-hero-media'),v=f&&f.querySelector('video');if(!v)return;var c=navigator.connection;if((matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(c&&c.saveData))return;function start(){v.addEventListener('playing',function(){f.classList.add('is-playing');},{once:true});var p=v.play();if(p&&p.catch)p.catch(function(){});}if(document.readyState==='complete')start();else addEventListener('load',start,{once:true});})();</script>
 <KontaktPraxis>
   {uspHtml && <Fragment slot="usp" set:html={uspHtml} />}
   <Fragment slot="form" set:html={card} />
