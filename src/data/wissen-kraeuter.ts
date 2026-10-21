@@ -231,7 +231,7 @@ export const wissenKraeuter: Wissen[] = [
 <h3>Sind Regelschmerzen und PMS dasselbe?</h3>
 <p>Nein. Sie können gemeinsam auftreten, beschreiben aber unterschiedliche Beschwerden. Dieser Artikel betrifft die Entscheidung über Kräuter bei Regelschmerzen.</p>
 <h3>Kann ich dadurch Schmerzmittel oder hormonelle Medikamente ersetzen?</h3>
-<p>Das lässt sich aus der beschriebenen Forschung nicht pauschal ableiten. Änderungen gehören mit der behandelnden Fachperson besprochen.</p>
+<p>Das lässt sich aus der beschriebenen Forschung nicht pauschal ableiten. Änderungen gehören mit der behandelnden Fachperson besprochen. Wer hormonell verhütet, sollte eine Rezeptur vorab prüfen lassen, siehe <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/">TCM-Kräuter und die Pille</a>.</p>
 <h3>Gilt die Kräuterforschung auch für Akupunktur?</h3>
 <p>Nein. Die Nadelbehandlung wird getrennt unter <a href="/wissen/akupunktur-bei-menstruationsbeschwerden/">Akupunktur bei Menstruationsbeschwerden</a> eingeordnet.</p>
 <h2>Beratung anfragen</h2>
@@ -361,7 +361,7 @@ export const wissenKraeuter: Wissen[] = [
 <p>Auch ein intensiver Geschmack ist kein Wirksamkeitsnachweis. Umgekehrt bedeutet eine praktische Tablettenform nicht automatisch eine schwächere Wirkung.</p>
 <p>Wenn eine Studie ein bestimmtes Granulat untersucht hat, belegt sie nicht ohne Weiteres dieselbe Wirkung einer anders zusammengesetzten Zubereitung. Fragen nach dem Präparat sind deshalb wichtiger als eine pauschale Rangfolge der Formen.</p>
 <h2>Was im Alltag geklärt werden sollte</h2>
-<p>Lass dir erklären, wie die verordnete Zubereitung angewendet und aufbewahrt wird. Sprich an, wenn du viel unterwegs bist, Schwierigkeiten beim Schlucken hast oder eine Zubereitung geschmacklich nicht bewältigen kannst.</p>
+<p>Lass dir erklären, wie die verordnete Zubereitung angewendet und aufbewahrt wird. Welche Angaben ein vollständiger Einnahmeplan enthalten sollte, steht unter <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/">TCM-Kräuter einnehmen: Einnahmeplan</a>. Sprich an, wenn du viel unterwegs bist, Schwierigkeiten beim Schlucken hast oder eine Zubereitung geschmacklich nicht bewältigen kannst.</p>
 <p>Hilfreiche Fragen sind:</p>
 <ul><li>Welche genaue Zubereitung bekomme ich?</li><li>Welche Vorbereitung ist notwendig?</li><li>Was mache ich bei einer vergessenen Anwendung?</li><li>An wen wende ich mich bei Unverträglichkeit?</li></ul>
 <p>Eigenständige Umrechnungen zwischen Granulat, Flüssigkeit und Tabletten sind keine sichere Lösung. Änderungen gehören mit der verordnenden Fachperson besprochen.</p>
