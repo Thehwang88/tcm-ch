@@ -1,3 +1,4 @@
+import { fragenEntscheidungen } from './fragen-entscheidungen';
 // Patientenfragen-Layer der Gesundheitsbibliothek (/gesundheitsbibliothek/fragen/).
 //
 // Modell (bewusst konservativ, kein FAQ-Farming):
@@ -21,7 +22,7 @@ export interface Frage {
   deck?: string;
   ctaTitle?: string; ctaText?: string; ctaLabel?: string;
   /** Kohorten-Kennung: Schema-Daten kommen aus der Kohorten-Konstante statt aus FRAGEN_DATEN. */
-  cohort?: 'welle-3';
+  cohort?: 'welle-3' | 'entscheidungen-2026-10';
   verwandt: { href: string; label: string }[];
   mehr: FrageLink[];
 }
@@ -266,7 +267,7 @@ export const fragenHubs: FragenHub[] = [
   },
 ];
 
-export const fragen: Frage[] = [
+const fragenBase: Frage[] = [
   {
     slug: 'tut-akupunktur-weh',
     question: 'Tut Akupunktur weh?',
@@ -937,6 +938,9 @@ export const fragen: Frage[] = [
     ],
   },
 ];
+
+// Entscheidungsfragen-Kohorte (eigene Datei, wie die Wissen-Kohorten in wissen.ts).
+export const fragen: Frage[] = [...fragenBase, ...fragenEntscheidungen];
 
 export const fragenHubBySlug = (slug: string) => fragenHubs.find((h) => h.slug === slug);
 export const frageBySlug = (slug: string) => fragen.find((f) => f.slug === slug);
