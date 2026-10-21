@@ -6421,7 +6421,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/akupunktur-oder-physiotherapie/",
@@ -6830,7 +6830,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 4
     },
     {
