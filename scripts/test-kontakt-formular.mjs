@@ -64,7 +64,7 @@ ok(await pg.$eval(card('sg-unten'), (c) => !c.querySelector('input[name=terminar
 await submit(pg, 'sg-hero');
 let c0 = calls[0] || {};
 ok(calls.length === 1 && c0.angebot_id === 'TCM_CHECKIN' && c0.standort === 'St. Gallen' && c0.telefon === '+41 79 123 45 67' && !('name' in c0) && !('email' in c0) && !('anliegen' in c0), `Payload phone-only: ${JSON.stringify({ a: c0.angebot_id, s: c0.standort, q: c0.quelle, f: c0.formular })}`);
-ok(c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Gratis-30min-StGallen' && c0.quelle_detail === 'Hero St. Gallen Neueroeffnung' && c0.seite === '/standort/st-gallen', 'Hero-Identifier (quelle/formular/Quelle/Seite) erhalten');
+ok(c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Termin-StGallen' && c0.quelle_detail === 'Hero St. Gallen · reguläres Terminformular' && c0.seite === '/standorte/st-gallen/', 'Hero-Identifier (quelle/formular/Quelle/Seite) erhalten');
 let fs0 = await ev(pg, 'formular_senden');
 ok(fs0.length === 1 && fs0[0].quelle === 'launch-hero-sg' && fs0[0].terminart === 'checkin' && fs0[0].standort === 'st-gallen' && !JSON.stringify(fs0).includes('79 123'), `genau 1 formular_senden ohne PII: ${JSON.stringify(fs0[0])}`);
 ok((await ev(pg, 'first30_phone_form_submit')).length === 0, 'kein first30_*-Event');
@@ -412,7 +412,7 @@ await pg.close();
 // Telefon-only-Anfrage aus dem kompakten Hero
 ({ pg, calls } = await open('/standorte/st-gallen/'));
 await pick(pg, 'sg-hero', 'behandlung'); await type(pg, 'sg-hero', 'telefon', '+41 79 123 45 67'); await submit(pg, 'sg-hero'); c0 = calls[0] || {};
-ok(calls.length === 1 && c0.angebot_id === 'ERSTTERMIN_BEHANDLUNG' && c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Gratis-30min-StGallen' && !('name' in c0) && !('email' in c0) && !('wunschzeit' in c0) && (await ev(pg, 'formular_senden')).length === 1, 'Telefon-only (optionale Angaben zu): Payload ohne Name/E-Mail/Wunschzeit, Identifier erhalten, genau 1 formular_senden');
+ok(calls.length === 1 && c0.angebot_id === 'ERSTTERMIN_BEHANDLUNG' && c0.quelle === 'launch-hero-sg' && c0.formular === 'Hero-Termin-StGallen' && c0.quelle_detail === 'Hero St. Gallen · reguläres Terminformular' && !('name' in c0) && !('email' in c0) && !('wunschzeit' in c0) && (await ev(pg, 'formular_senden')).length === 1, 'Telefon-only (optionale Angaben zu): Payload ohne Name/E-Mail/Wunschzeit, Identifier erhalten, genau 1 formular_senden');
 await pg.close();
 // Fehlerfokus: Fehler im geschlossenen optionalen Bereich öffnet ihn und fokussiert das Feld
 ({ pg, calls } = await open('/standorte/st-gallen/'));
