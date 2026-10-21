@@ -1,0 +1,16 @@
+{
+  "_": "TCM 360° Entdeckertage St. Gallen · Buchungsrunden. Vom Team gepflegt, ohne Code-Änderung (nach Edit: Deploy = neuer Build). Felder je Runde: id (eindeutig, nur a-z0-9-), start/ende (ISO mit Zeitzonen-Offset Europe/Zurich; CEST +02:00 bis 25.10.2026, danach CET +01:00), status (geplant | offen | beendet), reservierteTermine (separat reservierte 360°-Termine, Zahl oder null = kein Kontingent → keine Kapazitätsaussage), bestaetigteBuchungen (gegen die Agenda verifiziert, Zahl oder null; nur mit verifiziertAm/verifiziertVon), hinweis (optionaler geprüfter Anzeigetext; leer = Standardtext «Aktuelle Buchungsrunde bis <Ende>»). Regeln: Frist nur, wenn die Runde wirklich dann endet; keine Resets; eine neue Runde = neuer Eintrag mit neuer id; nie eine alte Runde verlängern. Gate: node scripts/check-herbst-sg.mjs.",
+  "runden": [
+    {
+      "id": "runde-2026-10",
+      "start": "2026-10-22T00:00:00+02:00",
+      "ende": "2026-10-31T23:59:59+01:00",
+      "status": "offen",
+      "reservierteTermine": null,
+      "bestaetigteBuchungen": null,
+      "verifiziertAm": "",
+      "verifiziertVon": "",
+      "hinweis": ""
+    }
+  ]
+}

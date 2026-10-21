@@ -1,0 +1,54 @@
+---
+// TCM 360° Entdeckertage St. Gallen (nur /standorte/st-gallen/): Aktionsbanner direkt unter dem bestehenden einzeiligen
+// Header, scrollt mit der Seite. Mobile kompakt (Label, Zeile, Subline, CTA, Rundenzeile), Desktop als Reihe.
+// CTA öffnet das Sheet (HerbstSheetSG); ohne JavaScript springt er zur oberen Buchungsbox (#offer-form).
+// Rundenzeile ([data-hsg-runde]): Build-Text; das Sheet-Skript setzt zur Laufzeit denselben Status aus den Runden
+// (beendete Runde → neutral oder bestätigte nächste Runde). Kein Countdown, keine Resets.
+import { herbstState, HERBST_COPY as C } from '../data/herbst-sg';
+const st = herbstState();
+if (!st.show) throw new Error('HerbstBannerSG nur rendern, wenn herbstState().show');
+const cta = st.soldOut ? C.bannerCtaSoldout : C.bannerCta;
+---
+<section class="hsg-banner" id="hsg-banner" data-hsg aria-labelledby="hsg-banner-h" data-hsg-mode={st.mode} data-hsg-preview={st.preview || undefined}>
+  <div class="hsg-banner-in">
+    <div class="hsg-banner-txt">
+      <span class="hsg-eyebrow">{C.bannerEyebrow}</span>
+      <p class="hsg-banner-h" id="hsg-banner-h">{C.bannerH}</p>
+      <p class="hsg-banner-sub">{st.soldOut ? C.sheetSubSoldout + ' Reguläre Termine weiterhin anfragbar.' : C.bannerSub}</p>
+    </div>
+    <div class="hsg-banner-act">
+      <a href="#offer-form" class="hsg-btn hsg-btn--dark" data-hsg-open data-care-cta="herbst-banner">{cta} <span aria-hidden="true">→</span></a>
+      <p class="hsg-banner-note"><span data-hsg-runde>{st.rundeText}</span>{st.scarcity && <span class="hsg-banner-sc" data-hsg-sc> · {st.scarcity}</span>}</p>
+    </div>
+  </div>
+</section>
+<i hidden data-hsg-end></i>
+<style is:global>
+  /* Banner unter dem fixen Header (nav#mainNav, --header-h); der SG-Hero verliert dafür sein Header-Padding. */
+  .hsg-banner{margin-top:var(--header-h,76px);background:var(--brand,#1AE288);color:var(--brand-black,#020B10);font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-bottom:2px solid rgba(2,11,16,.2)}
+  .hsg-banner + [data-hsg-end] + .lsr-hero.hlsg{padding-top:0!important}
+  @media (max-width:900px){.hsg-banner{margin-top:80px}} /* mobile Header-Höhe (nav-rebrand.css: nav#mainNav 80px) */
+  .hsg-banner-in{max-width:var(--max,1280px);margin:0 auto;padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px}
+  .hsg-eyebrow{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;line-height:1.2;background:var(--brand-black,#020B10);color:var(--brand,#1AE288);border-radius:999px;padding:5px 10px}
+  .hsg-banner-h{margin:8px 0 2px;font-size:clamp(1.25rem,1rem + 1.4vw,1.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .hsg-banner-sub{margin:0;font-size:15px;line-height:1.45;color:rgba(2,11,16,.82)}
+  .hsg-banner-act{display:flex;flex-direction:column;gap:8px}
+  .hsg-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;font:inherit;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:background-color .15s ease}
+  .hsg-btn--dark{background:var(--brand-black,#020B10);color:#fff;border-color:var(--brand-black,#020B10)}
+  .hsg-btn--dark:hover{background:#0B1F27}
+  .hsg-btn:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:3px}
+  .hsg-banner-note{margin:0;font-size:13.5px;font-weight:700;line-height:1.35;color:rgba(2,11,16,.85)}
+  .hsg-banner-sc{font-weight:600}
+  @media (min-width:769px){
+    .hsg-banner-in{flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:16px 24px}
+    .hsg-banner-txt{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px}
+    .hsg-banner-h{margin:0}
+    .hsg-banner-sub{flex-basis:100%}
+    .hsg-banner-act{align-items:flex-end;flex-shrink:0}
+  }
+  @media (max-width:389px){.hsg-banner-in{padding:12px 14px 14px;gap:10px}.hsg-banner-h{margin-top:6px}.hsg-banner-sub{font-size:14px}}
+  @media (max-width:359px){.hsg-banner-in{padding:10px 12px 12px}.hsg-btn{min-height:46px;font-size:15px}}
+  /* Angebot abgeschaltet (Client-Prüfung, z. B. offerActive im Build noch an, aber Skript entfernt): kein Kampagnen-Element. */
+  html.hsg-off [data-hsg]{display:none!important}
+  html.hsg-off .hsg-banner + [data-hsg-end] + .lsr-hero.hlsg{padding-top:var(--header-h,76px)!important}
+</style>

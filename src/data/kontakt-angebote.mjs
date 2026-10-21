@@ -102,6 +102,17 @@ export const ONEDOC = {
 export const checkinStandortNamen = () => Object.values(CHECKIN_FREIGABE).map((f) => f.name);
 export const OFFER_BY_ID = Object.fromEntries(Object.values(TERMINARTEN).map((t) => [t.id, t]));
 
+/** Kampagnen-Kennungen (Formularfeld «kampagne»): Server akzeptiert nur diese IDs, Mail-Label kommt NIE vom Client.
+ *  Kampagnenlogik, Kontingent und Fristen: src/data/herbst-sg.ts. */
+export const KAMPAGNEN = {
+  sg_tcm360_herbst_2026: {
+    label: 'TCM 360° Entdeckertage St. Gallen 2026', betreff: ' · TCM 360°', standortId: 'st-gallen',
+    /** Check-in-Anfragen aus der Kampagne sind 360°-Termine (eigenes Format, separat reserviertes Kontingent), nicht der
+     *  reguläre 30-Minuten-Check-in: Mail-Terminart/Betreff entsprechend; keine Dauer (Format in Freigabe, docs/cro/10). */
+    checkin: { label: 'Gratis TCM 360°-Check (Entdeckertage)', anzeige: 'Gratis TCM 360°-Check · Entdeckertage', kosten: 'kostenlos, ohne Behandlung, separat reserviertes 360°-Kontingent', beschreibung: 'TCM 360°-Check der Entdeckertage: ganzheitlicher TCM-Kurzcheck (5 Themen), Zungen- und Pulsdiagnostik, Fragen, Praxis-Einblick; ohne Behandlung, ohne Verpflichtung' },
+  },
+};
+
 /** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
 export const GLOBAL_ORDER = ['zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
 export const ANDERE = { value: 'Andere / in meiner Nähe', label: 'Andere / in meiner Nähe', id: 'andere', art: 'routing' };

@@ -1,0 +1,263 @@
+---
+// TCM 360° Entdeckertage St. Gallen: Anfrage-Sheet (mobil: Bottom Sheet, Desktop: zentriertes zweispaltiges Modal) und
+// Kampagnen-Sticky-Leiste (mobil, ersetzt die reguläre StickyCtaBar über den Marker data-no-sticky-cta, gleiche Logik).
+// Formular = gemeinsames Kontaktformular (src/lib/kontakt-form.ts, Modus herbst): gleiche Validierung, gleicher
+// Versand (/api/anfrage), gleiche Conversion (formular_senden, genau 1× nach Server-OK, kontakt-form.js) + Felder
+// kampagne / runde / UTM. Öffnet NIE automatisch; nur über [data-hsg-open]. Kein Countdown, keine Zufallszahlen.
+// Buchungsrunden: Laufzeit-Status aus tcm360-runden.json (gleiche Regeln wie herbstState): beendete Runde → neutraler
+// Status oder bestätigte nächste Runde; Feld «runde» = aktuelle Runde oder leer.
+import { renderKontaktForm, clinicById } from '../lib/kontakt-form';
+import { herbstState, HERBST_SG, HERBST_COPY as C, NEUTRAL_TEXT } from '../data/herbst-sg';
+const { sitekey } = Astro.props;
+const st = herbstState();
+if (!st.show) throw new Error('HerbstSheetSG nur rendern, wenn herbstState().show');
+const clinic = clinicById(HERBST_SG.standortId)!;
+const tel = 'tel:' + clinic.phone.replace(/[^\d+]/g, '');
+// Kanonisches SG-WhatsApp-Ziel (identisch mit HeroStandardSG).
+const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
+const card = renderKontaktForm({
+  instance: 'sg-herbst', standortId: HERBST_SG.standortId, cardId: 'kf-sg-herbst',
+  quelle: 'herbst-sg', formName: 'TCM360-Entdeckertage-StGallen', formular: 'TCM360-Entdeckertage-StGallen',
+  quelleDetail: 'TCM 360° Entdeckertage St. Gallen', seite: '/standorte/st-gallen/',
+  wunschzeit: true, sitekey, headingTag: 'h2', ruhig: true, waHref: SG_WA,
+  herbst: { kampagne: HERBST_SG.id, rundeId: st.rundeId, soldOut: st.soldOut, dauerText: st.dauerText, copy: C },
+});
+---
+<dialog class="hsg-sheet" id="hsg-sheet" data-hsg aria-labelledby="kf-sg-herbst-h" data-hsg-mode={st.mode}>
+  <div class="hsg-sheet-in">
+    <button type="button" class="hsg-close" data-hsg-close aria-label="Schliessen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <aside class="hsg-aside" aria-label="TCM 360° Entdeckertage">
+      <img class="hsg-img" src="/images/standort-stgallen-800.webp" alt="TCM.ch Praxis St. Gallen am Oberen Graben 22, Empfangsbereich" loading="lazy" decoding="async">
+      <span class="hsg-eyebrow">{C.eyebrow}</span>
+      <p class="hsg-aside-h">{C.name}</p>
+      <p class="hsg-aside-sub">{C.subtitle}</p>
+      <p class="hsg-offer">{C.offer}</p>
+      <p class="hsg-support">{C.support}</p>
+      <ul class="hsg-list">{C.components.map((k) => <li><strong>{k.t}</strong></li>)}</ul>
+      <p class="hsg-reassure">{C.reassurance}</p>
+      <p class="hsg-nt">{C.noTreatment}{st.dauerText && ` Dauer ${st.dauerText}.`}</p>
+      <p class="hsg-nt">{C.boundary}</p>
+      <p class="hsg-deadline"><strong data-hsg-runde>{st.rundeText}</strong>{st.scarcity && <span data-hsg-sc> · {st.scarcity}</span>}</p>
+      <p class="hsg-deadline-note">{C.rundeNote}</p>
+    </aside>
+    <div class="hsg-formcol">
+      <Fragment set:html={card} />
+      <p class="hsg-deadline hsg-deadline--m"><strong data-hsg-runde>{st.rundeText}</strong>{st.scarcity && <span data-hsg-sc> · {st.scarcity}</span>}</p>
+      <p class="hsg-deadline-note hsg-deadline--m">{C.rundeNote}</p>
+    </div>
+  </div>
+</dialog>
+<div class="hsg-bar" data-hsg role="region" aria-label="TCM 360° Entdeckertage St. Gallen" aria-hidden="true">
+  <a href="#offer-form" class="hsg-bar-primary" data-hsg-open data-care-cta="herbst-sticky">{st.soldOut ? C.stickyPrimarySoldout : C.stickyPrimary} <span aria-hidden="true">→</span></a>
+  <a class="hsg-bar-tel" href={tel} aria-label="Praxis St. Gallen anrufen" data-hsg-tel><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/></svg></a>
+</div>
+<i hidden data-no-sticky-cta data-hsg-marker></i>
+<i hidden data-hsg-end></i>
+<script is:inline define:vars={{ KAMP: HERBST_SG.id, RUNDEN: st.rundenClient, NEUTRAL: NEUTRAL_TEXT }}>
+  (function () {
+    var html = document.documentElement;
+    var dlg = document.getElementById('hsg-sheet'); if (!dlg) return;
+    var bar = document.querySelector('.hsg-bar');
+    var push = function (o) { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push(o); } catch (e) {} };
+    var native = typeof dlg.showModal === 'function';
+    var opener = null;
+
+    // Buchungsrunde zur Laufzeit (gleiche Regeln wie der Build): aktuelle offene Runde → «Aktuelle Buchungsrunde bis …»,
+    // sonst bestätigte nächste Runde → «Nächste Buchungsrunde ab …», sonst neutral. Nie ein Reset, nie eine Verlängerung.
+    var fmt = function (t) { try { return new Intl.DateTimeFormat('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(t)); } catch (e) { var d = new Date(t); return ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear(); } };
+    var pick = function (now) {
+      var cur = null, next = null, i, r;
+      for (i = 0; i < RUNDEN.length; i++) { r = RUNDEN[i]; if (r.status === 'offen' && now >= r.start && now <= r.ende) { cur = r; break; } }
+      if (cur) return { kind: 'aktuell', r: cur };
+      for (i = 0; i < RUNDEN.length; i++) { r = RUNDEN[i]; if ((r.status === 'offen' || r.status === 'geplant') && r.start > now && (!next || r.start < next.start)) next = r; }
+      return next ? { kind: 'naechste', r: next } : { kind: 'keine', r: null };
+    };
+    var applyRunde = function () {
+      var p = pick(Date.now());
+      var text = p.kind === 'aktuell' ? (p.r.hinweis || 'Aktuelle Buchungsrunde bis ' + fmt(p.r.ende)) : p.kind === 'naechste' ? (p.r.hinweis || 'Nächste Buchungsrunde ab ' + fmt(p.r.start)) : NEUTRAL;
+      [].forEach.call(document.querySelectorAll('[data-hsg-runde]'), function (e) { if (e.textContent !== text) e.textContent = text; });
+      // Kapazitätszeile nur mit laufender Runde (Build-Zeit verifiziert); nach Rundenende ausblenden.
+      [].forEach.call(document.querySelectorAll('[data-hsg-sc]'), function (e) { e.hidden = p.kind !== 'aktuell' || p.r.soldOut; });
+      var ri = dlg.querySelector('[data-kf-runde]'); if (ri) ri.value = p.kind === 'aktuell' ? p.r.id : '';
+      return p;
+    };
+    applyRunde();
+    // Rundenende während des Besuchs: Status minütlich nachführen (nur Text/Feld, keine Dringlichkeit).
+    setTimeout(function tick() { applyRunde(); setTimeout(tick, 60000); }, 60000);
+
+    // UTM (nur Zuordnung, keine Personendaten): aus der URL, für Folgeseiten in sessionStorage; in die Kampagnen-Felder.
+    var utm = {};
+    try {
+      var q = new URLSearchParams(location.search), keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'], any = false;
+      keys.forEach(function (k) { var v = q.get(k); if (v) { utm[k] = v.slice(0, 120); any = true; } });
+      if (any) sessionStorage.setItem('hsg_utm', JSON.stringify(utm)); else utm = JSON.parse(sessionStorage.getItem('hsg_utm') || '{}');
+    } catch (e) { utm = {}; }
+    [].forEach.call(dlg.querySelectorAll('[data-kf-utm]'), function (i) { if (utm[i.name]) i.value = utm[i.name]; });
+
+    // Turnstile erst beim ersten Öffnen explizit rendern (verborgener Dialog); dann cf-turnstile-Klasse → Token-Pflicht im Submit.
+    var tsEl = dlg.querySelector('[data-kf-ts-lazy]'), tsDone = false, tsTries = 0;
+    var renderTs = function () {
+      if (tsDone || !tsEl) return;
+      if (!window.turnstile || !window.turnstile.render) { if (tsTries++ < 50) setTimeout(renderTs, 200); return; }
+      tsDone = true; tsEl.classList.add('cf-turnstile');
+      try { window.turnstile.render(tsEl, { sitekey: tsEl.getAttribute('data-sitekey'), appearance: 'interaction-only', size: tsEl.clientWidth && tsEl.clientWidth < 300 ? 'compact' : 'normal' }); } catch (e) {}
+    };
+
+    // Sichtbare Höhe (Bildschirmtastatur): visualViewport → --hsg-vvh; Inhalt scrollt im Sheet.
+    var vv = window.visualViewport;
+    var setVh = function () { if (vv) dlg.style.setProperty('--hsg-vvh', Math.round(vv.height) + 'px'); };
+    var isOpen = function () { return dlg.hasAttribute('open'); };
+    var open = function (pos, from) {
+      if (isOpen()) return;
+      opener = from || document.activeElement;
+      var cp = dlg.querySelector('input[name="cta_pos"]'); if (cp && pos) cp.value = pos;
+      setVh();
+      if (native) { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } } else dlg.setAttribute('open', '');
+      html.classList.add('hsg-open');
+      if (!native) { dlg.setAttribute('aria-modal', 'true'); }
+      renderTs();
+      var h = document.getElementById('kf-sg-herbst-h'); var focusEl = dlg.querySelector('.kf-success') || h;
+      if (focusEl) { focusEl.setAttribute('tabindex', '-1'); setTimeout(function () { focusEl.focus({ preventScroll: true }); }, 30); }
+      var p = applyRunde();
+      push({ event: 'kampagne_sheet_open', kampagne: KAMP, cta_position: pos || '', standort: 'st-gallen', buchungsrunde: p.kind === 'aktuell' ? p.r.id : '' });
+      sched();
+    };
+    var close = function () {
+      if (!isOpen()) return;
+      if (native) { try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } } else dlg.removeAttribute('open');
+      html.classList.remove('hsg-open');
+      if (opener && opener.focus) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
+      sched();
+    };
+    dlg.addEventListener('close', function () { html.classList.remove('hsg-open'); sched(); });
+    dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg) return close(); // Backdrop
+      var c = e.target.closest ? e.target.closest('[data-hsg-close]') : null; if (c) { e.preventDefault(); return close(); }
+      // Links zu Zielen ausserhalb des Sheets (OneDoc #online-buchen, Datenschutz): Sheet schliessen, Navigation läuft weiter.
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (a && !dlg.contains(document.getElementById((a.getAttribute('href') || '').replace(/^#/, '')))) close();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen() && !native) close(); });
+    document.addEventListener('click', function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('[data-hsg-open]') : null; if (!el) return;
+      e.preventDefault();
+      var pos = el.getAttribute('data-care-cta') || 'herbst';
+      push({ event: 'kampagne_cta_click', kampagne: KAMP, cta_position: pos, standort: 'st-gallen' });
+      open(pos, el);
+    });
+    var telBtn = document.querySelector('[data-hsg-tel]');
+    if (telBtn) telBtn.addEventListener('click', function () { push({ event: 'kampagne_cta_click', kampagne: KAMP, cta_position: 'herbst-sticky-phone', standort: 'st-gallen' }); });
+    if (vv) vv.addEventListener('resize', function () { if (isOpen()) setVh(); });
+
+    // Sticky-Leiste (mobil ≤768px): wie die reguläre SG-Logik. Erst nach der oberen Buchungsbox, aus bei unterem Formular /
+    // OneDoc im Bild, bei Eingabefokus, offener Bildschirmtastatur, offenem Sheet oder Menü. Verborgen = inert.
+    // Dieses Skript steht VOR dem Seiten-Body (#kontakt, #online-buchen folgen erst): Stopps erst nach DOMContentLoaded auflösen.
+    var sgBox = document.querySelector('[data-kf-instance="sg-hero"]') || document.querySelector('.lsr-hero');
+    var stops = [];
+    var resolveStops = function () { stops = [document.getElementById('kontakt'), document.getElementById('online-buchen')].filter(Boolean); };
+    var typing = function () { var a = document.activeElement; return !!(a && a.matches && a.matches('input:not([type=radio]):not([type=checkbox]):not([type=hidden]):not([type=submit]):not([type=button]), textarea, select, [contenteditable="true"]')); };
+    var keyboard = function () { return !!(vv && vv.height < window.innerHeight * 0.75); };
+    var mobile = function () { return window.matchMedia('(max-width: 768px)').matches; };
+    var setVis = function (show) {
+      if (!bar) return;
+      if (bar.classList.contains('is-visible') !== show) bar.classList.toggle('is-visible', show);
+      bar.inert = !show; if (show) bar.removeAttribute('aria-hidden'); else bar.setAttribute('aria-hidden', 'true');
+    };
+    var decide = function () {
+      if (!bar || !sgBox) return;
+      var vh = window.innerHeight;
+      var past = sgBox.getBoundingClientRect().bottom <= 0;
+      var inStop = stops.some(function (e) { var r = e.getBoundingClientRect(); return r.top < vh && r.bottom > 0; });
+      setVis(mobile() && past && !inStop && !isOpen() && !typing() && !keyboard() && !document.body.classList.contains('drawer-open'));
+    };
+    var raf = 0, sched = function () { if (!raf) raf = requestAnimationFrame(function () { raf = 0; decide(); }); };
+    var wire = function () {
+      resolveStops(); decide();
+      if ('IntersectionObserver' in window && sgBox) { var io = new IntersectionObserver(sched, { threshold: [0, 1] }); io.observe(sgBox); stops.forEach(function (e) { io.observe(e); }); }
+      if ('ResizeObserver' in window && sgBox) new ResizeObserver(sched).observe(sgBox);
+    };
+    if (bar) {
+      document.body.classList.add('hsg-reserve');
+      setVis(false);
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+      window.addEventListener('scroll', sched, { passive: true });
+      window.addEventListener('resize', sched);
+      if (vv) vv.addEventListener('resize', sched);
+      document.addEventListener('focusin', sched);
+      document.addEventListener('focusout', function () { setTimeout(sched, 0); });
+      window.addEventListener('pageshow', sched); window.addEventListener('load', sched); window.addEventListener('hashchange', sched);
+      new MutationObserver(sched).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+  })();
+</script>
+<style is:global>
+  /* ── Sheet / Modal ─────────────────────────────────────────────────────────────── */
+  dialog.hsg-sheet{position:fixed;inset:auto 0 0 0;margin:0;width:100%;max-width:none;box-sizing:border-box;border:0;padding:0;background:#fff;color:var(--brand-black,#020B10);font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-radius:24px 24px 0 0;max-height:min(92vh,var(--hsg-vvh,92vh));max-height:min(92dvh,var(--hsg-vvh,92dvh));overflow:auto;-webkit-overflow-scrolling:touch;box-shadow:0 -12px 48px rgba(2,11,16,.22);overscroll-behavior:contain}
+  dialog.hsg-sheet:not([open]){display:none}
+  dialog.hsg-sheet::backdrop{background:rgba(2,11,16,.55)}
+  dialog.hsg-sheet[open]{animation:hsg-up .28s cubic-bezier(.16,1,.3,1)}
+  @keyframes hsg-up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+  html.hsg-open{overflow:hidden}
+  .hsg-sheet-in{position:relative;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .hsg-close{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:rgba(2,11,16,.06);color:var(--brand-black,#020B10);cursor:pointer}
+  .hsg-close:hover{background:rgba(2,11,16,.12)}
+  .hsg-close:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:2px}
+  .hsg-aside{display:none}
+  .hsg-formcol{min-width:0}
+  .hsg-formcol .hsg-deadline{margin:0 18px;font-size:13.5px;line-height:1.45;color:var(--brand-black,#020B10)}
+  .hsg-formcol .hsg-deadline-note{margin:4px 18px 18px;font-size:12.5px;line-height:1.45;color:var(--mid,#4B5563)}
+  /* Formular im Sheet: weisser Kopf mit Label + kompakter Vorteilsliste (schwarze Schrift, Neon-Akzent), kein Kartenrahmen. */
+  .kf.kf--ruhig.kf--herbst{border:0;box-shadow:none;border-radius:0;padding:0 18px 14px!important;overflow:visible}
+  .kf.kf--herbst .kf-kopf{margin:0 0 14px;padding:20px 44px 0 0;background:#fff;color:var(--brand-black,#020B10)}
+  .kf.kf--herbst .kf-kopf .kf-h:not(#w2){color:var(--brand-black,#020B10);margin:10px 0 4px}
+  .kf.kf--herbst .kf-kopf-sub{color:var(--mid,#4B5563)}
+  .kf.kf--herbst .kf-eyebrow{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;line-height:1.2;border-radius:999px;padding:5px 10px;background:var(--brand,#1AE288);color:var(--brand-black,#020B10)}
+  .kf.kf--herbst .kf-hb-list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+  .kf.kf--herbst .kf-hb-list li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.4;color:var(--brand-black,#020B10)}
+  .kf.kf--herbst .kf-hb-list li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--brand-ink,#0B7A4C)}
+  .kf.kf--herbst .kf-soldout{margin:12px 0 0;padding:12px 14px;border-radius:12px;background:#F6F7F7;border:1px solid var(--border,#E3E6E8);font-size:14.5px;line-height:1.5;color:var(--brand-black,#020B10)}
+  .kf.kf--herbst .kf-opt--checkin,.kf.kf--herbst .kf-opt--checkin.is-checked{background:#F0FCF6}
+  .kf.kf--herbst .kf-opt.is-checked{border-color:var(--brand-black,#020B10);box-shadow:inset 0 0 0 1px var(--brand-black,#020B10),0 0 0 3px var(--brand,#1AE288)}
+  .kf.kf--herbst .kf-fields{margin-top:16px}
+  .kf.kf--herbst .kf-note{margin-top:10px}
+  @media (min-width:600px){.kf.kf--ruhig.kf--herbst{padding:0 24px 18px!important}.kf.kf--herbst .kf-kopf{padding-top:24px}.hsg-formcol .hsg-deadline{margin:0 24px}.hsg-formcol .hsg-deadline-note{margin:4px 24px 20px}}
+  @media (max-width:389px){.kf.kf--herbst .kf-hb-list li{font-size:14px}.kf.kf--herbst .kf-kopf{padding-top:16px;margin-bottom:12px}}
+  @media (min-width:769px){
+    dialog.hsg-sheet{inset:0;margin:auto;width:min(1000px,calc(100vw - 48px));max-height:calc(100vh - 48px);border-radius:24px;box-shadow:0 32px 96px rgba(2,11,16,.35)}
+    dialog.hsg-sheet[open]{animation:hsg-in .22s ease-out}
+    @keyframes hsg-in{from{transform:scale(.98);opacity:0}to{transform:none;opacity:1}}
+    .hsg-sheet-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .hsg-aside{display:block;padding:28px 28px 28px;background:#F7FCF9;border-right:1px solid rgba(2,11,16,.08)}
+    .hsg-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin:0 0 18px}
+    .hsg-aside-h{margin:12px 0 2px;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.12}
+    .hsg-aside-sub{margin:0 0 12px;font-size:13.5px;font-weight:700;letter-spacing:.02em;color:var(--mid,#4B5563)}
+    .hsg-offer{margin:0 0 8px;font-size:17px;font-weight:800;color:var(--brand-black,#020B10)}
+    .hsg-support{margin:0 0 12px;font-size:14.5px;line-height:1.5;color:var(--mid,#4B5563)}
+    .hsg-list{margin:0 0 12px;padding:0;list-style:none;display:grid;gap:6px}
+    .hsg-list li{position:relative;padding-left:24px;font-size:15px;line-height:1.45}
+    .hsg-list li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--brand-ink,#0B7A4C)}
+    .hsg-reassure{margin:0 0 10px;font-size:14px;font-weight:800;color:var(--brand-black,#020B10)}
+    .hsg-nt{margin:0 0 8px;font-size:12.5px;line-height:1.45;color:var(--mid,#4B5563)}
+    .hsg-aside .hsg-deadline{margin:12px 0 4px;font-size:14.5px;line-height:1.45}
+    .hsg-aside .hsg-deadline-note{margin:0;font-size:12.5px;line-height:1.45;color:var(--mid,#4B5563)}
+    .hsg-deadline--m{display:none}
+    .hsg-close{top:14px;right:14px}
+  }
+  @media (prefers-reduced-motion:reduce){dialog.hsg-sheet[open]{animation:none}}
+  /* ── Sticky-Leiste (mobil) ────────────────────────────────────────────────────── */
+  .hsg-bar{position:fixed;left:0;right:0;bottom:0;z-index:540;display:none;align-items:stretch;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--border,#E3E6E8);box-shadow:0 -4px 16px rgba(0,0,0,.07);font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+  .hsg-bar-primary{display:flex;align-items:center;justify-content:center;gap:8px;flex:1 1 auto;min-width:0;min-height:48px;box-sizing:border-box;padding:0 14px;white-space:nowrap;background:var(--brand,#1AE288);color:var(--brand-black,#020B10);border-radius:999px;font-size:15.5px;font-weight:800;letter-spacing:-.01em;text-decoration:none;box-shadow:0 6px 18px rgba(26,226,136,.3)}
+  .hsg-bar-tel{flex:0 0 48px;width:48px;min-height:48px;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;background:#fff;color:var(--brand-black,#020B10);border:1.5px solid rgba(2,11,16,.25);border-radius:999px;text-decoration:none}
+  .hsg-bar-primary:focus-visible,.hsg-bar-tel:focus-visible{outline:var(--focus-ring,3px solid rgba(2,11,16,.55));outline-offset:2px}
+  @media (max-width:768px){
+    .hsg-bar{display:flex;transform:translateY(120%);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s ease}
+    .hsg-bar.is-visible{transform:translateY(0);opacity:1;pointer-events:auto}
+    body.hsg-reserve{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  }
+  @media (max-width:359px){.hsg-bar{gap:6px;padding-left:10px;padding-right:10px}.hsg-bar-primary{padding:0 10px;font-size:14.5px}.hsg-bar-tel{flex-basis:44px;width:44px;min-height:44px}}
+  body.drawer-open .hsg-bar,html.hsg-open .hsg-bar{opacity:0!important;pointer-events:none!important}
+  /* Offenes Sheet: schwebender WhatsApp-Button nicht über dem Modal (WhatsApp-Weg steht im Formular selbst). */
+  html.hsg-open .wa-fab{display:none!important}
+  @media (prefers-reduced-motion:reduce){.hsg-bar{transition:none}}
+</style>

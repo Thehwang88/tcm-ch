@@ -1,7 +1,7 @@
 // PRODUCTION — POST /api/anfrage → Resend email to termine@tcm.ch
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
-import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff } from '../../src/data/kontakt-angebote.mjs';
+import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff, KAMPAGNEN } from '../../src/data/kontakt-angebote.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -108,6 +108,20 @@ export async function onRequestPost({ request, env }) {
     const tsResult = await tsVerify.json().catch(() => ({}));
     if (!tsResult.success) return J({ error: 'turnstile_failed' }, 403);
 
+    // Kampagne (TCM 360° Entdeckertage SG): nur bekannte Kennung UND passender Standort; Label kommt aus der Whitelist,
+    // nie vom Client. Unbekannte/fremde Kennung wird ignoriert (blockiert keine legitime Anfrage). UTM-Werte nur zur Zuordnung.
+    const kampId = d.kampagne != null ? String(d.kampagne).trim() : '';
+    const kamp = neu && kampId && KAMPAGNEN[kampId] && KAMPAGNEN[kampId].standortId === d.standort_id ? KAMPAGNEN[kampId] : null;
+    const utm = (v) => (v == null ? undefined : String(v).replace(/[\r\n]+/g, ' ').slice(0, 120));
+    // Buchungsrunde (Kennung aus tcm360-runden.json, nur a-z0-9-): Messung je Runde, nie Freitext.
+    const runde = kamp && d.runde != null ? String(d.runde).trim().replace(/[^a-z0-9-]/gi, '').slice(0, 40) : '';
+    // Check-in aus der Kampagne = 360°-Termin (eigenes Format, separat reserviertes Kontingent): Terminart/Betreff aus der
+    // Whitelist, Dauer-Zeile entfällt (Format in Freigabe). Der reguläre Check-in (30 Min.) bleibt unverändert.
+    if (kamp && kamp.checkin && neu.terminart === 'checkin') {
+      offer = { ...offer, label: kamp.checkin.label, anzeige: kamp.checkin.anzeige, kosten: kamp.checkin.kosten, terminart: kamp.checkin.beschreibung, dauerMin: undefined,
+        angebot: kamp.checkin.label + ' – ' + String(d.standort).trim(), mailBetreff: 'Neue Anfrage · ' + String(d.standort).trim() + ' · ' + kamp.checkin.label };
+      d.angebot = offer.angebot;
+    }
     // Terminart zuoberst und lesbar (gemeinsames Formular: Terminart, Dauer, Kosten aus kontakt-angebote.mjs, nie vom
     // Client); historische Angebots-IDs (FIRST 30 / regulär SG) behalten ihre bisherigen Zeilen.
     const rows = [
@@ -130,6 +144,9 @@ export async function onRequestPost({ request, env }) {
     // Technische Angaben (Quelle, Formular-Identifier, IDs) getrennt und klar beschriftet: nicht im Betreff, nicht in
     // der Terminart-Kopfzeile. Werte unverändert, damit Auswertung und Zuordnung weiter funktionieren.
     const tech = [
+      ['Kampagne', kamp ? kamp.label + ' (' + kampId + ')' : undefined], ['Buchungsrunde', runde || undefined],
+      ['UTM Source', kamp ? utm(d.utm_source) : undefined], ['UTM Medium', kamp ? utm(d.utm_medium) : undefined],
+      ['UTM Campaign', kamp ? utm(d.utm_campaign) : undefined], ['UTM Content', kamp ? utm(d.utm_content) : undefined],
       ['Anfrageart (Code)', neu ? offer.art : undefined], ['Beschreibung', neu ? offer.terminart : undefined],
       ['Angebots-ID', offer ? offerId : undefined], ['Standort-ID', d.standort_id],
       ['Quelle', d.quelle], ['Quelle (Detail)', d.quelle_detail],
@@ -169,7 +186,7 @@ export async function onRequestPost({ request, env }) {
     if (neu) {
       // Gemeinsames Formular: Betreff nur aus validierter Terminart + kanonischem Ziel. Der Formularname
       // (z. B. Hero-Gratis-30min-StGallen) steht nur noch unter «Technische Angaben».
-      subject = (d.anfrage_typ === 'massage' ? '[Massage] ' : '') + offer.mailBetreff;
+      subject = (d.anfrage_typ === 'massage' ? '[Massage] ' : '') + offer.mailBetreff + (kamp ? kamp.betreff : '');
     } else {
       // Übrige Formulare und historische IDs: Formularname vorne im Betreff wie bisher.
       if (d.formular) subject = '[' + String(d.formular).replace(/[\r\n]+/g, ' ').slice(0, 60) + '] ' + subject;

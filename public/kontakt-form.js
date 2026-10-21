@@ -95,7 +95,8 @@
       var t = effType();
       card.classList.toggle('kf--checkin', t === 'checkin'); card.classList.toggle('kf--behandlung', t === 'behandlung');
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });
-      if (submitBtn) submitBtn.innerHTML = (t ? SUBMIT[t] : card.getAttribute('data-kf-submit-leer') || SUBMIT['']) + ' <span aria-hidden="true">→</span>';
+      // Kampagnen-Sheet (data-kf-submit-<terminart>): eigener Button-Text je Terminart; sonst Standardtexte.
+      if (submitBtn) submitBtn.innerHTML = (t ? card.getAttribute('data-kf-submit-' + t) || SUBMIT[t] : card.getAttribute('data-kf-submit-leer') || SUBMIT['']) + ' <span aria-hidden="true">→</span>';
       // Check-in nur für freigegebene Standorte (globale Formulare: abhängig von der Auswahl).
       if (rCheckin && !fixedName) {
         var ok = checkinAllowed(); var o = opt();
@@ -294,6 +295,8 @@
       if (!data.quelle) data.quelle = location.pathname || '/';
       if (!data.seite) data.seite = location.pathname;
       if (data.cta_pos && data.quelle_detail) data.quelle_detail += ' · CTA: ' + data.cta_pos;
+      // Kampagnen-Metadaten für die Conversion (nur feste Kennungen: Kampagnen-ID, CTA-Position; keine Personendaten).
+      var meta = {}; if (data.kampagne) meta.kampagne = data.kampagne; if (data.cta_pos) meta.cta_position = data.cta_pos; if (data.kampagne && data.runde) meta.buchungsrunde = data.runde;
       delete data.cta_pos;
       data.zeit = new Date().toISOString();
       data.turnstileToken = token;
@@ -305,8 +308,8 @@
           if (!(res.ok && res.j && res.j.ok)) throw new Error((res.j && res.j.error) || 'bad_status');
           sent = true;
           // EIN Versandweg (dataLayer → GTM). Bewusst kein zusätzlicher gtag('event', …): das wäre ein zweiter Versand.
-          if (conv === 'form_submit') push({ event: 'form_submit', form_id: 'terminform', herkunft: data.quelle, terminart: t, standort: tg.id });
-          else push({ event: 'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle, terminart: t, standort: tg.id });
+          if (conv === 'form_submit') push(Object.assign({ event: 'form_submit', form_id: 'terminform', herkunft: data.quelle, terminart: t, standort: tg.id }, meta));
+          else push(Object.assign({ event: 'formular_senden', form_type: data.anfrage_typ || 'allgemein', quelle: data.quelle, terminart: t, standort: tg.id }, meta));
           var ok = document.createElement('div'); ok.className = 'kf-success'; ok.setAttribute('role', 'status'); ok.tabIndex = -1;
           ok.innerHTML = '<div class="kf-success-ic" aria-hidden="true">✓</div><p class="kf-success-h">Danke, deine Anfrage ist bei uns.</p>' +
             '<p data-kf-ok-text></p><p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>';
@@ -317,7 +320,8 @@
             anfrage: 'Deine Anfrage zu ' + tg.label + '. Wir melden uns und schlagen dir eine passende Praxis vor.',
             routing: 'Deine Anfrage für eine passende Praxis in deiner Nähe. Wir melden uns mit einem Vorschlag.',
           };
-          ok.querySelector('[data-kf-ok-text]').textContent = OK[t];
+          // Kampagnen-Sheet: eigene, zutreffende Bestätigung für den 360°-Check (data-kf-ok-checkin); sonst Standardtexte.
+          ok.querySelector('[data-kf-ok-text]').textContent = (t === 'checkin' && card.getAttribute('data-kf-ok-checkin')) || OK[t];
           form.replaceWith(ok); ok.focus({ preventScroll: true });
         })
         .catch(function (err) {
