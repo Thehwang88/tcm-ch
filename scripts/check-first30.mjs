@@ -141,11 +141,12 @@ ok((heroVis.match(/CHF 0\.–/g) ?? []).length === 1 && (vis.match(/CHF 0\.–/g
   ok(st.campaign === 'closed' || st.campaign === 'soldout-closed', `geschlossener Zustand: ${st.campaign}`);
   // Seit 16.10.2026: regulärer Hero (Text 4adc79c8) mit Praxisfoto; die bisherige Hero-Buchungsbox (gemeinsames
   // Kontaktformular, src/lib/kontakt-form.ts) steht in der Kontaktsektion direkt unter Hero + USP-Reihe.
+  // Seit dem gemeinsamen Hero-Video (standort/HeroMedia.astro): Praxisfoto als optimiertes WebP-Poster im Hero.
   const hero = sg.slice(sg.indexOf('class="lsr-hero hlsg"'), sg.indexOf('</section>', sg.indexOf('class="lsr-hero hlsg"')));
   const k0 = sg.indexOf('<section class="sgk" id="sg-kontakt-praxis">');
   const heroSec = k0 >= 0 ? sg.slice(k0, sg.indexOf('</section>', k0)) : '';
   const between = k0 >= 0 ? sg.slice(sg.indexOf('class="lsr-hero hlsg"'), k0) : '';
-  ok(/class="lsr-hero hlsg"/.test(sg) && /Akupunktur &amp; TCM in/.test(hero) && /src="\/images\/standort-stgallen\.jpg"/.test(hero) && !/data-kf-instance/.test(hero) && !/<form|data-kf-instance/.test(between.slice(hero.length))
+  ok(/class="lsr-hero hlsg"/.test(sg) && /Akupunktur &amp; TCM in/.test(hero) && /src="\/images\/standort-stgallen\.(jpg|webp)"/.test(hero) && !/data-kf-instance/.test(hero) && !/<form|data-kf-instance/.test(between.slice(hero.length))
      && /data-kf-instance="sg-hero"/.test(heroSec) && /id="offer-form"/.test(heroSec) && /id="first30"/.test(heroSec), 'regulärer St.-Gallen-Hero mit Praxisfoto; Buchungsbox (Anker #offer-form, #first30) direkt darunter in der Kontaktsektion statt FIRST 30');
   ok(!/class="f30-hero"/.test(sg) && !/data-f30-bottom|data-f30-float|data-f30-wa/.test(sg), 'kein Promo-Hero, Geschenk-Wähler oder schwebender Geschenk-CTA');
   ok(!/data-offer="first30"|FIRST30_WINTER_2026_SG/.test(sg), 'keine alte Geschenk-ID oder Geschenk-CTA im geschlossenen HTML');

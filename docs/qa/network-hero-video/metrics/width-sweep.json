@@ -1,0 +1,3924 @@
+{
+  "st-gallen@320": {
+    "heroH": 942,
+    "media": [
+      0,
+      641,
+      320,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 288,
+        "h": 216,
+        "y": 2344
+      }
+    ],
+    "overflow": false,
+    "scrollW": 320,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 644,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0.0004,
+    "docH": 16593,
+    "mediaAtLoad": [
+      0,
+      641,
+      320,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      }
+    ]
+  },
+  "st-gallen@375": {
+    "heroH": 918,
+    "media": [
+      0,
+      617,
+      375,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.6,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 343,
+        "h": 257,
+        "y": 2218
+      }
+    ],
+    "overflow": false,
+    "scrollW": 375,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 296,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0,
+    "docH": 15974,
+    "mediaAtLoad": [
+      0,
+      617,
+      375,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      }
+    ]
+  },
+  "st-gallen@390": {
+    "heroH": 918,
+    "media": [
+      0,
+      617,
+      390,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 358,
+        "h": 269,
+        "y": 2195
+      }
+    ],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 264,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0,
+    "docH": 15874,
+    "mediaAtLoad": [
+      0,
+      617,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      }
+    ]
+  },
+  "st-gallen@430": {
+    "heroH": 890,
+    "media": [
+      0,
+      589,
+      430,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 398,
+        "h": 299,
+        "y": 2121
+      }
+    ],
+    "overflow": false,
+    "scrollW": 430,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 268,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0.1656,
+    "docH": 15730,
+    "mediaAtLoad": [
+      0,
+      589,
+      430,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      }
+    ]
+  },
+  "st-gallen@768": {
+    "heroH": 739,
+    "media": [
+      0,
+      438,
+      768,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 720,
+        "h": 540,
+        "y": 1931
+      }
+    ],
+    "overflow": false,
+    "scrollW": 768,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 236,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0,
+    "docH": 15572,
+    "mediaAtLoad": [
+      0,
+      438,
+      768,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      }
+    ]
+  },
+  "st-gallen@1024": {
+    "heroH": 671,
+    "media": [
+      512,
+      76,
+      512,
+      594
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 390,
+        "h": 293,
+        "y": 922
+      }
+    ],
+    "overflow": false,
+    "scrollW": 1024,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 320,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0,
+    "docH": 12296,
+    "mediaAtLoad": [
+      512,
+      76,
+      512,
+      594
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-5bf9460e0ca5.webp",
+        "s": 200,
+        "len": 16198
+      },
+      {
+        "u": "/images/img-7149f50cc917.webp",
+        "s": 200,
+        "len": 23388
+      }
+    ]
+  },
+  "st-gallen@1440": {
+    "heroH": 677,
+    "media": [
+      720,
+      76,
+      720,
+      600
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [
+      {
+        "src": "/images/standort-stgallen.webp",
+        "alt": "TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22",
+        "w": 645,
+        "h": 484,
+        "y": 923
+      }
+    ],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 628,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.webp"
+    },
+    "cls": 0,
+    "docH": 11636,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      600
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen-800.webp",
+        "s": 200,
+        "len": 29362
+      },
+      {
+        "u": "/images/standort-stgallen.webp",
+        "s": 200,
+        "len": 78942
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-f7c771cf39ed.webp",
+        "s": 200,
+        "len": 13626
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      }
+    ]
+  },
+  "frauenfeld@320": {
+    "heroH": 1121,
+    "media": [
+      0,
+      820,
+      320,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 320,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 272,
+      "el": "P",
+      "url": ""
+    },
+    "cls": 0,
+    "docH": 17915,
+    "mediaAtLoad": [
+      0,
+      820,
+      320,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "frauenfeld@375": {
+    "heroH": 1081,
+    "media": [
+      0,
+      780,
+      375,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 375,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 316,
+      "el": "P",
+      "url": ""
+    },
+    "cls": 0,
+    "docH": 16835,
+    "mediaAtLoad": [
+      0,
+      780,
+      375,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "frauenfeld@390": {
+    "heroH": 1017,
+    "media": [
+      0,
+      716,
+      390,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 260,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 16703,
+    "mediaAtLoad": [
+      0,
+      716,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "frauenfeld@430": {
+    "heroH": 995,
+    "media": [
+      0,
+      694,
+      430,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.6,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 430,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 256,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0051,
+    "docH": 16314,
+    "mediaAtLoad": [
+      0,
+      694,
+      430,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "frauenfeld@768": {
+    "heroH": 818,
+    "media": [
+      0,
+      517,
+      768,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 768,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 248,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 15218,
+    "mediaAtLoad": [
+      0,
+      517,
+      768,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "frauenfeld@1024": {
+    "heroH": 703,
+    "media": [
+      512,
+      76,
+      512,
+      626
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.4,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1024,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 332,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 12609,
+    "mediaAtLoad": [
+      512,
+      76,
+      512,
+      626
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  },
+  "frauenfeld@1440": {
+    "heroH": 750,
+    "media": [
+      720,
+      76,
+      720,
+      673
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 304,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 11940,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      673
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  },
+  "kreuzlingen@320": {
+    "heroH": 1096,
+    "media": [
+      0,
+      795,
+      320,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 320,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 324,
+      "el": "P",
+      "url": ""
+    },
+    "cls": 0,
+    "docH": 16906,
+    "mediaAtLoad": [
+      0,
+      795,
+      320,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "kreuzlingen@375": {
+    "heroH": 1032,
+    "media": [
+      0,
+      731,
+      375,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 375,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 244,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 15684,
+    "mediaAtLoad": [
+      0,
+      731,
+      375,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "kreuzlingen@390": {
+    "heroH": 968,
+    "media": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 264,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 15514,
+    "mediaAtLoad": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "kreuzlingen@430": {
+    "heroH": 945,
+    "media": [
+      0,
+      644,
+      430,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 430,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 264,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 15210,
+    "mediaAtLoad": [
+      0,
+      644,
+      430,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "kreuzlingen@768": {
+    "heroH": 816,
+    "media": [
+      0,
+      515,
+      768,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 768,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 276,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14080,
+    "mediaAtLoad": [
+      0,
+      515,
+      768,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "kreuzlingen@1024": {
+    "heroH": 678,
+    "media": [
+      512,
+      76,
+      512,
+      601
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1024,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 260,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 12319,
+    "mediaAtLoad": [
+      512,
+      76,
+      512,
+      601
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  },
+  "kreuzlingen@1440": {
+    "heroH": 721,
+    "media": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 268,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0001,
+    "docH": 11643,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  },
+  "winterthur-marktgasse@320": {
+    "heroH": 1144,
+    "media": [
+      0,
+      843,
+      320,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 288,
+        "h": 216,
+        "y": 2240
+      }
+    ],
+    "overflow": false,
+    "scrollW": 320,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 304,
+      "el": "H1",
+      "url": ""
+    },
+    "cls": 0,
+    "docH": 16725,
+    "mediaAtLoad": [
+      0,
+      843,
+      320,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@375": {
+    "heroH": 1055,
+    "media": [
+      0,
+      754,
+      375,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 343,
+        "h": 257,
+        "y": 2090
+      }
+    ],
+    "overflow": false,
+    "scrollW": 375,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 232,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 15595,
+    "mediaAtLoad": [
+      0,
+      754,
+      375,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@390": {
+    "heroH": 957,
+    "media": [
+      0,
+      656,
+      390,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 358,
+        "h": 269,
+        "y": 1970
+      }
+    ],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 280,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 15390,
+    "mediaAtLoad": [
+      0,
+      656,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@430": {
+    "heroH": 957,
+    "media": [
+      0,
+      656,
+      430,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 398,
+        "h": 299,
+        "y": 1946
+      }
+    ],
+    "overflow": false,
+    "scrollW": 430,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 364,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 15090,
+    "mediaAtLoad": [
+      0,
+      656,
+      430,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@768": {
+    "heroH": 818,
+    "media": [
+      0,
+      517,
+      768,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 440,
+        "h": 330,
+        "y": 1767
+      }
+    ],
+    "overflow": false,
+    "scrollW": 768,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 316,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 13559,
+    "mediaAtLoad": [
+      0,
+      517,
+      768,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@1024": {
+    "heroH": 732,
+    "media": [
+      512,
+      76,
+      512,
+      655
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 390,
+        "h": 293,
+        "y": 983
+      }
+    ],
+    "overflow": false,
+    "scrollW": 1024,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 468,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 11931,
+    "mediaAtLoad": [
+      512,
+      76,
+      512,
+      655
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@1440": {
+    "heroH": 727,
+    "media": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.4,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [
+      {
+        "src": "/images/standort-winterthur.webp",
+        "alt": "TCM.ch Praxis Winterthur Marktgasse, Empfangsbereich",
+        "w": 440,
+        "h": 330,
+        "y": 974
+      }
+    ],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 584,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.webp"
+    },
+    "cls": 0,
+    "docH": 11126,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.webp",
+        "s": 200,
+        "len": 81984
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "zuerich-hoengg@320": {
+    "heroH": 1096,
+    "media": [
+      0,
+      795,
+      320,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 320,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 316,
+      "el": "P",
+      "url": ""
+    },
+    "cls": 0.0386,
+    "docH": 15967,
+    "mediaAtLoad": [
+      0,
+      795,
+      320,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "zuerich-hoengg@375": {
+    "heroH": 1032,
+    "media": [
+      0,
+      731,
+      375,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 375,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 312,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14892,
+    "mediaAtLoad": [
+      0,
+      731,
+      375,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "zuerich-hoengg@390": {
+    "heroH": 968,
+    "media": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 432,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14709,
+    "mediaAtLoad": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "zuerich-hoengg@430": {
+    "heroH": 945,
+    "media": [
+      0,
+      644,
+      430,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.6,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 430,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 248,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14433,
+    "mediaAtLoad": [
+      0,
+      644,
+      430,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "zuerich-hoengg@768": {
+    "heroH": 793,
+    "media": [
+      0,
+      492,
+      768,
+      300
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-640.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 640
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 768,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 284,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 12874,
+    "mediaAtLoad": [
+      0,
+      492,
+      768,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      }
+    ]
+  },
+  "zuerich-hoengg@1024": {
+    "heroH": 678,
+    "media": [
+      512,
+      76,
+      512,
+      601
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.5,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1024,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 280,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 11271,
+    "mediaAtLoad": [
+      512,
+      76,
+      512,
+      601
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  },
+  "zuerich-hoengg@1440": {
+    "heroH": 721,
+    "media": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "video": {
+      "paused": false,
+      "muted": true,
+      "t": 2.4,
+      "src": "/videos/hero-praxis/hwang-praxis-1280.webm",
+      "playing": true,
+      "display": "block",
+      "controls": false,
+      "loop": true,
+      "inline": true,
+      "vw": 1280
+    },
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 296,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0003,
+    "docH": 10460,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      },
+      {
+        "u": "/videos/hero-praxis/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      }
+    ]
+  }
+}

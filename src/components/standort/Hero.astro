@@ -1,6 +1,8 @@
 ---
 import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
+import { heroVideo } from '../../data/hero-video';
+import HeroMedia from './HeroMedia.astro';
 // SG-Vorlage: Reihenfolge wie der St.-Galler Hero (Vertrauenspunkte vor den Buttons), Hauptbutton springt zur
 // Anfragebox direkt unter dem Hero (#anfrage-box), Beschriftung nach Betriebsstatus.
 const { data } = Astro.props as { data: Standort };
@@ -13,6 +15,8 @@ const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'winterthur-marktgasse',
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 // Zürcher Standorte hängen unter dem Stadt-Hub /akupunktur-tcm-zuerich/ (Hub-&-Spoke, wie /standorte/zuerich/kosten/).
 const zh = data.slug.startsWith('zuerich-');
+// Gemeinsames Hero-Video (src/data/hero-video.ts): bisheriges Hero-Bild bleibt Poster/Fallback, keine Caption.
+const video = heroVideo(data);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
 {LSR_SLUGS.has(data.slug) ? (
@@ -31,10 +35,14 @@ const zh = data.slug.startsWith('zuerich-');
       </div>
       <p class="lsr-note">{data.hero.locationHook}</p>
     </div>
+    {video ? (
+    <HeroMedia poster={data.hero.image} posterAlt={data.hero.imageAlt ?? 'Symbolbild: Empfangsbereich einer TCM.ch Praxis'} posterWidth={1448} posterHeight={1086} />
+    ) : (
     <figure class={symbolbild ? 'lsr-right' : 'lsr-right lsr-right--foto'}>
       <img src={data.hero.image} alt={data.hero.imageAlt ?? 'Symbolbild: Empfangsbereich einer TCM.ch Praxis'} loading="eager" fetchpriority="high" decoding="async">
       <figcaption>{symbolbild ? 'Symbolbild' : data.hero.locationHook}</figcaption>
     </figure>
+    )}
   </div>
 </section>
 ) : (

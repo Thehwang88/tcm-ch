@@ -1,0 +1,35 @@
+---
+// Rechte Hero-Hälfte als Video (gemeinsames hwang.ch-Footage, src/data/hero-video.ts) statt Foto. Geometrie bleibt die
+// der .lsr-right-Fotohälfte (home.css), d. h. keine Höhen-/Layoutänderung. Das Poster (bisheriges Hero-Bild) ist das
+// LCP-Element und bleibt sichtbar, bis das Video seinen ersten Frame rendert; kein autoplay-Attribut + preload="none":
+// vor window.load werden 0 Video-Bytes geladen; Start siehe Script unten (voll sichtbar oder erster Scroll). Mobile ≤900px bekommt die 640er-Rendition. Fallback (Autoplay-Block,
+// Save-Data, prefers-reduced-motion): Poster bleibt stehen. Keine Caption: das Footage stammt nicht aus dem jeweiligen Standort.
+import { HERO_VIDEO_BASE } from '../../data/hero-video';
+const { poster, posterSrcset, posterSizes = '(max-width:900px) 100vw, 50vw', posterAlt, posterWidth = 1447, posterHeight = 1087,
+  objectPositionDesktop = 'center 50%', objectPositionMobile = 'center 40%', id = 'std-hero-media' } = Astro.props as {
+  poster: string; posterSrcset?: string; posterSizes?: string; posterAlt: string; posterWidth?: number; posterHeight?: number;
+  objectPositionDesktop?: string; objectPositionMobile?: string; id?: string;
+};
+const V = HERO_VIDEO_BASE;
+---
+<figure class="lsr-right lsr-right--video" id={id} data-hero-video style={`--hv-pos:${objectPositionDesktop};--hv-pos-m:${objectPositionMobile}`}>
+  <img src={poster} srcset={posterSrcset} sizes={posterSrcset ? posterSizes : undefined} alt={posterAlt} width={posterWidth} height={posterHeight} loading="eager" fetchpriority="high" decoding="async">
+  <video muted playsinline loop preload="none" poster={poster} aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback width="1280" height="720">
+    <source src={`${V}-640.webm`} type="video/webm" media="(max-width:900px)">
+    <source src={`${V}-640.mp4`} type="video/mp4" media="(max-width:900px)">
+    <source src={`${V}-1280.webm`} type="video/webm">
+    <source src={`${V}-1280.mp4`} type="video/mp4">
+  </video>
+</figure>
+<script is:inline>(function(){var f=document.querySelector('[data-hero-video]'),v=f&&f.querySelector('video');if(!v)return;var c=navigator.connection;if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(c&&c.saveData))return;
+/* Start erst, wenn (a) die Seite geladen ist und (b) die Medienbox ganz im Viewport liegt (Desktop/Tablet: sofort) oder
+   der Nutzer einmal gescrollt hat (Mobile: Box ragt unter den Fold; der erste Scroll beendet die LCP-Messung, der
+   Video-Frame kann so nie zum späten LCP-Kandidaten werden). Ausserhalb des Viewports pausiert das Video. */
+var armed=false,inView=false,loaded=document.readyState==='complete';
+function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+function tick(){if(armed&&loaded&&inView){if(v.paused)play();}else if(!v.paused)v.pause();}
+v.addEventListener('playing',function(){f.classList.add('is-playing');},{once:true});
+if(!loaded)addEventListener('load',function(){loaded=true;tick();},{once:true});
+addEventListener('scroll',function(){armed=true;tick();},{once:true,passive:true});
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){var e=es[es.length-1];inView=e.isIntersecting;if(e.intersectionRatio>=.99)armed=true;tick();},{threshold:[0,.5,1]}).observe(f);}else{inView=true;armed=true;tick();}
+})();</script>

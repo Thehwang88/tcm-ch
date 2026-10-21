@@ -1,0 +1,1605 @@
+{
+  "st-gallen@390": {
+    "heroH": 918,
+    "media": [
+      0,
+      617,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 636,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.jpg"
+    },
+    "cls": 0.0551,
+    "docH": 15583,
+    "mediaAtLoad": [
+      0,
+      617,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen.jpg",
+        "s": 200,
+        "len": 1846545
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-sg/hwang-praxis-640.webm",
+        "s": 206,
+        "len": 580319
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      }
+    ]
+  },
+  "st-gallen@1440": {
+    "heroH": 677,
+    "media": [
+      720,
+      76,
+      720,
+      600
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in St. Gallen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Ersttermin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#offer-form",
+    "ctas": [
+      "#offer-form",
+      "#online-buchen"
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Oberer Graben 22",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 8,
+    "wa": 11,
+    "onedoc": 1,
+    "lcp": {
+      "t": 348,
+      "el": "IMG",
+      "url": "/images/standort-stgallen.jpg"
+    },
+    "cls": 0,
+    "docH": 11184,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      600
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-stgallen.jpg",
+        "s": 200,
+        "len": 1846545
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/videos/hero-sg/hwang-praxis-1280.webm",
+        "s": 206,
+        "len": 1500340
+      },
+      {
+        "u": "/images/onedoc.dac014c8a13cfe95.svg",
+        "s": 200,
+        "len": 0
+      },
+      {
+        "u": "/images/entities/957eaf9c117918809f78207ff1fd5ec88e2f475741c739948d6235f3d252bd9f-tiny.png",
+        "s": 200,
+        "len": 2968
+      }
+    ]
+  },
+  "frauenfeld@390": {
+    "heroH": 1017,
+    "media": [
+      0,
+      716,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 260,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 16703,
+    "mediaAtLoad": [
+      0,
+      716,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "frauenfeld@1440": {
+    "heroH": 750,
+    "media": [
+      720,
+      76,
+      720,
+      673
+    ],
+    "video": null,
+    "h1": [
+      "TCM & Akupunktur in Frauenfeld"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Frauenfeld%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Rheinstrasse 25",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 328,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 11940,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      673
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "kreuzlingen@390": {
+    "heroH": 968,
+    "media": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 268,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 15514,
+    "mediaAtLoad": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "kreuzlingen@1440": {
+    "heroH": 721,
+    "media": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "video": null,
+    "h1": [
+      "TCM & Akupunktur Kreuzlingen"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Kreuzlingen%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Romanshornerstrasse 1",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 224,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 11643,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "winterthur-marktgasse@390": {
+    "heroH": 957,
+    "media": [
+      0,
+      656,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 260,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.jpg"
+    },
+    "cls": 0,
+    "docH": 15100,
+    "mediaAtLoad": [
+      0,
+      656,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.jpg",
+        "s": 200,
+        "len": 1929637
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "winterthur-marktgasse@1440": {
+    "heroH": 727,
+    "media": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Winterthur – Marktgasse"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Winterthur%20Marktgasse%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Marktgasse 78",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 336,
+      "el": "IMG",
+      "url": "/images/standort-winterthur.jpg"
+    },
+    "cls": 0.0002,
+    "docH": 10774,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/standort-winterthur.jpg",
+        "s": 200,
+        "len": 1929637
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "zuerich-hoengg@390": {
+    "heroH": 968,
+    "media": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 240,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14709,
+    "mediaAtLoad": [
+      0,
+      667,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "zuerich-hoengg@1440": {
+    "heroH": 721,
+    "media": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Zürich Höngg"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Z%C3%BCrich%20H%C3%B6ngg%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Limmattalstrasse 340",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 11,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 248,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 10460,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      644
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "basel@390": {
+    "heroH": 1005,
+    "media": [
+      0,
+      704,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Basel"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Basel%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Steinenvorstadt 73",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 332,
+      "el": "IMG",
+      "url": "/images/basel-reception.webp"
+    },
+    "cls": 0,
+    "docH": 15875,
+    "mediaAtLoad": [
+      0,
+      704,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/basel-reception.webp",
+        "s": 200,
+        "len": 90466
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "basel@1440": {
+    "heroH": 756,
+    "media": [
+      720,
+      76,
+      720,
+      679
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Basel"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Basel%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Steinenvorstadt 73",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 8,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 284,
+      "el": "IMG",
+      "url": "/images/basel-reception.webp"
+    },
+    "cls": 0.0002,
+    "docH": 11998,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      679
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/basel-reception.webp",
+        "s": 200,
+        "len": 90466
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "rorschach@390": {
+    "heroH": 933,
+    "media": [
+      0,
+      632,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Rorschach"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Rorschach%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Pestalozzistrasse 11",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 260,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14809,
+    "mediaAtLoad": [
+      0,
+      632,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "rorschach@1440": {
+    "heroH": 727,
+    "media": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Rorschach"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Rorschach%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Pestalozzistrasse 11",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 280,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 10504,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "volketswil@390": {
+    "heroH": 933,
+    "media": [
+      0,
+      632,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Volketswil"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Volketswil%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Lindenstrasse 2",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 564,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14680,
+    "mediaAtLoad": [
+      0,
+      632,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "volketswil@1440": {
+    "heroH": 727,
+    "media": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Volketswil"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Volketswil%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Lindenstrasse 2",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 312,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 10476,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  },
+  "wil@390": {
+    "heroH": 899,
+    "media": [
+      0,
+      598,
+      390,
+      300
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Wil"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Wil%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Bahnhofstrasse 35",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 390,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 240,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0,
+    "docH": 14672,
+    "mediaAtLoad": [
+      0,
+      598,
+      390,
+      300
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      }
+    ]
+  },
+  "wil@1440": {
+    "heroH": 727,
+    "media": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "video": null,
+    "h1": [
+      "Akupunktur & TCM in Wil"
+    ],
+    "h1Visible": true,
+    "h1Count": 1,
+    "ctaText": "Termin anfragen",
+    "ctaVisible": true,
+    "ctaHref": "#anfrage-box",
+    "ctas": [
+      "#anfrage-box",
+      "https://wa.me/41775236122?text=Hallo%2C%20ich%20m%C3%B6chte%20einen%20Termin%20in%20Wil%20anfragen."
+    ],
+    "ctaTargetExists": true,
+    "addressFound": "Bahnhofstrasse 35",
+    "photo": [],
+    "overflow": false,
+    "scrollW": 1440,
+    "tel": 9,
+    "wa": 9,
+    "onedoc": 0,
+    "lcp": {
+      "t": 304,
+      "el": "IMG",
+      "url": "/images/hero-main.webp"
+    },
+    "cls": 0.0002,
+    "docH": 10486,
+    "mediaAtLoad": [
+      720,
+      76,
+      720,
+      650
+    ],
+    "mediaShift": false,
+    "reqs": [
+      {
+        "u": "/images/hero-main.webp",
+        "s": 200,
+        "len": 58042
+      },
+      {
+        "u": "/images/brands/ph-logo-neg.svg",
+        "s": 200,
+        "len": 1402
+      },
+      {
+        "u": "/images/brands/physio-ch-neg.png",
+        "s": 200,
+        "len": 20126
+      },
+      {
+        "u": "/images/brands/biohax.png",
+        "s": 200,
+        "len": 15549
+      },
+      {
+        "u": "/images/brands/bencao.png",
+        "s": 200,
+        "len": 72796
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-black.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/logo/tcm-ch-logo-kliniken-mint.svg",
+        "s": 200,
+        "len": 6304
+      },
+      {
+        "u": "/images/img-a288825ba14a.webp",
+        "s": 200,
+        "len": 28434
+      },
+      {
+        "u": "/images/img-2a8cecc37898.webp",
+        "s": 200,
+        "len": 17170
+      },
+      {
+        "u": "/images/img-c69a8f9ce7f8.webp",
+        "s": 200,
+        "len": 16318
+      },
+      {
+        "u": "/images/img-14a8b7c52ade.webp",
+        "s": 200,
+        "len": 35102
+      }
+    ]
+  }
+}
