@@ -222,6 +222,8 @@ Einziger ✗ auf main: «390px Laden: Box ohne nachträgliches Auf-/Zuklappen (k
 
 ## 10. Release-Schritte (nur nach ausdrücklichem GO)
 
+GO erteilt am 21.10.2026 («merge PR #80 normal, dann deploy und Live-Check»). Umgesetzt im Release-Commit: Konstante `PUBLISHED_ENTSCHEIDUNGEN_2026_10 = '2026-10-21'`, 14 Queue-Zeilen von «Geplant» nach «Offen» (21.10.2026), Keyword-Map-Notiz «veröffentlicht 21.10.2026 (PR #80)». Vorher main `13eb82d6` (Merge #81) per Merge-Commit `dad9bb69` eingezogen. Hinweis: `check-i18n --strict` meldet auf main `13eb82d6` selbst «Outdated location:winterthur-marktgasse» (Änderung an `standorte.ts` aus #81), unabhängig von dieser Kohorte.
+
 1. `PUBLISHED_ENTSCHEIDUNGEN_2026_10` in `src/data/befunde-werte.ts` auf das reale Datum setzen.
 2. `seo/index-queue.md`: 14 Zeilen von «Geplant» nach «Offen» mit dem realen Datum verschieben (gleicher Commit).
 3. `seo/master-keyword-url-map.csv`: Notiz «Draft-PR» auf «veröffentlicht» anpassen (optional).

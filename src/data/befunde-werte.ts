@@ -105,7 +105,7 @@ export const PUBLISHED_KRAEUTER_2026_10: string | undefined = '2026-10-19';
 // Entscheidungsfragen-Kohorte (4 Wissen-Vergleiche, 10 Fragen; Textpaket 21.10.2026).
 // RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD'). Bis dahin undefined =>
 // keine Schema-Daten, kein sichtbares Datum. Nur Publikation, keine fachliche Prüfung.
-export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = undefined;
+export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = '2026-10-21';
 
 export const befundeWerte: BefundWert[] = [
   {
