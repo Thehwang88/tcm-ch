@@ -1,7 +1,8 @@
 ---
 // Regulärer St.-Gallen-Hero. Linke Hälfte: Original-Text vor der FIRST-30-Kampagne aus Commit 4adc79c8 (ohne die
 // Hinweise «Unverbindliche Anfrage…» und «Geöffnet: …», entfernt auf Inhaber-Wunsch; Öffnungszeiten stehen in «Über
-// die Praxis» und im Schema). Rechte Hälfte (seit 16.10.2026 wieder): ursprüngliches Praxisfoto aus 4adc79c8.
+// die Praxis» und im Schema). Rechte Hälfte: gemeinsames Hero-Video (standort/HeroMedia.astro), Praxisfoto als Poster
+// und in «Über die Praxis» (standorte/[slug].astro).
 // Darunter: die drei SG-USPs als kompakte Reihe und die Kontaktsektion mit der bisherigen Hero-Buchungsbox
 // (gemeinsames Kontaktformular, src/lib/kontakt-form.ts, kompakte Variante, Rückruf dauerhaft offen) und den kanonischen Praxisangaben
 // («Über die Praxis» aus dem Leaf, nicht dupliziert). Mobile: Box vor den Praxisangaben (= DOM-Reihenfolge).
@@ -9,6 +10,7 @@
 // Instanz sg-hero, Anker #offer-form (Karte), #first30 (alte Kampagnenlinks), #kf-sg-hero-fields.
 import { renderKontaktForm } from '../lib/kontakt-form';
 import KontaktPraxis from './standort/KontaktPraxis.astro';
+import HeroMedia from './standort/HeroMedia.astro';
 const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 // Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Buchungsbox).
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
@@ -36,22 +38,9 @@ const card = renderKontaktForm({
       </div>
       <p class="lsr-tert"><a href="tel:+41775236122" class="tcm-link tcm-link--on-brand">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener" class="tcm-link tcm-link--on-brand">WhatsApp</a></p>
     </div>
-    <figure class="lsr-right lsr-right--video" id="sg-hero-media">
-      <img src="/images/standort-stgallen.jpg" alt="TCM.ch Kliniken St. Gallen – Empfangsbereich" width="1447" height="1087" loading="eager" fetchpriority="high" decoding="async">
-      {/* Hero-Video (hwang.ch Startseite, Original 1920x1080 aus den Webflow-Assets; hier ohne Ton, 25 fps).
-          Kein autoplay-Attribut + preload="none": das Foto bleibt LCP, das Video startet erst nach window.load
-          per Skript unten. Bis zum ersten gerenderten Frame bleibt das Foto sichtbar (Fallback bei Autoplay-Block,
-          Save-Data, prefers-reduced-motion). Mobile ≤900px bekommt die 640er-Rendition. */}
-      <video muted playsinline loop preload="none" poster="/images/standort-stgallen.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback width="1280" height="720">
-        <source src="/videos/hero-sg/hwang-praxis-640.webm" type="video/webm" media="(max-width:900px)">
-        <source src="/videos/hero-sg/hwang-praxis-640.mp4" type="video/mp4" media="(max-width:900px)">
-        <source src="/videos/hero-sg/hwang-praxis-1280.webm" type="video/webm">
-        <source src="/videos/hero-sg/hwang-praxis-1280.mp4" type="video/mp4">
-      </video>
-    </figure>
+    <HeroMedia id="sg-hero-media" poster="/images/standort-stgallen.webp" posterSrcset="/images/standort-stgallen-800.webp 800w, /images/standort-stgallen.webp 1447w" posterAlt="TCM.ch Kliniken St. Gallen – Empfangsbereich" />
   </div>
 </section>
-<script is:inline>(function(){var f=document.getElementById('sg-hero-media'),v=f&&f.querySelector('video');if(!v)return;var c=navigator.connection;if((matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||(c&&c.saveData))return;function start(){v.addEventListener('playing',function(){f.classList.add('is-playing');},{once:true});var p=v.play();if(p&&p.catch)p.catch(function(){});}if(document.readyState==='complete')start();else addEventListener('load',start,{once:true});})();</script>
 <KontaktPraxis>
   {uspHtml && <Fragment slot="usp" set:html={uspHtml} />}
   <Fragment slot="form" set:html={card} />
