@@ -23,6 +23,8 @@ export interface Frage {
   ctaTitle?: string; ctaText?: string; ctaLabel?: string;
   /** Kohorten-Kennung: Schema-Daten kommen aus der Kohorten-Konstante statt aus FRAGEN_DATEN. */
   cohort?: 'welle-3' | 'entscheidungen-2026-10';
+  /** Optionale neutrale Autorenangabe (Name, Rolle) für die Autorenkarte; ohne Angabe bleibt die bisherige Fachredaktions-Angabe. */
+  autor?: { name: string; role: string };
   verwandt: { href: string; label: string }[];
   mehr: FrageLink[];
 }

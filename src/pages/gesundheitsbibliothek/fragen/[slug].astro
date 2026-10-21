@@ -23,6 +23,8 @@ export function getStaticPaths() {
 
 interface Props { hub: FragenHub | null; frage: Frage | null }
 const { hub, frage } = Astro.props;
+// Autorenkarte: Fragen mit eigener neutraler Angabe (Kohorte Entscheidungsfragen) zeigen diese; Altbestand unverändert.
+const autor = frage?.autor ?? { name: 'TCM.ch Fachredaktion', role: 'Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen' };
 // Kohorten-Datum: welle-3 => PUBLISHED_WELLE_3_2026_10; entscheidungen-2026-10 => PUBLISHED_ENTSCHEIDUNGEN_2026_10
 // (undefined bis Release => kein Schema-Datum, kein sichtbares Datum). Aeltere Fragen behalten FRAGEN_DATEN.
 const cohortDate: string | undefined = frage?.cohort === 'welle-3' ? PUBLISHED_WELLE_3_2026_10 : frage?.cohort === 'entscheidungen-2026-10' ? PUBLISHED_ENTSCHEIDUNGEN_2026_10 : undefined;
@@ -128,8 +130,8 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
           <div class="avatar avatar--sm">TCM</div>
           <div>
             <div class="a-label">Erstellt von</div>
-            <div class="a-name">TCM.ch Fachredaktion</div>
-            <div class="a-role">Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen</div>
+            <div class="a-name">{autor.name}</div>
+            <div class="a-role">{autor.role}</div>
             <div class="a-review">Allgemeine Information, keine ärztliche Diagnose{aktualisiert ? ` · zuletzt aktualisiert ${aktualisiert}` : ''}</div>
           </div>
         </aside>
