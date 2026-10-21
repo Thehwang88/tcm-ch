@@ -4,13 +4,19 @@
 // indexierbar, Title/Meta eindeutig (gegen alle gebauten Seiten), sichtbare Quellen (>= 2) und
 // genau drei Anschlussfragen, kein FAQPage-Schema, keine erfundenen Schema-Daten solange die
 // Kohorten-Konstante ungesetzt ist, keine Gedanken-/Em-Dashes im neuen Text, keine kaputten
-// internen Links, Breadcrumb-Schema, mindestens zwei Inbound-Links aus unterschiedlichen
-// bestehenden Seiten (Hubs, Suche und Kohortenseiten zählen nicht), Wortumfang.
+// internen Links, Breadcrumb-Schema, Kontextlinks: mindestens zwei unterschiedliche, bereits auf der
+// Basis existierende, indexierbare Inhaltsseiten, die im redaktionellen Haupttext (Satz in <p>/<li>)
+// auf die neue Seite verlinken. Hubs, Fragen-Hubs, Navigation, Footer, Suchlisten, Verwandt-Listen,
+// Therapie-Chips (.cl-chip) und Kohortenseiten zählen nicht. Wortumfang.
+// Basis = URL-Liste der Seiten vor der Kohorte: --base-sitemap=<datei> (empfohlen: sitemap.xml eines
+// frischen main-Builds), sonst `git show <ref>:public/sitemap.xml` (--base=<ref>, Standard origin/main,
+// dann main; die eingecheckte Sitemap kann veraltet sein, Warnung), sonst public/sitemap.xml.
 // Manifest = die tatsächlich akzeptierten Seiten (nicht hart codierte 20).
 //
-//   node scripts/check-entscheidungsfragen.mjs            (Verstoss => exitCode 1)
+//   node scripts/check-entscheidungsfragen.mjs [--base-sitemap=/pfad/zu/main-dist/sitemap.xml | --base=origin/main]
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const DIST = 'dist';
 const MANIFEST = [
@@ -30,8 +36,24 @@ const MANIFEST = [
   { url: '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/', type: 'frage', min: 450, max: 900 },
 ];
 const SOURCES = ['src/data/wissen-entscheidungen.ts', 'src/data/fragen-entscheidungen.ts'];
-const HUBS = new Set(['/wissen/', '/gesundheitsbibliothek/', '/gesundheitsbibliothek/fragen/', '/beschwerden/', '/therapien/']);
+const HUBS = new Set([
+  '/', '/wissen/', '/gesundheitsbibliothek/', '/gesundheitsbibliothek/fragen/', '/beschwerden/', '/therapien/', '/standorte/', '/krankenkassen/',
+  // Fragen-Hubs (Sammelseiten mit Kurzantworten) zählen nicht als Kontext-Host
+  '/gesundheitsbibliothek/fragen/erster-termin/', '/gesundheitsbibliothek/fragen/nach-der-behandlung/', '/gesundheitsbibliothek/fragen/sicherheit-nebenwirkungen/',
+  '/gesundheitsbibliothek/fragen/kosten-versicherung/', '/gesundheitsbibliothek/fragen/akupunktur/', '/gesundheitsbibliothek/fragen/schroepfen-methoden/',
+]);
 const COHORT = new Set(MANIFEST.map((m) => m.url));
+// Basis-URLs (Seiten, die vor der Kohorte existierten)
+const baseArg = (process.argv.find((a) => a.startsWith('--base=')) || '').slice(7);
+const baseFile = (process.argv.find((a) => a.startsWith('--base-sitemap=')) || '').slice(15);
+const locs = (xml) => new Set([...xml.matchAll(/<loc>https:\/\/tcm\.ch(\/[^<]*)<\/loc>/g)].map((m) => m[1]));
+let baseUrls = null; let baseSrc = '';
+if (baseFile) { baseUrls = locs(fs.readFileSync(baseFile, 'utf8')); baseSrc = baseFile; }
+for (const ref of [baseArg, 'origin/main', 'main'].filter(Boolean)) {
+  if (baseUrls) break;
+  try { baseUrls = locs(execFileSync('git', ['show', `${ref}:public/sitemap.xml`], { encoding: 'utf8' })); baseSrc = `git show ${ref}:public/sitemap.xml (eingecheckte Sitemap, kann veraltet sein)`; } catch { /* nächster */ }
+}
+if (!baseUrls) { baseUrls = locs(fs.readFileSync('public/sitemap.xml', 'utf8')); baseSrc = 'public/sitemap.xml (Arbeitskopie, kann veraltet sein)'; }
 
 const errs = [];
 const info = [];
@@ -68,6 +90,33 @@ for (const [u, h] of pages) {
     if (inbound.has(m[1]) && u !== m[1]) inbound.get(m[1]).add(u);
   }
 }
+// Kontextlinks: Link im redaktionellen Haupttext = <a> innerhalb eines <p> oder <li> mit eigenem Satz
+// (mindestens 40 Zeichen Text ausserhalb des Ankers), nicht in nav/aside/footer/Chip-/Verwandt-Blöcken.
+const stripBlocks = (h) => h
+  .replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ')
+  .replace(/<nav[\s\S]*?<\/nav>/g, ' ').replace(/<header[\s\S]*?<\/header>/g, ' ').replace(/<footer[\s\S]*?<\/footer>/g, ' ')
+  .replace(/<aside[\s\S]*?<\/aside>/g, ' ')
+  .replace(/<section class="section cl-related"[\s\S]*?<\/section>/g, ' ')
+  .replace(/<div class="related">[\s\S]*?<div class="rel-grid">/g, ' ');
+function contextLinks(hostHtml, target) {
+  const h = stripBlocks(hostHtml); const out = [];
+  const re = new RegExp(`<a [^>]*href="${target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:#[^"]*)?"[^>]*>([^<]*)</a>`, 'g');
+  const lastOpen = (before, tag) => { let i = -1; for (const o of before.matchAll(new RegExp(`<${tag}[\\s>]`, 'g'))) i = o.index; return i; };
+  for (const m of h.matchAll(re)) {
+    const before = h.slice(0, m.index); const openP = lastOpen(before, 'p'); const openLi = lastOpen(before, 'li');
+    const open = Math.max(openP, openLi); if (open < 0) continue;
+    const tag = open === openP ? 'p' : 'li';
+    if (before.slice(open).includes(`</${tag}>`)) continue; // Anker liegt nicht in diesem Element
+    const close = h.indexOf(`</${tag}>`, m.index); if (close < 0) continue;
+    const el = h.slice(open, close);
+    if (/class="cl-chip"/.test(m[0]) || /class="cl-chip"/.test(el)) continue;
+    const sentence = text(el);
+    if (sentence.replace(m[1], '').trim().length < 40) continue;
+    out.push(sentence.length > 260 ? sentence.slice(0, 257) + '…' : sentence);
+  }
+  return out;
+}
+const contextReport = [];
 
 for (const m of MANIFEST) {
   const html = pages.get(m.url);
@@ -112,10 +161,20 @@ for (const m of MANIFEST) {
     if (!pages.has(u)) errs.push(`${m.url}: Link-Ziel fehlt: ${a[1]}`);
     else if (a[2] && !new RegExp(`id="${a[2].slice(1)}"`).test(pages.get(u))) errs.push(`${m.url}: Anker fehlt: ${a[1]}${a[2]}`);
   }
-  // Inbound
-  const inb = [...inbound.get(m.url)].filter((u) => !HUBS.has(u) && !COHORT.has(u) && !u.startsWith('/en/'));
-  if (inb.length < 2) errs.push(`${m.url}: nur ${inb.length} Bestands-Inbound (${inb.join(', ') || 'keine'})`);
-  info.push(`${m.url}: ${words} Wörter, ${quellen} Quellen, ${faq} FAQ, Inbound ${inb.length}: ${inb.join(', ')}`);
+  // Inbound gesamt (inkl. Hubs/Chips, nur informativ) und Kontext-Hosts (zählen)
+  const inbAll = [...inbound.get(m.url)].filter((u) => !COHORT.has(u) && !u.startsWith('/en/'));
+  const hosts = [];
+  for (const u of inbAll) {
+    if (HUBS.has(u)) continue;
+    const hh = pages.get(u); if (!hh) continue;
+    if (/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(hh)) continue;
+    if (!baseUrls.has(u)) continue; // muss auf der Basis existieren
+    const sents = contextLinks(hh, m.url);
+    if (sents.length) hosts.push({ url: u, sentence: sents[0] });
+  }
+  if (hosts.length < 2) errs.push(`${m.url}: nur ${hosts.length} Kontext-Host(s) aus der Basis (${hosts.map((x) => x.url).join(', ') || 'keine'})`);
+  contextReport.push({ url: m.url, hosts });
+  info.push(`${m.url}: ${words} Wörter, ${quellen} Quellen, ${faq} FAQ, Kontext-Hosts ${hosts.length} (${hosts.map((x) => x.url).join(', ')}); übrige Inbound ${inbAll.length - hosts.length}`);
 }
 // Em-/Gedankenstriche in den neuen Quelltexten
 for (const f of SOURCES) {
@@ -144,8 +203,10 @@ for (const m of MANIFEST) {
   if (sitemap && !sitemap.includes(`https://tcm.ch${m.url}`)) errs.push(`${m.url}: fehlt in sitemap.xml`);
 }
 
-console.log(`Entscheidungsfragen: ${MANIFEST.length} Seiten, Kohorten-Konstante ${unset ? 'ungesetzt (Draft)' : 'gesetzt'}`);
+console.log(`Entscheidungsfragen: ${MANIFEST.length} Seiten, Kohorten-Konstante ${unset ? 'ungesetzt (Draft)' : 'gesetzt'}, Basis: ${baseSrc} (${baseUrls.size} URLs)`);
 info.forEach((i) => console.log('  ·', i));
+console.log('Kontextlinks (Host → Ziel, Ankersatz):');
+for (const c of contextReport) for (const h of c.hosts) console.log(`  ${h.url} → ${c.url}: «${h.sentence}»`);
 errs.forEach((e) => console.log('  !', e));
 console.log(errs.length ? `FEHLER: ${errs.length}` : 'OK');
 if (errs.length) process.exitCode = 1;
