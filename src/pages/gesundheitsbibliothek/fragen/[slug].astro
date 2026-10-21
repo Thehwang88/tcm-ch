@@ -11,7 +11,7 @@ import ArticleCta from '../../../components/library/ArticleCta.astro';
 import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { site } from '../../../data/site';
 import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
-import { PUBLISHED_WELLE_3_2026_10 } from '../../../data/befunde-werte';
+import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_ENTSCHEIDUNGEN_2026_10 } from '../../../data/befunde-werte';
 import type { Frage, FragenHub } from '../../../data/fragen';
 
 export function getStaticPaths() {
@@ -23,6 +23,16 @@ export function getStaticPaths() {
 
 interface Props { hub: FragenHub | null; frage: Frage | null }
 const { hub, frage } = Astro.props;
+// Autorenkarte: Fragen mit eigener neutraler Angabe (Kohorte Entscheidungsfragen) zeigen diese; Altbestand unverändert.
+const autor = frage?.autor ?? { name: 'TCM.ch Fachredaktion', role: 'Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen' };
+// Kohorten-Datum: welle-3 => PUBLISHED_WELLE_3_2026_10; entscheidungen-2026-10 => PUBLISHED_ENTSCHEIDUNGEN_2026_10
+// (undefined bis Release => kein Schema-Datum, kein sichtbares Datum). Aeltere Fragen behalten FRAGEN_DATEN.
+const cohortDate: string | undefined = frage?.cohort === 'welle-3' ? PUBLISHED_WELLE_3_2026_10 : frage?.cohort === 'entscheidungen-2026-10' ? PUBLISHED_ENTSCHEIDUNGEN_2026_10 : undefined;
+const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+// Sichtbares Datum der Autorenkarte: neue Kohorte ohne Datum bis Release (kein geerbtes Septemberdatum); Altbestand unveraendert.
+const aktualisiert: string | null = frage?.cohort === 'entscheidungen-2026-10'
+  ? (cohortDate ? `${MONATE[Number(cohortDate.slice(5, 7)) - 1]} ${cohortDate.slice(0, 4)}` : null)
+  : 'September 2026';
 const slug = (hub ?? frage)!.slug;
 const path = `/gesundheitsbibliothek/fragen/${slug}`;
 const url = new URL(`${path}/`, site.url).href;
@@ -43,8 +53,8 @@ const pageLd = {
   description: metaDesc,
   url,
   inLanguage: 'de-CH',
-  // Welle-3-Fragen: Daten aus der Kohorten-Konstante, bis Release ohne Schema-Daten.
-  ...(frage?.cohort === 'welle-3' ? (PUBLISHED_WELLE_3_2026_10 ? { datePublished: PUBLISHED_WELLE_3_2026_10, dateModified: PUBLISHED_WELLE_3_2026_10 } : {}) : { datePublished: FRAGEN_DATEN.datePublished, dateModified: FRAGEN_DATEN.dateModified }),
+  // Kohorten-Fragen (Welle 3, Entscheidungsfragen): Daten aus der Kohorten-Konstante, bis Release ohne Schema-Daten.
+  ...(frage?.cohort ? (cohortDate ? { datePublished: cohortDate, dateModified: cohortDate } : {}) : { datePublished: FRAGEN_DATEN.datePublished, dateModified: FRAGEN_DATEN.dateModified }),
   author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
   publisher: {
     '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
@@ -120,9 +130,9 @@ const otherHubs = hub ? fragenHubs.filter((x) => x.slug !== hub.slug) : [];
           <div class="avatar avatar--sm">TCM</div>
           <div>
             <div class="a-label">Erstellt von</div>
-            <div class="a-name">TCM.ch Fachredaktion</div>
-            <div class="a-role">Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen</div>
-            <div class="a-review">Allgemeine Information, keine ärztliche Diagnose · zuletzt aktualisiert September 2026</div>
+            <div class="a-name">{autor.name}</div>
+            <div class="a-role">{autor.role}</div>
+            <div class="a-review">Allgemeine Information, keine ärztliche Diagnose{aktualisiert ? ` · zuletzt aktualisiert ${aktualisiert}` : ''}</div>
           </div>
         </aside>
 

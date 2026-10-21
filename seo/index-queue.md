@@ -30,6 +30,20 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-oder-physiotherapie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/wissen/akupunktur-oder-osteopathie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/wissen/akupunktur-oder-schroepfen/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/wissen/tuina-oder-physiotherapie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-metallallergie/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-mit-gelenkprothese/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-immunsuppression/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nach-operation/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/moxibustion-sicherheit/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/ — 21.10.2026 (Entscheidungsfragen-Kohorte)
 - https://tcm.ch/beschwerden/okzipitalneuralgie/ — 20.10.2026 (Beschwerden Welle 6)
 - https://tcm.ch/beschwerden/zervikogener-kopfschmerz/ — 20.10.2026 (Beschwerden Welle 6)
 - https://tcm.ch/beschwerden/zervikale-radikulopathie/ — 20.10.2026 (Beschwerden Welle 6)
@@ -473,6 +487,7 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/beschwerden/burning-mouth-syndrom/ — 18.10.2026 (Beschwerden Welle 5)
 
 ## Geplant (noch nicht live)
+
 
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")

@@ -799,6 +799,21 @@ const SYNONYMS: Record<string, string> = {
   '/wissen/tcm-granulat-dekokt-tabletten/': 'Granulat Dekokt Tabletten Kapseln Darreichungsform Kräuter Tee',
   '/wissen/chinesische-kraeuter-qualitaet-schweiz/': 'Qualität chinesische Kräuter Zulassung Swissmedic asiatische Arzneimittel',
   '/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/': 'Chinesische Kräuter online kaufen bestellen Versandapotheke Verordnung',
+  // Entscheidungsfragen 21.10.2026
+  '/wissen/akupunktur-oder-physiotherapie/': 'Akupunktur oder Physiotherapie Methodenvergleich aktive Rehabilitation Nadeln Verordnung',
+  '/wissen/akupunktur-oder-osteopathie/': 'Akupunktur oder Osteopathie Osteopath Vergleich manuelle Behandlung Fachperson',
+  '/wissen/akupunktur-oder-schroepfen/': 'Akupunktur oder Schröpfen Vergleich Nadeln Unterdruck Schröpfflecken',
+  '/wissen/tuina-oder-physiotherapie/': 'Tuina oder Physiotherapie Vergleich manuelle Behandlung Rehabilitation Kreuzschmerzen',
+  '/gesundheitsbibliothek/fragen/akupunktur-metallallergie/': 'Nickelallergie Metallallergie Akupunkturnadeln Edelstahl Nadelmaterial',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/': 'Einnahmeplan TCM Kräuter einnehmen Dosierung Zubereitung Granulat Einnahme',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/': 'Pille hormonelle Verhütung Antibabypille TCM Kräuter Wechselwirkung',
+  '/gesundheitsbibliothek/fragen/akupunktur-mit-gelenkprothese/': 'Hüftprothese Knieprothese Gelenkersatz Metallimplantat Schrauben Platten Akupunktur',
+  '/gesundheitsbibliothek/fragen/akupunktur-immunsuppression/': 'Immunsuppression Immunsuppressiva Transplantation Biologika Methotrexat Akupunktur',
+  '/gesundheitsbibliothek/fragen/akupunktur-nach-operation/': 'Akupunktur nach Operation nach OP Wundheilung Nachsorge Termin',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/': 'Kräuter vor Operation Narkose Anästhesie absetzen OP-Team',
+  '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/': 'Lymphknotenentfernung Wächterlymphknoten Achsel Leiste betroffene Seite Nadeln Akupunktur Sicherheit',
+  '/gesundheitsbibliothek/fragen/moxibustion-sicherheit/': 'Moxibustion Sicherheit Nebenwirkungen Verbrennung Rauch Moxa Risiken',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/': 'Kräuter Immunsuppressiva Tacrolimus Ciclosporin Transplantation Wechselwirkung',
   '/gesundheitsbibliothek/befunde-werte/ana-antikoerper/': 'ANA positiv antinukleäre Antikörper ANA Titer',
   '/gesundheitsbibliothek/befunde-werte/rheumafaktor/': 'RF Rheumafaktor positiv',
   '/gesundheitsbibliothek/befunde-werte/anti-ccp/': 'CCP ACPA Anti-CCP-Antikörper',
@@ -943,6 +958,11 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Schröpfmassage', u: '/wissen/schroepfmassage/' },
     { t: 'Narbenbehandlung', u: '/wissen/narbenbehandlung/' },
     { t: 'Shiatsu-Selbstbehandlung', u: '/wissen/shiatsu-selbstbehandlung/' },
+    // Entscheidungsfragen 21.10.2026: allgemeine Methodenvergleiche
+    { t: 'Akupunktur oder Physiotherapie', u: '/wissen/akupunktur-oder-physiotherapie/' },
+    { t: 'Akupunktur oder Osteopathie', u: '/wissen/akupunktur-oder-osteopathie/' },
+    { t: 'Akupunktur oder Schröpfen', u: '/wissen/akupunktur-oder-schroepfen/' },
+    { t: 'Tuina oder Physiotherapie', u: '/wissen/tuina-oder-physiotherapie/' },
   ];
   for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).

@@ -191,6 +191,11 @@ const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angabe
   .kb-body :global(strong) { color: var(--ink); }
   .kb-body :global(a) { color: var(--blue); font-weight: 600; text-decoration: none; }
   .kb-body :global(a:hover) { text-decoration: underline; }
+  /* Entscheidungsfragen 21.10.2026: Vergleichstabellen scrollen innerhalb des Inhalts (kein Seitenüberlauf bei 320/390 px) */
+  .kb-body :global(.table-wrap) { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 22px; }
+  .kb-body :global(.table-wrap table) { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15.5px; line-height: 1.45; }
+  .kb-body :global(.table-wrap th), .kb-body :global(.table-wrap td) { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; color: var(--mid); }
+  .kb-body :global(.table-wrap th) { color: var(--ink); font-weight: 700; background: var(--blue-light); }
   /* carried-over content blocks */
   .kb-body :global(.wa-callout) { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
   .kb-body :global(.wa-callout-label) { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
