@@ -94,14 +94,49 @@ const card = renderKontaktForm({
     } catch (e) { utm = {}; }
     [].forEach.call(dlg.querySelectorAll('[data-kf-utm]'), function (i) { if (utm[i.name]) i.value = utm[i.name]; });
 
-    // Turnstile erst beim ersten Öffnen explizit rendern (verborgener Dialog); dann cf-turnstile-Klasse → Token-Pflicht im Submit.
-    var tsEl = dlg.querySelector('[data-kf-ts-lazy]'), tsDone = false, tsTries = 0;
-    var renderTs = function () {
-      if (tsDone || !tsEl) return;
-      if (!window.turnstile || !window.turnstile.render) { if (tsTries++ < 50) setTimeout(renderTs, 200); return; }
-      tsDone = true; tsEl.classList.add('cf-turnstile');
-      try { window.turnstile.render(tsEl, { sitekey: tsEl.getAttribute('data-sitekey'), appearance: 'interaction-only', size: tsEl.clientWidth && tsEl.clientWidth < 300 ? 'compact' : 'normal' }); } catch (e) {}
+    // Turnstile erst beim ersten Öffnen explizit rendern (verborgener Dialog). Erst ein ERFOLGREICHES render() setzt tsDone und
+    // die cf-turnstile-Klasse (Token-Pflicht im Submit). Wirft render() oder lädt das Skript nicht (Blocker, Netz), wird mit
+    // Backoff erneut versucht; danach ein zugänglicher Hinweis mit «Erneut versuchen» und den Kontaktalternativen. Ein Absenden
+    // ohne bereite Sicherheitsprüfung wird abgefangen (kein 403-Umweg), das Formular bleibt nie dauerhaft blockiert.
+    var form = dlg.querySelector('[data-kf-form]');
+    var tsEl = dlg.querySelector('[data-kf-ts-lazy]'), tsDone = false, tsBusy = false, tsWait = 0, tsFail = 0, tsTimer = 0;
+    var tsErr = null;
+    var showTsErr = function (msg) {
+      if (!tsEl) return;
+      if (!tsErr) {
+        tsErr = document.createElement('div'); tsErr.className = 'kf-err hsg-ts-err'; tsErr.setAttribute('role', 'alert'); tsErr.setAttribute('data-hsg-ts-err', '');
+        tsErr.innerHTML = '<span data-hsg-ts-msg></span> <button type="button" class="hsg-ts-retry" data-hsg-ts-retry>Erneut versuchen</button>';
+        tsEl.insertAdjacentElement('afterend', tsErr);
+        tsErr.querySelector('[data-hsg-ts-retry]').addEventListener('click', function () { tsFail = 0; tsWait = 0; hideTsErr(); renderTs(); });
+      }
+      tsErr.querySelector('[data-hsg-ts-msg]').textContent = msg; tsErr.hidden = false;
     };
+    var hideTsErr = function () { if (tsErr) tsErr.hidden = true; };
+    var renderTs = function () {
+      if (tsDone || tsBusy || !tsEl) return;
+      clearTimeout(tsTimer);
+      if (!window.turnstile || !window.turnstile.render) {
+        if (tsWait++ < 50) { tsTimer = setTimeout(renderTs, 200); return; }
+        showTsErr('Die Sicherheitsprüfung konnte nicht geladen werden. Bitte versuch es erneut oder ruf uns an.'); return;
+      }
+      tsBusy = true;
+      try {
+        window.turnstile.render(tsEl, { sitekey: tsEl.getAttribute('data-sitekey'), appearance: 'interaction-only', size: tsEl.clientWidth && tsEl.clientWidth < 300 ? 'compact' : 'normal' });
+        tsDone = true; tsEl.classList.add('cf-turnstile'); hideTsErr();
+      } catch (e) {
+        tsFail++;
+        if (tsFail < 4) tsTimer = setTimeout(renderTs, 400 * tsFail);
+        else showTsErr('Die Sicherheitsprüfung konnte nicht gestartet werden. Bitte versuch es erneut oder ruf uns an.');
+      }
+      tsBusy = false;
+    };
+    // Vor dem Formular-Handler (kontakt-form.js, defer) registriert: ohne bereite Prüfung kein Versand, sondern Hinweis + neuer Versuch.
+    if (form) form.addEventListener('submit', function (e) {
+      if (tsDone || !tsEl) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      showTsErr('Die Sicherheitsprüfung ist noch nicht bereit. Bitte einen Moment warten und erneut senden.');
+      tsFail = 0; tsWait = Math.min(tsWait, 40); renderTs();
+    });
 
     // Sichtbare Höhe (Bildschirmtastatur): visualViewport → --hsg-vvh; Inhalt scrollt im Sheet.
     var vv = window.visualViewport;
@@ -221,6 +256,10 @@ const card = renderKontaktForm({
   .kf.kf--herbst .kf-opt.is-checked{border-color:var(--brand-black,#020B10);box-shadow:inset 0 0 0 1px var(--brand-black,#020B10),0 0 0 3px var(--brand,#1AE288)}
   .kf.kf--herbst .kf-fields{margin-top:16px}
   .kf.kf--herbst .kf-note{margin-top:10px}
+  .hsg-ts-err{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 12px;padding:10px 12px;border-radius:12px;background:#FFF4F3;border:1px solid rgba(179,38,30,.35)}
+  .hsg-ts-retry{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--brand-black,#020B10);background:#fff;color:var(--brand-black,#020B10);font:inherit;font-size:14.5px;font-weight:700;cursor:pointer}
+  .hsg-ts-retry:hover{background:#F0FCF6}
+  .hsg-ts-retry:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:2px}
   @media (min-width:600px){.kf.kf--ruhig.kf--herbst{padding:0 24px 18px!important}.kf.kf--herbst .kf-kopf{padding-top:24px}.hsg-formcol .hsg-deadline{margin:0 24px}.hsg-formcol .hsg-deadline-note{margin:4px 24px 20px}}
   @media (max-width:389px){.kf.kf--herbst .kf-hb-list li{font-size:14px}.kf.kf--herbst .kf-kopf{padding-top:16px;margin-bottom:12px}}
   @media (min-width:769px){

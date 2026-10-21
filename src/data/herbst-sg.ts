@@ -1,6 +1,7 @@
 // TCM.ch · TCM 360° Entdeckertage St. Gallen (fortlaufendes Angebot für Neupatient:innen in Buchungsrunden, nur
 // /standorte/st-gallen/). EINZIGE Quelle für Angebotsschalter, Freigaben, Kapazitäts-/Fristanzeige und Aktions-Texte.
-// Buchungsrunden (Start, Ende, reservierte Termine, Status): src/data/tcm360-runden.json, vom Team ohne Code-Änderung gepflegt.
+// Buchungsrunden (Start, Ende, reservierte Termine, Status): src/data/tcm360-runden.json. Das Team pflegt die Datei ohne Änderung
+// der Anwendungslogik; wirksam wird sie erst mit einem neuen Build/Deploy (Push auf main). Kein Admin-Dashboard.
 // Angebots-IDs/Terminarten bleiben die des gemeinsamen Kontaktformulars (src/data/kontakt-angebote.mjs: TCM_CHECKIN,
 // ERSTTERMIN_BEHANDLUNG); die Kampagne wird als Feld «kampagne» (KAMPAGNEN.sg_tcm360_herbst_2026) plus «runde» (Buchungsrunde)
 // mitgesendet und serverseitig als «TCM 360°-Check» klassifiziert. Der reguläre kostenlose 30-Minuten-Check-in bleibt
@@ -14,7 +15,7 @@
 //                 → Angebot NICHT BEREIT, kein Markup.
 //   Runden        Aktuelle Runde = status «offen» und jetzt innerhalb start…ende → «Aktuelle Buchungsrunde bis <Ende>».
 //                 Keine aktuelle, aber eine bestätigte spätere Runde (status offen/geplant, start > jetzt) → «Nächste
-//                 Buchungsrunde ab <Start>». Sonst neutral: «Neue 360°-Termine verfügbar». Der Client prüft dieselben Regeln
+//                 Buchungsrunde ab <Start>». Sonst neutral, ohne Verfügbarkeitszusage: «360°-Termine auf Anfrage». Der Client prüft dieselben Regeln
 //                 mit der aktuellen Uhrzeit (eine beendete Runde kippt ohne Rebuild in den neutralen Status; nie ein Reset).
 //   Kapazität     «Spezielle 360°-Termine – begrenzte Kapazität» NUR mit reservierteTermine der aktuellen Runde;
 //                 «Noch X 360°-Termine verfügbar» NUR mit verlässlicher Live-Restzahl (live.remaining, verifiedAt ≤ 24 h).
@@ -79,7 +80,8 @@ const ms = (iso: string) => new Date(iso).getTime();
 const DAY = 24 * 60 * 60 * 1000;
 /** dd.mm.yyyy in Europe/Zurich. */
 export const fmtDate = (iso: string) => new Intl.DateTimeFormat('de-CH', { timeZone: 'Europe/Zurich', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(iso));
-export const NEUTRAL_TEXT = 'Neue 360°-Termine verfügbar';
+/** Ohne laufende/bestätigte Runde: keine Verfügbarkeitszusage, nur die unverbindliche Anfrage. */
+export const NEUTRAL_TEXT = '360°-Termine auf Anfrage · unverbindlich';
 export const rundeSoldOut = (r: Runde) => r.reservierteTermine != null && r.bestaetigteBuchungen != null && r.bestaetigteBuchungen >= r.reservierteTermine;
 
 /** Aktuelle / nächste Runde nach denselben Regeln wie das Client-Skript (HerbstSheetSG). */
@@ -141,7 +143,7 @@ export const HERBST_COPY = {
   /** Kompakte Vorteile (Sheet). */
   benefits: ['Persönlicher TCM-Konstitutionscheck', 'Zungen- und Pulsdiagnostik', 'Antworten auf deine TCM-Fragen', 'Praxis und Behandlungsmöglichkeiten kennenlernen'],
   noTreatment: 'Keine Akupunktur, Massage oder andere Behandlung inbegriffen. Keine Behandlungspflicht.',
-  boundary: '360° steht für die ganzheitliche Sicht der TCM, nicht für eine medizinische Untersuchung. Der Kurzcheck ersetzt keine ärztliche Diagnostik und dient der persönlichen Orientierung aus Sicht der TCM.',
+  boundary: '360° steht für die ganzheitliche Sicht der TCM: ein kurzer, auf dein Hauptanliegen fokussierter Kurzcheck, keine umfassende medizinische Untersuchung. Er ersetzt keine ärztliche Diagnostik und dient der persönlichen Orientierung aus Sicht der TCM.',
   bannerEyebrow: 'St. Gallen · Herbst Special',
   bannerH: 'TCM 360°-Check für CHF 0.–',
   bannerSub: 'Ganzheitlicher TCM-Kurzcheck, Zungen- & Pulsdiagnostik und persönliche Fragen.',

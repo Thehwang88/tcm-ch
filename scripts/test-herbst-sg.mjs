@@ -16,15 +16,18 @@ const GTAG_STUB = `window.dataLayer = window.dataLayer || []; window.__gtagCalls
 // Turnstile-Stub: explizites Rendern legt das Token-Feld an (wie das echte Widget im Erfolgsfall).
 const TS_STUB = `window.turnstile = { render: function (el) { el.setAttribute('data-ts-rendered', '1'); var i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'TEST-TOKEN'; el.appendChild(i); return 'w'; }, reset: function () {} };`;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-async function open(u, { status = 200, body = { ok: true }, width = 390, height, clock, turnstile = true } = {}) {
+// Turnstile-Stub mit Fehlverhalten: 'throw1' wirft beim ersten render(), 'throwAll' immer, 'none' = Skript lädt nie.
+const TS_STUB_FAIL = (mode) => `window.__tsCalls = 0; window.turnstile = { render: function (el) { window.__tsCalls++; if (${JSON.stringify(mode)} === 'throwAll' || (${JSON.stringify(mode)} === 'throw1' && window.__tsCalls === 1)) throw new Error('render failed'); el.setAttribute('data-ts-rendered', '1'); var i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'TEST-TOKEN'; el.appendChild(i); return 'w'; }, reset: function () {} };`;
+async function open(u, { status = 200, body = { ok: true }, width = 390, height, clock, turnstile = true, mutate } = {}) {
   const pg = await br.newPage(); const calls = [];
   await pg.evaluateOnNewDocument(GTAG_STUB);
-  if (turnstile) await pg.evaluateOnNewDocument(TS_STUB);
+  if (turnstile === true) await pg.evaluateOnNewDocument(TS_STUB); else if (typeof turnstile === 'string' && turnstile !== 'none') await pg.evaluateOnNewDocument(TS_STUB_FAIL(turnstile));
   // Client-Uhr verschieben: nur Date.now (die Rundenlogik liest ausschliesslich Date.now; new Date(t) mit Argument bleibt unverändert).
   if (clock) await pg.evaluateOnNewDocument(`(function(){var o=Date.now; Date.now=function(){return o()+${clock};};})()`);
   await pg.setRequestInterception(true);
   pg.on('request', (r) => {
     if (r.url().startsWith(origin + '/api/anfrage')) { calls.push(JSON.parse(r.postData() || '{}')); return r.respond({ status, contentType: 'application/json', body: JSON.stringify(body) }); }
+    if (mutate && r.url().split('?')[0] === origin + u.split('?')[0]) return r.respond({ status: 200, contentType: 'text/html', body: mutate(fs.readFileSync(path.join(dist, u.split('?')[0], 'index.html'), 'utf8')) });
     if (r.url().startsWith(origin)) return r.continue(); return r.abort();
   });
   await pg.setViewport({ width, height: height || (width < 500 ? 844 : width < 1000 ? 1024 : 900), isMobile: width < 500, hasTouch: width < 500 });
@@ -74,7 +77,7 @@ for (const w of [320, 375, 390]) {
   await pg.click('#hsg-banner [data-hsg-open]'); await sleep(350);
   ok(await dlgOpen(pg) && await pg.evaluate(() => document.documentElement.classList.contains('hsg-open')), `${w}px: Banner-CTA öffnet das Bottom Sheet`);
   const ctaEv = await ev(pg, 'kampagne_cta_click'), opEv = await ev(pg, 'kampagne_sheet_open');
-  ok(ctaEv.length === 1 && ctaEv[0].kampagne === 'sg_tcm360_herbst_2026' && ctaEv[0].cta_position === 'herbst-banner' && opEv.length === 1 && opEv[0].cta_position === 'herbst-banner' && opEv[0].buchungsrunde === 'runde-vorschau', `${w}px: dataLayer kampagne_cta_click + kampagne_sheet_open (Position, Kampagne, Runde)`);
+  ok(ctaEv.length === 1 && ctaEv[0].kampagne === 'sg_tcm360_herbst_2026' && ctaEv[0].cta_position === 'herbst-banner' && ctaEv[0].standort === 'st-gallen' && opEv.length === 1 && opEv[0].kampagne === 'sg_tcm360_herbst_2026' && opEv[0].cta_position === 'herbst-banner' && opEv[0].buchungsrunde === 'runde-vorschau' && (await ev(pg, 'formular_senden')).length === 0 && (await ev(pg, 'form_submit')).length === 0, `${w}px: dataLayer kampagne_cta_click + kampagne_sheet_open mit Kampagne/Position/Runde, KEINE Conversion durch Klick/Öffnen`);
   const sheet = await pg.evaluate(() => {
     const d = document.getElementById('hsg-sheet'), r = d.getBoundingClientRect();
     const t = (s) => (d.querySelector(s) || {}).textContent?.replace(/\s+/g, ' ').trim();
@@ -144,7 +147,8 @@ console.log('3. Reguläres SG-Hero-Formular unverändert neben der Kampagne');
   ok(await pg.$eval('[data-kf-instance="sg-hero"] .kf-opt--checkin', (e) => /Kostenloser TCM-Check-in/.test(e.textContent) && /30 Minuten/.test(e.textContent)), 'Hero-Formular: regulärer Check-in «30 Minuten» unverändert');
   await pg.$eval('[data-kf-instance="sg-hero"] label[for$="ta-checkin"]', (l) => l.click());
   await pg.evaluate(() => { document.querySelectorAll('[data-kf-instance="sg-hero"] .cf-turnstile').forEach((t) => { const i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'TEST-TOKEN'; t.appendChild(i); }); });
-  await pg.type('#kf-sg-hero-tel', '079 123 45 67'); await pg.click('[data-kf-instance="sg-hero"] [data-kf-submit]'); await sleep(400);
+  // Synthetischer Klick (Layout verschiebt sich beim Nachladen der Hero-Medien; echte Klicks auf dieses Formular prüft test-kontakt-formular.mjs).
+  await pg.type('#kf-sg-hero-tel', '079 123 45 67'); await pg.$eval('[data-kf-instance="sg-hero"] [data-kf-submit]', (b) => b.click()); await sleep(400);
   const c = calls[0] || {}; const fs1 = await ev(pg, 'formular_senden');
   ok(calls.length === 1 && c.quelle === 'launch-hero-sg' && c.formular === 'Hero-Gratis-30min-StGallen' && c.angebot_id === 'TCM_CHECKIN' && !('kampagne' in c) && !('runde' in c) && !('utm_source' in c), 'Hero-Formular: bisherige Identifier, keine Kampagnenfelder');
   ok(fs1.length === 1 && fs1[0].quelle === 'launch-hero-sg' && !('kampagne' in fs1[0]) && !('buchungsrunde' in fs1[0]) && (await ev(pg, 'kampagne_sheet_open')).length === 0, 'Hero-Formular: formular_senden genau 1× im bisherigen Format, Sheet nie automatisch geöffnet');
@@ -176,13 +180,46 @@ console.log('4. Desktop (1280) und Tablet (768)');
   await t.pg.close();
 }
 
+console.log('4b. Turnstile: Wiederholung, Fallback, Sperre vor Bereitschaft (Regression)');
+{
+  const t1 = await open(SG, { width: 390, turnstile: 'throw1' });
+  await t1.pg.click('#hsg-banner [data-hsg-open]'); await sleep(1200);
+  ok(await t1.pg.evaluate(() => window.__tsCalls >= 2 && !!document.querySelector('[data-kf-ts-lazy].cf-turnstile[data-ts-rendered]') && !(document.querySelector('[data-hsg-ts-err]') && !document.querySelector('[data-hsg-ts-err]').hidden)), 'render() wirft einmal → automatischer zweiter Versuch gelingt, kein Hinweis');
+  await t1.pg.type('#kf-sg-herbst-tel', '079 123 45 67'); await t1.pg.click('#hsg-sheet [data-kf-submit]'); await sleep(400);
+  ok(t1.calls.length === 1 && t1.calls[0].turnstileToken === 'TEST-TOKEN', 'danach normaler Versand mit Token');
+  await t1.pg.close();
+  const t2 = await open(SG, { width: 390, turnstile: 'throwAll' });
+  await t2.pg.click('#hsg-banner [data-hsg-open]'); await sleep(3200);
+  const f = await t2.pg.evaluate(() => { const e = document.querySelector('[data-hsg-ts-err]'); return { calls: window.__tsCalls, shown: !!e && !e.hidden, role: e && e.getAttribute('role'), txt: e && e.textContent, btn: !!(e && e.querySelector('[data-hsg-ts-retry]')), cls: document.querySelector('[data-kf-ts-lazy]').classList.contains('cf-turnstile') }; });
+  ok(f.calls === 4 && f.shown && f.role === 'alert' && /Sicherheitsprüfung/.test(f.txt) && /ruf uns an/.test(f.txt) && f.btn && !f.cls, `render() wirft dauerhaft → 4 Versuche, dann zugänglicher Hinweis (role=alert) mit «Erneut versuchen» und Anruf-Hinweis (${f.calls} Aufrufe)`);
+  await t2.pg.type('#kf-sg-herbst-tel', '079 123 45 67'); await t2.pg.click('#hsg-sheet [data-kf-submit]'); await sleep(300);
+  ok(t2.calls.length === 0 && await t2.pg.evaluate(() => /noch nicht bereit|Sicherheitsprüfung/.test(document.querySelector('[data-hsg-ts-err]').textContent)), 'Absenden ohne bereite Prüfung: kein Versand (kein 403-Umweg), Hinweis bleibt');
+  await t2.pg.evaluate(() => { window.turnstile.render = function (el) { el.setAttribute('data-ts-rendered', '1'); var i = document.createElement('input'); i.type = 'hidden'; i.name = 'cf-turnstile-response'; i.value = 'TEST-TOKEN'; el.appendChild(i); return 'w'; }; });
+  await t2.pg.click('[data-hsg-ts-retry]'); await sleep(300);
+  ok(await t2.pg.evaluate(() => document.querySelector('[data-hsg-ts-err]').hidden && document.querySelector('[data-kf-ts-lazy].cf-turnstile[data-ts-rendered]') !== null), '«Erneut versuchen» rendert nach behobener Störung, Hinweis verschwindet');
+  await t2.pg.click('#hsg-sheet [data-kf-submit]'); await sleep(400);
+  ok(t2.calls.length === 1 && t2.calls[0].turnstileToken === 'TEST-TOKEN' && (await ev(t2.pg, 'formular_senden')).length === 1, 'danach Versand mit Token, genau 1 Conversion');
+  await t2.pg.close();
+  const t3 = await open(SG, { width: 390, turnstile: 'none' });
+  await t3.pg.click('#hsg-banner [data-hsg-open]'); await t3.pg.type('#kf-sg-herbst-tel', '079 123 45 67'); await t3.pg.click('#hsg-sheet [data-kf-submit]'); await sleep(300);
+  ok(t3.calls.length === 0 && await t3.pg.evaluate(() => { const e = document.querySelector('[data-hsg-ts-err]'); return !!e && !e.hidden; }), 'Turnstile-Skript nicht geladen: Absenden abgefangen, Hinweis sichtbar, kein Versand');
+  await t3.pg.close();
+}
+
 console.log('5. Buchungsrunden-Ablauf (Client-Uhr) und andere Standorte');
 {
   const DAY = 86400000;
   const { pg } = await open(SG, { width: 390, clock: 10 * DAY });
   const after = await pg.evaluate(() => ({ banner: !!document.getElementById('hsg-banner') && getComputedStyle(document.getElementById('hsg-banner')).display !== 'none', note: document.querySelector('#hsg-banner [data-hsg-runde]').textContent, sc: [...document.querySelectorAll('[data-hsg-sc]')].every((e) => e.hidden), runde: document.querySelector('[data-kf-runde]').value, sticky: !!document.querySelector('.hsg-bar'), scbOff: !!document.querySelector('.scb-bar.scb-off') }));
-  ok(after.banner && after.note === 'Neue 360°-Termine verfügbar' && after.sc && after.runde === '' && after.sticky && after.scbOff, 'Runde beendet (Uhr +10 Tage): Angebot bleibt, neutraler Status «Neue 360°-Termine verfügbar», keine Kapazitätszeile, Feld runde leer');
+  ok(after.banner && after.note === '360°-Termine auf Anfrage · unverbindlich' && after.sc && after.runde === '' && after.sticky && after.scbOff, 'Runde beendet (Uhr +10 Tage): Angebot bleibt, neutraler Status «360°-Termine auf Anfrage · unverbindlich» (keine Verfügbarkeitszusage), keine Kapazitätszeile, Feld runde leer');
+  // Offener Tab über das Rundenende hinweg: Anfrage bleibt möglich, geht ohne Runde raus.
+  await pg.click('#hsg-banner [data-hsg-open]'); await sleep(300); await pg.type('#kf-sg-herbst-tel', '079 123 45 67'); await pg.click('#hsg-sheet [data-kf-submit]'); await sleep(400);
+  ok(pg && (await pg.evaluate(() => !!document.querySelector('#hsg-sheet .kf-success'))) && (await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'formular_senden'))).every((e) => e.kampagne === 'sg_tcm360_herbst_2026' && !('buchungsrunde' in e)), 'Nach Rundenende: unverbindliche Anfrage weiterhin möglich, Conversion ohne Buchungsrunde');
   await pg.close();
+  // Runde zur Laufzeit ausgebucht (Build davor): Kapazitätszeile aus, Runde bleibt gesetzt, Anfrage möglich.
+  const so = await open(SG, { width: 390, mutate: (h) => h.replace('"soldOut":false', '"soldOut":true') });
+  ok(await so.pg.evaluate(() => [...document.querySelectorAll('[data-hsg-sc]')].every((e) => e.hidden) && document.querySelector('[data-kf-runde]').value === 'runde-vorschau' && /Aktuelle Buchungsrunde bis/.test(document.querySelector('#hsg-banner [data-hsg-runde]').textContent)), 'Runde zur Laufzeit ausgebucht (offener Tab): keine Kapazitätszeile, Runde bleibt zugeordnet, Rundenzeile bleibt wahr');
+  await so.pg.close();
   const b = await open(SG, { width: 390, clock: -3 * DAY });
   ok(await b.pg.$eval('#hsg-banner [data-hsg-runde]', (e) => /^Nächste Buchungsrunde ab \d\d\.\d\d\.\d{4}$/.test(e.textContent)) && await b.pg.$eval('[data-kf-runde]', (i) => i.value === ''), 'Vor Rundenstart (Uhr −3 Tage): «Nächste Buchungsrunde ab …», Feld runde leer');
   await b.pg.close();

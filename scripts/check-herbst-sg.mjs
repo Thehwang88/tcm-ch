@@ -58,6 +58,8 @@ ok(!/countdown|setInterval|Math\.random|Restplätze|nur heute|letzte Chance|gera
 ok(!/(?<![\w-])(Qi|Yin|Yang|Meridian)/.test(src) && !/heil(t|ung)\b/i.test(src), 'keine energetische Sprache, keine Heilversprechen');
 ok(!/Ganzkörperuntersuchung|Gesundheitscheck|Komplettdiagnose|Früherkennung|Diagnose(?!n)|ersetzt (den|die) Arzt/i.test(src.replace(/Zungen- und Pulsdiagnos|Pulsdiagnos|TCM-Diagnos/g, '')), 'keine medizinischen Untersuchungs-/Diagnose-Claims (360° = ganzheitliche TCM-Sicht)');
 ok(/TCM-Kompass|Discovery Experience|Mitnehmen/i.test(src) === false, 'kein TCM-Kompass / keine Discovery-Experience-Reste');
+ok(!/verfügbar|frei|neue Termine/i.test(NEUTRAL_TEXT) && /unverbindlich/.test(NEUTRAL_TEXT), `neutraler Status ohne Verfügbarkeitszusage («${NEUTRAL_TEXT}»)`);
+ok(/kurzer, auf dein Hauptanliegen fokussierter Kurzcheck, keine umfassende medizinische Untersuchung/.test(HERBST_COPY.boundary), '360° als kurze, priorisierte Orientierung beschrieben (keine umfassende Untersuchung)');
 
 console.log('3. dist');
 const pages = []; const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : f === 'index.html' && pages.push(p); } }; walk('dist');
