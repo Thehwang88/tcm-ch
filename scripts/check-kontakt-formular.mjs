@@ -47,7 +47,9 @@ const has = (p, i) => inst(html.get(p) ?? '').includes(i);
 ok(has('dist/index.html', 'home'), 'Homepage');
 ok(has('dist/kontakt/index.html', 'terminform'), 'Standard-Kontaktseite /kontakt/');
 const sg = html.get('dist/standorte/st-gallen/index.html');
-ok(inst(sg).join() === 'sg-hero,sg-unten', 'St. Gallen: genau Hero + unten');
+// Herbst-Kennenlerntage (src/data/herbst-sg.ts): bei aktiver Kampagne zusätzlich das Sheet-Formular sg-herbst (Gate: check-herbst-sg.mjs).
+const hsgOn = /data-hsg-mode=/.test(sg);
+ok(inst(sg).join() === (hsgOn ? 'sg-hero,sg-herbst,sg-unten' : 'sg-hero,sg-unten'), `St. Gallen: genau Hero + unten${hsgOn ? ' + Kampagnen-Sheet' : ''}`);
 const opClinics = clinics.filter((c) => c.status === 'operational');
 const standortMiss = opClinics.filter((c) => html.has(`dist/standorte/${c.id}/index.html`) && !(html.get(`dist/standorte/${c.id}/index.html`).match(new RegExp(`data-kf-standort-id="${c.id}"`))));
 ok(standortMiss.length === 0, `operative Standortseiten mit festem Standort${standortMiss.length ? ': fehlt ' + standortMiss.map((c) => c.id).join(', ') : ''}`);
@@ -143,8 +145,10 @@ const globalCards = [...html.entries()].filter(([p]) => p !== 'dist/standorte/st
 { const lp = html.get('dist/akupunktur-tcm-st-gallen/index.html');
   ok(globalCards.length === 0 && ![...html].some(([, h]) => /Freie Termine ansehen|Ersttermin mit Behandlung direkt bei OneDoc buchen/.test(h)) && /<div class="kf-alt-wrap" data-kf-alt-wrap data-kf-alt-tel="\+41 77 523 61 22"><p class="kf-od-sep"><span>Oder direkt Kontakt aufnehmen<\/span><\/p><div class="kf-onedoc kf-onedoc--sg" data-kf-onedoc-panel hidden><a class="kf-btn kf-btn--outline" href="\/standorte\/st-gallen\/#online-buchen" data-kf-onedoc data-kf-onedoc-anchor="online-buchen">/.test(lp), 'Rollout: OneDoc nur mit konfiguriertem Kalender, umrandet im Alternativblock, nur bei Behandlung (SG-Landingpage); kein SG-OneDoc-Modus ausserhalb der SG-Seite'); }
 ok(/text-transform:uppercase/.test(read('public/kontakt-form.css').match(/\.kf-tag\{[^}]*\}/)[0]), 'Label als KOSTENLOSER TCM-CHECK-IN (Versalien per CSS)');
-const visSg = text(sg);
-ok(!/31\. Oktober|FIRST 30|Vorweihnacht|Weihnachten|limitierte|Nur noch \d|geschenkt/i.test(visSg), 'SG sichtbar ohne FIRST-30-, Weihnachts-, Frist- oder Kapazitätstexte');
+// Kampagnen-Blöcke der Herbst-Kennenlerntage (Banner, Sheet, Sticky; je mit Endmarker data-hsg-end) haben ihre eigene,
+// verifizierte Frist (check-herbst-sg.mjs) und werden hier ausgeklammert; der Rest der SG-Seite bleibt frist- und kapazitätsfrei.
+const visSg = text(sg.replace(/<(section|dialog|div)\b[^>]*\sdata-hsg\b[\s\S]*?<i hidden data-hsg-end><\/i>/g, ' '));
+ok(!/31\. Oktober|FIRST 30|Vorweihnacht|Weihnachten|limitierte|Nur noch \d|geschenkt/i.test(visSg), 'SG sichtbar ohne FIRST-30-, Weihnachts-, Frist- oder Kapazitätstexte (ausserhalb der Kampagnen-Blöcke)');
 const allVis = [...html.values()].filter((s) => /data-kf-instance/.test(s)).map((s) => text(s.slice(s.indexOf('data-kf-instance'))));
 ok(!allVis.some((v) => /inkl\.? Behandlung|Behandlung inklusive|garantiert|Rückerstattung garantiert/i.test(v)), 'keine Behandlungs-, Garantie- oder Erstattungszusage im Formular');
 
@@ -161,7 +165,8 @@ ok(/class="cf-turnstile/.test(sgHero) && /name="website"/.test(sgHero) && /href=
 { const SZ = `<script>(function(e){if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode.querySelector('.kf-ts'))</script><script src="/kontakt-form.js" defer></script></div>`;
   const TS = /<div class="cf-turnstile kf-ts" data-sitekey="[^"]+" data-appearance="interaction-only"><\/div>/g;
   const home = html.get('dist/index.html'), km = html.get('dist/kontakt/index.html');
-  const cardsN = [...html].reduce((n, [, h]) => n + (h.match(/<div class="inline-form-card kf[^"]*"[^>]*data-kf-instance=/g) || []).length, 0), szN = [...html].reduce((n, [, h]) => n + (h.match(/e\.setAttribute\('data-size','compact'\)\}\)\(document\.currentScript\.parentNode\.querySelector\('\.kf-ts'\)\)<\/script><script src="\/kontakt-form\.js" defer><\/script><\/div>/g) || []).length, 0);
+  // Kampagnen-Sheet (kf--herbst): Turnstile wird beim Öffnen explizit gerendert (Grösse dort entschieden), daher ohne Inline-Script.
+  const cardsN = [...html].reduce((n, [, h]) => n + (h.match(/<div class="inline-form-card kf(?![^"]*kf--herbst)[^"]*"[^>]*data-kf-instance=/g) || []).length, 0), szN = [...html].reduce((n, [, h]) => n + (h.match(/e\.setAttribute\('data-size','compact'\)\}\)\(document\.currentScript\.parentNode\.querySelector\('\.kf-ts'\)\)<\/script><script src="\/kontakt-form\.js" defer><\/script><\/div>/g) || []).length, 0);
   ok(home.split(SZ).length === 2 && sg.split(SZ).length === 3 && (home.match(TS) || []).length === 1 && (sg.match(TS) || []).length === 2 && (km.match(TS) || []).length === 1 && szN === cardsN && !/data-kf-ts-state|data-before-interactive-callback|data-size="/.test(sg + home + km), `Turnstile: alle ${cardsN} ruhigen Karten setzen bei < 300 px Platz die Grösse «compact» (am Kartenende, vor dem Rendern); Container/Token unverändert`); }
 const js = read('public/kontakt-form.js');
 const iOk = js.indexOf("if (!(res.ok && res.j && res.j.ok))"); const iConv = js.indexOf("event: 'formular_senden'"); const iConv2 = js.indexOf("event: 'form_submit'");

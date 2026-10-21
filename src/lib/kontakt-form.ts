@@ -61,6 +61,10 @@ export interface KontaktFormOpts {
   waHref?: string;
   cardStyle?: string;
   extraClass?: string;
+  /** Nur Kampagnen-Sheet /standorte/st-gallen/ (Herbst-Kennenlerntage, src/data/herbst-sg.ts): weisser Kopf mit Label,
+   *  Kacheln «Kostenlos kennenlernen» (vorgewählt) / «Direkt zur Erstbehandlung», Name + Wunschzeit sichtbar, E-Mail/Anliegen
+   *  eingeklappt, Button-Text je Terminart, Feld kampagne + UTM-Felder (Client füllt), Turnstile erst beim Öffnen (lazy). */
+  herbst?: { kampagne: string; rundeId: string; soldOut: boolean; dauerText: string; copy: { sheetLabel: string; sheetH: string; sheetSub: string; sheetHSoldout: string; sheetSubSoldout: string; benefits: readonly string[]; tileCheckin: string; tileCheckinD: string; tileBehandlung: string; submitCheckin: string; submitBehandlung: string; soldOutNote: string; okCheckin: string } };
 }
 
 const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -102,7 +106,9 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   if (fixed && fixed.status !== 'operational') throw new Error(`kontakt-form: fester Standort ${fixed.id} ist nicht operativ (Vormerk-Formular verwenden)`);
   const checkinOk = fixed ? checkinFreigegeben(fixed.id) : true; // global: Kachel sichtbar, Wahl an Freigabe gebunden
   const onlyBehandlung = !!fixed && !checkinOk;
-  const pre = onlyBehandlung ? 'behandlung' : o.terminart;
+  const HB = o.herbst;
+  if (HB && (!fixed || !checkinOk)) throw new Error('kontakt-form: herbst nur mit festem, Check-in-freigegebenem Standort');
+  const pre = onlyBehandlung ? 'behandlung' : HB ? (HB.soldOut ? 'behandlung' : 'checkin') : o.terminart;
   const fixedTel = fixed ? fixed.phone : ZENTRAL_TEL;
   const onedoc = fixed ? onedocFor(fixed.id) : null;
   const H = o.headingTag ?? 'h3';
@@ -117,7 +123,13 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const QG = Q && !fixed; // ruhig + global (Homepage, /kontakt/, Leaves): keine SG-spezifische Standortlogik
   const OE = RO || (Q && !o.zusatzOffen); // «Weitere Angaben · optional» als eingeklappte Disclosure
   // Ruhig (SG): kurze Angebotstexte (Mockup 16.10.2026); Erstbehandlung zuerst (dezent mint), Check-in als zweite Option.
-  const tileCheckin = onlyBehandlung ? '' :
+  const tileCheckin = onlyBehandlung ? '' : HB ?
+    `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
+    `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
+    `<span class="kf-opt-body"><span class="kf-opt-t">${esc(HB.soldOut ? TERMINARTEN.checkin.label : HB.copy.tileCheckin)}</span>` +
+    (HB.soldOut ? `<span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten · nach Verfügbarkeit</span><span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>`
+      : `<span class="kf-opt-dur">CHF 0.–${HB.dauerText ? ' · ' + esc(HB.dauerText) : ''}</span><span class="kf-opt-d">${esc(HB.copy.tileCheckinD)}</span>`) +
+    `<span class="kf-opt-note">Ohne Behandlung, ohne Verpflichtung.</span></span></label>` :
     `<label class="kf-opt kf-opt--checkin" for="${p}-ta-checkin">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-checkin" value="checkin"${pre === 'checkin' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.checkin.id}">` +
     `<span class="kf-opt-body">` +
@@ -136,8 +148,9 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">${TERMINARTEN.behandlung.label}</span>` + (Q ? `<span class="kf-opt-dur">${TERMINARTEN.behandlung.dauerMin} Minuten</span>` : '') +
-    (Q ? `<span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>`
+    `<span class="kf-opt-body"><span class="kf-opt-t">${HB ? esc(HB.copy.tileBehandlung) : TERMINARTEN.behandlung.label}</span>` + (Q ? `<span class="kf-opt-dur">${TERMINARTEN.behandlung.dauerMin} Minuten${HB ? ' · kostenpflichtig, nach Tarif' : ''}</span>` : '') +
+    (HB ? `<span class="kf-opt-d">Gespräch, TCM-Diagnostik und erste Behandlung. Zusatzversicherung je nach Police.</span>`
+    : Q ? `<span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>`
     : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
     `</span></label>`;
 
@@ -190,8 +203,11 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   // Karten (z. B. 320 px Viewport: 234–252 px Inhalt) abgeschnitten bzw. die Karte verbreitern. Dann offizielle Grösse
   // «compact» (150×140). Inline am Kartenende (Karte dann vollständig geparst, kein Zwischen-Paint), weil Turnstile
   // implizit schon vor DOMContentLoaded rendert (kontakt-form.js ist dafür zu spät).
-  const ts = `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>`;
-  const tsSize = Q ? `<script>(function(e){if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode.querySelector('.kf-ts'))</script>` : '';
+  // Kampagnen-Sheet: Container ohne cf-turnstile-Klasse (kein implizites Rendern im verborgenen Dialog); das Sheet-Skript
+  // rendert explizit beim Öffnen und setzt dann die Klasse (Token-Pflicht im Submit bleibt).
+  const ts = HB ? `<div class="kf-ts" data-kf-ts-lazy data-sitekey="${esc(sitekey)}"></div>`
+    : `<div class="cf-turnstile kf-ts" data-sitekey="${esc(sitekey)}" data-appearance="interaction-only"></div>`;
+  const tsSize = Q && !HB ? `<script>(function(e){if(e&&e.clientWidth&&e.clientWidth<300)e.setAttribute('data-size','compact')})(document.currentScript.parentNode.querySelector('.kf-ts'))</script>` : '';
   const note = `<p class="kf-note">Mit deiner Anfrage ist noch kein Termin gebucht.</p>`;
   const legalKurz = `<p class="kf-legal kf-legal--kurz"><a href="/datenschutz/">Datenschutz</a></p>`;
   const legal = `<p class="kf-legal">Deine Angaben verwenden wir nur zur Bearbeitung deiner Anfrage. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>`;
@@ -200,14 +216,18 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
 
   return (
     (o.compatAnchors ?? []).map((a) => `<span id="${esc(a)}" class="kf-compat-anchor" aria-hidden="true"></span>`).join('') +
-    `<div class="inline-form-card kf${K ? ' kf--kompakt' : ''}${Q ? ' kf--ruhig' : ''}${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}"${RO || Q ? ' data-kf-submit-leer="Termin anfragen"' : ''} data-kf-conv="${o.conv ?? 'formular_senden'}"` +
+    `<div class="inline-form-card kf${K ? ' kf--kompakt' : ''}${Q ? ' kf--ruhig' : ''}${HB ? ' kf--herbst' : ''}${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}"${RO || Q ? ' data-kf-submit-leer="Termin anfragen"' : ''} data-kf-conv="${o.conv ?? 'formular_senden'}"` +
+    (HB ? ` data-kf-submit-checkin="${esc(HB.soldOut ? TERMINARTEN.checkin.submit.replace(/\s*→$/, '') : HB.copy.submitCheckin)}" data-kf-submit-behandlung="${esc(HB.copy.submitBehandlung)}" data-kf-kampagne="${esc(HB.kampagne)}"${HB.soldOut ? '' : ` data-kf-ok-checkin="${esc(HB.copy.okCheckin)}"`}` : '') +
     (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}" data-kf-standort-art="behandlung"` : ' data-kf-global="1"') +
     (fixed && checkinOk ? ' data-kf-checkin="1"' : '') + (o.autoprefill ? ` data-kf-autoprefill="${o.autoprefill}"` : '') +
     ` data-kf-scope-names="${esc(scopeNames)}"` + (o.cardStyle ? ` style="${esc(o.cardStyle)}"` : '') + `>` +
     `<link rel="stylesheet" href="/kontakt-form.css">` +
     `<form class="kf-form" novalidate data-kf-form${o.formId ? ` id="${esc(o.formId)}"` : ''}${o.formName ? ` name="${esc(o.formName)}" data-name="${esc(o.formName)}"` : ''} aria-labelledby="${p}-h">` +
     // Ruhig (SG): schwarzer Kopfbereich mit Überschrift und Subline, darunter weisser Formularbereich.
-    (Q ? `<div class="kf-kopf"><${H} class="kf-h" id="${p}-h">Dein nächster Schritt beginnt hier.</${H}><p class="kf-kopf-sub">Direkt starten oder TCM zuerst kennenlernen.</p></div>`
+    (HB ? `<div class="kf-kopf kf-kopf--herbst"><span class="kf-eyebrow">${esc(HB.copy.sheetLabel)}</span><${H} class="kf-h" id="${p}-h">${esc(HB.soldOut ? HB.copy.sheetHSoldout : HB.copy.sheetH)}</${H}><p class="kf-kopf-sub">${esc(HB.soldOut ? HB.copy.sheetSubSoldout : HB.copy.sheetSub)}</p>` +
+        (HB.soldOut ? `<p class="kf-soldout" role="status">${esc(HB.copy.soldOutNote)}</p>`
+          : `<ul class="kf-hb-list">${HB.copy.benefits.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>`) + `</div>`
+    : Q ? `<div class="kf-kopf"><${H} class="kf-h" id="${p}-h">Dein nächster Schritt beginnt hier.</${H}><p class="kf-kopf-sub">Direkt starten oder TCM zuerst kennenlernen.</p></div>`
       : `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>`) +
     // Kompakt: Schrittmarker ersetzt die Einleitung (Klasse kf-intro bleibt als JS-Einfügepunkt); Legend nennt Schritt 1 für Screenreader.
     // Ruhig (SG): schlichte Abschnittsüberschrift statt Schrittmarker; Legend nennt «Terminart wählen» für Screenreader.
@@ -217,7 +237,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
       : K ? `<p class="kf-intro kf-step" aria-hidden="true"><span class="kf-step-n">1</span>Terminart wählen</p>` : `<p class="kf-intro">Wähle, was gerade zu dir passt.</p>`) +
     (fixed ? (K || Q ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : QG ? '' : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
-    (Q ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
+    (Q && !HB ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
@@ -228,22 +248,27 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (K && !RO ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
     field('tel', Q ? 'Telefonnummer <span class="kf-star" aria-hidden="true">*</span>' : 'Telefon <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-tel" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err">`, `<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`) +
+    // Kampagnen-Sheet: Name und Wunschzeit sichtbar (optional), E-Mail/Anliegen hinter «Weitere Angaben».
+    (HB ? field('name', 'Dein Name <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname">`) +
+      field('wunschzeit', 'Terminwunsch <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
     (OE ? `<button type="button" class="kf-disclose kf-disclose--sub" id="${p}-opt-btn" aria-expanded="${optOffen}" aria-controls="${p}-opt" data-kf-opt><span>Weitere Angaben · optional</span><span class="kf-chev" aria-hidden="true"></span></button>` +
       `<noscript><style>#${p}-opt{display:block!important}#${p}-opt-btn{display:none!important}</style></noscript><div class="kf-optgroup" id="${p}-opt"${optOffen ? '' : ' hidden'}>`
     : K ? `<button type="button" class="kf-disclose kf-disclose--sub" id="${p}-opt-btn" aria-expanded="true" aria-controls="${p}-opt" data-kf-opt hidden><span>Weitere Angaben · optional</span><span class="kf-chev" aria-hidden="true"></span></button><div class="kf-optgroup" id="${p}-opt">` : '') +
-    field('name', 'Dein Name <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname">`) +
+    (HB ? '' : field('name', 'Dein Name <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname">`)) +
     field('email', 'E-Mail <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@beispiel.ch" aria-describedby="${p}-email-err">`) +
     field('anliegen', 'Dein Anliegen <span class="kf-opt-l">· optional</span>', `<textarea class="kf-input kf-textarea" id="${p}-anliegen" name="anliegen" rows="2" placeholder="Was möchtest du uns mitgeben?">${esc(o.anliegen ?? '')}</textarea>`) +
-    (o.wunschzeit ? field('wunschzeit', 'Wunschzeit <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
+    (o.wunschzeit && !HB ? field('wunschzeit', 'Wunschzeit <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
     (K || OE ? `</div>` : '') +
     `<p class="kf-req"><span aria-hidden="true">*</span> Pflichtfeld</p>` +
     `<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="kf-hp">` +
     (fixed ? hidden('standort', fixed.name) : '') +
     hidden('quelle', o.quelle) + hidden('formular', o.formular) + hidden('quelle_detail', o.quelleDetail) + hidden('seite', o.seite) +
     hidden('anfrage_typ', o.anfrageTyp) + hidden('typ', o.typ) + `<input type="hidden" name="cta_pos" value="">` +
+    // Kampagne: feste Kennung (Server-Whitelist KAMPAGNEN) + UTM-Felder, die das Sheet-Skript aus der URL füllt (leer = nicht gesendet).
+    (HB ? hidden('kampagne', HB.kampagne) + `<input type="hidden" name="runde" value="${esc(HB.rundeId)}" data-kf-runde>` + ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].map((n) => `<input type="hidden" name="${n}" value="" data-kf-utm>`).join('') : '') +
     (K ? '' : ts) +
-    `<button type="submit" class="kf-btn kf-btn--primary kf-submit" data-kf-submit>${RO || Q ? 'Termin anfragen' : 'Anfrage senden'} <span aria-hidden="true">→</span></button>` +
-    (Q ? legalKurz : K ? legal + note : note + legal) +
+    `<button type="submit" class="kf-btn kf-btn--primary kf-submit" data-kf-submit>${HB ? esc(pre === 'checkin' ? HB.copy.submitCheckin : HB.copy.submitBehandlung) : RO || Q ? 'Termin anfragen' : 'Anfrage senden'} <span aria-hidden="true">→</span></button>` +
+    (HB ? note + legalKurz : Q ? legalKurz : K ? legal + note : note + legal) +
     `<p class="kf-err" role="alert" data-kf-err hidden></p>` +
     // Kompakt: Turnstile ausserhalb des aufklappbaren Bereichs, damit das Widget nicht in einem verborgenen Container rendert.
     `</div>` + (K ? ts : '') + (sgOd ? (o.ohneOnedocAlternative ? '' : onedocPanel) : altRuhig) + `</form>` +

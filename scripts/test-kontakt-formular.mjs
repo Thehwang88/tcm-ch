@@ -29,6 +29,12 @@ async function open(u, { status = 200, body = { ok: true }, width = 390, height,
   return { pg, calls };
 }
 const card = (i) => `[data-kf-instance="${i}"]`;
+// TCM 360° Entdeckertage (src/data/herbst-sg.ts): Bei aktiver Kampagne ersetzt /standorte/st-gallen/ die reguläre Sticky-Bar und
+// trägt Banner + Sheet (dritte Instanz sg-herbst). Diese SG-Abschnitte deckt dann scripts/test-herbst-sg.mjs ab; hier werden sie
+// übersprungen bzw. die Kampagnen-Blöcke aus dem HTML ausgeklammert. Alle übrigen Seiten und Formulare bleiben voll geprüft.
+const stripHsg = (h) => h.replace(/<(section|dialog|div)\b[^>]*\sdata-hsg\b[\s\S]*?<i hidden data-hsg-end><\/i>/g, ' ');
+const HSG = /data-hsg-mode=/.test(fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8'));
+const skipHsg = (what) => console.log(`  – übersprungen: ${what} (Kampagne TCM 360° auf SG aktiv; Abdeckung: scripts/test-herbst-sg.mjs)`);
 const ev = (pg, name) => pg.evaluate((n) => window.dataLayer.filter((e) => e && e.event === n), name);
 /** Alle Versandwege eines Events: dataLayer-Objekte, gtag-Argument-Pushes im dataLayer, gtag-Aufrufe. */
 const sends = (pg, name) => pg.evaluate((n) => {
@@ -580,6 +586,7 @@ const bar = (pg) => pg.evaluate(() => { const b = document.querySelector('.scb-b
 const to = (pg, y) => pg.evaluate((y) => { document.documentElement.style.scrollBehavior = 'auto'; scrollTo(0, y); }, y);
 const settle = () => new Promise((r) => setTimeout(r, 450));
 const docY = (pg, sel, edge) => pg.evaluate((sel, edge) => { const r = document.querySelector(sel).getBoundingClientRect(); return Math.round((edge === 'top' ? r.top : r.bottom) + scrollY); }, sel, edge);
+if (HSG) skipHsg('Q SG-Sticky (reguläre Bar ersetzt)'); else {
 for (const w of [320, 390]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w }));
   let b = await bar(pg);
@@ -634,6 +641,7 @@ for (const [hsh, want] of [['#team-st-gallen', true], ['#sg-faq', false], ['#kon
 await to(pg, await docY(pg, '#team-st-gallen', 'top')); await settle(); await pg.reload({ waitUntil: 'load' }); await settle();
 ok((await pg.evaluate(() => scrollY)) > 1000 && (await bar(pg)).on, 'wiederhergestellte Scrollposition (Reload): Bar korrekt an');
 await pg.close();
+}
 // Desktop und andere Seiten unverändert
 ({ pg, calls } = await open('/standorte/st-gallen/', { width: 1440 }));
 ok(await pg.evaluate(() => getComputedStyle(document.querySelector('.scb-bar')).display === 'none' && [...document.querySelectorAll('[data-kf-instance="sg-hero"] .kf-alt-ic')].every((s) => getComputedStyle(s).display === 'none')), '1440px: keine Mobile-Bar, Kontaktlinks ohne Icons (Desktop unverändert)');
@@ -741,7 +749,7 @@ for (const g of [true, false]) {
 
 console.log('N. SG: Hero mit Praxisvideo (Foto als Poster/Fallback, seit #79), USP-Reihe, Kontaktsektion (Buchungsbox + Praxisangaben), Sticky');
 {
-  const sgHtml = fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8');
+  const sgHtml = stripHsg(fs.readFileSync(path.join(dist, 'standorte/st-gallen/index.html'), 'utf8'));
   const ids = [...sgHtml.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = [...new Set(ids.filter((x, k) => ids.indexOf(x) !== k))];
   ok(dup.length === 0, `SG: keine doppelten IDs (${dup.join(',') || '–'})`);
   ok((sgHtml.match(/ data-kf-instance="/g) || []).length === 2 && /data-kf-instance="sg-hero"/.test(sgHtml) && /data-kf-instance="sg-unten"/.test(sgHtml), 'SG: genau zwei Formularinstanzen (sg-hero, sg-unten)');
@@ -771,7 +779,7 @@ const layout = (pg) => pg.evaluate(() => { const r = (s) => { const e = document
   const links = ['a[href^="https://www.google.com/maps/search"]', 'a[href="tel:+41775236122"]', 'a[href="mailto:termine@tcm.ch"]', 'iframe[src*="google.com/maps"]', 'a[href^="https://www.google.com/maps/place"]', 'details.up-transit-acc', 'a[href="/akupunktur-tcm-st-gallen/"]', 'a[href="/wissen/tcm-st-gallen-erfahrungen-ablauf/"]'].every((s) => info.querySelector(s));
   return { hero: r('.lsr-hero.hlsg'), img: media, vid, usp: document.querySelectorAll('.sgu .usp-card').length, uspCards: [...document.querySelectorAll('.sgu .usp-card')].map((c) => { const b = c.getBoundingClientRect(); return [Math.round(b.top), Math.round(b.height)]; }),
     card: r('[data-kf-instance="sg-hero"]'), info: r('.sgk-info'), h2: r('.sgk-info .up-h2'), sgk: r('#sg-kontakt-praxis'), seq: !!seq, has, links, ow: document.documentElement.scrollWidth > innerWidth, pos: getComputedStyle(document.querySelector('.sgk-formcol')).position, ih: innerHeight }; });
-for (const w of [320, 390, 768, 1440]) {
+if (HSG) skipHsg('N SG-Hero-Layout (Banner vor dem Hero)'); else for (const w of [320, 390, 768, 1440]) {
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: w, height: w === 768 ? 1024 : undefined })); await new Promise((r) => setTimeout(r, 200));
   const L = await layout(pg);
   ok(L.seq && L.img && L.usp === 3 && L.has && L.links && !L.ow, `${w}px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow`);

@@ -12,6 +12,11 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import HeroStandardSG from '../../components/HeroStandardSG.astro';
+// Herbst-Kennenlerntage St. Gallen (temporär, src/data/herbst-sg.ts): Banner unter dem Header + Sheet/Sticky, nur bei aktiver Kampagne.
+import HerbstBannerSG from '../../components/HerbstBannerSG.astro';
+import HerbstSheetSG from '../../components/HerbstSheetSG.astro';
+import { herbstState } from '../../data/herbst-sg';
+const herbst = herbstState();
 import { clinics } from '../../data/locations';
 import { prefillStandort } from '../../data/form-prefill';
 import homeBody from '../../data/home-body.html?raw';
@@ -411,6 +416,8 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
   </SpaPage>
 ) : (
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
+    {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstBannerSG />}
     {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} uspHtml={sgUspHtml} praxisHtml={sgPraxisHtml} />)}
+    {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstSheetSG sitekey={turnstileSitekey} />}
   </SpaPage>
 )}
