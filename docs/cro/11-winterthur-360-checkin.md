@@ -78,3 +78,10 @@ Münzgasse erhält keine Ads-Landingpage-Anpassung; Auswertung je Standort-ID bl
 `test-anfrage-betreff` 86/0, `test-en-analytics` 48/0, `check-first30` 0, `health-audit` 0, `check-professional` 0,
 `check-i18n --strict` 1 Fehler (= main). Browser-Suite `test-kontakt-formular` nach b0e89189: 715 PASS / 0 FAIL.
 Verbleibender Blocker: keiner aus diesem PR; `location:winterthur-marktgasse` Outdated ist ein main-Befund (EN-Hero-Bild), separat zu lösen.
+
+**6. Mini-Fix i18n (Commit nach ad68cdba).** `location:winterthur-marktgasse`: DE-Drift seit Fingerprint-Stand `64ed437c` war nur der
+Praxisfoto-Wechsel `.jpg` → `.webp` (`standorte.ts`, Commit `63d5cdc2`; gleiche Bilddatei 1448×1086, nur anderes Format, 82 KB statt 1.9 MB),
+dazu in diesem PR FAQ/«Zwei Adressen» (EN bereits in Review 2 angeglichen). EN-Hero-Override in `locations-content.ts` auf
+`/images/standort-winterthur.webp` gesetzt, Alt/Caption unverändert, keine neuen Bilder oder Texte. Fingerprint nur für diesen Eintrag gesetzt.
+`check-i18n --strict`: 0 Fehler, 0 Warnungen. `check-clinic-status`, `check-standort-ux`, `check-kontakt-formular` 0 Fehler, `test-en-analytics` 48/0.
+Formulare, Tracking, Ads und andere Standorte unberührt (Diff: 2 Dateien, 2 Zeilen).

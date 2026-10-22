@@ -171,7 +171,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
-    hero: { src: '/images/standort-winterthur.jpg', alt: 'TCM.ch practice Winterthur Marktgasse', caption: 'Marktgasse 78, Winterthur' },
+    hero: { src: '/images/standort-winterthur.webp', alt: 'TCM.ch practice Winterthur Marktgasse', caption: 'Marktgasse 78, Winterthur' },
     nearby: ['winterthur-muenzgasse', 'frauenfeld', 'zuerich-oerlikon'],
   },
 
