@@ -127,10 +127,11 @@ const PII = { name: 'Test Person', email: 'test.person@example.ch', tel: '+41 79
   const lu = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-city') === 'Luzern'); return c ? c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick') : null; });
   ok(lu === 'Register interest|Luzern – Vormerkung, Eröffnung 2027', `T7 planned Luzern → register interest with its vorab value, got ${JSON.stringify(lu)}`);
   ok((await events(page)).length === 1, 'T7 finder choices emit no events (only the request link does)');
-  // Under-review Münzgasse: 'Send a request' with its vorab routing value, never 'Request here'
+  // Winterthur (22.10.2026): both clinics operational → 'Request here' with their canonical names; no clinic is under review any more.
   await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Winterthur"]').click(); });
-  const wm = await page.evaluate(() => { const c = [...document.querySelectorAll('.ev-finder__clinic')].find((x) => !x.hidden && x.getAttribute('data-status') === 'review'); return c ? c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick') : null; });
-  ok(wm === 'Send a request|Winterthur Münzgasse – Anfrage (Standort in Prüfung)', `T7 under-review clinic is not presented as bookable, got ${JSON.stringify(wm)}`);
+  const wt = await page.evaluate(() => [...document.querySelectorAll('.ev-finder__clinic')].filter((x) => !x.hidden && x.getAttribute('data-city') === 'Winterthur').map((c) => c.getAttribute('data-status') + '|' + c.querySelector('a[data-finder-pick]').textContent.trim() + '|' + c.querySelector('a[data-finder-pick]').getAttribute('data-pick')).sort().join(' ; '));
+  ok(wt === 'operational|Request here|Winterthur Marktgasse ; operational|Request here|Winterthur Münzgasse', `T7 Winterthur: Marktgasse + Münzgasse operational, bookable with canonical names, got ${JSON.stringify(wt)}`);
+  ok((await page.$$eval('.ev-finder__clinic[data-status="review"]', (cs) => cs.length)) === 0 && !(await page.content()).includes('confirmation pending') && !(await page.content()).includes('under review'), 'T7 no clinic under review (no pending/under-review wording)');
   ok((await page.$$eval('.ev-finder__clinic[data-status="operational"] a[data-finder-pick]', (as) => as.every((a) => a.textContent.trim() === 'Request here'))), 'T7 only operational clinics say "Request here"');
   // End-to-end payload: Basel + Cupping chosen above → submit → /api/anfrage body carries standort, interest prefix and quelle
   await page.evaluate(() => { document.querySelector('input[name="finder-city"][value="Basel"]').click(); });

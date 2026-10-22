@@ -114,10 +114,12 @@ const TEL = `tel:+${site.whatsapp}`;
     var primary = bar.querySelector('.scb-primary');
     // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
+    // Seiten mit freigegebenem TCM 360°-Check-in (CHECKIN_FREIGABE): SG-Seiten und seit 22.10.2026 beide Winterthurer Standortseiten.
+    var page360 = sgPage || /^\/standorte\/winterthur-(marktgasse|muenzgasse)\/?$/.test(location.pathname);
     // CARE-Seiten (Marker aus dem CARE-Adapter, z.B. Beschwerden): ruhigeres
     // Label + Ein-Event-Tracking (nur dataLayer); Ziel bleibt das On-Page-Formular
     // ueber den bestehenden Scroll-Handler unten. Alle anderen Seiten unberuehrt.
-    var care = !sgPage && document.querySelector('[data-care-sticky]');
+    var care = !page360 && document.querySelector('[data-care-sticky]');
     if (primary && care) {
       for (var ci = 0; ci < primary.childNodes.length; ci++) {
         var ctn = primary.childNodes[ci];
@@ -130,10 +132,10 @@ const TEL = `tel:+${site.whatsapp}`;
         window.dataLayer.push({ event: 'hilfeerhalten_click', quelle: ct + '_care', content_type: ct, cta_position: 'sticky', source_path: location.pathname });
       });
     }
-    // SG-Seiten (21.10.2026, Konsolidierung TCM 360°): Hauptlabel «Termin anfragen» mit dezenter zweiter Zeile
+    // 360°-Seiten (SG 21.10.2026, Winterthur 22.10.2026): Hauptlabel «Termin anfragen» mit dezenter zweiter Zeile
     // «Auch als Gratis 360°-Check» (≤359px: «Gratis 360° möglich»); genau drei Bedienelemente (Primär, WhatsApp, Anrufen),
     // kein zweiter OneDoc-Button mehr in der Leiste (OneDoc bleibt im Hero, im Formular und als Widget erreichbar).
-    if (primary && sgPage) {
+    if (primary && page360) {
       for (var i = 0; i < primary.childNodes.length; i++) {
         var tn = primary.childNodes[i];
         if (tn.nodeType === 3 && tn.textContent.trim()) {
