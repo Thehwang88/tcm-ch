@@ -2166,14 +2166,14 @@ Nein. Die individuelle Sicherheitsfrage muss zusätzlich geprüft werden; dieser
     bodyHtml: `<h2>Was ist trotz Behandlung noch ungeklärt?</h2>
 <p>Bevor du Akupunktur ergänzt, sollte geklärt sein, ob deine Beschwerden tatsächlich durch Reflux erklärt werden und wie die bisherige Behandlung eingesetzt wurde. Die Seite <a href="/beschwerden/sodbrennen/">Sodbrennen</a> bleibt die Grundlage für Symptome und Abklärung.</p>
 <p>Bei Schluckbeschwerden, wiederholtem Erbrechen oder unbeabsichtigtem Gewichtsverlust ist eine ärztliche Beurteilung wichtig. Setze verordnete Medikamente nicht eigenständig ab, um einen Akupunkturversuch zu beginnen.</p>
-<h2>Ein neuerer Vergleich ist keine Gleichwertigkeitsstudie</h2>
+<h2>Ein neuerer Vergleich ist keine Gleichwertigkeits&shy;studie</h2>
 <p>Eine Studie von 2026 untersuchte 72 Erwachsene mit Beschwerden trotz PPI-Behandlung. Verglichen wurden Akupunktur zusätzlich zur Standarddosis Omeprazol und eine höhere PPI-Dosis über vier Wochen. Im gesamten GerdQ-Fragebogen ergab sich kein gesicherter Gruppenunterschied. Einige Ergebnisse, etwa Sodbrennen und Lebensqualität, fielen zugunsten der Akupunktur aus; andere zugunsten der höheren PPI-Dosis.</p>
 <p>Es gab keine Scheinakupunkturgruppe. Ein nicht signifikanter Unterschied im Gesamtergebnis beweist deshalb weder Gleichwertigkeit noch einen besonderen Nadeleffekt. Die Untersuchung liefert auch keinen persönlichen Plan, Medikamente zu reduzieren.</p>
 <p>Eine kleinere Studie von 2023 verglich Akupunktur mit Scheinakupunktur und erhob auch kurzfristige Messwerte der Speiseröhrenbewegung. Solche physiologischen Veränderungen sind interessant, aber kein Beleg einer dauerhaften Heilung oder eines langfristigen Schleimhautschutzes.</p>
 <h2>Das Ziel vor den Terminen festlegen</h2>
 <p>Wenn eine Ergänzung infrage kommt, sollte klar sein, welche Veränderung für dich relevant wäre und wie sie beurteilt wird. Besprecht auch, was bei gleichbleibenden Beschwerden folgt. Zusätzliche Termine sind nicht automatisch sinnvoll, nur weil eine Wirkung Zeit brauchen könne.</p>
 <p>Die Forschung zu <a href="/wissen/akupunktur-bei-funktioneller-dyspepsie/">Akupunktur bei funktioneller Dyspepsie</a> betrifft eine andere Diagnose, insbesondere Beschwerden nach dem Essen. Daten zu diesem Reizmagen dürfen nicht als Refluxnachweis verwendet werden. Auch eine vorübergehende Besserung beweist nicht, welche Erkrankung hinter deinen Beschwerden steckt.</p>
-<h2>Eine abgestimmte Ergänzung statt eines Medikamentenversprechens</h2>
+<h2>Eine abgestimmte Ergänzung statt eines Medikamenten&shy;versprechens</h2>
 <p>Bring zu einer Beratung vorhandene Untersuchungsbefunde und die Medikamentenliste mit. Frage nach Methode, Kosten und der Abstimmung mit der ärztlichen Versorgung. Eine Zusage, künftig ohne Säurehemmer auszukommen, wäre durch die bisherigen Daten nicht gedeckt.</p>
 <p>Über <a href="/kontakt/">Kontakt</a> kannst du eine ergänzende Beratung anfragen. Bei noch ungeklärten oder neuen Warnzeichen hat die medizinische Abklärung Vorrang.</p>
 <h2>Häufige Fragen</h2>
