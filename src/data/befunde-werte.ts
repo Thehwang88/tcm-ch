@@ -109,6 +109,9 @@ export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = '2026-10-21'
 // Neun Wissen-Artikel (Textpaket 21.10.2026: sechs Kräuter-Entscheidungen, drei Akupunktur-bei):
 // Draft, bis zum Release undefined => keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: Datum setzen.
 export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
+// 20 Clusterartikel (Textpaket 22.10.2026: acht Kräuter-Entscheidungen, zwölf Akupunktur-bei):
+// Draft, bis zum Release undefined => keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: Datum setzen.
+export const PUBLISHED_WISSEN_CLUSTER_2026_10: string | undefined = undefined;
 
 export const befundeWerte: BefundWert[] = [
   {
