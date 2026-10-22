@@ -128,7 +128,7 @@ export const wissenKraeuter: Wissen[] = [
     ...DATEN_K,
     bodyHtml: `<h2>Reizmagen ist nicht gleich Reizdarm</h2>
 <p>Die <a href="/beschwerden/funktionelle-dyspepsie/">funktionelle Dyspepsie</a> betrifft Beschwerden im oberen Verdauungstrakt. Beim <a href="/beschwerden/reizdarm/">Reizdarm</a> stehen andere Beschwerdemuster im Vordergrund. Beide können gemeinsam auftreten, bleiben aber unterschiedliche Behandlungsfragen.</p>
-<p>Auch Sodbrennen oder eine Magenschleimhautentzündung sind nicht einfach andere Namen für funktionelle Dyspepsie. Vor einer Kräuterbehandlung sollte deshalb geklärt sein, welche Diagnose vorliegt.</p>
+<p>Auch Sodbrennen oder eine Magenschleimhautentzündung sind nicht einfach andere Namen für funktionelle Dyspepsie. Vor einer Kräuterbehandlung sollte deshalb geklärt sein, welche Diagnose vorliegt. Bei gesichertem Rückfluss von Mageninhalt beantwortet der Artikel zu <a href="/wissen/chinesische-kraeuter-bei-reflux/">chinesischen Kräutern bei Reflux</a> eine andere Behandlungsfrage als die Forschung zum Reizmagen.</p>
 <h2>Was eine aktuelle Übersicht zeigt</h2>
 <p>Eine Metaanalyse von 2024 untersuchte Xiangsha Liujunzi, eine bestimmte chinesische Rezeptur. Sie umfasste 23 Studien mit 2’101 Teilnehmenden und berichtete Vorteile bei verschiedenen Beschwerdemassen.</p>
 <p>Die Autor:innen weisen zugleich auf die niedrige Qualität der eingeschlossenen Studien hin. Der häufig verwendete Endpunkt «klinische Wirksamkeitsrate» ist zudem nicht dasselbe wie eine verlässlich nachgewiesene Verbesserung der Lebensqualität. Das Ergebnis lässt sich nicht auf jede chinesische Kräutermischung übertragen.</p>
@@ -137,7 +137,7 @@ export const wissenKraeuter: Wissen[] = [
 <p>Wiederkehrende Oberbauchbeschwerden sollten medizinisch eingeordnet werden. Ungewollter Gewichtsverlust, Schluckbeschwerden, anhaltendes Erbrechen oder Blut im Erbrochenen beziehungsweise Stuhl gehören ärztlich abgeklärt. Eine Kräuterberatung ersetzt das nicht.</p>
 <p>Bestehende Befunde, etwa zu einer Magenspiegelung oder bisherigen Medikamenten, sind für das Gespräch hilfreich.</p>
 <h2>Die Behandlung nachvollziehbar planen</h2>
-<p>Eine individuelle Verordnung sollte erklären, welches Präparat vorgesehen ist und wie der Verlauf beurteilt wird. Zur Entscheidung gehören auch Aufwand, Verträglichkeit und Kosten.</p>
+<p>Eine individuelle Verordnung sollte erklären, welches Präparat vorgesehen ist und wie der Verlauf beurteilt wird. Zur Entscheidung gehören auch Aufwand, Verträglichkeit und Kosten. Für eine Behandlung mit Nadeln ist die separate Einordnung zu <a href="/wissen/akupunktur-bei-funktioneller-dyspepsie/">Akupunktur bei funktioneller Dyspepsie</a> massgeblich; Kräuterstudien belegen deren Wirkung nicht.</p>
 <p>Die grundlegenden Abläufe findest du unter <a href="/therapien/kraeutertherapie/">chinesische Kräutertherapie</a>. Informationen zur möglichen Beteiligung deiner Zusatzversicherung stehen unter <a href="/krankenkassen/">Kosten und Krankenkasse</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Sind Kräuter bei jedem Reizmagen geeignet?</h3>
@@ -223,7 +223,7 @@ export const wissenKraeuter: Wissen[] = [
     bodyHtml: `<h2>Welche Schmerzen wurden untersucht?</h2>
 <p>Primäre Dysmenorrhö bezeichnet Regelschmerzen ohne festgestellte zugrunde liegende Erkrankung. Davon zu unterscheiden sind Beschwerden beispielsweise bei <a href="/beschwerden/endometriose/">Endometriose</a> oder <a href="/beschwerden/adenomyose/">Adenomyose</a>.</p>
 <p>Eine Cochrane-Übersicht fand vielversprechende Hinweise auf eine Schmerzlinderung durch chinesische Kräuter bei primärer Dysmenorrhö. Die Autor:innen betonten jedoch die überwiegend niedrige methodische Qualität der Studien. Die Übersicht stammt aus dem Jahr 2008 und liefert keine sichere Empfehlung für eine bestimmte aktuelle Verordnung.</p>
-<p>Diese Ergebnisse belegen weder eine Behandlung der Endometriose noch einen allgemeinen Ausgleich von Hormonen.</p>
+<p>Diese Ergebnisse belegen weder eine Behandlung der Endometriose noch einen allgemeinen Ausgleich von Hormonen. Stehen Beschwerden vor der Blutung im Vordergrund, ist die Evidenz zu <a href="/wissen/chinesische-kraeuter-bei-pms/">chinesischen Kräutern bei PMS</a> getrennt von Studien zu Regelschmerzen zu betrachten.</p>
 <h2>Wann die gynäkologische Abklärung vorgeht</h2>
 <p>Wenn deine Blutungen schmerzhafter, stärker oder unregelmässig werden, solltest du das ärztlich besprechen. Auch Zwischenblutungen oder Schmerzen beim Geschlechtsverkehr, Wasserlassen oder Stuhlgang gehören abgeklärt.</p>
 <p>Bei ungewöhnlich starken oder deutlich schlimmeren Schmerzen ist eine zeitnahe medizinische Beurteilung wichtig. Die ausführliche Einordnung findest du unter <a href="/beschwerden/menstruationsbeschwerden/">Menstruationsbeschwerden</a>.</p>
@@ -274,7 +274,7 @@ export const wissenKraeuter: Wissen[] = [
 <p>Eine neuere Übersicht von 2025 berichtet ebenfalls positive Ergebnisse für bestimmte Anwendungen. Sämtliche bewerteten Endpunkte hatten jedoch nur niedrige bis sehr niedrige Evidenzsicherheit. Daraus lässt sich keine verlässliche Wirkung jeder Kräuterrezeptur ableiten.</p>
 <h2>Was vor einer ergänzenden Behandlung wichtig ist</h2>
 <p>Für das Gespräch sind deine Auslöser, die saisonale Belastung und die bisher verwendeten Medikamente relevant. Ein konkretes Ziel könnte sein, wie stark dich die Nase im Alltag beeinträchtigt. Auch die bisher nötige Bedarfsmedikation sollte dokumentiert werden.</p>
-<p>Zur üblichen Behandlung gehören je nach Situation beispielsweise Antihistaminika oder kortisonhaltige Nasensprays. Welche Behandlung für dich passt, klärst du mit deiner medizinischen Fachperson.</p>
+<p>Zur üblichen Behandlung gehören je nach Situation beispielsweise Antihistaminika oder kortisonhaltige Nasensprays. Welche Behandlung für dich passt, klärst du mit deiner medizinischen Fachperson. Bei einer diagnostizierten chronischen Nebenhöhlenerkrankung ist die getrennte Einordnung zu <a href="/wissen/chinesische-kraeuter-bei-chronischer-sinusitis/">chinesischen Kräutern bei chronischer Sinusitis</a> relevant; Allergiestudien beantworten diese Frage nicht.</p>
 <h2>Häufige Fragen</h2>
 <h3>Können Kräuter die Allergie dauerhaft beseitigen?</h3>
 <p>Ein solches Versprechen wird durch die hier beschriebenen Übersichten nicht gestützt.</p>
@@ -418,7 +418,7 @@ export const wissenKraeuter: Wissen[] = [
 <p>Bezeichnungen wie «natürlich», «Premium» oder «traditionell» beantworten keine konkrete Sicherheitsfrage. Auch die Aussage «in der Schweiz erhältlich» ist für sich allein keine Erklärung des Zulassungsstatus.</p>
 <p>Berichte über verunreinigte oder falsch zusammengesetzte chinesische Kräuterprodukte zeigen, warum Herkunft und Kontrolle relevant sind. Sie erlauben umgekehrt kein pauschales Urteil über jedes einzelne Produkt.</p>
 <h2>Qualität ersetzt keine individuelle Prüfung</h2>
-<p>Auch ein nachvollziehbar hergestelltes Arzneimittel muss zu deiner Situation passen. Mögliche <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">Nebenwirkungen und Wechselwirkungen</a> bleiben eine eigene Frage.</p>
+<p>Auch ein nachvollziehbar hergestelltes Arzneimittel muss zu deiner Situation passen. Mögliche <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">Nebenwirkungen und Wechselwirkungen</a> bleiben eine eigene Frage. Wie begrenzt sich Ergebnisse zu einem einzelnen Präparat übertragen lassen, zeigt die Einordnung zu <a href="/wissen/chinesische-kraeuter-bei-akne/">chinesischen Kräutern bei Akne</a>.</p>
 <p>Wenn es dir hauptsächlich um Bestellung und Bezugsweg geht, lies <a href="/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/">chinesische Kräuter online kaufen oder individuell verordnen lassen</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Bedeutet eine Zulassung, dass jede beworbene Wirkung bewiesen ist?</h3>
@@ -670,7 +670,7 @@ export const wissenKraeuter: Wissen[] = [
 <p>Eine 2017 veröffentlichte systematische Übersicht schloss sieben randomisierte Studien zu oralen chinesischen Kräutern gegenüber Placebo ein. Keine Studie verwendete dieselbe Mischung wie eine andere. Bei einem zusammengefassten Mass für deutliche Hautbesserung war der Vorteil statistisch nicht klar gesichert. Andere Auswertungen zu Hautscores zeigten Vorteile, waren aber ausgesprochen uneinheitlich.</p>
 <p>Die Autor:innen sahen möglichen Nutzen, begrenzten ihre Schlussfolgerungen jedoch wegen unterschiedlicher Präparate, Messgrössen und Studienqualität. Das rechtfertigt keine pauschale Aussage wie «chinesische Kräuter wirken gegen Psoriasis». Ein Ergebnis für einen bestimmten Hautscore ist zudem kein Nachweis für dauerhafte Beschwerdefreiheit oder weniger Rückfälle.</p>
 <h2>Ergänzung und Ersatz sind unterschiedliche Entscheidungen</h2>
-<p>Welche Behandlung bei Psoriasis infrage kommt, hängt unter anderem von Art, Schwere und betroffenen Stellen ab. Die dermatologischen Möglichkeiten reichen von Hautpräparaten über Lichtbehandlung bis zu systemischen Therapien.</p>
+<p>Welche Behandlung bei Psoriasis infrage kommt, hängt unter anderem von Art, Schwere und betroffenen Stellen ab. Die dermatologischen Möglichkeiten reichen von Hautpräparaten über Lichtbehandlung bis zu systemischen Therapien. Für eine Behandlung mit Nadeln ist die getrennte Einordnung zu <a href="/wissen/akupunktur-bei-schuppenflechte/">Akupunktur bei Schuppenflechte</a> relevant; Kräuterergebnisse belegen deren Nutzen nicht.</p>
 <p>Wenn du Kräuter erwägst, sollte klar sein, was zusätzlich erreicht werden soll. Eine Rezeptur als Ergänzung zu einer laufenden Therapie ist eine andere Fragestellung als ein Ersatz. Auch Forschung zu einer Kombination beweist nicht, dass die Kräuter allein denselben Nutzen hätten.</p>
 <p>Notiere vor der Beratung, welche Hautstellen besonders belasten und ob Juckreiz, Schmerzen oder der Alltag im Vordergrund stehen. Bitte die Fachperson, den vorgeschlagenen Versuch mit einem konkreten Prüfziel zu verbinden. Ein Fotoverlauf kann im Gespräch hilfreich sein; er ersetzt keine medizinische Bewertung.</p>
 <h2>Die vollständige Medikamentenliste gehört dazu</h2>
