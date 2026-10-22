@@ -76,5 +76,5 @@ Münzgasse erhält keine Ads-Landingpage-Anpassung; Auswertung je Standort-ID bl
 
 **5. Abschluss (Stand nach b0e89189).** Build 895 URLs. `check-kontakt-formular` 0, `check-clinic-status` 0, `check-standort-ux` 0,
 `test-anfrage-betreff` 86/0, `test-en-analytics` 48/0, `check-first30` 0, `health-audit` 0, `check-professional` 0,
-`check-i18n --strict` 1 Fehler (= main). Browser-Suite `test-kontakt-formular`: Ergebnis des Laufs nach b0e89189 wird nachgetragen.
+`check-i18n --strict` 1 Fehler (= main). Browser-Suite `test-kontakt-formular` nach b0e89189: 715 PASS / 0 FAIL.
 Verbleibender Blocker: keiner aus diesem PR; `location:winterthur-marktgasse` Outdated ist ein main-Befund (EN-Hero-Bild), separat zu lösen.
