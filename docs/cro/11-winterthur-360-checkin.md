@@ -38,7 +38,7 @@ UTM/GCLID-Übernahme, OneDoc nur St. Gallen, Kampagnen-IDs. Alle anderen Standor
 | Gate | Ergebnis |
 |---|---|
 | `check-kontakt-formular` | 0 Fehler (147 Prüfungen; neu: Münzgasse/Marktgasse + Check-in/Ersttermin → 200, altes Prüfungs-Ziel → 422) |
-| `test-kontakt-formular` (Browser) | siehe PR (Abschnitt S: beide Winterthurer Seiten mit 360°-Kacheln, keine Statushinweise; Home: Winterthur-Ziele mit 360°-Wortlaut) |
+| `test-kontakt-formular` (Browser) | 715 PASS / 0 FAIL (main: 717; Prüfungs-Hülle Münzgasse entfällt, dafür Winterthur-Ziele im globalen Formular mit 360°-Wortlaut und beide Standortseiten mit 360°-Kacheln ohne Statushinweise) |
 | `test-anfrage-betreff` | 86 PASS / 0 FAIL |
 | `test-en-analytics` | 48 passed / 0 failed (T7 angepasst: Winterthur zwei operative Praxen, kein Review-Standort mehr) |
 | `check-clinic-status` | 0 Fehler (Eröffnungs-Simulation nur noch Oerlikon/Basel) |
