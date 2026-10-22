@@ -549,14 +549,14 @@ export const standorte: Record<string, Standort> = {
     "stadt": "Winterthur Münzgasse",
     "seo": {
       "title": "TCM Winterthur Münzgasse – Massage & Akupunktur",
-      "description": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Münzgasse 2 in der Winterthurer Altstadt. EMR-/ASCA-registriert, Zusatzversicherung je nach Police. Kostenloser TCM 360°-Check-in oder Ersttermin anfragen.",
+      "description": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Münzgasse 2 in der Winterthurer Altstadt. Therapeut:innen mit EMR-Registrierung, Zusatzversicherung je nach Police. Kostenloser TCM 360°-Check-in oder Ersttermin anfragen.",
       "h1": "TCM <em>Winterthur Münzgasse</em> – Massage & Akupunktur",
       "schemaName": "TCM Praxis Winterthur Münzgasse – TCM.ch"
     },
     "hero": {
       "banner": "Standort Winterthur Münzgasse",
       "lead": "Wir hören zu, bevor wir zur Nadel greifen.",
-      "sub": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Münzgasse 2, mitten in der Altstadt. <em style=\"font-style:italic;opacity:.85\">EMR-/ASCA-registrierte Therapeut:innen, Abrechnung über die Zusatzversicherung.</em>",
+      "sub": "Akupunktur, Tuina, Schröpfen und chinesische Kräutertherapie an der Münzgasse 2, mitten in der Altstadt. <em style=\"font-style:italic;opacity:.85\">Therapeut:innen mit EMR-Registrierung, Abrechnung über die Zusatzversicherung je nach Police.</em>",
       "image": "/images/hero-main.webp",
       "locationHook": "Münzgasse 2, 8400 Winterthur"
     },

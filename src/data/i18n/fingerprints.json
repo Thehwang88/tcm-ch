@@ -1,6 +1,6 @@
 {
   "page:home": {
-    "src/data/home-body.html": "0312a4afeea5c956"
+    "src/data/home-body.html": "a49e26e1a0ceba99"
   },
   "page:zurich": {
     "src/pages/akupunktur-tcm-zuerich.astro": "2cab5d569205ef39",
@@ -9,7 +9,7 @@
   },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
-    "src/data/locations.ts": "61cc979b1bf2a2d6"
+    "src/data/locations.ts": "cf4632b40c04681f"
   },
   "hub:therapies": {
     "src/pages/therapien/index.astro": "72ce4330908c0c52"
@@ -21,14 +21,14 @@
   "page:contact": {
     "src/pages/kontakt.astro": "67f1fd0da83c924d",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
-    "src/data/locations.ts": "61cc979b1bf2a2d6"
+    "src/data/locations.ts": "cf4632b40c04681f"
   },
   "page:insurance": {
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
-    "src/pages/akupunktur-in-der-naehe.astro": "d755fe876b7a3461",
-    "src/data/locations.ts": "61cc979b1bf2a2d6"
+    "src/pages/akupunktur-in-der-naehe.astro": "47edcb78ba03e0e4",
+    "src/data/locations.ts": "cf4632b40c04681f"
   },
   "location:kreuzlingen": {
     "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
@@ -42,8 +42,8 @@
     "src/data/standorte.ts#standorte.frauenfeld": "917db6d6c925cd41"
   },
   "location:winterthur-muenzgasse": {
-    "src/data/locations.ts#clinics.winterthur-muenzgasse": "18d0ef4ed16a2a5e",
-    "src/data/standorte.ts#standorte.winterthur-muenzgasse": "4ecf87f5dad6b016"
+    "src/data/locations.ts#clinics.winterthur-muenzgasse": "971e72b7aeef5217",
+    "src/data/standorte.ts#standorte.winterthur-muenzgasse": "739e725506d3c312"
   },
   "location:winterthur-marktgasse": {
     "src/data/locations.ts#clinics.winterthur-marktgasse": "91285a3dfab360c1",
@@ -83,37 +83,37 @@
     "src/data/standorte.ts#standorte.wil": "de92951cde129255"
   },
   "therapy:acupuncture": {
-    "src/data/therapie-leaves/akupunktur.html": "f6ad9f2557bfaf07"
+    "src/data/therapie-leaves/akupunktur.html": "bd30cd6aaad39e57"
   },
   "therapy:cupping": {
-    "src/data/therapie-leaves/schroepfen.html": "b18b2807e198d90e"
+    "src/data/therapie-leaves/schroepfen.html": "3c47ab17fe1d7e70"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "b10777b4beadd89a"
+    "src/data/therapie-leaves/tuina.html": "7f9674fcd3af3939"
   },
   "therapy:chinese-herbal-medicine": {
-    "src/data/therapie-leaves/kraeutertherapie.html": "248ab4d58d317d91"
+    "src/data/therapie-leaves/kraeutertherapie.html": "f32cec32ef7ea61b"
   },
   "therapy:moxibustion": {
-    "src/data/therapie-leaves/moxibustion.html": "bdc6959e1cb5870c"
+    "src/data/therapie-leaves/moxibustion.html": "bac82e8878946297"
   },
   "therapy:electroacupuncture": {
-    "src/data/therapie-leaves/elektroakupunktur.html": "cda147011450828d"
+    "src/data/therapie-leaves/elektroakupunktur.html": "8899759d769b1fd8"
   },
   "therapy:facial-acupuncture": {
-    "src/data/therapie-leaves/gesichtsakupunktur.html": "a61c8d3ded487499"
+    "src/data/therapie-leaves/gesichtsakupunktur.html": "24f308716cafa3de"
   },
   "therapy:acupressure": {
-    "src/data/therapie-leaves/akupressur.html": "0184182ed53ed369"
+    "src/data/therapie-leaves/akupressur.html": "7181a61426b7c59c"
   },
   "therapy:shiatsu": {
-    "src/data/therapie-leaves/shiatsu.html": "e3f0eed10dde1ff8"
+    "src/data/therapie-leaves/shiatsu.html": "f4a92b8c6df0b295"
   },
   "therapy:gua-sha": {
-    "src/data/therapie-leaves/gua-sha.html": "746fc5cf164c1e3c"
+    "src/data/therapie-leaves/gua-sha.html": "820e0273e0825c11"
   },
   "therapy:physiotherapy": {
-    "src/data/therapie-leaves/physiotherapie.html": "87aaf4b0d6b452a4"
+    "src/data/therapie-leaves/physiotherapie.html": "a32f31ba2d2d4066"
   },
   "condition:back-pain": {
     "src/data/symptom-leaves/rueckenschmerzen.html": "b00deac2b81e4138"

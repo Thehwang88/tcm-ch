@@ -162,7 +162,7 @@ export const locationContent: Record<string, LocationContent> = {
     sub: 'A TCM clinic with experienced practitioners, central in Winterthur\'s old town: acupuncture, herbal medicine and prevention.',
     about: [
       'Our clinic at Marktgasse 78 lies directly in the old town. We offer methods of Traditional Chinese Medicine such as acupuncture, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture.',
-      'Besides Marktgasse 78 we list <a href="/en/locations/winterthur-muenzgasse/">Münzgasse 2</a> as a second Winterthur address; its status is shown on that page.',
+      'Our second Winterthur clinic at <a href="/en/locations/winterthur-muenzgasse/">Münzgasse 2</a> is a few minutes\' walk away and offers the same appointment types.',
     ],
     area: 'Marktgasse is easy to reach from every district of Winterthur (Veltheim, Töss, Oberwinterthur, Seen, Wülflingen, Mattenbach, Hegi) and from Seuzach, Wiesendangen, Elsau, Neftenbach, Pfungen, Brütten, Hettlingen and Illnau-Effretikon.',
     faqs: [
