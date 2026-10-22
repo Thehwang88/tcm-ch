@@ -144,9 +144,9 @@ export const locationContent: Record<string, LocationContent> = {
 
   'winterthur-muenzgasse': {
     lead: 'We listen before we reach for a needle.',
-    sub: 'Whether appointments are possible at Münzgasse 2 is currently under review. Our main location for acupuncture and TCM in Winterthur is the <a href="/en/locations/winterthur-marktgasse/">Marktgasse clinic</a>.',
+    sub: 'Acupuncture, Tuina, cupping and Chinese herbal medicine at Münzgasse 2, in the heart of the old town. Our second Winterthur clinic is a few minutes\' walk away at the <a href="/en/locations/winterthur-marktgasse/">Marktgasse</a>.',
     about: [
-      'Münzgasse 2 lies in the heart of Winterthur\'s old town. Whether appointments can be offered here is currently being clarified. For TCM in Winterthur our <a href="/en/locations/winterthur-marktgasse/">Marktgasse location</a> is there for you, with acupuncture, cupping, Tuina massage and Chinese herbal medicine.',
+      'Our TCM clinic at Münzgasse 2 lies in the heart of Winterthur\'s old town, with acupuncture, cupping, Tuina massage and Chinese herbal medicine. Our second Winterthur clinic, the <a href="/en/locations/winterthur-marktgasse/">Marktgasse location</a>, is a few minutes\' walk away.',
     ],
     area: 'The old town is easy to reach from every district of Winterthur (Oberwinterthur, Töss, Wülflingen, Seen, Veltheim, Mattenbach) and from Wiesendangen, Pfungen, Neftenbach, Elgg, Illnau-Effretikon and Brütten.',
     faqs: [

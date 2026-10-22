@@ -53,7 +53,7 @@ ok(!/^\s*"?planned"?\s*:\s*(true|false)/m.test(readFileSync('src/data/standorte.
 
 // ── 2. Eröffnungs-Simulation über den Quelltext von locations.ts ──
 console.log('2. Eröffnungs-Simulation (nur Statuswechsel in locations.ts)');
-for (const id of ['zuerich-oerlikon', 'winterthur-muenzgasse', 'basel']) {
+for (const id of ['zuerich-oerlikon', 'basel']) {
   const m = await bundle((s) => {
     const i = s.indexOf(`id: '${id}'`); const j = s.indexOf('\n  { id:', i + 1);
     return s.slice(0, i) + s.slice(i, j < 0 ? undefined : j).replace(/status: '(planned|review)'/, "status: 'operational'") + (j < 0 ? '' : s.slice(j));
