@@ -17,7 +17,7 @@ export const fragenArtikel24: Frage[] = [
     metaDesc: 'Blut spenden nach Akupunktur: Blutspende SRK Schweiz nennt eine Wartefrist von vier Monaten. Was du dem Blutspendedienst angibst und wer über Ausnahmen entscheidet.',
     deck: 'Wer regelmässig Blut spendet, sollte eine Akupunktur mit dem Spendetermin abstimmen. Über die Spendetauglichkeit entscheidet der Blutspendedienst, nicht die Praxis.',
     kurz: '<p>Die öffentliche Kriterienliste von Blutspende SRK Schweiz nennt nach einer Akupunktur-Behandlung eine Wartefrist von vier Monaten. Begründet wird sie damit, dass eine Entzündung oder Infektion ausgeschlossen werden soll. Ob in deinem Fall etwas anderes gilt, entscheidet dein regionaler Blutspendedienst. Plane deshalb Spende und Akupunktur so, dass du die Frage vorher klären kannst.</p>',
-    bodyHtml: `<h2>Was die Schweizer Kriterienliste sagt</h2>
+    bodyHtml: `<h2>Was die Liste von Blutspende SRK Schweiz sagt</h2>
 <p>Blutspende SRK Schweiz führt auf ihrer Website eine Liste von Gründen, die eine Spende vorübergehend ausschliessen. Dort steht als grundsätzlicher, vorübergehender Ausschlussgrund: Wer in den letzten vier Monaten ein neues Piercing oder eine Tätowierung bekommen oder eine Akupunktur-Behandlung erhalten hat, für den gilt eine Wartefrist von vier Monaten, damit eine Entzündung oder Infektion ausgeschlossen werden kann (Stand der Abfrage: 24. Oktober 2026).</p>
 <p>Diese Frist ist eine Vorsichtsregel. Sie bedeutet nicht, dass nach einer Akupunktur eine Infektion vermutet wird.</p>
 <h2>Wer über Ausnahmen entscheidet</h2>
