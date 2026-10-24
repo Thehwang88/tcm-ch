@@ -109,6 +109,9 @@ export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = '2026-10-21'
 // Neun Wissen-Artikel (Textpaket 21.10.2026: sechs Kräuter-Entscheidungen, drei Akupunktur-bei):
 // Draft, bis zum Release undefined => keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: Datum setzen.
 export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
+// Artikelpaket 24.10.2026 (9 Wissen-Artikel, 3 Fragen): Draft, bis zum Release undefined => keine
+// Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
+export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = undefined;
 
 export const befundeWerte: BefundWert[] = [
   {

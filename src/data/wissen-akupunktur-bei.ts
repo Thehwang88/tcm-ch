@@ -20,6 +20,7 @@
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
 import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10 } from './befunde-werte';
+import { artikel24SerieSlugs } from './wissen-artikel-2026-10-24';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -1805,6 +1806,8 @@ export const wissenAkupunkturBei: Wissen[] = [
 // steuert TerminForm-Einbindung im Wissen-Template und das Serien-Gate.
 export const akupunkturSerieSlugs: string[] = [
   ...wissenAkupunkturBei.map((w) => w.slug),
+  // Artikelpaket 24.10.2026 (eigene Datei, gleiche Serie)
+  ...artikel24SerieSlugs,
   'akupunktur-bei-rueckenschmerzen',
   'akupunktur-bei-nackenschmerzen',
   'akupunktur-bei-heuschnupfen',
