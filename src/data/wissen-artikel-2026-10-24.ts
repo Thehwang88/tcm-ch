@@ -78,8 +78,8 @@ export const wissenArtikel24: Wissen[] = [
   },
   {
     slug: 'akupunktur-bei-rhizarthrose',
-    title: 'Akupunktur bei Rhizarthrose: Was eine Studie mit Schein zeigte',
-    metaDesc: 'Daumensattelgelenksarthrose: Eine kontrollierte Studie fand keinen Unterschied zwischen echter und Scheinakupunktur. Was das für Schmerzziele, Schiene und Handtherapie heisst.',
+    title: 'Akupunktur bei Rhizarthrose: Studienlage und Grenzen',
+    metaDesc: 'Rhizarthrose: Eine kontrollierte Studie fand keinen Unterschied zwischen echter und Scheinakupunktur. Was das für Schmerzziele, Schiene und Handtherapie heisst.',
     region: 'Schweizweit',
     excerpt: 'In der einzigen hier ausgewerteten spezifischen Studie zur Rhizarthrose wurden beide Gruppen besser, echte Akupunktur aber nicht mehr als die Scheinbehandlung. Eine realistische Einordnung für deine Entscheidung.',
     category: 'Beschwerden verstehen',
@@ -263,14 +263,14 @@ export const wissenArtikel24: Wissen[] = [
 <p>Eine Studie von 1999 untersuchte 14 Menschen mit akutem CRPS an Arm oder Hand. Alle erhielten die gleiche Standardbehandlung, dazu entweder klassische Akupunktur oder Scheinakupunktur, fünfmal pro Woche über drei Wochen. Beide Gruppen besserten sich deutlich. Einen Unterschied zwischen den Gruppen fanden die Forschenden bei dieser kleinen Zahl nicht.</p>
 <p>Die Praxisleitlinie zu CRPS in fünfter Auflage (Pain Medicine, 2022) nennt zwei randomisierte Studien. Neben der kleinen Studie ohne Unterschied berichtete eine Studie mit 96 Menschen mit CRPS Typ I nach einem Schlaganfall über weniger Schmerzen und bessere Beweglichkeit 40 Tage nach der Behandlung. Die Leitlinie hält fest, dass deutlich mehr Forschung nötig ist.</p>
 <p>CRPS nach einem Schlaganfall unterscheidet sich von CRPS nach einem Bruch oder einer Operation. Das Ergebnis lässt sich deshalb nicht auf alle Formen übertragen.</p>
-<h2>Was bei Berührungsempfindlichkeit wichtig ist</h2>
+<h2>Was bei Berührungs&shy;empfindlichkeit wichtig ist</h2>
 <p>Wenn schon leichte Berührung schmerzt, muss vor jeder Nadel- oder Druckbehandlung geklärt werden, ob und wo Berührung zumutbar ist. Eine Behandlung soll keine Schmerzen provozieren. Kräftige Techniken wie starkes Schröpfen oder intensiver Druck am betroffenen Arm oder Bein passen dazu nicht. Du kannst jede Region und jede Technik ablehnen.</p>
 <h2>Abstimmung mit dem behandelnden Team</h2>
 <p>Sprich eine Ergänzung mit deinem Schmerzteam oder deiner Physiotherapie ab. Aktive Übungen und Medikamente laufen weiter. Halte ein konkretes Ziel fest und einen Zeitpunkt, an dem ihr prüft, ob die Ergänzung etwas beiträgt. Zu Kosten und Zusatzversicherung: <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Ersetzt Akupunktur die Schmerztherapie?</h3>
 <p>Nein. Die wenigen Studien rechtfertigen keinen Ersatz für Rehabilitation, Medikamente oder psychologische Unterstützung.</p>
-<h3>Welche Behandlung vertrage ich bei Berührungsempfindlichkeit?</h3>
+<h3>Welche Behandlung vertrage ich bei Berührungs&shy;empfindlichkeit?</h3>
 <p>Das lässt sich nur individuell klären. Eine Behandlung darf die Schmerzen nicht verstärken. Sanfte Vorgehensweisen und Bereiche ausserhalb der betroffenen Region werden vorher besprochen, und du entscheidest mit.</p>
 <h3>Gibt es belastbare Studien zu CRPS?</h3>
 <p>Nicht für Akupunktur. Die vorhandenen Studien sind klein oder betreffen eine besondere Gruppe. Auch für viele andere CRPS-Behandlungen fehlen hochwertige Studien.</p>
@@ -346,7 +346,7 @@ export const wissenArtikel24: Wissen[] = [
   {
     slug: 'akupunktur-bei-bettnaessen',
     title: 'Akupunktur bei Bettnässen: Was Eltern wissen sollten',
-    metaDesc: 'Bettnässen bei Kindern: Was Übersichten zu Akupunktur, Laser und Akupressur zeigen, warum die Evidenz schwach ist und weshalb Alarm und kinderärztliche Abklärung zuerst kommen.',
+    metaDesc: 'Bettnässen bei Kindern: Was Studien zu Akupunktur, Laser und Akupressur zeigen, warum die Evidenz schwach ist und was zuerst kommt.',
     region: 'Schweizweit',
     excerpt: 'Die Studien zu Akupunktur bei Bettnässen sind meist klein und methodisch schwach. Eine Einordnung für Eltern, die nach der kinderärztlichen Abklärung über Ergänzungen nachdenken.',
     category: 'Beschwerden verstehen',
@@ -464,7 +464,7 @@ export const wissenArtikel24: Wissen[] = [
   {
     slug: 'akupunktur-oder-stosswellentherapie-tennisellenbogen',
     title: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen?',
-    metaDesc: 'Tennisellenbogen: Was ein kleiner direkter Vergleich von Akupunktur und Stosswellentherapie zeigt, wie unabhängige Bewertungen die Stosswelle einordnen und was die Grundlage bleibt.',
+    metaDesc: 'Tennisellenbogen: Was ein kleiner direkter Vergleich von Akupunktur und Stosswellentherapie zeigt und was die Grundlage der Behandlung bleibt.',
     region: 'Schweizweit',
     excerpt: 'Ein direkter Vergleich mit 34 Personen fand keinen Unterschied zwischen Akupunktur und Stosswellentherapie. Warum das keine Gleichwertigkeit belegt und was für deine Entscheidung zählt.',
     category: 'Therapien verstehen',

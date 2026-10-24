@@ -963,6 +963,7 @@ const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
     { href: '/gesundheitsbibliothek/fragen/akupunktur-metallallergie/', label: 'Geht das mit Nickelallergie?' },
     { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-operation/', label: 'Wann nach einer Operation?' },
     { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/', label: 'Nach Lymphknotenentfernung?' },
+    { href: '/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/', label: 'Blut spenden nach Akupunktur?' },
   ],
   schroepfen: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/', label: 'Fragen zu Schröpfen & Methoden' },
@@ -971,6 +972,7 @@ const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
     { href: '/gesundheitsbibliothek/fragen/nach-der-behandlung/', label: 'Was gilt nach der Behandlung?' },
     { href: '/gesundheitsbibliothek/fragen/kosten-versicherung/', label: 'Kosten & Versicherung' },
     { href: '/wissen/akupunktur-oder-schroepfen/', label: 'Akupunktur oder Schröpfen?' },
+    { href: '/wissen/schroepfen-oder-massage/', label: 'Schröpfen oder Massage?' },
   ],
   tuina: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/#tuina', label: 'Tuina oder klassische Massage?' },
@@ -987,6 +989,8 @@ const FRAGEN_FOR_THERAPIE: Record<string, { href: string; label: string }[]> = {
     { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/', label: 'Was gehört auf den Einnahmeplan?' },
     { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-vor-operation/', label: 'Kräuter vor einer Operation?' },
     { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/', label: 'Kräuter unter Immunsuppressiva?' },
+    { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/', label: 'Können Kräuter die Leber schädigen?' },
+    { href: '/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/', label: 'Kräuter bei Bluthochdruck?' },
   ],
   moxibustion: [
     { href: '/gesundheitsbibliothek/fragen/schroepfen-methoden/#moxibustion', label: 'Was ist Moxibustion genau?' },

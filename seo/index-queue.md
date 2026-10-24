@@ -498,6 +498,19 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/akupunktur-bei-belastungsinkontinenz/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-rhizarthrose/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-vulvodynie/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-gastroparese/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-crps/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-erektiler-dysfunktion/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-bettnaessen/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/schroepfen-oder-massage/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+
 
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")

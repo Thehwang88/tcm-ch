@@ -62,7 +62,7 @@ export const fragenArtikel24: Frage[] = [
     slug: 'tcm-kraeuter-leber',
     question: 'Können TCM-Kräuter die Leber schädigen?',
     title: 'Können TCM-Kräuter die Leber schädigen?',
-    metaDesc: 'Leberschäden durch chinesische Kräuter sind selten, aber für einzelne Präparate gut dokumentiert. Welche Beispiele bekannt sind, welche Warnzeichen zählen und was du mitbringen solltest.',
+    metaDesc: 'Leberschäden durch chinesische Kräuter sind selten, aber für einzelne Präparate gut dokumentiert. Bekannte Beispiele, Warnzeichen und was du mitbringst.',
     deck: 'Natürlich heisst nicht leberschonend. Für einzelne chinesische Arzneimittel sind Leberschäden gut beschrieben. Was das für deine Rezeptur bedeutet und wann du sofort ärztlich abklären lassen solltest.',
     kurz: '<p>Ja, das ist möglich, aber selten. Von den vielen chinesischen Arzneimitteln sind nur wenige mit klinisch relevanten Leberschäden in Verbindung gebracht worden. Ein gut dokumentiertes Beispiel ist Polygonum multiflorum, auch He Shou Wu oder Fo-Ti genannt. Zusätzlich können falsch deklarierte oder verunreinigte Produkte ein Risiko sein. Entscheidend sind deshalb die genaue Rezeptur, die Produktqualität, deine übrigen Medikamente und das rasche Handeln bei Warnzeichen.</p>',
     bodyHtml: `<h2>Was über Leberschäden durch chinesische Kräuter bekannt ist</h2>
@@ -116,7 +116,7 @@ export const fragenArtikel24: Frage[] = [
     slug: 'tcm-kraeuter-bluthochdruck-sicherheit',
     question: 'Worauf muss ich bei TCM-Kräutern mit Bluthochdruck achten?',
     title: 'TCM-Kräuter bei Bluthochdruck: Worauf musst du achten?',
-    metaDesc: 'Bluthochdruck und chinesische Kräuter: Warum Süssholz den Blutdruck erhöhen kann, was für Ephedra und Ginseng bekannt ist und weshalb Rezeptur und Medikamente gemeinsam geprüft werden.',
+    metaDesc: 'Bluthochdruck und chinesische Kräuter: Warum Süssholz den Blutdruck erhöhen kann und weshalb Rezeptur und Medikamente gemeinsam geprüft werden.',
     deck: 'Bei bekanntem Bluthochdruck gehört jede Kräuterrezeptur vor der Einnahme geprüft. Ein gut belegtes Beispiel ist Süssholz. Es geht um Sicherheit, nicht um eine pflanzliche Blutdrucktherapie.',
     kurz: '<p>Einzelne Bestandteile chinesischer Rezepturen können den Blutdruck beeinflussen. Am besten belegt ist das für Süssholz (Gan Cao): Der Inhaltsstoff Glycyrrhizin kann den Blutdruck erhöhen und das Kalium im Blut senken, schon in vergleichsweise kleinen Mengen. Nicht jede Rezeptur enthält Süssholz, und es gibt keine allgemein sichere Menge. Lass deine Rezeptur deshalb zusammen mit deinen Blutdruckmedikamenten prüfen und setze keine Medikamente ab.</p>',
     bodyHtml: `<h2>Süssholz: das bekannteste Beispiel</h2>
