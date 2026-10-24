@@ -498,6 +498,26 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-pms/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-akne/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-reflux/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-angststoerungen/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-depressionen/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-wiederkehrenden-blasenentzuendungen/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-copd/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-chronischer-sinusitis/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-asthma/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-funktioneller-dyspepsie/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-spinalkanalstenose/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-trigeminusneuralgie/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-akne/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-schuppenflechte/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-rheumatoider-arthritis/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-reflux/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-chronischem-husten/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-lymphoedem/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-post-zoster-neuralgie/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-schmerzen-nach-operation/ — vorbereitet 22.10.2026 (Cluster-Paket 22.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 (zurzeit leer — die Welle-3-Körpersignale sind deployt und stehen unter "Offen")

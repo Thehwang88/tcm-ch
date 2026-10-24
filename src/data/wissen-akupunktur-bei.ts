@@ -19,7 +19,7 @@
 //
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
-import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10 } from './befunde-werte';
+import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10, PUBLISHED_WISSEN_CLUSTER_2026_10 } from './befunde-werte';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -40,6 +40,8 @@ const REDAKTION = {
 const DATEN_W3 = { datePublished: PUBLISHED_WELLE_3_2026_10 ?? '', dateModified: PUBLISHED_WELLE_3_2026_10 ?? '' };
 // Neun-Artikel-Paket 21.10.2026 (Artikel 07 bis 09; eigene Kohorten-Konstante, neutrale Redaktion)
 const DATEN_N = { datePublished: PUBLISHED_WISSEN_NEUN_2026_10 ?? '', dateModified: PUBLISHED_WISSEN_NEUN_2026_10 ?? '' };
+// Cluster-Paket 22.10.2026 (Artikel 09 bis 20; eigene Kohorten-Konstante, neutrale Redaktion)
+const DATEN_C = { datePublished: PUBLISHED_WISSEN_CLUSTER_2026_10 ?? '', dateModified: PUBLISHED_WISSEN_CLUSTER_2026_10 ?? '' };
 // Welle 4 (16.10.2026): gleiche Regel, eigene Kohorten-Konstante (undefined bis Release).
 const DATEN_W4 = { datePublished: PUBLISHED_WELLE_4_2026_10 ?? '', dateModified: PUBLISHED_WELLE_4_2026_10 ?? '' };
 
@@ -461,7 +463,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Wir betrachten Schmerzort, Kaumuskulatur, Beweglichkeit des Kiefers und begleitende Verspannungen.</p>
 <p>Die Akupunktur kann lokal im Gesichts- und Kieferbereich sowie über distale Punkte erfolgen.</p>
 <h2>Wann Akupunktur nicht die richtige erste Behandlung ist</h2>
-<p>Zahnschmerzen, Schwellungen, Verdacht auf Infektion, Trauma, plötzlich blockierter Kiefer oder andere unklare strukturelle Probleme gehören zuerst zahnmedizinisch beziehungsweise ärztlich beurteilt.</p>
+<p>Zahnschmerzen, Schwellungen, Verdacht auf Infektion, Trauma, plötzlich blockierter Kiefer oder andere unklare strukturelle Probleme gehören zuerst zahnmedizinisch beziehungsweise ärztlich beurteilt. Bei einer neurologisch diagnostizierten Trigeminusneuralgie gilt die eigene Einordnung zu <a href="/wissen/akupunktur-bei-trigeminusneuralgie/">Akupunktur bei Trigeminusneuralgie</a>; Daten zu Kieferbeschwerden beantworten diese Frage nicht.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Wir beurteilen unter anderem Schmerz beim Kauen, morgendliche Beschwerden, Mundöffnung und Muskelspannung.</p>
 <p>Die Behandlung wird nur fortgesetzt, wenn sich diese Parameter nachvollziehbar verbessern.</p>
@@ -841,7 +843,7 @@ export const wissenAkupunkturBei: Wissen[] = [
     ...DATEN3,
     bodyHtml: `<h2>Zuerst die Ursache</h2>
 <p>Polyneuropathie bedeutet, dass viele periphere Nerven gleichzeitig geschädigt sind, meist beginnend an den Füssen. Die häufigsten Ursachen in der Schweiz sind Diabetes, Alkohol, Chemotherapie und Vitamin-B12-Mangel; daneben gibt es entzündliche, erbliche und medikamentöse Formen. Weil die Behandlung der Ursache den Verlauf bestimmt, gehört die Abklärung in die Neurologie, mit <a href="/gesundheitsbibliothek/untersuchungen/nervenleitmessung/">Nervenleitmessung</a> und Laborwerten. Was dabei untersucht wird und wie die Erkrankung verläuft, beschreibt die Seite <a href="/beschwerden/polyneuropathie/">Polyneuropathie</a>.</p>
-<p>Akupunktur ersetzt davon nichts. Sie zielt auf die Beschwerden, vor allem auf Schmerz und Missempfindungen, nicht auf die Nervenschädigung.</p>
+<p>Akupunktur ersetzt davon nichts. Sie zielt auf die Beschwerden, vor allem auf Schmerz und Missempfindungen, nicht auf die Nervenschädigung. Für anhaltende Nervenschmerzen nach Gürtelrose gibt es eine andere Studiengruppe; die Einordnung zu <a href="/wissen/akupunktur-bei-post-zoster-neuralgie/">Akupunktur bei Post-Zoster-Neuralgie</a> trennt sie von Polyneuropathien.</p>
 <h2>Was die Studien zeigen</h2>
 <p>Der <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD012057.pub2/full" target="_blank" rel="noopener">Cochrane-Review zu Akupunktur bei neuropathischen Schmerzen (Ju et al., 2017)</a> fand sechs Studien mit 462 Erwachsenen, die chronische periphere Nervenschmerzen hatten. Das Fazit ist deutlich: Die Daten reichen nicht aus, um Akupunktur zu empfehlen oder abzulehnen, weder allgemein noch für eine bestimmte Neuropathie. Die Qualität der Evidenz wurde als sehr niedrig eingestuft, wegen fehlender Verblindung, kleiner Gruppen und Abbrüchen in den Vergleichsgruppen.</p>
 <p>Etwas besser sieht es bei der Neuropathie nach Chemotherapie aus. Eine Meta-Analyse von <a href="https://pubmed.ncbi.nlm.nih.gov/31833790/" target="_blank" rel="noopener">Chien et al. (2019)</a> über sechs Studien mit 386 Patient:innen fand weniger Schmerz und weniger Nervensymptome unter Akupunktur; die Autor:innen fordern wegen der kleinen Fallzahlen grössere Studien. Eine Auswertung von 2022 bestätigte den Effekt auf Schmerz, fand aber gegenüber Placebo-Akupunktur keinen Unterschied bei der Nervenfunktion selbst.</p>
@@ -1050,7 +1052,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Eine systematische Übersicht von 2021 fand Hinweise auf eine Verbesserung von Angstsymptomen gegenüber verschiedenen Vergleichsbedingungen. Die Studien unterschieden sich jedoch in Vorgehen und Qualität. Solche Unterschiede und Schwierigkeiten bei der Verblindung begrenzen die Sicherheit der Schlussfolgerungen.</p>
 <p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p>
 <h2>Was weiterhin Vorrang hat</h2>
-<p>Für Angststörungen gibt es etablierte Behandlungen. Dazu gehört insbesondere eine passende Psychotherapie; je nach Situation werden Medikamente erwogen. Den Behandlungsplan solltest du mit den zuständigen Fachpersonen abstimmen. Eine laufende Therapie nicht aus eigener Entscheidung beenden, weil du etwas Ergänzendes ausprobieren möchtest.</p>
+<p>Für Angststörungen gibt es etablierte Behandlungen. Dazu gehört insbesondere eine passende Psychotherapie; je nach Situation werden Medikamente erwogen. Den Behandlungsplan solltest du mit den zuständigen Fachpersonen abstimmen. Eine laufende Therapie nicht aus eigener Entscheidung beenden, weil du etwas Ergänzendes ausprobieren möchtest. Die Entscheidung zu einer Rezeptur hat eine eigene Datenlage; das erläutert die Einordnung zu <a href="/wissen/chinesische-kraeuter-bei-angststoerungen/">chinesischen Kräutern bei Angststörungen</a>.</p>
 <p>Bei neuem starken Brustschmerz, Ohnmacht oder anderen akuten Warnzeichen ist medizinische Abklärung wichtiger als ein Akupunkturtermin. Wenn Angst den Alltag zunehmend verhindert oder du dich nicht sicher fühlst, brauchst du zeitnah professionelle Hilfe.</p>
 <h2>Wie ein ergänzender Versuch aussehen kann</h2>
 <p>Vereinbare konkrete Ziele: beispielsweise weniger belastende Anspannung oder besseren Schlaf, ohne die Ziele deiner Psychotherapie aus dem Blick zu verlieren. Lege einen Zeitpunkt für die gemeinsame Bewertung fest. Ein Versuch ohne relevante Besserung muss nicht endlos weitergehen.</p>
@@ -1102,7 +1104,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Ein Cochrane-Review von 2018 fand Hinweise auf eine Verbesserung der Depressionsschwere gegenüber keiner beziehungsweise üblicher Behandlung. Gegenüber Kontrollakupunktur war der Unterschied kleiner. Vergleiche mit Medikamenten und Psychotherapie blieben wegen sehr niedriger Evidenzqualität unsicher.</p>
 <p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p>
 <h2>Was nicht verdrängt werden darf</h2>
-<p>Die Behandlung einer Depression hängt unter anderem von Schwere, Verlauf und deinen Bedürfnissen ab. Psychotherapie, Medikamente und weitere fachlich empfohlene Massnahmen haben ihren Platz. Eine ergänzende Behandlung sollte diesen Plan nicht verzögern oder unnötig verkomplizieren.</p>
+<p>Die Behandlung einer Depression hängt unter anderem von Schwere, Verlauf und deinen Bedürfnissen ab. Psychotherapie, Medikamente und weitere fachlich empfohlene Massnahmen haben ihren Platz. Eine ergänzende Behandlung sollte diesen Plan nicht verzögern oder unnötig verkomplizieren. Bei einer möglichen Ergänzung durch Medikamente auf Pflanzenbasis ist die eigene Evidenz zu <a href="/wissen/chinesische-kraeuter-bei-depressionen/">chinesischen Kräutern bei Depressionen</a> zu beachten.</p>
 <p>Auch wenn du Medikamente schlecht verträgst oder bisher wenig Nutzen erlebt hast, ist die nächste Entscheidung mit den zuständigen Fachpersonen zu treffen. Das ist kein Grund, Medikamente eigenständig abzusetzen oder eine unbewiesene Alternative als gleichwertig anzusehen.</p>
 <h2>Ein Versuch mit klaren Grenzen</h2>
 <p>Wenn du Akupunktur ausprobieren möchtest, besprecht konkrete Ziele und einen überschaubaren Prüfzeitraum. Es kann sinnvoll sein, Veränderungen von Schlaf, Anspannung und Alltag zu dokumentieren. Diese Bereiche sind jedoch nicht gleichbedeutend mit einer ausreichenden Behandlung der Depression.</p>
@@ -1374,7 +1376,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Was daraus nicht folgt</h2>
 <p>Die Ergebnisse gelten für Frauen mit unkomplizierten Infekten. Sie lassen sich nicht auf Männer, Schwangere, Kinder, Menschen mit Katheter oder auf komplizierte Infekte übertragen. Bei Blasenschmerzen ohne Infektnachweis ist eher an eine <a href="/beschwerden/interstitielle-zystitis/">interstitielle Zystitis</a> oder eine <a href="/beschwerden/reizblase/">Reizblase</a> zu denken; dafür gilt diese Studie nicht.</p>
 <h2>Was zur Vorbeugung gehört</h2>
-<p>Bei häufigen Rückfällen wird zuerst geklärt, ob wirklich Infekte vorliegen, etwa mit <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinkultur</a>, und ob es begünstigende Faktoren gibt. Je nach Situation werden verschiedene vorbeugende Massnahmen besprochen, mit und ohne Antibiotika. Diese Entscheidungen gehören in ärztliche Hand.</p>
+<p>Bei häufigen Rückfällen wird zuerst geklärt, ob wirklich Infekte vorliegen, etwa mit <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinkultur</a>, und ob es begünstigende Faktoren gibt. Je nach Situation werden verschiedene vorbeugende Massnahmen besprochen, mit und ohne Antibiotika. Diese Entscheidungen gehören in ärztliche Hand. Eine andere Präventionsfrage betrifft <a href="/wissen/chinesische-kraeuter-bei-wiederkehrenden-blasenentzuendungen/">chinesische Kräuter bei wiederkehrenden Blasenentzündungen</a>; deren Studien dürfen nicht mit Akupunkturdaten gleichgesetzt werden.</p>
 <h2>So bleibt ein Versuch überprüfbar</h2>
 <p>Führe einen Kalender mit bestätigten Infekten und Antibiotikagaben im Jahr davor und während des Versuchs. Weil die Studie Effekte erst nach Monaten zeigte, braucht die Beurteilung Zeit. Lege mit den Behandelnden fest, wann bilanziert wird.</p>
 <h2>Wann sofort ärztlich abklären</h2>
@@ -1768,6 +1770,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Damit lässt sich nicht einfach behaupten, alle erfassten Bereiche seien besser geworden. Eine längere Gehstrecke, ein Lungenfunktionswert und weniger Atemnot beim Anziehen sind verschiedene Ergebnisse. Für deine Entscheidung zählt, ob ein möglicher Effekt zu deinem persönlichen Alltagsziel passt.</p>
 <h2>Was im bestehenden Behandlungsplan bleibt</h2>
 <p>Zu den etablierten COPD-Massnahmen gehören Rauchstopp, passende Medikamente und Lungenrehabilitation. Die Erkrankung ist nicht heilbar, lässt sich aber behandeln. Eine Ergänzung soll diesen Plan unterstützen, nicht die medizinische Betreuung umgehen.</p>
+<p>Für Präparate zum Einnehmen ist die eigene Forschung zu <a href="/wissen/chinesische-kraeuter-bei-copd/">chinesischen Kräutern bei stabiler COPD</a> massgeblich, nicht das Ergebnis einer Nadelbehandlung. Für die andere Atemwegserkrankung beantwortet die Einordnung zu <a href="/wissen/akupunktur-bei-asthma/">Akupunktur bei Asthma</a> eine eigene Frage; COPD-Ergebnisse sind darauf nicht übertragbar. Steht Husten unabhängig von einer gesicherten COPD im Vordergrund, ist die eigene Einordnung zu <a href="/wissen/akupunktur-bei-chronischem-husten/">Akupunktur bei chronischem Husten</a> relevant; die Ursache muss zuvor ärztlich geklärt sein.</p>
 <p>Bringe zur Beratung den aktuellen Medikamentenplan, Befunde und Informationen über bisherige Verschlechterungen mit. Sage, ob du Sauerstoff verwendest und wie belastbar du bei der Anreise bist. Die <a href="/gesundheitsbibliothek/untersuchungen/lungenfunktion/">Spirometrie</a> ist eine medizinische Untersuchung der Lungenfunktion; eine subjektiv leichtere Atmung ersetzt ihren Befund nicht.</p>
 <p>Frage nach dem konkreten Vorgehen und dem vorgesehenen Prüfzeitpunkt. Die intensive Behandlung einer Studie ist kein automatisch notwendiges Terminpaket für dich. Auch die Tatsache, dass eine Methode in einer Studie zusätzlich eingesetzt wurde, rechtfertigt keine eigenständige Reduktion deiner Inhalativa.</p>
 <h2>Was vor einer Nadelbehandlung zu klären ist</h2>
@@ -1797,6 +1800,595 @@ export const wissenAkupunkturBei: Wissen[] = [
       { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion (Spirometrie)', cat: 'Untersuchung' },
       { href: '/therapien/akupunktur/', label: 'Akupunktur', cat: 'Therapie' },
       { href: '/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/', label: 'Akupunktur: Nebenwirkungen', cat: 'Frage' },
+    ],
+  },
+  // Cluster-Paket 22.10.2026: Akupunktur-bei 09 bis 20 (Kohorte PUBLISHED_WISSEN_CLUSTER_2026_10)
+  {
+    slug: 'akupunktur-bei-asthma',
+    title: 'Akupunktur bei Asthma: Studien und Grenzen',
+    metaDesc: 'Akupunktur bei stabilem Asthma: Was Studien zu Beschwerden und Lungenfunktion zeigen und weshalb Inhalationstherapie und Notfallplan bestehen bleiben.',
+    region: 'Schweizweit',
+    excerpt: 'Akupunktur wird bei Asthma als Ergänzung untersucht. Die wichtige Frage ist, ob sie bei stabiler Erkrankung zusätzlich hilft, nicht ob sie einen Inhalator oder die Versorgung eines Anfalls ersetzen kann.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Asthma: Eine sinnvolle Ergänzung?',
+    lead: 'Akupunktur wird bei Asthma als Ergänzung untersucht. Die wichtige Frage ist, ob sie bei stabiler Erkrankung zusätzlich hilft, nicht ob sie einen Inhalator oder die Versorgung eines Anfalls ersetzen kann.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Stabilität kommt vor einer ergänzenden Behandlung</h2>
+<p>Wenn du trotz ärztlicher Betreuung nach einer weiteren Möglichkeit suchst, kann eine ergänzende Beratung nachvollziehbar sein. Dieser Artikel betrifft Erwachsene mit stabilem Asthma. Die Seite <a href="/beschwerden/asthma/">Asthma</a> erklärt Diagnose und medizinische Behandlung.</p>
+<p>Bei einem akuten Anfall folgst du deinem ärztlichen Aktionsplan. Bei schwerer Atemnot oder ausbleibender Besserung nach der vorgesehenen Notfallbehandlung brauchst du sofort medizinische Hilfe. Ein Akupunkturtermin ist dafür nicht geeignet. Die verordnete Inhalationstherapie bleibt bestehen.</p>
+<h2>Was Vergleiche mit Scheinakupunktur zeigen</h2>
+<p>Eine Übersicht von 2023 wertete 16 Studien mit Schein- oder Placebokontrollen bei Erwachsenen aus. Sie fand Vorteile bei einigen Beschwerde-, Lebensqualitäts- und Lungenfunktionswerten. Die Ergebnisse beim prozentualen FEV1 unterschieden sich jedoch stark zwischen den Studien. Bei anderen Lungenfunktionswerten und beim Medikamentengebrauch war der Unterschied nicht gesichert. Aussagen über weniger Anfälle beruhten auf einer einzelnen Studie.</p>
+<p>Eine weitere Übersicht von 2025 fasste 14 systematische Reviews zusammen. Unter dem Oberbegriff Akupunktur wurden auch Moxibustion, Schröpfen, Einbettungen und Injektionen betrachtet. Die Evidenz war insgesamt begrenzt, und nur drei der Reviews berichteten Sicherheitsdaten. Die Gesamtzahl der darin erfassten Studien darf deshalb nicht als gleich grosse, unabhängige Beweisbasis für gewöhnliche Nadelakupunktur dargestellt werden.</p>
+<h2>Was ein vertretbarer Versuch leisten soll</h2>
+<p>Aus diesen Daten folgt keine Zusage, dass du weniger Inhalationsmedikamente brauchst. Besprich stattdessen ein konkretes ergänzendes Ziel und wie deine Asthmakontrolle ärztlich weiter überwacht wird. Ein subjektiv freieres Atemgefühl reicht nicht aus, um die Behandlung selbst zu ändern.</p>
+<p>Bring deinen aktuellen Therapieplan und vorhandene Befunde mit. Frage, welche Methode tatsächlich angeboten wird und ob die dazu angeführte Forschung passt. Die <a href="/gesundheitsbibliothek/untersuchungen/lungenfunktion/">Lungenfunktionsuntersuchung</a> bleibt eine medizinische Untersuchung und wird durch die TCM-Einschätzung nicht ersetzt.</p>
+<h2>Die Entscheidung braucht keine grossen Versprechen</h2>
+<p>Auch eine gut durchgeführte Behandlung kann ohne erkennbaren Zusatznutzen bleiben. Vereinbare deshalb eine gemeinsame Bilanz, bevor weitere Termine folgen. Die mögliche Wirkung anderer Verfahren wie <a href="/wissen/akupunktur-bei-copd/">Akupunktur bei COPD</a> beantwortet deine Asthmafrage nicht.</p>
+<p>Wenn die Erkrankung stabil betreut wird, kannst du über <a href="/kontakt/">Kontakt</a> nach einer ergänzenden Beratung fragen. Kläre vorab Kosten und Standort. Medikamente und dein Notfallplan werden dabei nicht eigenständig verändert.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur einen Asthmaanfall stoppen?
+Sie ist keine Akutbehandlung. Bei einem Anfall gelten der ärztliche Aktionsplan und bei schweren Beschwerden sofortige medizinische Hilfe.</h3>
+<h3>Brauche ich danach weniger Medikamente?
+Ein verlässlicher Medikamentenspareffekt ist nicht belegt. Änderungen gehören in ärztliche Begleitung.</h3>
+<h3>Gilt die Forschung auch für Kinder?
+Die hier vorrangig besprochene Übersicht untersuchte Erwachsene. Daraus folgt keine gleiche Aussage für Kinder.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/37257728/" target="_blank" rel="noopener">Clinical evidence for acupuncture for adult asthma: Systematic review and meta-analysis of randomised sham/placebo-controlled trials. Complementary therapies in medicine, 2023. PMID 37257728. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/40470800/" target="_blank" rel="noopener">Effectiveness and safety of acupuncture therapy for bronchial asthma: a systematic review and meta-analysis. The Journal of asthma : official journal of the Association for the Care of Asthma, 2025. PMID 40470800. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/asthma/" target="_blank" rel="noopener">NHS: Asthma (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/asthma/', label: 'Asthma', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/lungenfunktion/', label: 'Lungenfunktion (Spirometrie)', cat: 'Untersuchung' },
+      { href: '/wissen/akupunktur-bei-copd/', label: 'Akupunktur bei COPD', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-funktioneller-dyspepsie',
+    title: 'Akupunktur bei funktioneller Dyspepsie',
+    metaDesc: 'Akupunktur bei Reizmagen: Was eine Studie zum postprandialen Distress-Syndrom zeigt, welche Grenzen bleiben und wie du eine Ergänzung beurteilen kannst.',
+    region: 'Schweizweit',
+    excerpt: 'Wenn Essen regelmässig mit frühem Sättigungsgefühl oder Völlegefühl endet, möchtest du wieder entspannter essen können. Akupunktur ist dafür untersucht, allerdings nicht für jede Form von Magenbeschwerden gleich gut.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei funktioneller Dyspepsie: Was kann sie leisten?',
+    lead: 'Wenn Essen regelmässig mit frühem Sättigungsgefühl oder Völlegefühl endet, möchtest du wieder entspannter essen können. Akupunktur ist dafür untersucht, allerdings nicht für jede Form von Magenbeschwerden gleich gut.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Zuerst die Art des Reizmagens unterscheiden</h2>
+<p>Funktionelle Dyspepsie ist eine ärztlich eingeordnete Erkrankung. Für die hier besprochene Akupunkturstudie waren frühe Sättigung und unangenehmes Völlegefühl nach dem Essen entscheidend. Diese Untergruppe heisst postprandiales Distress-Syndrom, kurz PDS. Die Diagnose und andere Behandlungen erklärt die Seite <a href="/beschwerden/funktionelle-dyspepsie/">funktionelle Dyspepsie</a>.</p>
+<p>Die Ergebnisse sind nicht automatisch auf Sodbrennen, eine Entzündung oder jeden Oberbauchschmerz übertragbar. Bei Schluckbeschwerden, wiederholtem Erbrechen oder unbeabsichtigtem Gewichtsverlust gehört die ärztliche Abklärung vor einen ergänzenden Versuch.</p>
+<h2>Was die Studie mit Scheinakupunktur fand</h2>
+<p>Eine randomisierte Studie von 2020 untersuchte 278 Erwachsene mit PDS an fünf chinesischen Kliniken. Über vier Wochen wurden zwölf Akupunktur- oder Scheinakupunkturbehandlungen durchgeführt. Die berichtete allgemeine Besserungsrate lag anschliessend bei 83 Prozent gegenüber 51,6 Prozent. Vollständig verschwunden waren die drei zentral erfassten Symptome bei 27,8 gegenüber 17,3 Prozent.</p>
+<p>Die Vorteile blieben in der Nachbeobachtung erkennbar. Allerdings beendeten nur 228 Personen die Untersuchung bis Woche 16. Die Ergebnisse beruhten auf berichteten Beschwerden, und die Behandelnden konnten nicht verblindet werden. Die Studie ist damit ein positives Signal für diese klar definierte Gruppe, keine Zusage für jeden Reizmagen.</p>
+<h2>Welche Veränderung wäre für dich relevant?</h2>
+<p>Besprich vor Beginn, welches Problem ihr beobachten wollt. Kannst du Mahlzeiten weniger belastet erleben? Ist das Völlegefühl seltener oder schwächer? Solche Fragen sind nachvollziehbarer als die Behauptung, die gesamte Verdauung werde reguliert. Die Zahl der Behandlungen aus einer Studie ist dabei kein persönlicher Therapieplan.</p>
+<p>Bring vorhandene Befunde und Medikamente mit. Wenn noch unklar ist, was untersucht wurde, kann die Seite zur <a href="/gesundheitsbibliothek/untersuchungen/gastroskopie/">Gastroskopie</a> bei der Vorbereitung auf ein ärztliches Gespräch helfen. Ob diese Untersuchung nötig ist, entscheidet die medizinische Fachperson.</p>
+<h2>Eine Methode nach der anderen verstehen</h2>
+<p>Zur <a href="/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/">Kräutertherapie bei funktioneller Dyspepsie</a> gibt es eine eigene Einordnung. Eine kombinierte Behandlung ist nicht allein deshalb überzeugender, weil mehrere Verfahren enthalten sind. Frage, warum die vorgeschlagene Ergänzung zu deiner konkreten Situation passen soll.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Wenn die Beschwerden abgeklärt sind und du Akupunktur besprechen möchtest, kannst du über <a href="/kontakt/">Kontakt</a> anfragen. Ein Gespräch sollte Ziel, Aufwand, Kosten und einen Zeitpunkt für die gemeinsame Bilanz klären.</p>
+<h2>Häufige Fragen</h2>
+<h3>Hilft Akupunktur bei jedem Reizmagen?
+Die beschriebene Studie betrifft vor allem frühe Sättigung und Völlegefühl nach dem Essen. Andere Untergruppen sind dadurch nicht gleich gut belegt.</h3>
+<h3>Sind zwölf Termine notwendig?
+Zwölf Behandlungen waren Teil des Studienprotokolls. Daraus lässt sich keine individuell notwendige Anzahl ableiten.</h3>
+<h3>Ersetzt sie eine Magenspiegelung?
+Nein. Ob eine Untersuchung nötig ist, wird ärztlich entschieden und nicht durch einen Akupunkturversuch geklärt.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/32422066/" target="_blank" rel="noopener">Effect of Acupuncture for Postprandial Distress Syndrome: A Randomized Clinical Trial. Annals of internal medicine, 2020. PMID 32422066. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/indigestion/" target="_blank" rel="noopener">NHS: Indigestion (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/funktionelle-dyspepsie/', label: 'Funktionelle Dyspepsie', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/untersuchungen/gastroskopie/', label: 'Gastroskopie', cat: 'Untersuchung' },
+      { href: '/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/', label: 'Chinesische Kräuter bei funktioneller Dyspepsie', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-spinalkanalstenose',
+    title: 'Akupunktur bei Spinalkanalstenose',
+    metaDesc: 'Akupunktur bei lumbaler Spinalkanalstenose: Was eine Studie mit Scheinakupunktur zeigt und warum ein statistischer Vorteil noch keine grosse Alltagshilfe ist.',
+    region: 'Schweizweit',
+    excerpt: 'Wenn Gehen wegen einer lumbalen Spinalkanalstenose schwerfällt, zählt eine spürbare Verbesserung. Die neuere Akupunkturstudie zeigt einen kleinen durchschnittlichen Vorteil, dessen Bedeutung du kennen solltest.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Spinalkanalstenose: Wie gross ist der Nutzen?',
+    lead: 'Wenn Gehen wegen einer lumbalen Spinalkanalstenose schwerfällt, zählt eine spürbare Verbesserung. Die neuere Akupunkturstudie zeigt einen kleinen durchschnittlichen Vorteil, dessen Bedeutung du kennen solltest.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Die Frage betrifft Beschwerden, nicht die Verengung selbst</h2>
+<p>Akupunktur kann den knöchernen Spinalkanal nicht nachweislich erweitern. Die relevante Frage lautet daher, ob sie Beschwerden und Einschränkungen zusätzlich lindert. Dieser Artikel betrifft eine degenerative Verengung im Bereich der Lendenwirbelsäule mit neurogener Claudicatio. Andere Formen sind damit nicht mitgemeint. Die Seite <a href="/beschwerden/spinalkanalstenose/">Spinalkanalstenose</a> erklärt Diagnose und Behandlungswege.</p>
+<h2>Der Unterschied zur Scheinakupunktur war klein</h2>
+<p>Eine Studie von 2024 untersuchte 196 Menschen mit lumbaler Spinalkanalstenose und neurogener Claudicatio. Sie erhielten über sechs Wochen 18 Akupunktur- oder Scheinbehandlungen. Auf einem Fragebogen zu schmerzbedingten Einschränkungen lag der durchschnittliche Gruppenunterschied anschliessend bei 1,3 Punkten zugunsten der Akupunktur. Als klinisch bedeutsame Veränderung waren zwei bis drei Punkte angesetzt. Der mittlere Vorteil blieb darunter.</p>
+<p>Ein Teil der Teilnehmenden erreichte eine deutlichere Besserung. Trotzdem lässt sich daraus keine verlässliche Vorhersage für dich ableiten. Die Studie belegt weder eine Rückbildung der Verengung noch, dass eine notwendige Operation vermieden werden kann. Der Vergleich mit Scheinakupunktur ist für diese Entscheidung wichtiger als eine allgemeine Aussage, Nadeln könnten bei Rückenschmerzen helfen.</p>
+<h2>Wann die medizinische Entscheidung Vorrang hat</h2>
+<p>Die Behandlung richtet sich nach Beschwerden, Funktion und neurologischen Befunden. Bewegungstherapie, Medikamente und gegebenenfalls eine operative Beurteilung gehören je nach Situation dazu. Neu auftretende Störungen der Blasen- oder Darmkontrolle, Taubheit im Schritt oder erhebliche neue Beinschwäche können auf einen Notfall hinweisen: Suche sofort eine Notfallstation auf.</p>
+<p>Ein Akupunkturversuch darf diese Abklärung nicht aufschieben. Auch bei zunehmenden Einschränkungen sollte der ärztliche Plan überprüft werden, statt nur weitere Behandlungstermine anzuhängen.</p>
+<h2>Ein begrenztes Ziel vereinbaren</h2>
+<p>Wenn ein ergänzender Versuch medizinisch vertretbar ist, besprecht ein konkretes Alltagsziel. Wichtig ist, wie du die Veränderung beurteilst und wann ihr Bilanz zieht. Eine Behandlungsserie aus einer Studie ist keine Pflichtzahl für deine Situation.</p>
+<p>Die Einordnung zu <a href="/wissen/akupunktur-bei-rueckenschmerzen/">Akupunktur bei Rückenschmerzen</a> beantwortet eine breitere Frage. Gerade bei einer bekannten Stenose lohnt sich die Trennung, weil nicht jede Rückenschmerzstudie dieselbe Erkrankung untersucht.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Für eine ergänzende Beratung kannst du über <a href="/kontakt/">Kontakt</a> anfragen. Bring vorhandene Befunde und den ärztlichen Therapieplan mit. Ein realistisches Gespräch benennt den kleinen durchschnittlichen Studienvorteil ebenso wie den möglichen Aufwand und die Kosten.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur die Verengung beseitigen?
+Ein solcher Nachweis besteht nicht. Die Studien untersuchen Beschwerden und Funktion, keine nachgewiesene Erweiterung des Spinalkanals.</h3>
+<h3>War der Studienvorteil klinisch bedeutsam?
+Der mittlere Unterschied von 1,3 Punkten blieb unter der angesetzten Schwelle von zwei bis drei Punkten. Einzelne Menschen können dennoch unterschiedlich reagieren.</h3>
+<h3>Gilt das auch für die Halswirbelsäule?
+Nein. Die besprochene Untersuchung betrifft die Lendenwirbelsäule und lässt keine entsprechende Aussage für eine zervikale Stenose zu.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38950397/" target="_blank" rel="noopener">Effect of Acupuncture on Neurogenic Claudication Among Patients With Degenerative Lumbar Spinal Stenosis : A Randomized Clinical Trial. Annals of internal medicine, 2024. PMID 38950397. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.orthoinfo.org/diseases--conditions/lumbar-spinal-stenosis/" target="_blank" rel="noopener">AAOS OrthoInfo: Lumbar Spinal Stenosis (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/spinalkanalstenose/', label: 'Spinalkanalstenose', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-rueckenschmerzen/', label: 'Akupunktur bei Rückenschmerzen', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-trigeminusneuralgie',
+    title: 'Akupunktur bei Trigeminusneuralgie',
+    metaDesc: 'Akupunktur bei Trigeminusneuralgie: Eine positive Elektroakupunkturstudie und eine kleine neuere Untersuchung ohne klaren Vorteil richtig einordnen.',
+    region: 'Schweizweit',
+    excerpt: 'Bei einschliessenden Gesichtsschmerzen ist die Hoffnung auf zusätzliche Linderung gross. Die Akupunkturforschung ist nicht einheitlich und ersetzt weder die neurologische Abklärung noch die medikamentöse Behandlung.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Trigeminusneuralgie: Was ist belegt?',
+    lead: 'Bei einschliessenden Gesichtsschmerzen ist die Hoffnung auf zusätzliche Linderung gross. Die Akupunkturforschung ist nicht einheitlich und ersetzt weder die neurologische Abklärung noch die medikamentöse Behandlung.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Eine Diagnose vor der Methodenentscheidung</h2>
+<p>Gesichtsschmerz kann verschiedene Ursachen haben. Dieser Artikel bezieht sich auf eine diagnostizierte Trigeminusneuralgie. Er ist kein Weg, Zahnprobleme, Kieferbeschwerden oder andere neurologische Erkrankungen selbst auseinanderzuhalten. Die Seite <a href="/beschwerden/trigeminusneuralgie/">Trigeminusneuralgie</a> erklärt das Beschwerdebild und die Abklärung.</p>
+<p>Medikamente gehören zur üblichen Behandlung. Bei unzureichender Wirkung oder belastenden Nebenwirkungen kommen weitere fachärztliche Möglichkeiten infrage. Ändere Medikamente nicht eigenständig, um eine Akupunkturwirkung auszuprobieren.</p>
+<h2>Unterschiedliche Studien liefern unterschiedliche Antworten</h2>
+<p>Eine Studie von 2024 verteilte 120 Teilnehmende auf vier Gruppen mit Elektro- oder Scheinakupunktur sowie Carbamazepin oder Placebo. Die Ergebnisse sprachen für einen Nutzen der Elektroakupunktur, auch in Kombination mit dem Medikament. Das ist ein positives Signal, betrifft aber eine elektrische Stimulation und eine begrenzte Studiengruppe. Es ist kein allgemeiner Nachweis für jede manuelle Nadelbehandlung.</p>
+<p>Eine offene, explorative Studie von 2026 mit 20 Personen verglich Akupunktur zusätzlich zur üblichen Versorgung mit der üblichen Versorgung allein. Bei Häufigkeit und Stärke der Schmerzattacken zeigte sich nach acht Wochen kein relevanter Gruppenunterschied. Die Akupunkturgruppe berichtete dennoch eher eine subjektive Gesamtbesserung, allerdings ohne statistisch gesicherten Gruppenunterschied. Wegen der kleinen, nicht verblindeten Untersuchung bleiben die Aussagen begrenzt.</p>
+<p>Diese Ergebnisse sollten nicht zu einem einzigen Erfolgsversprechen zusammengezogen werden. Ein Gefühl von Unterstützung und ein nachweisbar geringerer Attackenschmerz sind unterschiedliche Endpunkte.</p>
+<h2>Was eine ergänzende Beratung klären muss</h2>
+<p>Frage, welche Methode angeboten wird und welches Ziel realistisch ist. Relevant sind etwa Attackenbelastung, Alltag und ein abgestimmter Verlauf. Eine Empfehlung sollte erklären, wie mit ausbleibendem Nutzen umgegangen wird, statt nur auf eine längere Serie zu verweisen.</p>
+<p>Zur Vorbereitung gehören deine Diagnose, bisherige Behandlungen und die Medikamentenliste. Bei elektrischer Stimulation müssen zusätzlich persönliche Besonderheiten, etwa implantierte elektrische Geräte, fachlich geprüft werden. Eine allgemeine Sicherheitszusage aus einer kleinen Studie genügt nicht.</p>
+<h2>Keine Verwechslung mit Kieferschmerzen</h2>
+<p>Für <a href="/wissen/akupunktur-bei-kieferschmerzen/">Akupunktur bei Kieferschmerzen</a> gibt es eine separate Einordnung. Deren Studien lassen sich nicht auf die Trigeminusneuralgie übertragen, auch wenn sich Schmerzen im Gesicht ähnlich anfühlen können.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Wenn die neurologische Versorgung geklärt ist, kannst du über <a href="/kontakt/">Kontakt</a> eine ergänzende Beratung anfragen. Besprich vorab Methode, Kosten und Abstimmung mit der behandelnden Fachperson. Eine Zusage auf weniger Medikamente oder das Vermeiden eines Eingriffs wäre nicht durch diese Daten gedeckt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur bei Trigeminusneuralgie eindeutig wirksam?
+Die Ergebnisse sind uneinheitlich. Einer positiven Elektroakupunkturstudie steht eine kleine neuere Untersuchung ohne relevanten Vorteil bei Attackenhäufigkeit und Schmerzstärke gegenüber.</h3>
+<h3>Gilt Elektroakupunktur als normale Akupunktur?
+Sie ist eine eigene Variante mit elektrischer Stimulation. Ihre Ergebnisse sind nicht automatisch auf rein manuelle Nadelbehandlungen übertragbar.</h3>
+<h3>Kann ich deshalb Carbamazepin reduzieren?
+Nicht eigenständig. Medikamentenänderungen müssen mit der behandelnden ärztlichen Fachperson abgestimmt werden.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/38816482/" target="_blank" rel="noopener">Electroacupuncture and carbamazepine for patients with trigeminal neuralgia: a randomized, controlled, 2 × 2 factorial trial. Journal of neurology, 2024. PMID 38816482. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1857785/full" target="_blank" rel="noopener">von Angern et al. 2026: Acupuncture in patients with trigeminal neuralgia, exploratory mixed methods trial (Verlagsvolltext; Abstract, Methoden und Ergebnisse gelesen)</a></li>
+<li><a href="https://www.nhs.uk/conditions/trigeminal-neuralgia/treatment/" target="_blank" rel="noopener">NHS: Trigeminal neuralgia, treatment (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/trigeminusneuralgie/', label: 'Trigeminusneuralgie', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-kieferschmerzen/', label: 'Akupunktur bei Kieferschmerzen', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-akne',
+    title: 'Akupunktur bei Akne: Was Studien zeigen',
+    metaDesc: 'Akupunktur bei Akne: Warum eine Studie gegenüber Scheinakupunktur keinen klaren Vorteil zeigte und wann die dermatologische Behandlung Vorrang hat.',
+    region: 'Schweizweit',
+    excerpt: 'Eine Behandlung ohne weiteres Einnahmepräparat kann bei Akne attraktiv klingen. Die passende Studie stützt jedoch kein starkes Wirkversprechen für Akupunktur gegen die Hautveränderungen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Akne: Warum die Erwartungen begrenzt sein sollten',
+    lead: 'Eine Behandlung ohne weiteres Einnahmepräparat kann bei Akne attraktiv klingen. Die passende Studie stützt jedoch kein starkes Wirkversprechen für Akupunktur gegen die Hautveränderungen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Die Entscheidung betrifft eine Hauterkrankung</h2>
+<p>Akne ist keine Frage, ob dein Gesicht genug entspannt wirkt. Wenn du eine Nadelbehandlung erwägst, sollte sie anhand der Erkrankung und ihrer Folgen beurteilt werden. Die Seite <a href="/beschwerden/akne/">Akne</a> erklärt das Beschwerdebild und die medizinischen Möglichkeiten. Gesichtsakupunktur mit kosmetischem Ziel beantwortet diese Behandlungsfrage nicht.</p>
+<p>Bei tiefen schmerzhaften Knoten, Narbenbildung oder erheblicher seelischer Belastung ist eine ärztliche Behandlung besonders wichtig. Eine ergänzende Methode sollte sie nicht verzögern.</p>
+<h2>Die kontrollierte Studie fand keinen klaren Hauptvorteil</h2>
+<p>Eine randomisierte Studie von 2022 verglich zwölf Akupunkturbehandlungen über vier Wochen mit Scheinakupunktur. Beim primären Ergebnis, dem hautbezogenen Lebensqualitätsfragebogen Skindex-16, und bei den übrigen untersuchten Ergebnissen zeigte sich zu den wesentlichen Messzeitpunkten kein gesicherter Gruppenunterschied. Eine einzelne emotionale Unterkategorie fiel nach vier Wochen günstiger aus.</p>
+<p>Ein solcher Einzelbefund ändert das insgesamt negative Hauptergebnis nicht. Er belegt insbesondere nicht, dass Akupunktur Akne zuverlässig reduziert oder eine Hormonursache behandelt. Auch die ältere Cochrane-Übersicht zu komplementären Akneverfahren lieferte keine verlässliche Grundlage für eine Akupunkturempfehlung.</p>
+<h2>Was das für deine Behandlung bedeutet</h2>
+<p>Wenn du vor allem weniger entzündliche Hautveränderungen oder ein geringeres Narbenrisiko erreichen möchtest, gibt die Forschung keinen guten Grund, eine etablierte Hautbehandlung zugunsten von Akupunktur aufzuschieben. Ein angenehmes Behandlungserlebnis ist möglich, aber etwas anderes als ein nachgewiesener Zusatznutzen für die Akne.</p>
+<p>Frage bei einer Beratung deshalb ausdrücklich nach dem Ziel. Wird eine Hautverbesserung erwartet oder geht es um eine andere Belastung? Die Begründung sollte diese Fragen trennen. Aussagen wie «reguliert deine Hormone» reichen als Erklärung nicht aus.</p>
+<h2>Weitere Mittel nicht automatisch dazunehmen</h2>
+<p>Zur Entscheidung über <a href="/wissen/chinesische-kraeuter-bei-akne/">chinesische Kräuter bei Akne</a> gibt es eine eigene Einordnung. Eine kombinierte Behandlung aus Nadeln und Einnahmepräparaten wird nicht durch die Studie zu einer einzelnen Methode bewiesen. Besprich jede Ergänzung mit Blick auf deine laufende dermatologische Versorgung.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Bei aktiver oder narbenbildender Akne steht die passende Hautbehandlung im Vordergrund. Wenn du trotz der begrenzten Daten eine ergänzende Beratung möchtest, kannst du über <a href="/kontakt/">Kontakt</a> anfragen. Kläre Ziel, Kosten und einen überschaubaren Plan, ohne eine sichtbare Hautverbesserung vorauszusetzen.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur gegen Akne bewiesen?
+Ein verlässlicher Nutzen ist nicht belegt. Die besprochene Studie fand beim primären Ergebnis keinen gesicherten Vorteil gegenüber Scheinakupunktur.</h3>
+<h3>Ist Gesichtsakupunktur dasselbe?
+Eine kosmetische Behandlung und die Therapie einer entzündlichen Hauterkrankung haben unterschiedliche Ziele. Ein kosmetisches Angebot belegt keine Wirkung gegen Akne.</h3>
+<h3>Kann ich meine Hautmedikamente dafür pausieren?
+Ändere die Behandlung nicht eigenständig. Gerade bei Narbengefahr sollte wirksame dermatologische Versorgung nicht verzögert werden.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/35437030/" target="_blank" rel="noopener">Efficacy of acupuncture in improving symptoms and quality of life of patients with acne vulgaris: a randomized sham acupuncture-controlled trial. Acupuncture in medicine : journal of the British Medical Acupuncture Society, 2022. PMID 35437030. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.cochrane.org/evidence/CD009436_complementary-therapies-acne-vulgaris" target="_blank" rel="noopener">Cochrane 2015: Complementary therapies for acne vulgaris (Cochrane-Zusammenfassung und Abstract)</a></li>
+<li><a href="https://www.nhs.uk/conditions/acne/" target="_blank" rel="noopener">NHS: Acne (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/akne/', label: 'Akne', cat: 'Beschwerde' },
+      { href: '/wissen/chinesische-kraeuter-bei-akne/', label: 'Chinesische Kräuter bei Akne', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-schuppenflechte',
+    title: 'Akupunktur bei Schuppenflechte: Evidenz',
+    metaDesc: 'Akupunktur bei Schuppenflechte: Warum positive Übersichten keine sichere Wirkung gewöhnlicher Nadeln belegen und die Hautbehandlung bestehen bleiben sollte.',
+    region: 'Schweizweit',
+    excerpt: 'Bei Schuppenflechte ist der Wunsch nach einer zusätzlichen Behandlung verständlich. Die Forschung fasst jedoch sehr unterschiedliche Verfahren zusammen und erlaubt keine verlässliche Zusage für gewöhnliche Nadelakupunktur.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Schuppenflechte: Eine begrenzte Datenlage',
+    lead: 'Bei Schuppenflechte ist der Wunsch nach einer zusätzlichen Behandlung verständlich. Die Forschung fasst jedoch sehr unterschiedliche Verfahren zusammen und erlaubt keine verlässliche Zusage für gewöhnliche Nadelakupunktur.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Die Frage ist die zusätzliche Wirkung auf deine Haut</h2>
+<p>Akupunktur wird bei Schuppenflechte mit unterschiedlichen Zielen angeboten. Für deine Entscheidung sollte klar sein, ob Hautveränderungen, Juckreiz oder eine andere Belastung gemeint sind. Eine allgemein entspannende Erfahrung belegt noch keine kontrollierte Wirkung auf Psoriasis. Die Seite <a href="/beschwerden/schuppenflechte/">Schuppenflechte</a> erklärt die Erkrankung und ihre medizinische Behandlung.</p>
+<h2>Was die Übersichten wirklich untersuchten</h2>
+<p>Eine Übersicht von 2015 fand sechs randomisierte Studien mit 522 Teilnehmenden. Die Behandlungen und Vergleiche waren so verschieden, dass die Ergebnisse nicht sinnvoll zu einer gemeinsamen Metaanalyse zusammengeführt werden konnten. Die Befunde waren widersprüchlich.</p>
+<p>Eine Netzwerk-Metaanalyse von 2017 schloss 13 Studien mit 1060 Teilnehmenden ein. Die Studienqualität war unzureichend. Positive Rangfolgen betrafen unter anderem Akupressur und Fadeneinbettung. Das sind andere Verfahren als eine gewöhnliche manuelle Nadelbehandlung. Daraus lässt sich weder deren Wirksamkeit ableiten noch eine dieser Methoden persönlich empfehlen.</p>
+<p>Diese älteren Übersichten sind keine aktuelle Behandlungsleitlinie. Sie zeigen vor allem, weshalb die Aussage «Akupunktur hilft bei Psoriasis» ohne genaue Angabe von Methode und Vergleich zu weit geht.</p>
+<h2>Die Hautbehandlung bleibt die Grundlage</h2>
+<p>Je nach Ausprägung kommen äusserliche Behandlungen, Lichttherapie oder systemische Medikamente infrage. Ein ergänzender Versuch darf diese Versorgung nicht ersetzen. Besonders wichtig ist die Trennung zur <a href="/beschwerden/psoriasis-arthritis/">Psoriasis-Arthritis</a>: Studien zur Haut beantworten nicht, wie entzündete Gelenke behandelt werden müssen.</p>
+<p>Vor einer Beratung gehören die aktuelle Therapie und die bisherige Entwicklung auf den Tisch. Frage nach einem konkreten Ziel und einer nachvollziehbaren Beurteilung des Verlaufs. Ein Hautbefund kann schwanken; eine einzelne gute Woche beweist deshalb nicht, welche Massnahme geholfen hat.</p>
+<h2>Nicht jedes zusätzliche Verfahren verbessert den Plan</h2>
+<p>Die Daten zu <a href="/wissen/chinesische-kraeuter-bei-schuppenflechte/">chinesischen Kräutern bei Schuppenflechte</a> werden gesondert erklärt. Mehrere Methoden gleichzeitig einzusetzen ist kein Ersatz für passende Evidenz und erschwert die Zuordnung möglicher Veränderungen.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Wenn du eine ergänzende Nadelbehandlung trotz der begrenzten Daten besprechen möchtest, kannst du über <a href="/kontakt/">Kontakt</a> anfragen. Kläre Methode, Kosten und die Abstimmung mit deiner Hautärztin oder deinem Hautarzt. Eine Zusage auf erscheinungsfreie Haut oder weniger Medikamente wäre durch diese Studien nicht gedeckt.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist normale Nadelakupunktur bei Psoriasis belegt?
+Die vorhandenen Übersichten erlauben keine verlässliche allgemeine Empfehlung. Sie betreffen unterschiedliche Verfahren und Studien mit erheblichen Grenzen.</h3>
+<h3>Sind Fadeneinbettung und Akupressur gleichzusetzen?
+Nein. Ergebnisse zu diesen Methoden sind kein direkter Nachweis für eine gewöhnliche Nadelbehandlung.</h3>
+<h3>Gilt das auch für entzündete Gelenke?
+Nein. Psoriasis-Arthritis ist eine eigene Erkrankung und benötigt eine entsprechende medizinische Beurteilung und Behandlung.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/26021960/" target="_blank" rel="noopener">Acupuncture therapies for psoriasis vulgaris: a systematic review of randomized controlled trials. Forschende Komplementarmedizin (2006), 2015. PMID 26021960. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/28628749/" target="_blank" rel="noopener">Acupuncture-Related Techniques for Psoriasis: A Systematic Review with Pairwise and Network Meta-Analyses of Randomized Controlled Trials. Journal of alternative and complementary medicine (New York, N.Y.), 2017. PMID 28628749. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/psoriasis/" target="_blank" rel="noopener">NHS: Psoriasis (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/schuppenflechte/', label: 'Schuppenflechte', cat: 'Beschwerde' },
+      { href: '/beschwerden/psoriasis-arthritis/', label: 'Psoriasis-Arthritis', cat: 'Beschwerde' },
+      { href: '/wissen/chinesische-kraeuter-bei-schuppenflechte/', label: 'Chinesische Kräuter bei Schuppenflechte', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-rheumatoider-arthritis',
+    title: 'Akupunktur bei rheumatoider Arthritis',
+    metaDesc: 'Akupunktur bei rheumatoider Arthritis: Was die widersprüchliche Forschung zu Schmerzen zeigt und weshalb sie keine krankheitsmodifizierende Therapie ersetzt.',
+    region: 'Schweizweit',
+    excerpt: 'Weniger Schmerzen wären bei rheumatoider Arthritis ein wichtiges Ziel. Die Entscheidung über Akupunktur ist dabei von der Behandlung zu trennen, die Entzündung und Gelenkschäden kontrollieren soll.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei rheumatoider Arthritis: Nur ergänzend denken',
+    lead: 'Weniger Schmerzen wären bei rheumatoider Arthritis ein wichtiges Ziel. Die Entscheidung über Akupunktur ist dabei von der Behandlung zu trennen, die Entzündung und Gelenkschäden kontrollieren soll.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Zwei verschiedene Behandlungsziele</h2>
+<p>Bei rheumatoider Arthritis geht es um mehr als den aktuellen Schmerz. Die krankheitsmodifizierende Behandlung soll die Entzündung kontrollieren und Gelenkschäden begrenzen. Akupunktur ist dafür kein nachgewiesener Ersatz. Eine mögliche ergänzende Linderung ist eine andere Frage. Die Seite <a href="/beschwerden/rheumatoide-arthritis/">rheumatoide Arthritis</a> erklärt das Beschwerdebild und die rheumatologische Versorgung.</p>
+<p>Ein früher und abgestimmter Behandlungsplan ist wichtig. Verordnete Basistherapien sollten nicht zugunsten eines ergänzenden Versuchs aufgeschoben oder selbstständig verändert werden.</p>
+<h2>Warum die Forschung kein klares Ja ergibt</h2>
+<p>Eine Evidenzaufbereitung von 2018 sichtete sieben Übersichtsarbeiten mit 20 randomisierten Studien. Ihr Ergebnis war, dass Akupunktur wahrscheinlich wenig oder keinen Einfluss auf die untersuchten Ergebnisse hat.</p>
+<p>Eine Metaanalyse von 2022 berichtete dagegen Vorteile, wenn Akupunktur und verwandte Verfahren zur konventionellen Behandlung hinzukamen. Sie umfasste zwölf Studien mit 874 Teilnehmenden und fasste unter anderem manuelle Akupunktur, Elektroakupunktur und Moxibustion zusammen. Ein solches positives Gesamtergebnis belegt nicht sicher die Wirkung einer einzelnen Nadelmethode. Es zeigt auch nicht, dass Gelenkschäden verhindert werden.</p>
+<p>Die unterschiedlichen Einschätzungen sollten in einem Beratungsgespräch erkennbar bleiben. Ein blosses «Studien zeigen eine entzündungshemmende Wirkung» würde diese Unsicherheit nicht angemessen wiedergeben.</p>
+<h2>Was ein ergänzender Plan berücksichtigen muss</h2>
+<p>Wenn Schmerzen trotz rheumatologischer Betreuung belasten, besprecht zunächst, was sie bedeuten. Eine Veränderung deiner Beschwerden gehört auch in die ärztliche Verlaufskontrolle. Ein vorübergehend besseres Gefühl darf nicht als Beleg einer ausreichend kontrollierten Gelenkentzündung gelten.</p>
+<p>Nimm den aktuellen Medikamentenplan mit. Die Frage, ob eine Behandlung unter Immunsuppression vertretbar ist, wird separat unter <a href="/gesundheitsbibliothek/fragen/akupunktur-immunsuppression/">Akupunktur bei Immunsuppression</a> eingeordnet. Dieser Wirksamkeitsartikel erteilt keine pauschale Sicherheitsfreigabe.</p>
+<h2>Aufwand und möglichen Nutzen abwägen</h2>
+<p>Vor zusätzlichen Terminen sollte klar sein, welches ergänzende Ziel verfolgt und wann es überprüft wird. Die begrenzte Datenlage kann auch bedeuten, dass du dich gegen die Methode entscheidest. Eine solche Entscheidung ist ebenso nachvollziehbar wie ein abgestimmter, überschaubarer Versuch ohne Heilungsversprechen.</p>
+<p>Über <a href="/kontakt/">Kontakt</a> kannst du nach einer ergänzenden Beratung fragen. Die rheumatologische Behandlung bleibt bestehen; Kosten, Methode und Zuständigkeiten sollten vor Beginn verständlich sein.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur Gelenkschäden verhindern?
+Ein solcher Nachweis besteht nicht. Sie ersetzt keine krankheitsmodifizierende Behandlung der rheumatoiden Arthritis.</h3>
+<h3>Warum kommen Übersichten zu unterschiedlichen Ergebnissen?
+Sie verwenden unterschiedliche Studien, Vergleiche und Methoden. Positive Ergebnisse zu kombinierten Verfahren sind kein eindeutiger Nachweis für eine einzelne Nadelbehandlung.</h3>
+<h3>Ist Akupunktur unter Immunsuppressiva automatisch möglich?
+Nein. Die individuelle Sicherheitsfrage muss zusätzlich geprüft werden; dieser Artikel beurteilt den möglichen Nutzen, nicht deine persönliche Freigabe.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/30339140/" target="_blank" rel="noopener">Acupuncture for rheumatoid arthritis. Medwave, 2018. PMID 30339140. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/34772862/" target="_blank" rel="noopener">The effects of acupuncture and related techniques on patients with rheumatoid arthritis: A systematic review and meta-analysis. Journal of the Chinese Medical Association : JCMA, 2022. PMID 34772862. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/rheumatoid-arthritis/treatment/" target="_blank" rel="noopener">NHS: Rheumatoid arthritis, treatment (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/rheumatoide-arthritis/', label: 'Rheumatoide Arthritis', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-immunsuppression/', label: 'Akupunktur bei Immunsuppression', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-reflux',
+    title: 'Akupunktur bei Reflux: Nutzen und Grenzen',
+    metaDesc: 'Akupunktur bei Reflux: Was eine neuere Studie mit höher dosiertem Säurehemmer vergleicht und warum sie weder Gleichwertigkeit noch einen Absetzplan belegt.',
+    region: 'Schweizweit',
+    excerpt: 'Wenn Reflux trotz Behandlung belastet, liegt die Frage nach einer Ergänzung nahe. Die Studien liefern Hinweise, aber keine einfache Antwort, dass Nadeln wirksamer oder gleichwertig zu Säurehemmern seien.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Reflux: Was bringt sie zusätzlich?',
+    lead: 'Wenn Reflux trotz Behandlung belastet, liegt die Frage nach einer Ergänzung nahe. Die Studien liefern Hinweise, aber keine einfache Antwort, dass Nadeln wirksamer oder gleichwertig zu Säurehemmern seien.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Was ist trotz Behandlung noch ungeklärt?</h2>
+<p>Bevor du Akupunktur ergänzt, sollte geklärt sein, ob deine Beschwerden tatsächlich durch Reflux erklärt werden und wie die bisherige Behandlung eingesetzt wurde. Die Seite <a href="/beschwerden/sodbrennen/">Sodbrennen</a> bleibt die Grundlage für Symptome und Abklärung.</p>
+<p>Bei Schluckbeschwerden, wiederholtem Erbrechen oder unbeabsichtigtem Gewichtsverlust ist eine ärztliche Beurteilung wichtig. Setze verordnete Medikamente nicht eigenständig ab, um einen Akupunkturversuch zu beginnen.</p>
+<h2>Ein neuerer Vergleich ist keine Gleichwertigkeits&shy;studie</h2>
+<p>Eine Studie von 2026 untersuchte 72 Erwachsene mit Beschwerden trotz PPI-Behandlung. Verglichen wurden Akupunktur zusätzlich zur Standarddosis Omeprazol und eine höhere PPI-Dosis über vier Wochen. Im gesamten GerdQ-Fragebogen ergab sich kein gesicherter Gruppenunterschied. Einige Ergebnisse, etwa Sodbrennen und Lebensqualität, fielen zugunsten der Akupunktur aus; andere zugunsten der höheren PPI-Dosis.</p>
+<p>Es gab keine Scheinakupunkturgruppe. Ein nicht signifikanter Unterschied im Gesamtergebnis beweist deshalb weder Gleichwertigkeit noch einen besonderen Nadeleffekt. Die Untersuchung liefert auch keinen persönlichen Plan, Medikamente zu reduzieren.</p>
+<p>Eine kleinere Studie von 2023 verglich Akupunktur mit Scheinakupunktur und erhob auch kurzfristige Messwerte der Speiseröhrenbewegung. Solche physiologischen Veränderungen sind interessant, aber kein Beleg einer dauerhaften Heilung oder eines langfristigen Schleimhautschutzes.</p>
+<h2>Das Ziel vor den Terminen festlegen</h2>
+<p>Wenn eine Ergänzung infrage kommt, sollte klar sein, welche Veränderung für dich relevant wäre und wie sie beurteilt wird. Besprecht auch, was bei gleichbleibenden Beschwerden folgt. Zusätzliche Termine sind nicht automatisch sinnvoll, nur weil eine Wirkung Zeit brauchen könne.</p>
+<p>Die Forschung zu <a href="/wissen/akupunktur-bei-funktioneller-dyspepsie/">Akupunktur bei funktioneller Dyspepsie</a> betrifft eine andere Diagnose, insbesondere Beschwerden nach dem Essen. Daten zu diesem Reizmagen dürfen nicht als Refluxnachweis verwendet werden. Auch eine vorübergehende Besserung beweist nicht, welche Erkrankung hinter deinen Beschwerden steckt.</p>
+<h2>Eine abgestimmte Ergänzung statt eines Medikamenten&shy;versprechens</h2>
+<p>Bring zu einer Beratung vorhandene Untersuchungsbefunde und die Medikamentenliste mit. Frage nach Methode, Kosten und der Abstimmung mit der ärztlichen Versorgung. Eine Zusage, künftig ohne Säurehemmer auszukommen, wäre durch die bisherigen Daten nicht gedeckt.</p>
+<p>Über <a href="/kontakt/">Kontakt</a> kannst du eine ergänzende Beratung anfragen. Bei noch ungeklärten oder neuen Warnzeichen hat die medizinische Abklärung Vorrang.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur so wirksam wie eine höhere PPI-Dosis?
+Der fehlende gesicherte Unterschied im Gesamtscore einer kleinen Studie belegt keine Gleichwertigkeit. Dafür wären passende Studien nötig.</h3>
+<h3>Kann ich danach Säurehemmer absetzen?
+Die Studien ergeben keinen persönlichen Absetzplan. Änderungen einer verordneten Behandlung müssen ärztlich abgestimmt werden.</h3>
+<h3>Gilt die Reizmagenstudie auch für Reflux?
+Nein. Funktionelle Dyspepsie und Reflux sind unterschiedliche Behandlungsfragen, auch wenn Beschwerden sich überschneiden.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/41609334/" target="_blank" rel="noopener">Acupuncture provides a safe strategy to minimize proton pump inhibitor dose in resistant gastroesophageal reflux disease: randomized controlled trial. Diseases of the esophagus : official journal of the International Society for Diseases of the Esophagus, 2026. PMID 41609334. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/37274947/" target="_blank" rel="noopener">Acupuncture Improved the Function of the Lower Esophageal Sphincter and Esophageal Motility in Chinese Patients with Refractory Gastroesophageal Reflux Disease Symptoms: A Randomized Trial. Gastroenterology research and practice, 2023. PMID 37274947. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/heartburn-and-acid-reflux/" target="_blank" rel="noopener">NHS: Heartburn and acid reflux (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/sodbrennen/', label: 'Sodbrennen und Reflux', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-funktioneller-dyspepsie/', label: 'Akupunktur bei funktioneller Dyspepsie', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-chronischem-husten',
+    title: 'Akupunktur bei chronischem Husten',
+    metaDesc: 'Akupunktur bei chronischem Husten: Was gemischte Studien und eine kleine Übersicht zu Refluxhusten aussagen und warum die Ursachenabklärung zuerst kommt.',
+    region: 'Schweizweit',
+    excerpt: 'Bei lang anhaltendem Husten zählt zuerst die Ursache. Studien zu verschiedenen Hustenformen und TCM-Verfahren lassen sich nicht zu einem allgemeinen Wirkversprechen für Nadeln zusammenziehen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei chronischem Husten: Für wen sind die Daten relevant?',
+    lead: 'Bei lang anhaltendem Husten zählt zuerst die Ursache. Studien zu verschiedenen Hustenformen und TCM-Verfahren lassen sich nicht zu einem allgemeinen Wirkversprechen für Nadeln zusammenziehen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Die Ursache gehört vor die Methodenfrage</h2>
+<p>Husten, der nicht aufhört, kann den Alltag erheblich belasten. Trotzdem ist eine ergänzende Behandlung erst sinnvoll einzuordnen, wenn die medizinische Ursache untersucht wurde. Die Seite <a href="/beschwerden/chronischer-husten/">chronischer Husten</a> erklärt die Abklärung und Behandlungsmöglichkeiten.</p>
+<p>Schon ein Husten über mehr als drei Wochen sollte ärztlich beurteilt werden. Blut im Auswurf, Atemprobleme, Brustschmerz oder eine rasche deutliche Verschlechterung benötigen dringende medizinische Hilfe. Bei schwerer akuter Atemnot oder Kreislaufproblemen ist sofortige Notfallhilfe nötig.</p>
+<h2>Warum die grosse Zahl an Studien täuschen kann</h2>
+<p>Eine Übersicht von 2025 umfasste 30 randomisierte Studien mit 2835 Teilnehmenden. Sie berichtete positive zusätzliche Effekte auf Beschwerden und Lebensqualität. Eingeschlossen waren jedoch unterschiedliche Hustenursachen, Altersgruppen und Verfahren, darunter Nadeln, aufgeklebte Anwendungen und Moxibustion. Das zusammengefasste Ergebnis ist deshalb kein gleich starker Nachweis für Nadelakupunktur bei jedem Erwachsenen mit chronischem Husten.</p>
+<p>Eine weitere Übersicht von 2026 konzentrierte sich auf refluxbezogenen chronischen Husten. Fünf Studien mit 390 Teilnehmenden zeigten Vorteile gegenüber konventioneller Medikamentenbehandlung bei Hustenwerten und Lebensqualität. Begrenzte Verblindung und weitere methodische Schwächen schränkten die Aussage ein. Auch diese Übersicht betrachtete akupunkturbezogene Verfahren, nicht zwingend eine einheitliche Nadelbehandlung.</p>
+<h2>Was daraus nicht folgt</h2>
+<p>Die Ergebnisse erlauben nicht, Husten allein aufgrund einer möglichen Refluxursache selbst zu behandeln. Sie belegen ebenso wenig einen Nutzen bei jeder unklaren Hustenform. Daten aus der <a href="/wissen/akupunktur-bei-copd/">Akupunktur bei COPD</a> beantworten wiederum eine andere, krankheitsspezifische Frage.</p>
+<p>Wenn Husten bereits abgeklärt ist, kann ein Beratungsgespräch prüfen, ob überhaupt eine passende ergänzende Option besteht. Dazu gehören die bisherige Diagnose, Medikamente und ein verständliches Ziel. Eine allgemein formulierte Aussage zur Stärkung der Lunge hilft bei dieser Entscheidung wenig.</p>
+<h2>Den Verlauf gemeinsam beurteilen</h2>
+<p>Frage, wie eine Veränderung dokumentiert und wann Bilanz gezogen wird. Bei wechselndem Husten kann eine gute Phase viele Ursachen haben. Eine Ergänzung sollte die ärztliche Behandlung deshalb nicht unterbrechen und bei neuen Beschwerden nicht einfach weiterlaufen.</p>
+<p>Über <a href="/kontakt/">Kontakt</a> kannst du nach einer ergänzenden Beratung fragen, wenn die Ursachenklärung erfolgt ist. Kläre Methode und Kosten vor Beginn. Bei unklaren Beschwerden oder Warnzeichen ist der direkte medizinische Weg vorrangig.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist Akupunktur bei jedem chronischen Husten belegt?
+Nein. Die Studien mischen Ursachen, Altersgruppen und Verfahren. Das begrenzt die Übertragbarkeit auf eine konkrete Nadelbehandlung.</h3>
+<h3>Beweist eine Besserung, dass Reflux die Ursache war?
+Nein. Ein Behandlungsergebnis ersetzt keine medizinische Diagnose und kann andere Erklärungen haben.</h3>
+<h3>Kann ich Moxastudien für normale Akupunktur verwenden?
+Nicht ohne Weiteres. Wärmeverfahren, Pflaster und Nadeln sind unterschiedliche Interventionen.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39944112/" target="_blank" rel="noopener">Acupuncture-related therapy for chronic cough: A systematic review and meta-analysis. Integrative medicine research, 2025. PMID 39944112. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/41859159/" target="_blank" rel="noopener">Efficacy of acupuncture-related therapies for gastroesophageal reflux-related chronic cough: a systematic review and meta-analysis. Frontiers in medicine, 2026. PMID 41859159. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/symptoms/cough/" target="_blank" rel="noopener">NHS: Cough (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/chronischer-husten/', label: 'Chronischer Husten', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-copd/', label: 'Akupunktur bei COPD', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-lymphoedem',
+    title: 'Akupunktur bei Lymphödem: Nutzen und Grenzen',
+    metaDesc: 'Akupunktur bei Lymphödem: Warum eine Studie zum Arm nach Brustkrebs keinen klaren Zusatznutzen zeigte und die Entstauungsbehandlung bestehen bleibt.',
+    region: 'Schweizweit',
+    excerpt: 'Bei einem Lymphödem ist jede Aussicht auf weniger Schwellung verständlich. Die kontrollierte Akupunkturstudie zum Arm nach Brustkrebs liefert dafür jedoch keinen klaren Wirksamkeitsnachweis.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Lymphödem: Was sagt die kontrollierte Studie?',
+    lead: 'Bei einem Lymphödem ist jede Aussicht auf weniger Schwellung verständlich. Die kontrollierte Akupunkturstudie zum Arm nach Brustkrebs liefert dafür jedoch keinen klaren Wirksamkeitsnachweis.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Weniger Schwellung ist ein überprüfbares Ziel</h2>
+<p>Ein Lymphödem wird mit einem abgestimmten Entstauungsplan behandelt. Dazu können Kompression, Bewegung, Hautpflege und manuelle Lymphdrainage gehören. Akupunktur ersetzt diese Grundlagen nicht. Die Seite <a href="/beschwerden/lymphoedem/">Lymphödem</a> erklärt das Krankheitsbild und die Behandlung.</p>
+<p>Dieser Artikel beurteilt den möglichen Zusatznutzen. Die Frage, ob und in welcher Region eine Nadelbehandlung für dich vertretbar wäre, ist davon getrennt.</p>
+<h2>Was die randomisierte Studie ergeben hat</h2>
+<p>Eine Untersuchung von 2018 nahm 82 Frauen mit einem anhaltenden Armlymphödem nach Brustkrebs auf. Verglichen wurden sechs Wochen Akupunktur und eine Warteliste. Die meisten Teilnehmerinnen führten ihre übliche Lymphödembehandlung weiter. Bei Armumfang, Bioimpedanz und dem definierten Ansprechen zeigte sich kein gesicherter Gruppenunterschied.</p>
+<p>Damit fehlt in dieser Untersuchung ein klarer Zusatznutzen für die Schwellung. Dass keine schweren Nebenwirkungen beobachtet wurden, bedeutet weder eine allgemeine Sicherheitsfreigabe noch den Beweis, dass Nadeln in einer betroffenen Region unbedenklich sind. Die Ergebnisse betreffen zudem ein Armlymphödem nach Brustkrebs, nicht jedes Lymphödem an jedem Körperteil.</p>
+<h2>Nutzen und Sicherheit sind zwei Entscheidungen</h2>
+<p>Die Einordnung zu <a href="/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/">Akupunktur nach Lymphknotenentfernung</a> behandelt das besondere Sicherheitsproblem. Dieser Wirksamkeitsartikel empfiehlt keine Nadelorte und erklärt keine betroffene Seite für frei behandelbar. Die Entscheidung gehört in die Abstimmung mit den zuständigen Fachpersonen.</p>
+<p>Wenn dir eine Behandlung zum «Anregen des Lymphflusses» angeboten wird, frage nach dem konkreten Nachweis für weniger Schwellung. Eine vorübergehende Entspannung oder ein anderes Körpergefühl ist kein gleichwertiger Ersatz für eine gemessene Veränderung des Ödems.</p>
+<h2>Zusätzlichen Aufwand ehrlich abwägen</h2>
+<p>Eine bestehende Entstauungsbehandlung kostet bereits Zeit und Energie. Weitere Termine sollten deshalb ein verständliches Ziel haben. Die negative kontrollierte Studie ist ein guter Grund, keinen routinemässigen Nutzen zu versprechen. Ein Beratungsgespräch kann auch zu der Entscheidung führen, auf Akupunktur zu verzichten.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Wenn du Ergänzungen besprechen möchtest, beginne mit deinem Lymphödemteam und dem aktuellen Behandlungsplan. Über <a href="/kontakt/">Kontakt</a> kannst du anschliessend nach einer Beratung fragen. Eine Anfrage ist keine medizinische Freigabe; die etablierte Entstauungsbehandlung bleibt bestehen.</p>
+<h2>Häufige Fragen</h2>
+<h3>Verringert Akupunktur die Armschwellung nach Brustkrebs?
+Die besprochene randomisierte Studie zeigte dafür keinen gesicherten Zusatznutzen gegenüber der Wartelistengruppe.</h3>
+<h3>Darf deshalb in den betroffenen Arm genadelt werden?
+Das folgt aus der Studie nicht. Die persönliche Sicherheitsfrage muss getrennt fachlich beurteilt werden.</h3>
+<h3>Gilt das Ergebnis auch für ein Beinlymphödem?
+Die Studie untersuchte ein Armlymphödem nach Brustkrebs. Sie erlaubt keine entsprechende Aussage für andere Formen oder Körperregionen.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/29520533/" target="_blank" rel="noopener">Acupuncture for breast cancer-related lymphedema: a randomized controlled trial. Breast cancer research and treatment, 2018. PMID 29520533. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/lymphoedema/treatment/" target="_blank" rel="noopener">NHS: Lymphoedema, treatment (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/lymphoedem/', label: 'Lymphödem', cat: 'Beschwerde' },
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/', label: 'Akupunktur nach Lymphknotenentfernung', cat: 'Frage' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-post-zoster-neuralgie',
+    title: 'Akupunktur bei Post-Zoster-Neuralgie',
+    metaDesc: 'Akupunktur bei Nervenschmerz nach Gürtelrose: Was eine neue Elektroakupunkturstudie zeigt und warum die Ergebnisse nicht für jede Nadelmethode gelten.',
+    region: 'Schweizweit',
+    excerpt: 'Wenn nach Gürtelrose Nervenschmerzen bleiben, kann eine zusätzliche Behandlung interessant sein. Eine grössere neuere Studie zeigt einen Vorteil für Elektroakupunktur, aber mit wichtigen Grenzen.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Post-Zoster-Neuralgie: Neue Daten richtig einordnen',
+    lead: 'Wenn nach Gürtelrose Nervenschmerzen bleiben, kann eine zusätzliche Behandlung interessant sein. Eine grössere neuere Studie zeigt einen Vorteil für Elektroakupunktur, aber mit wichtigen Grenzen.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Dieser Artikel betrifft die Zeit nach der Gürtelrose</h2>
+<p>Eine Post-Zoster-Neuralgie bezeichnet anhaltende Nervenschmerzen nach einer Gürtelrose. Sie ist eine andere Behandlungsfrage als ein neuer Ausschlag oder die akute Infektion. Die Seite <a href="/beschwerden/guertelrose/">Gürtelrose und Nervenschmerzen</a> ordnet das Beschwerdebild ein.</p>
+<p>Bei fortbestehenden Schmerzen ist eine ärztliche Schmerzbehandlung sinnvoll. Dafür stehen unterschiedliche Medikamente und weitere Möglichkeiten zur Verfügung. Eine ergänzende Methode sollte diesen Plan nicht eigenständig ersetzen.</p>
+<h2>Was die grössere Studie von 2026 fand</h2>
+<p>An sieben chinesischen Kliniken wurden 448 Menschen zwischen 45 und 75 Jahren mit mässigen bis starken Schmerzen auf Elektro- oder Schein-Elektroakupunktur verteilt. Nach vier Wochen betrug der durchschnittliche zusätzliche Rückgang auf der Schmerzskala 0,53 Punkte. Eine Verringerung um mindestens 30 Prozent erreichten etwa 47 Prozent gegenüber 24 Prozent der Teilnehmenden. Der Vorteil war noch in der vierwöchigen Nachbeobachtung erkennbar.</p>
+<p>Das ist ein positives Ergebnis für das untersuchte Elektroakupunkturprotokoll. Der mittlere Unterschied war zugleich begrenzt. Die deutlichere Besserung bei einem Teil der Gruppe ist keine Garantie für dich, und die kurze Nachbeobachtung beantwortet keine Frage nach dauerhaftem Erfolg.</p>
+<h2>Nicht jede Nadelmethode zeigt dasselbe</h2>
+<p>Eine kleinere randomisierte Untersuchung von 2022 verglich oberflächliches Dry Needling mit einer Scheinbehandlung. Bei den untersuchten Schmerz- und neuropathischen Beschwerden fand sich kein gesicherter Vorteil. Unterschiedliche Techniken, Behandlungsumfänge und Studiengruppen können zu unterschiedlichen Ergebnissen führen. Das positive Elektroakupunkturergebnis darf deshalb nicht zu einem allgemeinen Wirknachweis für jede Form von Akupunktur werden.</p>
+<h2>Was vor einer Ergänzung wichtig ist</h2>
+<p>Besprich, welche Methode angeboten wird und ob sie zur zitierten Forschung passt. Bring die aktuelle Medikamentenliste und bisherige Befunde mit. Bei einer elektrischen Stimulation sind persönliche Sicherheitsfragen zusätzlich zu klären. Aus einer Studie ohne beobachtete schwere Ereignisse entsteht keine allgemeine Freigabe.</p>
+<p>Die Einordnung zu <a href="/wissen/akupunktur-bei-polyneuropathie/">Akupunktur bei Polyneuropathie</a> betrifft andere Ursachen von Nervenschmerzen. Eine ähnliche Schmerzbeschreibung macht die Studien nicht austauschbar.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Wenn du bei ärztlich eingeordneten anhaltenden Schmerzen eine Ergänzung erwägst, kannst du über <a href="/kontakt/">Kontakt</a> anfragen. Kläre zuerst Methode, Verfügbarkeit, Kosten und die Abstimmung mit deiner Schmerzbehandlung. Die Zahl der Termine aus der Studie ist kein persönlicher Behandlungsplan.</p>
+<h2>Häufige Fragen</h2>
+<h3>Ist der Nutzen gross?
+In der grösseren Studie war der mittlere zusätzliche Schmerzrückgang klein. Zugleich erreichte ein höherer Anteil eine Verringerung um mindestens 30 Prozent. Beides gehört zur Einordnung.</h3>
+<h3>Gilt das auch für normale manuelle Akupunktur?
+Nicht automatisch. Die positive Studie untersuchte Elektroakupunktur; eine kleinere Untersuchung zu oberflächlichem Dry Needling war nicht positiv.</h3>
+<h3>Behandelt das eine neue Gürtelrose?
+Darum geht es hier nicht. Der Artikel betrifft anhaltenden Nervenschmerz nach der Infektion und ersetzt keine Akutbehandlung.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/42189557/" target="_blank" rel="noopener">Effect of Electroacupuncture on Postherpetic Neuralgia: A Randomized Clinical Trial. JAMA neurology, 2026. PMID 42189557. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/35111318/" target="_blank" rel="noopener">Acupuncture (superficial dry-needling) as a treatment for chronic postherpetic neuralgia - a randomized clinical trial. British journal of pain, 2022. PMID 35111318. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/conditions/post-herpetic-neuralgia/" target="_blank" rel="noopener">NHS: Post-herpetic neuralgia (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/beschwerden/guertelrose/', label: 'Gürtelrose und Nervenschmerzen', cat: 'Beschwerde' },
+      { href: '/wissen/akupunktur-bei-polyneuropathie/', label: 'Akupunktur bei Polyneuropathie', cat: 'Wissen' },
+    ],
+  },
+  {
+    slug: 'akupunktur-bei-schmerzen-nach-operation',
+    title: 'Akupunktur bei Schmerzen nach einer OP',
+    metaDesc: 'Akupunktur gegen akute Schmerzen nach einer Operation: Was Übersichten zeigen, wie sich Verfahren unterscheiden und warum das Operationsteam zuständig bleibt.',
+    region: 'Schweizweit',
+    excerpt: 'Zusätzliche Schmerzlinderung nach einer Operation klingt sinnvoll. Die Forschung betrifft aber häufig eine geplante Behandlung rund um den Eingriff im medizinisch überwachten Umfeld, keine pauschale Empfehlung für spätere Praxistermine.',
+    category: 'Beschwerden verstehen',
+    h1: 'Akupunktur bei Schmerzen nach einer Operation',
+    lead: 'Zusätzliche Schmerzlinderung nach einer Operation klingt sinnvoll. Die Forschung betrifft aber häufig eine geplante Behandlung rund um den Eingriff im medizinisch überwachten Umfeld, keine pauschale Empfehlung für spätere Praxistermine.',
+    readingTime: '3 Min.',
+    ctaTitle: 'Ergänzende Akupunkturberatung anfragen',
+    ctaText: 'Nenne deine Diagnose, die laufende Behandlung und das Ziel der Beratung. Wir klären, welche Fachperson infrage kommt. Bei neuen oder unklaren Beschwerden hat die ärztliche Abklärung Vorrang.',
+    ctaLabel: 'Anfrage senden',
+    ctaHref: '/kontakt/',
+    author: REDAKTION,
+    ...DATEN_C,
+    bodyHtml: `<h2>Akute Schmerzlinderung ist eine eigene Frage</h2>
+<p>Nach einer Operation sollen Schmerzen so behandelt werden, dass du dich erholen und den vereinbarten Aufbau beginnen kannst. Informiere das zuständige Team über Schmerzen, statt notwendige Schmerzmittel aus Sorge oder Hoffnung auf eine andere Methode zurückzuhalten. Die postoperative Versorgung und Entlassungsanweisungen bleiben die Grundlage.</p>
+<p>Dieser Artikel beurteilt, ob Akupunktur zusätzlich akute Schmerzen lindern kann. Wann sie nach einem bestimmten Eingriff für dich vertretbar wäre, erklärt die separate Frage <a href="/gesundheitsbibliothek/fragen/akupunktur-nach-operation/">Akupunktur nach einer Operation</a>.</p>
+<h2>Was neuere Übersichten zeigen</h2>
+<p>Eine 2025 veröffentlichte Übersicht zu manueller Akupunktur nach Bauchoperationen schloss acht Studien mit 551 Teilnehmenden ein. Mehrere Ergebnisse fielen positiv aus. Wegen erheblicher Unterschiede und Verzerrungsrisiken war jedoch keine gemeinsame Metaanalyse möglich. Nur zwei Studien dokumentierten Sicherheitsdaten ausreichend. Ein eindeutiger Wirksamkeitsnachweis blieb offen.</p>
+<p>Eine andere Übersicht von 2025 mit 25 Studien fand im Mittel weniger Schmerzen und einen geringeren Bedarf an Schmerzmitteln. Für den Medikamentenverbrauch unterschieden sich die Ergebnisse stark. Die zusammengefassten Befunde sind daher kein Versprechen, dass eine bestimmte Nadelmethode bei jeder Operation denselben Effekt hat.</p>
+<h2>Elektrische Hautstimulation ist keine Nadelakupunktur</h2>
+<p>Eine ältere Übersicht von 2016 trennte verschiedene Verfahren. Ein geringerer Opioidbedarf am ersten Tag zeigte sich insbesondere bei elektrischer Stimulation über die Haut. Für manuelle oder Elektroakupunktur war dieser Medikamentenvorteil in der Untergruppenanalyse nicht gesichert. Solche Ergebnisse dürfen nicht zu der Aussage verkürzt werden, gewöhnliche Nadeln würden zuverlässig Schmerzmittel einsparen.</p>
+<h2>Was du mit dem Operationsteam klären solltest</h2>
+<p>Frage, ob in deinem Behandlungskontext überhaupt eine passende ergänzende Methode vorgesehen ist. Studienbehandlungen rund um eine Operation lassen sich nicht automatisch auf einen späteren ambulanten Termin übertragen. Art des Eingriffs, laufende Medikamente und der aktuelle Verlauf gehören in die Entscheidung.</p>
+<p>Ein ungeklärter oder zunehmender Schmerz ist kein Anlass, zunächst nur eine alternative Behandlung zu buchen. Halte dich an die medizinischen Kontakt- und Notfallhinweise deiner Entlassung. Auch die Frage nach Rehabilitation oder <a href="/wissen/akupunktur-oder-physiotherapie/">Physiotherapie im Vergleich mit Akupunktur</a> ist von der unmittelbaren Akutversorgung zu trennen.</p>
+<h2>Dein nächster Schritt</h2>
+<p>Besprich die Möglichkeit zuerst mit dem zuständigen Operations- oder Schmerzteam. Wenn dieses eine ergänzende ambulante Beratung für vertretbar hält, kannst du über <a href="/kontakt/">Kontakt</a> nach Verfügbarkeit fragen. Damit ist weder eine perioperative Leistung von TCM.ch zugesagt noch eine Freigabe für deinen Eingriff verbunden.</p>
+<h2>Häufige Fragen</h2>
+<h3>Kann Akupunktur Schmerzmittel nach der OP ersetzen?
+Die Forschung untersucht überwiegend Ergänzungen. Sie rechtfertigt keinen eigenständigen Verzicht auf den vereinbarten Schmerzplan.</h3>
+<h3>Wann darf ich nach der Operation anfangen?
+Das hängt vom Eingriff und deinem Verlauf ab. Diese Sicherheitsfrage gehört in die Abstimmung mit dem Operationsteam und wird im verlinkten Fragenartikel behandelt.</h3>
+<h3>Belegen Studien zu Hautstrom die Wirkung von Nadeln?
+Nein. Nicht invasive elektrische Hautstimulation und Nadelverfahren sind unterschiedliche Interventionen und müssen getrennt beurteilt werden.</h3>
+<h2>Quellen</h2>
+<ul>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39388100/" target="_blank" rel="noopener">Manual Acupuncture for Postoperative Pain and Recovery after Abdominal Surgeries: A Systematic Review. Journal of integrative and complementary medicine, 2025. PMID 39388100. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/39814622/" target="_blank" rel="noopener">Efficacy of Acupuncture in Postoperative Pain-Relieving: A Systematic Review and Meta-Analysis. Pain management nursing : official journal of the American Society of Pain Management Nurses, 2025. PMID 39814622. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/26959661/" target="_blank" rel="noopener">The Efficacy of Acupuncture in Post-Operative Pain Management: A Systematic Review and Meta-Analysis. PloS one, 2016. PMID 26959661. (PubMed-Abstract vollständig gelesen, kein Volltext)</a></li>
+<li><a href="https://www.nhs.uk/tests-and-treatments/having-surgery/afterwards/" target="_blank" rel="noopener">NHS: After surgery (Patienteninformation, Volltext)</a></li>
+<li><a href="https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety" target="_blank" rel="noopener">NCCIH: Acupuncture, effectiveness and safety (Patienteninformation, Volltext)</a></li>
+</ul>`,
+    faqs: [],
+    related: [
+      { href: '/gesundheitsbibliothek/fragen/akupunktur-nach-operation/', label: 'Akupunktur nach einer Operation', cat: 'Frage' },
+      { href: '/wissen/akupunktur-oder-physiotherapie/', label: 'Akupunktur oder Physiotherapie', cat: 'Wissen' },
     ],
   },
 ];
