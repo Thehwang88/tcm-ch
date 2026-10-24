@@ -369,7 +369,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Dry Needling richtet sich typischerweise gezielt auf myofasziale Triggerpunkte. Akupunktur verwendet ein breiteres Punkt- und Behandlungskonzept.</p>
 <p>Welche Methode sinnvoller ist, hängt vom Befund ab.</p>
 <h2>Wann Akupunktur nicht ausreicht</h2>
-<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden.</p>
+<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden. Wenn eine Stosswellentherapie als Alternative im Raum steht, ordnet <a href="/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/">Akupunktur oder Stosswellentherapie beim Tennisellenbogen</a> den einzigen direkten Vergleich ein.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Wir definieren vorab konkrete Kriterien: Schmerz beim Greifen, Belastbarkeit im Beruf oder Sport und Druckempfindlichkeit.</p>
 <p>Nach einem begrenzten Behandlungsabschnitt wird entschieden, ob eine relevante Verbesserung vorliegt.</p>
@@ -1165,7 +1165,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h3>Ist Akupunktur bei Reizblase zuverlässig wirksam?</h3>
 <p>Das lässt sich nach der bisherigen Forschung nicht sicher sagen. Ein möglicher Nutzen bleibt individuell und unsicher.</p>
 <h3>Gilt das auch für jede Inkontinenz?</h3>
-<p>Nein. Überaktive Blase und beispielsweise Belastungsinkontinenz sind unterschiedliche Situationen und dürfen nicht gleichgesetzt werden.</p>
+<p>Nein. Überaktive Blase und beispielsweise Belastungsinkontinenz sind unterschiedliche Situationen und dürfen nicht gleichgesetzt werden. Die Studienlage zur Belastungsinkontinenz ordnet der Artikel <a href="/wissen/akupunktur-bei-belastungsinkontinenz/">Akupunktur bei Belastungsinkontinenz</a> gesondert ein.</p>
 <h3>Wann sollte ich den Versuch beenden?</h3>
 <p>Wenn der vereinbarte Prüfzeitraum keinen relevanten Nutzen zeigt oder Beschwerden zunehmen, wird der Plan neu bewertet.</p>
 <h2>Quellen</h2>
