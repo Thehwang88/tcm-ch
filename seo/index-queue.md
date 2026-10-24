@@ -30,6 +30,18 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-bei-belastungsinkontinenz/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-rhizarthrose/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-vulvodynie/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-gastroparese/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-crps/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-erektiler-dysfunktion/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-bettnaessen/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/schroepfen-oder-massage/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-migraene/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-neurodermitis/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
@@ -497,6 +509,7 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/beschwerden/burning-mouth-syndrom/ — 18.10.2026 (Beschwerden Welle 5)
 
 ## Geplant (noch nicht live)
+
 
 
 

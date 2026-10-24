@@ -814,6 +814,19 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/': 'Lymphknotenentfernung Wächterlymphknoten Achsel Leiste betroffene Seite Nadeln Akupunktur Sicherheit',
   '/gesundheitsbibliothek/fragen/moxibustion-sicherheit/': 'Moxibustion Sicherheit Nebenwirkungen Verbrennung Rauch Moxa Risiken',
   '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/': 'Kräuter Immunsuppressiva Tacrolimus Ciclosporin Transplantation Wechselwirkung',
+  // Artikelpaket 24.10.2026 (Suchhilfe, keine Ownership)
+  '/wissen/akupunktur-bei-belastungsinkontinenz/': 'akupunktur belastungsinkontinenz stressinkontinenz elektroakupunktur urinverlust husten niesen',
+  '/wissen/akupunktur-bei-rhizarthrose/': 'akupunktur rhizarthrose daumensattelgelenk daumenarthrose daumenschmerzen',
+  '/wissen/akupunktur-bei-vulvodynie/': 'akupunktur vulvodynie vulvaschmerzen',
+  '/wissen/akupunktur-bei-gastroparese/': 'akupunktur gastroparese magenlähmung diabetische gastroparese',
+  '/wissen/akupunktur-bei-crps/': 'akupunktur crps morbus sudeck komplexes regionales schmerzsyndrom',
+  '/wissen/akupunktur-bei-erektiler-dysfunktion/': 'akupunktur erektile dysfunktion erektionsstörungen potenzprobleme',
+  '/wissen/akupunktur-bei-bettnaessen/': 'akupunktur bettnässen enuresis kinder laserakupunktur',
+  '/wissen/schroepfen-oder-massage/': 'Schröpfen oder Massage Vergleich Unterdruck Verspannungen',
+  '/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/': 'Akupunktur oder Stosswellentherapie Stoßwelle ESWT Tennisarm Tennisellenbogen Vergleich',
+  '/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/': 'Blutspende Blut spenden nach Akupunktur Wartefrist SRK',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/': 'Kräuter Leber Leberschaden He Shou Wu Polygonum Leberwerte TCM',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/': 'Kräuter Bluthochdruck Süssholz Lakritz Gan Cao Blutdruck TCM Sicherheit',
   // Neun-Artikel-Paket 21.10.2026 (Suchhilfe, keine Ownership)
   '/wissen/chinesische-kraeuter-bei-migraene/': 'chinesische kräuter migräne kräutermedizin kräutertherapie vorbeugung',
   '/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/': 'chinesische kräuter wechseljahre wechseljahresbeschwerden kräutermedizin menopausale beschwerden',
@@ -973,6 +986,9 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Akupunktur oder Osteopathie', u: '/wissen/akupunktur-oder-osteopathie/' },
     { t: 'Akupunktur oder Schröpfen', u: '/wissen/akupunktur-oder-schroepfen/' },
     { t: 'Tuina oder Physiotherapie', u: '/wissen/tuina-oder-physiotherapie/' },
+    // Artikelpaket 24.10.2026: Methodenvergleiche
+    { t: 'Schröpfen oder Massage', u: '/wissen/schroepfen-oder-massage/' },
+    { t: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen', u: '/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/' },
   ];
   for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).

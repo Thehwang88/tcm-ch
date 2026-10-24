@@ -17,6 +17,21 @@ import path from 'path';
 const DIST = 'dist';
 const OUT = 'seo/health-library-audit.json';
 
+// parseLine: CSV-Zeile -> Zellen; Rueckgabe null bei unbalancierten Quotes (= Indiz fuer
+// Multiline-Feld). Genutzt von Serien- und Ownership-Gate.
+function parseLine(line) {
+  const out = []; let cur = ''; let q = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (q) { if (ch === '"') { if (line[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ',') { out.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  if (q) return null; // unbalanciert -> Multiline-Feld -> unsupported
+  out.push(cur); return out;
+}
+
 // Entity-Klassifikation über URL-Präfix (URLs sind die stabile Wahrheit, nicht Dateien).
 function classify(url) {
   if (url === '/gesundheitsbibliothek/') return 'library_hub';
@@ -233,10 +248,29 @@ console.log('  ->', OUT);
   const regSlugs = [...reg.matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map((m) => m[1]);
   const extraBlock = reg.split('akupunkturSerieSlugs')[1] ?? '';
   const extraSlugs = [...extraBlock.matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]);
-  const serie = [...regSlugs, ...extraSlugs];
-  // A: Slug-Dups innerhalb der Serie
+  // Kohorten-Dateien (24.10.2026): eigene Datei, deren <x>SerieSlugs-Export per Spread in
+  // akupunkturSerieSlugs steht. Slugs = Eintraege mit dem startsWith-Praefix des Exports.
+  // Gleiche Pruefungen wie die Registry, Inbound/Map/Condition-Link wie Cohort 01.
+  const cohortSrc = [];
+  const cohortSlugs = [];
+  for (const m of reg.matchAll(/^import \{ (\w+SerieSlugs) \} from '\.\/([\w-]+)';$/gm)) {
+    if (!extraBlock.includes(`...${m[1]},`)) continue;
+    const src = fs.readFileSync(`src/data/${m[2]}.ts`, 'utf8');
+    const pre = (src.match(new RegExp(`export const ${m[1]}[^\\n]*startsWith\\('([a-z0-9-]+)'\\)`)) || [])[1];
+    if (!pre) { errs.push(`Serie: ${m[1]} in ${m[2]}.ts nicht auswertbar (kein startsWith-Filter)`); continue; }
+    cohortSrc.push(src);
+    cohortSlugs.push(...[...src.matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map((x) => x[1]).filter((x) => x.startsWith(pre)));
+  }
+  const serie = [...regSlugs, ...cohortSlugs, ...extraSlugs];
+  // A: Slug-Dups innerhalb der Serie und ueber alle Wissen-Datendateien (ein doppelter
+  //    Slug im wissen-Array erzeugt still nur eine Route)
   const seen = new Set();
   for (const s of serie) { if (seen.has(s)) errs.push(`Serie: Slug doppelt: ${s}`); seen.add(s); }
+  const wissenSlugCount = new Map();
+  for (const f of fs.readdirSync('src/data').filter((x) => /^wissen.*\.ts$/.test(x))) {
+    for (const m of fs.readFileSync(`src/data/${f}`, 'utf8').matchAll(/^\s+slug: '([a-z0-9-]+)',$/gm)) wissenSlugCount.set(m[1], (wissenSlugCount.get(m[1]) ?? 0) + 1);
+  }
+  for (const s of seen) if ((wissenSlugCount.get(s) ?? 0) > 1) errs.push(`Serie: Slug mehrfach in src/data/wissen*.ts: ${s}`);
   // B: Route existiert + nicht auf der Kill-Liste (410)
   const kill = new Set([...fs.readFileSync('public/wissen-kill.js', 'utf8').matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]));
   for (const s of seen) {
@@ -253,7 +287,7 @@ console.log('  ->', OUT);
     else if (d) byDesc.set(d, url);
   }
   // D: related-Ziele der Registry muessen gebaute Routen sein
-  for (const m of reg.matchAll(/href: '(\/[^']+)'/g)) {
+  for (const m of [reg, ...cohortSrc].join('\n').matchAll(/href: '(\/[^']+)'/g)) {
     if (!pages.has(m[1])) errs.push(`Serie: related-Ziel fehlt: ${m[1]}`);
   }
   // E: Inbound-Pflicht Cohort 01 (mind. 1 Beschwerden-Leaf verlinkt den Artikel);
@@ -265,14 +299,26 @@ console.log('  ->', OUT);
     'akupunktur-bei-kieferschmerzen', 'akupunktur-bei-reizdarm',
     'akupunktur-bei-karpaltunnelsyndrom', 'akupunktur-bei-uebelkeit',
   ]);
+  for (const s of cohortSlugs) COHORT01.add(s);
   const mapCsv = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
+  const mapRows = mapCsv.split(/\r?\n/).slice(1).map(parseLine).filter((c) => c && c[0]);
+  const kwSet = (c) => [c[5], ...(c[6] ?? '').split(';')].map((x) => x.trim().toLowerCase()).filter(Boolean);
   for (const s of seen) {
     const u = `/wissen/${s}/`;
     if (!pages.has(u)) continue; // schon oben gemeldet
     const inb = [...(inbound.get(u) ?? [])];
     if (COHORT01.has(s)) {
       if (!inb.some((l) => l.startsWith('/beschwerden/'))) errs.push(`Serie: kein Beschwerden-Inbound: ${u}`);
-      if (!mapCsv.includes(u)) errs.push(`Serie: fehlt in master-keyword-url-map.csv: ${u}`);
+      if (![...pages.get(u).links].some((l) => l.startsWith('/beschwerden/'))) errs.push(`Serie: kein Condition-Link (Artikel -> /beschwerden/): ${u}`);
+      const row = mapRows.find((c) => c[0] === u);
+      if (!row) errs.push(`Serie: fehlt in master-keyword-url-map.csv: ${u}`);
+      else {
+        // F: konkurrierende Aliasse: Primaer-/Sekundaerkeywords der Serienzeile in keiner anderen Map-Zeile
+        for (const kw of kwSet(row)) {
+          const other = mapRows.find((c) => c[0] !== u && kwSet(c).includes(kw));
+          if (other) errs.push(`Serie: Keyword «${kw}» von ${u} konkurriert mit ${other[0]}`);
+        }
+      }
     } else if (!inb.some((l) => classify(l))) {
       errs.push(`Serie: kein Health-Content-Inbound: ${u}`);
     }
@@ -338,19 +384,6 @@ console.log('  ->', OUT);
   //    eines quoted Felds ist nicht unterstuetzt und muss laut scheitern statt
   //    Datensaetze still zu verschlucken.
   const csvText = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
-  // parseLine: Rueckgabe null bei unbalancierten Quotes (= Indiz fuer Multiline-Feld).
-  const parseLine = (line) => {
-    const out = []; let cur = ''; let q = false;
-    for (let i = 0; i < line.length; i++) {
-      const ch = line[i];
-      if (q) { if (ch === '"') { if (line[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += ch; }
-      else if (ch === '"') q = true;
-      else if (ch === ',') { out.push(cur); cur = ''; }
-      else cur += ch;
-    }
-    if (q) return null; // unbalanciert -> Multiline-Feld -> unsupported
-    out.push(cur); return out;
-  };
   // Selbsttest des CSV-Parsers (Fixtures):
   {
     const ok = parseLine('/u/,a,"x, y",b');

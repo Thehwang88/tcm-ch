@@ -109,6 +109,9 @@ export const PUBLISHED_ENTSCHEIDUNGEN_2026_10: string | undefined = '2026-10-21'
 // Neun Wissen-Artikel (Textpaket 21.10.2026: sechs Kräuter-Entscheidungen, drei Akupunktur-bei):
 // Draft, bis zum Release undefined => keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: Datum setzen.
 export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
+// Artikelpaket 24.10.2026 (9 Wissen-Artikel, 3 Fragen): Draft, bis zum Release undefined => keine
+// Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
+export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = '2026-10-24';
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -299,7 +302,7 @@ export const befundeWerte: BefundWert[] = [
 <li><strong>Bilirubin:</strong> Entsteht beim Abbau roter Blutkörperchen und wird über Leber und Galle verarbeitet; die Einzelheiten erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/bilirubin-erhoeht/">Bilirubin erhöht</a>.</li>
 </ul>
 <h2>Warum können Leberwerte erhöht sein?</h2>
-<p>Mögliche Ursachen reichen von vorübergehenden Veränderungen bis zu Fettleber, Medikamentenwirkungen, Alkohol, Virusinfektionen, Erkrankungen der Gallenwege und anderen Lebererkrankungen. Auch intensive Muskelbelastung kann einzelne Werte beeinflussen.</p>
+<p>Mögliche Ursachen reichen von vorübergehenden Veränderungen bis zu Fettleber, Medikamentenwirkungen, Alkohol, Virusinfektionen, Erkrankungen der Gallenwege und anderen Lebererkrankungen. Auch intensive Muskelbelastung kann einzelne Werte beeinflussen. Zu den Medikamentenwirkungen zählen auch pflanzliche Präparate; was über chinesische Kräuter bekannt ist, ordnet <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/">Können TCM-Kräuter die Leber schädigen?</a> ein.</p>
 <p>Welche Ursache wahrscheinlich ist, lässt sich nicht aus einem einzelnen Laborwert ableiten.</p>`,
     notProofHtml: `<p>Ein erhöhter Laborwert zeigt nicht automatisch, wie gut die Leber insgesamt funktioniert und beweist keine bestimmte Erkrankung. Umgekehrt können manche Lebererkrankungen bestehen, obwohl einzelne Werte nur gering verändert sind.</p>`,
     followUpHtml: `<p>Je nach Befund können Werte kontrolliert, Medikamente und Risikofaktoren überprüft oder weitere Blutuntersuchungen durchgeführt werden. Bei bestimmten Konstellationen kommen Ultraschall oder andere Untersuchungen hinzu.</p>
@@ -3446,7 +3449,7 @@ export const befundeWerte: BefundWert[] = [
     overlapNotes: 'Messwert bei allen Geschlechtern; keine eigene Hypogonadismus-/PCOS-/Erektionsbehandlungsseite. Geprüft 14.10.2026 gegen Map und Guards: kein bestehender Owner.',
     suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Andrologie)',
     shortAnswerHtml: `<p>Ein niedriger Testosteron-Wert allein reicht bei Männern nicht für die Diagnose eines Testosteronmangels. Dazu gehören passende Beschwerden und wiederholt eindeutig niedrige Messungen unter geeigneten Bedingungen. Ein erhöhter Befund wird ebenfalls im Zusammenhang mit Medikamenten und der individuellen Situation beurteilt.</p>`,
-    bodyHtml: `<p>Testosteron beeinflusst unter anderem Sexualfunktion, Knochen und Muskulatur. Es kommt auch bei Frauen vor, normalerweise in geringeren Mengen. Laborberichte können Gesamt-Testosteron und Angaben zum freien oder verfügbaren Anteil enthalten. Diese Werte beantworten nicht genau dieselbe Frage.</p>
+    bodyHtml: `<p>Testosteron beeinflusst unter anderem Sexualfunktion, Knochen und Muskulatur. Es kommt auch bei Frauen vor, normalerweise in geringeren Mengen. Laborberichte können Gesamt-Testosteron und Angaben zum freien oder verfügbaren Anteil enthalten. Diese Werte beantworten nicht genau dieselbe Frage. Erektionsstörungen haben viele Ursachen, nicht nur hormonelle; was eine ergänzende Akupunktur dabei leisten kann und was nicht, ordnet <a href="/wissen/akupunktur-bei-erektiler-dysfunktion/">Akupunktur bei Erektionsstörungen</a> ein.</p>
 <p>Bei Männern mit Verdacht auf einen Mangel empfehlen Fachleitlinien eine morgendliche Messung und bei auffälligem Ergebnis eine Bestätigung. Nicht jede einzelne niedrige Zahl ist eine dauerhafte hormonelle Störung. Für Frauen gelten andere Fragestellungen und Referenzbereiche; eine Männer-Normalwerttabelle hilft dort nicht.</p>`,
     contextHtml: `<p>Akute Erkrankungen, Schlaf, Medikamente und die Bindung des Hormons im Blut können die Interpretation verändern. Zur weiteren Abklärung können zusätzliche Hormone und eine Untersuchung nötig sein. Sag auch, ob du Testosteron, anabole Substanzen oder frei gekaufte «Booster» verwendest.</p>
 <p>Bei <a href="/beschwerden/pcos/">PCOS</a> können Androgene Teil der Abklärung sein, dazu kann auch <a href="/gesundheitsbibliothek/befunde-werte/dheas-wert/">DHEA-S</a> aus den Nebennieren gehören. Bei <a href="/beschwerden/erektile-dysfunktion/">erektiler Dysfunktion</a> kommen hingegen viele hormonelle und nicht hormonelle Ursachen infrage. Der Laborbefund sollte nicht vorschnell zum einzigen Erklärungsmodell werden.</p>`,
