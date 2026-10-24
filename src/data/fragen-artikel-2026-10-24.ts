@@ -14,14 +14,14 @@ export const fragenArtikel24: Frage[] = [
     slug: 'blutspenden-nach-akupunktur',
     question: 'Darf ich nach einer Akupunktur Blut spenden?',
     title: 'Blutspenden nach Akupunktur: Was gilt in der Schweiz?',
-    metaDesc: 'Blut spenden nach Akupunktur: Die Schweizer Kriterienliste nennt eine Wartefrist von vier Monaten. Was du dem Blutspendedienst angibst und wer über Ausnahmen entscheidet.',
+    metaDesc: 'Blut spenden nach Akupunktur: Blutspende SRK Schweiz nennt eine Wartefrist von vier Monaten. Was du dem Blutspendedienst angibst und wer über Ausnahmen entscheidet.',
     deck: 'Wer regelmässig Blut spendet, sollte eine Akupunktur mit dem Spendetermin abstimmen. Über die Spendetauglichkeit entscheidet der Blutspendedienst, nicht die Praxis.',
     kurz: '<p>Die öffentliche Kriterienliste von Blutspende SRK Schweiz nennt nach einer Akupunktur-Behandlung eine Wartefrist von vier Monaten. Begründet wird sie damit, dass eine Entzündung oder Infektion ausgeschlossen werden soll. Ob in deinem Fall etwas anderes gilt, entscheidet dein regionaler Blutspendedienst. Plane deshalb Spende und Akupunktur so, dass du die Frage vorher klären kannst.</p>',
     bodyHtml: `<h2>Was die Schweizer Kriterienliste sagt</h2>
-<p>Blutspende SRK Schweiz führt auf ihrer Website eine Liste von Gründen, die eine Spende vorübergehend ausschliessen. Dort steht: Wer in den letzten vier Monaten ein neues Piercing oder eine Tätowierung bekommen oder eine Akupunktur-Behandlung erhalten hat, muss eine Wartefrist von vier Monaten einhalten, damit eine Entzündung oder Infektion ausgeschlossen werden kann.</p>
-<p>Diese Frist ist eine Vorsichtsregel für die Sicherheit der Empfängerinnen und Empfänger. Sie bedeutet nicht, dass nach einer Akupunktur eine Infektion vermutet wird.</p>
+<p>Blutspende SRK Schweiz führt auf ihrer Website eine Liste von Gründen, die eine Spende vorübergehend ausschliessen. Dort steht als grundsätzlicher, vorübergehender Ausschlussgrund: Wer in den letzten vier Monaten ein neues Piercing oder eine Tätowierung bekommen oder eine Akupunktur-Behandlung erhalten hat, für den gilt eine Wartefrist von vier Monaten, damit eine Entzündung oder Infektion ausgeschlossen werden kann (Stand der Abfrage: 24. Oktober 2026).</p>
+<p>Diese Frist ist eine Vorsichtsregel. Sie bedeutet nicht, dass nach einer Akupunktur eine Infektion vermutet wird.</p>
 <h2>Wer über Ausnahmen entscheidet</h2>
-<p>Ob es Ausnahmen gibt, etwa je nach Art der Behandlung oder der behandelnden Fachperson, legt die öffentliche Liste nicht dar. Die verbindlichen Vorschriften führt Blutspende SRK Schweiz in einer eigenen Dokumentensammlung. Massgebend ist die Auskunft deines regionalen Blutspendedienstes. Frag dort nach, bevor du eine Spende planst.</p>
+<p>Ob es Ausnahmen gibt, etwa je nach Art der Behandlung oder der behandelnden Fachperson, legt die öffentliche Liste nicht dar. Ausführlichere Vorschriften veröffentlicht Blutspende SRK Schweiz in einer eigenen Dokumentensammlung; diese Seite stützt sich nur auf die öffentliche Liste. Über deine Spendetauglichkeit entscheidet dein regionaler Blutspendedienst. Frag dort nach, bevor du eine Spende planst.</p>
 <p>Regeln aus anderen Ländern lassen sich nicht auf die Schweiz übertragen. Was in Deutschland, Grossbritannien oder anderswo gilt, ist für deine Spende hier nicht massgebend.</p>
 <h2>Was du beim Blutspendedienst angeben solltest</h2>
 <ul>
@@ -34,7 +34,7 @@ export const fragenArtikel24: Frage[] = [
 <p>Wenn du regelmässig spendest und eine Akupunktur-Serie beginnen möchtest, sprich die Reihenfolge vorher ab. Eine Spende vor Beginn der Behandlung lässt sich oft leichter einplanen als eine Pause mitten in einer Serie. Wann genau du wieder spenden darfst, sagt dir der Blutspendedienst.</p>
 <h2>Häufige Fragen</h2>
 <h3>Gelten sterile Einmalnadeln automatisch als Ausnahme?</h3>
-<p>Nein, nicht automatisch. Die öffentliche Kriterienliste nennt die Wartefrist ohne eine solche Ausnahme. Ob für dich etwas anderes gilt, entscheidet der Blutspendedienst.</p>
+<p>Nein, nicht automatisch. Die öffentliche Liste von Blutspende SRK Schweiz nennt dazu keine Ausnahme. Ob für dich etwas anderes gilt, entscheidet der Blutspendedienst.</p>
 <h3>Was muss ich beim Blutspendedienst angeben?</h3>
 <p>Datum und Art der Behandlung. Beantworte die Fragen im Spendefragebogen vollständig, auch wenn die Behandlung harmlos verlaufen ist.</p>
 <h3>Gilt die Regel überall gleich?</h3>
