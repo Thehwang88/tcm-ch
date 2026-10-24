@@ -369,7 +369,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Dry Needling richtet sich typischerweise gezielt auf myofasziale Triggerpunkte. Akupunktur verwendet ein breiteres Punkt- und Behandlungskonzept.</p>
 <p>Welche Methode sinnvoller ist, hängt vom Befund ab.</p>
 <h2>Wann Akupunktur nicht ausreicht</h2>
-<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden. Wenn eine Stosswellentherapie als Alternative im Raum steht, ordnet <a href="/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/">Akupunktur oder Stosswellentherapie beim Tennisellenbogen</a> den einzigen direkten Vergleich ein.</p>
+<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden. Wenn eine Stosswellentherapie als Alternative im Raum steht, ordnet <a href="/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/">Akupunktur oder Stosswellentherapie beim Tennisellenbogen</a> einen kleinen direkten Vergleich ein.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Wir definieren vorab konkrete Kriterien: Schmerz beim Greifen, Belastbarkeit im Beruf oder Sport und Druckempfindlichkeit.</p>
 <p>Nach einem begrenzten Behandlungsabschnitt wird entschieden, ob eine relevante Verbesserung vorliegt.</p>

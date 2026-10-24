@@ -79,12 +79,12 @@ export const wissenArtikel24: Wissen[] = [
   {
     slug: 'akupunktur-bei-rhizarthrose',
     title: 'Akupunktur bei Rhizarthrose: Studienlage und Grenzen',
-    metaDesc: 'Rhizarthrose: Eine kontrollierte Studie fand keinen Unterschied zwischen echter und Scheinakupunktur. Was das für Schmerzziele, Schiene und Handtherapie heisst.',
+    metaDesc: 'Rhizarthrose: Eine kontrollierte Studie fand keinen statistisch gesicherten Unterschied zwischen echter und Scheinakupunktur. Was das für deine Behandlung heisst.',
     region: 'Schweizweit',
-    excerpt: 'In der einzigen hier ausgewerteten spezifischen Studie zur Rhizarthrose wurden beide Gruppen besser, echte Akupunktur aber nicht mehr als die Scheinbehandlung. Eine realistische Einordnung für deine Entscheidung.',
+    excerpt: 'In der einzigen hier ausgewerteten spezifischen Studie zur Rhizarthrose wurden beide Gruppen besser; ein Vorteil echter Akupunktur gegenüber der Scheinbehandlung war nicht nachweisbar. Eine realistische Einordnung für deine Entscheidung.',
     category: 'Beschwerden verstehen',
     h1: 'Akupunktur bei Rhizarthrose: Hilfe gegen Daumenschmerzen?',
-    lead: 'Deine Rhizarthrose ist diagnostiziert, der Daumen schmerzt beim Greifen, und du überlegst, ob Akupunktur eine Ergänzung sein kann. Die spezifische Studienlage ist dünn und spricht nicht für eine besondere Wirkung der Nadeln. Was du trotzdem wissen solltest.',
+    lead: 'Deine Rhizarthrose ist diagnostiziert, der Daumen schmerzt beim Greifen, und du überlegst, ob Akupunktur eine Ergänzung sein kann. Die spezifische Studienlage ist dünn und belegt keine besondere Wirkung der Nadeln. Was du trotzdem wissen solltest.',
     readingTime: '4 Min.',
     ctaTitle: 'Ergänzende Schmerzbehandlung realistisch besprechen',
     ctaText: 'Nenne deine Diagnose, die laufende Behandlung und welche Griffe im Alltag am meisten schmerzen. Wir besprechen offen, was eine ergänzende Behandlung leisten kann und was nicht.',
@@ -93,13 +93,13 @@ export const wissenArtikel24: Wissen[] = [
     author: REDAKTION,
     ...DATEN_P,
     bodyHtml: `<h2>Kurz gesagt</h2>
-<p>Eine randomisierte Studie mit 70 Menschen verglich echte Akupunktur mit einer Scheinbehandlung, bei der die Nadeln die Haut nicht durchdrangen. Beide Gruppen hatten danach deutlich weniger Schmerzen. Echte Akupunktur schnitt aber nicht besser ab als die Scheinbehandlung. Ein spezifischer Nutzen der Nadeln bei Rhizarthrose ist damit nicht belegt.</p>
+<p>Eine randomisierte Studie mit 70 Menschen verglich echte Akupunktur mit einer Scheinbehandlung, bei der die Nadeln die Haut nicht durchdrangen. Beide Gruppen hatten danach deutlich weniger Schmerzen. Ein statistisch gesicherter Unterschied zwischen echter Akupunktur und Scheinbehandlung fand sich nicht. Ein spezifischer Nutzen der Nadeln bei Rhizarthrose ist damit nicht belegt. Dass beide gleich gut wirken, zeigt die Studie damit aber ebenfalls nicht.</p>
 <p>Der Knorpel im Daumensattelgelenk wächst durch keine dieser Behandlungen nach. Diagnose, Stadium und die Entscheidung über Schiene, Handtherapie, Infiltration oder Operation gehören zur ärztlichen Behandlung; die Grundlagen dazu stehen auf der Seite <a href="/beschwerden/rhizarthrose/">Rhizarthrose</a>.</p>
 <h2>Was die spezifische Studie zeigte</h2>
 <p>Die Studie stammt aus einem britischen Handzentrum und wurde 2020 veröffentlicht. 70 Menschen mit Arthrose des Daumensattelgelenks, die zuvor nie Akupunktur erhalten hatten, wurden zufällig zwei Gruppen zu je 35 Personen zugeteilt. Die eine Gruppe erhielt echte Akupunktur, die andere eine nicht eindringende Scheinnadelung. Die Studie war einfach verblindet, und die Messungen wurden verblindet erhoben.</p>
-<p>Gemessen wurden Schmerzen bei verschiedenen Griffen und Bewegungen sowie die Handfunktion mit einem Fragebogen. Eine Woche nach der Behandlung hatten beide Gruppen statistisch und klinisch deutlich weniger Schmerzen als zu Beginn. Zwischen den Gruppen gab es keinen Unterschied. Die Autorinnen und Autoren folgern, dass die Schmerzlinderung wohl über unspezifische Mechanismen zustande kam.</p>
+<p>Gemessen wurden Schmerzen bei verschiedenen Griffen und Bewegungen sowie die Handfunktion mit einem Fragebogen. Eine Woche nach der Behandlung hatten beide Gruppen statistisch und klinisch deutlich weniger Schmerzen als zu Beginn. Zwischen den Gruppen fand sich kein Unterschied; Zahlen zum Gruppenvergleich nennt die Zusammenfassung nicht. Die Autorinnen und Autoren folgern, dass die Schmerzlinderung möglicherweise über unspezifische Mechanismen zustande kam.</p>
 <h2>Wie du das Ergebnis lesen kannst</h2>
-<p>Dass es dir nach Behandlungen besser geht, kann echt sein. Die Studie spricht nur dagegen, diese Besserung den Nadeln an sich zuzuschreiben. Zuwendung, Erwartung, Ruhephasen für die Hand und der natürliche Verlauf können ebenfalls eine Rolle spielen. Über längere Zeiträume als die ausgewertete Woche nach der Behandlung macht die Zusammenfassung keine Aussage.</p>
+<p>Dass es dir nach Behandlungen besser geht, kann echt sein. Die Studie liefert nur keinen Beleg dafür, diese Besserung den Nadeln an sich zuzuschreiben. Zuwendung, Erwartung, Ruhephasen für die Hand und der natürliche Verlauf können ebenfalls eine Rolle spielen. Über längere Zeiträume als die ausgewertete Woche nach der Behandlung macht die Zusammenfassung keine Aussage.</p>
 <p>Dass Arthroseschmerzen an anderen Gelenken häufiger untersucht wurden, ändert an diesem spezifischen Ergebnis nichts. Ein Befund am Knie lässt sich nicht einfach auf den Daumen übertragen.</p>
 <h2>Was im Behandlungsplan zuerst kommt</h2>
 <p>Nach britischer Patienteninformation können bei Arthrose der Hand schmerzlindernde Gels, eine Schiene zur Entlastung und die Beratung durch Ergotherapie mit Hilfsmitteln für den Alltag helfen. Diese Schritte bespricht deine Ärztin oder die Handtherapie mit dir. Eine ergänzende Behandlung soll diesen Plan nicht ersetzen.</p>
@@ -112,7 +112,7 @@ export const wissenArtikel24: Wissen[] = [
 <h3>Behebt Akupunktur den Verschleiss?</h3>
 <p>Nein. Keine der hier genannten Behandlungen baut Knorpel wieder auf. Ziel einer ergänzenden Behandlung kann höchstens sein, Schmerzen im Alltag zu lindern.</p>
 <h3>Was sagt die spezifische Studie genau?</h3>
-<p>Beide Gruppen hatten nach der Behandlung weniger Schmerzen, echte Akupunktur aber nicht mehr als die Scheinbehandlung. Die Studie war mit 70 Teilnehmenden klein und mass kurz nach der Behandlung.</p>
+<p>Beide Gruppen hatten nach der Behandlung weniger Schmerzen. Ein Vorteil echter Akupunktur gegenüber der Scheinbehandlung war nicht nachweisbar; das ist kein Nachweis, dass beide gleich gut wirken. Die Studie war mit 70 Teilnehmenden klein und mass eine Woche nach der Behandlung.</p>
 <h3>Welche Ziele lassen sich realistisch beobachten?</h3>
 <p>Konkrete Griffe und Tätigkeiten, die dir heute schwerfallen. Schreibe sie vor Beginn auf und vergleiche zum vereinbarten Zeitpunkt.</p>
 <h2>Quellen</h2>
@@ -131,9 +131,9 @@ export const wissenArtikel24: Wissen[] = [
   {
     slug: 'akupunktur-bei-vulvodynie',
     title: 'Akupunktur bei Vulvodynie: Ergänzung mit klaren Grenzen',
-    metaDesc: 'Vulvodynie: Eine doppelblinde Studie fand nach der Behandlung keinen Unterschied zwischen Akupunktur und Placebo. Was die Nachbeobachtung zeigt und was sie nicht beweist.',
+    metaDesc: 'Vulvodynie: Eine doppelblinde Studie fand nach der Behandlung keinen statistisch gesicherten Unterschied zu Placebo. Was die Nachbeobachtung einer Teilgruppe zeigt.',
     region: 'Schweizweit',
-    excerpt: 'Akupunktur wurde bei Vulvodynie in einer doppelblinden Studie geprüft. Direkt nach der Behandlung half sie nicht mehr als Placebo-Nadeln. Was das für eine mögliche Ergänzung im Behandlungsplan heisst.',
+    excerpt: 'Akupunktur wurde bei Vulvodynie in einer doppelblinden Studie geprüft. Direkt nach der Behandlung war kein statistisch gesicherter Unterschied zu Placebo-Nadeln nachweisbar. Was das für eine mögliche Ergänzung im Behandlungsplan heisst.',
     category: 'Beschwerden verstehen',
     h1: 'Akupunktur bei Vulvodynie: Ergänzung mit welchen Grenzen?',
     lead: 'Vulvodynie ist belastend, und oft braucht es mehrere Anläufe, bis eine Behandlung hilft. Wenn du überlegst, ob Akupunktur dazugehören kann, lohnt sich ein genauer Blick auf die Studienlage. Sie ist ehrlicher, als es viele Versprechen sind.',
@@ -145,23 +145,23 @@ export const wissenArtikel24: Wissen[] = [
     author: REDAKTION,
     ...DATEN_P,
     bodyHtml: `<h2>Kurz gesagt</h2>
-<p>In einer doppelblinden Studie mit 89 Frauen gab es direkt nach zehn Behandlungen keinen gesicherten Unterschied zwischen echter Akupunktur und Placebo-Nadeln. Das galt für den Vulvaschmerz und für Schmerzen beim Geschlechtsverkehr. In beiden Gruppen besserten sich die Beschwerden bei mehr als der Hälfte der Teilnehmerinnen.</p>
-<p>Ein Ergebnis aus der Nachbeobachtung deutet darauf hin, dass die Besserung nach echter Akupunktur bei einem Teil der Frauen länger anhielt. Das ist ein Hinweis aus einer Teilgruppe, kein Erfolgsversprechen. Akupunktur kommt deshalb höchstens ergänzend in einem abgestimmten Behandlungsplan infrage. Diagnose und Grundlagen stehen auf der Seite <a href="/beschwerden/vulvodynie/">Vulvodynie</a>.</p>
+<p>In einer doppelblinden Studie mit 89 Frauen gab es direkt nach zehn Behandlungen keinen statistisch gesicherten Unterschied zwischen echter Akupunktur und Placebo-Nadeln. Das galt für den Vulvaschmerz und für Schmerzen beim Geschlechtsverkehr. In beiden Gruppen besserten sich die Beschwerden bei mehr als der Hälfte der Teilnehmerinnen.</p>
+<p>Danach wurden nur die Frauen mit deutlicher Besserung weiter beobachtet. Bei ihnen kehrte der Schmerz nach echter Akupunktur seltener auf den Ausgangswert zurück als nach Placebo. Das ist ein Hinweis aus dieser Teilgruppe, kein Wirksamkeitsnachweis und kein Erfolgsversprechen. Akupunktur kommt deshalb höchstens ergänzend in einem abgestimmten Behandlungsplan infrage. Diagnose und Grundlagen stehen auf der Seite <a href="/beschwerden/vulvodynie/">Vulvodynie</a>.</p>
 <h2>Zuerst die gynäkologische Diagnose</h2>
 <p>Vulvodynie bedeutet Schmerzen an der Vulva, die mindestens drei Monate anhalten, ohne dass sich eine bestimmte Ursache findet. Bevor diese Diagnose steht, werden andere Ursachen ausgeschlossen: Infektionen, Hauterkrankungen wie <a href="/beschwerden/lichen-sclerosus/">Lichen sclerosus</a>, ein <a href="/beschwerden/vaginismus/">Vaginismus</a> oder eine <a href="/beschwerden/pudendusneuralgie/">Pudendusneuralgie</a>. Diese Bilder klingen ähnlich, werden aber unterschiedlich behandelt.</p>
 <h2>Was zur üblichen Behandlung gehört</h2>
 <p>Nach britischer Patienteninformation wird Vulvodynie oft von mehreren Fachpersonen gemeinsam behandelt. Infrage kommen Medikamente, etwa betäubende Cremes oder Tabletten gegen Nervenschmerzen, Beckenbodentherapie, vaginale Trainer, psychologische Unterstützung wie kognitive Verhaltenstherapie oder Sexualtherapie und selten eine Operation. Keine einzelne Behandlung hilft allen. Psychologische Unterstützung ist dabei ein Baustein der Schmerzbehandlung und keine Aussage darüber, dass die Schmerzen eingebildet wären.</p>
 <h2>Was die doppelblinde Studie zeigte</h2>
-<p>Die Studie wurde 2026 im Journal of Pain veröffentlicht. 89 Frauen zwischen 19 und 62 Jahren erhielten zehn Sitzungen nach einem standardisierten Schema mit 13 Nadeln. Die Hälfte erhielt echte Akupunktur, die andere Hälfte Placebo-Nadeln, die die Haut nur berührten. Die Studie war doppelblind angelegt und verwendete dafür spezielle Nadelsysteme. 91 % schlossen die Behandlung ab.</p>
+<p>Die Studie wurde 2026 im Journal of Pain veröffentlicht. 89 Frauen zwischen 19 und 62 Jahren erhielten zehn Sitzungen nach einem standardisierten Schema mit 13 Nadeln. Sie wurden zufällig echter Akupunktur oder Placebo-Nadeln zugeteilt, die die Haut nur berührten. Die Studie war doppelblind angelegt und verwendete dafür spezielle Nadelsysteme. 91 % schlossen die Behandlung ab.</p>
 <p>Nach der zehnten Sitzung lag der Anteil der Frauen mit einer klinisch bedeutsamen Besserung bei 58 % mit Akupunktur und bei 57 % mit Placebo. Beim Vulvaschmerz und bei Schmerzen beim Geschlechtsverkehr fand sich kein signifikanter Unterschied zwischen den Gruppen.</p>
-<p>Die Frauen mit Besserung wurden zwölf Wochen weiter beobachtet. In der Placebogruppe kehrten die Schmerzen häufiger auf den Ausgangswert zurück als in der Akupunkturgruppe. Die Autorinnen und Autoren halten grössere Studien für nötig und vermuten, dass der starke Placeboeffekt der hautberührenden Nadeln die Wirkung unterschätzt haben könnte. Das bleibt eine Vermutung.</p>
+<p>Die Frauen mit Besserung wurden zwölf Wochen weiter beobachtet und hielten wöchentlich fest, wie stark ein Tampon-Test schmerzte. In der Placebogruppe kehrten die Schmerzen häufiger auf den Ausgangswert zurück als in der Akupunkturgruppe. Dieser Vergleich betrifft nur die Frauen mit Besserung, also eine erst nach der Behandlung gebildete Teilgruppe, und nicht mehr die ganze zufällig zugeteilte Studiengruppe. Die Autorinnen und Autoren halten grössere Studien für nötig und vermuten, dass der starke Placeboeffekt der hautberührenden Nadeln die Wirkung unterschätzt haben könnte. Das bleibt eine Vermutung.</p>
 <h2>Was der Vergleich mit Placebo bedeutet</h2>
-<p>Eine Besserung um mehr als die Hälfte in beiden Gruppen zeigt, wie stark Zuwendung, Erwartung und Behandlungsrahmen bei Schmerzen wirken. Für die Frage, ob die Nadeln selbst etwas beitragen, zählt der Unterschied zwischen den Gruppen. Der war direkt nach der Behandlung nicht nachweisbar. Die längere Wirkung bei einem Teil der Frauen ist ein Befund aus einer kleineren Teilgruppe und muss bestätigt werden.</p>
+<p>Eine Besserung um mehr als die Hälfte in beiden Gruppen zeigt, wie stark Zuwendung, Erwartung und Behandlungsrahmen bei Schmerzen wirken. Für die Frage, ob die Nadeln selbst etwas beitragen, zählt der Unterschied zwischen den Gruppen. Der war direkt nach der Behandlung nicht nachweisbar. Dass die Besserung nach echter Akupunktur länger anhielt, ist ein Befund aus dieser kleineren Teilgruppe und muss bestätigt werden.</p>
 <h2>Was vor einer ergänzenden Behandlung zu klären ist</h2>
 <p>Sprich mit deiner Gynäkologin oder deinem Behandlungsteam, bevor du etwas ergänzt, und nenne in der Anfrage, welche Behandlung läuft. Vereinbare ein konkretes Ziel und einen Prüfzeitpunkt. Zu Kosten und Zusatzversicherung: <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Ersetzt Akupunktur die gynäkologische Behandlung?</h3>
-<p>Nein. Die Studie zeigte keinen gesicherten Vorteil gegenüber Placebo direkt nach der Behandlung. Akupunktur kann höchstens zusätzlich und abgestimmt erwogen werden.</p>
+<p>Nein. Die Studie zeigte direkt nach der Behandlung keinen statistisch gesicherten Vorteil gegenüber Placebo. Akupunktur kann höchstens zusätzlich und abgestimmt erwogen werden.</p>
 <h3>Was bedeutet der Vergleich mit Placebo-Nadeln für mich?</h3>
 <p>Dass sich viele Frauen in beiden Gruppen besser fühlten, ist real. Es lässt sich aber nicht allein den Nadeln zuschreiben. Eine Erwartung, die über das Studienergebnis hinausgeht, solltest du nicht haben.</p>
 <h3>Muss die Behandlung im schmerzhaften Bereich erfolgen?</h3>
@@ -466,7 +466,7 @@ export const wissenArtikel24: Wissen[] = [
     title: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen?',
     metaDesc: 'Tennisellenbogen: Was ein kleiner direkter Vergleich von Akupunktur und Stosswellentherapie zeigt und was die Grundlage der Behandlung bleibt.',
     region: 'Schweizweit',
-    excerpt: 'Ein direkter Vergleich mit 34 Personen fand keinen Unterschied zwischen Akupunktur und Stosswellentherapie. Warum das keine Gleichwertigkeit belegt und was für deine Entscheidung zählt.',
+    excerpt: 'Ein direkter Vergleich mit 34 Personen fand keinen statistisch gesicherten Unterschied zwischen Akupunktur und Stosswellentherapie. Warum das keine Gleichwertigkeit belegt und was für deine Entscheidung zählt.',
     category: 'Therapien verstehen',
     h1: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen?',
     lead: 'Dein Tennisellenbogen ist diagnostiziert, die Schmerzen halten an, und dir werden Akupunktur oder Stosswellentherapie genannt. Für keine der beiden Methoden ist ein klarer Vorsprung belegt. Die Grundlage bleiben Belastungssteuerung und Übungen.',
@@ -478,13 +478,13 @@ export const wissenArtikel24: Wissen[] = [
     author: REDAKTION,
     ...DATEN_P,
     bodyHtml: `<h2>Kurz gesagt</h2>
-<p>Ein direkter Vergleich mit 34 Personen fand keinen Unterschied zwischen Akupunktur und Stosswellentherapie. Die Studie war sehr klein und beobachtete nur zwei Wochen nach der Behandlung. Kein Unterschied bedeutet hier nicht, dass beide gleich gut wirken. Die Stosswellentherapie beim Tennisarm bewertet der unabhängige deutsche IGeL-Monitor als «unklar».</p>
+<p>Ein direkter Vergleich mit 34 Personen fand keinen statistisch gesicherten Unterschied zwischen Akupunktur und Stosswellentherapie. Die Studie war sehr klein und beobachtete nur zwei Wochen nach der Behandlung. Ein nicht signifikanter Unterschied bedeutet hier nicht, dass beide gleich gut wirken. Die Stosswellentherapie beim Tennisarm bewertet der unabhängige deutsche IGeL-Monitor als «unklar».</p>
 <p>Die Grundlage bei einem Tennisellenbogen bleiben angepasste Belastung und aktive Übungen. Das Beschwerdebild erklärt die Seite <a href="/beschwerden/tennisarm/">Tennisarm und Golferarm</a>, die Studienlage zur Akupunktur ordnet der Artikel <a href="/wissen/akupunktur-bei-tennisarm/">Akupunktur bei Tennisarm</a> ein. Stosswellentherapie gehört nicht zu den Verfahren bei TCM.ch.</p>
 <h2>Was zuerst kommt</h2>
 <p>Ein Tennisellenbogen bessert sich oft mit Schonung über einige Wochen, kann aber auch länger als ein Jahr dauern. Nach britischer Patienteninformation helfen zuerst das Vermeiden belastender Tätigkeiten, Kühlen oder Wärme, Schmerzmittel als Gel und einfache Übungen. Physiotherapie mit Dehn- und Kräftigungsübungen kommt infrage, wenn die Beschwerden nach sechs Wochen nicht besser sind. Beide hier besprochenen Verfahren kommen höchstens ergänzend dazu.</p>
 <h2>Was der direkte Vergleich zeigte</h2>
 <p>Die Studie aus Hongkong wurde 2017 veröffentlicht. 17 Personen erhielten drei Wochen lang einmal pro Woche Stosswellentherapie, 17 andere drei Wochen lang zweimal pro Woche Akupunktur. Gemessen wurden Schmerz, Griffkraft und Alltagsfunktion vor der Behandlung, danach und zwei Wochen später.</p>
-<p>Zu keinem Zeitpunkt unterschieden sich die Gruppen signifikant. In beiden Gruppen gingen die Schmerzen gegenüber dem Beginn zurück. Bei Griffkraft und Funktion zeigte sich in keiner Gruppe eine signifikante Veränderung. Mit dem Ende der Behandlung besserten sich die Schmerzen in beiden Gruppen nicht weiter. Ob die Zuteilung zufällig erfolgte, geht aus der Zusammenfassung nicht hervor.</p>
+<p>Zu keinem Zeitpunkt unterschieden sich die Gruppen signifikant. In beiden Gruppen gingen die Schmerzen gegenüber dem Beginn zurück. Bei Griffkraft und Funktion zeigte sich in keiner Gruppe eine signifikante Veränderung. Mit dem Ende der Behandlung besserten sich die Schmerzen in beiden Gruppen nicht weiter. Ob die Zuteilung zufällig erfolgte, geht aus der Zusammenfassung nicht hervor. Die Autorinnen und Autoren bewerten die Effekte als ähnlich; für einen Nachweis der Gleichwertigkeit reicht ein nicht signifikanter Unterschied in einer so kleinen Studie aber nicht.</p>
 <h2>Warum «kein Unterschied» nicht «gleich gut» heisst</h2>
 <p>Mit 17 Personen pro Gruppe kann eine Studie auch echte Unterschiede leicht übersehen. Ausserdem fehlte eine Gruppe ohne aktive Behandlung oder mit Scheinbehandlung. Ob eine der beiden Methoden mehr leistet als der natürliche Verlauf und die Zuwendung, beantwortet dieser Vergleich nicht.</p>
 <h2>Wie die Stosswellentherapie eingeordnet wird</h2>
@@ -498,7 +498,7 @@ export const wissenArtikel24: Wissen[] = [
 <p>Zu Kosten und Zusatzversicherung bei Akupunktur: <a href="/krankenkassen/akupunktur/">Akupunktur und Krankenkasse</a>.</p>
 <h2>Häufige Fragen</h2>
 <h3>Was zeigt der direkte Vergleich?</h3>
-<p>Keinen Unterschied zwischen beiden Gruppen bei Schmerz, Griffkraft und Funktion. Die Studie war aber zu klein und zu kurz, um eine Gleichwertigkeit zu belegen.</p>
+<p>Keinen statistisch gesicherten Unterschied zwischen beiden Gruppen bei Schmerz, Griffkraft und Funktion. Die Studie war aber zu klein und zu kurz, um eine Gleichwertigkeit zu belegen.</p>
 <h3>Ersetzt eine der beiden Methoden die Übungen?</h3>
 <p>Nein. Angepasste Belastung und aktive Übungen bleiben die Grundlage. Beide Verfahren kommen höchstens zusätzlich infrage.</p>
 <h3>Gelten die Ergebnisse auch für andere Sehnen?</h3>
