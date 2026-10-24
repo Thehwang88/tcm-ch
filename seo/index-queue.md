@@ -30,6 +30,18 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-bei-belastungsinkontinenz/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-rhizarthrose/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-vulvodynie/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-gastroparese/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-crps/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-erektiler-dysfunktion/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-bei-bettnaessen/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/schroepfen-oder-massage/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
+- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-migraene/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-neurodermitis/ — 21.10.2026 (Neun-Artikel-Paket, PR #82)
@@ -498,18 +510,6 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
-- https://tcm.ch/wissen/akupunktur-bei-belastungsinkontinenz/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-rhizarthrose/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-vulvodynie/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-gastroparese/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-crps/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-erektiler-dysfunktion/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-bettnaessen/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/schroepfen-oder-massage/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/ — vorbereitet 24.10.2026 (Artikelpaket 24.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 

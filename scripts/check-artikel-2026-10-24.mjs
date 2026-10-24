@@ -193,6 +193,16 @@ if (unset) {
     const lds = ld(pages.get(m.url) ?? '').join('\n');
     if (/datePublished/.test(lds)) errs.push(`${m.url}: datePublished im Schema, obwohl Kohorten-Konstante ungesetzt`);
   }
+} else {
+  // Release: jedes Schema-Datum der Kohorte = Konstante (keine anderen Datumswerte)
+  const pub = (bw.match(/PUBLISHED_ARTIKEL_2026_10_24: string \| undefined = '(\d{4}-\d{2}-\d{2})';/) || [])[1];
+  if (!pub) errs.push('PUBLISHED_ARTIKEL_2026_10_24 nicht als ISO-Datum gesetzt');
+  for (const m of MANIFEST) {
+    const lds = ld(pages.get(m.url) ?? '').join('\n');
+    const ds = [...lds.matchAll(/"date(?:Published|Modified)":\s*"([^"]*)"/g)].map((x) => x[1]);
+    if (!ds.length) errs.push(`${m.url}: kein Schema-Datum trotz gesetzter Konstante`);
+    for (const d of ds) if (d !== pub) errs.push(`${m.url}: Schema-Datum ${d} ≠ ${pub}`);
+  }
 }
 // Registrierungen
 const mapCsv = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
