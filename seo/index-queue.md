@@ -510,6 +510,15 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
+- https://tcm.ch/wissen/akupunktur-raucherentwoehnung/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/schroepfen-bei-nackenschmerzen/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-kniearthrose/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-nesselsucht/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-hashimoto/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-fettleber/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-colitis-ulcerosa/ — vorbereitet 25.10.2026 (Artikelpaket 25.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 
