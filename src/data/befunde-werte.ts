@@ -112,6 +112,9 @@ export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
 // Artikelpaket 24.10.2026 (9 Wissen-Artikel, 3 Fragen): Draft, bis zum Release undefined => keine
 // Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
 export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = '2026-10-24';
+// Artikelpaket 25.10.2026 (9 Wissen-Artikel): Draft, bis zum Release undefined => keine Schema-Daten,
+// kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
+export const PUBLISHED_ARTIKEL_2026_10_25: string | undefined = '2026-10-25';
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -2622,7 +2625,7 @@ export const befundeWerte: BefundWert[] = [
 <p>Aus einem positiven Test lässt sich nicht ableiten, dass Jod, Selen oder andere Präparate für dich nötig sind. Eine Nahrungsergänzung sollte nicht allein mit dem Ziel begonnen werden, den Antikörperwert zu senken.</p>`,
     redFlagsHtml: `<p>Ein erhöhter Antikörperwert ohne akute Beschwerden ist normalerweise kein Notfall. Besprich den Befund mit deiner Hausarzt- oder endokrinologischen Praxis. Bei Kinderwunsch oder Schwangerschaft gehört der Schilddrüsenbefund zeitnah in die gynäkologische beziehungsweise ärztliche Betreuung.</p>`,
     followUpHtml: `<p>Nimm frühere TSH- und fT4-Werte mit. Frage, ob die Funktion derzeit normal ist und wann sie erneut kontrolliert werden soll. Ein Ultraschall kann je nach Fragestellung ergänzend sinnvoll sein, ist aber nicht allein wegen jeder positiven Antikörpermessung erforderlich. Die Seite zur <a href="/beschwerden/schilddruesenunterfunktion/">Schilddrüsenunterfunktion</a> erklärt den Unterschied zwischen Autoimmunbefund und Hormonmangel.</p>`,
-    faqHtml: `<h2>Häufige Fragen</h2>
+    faqHtml: `<p>Studien zu chinesischen Kräutern berichten oft über gesunkene TPO-Antikörper; was das bedeutet und was nicht, ordnet <a href="/wissen/chinesische-kraeuter-bei-hashimoto/">Chinesische Kräuter bei Hashimoto</a> ein.</p><h2>Häufige Fragen</h2>
 <p><strong>Brauche ich bei hohen TPO-Antikörpern Schilddrüsenhormone?</strong></p>
 <p>Nicht allein aufgrund der Antikörper. Entscheidend sind die Funktionswerte und deine ärztlich beurteilte Situation.</p>
 <p><strong>Muss ich TPO-Antikörper regelmässig messen lassen?</strong></p>

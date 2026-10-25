@@ -30,6 +30,15 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/akupunktur-raucherentwoehnung/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/schroepfen-bei-nackenschmerzen/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-kniearthrose/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-nesselsucht/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-hashimoto/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-fettleber/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
+- https://tcm.ch/wissen/chinesische-kraeuter-bei-colitis-ulcerosa/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
 - https://tcm.ch/wissen/akupunktur-bei-belastungsinkontinenz/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
 - https://tcm.ch/wissen/akupunktur-bei-rhizarthrose/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)
 - https://tcm.ch/wissen/akupunktur-bei-vulvodynie/ — 24.10.2026 (Artikelpaket 24.10.2026, PR #92)

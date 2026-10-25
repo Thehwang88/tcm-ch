@@ -79,7 +79,7 @@ export const fragenArtikel24: Frage[] = [
 <li>deinen üblichen Alkoholkonsum.</li>
 </ul>
 <p>Wie Wechselwirkungen und Nebenwirkungen allgemein eingeordnet werden, steht unter <a href="/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/">Nebenwirkungen von TCM-Kräutern</a>.</p>
-<h2>Warnzeichen: sofort ärztlich abklären</h2>
+<p>Wer bereits eine Fettleber hat und über Kräuter nachdenkt, findet die Studienlage und die Vorsichtspunkte unter <a href="/wissen/chinesische-kraeuter-bei-fettleber/">Chinesische Kräuter bei Fettleber</a>.</p><h2>Warnzeichen: sofort ärztlich abklären</h2>
 <p>Gelbe Haut oder gelbe Augen, dunkler Urin, heller Stuhl, starker Juckreiz, ungewohnte Müdigkeit, Appetitlosigkeit oder Schmerzen im rechten Oberbauch während einer Kräutereinnahme gehören sofort ärztlich abgeklärt. Nimm die Kräuter bis zur Klärung nicht weiter ein und informiere die verordnende Fachperson. Bring Packungen, Reste der Kräuter und die Rezeptur mit; sie helfen, das auslösende Mittel zu bestimmen.</p>
 <p>Ein einzelner erhöhter Laborwert ist noch keine Diagnose. Was erhöhte Leberwerte bedeuten können, erklärt die Seite <a href="/gesundheitsbibliothek/befunde-werte/leberwerte-erhoeht/">Leberwerte erhöht</a>. Ob und wann Kontrollen nötig sind, entscheidet die Ärztin oder der Arzt.</p>
 <h2>Häufige Fragen</h2>

@@ -163,7 +163,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Nein. Dafür gibt es keine belastbare Evidenz.</p>
 <p>Akupunktur kann auf Schmerzen und möglicherweise Funktion Einfluss nehmen. Einen abgenutzten Gelenkknorpel baut sie nicht wieder auf und strukturelle Arthroseveränderungen werden dadurch nicht rückgängig gemacht.</p>
 <p>Das Behandlungsziel ist deshalb funktionell: weniger Beschwerden, bessere Belastbarkeit und mehr Bewegungsfreiheit – soweit dies individuell erreichbar ist.</p>
-<h2>Wie wir behandeln</h2>
+<p>Wer neben Akupunktur an chinesische Kräuter denkt, findet die Studienlage dazu unter <a href="/wissen/chinesische-kraeuter-bei-kniearthrose/">Chinesische Kräuter bei Kniearthrose</a>.</p><h2>Wie wir behandeln</h2>
 <p>Zu Beginn klären wir, wo und wann die Beschwerden auftreten, wie belastbar das Knie ist und welche Diagnose bereits gestellt wurde.</p>
 <p>In der TCM wird zusätzlich das individuelle Beschwerdemuster betrachtet. Die Akupunktur kann lokale Punkte rund um das Knie mit weiter entfernten Punkten kombinieren.</p>
 <p>Entscheidend ist nicht eine möglichst grosse Zahl von Nadeln, sondern ein nachvollziehbarer Behandlungsplan und eine regelmässige Überprüfung, ob sich tatsächlich etwas verändert.</p>
@@ -667,7 +667,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Wo Akupunktur sinnvoll sein kann</h2>
 <p>Realistisch ist Akupunktur bei Ischias ein ergänzender Baustein in drei Situationen: wenn die Abklärung keine Operationsindikation ergeben hat und du die Wartezeit auf Besserung überbrücken willst; wenn Schmerzmittel nicht ausreichen oder nicht vertragen werden; und wenn die Muskulatur in Gesäss und Lendenbereich so verspannt ist, dass sie den Nerv zusätzlich reizt. In diesem letzten Fall kombinieren wir die Nadelung oft mit <a href="/therapien/tuina/">Tuina</a>, weil die manuelle Arbeit am Piriformis und an der tiefen Gesässmuskulatur direkt dort ansetzt. Ob bei dir eher eine manuelle Behandlung oder aktive Physiotherapie im Vordergrund stehen sollte, ordnet <a href="/wissen/tuina-oder-physiotherapie/">Tuina oder Physiotherapie</a> ein.</p>
 <p>Akupunktur ersetzt nicht die Bewegung. Die wichtigste Massnahme bei Ischias ohne Warnzeichen ist, in Bewegung zu bleiben und die Rückenmuskulatur gezielt aufzubauen. Wer bereits in der <a href="/therapien/physiotherapie/">Physiotherapie</a> ist, kann Akupunktur parallel nutzen; die beiden Behandlungen behindern sich nicht.</p>
-<h2>Wie wir behandeln</h2>
+<p>Liegt ein lumbaler Bandscheibenvorfall zugrunde und interessiert dich zusätzlich die Kräuterfrage, ordnet <a href="/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/">Chinesische Kräuter bei Bandscheibenvorfall</a> die Studienlage ein.</p><h2>Wie wir behandeln</h2>
 <p>Vor der ersten Nadel klären wir, ob eine ärztliche Diagnose vorliegt, ob Bildgebung gemacht wurde und ob Taubheit oder Kraftverlust bestehen. Dann wird genadelt: am unteren Rücken, im Gesäss und entlang des Schmerzverlaufs am Bein, meist mit acht bis fünfzehn Nadeln, die 20 bis 30 Minuten liegen bleiben. Bei ausgeprägtem Nervenschmerz setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei kälteempfindlichen Beschwerden ergänzend Moxibustion.</p>
 <p>Typisch sind ein bis zwei Sitzungen pro Woche über vier bis sechs Wochen. Nach vier Sitzungen ziehen wir Bilanz: Hat sich die Ausstrahlung verkürzt, brauchst du weniger Schmerzmittel, schläfst du besser? Wenn nicht, besprechen wir offen, ob eine andere Methode oder eine erneute ärztliche Beurteilung sinnvoller ist.</p>
 <h2>Kosten und Krankenkasse</h2>
@@ -1540,7 +1540,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Die Studie betrifft die chronische spontane Form. Für akute Nesselsucht, körperlich ausgelöste Formen wie Druck- oder Kälteurtikaria und für Schwellungen ohne Quaddeln sagt sie nichts aus. Auch eine Wirkung zusätzlich zu Antihistaminika wurde nicht geprüft.</p>
 <h2>Was die Behandlung trägt</h2>
 <p>Die übliche Behandlung erfolgt stufenweise, beginnend mit nicht müde machenden Antihistaminika, deren Dosis ärztlich angepasst werden kann, und weiteren Optionen bei unzureichender Wirkung. Ein Tagebuch zu Schüben und möglichen Verstärkern hilft der Ärztin bei der Steuerung.</p>
-<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Die Studienlage zu chinesischen Kräutern bei chronischer Nesselsucht ist eine eigene Frage; sie wird unter <a href="/wissen/chinesische-kraeuter-bei-nesselsucht/">Chinesische Kräuter bei chronischer Nesselsucht</a> eingeordnet.</p><h2>So bleibt ein Versuch überprüfbar</h2>
 <p>Erfasse die Krankheitsaktivität vorher und während des Versuchs, etwa mit einem Wochenwert für Quaddeln und Juckreiz. Lege einen Prüfzeitpunkt fest und ändere die Medikamente nicht eigenmächtig.</p>
 <h2>Wann sofort Hilfe holen</h2>
 <p>Schwellung von Zunge, Lippen oder Rachen, Atemnot, Schluckbeschwerden oder Kreislaufprobleme sind ein Notfall. Wähle den Notruf 144.</p>
