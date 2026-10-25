@@ -1204,7 +1204,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Wenn dein Mund trotz normalem Trinken dauerhaft trocken bleibt, sollte man nicht einfach immer mehr Wasser trinken und das Problem damit abhaken. Auch Erkrankungen wie Diabetes oder das Sjögren-Syndrom können mit anhaltender Mundtrockenheit verbunden sein.</p>
 <h2>Warum sollte dauerhafte Mundtrockenheit ernst genommen werden?</h2>
 <p>Speichel schützt nicht nur vor einem unangenehmen Trockenheitsgefühl. Bei dauerhaft zu wenig Speichel steigt unter anderem das Risiko für Probleme mit Zähnen und Zahnfleisch. Deshalb ist bei länger bestehender Mundtrockenheit auch die zahnmedizinische Perspektive wichtig.</p>
-<h2>Was kannst du selbst ausprobieren?</h2>
+<p>Ist der Mund nach einer Strahlentherapie im Kopf-Hals-Bereich dauerhaft trocken, hat das eine andere Ursache; was eine Studie zu Akupunktur dabei zeigte, steht unter <a href="/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/">Akupunktur bei Mundtrockenheit nach Bestrahlung</a>.</p><h2>Was kannst du selbst ausprobieren?</h2>
 <ul>
 <li>Trinke tagsüber ausreichend.</li>
 <li>Stelle nachts Wasser ans Bett, wenn dir das hilft.</li>
