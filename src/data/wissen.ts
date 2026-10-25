@@ -7,6 +7,7 @@ import { wissenHerbst } from './wissen-herbst';
 import { wissenKraeuter } from './wissen-kraeuter';
 import { wissenEntscheidungen } from './wissen-entscheidungen';
 import { wissenArtikel24 } from './wissen-artikel-2026-10-24';
+import { wissenArtikel25 } from './wissen-artikel-2026-10-25';
 
 export interface WissenFaq { q: string; a: string }
 export interface WissenRelated { href: string; label: string; cat: string }
@@ -2356,6 +2357,6 @@ const wissenBase: Wissen[] = [
 ];
 
 // Artikelreihen aus eigenen Dateien anhängen, damit wissen.ts nicht weiter wächst.
-export const wissen: Wissen[] = [...wissenBase, ...wissenAkupunkturBei, ...wissenHerbst, ...wissenKraeuter, ...wissenEntscheidungen, ...wissenArtikel24];
+export const wissen: Wissen[] = [...wissenBase, ...wissenAkupunkturBei, ...wissenHerbst, ...wissenKraeuter, ...wissenEntscheidungen, ...wissenArtikel24, ...wissenArtikel25];
 
 export const wissenBySlug = (slug: string): Wissen | undefined => wissen.find((w) => w.slug === slug);
