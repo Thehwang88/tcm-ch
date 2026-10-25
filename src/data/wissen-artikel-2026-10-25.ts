@@ -75,7 +75,7 @@ export const wissenArtikel25: Wissen[] = [
     title: 'Schröpfen bei Nackenschmerzen: Was Studien zeigen',
     metaDesc: 'Hilft Schröpfen bei chronischen Nackenschmerzen? Was Metaanalysen und Vergleichsstudien zeigen, welche Vergleiche fehlen und wie du das einordnest.',
     region: 'Schweizweit',
-    excerpt: 'Studien zeigen Linderung vor allem im Vergleich mit keiner zusätzlichen Behandlung. Gegen eine Entspannungsübung schnitt Schröpfmassage beim Schmerz nicht besser ab, und Scheinvergleiche fehlen weitgehend.',
+    excerpt: 'Studien zeigen Linderung im Vergleich mit keiner zusätzlichen Behandlung. Gegen eine Entspannungsübung schnitt Schröpfmassage beim Schmerz nicht besser ab, und Scheinvergleiche fehlen weitgehend.',
     category: 'Therapien verstehen',
     h1: 'Schröpfen bei chronischen Nackenschmerzen: Was ist belegt?',
     lead: 'Dein Nacken schmerzt seit Monaten, und Schröpfen wird dir empfohlen. Es gibt viele Studien, aber sie sind klein und unterschiedlich gebaut. Entscheidend ist, womit Schröpfen jeweils verglichen wurde.',
@@ -87,7 +87,7 @@ export const wissenArtikel25: Wissen[] = [
     author: REDAKTION,
     ...DATEN_P,
     bodyHtml: `<h2>Kurz gesagt</h2>
-<p>Übersichtsarbeiten finden bei chronischen Nackenschmerzen nach Schröpfen weniger Schmerzen und eine bessere Funktion, vor allem im Vergleich mit keiner zusätzlichen Behandlung. In einer Studie, die Schröpfmassage mit progressiver Muskelentspannung verglich, gab es beim Schmerz keinen signifikanten Unterschied. Vergleiche mit Scheinschröpfen fehlen weitgehend, und die Qualität der Studien ist überwiegend niedrig.</p>
+<p>Übersichtsarbeiten finden bei chronischen Nackenschmerzen nach Schröpfen weniger Schmerzen und eine bessere Funktion, unter anderem im Vergleich mit keiner zusätzlichen Behandlung. In einer Studie, die Schröpfmassage mit progressiver Muskelentspannung verglich, gab es beim Schmerz keinen signifikanten Unterschied. Vergleiche mit Scheinschröpfen fehlen weitgehend, und die Qualität der Studien ist überwiegend niedrig.</p>
 <p>Schröpfen kommt deshalb höchstens als Ergänzung in einem umfassenderen Behandlungsplan infrage. Was bei Nackenschmerzen sonst wichtig ist, steht auf der Seite <a href="/beschwerden/nackenschmerzen/">Nackenschmerzen</a>.</p>
 <h2>Welche Verfahren untersucht wurden</h2>
 <p>Unter Schröpfen fallen verschiedene Techniken: trockenes Schröpfen mit stehenden Schröpfgläsern, die gleitende <a href="/wissen/schroepfmassage/">Schröpfmassage</a> und blutiges Schröpfen, bei dem die Haut zuvor angeritzt wird. Die Studien verwenden unterschiedliche Formen. Ein Ergebnis zu einer Technik lässt sich deshalb nicht ohne Weiteres auf eine andere übertragen. Das Verfahren selbst erklärt die Seite <a href="/therapien/schroepfen/">Schröpfen</a>.</p>
@@ -98,7 +98,7 @@ export const wissenArtikel25: Wissen[] = [
 <p>In einer Studie mit 50 Personen erhielt die eine Gruppe fünf Schröpfmassagen zweimal pro Woche, die andere Gruppe wartete und behandelte wie bisher weiter. Nach der Behandlungsserie hatte die Schröpfgruppe weniger Nackenschmerzen und eine bessere Funktion. Eine Wartegruppe erhält aber keine zusätzliche Zuwendung und keine Behandlung, von der sie sich etwas verspricht.</p>
 <p>In einer anderen Studie mit 61 Personen wendeten Partnerinnen oder Partner zu Hause zwölf Wochen lang eine Schröpfmassage an. Die Vergleichsgruppe übte progressive Muskelentspannung. Beide Gruppen hatten danach weniger Schmerzen, ohne signifikanten Unterschied zwischen den Gruppen. Beim Wohlbefinden und bei der Druckschmerzempfindlichkeit schnitt die Schröpfmassage besser ab.</p>
 <h2>Wie du die Ergebnisse lesen kannst</h2>
-<p>Je strenger der Vergleich, desto kleiner wird der Vorteil. Ob eine Besserung auf das Schröpfen selbst zurückgeht oder auf Zuwendung, Erwartung und Ruhe, lässt sich ohne Scheinvergleich nicht trennen. Die meisten Studien massen zudem kurz nach der Behandlungsserie. Über die Dauer einer Wirkung sagen sie wenig.</p>
+<p>In den ausgewerteten Studien zeigten sich Vorteile gegenüber keiner zusätzlichen Behandlung. Gegenüber progressiver Muskelentspannung fand die genannte Vergleichsstudie beim Schmerz keinen statistisch gesicherten Unterschied. Eine allgemeine Rangfolge der Vergleichsarten oder eine Gleichwertigkeit lässt sich daraus nicht ableiten. Ob eine Besserung auf das Schröpfen selbst zurückgeht oder auf Zuwendung, Erwartung und Ruhe, lässt sich ohne Scheinvergleich nicht trennen. Die meisten Studien massen zudem kurz nach der Behandlungsserie. Über die Dauer einer Wirkung sagen sie wenig.</p>
 <h2>Nebenwirkungen und Vorsicht</h2>
 <p>Typisch sind runde Verfärbungen der Haut. Was sonst vorkommen kann, beschreibt <a href="/gesundheitsbibliothek/fragen/schroepfen-nebenwirkungen/">Schröpfen: Nebenwirkungen</a>. Nimmst du Blutverdünner, gehört das vor der Behandlung auf den Tisch; was dazu gilt, steht unter <a href="/gesundheitsbibliothek/fragen/akupunktur-blutverduenner/">Akupunktur mit Blutverdünnern</a> im Abschnitt zum Schröpfen.</p>
 <h2>Häufige Fragen</h2>
@@ -140,11 +140,11 @@ export const wissenArtikel25: Wissen[] = [
     author: REDAKTION,
     ...DATEN_P,
     bodyHtml: `<h2>Kurz gesagt</h2>
-<p>Eine randomisierte, doppelblinde Studie an mehreren Zentren prüfte die chinesische Rezeptur Huo-Luo-Xiao-Ling-Dan gegen Placebo. Nach acht Wochen hatten beide Gruppen weniger Schmerzen und eine bessere Funktion, die Rezeptur aber nicht mehr als das Placebo. Die Autorinnen und Autoren halten fest: Sie war sicher anzuwenden, aber Placebo nicht überlegen.</p>
+<p>Eine randomisierte, doppelblinde Studie an mehreren Zentren prüfte die chinesische Rezeptur Huo-Luo-Xiao-Ling-Dan gegen Placebo. Nach acht Wochen hatten beide Gruppen weniger Schmerzen und eine bessere Funktion. In dieser Studie wurden keine schweren unerwünschten Ereignisse berichtet. Ein statistisch gesicherter Vorteil gegenüber Placebo bei Schmerz oder Funktion zeigte sich nicht.</p>
 <p>Das Ergebnis gilt für diese eine Rezeptur. Es zeigt aber, dass ein positiver Eindruck im Alltag nicht genügt, um eine Wirkung der Kräuter zu belegen. Das Beschwerdebild erklärt die Seite <a href="/beschwerden/gonarthrose/">Gonarthrose</a>.</p>
 <h2>Was die Studie genau zeigte</h2>
 <p>Die Studie lief in zwei Stufen. In der ersten erhielten 28 Personen sechs Wochen lang eine niedrige Dosis oder Placebo; ein Unterschied zeigte sich nicht. Auf Empfehlung des unabhängigen Sicherheitsgremiums wurde die Studie neu angelegt. In der zweiten Stufe erhielten 92 Personen acht Wochen lang eine höhere Dosis oder Placebo.</p>
-<p>Gemessen wurden Knieschmerz und Funktion mit einem etablierten Fragebogen sowie die Gesamteinschätzung der Teilnehmenden. Alle Werte verbesserten sich in beiden Gruppen deutlich, ohne signifikanten Unterschied zwischen den Gruppen. Beim Schmerz sank der Wert mit der Rezeptur im Mittel um 1,2 Punkte, mit Placebo um 1,4 Punkte. Schwere Nebenwirkungen traten nicht auf.</p>
+<p>Gemessen wurden Knieschmerz und Funktion mit einem etablierten Fragebogen sowie die Gesamteinschätzung der Teilnehmenden. Alle Werte verbesserten sich in beiden Gruppen deutlich, ohne signifikanten Unterschied zwischen den Gruppen. Beim Schmerz sank der Wert mit der Rezeptur im Mittel um 1,2 Punkte, mit Placebo um 1,4 Punkte. Schwere unerwünschte Ereignisse wurden in den acht Wochen nicht berichtet.</p>
 <h2>Was das Ergebnis bedeutet</h2>
 <p>Dass sich auch die Placebogruppe besserte, zeigt, wie stark Erwartung, Zuwendung und natürliche Schwankungen bei Arthroseschmerzen mitwirken. Für die Frage, ob die Kräuter selbst etwas beitragen, zählt der Unterschied zwischen den Gruppen. Der war in dieser Studie nicht nachweisbar. Für andere Rezepturen sagt das Ergebnis weder Wirkung noch Unwirksamkeit aus; sie müssten eigens geprüft sein.</p>
 <h2>Was bei Kniearthrose zuerst kommt</h2>
