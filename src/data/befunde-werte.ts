@@ -114,7 +114,7 @@ export const PUBLISHED_WISSEN_NEUN_2026_10: string | undefined = '2026-10-21';
 export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = '2026-10-24';
 // Artikelpaket 25.10.2026 (9 Wissen-Artikel): Draft, bis zum Release undefined => keine Schema-Daten,
 // kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
-export const PUBLISHED_ARTIKEL_2026_10_25: string | undefined = undefined;
+export const PUBLISHED_ARTIKEL_2026_10_25: string | undefined = '2026-10-25';
 
 export const befundeWerte: BefundWert[] = [
   {
