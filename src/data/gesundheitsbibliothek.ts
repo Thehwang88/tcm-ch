@@ -827,16 +827,6 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/': 'Blutspende Blut spenden nach Akupunktur Wartefrist SRK',
   '/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/': 'Kräuter Leber Leberschaden He Shou Wu Polygonum Leberwerte TCM',
   '/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/': 'Kräuter Bluthochdruck Süssholz Lakritz Gan Cao Blutdruck TCM Sicherheit',
-  // Artikelpaket 25.10.2026 (Suchhilfe, keine Ownership; keine Rezepturnamen, Symptome oder Differentialdiagnosen)
-  '/wissen/akupunktur-raucherentwoehnung/': 'akupunktur raucherentwöhnung rauchstopp rauchen aufhören tabakentwöhnung',
-  '/wissen/schroepfen-bei-nackenschmerzen/': 'schröpfen nackenschmerzen schröpfen nacken cupping chronische nackenschmerzen',
-  '/wissen/chinesische-kraeuter-bei-kniearthrose/': 'chinesische kräuter kniearthrose gonarthrose kräutermedizin kräutertherapie',
-  '/wissen/chinesische-kraeuter-bei-nesselsucht/': 'chinesische kräuter nesselsucht chronische urtikaria kräutermedizin kräutertherapie',
-  '/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/': 'chinesische kräuter bandscheibenvorfall lendenwirbelsäule kräutermedizin kräutertherapie',
-  '/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/': 'akupunktur mundtrockenheit nach bestrahlung xerostomie strahlentherapie kopf hals',
-  '/wissen/chinesische-kraeuter-bei-hashimoto/': 'chinesische kräuter hashimoto thyreoiditis kräutermedizin kräutertherapie',
-  '/wissen/chinesische-kraeuter-bei-fettleber/': 'chinesische kräuter fettleber masld kräutermedizin kräutertherapie',
-  '/wissen/chinesische-kraeuter-bei-colitis-ulcerosa/': 'chinesische kräuter colitis ulcerosa kräutermedizin kräutertherapie',
   // Neun-Artikel-Paket 21.10.2026 (Suchhilfe, keine Ownership)
   '/wissen/chinesische-kraeuter-bei-migraene/': 'chinesische kräuter migräne kräutermedizin kräutertherapie vorbeugung',
   '/wissen/chinesische-kraeuter-bei-wechseljahresbeschwerden/': 'chinesische kräuter wechseljahre wechseljahresbeschwerden kräutermedizin menopausale beschwerden',
