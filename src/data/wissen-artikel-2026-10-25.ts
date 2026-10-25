@@ -316,7 +316,7 @@ export const wissenArtikel25: Wissen[] = [
 <h2>Quellen</h2>
 <ul>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/38739392/" target="_blank" rel="noopener">Cohen L et al. Acupuncture for Chronic Radiation-Induced Xerostomia in Head and Neck Cancer: A Multicenter Randomized Clinical Trial. JAMA Network Open, 2024. PMID 38739392. (Volltext PMC11091764)</a></li>
-<li><a href="https://pubmed.ncbi.nlm.nih.gov/23996155/" target="_blank" rel="noopener">Furness S et al. Interventions for the management of dry mouth: non-pharmacological interventions. Cochrane Database of Systematic Reviews, 2013. CD009603. PMID 23996155. (PubMed-Abstract)</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/24006231/" target="_blank" rel="noopener">Furness S et al. Interventions for the management of dry mouth: non-pharmacological interventions. Cochrane Database of Systematic Reviews, 2013. CD009603.pub3. PMID 24006231. (PubMed-Abstract)</a></li>
 </ul>`,
     faqs: [],
     related: [
