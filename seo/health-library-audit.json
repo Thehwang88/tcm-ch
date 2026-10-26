@@ -181,7 +181,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/bettnaessen/",
@@ -531,7 +531,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/gallensteine/",
@@ -771,7 +771,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/immunschwaeche/",
@@ -1061,7 +1061,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/meniskusriss/",
@@ -1121,7 +1121,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -1421,7 +1421,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/pppd/",
@@ -1441,7 +1441,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/prostata/",
@@ -1621,7 +1621,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/scheidentrockenheit/",
@@ -5730,7 +5730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 250,
+      "inboundContentLinks": 242,
       "outboundHealthLinks": 17
     },
     {
@@ -6020,7 +6020,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 91,
+      "inboundContentLinks": 89,
       "outboundHealthLinks": 17
     },
     {
