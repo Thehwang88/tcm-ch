@@ -1,14 +1,15 @@
 # Bibliothek 26.10.2026: neue Seiten aus dem SEO-Audit vom 26.10.2026
 
-Draft-PR, nicht Ready, kein Merge, kein Deployment. Basis: main `67b857e5` (Merge PR #93), beim Start und vor dem PR erneut geprüft. Offene PRs geprüft: #89 (Wissen-Cluster, Draft; keine Überschneidung mit Themen oder Host-Dateien dieses Pakets), #38, #15, #1 (keine Überschneidung mit Host-Dateien).
+Release-Stand: GO am 26.10.2026, veröffentlicht am 26.10.2026 (Europe/Zurich) über PR #94 (normaler Merge-Commit). Basis: main `67b857e5` (Merge PR #93), beim Start und vor dem PR erneut geprüft. Offene PRs geprüft: #89 (Wissen-Cluster, Draft; keine Überschneidung mit Themen oder Host-Dateien dieses Pakets), #38, #15, #1 (keine Überschneidung mit Host-Dateien).
 
 ## 0. Ergebnis in Kürze
 
 - **Aufgenommen: 14** (A 01 bis 10, C 17 bis 20). **Zurückgestellt: 6** (B 11 bis 16). **Ausgeschlossen: 0.**
 - 10 Beschwerden-Leaves (Welle-6-Vorlage, ohne Datum, ohne FAQPage-Schema), 3 Befunde, 1 Untersuchungsseite.
-- Neue Konstante `PUBLISHED_BIBLIOTHEK_2026_10_26 = undefined`: keine Schema-Daten, kein sichtbares Datum bis zum Release. Kein Reviewer, keine ärztliche Freigabe behauptet.
+- Konstante `PUBLISHED_BIBLIOTHEK_2026_10_26 = '2026-10-26'`: `datePublished` bei den drei Befunden, `datePublished`/`dateModified` bei Urodynamik (wie die bestehenden Seiten desselben Typs, ohne sichtbare Datumszeile); Beschwerden-Leaves bleiben ohne Datumsfeld. Bestehende Datumsfelder unverändert. Kein Reviewer, keine ärztliche Freigabe behauptet.
 - 27 neue eigenständige Absätze in 21 Bestandsquellen; jede neue Seite hat genau zwei Kontext-Hosts aus der Basis. Nach Entfernen der Absätze sind alle Host-Quellen identisch mit main.
-- Index-Queue: 14 Einträge unter «Geplant (noch nicht live)», ohne Datum, kein GSC-Submit.
+- Index-Queue: die 14 Einträge stehen unter «Offen» mit 26.10.2026 (PR #94); Einreichung nur über die bestehende Tagesqueue, kein separater GSC-Submit.
+- Release (GO 26.10.2026): Sjögren erhält ebenfalls den neutralen WhatsApp-Text; damit tragen alle zehn neuen Beschwerden-Seiten «Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹H1›.»
 - Review-Runde 1 (26.10.2026): Angebotsdarstellung korrigiert (Abschnitt 2a), Sjögren um PMID 42826003 ergänzt (Abschnitte 3 und 4), Teststatus getrennt nach bestanden, Bestandsfehler und nicht erneut ausgeführt (Abschnitt 8).
 - Review-Runde 2 (26.10.2026): Essentieller Tremor ebenfalls reine Orientierung (jetzt neun Orientierungsseiten); Regel «Methode + Studie = belegtes Angebot» gestrichen, stattdessen Evidenz, verfügbare Methode und dokumentierte Kompetenz getrennt (Abschnitt 1); Sjögren-Wortlaut als allgemeines Akupunktur-Angebot abgegrenzt; WhatsApp-Kontakt der neun Orientierungsseiten neutral vorbelegt (Abschnitt 2a).
 
@@ -229,11 +230,25 @@ Alle als neue eigenständige `<p>`-Absätze; keine EN-geschützte Quelle (die 8 
 - Review 1: Renderer-Option `INFO_ONLY_SLUGS` (Beschwerden), optionale Befund-Eigenschaft `stickyCta` (Default aktiv), Prüfskript um Assertions zur gerenderten Angebotsdarstellung ergänzt (Klasse I, Klasse II, Befunde, Urodynamik, Hub-Badges).
 - Review 2: `essentieller-tremor` in `INFO_ONLY_SLUGS`, `therapies: []` in `beschwerden.ts`, Map-Spalte `treatment` geleert; neutraler WhatsApp-Text für `INFO_ONLY_SLUGS`; Prüfskript: Tremor in INFO, Assertion auf exakten WhatsApp-Text (dekodiert, Nummer unverändert, mindestens zwei Kontakt-Links) und auf die Sjögren-Abgrenzung.
 
-## 8. Prüfungen (Review-Runde 2, 26.10.2026)
+## 8. Prüfungen
+
+### Release-Stand (GO, 26.10.2026)
+
+Geprüft: Branch-Inhaltsstand `1d2c1ade` (Sjögren-WhatsApp `d53d690d`, Release-Daten `1d2c1ade`); main `67b857e5` unverändert, frischer main-Build im separaten Worktree. Live-Prüfung nach dem Deployment: Kommentar auf PR #94.
+
+- Build 930 URLs (main 916). Kohortenprüfung `--base-sitemap=<frischer main-Build>`: **OK** für 14 URLs, inklusive Schema-Datum = Konstante (2026-10-26) und WhatsApp-Assertion jetzt für alle zehn Beschwerden-Seiten.
+- Schema: trak-erhoeht, calcium-zu-niedrig, gesamt-ige-erhoeht `datePublished` 2026-10-26; Urodynamik `datePublished`/`dateModified` 2026-10-26; Leaves ohne Datumsfeld; keine sichtbare Datumszeile (wie Bestandsseiten desselben Typs), kein «NaN»/«Invalid Date»; Bestands-Datumsfelder (z. B. TPO, Koloskopie, Allergietest) unverändert.
+- Browser nach JS (390/1440, externe Anfragen blockiert, Klicks abgefangen, nichts gesendet): 22 Aufrufe, 0 Fehler. Alle zehn Seiten neutral (Sjögren: fünf seitenspezifische Links inkl. Hero, CTA-Band und Formular-Link nach Standortwahl); genau ein `wa_click` (`quelle: form`), keine Formular-Conversion; Referenz `/beschwerden/rueckenschmerzen/` unverändert.
+- Angebotsprüfung neun Orientierungsseiten 18/0 (Sticky-Opt-out, Anker `#warnzeichen` mit Ziel, Formular vorhanden, trotz bekannter DOM-Verschachtelung); Viewports 64 Kombinationen, 0 Überläufe; Sichtprüfung Sjögren 320/1440, Tremor 320/390/1440, TRAK 390, Urodynamik 1440.
+- Gates: health-audit, check-kontakt-formular, clinic-status, standort-ux, first30, professional, herbst-sg: 0 Fehler; test-en-analytics 48/0; test-anfrage-betreff 92/0; test-kontakt-formular 715/0; test-hero-video 124/0; check-i18n mit frisch erzeugter Build-Sitemap 0 failures (mit eingecheckter Sitemap weiterhin der bekannte S4-Bestandsfehler).
+- Build-Diff gegen frischen main-Build (alle Dateien inkl. Assets/Worker): 14 neu, 0 entfernt, 38 geändert = 27 Host-Seiten, 4 Hubs (Beschwerden, Befunde, Untersuchungen, Bibliothek), 5 Körperregionen, `beschwerden-keep.js`, `sitemap.xml`. Keine EN-, Standort-, Tracking-, Formular-, Asset- oder Worker-Änderung.
+- Bestandsschutz: 27/27 Host-Seiten nur um genau einen Kontextabsatz ergänzt; Quellen 21/21 nach Entfernen identisch mit main.
+
+### Review-Runde 2 (26.10.2026)
 
 **Geprüfter Stand:** Branch-HEAD `bfe923cc` (inhaltlich final; der anschliessende Bericht-Commit ändert nur diesen Bericht und `seo/health-library-audit.json`, das vom Gate `health-audit` geschrieben wird). Vorheriger PR-Stand: `56f1ccfe`. Basis: main `67b857e5`, vor Beginn und vor dem Push erneut geprüft, unverändert. Frischer Branch-Build nach der letzten Inhaltsänderung; Vergleich gegen den Build des vorigen PR-Stands und gegen den frischen main-Build aus Runde 1 (main seither unverändert).
 
-### Bestanden
+#### Bestanden
 
 - `npm run build` (Branch): grün, Sitemap 930 URLs (unverändert; main 916).
 - `node scripts/check-bibliothek-2026-10-26.mjs --base-sitemap=<main-Build 67b857e5>/sitemap.xml`: **OK** für alle 14 URLs. Neu in Runde 2: Tremor in der INFO-Liste (neun Orientierungsseiten: keine Angebotskarten, Primärschritt `#warnzeichen`, Sprungziel vorhanden, «Allgemeiner Kontakt», Sticky-Opt-out, Formular vorhanden); exakter, dekodierter WhatsApp-Text «Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹H1›.» auf allen seitenspezifischen wa.me-Zielen, Nummer 41775236122, mindestens zwei Kontakt-Links; Sjögren ohne «Häufig eingesetzte Methoden», «Passende TCM.ch-Klinik finden», «Passende Therapien», mit Abgrenzungssatz.
@@ -276,11 +291,13 @@ Keine Assertion entfernt oder abgeschwächt. Die Basis-Builds 72c045b8 und 2ff9e
 - Mehrere Studienaussagen nur aus Abstracts (gekennzeichnet), darunter PMID 42826003 (Volltext hinter Abo). DGN-Tremor-Leitlinie, AGA-Sportlerleiste-PDF, heart.org und NHS-Gallensäureseite nicht zugänglich und nicht verwendet.
 - Verfügbarkeit von SeHCAT/C4 in der Schweiz nicht belegt; die Seite sagt nur, dass das Angebot je Zentrum unterschiedlich ist.
 - Geteilte, bewusst unveränderte Elemente: globaler Header-Button «Termin finden», Drawer-/FAB-/Sticky-WhatsApp mit dem globalen Standardtext «… Hilfe bei der passenden Behandlung oder Praxis», CARE-Kasten mit sekundärem «Praxis finden» und das zentrale Formular (Terminarten «Ersttermin mit Behandlung» / «TCM-Check-in», ohne Vorauswahl). Eine Anpassung wäre ein globaler Formular-/Header-/Sticky-Auftrag.
-- Sjögren behält den WhatsApp-Standardtext der Leaves («… interessiere mich für eine Behandlung»), weil der neutrale Text laut Auftrag nur auf den neun Orientierungsseiten gilt. Er nennt keine Sjögren-Kompetenz, liest sich aber als Behandlungsanfrage; Entscheid offen.
+- Sjögren: seit dem Release-Commit ebenfalls neutraler WhatsApp-Text (alle seitenspezifischen Links inkl. Formular-Link nach Standortwahl); Header-Drawer unverändert.
+- **Folgepunkt (separat, nicht in diesem PR):** Legacy-Leaf-Template schliesst drei Tags vorzeitig, `#kontakt` liegt im DOM ausserhalb von `#page-symptom` (52 Bestands-Leaves auf main und die zehn neuen Leaves). Funktional ohne Folgen (Formular, Anker, Sticky-Opt-out, Seitenregeln im Browser verifiziert); Bereinigung wäre ein globaler Template-Auftrag.
 - Traffic-Potenzial (Keyword-Planer, gerundet) und Buchungswirkung sind getrennt zu sehen; die meisten Seiten haben laut Tabelle geringe oder sehr geringe Buchungsabsicht. Aus der Erstellung folgen weder Indexierung, Rankings noch Anfragen.
 
-## 10. Release-Schritte (nur nach ausdrücklichem GO)
+## 10. Release (GO 26.10.2026)
 
-1. `PUBLISHED_BIBLIOTHEK_2026_10_26` auf das reale Datum setzen (betrifft nur Befunde und Urodynamik; Leaves tragen kein Datum).
-2. Queue: 14 URLs von «Geplant» nach «Offen» mit Datum.
-3. Build, Kohortenprüfung (prüft dann Schema-Datum = Konstante), Live-Check.
+1. `PUBLISHED_BIBLIOTHEK_2026_10_26 = '2026-10-26'` (nur Befunde und Urodynamik; Leaves ohne Datum). Erledigt.
+2. Queue: 14 URLs von «Geplant» nach «Offen» mit 26.10.2026. Erledigt.
+3. Build, Kohortenprüfung, Gates, Diff: Abschnitt 8. Merge-SHA, Deployment-Status und Live-Prüfung: Kommentar auf PR #94 (kein Direkt-Commit auf main).
+4. Danach keine weiteren Artikeländerungen oder SEO-Optimierungen; die Seiten bleiben zur Beobachtung unverändert.
