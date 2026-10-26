@@ -70,6 +70,8 @@ export interface BefundWert {
   // Optionaler integrativer Kontext, steht im Template IMMER zuletzt.
   // TCM erklärt keine Laborwerte medizinisch; Feld in Phase 1 leer.
   integrativeContextHtml?: string;
+  /** Opt-out der geteilten mobilen Sticky-Leiste («Termin anfragen») auf dieser Befundseite; Default: Leiste aktiv. */
+  stickyCta?: boolean;
 }
 
 // Regel: Hub bleibt noindex,follow bis mindestens 4 wirklich publizierte Leaves existieren.
@@ -3960,6 +3962,7 @@ export const befundeWerte: BefundWert[] = [
     status: 'published',
     indexable: true,
     publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    stickyCta: false,
     deck: 'TRAK sind Antikörper gegen den TSH-Rezeptor der Schilddrüse. Ein erhöhter Wert passt meist zu Morbus Basedow und wird immer zusammen mit TSH, fT4 und den Beschwerden gelesen.',
     primaryPurpose: 'Einordnung des Laborbefunds TRAK (TSH-Rezeptor-Antikörper, TRAb) erhöht; keine Erkrankungs- oder Therapieseite.',
     canonicalIntentOwner: ['/beschwerden/schilddruesenueberfunktion/'],
@@ -4009,6 +4012,7 @@ export const befundeWerte: BefundWert[] = [
     status: 'published',
     indexable: true,
     publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    stickyCta: false,
     deck: 'Ein tiefer Calciumwert ist oft ein Messeffekt bei wenig Eiweiss im Blut. Bestätigt er sich, wird die Ursache gesucht; ein Calciumpräparat ist nicht automatisch die Antwort.',
     primaryPurpose: 'Einordnung des Laborwerts Calcium erniedrigt (Hypokalzämie), Teil des Elektrolyt-Clusters.',
     canonicalIntentOwner: [],
@@ -4060,6 +4064,7 @@ export const befundeWerte: BefundWert[] = [
     status: 'published',
     indexable: true,
     publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    stickyCta: false,
     deck: 'Das Gesamt-IgE misst alle IgE-Antikörper im Blut. Ein hoher Wert zeigt weder, worauf du allergisch bist, noch wie stark eine Allergie ist.',
     primaryPurpose: 'Einordnung des Laborbefunds Gesamt-IgE (Total-IgE) erhöht; keine Testablauf- oder Allergieseite.',
     canonicalIntentOwner: ['/gesundheitsbibliothek/untersuchungen/allergietest/'],

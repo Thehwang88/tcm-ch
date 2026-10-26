@@ -5232,12 +5232,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Spannungskopfschmerzen"
       }
     ],
-    "therapies": [
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "hypermobilitaet",
@@ -5262,16 +5257,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Schulterschmerzen"
       }
     ],
-    "therapies": [
-      {
-        "slug": "physiotherapie",
-        "label": "Physiotherapie"
-      },
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "schambeinentzuendung",
@@ -5296,16 +5282,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Hüftimpingement"
       }
     ],
-    "therapies": [
-      {
-        "slug": "physiotherapie",
-        "label": "Physiotherapie"
-      },
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "sjoegren-syndrom",
@@ -5390,16 +5367,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Schwindel"
       }
     ],
-    "therapies": [
-      {
-        "slug": "physiotherapie",
-        "label": "Physiotherapie"
-      },
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "mikroskopische-kolitis",
@@ -5428,12 +5396,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Zöliakie"
       }
     ],
-    "therapies": [
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "gallensaeurebedingter-durchfall",
@@ -5462,12 +5425,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "SIBO"
       }
     ],
-    "therapies": [
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "proctalgia-fugax",
@@ -5496,12 +5454,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Steissbeinschmerzen"
       }
     ],
-    "therapies": [
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "beckenorgansenkung",
@@ -5530,16 +5483,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Wechseljahre"
       }
     ],
-    "therapies": [
-      {
-        "slug": "physiotherapie",
-        "label": "Physiotherapie"
-      },
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);

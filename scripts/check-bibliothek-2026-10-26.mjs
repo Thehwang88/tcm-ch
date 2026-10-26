@@ -207,6 +207,44 @@ for (const m of MANIFEST) {
   if (!rec) errs.push(`${m.url}: nicht im Suchindex der Bibliothek`);
   else if (!rec.toLowerCase().includes(m.syn.toLowerCase())) errs.push(`${m.url}: Synonym «${m.syn}» nicht im Suchindex-Eintrag`);
 }
+// Angebotsdarstellung (Review 1): Klasse I = Orientierung ohne belegten Angebotsbezug, Klasse II = ergänzender
+// Akupunkturversuch mit kanonischem Angebot und Studienlage, Befunde/Untersuchung = kein Behandlungsangebot.
+const INFO = ['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung'];
+const OFFER = ['sjoegren-syndrom', 'essentieller-tremor'];
+const noSticky = (h) => /<[a-z]+[^>]*\sdata-no-sticky-cta(?:[\s>=])/.test(h);
+const pageSym = (h) => { const i = h.indexOf('id="page-symptom"'); const f = h.indexOf('<footer', i); return i < 0 ? '' : h.slice(i, f > i ? f : undefined); }; // ohne globalen Footer
+const hubHtml = pages.get('/beschwerden/') ?? '';
+for (const slug of [...INFO, ...OFFER]) {
+  const m = hubHtml.match(new RegExp(`nav\\('symptom','${slug}'\\)"[^>]*>([\\s\\S]*?)<div class="bx-cr-arrow`));
+  if (!m) errs.push(`/beschwerden/${slug}/: Hub-Zeile fehlt`); else if (m[1].includes('Behandlung verfügbar')) errs.push(`/beschwerden/${slug}/: Hub-Badge «Behandlung verfügbar» ohne krankheitsspezifischen Nachweis`);
+}
+for (const slug of INFO) {
+  const u = `/beschwerden/${slug}/`; const h = pages.get(u) ?? ''; const ps = pageSym(h);
+  const bad = [['sidebar-row', 'Therapie-Karten'], ['class="city-card location-card"', 'Standort-Karten'], ['usp-title">Termin direkt anfragen', 'USP «Termin direkt anfragen»'],
+    ['Was ergänzend infrage kommt', 'Methoden-Chips'], ['id="symptom-cta-title"', 'CTA-Band'], ['Unsicher, ob die TCM bei dir passt', 'Selbsttest-Teaser'],
+    ['Wir behandeln bei', 'Standort-Behandlungsabsatz'], ['Passende TCM.ch-Klinik finden', 'Hero-Buchungs-CTA'], ['Deutschschweizweit verfügbar', 'Verfügbarkeits-Meta'],
+    ['href="/therapien/physiotherapie/"', 'Link auf Physiotherapie-Angebot'], ['Nicht sicher, was du brauchst?', 'Fallback-CTA'], ['href="/akupunktur-in-der-naehe/"', 'Praxisfinder-Link']];
+  for (const [needle, label] of bad) if (ps.includes(needle)) errs.push(`${u}: ${label} auf Orientierungsseite`);
+  if (!/<div class="sg-ctas"><a class="btn-primary" href="#warnzeichen">/.test(ps)) errs.push(`${u}: primärer Hero-Schritt nicht auf Abklärung ausgerichtet`);
+  if (!/id="warnzeichen"/.test(ps)) errs.push(`${u}: Sprungziel #warnzeichen fehlt`);
+  if (!ps.includes('Allgemeiner Kontakt')) errs.push(`${u}: Kontaktabschnitt nicht als allgemeiner Kontakt benannt`);
+  if (!noSticky(h)) errs.push(`${u}: mobile Sticky-Leiste «Termin anfragen» aktiv`);
+  if (!ps.includes('name="anliegen"') && !ps.includes('data-kf')) errs.push(`${u}: Kontaktformular fehlt (muss erhalten bleiben)`);
+}
+for (const slug of OFFER) {
+  const u = `/beschwerden/${slug}/`; const ps = pageSym(pages.get(u) ?? '');
+  const rows = (ps.match(/class="sidebar-row"[^>]*onclick="nav\('therapie','([a-z-]+)'\)"/g) || []).map((x) => x.match(/'([a-z-]+)'\)"$/)[1]);
+  if (rows.join() !== 'akupunktur') errs.push(`${u}: Therapie-Karten ${rows.join() || 'keine'} statt nur Akupunktur`);
+  if (ps.includes('Wir behandeln bei')) errs.push(`${u}: Standort-Behandlungsabsatz`);
+  if (/<h2 id="symptom-cta-title">[^<]*(Sjögren|Tremor)[^<]*<\/h2>/.test(ps)) errs.push(`${u}: CTA-Band verspricht krankheitsspezifische Behandlung`);
+}
+for (const m of MANIFEST.filter((x) => x.type !== 'leaf')) {
+  const h = pages.get(m.url) ?? '';
+  if (!noSticky(h)) errs.push(`${m.url}: mobile Sticky-Leiste «Termin anfragen» aktiv`);
+}
+{ const h = pages.get('/gesundheitsbibliothek/untersuchungen/urodynamik/') ?? ''; const i = h.indexOf('class="cta-card"');
+  if (i >= 0 && /href="\/standorte\/"/.test(h.slice(i, i + 1500))) errs.push('/gesundheitsbibliothek/untersuchungen/urodynamik/: Praxis-finden-CTA ohne Angebotsbezug'); }
+
 // Registrierungen
 const mapCsv = fs.readFileSync('seo/master-keyword-url-map.csv', 'utf8');
 const dnc = fs.readFileSync('seo/do-not-create-intents.csv', 'utf8');

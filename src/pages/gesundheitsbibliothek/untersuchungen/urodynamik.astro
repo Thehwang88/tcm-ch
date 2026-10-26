@@ -45,7 +45,7 @@ const rel2Links = [
   { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
 ];
 ---
-<LayoutDe title={title} description={description} path={path} schema={schema}>
+<LayoutDe title={title} description={description} path={path} schema={schema} stickyCta={false}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
@@ -65,7 +65,7 @@ const rel2Links = [
     <section class="section" style="padding-top:0">
       <div class="wrap narrow">
         <div class="kb-body">
-          <div class="info-note">Diese Seite dient der Orientierung. Eine Urodynamik wird von Urologinnen, Urologen oder Urogynäkologinnen veranlasst, durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch.</strong> Wir sagen dir ehrlich, wann eine Abklärung vor einer ergänzenden Behandlung sinnvoll ist.</div>
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Urodynamik wird von Urologinnen, Urologen oder Urogynäkologinnen veranlasst, durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch und bietet keine Blasenabklärung an.</strong> Fragen zu deinem Befund beantwortet die untersuchende Praxis.</div>
 
           <div class="wa-callout">
             <div class="wa-callout-label">Kurz gesagt</div>
@@ -106,7 +106,7 @@ const rel2Links = [
           <p>Melde dich nach der Untersuchung sofort bei der Praxis, wenn Fieber, Schüttelfrost oder zunehmende Schmerzen auftreten. Das können Zeichen einer Infektion sein.</p>
 
           <h2>Nächste Schritte</h2>
-          <p>Frag vor der Untersuchung, welche Messungen geplant sind und welche Behandlungsentscheidung davon abhängt, und danach, was die Ergebnisse für dich bedeuten. TCM.ch führt diese Untersuchung nicht selbst durch. Eine ergänzende Behandlung ersetzt weder die urologische oder urogynäkologische Abklärung noch eine empfohlene Therapie.</p>
+          <p>Frag vor der Untersuchung, welche Messungen geplant sind und welche Behandlungsentscheidung davon abhängt, und danach, was die Ergebnisse für dich bedeuten. TCM.ch führt diese Untersuchung nicht selbst durch.</p>
 
           <h2>Häufige Fragen</h2>
           <h3>Tut eine Urodynamik weh?</h3>
@@ -129,10 +129,10 @@ const rel2Links = [
         <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
 
         <div class="cta-card">
-          <div class="cta-card-title">Unsicher, was der nächste Schritt ist?</div>
-          <p>Diese Untersuchung wird ärztlich veranlasst und beurteilt. Wenn du nach der Abklärung wissen möchtest, ob eine ergänzende Behandlung sinnvoll ist, helfen wir bei der Einordnung.</p>
+          <div class="cta-card-title">Fragen zur Untersuchung?</div>
+          <p>Ob eine Urodynamik nötig ist und was dein Ergebnis bedeutet, klärst du mit der veranlassenden oder untersuchenden urologischen beziehungsweise urogynäkologischen Praxis. Für allgemeine Fragen zu TCM.ch erreichst du uns über den Kontakt.</p>
           <div class="cta-row">
-            <a class="btn btn--primary" href="/standorte/">Praxis finden</a>
+            <a class="btn btn--ghost" href="/kontakt/">Allgemeiner Kontakt</a>
           </div>
         </div>
       </div>
