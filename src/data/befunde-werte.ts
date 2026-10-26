@@ -115,6 +115,9 @@ export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = '2026-10-24';
 // Artikelpaket 25.10.2026 (9 Wissen-Artikel): Draft, bis zum Release undefined => keine Schema-Daten,
 // kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
 export const PUBLISHED_ARTIKEL_2026_10_25: string | undefined = '2026-10-25';
+// Bibliothek 26.10.2026 (10 Beschwerden ohne Datum, 3 Befunde, 1 Untersuchung): Draft, bis zum Release undefined =>
+// keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
+export const PUBLISHED_BIBLIOTHEK_2026_10_26: string | undefined = undefined;
 
 export const befundeWerte: BefundWert[] = [
   {
@@ -3940,6 +3943,157 @@ export const befundeWerte: BefundWert[] = [
     relatedArticles: [
       { href: '/gesundheitsbibliothek/befunde-werte/testosteron-wert/', label: 'Testosteron-Wert' },
       { href: '/gesundheitsbibliothek/befunde-werte/cortisol-wert/', label: 'Cortisol-Wert' },
+    ],
+  },
+  // ──────────────────────────────────────────── BIBLIOTHEK 26.10.2026 (Draft, Publikationsdatum über PUBLISHED_BIBLIOTHEK_2026_10_26)
+  {
+    slug: 'trak-erhoeht',
+    gruppe: 'Schilddrüse',
+    title: 'TRAK erhöht: Was bedeuten TSH-Rezeptor-Antikörper?',
+    metaTitle: 'TRAK erhöht: TSH-Rezeptor-Antikörper verstehen',
+    metaDescription: 'TRAK (TSH-Rezeptor-Antikörper) erhöht: Hinweis auf Morbus Basedow, Rolle bei Diagnose, vor Therapieende und in der Schwangerschaft, und was der Wert allein nicht beweist.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    deck: 'TRAK sind Antikörper gegen den TSH-Rezeptor der Schilddrüse. Ein erhöhter Wert passt meist zu Morbus Basedow und wird immer zusammen mit TSH, fT4 und den Beschwerden gelesen.',
+    primaryPurpose: 'Einordnung des Laborbefunds TRAK (TSH-Rezeptor-Antikörper, TRAb) erhöht; keine Erkrankungs- oder Therapieseite.',
+    canonicalIntentOwner: ['/beschwerden/schilddruesenueberfunktion/'],
+    overlapNotes: 'Antikörperbefund. Erkrankung Überfunktion bleibt bei /beschwerden/schilddruesenueberfunktion/, TPO bei /befunde-werte/tpo-antikoerper-erhoeht/, TSH bei tsh-niedrig/tsh-erhoeht, fT3/fT4 bei ft3-ft4. Geprüft 26.10.2026 gegen Map, Guards und gerenderte Seiten: kein bestehender Owner für TRAK.',
+    suggestedReviewerType: 'Ärztliche Review (Endokrinologie/Labormedizin)',
+    shortAnswerHtml: `<p>TRAK (TSH-Rezeptor-Antikörper, englisch TRAb) sind Autoantikörper, die sich an den TSH-Rezeptor der Schilddrüse binden. Die stimulierenden Antikörper regen die Schilddrüse an, zu viel Hormon zu bilden. Ein erhöhter Wert spricht deshalb vor allem für einen <strong>Morbus Basedow</strong> (englisch Graves' disease), besonders wenn das TSH tief und die Schilddrüsenhormone hoch sind. Allein ist der Wert keine Diagnose.</p>`,
+    bodyHtml: `<p>Die Schilddrüse wird normalerweise über das Hormon TSH aus der Hirnanhangsdrüse gesteuert. Beim Morbus Basedow bildet das Immunsystem Antikörper gegen den TSH-Rezeptor. Sie besetzen ihn wie TSH und treiben die Hormonbildung unkontrolliert an. Laut europäischer Leitlinie zum Morbus Basedow (European Thyroid Association 2018) wird TRAK empfohlen:</p>
+<ul>
+<li>für die Diagnose und die Abgrenzung zu anderen Ursachen einer Überfunktion</li>
+<li>vor dem Ende einer Behandlung mit Thyreostatika, weil anhaltend hohe Werte gegen ein Absetzen sprechen</li>
+<li>in der Schwangerschaft bei Morbus Basedow</li>
+</ul>
+<p>Meist wird TRAK bestimmt, nachdem <a href="/gesundheitsbibliothek/befunde-werte/tsh-niedrig/">TSH</a> und <a href="/gesundheitsbibliothek/befunde-werte/ft3-ft4/">fT3/fT4</a> eine Überfunktion zeigen. Die Erkrankung selbst beschreibt die Seite <a href="/beschwerden/schilddruesenueberfunktion/">Schilddrüsenüberfunktion</a>.</p>`,
+    contextHtml: `<p>Normalbereiche hängen vom Labor und vom Testverfahren ab; vergleiche deinen Wert immer mit dem Bereich auf deinem Befund. Es gibt Tests, die alle Antikörper gegen den TSH-Rezeptor erfassen, und solche, die gezielt die stimulierenden Antikörper messen (TSI). Die Ergebnisse verschiedener Verfahren lassen sich nicht ohne Weiteres vergleichen.</p>`,
+    notProofHtml: `<p>Ein erhöhter TRAK-Wert beweist allein keine behandlungsbedürftige Überfunktion; entscheidend sind die Schilddrüsenhormone, die Beschwerden und weitere Befunde. Laut MedlinePlus können Schilddrüsenantikörper wie TPO, TSI oder TRAb sowohl bei Morbus Basedow als auch bei Hashimoto vorkommen. Ein Antikörperwert ist auch kein Grund, Medikamente selbst anzupassen.</p>`,
+    redFlagsHtml: `<p>Zeitnah ärztlich besprechen solltest du einen erhöhten Wert zusammen mit Gewichtsverlust, Herzrasen, Zittern der Hände, Wärmeempfindlichkeit, Schlafproblemen, Unruhe, einer Schwellung am Hals oder hervortretenden Augen. Bist du schwanger und hast eine Schilddrüsenerkrankung, informiere früh die betreuende Fachperson: Eine Schilddrüsenerkrankung kann in der Schwangerschaft dir und dem Kind schaden und sollte rasch behandelt werden.</p>`,
+    followUpHtml: `<p>Üblich sind <a href="/gesundheitsbibliothek/befunde-werte/tsh-niedrig/">TSH</a>, <a href="/gesundheitsbibliothek/befunde-werte/ft3-ft4/">fT3 und fT4</a>, bei Bedarf <a href="/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/">TPO-Antikörper</a>, ein <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> der Schilddrüse und eine endokrinologische Beurteilung. Während einer Behandlung wird TRAK erneut gemessen, besonders bevor die Medikamente abgesetzt werden.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Habe ich Morbus Basedow, wenn TRAK erhöht ist?</strong></p>
+<p>Ein erhöhter Wert spricht dafür, besonders bei tiefem TSH und hohen Schilddrüsenhormonen. Die Diagnose stellt die Ärztin aus Werten, Ultraschall und Beschwerden.</p>
+<p><strong>Was ist der Unterschied zu TPO-Antikörpern?</strong></p>
+<p>TPO-Antikörper richten sich gegen ein Enzym der Schilddrüse und kommen vor allem bei Hashimoto vor. TRAK richten sich gegen den TSH-Rezeptor und gehören vor allem zum Morbus Basedow.</p>
+<p><strong>Warum wird TRAK in der Schwangerschaft gemessen?</strong></p>
+<p>Die europäische Leitlinie empfiehlt die Messung bei Morbus Basedow auch in der Schwangerschaft. Was dein Ergebnis für dich und das Kind bedeutet, bespricht die betreuende Fachperson mit dir.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Thyroid Antibody Tests', url: 'https://medlineplus.gov/lab-tests/thyroid-antibodies/' },
+      { label: 'gesund.bund.de: TRAK, Laborwert Schilddrüse', url: 'https://gesund.bund.de/glossar/trak-laborwert-schilddruese' },
+      { label: 'Kahaly et al. 2018: European Thyroid Association Guideline for the Management of Graves\' Hyperthyroidism, European Thyroid Journal', url: 'https://pubmed.ncbi.nlm.nih.gov/30283735/' },
+    ],
+    integrativeContextHtml: `<p>Schilddrüsenantikörper gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert TRAK-Werte nicht, und kein Kräuterplan senkt Antikörper oder ersetzt die Behandlung einer Überfunktion.</p>`,
+    relatedConditions: [
+      { href: '/beschwerden/schilddruesenueberfunktion/', label: 'Schilddrüsenüberfunktion' },
+      { href: '/beschwerden/hashimoto/', label: 'Hashimoto' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/tpo-antikoerper-erhoeht/', label: 'TPO-Antikörper erhöht: Was bedeutet das?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/tsh-niedrig/', label: 'TSH niedrig: Was bedeutet ein zu niedriger TSH-Wert?' },
+    ],
+  },
+  {
+    slug: 'calcium-zu-niedrig',
+    gruppe: 'Elektrolyte',
+    title: 'Calcium zu niedrig: Was bedeutet der Wert?',
+    metaTitle: 'Calcium zu niedrig (Hypokalzämie): Befund verstehen',
+    metaDescription: 'Calcium zu niedrig im Blut: warum Albumin und ionisiertes Calcium zählen, mögliche Ursachen von Vitamin D bis Nebenschilddrüse und wann ein tiefer Wert rasch abgeklärt wird.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    deck: 'Ein tiefer Calciumwert ist oft ein Messeffekt bei wenig Eiweiss im Blut. Bestätigt er sich, wird die Ursache gesucht; ein Calciumpräparat ist nicht automatisch die Antwort.',
+    primaryPurpose: 'Einordnung des Laborwerts Calcium erniedrigt (Hypokalzämie), Teil des Elektrolyt-Clusters.',
+    canonicalIntentOwner: [],
+    overlapNotes: 'Gegenstück zu /befunde-werte/calcium-zu-hoch/ (bleibt Owner für erhöhte Werte). Parathormon, Vitamin D, Magnesium und Albumin bleiben eigene Owner (verlinkt). Geprüft 26.10.2026 gegen Map, Guards und gerenderte Seiten: kein bestehender Owner für tiefes Calcium.',
+    suggestedReviewerType: 'Ärztliche Review (Innere Medizin/Endokrinologie)',
+    shortAnswerHtml: `<p>Etwa die Hälfte des Calciums im Blut ist an Eiweiss gebunden, vor allem an Albumin, die andere Hälfte ist frei (ionisiert) und wirksam. Das Labor misst meist das Gesamtcalcium. Ist das <a href="/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/">Albumin</a> tief, sinkt der Gesamtwert, obwohl das freie Calcium normal sein kann. Bestätigt sich ein tiefer Wert, spricht man von einer <strong>Hypokalzämie</strong>; dann wird die Ursache gesucht.</p>`,
+    bodyHtml: `<h2>Gesamt-Calcium und ionisiertes Calcium</h2>
+<p>Der Körper hält den Calciumspiegel im Blut über Hormone sehr genau: Sinkt er, setzt das Parathormon Calcium aus den Knochen frei; Vitamin D steuert, wie viel Calcium aus der Nahrung aufgenommen wird. Ein auffälliger Gesamtwert wird deshalb oft zuerst bestätigt, um Albumin korrigiert oder als ionisiertes Calcium gemessen.</p>
+<h2>Warum kann Calcium zu niedrig sein?</h2>
+<ul>
+<li><strong>Wenig Eiweiss im Blut,</strong> etwa bei Lebererkrankungen oder Mangelernährung: senkt den Gesamtwert</li>
+<li><strong>Vitamin-D- oder Magnesiummangel</strong></li>
+<li><strong>Nebenschilddrüsen-Unterfunktion</strong> mit zu wenig Parathormon, zum Beispiel nach einer Operation am Hals</li>
+<li><strong>Nierenerkrankungen</strong> und entwässernde Medikamente wie Furosemid, die mehr Calcium ausscheiden</li>
+<li><strong>Magen-Darm-Erkrankungen,</strong> die die Aufnahme aus der Nahrung stören</li>
+<li><strong>Medikamente</strong> wie Kortison oder Mittel gegen Epilepsie</li>
+<li><strong>Bauchspeicheldrüsenentzündung</strong></li>
+<li><strong>zu wenig Calcium in der Ernährung</strong></li>
+</ul>`,
+    contextHtml: `<p>Referenzbereiche unterscheiden sich zwischen Laboren. Als Orientierung nennt das deutsche Institut IQWiG für das Gesamtcalcium bei Erwachsenen etwa 2,20 bis 2,54 mmol/l; für ionisiertes Calcium gelten etwa halb so hohe Werte. Massgeblich ist der Bereich auf deinem Befund. Viele Menschen mit leicht abweichenden Werten haben keine Beschwerden.</p>`,
+    notProofHtml: `<p>Ein tiefer Calciumwert im Blut heisst nicht, dass du zu wenig Calcium isst, und er sagt nichts darüber, wie viel Calcium in deinen Knochen steckt; die Knochendichte misst eine <a href="/gesundheitsbibliothek/untersuchungen/knochendichtemessung/">Knochendichtemessung</a>. Ein einzelner leicht tiefer Wert ist kein Grund, Calcium- oder Vitamin-D-Präparate eigenmächtig zu beginnen oder Medikamente abzusetzen.</p>`,
+    redFlagsHtml: `<p>Bei einem Krampfanfall gilt in der Schweiz: Notruf 144. Noch am gleichen Tag ärztlich beurteilt gehören ein bekannter tiefer Wert zusammen mit Muskelkrämpfen oder Muskelsteifigkeit, Kribbeln an Lippen, Zunge, Fingern oder Füssen oder einem unregelmässigen Herzschlag.</p>`,
+    followUpHtml: `<p>Üblich sind die <strong>Bestätigung (albuminkorrigiert oder ionisiert)</strong>, <a href="/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/">Albumin</a>, <a href="/gesundheitsbibliothek/befunde-werte/parathormon/">Parathormon</a>, <a href="/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/">Vitamin-D-Status</a>, <a href="/gesundheitsbibliothek/befunde-werte/magnesium-zu-niedrig/">Magnesium</a>, <a href="/gesundheitsbibliothek/befunde-werte/nierenwerte-erhoeht/">Nierenwerte</a> und die Medikamentenliste; manchmal auch die Calciumausscheidung im Urin. Den Gegenpol beschreibt <a href="/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/">Calcium zu hoch</a>.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Brauche ich Calciumtabletten?</strong></p>
+<p>Nicht automatisch. Zuerst wird geklärt, ob der Wert echt tief ist und woher er kommt. Ob ein Präparat sinnvoll ist, entscheidet die Ärztin.</p>
+<p><strong>Kann ein tiefer Eiweisswert den Calciumwert verfälschen?</strong></p>
+<p>Ja. Bei wenig Albumin sinkt das gemessene Gesamtcalcium, auch wenn das freie Calcium normal ist. Deshalb wird oft korrigiert oder das ionisierte Calcium gemessen.</p>
+<p><strong>Sagt der Wert etwas über Osteoporose?</strong></p>
+<p>Nein. Der Blutwert zeigt nicht, wie viel Calcium in den Knochen steckt. Dafür gibt es die Knochendichtemessung.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Calcium Blood Test', url: 'https://medlineplus.gov/lab-tests/calcium-blood-test/' },
+      { label: 'IQWiG, gesundheitsinformation.de: Kalzium (Laborwert)', url: 'https://www.gesundheitsinformation.de/kalzium.html' },
+    ],
+    integrativeContextHtml: `<p>Der Calciumhaushalt gehört in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert den Wert nicht und ersetzt keine Abklärung von Nebenschilddrüsen, Vitamin D oder Nieren.</p>`,
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/calcium-zu-hoch/', label: 'Calcium zu hoch: Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/parathormon/', label: 'Parathormon (PTH): Was bedeutet der Wert?' },
+      { href: '/gesundheitsbibliothek/befunde-werte/vitamin-d-zu-niedrig/', label: 'Vitamin D zu niedrig: Was bedeutet der Wert?' },
+    ],
+  },
+  {
+    slug: 'gesamt-ige-erhoeht',
+    gruppe: 'Weitere Werte',
+    title: 'Gesamt-IgE erhöht: Was bedeutet der Wert?',
+    metaTitle: 'Gesamt-IgE erhöht: warum der Wert keine Allergie beweist',
+    metaDescription: 'Gesamt-IgE erhöht: Hinweis auf eine Allergieneigung, aber kein Allergienachweis. Unterschied zum spezifischen IgE, andere Ursachen wie Rauchen oder Parasiten und sinnvolle nächste Schritte.',
+    category: 'laborwert',
+    status: 'published',
+    indexable: true,
+    publishedAt: PUBLISHED_BIBLIOTHEK_2026_10_26,
+    deck: 'Das Gesamt-IgE misst alle IgE-Antikörper im Blut. Ein hoher Wert zeigt weder, worauf du allergisch bist, noch wie stark eine Allergie ist.',
+    primaryPurpose: 'Einordnung des Laborbefunds Gesamt-IgE (Total-IgE) erhöht; keine Testablauf- oder Allergieseite.',
+    canonicalIntentOwner: ['/gesundheitsbibliothek/untersuchungen/allergietest/'],
+    overlapNotes: 'Allergietest-Owner (/untersuchungen/allergietest/) behält Testablauf, Pricktest, Epikutantest und spezifisches IgE; er erwähnt das Gesamt-IgE nicht. Diese Seite besitzt nur den Befund-Intent Gesamt-IgE erhöht. Eosinophile bleiben eigener Owner. Geprüft 26.10.2026 gegen Map, Guards und gerenderte Seiten.',
+    suggestedReviewerType: 'Ärztliche Review (Allergologie/Labormedizin)',
+    shortAnswerHtml: `<p>IgE-Antikörper vermitteln allergische Reaktionen vom Soforttyp. Das Gesamt-IgE ist die Summe aller IgE-Antikörper im Blut. Ein erhöhter Wert kann zu einer Allergieneigung passen, etwa bei Heuschnupfen, Asthma oder Neurodermitis, aber auch andere Gründe haben, zum Beispiel Rauchen oder einen Parasitenbefall. Er zeigt <strong>nicht</strong>, worauf du allergisch bist und wie stark eine Allergie ist.</p>`,
+    bodyHtml: `<h2>Gesamt-IgE oder spezifisches IgE?</h2>
+<ul>
+<li><strong>Gesamt-IgE</strong> (auch Total-IgE): misst die gesamte Menge IgE im Blut, ohne Bezug zu einem bestimmten Auslöser</li>
+<li><strong>Spezifisches IgE:</strong> misst IgE gegen ein einzelnes Allergen, etwa Gräserpollen, Bienengift oder Erdnuss; dafür wird jedes Allergen einzeln getestet</li>
+</ul>
+<p>Für die Frage «Worauf reagiere ich?» braucht es Vorgeschichte, Hauttests oder spezifisches IgE; wie das abläuft, beschreibt die Seite <a href="/gesundheitsbibliothek/untersuchungen/allergietest/">Allergietest</a>. Das Gesamt-IgE kann ergänzend Hinweise auf eine allgemeine Neigung zu Allergien (Atopie) geben.</p>`,
+    contextHtml: `<p>Referenzbereiche hängen vom Labor ab; für Erwachsene wird oft ein Wert unter 100 kU/l (U/ml) angegeben, für Kinder gelten tiefere Grenzen. Massgeblich ist der Bereich auf deinem Befund. Auch Menschen ohne Allergie können erhöhte Werte haben, und ein normaler Wert schliesst eine Allergie nicht aus.</p>`,
+    notProofHtml: `<p>Ein erhöhtes Gesamt-IgE beweist keine Allergie und benennt keinen Auslöser. Es ist kein Grund, Lebensmittel, Haustiere oder Pflanzen auf Verdacht zu meiden. Umgekehrt schliesst ein normales Gesamt-IgE eine Allergie nicht aus. Laut MedlinePlus können Bluttests auf IgE auch falsch positiv sein.</p>`,
+    redFlagsHtml: `<p>Atemnot, Schwellungen an Gesicht, Lippen oder Zunge, Kreislaufprobleme oder Bewusstseinsstörung nach Kontakt mit einem möglichen Auslöser, etwa einem Insektenstich oder einem Lebensmittel, können eine schwere allergische Reaktion sein: Notruf 144.</p>`,
+    followUpHtml: `<p>Je nach Beschwerden folgen eine allergologische Abklärung mit Hauttests oder spezifischem IgE (siehe <a href="/gesundheitsbibliothek/untersuchungen/allergietest/">Allergietest</a>), ein Blutbild mit <a href="/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/">Eosinophilen</a> und bei passender Vorgeschichte die Suche nach anderen Ursachen wie einem Parasitenbefall. Beschwerden wie <a href="/beschwerden/heuschnupfen/">Heuschnupfen</a>, <a href="/beschwerden/asthma/">Asthma</a> oder <a href="/beschwerden/neurodermitis/">Neurodermitis</a> sind wichtiger als die Höhe des Werts.</p>`,
+    faqHtml: `<h2>Häufige Fragen</h2>
+<p><strong>Habe ich eine Allergie, wenn mein Gesamt-IgE erhöht ist?</strong></p>
+<p>Nicht sicher. Der Wert kann zu einer Allergieneigung passen, beweist aber keine Allergie. Entscheidend sind Beschwerden und gezielte Tests.</p>
+<p><strong>Was ist der Unterschied zum spezifischen IgE?</strong></p>
+<p>Das Gesamt-IgE misst alle IgE-Antikörper zusammen. Das spezifische IgE misst Antikörper gegen ein bestimmtes Allergen und kann einen Auslöser eingrenzen.</p>
+<p><strong>Kann der Wert ohne Allergie erhöht sein?</strong></p>
+<p>Ja. Laut MedlinePlus können zum Beispiel Rauchen oder ein Parasitenbefall den IgE-Wert anheben.</p>`,
+    sources: [
+      { label: 'MedlinePlus: Allergy Blood Test', url: 'https://medlineplus.gov/lab-tests/allergy-blood-test/' },
+      { label: 'gesundheit.gv.at (Österreichisches Gesundheitsportal): IgE, Laborwerte', url: 'https://www.gesundheit.gv.at/labor/laborwerte/allergie/ige.html' },
+    ],
+    integrativeContextHtml: `<p>Laborwerte zur Allergie gehören in die schulmedizinische Beurteilung: Die chinesische Medizin interpretiert IgE-Werte nicht, und kein Verfahren «senkt» das IgE als Ersatz für eine allergologische Abklärung.</p>`,
+    relatedConditions: [
+      { href: '/beschwerden/heuschnupfen/', label: 'Heuschnupfen' },
+      { href: '/beschwerden/asthma/', label: 'Asthma' },
+      { href: '/beschwerden/neurodermitis/', label: 'Neurodermitis' },
+    ],
+    relatedDiagnostics: [
+      { href: '/gesundheitsbibliothek/untersuchungen/allergietest/', label: 'Allergietest' },
+    ],
+    relatedArticles: [
+      { href: '/gesundheitsbibliothek/befunde-werte/eosinophile-erhoeht/', label: 'Eosinophile erhöht: Was bedeutet das?' },
     ],
   },
 ];

@@ -5208,6 +5208,338 @@ export const beschwerden: Beschwerde[] = [
         "label": "Physiotherapie"
       }
     ]
+  },
+  {
+    "slug": "medikamentenuebergebrauchskopfschmerz",
+    "name": "Medikamentenübergebrauchskopfschmerz",
+    "title": "Medikamentenübergebrauchskopfschmerz: Symptome und Behandlung",
+    "metaDesc": "Kopfweh an den meisten Tagen trotz Tabletten? Wann Akutmittel selbst Kopfschmerzen auslösen, warum die Einnahmetage zählen und wie der ärztliche Plan aussieht.",
+    "conditionName": "Medikamentenübergebrauchskopfschmerz",
+    "lead": "Wer über Monate an vielen Tagen Kopfwehmittel nimmt, kann einen eigenen Dauerkopfschmerz entwickeln. Er ist behandelbar, mit einem ärztlich begleiteten Plan.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "kopfschmerzen",
+        "label": "Kopfschmerzen"
+      },
+      {
+        "slug": "migraene",
+        "label": "Migräne"
+      },
+      {
+        "slug": "spannungskopfschmerzen",
+        "label": "Spannungskopfschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "hypermobilitaet",
+    "name": "Hypermobilität",
+    "title": "Hypermobilität mit Schmerzen: Abklärung und Behandlung",
+    "metaDesc": "Überbewegliche Gelenke mit Schmerzen: Unterschied zwischen beweglich, HSD und hypermobilem EDS, Beighton-Score, Abklärung in der Schweiz und muskuläre Stabilisierung.",
+    "conditionName": "Hypermobilität",
+    "lead": "Sehr bewegliche Gelenke sind häufig und meist harmlos. Kommen Schmerzen, wiederholte Verstauchungen oder starke Müdigkeit dazu, lohnt sich eine Abklärung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "fibromyalgie",
+        "label": "Fibromyalgie"
+      },
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      },
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "schambeinentzuendung",
+    "name": "Schambeinentzündung",
+    "title": "Schambeinentzündung (Osteitis pubis): Symptome und Behandlung",
+    "metaDesc": "Schambeinentzündung (Osteitis pubis): Leistenschmerz bei Sportlern, Abgrenzung zu Adduktoren und Leistenbruch, Abklärung mit Ultraschall und MRI, Entlastung und Reha.",
+    "conditionName": "Schambeinentzündung",
+    "lead": "Schmerzen über dem Schambein, die beim Laufen, Schiessen oder Richtungswechsel zunehmen, können von einer Reizung der Schambeinfuge stammen. Entlastung und gezielter Aufbau stehen im Vordergrund.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "adduktorentendinopathie",
+        "label": "Adduktorentendinopathie"
+      },
+      {
+        "slug": "hueftschmerzen",
+        "label": "Hüftschmerzen"
+      },
+      {
+        "slug": "hueftimpingement",
+        "label": "Hüftimpingement"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "sjoegren-syndrom",
+    "name": "Sjögren-Syndrom",
+    "title": "Sjögren-Syndrom: Symptome, Abklärung und Behandlung",
+    "metaDesc": "Sjögren-Syndrom (Morbus Sjögren): trockene Augen und Mund, Müdigkeit, Gelenkschmerzen. Abklärung mit Antikörpern, Speicheldrüsen-Ultraschall und Biopsie; Behandlung und Kontrollen.",
+    "conditionName": "Sjögren-Syndrom",
+    "lead": "Trockene Augen und ein trockener Mund über lange Zeit können zu Morbus Sjögren gehören. Diagnose und Behandlung liegen in rheumatologischer Hand.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "trockene-augen",
+        "label": "Trockene Augen"
+      },
+      {
+        "slug": "rheumatoide-arthritis",
+        "label": "Rheumatoide Arthritis"
+      },
+      {
+        "slug": "rheuma",
+        "label": "Rheuma"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "essentieller-tremor",
+    "name": "Essentieller Tremor",
+    "title": "Essentieller Tremor: Symptome, Abklärung und Behandlung",
+    "metaDesc": "Essentieller Tremor: Zittern beim Halten und Bewegen, Unterschied zu Parkinson und dystonem Tremor, neurologische Abklärung, Medikamente, Hirnstimulation und fokussierter Ultraschall.",
+    "conditionName": "Essentieller Tremor",
+    "lead": "Zittern beider Hände beim Halten oder Bewegen, oft familiär: Der essentielle Tremor ist häufig, lässt sich von Parkinson abgrenzen und ist behandelbar, wenn er stört.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "schilddruesenueberfunktion",
+        "label": "Schilddrüsenüberfunktion"
+      },
+      {
+        "slug": "polyneuropathie",
+        "label": "Polyneuropathie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "pots-syndrom",
+    "name": "POTS",
+    "title": "POTS-Syndrom: Herzrasen beim Aufstehen abklären",
+    "metaDesc": "POTS (posturales Tachykardiesyndrom): Kriterien mit Pulsanstieg im Stehen, Abgrenzung zu Blutdruckabfall, Long Covid und ME/CFS, Stehtest, Kipptisch und individuelle Behandlung.",
+    "conditionName": "POTS",
+    "lead": "Steigt der Puls im Stehen stark an und bessert sich das Unwohlsein im Liegen, kann ein posturales Tachykardiesyndrom dahinterstecken. Für die Diagnose braucht es eine Messung im Liegen und Stehen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "long-covid",
+        "label": "Long Covid"
+      },
+      {
+        "slug": "me-cfs",
+        "label": "ME/CFS"
+      },
+      {
+        "slug": "niedriger-blutdruck",
+        "label": "Niedriger Blutdruck"
+      },
+      {
+        "slug": "schwindel",
+        "label": "Schwindel"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "mikroskopische-kolitis",
+    "name": "Mikroskopische Kolitis",
+    "title": "Mikroskopische Kolitis: kollagene und lymphozytäre Kolitis",
+    "metaDesc": "Mikroskopische Kolitis (kollagene und lymphozytäre Kolitis): chronisch wässriger Durchfall, Diagnose nur mit Gewebeproben, Risikofaktoren, Budesonid und Abgrenzung zum Reizdarm.",
+    "conditionName": "Mikroskopische Kolitis",
+    "lead": "Wässriger Durchfall über Wochen, und die Darmspiegelung sieht normal aus: Erst die Gewebeproben zeigen eine kollagene oder lymphozytäre Kolitis.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "colitis-ulcerosa",
+        "label": "Colitis ulcerosa"
+      },
+      {
+        "slug": "morbus-crohn",
+        "label": "Morbus Crohn"
+      },
+      {
+        "slug": "zoeliakie",
+        "label": "Zöliakie"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "gallensaeurebedingter-durchfall",
+    "name": "Gallensäurebedingter Durchfall",
+    "title": "Gallensäurebedingter Durchfall: Ursachen, Test und Behandlung",
+    "metaDesc": "Gallensäurebedingter Durchfall (Gallensäureverlustsyndrom): Unterschied zwischen Gallensäureverlust und Durchfall, Ursachen, SeHCAT- und C4-Test, Behandlung mit Gallensäurebindern.",
+    "conditionName": "Gallensäurebedingter Durchfall",
+    "lead": "Gelangen zu viele Gallensäuren in den Dickdarm, entsteht wässriger Durchfall. Ein Teil der Menschen mit Reizdarm vom Durchfalltyp hat diese Ursache; ein Test kann sie zeigen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "reizdarm",
+        "label": "Reizdarm"
+      },
+      {
+        "slug": "morbus-crohn",
+        "label": "Morbus Crohn"
+      },
+      {
+        "slug": "mikroskopische-kolitis",
+        "label": "Mikroskopische Kolitis"
+      },
+      {
+        "slug": "sibo",
+        "label": "SIBO"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "proctalgia-fugax",
+    "name": "Proctalgia fugax",
+    "title": "Proctalgia fugax: kurze Schmerzattacken im After",
+    "metaDesc": "Proctalgia fugax: plötzliche, kurze Schmerzattacken im After mit beschwerdefreien Pausen. Abgrenzung zu Levator-ani-Syndrom, Fissur und Abszess, Abklärung und Behandlungsgrenzen.",
+    "conditionName": "Proctalgia fugax",
+    "lead": "Ein plötzlicher, scharfer Schmerz im After, der nach Sekunden bis Minuten verschwindet: Das ist typisch für Proctalgia fugax. Sie gilt als gutartig; andere Ursachen werden trotzdem ausgeschlossen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "beckenbodenverspannung",
+        "label": "Beckenbodenverspannung"
+      },
+      {
+        "slug": "pudendusneuralgie",
+        "label": "Pudendusneuralgie"
+      },
+      {
+        "slug": "haemorrhoiden",
+        "label": "Hämorrhoiden"
+      },
+      {
+        "slug": "steissbeinschmerzen",
+        "label": "Steissbeinschmerzen"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
+  },
+  {
+    "slug": "beckenorgansenkung",
+    "name": "Beckenorgansenkung",
+    "title": "Beckenorgansenkung: Gebärmutter- und Blasensenkung",
+    "metaDesc": "Beckenorgansenkung: Formen von Gebärmutter-, Blasen- und Darmsenkung, Symptome, gynäkologische Untersuchung, Beckenbodentraining, Pessar, Hormone und Operation verständlich erklärt.",
+    "conditionName": "Beckenorgansenkung",
+    "lead": "Ein Druck- oder Fremdkörpergefühl in der Scheide kann auf eine Senkung von Gebärmutter, Blase oder Darm hinweisen. Je nach Form und Beschwerden helfen Training, Pessar oder eine Operation.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "inkontinenz",
+        "label": "Inkontinenz"
+      },
+      {
+        "slug": "beckenbodenverspannung",
+        "label": "Beckenbodenverspannung"
+      },
+      {
+        "slug": "rektusdiastase",
+        "label": "Rektusdiastase"
+      },
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      }
+    ],
+    "therapies": [
+      {
+        "slug": "physiotherapie",
+        "label": "Physiotherapie"
+      },
+      {
+        "slug": "akupunktur",
+        "label": "Akupunktur"
+      }
+    ]
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);
