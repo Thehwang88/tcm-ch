@@ -441,7 +441,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/fasettensyndrom/",
@@ -5730,7 +5730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 242,
+      "inboundContentLinks": 241,
       "outboundHealthLinks": 17
     },
     {
