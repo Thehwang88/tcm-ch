@@ -524,8 +524,8 @@ if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledB
 // text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
 // Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
 // Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
-// Orientierungsseiten: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
-const waPrefill = encodeURIComponent(INFO_ONLY_SLUGS.has(slug!)
+// Orientierungsseiten und Sjögren: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
+const waPrefill = encodeURIComponent(INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
   ? `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${hName}›.`
   : `Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
 prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);

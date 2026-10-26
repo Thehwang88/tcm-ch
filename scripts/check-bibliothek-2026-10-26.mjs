@@ -231,7 +231,10 @@ for (const slug of INFO) {
   if (!ps.includes('Allgemeiner Kontakt')) errs.push(`${u}: Kontaktabschnitt nicht als allgemeiner Kontakt benannt`);
   if (!noSticky(h)) errs.push(`${u}: mobile Sticky-Leiste «Termin anfragen» aktiv`);
   if (!ps.includes('name="anliegen"') && !ps.includes('data-kf')) errs.push(`${u}: Kontaktformular fehlt (muss erhalten bleiben)`);
-  // Review 2: Kontakt-WhatsApp = allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage; Nummer unverändert.
+}
+// Review 2/Release: Kontakt-WhatsApp aller zehn neuen Leaves = allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage; Nummer unverändert.
+for (const slug of [...INFO, ...OFFER]) {
+  const u = `/beschwerden/${slug}/`; const ps = pageSym(pages.get(u) ?? '');
   const h1 = (ps.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   const want = `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${h1}›.`;
   const was = [...ps.matchAll(/href="https:\/\/wa\.me\/(\d+)(?:\?text=([^"]*))?"/g)];
