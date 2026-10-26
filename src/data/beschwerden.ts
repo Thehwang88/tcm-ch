@@ -5333,12 +5333,7 @@ export const beschwerden: Beschwerde[] = [
         "label": "Polyneuropathie"
       }
     ],
-    "therapies": [
-      {
-        "slug": "akupunktur",
-        "label": "Akupunktur"
-      }
-    ]
+    "therapies": []
   },
   {
     "slug": "pots-syndrom",

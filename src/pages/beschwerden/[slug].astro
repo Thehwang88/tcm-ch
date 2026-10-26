@@ -514,17 +514,20 @@ let prefilledBody = appendSidebarAllLink(
 prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
 // Rebrand-Pilot: byte-identisch duplizierter Standort-Karten-Block -> zentrale
 // Ausgabe (standort-cards.ts); 0/>1 Treffer brechen den Build ab (kein stiller Fallback).
-// Bibliothek 26.10.2026: reine Orientierungsseiten ohne belegten Angebotsbezug (Bericht
+// Bibliothek 26.10.2026: reine Orientierungsseiten ohne dokumentierte krankheitsspezifische Kompetenz (Bericht
 // seo/bibliothek-2026-10-26.md, Abschnitt 2). Opt-in nur für diese Slugs: das Leaf enthält keinen
 // Standort-Karten-Block (also keine Ersetzung) und es gibt keinen Selbsttest-Teaser.
 // Alle anderen Slugs: Verhalten unverändert.
-const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung']);
+const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor']);
 if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledBody, slug!);
 // WhatsApp-Prefill (Konversions-Sprint): Die Legacy-Leaves verlinken wa.me OHNE
 // text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
 // Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
 // Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
-const waPrefill = encodeURIComponent(`Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
+// Orientierungsseiten: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
+const waPrefill = encodeURIComponent(INFO_ONLY_SLUGS.has(slug!)
+  ? `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${hName}›.`
+  : `Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
 prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);
 // CARE-Bridge VOR der bestehenden Inline-Kontakt-Sektion; Sektion bekommt den
 // #kontakt-Anker (Standorte-Pattern), damit der Primaer-CTA sauber scrollt.

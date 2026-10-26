@@ -207,10 +207,11 @@ for (const m of MANIFEST) {
   if (!rec) errs.push(`${m.url}: nicht im Suchindex der Bibliothek`);
   else if (!rec.toLowerCase().includes(m.syn.toLowerCase())) errs.push(`${m.url}: Synonym «${m.syn}» nicht im Suchindex-Eintrag`);
 }
-// Angebotsdarstellung (Review 1): Klasse I = Orientierung ohne belegten Angebotsbezug, Klasse II = ergänzender
-// Akupunkturversuch mit kanonischem Angebot und Studienlage, Befunde/Untersuchung = kein Behandlungsangebot.
-const INFO = ['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung'];
-const OFFER = ['sjoegren-syndrom', 'essentieller-tremor'];
+// Angebotsdarstellung (Review 1+2): INFO = reine Orientierung (keine dokumentierte krankheitsspezifische Kompetenz),
+// OFFER = allgemeiner Akupunktur-Kontakt ohne Sjögren-Kompetenzanspruch, Befunde/Untersuchung = kein Behandlungsangebot.
+// Eine Studie belegt keine Kompetenz unserer Praxen.
+const INFO = ['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor'];
+const OFFER = ['sjoegren-syndrom'];
 const noSticky = (h) => /<[a-z]+[^>]*\sdata-no-sticky-cta(?:[\s>=])/.test(h);
 const pageSym = (h) => { const i = h.indexOf('id="page-symptom"'); const f = h.indexOf('<footer', i); return i < 0 ? '' : h.slice(i, f > i ? f : undefined); }; // ohne globalen Footer
 const hubHtml = pages.get('/beschwerden/') ?? '';
@@ -230,6 +231,15 @@ for (const slug of INFO) {
   if (!ps.includes('Allgemeiner Kontakt')) errs.push(`${u}: Kontaktabschnitt nicht als allgemeiner Kontakt benannt`);
   if (!noSticky(h)) errs.push(`${u}: mobile Sticky-Leiste «Termin anfragen» aktiv`);
   if (!ps.includes('name="anliegen"') && !ps.includes('data-kf')) errs.push(`${u}: Kontaktformular fehlt (muss erhalten bleiben)`);
+  // Review 2: Kontakt-WhatsApp = allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage; Nummer unverändert.
+  const h1 = (ps.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const want = `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${h1}›.`;
+  const was = [...ps.matchAll(/href="https:\/\/wa\.me\/(\d+)(?:\?text=([^"]*))?"/g)];
+  if (was.length < 2) errs.push(`${u}: erwartete Kontakt-WhatsApp-Links fehlen (${was.length})`);
+  for (const [, nr, t] of was) {
+    if (nr !== '41775236122') errs.push(`${u}: WhatsApp-Nummer ${nr} verändert`);
+    if (decodeURIComponent(t ?? '') !== want) errs.push(`${u}: WhatsApp-Text «${decodeURIComponent(t ?? '')}» statt «${want}»`);
+  }
 }
 for (const slug of OFFER) {
   const u = `/beschwerden/${slug}/`; const ps = pageSym(pages.get(u) ?? '');
@@ -237,6 +247,8 @@ for (const slug of OFFER) {
   if (rows.join() !== 'akupunktur') errs.push(`${u}: Therapie-Karten ${rows.join() || 'keine'} statt nur Akupunktur`);
   if (ps.includes('Wir behandeln bei')) errs.push(`${u}: Standort-Behandlungsabsatz`);
   if (/<h2 id="symptom-cta-title">[^<]*(Sjögren|Tremor)[^<]*<\/h2>/.test(ps)) errs.push(`${u}: CTA-Band verspricht krankheitsspezifische Behandlung`);
+  for (const needle of ['Häufig eingesetzte Methoden', 'Passende TCM.ch-Klinik finden', '>Passende Therapien<']) if (ps.includes(needle)) errs.push(`${u}: «${needle}» suggeriert krankheitsspezifisches Angebot`);
+  if (!ps.includes('eine spezialisierte Sjögren-Sprechstunde gibt es bei TCM.ch nicht')) errs.push(`${u}: Abgrenzung allgemeines Akupunktur-Angebot fehlt`);
 }
 for (const m of MANIFEST.filter((x) => x.type !== 'leaf')) {
   const h = pages.get(m.url) ?? '';
