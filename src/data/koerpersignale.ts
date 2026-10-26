@@ -191,6 +191,7 @@ export const koerpersignale: Koerpersignal[] = [
 </ul>
 <h2>Ist das derselbe Schwindel wie beim Umdrehen im Bett?</h2>
 <p>Nein, und die Unterscheidung ist wichtig. Beim Aufsteh-Schwindel ist der Kreislauf der Taktgeber: Es wird dir schummrig oder schwarz vor Augen, typischerweise nach dem Aufstehen aus dem Sitzen oder Liegen. Beim Lagerungsschwindel dreht sich dagegen das Zimmer, ausgelöst durch bestimmte Kopfbewegungen, auch mitten in der Nacht beim Umdrehen. Das zweite Muster haben wir hier beschrieben: <a href="/koerpersignale/schwindel-beim-umdrehen-im-bett/">Schwindel beim Umdrehen im Bett</a>.</p>
+<p>Steigt beim Stehen vor allem der Puls stark an und kommen Schwindel und Herzklopfen über Monate fast täglich, kann ein <a href="/beschwerden/pots-syndrom/">POTS</a> dahinterstecken; die Diagnose braucht eine ärztliche Messung im Liegen und Stehen.</p>
 <h2>Was du selbst tun kannst</h2>
 <p>Ein paar einfache Gewohnheiten entlasten die Kreislaufregulation spürbar:</p>
 <p>Steh in zwei Etappen auf: erst an die Bettkante oder Stuhlkante, kurz durchatmen, dann hoch. Aktiviere vor dem Aufstehen die Beinmuskeln, zum Beispiel mit ein paar Mal Zehen anziehen und Füsse kreisen, das pumpt Blut zurück Richtung Rumpf. Trink über den Tag genug, gerade morgens. Und wenn dich das Muster regelmässig erwischt, hilft Ausdauer- und Beinkraft-Training dem Kreislauf langfristig mehr als jede Schonung.</p>
@@ -1204,7 +1205,7 @@ export const koerpersignale: Koerpersignal[] = [
 <p>Wenn dein Mund trotz normalem Trinken dauerhaft trocken bleibt, sollte man nicht einfach immer mehr Wasser trinken und das Problem damit abhaken. Auch Erkrankungen wie Diabetes oder das Sjögren-Syndrom können mit anhaltender Mundtrockenheit verbunden sein.</p>
 <h2>Warum sollte dauerhafte Mundtrockenheit ernst genommen werden?</h2>
 <p>Speichel schützt nicht nur vor einem unangenehmen Trockenheitsgefühl. Bei dauerhaft zu wenig Speichel steigt unter anderem das Risiko für Probleme mit Zähnen und Zahnfleisch. Deshalb ist bei länger bestehender Mundtrockenheit auch die zahnmedizinische Perspektive wichtig.</p>
-<p>Ist der Mund nach einer Strahlentherapie im Kopf-Hals-Bereich dauerhaft trocken, hat das eine andere Ursache; was eine Studie zu Akupunktur dabei zeigte, steht unter <a href="/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/">Akupunktur bei Mundtrockenheit nach Bestrahlung</a>.</p><h2>Was kannst du selbst ausprobieren?</h2>
+<p>Ist der Mund nach einer Strahlentherapie im Kopf-Hals-Bereich dauerhaft trocken, hat das eine andere Ursache; was eine Studie zu Akupunktur dabei zeigte, steht unter <a href="/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/">Akupunktur bei Mundtrockenheit nach Bestrahlung</a>.</p><p>Sind Mund und Augen über Monate gemeinsam trocken, oft zusammen mit Müdigkeit oder Gelenkschmerzen, kann ein <a href="/beschwerden/sjoegren-syndrom/">Sjögren-Syndrom</a> dahinterstecken; die Abklärung erfolgt rheumatologisch.</p><h2>Was kannst du selbst ausprobieren?</h2>
 <ul>
 <li>Trinke tagsüber ausreichend.</li>
 <li>Stelle nachts Wasser ans Bett, wenn dir das hilft.</li>
@@ -2513,6 +2514,7 @@ export const koerpersignale: Koerpersignal[] = [
 </ul>
 <p>Typisch für eine stressbedingte Darmreaktion ist, dass der Stuhldrang besonders vor Arbeit, Reisen, Prüfungen oder anderen belastenden Situationen auftritt.</p>
 <div class="wa-callout"><div class="wa-callout-label">Wann medizinisch abklären</div><p>Eine ärztliche Beurteilung ist sinnvoll bei Durchfall über mehrere Wochen, nächtlichem Durchfall, der aus dem Schlaf weckt, Blut im Stuhl, Gewichtsverlust, Fieber, starken Bauchschmerzen oder Zeichen von Flüssigkeitsmangel.</p></div>
+<p>Bei wässrigem, nicht blutigem Durchfall über Wochen kann auch eine <a href="/beschwerden/mikroskopische-kolitis/">mikroskopische Kolitis</a> die Ursache sein; sie zeigt sich nur in Gewebeproben aus der Darmspiegelung.</p>
 <h2>Was du beobachten kannst</h2>
 <p>Achte auf den Abstand zwischen Aufstehen, Kaffee, Frühstück und dem ersten Stuhldrang. Auch ein kurzes Ernährungs- und Symptomtagebuch kann helfen, wiederkehrende Auslöser zu erkennen. Mehr zum Gesamtbild findest du unter <a href="/beschwerden/verdauungsprobleme/">Verdauungsprobleme</a>.</p>`,
     faqs: [],
@@ -4483,6 +4485,7 @@ export const koerpersignale: Koerpersignal[] = [
 <li><strong>Ruhezittern, oft einseitig beginnend:</strong> die ruhende Hand zittert, bei Bewegung wird es besser. Zusammen mit kleiner werdender Schrift, Steifigkeit oder verlangsamtem Gang ein Grund für eine zeitnahe neurologische Beurteilung.</li>
 </ul>
 <p>Zittert nicht nur die Hand, sondern der ganze Körper, ist unsere Seite <a href="/koerpersignale/zittern-am-ganzen-koerper/">Zittern am ganzen Körper</a> der passende Einstieg. Sichtbares Zucken einzelner Muskeln ohne Bewegung des Arms ist wiederum etwas anderes: <a href="/koerpersignale/muskelzucken/">Muskelzucken am Körper</a>.</p>
+<p>Wie der essentielle Tremor abgeklärt und behandelt wird, von Medikamenten bis zu Hirnstimulation und fokussiertem Ultraschall, beschreibt die Seite <a href="/beschwerden/essentieller-tremor/">Essentieller Tremor</a>.</p>
 <h2>Was du selbst beobachten kannst</h2>
 <p>Für die Abklärung ist dein Bericht wertvoller als jede schnelle Untersuchung: Zittern beide Hände oder eine? In Ruhe, beim Halten oder bei gezielten Bewegungen? Seit wann, konstant oder in Episoden? Was verstärkt es (Kaffee, Stress, Hunger, Medikamente) und was beruhigt es? Gibt es Zittern in der Familie? Auch kurze Videoaufnahmen mit dem Handy helfen der Ärztin bei der Einordnung.</p>
 <div class="wa-callout"><div class="wa-callout-label">Wann abklären?</div><p>Zeitnah ärztlich beurteilen lassen solltest du ein Zittern, das neu aufgetreten ist und sich nicht durch Koffein, Stress oder Schlafmangel erklärt, ein einseitiges Ruhezittern, Zittern mit Steifigkeit, Gangveränderung oder kleiner werdender Schrift, Zittern nach Beginn eines neuen Medikaments sowie Zittern mit Gewichtsverlust, Herzrasen oder starkem Schwitzen, das auf eine Schilddrüsenüberfunktion hinweisen kann. Plötzliches Zittern mit Sprach- oder Sehstörungen, Lähmung oder Verwirrtheit ist ein Notfall: Telefon 144.</p></div>
