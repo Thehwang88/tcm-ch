@@ -30,6 +30,20 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/beschwerden/medikamentenuebergebrauchskopfschmerz/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/hypermobilitaet/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/schambeinentzuendung/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/sjoegren-syndrom/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/essentieller-tremor/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/pots-syndrom/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/mikroskopische-kolitis/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/gallensaeurebedingter-durchfall/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/proctalgia-fugax/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/beschwerden/beckenorgansenkung/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/trak-erhoeht/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
+- https://tcm.ch/gesundheitsbibliothek/untersuchungen/urodynamik/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
 - https://tcm.ch/wissen/akupunktur-raucherentwoehnung/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
 - https://tcm.ch/wissen/schroepfen-bei-nackenschmerzen/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-kniearthrose/ — 25.10.2026 (Artikelpaket 25.10.2026, PR #93)
@@ -519,20 +533,6 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
-- https://tcm.ch/beschwerden/medikamentenuebergebrauchskopfschmerz/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/hypermobilitaet/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/schambeinentzuendung/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/sjoegren-syndrom/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/essentieller-tremor/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/pots-syndrom/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/mikroskopische-kolitis/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/gallensaeurebedingter-durchfall/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/proctalgia-fugax/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/beckenorgansenkung/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/befunde-werte/trak-erhoeht/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/gesundheitsbibliothek/untersuchungen/urodynamik/ — vorbereitet 26.10.2026 (Bibliothek 26.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 

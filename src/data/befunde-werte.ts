@@ -119,7 +119,7 @@ export const PUBLISHED_ARTIKEL_2026_10_24: string | undefined = '2026-10-24';
 export const PUBLISHED_ARTIKEL_2026_10_25: string | undefined = '2026-10-25';
 // Bibliothek 26.10.2026 (10 Beschwerden ohne Datum, 3 Befunde, 1 Untersuchung): Draft, bis zum Release undefined =>
 // keine Schema-Daten, kein sichtbares Datum. RELEASE-SCHRITT: beim Go-Live auf das reale Datum setzen ('YYYY-MM-DD').
-export const PUBLISHED_BIBLIOTHEK_2026_10_26: string | undefined = undefined;
+export const PUBLISHED_BIBLIOTHEK_2026_10_26: string | undefined = '2026-10-26';
 
 export const befundeWerte: BefundWert[] = [
   {
