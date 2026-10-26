@@ -4025,7 +4025,7 @@ export const befundeWerte: BefundWert[] = [
 <li><strong>Nierenerkrankungen</strong> und entwässernde Medikamente wie Furosemid, die mehr Calcium ausscheiden</li>
 <li><strong>Magen-Darm-Erkrankungen,</strong> die die Aufnahme aus der Nahrung stören</li>
 <li><strong>Medikamente</strong> wie Kortison oder Mittel gegen Epilepsie</li>
-<li><strong>Bauchspeicheldrüsenentzündung</strong></li>
+<li><strong>Entzündung der Bauchspeicheldrüse</strong> (Pankreatitis)</li>
 <li><strong>zu wenig Calcium in der Ernährung</strong></li>
 </ul>`,
     contextHtml: `<p>Referenzbereiche unterscheiden sich zwischen Laboren. Als Orientierung nennt das deutsche Institut IQWiG für das Gesamtcalcium bei Erwachsenen etwa 2,20 bis 2,54 mmol/l; für ionisiertes Calcium gelten etwa halb so hohe Werte. Massgeblich ist der Bereich auf deinem Befund. Viele Menschen mit leicht abweichenden Werten haben keine Beschwerden.</p>`,
