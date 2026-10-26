@@ -1,12 +1,12 @@
 {
-  "generated": "2026-10-25",
+  "generated": "2026-10-26",
   "totals": {
-    "healthPages": 719,
+    "healthPages": 732,
     "byType": {
       "hub": 6,
-      "condition": 206,
+      "condition": 216,
       "library_hub": 1,
-      "befund": 95,
+      "befund": 98,
       "question": 56,
       "body_region": 9,
       "perspective": 1,
@@ -30,7 +30,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 80,
+      "inboundContentLinks": 81,
       "outboundHealthLinks": 172
     },
     {
@@ -50,8 +50,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/adenomyose/",
@@ -130,7 +130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 13
     },
     {
@@ -170,8 +170,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/beckenorgansenkung/",
+      "type": "condition",
+      "title": "Beckenorgansenkung: Gebärmutter- und Blasensenkung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/bettnaessen/",
@@ -280,7 +290,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 16
     },
     {
@@ -424,6 +434,16 @@
       "outboundHealthLinks": 20
     },
     {
+      "url": "/beschwerden/essentieller-tremor/",
+      "type": "condition",
+      "title": "Essentieller Tremor: Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/beschwerden/fasettensyndrom/",
       "type": "condition",
       "title": "Fasettensyndrom: Symptome und Behandlung",
@@ -470,8 +490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/frozen-shoulder/",
@@ -502,6 +522,16 @@
       "inSitemap": true,
       "inboundContentLinks": 8,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/beschwerden/gallensaeurebedingter-durchfall/",
+      "type": "condition",
+      "title": "Gallensäurebedingter Durchfall: Ursachen, Test und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/gallensteine/",
@@ -600,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
     },
     {
@@ -640,7 +670,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 17
     },
     {
@@ -650,7 +680,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/allergien-heuschnupfen/",
       "inSitemap": false,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -700,7 +730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -710,8 +740,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 28
     },
     {
       "url": "/beschwerden/hyperakusis/",
@@ -732,6 +762,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/hypermobilitaet/",
+      "type": "condition",
+      "title": "Hypermobilität mit Schmerzen: Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/immunschwaeche/",
@@ -760,8 +800,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/interkostalneuralgie/",
@@ -870,8 +910,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/koxarthrose/",
@@ -990,8 +1030,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/lymphoedem/",
@@ -1010,8 +1050,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/medikamentenuebergebrauchskopfschmerz/",
+      "type": "condition",
+      "title": "Medikamentenübergebrauchskopfschmerz: Symptome und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/meniskusriss/",
@@ -1060,8 +1110,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 133,
+      "inboundContentLinks": 134,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/mikroskopische-kolitis/",
+      "type": "condition",
+      "title": "Mikroskopische Kolitis: kollagene und lymphozytäre Kolitis",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -1090,8 +1150,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/morbus-meniere/",
@@ -1130,7 +1190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 163,
+      "inboundContentLinks": 164,
       "outboundHealthLinks": 31
     },
     {
@@ -1160,7 +1220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 26
     },
     {
@@ -1170,7 +1230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1350,8 +1410,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 35
+    },
+    {
+      "url": "/beschwerden/pots-syndrom/",
+      "type": "condition",
+      "title": "POTS-Syndrom: Herzrasen beim Aufstehen abklären",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/pppd/",
@@ -1362,6 +1432,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 10
+    },
+    {
+      "url": "/beschwerden/proctalgia-fugax/",
+      "type": "condition",
+      "title": "Proctalgia fugax: kurze Schmerzattacken im After",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/prostata/",
@@ -1400,8 +1480,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/quadrizepssehnen-tendinopathie/",
@@ -1440,7 +1520,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 19
     },
     {
@@ -1450,8 +1530,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 39,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/rektusdiastase/",
@@ -1460,8 +1540,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/restless-legs/",
@@ -1480,7 +1560,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 19
     },
     {
@@ -1490,7 +1570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 11,
       "outboundHealthLinks": 8
     },
     {
@@ -1530,8 +1610,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 193,
+      "inboundContentLinks": 198,
       "outboundHealthLinks": 37
+    },
+    {
+      "url": "/beschwerden/schambeinentzuendung/",
+      "type": "condition",
+      "title": "Schambeinentzündung (Osteitis pubis): Symptome und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/scheidentrockenheit/",
@@ -1560,8 +1650,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/schilddruesenunterfunktion/",
@@ -1650,7 +1740,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 38,
+      "inboundContentLinks": 39,
       "outboundHealthLinks": 25
     },
     {
@@ -1690,7 +1780,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 25
     },
     {
@@ -1730,7 +1820,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1742,6 +1832,16 @@
       "inSitemap": true,
       "inboundContentLinks": 17,
       "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/sjoegren-syndrom/",
+      "type": "condition",
+      "title": "Sjögren-Syndrom: Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/skoliose/",
@@ -1770,8 +1870,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 29
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 30
     },
     {
       "url": "/beschwerden/spinalkanalstenose/",
@@ -1810,8 +1910,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/steissbeinschmerzen/",
@@ -1820,7 +1920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -1840,7 +1940,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -1920,8 +2020,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/uebelkeit/",
@@ -1970,7 +2070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 19
     },
     {
@@ -2040,7 +2140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 17
     },
     {
@@ -2080,7 +2180,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 6
     },
     {
@@ -2100,7 +2200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 437,
+      "inboundContentLinks": 449,
       "outboundHealthLinks": 44
     },
     {
@@ -2110,8 +2210,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 106,
-      "outboundHealthLinks": 98
+      "inboundContentLinks": 109,
+      "outboundHealthLinks": 101
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/",
@@ -2120,7 +2220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2160,7 +2260,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -2260,8 +2360,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/",
+      "type": "befund",
+      "title": "Calcium zu niedrig (Hypokalzämie): Befund verstehen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/",
@@ -2360,8 +2470,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/erythrozyten-erhoeht/",
@@ -2440,7 +2550,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -2452,6 +2562,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/",
+      "type": "befund",
+      "title": "Gesamt-IgE erhöht: warum der Wert keine Allergie beweist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/",
@@ -2750,7 +2870,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2850,7 +2970,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 9
     },
     {
@@ -2870,8 +2990,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/progesteron-wert/",
@@ -2930,7 +3050,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -2970,7 +3090,17 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/trak-erhoeht/",
+      "type": "befund",
+      "title": "TRAK erhöht: TSH-Rezeptor-Antikörper verstehen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -3010,7 +3140,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -3040,7 +3170,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -3620,8 +3750,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 34
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/becken-blase/",
@@ -3630,8 +3760,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 29
     },
     {
       "url": "/gesundheitsbibliothek/koerper/hals-nacken/",
@@ -3650,8 +3780,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 51,
-      "outboundHealthLinks": 57
+      "inboundContentLinks": 52,
+      "outboundHealthLinks": 58
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -3660,8 +3790,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 40,
-      "outboundHealthLinks": 47
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 48
     },
     {
       "url": "/gesundheitsbibliothek/koerper/ruecken/",
@@ -3680,8 +3810,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
-      "outboundHealthLinks": 38
+      "inboundContentLinks": 33,
+      "outboundHealthLinks": 40
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -4861,7 +4991,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/ein-fuss-kaelter-als-der-andere/",
@@ -4930,8 +5060,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/haeufiger-harndrang-nachts/",
@@ -5431,7 +5561,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 12,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/schwindel-beim-buecken/",
@@ -5520,8 +5650,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/verstopfte-nase-ohne-erkaeltung/",
@@ -5600,7 +5730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 240,
+      "inboundContentLinks": 250,
       "outboundHealthLinks": 17
     },
     {
@@ -5890,7 +6020,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 89,
+      "inboundContentLinks": 91,
       "outboundHealthLinks": 17
     },
     {

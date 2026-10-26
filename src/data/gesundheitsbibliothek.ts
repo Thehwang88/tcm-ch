@@ -88,6 +88,7 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'bronchoskopie', name: 'Bronchoskopie', short: 'Lungenspiegelung: Gründe, Vorbereitung, Spülung und Gewebeprobe, Risiken.', href: '/gesundheitsbibliothek/untersuchungen/bronchoskopie/' },
   { id: 'laryngoskopie', name: 'Laryngoskopie', short: 'Kehlkopfspiegelung bei Heiserkeit: Varianten von Spiegel bis Endoskop und was sie zeigt.', href: '/gesundheitsbibliothek/untersuchungen/laryngoskopie/' },
   { id: 'eileiterdurchgaengigkeit', name: 'Eileiterdurchgängigkeit (HSG, HyCoSy)', short: 'Eileiter prüfen mit Röntgen (HSG) oder Ultraschall (HyCoSy): Unterschiede, Ablauf und Grenzen.', href: '/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/' },
+  { id: 'urodynamik', name: 'Urodynamik', short: 'Blasendruckmessung bei Inkontinenz und Entleerungsstörungen: Messungen, Ablauf, Risiken und Grenzen.', href: '/gesundheitsbibliothek/untersuchungen/urodynamik/' },
 ];
 
 export interface BodyRegion {
@@ -130,6 +131,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'vestibulaere-migraene', label: 'Vestibuläre Migräne' }, { slug: 'vestibularisneuritis', label: 'Vestibularisneuritis' }, { slug: 'hyperakusis', label: 'Hyperakusis' }, { slug: 'burning-mouth-syndrom', label: 'Burning-Mouth-Syndrom' },
       { slug: 'okzipitalneuralgie', label: 'Okzipitalneuralgie' },
       { slug: 'zervikogener-kopfschmerz', label: 'Zervikogener Kopfschmerz' },
+      { slug: 'medikamentenuebergebrauchskopfschmerz', label: 'Medikamentenübergebrauchskopfschmerz' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'ohrakupunktur', label: 'Ohrakupunktur' },
@@ -222,6 +224,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'morbus-crohn', label: 'Morbus Crohn' }, { slug: 'colitis-ulcerosa', label: 'Colitis ulcerosa' },
       { slug: 'histaminintoleranz', label: 'Histaminintoleranz' }, { slug: 'uebelkeit', label: 'Übelkeit' },
       { slug: 'haemorrhoiden', label: 'Hämorrhoiden' },
+      { slug: 'mikroskopische-kolitis', label: 'Mikroskopische Kolitis' },
+      { slug: 'gallensaeurebedingter-durchfall', label: 'Gallensäurebedingter Durchfall' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'kraeutertherapie', label: 'Kräutertherapie' },
@@ -254,6 +258,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'plica-syndrom-knie', label: 'Plica-Syndrom am Knie' },
       { slug: 'quadrizepssehnen-tendinopathie', label: 'Quadrizepssehnen-Tendinopathie' },
       { slug: 'schnappende-huefte', label: 'Schnappende Hüfte (Coxa saltans)' },
+      { slug: 'schambeinentzuendung', label: 'Schambeinentzündung' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'massage', label: 'Massage' },
@@ -276,6 +281,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'nervenschmerzen', label: 'Nervenschmerzen' }, { slug: 'polyneuropathie', label: 'Polyneuropathie' },
       { slug: 'fibromyalgie', label: 'Fibromyalgie' }, { slug: 'long-covid', label: 'Long Covid' },
       { slug: 'pppd', label: 'Persistierender postural-perzeptiver Schwindel (PPPD)' },
+      { slug: 'essentieller-tremor', label: 'Essentieller Tremor' },
+      { slug: 'pots-syndrom', label: 'POTS (posturales Tachykardiesyndrom)' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'ohrakupunktur', label: 'Ohrakupunktur' },
@@ -298,6 +305,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'pudendusneuralgie', label: 'Pudendusneuralgie' }, { slug: 'beckenbodenverspannung', label: 'Beckenbodenverspannung' },
       { slug: 'rektusdiastase', label: 'Rektusdiastase' },
       { slug: 'symphysenschmerzen-schwangerschaft', label: 'Symphysenschmerzen in der Schwangerschaft' },
+      { slug: 'proctalgia-fugax', label: 'Proctalgia fugax' },
+      { slug: 'beckenorgansenkung', label: 'Beckenorgansenkung' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'moxibustion', label: 'Moxibustion' },
@@ -879,6 +888,21 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/koerper/schulter-arm-hand/': 'Ellbogen Handgelenk Finger',
   '/gesundheitsbibliothek/koerper/huefte-bein-fuss/': 'Knie Wade Ferse',
   '/gesundheitsbibliothek/koerper/zyklus-hormone/': 'Frauengesundheit Menstruation Menopause',
+  // Bibliothek 26.10.2026 (Draft)
+  '/beschwerden/medikamentenuebergebrauchskopfschmerz/': "MÜKS Medikamentenübergebrauch medication overuse headache Kopfschmerz durch Schmerzmittel Schmerzmittelkopfschmerz",
+  '/beschwerden/hypermobilitaet/': "überbewegliche Gelenke Hypermobilitätssyndrom Hyperlaxität Hyperlaxitätssyndrom Hypermobility Spectrum Disorder HSD",
+  '/beschwerden/schambeinentzuendung/': "Osteitis pubis Ostitis pubis",
+  '/beschwerden/sjoegren-syndrom/': "Sjögren Morbus Sjögren Sjögren-Krankheit Sjogren Sjoegren Schögren",
+  '/beschwerden/essentieller-tremor/': "essenzieller Tremor Alterstremor familiärer Tremor",
+  '/beschwerden/pots-syndrom/': "POTS PoTS posturales Tachykardiesyndrom posturales orthostatisches Tachykardiesyndrom",
+  '/beschwerden/mikroskopische-kolitis/': "kollagene Kolitis lymphozytäre Kolitis Kollagenkolitis mikroskopische Colitis",
+  '/beschwerden/gallensaeurebedingter-durchfall/': "Gallensäurediarrhoe Gallensäureverlustsyndrom chologene Diarrhoe Gallensäuremalabsorption",
+  '/beschwerden/proctalgia-fugax/': "Proktalgia fugax Proktalgie",
+  '/beschwerden/beckenorgansenkung/': "Genitalprolaps Descensus Gebärmuttersenkung Blasensenkung Zystozele Scheidensenkung Scheidenvorfall",
+  '/gesundheitsbibliothek/befunde-werte/trak-erhoeht/': "TRAK TRAb TSH-Rezeptor-Antikörper TSH-Rezeptor-Autoantikörper",
+  '/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/': "Calcium erniedrigt Kalzium zu niedrig Kalzium erniedrigt Hypokalzämie",
+  '/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/': "Gesamt-IgE Total-IgE IgE erhöht Immunglobulin E",
+  '/gesundheitsbibliothek/untersuchungen/urodynamik/': "Urodynamik Blasendruckmessung Zystometrie Uroflowmetrie",
 };
 const withSynonyms = (e: SearchEntry): SearchEntry => {
   const syn = SYNONYMS[e.u];
