@@ -5479,6 +5479,60 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "therapies": []
+  },
+  {
+    "slug": "posttraumatische-belastungsstoerung",
+    "name": "Posttraumatische Belastungsstörung",
+    "title": "PTBS: Symptome, Abklärung und nächste Schritte",
+    "metaDesc": "Wiedererleben, Vermeidung und anhaltende Alarmbereitschaft können zu PTBS gehören. So wird die Belastung eingeordnet und fachliche Hilfe gefunden.",
+    "conditionName": "Posttraumatische Belastungsstörung",
+    "lead": "Manchmal ist eine bedrohliche Situation vorbei, doch Erinnerungen und körperliche Alarmreaktionen drängen sich weiter auf. Das kann zu einer posttraumatischen Belastungsstörung gehören. Für eine Diagnose braucht es eine fachliche Abklärung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "komplexe-ptbs",
+        "label": "Komplexe PTBS"
+      },
+      {
+        "slug": "angststoerungen",
+        "label": "Angststörungen"
+      },
+      {
+        "slug": "depressionen",
+        "label": "Depressionen"
+      },
+      {
+        "slug": "panikattacken",
+        "label": "Panikattacken"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "komplexe-ptbs",
+    "name": "Komplexe PTBS",
+    "title": "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
+    "metaDesc": "Was bedeutet komplexe PTBS? Erfahre, wie sich Traumafolgen auf Gefühle, Selbstbild und Beziehungen auswirken können und wo die Abklärung beginnt.",
+    "conditionName": "Komplexe posttraumatische Belastungsstörung",
+    "lead": "Komplexe PTBS ist eine fachliche Diagnose. Sie beschreibt nicht einfach eine besonders schwere Lebensphase. Entscheidend sind die heutigen Beschwerden und ihre fachliche Einordnung.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "posttraumatische-belastungsstoerung",
+        "label": "Posttraumatische Belastungsstörung (PTBS)"
+      },
+      {
+        "slug": "depressionen",
+        "label": "Depressionen"
+      },
+      {
+        "slug": "angststoerungen",
+        "label": "Angststörungen"
+      }
+    ],
+    "therapies": []
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);

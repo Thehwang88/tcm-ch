@@ -29,9 +29,14 @@ interface Props {
    * URL, die sich selbst gar nicht als kanonisch deklariert, und Google verwirft ihn.
    */
   canonicalTo?: string;
+  /** Optional: <meta name="referrer"> (z. B. 'no-referrer' auf Seiten zu sensiblen Themen, damit Folgeseiten
+   *  wie /kontakt/ den Themenpfad nicht als Herkunft übernehmen). Ohne Prop kein Meta-Tag. */
+  referrerPolicy?: string;
+  /** true = data-wa-neutral auf <main>: WhatsApp-Links der Seite mit neutralem Text (siehe WhatsAppConcierge). */
+  waNeutral?: boolean;
 }
 
-const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, stickyCta = true, canonicalTo, ogImage = site.ogImage } = Astro.props;
+const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, stickyCta = true, canonicalTo, ogImage = site.ogImage, referrerPolicy, waNeutral = false } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -45,6 +50,7 @@ const year = 2026;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {referrerPolicy && <meta name="referrer" content={referrerPolicy} />}
     <HeadAnalytics />
     <!-- Shared design tokens - single source of truth (also loaded by the DE SPA). -->
     <link rel="stylesheet" href="/styles/tokens.css" />
@@ -102,7 +108,7 @@ const year = 2026;
   <body>
     <DeHeader />
 
-    <main data-no-sticky-cta={stickyCta ? undefined : ''}>
+    <main data-no-sticky-cta={stickyCta ? undefined : ''} data-wa-neutral={waNeutral ? '' : undefined}>
       <slot />
     </main>
 

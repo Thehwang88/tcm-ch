@@ -19,7 +19,8 @@ const data = w ?? wissenBySlug(Astro.params.slug as string)!;
 
 const path = `/wissen/${data.slug}`;
 const url = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
-const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hallo, ich bin über Ihre Seite «${data.title}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
+// Sensible Themen: neutraler Text ohne Artikeltitel (keine Diagnose, keine persönliche Geschichte).
+const waHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(data.sensibel ? 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.' : `Hallo, ich bin über Ihre Seite «${data.title}» gekommen und habe dazu eine Frage. Können Sie mir kurz weiterhelfen?`)}`;
 
 const MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 const fmtMonthYear = (iso: string) => { const d = iso.split('-'); return d.length >= 2 ? `${MONTHS[parseInt(d[1], 10) - 1]} ${d[0]}` : iso; };
@@ -87,11 +88,11 @@ const ouchRow = OUCH_ROWS[data.slug];
 
 // Treatment-Decision-Serie (Akupunktur bei X): zusaetzlich TerminForm nach dem
 // Befunde-Muster (PR #22) — rein statisches Formular, keine neuen Events.
-const isSerie = akupunkturSerieSlugs.includes(data.slug);
+const isSerie = akupunkturSerieSlugs.includes(data.slug) && !data.sensibel; // sensible Themen: kein Formular mit Themen-Prefill
 const serieTopic = data.h1.split(':')[0].trim();
 const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angaben: `;
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo} referrerPolicy={data.sensibel ? 'no-referrer' : undefined} waNeutral={!!data.sensibel} stickyCta={!data.sensibel}>
   <article>
     <section class="hero">
       <div class="wrap narrow">
@@ -115,23 +116,23 @@ const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angabe
         {/* CARE-Bridge (Sprint #1B, Soft-Variante fuer Wissen): Artikel-Overrides
             behalten feldweise Vorrang; Ziel bleibt /kontakt/ (kein Formular auf
             Wissen-Seiten), kein Sticky auf dem Lern-Cluster. */}
-        <ArticleCta
-          eyebrow={CARE_PERSON.eyebrowWithName}
-          portrait={CARE_PERSON.portrait}
-          portraitAlt={CARE_PERSON.portraitAlt}
+        {data.sensibel !== 'orientierung' && <ArticleCta
+          eyebrow={data.sensibel ? 'TCM.ch Kontakt' : CARE_PERSON.eyebrowWithName}
+          portrait={data.sensibel ? undefined : CARE_PERSON.portrait}
+          portraitAlt={data.sensibel ? undefined : CARE_PERSON.portraitAlt}
           title={data.ctaTitle ?? 'Frage zu diesem Thema?'}
           text={data.ctaText ?? 'Schildere uns kurz deine Situation. Wir helfen dir kostenlos und unverbindlich, den passenden nächsten Schritt zu finden.'}
           primaryHref={data.ctaHref ?? '/kontakt/'}
           primaryLabel={data.ctaLabel ?? 'Frage stellen'}
-          primaryOnclick={careClickJs('wissen', 'article')}
+          primaryOnclick={careClickJs('wissen', 'article', data.sensibel ? '/wissen/' : undefined)}
           primaryCtaPos="article"
-          secondaryHref="/standorte/"
-          secondaryLabel="Praxis finden"
-          trustLine={CARE_TRUST}
+          secondaryHref={data.sensibel ? undefined : '/standorte/'}
+          secondaryLabel={data.sensibel ? undefined : 'Praxis finden'}
+          trustLine={data.sensibel ? undefined : CARE_TRUST}
           safetyNote={CARE_SAFETY}
           waHref={waHref}
           waOnclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'wissen_content_cta'})"
-        />
+        />}
 
         <AuthorCard
           label="Geschrieben von"

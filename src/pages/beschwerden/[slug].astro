@@ -217,6 +217,9 @@ const TITLES: Record<string, string> = {
   'gallensaeurebedingter-durchfall': "Gallensäurebedingter Durchfall: Ursachen, Test und Behandlung",
   'proctalgia-fugax': "Proctalgia fugax: kurze Schmerzattacken im After",
   'beckenorgansenkung': "Beckenorgansenkung: Gebärmutter- und Blasensenkung",
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung': "PTBS: Symptome, Abklärung und nächste Schritte",
+  'komplexe-ptbs': "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -413,6 +416,9 @@ const DESCRIPTIONS: Record<string, string> = {
   'gallensaeurebedingter-durchfall': "Gallensäurebedingter Durchfall: Gallensäureverlust oder Krankheitsbild, Ursachen nach Darm- oder Gallenoperation, SeHCAT- und C4-Test, Gallensäurebinder.",
   'proctalgia-fugax': "Proctalgia fugax: plötzliche, kurze Schmerzattacken im After mit beschwerdefreien Pausen. Abgrenzung zu Levator-ani-Syndrom, Fissur und Abszess.",
   'beckenorgansenkung': "Beckenorgansenkung: Gebärmutter-, Blasen- und Darmsenkung, Symptome, gynäkologische Untersuchung, Beckenbodentraining, Pessar, Hormone und Operation.",
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung': "Wiedererleben, Vermeidung und anhaltende Alarmbereitschaft können zu PTBS gehören. So wird die Belastung eingeordnet und fachliche Hilfe gefunden.",
+  'komplexe-ptbs': "Was bedeutet komplexe PTBS? Erfahre, wie sich Traumafolgen auf Gefühle, Selbstbild und Beziehungen auswirken können und wo die Abklärung beginnt.",
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
@@ -442,7 +448,9 @@ const NO_FAQ_SCHEMA = new Set(['schnappfinger', 'steissbeinschmerzen', 'tarsaltu
   // Welle 6 (Draft, 20.10.2026)
   'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd',
   // Bibliothek 26.10.2026 (Draft)
-  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung']);
+  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
 // FAQPage from entry.faqs when present, else from the leaf's own visible accordion.
 // schlafstoerungen has entry.faqs but no accordion in the leaf -> render one (faqBlock).
 let faqBlock = '';
@@ -518,14 +526,17 @@ prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
 // seo/bibliothek-2026-10-26.md, Abschnitt 2). Opt-in nur für diese Slugs: das Leaf enthält keinen
 // Standort-Karten-Block (also keine Ersetzung) und es gibt keinen Selbsttest-Teaser.
 // Alle anderen Slugs: Verhalten unverändert.
-const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor']);
+// Trauma-Cluster 27.10.2026: Orientierungsseiten zu sensiblen Themen. Das Leaf enthält weder Kontaktformular
+// noch WhatsApp-Links; zusätzlich neutraler WhatsApp-Text (Marker im Leaf), keine Referrer-Weitergabe.
+const SENSIBEL_SLUGS = new Set(['posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
+const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor', ...SENSIBEL_SLUGS]);
 if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledBody, slug!);
 // WhatsApp-Prefill (Konversions-Sprint): Die Legacy-Leaves verlinken wa.me OHNE
 // text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
 // Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
 // Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
 // Orientierungsseiten und Sjögren: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
-const waPrefill = encodeURIComponent(INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
+const waPrefill = encodeURIComponent(SENSIBEL_SLUGS.has(slug!) ? 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.' : INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
   ? `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${hName}›.`
   : `Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
 prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);
@@ -577,8 +588,10 @@ const REBRANDED_SLUGS = new Set(['migraene',
   // Welle 6 (Draft, 20.10.2026)
   'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd',
   // Bibliothek 26.10.2026 (Draft)
-  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung']);
+  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} referrerPolicy={SENSIBEL_SLUGS.has(slug!) ? 'no-referrer' : undefined} />

@@ -21,6 +21,7 @@
 import type { Wissen } from './wissen';
 import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10 } from './befunde-werte';
 import { artikel24SerieSlugs } from './wissen-artikel-2026-10-24';
+import { traumaSerieSlugs } from './wissen-trauma-2026-10-27';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -1049,7 +1050,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Eine Behandlung kann sich ruhig und unterstützend anfühlen, ohne die Ursache einer Angststörung ausreichend zu behandeln. Für die Entscheidung zählt deshalb nicht nur, ob du dich direkt danach entspannter fühlst, sondern ob sich dein Alltag langfristig verbessert.</p>
 <h2>Wie sicher ist die Evidenz?</h2>
 <p>Eine systematische Übersicht von 2021 fand Hinweise auf eine Verbesserung von Angstsymptomen gegenüber verschiedenen Vergleichsbedingungen. Die Studien unterschieden sich jedoch in Vorgehen und Qualität. Solche Unterschiede und Schwierigkeiten bei der Verblindung begrenzen die Sicherheit der Schlussfolgerungen.</p>
-<p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p>
+<p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p><p>Diese Ergebnisse betreffen Angststörungen und lassen sich nicht auf die posttraumatische Belastungsstörung übertragen. Was eine scheinkontrollierte Studie zu Akupunktur bei PTBS zeigt und wo ihre Grenzen liegen, steht unter <a href="/wissen/akupunktur-bei-ptbs/">Akupunktur bei PTBS</a>.</p>
 <h2>Was weiterhin Vorrang hat</h2>
 <p>Für Angststörungen gibt es etablierte Behandlungen. Dazu gehört insbesondere eine passende Psychotherapie; je nach Situation werden Medikamente erwogen. Den Behandlungsplan solltest du mit den zuständigen Fachpersonen abstimmen. Eine laufende Therapie nicht aus eigener Entscheidung beenden, weil du etwas Ergänzendes ausprobieren möchtest.</p>
 <p>Bei neuem starken Brustschmerz, Ohnmacht oder anderen akuten Warnzeichen ist medizinische Abklärung wichtiger als ein Akupunkturtermin. Wenn Angst den Alltag zunehmend verhindert oder du dich nicht sicher fühlst, brauchst du zeitnah professionelle Hilfe.</p>
@@ -1101,7 +1102,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Dieser Artikel beantwortet die Frage nach einer ergänzenden Behandlung. Er ist keine Anleitung, eine Diagnose selbst zu stellen oder Antidepressiva zu verändern. Wenn du dich akut nicht sicher fühlst oder befürchtest, dir etwas anzutun, hole sofort professionelle Hilfe und bleibe damit nicht allein. Ein späterer Akupunkturtermin reicht dann nicht aus.</p>
 <h2>Was die Forschung tatsächlich zeigt</h2>
 <p>Ein Cochrane-Review von 2018 fand Hinweise auf eine Verbesserung der Depressionsschwere gegenüber keiner beziehungsweise üblicher Behandlung. Gegenüber Kontrollakupunktur war der Unterschied kleiner. Vergleiche mit Medikamenten und Psychotherapie blieben wegen sehr niedriger Evidenzqualität unsicher.</p>
-<p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p>
+<p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p><p>Für die posttraumatische Belastungsstörung gilt eine eigene, ebenfalls begrenzte Studienlage; sie ist unter <a href="/wissen/akupunktur-bei-ptbs/">Akupunktur bei PTBS</a> eingeordnet.</p>
 <h2>Was nicht verdrängt werden darf</h2>
 <p>Die Behandlung einer Depression hängt unter anderem von Schwere, Verlauf und deinen Bedürfnissen ab. Psychotherapie, Medikamente und weitere fachlich empfohlene Massnahmen haben ihren Platz. Eine ergänzende Behandlung sollte diesen Plan nicht verzögern oder unnötig verkomplizieren.</p>
 <p>Auch wenn du Medikamente schlecht verträgst oder bisher wenig Nutzen erlebt hast, ist die nächste Entscheidung mit den zuständigen Fachpersonen zu treffen. Das ist kein Grund, Medikamente eigenständig abzusetzen oder eine unbewiesene Alternative als gleichwertig anzusehen.</p>
@@ -1808,6 +1809,8 @@ export const akupunkturSerieSlugs: string[] = [
   ...wissenAkupunkturBei.map((w) => w.slug),
   // Artikelpaket 24.10.2026 (eigene Datei, gleiche Serie)
   ...artikel24SerieSlugs,
+  // Trauma-Cluster 27.10.2026 (eigene Datei, gleiche Serie; ohne Serien-Formular, sensibel-Option)
+  ...traumaSerieSlugs,
   'akupunktur-bei-rueckenschmerzen',
   'akupunktur-bei-nackenschmerzen',
   'akupunktur-bei-heuschnupfen',
