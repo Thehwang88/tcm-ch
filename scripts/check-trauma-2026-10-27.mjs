@@ -4,7 +4,8 @@
 // Quellen, genau drei Anschlussfragen, kein FAQPage, keine Schema-Daten solange PUBLISHED_TRAUMA_2026_10_27 ungesetzt,
 // Links/Anker, Kontext-Hosts aus der Basis, Hubs, Suche, Keep-Liste, Map, Guards, Queue, Sitemap). Zusätzlich:
 // kein Formular, keine Kontaktkarte auf Orientierungsseiten, sachliche Kontaktkarte nur auf den zwei Akupunktur-Seiten,
-// neutraler WhatsApp-Text, kein Themenpfad im CTA-Tracking, keine Referrer-Weitergabe, Sticky aus, Notfallbox,
+// neutraler WhatsApp-Text, kein Themenpfad im CTA-Tracking, keine Referrer-Weitergabe, kein GTM und Script-Policy
+// (Option sensibel; normale Seiten unverändert), keine PTBS-Aussage auf der Shiatsu-Seite, Sticky aus, Notfallbox,
 // Akupunktur-bei-Serie mit beidseitigem Link zum PTBS-Leaf.
 //
 //   node scripts/check-trauma-2026-10-27.mjs [--base-sitemap=/pfad/zu/main-dist/sitemap.xml | --base=origin/main]
@@ -205,6 +206,11 @@ for (const m of MANIFEST) {
   const h = pages.get(m.url) ?? ''; const c = content(m, h);
   if (!c) { errs.push(`${m.url}: Inhaltsbereich nicht gefunden`); continue; }
   if (!/<meta name="referrer" content="no-referrer"/.test(h)) errs.push(`${m.url}: Referrer-Policy fehlt`);
+  // Tracking-Schutz (Review #96): kein GTM/GA/Ads, keine Turnstile-Einbindung, Script-/Connect-Policy vor allen Skripten
+  if (/googletagmanager\.com|google-analytics\.com|googleadservices|doubleclick|bzrcdn\.openai\.com|cloudflareinsights|challenges\.cloudflare\.com/.test(h)) errs.push(`${m.url}: Analytics-/Marketing-/Turnstile-Einbindung im HTML`);
+  const csp = (h.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/) || [])[1] ?? '';
+  if (!/script-src 'self' 'unsafe-inline' https:\/\/cdn-cookieyes\.com;/.test(csp) || !/connect-src 'self'/.test(csp)) errs.push(`${m.url}: Content-Security-Policy fehlt oder abweichend`);
+  else if (h.indexOf('http-equiv="Content-Security-Policy"') > h.indexOf('<script')) errs.push(`${m.url}: CSP steht nicht vor dem ersten Skript`);
   if (!/<[a-z]+[^>]*\sdata-wa-neutral(?:[\s>=])/.test(h)) errs.push(`${m.url}: Marker data-wa-neutral fehlt`);
   if (!/<[a-z]+[^>]*\sdata-no-sticky-cta(?:[\s>=])/.test(h)) errs.push(`${m.url}: Sticky-Opt-out fehlt`);
   if (/<form[\s>]/.test(c) || /data-kf[\s=>-]/.test(c) || /name="anliegen"/.test(c)) errs.push(`${m.url}: Formular im Inhalt`);
@@ -233,6 +239,14 @@ for (const m of MANIFEST) {
   if (!a.includes('href="/beschwerden/posttraumatische-belastungsstoerung/"')) errs.push('Serie: Akupunktur bei PTBS verlinkt den PTBS-Leaf nicht');
   if (!l.includes('href="/wissen/akupunktur-bei-ptbs/"')) errs.push('Serie: PTBS-Leaf verlinkt Akupunktur bei PTBS nicht');
 }
+// Standardverhalten: normale Seiten behalten GTM und haben keine CSP/Referrer-Policy aus dieser Option
+for (const u of ['/wissen/akupunktur-raucherentwoehnung/', '/beschwerden/angststoerungen/', '/kontakt/']) {
+  const h = pages.get(u) ?? '';
+  if (!h.includes("'GTM-PZ92Q3KJ'")) errs.push(`${u}: GTM fehlt (Standardverhalten verändert)`);
+  if (/http-equiv="Content-Security-Policy"|name="referrer"/.test(h)) errs.push(`${u}: Option für sensible Seiten greift auf normaler Seite`);
+}
+// Shiatsu (Review #96): keine unbelegte PTBS-/Trauma-Aussage mehr
+if (/PTBS|posttraumat/i.test(pages.get('/therapien/shiatsu/') ?? '')) errs.push('/therapien/shiatsu/: PTBS-Aussage vorhanden');
 // Schleudertrauma bleibt getrennt (keine Verlinkung aus der Kohorte)
 for (const m of MANIFEST) if ((pages.get(m.url) ?? '').includes('href="/beschwerden/schleudertrauma/"')) errs.push(`${m.url}: verlinkt Schleudertrauma`);
 
