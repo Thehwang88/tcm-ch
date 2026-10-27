@@ -92,7 +92,7 @@ const isSerie = akupunkturSerieSlugs.includes(data.slug) && !data.sensibel; // s
 const serieTopic = data.h1.split(':')[0].trim();
 const serieFormPrefill = `Mein Anliegen betrifft: ${serieTopic}.\nWeitere Angaben: `;
 ---
-<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo} referrerPolicy={data.sensibel ? 'no-referrer' : undefined} waNeutral={!!data.sensibel} stickyCta={!data.sensibel}>
+<LayoutDe title={`${data.title} | TCM.ch`} description={data.metaDesc} path={path} schema={schema} canonicalTo={canonicalTo} sensibel={!!data.sensibel} stickyCta={!data.sensibel}>
   <article>
     <section class="hero">
       <div class="wrap narrow">

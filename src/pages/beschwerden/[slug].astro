@@ -594,4 +594,4 @@ const REBRANDED_SLUGS = new Set(['migraene',
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} referrerPolicy={SENSIBEL_SLUGS.has(slug!) ? 'no-referrer' : undefined} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} sensibel={SENSIBEL_SLUGS.has(slug!)} />
