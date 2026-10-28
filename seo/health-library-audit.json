@@ -1,7 +1,7 @@
 {
   "generated": "2026-10-28",
   "totals": {
-    "healthPages": 740,
+    "healthPages": 760,
     "byType": {
       "hub": 6,
       "condition": 218,
@@ -12,7 +12,7 @@
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
-      "editorial": 155,
+      "editorial": 175,
       "body_signal": 94,
       "therapy": 36,
       "visual": 10
@@ -80,8 +80,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 23
     },
     {
       "url": "/beschwerden/allergien-heuschnupfen/",
@@ -100,8 +100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/aphten/",
@@ -130,8 +130,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/augenmigraene/",
@@ -220,8 +220,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 16,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/bluthochdruck/",
@@ -270,8 +270,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/cluster-kopfschmerzen/",
@@ -300,8 +300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/costochondritis/",
@@ -330,8 +330,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/diabetes-typ-2/",
@@ -520,8 +520,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/gallensaeurebedingter-durchfall/",
@@ -610,8 +610,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/haarausfall/",
@@ -1050,8 +1050,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 12
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/me-cfs/",
@@ -1410,8 +1410,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/polyneuropathie/",
@@ -1490,7 +1490,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -1590,8 +1590,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/rhizarthrose/",
@@ -1611,7 +1611,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 14,
-      "outboundHealthLinks": 18
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/rotatorenmanschette/",
@@ -1770,8 +1770,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/schwangerschaftsbeschwerden/",
@@ -1850,8 +1850,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/sjoegren-syndrom/",
@@ -1880,8 +1880,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 19
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/spannungskopfschmerzen/",
@@ -1900,8 +1900,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/spondylolisthese/",
@@ -2030,8 +2030,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/trockene-augen/",
@@ -3260,8 +3260,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-metallallergie/",
@@ -3290,8 +3290,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nach-operation/",
@@ -3300,8 +3300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/",
@@ -6230,8 +6230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 120,
-      "outboundHealthLinks": 120
+      "inboundContentLinks": 140,
+      "outboundHealthLinks": 140
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -6254,14 +6254,24 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/akupunktur-bei-akne/",
+      "type": "editorial",
+      "title": "Akupunktur bei Akne: Was Studien zeigen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/akupunktur-bei-angststoerungen/",
       "type": "editorial",
       "title": "Akupunktur bei Angststörungen: Ehrliche Einordnung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/",
@@ -6272,6 +6282,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/akupunktur-bei-asthma/",
+      "type": "editorial",
+      "title": "Akupunktur bei Asthma: Studien und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-belastungsinkontinenz/",
@@ -6294,14 +6314,24 @@
       "outboundHealthLinks": 4
     },
     {
+      "url": "/wissen/akupunktur-bei-chronischem-husten/",
+      "type": "editorial",
+      "title": "Akupunktur bei chronischem Husten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/akupunktur-bei-copd/",
       "type": "editorial",
       "title": "Akupunktur bei COPD: Studien zu Atemnot und Grenzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/akupunktur-bei-crps/",
@@ -6320,8 +6350,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-bei-endometriose/",
@@ -6372,6 +6402,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/akupunktur-bei-funktioneller-dyspepsie/",
+      "type": "editorial",
+      "title": "Akupunktur bei funktioneller Dyspepsie | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-gastroparese/",
@@ -6430,8 +6470,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-knieschmerzen/",
@@ -6462,6 +6502,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-lymphoedem/",
+      "type": "editorial",
+      "title": "Akupunktur bei Lymphödem: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-menstruationsbeschwerden/",
@@ -6520,8 +6570,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/wissen/akupunktur-bei-post-zoster-neuralgie/",
+      "type": "editorial",
+      "title": "Akupunktur bei Post-Zoster-Neuralgie | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-prostatitis/",
@@ -6542,6 +6602,16 @@
       "inSitemap": true,
       "inboundContentLinks": 7,
       "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/akupunktur-bei-reflux/",
+      "type": "editorial",
+      "title": "Akupunktur bei Reflux: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-reizblase/",
@@ -6574,6 +6644,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/wissen/akupunktur-bei-rheumatoider-arthritis/",
+      "type": "editorial",
+      "title": "Akupunktur bei rheumatoider Arthritis | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/akupunktur-bei-rhizarthrose/",
       "type": "editorial",
       "title": "Akupunktur bei Rhizarthrose: Studienlage und Grenzen | TCM.ch",
@@ -6590,8 +6670,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/akupunktur-bei-schmerzen-nach-operation/",
+      "type": "editorial",
+      "title": "Akupunktur bei Schmerzen nach einer OP | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-schulterschmerzen/",
@@ -6604,6 +6694,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/wissen/akupunktur-bei-schuppenflechte/",
+      "type": "editorial",
+      "title": "Akupunktur bei Schuppenflechte: Evidenz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-bei-sehnenscheidenentzuendung/",
       "type": "editorial",
       "title": "Akupunktur bei Sehnenscheidenentzündung: Studienlage | TCM.ch",
@@ -6612,6 +6712,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-spinalkanalstenose/",
+      "type": "editorial",
+      "title": "Akupunktur bei Spinalkanalstenose | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-tennisarm/",
@@ -6632,6 +6742,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/akupunktur-bei-trigeminusneuralgie/",
+      "type": "editorial",
+      "title": "Akupunktur bei Trigeminusneuralgie | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/akupunktur-bei-trockenen-augen/",
@@ -6690,8 +6810,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-geburtsvorbereitung-beckenendlage/",
@@ -6740,8 +6860,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/akupunktur-oder-schroepfen/",
@@ -6814,14 +6934,34 @@
       "outboundHealthLinks": 9
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-akne/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Akne: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-allergischem-schnupfen/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Heuschnupfen: Studien &amp; Grenzen | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-angststoerungen/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Angststörungen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/",
@@ -6834,6 +6974,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-chronischer-sinusitis/",
+      "type": "editorial",
+      "title": "Kräuter bei chronischer Sinusitis: Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-colitis-ulcerosa/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Colitis ulcerosa: Risiken | TCM.ch",
@@ -6842,6 +6992,26 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-copd/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei COPD: Studien und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-depressionen/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Depressionen: Einordnung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-endometriose/",
@@ -6870,8 +7040,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-hashimoto/",
@@ -6934,6 +7104,26 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-pms/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei PMS: Evidenz und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-reflux/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Reflux: Studien und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-regelschmerzen/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Regelschmerzen: Evidenz &amp; Grenzen | TCM.ch",
@@ -6941,7 +7131,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-reizdarm/",
@@ -6970,8 +7160,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-verstopfung/",
@@ -6994,6 +7184,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-wiederkehrenden-blasenentzuendungen/",
+      "type": "editorial",
+      "title": "Kräuter bei wiederkehrender Blasenentzündung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 3
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-online-kaufen-oder-verordnen/",
       "type": "editorial",
       "title": "Chinesische Kräuter online kaufen: Was vorher wichtig ist | TCM.ch",
@@ -7010,8 +7210,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 15,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/chinesische-kraeutertherapie-winterthur/",
