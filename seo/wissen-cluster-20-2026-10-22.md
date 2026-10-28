@@ -1,6 +1,6 @@
 # Cluster-Paket /wissen/ (22.10.2026): 20 Artikel, Bericht zum Draft-PR
 
-Stand: Draft-PR nach Review 1 (22.10.2026), nicht Ready, nicht gemergt, nicht deployed. Kein GSC-Submit, keine Live-Daten, keine Messwerte.
+Stand: **Release 28.10.2026 (GO).** Vorher Draft-PR nach Review 2 (22.10.2026). Kein GSC-Submit durch diesen PR, keine Messwerte. Release-Details: Abschnitt 10.
 
 ## 1. Rahmen
 
@@ -285,3 +285,29 @@ Neu registriert (Commit 3): 20 Map-Zeilen (editorial, live, PRIMARY_OWNER, treat
 ## 9. Folgeaufgaben (nicht Teil dieses PR)
 
 - Release-Schritt nach Review: `PUBLISHED_WISSEN_CLUSTER_2026_10` auf das Live-Datum setzen, 20 Queue-Zeilen von «Geplant» nach «Offen», Map-Notiz «veröffentlicht», Live-Check der 20 URLs.
+
+## 10. Release 28.10.2026 (GO)
+
+- Main `919e2da1` per Merge-Commit `a6baac11` eingebracht (kein Rebase). Main hatte seit der Basis `d6e741ab` acht Merges (#90 bis #96).
+- **Konflikte:**
+  - Append-Bereiche (Datumskonstanten, Serien-Import in `wissen-akupunktur-bei.ts`, Map, Do-not-create) als Vereinigung aufgelöst.
+  - `angststoerungen.html` und `depressionen.html` dreiseitig auf Tag-Ebene zusammengeführt; Kontextlinks aus diesem PR und aus #96 sind beide erhalten.
+  - `health-library-audit.json` neu erzeugt.
+- **Keine Slug- oder Intent-Kollision** mit den seither veröffentlichten Paketen; alle 20 Slugs fehlten auf main.
+- **Release-Werte:**
+  - `PUBLISHED_WISSEN_CLUSTER_2026_10 = '2026-10-28'`
+  - 20 Queue-Zeilen nach «Offen» (28.10.2026)
+  - 20 Map-Notizen «(PR #89, Basis d6e741ab), veröffentlicht 28.10.2026»
+- **Prüfungen auf dem Release-Build** (Basis frischer main-Build `919e2da1`, 938 → 958 URLs):
+  - Kohortenprüfungen: check-wissen-cluster, check-wissen-neun, check-artikel-2026-10-24 und -25, check-bibliothek-2026-10-26 und check-trauma-2026-10-27 alle OK.
+  - Gates: health-audit (Wissen-Serie 59 Slugs), kontakt-formular, clinic-status, standort-ux, first30, professional und herbst-sg mit 0 Fehlern.
+  - Tests: en-analytics 48/0, anfrage-betreff 92/0, hero-video 124/0.
+  - i18n mit Build-Sitemap: outdated 0, failures 0. Der frühere Befund Winterthur-Marktgasse tritt nicht mehr auf.
+  - Verschachtelung aller 218 Beschwerden-Seiten korrekt.
+- **Build-Diff gegen main:**
+  - 20 neu, 0 entfernt.
+  - 37 geändert: 35 Hostseiten, `/wissen/` und `sitemap.xml`.
+  - Trauma-Seiten unverändert.
+- **Browser:** 56 Seiten (20 neu, 36 geändert) bei 320/390/1440 px: 0 Überläufe, je eine H1, 0 JS-Fehler.
+- **Nicht wiederholt:** `test-kontakt-formular`; Formularcode ist durch diesen PR nicht berührt.
+
