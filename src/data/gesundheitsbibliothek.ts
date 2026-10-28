@@ -283,6 +283,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'pppd', label: 'Persistierender postural-perzeptiver Schwindel (PPPD)' },
       { slug: 'essentieller-tremor', label: 'Essentieller Tremor' },
       { slug: 'pots-syndrom', label: 'POTS (posturales Tachykardiesyndrom)' },
+      { slug: 'posttraumatische-belastungsstoerung', label: 'Posttraumatische Belastungsstörung (PTBS)' },
+      { slug: 'komplexe-ptbs', label: 'Komplexe PTBS' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'ohrakupunktur', label: 'Ohrakupunktur' },
@@ -888,6 +890,15 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/koerper/schulter-arm-hand/': 'Ellbogen Handgelenk Finger',
   '/gesundheitsbibliothek/koerper/huefte-bein-fuss/': 'Knie Wade Ferse',
   '/gesundheitsbibliothek/koerper/zyklus-hormone/': 'Frauengesundheit Menstruation Menopause',
+  // Trauma-Cluster 27.10.2026 (Draft): nur echte Synonyme/Schreibvarianten
+  '/wissen/psychisches-trauma-behandlung/': "Trauma behandeln Traumabehandlung Traumatherapie seelisches Trauma",
+  '/beschwerden/posttraumatische-belastungsstoerung/': "PTBS PTSD posttraumatische Belastungsstörung Posttraumatische Belastungsstoerung",
+  '/beschwerden/komplexe-ptbs/': "kPTBS KPTBS CPTSD komplexe posttraumatische Belastungsstörung",
+  '/wissen/trauma-kindheit-erwachsene/': "Kindheitstrauma belastende Kindheit Missbrauch in der Kindheit Vernachlässigung",
+  '/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/': "sexuelle Gewalt sexualisierte Gewalt häusliche Gewalt Übergriff Vergewaltigung Opferhilfe",
+  '/wissen/schlafprobleme-nach-trauma/': "Albträume Alpträume Albtraum nach Trauma",
+  '/wissen/akupunktur-bei-ptbs/': "Akupunktur PTBS Akupunktur PTSD",
+  '/wissen/akupunktur-nach-trauma/': "traumasensible Akupunktur traumasensibel",
   // Bibliothek 26.10.2026 (Draft)
   '/beschwerden/medikamentenuebergebrauchskopfschmerz/': "MÜKS Medikamentenübergebrauch medication overuse headache Kopfschmerz durch Schmerzmittel Schmerzmittelkopfschmerz",
   '/beschwerden/hypermobilitaet/': "überbewegliche Gelenke Hypermobilitätssyndrom Hyperlaxität Hyperlaxitätssyndrom Hypermobility Spectrum Disorder HSD",
@@ -1015,6 +1026,16 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen', u: '/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/' },
   ];
   for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });
+  // Trauma-Cluster 27.10.2026: Wissen-Artikel haben keinen automatischen Sucheintrag, daher kuratiert.
+  const TRAUMA_ARTIKEL: Array<{ t: string; u: string; g: string }> = [
+    { t: 'Psychisches Trauma: verstehen, Hilfe finden, Behandlung wählen', u: '/wissen/psychisches-trauma-behandlung/', g: 'Ratgeber' },
+    { t: 'Belastende Kindheitserfahrungen: Unterstützung im Erwachsenenalter', u: '/wissen/trauma-kindheit-erwachsene/', g: 'Ratgeber' },
+    { t: 'Hilfe nach Gewalt und sexuellem Missbrauch', u: '/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/', g: 'Ratgeber' },
+    { t: 'Schlafprobleme nach einem Trauma', u: '/wissen/schlafprobleme-nach-trauma/', g: 'Ratgeber' },
+    { t: 'Akupunktur bei PTBS: Was ist belegt?', u: '/wissen/akupunktur-bei-ptbs/', g: 'Therapien' },
+    { t: 'Akupunktur nach Trauma: Was kann ich vor einer Sitzung klären?', u: '/wissen/akupunktur-nach-trauma/', g: 'Therapien' },
+  ];
+  for (const a of TRAUMA_ARTIKEL) entries.push({ t: a.t, u: a.u, g: a.g });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {
     if (v.status !== 'live') continue;

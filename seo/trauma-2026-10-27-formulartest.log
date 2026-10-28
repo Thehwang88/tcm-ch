@@ -1,0 +1,759 @@
+# test-kontakt-formular, vollständiges Protokoll (Review #96, 27.10.2026)
+# Lauf 1: Build von eb676f74 (Basis main 592c42d1), node scripts/test-kontakt-formular.mjs dist
+commit eb676f74f18ed8c4cd8f0fb73dfebb9a25eae339 2026-10-27T22:35:00Z
+A. SG-Hero: nur Telefon + Check-in
+  ✓ ohne Vorgabe: keine Kachel vorgewählt
+  ✓ Submit ohne Auswahl: beide SG-Formulare «Termin anfragen →»
+  ✓ ohne Terminart: kein Versand, kein Event
+  ✓ Fehlermeldung Terminart sichtbar
+  ✓ Submit-Text Check-in
+  ✓ Check-in: OneDoc sekundär umrandet (neutral, gemeinsame SG-Auswahl)
+  ✓ SG unten unbeeinflusst vom Hero
+  ✓ Payload phone-only: {"a":"TCM_CHECKIN","s":"St. Gallen","q":"launch-hero-sg","f":"Hero-Termin-StGallen"}
+  ✓ Hero-Identifier (quelle/formular/Quelle/Seite) erhalten
+  ✓ genau 1 formular_senden ohne PII: {"event":"formular_senden","form_type":"allgemein","quelle":"launch-hero-sg","terminart":"checkin","standort":"st-gallen"}
+  ✓ kein first30_*-Event
+  ✓ Erfolgsmeldung nennt Terminart + Hinweis
+  ✓ SG unten nach Hero-Versand unverändert
+B. SG unten: Behandlung, optionale Felder ausgefüllt, OneDoc, Telefon
+  ✓ unten ohne OneDoc-Alternative; Widget #online-buchen folgt direkt; obere Box verlinkt darauf
+  ✓ Submit-Text Behandlung
+  ✓ onedoc_click (obere Box) genau 1×, Standort-ID, keine Conversion
+  ✓ SG-Formulare ohne «Lieber anrufen?»-Block (oben nur Textlink «Anrufen»); Telefon tel:+41775236122 im Hero und bei den Praxisangaben
+  ✓ phone_click (Formular mit Anrufbereich, Startseite) unverändert getrackt
+  ✓ Payload Behandlung mit optionalen Feldern, quelle sg-kontakt-bottom
+  ✓ genau 1 Conversion
+C. Validierung, Fehlerfälle, Doppelklick, Honeypot
+  ✓ ungültige Nummer: kein Versand, aria-invalid, Fokus
+  ✓ ungültige E-Mail blockiert
+  ✓ internationale Nummer ok; Doppelklick → 1 Versand, 1 Event
+  ✓ Serverfehler: kein Conversion-Event, Fehlermeldung
+  ✓ 422: kein Conversion-Event
+  ✓ Honeypot: kein Versand, kein Event
+D. Tastatur
+  ✓ Leertaste wählt Kachel
+  ✓ Pfeiltaste wechselt Auswahl
+  ✓ Telefon: type/inputmode tel, ≥16px
+  ✓ Touch-Ziele ≥44px
+E. Global (Homepage): Standort, Check-in-Freigabe, OneDoc, Telefon, Prefill
+  ✓ global: Standort Pflicht
+  ✓ Basel: Check-in gesperrt + Hinweis
+  ✓ Basel: kein OneDoc (kein verifizierter Kalender)
+  ✓ Bottighofen: eigene Nummer
+  ✓ St. Gallen gewählt: OneDoc → SG-Seite
+  ✓ St. Gallen gewählt: Check-in-Kachel mit 360°-Wortlaut, Kennung TCM_CHECKIN unverändert
+  ✓ Standort abgewählt: Check-in-Kachel wieder mit Standard-Wortlaut
+  ✓ Basel: Standard-Wortlaut (kein 360°)
+  ✓ St. Gallen: Check-in wählbar
+  ✓ Home-Payload (quelle /)
+  ✓ Prefill ?standort= + ?anliegen=
+  ✓ Kachelwechsel überschreibt keine Eingaben
+  ✓ quelle-Prefill im Payload
+  ✓ explizite Vorauswahl ?terminart=behandlung
+F. Standort ohne Freigabe
+  ✓ Basel: kein Check-in, einzige Option Behandlung
+  ✓ Basel-Payload
+G. TerminForm (/kontakt/): Herkunfts-Prefill + form_submit-Vertrag
+  ✓ ?von=/standorte/st-gallen/ → Standort + Text
+  ✓ vor Versand: kein form_submit
+  ✓ genau 1 form_submit nach Erfolg (kein formular_senden)
+H. Leaf-Prefill (Beschwerde) + alte FIRST-30-Links
+  ✓ Beschwerde-Text im Anliegen
+  ✓ quelle/formular/quelle_detail erhalten
+  ✓ ?first30=1: Übergangshinweis + Check-in im Hero, unten unberührt
+  ✓ #first30-kontakt: Übergang im unteren Formular
+I. Standortstatus und Anfrageart (global, Homepage)
+  ✓ Oerlikon Partnerpraxis: Kacheln sichtbar, Check-in gesperrt, kein OneDoc
+  ✓ Oerlikon Partnerpraxis: Button «Ersttermin anfragen →»
+  ✓ Oerlikon Partnerpraxis: Payload kanonisch {standort:"Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3", standort_id:zuerich-oerlikon, angebot_id:ERSTTERMIN_BEHANDLUNG}
+  ✓ Oerlikon Partnerpraxis: genau 1 formular_senden (terminart behandlung, standort-ID), kein gtag-Zweitversand
+  ✓ Oerlikon Partnerpraxis: Bestätigung mit derselben Bedeutung
+  ✓ Oerlikon neue Praxis: keine Check-in-/Behandlungskacheln, Zielhinweis ohne Gratis-/Behandlungsangebot
+  ✓ Oerlikon neue Praxis: Button «Vormerkung senden →»
+  ✓ Oerlikon neue Praxis: Payload kanonisch {standort:"Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung", standort_id:zuerich-oerlikon, angebot_id:VORMERKUNG}
+  ✓ Oerlikon neue Praxis: genau 1 formular_senden (terminart vormerkung, standort-ID), kein gtag-Zweitversand
+  ✓ Oerlikon neue Praxis: Bestätigung mit derselben Bedeutung
+  ✓ Luzern: keine Check-in-/Behandlungskacheln, Zielhinweis ohne Gratis-/Behandlungsangebot
+  ✓ Luzern: Button «Vormerkung senden →»
+  ✓ Luzern: Payload kanonisch {standort:"Luzern – Vormerkung, Eröffnung 2027", standort_id:luzern, angebot_id:VORMERKUNG}
+  ✓ Luzern: genau 1 formular_senden (terminart vormerkung, standort-ID), kein gtag-Zweitversand
+  ✓ Luzern: Bestätigung mit derselben Bedeutung
+  ✓ Andere / in meiner Nähe: keine Check-in-/Behandlungskacheln, Zielhinweis ohne Gratis-/Behandlungsangebot
+  ✓ Andere / in meiner Nähe: Button «Passende Praxis anfragen →»
+  ✓ Andere / in meiner Nähe: Payload kanonisch {standort:"Andere / in meiner Nähe", standort_id:andere, angebot_id:ROUTING_ANFRAGE}
+  ✓ Andere / in meiner Nähe: genau 1 formular_senden (terminart routing, standort-ID), kein gtag-Zweitversand
+  ✓ Andere / in meiner Nähe: Bestätigung mit derselben Bedeutung
+J. Prefill mehrerer Optionen desselben Standorts
+  ✓ Slug → Standardziel (Vormerkung neue Praxis, wie bisher PLANNED_PRESELECT): Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung
+  ✓ expliziter Partnerpraxis-Wert bleibt Partnerpraxis: Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3
+  ✓ sichtbares Label → richtige Option: Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3
+  ✓ Altwert der früheren Homepage-Liste (<id>-0): Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3
+  ✓ Standortname: St. Gallen
+  ✓ Slug Luzern → Vormerkung: Luzern – Vormerkung, Eröffnung 2027
+  ✓ TerminForm ?von=/standorte/zuerich-oerlikon/ → Standardziel wie bisher
+  ✓ openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option
+L. SG-Seite: OneDoc für beide Terminarten (gemeinsame SG-Auswahl, neutral)
+  ✓ 390px sg-unten ohne Auswahl: kein OneDoc-Bereich, endet nach Anfragebutton + Datenschutz; nur Anfrage-Button neongrün
+  ✓ 390px sg-unten checkin: weiterhin ohne OneDoc-Bereich, endet nach Datenschutz
+  ✓ 390px sg-unten behandlung: weiterhin ohne OneDoc-Bereich, endet nach Datenschutz
+  ✓ 390px sg-unten: Eingaben bleiben beim Wechsel erhalten
+  ✓ 390px sg-hero ohne Auswahl: OneDoc sichtbar, sekundär umrandet «Termin online buchen →», «Direkt bei OneDoc.», kein Sprunglink
+  ✓ 390px sg-hero ohne Auswahl: Reihenfolge Terminart → Telefon → Anfrage-Button → «Oder direkt online buchen» → OneDoc → Lieber anrufen (DOM = sichtbar)
+  ✓ 390px sg-hero ohne Auswahl: nur Anfrage-Button neongrün; Formular endet nach OneDoc
+  ✓ 390px sg-hero checkin: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)
+  ✓ 390px sg-hero checkin: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc (Formular endet danach); nur Anfrage-Button neongrün
+  ✓ 390px sg-hero behandlung: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)
+  ✓ 390px sg-hero behandlung: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc (Formular endet danach); nur Anfrage-Button neongrün
+  ✓ 390px sg-hero: Eingaben bleiben beim Wechsel erhalten
+  ✓ 390px: OneDoc-Klick → genau 1 onedoc_click (terminart behandlung), keine Conversion
+  ✓ 390px: Hero und unten unabhängig
+  ✓ 1440px sg-unten ohne Auswahl: kein OneDoc-Bereich, endet nach Anfragebutton + Datenschutz; nur Anfrage-Button neongrün
+  ✓ 1440px sg-unten checkin: weiterhin ohne OneDoc-Bereich, endet nach Datenschutz
+  ✓ 1440px sg-unten behandlung: weiterhin ohne OneDoc-Bereich, endet nach Datenschutz
+  ✓ 1440px sg-unten: Eingaben bleiben beim Wechsel erhalten
+  ✓ 1440px sg-hero ohne Auswahl: OneDoc sichtbar, sekundär umrandet «Termin online buchen →», «Direkt bei OneDoc.», kein Sprunglink
+  ✓ 1440px sg-hero ohne Auswahl: Reihenfolge Terminart → Telefon → Anfrage-Button → «Oder direkt online buchen» → OneDoc → Lieber anrufen (DOM = sichtbar)
+  ✓ 1440px sg-hero ohne Auswahl: nur Anfrage-Button neongrün; Formular endet nach OneDoc
+  ✓ 1440px sg-hero checkin: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)
+  ✓ 1440px sg-hero checkin: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc (Formular endet danach); nur Anfrage-Button neongrün
+  ✓ 1440px sg-hero behandlung: OneDoc bleibt sekundär umrandet «Termin online buchen →» zur SG-Auswahl (keine Direktlinks verifiziert)
+  ✓ 1440px sg-hero behandlung: Reihenfolge Terminart → Telefon → Anfrage-Button → OneDoc (Formular endet danach); nur Anfrage-Button neongrün
+  ✓ 1440px sg-hero: Eingaben bleiben beim Wechsel erhalten
+  ✓ 1440px: OneDoc-Klick → genau 1 onedoc_click (terminart behandlung), keine Conversion
+  ✓ 1440px: Hero und unten unabhängig
+  ✓ mit konfigurierten Direktlinks: spezifische Beschriftung + Ziel (Kostenlosen TCM-Check-in online buchen → | https://test.invalid/checkin / Ersttermin online buchen → | https://test.invalid/ersttermin)
+  ✓ Prefill ?first30=1 (Check-in im Hero): OneDoc in beiden Formularen sekundär
+  ✓ Homepage: Check-in mit SG ohne OneDoc
+  ✓ Homepage (ruhig): Behandlung + SG → OneDoc «Termin online buchen →» umrandet, bestehendes SG-Ziel
+M. Kompakte SG-Box (Rückruf dauerhaft offen, optionale Angaben als Disclosure)
+  ✓ 320px initial: Rückruf offen (Telefon, Anfrage-Button «Termin anfragen →»), kein Öffnungsbutton, optionale Angaben zu, OneDoc sichtbar, kein Anrufbereich, keine Vorauswahl, kein «Standort:»
+  ✓ 320px initial: «Telefonnummer *» (roter Stern, required, aria-required, ohne «optional»), kompakter Link «Datenschutz», kein «noch kein Termin»-Hinweis; Telefon einziges Pflichtfeld
+  ✓ 320px Angebot mit den finalen Texten (ohne Aufklappen lesbar), alte Texte/Listen/Badges/Schrittmarker fehlen
+  ✓ 320px Erstbehandlung zuerst (DOM + Darstellung, dezent mint), Check-in zweitens (weiss), gleiche Rundung/Ränder, keine Vorauswahl
+  ✓ 320px «Weitere Angaben» echter Button mit aria-controls; keine Disclosure-Steuerung für den offenen Rückruf-Bereich
+  ✓ 320px Tab ohne Auswahl = sichtbare Reihenfolge, eingeklappte Felder übersprungen (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 320px Wahl checkin: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «TCM-Check-in anfragen →», Scroll/Fokus unverändert (1066→1066, kf-sg-hero-ta-checkin)
+  ✓ 320px Wechsel → behandlung: bleibt offen, «Ersttermin anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 320px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 320px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 320px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 320px Wahl behandlung: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «Ersttermin anfragen →», Scroll/Fokus unverändert (1066→1066, kf-sg-hero-ta-behandlung)
+  ✓ 320px Wechsel → checkin: bleibt offen, «TCM-Check-in anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 320px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 320px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 320px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 320px Leertaste auf Kachel: wählt, Rückruf offen, Fokus bleibt auf der Kachel
+  ✓ 320px Tab-Reihenfolge = sichtbare Reihenfolge (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 320px Absenden ohne Terminart: kein Versand, Fehler «Bitte wähle aus, wie wir dir helfen können.» an der Auswahl (sichtbar, aria-describedby), Fokus auf der ersten sichtbaren Option (Erstbehandlung)
+  ✓ 320px danach Wahl: Fehler weg, «Ersttermin anfragen →», Telefon erhalten
+  ✓ 320px ?terminart=behandlung: vorgewählt, Rückruf offen, kein Fokus, kein Scroll
+  ✓ 390px initial: Rückruf offen (Telefon, Anfrage-Button «Termin anfragen →»), kein Öffnungsbutton, optionale Angaben zu, OneDoc sichtbar, kein Anrufbereich, keine Vorauswahl, kein «Standort:»
+  ✓ 390px initial: «Telefonnummer *» (roter Stern, required, aria-required, ohne «optional»), kompakter Link «Datenschutz», kein «noch kein Termin»-Hinweis; Telefon einziges Pflichtfeld
+  ✓ 390px Angebot mit den finalen Texten (ohne Aufklappen lesbar), alte Texte/Listen/Badges/Schrittmarker fehlen
+  ✓ 390px Erstbehandlung zuerst (DOM + Darstellung, dezent mint), Check-in zweitens (weiss), gleiche Rundung/Ränder, keine Vorauswahl
+  ✓ 390px «Weitere Angaben» echter Button mit aria-controls; keine Disclosure-Steuerung für den offenen Rückruf-Bereich
+  ✓ 390px Tab ohne Auswahl = sichtbare Reihenfolge, eingeklappte Felder übersprungen (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 390px Wahl checkin: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «TCM-Check-in anfragen →», Scroll/Fokus unverändert (1022→1022, kf-sg-hero-ta-checkin)
+  ✓ 390px Wechsel → behandlung: bleibt offen, «Ersttermin anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 390px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 390px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 390px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 390px Wahl behandlung: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «Ersttermin anfragen →», Scroll/Fokus unverändert (1022→1022, kf-sg-hero-ta-behandlung)
+  ✓ 390px Wechsel → checkin: bleibt offen, «TCM-Check-in anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 390px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 390px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 390px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 390px Leertaste auf Kachel: wählt, Rückruf offen, Fokus bleibt auf der Kachel
+  ✓ 390px Tab-Reihenfolge = sichtbare Reihenfolge (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 390px Absenden ohne Terminart: kein Versand, Fehler «Bitte wähle aus, wie wir dir helfen können.» an der Auswahl (sichtbar, aria-describedby), Fokus auf der ersten sichtbaren Option (Erstbehandlung)
+  ✓ 390px danach Wahl: Fehler weg, «Ersttermin anfragen →», Telefon erhalten
+  ✓ 390px ?terminart=behandlung: vorgewählt, Rückruf offen, kein Fokus, kein Scroll
+  ✓ 768px initial: Rückruf offen (Telefon, Anfrage-Button «Termin anfragen →»), kein Öffnungsbutton, optionale Angaben zu, OneDoc sichtbar, kein Anrufbereich, keine Vorauswahl, kein «Standort:»
+  ✓ 768px initial: «Telefonnummer *» (roter Stern, required, aria-required, ohne «optional»), kompakter Link «Datenschutz», kein «noch kein Termin»-Hinweis; Telefon einziges Pflichtfeld
+  ✓ 768px Angebot mit den finalen Texten (ohne Aufklappen lesbar), alte Texte/Listen/Badges/Schrittmarker fehlen
+  ✓ 768px Erstbehandlung zuerst (DOM + Darstellung, dezent mint), Check-in zweitens (weiss), gleiche Rundung/Ränder, keine Vorauswahl
+  ✓ 768px «Weitere Angaben» echter Button mit aria-controls; keine Disclosure-Steuerung für den offenen Rückruf-Bereich
+  ✓ 768px Tab ohne Auswahl = sichtbare Reihenfolge, eingeklappte Felder übersprungen (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 768px Wahl checkin: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «TCM-Check-in anfragen →», Scroll/Fokus unverändert (805→805, kf-sg-hero-ta-checkin)
+  ✓ 768px Wechsel → behandlung: bleibt offen, «Ersttermin anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 768px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 768px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 768px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 768px Wahl behandlung: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «Ersttermin anfragen →», Scroll/Fokus unverändert (805→805, kf-sg-hero-ta-behandlung)
+  ✓ 768px Wechsel → checkin: bleibt offen, «TCM-Check-in anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 768px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 768px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 768px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 768px Leertaste auf Kachel: wählt, Rückruf offen, Fokus bleibt auf der Kachel
+  ✓ 768px Tab-Reihenfolge = sichtbare Reihenfolge (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 768px Absenden ohne Terminart: kein Versand, Fehler «Bitte wähle aus, wie wir dir helfen können.» an der Auswahl (sichtbar, aria-describedby), Fokus auf der ersten sichtbaren Option (Erstbehandlung)
+  ✓ 768px danach Wahl: Fehler weg, «Ersttermin anfragen →», Telefon erhalten
+  ✓ 768px ?terminart=behandlung: vorgewählt, Rückruf offen, kein Fokus, kein Scroll
+  ✓ 1440px initial: Rückruf offen (Telefon, Anfrage-Button «Termin anfragen →»), kein Öffnungsbutton, optionale Angaben zu, OneDoc sichtbar, kein Anrufbereich, keine Vorauswahl, kein «Standort:»
+  ✓ 1440px initial: «Telefonnummer *» (roter Stern, required, aria-required, ohne «optional»), kompakter Link «Datenschutz», kein «noch kein Termin»-Hinweis; Telefon einziges Pflichtfeld
+  ✓ 1440px Angebot mit den finalen Texten (ohne Aufklappen lesbar), alte Texte/Listen/Badges/Schrittmarker fehlen
+  ✓ 1440px Erstbehandlung zuerst (DOM + Darstellung, dezent mint), Check-in zweitens (weiss), gleiche Rundung/Ränder, keine Vorauswahl
+  ✓ 1440px «Weitere Angaben» echter Button mit aria-controls; keine Disclosure-Steuerung für den offenen Rückruf-Bereich
+  ✓ 1440px Tab ohne Auswahl = sichtbare Reihenfolge, eingeklappte Felder übersprungen (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 1440px Wahl checkin: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «TCM-Check-in anfragen →», Scroll/Fokus unverändert (727→727, kf-sg-hero-ta-checkin)
+  ✓ 1440px Wechsel → behandlung: bleibt offen, «Ersttermin anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 1440px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 1440px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 1440px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 1440px Wahl behandlung: Rückruf bleibt offen, kein Öffnungsbutton, OneDoc sichtbar, optionale zu, «Ersttermin anfragen →», Scroll/Fokus unverändert (727→727, kf-sg-hero-ta-behandlung)
+  ✓ 1440px Wechsel → checkin: bleibt offen, «TCM-Check-in anfragen →», Eingaben erhalten, Scroll/Fokus unverändert
+  ✓ 1440px optionale Angaben separat zuklappbar, Rückruf bleibt offen
+  ✓ 1440px Eingaben nach Schliessen/Öffnen der optionalen Angaben erhalten
+  ✓ 1440px Kachelwahl/Aufklappen: kein Versand, keine Conversion, kein onedoc_click, kein Seiten-Event
+  ✓ 1440px Leertaste auf Kachel: wählt, Rückruf offen, Fokus bleibt auf der Kachel
+  ✓ 1440px Tab-Reihenfolge = sichtbare Reihenfolge (kf-sg-hero-tel → kf-sg-hero-opt-btn → submit → legal → onedoc → call → A → A)
+  ✓ 1440px Absenden ohne Terminart: kein Versand, Fehler «Bitte wähle aus, wie wir dir helfen können.» an der Auswahl (sichtbar, aria-describedby), Fokus auf der ersten sichtbaren Option (Erstbehandlung)
+  ✓ 1440px danach Wahl: Fehler weg, «Ersttermin anfragen →», Telefon erhalten
+  ✓ 1440px ?terminart=behandlung: vorgewählt, Rückruf offen, kein Fokus, kein Scroll
+  ✓ 320px Überschrift «Terminart wählen» über den Kacheln, danach direkt die offenen Rückruf-Felder (ohne «Rückruf anfragen»), OneDoc unter «Oder direkt Kontakt aufnehmen», ohne Overflow, OneDoc ohne Wahl erreichbar
+  ✓ 320px Auswahl Erstbehandlung: Radio gefüllt, klarer dunkler Rand (inset, kein Schatten), Mint unverändert (Mint ≠ Auswahl), keine Grössen-/Positions-/Rahmenbreitenänderung
+  ✓ 320px nicht gewählte Check-in-Kachel: weiss, neutraler Rand, kein Schatten (none|rgb(255, 255, 255)|rgba(2, 11, 16, 0.1))
+  ✓ 320px Rückruf-Bereich bereits offen: Kachelwahl animiert/verschiebt ihn nicht
+  ✓ 320px nach der Animation: kein Abschneiden, keine Maximalhöhe, kein innerer Scrollbereich, Submit sichtbar
+  ✓ 320px Kachelwechsel animiert nicht erneut
+  ✓ 320px optionale Angaben blenden ruhig ein
+  ✓ 320px Hover/Auswahl/Animation: kein Versand, kein Event
+  ✓ 390px Überschrift «Terminart wählen» über den Kacheln, danach direkt die offenen Rückruf-Felder (ohne «Rückruf anfragen»), OneDoc unter «Oder direkt Kontakt aufnehmen», ohne Overflow, OneDoc ohne Wahl erreichbar
+  ✓ 390px Touch-Gerät: kein Hover-Rahmen, kein Layoutsprung
+  ✓ 390px Auswahl Erstbehandlung: Radio gefüllt, klarer dunkler Rand (inset, kein Schatten), Mint unverändert (Mint ≠ Auswahl), keine Grössen-/Positions-/Rahmenbreitenänderung
+  ✓ 390px nicht gewählte Check-in-Kachel: weiss, neutraler Rand, kein Schatten (none|rgb(255, 255, 255)|rgba(2, 11, 16, 0.1))
+  ✓ 390px Rückruf-Bereich bereits offen: Kachelwahl animiert/verschiebt ihn nicht
+  ✓ 390px nach der Animation: kein Abschneiden, keine Maximalhöhe, kein innerer Scrollbereich, Submit sichtbar
+  ✓ 390px Kachelwechsel animiert nicht erneut
+  ✓ 390px optionale Angaben blenden ruhig ein
+  ✓ 390px Hover/Auswahl/Animation: kein Versand, kein Event
+  ✓ 1440px Überschrift «Terminart wählen» über den Kacheln, danach direkt die offenen Rückruf-Felder (ohne «Rückruf anfragen»), OneDoc unter «Oder direkt Kontakt aufnehmen», ohne Overflow, OneDoc ohne Wahl erreichbar
+  ✓ 1440px Hover-Rahmen nur bei (hover: hover), nur Farbwechsel; Maus-Hover ohne Layoutsprung (border-top-color,border-right-color,border-bottom-color,border-left-color=rgba(2, 11, 16, 0.4))
+  ✓ 1440px Auswahl Erstbehandlung: Radio gefüllt, klarer dunkler Rand (inset, kein Schatten), Mint unverändert (Mint ≠ Auswahl), keine Grössen-/Positions-/Rahmenbreitenänderung
+  ✓ 1440px nicht gewählte Check-in-Kachel: weiss, neutraler Rand, kein Schatten (none|rgb(255, 255, 255)|rgba(2, 11, 16, 0.1))
+  ✓ 1440px Rückruf-Bereich bereits offen: Kachelwahl animiert/verschiebt ihn nicht
+  ✓ 1440px nach der Animation: kein Abschneiden, keine Maximalhöhe, kein innerer Scrollbereich, Submit sichtbar
+  ✓ 1440px Kachelwechsel animiert nicht erneut
+  ✓ 1440px optionale Angaben blenden ruhig ein
+  ✓ 1440px Hover/Auswahl/Animation: kein Versand, kein Event
+  ✓ prefers-reduced-motion: Bereiche sofort offen, keine Animation/Transition
+  ✓ Vorauswahl beim Laden: Rückruf offen ohne Animation
+  ✓ Telefon-only (optionale Angaben zu): Payload ohne Name/E-Mail/Wunschzeit, Identifier erhalten, genau 1 formular_senden
+  ✓ Fehler in geschlossenen optionalen Angaben → Bereich öffnet, Fokus auf E-Mail
+  ✓ ungültiges Telefon → Fokus Telefon
+  ✓ Hero-CTA «Ersttermin anfragen» (#offer-form) → Rückruf offen, Fokus Telefon
+  ✓ Direktlink #offer-form: Rückruf offen, keine Wahl
+  ✓ alter Link #first30 (Übergang + Check-in): Rückruf offen, Check-in gewählt
+  ✓ alter Link ?first30=1: Rückruf offen, Check-in gewählt
+  ✓ #first30-kontakt (Ziel: unteres Formular; Hero ohne Wahl): Rückruf offen, keine Wahl
+  ✓ vorausgefüllte optionale Angabe → Rückruf + optionale Angaben offen, Wert sichtbar
+  ✓ 390: Laden mit #kf-sg-hero-fields → Rückruf offen, optionale zu, keine Wahl, Telefon fokussiert + sichtbar, kein Versand/Event
+  ✓ 390: Klick auf Seitenlink #kf-sg-hero-fields → Rückruf offen, Fokus Telefon sichtbar, Eingaben + Terminwahl unverändert
+  ✓ 390: kein Öffnungsbutton, Bereich bleibt offen
+  ✓ 390: erneuter Klick auf denselben Anker (Hash unverändert, weggescrollt) → Fokus Telefon sichtbar
+  ✓ 390: Hash-Wechsel nach dem Laden → Rückruf offen, Fokus Telefon sichtbar
+  ✓ 390: Ankernavigation + Aufklappen ohne Versand, Conversion oder App-Event
+  ✓ 1440: Laden mit #kf-sg-hero-fields → Rückruf offen, optionale zu, keine Wahl, Telefon fokussiert + sichtbar, kein Versand/Event
+  ✓ 1440: Klick auf Seitenlink #kf-sg-hero-fields → Rückruf offen, Fokus Telefon sichtbar, Eingaben + Terminwahl unverändert
+  ✓ 1440: kein Öffnungsbutton, Bereich bleibt offen
+  ✓ 1440: erneuter Klick auf denselben Anker (Hash unverändert, weggescrollt) → Fokus Telefon sichtbar
+  ✓ 1440: Hash-Wechsel nach dem Laden → Rückruf offen, Fokus Telefon sichtbar
+  ✓ 1440: Ankernavigation + Aufklappen ohne Versand, Conversion oder App-Event
+  ✗ #kf-sg-hero-fields + Prefill → optionale Angaben offen (nur wegen Prefill), Wert erhalten, Fokus Telefon
+  ✓ Hero OneDoc-Klick (Rückruf zu): genau 1 onedoc_click, keine Conversion, kein Versand
+  ✓ unteres SG-Formular vollständig offen, alle Felder, gleicher Kopf und gleiche kurze Angebotstexte (Erstbehandlung zuerst), ohne «Standort:», ohne Hero-Schritte/Aufklappen
+  ✓ SG obere Box: OneDoc-Button ohne Unterstreichung, Pfeil ohne Unterstreichung (1; unten bewusst keiner)
+  ✓ OneDoc-Button nach Auswahl ohne Unterstreichung
+  ✓ 390px: Aktionen nicht verdeckt ([name=telefon] (vor Wahl)✓ [data-kf-onedoc]✓ [data-kf-opt]✓ [data-kf-submit]✓ .kf-legal--kurz a✓ #kf-sg-hero-ta-behandlung✓)
+  ✓ ohne JS: Telefon, optionale Felder (noscript) und Absenden sichtbar, Toggle verborgen
+  ✓ 390px Laden: Box ohne nachträgliches Auf-/Zuklappen (keine Änderung), Höhe nach Layout-Bereitschaft stabil (1028; vor Bereitschaft 1008)
+  ✓ 1440px Laden: Box ohne nachträgliches Auf-/Zuklappen (keine Änderung), Höhe nach Layout-Bereitschaft stabil (958; vor Bereitschaft 0→934)
+O. SG obere Box: Kontakt-Textlinks «Anrufen · WhatsApp» unter OneDoc
+  ✓ 320px «Oder direkt Kontakt aufnehmen»; Textlinks «Anrufen» (tel:+41775236122) · «WhatsApp» (kanonisches SG-Ziel + Text), Punkt dekorativ; unten ohne Alternativbereich
+  ✓ 320px Hierarchie: neongrüner Anfrage-Button → umrandeter OneDoc-Button → «Direkt bei OneDoc.» → kleine Textlinks (ohne Hintergrund/Linie), kein Overflow
+  ✓ 320px Links nebeneinander, Touchfläche ≥ 44 px (44/44)
+  ✓ 320px sichtbarer Tastaturfokus auf den Textlinks
+  ✓ 320px Links auch nach Wahl «behandlung» sichtbar
+  ✓ 320px Links auch nach Wahl «checkin» sichtbar
+  ✓ 320px «Anrufen»: genau 1 phone_click (quelle kontaktformular, sg-hero, st-gallen), keine Personendaten
+  ✓ 320px «WhatsApp»: genau 1 wa_click (bestehende Konvention, quelle form), keine Personendaten
+  ✓ 320px Kontaktlinks: kein Versand, keine Conversion, Eingaben erhalten
+  ✓ 390px «Oder direkt Kontakt aufnehmen»; Textlinks «Anrufen» (tel:+41775236122) · «WhatsApp» (kanonisches SG-Ziel + Text), Punkt dekorativ; unten ohne Alternativbereich
+  ✓ 390px Hierarchie: neongrüner Anfrage-Button → umrandeter OneDoc-Button → «Direkt bei OneDoc.» → kleine Textlinks (ohne Hintergrund/Linie), kein Overflow
+  ✓ 390px Links nebeneinander, Touchfläche ≥ 44 px (44/44)
+  ✓ 390px sichtbarer Tastaturfokus auf den Textlinks
+  ✓ 390px Links auch nach Wahl «behandlung» sichtbar
+  ✓ 390px Links auch nach Wahl «checkin» sichtbar
+  ✓ 390px «Anrufen»: genau 1 phone_click (quelle kontaktformular, sg-hero, st-gallen), keine Personendaten
+  ✓ 390px «WhatsApp»: genau 1 wa_click (bestehende Konvention, quelle form), keine Personendaten
+  ✓ 390px Kontaktlinks: kein Versand, keine Conversion, Eingaben erhalten
+  ✓ 1440px «Oder direkt Kontakt aufnehmen»; Textlinks «Anrufen» (tel:+41775236122) · «WhatsApp» (kanonisches SG-Ziel + Text), Punkt dekorativ; unten ohne Alternativbereich
+  ✓ 1440px Hierarchie: neongrüner Anfrage-Button → umrandeter OneDoc-Button → «Direkt bei OneDoc.» → kleine Textlinks (ohne Hintergrund/Linie), kein Overflow
+  ✓ 1440px Links nebeneinander, Touchfläche ≥ 44 px (44/44)
+  ✓ 1440px sichtbarer Tastaturfokus auf den Textlinks
+  ✓ 1440px Links auch nach Wahl «behandlung» sichtbar
+  ✓ 1440px Links auch nach Wahl «checkin» sichtbar
+  ✓ 1440px «Anrufen»: genau 1 phone_click (quelle kontaktformular, sg-hero, st-gallen), keine Personendaten
+  ✓ 1440px «WhatsApp»: genau 1 wa_click (bestehende Konvention, quelle form), keine Personendaten
+  ✓ 1440px Kontaktlinks: kein Versand, keine Conversion, Eingaben erhalten
+P. SG-Teamsektion: Kim, Corinna, Astrid; gleich breite Karten, Porträt oben
+  ✓ 320px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc
+  ✓ 320px Mobile: Kim volle Breite (272 px), darunter Corinna + Astrid nebeneinander, gleich breit (130 px), kein Overflow
+  ✓ 320px Porträts oben, proportional (Kim 1.33, Corinna/Astrid 0.8), cover; Astrid neutraler Platzhalter
+  ✓ 320px keine abgeschnittenen Texte/Auslassungspunkte (keine); Schrift nicht unter Mobile-Standard (17/13.5/11/14)
+  ✓ 320px Profillink einzeilig, Pfeil ausgeblendet (passt nicht), kein Umbruch, Schrift ≥ 14 px (1Z/– 1Z/–)
+  ✓ 320px Profilkarte fokussierbar mit sichtbarem Fokus, Ziel /team/…
+  ✓ 320px Profillinks ≥ 44 px hoch, bei Corinna/Astrid einheitlich unten platziert (44@15 44@15 44@15)
+  ✓ 320px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (14px,700,none,15)
+  ✓ 320px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten
+  ✓ 390px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc
+  ✓ 390px Mobile: Kim volle Breite (342 px), darunter Corinna + Astrid nebeneinander, gleich breit (165 px), kein Overflow
+  ✓ 390px Porträts oben, proportional (Kim 1.33, Corinna/Astrid 0.8), cover; Astrid neutraler Platzhalter
+  ✓ 390px keine abgeschnittenen Texte/Auslassungspunkte (keine); Schrift nicht unter Mobile-Standard (17/13.5/11/14)
+  ✓ 390px Profillink einzeilig, Pfeil sichtbar (passt), kein Umbruch, Schrift ≥ 14 px (1Z/→ 1Z/→)
+  ✓ 390px Profilkarte fokussierbar mit sichtbarem Fokus, Ziel /team/…
+  ✓ 390px Profillinks ≥ 44 px hoch, bei Corinna/Astrid einheitlich unten platziert (44@15 44@15 44@15)
+  ✓ 390px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (14px,700,none,15)
+  ✓ 390px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten
+  ✓ separate Karte «Deine Therapeut:innen · Team ansehen» entfernt, ohne Leerfläche; #team-st-gallen bleibt
+  ✓ 768px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc
+  ✓ 768px 2 Spalte(n), gleich breite Karten (352/352/352), kein Overflow/Slider
+  ✓ 768px Porträt oben, einheitliches Format (0.8, Bildhöhe 438 px), cover; Astrid neutraler Platzhalter
+  ✓ 768px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (14px,700,none,21)
+  ✓ 768px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten
+  ✓ 1440px Reihenfolge Kim → Corinna → Astrid (HTML = Darstellung); Kim als Clinical-Lead-Karte (data-clinical-lead, keine .tmc), lokale Karten .tmc
+  ✓ 1440px 3 Spalte(n), gleich breite Karten (387/387/387), kein Overflow/Slider
+  ✓ 1440px Porträt oben, einheitliches Format (0.8, Bildhöhe 481 px), cover; Astrid neutraler Platzhalter
+  ✓ 1440px einheitliche Ränder (keine Sonderumrandung bei Kim), gleiche Profillink-Typografie und -Position (14px,700,none,21)
+  ✓ 1440px Kim: «Klinische Leitung · TCM.ch Netzwerk» + Hinweis Praxisteam/netzwerkweit, kein Standort-Badge; Profillinks erhalten
+  ✓ 1440px Sektion an der Inhaltsbreite (1200/1280)
+  ✓ Tastatur: Kim-Profil → Corinna → Astrid (/team/corinna-reinhart/ → /team/astrid-lenggenhager/), sichtbarer Fokus
+Q. SG Mobile: Sticky-CTA-Bar erst nach der oberen Box, aus bei unterem Formular/OneDoc/Eingabe; Icons Kontaktlinks
+  ✓ 320px initial (Hero): Bar aus, inert, nicht klickbar
+  ✓ 320px obere Box sichtbar: Bar aus
+  ✓ 320px Ende der Box noch im Bild: Bar aus
+  ✓ 320px Box-Ende über dem oberen Rand: Bar an, bedienbar
+  ✓ 320px zurück zur oberen Box: Bar aus
+  ✓ 320px offene Zusatzfelder + Fehler (Box +439 px): an alter Position Bar aus
+  ✓ 320px nach dem neuen Box-Ende: Bar an
+  ✓ 320px #kontakt sichtbar: Bar aus
+  ✓ 320px #online-buchen sichtbar: Bar aus
+  ✓ 320px zwischen Box und unterem Formular (Team): Bar an
+  ✓ 320px schnelles Hin- und Herscrollen: Zustand entspricht Endposition
+  ✓ 320px Eingabefeld fokussiert: Bar aus
+  ✓ 320px Fokus verlassen: Bar wieder an (Position neu entschieden)
+  ✓ 320px Bildschirmtastatur (visualViewport verkleinert): Bar aus
+  ✓ 320px Tastatur geschlossen: Bar wieder an
+  ✓ 320px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ 320px Bar-Ziele: genau drei – Anfrage → #offer-form (obere Box), WhatsApp, Anrufen (#offer-form|https://wa.me/41775236122|tel:+41775236122)
+  ✓ 320px Bar: «Termin anfragen» + Unterzeile «Gratis 360° möglich» (60px, 200px breit, ohne Abschneiden), Icons als Kreise mittig zur Pille, kein zweiter OneDoc-Button
+  ✓ 320px WhatsApp in der Bar: genau 1 wa_click (quelle sticky)
+  ✓ 320px Bar «Termin anfragen» → obere Box, Telefon fokussiert, Bar aus, kein Zusatz-Event
+  ✓ 320px Bar überdeckt keinen Inhalt dauerhaft (Body-Abstand ≥ Barhöhe)
+  ✓ 320px Kontaktlinks mit Icon (Telefonhörer/WhatsApp, 17 px, dekorativ, Linkfarbe, mittig), nebeneinander, ≥ 44 px, kein Overflow
+  ✓ 390px initial (Hero): Bar aus, inert, nicht klickbar
+  ✓ 390px obere Box sichtbar: Bar aus
+  ✓ 390px Ende der Box noch im Bild: Bar aus
+  ✓ 390px Box-Ende über dem oberen Rand: Bar an, bedienbar
+  ✓ 390px zurück zur oberen Box: Bar aus
+  ✓ 390px offene Zusatzfelder + Fehler (Box +419 px): an alter Position Bar aus
+  ✓ 390px nach dem neuen Box-Ende: Bar an
+  ✓ 390px #kontakt sichtbar: Bar aus
+  ✓ 390px #online-buchen sichtbar: Bar aus
+  ✓ 390px zwischen Box und unterem Formular (Team): Bar an
+  ✓ 390px schnelles Hin- und Herscrollen: Zustand entspricht Endposition
+  ✓ 390px Eingabefeld fokussiert: Bar aus
+  ✓ 390px Fokus verlassen: Bar wieder an (Position neu entschieden)
+  ✓ 390px Bildschirmtastatur (visualViewport verkleinert): Bar aus
+  ✓ 390px Tastatur geschlossen: Bar wieder an
+  ✓ 390px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ 390px Bar-Ziele: genau drei – Anfrage → #offer-form (obere Box), WhatsApp, Anrufen (#offer-form|https://wa.me/41775236122|tel:+41775236122)
+  ✓ 390px Bar: «Termin anfragen» + Unterzeile «Auch als Gratis 360°-Check» (60px, 254px breit, ohne Abschneiden), Icons als Kreise mittig zur Pille, kein zweiter OneDoc-Button
+  ✓ 390px WhatsApp in der Bar: genau 1 wa_click (quelle sticky)
+  ✓ 390px Bar «Termin anfragen» → obere Box, Telefon fokussiert, Bar aus, kein Zusatz-Event
+  ✓ 390px Bar überdeckt keinen Inhalt dauerhaft (Body-Abstand ≥ Barhöhe)
+  ✓ 390px Kontaktlinks mit Icon (Telefonhörer/WhatsApp, 17 px, dekorativ, Linkfarbe, mittig), nebeneinander, ≥ 44 px, kein Overflow
+  ✓ Einstieg #team-st-gallen: Bar an
+  ✓ Einstieg #sg-faq: Bar aus
+  ✓ Einstieg #kontakt: Bar aus
+  ✓ Einstieg #online-buchen: Bar aus
+  ✓ Einstieg #offer-form: Bar aus
+  ✓ Einstieg #kf-sg-hero-fields: Bar aus
+  ✓ wiederhergestellte Scrollposition (Reload): Bar korrekt an
+  ✓ 1440px: keine Mobile-Bar, Kontaktlinks ohne Icons (Desktop unverändert)
+  ✓ Nicht-Standortseite (Beschwerde-Leaf): keine SG-/Standort-Box-Logik, Ziel unverändert
+R. DE-Homepage Mobile: Sticky-Bar aus, solange die Formularsektion #home-contact-form sichtbar ist
+  ✓ 320px Home initial (Hero): Bar aus, inert
+  ✓ 320px vor der Formularsektion: Bar an (bisherige Logik)
+  ✓ 320px Formularsektion kommt ins Bild (20 px): Bar aus, nicht klick-/tabbar
+  ✓ 320px mitten im Formular: Bar aus
+  ✓ 320px Standort/Terminart gewählt + Validierungsfehler, Sektionsende im Bild: Bar aus, kein Versand
+  ✓ 320px Fehlerfokus liegt im Formular (Bar bleibt auch dadurch aus)
+  ✓ 320px Fokus verlassen, nach der Formularsektion (Ende 20 px über dem Rand): Bar wieder an
+  ✓ 320px zurück ins Formular: Bar aus
+  ✓ 320px zurück über dem Formular: Bar an
+  ✓ 320px Formularfeld fokussiert: Bar aus
+  ✓ 320px Fokus verlassen: Bar wieder an
+  ✓ 320px Bildschirmtastatur (simuliert): Bar aus
+  ✓ 320px Tastatur zu: Bar an
+  ✓ 320px Sichtbarkeitswechsel: keine Events
+  ✓ 320px Bar-Ziele unverändert (/kontakt/|https://wa.me/41775236122|tel:+41775236122)
+  ✓ 320px WhatsApp in der Bar: 1× wa_click quelle sticky
+  ✓ 320px Bar-Primär: bisheriges Ziel (Formular, Prefill unverändert), danach Bar aus, kein Zusatz-Event/Versand
+  ✓ 320px Erfolgsmeldung (gemockt): Sektion im Bild, Bar aus
+  ✓ 320px nach der Sektion mit Erfolgsmeldung: Bar an
+  ✓ 320px Einstieg #home-contact-form: Bar sofort aus
+  ✓ 320px Einstieg #kf-home-fields: Bar sofort aus
+  ✓ 320px Reload mit Position im Formular: Bar aus
+  ✓ 320px Reload mit Position nach dem Formular: Bar an
+  ✓ 390px Home initial (Hero): Bar aus, inert
+  ✓ 390px vor der Formularsektion: Bar an (bisherige Logik)
+  ✓ 390px Formularsektion kommt ins Bild (20 px): Bar aus, nicht klick-/tabbar
+  ✓ 390px mitten im Formular: Bar aus
+  ✓ 390px Standort/Terminart gewählt + Validierungsfehler, Sektionsende im Bild: Bar aus, kein Versand
+  ✓ 390px Fehlerfokus liegt im Formular (Bar bleibt auch dadurch aus)
+  ✓ 390px Fokus verlassen, nach der Formularsektion (Ende 20 px über dem Rand): Bar wieder an
+  ✓ 390px zurück ins Formular: Bar aus
+  ✓ 390px zurück über dem Formular: Bar an
+  ✓ 390px Formularfeld fokussiert: Bar aus
+  ✓ 390px Fokus verlassen: Bar wieder an
+  ✓ 390px Bildschirmtastatur (simuliert): Bar aus
+  ✓ 390px Tastatur zu: Bar an
+  ✓ 390px Sichtbarkeitswechsel: keine Events
+  ✓ 390px Bar-Ziele unverändert (/kontakt/|https://wa.me/41775236122|tel:+41775236122)
+  ✓ 390px WhatsApp in der Bar: 1× wa_click quelle sticky
+  ✓ 390px Bar-Primär: bisheriges Ziel (Formular, Prefill unverändert), danach Bar aus, kein Zusatz-Event/Versand
+  ✓ 390px Erfolgsmeldung (gemockt): Sektion im Bild, Bar aus
+  ✓ 390px nach der Sektion mit Erfolgsmeldung: Bar an
+  ✓ 390px Einstieg #home-contact-form: Bar sofort aus
+  ✓ 390px Einstieg #kf-home-fields: Bar sofort aus
+  ✓ 390px Reload mit Position im Formular: Bar aus
+  ✓ 390px Reload mit Position nach dem Formular: Bar an
+  ✓ 1440px Home: keine Mobile-Bar (Desktop unverändert)
+  ✓ andere Seite (/kontakt/): Bar ohne Home-Formularlogik (kein inert/aria-hidden)
+K. Conversion über genau einen Versandweg (mit und ohne gtag)
+  ✓ mit gtag: Validierungsfehler → 0 form_submit
+  ✓ mit gtag: Erfolg + Doppelklick → genau 1 form_submit (dataLayer 1, gtag-Args 0, gtag-Aufrufe 0)
+  ✓ mit gtag: Parameter form_id/herkunft/terminart/standort, keine Personendaten im dataLayer
+  ✓ mit gtag: API 500 → 0 form_submit
+  ✓ mit gtag: API 422 → 0 form_submit
+  ✓ mit gtag: Honeypot → 0 formular_senden
+  ✓ mit gtag: phone_click und onedoc_click je genau 1× über dataLayer
+  ✓ ohne gtag: Validierungsfehler → 0 form_submit
+  ✓ ohne gtag: Erfolg + Doppelklick → genau 1 form_submit (dataLayer 1, gtag-Args 0, gtag-Aufrufe 0)
+  ✓ ohne gtag: Parameter form_id/herkunft/terminart/standort, keine Personendaten im dataLayer
+  ✓ ohne gtag: API 500 → 0 form_submit
+  ✓ ohne gtag: API 422 → 0 form_submit
+  ✓ ohne gtag: Honeypot → 0 formular_senden
+  ✓ ohne gtag: phone_click und onedoc_click je genau 1× über dataLayer
+N. SG: Hero mit Praxisvideo (Foto als Poster/Fallback, seit #79), USP-Reihe, Kontaktsektion (Buchungsbox + Praxisangaben), Sticky
+  ✓ SG: keine doppelten IDs (–)
+  ✓ SG: genau zwei Formularinstanzen (sg-hero, sg-unten)
+  ✓ SG: genau ein Hero-Video (muted, playsinline, loop, preload=none, Poster = Video-Standbild, aria-hidden, ohne autoplay/controls)
+  ✓ SG: vier Video-Quellen in dieser Reihenfolge (640 webm/mp4 nur ≤900px, 1280 webm/mp4), Dateien im Build
+  ✓ SG: Video-Standbild genau einmal als Fallback-Bild vor dem Video (eager, fetchpriority high), kein Standortfoto im Hero, Praxisfoto weiterhin auf der Seite («Über die Praxis»), keine Caption in der Hero-Figure
+  ✓ SG: Startskript nach load (Einblendung beim ersten Frame, Stopp bei reduced motion/Save-Data), Video unsichtbar bis is-playing, reduced motion ausgeblendet, Poster mit Video-Fokus
+  ✓ SG: kein Formular im Hero
+  ✓ SG: «Über die Praxis» nur einmal, alter USP-Block + CTA-Wiederholung entfernt
+  ✓ 320px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow
+  ✓ 320px Hero-Video: Rendition 640 (hwang-praxis-640.webm), nicht gestartet, Foto sichtbar
+  ✓ 320px USPs kompakt (222 px gesamt, keine hohen Karten)
+  ✓ 320px Box vor Praxisangaben und Karte, kein Sticky (Box 1186–2310, Praxis ab 2342)
+  ✓ 320px initial: Aktionen sichtbar (ok)
+  ✓ 320px checkin gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 320px behandlung gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 320px optionale Angaben offen: kein Overflow, Aktionen sichtbar
+  ✓ 320px Validierungsfehler: kein Versand, Fokus Telefon, Aktionen sichtbar
+  ✓ 390px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow
+  ✓ 390px Hero-Video: Rendition 640 (hwang-praxis-640.webm), nicht gestartet, Foto sichtbar
+  ✓ 390px USPs kompakt (202 px gesamt, keine hohen Karten)
+  ✓ 390px Box vor Praxisangaben und Karte, kein Sticky (Box 1142–2169, Praxis ab 2201)
+  ✓ 390px initial: Aktionen sichtbar (ok)
+  ✓ 390px checkin gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 390px behandlung gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 390px optionale Angaben offen: kein Overflow, Aktionen sichtbar
+  ✓ 390px Validierungsfehler: kein Versand, Fokus Telefon, Aktionen sichtbar
+  ✓ 768px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow
+  ✓ 768px Hero-Video: Rendition 640 (hwang-praxis-640.webm), läuft, eingeblendet
+  ✓ 768px USPs kompakt (155 px gesamt, keine hohen Karten)
+  ✓ 768px Box vor Praxisangaben und Karte, kein Sticky (Box 925–1881, Praxis ab 1913)
+  ✓ 768px initial: Aktionen sichtbar (ok)
+  ✓ 768px checkin gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 768px behandlung gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 768px optionale Angaben offen: kein Overflow, Aktionen sichtbar
+  ✓ 768px Validierungsfehler: kein Versand, Fokus Telefon, Aktionen sichtbar
+  ✓ 1440px Reihenfolge Hero (Foto + Video deckungsgleich in der Figure, ohne Formular) → 3 USPs → Kontaktsektion (Box vor Praxisangaben im DOM); alle Praxisangaben/Links erhalten; kein Overflow
+  ✓ 1440px Hero-Video: Rendition 1280 (hwang-praxis-1280.webm), läuft, eingeblendet
+  ✓ 1440px USPs nebeneinander, kompakt (73/73/73 px)
+  ✓ 1440px Praxisangaben links, Box rechts, oben bündig (847/847)
+  ✓ 1440px Hero kompakt (677 px, keine Vollbildhöhe)
+  ✓ 1440px initial: Aktionen sichtbar (ok)
+  ✓ 1440px checkin gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 1440px behandlung gewählt: kein Overflow, Aktionen sichtbar (ok)
+  ✓ 1440px optionale Angaben offen: kein Overflow, Aktionen sichtbar
+  ✓ 1440px Validierungsfehler: kein Versand, Fokus Telefon, Aktionen sichtbar
+  ✓ 1440×700 Ausgangszustand: Sticky aus (Box 958 px, passt false, Strecke true)
+  ✓ 1440×700 Anreise offen: Sticky aus (Box 958 px, passt false, Strecke true, top 92 ≥ Header 76)
+  ✓ 1440×700: Layout/Sticky ohne Versand oder Event
+  ✓ 1440×900 Ausgangszustand: Sticky aus (Box 958 px, passt false, Strecke true)
+  ✓ 1440×900 Anreise offen: Sticky aus (Box 958 px, passt false, Strecke true, top 92 ≥ Header 76)
+  ✓ 1440×900: Layout/Sticky ohne Versand oder Event
+  ✓ 1440×1300 Ausgangszustand: Sticky an (Box 958 px, passt true, Strecke true)
+  ✓ 1440×1300 Anreise offen: Sticky an (Box 958 px, passt true, Strecke true, top 92 ≥ Header 76)
+  ✓ 1440×1300: Box haftet unter dem Header (top 92), komplett sichtbar, endet mit der Sektion
+  ✓ 1440×1300: nach Auswahl + optionalen Angaben (Box 1322 px) Sticky aus (scrollt normal)
+  ✓ 1440×1300: Layout/Sticky ohne Versand oder Event
+  ✓ 1280×1400 Ausgangszustand: Sticky an (Box 958 px, passt true, Strecke true)
+  ✓ 1280×1400 Anreise offen: Sticky an (Box 958 px, passt true, Strecke true, top 92 ≥ Header 76)
+  ✓ 1280×1400: Box haftet unter dem Header (top 92), komplett sichtbar, endet mit der Sektion
+  ✓ 1280×1400: nach Auswahl + optionalen Angaben (Box 1322 px) Sticky aus (scrollt normal)
+  ✓ 1280×1400: Layout/Sticky ohne Versand oder Event
+  ✓ Hero-CTAs: «Ersttermin anfragen» → #offer-form, «Termin direkt online buchen» → OneDoc-Widget #online-buchen
+  ✓ Tastatur: OneDoc → Anrufen → WhatsApp (Anrufen → WhatsApp)
+  ✓ Tastatur: nach WhatsApp (letzte Aktion der Box) folgt der erste Link der Praxisangaben
+  ✓ Tastatur: nach dem Hero folgt die Kontaktsektion (keine versteckten Ziele dazwischen)
+S. SG-Formulare: schwarzer Kopfbereich, weisser Formularbereich, kurze Angebotstexte (beide Instanzen)
+  ✓ 320px sg-hero: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 133px)
+  ✓ 320px sg-hero: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 21.6px, Sub 15.5px); Kopf kompakt
+  ✓ 320px sg-hero: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 320px sg-hero: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 320px sg-unten: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 133px)
+  ✓ 320px sg-unten: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 21.6px, Sub 15.5px); Kopf kompakt
+  ✓ 320px sg-unten: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 320px sg-unten: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 320px: keine horizontale Seitenverschiebung
+  ✓ 390px sg-hero: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 133px)
+  ✓ 390px sg-hero: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 21.6px, Sub 15.5px); Kopf kompakt
+  ✓ 390px sg-hero: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 390px sg-hero: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 390px sg-unten: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 133px)
+  ✓ 390px sg-unten: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 21.6px, Sub 15.5px); Kopf kompakt
+  ✓ 390px sg-unten: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 390px sg-unten: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 390px: keine horizontale Seitenverschiebung
+    Höhe obere Box 390px: 1028px · unteres Formular: 1221px
+  ✓ 768px sg-hero: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 98px)
+  ✓ 768px sg-hero: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 25.28px, Sub 15.5px); Kopf kompakt
+  ✓ 768px sg-hero: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 768px sg-hero: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 768px sg-unten: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 98px)
+  ✓ 768px sg-unten: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 25.28px, Sub 15.5px); Kopf kompakt
+  ✓ 768px sg-unten: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 768px sg-unten: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 768px: keine horizontale Seitenverschiebung
+  ✓ 1440px sg-hero: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 100px)
+  ✓ 1440px sg-hero: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 27.2px, Sub 15.5px); Kopf kompakt
+  ✓ 1440px sg-hero: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 1440px sg-hero: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 1440px sg-unten: Kopf Near-Black bündig zum Kartenrand, weisse Überschrift + Subline (Figtree), ohne Logo/feste Höhe, benennt das Formular; darunter «Terminart wählen» (Kopfhöhe 100px)
+  ✓ 1440px sg-unten: kein Überlauf/Abschneiden in Kopf, Kacheln, Button; normale Schriftgrössen (H 27.2px, Sub 15.5px); Kopf kompakt
+  ✓ 1440px sg-unten: nach den Kacheln direkt «Telefonnummer *», ohne «Rückruf anfragen»; kompakter Abstand 20px (kein Leerraum)
+  ✓ 1440px sg-unten: Check-in = Titel «Kostenloser TCM 360°-Check-in», «30 Minuten · CHF 0.–», eine Beschreibung, «Ohne Behandlung. Unverbindlich.»; je Kachel genau eine Beschreibung
+  ✓ 1440px: keine horizontale Seitenverschiebung
+    Höhe obere Box 1440px: 958px · unteres Formular: 1110px
+  ✓ ohne Auswahl: Mint-Kachel hat denselben neutralen Rand wie der Check-in, nicht gewählt
+  ✓ Auswahl unten: gefülltes Radio + dunkler Rand nur dort; obere Box unberührt («Termin anfragen →»)
+T. DE-Homepage: ruhige Formularbox (global, Standortauswahl vor den Kacheln, alle Zielarten)
+  ✓ 320px Home initial: schwarzer Kopf bündig, Standort vor «Terminart wählen» vor Kacheln, Telefon sichtbar, optionale Angaben zu, kein Überlauf, Datenschutz-Link ohne globalen Neon-Unterstrich
+  ✓ 320px Home initial: keine Standort-/Terminart-Vorauswahl (kein Auto-SG), Erstbehandlung zuerst, Alternativen erst nach Zielwahl, «Termin anfragen →»
+  ✓ 390px Home initial: schwarzer Kopf bündig, Standort vor «Terminart wählen» vor Kacheln, Telefon sichtbar, optionale Angaben zu, kein Überlauf, Datenschutz-Link ohne globalen Neon-Unterstrich
+  ✓ 390px Home initial: keine Standort-/Terminart-Vorauswahl (kein Auto-SG), Erstbehandlung zuerst, Alternativen erst nach Zielwahl, «Termin anfragen →»
+  ✓ 768px Home initial: schwarzer Kopf bündig, Standort vor «Terminart wählen» vor Kacheln, Telefon sichtbar, optionale Angaben zu, kein Überlauf, Datenschutz-Link ohne globalen Neon-Unterstrich
+  ✓ 768px Home initial: keine Standort-/Terminart-Vorauswahl (kein Auto-SG), Erstbehandlung zuerst, Alternativen erst nach Zielwahl, «Termin anfragen →»
+  ✓ 1440px Home initial: schwarzer Kopf bündig, Standort vor «Terminart wählen» vor Kacheln, Telefon sichtbar, optionale Angaben zu, kein Überlauf, Datenschutz-Link ohne globalen Neon-Unterstrich
+  ✓ 1440px Home initial: keine Standort-/Terminart-Vorauswahl (kein Auto-SG), Erstbehandlung zuerst, Alternativen erst nach Zielwahl, «Termin anfragen →»
+  ✓ SG: beide Kacheln, Anrufen (kanonische Nummer) · WhatsApp, OneDoc erst mit Behandlung
+  ✓ SG + Behandlung: OneDoc (bestehender SG-Kalender), Button «Ersttermin anfragen →»
+  ✓ SG + Check-in: kein OneDoc, Button «TCM-Check-in anfragen →»
+  ✓ Wechsel SG→Zürich Höngg nach Check-in-Wahl: Check-in-Kachel weg und abgewählt (keine Gratis-Diagnostik), Hinweis «nur in St. Gallen», kein OneDoc, Eingabe bleibt
+  ✓ andere operative Praxis + Behandlung: kein OneDoc (kein Kalender konfiguriert)
+  ✓ Partnerpraxis: Behandlungsziel ohne Check-in, kein OneDoc, Kontaktlinks mit kanonischer Nummer
+  ✓ Bottighofen: Anrufen mit eigener kanonischer Nummer, WhatsApp ausgeblendet (keine pauschale Nummer)
+  ✓ Vormerkung (Luzern): keine «Terminart wählen»/Kacheln, Vormerk-Text, «Vormerkung senden →», kein OneDoc
+  ✓ Winterthur Münzgasse (operativ, Check-in freigegeben): beide Kacheln, kein Anfrage-/Statustext, kein OneDoc, Anrufen · WhatsApp
+  ✓ Winterthur Münzgasse + Check-in: 360°-Wortlaut wie St. Gallen, Button «TCM-Check-in anfragen →», kein OneDoc
+  ✓ Winterthur Münzgasse + Behandlung: kein OneDoc (kein verifizierter Kalender), Button «Ersttermin anfragen →»
+  ✓ Winterthur Marktgasse (operativ, Check-in freigegeben): beide Kacheln, kein Anfrage-/Statustext, kein OneDoc, Anrufen · WhatsApp
+  ✓ Winterthur Marktgasse + Check-in: 360°-Wortlaut wie St. Gallen, Button «TCM-Check-in anfragen →», kein OneDoc
+  ✓ Winterthur Marktgasse + Behandlung: kein OneDoc (kein verifizierter Kalender), Button «Ersttermin anfragen →»
+  ✓ Routing: «Passende Praxis finden», «Passende Praxis anfragen →»
+  ✓ zurück zu SG: Kacheln und Überschrift wieder da, Auswahl erhalten, OneDoc wieder sichtbar
+  ✓ Zielwechsel: kein Versand, keine App-Events
+  ✓ Anrufen/WhatsApp/OneDoc: je genau ein Event (phone_click, wa_click, onedoc_click), keine Personendaten (phone_click,wa_click,onedoc_click)
+  ✓ ohne Standort: Fehler «Bitte wähle einen Standort.», Fokus auf Auswahl, keine SG-Automatik, kein Versand
+  ✓ SG ohne Terminart: Fehler, Fokus auf erste Kachel (Erstbehandlung)
+  ✓ gemockter Erfolg (SG Check-in): 1 Anfrage mit kanonischen Werten, formular_senden genau 1× ohne Personendaten, Bestätigung
+  ✓ Prefill ?standort=st-gallen&terminart=checkin: SG + Check-in gewählt
+  ✓ Prefill ?standort=luzern: Vormerkung ohne Kacheln
+  ✓ Prefill ?anliegen= (home.js): «Weitere Angaben» aufgeklappt, Anliegen sichtbar
+  ✓ Tastatur: «Weitere Angaben · optional» per Enter geöffnet
+  ✓ Tastatur: nach der Standortauswahl folgen die Terminart-Kacheln
+U. Turnstile in ruhigen Karten: Kompakt-Grösse nur, wenn das 300-px-Widget nicht passt
+  ✓ 320px Turnstile-Grösse je nach Platz (SG oben compact/250, SG unten compact/234, Home compact/234, /kontakt/ compact/202)
+  ✓ 390px Turnstile-Grösse je nach Platz (SG oben normal/320, SG unten normal/304, Home normal/304, /kontakt/ compact/272)
+  ✓ 1440px Turnstile-Grösse je nach Platz (SG oben normal/470, SG unten normal/510, Home normal/565, /kontakt/ normal/558)
+V. Rollout: ruhige Gestaltung auf allen Patienten-Formulartypen
+  ✓ 320px /kontakt/: ruhig, Standort + Kacheln, keine Vorauswahl, Zusatzangaben zu (generischer Fülltext öffnet nicht), Alternativen erst nach Zielwahl, kein Overflow
+  ✓ 390px /kontakt/: ruhig, Standort + Kacheln, keine Vorauswahl, Zusatzangaben zu (generischer Fülltext öffnet nicht), Alternativen erst nach Zielwahl, kein Overflow
+  ✓ 1440px /kontakt/: ruhig, Standort + Kacheln, keine Vorauswahl, Zusatzangaben zu (generischer Fülltext öffnet nicht), Alternativen erst nach Zielwahl, kein Overflow
+  ✓ /kontakt/ Basel: Anrufen (kanonische Nummer), kein WhatsApp (TerminForm hatte keins), kein Check-in
+  ✓ /kontakt/ gemockter Erfolg: Versanddaten unverändert (generischer Anliegen-Text, typ termin), form_submit genau 1× ohne Personendaten
+  ✓ /kontakt/?von=/standorte/frauenfeld/: Herkunfts-Prefill gesetzt, Standort vorgewählt, Zusatzangaben sichtbar
+  ✓ 320px Standort Basel: ruhig, nur Behandlung (kein Check-in), Anrufen · WhatsApp lokal, kein OneDoc, kein Overflow
+  ✓ 390px Standort Basel: ruhig, nur Behandlung (kein Check-in), Anrufen · WhatsApp lokal, kein OneDoc, kein Overflow
+  ✓ 1440px Standort Basel: ruhig, nur Behandlung (kein Check-in), Anrufen · WhatsApp lokal, kein OneDoc, kein Overflow
+  ✓ Standort Basel: Anrufen/WhatsApp je genau 1 Event (phone_click,wa_click)
+  ✓ Standort Basel gemockter Erfolg: 1 Anfrage, formular_senden 1×
+  ✓ Bottighofen: Anrufen mit eigener Nummer, WhatsApp nur bei gleicher Nummer (hier aus)
+  ✓ SG-Landingpage: beide Kacheln, keine Vorauswahl, OneDoc erst mit Behandlung
+  ✓ SG-Landingpage + Behandlung: OneDoc umrandet → eingebettetes SG-Widget auf derselben Seite (#online-buchen)
+  ✓ Leaf /therapien/tuina/: ruhig, global, vorbelegtes Anliegen → Zusatzangaben sichtbar
+  ✓ Krankenkassen-Anfrage: ruhig, global
+  ✓ Krankenkassen-Anfrage Vormerkung: Bedeutung erhalten
+  ✓ Massage-Anfrage unverändert (eigener Handler)
+W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfung, Wartelisten (Darstellung, Pflichtfelder, Prefill, Fehler, Erfolg)
+  ✓ 320px /massage-basel/: Hülle (Kopf «Passende Behandlung anfragen», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /massage-basel/: Pflichtfelder unverändert (name,email,telefon), Turnstile compact/234, Kontaktlinks kanonisch (tel:+41775236122 https://wa.me/41775236122)
+  ✓ 390px /massage-basel/: Hülle (Kopf «Passende Behandlung anfragen», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /massage-basel/: Pflichtfelder unverändert (name,email,telefon), Turnstile normal/304, Kontaktlinks kanonisch (tel:+41775236122 https://wa.me/41775236122)
+  ✓ 1440px /massage-basel/: Hülle (Kopf «Passende Behandlung anfragen», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /massage-basel/: Pflichtfelder unverändert (name,email,telefon), Turnstile normal/570, Kontaktlinks kanonisch (tel:+41775236122 https://wa.me/41775236122)
+  ✓ 320px /akupunktur-tcm-zuerich/: Hülle (Kopf «Termin bei TCM.ch finden», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /akupunktur-tcm-zuerich/: Pflichtfelder unverändert (name), Turnstile compact/234, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 390px /akupunktur-tcm-zuerich/: Hülle (Kopf «Termin bei TCM.ch finden», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /akupunktur-tcm-zuerich/: Pflichtfelder unverändert (name), Turnstile normal/304, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 1440px /akupunktur-tcm-zuerich/: Hülle (Kopf «Termin bei TCM.ch finden», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /akupunktur-tcm-zuerich/: Pflichtfelder unverändert (name), Turnstile normal/565, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 320px /standorte/zuerich-oerlikon/: Hülle (Kopf «Anfrage für Zürich Oerlikon», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /standorte/zuerich-oerlikon/: Pflichtfelder unverändert (name,telefon,email), Turnstile compact/250, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 390px /standorte/zuerich-oerlikon/: Hülle (Kopf «Anfrage für Zürich Oerlikon», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /standorte/zuerich-oerlikon/: Pflichtfelder unverändert (name,telefon,email), Turnstile normal/320, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 1440px /standorte/zuerich-oerlikon/: Hülle (Kopf «Anfrage für Zürich Oerlikon», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /standorte/zuerich-oerlikon/: Pflichtfelder unverändert (name,telefon,email), Turnstile normal/470, Kontaktlinks kanonisch (https://wa.me/41775236122)
+  ✓ 320px /standorte/bern/: Hülle (Kopf «Vormerken für Bern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /standorte/bern/: Pflichtfelder unverändert (email), Turnstile compact/250, Kontaktlinks kanonisch (keine)
+  ✓ 390px /standorte/bern/: Hülle (Kopf «Vormerken für Bern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /standorte/bern/: Pflichtfelder unverändert (email), Turnstile normal/320, Kontaktlinks kanonisch (keine)
+  ✓ 1440px /standorte/bern/: Hülle (Kopf «Vormerken für Bern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /standorte/bern/: Pflichtfelder unverändert (email), Turnstile normal/497, Kontaktlinks kanonisch (keine)
+  ✓ 320px /standorte/luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /standorte/luzern/: Pflichtfelder unverändert (email), Turnstile compact/250, Kontaktlinks kanonisch (keine)
+  ✓ 390px /standorte/luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /standorte/luzern/: Pflichtfelder unverändert (email), Turnstile normal/320, Kontaktlinks kanonisch (keine)
+  ✓ 1440px /standorte/luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /standorte/luzern/: Pflichtfelder unverändert (email), Turnstile normal/497, Kontaktlinks kanonisch (keine)
+  ✓ 320px /massage-luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 320px /massage-luzern/: Pflichtfelder unverändert (email), Turnstile compact/234, Kontaktlinks kanonisch (keine)
+  ✓ 390px /massage-luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 390px /massage-luzern/: Pflichtfelder unverändert (email), Turnstile normal/304, Kontaktlinks kanonisch (keine)
+  ✓ 1440px /massage-luzern/: Hülle (Kopf «Warteliste Luzern», weiss, Neon-Button voll, Labels, 16-px-Felder), kein Overflow
+  ✓ 1440px /massage-luzern/: Pflichtfelder unverändert (email), Turnstile normal/330, Kontaktlinks kanonisch (keine)
+  ✓ Massage Basel: Standort-Vorauswahl Basel erhalten
+  ✓ Massage: Tastatur Name → E-Mail
+  ✓ Zürich-Funnel: Quartier-Chip setzt Titel im neuen Kopf, Feld und Button wie bisher
+  ✓ Zürich-Funnel: «Weitere Angaben» klappt wie bisher auf
+  ✓ Anker /massage-basel/#anfrage erreichbar
+  ✓ Anker /standorte/bern/#interesse erreichbar
+  ✓ Anker /standorte/luzern/#warteliste erreichbar
+  ✓ Anker /akupunktur-tcm-zuerich/#zh-funnel erreichbar
+  ✓ Anker /standorte/zuerich-oerlikon/#kontakt erreichbar
+  ✓ /massage-basel/: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (formular_senden), keine Personendaten im dataLayer
+  ✓ /akupunktur-tcm-zuerich/: leer absenden → Fehlermeldung (role=alert), kein Versand
+  ✓ /akupunktur-tcm-zuerich/: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (zh_funnel_submit,formular_senden), keine Personendaten im dataLayer
+  ✓ /standorte/bern/: leer absenden → Fehlermeldung (role=alert), kein Versand
+  ✓ /standorte/bern/: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (keine), keine Personendaten im dataLayer
+  ✓ /standorte/luzern/: leer absenden → Fehlermeldung (role=alert), kein Versand
+  ✓ /standorte/luzern/: gemockter Erfolg, 1 Versand, Bestätigung, Events wie bisher (formular_senden), keine Personendaten im dataLayer
+S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote
+  ✓ /standorte/basel/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/basel/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/kreuzlingen/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/kreuzlingen/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/frauenfeld/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/frauenfeld/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/rorschach/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/rorschach/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/volketswil/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/volketswil/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/wil/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/wil/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/winterthur-muenzgasse/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/winterthur-muenzgasse/: kein OneDoc, keine SG-Kennungen/Personen
+  ✓ /standorte/winterthur-muenzgasse/: obere Box + #kontakt mit 360°-Check-in (CHF 0.–) und Ersttermin (60 Min.), Wortlaut wie SG je 1×, Schlüssel TCM_CHECKIN/ERSTTERMIN_BEHANDLUNG, fester Standort winterthur-muenzgasse
+  ✓ /standorte/winterthur-muenzgasse/: keine Status-/Prüfungshinweise (auch nicht im Umfeld von Marktgasse/Münzgasse), lokale Adresse sichtbar
+  ✓ /standorte/winterthur-marktgasse/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/winterthur-marktgasse/: kein OneDoc, keine SG-Kennungen/Personen
+  ✓ /standorte/winterthur-marktgasse/: obere Box + #kontakt mit 360°-Check-in (CHF 0.–) und Ersttermin (60 Min.), Wortlaut wie SG je 1×, Schlüssel TCM_CHECKIN/ERSTTERMIN_BEHANDLUNG, fester Standort winterthur-marktgasse
+  ✓ /standorte/winterthur-marktgasse/: keine Status-/Prüfungshinweise (auch nicht im Umfeld von Marktgasse/Münzgasse), lokale Adresse sichtbar
+  ✓ /standorte/zuerich-hoengg/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/zuerich-hoengg/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ /standorte/zuerich-oerlikon/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs
+  ✓ /standorte/zuerich-oerlikon/: kein OneDoc, keine SG-Kennungen/Personen, kein Check-in
+  ✓ Rorschach obere Box: ruhig (schwarzer Kopf), Telefon einziges Pflichtfeld, Ersttermin vorgewählt, Standort fest
+  ✓ leer absenden: Fehlermeldung Telefon, kein Versand
+  ✓ obere Box Versand (Mock): {"s":"Rorschach","id":"rorschach","a":"ERSTTERMIN_BEHANDLUNG","q":"/standorte/rorschach/","qd":"Anfragebox oben"}
+  ✓ genau 1 formular_senden, keine Personendaten im dataLayer, Erfolgsmeldung
+  ✓ unteres Formular nach Versand oben unverändert
+  ✓ /standorte/rorschach/ 320px Hero: Bar aus, inert
+  ✓ /standorte/rorschach/ 320px obere Box im Bild: Bar aus
+  ✓ /standorte/rorschach/ 320px Box-Ende noch sichtbar: Bar aus
+  ✓ /standorte/rorschach/ 320px nach der Box: Bar an, bedienbar
+  ✓ /standorte/rorschach/ 320px unteres Formular (#kontakt) im Bild: Bar aus
+  ✓ /standorte/rorschach/ 320px Eingabefokus: Bar aus
+  ✓ /standorte/rorschach/ 320px Fokus weg: Bar wieder an
+  ✓ /standorte/rorschach/ 320px Bildschirmtastatur: Bar aus
+  ✓ /standorte/rorschach/ 320px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ /standorte/rorschach/ 320px Hero- und Bar-Ziel: obere Box (#anfrage-box)
+  ✓ /standorte/rorschach/ 320px Bar-Klick: keine Conversion
+  ✓ /standorte/rorschach/ 320px Turnstile-Container in beiden Karten innerhalb der Karte (kompakt unter 300 px)
+  ✓ /standorte/rorschach/ 390px Hero: Bar aus, inert
+  ✓ /standorte/rorschach/ 390px obere Box im Bild: Bar aus
+  ✓ /standorte/rorschach/ 390px Box-Ende noch sichtbar: Bar aus
+  ✓ /standorte/rorschach/ 390px nach der Box: Bar an, bedienbar
+  ✓ /standorte/rorschach/ 390px unteres Formular (#kontakt) im Bild: Bar aus
+  ✓ /standorte/rorschach/ 390px Eingabefokus: Bar aus
+  ✓ /standorte/rorschach/ 390px Fokus weg: Bar wieder an
+  ✓ /standorte/rorschach/ 390px Bildschirmtastatur: Bar aus
+  ✓ /standorte/rorschach/ 390px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ /standorte/rorschach/ 390px Hero- und Bar-Ziel: obere Box (#anfrage-box)
+  ✓ /standorte/rorschach/ 390px Bar-Klick: keine Conversion
+  ✓ /standorte/rorschach/ 390px Turnstile-Container in beiden Karten innerhalb der Karte (kompakt unter 300 px)
+  ✓ /standorte/zuerich-oerlikon/ 320px Hero: Bar aus, inert
+  ✓ /standorte/zuerich-oerlikon/ 320px obere Box im Bild: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 320px Box-Ende noch sichtbar: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 320px nach der Box: Bar an, bedienbar
+  ✓ /standorte/zuerich-oerlikon/ 320px unteres Formular (#kontakt) im Bild: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 320px Eingabefokus: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 320px Fokus weg: Bar wieder an
+  ✓ /standorte/zuerich-oerlikon/ 320px Bildschirmtastatur: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 320px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ /standorte/zuerich-oerlikon/ 320px Hero- und Bar-Ziel: obere Box (#anfrage-box)
+  ✓ /standorte/zuerich-oerlikon/ 320px Bar-Klick: keine Conversion
+  ✓ /standorte/zuerich-oerlikon/ 320px Turnstile-Container in beiden Karten innerhalb der Karte (kompakt unter 300 px)
+  ✓ /standorte/zuerich-oerlikon/ 390px Hero: Bar aus, inert
+  ✓ /standorte/zuerich-oerlikon/ 390px obere Box im Bild: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 390px Box-Ende noch sichtbar: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 390px nach der Box: Bar an, bedienbar
+  ✓ /standorte/zuerich-oerlikon/ 390px unteres Formular (#kontakt) im Bild: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 390px Eingabefokus: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 390px Fokus weg: Bar wieder an
+  ✓ /standorte/zuerich-oerlikon/ 390px Bildschirmtastatur: Bar aus
+  ✓ /standorte/zuerich-oerlikon/ 390px Sichtbarkeitswechsel: keine Events, kein Versand
+  ✓ /standorte/zuerich-oerlikon/ 390px Hero- und Bar-Ziel: obere Box (#anfrage-box)
+  ✓ /standorte/zuerich-oerlikon/ 390px Bar-Klick: keine Conversion
+  ✓ /standorte/zuerich-oerlikon/ 390px Turnstile-Container in beiden Karten innerhalb der Karte (kompakt unter 300 px)
+
+714 PASS / 1 FAIL
+
+# Diagnose-Läufe (Kopie des Tests mit zusätzlicher Ausgabe vor der betroffenen Assertion; Assertion unverändert, Kopie danach gelöscht)
+# Branch-Build eb676f74:
+  DIAG prefill {"y":{"rr":"true","rrBtn":false,"rrVis":false,"fields":true,"tel":true,"opt":"true","optCtl":"kf-sg-hero-opt","name":true,"checked":"","submit":"Termin anfragen →","od":true,"call":false,"ort":false,"active":"kf-sg-hero-tel"},"val":"Vorausgefüllt: Rücken","tel":{"active":true,"activeEl":"kf-sg-hero-tel","fieldTop":257,"hh":76,"telBottom":331,"ih":844,"hitOk":true,"hit":"kf-sg-hero-tel","sy":1440,"hash":"#kf-sg-hero-fields","focusDoc":true}}
+  DIAG prefill +1600ms {"active":true,"activeEl":"kf-sg-hero-tel","sy":1605,"focusDoc":true}
+715 PASS / 0 FAIL
+# frischer main-Build 592c42d1:
+  DIAG prefill {"y":{"rr":"true","rrBtn":false,"rrVis":false,"fields":true,"tel":true,"opt":"true","optCtl":"kf-sg-hero-opt","name":true,"checked":"","submit":"Termin anfragen →","od":true,"call":false,"ort":false,"active":"kf-sg-hero-tel"},"val":"Vorausgefüllt: Rücken","tel":{"active":true,"activeEl":"kf-sg-hero-tel","fieldTop":198,"hh":76,"telBottom":272,"ih":844,"hitOk":true,"hit":"kf-sg-hero-tel","sy":1499,"hash":"#kf-sg-hero-fields","focusDoc":true}}
+  DIAG prefill +1600ms {"active":true,"activeEl":"kf-sg-hero-tel","sy":1605,"focusDoc":true}
+715 PASS / 0 FAIL
+# Isoliert (nur dieser Fall, 15 Wiederholungen je Build, Prüfung nach 400 ms und 2000 ms):
+# Branch: 15 Läufe, Fehlschläge 400ms 0 / 2000ms 0
+# main:   15 Läufe, Fehlschläge 400ms 0 / 2000ms 0

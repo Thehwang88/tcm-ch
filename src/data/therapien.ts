@@ -553,7 +553,7 @@ export const therapien: Therapie[] = [
       },
       {
         "q": "Wann hilft Shiatsu besonders?",
-        "a": "Bei chronischem Stress, Burnout, Schlafproblemen, Angststörungen, posttraumatischen Belastungen und unspezifischen körperlichen Spannungszuständen."
+        "a": "Bei chronischem Stress, Burnout, Schlafproblemen, Angststörungen und unspezifischen körperlichen Spannungszuständen."
       }
     ],
     "beschwerden": [

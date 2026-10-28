@@ -108,8 +108,16 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
     function ss(fn, d) { try { return fn(); } catch (e) { return d; } }
 
     // Per-page wa.me prefill from the page title (same source-context idea as the form).
+    // Ausnahme: Seiten zu sensiblen Themen tragen data-wa-neutral (Trauma-Cluster 27.10.2026). Dort ein
+    // neutraler Text ohne Seitentitel, auch für alle übrigen WhatsApp-Links der Seite. Nummer und
+    // Klick-Tracking bleiben unverändert; ohne Marker verhält sich alles wie bisher.
+    var NEUTRAL = document.querySelector('[data-wa-neutral]') ? encodeURIComponent('Guten Tag, ich habe eine Frage zu Ihrem Angebot.') : '';
     var t = (document.title || '').replace(/\s*[|–-]\s*TCM\.ch.*$/i, '').trim() || 'TCM.ch';
-    cta.href = WA + '?text=' + encodeURIComponent('Hallo, ich komme von der Seite ' + t + ' auf tcm.ch und habe eine Frage.');
+    cta.href = WA + '?text=' + (NEUTRAL || encodeURIComponent('Hallo, ich komme von der Seite ' + t + ' auf tcm.ch und habe eine Frage.'));
+    if (NEUTRAL) {
+      var neutralWa = function () { document.querySelectorAll('a[href*="wa.me/"]').forEach(function (a) { a.href = a.href.split('?')[0] + '?text=' + NEUTRAL; }); };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', neutralWa); else neutralWa();
+    }
 
     var open = false;
     function setOpen(v) {

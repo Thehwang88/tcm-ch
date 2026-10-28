@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-26",
+  "generated": "2026-10-28",
   "totals": {
-    "healthPages": 732,
+    "healthPages": 740,
     "byType": {
       "hub": 6,
-      "condition": 216,
+      "condition": 218,
       "library_hub": 1,
       "befund": 98,
       "question": 56,
@@ -12,7 +12,7 @@
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
-      "editorial": 149,
+      "editorial": 155,
       "body_signal": 94,
       "therapy": 36,
       "visual": 10
@@ -100,8 +100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 15
     },
     {
       "url": "/beschwerden/aphten/",
@@ -330,8 +330,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/diabetes-typ-2/",
@@ -894,6 +894,16 @@
       "outboundHealthLinks": 26
     },
     {
+      "url": "/beschwerden/komplexe-ptbs/",
+      "type": "condition",
+      "title": "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/beschwerden/kontaktdermatitis/",
       "type": "condition",
       "title": "Kontaktdermatitis: Symptome und Behandlung",
@@ -1290,8 +1300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/patellaspitzensyndrom/",
@@ -1412,6 +1422,16 @@
       "inSitemap": true,
       "inboundContentLinks": 29,
       "outboundHealthLinks": 35
+    },
+    {
+      "url": "/beschwerden/posttraumatische-belastungsstoerung/",
+      "type": "condition",
+      "title": "PTBS: Symptome, Abklärung und nächste Schritte",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/pots-syndrom/",
@@ -1610,7 +1630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 198,
+      "inboundContentLinks": 199,
       "outboundHealthLinks": 37
     },
     {
@@ -1680,7 +1700,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 122,
+      "inboundContentLinks": 123,
       "outboundHealthLinks": 22
     },
     {
@@ -2200,7 +2220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 449,
+      "inboundContentLinks": 451,
       "outboundHealthLinks": 44
     },
     {
@@ -3360,8 +3380,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/",
@@ -3691,7 +3711,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 55,
-      "outboundHealthLinks": 9
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/",
@@ -3701,7 +3721,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 30,
-      "outboundHealthLinks": 18
+      "outboundHealthLinks": 19
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/",
@@ -3810,8 +3830,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
-      "outboundHealthLinks": 40
+      "inboundContentLinks": 35,
+      "outboundHealthLinks": 42
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -3991,7 +4011,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 14
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/wei-qi/",
@@ -4351,7 +4371,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/",
@@ -5181,7 +5201,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 17,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/juckreiz-nach-dem-duschen/",
@@ -6210,8 +6230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 114,
-      "outboundHealthLinks": 114
+      "inboundContentLinks": 120,
+      "outboundHealthLinks": 120
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -6241,7 +6261,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/",
@@ -6301,7 +6321,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 3
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/akupunktur-bei-endometriose/",
@@ -6514,6 +6534,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/akupunktur-bei-ptbs/",
+      "type": "editorial",
+      "title": "Akupunktur bei PTBS: Studien, mögliche Rolle und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-bei-reizblase/",
       "type": "editorial",
       "title": "Akupunktur bei Reizblase: Studien und Grenzen | TCM.ch",
@@ -6674,6 +6704,16 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/wissen/akupunktur-nach-trauma/",
+      "type": "editorial",
+      "title": "Akupunktur nach Trauma: Zustimmung, Grenzen und Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-oder-kraeutertherapie/",
       "type": "editorial",
       "title": "Akupunktur oder Kräutertherapie: Was passt zu dir? | TCM.ch",
@@ -6741,7 +6781,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/wissen/akupunktur-winterthur-kosten/",
@@ -7074,6 +7114,16 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/",
+      "type": "editorial",
+      "title": "Hilfe nach Gewalt und sexuellem Missbrauch in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/kinderwunsch-akupunktur-tcm/",
       "type": "editorial",
       "title": "Akupunktur bei IVF &amp; Kinderwunschbehandlung: Zeitpunkt und Ablauf | TCM.ch",
@@ -7142,6 +7192,26 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/wissen/psychisches-trauma-behandlung/",
+      "type": "editorial",
+      "title": "Psychisches Trauma behandeln: Therapie und Hilfe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/schlafprobleme-nach-trauma/",
+      "type": "editorial",
+      "title": "Schlafprobleme nach Trauma: Albträume und Unruhe einordnen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/schmerzen-unterer-ruecken/",
@@ -7292,6 +7362,16 @@
       "inSitemap": true,
       "inboundContentLinks": 4,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/trauma-kindheit-erwachsene/",
+      "type": "editorial",
+      "title": "Belastende Kindheit: Hilfe nach Gewalt und Missbrauch | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/triggerpunkte-verstehen-loesen/",
