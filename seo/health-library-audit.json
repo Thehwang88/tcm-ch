@@ -1,18 +1,18 @@
 {
-  "generated": "2026-10-22",
+  "generated": "2026-10-28",
   "totals": {
-    "healthPages": 718,
+    "healthPages": 760,
     "byType": {
       "hub": 6,
-      "condition": 206,
+      "condition": 218,
       "library_hub": 1,
-      "befund": 95,
-      "question": 53,
+      "befund": 98,
+      "question": 56,
       "body_region": 9,
       "perspective": 1,
       "tcm_hub": 37,
       "selfcare": 19,
-      "editorial": 151,
+      "editorial": 175,
       "body_signal": 94,
       "therapy": 36,
       "visual": 10
@@ -30,7 +30,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 80,
+      "inboundContentLinks": 81,
       "outboundHealthLinks": 172
     },
     {
@@ -50,8 +50,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/adenomyose/",
@@ -100,8 +100,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/aphten/",
@@ -120,8 +120,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
-      "outboundHealthLinks": 21
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/asthma/",
@@ -130,7 +130,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 14
     },
     {
@@ -160,8 +160,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 25
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 26
     },
     {
       "url": "/beschwerden/beckenbodenverspannung/",
@@ -170,8 +170,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 11,
+      "outboundHealthLinks": 12
+    },
+    {
+      "url": "/beschwerden/beckenorgansenkung/",
+      "type": "condition",
+      "title": "Beckenorgansenkung: Gebärmutter- und Blasensenkung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/bettnaessen/",
@@ -180,8 +190,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/bizepssehnenentzuendung/",
@@ -220,8 +230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/brachioradialer-pruritus/",
@@ -280,8 +290,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/beschwerden/copd/",
@@ -310,8 +320,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/depressionen/",
@@ -320,8 +330,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/diabetes-typ-2/",
@@ -331,7 +341,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 12,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/divertikulitis/",
@@ -370,8 +380,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/eierstockzyste/",
@@ -410,8 +420,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/erschoepfung/",
@@ -422,6 +432,16 @@
       "inSitemap": true,
       "inboundContentLinks": 37,
       "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/essentieller-tremor/",
+      "type": "condition",
+      "title": "Essentieller Tremor: Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/fasettensyndrom/",
@@ -460,8 +480,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/fibromyalgie/",
@@ -470,8 +490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 17
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/frozen-shoulder/",
@@ -500,8 +520,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/beschwerden/gallensaeurebedingter-durchfall/",
+      "type": "condition",
+      "title": "Gallensäurebedingter Durchfall: Ursachen, Test und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/gallensteine/",
@@ -530,8 +560,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/gewichtsmanagement/",
@@ -570,8 +600,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 13,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/guertelrose/",
@@ -600,7 +630,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 13
     },
     {
@@ -640,8 +670,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/heuschnupfen/",
@@ -650,7 +680,7 @@
       "indexable": false,
       "canonicalTo": "https://tcm.ch/beschwerden/allergien-heuschnupfen/",
       "inSitemap": false,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -700,7 +730,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -710,8 +740,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 28
     },
     {
       "url": "/beschwerden/hyperakusis/",
@@ -732,6 +762,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 19
+    },
+    {
+      "url": "/beschwerden/hypermobilitaet/",
+      "type": "condition",
+      "title": "Hypermobilität mit Schmerzen: Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/beschwerden/immunschwaeche/",
@@ -760,8 +800,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/interkostalneuralgie/",
@@ -820,7 +860,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 20,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 26
     },
     {
@@ -854,6 +894,16 @@
       "outboundHealthLinks": 26
     },
     {
+      "url": "/beschwerden/komplexe-ptbs/",
+      "type": "condition",
+      "title": "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/beschwerden/kontaktdermatitis/",
       "type": "condition",
       "title": "Kontaktdermatitis: Symptome und Behandlung",
@@ -870,8 +920,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 30,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/koxarthrose/",
@@ -950,7 +1000,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -990,8 +1040,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/beschwerden/lymphoedem/",
@@ -1010,8 +1060,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/medikamentenuebergebrauchskopfschmerz/",
+      "type": "condition",
+      "title": "Medikamentenübergebrauchskopfschmerz: Symptome und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/meniskusriss/",
@@ -1060,8 +1120,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 133,
+      "inboundContentLinks": 134,
       "outboundHealthLinks": 18
+    },
+    {
+      "url": "/beschwerden/mikroskopische-kolitis/",
+      "type": "condition",
+      "title": "Mikroskopische Kolitis: kollagene und lymphozytäre Kolitis",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/mittelohrentzuendung/",
@@ -1090,8 +1160,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 16
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/beschwerden/morbus-meniere/",
@@ -1130,7 +1200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 162,
+      "inboundContentLinks": 164,
       "outboundHealthLinks": 31
     },
     {
@@ -1140,8 +1210,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
-      "outboundHealthLinks": 24
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 25
     },
     {
       "url": "/beschwerden/nesselsucht/",
@@ -1150,8 +1220,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
-      "outboundHealthLinks": 20
+      "inboundContentLinks": 10,
+      "outboundHealthLinks": 21
     },
     {
       "url": "/beschwerden/neurodermitis/",
@@ -1160,7 +1230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 26
     },
     {
@@ -1170,7 +1240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1230,8 +1300,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/patellaspitzensyndrom/",
@@ -1350,8 +1420,28 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 28,
+      "inboundContentLinks": 29,
       "outboundHealthLinks": 35
+    },
+    {
+      "url": "/beschwerden/posttraumatische-belastungsstoerung/",
+      "type": "condition",
+      "title": "PTBS: Symptome, Abklärung und nächste Schritte",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 9
+    },
+    {
+      "url": "/beschwerden/pots-syndrom/",
+      "type": "condition",
+      "title": "POTS-Syndrom: Herzrasen beim Aufstehen abklären",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/pppd/",
@@ -1362,6 +1452,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 10
+    },
+    {
+      "url": "/beschwerden/proctalgia-fugax/",
+      "type": "condition",
+      "title": "Proctalgia fugax: kurze Schmerzattacken im After",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/prostata/",
@@ -1400,8 +1500,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/quadrizepssehnen-tendinopathie/",
@@ -1440,7 +1540,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 19
     },
     {
@@ -1450,8 +1550,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 39,
-      "outboundHealthLinks": 23
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/rektusdiastase/",
@@ -1460,8 +1560,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/beschwerden/restless-legs/",
@@ -1480,7 +1580,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 19
     },
     {
@@ -1490,7 +1590,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 9
     },
     {
@@ -1500,8 +1600,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/rosacea/",
@@ -1530,8 +1630,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 193,
+      "inboundContentLinks": 199,
       "outboundHealthLinks": 37
+    },
+    {
+      "url": "/beschwerden/schambeinentzuendung/",
+      "type": "condition",
+      "title": "Schambeinentzündung (Osteitis pubis): Symptome und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/scheidentrockenheit/",
@@ -1560,8 +1670,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/schilddruesenunterfunktion/",
@@ -1590,7 +1700,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 122,
+      "inboundContentLinks": 123,
       "outboundHealthLinks": 22
     },
     {
@@ -1650,7 +1760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 38,
+      "inboundContentLinks": 39,
       "outboundHealthLinks": 25
     },
     {
@@ -1690,7 +1800,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
+      "inboundContentLinks": 23,
       "outboundHealthLinks": 25
     },
     {
@@ -1730,7 +1840,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1742,6 +1852,16 @@
       "inSitemap": true,
       "inboundContentLinks": 18,
       "outboundHealthLinks": 20
+    },
+    {
+      "url": "/beschwerden/sjoegren-syndrom/",
+      "type": "condition",
+      "title": "Sjögren-Syndrom: Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/skoliose/",
@@ -1770,8 +1890,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 29
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 30
     },
     {
       "url": "/beschwerden/spinalkanalstenose/",
@@ -1810,8 +1930,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 18
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/steissbeinschmerzen/",
@@ -1820,7 +1940,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -1830,7 +1950,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 80,
+      "inboundContentLinks": 81,
       "outboundHealthLinks": 17
     },
     {
@@ -1840,7 +1960,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 8
     },
     {
@@ -1860,8 +1980,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
-      "outboundHealthLinks": 22
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 23
     },
     {
       "url": "/beschwerden/tfcc-laesion/",
@@ -1920,8 +2040,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/beschwerden/uebelkeit/",
@@ -1940,7 +2060,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -1970,7 +2090,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 19
     },
     {
@@ -2010,8 +2130,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/wadenschmerzen/",
@@ -2040,7 +2160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 17
     },
     {
@@ -2080,7 +2200,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 6
     },
     {
@@ -2100,7 +2220,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 434,
+      "inboundContentLinks": 451,
       "outboundHealthLinks": 44
     },
     {
@@ -2110,8 +2230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 106,
-      "outboundHealthLinks": 98
+      "inboundContentLinks": 109,
+      "outboundHealthLinks": 101
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/albumin-zu-niedrig/",
@@ -2120,7 +2240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2160,7 +2280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 8
     },
     {
@@ -2230,7 +2350,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -2260,8 +2380,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/",
+      "type": "befund",
+      "title": "Calcium zu niedrig (Hypokalzämie): Befund verstehen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/cholesterin-erhoeht/",
@@ -2360,8 +2490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/erythrozyten-erhoeht/",
@@ -2440,7 +2570,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -2452,6 +2582,16 @@
       "inSitemap": true,
       "inboundContentLinks": 5,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/",
+      "type": "befund",
+      "title": "Gesamt-IgE erhöht: warum der Wert keine Allergie beweist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/got-ast-erhoeht/",
@@ -2680,8 +2820,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 21,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/leukozyten-erhoeht/",
@@ -2750,7 +2890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 6
     },
     {
@@ -2850,7 +2990,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 9
     },
     {
@@ -2870,8 +3010,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 9
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/progesteron-wert/",
@@ -2930,7 +3070,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -2940,8 +3080,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/thrombozyten-erhoeht/",
@@ -2970,8 +3110,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/gesundheitsbibliothek/befunde-werte/trak-erhoeht/",
+      "type": "befund",
+      "title": "TRAK erhöht: TSH-Rezeptor-Antikörper verstehen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/gesundheitsbibliothek/befunde-werte/transferrinsaettigung/",
@@ -3010,7 +3160,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -3040,7 +3190,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 5
     },
     {
@@ -3060,8 +3210,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 69,
-      "outboundHealthLinks": 57
+      "inboundContentLinks": 72,
+      "outboundHealthLinks": 60
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-bei-erkaeltung/",
@@ -3080,7 +3230,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 11
     },
     {
@@ -3160,8 +3310,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 13
+      "inboundContentLinks": 26,
+      "outboundHealthLinks": 14
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nerv-getroffen/",
@@ -3190,8 +3340,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-waehrend-periode/",
@@ -3230,8 +3380,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/gesundheitsbibliothek/fragen/blaue-flecken-nach-akupunktur/",
@@ -3242,6 +3392,16 @@
       "inSitemap": true,
       "inboundContentLinks": 10,
       "outboundHealthLinks": 7
+    },
+    {
+      "url": "/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/",
+      "type": "question",
+      "title": "Blutspenden nach Akupunktur: Was gilt in der Schweiz? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/fragen/duschen-nach-akupunktur/",
@@ -3330,8 +3490,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 20,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/gesundheitsbibliothek/fragen/schmerzen-nach-akupunktur-schlimmer/",
@@ -3360,8 +3520,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 9,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/schwimmen-nach-akupunktur/",
@@ -3390,7 +3550,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 24,
+      "inboundContentLinks": 25,
       "outboundHealthLinks": 14
     },
     {
@@ -3414,13 +3574,23 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/",
+      "type": "question",
+      "title": "TCM-Kräuter bei Bluthochdruck: Worauf musst du achten? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 7
+    },
+    {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-einnahme/",
       "type": "question",
       "title": "TCM-Kräuter einnehmen: Was auf den Einnahmeplan gehört | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 8
     },
     {
@@ -3444,14 +3614,24 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/",
+      "type": "question",
+      "title": "Können TCM-Kräuter die Leber schädigen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 6,
+      "outboundHealthLinks": 9
+    },
+    {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-nebenwirkungen/",
       "type": "question",
       "title": "TCM-Kräuter: Welche Nebenwirkungen und Wechselwirkungen sind möglich? | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
-      "outboundHealthLinks": 14
+      "inboundContentLinks": 22,
+      "outboundHealthLinks": 17
     },
     {
       "url": "/gesundheitsbibliothek/fragen/tcm-kraeuter-und-pille/",
@@ -3530,8 +3710,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 54,
-      "outboundHealthLinks": 9
+      "inboundContentLinks": 55,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/gesundheitsbibliothek/fragen/was-passiert-beim-ersten-termin/",
@@ -3541,7 +3721,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 30,
-      "outboundHealthLinks": 18
+      "outboundHealthLinks": 19
     },
     {
       "url": "/gesundheitsbibliothek/fragen/wie-lange-dauert-akupunktur/",
@@ -3590,8 +3770,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 29,
-      "outboundHealthLinks": 34
+      "inboundContentLinks": 31,
+      "outboundHealthLinks": 36
     },
     {
       "url": "/gesundheitsbibliothek/koerper/becken-blase/",
@@ -3600,8 +3780,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 22,
-      "outboundHealthLinks": 27
+      "inboundContentLinks": 24,
+      "outboundHealthLinks": 29
     },
     {
       "url": "/gesundheitsbibliothek/koerper/hals-nacken/",
@@ -3620,8 +3800,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 51,
-      "outboundHealthLinks": 57
+      "inboundContentLinks": 52,
+      "outboundHealthLinks": 58
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -3630,8 +3810,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 40,
-      "outboundHealthLinks": 47
+      "inboundContentLinks": 41,
+      "outboundHealthLinks": 48
     },
     {
       "url": "/gesundheitsbibliothek/koerper/ruecken/",
@@ -3650,8 +3830,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
-      "outboundHealthLinks": 38
+      "inboundContentLinks": 35,
+      "outboundHealthLinks": 42
     },
     {
       "url": "/gesundheitsbibliothek/koerper/schulter-arm-hand/",
@@ -3831,7 +4011,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 12
+      "outboundHealthLinks": 14
     },
     {
       "url": "/gesundheitsbibliothek/tcm-verstehen/grundlagen/wei-qi/",
@@ -4191,7 +4371,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 5,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/gesundheitsbibliothek/was-jetzt/tinnitus-neu-aufgetreten/",
@@ -4831,7 +5011,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/koerpersignale/ein-fuss-kaelter-als-der-andere/",
@@ -4900,8 +5080,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/koerpersignale/haeufiger-harndrang-nachts/",
@@ -5021,7 +5201,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 17,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/koerpersignale/juckreiz-nach-dem-duschen/",
@@ -5401,7 +5581,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 12,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/koerpersignale/schwindel-beim-buecken/",
@@ -5490,8 +5670,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
-      "outboundHealthLinks": 11
+      "inboundContentLinks": 18,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/koerpersignale/verstopfte-nase-ohne-erkaeltung/",
@@ -5570,7 +5750,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 240,
+      "inboundContentLinks": 241,
       "outboundHealthLinks": 17
     },
     {
@@ -5580,7 +5760,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 38,
+      "inboundContentLinks": 39,
       "outboundHealthLinks": 5
     },
     {
@@ -5590,8 +5770,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 330,
-      "outboundHealthLinks": 39
+      "inboundContentLinks": 339,
+      "outboundHealthLinks": 40
     },
     {
       "url": "/therapien/akupunktur/bauchakupunktur/",
@@ -5660,8 +5840,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 12,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/therapien/ear-seeds/",
@@ -5680,7 +5860,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 32,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 9
     },
     {
@@ -5730,8 +5910,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 134,
-      "outboundHealthLinks": 8
+      "inboundContentLinks": 142,
+      "outboundHealthLinks": 10
     },
     {
       "url": "/therapien/massage/",
@@ -5740,7 +5920,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 67,
+      "inboundContentLinks": 68,
       "outboundHealthLinks": 21
     },
     {
@@ -5860,7 +6040,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 87,
+      "inboundContentLinks": 89,
       "outboundHealthLinks": 17
     },
     {
@@ -5890,8 +6070,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 74,
-      "outboundHealthLinks": 15
+      "inboundContentLinks": 76,
+      "outboundHealthLinks": 16
     },
     {
       "url": "/therapien/schroepfen/blutiges-schroepfen/",
@@ -6050,8 +6230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 116,
-      "outboundHealthLinks": 116
+      "inboundContentLinks": 140,
+      "outboundHealthLinks": 140
     },
     {
       "url": "/wissen/akupressurmatte-was-bringt-sie/",
@@ -6091,7 +6271,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-aromatasehemmer-gelenkschmerzen/",
@@ -6114,6 +6294,26 @@
       "outboundHealthLinks": 3
     },
     {
+      "url": "/wissen/akupunktur-bei-belastungsinkontinenz/",
+      "type": "editorial",
+      "title": "Akupunktur bei Belastungsinkontinenz: Studienlage und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-bei-bettnaessen/",
+      "type": "editorial",
+      "title": "Akupunktur bei Bettnässen: Was Eltern wissen sollten | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-bei-chronischem-husten/",
       "type": "editorial",
       "title": "Akupunktur bei chronischem Husten | TCM.ch",
@@ -6134,6 +6334,16 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/akupunktur-bei-crps/",
+      "type": "editorial",
+      "title": "Akupunktur bei CRPS: Einordnung im Schmerztherapieplan | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-bei-depressionen/",
       "type": "editorial",
       "title": "Akupunktur bei Depressionen: Nutzen und Grenzen | TCM.ch",
@@ -6141,7 +6351,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
-      "outboundHealthLinks": 4
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-bei-endometriose/",
@@ -6152,6 +6362,16 @@
       "inSitemap": true,
       "inboundContentLinks": 4,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/akupunktur-bei-erektiler-dysfunktion/",
+      "type": "editorial",
+      "title": "Akupunktur bei Erektionsstörungen: Nutzen und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/akupunktur-bei-fazialisparese/",
@@ -6194,6 +6414,16 @@
       "outboundHealthLinks": 3
     },
     {
+      "url": "/wissen/akupunktur-bei-gastroparese/",
+      "type": "editorial",
+      "title": "Akupunktur bei Gastroparese: Was ist belegt? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-bei-heuschnupfen/",
       "type": "editorial",
       "title": "Akupunktur bei Heuschnupfen: Studienlage &amp; Nutzen | TCM.ch",
@@ -6220,8 +6450,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 10
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 11
     },
     {
       "url": "/wissen/akupunktur-bei-karpaltunnelsyndrom/",
@@ -6250,8 +6480,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-kopfschmerzen/",
@@ -6294,6 +6524,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/wissen/akupunktur-bei-mundtrockenheit-nach-bestrahlung/",
+      "type": "editorial",
+      "title": "Akupunktur bei Mundtrockenheit nach Bestrahlung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-bei-nackenschmerzen/",
       "type": "editorial",
       "title": "Akupunktur bei Nackenschmerzen: Studienlage | TCM.ch",
@@ -6310,8 +6550,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-neurodermitis/",
@@ -6354,6 +6594,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/akupunktur-bei-ptbs/",
+      "type": "editorial",
+      "title": "Akupunktur bei PTBS: Studien, mögliche Rolle und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/akupunktur-bei-reflux/",
       "type": "editorial",
       "title": "Akupunktur bei Reflux: Nutzen und Grenzen | TCM.ch",
@@ -6370,8 +6620,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-reizdarm/",
@@ -6402,6 +6652,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 3
+    },
+    {
+      "url": "/wissen/akupunktur-bei-rhizarthrose/",
+      "type": "editorial",
+      "title": "Akupunktur bei Rhizarthrose: Studienlage und Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-rueckenschmerzen/",
@@ -6470,8 +6730,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/wissen/akupunktur-bei-tinnitus/",
@@ -6524,6 +6784,16 @@
       "outboundHealthLinks": 6
     },
     {
+      "url": "/wissen/akupunktur-bei-vulvodynie/",
+      "type": "editorial",
+      "title": "Akupunktur bei Vulvodynie: Ergänzung mit klaren Grenzen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/wissen/akupunktur-bei-wechseljahresbeschwerden/",
       "type": "editorial",
       "title": "Akupunktur bei Wechseljahresbeschwerden: Studienlage &amp; Ablauf | TCM.ch",
@@ -6552,6 +6822,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/akupunktur-nach-trauma/",
+      "type": "editorial",
+      "title": "Akupunktur nach Trauma: Zustimmung, Grenzen und Fragen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
     },
     {
       "url": "/wissen/akupunktur-oder-kraeutertherapie/",
@@ -6594,6 +6874,26 @@
       "outboundHealthLinks": 9
     },
     {
+      "url": "/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/",
+      "type": "editorial",
+      "title": "Akupunktur oder Stosswellentherapie beim Tennisellenbogen? | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/akupunktur-raucherentwoehnung/",
+      "type": "editorial",
+      "title": "Akupunktur zur Raucherentwöhnung: Was belegt ist | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/akupunktur-schlafprobleme/",
       "type": "editorial",
       "title": "Akupunktur bei Schlafstörungen: Studien, Ablauf &amp; Grenzen | TCM.ch",
@@ -6601,7 +6901,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 11,
-      "outboundHealthLinks": 8
+      "outboundHealthLinks": 9
     },
     {
       "url": "/wissen/akupunktur-winterthur-kosten/",
@@ -6664,6 +6964,16 @@
       "outboundHealthLinks": 3
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Bandscheibenvorfall (LWS) | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-chronischer-sinusitis/",
       "type": "editorial",
       "title": "Kräuter bei chronischer Sinusitis: Einordnung | TCM.ch",
@@ -6672,6 +6982,16 @@
       "inSitemap": true,
       "inboundContentLinks": 3,
       "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-colitis-ulcerosa/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Colitis ulcerosa: Risiken | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
     },
     {
       "url": "/wissen/chinesische-kraeuter-bei-copd/",
@@ -6704,6 +7024,16 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-fettleber/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Fettleber (MASLD) | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-funktioneller-dyspepsie/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Reizmagen: Studien &amp; Einordnung | TCM.ch",
@@ -6714,6 +7044,26 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/chinesische-kraeuter-bei-hashimoto/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Hashimoto: Studienlage | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-kniearthrose/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei Kniearthrose: Studienlage | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 5
+    },
+    {
       "url": "/wissen/chinesische-kraeuter-bei-migraene/",
       "type": "editorial",
       "title": "Chinesische Kräuter bei Migräne: Nutzen und Grenzen | TCM.ch",
@@ -6721,6 +7071,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/wissen/chinesische-kraeuter-bei-nesselsucht/",
+      "type": "editorial",
+      "title": "Chinesische Kräuter bei chronischer Nesselsucht | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -6850,7 +7210,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 6
     },
     {
@@ -6870,8 +7230,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
-      "outboundHealthLinks": 7
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/dry-needling-vs-akupunktur/",
@@ -6880,7 +7240,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 9
     },
     {
@@ -6954,6 +7314,16 @@
       "outboundHealthLinks": 8
     },
     {
+      "url": "/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/",
+      "type": "editorial",
+      "title": "Hilfe nach Gewalt und sexuellem Missbrauch in der Schweiz | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/kinderwunsch-akupunktur-tcm/",
       "type": "editorial",
       "title": "Akupunktur bei IVF &amp; Kinderwunschbehandlung: Zeitpunkt und Ablauf | TCM.ch",
@@ -7024,6 +7394,26 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/wissen/psychisches-trauma-behandlung/",
+      "type": "editorial",
+      "title": "Psychisches Trauma behandeln: Therapie und Hilfe | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 8,
+      "outboundHealthLinks": 4
+    },
+    {
+      "url": "/wissen/schlafprobleme-nach-trauma/",
+      "type": "editorial",
+      "title": "Schlafprobleme nach Trauma: Albträume und Unruhe einordnen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/schmerzen-unterer-ruecken/",
       "type": "editorial",
       "title": "Schmerzen im unteren Rücken: Ursachen &amp; Hilfe | TCM.ch",
@@ -7034,13 +7424,33 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/wissen/schroepfen-bei-nackenschmerzen/",
+      "type": "editorial",
+      "title": "Schröpfen bei Nackenschmerzen: Was Studien zeigen | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 3,
+      "outboundHealthLinks": 8
+    },
+    {
+      "url": "/wissen/schroepfen-oder-massage/",
+      "type": "editorial",
+      "title": "Schröpfen oder Massage: Unterschiede für deine Entscheidung | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/wissen/schroepfen-wirkung-flecken/",
       "type": "editorial",
       "title": "Schröpfen-Wirkung: Warum Flecken entstehen und wie lange sie bleiben | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 10,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 13
     },
     {
@@ -7050,8 +7460,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
-      "outboundHealthLinks": 6
+      "inboundContentLinks": 7,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/wissen/shiatsu-selbstbehandlung/",
@@ -7154,6 +7564,16 @@
       "outboundHealthLinks": 5
     },
     {
+      "url": "/wissen/trauma-kindheit-erwachsene/",
+      "type": "editorial",
+      "title": "Belastende Kindheit: Hilfe nach Gewalt und Missbrauch | TCM.ch",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 5,
+      "outboundHealthLinks": 4
+    },
+    {
       "url": "/wissen/triggerpunkte-verstehen-loesen/",
       "type": "editorial",
       "title": "Triggerpunkte: Verstehen und lösen | TCM.ch",
@@ -7201,7 +7621,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 6,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     }
   ]
 }

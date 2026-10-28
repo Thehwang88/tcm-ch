@@ -88,6 +88,7 @@ export const DIAGNOSTICS: Diagnostic[] = [
   { id: 'bronchoskopie', name: 'Bronchoskopie', short: 'Lungenspiegelung: Gründe, Vorbereitung, Spülung und Gewebeprobe, Risiken.', href: '/gesundheitsbibliothek/untersuchungen/bronchoskopie/' },
   { id: 'laryngoskopie', name: 'Laryngoskopie', short: 'Kehlkopfspiegelung bei Heiserkeit: Varianten von Spiegel bis Endoskop und was sie zeigt.', href: '/gesundheitsbibliothek/untersuchungen/laryngoskopie/' },
   { id: 'eileiterdurchgaengigkeit', name: 'Eileiterdurchgängigkeit (HSG, HyCoSy)', short: 'Eileiter prüfen mit Röntgen (HSG) oder Ultraschall (HyCoSy): Unterschiede, Ablauf und Grenzen.', href: '/gesundheitsbibliothek/untersuchungen/eileiterdurchgaengigkeit/' },
+  { id: 'urodynamik', name: 'Urodynamik', short: 'Blasendruckmessung bei Inkontinenz und Entleerungsstörungen: Messungen, Ablauf, Risiken und Grenzen.', href: '/gesundheitsbibliothek/untersuchungen/urodynamik/' },
 ];
 
 export interface BodyRegion {
@@ -130,6 +131,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'vestibulaere-migraene', label: 'Vestibuläre Migräne' }, { slug: 'vestibularisneuritis', label: 'Vestibularisneuritis' }, { slug: 'hyperakusis', label: 'Hyperakusis' }, { slug: 'burning-mouth-syndrom', label: 'Burning-Mouth-Syndrom' },
       { slug: 'okzipitalneuralgie', label: 'Okzipitalneuralgie' },
       { slug: 'zervikogener-kopfschmerz', label: 'Zervikogener Kopfschmerz' },
+      { slug: 'medikamentenuebergebrauchskopfschmerz', label: 'Medikamentenübergebrauchskopfschmerz' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'ohrakupunktur', label: 'Ohrakupunktur' },
@@ -222,6 +224,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'morbus-crohn', label: 'Morbus Crohn' }, { slug: 'colitis-ulcerosa', label: 'Colitis ulcerosa' },
       { slug: 'histaminintoleranz', label: 'Histaminintoleranz' }, { slug: 'uebelkeit', label: 'Übelkeit' },
       { slug: 'haemorrhoiden', label: 'Hämorrhoiden' },
+      { slug: 'mikroskopische-kolitis', label: 'Mikroskopische Kolitis' },
+      { slug: 'gallensaeurebedingter-durchfall', label: 'Gallensäurebedingter Durchfall' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'kraeutertherapie', label: 'Kräutertherapie' },
@@ -254,6 +258,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'plica-syndrom-knie', label: 'Plica-Syndrom am Knie' },
       { slug: 'quadrizepssehnen-tendinopathie', label: 'Quadrizepssehnen-Tendinopathie' },
       { slug: 'schnappende-huefte', label: 'Schnappende Hüfte (Coxa saltans)' },
+      { slug: 'schambeinentzuendung', label: 'Schambeinentzündung' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'massage', label: 'Massage' },
@@ -276,6 +281,10 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'nervenschmerzen', label: 'Nervenschmerzen' }, { slug: 'polyneuropathie', label: 'Polyneuropathie' },
       { slug: 'fibromyalgie', label: 'Fibromyalgie' }, { slug: 'long-covid', label: 'Long Covid' },
       { slug: 'pppd', label: 'Persistierender postural-perzeptiver Schwindel (PPPD)' },
+      { slug: 'essentieller-tremor', label: 'Essentieller Tremor' },
+      { slug: 'pots-syndrom', label: 'POTS (posturales Tachykardiesyndrom)' },
+      { slug: 'posttraumatische-belastungsstoerung', label: 'Posttraumatische Belastungsstörung (PTBS)' },
+      { slug: 'komplexe-ptbs', label: 'Komplexe PTBS' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'ohrakupunktur', label: 'Ohrakupunktur' },
@@ -298,6 +307,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'pudendusneuralgie', label: 'Pudendusneuralgie' }, { slug: 'beckenbodenverspannung', label: 'Beckenbodenverspannung' },
       { slug: 'rektusdiastase', label: 'Rektusdiastase' },
       { slug: 'symphysenschmerzen-schwangerschaft', label: 'Symphysenschmerzen in der Schwangerschaft' },
+      { slug: 'proctalgia-fugax', label: 'Proctalgia fugax' },
+      { slug: 'beckenorgansenkung', label: 'Beckenorgansenkung' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'moxibustion', label: 'Moxibustion' },
@@ -814,6 +825,19 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/fragen/akupunktur-nach-lymphknotenentfernung/': 'Lymphknotenentfernung Wächterlymphknoten Achsel Leiste betroffene Seite Nadeln Akupunktur Sicherheit',
   '/gesundheitsbibliothek/fragen/moxibustion-sicherheit/': 'Moxibustion Sicherheit Nebenwirkungen Verbrennung Rauch Moxa Risiken',
   '/gesundheitsbibliothek/fragen/tcm-kraeuter-immunsuppressiva/': 'Kräuter Immunsuppressiva Tacrolimus Ciclosporin Transplantation Wechselwirkung',
+  // Artikelpaket 24.10.2026 (Suchhilfe, keine Ownership)
+  '/wissen/akupunktur-bei-belastungsinkontinenz/': 'akupunktur belastungsinkontinenz stressinkontinenz elektroakupunktur urinverlust husten niesen',
+  '/wissen/akupunktur-bei-rhizarthrose/': 'akupunktur rhizarthrose daumensattelgelenk daumenarthrose daumenschmerzen',
+  '/wissen/akupunktur-bei-vulvodynie/': 'akupunktur vulvodynie vulvaschmerzen',
+  '/wissen/akupunktur-bei-gastroparese/': 'akupunktur gastroparese magenlähmung diabetische gastroparese',
+  '/wissen/akupunktur-bei-crps/': 'akupunktur crps morbus sudeck komplexes regionales schmerzsyndrom',
+  '/wissen/akupunktur-bei-erektiler-dysfunktion/': 'akupunktur erektile dysfunktion erektionsstörungen potenzprobleme',
+  '/wissen/akupunktur-bei-bettnaessen/': 'akupunktur bettnässen enuresis kinder laserakupunktur',
+  '/wissen/schroepfen-oder-massage/': 'Schröpfen oder Massage Vergleich Unterdruck Verspannungen',
+  '/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/': 'Akupunktur oder Stosswellentherapie Stoßwelle ESWT Tennisarm Tennisellenbogen Vergleich',
+  '/gesundheitsbibliothek/fragen/blutspenden-nach-akupunktur/': 'Blutspende Blut spenden nach Akupunktur Wartefrist SRK',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-leber/': 'Kräuter Leber Leberschaden He Shou Wu Polygonum Leberwerte TCM',
+  '/gesundheitsbibliothek/fragen/tcm-kraeuter-bluthochdruck-sicherheit/': 'Kräuter Bluthochdruck Süssholz Lakritz Gan Cao Blutdruck TCM Sicherheit',
   // Neun-Artikel-Paket 21.10.2026 (Suchhilfe, keine Ownership)
   // Cluster-Paket 22.10.2026 (Suchhilfe, keine Ownership)
   '/wissen/chinesische-kraeuter-bei-pms/': 'chinesische kräuter pms tcm prämenstruelles syndrom',
@@ -887,6 +911,30 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/koerper/schulter-arm-hand/': 'Ellbogen Handgelenk Finger',
   '/gesundheitsbibliothek/koerper/huefte-bein-fuss/': 'Knie Wade Ferse',
   '/gesundheitsbibliothek/koerper/zyklus-hormone/': 'Frauengesundheit Menstruation Menopause',
+  // Trauma-Cluster 27.10.2026 (Draft): nur echte Synonyme/Schreibvarianten
+  '/wissen/psychisches-trauma-behandlung/': "Trauma behandeln Traumabehandlung Traumatherapie seelisches Trauma",
+  '/beschwerden/posttraumatische-belastungsstoerung/': "PTBS PTSD posttraumatische Belastungsstörung Posttraumatische Belastungsstoerung",
+  '/beschwerden/komplexe-ptbs/': "kPTBS KPTBS CPTSD komplexe posttraumatische Belastungsstörung",
+  '/wissen/trauma-kindheit-erwachsene/': "Kindheitstrauma belastende Kindheit Missbrauch in der Kindheit Vernachlässigung",
+  '/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/': "sexuelle Gewalt sexualisierte Gewalt häusliche Gewalt Übergriff Vergewaltigung Opferhilfe",
+  '/wissen/schlafprobleme-nach-trauma/': "Albträume Alpträume Albtraum nach Trauma",
+  '/wissen/akupunktur-bei-ptbs/': "Akupunktur PTBS Akupunktur PTSD",
+  '/wissen/akupunktur-nach-trauma/': "traumasensible Akupunktur traumasensibel",
+  // Bibliothek 26.10.2026 (Draft)
+  '/beschwerden/medikamentenuebergebrauchskopfschmerz/': "MÜKS Medikamentenübergebrauch medication overuse headache Kopfschmerz durch Schmerzmittel Schmerzmittelkopfschmerz",
+  '/beschwerden/hypermobilitaet/': "überbewegliche Gelenke Hypermobilitätssyndrom Hyperlaxität Hyperlaxitätssyndrom Hypermobility Spectrum Disorder HSD",
+  '/beschwerden/schambeinentzuendung/': "Osteitis pubis Ostitis pubis",
+  '/beschwerden/sjoegren-syndrom/': "Sjögren Morbus Sjögren Sjögren-Krankheit Sjogren Sjoegren Schögren",
+  '/beschwerden/essentieller-tremor/': "essenzieller Tremor Alterstremor familiärer Tremor",
+  '/beschwerden/pots-syndrom/': "POTS PoTS posturales Tachykardiesyndrom posturales orthostatisches Tachykardiesyndrom",
+  '/beschwerden/mikroskopische-kolitis/': "kollagene Kolitis lymphozytäre Kolitis Kollagenkolitis mikroskopische Colitis",
+  '/beschwerden/gallensaeurebedingter-durchfall/': "Gallensäurediarrhoe Gallensäureverlustsyndrom chologene Diarrhoe Gallensäuremalabsorption",
+  '/beschwerden/proctalgia-fugax/': "Proktalgia fugax Proktalgie",
+  '/beschwerden/beckenorgansenkung/': "Genitalprolaps Descensus Gebärmuttersenkung Blasensenkung Zystozele Scheidensenkung Scheidenvorfall",
+  '/gesundheitsbibliothek/befunde-werte/trak-erhoeht/': "TRAK TRAb TSH-Rezeptor-Antikörper TSH-Rezeptor-Autoantikörper",
+  '/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/': "Calcium erniedrigt Kalzium zu niedrig Kalzium erniedrigt Hypokalzämie",
+  '/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/': "Gesamt-IgE Total-IgE IgE erhöht Immunglobulin E",
+  '/gesundheitsbibliothek/untersuchungen/urodynamik/': "Urodynamik Blasendruckmessung Zystometrie Uroflowmetrie",
 };
 const withSynonyms = (e: SearchEntry): SearchEntry => {
   const syn = SYNONYMS[e.u];
@@ -994,8 +1042,21 @@ export function buildSearchIndex(): SearchEntry[] {
     { t: 'Akupunktur oder Osteopathie', u: '/wissen/akupunktur-oder-osteopathie/' },
     { t: 'Akupunktur oder Schröpfen', u: '/wissen/akupunktur-oder-schroepfen/' },
     { t: 'Tuina oder Physiotherapie', u: '/wissen/tuina-oder-physiotherapie/' },
+    // Artikelpaket 24.10.2026: Methodenvergleiche
+    { t: 'Schröpfen oder Massage', u: '/wissen/schroepfen-oder-massage/' },
+    { t: 'Akupunktur oder Stosswellentherapie beim Tennisellenbogen', u: '/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/' },
   ];
   for (const a of METHODEN_ARTIKEL) entries.push({ t: a.t, u: a.u, g: 'Therapien' });
+  // Trauma-Cluster 27.10.2026: Wissen-Artikel haben keinen automatischen Sucheintrag, daher kuratiert.
+  const TRAUMA_ARTIKEL: Array<{ t: string; u: string; g: string }> = [
+    { t: 'Psychisches Trauma: verstehen, Hilfe finden, Behandlung wählen', u: '/wissen/psychisches-trauma-behandlung/', g: 'Ratgeber' },
+    { t: 'Belastende Kindheitserfahrungen: Unterstützung im Erwachsenenalter', u: '/wissen/trauma-kindheit-erwachsene/', g: 'Ratgeber' },
+    { t: 'Hilfe nach Gewalt und sexuellem Missbrauch', u: '/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/', g: 'Ratgeber' },
+    { t: 'Schlafprobleme nach einem Trauma', u: '/wissen/schlafprobleme-nach-trauma/', g: 'Ratgeber' },
+    { t: 'Akupunktur bei PTBS: Was ist belegt?', u: '/wissen/akupunktur-bei-ptbs/', g: 'Therapien' },
+    { t: 'Akupunktur nach Trauma: Was kann ich vor einer Sitzung klären?', u: '/wissen/akupunktur-nach-trauma/', g: 'Therapien' },
+  ];
+  for (const a of TRAUMA_ARTIKEL) entries.push({ t: a.t, u: a.u, g: a.g });
   // Visuals: nur live (Visual-Seiten sind bewusst noindex - Verlinkung ist ok, kein SEO-Ziel).
   for (const v of visuals) {
     if (v.status !== 'live') continue;

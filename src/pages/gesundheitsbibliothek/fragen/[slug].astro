@@ -11,7 +11,7 @@ import ArticleCta from '../../../components/library/ArticleCta.astro';
 import { careClickJs, CARE_TRUST, CARE_SAFETY, CARE_PERSON } from '../../../data/care';
 import { site } from '../../../data/site';
 import { fragenHubs, fragen, FRAGEN_DATEN } from '../../../data/fragen';
-import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_ENTSCHEIDUNGEN_2026_10 } from '../../../data/befunde-werte';
+import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_ENTSCHEIDUNGEN_2026_10, PUBLISHED_ARTIKEL_2026_10_24 } from '../../../data/befunde-werte';
 import type { Frage, FragenHub } from '../../../data/fragen';
 
 export function getStaticPaths() {
@@ -27,10 +27,10 @@ const { hub, frage } = Astro.props;
 const autor = frage?.autor ?? { name: 'TCM.ch Fachredaktion', role: 'Team aus EMR- und ASCA-anerkannten TCM-Therapeut:innen' };
 // Kohorten-Datum: welle-3 => PUBLISHED_WELLE_3_2026_10; entscheidungen-2026-10 => PUBLISHED_ENTSCHEIDUNGEN_2026_10
 // (undefined bis Release => kein Schema-Datum, kein sichtbares Datum). Aeltere Fragen behalten FRAGEN_DATEN.
-const cohortDate: string | undefined = frage?.cohort === 'welle-3' ? PUBLISHED_WELLE_3_2026_10 : frage?.cohort === 'entscheidungen-2026-10' ? PUBLISHED_ENTSCHEIDUNGEN_2026_10 : undefined;
+const cohortDate: string | undefined = frage?.cohort === 'welle-3' ? PUBLISHED_WELLE_3_2026_10 : frage?.cohort === 'entscheidungen-2026-10' ? PUBLISHED_ENTSCHEIDUNGEN_2026_10 : frage?.cohort === 'artikel-2026-10-24' ? PUBLISHED_ARTIKEL_2026_10_24 : undefined;
 const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 // Sichtbares Datum der Autorenkarte: neue Kohorte ohne Datum bis Release (kein geerbtes Septemberdatum); Altbestand unveraendert.
-const aktualisiert: string | null = frage?.cohort === 'entscheidungen-2026-10'
+const aktualisiert: string | null = frage?.cohort === 'entscheidungen-2026-10' || frage?.cohort === 'artikel-2026-10-24'
   ? (cohortDate ? `${MONATE[Number(cohortDate.slice(5, 7)) - 1]} ${cohortDate.slice(0, 4)}` : null)
   : 'September 2026';
 const slug = (hub ?? frage)!.slug;

@@ -103,13 +103,13 @@
         rCheckin.disabled = !ok; var tile = rCheckin.closest('.kf-opt'); if (tile) tile.classList.toggle('is-disabled', !ok);
         // Ruhig: nicht freigegebene Ziele zeigen die Check-in-Kachel gar nicht (keine Gratis-Diagnostik suggerieren).
         if (tile && ruhig) tile.hidden = !ok;
-        // St. Gallen gewählt → St.-Galler Wortlaut (TCM 360°-Check-in); sonst bisheriger Wortlaut. Klassifikation unverändert.
-        if (tile && tile.hasAttribute('data-kf-sg-t')) {
-          var sgSel = !!(o && o.getAttribute('data-id') === 'st-gallen');
+        // Freigegebener Standort gewählt (data-checkin="1") → 360°-Wortlaut (TCM 360°-Check-in); sonst bisheriger Wortlaut. Klassifikation unverändert.
+        if (tile && tile.hasAttribute('data-kf-360-t')) {
+          var sel360 = !!(o && o.getAttribute('data-checkin') === '1');
           ['t', 'dur', 'd', 'note'].forEach(function (k) {
             var el = tile.querySelector('.kf-opt-' + k); if (!el) return;
             if (!el.hasAttribute('data-kf-std')) el.setAttribute('data-kf-std', el.textContent);
-            var want = sgSel ? tile.getAttribute('data-kf-sg-' + k) : el.getAttribute('data-kf-std');
+            var want = sel360 ? tile.getAttribute('data-kf-360-' + k) : el.getAttribute('data-kf-std');
             if (el.textContent !== want) el.textContent = want;
           });
         }

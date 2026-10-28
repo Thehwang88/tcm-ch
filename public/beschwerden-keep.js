@@ -100,5 +100,9 @@ globalThis.BESCHWERDEN_KEEP = [
   "hueftimpingement", "pes-anserinus-bursitis", "haglundferse", "sesamoiditis",
   "radialtunnelsyndrom", "loge-de-guyon-syndrom", "plica-syndrom-knie", "quadrizepssehnen-tendinopathie",
   "schnappende-huefte", "rektusdiastase", "symphysenschmerzen-schwangerschaft", "nummulaeres-ekzem",
-  "lichen-planus", "notalgia-paraesthetica", "brachioradialer-pruritus", "pppd"
+  "lichen-planus", "notalgia-paraesthetica", "brachioradialer-pruritus", "pppd",
+  // Bibliothek 26.10.2026 (10 Diagnose-Owner, Draft):
+  "medikamentenuebergebrauchskopfschmerz", "hypermobilitaet", "schambeinentzuendung", "sjoegren-syndrom", "essentieller-tremor", "pots-syndrom", "mikroskopische-kolitis", "gallensaeurebedingter-durchfall", "proctalgia-fugax", "beckenorgansenkung",
+  // Trauma-Cluster 27.10.2026 (2 Orientierungsseiten, Draft):
+  "posttraumatische-belastungsstoerung", "komplexe-ptbs"
 ];

@@ -1,0 +1,170 @@
+---
+// Untersuchungen & Diagnostik Leaf (Bibliothek 26.10.2026, Draft). Rein edukativ:
+// schulmedizinische Diagnostik, TCM.ch fuehrt diese Untersuchung NICHT durch.
+// Publikationsdatum ueber PUBLISHED_BIBLIOTHEK_2026_10_26 (Schema-Daten nur mit gesetztem Datum).
+import LayoutDe from '../../../layouts/LayoutDe.astro';
+import LibraryRelated from '../../../components/LibraryRelated.astro';
+import { PUBLISHED_BIBLIOTHEK_2026_10_26 } from '../../../data/befunde-werte';
+
+const path = '/gesundheitsbibliothek/untersuchungen/urodynamik';
+const url = `https://tcm.ch${path}/`;
+const title = 'Urodynamik: Ablauf und Befund der Blasendruckmessung';
+const description = 'Urodynamik (Blasendruckmessung): wann sie veranlasst wird, wie Uroflowmetrie, Restharn und Zystometrie ablaufen, was die Werte zeigen und welche Risiken bestehen.';
+const published = PUBLISHED_BIBLIOTHEK_2026_10_26;
+
+const schema = [
+  {
+    '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+    '@id': `${url}#article`,
+    name: `${title} | TCM.ch`, headline: 'Urodynamik: Was zeigt eine Blasendruckmessung?', description, url, inLanguage: 'de-CH',
+    ...(published ? { datePublished: published, dateModified: published } : {}),
+    author: { '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/' },
+    publisher: {
+      '@type': 'MedicalOrganization', name: 'TCM.ch', url: 'https://tcm.ch/',
+      logo: { '@type': 'ImageObject', url: 'https://tcm.ch/images/logo/tcm-kliniken-logo-512.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'TCM.ch', item: 'https://tcm.ch/' },
+      { '@type': 'ListItem', position: 2, name: 'Gesundheitsbibliothek', item: 'https://tcm.ch/gesundheitsbibliothek/' },
+      { '@type': 'ListItem', position: 3, name: 'Untersuchungen & Diagnostik', item: 'https://tcm.ch/gesundheitsbibliothek/untersuchungen/' },
+      { '@type': 'ListItem', position: 4, name: 'Urodynamik', item: url },
+    ],
+  },
+];
+
+const rel1Links = [
+  { href: '/beschwerden/inkontinenz/', label: 'Inkontinenz' },
+  { href: '/beschwerden/reizblase/', label: 'Reizblase' },
+  { href: '/beschwerden/beckenorgansenkung/', label: 'Beckenorgansenkung' },
+];
+const rel2Links = [
+  { href: '/gesundheitsbibliothek/untersuchungen/urinuntersuchung/', label: 'Urinuntersuchung' },
+  { href: '/gesundheitsbibliothek/untersuchungen/ultraschall/', label: 'Ultraschall' },
+];
+---
+<LayoutDe title={title} description={description} path={path} schema={schema} stickyCta={false}>
+  <article>
+    <section class="hero">
+      <div class="wrap narrow">
+        <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+          <a href="/gesundheitsbibliothek/">Gesundheitsbibliothek</a>
+          <span aria-hidden="true">›</span>
+          <a href="/gesundheitsbibliothek/untersuchungen/">Untersuchungen & Diagnostik</a>
+          <span aria-hidden="true">›</span>
+          <span class="crumb-here">Urodynamik</span>
+        </div>
+        <div class="cat">Untersuchungen & Diagnostik</div>
+        <h1>Urodynamik: Was zeigt eine Blasendruckmessung?</h1>
+        <p class="lead">Die Untersuchung zeigt, wie Blase und Harnröhre Urin speichern und entleeren. Sie hilft, bei Inkontinenz oder Entleerungsstörungen die passende Behandlung zu wählen.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap narrow">
+        <div class="kb-body">
+          <div class="info-note">Diese Seite dient der Orientierung. Eine Urodynamik wird von Urologinnen, Urologen oder Urogynäkologinnen veranlasst, durchgeführt und beurteilt. <strong>TCM.ch führt diese Untersuchung nicht selbst durch und bietet keine Blasenabklärung an.</strong> Fragen zu deinem Befund beantwortet die untersuchende Praxis.</div>
+
+          <div class="wa-callout">
+            <div class="wa-callout-label">Kurz gesagt</div>
+            <p>Urodynamik ist ein Sammelbegriff für Messungen, die prüfen, wie gut Blase, Schliessmuskeln und Harnröhre Urin speichern und abgeben. Meist werden dabei über einen dünnen Katheter Druck und Füllmenge der Blase gemessen, während sie langsam mit Wasser gefüllt und danach entleert wird. Die Ergebnisse helfen, die Ursache von Urinverlust oder Entleerungsstörungen zu finden und die Behandlung zu planen; allein sind sie keine Diagnose.</p>
+          </div>
+
+          <h2>Wann wird eine Urodynamik veranlasst?</h2>
+          <p>Die Untersuchung kann sinnvoll sein, wenn du</p>
+          <ul>
+            <li>ungewollt Urin verlierst (<a href="/beschwerden/inkontinenz/">Inkontinenz</a>)</li>
+            <li>sehr häufig oder plötzlich und stark Wasser lösen musst (<a href="/beschwerden/reizblase/">Reizblase</a>)</li>
+            <li>Schmerzen beim Wasserlösen hast oder schwer in Gang kommst</li>
+            <li>das Gefühl hast, die Blase nicht ganz zu leeren</li>
+            <li>wiederholt Harnwegsinfekte hast</li>
+          </ul>
+          <p>Bei einer <a href="/beschwerden/beckenorgansenkung/">Beckenorgansenkung</a> kann sie klären, ob eine Inkontinenz vorliegt, die durch die Senkung verdeckt sein kann. Ob eine Urodynamik nötig ist und welche Abklärung wie eine <a href="/gesundheitsbibliothek/untersuchungen/urinuntersuchung/">Urinuntersuchung</a> vorher sinnvoll ist, entscheidet die behandelnde Ärztin oder der Arzt.</p>
+
+          <h2>Welche Messungen gehören dazu?</h2>
+          <ul>
+            <li><strong>Uroflowmetrie:</strong> Du löst Wasser in eine spezielle Toilette oder einen Trichter; gemessen werden Menge und Stärke des Harnstrahls.</li>
+            <li><strong>Restharnmessung:</strong> zeigt, wie viel Urin nach dem Wasserlösen in der Blase bleibt, per <a href="/gesundheitsbibliothek/untersuchungen/ultraschall/">Ultraschall</a> oder Katheter. Bleiben 100 bis 150 Milliliter oder mehr, leert sich die Blase nicht vollständig.</li>
+            <li><strong>Zystometrie:</strong> Ein dünner Messkatheter in der Blase, oft ein zweiter im Enddarm oder in der Scheide, misst den Druck, während die Blase langsam mit warmem Wasser gefüllt wird. Du gibst an, wann du Harndrang spürst; Husten oder Pressen zeigen, ob Urin austritt oder sich die Blase ungewollt zusammenzieht.</li>
+            <li><strong>Druck-Fluss-Messung:</strong> Druck und Harnstrahl beim Entleeren, um zum Beispiel ein Abflusshindernis durch eine vergrösserte Prostata oder eine Blasensenkung zu erkennen.</li>
+            <li><strong>Elektromyografie:</strong> Sensoren erfassen die Aktivität der Beckenbodenmuskeln und Nerven, wenn eine Nerven- oder Muskelstörung vermutet wird.</li>
+            <li><strong>Video-Urodynamik:</strong> zusätzlich Röntgen- oder Ultraschallbilder mit Kontrastmittel während Füllung und Entleerung.</li>
+          </ul>
+
+          <h2>Vorbereitung und Ablauf</h2>
+          <p>Meist ist keine besondere Vorbereitung nötig. Die untersuchende Praxis sagt dir, ob du die Trinkmenge anpassen, bestimmte Medikamente pausieren oder mit voller Blase kommen sollst; ändere verordnete Medikamente nur nach ihrer Anweisung. Welche Messungen gemacht werden, hängt von der Fragestellung ab.</p>
+
+          <h2>Nach der Untersuchung</h2>
+          <p>Einige Stunden lang kann das Wasserlösen leicht unangenehm sein; viel Trinken in den ersten Stunden kann das mildern. Die meisten Messungen haben kaum Risiken; nach einem Katheter besteht ein geringes Risiko für einen Harnwegsinfekt. Ergebnisse einfacher Messungen wie Uroflowmetrie oder Zystometrie liegen oft sofort vor, andere nach einigen Tagen.</p>
+
+          <h2>Was ein Ergebnis zeigt und was nicht</h2>
+          <p>Die Werte beschreiben Blasenkapazität, Druck beim Füllen und Entleeren, Harnstrahl und Restharn. Sie helfen zu unterscheiden, ob Urin bei Belastung verloren geht, ob sich die Blase ungewollt zusammenzieht oder ob der Abfluss behindert ist. Eine Diagnose ergibt sich erst zusammen mit Beschwerden, Untersuchung und weiteren Befunden.</p>
+
+          <h2>Wann eine Abklärung wichtig ist</h2>
+          <p>Melde dich nach der Untersuchung sofort bei der Praxis, wenn Fieber, Schüttelfrost oder zunehmende Schmerzen auftreten. Das können Zeichen einer Infektion sein.</p>
+
+          <h2>Nächste Schritte</h2>
+          <p>Frag vor der Untersuchung, welche Messungen geplant sind und welche Behandlungsentscheidung davon abhängt, und danach, was die Ergebnisse für dich bedeuten. TCM.ch führt diese Untersuchung nicht selbst durch.</p>
+
+          <h2>Häufige Fragen</h2>
+          <h3>Tut eine Urodynamik weh?</h3>
+          <p>Die Katheter sind dünn; bei Sensoren auf einem Katheter wird ein betäubendes Gel verwendet. Danach kann das Wasserlösen einige Stunden lang leicht unangenehm sein.</p>
+          <h3>Muss ich nüchtern sein?</h3>
+          <p>In der Regel nicht. Halte dich an die Anweisungen der untersuchenden Praxis, etwa zur Trinkmenge oder zu Medikamenten.</p>
+          <h3>Wann bekomme ich das Ergebnis?</h3>
+          <p>Einfache Messungen werden oft direkt besprochen; Elektromyografie und Video-Urodynamik können einige Tage dauern.</p>
+
+          <h2>Quellen</h2>
+          <ul style="font-size:14px;color:var(--muted)">
+            <li><a href="https://www.usz.ch/fachbereich/urologie/angebot/urodynamik/" target="_blank" rel="noopener">Universitätsspital Zürich, Klinik für Urologie: Urodynamik</a></li>
+            <li><a href="https://www.niddk.nih.gov/health-information/diagnostic-tests/urodynamic-testing" target="_blank" rel="noopener">NIDDK (US National Institutes of Health): Urodynamic Testing</a></li>
+            <li><a href="https://www.usz.ch/fachbereich/gynaekologie/angebot/gebaermuttersenkung-behandlung/" target="_blank" rel="noopener">Universitätsspital Zürich, Klinik für Gynäkologie: Behandlung von Gebärmutter- und Blasensenkung</a></li>
+          </ul>
+
+        </div>
+
+        <LibraryRelated label="Beschwerden" title="Passende Themen" links={rel1Links} allHref="/beschwerden/" allLabel="Alle Beschwerden" />
+        <LibraryRelated label="Untersuchungen" title="Verwandte Untersuchungen" links={rel2Links} allHref="/gesundheitsbibliothek/untersuchungen/" allLabel="Alle Untersuchungen" />
+
+        <div class="cta-card">
+          <div class="cta-card-title">Fragen zur Untersuchung?</div>
+          <p>Ob eine Urodynamik nötig ist und was dein Ergebnis bedeutet, klärst du mit der veranlassenden oder untersuchenden urologischen beziehungsweise urogynäkologischen Praxis. Für allgemeine Fragen zu TCM.ch erreichst du uns über den Kontakt.</p>
+          <div class="cta-row">
+            <a class="btn btn--ghost" href="/kontakt/">Allgemeiner Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</LayoutDe>
+
+<style>
+  .wrap.narrow { max-width: 760px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; margin-bottom: 18px; }
+  .crumbs a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .crumbs span[aria-hidden] { color: var(--muted); }
+  .crumb-here { color: var(--muted); font-weight: 600; }
+  .cat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: var(--tracking-heading); color: var(--ink); margin: 0 0 16px; }
+  .hero .lead { font-size: 19px; line-height: 1.5; color: var(--mid); }
+  .info-note { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-btn); padding: 16px 18px; font-size: 15px; line-height: 1.6; color: var(--mid); margin: 0 0 8px; }
+  .info-note strong { color: var(--ink); }
+  .kb-body h2 { font-size: 25px; font-weight: 800; color: var(--ink); margin: 38px 0 14px; letter-spacing: var(--tracking-heading); }
+  .kb-body p { font-size: 17.5px; line-height: 1.65; color: var(--mid); margin: 0 0 18px; }
+  .kb-body ul { font-size: 17.5px; line-height: 1.6; color: var(--mid); padding-left: 22px; margin: 0 0 18px; }
+  .kb-body li { margin: 0 0 10px; }
+  .kb-body strong { color: var(--ink); }
+  .kb-body a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .kb-body a:hover { text-decoration: underline; }
+  .cta-card { background: var(--blue-light); border: 1px solid rgba(45,155,111,.25); border-radius: var(--r-card); padding: 24px; margin: 40px 0 0; }
+  .cta-card-title { font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .cta-card p { font-size: 15.5px; color: var(--mid); margin: 0 0 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .kb-body .wa-callout { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--r-btn) var(--r-btn) 0; padding: 18px 20px; margin: 24px 0; }
+  .kb-body .wa-callout-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 6px; }
+  .kb-body .wa-callout p { margin: 0; font-size: 16px; }
+  .kb-body h3 { font-size: 19px; font-weight: 800; color: var(--ink); margin: 26px 0 10px; letter-spacing: var(--tracking-heading); }
+</style>

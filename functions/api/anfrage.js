@@ -60,8 +60,13 @@ export async function onRequestPost({ request, env }) {
       d.standort_id = ziel.id;
       if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
       if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
+      // Interne Termindisposition: Carlos reserviert für SG-Erstbehandlungen 90 Minuten.
+      // Patientenformular (60 Minuten), alle anderen Standorte und Gratis-Check-in (30 Minuten) bleiben unverändert.
+      const mailTermin = ziel.id === 'st-gallen' && neu.terminart === 'behandlung'
+        ? { ...neu, dauerMin: 90, anzeige: neu.label + ' · 90 Minuten' }
+        : neu;
       offer = { art: neu.art, terminart: neu.beschreibung, angebot: neu.label + ' – ' + ort, betreff: neu.betreff,
-        label: neu.label, anzeige: neu.anzeige || neu.label, dauerMin: neu.dauerMin, kosten: neu.kosten, mailBetreff: terminBetreff(neu, ziel) };
+        label: neu.label, anzeige: mailTermin.anzeige || neu.label, dauerMin: mailTermin.dauerMin, kosten: neu.kosten, mailBetreff: terminBetreff(mailTermin, ziel) };
       d.angebot = offer.angebot;
     } else if (offerId) {
       // Historische IDs (FIRST 30 / regulär SG): unverändert, damit offene Browser-Tabs weiter zugestellt werden.
@@ -125,7 +130,9 @@ export async function onRequestPost({ request, env }) {
     // Terminart zuoberst und lesbar (gemeinsames Formular: Terminart, Dauer, Kosten aus kontakt-angebote.mjs, nie vom
     // Client); historische Angebots-IDs (FIRST 30 / regulär SG) behalten ihre bisherigen Zeilen.
     const rows = [
-      ...(neu ? [['Terminart', offer.label], ['Dauer', offer.dauerMin ? offer.dauerMin + ' Minuten' : undefined], ['Kosten', offer.kosten]]
+      ...(neu ? [['Terminart', offer.label], ['Dauer', offer.dauerMin ? offer.dauerMin + ' Minuten' : undefined],
+        ['Interner Buchungshinweis', d.standort_id === 'st-gallen' && neu.terminart === 'behandlung' ? 'Carlos: 90 Minuten im Kalender reservieren.' : undefined],
+        ['Kosten', offer.kosten]]
         : [['Anfrageart', offer ? offer.art : undefined], ['Terminart', offer ? offer.terminart : undefined]]),
       ['Standort', d.standort],
       ['Name', d.name], ['E-Mail', d.email], ['Telefon', d.telefon],

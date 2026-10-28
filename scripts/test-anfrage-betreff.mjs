@@ -45,11 +45,11 @@ async function flow({ url, inst, terminart, standort, width = 390 }) {
 }
 
 const SCEN = [
-  ['SG oben · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
+  ['SG oben · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['SG oben · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-hero', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
-  ['SG unten · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
+  ['SG unten · Ersttermin', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['SG unten · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
-  ['Homepage + SG · Ersttermin', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
+  ['Homepage + SG · Ersttermin', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + SG · Check-in', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
   ['Basel (ohne Check-in) · Ersttermin', { url: '/standorte/basel/', inst: 'standort', terminart: 'behandlung' }, 'Neue Anfrage · Basel · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + Oerlikon neue Praxis · Vormerkung', { url: '/', inst: 'home', standort: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung' }, 'Neue Anfrage · Zürich Oerlikon – neue Praxis · Vormerkung', null, null],
@@ -68,8 +68,9 @@ for (const [label, f, subj, dauer, kosten] of SCEN) {
   const m = s.mail || { subject: '', html: '' };
   ok(s.status === 200 && m.subject === subj, `Betreff «${m.subject}»`);
   ok(!/Gratis-30min|\[/.test(m.subject), 'kein Legacy-Formularname im Betreff');
+  if (f.terminart === 'behandlung' && p.standort === 'St. Gallen') ok(m.html.includes('Carlos: 90 Minuten im Kalender reservieren.'), 'SG-Ersttermin: Carlos erhält expliziten 90-Minuten-Buchungshinweis');
   const [vor, tech = ''] = m.html.split('Technische Angaben');
-  if (dauer) ok(vor.includes(`>${dauer}<`) && vor.includes(`>${kosten}<`) && !/(30|60) Minuten/.test(vor.replace(`>${dauer}<`, '').replace(new RegExp(dauer.replace(' ', '.'), 'g'), '')), `Body: Dauer ${dauer}, ${kosten}, keine andere Dauer`);
+  if (dauer) ok(vor.includes(`>${dauer}<`) && vor.includes(`>${kosten}<`) && !/(30|60|90) Minuten/.test(vor.replace(`>${dauer}<`, '').replace(new RegExp(dauer.replace(' ', '.'), 'g'), '')), `Body: Dauer ${dauer}, ${kosten}, keine andere Dauer`);
   ok(vor.includes('>Terminart<') && vor.includes('>Standort<'), 'Body: Terminart und Standort vor den technischen Angaben');
   if (p.formular) ok(!vor.includes(p.formular) && tech.includes(`>${p.formular}<`), `Formular-Identifier nur unter «Technische Angaben»`);
   if (p.quelle) ok(!vor.includes(`>${p.quelle}<`) && tech.includes(`>${p.quelle}<`), 'Quelle unter «Technische Angaben»');
@@ -86,7 +87,14 @@ for (const [label, d, code] of [
   ['Client-Label als Standort', { ...base, standort: 'Luzern (Eröffnung 2027)', angebot_id: 'VORMERKUNG' }, 'invalid_standort'],
 ]) { const s = await server(d); ok(s.status === 422 && s.body.error === code && !s.mail, `${label} → 422 ${code}, keine Mail`); }
 const fake = await server({ ...base, standort: 'St. Gallen', angebot_id: 'ERSTTERMIN_BEHANDLUNG', formular: 'Hero-Gratis-30min-StGallen', angebot: 'GRATIS 30 MIN', label: 'Kostenloser TCM-Check-in' });
-ok(fake.mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.' && !/GRATIS 30 MIN/.test(fake.mail.html), 'Client-Labels und Legacy-Formularname ändern Betreff/Terminart nicht');
+ok(fake.mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.' && !/GRATIS 30 MIN/.test(fake.mail.html), 'Client-Labels und Legacy-Formularname ändern Betreff/Terminart nicht');
+// Schutz gegen standortübergreifende Dauer-Änderungen: andere Ersttermine bleiben 60 Minuten.
+for (const ort of ['Winterthur Marktgasse', 'Winterthur Münzgasse', 'Basel']) {
+  const ext = await server({ ...base, standort: ort, angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
+  ok(ext.status === 200 && ext.mail.subject === 'Neue Anfrage · ' + ort + ' · Ersttermin mit Behandlung · 60 Min.'
+    && ext.mail.html.includes('>60 Minuten<') && !ext.mail.html.includes('Carlos:'),
+    ort + ': Ersttermin bleibt 60 Minuten ohne SG-Buchungshinweis');
+}
 const legacy = await server({ ...base, name: 'Test', standort: 'St. Gallen', quelle: 'launch-hero-sg', angebot_id: 'FIRST30_WINTER_2026_SG', formular: 'Hero-Gratis-30min-StGallen' });
 ok(legacy.status === 200 && /FIRST 30 PRE-CHRISTMAS EDITION/.test(legacy.mail.html), `historische FIRST-30-ID weiter zustellbar («${legacy.mail.subject}»)`);
 

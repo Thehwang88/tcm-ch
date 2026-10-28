@@ -20,6 +20,8 @@
 // Alle Studienangaben sind vor dem Schreiben gegen die Primärquelle geprüft worden.
 import type { Wissen } from './wissen';
 import { PUBLISHED_WELLE_3_2026_10, PUBLISHED_WELLE_4_2026_10, PUBLISHED_WISSEN_NEUN_2026_10, PUBLISHED_WISSEN_CLUSTER_2026_10 } from './befunde-werte';
+import { artikel24SerieSlugs } from './wissen-artikel-2026-10-24';
+import { traumaSerieSlugs } from './wissen-trauma-2026-10-27';
 
 const AUTOR = {
   name: 'Corinna Reinhart',
@@ -164,7 +166,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Nein. Dafür gibt es keine belastbare Evidenz.</p>
 <p>Akupunktur kann auf Schmerzen und möglicherweise Funktion Einfluss nehmen. Einen abgenutzten Gelenkknorpel baut sie nicht wieder auf und strukturelle Arthroseveränderungen werden dadurch nicht rückgängig gemacht.</p>
 <p>Das Behandlungsziel ist deshalb funktionell: weniger Beschwerden, bessere Belastbarkeit und mehr Bewegungsfreiheit – soweit dies individuell erreichbar ist.</p>
-<h2>Wie wir behandeln</h2>
+<p>Wer neben Akupunktur an chinesische Kräuter denkt, findet die Studienlage dazu unter <a href="/wissen/chinesische-kraeuter-bei-kniearthrose/">Chinesische Kräuter bei Kniearthrose</a>.</p><h2>Wie wir behandeln</h2>
 <p>Zu Beginn klären wir, wo und wann die Beschwerden auftreten, wie belastbar das Knie ist und welche Diagnose bereits gestellt wurde.</p>
 <p>In der TCM wird zusätzlich das individuelle Beschwerdemuster betrachtet. Die Akupunktur kann lokale Punkte rund um das Knie mit weiter entfernten Punkten kombinieren.</p>
 <p>Entscheidend ist nicht eine möglichst grosse Zahl von Nadeln, sondern ein nachvollziehbarer Behandlungsplan und eine regelmässige Überprüfung, ob sich tatsächlich etwas verändert.</p>
@@ -370,7 +372,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Dry Needling richtet sich typischerweise gezielt auf myofasziale Triggerpunkte. Akupunktur verwendet ein breiteres Punkt- und Behandlungskonzept.</p>
 <p>Welche Methode sinnvoller ist, hängt vom Befund ab.</p>
 <h2>Wann Akupunktur nicht ausreicht</h2>
-<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden.</p>
+<p>Nach Trauma, bei deutlichem Kraftverlust, ausgeprägter Schwellung, neurologischen Symptomen oder länger anhaltenden Beschwerden ohne klare Diagnose sollte medizinisch abgeklärt werden. Wenn eine Stosswellentherapie als Alternative im Raum steht, ordnet <a href="/wissen/akupunktur-oder-stosswellentherapie-tennisellenbogen/">Akupunktur oder Stosswellentherapie beim Tennisellenbogen</a> einen kleinen direkten Vergleich ein.</p>
 <h2>Ablauf und Sitzungen</h2>
 <p>Wir definieren vorab konkrete Kriterien: Schmerz beim Greifen, Belastbarkeit im Beruf oder Sport und Druckempfindlichkeit.</p>
 <p>Nach einem begrenzten Behandlungsabschnitt wird entschieden, ob eine relevante Verbesserung vorliegt.</p>
@@ -668,7 +670,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h2>Wo Akupunktur sinnvoll sein kann</h2>
 <p>Realistisch ist Akupunktur bei Ischias ein ergänzender Baustein in drei Situationen: wenn die Abklärung keine Operationsindikation ergeben hat und du die Wartezeit auf Besserung überbrücken willst; wenn Schmerzmittel nicht ausreichen oder nicht vertragen werden; und wenn die Muskulatur in Gesäss und Lendenbereich so verspannt ist, dass sie den Nerv zusätzlich reizt. In diesem letzten Fall kombinieren wir die Nadelung oft mit <a href="/therapien/tuina/">Tuina</a>, weil die manuelle Arbeit am Piriformis und an der tiefen Gesässmuskulatur direkt dort ansetzt. Ob bei dir eher eine manuelle Behandlung oder aktive Physiotherapie im Vordergrund stehen sollte, ordnet <a href="/wissen/tuina-oder-physiotherapie/">Tuina oder Physiotherapie</a> ein.</p>
 <p>Akupunktur ersetzt nicht die Bewegung. Die wichtigste Massnahme bei Ischias ohne Warnzeichen ist, in Bewegung zu bleiben und die Rückenmuskulatur gezielt aufzubauen. Wer bereits in der <a href="/therapien/physiotherapie/">Physiotherapie</a> ist, kann Akupunktur parallel nutzen; die beiden Behandlungen behindern sich nicht.</p>
-<h2>Wie wir behandeln</h2>
+<p>Liegt ein lumbaler Bandscheibenvorfall zugrunde und interessiert dich zusätzlich die Kräuterfrage, ordnet <a href="/wissen/chinesische-kraeuter-bei-bandscheibenvorfall/">Chinesische Kräuter bei Bandscheibenvorfall</a> die Studienlage ein.</p><h2>Wie wir behandeln</h2>
 <p>Vor der ersten Nadel klären wir, ob eine ärztliche Diagnose vorliegt, ob Bildgebung gemacht wurde und ob Taubheit oder Kraftverlust bestehen. Dann wird genadelt: am unteren Rücken, im Gesäss und entlang des Schmerzverlaufs am Bein, meist mit acht bis fünfzehn Nadeln, die 20 bis 30 Minuten liegen bleiben. Bei ausgeprägtem Nervenschmerz setzen wir teilweise <a href="/therapien/elektroakupunktur/">Elektroakupunktur</a> ein, bei kälteempfindlichen Beschwerden ergänzend Moxibustion.</p>
 <p>Typisch sind ein bis zwei Sitzungen pro Woche über vier bis sechs Wochen. Nach vier Sitzungen ziehen wir Bilanz: Hat sich die Ausstrahlung verkürzt, brauchst du weniger Schmerzmittel, schläfst du besser? Wenn nicht, besprechen wir offen, ob eine andere Methode oder eine erneute ärztliche Beurteilung sinnvoller ist.</p>
 <h2>Kosten und Krankenkasse</h2>
@@ -1050,7 +1052,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Eine Behandlung kann sich ruhig und unterstützend anfühlen, ohne die Ursache einer Angststörung ausreichend zu behandeln. Für die Entscheidung zählt deshalb nicht nur, ob du dich direkt danach entspannter fühlst, sondern ob sich dein Alltag langfristig verbessert.</p>
 <h2>Wie sicher ist die Evidenz?</h2>
 <p>Eine systematische Übersicht von 2021 fand Hinweise auf eine Verbesserung von Angstsymptomen gegenüber verschiedenen Vergleichsbedingungen. Die Studien unterschieden sich jedoch in Vorgehen und Qualität. Solche Unterschiede und Schwierigkeiten bei der Verblindung begrenzen die Sicherheit der Schlussfolgerungen.</p>
-<p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p>
+<p>Auch neuere Übersichten berichten positive Signale, weisen aber auf unterschiedliche Protokolle und methodische Unsicherheit hin. Daraus lässt sich weder eine zuverlässige Erfolgsquote noch eine Gleichwertigkeit mit gut untersuchten psychotherapeutischen Verfahren ableiten. Aussagen wie «reguliert dein Nervensystem dauerhaft» wären zu weitgehend.</p><p>Diese Ergebnisse betreffen Angststörungen und lassen sich nicht auf die posttraumatische Belastungsstörung übertragen. Was eine scheinkontrollierte Studie zu Akupunktur bei PTBS zeigt und wo ihre Grenzen liegen, steht unter <a href="/wissen/akupunktur-bei-ptbs/">Akupunktur bei PTBS</a>.</p>
 <h2>Was weiterhin Vorrang hat</h2>
 <p>Für Angststörungen gibt es etablierte Behandlungen. Dazu gehört insbesondere eine passende Psychotherapie; je nach Situation werden Medikamente erwogen. Den Behandlungsplan solltest du mit den zuständigen Fachpersonen abstimmen. Eine laufende Therapie nicht aus eigener Entscheidung beenden, weil du etwas Ergänzendes ausprobieren möchtest. Die Entscheidung zu einer Rezeptur hat eine eigene Datenlage; das erläutert die Einordnung zu <a href="/wissen/chinesische-kraeuter-bei-angststoerungen/">chinesischen Kräutern bei Angststörungen</a>.</p>
 <p>Bei neuem starken Brustschmerz, Ohnmacht oder anderen akuten Warnzeichen ist medizinische Abklärung wichtiger als ein Akupunkturtermin. Wenn Angst den Alltag zunehmend verhindert oder du dich nicht sicher fühlst, brauchst du zeitnah professionelle Hilfe.</p>
@@ -1102,7 +1104,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Dieser Artikel beantwortet die Frage nach einer ergänzenden Behandlung. Er ist keine Anleitung, eine Diagnose selbst zu stellen oder Antidepressiva zu verändern. Wenn du dich akut nicht sicher fühlst oder befürchtest, dir etwas anzutun, hole sofort professionelle Hilfe und bleibe damit nicht allein. Ein späterer Akupunkturtermin reicht dann nicht aus.</p>
 <h2>Was die Forschung tatsächlich zeigt</h2>
 <p>Ein Cochrane-Review von 2018 fand Hinweise auf eine Verbesserung der Depressionsschwere gegenüber keiner beziehungsweise üblicher Behandlung. Gegenüber Kontrollakupunktur war der Unterschied kleiner. Vergleiche mit Medikamenten und Psychotherapie blieben wegen sehr niedriger Evidenzqualität unsicher.</p>
-<p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p>
+<p>Neuere Übersichtsarbeiten berichten teilweise zusätzliche Verbesserungen, etwa bei Kombination mit Antidepressiva. Sie lösen jedoch die Fragen nach Studienqualität, Vergleichsbedingungen und zuverlässigen Langzeiteffekten nicht vollständig. Eine positive Zusammenfassung ist daher kein Beweis, dass Akupunktur gleich gut wirkt wie eine etablierte Therapie oder bei dir sicher helfen wird.</p><p>Für die posttraumatische Belastungsstörung gilt eine eigene, ebenfalls begrenzte Studienlage; sie ist unter <a href="/wissen/akupunktur-bei-ptbs/">Akupunktur bei PTBS</a> eingeordnet.</p>
 <h2>Was nicht verdrängt werden darf</h2>
 <p>Die Behandlung einer Depression hängt unter anderem von Schwere, Verlauf und deinen Bedürfnissen ab. Psychotherapie, Medikamente und weitere fachlich empfohlene Massnahmen haben ihren Platz. Eine ergänzende Behandlung sollte diesen Plan nicht verzögern oder unnötig verkomplizieren. Bei einer möglichen Ergänzung durch Medikamente auf Pflanzenbasis ist die eigene Evidenz zu <a href="/wissen/chinesische-kraeuter-bei-depressionen/">chinesischen Kräutern bei Depressionen</a> zu beachten.</p>
 <p>Auch wenn du Medikamente schlecht verträgst oder bisher wenig Nutzen erlebt hast, ist die nächste Entscheidung mit den zuständigen Fachpersonen zu treffen. Das ist kein Grund, Medikamente eigenständig abzusetzen oder eine unbewiesene Alternative als gleichwertig anzusehen.</p>
@@ -1166,7 +1168,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <h3>Ist Akupunktur bei Reizblase zuverlässig wirksam?</h3>
 <p>Das lässt sich nach der bisherigen Forschung nicht sicher sagen. Ein möglicher Nutzen bleibt individuell und unsicher.</p>
 <h3>Gilt das auch für jede Inkontinenz?</h3>
-<p>Nein. Überaktive Blase und beispielsweise Belastungsinkontinenz sind unterschiedliche Situationen und dürfen nicht gleichgesetzt werden.</p>
+<p>Nein. Überaktive Blase und beispielsweise Belastungsinkontinenz sind unterschiedliche Situationen und dürfen nicht gleichgesetzt werden. Die Studienlage zur Belastungsinkontinenz ordnet der Artikel <a href="/wissen/akupunktur-bei-belastungsinkontinenz/">Akupunktur bei Belastungsinkontinenz</a> gesondert ein.</p>
 <h3>Wann sollte ich den Versuch beenden?</h3>
 <p>Wenn der vereinbarte Prüfzeitraum keinen relevanten Nutzen zeigt oder Beschwerden zunehmen, wird der Plan neu bewertet.</p>
 <h2>Quellen</h2>
@@ -1541,7 +1543,7 @@ export const wissenAkupunkturBei: Wissen[] = [
 <p>Die Studie betrifft die chronische spontane Form. Für akute Nesselsucht, körperlich ausgelöste Formen wie Druck- oder Kälteurtikaria und für Schwellungen ohne Quaddeln sagt sie nichts aus. Auch eine Wirkung zusätzlich zu Antihistaminika wurde nicht geprüft.</p>
 <h2>Was die Behandlung trägt</h2>
 <p>Die übliche Behandlung erfolgt stufenweise, beginnend mit nicht müde machenden Antihistaminika, deren Dosis ärztlich angepasst werden kann, und weiteren Optionen bei unzureichender Wirkung. Ein Tagebuch zu Schüben und möglichen Verstärkern hilft der Ärztin bei der Steuerung.</p>
-<h2>So bleibt ein Versuch überprüfbar</h2>
+<p>Die Studienlage zu chinesischen Kräutern bei chronischer Nesselsucht ist eine eigene Frage; sie wird unter <a href="/wissen/chinesische-kraeuter-bei-nesselsucht/">Chinesische Kräuter bei chronischer Nesselsucht</a> eingeordnet.</p><h2>So bleibt ein Versuch überprüfbar</h2>
 <p>Erfasse die Krankheitsaktivität vorher und während des Versuchs, etwa mit einem Wochenwert für Quaddeln und Juckreiz. Lege einen Prüfzeitpunkt fest und ändere die Medikamente nicht eigenmächtig.</p>
 <h2>Wann sofort Hilfe holen</h2>
 <p>Schwellung von Zunge, Lippen oder Rachen, Atemnot, Schluckbeschwerden oder Kreislaufprobleme sind ein Notfall. Wähle den Notruf 144.</p>
@@ -2397,6 +2399,10 @@ Nein. Nicht invasive elektrische Hautstimulation und Nadelverfahren sind untersc
 // steuert TerminForm-Einbindung im Wissen-Template und das Serien-Gate.
 export const akupunkturSerieSlugs: string[] = [
   ...wissenAkupunkturBei.map((w) => w.slug),
+  // Artikelpaket 24.10.2026 (eigene Datei, gleiche Serie)
+  ...artikel24SerieSlugs,
+  // Trauma-Cluster 27.10.2026 (eigene Datei, gleiche Serie; ohne Serien-Formular, sensibel-Option)
+  ...traumaSerieSlugs,
   'akupunktur-bei-rueckenschmerzen',
   'akupunktur-bei-nackenschmerzen',
   'akupunktur-bei-heuschnupfen',

@@ -83,6 +83,8 @@ export const ZIELART_FUER = { checkin: 'behandlung', behandlung: 'behandlung', v
 /** Standort-Freigaben für den kostenlosen TCM-Check-in. Schlüssel = Standort-ID (src/data/locations.ts). */
 export const CHECKIN_FREIGABE = {
   'st-gallen': { name: 'St. Gallen', freigabe: 'Inhaber-Auftrag 15.10.2026 (ersetzt FIRST 30)' },
+  'winterthur-marktgasse': { name: 'Winterthur Marktgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'winterthur-muenzgasse': { name: 'Winterthur Münzgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
 };
 
 /** Verifizierte OneDoc-Kalender für «Ersttermin mit Behandlung». Nur bestehende Ziele, keine erfundenen Kalender.

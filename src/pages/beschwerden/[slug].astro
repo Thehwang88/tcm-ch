@@ -207,6 +207,19 @@ const TITLES: Record<string, string> = {
   'notalgia-paraesthetica': "Notalgia paraesthetica: Symptome und Behandlung",
   'brachioradialer-pruritus': "Brachioradialer Pruritus: Symptome und Behandlung",
   'pppd': "Persistierender postural-perzeptiver Schwindel (PPPD): Symptome und Behandlung",
+  'medikamentenuebergebrauchskopfschmerz': "Medikamentenübergebrauchskopfschmerz: Symptome und Behandlung",
+  'hypermobilitaet': "Hypermobilität mit Schmerzen: Abklärung und Behandlung",
+  'schambeinentzuendung': "Schambeinentzündung (Osteitis pubis): Symptome und Behandlung",
+  'sjoegren-syndrom': "Sjögren-Syndrom: Symptome, Abklärung und Behandlung",
+  'essentieller-tremor': "Essentieller Tremor: Symptome, Abklärung und Behandlung",
+  'pots-syndrom': "POTS-Syndrom: Herzrasen beim Aufstehen abklären",
+  'mikroskopische-kolitis': "Mikroskopische Kolitis: kollagene und lymphozytäre Kolitis",
+  'gallensaeurebedingter-durchfall': "Gallensäurebedingter Durchfall: Ursachen, Test und Behandlung",
+  'proctalgia-fugax': "Proctalgia fugax: kurze Schmerzattacken im After",
+  'beckenorgansenkung': "Beckenorgansenkung: Gebärmutter- und Blasensenkung",
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung': "PTBS: Symptome, Abklärung und nächste Schritte",
+  'komplexe-ptbs': "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -393,6 +406,19 @@ const DESCRIPTIONS: Record<string, string> = {
   'notalgia-paraesthetica': "Notalgia paraesthetica: Juckreiz neben dem Schulterblatt aus gereizten Hautnerven. Abgrenzung zu Ekzem und Pilz, Abklärung, Behandlung; Grenzen ergänzender TCM.",
   'brachioradialer-pruritus': "Brachioradialer Pruritus: Juckreiz und Brennen am Unterarm ohne Ausschlag. Sonne und Halswirbelsäule als Faktoren, Abklärung, Therapie; Grenzen ergänzender TCM.",
   'pppd': "PPPD: anhaltender Schwankschwindel über drei Monate nach Bárány-Kriterien. Abklärung in Neurologie und HNO, vestibuläre Reha, KVT und Grenzen ergänzender TCM.",
+  'medikamentenuebergebrauchskopfschmerz': "Kopfweh an den meisten Tagen trotz Tabletten? Wann Akutmittel selbst Kopfschmerzen auslösen, warum Einnahmetage zählen und wie der ärztliche Plan aussieht.",
+  'hypermobilitaet': "Überbewegliche Gelenke mit Schmerzen: Unterschied zwischen beweglich, HSD und hypermobilem EDS, Beighton-Score, Abklärung und muskuläre Stabilisierung.",
+  'schambeinentzuendung': "Schambeinentzündung (Osteitis pubis): Leistenschmerz bei Sportlern, Abgrenzung zu Adduktoren und Leistenbruch, Abklärung, Entlastung und Reha.",
+  'sjoegren-syndrom': "Sjögren-Syndrom: trockene Augen und Mund, Müdigkeit, Gelenkschmerzen. Abklärung mit Antikörpern, Ultraschall und Biopsie; Behandlung und Kontrollen.",
+  'essentieller-tremor': "Essentieller Tremor: Zittern beim Halten und Bewegen, Unterschied zu Parkinson, neurologische Abklärung, Medikamente, Hirnstimulation und Ultraschall.",
+  'pots-syndrom': "POTS: Pulsanstieg im Stehen ohne Blutdruckabfall. Kriterien, Abgrenzung zu Long Covid und ME/CFS, Stehtest, Kipptisch und individuelle Behandlung.",
+  'mikroskopische-kolitis': "Mikroskopische Kolitis (kollagene und lymphozytäre Kolitis): wässriger Durchfall, Diagnose nur mit Gewebeproben, Budesonid und Abgrenzung zum Reizdarm.",
+  'gallensaeurebedingter-durchfall': "Gallensäurebedingter Durchfall: Gallensäureverlust oder Krankheitsbild, Ursachen nach Darm- oder Gallenoperation, SeHCAT- und C4-Test, Gallensäurebinder.",
+  'proctalgia-fugax': "Proctalgia fugax: plötzliche, kurze Schmerzattacken im After mit beschwerdefreien Pausen. Abgrenzung zu Levator-ani-Syndrom, Fissur und Abszess.",
+  'beckenorgansenkung': "Beckenorgansenkung: Gebärmutter-, Blasen- und Darmsenkung, Symptome, gynäkologische Untersuchung, Beckenbodentraining, Pessar, Hormone und Operation.",
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung': "Wiedererleben, Vermeidung und anhaltende Alarmbereitschaft können zu PTBS gehören. So wird die Belastung eingeordnet und fachliche Hilfe gefunden.",
+  'komplexe-ptbs': "Was bedeutet komplexe PTBS? Erfahre, wie sich Traumafolgen auf Gefühle, Selbstbild und Beziehungen auswirken können und wo die Abklärung beginnt.",
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
@@ -420,7 +446,11 @@ const NO_FAQ_SCHEMA = new Set(['schnappfinger', 'steissbeinschmerzen', 'tarsaltu
   // Welle 5 (Draft, 18.10.2026)
   'hallux-rigidus', 'laeuferknie', 'schienbeinkantensyndrom', 'gluteale-tendinopathie', 'tfcc-laesion', 'proximale-hamstring-tendinopathie', 'adduktorentendinopathie', 'peronealsehnen-tendinopathie', 'tibialis-posterior-tendinopathie', 'metatarsalgie', 'spondylolisthese', 'psoriasis-arthritis', 'dyshidrotisches-ekzem', 'kontaktdermatitis', 'akne-inversa', 'lichen-sclerosus', 'vestibulaere-migraene', 'vestibularisneuritis', 'hyperakusis', 'burning-mouth-syndrom',
   // Welle 6 (Draft, 20.10.2026)
-  'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd']);
+  'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd',
+  // Bibliothek 26.10.2026 (Draft)
+  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
 // FAQPage from entry.faqs when present, else from the leaf's own visible accordion.
 // schlafstoerungen has entry.faqs but no accordion in the leaf -> render one (faqBlock).
 let faqBlock = '';
@@ -492,12 +522,23 @@ let prefilledBody = appendSidebarAllLink(
 prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
 // Rebrand-Pilot: byte-identisch duplizierter Standort-Karten-Block -> zentrale
 // Ausgabe (standort-cards.ts); 0/>1 Treffer brechen den Build ab (kein stiller Fallback).
-prefilledBody = replaceStandortCards(prefilledBody, slug!);
+// Bibliothek 26.10.2026: reine Orientierungsseiten ohne dokumentierte krankheitsspezifische Kompetenz (Bericht
+// seo/bibliothek-2026-10-26.md, Abschnitt 2). Opt-in nur für diese Slugs: das Leaf enthält keinen
+// Standort-Karten-Block (also keine Ersetzung) und es gibt keinen Selbsttest-Teaser.
+// Alle anderen Slugs: Verhalten unverändert.
+// Trauma-Cluster 27.10.2026: Orientierungsseiten zu sensiblen Themen. Das Leaf enthält weder Kontaktformular
+// noch WhatsApp-Links; zusätzlich neutraler WhatsApp-Text (Marker im Leaf), keine Referrer-Weitergabe.
+const SENSIBEL_SLUGS = new Set(['posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
+const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor', ...SENSIBEL_SLUGS]);
+if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledBody, slug!);
 // WhatsApp-Prefill (Konversions-Sprint): Die Legacy-Leaves verlinken wa.me OHNE
 // text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
 // Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
 // Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
-const waPrefill = encodeURIComponent(`Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
+// Orientierungsseiten und Sjögren: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
+const waPrefill = encodeURIComponent(SENSIBEL_SLUGS.has(slug!) ? 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.' : INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
+  ? `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${hName}›.`
+  : `Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
 prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);
 // CARE-Bridge VOR der bestehenden Inline-Kontakt-Sektion; Sektion bekommt den
 // #kontakt-Anker (Standorte-Pattern), damit der Primaer-CTA sauber scrollt.
@@ -520,7 +561,7 @@ const ouchBlock = ouchRow
   ? `<section style="background:#fff;padding:0 0 44px"><div class="wrap" style="max-width:820px">${ouchMagRow(ouchRow.href, ouchRow.label)}</div></section>`
   : '';
 // Soft entry into the interactive self-test (links to /selbsttest/ from every complaint page).
-const selbsttestBlock = `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
+const selbsttestBlock = INFO_ONLY_SLUGS.has(slug!) ? '' : `<section class="section" style="background:#fff;padding:40px 0"><div class="wrap reveal"><a href="/selbsttest/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px;text-decoration:none;max-width:820px;margin:0 auto"><div><div style="font-family:var(--font-sans);font-weight:800;font-size:19px;color:var(--black);line-height:1.25;margin-bottom:4px">Unsicher, ob die TCM bei dir passt?</div><div style="font-size:14.5px;color:var(--mid);line-height:1.5">Mach den Selbsttest: 5 Fragen in unter 1 Minute, unverbindlich.</div></div><span style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-family:var(--font-sans);font-weight:700;font-size:14.5px;padding:11px 16px;border-radius:12px">Selbsttest starten<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></div></section>`;
 // Softriver-Rebrand: Opt-in pro Leaf. .symptom-scope remappt die Legacy-Aliasse
 // (Scope-Block in public/home.css); der neutrale Wrapper-div umfasst auch die
 // injizierten Bloecke nach dem #page-symptom-Div. Rollout = Slugs ergaenzen.
@@ -545,8 +586,12 @@ const REBRANDED_SLUGS = new Set(['migraene',
   // Welle 5 (Draft, 18.10.2026)
   'hallux-rigidus', 'laeuferknie', 'schienbeinkantensyndrom', 'gluteale-tendinopathie', 'tfcc-laesion', 'proximale-hamstring-tendinopathie', 'adduktorentendinopathie', 'peronealsehnen-tendinopathie', 'tibialis-posterior-tendinopathie', 'metatarsalgie', 'spondylolisthese', 'psoriasis-arthritis', 'dyshidrotisches-ekzem', 'kontaktdermatitis', 'akne-inversa', 'lichen-sclerosus', 'vestibulaere-migraene', 'vestibularisneuritis', 'hyperakusis', 'burning-mouth-syndrom',
   // Welle 6 (Draft, 20.10.2026)
-  'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd']);
+  'okzipitalneuralgie', 'zervikogener-kopfschmerz', 'zervikale-radikulopathie', 'fasettensyndrom', 'hueftimpingement', 'pes-anserinus-bursitis', 'haglundferse', 'sesamoiditis', 'radialtunnelsyndrom', 'loge-de-guyon-syndrom', 'plica-syndrom-knie', 'quadrizepssehnen-tendinopathie', 'schnappende-huefte', 'rektusdiastase', 'symphysenschmerzen-schwangerschaft', 'nummulaeres-ekzem', 'lichen-planus', 'notalgia-paraesthetica', 'brachioradialer-pruritus', 'pppd',
+  // Bibliothek 26.10.2026 (Draft)
+  'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
+  // Trauma-Cluster 27.10.2026 (Draft)
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} />
+<SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} sensibel={SENSIBEL_SLUGS.has(slug!)} />
