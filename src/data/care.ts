@@ -9,8 +9,10 @@ export type CareContentType =
   | 'wissen'
   | 'tcm_verstehen';
 
-export const careClickJs = (contentType: CareContentType, pos: 'article' | 'sticky') =>
-  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'${contentType}_care',content_type:'${contentType}',cta_position:'${pos}',source_path:location.pathname})`;
+// sourcePath (optional): fester Wert statt location.pathname, damit Seiten zu sensiblen Themen
+// keinen themenbezogenen Pfad ins Tracking geben (Trauma-Cluster 27.10.2026). Default unverändert.
+export const careClickJs = (contentType: CareContentType, pos: 'article' | 'sticky', sourcePath?: string) =>
+  `window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'hilfeerhalten_click',quelle:'${contentType}_care',content_type:'${contentType}',cta_position:'${pos}',source_path:${sourcePath ? `'${sourcePath}'` : 'location.pathname'}})`;
 
 // Menschliches Gesicht von CARE (Sprint "Frag Yuna"). EINE Quelle fuer Name,
 // Portrait und Default-Copy; CARE bleibt die Marke, Yuna ist der Kontakt.

@@ -7,6 +7,7 @@ import { site, enTwinPath } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
+import { SENSIBEL_REFERRER, SENSIBEL_CSP } from '../data/sensibel-head';
 
 interface Props {
   title: string;
@@ -29,9 +30,12 @@ interface Props {
    * URL, die sich selbst gar nicht als kanonisch deklariert, und Google verwirft ihn.
    */
   canonicalTo?: string;
+  /** true = Seite zu einem sensiblen Thema (src/data/sensibel-head.ts): kein GTM, Referrer- und Script-Policy,
+   *  data-wa-neutral auf <main> (WhatsApp-Links mit neutralem Text). Default false: Verhalten unverändert. */
+  sensibel?: boolean;
 }
 
-const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, stickyCta = true, canonicalTo, ogImage = site.ogImage } = Astro.props;
+const { title, description = '', path, schema, noindex = false, robots = 'noindex, nofollow', turnstile = false, stickyCta = true, canonicalTo, ogImage = site.ogImage, sensibel = false } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -45,7 +49,9 @@ const year = 2026;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <HeadAnalytics />
+    {sensibel && <meta name="referrer" content={SENSIBEL_REFERRER} />}
+    {sensibel && <meta http-equiv="Content-Security-Policy" content={SENSIBEL_CSP} />}
+    <HeadAnalytics marketing={!sensibel} />
     <!-- Shared design tokens - single source of truth (also loaded by the DE SPA). -->
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/ui.css" />
@@ -102,7 +108,7 @@ const year = 2026;
   <body>
     <DeHeader />
 
-    <main data-no-sticky-cta={stickyCta ? undefined : ''}>
+    <main data-no-sticky-cta={stickyCta ? undefined : ''} data-wa-neutral={sensibel ? '' : undefined}>
       <slot />
     </main>
 

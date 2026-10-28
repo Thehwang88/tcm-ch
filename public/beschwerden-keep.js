@@ -102,5 +102,7 @@ globalThis.BESCHWERDEN_KEEP = [
   "schnappende-huefte", "rektusdiastase", "symphysenschmerzen-schwangerschaft", "nummulaeres-ekzem",
   "lichen-planus", "notalgia-paraesthetica", "brachioradialer-pruritus", "pppd",
   // Bibliothek 26.10.2026 (10 Diagnose-Owner, Draft):
-  "medikamentenuebergebrauchskopfschmerz", "hypermobilitaet", "schambeinentzuendung", "sjoegren-syndrom", "essentieller-tremor", "pots-syndrom", "mikroskopische-kolitis", "gallensaeurebedingter-durchfall", "proctalgia-fugax", "beckenorgansenkung"
+  "medikamentenuebergebrauchskopfschmerz", "hypermobilitaet", "schambeinentzuendung", "sjoegren-syndrom", "essentieller-tremor", "pots-syndrom", "mikroskopische-kolitis", "gallensaeurebedingter-durchfall", "proctalgia-fugax", "beckenorgansenkung",
+  // Trauma-Cluster 27.10.2026 (2 Orientierungsseiten, Draft):
+  "posttraumatische-belastungsstoerung", "komplexe-ptbs"
 ];

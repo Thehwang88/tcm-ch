@@ -5,6 +5,7 @@
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
+import { SENSIBEL_REFERRER, SENSIBEL_CSP } from '../data/sensibel-head';
 import { site, enTwinPath } from '../data/site';
 import { upgradeLegacyForms, clinicById } from '../lib/kontakt-form';
 
@@ -26,8 +27,11 @@ interface Props {
   canonicalTo?: string;
   /** Optionaler zweiter Body-Teil: der Slot «body-insert» rendert zwischen body und bodyAfter. */
   bodyAfter?: string;
+  /** true = Seite zu einem sensiblen Thema (siehe LayoutDe): kein GTM, Referrer- und Script-Policy, kein
+   *  Turnstile (diese Seiten haben kein Formular). Default false: Verhalten unverändert. */
+  sensibel?: boolean;
 }
-const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo, bodyAfter } = Astro.props;
+const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo, bodyAfter, sensibel = false } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -51,7 +55,9 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <HeadAnalytics />
+    {sensibel && <meta name="referrer" content={SENSIBEL_REFERRER} />}
+    {sensibel && <meta http-equiv="Content-Security-Policy" content={SENSIBEL_CSP} />}
+    <HeadAnalytics marketing={!sensibel} />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/ui.css" />
     <link rel="stylesheet" href="/home.css" />
@@ -96,8 +102,8 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Nunito:ital,wght@1,900&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
+    {!sensibel && <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin />}
+    {!sensibel && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>}
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
   <body>
