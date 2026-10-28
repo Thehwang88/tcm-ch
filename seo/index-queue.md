@@ -30,6 +30,14 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
+- https://tcm.ch/wissen/psychisches-trauma-behandlung/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/beschwerden/posttraumatische-belastungsstoerung/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/beschwerden/komplexe-ptbs/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/wissen/trauma-kindheit-erwachsene/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/wissen/schlafprobleme-nach-trauma/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/wissen/akupunktur-bei-ptbs/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
+- https://tcm.ch/wissen/akupunktur-nach-trauma/ — 28.10.2026 (Trauma-Cluster 27.10.2026, PR #96)
 - https://tcm.ch/beschwerden/medikamentenuebergebrauchskopfschmerz/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
 - https://tcm.ch/beschwerden/hypermobilitaet/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
 - https://tcm.ch/beschwerden/schambeinentzuendung/ — 26.10.2026 (Bibliothek 26.10.2026, PR #94)
@@ -533,14 +541,6 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Geplant (noch nicht live)
 
-- https://tcm.ch/wissen/psychisches-trauma-behandlung/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/posttraumatische-belastungsstoerung/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/komplexe-ptbs/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/trauma-kindheit-erwachsene/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/hilfe-nach-gewalt-sexuellem-missbrauch/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/schlafprobleme-nach-trauma/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-bei-ptbs/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/wissen/akupunktur-nach-trauma/ — vorbereitet 27.10.2026 (Trauma-Cluster 27.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 
