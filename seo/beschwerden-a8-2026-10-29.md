@@ -2,10 +2,12 @@
 
 Draft-PR, nicht Ready, kein Merge, kein Deployment, keine GSC-Einreichung. Basis: main `caca1e74` (am 29.10.2026 geprüft, seit dem Audit unverändert). Grundlage: «TCM.ch SEO-Audit – 29.10.2026», A-Kandidaten 01 bis 08. Keine ärztliche Freigabe, kein Reviewer, kein Publikationsdatum behauptet.
 
+**Review-Runde 29.10.2026** (Folgecommits `c40c5029`, `1b6fe7a9`, dieser Bericht): WhatsApp-Prefill generisch (Abschnitt 8a), Erratum PMID 35774887 gelesen (Abschnitt 3), Evidenzformulierungen nach Fundlage getrennt (Abschnitt 4), Orphan-Befund erklärt (Abschnitt 8). Weiterhin Draft, Integrations-Patch nicht angewendet.
+
 ## 0. Ergebnis in Kürze
 
 - **Aufgenommen:** alle 8 A-Kandidaten als `/beschwerden/`-Seiten. Zurückgestellt wurde keiner; Ersatzthemen gibt es nicht.
-- **Darstellung:** alle 8 als reine Orientierung, gleich wie die Orientierungsseiten der Bibliothek 26.10.2026 (`INFO_ONLY_SLUGS`). Kein Behandlungsangebot, keine Standort-Karten, kein Badge «Behandlung verfügbar», neutraler WhatsApp-Text, kein FAQPage-Schema, Sticky-Leiste aus.
+- **Darstellung:** alle 8 als reine Orientierung, gleich wie die Orientierungsseiten der Bibliothek 26.10.2026 (`INFO_ONLY_SLUGS`). Kein Behandlungsangebot, keine Standort-Karten, kein Badge «Behandlung verfügbar», generischer WhatsApp-Text «Guten Tag, ich habe eine Frage zu Ihrem Angebot.» (Abschnitt 8a), kein FAQPage-Schema, Sticky-Leiste aus.
   - Grund: Für keine der acht Diagnosen ist eine krankheitsspezifische Kompetenz in den kanonischen Daten dokumentiert.
   - Akupunktur (alle Standorte) und Physiotherapie (8 Standorte) sind zwar verfügbar, begründen aber kein Angebot zur jeweiligen Diagnose.
 - **Bestand eingefroren:** Kein bestehender Artikel ist verändert, weder Text noch Title, Meta, H1, FAQ, Datum, Keywords oder CTAs.
@@ -13,7 +15,7 @@ Draft-PR, nicht Ready, kein Merge, kein Deployment, keine GSC-Einreichung. Basis
 - **Registrierungen** (Hub A–Z, Körperregionen, Suche, Map, Guards, Queue) stehen in einem eigenen Commit, getrennt von den Seiten (Abschnitt 7).
 - **Wichtig:** Der Draft-Stand ist **nicht veröffentlichungsfähig**.
   - Ohne Patch haben die neuen Seiten keine Kontextlinks aus Bestandsartikeln.
-  - Zwei Seiten (chronische postoperative Schmerzen, Lichen simplex) sind im Health-Audit als verwaist gelistet, weil sie keiner Körperregion zugeordnet sind.
+  - Zwei Seiten (chronische postoperative Schmerzen, Lichen simplex) erscheinen im Health-Audit unter `orphans`: Sie haben im Draft keinen einzigen gezählten Content-Link (keine Körperregion, Hub-Links zählen technisch nicht). `orphans` ist eine Kennzahl ohne Gate-Wirkung; deshalb meldet das Gate trotzdem 0 Fehler (Abschnitt 8).
   - Im separaten Test-Worktree mit angewendetem Patch sind alle acht Seiten mit je zwei Kontext-Hosts verlinkt und nicht verwaist (Abschnitt 8).
 - **Release-Zustand:** Beschwerden-Leaves tragen kein Datum und haben keine Publikationskonstante. Queue «Geplant», kein GSC-Submit.
 
@@ -52,7 +54,7 @@ Draft-PR, nicht Ready, kein Merge, kein Deployment, keine GSC-Einreichung. Basis
 
 ## 3. Quellenmatrix
 
-Zugang: **V** = Volltext gelesen, **T** = Teile gelesen, **A** = nur Abstract. PubMed-Datensätze aller zitierten PMIDs am 29.10.2026 per E-utilities geprüft (CommentsCorrections): keine Retraction. PMID 34271271 hat einen Kommentar (CommentIn). PMID 32577471 (Moody 2020) hat ein Erratum (PMID 35774887, 2022); dessen Inhalt ist im Abstract nicht beschrieben und wurde nicht geprüft. Verwendet wird daraus nur die Kernaussage der Fallberichte, nicht deren Einzelheiten.
+Zugang: **V** = Volltext gelesen, **T** = Teile gelesen, **A** = nur Abstract. PubMed-Datensätze aller zitierten PMIDs am 29.10.2026 per E-utilities geprüft (CommentsCorrections): keine Retraction. PMID 34271271 hat einen Kommentar (CommentIn). PMID 32577471 (Moody 2020) hat ein Erratum (PMID 35774887, Arthroplast Today 2022, doi 10.1016/j.artd.2022.01.016, PMC9237239). **Erratum am 29.10.2026 im PMC-Volltext gelesen:** Der Verlag hatte wegen eines technischen Fehlers die Erklärung zur Patienteneinwilligung nicht veröffentlicht; die Autoren bestätigen eine schriftliche Einwilligung unter IRB-Genehmigung (File # 09-19-24EX). Befunde, Fallangaben, Zahlen und Schlussfolgerungen werden nicht geändert. **Betroffene Aussagen:** nur Seite 05, ein Satz im TCM-Abschnitt plus Quellenliste und diese Matrix. Beim Gegenlesen fiel unabhängig vom Erratum eine Ungenauigkeit auf: Das Abstract beschreibt nach Dry Needling **einen** Fall (der zweite folgte auf Nervenblockaden). Der Satz lautete «einzelne Infektionen», jetzt «ist eine Infektion einer Knieprothese als Fallbericht beschrieben» (Commit `1b6fe7a9`).
 
 | Seite | Quelle | Zugang | Verwendete Aussagen |
 |---|---|---|---|
@@ -76,7 +78,7 @@ Zugang: **V** = Volltext gelesen, **T** = Teile gelesen, **A** = nur Abstract. P
 | 05 | Rosenberger und Pogatzki-Zahn 2022 (PMC9039436) | V | ICD-11-Definition, Ausschlüsse, neuropathische Merkmale, Raten je Eingriff, Risikofaktoren, Vorbeugung (Regionalanästhesie, Opioide), multidisziplinär |
 | 05 | Wylde et al. 2017, SR (PMID 28681962) | A | 66 RCTs, untersuchte Verfahren inkl. Akupunktur, keine ausreichende Evidenz |
 | 05 | Lu et al. 2021, RCT (PMID 34271271) | A | 576 Frauen, TEAS vor Mastektomie zur Vorbeugung (perioperativ, nicht Behandlung) |
-| 05 | Moody et al. 2020 (PMID 32577471) | A | Infektionen einer Knieprothese nach Dry Needling (Fallberichte) |
+| 05 | Moody et al. 2020 (PMID 32577471); Erratum PMID 35774887 | A; Erratum V | eine Infektion einer Knieprothese nach Dry Needling (Fallbericht); Erratum nur Einwilligungserklärung |
 | 06 | Talimi-Schnabel, Frauchiger Heuer, Fink (USZ), Ars Medici 2018 | V | bis 70 % der Frauen, drei Formen mit Anteilen, Symptome, Ursachen, Anamnese, Kalender, Bildgebung, 1,2 % Karzinom ohne Tastbefund, BH, Kühlen, NSAR, Ernährung unklar, Mönchspfeffer mindestens 3 Monate, Hormone, Danazol/Tamoxifen nur schwer, OP meiden, Remission 20–30 % |
 | 06 | NHS: Breast pain | V | Zyklusverlauf, Auslöser, Ibuprofen/Paracetamol, Gel, BH, Vitamin E/Nachtkerze kaum belegt, Warnzeichen |
 | 06 | Hafiz et al. 2018, SR (PMID 31039960) | A | Gels lindern bei 70–92 %, Akupunktur ohne gute Belege |
@@ -104,6 +106,36 @@ Zugang: **V** = Volltext gelesen, **T** = Teile gelesen, **A** = nur Abstract. P
 ## 4. TCM-Evidenzsuche (PubMed, 29.10.2026)
 
 Je Kandidat dieselbe Methodenliste: `(acupuncture OR electroacupuncture OR "dry needling" OR moxibustion OR cupping OR "Chinese herbal" OR "traditional Chinese medicine")[tiab]`, kombiniert mit den Diagnosebegriffen. Treffer: 01: 0 · 02: 18 · 03: 11 · 04: 0 · 05: 22 · 06: 36 · 07: 6 · 08: 19. Ergänzend gezielte Suchen zu den Leitlinien und Übersichten (Abschnitt 3).
+
+**Suchdokumentation (Review 29.10.2026):**
+- **Datum:** 29.10.2026. **Datenbank:** nur PubMed (NCBI E-utilities, `esearch` + `esummary`). Nicht durchsucht: Cochrane Library, Embase, CNKI/chinesische Datenbanken, Studienregister, graue Literatur.
+- **Feld:** Titel/Abstract (`[tiab]`), keine MeSH-Explosion, keine Sprach- oder Datumsfilter.
+- **Zugriffsebene:** Trefferlisten (Titel, Publikationstyp, Jahr) aller Treffer gesichtet. Gelesen wurden nur die im Text genannten Arbeiten, Zugang je Quelle in Abschnitt 3 (meist Abstract). Kein Volltext-Screening aller Treffer.
+- **Suchbegriffe je Seite** (jeweils `AND` Methodenliste oben):
+
+| Nr | Diagnosebegriffe | Treffer |
+|---|---|---|
+| 01 | `acromioclavicular[tiab] AND (osteoarthritis[tiab] OR arthrosis[tiab] OR arthropathy[tiab])` | 0 |
+| 02 | `glenohumeral[tiab] OR omarthrosis[tiab] OR "shoulder osteoarthritis"[tiab] OR "shoulder arthritis"[tiab]` | 18 |
+| 03 | `"ankle osteoarthritis"[tiab] OR "ankle arthritis"[tiab] OR "ankle arthrosis"[tiab] OR talocrural[tiab]` | 11 |
+| 04 | `"intersection syndrome"[tiab]` | 0 |
+| 05 | `"chronic postsurgical pain" OR "chronic post-surgical pain" OR "persistent postsurgical pain" OR "chronic postoperative pain" OR "persistent postoperative pain"` (je `[tiab]`) | 22 |
+| 06 | `mastalgia[tiab] OR mastodynia[tiab] OR "breast pain"[tiab]` | 36 |
+| 07 | `"secondary amenorrhea" OR "secondary amenorrhoea" OR "hypothalamic amenorrhea" OR "hypothalamic amenorrhoea"` (je `[tiab]`) | 6 |
+| 08 | `"lichen simplex"[tiab] OR neurodermatitis[tiab]` | 19 |
+
+**Einordnung der Fundlage** (die Texte unterscheiden diese vier Fälle; «Evidenz für fehlenden Nutzen» trifft auf keine Seite zu):
+
+| Nr | Kategorie | Formulierung im Text (nach Review) |
+|---|---|---|
+| 01, 04 | keine passende Studie in der dokumentierten Suche gefunden | «haben wir keine Studie zu dieser Diagnose gefunden. Ob Akupunktur … hilft, können wir deshalb nicht beurteilen.» |
+| 02, 07 | keine kontrollierte Ergebnisstudie gefunden (nur Fallberichte, Laborstudien, Tierversuche, andere Diagnosen) | «… keine kontrollierte Studie … gefunden … Ob … hilft, lässt sich damit nicht beurteilen.» |
+| 03 | vorhandene Studie mit unsicherem Ergebnis (1 kleine RCT ohne Scheinkontrolle) | unverändert: «Eine einzelne kleine Studie reicht nicht für einen Wirksamkeitsnachweis.» |
+| 05 | vorhandene Studien mit unsicherem Ergebnis (SR 2017: Evidenz unzureichend, um zu urteilen) | «Ob Akupunktur bei bereits bestehenden … hilft, ist damit offen.» |
+| 06 | vorhandene Studien mit unsicherem Ergebnis (SR 2018: möglicherweise nützlich, ohne gute Belege; Pilotstudie ohne Kontrolle) | «Ob Akupunktur bei Mastodynie hilft, ist damit offen.» |
+| 08 | vorhandene Studien mit unsicherem Ergebnis (3 SR, niedrige Qualität, ohne Scheinkontrolle) | unverändert: «höchstens Hinweise; ein Wirksamkeitsnachweis ist das nicht.» |
+
+Korrigiert wurden nur die sechs Sätze «Ein Nutzen bei … ist damit nicht belegt», die aus einer begrenzten Suche eine pauschale Aussage machten, sowie die Suchbegriffe in 06, 07 und 08 (Dry Needling war Teil der Suche, stand aber nicht im Text). Map- und Do-not-create-Notizen entsprechend (z. B. «In der dokumentierten PubMed-Suche (29.10.2026) keine passende Akupunktur-/TCM-Studie gefunden; kein Beleg für fehlenden Nutzen»).
 
 Grundsatz: Evidenz anderer Erkrankungen wird nicht übertragen. Das gilt für Knie- oder Hüftarthrose bei 01 bis 03, PCOS bei 07, atopische Dermatitis bei 08, akute postoperative Schmerzen bei 05 und Mastopathie bei 06. Wo eine Studie die Zeit der Operation betrifft (05) oder einen anderen Fachbegriff verwendet (08: englisch «neurodermatitis» = Lichen simplex), steht das im Text.
 
@@ -160,7 +192,7 @@ Keiner der 14 Hosts ist EN-fingerprinted (`src/data/i18n/fingerprints.json`). Al
 
 ## 8. Prüfungen
 
-Stand: Branch auf Basis `caca1e74`, frischer Branch-Build und frischer main-Build (separater Worktree) am 29.10.2026.
+Stand nach Review-Runde: Branch-HEAD `1b6fe7a9` auf Basis `caca1e74`; frischer Branch-Build, frischer main-Build und frischer Build des bisherigen PR-Stands `653a1bbe` (je separater Worktree) am 29.10.2026.
 
 ### Draft-Stand (dieser PR)
 
@@ -169,7 +201,7 @@ Stand: Branch auf Basis `caca1e74`, frischer Branch-Build und frischer main-Buil
   - mindestens 2 sichtbare Quellen, 3 FAQ
   - kein FAQPage-, Datums- oder Reviewer-Schema, BreadcrumbList vorhanden
   - keine energetische Sprache, kein ß, keine Gedankenstriche im redaktionellen Text, Link-Ziele und Anker vorhanden
-  - Orientierungsdarstellung: kein Angebotsbaustein, Hero-Schritt Abklärung, allgemeiner Kontakt, Sticky aus, Formular erhalten, WhatsApp-Text «allgemeine Frage zum Artikel ‹H1›» mit unveränderter Nummer
+  - Orientierungsdarstellung: kein Angebotsbaustein, Hero-Schritt Abklärung, allgemeiner Kontakt, Sticky aus, Formular erhalten, WhatsApp-Text exakt «Guten Tag, ich habe eine Frage zu Ihrem Angebot.» ohne H1, Slug oder URL, Marker `data-wa-neutral` vorhanden, Nummer unverändert (Gegenprobe: Marker entfernt bzw. Text mit Diagnose → Fehler gemeldet)
   - inhaltliche Grenzen des Auftrags; Lichen-simplex-Synonymsperre; kanonische Balgrist-URL
   - Hub, Keep-Liste, Suche, Map, Guards, Queue, Sitemap
   - Bestandsschutz: 0 Kontext-Hosts im Bestand, alle 14 Host-Dateien identisch mit `origin/main`, Patch per `git apply --check` anwendbar und mit mindestens 2 Host-Links je Seite
@@ -181,13 +213,19 @@ Stand: Branch auf Basis `caca1e74`, frischer Branch-Build und frischer main-Buil
   - check-i18n mit Build-Sitemap: outdated 0, failures 0
 - **Verschachtelung:** alle 8 neuen Leaves ohne Fehlverschachtelung; der Kontaktbereich liegt in `#page-symptom`.
 - **Mobile Darstellung:** 8 Seiten plus Beschwerden-Hub und 3 Körperregionen bei 320/390/1440 px: 36 Aufrufe, 0 Überläufe, je eine H1, 0 JS-Fehler. Sichtprüfung: Mastodynie 320, AC-Gelenkarthrose 1440, Amenorrhoe 390.
-- **Health-Audit-Hinweis (Draft):** `orphans` listet `/beschwerden/chronische-postoperative-schmerzen/` und `/beschwerden/lichen-simplex-chronicus/`. Das ist erwartet: ohne Patch nur Hub- und Suchlinks. Das Gate meldet 0 Fehler, aber dieser Stand darf so nicht veröffentlicht werden.
+- **Health-Audit, Orphan-Befund (Draft) – warum trotzdem 0 Fehler:**
+  - `orphans` ist eine **separate Kennzahl**, kein Gate. `scripts/health-audit.mjs` zählt je indexierbarer Seite die eingehenden `href`-Links aus dem Inhalt anderer Seiten (Header, Footer, `<nav>` und Mobile-Drawer `#siteDrawer` vorher entfernt). Seiten mit 0 landen in `orphans` (Konsole und `seo/health-library-audit.json`). Daran hängt kein `exitCode`.
+  - `exitCode = 1` setzen nur die Gates: Beschwerden-Hub-Konsistenz (226 Zeilen), Akupunktur-bei-Serie inkl. deren Inbound-Pflicht (59 Slugs) und Ownership (Pins/Retired). Die acht neuen Seiten fallen unter keine Inbound-Pflicht. «0 Fehler» heisst also: diese Gates bestanden. Es heisst nicht: keine verwaisten Seiten.
+  - Warum gerade diese zwei: Die Hub-Zeilen A–Z verlinken per `onclick="nav('symptom','…')"`, nicht per `href`, und zählen deshalb nicht; der Bibliothek-Suchindex zählt ebenfalls nicht. Gezählte Draft-Inbound-Links: AC-Gelenkarthrose 2 (Körperregion Schulter-Arm-Hand, Omarthrose), Omarthrose 2 (Region, AC-Gelenkarthrose), Sprunggelenksarthrose 1 (Region Hüfte-Bein-Fuss), Intersektionssyndrom 1 (Region Schulter-Arm-Hand), Mastodynie 1 und Amenorrhoe 1 (Region Zyklus und Hormone), **CPSP 0, Lichen simplex 0** (keine passende Region, es gibt keine Region «Haut»).
+  - Vergleich: main `caca1e74` hat `orphans: []`. Der Befund entsteht also durch diesen Draft und verschwindet im integrierten Stand (je 2 Kontext-Hosts, `orphans: []`, unten).
+  - Folge: Dieser Draft-Stand ist **nicht veröffentlichungsfähig**. Keine Assertion entfernt, kein Gate geändert.
 
 ### Integrierter Teststand (separater Worktree `/home/user/tcm-a8-int`, Patch angewendet, nicht committet)
 
+- **Stand:** nach der Review-Runde neu aufgesetzt auf `1b6fe7a9` plus Patch (14 Host-Dateien).
 - **Build:** grün.
 - **`check-beschwerden-a8-2026-10-29.mjs --integriert`:** OK. Jede der 8 Seiten hat genau die 2 geplanten Kontext-Hosts aus der Basis; Ankersätze wie in Abschnitt 6.
-- **Health-Audit:** 0 Fehler, `orphans: []`.
+- **Health-Audit:** 0 Fehler, `orphans: []`; CPSP und Lichen simplex je 2 gezählte Inbound-Links.
 
 ### Build-Diff gegen frischen main-Build (explizite Allowlist)
 
@@ -200,7 +238,18 @@ Stand: Branch auf Basis `caca1e74`, frischer Branch-Build und frischer main-Buil
   - `sitemap.xml`: 8 Einfügungen
   - `beschwerden-keep.js`: Listenende um Kommentar und 8 Slugs erweitert
 - **Unerwartet:** 0. Kein bestehender Artikel geändert; EN, Formulare, Tracking, Standortlogik und Worker-Bundle unverändert.
+- **Gegen bisherigen PR-Stand `653a1bbe` (frischer Build):** neu 0, entfernt 0, geändert genau die 8 neuen Seiten. Inhalt der Änderung: WhatsApp-`text` (2 Links je Seite), Marker `data-wa-neutral`, die korrigierten Evidenzsätze und Suchbegriffe, der Moody-Satz. Hub, Regionen, Suche, Sitemap, Bestandsartikel, EN, Formulare und Standortlogik unverändert.
 - **Quell-Diff gegen main:** Die einzigen entfernten Zeilen sind Listenabschlüsse, die um die neuen Slugs verlängert wurden (`[slug].astro`, Keep-Liste).
+
+### 8a. WhatsApp-Verhalten (Browser, Playwright, ohne Versand)
+
+- **Umsetzung, seitenbezogen:** `WA_GENERIC_SLUGS` in `src/pages/beschwerden/[slug].astro` setzt den Kontakt-Prefill dieser acht Slugs auf den generischen Text. Jede Leaf trägt `<div data-wa-neutral hidden>`; dann setzt der vorhandene Mechanismus in `WhatsAppConcierge.astro` (aus dem Trauma-Cluster) nach DOMContentLoaded den Text auf alle `a[href*="wa.me/"]` der Seite. Keine globale Änderung; andere Seiten unverändert.
+- **Geprüft:** 8 Seiten bei 390 und 1440 px nach JS, externe Anfragen blockiert, neue Tabs sofort geschlossen, Navigation per `preventDefault` unterbunden.
+  - Je Seite 6 erreichbare WhatsApp-Links: Drawer, Kontaktabschnitt, Formular-Alternative, FAB/Concierge-Launcher, Concierge-CTA, Sticky. **Alle 6 tragen exakt** `Guten Tag, ich habe eine Frage zu Ihrem Angebot.`; kein H1, keine Diagnose, keine URL. Nummer `41775236122` unverändert.
+  - Vor JS (Server-HTML): 2 Links mit generischem Text, 4 mit dem globalen Standardtext (ohne Diagnose). Nach JS: alle 6 generisch.
+  - Klick je Link: genau ein `wa_click` mit unveränderter `quelle` (drawer, form, form, fab, fab, sticky) und `prefilled:false`. Eventnamen und Tracking-Code unverändert.
+  - Referenzseiten unverändert: Schambeinentzündung behält «allgemeine Frage zum Artikel ‹H1›» im Kontaktabschnitt, Rückenschmerzen ihren Angebotstext, PTBS (Trauma) den generischen Text.
+- **Grenze:** Das ist eine **Prefill-Korrektur**, kein Datenschutz-/Analytics-Schutz wie im Trauma-Cluster. Seiten-URL, Titel und Pfad gelangen weiter wie auf allen Seiten in Analytics/GTM (nach Consent). Das Kontaktformular übernimmt wie überall «Mein Anliegen betrifft: <Diagnose>.» in das Textfeld; das ist kein WhatsApp-Prefill und wurde nicht geändert.
 
 ### Nicht ausgeführt
 
@@ -216,12 +265,19 @@ Stand: Branch auf Basis `caca1e74`, frischer Branch-Build und frischer main-Buil
 ## 9. Offene Punkte und Grenzen
 
 - **Veröffentlichung nur integriert:** Die Seiten dürfen erst live gehen, wenn der Integrations-Patch freigegeben und angewendet ist. Sonst sind sie verwaist bzw. ohne Kontextlinks aus Bestandsartikeln.
-- **WhatsApp-Text:** Wie bei den Bibliothek-Orientierungsseiten enthält der Kontakt-WhatsApp-Text den H1, etwa «… zum Artikel ‹Sekundäre Amenorrhoe: wenn die Periode ausbleibt›». Für gynäkologische Themen ist zu entscheiden, ob stattdessen der neutrale Text der Trauma-Seiten gelten soll. Nicht geändert, weil das Bestandsmuster gilt.
+- **WhatsApp:** generischer Text umgesetzt (8a). Analytics/Seiten-URL und Formular-Prefill bleiben wie auf allen Seiten; ein weitergehender Schutz wäre ein eigener Auftrag.
+- **Bibliothek-Kohortenprüfung ohne `--base-sitemap`:** 6 Fehler (Kontext-Hosts zu Schambeinentzündung, Sjögren, Proctalgia fugax, Beckenorgansenkung, TRAK, Calcium), auf main identisch; Ursache ist die veraltete eingecheckte Sitemap. Mit main-Build-Sitemap: OK.
 - **Datenlage Intersektionssyndrom:** nur narrative Übersicht und Fallserien; das steht im Text.
 - **Studien:** Studienquellen meist auf Abstract-Ebene (Zugang in der Matrix). Keine ärztliche Prüfung.
 - **Nachfrage:** Suchvolumen, KD und Buchungsabsicht sind nicht gemessen.
 
 ## 10. Release-Schritte (nur nach ausdrücklichem GO)
+
+**Offene Voraussetzungen (Stand Review-Runde):**
+- Ausdrückliche Freigabe, die 14 eingefrorenen Bestandsseiten per Integrations-Patch zu ändern. Ohne sie bleiben CPSP und Lichen simplex verwaist; das Release ist dann ausgeschlossen.
+- Main-Stand prüfen: Bewegt sich main seit `caca1e74`, Patch mit `git apply --check` neu prüfen und Build-Diff wiederholen.
+- Inhaltliche Freigabe der acht Texte (keine ärztliche Prüfung erfolgt; Studien meist auf Abstract-Ebene).
+- Publikationsentscheid: Datum, Queue «Offen», Map-Notizen «veröffentlicht».
 
 1. Integrations-Patch freigeben und anwenden (`git apply seo/beschwerden-a8-2026-10-29-integration.patch`). Die 14 Bestandsseiten ändern sich dann um je einen Absatz bzw. Link.
 2. Build und `check-beschwerden-a8-2026-10-29.mjs --integriert --base-sitemap=<main-Build>`; Health-Audit ohne verwaiste Seiten.
