@@ -5,20 +5,20 @@
 // Mastodynie vs. Brustkorbschmerz, keine pauschale Hormonregulation, Lichen simplex kein Synonym für
 // Neurodermitis/Lichen planus, kanonische Balgrist-URL).
 //
-// Zwei Stände, weil bestehende Artikel in diesem Auftrag eingefroren sind:
-//   Draft (Standard):  Kontextlinks aus Bestandsseiten sind NICHT angewendet. Geprüft wird, dass keine Host-Seite
+// Zwei Stände (Integration freigegeben 29.10.2026, seither ist «integriert» der Standard):
+//   --draft:           Kontextlinks aus Bestandsseiten sind NICHT angewendet. Geprüft wird, dass keine Host-Seite
 //                      verändert ist und der Integrations-Patch (seo/beschwerden-a8-2026-10-29-integration.patch)
 //                      sauber anwendbar ist. Dieser Stand ist nicht veröffentlichungsfähig (Seiten ohne Kontext-Hosts).
-//   --integriert:      Patch angewendet (separater Test-Worktree). Verlangt je Seite mindestens zwei Kontext-Hosts
+//   integriert (Standard, auch --integriert): Patch angewendet. Verlangt je Seite mindestens zwei Kontext-Hosts
 //                      aus der Basis, wie bei den bisherigen Kohorten.
 //
-//   node scripts/check-beschwerden-a8-2026-10-29.mjs [--integriert] [--base-sitemap=/pfad/zu/main-dist/sitemap.xml | --base=origin/main]
+//   node scripts/check-beschwerden-a8-2026-10-29.mjs [--draft] [--base-sitemap=/pfad/zu/main-dist/sitemap.xml | --base=origin/main]
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 const DIST = 'dist';
-const INTEGRIERT = process.argv.includes('--integriert');
+const INTEGRIERT = !process.argv.includes('--draft');
 const PATCH = 'seo/beschwerden-a8-2026-10-29-integration.patch';
 const L = { type: 'leaf', min: 700, max: 1500 };
 const MANIFEST = [
@@ -288,7 +288,7 @@ else {
   } else {
     try { execFileSync('git', ['apply', '--check', '--reverse', PATCH], { stdio: 'pipe' }); } catch { errs.push(`--integriert, aber ${PATCH} ist nicht angewendet`); }
   }
-  info.push(`Integrations-Patch: ${files.length} Host-Dateien, Stand ${INTEGRIERT ? 'angewendet (Testintegration)' : 'nicht angewendet (Draft)'}`);
+  info.push(`Integrations-Patch: ${files.length} Host-Dateien, Stand ${INTEGRIERT ? 'angewendet' : 'nicht angewendet (Draft)'}`);
 }
 
 // Registrierungen
@@ -303,7 +303,7 @@ for (const m of MANIFEST) {
   if (sitemap && !sitemap.includes(`https://tcm.ch${m.url}`)) errs.push(`${m.url}: fehlt in sitemap.xml`);
 }
 
-console.log(`Audit 29.10.2026: ${MANIFEST.length} Beschwerden-Orientierungsseiten, Stand ${INTEGRIERT ? 'integriert (Test-Worktree)' : 'Draft, Bestand eingefroren'}, keine Publikationskonstante (Leaves ohne Datum), Basis: ${baseSrc} (${baseUrls.size} URLs)`);
+console.log(`Audit 29.10.2026: ${MANIFEST.length} Beschwerden-Orientierungsseiten, Stand ${INTEGRIERT ? 'integriert' : 'Draft, Bestand eingefroren'}, keine Publikationskonstante (Leaves ohne Datum), Basis: ${baseSrc} (${baseUrls.size} URLs)`);
 info.forEach((i) => console.log('  ·', i));
 console.log('Kontextlinks (Host → Ziel, Ankersatz):');
 for (const c of contextReport) for (const h of c.hosts) console.log(`  ${h.url} → ${c.url}: «${h.sentence}»`);

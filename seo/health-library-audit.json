@@ -18,10 +18,7 @@
       "visual": 10
     }
   },
-  "orphans": [
-    "/beschwerden/chronische-postoperative-schmerzen/",
-    "/beschwerden/lichen-simplex-chronicus/"
-  ],
+  "orphans": [],
   "noOutboundHealthLinks": [],
   "duplicateTitles": [],
   "brokenRelationshipRefs": [],
@@ -43,7 +40,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 7
     },
     {
@@ -134,7 +131,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 33,
-      "outboundHealthLinks": 22
+      "outboundHealthLinks": 24
     },
     {
       "url": "/beschwerden/asthma/",
@@ -254,7 +251,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 7
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/burning-mouth-syndrom/",
@@ -283,7 +280,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 0,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 8
     },
     {
@@ -334,7 +331,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 6
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/crps/",
@@ -843,7 +840,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -1024,7 +1021,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 3,
-      "outboundHealthLinks": 5
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/lichen-sclerosus/",
@@ -1043,7 +1040,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 0,
+      "inboundContentLinks": 2,
       "outboundHealthLinks": 6
     },
     {
@@ -1103,7 +1100,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 8
     },
     {
@@ -1264,7 +1261,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 19,
-      "outboundHealthLinks": 25
+      "outboundHealthLinks": 26
     },
     {
       "url": "/beschwerden/nesselsucht/",
@@ -1343,7 +1340,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 9
     },
     {
@@ -1394,7 +1391,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 18,
-      "outboundHealthLinks": 18
+      "outboundHealthLinks": 19
     },
     {
       "url": "/beschwerden/periorale-dermatitis/",
@@ -1474,7 +1471,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 12,
-      "outboundHealthLinks": 10
+      "outboundHealthLinks": 11
     },
     {
       "url": "/beschwerden/polyneuropathie/",
@@ -1664,7 +1661,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 19
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/rosacea/",
@@ -1684,7 +1681,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 7,
-      "outboundHealthLinks": 17
+      "outboundHealthLinks": 18
     },
     {
       "url": "/beschwerden/rueckenschmerzen/",
@@ -1824,7 +1821,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 41,
-      "outboundHealthLinks": 25
+      "outboundHealthLinks": 27
     },
     {
       "url": "/beschwerden/schuppenflechte/",
@@ -1884,7 +1881,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 16,
-      "outboundHealthLinks": 21
+      "outboundHealthLinks": 22
     },
     {
       "url": "/beschwerden/sekundaere-amenorrhoe/",
@@ -1893,7 +1890,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 13
     },
     {
@@ -2003,7 +2000,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 1,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -2014,7 +2011,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 9,
-      "outboundHealthLinks": 19
+      "outboundHealthLinks": 20
     },
     {
       "url": "/beschwerden/steissbeinschmerzen/",
@@ -2294,7 +2291,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 21,
-      "outboundHealthLinks": 14
+      "outboundHealthLinks": 15
     },
     {
       "url": "/gesundheitsbibliothek/",
@@ -3384,7 +3381,7 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 10,
-      "outboundHealthLinks": 11
+      "outboundHealthLinks": 12
     },
     {
       "url": "/gesundheitsbibliothek/fragen/akupunktur-nebenwirkungen/",
