@@ -221,17 +221,21 @@ for (const slug of INFO) {
   if (!noSticky(h)) errs.push(`${u}: mobile Sticky-Leiste «Termin anfragen» aktiv`);
   if (!ps.includes('name="anliegen"') && !ps.includes('data-kf')) errs.push(`${u}: Kontaktformular fehlt (muss erhalten bleiben)`);
 }
-// Kontakt-WhatsApp aller acht neuen Leaves = allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage; Nummer unverändert.
+// Kontakt-WhatsApp aller acht neuen Leaves (Review 29.10.2026): generischer Text ohne Diagnose, H1 oder URL;
+// Marker data-wa-neutral, damit Concierge/Drawer/FAB/Sticky nach JS denselben Text tragen. Nummer unverändert.
+const WA_NEUTRAL = 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.';
 for (const slug of [...INFO, ...OFFER]) {
-  const u = `/beschwerden/${slug}/`; const ps = pageSym(pages.get(u) ?? '');
+  const u = `/beschwerden/${slug}/`; const full = pages.get(u) ?? ''; const ps = pageSym(full);
   const h1 = (ps.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-  const want = `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${h1}›.`;
   const was = [...ps.matchAll(/href="https:\/\/wa\.me\/(\d+)(?:\?text=([^"]*))?"/g)];
   if (was.length < 2) errs.push(`${u}: erwartete Kontakt-WhatsApp-Links fehlen (${was.length})`);
   for (const [, nr, t] of was) {
+    const txt = decodeURIComponent(t ?? '');
     if (nr !== '41775236122') errs.push(`${u}: WhatsApp-Nummer ${nr} verändert`);
-    if (decodeURIComponent(t ?? '') !== want) errs.push(`${u}: WhatsApp-Text «${decodeURIComponent(t ?? '')}» statt «${want}»`);
+    if (txt !== WA_NEUTRAL) errs.push(`${u}: WhatsApp-Text «${txt}» statt «${WA_NEUTRAL}»`);
+    if ((h1 && txt.includes(h1)) || txt.includes(slug) || /https?:|tcm\.ch/.test(txt)) errs.push(`${u}: WhatsApp-Text enthält H1/Slug/URL`);
   }
+  if (!/data-wa-neutral/.test(full)) errs.push(`${u}: Marker data-wa-neutral fehlt (Concierge/Drawer/FAB behalten sonst Seitentitel bzw. Standardtext)`);
 }
 for (const slug of OFFER) {
   const u = `/beschwerden/${slug}/`; const ps = pageSym(pages.get(u) ?? '');

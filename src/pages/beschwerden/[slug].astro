@@ -559,7 +559,10 @@ if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledB
 // Buttons, Labels und das bestehende Click-Tracking bleiben unveraendert.
 // Laeuft NACH replaceStandortCards, damit die Byte-Erkennung unberuehrt bleibt.
 // Orientierungsseiten und Sjögren: allgemeine Frage zum Artikel (H1), keine Behandlungsanfrage.
-const waPrefill = encodeURIComponent(SENSIBEL_SLUGS.has(slug!) ? 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.' : INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
+// Audit 29.10.2026: generischer WhatsApp-Text ohne Diagnose/H1/URL nur für diese acht Orientierungsseiten
+// (Leaf trägt zusätzlich data-wa-neutral für Concierge, Drawer, FAB). Prefill-Korrektur, kein Analytics-Schutz.
+const WA_GENERIC_SLUGS = new Set(['ac-gelenkarthrose', 'omarthrose', 'sprunggelenksarthrose', 'intersektionssyndrom', 'chronische-postoperative-schmerzen', 'mastodynie', 'sekundaere-amenorrhoe', 'lichen-simplex-chronicus']);
+const waPrefill = encodeURIComponent(SENSIBEL_SLUGS.has(slug!) || WA_GENERIC_SLUGS.has(slug!) ? 'Guten Tag, ich habe eine Frage zu Ihrem Angebot.' : INFO_ONLY_SLUGS.has(slug!) || slug === 'sjoegren-syndrom'
   ? `Guten Tag, ich habe eine allgemeine Frage zum Artikel ‹${hName}›.`
   : `Hallo, ich bin über Ihre Seite zu ${name} gekommen und interessiere mich für eine Behandlung. Können Sie mir kurz weiterhelfen?`);
 prefilledBody = prefilledBody.replaceAll('href="https://wa.me/41775236122"', `href="https://wa.me/41775236122?text=${waPrefill}"`);
