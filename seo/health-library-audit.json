@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-28",
+  "generated": "2026-10-29",
   "totals": {
-    "healthPages": 760,
+    "healthPages": 768,
     "byType": {
       "hub": 6,
-      "condition": 218,
+      "condition": 226,
       "library_hub": 1,
       "befund": 98,
       "question": 56,
@@ -18,7 +18,10 @@
       "visual": 10
     }
   },
-  "orphans": [],
+  "orphans": [
+    "/beschwerden/chronische-postoperative-schmerzen/",
+    "/beschwerden/lichen-simplex-chronicus/"
+  ],
   "noOutboundHealthLinks": [],
   "duplicateTitles": [],
   "brokenRelationshipRefs": [],
@@ -32,6 +35,16 @@
       "inSitemap": true,
       "inboundContentLinks": 81,
       "outboundHealthLinks": 172
+    },
+    {
+      "url": "/beschwerden/ac-gelenkarthrose/",
+      "type": "condition",
+      "title": "AC-Gelenkarthrose: Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 7
     },
     {
       "url": "/beschwerden/achillessehnenentzuendung/",
@@ -120,7 +133,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 31,
+      "inboundContentLinks": 33,
       "outboundHealthLinks": 22
     },
     {
@@ -240,7 +253,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 7
     },
     {
@@ -262,6 +275,16 @@
       "inSitemap": false,
       "inboundContentLinks": 4,
       "outboundHealthLinks": 14
+    },
+    {
+      "url": "/beschwerden/chronische-postoperative-schmerzen/",
+      "type": "condition",
+      "title": "Chronische postoperative Schmerzen: Definition, Abklärung, Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 0,
+      "outboundHealthLinks": 8
     },
     {
       "url": "/beschwerden/chronischer-husten/",
@@ -310,7 +333,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 6
     },
     {
@@ -500,7 +523,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 15
     },
     {
@@ -600,7 +623,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 13,
+      "inboundContentLinks": 15,
       "outboundHealthLinks": 7
     },
     {
@@ -810,8 +833,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 5
+    },
+    {
+      "url": "/beschwerden/intersektionssyndrom/",
+      "type": "condition",
+      "title": "Intersektionssyndrom: Symptome, Abgrenzung zu De Quervain, Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
     },
     {
       "url": "/beschwerden/interstitielle-zystitis/",
@@ -850,7 +883,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 21
     },
     {
@@ -860,7 +893,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
+      "inboundContentLinks": 22,
       "outboundHealthLinks": 26
     },
     {
@@ -880,7 +913,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 37,
+      "inboundContentLinks": 38,
       "outboundHealthLinks": 7
     },
     {
@@ -910,7 +943,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 7,
+      "inboundContentLinks": 8,
       "outboundHealthLinks": 8
     },
     {
@@ -990,7 +1023,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 5
     },
     {
@@ -1001,6 +1034,16 @@
       "canonicalTo": null,
       "inSitemap": true,
       "inboundContentLinks": 4,
+      "outboundHealthLinks": 6
+    },
+    {
+      "url": "/beschwerden/lichen-simplex-chronicus/",
+      "type": "condition",
+      "title": "Lichen simplex chronicus: Juck-Kratz-Kreislauf, Abklärung, Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 0,
       "outboundHealthLinks": 6
     },
     {
@@ -1054,6 +1097,16 @@
       "outboundHealthLinks": 13
     },
     {
+      "url": "/beschwerden/mastodynie/",
+      "type": "condition",
+      "title": "Mastodynie: zyklische Brustschmerzen, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 8
+    },
+    {
       "url": "/beschwerden/me-cfs/",
       "type": "condition",
       "title": "ME/CFS: Chronisches Fatigue-Syndrom verstehen &amp; begleiten",
@@ -1090,7 +1143,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 16,
+      "inboundContentLinks": 17,
       "outboundHealthLinks": 11
     },
     {
@@ -1200,7 +1253,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 164,
+      "inboundContentLinks": 165,
       "outboundHealthLinks": 31
     },
     {
@@ -1210,7 +1263,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 18,
+      "inboundContentLinks": 19,
       "outboundHealthLinks": 25
     },
     {
@@ -1230,7 +1283,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 23,
+      "inboundContentLinks": 24,
       "outboundHealthLinks": 26
     },
     {
@@ -1284,6 +1337,16 @@
       "outboundHealthLinks": 11
     },
     {
+      "url": "/beschwerden/omarthrose/",
+      "type": "condition",
+      "title": "Omarthrose (Schulterarthrose): Symptome, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 2,
+      "outboundHealthLinks": 9
+    },
+    {
       "url": "/beschwerden/osteoporose/",
       "type": "condition",
       "title": "Osteoporose – TCM-Behandlung | TCM.ch",
@@ -1330,7 +1393,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 17,
+      "inboundContentLinks": 18,
       "outboundHealthLinks": 18
     },
     {
@@ -1410,7 +1473,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 11,
+      "inboundContentLinks": 12,
       "outboundHealthLinks": 10
     },
     {
@@ -1600,7 +1663,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 19
     },
     {
@@ -1620,7 +1683,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 17
     },
     {
@@ -1630,7 +1693,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 199,
+      "inboundContentLinks": 207,
       "outboundHealthLinks": 37
     },
     {
@@ -1680,7 +1743,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 7
     },
     {
@@ -1760,7 +1823,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 39,
+      "inboundContentLinks": 41,
       "outboundHealthLinks": 25
     },
     {
@@ -1770,7 +1833,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 12,
+      "inboundContentLinks": 13,
       "outboundHealthLinks": 22
     },
     {
@@ -1820,8 +1883,18 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 15,
+      "inboundContentLinks": 16,
       "outboundHealthLinks": 21
+    },
+    {
+      "url": "/beschwerden/sekundaere-amenorrhoe/",
+      "type": "condition",
+      "title": "Sekundäre Amenorrhoe: Ursachen, Abklärung und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 13
     },
     {
       "url": "/beschwerden/sesamoiditis/",
@@ -1924,13 +1997,23 @@
       "outboundHealthLinks": 7
     },
     {
+      "url": "/beschwerden/sprunggelenksarthrose/",
+      "type": "condition",
+      "title": "Sprunggelenksarthrose (OSG-Arthrose): Symptome und Behandlung",
+      "indexable": true,
+      "canonicalTo": null,
+      "inSitemap": true,
+      "inboundContentLinks": 1,
+      "outboundHealthLinks": 6
+    },
+    {
       "url": "/beschwerden/sprunggelenkschmerzen/",
       "type": "condition",
       "title": "Sprunggelenkschmerzen – TCM-Behandlung | TCM.ch",
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 8,
+      "inboundContentLinks": 9,
       "outboundHealthLinks": 19
     },
     {
@@ -2160,7 +2243,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 33,
+      "inboundContentLinks": 34,
       "outboundHealthLinks": 17
     },
     {
@@ -2210,7 +2293,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 19,
+      "inboundContentLinks": 21,
       "outboundHealthLinks": 14
     },
     {
@@ -2220,7 +2303,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 451,
+      "inboundContentLinks": 457,
       "outboundHealthLinks": 44
     },
     {
@@ -2260,7 +2343,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 5,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 5
     },
     {
@@ -2520,7 +2603,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 5,
       "outboundHealthLinks": 6
     },
     {
@@ -2560,7 +2643,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 6,
+      "inboundContentLinks": 7,
       "outboundHealthLinks": 7
     },
     {
@@ -3030,7 +3113,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 4
     },
     {
@@ -3280,7 +3363,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 4,
+      "inboundContentLinks": 6,
       "outboundHealthLinks": 7
     },
     {
@@ -3300,7 +3383,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 9,
+      "inboundContentLinks": 10,
       "outboundHealthLinks": 11
     },
     {
@@ -3800,8 +3883,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 52,
-      "outboundHealthLinks": 58
+      "inboundContentLinks": 53,
+      "outboundHealthLinks": 59
     },
     {
       "url": "/gesundheitsbibliothek/koerper/kopf/",
@@ -3840,8 +3923,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 35,
-      "outboundHealthLinks": 42
+      "inboundContentLinks": 38,
+      "outboundHealthLinks": 45
     },
     {
       "url": "/gesundheitsbibliothek/koerper/zyklus-hormone/",
@@ -3850,8 +3933,8 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 21,
-      "outboundHealthLinks": 28
+      "inboundContentLinks": 23,
+      "outboundHealthLinks": 30
     },
     {
       "url": "/gesundheitsbibliothek/perspektiven/",
@@ -4950,7 +5033,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 2,
+      "inboundContentLinks": 3,
       "outboundHealthLinks": 8
     },
     {
@@ -6680,7 +6763,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 3
     },
     {
@@ -7380,7 +7463,7 @@
       "indexable": true,
       "canonicalTo": null,
       "inSitemap": true,
-      "inboundContentLinks": 3,
+      "inboundContentLinks": 4,
       "outboundHealthLinks": 5
     },
     {
