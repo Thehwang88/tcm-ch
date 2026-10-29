@@ -220,6 +220,15 @@ const TITLES: Record<string, string> = {
   // Trauma-Cluster 27.10.2026 (Draft)
   'posttraumatische-belastungsstoerung': "PTBS: Symptome, Abklärung und nächste Schritte",
   'komplexe-ptbs': "Komplexe PTBS: Unterschiede, Beschwerden und Hilfe",
+  // Audit 29.10.2026, A-Kandidaten (Draft)
+  'ac-gelenkarthrose': "AC-Gelenkarthrose: Symptome, Abklärung und Behandlung",
+  'omarthrose': "Omarthrose (Schulterarthrose): Symptome, Abklärung und Behandlung",
+  'sprunggelenksarthrose': "Sprunggelenksarthrose (OSG-Arthrose): Symptome und Behandlung",
+  'intersektionssyndrom': "Intersektionssyndrom: Symptome, Abgrenzung zu De Quervain, Behandlung",
+  'chronische-postoperative-schmerzen': "Chronische postoperative Schmerzen: Definition, Abklärung, Behandlung",
+  'mastodynie': "Mastodynie: zyklische Brustschmerzen, Abklärung und Behandlung",
+  'sekundaere-amenorrhoe': "Sekundäre Amenorrhoe: Ursachen, Abklärung und Behandlung",
+  'lichen-simplex-chronicus': "Lichen simplex chronicus: Juck-Kratz-Kreislauf, Abklärung, Behandlung",
 };
 // Per-slug dateModified for pages upgraded to article standard.
 const MODIFIED: Record<string, string> = {
@@ -419,6 +428,15 @@ const DESCRIPTIONS: Record<string, string> = {
   // Trauma-Cluster 27.10.2026 (Draft)
   'posttraumatische-belastungsstoerung': "Wiedererleben, Vermeidung und anhaltende Alarmbereitschaft können zu PTBS gehören. So wird die Belastung eingeordnet und fachliche Hilfe gefunden.",
   'komplexe-ptbs': "Was bedeutet komplexe PTBS? Erfahre, wie sich Traumafolgen auf Gefühle, Selbstbild und Beziehungen auswirken können und wo die Abklärung beginnt.",
+  // Audit 29.10.2026, A-Kandidaten (Draft)
+  'ac-gelenkarthrose': "AC-Gelenkarthrose: Schmerz oben am Schulterdach, Abgrenzung zur Omarthrose und zu Sehnenproblemen, Abklärung mit Testinjektion, Spritze und Operation.",
+  'omarthrose': "Omarthrose: Arthrose im Schultergelenk, Unterschied zu AC-Gelenkarthrose und Frozen Shoulder, Abklärung, Physiotherapie, Spritzen und Schulterprothese.",
+  'sprunggelenksarthrose': "Sprunggelenksarthrose: meist Folge von Brüchen oder Bandverletzungen. Anlaufschmerz, Abklärung, Schuhe, Spritzen, Versteifung oder Prothese.",
+  'intersektionssyndrom': "Intersektionssyndrom: Schmerz und Reiben 4 bis 8 cm oberhalb des Handgelenks, oft nach Rudern. Abgrenzung zu De Quervain, Schiene, Spritze, selten Operation.",
+  'chronische-postoperative-schmerzen': "Chronische Schmerzen nach einer Operation: Definition nach ICD-11, Häufigkeit, Risikofaktoren, Abklärung und Behandlung. Abgrenzung zu akuten OP-Schmerzen.",
+  'mastodynie': "Mastodynie: zyklische und nicht zyklische Brustschmerzen, Abgrenzung zu Brustwand- und Herzschmerz, Abklärung, BH, Schmerzgel und Grenzen der TCM.",
+  'sekundaere-amenorrhoe': "Sekundäre Amenorrhoe: Die Periode bleibt 3 bzw. 6 Monate aus. Ursachen wie Energiemangel, Prolaktin, PCOS, Schilddrüse oder POI, Abklärung und Behandlung.",
+  'lichen-simplex-chronicus': "Lichen simplex chronicus: verdickte, juckende Hautstellen durch Kratzen. Nicht dasselbe wie Neurodermitis oder Lichen planus. Abklärung und Behandlung.",
 };
 const description = DESCRIPTIONS[slug!] ?? `${name} mit TCM behandeln: Ursachen und Behandlung. EMR-/ASCA-anerkannt, Krankenkasse 80 bis 100% über die Zusatzversicherung.`;
 
@@ -450,7 +468,9 @@ const NO_FAQ_SCHEMA = new Set(['schnappfinger', 'steissbeinschmerzen', 'tarsaltu
   // Bibliothek 26.10.2026 (Draft)
   'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
   // Trauma-Cluster 27.10.2026 (Draft)
-  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs',
+  // Audit 29.10.2026, A-Kandidaten (Draft)
+  'ac-gelenkarthrose', 'omarthrose', 'sprunggelenksarthrose', 'intersektionssyndrom', 'chronische-postoperative-schmerzen', 'mastodynie', 'sekundaere-amenorrhoe', 'lichen-simplex-chronicus']);
 // FAQPage from entry.faqs when present, else from the leaf's own visible accordion.
 // schlafstoerungen has entry.faqs but no accordion in the leaf -> render one (faqBlock).
 let faqBlock = '';
@@ -529,7 +549,10 @@ prefilledBody = injectCareFormMeta(prefilledBody, name, `/beschwerden/${slug}`);
 // Trauma-Cluster 27.10.2026: Orientierungsseiten zu sensiblen Themen. Das Leaf enthält weder Kontaktformular
 // noch WhatsApp-Links; zusätzlich neutraler WhatsApp-Text (Marker im Leaf), keine Referrer-Weitergabe.
 const SENSIBEL_SLUGS = new Set(['posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
-const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor', ...SENSIBEL_SLUGS]);
+const INFO_ONLY_SLUGS = new Set(['medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung', 'essentieller-tremor', ...SENSIBEL_SLUGS,
+  // Audit 29.10.2026: acht Orientierungsseiten ohne dokumentierte krankheitsspezifische Kompetenz (Bericht
+  // seo/beschwerden-a8-2026-10-29.md), gleiche Darstellung wie Bibliothek 26.10.2026.
+  'ac-gelenkarthrose', 'omarthrose', 'sprunggelenksarthrose', 'intersektionssyndrom', 'chronische-postoperative-schmerzen', 'mastodynie', 'sekundaere-amenorrhoe', 'lichen-simplex-chronicus']);
 if (!INFO_ONLY_SLUGS.has(slug!)) prefilledBody = replaceStandortCards(prefilledBody, slug!);
 // WhatsApp-Prefill (Konversions-Sprint): Die Legacy-Leaves verlinken wa.me OHNE
 // text= (Chat oeffnet leer). Nur der text=-Parameter kommt hinzu - Nummer,
@@ -590,7 +613,9 @@ const REBRANDED_SLUGS = new Set(['migraene',
   // Bibliothek 26.10.2026 (Draft)
   'medikamentenuebergebrauchskopfschmerz', 'hypermobilitaet', 'schambeinentzuendung', 'sjoegren-syndrom', 'essentieller-tremor', 'pots-syndrom', 'mikroskopische-kolitis', 'gallensaeurebedingter-durchfall', 'proctalgia-fugax', 'beckenorgansenkung',
   // Trauma-Cluster 27.10.2026 (Draft)
-  'posttraumatische-belastungsstoerung', 'komplexe-ptbs']);
+  'posttraumatische-belastungsstoerung', 'komplexe-ptbs',
+  // Audit 29.10.2026, A-Kandidaten (Draft)
+  'ac-gelenkarthrose', 'omarthrose', 'sprunggelenksarthrose', 'intersektionssyndrom', 'chronische-postoperative-schmerzen', 'mastodynie', 'sekundaere-amenorrhoe', 'lichen-simplex-chronicus']);
 const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relatedBlock + hautBlock + massageBlock + ksBlock + visualBlock + wissenBlock + fragenBlock + physioBlock + libraryBlock;
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---

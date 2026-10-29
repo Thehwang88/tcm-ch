@@ -5533,6 +5533,206 @@ export const beschwerden: Beschwerde[] = [
       }
     ],
     "therapies": []
+  },
+  {
+    "slug": "ac-gelenkarthrose",
+    "name": "AC-Gelenkarthrose",
+    "title": "AC-Gelenkarthrose: Symptome, Abklärung und Behandlung",
+    "metaDesc": "AC-Gelenkarthrose: Schmerz oben am Schulterdach, Abgrenzung zur Omarthrose und zu Sehnenproblemen, Abklärung mit Testinjektion, Spritze und Operation.",
+    "conditionName": "AC-Gelenkarthrose",
+    "lead": "Das AC-Gelenk verbindet Schlüsselbein und Schulterdach. Abnutzung ist dort im Röntgenbild häufig, verursacht aber nicht immer die Schmerzen. Die Abklärung klärt, ob dieses Gelenk wirklich die Quelle ist.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "omarthrose",
+        "label": "Omarthrose"
+      },
+      {
+        "slug": "schulterschmerzen",
+        "label": "Schulterschmerzen"
+      },
+      {
+        "slug": "rotatorenmanschette",
+        "label": "Rotatorenmanschette"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "omarthrose",
+    "name": "Omarthrose",
+    "title": "Omarthrose (Schulterarthrose): Symptome, Abklärung und Behandlung",
+    "metaDesc": "Omarthrose: Arthrose im Schultergelenk, Unterschied zu AC-Gelenkarthrose und Frozen Shoulder, Abklärung, Physiotherapie, Spritzen und Schulterprothese.",
+    "conditionName": "Omarthrose",
+    "lead": "Bei der Omarthrose nutzt sich der Knorpel im eigentlichen Schultergelenk ab. Typisch sind tiefe Schulterschmerzen und eine zunehmend eingeschränkte Beweglichkeit, besonders beim Drehen des Arms nach aussen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "ac-gelenkarthrose",
+        "label": "AC-Gelenkarthrose"
+      },
+      {
+        "slug": "frozen-shoulder",
+        "label": "Frozen Shoulder"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "sprunggelenksarthrose",
+    "name": "Sprunggelenksarthrose",
+    "title": "Sprunggelenksarthrose (OSG-Arthrose): Symptome und Behandlung",
+    "metaDesc": "Sprunggelenksarthrose: meist Folge von Brüchen oder Bandverletzungen. Anlaufschmerz, Abklärung, Schuhe, Spritzen, Versteifung oder Prothese.",
+    "conditionName": "Sprunggelenksarthrose",
+    "lead": "Anders als im Knie entsteht Arthrose im Sprunggelenk meist nach einem Unfall. Typisch sind Anlaufschmerzen und eine zunehmend steife Fussbewegung, besonders bergauf.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sprunggelenkschmerzen",
+        "label": "Sprunggelenkschmerzen"
+      },
+      {
+        "slug": "arthrose",
+        "label": "Arthrose"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "intersektionssyndrom",
+    "name": "Intersektionssyndrom",
+    "title": "Intersektionssyndrom: Symptome, Abgrenzung zu De Quervain, Behandlung",
+    "metaDesc": "Intersektionssyndrom: Schmerz und Reiben 4 bis 8 cm oberhalb des Handgelenks, oft nach Rudern. Abgrenzung zu De Quervain, Schiene, Spritze, selten Operation.",
+    "conditionName": "Intersektionssyndrom",
+    "lead": "Schmerz, Schwellung und ein spürbares Reiben einige Zentimeter oberhalb des Handgelenks auf der Daumenseite: Das passt zum Intersektionssyndrom, einer Überlastung dort, wo sich zwei Sehnengruppen kreuzen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "sehnenscheidenentzuendung",
+        "label": "Sehnenscheidenentzündung"
+      },
+      {
+        "slug": "rhizarthrose",
+        "label": "Rhizarthrose"
+      },
+      {
+        "slug": "karpaltunnelsyndrom",
+        "label": "Karpaltunnelsyndrom"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "chronische-postoperative-schmerzen",
+    "name": "Chronische Schmerzen nach einer Operation",
+    "title": "Chronische postoperative Schmerzen: Definition, Abklärung, Behandlung",
+    "metaDesc": "Chronische Schmerzen nach einer Operation: Definition nach ICD-11, Häufigkeit, Risikofaktoren, Abklärung und Behandlung. Abgrenzung zu akuten OP-Schmerzen.",
+    "conditionName": "Chronische Schmerzen nach einer Operation",
+    "lead": "Schmerzen, die drei Monate nach einer Operation noch bestehen oder seither stärker geworden sind, gelten als chronische postoperative Schmerzen. Sie brauchen eine eigene Abklärung, denn nicht jeder Schmerz nach einem Eingriff kommt von der Operation.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "nervenschmerzen",
+        "label": "Nervenschmerzen"
+      },
+      {
+        "slug": "gonarthrose",
+        "label": "Gonarthrose"
+      },
+      {
+        "slug": "rueckenschmerzen",
+        "label": "Rückenschmerzen"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "mastodynie",
+    "name": "Mastodynie",
+    "title": "Mastodynie: zyklische Brustschmerzen, Abklärung und Behandlung",
+    "metaDesc": "Mastodynie: zyklische und nicht zyklische Brustschmerzen, Abgrenzung zu Brustwand- und Herzschmerz, Abklärung, BH, Schmerzgel und Grenzen der TCM.",
+    "conditionName": "Mastodynie",
+    "lead": "Spannende, schmerzende Brüste vor der Periode sind häufig und meist harmlos. Wichtig ist, sie von Schmerzen anderer Herkunft zu unterscheiden, etwa von der Brustwand oder vom Herzen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "pms",
+        "label": "PMS"
+      },
+      {
+        "slug": "costochondritis",
+        "label": "Costochondritis"
+      },
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "sekundaere-amenorrhoe",
+    "name": "Sekundäre Amenorrhoe",
+    "title": "Sekundäre Amenorrhoe: Ursachen, Abklärung und Behandlung",
+    "metaDesc": "Sekundäre Amenorrhoe: Die Periode bleibt 3 bzw. 6 Monate aus. Ursachen wie Energiemangel, Prolaktin, PCOS, Schilddrüse oder POI, Abklärung und Behandlung.",
+    "conditionName": "Sekundäre Amenorrhoe",
+    "lead": "Bleibt die Periode drei Monate aus, obwohl sie vorher regelmässig kam, braucht es eine Abklärung. Am Anfang steht immer ein Schwangerschaftstest; danach geht es um Hormone, Gewicht, Belastung und die Gebärmutter.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "zyklusbeschwerden",
+        "label": "Zyklusbeschwerden"
+      },
+      {
+        "slug": "pcos",
+        "label": "PCOS"
+      },
+      {
+        "slug": "wechseljahre",
+        "label": "Wechseljahre"
+      }
+    ],
+    "therapies": []
+  },
+  {
+    "slug": "lichen-simplex-chronicus",
+    "name": "Lichen simplex chronicus",
+    "title": "Lichen simplex chronicus: Juck-Kratz-Kreislauf, Abklärung, Behandlung",
+    "metaDesc": "Lichen simplex chronicus: verdickte, juckende Hautstellen durch Kratzen. Nicht dasselbe wie Neurodermitis oder Lichen planus. Abklärung und Behandlung.",
+    "conditionName": "Lichen simplex chronicus",
+    "lead": "Ein umschriebener, stark juckender Fleck, der durch ständiges Kratzen ledrig und dick wird: Das ist der Lichen simplex chronicus. Er ist kein eigener Ausschlag von aussen, sondern Folge eines Kreislaufs aus Jucken und Kratzen.",
+    "bodyHtml": "",
+    "faqs": [],
+    "related": [
+      {
+        "slug": "neurodermitis",
+        "label": "Neurodermitis"
+      },
+      {
+        "slug": "lichen-planus",
+        "label": "Lichen ruber planus"
+      },
+      {
+        "slug": "brachioradialer-pruritus",
+        "label": "Brachioradialer Pruritus"
+      }
+    ],
+    "therapies": []
   }
 ];
 export const beschwerdeBySlug = (slug: string): Beschwerde | undefined => beschwerden.find((b) => b.slug === slug);

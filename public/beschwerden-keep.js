@@ -104,5 +104,7 @@ globalThis.BESCHWERDEN_KEEP = [
   // Bibliothek 26.10.2026 (10 Diagnose-Owner, Draft):
   "medikamentenuebergebrauchskopfschmerz", "hypermobilitaet", "schambeinentzuendung", "sjoegren-syndrom", "essentieller-tremor", "pots-syndrom", "mikroskopische-kolitis", "gallensaeurebedingter-durchfall", "proctalgia-fugax", "beckenorgansenkung",
   // Trauma-Cluster 27.10.2026 (2 Orientierungsseiten, Draft):
-  "posttraumatische-belastungsstoerung", "komplexe-ptbs"
+  "posttraumatische-belastungsstoerung", "komplexe-ptbs",
+  // Audit 29.10.2026 (8 Orientierungsseiten, Draft):
+  "ac-gelenkarthrose", "omarthrose", "sprunggelenksarthrose", "intersektionssyndrom", "chronische-postoperative-schmerzen", "mastodynie", "sekundaere-amenorrhoe", "lichen-simplex-chronicus"
 ];
