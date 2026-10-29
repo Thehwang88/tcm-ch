@@ -178,6 +178,9 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'tfcc-laesion', label: 'TFCC-Läsion' },
       { slug: 'radialtunnelsyndrom', label: 'Radialtunnelsyndrom' },
       { slug: 'loge-de-guyon-syndrom', label: 'Loge-de-Guyon-Syndrom' },
+      { slug: 'ac-gelenkarthrose', label: 'AC-Gelenkarthrose' },
+      { slug: 'omarthrose', label: 'Omarthrose' },
+      { slug: 'intersektionssyndrom', label: 'Intersektionssyndrom' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'tuina', label: 'Tuina' },
@@ -259,6 +262,7 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'quadrizepssehnen-tendinopathie', label: 'Quadrizepssehnen-Tendinopathie' },
       { slug: 'schnappende-huefte', label: 'Schnappende Hüfte (Coxa saltans)' },
       { slug: 'schambeinentzuendung', label: 'Schambeinentzündung' },
+      { slug: 'sprunggelenksarthrose', label: 'Sprunggelenksarthrose' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'massage', label: 'Massage' },
@@ -330,6 +334,8 @@ export const BODY_REGIONS: BodyRegion[] = [
       { slug: 'pcos', label: 'PCOS' }, { slug: 'myome', label: 'Myome' },
       { slug: 'wechseljahre', label: 'Wechseljahre' }, { slug: 'hitzewallungen', label: 'Hitzewallungen' },
       { slug: 'kinderwunsch', label: 'Kinderwunsch' }, { slug: 'hashimoto', label: 'Hashimoto' },
+      { slug: 'mastodynie', label: 'Mastodynie' },
+      { slug: 'sekundaere-amenorrhoe', label: 'Sekundäre Amenorrhoe' },
     ],
     therapies: [
       { slug: 'akupunktur', label: 'Akupunktur' }, { slug: 'kraeutertherapie', label: 'Kräutertherapie' },
@@ -935,6 +941,15 @@ const SYNONYMS: Record<string, string> = {
   '/gesundheitsbibliothek/befunde-werte/calcium-zu-niedrig/': "Calcium erniedrigt Kalzium zu niedrig Kalzium erniedrigt Hypokalzämie",
   '/gesundheitsbibliothek/befunde-werte/gesamt-ige-erhoeht/': "Gesamt-IgE Total-IgE IgE erhöht Immunglobulin E",
   '/gesundheitsbibliothek/untersuchungen/urodynamik/': "Urodynamik Blasendruckmessung Zystometrie Uroflowmetrie",
+  // Audit 29.10.2026 (Draft): nur echte Synonyme/Schreibvarianten
+  '/beschwerden/ac-gelenkarthrose/': "AC-Gelenksarthrose ACG-Arthrose Akromioklavikulargelenksarthrose Schultereckgelenkarthrose",
+  '/beschwerden/omarthrose/': "Schulterarthrose Schultergelenksarthrose Glenohumeralarthrose Arthrose Schultergelenk",
+  '/beschwerden/sprunggelenksarthrose/': "Sprunggelenkarthrose OSG-Arthrose Arthrose oberes Sprunggelenk tibiotalare Arthrose",
+  '/beschwerden/intersektionssyndrom/': "Intersection Syndrome Intersektionssyndrom Unterarm",
+  '/beschwerden/chronische-postoperative-schmerzen/': "chronische Schmerzen nach Operation chronische Schmerzen nach OP chronische postoperative Schmerzen CPSP persistierende postoperative Schmerzen",
+  '/beschwerden/mastodynie/': "Mastalgie zyklische Brustschmerzen Brustschmerzen vor der Periode Brustdrüsenschmerzen",
+  '/beschwerden/sekundaere-amenorrhoe/': "sekundäre Amenorrhö Amenorrhoe Amenorrhö ausbleibende Periode Periode bleibt aus",
+  '/beschwerden/lichen-simplex-chronicus/': "Lichen simplex Neurodermatitis circumscripta lichenifiziertes Ekzem",
 };
 const withSynonyms = (e: SearchEntry): SearchEntry => {
   const syn = SYNONYMS[e.u];
