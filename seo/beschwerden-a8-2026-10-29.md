@@ -1,6 +1,6 @@
 # Audit 29.10.2026: acht Beschwerden-Orientierungsseiten (A-Kandidaten)
 
-Draft-PR, nicht Ready, kein Merge, kein Deployment, keine GSC-Einreichung. Basis: main `caca1e74` (am 29.10.2026 geprüft, seit dem Audit unverändert). Grundlage: «TCM.ch SEO-Audit – 29.10.2026», A-Kandidaten 01 bis 08. Keine ärztliche Freigabe, kein Reviewer, kein Publikationsdatum behauptet.
+**Stand 29.10.2026: integriert und zum Merge freigegeben (Abschnitt 11).** Ursprünglich Draft-PR. Basis: main `caca1e74` (am 29.10.2026 geprüft, seit dem Audit unverändert). Grundlage: «TCM.ch SEO-Audit – 29.10.2026», A-Kandidaten 01 bis 08. Keine ärztliche Freigabe, kein Reviewer, kein Publikationsdatum behauptet.
 
 **Review-Runde 29.10.2026** (Folgecommits `c40c5029`, `1b6fe7a9`, dieser Bericht): WhatsApp-Prefill generisch (Abschnitt 8a), Erratum PMID 35774887 gelesen (Abschnitt 3), Evidenzformulierungen nach Fundlage getrennt (Abschnitt 4), Orphan-Befund erklärt (Abschnitt 8). Weiterhin Draft, Integrations-Patch nicht angewendet.
 
@@ -169,7 +169,7 @@ Datei: `seo/beschwerden-a8-2026-10-29-integration.patch`. Die 14 Bestandsquellen
 | Sekundäre Amenorrhoe | `/beschwerden/zyklusbeschwerden/` nach «Eine sehr starke oder plötzlich veränderte Blutung …»: «Bleibt die Periode drei Monate oder länger aus, obwohl sie vorher regelmässig kam, beschreibt die Seite Sekundäre Amenorrhoe die Abklärung vom Schwangerschaftstest bis zu den Hormonwerten.» | `/beschwerden/pcos/` nach «Zyklen, die dauerhaft länger als 35 Tage sind …»: «Welche anderen Ursachen hinter einer ausbleibenden Periode stecken können, beschreibt die Seite Sekundäre Amenorrhoe.» |
 | Lichen simplex chronicus | `/beschwerden/brachioradialer-pruritus/` nach «Abzugrenzen ist Juckreiz am Arm allgemein …»: «Wird die juckende Stelle durch ständiges Kratzen dick und ledrig, spricht man von einem Lichen simplex chronicus.» | `/beschwerden/lichen-planus/`: bestehende Erwähnung «Der Lichen simplex ist verdickte Haut durch dauerhaftes Kratzen» erhält nur den Link |
 
-Keiner der 14 Hosts ist EN-fingerprinted (`src/data/i18n/fingerprints.json`). Alle Hosts sind Beschwerden-Leaves oder eine Bibliothek-Frage aus der Basis-Sitemap. Wird der Patch später angewendet, ändern sich genau diese 14 Bestandsseiten um je einen Absatz bzw. einen Link.
+**Korrektur 29.10.2026:** Ein Host ist EN-fingerprinted: `zyklusbeschwerden.html` ist DE-Quelle von `condition:menstrual-issues` (`src/data/i18n/fingerprints.json`). Nach der Integration meldet `check-i18n` dafür eine Outdated-Warnung (keine Failure); siehe Abschnitt 11. Alle Hosts sind Beschwerden-Leaves oder eine Bibliothek-Frage aus der Basis-Sitemap. Wird der Patch später angewendet, ändern sich genau diese 14 Bestandsseiten um je einen Absatz bzw. einen Link.
 
 ## 7. Registrierungen (separater Commit, keine Artikeländerung)
 
@@ -283,3 +283,21 @@ Stand nach Review-Runde: Branch-HEAD `1b6fe7a9` auf Basis `caca1e74`; frischer B
 2. Build und `check-beschwerden-a8-2026-10-29.mjs --integriert --base-sitemap=<main-Build>`; Health-Audit ohne verwaiste Seiten.
 3. Queue: 8 URLs von «Geplant» nach «Offen» mit Datum; Map-Notizen auf «veröffentlicht».
 4. Merge, Live-Check. Kein GSC-Submit ausser über die tägliche Queue.
+
+## 11. Integration und Release (GO 29.10.2026)
+
+- **GO Integration** und anschliessend **Merge-Auftrag** des Auftraggebers am 29.10.2026. Main vor dem Anwenden geprüft: weiterhin `caca1e74`; `git apply --check` sauber.
+- **Integration** (Commit `202d26dd`): Patch unverändert angewendet, 14 Dateien, je +1/−1 Zeile. Build-Diff gegen den Stand vor Integration: genau die 14 Host-Seiten geändert. 13 reine Absatz-Einfügungen, Lichen planus nur der Link um die bestehende Erwähnung. Nichts sonst.
+- **Prüfskript:** «integriert» ist jetzt Standard; `--draft` prüft den alten eingefrorenen Stand und schlägt nach der Integration erwartungsgemäss fehl.
+- **Prüfungen integriert** (frischer Build):
+  - `check-beschwerden-a8-2026-10-29`: OK, je Seite mindestens 2 Kontext-Hosts aus der Basis.
+  - Health-Audit: 0 Fehler, `orphans: []`.
+  - Übrige Kohorten mit main-Build-Sitemap: OK. Kontaktformular, Clinic-Status, Standort-UX, First30, Professional, Herbst-SG: 0 Fehler. EN-Analytics 48/0, Anfrage-Betreff 92/0, Hero-Video 124/0.
+  - Mobile: 14 Hosts bei 320/390/1440 px, 42 Aufrufe, 0 Überläufe, 0 JS-Fehler.
+  - WhatsApp-Prüfung unverändert: 0 Auffälligkeiten.
+- **i18n:** failures 0, **1 Warnung**: `condition:menstrual-issues` ist Outdated, weil `zyklusbeschwerden.html` einen Absatz mit Link auf die DE-Seite «Sekundäre Amenorrhoe» erhielt.
+  - Kein `--update`: Das ist nur in einem Commit mit geprüfter EN-Fassung erlaubt.
+  - Die EN-Seite braucht inhaltlich vermutlich keine Änderung, weil es kein EN-Gegenstück der neuen Seite gibt. Das ist aber im EN-Workflow zu bestätigen.
+- **Release** (dieser Commit): Queue 8 URLs von «Geplant» nach «Offen» mit Datum 29.10.2026 (PR #97). Map-Notizen auf «veröffentlicht 29.10.2026». Keine Publikationskonstante, da Leaves ohne Datum. GSC nur über die tägliche Queue.
+- **Weiterhin offen:** keine ärztliche Prüfung der Texte; die EN-Review zu `menstrual-issues` steht aus.
+

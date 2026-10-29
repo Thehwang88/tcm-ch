@@ -558,17 +558,17 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 - https://tcm.ch/beschwerden/vestibularisneuritis/ — 18.10.2026 (Beschwerden Welle 5)
 - https://tcm.ch/beschwerden/hyperakusis/ — 18.10.2026 (Beschwerden Welle 5)
 - https://tcm.ch/beschwerden/burning-mouth-syndrom/ — 18.10.2026 (Beschwerden Welle 5)
+- https://tcm.ch/beschwerden/ac-gelenkarthrose/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/omarthrose/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/sprunggelenksarthrose/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/intersektionssyndrom/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/chronische-postoperative-schmerzen/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/mastodynie/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/sekundaere-amenorrhoe/ — 29.10.2026 (Audit 29.10.2026, PR #97)
+- https://tcm.ch/beschwerden/lichen-simplex-chronicus/ — 29.10.2026 (Audit 29.10.2026, PR #97)
 
 ## Geplant (noch nicht live)
 
-- https://tcm.ch/beschwerden/ac-gelenkarthrose/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/omarthrose/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/sprunggelenksarthrose/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/intersektionssyndrom/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/chronische-postoperative-schmerzen/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/mastodynie/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/sekundaere-amenorrhoe/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
-- https://tcm.ch/beschwerden/lichen-simplex-chronicus/ — vorbereitet 29.10.2026 (Audit 29.10.2026, Draft-PR; noch kein Live-Datum, kein GSC-Submit)
 
 
 
