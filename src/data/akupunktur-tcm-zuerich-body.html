@@ -1,6 +1,14 @@
 <style>
   /* Layout-only helpers - design tokens only, no new colours/fonts/components. */
   .akz{padding-top:68px}
+  /* Hero rechts: Teamfoto (team.webp, 13 Personen) als cover; Ausschnitt je Containerform so, dass kein Gesicht am Rand
+     halbiert wird (Kopfpositionen vermessen). Bänder nach Container-Seitenverhältnis (Desktop/Tablet) bzw. Breite (mobil). */
+  .akz .lsr-right--team img{object-position:85% 10%}
+  @container (aspect-ratio < 1){.akz .lsr-right--team img{object-position:35% 10%}}
+  @container (aspect-ratio >= 0.92) and (aspect-ratio < 1){.akz .lsr-right--team img{object-position:65.5% 10%}}
+  @container (aspect-ratio < 0.75){.akz .lsr-right--team img{object-position:22% 10%}}
+  @media(max-width:900px){.akz .lsr-right--team img{object-position:85% 10%}}
+  @media(min-width:401px) and (max-width:900px){.akz .lsr-right--team img{object-position:45% 10%}}
   /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
   .akzh .lsr-inner{min-height:min(560px,62vh)}
   .akzh-strip{background:#fff;border-bottom:1px solid rgba(2,11,16,.08)}
@@ -94,8 +102,8 @@
         <p class="lsr-note">Bestehende Praxen in Höngg und Oerlikon · Weitere Standorte in Vorbereitung.</p>
         <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Terminkoordination TCM.ch: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
       </div>
-      <figure class="lsr-right">
-        <img src="/images/team-hero.jpg" alt="Das Team von TCM.ch – sechs Therapeutinnen und Therapeuten" width="2000" height="1500" loading="eager" fetchpriority="high" decoding="async">
+      <figure class="lsr-right lsr-right--foto lsr-right--team">
+        <img src="/images/team.webp?v=2" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async">
         <figcaption>Das TCM.ch Behandlungsteam · Praxen des Netzwerks in Höngg und Oerlikon</figcaption>
       </figure>
     </div>
