@@ -11,7 +11,7 @@
   - Grund: Für keine der acht Diagnosen ist eine krankheitsspezifische Kompetenz in den kanonischen Daten dokumentiert.
   - Akupunktur (alle Standorte) und Physiotherapie (8 Standorte) sind zwar verfügbar, begründen aber kein Angebot zur jeweiligen Diagnose.
 - **Bestand eingefroren:** Kein bestehender Artikel ist verändert, weder Text noch Title, Meta, H1, FAQ, Datum, Keywords oder CTAs.
-  - Die Kontextlinks liegen als **nicht angewendeter Integrations-Patch** vor: `seo/beschwerden-a8-2026-10-29-integration.patch`, Abschnitt 6.
+  - Die Kontextlinks lagen zunächst als **nicht angewendeter Integrations-Patch** vor; seit 29.10.2026 angewendet und archiviert als `seo/beschwerden-a8-2026-10-29-integration.ANGEWENDET.patch` (Abschnitte 6, 11, 12).
 - **Registrierungen** (Hub A–Z, Körperregionen, Suche, Map, Guards, Queue) stehen in einem eigenen Commit, getrennt von den Seiten (Abschnitt 7).
 - **Wichtig:** Der Draft-Stand ist **nicht veröffentlichungsfähig**.
   - Ohne Patch haben die neuen Seiten keine Kontextlinks aus Bestandsartikeln.
@@ -156,7 +156,7 @@ Gegen offene PRs (#38, #15, #1): keine Überschneidung mit diesen Slugs, Synonym
 
 ## 6. Integrations-Linkplan (separat, NICHT angewendet)
 
-Datei: `seo/beschwerden-a8-2026-10-29-integration.patch`. Die 14 Bestandsquellen bleiben in diesem PR unverändert. Der Patch fügt je Host einen kurzen Absatz direkt nach dem genannten Ankerabsatz ein, mit derselben Absatzformatierung. Bei Lichen planus setzt er stattdessen nur einen Link auf die bestehende Erwähnung.
+Datei (archiviert, angewendet): `seo/beschwerden-a8-2026-10-29-integration.ANGEWENDET.patch`. Die 14 Bestandsquellen bleiben in diesem PR unverändert. Der Patch fügt je Host einen kurzen Absatz direkt nach dem genannten Ankerabsatz ein, mit derselben Absatzformatierung. Bei Lichen planus setzt er stattdessen nur einen Link auf die bestehende Erwähnung.
 
 | Neue Seite | Host 1 (Anker → Vorschlag) | Host 2 (Anker → Vorschlag) |
 |---|---|---|
@@ -279,7 +279,7 @@ Stand nach Review-Runde: Branch-HEAD `1b6fe7a9` auf Basis `caca1e74`; frischer B
 - Inhaltliche Freigabe der acht Texte (keine ärztliche Prüfung erfolgt; Studien meist auf Abstract-Ebene).
 - Publikationsentscheid: Datum, Queue «Offen», Map-Notizen «veröffentlicht».
 
-1. Integrations-Patch freigeben und anwenden (`git apply seo/beschwerden-a8-2026-10-29-integration.patch`). Die 14 Bestandsseiten ändern sich dann um je einen Absatz bzw. Link.
+1. Integrations-Patch freigeben und anwenden (erledigt 29.10.2026, Commit `202d26dd`). Die 14 Bestandsseiten ändern sich dann um je einen Absatz bzw. Link.
 2. Build und `check-beschwerden-a8-2026-10-29.mjs --integriert --base-sitemap=<main-Build>`; Health-Audit ohne verwaiste Seiten.
 3. Queue: 8 URLs von «Geplant» nach «Offen» mit Datum; Map-Notizen auf «veröffentlicht».
 4. Merge, Live-Check. Kein GSC-Submit ausser über die tägliche Queue.
@@ -300,4 +300,50 @@ Stand nach Review-Runde: Branch-HEAD `1b6fe7a9` auf Basis `caca1e74`; frischer B
   - Die EN-Seite braucht inhaltlich vermutlich keine Änderung, weil es kein EN-Gegenstück der neuen Seite gibt. Das ist aber im EN-Workflow zu bestätigen.
 - **Release** (dieser Commit): Queue 8 URLs von «Geplant» nach «Offen» mit Datum 29.10.2026 (PR #97). Map-Notizen auf «veröffentlicht 29.10.2026». Keine Publikationskonstante, da Leaves ohne Datum. GSC nur über die tägliche Queue.
 - **Weiterhin offen:** keine ärztliche Prüfung der Texte; die EN-Review zu `menstrual-issues` steht aus.
+
+## 12. Release-Nachprüfung (30.10.2026)
+
+GO-Auftrag mit ausdrücklicher, eng begrenzter Freeze-Ausnahme für den Integrations-Patch. PR #97 war zu diesem Zeitpunkt bereits gemergt; geprüft wurde der veröffentlichte Stand.
+
+- **Stände:** PR-HEAD `86d35280`, main-Basis `caca1e74`, Merge-Commit `d7eb3a70` (29.10.2026, 20:22 UTC = 21:22 Europe/Zurich). Das Release-Datum 29.10.2026 in Queue und Map stimmt. main ist seither unverändert, und es gibt keine CI-Checks auf dem PR.
+- **Repo-Regel ärztliche Freigabe:** Eine verbindliche klinische Prüfstufe gibt es nur für EN-Lokalisierungen (`CLAUDE.md` «EN / Bilingual»: `Needs clinical review`; `docs/i18n.md`). Für DE-Beschwerdeseiten verlangt keine Repo-Regel eine zusätzliche fachliche Freigabe. Die Veröffentlichung beruht auf der redaktionellen Freigabe des Auftraggebers; eine ärztliche Prüfung wird nicht behauptet.
+- **Rückbau-Nachweis:**
+  - Der main-Diff der 14 Host-Dateien gegen `caca1e74` ist byte-identisch mit dem Patch.
+  - `git apply --reverse` auf main ergibt für alle 14 Dateien exakt `caca1e74` (0 Diff-Zeilen).
+  - Im gebauten HTML sind alle 14 Host-Änderungen rein additiv: 13 Absatz-Einfügungen und bei Lichen planus der Link um die bestehende Erwähnung.
+  - Daraus ergeben sich 16 Kontextlinks, je neue Seite 2 aus unterschiedlichen Bestandsseiten.
+- **Patch archiviert:** umbenannt in `seo/beschwerden-a8-2026-10-29-integration.ANGEWENDET.patch`, mit Kopfvermerk «bereits angewendet, nicht erneut ausführen». Ein erneutes `git apply` schlägt fehl; das Prüfskript nutzt die Datei nur noch für den Reverse-Nachweis.
+- **Frische Builds** main `d7eb3a70` (966 URLs) und Basis `caca1e74` (958 URLs). Build-Diff:
+  - 8 neue Seiten
+  - 7 Registrierungen: Hub, 3 Regionen, Bibliothek-Suchindex, Sitemap, Keep-Liste
+  - 14 Hosts
+  - **0 unerwartet**: keine EN-, Formular-, Tracking-, Asset-, Worker- oder Standortänderung
+- **Prüfungen:**
+  - `check-beschwerden-a8-2026-10-29` (integriert, main-Build-Sitemap der Basis): OK
+  - übrige Kohorten: OK
+  - health-audit (inkl. Hub- und Ownership-Gate): 0 Fehler, `orphans: []`
+  - check-kontakt-formular, clinic-status, standort-ux, first30, professional, herbst-sg: 0 Fehler
+  - en-analytics 48/0, anfrage-betreff 92/0, hero-video 124/0
+  - CSV-Struktur unverändert
+  - i18n: failures 0, 1 Warnung zu `menstrual-issues` (Abschnitt 11)
+- **Formular-Browsertest:**
+  - `test-kontakt-formular` 715/0 (API gemockt, extern blockiert).
+  - Zusätzlich die 8 neuen Seiten bei 320/390/1440 px, 200/0. Je Seite:
+    - eine H1, kein Überlauf, Quellen sichtbar, 3 FAQ
+    - 6 WhatsApp-Links generisch, je Klick genau ein `wa_click`
+    - Formular: genau ein gemockter API-Aufruf, `quelle` «Beschwerde: <Name>», ein `formular_senden` ohne Dubletten
+- **Linkprüfung:**
+  - intern 2049 Links auf den 22 Seiten, 0 kaputt.
+  - extern 41 Quellenlinks, 40 mit HTTP 200.
+  - `academic.oup.com` (JCEM, Endocrine-Society-Leitlinie) antwortet Skripten mit 403 (Bot-Schutz). Die Quelle war beim Verfassen gelesen; der Link ist nicht als defekt belegt.
+- **Live (30.10.2026):**
+  - Alle 8 URLs: HTTP 200, indexierbar, Self-Canonical, Titles wie im Build, genau eine H1, Quellen und 3 FAQ.
+  - Sitemap 8/8, Hub A–Z 8/8, Regionen 3/3, 1/1, 2/2. Alle 16 Kontextlinks vorhanden.
+  - **Ausgeliefertes HTML der 22 Seiten byte-identisch mit dem geprüften Build.** Bei Browser-User-Agent fügt Cloudflare zusätzlich den Web-Analytics-Beacon ein; die CSP blockiert ihn (bekannt seit #96).
+  - Browser-Stichproben 24/24 bei 320/390/1440 px: kein Überlauf, WhatsApp generisch. Messendpunkte und API blockiert, keine Sendung.
+- **Einschränkungen:**
+  - Keine ärztliche Prüfung; Studien meist auf Abstract-Ebene.
+  - `formular_senden` überträgt wie auf allen Beschwerdeseiten `quelle` mit dem Seitennamen an den dataLayer. Das ist kein zusätzlicher Analytics-Schutz und unverändert.
+  - EN-Review `menstrual-issues` offen.
+  - Veröffentlichung ist kein Nachweis für Indexierung, Rankings oder Buchungen. GSC nur über die Tagesqueue.
 

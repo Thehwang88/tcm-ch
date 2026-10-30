@@ -7,7 +7,7 @@
 //
 // Zwei Stände (Integration freigegeben 29.10.2026, seither ist «integriert» der Standard):
 //   --draft:           Kontextlinks aus Bestandsseiten sind NICHT angewendet. Geprüft wird, dass keine Host-Seite
-//                      verändert ist und der Integrations-Patch (seo/beschwerden-a8-2026-10-29-integration.patch)
+//                      verändert ist und der Integrations-Patch (seo/beschwerden-a8-2026-10-29-integration.ANGEWENDET.patch)
 //                      sauber anwendbar ist. Dieser Stand ist nicht veröffentlichungsfähig (Seiten ohne Kontext-Hosts).
 //   integriert (Standard, auch --integriert): Patch angewendet. Verlangt je Seite mindestens zwei Kontext-Hosts
 //                      aus der Basis, wie bei den bisherigen Kohorten.
@@ -19,7 +19,7 @@ import { execFileSync } from 'node:child_process';
 
 const DIST = 'dist';
 const INTEGRIERT = !process.argv.includes('--draft');
-const PATCH = 'seo/beschwerden-a8-2026-10-29-integration.patch';
+const PATCH = 'seo/beschwerden-a8-2026-10-29-integration.ANGEWENDET.patch'; // archiviert 30.10.2026, angewendet in 202d26dd
 const L = { type: 'leaf', min: 700, max: 1500 };
 const MANIFEST = [
   { url: '/beschwerden/ac-gelenkarthrose/', ...L, syn: 'AC-Gelenksarthrose' },
