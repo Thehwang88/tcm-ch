@@ -1,3 +1,8 @@
+ARCHIV – BEREITS ANGEWENDET. NICHT ERNEUT AUSFÜHREN.
+Freigabe: GO Integration 29.10.2026. Angewendet in Commit 202d26dd, veröffentlicht mit Merge d7eb3a70 (PR #97).
+Nachweis: main-Diff der 14 Host-Dateien gegen caca1e74 ist byte-identisch mit diesem Patch; `git apply --reverse` ergibt exakt caca1e74.
+Ein erneutes `git apply` schlägt fehl (Kontext bereits vorhanden). Das Prüfskript nutzt die Datei nur noch für den Reverse-Nachweis.
+
 diff --git a/src/data/fragen-entscheidungen.ts b/src/data/fragen-entscheidungen.ts
 index 0b88349f..5e0a7004 100644
 --- a/src/data/fragen-entscheidungen.ts
