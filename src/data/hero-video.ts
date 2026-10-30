@@ -2,6 +2,7 @@
 // Praxis Hwang; hier ohne Ton, 25 fps, 20.7 s). Ein Asset für alle Standorte, damit der Browser es zwischen den
 // Klinikseiten cacht. Opt-in je Slug wie LSR_SLUGS in standort/Hero.astro; nur operative Standorte (nie planned/review):
 // das Netzwerk-Footage darf keinen geplanten Standort als offen erscheinen lassen.
+// Einzige Ausnahme: /standorte/zuerich-city/ (keine Standort-Daten, bindet HeroMedia direkt ein; Inhaber-Freigabe 30.10.2026).
 import type { Standort } from './standorte';
 
 export const HERO_VIDEO_SLUGS = new Set([

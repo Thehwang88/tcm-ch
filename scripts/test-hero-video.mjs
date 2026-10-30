@@ -1,6 +1,6 @@
 // Hero-Video der Standortseiten: Poster = Standbild des ersten Video-Frames (kein Standortfoto mehr im Hero). Nach `npm run build`:
 //   node scripts/test-hero-video.mjs [dist] [--baseline <dist-von-main>] [--shots docs/qa/hero-video-poster]
-//  1. Markup (alle 9 Video-Standorte): Poster-<img> = <video poster> = Video-Standbild, kein /images/-Foto in der Figure,
+//  1. Markup (alle 9 Video-Standorte + zuerich-city, Ausnahme 30.10.2026): Poster-<img> = <video poster> = Video-Standbild, kein /images/-Foto in der Figure,
 //     4 Renditionen, muted/playsinline/loop/preload=none; Nicht-Video-Seiten unverändert; Praxisfotos bleiben in «Über die Praxis».
 //  2. Poster-Dateien: 1280×720 / 640×360, klein, und pixelnah am ersten Frame der echten Renditionen (ffmpeg + sharp).
 //  3. Browser (Chromium, 320/375/390/1280/1440): Stufen initial → vor Wiedergabe → erster bewegter Frame → Wiedergabe;
@@ -16,7 +16,7 @@ const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
 if (shots) fs.mkdirSync(shots, { recursive: true });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
 const POSTER = '/videos/hero-praxis/hwang-praxis-poster-1280.webp', POSTER_M = '/videos/hero-praxis/hwang-praxis-poster-640.webp';
-const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg'];
+const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city'];
 const NO_VIDEO = ['zuerich-oerlikon', 'luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
 const read = (d, u) => fs.readFileSync(path.join(d, u, 'index.html'), 'utf8');
 
@@ -37,7 +37,7 @@ for (const s of NO_VIDEO) {
   const h = fs.readFileSync(f, 'utf8');
   ok(!/data-hero-video/.test(h) && !/hwang-praxis/.test(h), `${s}: kein Video, kein Video-Poster (Nicht-Video-Seite unverändert)`);
 }
-if (baseline) for (const s of NO_VIDEO.concat(['zuerich-city'])) {
+if (baseline) for (const s of NO_VIDEO) {
   const a = path.join(dist, 'standorte', s, 'index.html'), b = path.join(baseline, 'standorte', s, 'index.html'); if (!fs.existsSync(a) || !fs.existsSync(b)) continue;
   // Astro inlined/verlinkt Komponenten-CSS je nach Chunk-Grösse unterschiedlich (inlineStylesheets auto): Style-Blöcke und
   // Stylesheet-Links ausklammern, verglichen wird der Seiteninhalt.
@@ -82,13 +82,16 @@ async function page(o, u, { width, reduced = false, saveData = false, wait = 'lo
 const figState = (pg) => pg.evaluate(() => { const f = document.querySelector('[data-hero-video]'), v = f.querySelector('video'), i = f.querySelector('img'), r = f.getBoundingClientRect();
   return { rect: [Math.round(r.left), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)], playing: f.classList.contains('is-playing'), paused: v.paused, t: v.currentTime, ready: v.readyState, src: v.currentSrc, vOp: getComputedStyle(v).opacity, vDisp: getComputedStyle(v).display, muted: v.muted, loop: v.loop, pi: v.playsInline, preload: v.preload, imgSrc: i.currentSrc || i.src, imgPos: getComputedStyle(i).objectPosition, vPos: getComputedStyle(v).objectPosition, imgVis: i.getBoundingClientRect().width > 0 }; });
 // Ausschnitt immer aus der aktuellen Viewport-Lage der Figure (nach Scrolls exakt, keine Verschiebung durch Smooth-Scroll).
-const clipShot = async (pg, _rect, file) => { const r = await pg.evaluate(() => { const b = document.querySelector('[data-hero-video]').getBoundingClientRect(); return { x: b.left + scrollX, y: b.top + scrollY, width: b.width, height: b.height }; }); const buf = await pg.screenshot({ clip: r, captureBeyondViewport: true }); if (file && shots) fs.writeFileSync(path.join(shots, file), buf); return buf; };
+const clipShot = async (pg, _rect, file) => { const r = await pg.evaluate(() => { const b = document.querySelector('[data-hero-video]').getBoundingClientRect(); return { x: b.left + scrollX, y: b.top + scrollY, width: b.width, height: b.height }; }); const y0 = await pg.evaluate(() => scrollY); const buf = await pg.screenshot({ clip: r, captureBeyondViewport: true });
+  // captureBeyondViewport kann auf kurzen Seiten (z. B. zuerich-city) die Scrollposition verschieben → Figure ausserhalb des Viewports → Video pausiert (gewollt). Lage wiederherstellen, damit die Messung die Seite nicht verändert.
+  if (await pg.evaluate(() => scrollY) !== y0) await pg.evaluate((y) => scrollTo(0, y), y0);
+  if (file && shots) fs.writeFileSync(path.join(shots, file), buf); return buf; };
 const stats = async (buf) => { const { data } = await sharp(buf).greyscale().raw().toBuffer({ resolveWithObject: true }); let s = 0; for (const x of data) s += x; const mean = s / data.length; return mean; };
 const bufDiff = async (a, b) => { const A = await sharp(a).resize(160, 90).greyscale().raw().toBuffer(), B = await sharp(b).resize(160, 90).greyscale().raw().toBuffer(); let d = 0; for (let i = 0; i < A.length; i++) d += Math.abs(A[i] - B[i]); return d / A.length; };
 const waitPlaying = async (pg) => { try { await pg.waitForFunction(() => document.querySelector('[data-hero-video]').classList.contains('is-playing'), { timeout: 10000 }); return true; } catch (e) { return false; } };
 const lcp = (pg) => pg.evaluate(() => (window.__lcp || []).slice(-1)[0] || null);
 const geom = {};
-for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]]]) {
+for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]], ['zuerich-city', [375, 1440]]]) {
   for (const w of widths) {
     const u = `/standorte/${slug}/`, tag = `${slug}-${w}`;
     // A: initial (DOM geparst, vor load) · B: vor Wiedergabe (nach load, Video pausiert, unsichtbar)

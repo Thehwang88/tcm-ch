@@ -9,6 +9,8 @@
 // Kein Klinik-/LocalBusiness-Schema, keine Adresse, kein Eröffnungsdatum.
 export const prerender = true;
 import SpaPage from '../../../layouts/SpaPage.astro';
+// Hero rechts: gemeinsames Hero-Video der Standortseiten (Ausnahme vom Opt-in in src/data/hero-video.ts, Freigabe 30.10.2026).
+import HeroMedia from '../../../components/standort/HeroMedia.astro';
 
 const url = 'https://tcm.ch/standorte/zuerich-city/';
 const title = 'TCM & Akupunktur Zürich City: Standort im Zentrum in Vorbereitung | TCM.ch';
@@ -86,9 +88,7 @@ const schema = [
           <div><span class="lsr-check">✓</span> Keine Überweisung nötig</div>
         </div>
       </div>
-      <figure class="lsr-right">
-        <img src="/images/hero-main.webp" alt="TCM.ch Behandlungsteam in der Klinik" loading="eager" fetchpriority="high" decoding="async">
-      </figure>
+      <HeroMedia />
     </div>
   </section>
 
