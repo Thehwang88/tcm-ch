@@ -1,6 +1,20 @@
 <style>
   /* Layout-only helpers - design tokens only, no new colours/fonts/components. */
   .akz{padding-top:68px}
+  /* Hero rechts: Zürich-Teamfoto (team-zuerich.webp, 10 Personen) als cover. object-position aus dem Container-
+     Seitenverhältnis (gleiche Tabelle wie /en/acupuncture-zurich/): kein Gesicht am Rand halbiert, vertikal Köpfe statt Boden. */
+  .akz .lsr-right--team img{object-position:58% 10%}
+  @container (aspect-ratio < 1.175){.akz .lsr-right--team img{object-position:86.5% 10%}}
+  @container (aspect-ratio < 1.075){.akz .lsr-right--team img{object-position:73% 10%}}
+  @container (aspect-ratio < 0.995){.akz .lsr-right--team img{object-position:26% 10%}}
+  @container (aspect-ratio < 0.945){.akz .lsr-right--team img{object-position:55.5% 10%}}
+  @container (aspect-ratio < 0.84){.akz .lsr-right--team img{object-position:43.5% 10%}}
+  @container (aspect-ratio < 0.765){.akz .lsr-right--team img{object-position:12.5% 10%}}
+  @container (aspect-ratio < 0.715){.akz .lsr-right--team img{object-position:18% 10%}}
+  @container (aspect-ratio < 0.66){.akz .lsr-right--team img{object-position:36% 10%}}
+  @media(max-width:900px){.akz .lsr-right--team img{object-position:58% 10%}}
+  @media(max-width:352px){.akz .lsr-right--team img{object-position:86.5% 10%}}
+  @media(max-width:322px){.akz .lsr-right--team img{object-position:73% 10%}}
   /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
   .akzh .lsr-inner{min-height:min(560px,62vh)}
   .akzh-strip{background:#fff;border-bottom:1px solid rgba(2,11,16,.08)}
@@ -94,8 +108,8 @@
         <p class="lsr-note">Bestehende Praxen in Höngg und Oerlikon · Weitere Standorte in Vorbereitung.</p>
         <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Terminkoordination TCM.ch: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
       </div>
-      <figure class="lsr-right">
-        <img src="/images/team-hero.jpg" alt="Das Team von TCM.ch – sechs Therapeutinnen und Therapeuten" width="2000" height="1500" loading="eager" fetchpriority="high" decoding="async">
+      <figure class="lsr-right lsr-right--foto lsr-right--team">
+        <img src="/images/team-zuerich.webp" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async">
         <figcaption>Das TCM.ch Behandlungsteam · Praxen des Netzwerks in Höngg und Oerlikon</figcaption>
       </figure>
     </div>

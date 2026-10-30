@@ -84,7 +84,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     ctas={[{ href: '#zh-funnel', label: 'Find an appointment' }, { href: wa, label: 'WhatsApp', kind: 'wa', external: true }]}
     trust={['Personal reply in English', 'Practices in Höngg and Oerlikon', 'No referral needed']}
     note={`Prefer to talk? Call <b>${phone}</b>.`}
-    image={{ src: '/images/team-hero.jpg', alt: 'The TCM.ch team: six practitioners', width: 2000, height: 1500 }}
+    image={{ src: '/images/team-zuerich.webp', alt: 'The TCM.ch team: EMR/ASCA-registered practitioners', width: 1536, height: 1024 }}
   />
 
   <!-- 2 · Trust / USP strip -->
@@ -274,3 +274,18 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <CtaBand title="Rather ask first?" text="Yuna from the TCM.ch concierge answers questions about treatment, appointments and insurance on WhatsApp, free and without obligation." primary={{ href: wa, label: 'Ask on WhatsApp', external: true }} secondary={{ href: telHref, label: `Call ${phone}` }} />
 
 </Layout>
+
+<style is:global>
+  /* Hero right: Zürich team photo (team-zuerich.webp, 10 people) as cover, same crop table as the DE funnel
+     /akupunktur-tcm-zuerich/: object-position by container aspect ratio, no face halved at an edge. HeroSplit unchanged. */
+  html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-fit: cover; object-position: 58% 10%; }
+  @container (aspect-ratio < 1.175) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 86.5% 10%; } }
+  @container (aspect-ratio < 1.075) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 73% 10%; } }
+  @container (aspect-ratio < 0.995) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 26% 10%; } }
+  @container (aspect-ratio < 0.945) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 55.5% 10%; } }
+  @container (aspect-ratio < 0.84) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 43.5% 10%; } }
+  @container (aspect-ratio < 0.765) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 12.5% 10%; } }
+  @container (aspect-ratio < 0.715) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 18% 10%; } }
+  @container (aspect-ratio < 0.66) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 36% 10%; } }
+  @media (max-width: 900px) { html[lang="en"] [data-hero] .ev-hero__media img[src^="/images/team-zuerich.webp"] { object-position: 58% 10%; } }
+</style>
