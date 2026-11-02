@@ -14,7 +14,7 @@ const description =
 
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
-   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Ohmstrasse 14 · Zürich Nord', 'zuerich-city': 'Bahnhofstrasse 37 · Zürich City',
+   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Ohmstrasse 14 · Zürich Nord', 'zuerich-bahnhofstrasse': 'Bahnhofstrasse 37 · Zürich City',
   'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Altstadt, Münzgasse 2', 'volketswil': 'Zürcher Oberland',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
@@ -24,7 +24,7 @@ const desc: Record<string, string> = {
 
 // Regionen-Gruppierung (crawlbare Karten, keine div-onclick).
 const groups = [
-  { label: 'Region Zürich & Winterthur', ids: ['zuerich-city', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
+  { label: 'Region Zürich & Winterthur', ids: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil'] },
   { label: 'Ostschweiz & Bodensee', ids: ['st-gallen', 'frauenfeld', 'kreuzlingen', 'wil', 'rorschach', 'bottighofen'] },
   { label: 'Basel & Nordwestschweiz', ids: ['basel'] },
   { label: 'Zentralschweiz', ids: ['luzern'] },

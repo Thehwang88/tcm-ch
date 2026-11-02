@@ -97,11 +97,12 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
-  // TCM.ch Bahnhofstrasse (Slug bleibt zuerich-city: bestehende City-URL, kein Redirect). Betrieb durch die Inhaber:in
+  // TCM.ch Bahnhofstrasse (Slug zuerich-bahnhofstrasse seit 02.11.2026; /standorte/zuerich-city/ 301 hierher, City-Slug bleibt für einen
+  // späteren City-/HB-Standort reserviert, nicht wiederverwenden). Betrieb durch die Inhaber:in
   // bestätigt (02.11.2026): Bahnhofstrasse 37, 1. OG, Gemeinschaftspraxis (Eingangstafel: «Medthera»). Öffnungszeiten nicht
   // bestätigt → keine. Geo: OpenStreetMap-Gebäude Bahnhofstrasse 37 (way 327298871).
-  { id: 'zuerich-city', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
-    street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Bahnhofstrasse',
+  { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
+    street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
     openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
     areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
@@ -163,7 +164,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
   'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
-  'zuerich-city':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
+  'zuerich-bahnhofstrasse':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },

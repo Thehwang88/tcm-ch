@@ -50,7 +50,7 @@ ok(!/^\s*"?planned"?\s*:\s*(true|false)/m.test(readFileSync('src/data/standorte.
 
 // ── 2. Eröffnungs-Simulation über den Quelltext von locations.ts ──
 console.log('2. Eröffnungs-Simulation (nur Statuswechsel in locations.ts)');
-for (const id of ['zuerich-oerlikon', 'zuerich-city', 'basel']) {
+for (const id of ['zuerich-oerlikon', 'zuerich-bahnhofstrasse', 'basel']) {
   const m = await bundle((s) => {
     const i = s.indexOf(`id: '${id}'`); const j = s.indexOf('\n  { id:', i + 1);
     return s.slice(0, i) + s.slice(i, j < 0 ? undefined : j).replace(/status: '(planned|review)'/, "status: 'operational'") + (j < 0 ? '' : s.slice(j));
@@ -173,7 +173,7 @@ for (const c of m.clinics) {
 }
 
 // 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
-const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-city': 'operational' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
+const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'operational' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
 for (const [id, st] of Object.entries(PINS)) {
   const c = m.clinics.find((x) => x.id === id);
   ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);

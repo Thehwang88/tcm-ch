@@ -115,7 +115,7 @@ const TEL = `tel:+${site.whatsapp}`;
     // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
     // Seiten mit freigegebenem TCM 360°-Check-in (CHECKIN_FREIGABE): SG-Seiten, seit 22.10.2026 beide Winterthurer und seit 02.11.2026 die drei Zürcher Standortseiten.
-    var page360 = sgPage || /^\/standorte\/(winterthur-(marktgasse|muenzgasse)|zuerich-(city|oerlikon|hoengg))\/?$/.test(location.pathname);
+    var page360 = sgPage || /^\/standorte\/(winterthur-(marktgasse|muenzgasse)|zuerich-(bahnhofstrasse|oerlikon|hoengg))\/?$/.test(location.pathname);
     // CARE-Seiten (Marker aus dem CARE-Adapter, z.B. Beschwerden): ruhigeres
     // Label + Ein-Event-Tracking (nur dataLayer); Ziel bleibt das On-Page-Formular
     // ueber den bestehenden Scroll-Handler unten. Alle anderen Seiten unberuehrt.

@@ -209,7 +209,7 @@ const tel = '+41 79 123 45 67'; const P = 'Zürich Oerlikon – Partnerpraxis Pr
 const LU = 'Luzern – Vormerkung, Eröffnung 2027', MZ_ALT = 'Winterthur Münzgasse – Anfrage (Standort in Prüfung)', MZ = 'Winterthur Münzgasse', MG = 'Winterthur Marktgasse', AN = 'Andere / in meiner Nähe';
 for (const [label, ort, id, angebot, code, art] of [
   ['Oerlikon + Ersttermin', OE, 'zuerich-oerlikon', 'ERSTTERMIN_BEHANDLUNG', 200, 'ERSTTERMIN MIT BEHANDLUNG'],
-  ['Bahnhofstrasse + Ersttermin', BH, 'zuerich-city', 'ERSTTERMIN_BEHANDLUNG', 200, 'ERSTTERMIN MIT BEHANDLUNG'],
+  ['Bahnhofstrasse + Ersttermin', BH, 'zuerich-bahnhofstrasse', 'ERSTTERMIN_BEHANDLUNG', 200, 'ERSTTERMIN MIT BEHANDLUNG'],
   ['Luzern + Vormerkung', LU, 'luzern', 'VORMERKUNG', 200, 'VORMERKUNG (STANDORT NOCH NICHT OFFEN)'],
   ['Münzgasse + Check-in', MZ, 'winterthur-muenzgasse', 'TCM_CHECKIN', 200, 'KOSTENLOSER TCM-CHECK-IN'],
   ['Münzgasse + Ersttermin', MZ, 'winterthur-muenzgasse', 'ERSTTERMIN_BEHANDLUNG', 200, 'ERSTTERMIN MIT BEHANDLUNG'],

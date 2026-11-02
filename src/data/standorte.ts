@@ -137,7 +137,7 @@ export const standorte: Record<string, Standort> = {
     nearby: [
       { slug: 'zuerich-oerlikon', plz: '8050', city: 'Zürich Oerlikon', desc: 'Ohmstrasse 14, beim Bahnhof Oerlikon.' },
       { slug: 'winterthur-marktgasse', plz: '8400', city: 'Winterthur Marktgasse', desc: 'Marktgasse 78, in der Winterthurer Altstadt.' },
-      { slug: 'zuerich-city', plz: '8001', city: 'Zürich Bahnhofstrasse', desc: 'Bahnhofstrasse 37, 1. OG, in Zürich City.' },
+      { slug: 'zuerich-bahnhofstrasse', plz: '8001', city: 'Zürich Bahnhofstrasse', desc: 'Bahnhofstrasse 37, 1. OG, in Zürich City.' },
     ],
   },
   kreuzlingen: {
@@ -458,7 +458,7 @@ export const standorte: Record<string, Standort> = {
         "desc": "Nahe Zürich"
       },
       {
-        "slug": "zuerich-city",
+        "slug": "zuerich-bahnhofstrasse",
         "plz": "8001",
         "city": "Zürich Bahnhofstrasse",
         "desc": "Bahnhofstrasse 37, Zürich City"
@@ -783,7 +783,7 @@ export const standorte: Record<string, Standort> = {
     "team": [],
     "nearby": [
       {
-        "slug": "zuerich-city",
+        "slug": "zuerich-bahnhofstrasse",
         "plz": "8001",
         "city": "Zürich Bahnhofstrasse",
         "desc": "Bahnhofstrasse 37, Zürich City"
@@ -857,25 +857,25 @@ export const standorte: Record<string, Standort> = {
     "beschwerden": ["rueckenschmerzen", "nackenschmerzen", "ischias", "migraene", "stress-burnout", "schlafprobleme", "zyklusbeschwerden", "kinderwunsch"],
     "team": [],
     "nearby": [
-      { "slug": "zuerich-city", "plz": "8001", "city": "Zürich Bahnhofstrasse", "desc": "Bahnhofstrasse 37, Zürich City" },
+      { "slug": "zuerich-bahnhofstrasse", "plz": "8001", "city": "Zürich Bahnhofstrasse", "desc": "Bahnhofstrasse 37, Zürich City" },
       { "slug": "zuerich-hoengg", "plz": "8049", "city": "Zürich Höngg", "desc": "Zürich West" },
       { "slug": "winterthur-muenzgasse", "plz": "8400", "city": "Winterthur Münzgasse", "desc": "Nahe Zürich" }
     ]
   },
-  // TCM.ch Bahnhofstrasse (Slug zuerich-city = bestehende City-URL, kein Redirect). Eröffnet, Inhaberbestätigung 02.11.2026.
+  // TCM.ch Bahnhofstrasse (Slug zuerich-bahnhofstrasse; alte URL /standorte/zuerich-city/ = 301 hierher). Eröffnet, Inhaberbestätigung 02.11.2026.
   // Bestätigt: Bahnhofstrasse 37, 8001 Zürich, 1. OG; Gemeinschaftspraxis, auf der Eingangstafel im EG steht «Medthera»
   // (TCM.ch dort noch nicht), im 1. OG ist TCM.ch an der Praxistür angeschrieben. NICHT erfinden: Öffnungszeiten, Gehzeiten,
   // Tram/ÖV, Parkplätze, Lift/Barrierefreiheit, Klingel/Türcode, Team vor Ort ausser den kanonischen Zuordnungen.
-  "zuerich-city": {
+  "zuerich-bahnhofstrasse": {
     "cro": true,
     "sgVoll": true,
-    "slug": "zuerich-city",
+    "slug": "zuerich-bahnhofstrasse",
     "stadt": "Zürich Bahnhofstrasse",
     "seo": {
       "title": "TCM & Akupunktur Zürich Bahnhofstrasse | TCM.ch",
       "description": "TCM.ch Bahnhofstrasse: Akupunktur und TCM an der Bahnhofstrasse 37, 1. OG, im Zentrum von Zürich (8001). Zusatzversicherung je nach Police, Termin anfragen.",
       "h1": "TCM &amp; Akupunktur Zürich <em>Bahnhofstrasse</em>",
-      "schemaName": "TCM.ch Bahnhofstrasse"
+      "schemaName": "TCM.ch Zürich Bahnhofstrasse"
     },
     "hero": {
       "banner": "Standort Zürich Bahnhofstrasse",

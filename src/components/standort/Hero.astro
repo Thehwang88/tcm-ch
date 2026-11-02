@@ -11,7 +11,7 @@ const symbolbild = data.planned || /\/(hero-main\.webp|basel-reception\.webp)$/.
 const eyebrow = data.betreiber ? `${data.betreiber.name} · Partnerpraxis im TCM.ch Netzwerk` : data.review ? `Standort in Prüfung · ${data.stadt}` : data.planned ? `Geplanter Standort · ${data.stadt}` : `TCM.ch Klinik · ${data.stadt}`;
 const heroH1 = data.seo?.h1 ?? `Akupunktur & TCM in <em>${data.stadt}</em>`;
 // Softriver lsr-Hero: Opt-in je Standort (Rollout L3 basel, L4 restliche neun).
-const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'zuerich-city', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'zuerich-hoengg']);
+const LSR_SLUGS = new Set(['basel', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'zuerich-hoengg']);
 const waTermin = waHref(data.nap.telefon, `Hallo, ich möchte einen Termin in ${data.stadt} anfragen.`);
 // Zürcher Standorte hängen unter dem Stadt-Hub /akupunktur-tcm-zuerich/ (Hub-&-Spoke, wie /standorte/zuerich/kosten/).
 const zh = data.slug.startsWith('zuerich-');

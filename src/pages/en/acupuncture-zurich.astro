@@ -3,7 +3,7 @@
 // rhythm (split hero → trust strip → location discovery → therapies → conditions → steps → insurance →
 // local context → FAQ → final inline form + CTA). Counterpart of DE /akupunktur-tcm-zuerich/ (PAIR_MAP).
 // NO clinic entity, no address, no hours here: practice entities live on the location pages.
-// Facts only from locations.ts / zuerich-termin.ts. Live since 02.11.2026: TCM.ch Bahnhofstrasse (zuerich-city) and TCM.ch Oerlikon.
+// Facts only from locations.ts / zuerich-termin.ts. Live since 02.11.2026: TCM.ch Bahnhofstrasse (zuerich-bahnhofstrasse) and TCM.ch Oerlikon.
 import Layout from '../../layouts/Layout.astro';
 import HeroSplit from '../../components/en/HeroSplit.astro';
 import UspStrip from '../../components/en/UspStrip.astro';
@@ -21,7 +21,7 @@ const url = site.url + path;
 const zh: Clinic[] = zuerichStandorte();
 const hoengg = zh.find((c) => c.id === 'zuerich-hoengg')!;
 const oerlikon = zh.find((c) => c.id === 'zuerich-oerlikon')!;
-const city = zh.find((c) => c.id === 'zuerich-city')!;
+const city = zh.find((c) => c.id === 'zuerich-bahnhofstrasse')!;
 const phone = '+41 77 523 61 22';
 const telHref = 'tel:' + phone.replace(/\s/g, '');
 const wa = waHref(phone, 'Hello, I am looking for a TCM practice in Zürich.');
