@@ -11,7 +11,7 @@ const { data, sitekey, oben = false } = Astro.props as { data: Standort; sitekey
 const wa = waHref(data.nap.telefon);
 // Standort <select>: preselect the option matching this location (prefix match, so
 // "Winterthur Marktgasse" -> "Winterthur"), mirroring prefillStandort().
-const options = ['Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Andere / in meiner Nähe'].flatMap(expandStandort);
+const options = ['Zürich Bahnhofstrasse', 'Zürich Oerlikon', 'Zürich Höngg', 'Winterthur', 'Volketswil', 'Frauenfeld', 'Kreuzlingen', 'St. Gallen', 'Wil', 'Rorschach', 'Basel', 'Andere / in meiner Nähe'].flatMap(expandStandort);
 // Geplante Standorte wählen ihre Vormerk-Option vor (src/data/standort-optionen.ts).
 const planned = PLANNED_PRESELECT[data.slug];
 let selIdx = planned ? options.findIndex((o) => o.value === planned) : -1;

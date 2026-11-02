@@ -219,6 +219,7 @@ for (const [label, value, art, angebot, btn, okRe] of [
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
 for (const [u, want, label] of [
   ['/?standort=zuerich-oerlikon', OERL, 'Slug → reguläres Ziel (operativ)'],
+  ['/?standort=zuerich-bahnhofstrasse', 'Zürich Bahnhofstrasse', 'Slug zuerich-bahnhofstrasse → Bahnhofstrasse'],
   ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
   ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
 ]) {
@@ -1088,7 +1089,7 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
 
 console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
 {
-  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon']; // zuerich-bahnhofstrasse: vorVertrag (Status review), eigener Gate-Block in check-clinic-status 4j
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse'];
   for (const slug of STD) {
     const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
