@@ -180,7 +180,7 @@ export const locationContent: Record<string, LocationContent> = {
     sub: 'Praxis Hwang at Limmattalstrasse 340 is a partner practice in the TCM.ch network. We coordinate your request through TCM.ch.',
     about: [
       'Praxis Hwang Zürich Höngg at Limmattalstrasse 340 in district 10 is a partner practice in the TCM.ch network: Praxis Hwang runs the practice, and through TCM.ch you request appointments and clarify questions about costs and insurance. The range includes acupuncture, cupping, Tuina massage and Chinese herbal medicine.',
-      'Part of our network for acupuncture and TCM in Zürich: today in Höngg and <a href="/en/locations/zuerich-oerlikon/">Oerlikon</a>; a city-centre location is planned.',
+      'Part of our network for acupuncture and TCM in Zürich, with clinics in Höngg, in <a href="/en/locations/zuerich-oerlikon/">Oerlikon</a> and on <a href="/en/locations/zuerich-city/">Bahnhofstrasse</a>.',
     ],
     area: 'The practice is close for Höngg, Wipkingen, Affoltern, Albisrieden, district 5 and the Limmattal, and a short trip from Schlieren, Dietikon, Regensdorf and Engstringen.',
     faqs: [
@@ -189,25 +189,42 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
-    nearby: ['zuerich-oerlikon', 'volketswil', 'winterthur-marktgasse'],
+    nearby: ['zuerich-city', 'zuerich-oerlikon', 'volketswil'],
   },
 
   'zuerich-oerlikon': {
-    lead: 'Acupuncture and TCM in Oerlikon: today at the partner practice, after the opening also at Ohmstrasse 14.',
-    sub: 'The new clinic near Oerlikon station is in preparation. Until it opens, our partner practice Praxis Hwang at Schulstrasse 3 in Oerlikon is there for you.',
+    lead: 'Acupuncture and TCM in Zürich North: our clinic at Ohmstrasse 14, near Oerlikon station.',
+    sub: 'First consultation, TCM assessment and a clear treatment plan. Requests are welcome in English or German.',
     about: [
-      'Our new clinic at Ohmstrasse 14 in Zürich Oerlikon is in preparation; the planned date is shown above and is not yet finally confirmed. We describe location and access in detail once the clinic has opened. Appointments now: partner practice Praxis Hwang, Schulstrasse 3, 8050 Zürich.',
-      'Planned is the range of Traditional Chinese Medicine: acupuncture, TCM consultation, cupping, Tuina massage, Chinese herbal medicine, moxibustion and electroacupuncture. Our sister location is in <a href="/en/locations/zuerich-hoengg/">Höngg</a>.',
+      'TCM.ch Oerlikon is at Ohmstrasse 14, 8050 Zürich, near Oerlikon station. We treat with acupuncture, cupping, Tuina massage, Chinese herbal medicine and further TCM methods; which of them make sense for you is decided at the first consultation.',
+      'Opening hours are published once confirmed; until then we offer appointments on request. Our other Zürich locations are on <a href="/en/locations/zuerich-city/">Bahnhofstrasse</a> and in <a href="/en/locations/zuerich-hoengg/">Höngg</a>.',
     ],
-    area: 'The new clinic is close for Oerlikon, Seebach, Schwamendingen, Affoltern and districts 11/12, and quick to reach from the Glattal: Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang and Regensdorf.',
+    area: 'The clinic is close for Oerlikon, Seebach, Schwamendingen, Affoltern and districts 11/12, and quick to reach from the Glattal: Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang and Regensdorf.',
     faqs: [
-      { q: 'Where do I find TCM in Oerlikon?', a: 'Our new clinic is being set up at Ohmstrasse 14, a few minutes\' walk from Oerlikon station. Until it opens, our partner practice Praxis Hwang at Schulstrasse 3 treats you.' },
-      { q: 'Which treatments will the Oerlikon location offer?', a: 'Planned are acupuncture and TCM consultation, plus further methods such as cupping or herbal medicine depending on the team. We confirm the final range at the opening; feel free to ask on WhatsApp.' },
+      { q: 'Where do I find TCM in Oerlikon?', a: 'TCM.ch Oerlikon is at Ohmstrasse 14, 8050 Zürich, near Oerlikon station, within easy reach of Neu-Oerlikon, Seebach, Affoltern, Schwamendingen and Glattpark.' },
+      BOOK_FAQ('Zürich Oerlikon'),
       { q: 'Does health insurance cover the treatment in Oerlikon?', a: INSURANCE },
-      { q: 'How quickly can I get an appointment in Oerlikon?', a: 'At Ohmstrasse 14 we allocate appointments from the opening; the form on this page puts you on the list. For an appointment before the opening, choose the partner practice Praxis Hwang at Schulstrasse 3 in the form.' },
+      { q: 'How many sessions will I need?', a: SESSIONS },
     ],
     hero: { src: '/images/standort-oerlikon.png', alt: 'TCM.ch clinic Zürich Oerlikon', caption: 'Ohmstrasse 14, Zürich Oerlikon' },
-    nearby: ['zuerich-hoengg', 'winterthur-marktgasse', 'volketswil'],
+    nearby: ['zuerich-city', 'zuerich-hoengg', 'winterthur-marktgasse'],
+  },
+
+  'zuerich-city': {
+    lead: 'Acupuncture and TCM in Zürich city centre: our clinic at Bahnhofstrasse 37, first floor.',
+    sub: 'An appointment in the centre, with time for case history and assessment. Requests are welcome in English or German.',
+    about: [
+      'TCM.ch Bahnhofstrasse is at Bahnhofstrasse 37, 8001 Zürich, on the first floor (1. OG). At the ground-floor entrance, TCM.ch is not yet listed on the building directory: please look for "Medthera", a shared practice. On the first floor you will find TCM.ch on the practice door.',
+      'Treatment follows the same principle as at every TCM.ch clinic: a thorough first consultation, a TCM assessment, then a plan with acupuncture, cupping, Tuina, a herbal prescription or other methods, depending on what makes sense for you. Opening hours are published once confirmed; until then we offer appointments on request. Our other Zürich locations are in <a href="/en/locations/zuerich-oerlikon/">Oerlikon</a> and <a href="/en/locations/zuerich-hoengg/">Höngg</a>.',
+    ],
+    area: 'Bahnhofstrasse is in district 1, convenient for anyone who lives or works in the city centre and for patients from the Old Town, Enge, Aussersihl and Wiedikon.',
+    faqs: [
+      { q: 'Where exactly is TCM.ch on Bahnhofstrasse?', a: 'At Bahnhofstrasse 37, 8001 Zürich, on the first floor. TCM.ch is not yet listed on the directory at the ground-floor entrance: please look for "Medthera". On the first floor, TCM.ch is on the practice door.' },
+      BOOK_FAQ('Zürich Bahnhofstrasse'),
+      { q: 'Does health insurance cover the treatment?', a: INSURANCE },
+      { q: 'How many sessions will I need?', a: SESSIONS },
+    ],
+    nearby: ['zuerich-oerlikon', 'zuerich-hoengg', 'volketswil'],
   },
 
   'st-gallen': {

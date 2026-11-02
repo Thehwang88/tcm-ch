@@ -52,7 +52,7 @@ const SCEN = [
   ['Homepage + SG · Ersttermin', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + SG · Check-in', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
   ['Basel (ohne Check-in) · Ersttermin', { url: '/standorte/basel/', inst: 'standort', terminart: 'behandlung' }, 'Neue Anfrage · Basel · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
-  ['Homepage + Oerlikon neue Praxis · Vormerkung', { url: '/', inst: 'home', standort: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung' }, 'Neue Anfrage · Zürich Oerlikon – neue Praxis · Vormerkung', null, null],
+  ['Homepage + Luzern · Vormerkung', { url: '/', inst: 'home', standort: 'Luzern – Vormerkung, Eröffnung 2027' }, 'Neue Anfrage · Luzern · Vormerkung', null, null],
   ['Homepage + Andere · Routing', { url: '/', inst: 'home', standort: 'Andere / in meiner Nähe' }, 'Neue Anfrage · Andere / in meiner Nähe · Anfrage passende Praxis', null, null],
 ];
 const record = [];
@@ -81,7 +81,7 @@ console.log('Ungültige Kombinationen (Server)');
 const base = { telefon: '+41 79 123 45 67', turnstileToken: 't', quelle: '/' };
 for (const [label, d, code] of [
   ['Check-in Basel', { ...base, standort: 'Basel', angebot_id: 'TCM_CHECKIN' }, 'invalid_offer_scope'],
-  ['Ersttermin Oerlikon neue Praxis', { ...base, standort: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung', angebot_id: 'ERSTTERMIN_BEHANDLUNG' }, 'invalid_offer_scope'],
+  ['Ersttermin Luzern (Vormerkung)', { ...base, standort: 'Luzern – Vormerkung, Eröffnung 2027', angebot_id: 'ERSTTERMIN_BEHANDLUNG' }, 'invalid_offer_scope'],
   ['Vormerkung St. Gallen', { ...base, standort: 'St. Gallen', angebot_id: 'VORMERKUNG' }, 'invalid_offer_scope'],
   ['Check-in mit falscher Standort-ID', { ...base, standort: 'St. Gallen', standort_id: 'basel', angebot_id: 'TCM_CHECKIN' }, 'invalid_standort'],
   ['Client-Label als Standort', { ...base, standort: 'Luzern (Eröffnung 2027)', angebot_id: 'VORMERKUNG' }, 'invalid_standort'],

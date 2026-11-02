@@ -30,3 +30,13 @@ export const therapyCards: Record<string, TherapyCard> = {
 };
 
 export const therapyCard = (slug: string): TherapyCard | undefined => therapyCards[slug];
+
+const escCard = (x: string) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/** Therapie-Karten als HTML-String (gleiches Markup wie standort/Therapien.astro bzw. das St.-Galler Raster), für Seiten,
+ *  deren Body ein Raw-HTML-String ist (Zürich-Hub). Unbekannte Slugs brechen den Build ab. */
+export const therapyCardsGridHtml = (slugs: string[]): string =>
+  '<div class="svc-grid">' + slugs.map((slug) => {
+    const c = therapyCards[slug];
+    if (!c) throw new Error(`therapy-cards.ts: Karte ${slug} fehlt`);
+    return `<a class="svc-card reveal" href="/therapien/${slug}/" style="text-decoration:none;color:inherit"> <div class="svc-photo-wrap"> <img width="${c.w}" height="${c.h}" src="${c.img}" alt="${escCard(c.name)}" class="svc-photo" loading="lazy" decoding="async" style="object-position:${c.objectPos}"> <div class="svc-photo-top-bar"></div> </div> <div class="svc-body"> <div class="svc-name">${escCard(c.name)}</div> <div class="svc-tagline">${escCard(c.tagline)}</div> <div class="svc-meta"> <span class="svc-badge svc-badge--time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15.5 14"></polyline></svg>${escCard(c.time)}</span> <span class="svc-badge svc-badge--ins">${escCard(c.ins)}</span> </div> <div class="svc-cta">Mehr erfahren <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div> </div> </a>`;
+  }).join('') + '</div>';
