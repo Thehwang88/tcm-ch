@@ -1,15 +1,15 @@
 {
   "page:home": {
-    "src/data/home-body.html": "a49e26e1a0ceba99"
+    "src/data/home-body.html": "5c9ee82b26583204"
   },
   "page:zurich": {
-    "src/pages/akupunktur-tcm-zuerich.astro": "2cab5d569205ef39",
-    "src/data/akupunktur-tcm-zuerich-body.html": "8d77ecb4dfe90e1d",
-    "src/data/zuerich-termin.ts": "e39ce4e4ed809871"
+    "src/pages/akupunktur-tcm-zuerich.astro": "7cf27a59d9bec15a",
+    "src/data/akupunktur-tcm-zuerich-body.html": "70d0cf7448846427",
+    "src/data/zuerich-termin.ts": "0c9ef0e350f07968"
   },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
-    "src/data/locations.ts": "cf4632b40c04681f"
+    "src/data/locations.ts": "9ec96cb74ccccb9f"
   },
   "hub:therapies": {
     "src/pages/therapien/index.astro": "72ce4330908c0c52"
@@ -21,14 +21,14 @@
   "page:contact": {
     "src/pages/kontakt.astro": "67f1fd0da83c924d",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
-    "src/data/locations.ts": "cf4632b40c04681f"
+    "src/data/locations.ts": "9ec96cb74ccccb9f"
   },
   "page:insurance": {
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
-    "src/pages/akupunktur-in-der-naehe.astro": "47edcb78ba03e0e4",
-    "src/data/locations.ts": "cf4632b40c04681f"
+    "src/pages/akupunktur-in-der-naehe.astro": "6d70f82da18e163b",
+    "src/data/locations.ts": "9ec96cb74ccccb9f"
   },
   "location:kreuzlingen": {
     "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
@@ -51,19 +51,23 @@
   },
   "location:volketswil": {
     "src/data/locations.ts#clinics.volketswil": "9f102b6ba7c54055",
-    "src/data/standorte.ts#standorte.volketswil": "962f6782f2e29535"
+    "src/data/standorte.ts#standorte.volketswil": "aed4c422ed0957b7"
   },
   "location:zuerich-hoengg": {
     "src/data/locations.ts#clinics.zuerich-hoengg": "4b7aac1523cf4e8f",
-    "src/data/standorte.ts#standorte.zuerich-hoengg": "48067c32225802fa"
+    "src/data/standorte.ts#standorte.zuerich-hoengg": "89ea538d6b54a408"
   },
   "location:zuerich-oerlikon": {
-    "src/data/locations.ts#clinics.zuerich-oerlikon": "96b56144fb61f867",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "b12f919dc930f961"
+    "src/data/locations.ts#clinics.zuerich-oerlikon": "16d51a419243873a",
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "0a5e84ba076c2bb6"
+  },
+  "location:zuerich-city": {
+    "src/data/locations.ts#clinics.zuerich-city": "21a6e960c65b6c4e",
+    "src/data/standorte.ts#standorte.zuerich-city": "02ef9ac0b6adacfb"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
-    "src/data/standorte.ts#standorte.basel": "a3d1edf662a4d828"
+    "src/data/standorte.ts#standorte.basel": "6f5a078c924036d9"
   },
   "location:luzern": {
     "src/data/locations.ts#clinics.luzern": "e1eac8017104a07f"
@@ -83,34 +87,34 @@
     "src/data/standorte.ts#standorte.wil": "de92951cde129255"
   },
   "therapy:acupuncture": {
-    "src/data/therapie-leaves/akupunktur.html": "bd30cd6aaad39e57"
+    "src/data/therapie-leaves/akupunktur.html": "dc9907801844ff03"
   },
   "therapy:cupping": {
-    "src/data/therapie-leaves/schroepfen.html": "3c47ab17fe1d7e70"
+    "src/data/therapie-leaves/schroepfen.html": "abb07539af9afc40"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "7f9674fcd3af3939"
+    "src/data/therapie-leaves/tuina.html": "7883cd55af09afe8"
   },
   "therapy:chinese-herbal-medicine": {
-    "src/data/therapie-leaves/kraeutertherapie.html": "f32cec32ef7ea61b"
+    "src/data/therapie-leaves/kraeutertherapie.html": "b412564acaabbc14"
   },
   "therapy:moxibustion": {
-    "src/data/therapie-leaves/moxibustion.html": "bac82e8878946297"
+    "src/data/therapie-leaves/moxibustion.html": "1e3d31a4ca716ce5"
   },
   "therapy:electroacupuncture": {
-    "src/data/therapie-leaves/elektroakupunktur.html": "8899759d769b1fd8"
+    "src/data/therapie-leaves/elektroakupunktur.html": "21de6a9ad88ab249"
   },
   "therapy:facial-acupuncture": {
-    "src/data/therapie-leaves/gesichtsakupunktur.html": "24f308716cafa3de"
+    "src/data/therapie-leaves/gesichtsakupunktur.html": "6bfcdbc70520cd04"
   },
   "therapy:acupressure": {
-    "src/data/therapie-leaves/akupressur.html": "7181a61426b7c59c"
+    "src/data/therapie-leaves/akupressur.html": "4fbb580e1dc73b85"
   },
   "therapy:shiatsu": {
-    "src/data/therapie-leaves/shiatsu.html": "dd16f242c737e556"
+    "src/data/therapie-leaves/shiatsu.html": "ed60fd91647dd4a2"
   },
   "therapy:gua-sha": {
-    "src/data/therapie-leaves/gua-sha.html": "820e0273e0825c11"
+    "src/data/therapie-leaves/gua-sha.html": "be68d65df2c4e310"
   },
   "therapy:physiotherapy": {
     "src/data/therapie-leaves/physiotherapie.html": "a32f31ba2d2d4066"
@@ -131,7 +135,7 @@
     "src/data/symptom-leaves/stress-burnout.html": "d3ed7f3a9442c8eb"
   },
   "condition:digestive-issues": {
-    "src/data/symptom-leaves/verdauungsprobleme.html": "1660cc0bbc9d583d"
+    "src/data/symptom-leaves/verdauungsprobleme.html": "26bd9259ab975849"
   },
   "condition:menstrual-issues": {
     "src/data/symptom-leaves/zyklusbeschwerden.html": "689e9bab0fd3f39b"

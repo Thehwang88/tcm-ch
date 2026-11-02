@@ -36,12 +36,9 @@ for (const tag of ['2026-12-02T09:00:00Z', '2027-06-01T09:00:00Z']) {
   fakeNow(tag);
   const m = await bundle();
   const d = tag.slice(0, 10);
-  const oe = m.clinics.find((c) => c.id === 'zuerich-oerlikon');
-  const html = m.zhStandortOptionsHtml();
-  ok(oe.status === 'planned', `${d}: Oerlikon status bleibt 'planned'`);
-  ok(!html.includes('value="Zürich Oerlikon"'), `${d}: Zürich-Funnel ohne reguläre Oerlikon-Option`);
-  ok(oe.vorab.every((o) => html.includes(o.value)), `${d}: Partnerpraxis- und Vormerk-Option weiter anfragbar`);
-  ok(m.expandStandort('Zürich Oerlikon').length === 2, `${d}: Formulare zeigen weiter beide Oerlikon-Optionen`);
+  const lu = m.clinics.find((c) => c.id === 'luzern');
+  ok(lu.status === 'planned', `${d}: Luzern status bleibt 'planned' (Datum schaltet nicht frei)`);
+  ok(m.expandStandort('Luzern').every((o) => lu.vorab.some((v) => v.value === o.value)), `${d}: Luzern bleibt Vormerkung`);
   for (const c of m.clinics.filter((x) => x.status !== 'operational' && m.getStandort(x.id))) {
     ok(m.getStandort(c.id).planned === true, `${d}: ${c.name} bleibt im Status-Modus (${c.status})`);
   }
@@ -53,7 +50,7 @@ ok(!/^\s*"?planned"?\s*:\s*(true|false)/m.test(readFileSync('src/data/standorte.
 
 // ── 2. Eröffnungs-Simulation über den Quelltext von locations.ts ──
 console.log('2. Eröffnungs-Simulation (nur Statuswechsel in locations.ts)');
-for (const id of ['zuerich-oerlikon', 'basel']) {
+for (const id of ['zuerich-oerlikon', 'zuerich-city', 'basel']) {
   const m = await bundle((s) => {
     const i = s.indexOf(`id: '${id}'`); const j = s.indexOf('\n  { id:', i + 1);
     return s.slice(0, i) + s.slice(i, j < 0 ? undefined : j).replace(/status: '(planned|review)'/, "status: 'operational'") + (j < 0 ? '' : s.slice(j));
@@ -145,7 +142,7 @@ for (const c of m.clinics) {
 //     Formulierung innerhalb von 70 Zeichen, ohne dass dazwischen ein anderer nicht-operativer Standort steht).
 const PREOPEN = /Eröffnung|Vormerk|in Vorbereitung|noch nicht eröffnet|Warteliste|opening planned|not open yet|in preparation|Pre-Opening/i;
 const visible = (s) => text(s.replace(/<head[\s\S]*?<\/head>|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<\/option>/g, ' | '));
-const nichtOperativ = m.clinics.filter((c) => c.status !== 'operational').map((c) => c.name).concat(['Zürich City', 'Luzern', 'Bern']);
+const nichtOperativ = m.clinics.filter((c) => c.status !== 'operational').map((c) => c.name).concat(['Luzern', 'Bern']);
 const vis = new Map([...html].map(([p, s]) => [p, visible(s)]));
 for (const c of m.clinics.filter((x) => x.status === 'operational')) {
   const hits = [];
@@ -176,7 +173,7 @@ for (const c of m.clinics) {
 }
 
 // 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
-const PINS = { basel: 'operational' }; // Basel aktiv laut Inhaber (12.10.2026)
+const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-city': 'operational' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
 for (const [id, st] of Object.entries(PINS)) {
   const c = m.clinics.find((x) => x.id === id);
   ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);
