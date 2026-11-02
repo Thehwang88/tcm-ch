@@ -59,11 +59,11 @@
   },
   "location:zuerich-oerlikon": {
     "src/data/locations.ts#clinics.zuerich-oerlikon": "16d51a419243873a",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "eec2e7876e3435c1"
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "ffac04138b7b5f81"
   },
   "location:zuerich-bahnhofstrasse": {
     "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "81f5f7a5cb853480",
-    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "e85cdfe0a8c6c116"
+    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "c7951a3f665facb6"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",

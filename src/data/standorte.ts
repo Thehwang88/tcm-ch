@@ -75,6 +75,9 @@ export interface Standort {
 
 /** Therapie-Kartenset und Reihenfolge wie das Therapien-Raster der St.-Galler Standortseite (Leaf st-gallen.html). */
 export const NETZ_THERAPIEN = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie', 'massage', 'kraeutertherapie'];
+/** Gleiches Raster/Reihenfolge, aber nur TCM-Methoden: für Standorte ohne bestätigte Physiotherapie/medizinische Massage
+ *  (Zürich Bahnhofstrasse, Zürich Oerlikon; Inhaberangabe 02.11.2026). Kein Physio-Hinweisblock, kein Massage-Zusatz. */
+export const TCM_THERAPIEN = NETZ_THERAPIEN.filter((t) => t !== 'physiotherapie' && t !== 'massage');
 
 export const standorte: Record<string, Standort> = {
   basel: {
@@ -837,14 +840,14 @@ export const standorte: Record<string, Standort> = {
       "geo": { "lat": 47.4112, "lng": 8.5459 }
     },
     "intro": {
-      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p>TCM.ch Oerlikon findest du an der <strong>Ohmstrasse 14</strong> in 8050 Zürich, beim Bahnhof Oerlikon. Hier behandeln wir mit <a href='/therapien/akupunktur/'><strong>Akupunktur</strong></a>, <a href='/therapien/schroepfen/'><strong>Schröpfen</strong></a>, <a href='/therapien/tuina/'><strong>Tuina-Massage</strong></a>, <a href='/therapien/kraeutertherapie/'><strong>chinesischer Kräutertherapie</strong></a> und weiteren TCM-Methoden. Welche davon für dich sinnvoll sind, klären wir im Erstgespräch.</p><p>Medizinische und entspannende Behandlungen findest du gesammelt unter <a href='/massage-oerlikon/'>Massage in Oerlikon</a>. Weitere Praxen und den stadtweiten Überblick findest du unter <a href='/akupunktur-tcm-zuerich/'>alle TCM.ch Praxen in Zürich</a>.</p>",
+      "body": "<h2>TCM Zürich Oerlikon, Akupunktur, Tuina &amp; TCM-Klinik in Zürich Nord</h2><p>TCM.ch Oerlikon findest du an der <strong>Ohmstrasse 14</strong> in 8050 Zürich, beim Bahnhof Oerlikon. Hier behandeln wir mit <a href='/therapien/akupunktur/'><strong>Akupunktur</strong></a>, <a href='/therapien/schroepfen/'><strong>Schröpfen</strong></a>, <a href='/therapien/tuina/'><strong>Tuina-Massage</strong></a>, <a href='/therapien/kraeutertherapie/'><strong>chinesischer Kräutertherapie</strong></a> und weiteren TCM-Methoden. Welche davon für dich sinnvoll sind, klären wir im Erstgespräch.</p><p>Weitere Praxen und den stadtweiten Überblick findest du unter <a href='/akupunktur-tcm-zuerich/'>alle TCM.ch Praxen in Zürich</a>.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – Patient:innen aus ganz Zürich Nord und dem Glattal</h2><p>Die Praxis liegt nah für Menschen aus <strong>Oerlikon</strong>, <strong>Seebach</strong>, <strong>Schwamendingen</strong>, <strong>Affoltern</strong> und dem Kreis 11/12. Auch aus dem <strong>Glattal</strong>, Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang und Regensdorf ist sie gut erreichbar. Durch die Lage beim Bahnhof Oerlikon ist sie für ganz Zürich Nord und das Zürcher Unterland praktisch; für <strong>Neu-Oerlikon</strong> und den <strong>Glattpark</strong> liegt sie besonders nah.</p><p style=\"display:block\">Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": {
       "oev": "Die Praxis liegt beim Bahnhof Oerlikon; deine Verbindung zur Ohmstrasse 14 planst du am einfachsten im ZVV-Fahrplan.",
       "autoParken": ""
     },
-    "therapien": NETZ_THERAPIEN,
+    "therapien": TCM_THERAPIEN,
     "faqs": [
       { "q": "Wo finde ich TCM in Oerlikon?", "a": "TCM.ch Oerlikon ist an der Ohmstrasse 14, 8050 Zürich, beim Bahnhof Oerlikon. Die Praxis ist gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern, Schwamendingen und dem Glattpark." },
       { "q": "Welche Behandlungen bietet TCM.ch Oerlikon an?", "a": "Das Angebot steht oben bei den Therapien, von Akupunktur und Schröpfen über Tuina bis zur chinesischen Kräutertherapie. Welche Methode in deinem Fall passt, klären wir im Erstgespräch." },
@@ -900,7 +903,7 @@ export const standorte: Record<string, Standort> = {
       "einzugsgebiet": "<h2>Für Zürich City und die Kreise rund ums Zentrum</h2><p>Die Bahnhofstrasse liegt im Kreis 1. Die Praxis bietet sich an für alle, die in der City wohnen oder arbeiten, und für Patient:innen aus der Altstadt, der Enge, aus Aussersihl und Wiedikon.</p><p style=\"display:block\">Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": { "oev": "", "autoParken": "" },
-    "therapien": NETZ_THERAPIEN,
+    "therapien": TCM_THERAPIEN,
     "beschwerdenIntro": "Häufige Anliegen, mit denen du in Zürich City anfragen kannst. Auf jeder Seite steht, wie wir vorgehen und wo die Grenzen der TCM liegen.",
     "beschwerden": ["nackenschmerzen", "stress-burnout", "migraene", "schlafprobleme", "rueckenschmerzen", "verdauungsprobleme", "tinnitus", "endometriose"],
     "team": [],
