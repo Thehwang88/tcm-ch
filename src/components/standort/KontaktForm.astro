@@ -11,7 +11,8 @@ const tel = telHref(data.nap.telefon);
 // behalten die bestehende Statusführung; keine Verfügbarkeits-/Scarcity-Claims).
 const trustV2 = Boolean(data.v2 && !data.planned);
 const CHK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2D9B6F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-const sub = data.review ? 'Der Betrieb an diesem Standort ist noch nicht bestätigt. Schick uns deine Anfrage, wir schlagen dir eine passende Praxis in der Nähe vor.'
+const sub = data.vorVertrag ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Schick uns deine Anfrage, wir schlagen dir die passende Praxis vor.'
+  : data.review ? 'Der Betrieb an diesem Standort ist noch nicht bestätigt. Schick uns deine Anfrage, wir schlagen dir eine passende Praxis in der Nähe vor.'
   : data.planned ? `Der Standort ist in Vorbereitung. Deine Nachricht gilt als Anfrage für den geplanten Start – wir melden uns, sobald Termine in ${data.stadt} möglich sind.`
   : 'Sag uns kurz Wunschtage und Tageszeit, wir melden uns mit einem Terminvorschlag.';
 ---

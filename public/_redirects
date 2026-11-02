@@ -31,15 +31,14 @@
 # an explicit "404" status is rejected by the build validator).
 /standorte/zuerich           /akupunktur-tcm-zuerich/    301
 /standorte/zuerich/          /akupunktur-tcm-zuerich/    301
-# TCM.ch Bahnhofstrasse: Slug zuerich-city → zuerich-bahnhofstrasse (02.11.2026). zuerich-city bleibt stillgelegt
-# (reserviert für einen späteren City-/HB-Standort, nicht wiederverwenden). Alle Altpfade direkt, ein Hop.
-/standorte/zuerich-city            /standorte/zuerich-bahnhofstrasse/    301
-/standorte/zuerich-city/           /standorte/zuerich-bahnhofstrasse/    301
-/en/locations/zuerich-city         /en/locations/zuerich-bahnhofstrasse/ 301
-/en/locations/zuerich-city/        /en/locations/zuerich-bahnhofstrasse/ 301
-# Bellevue-Standort stillgelegt (10/2026): Nachfolger des City-Intents ist TCM.ch Bahnhofstrasse (direkt, ohne Umweg über zuerich-city).
-/standorte/zuerich-bellevue    /standorte/zuerich-bahnhofstrasse/    301
-/standorte/zuerich-bellevue/   /standorte/zuerich-bahnhofstrasse/    301
+# Alter City-Slug (zuerich-city) und Bellevue: stillgelegt, Ziel = Zürich-Hub (ein Hop). NICHT auf Bahnhofstrasse leiten, solange
+# der Mietvertrag offen ist (vorVertrag in src/data/locations.ts). zuerich-city bleibt für einen späteren City-/HB-Standort reserviert.
+/standorte/zuerich-city            /akupunktur-tcm-zuerich/    301
+/standorte/zuerich-city/           /akupunktur-tcm-zuerich/    301
+/en/locations/zuerich-city         /en/acupuncture-zurich/     301
+/en/locations/zuerich-city/        /en/acupuncture-zurich/     301
+/standorte/zuerich-bellevue        /akupunktur-tcm-zuerich/    301
+/standorte/zuerich-bellevue/       /akupunktur-tcm-zuerich/    301
 /en/locations/zuerich-bellevue   /en/locations/              301
 /en/locations/zuerich-bellevue/  /en/locations/              301
 

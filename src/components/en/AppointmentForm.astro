@@ -2,7 +2,7 @@
 // Shared EN appointment form (contact page + location pages). Same endpoint, payload and
 // status-aware location options as the DE forms (/api/anfrage, Turnstile, standort-optionen.ts).
 import { site } from '../../data/site';
-import { clinics } from '../../data/locations';
+import { publicClinics as clinics } from '../../data/locations';
 interface Props { id?: string; preselect?: string; source: string; heading?: string; intro?: string; therapy?: string; options?: { value: string; label: string }[]; anyLabel?: string }
 const { id = 'en-appointment-form', preselect = '', source, heading = 'Request an appointment', intro, therapy, options: optionsProp, anyLabel = 'No preference' } = Astro.props;
 // Status-aware options from the single clinic source: operational → clinic name (same value as the DE forms);

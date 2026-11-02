@@ -219,7 +219,6 @@ for (const [label, value, art, angebot, btn, okRe] of [
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
 for (const [u, want, label] of [
   ['/?standort=zuerich-oerlikon', OERL, 'Slug → reguläres Ziel (operativ)'],
-  ['/?standort=zuerich-bahnhofstrasse', 'Zürich Bahnhofstrasse', 'Slug zuerich-bahnhofstrasse → Bahnhofstrasse'],
   ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
   ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
 ]) {
@@ -861,6 +860,7 @@ for (const w of [320, 390, 768, 1440]) {
 }
 { // Auswahl unabhängig je Instanz; Mint allein ist keine Auswahl
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: 390 }));
+  await new Promise((r) => setTimeout(r, 400)); // Rand-Transition (0,15 s) abwarten, sonst Messung mitten im Übergang
   const bc = (i, v) => pg.$eval(`${card(i)} .kf-opt--${v}`, (l) => [getComputedStyle(l).borderTopColor, l.classList.contains('is-checked'), l.querySelector('input').checked].join());
   const b0 = await bc('sg-hero', 'behandlung'), c0 = await bc('sg-hero', 'checkin');
   ok(b0.split(',')[0] === c0.split(',')[0] && /false,false$/.test(b0), 'ohne Auswahl: Mint-Kachel hat denselben neutralen Rand wie der Check-in, nicht gewählt');
@@ -1088,7 +1088,7 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
 
 console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
 {
-  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-bahnhofstrasse'];
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon']; // zuerich-bahnhofstrasse: vorVertrag (Status review), eigener Gate-Block in check-clinic-status 4j
   for (const slug of STD) {
     const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);

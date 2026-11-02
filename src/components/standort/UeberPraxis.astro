@@ -5,7 +5,7 @@ import { heroVideo, isSymbolbild } from '../../data/hero-video';
 // SG-Vorlage: ohne eigene <section>-Hülle, als Praxisspalte im Kontaktbereich (Slot info in KontaktPraxis.astro), wie in
 // St. Gallen mit Telefon und E-Mail und voller Kartenhöhe.
 const { data } = Astro.props as { data: Standort };
-const address = `${data.nap.strasse}, ${data.nap.plz} ${data.nap.ort}`;
+const address = data.nap.strasse ? `${data.nap.strasse}, ${data.nap.plz} ${data.nap.ort}` : data.nap.ort; // ohne Strasse (vorVertrag): nur Ort
 // This is the SINGLE source of Anfahrt on the page (oev + autoParken). IntroNap holds no
 // Anfahrt. CRO-Layout: Kontakt-Reihenfolge Adresse → Öffnungszeiten → Telefon → E-Mail,
 // Anfahrt-Text im "Anreise & Parkieren"-Accordion (server-gerendert, crawlbar).
@@ -46,7 +46,7 @@ const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) =>
 ---
 <h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && !slim && (
-  <div class="content-body" style="margin-bottom:18px"><p>{data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p></div>
+  <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p></div>
 )}
 {praxisBilder.length > 0 && (
   <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>

@@ -3,14 +3,14 @@
 // Ausnahme: geplante Standorte (planned) ersetzen die Verfügbarkeits-Karte
 // durch den sachlich richtigen Status (keine Termin-Claims vor Eröffnung).
 // Nur das .usp-grid: kompakte USP-Reihe der SG-Vorlage (Slot usp in KontaktPraxis.astro).
-const { planned = false, review = false } = Astro.props as { planned?: boolean; review?: boolean };
+const { planned = false, review = false, vorVertrag = false } = Astro.props as { planned?: boolean; review?: boolean; vorVertrag?: boolean };
 const icon = (p: string) => `<div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg></div>`;
 const cards = [
   { i: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline>',
     t: planned ? 'Abrechnung über Zusatzversicherung' : 'Krankenkassen-anerkannt',
     s: review ? 'In der Praxis, die wir dir vorschlagen.' : planned ? 'Gilt für Behandlungen ab Eröffnung bzw. in der bestehenden Partnerpraxis.' : 'Abrechnung über die Zusatzversicherung.' },
   { i: '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>',
-    t: planned ? 'Anfragen bereits möglich' : 'Termin direkt anfragen',
+    t: vorVertrag ? 'Termin in Zürich anfragen' : planned ? 'Anfragen bereits möglich' : 'Termin direkt anfragen',
     s: review ? 'Wir schlagen dir eine passende Praxis in der Nähe vor.' : planned ? 'Wir melden uns, sobald die Terminvergabe startet.' : 'Per WhatsApp, Telefon oder Formular.' },
   { i: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>',
     t: 'Keine Überweisung nötig', s: 'Direkt per WhatsApp anfragen.' },

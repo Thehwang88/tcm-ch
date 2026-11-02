@@ -386,7 +386,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
           Therapien → Team → Beschwerden → Transparenz → Krankenkasse → lokale Inhalte → Praxen in der Nähe →
           WhatsApp → FAQ → unteres Formular → Weiterlesen. */}
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
-        <UspGrid slot="usp" planned={data.planned} review={data.review} />
+        <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} />
         <div slot="form" data-std-box-oben><AnfrageKarte data={data} sitekey={turnstileSitekey} oben /></div>
         <UeberPraxis slot="info" data={data} inner />
       </KontaktPraxis>
@@ -401,7 +401,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         {!(data.sgVoll && !data.planned && !data.review) && <ClinicalLead slug={data.slug} />}
         <Beschwerden data={data} />
         {data.ablaufBlock && <Ablauf />}
-        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review)} />
+        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag)} />
         <KrankenkassenTeam data={data} />
         <IntroNap data={data} />
         {data.extraBlock && <Fragment set:html={data.extraBlock} />}

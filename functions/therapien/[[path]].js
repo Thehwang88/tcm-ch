@@ -13,7 +13,7 @@ const ALLOW = new Set(["schroepfen/blutiges-schroepfen", "schroepfen/hijama", "a
 // Therapie×Stadt-Doorways, deren lokale Suchintention exakt eine live Standortseite besitzt
 // (seo/master-keyword-url-map.csv): 301 statt 410.
 const ALIAS = {
-  "akupunktur/zuerich-city": "/standorte/zuerich-bahnhofstrasse/",
+  "akupunktur/zuerich-city": "/akupunktur-tcm-zuerich/", // Bahnhofstrasse erst nach Mietvertrag verlinken
 };
 
 function gone() {

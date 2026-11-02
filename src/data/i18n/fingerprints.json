@@ -1,15 +1,15 @@
 {
   "page:home": {
-    "src/data/home-body.html": "b9425de4e0c4fa44"
+    "src/data/home-body.html": "318ab7ea6efb35d6"
   },
   "page:zurich": {
-    "src/pages/akupunktur-tcm-zuerich.astro": "40e2c027eee60d1d",
-    "src/data/akupunktur-tcm-zuerich-body.html": "cddc28877b96208f",
+    "src/pages/akupunktur-tcm-zuerich.astro": "6f75f69e56585f4c",
+    "src/data/akupunktur-tcm-zuerich-body.html": "eb7c18ea024f291f",
     "src/data/zuerich-termin.ts": "1ec9bc1ae771c0c7"
   },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
-    "src/data/locations.ts": "8248599a7eb8192b"
+    "src/data/locations.ts": "0de57839617cd396"
   },
   "hub:therapies": {
     "src/pages/therapien/index.astro": "72ce4330908c0c52"
@@ -21,53 +21,53 @@
   "page:contact": {
     "src/pages/kontakt.astro": "67f1fd0da83c924d",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
-    "src/data/locations.ts": "8248599a7eb8192b"
+    "src/data/locations.ts": "0de57839617cd396"
   },
   "page:insurance": {
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
-    "src/pages/akupunktur-in-der-naehe.astro": "8aad0422b71ebf5f",
-    "src/data/locations.ts": "8248599a7eb8192b"
+    "src/pages/akupunktur-in-der-naehe.astro": "7caa69a40b736a1c",
+    "src/data/locations.ts": "0de57839617cd396"
   },
   "location:kreuzlingen": {
     "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
-    "src/data/standorte.ts#standorte.kreuzlingen": "5681fb8705812506"
+    "src/data/standorte.ts#standorte.kreuzlingen": "9f20a8050ea5d720"
   },
   "location:bottighofen": {
     "src/data/locations.ts#clinics.bottighofen": "6371dfa639711fb6"
   },
   "location:frauenfeld": {
     "src/data/locations.ts#clinics.frauenfeld": "9e2e8c5d720bd94c",
-    "src/data/standorte.ts#standorte.frauenfeld": "917db6d6c925cd41"
+    "src/data/standorte.ts#standorte.frauenfeld": "2af9490214330b94"
   },
   "location:winterthur-muenzgasse": {
     "src/data/locations.ts#clinics.winterthur-muenzgasse": "971e72b7aeef5217",
-    "src/data/standorte.ts#standorte.winterthur-muenzgasse": "739e725506d3c312"
+    "src/data/standorte.ts#standorte.winterthur-muenzgasse": "54ac0f8ff32160ce"
   },
   "location:winterthur-marktgasse": {
     "src/data/locations.ts#clinics.winterthur-marktgasse": "91285a3dfab360c1",
-    "src/data/standorte.ts#standorte.winterthur-marktgasse": "15328f212f9842f5"
+    "src/data/standorte.ts#standorte.winterthur-marktgasse": "1a7b45505619cb71"
   },
   "location:volketswil": {
     "src/data/locations.ts#clinics.volketswil": "9f102b6ba7c54055",
-    "src/data/standorte.ts#standorte.volketswil": "64ce0936d978eb76"
+    "src/data/standorte.ts#standorte.volketswil": "33f0d663dd342071"
   },
   "location:zuerich-hoengg": {
     "src/data/locations.ts#clinics.zuerich-hoengg": "4b7aac1523cf4e8f",
-    "src/data/standorte.ts#standorte.zuerich-hoengg": "4d15a1defbf1d4e5"
+    "src/data/standorte.ts#standorte.zuerich-hoengg": "a5d242ca29a7a731"
   },
   "location:zuerich-oerlikon": {
     "src/data/locations.ts#clinics.zuerich-oerlikon": "16d51a419243873a",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "ffac04138b7b5f81"
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "39370d35d052ba39"
   },
   "location:zuerich-bahnhofstrasse": {
-    "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "81f5f7a5cb853480",
-    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "c7951a3f665facb6"
+    "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "2829c7f9429427d0",
+    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "d26158160f1e94b5"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
-    "src/data/standorte.ts#standorte.basel": "a6bf63fe3966892b"
+    "src/data/standorte.ts#standorte.basel": "9a3317783996c7a1"
   },
   "location:luzern": {
     "src/data/locations.ts#clinics.luzern": "e1eac8017104a07f"
@@ -80,41 +80,41 @@
   },
   "location:rorschach": {
     "src/data/locations.ts#clinics.rorschach": "795f34ea6f32d299",
-    "src/data/standorte.ts#standorte.rorschach": "b880105b59b1f395"
+    "src/data/standorte.ts#standorte.rorschach": "ecd53c137a7af830"
   },
   "location:wil": {
     "src/data/locations.ts#clinics.wil": "218c8e5f07367b5e",
-    "src/data/standorte.ts#standorte.wil": "de92951cde129255"
+    "src/data/standorte.ts#standorte.wil": "1ad92a0b240f9d14"
   },
   "therapy:acupuncture": {
-    "src/data/therapie-leaves/akupunktur.html": "b29acc3da1c84c4a"
+    "src/data/therapie-leaves/akupunktur.html": "a2dd01ac313d2eb3"
   },
   "therapy:cupping": {
-    "src/data/therapie-leaves/schroepfen.html": "8e81cf9cf16cc2d9"
+    "src/data/therapie-leaves/schroepfen.html": "8531151697496b39"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "63c5d0ae0b7a6c25"
+    "src/data/therapie-leaves/tuina.html": "a4ea6e3cf36ca4eb"
   },
   "therapy:chinese-herbal-medicine": {
-    "src/data/therapie-leaves/kraeutertherapie.html": "613ae07dfae4ea8a"
+    "src/data/therapie-leaves/kraeutertherapie.html": "16f5518c819d019c"
   },
   "therapy:moxibustion": {
-    "src/data/therapie-leaves/moxibustion.html": "32e83f6f7b7fb99d"
+    "src/data/therapie-leaves/moxibustion.html": "328a00ed07579a3e"
   },
   "therapy:electroacupuncture": {
-    "src/data/therapie-leaves/elektroakupunktur.html": "4fce37b3f7544403"
+    "src/data/therapie-leaves/elektroakupunktur.html": "a4a0d4cda41b3f72"
   },
   "therapy:facial-acupuncture": {
-    "src/data/therapie-leaves/gesichtsakupunktur.html": "42f6925fe82d31bd"
+    "src/data/therapie-leaves/gesichtsakupunktur.html": "daf9856aeb5d7e7d"
   },
   "therapy:acupressure": {
-    "src/data/therapie-leaves/akupressur.html": "b5ef0306febbb7b2"
+    "src/data/therapie-leaves/akupressur.html": "b2fc97ce5ab93c0b"
   },
   "therapy:shiatsu": {
-    "src/data/therapie-leaves/shiatsu.html": "5d84bfa412e5d5e1"
+    "src/data/therapie-leaves/shiatsu.html": "801368b541b9e006"
   },
   "therapy:gua-sha": {
-    "src/data/therapie-leaves/gua-sha.html": "68408d5f0c8246da"
+    "src/data/therapie-leaves/gua-sha.html": "8b3ac427c33046a5"
   },
   "therapy:physiotherapy": {
     "src/data/therapie-leaves/physiotherapie.html": "a32f31ba2d2d4066"

@@ -30,9 +30,7 @@ keine Einträge nach dem 20.09.2026 und ist für den Stand der Abarbeitung nicht
 
 ## Offen
 
-- https://tcm.ch/standorte/zuerich-bahnhofstrasse/ — 02.11.2026 (neue kanonische URL TCM.ch Bahnhofstrasse; alte /standorte/zuerich-city/ = 301)
 - https://tcm.ch/standorte/zuerich-oerlikon/ — 02.11.2026 (Neu-Indexierung: TCM.ch Oerlikon eröffnet)
-- https://tcm.ch/en/locations/zuerich-bahnhofstrasse/ — 02.11.2026 (EN-Seite TCM.ch Bahnhofstrasse; alte /en/locations/zuerich-city/ = 301)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-pms/ — 28.10.2026 (Cluster-Paket 22.10.2026, PR #89)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-akne/ — 28.10.2026 (Cluster-Paket 22.10.2026, PR #89)
 - https://tcm.ch/wissen/chinesische-kraeuter-bei-reflux/ — 28.10.2026 (Cluster-Paket 22.10.2026, PR #89)

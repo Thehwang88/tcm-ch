@@ -173,7 +173,7 @@ for (const c of m.clinics) {
 }
 
 // 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
-const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'operational' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
+const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'review' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
 for (const [id, st] of Object.entries(PINS)) {
   const c = m.clinics.find((x) => x.id === id);
   ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);
@@ -181,7 +181,7 @@ for (const [id, st] of Object.entries(PINS)) {
   const ids = (s) => [...s.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
     .flatMap((x) => { const d = JSON.parse(x[1]); return Array.isArray(d) ? d : [d]; })
     .filter((n) => n['@type'] === 'MedicalClinic').map((n) => n['@id']);
-  ok(ids(de).length > 0 && ids(de)[0] === ids(en)[0], `${id}: DE und EN beschreiben dieselbe Klinik-Entität (@id ${ids(de)[0]} / ${ids(en)[0]})`);
+  if (st === 'operational') ok(ids(de).length > 0 && ids(de)[0] === ids(en)[0], `${id}: DE und EN beschreiben dieselbe Klinik-Entität (@id ${ids(de)[0]} / ${ids(en)[0]})`);
 }
 
 // 4h. Lokales Behandlungsteam nur auf operativen Standorten (DE Team.astro, EN Practitioners.astro);
@@ -215,6 +215,20 @@ for (const c of m.clinics.filter((x) => x.status === 'operational')) {
     const links = enLinks(en);
     ok(JSON.stringify(links) === JSON.stringify(canon), `/en/locations/${c.id}/: Practitioner-Karten = kanonische Zuordnung [${canon}] (gefunden [${links}])`);
   }
+}
+
+// 4j. vorVertrag (Mietvertrag offen): Seite live/indexierbar (Sitemap), aber nirgends verlinkt, nicht in Formularen,
+//     keine EN-Seite, keine exakte Adresse/Medthera/Öffnungsaussage im HTML.
+for (const c of m.clinics.filter((x) => x.vorVertrag)) {
+  const self = `dist/standorte/${c.id}/index.html`, page = html.get(self) ?? '';
+  ok(!!page && !/<meta name="robots" content="[^"]*noindex/.test(page) && page.includes(`<link rel="canonical" href="https://tcm.ch/standorte/${c.id}/"`), `${c.id}: Seite gebaut, indexierbar, self-canonical`);
+  const links = [...html].filter(([p, s]) => p !== self && new RegExp(`href="(https://tcm\\.ch)?/standorte/${c.id}/`).test(s.replace(/<link[^>]*>/g, ''))).map(([p]) => p.replace('dist', '').replace('index.html', ''));
+  ok(links.length === 0, `${c.id}: keine internen Links (vorVertrag)${links.length ? ' – ' + links.slice(0, 5).join(', ') : ''}`);
+  ok(!existsSync(`dist/en/locations/${c.id}/index.html`), `${c.id}: keine EN-Seite (vorVertrag)`);
+  const forms = [...html].filter(([, s]) => [...s.matchAll(/<select[^>]*name="standort"[^>]*>([\s\S]*?)<\/select>/g)].some((x) => x[1].includes(`>${c.name}<`) || x[1].includes(`data-id="${c.id}"`))).length;
+  ok(forms === 0, `${c.id}: in keinem Formular wählbar (vorVertrag)`);
+  const leak = [...html].filter(([, s]) => /Bahnhofstrasse 37|Medthera/.test(s.replace(/<script[\s\S]*?<\/script>/g, ''))).map(([p]) => p.replace('dist', ''));
+  ok(leak.length === 0, `${c.id}: keine exakte Adresse/Medthera im HTML${leak.length ? ' – ' + leak.slice(0, 5).join(', ') : ''}`);
 }
 
 const hub = html.get('dist/akupunktur-tcm-zuerich/index.html');

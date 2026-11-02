@@ -14,7 +14,7 @@ const description =
 
 // Kurze deutsche Ortsbeschreibung pro Standort.
 const desc: Record<string, string> = {
-   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Ohmstrasse 14 · Zürich Nord', 'zuerich-bahnhofstrasse': 'Bahnhofstrasse 37 · Zürich City',
+   'zuerich-hoengg': 'Zürich West', 'zuerich-oerlikon': 'Ohmstrasse 14 · Zürich Nord', 'zuerich-bahnhofstrasse': 'Zürich City',
   'winterthur-marktgasse': 'Altstadt Winterthur', 'winterthur-muenzgasse': 'Altstadt, Münzgasse 2', 'volketswil': 'Zürcher Oberland',
   'frauenfeld': 'Thurgau · auch für Weinfelden', 'kreuzlingen': 'Am Bodensee · auch ab Konstanz', 'bottighofen': 'Am Bodensee',
   'st-gallen': 'Beim Bahnhof', 'rorschach': 'Bodenseeregion', 'wil': 'Fürstenland',
@@ -30,10 +30,10 @@ const groups = [
   { label: 'Zentralschweiz', ids: ['luzern'] },
   { label: 'Bern & Mittelland', ids: ['bern'] },
 ];
-const allIds = groups.flatMap((g) => g.ids);
+const allIds = groups.flatMap((g) => g.ids).filter((id) => !clinics.find((c) => c.id === id)?.vorVertrag);
 const card = (id: string) => {
   const c = clinics.find((x) => x.id === id);
-  if (!c) return '';
+  if (!c || c.vorVertrag) return ''; // vorVertrag (Mietvertrag offen): nicht verlinken
   const kurz = [c.street, desc[c.id]].filter(Boolean).join(' · ');
   return `<a class="city-card location-card" href="/standorte/${c.id}/">${c.postalCode ? `<span class="location-plz">${c.postalCode}</span>` : ''}<div class="location-city">${c.name}</div><div class="location-desc">${kurz}</div><span class="location-link">${c.status !== 'operational' ? 'Standort ansehen →' : 'Termin prüfen →'}</span></a>`;
 };

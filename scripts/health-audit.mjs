@@ -353,9 +353,9 @@ console.log('  ->', OUT);
   // Erwartete Redirects: Quelle (mit Slash) -> Ziel + Status; die slashlose
   // Variante wird mitgeprueft, weil Cloudflare /x -> /x/ normalisiert.
   const RETIRED = {
-    '/standorte/zuerich-bellevue/': { to: '/standorte/zuerich-bahnhofstrasse/', status: '301' },
-    '/standorte/zuerich-city/': { to: '/standorte/zuerich-bahnhofstrasse/', status: '301' },
-    '/en/locations/zuerich-city/': { to: '/en/locations/zuerich-bahnhofstrasse/', status: '301' },
+    '/standorte/zuerich-bellevue/': { to: '/akupunktur-tcm-zuerich/', status: '301' },
+    '/standorte/zuerich-city/': { to: '/akupunktur-tcm-zuerich/', status: '301' },
+    '/en/locations/zuerich-city/': { to: '/en/acupuncture-zurich/', status: '301' },
     '/en/locations/zuerich-bellevue/': { to: '/en/locations/', status: '301' },
   };
   const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');

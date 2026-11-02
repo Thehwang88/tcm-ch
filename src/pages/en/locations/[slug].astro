@@ -20,7 +20,8 @@ import { PLANNED_PRESELECT } from '../../../data/standort-optionen';
 import { locationContent, DEFAULT_THERAPIES, DEFAULT_CONDITIONS } from '../../../data/en/locations-content';
 
 export function getStaticPaths() {
-  return clinics.map((c) => ({ params: { slug: c.id }, props: { clinic: c } }));
+  // vorVertrag (Mietvertrag offen): keine EN-Seite, bis der Standort aktiviert ist.
+  return clinics.filter((c) => !c.vorVertrag).map((c) => ({ params: { slug: c.id }, props: { clinic: c } }));
 }
 
 interface Props { clinic: Clinic }
@@ -57,7 +58,7 @@ const offeredConditions = conditionSlugs.map((d) => {
   return card ? { href: `/beschwerden/${d}/`, label: card.name, sub: 'Guide currently in German.', german: true } : null;
 }).filter(Boolean) as { href: string; label: string; sub: string; german: boolean }[];
 
-const nearby = (content.nearby ?? []).map((s) => clinics.find((c) => c.id === s)).filter(Boolean) as Clinic[];
+const nearby = (content.nearby ?? []).map((s) => clinics.find((c) => c.id === s && !c.vorVertrag)).filter(Boolean) as Clinic[];
 
 // ── Copy ──
 const openingLabel = clinic.openingNote ?? 'In preparation';
