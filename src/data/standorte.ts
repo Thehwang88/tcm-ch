@@ -85,15 +85,10 @@ export const NETZ_THERAPIEN = ['akupunktur', 'gesichtsakupunktur', 'schroepfen',
 export const ZH_THERAPIEN_OHNE_MASSAGE = NETZ_THERAPIEN.filter((t) => t !== 'massage');
 
 // ── TCM.ch Zürich Bahnhofstrasse: zwei Fassungen, Umschaltung allein über clinic.vorVertrag (src/data/locations.ts). ──
-// Aktivierung nach unterschriebenem Mietvertrag (eine kontrollierte Änderung + Links):
-//   1. locations.ts: vorVertrag entfernen, status 'operational', street 'Bahnhofstrasse 37', postalCode '8001'
-//   2. kontakt-angebote.mjs: CHECKIN_FREIGABE['zuerich-bahnhofstrasse'] wieder eintragen
-//   3. therapeuten.ts: 'zuerich-bahnhofstrasse' bei Simon, Natalia, Brenda wieder in standorte[]
-//   4. Links/Karten: Hub (Strip, Karte, Schema), Nav/Footer, Home-/Standortkarten, nearby, EN-Hub (siehe PR #103)
-//   5. Index-Queue / GSC, GBP, Ads
+// Seit 02.11.2026 live (Mietvertrag bestätigt): NACH_VERTRAG wird gerendert. VOR_VERTRAG bleibt als Mechanismus bestehen.
 const bahnhofstrasseVorVertrag = !!clinics.find((c) => c.id === 'zuerich-bahnhofstrasse')?.vorVertrag;
 
-/** Vorbereitete Live-Fassung (NICHT gerendert, solange vorVertrag gesetzt ist). Bestätigt laut Inhaber: Bahnhofstrasse 37,
+/** Live-Fassung (gerendert, solange vorVertrag nicht gesetzt ist). Bestätigt laut Inhaber: Bahnhofstrasse 37,
  *  8001 Zürich, 1. OG; Gemeinschaftspraxis, Eingangstafel «Medthera», TCM.ch an der Praxistür. */
 const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     "cro": true,
@@ -102,7 +97,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     "stadt": "Zürich Bahnhofstrasse",
     "seo": {
       "title": "TCM & Akupunktur Zürich Bahnhofstrasse | TCM.ch",
-      "description": "TCM.ch Bahnhofstrasse: Akupunktur und TCM an der Bahnhofstrasse 37, 1. OG, im Zentrum von Zürich (8001). Zusatzversicherung je nach Police, Termin anfragen.",
+      "description": "TCM.ch Zürich Bahnhofstrasse: Akupunktur und TCM an der Bahnhofstrasse 37, 1. OG, im Zentrum von Zürich (8001). Zusatzversicherung je nach Police, Termin anfragen.",
       "h1": "TCM &amp; Akupunktur Zürich <em>Bahnhofstrasse</em>",
       "schemaName": "TCM.ch Zürich Bahnhofstrasse"
     },
@@ -113,7 +108,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
       "image": "/images/hero-main.webp",
       "locationHook": "Bahnhofstrasse 37, 1. OG · 8001 Zürich"
     },
-    "aufEinenBlick": "<section class='section' id='so-findest-du-uns' style='padding:32px 0;background:var(--bg);scroll-margin-top:68px'><div class='wrap reveal'><div class='section-label'>So findest du uns</div><h2 class='section-title' style='font-size:clamp(22px,3vw,30px)'>Bahnhofstrasse 37, <em>1. OG</em></h2><p class='section-sub' style='max-width:70ch'>Unsere Praxis befindet sich im 1. OG an der Bahnhofstrasse 37. Am Eingang im Erdgeschoss ist TCM.ch auf der Tafel aktuell noch nicht aufgeführt: Bitte orientiere dich dort an «Medthera». Im 1. OG findest du TCM.ch direkt an der Praxistür.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:18px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>1. Adresse</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Bahnhofstrasse 37<br>8001 Zürich, 1. OG</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>2. Eingang im Erdgeschoss</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Auf der Tafel nach «Medthera» schauen. Wir arbeiten dort in einer Gemeinschaftspraxis.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>3. Praxistür im 1. OG</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>An der Tür steht TCM.ch. Unsicher? Schreib uns kurz per WhatsApp, wir helfen dir weiter.</div></div></div><div style='margin-top:16px'><a href='#kontakt' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></a></div></div></section>",
+    "aufEinenBlick": "<section class='section' id='so-findest-du-uns' style='padding:32px 0;background:var(--bg);scroll-margin-top:68px'><div class='wrap reveal'><div class='section-label'>So findest du uns</div><h2 class='section-title' style='font-size:clamp(22px,3vw,30px)'>Bahnhofstrasse 37, <em>1. OG</em></h2><p class='section-sub' style='max-width:70ch'>Unsere Praxis befindet sich im 1. OG an der Bahnhofstrasse 37. Im Erdgeschoss ist TCM.ch aktuell noch nicht auf der Gebäudetafel aufgeführt. Bitte orientiere dich dort an «Medthera». Im 1. OG findest du TCM.ch direkt an der Praxistür.</p><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:18px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>1. Adresse</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Bahnhofstrasse 37<br>8001 Zürich, 1. OG</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>2. Eingang im Erdgeschoss</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Auf der Gebäudetafel nach «Medthera» schauen. Wir arbeiten dort in einer Gemeinschaftspraxis.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>3. Praxistür im 1. OG</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>An der Tür steht TCM.ch. Unsicher? Schreib uns kurz per WhatsApp, wir helfen dir weiter.</div></div></div><div style='margin-top:16px'><a href='#kontakt' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></a></div></div></section>",
     "nap": {
       "strasse": "Bahnhofstrasse 37",
       "mapEmbed": "https://www.google.com/maps?q=Bahnhofstrasse%2037%2C%208001%20Z%C3%BCrich&output=embed",
@@ -125,7 +120,7 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
       "geo": { "lat": 47.3714, "lng": 8.5384 }
     },
     "intro": {
-      "body": "<h2>TCM Zürich City: Akupunktur an der Bahnhofstrasse</h2><p>TCM.ch Bahnhofstrasse liegt an der <strong>Bahnhofstrasse 37</strong> im 1. OG, im Zentrum von Zürich (8001). Damit hast du in der City eine Adresse für <a href='/therapien/akupunktur/'>Akupunktur</a> und Traditionelle Chinesische Medizin, ohne Weg an den Stadtrand.</p><p>Behandelt wird nach demselben Prinzip wie an allen TCM.ch Praxen: ausführliches Erstgespräch, TCM-Diagnostik und danach ein Plan mit <a href='/therapien/schroepfen/'>Schröpfen</a>, <a href='/therapien/tuina/'>Tuina</a>, einer <a href='/therapien/kraeutertherapie/'>Kräuterrezeptur</a> oder weiteren Methoden, je nachdem, was in deinem Fall sinnvoll ist. Wir sagen dir auch, wenn TCM bei deinem Anliegen nicht die richtige Wahl ist.</p><p>Die Praxis gehört zum Zürcher TCM.ch Netzwerk: <a href='/akupunktur-tcm-zuerich/'>Alle TCM.ch Praxen in Zürich</a>. Ist im Zentrum gerade kein passender Termin frei, schlagen wir dir gern einen Termin in Oerlikon oder Höngg vor.</p>",
+      "body": "<h2>TCM Zürich City: Akupunktur an der Bahnhofstrasse</h2><p>TCM.ch Zürich Bahnhofstrasse liegt an der <strong>Bahnhofstrasse 37</strong> im 1. OG, im Zentrum von Zürich (8001). Damit hast du in der City eine Adresse für <a href='/therapien/akupunktur/'>Akupunktur</a> und Traditionelle Chinesische Medizin, ohne Weg an den Stadtrand.</p><p>Behandelt wird nach demselben Prinzip wie an allen TCM.ch Praxen: ausführliches Erstgespräch, TCM-Diagnostik und danach ein Plan mit <a href='/therapien/schroepfen/'>Schröpfen</a>, <a href='/therapien/tuina/'>Tuina</a>, einer <a href='/therapien/kraeutertherapie/'>Kräuterrezeptur</a> oder weiteren Methoden, je nachdem, was in deinem Fall sinnvoll ist. Wir sagen dir auch, wenn TCM bei deinem Anliegen nicht die richtige Wahl ist.</p><p>Die Praxis gehört zum Zürcher TCM.ch Netzwerk: <a href='/akupunktur-tcm-zuerich/'>Alle TCM.ch Praxen in Zürich</a>. Ist im Zentrum gerade kein passender Termin frei, schlagen wir dir gern einen Termin in Oerlikon oder Höngg vor.</p>",
       "einzugsgebiet": "<h2>Für Zürich City und die Kreise rund ums Zentrum</h2><p>Die Bahnhofstrasse liegt im Kreis 1. Die Praxis bietet sich an für alle, die in der City wohnen oder arbeiten, und für Patient:innen aus der Altstadt, der Enge, aus Aussersihl und Wiedikon.</p><p style=\"display:block\">Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": { "oev": "", "autoParken": "" },
@@ -135,10 +130,10 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
     "beschwerden": ["nackenschmerzen", "stress-burnout", "migraene", "schlafprobleme", "rueckenschmerzen", "verdauungsprobleme", "tinnitus", "endometriose"],
     "team": [],
     "faqs": [
-      { "q": "Wo genau ist TCM.ch an der Bahnhofstrasse?", "a": "An der Bahnhofstrasse 37, 8001 Zürich, im 1. OG. Auf der Tafel am Eingang im Erdgeschoss ist TCM.ch aktuell noch nicht aufgeführt: Bitte orientiere dich dort an «Medthera». Im 1. OG steht TCM.ch an der Praxistür." },
-      { "q": "Warum steht am Eingang «Medthera»?", "a": "Wir arbeiten an der Bahnhofstrasse 37 in einer Gemeinschaftspraxis, die auf der Eingangstafel unter «Medthera» aufgeführt ist. Unsere Praxistür im 1. OG ist mit TCM.ch angeschrieben." },
+      { "q": "Wo genau ist TCM.ch an der Bahnhofstrasse?", "a": "An der Bahnhofstrasse 37, 8001 Zürich, im 1. OG. Im Erdgeschoss ist TCM.ch aktuell noch nicht auf der Gebäudetafel aufgeführt. Bitte orientiere dich dort an «Medthera». Im 1. OG findest du TCM.ch direkt an der Praxistür." },
+      { "q": "Warum steht am Eingang «Medthera»?", "a": "Wir arbeiten an der Bahnhofstrasse 37 in einer Gemeinschaftspraxis, die auf der Gebäudetafel unter «Medthera» aufgeführt ist. Unsere Praxistür im 1. OG ist mit TCM.ch angeschrieben." },
       { "q": "Wie bekomme ich einen Termin an der Bahnhofstrasse?", "a": "Über das Formular auf dieser Seite, per WhatsApp oder an termine@tcm.ch. Wir melden uns persönlich mit einem Terminvorschlag. Ist im Zentrum gerade nichts frei, schlagen wir dir auf Wunsch einen Termin in Oerlikon oder Höngg vor." },
-      { "q": "Wann ist die Praxis an der Bahnhofstrasse geöffnet?", "a": "Feste Öffnungszeiten für die Bahnhofstrasse veröffentlichen wir, sobald sie bestätigt sind. Termine vergeben wir nach Anfrage: Sag uns Wunschtage und Tageszeit, wir melden uns mit einem Vorschlag." },
+      { "q": "Wann ist die Praxis an der Bahnhofstrasse geöffnet?", "a": "Termine an der Bahnhofstrasse vergeben wir nach Vereinbarung: Sag uns Wunschtage und Tageszeit, wir melden uns mit einem Vorschlag." },
       { "q": "Zahlt die Krankenkasse Akupunktur in Zürich City?", "a": "Akupunktur und TCM bei EMR- oder ASCA-registrierten Therapeut:innen laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Anteil und Jahresmaximum stehen in deiner Police; wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
       { "q": "Was kostet eine Behandlung an der Bahnhofstrasse?", "a": "Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer; die Preise für Zürich stehen auf der Seite Akupunktur-Kosten in Zürich. Den konkreten Betrag nennen wir dir vor dem Termin." }
     ],
@@ -876,7 +871,7 @@ export const standorte: Record<string, Standort> = {
       ]
     },
     "intro": {
-      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a>, mit Praxen in Höngg und Oerlikon.</p><p>Die <strong>Praxis Hwang Zürich Höngg</strong> an der Limmattalstrasse 340 im Kreis 10 ist Partnerpraxis im TCM.ch Netzwerk: Betreiberin ist <a href='https://www.hwang.ch/standorte/zurich-hongg' target='_blank' rel='noopener'>Praxis Hwang</a>, über TCM.ch fragst du Termine an und klärst Fragen zu Kosten und Krankenkasse. Angeboten werden unter anderem <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesische Kräutertherapie</strong>.</p>",
+      "body": "<h2>TCM Zürich Höngg, Akupunktur, Tuina &amp; TCM-Klinik im Kreis 10</h2><p>Einen Überblick über Akupunktur und Chinesische Medizin in der ganzen Stadt findest du auf unserer Seite zu <a href='/akupunktur-tcm-zuerich/'>TCM Zürich</a>.</p><p>Teil unseres Netzwerks für <a href=\"/akupunktur-tcm-zuerich/\"><strong>Akupunktur &amp; TCM in Zürich</strong></a>, mit Praxen in Höngg, in Oerlikon und an der Bahnhofstrasse.</p><p>Die <strong>Praxis Hwang Zürich Höngg</strong> an der Limmattalstrasse 340 im Kreis 10 ist Partnerpraxis im TCM.ch Netzwerk: Betreiberin ist <a href='https://www.hwang.ch/standorte/zurich-hongg' target='_blank' rel='noopener'>Praxis Hwang</a>, über TCM.ch fragst du Termine an und klärst Fragen zu Kosten und Krankenkasse. Angeboten werden unter anderem <strong>Akupunktur</strong>, <strong>Schröpfen</strong>, <strong>Tuina-Massage</strong> und <strong>chinesische Kräutertherapie</strong>.</p>",
       "einzugsgebiet": "<h2>Einzugsgebiet – gut erreichbar aus Höngg, Wipkingen und ganz Zürich</h2><p>Die Praxis liegt nah für <strong>Höngg</strong>, <strong>Wipkingen</strong>, <strong>Affoltern</strong>, <strong>Albisrieden</strong>, den Kreis 5 und die Region Limmattal. Kurz ist der Weg auch aus Schlieren, Dietikon, Regensdorf und Engstringen.</p><p style=\"display:block\">Diese Partnerpraxis gehört zum <a href=\"/akupunktur-tcm-zuerich/\">TCM.ch Netzwerk in Zürich</a>. Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": {
@@ -955,7 +950,7 @@ export const standorte: Record<string, Standort> = {
     "faqs": [
       { "q": "Wo finde ich TCM in Oerlikon?", "a": "TCM.ch Oerlikon ist an der Ohmstrasse 14, 8050 Zürich, beim Bahnhof Oerlikon. Die Praxis ist gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern, Schwamendingen und dem Glattpark." },
       { "q": "Welche Behandlungen bietet TCM.ch Oerlikon an?", "a": "Das Angebot steht oben bei den Therapien, von Akupunktur und Schröpfen über Tuina bis zur chinesischen Kräutertherapie. Welche Methode in deinem Fall passt, klären wir im Erstgespräch." },
-      { "q": "Wie bekomme ich in Oerlikon einen Termin?", "a": "Schick uns über das Formular deine Wunschtage oder schreib per WhatsApp; wir melden uns persönlich mit einem Terminvorschlag an der Ohmstrasse 14. Passt es dir zeitlich besser, schlagen wir dir auch einen Termin in Höngg vor." },
+      { "q": "Wie bekomme ich in Oerlikon einen Termin?", "a": "Schick uns über das Formular deine Wunschtage oder schreib per WhatsApp; wir melden uns persönlich mit einem Terminvorschlag an der Ohmstrasse 14. Passt es dir zeitlich besser, schlagen wir dir auch einen Termin an der Bahnhofstrasse oder in Höngg vor." },
       { "q": "Wann ist die Praxis in Oerlikon geöffnet?", "a": "Feste Öffnungszeiten für Oerlikon veröffentlichen wir, sobald sie bestätigt sind. Termine vergeben wir nach Anfrage: Sag uns Wunschtage und Tageszeit, wir melden uns mit einem Vorschlag." },
       { "q": "Zahlt die Krankenkasse die Behandlung in Oerlikon?", "a": "Akupunktur und TCM bei EMR- oder ASCA-registrierten Therapeut:innen laufen über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Anteil und Jahresmaximum stehen in deiner Police; wir prüfen deine Deckung kostenlos, bevor Kosten entstehen." },
       { "q": "Welche Beschwerden behandelt ihr in Oerlikon am häufigsten?", "a": "Rücken- und Nackenschmerzen, Ischias, Migräne, Schlafprobleme, Stress, Zyklusbeschwerden und Kinderwunsch-Begleitung. Auf den Beschwerdeseiten steht, was die TCM dabei realistisch leisten kann und wo ihre Grenzen liegen." }
@@ -969,9 +964,7 @@ export const standorte: Record<string, Standort> = {
       { "slug": "winterthur-muenzgasse", "plz": "8400", "city": "Winterthur Münzgasse", "desc": "Nahe Zürich" }
     ]
   },
-  // Bahnhofstrasse VOR Mietvertrag (vorVertrag in locations.ts): Seite live + indexierbar, aber ohne exakte Adresse, ohne
-  // Medthera-/Anfahrtshinweis, ohne Öffnungs-/Verfügbarkeitsaussage; Termine laufen über Oerlikon/Höngg. Nach Vertrag:
-  // ZH_BAHNHOFSTRASSE_NACH_VERTRAG (unten) schaltet automatisch, sobald vorVertrag in locations.ts entfernt ist.
+  // Bahnhofstrasse: Live-Fassung seit Mietvertrag (02.11.2026); VOR_VERTRAG greift nur bei clinic.vorVertrag.
   "zuerich-bahnhofstrasse": bahnhofstrasseVorVertrag ? ZH_BAHNHOFSTRASSE_VOR_VERTRAG : ZH_BAHNHOFSTRASSE_NACH_VERTRAG,
 };
 

@@ -16,8 +16,8 @@ const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
 if (shots) fs.mkdirSync(shots, { recursive: true });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
 const POSTER = '/videos/hero-praxis/hwang-praxis-poster-1280.webp', POSTER_M = '/videos/hero-praxis/hwang-praxis-poster-640.webp';
-const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon'];
-const NO_VIDEO = ['zuerich-bahnhofstrasse', 'luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
+const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon'];
+const NO_VIDEO = ['luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
 const read = (d, u) => fs.readFileSync(path.join(d, u, 'index.html'), 'utf8');
 
 console.log('1. Markup');
@@ -91,7 +91,7 @@ const bufDiff = async (a, b) => { const A = await sharp(a).resize(160, 90).greys
 const waitPlaying = async (pg) => { try { await pg.waitForFunction(() => document.querySelector('[data-hero-video]').classList.contains('is-playing'), { timeout: 10000 }); return true; } catch (e) { return false; } };
 const lcp = (pg) => pg.evaluate(() => (window.__lcp || []).slice(-1)[0] || null);
 const geom = {};
-for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]], ['zuerich-oerlikon', [375, 1440]]]) {
+for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]], ['zuerich-bahnhofstrasse', [375, 1440]]]) {
   for (const w of widths) {
     const u = `/standorte/${slug}/`, tag = `${slug}-${w}`;
     // A: initial (DOM geparst, vor load) · B: vor Wiedergabe (nach load, Video pausiert, unsichtbar)

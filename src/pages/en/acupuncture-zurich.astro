@@ -3,7 +3,7 @@
 // rhythm (split hero → trust strip → location discovery → therapies → conditions → steps → insurance →
 // local context → FAQ → final inline form + CTA). Counterpart of DE /akupunktur-tcm-zuerich/ (PAIR_MAP).
 // NO clinic entity, no address, no hours here: practice entities live on the location pages.
-// Facts only from locations.ts / zuerich-termin.ts. Live: TCM.ch Oerlikon (since 02.11.2026) and Höngg; Bahnhofstrasse stays unlinked until the lease is signed (vorVertrag).
+// Facts only from locations.ts / zuerich-termin.ts. Live since 02.11.2026: TCM.ch Bahnhofstrasse (zuerich-bahnhofstrasse) and TCM.ch Oerlikon.
 import Layout from '../../layouts/Layout.astro';
 import HeroSplit from '../../components/en/HeroSplit.astro';
 import UspStrip from '../../components/en/UspStrip.astro';
@@ -21,6 +21,7 @@ const url = site.url + path;
 const zh: Clinic[] = zuerichStandorte();
 const hoengg = zh.find((c) => c.id === 'zuerich-hoengg')!;
 const oerlikon = zh.find((c) => c.id === 'zuerich-oerlikon')!;
+const city = zh.find((c) => c.id === 'zuerich-bahnhofstrasse')!;
 const phone = '+41 77 523 61 22';
 const telHref = 'tel:' + phone.replace(/\s/g, '');
 const wa = waHref(phone, 'Hello, I am looking for a TCM practice in Zürich.');
@@ -38,10 +39,11 @@ const districts = ['City / Centre', 'Stadelhofen', 'Seefeld', 'Hottingen', 'Enge
 const featured = ['acupuncture', 'chinese-herbal-medicine', 'tuina-massage', 'cupping'].map((s) => therapies.find((t) => t.slug === s)!);
 const topConditions = ['back-pain', 'neck-pain', 'migraine-headaches', 'stress-burnout', 'sleep-problems', 'fertility-support'].map((s) => conditions.find((c) => c.slug === s)!);
 const faqs = [
-  { q: 'Which Zürich practice should I choose?', a: 'You do not have to decide. Tell us your district and what matters to you, the nearest practice or the earliest slot, and we suggest the practice that fits: TCM.ch Oerlikon or the partner practice in Höngg.' },
+  { q: 'Which Zürich practice should I choose?', a: 'You do not have to decide. Tell us your district and what matters to you, the nearest practice or the earliest slot, and we suggest the practice that fits: TCM.ch Bahnhofstrasse in the city centre, TCM.ch Oerlikon, or the partner practice in Höngg.' },
   { q: 'Can I request the earliest available appointment?', a: 'Yes. Choose "Next available appointment in Zürich" in the form. We look for the earliest free slot at our Zürich practices and get back to you personally with a proposal.' },
   { q: 'Can I communicate in English?', a: 'Yes. Requests, replies and appointment coordination are in English or German, as you prefer. Tell us if you would like to be treated in English and we take that into account when suggesting a practice.' },
   { q: 'Does supplementary insurance reimburse acupuncture?', a: 'Not through basic insurance. ' + INSURANCE + ' We tell you which recognition (EMR/ASCA) the treating practitioner holds and check your cover with you before the first appointment.' },
+  { q: 'Where is the city-centre clinic?', a: `TCM.ch Bahnhofstrasse is at ${city.street}, ${city.postalCode} Zürich, on the first floor. TCM.ch is not yet listed on the directory at the ground-floor entrance: please look for "Medthera", a shared practice. On the first floor, TCM.ch is on the practice door.` },
   { q: 'What happens after I submit the form?', a: 'We read your request personally and reply, usually with a concrete suggestion for a practice and a time. Nothing is booked automatically: your appointment is confirmed by the team once you agree to the proposal. You can also reach us on WhatsApp or by phone.' },
 ];
 const hoenggHours = hoengg.openingHours.map(formatHours);
@@ -53,8 +55,9 @@ const schema = [
     about: { '@id': 'https://tcm.ch/#org' }, publisher: { '@id': 'https://tcm.ch/#org' },
     spatialCoverage: { '@type': 'City', name: 'Zürich' },
     mainEntity: { '@type': 'ItemList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: `TCM.ch Oerlikon – ${oerlikon.street}, ${oerlikon.postalCode} Zürich`, url: `https://tcm.ch${enLocationPath(oerlikon.id)}` },
-      { '@type': 'ListItem', position: 2, name: `Zürich Höngg – ${hoengg.betreiber?.name}, partner practice in the TCM.ch network`, url: `https://tcm.ch${enLocationPath(hoengg.id)}` },
+      { '@type': 'ListItem', position: 1, name: `TCM.ch Bahnhofstrasse – ${city.street}, ${city.postalCode} Zürich`, url: `https://tcm.ch${enLocationPath(city.id)}` },
+      { '@type': 'ListItem', position: 2, name: `TCM.ch Oerlikon – ${oerlikon.street}, ${oerlikon.postalCode} Zürich`, url: `https://tcm.ch${enLocationPath(oerlikon.id)}` },
+      { '@type': 'ListItem', position: 3, name: `Zürich Höngg – ${hoengg.betreiber?.name}, partner practice in the TCM.ch network`, url: `https://tcm.ch${enLocationPath(hoengg.id)}` },
     ] },
   },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -68,7 +71,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
 ---
 <Layout
   title="Acupuncture & TCM in Zürich · English-speaking appointments | TCM.ch"
-  description="Acupuncture & TCM in Zürich in English: the TCM.ch clinic in Oerlikon and a partner practice in Höngg. Tell us your district or ask for the next available appointment."
+  description="Acupuncture & TCM in Zürich in English: TCM.ch clinics on Bahnhofstrasse and in Oerlikon, plus a partner practice in Höngg. Tell us your district or ask for the next available appointment."
   path={path}
   schema={schema}
 >
@@ -78,7 +81,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
     h1="Acupuncture &amp; TCM<br>in <em>Zürich.</em>"
     lead="Medical acupuncture and Traditional Chinese Medicine for people living in Zürich. Tell us what is going on and where you are; we find the practice and the appointment that fit, in English."
     ctas={[{ href: '#zh-funnel', label: 'Find an appointment' }, { href: wa, label: 'WhatsApp', kind: 'wa', external: true }]}
-    trust={['Personal reply in English', 'Practices in Oerlikon and Höngg', 'No referral needed']}
+    trust={['Personal reply in English', 'City centre, Oerlikon and Höngg', 'No referral needed']}
     note={`Prefer to talk? Call <b>${phone}</b>.`}
     image={{ src: '/images/team-zuerich.webp', alt: 'The TCM.ch team: EMR/ASCA-registered practitioners', width: 1536, height: 1024 }}
   />
@@ -87,7 +90,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <UspStrip items={[
     { icon: 'chat', title: 'Personal appointment coordination', sub: 'A person reads your request and replies with a concrete proposal. Nothing is booked automatically.' },
     { icon: 'users', title: 'Qualified practitioners', sub: 'Trained in TCM, experienced in Switzerland. Recognition (EMR/ASCA) is practitioner-specific; we tell you before you book.' },
-    { icon: 'pin', title: 'Zürich locations', sub: 'Oerlikon (district 11) and Höngg (district 10).' },
+    { icon: 'pin', title: 'Zürich locations', sub: 'Bahnhofstrasse (district 1), Oerlikon (district 11) and Höngg (district 10).' },
     { icon: 'shield', title: 'Supplementary insurance guidance', sub: 'Reimbursement may be available depending on your policy. We check your cover with you first.' },
   ]} />
 
@@ -95,9 +98,19 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
   <section class="ev-section" id="practices">
     <div class="wrap">
       <p class="ev-label">Find your Zürich practice</p>
-      <h2 class="ev-h2">Two practices <em>in Zürich.</em></h2>
+      <h2 class="ev-h2">Three practices <em>across Zürich.</em></h2>
       <p class="ev-sub">Choose a practice, or let us pick the earliest slot for you. Partner practices are independent practices in the TCM.ch network; TCM.ch coordinates your request.</p>
       <div class="ev-grid">
+        <div class="ev-pick">
+          <span class="ev-card__meta">{city.postalCode} Zürich · District 1</span>
+          <h3>Zürich Bahnhofstrasse <span class="ev-badge ev-badge--neutral">TCM.ch clinic</span></h3>
+          <p class="ev-pick__addr">TCM.ch Bahnhofstrasse, {city.street}, 1st floor</p>
+          <p>In the city centre. At the entrance, look for "Medthera" on the directory; TCM.ch is on the practice door on the first floor. Appointments on request.</p>
+          <div class="ev-pick__actions">
+            <a class="ev-btn ev-btn--solid" href="#zh-funnel" data-pick={city.name}>Request here</a>
+            <a class="ev-pick__link" href={enLocationPath(city.id)}>Practice details</a>
+          </div>
+        </div>
         <div class="ev-pick">
           <span class="ev-card__meta">{hoengg.postalCode} Zürich · District 10</span>
           <h3>Zürich Höngg <span class="ev-badge ev-badge--neutral">Partner practice</span></h3>
@@ -121,7 +134,7 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
         <div class="ev-pick">
           <span class="ev-card__meta">Zürich · Any practice</span>
           <h3>Next available appointment</h3>
-          <p class="ev-pick__addr">Oerlikon or Höngg</p>
+          <p class="ev-pick__addr">Bahnhofstrasse, Oerlikon or Höngg</p>
           <p>Flexible on location? We check our Zürich practices and suggest the earliest suitable slot.</p>
           <div class="ev-pick__actions">
             <a class="ev-btn ev-btn--outline" href="#zh-funnel" data-pick={ZH_FLEXIBEL.value}>Next available in Zürich</a>
@@ -203,11 +216,11 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
         <div class="ev-prose">
           <p class="ev-label">Across the whole of Zürich</p>
           <h2 class="ev-h2">For residents and international patients in Zürich.</h2>
-          <p>Whichever district you live or work in, we check which practice fits you best and how quickly you can be seen. Our practices are in the north (Oerlikon) and west (Höngg) of the city.</p>
+          <p>Whichever district you live or work in, we check which practice fits you best and how quickly you can be seen. Our three practices are spread across the city.</p>
           <ul class="ev-chips">{districts.map((d) => <li>{d}</li>)}</ul>
           <p style="margin-top:14px">Your district is not listed? You can still request an appointment from anywhere in Zürich and the surrounding Glattal and Limmattal.</p>
           <h3>TCM.ch clinics and partner practices, explained</h3>
-          <p>A <strong>TCM.ch clinic</strong> (Oerlikon) is run by TCM.ch. A <strong>partner practice</strong> (Höngg) is an independent practice in the TCM.ch network: you are treated by its practitioners, and TCM.ch coordinates your request and answers questions about costs and insurance.</p>
+          <p>A <strong>TCM.ch clinic</strong> (Bahnhofstrasse, Oerlikon) is run by TCM.ch. A <strong>partner practice</strong> (Höngg) is an independent practice in the TCM.ch network: you are treated by its practitioners, and TCM.ch coordinates your request and answers questions about costs and insurance.</p>
         </div>
         <aside class="ev-panel" aria-label="Zürich practices">
           <h3>Höngg · District 10</h3>
@@ -217,6 +230,10 @@ const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" strok
           <h3>Oerlikon · District 11</h3>
           <p><strong>TCM.ch Oerlikon</strong><br />{oerlikon.street}, {oerlikon.postalCode} Zürich, near Oerlikon station</p>
           <p><a href={enLocationPath(oerlikon.id)}>Practice details</a></p>
+          <hr />
+          <h3>Bahnhofstrasse · District 1</h3>
+          <p><strong>TCM.ch Bahnhofstrasse</strong><br />{city.street}, 1st floor, {city.postalCode} Zürich</p>
+          <p><a href={enLocationPath(city.id)}>Practice details</a></p>
         </aside>
       </div>
     </div>

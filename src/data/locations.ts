@@ -101,12 +101,12 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
-  // TCM.ch Zürich Bahnhofstrasse: Mietvertrag noch NICHT unterschrieben (Inhaber 02.11.2026). Bis dahin vorVertrag + 'review':
-  // keine Adresse, keine Öffnungsaussage, nicht in Formularen/Check-in, nicht verlinkt. Vorbereitete Live-Daten (Adresse,
-  // 1. OG, Medthera-Hinweis, Geo) liegen in standorte.ts (ZH_BAHNHOFSTRASSE_NACH_VERTRAG). Slug zuerich-city bleibt stillgelegt.
+  // TCM.ch Zürich Bahnhofstrasse: Mietvertrag bestätigt, Nutzung durch Medthera freigegeben (02.11.2026). Live, 1. OG.
+  // Slug zuerich-city / zuerich-bellevue → 301 auf /standorte/zuerich-bahnhofstrasse/.
   { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
-    street: null, postalCode: null, phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
-    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'review', vorVertrag: true },
+    street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
+    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
+    areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',

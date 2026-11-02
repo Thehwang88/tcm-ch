@@ -173,7 +173,7 @@ for (const c of m.clinics) {
 }
 
 // 4g. Inhaber-bestätigte Status (Pins): ein versehentliches Zurücksetzen fällt sofort auf.
-const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'review' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
+const PINS = { basel: 'operational', 'zuerich-oerlikon': 'operational', 'zuerich-bahnhofstrasse': 'operational' }; // Basel aktiv laut Inhaber (12.10.2026); Oerlikon + Bahnhofstrasse eröffnet (02.11.2026)
 for (const [id, st] of Object.entries(PINS)) {
   const c = m.clinics.find((x) => x.id === id);
   ok(c?.status === st, `Pin: ${id} ist '${st}' (aktuell '${c?.status}')`);

@@ -137,7 +137,7 @@ export const therapeuten: Therapeut[] = [
     bild: '/images/img-b0d621bda695.webp',
     ortLabel: 'Zürich',
     // Zürcher Team (Inhabervorgabe 02.11.2026): auf allen drei Zürcher Standortseiten.
-    standorte: ['zuerich-oerlikon', 'zuerich-hoengg'], // zuerich-bahnhofstrasse nach Mietvertrag ergänzen
+    standorte: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'],
     ausbildung: [{ titel: 'Ausbildung Traditionelle Chinesische Medizin', status: 'in_ausbildung' }],
   },
   {
@@ -390,7 +390,7 @@ export const therapeuten: Therapeut[] = [
     cardFocus: ['Orthopädie & Neurologie', 'Physiotherapie & TCM'],
     bild: '/images/Natalia-Goc.webp',
     ortLabel: 'Winterthur',
-    standorte: ['winterthur-muenzgasse', 'zuerich-oerlikon', 'zuerich-hoengg'], // zuerich-bahnhofstrasse nach Mietvertrag ergänzen
+    standorte: ['winterthur-muenzgasse', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'],
     kurzbeschreibung: 'Physiotherapeutin BSc und Naturheilpraktikerin für Akupunktur, Tuina und Chinesische Arzneitherapie. Über zehn Jahre Weiterbildung in klassischer chinesischer Medizin.',
     schwerpunkte: ['Orthopädie', 'Neurologie', 'Dermatologie', 'Gynäkologie'],
     methoden: ['Akupunktur', 'Tuina', 'Chinesische Arzneitherapie', 'Shiatsu'],
@@ -528,7 +528,7 @@ export const therapeuten: Therapeut[] = [
     cardFocus: ['Akupressur', 'Kopf, Kiefer & Nacken'],
     bild: '/images/Brenda-new.png',
     ortLabel: 'Winterthur',
-    standorte: ['winterthur-muenzgasse', 'zuerich-oerlikon', 'zuerich-hoengg'], // zuerich-bahnhofstrasse nach Mietvertrag ergänzen
+    standorte: ['winterthur-muenzgasse', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'],
     kurzbeschreibung: 'Akupressur-Therapeutin mit Branchenzertifikat und Fokus auf Kopf, Kiefer, Nacken und Stress. Aktuell in Ausbildung zur Naturheilpraktikerin TCM.',
     schwerpunkte: ['Kopf- und Nackenbeschwerden', 'Kopfschmerzen', 'Kiefer- und Gesichtsverspannungen', 'Muskuläre Verspannungen', 'Stress und innere Unruhe', 'Menstruations- und Frauenbeschwerden'],
     methoden: ['Akupressur-Massage', 'Schröpfen', 'Gua Sha', 'Moxibustion'],

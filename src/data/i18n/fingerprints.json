@@ -1,15 +1,15 @@
 {
   "page:home": {
-    "src/data/home-body.html": "318ab7ea6efb35d6"
+    "src/data/home-body.html": "b9425de4e0c4fa44"
   },
   "page:zurich": {
-    "src/pages/akupunktur-tcm-zuerich.astro": "ffe8a92991d552a9",
-    "src/data/akupunktur-tcm-zuerich-body.html": "eb7c18ea024f291f",
+    "src/pages/akupunktur-tcm-zuerich.astro": "ff0218897a951d1d",
+    "src/data/akupunktur-tcm-zuerich-body.html": "cddc28877b96208f",
     "src/data/zuerich-termin.ts": "1ec9bc1ae771c0c7"
   },
   "hub:locations": {
     "src/pages/standorte/index.astro": "4ce5ba5f422a36eb",
-    "src/data/locations.ts": "0de57839617cd396"
+    "src/data/locations.ts": "ef483746e81c1b48"
   },
   "hub:therapies": {
     "src/pages/therapien/index.astro": "72ce4330908c0c52"
@@ -21,14 +21,14 @@
   "page:contact": {
     "src/pages/kontakt.astro": "67f1fd0da83c924d",
     "src/data/standort-optionen.ts": "5c81af10fcf7fe40",
-    "src/data/locations.ts": "0de57839617cd396"
+    "src/data/locations.ts": "ef483746e81c1b48"
   },
   "page:insurance": {
     "src/pages/krankenkassen/index.astro": "81144de4c26f7f42"
   },
   "page:near-me": {
     "src/pages/akupunktur-in-der-naehe.astro": "7caa69a40b736a1c",
-    "src/data/locations.ts": "0de57839617cd396"
+    "src/data/locations.ts": "ef483746e81c1b48"
   },
   "location:kreuzlingen": {
     "src/data/locations.ts#clinics.kreuzlingen": "306879ce6a99f584",
@@ -55,15 +55,15 @@
   },
   "location:zuerich-hoengg": {
     "src/data/locations.ts#clinics.zuerich-hoengg": "4b7aac1523cf4e8f",
-    "src/data/standorte.ts#standorte.zuerich-hoengg": "a5d242ca29a7a731"
+    "src/data/standorte.ts#standorte.zuerich-hoengg": "25450badfff69ca8"
   },
   "location:zuerich-oerlikon": {
     "src/data/locations.ts#clinics.zuerich-oerlikon": "16d51a419243873a",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "ab0ea018d630ccab"
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "24b8de5ece6c7ac7"
   },
   "location:zuerich-bahnhofstrasse": {
-    "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "2829c7f9429427d0",
-    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "1fd680f3916b4f97"
+    "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "81f5f7a5cb853480",
+    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "65880954a2ff6d93"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
@@ -87,19 +87,19 @@
     "src/data/standorte.ts#standorte.wil": "1ad92a0b240f9d14"
   },
   "therapy:acupuncture": {
-    "src/data/therapie-leaves/akupunktur.html": "a2dd01ac313d2eb3"
+    "src/data/therapie-leaves/akupunktur.html": "b29acc3da1c84c4a"
   },
   "therapy:cupping": {
-    "src/data/therapie-leaves/schroepfen.html": "8531151697496b39"
+    "src/data/therapie-leaves/schroepfen.html": "8e81cf9cf16cc2d9"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "60de712bae63c3e1"
+    "src/data/therapie-leaves/tuina.html": "d213b1c3a3da28d7"
   },
   "therapy:chinese-herbal-medicine": {
     "src/data/therapie-leaves/kraeutertherapie.html": "16f5518c819d019c"
   },
   "therapy:moxibustion": {
-    "src/data/therapie-leaves/moxibustion.html": "328a00ed07579a3e"
+    "src/data/therapie-leaves/moxibustion.html": "32e83f6f7b7fb99d"
   },
   "therapy:electroacupuncture": {
     "src/data/therapie-leaves/elektroakupunktur.html": "a4a0d4cda41b3f72"
@@ -108,7 +108,7 @@
     "src/data/therapie-leaves/gesichtsakupunktur.html": "daf9856aeb5d7e7d"
   },
   "therapy:acupressure": {
-    "src/data/therapie-leaves/akupressur.html": "b2fc97ce5ab93c0b"
+    "src/data/therapie-leaves/akupressur.html": "b5ef0306febbb7b2"
   },
   "therapy:shiatsu": {
     "src/data/therapie-leaves/shiatsu.html": "801368b541b9e006"
