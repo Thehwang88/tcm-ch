@@ -5851,6 +5851,21 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
   #page-standort .std-team:not(.std-team--sg) .sg-team-grid .tmc-cta{padding-top:8px;min-height:44px}
 }
 @media(max-width:360px){#page-standort .std-team:not(.std-team--sg) .sg-team-grid .tmc-photo{flex-basis:88px;width:88px}}
+/* Zürich (.std-team--sg, 4 Personen): mobil 2 × 2 statt «Leitung volle Breite»; Clinical Lead bleibt erste Karte (DOM/Reihenfolge).
+   Gleiche Bildproportion wie die Teamkarten; Langtext/Hinweis der Leitung mobil unter dem Raster (.std-team-leadnote), damit Zeilen gleich hoch bleiben. */
+.std-team-leadnote{display:none}
+@container (max-width:119px){#page-standort .std-team--sg .sg-lead-cta > span[aria-hidden="true"]{display:none}}
+@media(max-width:640px){
+  #page-standort .std-team--sg .sg-team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #page-standort .std-team--sg .sg-lead-card{grid-column:auto}
+  #page-standort .std-team--sg .sg-lead-photo{aspect-ratio:4/5}
+  #page-standort .std-team--sg .sg-lead-photo img{object-position:center 15%}
+  #page-standort .std-team--sg .sg-lead-body{padding:12px 12px 14px;container-type:inline-size}
+  #page-standort .std-team--sg .sg-lead-card .sg-lead-text,#page-standort .std-team--sg .sg-lead-card .sg-lead-note{display:none}
+  #page-standort .std-team--sg .sg-lead-name{font-size:17px}
+  #page-standort .std-team--sg .sg-lead-cta:not(#w2):not(#w3){white-space:nowrap}
+  #page-standort .std-team--sg .std-team-leadnote{display:block;margin:14px 0 0;font-size:13px;line-height:1.5;color:#666}
+}
 #page-standort .std-kontakt-col{max-width:560px;margin:0 auto}
 #page-standort .std-kontakt .std-kontakt-h{font-size:clamp(21px,3.2vw,27px);margin-bottom:8px}
 #page-standort .std-kontakt .std-kontakt-sub{margin-bottom:22px}

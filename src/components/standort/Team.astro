@@ -21,6 +21,8 @@ const cards = data.team.map((t) => ({ ...t, profil: getTherapeutByName(t.name)?.
 // sgVoll (Zürich): wie St. Gallen die klinische Leitung als erste Karte im Teamraster (eigener Marker, keine .tmc-Karte);
 // die separate ClinicalLead-Sektion entfällt dann in [slug].astro.
 const leadCard = data.sgVoll ? clinicalLeadCardHtml(data.slug) : '';
+// Mobil (2 × 2): Hinweis der Leitung unter dem Raster statt in der Karte (Text identisch, nur verschoben; CSS .std-team-leadnote).
+const leadNote = leadCard.match(/<p class="sg-lead-note">([\s\S]*?)<\/p>/)?.[1] ?? '';
 const total = assigned.length + cards.length + (leadCard ? 1 : 0);
 // Wie St. Gallen: im zweispaltigen Mobile-Raster bedingte Trennstellen nur im sichtbaren Titel-/Namenstext langer Wörter.
 const shy = (html: string) => !data.sgVoll ? html : html.replace(/(<div class="tmc-(?:title|name)">)([^<]*)(<\/div>)/g, (_m: string, a: string, txt: string, b: string) =>
@@ -39,5 +41,6 @@ const shy = (html: string) => !data.sgVoll ? html : html.replace(/(<div class="t
       <div class="team-card reveal"> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <a href={wa} class="team-cta" target="_blank" rel="noopener">Termin anfragen</a> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </div>
     ))}
     </div>
+    {leadNote && <p class="std-team-leadnote" set:html={leadNote} />}
   </div></div></section>
 )}
