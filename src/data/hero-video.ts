@@ -2,11 +2,11 @@
 // Praxis Hwang; hier ohne Ton, 25 fps, 20.7 s). Ein Asset für alle Standorte, damit der Browser es zwischen den
 // Klinikseiten cacht. Opt-in je Slug wie LSR_SLUGS in standort/Hero.astro; nur operative Standorte (nie planned/review):
 // das Netzwerk-Footage darf keinen geplanten Standort als offen erscheinen lassen.
-// Einzige Ausnahme: /standorte/zuerich-city/ (keine Standort-Daten, bindet HeroMedia direkt ein; Inhaber-Freigabe 30.10.2026).
+// Zürich City/Bahnhofstrasse (Freigabe 30.10.2026) und Oerlikon laufen seit der Eröffnung (02.11.2026) regulär über diese Liste.
 import type { Standort } from './standorte';
 
 export const HERO_VIDEO_SLUGS = new Set([
-  'st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg',
+  'st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city', 'zuerich-oerlikon',
 ]);
 export const heroVideo = (d: Pick<Standort, 'slug' | 'planned' | 'review'>) => HERO_VIDEO_SLUGS.has(d.slug) && !d.planned && !d.review;
 

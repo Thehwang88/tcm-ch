@@ -4,6 +4,7 @@
 import type { Standort } from '../../data/standorte';
 import { waHref } from '../../data/standorte';
 import { getTherapeutByName, therapeuten, teamCardHtml, getPublicTherapistProfile } from '../../data/therapeuten';
+import { clinicalLeadCardHtml } from '../../data/clinical-lead';
 // SG-Vorlage: Kartenraster wie das St.-Galler Team (.sg-team-grid, Porträt oben, Text darunter); Spaltenzahl nach Teamgrösse
 // (3, bei vier Personen 4), mobil kompakte Querkarten. Nur vor Ort zugeordnete Personen; die klinische Leitung bleibt eine
 // eigene Sektion (ClinicalLead), kein SG-Raster «Leitung oben».
@@ -17,19 +18,29 @@ const ort = data.nap.ort;
 const assigned = therapeuten.filter((t) => t.standorte?.includes(data.slug));
 const assignedSlugs = new Set(assigned.map((t) => t.slug));
 const cards = data.team.map((t) => ({ ...t, profil: getTherapeutByName(t.name)?.slug })).filter((t) => !t.profil || !assignedSlugs.has(t.profil));
-const total = assigned.length + cards.length;
+// sgVoll (Zürich): wie St. Gallen die klinische Leitung als erste Karte im Teamraster (eigener Marker, keine .tmc-Karte);
+// die separate ClinicalLead-Sektion entfällt dann in [slug].astro.
+const leadCard = data.sgVoll ? clinicalLeadCardHtml(data.slug) : '';
+// Mobil (2 × 2): Hinweis der Leitung unter dem Raster statt in der Karte (Text identisch, nur verschoben; CSS .std-team-leadnote).
+const leadNote = leadCard.match(/<p class="sg-lead-note">([\s\S]*?)<\/p>/)?.[1] ?? '';
+const total = assigned.length + cards.length + (leadCard ? 1 : 0);
+// Wie St. Gallen: im zweispaltigen Mobile-Raster bedingte Trennstellen nur im sichtbaren Titel-/Namenstext langer Wörter.
+const shy = (html: string) => !data.sgVoll ? html : html.replace(/(<div class="tmc-(?:title|name)">)([^<]*)(<\/div>)/g, (_m: string, a: string, txt: string, b: string) =>
+  a + txt.replace(/Naturheilpraktikerin/g, 'Naturheil&shy;praktikerin').replace(/Physiotherapeutin/g, 'Physio&shy;therapeutin') + b);
 ---
 {total > 0 && (
-  <section class="section std-team" id={`team-${data.slug}`} style="scroll-margin-top:68px"><div class="wrap"><div class="content-body">
+  <section class={data.sgVoll ? 'section std-team std-team--sg' : 'section std-team'} id={`team-${data.slug}`} style="scroll-margin-top:68px"><div class="wrap"><div class="content-body">
     <h2>{data.teamTitel ?? `Dein TCM Team in ${data.stadt}`}</h2>
     <p>{data.teamIntro ?? 'Die Therapeut:innen an diesem Standort, mit Profil und öffentlich prüfbarem Registereintrag.'}</p>
     <div class="team-grid sg-team-grid" style={`--std-team-cols:${total === 4 ? 4 : 3}`}>
-    <Fragment set:html={assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t), { nurBelegt: true })).join('')} />
+    {leadCard && <Fragment set:html={leadCard} />}
+    <Fragment set:html={shy(assigned.map((t) => teamCardHtml(getPublicTherapistProfile(t), { nurBelegt: true })).join(''))} />
     {cards.map((t) => t.profil ? (
       <a href={`/team/${t.profil}/`} class="team-card reveal team-card--link" aria-label={`Profil von ${t.name} ansehen`}> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <span class="team-cta">Profil ansehen</span> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </a>
     ) : (
       <div class="team-card reveal"> <div class="team-photo-wrap"> {t.bild && <img width="630" height="840" src={t.bild} alt={t.name} class="team-photo" loading="lazy" />} <div class="team-overlay"> <div class="team-overlay-inner"> <div class="team-spec">{t.rolle}</div> <a href={wa} class="team-cta" target="_blank" rel="noopener">Termin anfragen</a> </div> </div> </div> <div class="team-info"> <div class="team-name">{t.name}</div> <div class="team-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{ort}</div> </div> </div>
     ))}
     </div>
+    {leadNote && <p class="std-team-leadnote" set:html={leadNote} />}
   </div></div></section>
 )}

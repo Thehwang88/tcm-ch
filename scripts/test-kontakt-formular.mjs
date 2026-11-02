@@ -187,16 +187,14 @@ ok(await pg.$eval(card('sg-unten'), (c) => /beendet/.test(c.textContent) && c.qu
 await pg.close();
 
 console.log('I. Standortstatus und Anfrageart (global, Homepage)');
-const OERL_P = 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3';
-const OERL_N = 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung';
+const OERL = 'Zürich Oerlikon';
 const LUZ = 'Luzern – Vormerkung, Eröffnung 2027';
 const MUENZ = 'Winterthur Münzgasse', MARKT = 'Winterthur Marktgasse';
 const ANDERE = 'Andere / in meiner Nähe';
 const visible = (pg, i, s) => pg.$eval(`${card(i)} ${s}`, (e) => !e.hidden && !e.closest('[hidden]'));
 const submitText = (pg, i) => pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.textContent.trim());
 for (const [label, value, art, angebot, btn, okRe] of [
-  ['Oerlikon Partnerpraxis', OERL_P, 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Zürich Oerlikon – Partnerpraxis/],
-  ['Oerlikon neue Praxis', OERL_N, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Zürich Oerlikon – neue Praxis/],
+  ['Oerlikon (operativ seit 02.11.2026)', OERL, 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Zürich Oerlikon/],
   ['Luzern', LUZ, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Luzern/],
   ['Andere / in meiner Nähe', ANDERE, 'routing', 'ROUTING_ANFRAGE', 'Passende Praxis anfragen →', /passende Praxis in deiner Nähe/],
 ]) {
@@ -220,10 +218,8 @@ for (const [label, value, art, angebot, btn, okRe] of [
 
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
 for (const [u, want, label] of [
-  ['/?standort=zuerich-oerlikon', OERL_N, 'Slug → Standardziel (Vormerkung neue Praxis, wie bisher PLANNED_PRESELECT)'],
-  ['/?standort=' + encodeURIComponent(OERL_P), OERL_P, 'expliziter Partnerpraxis-Wert bleibt Partnerpraxis'],
-  ['/?standort=' + encodeURIComponent('Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)'), OERL_P, 'sichtbares Label → richtige Option'],
-  ['/?standort=zuerich-oerlikon-0', OERL_P, 'Altwert der früheren Homepage-Liste (<id>-0)'],
+  ['/?standort=zuerich-oerlikon', OERL, 'Slug → reguläres Ziel (operativ)'],
+  ['/?standort=zuerich-city', 'Zürich Bahnhofstrasse', 'Slug zuerich-city → Bahnhofstrasse'],
   ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
   ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
 ]) {
@@ -233,12 +229,7 @@ for (const [u, want, label] of [
   await pg.close();
 }
 ({ pg, calls } = await open('/kontakt/?von=/standorte/zuerich-oerlikon/'));
-ok(await pg.$eval('#terminform select[name=standort]', (s) => s.value) === OERL_N, 'TerminForm ?von=/standorte/zuerich-oerlikon/ → Standardziel wie bisher');
-await pg.close();
-({ pg, calls } = await open('/?standort=' + encodeURIComponent(OERL_P)));
-await new Promise((r) => setTimeout(r, 700));
-await pg.evaluate(() => openContactForm(null, 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3'));
-ok(await pg.$eval(`${card('home')} select[name=standort]`, (s) => s.value) === OERL_P, 'openContactForm mit explizitem Wert springt nicht auf andere Oerlikon-Option');
+ok(await pg.$eval('#terminform select[name=standort]', (s) => s.value) === OERL, 'TerminForm ?von=/standorte/zuerich-oerlikon/ → reguläres Ziel');
 await pg.close();
 
 /** Reihenfolge in DOM und Darstellung: Terminart → (Rückruf-Button | Telefon … Anfrage-Button) → Trennlinie → OneDoc (Formular endet danach). */
@@ -909,8 +900,6 @@ console.log('T. DE-Homepage: ruhige Formularbox (global, Standortauswahl vor den
   ok(x.tiles === 'behandlung' && !x.checked && x.note && !x.od && x.submit === 'Termin anfragen →' && x.tel === 'tel:+41775236122' && x.wa && await pg.$eval(`${C} [name=telefon]`, (i) => i.value === '+41 79 000 00 00') && !(await pg.$eval(C, (c) => /Zungen- und Pulsdiagnostik/.test([...c.querySelectorAll('.kf-opt')].filter((l) => !l.hidden).map((l) => l.textContent).join('')))), 'Wechsel SG→Zürich Höngg nach Check-in-Wahl: Check-in-Kachel weg und abgewählt (keine Gratis-Diagnostik), Hinweis «nur in St. Gallen», kein OneDoc, Eingabe bleibt');
   await pick(pg, 'home', 'behandlung'); x = await st(pg);
   ok(!x.od && x.submit === 'Ersttermin anfragen →', 'andere operative Praxis + Behandlung: kein OneDoc (kein Kalender konfiguriert)');
-  await sel(pg, 'home', 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3'); x = await st(pg);
-  ok(x.tiles === 'behandlung' && x.checked === 'behandlung' && !x.od && x.alt && !x.ziel, 'Partnerpraxis: Behandlungsziel ohne Check-in, kein OneDoc, Kontaktlinks mit kanonischer Nummer');
   await sel(pg, 'home', 'Bottighofen'); x = await st(pg);
   ok(x.tel === 'tel:+41765780988' && !x.wa && !x.sep && x.alt, 'Bottighofen: Anrufen mit eigener kanonischer Nummer, WhatsApp ausgeblendet (keine pauschale Nummer)');
   await sel(pg, 'home', 'Luzern – Vormerkung, Eröffnung 2027'); x = await st(pg);
@@ -1044,7 +1033,6 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
   const FAM = [
     ['massage', '/massage-basel/', 'Passende Behandlung anfragen', 'form.inline-form[onsubmit*="submitInlineFormGeneric"]', 'name,email,telefon', '#anfrage'],
     ['zuerich-funnel', '/akupunktur-tcm-zuerich/', 'Termin bei TCM.ch finden', 'form[data-contact-form]', 'name', '#zh-funnel'],
-    ['vorbereitung', '/standorte/zuerich-oerlikon/', 'Anfrage für Zürich Oerlikon', 'form[data-contact-form]', 'name,telefon,email', '#kontakt'],
     ['warteliste', '/standorte/bern/', 'Vormerken für Bern', 'form[data-be-interesse]', 'email', '#interesse'],
     ['warteliste', '/standorte/luzern/', 'Warteliste Luzern', 'form[data-lu-waitlist]', 'email', '#warteliste'],
     ['warteliste', '/massage-luzern/', 'Warteliste Luzern', 'form[data-mw-waitlist]', 'email', null],
@@ -1100,7 +1088,7 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
 
 console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
 {
-  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon'];
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-city'];
   for (const slug of STD) {
     const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);

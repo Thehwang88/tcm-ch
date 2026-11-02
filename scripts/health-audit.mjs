@@ -355,7 +355,6 @@ console.log('  ->', OUT);
   const RETIRED = {
     '/standorte/zuerich-bellevue/': { to: '/standorte/zuerich-city/', status: '301' },
     '/en/locations/zuerich-bellevue/': { to: '/en/locations/', status: '301' },
-    '/en/locations/zuerich-city/': { to: '/en/locations/', status: '301' },
   };
   const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
   const redirectRules = parseRedirects(fs.readFileSync('public/_redirects', 'utf8'));

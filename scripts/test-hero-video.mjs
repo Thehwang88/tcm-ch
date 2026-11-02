@@ -1,6 +1,6 @@
 // Hero-Video der Standortseiten: Poster = Standbild des ersten Video-Frames (kein Standortfoto mehr im Hero). Nach `npm run build`:
 //   node scripts/test-hero-video.mjs [dist] [--baseline <dist-von-main>] [--shots docs/qa/hero-video-poster]
-//  1. Markup (alle 9 Video-Standorte + zuerich-city, Ausnahme 30.10.2026): Poster-<img> = <video poster> = Video-Standbild, kein /images/-Foto in der Figure,
+//  1. Markup (alle Video-Standorte inkl. Zürich City/Bahnhofstrasse + Oerlikon seit 02.11.2026): Poster-<img> = <video poster> = Video-Standbild, kein /images/-Foto in der Figure,
 //     4 Renditionen, muted/playsinline/loop/preload=none; Nicht-Video-Seiten unverändert; Praxisfotos bleiben in «Über die Praxis».
 //  2. Poster-Dateien: 1280×720 / 640×360, klein, und pixelnah am ersten Frame der echten Renditionen (ffmpeg + sharp).
 //  3. Browser (Chromium, 320/375/390/1280/1440): Stufen initial → vor Wiedergabe → erster bewegter Frame → Wiedergabe;
@@ -16,8 +16,8 @@ const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
 if (shots) fs.mkdirSync(shots, { recursive: true });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
 const POSTER = '/videos/hero-praxis/hwang-praxis-poster-1280.webp', POSTER_M = '/videos/hero-praxis/hwang-praxis-poster-640.webp';
-const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city'];
-const NO_VIDEO = ['zuerich-oerlikon', 'luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
+const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city', 'zuerich-oerlikon'];
+const NO_VIDEO = ['luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
 const read = (d, u) => fs.readFileSync(path.join(d, u, 'index.html'), 'utf8');
 
 console.log('1. Markup');

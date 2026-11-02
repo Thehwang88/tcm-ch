@@ -93,14 +93,17 @@ export const clinics: Clinic[] = [
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
-    // Pre-Opening: Eröffnung geplant 1.12.2026 (noch nicht final bestätigt). Bleibt 'planned', bis die
-    // Inhaber:in den Betrieb bestätigt; dann status 'operational' + verifizierte openingHours setzen.
-    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'planned', openingNote: 'Opening planned for 1 December 2026',
-    vorab: [
-      { value: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang, Schulstrasse 3', label: 'Zürich Oerlikon – Partnerpraxis Praxis Hwang (Termine jetzt)', labelEn: 'Zürich Oerlikon – partner practice Praxis Hwang (appointments now)', art: 'behandlung' },
-      { value: 'Zürich Oerlikon – neue Praxis Ohmstrasse 14, Termin nach Eröffnung', label: 'Zürich Oerlikon – neue Praxis (Eröffnung geplant 1.12.2026)', labelEn: 'Zürich Oerlikon – new clinic (opening planned 1 Dec 2026)', art: 'vormerkung' },
-    ],
+    // Eröffnet: Betrieb durch die Inhaber:in bestätigt (02.11.2026, zuvor 'planned'). Öffnungszeiten nicht bestätigt → keine erfinden.
+    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
+
+  // TCM.ch Bahnhofstrasse (Slug bleibt zuerich-city: bestehende City-URL, kein Redirect). Betrieb durch die Inhaber:in
+  // bestätigt (02.11.2026): Bahnhofstrasse 37, 1. OG, Gemeinschaftspraxis (Eingangstafel: «Medthera»). Öffnungszeiten nicht
+  // bestätigt → keine. Geo: OpenStreetMap-Gebäude Bahnhofstrasse 37 (way 327298871).
+  { id: 'zuerich-city', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
+    street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Bahnhofstrasse',
+    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
+    areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
@@ -160,6 +163,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
   'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
+  'zuerich-city':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
