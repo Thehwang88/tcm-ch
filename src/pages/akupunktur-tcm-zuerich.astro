@@ -14,11 +14,11 @@ import { NETZ_THERAPIEN } from '../data/standorte';
 const ZH_ALT = '<select class="form-select" name="standort"><option value="">Standort auswählen</option><option>Zürich Oerlikon</option><option>Zürich Höngg</option><option>Andere / in meiner Nähe</option></select>';
 if (!rawBody.includes(ZH_ALT)) throw new Error('akupunktur-tcm-zuerich: Standort-Select nicht gefunden');
 // Therapien: EIN Kartenraster wie St. Gallen und die Zürcher Standortseiten (gemeinsame Kartendaten therapy-cards.ts).
-// Top 8 = die ersten 8 Karten des Netz-Kartensets (NETZ_THERAPIEN), also genau die 8 sichtbaren Karten der St.-Galler und
-// Zürcher Standortseiten; Massage und Kräutertherapie bleiben als Textlinks darunter erreichbar.
+// Top 8 = die ersten 8 Karten des Netz-Kartensets (NETZ_THERAPIEN), genau die sichtbaren Karten der St.-Galler und Zürcher
+// Standortseiten; Kräutertherapie, Massage, Moxibustion und Elektroakupunktur als Textlinks darunter.
 const ZH_KARTEN = '<!--zh-therapie-karten-->';
 if (!rawBody.includes(ZH_KARTEN)) throw new Error('akupunktur-tcm-zuerich: Therapie-Karten-Marker nicht gefunden');
-const ZH_TOP8 = NETZ_THERAPIEN.slice(0, 8);
+const ZH_TOP8 = NETZ_THERAPIEN.slice(0, 8); // dieselben 8 sichtbaren Karten wie St. Gallen und die Zürcher Standortseiten
 if (ZH_TOP8.length !== 8) throw new Error(`akupunktur-tcm-zuerich: erwartet 8 Therapie-Karten, gefunden ${ZH_TOP8.length}`);
 const body = rawBody.replace(
   ZH_ALT,

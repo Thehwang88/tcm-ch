@@ -54,6 +54,9 @@ export interface Standort {
   /** Standort noch nicht eröffnet: Status-Banner unter dem Hero, Formular als Anfrage «für den geplanten Start».
    *  NICHT hier setzen: wird unten aus clinic.status (src/data/locations.ts) abgeleitet. */
   planned?: boolean;
+  /** Physiotherapie-Karte im Raster, aber KEIN bestätigtes Physio-Angebot an diesem Standort: kein «TCM und Physiotherapie
+   *  unter einem Dach»-Block, keine standortbezogenen Physio-Aussagen (Bahnhofstrasse, Oerlikon; Höngg nicht gesetzt). */
+  physioNurKarte?: boolean;
   /** Mietvertrag offen (clinic.vorVertrag): neutrale Netzwerk-Formulierungen statt Status-/Prüfungshinweisen. Abgeleitet. */
   vorVertrag?: boolean;
   /** Betriebsstatus nicht bestätigt (clinic.status 'review'); impliziert planned. Ebenfalls abgeleitet. */
@@ -77,9 +80,9 @@ export interface Standort {
 
 /** Therapie-Kartenset und Reihenfolge wie das Therapien-Raster der St.-Galler Standortseite (Leaf st-gallen.html). */
 export const NETZ_THERAPIEN = ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'akupressur', 'shiatsu', 'gua-sha', 'physiotherapie', 'massage', 'kraeutertherapie'];
-/** Gleiches Raster/Reihenfolge, aber nur TCM-Methoden: für Standorte ohne bestätigte Physiotherapie/medizinische Massage
- *  (Zürich Bahnhofstrasse, Zürich Oerlikon; Inhaberangabe 02.11.2026). Kein Physio-Hinweisblock, kein Massage-Zusatz. */
-export const TCM_THERAPIEN = NETZ_THERAPIEN.filter((t) => t !== 'physiotherapie' && t !== 'massage');
+/** Zürich Bahnhofstrasse und Oerlikon (Inhaberangabe 02.11.2026): gleiches 8er-Raster wie SG inkl. Physiotherapie-Karte
+ *  (TCM.ch-Angebot), aber ohne Massage-Karte (nicht bestätigt); Kräutertherapie hinter «Weitere Therapien». */
+export const ZH_THERAPIEN_OHNE_MASSAGE = NETZ_THERAPIEN.filter((t) => t !== 'massage');
 
 // ── TCM.ch Zürich Bahnhofstrasse: zwei Fassungen, Umschaltung allein über clinic.vorVertrag (src/data/locations.ts). ──
 // Aktivierung nach unterschriebenem Mietvertrag (eine kontrollierte Änderung + Links):
@@ -126,7 +129,8 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
       "einzugsgebiet": "<h2>Für Zürich City und die Kreise rund ums Zentrum</h2><p>Die Bahnhofstrasse liegt im Kreis 1. Die Praxis bietet sich an für alle, die in der City wohnen oder arbeiten, und für Patient:innen aus der Altstadt, der Enge, aus Aussersihl und Wiedikon.</p><p style=\"display:block\">Preise und Krankenkassen-Details: <a href=\"/standorte/zuerich/kosten/\">Akupunktur-Kosten in Zürich</a>.</p>"
     },
     "anfahrt": { "oev": "", "autoParken": "" },
-    "therapien": TCM_THERAPIEN,
+    "therapien": ZH_THERAPIEN_OHNE_MASSAGE,
+    "physioNurKarte": true,
     "beschwerdenIntro": "Häufige Anliegen, mit denen du in Zürich City anfragen kannst. Auf jeder Seite steht, wie wir vorgehen und wo die Grenzen der TCM liegen.",
     "beschwerden": ["nackenschmerzen", "stress-burnout", "migraene", "schlafprobleme", "rueckenschmerzen", "verdauungsprobleme", "tinnitus", "endometriose"],
     "team": [],
@@ -946,7 +950,8 @@ export const standorte: Record<string, Standort> = {
       "oev": "Die Praxis liegt beim Bahnhof Oerlikon; deine Verbindung zur Ohmstrasse 14 planst du am einfachsten im ZVV-Fahrplan.",
       "autoParken": ""
     },
-    "therapien": TCM_THERAPIEN,
+    "therapien": ZH_THERAPIEN_OHNE_MASSAGE,
+    "physioNurKarte": true,
     "faqs": [
       { "q": "Wo finde ich TCM in Oerlikon?", "a": "TCM.ch Oerlikon ist an der Ohmstrasse 14, 8050 Zürich, beim Bahnhof Oerlikon. Die Praxis ist gut erreichbar aus Neu-Oerlikon, Seebach, Affoltern, Schwamendingen und dem Glattpark." },
       { "q": "Welche Behandlungen bietet TCM.ch Oerlikon an?", "a": "Das Angebot steht oben bei den Therapien, von Akupunktur und Schröpfen über Tuina bis zur chinesischen Kräutertherapie. Welche Methode in deinem Fall passt, klären wir im Erstgespräch." },

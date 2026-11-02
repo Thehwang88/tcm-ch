@@ -39,6 +39,9 @@
 /en/locations/zuerich-city/        /en/acupuncture-zurich/     301
 /standorte/zuerich-bellevue        /akupunktur-tcm-zuerich/    301
 /standorte/zuerich-bellevue/       /akupunktur-tcm-zuerich/    301
+# Massage in Oerlikon nicht bestätigt (02.11.2026): Massage-Landingpage stillgelegt → Standortseite Oerlikon (ein Hop).
+/massage-oerlikon                  /standorte/zuerich-oerlikon/    301
+/massage-oerlikon/                 /standorte/zuerich-oerlikon/    301
 /en/locations/zuerich-bellevue   /en/locations/              301
 /en/locations/zuerich-bellevue/  /en/locations/              301
 

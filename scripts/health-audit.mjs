@@ -357,6 +357,7 @@ console.log('  ->', OUT);
     '/standorte/zuerich-city/': { to: '/akupunktur-tcm-zuerich/', status: '301' },
     '/en/locations/zuerich-city/': { to: '/en/acupuncture-zurich/', status: '301' },
     '/en/locations/zuerich-bellevue/': { to: '/en/locations/', status: '301' },
+    '/massage-oerlikon/': { to: '/standorte/zuerich-oerlikon/', status: '301' },
   };
   const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
   const redirectRules = parseRedirects(fs.readFileSync('public/_redirects', 'utf8'));

@@ -3,7 +3,7 @@
     "src/data/home-body.html": "318ab7ea6efb35d6"
   },
   "page:zurich": {
-    "src/pages/akupunktur-tcm-zuerich.astro": "6f75f69e56585f4c",
+    "src/pages/akupunktur-tcm-zuerich.astro": "ffe8a92991d552a9",
     "src/data/akupunktur-tcm-zuerich-body.html": "eb7c18ea024f291f",
     "src/data/zuerich-termin.ts": "1ec9bc1ae771c0c7"
   },
@@ -59,11 +59,11 @@
   },
   "location:zuerich-oerlikon": {
     "src/data/locations.ts#clinics.zuerich-oerlikon": "16d51a419243873a",
-    "src/data/standorte.ts#standorte.zuerich-oerlikon": "39370d35d052ba39"
+    "src/data/standorte.ts#standorte.zuerich-oerlikon": "ab0ea018d630ccab"
   },
   "location:zuerich-bahnhofstrasse": {
     "src/data/locations.ts#clinics.zuerich-bahnhofstrasse": "2829c7f9429427d0",
-    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "d26158160f1e94b5"
+    "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "1fd680f3916b4f97"
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
@@ -93,7 +93,7 @@
     "src/data/therapie-leaves/schroepfen.html": "8531151697496b39"
   },
   "therapy:tuina-massage": {
-    "src/data/therapie-leaves/tuina.html": "a4ea6e3cf36ca4eb"
+    "src/data/therapie-leaves/tuina.html": "60de712bae63c3e1"
   },
   "therapy:chinese-herbal-medicine": {
     "src/data/therapie-leaves/kraeutertherapie.html": "16f5518c819d019c"
