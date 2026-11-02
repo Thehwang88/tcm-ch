@@ -6,7 +6,7 @@
 import type { Standort } from './standorte';
 
 export const HERO_VIDEO_SLUGS = new Set([
-  'st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city', 'zuerich-oerlikon',
+  'st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-bahnhofstrasse', 'zuerich-oerlikon',
 ]);
 export const heroVideo = (d: Pick<Standort, 'slug' | 'planned' | 'review'>) => HERO_VIDEO_SLUGS.has(d.slug) && !d.planned && !d.review;
 

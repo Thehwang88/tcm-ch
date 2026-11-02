@@ -85,6 +85,9 @@ export const CHECKIN_FREIGABE = {
   'st-gallen': { name: 'St. Gallen', freigabe: 'Inhaber-Auftrag 15.10.2026 (ersetzt FIRST 30)' },
   'winterthur-marktgasse': { name: 'Winterthur Marktgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'winterthur-muenzgasse': { name: 'Winterthur Münzgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  // zuerich-bahnhofstrasse: Freigabe erst nach unterschriebenem Mietvertrag (vorVertrag in locations.ts).
+  'zuerich-oerlikon': { name: 'Zürich Oerlikon', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'zuerich-hoengg': { name: 'Zürich Höngg', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
 };
 
 /** Verifizierte OneDoc-Kalender für «Ersttermin mit Behandlung». Nur bestehende Ziele, keine erfundenen Kalender.
@@ -116,7 +119,7 @@ export const KAMPAGNEN = {
 };
 
 /** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
-export const GLOBAL_ORDER = ['zuerich-city', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
+export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
 export const ANDERE = { value: 'Andere / in meiner Nähe', label: 'Andere / in meiner Nähe', id: 'andere', art: 'routing' };
 
 /** Kanonische Formularziele. value = bisheriger Options-/Mail-Wert (Routing durchs Team), unverändert übernommen.

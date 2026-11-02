@@ -31,14 +31,16 @@ const card = (icon: string, title: string, body: string) =>
   `<div class="usp-card"><div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon}</svg></div><div class="usp-title">${title}</div><div class="usp-sub content-body">${body}</div></div>`;
 
 /** Transparenz-Sektion für eine Standortseite. `planned` = nicht als offen bestätigt; `review` = Betriebsstatus in Prüfung. */
-export function transparenzHtml(slug: string, planned = false, review = false): string {
+export function transparenzHtml(slug: string, planned = false, review = false, vorVertrag = false): string {
   const regs = planned ? '' : registerLinks(slug);
   const reg = card(ICON.reg, 'Registrierung prüfbar', regs
     ? `Öffentlicher Registereintrag der Therapeut:innen an diesem Standort:${regs}`
     : `Zu jeder Fachperson mit Profil im <a href="/ueber-uns/#ueber-uns-team">Team</a> verlinken wir den öffentlichen Registereintrag.`);
   const kosten = card(ICON.tarif, 'Kosten vorab klar', `Abrechnung nach Tarif 590. Was deine Zusatzversicherung übernimmt, hängt von deiner Police ab: <a href="/krankenkassen/">Krankenkasse &amp; Kosten</a>.`);
   const ablauf = card(ICON.talk, 'Ehrliche Einschätzung', `Im Erstgespräch klären wir, ob TCM für dein Anliegen sinnvoll ist. Gehört etwas zuerst ärztlich abgeklärt, sagen wir dir das.`);
-  const anfrage = review
+  const anfrage = vorVertrag
+    ? card(ICON.mail, 'Unverbindlich anfragen', `Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Wir schlagen dir die passende Praxis vor.`)
+    : review
     ? card(ICON.mail, 'Unverbindlich anfragen', `Der Betrieb an diesem Standort ist noch nicht bestätigt. Wir schlagen dir eine passende Praxis in der Nähe vor.`)
     : planned
     ? card(ICON.mail, 'Vormerken ohne Verpflichtung', `Wir melden uns, sobald an diesem Standort Termine möglich sind. Bis dahin nennen wir dir gern eine bestehende Praxis.`)

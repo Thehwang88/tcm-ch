@@ -16,7 +16,6 @@ export const site = {
 
 // The 14 TCM.ch clinics (id = DE SPA standort slug, label = display name).
 export const standorte = [
-  { id: 'zuerich-city', label: 'Zürich Bahnhofstrasse' },
   { id: 'zuerich-oerlikon', label: 'Zürich Oerlikon' },
   { id: 'zuerich-hoengg', label: 'Zürich Höngg' },
   { id: 'winterthur-marktgasse', label: 'Winterthur Marktgasse' },
@@ -44,7 +43,7 @@ export const PAIR_MAP: Record<string, string> = {
   '/akupunktur-tcm-zuerich/': '/en/acupuncture-zurich/',
   // Locations: DE /standorte(/<slug>) <-> EN /en/locations(/<slug>)
   '/standorte': '/en/locations/',
-  ...Object.fromEntries(clinics.map((c) => [deStandortPath(c.id), enLocationPath(c.id)])),
+  ...Object.fromEntries(clinics.filter((c) => !c.vorVertrag).map((c) => [deStandortPath(c.id), enLocationPath(c.id)])), // vorVertrag: keine EN-Seite, kein hreflang
   // Conditions: DE /beschwerden(/<slug>) <-> EN /en/conditions(/<slug>)
   '/beschwerden': '/en/conditions/',
   ...Object.fromEntries(conditions.map((c) => [deConditionPath(c.deSlug), enConditionPath(c.slug)])),

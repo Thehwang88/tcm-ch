@@ -194,7 +194,7 @@ const ANDERE = 'Andere / in meiner Nähe';
 const visible = (pg, i, s) => pg.$eval(`${card(i)} ${s}`, (e) => !e.hidden && !e.closest('[hidden]'));
 const submitText = (pg, i) => pg.$eval(`${card(i)} [data-kf-submit]`, (b) => b.textContent.trim());
 for (const [label, value, art, angebot, btn, okRe] of [
-  ['Oerlikon (operativ seit 02.11.2026)', OERL, 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Zürich Oerlikon/],
+  ['Basel (operativ, ohne Check-in-Freigabe)', 'Basel', 'behandlung', 'ERSTTERMIN_BEHANDLUNG', 'Ersttermin anfragen →', /Ersttermin mit Behandlung in Basel/],
   ['Luzern', LUZ, 'vormerkung', 'VORMERKUNG', 'Vormerkung senden →', /Deine Vormerkung: Luzern/],
   ['Andere / in meiner Nähe', ANDERE, 'routing', 'ROUTING_ANFRAGE', 'Passende Praxis anfragen →', /passende Praxis in deiner Nähe/],
 ]) {
@@ -209,7 +209,7 @@ for (const [label, value, art, angebot, btn, okRe] of [
   }
   ok(await submitText(pg, 'home') === btn, `${label}: Button «${btn}»`);
   await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home'); c0 = calls[0] || {};
-  ok(calls.length === 1 && c0.standort === value && c0.standort_id === (value === ANDERE ? 'andere' : value.startsWith('Zürich Oerlikon') ? 'zuerich-oerlikon' : 'luzern') && c0.angebot_id === angebot, `${label}: Payload kanonisch {standort:"${c0.standort}", standort_id:${c0.standort_id}, angebot_id:${c0.angebot_id}}`);
+  ok(calls.length === 1 && c0.standort === value && c0.standort_id === (value === ANDERE ? 'andere' : value === 'Basel' ? 'basel' : 'luzern') && c0.angebot_id === angebot, `${label}: Payload kanonisch {standort:"${c0.standort}", standort_id:${c0.standort_id}, angebot_id:${c0.angebot_id}}`);
   const fsx = await ev(pg, 'formular_senden');
   ok(fsx.length === 1 && fsx[0].terminart === art && fsx[0].standort === c0.standort_id && total(await sends(pg, 'formular_senden')) === 1, `${label}: genau 1 formular_senden (terminart ${art}, standort-ID), kein gtag-Zweitversand`);
   ok(okRe.test(await pg.$eval(card('home'), (c) => c.querySelector('.kf-success')?.textContent || '')), `${label}: Bestätigung mit derselben Bedeutung`);
@@ -219,7 +219,6 @@ for (const [label, value, art, angebot, btn, okRe] of [
 console.log('J. Prefill mehrerer Optionen desselben Standorts');
 for (const [u, want, label] of [
   ['/?standort=zuerich-oerlikon', OERL, 'Slug → reguläres Ziel (operativ)'],
-  ['/?standort=zuerich-city', 'Zürich Bahnhofstrasse', 'Slug zuerich-city → Bahnhofstrasse'],
   ['/?standort=St.%20Gallen', 'St. Gallen', 'Standortname'],
   ['/?standort=luzern', LUZ, 'Slug Luzern → Vormerkung'],
 ]) {
@@ -861,6 +860,7 @@ for (const w of [320, 390, 768, 1440]) {
 }
 { // Auswahl unabhängig je Instanz; Mint allein ist keine Auswahl
   ({ pg, calls } = await open('/standorte/st-gallen/', { width: 390 }));
+  await new Promise((r) => setTimeout(r, 400)); // Rand-Transition (0,15 s) abwarten, sonst Messung mitten im Übergang
   const bc = (i, v) => pg.$eval(`${card(i)} .kf-opt--${v}`, (l) => [getComputedStyle(l).borderTopColor, l.classList.contains('is-checked'), l.querySelector('input').checked].join());
   const b0 = await bc('sg-hero', 'behandlung'), c0 = await bc('sg-hero', 'checkin');
   ok(b0.split(',')[0] === c0.split(',')[0] && /false,false$/.test(b0), 'ohne Auswahl: Mint-Kachel hat denselben neutralen Rand wie der Check-in, nicht gewählt');
@@ -896,8 +896,8 @@ console.log('T. DE-Homepage: ruhige Formularbox (global, Standortauswahl vor den
   await pick(pg, 'home', 'checkin'); x = await st(pg);
   ok(!x.od && x.submit === 'TCM-Check-in anfragen →' && x.checked === 'checkin', 'SG + Check-in: kein OneDoc, Button «TCM-Check-in anfragen →»');
   await type(pg, 'home', 'telefon', '+41 79 000 00 00');
-  await sel(pg, 'home', 'Zürich Höngg'); x = await st(pg);
-  ok(x.tiles === 'behandlung' && !x.checked && x.note && !x.od && x.submit === 'Termin anfragen →' && x.tel === 'tel:+41775236122' && x.wa && await pg.$eval(`${C} [name=telefon]`, (i) => i.value === '+41 79 000 00 00') && !(await pg.$eval(C, (c) => /Zungen- und Pulsdiagnostik/.test([...c.querySelectorAll('.kf-opt')].filter((l) => !l.hidden).map((l) => l.textContent).join('')))), 'Wechsel SG→Zürich Höngg nach Check-in-Wahl: Check-in-Kachel weg und abgewählt (keine Gratis-Diagnostik), Hinweis «nur in St. Gallen», kein OneDoc, Eingabe bleibt');
+  await sel(pg, 'home', 'Basel'); x = await st(pg);
+  ok(x.tiles === 'behandlung' && !x.checked && x.note && !x.od && x.submit === 'Termin anfragen →' && x.tel === 'tel:+41775236122' && x.wa && await pg.$eval(`${C} [name=telefon]`, (i) => i.value === '+41 79 000 00 00') && !(await pg.$eval(C, (c) => /Zungen- und Pulsdiagnostik/.test([...c.querySelectorAll('.kf-opt')].filter((l) => !l.hidden).map((l) => l.textContent).join('')))), 'Wechsel SG→Basel (ohne Freigabe) nach Check-in-Wahl: Check-in-Kachel weg und abgewählt (keine Gratis-Diagnostik), Hinweis «nur in St. Gallen», kein OneDoc, Eingabe bleibt');
   await pick(pg, 'home', 'behandlung'); x = await st(pg);
   ok(!x.od && x.submit === 'Ersttermin anfragen →', 'andere operative Praxis + Behandlung: kein OneDoc (kein Kalender konfiguriert)');
   await sel(pg, 'home', 'Bottighofen'); x = await st(pg);
@@ -1088,25 +1088,25 @@ console.log('W. Gemeinsame Hülle: Massage, Zürich-Funnel, Vorbereitung/Prüfun
 
 console.log('S. Standortseiten nach der SG-Vorlage: obere Box, Struktur, Sticky, Versand (gemockt), keine SG-Sonderangebote');
 {
-  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon', 'zuerich-city'];
+  const STD = ['basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon']; // zuerich-bahnhofstrasse: vorVertrag (Status review), eigener Gate-Block in check-clinic-status 4j
   for (const slug of STD) {
     const html = fs.readFileSync(path.join(dist, 'standorte', slug, 'index.html'), 'utf8');
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]); const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
     const box = html.indexOf('<div data-std-box-oben'), info = html.indexOf('class="sgk-info"'), unten = html.indexOf('id="kontakt"');
     ok(dup.length === 0 && box > html.indexOf('class="lsr-hero') && box < info && info < unten && html.indexOf('class="sgu"') < box && (html.match(/<div data-std-box-oben/g) || []).length === 1,
       `/standorte/${slug}/: Hero → USP → Box vor Praxisangaben (DOM = mobile Reihenfolge) → … → #kontakt; keine doppelten IDs${dup.length ? ' (' + [...new Set(dup)].join(', ') + ')' : ''}`);
-    const h0 = html.replace(/<script[\s\S]*?<\/script>/g, ''); const wt = /^winterthur-/.test(slug);
+    const h0 = html.replace(/<script[\s\S]*?<\/script>/g, ''); const wt = /^(winterthur|zuerich)-/.test(slug); // 360°-Check-in freigegeben (CHECKIN_FREIGABE): Winterthur seit 22.10., Zürich seit 02.11.2026
     ok(!/data-kf-onedoc|kf-onedoc|online-buchen|onedoc\.ch|launch-hero-sg|sg-kontakt-bottom|Corinna|Lenggenhager/.test(h0) && (wt || !/kf-opt--checkin|TCM-Check-in/.test(h0)),
       `/standorte/${slug}/: kein OneDoc, keine SG-Kennungen/Personen${wt ? '' : ', kein Check-in'}`);
     if (wt) {
-      // Winterthur (22.10.2026): identisches 360°-Angebot wie SG in beiden Karten (oben + #kontakt), Erstbehandlung zuerst, keine Statushinweise.
+      // Winterthur (22.10.2026) und Zürich (02.11.2026): identisches 360°-Angebot wie SG in beiden Karten (oben + #kontakt), Erstbehandlung zuerst, keine Statushinweise.
       const T360 = ['Kostenloser TCM 360°-Check-in', '30 Minuten · CHF 0.–', 'Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.', 'Ohne Behandlung. Unverbindlich.', 'Ersttermin mit Behandlung', '60 Minuten', 'Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.'];
       const cards = ['standort-oben', 'standort'].map((i) => (html.match(new RegExp(`<div class="inline-form-card kf[^"]*"[^>]*data-kf-instance="${i}"[\\s\\S]*?<\\/form>`)) || [''])[0]);
       const tx = (s) => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
       ok(cards.every((c) => c && c.indexOf('kf-opt--behandlung') > 0 && c.indexOf('kf-opt--behandlung') < c.indexOf('kf-opt--checkin') && T360.every((s) => tx(c).split(s).length === 2) && /value="checkin"[^>]*data-kf-angebot="TCM_CHECKIN"/.test(c) && /value="behandlung"[^>]*data-kf-angebot="ERSTTERMIN_BEHANDLUNG"/.test(c) && new RegExp(`data-kf-standort-id="${slug}"`).test(c) && !/<span class="kf-scope"|data-kf-scope>|data-kf-huelle=|<select[^>]*name="standort"/.test(c)),
         `/standorte/${slug}/: obere Box + #kontakt mit 360°-Check-in (CHF 0.–) und Ersttermin (60 Min.), Wortlaut wie SG je 1×, Schlüssel TCM_CHECKIN/ERSTTERMIN_BEHANDLUNG, fester Standort ${slug}`);
       const nearStatus = [...h0.matchAll(/M(ü|ue)nzgasse|Marktgasse/g)].some((m) => /Prüfung|geplant|bestätigt|geprüft|pending|review/i.test(h0.slice(Math.max(0, m.index - 220), m.index + 220)));
-      ok(!/Standort in Prüfung|Betriebsstatus nicht bestätigt|derzeit geprüft|data-status-banner|Passende Praxis anfragen|data-kf-huelle=/.test(h0) && !nearStatus && /Marktgasse 78|Münzgasse 2/.test(h0),
+      ok(!/Standort in Prüfung|Betriebsstatus nicht bestätigt|derzeit geprüft|data-status-banner|Passende Praxis anfragen|data-kf-huelle=/.test(h0) && !nearStatus && /Marktgasse 78|Münzgasse 2|Bahnhofstrasse 37|Ohmstrasse 14|Limmattalstrasse 340/.test(h0),
         `/standorte/${slug}/: keine Status-/Prüfungshinweise (auch nicht im Umfeld von Marktgasse/Münzgasse), lokale Adresse sichtbar`);
     }
   }

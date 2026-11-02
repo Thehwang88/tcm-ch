@@ -4,7 +4,7 @@
 // data from clinics[] only (status-aware), no availability claims, no storage, no new analytics events:
 // the final "Request" button is a link to the page's appointment form (#appointment) → booking cta_click,
 // and it preselects the clinic (data-pick) and a treatment-interest prefix in the message (data-prefill).
-import { clinics, type Clinic } from '../../data/locations';
+import { publicClinics as clinics, type Clinic } from '../../data/locations';
 import { therapies } from '../../data/therapies';
 import { enLocationPath } from '../../data/locations';
 interface Props { formAnchor?: string }

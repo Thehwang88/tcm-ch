@@ -26,6 +26,8 @@ export interface ClinicalLeadContext {
   status: ClinicStatus;
   /** Eigenständige Betreiberin/Partnerpraxis (clinic.betreiber oder EN partnerClinic). */
   operator?: string;
+  /** Mietvertrag offen (clinic.vorVertrag): neutraler Netzwerk-Hinweis ohne Status-/Prüfungsaussage. */
+  vorVertrag?: boolean;
   /** Die Person ist an diesem Standort auch lokal behandelnd (therapeuten[].standorte[]). */
   treatsHere: boolean;
 }
@@ -38,6 +40,7 @@ export const clinicalLeadContext = (id: string): ClinicalLeadContext | undefined
     id, name: c.name, status: c.status,
     operator: c.betreiber?.name ?? locationContent[id]?.partnerClinic,
     treatsHere: !!lead?.standorte?.includes(id),
+    vorVertrag: !!c.vorVertrag,
   };
 };
 
@@ -57,6 +60,8 @@ export const clinicalLeadCopy = (lang: 'de' | 'en', ctx: ClinicalLeadContext): C
   if (lang === 'de') {
     const note = localCard
       ? `Behandelt in ${ctx.name} auch selbst; sein Profil steht oben im Team. Die netzwerkweite Rolle kommt dazu.`
+      : ctx.vorVertrag
+      ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg; seine Rolle gilt netzwerkweit.'
       : ctx.status === 'review'
       ? `Hinweis zum TCM.ch Netzwerk: Der Betriebsstatus von ${ctx.name} ist in Prüfung. Hier ist kein Behandlungsteam vor Ort bestätigt; Termine mit ihm sind an diesem Standort nicht möglich.`
       : ctx.status === 'planned'

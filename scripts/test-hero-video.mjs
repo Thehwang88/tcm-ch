@@ -16,8 +16,8 @@ const shots = args.includes('--shots') ? args[args.indexOf('--shots') + 1] : '';
 if (shots) fs.mkdirSync(shots, { recursive: true });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
 const POSTER = '/videos/hero-praxis/hwang-praxis-poster-1280.webp', POSTER_M = '/videos/hero-praxis/hwang-praxis-poster-640.webp';
-const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-city', 'zuerich-oerlikon'];
-const NO_VIDEO = ['luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
+const VIDEO_SLUGS = ['st-gallen', 'basel', 'kreuzlingen', 'frauenfeld', 'rorschach', 'volketswil', 'wil', 'winterthur-marktgasse', 'zuerich-hoengg', 'zuerich-oerlikon'];
+const NO_VIDEO = ['zuerich-bahnhofstrasse', 'luzern', 'bern', 'winterthur-muenzgasse', 'bottighofen'];
 const read = (d, u) => fs.readFileSync(path.join(d, u, 'index.html'), 'utf8');
 
 console.log('1. Markup');
@@ -83,7 +83,7 @@ const figState = (pg) => pg.evaluate(() => { const f = document.querySelector('[
   return { rect: [Math.round(r.left), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)], playing: f.classList.contains('is-playing'), paused: v.paused, t: v.currentTime, ready: v.readyState, src: v.currentSrc, vOp: getComputedStyle(v).opacity, vDisp: getComputedStyle(v).display, muted: v.muted, loop: v.loop, pi: v.playsInline, preload: v.preload, imgSrc: i.currentSrc || i.src, imgPos: getComputedStyle(i).objectPosition, vPos: getComputedStyle(v).objectPosition, imgVis: i.getBoundingClientRect().width > 0 }; });
 // Ausschnitt immer aus der aktuellen Viewport-Lage der Figure (nach Scrolls exakt, keine Verschiebung durch Smooth-Scroll).
 const clipShot = async (pg, _rect, file) => { const r = await pg.evaluate(() => { const b = document.querySelector('[data-hero-video]').getBoundingClientRect(); return { x: b.left + scrollX, y: b.top + scrollY, width: b.width, height: b.height }; }); const y0 = await pg.evaluate(() => scrollY); const buf = await pg.screenshot({ clip: r, captureBeyondViewport: true });
-  // captureBeyondViewport kann auf kurzen Seiten (z. B. zuerich-city) die Scrollposition verschieben → Figure ausserhalb des Viewports → Video pausiert (gewollt). Lage wiederherstellen, damit die Messung die Seite nicht verändert.
+  // captureBeyondViewport kann auf kurzen Seiten (z. B. zuerich-bahnhofstrasse) die Scrollposition verschieben → Figure ausserhalb des Viewports → Video pausiert (gewollt). Lage wiederherstellen, damit die Messung die Seite nicht verändert.
   if (await pg.evaluate(() => scrollY) !== y0) await pg.evaluate((y) => scrollTo(0, y), y0);
   if (file && shots) fs.writeFileSync(path.join(shots, file), buf); return buf; };
 const stats = async (buf) => { const { data } = await sharp(buf).greyscale().raw().toBuffer({ resolveWithObject: true }); let s = 0; for (const x of data) s += x; const mean = s / data.length; return mean; };
@@ -91,7 +91,7 @@ const bufDiff = async (a, b) => { const A = await sharp(a).resize(160, 90).greys
 const waitPlaying = async (pg) => { try { await pg.waitForFunction(() => document.querySelector('[data-hero-video]').classList.contains('is-playing'), { timeout: 10000 }); return true; } catch (e) { return false; } };
 const lcp = (pg) => pg.evaluate(() => (window.__lcp || []).slice(-1)[0] || null);
 const geom = {};
-for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]], ['zuerich-city', [375, 1440]]]) {
+for (const [slug, widths] of [['st-gallen', [320, 375, 390, 1280, 1440]], ['basel', [390, 1280]], ['zuerich-hoengg', [375, 1440]], ['zuerich-oerlikon', [375, 1440]]]) {
   for (const w of widths) {
     const u = `/standorte/${slug}/`, tag = `${slug}-${w}`;
     // A: initial (DOM geparst, vor load) · B: vor Wiedergabe (nach load, Video pausiert, unsichtbar)

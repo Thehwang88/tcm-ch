@@ -1,6 +1,6 @@
 ---
 import { PAIR_MAP, PAIR_MAP_EN, site } from '../data/site';
-import { clinics, enLocationPath } from '../data/locations';
+import { publicClinics as clinics, enLocationPath } from '../data/locations';
 interface Props { currentPath: string; lang?: 'en' | 'de'; }
 const { currentPath, lang = 'en' } = Astro.props;
 const isDe = lang === 'de';

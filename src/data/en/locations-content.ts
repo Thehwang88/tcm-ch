@@ -180,7 +180,7 @@ export const locationContent: Record<string, LocationContent> = {
     sub: 'Praxis Hwang at Limmattalstrasse 340 is a partner practice in the TCM.ch network. We coordinate your request through TCM.ch.',
     about: [
       'Praxis Hwang Zürich Höngg at Limmattalstrasse 340 in district 10 is a partner practice in the TCM.ch network: Praxis Hwang runs the practice, and through TCM.ch you request appointments and clarify questions about costs and insurance. The range includes acupuncture, cupping, Tuina massage and Chinese herbal medicine.',
-      'Part of our network for acupuncture and TCM in Zürich, with clinics in Höngg, in <a href="/en/locations/zuerich-oerlikon/">Oerlikon</a> and on <a href="/en/locations/zuerich-city/">Bahnhofstrasse</a>.',
+      'Part of our network for acupuncture and TCM in Zürich, with clinics in Höngg and <a href="/en/locations/zuerich-oerlikon/">Oerlikon</a>.',
     ],
     area: 'The practice is close for Höngg, Wipkingen, Affoltern, Albisrieden, district 5 and the Limmattal, and a short trip from Schlieren, Dietikon, Regensdorf and Engstringen.',
     faqs: [
@@ -189,7 +189,7 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'Does health insurance cover the treatment?', a: INSURANCE },
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
-    nearby: ['zuerich-city', 'zuerich-oerlikon', 'volketswil'],
+    nearby: ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'volketswil'],
   },
 
   'zuerich-oerlikon': {
@@ -197,7 +197,7 @@ export const locationContent: Record<string, LocationContent> = {
     sub: 'First consultation, TCM assessment and a clear treatment plan. Requests are welcome in English or German.',
     about: [
       'TCM.ch Oerlikon is at Ohmstrasse 14, 8050 Zürich, near Oerlikon station. We treat with acupuncture, cupping, Tuina massage, Chinese herbal medicine and further TCM methods; which of them make sense for you is decided at the first consultation.',
-      'Opening hours are published once confirmed; until then we offer appointments on request. Our other Zürich locations are on <a href="/en/locations/zuerich-city/">Bahnhofstrasse</a> and in <a href="/en/locations/zuerich-hoengg/">Höngg</a>.',
+      'Opening hours are published once confirmed; until then we offer appointments on request. Our other Zürich location is in <a href="/en/locations/zuerich-hoengg/">Höngg</a>.',
     ],
     area: 'The clinic is close for Oerlikon, Seebach, Schwamendingen, Affoltern and districts 11/12, and quick to reach from the Glattal: Wallisellen, Opfikon, Kloten, Bassersdorf, Rümlang and Regensdorf.',
     faqs: [
@@ -207,10 +207,10 @@ export const locationContent: Record<string, LocationContent> = {
       { q: 'How many sessions will I need?', a: SESSIONS },
     ],
     hero: { src: '/images/standort-oerlikon.png', alt: 'TCM.ch clinic Zürich Oerlikon', caption: 'Ohmstrasse 14, Zürich Oerlikon' },
-    nearby: ['zuerich-city', 'zuerich-hoengg', 'winterthur-marktgasse'],
+    nearby: ['zuerich-bahnhofstrasse', 'zuerich-hoengg', 'winterthur-marktgasse'],
   },
 
-  'zuerich-city': {
+  'zuerich-bahnhofstrasse': {
     lead: 'Acupuncture and TCM in Zürich city centre: our clinic at Bahnhofstrasse 37, first floor.',
     sub: 'An appointment in the centre, with time for case history and assessment. Requests are welcome in English or German.',
     about: [

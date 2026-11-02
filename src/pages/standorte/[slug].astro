@@ -88,7 +88,7 @@ const ksBlock = ksLinksHtml(
 // Integrierter Physio+TCM-Hinweis nur an Standorten, deren therapien[] Physiotherapie
 // führt (Verfügbarkeits-Flag; kein Standort ohne Physio bekommt den Block). Nicht an geplanten / in Prüfung
 // stehenden Standorten: «An diesem Standort … verfügbar» wäre dort eine Zusage ohne bestätigten Betrieb.
-const physioDachBlock = migrated && !migrated.planned && migrated.therapien?.includes('physiotherapie')
+const physioDachBlock = migrated && !migrated.planned && !migrated.physioNurKarte && migrated.therapien?.includes('physiotherapie')
   ? `<section class="section" style="padding:36px 0;background:var(--bg)"><div class="wrap reveal"><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 24px;max-width:860px"><div style="font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:6px">TCM und Physiotherapie unter einem Dach</div><p style="font-size:15px;color:var(--mid);line-height:1.6;margin:0">An diesem Standort sind TCM-Methoden und <a href="/therapien/physiotherapie/" style="color:var(--blue);font-weight:700;text-decoration:none">Physiotherapie</a> verfügbar; je nach Beschwerdebild können sich beide sinnvoll ergänzen, mit einem abgestimmten Plan. Wichtig zur Abrechnung: Physiotherapie läuft mit ärztlicher Verordnung über die Grundversicherung, TCM-Methoden über die Zusatzversicherung. Die Physio-Verfügbarkeit hängt vom Therapieplan der Fachpersonen ab, frag bei der Terminanfrage kurz nach.</p></div></div></section>`
   : '';
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
@@ -386,7 +386,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
           Therapien → Team → Beschwerden → Transparenz → Krankenkasse → lokale Inhalte → Praxen in der Nähe →
           WhatsApp → FAQ → unteres Formular → Weiterlesen. */}
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
-        <UspGrid slot="usp" planned={data.planned} review={data.review} />
+        <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} />
         <div slot="form" data-std-box-oben><AnfrageKarte data={data} sitekey={turnstileSitekey} oben /></div>
         <UeberPraxis slot="info" data={data} inner />
       </KontaktPraxis>
@@ -401,7 +401,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         {!(data.sgVoll && !data.planned && !data.review) && <ClinicalLead slug={data.slug} />}
         <Beschwerden data={data} />
         {data.ablaufBlock && <Ablauf />}
-        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review)} />
+        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag)} />
         <KrankenkassenTeam data={data} />
         <IntroNap data={data} />
         {data.extraBlock && <Fragment set:html={data.extraBlock} />}

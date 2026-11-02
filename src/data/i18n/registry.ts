@@ -129,7 +129,7 @@ const locationEntries: LocalizationEntry[] = clinics.map((c) => {
   return {
     id: `location:${c.id}`, type: 'location', intent: 'conversion',
     de: slash(deStandortPath(c.id)), en: enLocationPath(c.id),
-    ...st(`location:${c.id}`),
+    ...(c.vorVertrag ? { editorial: 'Missing' as EditorialStatus, publication: 'Unpublished' as PublicationStatus } : st(`location:${c.id}`)),
     sources: [`src/data/locations.ts#clinics.${c.id}`, ...(de ? [`src/data/standorte.ts#standorte.${c.id}`] : [])],
     images: [de?.hero.image ?? locationImages[c.id]?.src].filter(Boolean) as string[],
     links: { parent: 'hub:locations', related: ['page:contact', 'page:insurance', ...(c.city === 'Zürich' ? ['page:zurich'] : [])] },

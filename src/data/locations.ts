@@ -33,6 +33,10 @@ export interface Clinic {
    *  Praxistelefon); die TCM.ch-Nummer erscheint nur als «Terminkoordination TCM.ch».
    *  Keine Bewertungen der Betreiberin auf TCM.ch übernehmen. */
   betreiber?: { name: string; marke: string; url: string; telefon: string; quelle: string };
+  /** Mietvertrag noch nicht unterschrieben (Bahnhofstrasse, 02.11.2026): Seite bleibt live/indexierbar (Sitemap), aber
+   *  unverlinkt (keine Karten/Nearby/Nav), nicht in Formularen, keine EN-Seite, keine exakte Adresse. Zentraler Schalter:
+   *  Aktivierung = vorVertrag entfernen + status 'operational' + street/postalCode setzen (Checkliste in standorte.ts). */
+  vorVertrag?: boolean;
   /** Schema-Name, falls die Seite nicht aus standorte.ts kommt (Legacy-Leaves St. Gallen, Bottighofen); DE und EN identisch. */
   schemaName?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
@@ -97,13 +101,12 @@ export const clinics: Clinic[] = [
     openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
-  // TCM.ch Bahnhofstrasse (Slug bleibt zuerich-city: bestehende City-URL, kein Redirect). Betrieb durch die Inhaber:in
-  // bestätigt (02.11.2026): Bahnhofstrasse 37, 1. OG, Gemeinschaftspraxis (Eingangstafel: «Medthera»). Öffnungszeiten nicht
-  // bestätigt → keine. Geo: OpenStreetMap-Gebäude Bahnhofstrasse 37 (way 327298871).
-  { id: 'zuerich-city', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
-    street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Bahnhofstrasse',
-    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
-    areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
+  // TCM.ch Zürich Bahnhofstrasse: Mietvertrag noch NICHT unterschrieben (Inhaber 02.11.2026). Bis dahin vorVertrag + 'review':
+  // keine Adresse, keine Öffnungsaussage, nicht in Formularen/Check-in, nicht verlinkt. Vorbereitete Live-Daten (Adresse,
+  // 1. OG, Medthera-Hinweis, Geo) liegen in standorte.ts (ZH_BAHNHOFSTRASSE_NACH_VERTRAG). Slug zuerich-city bleibt stillgelegt.
+  { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
+    street: null, postalCode: null, phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
+    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'review', vorVertrag: true },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
@@ -138,6 +141,9 @@ export const clinics: Clinic[] = [
     areaServed: ['Wil', 'Bronschhofen', 'Rossrüti', 'Schwarzenbach', 'Uzwil', 'Flawil', 'Bütschwil', 'Münchwilen', 'Sirnach', 'Niederuzwil', 'Henau'] },
 ];
 
+/** Öffentlich verlinkbare Kliniken (ohne vorVertrag): Quelle für alle Listen, Navigationen, Formulare und hreflang-Paare. */
+export const publicClinics = clinics.filter((c) => !c.vorVertrag);
+
 // Conditions patients most commonly come for. Linked to the DE /beschwerden
 // deep pages for now (EN equivalents not built yet). ids = DE symptom slugs.
 export const commonConditions: { id: string; label: string }[] = [
@@ -163,7 +169,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
   'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
-  'zuerich-city':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
+  'zuerich-bahnhofstrasse':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
