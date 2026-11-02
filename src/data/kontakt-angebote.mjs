@@ -85,6 +85,9 @@ export const CHECKIN_FREIGABE = {
   'st-gallen': { name: 'St. Gallen', freigabe: 'Inhaber-Auftrag 15.10.2026 (ersetzt FIRST 30)' },
   'winterthur-marktgasse': { name: 'Winterthur Marktgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'winterthur-muenzgasse': { name: 'Winterthur Münzgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'zuerich-city': { name: 'Zürich Bahnhofstrasse', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'zuerich-oerlikon': { name: 'Zürich Oerlikon', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'zuerich-hoengg': { name: 'Zürich Höngg', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
 };
 
 /** Verifizierte OneDoc-Kalender für «Ersttermin mit Behandlung». Nur bestehende Ziele, keine erfundenen Kalender.
