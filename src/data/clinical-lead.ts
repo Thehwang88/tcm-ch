@@ -50,8 +50,10 @@ export interface ClinicalLeadCopy {
 export const clinicalLeadCopy = (lang: 'de' | 'en', ctx: ClinicalLeadContext): ClinicalLeadCopy => {
   const p = clinicalLead();
   const localCard = ctx.treatsHere && ctx.status === 'operational';
-  const img = !localCard && p.bild ? { src: CLINICAL_LEAD_CARD_IMG, alt: lang === 'de' ? `${p.name}, Senior Clinical Lead TCM.ch` : `${p.name}, Senior Clinical Lead, TCM.ch` } : undefined;
-  const base = { name: p.name, role: 'Senior Clinical Lead · TCM.ch', href: `/team/${p.slug}/`, img };
+  // Zürcher Standorte (Inhabervorgabe 02.11.2026): einheitlich «Clinical Lead» auf Bahnhofstrasse, Oerlikon und Höngg.
+  const roleName = ctx.id.startsWith('zuerich-') ? 'Clinical Lead' : 'Senior Clinical Lead';
+  const img = !localCard && p.bild ? { src: CLINICAL_LEAD_CARD_IMG, alt: lang === 'de' ? `${p.name}, ${roleName} TCM.ch` : `${p.name}, ${roleName}, TCM.ch` } : undefined;
+  const base = { name: p.name, role: ctx.id.startsWith('zuerich-') ? 'Clinical Lead' : 'Senior Clinical Lead · TCM.ch', href: `/team/${p.slug}/`, img };
   if (lang === 'de') {
     const note = localCard
       ? `Behandelt in ${ctx.name} auch selbst; sein Profil steht oben im Team. Die netzwerkweite Rolle kommt dazu.`

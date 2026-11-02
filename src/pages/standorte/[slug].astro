@@ -398,7 +398,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         <Therapien data={data} />
         {physioDachBlock && <Fragment set:html={physioDachBlock} />}
         {!data.planned && !data.review && <Team data={data} />}
-        <ClinicalLead slug={data.slug} />
+        {!(data.sgVoll && !data.planned && !data.review) && <ClinicalLead slug={data.slug} />}
         <Beschwerden data={data} />
         {data.ablaufBlock && <Ablauf />}
         <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review)} />
