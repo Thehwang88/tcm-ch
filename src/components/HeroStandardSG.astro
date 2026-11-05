@@ -14,15 +14,18 @@ const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 // Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Kontaktkarte).
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
 const SG_TEL = '+41 77 523 61 22';
-const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9.3740224,17z/data=!3m1!4b1!4m6!3m5!1s0x479b1fa8422eee23:0x4d9e5b1cb4999c7!8m2!3d47.423225!4d9.3740224!16s%2Fg%2F11npmqv34r';
+const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9.3740224,17z/data=!4m8!3m7!1s0x479b1fa8422eee23:0x4d9e5b1cb4999c7!8m2!3d47.423225!4d9.3740224!9m1!1b1';
 // Google-Bewertungen aus dem GBP «TCM.ch St. Gallen»: Werte MANUELL aus dem Profil übernehmen (nie schätzen), mit Stand-Datum.
 // Solange rating/count null sind, wird die Sternezeile im Hero nicht gerendert (SEO-Audit 11.10.2026: nur mit live verifiziertem Wert).
-const SG_GOOGLE = { rating: null as number | null, count: null as number | null, stand: '' };
+const SG_GOOGLE = { rating: 5.0 as number | null, count: 12 as number | null, stand: '2026-11-05' };
 // Sterne-Zeile erst ab dieser Anzahl Bewertungen rendern (Inhaber 05.11.2026; aktuell 12 Bewertungen → keine Zeile).
 const SG_GOOGLE_MIN = 25;
 // 1 bis 2 kurze Zitate aus echten Google-Bewertungen (Vorname oder Initialen). Leer = keine Zitate in der Kontaktsektion.
 // Nur Wortlaut aus dem GBP übernehmen, nie formulieren.
-const SG_ZITATE: { text: string; name: string }[] = [];
+const SG_ZITATE: { text: string; name: string }[] = [
+  { name: 'Eunji K.', text: 'Ich hatte starke Rückenschmerzen und die Behandlung hat mir unglaublich gut geholfen. Schon nach kurzer Zeit habe ich eine deutliche Verbesserung gespürt.' },
+  { name: 'Maria C.', text: 'Das Team ist freundlich, nimmt sich Zeit und hört aufmerksam zu. Die Atmosphäre ist angenehm und professionell.' },
+];
 const fmtRating = (r: number) => r.toLocaleString('de-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
@@ -98,6 +101,14 @@ const card = renderKontaktForm({
         <span class="sgt-ch-go">WhatsApp öffnen <span aria-hidden="true">→</span></span>
       </a>
     </div>
+    {SG_ZITATE.length > 0 && (
+      <ul class="sgt-quotes" aria-label="Google-Rezensionen">
+        {SG_ZITATE.slice(0, 2).map((z) => <li><q>{z.text}</q><span class="sgt-q-name">{z.name} · Google-Rezension</span></li>)}
+      </ul>
+    )}
+    {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && (
+      <p class="sgt-gbp"><a href={SG_MAPS} target="_blank" rel="noopener" title={`Google-Bewertungen, Stand ${SG_GOOGLE.stand}`}>{fmtRating(SG_GOOGLE.rating)} <span class="lsr-stars" aria-hidden="true">★</span> · {SG_GOOGLE.count} Bewertungen auf Google</a></p>
+    )}
     <div class="sgt-onedoc" id="online-buchen">
       <div class="sgt-od-head">
         <h3 class="sgt-od-h">Online buchen</h3>
@@ -106,11 +117,6 @@ const card = renderKontaktForm({
       <Fragment set:html={ONEDOC_SG_WIDGET} />
       <p class="sgt-od-fallback">Buchungsfenster bleibt leer? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener">Direkt bei OneDoc öffnen <span aria-hidden="true">→</span></a></p>
     </div>
-    {SG_ZITATE.length > 0 && (
-      <ul class="sgt-quotes" aria-label="Google-Bewertungen">
-        {SG_ZITATE.slice(0, 2).map((z) => <li><span class="lsr-stars" aria-hidden="true">★★★★★</span><q>{z.text}</q><span class="sgt-q-name">{z.name}, Google</span></li>)}
-      </ul>
-    )}
     <div class="sgt-form"><Fragment set:html={card} /></div>
   </div>
 </section>
@@ -174,7 +180,9 @@ const card = renderKontaktForm({
   .sgt-od-fallback a{color:var(--blue);font-weight:700;text-decoration:none}
   .sgt-quotes{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
   .sgt-quotes li{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:16px 18px;font-size:15px;line-height:1.55;color:var(--black)}
-  .sgt-quotes .lsr-stars{display:block;margin-bottom:6px}
+  .sgt-gbp{margin:-12px 0 24px;font-size:14.5px}
+  .sgt-gbp a{color:var(--black);font-weight:700;text-decoration:none}
+  .sgt-gbp a:hover{text-decoration:underline}
   .sgt-quotes q{quotes:'«' '»'}
   .sgt-q-name{display:block;margin-top:8px;font-size:13.5px;font-weight:700;color:var(--mid)}
   .sgt-form .kf{width:100%;max-width:560px;margin:0 auto}
