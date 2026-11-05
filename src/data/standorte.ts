@@ -443,14 +443,8 @@ export const standorte: Record<string, Standort> = {
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
       "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
+        { "tag": "Mo–Sa", "zeit": "7:30–19:30 Uhr" },
+        { "tag": "So", "zeit": "8:00–17:00 Uhr" }
       ]
     },
     "intro": {

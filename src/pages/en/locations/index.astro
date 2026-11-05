@@ -6,6 +6,7 @@ import CtaBand from '../../../components/en/CtaBand.astro';
 import { publicClinics as clinics, enLocationPath, locationImages } from '../../../data/locations';
 import { getStandort } from '../../../data/standorte';
 import { locationContent } from '../../../data/en/locations-content';
+import { standortCardHtml, standortGridHtml } from '../../../lib/standort-card';
 
 const path = '/en/locations/';
 const open = clinics.filter((c) => c.status === 'operational');
@@ -40,47 +41,23 @@ const itemListLd = {
     crumbs={[{ href: '/en/', label: 'TCM.ch' }, { label: 'Locations' }]}
   />
 
+  {/* Tiers like DE /standorte/ (05.11.2026): central location card (src/lib/standort-card.ts), hero without photo, compact for tier 3. */}
   <section class="ev-section" id="open">
     <div class="wrap">
-      <p class="ev-label">Open now</p>
-      <h2 class="ev-h2">Clinics and partner practices</h2>
-      <p class="ev-sub">Each page shows the address, published opening hours, the treatments offered and a form for your request. Partner practices are independent; TCM.ch coordinates your request.</p>
-      <div class="ev-grid">
-        {open.map((c) => (
-          <a class="ev-card ev-card--media" href={enLocationPath(c.id)}>
-            {thumb(c.id) && <img src={thumb(c.id)!.src} alt={thumb(c.id)!.alt} width="1120" height="746" loading="lazy" decoding="async" />}
-            <div class="ev-card__body">
-              <span class="ev-card__meta">{c.postalCode} {c.city} · {c.region}</span>
-              <h3>{c.name}{c.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}</h3>
-              <p>{c.betreiber ? `${c.betreiber.name} · ${c.street}` : c.street}</p>
-              <span class="ev-card__arrow">Details &amp; appointment →</span>
-            </div>
-          </a>
-        ))}
+      <p class="ev-label">Our clinics</p>
+      <h2 class="ev-h2">Zürich and St. Gallen</h2>
+      <div class="std-jump"><a href="#open">Zürich</a><a href="#st-gallen">St. Gallen</a><a href="#thurgau">Thurgau</a><a href="#more">More</a></div>
+      <div class="std-stufe1">
+        <div class="std-zh"><div class="std-zh-box"><div class="std-label">Zürich</div><h3 class="std-zh-h">Acupuncture &amp; TCM across Zürich</h3><p class="std-zh-p">TCM.ch clinics and partner practices in <a href="/en/acupuncture-zurich/">Zürich</a>. Tell us where you are looking for an appointment; we suggest the practice or the next free slot.</p><div class="std-zh-btns"><a class="ev-btn ev-btn--solid" href="/en/acupuncture-zurich/">Find an appointment in Zürich</a></div></div><Fragment set:html={standortGridHtml(['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'], { variant: 'hero', cols: 3, lang: 'en' })} /></div>
+        <div class="std-sg" id="st-gallen"><Fragment set:html={standortCardHtml('st-gallen', { variant: 'hero', lang: 'en' })} /></div>
       </div>
-          </div>
-        </>
-      ))}
+      <h3 class="std-h3" id="thurgau">Thurgau &amp; Winterthur</h3><p class="std-sub">Partner practices Hwang; appointments directly via hwang.ch.</p>
+      <Fragment set:html={standortGridHtml(['frauenfeld', 'kreuzlingen', 'winterthur-muenzgasse'], { variant: 'hero', cols: 3, lang: 'en' })} />
+      <h3 class="std-h3" id="more">More locations and openings</h3>
+      <Fragment set:html={standortGridHtml(['bottighofen', 'rorschach', 'wil', 'volketswil', 'basel', 'luzern', 'bern', 'winterthur-marktgasse'], { variant: 'kompakt', cols: 4, lang: 'en' })} />
     </div>
   </section>
 
-  <section class="ev-section ev-section--tint" id="upcoming">
-    <div class="wrap">
-      <p class="ev-label">In preparation</p>
-      <h2 class="ev-h2">Planned and under-review locations</h2>
-      <p class="ev-sub">Not open yet. You can register your interest now; we contact you once appointments are possible, or suggest the nearest open clinic.</p>
-      <div class="ev-grid">
-        {upcoming.map((c) => (
-          <a class="ev-card" href={enLocationPath(c.id)}>
-            <span class="ev-card__meta">{c.city}</span>
-            <h3>{c.name}<span class="ev-badge">{c.status === 'review' ? 'Under review' : 'Planned'}</span></h3>
-            <p>{c.status === 'review' ? 'Status under review; not confirmed as an operating clinic.' : (c.openingNote ?? 'In preparation')}</p>
-            <span class="ev-card__arrow">Register your interest →</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section class="ev-section">
     <div class="wrap">
@@ -95,3 +72,18 @@ const itemListLd = {
 
   <CtaBand text="Not sure which location fits? Tell us where you live and what is going on; we suggest the nearest clinic and reply personally in English or German." />
 </Layout>
+<style is:global>
+  .std-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 20px; }
+  .std-jump a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1.5px solid rgba(2,11,16,.14); border-radius: 999px; font-size: 14.5px; font-weight: 700; color: #020B10; text-decoration: none; background: #fff; }
+  .std-stufe1 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+  .std-zh { display: flex; flex-direction: column; gap: 14px; }
+  .std-zh-box { background: #F4FAF8; border: 1px solid rgba(45,155,111,.14); border-radius: 18px; padding: 22px 20px; }
+  .std-label { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #2D9B6F; }
+  .std-zh-h { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 6px 0; }
+  .std-zh-p { font-size: 15px; color: rgba(2,11,16,.7); line-height: 1.55; margin: 0 0 14px; }
+  .std-sg .sc { height: 100%; }
+  .std-h3 { font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin: 36px 0 6px; scroll-margin-top: 90px; }
+  .std-sub { font-size: 14.5px; color: rgba(2,11,16,.7); margin: 0 0 14px; }
+  #st-gallen, #thurgau, #more { scroll-margin-top: 90px; }
+  @media (max-width: 900px) { .std-stufe1 { grid-template-columns: minmax(0, 1fr); } }
+</style>

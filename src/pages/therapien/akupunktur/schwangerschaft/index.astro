@@ -3,6 +3,8 @@
 // Same pattern as /therapien/schroepfen/blutiges-schroepfen (nested sub-page,
 // allowlisted in functions/therapien/[[path]].js - 2-segment paths otherwise 410).
 import SpaPage from '../../../../layouts/SpaPage.astro';
+// Standortblock (05.11.2026): zentrale Standortkarte statt Leaf-Karten.
+import { replaceCityGrid } from '../../../../lib/standort-card';
 import bodyRaw from '../../../../data/schwangerschaftsakupunktur-body.html?raw';
 import { prefillForm } from '../../../../data/form-prefill';
 import { appendSidebarAllLink } from '../../../../data/cap-sidebar';
@@ -43,4 +45,4 @@ const schema = [
   ] },
 ];
 ---
-<SpaPage title={title} description={description} path="/therapien/akupunktur/schwangerschaft" body={`<div class="therapie-scope">${body}</div>`} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien/akupunktur/schwangerschaft" body={`<div class="therapie-scope">${replaceCityGrid(body)}</div>`} schema={schema} />

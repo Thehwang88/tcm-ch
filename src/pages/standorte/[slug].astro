@@ -33,6 +33,7 @@ import ClinicalLead from '../../components/standort/ClinicalLead.astro';
 import { clinicalLeadHtml, clinicalLeadCardHtml } from '../../data/clinical-lead';
 import { first30BottomSelectorHtml, first30State } from '../../data/first30';
 import { upgradeLegacyForms, clinicById } from '../../lib/kontakt-form';
+import { nearbyClinics, standortGridHtml, buchbareClinics } from '../../lib/standort-card';
 const first30 = first30State();
 import IntroNap from '../../components/standort/IntroNap.astro';
 import Therapien from '../../components/standort/Therapien.astro';
@@ -355,6 +356,16 @@ if (migrated) {
   const legacyClinic = clinicById(slug!);
   const legacyBody = upgradeLegacyForms(legacyBody0, { path: `/standorte/${slug}/`, standortId: legacyClinic?.status === 'operational' ? slug : undefined, instancePrefix: 'standort' });
   spaBody = (slug === 'st-gallen') ? sgBody : legacyBody + beschwerdenLinks + hautBlock + ksBlock;
+  // «Praxen in der Nähe» (05.11.2026): Leaf-Karten durch die zentrale Standortkarte ersetzen (max. 3 buchbare nach Distanz).
+  {
+    const rs = spaBody.indexOf('<section class="related-section">');
+    if (rs < 0) throw new Error(`${slug}: related-section (Praxen in der Nähe) nicht gefunden - Leaf geändert?`);
+    const re = spaBody.indexOf('</section>', rs) + 10;
+    const near = nearbyClinics(slug!, 3);
+    spaBody = spaBody.slice(0, rs) + (near.length ? '<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="reveal">' + standortGridHtml(near, { variant: 'kompakt', cols: 3 }) + '</div></div></section>' : '') + spaBody.slice(re);
+    // Buchungsanker #termin (Standortkarten «Termin buchen →») auf Legacy-Leaves ohne eigenen Anker: vor der Kontaktsektion.
+    if (!/id="termin"/.test(spaBody)) spaBody = spaBody.replace('<section id="kontakt" class="section contact-section-inline"', '<span id="termin" class="kf-compat-anchor" aria-hidden="true" style="display:block;height:0;scroll-margin-top:var(--header-h,76px)"></span><section id="kontakt" class="section contact-section-inline"');
+  }
 }
 
 const data = migrated as Standort;

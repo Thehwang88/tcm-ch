@@ -5,6 +5,8 @@
 // CTA band, mobile sticky bar. Content/meta/schema swapped. Nested route is
 // allowlisted in functions/therapien/[[path]].js (otherwise 2-segment paths 410).
 import SpaPage from '../../../../layouts/SpaPage.astro';
+// Standortblock (05.11.2026): zentrale Standortkarte statt Leaf-Karten.
+import { replaceCityGrid } from '../../../../lib/standort-card';
 import bodyRaw from '../../../../data/blutiges-schroepfen-body.html?raw';
 import { prefillForm } from '../../../../data/form-prefill';
 import { inlineBodyImage } from '../../../../data/inline-body-image';
@@ -38,4 +40,4 @@ const schema = [
   ] },
 ];
 ---
-<SpaPage title={title} description={description} path="/therapien/schroepfen/blutiges-schroepfen" body={`<div class="therapie-scope">${body}</div>`} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien/schroepfen/blutiges-schroepfen" body={`<div class="therapie-scope">${replaceCityGrid(body)}</div>`} schema={schema} />

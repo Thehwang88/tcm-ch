@@ -5,6 +5,8 @@
 export const prerender = true;
 import SpaPage from '../layouts/SpaPage.astro';
 import body from '../data/akupunktur-tcm-st-gallen-body.html?raw';
+// Standortkarte (05.11.2026): zentrale Komponente (hero ohne Foto) statt Body-Karte.
+import { standortCardHtml } from '../lib/standort-card';
 
 const url = 'https://tcm.ch/akupunktur-tcm-st-gallen/';
 const title = 'Behandlung, Ablauf & Orientierung: Akupunktur & TCM am Standort St. Gallen | TCM.ch';
@@ -85,4 +87,4 @@ const schema = [
   },
 ];
 ---
-<SpaPage title={title} description={description} path="/akupunktur-tcm-st-gallen" body={'<div class="city-scope">' + body + '</div>'} schema={schema} />
+<SpaPage title={title} description={description} path="/akupunktur-tcm-st-gallen" body={'<div class="city-scope">' + body.replace(/<a class="city-card location-card" href="\/standorte\/st-gallen\/">[\s\S]*?<\/a>/, () => standortCardHtml('st-gallen', { variant: 'hero' })) + '</div>'} schema={schema} />

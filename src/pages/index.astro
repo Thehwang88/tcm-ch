@@ -10,6 +10,7 @@ import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
 import homeBody from '../data/home-body.html?raw';
+import { standortCardHtml } from '../lib/standort-card';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
@@ -53,19 +54,13 @@ const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSit
 const homeFirst30 = first30State();
 const SG_HOME_CARD = /<a href="\/standorte\/st-gallen\/" class="city-card location-card" onclick="event\.preventDefault\(\); nav\('standort','st-gallen'\)" style="cursor:pointer"><span class="location-plz">9000<\/span><div class="location-city">St\. Gallen<\/div><div class="location-desc">Ostschweiz<\/div><span class="location-link">Termin prüfen →<\/span><\/a>/g;
 if (homeFirst30.showCampaign && [...homeHtmlBase.matchAll(SG_HOME_CARD)].length !== 1) throw new Error('index.astro: St.-Gallen-Standortkarte für FIRST 30 nicht eindeutig');
-// Standortkarten (#s-standorte .hc-card, 05.11.2026): Öffnungszeiten-Chip und Standortfoto aus src/data/locations.ts
-// (openingHours → «Mo–So» / «Mo–Sa» / «Mo–Fr», kein Chip ohne Zeiten; bild → 16:9-Foto oben in der Karte). Kein stiller Fallback.
-const hcClinicId = (href: string) => href.startsWith('https://www.hwang.ch/standorte/winterthur') ? 'winterthur-muenzgasse' : (href.match(/^\/standorte\/([a-z-]+)\//) || [])[1];
-const hcZeiten = (hours: string[]) => !hours.length ? '' : hours.some((x) => /\bSu\b|Mo-Su/.test(x)) ? 'Mo–So' : hours.some((x) => /\bSa\b/.test(x)) ? 'Mo–Sa' : 'Mo–Fr';
-const homeHtmlCards = homeHtmlBase.replace(/<a class="hc-card" href="([^"]+)"[^>]*>/g, (tag, href) => {
-  const id = hcClinicId(href); const c = clinics.find((x) => x.id === id);
-  if (!c) throw new Error(`index.astro: Standortkarte ohne clinics-Eintrag: ${href}`);
-  return tag + (c.bild ? `<img class="hc-img" src="${c.bild.src}" alt="${c.bild.alt.replace(/"/g, '&quot;')}" width="1200" height="896" loading="lazy" decoding="async">` : '');
-}).replace(/<a class="hc-card" href="([^"]+)"[\s\S]*?<span class="hc-chip" data-hc-zeiten><\/span>/g, (m, href) => {
-  const c = clinics.find((x) => x.id === hcClinicId(href))!; const z = hcZeiten(c.openingHours);
-  return m.replace('<span class="hc-chip" data-hc-zeiten></span>', z ? `<span class="hc-chip">${z}</span>` : '');
-});
-if ((homeHtmlCards.match(/<a class="hc-card"/g) || []).length !== 7 || /data-hc-zeiten/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig befüllt');
+// Standortkarten (05.11.2026): zentrale Komponente (src/lib/standort-card.ts), Variante hero MIT Foto (nur Home).
+// Zürich-Karten behalten ihr dataLayer-Tracking (homepage_zurich_location_click). Kein stiller Fallback.
+const zhClick = (slug: string) => `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_location_click',source_page:'homepage',section:'locations',location_slug:'${slug}'})"`;
+const homeHtmlCards = homeHtmlBase
+  .replace('<!--sc:home-zuerich-->', '<div class="sc-grid sc-grid--3 reveal" style="margin-top:20px">' + ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].map((id) => standortCardHtml(id, { variant: 'hero', foto: true, attrs: zhClick(id) })).join('') + '</div>')
+  .replace('<!--sc:home-weitere-->', '<div class="sc-grid sc-grid--4 reveal" style="margin-top:16px">' + ['st-gallen', 'frauenfeld', 'kreuzlingen', 'winterthur-muenzgasse'].map((id) => standortCardHtml(id, { variant: 'hero', foto: true })).join('') + '</div>');
+if ((homeHtmlCards.match(/class="sc sc--hero/g) || []).length !== 7 || /<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
 const homeHtml = homeFirst30.showCampaign
   ? homeHtmlCards.replace(SG_HOME_CARD, (card) => card
     // Direkt zum Kampagnen-Hero statt durch die alte nav()-Weiterleitung ohne Hash.
@@ -86,6 +81,7 @@ const homeHtml = homeFirst30.showCampaign
     <link rel="stylesheet" href="/home.css" />
     <link rel="stylesheet" href="/nav-rebrand.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
+    <link rel="stylesheet" href="/standort-card.css" />
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}

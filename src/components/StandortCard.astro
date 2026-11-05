@@ -1,0 +1,9 @@
+---
+// Zentrale Standortkarte (05.11.2026): Varianten hero | kompakt | inline, Daten aus src/data/locations.ts.
+// Rendert über src/lib/standort-card.ts (derselbe Renderer wird in HTML-String-Kontexten direkt verwendet).
+// Fotos (clinic.bild) nur mit foto={true} und Variante hero (Home); überall sonst foto={false}.
+import { standortCardHtml, type CardVariant, type Lang } from '../lib/standort-card';
+const { id, variant = 'kompakt', lang = 'de', foto = false, attrs, extraClass } = Astro.props as { id: string; variant?: CardVariant; lang?: Lang; foto?: boolean; attrs?: string; extraClass?: string };
+const html = standortCardHtml(id, { variant, lang, foto, attrs, extraClass });
+---
+<Fragment set:html={html} />

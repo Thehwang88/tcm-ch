@@ -4,12 +4,17 @@
 // live SPA. Styling via /home.css (home/SpaPage) or /footer.css (LayoutDe); links route
 // DE via nav() in /header.js.
 import footer from '../data/footer.html?raw';
+import { standortCardHtml } from '../lib/standort-card';
 import WhatsAppFab from './WhatsAppFab.astro';
 import WhatsAppConcierge from './WhatsAppConcierge.astro';
 import StickyCtaBar from './StickyCtaBar.astro';
 // Copyright year is stamped at build time (the site is rebuilt on every push).
 const year = new Date().getFullYear();
-const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`);
+// Standorte-Spalte (05.11.2026): zentrale Standortkarte, Variante inline (Pin + Ort + Button); Nähe- und Zürich-Links bleiben.
+const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'volketswil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
+const footerLocations = '<ul id="footer-locations"><li><a href="/akupunktur-in-der-naehe/">Akupunktur in deiner Nähe</a></li><li><a href="/akupunktur-tcm-zuerich/">Zürich – alle Praxen</a></li>' + FOOTER_STANDORTE.map((id) => '<li>' + standortCardHtml(id, { variant: 'inline' }) + '</li>').join('') + '</ul>';
+const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`).replace(/<ul id="footer-locations">[\s\S]*?<\/ul>/, () => footerLocations);
+if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte-Liste nicht ersetzt');
 ---
 <Fragment set:html={footerHtml} />
 <WhatsAppFab />

@@ -18,6 +18,7 @@ import { conditions, enConditionPath } from '../../../data/conditions';
 import { symptomCards } from '../../../data/symptom-cards';
 import { PLANNED_PRESELECT } from '../../../data/standort-optionen';
 import { locationContent, DEFAULT_THERAPIES, DEFAULT_CONDITIONS } from '../../../data/en/locations-content';
+import { nearbyClinics, standortCardHtml } from '../../../lib/standort-card';
 
 export function getStaticPaths() {
   // vorVertrag (Mietvertrag offen): keine EN-Seite, bis der Standort aktiviert ist.
@@ -59,7 +60,8 @@ const offeredConditions = conditionSlugs.map((d) => {
   return card ? { href: `/beschwerden/${d}/`, label: card.name, sub: 'Guide currently in German.', german: true } : null;
 }).filter(Boolean) as { href: string; label: string; sub: string; german: boolean }[];
 
-const nearby = (content.nearby ?? []).map((s) => clinics.find((c) => c.id === s && !c.vorVertrag && !isRedirectedClinic(c.id))).filter(Boolean) as Clinic[];
+// Nearby (05.11.2026): max. 3 bookable clinics by distance (central location card, compact).
+const nearby = nearbyClinics(id, 3);
 
 // ── Copy ──
 const openingLabel = clinic.openingNote ?? 'In preparation';
@@ -259,14 +261,8 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
       <div class="wrap">
         <p class="ev-label">Nearby</p>
         <h2 class="ev-h2">Other TCM.ch locations</h2>
-        <div class="ev-grid">
-          {nearby.map((c) => (
-            <a class="ev-card" href={enLocationPath(c.id)}>
-              <span class="ev-card__meta">{c.postalCode ? `${c.postalCode} ${c.city}` : c.city}</span>
-              <h3>{c.name}{c.status !== 'operational' && <span class="ev-badge">{c.status === 'review' ? 'Status pending' : 'Planned'}</span>}</h3>
-              <p>{c.status !== 'operational' ? (c.status === 'review' ? 'Confirmation pending' : /\d{4}/.test(c.openingNote ?? '') ? c.openingNote : 'Planned location') : c.betreiber ? `${c.betreiber.name}, partner practice` : c.street}</p>
-            </a>
-          ))}
+        <div class="sc-grid sc-grid--3">
+          {nearby.map((c) => <Fragment set:html={standortCardHtml(c, { variant: 'kompakt', lang: 'en' })} />)}
         </div>
         <p class="ev-sub" style="margin:22px 0 0"><a href="/en/locations/">All locations</a></p>
       </div>
