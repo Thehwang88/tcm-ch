@@ -49,6 +49,8 @@ const card = renderKontaktForm({
     <span class="sgb-cta">Jetzt Termin wählen <span aria-hidden="true">→</span></span>
   </a>
 </section>
+{/* Mobil (html/body overflow-x:hidden bricht position:sticky): Banner fixed unter dem Header, Platzhalter in Bannerhöhe (--sgb-h per Script). */}
+<div class="sgb-spacer" aria-hidden="true"></div>
 <section class="lsr-hero hlsg">
   <div class="lsr-inner">
     <div class="lsr-left">
@@ -77,9 +79,7 @@ const card = renderKontaktForm({
 <div class="sgp-line" data-sg-therapie hidden>
   <div class="sgp-in"><a href="#sg-therapien" data-sg-therapie-link><span data-sg-therapie-txt></span> · krankenkassenanerkannt <span aria-hidden="true">→</span></a></div>
 </div>
-{/* Kontaktsektion nach dem Muster von /kontakt/: ein geschlossener Block. #termin liegt auf einem Vor-Anker (kein Vorfahre der
-    Formularkarte), damit kontakt-form.js den Hash nicht als Formular-Anker übernimmt und Links auf #termin oben am Block landen. */}
-<span id="termin" class="sgt-anchor" aria-hidden="true"></span>
+{/* Kontaktsektion nach dem Muster von /kontakt/: ein geschlossener Block; #termin sitzt am Kartenblock (siehe unten). */}
 <section class="sgt" aria-labelledby="sgt-h">
   <div class="sgt-wrap sgt-grid">
     <aside class="sgt-aside" aria-label="Praxis St. Gallen">
@@ -107,6 +107,9 @@ const card = renderKontaktForm({
       <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
       <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
     </div>
+    {/* #termin: Vor-Anker direkt am Kartenblock (mobil nach Foto/Adresse/Zeiten, Titel bleibt per Scroll nach oben erreichbar);
+        Offset = Header + sticky Banner. Kein Vorfahre der Formularkarte (kontakt-form.js übernimmt den Hash nicht). */}
+    <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
     <div class="sgt-channels">
       <a class="sgt-ch sgt-ch--primary" href="#online-buchen" data-care-cta="termin-karte-checkin">
         <span class="sgt-ch-label">Am schnellsten</span>
@@ -145,9 +148,10 @@ const card = renderKontaktForm({
 </KontaktPraxis>
 <style is:global>
   /* Angebotsbanner unter dem fixen Header (gelb); der Hero verliert dafür sein Header-Padding. */
-  .sgb-banner{margin-top:var(--header-h,76px);background:#FFD84D;color:#111;font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-bottom:2px solid rgba(2,11,16,.14)}
-  .sgb-banner + .lsr-hero.hlsg{padding-top:0!important}
-  @media (max-width:900px){.sgb-banner{margin-top:80px}}
+  .sgb-banner{position:sticky;top:var(--header-h,76px);z-index:530;margin-top:var(--header-h,76px);background:#FFD84D;color:#111;font-family:var(--font-sans,'Figtree',system-ui,sans-serif);border-bottom:2px solid rgba(2,11,16,.14)}
+  .sgb-banner ~ .lsr-hero.hlsg{padding-top:0!important}
+  .sgb-spacer{display:none}
+  @media (max-width:900px){.sgb-banner{position:fixed;left:0;right:0;top:80px;margin-top:0}.sgb-spacer{display:block;height:var(--sgb-h,86px);margin-top:80px}}
   .sgb-in{max-width:var(--max,1280px);margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;text-decoration:none;color:inherit}
   .sgb-txt{font-size:clamp(15px,1.4vw,17px);font-weight:600;letter-spacing:-.01em;line-height:1.3}
   .sgb-txt strong{font-weight:800}
@@ -169,7 +173,9 @@ const card = renderKontaktForm({
   .lsr-stars{color:#F4B400;letter-spacing:.04em;font-size:15px}
 
   /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, OneDoc, Formular. */
-  .sgt-anchor{display:block;height:0;scroll-margin-top:var(--header-h,76px)}
+  /* Offset: fixer Header + sticky Banner (Desktop 1 Zeile ≈ 60px, Mobil 2 Zeilen + Button ≈ 104px). */
+  .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 72px)}
+  @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(80px + var(--sgb-h,86px) + 10px)}}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
   .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
   .sgt-grid{display:flex;flex-direction:column;gap:20px}
@@ -238,6 +244,12 @@ const card = renderKontaktForm({
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
+  // Bannerhöhe als CSS-Variable (Platzhalter + Anker-Offset auf Mobile), bei Grössenänderung nachgeführt.
+  (function () {
+    var b = document.querySelector('.sgb-banner'); if (!b) return;
+    var set = function () { document.documentElement.style.setProperty('--sgb-h', b.offsetHeight + 'px'); };
+    set(); window.addEventListener('resize', set); if (window.ResizeObserver) new ResizeObserver(set).observe(b);
+  })();
   // Ads-Parameter ?t=…: Zeile unter dem Hero, Anliegen-Vorbelegung, dataLayer-Variable therapy (nur bekannte Werte; nie Nutzertext).
   (function () {
     var T = { schroepfen: ['Schröpfen', '#sg-therapien'], akupunktur: ['Akupunktur', '#sg-therapien'], tuina: ['Tuina', '#sg-therapien'], beschwerden: ['Beschwerden', '#sg-beschwerden'] };

@@ -37,6 +37,8 @@ export interface Clinic {
    *  unverlinkt (keine Karten/Nearby/Nav), nicht in Formularen, keine EN-Seite, keine exakte Adresse. Zentraler Schalter:
    *  Aktivierung = vorVertrag entfernen + status 'operational' + street/postalCode setzen (Checkliste in standorte.ts). */
   vorVertrag?: boolean;
+  /** Echtes Standortfoto (kein Symbolbild): Home-Standortkarten (index.astro) und Hero/«Über die Praxis». */
+  bild?: { src: string; alt: string };
   /** Schema-Name, falls die Seite nicht aus standorte.ts kommt (Legacy-Leaves St. Gallen, Bottighofen); DE und EN identisch. */
   schemaName?: string;
   /** schema.org areaServed (cities/municipalities); only set where curated. */
@@ -56,7 +58,8 @@ export const clinics: Clinic[] = [
     street: 'Romanshornerstrasse 1', postalCode: '8280', phone: '+41 77 523 61 22',
     // Betreiberin laut hwang.ch/standorte/kreuzlingen (abgerufen 11.10.2026).
     betreiber: { name: 'Praxis Hwang Kreuzlingen', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/kreuzlingen', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
+    bild: { src: '/img/standorte/kreuzlingen.webp', alt: 'Praxis Hwang Kreuzlingen, Romanshornerstrasse 1' },
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
     areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Ermatingen', 'Konstanz'] },
 
   { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
@@ -68,13 +71,15 @@ export const clinics: Clinic[] = [
     street: 'Rheinstrasse 25', postalCode: '8500', phone: '+41 77 523 61 22',
     // Betreiberin laut hwang.ch/standorte/frauenfeld (abgerufen 11.10.2026): Adresse, Telefon, Öffnungszeiten.
     betreiber: { name: 'Praxis Hwang Frauenfeld', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/frauenfeld', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
+    bild: { src: '/img/standorte/frauenfeld.webp', alt: 'Praxis Hwang Frauenfeld, Rheinstrasse 25' },
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
     areaServed: ['Frauenfeld', 'Matzingen', 'Stettfurt', 'Felben-Wellhausen', 'Müllheim', 'Pfyn', 'Aadorf', 'Eschlikon', 'Weinfelden', 'Amriswil'] },
 
   { id: 'winterthur-muenzgasse', name: 'Winterthur Münzgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Münzgasse 2', postalCode: '8400', phone: '+41 77 523 61 22',
     // Betrieb bestätigt durch die Inhaber:in am 22.10.2026 (zuvor 'review'). Öffnungszeiten nicht bestätigt → keine erfinden.
-    openingHours: [], status: 'operational',
+    bild: { src: '/img/standorte/winterthur-hwang.webp', alt: 'Praxis Hwang Winterthur, Münzgasse 2' },
+    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], status: 'operational',
     geo: { lat: 47.4998, lng: 8.7290 },
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
 
@@ -93,20 +98,20 @@ export const clinics: Clinic[] = [
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
     // Betreiberin laut hwang.ch/standorte/zurich-hongg (abgerufen 11.10.2026).
     betreiber: { name: 'Praxis Hwang Zürich Höngg', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/zurich-hongg', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
     // Eröffnet: Betrieb durch die Inhaber:in bestätigt (02.11.2026, zuvor 'planned'). Öffnungszeiten nicht bestätigt → keine erfinden.
-    openingHours: [], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
   // TCM.ch Zürich Bahnhofstrasse: Mietvertrag bestätigt, Nutzung durch Medthera freigegeben (02.11.2026). Live, 1. OG.
   // Slug zuerich-city / zuerich-bellevue → 301 auf /standorte/zuerich-bahnhofstrasse/.
   { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
     street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
-    openingHours: [], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
     areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
   { id: 'basel', name: 'Basel', city: 'Basel', region: 'Basel',
@@ -128,6 +133,7 @@ export const clinics: Clinic[] = [
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM St. Gallen',
+    bild: { src: '/images/standort-stgallen-800.webp', alt: 'TCM.ch St. Gallen, Empfangsbereich, Oberer Graben 22' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
     areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 
@@ -163,6 +169,7 @@ export const commonConditions: { id: string; label: string }[] = [
   { id: 'kinderwunsch', label: 'Fertility support' },
 ];
 
+// Öffnungszeiten vereinheitlicht (Inhaber 05.11.2026): TCM.ch-Standorte Mo–Sa 7:30–19:30, So 8–17; Praxis Hwang Winterthur laut hwang.ch.
 // ── Shared images, keyed by clinic id. ──
 // st-gallen / rorschach / wil reuse the SAME asset as the DE Standort page
 // (LOCATIONS[].heroBg in public/index.html). The DE pages for the other 9

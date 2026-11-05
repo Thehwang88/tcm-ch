@@ -126,7 +126,10 @@ const ZH_BAHNHOFSTRASSE_NACH_VERTRAG: Standort = {
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
-      "oeffnungszeiten": [],
+      "oeffnungszeiten": [
+        { "tag": "Mo–Sa", "zeit": "7:30–19:30 Uhr" },
+        { "tag": "So", "zeit": "8:00–17:00 Uhr" }
+      ],
       "geo": { "lat": 47.3714, "lng": 8.5384 }
     },
     "intro": {
@@ -263,11 +266,15 @@ export const standorte: Record<string, Standort> = {
       h1: 'TCM & Akupunktur <em>Kreuzlingen</em>',
       schemaName: 'Praxis Hwang Kreuzlingen',
     },
+    praxisBilder: [
+      { src: '/img/standorte/kreuzlingen.webp', alt: 'Praxis Hwang Kreuzlingen, Romanshornerstrasse 1', label: 'Romanshornerstrasse 1', width: 1200, height: 896 },
+    ],
     hero: {
       banner: 'Standort Kreuzlingen',
       lead: 'Persönliche TCM, die dich wirklich ernst nimmt.',
       sub: 'Die Praxis Hwang an der Romanshornerstrasse 1 ist Partnerpraxis im TCM.ch Netzwerk. Deine Anfrage koordinieren wir über TCM.ch.',
-      image: '/images/hero-main.webp',
+      image: '/img/standorte/kreuzlingen.webp',
+      imageAlt: 'Praxis Hwang Kreuzlingen, Romanshornerstrasse 1',
       locationHook: 'Praxis Hwang · Romanshornerstrasse 1, 8280 Kreuzlingen · Öffnungszeiten laut Praxis: Mo–Fr 7:30–19:30, Sa 7:30–16:30',
     },
     nap: {
@@ -278,8 +285,8 @@ export const standorte: Record<string, Standort> = {
       telefon: '+41 77 523 61 22',
       email: 'termine@tcm.ch',
       oeffnungszeiten: [
-        { tag: 'Mo–Fr', zeit: '7:30–19:30 Uhr' },
-        { tag: 'Sa', zeit: '7:30–16:30 Uhr' },
+        { tag: 'Mo–Sa', zeit: '7:30–19:30 Uhr' },
+        { tag: 'So', zeit: '8:00–17:00 Uhr' },
       ],
       geo: { lat: 47.65, lng: 9.175 },
     },
@@ -326,11 +333,15 @@ export const standorte: Record<string, Standort> = {
       "schemaName": "Praxis Hwang Frauenfeld"
     },
     "aufEinenBlick": "<section class='section' style='padding:32px 0;background:var(--bg)'><div class='wrap reveal'><div class='section-label'>TCM Frauenfeld auf einen Blick</div><div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px'><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Adresse & Zeiten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Rheinstrasse 25, 8500 Frauenfeld.<br>Öffnungszeiten laut Praxis Hwang: Mo bis Fr 7:30 bis 19:30, Sa 7:30 bis 16:30.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Behandlungen</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Akupunktur, Tuina, Schröpfen, Gua Sha, Moxibustion, Elektroakupunktur, medizinische Massage, Kräuterrezepturen.</div></div><div style='background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px'><div style='font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--black);margin-bottom:4px'>Vertrauen & Kosten</div><div style='font-size:14.5px;color:var(--mid);line-height:1.55'>Betrieben von Praxis Hwang, Partnerpraxis im TCM.ch Netzwerk. EMR-registrierte Therapeut:innen; die Zusatzversicherung beteiligt sich je nach Police, Anteil und Jahresmaximum prüfen wir vorab.</div></div></div><div style='margin-top:16px'><button type='button' onclick='openContactForm()' class='btn-primary'>Termin anfragen <span aria-hidden='true'>→</span></button></div></div></section>",
+    "praxisBilder": [
+      { "src": "/img/standorte/frauenfeld.webp", "alt": "Praxis Hwang Frauenfeld, Rheinstrasse 25", "label": "Rheinstrasse 25", "width": 1200, "height": 896 }
+    ],
     "hero": {
       "banner": "Standort Frauenfeld",
       "lead": "Zeit zum Zuhören, bevor wir behandeln.",
       "sub": "Die Praxis Hwang an der Rheinstrasse 25 ist Partnerpraxis im TCM.ch Netzwerk: Therapeut:innen mit Ausbildung und Praxiserfahrung in der Schweiz und in Südkorea. Deine Anfrage koordinieren wir über TCM.ch.",
-      "image": "/images/hero-main.webp",
+      "image": "/img/standorte/frauenfeld.webp",
+      "imageAlt": "Praxis Hwang Frauenfeld, Rheinstrasse 25",
       "locationHook": "Praxis Hwang · Rheinstrasse 25, 8500 Frauenfeld · Öffnungszeiten laut Praxis: Mo–Fr 7:30–19:30, Sa 7:30–16:30"
     },
     "nap": {
@@ -341,14 +352,8 @@ export const standorte: Record<string, Standort> = {
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
       "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
+        { "tag": "Mo–Sa", "zeit": "7:30–19:30 Uhr" },
+        { "tag": "So", "zeit": "8:00–17:00 Uhr" }
       ],
       "geo": { "lat": 47.5567, "lng": 8.8983 }
     },
@@ -866,14 +871,8 @@ export const standorte: Record<string, Standort> = {
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
       "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
+        { "tag": "Mo–Sa", "zeit": "7:30–19:30 Uhr" },
+        { "tag": "So", "zeit": "8:00–17:00 Uhr" }
       ]
     },
     "intro": {
@@ -940,7 +939,10 @@ export const standorte: Record<string, Standort> = {
       "ort": "Zürich",
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
-      "oeffnungszeiten": [],
+      "oeffnungszeiten": [
+        { "tag": "Mo–Sa", "zeit": "7:30–19:30 Uhr" },
+        { "tag": "So", "zeit": "8:00–17:00 Uhr" }
+      ],
       "geo": { "lat": 47.4112, "lng": 8.5459 }
     },
     "intro": {
