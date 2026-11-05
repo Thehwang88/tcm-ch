@@ -84,7 +84,7 @@ export const ZIELART_FUER = { checkin: 'behandlung', behandlung: 'behandlung', v
 export const CHECKIN_FREIGABE = {
   'st-gallen': { name: 'St. Gallen', freigabe: 'Inhaber-Auftrag 15.10.2026 (ersetzt FIRST 30)' },
   'winterthur-marktgasse': { name: 'Winterthur Marktgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
-  'winterthur-muenzgasse': { name: 'Winterthur Münzgasse', freigabe: 'Inhaber-Auftrag 22.10.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  // winterthur-muenzgasse: seit 05.11.2026 Praxis Hwang (HWANG_ZIEL), kein Check-in-Angebot.
   'zuerich-bahnhofstrasse': { name: 'Zürich Bahnhofstrasse', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'zuerich-oerlikon': { name: 'Zürich Oerlikon', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'zuerich-hoengg': { name: 'Zürich Höngg', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
