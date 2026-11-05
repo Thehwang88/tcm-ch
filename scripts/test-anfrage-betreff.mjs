@@ -36,6 +36,8 @@ async function flow({ url, inst, terminart, standort, width = 390 }) {
   if (standort) await pg.select(`${C} select[name="standort"]`, standort);
   if (terminart) await pg.$eval(`${C} label[for$="ta-${terminart}"]`, (l) => l.click());
   const tile = terminart ? await pg.$eval(`${C} label[for$="ta-${terminart}"]`, (l) => [l.querySelector('.kf-opt-t')?.textContent.trim(), l.querySelector('.kf-opt-dur')?.textContent.trim()].join(' · ')) : null;
+  // Name ist seit 05.11.2026 Pflicht im gemeinsamen Formular (Betreff-Test prüft Terminart/Standort, nicht den Namen).
+  await pg.$eval(`${C} [name="name"]`, (el) => { el.value = 'Test Person'; el.dispatchEvent(new Event('input')); });
   await pg.$eval(`${C} [name="telefon"]`, (el) => { el.value = '+41 79 123 45 67'; el.dispatchEvent(new Event('input')); });
   const ev0 = await pg.evaluate((E) => window.dataLayer.filter((e) => e && E.includes(e.event)).length, EVENTS);
   await pg.$eval(`${C} [data-kf-submit]`, (b) => b.click()); await new Promise((r) => setTimeout(r, 600));
@@ -78,7 +80,7 @@ for (const [label, f, subj, dauer, kosten] of SCEN) {
 }
 
 console.log('Ungültige Kombinationen (Server)');
-const base = { telefon: '+41 79 123 45 67', turnstileToken: 't', quelle: '/' };
+const base = { telefon: '+41 79 123 45 67', name: 'Test Person', turnstileToken: 't', quelle: '/' };
 for (const [label, d, code] of [
   ['Check-in Basel', { ...base, standort: 'Basel', angebot_id: 'TCM_CHECKIN' }, 'invalid_offer_scope'],
   ['Ersttermin Luzern (Vormerkung)', { ...base, standort: 'Luzern – Vormerkung, Eröffnung 2027', angebot_id: 'ERSTTERMIN_BEHANDLUNG' }, 'invalid_offer_scope'],
