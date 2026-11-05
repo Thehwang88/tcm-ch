@@ -53,14 +53,27 @@ const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSit
 const homeFirst30 = first30State();
 const SG_HOME_CARD = /<a href="\/standorte\/st-gallen\/" class="city-card location-card" onclick="event\.preventDefault\(\); nav\('standort','st-gallen'\)" style="cursor:pointer"><span class="location-plz">9000<\/span><div class="location-city">St\. Gallen<\/div><div class="location-desc">Ostschweiz<\/div><span class="location-link">Termin prüfen →<\/span><\/a>/g;
 if (homeFirst30.showCampaign && [...homeHtmlBase.matchAll(SG_HOME_CARD)].length !== 1) throw new Error('index.astro: St.-Gallen-Standortkarte für FIRST 30 nicht eindeutig');
+// Standortkarten (#s-standorte .hc-card, 05.11.2026): Öffnungszeiten-Chip und Standortfoto aus src/data/locations.ts
+// (openingHours → «Mo–So» / «Mo–Sa» / «Mo–Fr», kein Chip ohne Zeiten; bild → 16:9-Foto oben in der Karte). Kein stiller Fallback.
+const hcClinicId = (href: string) => href.startsWith('https://www.hwang.ch/standorte/winterthur') ? 'winterthur-muenzgasse' : (href.match(/^\/standorte\/([a-z-]+)\//) || [])[1];
+const hcZeiten = (hours: string[]) => !hours.length ? '' : hours.some((x) => /\bSu\b|Mo-Su/.test(x)) ? 'Mo–So' : hours.some((x) => /\bSa\b/.test(x)) ? 'Mo–Sa' : 'Mo–Fr';
+const homeHtmlCards = homeHtmlBase.replace(/<a class="hc-card" href="([^"]+)"[^>]*>/g, (tag, href) => {
+  const id = hcClinicId(href); const c = clinics.find((x) => x.id === id);
+  if (!c) throw new Error(`index.astro: Standortkarte ohne clinics-Eintrag: ${href}`);
+  return tag + (c.bild ? `<img class="hc-img" src="${c.bild.src}" alt="${c.bild.alt.replace(/"/g, '&quot;')}" width="1200" height="896" loading="lazy" decoding="async">` : '');
+}).replace(/<a class="hc-card" href="([^"]+)"[\s\S]*?<span class="hc-chip" data-hc-zeiten><\/span>/g, (m, href) => {
+  const c = clinics.find((x) => x.id === hcClinicId(href))!; const z = hcZeiten(c.openingHours);
+  return m.replace('<span class="hc-chip" data-hc-zeiten></span>', z ? `<span class="hc-chip">${z}</span>` : '');
+});
+if ((homeHtmlCards.match(/<a class="hc-card"/g) || []).length !== 7 || /data-hc-zeiten/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig befüllt');
 const homeHtml = homeFirst30.showCampaign
-  ? homeHtmlBase.replace(SG_HOME_CARD, (card) => card
+  ? homeHtmlCards.replace(SG_HOME_CARD, (card) => card
     // Direkt zum Kampagnen-Hero statt durch die alte nav()-Weiterleitung ohne Hash.
     .replace('href="/standorte/st-gallen/"', 'href="/standorte/st-gallen/#first30"')
     .replace(' onclick="event.preventDefault(); nav(\'standort\',\'st-gallen\')"', '')
     .replace('<span class="location-link">Termin prüfen →</span>',
       `<span class="home-first30-tag"><span aria-hidden="true">🎁</span> ${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span><span class="location-link">${homeFirst30.soldOut ? 'Zur Warteliste →' : 'Geschenk ansehen →'}</span>`))
-  : homeHtmlBase;
+  : homeHtmlCards;
 ---
 <!doctype html>
 <html lang="de-CH">
