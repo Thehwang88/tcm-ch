@@ -70,16 +70,12 @@ const card = renderKontaktForm({
         <a href="#termin" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-care-cta="hero-checkin">Gratis Check-in buchen</a>
         <a href="#termin" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-kf-terminart="behandlung" data-care-cta="hero-ersttermin">Ersttermin anfragen</a>
       </div>
+      <a class="lsr-tlink" href="#sg-therapien" data-sg-therapie-link hidden></a>
       <p class="lsr-tert"><a href="tel:+41775236122" class="tcm-link tcm-link--on-brand">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener" class="tcm-link tcm-link--on-brand">WhatsApp</a></p>
     </div>
     <HeroMedia id="sg-hero-media" />
   </div>
 </section>
-{/* Ads-Parameter ?t=schroepfen|akupunktur|tuina|beschwerden (nur clientseitig, Canonical/Title/Indexierung unverändert):
-    Zeile unter dem Hero mit Link auf die Therapie-/Beschwerden-Sektion, «Dein Anliegen» vorbelegt, dataLayer-Variable therapy. */}
-<div class="sgp-line" data-sg-therapie hidden>
-  <div class="sgp-in"><a href="#sg-therapien" data-sg-therapie-link><span data-sg-therapie-txt></span> · krankenkassenanerkannt <span aria-hidden="true">→</span></a></div>
-</div>
 {/* Kontaktsektion nach dem Muster von /kontakt/: ein geschlossener Block; #termin sitzt am Kartenblock (siehe unten). */}
 <section class="sgt" aria-labelledby="sgt-h">
   <div class="sgt-wrap sgt-grid">
@@ -166,11 +162,8 @@ const card = renderKontaktForm({
   .sgb-slot strong{white-space:nowrap}
   @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:9px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:15px;white-space:nowrap}.sgb-cta{padding:7px 12px;font-size:14px}}
 
-  /* Therapie-Zeile (?t=) unter dem Hero. */
-  .sgp-line{background:#fff;border-bottom:1px solid var(--border);font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
-  .sgp-in{max-width:var(--max,1280px);margin:0 auto;padding:12px 16px;font-size:15.5px;font-weight:700}
-  .sgp-in a{color:var(--black);text-decoration:none}
-  .sgp-in a:hover{color:var(--blue)}
+  /* ?t=-Textlink unter den Hero-Buttons */
+  .lsr-tlink{display:inline-block;margin:-2px 0 12px;font-size:15px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
 
   /* Hero: Google-Zeile vor den Trust-Punkten. */
   .lsr-google{flex-basis:100%}
@@ -274,15 +267,26 @@ const card = renderKontaktForm({
     var set = function () { document.documentElement.style.setProperty('--sgb-h', b.offsetHeight + 'px'); };
     set(); window.addEventListener('resize', set); if (window.ResizeObserver) new ResizeObserver(set).observe(b);
   })();
-  // Ads-Parameter ?t=…: Zeile unter dem Hero, Anliegen-Vorbelegung, dataLayer-Variable therapy (nur bekannte Werte; nie Nutzertext).
+  // Ads-Parameter ?t=schroepfen|akupunktur|tuina|beschwerden (nur clientseitig; statischer Inhalt/Canonical bleibt «Akupunktur & TCM»):
+  // H1 + Unterzeile je Therapie, Textlink unter den Buttons zur Therapie-/Beschwerden-Sektion, optional Hero-Bild (Bilder aus
+  // /therapien/*, Video dann aus), «Dein Anliegen» vorbelegt, dataLayer-Variable therapy. Nur bekannte Werte, nie Nutzertext.
   (function () {
-    var T = { schroepfen: ['Schröpfen', '#sg-therapien'], akupunktur: ['Akupunktur', '#sg-therapien'], tuina: ['Tuina', '#sg-therapien'], beschwerden: ['Beschwerden', '#sg-beschwerden'] };
+    var SG = '<span class="lsr-accent">St. Gallen</span>';
+    var T = {
+      schroepfen: { h1: 'Schröpfen in ' + SG, lead: 'Schröpfen und TCM, wenige Gehminuten vom Bahnhof St. Gallen. Lerne uns beim kostenlosen Check-in kennen.', link: 'Mehr zu Schröpfen bei uns', ziel: '#sg-therapien', anliegen: 'Schröpfen', img: '/images/img-a288825ba14a.webp', alt: 'Schröpfen' },
+      akupunktur: { h1: 'Akupunktur in ' + SG, lead: 'Akupunktur und TCM, wenige Gehminuten vom Bahnhof St. Gallen. Lerne uns beim kostenlosen Check-in kennen.', link: 'Mehr zu Akupunktur bei uns', ziel: '#sg-therapien', anliegen: 'Akupunktur', img: '/images/img-c69a8f9ce7f8.webp', alt: 'Akupunktur' },
+      tuina: { h1: 'Tuina in ' + SG, lead: 'Tuina und TCM, wenige Gehminuten vom Bahnhof St. Gallen. Lerne uns beim kostenlosen Check-in kennen.', link: 'Mehr zu Tuina bei uns', ziel: '#sg-therapien', anliegen: 'Tuina', img: '/images/img-2a8cecc37898.webp', alt: 'Tuina-Massage' },
+      beschwerden: { lead: 'Rücken, Nacken, Migräne, Schlaf: wir schauen uns deine Beschwerden beim kostenlosen Check-in an.', link: 'Mehr zu Beschwerden bei uns', ziel: '#sg-beschwerden', anliegen: 'Beschwerden' }
+    };
     var t = ''; try { t = (new URLSearchParams(location.search).get('t') || '').toLowerCase(); } catch (e) {}
-    if (!T[t]) return;
+    var c = T[t]; if (!c) return;
     try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ therapy: t }); } catch (e) {}
-    var box = document.querySelector('[data-sg-therapie]');
-    if (box) { box.querySelector('[data-sg-therapie-txt]').textContent = T[t][0] + ' in St. Gallen'; box.querySelector('[data-sg-therapie-link]').setAttribute('href', T[t][1]); box.hidden = false; }
+    var h1 = document.querySelector('.lsr-hero.hlsg .lsr-h1'); if (h1 && c.h1) h1.innerHTML = c.h1;
+    var lead = document.querySelector('.lsr-hero.hlsg .lsr-lead'); if (lead) lead.textContent = c.lead;
+    var link = document.querySelector('[data-sg-therapie-link]'); if (link) { link.textContent = c.link + ' \u2193'; link.setAttribute('href', c.ziel); link.hidden = false; }
+    if (c.img) { var media = document.getElementById('sg-hero-media'); var img = media && media.querySelector('[data-hero-poster]'); var vid = media && media.querySelector('video');
+      if (img) { img.removeAttribute('srcset'); img.removeAttribute('sizes'); img.src = c.img; img.alt = c.alt; } if (vid) vid.remove(); }
     var ta = document.querySelector('[data-kf-instance="sg-hero"] textarea[name="anliegen"]');
-    if (ta && !ta.value) { ta.value = T[t][0]; try { ta.dispatchEvent(new Event('input', { bubbles: true })); } catch (e) {} }
+    if (ta && !ta.value) { ta.value = c.anliegen; try { ta.dispatchEvent(new Event('input', { bubbles: true })); } catch (e) {} }
   })();
 </script>
