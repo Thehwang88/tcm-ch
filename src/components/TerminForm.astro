@@ -23,7 +23,7 @@ const card = renderKontaktForm({
   instance: 'terminform', formId: 'terminform', conv: 'form_submit', autoprefill: 'terminform', typ: 'termin',
   anliegen: prefill || undefined, preselectStandort: standort || undefined,
   formular: formular || undefined, quelleDetail: quelleDetail || undefined,
-  sitekey: site.turnstileSitekey, headingTag: 'h2',
+  sitekey: site.turnstileSitekey, headingTag: 'h2', checkinZuerst: true,
 });
 ---
 <section class="tf-section" id="formular">

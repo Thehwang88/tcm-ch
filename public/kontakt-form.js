@@ -14,6 +14,11 @@
   'use strict';
   if (window.__kfLoaded) return; window.__kfLoaded = true;
 
+  var monatsende = function () {
+    var p = {}; try { new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; }); } catch (e) { var d = new Date(); p = { year: d.getFullYear(), month: ('0' + (d.getMonth() + 1)).slice(-2) }; }
+    var last = new Date(Date.UTC(+p.year, +p.month, 0)).getUTCDate();
+    return ('0' + last).slice(-2) + '.' + p.month + '.';
+  };
   var SUBMIT = { '': 'Anfrage senden', checkin: 'TCM-Check-in anfragen', behandlung: 'Ersttermin anfragen', vormerkung: 'Vormerkung senden', anfrage: 'Anfrage senden', routing: 'Passende Praxis anfragen' };
   var ANGEBOT = { checkin: 'TCM_CHECKIN', behandlung: 'ERSTTERMIN_BEHANDLUNG', vormerkung: 'VORMERKUNG', anfrage: 'STANDORT_ANFRAGE', routing: 'ROUTING_ANFRAGE' };
   var ZIEL = {
@@ -99,6 +104,9 @@
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });
       // Kampagnen-Sheet (data-kf-submit-<terminart>): eigener Button-Text je Terminart; sonst Standardtexte.
       if (submitBtn) submitBtn.innerHTML = (t ? card.getAttribute('data-kf-submit-' + t) || SUBMIT[t] : card.getAttribute('data-kf-submit-leer') || SUBMIT['']) + ' <span aria-hidden="true">→</span>';
+      // Check-in zuerst: «Buchung bis <Monatsende>» (Europe/Zurich, rollierend), nur solange das Ziel den Check-in anbietet.
+      var gh = form.querySelector('[data-kf-gueltig]');
+      if (gh) { var gb = gh.querySelector('[data-kf-gueltig-bis]'); if (gb && !gb.textContent) gb.textContent = monatsende(); gh.hidden = nonTreat || !checkinAllowed(); }
       // Check-in nur für freigegebene Standorte (globale Formulare: abhängig von der Auswahl).
       if (rCheckin && !fixedName) {
         var ok = checkinAllowed(); var o = opt();
@@ -117,7 +125,7 @@
         }
         if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
         // Gewählter Check-in am neuen Ziel nicht verfügbar: Auswahl lösen, Hinweis zeigen, NIE still durch den Ersttermin ersetzen.
-        if (!ok && rCheckin.checked) { rCheckin.checked = false; noDefault = true; return sync(); }
+        if (!ok && rCheckin.checked) { rCheckin.checked = false; if (byDefault && rBeh && usable(rBeh)) rBeh.checked = true; else noDefault = true; return sync(); }
       }
       // SG-Seite (data-kf-od-mode="sg"): beide Terminarten über OneDoc; EIN Element: ohne Auswahl sekundärer Link,
       // mit Auswahl Hauptbutton. Spezifische Beschriftung nur mit verifiziertem Direktlink, sonst neutral + gemeinsame Auswahl.
@@ -168,7 +176,14 @@
     var rDef = form.querySelector('input[name="terminart"][value="' + (card.getAttribute('data-kf-default') || 'behandlung') + '"]') || rBeh;
     var noDefault = false;
     var usable = function (r) { var l = r && r.closest('.kf-opt'); return !!(r && !r.disabled && !(l && l.hidden)); };
-    var applyDefault = function () { if (noDefault || !usable(rDef) || radios.some(function (x) { return x.checked; })) return; rDef.checked = true; };
+    // byDefault: aktuelle Auswahl stammt aus der Vorauswahl (keine Nutzerwahl, kein ?terminart=); nur dann darf sie beim
+    // Zielwechsel still auf den Ersttermin wechseln bzw. zurück auf den Check-in (globale Check-in-zuerst-Formulare, /kontakt/).
+    var byDefault = false;
+    var applyDefault = function () {
+      if (noDefault || !usable(rDef)) return;
+      if (!radios.some(function (x) { return x.checked; })) { rDef.checked = true; byDefault = true; }
+      else if (byDefault && !rDef.checked) { radios.forEach(function (x) { x.checked = false; }); rDef.checked = true; }
+    };
     // Expliziter Check-in-Wunsch, der hier nicht verfügbar ist: KEINE (kostenpflichtige) Auswahl als scheinbare Erfüllung
     // stehen lassen. Auswahl lösen, Standard sperren (noDefault), Hinweis zeigen; Eingaben bleiben. Hinweis: globale Formulare
     // zeigen den bestehenden Standort-Hinweis (scopeNote), Formulare mit festem Standort den Hinweis an der Auswahl.
@@ -177,7 +192,7 @@
       radios.forEach(function (x) { x.checked = false; }); noDefault = true; sync();
       if (!(scopeNote && !scopeNote.hidden)) fieldErr('terminart', checkinNA);
     };
-    radios.forEach(function (r) { r.addEventListener('change', function () { noDefault = false; fieldErr('terminart', ''); sync(); }); });
+    radios.forEach(function (r) { r.addEventListener('change', function () { noDefault = false; byDefault = false; fieldErr('terminart', ''); sync(); }); });
     if (sel) sel.addEventListener('change', function () { fieldErr('standort', ''); sync(); applyDefault(); sync(); });
 
     // ── Prefill (einmalig beim Laden; spätere Kachelwechsel überschreiben keine Eingaben) ──
@@ -204,6 +219,7 @@
     var blockedOnLoad = explicit === 'checkin' && !rCheckin;
     if (blockedOnLoad) { radios.forEach(function (x) { x.checked = false; }); noDefault = true; }
     applyDefault();
+    if (!explicit && rDef && rDef.checked) byDefault = true;
     if (card.getAttribute('data-kf-autoprefill') === 'terminform') {
       // Port aus TerminForm.astro: 1. data-prefill (Anliegen), 2. ?von=, 3. same-origin Referrer.
       var ta = form.querySelector('textarea[name="anliegen"]'); var qh = form.querySelector('input[name="quelle"]');

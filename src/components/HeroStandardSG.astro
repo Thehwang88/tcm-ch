@@ -237,9 +237,7 @@ const card = renderKontaktForm({
   .sgt-form .kf{width:100%;max-width:560px;margin:0 auto}
   /* Generische Trust-Zeile aus home.js (form-trust-checklist) nicht über dem SG-Formular: dupliziert die Karten. */
   .sgt-form .form-trust-checklist{display:none}
-  /* Gewählte Terminart gelb (Inhaber 05.11.2026): Fläche #FFF6C2, Rand 2px #FFD84D; wandert mit der Auswahl (is-checked, kontakt-form.js). */
-  .sgt .kf--ruhig .kf-opt,.sgt .kf--ruhig .kf-opt--checkin{background:#fff}
-  .sgt .kf--ruhig .kf-opt.is-checked{background:#FFF6C2;border-color:#FFD84D;box-shadow:inset 0 0 0 .5px #FFD84D}
+  /* Gelbe Terminart-Auswahl: seit 06.11.2026 gemeinsam in kontakt-form.css (.kf--gelb). */
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
@@ -260,8 +258,7 @@ const card = renderKontaktForm({
       bis = bis || monatsende();
       setTxt('[data-sgb-gueltig-label]', bis); var g = q('[data-sgb-gueltig]'); if (g) g.hidden = false;
       setTxt('[data-sgb-slot-m]', 'bis ' + bis); setTxt('[data-sgb-cta-d]', 'Jetzt Termin sichern'); setTxt('[data-sgb-cta-m]', 'Sichern');
-      var opts = q('[data-kf-instance="sg-hero"] .kf-opts');
-      if (opts && !q('[data-sg-gueltig-hinweis]')) { var n = document.createElement('p'); n.className = 'kf-fhint'; n.setAttribute('data-sg-gueltig-hinweis', ''); n.textContent = 'Buchung bis ' + bis + ', Termin auch später möglich.'; opts.parentNode.insertBefore(n, opts.nextSibling); }
+      // Formular-Hinweis «Buchung bis …» kommt aus kontakt-form.js ([data-kf-gueltig]).
     };
     fetch('/api/sg-next-slot', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       if (!j || !j.slot || !j.label || j.show !== true) return fallback(j && j.gueltigBis);
