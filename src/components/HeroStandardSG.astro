@@ -10,6 +10,10 @@ import { renderKontaktForm } from '../lib/kontakt-form';
 import KontaktPraxis from './standort/KontaktPraxis.astro';
 import HeroMedia from './standort/HeroMedia.astro';
 import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
+import { getTherapeut } from '../data/therapeuten';
+// Linke Spalte der Kontaktsektion (05.11.2026): Praxisfoto, Adresse, Öffnungszeiten (wie FAQ/Schema), Team (Corinna, Astrid), GBP, Zitate.
+const SG_TEAM = ['corinna-reinhart', 'astrid-lenggenhager'].map((slug) => { const t = getTherapeut(slug); if (!t) throw new Error(`HeroStandardSG: Therapeut:in ${slug} fehlt`); return { name: t.name, bild: t.bild, rolle: 'Naturheilpraktikerin TCM' }; });
+const SG_HOURS = [['Mo–Sa', '7:30–19:30 Uhr'], ['So', '8:00–17:00 Uhr']];
 const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 // Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Kontaktkarte).
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
@@ -76,7 +80,28 @@ const card = renderKontaktForm({
     Formularkarte), damit kontakt-form.js den Hash nicht als Formular-Anker übernimmt und Links auf #termin oben am Block landen. */}
 <span id="termin" class="sgt-anchor" aria-hidden="true"></span>
 <section class="sgt" aria-labelledby="sgt-h">
-  <div class="sgt-wrap">
+  <div class="sgt-wrap sgt-grid">
+    <aside class="sgt-aside" aria-label="Praxis St. Gallen">
+      <div class="sgt-aside-top">
+        <figure class="sgt-foto"><img src="/images/standort-stgallen.webp" srcset="/images/standort-stgallen-800.webp 800w, /images/standort-stgallen.webp 1447w" sizes="(max-width:1023px) 100vw, 380px" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1447" height="1087" loading="lazy" decoding="async"></figure>
+        <p class="sgt-addr"><strong>Oberer Graben 22, 9000 St. Gallen</strong> · 2 Min vom HB</p>
+        <dl class="sgt-hours">{SG_HOURS.map(([d, t]) => <Fragment><dt>{d}</dt><dd>{t}</dd></Fragment>)}</dl>
+      </div>
+      <div class="sgt-aside-bottom">
+        <ul class="sgt-team" aria-label="Team St. Gallen">
+          {SG_TEAM.map((t) => <li><img src={t.bild} alt={t.name} width="48" height="48" loading="lazy" decoding="async"><span><strong>{t.name}</strong><small>{t.rolle}</small></span></li>)}
+        </ul>
+    {SG_ZITATE.length > 0 && (
+      <ul class="sgt-quotes" aria-label="Google-Rezensionen">
+        {SG_ZITATE.slice(0, 2).map((z) => <li><q>{z.text}</q><span class="sgt-q-name">{z.name} · Google-Rezension</span></li>)}
+      </ul>
+    )}
+    {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && (
+      <p class="sgt-gbp"><a href={SG_MAPS} target="_blank" rel="noopener" title={`Google-Bewertungen, Stand ${SG_GOOGLE.stand}`}>{fmtRating(SG_GOOGLE.rating)} <span class="lsr-stars" aria-hidden="true">★</span> · {SG_GOOGLE.count} Bewertungen auf Google</a></p>
+    )}
+      </div>
+    </aside>
+    <div class="sgt-main">
     <div class="sgt-head">
       <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
       <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
@@ -101,14 +126,6 @@ const card = renderKontaktForm({
         <span class="sgt-ch-go">WhatsApp öffnen <span aria-hidden="true">→</span></span>
       </a>
     </div>
-    {SG_ZITATE.length > 0 && (
-      <ul class="sgt-quotes" aria-label="Google-Rezensionen">
-        {SG_ZITATE.slice(0, 2).map((z) => <li><q>{z.text}</q><span class="sgt-q-name">{z.name} · Google-Rezension</span></li>)}
-      </ul>
-    )}
-    {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && (
-      <p class="sgt-gbp"><a href={SG_MAPS} target="_blank" rel="noopener" title={`Google-Bewertungen, Stand ${SG_GOOGLE.stand}`}>{fmtRating(SG_GOOGLE.rating)} <span class="lsr-stars" aria-hidden="true">★</span> · {SG_GOOGLE.count} Bewertungen auf Google</a></p>
-    )}
     <div class="sgt-onedoc" id="online-buchen">
       <div class="sgt-od-head">
         <h3 class="sgt-od-h">Online buchen</h3>
@@ -118,6 +135,7 @@ const card = renderKontaktForm({
       <p class="sgt-od-fallback">Buchungsfenster bleibt leer? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener">Direkt bei OneDoc öffnen <span aria-hidden="true">→</span></a></p>
     </div>
     <div class="sgt-form"><Fragment set:html={card} /></div>
+    </div>
   </div>
 </section>
 <KontaktPraxis>
@@ -152,7 +170,31 @@ const card = renderKontaktForm({
   /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, OneDoc, Formular. */
   .sgt-anchor{display:block;height:0;scroll-margin-top:var(--header-h,76px)}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
-  .sgt-wrap{max-width:1024px;margin:0 auto}
+  .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
+  .sgt-grid{display:flex;flex-direction:column;gap:20px}
+  .sgt-aside{display:contents}
+  .sgt-aside-top{order:1}
+  .sgt-main{order:2;min-width:0}
+  .sgt-aside-bottom{order:3}
+  .sgt-foto{margin:0 0 12px;border-radius:var(--r-card,16px);overflow:hidden;box-shadow:var(--sh-md)}
+  .sgt-foto img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+  .sgt-addr{margin:0 0 8px;font-size:15.5px;color:var(--mid)}
+  .sgt-addr strong{color:var(--black)}
+  .sgt-hours{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font-size:14.5px;color:var(--mid)}
+  .sgt-hours dt{font-weight:700;color:var(--black)}
+  .sgt-hours dd{margin:0}
+  .sgt-team{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:12px 22px}
+  .sgt-team li{display:flex;align-items:center;gap:10px}
+  .sgt-team img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0}
+  .sgt-team span{display:flex;flex-direction:column;line-height:1.25}
+  .sgt-team strong{font-size:15px;color:var(--black)}
+  .sgt-team small{font-size:12.5px;color:var(--mid)}
+  @media (min-width:1024px){
+    .sgt-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start}
+    .sgt-aside{display:block;position:sticky;top:calc(var(--header-h,76px) + 16px)}
+    .sgt-aside-top{margin-bottom:18px}
+    .sgt-main{max-width:820px}
+  }
   .sgt-head{margin-bottom:22px}
   .sgt-head .section-title{margin:0 0 6px}
   .sgt-sub{margin:0;font-size:16px;color:var(--mid);line-height:1.5}
@@ -178,9 +220,9 @@ const card = renderKontaktForm({
   .sgt-onedoc .od-widget{display:block;min-height:400px}
   .sgt-od-fallback{margin:8px 0 0;font-size:14px;color:var(--mid)}
   .sgt-od-fallback a{color:var(--blue);font-weight:700;text-decoration:none}
-  .sgt-quotes{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-  .sgt-quotes li{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:16px 18px;font-size:15px;line-height:1.55;color:var(--black)}
-  .sgt-gbp{margin:-12px 0 24px;font-size:14.5px}
+  .sgt-quotes{list-style:none;margin:0 0 10px;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+  .sgt-quotes li{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:14px 16px;font-size:14.5px;line-height:1.5;color:var(--black)}
+  .sgt-gbp{margin:0;font-size:14.5px}
   .sgt-gbp a{color:var(--black);font-weight:700;text-decoration:none}
   .sgt-gbp a:hover{text-decoration:underline}
   .sgt-quotes q{quotes:'«' '»'}
