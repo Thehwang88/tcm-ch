@@ -34,7 +34,7 @@ const SG_ZITATE: { text: string; name: string }[] = [
 const fmtRating = (r: number) => r.toLocaleString('de-CH', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const card = renderKontaktForm({
   instance: 'sg-hero', standortId: 'st-gallen', cardId: 'offer-form', compatAnchors: ['first30'],
-  // Neutraler Formular-Identifier (21.10.2026): beide Terminarten (Check-in 30 Min. kostenlos, Ersttermin 60 Min. kostenpflichtig);
+  // Neutraler Formular-Identifier (21.10.2026): beide Terminarten (Check-in 30 Min. kostenlos, Ersttermin 90 Min. kostenpflichtig);
   // Terminart/Dauer/Kosten kommen ausschliesslich aus der serverseitigen Angebots-ID (anfrage.js), nie aus dem Formularnamen.
   quelle: 'launch-hero-sg', formName: 'Hero-Termin-StGallen', formular: 'Hero-Termin-StGallen',
   quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',

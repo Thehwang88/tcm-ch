@@ -54,7 +54,7 @@ const SCEN = [
   ['SG unten · Check-in', { url: '/standorte/st-gallen/', inst: 'sg-unten', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
   ['Homepage + SG · Ersttermin', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'behandlung' }, 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + SG · Check-in', { url: '/', inst: 'home', standort: 'St. Gallen', terminart: 'checkin' }, 'Neue Anfrage · St. Gallen · Kostenloser TCM-Check-in · 30 Min.', '30 Minuten', 'kostenlos, ohne Behandlung'],
-  ['Basel (ohne Check-in) · Ersttermin', { url: '/standorte/basel/', inst: 'standort', terminart: 'behandlung' }, 'Neue Anfrage · Basel · Ersttermin mit Behandlung · 60 Min.', '60 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
+  ['Basel (ohne Check-in) · Ersttermin', { url: '/standorte/basel/', inst: 'standort', terminart: 'behandlung' }, 'Neue Anfrage · Basel · Ersttermin mit Behandlung · 90 Min.', '90 Minuten', 'kostenpflichtig, Abrechnung nach Tarif'],
   ['Homepage + Luzern · Vormerkung', { url: '/', inst: 'home', standort: 'Luzern – Vormerkung, Eröffnung 2027' }, 'Neue Anfrage · Luzern · Vormerkung', null, null],
   ['Homepage + Andere · Routing', { url: '/', inst: 'home', standort: 'Andere / in meiner Nähe' }, 'Neue Anfrage · Andere / in meiner Nähe · Anfrage passende Praxis', null, null],
 ];
@@ -64,7 +64,7 @@ for (const [label, f, subj, dauer, kosten] of SCEN) {
   const r = await flow(f);
   const p = r.calls[0] || {};
   ok(r.calls.length === 1, `genau ein Versand (${p.angebot_id}, Quelle ${p.quelle}${p.formular ? ', Formular ' + p.formular : ''})`);
-  if (f.terminart) ok(r.tile === (f.terminart === 'checkin' ? 'Kostenloser TCM 360°-Check-in · 30 Minuten · CHF 0.–' : 'Ersttermin mit Behandlung · 60 Minuten'), `Formular-Kachel «${r.tile}»`);
+  if (f.terminart) ok(r.tile === (f.terminart === 'checkin' ? 'Kostenloser TCM 360°-Check-in · 30 Minuten' : 'Ersttermin mit Behandlung · 90 Minuten'), `Formular-Kachel «${r.tile}»`);
   ok(r.events.length === 1, `genau ein Tracking-Event (${r.events.map((e) => e.event).join(', ')})`);
   ok(!r.events.some((e) => JSON.stringify(e).includes('79 123')), 'keine Telefonnummer im dataLayer');
   const s = await server(p);
@@ -91,12 +91,12 @@ for (const [label, d, code] of [
 ]) { const s = await server(d); ok(s.status === 422 && s.body.error === code && !s.mail, `${label} → 422 ${code}, keine Mail`); }
 const fake = await server({ ...base, standort: 'St. Gallen', angebot_id: 'ERSTTERMIN_BEHANDLUNG', formular: 'Hero-Gratis-30min-StGallen', angebot: 'GRATIS 30 MIN', label: 'Kostenloser TCM-Check-in' });
 ok(fake.mail.subject === 'Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.' && !/GRATIS 30 MIN/.test(fake.mail.html), 'Client-Labels und Legacy-Formularname ändern Betreff/Terminart nicht');
-// Schutz gegen standortübergreifende Dauer-Änderungen: andere Ersttermine bleiben 60 Minuten.
+// Schutz gegen standortübergreifende Dauer-Änderungen: andere Ersttermine bleiben 90 Minuten.
 for (const ort of ['Winterthur Marktgasse', 'Winterthur Münzgasse', 'Basel']) {
   const ext = await server({ ...base, standort: ort, angebot_id: 'ERSTTERMIN_BEHANDLUNG' });
-  ok(ext.status === 200 && ext.mail.subject === 'Neue Anfrage · ' + ort + ' · Ersttermin mit Behandlung · 60 Min.'
-    && ext.mail.html.includes('>60 Minuten<') && !ext.mail.html.includes('Carlos:'),
-    ort + ': Ersttermin bleibt 60 Minuten ohne SG-Buchungshinweis');
+  ok(ext.status === 200 && ext.mail.subject === 'Neue Anfrage · ' + ort + ' · Ersttermin mit Behandlung · 90 Min.'
+    && ext.mail.html.includes('>90 Minuten<') && !ext.mail.html.includes('Carlos:'),
+    ort + ': Ersttermin bleibt 90 Minuten ohne SG-Buchungshinweis');
 }
 const legacy = await server({ ...base, name: 'Test', standort: 'St. Gallen', quelle: 'launch-hero-sg', angebot_id: 'FIRST30_WINTER_2026_SG', formular: 'Hero-Gratis-30min-StGallen' });
 ok(legacy.status === 200 && /FIRST 30 PRE-CHRISTMAS EDITION/.test(legacy.mail.html), `historische FIRST-30-ID weiter zustellbar («${legacy.mail.subject}»)`);

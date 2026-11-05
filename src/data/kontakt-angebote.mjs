@@ -40,9 +40,9 @@ export const TERMINARTEN = {
     art: 'ERSTTERMIN MIT BEHANDLUNG',
     beschreibung: 'Ersttermin mit Behandlung (kostenpflichtig, Abrechnung nach Tarif)',
     betreff: ' · Ersttermin mit Behandlung',
-    /** Dauer bestätigt: 60 Minuten, kostenpflichtig. */
-    dauerMin: 60,
-    anzeige: 'Ersttermin mit Behandlung · 60 Minuten',
+    /** Dauer bestätigt (Inhaber 06.11.2026): 90 Minuten, kostenpflichtig. Einzige Quelle für die Ersttermin-Dauer. */
+    dauerMin: 90,
+    anzeige: 'Ersttermin mit Behandlung · 90 Minuten',
     kosten: 'kostenpflichtig, Abrechnung nach Tarif',
     submit: 'Ersttermin anfragen →',
   },
@@ -151,7 +151,7 @@ export const zielFuer = (value) => kontaktZiele().find((z) => z.value === String
 
 /** Betreff der Benachrichtigung, NUR aus serverseitig validierter Terminart und kanonischem Ziel gebaut
  *  (nie aus Formularname oder Client-Label). Ort = kanonisches Options-Label ohne Klammerzusatz.
- *  Beispiel: «Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 60 Min.» */
+ *  Beispiel: «Neue Anfrage · St. Gallen · Ersttermin mit Behandlung · 90 Min.» */
 export const terminBetreff = (t, ziel) => {
   const ort = String(ziel.label).replace(/\s*\([^)]*\)\s*$/, '').trim();
   return 'Neue Anfrage · ' + ort + ' · ' + t.label + (t.dauerMin ? ' · ' + t.dauerMin + ' Min.' : t.anzeige && t.anzeige !== t.label ? ' · ' + t.anzeige.replace(t.label + ' · ', '') : '');
