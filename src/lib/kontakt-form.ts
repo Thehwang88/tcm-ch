@@ -19,8 +19,11 @@ export interface KontaktFormOpts {
   anliegen?: string;
   /** Explizite Vorauswahl (Link/Prefill); ohne Vorgabe bleiben beide Kacheln ungewählt. */
   terminart?: 'checkin' | 'behandlung';
-  /** Kostenloser Check-in als erste und vorausgewählte Kachel (SG-Angebotsseite); Button «Gratis Check-in anfragen» /
-   *  «Ersttermin anfragen» je Auswahl (data-kf-submit-*, kontakt-form.js). Nur mit festem, Check-in-freigegebenem Standort. */
+  /** Kostenloser Check-in als erste und vorausgewählte Kachel, gelbe Auswahl (.kf--gelb), Button «Gratis Check-in anfragen» /
+   *  «Ersttermin anfragen» je Auswahl (data-kf-submit-*, kontakt-form.js), Hinweis «Buchung bis <Monatsende>» (rollierend).
+   *  Seit 06.11.2026 Standard für jeden festen Standort mit Check-in-Freigabe (CHECKIN_FREIGABE, `false` schaltet ab);
+   *  globale Formulare (/kontakt/) nur mit `true`: dort wechselt kontakt-form.js auf den Ersttermin, sobald ein Ziel ohne
+   *  Freigabe gewählt ist. Ohne Freigabe (Partner, Rorschach, Wil …) bleibt alles wie bisher. */
   checkinZuerst?: boolean;
   wunschzeit?: boolean;
   sitekey?: string;
@@ -120,7 +123,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   // (kontakt-form.js), sobald ein freigegebener Standort (data-checkin="1") gewählt ist.
   const freigabe360 = !!fixed && checkinOk;
   if (HB && (!fixed || !checkinOk)) throw new Error('kontakt-form: herbst nur mit festem, Check-in-freigegebenem Standort');
-  const CZ = !!o.checkinZuerst && freigabe360;
+  const CZ = !HB && (fixed ? checkinOk && o.checkinZuerst !== false : !!o.checkinZuerst);
   const pre = onlyBehandlung ? 'behandlung' : HB ? (HB.soldOut ? 'behandlung' : 'checkin') : (o.terminart ?? (CZ ? 'checkin' : undefined));
   const fixedTel = fixed ? fixed.phone : ZENTRAL_TEL;
   const onedoc = fixed ? onedocFor(fixed.id) : null;
@@ -235,7 +238,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
 
   return (
     (o.compatAnchors ?? []).map((a) => `<span id="${esc(a)}" class="kf-compat-anchor" aria-hidden="true"></span>`).join('') +
-    `<div class="inline-form-card kf${K ? ' kf--kompakt' : ''}${Q ? ' kf--ruhig' : ''}${HB ? ' kf--herbst' : ''}${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}"${RO || Q ? ' data-kf-submit-leer="Termin anfragen"' : ''} data-kf-conv="${o.conv ?? 'formular_senden'}"` +
+    `<div class="inline-form-card kf${K ? ' kf--kompakt' : ''}${Q ? ' kf--ruhig' : ''}${CZ ? ' kf--gelb' : ''}${HB ? ' kf--herbst' : ''}${o.extraClass ? ' ' + o.extraClass : ''}" id="${esc(o.cardId ?? p)}" data-kf data-kf-instance="${inst}"${RO || Q ? ' data-kf-submit-leer="Termin anfragen"' : ''} data-kf-conv="${o.conv ?? 'formular_senden'}"` +
     (HB ? ` data-kf-submit-checkin="${esc(HB.soldOut ? TERMINARTEN.checkin.submit.replace(/\s*→$/, '') : HB.copy.submitCheckin)}" data-kf-submit-behandlung="${esc(HB.copy.submitBehandlung)}" data-kf-kampagne="${esc(HB.kampagne)}"${HB.soldOut ? '' : ` data-kf-ok-checkin="${esc(HB.copy.okCheckin)}"`}`
       : CZ ? ' data-kf-default="checkin" data-kf-submit-checkin="Gratis Check-in anfragen" data-kf-submit-behandlung="Ersttermin anfragen"' : '') +
     (fixed ? ` data-kf-standort="${esc(fixed.name)}" data-kf-standort-id="${fixed.id}" data-kf-standort-art="behandlung"` : ' data-kf-global="1"') +
@@ -258,6 +261,8 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? (K || Q ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : QG ? '' : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     (Q && !HB && !CZ ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
+    // Check-in zuerst: Angebot gültig bis Monatsende (Datum rollierend aus kontakt-form.js, Europe/Zurich), nur bei freigegebenem Ziel.
+    (CZ ? `<p class="kf-fhint" data-kf-gueltig hidden>Buchung bis <span data-kf-gueltig-bis></span>, Termin auch später möglich.</p>` : '') +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
