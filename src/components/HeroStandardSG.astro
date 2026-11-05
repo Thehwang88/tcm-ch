@@ -45,9 +45,9 @@ const card = renderKontaktForm({
 ---
 <section class="sgb-banner" id="sg-angebot-banner" aria-label="Kostenloser TCM 360°-Check-in">
   <a href="#termin" class="sgb-in">
-    <span class="sgb-txt sgb-txt--d"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-sep" aria-hidden="true"> · </span>CHF 0</span>
-    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> · 30 Min</span>
-    <span class="sgb-cta"><span class="sgb-cta--d">Jetzt Termin wählen <span aria-hidden="true">→</span></span><span class="sgb-cta--m"><span aria-hidden="true">→</span> Termin</span></span>
+    <span class="sgb-txt sgb-txt--d"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-sep" aria-hidden="true"> · </span>CHF 0<span class="sgb-slot" data-sgb-slot hidden> · Nächster freier Termin: <strong data-sgb-slot-label></strong></span></span>
+    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> · <span data-sgb-slot-m>30 Min</span></span>
+    <span class="sgb-cta"><span class="sgb-cta--d"><span data-sgb-cta-d>Jetzt Termin wählen</span> <span aria-hidden="true">→</span></span><span class="sgb-cta--m"><span aria-hidden="true">→</span> <span data-sgb-cta-m>Termin</span></span></span>
   </a>
 </section>
 {/* Mobil (html/body overflow-x:hidden bricht position:sticky): Banner fixed unter dem Header, Platzhalter in Bannerhöhe (--sgb-h per Script). */}
@@ -163,6 +163,7 @@ const card = renderKontaktForm({
   .sgb-in:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:-3px}
   .sgb-txt--m,.sgb-cta--m{display:none}
   /* Mobil einzeilig: «Gratis Check-in · 30 Min → Termin» */
+  .sgb-slot strong{white-space:nowrap}
   @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:9px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:15px;white-space:nowrap}.sgb-cta{padding:7px 12px;font-size:14px}}
 
   /* Therapie-Zeile (?t=) unter dem Hero. */
@@ -249,6 +250,24 @@ const card = renderKontaktForm({
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
+  // Nächster freier Check-in (05.11.2026): /api/sg-next-slot (Cloudflare Function, OneDoc-Verfügbarkeit, Cache 10 Min).
+  // Nur anzeigen, wenn ein Slot in der Zukunft geliefert wird; sonst Banner unverändert. dataLayer next_slot_shown einmal je Aufruf.
+  (function () {
+    var label = document.querySelector('[data-sgb-slot-label]'); if (!label) return;
+    fetch('/api/sg-next-slot', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j || !j.slot || !j.label) return;
+      var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(j.slot); if (!m) return;
+      // Nie einen vergangenen Slot zeigen (lokale Zeit Europe/Zurich, Client-Uhr als Näherung)
+      var now = new Date(); var nowLocal = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2) + 'T' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+      if (j.slot.slice(0, 16) <= nowLocal) return;
+      label.textContent = j.label;
+      var wrap = document.querySelector('[data-sgb-slot]'); if (wrap) wrap.hidden = false;
+      var m2 = document.querySelector('[data-sgb-slot-m]'); if (m2) m2.textContent = j.label;
+      var cd = document.querySelector('[data-sgb-cta-d]'); if (cd) cd.textContent = 'Jetzt buchen';
+      var cm = document.querySelector('[data-sgb-cta-m]'); if (cm) cm.textContent = 'Buchen';
+      try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'next_slot_shown', slot: j.slot }); } catch (e) {}
+    }).catch(function () {});
+  })();
   // Bannerhöhe als CSS-Variable (Platzhalter + Anker-Offset auf Mobile), bei Grössenänderung nachgeführt.
   (function () {
     var b = document.querySelector('.sgb-banner'); if (!b) return;

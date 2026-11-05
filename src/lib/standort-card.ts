@@ -23,11 +23,11 @@ export interface CardOpts {
 }
 
 const esc = (s: string) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const PIN = '<svg class="sc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
+const PIN = '<svg class="sc-pin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>';
 
 const T = {
-  de: { buchen: 'Termin buchen', checkin: 'Gratis Check-in buchen', warteliste: 'Warteliste', ansehen: 'Standort ansehen', naechste: 'Nächste Praxis', kk: 'Krankenkassen anerkannt', checkinChip: 'Gratis Check-in', e2027: 'Eröffnung 2027', vorbereitung: 'In Vorbereitung', tage: { so: 'Mo–So', sa: 'Mo–Sa', fr: 'Mo–Fr' } },
-  en: { buchen: 'Book an appointment', checkin: 'Book a free check-in', warteliste: 'Join the waitlist', ansehen: 'View location', naechste: 'Nearest clinic', kk: 'Insurance recognised', checkinChip: 'Free check-in', e2027: 'Opening 2027', vorbereitung: 'In preparation', tage: { so: 'Mon–Sun', sa: 'Mon–Sat', fr: 'Mon–Fri' } },
+  de: { inline: { buchen: 'Termin', checkin: 'Gratis Check-in', warteliste: 'Warteliste', ansehen: 'Ansehen', naechste: 'Nächste' }, buchen: 'Termin buchen', checkin: 'Gratis Check-in buchen', warteliste: 'Warteliste', ansehen: 'Standort ansehen', naechste: 'Nächste Praxis', kk: 'Krankenkassen anerkannt', checkinChip: 'Gratis Check-in', e2027: 'Eröffnung 2027', vorbereitung: 'In Vorbereitung', tage: { so: 'Mo–So', sa: 'Mo–Sa', fr: 'Mo–Fr' } },
+  en: { inline: { buchen: 'Book', checkin: 'Free check-in', warteliste: 'Waitlist', ansehen: 'View', naechste: 'Nearest' }, buchen: 'Book an appointment', checkin: 'Book a free check-in', warteliste: 'Join the waitlist', ansehen: 'View location', naechste: 'Nearest clinic', kk: 'Insurance recognised', checkinChip: 'Free check-in', e2027: 'Opening 2027', vorbereitung: 'In preparation', tage: { so: 'Mon–Sun', sa: 'Mon–Sat', fr: 'Mon–Fri' } },
 } as const;
 
 export const clinicById = (id: string): Clinic => {
@@ -99,7 +99,9 @@ export function standortCardHtml(clinicOrId: Clinic | string, o: CardOpts = {}):
   const a = `href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ''}${o.attrs ? ' ' + o.attrs : ''}`;
   const cls = `sc sc--${v}${o.extraClass ? ' ' + o.extraClass : ''}${st === 'einzugsgebiet' ? ' sc--einzug' : ''}`;
   if (v === 'inline') {
-    return `<a class="${cls}" ${a}>${PIN}<span class="sc-name">${esc(cardName(c))}</span>${btn}</a>`;
+    // Kurze Labels für die einzeilige Variante (Footer-Spalte, Nearby-Listen).
+    const li = t.inline; const lab = c.karte?.button ?? (st === 'einzugsgebiet' ? `${li.naechste}: ${cardName(naechste!)}` : st === '2027' ? (c.status === 'operational' ? li.ansehen : li.warteliste) : ci ? li.checkin : li.buchen);
+    return `<a class="${cls}" ${a}>${PIN}<span class="sc-name">${esc(cardName(c))}</span><span class="sc-btn${ci ? ' sc-btn--gelb' : ''}">${esc(lab)} <span aria-hidden="true">→</span></span></a>`;
   }
   const foto = v === 'hero' && o.foto && c.bild ? `<img class="sc-img" src="${esc(c.bild.src)}" alt="${esc(c.bild.alt)}" width="1200" height="896" loading="lazy" decoding="async">` : '';
   return `<a class="${cls}" ${a}>${foto}<div class="sc-body"><div class="sc-title">${PIN}<span>${esc(cardName(c))}</span></div><div class="sc-sub">${esc(cardHinweis(c))}</div>` +
