@@ -171,7 +171,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const tileBehandlung =
     `<label class="kf-opt kf-opt--behandlung" for="${p}-ta-behandlung">` +
     `<input class="kf-radio" type="radio" name="terminart" id="${p}-ta-behandlung" value="behandlung"${pre === 'behandlung' ? ' checked' : ''} data-kf-angebot="${TERMINARTEN.behandlung.id}">` +
-    `<span class="kf-opt-body"><span class="kf-opt-t">${HB ? esc(HB.copy.tileBehandlung) : TERMINARTEN.behandlung.label}</span>` + (Q ? `<span class="kf-opt-dur">${TERMINARTEN.behandlung.dauerMin} Minuten${HB ? ' · kostenpflichtig, nach Tarif' : ''}</span>` : '') +
+    `<span class="kf-opt-body"><span class="kf-opt-t">${HB ? esc(HB.copy.tileBehandlung) : TERMINARTEN.behandlung.label}</span>` + (Q ? `<span class="kf-opt-dur">${TERMINARTEN.behandlung.dauerMin} Minuten${HB ? ' · kostenpflichtig, nach Tarif' : ' · Krankenkasse anerkannt (Zusatzversicherung)'}</span>` : '') +
     (HB ? `<span class="kf-opt-d">Gespräch, TCM-Diagnostik und erste Behandlung. Zusatzversicherung je nach Police.</span>`
     : Q ? `<span class="kf-opt-d">Persönliches Gespräch, TCM-Diagnostik und erste Behandlung.</span>`
     : `<span class="kf-opt-d">${K ? 'Gespräch und erste Behandlung.' : 'Für alle, die direkt mit der Behandlung starten möchten.'}</span>`) +
