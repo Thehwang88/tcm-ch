@@ -210,10 +210,10 @@ const card = renderKontaktForm({
   .sgt-ch-sub{font-size:14.5px;line-height:1.5;color:var(--mid);flex:1}
   .sgt-ch-go{margin-top:16px;font-size:14px;font-weight:700;color:var(--blue)}
   .sgt-ch--primary{background:var(--brand-black,#020B10);border-color:var(--brand-black,#020B10)}
-  .sgt-ch--primary .sgt-ch-label{color:var(--brand,#1AE288)}
+  .sgt-ch--primary .sgt-ch-label{color:#FFD84D}
   .sgt-ch--primary .sgt-ch-title{color:#fff}
   .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)}
-  .sgt-ch--primary .sgt-ch-go{color:var(--brand,#1AE288)}
+  .sgt-ch--primary .sgt-ch-go{color:#FFD84D}
   .sgt-ch--primary:hover{border-color:var(--brand,#1AE288)}
   .sgt-onedoc{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:20px 20px 12px;margin-bottom:24px;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
   .sgt-od-head{margin-bottom:10px}
@@ -232,9 +232,9 @@ const card = renderKontaktForm({
   .sgt-form .kf{width:100%;max-width:560px;margin:0 auto}
   /* Generische Trust-Zeile aus home.js (form-trust-checklist) nicht über dem SG-Formular: dupliziert die Karten. */
   .sgt-form .form-trust-checklist{display:none}
-  /* Check-in ist die erste Kachel: dezentes Mint dort statt bei der Erstbehandlung. */
-  .sgt .kf--ruhig .kf-opt--behandlung,.sgt .kf--ruhig .kf-opt--behandlung.is-checked{background:#fff}
-  .sgt .kf--ruhig .kf-opt--checkin,.sgt .kf--ruhig .kf-opt--checkin.is-checked{background:#F7FCF9}
+  /* Gewählte Terminart gelb (Inhaber 05.11.2026): Fläche #FFF6C2, Rand 2px #FFD84D; wandert mit der Auswahl (is-checked, kontakt-form.js). */
+  .sgt .kf--ruhig .kf-opt,.sgt .kf--ruhig .kf-opt--checkin{background:#fff}
+  .sgt .kf--ruhig .kf-opt.is-checked{background:#FFF6C2;border-color:#FFD84D;box-shadow:inset 0 0 0 .5px #FFD84D}
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
