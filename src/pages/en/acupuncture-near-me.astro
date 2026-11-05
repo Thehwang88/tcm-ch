@@ -6,7 +6,7 @@ import HeroSplit from '../../components/en/HeroSplit.astro';
 import CtaBand from '../../components/en/CtaBand.astro';
 import ClinicFinder from '../../components/en/ClinicFinder.astro';
 import AppointmentForm from '../../components/en/AppointmentForm.astro';
-import { clinics, enLocationPath } from '../../data/locations';
+import { clinics, enLocationPath, isRedirectedClinic } from '../../data/locations';
 
 const path = '/en/acupuncture-near-me';
 const url = `https://tcm.ch${path}/`;
@@ -21,8 +21,8 @@ const groups = [
   { label: 'Central Switzerland', ids: ['luzern'] },
   { label: 'Bern & Mittelland', ids: ['bern'] },
 ];
-const byId = (id: string) => clinics.find((c) => c.id === id && !c.vorVertrag); // vorVertrag: nicht verlinken
-const allIds = groups.flatMap((g) => g.ids).filter((id) => !clinics.find((c) => c.id === id)?.vorVertrag);
+const byId = (id: string) => clinics.find((c) => c.id === id && !c.vorVertrag && !isRedirectedClinic(id)); // vorVertrag / umgeleitet: nicht verlinken
+const allIds = groups.flatMap((g) => g.ids).filter((id) => !clinics.find((c) => c.id === id)?.vorVertrag && !isRedirectedClinic(id));
 
 const faqs = [
   { q: 'Where can I find acupuncture near me in Switzerland?', a: 'TCM.ch runs clinics across German-speaking Switzerland, including Zurich, Winterthur, St. Gallen, Frauenfeld and Kreuzlingen. This page lists every location with its address, so you can contact the clinic closest to you directly.' },

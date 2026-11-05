@@ -142,7 +142,12 @@ export const clinics: Clinic[] = [
 ];
 
 /** Öffentlich verlinkbare Kliniken (ohne vorVertrag): Quelle für alle Listen, Navigationen, Formulare und hreflang-Paare. */
-export const publicClinics = clinics.filter((c) => !c.vorVertrag);
+/** Winterthur Münzgasse = Praxis Hwang (05.11.2026): 301 auf hwang.ch (public/_redirects), keine DE-/EN-Seite, keine Karten/Nearby/Nav/Team-Links.
+ *  Der Clinic-Datensatz bleibt (Formular-Ziel, Attribution, Fingerprints). Rückbau: Slug aus dem Set nehmen + Redirects entfernen. */
+export const HWANG_WINTERTHUR_URL = 'https://www.hwang.ch/standorte/winterthur';
+export const REDIRECTED_CLINICS = new Set(['winterthur-muenzgasse']);
+export const isRedirectedClinic = (id: string) => REDIRECTED_CLINICS.has(id);
+export const publicClinics = clinics.filter((c) => !c.vorVertrag && !REDIRECTED_CLINICS.has(c.id));
 
 // Conditions patients most commonly come for. Linked to the DE /beschwerden
 // deep pages for now (EN equivalents not built yet). ids = DE symptom slugs.

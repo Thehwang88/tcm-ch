@@ -154,7 +154,8 @@ for (const e of REGISTRY) {
   else if (descs.has(desc)) fail(`S1 ${e.en}: duplicate description with ${descs.get(desc)}`);
   else descs.set(desc, e.en);
   const noindex = /<meta\s[^>]*name="robots"[^>]*noindex/.test(head);
-  if (noindex) fail(`S1 ${e.en}: noindex on a registered page (editorial ${e.editorial})`);
+  if (noindex && !e.noindex) fail(`S1 ${e.en}: noindex on a registered page (editorial ${e.editorial})`);
+  if (!noindex && e.noindex) fail(`S1 ${e.en}: registry says noindex but page has no robots noindex`);
 
   // S2
   const canon = links(head, 'canonical').map((t) => attr(t, 'href'));
@@ -182,7 +183,8 @@ for (const e of REGISTRY) {
 
   // S4
   const inMap = sitemap.includes(`<loc>${self}</loc>`);
-  if (sitemapEligible(e) && !inMap) fail(`S4 ${e.en}: eligible but missing from public/sitemap.xml`);
+  if (sitemapEligible(e) && !e.noindex && !inMap) fail(`S4 ${e.en}: eligible but missing from public/sitemap.xml`);
+  if (e.noindex && inMap) fail(`S4 ${e.en}: noindex but listed in sitemap`);
   if (!sitemapEligible(e) && inMap) fail(`S4 ${e.en}: editorial ${e.editorial} but listed in sitemap`);
 
   // S5

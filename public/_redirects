@@ -7,6 +7,11 @@
 /wissen/akupunktur-in-meiner-naehe-schweiz/ /akupunktur-in-der-naehe/  301
 /akupunktur-tcm-winterthur /standorte/winterthur-marktgasse/  301
 /standorte/winterthur      /standorte/winterthur-marktgasse/  301
+# Winterthur Münzgasse = Praxis Hwang (05.11.2026): Kannibalisierung beenden, Hwang trägt Winterthur bis zur Eröffnung Marktgasse.
+/standorte/winterthur-muenzgasse      https://www.hwang.ch/standorte/winterthur  301
+/standorte/winterthur-muenzgasse/     https://www.hwang.ch/standorte/winterthur  301
+/en/locations/winterthur-muenzgasse   https://www.hwang.ch/standorte/winterthur  301
+/en/locations/winterthur-muenzgasse/  https://www.hwang.ch/standorte/winterthur  301
 # Slash-Varianten: Cloudflare normalisiert /x -> /x/, die Regeln oben greifen dann nicht
 # mehr und die URL lief in einen 404 (GSC "Nicht gefunden", zuletzt gecrawlt 28.08.2026).
 /akupunktur-tcm-winterthur/ /standorte/winterthur-marktgasse/  301

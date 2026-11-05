@@ -486,6 +486,8 @@ const wissenBase: Wissen[] = [
   },
   {
     "slug": "tcm-winterthur-erfahrungen-ablauf",
+    "ctaHref": "https://www.hwang.ch/standorte/winterthur",
+    "ctaLabel": "Termin in Winterthur (Praxis Hwang)",
     "title": "Akupunktur in Winterthur: Ablauf, Erfahrungen und was dich erwartet",
     "metaDesc": "Wie eine TCM-Behandlung in Winterthur abläuft: Anamnese, Diagnose, erste Akupunktur und ehrliche Erfahrungen. Krankenkassenanerkannt, EMR und ASCA.",
     "region": "Winterthur",
@@ -609,6 +611,8 @@ const wissenBase: Wissen[] = [
   },
   {
     "slug": "akupunktur-winterthur-kosten",
+    "ctaHref": "https://www.hwang.ch/standorte/winterthur",
+    "ctaLabel": "Termin in Winterthur (Praxis Hwang)",
     "title": "Akupunktur Winterthur: Kosten, Tarif 590 und Krankenkasse",
     "metaDesc": "Was Akupunktur in Winterthur kostet: Tarif 590, Erstkonsultation und Folgebehandlung, was die Zusatzversicherung übernimmt und wie du die Rechnung einreichst.",
     "region": "Winterthur",
@@ -675,6 +679,8 @@ const wissenBase: Wissen[] = [
   },
   {
     "slug": "chinesische-kraeutertherapie-winterthur",
+    "ctaHref": "https://www.hwang.ch/standorte/winterthur",
+    "ctaLabel": "Termin in Winterthur (Praxis Hwang)",
     "title": "Chinesische Kräutertherapie in Winterthur: Ablauf, Kosten und Sicherheit",
     "metaDesc": "Chinesische Kräuter in Winterthur: wie eine Rezeptur entsteht, wie die Einnahme abläuft, was sie kostet, was die Kasse übernimmt und worauf du bei Wechselwirkungen achten musst.",
     "region": "Winterthur",

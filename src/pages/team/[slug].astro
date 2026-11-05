@@ -4,7 +4,7 @@
 // `beantragt` sichtbar als «Antrag läuft». Keine E-Mails, keine internen Hinweise.
 import LayoutDe from '../../layouts/LayoutDe.astro';
 import { therapeuten, bookingHref, visible, activeRegs, initials, getPublicTherapistProfile, type PublicTherapeut } from '../../data/therapeuten';
-import { clinics } from '../../data/locations';
+import { isRedirectedClinic, HWANG_WINTERTHUR_URL, clinics } from '../../data/locations';
 import { site } from '../../data/site';
 
 export function getStaticPaths() {
@@ -53,7 +53,9 @@ const person: Record<string, unknown> = {
 if (t.bild) person.image = site.url + t.bild;
 if (t.registerName && t.registerName !== t.name) person.alternateName = t.registerName;
 if (t.sprachen?.length) person.knowsLanguage = t.sprachen;
-if (locs.length) person.workLocation = locs.map((c) => ({ '@type': 'Place', name: `TCM.ch ${c!.name}`, url: `${site.url}/standorte/${c!.id}/` }));
+// Umgeleitete Standorte (Winterthur Münzgasse = Praxis Hwang): Link auf hwang.ch statt auf die entfernte Standortseite.
+const stdHref = (id: string) => isRedirectedClinic(id) ? HWANG_WINTERTHUR_URL : `/standorte/${id}/`;
+if (locs.length) person.workLocation = locs.map((c) => ({ '@type': 'Place', name: isRedirectedClinic(c!.id) ? `Praxis Hwang ${c!.city}` : `TCM.ch ${c!.name}`, url: isRedirectedClinic(c!.id) ? HWANG_WINTERTHUR_URL : `${site.url}/standorte/${c!.id}/` }));
 const creds = [
   ...ausbildungDone.map((a) => ({ '@type': 'EducationalOccupationalCredential', name: a.titel, credentialCategory: 'degree', ...(a.institution ? { recognizedBy: { '@type': 'Organization', name: a.institution } } : {}) })),
   ...activeRegs(t).map((r) => ({ '@type': 'EducationalOccupationalCredential', name: `${r.organisation}-Registrierung`, credentialCategory: 'certification', recognizedBy: { '@type': 'Organization', name: r.organisation } })),
@@ -97,7 +99,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
           {badges.length > 0 && <div class="tp-pills">{badges.map((r) => <span class="tp-pill tp-pill--badge">{r.organisation}</span>)}</div>}
           <div class="tp-cta-row">
             <a class="tp-cta" href={booking} target="_blank" rel="noopener"><Fragment set:html={WA} />Termin anfragen</a>
-            {primaryLoc && <a class="tp-cta tp-cta--sec" href={`/standorte/${primaryLoc.id}/`}>Standort ansehen</a>}
+            {primaryLoc && <a class="tp-cta tp-cta--sec" href={stdHref(primaryLoc.id)}>Standort ansehen</a>}
           </div>
           <p class="tp-trust">Kostenübernahme abhängig von Methode und Zusatzversicherung. <a href="/krankenkassen/">Wir prüfen deine Deckung gerne vorab.</a></p>
         </div>
@@ -235,7 +237,7 @@ const edu = (a: { titel: string; institution?: string; jahr?: string; note?: str
                   <p class="tp-loc-name">TCM.ch {c!.name}</p>
                   <p class="tp-loc-addr">{[c!.street, [c!.postalCode, c!.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')}</p>
                 </div>
-                <div class="tp-loc-actions"><a href={`/standorte/${c!.id}/`}>Standort ansehen</a><a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin anfragen</a></div>
+                <div class="tp-loc-actions"><a href={stdHref(c!.id)}>Standort ansehen</a><a class="tp-loc-book" href={booking} target="_blank" rel="noopener">Termin anfragen</a></div>
               </div>
             ))}
           </div>
