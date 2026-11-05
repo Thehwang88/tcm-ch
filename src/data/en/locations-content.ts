@@ -50,6 +50,7 @@ export const locationContent: Record<string, LocationContent> = {
       BOOK_FAQ('Basel'),
       { q: 'What does acupuncture cost in Basel?', a: SESSION_PRICE },
       { q: 'Does my health insurance pay for the treatment?', a: INSURANCE },
+      { q: 'When is the Basel clinic open?', a: 'Monday to Saturday 7:30 to 19:30, Sunday 8:00 to 17:00. Appointments are by arrangement: tell us your preferred days and time of day and we come back to you with a proposal.' },
       { q: 'Do you treat cross-border commuters from Germany and France?', a: 'Yes. What matters is not where you live but how you are insured. If you work in Switzerland and have Swiss basic insurance, you can take out Swiss supplementary insurance for complementary medicine and claim through it. If you are insured in Germany or France, you pay us directly and submit the invoice to your insurer; whether it reimburses anything depends on your tariff. Send us your details beforehand and we tell you what to expect.' },
     ],
     hero: { src: '/images/basel-reception.webp', alt: 'Illustrative image: reception area of a TCM.ch clinic', caption: 'Illustrative image', symbolic: true },
