@@ -68,7 +68,7 @@ export async function onRequestPost({ request, env }) {
       if (!d.email) return J({ error: 'missing_email' }, 422);
       if (!_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
       // Interne Termindisposition: Carlos reserviert für SG-Erstbehandlungen 90 Minuten.
-      // Patientenformular (60 Minuten), alle anderen Standorte und Gratis-Check-in (30 Minuten) bleiben unverändert.
+      // Patientenformular (90 Minuten), alle anderen Standorte und Gratis-Check-in (30 Minuten) bleiben unverändert.
       const mailTermin = ziel.id === 'st-gallen' && neu.terminart === 'behandlung'
         ? { ...neu, dauerMin: 90, anzeige: neu.label + ' · 90 Minuten' }
         : neu;

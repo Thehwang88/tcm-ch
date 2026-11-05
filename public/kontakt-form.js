@@ -104,7 +104,7 @@
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });
       // Kampagnen-Sheet (data-kf-submit-<terminart>): eigener Button-Text je Terminart; sonst Standardtexte.
       if (submitBtn) submitBtn.innerHTML = (t ? card.getAttribute('data-kf-submit-' + t) || SUBMIT[t] : card.getAttribute('data-kf-submit-leer') || SUBMIT['']) + ' <span aria-hidden="true">→</span>';
-      // Check-in zuerst: «Buchung bis <Monatsende>» (Europe/Zurich, rollierend), nur solange das Ziel den Check-in anbietet.
+      // Check-in zuerst: Subline in der Check-in-Kachel «Buchung bis <Monatsende>» (Europe/Zurich, rollierend), nur solange das Ziel den Check-in anbietet.
       var gh = form.querySelector('[data-kf-gueltig]');
       if (gh) { var gb = gh.querySelector('[data-kf-gueltig-bis]'); if (gb && !gb.textContent) gb.textContent = monatsende(); gh.hidden = nonTreat || !checkinAllowed(); }
       // Check-in nur für freigegebene Standorte (globale Formulare: abhängig von der Auswahl).
