@@ -378,6 +378,8 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
     <Hero data={data} />
+    {/* Buchungsanker #termin (Home-Karten «Termin buchen →», 05.11.2026): Vor-Anker vor dem Kontakt-/Praxisbereich. */}
+    <span id="termin" class="kf-compat-anchor" aria-hidden="true" style="display:block;height:0;scroll-margin-top:var(--header-h,76px)"></span>
     <div class="std-oben">
       {data.planned && (
       <section class="section" data-status-banner={data.review ? 'review' : 'planned'} style="padding:0;background:var(--bg)">
