@@ -18,6 +18,8 @@ interface Props {
   /** Optional per-page OG image (absolute URL); defaults to the site image. */
   ogImage?: string;
   noindex?: boolean;
+  /** Inhalt des robots-Meta bei noindex (Default 'noindex, nofollow'; z. B. 'noindex, follow' für Marktgasse). */
+  robots?: string;
   /**
    * Kanonische Ziel-URL, wenn diese Seite bewusst auf eine ANDERE Seite konsolidiert
    * (Duplikat-Auflösung, z. B. /beschwerden/schlafstoerungen/ -> /beschwerden/schlafprobleme/).
@@ -31,7 +33,7 @@ interface Props {
    *  Turnstile (diese Seiten haben kein Formular). Default false: Verhalten unverändert. */
   sensibel?: boolean;
 }
-const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, canonicalTo, bodyAfter, sensibel = false } = Astro.props;
+const { title, description, path, body, schema, ogImage = site.ogImage, noindex = false, robots = 'noindex, nofollow', canonicalTo, bodyAfter, sensibel = false } = Astro.props;
 const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
@@ -76,7 +78,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     }</style>
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     {enTwin && <link rel="alternate" hreflang="de-CH" href={canonical} />}
     {enTwin && <link rel="alternate" hreflang="en" href={new URL(enTwin, site.url).href} />}

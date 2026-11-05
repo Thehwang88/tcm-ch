@@ -30,7 +30,7 @@ export const standorte = [
   { id: 'basel', label: 'Basel' },
 ];
 
-import { clinics, deStandortPath, enLocationPath } from './locations';
+import { clinics, deStandortPath, enLocationPath, isRedirectedClinic } from './locations';
 import { conditions, deConditionPath, enConditionPath } from './conditions';
 import { therapies, deTherapyPath, enTherapyPath } from './therapies';
 
@@ -44,7 +44,7 @@ export const PAIR_MAP: Record<string, string> = {
   '/akupunktur-tcm-zuerich/': '/en/acupuncture-zurich/',
   // Locations: DE /standorte(/<slug>) <-> EN /en/locations(/<slug>)
   '/standorte': '/en/locations/',
-  ...Object.fromEntries(clinics.map((c) => [deStandortPath(c.id), enLocationPath(c.id)])),
+  ...Object.fromEntries(clinics.filter((c) => !isRedirectedClinic(c.id)).map((c) => [deStandortPath(c.id), enLocationPath(c.id)])),
   // Conditions: DE /beschwerden(/<slug>) <-> EN /en/conditions(/<slug>)
   '/beschwerden': '/en/conditions/',
   ...Object.fromEntries(conditions.map((c) => [deConditionPath(c.deSlug), enConditionPath(c.slug)])),

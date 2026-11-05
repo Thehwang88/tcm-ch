@@ -120,6 +120,11 @@ export const KAMPAGNEN = {
 
 /** Reihenfolge der globalen Standortauswahl (Vereinigung der bisherigen Listen; Bern nur mit eigener Warteliste). */
 export const GLOBAL_ORDER = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-marktgasse', 'winterthur-muenzgasse', 'volketswil', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern'];
+/** Standorte, deren Anfragen an eine Partnerpraxis gehen (Winterthur Münzgasse = Praxis Hwang, 05.11.2026): eigenes
+ *  Formularziel «Winterthur (Praxis Hwang)», kein Check-in, Mail-Routing an die Praxis (functions/api/anfrage.js, Kopie an termine@tcm.ch). */
+export const HWANG_ZIEL = {
+  'winterthur-muenzgasse': { value: 'Winterthur (Praxis Hwang)', mail: 'praxis@hwang.ch', hinweis: 'Deine Anfrage geht direkt an die Praxis Hwang (praxis@hwang.ch), Münzgasse 2, Winterthur.' },
+};
 export const ANDERE = { value: 'Andere / in meiner Nähe', label: 'Andere / in meiner Nähe', id: 'andere', art: 'routing' };
 
 /** Kanonische Formularziele. value = bisheriger Options-/Mail-Wert (Routing durchs Team), unverändert übernommen.
@@ -129,7 +134,10 @@ export const kontaktZiele = () => {
   for (const id of GLOBAL_ORDER) {
     const c = clinics.find((x) => x.id === id);
     if (!c) continue;
-    if (c.status === 'operational') {
+    if (HWANG_ZIEL[id]) {
+      const h = HWANG_ZIEL[id];
+      out.push({ value: h.value, label: h.value, id, art: 'behandlung', standard: true, tel: c.phone, checkin: false, hinweis: h.hinweis });
+    } else if (c.status === 'operational') {
       out.push({ value: c.name, label: c.name, id, art: 'behandlung', standard: true, tel: c.phone, checkin: Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, id) && CHECKIN_FREIGABE[id].name === c.name });
     } else {
       const vorab = c.vorab ?? [];

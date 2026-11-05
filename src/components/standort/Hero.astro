@@ -28,11 +28,22 @@ const video = heroVideo(data);
       <h1 class="lsr-h1" set:html={heroH1}></h1>
       <p class="lsr-lead" set:html={data.hero.lead}></p>
       <p class="lsr-lead" style="margin-bottom:22px" set:html={data.hero.sub}></p>
+      {data.partnerUmleitung ? (
+      <Fragment>
+        <p class="lsr-lead lsr-umleitung" style="margin-bottom:22px"><strong>{data.partnerUmleitung.hinweis}</strong></p>
+        <div class="lsr-ctas">
+          <a href={data.partnerUmleitung.href} class="lsr-btn-primary" target="_blank" rel="noopener">{data.partnerUmleitung.cta}</a>
+        </div>
+      </Fragment>
+      ) : (
+      <Fragment>
       <div class="lsr-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <div class="lsr-ctas">
         <a href="#anfrage-box" class="lsr-btn-primary">{data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen'}</a>
         <a href={waTermin} class="lsr-btn-ghost" target="_blank" rel="noopener">Per WhatsApp</a>
       </div>
+      </Fragment>
+      )}
       <p class="lsr-note">{data.hero.locationHook}</p>
     </div>
     {video ? (

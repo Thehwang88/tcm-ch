@@ -1,7 +1,7 @@
 // PRODUCTION — POST /api/anfrage → Resend email to termine@tcm.ch
 // Env var: RESEND_API_KEY (must be in the same Resend workspace as the verified tcm.ch domain)
 // Gemeinsames Kontaktformular (15.10.2026): Terminarten + Check-in-Freigaben aus src/data/kontakt-angebote.mjs.
-import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff, KAMPAGNEN } from '../../src/data/kontakt-angebote.mjs';
+import { OFFER_BY_ID, ZIELART_FUER, zielFuer, terminBetreff, KAMPAGNEN, HWANG_ZIEL } from '../../src/data/kontakt-angebote.mjs';
 const TO = 'termine@tcm.ch';
 const FROM = 'TCM.ch Anfrage <anfrage@tcm.ch>';
 
@@ -207,12 +207,15 @@ export async function onRequestPost({ request, env }) {
       // FIRST 30: Suffix am Ende des Betreffs (bestehender Formular-Präfix und Betreffaufbau bleiben unverändert).
       if (offer && offer.betreff) subject += offer.betreff;
     }
+    // Partnerpraxis-Routing (HWANG_ZIEL, 05.11.2026): Anfragen für Winterthur (Praxis Hwang) gehen an die Praxis, Kopie an termine@tcm.ch.
+    const hwang = d.standort_id && HWANG_ZIEL[d.standort_id];
     const body = {
       from: FROM,
-      to: [TO],
+      to: hwang ? [hwang.mail] : [TO],
       subject,
       html,
     };
+    if (hwang) body.cc = [TO];
     if (d.email && String(d.email).includes('@')) body.reply_to = d.email;
 
     const res = await fetch('https://api.resend.com/emails', {

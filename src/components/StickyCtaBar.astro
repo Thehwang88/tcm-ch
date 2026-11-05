@@ -112,6 +112,14 @@ const TEL = `tel:+${site.whatsapp}`;
     // Seiten mit eigener Sticky-Aktion und B2B-Seiten setzen stickyCta={false} am LayoutDe (-> data-no-sticky-cta).
     document.body.classList.add('scb-reserve');
     var primary = bar.querySelector('.scb-primary');
+    // Partner-Umleitung (Winterthur Marktgasse → Praxis Hwang, src/data/standorte.ts partnerUmleitung): Primär-CTA auf die
+    // Partner-URL, keine Formular-/Anker-Logik; Sichtbarkeit nach der generischen Hero-Regel unten. WA-/Tel-Buttons unverändert.
+    var ext = document.querySelector('[data-sticky-cta-href]');
+    if (primary && ext) {
+      primary.setAttribute('href', ext.getAttribute('data-sticky-cta-href')); primary.setAttribute('target', '_blank'); primary.setAttribute('rel', 'noopener');
+      for (var xi = 0; xi < primary.childNodes.length; xi++) { var xn = primary.childNodes[xi]; if (xn.nodeType === 3 && xn.textContent.trim()) { xn.textContent = ' ' + (ext.getAttribute('data-sticky-cta-label') || 'Termin anfragen') + ' '; break; } }
+      primary = null;
+    }
     // SG-Seiten: EIN Funnel-Wording ("Ersttermin anfragen"); Primärziel bleibt das Lead-Formular. Alle anderen Seiten unberührt.
     var sgPage = /^\/(standorte\/st-gallen|akupunktur-tcm-st-gallen|akupunktur-st-gallen-kosten)\/?$/.test(location.pathname);
     // Seiten mit freigegebenem TCM 360°-Check-in (CHECKIN_FREIGABE): SG-Seiten, seit 22.10.2026 beide Winterthurer und seit 02.11.2026 die drei Zürcher Standortseiten.

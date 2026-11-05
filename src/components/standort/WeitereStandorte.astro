@@ -1,19 +1,21 @@
 ---
 import type { Standort } from '../../data/standorte';
-import { clinics } from '../../data/locations';
+import { clinics, isRedirectedClinic, HWANG_WINTERTHUR_URL } from '../../data/locations';
 const { data } = Astro.props as { data: Standort };
 // Status aus src/data/locations.ts (clinic.status).
 const STATUS_HINWEIS = { planned: 'Eröffnung geplant', review: 'Standort in Prüfung' } as const;
 // vorVertrag-Standorte (Mietvertrag offen) werden nirgends verlinkt.
+// Umgeleitete Standorte (Winterthur Münzgasse = Praxis Hwang): Karte zeigt die Partnerpraxis mit externem Link.
 const items = (data.nearby ?? []).filter((n) => !clinics.find((c) => c.id === n.slug)?.vorVertrag).map((n) => {
+  if (isRedirectedClinic(n.slug)) return { ...n, city: 'Praxis Hwang Winterthur', desc: 'Partnerpraxis · Münzgasse 2', href: n.href ?? HWANG_WINTERTHUR_URL, label: 'Termin bei Hwang →' };
   const status = clinics.find((c) => c.id === n.slug)?.status ?? 'operational';
   const hinweis = status === 'operational' ? '' : STATUS_HINWEIS[status];
   const desc = hinweis && !/geplant|Vorbereitung|Prüfung|Eröffnung/i.test(n.desc) ? `${n.desc} · ${hinweis}` : n.desc;
-  return { ...n, desc, label: status === 'operational' ? 'Termin prüfen →' : 'Standort ansehen →' };
+  return { ...n, href: undefined as string | undefined, desc, label: status === 'operational' ? 'Termin prüfen →' : 'Standort ansehen →' };
 });
 ---
 <section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">
 {items.map((n) => (
-  <a class="city-card location-card" href={`/standorte/${n.slug}/`}>{n.plz && <span class="location-plz">{n.plz}</span>}<div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">{n.label}</span></a>
+  <a class="city-card location-card" href={n.href ?? `/standorte/${n.slug}/`} target={n.href ? '_blank' : undefined} rel={n.href ? 'noopener' : undefined}>{n.plz && <span class="location-plz">{n.plz}</span>}<div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">{n.label}</span></a>
 ))}
 </div></div></section>

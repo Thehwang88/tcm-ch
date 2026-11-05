@@ -80,7 +80,8 @@ export const clinics: Clinic[] = [
 
   { id: 'winterthur-marktgasse', name: 'Winterthur Marktgasse', city: 'Winterthur', region: 'Greater Zürich',
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
+    // Eröffnung 2027 (05.11.2026): keine Öffnungszeiten bis zur Eröffnung; Termine bis dahin in der Praxis Hwang (hwang.ch).
+    openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
     areaServed: ['Winterthur', 'Veltheim', 'Töss', 'Oberwinterthur', 'Seen', 'Wülflingen', 'Mattenbach', 'Hegi', 'Seuzach', 'Wiesendangen', 'Elsau', 'Neftenbach', 'Pfungen', 'Brütten', 'Hettlingen', 'Illnau-Effretikon'] },
 
   { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
@@ -142,7 +143,12 @@ export const clinics: Clinic[] = [
 ];
 
 /** Öffentlich verlinkbare Kliniken (ohne vorVertrag): Quelle für alle Listen, Navigationen, Formulare und hreflang-Paare. */
-export const publicClinics = clinics.filter((c) => !c.vorVertrag);
+/** Winterthur Münzgasse = Praxis Hwang (05.11.2026): 301 auf hwang.ch (public/_redirects), keine DE-/EN-Seite, keine Karten/Nearby/Nav/Team-Links.
+ *  Der Clinic-Datensatz bleibt (Formular-Ziel, Attribution, Fingerprints). Rückbau: Slug aus dem Set nehmen + Redirects entfernen. */
+export const HWANG_WINTERTHUR_URL = 'https://www.hwang.ch/standorte/winterthur';
+export const REDIRECTED_CLINICS = new Set(['winterthur-muenzgasse']);
+export const isRedirectedClinic = (id: string) => REDIRECTED_CLINICS.has(id);
+export const publicClinics = clinics.filter((c) => !c.vorVertrag && !REDIRECTED_CLINICS.has(c.id));
 
 // Conditions patients most commonly come for. Linked to the DE /beschwerden
 // deep pages for now (EN equivalents not built yet). ids = DE symptom slugs.

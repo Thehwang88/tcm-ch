@@ -26,7 +26,7 @@
 //   - publication 'Published' with editorial ≠ 'Approved' → FAIL (live page without approved copy)
 // Nothing auto-publishes: a status change is a reviewed commit.
 
-import { clinics, deStandortPath, enLocationPath, locationImages } from '../locations';
+import { clinics, deStandortPath, enLocationPath, locationImages, isRedirectedClinic } from '../locations';
 import { therapies, deTherapyPath, enTherapyPath, therapyImages } from '../therapies';
 import { conditions, deConditionPath, enConditionPath } from '../conditions';
 import { standorte } from '../standorte';
@@ -56,6 +56,8 @@ export interface LocalizationEntry {
   links: { parent?: string; related?: string[] };
   /** Clinical/medical copy on the page → changes need clinical review before Approved. */
   clinical: boolean;
+  /** Page is built but meta-noindex (e.g. Winterthur Marktgasse until the 2027 opening): not in the sitemap, gate tolerates noindex. */
+  noindex?: boolean;
   /** Free-form note (e.g. why a page is EN-only, or what Wave changed it). */
   note?: string;
 }
@@ -124,9 +126,11 @@ const staticEntries: LocalizationEntry[] = [
   },
 ];
 
-const locationEntries: LocalizationEntry[] = clinics.map((c) => {
+// Redirected clinics (Winterthur Münzgasse → hwang.ch, no DE/EN page) have no registry entry.
+const locationEntries: LocalizationEntry[] = clinics.filter((c) => !isRedirectedClinic(c.id)).map((c) => {
   const de = standorte[c.id];
   return {
+    ...(de?.noindex ? { noindex: true } : {}),
     id: `location:${c.id}`, type: 'location', intent: 'conversion',
     de: slash(deStandortPath(c.id)), en: enLocationPath(c.id),
     ...(c.vorVertrag ? { editorial: 'Missing' as EditorialStatus, publication: 'Unpublished' as PublicationStatus } : st(`location:${c.id}`)),

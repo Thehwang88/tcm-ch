@@ -24,7 +24,7 @@ export async function onRequest(context) {
   // Trailing-slash canonicalization: no-slash, extensionless paths -> 308 (permanent) to the
   // slash form. Replaces Cloudflare's default 307 so Google consolidates to the canonical.
   // Skip paths that _redirects already 301s (avoid a redirect chain); query string preserved.
-  const REDIRECT_ROOTS = ['/krankenkasse', '/partnerpraxen', '/zuerich-longevity', '/standorte/winterthur', '/krankenkassen/css'];
+  const REDIRECT_ROOTS = ['/krankenkasse', '/partnerpraxen', '/zuerich-longevity', '/standorte/winterthur', '/standorte/winterthur-muenzgasse', '/en/locations/winterthur-muenzgasse', '/krankenkassen/css'];
   const lastSeg = url.pathname.slice(url.pathname.lastIndexOf('/') + 1);
   const isRedirectSrc = REDIRECT_ROOTS.some((r) => url.pathname === r || url.pathname.startsWith(r + '/'));
   if (!url.pathname.endsWith('/') && !lastSeg.includes('.') && !isRedirectSrc) {
