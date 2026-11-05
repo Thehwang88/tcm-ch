@@ -179,7 +179,8 @@ const card = renderKontaktForm({
   .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
   .sgt-grid{display:flex;flex-direction:column;gap:20px}
   .sgt-aside{display:contents}
-  .sgt-aside-top{order:1}
+  /* Mobil/Tablet (06.11.2026): Foto, Adresse und Zeiten nicht vor dem Formular; «Über die Praxis» hat dieselben Angaben. Desktop: Seitenspalte. */
+  .sgt-aside-top{display:none}
   .sgt-main{order:2;min-width:0}
   .sgt-aside-bottom{order:3}
   .sgt-foto{margin:0 0 12px;border-radius:var(--r-card,16px);overflow:hidden;box-shadow:var(--sh-md)}
@@ -199,6 +200,7 @@ const card = renderKontaktForm({
   @media (min-width:1024px){
     .sgt-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start}
     .sgt-aside{display:block;position:sticky;top:calc(var(--header-h,76px) + 16px)}
+    .sgt-aside-top{display:block}
     .sgt-aside-top{margin-bottom:18px}
     .sgt-main{max-width:820px}
   }
