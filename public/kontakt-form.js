@@ -162,9 +162,11 @@
     // Vorauswahl (05.11.2026): frisches Formular → «Ersttermin mit Behandlung», sofern angeboten. Rein visuell/inhaltlich:
     // kein change-Event, kein dataLayer-Event. noDefault: ein nicht mehr verfügbarer Check-in wird nicht ersetzt.
     var rBeh = form.querySelector('input[name="terminart"][value="behandlung"]');
+    // Angebotsseiten (data-kf-default="checkin", SG): kostenloser Check-in als Standard; sonst Ersttermin mit Behandlung.
+    var rDef = form.querySelector('input[name="terminart"][value="' + (card.getAttribute('data-kf-default') || 'behandlung') + '"]') || rBeh;
     var noDefault = false;
     var usable = function (r) { var l = r && r.closest('.kf-opt'); return !!(r && !r.disabled && !(l && l.hidden)); };
-    var applyDefault = function () { if (noDefault || !usable(rBeh) || radios.some(function (x) { return x.checked; })) return; rBeh.checked = true; };
+    var applyDefault = function () { if (noDefault || !usable(rDef) || radios.some(function (x) { return x.checked; })) return; rDef.checked = true; };
     // Expliziter Check-in-Wunsch, der hier nicht verfügbar ist: KEINE (kostenpflichtige) Auswahl als scheinbare Erfüllung
     // stehen lassen. Auswahl lösen, Standard sperren (noDefault), Hinweis zeigen; Eingaben bleiben. Hinweis: globale Formulare
     // zeigen den bestehenden Standort-Hinweis (scopeNote), Formulare mit festem Standort den Hinweis an der Auswahl.

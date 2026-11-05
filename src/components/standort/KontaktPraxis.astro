@@ -6,11 +6,13 @@
 const { id = 'sg-kontakt-praxis', uspLabel = 'Darum TCM.ch St. Gallen' } = Astro.props as { id?: string; uspLabel?: string };
 const hasUsp = Astro.slots.has('usp');
 const hasInfo = Astro.slots.has('info');
+// Ohne Formular-Slot (SG: Buchung steht in der eigenen Kontaktsektion #termin): nur Praxisangaben, einspaltig.
+const hasForm = Astro.slots.has('form');
 ---
 {hasUsp && <section class="sgu" aria-label={uspLabel}><div class="sgu-wrap"><slot name="usp" /></div></section>}
-<section class="sgk" id={id}>
+<section class={`sgk${hasForm ? '' : ' sgk--noform'}`} id={id}>
   <div class="sgk-inner">
-    <div class="sgk-formcol"><slot name="form" /></div>
+    {hasForm && <div class="sgk-formcol"><slot name="form" /></div>}
     {hasInfo && <div class="sgk-info"><slot name="info" /></div>}
   </div>
 </section>
@@ -51,6 +53,7 @@ const hasInfo = Astro.slots.has('info');
     .sgk-formcol .kf { margin: 0; }
     /* Nur per JS gesetzt, wenn die ganze Box ins Fenster passt und die Sektion Scrollstrecke bietet. */
     .sgk-formcol.is-sticky { position: sticky; top: var(--sgk-top, 92px); }
+    .sgk--noform .sgk-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "info"; }
   }
 </style>
 <script is:inline>
