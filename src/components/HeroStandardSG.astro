@@ -1,14 +1,15 @@
 ---
 // Regulärer St.-Gallen-Hero (Angebotsausrichtung 05.11.2026: kostenloser TCM 360°-Check-in wie vor dem 1.10.).
 // Reihenfolge: gelber Angebotsbanner → Hero (Text links, gemeinsames Hero-Video rechts) → Kontaktsektion #termin nach dem
-// Muster von /kontakt/ (Titel, drei Karten, gemeinsames Kontaktformular) → USP-Reihe + Praxisangaben
-// («Über die Praxis» aus dem Leaf, standorte/[slug].astro). Die untere Leaf-Kontaktkarte und die OneDoc-Sektion
-// entfallen; #offer-form (Formularkarte) bleibt als Alias-Anker innerhalb von #termin.
+// Muster von /kontakt/ (Titel, drei Karten, OneDoc-Widget, gemeinsames Kontaktformular) → USP-Reihe + Praxisangaben
+// («Über die Praxis» aus dem Leaf, standorte/[slug].astro). Die untere Leaf-Kontaktkarte und die separate OneDoc-Sektion
+// entfallen; #offer-form (Formularkarte) und #online-buchen (Widget) bleiben als Alias-Anker innerhalb von #termin.
 // Bestehende Identifier bleiben: quelle=launch-hero-sg, Instanz sg-hero, Anker #first30 (alte Kampagnenlinks), #kf-sg-hero-fields;
-// Tracking (dataLayer-Events, phone_click/wa_click-Hooks) unverändert.
+// Tracking (dataLayer-Events, OneDoc-GA4-Embed, phone_click/wa_click-Hooks) unverändert.
 import { renderKontaktForm } from '../lib/kontakt-form';
 import KontaktPraxis from './standort/KontaktPraxis.astro';
 import HeroMedia from './standort/HeroMedia.astro';
+import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
 const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 // Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Kontaktkarte).
 const SG_WA = 'https://wa.me/41775236122?text=Hallo%2C%20ich%20habe%20eine%20Frage%20zur%20Behandlung%20in%20St.%20Gallen.';
@@ -29,8 +30,8 @@ const card = renderKontaktForm({
   // Terminart/Dauer/Kosten kommen ausschliesslich aus der serverseitigen Angebots-ID (anfrage.js), nie aus dem Formularnamen.
   quelle: 'launch-hero-sg', formName: 'Hero-Termin-StGallen', formular: 'Hero-Termin-StGallen',
   quelleDetail: 'Hero St. Gallen · reguläres Terminformular', seite: '/standorte/st-gallen/',
-  // Check-in zuerst + vorausgewählt, Button «Gratis Check-in anfragen» / «Ersttermin anfragen».
-  // Anrufen/WhatsApp stehen in den Karten; kein OneDoc-Embed, solange das Widget nicht zuverlässig lädt.
+  // Check-in zuerst + vorausgewählt, Button «Gratis Check-in anfragen» / «Ersttermin anfragen». OneDoc-Panel unter dem
+  // Formular entfällt (Widget steht direkt darüber); Anrufen/WhatsApp stehen in den Karten.
   wunschzeit: true, sitekey, headingTag: 'h3', onedocBeideTerminarten: true, ohneOnedocAlternative: true, checkinZuerst: true, ruhig: true, zusatzOffen: true,
 });
 ---
@@ -78,11 +79,11 @@ const card = renderKontaktForm({
       <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
     </div>
     <div class="sgt-channels">
-      <a class="sgt-ch sgt-ch--primary" href="#offer-form" data-kf-terminart="checkin" data-care-cta="termin-karte-checkin">
+      <a class="sgt-ch sgt-ch--primary" href="#online-buchen" data-care-cta="termin-karte-checkin">
         <span class="sgt-ch-label">Am schnellsten</span>
         <span class="sgt-ch-title">Gratis Check-in buchen</span>
-        <span class="sgt-ch-sub">30 Min, CHF 0. Wir melden uns persönlich zur Terminbestätigung.</span>
-        <span class="sgt-ch-go">Check-in anfragen <span aria-hidden="true">→</span></span>
+        <span class="sgt-ch-sub">30 Min, CHF 0, Termin bei Corinna sofort sichtbar.</span>
+        <span class="sgt-ch-go">Termin wählen <span aria-hidden="true">→</span></span>
       </a>
       <a class="sgt-ch" href="tel:+41775236122" data-kf-tel data-care-cta="termin-karte-tel">
         <span class="sgt-ch-label">Anrufen</span>
@@ -96,6 +97,14 @@ const card = renderKontaktForm({
         <span class="sgt-ch-sub">Schildere dein Anliegen, wir antworten persönlich.</span>
         <span class="sgt-ch-go">WhatsApp öffnen <span aria-hidden="true">→</span></span>
       </a>
+    </div>
+    <div class="sgt-onedoc" id="online-buchen">
+      <div class="sgt-od-head">
+        <h3 class="sgt-od-h">Online buchen</h3>
+        <p class="sgt-od-sub">Wähle im Buchungsfenster «Kostenloser TCM 360°-Check-in» als Behandlungsgrund. Bestätigung sofort per E-Mail.</p>
+      </div>
+      <Fragment set:html={ONEDOC_SG_WIDGET} />
+      <p class="sgt-od-fallback">Buchungsfenster bleibt leer? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener">Direkt bei OneDoc öffnen <span aria-hidden="true">→</span></a></p>
     </div>
     {SG_ZITATE.length > 0 && (
       <ul class="sgt-quotes" aria-label="Google-Bewertungen">
@@ -134,7 +143,7 @@ const card = renderKontaktForm({
   .lsr-google a:hover{text-decoration:underline}
   .lsr-stars{color:#F4B400;letter-spacing:.04em;font-size:15px}
 
-  /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, Formular. */
+  /* Kontaktsektion #termin (Muster /kontakt/): Titel, drei Karten, OneDoc, Formular. */
   .sgt-anchor{display:block;height:0;scroll-margin-top:var(--header-h,76px)}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
   .sgt-wrap{max-width:1024px;margin:0 auto}
@@ -156,6 +165,13 @@ const card = renderKontaktForm({
   .sgt-ch--primary .sgt-ch-sub{color:rgba(255,255,255,.82)}
   .sgt-ch--primary .sgt-ch-go{color:var(--brand,#1AE288)}
   .sgt-ch--primary:hover{border-color:var(--brand,#1AE288)}
+  .sgt-onedoc{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:20px 20px 12px;margin-bottom:24px;scroll-margin-top:calc(var(--header-h,76px) + 12px)}
+  .sgt-od-head{margin-bottom:10px}
+  .sgt-od-h{margin:0 0 4px;font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--black)}
+  .sgt-od-sub{margin:0;font-size:14.5px;line-height:1.5;color:var(--mid)}
+  .sgt-onedoc .od-widget{display:block;min-height:400px}
+  .sgt-od-fallback{margin:8px 0 0;font-size:14px;color:var(--mid)}
+  .sgt-od-fallback a{color:var(--blue);font-weight:700;text-decoration:none}
   .sgt-quotes{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
   .sgt-quotes li{background:#fff;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:16px 18px;font-size:15px;line-height:1.55;color:var(--black)}
   .sgt-quotes .lsr-stars{display:block;margin-bottom:6px}
@@ -167,7 +183,7 @@ const card = renderKontaktForm({
   /* Check-in ist die erste Kachel: dezentes Mint dort statt bei der Erstbehandlung. */
   .sgt .kf--ruhig .kf-opt--behandlung,.sgt .kf--ruhig .kf-opt--behandlung.is-checked{background:#fff}
   .sgt .kf--ruhig .kf-opt--checkin,.sgt .kf--ruhig .kf-opt--checkin.is-checked{background:#F7FCF9}
-  @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}}
+  @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
   // Ads-Parameter ?t=…: Zeile unter dem Hero, Anliegen-Vorbelegung, dataLayer-Variable therapy (nur bekannte Werte; nie Nutzertext).
