@@ -12,7 +12,8 @@ import HeroMedia from './standort/HeroMedia.astro';
 import { ONEDOC_SG_WIDGET, ONEDOC_SG_WIDGET_URL } from '../data/onedoc-sg';
 import { getTherapeut } from '../data/therapeuten';
 // Linke Spalte der Kontaktsektion (05.11.2026): Praxisfoto, Adresse, Öffnungszeiten (wie FAQ/Schema), Team (Corinna, Astrid), GBP, Zitate.
-const SG_TEAM = ['corinna-reinhart', 'astrid-lenggenhager'].map((slug) => { const t = getTherapeut(slug); if (!t) throw new Error(`HeroStandardSG: Therapeut:in ${slug} fehlt`); return { name: t.name, bild: t.bild, rolle: 'Naturheilpraktikerin TCM' }; });
+const SG_TEAM = ['corinna-reinhart', 'astrid-lenggenhager'].map((slug) => { const t = getTherapeut(slug); if (!t) throw new Error(`HeroStandardSG: Therapeut:in ${slug} fehlt`); return { name: t.name, bild: t.bild || '', initialen: t.name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2), rolle: 'Naturheilpraktikerin TCM' }; });
+// Ohne hinterlegtes Foto (z. B. Astrid, kein Bild in therapeuten.ts): Initialen-Avatar statt leerem <img>.
 const SG_HOURS = [['Mo–Sa', '7:30–19:30 Uhr'], ['So', '8:00–17:00 Uhr']];
 const { sitekey, uspHtml = '', praxisHtml = '' } = Astro.props;
 // Kanonisches SG-WhatsApp-Ziel mit neutralem Nachrichtentext (Hero-Textlink und Kontaktkarte).
@@ -89,7 +90,7 @@ const card = renderKontaktForm({
       </div>
       <div class="sgt-aside-bottom">
         <ul class="sgt-team" aria-label="Team St. Gallen">
-          {SG_TEAM.map((t) => <li><img src={t.bild} alt={t.name} width="48" height="48" loading="lazy" decoding="async"><span><strong>{t.name}</strong><small>{t.rolle}</small></span></li>)}
+          {SG_TEAM.map((t) => <li>{t.bild ? <img src={t.bild} alt={t.name} width="48" height="48" loading="lazy" decoding="async"> : <span class="sgt-team-init" aria-hidden="true">{t.initialen}</span>}<span><strong>{t.name}</strong><small>{t.rolle}</small></span></li>)}
         </ul>
     {SG_ZITATE.length > 0 && (
       <ul class="sgt-quotes" aria-label="Google-Rezensionen">
@@ -185,7 +186,8 @@ const card = renderKontaktForm({
   .sgt-hours dd{margin:0}
   .sgt-team{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:12px 22px}
   .sgt-team li{display:flex;align-items:center;gap:10px}
-  .sgt-team img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0}
+  .sgt-team img,.sgt-team-init{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0}
+  .sgt-team-init{display:inline-flex!important;align-items:center;justify-content:center;background:var(--brand-black,#020B10);color:var(--brand,#1AE288);font-weight:800;font-size:15px;letter-spacing:.02em;flex-direction:row!important}
   .sgt-team span{display:flex;flex-direction:column;line-height:1.25}
   .sgt-team strong{font-size:15px;color:var(--black)}
   .sgt-team small{font-size:12.5px;color:var(--mid)}
