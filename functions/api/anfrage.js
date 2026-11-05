@@ -46,9 +46,9 @@ export async function onRequestPost({ request, env }) {
     let offer = null;
     const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
     // Gemeinsames Kontaktformular (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG, VORMERKUNG, STANDORT_ANFRAGE, ROUTING_ANFRAGE).
-    // Pflicht ist NUR eine gültige Telefonnummer plus ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
+    // Pflicht: Name, eine gültige Telefonnummer und ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
     // die Angebots-ID muss zur Zielart passen (Vormerkung/Anfrage/Routing nie als Behandlung, Check-in nur für das
-    // freigegebene reguläre Ziel). Name, E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert.
+    // freigegebene reguläre Ziel). Name Pflicht (seit 05.11.2026); E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert.
     const neu = offerId ? OFFER_BY_ID[offerId] : null;
     if (neu) {
       const ort = String(d.standort || '').trim();
@@ -58,6 +58,10 @@ export async function onRequestPost({ request, env }) {
       if (d.standort_id != null && String(d.standort_id).trim() !== ziel.id) return J({ error: 'invalid_standort' }, 422);
       if (ZIELART_FUER[neu.terminart] !== ziel.art || (neu.terminart === 'checkin' && !ziel.checkin)) return J({ error: 'invalid_offer_scope' }, 422);
       d.standort_id = ziel.id;
+      // Name Pflicht (05.11.2026): ein Feld, nach Trimmen nicht leer, keine Wortanzahl-Regel. Nur dieser Pfad
+      // (gemeinsames Patientenformular); Wartelisten, Akademie/Club, Partner und Zürich-Funnel unverändert.
+      d.name = d.name != null ? String(d.name).trim() : '';
+      if (!d.name) return J({ error: 'missing_name' }, 422);
       if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
       if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
       // Interne Termindisposition: Carlos reserviert für SG-Erstbehandlungen 90 Minuten.

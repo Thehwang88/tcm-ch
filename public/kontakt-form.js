@@ -81,7 +81,7 @@
       if (el && name !== 'terminart') { if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
       if (box) { box.textContent = msg || ''; box.hidden = !msg; }
     }
-    function clearErrs() { ['terminart', 'standort', 'telefon', 'email'].forEach(function (n) { fieldErr(n, ''); }); if (errBox) errBox.hidden = true; }
+    function clearErrs() { ['terminart', 'standort', 'name', 'telefon', 'email'].forEach(function (n) { fieldErr(n, ''); }); if (errBox) errBox.hidden = true; }
 
     function sync() {
       var tg = target(); var nonTreat = !!(tg && tg.art !== 'behandlung');
@@ -354,6 +354,9 @@
       if (!t && tg) fail('terminart', 'Bitte wähle aus, wie wir dir helfen können.');
       else if (!t) { /* Standort fehlt: Kacheln erst nach Standortwahl relevant */ }
       else if (t === 'checkin' && !checkinAllowed()) fail('terminart', 'Der kostenlose TCM-Check-in ist derzeit nur in ' + scopeNames + ' verfügbar.');
+      // Name Pflicht (ein Feld, nach Trimmen nicht leer; keine Wortanzahl-Regel). Fehlerreihenfolge = sichtbare Reihenfolge.
+      var nmEl = form.querySelector('[name="name"]');
+      if (nmEl && nmEl.required && !nmEl.value.trim()) fail('name', 'Bitte gib deinen Namen an.');
       var tel = form.querySelector('[name="telefon"]').value.trim();
       if (!tel) fail('telefon', 'Bitte gib deine Telefonnummer an.');
       else if (!phoneOk(tel)) fail('telefon', 'Bitte prüfe deine Telefonnummer (z. B. +41 79 123 45 67).');
@@ -412,7 +415,7 @@
           if (window.turnstile && tsEl) { try { window.turnstile.reset(tsEl); } catch (e3) {} }
           var code = String(err && err.message || '');
           if (errBox) {
-            errBox.textContent = code === 'invalid_phone' ? 'Bitte prüfe deine Telefonnummer.' : code === 'invalid_email' ? 'Bitte prüfe deine E-Mail-Adresse.'
+            errBox.textContent = code === 'missing_name' ? 'Bitte gib deinen Namen an.' : code === 'invalid_phone' ? 'Bitte prüfe deine Telefonnummer.' : code === 'invalid_email' ? 'Bitte prüfe deine E-Mail-Adresse.'
               : code === 'invalid_offer_scope' ? 'Diese Anfrageart ist für den gewählten Standort nicht verfügbar.'
               : code === 'invalid_standort' || code === 'missing_standort' ? 'Bitte wähle einen Standort aus der Liste.'
               : 'Das hat gerade nicht geklappt. Bitte versuch es nochmals oder ruf uns an.';
