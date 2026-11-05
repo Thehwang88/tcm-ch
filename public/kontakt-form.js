@@ -114,7 +114,8 @@
           });
         }
         if (scopeNote) scopeNote.hidden = ok || !o || nonTreat;
-        if (!ok && rCheckin.checked) { rCheckin.checked = false; return sync(); }
+        // Gewählter Check-in am neuen Ziel nicht verfügbar: Auswahl lösen, Hinweis zeigen, NIE still durch den Ersttermin ersetzen.
+        if (!ok && rCheckin.checked) { rCheckin.checked = false; noDefault = true; return sync(); }
       }
       // SG-Seite (data-kf-od-mode="sg"): beide Terminarten über OneDoc; EIN Element: ohne Auswahl sekundärer Link,
       // mit Auswahl Hauptbutton. Spezifische Beschriftung nur mit verifiziertem Direktlink, sonst neutral + gemeinsame Auswahl.
@@ -158,8 +159,14 @@
         telText.textContent = tel; telBtn.setAttribute('href', 'tel:' + tel.replace(/[^\d+]/g, ''));
       }
     }
-    radios.forEach(function (r) { r.addEventListener('change', function () { fieldErr('terminart', ''); sync(); }); });
-    if (sel) sel.addEventListener('change', function () { fieldErr('standort', ''); sync(); });
+    // Vorauswahl (05.11.2026): frisches Formular → «Ersttermin mit Behandlung», sofern angeboten. Rein visuell/inhaltlich:
+    // kein change-Event, kein dataLayer-Event. noDefault: ein nicht mehr verfügbarer Check-in wird nicht ersetzt.
+    var rBeh = form.querySelector('input[name="terminart"][value="behandlung"]');
+    var noDefault = false;
+    var usable = function (r) { var l = r && r.closest('.kf-opt'); return !!(r && !r.disabled && !(l && l.hidden)); };
+    var applyDefault = function () { if (noDefault || !usable(rBeh) || radios.some(function (x) { return x.checked; })) return; rBeh.checked = true; };
+    radios.forEach(function (r) { r.addEventListener('change', function () { noDefault = false; fieldErr('terminart', ''); sync(); }); });
+    if (sel) sel.addEventListener('change', function () { fieldErr('standort', ''); sync(); applyDefault(); sync(); });
 
     // ── Prefill (einmalig beim Laden; spätere Kachelwechsel überschreiben keine Eingaben) ──
     var q = qs();
@@ -181,6 +188,9 @@
       var r0 = form.querySelector('input[name="terminart"][value="' + explicit + '"]');
       if (r0 && !radios.some(function (x) { return x.checked; })) { r0.checked = true; }
     }
+    // Expliziter Check-in-Wunsch, den dieses Formular nicht anbietet: kein stiller Ersatz durch den Ersttermin.
+    if (explicit === 'checkin' && !rCheckin) noDefault = true;
+    applyDefault();
     if (card.getAttribute('data-kf-autoprefill') === 'terminform') {
       // Port aus TerminForm.astro: 1. data-prefill (Anliegen), 2. ?von=, 3. same-origin Referrer.
       var ta = form.querySelector('textarea[name="anliegen"]'); var qh = form.querySelector('input[name="quelle"]');
@@ -222,14 +232,6 @@
     var animIn = function (box) { box.classList.remove('kf-anim'); void box.offsetWidth; box.classList.add('kf-anim'); };
     var showRr = function (anim) { if (!rrBtn || !rrBox) return; var was = rrBox.hidden; setOpen(rrBtn, rrBox, true); rrBtn.hidden = true; if (anim === true && was) animIn(rrBox); };
     var openFor = function (el) { if (!el) return; if (rrBox && rrBox.contains(el)) showRr(true); if (optBox && optBox.contains(el)) setOpen(optBtn, optBox, true); };
-    var telIn = form.querySelector('[name="telefon"]');
-    // Telefon fokussieren und unter dem Sticky-Header bzw. über unteren Sticky-Leisten sichtbar halten.
-    var reveal = function (el) {
-      var box = (el.closest && el.closest('.kf-field')) || el, r = box.getBoundingClientRect();
-      var top = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 76) + 16;
-      if (r.top < top || r.bottom > innerHeight - 96) window.scrollTo(0, Math.max(0, scrollY + r.top - top));
-    };
-    var openRr = function (focusTel) { showRr(true); if (focusTel && telIn) setTimeout(function () { telIn.focus({ preventScroll: true }); reveal(telIn); }, 60); };
     // Vorausgefüllte optionale Angaben nie unsichtbar verstecken: dann optionale Angaben (und ggf. Rückruf) offen.
     var prefilled = optBox && [].some.call(optBox.querySelectorAll('input,textarea'), function (x) { var v = (x.value || '').trim(); return v !== '' && v !== x.getAttribute('data-kf-generisch'); });
     if (optBtn && optBox) {
@@ -248,27 +250,97 @@
       rrBtn.addEventListener('click', function () { showRr(true); rrBox.focus({ preventScroll: true }); });
       rrBox.addEventListener('animationend', function () { rrBox.classList.remove('kf-anim'); });
     }
-    // Kompakte Karte: Anfrage-Anker (#offer-form, Feldanker #kf-…-fields, alte Kampagnenanker davor) öffnen ggf. den
-    // Rückruf-Bereich und fokussieren Telefon unter dem fixen Header (auch bei dauerhaft offenem Bereich).
+    // ── CTA-Navigation (05.11.2026): Anker dieses Formulars, openContactForm() und Sticky-Leiste führen über goTo().
+    // Erst Auswahl nach Regel (explizit: behandlung/checkin, sofern hier verfügbar; generisch: gültige Wahl behalten,
+    // sonst Ersttermin), dann EIN Scroll zum Beginn des relevanten Bereichs unter dem fixen Header: Standort fehlt →
+    // Standortwahl; Behandlungsziel → «Terminart wählen» + Anfang der gewählten Kachel; sonst Zielhinweis. Kein Fokus auf
+    // Eingabefelder (keine Tastatur); Fokus auf Gruppe/Überschrift mit preventScroll. Keine Events, kein Versand.
     var fieldsBox = form.querySelector('.kf-fields');
-    if (card.classList.contains('kf--kompakt') && fieldsBox) {
-      var anchors = ['#' + card.id, '#' + fieldsBox.id]; var prev = card.previousElementSibling;
-      while (prev && prev.classList.contains('kf-compat-anchor')) { anchors.push('#' + prev.id); prev = prev.previousElementSibling; }
-      var isOurs = function (h) { return anchors.indexOf(h) >= 0; };
-      document.addEventListener('click', function (e) {
-        var a = e.target && e.target.closest ? e.target.closest('a[href*="#"]') : null; if (!a) return;
-        var u; try { u = new URL(a.getAttribute('href'), location.href); } catch (x) { return; }
-        if (u.pathname === location.pathname && isOurs(u.hash)) openRr(true);
+    var shown = function (el) { return !!(el && !el.hidden && el.getClientRects().length); };
+    var reduce = function () { try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (x) { return false; } };
+    // Volle Höhe des fixen Headers, auch wenn er gerade weggeblendet ist (mobil: blendet beim Runterscrollen aus, beim
+    // Hochscrollen wieder ein) → das Ziel landet nie unter dem Header, unabhängig von der Scrollrichtung.
+    var headerBottom = function () {
+      var b = 0;
+      [].forEach.call(document.querySelectorAll('#mainNav, header, .site-header'), function (h) {
+        var p = getComputedStyle(h).position; if (p !== 'fixed' && p !== 'sticky') return;
+        var r = h.getBoundingClientRect(); if (r.height > 0 && r.top <= 1 && r.height < innerHeight / 2 && r.height > b) b = r.height;
       });
-      window.addEventListener('hashchange', function () { if (isOurs(location.hash)) openRr(true); });
-      if (isOurs(location.hash) || (legacyFirst30 && ft && location.hash !== '#first30-kontakt')) openRr(isOurs(location.hash));
+      return b;
+    };
+    var navTarget = function () {
+      var head = card.querySelector('.kf-h');
+      if (sel && !opt()) return { el: sel.closest('.kf-field') || sel, focus: head || sel.closest('.kf-field') };
+      if (opts && shown(opts)) {
+        var cur = radios.filter(function (x) { return x.checked; })[0];
+        return { el: [taH, form.querySelector('.kf-intro')].filter(shown)[0] || opts, focus: opts, tile: cur && cur.closest('.kf-opt') };
+      }
+      if (zielBox && shown(zielBox)) return { el: zielBox, focus: zielBox };
+      return { el: form, focus: head };
+    };
+    var desiredY = function (t) {
+      var top = headerBottom() + 12, er = t.el.getBoundingClientRect(), y = scrollY + er.top - top;
+      // Sehr niedrige Viewports: Anfang der gewählten Kachel muss sichtbar sein (über unteren Sticky-Leisten).
+      if (t.tile) { var tr = t.tile.getBoundingClientRect(); if (tr.top - er.top + top + 48 > innerHeight - 96) y = scrollY + tr.top - top; }
+      return Math.max(0, Math.min(Math.round(y), document.documentElement.scrollHeight - innerHeight));
+    };
+    var navSeq = 0;
+    var goTo = function (smooth) {
+      var my = ++navSeq, t = navTarget();
+      if (t.focus) { if (!t.focus.hasAttribute('tabindex')) t.focus.setAttribute('tabindex', '-1'); try { t.focus.focus({ preventScroll: true }); } catch (x) {} }
+      var beh = smooth && !reduce() ? 'smooth' : 'instant';
+      var go = function (b) { try { window.scrollTo({ top: desiredY(t), behavior: b }); } catch (x) { window.scrollTo(0, desiredY(t)); } };
+      // Nachkorrektur, falls nachladende Inhalte das Ziel während des Scrollens verschoben haben (sofort, kein zweiter Smooth-Sprung).
+      var fix = function () { if (my === navSeq && Math.abs(desiredY(t) - scrollY) > 2) go('instant'); };
+      go(beh);
+      if (beh === 'smooth') {
+        var fin = function () { window.removeEventListener('scrollend', fin); clearTimeout(tm); if (my === navSeq) { fix(); card.setAttribute('data-kf-nav', String(my)); } };
+        var tm = setTimeout(fin, 1500); window.addEventListener('scrollend', fin);
+      } else requestAnimationFrame(function () { fix(); card.setAttribute('data-kf-nav', String(my)); });
+    };
+    var applyWish = function (wish) {
+      var tg = target();
+      if (tg && tg.art !== 'behandlung') { sync(); return; } // Vormerkung/Routing/Prüfung: eigener Ablauf, keine Kachel aktivieren
+      if (wish === 'behandlung' || wish === 'checkin') {
+        var r = form.querySelector('input[name="terminart"][value="' + wish + '"]');
+        if (usable(r)) { r.checked = true; noDefault = false; fieldErr('terminart', ''); }
+        // Nicht verfügbar: bestehende Auswahl/Hinweis bleibt; kein stiller Ersatz durch den Ersttermin.
+        else if (wish === 'checkin' && !radios.some(function (x) { return x.checked; })) noDefault = true;
+      } else applyDefault();
+      sync(); if (radios.some(function (x) { return x.checked; })) showRr();
+    };
+    // Eigene Anker: Karte, Felder, alte Kampagnenanker davor und umschliessende Elemente bis zur eigenen <section>,
+    // solange sie nur dieses Formular enthalten (z. B. #kontakt, #home-contact-form). Mehrere Formulare bleiben getrennt.
+    var anchors = [card.id, fieldsBox && fieldsBox.id];
+    for (var pv = card.previousElementSibling; pv && pv.classList.contains('kf-compat-anchor'); pv = pv.previousElementSibling) anchors.push(pv.id);
+    for (var up = card.parentElement; up && up !== document.body; up = up.parentElement) {
+      if (up.querySelectorAll('[data-kf]').length !== 1) break;
+      if (up.id) anchors.push(up.id);
+      if (up.tagName === 'SECTION') break;
+    }
+    anchors = anchors.filter(Boolean).map(function (x) { return '#' + x; });
+    var isOurs = function (h) { return !!h && anchors.indexOf(h) >= 0; };
+    var hashWish = function (h) { return /^#first30/.test(h || '') ? 'checkin' : ''; };
+    card.__kfGoto = function (wish, smooth) { applyWish(wish || ''); goTo(smooth !== false); };
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target && e.target.closest ? e.target.closest('a[href*="#"]') : null; if (!a) return;
+      var u; try { u = new URL(a.getAttribute('href'), location.href); } catch (x) { return; }
+      if (u.origin !== location.origin || u.pathname !== location.pathname || !isOurs(u.hash)) return;
+      e.preventDefault();
+      if (location.hash !== u.hash) { try { history.pushState(null, '', u.pathname + u.search + u.hash); } catch (x) {} }
+      var wish = a.getAttribute('data-kf-terminart') || (a.getAttribute('data-offer') === 'first30' ? 'checkin' : '') || u.searchParams.get('terminart') || hashWish(u.hash);
+      card.__kfGoto(wish, true);
+    });
+    window.addEventListener('hashchange', function () { if (isOurs(location.hash)) card.__kfGoto(hashWish(location.hash), true); });
+    // Direkteinstieg/Reload mit eigenem Anker: Auswahl steht (Prefill oben), nach dem Laden einmal ohne Animation ausrichten.
+    if (isOurs(location.hash)) {
+      var initGo = function () { requestAnimationFrame(function () { goTo(false); }); };
+      if (document.readyState === 'complete') initGo(); else window.addEventListener('load', initGo, { once: true });
     }
 
     var toFields = form.querySelector('[data-kf-to-fields]');
-    if (toFields) toFields.addEventListener('click', function (e) {
-      e.preventDefault(); var f = document.getElementById('kf-' + inst + '-fields'); var tel = form.querySelector('[name="telefon"]');
-      if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (tel) setTimeout(function () { tel.focus({ preventScroll: true }); }, 350);
-    });
+    if (toFields) toFields.addEventListener('click', function (e) { e.preventDefault(); card.__kfGoto('', true); });
     if (odBtn) odBtn.addEventListener('click', function () { push({ event: 'onedoc_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId(), terminart: effType() || 'keine' }); });
     if (telBtn) telBtn.addEventListener('click', function () { push({ event: 'phone_click', quelle: 'kontaktformular', form_instance: inst, standort: standortId() }); });
 
@@ -352,5 +424,11 @@
 
   function boot() { [].forEach.call(document.querySelectorAll('[data-kf]'), init); }
   window.kfInit = boot;
+  /** CTA-Navigation von aussen (openContactForm, Sticky-Leiste): Element = Karte [data-kf] oder ein Container mit genau
+   *  dieser Karte. o.terminart: 'behandlung' | 'checkin' (explizit) oder leer (generisch). true, wenn behandelt. */
+  window.kfGoto = function (el, o) {
+    var c = el && el.matches && el.matches('[data-kf]') ? el : el && el.querySelector ? el.querySelector('[data-kf]') : null;
+    if (!c || !c.__kfGoto) return false; o = o || {}; c.__kfGoto(o.terminart || '', o.smooth !== false); return true;
+  };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

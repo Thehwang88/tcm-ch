@@ -162,6 +162,8 @@ const TEL = `tel:+${site.whatsapp}`;
       var h = f.querySelector('input[name="quelle"]');
       if (!h) { h = document.createElement('input'); h.type = 'hidden'; h.name = 'quelle'; f.appendChild(h); }
       h.value = location.pathname || '/';
+      // Gemeinsames Kontaktformular: generische CTA (gültige Wahl bleibt, sonst Ersttermin), Ziel «Terminart wählen» bzw. Standortwahl.
+      if (window.kfGoto && window.kfGoto(form)) return;
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 

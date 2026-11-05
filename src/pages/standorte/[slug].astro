@@ -297,6 +297,10 @@ if (migrated) {
         .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="btn-primary" data-offer="first30">${giftLabel}</a>`)
         .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join(`<a href="#kontakt" class="sgcta-free" data-offer="first30">${giftLabel}</a>`);
     }
+    // Angebotsspezifische CTAs «Ersttermin anfragen» → explizit Ersttermin mit Behandlung (kontakt-form.js, data-kf-terminart).
+    sgBody = sgBody
+      .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join('<a href="#offer-form" class="btn-primary" data-kf-terminart="behandlung">Ersttermin anfragen</a>')
+      .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join('<a href="#offer-form" class="sgcta-free" data-kf-terminart="behandlung">Ersttermin anfragen</a>');
     // Gemeinsames Kontaktformular (15.10.2026) ersetzt die untere Leaf-Karte (#kontakt); Hero-Formular: HeroStandardSG.
     // Bestehende Identifier: quelle=sg-kontakt-bottom, Wunschzeit; Anker #kontakt (Sektion) + #first30-kontakt (alte Links).
     sgBody = upgradeLegacyForms(sgBody, { path: '/standorte/st-gallen/', standortId: 'st-gallen', instancePrefix: 'sg-unten',

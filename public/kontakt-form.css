@@ -13,6 +13,8 @@
 .kf-transition{background:var(--kf-mint);border:1px solid var(--kf-mint-line);border-radius:12px;padding:10px 12px;font-size:15px;line-height:1.45;margin:0 0 14px;font-weight:600}
 .kf-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .kf-opts{border:0;margin:0 0 4px;padding:0;min-width:0;display:grid;gap:10px}
+/* CTA-Navigation: programmatischer Fokus auf Gruppe/Überschrift (tabindex=-1, kein Eingabefeld) ohne Fokusrahmen. */
+.kf-opts:focus,.kf .kf-h:focus,.kf-ziel:focus,.kf-field[tabindex="-1"]:focus{outline:none}
 .kf-opt{position:relative;display:block;cursor:pointer;border:1.5px solid var(--kf-line);border-radius:16px;background:#fff;padding:14px 48px 14px 14px;transition:border-color .15s ease,box-shadow .15s ease}
 .kf-opt--checkin{background:var(--kf-mint);border-color:var(--kf-mint-line);padding:16px 48px 16px 16px}
 .kf-radio{position:absolute;top:16px;right:14px;width:24px;height:24px;margin:0;accent-color:var(--kf-ink);cursor:pointer}

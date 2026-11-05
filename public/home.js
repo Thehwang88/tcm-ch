@@ -16,6 +16,8 @@ function openContactForm(prefillBeschwerde, prefillStandort){
     if(sel && typeof window.kfPickOption==='function' && sel.closest('[data-kf]')){ var _k=window.kfPickOption(sel,prefillStandort); if(_k>0){ sel.selectedIndex=_k; sel.dispatchEvent(new Event('change')); } }
     else if(sel){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===prefillStandort){ sel.selectedIndex=i; break; } } }
   }
+  // Gemeinsames Kontaktformular: Auswahlregel + Scroll zu Standortwahl/Terminart unter dem Header, ohne Feldfokus (kontakt-form.js).
+  if(typeof window.kfGoto==='function' && window.kfGoto(t)) return;
   t.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
