@@ -83,7 +83,7 @@ export const clinicById = (id: string) => clinics.find((c) => c.id === id);
 /** Patientenwortlaut des kostenlosen 30-Minuten-Check-ins für St. Gallen (TCM-360°-Vorteile im regulären Check-in, 21.10.2026).
  *  Backend-Label/Klassifikation bleibt TERMINARTEN.checkin.label; andere Flächen behalten den bisherigen Wortlaut. */
 /** Standortübergreifender Wortlaut des kostenlosen TCM 360°-Check-ins (alle Standorte in CHECKIN_FREIGABE). */
-export const CHECKIN_360 = { t: 'Kostenloser TCM 360°-Check-in', dur: `${TERMINARTEN.checkin.dauerMin} Minuten · CHF 0.–`, d: 'Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.', note: 'Ohne Behandlung. Unverbindlich.' } as const;
+export const CHECKIN_360 = { t: 'Kostenloser TCM 360°-Check-in', dur: `${TERMINARTEN.checkin.dauerMin} Minuten`, d: 'Persönlicher TCM-Kurzcheck mit Zungen- und Pulsdiagnostik, Zeit für deine Fragen und Krankenkassen-Check.', note: 'Ohne Behandlung. Unverbindlich.' } as const;
 export const CHECKIN_TITEL = CHECKIN_360.t;
 export const checkinFreigegeben = (id?: string) => !!id && Object.prototype.hasOwnProperty.call(CHECKIN_FREIGABE, id);
 const onedocFor = (id?: string) => (id && (ONEDOC as Record<string, { href: string; anchor: string; direkt?: { checkin: string | null; behandlung: string | null } }>)[id]) || null;
