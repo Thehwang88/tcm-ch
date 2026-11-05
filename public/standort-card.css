@@ -1,0 +1,45 @@
+/* Zentrale Standortkarte (src/lib/standort-card.ts · src/components/StandortCard.astro), 05.11.2026.
+   Varianten: .sc--hero (Home, /standorte/ Stufe 1+2) · .sc--kompakt (Stufe 3, Praxen in der Nähe, Therapie-/Beschwerden-Seiten)
+   · .sc--inline (Footer, Nearby-Listen). Grid: .sc-grid--2/3/4. Tokens mit Fallbacks, damit DE- und EN-Shell gleich aussehen. */
+.sc-grid{display:grid;gap:14px;align-items:stretch}
+.sc-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sc-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sc-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.sc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border,#e5e5e5);border-radius:var(--r-card,16px);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+.sc:hover{border-color:var(--blue,#2D9B6F);box-shadow:var(--sh-card,0 8px 24px rgba(2,11,16,.08));transform:translateY(-2px)}
+.sc--hero{min-height:200px}
+.sc-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.sc-body{display:flex;flex-direction:column;gap:8px;padding:18px 18px 16px;flex:1}
+.sc--kompakt .sc-body{gap:6px;padding:14px 14px 12px}
+.sc-title{display:flex;align-items:center;gap:8px;font-size:clamp(24px,2vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--black,#0d0d0d)}
+.sc--kompakt .sc-title{font-size:18px;gap:6px}
+.sc-pin{flex-shrink:0;width:20px;height:20px;color:var(--blue,#2D9B6F)}
+.sc--kompakt .sc-pin,.sc--inline .sc-pin{width:16px;height:16px}
+.sc-sub{font-size:15px;color:var(--mid,#4a4a4a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc--kompakt .sc-sub{font-size:14px}
+.sc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.sc-chip{font-size:12.5px;font-weight:700;line-height:1.2;color:var(--black,#0d0d0d);border:1px solid var(--border,#e5e5e5);border-radius:999px;padding:5px 10px;background:#fff}
+.sc--kompakt .sc-chip{font-size:11.5px;padding:4px 8px}
+.sc-chip--gelb{background:#FFD84D;border-color:#FFD84D;color:#111}
+.sc-btn{margin-top:auto;display:flex;justify-content:center;align-items:center;gap:6px;background:var(--brand-black,#020B10);color:#fff;border-radius:999px;padding:13px 16px;font-size:15.5px;font-weight:800;line-height:1.2;transition:background-color .15s ease}
+.sc--kompakt .sc-btn{padding:10px 14px;font-size:14px}
+.sc:hover .sc-btn{background:#0B1F27}
+.sc-btn--gelb{background:#FFD84D;color:#111}
+.sc:hover .sc-btn--gelb{background:#F5C800}
+.sc--einzug .sc-btn{background:#fff;color:var(--black,#0d0d0d);border:1.5px solid var(--border,#e5e5e5)}
+.sc--einzug:hover .sc-btn{background:#fff;border-color:var(--blue,#2D9B6F)}
+/* inline: eine Zeile, Pin + Ort + kleiner Button */
+.sc--inline{flex-direction:row;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:transparent;border-color:transparent}
+.sc--inline:hover{transform:none;background:#fff}
+.sc--inline .sc-name{flex:1;min-width:0;font-size:15px;font-weight:700;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc--inline .sc-btn{margin:0;padding:6px 10px;font-size:12.5px;white-space:nowrap}
+@media (max-width:1100px){.sc-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.sc-grid--2,.sc-grid--3,.sc-grid--4{grid-template-columns:minmax(0,1fr)}.sc-title{font-size:22px}.sc--kompakt .sc-title{font-size:18px}}
+/* Footer (dunkel): inline-Karte als Listenzeile */
+.footer-col .sc--inline{padding:4px 0;color:inherit}
+.footer-col .sc--inline:hover{background:transparent}
+.footer-col .sc--inline .sc-pin{color:currentColor;opacity:.7}
+.footer-col .sc--inline .sc-name{font-weight:600;font-size:14px}
+.footer-col .sc--inline .sc-btn{background:rgba(255,255,255,.12);color:#fff;padding:4px 9px;font-size:11.5px}
+.footer-col .sc--inline:hover .sc-btn{background:rgba(255,255,255,.22)}
+.footer-col .sc--inline .sc-btn--gelb{background:#FFD84D;color:#111}

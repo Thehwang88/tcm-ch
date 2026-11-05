@@ -7,6 +7,7 @@ import CtaBand from '../../components/en/CtaBand.astro';
 import ClinicFinder from '../../components/en/ClinicFinder.astro';
 import AppointmentForm from '../../components/en/AppointmentForm.astro';
 import { clinics, enLocationPath, isRedirectedClinic } from '../../data/locations';
+import { standortCardHtml } from '../../lib/standort-card';
 
 const path = '/en/acupuncture-near-me';
 const url = `https://tcm.ch${path}/`;
@@ -21,7 +22,7 @@ const groups = [
   { label: 'Central Switzerland', ids: ['luzern'] },
   { label: 'Bern & Mittelland', ids: ['bern'] },
 ];
-const byId = (id: string) => clinics.find((c) => c.id === id && !c.vorVertrag && !isRedirectedClinic(id)); // vorVertrag / umgeleitet: nicht verlinken
+const byId = (id: string) => clinics.find((c) => c.id === id && !c.vorVertrag); // vorVertrag: nicht verlinken; umgeleitete (Praxis Hwang) als Partnerkarte
 const allIds = groups.flatMap((g) => g.ids).filter((id) => !clinics.find((c) => c.id === id)?.vorVertrag && !isRedirectedClinic(id));
 
 const faqs = [
@@ -65,14 +66,8 @@ const schema = [
       {groups.map((g) => (
         <div style="margin-bottom:28px">
           <h3 style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(2,11,16,.6);margin:0 0 12px">{g.label}</h3>
-          <div class="ev-grid">
-            {g.ids.map((id) => byId(id)).filter(Boolean).map((c) => (
-              <a class="ev-card" href={enLocationPath(c!.id)}>
-                <span class="ev-card__meta">{c!.postalCode ? `${c!.postalCode} ${c!.city}` : c!.city}</span>
-                <h3>{c!.name}{c!.betreiber && <span class="ev-badge ev-badge--neutral">Partner</span>}{c!.status !== 'operational' && <span class="ev-badge">{c!.status === 'review' ? 'Under review' : 'Planned'}</span>}</h3>
-                <p>{c!.status !== 'operational' ? (c!.status === 'review' ? 'Status under review; not confirmed as an operating clinic.' : (c!.openingNote ?? 'In preparation')) : c!.betreiber ? `${c!.betreiber.name} · ${c!.street}` : `${c!.street}`}</p>
-              </a>
-            ))}
+          <div class="sc-grid sc-grid--4">
+            {g.ids.map((id) => byId(id)).filter(Boolean).map((c) => <Fragment set:html={standortCardHtml(c!, { variant: 'kompakt', lang: 'en' })} />)}
           </div>
         </div>
       ))}

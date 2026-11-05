@@ -1,21 +1,12 @@
 ---
+// «Praxen in der Nähe» (05.11.2026): max. 3 buchbare Standorte (live/partner) nach Luftlinie (locations.ts geo), nie 2027/Einzugsgebiet.
+// Rendering über die zentrale Standortkarte (src/lib/standort-card.ts), Variante kompakt, ohne Foto. Keine nearby[]-Listen mehr.
 import type { Standort } from '../../data/standorte';
-import { clinics, isRedirectedClinic, HWANG_WINTERTHUR_URL } from '../../data/locations';
+import { nearbyClinics, standortGridHtml } from '../../lib/standort-card';
 const { data } = Astro.props as { data: Standort };
-// Status aus src/data/locations.ts (clinic.status).
-const STATUS_HINWEIS = { planned: 'Eröffnung geplant', review: 'Standort in Prüfung' } as const;
-// vorVertrag-Standorte (Mietvertrag offen) werden nirgends verlinkt.
-// Umgeleitete Standorte (Winterthur Münzgasse = Praxis Hwang): Karte zeigt die Partnerpraxis mit externem Link.
-const items = (data.nearby ?? []).filter((n) => !clinics.find((c) => c.id === n.slug)?.vorVertrag).map((n) => {
-  if (isRedirectedClinic(n.slug)) return { ...n, city: 'Praxis Hwang Winterthur', desc: 'Partnerpraxis · Münzgasse 2', href: n.href ?? HWANG_WINTERTHUR_URL, label: 'Termin bei Hwang →' };
-  const status = clinics.find((c) => c.id === n.slug)?.status ?? 'operational';
-  const hinweis = status === 'operational' ? '' : STATUS_HINWEIS[status];
-  const desc = hinweis && !/geplant|Vorbereitung|Prüfung|Eröffnung/i.test(n.desc) ? `${n.desc} · ${hinweis}` : n.desc;
-  return { ...n, href: undefined as string | undefined, desc, label: status === 'operational' ? 'Termin prüfen →' : 'Standort ansehen →' };
-});
+const items = nearbyClinics(data.slug, 3);
+const grid = items.length ? standortGridHtml(items, { variant: 'kompakt', cols: 3 }) : '';
 ---
-<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="city-grid reveal">
-{items.map((n) => (
-  <a class="city-card location-card" href={n.href ?? `/standorte/${n.slug}/`} target={n.href ? '_blank' : undefined} rel={n.href ? 'noopener' : undefined}>{n.plz && <span class="location-plz">{n.plz}</span>}<div class="location-city">{n.city}</div><div class="location-desc">{n.desc}</div><span class="location-link">{n.label}</span></a>
-))}
-</div></div></section>
+{grid && (
+<section class="related-section"><div class="wrap"><div class="section-label">Weitere Standorte</div><h2 class="section-title">Praxen <em>in der Nähe</em></h2><div class="reveal"><Fragment set:html={grid} /></div></div></section>
+)}

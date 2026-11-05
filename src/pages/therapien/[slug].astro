@@ -6,6 +6,7 @@
 // "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
+import { standortGridHtml, buchbareClinics } from '../../lib/standort-card';
 import { massageLinksForTherapie, massageLinksHtml } from '../../data/massage-links';
 import { therapieTiefeHtml } from '../../data/therapie-tiefe';
 import homeBody from '../../data/home-body.html?raw';
@@ -89,6 +90,17 @@ if (slug === 'shiatsu') {
   const os = homeBody.indexOf('<section id="s-offer"');
   const offer = os >= 0 ? homeBody.slice(os, homeBody.indexOf('</section>', os) + '</section>'.length) : '';
   prefilledBody = prefilledBody.replace('<div id="therapie-cities-section">', offer + '<div id="therapie-cities-section">');
+}
+// Standortblock (05.11.2026): Leaf-Karten im #therapie-cities-section durch die zentrale Standortkarte ersetzen
+// (alle buchbaren Standorte, kompakt, 4 pro Reihe). Kein stiller Fallback.
+{
+  const cs = prefilledBody.indexOf('id="therapie-cities-section"');
+  const g0 = cs >= 0 ? prefilledBody.indexOf('<div class="city-grid reveal">', cs) : -1;
+  if (g0 < 0) throw new Error(`therapien/${slug}: Standortblock (city-grid) nicht gefunden - Leaf geändert?`);
+  const re = /<div\b|<\/div>/g; re.lastIndex = g0 + 5; let depth = 1, g1 = -1, m: RegExpExecArray | null;
+  while ((m = re.exec(prefilledBody))) { if (m[0] === '</div>') { depth--; if (depth === 0) { g1 = m.index + 6; break; } } else depth++; }
+  if (g1 < 0) throw new Error(`therapien/${slug}: Standortblock-Ende nicht gefunden`);
+  prefilledBody = prefilledBody.slice(0, g0) + '<div class="reveal">' + standortGridHtml(buchbareClinics(), { variant: 'kompakt', cols: 4 }) + '</div>' + prefilledBody.slice(g1);
 }
 // Vertiefungsblock für die Therapien mit viel Volumen und schwacher Position
 // (Gua Sha, Tuina). Leer für alle anderen Slugs.

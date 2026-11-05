@@ -10,6 +10,7 @@
 import { conditions, enConditionPath } from '../data/conditions';
 import { therapies, enTherapyPath } from '../data/therapies';
 import { publicClinics as clinics, enLocationPath } from '../data/locations';
+import { standortCardHtml } from '../lib/standort-card';
 const year = new Date().getFullYear();
 import { site } from '../data/site';
 import WhatsAppFab from './WhatsAppFab.astro';
@@ -53,7 +54,7 @@ const pin = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke=
           <li><a href="/en/acupuncture-near-me/">Acupuncture near me</a></li>
           <li><a href="/en/acupuncture-zurich/">Acupuncture in Zürich</a></li>
           {clinics.map((c) => (
-            <li><a href={enLocationPath(c.id)}><Fragment set:html={pin} />{c.name}</a></li>
+            <li><Fragment set:html={standortCardHtml(c.id, { variant: 'inline', lang: 'en' })} /></li>
           ))}
         </ul>
       </div>

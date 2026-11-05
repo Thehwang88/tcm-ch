@@ -13,7 +13,9 @@
 // Keine Props, keine Datenanbindung in diesem Pilot (bewusst: Links/Texte/
 // Inline-Styles/nav()-Hooks bleiben wortgleich, inkl. Bellevue).
 import legacyHtml from './standort-cards-legacy.html?raw';
-import cardsHtml from './standort-cards.html?raw';
+import { standortGridHtml, buchbareClinics } from '../lib/standort-card';
+// Ausgabe (05.11.2026): zentrale Standortkarte, alle buchbaren Standorte (live/partner), kompakt, 4 pro Reihe.
+const cardsHtml = '<section class="related-section"><div class="wrap"><div class="section-label">Standorte</div><h2 class="section-title">Praxen <em>in deiner Nähe</em></h2><div class="reveal">' + standortGridHtml(buchbareClinics(), { variant: 'kompakt', cols: 4 }) + '</div></div></section>';
 
 /** Ersetzt den Legacy-Block exakt einmal durch die zentrale Ausgabe.
  *  Kein stiller Fallback: 0 oder >1 Treffer brechen den Build mit dem

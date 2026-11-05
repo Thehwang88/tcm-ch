@@ -2,6 +2,8 @@
 // /therapien/ear-seeds - therapy page (Ear Seeds / Ohrsamen, nadelfreie Ohrakupressur).
 // Same layout/tokens/components as the other therapy pages.
 import SpaPage from '../../../layouts/SpaPage.astro';
+// Standortblock (05.11.2026): zentrale Standortkarte statt Leaf-Karten.
+import { replaceCityGrid } from '../../../lib/standort-card';
 import bodyRaw from '../../../data/ear-seeds-body.html?raw';
 import { prefillForm } from '../../../data/form-prefill';
 import { inlineBodyImage } from '../../../data/inline-body-image';
@@ -35,4 +37,4 @@ const schema = [
   ] },
 ];
 ---
-<SpaPage title={title} description={description} path="/therapien/ear-seeds" body={`<div class="therapie-scope">${body}</div>`} schema={schema} />
+<SpaPage title={title} description={description} path="/therapien/ear-seeds" body={`<div class="therapie-scope">${replaceCityGrid(body)}</div>`} schema={schema} />
