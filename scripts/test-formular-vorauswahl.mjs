@@ -151,7 +151,7 @@ for (const [u, i, want, label] of [
     const s = await st(pg, i); const n = await pg.$eval(`#kf-${i}-ta-err`, (e) => (e.hidden ? '' : e.textContent));
     ok(s.checked === '' && s.marked === '' && s.submit === 'Termin anfragen' && /Check-in ist derzeit nur in .+ verfügbar\. Bitte wähle eine Terminart\./.test(n) && await pg.$eval(card(i), (c) => !c.querySelector('input[value=checkin]')), `Basel ?terminart=checkin ${i}: keine Auswahl, Hinweis «${n}»`);
   }
-  await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
+  await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'email', 'test@beispiel.ch'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
   ok(calls.length === 0 && await pg.$eval('#kf-standort-ta-err', (e) => !e.hidden), 'Basel ?terminart=checkin: Absenden ohne bewusste Wahl → kein Versand');
   await pick(pg, 'standort', 'behandlung'); const s2 = await st(pg, 'standort');
   ok(s2.checked === 'behandlung' && consistent(s2) && await pg.$eval('#kf-standort-ta-err', (e) => e.hidden), 'Basel: bewusste Wahl Ersttermin → Hinweis weg, Button «Ersttermin anfragen»');
@@ -172,12 +172,12 @@ for (const [u, i, want, label] of [
   ok(await pg.$eval(card('home'), (c) => c.querySelector('.kf-opts').hidden && !c.querySelector('[data-kf-ziel]').hidden), 'Homepage Luzern (Vormerkung): Kacheln aus, Vormerkungsablauf');
   const n0 = await navCount(pg, 'home'); await pg.$eval('button.sr-btn--solid[onclick="openContactForm()"]', (b) => b.click()); await waitNav(pg, 'home', n0);
   ok(await pg.$eval(card('home'), (c) => c.querySelector('.kf-opts').hidden), 'Vormerkung + generische CTA: keine Behandlungskacheln reaktiviert');
-  await type(pg, 'home', 'name', 'Test Person'); await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home', calls, 1);
+  await type(pg, 'home', 'name', 'Test Person'); await type(pg, 'home', 'email', 'test@beispiel.ch'); await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home', calls, 1);
   ok(calls.length === 1 && calls[0].angebot_id === 'VORMERKUNG', `Vormerkung: Payload angebot_id ${calls[0] && calls[0].angebot_id}`);
   await pg.close();
 }
 { // Routing
-  const { pg, calls } = await open('/'); await choose(pg, 'home', 'Andere / in meiner Nähe'); await type(pg, 'home', 'name', 'Test Person'); await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home', calls, 1);
+  const { pg, calls } = await open('/'); await choose(pg, 'home', 'Andere / in meiner Nähe'); await type(pg, 'home', 'name', 'Test Person'); await type(pg, 'home', 'email', 'test@beispiel.ch'); await type(pg, 'home', 'telefon', '+41 79 123 45 67'); await submit(pg, 'home', calls, 1);
   ok(calls.length === 1 && calls[0].angebot_id === 'ROUTING_ANFRAGE', `Routing: Payload angebot_id ${calls[0] && calls[0].angebot_id}`);
   await pg.close();
 }
@@ -216,7 +216,7 @@ for (const [u, i, pickV, angebot] of [['/standorte/st-gallen/', 'sg-hero', '', '
   const { pg, calls } = await open(u);
   if (i === 'home') await choose(pg, 'home', 'Zürich Bahnhofstrasse');
   if (pickV) await pick(pg, i, pickV);
-  await type(pg, i, 'name', 'Test Person'); await submit(pg, i);
+  await type(pg, i, 'name', 'Test Person'); await type(pg, i, 'email', 'test@beispiel.ch'); await submit(pg, i);
   ok(calls.length === 0 && await pg.$eval(`${card(i)} [name=telefon]`, (t) => document.activeElement === t && t.getAttribute('aria-invalid') === 'true'), `${u} ${i}: Validierung fokussiert das fehlerhafte Telefonfeld`);
   await type(pg, i, 'telefon', '+41 79 123 45 67'); await submit(pg, i, calls, 1);
   const evs = await pg.evaluate(() => window.dataLayer.filter((e) => e && /^(formular_senden|form_submit)$/.test(e.event)));
@@ -224,7 +224,7 @@ for (const [u, i, pickV, angebot] of [['/standorte/st-gallen/', 'sg-hero', '', '
   await pg.close();
 }
 { // Fehlerhafter Versand: keine Conversion
-  const { pg, calls } = await open('/standorte/basel/', { status: 500 }); await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
+  const { pg, calls } = await open('/standorte/basel/', { status: 500 }); await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'email', 'test@beispiel.ch'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
   ok(calls.length === 1 && (await kfEvents(pg)).length === 0, 'Server-Fehler: keine Conversion');
   await pg.close();
 }
@@ -276,24 +276,24 @@ for (const w of [390, 1440]) {
   await pg.close();
 }
 
-console.log('F. Name Pflicht (ein Feld «Dein Name *», sichtbar vor Telefon); E-Mail optional');
+console.log('F. Pflichtfelder «Dein Name *» → «Telefonnummer *» → «E-Mail *», alle sichtbar');
 const fieldsInfo = (pg, i) => pg.$eval(card(i), (c) => {
   const vis = (e) => !!(e && !e.closest('[hidden]') && e.getClientRects().length);
   const n = c.querySelector('input[name=name]'), t = c.querySelector('input[name=telefon]'), e = c.querySelector('input[name=email]'), opt = c.querySelector('.kf-optgroup');
   const lab = (x) => c.querySelector(`label[for="${x.id}"]`).textContent.replace(/\s+/g, ' ').trim();
   const cr = c.getBoundingClientRect();
-  return { nLab: lab(n), tLab: lab(t), eLab: lab(e), nVis: vis(n), tVis: vis(t), order: !!(n.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING), nInOpt: !!(opt && opt.contains(n)), eInOpt: !!(opt && opt.contains(e)),
-    nReq: n.required && n.getAttribute('aria-required') === 'true', eReq: e.required, split: !!c.querySelector('[name=vorname],[name=nachname]'), star: getComputedStyle(c.querySelector(`label[for="${n.id}"] .kf-star, label[for="${n.id}"] span[aria-hidden]`)).color,
-    fits: [n, t].every((x) => x.getBoundingClientRect().right <= cr.right + 0.5) && document.documentElement.scrollWidth <= innerWidth + 1 };
+  return { nLab: lab(n), tLab: lab(t), eLab: lab(e), nVis: vis(n), tVis: vis(t), eVis: vis(e), order: !!(n.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING) && !!(t.compareDocumentPosition(e) & Node.DOCUMENT_POSITION_FOLLOWING), nInOpt: !!(opt && opt.contains(n)), eInOpt: !!(opt && opt.contains(e)),
+    nReq: n.required && n.getAttribute('aria-required') === 'true', eReq: e.required && e.getAttribute('aria-required') === 'true', split: !!c.querySelector('[name=vorname],[name=nachname]'), star: getComputedStyle(c.querySelector(`label[for="${n.id}"] .kf-star, label[for="${n.id}"] span[aria-hidden]`)).color,
+    fits: [n, t, e].every((x) => x.getBoundingClientRect().right <= cr.right + 0.5) && document.documentElement.scrollWidth <= innerWidth + 1 };
 });
-for (const w of [320, 390, 1440]) for (const [u, i] of [['/', 'home'], ['/standorte/st-gallen/', 'sg-hero'], ['/standorte/st-gallen/', 'sg-unten'], ['/standorte/basel/', 'standort-oben'], ['/beschwerden/rueckenschmerzen/', 'leaf'], ['/kontakt/', 'terminform']]) {
+for (const w of [320, 390, 1440]) for (const [u, i] of [['/', 'home'], ['/standorte/st-gallen/', 'sg-hero'], ['/standorte/st-gallen/', 'sg-unten'], ['/standorte/basel/', 'standort-oben'], ['/standorte/zuerich-oerlikon/', 'standort-oben'], ['/standorte/zuerich-oerlikon/', 'standort'], ['/beschwerden/rueckenschmerzen/', 'leaf'], ['/kontakt/', 'terminform']]) {
   const { pg } = await open(u, { width: w }); const f = await fieldsInfo(pg, i);
-  ok(f.nLab === 'Dein Name *' && f.tLab === 'Telefonnummer *' && /^E-Mail · optional$/.test(f.eLab) && f.nVis && f.tVis && f.order && !f.nInOpt && f.nReq && !f.eReq && !f.split && f.fits, `${w}px ${u} ${i}: «Dein Name *» sichtbar vor «Telefonnummer *», ausserhalb der optionalen Angaben; E-Mail optional${f.eInOpt ? ' (eingeklappt)' : ''}; kein Vor-/Nachname-Split; kein Overflow`);
+  ok(f.nLab === 'Dein Name *' && f.tLab === 'Telefonnummer *' && f.eLab === 'E-Mail *' && f.nVis && f.tVis && f.eVis && f.order && !f.nInOpt && !f.eInOpt && f.nReq && f.eReq && !f.split && f.fits, `${w}px ${u} ${i}: «Dein Name *» sichtbar vor «Telefonnummer *», ausserhalb der optionalen Angaben; E-Mail optional${f.eInOpt ? ' (eingeklappt)' : ''}; kein Vor-/Nachname-Split; kein Overflow`);
   await pg.close();
 }
-for (const [u, i, w] of [['/', 'home', 390], ['/standorte/st-gallen/', 'sg-hero', 320], ['/standorte/basel/', 'standort', 1440], ['/beschwerden/rueckenschmerzen/', 'leaf', 390]]) {
+for (const [u, i, w] of [['/', 'home', 390], ['/kontakt/', 'terminform', 320], ['/standorte/st-gallen/', 'sg-hero', 320], ['/standorte/basel/', 'standort', 1440], ['/standorte/zuerich-oerlikon/', 'standort-oben', 390], ['/beschwerden/rueckenschmerzen/', 'leaf', 390]]) {
   const { pg, calls } = await open(u, { width: w });
-  if (i === 'home' || i === 'leaf') await choose(pg, i, 'St. Gallen');
+  if (i === 'home' || i === 'leaf' || i === 'terminform') await choose(pg, i, 'St. Gallen');
   await type(pg, i, 'telefon', '+41 79 123 45 67'); await submit(pg, i, calls, 1);
   let e = await pg.$eval(card(i), (c) => { const n = c.querySelector('input[name=name]'), b = document.getElementById(n.id + '-err'); return { err: b && !b.hidden ? b.textContent : '', focus: document.activeElement === n, inv: n.getAttribute('aria-invalid') }; });
   ok(calls.length === 0 && e.err === 'Bitte gib deinen Namen an.' && e.focus && e.inv === 'true' && (await kfEvents(pg)).length === 0, `${w}px ${u} ${i}: leerer Name → kein Versand, keine Conversion, Meldung am Feld, Fokus Name`);
@@ -302,17 +302,23 @@ for (const [u, i, w] of [['/', 'home', 390], ['/standorte/st-gallen/', 'sg-hero'
   ok(calls.length === 0 && e.focus && e.err, `${w}px ${i}: nur Leerzeichen → abgewiesen, Fokus Name`);
   // Eingaben bleiben bei Terminart-/Standortwechsel erhalten
   await type(pg, i, 'name', 'Mia'); if (await pg.$(`${card(i)} label[for$="ta-checkin"]`)) await pick(pg, i, 'checkin');
-  if (i === 'home' || i === 'leaf') { await choose(pg, i, 'Basel'); await choose(pg, i, 'Winterthur Marktgasse'); }
+  if (i === 'home' || i === 'leaf' || i === 'terminform') { await choose(pg, i, 'Basel'); await choose(pg, i, 'Winterthur Marktgasse'); }
   ok(await pg.$eval(card(i), (c) => c.querySelector('[name=name]').value === 'Mia' && c.querySelector('[name=telefon]').value === '+41 79 123 45 67'), `${w}px ${i}: Name und Telefon bleiben bei Terminart-/Standortwechsel erhalten`);
   // Nach Standortwechsel ohne Check-in-Angebot ist die Wahl gelöst (kein stiller Ersatz): bewusst Ersttermin wählen
   if (!(await pg.$(`${card(i)} input[name=terminart]:checked`))) await pick(pg, i, 'behandlung');
-  // Optionale E-Mail ungültig → Fehler dort; leer erlaubt
-  await pg.$eval(card(i), (c) => { const b = c.querySelector('[data-kf-opt]'); if (b && b.getAttribute('aria-expanded') !== 'true') b.click(); });
+  // E-Mail Pflicht: leer → Meldung + Fokus, nur Leerzeichen → abgewiesen, ungültig → bestehende Formatprüfung; ohne JS-Aufklappen sichtbar
+  await submit(pg, i, calls, 1);
+  let em = await pg.$eval(card(i), (c) => { const x = c.querySelector('input[name=email]'), b = document.getElementById(x.id + '-err'); return { err: b && !b.hidden ? b.textContent : '', focus: document.activeElement === x, inv: x.getAttribute('aria-invalid') }; });
+  ok(calls.length === 0 && em.err === 'Bitte gib deine E-Mail-Adresse an.' && em.focus && em.inv === 'true' && (await kfEvents(pg)).length === 0, `${w}px ${i}: leere E-Mail → kein Versand, keine Conversion, Meldung «${em.err}», Fokus E-Mail`);
+  await type(pg, i, 'email', '   '); await submit(pg, i, calls, 1);
+  ok(calls.length === 0 && await pg.$eval(card(i), (c) => document.activeElement === c.querySelector('[name=email]')), `${w}px ${i}: E-Mail nur Leerzeichen → abgewiesen`);
   await type(pg, i, 'email', 'kaputt'); await submit(pg, i, calls, 1);
-  ok(calls.length === 0 && await pg.$eval(card(i), (c) => document.activeElement === c.querySelector('[name=email]')), `${w}px ${i}: ungültige (optionale) E-Mail → Fokus E-Mail, kein Versand`);
-  await type(pg, i, 'email', ''); await submit(pg, i, calls, 1);
+  em = await pg.$eval(card(i), (c) => { const x = c.querySelector('input[name=email]'); return { focus: document.activeElement === x, err: document.getElementById(x.id + '-err').textContent }; });
+  ok(calls.length === 0 && em.focus && em.err === 'Bitte prüfe deine E-Mail-Adresse.', `${w}px ${i}: ungültige E-Mail → bestehende Formatmeldung, Fokus E-Mail, kein Versand`);
+  ok(await pg.$eval(card(i), (c) => c.querySelector('[name=name]').value === 'Mia' && c.querySelector('[name=telefon]').value === '+41 79 123 45 67'), `${w}px ${i}: Eingaben nach Fehlern erhalten`);
+  await type(pg, i, 'email', 'mia@beispiel.ch'); await submit(pg, i, calls, 1);
   const conv = await pg.evaluate(() => window.dataLayer.filter((x) => x && /^(formular_senden|form_submit)$/.test(x.event)));
-  ok(calls.length === 1 && calls[0].name === 'Mia' && !('email' in calls[0]) && conv.length === 1 && !(await pg.evaluate(() => /Mia|79 123/.test(JSON.stringify(window.dataLayer)))), `${w}px ${i}: Name + Telefon ohne E-Mail → Versand (gemockt), Payload name, Terminart ${calls[0] && calls[0].angebot_id}, genau 1 Conversion ohne Personendaten`);
+  ok(calls.length === 1 && calls[0].name === 'Mia' && calls[0].email === 'mia@beispiel.ch' && conv.length === 1 && !(await pg.evaluate(() => /Mia|79 123|mia@/.test(JSON.stringify(window.dataLayer)))), `${w}px ${i}: Name + Telefon + E-Mail → Versand (gemockt), Payload name/email, Terminart ${calls[0] && calls[0].angebot_id}, genau 1 Conversion ohne Personendaten`);
   await pg.close();
 }
 

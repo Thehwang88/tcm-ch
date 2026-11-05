@@ -260,15 +260,16 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     // Kompakt: Disclosure-Button (ohne JS verborgen, Bereich dann offen); JS schliesst den Bereich initial.
     (K && !RO ? `<button type="button" class="kf-disclose" id="${p}-rr-btn" aria-expanded="true" aria-controls="${p}-fields" data-kf-rr hidden><span>Lieber Rückruf anfragen</span><span class="kf-chev" aria-hidden="true"></span></button>` : '') +
     `<div class="kf-fields" id="${p}-fields" tabindex="-1">` +
-    // Pflichtfelder (05.11.2026): Name → Telefon, immer sichtbar (nie im eingeklappten optionalen Bereich).
+    // Pflichtfelder (05.11.2026): Name → Telefon → E-Mail, immer sichtbar (nie im eingeklappten optionalen Bereich).
     field('name', Q ? 'Dein Name <span class="kf-star" aria-hidden="true">*</span>' : 'Dein Name <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname" required aria-required="true" aria-describedby="${p}-name-err">`) +
     field('tel', Q ? 'Telefonnummer <span class="kf-star" aria-hidden="true">*</span>' : 'Telefon <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-tel" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="Deine Telefonnummer" required aria-required="true" aria-describedby="${p}-tel-hint ${p}-tel-err">`, `<p class="kf-fhint" id="${p}-tel-hint">Wir rufen dich zur Terminvereinbarung zurück.</p>`) +
-    // Kampagnen-Sheet: Wunschzeit sichtbar (optional), E-Mail/Anliegen hinter «Weitere Angaben».
+    // Pflichtfelder (05.11.2026): Name → Telefon → E-Mail, alle immer sichtbar (nie im eingeklappten optionalen Bereich).
+    field('email', Q ? 'E-Mail <span class="kf-star" aria-hidden="true">*</span>' : 'E-Mail <span aria-hidden="true">*</span>', `<input class="kf-input" id="${p}-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@beispiel.ch" required aria-required="true" aria-describedby="${p}-email-err">`) +
+    // Kampagnen-Sheet: Wunschzeit sichtbar (optional), Anliegen hinter «Weitere Angaben».
     (HB ? field('wunschzeit', 'Terminwunsch <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
     (OE ? `<button type="button" class="kf-disclose kf-disclose--sub" id="${p}-opt-btn" aria-expanded="${optOffen}" aria-controls="${p}-opt" data-kf-opt><span>Weitere Angaben · optional</span><span class="kf-chev" aria-hidden="true"></span></button>` +
       `<noscript><style>#${p}-opt{display:block!important}#${p}-opt-btn{display:none!important}</style></noscript><div class="kf-optgroup" id="${p}-opt"${optOffen ? '' : ' hidden'}>`
     : K ? `<button type="button" class="kf-disclose kf-disclose--sub" id="${p}-opt-btn" aria-expanded="true" aria-controls="${p}-opt" data-kf-opt hidden><span>Weitere Angaben · optional</span><span class="kf-chev" aria-hidden="true"></span></button><div class="kf-optgroup" id="${p}-opt">` : '') +
-    field('email', 'E-Mail <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@beispiel.ch" aria-describedby="${p}-email-err">`) +
     field('anliegen', 'Dein Anliegen <span class="kf-opt-l">· optional</span>', `<textarea class="kf-input kf-textarea" id="${p}-anliegen" name="anliegen" rows="2" placeholder="Was möchtest du uns mitgeben?">${esc(o.anliegen ?? '')}</textarea>`) +
     (o.wunschzeit && !HB ? field('wunschzeit', 'Wunschzeit <span class="kf-opt-l">· optional</span>', `<input class="kf-input" id="${p}-wunschzeit" name="wunschzeit" type="text" placeholder="z. B. Do Nachmittag">`) : '') +
     (K || OE ? `</div>` : '') +
