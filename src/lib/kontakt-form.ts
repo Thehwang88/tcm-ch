@@ -124,6 +124,9 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
   const freigabe360 = !!fixed && checkinOk;
   if (HB && (!fixed || !checkinOk)) throw new Error('kontakt-form: herbst nur mit festem, Check-in-freigegebenem Standort');
   const CZ = !HB && (fixed ? checkinOk && o.checkinZuerst !== false : !!o.checkinZuerst);
+  // Check-in zuerst: Subline in der Check-in-Kachel «Buchung bis <Monatsende>, Termin auch später möglich» (Datum rollierend aus
+  // kontakt-form.js, Europe/Zurich; nur sichtbar, solange das Ziel den Check-in anbietet).
+  const GH = CZ ? `<span class="kf-opt-gueltig" data-kf-gueltig hidden>Buchung bis <span data-kf-gueltig-bis></span>, Termin auch später möglich.</span>` : '';
   const pre = onlyBehandlung ? 'behandlung' : HB ? (HB.soldOut ? 'behandlung' : 'checkin') : (o.terminart ?? (CZ ? 'checkin' : undefined));
   const fixedTel = fixed ? fixed.phone : ZENTRAL_TEL;
   const onedoc = fixed ? onedocFor(fixed.id) : null;
@@ -152,8 +155,8 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     // Patientenwortlaut des kostenlosen Check-ins (Konsolidierung 21.10.2026: 360°-Vorteile im regulären 30-Minuten-Check-in);
     // Klassifikation, Angebots-ID TCM_CHECKIN, Dauer, Mail-Label (TERMINARTEN.checkin.label) und Versand unverändert.
     (Q ? (freigabe360
-      ? `<span class="kf-opt-t">${CHECKIN_360.t}</span><span class="kf-opt-dur">${CHECKIN_360.dur}</span><span class="kf-opt-d">${CHECKIN_360.d}</span><span class="kf-opt-note">${CHECKIN_360.note}</span>`
-      : `<span class="kf-opt-t">${TERMINARTEN.checkin.label}</span><span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten</span>` +
+      ? `<span class="kf-opt-t">${CHECKIN_360.t}</span>${GH}<span class="kf-opt-dur">${CHECKIN_360.dur}</span><span class="kf-opt-d">${CHECKIN_360.d}</span><span class="kf-opt-note">${CHECKIN_360.note}</span>`
+      : `<span class="kf-opt-t">${TERMINARTEN.checkin.label}</span>${GH}<span class="kf-opt-dur">${TERMINARTEN.checkin.dauerMin} Minuten</span>` +
         `<span class="kf-opt-d">Zungen- und Pulsdiagnostik, persönliche Empfehlung und Krankenkassen-Check.</span>` +
         `<span class="kf-opt-note">Ohne Behandlung.</span>`)
     : `<span class="kf-tag">${GIFT}<span>Kostenloser TCM-Check-in</span></span>` +
@@ -261,8 +264,6 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (fixed ? (K || Q ? '' : `<p class="kf-ort">Standort: <strong>${esc(fixed.name)}</strong></p>`) : QG ? '' : select) +
     `<fieldset class="kf-opts${onlyBehandlung ? ' kf-opts--single' : ''}" aria-describedby="${p}-ta-err"><legend class="kf-sr">Terminart wählen</legend>` +
     (Q && !HB && !CZ ? tileBehandlung + tileCheckin : tileCheckin + tileBehandlung) + `<p class="kf-ferr" id="${p}-ta-err" hidden></p></fieldset>` +
-    // Check-in zuerst: Angebot gültig bis Monatsende (Datum rollierend aus kontakt-form.js, Europe/Zurich), nur bei freigegebenem Ziel.
-    (CZ ? `<p class="kf-fhint" data-kf-gueltig hidden>Buchung bis <span data-kf-gueltig-bis></span>, Termin auch später möglich.</p>` : '') +
     (fixed ? '' : `<p class="kf-note-scope" data-kf-scope-note hidden>Der kostenlose TCM-Check-in ist derzeit nur in ${esc(scopeNames)} verfügbar.</p>`) +
     // Nicht-Behandlungsziele (Vormerkung, Standort in Prüfung, Routing): Kacheln ausgeblendet, Bedeutung klar benannt.
     (fixed ? '' : `<div class="kf-ziel" data-kf-ziel hidden><p class="kf-ziel-h" data-kf-ziel-h></p><p class="kf-ziel-t" data-kf-ziel-t></p></div>`) +
