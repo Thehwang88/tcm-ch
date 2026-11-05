@@ -162,10 +162,9 @@ export const clinics: Clinic[] = [
 
   { id: 'rorschach', name: 'Rorschach', city: 'Rorschach', region: 'Lake Constance',
     street: 'Pestalozzistrasse 11', postalCode: '9400', phone: '+41 77 523 61 22',
-    hinweis: 'Bodenseeregion',
-    // Inhaber 05.11.2026: kein eigener Praxisbetrieb auf der Karte → Einzugsgebiet, nächste Praxis St. Gallen.
-    karte: { status: 'einzugsgebiet', naechste: 'st-gallen' },
-    openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
+    // Inhaber 05.11.2026: Rorschach als eigener Standort (live), Zeiten wie alle TCM.ch-Standorte.
+    hinweis: 'Pestalozzistrasse 11 · Bodenseeregion',
+    openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
     areaServed: ['Rorschach', 'Rorschacherberg', 'Goldach', 'Arbon', 'Horn', 'Steinach', 'Tübach', 'Mörschwil', 'Heiden', 'Walzenhausen', 'Berneck', 'Au', 'Thal', 'Altstätten'] },
 
   { id: 'wil', name: 'Wil', city: 'Wil', region: 'Fürstenland',
