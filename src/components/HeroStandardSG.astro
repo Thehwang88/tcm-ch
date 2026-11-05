@@ -45,8 +45,9 @@ const card = renderKontaktForm({
 ---
 <section class="sgb-banner" id="sg-angebot-banner" aria-label="Kostenloser TCM 360°-Check-in">
   <a href="#termin" class="sgb-in">
-    <span class="sgb-txt"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-sep" aria-hidden="true"> · </span>CHF 0</span>
-    <span class="sgb-cta">Jetzt Termin wählen <span aria-hidden="true">→</span></span>
+    <span class="sgb-txt sgb-txt--d"><strong>Kostenloser TCM 360°-Check-in</strong><span class="sgb-sep" aria-hidden="true"> · </span>30 Min<span class="sgb-sep" aria-hidden="true"> · </span>CHF 0</span>
+    <span class="sgb-txt sgb-txt--m"><strong>Gratis Check-in</strong> · 30 Min</span>
+    <span class="sgb-cta"><span class="sgb-cta--d">Jetzt Termin wählen <span aria-hidden="true">→</span></span><span class="sgb-cta--m"><span aria-hidden="true">→</span> Termin</span></span>
   </a>
 </section>
 {/* Mobil (html/body overflow-x:hidden bricht position:sticky): Banner fixed unter dem Header, Platzhalter in Bannerhöhe (--sgb-h per Script). */}
@@ -56,14 +57,14 @@ const card = renderKontaktForm({
     <div class="lsr-left">
       <span class="lsr-eyebrow">TCM.ch Praxis · St. Gallen</span>
       <h1 class="lsr-h1">Akupunktur &amp; TCM in <span class="lsr-accent">St. Gallen</span></h1>
-      <p class="lsr-lead">Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Lerne uns beim kostenlosen Check-in kennen, bevor du dich entscheidest.</p>
+      <p class="lsr-lead">Medizinisch fundierte TCM, zwei Gehminuten vom Bahnhof St. Gallen.</p>
       <div class="lsr-trust">
         {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && SG_GOOGLE.count >= SG_GOOGLE_MIN && (
           <div class="lsr-google"><a href={SG_MAPS} target="_blank" rel="noopener noreferrer" title={`Google-Bewertungen, Stand ${SG_GOOGLE.stand}`}><span class="lsr-stars" aria-hidden="true">★★★★★</span> <strong>{fmtRating(SG_GOOGLE.rating)}</strong> · {SG_GOOGLE.count} Google-Bewertungen</a></div>
         )}
         <div><span class="lsr-check">✓</span> Krankenkassen anerkannt (EMR/ASCA)</div>
         <div><span class="lsr-check">✓</span> Oberer Graben 22, St. Gallen</div>
-        <div><span class="lsr-check">✓</span> Check-in kostenlos, ohne Behandlungspflicht</div>
+        <div><span class="lsr-check">✓</span> Mo–Sa 7:30–19:30, So 8–17</div>
       </div>
       <div class="lsr-ctas">
         <a href="#termin" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-care-cta="hero-checkin">Gratis Check-in buchen</a>
@@ -160,7 +161,9 @@ const card = renderKontaktForm({
   .sgb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--brand-black,#020B10);color:#fff;border-radius:999px;padding:8px 16px;font-size:14.5px;font-weight:800;line-height:1.2;white-space:nowrap}
   .sgb-in:hover .sgb-cta{background:#0B1F27}
   .sgb-in:focus-visible{outline:3px solid var(--brand-black,#020B10);outline-offset:-3px}
-  @media (max-width:479px){.sgb-in{flex-direction:column;gap:8px;padding:10px 14px 12px;text-align:center}.sgb-sep{display:inline}}
+  .sgb-txt--m,.sgb-cta--m{display:none}
+  /* Mobil einzeilig: «Gratis Check-in · 30 Min → Termin» */
+  @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:9px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:15px;white-space:nowrap}.sgb-cta{padding:7px 12px;font-size:14px}}
 
   /* Therapie-Zeile (?t=) unter dem Hero. */
   .sgp-line{background:#fff;border-bottom:1px solid var(--border);font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
