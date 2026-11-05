@@ -46,9 +46,9 @@ export async function onRequestPost({ request, env }) {
     let offer = null;
     const offerId = d.angebot_id != null ? String(d.angebot_id).trim() : '';
     // Gemeinsames Kontaktformular (TCM_CHECKIN, ERSTTERMIN_BEHANDLUNG, VORMERKUNG, STANDORT_ANFRAGE, ROUTING_ANFRAGE).
-    // Pflicht: Name, eine gültige Telefonnummer und ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
+    // Pflicht: Name, eine gültige Telefonnummer, eine gültige E-Mail und ein kanonisches Standort-Ziel (kontaktZiele, aus locations.ts);
     // die Angebots-ID muss zur Zielart passen (Vormerkung/Anfrage/Routing nie als Behandlung, Check-in nur für das
-    // freigegebene reguläre Ziel). Name Pflicht (seit 05.11.2026); E-Mail, Anliegen optional; eine angegebene E-Mail wird validiert.
+    // freigegebene reguläre Ziel). Name + E-Mail Pflicht (seit 05.11.2026); Anliegen optional.
     const neu = offerId ? OFFER_BY_ID[offerId] : null;
     if (neu) {
       const ort = String(d.standort || '').trim();
@@ -63,7 +63,10 @@ export async function onRequestPost({ request, env }) {
       d.name = d.name != null ? String(d.name).trim() : '';
       if (!d.name) return J({ error: 'missing_name' }, 422);
       if (!_phoneOk(d.telefon)) return J({ error: 'invalid_phone' }, 422);
-      if (d.email && String(d.email).trim() && !_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
+      // E-Mail Pflicht (05.11.2026) im gemeinsamen Patientenformular: leer → missing_email, Format wie bisher.
+      d.email = d.email != null ? String(d.email).trim() : '';
+      if (!d.email) return J({ error: 'missing_email' }, 422);
+      if (!_emailOk(d.email)) return J({ error: 'invalid_email' }, 422);
       // Interne Termindisposition: Carlos reserviert für SG-Erstbehandlungen 90 Minuten.
       // Patientenformular (60 Minuten), alle anderen Standorte und Gratis-Check-in (30 Minuten) bleiben unverändert.
       const mailTermin = ziel.id === 'st-gallen' && neu.terminart === 'behandlung'

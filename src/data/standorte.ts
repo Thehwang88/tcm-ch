@@ -85,6 +85,9 @@ export const NETZ_THERAPIEN = ['akupunktur', 'gesichtsakupunktur', 'schroepfen',
 /** Zürich Bahnhofstrasse und Oerlikon (Inhaberangabe 02.11.2026): gleiches 8er-Raster wie SG inkl. Physiotherapie-Karte
  *  (TCM.ch-Angebot), aber ohne Massage-Karte (nicht bestätigt); Kräutertherapie hinter «Weitere Therapien». */
 export const ZH_THERAPIEN_OHNE_MASSAGE = NETZ_THERAPIEN.filter((t) => t !== 'massage');
+/** Beschwerden-Boxen «Wobei können wir helfen?» der SG-Vorlage (Reihenfolge = Darstellung). Gemeinsame Quelle für
+ *  St. Gallen ([slug].astro) und Basel, damit beide nicht auseinanderlaufen (05.11.2026). */
+export const NETZ_BESCHWERDEN = ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'schlafprobleme', 'stress-burnout', 'verdauungsprobleme', 'zyklusbeschwerden', 'kinderwunsch'];
 
 // ── TCM.ch Zürich Bahnhofstrasse: zwei Fassungen, Umschaltung allein über clinic.vorVertrag (src/data/locations.ts). ──
 // Seit 02.11.2026 live (Mietvertrag bestätigt): NACH_VERTRAG wird gerendert. VOR_VERTRAG bleibt als Mechanismus bestehen.
@@ -218,7 +221,7 @@ export const standorte: Record<string, Standort> = {
     anfahrt: { oev: '', autoParken: '' },
     therapien: ['akupunktur', 'gesichtsakupunktur', 'schroepfen', 'tuina', 'kraeutertherapie', 'akupressur', 'shiatsu', 'gua-sha'],
     beschwerdenIntro: 'Häufige Anliegen, mit denen du in Basel anfragen kannst. Auf den einzelnen Seiten steht, wie wir vorgehen, wie viele Sitzungen realistisch sind und wo die Grenzen der TCM liegen.',
-    beschwerden: ['rueckenschmerzen', 'nackenschmerzen', 'migraene', 'stress-burnout', 'kinderwunsch', 'ischias'],
+    beschwerden: NETZ_BESCHWERDEN, // gleiche Boxen wie St. Gallen
     team: [],
     teamTitel: 'Standortleitung Basel',
     teamIntro: 'Janine Trebes ist als Standortleiterin für Basel vorgesehen. Ihr Profil und ihren öffentlichen Registereintrag findest du auf der Profilseite.',
@@ -232,10 +235,10 @@ export const standorte: Record<string, Standort> = {
       { q: 'Welche Beschwerden behandelt ihr in Basel am häufigsten?', a: 'Rücken- und Nackenschmerzen, Ischias, Migräne, Schlafprobleme, Stress und Kinderwunsch-Begleitung. Was die TCM dabei realistisch leisten kann und wo ihre Grenzen liegen, steht auf den einzelnen Beschwerdeseiten; beim Erstgespräch sagen wir dir ehrlich, ob eine Behandlung in deinem Fall sinnvoll ist.' },
       { q: 'Behandelt ihr auch Grenzgänger aus Deutschland und Frankreich?', a: 'Ja. Entscheidend ist nicht dein Wohnort, sondern deine Versicherung. Wer in der Schweiz arbeitet und hier grundversichert ist, kann eine Schweizer Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen. Bist du dagegen in Deutschland oder Frankreich versichert, zahlst du bei uns selbst und reichst die Rechnung bei deiner Kasse ein. Ob die etwas übernimmt, hängt von deinem Tarif ab. Schick uns vorher deine Angaben, dann sagen wir dir, was auf dich zukommt.' },
     ],
-    // Visualisierungen der geplanten Basler Praxisräume (Inhaber-Upload 05.11.2026) – keine Fotos, Beschriftung sichtbar.
+    // Fotos der Basler Praxisräume (Inhaber, 05.11.2026): Empfang (quer) und Lounge (hoch).
     praxisBilder: [
-      { src: '/images/basel-empfang-visualisierung.webp', srcset: '/images/basel-empfang-visualisierung-800.webp 800w, /images/basel-empfang-visualisierung.webp 1448w', width: 1448, height: 1086, ratio: '4/3', alt: 'Visualisierung: Empfangstheke mit TCM.ch-Logo in den geplanten Basler Praxisräumen', label: 'Visualisierung der geplanten Praxisräume' },
-      { src: '/images/basel-lounge-visualisierung.webp', srcset: '/images/basel-lounge-visualisierung-600.webp 600w, /images/basel-lounge-visualisierung.webp 941w', width: 941, height: 1672, ratio: '3/4', pos: 'center 42%', alt: 'Visualisierung: ruhige Lounge mit Glaswand und Sitzgruppe in den geplanten Basler Praxisräumen', label: 'Visualisierung der geplanten Praxisräume' },
+      { src: '/images/basel-empfang.webp', srcset: '/images/basel-empfang-800.webp 800w, /images/basel-empfang.webp 1448w', width: 1448, height: 1086, ratio: '4/3', alt: 'Empfangstheke mit TCM.ch-Logo in unserer Praxis in Basel', label: 'Einblick in unsere Praxisräume in Basel' },
+      { src: '/images/basel-lounge.webp', srcset: '/images/basel-lounge-600.webp 600w, /images/basel-lounge.webp 941w', width: 941, height: 1672, ratio: '3/4', pos: 'center 42%', alt: 'Ruhige Lounge mit Glaswand und Sitzgruppe in unserer Praxis in Basel', label: 'Einblick in unsere Praxisräume in Basel' },
     ],
     wissenLink: { href: '/wissen/tcm-basel-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Basel abläuft, was sie kostet und was die Studien hergeben.' },
     massageLink: { href: '/massage-basel/', text: 'Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite', anchor: 'Massage in Basel' },

@@ -1,4 +1,4 @@
-// Browser-Test: Basel-Praxisbilder (Visualisierungen) in «Über die Praxis». Nach `npm run build`:
+// Browser-Test: Basel-Praxisbilder (Fotos der Praxisräume) in «Über die Praxis» + Beschwerden-Boxen wie St. Gallen. Nach `npm run build`:
 // node scripts/test-basel-bilder.mjs [dist] [screenshot-ordner]
 // Prüft Reihenfolge, Beschriftung, Abmessungen (kein Layoutsprung), Seitenverhältnis (keine Verzerrung), Paar-Layout,
 // Lazy Loading, Overflow bei 320/390/768/1440 px. Alle externen Requests blockiert.
@@ -9,7 +9,8 @@ const srv = http.createServer((q, s) => { let p = decodeURIComponent(q.url.split
 await new Promise((r) => srv.listen(0, '127.0.0.1', r)); const origin = 'http://127.0.0.1:' + srv.address().port;
 const br = await puppeteer.launch({ executablePath: process.env.CHROMIUM || '/opt/pw-browsers/chromium', headless: true, args: ['--no-sandbox', '--no-proxy-server'] });
 let fails = 0, pass = 0; const ok = (c, m) => { if (c) { pass++; console.log('  ✓ ' + m); } else { fails++; console.log('  ✗ ' + m); } };
-const LABEL = 'Visualisierung der geplanten Praxisräume';
+const LABEL = 'Einblick in unsere Praxisräume in Basel';
+const VERBOTEN = /Visualisierung|visualisierung|Symbolbild|geplant/;
 for (const w of [320, 390, 768, 1440]) {
   const pg = await br.newPage(); await pg.setRequestInterception(true); pg.on('request', (r) => r.url().startsWith(origin) ? r.continue() : r.abort());
   await pg.setViewport({ width: w, height: w < 500 ? 844 : 900, isMobile: w < 500, hasTouch: w < 500 });
@@ -31,11 +32,19 @@ for (const w of [320, 390, 768, 1440]) {
   ok(e.wAttr === 1448 && e.hAttr === 1086 && l.wAttr === 941 && l.hAttr === 1672, `${w}px explizite Abmessungen entsprechen den Dateien (${e.nat}, ${l.nat})`);
   ok(Math.abs(e.ratio - 4 / 3) < 0.02 && Math.abs(l.ratio - 3 / 4) < 0.02 && e.fit === 'cover' && l.fit === 'cover', `${w}px Seitenverhältnis gehalten, keine Verzerrung (object-fit cover; ${e.ratio.toFixed(3)} / ${l.ratio.toFixed(3)})`);
   if (w >= 640) ok(Math.abs(e.h - l.h) <= 2, `${w}px Paar gleich hoch (${e.h}/${l.h} px)`);
-  ok(r.items.every((x) => x.label === LABEL && x.capIn) && r.items.every((x) => /^Visualisierung: /.test(x.alt)), `${w}px Beschriftung «${LABEL}» sichtbar im Bild, Alt-Text als Visualisierung gekennzeichnet`);
+  ok(r.items.every((x) => x.label === LABEL && x.capIn) && r.items.every((x) => x.alt.length > 20 && /Basel/.test(x.alt) && !VERBOTEN.test(x.alt + x.label + x.src)), `${w}px Beschriftung «${LABEL}» sichtbar im Bild; Alt-Text/Datei ohne «Visualisierung/Symbolbild/geplant»`);
   ok(!r.ow && r.boxRight && e.radius === l.radius && parseFloat(e.radius) > 0, `${w}px kein Overflow, gleiche Rundung wie die SG-Vorlage (${e.radius})`);
-  ok(/-(800|600)\.webp$|visualisierung\.webp$/.test(e.cur) && /webp$/.test(l.cur), `${w}px WebP aus srcset geladen (${e.cur}, ${l.cur})`);
+  ok(/basel-empfang(-800)?\.webp$/.test(e.cur) && /basel-lounge(-600)?\.webp$/.test(l.cur) && /webp$/.test(l.cur), `${w}px WebP aus srcset geladen (${e.cur}, ${l.cur})`);
   if (shots) await pg.screenshot({ path: path.join(shots, `basel-praxisbilder-${w}.png`), clip: await pg.$eval('.up-bilder-paar', (b) => { const x = b.getBoundingClientRect(); return { x: 0, y: Math.max(0, x.top + scrollY - 70), width: innerWidth, height: Math.min(x.height + 140, 2400) }; }) });
   await pg.close();
+}
+// Beschwerden-Boxen: Basel zeigt dieselben Boxen (Ziele, Reihenfolge, Kartenaufbau) wie St. Gallen
+{ const boxes = async (u, sel) => { const pg = await br.newPage(); await pg.setRequestInterception(true); pg.on('request', (r) => r.url().startsWith(origin) ? r.continue() : r.abort());
+    await pg.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true }); await pg.goto(origin + u, { waitUntil: 'load' });
+    const x = await pg.$eval(sel, (s) => ({ hrefs: [...s.querySelectorAll('.svc-grid > a.svc-card')].map((a) => a.getAttribute('href')), parts: [...s.querySelectorAll('.svc-grid > a.svc-card')].every((a) => a.querySelector('.svc-photo-wrap img[width][height]') && a.querySelector('.svc-name') && a.querySelector('.svc-tagline')), ow: document.documentElement.scrollWidth > innerWidth + 1 }));
+    await pg.close(); return x; };
+  const sg = await boxes('/standorte/st-gallen/', '#sg-beschwerden'), bs = await boxes('/standorte/basel/', '#beschwerden-basel');
+  ok(sg.hrefs.length === 8 && bs.hrefs.join() === sg.hrefs.join() && sg.parts && bs.parts && !bs.ow, `Basel-Beschwerden = SG-Boxen (${bs.hrefs.length}: ${bs.hrefs.map((h) => h.split('/')[2]).join(', ')}), gleicher Kartenaufbau, kein Overflow`);
 }
 await br.close(); srv.close();
 console.log(`\n${pass} PASS / ${fails} FAIL`); process.exit(fails ? 1 : 0);

@@ -372,7 +372,10 @@
       if (!tel) fail('telefon', 'Bitte gib deine Telefonnummer an.');
       else if (!phoneOk(tel)) fail('telefon', 'Bitte prüfe deine Telefonnummer (z. B. +41 79 123 45 67).');
       var em = form.querySelector('[name="email"]').value.trim();
-      if (em && !emailOk(em)) fail('email', 'Bitte prüfe deine E-Mail-Adresse.');
+      // E-Mail Pflicht (05.11.2026) im gemeinsamen Formular (Feld required); Format wie bisher geprüft.
+      var emReq = form.querySelector('[name="email"]').required;
+      if (!em && emReq) fail('email', 'Bitte gib deine E-Mail-Adresse an.');
+      else if (em && !emailOk(em)) fail('email', 'Bitte prüfe deine E-Mail-Adresse.');
       if (first) {
         var fe = first === 'terminart' ? (radios.filter(function (r) { return !r.disabled; })[0]) : form.querySelector('[name="' + first + '"]');
         if (fe) { openFor(fe); fe.focus(); }
@@ -426,7 +429,7 @@
           if (window.turnstile && tsEl) { try { window.turnstile.reset(tsEl); } catch (e3) {} }
           var code = String(err && err.message || '');
           if (errBox) {
-            errBox.textContent = code === 'missing_name' ? 'Bitte gib deinen Namen an.' : code === 'invalid_phone' ? 'Bitte prüfe deine Telefonnummer.' : code === 'invalid_email' ? 'Bitte prüfe deine E-Mail-Adresse.'
+            errBox.textContent = code === 'missing_name' ? 'Bitte gib deinen Namen an.' : code === 'missing_email' ? 'Bitte gib deine E-Mail-Adresse an.' : code === 'invalid_phone' ? 'Bitte prüfe deine Telefonnummer.' : code === 'invalid_email' ? 'Bitte prüfe deine E-Mail-Adresse.'
               : code === 'invalid_offer_scope' ? 'Diese Anfrageart ist für den gewählten Standort nicht verfügbar.'
               : code === 'invalid_standort' || code === 'missing_standort' ? 'Bitte wähle einen Standort aus der Liste.'
               : 'Das hat gerade nicht geklappt. Bitte versuch es nochmals oder ruf uns an.';
