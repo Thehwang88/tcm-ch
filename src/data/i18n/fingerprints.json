@@ -66,8 +66,8 @@
     "src/data/standorte.ts#standorte.zuerich-bahnhofstrasse": "65880954a2ff6d93"
   },
   "location:basel": {
-    "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
-    "src/data/standorte.ts#standorte.basel": "45dc0452a871c742"
+    "src/data/locations.ts#clinics.basel": "4cc4dc70349f3d4d",
+    "src/data/standorte.ts#standorte.basel": "13d78ac8b1ff23be"
   },
   "location:luzern": {
     "src/data/locations.ts#clinics.luzern": "e1eac8017104a07f"
