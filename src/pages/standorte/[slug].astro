@@ -395,7 +395,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
           Therapien → Team → Beschwerden → Transparenz → Krankenkasse → lokale Inhalte → Praxen in der Nähe →
           WhatsApp → FAQ → unteres Formular → Weiterlesen. */}
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
-        <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} />
+        <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} umleitung={!!PU} />
         {PU ? <div slot="form"><Fragment set:html={umleitungCard} /></div> : <div slot="form" data-std-box-oben><AnfrageKarte data={data} sitekey={turnstileSitekey} oben /></div>}
         <UeberPraxis slot="info" data={data} inner />
       </KontaktPraxis>

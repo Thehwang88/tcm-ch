@@ -92,6 +92,8 @@
         zielBox.hidden = !nonTreat;
         if (nonTreat) { var zt = ZIEL[tg.art] || ZIEL.anfrage; zielBox.querySelector('[data-kf-ziel-h]').textContent = zt[0] + (tg.art === 'routing' ? '' : ': ' + tg.label); zielBox.querySelector('[data-kf-ziel-t]').textContent = zt[1]; }
       }
+      // Zielhinweis der gewählten Option (data-hinweis, z. B. Partnerpraxis Hwang).
+      var zh = form.querySelector('[data-kf-ziel-hinweis]'); if (zh) { var zo = opt(); var zt = zo ? zo.getAttribute('data-hinweis') || '' : ''; zh.textContent = zt; zh.hidden = !zt; }
       var t = effType();
       card.classList.toggle('kf--checkin', t === 'checkin'); card.classList.toggle('kf--behandlung', t === 'behandlung');
       radios.forEach(function (r) { var l = r.closest('.kf-opt'); if (l) l.classList.toggle('is-checked', r.checked); });

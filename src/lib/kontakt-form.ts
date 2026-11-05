@@ -176,8 +176,10 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     `<select class="kf-input kf-select" id="${p}-standort" name="standort" required aria-describedby="${p}-standort-err">` +
     `<option value="">Standort auswählen</option>` +
     (() => { const opts = globalOptions(); const pi = pickZiel(opts, o.preselectStandort); return opts.map((x: any, i: number) =>
-      `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${i === pi ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); })() +
+      `<option value="${esc(x.value)}" data-id="${x.id}" data-art="${x.art}"${x.standard ? ' data-default="1"' : ''} data-tel="${esc(x.tel)}"${x.checkin ? ' data-checkin="1"' : ''}${x.onedoc ? ` data-onedoc="${esc(x.onedoc)}"` : ''}${x.hinweis ? ` data-hinweis="${esc(x.hinweis)}"` : ''}${i === pi ? ' selected' : ''}>${esc(x.label)}</option>`).join(''); })() +
     `</select>` +
+    // Zielhinweis (z. B. Partnerpraxis Hwang: Anfrage geht an praxis@hwang.ch), gefüllt aus data-hinweis der gewählten Option (kontakt-form.js).
+    `<p class="kf-fhint" data-kf-ziel-hinweis hidden></p>` +
     `<p class="kf-ferr" id="${p}-standort-err" hidden></p></div>`;
 
   const sgOd = !!(o.onedocBeideTerminarten && fixed && onedoc);

@@ -773,16 +773,7 @@ export const standorte: Record<string, Standort> = {
       "telefon": "+41 77 523 61 22",
       "email": "termine@tcm.ch",
       "mapEmbed": "https://www.google.com/maps?q=Marktgasse%2078%2C%208400%20Winterthur&output=embed",
-      "oeffnungszeiten": [
-        {
-          "tag": "Mo–Fr",
-          "zeit": "7:30–19:30 Uhr"
-        },
-        {
-          "tag": "Sa",
-          "zeit": "7:30–16:30 Uhr"
-        }
-      ],
+      "oeffnungszeiten": [],
       "geo": {
         "lat": 47.4992,
         "lng": 8.7281

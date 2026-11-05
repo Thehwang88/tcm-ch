@@ -146,7 +146,7 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
       <p><strong>{puHint}.</strong> Appointments in Winterthur are booked directly with Praxis Hwang: <a href={PU.href} target="_blank" rel="noopener">{puLabel} →</a></p>
     </div></div></div>
   ) : <StatusBanner clinic={clinic} />}
-  <UspStrip planned={planned} review={underReview} partner={!!partner} />
+  {PU ? <UspStrip items={[{ icon: 'shield', title: 'Supplementary insurance', sub: 'Reimbursement may be available, depending on your policy and the practitioner\'s recognition.' }, { icon: 'clock', title: 'Opening 2027', sub: 'Until then we welcome you at Praxis Hwang, Münzgasse 2.' }, { icon: 'chat', title: 'No referral needed', sub: 'Book directly on hwang.ch.' }]} /> : <UspStrip planned={planned} review={underReview} partner={!!partner} />}
 
   <section class="ev-section" id="about">
     <div class="wrap">
@@ -177,7 +177,7 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
           {openingHours.length ? (
             <ul>{openingHours.map((h) => { const [d, t] = formatHours(h).split(' '); return <li><span>{d}</span><span>{t}</span></li>; })}</ul>
           ) : (
-            <p>{underReview ? 'Not confirmed. Send your request and we suggest an available practice nearby.' : planned ? 'To be announced ahead of opening.' : 'By appointment. We confirm times with you when you get in touch.'}</p>
+            <p>{underReview ? 'Not confirmed. Send your request and we suggest an available practice nearby.' : planned ? 'To be announced ahead of opening.' : PU ? 'Opening 2027. Until then: Praxis Hwang, Münzgasse 2 (appointments via hwang.ch).' : 'By appointment. We confirm times with you when you get in touch.'}</p>
           )}
 
           <h3 style="margin-top:18px">Contact</h3>
