@@ -43,17 +43,20 @@ const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?
 // Geplante Standorte: keine Praxisfotos (es gibt noch keine Praxis, die sie zeigen könnten).
 // Hero-Video (hero-video.ts): das Praxisfoto ist nur noch Poster, also hier zeigen (echte Praxisfotos, nie Symbolbilder).
 const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) => heroVideo(data) ? !isSymbolbild(b.src) : norm(b.src) !== norm(data.hero.image));
+// Paar quer + hoch (z. B. Basel): Spalten im Verhältnis der Seitenverhältnisse → gleiche Bildhöhe; mobil untereinander.
+const paar = praxisBilder.length === 2 && praxisBilder.every((b) => b.ratio);
+const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').split('/').map(Number); return (w / h).toFixed(3) + 'fr'; }).join(' ');
 ---
 <h2 class="up-h2">Über die Praxis</h2>
 {(data.cro || data.praxisBilder) && !slim && (
   <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p></div>
 )}
 {praxisBilder.length > 0 && (
-  <div style={'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
+  <div class={paar ? 'up-bilder-paar' : undefined} style={paar ? `--up-cols:${paarCols}` : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
   {praxisBilder.map((b) => (
     <figure style="margin:0;border-radius:var(--r-card);overflow:hidden;box-shadow:var(--sh-md);position:relative">
-      <img src={b.src} srcset={b.srcset} sizes={b.srcset ? '(max-width:1023px) 100vw, 720px' : undefined} alt={b.alt} width="1448" height="1086" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block" />
-      <figcaption style="position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px">{b.label}</figcaption>
+      <img src={b.src} srcset={b.srcset} sizes={b.srcset ? (paar ? '(max-width:639px) 100vw, 480px' : '(max-width:1023px) 100vw, 720px') : undefined} alt={b.alt} width={b.width ?? 1448} height={b.height ?? 1086} loading="lazy" decoding="async" style={`width:100%;height:auto;aspect-ratio:${b.ratio ?? '4/3'};object-fit:cover;object-position:${b.pos ?? 'center'};display:block`} />
+      <figcaption style="position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);background:rgba(255,255,255,.92);color:var(--charcoal);font-family:var(--font-sans);font-size:12.5px;font-weight:700;line-height:1.35;padding:5px 11px;border-radius:999px">{b.label}</figcaption>
     </figure>
   ))}
   </div>
@@ -77,3 +80,7 @@ const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) =>
   <div class="up-transit"><h3 class="up-transit-h">Lage &amp; Anfahrt</h3>{data.anfahrt.oev && <p class="up-transit-area"><strong>Mit dem Zug &amp; ÖV:</strong> <span set:html={data.anfahrt.oev}></span></p>}{data.anfahrt.autoParken && <p class="up-transit-area"><strong>Mit dem Auto &amp; Parken:</strong> <span set:html={data.anfahrt.autoParken}></span></p>}</div>
 ) : null}
 {data.wissenLink && (<p class="sg-wissen-xlink" style="margin:20px 0 0;font-size:15px;line-height:1.55"><a href={data.wissenLink.href} style="color:var(--blue);font-weight:700;text-decoration:none">{data.wissenLink.label} →</a><span style="display:block;color:#4a4a4a;font-size:13.5px;margin-top:3px">{data.wissenLink.sub}</span></p>)}
+<style is:global>
+  .up-bilder-paar{display:grid;grid-template-columns:1fr;gap:16px;margin:0 0 22px}
+  @media (min-width:640px){.up-bilder-paar{grid-template-columns:var(--up-cols)}}
+</style>

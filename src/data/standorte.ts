@@ -70,7 +70,9 @@ export interface Standort {
   plannedTitle?: string;
   plannedNote?: string;
   /** Praxisbilder für "Über die Praxis" (CRO-Layout): Reihenfolge = Anzeige-Reihenfolge. */
-  praxisBilder?: { src: string; srcset?: string; alt: string; label: string }[];
+  /** width/height: echte Pixelmasse (gegen Layoutsprung); ratio: Anzeige-Seitenverhältnis (CSS), pos: object-position.
+   *  Ohne Angaben wie bisher 1448×1086, 4/3. Zwei Bilder mit ratio → Paar mit gleicher Höhe (Basel: quer + hoch). */
+  praxisBilder?: { src: string; srcset?: string; alt: string; label: string; width?: number; height?: number; ratio?: string; pos?: string }[];
   nearby?: { slug: string; plz: string; city: string; desc: string }[];
   /** Optionaler Rücklink auf den Wissen-Artikel des Standorts (gerendert in UeberPraxis). */
   wissenLink?: { href: string; label: string; sub: string };
@@ -230,8 +232,10 @@ export const standorte: Record<string, Standort> = {
       { q: 'Welche Beschwerden behandelt ihr in Basel am häufigsten?', a: 'Rücken- und Nackenschmerzen, Ischias, Migräne, Schlafprobleme, Stress und Kinderwunsch-Begleitung. Was die TCM dabei realistisch leisten kann und wo ihre Grenzen liegen, steht auf den einzelnen Beschwerdeseiten; beim Erstgespräch sagen wir dir ehrlich, ob eine Behandlung in deinem Fall sinnvoll ist.' },
       { q: 'Behandelt ihr auch Grenzgänger aus Deutschland und Frankreich?', a: 'Ja. Entscheidend ist nicht dein Wohnort, sondern deine Versicherung. Wer in der Schweiz arbeitet und hier grundversichert ist, kann eine Schweizer Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen. Bist du dagegen in Deutschland oder Frankreich versichert, zahlst du bei uns selbst und reichst die Rechnung bei deiner Kasse ein. Ob die etwas übernimmt, hängt von deinem Tarif ab. Schick uns vorher deine Angaben, dann sagen wir dir, was auf dich zukommt.' },
     ],
+    // Visualisierungen der geplanten Basler Praxisräume (Inhaber-Upload 05.11.2026) – keine Fotos, Beschriftung sichtbar.
     praxisBilder: [
-      { src: '/images/basel-reception.webp', alt: 'Symbolbild: Empfangsbereich einer TCM.ch Praxis', label: 'Symbolbild' },
+      { src: '/images/basel-empfang-visualisierung.webp', srcset: '/images/basel-empfang-visualisierung-800.webp 800w, /images/basel-empfang-visualisierung.webp 1448w', width: 1448, height: 1086, ratio: '4/3', alt: 'Visualisierung: Empfangstheke mit TCM.ch-Logo in den geplanten Basler Praxisräumen', label: 'Visualisierung der geplanten Praxisräume' },
+      { src: '/images/basel-lounge-visualisierung.webp', srcset: '/images/basel-lounge-visualisierung-600.webp 600w, /images/basel-lounge-visualisierung.webp 941w', width: 941, height: 1672, ratio: '3/4', pos: 'center 42%', alt: 'Visualisierung: ruhige Lounge mit Glaswand und Sitzgruppe in den geplanten Basler Praxisräumen', label: 'Visualisierung der geplanten Praxisräume' },
     ],
     wissenLink: { href: '/wissen/tcm-basel-erfahrungen-ablauf/', label: 'Erfahrungen & Ablauf', sub: 'Wie eine TCM-Behandlung in Basel abläuft, was sie kostet und was die Studien hergeben.' },
     massageLink: { href: '/massage-basel/', text: 'Geht es dir vor allem um Verspannungen und nicht um eine ganze Behandlungsserie? Angebot, Dauer und Preise stehen auf der Seite', anchor: 'Massage in Basel' },
