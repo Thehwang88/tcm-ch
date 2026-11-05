@@ -218,7 +218,10 @@ export const standorte: Record<string, Standort> = {
       ort: 'Basel',
       telefon: '+41 77 523 61 22',
       email: 'termine@tcm.ch',
-      oeffnungszeiten: [],
+      oeffnungszeiten: [
+        { tag: 'Mo–Sa', zeit: '7:30–19:30 Uhr' },
+        { tag: 'So', zeit: '8:00–17:00 Uhr' },
+      ],
       geo: { lat: 47.5528, lng: 7.5878 },
     },
     intro: {
@@ -239,7 +242,7 @@ export const standorte: Record<string, Standort> = {
       { q: 'Wie bekomme ich einen Termin in Basel?', a: 'Trag deine Angaben im Formular ein, schreib uns per WhatsApp oder an termine@tcm.ch. Wir melden uns persönlich mit einem Terminvorschlag.' },
       { q: 'Was kostet Akupunktur in Basel?', a: 'Eine Sitzung liegt bei rund 130 bis 160 Franken. Abgerechnet wird nach dem anerkannten Tarif 590 nach Behandlungsdauer. Die Erstkonsultation dauert länger, weil die Anamnese Zeit braucht, und liegt entsprechend höher. Den konkreten Betrag nennen wir dir vor dem Termin.' },
       { q: 'Zahlt die Krankenkasse die Behandlung?', a: 'Akupunktur läuft über die Zusatzversicherung für Komplementärmedizin, nicht über die Grundversicherung. Wie viel übernommen wird, hängt von Kasse, Modell und der Registrierung der behandelnden Fachperson ab. Deine Deckung prüfen wir kostenlos, bevor Kosten entstehen.' },
-      { q: 'Wann ist die Praxis in Basel geöffnet?', a: 'Die regulären Öffnungszeiten für Basel veröffentlichen wir, sobald sie bestätigt sind; bis dahin vergeben wir Termine individuell nach Anfrage. Sag uns Wunschtage und Tageszeit, wir melden uns persönlich mit einem Vorschlag.' },
+      { q: 'Wann ist die Praxis in Basel geöffnet?', a: 'Montag bis Samstag 7:30 bis 19:30 Uhr, Sonntag 8 bis 17 Uhr. Termine vergeben wir nach Vereinbarung: Sag uns Wunschtage und Tageszeit, wir melden uns mit einem Vorschlag.' },
       { q: 'Welche Beschwerden behandelt ihr in Basel am häufigsten?', a: 'Rücken- und Nackenschmerzen, Ischias, Migräne, Schlafprobleme, Stress und Kinderwunsch-Begleitung. Was die TCM dabei realistisch leisten kann und wo ihre Grenzen liegen, steht auf den einzelnen Beschwerdeseiten; beim Erstgespräch sagen wir dir ehrlich, ob eine Behandlung in deinem Fall sinnvoll ist.' },
       { q: 'Behandelt ihr auch Grenzgänger aus Deutschland und Frankreich?', a: 'Ja. Entscheidend ist nicht dein Wohnort, sondern deine Versicherung. Wer in der Schweiz arbeitet und hier grundversichert ist, kann eine Schweizer Zusatzversicherung für Komplementärmedizin abschliessen und darüber abrechnen. Bist du dagegen in Deutschland oder Frankreich versichert, zahlst du bei uns selbst und reichst die Rechnung bei deiner Kasse ein. Ob die etwas übernimmt, hängt von deinem Tarif ab. Schick uns vorher deine Angaben, dann sagen wir dir, was auf dich zukommt.' },
     ],
