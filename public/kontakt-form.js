@@ -165,6 +165,14 @@
     var noDefault = false;
     var usable = function (r) { var l = r && r.closest('.kf-opt'); return !!(r && !r.disabled && !(l && l.hidden)); };
     var applyDefault = function () { if (noDefault || !usable(rBeh) || radios.some(function (x) { return x.checked; })) return; rBeh.checked = true; };
+    // Expliziter Check-in-Wunsch, der hier nicht verfügbar ist: KEINE (kostenpflichtige) Auswahl als scheinbare Erfüllung
+    // stehen lassen. Auswahl lösen, Standard sperren (noDefault), Hinweis zeigen; Eingaben bleiben. Hinweis: globale Formulare
+    // zeigen den bestehenden Standort-Hinweis (scopeNote), Formulare mit festem Standort den Hinweis an der Auswahl.
+    var checkinNA = 'Der kostenlose TCM-Check-in ist derzeit nur in ' + scopeNames + ' verfügbar. Bitte wähle eine Terminart.';
+    var blockWish = function () {
+      radios.forEach(function (x) { x.checked = false; }); noDefault = true; sync();
+      if (!(scopeNote && !scopeNote.hidden)) fieldErr('terminart', checkinNA);
+    };
     radios.forEach(function (r) { r.addEventListener('change', function () { noDefault = false; fieldErr('terminart', ''); sync(); }); });
     if (sel) sel.addEventListener('change', function () { fieldErr('standort', ''); sync(); applyDefault(); sync(); });
 
@@ -189,7 +197,8 @@
       if (r0 && !radios.some(function (x) { return x.checked; })) { r0.checked = true; }
     }
     // Expliziter Check-in-Wunsch, den dieses Formular nicht anbietet: kein stiller Ersatz durch den Ersttermin.
-    if (explicit === 'checkin' && !rCheckin) noDefault = true;
+    var blockedOnLoad = explicit === 'checkin' && !rCheckin;
+    if (blockedOnLoad) { radios.forEach(function (x) { x.checked = false; }); noDefault = true; }
     applyDefault();
     if (card.getAttribute('data-kf-autoprefill') === 'terminform') {
       // Port aus TerminForm.astro: 1. data-prefill (Anliegen), 2. ?von=, 3. same-origin Referrer.
@@ -221,6 +230,8 @@
       var cp = form.querySelector('input[name="cta_pos"]'); if (el && cp) cp.value = el.getAttribute('data-care-cta') || '';
     });
     sync();
+    // Direktlink mit Check-in-Wunsch an einem Formular ohne Check-in-Angebot: Hinweis an der (gelösten) Auswahl.
+    if (blockedOnLoad) fieldErr('terminart', checkinNA);
 
     // ── Kompakter SG-Hero: Rückruf-Bereich und optionale Angaben als Disclosures (ohne JS: alles offen) ──
     var rrBtn = form.querySelector('[data-kf-rr]'), rrBox = rrBtn && document.getElementById(rrBtn.getAttribute('aria-controls'));
@@ -304,8 +315,8 @@
       if (wish === 'behandlung' || wish === 'checkin') {
         var r = form.querySelector('input[name="terminart"][value="' + wish + '"]');
         if (usable(r)) { r.checked = true; noDefault = false; fieldErr('terminart', ''); }
-        // Nicht verfügbar: bestehende Auswahl/Hinweis bleibt; kein stiller Ersatz durch den Ersttermin.
-        else if (wish === 'checkin' && !radios.some(function (x) { return x.checked; })) noDefault = true;
+        // Check-in hier nicht verfügbar: keine Ersttermin-Auswahl als scheinbare Erfüllung stehen lassen.
+        else if (wish === 'checkin') { blockWish(); return; }
       } else applyDefault();
       sync(); if (radios.some(function (x) { return x.checked; })) showRr();
     };

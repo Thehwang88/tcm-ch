@@ -67,7 +67,7 @@
   },
   "location:basel": {
     "src/data/locations.ts#clinics.basel": "7a89bc1df50dd93b",
-    "src/data/standorte.ts#standorte.basel": "9a3317783996c7a1"
+    "src/data/standorte.ts#standorte.basel": "a988777f98a9d90b"
   },
   "location:luzern": {
     "src/data/locations.ts#clinics.luzern": "e1eac8017104a07f"

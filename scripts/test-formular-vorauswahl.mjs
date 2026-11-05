@@ -144,10 +144,19 @@ for (const [u, i, want, label] of [
   if (u.includes('#')) { await pg.waitForFunction((C) => document.querySelector(C).hasAttribute('data-kf-nav'), { timeout: 4000 }, card(i)).catch(() => {}); const v = await view(pg, i); ok(aligned(v), `${label}: Direkteinstieg ausgerichtet (${desc(v)})`); }
   await pg.close();
 }
-{ // Check-in explizit, aber Formular mit nur einem Angebot (Basel): bestehender Ablauf wie auf main (einziges Angebot
-  // serverseitig vorgewählt, keine Check-in-Kachel, kein Check-in-Wortlaut) – keine neue Ersetzungslogik.
-  const { pg } = await open('/standorte/basel/?terminart=checkin'); const s = await st(pg, 'standort');
-  ok(s.checked === 'behandlung' && consistent(s) && await pg.$eval(card('standort'), (c) => !c.querySelector('input[value=checkin]') && !/Check-in/i.test(c.textContent) && c.querySelectorAll('input[name=terminart]').length === 1), `Basel ?terminart=checkin: einziges Angebot sichtbar Ersttermin (wie main), kein Check-in suggeriert (${JSON.stringify(s)})`);
+{ // Direktlink mit Check-in-Wunsch an einem Standort ohne Check-in (Basel, nur Ersttermin): keine kostenpflichtige Auswahl als
+  // scheinbare Erfüllung; Auswahl gelöst, Hinweis sichtbar, bewusste Wahl nötig (beide Formulare der Seite).
+  const { pg, calls } = await open('/standorte/basel/?terminart=checkin');
+  for (const i of ['standort-oben', 'standort']) {
+    const s = await st(pg, i); const n = await pg.$eval(`#kf-${i}-ta-err`, (e) => (e.hidden ? '' : e.textContent));
+    ok(s.checked === '' && s.marked === '' && s.submit === 'Termin anfragen' && /Check-in ist derzeit nur in .+ verfügbar\. Bitte wähle eine Terminart\./.test(n) && await pg.$eval(card(i), (c) => !c.querySelector('input[value=checkin]')), `Basel ?terminart=checkin ${i}: keine Auswahl, Hinweis «${n}»`);
+  }
+  await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
+  ok(calls.length === 0 && await pg.$eval('#kf-standort-ta-err', (e) => !e.hidden), 'Basel ?terminart=checkin: Absenden ohne bewusste Wahl → kein Versand');
+  await pick(pg, 'standort', 'behandlung'); const s2 = await st(pg, 'standort');
+  ok(s2.checked === 'behandlung' && consistent(s2) && await pg.$eval('#kf-standort-ta-err', (e) => e.hidden), 'Basel: bewusste Wahl Ersttermin → Hinweis weg, Button «Ersttermin anfragen»');
+  await submit(pg, 'standort', calls, 1);
+  ok(calls.length === 1 && calls[0].angebot_id === 'ERSTTERMIN_BEHANDLUNG', 'Basel: nach bewusster Wahl Versand (gemockt) mit Ersttermin');
   await pg.close();
 }
 { // Homepage: Check-in explizit, dann Standort ohne Check-in → Hinweis, keine Ersatzwahl; Standortwechsel prüft erneut
@@ -217,6 +226,53 @@ for (const [u, i, pickV, angebot] of [['/standorte/st-gallen/', 'sg-hero', '', '
 { // Fehlerhafter Versand: keine Conversion
   const { pg, calls } = await open('/standorte/basel/', { status: 500 }); await type(pg, 'standort', 'name', 'Test Person'); await type(pg, 'standort', 'telefon', '+41 79 123 45 67'); await submit(pg, 'standort', calls, 1);
   ok(calls.length === 1 && (await kfEvents(pg)).length === 0, 'Server-Fehler: keine Conversion');
+  await pg.close();
+}
+
+console.log('G. Expliziter Check-in-Wunsch an nicht freigegebenem Ziel (Regression)');
+const naInfo = (pg, i) => pg.$eval(card(i), (c) => { const e = c.querySelector('[id$="-ta-err"]'), sn = c.querySelector('[data-kf-scope-note]');
+  return { err: e && !e.hidden ? e.textContent : '', scope: !!(sn && !sn.hidden), name: (c.querySelector('[name=name]') || {}).value, tel: c.querySelector('[name=telefon]').value }; });
+for (const w of [390, 1440]) {
+  // Feste Standortseite ohne Check-in (Basel): frisch → Ersttermin automatisch; expliziter Check-in-CTA → gelöst + Hinweis
+  const { pg, calls } = await open('/standorte/basel/', { width: w });
+  ok((await st(pg, 'standort-oben')).checked === 'behandlung', `${w}px Basel frisch: Ersttermin automatisch gewählt`);
+  await type(pg, 'standort-oben', 'name', 'Mia'); await type(pg, 'standort-oben', 'telefon', '+41 79 222 33 44');
+  await pg.evaluate(() => { for (const [id, t] of [['t-ci', 'checkin'], ['t-gen', '']]) { const a = document.createElement('a'); a.id = id; a.href = '#anfrage-box'; if (t) a.setAttribute('data-kf-terminart', t); a.textContent = id; document.body.appendChild(a); } });
+  const dl0 = await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).length);
+  let n0 = await navCount(pg, 'standort-oben'); await pg.$eval('#t-ci', (a) => a.click()); await waitNav(pg, 'standort-oben', n0);
+  let s = await st(pg, 'standort-oben'), x = await naInfo(pg, 'standort-oben');
+  ok(s.checked === '' && s.marked === '' && s.submit === 'Termin anfragen' && /Check-in ist derzeit nur in/.test(x.err) && x.name === 'Mia' && x.tel === '+41 79 222 33 44', `${w}px Basel expliziter Check-in-CTA: keine kostenpflichtige Auswahl, Hinweis sichtbar, Eingaben erhalten`);
+  ok(calls.length === 0 && (await pg.evaluate(() => window.dataLayer.filter((e) => e && e.event && !/^gtm\./.test(e.event)).length)) === dl0, `${w}px Basel: Wechsel ohne Versand und ohne Event`);
+  ok((await st(pg, 'standort')).checked === 'behandlung', `${w}px Basel: unteres Formular unberührt`);
+  n0 = await navCount(pg, 'standort-oben'); await pg.$eval('#t-gen', (a) => a.click()); await waitNav(pg, 'standort-oben', n0);
+  ok((await st(pg, 'standort-oben')).checked === '', `${w}px Basel: generische CTA danach überschreibt den Zustand nicht mit dem Ersttermin`);
+  await pick(pg, 'standort-oben', 'behandlung'); n0 = await navCount(pg, 'standort-oben'); await pg.$eval('#t-gen', (a) => a.click()); await waitNav(pg, 'standort-oben', n0);
+  s = await st(pg, 'standort-oben'); x = await naInfo(pg, 'standort-oben');
+  ok(s.checked === 'behandlung' && consistent(s) && !x.err, `${w}px Basel: bewusste Wahl → Hinweis weg; generische CTA behält die manuelle Wahl`);
+  await pg.close();
+}
+{ // Homepage (global): Standort ohne Check-in → expliziter Check-in-Aufruf → gelöst + Standort-Hinweis; Standortwechsel prüft erneut
+  const { pg, calls } = await open('/');
+  await choose(pg, 'home', 'Basel'); ok((await st(pg, 'home')).checked === 'behandlung', 'Homepage Basel: Ersttermin automatisch');
+  await type(pg, 'home', 'name', 'Mia');
+  let n0 = await navCount(pg, 'home'); await pg.evaluate(() => window.kfGoto(document.querySelector('[data-kf-instance="home"]'), { terminart: 'checkin' })); await waitNav(pg, 'home', n0);
+  let s = await st(pg, 'home'), x = await naInfo(pg, 'home');
+  ok(s.checked === '' && x.scope && !x.err && x.name === 'Mia', `Homepage Basel + expliziter Check-in: keine Auswahl, bestehender Standort-Hinweis sichtbar (kein Doppelhinweis), Name erhalten`);
+  await choose(pg, 'home', 'Winterthur Marktgasse'); s = await st(pg, 'home'); x = await naInfo(pg, 'home');
+  ok(s.checked === '' && !x.scope, 'Homepage → Marktgasse (Check-in verfügbar): keine automatische Ersatzwahl, Hinweis weg, bewusste Wahl möglich');
+  await pick(pg, 'home', 'checkin'); s = await st(pg, 'home'); ok(s.checked === 'checkin' && consistent(s), 'Homepage Marktgasse: bewusste Wahl Check-in');
+  await choose(pg, 'home', 'Basel'); s = await st(pg, 'home');
+  ok(s.checked === '' && (await naInfo(pg, 'home')).scope && calls.length === 0, 'Homepage Check-in → Basel: wieder gelöst + Hinweis, kein Versand');
+  // Vormerkung unverändert
+  await choose(pg, 'home', 'Luzern – Vormerkung, Eröffnung 2027'); n0 = await navCount(pg, 'home');
+  await pg.evaluate(() => window.kfGoto(document.querySelector('[data-kf-instance="home"]'), { terminart: 'checkin' })); await waitNav(pg, 'home', n0); x = await naInfo(pg, 'home');
+  ok(await pg.$eval(card('home'), (c) => c.querySelector('.kf-opts').hidden && !c.querySelector('[data-kf-ziel]').hidden) && !x.err, 'Vormerkung + Check-in-Wunsch: Vormerkungsablauf unverändert, kein Hinweis/keine Kachel');
+  await pg.close();
+}
+{ // Generischer CTA mit gültiger manueller Wahl bleibt (Kontrolle)
+  const { pg } = await open('/standorte/zuerich-oerlikon/'); await pick(pg, 'standort-oben', 'checkin');
+  const n0 = await navCount(pg, 'standort-oben'); await pg.$eval('a[href="#anfrage-box"]', (a) => a.click()); await waitNav(pg, 'standort-oben', n0);
+  ok((await st(pg, 'standort-oben')).checked === 'checkin', 'Oerlikon: manueller Check-in → generische CTA: bleibt');
   await pg.close();
 }
 
