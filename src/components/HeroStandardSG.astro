@@ -18,6 +18,8 @@ const SG_MAPS = 'https://www.google.com/maps/place/TCM.ch+St+Gallen/@47.423225,9
 // Google-Bewertungen aus dem GBP «TCM.ch St. Gallen»: Werte MANUELL aus dem Profil übernehmen (nie schätzen), mit Stand-Datum.
 // Solange rating/count null sind, wird die Sternezeile im Hero nicht gerendert (SEO-Audit 11.10.2026: nur mit live verifiziertem Wert).
 const SG_GOOGLE = { rating: null as number | null, count: null as number | null, stand: '' };
+// Sterne-Zeile erst ab dieser Anzahl Bewertungen rendern (Inhaber 05.11.2026; aktuell 12 Bewertungen → keine Zeile).
+const SG_GOOGLE_MIN = 25;
 // 1 bis 2 kurze Zitate aus echten Google-Bewertungen (Vorname oder Initialen). Leer = keine Zitate in der Kontaktsektion.
 // Nur Wortlaut aus dem GBP übernehmen, nie formulieren.
 const SG_ZITATE: { text: string; name: string }[] = [];
@@ -46,7 +48,7 @@ const card = renderKontaktForm({
       <h1 class="lsr-h1">Akupunktur &amp; TCM in <span class="lsr-accent">St. Gallen</span></h1>
       <p class="lsr-lead">Medizinisch fundierte TCM wenige Gehminuten vom Bahnhof St. Gallen. Lerne uns beim kostenlosen Check-in kennen, bevor du dich entscheidest.</p>
       <div class="lsr-trust">
-        {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && (
+        {SG_GOOGLE.rating != null && SG_GOOGLE.count != null && SG_GOOGLE.count >= SG_GOOGLE_MIN && (
           <div class="lsr-google"><a href={SG_MAPS} target="_blank" rel="noopener noreferrer" title={`Google-Bewertungen, Stand ${SG_GOOGLE.stand}`}><span class="lsr-stars" aria-hidden="true">★★★★★</span> <strong>{fmtRating(SG_GOOGLE.rating)}</strong> · {SG_GOOGLE.count} Google-Bewertungen</a></div>
         )}
         <div><span class="lsr-check">✓</span> Krankenkassen anerkannt (EMR/ASCA)</div>
@@ -74,7 +76,7 @@ const card = renderKontaktForm({
   <div class="sgt-wrap">
     <div class="sgt-head">
       <h2 class="section-title" id="sgt-h">Termin in <em>St. Gallen</em></h2>
-      <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt.</p>
+      <p class="sgt-sub">Wir melden uns persönlich. EMR-/ASCA-anerkannt. <a href={SG_MAPS} target="_blank" rel="noopener noreferrer" class="sgt-google">Bewertungen auf Google ansehen <span aria-hidden="true">→</span></a></p>
     </div>
     <div class="sgt-channels">
       <a class="sgt-ch sgt-ch--primary" href="#online-buchen" data-care-cta="termin-karte-checkin">
@@ -148,6 +150,8 @@ const card = renderKontaktForm({
   .sgt-head{margin-bottom:22px}
   .sgt-head .section-title{margin:0 0 6px}
   .sgt-sub{margin:0;font-size:16px;color:var(--mid);line-height:1.5}
+  .sgt-google{color:var(--blue);font-weight:700;text-decoration:none;white-space:nowrap}
+  .sgt-google:hover{text-decoration:underline}
   .sgt-channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
   .sgt-ch{display:flex;flex-direction:column;height:100%;border:1px solid var(--border);border-radius:var(--r-card,16px);padding:22px;text-decoration:none;background:#fff;transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
   .sgt-ch:hover{border-color:var(--blue);box-shadow:var(--sh-card);transform:translateY(-2px)}
