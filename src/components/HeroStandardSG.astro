@@ -102,7 +102,7 @@ const card = renderKontaktForm({
         <p class="sgt-od-sub">Wähle im Buchungsfenster «Kostenloser TCM 360°-Check-in» als Behandlungsgrund. Bestätigung sofort per E-Mail.</p>
       </div>
       <Fragment set:html={ONEDOC_SG_WIDGET} />
-      <p class="sgt-od-fallback" data-od-fallback hidden>Buchungsfenster lädt nicht? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener">Direkt bei OneDoc öffnen <span aria-hidden="true">→</span></a></p>
+      <p class="sgt-od-fallback">Buchungsfenster bleibt leer? <a href={ONEDOC_SG_WIDGET_URL} target="_blank" rel="noopener">Direkt bei OneDoc öffnen <span aria-hidden="true">→</span></a></p>
     </div>
     {SG_ZITATE.length > 0 && (
       <ul class="sgt-quotes" aria-label="Google-Bewertungen">
@@ -180,14 +180,6 @@ const card = renderKontaktForm({
   @media (max-width:760px){.sgt-channels{grid-template-columns:minmax(0,1fr);gap:10px}.sgt-ch{padding:16px 18px}.sgt-ch-title{font-size:17px}.sgt-onedoc{padding:14px 12px 10px}}
 </style>
 <script is:inline>
-  // Fallback-Link, falls das OneDoc-Widget keine Höhenmeldung (postMessage od-widget-height) sendet, z. B. bei blockierten
-  // Dritt-Inhalten. Kein Tracking, keine Änderung am Embed.
-  (function () {
-    var fb = document.querySelector('[data-od-fallback]'); if (!fb) return;
-    var ok = false;
-    window.addEventListener('message', function (e) { if (e && e.data && e.data['od-widget-height']) ok = true; });
-    setTimeout(function () { if (!ok) fb.hidden = false; }, 8000);
-  })();
   // Ads-Parameter ?t=…: Zeile unter dem Hero, Anliegen-Vorbelegung, dataLayer-Variable therapy (nur bekannte Werte; nie Nutzertext).
   (function () {
     var T = { schroepfen: ['Schröpfen', '#sg-therapien'], akupunktur: ['Akupunktur', '#sg-therapien'], tuina: ['Tuina', '#sg-therapien'], beschwerden: ['Beschwerden', '#sg-beschwerden'] };
