@@ -143,7 +143,9 @@ const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.
     // Auto-expand the greeting once per session after ~15s, unless already shown/dismissed.
     var greeted = ss(function () { return sessionStorage.getItem('wac-greeted'); });
     var dismissed = ss(function () { return sessionStorage.getItem('wac-dismissed'); });
-    if (!greeted && !dismissed) {
+    // /standorte/st-gallen/: kein automatisches Aufklappen (Angebotsseite, Reibung vermeiden); Launcher bleibt bedienbar.
+    var quiet = /^\/standorte\/st-gallen\/?$/.test(location.pathname);
+    if (!greeted && !dismissed && !quiet) {
       setTimeout(function () {
         if (!open && !ss(function () { return sessionStorage.getItem('wac-dismissed'); })) {
           root.classList.add('is-greeting');

@@ -140,7 +140,9 @@ const TEL = `tel:+${site.whatsapp}`;
         var tn = primary.childNodes[i];
         if (tn.nodeType === 3 && tn.textContent.trim()) {
           var txt = document.createElement('span'); txt.className = 'scb-txt';
-          txt.innerHTML = '<span class="scb-l1">Termin anfragen</span><span class="scb-l2"><span class="scb-l2-long">Auch als Gratis 360°-Check</span><span class="scb-l2-short">Gratis 360° möglich</span></span>';
+          // SG-Standortseite mit Kontaktsektion #termin: Primär «Gratis Check-in» (einzeilig) → #termin.
+          txt.innerHTML = sgPage && document.getElementById('termin') ? '<span class="scb-l1">Gratis Check-in</span>'
+            : '<span class="scb-l1">Termin anfragen</span><span class="scb-l2"><span class="scb-l2-long">Auch als Gratis 360°-Check</span><span class="scb-l2-short">Gratis 360° möglich</span></span>';
           primary.replaceChild(txt, tn); primary.classList.add('scb-primary--sg'); document.body.classList.add('scb-reserve--sg'); break;
         }
       }
@@ -149,7 +151,7 @@ const TEL = `tel:+${site.whatsapp}`;
     // entfällt, damit er den Anchor nicht hijackt; bestehende WA-/Tel-Links (Tracking-Hooks) unverändert.
     var toOnedoc = sgPage && document.getElementById('online-buchen');
     if (primary && toOnedoc) {
-      primary.setAttribute('href', document.getElementById('kontakt') ? '#kontakt' : '#online-buchen');
+      primary.setAttribute('href', document.getElementById('termin') ? '#termin' : document.getElementById('kontakt') ? '#kontakt' : '#online-buchen');
     }
     if (primary && !toOnedoc) primary.addEventListener('click', function (e) {
       // No on-page contact form (e.g. wissen article) -> follow href to /kontakt/.
@@ -179,7 +181,7 @@ const TEL = `tel:+${site.whatsapp}`;
     var stdBox = !sgBox && /^\/standorte\/[a-z-]+\/?$/.test(location.pathname) && document.querySelector('[data-std-box-oben]');
     if (stdBox) sgBox = stdBox;
     if (sgBox) {
-      if (primary) primary.setAttribute('href', stdBox ? '#anfrage-box' : '#offer-form');
+      if (primary) primary.setAttribute('href', stdBox ? '#anfrage-box' : document.getElementById('termin') ? '#termin' : '#offer-form');
       var stops = [document.getElementById('kontakt'), document.getElementById('online-buchen')].filter(Boolean);
       var setVis = function (on) {
         if (bar.classList.contains('is-visible') !== on) bar.classList.toggle('is-visible', on);
