@@ -298,8 +298,8 @@ if (migrated) {
     }
     // Angebotsspezifische CTAs «Ersttermin anfragen» → explizit Ersttermin mit Behandlung (kontakt-form.js, data-kf-terminart).
     sgBody = sgBody
-      .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join('<a href="#offer-form" class="btn-primary" data-kf-terminart="behandlung">Ersttermin anfragen</a>')
-      .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join('<a href="#offer-form" class="sgcta-free" data-kf-terminart="behandlung">Ersttermin anfragen</a>');
+      .split('<a href="#offer-form" class="btn-primary">Ersttermin anfragen</a>').join('<a href="#termin-formular" class="btn-primary" data-kf-terminart="behandlung">Ersttermin anfragen</a>')
+      .split('<a href="#offer-form" class="sgcta-free">Ersttermin anfragen</a>').join('<a href="#termin-formular" class="sgcta-free" data-kf-terminart="behandlung">Ersttermin anfragen</a>');
     // Praxisfoto in «Über die Praxis»: der FIRST-30-Hero hat keine Fotohälfte, der reguläre Hero zeigt seit dem
     // gemeinsamen Hero-Video (HeroMedia) das Foto nur noch als Poster. Markup wie praxisBilder in UeberPraxis.astro.
     const uh = '<h2 class="up-h2">Über die Praxis</h2>';
@@ -327,6 +327,19 @@ if (migrated) {
     const tr0 = 'Kosten vorab klar', tr1 = 'Abrechnung nach Tarif 590. Was deine';
     if (!sgBody.includes(tr0) || !sgBody.includes(tr1)) throw new Error('st-gallen: Transparenz-Kostenkarte nicht gefunden - transparenz.ts geändert?');
     sgBody = sgBody.replace(tr0, 'Krankenkasse vorab klar').replace(tr1, 'Krankenkassen anerkannt (EMR/ASCA). Was deine');
+    // Duplikate zum Vertrauensblock im Termin-Bereich (06.11.2026): Transparenz-Karte «Krankenkasse vorab klar», Sektion
+    // «Krankenkassen anerkannt» (inkl. Kassenzeile + CTA) und «Dein TCM Team in St. Gallen» entfallen. Guards statt stiller Fallbacks.
+    const cut = (startMarker: string, endMarker: string, name: string, fromIdx = 0) => {
+      const a = sgBody.indexOf(startMarker, fromIdx); const b = a >= 0 ? sgBody.indexOf(endMarker, a + startMarker.length) : -1;
+      if (a < 0 || b < 0) throw new Error(`st-gallen: ${name} nicht gefunden - Leaf/transparenz.ts geändert?`);
+      sgBody = sgBody.slice(0, a) + sgBody.slice(b);
+    };
+    const trk = sgBody.indexOf('Krankenkasse vorab klar');
+    cut('<div class="usp-card">', '<div class="usp-card">', 'Transparenz-Krankenkassenkarte', sgBody.lastIndexOf('<div class="usp-card">', trk));
+    const kks = sgBody.indexOf('Krankenkassen <em>anerkannt</em>');
+    if (kks < 0) throw new Error('st-gallen: Sektion «Krankenkassen anerkannt» nicht gefunden - Leaf geändert?');
+    sgBody = sgBody.slice(0, sgBody.lastIndexOf('<section', kks)) + sgBody.slice(sgBody.indexOf('</section>', kks) + 10);
+    { const t0 = sgBody.indexOf('<section class="section" id="team-st-gallen"'); const t1 = t0 >= 0 ? sgBody.indexOf('</section>', t0) + 10 : -1; if (t1 < 10) throw new Error('st-gallen: Team-Sektion nicht gefunden - Leaf geändert?'); sgBody = sgBody.slice(0, t0) + sgBody.slice(t1); }
     // Alle Leaf-CTAs auf die Kontaktsektion: #kontakt (entfernt) und #offer-form (Formularkarte, bleibt als Alias) → #termin.
     sgBody = sgBody.split('href="#kontakt"').join('href="#termin"').split('href="#offer-form"').join('href="#termin"');
     // Regulärer Hero (16.10.2026): USP-Reihe und «Über die Praxis» werden aus dem Leaf VERSCHOBEN (nicht kopiert) und von

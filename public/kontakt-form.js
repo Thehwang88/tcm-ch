@@ -297,6 +297,9 @@
         var p = getComputedStyle(h).position; if (p !== 'fixed' && p !== 'sticky') return;
         var r = h.getBoundingClientRect(); if (r.height > 0 && r.top <= 1 && r.height < innerHeight / 2 && r.height > b) b = r.height;
       });
+      // Sticky Angebotsbanner unter dem Header (SG .sgb-banner): Zielposition unterhalb des Banners.
+      var sb = document.querySelector('.sgb-banner');
+      if (sb) { var sp = getComputedStyle(sb).position; var sr = sb.getBoundingClientRect(); if ((sp === 'fixed' || sp === 'sticky') && sr.height > 0 && sr.top <= b + 1 && sr.bottom > b) b = sr.bottom; }
       return b;
     };
     var navTarget = function () {

@@ -41,6 +41,8 @@ const card = renderKontaktForm({
   // Check-in zuerst + vorausgewählt, Button «Gratis Check-in anfragen» / «Ersttermin anfragen». OneDoc-Panel unter dem
   // Formular entfällt (Widget steht direkt darüber); Anrufen/WhatsApp stehen in den Karten.
   wunschzeit: true, sitekey, headingTag: 'h3', onedocBeideTerminarten: true, ohneOnedocAlternative: true, checkinZuerst: true, ruhig: true, zusatzOffen: true,
+  // #termin-formular: Anker direkt vor der Karte (kontakt-form.js: Klick auf Ersttermin-CTAs wählt die Terminart und scrollt aufs Formular).
+  compatAnchors: ['termin-formular'], kopfTitel: 'Lieber einen Rückruf? Termin anfragen',
 });
 ---
 <section class="sgb-banner" id="sg-angebot-banner" aria-label="Kostenloser TCM 360°-Check-in">
@@ -68,8 +70,9 @@ const card = renderKontaktForm({
       </div>
       <div class="lsr-ctas">
         <a href="#termin" class="lsr-btn-primary tcm-btn tcm-btn--primary tcm-btn--hero" data-care-cta="hero-checkin">Gratis Check-in buchen</a>
-        <a href="#termin" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-kf-terminart="behandlung" data-care-cta="hero-ersttermin">Ersttermin anfragen</a>
+        <a href="#termin-formular" class="lsr-btn-ghost tcm-btn tcm-btn--outline tcm-btn--hero" data-kf-terminart="behandlung" data-care-cta="hero-ersttermin">Ersttermin anfragen</a>
       </div>
+      <p class="lsr-cta-note">30 Minuten kennenlernen und Fragen klären. Kostenlos, ohne Behandlung.</p>
       <a class="lsr-tlink" href="#sg-therapien" data-sg-therapie-link hidden></a>
       <p class="lsr-tert"><a href="tel:+41775236122" class="tcm-link tcm-link--on-brand">Anrufen</a> · <a href={SG_WA} target="_blank" rel="noopener" class="tcm-link tcm-link--on-brand">WhatsApp</a></p>
     </div>
@@ -163,6 +166,7 @@ const card = renderKontaktForm({
   @media (max-width:900px){.sgb-in{flex-wrap:nowrap;gap:10px;padding:9px 12px}.sgb-txt--d,.sgb-cta--d{display:none}.sgb-txt--m,.sgb-cta--m{display:inline}.sgb-txt{font-size:15px;white-space:nowrap}.sgb-cta{padding:7px 12px;font-size:14px}}
 
   /* ?t=-Textlink unter den Hero-Buttons */
+  .lsr-cta-note{margin:-6px 0 12px;font-size:14.5px;line-height:1.45;color:var(--brand-black,#020B10);opacity:.8}
   .lsr-tlink{display:inline-block;margin:-2px 0 12px;font-size:15px;font-weight:700;color:var(--brand-black,#020B10);text-decoration:underline;text-underline-offset:3px}
 
   /* Hero: Google-Zeile vor den Trust-Punkten. */

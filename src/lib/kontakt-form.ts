@@ -40,6 +40,8 @@ export interface KontaktFormOpts {
   formName?: string;
   /** Zusätzliche Anker vor der Karte (Kompatibilität alter Links, z. B. ['first30']). */
   compatAnchors?: string[];
+  /** Eigener Kopf-Titel der ruhigen Karte (Default «Dein nächster Schritt beginnt hier.»), z. B. SG «Lieber einen Rückruf? Termin anfragen». */
+  kopfTitel?: string;
   /** Nur /standorte/st-gallen/ (Hero + unten): OneDoc für beide Terminarten und schon ohne Auswahl (sekundärer Link). */
   onedocBeideTerminarten?: boolean;
   /** Nur SG-Hero: kompakte Karte. Angebotstexte gekürzt (alle vier Vorteile bleiben sichtbar), Rückruf-Anfrage hinter
@@ -253,7 +255,7 @@ export function renderKontaktForm(o: KontaktFormOpts): string {
     (HB ? `<div class="kf-kopf kf-kopf--herbst"><span class="kf-eyebrow">${esc(HB.copy.sheetLabel)}</span><${H} class="kf-h" id="${p}-h">${esc(HB.soldOut ? HB.copy.sheetHSoldout : HB.copy.sheetH)}</${H}><p class="kf-kopf-sub">${esc(HB.soldOut ? HB.copy.sheetSubSoldout : HB.copy.sheetSub)}</p>` +
         (HB.soldOut ? `<p class="kf-soldout" role="status">${esc(HB.copy.soldOutNote)}</p>`
           : `<ul class="kf-hb-list">${HB.copy.benefits.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>`) + `</div>`
-    : Q ? `<div class="kf-kopf"><${H} class="kf-h" id="${p}-h">Dein nächster Schritt beginnt hier.</${H}><p class="kf-kopf-sub">${CZ ? 'TCM zuerst kennenlernen oder direkt starten.' : 'Direkt starten oder TCM zuerst kennenlernen.'}</p></div>`
+    : Q ? `<div class="kf-kopf"><${H} class="kf-h" id="${p}-h">${esc(o.kopfTitel ?? 'Dein nächster Schritt beginnt hier.')}</${H}><p class="kf-kopf-sub">${CZ ? 'TCM zuerst kennenlernen oder direkt starten.' : 'Direkt starten oder TCM zuerst kennenlernen.'}</p></div>`
       : `<${H} class="kf-h" id="${p}-h">Wie können wir dir helfen?</${H}>`) +
     // Kompakt: Schrittmarker ersetzt die Einleitung (Klasse kf-intro bleibt als JS-Einfügepunkt); Legend nennt Schritt 1 für Screenreader.
     // Ruhig (SG): schlichte Abschnittsüberschrift statt Schrittmarker; Legend nennt «Terminart wählen» für Screenreader.
