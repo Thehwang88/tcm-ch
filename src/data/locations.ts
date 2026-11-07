@@ -154,7 +154,7 @@ export const clinics: Clinic[] = [
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
-    street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM St. Gallen',
+    street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM.ch St Gallen',
     bild: { src: '/images/standort-stgallen-800.webp', alt: 'TCM.ch St. Gallen, Empfangsbereich, Oberer Graben 22' },
     hinweis: 'Oberer Graben 22 · beim HB',
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
