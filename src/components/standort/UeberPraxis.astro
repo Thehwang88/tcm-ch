@@ -71,6 +71,7 @@ const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').spl
   </div></div>
 ))}
 </div><div class="up-map">{data.nap.mapEmbed && <iframe src={data.nap.mapEmbed} width="100%" height="320" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title={`Karte: TCM.ch ${data.stadt}, ${data.nap.strasse}`}></iframe>}</div>
+{data.nap.mapsPlace && <p class="up-maplinks" style="margin:8px 0 0;font-size:13.5px;color:var(--mid)"><a href={data.nap.mapsPlace} target="_blank" rel="noopener" style="color:var(--blue-dark);font-weight:600">In Google Maps öffnen</a>{data.nap.mapsDirections && <> · <a href={data.nap.mapsDirections} target="_blank" rel="noopener" style="color:var(--blue-dark);font-weight:600">Route planen</a></>}</p>}
 {data.cro && hasAnfahrt ? (
   <details class="up-transit-acc" style="margin-top:18px;border:1px solid var(--border);border-radius:12px;padding:0 16px;background:#fff">
     <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;font-family:var(--font-sans);font-size:15.5px;font-weight:700;color:var(--charcoal)">Anreise &amp; Parkieren<span aria-hidden="true" style="font-size:20px;color:var(--blue);font-weight:600">+</span></summary>

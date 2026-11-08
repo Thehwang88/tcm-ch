@@ -12,7 +12,7 @@ import Practitioners from '../../../components/en/Practitioners.astro';
 import ClinicalLead from '../../../components/en/ClinicalLead.astro';
 import { getStandort, waHref } from '../../../data/standorte';
 import { site } from '../../../data/site';
-import { clinics, enLocationPath, formatHours, locationImages, isRedirectedClinic, type Clinic } from '../../../data/locations';
+import { clinics, enLocationPath, formatHours, locationImages, isRedirectedClinic, mapsPlaceUrl, mapsDirectionsUrl, type Clinic } from '../../../data/locations';
 import { therapies, enTherapyPath, therapyImages } from '../../../data/therapies';
 import { conditions, enConditionPath } from '../../../data/conditions';
 import { symptomCards } from '../../../data/symptom-cards';
@@ -40,7 +40,9 @@ const path = enLocationPath(id);
 const url = new URL(path, site.url).href;
 const telHref = 'tel:' + phone.replace(/\s+/g, '');
 const waTermin = waHref(phone, `Hello, I would like to request an appointment in ${name}.`);
-const mapsHref = street ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${street}, ${postalCode} ${city}`)}` : null;
+// Shared Google destination (locations.ts gbp): place link only for a verified business profile; directions always address-based.
+const mapsPlace = mapsPlaceUrl(clinic);
+const mapsHref = mapsDirectionsUrl(clinic);
 const preselect = PLANNED_PRESELECT[id] ?? name;
 
 // ── Hero image: DE asset reuse (locations-content override → standorte.ts hero → locationImages) ──
@@ -173,7 +175,7 @@ const schema = underReview ? [breadcrumbLd, faqLd] : [clinicLd, breadcrumbLd, fa
           ) : (
             <p><strong>No address yet</strong><br />{inPreparation ? 'Location in preparation' : openingLabel}<br />{city}, Switzerland</p>
           )}
-          {mapsHref && !planned && <p><a href={mapsHref} target="_blank" rel="noopener">Directions on Google Maps</a></p>}
+          {mapsHref && !planned && <p>{mapsPlace && <><a href={mapsPlace} target="_blank" rel="noopener">Open in Google Maps</a> · </>}<a href={mapsHref} target="_blank" rel="noopener">{mapsPlace ? 'Directions' : 'Directions to this address'}</a></p>}
 
           <h3 style="margin-top:18px">{partner ? 'Opening hours (as published by the practice)' : 'Opening hours'}</h3>
           {openingHours.length ? (

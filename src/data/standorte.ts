@@ -10,7 +10,7 @@
 //   - nearby                    - curated WeitereStandorte cards ({slug, plz, city, desc}),
 //                                 lifted verbatim from the leaf (slug drives the nav link).
 
-import { clinics } from './locations';
+import { clinics, mapsEmbedUrl, mapsPlaceUrl, mapsDirectionsUrl } from './locations';
 
 export interface Standort {
   slug: string;
@@ -28,6 +28,9 @@ export interface Standort {
     mapEmbed?: string;
     oeffnungszeiten: { tag: string; zeit: string }[];
     geo?: { lat: number; lng: number };
+    /** Abgeleitet aus locations.ts gbp (nicht hier setzen): Place-Link und Routenlink auf das verifizierte Google-Profil. */
+    mapsPlace?: string;
+    mapsDirections?: string;
   };
   intro: { body: string; einzugsgebiet?: string };
   /** Optional raw-HTML section rendered between IntroNap and Therapien. */
@@ -976,7 +979,11 @@ export const standorte: Record<string, Standort> = {
 // Betriebsstatus ausschliesslich aus src/data/locations.ts (clinic.status), nie aus einem Datum.
 for (const [slug, s] of Object.entries(standorte)) {
   const c = clinics.find((x) => x.id === slug);
-  if (c) { s.planned = c.status !== 'operational'; s.review = c.status === 'review'; s.betreiber = c.betreiber; s.vorVertrag = !!c.vorVertrag; }
+  if (c) {
+    s.planned = c.status !== 'operational'; s.review = c.status === 'review'; s.betreiber = c.betreiber; s.vorVertrag = !!c.vorVertrag;
+    // Karte/Route aus dem verifizierten Google-Profil (locations.ts gbp); ohne Profil bleibt das Adress-Embed aus den Daten oben.
+    if (c.gbp && s.nap.strasse) { s.nap.mapEmbed = mapsEmbedUrl(c) ?? s.nap.mapEmbed; s.nap.mapsPlace = mapsPlaceUrl(c) ?? undefined; s.nap.mapsDirections = mapsDirectionsUrl(c) ?? undefined; }
+  }
 }
 
 export const getStandort = (slug: string) => standorte[slug];
