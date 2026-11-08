@@ -31,7 +31,8 @@ const card = (icon: string, title: string, body: string) =>
   `<div class="usp-card"><div class="usp-icon" style="background:rgba(26,226,136,.14)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#020B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${icon}</svg></div><div class="usp-title">${title}</div><div class="usp-sub content-body">${body}</div></div>`;
 
 /** Transparenz-Sektion für eine Standortseite. `planned` = nicht als offen bestätigt; `review` = Betriebsstatus in Prüfung. */
-export function transparenzHtml(slug: string, planned = false, review = false, vorVertrag = false): string {
+/** ohneKosten: SG-Vorlage (3 Karten, keine Preis-/Tarifkarte; Krankenkassen-Hinweis steht im Termin-Bereich). */
+export function transparenzHtml(slug: string, planned = false, review = false, vorVertrag = false, ohneKosten = false): string {
   const regs = planned ? '' : registerLinks(slug);
   const reg = card(ICON.reg, 'Registrierung prüfbar', regs
     ? `Öffentlicher Registereintrag der Therapeut:innen an diesem Standort:${regs}`
@@ -45,5 +46,5 @@ export function transparenzHtml(slug: string, planned = false, review = false, v
     : planned
     ? card(ICON.mail, 'Vormerken ohne Verpflichtung', `Wir melden uns, sobald an diesem Standort Termine möglich sind. Bis dahin nennen wir dir gern eine bestehende Praxis.`)
     : card(ICON.mail, 'Unverbindlich anfragen', `Deine Anfrage verpflichtet dich zu nichts. Wir melden uns persönlich und klären Termin und offene Fragen mit dir.`);
-  return `<section class="section" id="transparenz"><div class="wrap reveal"><div class="section-label">Transparenz</div><h2 class="section-title" style="margin-bottom:24px">Was du ${planned && !review ? '<em>schon vor der Eröffnung</em>' : '<em>vorab</em>'} prüfen kannst.</h2><div class="usp-grid">${reg}${kosten}${ablauf}${anfrage}</div></div></section>`;
+  return `<section class="section" id="transparenz"><div class="wrap reveal"><div class="section-label">Transparenz</div><h2 class="section-title" style="margin-bottom:24px">Was du ${planned && !review ? '<em>schon vor der Eröffnung</em>' : '<em>vorab</em>'} prüfen kannst.</h2><div class="usp-grid">${reg}${ohneKosten ? '' : kosten}${ablauf}${anfrage}</div></div></section>`;
 }

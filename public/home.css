@@ -5768,8 +5768,8 @@ html body .btn-primary.f30b-cta:not(#w2):not(#w3):hover{background:#0E3D21!impor
 @media (prefers-reduced-motion:reduce){.f30b-box{transition:none}}
 
 /* ── St. Gallen Standortseite (15.10.2026): Beschwerden-Karten, kompaktes Team, Therapie-Links, Weiterlesen ── */
-#sg-beschwerden .sg-bs-cta{text-align:center;margin-top:28px}
-#sg-beschwerden .sg-bs-cta .btn-primary{display:inline-flex;align-items:center;gap:8px}
+#sg-beschwerden .sg-bs-cta,.std-beschwerden .sg-bs-cta{text-align:center;margin-top:28px}
+#sg-beschwerden .sg-bs-cta .btn-primary,.std-beschwerden .sg-bs-cta .btn-primary{display:inline-flex;align-items:center;gap:8px}
 :is(#team-st-gallen,.std-team) .content-body{max-width:none}
 /* Team (16.10.2026): drei gleich breite Karten, Porträt oben (einheitlich 4:5, Gesicht im oberen Drittel), Text darunter;
    klinische Leitung zuerst, gleiche Gestaltung wie die lokalen Karten (keine Sonderumrandung). */
