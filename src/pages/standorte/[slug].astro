@@ -47,6 +47,7 @@ import KontaktForm from '../../components/standort/KontaktForm.astro';
 import FinalCta from '../../components/standort/FinalCta.astro';
 import KontaktPraxis from '../../components/standort/KontaktPraxis.astro';
 import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
+import TerminSektion from '../../components/standort/TerminSektion.astro';
 import Faq from '../../components/standort/Faq.astro';
 
 export function getStaticPaths() {
@@ -87,12 +88,6 @@ const ksBlock = ksLinksHtml(
   'Schwindel beim Umdrehen, Puls im Ohr, taube Finger: medizinisch eingeordnet, ohne Panikmache.',
 );
 
-// Integrierter Physio+TCM-Hinweis nur an Standorten, deren therapien[] Physiotherapie
-// führt (Verfügbarkeits-Flag; kein Standort ohne Physio bekommt den Block). Nicht an geplanten / in Prüfung
-// stehenden Standorten: «An diesem Standort … verfügbar» wäre dort eine Zusage ohne bestätigten Betrieb.
-const physioDachBlock = migrated && !migrated.planned && !migrated.physioNurKarte && migrated.therapien?.includes('physiotherapie')
-  ? `<section class="section" style="padding:36px 0;background:var(--bg)"><div class="wrap reveal"><div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px 24px;max-width:860px"><div style="font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--black);margin-bottom:6px">TCM und Physiotherapie unter einem Dach</div><p style="font-size:15px;color:var(--mid);line-height:1.6;margin:0">An diesem Standort sind TCM-Methoden und <a href="/therapien/physiotherapie/" style="color:var(--blue);font-weight:700;text-decoration:none">Physiotherapie</a> verfügbar; je nach Beschwerdebild können sich beide sinnvoll ergänzen, mit einem abgestimmten Plan. Wichtig zur Abrechnung: Physiotherapie läuft mit ärztlicher Verordnung über die Grundversicherung, TCM-Methoden über die Zusatzversicherung. Die Physio-Verfügbarkeit hängt vom Therapieplan der Fachpersonen ab, frag bei der Terminanfrage kurz nach.</p></div></div></section>`
-  : '';
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
 const turnstileSitekey = _branch && _branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
 
@@ -391,6 +386,7 @@ const umleitungCard = PU
   : '';
 // Kompakte weiterführende Links (SG «Weiterlesen»): dieselben Haut- und Körpersignale-Links wie die bisherigen Blöcke.
 const escL = (x: string) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Wie SG «Weiterlesen» (eine kompakte Linkzeile); zusätzlich die /haut/-Links (Indexierung, haut-links.ts) in derselben Zeile.
 const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen"><div class="wrap"><div class="sg-wl" role="navigation" aria-labelledby="std-wl-h"><h2 class="sg-wl-label" id="std-wl-h">Weiterlesen</h2>' +
   hautLinksFor(slug!, 6).map((l) => `<a href="/haut/${l.slug}/">${escL(l.label)}</a>`).join('') +
   '<a href="/haut/" class="sg-wl-all">Alle Themen zu Haut &amp; Gesicht <span aria-hidden="true">→</span></a>' +
@@ -402,8 +398,6 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
     <Hero data={data} />
-    {/* Buchungsanker #termin (Home-Karten «Termin buchen →», 05.11.2026): Vor-Anker vor dem Kontakt-/Praxisbereich. */}
-    <span id="termin" class="kf-compat-anchor" aria-hidden="true" style="display:block;height:0;scroll-margin-top:var(--header-h,76px)"></span>
     <div class="std-oben">
       {data.planned && (
       <section class="section" data-status-banner={data.review ? 'review' : 'planned'} style="padding:0;background:var(--bg)">
@@ -417,33 +411,25 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
         </div>
       </section>
       )}
-      {/* SG-Reihenfolge: USP kompakt → Praxisangaben links / Anfragebox rechts (mobil Box zuerst) → Hinweis →
-          Therapien → Team → Beschwerden → Transparenz → Krankenkasse → lokale Inhalte → Praxen in der Nähe →
-          WhatsApp → FAQ → unteres Formular → Weiterlesen. */}
+      {/* SG-Vorlage 1:1 (08.11.2026, HeroStandardSG ohne OneDoc): Termin-Bereich (#termin: Praxis links, Kanalkarten + Formular
+          rechts) → USP kompakt → «Über die Praxis» einspaltig → Hinweis → Therapien (8 + «Weitere») → Beschwerden (8 Karten,
+          CTA) → Transparenz (3 Karten) → Praxen in der Nähe → WhatsApp → FAQ → Weiterlesen. Kein Team-/Leitungsblock, kein
+          Ablauf, keine Krankenkassen-Sektion, kein Einzugsgebiet, kein unteres Formular (alles wie St. Gallen). */}
+      <TerminSektion data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
         <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} umleitung={!!PU} />
-        {PU ? <div slot="form"><Fragment set:html={umleitungCard} /></div> : <div slot="form" data-std-box-oben><AnfrageKarte data={data} sitekey={turnstileSitekey} oben /></div>}
-        <UeberPraxis slot="info" data={data} inner />
+        <UeberPraxis slot="info" data={data} inner sg />
       </KontaktPraxis>
     </div>
     <div class="page active std-ds std-vorlage" id="page-standort" style="display:block">
       <div id="standort-content">
         <section class="section std-hinweis" style="padding:20px 0 0 !important;background:var(--bg)"><div class="wrap"><div style="background:var(--green-mint);border:1px solid var(--green-mid);border-radius:16px;padding:20px 22px"><div style="font-family:var(--font-sans);font-weight:800;font-size:clamp(17px,3.4vw,21px);color:var(--black);line-height:1.25;margin-bottom:6px">Keine Ahnung, wo du anfangen sollst? Dafür sind wir da.</div><div style="font-size:14.5px;color:var(--mid);line-height:1.55;max-width:70ch">Du musst nicht wissen, welche Therapie du brauchst. {data.planned ? 'Schreib uns' : 'Komm vorbei'}, wir finden es gemeinsam heraus und nehmen dir den Rest ab.</div></div></div></section>
-        {data.aufEinenBlick && <Fragment set:html={data.aufEinenBlick} />}
         <Therapien data={data} />
-        {physioDachBlock && <Fragment set:html={physioDachBlock} />}
-        {!data.planned && !data.review && <Team data={data} />}
-        {!(data.sgVoll && !data.planned && !data.review) && <ClinicalLead slug={data.slug} />}
         <Beschwerden data={data} />
-        {data.ablaufBlock && <Ablauf />}
-        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag)} />
-        <KrankenkassenTeam data={data} />
-        <IntroNap data={data} />
-        {data.extraBlock && <Fragment set:html={data.extraBlock} />}
+        <Fragment set:html={transparenzHtml(data.slug, data.planned, data.review, data.vorVertrag, true)} />
         <WeitereStandorte data={data} />
         {!PU && <FinalCta data={data} />}
         <Faq data={data} />
-        {PU ? <section id="kontakt" class="section contact-section-inline std-kontakt" style="scroll-margin-top:68px;background:var(--surface)"><div class="wrap"><div class="reveal" style="max-width:560px;margin:0 auto"><Fragment set:html={umleitungCard.replace('id="anfrage-box" data-sticky-cta-href', 'data-umleitung-unten="1" data-x')} /></div></div></section> : <KontaktForm data={data} sitekey={turnstileSitekey} />}
         <Fragment set:html={weiterlesenHtml} />
       </div>
     </div>

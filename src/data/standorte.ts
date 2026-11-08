@@ -981,6 +981,8 @@ for (const [slug, s] of Object.entries(standorte)) {
   const c = clinics.find((x) => x.id === slug);
   if (c) {
     s.planned = c.status !== 'operational'; s.review = c.status === 'review'; s.betreiber = c.betreiber; s.vorVertrag = !!c.vorVertrag;
+    // SG-Vorlage für alle Standorte (08.11.2026): Therapien-Raster wie St. Gallen (8 Karten + «Weitere Therapien»).
+    s.sgVoll = true;
     // Karte/Route aus dem verifizierten Google-Profil (locations.ts gbp); ohne Profil bleibt das Adress-Embed aus den Daten oben.
     if (c.gbp && s.nap.strasse) { s.nap.mapEmbed = mapsEmbedUrl(c) ?? s.nap.mapEmbed; s.nap.mapsPlace = mapsPlaceUrl(c) ?? undefined; s.nap.mapsDirections = mapsDirectionsUrl(c) ?? undefined; }
   }

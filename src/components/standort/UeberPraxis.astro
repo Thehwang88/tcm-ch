@@ -4,7 +4,10 @@ import { telHref } from '../../data/standorte';
 import { heroVideo, isSymbolbild } from '../../data/hero-video';
 // SG-Vorlage: ohne eigene <section>-Hülle, als Praxisspalte im Kontaktbereich (Slot info in KontaktPraxis.astro), wie in
 // St. Gallen mit Telefon und E-Mail und voller Kartenhöhe.
-const { data } = Astro.props as { data: Standort };
+const { data, sg = false } = Astro.props as { data: Standort; sg?: boolean };
+// sg (SG-Vorlage, 08.11.2026): Einleitung immer, keine Praxisfotos (das Foto steht links im Termin-Bereich, TerminSektion);
+// der lokale Intro-Text (intro.body ohne eigene H2) folgt als Prosa unter der Einleitung, wie in St. Gallen.
+const introProsa = sg ? (data.intro?.body ?? '').replace(/^\s*<h2[^>]*>[\s\S]*?<\/h2>/, '') : '';
 const address = data.nap.strasse ? `${data.nap.strasse}, ${data.nap.plz} ${data.nap.ort}` : data.nap.ort; // ohne Strasse (vorVertrag): nur Ort
 // This is the SINGLE source of Anfahrt on the page (oev + autoParken). IntroNap holds no
 // Anfahrt. CRO-Layout: Kontakt-Reihenfolge Adresse → Öffnungszeiten → Telefon → E-Mail,
@@ -42,14 +45,14 @@ const hasAnfahrt = Boolean(data.anfahrt.oev || data.anfahrt.autoParken);
 const norm = (p: string) => (p || '').replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0].replace(/\/{2,}/g, '/');
 // Geplante Standorte: keine Praxisfotos (es gibt noch keine Praxis, die sie zeigen könnten).
 // Hero-Video (hero-video.ts): das Praxisfoto ist nur noch Poster, also hier zeigen (echte Praxisfotos, nie Symbolbilder).
-const praxisBilder = (data.planned ? [] : data.praxisBilder ?? []).filter((b) => heroVideo(data) ? !isSymbolbild(b.src) : norm(b.src) !== norm(data.hero.image));
+const praxisBilder = (data.planned || sg ? [] : data.praxisBilder ?? []).filter((b) => heroVideo(data) ? !isSymbolbild(b.src) : norm(b.src) !== norm(data.hero.image));
 // Paar quer + hoch (z. B. Basel): Spalten im Verhältnis der Seitenverhältnisse → gleiche Bildhöhe; mobil untereinander.
 const paar = praxisBilder.length === 2 && praxisBilder.every((b) => b.ratio);
 const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').split('/').map(Number); return (w / h).toFixed(3) + 'fr'; }).join(' ');
 ---
 <h2 class="up-h2">Über die Praxis</h2>
-{(data.cro || data.praxisBilder) && !slim && (
-  <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p></div>
+{(sg || ((data.cro || data.praxisBilder) && !slim)) && (
+  <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p>{introProsa && <Fragment set:html={introProsa} />}</div>
 )}
 {praxisBilder.length > 0 && (
   <div class={paar ? 'up-bilder-paar' : undefined} style={paar ? `--up-cols:${paarCols}` : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:0 0 22px' + (data.v2 ? ';max-width:440px' : '')}>
