@@ -48,6 +48,8 @@ import FinalCta from '../../components/standort/FinalCta.astro';
 import KontaktPraxis from '../../components/standort/KontaktPraxis.astro';
 import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
 import TerminSektion from '../../components/standort/TerminSektion.astro';
+import CheckinBanner from '../../components/CheckinBanner.astro';
+import { checkinFreigegeben } from '../../lib/kontakt-form';
 import Faq from '../../components/standort/Faq.astro';
 
 export function getStaticPaths() {
@@ -397,6 +399,8 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema} noindex={!!data.noindex} robots="noindex, follow">
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
+    {/* Gelbes Check-in-Banner wie St. Gallen auf jedem freigegebenen, offenen Standort (CHECKIN_FREIGABE, 08.11.2026). */}
+    {!data.planned && !data.review && !PU && checkinFreigegeben(data.slug) && <CheckinBanner />}
     <Hero data={data} />
     <div class="std-oben">
       {data.planned && (

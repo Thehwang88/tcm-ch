@@ -88,6 +88,14 @@ export const CHECKIN_FREIGABE = {
   'zuerich-bahnhofstrasse': { name: 'Zürich Bahnhofstrasse', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'zuerich-oerlikon': { name: 'Zürich Oerlikon', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
   'zuerich-hoengg': { name: 'Zürich Höngg', freigabe: 'Inhaber-Auftrag 02.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  // Inhaber-Auftrag 08.11.2026: alle operativen Standorte, identisches 360°-Angebot und Banner wie St. Gallen
+  // (ausser Bottighofen: Partnerklinik TCM Pelican, eigenes Unternehmen).
+  'basel': { name: 'Basel', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'kreuzlingen': { name: 'Kreuzlingen', freigabe: 'Inhaber-Auftrag 08.11.2026 (Partnerpraxis Praxis Hwang, identisches 360°-Angebot wie St. Gallen)' },
+  'frauenfeld': { name: 'Frauenfeld', freigabe: 'Inhaber-Auftrag 08.11.2026 (Partnerpraxis Praxis Hwang, identisches 360°-Angebot wie St. Gallen)' },
+  'volketswil': { name: 'Volketswil', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'wil': { name: 'Wil', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
+  'rorschach': { name: 'Rorschach', freigabe: 'Inhaber-Auftrag 08.11.2026 (identisches 360°-Angebot wie St. Gallen)' },
 };
 
 /** Verifizierte OneDoc-Kalender für «Ersttermin mit Behandlung». Nur bestehende Ziele, keine erfundenen Kalender.
