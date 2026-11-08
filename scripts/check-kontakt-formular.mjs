@@ -203,7 +203,8 @@ for (const [label, body, code] of [
   ['ungültige Nummer', { ...base, telefon: '12', angebot_id: 'TCM_CHECKIN' }, 'invalid_phone'],
   ['ohne Telefon', { ...base, angebot_id: 'ERSTTERMIN_BEHANDLUNG', name: 'X', email: 'a@b.ch' }, 'invalid_phone'],
   ['ungültige E-Mail', { ...base, telefon: '+41 79 123 45 67', email: 'kaputt', angebot_id: 'TCM_CHECKIN' }, 'invalid_email'],
-  ['Check-in Basel', { ...base, standort: 'Basel', telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN' }, 'invalid_offer_scope'],
+  // Bottighofen (Partnerklinik TCM Pelican) ist der einzige operative Standort ohne Check-in-Freigabe (08.11.2026).
+  ['Check-in Bottighofen', { ...base, standort: 'Bottighofen', telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN' }, 'invalid_offer_scope'],
   ['Check-in «Andere»', { ...base, standort: 'Andere / in meiner Nähe', telefon: '+41 79 123 45 67', angebot_id: 'TCM_CHECKIN' }, 'invalid_offer_scope'],
   ['ohne Standort', { ...base, standort: '', telefon: '+41 79 123 45 67', angebot_id: 'ERSTTERMIN_BEHANDLUNG' }, 'missing_standort'],
 ]) { [st, j] = await post(body); ok(st === 422 && j.error === code, `${label} → 422 ${code}`); }

@@ -9,6 +9,7 @@ import { site } from '../data/site';
 import DeHeader from '../components/DeHeader.astro';
 import Footer from '../components/Footer.astro';
 import HeadAnalytics from '../components/HeadAnalytics.astro';
+import CheckinBanner from '../components/CheckinBanner.astro';
 import homeBody from '../data/home-body.html?raw';
 import { standortCardHtml } from '../lib/standort-card';
 import { clinics } from '../data/locations';
@@ -129,6 +130,8 @@ const homeHtml = homeFirst30.showCampaign
   </head>
   <body>
     <DeHeader />
+    {/* Gelbes Check-in-Banner wie auf den Standortseiten (Inhaber 08.11.2026); Ziel = globales Formular. */}
+    <CheckinBanner href="#home-contact-form" />
     <Fragment set:html={homeHtml} />
     <Footer />
     <script src="/header.js" is:inline defer></script>
