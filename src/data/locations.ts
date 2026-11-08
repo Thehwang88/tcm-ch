@@ -52,6 +52,10 @@ export interface Clinic {
   /** Formular-Optionen, solange status 'planned' ist (statt der regulären Option), z. B. sofortige
    *  Partnerpraxis + Vormerkung. Letzte Option = Vorauswahl auf der eigenen Standortseite.
    *  value landet unverändert im Betreff der Anfrage (Routing durchs Team). */
+  /** Verifiziertes Google-Unternehmensprofil (Audit 08.11.2026, Google Maps in Chrome + GBP-Dashboard). cid = Google-Place-CID
+   *  (dezimal); name = Firmenname exakt wie auf Google. verified: 'dashboard' = Profil im eigenen GBP-Konto bestätigt,
+   *  'public' = nur öffentlicher Eintrag (Partner). Fehlt gbp: Karten/Routen nur über die Adresse (kein Profil bestätigt). */
+  gbp?: { name: string; cid: string; verified: 'dashboard' | 'public' };
   vorab?: { value: string; label: string; labelEn?: string;
     /** Bedeutung der Option im Kontaktformular (Auswahl, Button, Bestätigung, Mail, Server-Validierung):
      *  'behandlung' = sofort verfügbare Praxis (z. B. Partnerpraxis), 'vormerkung' = Termininteresse nach Eröffnung,
@@ -66,12 +70,14 @@ export const clinics: Clinic[] = [
     betreiber: { name: 'Praxis Hwang Kreuzlingen', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/kreuzlingen', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     bild: { src: '/img/standorte/kreuzlingen.webp', alt: 'Praxis Hwang Kreuzlingen, Romanshornerstrasse 1' },
     hinweis: 'Romanshornerstrasse 1 · Praxis Hwang',
+    gbp: { name: 'Praxis Hwang', cid: '4845104578104635100', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.6500, lng: 9.1750 }, status: 'operational',
     areaServed: ['Kreuzlingen', 'Tägerwilen', 'Bottighofen', 'Münsterlingen', 'Lengwil', 'Altnau', 'Ermatingen', 'Konstanz'] },
 
   { id: 'bottighofen', name: 'Bottighofen', city: 'Bottighofen', region: 'Lake Constance / Thurgau',
     street: 'Hauptstrasse 34', postalCode: '8598', phone: '+41 76 578 09 88', schemaName: 'TCM Pelican',
     hinweis: 'Hauptstrasse 34 · TCM Pelican', karte: { chip: 'Partnerklinik', nearby: false },
+    gbp: { name: 'TCM Pelican Praxis für Traditionelle Chinesische Medizin', cid: '13580081941685467442', verified: 'public' },
     openingHours: ['Mo 07:00-20:00', 'Tu-Fr 18:00-20:00', 'Sa 07:00-20:00'], geo: { lat: 47.6362, lng: 9.2167 }, status: 'operational',
     areaServed: ['Bottighofen', 'Kreuzlingen', 'Münsterlingen', 'Tägerwilen', 'Altnau', 'Konstanz', 'Frauenfeld'] },
 
@@ -81,6 +87,7 @@ export const clinics: Clinic[] = [
     betreiber: { name: 'Praxis Hwang Frauenfeld', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/frauenfeld', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     bild: { src: '/img/standorte/frauenfeld.webp', alt: 'Praxis Hwang Frauenfeld, Rheinstrasse 25' },
     hinweis: 'Rheinstrasse 25 · Praxis Hwang',
+    gbp: { name: 'Praxis Hwang', cid: '14089881053313594982', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.5567, lng: 8.8983 }, status: 'operational',
     areaServed: ['Frauenfeld', 'Matzingen', 'Stettfurt', 'Felben-Wellhausen', 'Müllheim', 'Pfyn', 'Aadorf', 'Eschlikon', 'Weinfelden', 'Amriswil'] },
 
@@ -89,6 +96,7 @@ export const clinics: Clinic[] = [
     // Betrieb bestätigt durch die Inhaber:in am 22.10.2026 (zuvor 'review'). Öffnungszeiten nicht bestätigt → keine erfinden.
     bild: { src: '/img/standorte/winterthur-hwang.webp', alt: 'Praxis Hwang Winterthur, Münzgasse 2' },
     hinweis: 'Münzgasse 2 · Praxis Hwang', karte: { name: 'Winterthur' },
+    gbp: { name: 'Praxis Hwang', cid: '9520785443780278744', verified: 'dashboard' },
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], status: 'operational',
     geo: { lat: 47.4998, lng: 8.7290 },
     areaServed: ['Winterthur', 'Oberwinterthur', 'Töss', 'Wülflingen', 'Seen', 'Veltheim', 'Mattenbach', 'Wiesendangen', 'Pfungen', 'Neftenbach', 'Elgg', 'Illnau-Effretikon', 'Brütten'] },
@@ -97,6 +105,8 @@ export const clinics: Clinic[] = [
     street: 'Marktgasse 78', postalCode: '8400', phone: '+41 77 523 61 22',
     // Eröffnung 2027 (05.11.2026): keine Öffnungszeiten bis zur Eröffnung; Termine bis dahin in der Praxis Hwang (hwang.ch).
     hinweis: 'Marktgasse 78 · Eröffnung 2027',
+    // GBP «TCM.ch Winterthur» (Marktgasse 78) ist bestätigt, zeigt auf Google aber reguläre Öffnungszeiten (kein «Eröffnet demnächst»),
+    // während die Seite Eröffnung 2027 kommuniziert → kein gbp, bis der Betriebsstatus geklärt ist (Audit 08.11.2026).
     // Eröffnung 2027, bis dahin Praxis Hwang (partnerUmleitung in standorte.ts): Karte als 2027 mit «Standort ansehen».
     karte: { status: '2027' },
     openingHours: [], geo: { lat: 47.4992, lng: 8.7281 }, status: 'operational',
@@ -105,6 +115,7 @@ export const clinics: Clinic[] = [
   { id: 'volketswil', name: 'Volketswil', city: 'Volketswil', region: 'Zürcher Oberland',
     street: 'Lindenstrasse 2/1', postalCode: '8604', phone: '+41 77 523 61 22',
     hinweis: 'Lindenstrasse 2/1 · Zürcher Oberland',
+    // Audit 08.11.2026: auf Google existiert an der Lindenstrasse 2/1 nur «Praxis Hwang» (hwang.ch, GBP-Konto Hwang), kein TCM.ch-Profil → kein gbp.
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.3923, lng: 8.6970 }, status: 'operational',
     areaServed: ['Volketswil', 'Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
 
@@ -113,6 +124,7 @@ export const clinics: Clinic[] = [
     // Betreiberin laut hwang.ch/standorte/zurich-hongg (abgerufen 11.10.2026).
     betreiber: { name: 'Praxis Hwang Zürich Höngg', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/zurich-hongg', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
     hinweis: 'Limmattalstrasse 340 · Zürich West',
+    gbp: { name: 'Praxis Hwang', cid: '10520113234113581859', verified: 'dashboard' },
     // Inhaber 05.11.2026: Höngg als TCM.ch-Buchungsziel (Formular, Check-in) trotz Betreiberin Praxis Hwang → Karte live.
     karte: { status: 'live' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4040, lng: 8.4970 }, status: 'operational',
@@ -122,6 +134,7 @@ export const clinics: Clinic[] = [
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
     // Eröffnet: Betrieb durch die Inhaber:in bestätigt (02.11.2026, zuvor 'planned'). Öffnungszeiten nicht bestätigt → keine erfinden.
     hinweis: 'Ohmstrasse 14 · Zürich Nord',
+    gbp: { name: 'TCM.ch Zürich Oerlikon', cid: '7941897367090169557', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4112, lng: 8.5459 }, status: 'operational',
     areaServed: ['Zürich', 'Oerlikon', 'Seebach', 'Schwamendingen', 'Affoltern', 'Wallisellen', 'Opfikon', 'Kloten', 'Bassersdorf', 'Rümlang', 'Regensdorf'] },
 
@@ -130,6 +143,7 @@ export const clinics: Clinic[] = [
   { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
     street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
     hinweis: 'Bahnhofstrasse 37 · Zürich City',
+    gbp: { name: 'TCM.ch Zürich Bahnhofstrasse', cid: '7979795935203150889', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.3714, lng: 8.5384 }, status: 'operational',
     areaServed: ['Zürich', 'Kreis 1', 'Altstadt', 'Enge', 'Aussersihl', 'Wiedikon'] },
 
@@ -137,6 +151,7 @@ export const clinics: Clinic[] = [
     street: 'Steinenvorstadt 73', postalCode: '4051', phone: '+41 77 523 61 22',
     // Aktiver Standort (Inhaberbestätigung 12.10.2026). Öffnungszeiten bestätigt (Inhaber 06.11.2026): wie St. Gallen.
     hinweis: 'Steinenvorstadt 73 · Innenstadt',
+    gbp: { name: 'TCM.ch Basel', cid: '7260991150521954357', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.5528, lng: 7.5878 }, status: 'operational',
     areaServed: ['Basel', 'Riehen', 'Bettingen', 'Birsfelden', 'Allschwil', 'Münchenstein', 'Reinach', 'Weil am Rhein', 'Lörrach', 'Grenzach-Wyhlen', 'Saint-Louis', 'Hégenheim'] },
 
@@ -157,6 +172,7 @@ export const clinics: Clinic[] = [
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM.ch St Gallen',
     bild: { src: '/images/standort-stgallen-800.webp', alt: 'TCM.ch St. Gallen, Empfangsbereich, Oberer Graben 22' },
     hinweis: 'Oberer Graben 22 · beim HB',
+    gbp: { name: 'TCM.ch St Gallen', cid: '349562997880494535', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
     areaServed: ['St. Gallen', 'Gaiserwald', 'Wittenbach', 'Mörschwil', 'Goldach', 'Eggersriet', 'Gossau', 'Herisau', 'Teufen', 'Speicher'] },
 
@@ -164,12 +180,14 @@ export const clinics: Clinic[] = [
     street: 'Pestalozzistrasse 11', postalCode: '9400', phone: '+41 77 523 61 22',
     // Inhaber 05.11.2026: Rorschach als eigener Standort (live), Zeiten wie alle TCM.ch-Standorte.
     hinweis: 'Pestalozzistrasse 11 · Bodenseeregion',
+    // Audit 08.11.2026: an der Pestalozzistrasse 11 ist nur «GIOIA-TCM Corinna Reinhart» gelistet, kein TCM.ch-Profil → kein gbp.
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4783, lng: 9.4894 }, status: 'operational',
     areaServed: ['Rorschach', 'Rorschacherberg', 'Goldach', 'Arbon', 'Horn', 'Steinach', 'Tübach', 'Mörschwil', 'Heiden', 'Walzenhausen', 'Berneck', 'Au', 'Thal', 'Altstätten'] },
 
   { id: 'wil', name: 'Wil', city: 'Wil', region: 'Fürstenland',
     street: 'Obere Bahnhofstrasse 35', postalCode: '9500', phone: '+41 77 523 61 22',
     hinweis: 'Obere Bahnhofstrasse 35 · Fürstenland',
+    // Audit 08.11.2026: kein öffentliches Profil; im GBP-Konto Hwang liegt «Praxis Hwang, Obere Bahnhofstrasse 35» unbestätigt → kein gbp.
     openingHours: ['Mo-Fr 07:30-19:30', 'Sa 07:30-16:30'], geo: { lat: 47.4625, lng: 9.0467 }, status: 'operational',
     areaServed: ['Wil', 'Bronschhofen', 'Rossrüti', 'Schwarzenbach', 'Uzwil', 'Flawil', 'Bütschwil', 'Münchwilen', 'Sirnach', 'Niederuzwil', 'Henau'] },
 ];
@@ -215,6 +233,23 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'frauenfeld':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'volketswil':             { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'basel':                  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
+};
+
+// ── Google Maps-Ziele (Audit 08.11.2026): ein Ort für Embed, «In Google Maps öffnen» und Route, DE/EN/mobil identisch. ──
+export const clinicAddress = (c: Clinic) => (c.street ? `${c.street}, ${c.postalCode} ${c.city}` : null);
+/** Place-Link auf das verifizierte Unternehmensprofil (cid), sonst null. */
+export const mapsPlaceUrl = (c: Clinic) => (c.gbp ? `https://www.google.com/maps?cid=${c.gbp.cid}` : null);
+/** Karten-Embed: Unternehmensprofil (cid), sonst reine Adresse. */
+export const mapsEmbedUrl = (c: Clinic) => {
+  if (c.gbp) return `https://www.google.com/maps?cid=${c.gbp.cid}&output=embed`;
+  const a = clinicAddress(c);
+  return a ? `https://www.google.com/maps?q=${encodeURIComponent(a)}&output=embed` : null;
+};
+/** Routenlink (Google Maps URLs API, mobil öffnet die App). Ziel = Adresse; mit Profil zusätzlich der Firmenname, damit die App das Profil wählt. */
+export const mapsDirectionsUrl = (c: Clinic) => {
+  const a = clinicAddress(c);
+  if (!a) return null;
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.gbp ? `${c.gbp.name}, ${a}` : a)}`;
 };
 
 // DE Standort URL for a given clinic id (used for hreflang pairing).
