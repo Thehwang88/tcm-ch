@@ -263,8 +263,9 @@
   let autoShown = false;
   try { autoShown = sessionStorage.getItem(AUTO_KEY) === '1'; } catch (_) {}
 
-  // Floating Check-in shortcut is available before and after automatic display.
-  reopen.hidden = false;
+  // The floating Check-in shortcut becomes visible only after the visitor closes
+  // the popup. Never show it on initial page load, even after a stored dismissal.
+  reopen.hidden = true;
   let dwellReady = false;
   let bookingStarted = false;
   let timer = null;
