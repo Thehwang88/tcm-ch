@@ -32,6 +32,7 @@
 
 <script is:inline>
 (() => {
+  const init = () => {
   const VALID = { 'st-gallen': { name: 'St. Gallen', formValue: 'St. Gallen', address: 'Oberer Graben 22' } };
   const qs = new URLSearchParams(location.search);
   const explicit = qs.get('standort');
@@ -116,7 +117,7 @@
     const sel = form.querySelector('select[name="standort"]');
     if (!sel || sel.dataset.lcLocked) return;
     const options = Array.from(sel.options);
-    const opt = options.find(o => (o.value || o.textContent || '').trim() === ctx.formValue);
+    const opt = options.find(o => o.getAttribute('data-id') === id) || options.find(o => (o.value || o.textContent || '').trim() === ctx.formValue);
     if (!opt) return;
     sel.value = opt.value;
     sel.dataset.lcLocked = '1';
@@ -158,5 +159,8 @@
       if (/Standort finden|Standort wählen/i.test(el.textContent || '')) el.textContent = ctx.name + ' ansehen';
     }
   });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
 })();
 </script>
