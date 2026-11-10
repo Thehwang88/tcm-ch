@@ -114,11 +114,24 @@
     box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
   }
   .sgcp-reopen[hidden]{display:none!important}
-  /* The fixed yellow Check-in banner already provides the offer on small screens.
-     Hide its duplicate floating yellow circle to prevent overlapping booking CTAs.
-     Leave automatic popup eligibility and banner booking links untouched. */
+  /* When a yellow Check-in banner exists, don't display a duplicate yellow badge.
+     After popup dismissal (or a stored dismissal), show a compact neutral info
+     button to reopen it manually; the original banner CTA remains bookable. */
   @media(max-width:900px){
     :global(body:has(.sgb-banner) .sgcp-reopen){display:none!important}
+    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen:not([hidden])){
+      display:flex!important;left:12px;bottom:108px;
+      width:40px;height:40px;min-width:40px;min-height:40px;
+      padding:0;background:#FFFFFF;color:#171B1A;
+      border:1.5px solid #A5A39F;box-shadow:0 3px 12px rgba(23,27,26,.12);
+    }
+    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-label){display:none}
+    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-dot){
+      width:auto;height:auto;background:transparent;color:#171B1A;font-size:0;
+    }
+    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-dot::after){
+      content:"i";font:700 19px/1 Arial,sans-serif;
+    }
   }
   .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
   .sgcp-reopen-dot{
@@ -238,7 +251,10 @@
     if (root.hidden) return;
     root.hidden = true;
     reopen.hidden = false;
-    if (reason !== 'navigation') rememberDismissal();
+    if (reason !== 'navigation') {
+      rememberDismissal();
+      document.body.classList.add('sgcp-can-reopen');
+    }
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
     push(cfg.region === 'home' ? 'home_checkin_popup_close' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
@@ -248,7 +264,9 @@
   let autoShown = false;
   try { autoShown = sessionStorage.getItem(AUTO_KEY) === '1'; } catch (_) {}
 
-  // Keep the floating Gratis shortcut available even after a previous dismissal.
+  // On first visit the top yellow banner is the visible offer entry;
+  // after dismissal, a small neutral information control reopens the popup.
+  if (dismissalActive()) document.body.classList.add('sgcp-can-reopen');
   reopen.hidden = false;
   let dwellReady = false;
   let bookingStarted = false;
