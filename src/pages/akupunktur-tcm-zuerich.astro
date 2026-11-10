@@ -6,6 +6,7 @@ import rawBody from '../data/akupunktur-tcm-zuerich-body.html?raw';
 import { zhStandortOptionsHtml } from '../data/zuerich-termin';
 import StickyCta from '../components/StickyCta.astro';
 import BrandSignature from '../components/BrandSignature.astro';
+import SgCheckinPopup from '../components/SgCheckinPopup.astro';
 import { therapyCardsGridHtml } from '../data/therapy-cards';
 import { standortCardHtml } from '../lib/standort-card';
 import { NETZ_THERAPIEN } from '../data/standorte';
@@ -97,6 +98,7 @@ const schema = [
 <SpaPage title={title} description={description} path="/akupunktur-tcm-zuerich" body={body.slice(0, endCtaAt)} bodyAfter={body.slice(endCtaAt)} schema={schema}>
   <!-- Mobile Sticky-CTA (bestehende Komponente; erscheint erst nach dem Hero) -->
   <StickyCta prefill="Hallo, ich suche eine TCM-Praxis in Zürich." formTarget="#zh-funnel" heroSelector=".lsr-hero" />
+  <SgCheckinPopup />
   <BrandSignature
     slot="body-insert"
     imageSrc="/images/tcm-ch-crew-zuerich-west-1254.webp"
