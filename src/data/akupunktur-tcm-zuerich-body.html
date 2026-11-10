@@ -5,6 +5,9 @@
      Seitenverhältnis (gleiche Tabelle wie /en/acupuncture-zurich/): kein Gesicht am Rand halbiert, vertikal Köpfe statt Boden. */
   .akz .lsr-right--team{background:#d9cbb9}
   .akz .lsr-right--team img{object-fit:contain;object-position:center center;background:#d9cbb9}
+  .akz .lsr-right--team .zh-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;max-width:none;opacity:0;transition:opacity .35s ease;z-index:1}
+  .akz .lsr-right--team figcaption{z-index:2}
+  @media(prefers-reduced-motion:reduce){.akz .lsr-right--team .zh-hero-video{display:none!important}}
   @media(max-width:900px){.akz .lsr-right--team img{object-fit:cover;object-position:58% 10%}}
   @media(max-width:352px){.akz .lsr-right--team img{object-position:86.5% 10%}}
   @media(max-width:322px){.akz .lsr-right--team img{object-position:73% 10%}}
@@ -220,7 +223,7 @@
         <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Terminkoordination TCM.ch: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
       </div>
       <figure class="lsr-right lsr-right--foto lsr-right--team">
-        <img src="/images/team-zuerich.webp" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async">
+        <img class="zh-hero-fallback" src="/images/team-zuerich.webp" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async"><video class="zh-hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Einblicke aus dem Praxisalltag im TCM.ch Netzwerk" oncanplay="this.style.opacity='1'"><source src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/6978a0d73021bbb5e606bac1_praxis_long_website%20copy%20(1).mp4" type="video/mp4"></video>
         <figcaption>Das TCM.ch Behandlungsteam · Praxen in Zürich City, Oerlikon und Höngg</figcaption>
       </figure>
     </div>
@@ -234,14 +237,7 @@
     </div>
   </div>
 
-  <section style="background:#fff;border-bottom:1px solid var(--border);padding:36px 0">
-    <div class="wrap" style="max-width:960px">
-      <div style="font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);font-family:var(--font-sans);margin-bottom:14px">So einfach geht's</div>
-      <div class="zhx-steps" style="display:flex;gap:26px;flex-wrap:wrap;font-family:var(--font-sans);font-weight:700;font-size:15px;color:var(--charcoal)"><span><span style="color:var(--blue)">1</span> Ort nennen</span><span><span style="color:var(--blue)">2</span> Praxis &amp; Termin</span><span><span style="color:var(--blue)">3</span> Bestätigen</span></div>
-    </div>
-  </section>
 
-  
 
   <section class="section" id="standorte">
     <div class="wrap">
