@@ -117,6 +117,22 @@
     location.href = '/' + root + '/' + m[2] + '/?standort=' + encodeURIComponent(id);
   }, true);
 
+  // Match the St. Gallen location-page form: Gratis Check-in first and preselected.
+  document.querySelectorAll('[data-kf]').forEach((card) => {
+    const opts = card.querySelector('.kf-opts');
+    const checkin = opts?.querySelector('.kf-opt--checkin');
+    const behandlung = opts?.querySelector('.kf-opt--behandlung');
+    if (opts && checkin && behandlung && opts.firstElementChild !== checkin) {
+      opts.insertBefore(checkin, behandlung);
+    }
+    const checkinRadio = card.querySelector('input[name="terminart"][value="checkin"]');
+    if (checkinRadio && !checkinRadio.disabled && !checkinRadio.checked) {
+      checkinRadio.checked = true;
+      checkinRadio.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    card.setAttribute('data-kf-default', 'checkin');
+  });
+
   // Lock every generic inline contact form on the leaf to St. Gallen.
   document.querySelectorAll('.inline-form, form').forEach((form) => {
     const sel = form.querySelector('select[name="standort"]');
@@ -156,16 +172,10 @@
     if (sub) sub.textContent = 'Deine Anfrage geht direkt an den Standort ' + ctx.name + '.';
   });
 
-  // Collapse generic "all locations" grids to the chosen clinic context.
+  // Location is already known: remove the generic all-locations section entirely.
   document.querySelectorAll('#therapie-cities-section, #symptom-cities-section').forEach((section) => {
-    const heading = section.querySelector('h2');
-    if (heading) heading.textContent = 'Behandlung in ' + ctx.name;
-    const cards = section.querySelectorAll('a[href*="/standorte/"]');
-    cards.forEach((a) => {
-      const href = a.getAttribute('href') || '';
-      const keep = href.includes('/standorte/' + id + '/');
-      a.hidden = !keep;
-    });
+    section.hidden = true;
+    section.setAttribute('aria-hidden', 'true');
   });
 
   document.querySelectorAll('.cta-band h2, #symptom-cta-title').forEach((el) => {
