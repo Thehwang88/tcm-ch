@@ -116,5 +116,4 @@ body.tcm-warm .sg-contact-cta:hover,
 body.tcm-warm #home-content .svc-all-cta-link:hover{
   background:#10558F;color:#FFFFFF;border-color:#10558F;
 }
-/* On dark promotional panels do not override contrast or the yellow Check-in offer. */
-body.tcm-warm :is(.sc-btn--gelb,.sgb-cta,.sgcp-cta){color:inherit}
+/* Yellow Check-in and promotional banners retain their existing independent styles. */
