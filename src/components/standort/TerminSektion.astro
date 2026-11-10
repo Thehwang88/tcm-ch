@@ -97,6 +97,9 @@ const ctaTitle = data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfr
   /* Mobil/Tablet (06.11.2026): Adresse und Zeiten nicht vor dem Formular; «Über die Praxis» hat dieselben Angaben. Desktop: Seitenspalte.
      Inhaber 10.11.2026: das Praxisfoto mobil zeigen – oben im Termin-Bereich, 16:9 wie die Standortkarten; ohne Foto bleibt der Block aus. */
   @media (max-width:1023px){
+    /* The clinic photo now appears below "Über die Praxis" on mobile.
+       Preserve the aside, address and team ordering on desktop. */
+    .std-termin .sgt-aside-top{display:none!important}
     .sgt-aside-top{order:1}
     .sgt-aside-top:not(:has(.sgt-foto)){display:none}
     .sgt-aside-top .sgt-addr,.sgt-aside-top .sgt-hours{display:none}

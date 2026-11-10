@@ -2,9 +2,15 @@
 import type { Standort } from '../../data/standorte';
 import { telHref } from '../../data/standorte';
 import { heroVideo, isSymbolbild } from '../../data/hero-video';
+import { clinics } from '../../data/locations';
 // SG-Vorlage: ohne eigene <section>-Hülle, als Praxisspalte im Kontaktbereich (Slot info in KontaktPraxis.astro), wie in
 // St. Gallen mit Telefon und E-Mail und voller Kartenhöhe.
 const { data, sg = false } = Astro.props as { data: Standort; sg?: boolean };
+/* Same local clinic image used in the desktop appointment sidebar.
+   Present it below "Über die Praxis" on mobile instead of before the booking form. */
+const mobileClinicPhoto = sg && !data.planned
+  ? (clinics.find((c) => c.id === data.slug)?.bild ?? data.praxisBilder?.[0])
+  : undefined;
 // sg (SG-Vorlage, 08.11.2026): Einleitung immer, keine Praxisfotos (das Foto steht links im Termin-Bereich, TerminSektion);
 // der lokale Intro-Text (intro.body ohne eigene H2) folgt als Prosa unter der Einleitung, wie in St. Gallen.
 const introProsa = sg ? (data.intro?.body ?? '').replace(/^\s*<h2[^>]*>[\s\S]*?<\/h2>/, '') : '';
@@ -51,6 +57,11 @@ const paar = praxisBilder.length === 2 && praxisBilder.every((b) => b.ratio);
 const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').split('/').map(Number); return (w / h).toFixed(3) + 'fr'; }).join(' ');
 ---
 <h2 class="up-h2">Über die Praxis</h2>
+{mobileClinicPhoto && (
+  <figure class="up-mobile-clinic-photo">
+    <img src={mobileClinicPhoto.src} alt={mobileClinicPhoto.alt} width="1200" height="900" loading="lazy" decoding="async" />
+  </figure>
+)}
 {(sg || ((data.cro || data.praxisBilder) && !slim)) && (
   <div class="content-body" style="margin-bottom:18px"><p>{data.review && !data.nap.strasse ? 'Termine in Zürich vergeben wir aktuell in unseren Praxen in Oerlikon und Höngg. Deine Anfrage nehmen wir gern entgegen und schlagen dir die passende Praxis vor.' : data.review ? `Ob an der ${data.nap.strasse} in ${data.nap.ort} Termine möglich sind, ist noch nicht bestätigt. Deine Anfrage nehmen wir gern entgegen und schlagen dir eine passende Praxis in der Nähe vor.` : data.planned ? `Unsere neue Praxis an der ${data.nap.strasse} in ${data.nap.ort} ist in Vorbereitung. Anfragen für die Zeit nach der Eröffnung sind bereits möglich.` : `${data.betreiber ? `Die ${data.betreiber.name} (Partnerpraxis im TCM.ch Netzwerk)` : 'Unsere Praxis'} an der ${data.nap.strasse} in ${data.nap.ort} verbindet klassische TCM mit moderner Diagnostik. Termine fragst du direkt über das Formular, per WhatsApp oder Telefon an.`}</p>{introProsa && <Fragment set:html={introProsa} />}</div>
 )}
@@ -85,6 +96,11 @@ const paarCols = praxisBilder.map((b) => { const [w, h] = (b.ratio ?? '4/3').spl
 ) : null}
 {data.wissenLink && (<p class="sg-wissen-xlink" style="margin:20px 0 0;font-size:15px;line-height:1.55"><a href={data.wissenLink.href} style="color:var(--blue);font-weight:700;text-decoration:none">{data.wissenLink.label} →</a><span style="display:block;color:#4a4a4a;font-size:13.5px;margin-top:3px">{data.wissenLink.sub}</span></p>)}
 <style is:global>
+  .up-mobile-clinic-photo{display:none}
+  @media(max-width:1023px){
+    .up-mobile-clinic-photo{display:block;margin:0 0 22px;border-radius:var(--r-card,16px);overflow:hidden;box-shadow:var(--sh-md)}
+    .up-mobile-clinic-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  }
   .up-bilder-paar{display:grid;grid-template-columns:1fr;gap:16px;margin:0 0 22px}
   @media (min-width:640px){.up-bilder-paar{grid-template-columns:var(--up-cols)}}
 </style>
