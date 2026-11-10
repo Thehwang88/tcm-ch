@@ -334,13 +334,6 @@ export const therapeuten: Therapeut[] = [
     ],
   },
   {
-    slug: 'kristen-lambertin',
-    name: 'Kristen Lambertin',
-    titel: 'TCM-Therapeutin',
-    bild: '/images/Kristen%20Lambertin.webp',
-    registrierungen: [{ organisation: 'EMR', status: 'anerkannt', profileUrl: 'https://emr.ch/de/therapeut/klambertin', lastVerified: '2026-09-30' }],
-  },
-  {
     slug: 'leon-brandon-mueller',
     name: 'Leon Brandon Müller',
     titel: 'TCM-Therapeut',
