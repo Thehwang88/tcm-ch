@@ -210,11 +210,11 @@
   /* Zürich-only warm-neutral colour pilot. No structure, content or tracking changes.
      Global tokens, shared clinic cards and other locations remain untouched. */
   .akz{
-    --brand:#E4DDD2;--brand-hover:#D4CABE;--brand-black:#171B1A;
-    --brand-surface:#F5F2ED;--brand-tint:#F1EAE1;--brand-ink:#454943;
-    --blue:#565B59;--blue-dark:#414642;--blue-light:#F0EBE5;
-    --green-mint:#ECE5DC;--green-mid:#DED5C9;--green-dark:#414642;
-    --surface:#F5F2ED;--border:#DED8D0;--mid:#565B59;--muted:#676B67;
+    --brand:#E8E6E3;--brand-hover:#D6D4D1;--brand-black:#171B1A;
+    --brand-surface:#F5F4F2;--brand-tint:#EBE9E6;--brand-ink:#454943;
+    --blue:#1769B1;--blue-dark:#10558F;--blue-light:#EEF3F8;
+    --green-mint:#E8E6E3;--green-mid:#D8D6D2;--green-dark:#414642;
+    --surface:#E8E6E3;--border:#D8D6D2;--mid:#565B59;--muted:#676B67;
     --sh-btn:0 6px 18px rgba(23,27,26,.12);
     --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
   }
@@ -253,12 +253,12 @@
   .akz .lsr-btn-primary:hover,.akz .btn-primary:hover{background:#10558F;color:#FFFFFF}
   .akz .lsr-btn-ghost{border-color:#8E877F;color:#171B1A}
   .akz .lsr-btn-ghost:hover{background:rgba(255,255,255,.32);border-color:#171B1A}
-  .akz .akz-chip,.akz .zhx-tag,.akz .zhx-chip--other{background:#F0EBE5;color:#414642;border-color:#DED8D0}
+  .akz .akz-chip,.akz .zhx-tag,.akz .zhx-chip--other{background:#EFEEEC;color:#414642;border-color:#D8D6D2}
   .akz .zhx-chip:hover,.akz .zhx-chip:focus-visible{border-color:#565B59;color:#171B1A}
-  .akz #standorte .sc-chip:not(.sc-chip--gelb){background:#F0EBE5;color:#414642;border-color:#DED8D0}
-  .akz #standorte .sc-btn:not(.sc-btn--gelb){background:#171B1A;color:#FFFFFF}
-  .akz #standorte .sc:hover .sc-btn:not(.sc-btn--gelb){background:#353A37}
-  .akz .kf{--kf-neon:#171B1A;--kf-ink:#171B1A;--kf-mint:#F5F2ED;--kf-mint-line:#DAD1C5}
+  .akz #standorte .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
+  .akz #standorte .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
+  .akz #standorte .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F}
+  .akz .kf{--kf-neon:#1769B1;--kf-ink:#171B1A;--kf-mint:#F5F4F2;--kf-mint-line:#D8D6D2}
   .akz .kf .kf-btn--primary{background:#1769B1;border-color:#1769B1;color:#FFFFFF}
   .akz .kf .kf-btn--primary:hover{background:#10558F;border-color:#10558F;color:#FFFFFF}
   /* Shared kontakt-form.css applies dark text with !important to legacy form-submit.
@@ -271,9 +271,21 @@
   }
   .akz .akz-funnel-section .intake-trust-dot{background:#565B59}
   /* Final CTA is outside .akz in the existing page split: scope to this route via :has(). */
-  body:has(> .akz) .cta-band{background:#F5F2ED!important}
+  body:has(> .akz) .cta-band{background:#E8E6E3!important}
   body:has(> .akz) .cta-band .btn-primary{background:#1769B1;color:#FFFFFF;box-shadow:none}
   body:has(> .akz) .cta-band .btn-primary:hover{background:#10558F;color:#FFFFFF}
+
+  /* Complete grey rollout for the former beige/tinted funnel sections.
+     White service and content cards remain white for visual rhythm. */
+  .akz #standorte,.akz .akz-quartiere-section{background:#F5F4F2}
+  .akz .akz-funnel-section,.akz .zh-why-section,.akz .akz-wissen-section{background:#E8E6E3!important}
+  .akz .zhx-routing,.akz .zhx-chip--other{border-color:#D8D6D2}
+  /* Desktop header booking CTA on the Zürich hub only. */
+  body:has(> .akz) #mainNav .nav-cta{background:#1769B1;color:#FFFFFF}
+  body:has(> .akz) #mainNav .nav-cta:hover{background:#10558F;color:#FFFFFF}
+  /* Booking buttons inside inserted shared cards. Keep yellow offers unchanged. */
+  .akz .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
+  .akz .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F}
 
 </style>
 
