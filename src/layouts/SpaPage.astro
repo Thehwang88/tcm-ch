@@ -38,6 +38,8 @@ const selfUrl = new URL(path.endsWith('/') ? path : path + '/', site.url).href;
 const canonical = canonicalTo
   ? new URL(canonicalTo.endsWith('/') ? canonicalTo : canonicalTo + '/', site.url).href
   : selfUrl;
+const WARM_ROUTES = new Set(['/standorte/zuerich-bahnhofstrasse','/standorte/zuerich-oerlikon','/standorte/zuerich-hoengg','/standorte/st-gallen']);
+const warmClinicPalette = WARM_ROUTES.has(path.replace(/\/$/, ''));
 const enTwin = canonicalTo ? null : enTwinPath(path); // EN alternate (null if no built EN twin)
 
 const _branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
@@ -66,6 +68,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     <link rel="stylesheet" href="/nav-rebrand.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/standort-card.css" />
+    {warmClinicPalette && <link rel="stylesheet" href="/warm-clinic.css" />}
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
     /* restore the SPA #app{padding-top:68px} offset so full-bleed hub heroes clear the fixed 68px header */
@@ -109,7 +112,7 @@ const htmlAfter = bodyAfter ? upgradeLegacyForms(bodyAfter, kfCtx('leaf-b')).rep
     {!sensibel && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>}
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
   </head>
-  <body>
+  <body class={warmClinicPalette ? "tcm-warm" : undefined}>
     <DeHeader />
     <slot />
     <Fragment set:html={html} /><slot name="body-insert" />{htmlAfter && <Fragment set:html={htmlAfter} />}
