@@ -4,6 +4,7 @@
 // therapies, FAQ, "Behandlung in deiner Nähe") is baked into each captured file.
 import SpaPage from '../../layouts/SpaPage.astro';
 import LocationContext from '../../components/LocationContext.astro';
+import SgCheckinPopup from '../../components/SgCheckinPopup.astro';
 import { beschwerden } from '../../data/beschwerden';
 import { prefillForm } from '../../data/form-prefill';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
@@ -625,4 +626,5 @@ const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${full
 ---
 <SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} sensibel={SENSIBEL_SLUGS.has(slug!)}>
   {!INFO_ONLY_SLUGS.has(slug!) && <LocationContext />}
+  {!INFO_ONLY_SLUGS.has(slug!) && <SgCheckinPopup />}
 </SpaPage>
