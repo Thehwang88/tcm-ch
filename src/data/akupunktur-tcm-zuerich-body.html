@@ -238,6 +238,14 @@
   .akz .kf{--kf-neon:#171B1A;--kf-ink:#171B1A;--kf-mint:#F5F2ED;--kf-mint-line:#DAD1C5}
   .akz .kf .kf-btn--primary{background:#171B1A;border-color:#171B1A;color:#FFFFFF}
   .akz .kf .kf-btn--primary:hover{background:#353A37;border-color:#353A37;color:#FFFFFF}
+  /* Shared kontakt-form.css applies dark text with !important to legacy form-submit.
+     Match its selector here, scoped to this funnel, to keep white text on charcoal. */
+  .akz .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4){
+    background:#171B1A!important;border-color:#171B1A!important;color:#FFFFFF!important;
+  }
+  .akz .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover{
+    background:#353A37!important;border-color:#353A37!important;color:#FFFFFF!important;
+  }
   .akz .akz-funnel-section .intake-trust-dot{background:#565B59}
   /* Final CTA is outside .akz in the existing page split: scope to this route via :has(). */
   body:has(> .akz) .cta-band{background:#F5F2ED!important}
