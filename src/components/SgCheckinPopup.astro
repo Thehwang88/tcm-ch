@@ -114,19 +114,28 @@
     box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
   }
   .sgcp-reopen[hidden]{display:none!important}
-  /* Mobile: yellow Check-in shortcut above the bottom bar's phone icon,
-     not over the booking or WhatsApp CTA. Still reopens the popup on tap. */
+  /* Mobile: 44px Check-in circle, concentric with the 48px phone CTA
+     (sticky bar right padding 12px + 24px phone radius = 36px from edge).
+     14px right + 22px radius matches that centre; 8px visual gap above.
+     Preserve a >=44px tap target even on narrow phones. */
   @media(max-width:768px){
     .sgcp-reopen{
-      left:auto;right:12px;
-      bottom:calc(88px + env(safe-area-inset-bottom, 0px));
-      width:56px;height:56px;min-width:56px;min-height:56px;
-      box-shadow:0 4px 12px rgba(23,27,26,.16);
+      left:auto;right:14px;
+      bottom:calc(64px + env(safe-area-inset-bottom, 0px));
+      width:44px;height:44px;min-width:44px;min-height:44px;
+      padding:3px 2px;gap:1px;
+      box-shadow:0 3px 10px rgba(23,27,26,.16);
     }
     :global(body.scb-reserve--sg .sgcp-reopen){
-      bottom:calc(102px + env(safe-area-inset-bottom, 0px));
+      bottom:calc(70px + env(safe-area-inset-bottom, 0px));
     }
-    .sgcp-reopen-label{font-size:8px;letter-spacing:.015em}
+    .sgcp-reopen .sgcp-reopen-dot{width:23px;height:23px;font-size:16px}
+    .sgcp-reopen .sgcp-reopen-label{font-size:7px;letter-spacing:0}
+  }
+  @media(max-width:359px){
+    /* Narrow bottom bar uses 44px phone CTA and 10px horizontal padding:
+       centre is 32px from the right edge. */
+    .sgcp-reopen{right:10px}
   }
   @media(min-width:769px) and (max-width:900px){
     .sgcp-reopen{left:auto;right:14px}
