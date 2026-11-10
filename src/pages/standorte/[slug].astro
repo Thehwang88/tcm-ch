@@ -309,6 +309,10 @@ if (migrated) {
     const uh = '<h2 class="up-h2">Über die Praxis</h2>';
     const ui = sgBody.indexOf(uh);
     if (ui < 0) throw new Error('st-gallen: Über-die-Praxis-Marker für das Praxisfoto nicht gefunden - Leaf geändert?');
+    // Mobile-only: same St. Gallen clinic photo belongs in "Über die Praxis",
+    // rather than immediately after the hero video. Desktop image stays in the appointment sidebar.
+    const sgMobilePhoto = '<figure class="up-sg-mobile-photo"><img src="/images/standort-stgallen.webp" srcset="/images/standort-stgallen-800.webp 800w, /images/standort-stgallen.webp 1400w" sizes="(max-width:1023px) 100vw, 1px" alt="TCM.ch St. Gallen – Empfangsbereich, Oberer Graben 22" width="1400" height="1052" loading="lazy" decoding="async"></figure>';
+    sgBody = sgBody.replace(uh, uh + sgMobilePhoto);
     // 05.11.2026: Praxisfoto steht in der linken Spalte der Kontaktsektion (HeroStandardSG), nicht mehr unter «Über die Praxis».
     const h0 = sgBody.indexOf('<div id="standort-flagship-hero"');
     const c0 = sgBody.indexOf('<div id="standort-content">');
