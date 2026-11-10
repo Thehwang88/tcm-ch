@@ -427,6 +427,7 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
           CTA) → Transparenz (3 Karten) → Praxen in der Nähe → WhatsApp → FAQ → Weiterlesen. Kein Team-/Leitungsblock, kein
           Ablauf, keine Krankenkassen-Sektion, kein Einzugsgebiet, kein unteres Formular (alles wie St. Gallen). */}
       <TerminSektion data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />
+      {['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(slug!) && <SgCheckinPopup />}
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
         <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} umleitung={!!PU} />
         <UeberPraxis slot="info" data={data} inner sg />
