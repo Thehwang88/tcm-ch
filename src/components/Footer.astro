@@ -17,6 +17,26 @@ const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`).replace
 if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte-Liste nicht ersetzt');
 ---
 <Fragment set:html={footerHtml} />
+<style is:global>
+  /* TCM.ch footer identity: neutral white wordmark, restrained Korean Blue accent.
+     Scoped to the shared footer on ALL site pages; image asset stays untouched. */
+  footer.site-footer .footer-logo img {
+    filter:brightness(0) invert(1);
+  }
+  footer.site-footer .footer-mail {
+    border-bottom-color:#1769B1;
+  }
+  footer.site-footer .footer-mail:hover,
+  footer.site-footer .footer-mail:focus-visible {
+    color:#FFFFFF;
+    border-bottom-color:#3E96D9;
+  }
+  footer.site-footer .footer-col a:hover,
+  footer.site-footer .footer-col a:focus-visible {
+    color:#FFFFFF;
+  }
+</style>
+
 <WhatsAppFab />
 <WhatsAppConcierge />
 <StickyCtaBar />
