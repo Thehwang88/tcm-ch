@@ -151,9 +151,9 @@ const TEL = `tel:+${site.whatsapp}`;
         var tn = primary.childNodes[i];
         if (tn.nodeType === 3 && tn.textContent.trim()) {
           var txt = document.createElement('span'); txt.className = 'scb-txt';
-          // SG-Standortseite mit Kontaktsektion #termin: Primär «Gratis Check-in» (einzeilig) → #termin.
-          if (sgPage && document.getElementById('termin')) primary.classList.add('scb-primary--gelb');
-          txt.innerHTML = sgPage && document.getElementById('termin') ? '<span class="scb-l1">Gratis Check-in</span>'
+          // SG: Sticky bleibt die Standard-Terminaktion. Der kostenlose Check-in wird separat über den gelben Offer-CTA geführt.
+          txt.innerHTML = sgPage
+            ? '<span class="scb-l1">Termin anfragen</span>'
             : '<span class="scb-l1">Termin anfragen</span><span class="scb-l2"><span class="scb-l2-long">Auch als Gratis 360°-Check</span><span class="scb-l2-short">Gratis 360° möglich</span></span>';
           primary.replaceChild(txt, tn); primary.classList.add('scb-primary--sg'); document.body.classList.add('scb-reserve--sg'); break;
         }
