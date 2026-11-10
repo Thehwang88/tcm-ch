@@ -79,7 +79,17 @@
     h1.dataset.lcDone = '1';
     const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
     const base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').replace(/\s*in St\. Gallen\s*$/i,'').trim();
-    if (base) h1.textContent = base + ' in ' + ctx.name;
+    if (base) {
+      h1.textContent = base + ' in ' + ctx.name;
+      const eyebrow = (therapyPage || symptomPage)?.querySelector('.tsr-eyebrow,.sx-eyebrow');
+      if (eyebrow) eyebrow.textContent = base + ' · TCM.ch ' + ctx.name;
+      const lead = (therapyPage || symptomPage)?.querySelector('.tsr-lead,.sx-lead');
+      if (lead) {
+        lead.textContent = (lead.textContent || '')
+          .replace(/EMR-\/ASCA-registrierte Therapeut:innen in Zürich, Winterthur, St\. Gallen, Frauenfeld und Basel\.?/i,
+            'EMR-/ASCA-registrierte Therapeut:innen am Oberen Graben 22 in St. Gallen.');
+      }
+    }
     h1.dataset.lcDone = '1';
   }
 
@@ -172,6 +182,18 @@
     if (sub) sub.textContent = 'Deine Anfrage geht direkt an den Standort ' + ctx.name + '.';
   });
 
+
+  document.querySelectorAll('.intake-trust-item').forEach((el) => {
+    const t = (el.textContent || '').trim();
+    if (/Passende Praxis statt langem Suchen/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>Direkt an TCM.ch St. Gallen';
+    if (/Standorte in der Deutschschweiz/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>Oberer Graben 22 · beim HB';
+  });
+
+  document.querySelectorAll('.subpage-sidebar').forEach((sidebar) => {
+    const head = sidebar.querySelector('div[style*="text-transform:uppercase"]');
+    if (head && /Termin anfragen/i.test(head.textContent || '')) head.textContent = 'Termin in St. Gallen';
+  });
+
   // Location is already known: remove the generic all-locations section entirely.
   document.querySelectorAll('#therapie-cities-section, #symptom-cities-section').forEach((section) => {
     section.hidden = true;
@@ -191,17 +213,12 @@
       const isLocationLabel = /Standort finden|Standort wählen|St\. Gallen ansehen|Termin in St\. Gallen anfragen/i.test(el.textContent || '');
       if (isLocationLabel) {
         const inHero = !!el.closest('#therapie-premium-hero,#symptom-premium-hero,.tsr-hero,.sx-hero');
-        el.textContent = inHero ? 'Termin in ' + ctx.name + ' anfragen' : ctx.name + ' ansehen';
+        el.textContent = inHero ? 'Praxis ' + ctx.name + ' ansehen' : 'Praxis ' + ctx.name;
         if (!el.dataset.lcBound) {
           el.dataset.lcBound = '1';
           el.addEventListener('click', (ev) => {
-            if (inHero) {
-              ev.preventDefault();
-              const target = document.getElementById('kontakt') || document.querySelector('[data-kf]') || document.querySelector('.contact-section-inline');
-              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-              location.href = '/standorte/' + id + '/';
-            }
+            ev.preventDefault();
+            location.href = '/standorte/' + id + '/';
           });
         }
       }
