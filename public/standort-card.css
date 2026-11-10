@@ -13,7 +13,10 @@
 .sc--kompakt .sc-body{gap:6px;padding:14px 14px 12px}
 .sc-title{display:flex;align-items:center;gap:8px;font-size:clamp(24px,2vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--black,#0d0d0d)}
 .sc--kompakt .sc-title{font-size:18px;gap:6px}
-.sc-pin{flex-shrink:0;width:20px;height:20px;color:var(--blue,#2D9B6F)}
+.sc-pin{display:block;flex-shrink:0;width:20px;height:20px;color:#565B59}
+.sc-title>.sc-pin{display:block!important;visibility:visible!important;opacity:1!important;flex:0 0 20px}
+.sc--kompakt .sc-title>.sc-pin{flex-basis:16px}
+.sc-title>span{min-width:0}
 .sc--kompakt .sc-pin,.sc--inline .sc-pin{width:16px;height:16px}
 .sc-sub{font-size:15px;color:var(--mid,#4a4a4a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sc--kompakt .sc-sub{font-size:14px}
