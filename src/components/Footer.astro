@@ -26,6 +26,9 @@ if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte
   footer.site-footer .footer-mail {
     border-bottom-color:#1769B1;
   }
+  footer.site-footer .footer-mail::after {
+    background-color:#1769B1;
+  }
   footer.site-footer .footer-mail:hover,
   footer.site-footer .footer-mail:focus-visible {
     color:#FFFFFF;
