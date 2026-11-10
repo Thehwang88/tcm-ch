@@ -198,6 +198,39 @@
     .akz .zh-offer-choice{margin-top:6px;margin-bottom:22px}
     .akz .zh-offer-choice .kf-opt{padding:16px}
   }
+  /* Zürich-only warm-neutral colour pilot. No structure, content or tracking changes.
+     Global tokens, shared clinic cards and other locations remain untouched. */
+  .akz{
+    --brand:#E4DDD2;--brand-hover:#D4CABE;--brand-black:#171B1A;
+    --brand-surface:#F5F2ED;--brand-tint:#F1EAE1;--brand-ink:#454943;
+    --blue:#565B59;--blue-dark:#414642;--blue-light:#F0EBE5;
+    --green-mint:#ECE5DC;--green-mid:#DED5C9;--green-dark:#414642;
+    --surface:#F5F2ED;--border:#DED8D0;--mid:#565B59;--muted:#676B67;
+    --sh-btn:0 6px 18px rgba(23,27,26,.12);
+    --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
+  }
+  .akz .lsr-hero{background:#E4DDD2}
+  .akz .lsr-left{color:#171B1A}
+  .akz .lsr-h1,.akz .section-title{color:#171B1A}
+  .akz .section-label,.akz .section-title em,.akz .akz-txtlinks a{color:#565B59}
+  .akz .lsr-btn-primary,.akz .btn-primary{background:#171B1A;color:#FFFFFF;box-shadow:none}
+  .akz .lsr-btn-primary:hover,.akz .btn-primary:hover{background:#353A37;color:#FFFFFF}
+  .akz .lsr-btn-ghost{border-color:#8E877F;color:#171B1A}
+  .akz .lsr-btn-ghost:hover{background:rgba(255,255,255,.32);border-color:#171B1A}
+  .akz .akz-chip,.akz .zhx-tag,.akz .zhx-chip--other{background:#F0EBE5;color:#414642;border-color:#DED8D0}
+  .akz .zhx-chip:hover,.akz .zhx-chip:focus-visible{border-color:#565B59;color:#171B1A}
+  .akz #standorte .sc-chip:not(.sc-chip--gelb){background:#F0EBE5;color:#414642;border-color:#DED8D0}
+  .akz #standorte .sc-btn:not(.sc-btn--gelb){background:#171B1A;color:#FFFFFF}
+  .akz #standorte .sc:hover .sc-btn:not(.sc-btn--gelb){background:#353A37}
+  .akz .kf{--kf-neon:#171B1A;--kf-ink:#171B1A;--kf-mint:#F5F2ED;--kf-mint-line:#DAD1C5}
+  .akz .kf .kf-btn--primary{background:#171B1A;border-color:#171B1A;color:#FFFFFF}
+  .akz .kf .kf-btn--primary:hover{background:#353A37;border-color:#353A37;color:#FFFFFF}
+  .akz .akz-funnel-section .intake-trust-dot{background:#565B59}
+  /* Final CTA is outside .akz in the existing page split: scope to this route via :has(). */
+  body:has(> .akz) .cta-band{background:#F5F2ED!important}
+  body:has(> .akz) .cta-band .btn-primary{background:#171B1A;color:#FFFFFF;box-shadow:none}
+  body:has(> .akz) .cta-band .btn-primary:hover{background:#353A37;color:#FFFFFF}
+
 </style>
 
 <div class="akz">
