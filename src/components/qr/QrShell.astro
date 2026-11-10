@@ -21,6 +21,9 @@ const { title } = Astro.props;
       html{-webkit-text-size-adjust:100%}
       body{margin:0;background:#f6f7f6;color:#141414;font-family:var(--font-sans,Figtree,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif);line-height:1.45}
       .qr-wrap{max-width:520px;margin:0 auto;padding:16px 16px 40px}
+      /* Standortansicht kompakt: QR + «Auf Google bewerten» im ersten Bildschirm */
+      .qr-wrap--loc{padding:6px 16px 16px}
+      .qr-wrap--loc .qr-top{margin:0 0 6px}
       .qr-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 16px;min-height:44px}
       .qr-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 4px;color:#1F7A54;font-weight:600;text-decoration:none;font-size:16px}
       .qr-back:focus-visible,.qr-btn:focus-visible,.qr-item:focus-visible{outline:3px solid #2D9B6F;outline-offset:2px}
@@ -35,18 +38,19 @@ const { title } = Astro.props;
       .qr-item::after{content:"\203A";font-size:26px;color:#9aa39d;line-height:1}
       .qr-last[hidden]{display:none}
       .qr-last{display:block;margin:0 0 18px;padding:12px 16px;border-radius:12px;background:#E8F5EE;color:#1F7A54;font-weight:600;text-decoration:none}
-      .qr-card{background:#fff;border:1px solid #e3e6e3;border-radius:18px;padding:20px 18px 22px;text-align:center}
-      .qr-brand{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#555;font-weight:700;margin:0 0 4px}
-      .qr-name{font-size:24px;font-weight:800;margin:0 0 2px}
-      .qr-addr{margin:0 0 16px;color:#333;font-size:16px}
-      .qr-code{width:100%;max-width:340px;margin:0 auto;aspect-ratio:1/1;background:#fff}
+      .qr-card{background:#fff;border:1px solid #e3e6e3;border-radius:18px;padding:14px 16px 16px;text-align:center}
+      .qr-brand{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#555;font-weight:700;margin:0 0 2px}
+      .qr-name{font-size:22px;line-height:1.2;font-weight:800;margin:0 0 2px}
+      .qr-addr{margin:0 0 10px;color:#333;font-size:15px}
+      .qr-code{width:min(100%,340px,42vh);width:min(100%,340px,42svh);margin:0 auto;aspect-ratio:1/1;background:#fff}
       .qr-code svg{display:block;width:100%;height:auto}
-      .qr-thanks{margin:16px 0 0;font-size:17px;font-weight:600}
-      .qr-hint{margin:6px 0 0;color:#555;font-size:14px}
-      .qr-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0}
-      .qr-btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border-radius:12px;border:1px solid #cfd5d0;background:#fff;color:#141414;font:inherit;font-weight:600;font-size:15px;text-decoration:none;cursor:pointer}
-      .qr-btn--primary{grid-column:1/-1;background:#1F7A54;border-color:#1F7A54;color:#fff}
-      .qr-status{min-height:22px;margin:10px 0 0;color:#1F7A54;font-size:14px}
+      .qr-thanks{margin:10px 0 0;font-size:16px;font-weight:600}
+      .qr-hint{margin:2px 0 0;color:#555;font-size:14px}
+      .qr-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 0}
+      .qr-btn{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;border-radius:12px;border:1px solid #cfd5d0;background:#fff;color:#141414;font:inherit;font-weight:600;font-size:14px;line-height:1.2;white-space:nowrap;text-decoration:none;cursor:pointer}
+      .qr-btn--primary{grid-column:1/-1;min-height:50px;font-size:16px;background:#1F7A54;border-color:#1F7A54;color:#fff}
+      .qr-status{margin:8px 0 0;color:#1F7A54;font-size:14px}
+      .qr-status:empty{display:none}
       .qr-missing{margin:8px 0 0;padding:14px;border-radius:12px;background:#f3f4f3;color:#333}
       .qr-print-head{display:none}
       @media print{
@@ -56,7 +60,7 @@ const { title } = Astro.props;
         .qr-wrap{max-width:none;padding:0}
         .qr-card{border:0;padding:0}
         .qr-print-head{display:block}
-        .qr-code{max-width:120mm}
+        .qr-code{width:120mm;max-width:100%}
         .qr-name{font-size:28pt}.qr-addr{font-size:14pt}.qr-brand{font-size:11pt}.qr-thanks{font-size:14pt}
       }
     </style>

@@ -105,7 +105,17 @@ await Promise.all([pg.waitForNavigation({ waitUntil: 'load' }), pg.click('a[data
 ok(new URL(pg.url()).pathname === '/qr/tcm-st-gallen/', 'Tap öffnet eigene Standort-URL');
 const lay = await pg.evaluate(() => { const r = (s) => document.querySelector(s).getBoundingClientRect(); return { brand: r('.qr-brand').bottom, name: r('.qr-name').bottom, addr: r('.qr-addr').bottom, qrTop: r('.qr-code').top, qrW: r('.qr-code').width, vh: innerHeight }; });
 ok(lay.brand <= lay.name && lay.name <= lay.addr && lay.addr <= lay.qrTop, 'Marke, Standort, Adresse über dem QR');
-ok(lay.qrW >= 300 && lay.qrTop + lay.qrW <= lay.vh, `QR gross (${Math.round(lay.qrW)} px) und im ersten Bildschirm`);
+ok(lay.qrW >= 240 && lay.qrTop + lay.qrW <= lay.vh, `QR gross genug (${Math.round(lay.qrW)} px) und im ersten Bildschirm`);
+// Kompakt: QR + «Auf Google bewerten» ohne Scrollen; auf üblichen Handys alles auf einem Bildschirm.
+// Höhen = sichtbarer Bereich im Browser (Adress-/Navigationsleisten abgezogen).
+for (const [w, h, alles] of [[360, 560, false], [360, 640, false], [390, 664, true], [412, 780, true]]) {
+  await pg.setViewport({ width: w, height: h, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+  const v = await pg.evaluate(() => { const r = (s) => { const b = document.querySelector(s).getBoundingClientRect(); return { width: b.width, bottom: b.bottom }; }; const btns = [...document.querySelectorAll('[data-qr-action]')].map((b) => b.getBoundingClientRect()); return { qr: r('.qr-code'), open: r('[data-qr-action="open"]'), last: Math.max(...btns.map((b) => b.bottom)), oneLine: btns.every((b) => b.height <= 52), vh: innerHeight, ow: document.documentElement.scrollWidth > innerWidth }; });
+  ok(v.qr.width >= 220 && v.open.bottom <= v.vh && !v.ow && v.oneLine, `${w}×${h}: QR ${Math.round(v.qr.width)} px und «Auf Google bewerten» ohne Scrollen, Knöpfe einzeilig`);
+  if (alles) ok(v.last <= v.vh, `${w}×${h}: alle Aktionen ohne Scrollen sichtbar (${Math.round(v.last)}/${v.vh} px)`);
+  if (shots) await pg.screenshot({ path: path.join(shots, `qr-standort-${w}x${h}.png`) });
+}
+await pg.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
 ok(await noOverflow(pg), 'Standortansicht ohne horizontales Scrollen');
 const svgShot = await (await pg.$('.qr-code')).screenshot();
 const sd = decodePng(Buffer.from(svgShot));
