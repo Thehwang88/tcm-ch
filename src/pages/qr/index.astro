@@ -1,0 +1,41 @@
+---
+// /qr/ — Standortauswahl fuer Google-Bewertungen (mobil). /QR leitet hierher (public/_redirects).
+import QrShell from '../../components/qr/QrShell.astro';
+import { REVIEW_LOCATIONS, REVIEW_BRANDS, fullAddress } from '../../data/google-reviews';
+
+const groups = REVIEW_BRANDS.map((brand) => ({ brand, items: REVIEW_LOCATIONS.filter((l) => l.brand === brand) }));
+const names = Object.fromEntries(REVIEW_LOCATIONS.map((l) => [l.id, `${l.brand} ${l.name}`]));
+---
+<QrShell title="Google-Bewertung · Standort wählen">
+  <main class="qr-wrap">
+    <h1>Standort wählen</h1>
+    <p class="qr-sub">Wähle die Praxis, die du auf Google bewerten möchtest.</p>
+    <a class="qr-last" id="qr-last" href="#" hidden></a>
+    {groups.map((g) => (
+      <section class="qr-group" aria-label={g.brand}>
+        <h2>{g.brand}</h2>
+        <ul class="qr-list">
+          {g.items.map((l) => (
+            <li>
+              <a class="qr-item" href={`/qr/${l.id}/`} data-qr-id={l.id}>
+                <div><strong>{l.name}</strong><span>{fullAddress(l)}</span></div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </main>
+  <script is:inline define:vars={{ names }}>
+    // Zuletzt gewaehlten Standort anbieten (nur lokal im Browser, optional).
+    try {
+      var last = localStorage.getItem('qrLastLocation');
+      if (last && names[last]) {
+        var a = document.getElementById('qr-last');
+        a.href = '/qr/' + last + '/';
+        a.textContent = 'Zuletzt gewählt: ' + names[last] + ' ›';
+        a.hidden = false;
+      }
+    } catch (e) {}
+  </script>
+</QrShell>
