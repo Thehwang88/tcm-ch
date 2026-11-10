@@ -117,3 +117,24 @@ body.tcm-warm #home-content .svc-all-cta-link:hover{
   background:#10558F;color:#FFFFFF;border-color:#10558F;
 }
 /* Yellow Check-in and promotional banners retain their existing independent styles. */
+
+/* Homepage's legacy mint CTA variant was not covered by the initial blue rollout.
+   Keep the old button dimensions, labels, links and events. Do not recolour
+   WhatsApp (#25D366) or the yellow Gratis Check-in offers. */
+body.tcm-warm #home-content a.tcm-btn--mint,
+body.tcm-warm #home-content button.tcm-btn--mint {
+  background:#1769B1!important;
+  border-color:#1769B1!important;
+  color:#FFFFFF!important;
+  box-shadow:none;
+}
+body.tcm-warm #home-content a.tcm-btn--mint:hover,
+body.tcm-warm #home-content button.tcm-btn--mint:hover {
+  background:#10558F!important;
+  border-color:#10558F!important;
+  color:#FFFFFF!important;
+}
+body.tcm-warm #home-content :is(a,button).tcm-btn--mint:focus-visible {
+  outline:3px solid #10558F;
+  outline-offset:3px;
+}
