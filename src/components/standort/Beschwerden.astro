@@ -8,8 +8,7 @@ const ctaLabel = data.review ? 'Passende Praxis anfragen' : data.planned ? `Anfr
 const arrow = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 // SG-Vorlage (08.11.2026): 2 Reihen à 4 Karten, Klartext-Namen, eine CTA auf den Termin-Bereich (#termin), kein «Alle Beschwerden».
 const cards = data.beschwerden.map((slug) => ({ slug, c: symptomCards[slug] })).filter((x) => x.c).slice(0, 8);
-const CONTEXT_STANDORTE = new Set(['st-gallen','zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg']);
-const beschwerdeHref = (slug: string) => `/beschwerden/${slug}/${CONTEXT_STANDORTE.has(data.slug) ? `?standort=${data.slug}` : ''}`;
+const beschwerdeHref = (slug: string) => `/beschwerden/${slug}/?standort=${encodeURIComponent(data.slug)}`;
 ---
 <section class="section svc-section std-beschwerden" id={`beschwerden-${data.slug}`} style="background:var(--surface)"><div class="wrap"><div class="svc-header reveal"><div><div class="section-label">Beschwerden</div><h2 class="section-title">Wobei können wir <em>helfen</em>?</h2></div><p class="svc-sub">Häufige Beschwerden, bei denen Akupunktur und TCM eingesetzt werden.</p></div><div class="svc-grid">
 {cards.map(({ slug, c }, i) => (
