@@ -51,6 +51,7 @@
   const ctx = VALID[id];
   document.documentElement.dataset.locationContext = id;
 
+  const apply = () => {
   const bar = document.querySelector('[data-lc-context]');
   if (bar) {
     bar.hidden = false;
@@ -71,20 +72,24 @@
   // Localize the visible page context without touching canonical/meta/schema.
   const therapyPage = document.getElementById('page-therapie');
   const symptomPage = document.getElementById('page-symptom');
-  const h1 = (therapyPage || symptomPage)?.querySelector('h1');
+  const h1 =
+    document.querySelector('#therapie-premium-hero h1, #symptom-premium-hero h1, .tsr-h1, .sx-h1') ||
+    (therapyPage || symptomPage)?.querySelector('h1');
   if (h1 && !h1.dataset.lcDone) {
     h1.dataset.lcDone = '1';
     const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
     const base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').replace(/\s*in St\. Gallen\s*$/i,'').trim();
     if (base) h1.textContent = base + ' in ' + ctx.name;
+    h1.dataset.lcDone = '1';
   }
 
   const primaryHero =
+    document.querySelector('#therapie-premium-hero .btn-primary, #symptom-premium-hero .btn-primary, .tsr-btn-primary, .sx-btn-primary') ||
     therapyPage?.querySelector('.tsr-btn-primary') ||
     symptomPage?.querySelector('.btn-primary, .sx-btn-primary, button[onclick*="Contact"], button[onclick*="contact"]');
   if (primaryHero) {
     const t = primaryHero.textContent?.trim() || '';
-    if (/anfragen|behandlung/i.test(t)) primaryHero.textContent = 'Termin in ' + ctx.name + ' anfragen';
+    if (/anfragen|behandlung|termin/i.test(t)) primaryHero.textContent = 'Termin in ' + ctx.name + ' anfragen';
   }
 
   // Keep St. Gallen context through all therapy/complaint navigation.
@@ -121,6 +126,7 @@
     if (!opt) return;
     sel.value = opt.value;
     sel.dataset.lcLocked = '1';
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
     sel.disabled = true;
 
     const hidden = document.createElement('input');
@@ -143,11 +149,28 @@
   });
 
   // Localize the contact section around the generic form.
-  document.querySelectorAll('.contact-section-inline').forEach((section) => {
+  document.querySelectorAll('.contact-section-inline,[data-kf]').forEach((section) => {
     const heading = section.querySelector('.section-title');
     const sub = section.querySelector('.section-sub');
     if (heading) heading.innerHTML = 'Termin in <em>' + ctx.name + '</em> anfragen.';
     if (sub) sub.textContent = 'Deine Anfrage geht direkt an den Standort ' + ctx.name + '.';
+  });
+
+  // Collapse generic "all locations" grids to the chosen clinic context.
+  document.querySelectorAll('#therapie-cities-section, #symptom-cities-section').forEach((section) => {
+    const heading = section.querySelector('h2');
+    if (heading) heading.textContent = 'Behandlung in ' + ctx.name;
+    const cards = section.querySelectorAll('a[href*="/standorte/"]');
+    cards.forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const keep = href.includes('/standorte/' + id + '/');
+      a.hidden = !keep;
+    });
+  });
+
+  document.querySelectorAll('.cta-band h2, #symptom-cta-title').forEach((el) => {
+    const txt = el.textContent || '';
+    if (/Termin|Praxis|behandeln|anfragen/i.test(txt)) el.textContent = 'Termin in ' + ctx.name + ' anfragen';
   });
 
   // Make generic location-finder buttons preserve the chosen location instead of reopening routing.
@@ -155,10 +178,19 @@
     if (el.tagName === 'A') el.setAttribute('href','/standorte/' + id + '/');
     else {
       el.removeAttribute('onclick');
-      el.addEventListener('click', () => { location.href = '/standorte/' + id + '/'; });
+      if (!el.dataset.lcBound) {
+        el.dataset.lcBound = '1';
+        el.addEventListener('click', () => { location.href = '/standorte/' + id + '/'; });
+      }
       if (/Standort finden|Standort wählen/i.test(el.textContent || '')) el.textContent = ctx.name + ' ansehen';
     }
   });
+  };
+
+  apply();
+  requestAnimationFrame(() => apply());
+  setTimeout(apply, 150);
+  window.addEventListener('load', apply, { once: true });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
