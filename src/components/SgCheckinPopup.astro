@@ -1,18 +1,17 @@
 ---
 /**
- * St. Gallen-only CRO popup.
- * Temporary owner-review mode: appears 30s after every fresh page load.
- * Close leaves a floating reopen tab; popup hides the SG yellow offer banner while open.
+ * Check-in CRO popup. St. Gallen is the master design; Zürich hub and Zürich clinics reuse it.
+ * Auto-opens once per regional journey after 15s; close leaves a floating reopen button.
  */
 ---
 <div class="sgcp-backdrop" data-sgcp hidden>
   <section class="sgcp-card" role="dialog" aria-modal="true" aria-labelledby="sgcp-title" aria-describedby="sgcp-desc">
     <button class="sgcp-close" type="button" aria-label="Fenster schliessen" data-sgcp-close>×</button>
     <div class="sgcp-media">
-      <img src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/685c221ce7b36af7f377a96b_Team-scaled-e1710341469861-2048x1362-ezgif.com-jpg-to-webp-converter.webp" alt="Praxis Hwang Team" width="2048" height="1362" loading="eager" decoding="async">
+      <img data-sgcp-img src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/685c221ce7b36af7f377a96b_Team-scaled-e1710341469861-2048x1362-ezgif.com-jpg-to-webp-converter.webp" alt="Praxis Hwang Team" width="2048" height="1362" loading="eager" decoding="async">
     </div>
     <div class="sgcp-body">
-      <div class="sgcp-kicker">St. Gallen · 30 Min kostenlos</div>
+      <div class="sgcp-kicker" data-sgcp-kicker>St. Gallen · 30 Min kostenlos</div>
       <h2 id="sgcp-title">Dein kostenloser TCM 360°-Check-in</h2>
       <p id="sgcp-desc">Lerne TCM persönlich kennen – kostenlos und ohne Behandlung.</p>
       <ul>
@@ -144,18 +143,45 @@
   const reopen = document.querySelector('[data-sgcp-reopen]');
   if (!root || !reopen) return;
 
-  const AUTO_KEY = 'sg_checkin_popup_auto_shown';
   const qs = new URLSearchParams(location.search);
+  const path = location.pathname;
+  const CONFIG = {
+    'st-gallen': { region:'sg', label:'St. Gallen', formId:'st-gallen', image:null, imageAlt:'Praxis Hwang Team' },
+    'zuerich-bahnhofstrasse': { region:'zh', label:'Zürich Bahnhofstrasse', formId:'zuerich-bahnhofstrasse', image:'/images/team-zuerich.webp', imageAlt:'TCM.ch Team Zürich' },
+    'zuerich-oerlikon': { region:'zh', label:'Zürich Oerlikon', formId:'zuerich-oerlikon', image:'/images/team-zuerich.webp', imageAlt:'TCM.ch Team Zürich' },
+    'zuerich-hoengg': { region:'zh', label:'Zürich Höngg', formId:'zuerich-hoengg', image:'/images/team-zuerich.webp', imageAlt:'TCM.ch Team Zürich' },
+    'zuerich-hub': { region:'zh', label:'Zürich', formId:null, image:'/images/team-zuerich.webp', imageAlt:'TCM.ch Team Zürich' }
+  };
+
   let savedContext = null;
   try { savedContext = sessionStorage.getItem('tcm_location_context'); } catch (_) {}
-  const isSgContext =
-    /^\/standorte\/st-gallen\/?$/.test(location.pathname) ||
-    qs.get('standort') === 'st-gallen' ||
-    savedContext === 'st-gallen';
-  if (!isSgContext) {
+
+  // Current page always wins over stale session context.
+  let contextId =
+    /^\/akupunktur-tcm-zuerich\/?$/.test(path) ? 'zuerich-hub' :
+    /^\/standorte\/zuerich-bahnhofstrasse\/?$/.test(path) ? 'zuerich-bahnhofstrasse' :
+    /^\/standorte\/zuerich-oerlikon\/?$/.test(path) ? 'zuerich-oerlikon' :
+    /^\/standorte\/zuerich-hoengg\/?$/.test(path) ? 'zuerich-hoengg' :
+    /^\/standorte\/st-gallen\/?$/.test(path) ? 'st-gallen' :
+    (qs.get('standort') && CONFIG[qs.get('standort')]) ? qs.get('standort') :
+    (savedContext && CONFIG[savedContext]) ? savedContext : null;
+
+  if (!contextId || !CONFIG[contextId]) {
     root.hidden = true;
     reopen.hidden = true;
     return;
+  }
+  const cfg = CONFIG[contextId];
+  const AUTO_KEY = cfg.region === 'zh' ? 'zh_checkin_popup_auto_shown' : 'sg_checkin_popup_auto_shown';
+
+  const kicker = root.querySelector('[data-sgcp-kicker]');
+  if (kicker) kicker.textContent = cfg.label + ' · 30 Min kostenlos';
+  const img = root.querySelector('[data-sgcp-img]');
+  if (img && cfg.image) {
+    img.src = cfg.image;
+    img.alt = cfg.imageAlt;
+    img.width = 1536;
+    img.height = 1024;
   }
 
   const close = root.querySelector('[data-sgcp-close]');
@@ -164,7 +190,7 @@
 
   const push = (event, extra = {}) => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event, page_path: location.pathname, ...extra });
+    window.dataLayer.push({ event, page_path: location.pathname, popup_context: contextId, ...extra });
   };
 
   const show = (source = 'auto') => {
@@ -178,7 +204,7 @@
     document.documentElement.classList.add('sgcp-open');
     document.documentElement.style.overflow = 'hidden';
     close?.focus({ preventScroll: true });
-    push('sg_checkin_popup_view', { source });
+    push(cfg.region === 'zh' ? 'zh_checkin_popup_view' : 'sg_checkin_popup_view', { source });
   };
 
   const hide = (reason = 'close') => {
@@ -187,7 +213,7 @@
     reopen.hidden = false;
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
-    push('sg_checkin_popup_close', { reason });
+    push(cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
@@ -205,12 +231,15 @@
     e.preventDefault();
     if (timer) clearTimeout(timer);
 
-    const card =
-      document.querySelector('[data-kf-instance="sg-hero"]') ||
-      document.getElementById('offer-form') ||
-      document.querySelector('[data-kf][data-kf-standort-id="st-gallen"]') ||
-      document.querySelector('[data-kf]') ||
-      document.querySelector('.inline-form-card');
+    const card = contextId === 'zuerich-hub'
+      ? (document.getElementById('zh-funnel')?.querySelector('.inline-form-card') || document.getElementById('zh-funnel'))
+      : (
+        (contextId === 'st-gallen' ? document.querySelector('[data-kf-instance="sg-hero"]') : null) ||
+        document.querySelector('[data-kf][data-kf-standort-id="' + cfg.formId + '"]') ||
+        document.getElementById('offer-form') ||
+        document.querySelector('[data-kf]') ||
+        document.querySelector('.inline-form-card')
+      );
 
     const radio = card?.querySelector('input[name="terminart"][value="checkin"]');
     if (radio && !radio.disabled) {
@@ -226,13 +255,19 @@
     try {
       const url = new URL(location.href);
       url.searchParams.set('terminart', 'checkin');
-      url.hash = document.getElementById('offer-form') ? 'offer-form' : document.getElementById('kontakt') ? 'kontakt' : 'termin';
+      if (cfg.formId) url.searchParams.set('standort', cfg.formId);
+      url.hash = contextId === 'zuerich-hub'
+        ? 'zh-funnel'
+        : document.getElementById('offer-form') ? 'offer-form'
+        : document.getElementById('kontakt') ? 'kontakt' : 'termin';
       history.replaceState(null, '', url.pathname + url.search + url.hash);
     } catch (_) {}
 
-    push('sg_checkin_popup_click', { terminart: 'checkin', standort: 'st-gallen' });
+    push(cfg.region === 'zh' ? 'zh_checkin_popup_click' : 'sg_checkin_popup_click', { terminart: 'checkin', standort: cfg.formId || 'zuerich-routing' });
 
-    const target = document.getElementById('offer-form') || document.getElementById('kontakt') || card || document.getElementById('termin');
+    const target = contextId === 'zuerich-hub'
+      ? document.getElementById('zh-funnel')
+      : document.getElementById('offer-form') || document.getElementById('kontakt') || card || document.getElementById('termin');
     if (target) {
       requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     }
