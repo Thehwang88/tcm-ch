@@ -276,7 +276,7 @@
     autoShown = true;
     show('engaged_45s');
     removeEventListener('scroll', maybeShow);
-    removeEventListener('visibilitychange', maybeShow);
+    document.removeEventListener('visibilitychange', maybeShow);
   };
   if (!autoShown && !dismissalActive()) {
     timer = setTimeout(() => { dwellReady = true; maybeShow(); }, AUTO_DELAY_MS);
