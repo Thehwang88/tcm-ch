@@ -5,9 +5,13 @@
      Seitenverhältnis (gleiche Tabelle wie /en/acupuncture-zurich/): kein Gesicht am Rand halbiert, vertikal Köpfe statt Boden. */
   .akz .lsr-right--team{background:#d9cbb9}
   .akz .lsr-right--team img{object-fit:contain;object-position:center center;background:#d9cbb9}
+  .akz .lsr-right--team .zh-hero-fallback{visibility:hidden}
   .akz .lsr-right--team .zh-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;max-width:none;opacity:0;transition:opacity .35s ease;z-index:1;background:#d9cbb9}
   .akz .lsr-right--team figcaption{z-index:2}
-  @media(prefers-reduced-motion:reduce){.akz .lsr-right--team .zh-hero-video{display:none!important}}
+  @media(prefers-reduced-motion:reduce){
+    .akz .lsr-right--team .zh-hero-video{display:none!important}
+    .akz .lsr-right--team .zh-hero-fallback{visibility:visible}
+  }
   @media(max-width:900px){.akz .lsr-right--team img{object-fit:cover;object-position:58% 10%}}
   @media(max-width:352px){.akz .lsr-right--team img{object-position:86.5% 10%}}
   @media(max-width:322px){.akz .lsr-right--team img{object-position:73% 10%}}
