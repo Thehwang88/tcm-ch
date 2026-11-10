@@ -157,9 +157,8 @@ const homeHtml = homeHtmlCards;
     }
     #home-content .home-loc-card:hover{border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)}
     #home-content .home-loc-card--image{padding:0;display:grid;grid-template-columns:1fr;gap:0;overflow:hidden;align-items:stretch}
-    #home-content .home-loc-card--image .home-loc-img{display:block;width:100%;height:150px;object-fit:cover;object-position:center}
-    /* Hochformat Bahnhofstrasse: Ausschnitt leicht nach oben, Schriftzug frei */
-    #home-content .home-loc-img[src$="standort-zuerich-bahnhofstrasse-brand.webp"]{object-position:50% 40%}
+    /* 16:9 statt fester Höhe: mehr Bild sichtbar, gleicher Ausschnitt-Charakter für alle Karten */
+    #home-content .home-loc-card--image .home-loc-img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center}
     #home-content .home-loc-card--image .home-loc-main{padding:17px 18px 8px}
     #home-content .home-loc-card--image .home-loc-action{padding:0 18px 17px;justify-content:space-between;width:100%;box-sizing:border-box}
     #home-content .home-loc-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -185,7 +184,7 @@ const homeHtml = homeHtmlCards;
       #home-content .home-loc-grid--3,#home-content .home-loc-grid--4{grid-template-columns:1fr}
       #home-content .home-loc-card{padding:16px}
       #home-content .home-loc-card--image{padding:0}
-      #home-content .home-loc-card--image .home-loc-img{height:180px}
+      #home-content .home-loc-card--image .home-loc-img{height:auto;aspect-ratio:16/9}
       #home-content .home-loc-action span:first-child{display:none}
       #home-content .home-locations-divider{align-items:flex-start}
     }
