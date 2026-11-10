@@ -77,11 +77,13 @@ const {
   .brand-signature__link:focus-visible{color:var(--brand);outline:2px solid var(--brand);outline-offset:6px}
   .brand-signature--warm{background:#E4DDD2;color:#171B1A}
   .brand-signature--warm .brand-signature__media{background:#E4DDD2}
+  /* Keep every person visible in the original 3:2 Zürich team photo; don't crop the left/right edges. */
+  .brand-signature--warm .brand-signature__media > img{object-fit:contain;object-position:center center}
   .brand-signature--warm .brand-signature__eyebrow{color:#565B59}
   .brand-signature--warm h2{color:#171B1A}
   .brand-signature--warm p{color:#565B59}
   .brand-signature--warm .brand-signature__link{color:#171B1A;border-bottom-color:#8E877F}
   .brand-signature--warm .brand-signature__link:hover{color:#414642;border-bottom-color:#414642}
   .brand-signature--warm .brand-signature__link:focus-visible{color:#171B1A;outline-color:#171B1A}
-  @media(max-width:760px){.brand-signature{grid-template-columns:1fr;min-height:0}.brand-signature__media{aspect-ratio:1/1}.brand-signature__media > img{object-position:var(--bs-pos-m,var(--bs-pos,center))}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:48px 24px 56px}.brand-signature h2{font-size:clamp(42px,12vw,56px)}}
+  @media(max-width:760px){.brand-signature{grid-template-columns:1fr;min-height:0}.brand-signature__media{aspect-ratio:1/1}.brand-signature--warm .brand-signature__media{aspect-ratio:3/2}.brand-signature__media > img{object-position:var(--bs-pos-m,var(--bs-pos,center))}.brand-signature--reverse .brand-signature__media{order:0}.brand-signature__content{padding:48px 24px 56px}.brand-signature h2{font-size:clamp(42px,12vw,56px)}}
 </style>
