@@ -1,7 +1,8 @@
 ---
 /**
  * Check-in CRO popup. St. Gallen is the master design; Zürich hub and Zürich clinics reuse it.
- * Auto-opens once per regional journey after 15s; close leaves a floating reopen button.
+ * Engagement-gated auto-open on desktop and mobile: 45s AND 40% scroll.
+ * Dismissals are respected for seven days; manual reopening remains available.
  */
 ---
 <div class="sgcp-backdrop" data-sgcp hidden>
@@ -180,6 +181,20 @@
     ? 'home_checkin_popup_auto_shown'
     : cfg.region === 'zh' ? 'zh_checkin_popup_auto_shown' : 'sg_checkin_popup_auto_shown';
 
+  // Global seven-day dismissal across all TCM.ch pages (not reset per region).
+  const DISMISSED_KEY = 'tcm_checkin_popup_dismissed_until_v2';
+  const DISMISS_MS = 7 * 24 * 60 * 60 * 1000;
+  const AUTO_DELAY_MS = 45_000;
+  const MIN_SCROLL = 0.40;
+  const dismissalActive = () => {
+    try { return Number(localStorage.getItem(DISMISSED_KEY) || 0) > Date.now(); }
+    catch (_) { return false; }
+  };
+  const rememberDismissal = () => {
+    try { localStorage.setItem(DISMISSED_KEY, String(Date.now() + DISMISS_MS)); }
+    catch (_) {}
+  };
+
   const kicker = root.querySelector('[data-sgcp-kicker]');
   if (kicker) kicker.textContent = cfg.label + ' · 30 Min kostenlos';
   const img = root.querySelector('[data-sgcp-img]');
@@ -201,7 +216,7 @@
 
   const show = (source = 'auto') => {
     if (!root.hidden) return;
-    if (source === '15s') {
+    if (source === 'engaged_45s') {
       try { sessionStorage.setItem(AUTO_KEY, '1'); } catch (_) {}
     }
     lastFocused = document.activeElement;
@@ -217,16 +232,57 @@
     if (root.hidden) return;
     root.hidden = true;
     reopen.hidden = false;
+    if (reason !== 'navigation') rememberDismissal();
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
-    push(cfg.region === 'home' ? 'home_checkin_popup_close' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
+    push(cfg.region === 'home' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
   let autoShown = false;
   try { autoShown = sessionStorage.getItem(AUTO_KEY) === '1'; } catch (_) {}
-  const timer = autoShown ? null : setTimeout(() => show('15s'), 15000);
-  if (autoShown) reopen.hidden = false;
+
+  // Keep the floating Gratis shortcut available even after a previous dismissal.
+  reopen.hidden = false;
+  let dwellReady = false;
+  let bookingStarted = false;
+  let timer = null;
+  const bookingSurface = '[data-kf], .kf, .inline-form-card, #zh-funnel, #home-contact-form, #offer-form, #anfrage-box';
+  const currentBookingHash = () => /^(#(?:zh-funnel|home-contact-form|offer-form|anfrage-box|termin|kontakt|online-buchen|kf-))/.test(location.hash);
+  const bookingInProgress = () =>
+    bookingStarted || currentBookingHash() ||
+    !!document.activeElement?.closest?.(bookingSurface);
+  // A booking field or CTA interaction cancels the automatic interruption for this page.
+  const markBooking = (event) => {
+    if (event.target?.closest?.(bookingSurface)) bookingStarted = true;
+  };
+  document.addEventListener('focusin', markBooking);
+  document.addEventListener('input', markBooking);
+  document.addEventListener('change', markBooking);
+  document.addEventListener('click', (event) => {
+    if (event.target?.closest?.(bookingSurface)) { bookingStarted = true; return; }
+    const link = event.target?.closest?.('a[href]');
+    if (link && /(?:#(?:zh-funnel|home-contact-form|offer-form|anfrage-box|termin|kontakt|online-buchen)|[?&]terminart=)/.test(link.getAttribute('href') || '')) bookingStarted = true;
+  });
+
+  const scrollProgress = () => {
+    const doc = document.documentElement;
+    const max = Math.max(0, doc.scrollHeight - window.innerHeight);
+    return max > 0 ? Math.min(1, window.scrollY / max) : 0;
+  };
+  const maybeShow = () => {
+    if (!dwellReady || autoShown || dismissalActive() || bookingInProgress()) return;
+    if (document.visibilityState === 'hidden' || scrollProgress() < MIN_SCROLL) return;
+    autoShown = true;
+    show('engaged_45s');
+    removeEventListener('scroll', maybeShow);
+    removeEventListener('visibilitychange', maybeShow);
+  };
+  if (!autoShown && !dismissalActive()) {
+    timer = setTimeout(() => { dwellReady = true; maybeShow(); }, AUTO_DELAY_MS);
+    addEventListener('scroll', maybeShow, { passive:true });
+    document.addEventListener('visibilitychange', maybeShow);
+  }
 
   close?.addEventListener('click', () => hide('button'));
   root.addEventListener('click', (e) => { if (e.target === root) hide('backdrop'); });
@@ -236,6 +292,8 @@
   cta?.addEventListener('click', (e) => {
     e.preventDefault();
     if (timer) clearTimeout(timer);
+    bookingStarted = true;
+    rememberDismissal();
 
     const card = contextId === 'home'
       ? (document.getElementById('home-contact-form')?.querySelector('.inline-form-card') || document.getElementById('home-contact-form'))
