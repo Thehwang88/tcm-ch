@@ -99,7 +99,7 @@ const ctaTitle = data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfr
   @media (max-width:1023px){
     /* The clinic photo now appears below "Über die Praxis" on mobile.
        Preserve the aside, address and team ordering on desktop. */
-    .std-termin .sgt-aside-top .sgt-foto{display:none}
+    .std-termin .sgt-aside-top{display:none!important}
     .sgt-aside-top{order:1}
     .sgt-aside-top:not(:has(.sgt-foto)){display:none}
     .sgt-aside-top .sgt-addr,.sgt-aside-top .sgt-hours{display:none}
