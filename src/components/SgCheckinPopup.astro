@@ -20,7 +20,7 @@
         <li>Zungen- &amp; Pulsdiagnostik</li>
         <li>Persönliche Fragen + Krankenkassen-Check</li>
       </ul>
-      <a class="sgcp-cta" href="?terminart=checkin#termin" data-sgcp-cta>
+      <a class="sgcp-cta" href="#offer-form" data-sgcp-cta>
         Jetzt gratis Termin wählen <span aria-hidden="true">→</span>
       </a>
       <p class="sgcp-note">Kostenlos · unverbindlich · ohne Behandlung</p>
@@ -179,11 +179,39 @@
   reopen.addEventListener('click', () => show('reopen'));
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && !root.hidden) hide('escape'); });
 
-  cta?.addEventListener('click', () => {
+  cta?.addEventListener('click', (e) => {
+    e.preventDefault();
     clearTimeout(timer);
+
+    const card =
+      document.querySelector('[data-kf-instance="sg-hero"]') ||
+      document.getElementById('offer-form') ||
+      document.querySelector('[data-kf][data-kf-standort-id="st-gallen"]');
+
+    const radio = card?.querySelector('input[name="terminart"][value="checkin"]');
+    if (radio && !radio.disabled) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    root.hidden = true;
+    reopen.hidden = false;
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
+
+    try {
+      const url = new URL(location.href);
+      url.searchParams.set('terminart', 'checkin');
+      url.hash = 'offer-form';
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    } catch (_) {}
+
     push('sg_checkin_popup_click', { terminart: 'checkin', standort: 'st-gallen' });
+
+    const target = document.getElementById('offer-form') || card || document.getElementById('termin');
+    if (target) {
+      requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
   });
 })();
 </script>
