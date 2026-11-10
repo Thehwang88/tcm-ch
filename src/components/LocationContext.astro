@@ -178,19 +178,21 @@
     if (el.tagName === 'A') el.setAttribute('href','/standorte/' + id + '/');
     else {
       el.removeAttribute('onclick');
-      if (!el.dataset.lcBound) {
-        el.dataset.lcBound = '1';
-        el.addEventListener('click', () => { location.href = '/standorte/' + id + '/'; });
-      }
-      if (/Standort finden|Standort wählen/i.test(el.textContent || '')) {
+      const isLocationLabel = /Standort finden|Standort wählen|St\. Gallen ansehen|Termin in St\. Gallen anfragen/i.test(el.textContent || '');
+      if (isLocationLabel) {
         const inHero = !!el.closest('#therapie-premium-hero,#symptom-premium-hero,.tsr-hero,.sx-hero');
         el.textContent = inHero ? 'Termin in ' + ctx.name + ' anfragen' : ctx.name + ' ansehen';
-        if (inHero) {
+        if (!el.dataset.lcBound) {
+          el.dataset.lcBound = '1';
           el.addEventListener('click', (ev) => {
-            ev.preventDefault();
-            const target = document.getElementById('kontakt') || document.querySelector('[data-kf]') || document.querySelector('.contact-section-inline');
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, { once: true });
+            if (inHero) {
+              ev.preventDefault();
+              const target = document.getElementById('kontakt') || document.querySelector('[data-kf]') || document.querySelector('.contact-section-inline');
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              location.href = '/standorte/' + id + '/';
+            }
+          });
         }
       }
     }
