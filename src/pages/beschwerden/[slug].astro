@@ -3,6 +3,7 @@
 // (#page-symptom), captured per-slug. Per-slug content (sidebar "hilft bei", related
 // therapies, FAQ, "Behandlung in deiner Nähe") is baked into each captured file.
 import SpaPage from '../../layouts/SpaPage.astro';
+import LocationContext from '../../components/LocationContext.astro';
 import { beschwerden } from '../../data/beschwerden';
 import { prefillForm } from '../../data/form-prefill';
 import { appendSidebarAllLink } from '../../data/cap-sidebar';
@@ -623,3 +624,4 @@ const fullBody = prefilledBody + ouchBlock + faqBlock + selbsttestBlock + relate
 const pageBody = REBRANDED_SLUGS.has(slug!) ? `<div class="symptom-scope">${fullBody}</div>` : fullBody;
 ---
 <SpaPage title={title} description={description} path={`/beschwerden/${slug}`} body={pageBody} schema={schema} canonicalTo={MERGED[slug!]} sensibel={SENSIBEL_SLUGS.has(slug!)} />
+<LocationContext />
