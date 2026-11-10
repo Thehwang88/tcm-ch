@@ -31,6 +31,7 @@ const zhCards = '<div class="sc-grid sc-grid--3">' +
     ['zuerich-hoengg', 'zuerich-hoengg'],
   ].map(([id, tracking]) => standortCardHtml(id, {
     variant: 'kompakt',
+    foto: true, // Praxisbild wie auf der Startseite (16:9, .sc-img)
     attrs: `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'${tracking}'})"`,
   })).join('') +
   '</div>';

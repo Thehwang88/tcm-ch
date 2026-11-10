@@ -14,7 +14,7 @@ export type Lang = 'de' | 'en';
 export interface CardOpts {
   variant?: CardVariant;
   lang?: Lang;
-  /** Foto (clinic.bild) nur in Variante hero und nur, wo ausdrücklich gewünscht (Home). */
+  /** Foto (clinic.bild) in Variante hero oder kompakt, nur wo ausdrücklich gewünscht (Home, Zürich-Funnel). */
   foto?: boolean;
   /** Zusätzliche Attribute am <a> (z. B. onclick für bestehendes dataLayer-Tracking). Nie Nutzertext. */
   attrs?: string;
@@ -103,7 +103,7 @@ export function standortCardHtml(clinicOrId: Clinic | string, o: CardOpts = {}):
     const li = t.inline; const lab = c.karte?.button ?? (st === 'einzugsgebiet' ? `${li.naechste}: ${cardName(naechste!)}` : st === '2027' ? (c.status === 'operational' ? li.ansehen : li.warteliste) : ci ? li.checkin : li.buchen);
     return `<a class="${cls}" ${a}>${PIN}<span class="sc-name">${esc(cardName(c))}</span><span class="sc-btn${ci ? ' sc-btn--gelb' : ''}">${esc(lab)} <span aria-hidden="true">→</span></span></a>`;
   }
-  const foto = v === 'hero' && o.foto && c.bild ? `<img class="sc-img" src="${esc(c.bild.src)}" alt="${esc(c.bild.alt)}" width="1200" height="896" loading="lazy" decoding="async">` : '';
+  const foto = (v === 'hero' || v === 'kompakt') && o.foto && c.bild ? `<img class="sc-img" src="${esc(c.bild.src)}" alt="${esc(c.bild.alt)}" width="1200" height="896" loading="lazy" decoding="async">` : '';
   return `<a class="${cls}" ${a}>${foto}<div class="sc-body"><div class="sc-title">${PIN}<span>${esc(cardName(c))}</span></div><div class="sc-sub">${esc(cardHinweis(c))}</div>` +
     (chips.length ? `<div class="sc-chips">${chips.map((x) => `<span class="sc-chip${x.gelb ? ' sc-chip--gelb' : ''}">${esc(x.t)}</span>`).join('')}</div>` : '') +
     `${btn}</div></a>`;
