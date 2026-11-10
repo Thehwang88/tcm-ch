@@ -183,7 +183,14 @@ if(!isOpen){a.classList.add('open');btn.classList.add('open');btn.setAttribute('
     var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;e.target.querySelectorAll('.count-up').forEach(animateCountUp);so.unobserve(e.target);}});},{threshold:.3});
     so.observe(sb);
   }
-  try{ var sp=new URLSearchParams(location.search).get('standort'); if(sp){ setTimeout(function(){openContactForm(null,sp);},250); } }catch(e){}
+  try{
+    var sp=new URLSearchParams(location.search).get('standort');
+    var isContentLeaf=/^\/(therapien|beschwerden)\//.test(location.pathname);
+    // Standort-Kontext auf Therapie-/Beschwerden-Seiten dient nur zur lokalen
+    // Personalisierung/Prefill. Content-Navigation soll immer am Hero starten;
+    // nur explizite Termin-/Kontaktziele dürfen zum Formular scrollen.
+    if(sp && !isContentLeaf){ setTimeout(function(){openContactForm(null,sp);},250); }
+  }catch(e){}
   // Prefill handoff (e.g. from /selbsttest/): ?anliegen=...&quelle=... fills the Anliegen
   // textarea + sets the hidden quelle field, then scrolls to the form. Same quelle path as submit.
   try{
