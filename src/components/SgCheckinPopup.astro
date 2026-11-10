@@ -30,7 +30,7 @@
 
 <button class="sgcp-reopen" type="button" data-sgcp-reopen hidden aria-label="Kostenlosen TCM 360°-Check-in anzeigen">
   <span class="sgcp-reopen-dot" aria-hidden="true">+</span>
-  <span class="sgcp-reopen-label">Gratis</span>
+  <span class="sgcp-reopen-label">Check-in</span>
 </button>
 
 <style>
@@ -114,24 +114,22 @@
     box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
   }
   .sgcp-reopen[hidden]{display:none!important}
-  /* When a yellow Check-in banner exists, don't display a duplicate yellow badge.
-     After popup dismissal (or a stored dismissal), show a compact neutral info
-     button to reopen it manually; the original banner CTA remains bookable. */
-  @media(max-width:900px){
-    :global(body:has(.sgb-banner) .sgcp-reopen){display:none!important}
-    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen:not([hidden])){
-      display:flex!important;left:12px;bottom:108px;
-      width:40px;height:40px;min-width:40px;min-height:40px;
-      padding:0;background:#FFFFFF;color:#171B1A;
-      border:1.5px solid #A5A39F;box-shadow:0 3px 12px rgba(23,27,26,.12);
+  /* Mobile: yellow Check-in shortcut above the bottom bar's phone icon,
+     not over the booking or WhatsApp CTA. Still reopens the popup on tap. */
+  @media(max-width:768px){
+    .sgcp-reopen{
+      left:auto;right:12px;
+      bottom:calc(88px + env(safe-area-inset-bottom, 0px));
+      width:56px;height:56px;min-width:56px;min-height:56px;
+      box-shadow:0 4px 12px rgba(23,27,26,.16);
     }
-    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-label){display:none}
-    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-dot){
-      width:auto;height:auto;background:transparent;color:#171B1A;font-size:0;
+    :global(body.scb-reserve--sg .sgcp-reopen){
+      bottom:calc(102px + env(safe-area-inset-bottom, 0px));
     }
-    :global(body.sgcp-can-reopen:has(.sgb-banner) .sgcp-reopen-dot::after){
-      content:"i";font:700 19px/1 Arial,sans-serif;
-    }
+    .sgcp-reopen-label{font-size:8px;letter-spacing:.015em}
+  }
+  @media(min-width:769px) and (max-width:900px){
+    .sgcp-reopen{left:auto;right:14px}
   }
   .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
   .sgcp-reopen-dot{
@@ -150,7 +148,7 @@
     .sgcp-body li{font-size:13px}
     .sgcp-body ul{margin-bottom:11px}
     .sgcp-cta{min-height:48px;font-size:15px}
-    .sgcp-reopen{left:12px;bottom:108px;width:58px;height:58px}
+    /* Position controlled by the mobile floating shortcut rules above. */
   }
   @media(max-width:360px){
     .sgcp-body{padding:12px 15px 14px}
@@ -251,10 +249,7 @@
     if (root.hidden) return;
     root.hidden = true;
     reopen.hidden = false;
-    if (reason !== 'navigation') {
-      rememberDismissal();
-      document.body.classList.add('sgcp-can-reopen');
-    }
+    if (reason !== 'navigation') rememberDismissal();
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
     push(cfg.region === 'home' ? 'home_checkin_popup_close' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
@@ -264,9 +259,7 @@
   let autoShown = false;
   try { autoShown = sessionStorage.getItem(AUTO_KEY) === '1'; } catch (_) {}
 
-  // On first visit the top yellow banner is the visible offer entry;
-  // after dismissal, a small neutral information control reopens the popup.
-  if (dismissalActive()) document.body.classList.add('sgcp-can-reopen');
+  // Floating Check-in shortcut is available before and after automatic display.
   reopen.hidden = false;
   let dwellReady = false;
   let bookingStarted = false;
