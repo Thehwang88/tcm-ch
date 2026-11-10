@@ -64,6 +64,8 @@
     object-fit:cover;
     object-position:center 36%;
   }
+  /* Zürich-Teamfoto: hintere Reihe steht hoch im Bild (Köpfe ab ~8 % Höhe) → Ausschnitt oben ansetzen, keine Köpfe abschneiden */
+  .sgcp-media img[src$="team-zuerich.webp"]{object-position:center 6%}
   .sgcp-body{padding:16px 24px 18px}
   .sgcp-close{
     position:absolute;top:12px;right:12px;z-index:2;
@@ -120,7 +122,7 @@
   @media(max-width:600px){
     .sgcp-backdrop{padding:0 10px 10px}
     .sgcp-card{width:min(100%,430px);border-radius:22px;max-height:calc(100dvh - 18px)}
-    .sgcp-media{border-radius:22px 22px 0 0;aspect-ratio:16/6.6}
+    .sgcp-media{border-radius:22px 22px 0 0;aspect-ratio:16/9}
     .sgcp-body{padding:14px 18px 15px}
     .sgcp-card h2{font-size:24px;margin-top:8px}
     .sgcp-body>p#sgcp-desc{font-size:14px;margin-bottom:8px}
@@ -132,7 +134,6 @@
   @media(max-width:360px){
     .sgcp-body{padding:12px 15px 14px}
     .sgcp-card h2{font-size:22px}
-    .sgcp-media{aspect-ratio:16/6.4}
   }
   @media(prefers-reduced-motion:reduce){.sgcp-cta{transition:none}}
 </style>
