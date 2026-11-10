@@ -4,28 +4,24 @@
   /* Keep the fixed-header clearance on .akz, but eliminate the SECOND 76px
      padding from the shared .lsr-hero so media meets the header edge. */
   .akz .lsr-hero.akzh{padding-top:0}
-  /* Zürich hub hero: one seamless, full-bleed media panel; keep layout and video behavior. */
+  /* Zürich hub hero: neutral holding surface until the first video frame.
+     No legacy team-photo poster flash; keep media fully flush. */
   .akzh .lsr-inner{gap:0;align-items:stretch;overflow:hidden}
   .akzh .lsr-right--team{
     position:relative;min-width:0;min-height:100%;margin:0;padding:0;
     overflow:hidden;border:0;border-radius:0;box-shadow:none;
-    background:transparent;container-type:normal;
+    background:#E4DDD2;container-type:normal;
   }
-  .akzh .lsr-right--team .zh-hero-fallback,
   .akzh .lsr-right--team .zh-hero-video{
     position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;
     display:block;object-fit:cover!important;object-position:center center;
     max-width:none;border:0;border-radius:0;background:transparent;
-  }
-  .akzh .lsr-right--team .zh-hero-fallback{visibility:visible}
-  .akzh .lsr-right--team .zh-hero-video{
-    z-index:1;opacity:0;transition:opacity .35s ease;
+    opacity:0;transition:opacity .18s ease;z-index:1;
   }
   @media(prefers-reduced-motion:reduce){
-    .akzh .lsr-right--team .zh-hero-video{display:none!important}
+    .akzh .lsr-right--team .zh-hero-video{transition:none}
   }
   @media(max-width:900px){
-    .akzh .lsr-right--team .zh-hero-fallback,
     .akzh .lsr-right--team .zh-hero-video{object-position:center 24%}
   }
   /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
@@ -290,7 +286,7 @@
         </p>
       </div>
       <figure class="lsr-right lsr-right--foto lsr-right--team">
-        <img class="zh-hero-fallback" src="/images/team-zuerich.webp" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async"><video class="zh-hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Einblicke aus dem Praxisalltag im TCM.ch Netzwerk" oncanplay="this.style.opacity='1'"><source src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/6978a0d73021bbb5e606bac1_praxis_long_website%20copy%20(1).mp4" type="video/mp4"></video>
+        <video class="zh-hero-video" autoplay muted loop playsinline preload="auto" aria-label="Einblicke aus dem Praxisalltag im TCM.ch Netzwerk" onloadeddata="this.style.opacity='1'" oncanplay="this.style.opacity='1'"><source src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/6978a0d73021bbb5e606bac1_praxis_long_website%20copy%20(1).mp4" type="video/mp4"></video>
         
       </figure>
     </div>
