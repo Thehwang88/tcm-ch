@@ -30,7 +30,7 @@
 
 <button class="sgcp-reopen" type="button" data-sgcp-reopen hidden aria-label="Kostenlosen TCM 360°-Check-in anzeigen">
   <span class="sgcp-reopen-dot" aria-hidden="true">+</span>
-  <span class="sgcp-reopen-label">Gratis Check-in</span>
+  <span class="sgcp-reopen-label">Gratis</span>
 </button>
 
 <style>
@@ -68,8 +68,9 @@
   .sgcp-body{padding:16px 24px 18px}
   .sgcp-close{
     position:absolute;top:12px;right:12px;z-index:2;
-    width:32px;height:32px;display:grid;place-items:center;
-    border:0;border-radius:50%;background:rgba(255,255,255,.88);
+    width:32px;height:32px;min-width:32px;min-height:32px;aspect-ratio:1/1;padding:0;
+    display:grid;place-items:center;box-sizing:border-box;
+    border:0;border-radius:50%!important;background:rgba(255,255,255,.92);
     color:#07130E;font:700 22px/1 Arial,sans-serif;cursor:pointer;
     box-shadow:0 2px 8px rgba(2,11,16,.10)
   }
@@ -102,17 +103,18 @@
   .sgcp-reopen{
     position:fixed;left:14px;bottom:112px;z-index:2147482999;
     display:inline-flex;align-items:center;gap:8px;
-    width:52px;height:52px;padding:0;justify-content:center;
-    border:1px solid rgba(7,19,14,.16);border-radius:999px;
+    width:58px;height:58px;min-width:58px;min-height:58px;aspect-ratio:1/1;padding:5px 4px 4px;
+    justify-content:center;flex-direction:column;gap:2px;box-sizing:border-box;
+    border:1px solid rgba(7,19,14,.16);border-radius:50%!important;
     background:#FFD84D;color:#07130E;
-    font:800 0/1 var(--font-sans,'Figtree',system-ui,sans-serif);
+    font:800 9px/1 var(--font-sans,'Figtree',system-ui,sans-serif);
     box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
   }
   .sgcp-reopen[hidden]{display:none!important}
-  .sgcp-reopen-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
   .sgcp-reopen-dot{
-    width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
-    background:#07130E;color:#fff;font:800 21px/1 Arial,sans-serif;
+    width:29px;height:29px;border-radius:50%;display:grid;place-items:center;
+    background:#07130E;color:#fff;font:800 19px/1 Arial,sans-serif;
   }
 :global(html.sgcp-open .sgb-banner),
   :global(html.sgcp-open .sgb-spacer){display:none!important}
@@ -126,7 +128,7 @@
     .sgcp-body li{font-size:13px}
     .sgcp-body ul{margin-bottom:11px}
     .sgcp-cta{min-height:48px;font-size:15px}
-    .sgcp-reopen{left:12px;bottom:108px;width:50px;height:50px}
+    .sgcp-reopen{left:12px;bottom:108px;width:58px;height:58px}
   }
   @media(max-width:360px){
     .sgcp-body{padding:12px 15px 14px}
