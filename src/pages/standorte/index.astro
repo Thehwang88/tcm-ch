@@ -16,8 +16,9 @@ const card = (id: string) => {
     : st === '2027' ? [/2027/.test(c.openingNote ?? '') || c.status === 'operational' ? 'Eröffnung 2027' : 'In Vorbereitung'] : [];
   const suffix = c.karte?.chip ? ` <span class="stdc-suffix">· ${esc(c.karte.chip)}</span>` : '';
   const label = c.karte?.button ?? (st === 'einzugsgebiet' ? `Nächste Praxis: ${cardName(clinicById(c.karte?.naechste ?? ''))}` : st === '2027' ? (c.status === 'operational' ? 'Standort ansehen' : 'Warteliste') : ci ? 'Gratis Check-in buchen' : 'Termin buchen');
+  const cardImage = c.bild && (['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg','st-gallen'].includes(id)) ? `<img class="stdc-photo" src="${esc(c.bild.src)}" alt="${esc(c.bild.alt)}" loading="lazy" decoding="async">` : '';
   const cta = `<span class="stdc-cta ${offen ? (ci ? 'stdc-cta--gelb' : 'stdc-cta--ghost') : 'stdc-cta--link'}">${esc(label)} <span aria-hidden="true">→</span></span>`;
-  return `<a class="stdc${offen ? '' : ' stdc--muted'}" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ''}><h3 class="stdc-h">${PIN}<span>${esc(cardName(c))}</span></h3><p class="stdc-adr"><span>${esc(cardHinweis(c))}</span>${suffix}</p><div class="stdc-chips">${chips.map((t) => `<span class="stdc-chip">${esc(t)}</span>`).join('')}</div>${cta}</a>`;
+  return `<a class="stdc${offen ? '' : ' stdc--muted'}" href="${esc(href)}"${ext ? ' target="_blank" rel="noopener"' : ''}>${cardImage}<h3 class="stdc-h">${PIN}<span>${esc(cardName(c))}</span></h3><p class="stdc-adr"><span>${esc(cardHinweis(c))}</span>${suffix}</p><div class="stdc-chips">${chips.map((t) => `<span class="stdc-chip">${esc(t)}</span>`).join('')}</div>${cta}</a>`;
 };
 const head = (id: string, eyebrow: string, h: string) => `<div class="std-sec" id="${id}"><span class="std-eyebrow">${esc(eyebrow)}</span><h2 class="std-h2">${h}</h2></div>`;
 const liste =
@@ -99,4 +100,10 @@ const schema = {
   @media (max-width: 1199px) { #standorte-page-grid.std-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (max-width: 899px) { #standorte-page-grid.std-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } .std-next { border-radius: 20px; flex-wrap: wrap; gap: 8px 16px; } }
   @media (max-width: 599px) { #standorte-page-grid.std-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } .std-h2 { font-size: 22px; } .std-next { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 18px; margin-top: 0; } .std-next-t { flex-direction: column; gap: 2px; } }
+</style>
+
+<style is:global>
+  .stdc-photo {display:block;width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:5px;}
+  @media(max-width:600px){.stdc-photo{height:176px;}}
+  .stdc-photo[src$="standort-zuerich-bahnhofstrasse-brand.webp"]{object-position:50% 40%}
 </style>
