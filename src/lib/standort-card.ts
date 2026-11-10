@@ -2,7 +2,7 @@
 // Therapie-/Beschwerden-Seiten, Nähe-Seiten, Footer, EN). Daten ausschliesslich aus src/data/locations.ts (Name, hinweis,
 // openingHours → Zeiten-Chip, Status, Buchungslink, bild, Check-in-Freigabe aus kontakt-angebote.mjs).
 //   Varianten: hero (Ortsname 24–28px, Hinweis, Chips, schwarzer Button, optional Foto) · kompakt (18px) · inline (eine Zeile).
-//   Status (cardStatus): live → «Termin buchen →» /standorte/<id>/#termin · partner (Hwang) → hwang.ch · 2027 → «Warteliste →»
+//   Status (cardStatus): live → Standort-Hero /standorte/<id>/ · partner (Hwang) → hwang.ch · 2027 → «Warteliste →»
 //   · einzugsgebiet → «Nächste Praxis: <Ort> →». Check-in freigegeben (nur live) → gelber Chip + «Gratis Check-in buchen».
 // Astro-Wrapper: src/components/StandortCard.astro. Styles: public/standort-card.css (in SpaPage, LayoutDe, Layout verlinkt).
 import { clinics, enLocationPath, isRedirectedClinic, HWANG_WINTERTHUR_URL, type Clinic } from '../data/locations';
@@ -64,7 +64,7 @@ export const cardHref = (c: Clinic, lang: Lang = 'de') => {
   if (st === 'partner') return c.betreiber?.url ?? HWANG_WINTERTHUR_URL;
   if (st === 'einzugsgebiet') { const n = clinicById(c.karte?.naechste ?? ''); return cardHref(n, lang); }
   if (st === '2027') return lang === 'en' ? enLocationPath(c.id) : `/standorte/${c.id}/`;
-  return lang === 'en' ? `${enLocationPath(c.id)}#appointment` : `/standorte/${c.id}/#termin`;
+  return lang === 'en' ? enLocationPath(c.id) : `/standorte/${c.id}/`;
 };
 
 const extern = (href: string) => /^https?:\/\//.test(href);

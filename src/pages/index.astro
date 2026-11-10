@@ -64,7 +64,7 @@ const escHome = (s: string) => String(s ?? '')
 const homeClinicCardHtml = (id: string, tracking = '', withImage = false) => {
   const c = clinicById(id);
   const defaultHref = cardHref(c, 'de');
-  const href = id === 'st-gallen' && homeFirst30.showCampaign ? '/standorte/st-gallen/#first30' : defaultHref;
+  const href = defaultHref; // Whole location card always opens the hero, including SG during FIRST 30.
   const external = /^https?:\/\//.test(href);
   const status = cardStatus(c);
   const action = status === 'partner' ? 'Zur Praxis' : status === '2027' ? 'Standort ansehen' : 'Termin & Praxis';
