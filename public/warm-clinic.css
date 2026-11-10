@@ -88,7 +88,7 @@ body.tcm-warm .kf {--kf-neon:#1769B1;--kf-ink:#171B1A;--kf-mint:#F5F4F2;--kf-min
 body.tcm-warm .kf-opt:has(input:checked),
 body.tcm-warm .kf-radio:has(input:checked) {border-color:#565B59}
 /* Shared location tiles keep the existing layout and the yellow check-in emphasis. */
-body.tcm-warm .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
+body.tcm-warm .sc .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
 body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F;color:#FFFFFF}
 body.tcm-warm .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
 body.tcm-warm .sc-btn--gelb,
