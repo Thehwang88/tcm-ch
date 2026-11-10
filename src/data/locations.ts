@@ -120,6 +120,7 @@ export const clinics: Clinic[] = [
     areaServed: ['Volketswil', 'Hegnau', 'Zimikon', 'Kindhausen', 'Gutenswil', 'Schwerzenbach', 'Greifensee', 'Uster', 'Dübendorf', 'Fällanden', 'Wangen-Brüttisellen', 'Nänikon', 'Illnau-Effretikon'] },
 
   { id: 'zuerich-hoengg', name: 'Zürich Höngg', city: 'Zürich', region: 'Zürich',
+    bild: { src: '/images/standort-zuerich-hoengg-brand.webp', alt: 'TCM.ch Zürich Höngg' },
     street: 'Limmattalstrasse 340', postalCode: '8049', phone: '+41 77 523 61 22',
     // Betreiberin laut hwang.ch/standorte/zurich-hongg (abgerufen 11.10.2026).
     betreiber: { name: 'Praxis Hwang Zürich Höngg', marke: 'Praxis Hwang', url: 'https://www.hwang.ch/standorte/zurich-hongg', telefon: '+41 79 837 46 81', quelle: 'hwang.ch, abgerufen 11.10.2026' },
@@ -131,6 +132,7 @@ export const clinics: Clinic[] = [
     areaServed: ['Zürich', 'Höngg', 'Wipkingen', 'Affoltern', 'Albisrieden', 'Schlieren', 'Dietikon', 'Regensdorf'] },
 
   { id: 'zuerich-oerlikon', name: 'Zürich Oerlikon', city: 'Zürich', region: 'Zürich',
+    bild: { src: '/images/standort-zuerich-oerlikon-brand.webp', alt: 'TCM.ch Zürich Oerlikon' },
     street: 'Ohmstrasse 14', postalCode: '8050', phone: '+41 77 523 61 22',
     // Eröffnet: Betrieb durch die Inhaber:in bestätigt (02.11.2026, zuvor 'planned'). Öffnungszeiten nicht bestätigt → keine erfinden.
     hinweis: 'Ohmstrasse 14 · Zürich Nord',
@@ -141,6 +143,7 @@ export const clinics: Clinic[] = [
   // TCM.ch Zürich Bahnhofstrasse: Mietvertrag bestätigt, Nutzung durch Medthera freigegeben (02.11.2026). Live, 1. OG.
   // Slug zuerich-city / zuerich-bellevue → 301 auf /standorte/zuerich-bahnhofstrasse/.
   { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
+    bild: { src: '/images/standort-zuerich-bahnhofstrasse-brand.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
     street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
     hinweis: 'Bahnhofstrasse 37 · Zürich City',
     gbp: { name: 'TCM.ch Zürich Bahnhofstrasse', cid: '7979795935203150889', verified: 'dashboard' },
@@ -169,8 +172,8 @@ export const clinics: Clinic[] = [
     areaServed: ['Bern', 'Köniz', 'Ostermundigen', 'Ittigen', 'Zollikofen', 'Muri bei Bern', 'Worb'] },
 
   { id: 'st-gallen', name: 'St. Gallen', city: 'St. Gallen', region: 'Eastern Switzerland',
+    bild: { src: '/images/standort-stgallen-brand.webp', alt: 'TCM.ch St. Gallen' },
     street: 'Oberer Graben 22', postalCode: '9000', phone: '+41 77 523 61 22', schemaName: 'TCM.ch St Gallen',
-    bild: { src: '/images/standort-stgallen-800.webp', alt: 'TCM.ch St. Gallen, Empfangsbereich, Oberer Graben 22' },
     hinweis: 'Oberer Graben 22 · beim HB',
     gbp: { name: 'TCM.ch St Gallen', cid: '349562997880494535', verified: 'dashboard' },
     openingHours: ['Mo-Sa 07:30-19:30', 'Su 08:00-17:00'], geo: { lat: 47.4244, lng: 9.3767 }, status: 'operational',
@@ -221,12 +224,12 @@ export const commonConditions: { id: string; label: string }[] = [
 // Zürich clinics get the Zürich interior shots; the rest a generic treatment
 // photo. No new files, no duplicates.
 export const locationImages: Record<string, { src: string; alt: string }> = {
-  'st-gallen':              { src: '/images/img-67b9921801f9.webp', alt: 'TCM.ch practitioners at the St. Gallen clinic' },
+  'st-gallen':              { src: '/images/standort-stgallen-brand.webp', alt: 'TCM.ch St. Gallen' },
   'rorschach':              { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
-  'zuerich-oerlikon':       { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
-  'zuerich-hoengg':         { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
-  'zuerich-bahnhofstrasse':           { src: '/images/img-c73145069060.webp', alt: 'Illustrative image: TCM.ch reception area' },
+  'zuerich-oerlikon':       { src: '/images/standort-zuerich-oerlikon-brand.webp', alt: 'TCM.ch Zürich Oerlikon' },
+  'zuerich-hoengg':         { src: '/images/standort-zuerich-hoengg-brand.webp', alt: 'TCM.ch Zürich Höngg' },
+  'zuerich-bahnhofstrasse':           { src: '/images/standort-zuerich-bahnhofstrasse-brand.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },

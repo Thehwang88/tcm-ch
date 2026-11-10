@@ -95,7 +95,7 @@ const zhTracking = (slug: string) =>
 const homeHtmlCards = homeHtmlBase
   .replace('<!--sc:home-zuerich-->',
     '<div class="home-loc-grid home-loc-grid--3">' +
-      ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].map((id) => homeClinicCardHtml(id, zhTracking(id), false)).join('') +
+      ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].map((id) => homeClinicCardHtml(id, zhTracking(id), true)).join('') +
     '</div>')
   .replace('<!--sc:home-weitere-->',
     '<div class="home-loc-grid home-loc-grid--4">' +
@@ -158,6 +158,8 @@ const homeHtml = homeHtmlCards;
     #home-content .home-loc-card:hover{border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)}
     #home-content .home-loc-card--image{padding:0;display:grid;grid-template-columns:1fr;gap:0;overflow:hidden;align-items:stretch}
     #home-content .home-loc-card--image .home-loc-img{display:block;width:100%;height:150px;object-fit:cover;object-position:center}
+    /* Hochformat Bahnhofstrasse: Ausschnitt leicht nach oben, Schriftzug frei */
+    #home-content .home-loc-img[src$="standort-zuerich-bahnhofstrasse-brand.webp"]{object-position:50% 40%}
     #home-content .home-loc-card--image .home-loc-main{padding:17px 18px 8px}
     #home-content .home-loc-card--image .home-loc-action{padding:0 18px 17px;justify-content:space-between;width:100%;box-sizing:border-box}
     #home-content .home-loc-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
