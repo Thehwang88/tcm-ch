@@ -41,10 +41,24 @@ const { title } = Astro.props;
       .qr-card{background:#fff;border:1px solid #e3e6e3;border-radius:18px;padding:14px 16px 16px;text-align:center}
       .qr-brand{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#555;font-weight:700;margin:0 0 2px}
       .qr-name{font-size:22px;line-height:1.2;font-weight:800;margin:0 0 2px}
-      .qr-addr{margin:0 0 10px;color:#333;font-size:15px}
-      .qr-code{width:min(100%,340px,42vh);width:min(100%,340px,42svh);margin:0 auto;aspect-ratio:1/1;background:#fff}
+      .qr-addr{margin:0 0 6px;color:#333;font-size:15px}
+      /* QR: Breite = Karte innen (Viewport − 2×16 Wrap − 2×16 Karte − 2×8 Rahmen), max. 340 px bzw. 42 % der Höhe */
+      .qr-code{width:min(calc(100vw - 80px),340px,42vh);width:min(calc(100vw - 80px),340px,42svh);margin:0 auto;aspect-ratio:1/1;background:#fff}
+      /* Dezente Animation: atmende Eckklammern + leiser Schimmer um den Rahmen. Nichts liegt über den QR-Modulen. */
+      .qr-frame{position:relative;width:fit-content;margin:0 auto;padding:8px;border-radius:16px;animation:qr-glow 3.2s ease-in-out infinite}
+      .qr-corner{position:absolute;width:22px;height:22px;border:3px solid #2D9B6F;pointer-events:none;animation:qr-breathe 3.2s ease-in-out infinite}
+      .qr-corner--tl{top:0;left:0;border-right:0;border-bottom:0;border-top-left-radius:10px;--dx:-2px;--dy:-2px}
+      .qr-corner--tr{top:0;right:0;border-left:0;border-bottom:0;border-top-right-radius:10px;--dx:2px;--dy:-2px}
+      .qr-corner--bl{bottom:0;left:0;border-right:0;border-top:0;border-bottom-left-radius:10px;--dx:-2px;--dy:2px}
+      .qr-corner--br{bottom:0;right:0;border-left:0;border-top:0;border-bottom-right-radius:10px;--dx:2px;--dy:2px}
+      @keyframes qr-breathe{0%,100%{opacity:.55;transform:translate(0,0)}50%{opacity:1;transform:translate(var(--dx),var(--dy))}}
+      @keyframes qr-glow{0%,100%{box-shadow:0 0 0 0 rgba(45,155,111,0)}50%{box-shadow:0 0 0 6px rgba(45,155,111,.10)}}
+      .qr-heart{display:inline-block;vertical-align:-3px;margin-right:6px;color:#2D9B6F;animation:qr-pop .7s cubic-bezier(.2,1.4,.4,1) .35s both}
+      @keyframes qr-pop{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:scale(1)}}
+      @keyframes qr-fade{0%{opacity:0;transform:translateY(4px)}100%{opacity:1;transform:none}}
+      @media (prefers-reduced-motion:reduce){.qr-frame,.qr-corner,.qr-heart,.qr-thanks{animation:none!important}.qr-corner{opacity:.8}}
       .qr-code svg{display:block;width:100%;height:auto}
-      .qr-thanks{margin:10px 0 0;font-size:16px;font-weight:600}
+      .qr-thanks{margin:8px 0 0;font-size:16px;font-weight:600;animation:qr-fade .6s ease-out .2s both}
       .qr-hint{margin:2px 0 0;color:#555;font-size:14px}
       .qr-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 0}
       .qr-btn{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 10px;border-radius:12px;border:1px solid #cfd5d0;background:#fff;color:#141414;font:inherit;font-weight:600;font-size:14px;line-height:1.2;white-space:nowrap;text-decoration:none;cursor:pointer}
@@ -61,6 +75,7 @@ const { title } = Astro.props;
         .qr-card{border:0;padding:0}
         .qr-print-head{display:block}
         .qr-code{width:120mm;max-width:100%}
+        .qr-frame{padding:0;animation:none;box-shadow:none}.qr-corner,.qr-heart{display:none}.qr-thanks{animation:none}
         .qr-name{font-size:28pt}.qr-addr{font-size:14pt}.qr-brand{font-size:11pt}.qr-thanks{font-size:14pt}
       }
     </style>

@@ -113,13 +113,24 @@ for (const [w, h, alles] of [[360, 560, false], [360, 640, false], [390, 664, tr
   const v = await pg.evaluate(() => { const r = (s) => { const b = document.querySelector(s).getBoundingClientRect(); return { width: b.width, bottom: b.bottom }; }; const btns = [...document.querySelectorAll('[data-qr-action]')].map((b) => b.getBoundingClientRect()); return { qr: r('.qr-code'), open: r('[data-qr-action="open"]'), last: Math.max(...btns.map((b) => b.bottom)), oneLine: btns.every((b) => b.height <= 52), vh: innerHeight, ow: document.documentElement.scrollWidth > innerWidth }; });
   ok(v.qr.width >= 220 && v.open.bottom <= v.vh && !v.ow && v.oneLine, `${w}×${h}: QR ${Math.round(v.qr.width)} px und «Auf Google bewerten» ohne Scrollen, Knöpfe einzeilig`);
   if (alles) ok(v.last <= v.vh, `${w}×${h}: alle Aktionen ohne Scrollen sichtbar (${Math.round(v.last)}/${v.vh} px)`);
-  if (shots) await pg.screenshot({ path: path.join(shots, `qr-standort-${w}x${h}.png`) });
+  if (shots) { await new Promise((r) => setTimeout(r, 1400)); await pg.screenshot({ path: path.join(shots, `qr-standort-${w}x${h}.png`) }); }
 }
 await pg.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
 ok(await noOverflow(pg), 'Standortansicht ohne horizontales Scrollen');
 const svgShot = await (await pg.$('.qr-code')).screenshot();
 const sd = decodePng(Buffer.from(svgShot));
 ok(sd.text === 'https://g.page/r/CceZScux5dkEEBM/review', 'gerendertes SVG dekodiert exakt zum Bewertungslink', sd.text);
+// Dezente Animation: Eckklammern ausserhalb des QR, QR scannt in jeder Animationsphase.
+const geo = await pg.evaluate(() => { const q = document.querySelector('.qr-code').getBoundingClientRect(); return { corners: [...document.querySelectorAll('.qr-corner')].map((c) => { const r = c.getBoundingClientRect(), cs = getComputedStyle(c); const t = parseFloat(cs.borderTopWidth) > 0, l = parseFloat(cs.borderLeftWidth) > 0; const w = 3; const horiz = t ? r.top + w <= q.top + 0.5 : r.bottom - w >= q.bottom - 0.5; const vert = l ? r.left + w <= q.left + 0.5 : r.right - w >= q.right - 0.5; return horiz && vert; }), anim: getComputedStyle(document.querySelector('.qr-corner')).animationName, heart: !!document.querySelector('.qr-thanks .qr-heart') }; });
+ok(geo.corners.length === 4 && geo.corners.every(Boolean), '4 Eckklammern: sichtbare Striche ausserhalb des QR (inkl. Ruhezone)');
+ok(geo.anim === 'qr-breathe' && geo.heart, 'Animation aktiv (Klammern atmen, Herz beim Dank-Satz)');
+const phasen = [];
+for (const t of [0, 800, 1600, 2400]) { await new Promise((r) => setTimeout(r, t ? 800 : 0)); phasen.push(decodePng(Buffer.from(await (await pg.$('.qr-frame')).screenshot())).text); }
+ok(phasen.every((x) => x === 'https://g.page/r/CceZScux5dkEEBM/review'), 'QR scannt in allen Animationsphasen (Rahmen-Screenshot, 4 Zeitpunkte)', JSON.stringify(phasen));
+ok(!(await pg.evaluate(() => /★|☆|stern/i.test(document.body.innerText) || !!document.querySelector('[class*="star"]'))), 'keine Sterne auf der Seite');
+await pg.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+ok(await pg.evaluate(() => ['.qr-frame', '.qr-corner', '.qr-heart', '.qr-thanks'].every((s) => getComputedStyle(document.querySelector(s)).animationName === 'none')), '«Bewegung reduzieren»: keine Animation');
+await pg.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
 const open = await pg.$eval('[data-qr-action="open"]', (a) => ({ href: a.href, t: a.target, rel: a.rel, txt: a.textContent }));
 ok(open.href === 'https://g.page/r/CceZScux5dkEEBM/review' && open.t === '_blank' && /noopener/.test(open.rel) && open.txt === 'Auf Google bewerten', '«Auf Google bewerten» öffnet den Link in neuem Tab');
 ok(JSON.stringify(await pg.$$eval('[data-qr-action]', (b) => b.map((x) => x.textContent))) === JSON.stringify(['Auf Google bewerten', 'Link kopieren', 'Teilen', 'QR herunterladen', 'Drucken']), 'alle fünf Aktionen in Reihenfolge');
@@ -138,6 +149,7 @@ for (let i = 0; i < 40 && !fs.existsSync(f); i++) await new Promise((r) => setTi
 ok(fs.existsSync(f) && decodePng(fs.readFileSync(f)).text === 'https://g.page/r/CceZScux5dkEEBM/review', 'QR herunterladen: Datei tcm-st-gallen-google-review-qr.png, dekodiert zum Link');
 
 await pg.emulateMediaType('print');
+ok(await pg.evaluate(() => [...document.querySelectorAll('.qr-corner, .qr-heart')].every((e) => getComputedStyle(e).display === 'none') && getComputedStyle(document.querySelector('.qr-frame')).animationName === 'none'), 'Druck: keine Klammern, kein Herz, keine Animation');
 const pr = await pg.evaluate(() => ({ hidden: [...document.querySelectorAll('[data-noprint]')].every((e) => getComputedStyle(e).display === 'none'), vis: ['.qr-brand', '.qr-name', '.qr-addr', '.qr-code'].every((s) => getComputedStyle(document.querySelector(s)).display !== 'none') }));
 ok(pr.hidden && pr.vis, 'Druckansicht: Marke, Standort, Adresse, QR sichtbar; Navigation/Buttons ausgeblendet');
 if (shots) await pg.pdf({ path: path.join(shots, 'qr-druck-st-gallen.pdf'), format: 'A4' });
