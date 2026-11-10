@@ -17,19 +17,19 @@ const pngHref = `/qr/${qrFileName(loc)}`;
 const shareTitle = `${loc.brand} ${loc.name} – Google-Bewertung`;
 ---
 <QrShell title={`${loc.brand} ${loc.name} · Google-Bewertung`}>
-  <main class="qr-wrap">
+  <main class="qr-wrap qr-wrap--loc">
     <div class="qr-top" data-noprint>
       <a class="qr-back" href="/qr/">‹ Alle Standorte</a>
     </div>
     <article class="qr-card" data-qr-id={loc.id} data-review-url={url ?? ''}>
       <p class="qr-brand">{loc.brand}</p>
       <h1 class="qr-name">{loc.name}</h1>
-      <p class="qr-addr">{loc.street}<br />{loc.zipCity}</p>
+      <p class="qr-addr">{loc.street}, {loc.zipCity}</p>
       {qrSvg ? (
         <>
           <div class="qr-code" role="img" aria-label={`QR-Code zur Google-Bewertung für ${loc.brand} ${loc.name}`} set:html={qrSvg} />
           <p class="qr-thanks">Danke für dein ehrliches Feedback.</p>
-          <p class="qr-hint" data-noprint>Code mit der Handykamera scannen oder unten auf «Auf Google bewerten» tippen.</p>
+          <p class="qr-hint" data-noprint>Mit der Kamera scannen oder hier antippen:</p>
           <div class="qr-actions" data-noprint>
             <a class="qr-btn qr-btn--primary" href={url} target="_blank" rel="noopener noreferrer" data-qr-action="open">Auf Google bewerten</a>
             <button type="button" class="qr-btn" data-qr-action="copy">Link kopieren</button>
