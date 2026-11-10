@@ -1,90 +1,136 @@
 ---
 /**
- * St. Gallen-only conversion popup.
- * Uses the existing SG contact flow; no duplicate form or booking logic.
+ * St. Gallen-only CRO popup.
+ * Temporary owner-review mode: appears 30s after every fresh page load.
+ * Close leaves a floating reopen tab; popup hides the SG yellow offer banner while open.
  */
 ---
 <div class="sgcp-backdrop" data-sgcp hidden>
   <section class="sgcp-card" role="dialog" aria-modal="true" aria-labelledby="sgcp-title" aria-describedby="sgcp-desc">
     <button class="sgcp-close" type="button" aria-label="Fenster schliessen" data-sgcp-close>×</button>
-    <div class="sgcp-media"><img src="/images/team-hero.jpg" alt="TCM.ch Team" width="1600" height="900" loading="eager" decoding="async"></div>
-    <div class="sgcp-kicker">St. Gallen · 30 Min kostenlos</div>
-    <h2 id="sgcp-title">Dein kostenloser TCM 360°-Check-in</h2>
-    <p id="sgcp-desc">Lerne TCM persönlich kennen – kostenlos und ohne Behandlung.</p>
-    <ul>
-      <li>Ganzheitlicher TCM-Kurzcheck</li>
-      <li>Zungen- &amp; Pulsdiagnostik</li>
-      <li>Persönliche Fragen + Krankenkassen-Check</li>
-    </ul>
-    <a class="sgcp-cta" href="?terminart=checkin#termin" data-sgcp-cta>
-      Jetzt gratis Termin wählen <span aria-hidden="true">→</span>
-    </a>
-    <p class="sgcp-note">Kostenlos · unverbindlich · ohne Behandlung</p>
+    <div class="sgcp-media">
+      <img src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/685c221ce7b36af7f377a96b_Team-scaled-e1710341469861-2048x1362-ezgif.com-jpg-to-webp-converter.webp" alt="Praxis Hwang Team" width="2048" height="1362" loading="eager" decoding="async">
+    </div>
+    <div class="sgcp-body">
+      <div class="sgcp-kicker">St. Gallen · 30 Min kostenlos</div>
+      <h2 id="sgcp-title">Dein kostenloser TCM 360°-Check-in</h2>
+      <p id="sgcp-desc">Lerne TCM persönlich kennen – kostenlos und ohne Behandlung.</p>
+      <ul>
+        <li>Ganzheitlicher TCM-Kurzcheck</li>
+        <li>Zungen- &amp; Pulsdiagnostik</li>
+        <li>Persönliche Fragen + Krankenkassen-Check</li>
+      </ul>
+      <a class="sgcp-cta" href="?terminart=checkin#termin" data-sgcp-cta>
+        Jetzt gratis Termin wählen <span aria-hidden="true">→</span>
+      </a>
+      <p class="sgcp-note">Kostenlos · unverbindlich · ohne Behandlung</p>
+    </div>
   </section>
 </div>
+
+<button class="sgcp-reopen" type="button" data-sgcp-reopen hidden aria-label="Kostenlosen TCM 360°-Check-in anzeigen">
+  <span class="sgcp-reopen-dot" aria-hidden="true">+</span>
+  <span>Gratis Check-in</span>
+</button>
 
 <style>
   .sgcp-backdrop{
     position:fixed;inset:0;z-index:2147483000;
-    display:grid;place-items:center;padding:18px;
-    background:rgba(2,11,16,.48);
+    display:flex;align-items:flex-end;justify-content:center;
+    padding:0 16px 18px;
+    background:rgba(2,11,16,.34);
     font-family:var(--font-sans,'Figtree',system-ui,sans-serif);
   }
   .sgcp-backdrop[hidden]{display:none!important}
   .sgcp-card{
-    position:relative;width:min(100%,620px);max-height:min(760px,calc(100dvh - 36px));
-    overflow:auto;box-sizing:border-box;
-    background:#F6C84A;color:#07130E;
-    border:1px solid rgba(7,19,14,.16);border-radius:28px;
-    padding:0 34px 28px;
-    box-shadow:0 28px 80px rgba(2,11,16,.28);
+    position:relative;
+    width:min(100%,560px);
+    max-height:min(650px,calc(100dvh - 28px));
+    overflow:auto;
+    box-sizing:border-box;
+    background:#FFD84D;
+    color:#07130E;
+    border:1px solid rgba(7,19,14,.16);
+    border-radius:26px;
+    box-shadow:0 24px 70px rgba(2,11,16,.30);
   }
-  .sgcp-media{margin:0 -34px 24px;border-radius:28px 28px 0 0;overflow:hidden;aspect-ratio:16/7.6;background:#E7C650}
-  .sgcp-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+  .sgcp-media{
+    aspect-ratio:16/7.8;
+    overflow:hidden;
+    border-radius:26px 26px 0 0;
+    background:#e6c140;
+  }
+  .sgcp-media img{
+    display:block;width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 36%;
+  }
+  .sgcp-body{padding:20px 26px 22px}
   .sgcp-close{
-    position:absolute;top:15px;right:16px;width:40px;height:40px;
-    display:grid;place-items:center;border:0;border-radius:999px;
-    background:rgba(255,255,255,.55);color:#07130E;
-    font:700 28px/1 Arial,sans-serif;cursor:pointer;
+    position:absolute;top:12px;right:12px;z-index:2;
+    width:38px;height:38px;display:grid;place-items:center;
+    border:0;border-radius:999px;background:rgba(255,255,255,.88);
+    color:#07130E;font:700 27px/1 Arial,sans-serif;cursor:pointer;
+    box-shadow:0 3px 12px rgba(2,11,16,.12)
   }
   .sgcp-close:hover{background:#fff}
-  .sgcp-close:focus-visible,.sgcp-cta:focus-visible{outline:3px solid #07130E;outline-offset:3px}
+  .sgcp-close:focus-visible,.sgcp-cta:focus-visible,.sgcp-reopen:focus-visible{outline:3px solid #07130E;outline-offset:3px}
   .sgcp-kicker{
-    display:inline-flex;align-items:center;min-height:29px;padding:0 11px;
+    display:inline-flex;align-items:center;min-height:27px;padding:0 10px;
     border-radius:999px;background:#07130E;color:#fff;
-    font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    font-size:11px;font-weight:800;letter-spacing:.055em;text-transform:uppercase;
   }
   .sgcp-card h2{
-    margin:17px 46px 8px 0;font-size:clamp(28px,5vw,42px);
-    line-height:1.04;letter-spacing:-.035em;font-weight:800;color:#07130E;
+    margin:12px 0 5px;
+    font-size:clamp(25px,4.7vw,34px);
+    line-height:1.03;letter-spacing:-.035em;font-weight:800;color:#07130E;
   }
-  .sgcp-card>p#sgcp-desc{margin:0 0 18px;font-size:18px;line-height:1.45;font-weight:650}
-  .sgcp-card ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:9px}
-  .sgcp-card li{font-size:16px;line-height:1.35;font-weight:650}
-  .sgcp-card li::before{content:'✓';display:inline-block;margin-right:10px;font-weight:900}
+  .sgcp-card>*,.sgcp-body>*{box-sizing:border-box}
+  .sgcp-body>p#sgcp-desc{margin:0 0 12px;font-size:15.5px;line-height:1.4;font-weight:650}
+  .sgcp-body ul{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:5px}
+  .sgcp-body li{font-size:14.5px;line-height:1.3;font-weight:680}
+  .sgcp-body li::before{content:'✓';display:inline-block;margin-right:8px;font-weight:900}
   .sgcp-cta{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    width:100%;min-height:56px;box-sizing:border-box;padding:0 22px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;min-height:50px;padding:0 18px;
     border-radius:999px;background:#07130E;color:#fff;text-decoration:none;
-    font-size:17px;font-weight:800;letter-spacing:-.01em;
+    font-size:15.5px;font-weight:800;letter-spacing:-.01em;
     transition:transform .15s ease,background-color .15s ease;
   }
   .sgcp-cta:hover{background:#123028;transform:translateY(-1px)}
-  .sgcp-note{margin:12px 0 0!important;text-align:center;font-size:13px!important;line-height:1.35!important;font-weight:650!important;opacity:.78}
+  .sgcp-note{margin:9px 0 0!important;text-align:center;font-size:11.5px!important;line-height:1.3!important;font-weight:650!important;opacity:.75}
+  .sgcp-reopen{
+    position:fixed;left:14px;bottom:18px;z-index:2147482999;
+    display:inline-flex;align-items:center;gap:8px;
+    min-height:44px;padding:0 14px 0 9px;
+    border:1px solid rgba(7,19,14,.16);border-radius:999px;
+    background:#FFD84D;color:#07130E;
+    font:800 13.5px/1 var(--font-sans,'Figtree',system-ui,sans-serif);
+    box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
+  }
+  .sgcp-reopen[hidden]{display:none!important}
+  .sgcp-reopen-dot{
+    width:27px;height:27px;border-radius:50%;display:grid;place-items:center;
+    background:#07130E;color:#fff;font:800 19px/1 Arial,sans-serif;
+  }
+  html.sgcp-open .sgb-banner,
+  html.sgcp-open .sgb-spacer{display:none!important}
   @media(max-width:600px){
-    .sgcp-backdrop{padding:14px}
-    .sgcp-card{border-radius:24px;padding:0 22px 22px}
-    .sgcp-media{margin:0 -22px 20px;border-radius:24px 24px 0 0;aspect-ratio:16/7.6}
-    .sgcp-card h2{margin-top:14px;font-size:30px}
-    .sgcp-card>p#sgcp-desc{font-size:16.5px;margin-bottom:15px}
-    .sgcp-card ul{margin-bottom:20px;gap:8px}
-    .sgcp-card li{font-size:15px}
-    .sgcp-cta{min-height:54px;font-size:16px}
+    .sgcp-backdrop{padding:0 10px 10px}
+    .sgcp-card{width:min(100%,430px);border-radius:22px;max-height:calc(100dvh - 18px)}
+    .sgcp-media{border-radius:22px 22px 0 0;aspect-ratio:16/7.5}
+    .sgcp-body{padding:16px 18px 18px}
+    .sgcp-card h2{font-size:25px;margin-top:10px}
+    .sgcp-body>p#sgcp-desc{font-size:14.5px;margin-bottom:10px}
+    .sgcp-body li{font-size:13.5px}
+    .sgcp-body ul{margin-bottom:13px}
+    .sgcp-cta{min-height:48px;font-size:15px}
+    .sgcp-reopen{left:10px;bottom:12px;min-height:42px}
   }
   @media(max-width:360px){
-    .sgcp-card{padding:0 18px 20px}
-    .sgcp-media{margin:0 -18px 18px}
-    .sgcp-card h2{font-size:27px}
+    .sgcp-body{padding:14px 15px 16px}
+    .sgcp-card h2{font-size:23px}
+    .sgcp-media{aspect-ratio:16/7.2}
   }
   @media(prefers-reduced-motion:reduce){.sgcp-cta{transition:none}}
 </style>
@@ -92,73 +138,51 @@
 <script is:inline>
 (() => {
   const root = document.querySelector('[data-sgcp]');
-  if (!root) return;
+  const reopen = document.querySelector('[data-sgcp-reopen]');
+  if (!root || !reopen) return;
 
   const close = root.querySelector('[data-sgcp-close]');
   const cta = root.querySelector('[data-sgcp-cta]');
-  const storageKey = 'tcm_sg_checkin_popup_closed_v1';
-  const clickKey = 'tcm_sg_checkin_popup_clicked_v1';
-  const sevenDays = 7 * 24 * 60 * 60 * 1000;
-  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
-  let shown = false;
   let lastFocused = null;
-
-  const recent = (key, ttl) => {
-    try {
-      const t = Number(localStorage.getItem(key) || 0);
-      return t > 0 && Date.now() - t < ttl;
-    } catch (_) { return false; }
-  };
-
-  if (recent(storageKey, sevenDays) || recent(clickKey, thirtyDays)) return;
 
   const push = (event, extra = {}) => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event, page_path: location.pathname, ...extra });
   };
 
-  const show = () => {
-    if (shown || !root.hidden) return;
-    shown = true;
+  const show = (source = 'auto') => {
+    if (!root.hidden) return;
     lastFocused = document.activeElement;
     root.hidden = false;
+    reopen.hidden = true;
+    document.documentElement.classList.add('sgcp-open');
     document.documentElement.style.overflow = 'hidden';
     close?.focus({ preventScroll: true });
-    push('sg_checkin_popup_view');
+    push('sg_checkin_popup_view', { source });
   };
 
-  const hide = (remember = true, reason = 'close') => {
+  const hide = (reason = 'close') => {
     if (root.hidden) return;
     root.hidden = true;
+    reopen.hidden = false;
+    document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
-    if (remember) {
-      try { localStorage.setItem(storageKey, String(Date.now())); } catch (_) {}
-    }
     push('sg_checkin_popup_close', { reason });
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
-  const onScroll = () => {
-    const doc = document.documentElement;
-    const max = Math.max(1, doc.scrollHeight - innerHeight);
-    if (scrollY / max >= 0.32) {
-      show();
-      removeEventListener('scroll', onScroll);
-    }
-  };
+  const timer = setTimeout(() => show('30s'), 30000);
 
-  const timer = setTimeout(show, 10000);
-  addEventListener('scroll', onScroll, { passive: true });
-
-  close?.addEventListener('click', () => hide(true, 'button'));
-  root.addEventListener('click', (e) => { if (e.target === root) hide(true, 'backdrop'); });
-  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !root.hidden) hide(true, 'escape'); });
+  close?.addEventListener('click', () => hide('button'));
+  root.addEventListener('click', (e) => { if (e.target === root) hide('backdrop'); });
+  reopen.addEventListener('click', () => show('reopen'));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !root.hidden) hide('escape'); });
 
   cta?.addEventListener('click', () => {
     clearTimeout(timer);
-    try { localStorage.setItem(clickKey, String(Date.now())); } catch (_) {}
-    push('sg_checkin_popup_click', { terminart: 'checkin', standort: 'st-gallen' });
+    document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
+    push('sg_checkin_popup_click', { terminart: 'checkin', standort: 'st-gallen' });
   });
 })();
 </script>
