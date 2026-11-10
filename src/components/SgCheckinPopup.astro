@@ -114,6 +114,12 @@
     box-shadow:0 8px 26px rgba(2,11,16,.18);cursor:pointer;
   }
   .sgcp-reopen[hidden]{display:none!important}
+  /* The fixed yellow Check-in banner already provides the offer on small screens.
+     Hide its duplicate floating yellow circle to prevent overlapping booking CTAs.
+     Leave automatic popup eligibility and banner booking links untouched. */
+  @media(max-width:900px){
+    :global(body:has(.sgb-banner) .sgcp-reopen){display:none!important}
+  }
   .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
   .sgcp-reopen-dot{
     width:29px;height:29px;border-radius:50%;display:grid;place-items:center;
