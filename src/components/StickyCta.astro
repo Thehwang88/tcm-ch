@@ -53,6 +53,18 @@ const waHref = `https://wa.me/41775236122?text=${encodeURIComponent(prefill)}`;
   .sc-btn--wa:hover { background: #14C97A; }
   .sc-btn--form { color: var(--brand-black, #020B10); border: 1.5px solid var(--brand-black, #020B10); background: #fff; }
   .sc-btn--form:hover { background: rgba(2,11,16,.06); }
+
+  /* Zürich funnel and warm-palette pages: the appointment action is blue;
+     the WhatsApp action is not a primary booking CTA. */
+  :global(body:has(> .akz) .sticky-cta .sc-btn--form),
+  :global(body.tcm-warm .sticky-cta .sc-btn--form){
+    background:#1769B1;color:#FFFFFF;border-color:#1769B1;
+  }
+  :global(body:has(> .akz) .sticky-cta .sc-btn--form:hover),
+  :global(body.tcm-warm .sticky-cta .sc-btn--form:hover){
+    background:#10558F;color:#FFFFFF;border-color:#10558F;
+  }
+
   .sc-btn:focus-visible { outline: var(--focus-ring, 3px solid rgba(2,11,16,.55)); outline-offset: 2px; }
   @media (max-width: 767px) {
     .sticky-cta { display: flex; }
