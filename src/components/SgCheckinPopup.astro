@@ -235,7 +235,7 @@
     if (reason !== 'navigation') rememberDismissal();
     document.documentElement.classList.remove('sgcp-open');
     document.documentElement.style.overflow = '';
-    push(cfg.region === 'home' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
+    push(cfg.region === 'home' ? 'home_checkin_popup_close' : cfg.region === 'zh' ? 'zh_checkin_popup_close' : 'sg_checkin_popup_close', { reason });
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
