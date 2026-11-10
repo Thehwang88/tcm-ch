@@ -1,0 +1,78 @@
+---
+// /qr/<id>/ — eine Praxis: Marke, Standort, Adresse, grosser QR zum Google-Bewertungslink.
+// QR wird beim Build lokal erzeugt (npm qrcode, kein externer Dienst); Payload = reviewUrl.
+// Ohne verifizierten Link (reviewUrl null): kein QR, keine Aktionen, Hinweis.
+import QRCode from 'qrcode';
+import QrShell from '../../components/qr/QrShell.astro';
+import { REVIEW_LOCATIONS, QR_OPTIONS, qrFileName, type ReviewLocation } from '../../data/google-reviews';
+
+export function getStaticPaths() {
+  return REVIEW_LOCATIONS.map((l) => ({ params: { id: l.id }, props: { loc: l } }));
+}
+
+const { loc } = Astro.props as { loc: ReviewLocation };
+const url = loc.reviewUrl;
+const qrSvg = url ? await QRCode.toString(url, { type: 'svg', ...QR_OPTIONS }) : null;
+const pngHref = `/qr/${qrFileName(loc)}`;
+const shareTitle = `${loc.brand} ${loc.name} – Google-Bewertung`;
+---
+<QrShell title={`${loc.brand} ${loc.name} · Google-Bewertung`}>
+  <main class="qr-wrap">
+    <div class="qr-top" data-noprint>
+      <a class="qr-back" href="/qr/">‹ Alle Standorte</a>
+    </div>
+    <article class="qr-card" data-qr-id={loc.id} data-review-url={url ?? ''}>
+      <p class="qr-brand">{loc.brand}</p>
+      <h1 class="qr-name">{loc.name}</h1>
+      <p class="qr-addr">{loc.street}<br />{loc.zipCity}</p>
+      {qrSvg ? (
+        <>
+          <div class="qr-code" role="img" aria-label={`QR-Code zur Google-Bewertung für ${loc.brand} ${loc.name}`} set:html={qrSvg} />
+          <p class="qr-thanks">Danke für dein ehrliches Feedback.</p>
+          <p class="qr-hint" data-noprint>Code mit der Handykamera scannen oder unten auf «Auf Google bewerten» tippen.</p>
+          <div class="qr-actions" data-noprint>
+            <a class="qr-btn qr-btn--primary" href={url} target="_blank" rel="noopener noreferrer" data-qr-action="open">Auf Google bewerten</a>
+            <button type="button" class="qr-btn" data-qr-action="copy">Link kopieren</button>
+            <button type="button" class="qr-btn" data-qr-action="share">Teilen</button>
+            <a class="qr-btn" href={pngHref} download={qrFileName(loc)} data-qr-action="download">QR herunterladen</a>
+            <button type="button" class="qr-btn" data-qr-action="print">Drucken</button>
+          </div>
+          <p class="qr-status" role="status" aria-live="polite" data-noprint></p>
+        </>
+      ) : (
+        <p class="qr-missing" data-qr-missing>Bewertungslink folgt.</p>
+      )}
+    </article>
+  </main>
+  <script is:inline define:vars={{ id: loc.id, url, shareTitle }}>
+    try { localStorage.setItem('qrLastLocation', id); } catch (e) {}
+    (function () {
+      if (!url) return;
+      var status = document.querySelector('.qr-status');
+      function say(t) { if (status) status.textContent = t; }
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); return ok;
+      }
+      function copy() {
+        var done = function () { say('Link kopiert.'); };
+        var fail = function () { say(fallbackCopy(url) ? 'Link kopiert.' : 'Kopieren nicht möglich – Link: ' + url); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, fail);
+        else fail();
+      }
+      document.querySelectorAll('[data-qr-action]').forEach(function (el) {
+        var act = el.getAttribute('data-qr-action');
+        if (act === 'copy') el.addEventListener('click', copy);
+        if (act === 'print') el.addEventListener('click', function () { window.print(); });
+        if (act === 'share') el.addEventListener('click', function () {
+          if (navigator.share) {
+            navigator.share({ title: shareTitle, url: url }).catch(function (e) { if (!e || e.name !== 'AbortError') copy(); });
+          } else copy();
+        });
+      });
+    })();
+  </script>
+</QrShell>
