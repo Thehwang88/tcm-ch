@@ -81,6 +81,96 @@
   .zhx-more-inner .section{padding:44px 0 0;background:transparent!important}
   .zhx-more-inner .wrap{padding-left:0;padding-right:0}
   @media(max-width:767px){.zhx-steps{grid-template-columns:1fr!important;gap:12px!important}.section{padding:56px 0}}
+
+  /* Zürich Hub visual rhythm — mobile first. Keeps content/tracking unchanged. */
+  .akz #standorte,
+  .akz .akz-routing-section,
+  .akz .akz-quartiere-section,
+  .akz .akz-beschwerden-section,
+  .akz .akz-funnel-section,
+  .akz .akz-kasse-section,
+  .akz .akz-therapien-section,
+  .akz .akz-wissen-section{
+    padding-top:clamp(72px,8vw,108px);
+    padding-bottom:clamp(72px,8vw,108px);
+  }
+  .akz #standorte .reveal,
+  .akz .akz-beschwerden-section .reveal{margin-bottom:42px!important}
+  .akz .section-label{margin-bottom:14px}
+  .akz .section-title{margin-bottom:18px}
+  .akz .section-sub{line-height:1.65}
+  .akz .sc-grid{gap:18px}
+  .akz #standorte>.wrap>.section-sub{margin-top:30px!important;max-width:70ch}
+  .akz .akz-routing-section .zhx-routing{max-width:760px}
+  .akz .akz-routing-section .section-title{margin-bottom:18px!important}
+  .akz .akz-routing-section .section-sub{margin-bottom:30px!important}
+  .akz .akz-quartiere-section .zhx-chips{margin-top:30px;gap:10px}
+  .akz .akz-quartiere-section .zhx-chip{padding:10px 16px}
+  .akz .akz-beschwerden-section .city-grid{gap:16px}
+  .akz .akz-funnel-section .contact-inline-grid{gap:clamp(36px,5vw,72px);align-items:start}
+  .akz .akz-funnel-section .intake-trust-row{margin-top:28px}
+  .akz .akz-funnel-section .contact-methods-mini{margin-top:26px}
+  .akz .akz-funnel-section .inline-form-card{box-shadow:var(--sh-card)}
+  .akz .akz-kasse-section .akz-split{gap:clamp(36px,5vw,64px)}
+  .akz .akz-therapien-section .svc-header{margin-bottom:40px}
+  .akz .akz-wissen-section>.wrap{max-width:960px!important}
+  .akz .akz-wissen-section>.wrap>.section-sub{max-width:70ch}
+  .akz .akz-wissen-section .zhx-more-content{margin-top:44px}
+  .akz .akz-wissen-section .zhx-more-inner>.section{padding-top:64px!important}
+  .akz .akz-wissen-section .zhx-more-inner>.section + .section{padding-top:72px!important;margin-top:8px}
+  .akz .akz-wissen-section .akz-split{gap:clamp(36px,5vw,64px)}
+
+  @media(max-width:767px){
+    .akz{padding-top:56px}
+    .akz #standorte,
+    .akz .akz-routing-section,
+    .akz .akz-quartiere-section,
+    .akz .akz-beschwerden-section,
+    .akz .akz-funnel-section,
+    .akz .akz-kasse-section,
+    .akz .akz-therapien-section,
+    .akz .akz-wissen-section{
+      padding-top:68px!important;
+      padding-bottom:68px!important;
+    }
+    .akz #standorte .wrap,
+    .akz .akz-routing-section .wrap,
+    .akz .akz-quartiere-section .wrap,
+    .akz .akz-beschwerden-section .wrap,
+    .akz .akz-funnel-section .wrap,
+    .akz .akz-kasse-section .wrap,
+    .akz .akz-therapien-section .wrap,
+    .akz .akz-wissen-section .wrap{padding-left:20px;padding-right:20px}
+    .akz .section-label{margin-bottom:12px}
+    .akz .section-title{margin-bottom:16px;line-height:1.06}
+    .akz .section-sub{font-size:16px;line-height:1.68}
+    .akz #standorte .reveal,
+    .akz .akz-beschwerden-section .reveal{margin-bottom:32px!important}
+    .akz .sc-grid{gap:14px}
+    .akz .sc--kompakt .sc-body{padding:18px}
+    .akz #standorte>.wrap>.section-sub{margin-top:26px!important}
+    .akz .akz-routing-section .zhx-routing{text-align:left}
+    .akz .akz-routing-section .zhx-routing .btn-primary,
+    .akz .akz-routing-section .zhx-routing .btn-secondary{min-height:50px}
+    .akz .akz-routing-section .zhx-routing>p:last-child{margin-top:22px!important;line-height:1.6}
+    .akz .akz-quartiere-section .zhx-chips{margin-top:26px;gap:9px}
+    .akz .akz-quartiere-section .zhx-chip{padding:10px 14px;font-size:13px}
+    .akz .akz-beschwerden-section .city-grid{gap:12px}
+    .akz .akz-beschwerden-section .location-card{padding:18px}
+    .akz .akz-funnel-section .contact-inline-grid{gap:38px}
+    .akz .akz-funnel-section .intake-trust-row{margin-top:24px}
+    .akz .akz-funnel-section .contact-methods-mini{margin-top:22px}
+    .akz .akz-funnel-section .inline-form-card{margin-top:0}
+    .akz .akz-kasse-section .akz-split,
+    .akz .akz-wissen-section .akz-split{gap:34px}
+    .akz .akz-therapien-section .svc-header{margin-bottom:32px}
+    .akz .akz-wissen-section .zhx-more-content{margin-top:34px}
+    .akz .akz-wissen-section .zhx-more-inner>.section{padding-top:56px!important;padding-bottom:0!important}
+    .akz .akz-wissen-section .zhx-more-inner>.section + .section{padding-top:64px!important;margin-top:0}
+    .akz .akz-wissen-section .akz-img{margin-top:4px}
+    .akz .akz-txtlinks{line-height:1.8}
+  }
+
 </style>
 
 <div class="akz">
@@ -138,7 +228,7 @@
   </section>
 
   <!-- ── ROUTING-BOTSCHAFT ── -->
-  <section class="section" style="background:var(--surface);padding-top:64px;padding-bottom:64px">
+  <section class="section akz-routing-section" style="background:var(--surface)">
     <div class="wrap" style="max-width:860px">
       <div class="zhx-routing">
         <h2 class="section-title" style="margin-bottom:12px">Du musst nicht wissen, <em>welche unserer Praxen die richtige ist.</em></h2>
@@ -154,7 +244,7 @@
   </section>
 
   <!-- ── QUARTIERE / EINZUGSGEBIET ── -->
-  <section class="section" id="zh-quartiere">
+  <section class="section akz-quartiere-section" id="zh-quartiere">
     <div class="wrap" style="max-width:860px">
       <div class="section-label">Wo suchst du?</div>
       <h2 class="section-title">In ganz Zürich <em>für dich da</em></h2>
@@ -164,7 +254,7 @@
     </div>
   </section>
 
-  <section class="section" style="background:#fff">
+  <section class="section akz-beschwerden-section" style="background:#fff">
     <div class="wrap">
       <div class="reveal" style="max-width:60ch;margin-bottom:36px">
         <div class="section-label">Wobei wir helfen</div>
@@ -182,7 +272,7 @@
       <p class="section-sub" style="margin-top:22px"><a class="body-link" href="/beschwerden/">Weitere Beschwerden ansehen →</a></p>
     </div>
   </section>
-<section class="section contact-section-inline" id="zh-funnel" style="background:var(--surface);scroll-margin-top:68px">
+<section class="section contact-section-inline akz-funnel-section" id="zh-funnel" style="background:var(--surface);scroll-margin-top:68px">
     <div class="wrap">
       <div class="contact-inline-grid">
         <div class="reveal">
@@ -219,7 +309,7 @@
 
   
 
-  <section class="section" style="background:#fff">
+  <section class="section akz-kasse-section" style="background:#fff">
     <div class="wrap akz-split">
       <div>
         <div class="section-label">Krankenkasse &amp; Kosten</div>
@@ -251,7 +341,7 @@
 
   <!-- STANDORTE ZÜRICH (HUB → SPOKES) -->
   <!-- TCM-METHODEN -->
-  <section class="section svc-section" id="zh-therapien">
+  <section class="section svc-section akz-therapien-section" id="zh-therapien">
     <div class="wrap">
       <div class="svc-header reveal">
         <div>
@@ -266,7 +356,7 @@
     </div>
   </section>
 
-  <section class="section" id="zh-wissen" style="background:var(--surface)">
+  <section class="section akz-wissen-section" id="zh-wissen" style="background:var(--surface)">
     <div class="wrap" style="max-width:860px">
       <div class="section-label">Hintergrund</div>
       <h2 class="section-title">Was ist TCM - <em>und wann kann sie sinnvoll sein?</em></h2>
