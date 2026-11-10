@@ -6,6 +6,7 @@
 // "Ähnliche Therapien", FAQ, the full contact form, dark CTA band. Per-slug content is
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
+import LocationContext from '../../components/LocationContext.astro';
 import { standortGridHtml, buchbareClinics } from '../../lib/standort-card';
 import { massageLinksForTherapie, massageLinksHtml } from '../../data/massage-links';
 import { therapieTiefeHtml } from '../../data/therapie-tiefe';
@@ -119,4 +120,6 @@ const REBRANDED_THERAPY_SLUGS = new Set(['akupunktur',
 const fullBody = prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!);
 const pageBody = REBRANDED_THERAPY_SLUGS.has(slug!) ? `<div class="therapie-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]} />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]}>
+  <LocationContext />
+</SpaPage>
