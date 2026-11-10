@@ -36,7 +36,7 @@ const zhCards = '<div class="sc-grid sc-grid--3">' +
 
 const body = rawBody.replace(
   ZH_ALT,
-  `<select class="form-select" name="standort" id="zh-standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option>Anderer Standort / in meiner Nähe</option></select>`,
+  `<select class="form-select" name="standort" id="zh-standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}</select>`,
 ).replace(ZH_KARTEN, therapyCardsGridHtml(ZH_TOP8))
   .replace(ZH_STANDORTE, zhCards);
 
