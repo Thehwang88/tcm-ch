@@ -1,0 +1,162 @@
+---
+/**
+ * CRO location-context layer for generic Therapie/Beschwerde leaves.
+ * Phase 1: St. Gallen only.
+ * Does not change canonical/meta URLs. Keeps existing forms/tracking and only localizes UX.
+ */
+---
+<div class="lc-context" data-lc-context hidden>
+  <div class="lc-context-inner">
+    <div>
+      <strong data-lc-title>Behandlung in St. Gallen</strong>
+      <span>Oberer Graben 22 · TCM.ch St. Gallen</span>
+    </div>
+    <button type="button" data-lc-change>Standort ändern</button>
+  </div>
+</div>
+
+<style>
+  .lc-context{background:#eefbf5;border-bottom:1px solid rgba(2,11,16,.08);font-family:var(--font-sans)}
+  .lc-context[hidden]{display:none!important}
+  .lc-context-inner{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .lc-context-inner>div{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .lc-context strong{font-size:14px;color:var(--black,#020B10)}
+  .lc-context span{font-size:13px;color:var(--muted,#667085)}
+  .lc-context button{border:0;background:transparent;color:var(--black,#020B10);font:700 12.5px/1 var(--font-sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 0}
+  @media(max-width:600px){
+    .lc-context-inner{padding:9px 16px}
+    .lc-context-inner>div{gap:3px}
+    .lc-context strong,.lc-context span{width:100%}
+  }
+</style>
+
+<script is:inline>
+(() => {
+  const VALID = { 'st-gallen': { name: 'St. Gallen', formValue: 'St. Gallen', address: 'Oberer Graben 22' } };
+  const qs = new URLSearchParams(location.search);
+  const explicit = qs.get('standort');
+  let id = explicit && VALID[explicit] ? explicit : null;
+
+  if (id) {
+    try { sessionStorage.setItem('tcm_location_context', id); } catch (_) {}
+  } else {
+    try {
+      const saved = sessionStorage.getItem('tcm_location_context');
+      if (saved && VALID[saved]) id = saved;
+    } catch (_) {}
+  }
+  if (!id) return;
+
+  const ctx = VALID[id];
+  document.documentElement.dataset.locationContext = id;
+
+  const bar = document.querySelector('[data-lc-context]');
+  if (bar) {
+    bar.hidden = false;
+    const title = bar.querySelector('[data-lc-title]');
+    if (title) title.textContent = 'Behandlung in ' + ctx.name;
+    bar.querySelector('[data-lc-change]')?.addEventListener('click', () => {
+      try { sessionStorage.removeItem('tcm_location_context'); } catch (_) {}
+      location.href = '/standorte/';
+    });
+  }
+
+  const push = (event, extra={}) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event, standort: id, source_path: location.pathname, ...extra });
+  };
+  push('location_context_view');
+
+  // Localize the visible page context without touching canonical/meta/schema.
+  const therapyPage = document.getElementById('page-therapie');
+  const symptomPage = document.getElementById('page-symptom');
+  const h1 = (therapyPage || symptomPage)?.querySelector('h1');
+  if (h1 && !h1.dataset.lcDone) {
+    h1.dataset.lcDone = '1';
+    const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
+    const base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').replace(/\s*in St\. Gallen\s*$/i,'').trim();
+    if (base) h1.textContent = base + ' in ' + ctx.name;
+  }
+
+  const primaryHero =
+    therapyPage?.querySelector('.tsr-btn-primary') ||
+    symptomPage?.querySelector('.btn-primary, .sx-btn-primary, button[onclick*="Contact"], button[onclick*="contact"]');
+  if (primaryHero) {
+    const t = primaryHero.textContent?.trim() || '';
+    if (/anfragen|behandlung/i.test(t)) primaryHero.textContent = 'Termin in ' + ctx.name + ' anfragen';
+  }
+
+  // Keep St. Gallen context through all therapy/complaint navigation.
+  const contextualizeHref = (a) => {
+    try {
+      const u = new URL(a.href, location.origin);
+      if (u.origin !== location.origin) return;
+      if (!/^\/(therapien|beschwerden)\//.test(u.pathname)) return;
+      u.searchParams.set('standort', id);
+      a.href = u.pathname + u.search + u.hash;
+    } catch (_) {}
+  };
+  document.querySelectorAll('a[href]').forEach(contextualizeHref);
+
+  // Legacy captured leaves contain onclick="nav('therapie'|'symptom', slug)".
+  document.addEventListener('click', (e) => {
+    const el = e.target?.closest?.('[onclick*="nav(\'therapie\'"],[onclick*="nav(\'symptom\'"]');
+    if (!el) return;
+    const oc = el.getAttribute('onclick') || '';
+    const m = oc.match(/nav\(['"](therapie|symptom)['"]\s*,\s*['"]([^'"]+)['"]\)/);
+    if (!m) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const root = m[1] === 'therapie' ? 'therapien' : 'beschwerden';
+    location.href = '/' + root + '/' + m[2] + '/?standort=' + encodeURIComponent(id);
+  }, true);
+
+  // Lock every generic inline contact form on the leaf to St. Gallen.
+  document.querySelectorAll('.inline-form, form').forEach((form) => {
+    const sel = form.querySelector('select[name="standort"]');
+    if (!sel || sel.dataset.lcLocked) return;
+    const options = Array.from(sel.options);
+    const opt = options.find(o => (o.value || o.textContent || '').trim() === ctx.formValue);
+    if (!opt) return;
+    sel.value = opt.value;
+    sel.dataset.lcLocked = '1';
+    sel.disabled = true;
+
+    const hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = 'standort';
+    hidden.value = opt.value;
+    hidden.dataset.lcHidden = '1';
+    form.appendChild(hidden);
+
+    const group = sel.closest('.form-group,.kf-field');
+    if (group) group.hidden = true;
+
+    const card = form.closest('.inline-form-card,[data-kf]');
+    const title = card?.querySelector('.inline-form-title,[data-kf] h2,[data-kf] h3');
+    if (title && /Behandlung|Hilfe|Termin|Anfrage/i.test(title.textContent || '')) {
+      title.textContent = 'Termin in ' + ctx.name + ' anfragen';
+    }
+
+    push('location_context_form_prefill', { form_type: form.className || 'form' });
+  });
+
+  // Localize the contact section around the generic form.
+  document.querySelectorAll('.contact-section-inline').forEach((section) => {
+    const heading = section.querySelector('.section-title');
+    const sub = section.querySelector('.section-sub');
+    if (heading) heading.innerHTML = 'Termin in <em>' + ctx.name + '</em> anfragen.';
+    if (sub) sub.textContent = 'Deine Anfrage geht direkt an den Standort ' + ctx.name + '.';
+  });
+
+  // Make generic location-finder buttons preserve the chosen location instead of reopening routing.
+  document.querySelectorAll('button[onclick*="nav(\'standorte\')"],a[href="/standorte/"]').forEach((el) => {
+    if (el.tagName === 'A') el.setAttribute('href','/standorte/' + id + '/');
+    else {
+      el.removeAttribute('onclick');
+      el.addEventListener('click', () => { location.href = '/standorte/' + id + '/'; });
+      if (/Standort finden|Standort wählen/i.test(el.textContent || '')) el.textContent = ctx.name + ' ansehen';
+    }
+  });
+})();
+</script>
