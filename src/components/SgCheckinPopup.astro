@@ -7,16 +7,17 @@
 <div class="sgcp-backdrop" data-sgcp hidden>
   <section class="sgcp-card" role="dialog" aria-modal="true" aria-labelledby="sgcp-title" aria-describedby="sgcp-desc">
     <button class="sgcp-close" type="button" aria-label="Fenster schliessen" data-sgcp-close>×</button>
+    <div class="sgcp-media"><img src="/images/standort-stgallen-800.webp" alt="TCM.ch St. Gallen – Praxis am Oberen Graben" width="800" height="600" loading="eager" decoding="async"></div>
     <div class="sgcp-kicker">St. Gallen · 30 Min kostenlos</div>
     <h2 id="sgcp-title">Dein kostenloser TCM 360°-Check-in</h2>
-    <p id="sgcp-desc">Lerne TCM persönlich kennen und kläre, ob sie zu deinem Anliegen passt.</p>
+    <p id="sgcp-desc">Lerne TCM persönlich kennen – kostenlos und ohne Behandlung.</p>
     <ul>
       <li>Ganzheitlicher TCM-Kurzcheck</li>
       <li>Zungen- &amp; Pulsdiagnostik</li>
-      <li>Persönliche Fragen &amp; Krankenkassen-Check</li>
+      <li>Persönliche Fragen + Krankenkassen-Check</li>
     </ul>
     <a class="sgcp-cta" href="?terminart=checkin#termin" data-sgcp-cta>
-      Gratis 360°-Check-in buchen <span aria-hidden="true">→</span>
+      Jetzt gratis Termin wählen <span aria-hidden="true">→</span>
     </a>
     <p class="sgcp-note">Kostenlos · unverbindlich · ohne Behandlung</p>
   </section>
@@ -35,9 +36,11 @@
     overflow:auto;box-sizing:border-box;
     background:#F6C84A;color:#07130E;
     border:1px solid rgba(7,19,14,.16);border-radius:28px;
-    padding:34px 34px 28px;
+    padding:0 34px 28px;
     box-shadow:0 28px 80px rgba(2,11,16,.28);
   }
+  .sgcp-media{margin:0 -34px 24px;border-radius:28px 28px 0 0;overflow:hidden;aspect-ratio:16/7;background:#E7C650}
+  .sgcp-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}
   .sgcp-close{
     position:absolute;top:15px;right:16px;width:40px;height:40px;
     display:grid;place-items:center;border:0;border-radius:999px;
@@ -70,7 +73,8 @@
   .sgcp-note{margin:12px 0 0!important;text-align:center;font-size:13px!important;line-height:1.35!important;font-weight:650!important;opacity:.78}
   @media(max-width:600px){
     .sgcp-backdrop{padding:14px}
-    .sgcp-card{border-radius:24px;padding:28px 22px 22px}
+    .sgcp-card{border-radius:24px;padding:0 22px 22px}
+    .sgcp-media{margin:0 -22px 20px;border-radius:24px 24px 0 0;aspect-ratio:16/7}
     .sgcp-card h2{margin-top:14px;font-size:30px}
     .sgcp-card>p#sgcp-desc{font-size:16.5px;margin-bottom:15px}
     .sgcp-card ul{margin-bottom:20px;gap:8px}
@@ -78,7 +82,8 @@
     .sgcp-cta{min-height:54px;font-size:16px}
   }
   @media(max-width:360px){
-    .sgcp-card{padding:25px 18px 20px}
+    .sgcp-card{padding:0 18px 20px}
+    .sgcp-media{margin:0 -18px 18px}
     .sgcp-card h2{font-size:27px}
   }
   @media(prefers-reduced-motion:reduce){.sgcp-cta{transition:none}}
