@@ -222,7 +222,19 @@
     --sh-btn:0 6px 18px rgba(23,27,26,.12);
     --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
   }
-  .akz .lsr-hero{background:#E4DDD2}
+  /* Slightly brighter ivory hero; the existing beige remains on the end editorial block. */
+  .akz .lsr-hero.akzh{background:#F2EEE8}
+  /* Compact proof and location/contact details under the hero CTAs. */
+  .akzh .zh-hero-proof{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 12px;font-size:13.5px;font-weight:600;line-height:1.5;color:#454943}
+  .akzh .zh-hero-proof > span{display:inline-flex;align-items:baseline;gap:6px}
+  .akzh .zh-hero-proof .lsr-check{color:#414642}
+  .akzh .zh-hero-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px 16px;margin:0;font-size:13.5px;line-height:1.5;color:#565B59}
+  .akzh .zh-hero-meta a{color:#414642;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .akzh .zh-hero-meta a:hover{color:#171B1A}
+  @media(max-width:560px){
+    .akzh .zh-hero-proof{gap:6px 14px;font-size:13px}
+    .akzh .zh-hero-meta{gap:4px 12px;font-size:13px}
+  }
   .akz .lsr-left{color:#171B1A}
   .akz .lsr-h1,.akz .section-title{color:#171B1A}
   .akz .section-label,.akz .section-title em,.akz .akz-txtlinks a{color:#565B59}
@@ -268,9 +280,14 @@
           <a class="lsr-btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'hero'})">Termin in Zürich finden</a>
           <a class="lsr-btn-ghost" href="https://wa.me/41775236122?text=Hallo%2C%20ich%20suche%20einen%20TCM-Termin%20in%20Z%C3%BCrich." target="_blank" rel="noopener nofollow" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',quelle:'zh_hero'})">WhatsApp</a>
         </div>
-        <div class="lsr-trust"><div><span class="lsr-check">✓</span> EMR-/ASCA-registrierte Therapeut:innen</div><div><span class="lsr-check">✓</span> Zusatzversicherung je nach Police</div><div><span class="lsr-check">✓</span> Persönliche Behandlung</div></div>
-        <p class="lsr-note">Drei Praxen in Zürich: Bahnhofstrasse (City), Oerlikon und Höngg.</p>
-        <p class="lsr-tert"><a href="tel:+41775236122" style="color:inherit;font-weight:700;text-decoration:none" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">Terminkoordination TCM.ch: +41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a></p>
+        <div class="zh-hero-proof" aria-label="Qualifikation und Versicherungsinformation">
+          <span><span class="lsr-check" aria-hidden="true">✓</span> EMR-/ASCA-registrierte Therapeut:innen</span>
+          <span><span class="lsr-check" aria-hidden="true">✓</span> Zusatzversicherung je nach Police</span>
+        </div>
+        <p class="zh-hero-meta">
+          <span>Bahnhofstrasse · Oerlikon · Höngg</span>
+          <a href="tel:+41775236122" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'phone_click',quelle:'zh_hero'})">+41&nbsp;77&nbsp;523&nbsp;61&nbsp;22</a>
+        </p>
       </div>
       <figure class="lsr-right lsr-right--foto lsr-right--team">
         <img class="zh-hero-fallback" src="/images/team-zuerich.webp" alt="Das TCM.ch Team – EMR/ASCA-registrierte Therapeut:innen" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async"><video class="zh-hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Einblicke aus dem Praxisalltag im TCM.ch Netzwerk" oncanplay="this.style.opacity='1'"><source src="https://s3.amazonaws.com/webflow-prod-assets/67a5beedc0990dd5d83dd737/6978a0d73021bbb5e606bac1_praxis_long_website%20copy%20(1).mp4" type="video/mp4"></video>
