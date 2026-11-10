@@ -21,9 +21,9 @@ const shareTitle = `${loc.brand} ${loc.name} – Google-Bewertung`;
   <main class="qr-wrap qr-wrap--loc">
     <div class="qr-top" data-noprint>
       <a class="qr-back" href="/qr/">‹ Alle Standorte</a>
-      <QrStars size={22} align="right" />
     </div>
     <article class="qr-card" data-qr-id={loc.id} data-review-url={url ?? ''}>
+      <QrStars size={26} />
       <p class="qr-brand">{loc.brand}</p>
       <h1 class="qr-name">{loc.name}</h1>
       <p class="qr-addr">{loc.street}, {loc.zipCity}</p>
