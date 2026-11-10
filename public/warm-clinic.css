@@ -2,27 +2,27 @@
    The page opt-in is the body.tcm-warm class. No typography, spacing, content, image or navigation changes.
    Yellow check-in offers and WhatsApp branding remain untouched. */
 body.tcm-warm {
-  --brand:#E4DDD2;
-  --brand-hover:#D4CABE;
+  --brand:#E8E6E3;
+  --brand-hover:#D6D4D1;
   --brand-black:#171B1A;
-  --brand-surface:#F5F2ED;
-  --brand-tint:#F0EBE5;
+  --brand-surface:#F5F4F2;
+  --brand-tint:#EFEEEC;
   --brand-ink:#454943;
-  --blue:#565B59;
-  --blue-dark:#414642;
-  --blue-light:#F0EBE5;
+  --blue:#1769B1;
+  --blue-dark:#10558F;
+  --blue-light:#EEF3F8;
   --green:#565B59;
-  --green-light:#F0EBE5;
+  --green-light:#EFEEEC;
   --green-dark:#414642;
-  --green-mid:#DED5C9;
-  --green-mint:#ECE5DC;
+  --green-mid:#D8D6D2;
+  --green-mint:#E8E6E3;
   --black:#171B1A;
   --charcoal:#171B1A;
   --mid:#565B59;
   --muted:#676B67;
-  --border:#DED8D0;
-  --surface:#F5F2ED;
-  --bg-soft:#F5F2ED;
+  --border:#D8D6D2;
+  --surface:#E8E6E3;
+  --bg-soft:#F5F4F2;
   --sh-btn:0 6px 18px rgba(23,27,26,.12);
   --sh-btn-hover:0 10px 28px rgba(23,27,26,.18);
 }
@@ -43,7 +43,7 @@ body.tcm-warm .std-vorlage {
 /* Keep the same hero layout and imagery, only change large green fields to ivory. */
 body.tcm-warm #home-content .sr-hero,
 body.tcm-warm .lsr-hero,
-body.tcm-warm .hh-hero {background:#F2EEE8;color:#171B1A}
+body.tcm-warm .hh-hero {background:#E8E6E3;color:#171B1A}
 body.tcm-warm #home-content .sr-hero-left,
 body.tcm-warm .lsr-left,
 body.tcm-warm .hh-left {color:#171B1A}
@@ -54,48 +54,67 @@ body.tcm-warm .section-label,
 body.tcm-warm .section-title em,
 body.tcm-warm .offer-brand-eyebrow {color:#565B59}
 /* Existing large colour surfaces, cards and informational tints. */
-body.tcm-warm #s-offer {background:#ECE5DC!important}
+body.tcm-warm #s-offer {background:#E8E6E3!important}
 body.tcm-warm #home-content .home-locations-feature {
-  background:linear-gradient(135deg,#F5F2ED 0%,#EEE7DE 58%,#FFF7CF 100%);
+  background:linear-gradient(135deg,#F5F4F2 0%,#E8E6E3 65%,#FFF7CF 100%);
 }
 body.tcm-warm #home-content .home-locations-kicker,
 body.tcm-warm #home-content .home-locations-divider>span {color:#565B59}
 body.tcm-warm .akz-chip,
 body.tcm-warm .zhx-tag {background:#F0EBE5;color:#414642}
-/* Preserve charcoal primary CTAs with legible white text. */
+/* Blue primary actions on the five opted-in pages; preserve white text and yellow offer CTAs. */
 body.tcm-warm .btn-primary,
 body.tcm-warm .lsr-btn-primary,
 body.tcm-warm .hh-btn-primary,
 body.tcm-warm #home-content .sr-btn--solid {
-  background:#171B1A;color:#FFFFFF;border-color:#171B1A;box-shadow:none;
+  background:#1769B1;color:#FFFFFF;border-color:#1769B1;box-shadow:none;
 }
 body.tcm-warm .btn-primary:hover,
 body.tcm-warm .lsr-btn-primary:hover,
 body.tcm-warm .hh-btn-primary:hover,
 body.tcm-warm #home-content .sr-btn--solid:hover {
-  background:#353A37;color:#FFFFFF;border-color:#353A37;
+  background:#10558F;color:#FFFFFF;border-color:#10558F;
 }
 /* Form stylesheet sets dark-on-dark label via !important — override only in opted-in pages. */
 body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4),
 body.tcm-warm .kf .kf-btn--primary {
-  background:#171B1A!important;border-color:#171B1A!important;color:#FFFFFF!important;
+  background:#1769B1!important;border-color:#1769B1!important;color:#FFFFFF!important;
 }
 body.tcm-warm .kf-huelle :is(.form-submit,form button[type=submit]):not(#w2):not(#w3):not(#w4):hover,
 body.tcm-warm .kf .kf-btn--primary:hover {
-  background:#353A37!important;border-color:#353A37!important;color:#FFFFFF!important;
+  background:#10558F!important;border-color:#10558F!important;color:#FFFFFF!important;
 }
-body.tcm-warm .kf {--kf-neon:#171B1A;--kf-ink:#171B1A;--kf-mint:#F5F2ED;--kf-mint-line:#DED8D0}
+body.tcm-warm .kf {--kf-neon:#1769B1;--kf-ink:#171B1A;--kf-mint:#F5F4F2;--kf-mint-line:#D8D6D2}
 body.tcm-warm .kf-opt:has(input:checked),
 body.tcm-warm .kf-radio:has(input:checked) {border-color:#565B59}
 /* Shared location tiles keep the existing layout and the yellow check-in emphasis. */
-body.tcm-warm .sc-btn:not(.sc-btn--gelb){background:#171B1A;color:#FFFFFF}
-body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){background:#353A37;color:#FFFFFF}
-body.tcm-warm .sc-chip:not(.sc-chip--gelb){background:#F0EBE5;color:#414642;border-color:#DED8D0}
+body.tcm-warm .sc-btn:not(.sc-btn--gelb){background:#1769B1;color:#FFFFFF}
+body.tcm-warm .sc:hover .sc-btn:not(.sc-btn--gelb){background:#10558F;color:#FFFFFF}
+body.tcm-warm .sc-chip:not(.sc-chip--gelb){background:#EFEEEC;color:#414642;border-color:#D8D6D2}
 body.tcm-warm .sc-btn--gelb,
 body.tcm-warm .sc-chip--gelb {background:#FFD84D;color:#111;border-color:#FFD84D}
 /* The St. Gallen seasonal gift module keeps its offer semantics, but aligns large green
    background panels with the new charcoal/ivory identity. Gold remains gold. */
 body.tcm-warm .f30-hero {--f30-pine:#171B1A;--f30-pine-deep:#353A37;--f30-accent:#565B59;--f30-mint:#E4DDD2}
 body.tcm-warm .f30-hero .f30-card {background:#171B1A}
-body.tcm-warm .lsr-hero .lsr-btn-primary {background:#171B1A;color:#FFFFFF}
-body.tcm-warm .lsr-hero .lsr-btn-primary:hover {background:#353A37}
+body.tcm-warm .lsr-hero .lsr-btn-primary {background:#1769B1;color:#FFFFFF}
+body.tcm-warm .lsr-hero .lsr-btn-primary:hover {background:#10558F}
+
+/* Primary actions beyond generic .btn-primary: site nav, standard local clinic,
+   main home action and form submit. Specific to five opted-in pages. */
+body.tcm-warm #mainNav .nav-cta,
+body.tcm-warm .nav-cta,
+body.tcm-warm .hh-btn-primary,
+body.tcm-warm .sg-contact-cta,
+body.tcm-warm #home-content .svc-all-cta-link{
+  background:#1769B1;color:#FFFFFF;border-color:#1769B1;
+}
+body.tcm-warm #mainNav .nav-cta:hover,
+body.tcm-warm .nav-cta:hover,
+body.tcm-warm .hh-btn-primary:hover,
+body.tcm-warm .sg-contact-cta:hover,
+body.tcm-warm #home-content .svc-all-cta-link:hover{
+  background:#10558F;color:#FFFFFF;border-color:#10558F;
+}
+/* On dark promotional panels do not override contrast or the yellow Check-in offer. */
+body.tcm-warm :is(.sc-btn--gelb,.sgb-cta,.sgcp-cta){color:inherit}
