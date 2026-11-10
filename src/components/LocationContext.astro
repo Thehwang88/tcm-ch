@@ -94,10 +94,14 @@ const locationContexts = Object.fromEntries(
   if (h1 && !h1.dataset.lcDone) {
     h1.dataset.lcDone = '1';
     const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
-    const base = raw
-      .replace(/\s*TCM\.ch Schweiz\s*$/i,'')
-      .replace(/\s+in\s+[^|]+$/i,'')
-      .trim();
+    let base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').trim();
+    for (const v of Object.values(VALID)) {
+      const suffix = ' in ' + v.name;
+      if (base.toLowerCase().endsWith(suffix.toLowerCase())) {
+        base = base.slice(0, -suffix.length).trim();
+        break;
+      }
+    }
     if (base) {
       h1.textContent = base + ' in ' + ctx.name;
       const eyebrow = (therapyPage || symptomPage)?.querySelector('.tsr-eyebrow,.sx-eyebrow');
