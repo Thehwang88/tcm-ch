@@ -12,7 +12,7 @@ import HeadAnalytics from '../components/HeadAnalytics.astro';
 import CheckinBanner from '../components/CheckinBanner.astro';
 import SgCheckinPopup from '../components/SgCheckinPopup.astro';
 import homeBody from '../data/home-body.html?raw';
-import { cardHref, cardHinweis, cardName, cardStatus, clinicById } from '../lib/standort-card';
+import { cardHref, cardHinweis, cardName, cardStatus, checkinFrei, clinicById } from '../lib/standort-card';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
@@ -61,19 +61,27 @@ const escHome = (s: string) => String(s ?? '')
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-const homeClinicCardHtml = (id: string, tracking = '') => {
+const homeClinicCardHtml = (id: string, tracking = '', withImage = false) => {
   const c = clinicById(id);
   const defaultHref = cardHref(c, 'de');
   const href = id === 'st-gallen' && homeFirst30.showCampaign ? '/standorte/st-gallen/#first30' : defaultHref;
   const external = /^https?:\/\//.test(href);
   const status = cardStatus(c);
   const action = status === 'partner' ? 'Zur Praxis' : status === '2027' ? 'Standort ansehen' : 'Termin & Praxis';
+  const checkin = checkinFrei(c);
+  const image = withImage && c.bild
+    ? `<img class="home-loc-img" src="${escHome(c.bild.src)}" alt="${escHome(c.bild.alt)}" width="1200" height="896" loading="lazy" decoding="async">`
+    : '';
+  const gratis = checkin
+    ? '<span class="home-loc-gratis">Gratis Check-in</span>'
+    : '';
   const campaign = id === 'st-gallen' && homeFirst30.showCampaign
     ? `<span class="home-loc-note">${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span>`
     : '';
-  return `<a class="home-loc-card reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking ? ' ' + tracking : ''}>
+  return `<a class="home-loc-card${withImage ? ' home-loc-card--image' : ''} reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking ? ' ' + tracking : ''}>
+    ${image}
     <span class="home-loc-main">
-      <strong>${escHome(cardName(c))}</strong>
+      <span class="home-loc-title-row"><strong>${escHome(cardName(c))}</strong>${gratis}</span>
       <span>${escHome(cardHinweis(c))}</span>
       ${campaign}
     </span>
@@ -87,11 +95,11 @@ const zhTracking = (slug: string) =>
 const homeHtmlCards = homeHtmlBase
   .replace('<!--sc:home-zuerich-->',
     '<div class="home-loc-grid home-loc-grid--3">' +
-      ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].map((id) => homeClinicCardHtml(id, zhTracking(id))).join('') +
+      ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].map((id) => homeClinicCardHtml(id, zhTracking(id), false)).join('') +
     '</div>')
   .replace('<!--sc:home-weitere-->',
     '<div class="home-loc-grid home-loc-grid--4">' +
-      ['st-gallen','frauenfeld','kreuzlingen','winterthur-muenzgasse'].map((id) => homeClinicCardHtml(id)).join('') +
+      ['st-gallen','frauenfeld','kreuzlingen','winterthur-muenzgasse'].map((id) => homeClinicCardHtml(id, '', true)).join('') +
     '</div>');
 
 if (/<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
@@ -117,7 +125,7 @@ const homeHtml = homeHtmlCards;
     /* Reduzierter Standortfinder auf Home: eine visuelle Sprache, keine Promo-Wiederholungen. */
     #home-content .home-locations-feature{
       margin-top:28px;padding:clamp(22px,3vw,30px);border:1px solid rgba(2,11,16,.12);
-      border-radius:18px;background:var(--brand-surface,#F4FAF8);display:flex;align-items:flex-end;
+      border-radius:18px;background:linear-gradient(135deg,#F3FAF6 0%,#EEF7F2 58%,#FFF7CF 100%);display:flex;align-items:flex-end;
       justify-content:space-between;gap:28px
     }
     #home-content .home-locations-feature__copy{max-width:680px}
@@ -148,9 +156,19 @@ const homeHtml = homeHtmlCards;
       text-decoration:none;color:inherit;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
     }
     #home-content .home-loc-card:hover{border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)}
+    #home-content .home-loc-card--image{padding:0;display:grid;grid-template-columns:1fr;gap:0;overflow:hidden;align-items:stretch}
+    #home-content .home-loc-card--image .home-loc-img{display:block;width:100%;height:150px;object-fit:cover;object-position:center}
+    #home-content .home-loc-card--image .home-loc-main{padding:17px 18px 8px}
+    #home-content .home-loc-card--image .home-loc-action{padding:0 18px 17px;justify-content:space-between;width:100%;box-sizing:border-box}
+    #home-content .home-loc-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    #home-content .home-loc-gratis{
+      display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#FFD84D;
+      color:#020B10;font-family:var(--font-sans);font-size:10.5px;font-weight:800;line-height:1.15;
+      letter-spacing:.01em;white-space:nowrap
+    }
     #home-content .home-loc-main{display:block;min-width:0}
     #home-content .home-loc-main strong{display:block;font-family:var(--font-sans);font-size:17px;line-height:1.2;font-weight:800;color:var(--brand-black,#020B10)}
-    #home-content .home-loc-main>span:not(.home-loc-note){display:block;margin-top:4px;font-size:13.5px;line-height:1.4;color:rgba(2,11,16,.6)}
+    #home-content .home-loc-main>span:not(.home-loc-note):not(.home-loc-title-row){display:block;margin-top:4px;font-size:13.5px;line-height:1.4;color:rgba(2,11,16,.6)}
     #home-content .home-loc-action{display:flex;align-items:center;gap:8px;flex-shrink:0;font-family:var(--font-sans);font-size:13px;font-weight:750;color:var(--brand-black,#020B10)}
     #home-content .home-loc-note{display:block;margin-top:7px;font-size:11.5px;font-weight:700;color:var(--brand-ink,#0B7A4B)}
     #home-content .home-locations-divider{
@@ -164,6 +182,8 @@ const homeHtml = homeHtmlCards;
     @media(max-width:720px){
       #home-content .home-loc-grid--3,#home-content .home-loc-grid--4{grid-template-columns:1fr}
       #home-content .home-loc-card{padding:16px}
+      #home-content .home-loc-card--image{padding:0}
+      #home-content .home-loc-card--image .home-loc-img{height:180px}
       #home-content .home-loc-action span:first-child{display:none}
       #home-content .home-locations-divider{align-items:flex-start}
     }
