@@ -35,6 +35,19 @@ const TEL = `tel:+${site.whatsapp}`;
     text-decoration: none; box-shadow: 0 6px 18px rgba(23, 27, 26, .18);
     animation: none;
   }
+  /* Korean Blue primary mobile booking CTA on the chosen six pages only.
+     Keep standalone yellow offer button yellow and all other locations charcoal. */
+  :global(body.tcm-warm .scb-bar .scb-primary:not(.scb-primary--gelb)),
+  :global(body:has(> .akz) .scb-bar .scb-primary:not(.scb-primary--gelb)) {
+    background:#1769B1;color:#FFFFFF;box-shadow:0 6px 18px rgba(23,105,177,.18);
+    animation:none;
+  }
+  :global(body.tcm-warm .scb-bar .scb-primary:not(.scb-primary--gelb):hover),
+  :global(body:has(> .akz) .scb-bar .scb-primary:not(.scb-primary--gelb):hover){
+    background:#10558F;color:#FFFFFF;
+  }
+  :global(body.tcm-warm .scb-bar .scb-primary--sg .scb-l2),
+  :global(body:has(> .akz) .scb-bar .scb-primary--sg .scb-l2) {color:rgba(255,255,255,.85)}
   .scb-row { display: flex; gap: 8px; flex: 0 0 auto; }
   .scb-out {
     flex: 0 0 48px; width: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 0;
