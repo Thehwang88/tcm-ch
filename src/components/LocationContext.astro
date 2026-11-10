@@ -1,15 +1,16 @@
 ---
 /**
  * CRO location-context layer for generic Therapie/Beschwerde leaves.
- * Phase 1: St. Gallen only.
- * Does not change canonical/meta URLs. Keeps existing forms/tracking and only localizes UX.
+ * Location-aware CRO layer for generic Therapie/Beschwerde leaves.
+ * St. Gallen is the master behavior; Zürich Bahnhofstrasse/Oerlikon/Höngg use the same flow.
+ * Does not change canonical/meta URLs. Keeps existing forms/tracking and only localizes visible UX.
  */
 ---
 <div class="lc-context" data-lc-context hidden>
   <div class="lc-context-inner">
     <div>
-      <strong data-lc-title>Behandlung in St. Gallen</strong>
-      <span>Oberer Graben 22 · TCM.ch St. Gallen</span>
+      <strong data-lc-title>Behandlung vor Ort</strong>
+      <span data-lc-address></span>
     </div>
     <button type="button" data-lc-change>Standort ändern</button>
   </div>
@@ -33,7 +34,36 @@
 <script is:inline>
 (() => {
   const init = () => {
-  const VALID = { 'st-gallen': { name: 'St. Gallen', formValue: 'St. Gallen', address: 'Oberer Graben 22' } };
+  const VALID = {
+    'st-gallen': {
+      name: 'St. Gallen',
+      formValue: 'St. Gallen',
+      address: 'Oberer Graben 22',
+      trustName: 'TCM.ch St. Gallen',
+      locationHref: '/standorte/st-gallen/'
+    },
+    'zuerich-bahnhofstrasse': {
+      name: 'Zürich Bahnhofstrasse',
+      formValue: 'Zürich Bahnhofstrasse',
+      address: 'Bahnhofstrasse 37 · 8001 Zürich',
+      trustName: 'TCM.ch Zürich Bahnhofstrasse',
+      locationHref: '/standorte/zuerich-bahnhofstrasse/'
+    },
+    'zuerich-oerlikon': {
+      name: 'Zürich Oerlikon',
+      formValue: 'Zürich Oerlikon',
+      address: 'Ohmstrasse 14 · 8050 Zürich',
+      trustName: 'TCM.ch Zürich Oerlikon',
+      locationHref: '/standorte/zuerich-oerlikon/'
+    },
+    'zuerich-hoengg': {
+      name: 'Zürich Höngg',
+      formValue: 'Zürich Höngg',
+      address: 'Limmattalstrasse 340 · 8049 Zürich',
+      trustName: 'Praxis Hwang Zürich Höngg',
+      locationHref: '/standorte/zuerich-hoengg/'
+    }
+  };
   const qs = new URLSearchParams(location.search);
   const explicit = qs.get('standort');
   let id = explicit && VALID[explicit] ? explicit : null;
@@ -57,17 +87,25 @@
     bar.hidden = false;
     const title = bar.querySelector('[data-lc-title]');
     if (title) title.textContent = 'Behandlung in ' + ctx.name;
-    bar.querySelector('[data-lc-change]')?.addEventListener('click', () => {
+    const address = bar.querySelector('[data-lc-address]');
+    if (address) address.textContent = ctx.address + ' · ' + ctx.trustName;
+    if (!bar.dataset.lcBound) {
+      bar.dataset.lcBound = '1';
+      bar.querySelector('[data-lc-change]')?.addEventListener('click', () => {
       try { sessionStorage.removeItem('tcm_location_context'); } catch (_) {}
-      location.href = '/standorte/';
-    });
+        location.href = '/standorte/';
+      });
+    }
   }
 
   const push = (event, extra={}) => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event, standort: id, source_path: location.pathname, ...extra });
   };
-  push('location_context_view');
+  if (!document.documentElement.dataset.lcViewPushed) {
+    document.documentElement.dataset.lcViewPushed = '1';
+    push('location_context_view');
+  }
 
   // Localize the visible page context without touching canonical/meta/schema.
   const therapyPage = document.getElementById('page-therapie');
@@ -78,7 +116,10 @@
   if (h1 && !h1.dataset.lcDone) {
     h1.dataset.lcDone = '1';
     const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
-    const base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').replace(/\s*in St\. Gallen\s*$/i,'').trim();
+    const base = raw
+      .replace(/\s*TCM\.ch Schweiz\s*$/i,'')
+      .replace(/\s*in (?:St\. Gallen|Zürich Bahnhofstrasse|Zürich Oerlikon|Zürich Höngg)\s*$/i,'')
+      .trim();
     if (base) {
       h1.textContent = base + ' in ' + ctx.name;
       const eyebrow = (therapyPage || symptomPage)?.querySelector('.tsr-eyebrow,.sx-eyebrow');
@@ -87,7 +128,7 @@
       if (lead) {
         lead.textContent = (lead.textContent || '')
           .replace(/EMR-\/ASCA-registrierte Therapeut:innen in Zürich, Winterthur, St\. Gallen, Frauenfeld und Basel\.?/i,
-            'EMR-/ASCA-registrierte Therapeut:innen am Oberen Graben 22 in St. Gallen.');
+            'EMR-/ASCA-registrierte Therapeut:innen vor Ort: ' + ctx.address + '.');
       }
     }
     h1.dataset.lcDone = '1';
@@ -102,7 +143,7 @@
     if (/anfragen|behandlung|termin/i.test(t)) primaryHero.textContent = 'Termin in ' + ctx.name + ' anfragen';
   }
 
-  // Keep St. Gallen context through all therapy/complaint navigation.
+  // Keep the exact originating clinic through all therapy/complaint navigation.
   const contextualizeHref = (a) => {
     try {
       const u = new URL(a.href, location.origin);
@@ -127,7 +168,7 @@
     location.href = '/' + root + '/' + m[2] + '/?standort=' + encodeURIComponent(id);
   }, true);
 
-  // Match the St. Gallen location-page form: Gratis Check-in first and preselected.
+  // Match the location-page offer flow: Gratis Check-in first and preselected.
   document.querySelectorAll('[data-kf]').forEach((card) => {
     const opts = card.querySelector('.kf-opts');
     const checkin = opts?.querySelector('.kf-opt--checkin');
@@ -143,7 +184,7 @@
     card.setAttribute('data-kf-default', 'checkin');
   });
 
-  // Lock every generic inline contact form on the leaf to St. Gallen.
+  // Lock every generic inline contact form on the leaf to the originating clinic.
   document.querySelectorAll('.inline-form, form').forEach((form) => {
     const sel = form.querySelector('select[name="standort"]');
     if (!sel || sel.dataset.lcLocked) return;
@@ -185,13 +226,13 @@
 
   document.querySelectorAll('.intake-trust-item').forEach((el) => {
     const t = (el.textContent || '').trim();
-    if (/Passende Praxis statt langem Suchen/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>Direkt an TCM.ch St. Gallen';
-    if (/Standorte in der Deutschschweiz/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>Oberer Graben 22 · beim HB';
+    if (/Passende Praxis statt langem Suchen/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>Direkt an ' + ctx.trustName;
+    if (/Standorte in der Deutschschweiz/i.test(t)) el.innerHTML = '<span class="intake-trust-dot"></span>' + ctx.address;
   });
 
   document.querySelectorAll('.subpage-sidebar').forEach((sidebar) => {
     const head = sidebar.querySelector('div[style*="text-transform:uppercase"]');
-    if (head && /Termin anfragen/i.test(head.textContent || '')) head.textContent = 'Termin in St. Gallen';
+    if (head && /Termin anfragen/i.test(head.textContent || '')) head.textContent = 'Termin in ' + ctx.name;
   });
 
   // Location is already known: remove the generic all-locations section entirely.
@@ -207,10 +248,10 @@
 
   // Make generic location-finder buttons preserve the chosen location instead of reopening routing.
   document.querySelectorAll('button[onclick*="nav(\'standorte\')"],a[href="/standorte/"]').forEach((el) => {
-    if (el.tagName === 'A') el.setAttribute('href','/standorte/' + id + '/');
+    if (el.tagName === 'A') el.setAttribute('href', ctx.locationHref);
     else {
       el.removeAttribute('onclick');
-      const isLocationLabel = /Standort finden|Standort wählen|St\. Gallen ansehen|Termin in St\. Gallen anfragen/i.test(el.textContent || '');
+      const isLocationLabel = /Standort finden|Standort wählen|Praxis .* ansehen|Termin in .* anfragen/i.test(el.textContent || '');
       if (isLocationLabel) {
         const inHero = !!el.closest('#therapie-premium-hero,#symptom-premium-hero,.tsr-hero,.sx-hero');
         el.textContent = inHero ? 'Praxis ' + ctx.name + ' ansehen' : 'Praxis ' + ctx.name;
@@ -218,7 +259,7 @@
           el.dataset.lcBound = '1';
           el.addEventListener('click', (ev) => {
             ev.preventDefault();
-            location.href = '/standorte/' + id + '/';
+            location.href = ctx.locationHref;
           });
         }
       }
