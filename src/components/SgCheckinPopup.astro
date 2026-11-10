@@ -171,7 +171,7 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
-  const timer = setTimeout(() => show('30s'), 30000);
+  const timer = setTimeout(() => show('15s'), 15000);
 
   close?.addEventListener('click', () => hide('button'));
   root.addEventListener('click', (e) => { if (e.target === root) hide('backdrop'); });
