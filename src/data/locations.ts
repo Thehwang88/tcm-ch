@@ -143,7 +143,7 @@ export const clinics: Clinic[] = [
   // TCM.ch Zürich Bahnhofstrasse: Mietvertrag bestätigt, Nutzung durch Medthera freigegeben (02.11.2026). Live, 1. OG.
   // Slug zuerich-city / zuerich-bellevue → 301 auf /standorte/zuerich-bahnhofstrasse/.
   { id: 'zuerich-bahnhofstrasse', name: 'Zürich Bahnhofstrasse', city: 'Zürich', region: 'Zürich',
-    bild: { src: '/images/standort-zuerich-bahnhofstrasse-brand.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
+    bild: { src: '/images/standort-zuerich-bahnhofstrasse-wide.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
     street: 'Bahnhofstrasse 37', postalCode: '8001', phone: '+41 77 523 61 22', schemaName: 'TCM.ch Zürich Bahnhofstrasse',
     hinweis: 'Bahnhofstrasse 37 · Zürich City',
     gbp: { name: 'TCM.ch Zürich Bahnhofstrasse', cid: '7979795935203150889', verified: 'dashboard' },
@@ -229,7 +229,7 @@ export const locationImages: Record<string, { src: string; alt: string }> = {
   'wil':                    { src: '/images/img-abe1bc75aeab.webp', alt: 'TCM.ch practitioners' },
   'zuerich-oerlikon':       { src: '/images/standort-zuerich-oerlikon-brand.webp', alt: 'TCM.ch Zürich Oerlikon' },
   'zuerich-hoengg':         { src: '/images/standort-zuerich-hoengg-brand.webp', alt: 'TCM.ch Zürich Höngg' },
-  'zuerich-bahnhofstrasse':           { src: '/images/standort-zuerich-bahnhofstrasse-brand.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
+  'zuerich-bahnhofstrasse':           { src: '/images/standort-zuerich-bahnhofstrasse-wide.webp', alt: 'TCM.ch Zürich Bahnhofstrasse' },
   'winterthur-muenzgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'winterthur-marktgasse':  { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
   'kreuzlingen':            { src: '/images/img-4357832d6bef.webp', alt: 'Acupuncture treatment at a TCM.ch clinic' },
