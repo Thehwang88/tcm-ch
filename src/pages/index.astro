@@ -12,7 +12,7 @@ import HeadAnalytics from '../components/HeadAnalytics.astro';
 import CheckinBanner from '../components/CheckinBanner.astro';
 import SgCheckinPopup from '../components/SgCheckinPopup.astro';
 import homeBody from '../data/home-body.html?raw';
-import { standortCardHtml } from '../lib/standort-card';
+import { cardHref, cardHinweis, cardName, cardStatus, clinicById } from '../lib/standort-card';
 import { clinics } from '../data/locations';
 import { expandStandort } from '../data/standort-optionen';
 import { upgradeLegacyForms } from '../lib/kontakt-form';
@@ -50,27 +50,51 @@ const homeUpgraded = upgradeLegacyForms(homeBody.replace(HOME_SELECT_RE, (_m, a,
 if ((homeUpgraded.match(/data-kf-instance="home"/g) || []).length !== 1) throw new Error('index.astro: Home-Kontaktkarte nicht eindeutig umgestellt');
 const homeHtmlBase = homeUpgraded.replace(/__TURNSTILE_SITEKEY__/g, turnstileSitekey);
 
-// Nur während der real geöffneten St.-Gallen-Edition: dezenter Hinweis IN der bestehenden
-// Standort-Karte. Kein nationales Hero-Banner, kein zweites Promo-Element und keine
-// Werbeaussage für andere Standorte. Wenn geschlossen/ausverkauft ohne Warteliste, unverändert.
+// Homepage-Standortauswahl: bewusst reduzierter als die Standortseiten selbst.
+// Eine Karte = Name + eine klare Orts-/Betreiberzeile + Pfeil. Keine Promo-Chips,
+// Fotos oder siebenfach wiederholte Check-in-Buttons; das globale Check-in-Angebot
+// bleibt über Banner/Popup sichtbar.
 const homeFirst30 = first30State();
-const SG_HOME_CARD = /<a href="\/standorte\/st-gallen\/" class="city-card location-card" onclick="event\.preventDefault\(\); nav\('standort','st-gallen'\)" style="cursor:pointer"><span class="location-plz">9000<\/span><div class="location-city">St\. Gallen<\/div><div class="location-desc">Ostschweiz<\/div><span class="location-link">Termin prüfen →<\/span><\/a>/g;
-if (homeFirst30.showCampaign && [...homeHtmlBase.matchAll(SG_HOME_CARD)].length !== 1) throw new Error('index.astro: St.-Gallen-Standortkarte für FIRST 30 nicht eindeutig');
-// Standortkarten (05.11.2026): zentrale Komponente (src/lib/standort-card.ts), Variante hero MIT Foto (nur Home).
-// Zürich-Karten behalten ihr dataLayer-Tracking (homepage_zurich_location_click). Kein stiller Fallback.
-const zhClick = (slug: string) => `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_location_click',source_page:'homepage',section:'locations',location_slug:'${slug}'})"`;
+const escHome = (s: string) => String(s ?? '')
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+const homeClinicCardHtml = (id: string, tracking = '') => {
+  const c = clinicById(id);
+  const href = cardHref(c, 'de');
+  const external = /^https?:\/\//.test(href);
+  const status = cardStatus(c);
+  const action = status === 'partner' ? 'Zur Praxis' : status === '2027' ? 'Standort ansehen' : 'Termin & Praxis';
+  const campaign = id === 'st-gallen' && homeFirst30.showCampaign
+    ? `<span class="home-loc-note">${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span>`
+    : '';
+  return `<a class="home-loc-card reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking ? ' ' + tracking : ''}>
+    <span class="home-loc-main">
+      <strong>${escHome(cardName(c))}</strong>
+      <span>${escHome(cardHinweis(c))}</span>
+      ${campaign}
+    </span>
+    <span class="home-loc-action"><span>${action}</span><span aria-hidden="true">→</span></span>
+  </a>`;
+};
+
+const zhTracking = (slug: string) =>
+  `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'homepage_zurich_location_click',source_page:'homepage',section:'locations',location_slug:'${slug}'})"`;
+
 const homeHtmlCards = homeHtmlBase
-  .replace('<!--sc:home-zuerich-->', '<div class="sc-grid sc-grid--3 reveal" style="margin-top:20px">' + ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg'].map((id) => standortCardHtml(id, { variant: 'hero', foto: true, attrs: zhClick(id) })).join('') + '</div>')
-  .replace('<!--sc:home-weitere-->', '<div class="sc-grid sc-grid--4 reveal" style="margin-top:16px">' + ['st-gallen', 'frauenfeld', 'kreuzlingen', 'winterthur-muenzgasse'].map((id) => standortCardHtml(id, { variant: 'hero', foto: true })).join('') + '</div>');
-if ((homeHtmlCards.match(/class="sc sc--hero/g) || []).length !== 7 || /<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
-const homeHtml = homeFirst30.showCampaign
-  ? homeHtmlCards.replace(SG_HOME_CARD, (card) => card
-    // Direkt zum Kampagnen-Hero statt durch die alte nav()-Weiterleitung ohne Hash.
-    .replace('href="/standorte/st-gallen/"', 'href="/standorte/st-gallen/#first30"')
-    .replace(' onclick="event.preventDefault(); nav(\'standort\',\'st-gallen\')"', '')
-    .replace('<span class="location-link">Termin prüfen →</span>',
-      `<span class="home-first30-tag"><span aria-hidden="true">🎁</span> ${homeFirst30.soldOut ? 'FIRST 30 · Warteliste' : 'FIRST 30 · 30 Min. geschenkt'}</span><span class="location-link">${homeFirst30.soldOut ? 'Zur Warteliste →' : 'Geschenk ansehen →'}</span>`))
-  : homeHtmlCards;
+  .replace('<!--sc:home-zuerich-->',
+    '<div class="home-loc-grid home-loc-grid--3">' +
+      ['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].map((id) => homeClinicCardHtml(id, zhTracking(id))).join('') +
+    '</div>')
+  .replace('<!--sc:home-weitere-->',
+    '<div class="home-loc-grid home-loc-grid--4">' +
+      ['st-gallen','frauenfeld','kreuzlingen','winterthur-muenzgasse'].map((id) => homeClinicCardHtml(id)).join('') +
+    '</div>');
+
+if (/<!--sc:/.test(homeHtmlCards)) throw new Error('index.astro: Standortkarten nicht vollständig gerendert');
+const homeHtml = homeHtmlCards;
 ---
 <!doctype html>
 <html lang="de-CH">
@@ -89,11 +113,62 @@ const homeHtml = homeFirst30.showCampaign
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
     /* restore the SPA #app{padding-top:68px} offset so the full-bleed hero clears the fixed 68px header */
     #home-content{padding-top:68px}
-    /* Das Geschenk erscheint nur auf der SG-Standortkarte, nicht als nationaler Claim. */
-    #home-content .home-first30-tag{display:inline-flex;align-items:center;gap:6px;max-width:100%;margin-top:9px;padding:5px 9px;
-      background:#F0FBF4;color:#14532D;border:1px solid rgba(20,83,45,.24);border-radius:10px;
-      font-family:var(--font-sans);font-size:12px;font-weight:750;line-height:1.35;white-space:normal;text-align:left}
-    #home-content .home-first30-tag span[aria-hidden]{flex-shrink:0}
+    /* Reduzierter Standortfinder auf Home: eine visuelle Sprache, keine Promo-Wiederholungen. */
+    #home-content .home-locations-feature{
+      margin-top:28px;padding:clamp(22px,3vw,30px);border:1px solid rgba(2,11,16,.12);
+      border-radius:18px;background:var(--brand-surface,#F4FAF8);display:flex;align-items:flex-end;
+      justify-content:space-between;gap:28px
+    }
+    #home-content .home-locations-feature__copy{max-width:680px}
+    #home-content .home-locations-kicker,
+    #home-content .home-locations-divider>span{
+      font-family:var(--font-sans);font-size:11px;font-weight:800;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--brand-ink,#0B7A4B)
+    }
+    #home-content .home-locations-feature h3{
+      margin:7px 0 7px;font-family:var(--font-sans);font-size:clamp(22px,2.5vw,30px);
+      font-weight:800;letter-spacing:-.025em;color:var(--brand-black,#020B10)
+    }
+    #home-content .home-locations-feature p{margin:0;color:rgba(2,11,16,.68);font-size:15px;line-height:1.55}
+    #home-content .home-locations-feature__actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;flex-shrink:0}
+    #home-content .home-locations-textlink,
+    #home-content .home-locations-divider a,
+    #home-content .home-locations-foot a{
+      color:var(--brand-black,#020B10);font-family:var(--font-sans);font-size:14px;font-weight:750;
+      text-decoration:none
+    }
+    #home-content .home-locations-textlink:hover,
+    #home-content .home-locations-divider a:hover,
+    #home-content .home-locations-foot a:hover{text-decoration:underline;text-underline-offset:3px}
+    #home-content .home-loc-grid{display:grid;gap:12px;margin-top:12px}
+    #home-content .home-loc-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    #home-content .home-loc-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    #home-content .home-loc-card{
+      min-width:0;display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:18px 20px;background:#fff;border:1px solid rgba(2,11,16,.11);border-radius:16px;
+      text-decoration:none;color:inherit;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease
+    }
+    #home-content .home-loc-card:hover{border-color:rgba(2,11,16,.28);box-shadow:0 8px 22px rgba(2,11,16,.06);transform:translateY(-1px)}
+    #home-content .home-loc-main{display:block;min-width:0}
+    #home-content .home-loc-main strong{display:block;font-family:var(--font-sans);font-size:17px;line-height:1.2;font-weight:800;color:var(--brand-black,#020B10)}
+    #home-content .home-loc-main>span:not(.home-loc-note){display:block;margin-top:4px;font-size:13.5px;line-height:1.4;color:rgba(2,11,16,.6)}
+    #home-content .home-loc-action{display:flex;align-items:center;gap:8px;flex-shrink:0;font-family:var(--font-sans);font-size:13px;font-weight:750;color:var(--brand-black,#020B10)}
+    #home-content .home-loc-note{display:block;margin-top:7px;font-size:11.5px;font-weight:700;color:var(--brand-ink,#0B7A4B)}
+    #home-content .home-locations-divider{
+      margin-top:34px;padding-top:22px;border-top:1px solid rgba(2,11,16,.09);
+      display:flex;align-items:center;justify-content:space-between;gap:18px
+    }
+    #home-content .home-locations-foot{margin:18px 0 0}
+    @media(max-width:960px){
+      #home-content .home-locations-feature{align-items:flex-start;flex-direction:column}
+      #home-content .home-loc-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:720px){
+      #home-content .home-loc-grid--3,#home-content .home-loc-grid--4{grid-template-columns:1fr}
+      #home-content .home-loc-card{padding:16px}
+      #home-content .home-loc-action span:first-child{display:none}
+      #home-content .home-locations-divider{align-items:flex-start}
+    }
     </style>
     <title>{title}</title>
     <meta name="description" content={description} />
