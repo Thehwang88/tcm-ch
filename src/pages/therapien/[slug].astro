@@ -7,6 +7,7 @@
 // baked into each captured file (sidebar list, related therapies, FAQ are slug-specific).
 import SpaPage from '../../layouts/SpaPage.astro';
 import LocationContext from '../../components/LocationContext.astro';
+import SgCheckinPopup from '../../components/SgCheckinPopup.astro';
 import { standortGridHtml, buchbareClinics } from '../../lib/standort-card';
 import { massageLinksForTherapie, massageLinksHtml } from '../../data/massage-links';
 import { therapieTiefeHtml } from '../../data/therapie-tiefe';
@@ -122,4 +123,5 @@ const pageBody = REBRANDED_THERAPY_SLUGS.has(slug!) ? `<div class="therapie-scop
 ---
 <SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]}>
   <LocationContext />
+  <SgCheckinPopup />
 </SpaPage>
