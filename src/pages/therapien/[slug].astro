@@ -120,5 +120,6 @@ const REBRANDED_THERAPY_SLUGS = new Set(['akupunktur',
 const fullBody = prefilledBody + tiefeBlock + massageBlock + fragenLinksHtml(slug!);
 const pageBody = REBRANDED_THERAPY_SLUGS.has(slug!) ? `<div class="therapie-scope">${fullBody}</div>` : fullBody;
 ---
-<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]} />
-<LocationContext />
+<SpaPage title={title} description={description} path={`/therapien/${slug}`} body={pageBody} schema={schema} ogImage={OG_OVERRIDE[slug]}>
+  <LocationContext />
+</SpaPage>
