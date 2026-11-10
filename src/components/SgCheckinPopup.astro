@@ -144,6 +144,20 @@
   const reopen = document.querySelector('[data-sgcp-reopen]');
   if (!root || !reopen) return;
 
+  const AUTO_KEY = 'sg_checkin_popup_auto_shown';
+  const qs = new URLSearchParams(location.search);
+  let savedContext = null;
+  try { savedContext = sessionStorage.getItem('tcm_location_context'); } catch (_) {}
+  const isSgContext =
+    /^\/standorte\/st-gallen\/?$/.test(location.pathname) ||
+    qs.get('standort') === 'st-gallen' ||
+    savedContext === 'st-gallen';
+  if (!isSgContext) {
+    root.hidden = true;
+    reopen.hidden = true;
+    return;
+  }
+
   const close = root.querySelector('[data-sgcp-close]');
   const cta = root.querySelector('[data-sgcp-cta]');
   let lastFocused = null;
@@ -155,6 +169,9 @@
 
   const show = (source = 'auto') => {
     if (!root.hidden) return;
+    if (source === '15s') {
+      try { sessionStorage.setItem(AUTO_KEY, '1'); } catch (_) {}
+    }
     lastFocused = document.activeElement;
     root.hidden = false;
     reopen.hidden = true;
@@ -174,7 +191,10 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
   };
 
-  const timer = setTimeout(() => show('15s'), 15000);
+  let autoShown = false;
+  try { autoShown = sessionStorage.getItem(AUTO_KEY) === '1'; } catch (_) {}
+  const timer = autoShown ? null : setTimeout(() => show('15s'), 15000);
+  if (autoShown) reopen.hidden = false;
 
   close?.addEventListener('click', () => hide('button'));
   root.addEventListener('click', (e) => { if (e.target === root) hide('backdrop'); });
@@ -183,12 +203,14 @@
 
   cta?.addEventListener('click', (e) => {
     e.preventDefault();
-    clearTimeout(timer);
+    if (timer) clearTimeout(timer);
 
     const card =
       document.querySelector('[data-kf-instance="sg-hero"]') ||
       document.getElementById('offer-form') ||
-      document.querySelector('[data-kf][data-kf-standort-id="st-gallen"]');
+      document.querySelector('[data-kf][data-kf-standort-id="st-gallen"]') ||
+      document.querySelector('[data-kf]') ||
+      document.querySelector('.inline-form-card');
 
     const radio = card?.querySelector('input[name="terminart"][value="checkin"]');
     if (radio && !radio.disabled) {
@@ -204,13 +226,13 @@
     try {
       const url = new URL(location.href);
       url.searchParams.set('terminart', 'checkin');
-      url.hash = 'offer-form';
+      url.hash = document.getElementById('offer-form') ? 'offer-form' : document.getElementById('kontakt') ? 'kontakt' : 'termin';
       history.replaceState(null, '', url.pathname + url.search + url.hash);
     } catch (_) {}
 
     push('sg_checkin_popup_click', { terminart: 'checkin', standort: 'st-gallen' });
 
-    const target = document.getElementById('offer-form') || card || document.getElementById('termin');
+    const target = document.getElementById('offer-form') || document.getElementById('kontakt') || card || document.getElementById('termin');
     if (target) {
       requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     }
