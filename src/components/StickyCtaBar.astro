@@ -1,8 +1,7 @@
 ---
 // Mobile-only (≤768px) sticky bottom 3-CTA bar - shared sitewide (rendered once in Footer).
-// Layout (matches hwang.ch mobile): full-width green primary on top, two outline
-// buttons (WhatsApp + Anrufen) side by side below. Primary carries a gentle brand-green
-// glow pulse (disabled under prefers-reduced-motion).
+// Layout (matches hwang.ch mobile): charcoal primary, two outline
+// buttons (WhatsApp + Anrufen) side by side. Neutral, non-animated shadow; yellow offer styling remains separate.
 import { site } from '../data/site';
 const { lang = 'de' } = Astro.props as { lang?: 'de' | 'en' };
 const en = lang === 'en';
@@ -31,10 +30,10 @@ const TEL = `tel:+${site.whatsapp}`;
   .scb-primary {
     display: flex; align-items: center; justify-content: center; gap: 8px;
     flex: 1 1 auto; min-width: 0; min-height: 48px; box-sizing: border-box; padding: 0 14px; white-space: nowrap;
-    background: var(--brand, #1AE288); color: var(--brand-black, #020B10); border-radius: var(--r-pill, 999px);
+    background: #171B1A; color: #FFFFFF; border-radius: var(--r-pill, 999px);
     font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -.01em;
-    text-decoration: none; box-shadow: 0 6px 18px rgba(26, 226, 136, .3);
-    animation: scb-glow 2s ease-in-out infinite;
+    text-decoration: none; box-shadow: 0 6px 18px rgba(23, 27, 26, .18);
+    animation: none;
   }
   .scb-row { display: flex; gap: 8px; flex: 0 0 auto; }
   .scb-out {
@@ -77,10 +76,6 @@ const TEL = `tel:+${site.whatsapp}`;
     :global(.scb-primary--sg .scb-l2) { font-size: 11px; }
     :global(.scb-primary--sg .scb-l2-long) { display: none; }
     :global(.scb-primary--sg .scb-l2-short) { display: inline; }
-  }
-  @keyframes scb-glow {
-    0%, 100% { box-shadow: 0 6px 18px rgba(26, 226, 136, .28); }
-    50% { box-shadow: 0 6px 26px rgba(26, 226, 136, .55); }
   }
   @media (max-width: 768px) {
     /* Hidden at top of page; JS toggles .is-visible once the hero scrolls out. */
