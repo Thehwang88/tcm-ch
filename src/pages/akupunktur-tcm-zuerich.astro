@@ -7,6 +7,7 @@ import { zhStandortOptionsHtml } from '../data/zuerich-termin';
 import StickyCta from '../components/StickyCta.astro';
 import BrandSignature from '../components/BrandSignature.astro';
 import { therapyCardsGridHtml } from '../data/therapy-cards';
+import { standortCardHtml } from '../lib/standort-card';
 import { NETZ_THERAPIEN } from '../data/standorte';
 
 // Zürcher Standort-Optionen im Termin-Formular aus der zentralen Quelle (src/data/zuerich-termin.ts)
@@ -20,10 +21,24 @@ const ZH_KARTEN = '<!--zh-therapie-karten-->';
 if (!rawBody.includes(ZH_KARTEN)) throw new Error('akupunktur-tcm-zuerich: Therapie-Karten-Marker nicht gefunden');
 const ZH_TOP8 = NETZ_THERAPIEN.slice(0, 8); // dieselben 8 sichtbaren Karten wie St. Gallen und die Zürcher Standortseiten
 if (ZH_TOP8.length !== 8) throw new Error(`akupunktur-tcm-zuerich: erwartet 8 Therapie-Karten, gefunden ${ZH_TOP8.length}`);
+const ZH_STANDORTE = '<!--zh-standort-karten-->';
+if (!rawBody.includes(ZH_STANDORTE)) throw new Error('akupunktur-tcm-zuerich: Standort-Karten-Marker nicht gefunden');
+const zhCards = '<div class="sc-grid sc-grid--3">' +
+  [
+    ['zuerich-bahnhofstrasse', 'zuerich-bahnhofstrasse'],
+    ['zuerich-oerlikon', 'zuerich-oerlikon'],
+    ['zuerich-hoengg', 'zuerich-hoengg'],
+  ].map(([id, tracking]) => standortCardHtml(id, {
+    variant: 'kompakt',
+    attrs: `onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_standort_card_click',standort:'${tracking}'})"`,
+  })).join('') +
+  '</div>';
+
 const body = rawBody.replace(
   ZH_ALT,
-  `<select class="form-select" name="standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option>Anderer Standort / in meiner Nähe</option></select>`,
-).replace(ZH_KARTEN, therapyCardsGridHtml(ZH_TOP8));
+  `<select class="form-select" name="standort" id="zh-standort"><option value="">Egal - bitte empfehlen</option>${zhStandortOptionsHtml()}<option>Anderer Standort / in meiner Nähe</option></select>`,
+).replace(ZH_KARTEN, therapyCardsGridHtml(ZH_TOP8))
+  .replace(ZH_STANDORTE, zhCards);
 
 // Brand Signature direkt vor dem End-CTA (nach FAQ): Standortfinder, Quartiere und Funnel bleiben ungestört.
 const END_CTA = '<section class="cta-band" style="background:#F2F4F2;padding:48px 0">';
