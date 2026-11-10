@@ -180,12 +180,19 @@ const card = renderKontaktForm({
   .sgt-anchor{display:block;height:0;scroll-margin-top:calc(var(--header-h,76px) + 72px)}
   @media (max-width:900px){.sgt-anchor{scroll-margin-top:calc(80px + var(--sgb-h,86px) + 10px)}}
   .sgt{background:var(--surface,#F4F6F5);padding:clamp(28px,4vw,56px) 16px;font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+  .up-sg-mobile-photo{display:none}
+  @media(max-width:1023px){
+    .up-sg-mobile-photo{display:block;margin:0 0 22px;border-radius:var(--r-card,16px);overflow:hidden;box-shadow:var(--sh-md)}
+    .up-sg-mobile-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  }
   .sgt-wrap{max-width:var(--max,1280px);margin:0 auto}
   .sgt-grid{display:flex;flex-direction:column;gap:20px}
   .sgt-aside{display:contents}
   /* Mobil/Tablet (06.11.2026): Adresse und Zeiten nicht vor dem Formular; «Über die Praxis» hat dieselben Angaben. Desktop: Seitenspalte.
      Inhaber 10.11.2026: das Praxisfoto mobil zeigen – oben im Termin-Bereich, 16:9 wie die Standortkarten; ohne Foto bleibt der Block aus. */
   @media (max-width:1023px){
+    /* On mobile the reception photograph moves into the later About section. */
+    .sgt .sgt-aside-top{display:none!important}
     .sgt-aside-top{order:1}
     .sgt-aside-top:not(:has(.sgt-foto)){display:none}
     .sgt-aside-top .sgt-addr,.sgt-aside-top .sgt-hours{display:none}
