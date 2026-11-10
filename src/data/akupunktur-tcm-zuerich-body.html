@@ -1,6 +1,9 @@
 <style>
   /* Layout-only helpers - design tokens only, no new colours/fonts/components. */
   .akz{padding-top:68px}
+  /* Keep the fixed-header clearance on .akz, but eliminate the SECOND 76px
+     padding from the shared .lsr-hero so media meets the header edge. */
+  .akz .lsr-hero.akzh{padding-top:0}
   /* Zürich hub hero: one seamless, full-bleed media panel; keep layout and video behavior. */
   .akzh .lsr-inner{gap:0;align-items:stretch;overflow:hidden}
   .akzh .lsr-right--team{
