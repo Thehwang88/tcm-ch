@@ -3,16 +3,9 @@
   .akz{padding-top:68px}
   /* Hero rechts: Zürich-Teamfoto (team-zuerich.webp, 10 Personen) als cover. object-position aus dem Container-
      Seitenverhältnis (gleiche Tabelle wie /en/acupuncture-zurich/): kein Gesicht am Rand halbiert, vertikal Köpfe statt Boden. */
-  .akz .lsr-right--team img{object-position:58% 10%}
-  @container (aspect-ratio < 1.175){.akz .lsr-right--team img{object-position:86.5% 10%}}
-  @container (aspect-ratio < 1.075){.akz .lsr-right--team img{object-position:73% 10%}}
-  @container (aspect-ratio < 0.995){.akz .lsr-right--team img{object-position:26% 10%}}
-  @container (aspect-ratio < 0.945){.akz .lsr-right--team img{object-position:55.5% 10%}}
-  @container (aspect-ratio < 0.84){.akz .lsr-right--team img{object-position:43.5% 10%}}
-  @container (aspect-ratio < 0.765){.akz .lsr-right--team img{object-position:12.5% 10%}}
-  @container (aspect-ratio < 0.715){.akz .lsr-right--team img{object-position:18% 10%}}
-  @container (aspect-ratio < 0.66){.akz .lsr-right--team img{object-position:36% 10%}}
-  @media(max-width:900px){.akz .lsr-right--team img{object-position:58% 10%}}
+  .akz .lsr-right--team{background:#d9cbb9}
+  .akz .lsr-right--team img{object-fit:contain;object-position:center center;background:#d9cbb9}
+  @media(max-width:900px){.akz .lsr-right--team img{object-fit:cover;object-position:58% 10%}}
   @media(max-width:352px){.akz .lsr-right--team img{object-position:86.5% 10%}}
   @media(max-width:322px){.akz .lsr-right--team img{object-position:73% 10%}}
   /* CRO-ZH2: Hero-Panel (lsr-Familie), Karten-Alignment, Softriver-CTAs - nur dieser Hub. */
