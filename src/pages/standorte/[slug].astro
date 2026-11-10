@@ -257,7 +257,7 @@ if (migrated) {
       SG_BESCHWERDEN.map((s) => {
         const c = symptomCards[s];
         if (!c) throw new Error(`st-gallen: symptomCards.${s} fehlt`);
-        return `<a class="svc-card reveal" href="/beschwerden/${s}/" style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src="${c.img}" alt="${escH(c.name)}" class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">${escH(c.name)}</div><div class="svc-tagline">${escH(c.tagline)}</div><div class="svc-cta">Mehr erfahren ${svcArrow}</div></div></a>`;
+        return `<a class="svc-card reveal" href="/beschwerden/${s}/?standort=st-gallen" style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src="${c.img}" alt="${escH(c.name)}" class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">${escH(c.name)}</div><div class="svc-tagline">${escH(c.tagline)}</div><div class="svc-cta">Mehr erfahren ${svcArrow}</div></div></a>`;
       }).join('') +
       '</div><div class="sg-bs-cta reveal"><a href="#kontakt" class="btn-primary tcm-btn tcm-btn--primary tcm-btn--lg">Termin in St. Gallen anfragen <span aria-hidden="true">→</span></a></div></div></section>'
     : '';
@@ -278,10 +278,16 @@ if (migrated) {
     if (ti < 0) throw new Error('st-gallen: Team-Marker für die Beschwerden-Karten nicht gefunden - Leaf geändert?');
     const thi = sgBody.indexOf('<section', ti + 1);
     const the = sgBody.indexOf('</section>', thi) + 10;
-    const thSec = sgBody.slice(thi, the);
+    let thSec = sgBody.slice(thi, the);
+    thSec = thSec
+      .replace(/href="\/therapien\/([^"/]+)\/?"/g, 'href="/therapien/$1/?standort=st-gallen"')
+      .replace(/onclick="event\.preventDefault\(\);\s*nav\('therapie','([^']+)'\)"/g, '');
     if (!thSec.startsWith('<section class="section svc-section">') || !thSec.includes('Unsere <em>Therapien</em> in St. Gallen') || !thSec.includes('id="sg-more-therapien-btn"'))
       throw new Error('st-gallen: Therapie-Sektion folgt nicht direkt auf das Team - Leaf geändert?');
     sgBody = sgBody.slice(0, ti) + thSec.replace('<section class="section svc-section">', '<section class="section svc-section" id="sg-therapien" style="scroll-margin-top:68px">') + sgBody.slice(ti, thi) + sgBeschwerdenHtml + sgBody.slice(the);
+    sgBody = sgBody
+      .replace(/href="\/therapien\/([^"/]+)\/?"/g, 'href="/therapien/$1/?standort=st-gallen"')
+      .replace(/href="\/beschwerden\/([^"/]+)\/?"/g, 'href="/beschwerden/$1/?standort=st-gallen"');
     // FIRST 30 (nur solange der Kampagnen-Hero gezeigt wird): Angebots-Wähler ÜBER dem unteren Kontaktformular und
     // Leaf-CTAs auf das Geschenk umgestellt. Geschlossene Kampagne = Leaf unverändert (reguläre CTAs → #offer-form).
     if (first30.showCampaign) {
