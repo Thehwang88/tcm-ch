@@ -81,7 +81,7 @@ const homeClinicCardHtml = (id: string, tracking = '', withImage = false) => {
   return `<a class="home-loc-card${withImage ? ' home-loc-card--image' : ''} reveal" href="${escHome(href)}"${external ? ' target="_blank" rel="noopener"' : ''}${tracking ? ' ' + tracking : ''}>
     ${image}
     <span class="home-loc-main">
-      <span class="home-loc-title-row"><strong>${escHome(cardName(c))}</strong>${gratis}</span>
+      <span class="home-loc-title-row"><span class="home-loc-name"><svg class="home-loc-pin" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><strong>${escHome(cardName(c))}</strong></span>${gratis}</span>
       <span>${escHome(cardHinweis(c))}</span>
       ${campaign}
     </span>
@@ -169,6 +169,10 @@ const homeHtml = homeHtmlCards;
     #home-content .home-loc-card--image .home-loc-main{padding:17px 18px 8px}
     #home-content .home-loc-card--image .home-loc-action{padding:0 18px 17px;justify-content:space-between;width:100%;box-sizing:border-box}
     #home-content .home-loc-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    #home-content .home-loc-name{display:inline-flex;align-items:baseline;gap:8px;min-width:0}
+    #home-content .home-loc-pin{width:18px;height:18px;flex:0 0 18px;align-self:baseline;transform:translateY(2px);color:#565B59}
+    #home-content .home-loc-name strong{min-width:0}
+
     #home-content .home-loc-gratis{
       display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#FFD84D;
       color:#020B10;font-family:var(--font-sans);font-size:10.5px;font-weight:800;line-height:1.15;
