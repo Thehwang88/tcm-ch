@@ -29,7 +29,6 @@
 </div>
 
 <button class="sgcp-reopen" type="button" data-sgcp-reopen hidden aria-label="Kostenlosen TCM 360°-Check-in anzeigen">
-  <span class="sgcp-reopen-dot" aria-hidden="true">+</span>
   <span class="sgcp-reopen-label">Check-in</span>
 </button>
 
@@ -107,7 +106,7 @@
     position:fixed;left:14px;bottom:112px;z-index:2147482999;
     display:inline-flex;align-items:center;gap:8px;
     width:58px;height:58px;min-width:58px;min-height:58px;aspect-ratio:1/1;padding:5px 4px 4px;
-    justify-content:center;flex-direction:column;gap:2px;box-sizing:border-box;
+    justify-content:center;flex-direction:column;gap:0;box-sizing:border-box;
     border:1px solid rgba(7,19,14,.16);border-radius:50%!important;
     background:#FFD84D;color:#07130E;
     font:800 9px/1 var(--font-sans,'Figtree',system-ui,sans-serif);
@@ -129,8 +128,7 @@
     :global(body.scb-reserve--sg .sgcp-reopen){
       bottom:calc(70px + env(safe-area-inset-bottom, 0px));
     }
-    .sgcp-reopen .sgcp-reopen-dot{width:23px;height:23px;font-size:16px}
-    .sgcp-reopen .sgcp-reopen-label{font-size:7px;letter-spacing:0}
+    .sgcp-reopen .sgcp-reopen-label{font-size:8px;letter-spacing:0}
   }
   @media(max-width:359px){
     /* Narrow bottom bar uses 44px phone CTA and 10px horizontal padding:
@@ -140,11 +138,8 @@
   @media(min-width:769px) and (max-width:900px){
     .sgcp-reopen{left:auto;right:14px}
   }
-  .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
-  .sgcp-reopen-dot{
-    width:29px;height:29px;border-radius:50%;display:grid;place-items:center;
-    background:#07130E;color:#fff;font:800 19px/1 Arial,sans-serif;
-  }
+  .sgcp-reopen-label{position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:nowrap;text-transform:uppercase;letter-spacing:0;font-size:10px;line-height:1;font-weight:850;text-align:center}
+
 :global(html.sgcp-open .sgb-banner),
   :global(html.sgcp-open .sgb-spacer){display:none!important}
   @media(max-width:600px){
