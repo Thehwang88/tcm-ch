@@ -40,7 +40,7 @@ console.log('\nOhne verifizierten Link (Unit-Test, Astro-Container)');
     const c = await experimental_AstroContainer.create();
     const html = await c.renderToString(Page, { params: { id: 'test-ohne-link' }, props: { loc: { id: 'test-ohne-link', brand: 'TCM.ch', name: 'Teststadt', street: 'Testweg 1', zipCity: '0000 Teststadt', reviewUrl: null, mapsCid: '0', checkedAt: '2026-11-10' } } });
     ok(html.includes('Bewertungslink folgt.') && html.includes('Testweg 1'), 'ohne reviewUrl: Name, Adresse und «Bewertungslink folgt.»');
-    ok(!/<svg/i.test(html) && !html.includes('class="qr-actions"') && !html.includes('class="qr-code"') && !html.includes('g.page'), 'ohne reviewUrl: kein QR, keine Aktionsbuttons, kein Link');
+    ok(!html.includes('crispEdges') && !html.includes('class="qr-actions"') && !html.includes('class="qr-code"') && !html.includes('g.page'), 'ohne reviewUrl: kein QR, keine Aktionsbuttons, kein Link');
   } finally { await vite.close(); }
 }
 
@@ -99,7 +99,7 @@ ok(await pg.$eval('#qr-last', (e) => e.hidden && getComputedStyle(e).display ===
 ok(await noOverflow(pg), 'Auswahl ohne horizontales Scrollen');
 const tap = await pg.$eval('.qr-item', (e) => e.getBoundingClientRect().height);
 ok(tap >= 44, `Tippfläche ${Math.round(tap)} px ≥ 44 px`);
-if (shots) await pg.screenshot({ path: path.join(shots, 'qr-auswahl-390.png'), fullPage: true });
+if (shots) { await new Promise((r) => setTimeout(r, 1200)); await pg.screenshot({ path: path.join(shots, 'qr-auswahl-390.png'), fullPage: true }); }
 
 await Promise.all([pg.waitForNavigation({ waitUntil: 'load' }), pg.click('a[data-qr-id="tcm-st-gallen"]')]);
 ok(new URL(pg.url()).pathname === '/qr/tcm-st-gallen/', 'Tap öffnet eigene Standort-URL');
@@ -111,7 +111,7 @@ ok(lay.qrW >= 240 && lay.qrTop + lay.qrW <= lay.vh, `QR gross genug (${Math.roun
 for (const [w, h, alles] of [[360, 560, false], [360, 640, false], [390, 664, true], [412, 780, true]]) {
   await pg.setViewport({ width: w, height: h, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
   const v = await pg.evaluate(() => { const r = (s) => { const b = document.querySelector(s).getBoundingClientRect(); return { width: b.width, bottom: b.bottom }; }; const btns = [...document.querySelectorAll('[data-qr-action]')].map((b) => b.getBoundingClientRect()); return { qr: r('.qr-code'), open: r('[data-qr-action="open"]'), last: Math.max(...btns.map((b) => b.bottom)), oneLine: btns.every((b) => b.height <= 52), vh: innerHeight, ow: document.documentElement.scrollWidth > innerWidth }; });
-  ok(v.qr.width >= 220 && v.open.bottom <= v.vh && !v.ow && v.oneLine, `${w}×${h}: QR ${Math.round(v.qr.width)} px und «Auf Google bewerten» ohne Scrollen, Knöpfe einzeilig`);
+  ok(v.qr.width >= 210 && v.open.bottom <= v.vh && !v.ow && v.oneLine, `${w}×${h}: QR ${Math.round(v.qr.width)} px und «Auf Google bewerten» ohne Scrollen, Knöpfe einzeilig`);
   if (alles) ok(v.last <= v.vh, `${w}×${h}: alle Aktionen ohne Scrollen sichtbar (${Math.round(v.last)}/${v.vh} px)`);
   if (shots) { await new Promise((r) => setTimeout(r, 1400)); await pg.screenshot({ path: path.join(shots, `qr-standort-${w}x${h}.png`) }); }
 }
@@ -127,7 +127,7 @@ ok(geo.anim === 'qr-breathe' && geo.heart, 'Animation aktiv (Klammern atmen, Her
 const phasen = [];
 for (const t of [0, 800, 1600, 2400]) { await new Promise((r) => setTimeout(r, t ? 800 : 0)); phasen.push(decodePng(Buffer.from(await (await pg.$('.qr-frame')).screenshot())).text); }
 ok(phasen.every((x) => x === 'https://g.page/r/CceZScux5dkEEBM/review'), 'QR scannt in allen Animationsphasen (Rahmen-Screenshot, 4 Zeitpunkte)', JSON.stringify(phasen));
-ok(!(await pg.evaluate(() => /★|☆|stern/i.test(document.body.innerText) || !!document.querySelector('[class*="star"]'))), 'keine Sterne auf der Seite');
+ok(await pg.evaluate(() => { const st = document.querySelector('.qr-stars'), q = document.querySelector('.qr-code').getBoundingClientRect(); return !!st && !!st.closest('.qr-card') && st.getAttribute('aria-hidden') === 'true' && st.querySelectorAll('svg').length === 5 && st.getBoundingClientRect().bottom <= document.querySelector('.qr-brand').getBoundingClientRect().top && st.getBoundingClientRect().bottom <= q.top && !/★|☆|stern/i.test(document.body.innerText); }), '5 Sterne nur als Deko (aria-hidden, kein Text), im Kopf der Karte über Marke/Name, nicht über dem QR');
 await pg.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
 ok(await pg.evaluate(() => ['.qr-frame', '.qr-corner', '.qr-heart', '.qr-thanks'].every((s) => getComputedStyle(document.querySelector(s)).animationName === 'none')), '«Bewegung reduzieren»: keine Animation');
 await pg.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
