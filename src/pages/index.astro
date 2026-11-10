@@ -117,6 +117,7 @@ const homeHtml = homeHtmlCards;
     <link rel="stylesheet" href="/nav-rebrand.css" />
     <link rel="stylesheet" href="/footer-rebrand.css" />
     <link rel="stylesheet" href="/standort-card.css" />
+    <link rel="stylesheet" href="/warm-clinic.css" />
     <!-- static page: reveal + SPA anti-FOUC are JS-only; never hide content from no-JS/crawlers -->
     <script is:inline>document.documentElement.classList.add('js','ready');</script>
     <style is:inline>html:not(.ready){visibility:visible !important}html:not(.js) .reveal{opacity:1 !important;transform:none !important}
@@ -223,7 +224,7 @@ const homeHtml = homeHtmlCards;
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
   </head>
-  <body>
+  <body class="tcm-warm">
     <DeHeader />
     {/* Gelbes Check-in-Banner wie auf den Standortseiten (Inhaber 08.11.2026); Ziel = globales Formular. */}
     <CheckinBanner href="#home-contact-form" />
