@@ -20,7 +20,7 @@ const video = heroVideo(data);
 ---
 <div id="standort-flagship-hero" style="display:none"></div><div id="sg-premium-hero"></div><div id="zh-premium-hero"></div><div id="win-premium-hero"></div>
 {LSR_SLUGS.has(data.slug) ? (
-<section class="lsr-hero">
+<section class="lsr-hero std-location-hero">
   <div class="lsr-inner">
     <div class="lsr-left">
       <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="tsr-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
@@ -82,3 +82,24 @@ const video = heroVideo(data);
   </div>
 </div>
 )}
+
+<style is:global>
+  /* Shared LSR location heroes: place header clearance OUTSIDE the media panel.
+     The former 76px padding on .lsr-hero pushed the right video/photo down.
+     The ID-qualified rule beats the legacy #sg-premium-hero sibling override. */
+  #sg-premium-hero ~ .lsr-hero.std-location-hero{
+    padding-top:0!important;
+    margin-top:var(--header-h,76px);
+  }
+  /* With a Check-in banner, that banner (or its mobile spacer) already clears
+     the fixed header; do not add the clearance a second time. */
+  body:has(.sgb-banner) #sg-premium-hero ~ .lsr-hero.std-location-hero{
+    padding-top:0!important;
+    margin-top:0;
+  }
+  @media(max-width:900px){
+    body:not(:has(.sgb-banner)) #sg-premium-hero ~ .lsr-hero.std-location-hero{
+      margin-top:80px;
+    }
+  }
+</style>
