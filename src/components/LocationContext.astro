@@ -1,11 +1,20 @@
 ---
-/**
- * CRO location-context layer for generic Therapie/Beschwerde leaves.
- * Location-aware CRO layer for generic Therapie/Beschwerde leaves.
- * St. Gallen is the master behavior; Zürich Bahnhofstrasse/Oerlikon/Höngg use the same flow.
- * Does not change canonical/meta URLs. Keeps existing forms/tracking and only localizes visible UX.
- */
+import { publicClinics } from '../data/locations';
+
+const locationContexts = Object.fromEntries(
+  publicClinics.map((c) => [
+    c.id,
+    {
+      name: c.name,
+      formValue: c.name,
+      address: [c.street, c.postalCode, c.city].filter(Boolean).join(' · ') || c.city,
+      trustName: c.betreiber?.name || c.schemaName || `TCM.ch ${c.name}`,
+      locationHref: `/standorte/${c.id}/`,
+    },
+  ]),
+);
 ---
+<script type="application/json" id="lc-context-data" set:html={JSON.stringify(locationContexts)}></script>
 <div class="lc-context" data-lc-context hidden>
   <div class="lc-context-inner">
     <div>
@@ -34,49 +43,18 @@
 <script is:inline>
 (() => {
   const init = () => {
-  const VALID = {
-    'st-gallen': {
-      name: 'St. Gallen',
-      formValue: 'St. Gallen',
-      address: 'Oberer Graben 22',
-      trustName: 'TCM.ch St. Gallen',
-      locationHref: '/standorte/st-gallen/'
-    },
-    'zuerich-bahnhofstrasse': {
-      name: 'Zürich Bahnhofstrasse',
-      formValue: 'Zürich Bahnhofstrasse',
-      address: 'Bahnhofstrasse 37 · 8001 Zürich',
-      trustName: 'TCM.ch Zürich Bahnhofstrasse',
-      locationHref: '/standorte/zuerich-bahnhofstrasse/'
-    },
-    'zuerich-oerlikon': {
-      name: 'Zürich Oerlikon',
-      formValue: 'Zürich Oerlikon',
-      address: 'Ohmstrasse 14 · 8050 Zürich',
-      trustName: 'TCM.ch Zürich Oerlikon',
-      locationHref: '/standorte/zuerich-oerlikon/'
-    },
-    'zuerich-hoengg': {
-      name: 'Zürich Höngg',
-      formValue: 'Zürich Höngg',
-      address: 'Limmattalstrasse 340 · 8049 Zürich',
-      trustName: 'Praxis Hwang Zürich Höngg',
-      locationHref: '/standorte/zuerich-hoengg/'
-    }
-  };
+  const VALID = (() => {
+    try { return JSON.parse(document.getElementById('lc-context-data')?.textContent || '{}'); }
+    catch (_) { return {}; }
+  })();
   const qs = new URLSearchParams(location.search);
   const explicit = qs.get('standort');
-  let id = explicit && VALID[explicit] ? explicit : null;
+  const id = explicit && VALID[explicit] ? explicit : null;
 
-  if (id) {
-    try { sessionStorage.setItem('tcm_location_context', id); } catch (_) {}
-  } else {
-    try {
-      const saved = sessionStorage.getItem('tcm_location_context');
-      if (saved && VALID[saved]) id = saved;
-    } catch (_) {}
-  }
+  // Only an explicit Standort may localize a therapy/complaint page.
+  // This prevents stale St. Gallen/Zürich session context from bleeding into generic links.
   if (!id) return;
+  try { sessionStorage.setItem('tcm_location_context', id); } catch (_) {}
 
   const ctx = VALID[id];
   document.documentElement.dataset.locationContext = id;
@@ -116,10 +94,14 @@
   if (h1 && !h1.dataset.lcDone) {
     h1.dataset.lcDone = '1';
     const raw = h1.textContent?.replace(/\s+/g,' ').trim() || '';
-    const base = raw
-      .replace(/\s*TCM\.ch Schweiz\s*$/i,'')
-      .replace(/\s*in (?:St\. Gallen|Zürich Bahnhofstrasse|Zürich Oerlikon|Zürich Höngg)\s*$/i,'')
-      .trim();
+    let base = raw.replace(/\s*TCM\.ch Schweiz\s*$/i,'').trim();
+    for (const v of Object.values(VALID)) {
+      const suffix = ' in ' + v.name;
+      if (base.toLowerCase().endsWith(suffix.toLowerCase())) {
+        base = base.slice(0, -suffix.length).trim();
+        break;
+      }
+    }
     if (base) {
       h1.textContent = base + ' in ' + ctx.name;
       const eyebrow = (therapyPage || symptomPage)?.querySelector('.tsr-eyebrow,.sx-eyebrow');
