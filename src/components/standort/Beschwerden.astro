@@ -8,9 +8,10 @@ const ctaLabel = data.review ? 'Passende Praxis anfragen' : data.planned ? `Anfr
 const arrow = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 // SG-Vorlage (08.11.2026): 2 Reihen à 4 Karten, Klartext-Namen, eine CTA auf den Termin-Bereich (#termin), kein «Alle Beschwerden».
 const cards = data.beschwerden.map((slug) => ({ slug, c: symptomCards[slug] })).filter((x) => x.c).slice(0, 8);
+const beschwerdeHref = (slug: string) => `/beschwerden/${slug}/${data.slug === 'st-gallen' ? '?standort=st-gallen' : ''}`;
 ---
 <section class="section svc-section std-beschwerden" id={`beschwerden-${data.slug}`} style="background:var(--surface)"><div class="wrap"><div class="svc-header reveal"><div><div class="section-label">Beschwerden</div><h2 class="section-title">Wobei können wir <em>helfen</em>?</h2></div><p class="svc-sub">Häufige Beschwerden, bei denen Akupunktur und TCM eingesetzt werden.</p></div><div class="svc-grid">
 {cards.map(({ slug, c }, i) => (
-  <a class="svc-card reveal" href={`/beschwerden/${slug}/`} style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src={c.img} alt={`${c.name} mit TCM behandeln in ${data.stadt}`} class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">{c.name}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <Fragment set:html={arrow} /></div></div></a>
+  <a class="svc-card reveal" href={beschwerdeHref(slug)} style="text-decoration:none;color:inherit"><div class="svc-photo-wrap"><img width="1120" height="746" src={c.img} alt={`${c.name} mit TCM behandeln in ${data.stadt}`} class="svc-photo" loading="lazy" decoding="async"><div class="svc-photo-top-bar"></div></div><div class="svc-body"><div class="svc-name">{c.name}</div><div class="svc-tagline">{c.tagline}</div><div class="svc-cta">Mehr erfahren <Fragment set:html={arrow} /></div></div></a>
 ))}
 </div><div class="sg-bs-cta reveal"><a href="#termin" class="btn-primary tcm-btn tcm-btn--primary tcm-btn--lg">{ctaLabel} <span aria-hidden="true">→</span></a></div></div></section>
