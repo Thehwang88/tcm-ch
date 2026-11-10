@@ -166,7 +166,7 @@
     /^\/standorte\/zuerich-hoengg\/?$/.test(path) ? 'zuerich-hoengg' :
     /^\/standorte\/st-gallen\/?$/.test(path) ? 'st-gallen' :
     (qs.get('standort') && CONFIG[qs.get('standort')]) ? qs.get('standort') :
-    (savedContext && CONFIG[savedContext]) ? savedContext : null;
+    (savedContext && CONFIG[savedContext] && !/^\/(therapien|beschwerden)\//.test(path)) ? savedContext : null;
 
   if (!contextId || !CONFIG[contextId]) {
     root.hidden = true;
