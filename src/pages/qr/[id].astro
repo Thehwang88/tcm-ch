@@ -4,6 +4,7 @@
 // Ohne verifizierten Link (reviewUrl null): kein QR, keine Aktionen, Hinweis.
 import QRCode from 'qrcode';
 import QrShell from '../../components/qr/QrShell.astro';
+import QrStars from '../../components/qr/QrStars.astro';
 import { REVIEW_LOCATIONS, QR_OPTIONS, qrFileName, type ReviewLocation } from '../../data/google-reviews';
 
 export function getStaticPaths() {
@@ -20,6 +21,7 @@ const shareTitle = `${loc.brand} ${loc.name} – Google-Bewertung`;
   <main class="qr-wrap qr-wrap--loc">
     <div class="qr-top" data-noprint>
       <a class="qr-back" href="/qr/">‹ Alle Standorte</a>
+      <QrStars size={22} align="right" />
     </div>
     <article class="qr-card" data-qr-id={loc.id} data-review-url={url ?? ''}>
       <p class="qr-brand">{loc.brand}</p>

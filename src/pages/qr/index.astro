@@ -1,6 +1,7 @@
 ---
 // /qr/ — Standortauswahl fuer Google-Bewertungen (mobil). /QR leitet hierher (public/_redirects).
 import QrShell from '../../components/qr/QrShell.astro';
+import QrStars from '../../components/qr/QrStars.astro';
 import { REVIEW_LOCATIONS, REVIEW_BRANDS, fullAddress } from '../../data/google-reviews';
 
 const groups = REVIEW_BRANDS.map((brand) => ({ brand, items: REVIEW_LOCATIONS.filter((l) => l.brand === brand) }));
@@ -8,6 +9,7 @@ const names = Object.fromEntries(REVIEW_LOCATIONS.map((l) => [l.id, `${l.brand} 
 ---
 <QrShell title="Google-Bewertung · Standort wählen">
   <main class="qr-wrap">
+    <QrStars size={30} align="left" />
     <h1>Standort wählen</h1>
     <p class="qr-sub">Wähle die Praxis, die du auf Google bewerten möchtest.</p>
     <a class="qr-last" id="qr-last" href="#" hidden></a>
