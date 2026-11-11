@@ -953,3 +953,61 @@ body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-co
 body.tcm-warm #home-content section.wa-section--merged .wa-yuna-card .wa-yuna-copy > span{
   color:rgba(255,255,255,.88)!important;
 }
+
+
+/* Mobile home hero: booking is primary; transparent one-tap telephone action
+   replaces symptom browsing only on mobile. Browser-native tel: link.
+   Existing desktop browse link, booking handler and destinations unchanged. */
+body.tcm-warm #home-content #heroPatient .sr-btn--call{display:none!important}
+@media(max-width:767px){
+  body.tcm-warm #home-content #heroPatient .sr-btn--browse{display:none!important}
+  body.tcm-warm #home-content #heroPatient .sr-btn--call{
+    display:inline-flex!important;
+    align-items:center;justify-content:center;gap:11px;
+    background:transparent!important;
+    color:var(--tcm-ink,#171B1A)!important;
+    border:2px solid var(--tcm-ink,#171B1A)!important;
+    text-decoration:none!important;
+    box-shadow:none!important;
+    min-height:49px!important;
+    font-size:clamp(16px,4.2vw,19px)!important;
+    font-variant-numeric:tabular-nums;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-btn--call svg{
+    width:19px;height:19px;flex-shrink:0;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-cta{
+    gap:10px!important;margin-bottom:19px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-cta .sr-btn{
+    min-height:49px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-h1{
+    margin-bottom:12px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-lead{
+    font-size:15px!important;line-height:1.5!important;
+    margin-bottom:17px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-trust{
+    gap:9px!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-trust li{
+    font-size:12.5px!important;
+  }
+  /* Original team image is 4:3: show the full photo rather than
+     the former square crop that pushed booking down one extra screen. */
+  body.tcm-warm #home-content #heroPatient .sr-hero-right img{
+    aspect-ratio:4/3!important;
+    height:auto!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  body.tcm-warm #home-content #heroPatient .sr-hero-inner{
+    padding-top:24px!important;padding-bottom:28px!important;
+  }
+  /* The final network-wide trust claim stays in the DOM / desktop view. */
+  body.tcm-warm #home-content #heroPatient .sr-trust li:nth-child(n+3){
+    display:none!important;
+  }
+}
