@@ -1,0 +1,46 @@
+/* TCM.ch short free-enquiry modal — mobile bottom sheet, desktop centred dialog. */
+.tcm-concern-sheet{border:0;padding:0;background:transparent;color:#171B1A;max-width:none;max-height:none;overflow:visible}
+.tcm-concern-sheet::backdrop{background:rgba(2,11,16,.56)}
+.tcm-concern-sheet[open]{position:fixed;inset:auto 0 0;margin:0;width:100vw;max-width:100vw;z-index:2000}
+.tcm-concern-panel{position:relative;box-sizing:border-box;margin:0 auto;background:#fff;border-radius:24px 24px 0 0;padding:22px clamp(20px,5vw,30px) calc(22px + env(safe-area-inset-bottom));max-height:calc(100dvh - 18px);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 -12px 40px rgba(0,0,0,.15);font-family:var(--font-sans,'Figtree',system-ui,sans-serif)}
+.tcm-concern-grip{width:46px;height:4px;margin:0 auto 20px;background:#D7D4D0;border-radius:99px}
+.tcm-concern-close{position:absolute;right:16px;top:16px;border:1px solid #D7D4D0;background:#fff;border-radius:50%;width:42px;height:42px;font-size:27px;color:#171B1A;cursor:pointer;line-height:1}
+.tcm-concern-eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;color:#505453;margin:0 50px 8px 0}
+.tcm-concern-panel h2{font-size:clamp(25px,6vw,33px);line-height:1.16;letter-spacing:-.03em;margin:0 45px 8px 0;color:#171B1A}
+#tcm-concern-desc{font-size:14px;line-height:1.5;color:#505453;margin:0 0 20px}
+#tcm-concern-form{display:flex;flex-direction:column}
+#tcm-concern-form label{font-size:13px;font-weight:750;color:#171B1A;margin:12px 0 7px}
+#tcm-concern-form :is(input:not([type=hidden]),textarea){box-sizing:border-box;border:1px solid #C6C8C6;border-radius:12px;width:100%;padding:12px 14px;font:inherit;font-size:15px;line-height:1.45;color:#171B1A;background:#fff;box-shadow:none}
+#tcm-concern-form textarea{min-height:110px;resize:vertical}
+#tcm-concern-form :is(input,textarea):focus-visible,.tcm-concern-sheet button:focus-visible{outline:3px solid #1769B1;outline-offset:2px}
+#tcm-concern-form .tcm-concern-hp{position:absolute!important;left:-10000px;width:1px;height:1px;opacity:0;pointer-events:none}
+.tcm-concern-hint{color:#707472;font-size:12px;line-height:1.45;margin:6px 0 2px}
+.tcm-concern-or{color:#707472;font-size:12px;text-align:center;margin:8px 0 -5px}
+#tcm-concern-turnstile{min-height:60px;margin:12px 0 0}
+.tcm-concern-error{color:#9C2424;font-weight:650;font-size:13px;line-height:1.4;margin:8px 0}
+.tcm-concern-send{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;width:100%;border:0;border-radius:999px;background:#1769B1;color:#fff;font:inherit;font-size:16px;font-weight:750;cursor:pointer;padding:12px 18px;margin-top:12px}
+.tcm-concern-send[disabled]{opacity:.6;cursor:wait}
+.tcm-concern-speed{text-align:center;margin:12px 0 2px;font-size:13px;font-weight:750;color:#171B1A}
+.tcm-concern-privacy{font-size:11px;line-height:1.5;color:#707472;margin:12px 0 0}
+.tcm-concern-privacy a{color:#171B1A;text-decoration:underline;text-underline-offset:2px}
+.tcm-concern-success{padding:25px 0 12px}
+.tcm-concern-success p{color:#505453;font-size:15px}
+@media(min-width:768px){.tcm-concern-sheet[open]{inset:0;margin:auto;max-width:510px;width:calc(100vw - 32px)}.tcm-concern-panel{border-radius:22px;max-height:min(90dvh,850px);box-shadow:0 16px 60px rgba(0,0,0,.2)}}
+@media(prefers-reduced-motion:no-preference){.tcm-concern-sheet[open] .tcm-concern-panel{animation:tcm-concern-in .18s ease-out}@keyframes tcm-concern-in{from{transform:translateY(20px);opacity:.85}to{transform:translateY(0);opacity:1}}}
+
+
+/* CARE Concierge is the primary low-friction channel; email form is optional. */
+.tcm-concern-wa{display:flex;align-items:center;justify-content:center;gap:9px;box-sizing:border-box;
+  width:100%;min-height:52px;margin-top:16px;padding:11px 14px;
+  background:#1769B1;border:1px solid #1769B1;color:#fff!important;border-radius:999px;
+  font-size:15px;font-weight:750;line-height:1.35;text-decoration:none!important;text-align:center}
+.tcm-concern-wa:hover{background:#10558F}
+.tcm-concern-wa:focus-visible,.tcm-concern-email-option summary:focus-visible{outline:3px solid #1769B1;outline-offset:3px}
+.tcm-concern-email-option{margin-top:14px;border-top:1px solid #E8E6E3;padding-top:12px}
+.tcm-concern-email-option summary{display:flex;justify-content:center;gap:9px;
+  padding:12px 5px;font-size:14px;font-weight:700;color:#171B1A;
+  cursor:pointer;list-style:none;min-height:42px;box-sizing:border-box}
+.tcm-concern-email-option summary::-webkit-details-marker{display:none}
+.tcm-concern-email-option[open] summary span{transform:rotate(180deg)}
+.tcm-concern-email-fields{display:flex;flex-direction:column;padding:0 0 4px}
+#tcm-concern-form[hidden],.tcm-concern-success[hidden],.tcm-concern-error[hidden]{display:none!important}

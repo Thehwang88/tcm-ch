@@ -1,0 +1,45 @@
+---
+/** Shared low-commitment enquiry sheet. Uses existing /api/anfrage with Turnstile. */
+const branch = (typeof process !== 'undefined' && process.env.CF_PAGES_BRANCH) || '';
+const key = branch && branch !== 'main' ? '1x00000000000000000000AA' : '0x4AAAAAADf8GZzWnvFzYvmx';
+---
+<dialog id="tcm-concern-sheet" class="tcm-concern-sheet" aria-labelledby="tcm-concern-title" aria-describedby="tcm-concern-desc">
+  <div class="tcm-concern-panel">
+    <div class="tcm-concern-grip" aria-hidden="true"></div>
+    <button type="button" class="tcm-concern-close" data-concern-close aria-label="Schliessen">×</button>
+    <div class="tcm-concern-eyebrow">Kostenlos &amp; unverbindlich</div>
+    <h2 id="tcm-concern-title">Was beschäftigt dich?</h2>
+    <p id="tcm-concern-desc">Du bist unsicher, ob TCM zu deinem Anliegen passt? Schilder es kurz und wähle deinen Kontaktweg.</p>
+    <form id="tcm-concern-form">
+      <label for="tcm-concern-text">Dein Anliegen <span aria-hidden="true">*</span></label>
+      <textarea id="tcm-concern-text" name="anliegen" rows="4" maxlength="2000" required>Ich möchte wissen, ob TCM für mich infrage kommt. Mein Anliegen: </textarea>
+      <p class="tcm-concern-hint">Text ergänzen oder ändern – danach deinen Kontaktweg wählen.</p>
+      <a class="tcm-concern-wa" href="https://wa.me/41775236122" target="_blank" rel="noopener noreferrer" data-concern-whatsapp>Mit CARE Concierge auf WhatsApp schreiben <span aria-hidden="true">↗</span></a>
+      <p class="tcm-concern-speed">⚡️ Antwort meist in unter 1 Stunde während der Öffnungszeiten</p>
+      <details class="tcm-concern-email-option" data-concern-alternative>
+        <summary>Lieber ohne WhatsApp? Hier senden <span aria-hidden="true">⌄</span></summary>
+        <div class="tcm-concern-email-fields">
+      <label for="tcm-concern-phone">Telefonnummer</label>
+      <input id="tcm-concern-phone" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="077 123 45 67">
+      <div class="tcm-concern-or">oder</div>
+      <label for="tcm-concern-email">E-Mail-Adresse</label>
+      <input id="tcm-concern-email" name="email" type="email" autocomplete="email" placeholder="name@beispiel.ch">
+      <p class="tcm-concern-hint">Telefonnummer oder E-Mail genügt.</p>
+      <input type="hidden" name="standort" id="tcm-concern-location" value="">
+      <input type="text" name="website" class="tcm-concern-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div id="tcm-concern-turnstile" data-sitekey={key}></div>
+      <p class="tcm-concern-error" role="alert" data-concern-error hidden></p>
+      <button type="submit" class="tcm-concern-send">Anliegen kostenlos senden <span aria-hidden="true">→</span></button>
+        </div>
+      </details>
+      <p class="tcm-concern-privacy">Wir melden uns persönlich. Deine Angaben verwenden wir zur Bearbeitung deiner Anfrage. <a href="/datenschutz/">Datenschutz</a>. Bei akuten Beschwerden bitte medizinische Hilfe kontaktieren.</p>
+    </form>
+    <div class="tcm-concern-success" data-concern-success hidden tabindex="-1">
+      <h2>Danke für deine Nachricht!</h2>
+      <p>Wir melden uns persönlich bei dir.</p>
+      <button type="button" class="tcm-concern-send" data-concern-close>Schliessen</button>
+    </div>
+  </div>
+</dialog>
+<link rel="stylesheet" href="/concern-sheet.css" />
+<script src="/concern-sheet.js" is:inline defer></script>

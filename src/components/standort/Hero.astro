@@ -42,7 +42,7 @@ const video = heroVideo(data);
       <div class="lsr-trust std-hero-trust"><div><span class="lsr-check">✓</span> {data.planned && !data.vorVertrag ? 'Anfragen bereits möglich' : 'Anfrage per WhatsApp oder Telefon'}</div><div><span class="lsr-check">✓</span> {data.planned ? 'Abrechnung über Zusatzversicherung' : zhCRO ? 'Zusatzversicherung je nach Police' : 'Zusatzversicherung anerkannt'}</div><div><span class="lsr-check">✓</span> Persönliche Begleitung</div></div>
       <div class="lsr-ctas">
         <a href="#anfrage-box" class="lsr-btn-primary">{data.review ? 'Passende Praxis anfragen' : data.planned ? 'Anfrage stellen' : 'Termin anfragen'}</a>
-        <a href={`tel:${data.nap.telefon.replace(/[^+\d]/g, "")}`} class="lsr-btn-ghost std-hero-phone" aria-label={`TCM.ch ${data.stadt} telefonisch anrufen`}>{data.nap.telefon.replace(/^\+41\s?/, "0")}</a>
+        <a href="/kontakt/" class="lsr-btn-ghost std-hero-phone" data-open-concern data-concern-location={data.stadt} data-concern-location-slug={data.slug}>Anliegen kostenlos schildern</a>
       </div>
       </Fragment>
       )}
@@ -72,7 +72,7 @@ const video = heroVideo(data);
       <h1 class="sg-m-title" set:html={heroH1}></h1>
       <p class="sg-mobile-sub" set:html={data.hero.lead}></p>
       <p class="sg-mobile-sub" set:html={data.hero.sub}></p>
-      <div class="sg-mobile-hero-actions"><button class="sg-m-primary" onclick="openContactForm()">{data.planned || data.review ? "Anfrage stellen" : "Termin anfragen"}</button><a class="sg-m-phone" href={`tel:${data.nap.telefon.replace(/[^+\d]/g, "")}`} aria-label={`TCM.ch ${data.stadt} telefonisch anrufen`}>{data.nap.telefon.replace(/^\+41\s?/, "0")}</a></div>
+      <div class="sg-mobile-hero-actions"><button class="sg-m-primary" onclick="openContactForm()">{data.planned || data.review ? "Anfrage stellen" : "Termin anfragen"}</button><a class="sg-m-phone" href="/kontakt/" data-open-concern data-concern-location={data.stadt} data-concern-location-slug={data.slug}>Anliegen kostenlos schildern</a></div>
       <div class="sg-mobile-wa"><div class="sg-mobile-wa-head"><div class="sg-mobile-wa-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="sg-mobile-wa-text"><strong>Fragen zur Behandlung?</strong><span>Yuna hilft dir direkt per WhatsApp weiter.</span></div></div><a href={waTermin} class="sg-mobile-wa-cta" target="_blank" rel="noopener">Schreib uns einfach</a></div>
       <button class="sg-mobile-secondary" onclick="openContactForm()">Termin anfragen</button>
       <p class="sg-location">{data.hero.locationHook}</p>
