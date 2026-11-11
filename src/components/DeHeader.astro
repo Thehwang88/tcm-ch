@@ -197,6 +197,16 @@ const html = source.replace('<div class="drw-body">','<div class="drw-body drw-b
       padding-top:calc(60px + 42px + 20px)!important;
     }
   }
+  /* Place the clearance on the actual hero content, not another page-level
+     header offset. Keeps the banner fixed and avoids homepage regressions. */
+  @media(max-width:767px){
+    html.tcm-nov-offer-active .std-location-hero .lsr-left{
+      padding-top:48px!important;
+    }
+    html.tcm-nov-offer-active .lsr-hero.hlsg .lsr-left{
+      padding-top:max(48px, var(--sg-hero-top-padding, 0px))!important;
+    }
+  }
   @media(prefers-reduced-motion:reduce){.tcm-nov-checkin{transition:none}}
 </style>
 
