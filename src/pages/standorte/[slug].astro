@@ -12,7 +12,6 @@
 import SpaPage from '../../layouts/SpaPage.astro';
 import HeroLaunchSG from '../../components/HeroLaunchSG.astro';
 import HeroStandardSG from '../../components/HeroStandardSG.astro';
-import SgCheckinPopup from '../../components/SgCheckinPopup.astro';
 // Herbst-Kennenlerntage St. Gallen (temporär, src/data/herbst-sg.ts): Banner unter dem Header + Sheet/Sticky, nur bei aktiver Kampagne.
 import HerbstBannerSG from '../../components/HerbstBannerSG.astro';
 import HerbstSheetSG from '../../components/HerbstSheetSG.astro';
@@ -49,7 +48,6 @@ import ClinicConcierge from '../../components/ClinicConcierge.astro';
 import KontaktPraxis from '../../components/standort/KontaktPraxis.astro';
 import AnfrageKarte from '../../components/standort/AnfrageKarte.astro';
 import TerminSektion from '../../components/standort/TerminSektion.astro';
-import CheckinBanner from '../../components/CheckinBanner.astro';
 import { checkinFreigegeben } from '../../lib/kontakt-form';
 import Faq from '../../components/standort/Faq.astro';
 
@@ -425,8 +423,6 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body="" schema={schema} noindex={!!data.noindex} robots="noindex, follow">
     {/* Wie St. Gallen (HeroStandardSG): Hero und Kontakt-/Praxisbereich vor #page-standort, damit dort weder die
         seitenweiten Karten-/Abstandsregeln ([id^="page-"] …) noch die Hero-Geschwisterregel (#sg-premium-hero ~ section) greifen. */}
-    {/* Gelbes Check-in-Banner wie St. Gallen auf jedem freigegebenen, offenen Standort (CHECKIN_FREIGABE, 08.11.2026). */}
-    {!data.planned && !data.review && !PU && checkinFreigegeben(data.slug) && <CheckinBanner />}
     <Hero data={data} />
     <div class="std-oben">
       {data.planned && (
@@ -446,7 +442,6 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
           CTA) → Transparenz (3 Karten) → Praxen in der Nähe → WhatsApp → FAQ → Weiterlesen. Kein Team-/Leitungsblock, kein
           Ablauf, keine Krankenkassen-Sektion, kein Einzugsgebiet, kein unteres Formular (alles wie St. Gallen). */}
       <TerminSektion data={data} sitekey={turnstileSitekey} umleitungCard={umleitungCard} />
-      {['zuerich-bahnhofstrasse','zuerich-oerlikon','zuerich-hoengg'].includes(slug!) && <SgCheckinPopup />}
       <KontaktPraxis id="standort-kontakt-praxis" uspLabel={`Darum TCM.ch ${data.stadt}`}>
         <UspGrid slot="usp" planned={data.planned} review={data.review} vorVertrag={data.vorVertrag} umleitung={!!PU} />
         <UeberPraxis slot="info" data={data} inner sg />
@@ -469,7 +464,6 @@ const weiterlesenHtml = '<section class="section sg-weiterlesen" id="weiterlesen
   <SpaPage title={title} description={description} path={`/standorte/${slug}`} body={spaBody} schema={schema}>
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstBannerSG />}
     {slug === 'st-gallen' && (first30.showCampaign ? <HeroLaunchSG sitekey={turnstileSitekey} /> : <HeroStandardSG sitekey={turnstileSitekey} uspHtml={sgUspHtml} praxisHtml={sgPraxisHtml} />)}
-    {slug === 'st-gallen' && !first30.showCampaign && <SgCheckinPopup />}
     {slug === 'st-gallen' && !first30.showCampaign && herbst.show && <HerbstSheetSG sitekey={turnstileSitekey} />}
     <ClinicConcierge slot="pre-footer" locationName={conciergeName} status={conciergeStatus} />
   </SpaPage>
