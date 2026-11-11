@@ -8,6 +8,7 @@
   var textarea=document.getElementById('tcm-concern-text');
   var locationInput=document.getElementById('tcm-concern-location');
   var error=form.querySelector('[data-concern-error]');
+  var alternative=form.querySelector('[data-concern-alternative]');
   var submit=form.querySelector('[type="submit"]');
   var success=modal.querySelector('[data-concern-success]');
   var widget=null,restore=null,sending=false;
@@ -26,23 +27,38 @@
     locationInput.value=trigger.getAttribute('data-concern-location')||'';
     setError('');
     success.hidden=true;form.hidden=false;submit.disabled=false;
+    alternative.open=false;
     modal.showModal();
-    renderCaptcha();
-    if(widget===null){
-      var tries=0,t=setInterval(function(){
-        if(!modal.open||widget!==null||++tries>30){clearInterval(t);return;}
-        renderCaptcha();
-      },250);
-    }
     push('concern_sheet_open',{source_page:location.pathname,location_slug:trigger.getAttribute('data-concern-location-slug')||''});
-    setTimeout(function(){textarea.focus({preventScroll:true});},70);
+    // No keyboard auto-open: patients first see both contact choices.
   }
   document.addEventListener('click',function(e){
     var el=e.target.closest('[data-open-concern]');
     if(el){e.preventDefault();open(el);return;}
+    var wa=e.target.closest('[data-concern-whatsapp]');
+    if(wa){
+      e.preventDefault();
+      var msg=textarea.value.trim();
+      if(!msg||msg===initial)msg='Ich habe eine Frage zu TCM und möchte mein Anliegen zunächst kostenlos schildern.';
+      var loc=locationInput.value.trim();
+      var intro='Hallo CARE Concierge, ';
+      var text=intro+(loc?'bezüglich '+loc+': ':'')+msg;
+      wa.href='https://wa.me/41775236122?text='+encodeURIComponent(text);
+      push('concern_sheet_whatsapp_click',{source_page:location.pathname});
+      window.open(wa.href,'_blank','noopener,noreferrer');
+      return;
+    }
     if(e.target.closest('[data-concern-close]')&&modal.open){modal.close();}
   });
   modal.addEventListener('click',function(e){if(e.target===modal)modal.close();});
+  alternative.addEventListener('toggle',function(){
+    if(!alternative.open||widget!==null)return;
+    renderCaptcha();
+    var tries=0,t=setInterval(function(){
+      if(!modal.open||!alternative.open||widget!==null||++tries>40){clearInterval(t);return;}
+      renderCaptcha();
+    },250);
+  });
   modal.addEventListener('close',function(){setError('');if(restore&&restore.isConnected)restore.focus({preventScroll:true});});
   form.addEventListener('submit',function(e){
     e.preventDefault();if(sending)return;
@@ -50,7 +66,7 @@
     if(!concern||concern===initial||concern.length<12){setError('Bitte ergänze kurz dein persönliches Anliegen.');textarea.focus();return;}
     var phone=form.elements.telefon.value.trim(),email=form.elements.email.value.trim();
     if(!phone&&!email){setError('Bitte gib eine Telefonnummer oder E-Mail-Adresse an.');form.elements.telefon.focus();return;}
-    if(phone&&!/^\+?[0-9 ()/.\-]{7,24}$/.test(phone)){setError('Bitte prüfe die Telefonnummer.');return;}
+    if(phone&&!/^\+?[0-9 ().\-]{7,24}$/.test(phone)){setError('Bitte prüfe die Telefonnummer.');return;}
     if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){setError('Bitte prüfe die E-Mail-Adresse.');return;}
     var token=widget!==null&&window.turnstile?window.turnstile.getResponse(widget):'';
     if(!token){setError('Bitte bestätige kurz die Sicherheitsprüfung.');renderCaptcha();return;}
