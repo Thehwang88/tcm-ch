@@ -125,7 +125,10 @@ const homeHtml = homeHtmlCards;
        the legacy SPA 68px plus the rebrand 80px offset. */
     #home-content{padding-top:var(--header-h,76px)}
     @media(max-width:900px){
-      body.tcm-warm > #home-content{padding-top:80px!important;margin-top:0!important}
+      /* The mobile screenshot shows a 20px white strip after the fixed 80px nav.
+         Compensate for the additional legacy top spacing without altering the
+         shared navigation component or the hero's internal typography. */
+      body.tcm-warm > #home-content{padding-top:60px!important;margin-top:0!important}
       body.tcm-warm > #home-content > #heroPatient{margin-top:0!important;padding-top:0!important}
     }
     /* Primary therapy grid: one compact link to the complete therapy overview. */
