@@ -36,7 +36,54 @@ const drawer =
     `<div class="drw-acc-body" id="drwPro-${g.id}"><ul class="drw-links">${g.items.map(drwItem).join('')}</ul></div></div>`).join('') +
   `</div>`;
 
-const html = header.replace('<!--PRO_NAV_DESKTOP-->', desktop).replace('<!--PRO_NAV_DRAWER-->', drawer);
+// Preserve the complete legacy desktop drawer. Mobile gets a separate short
+// patient-only view within the same #siteDrawer; all legacy hrefs/routes remain.
+// Use ordinary anchors (not SPA onclick interception) for robust navigation.
+const patientWa = header.match(/<a href="(https:\/\/wa\.me\/[^"]+)" target="_blank" rel="noopener" class="drw-cta-secondary drw-cta-wa"/)?.[1];
+if (!patientWa) throw new Error('DE header: original WhatsApp destination not found');
+const patientDrawer = `
+<div class="drw-body drw-body--patient" aria-label="Patientennavigation">
+  <div class="patient-drawer-nav" role="navigation" aria-label="Wichtige Bereiche für Patientinnen und Patienten">
+    <div class="patient-drawer-kicker">DEINE BEHANDLUNG</div>
+    <details class="patient-drawer-locations">
+      <summary>Standorte &amp; Kliniken<span class="patient-drawer-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="patient-drawer-locations-inner">
+        <div class="patient-drawer-subheading">ZÜRICH</div>
+        <a href="/akupunktur-tcm-zuerich/" onclick="drawerClose()">Alle Zürcher Praxen</a>
+        <a href="/standorte/zuerich-bahnhofstrasse/" onclick="drawerClose()">Bahnhofstrasse</a>
+        <a href="/standorte/zuerich-oerlikon/" onclick="drawerClose()">Oerlikon</a>
+        <a href="/standorte/zuerich-hoengg/" onclick="drawerClose()">Höngg</a>
+        <div class="patient-drawer-subheading patient-drawer-subheading--other">WEITERE STANDORTE</div>
+        <a href="https://www.hwang.ch/standorte/winterthur" target="_blank" rel="noopener" onclick="drawerClose()">Winterthur · Praxis Hwang</a>
+        <a href="/standorte/st-gallen/" onclick="drawerClose()">St. Gallen</a>
+        <a href="/standorte/frauenfeld/" onclick="drawerClose()">Frauenfeld</a>
+        <a href="/standorte/kreuzlingen/" onclick="drawerClose()">Kreuzlingen</a>
+        <a href="/standorte/" class="patient-drawer-all" onclick="drawerClose()">Alle Standorte ansehen <span aria-hidden="true">→</span></a>
+      </div>
+    </details>
+    <a href="/beschwerden/" onclick="drawerClose()">Beschwerden<span aria-hidden="true">›</span></a>
+    <a href="/therapien/" onclick="drawerClose()">Therapien<span aria-hidden="true">›</span></a>
+    <a href="/krankenkassen/" onclick="drawerClose()">Krankenkasse &amp; Kosten<span aria-hidden="true">›</span></a>
+    <a href="/ueber-uns/" onclick="drawerClose()">Über TCM.ch<span aria-hidden="true">›</span></a>
+    <a class="patient-drawer-language" href="/en/" hreflang="en" onclick="drawerClose()">English / EN<span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="drw-group drw-group--cta patient-drawer-actions">
+    <div class="drw-cta-grid">
+      <button type="button" class="drw-cta-primary" onclick="drawerClose();setTimeout(function(){var btn=document.getElementById('navCtaBtn');if(btn)btn.click();else window.location.href='/kontakt/';},300)">Termin finden</button>
+      <div class="drw-cta-row">
+        <a href="tel:+41775236122" class="drw-cta-secondary" onclick="drawerClose()">Anrufen</a>
+        <a href="${patientWa}" target="_blank" rel="noopener" class="drw-cta-secondary drw-cta-wa" onclick="drawerClose()">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>`;
+const drawerTail = '  </div> </div>\n<div id="drawerOverlay"';
+const source = header.replace('<!--PRO_NAV_DESKTOP-->', desktop).replace('<!--PRO_NAV_DRAWER-->', drawer);
+if (source.split('<div class="drw-body">').length !== 2 || source.split(drawerTail).length !== 2) {
+  throw new Error('DE header: drawer wrapper changed');
+}
+const html = source.replace('<div class="drw-body">','<div class="drw-body drw-body--legacy">')
+  .replace(drawerTail, '  </div>' + patientDrawer + ' </div>\n<div id="drawerOverlay"');
 ---
 <Fragment set:html={html} />
 <style is:global>
@@ -45,6 +92,74 @@ const html = header.replace('<!--PRO_NAV_DESKTOP-->', desktop).replace('<!--PRO_
   @media (max-width:768px) {
     :root { --header-h:64px; }
     nav#mainNav { height:64px; }
+  }
+
+  /* Patient-only mobile drawer, desktop drawer markup and mega menu untouched. */
+  #siteDrawer .drw-body--patient{display:none!important}
+  @media(max-width:768px){
+    #siteDrawer .drw-body--legacy{display:none!important}
+    #siteDrawer .drw-body--patient{
+      display:flex!important;flex:1 1 auto;min-height:0;flex-direction:column;
+      overflow-y:auto!important;overscroll-behavior:contain;
+      padding:0!important;background:#fff;
+    }
+    #siteDrawer .patient-drawer-nav{display:block;padding:24px 20px 12px;flex:0 0 auto}
+    #siteDrawer .patient-drawer-kicker,
+    #siteDrawer .patient-drawer-subheading{
+      color:#707472;font-weight:800;font-size:11px;letter-spacing:.13em;
+    }
+    #siteDrawer .patient-drawer-kicker{margin:2px 0 15px}
+    #siteDrawer .patient-drawer-nav > a,
+    #siteDrawer .patient-drawer-locations > summary{
+      box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;
+      width:100%;min-height:54px;padding:14px 0;
+      border:0;border-bottom:1px solid #E8E6E3;
+      background:transparent;color:#171B1A!important;
+      text-decoration:none;font-family:var(--font-sans);font-weight:750;font-size:17px;
+      cursor:pointer;list-style:none;
+    }
+    #siteDrawer .patient-drawer-locations > summary::-webkit-details-marker{display:none}
+    #siteDrawer .patient-drawer-nav > a > span,
+    #siteDrawer .patient-drawer-chevron{color:#707472;font-size:21px;font-weight:400}
+    #siteDrawer .patient-drawer-locations[open] .patient-drawer-chevron{transform:rotate(180deg)}
+    #siteDrawer .patient-drawer-locations-inner{
+      padding:13px 14px 17px;border-bottom:1px solid #E8E6E3;
+      background:#F4F2EF;border-radius:0 0 12px 12px;
+    }
+    #siteDrawer .patient-drawer-subheading{margin:9px 0 7px}
+    #siteDrawer .patient-drawer-subheading--other{margin-top:21px}
+    #siteDrawer .patient-drawer-locations-inner > a{
+      display:flex;align-items:center;min-height:44px;padding:7px 2px;
+      font-size:15px;font-weight:600;line-height:1.35;color:#353938!important;
+      text-decoration:none;border:0;
+    }
+    #siteDrawer .patient-drawer-locations-inner > a.patient-drawer-all{
+      color:#171B1A!important;font-weight:800;gap:7px;
+    }
+    #siteDrawer .patient-drawer-language{
+      margin-top:8px;font-size:13px!important;font-weight:650!important;
+      min-height:44px!important;color:#505453!important;border-bottom:0!important;
+    }
+    #siteDrawer .patient-drawer-actions{
+      position:sticky;bottom:0;margin-top:auto;z-index:2;
+      padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+      background:#fff;border-top:1px solid #D7D4D0;box-shadow:0 -8px 20px rgba(23,27,26,.05);
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-primary{
+      background:#1769B1!important;border-color:#1769B1!important;
+      color:#fff!important;min-height:50px!important;
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-primary:hover{
+      background:#10558F!important;border-color:#10558F!important;color:#fff!important;
+    }
+    #siteDrawer .patient-drawer-actions .drw-cta-secondary{
+      min-height:44px;border:1px solid #D7D4D0!important;color:#171B1A!important;
+      background:#fff!important;
+    }
+    #siteDrawer .patient-drawer-nav a:focus-visible,
+    #siteDrawer .patient-drawer-locations summary:focus-visible{
+      outline:3px solid #1769B1;outline-offset:2px;border-radius:4px;
+    }
   }
 </style>
 

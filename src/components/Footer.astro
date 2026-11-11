@@ -11,9 +11,22 @@ import StickyCtaBar from './StickyCtaBar.astro';
 // Copyright year is stamped at build time (the site is rebuilt on every push).
 const year = new Date().getFullYear();
 // Standorte-Spalte (05.11.2026): zentrale Standortkarte, Variante inline (Pin + Ort + Button); Nähe- und Zürich-Links bleiben.
-const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'volketswil', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
+const FOOTER_STANDORTE = ['zuerich-bahnhofstrasse', 'zuerich-oerlikon', 'zuerich-hoengg', 'winterthur-muenzgasse', 'winterthur-marktgasse', 'frauenfeld', 'kreuzlingen', 'bottighofen', 'st-gallen', 'wil', 'rorschach', 'basel', 'luzern', 'bern'];
 const footerLocations = '<ul id="footer-locations"><li><a href="/akupunktur-in-der-naehe/">Akupunktur in deiner Nähe</a></li><li><a href="/akupunktur-tcm-zuerich/">Zürich – alle Praxen</a></li>' + FOOTER_STANDORTE.map((id) => '<li>' + standortCardHtml(id, { variant: 'inline' }) + '</li>').join('') + '</ul>';
-const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`).replace(/<ul id="footer-locations">[\s\S]*?<\/ul>/, () => footerLocations);
+const secondaryLinks = [
+  ['/wissen/', 'Wissen & Magazin'],
+  ['/haut/', 'Haut & Gesicht'],
+  ['/longevity/', 'Longevity Schweiz'],
+  ['/ergebnisse/', 'Ergebnisse & Transparenz'],
+  ['/ueber-uns/', 'Über uns'],
+  ['/karriere/', 'Karriere'],
+  ['/akademie/', 'Akademie'],
+];
+const footerUtilities = '<div class="footer-secondary-links" role="navigation" aria-label="Weitere Informationen">' +
+  secondaryLinks.map(([href, label]) => '<a href="' + href + '">' + label + '</a>').join('') + '</div>';
+const footerHtml = footer.replace('© 2025 TCM.ch', `© ${year} TCM.ch`)
+  .replace(/<ul id="footer-locations">[\s\S]*?<\/ul>/, () => footerLocations)
+  .replace('</footer>', footerUtilities + '</footer>');
 if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte-Liste nicht ersetzt');
 ---
 <Fragment set:html={footerHtml} />
@@ -37,6 +50,22 @@ if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte
   footer.site-footer .footer-col a:hover,
   footer.site-footer .footer-col a:focus-visible {
     color:#FFFFFF;
+  }
+
+  /* Utility links are available from the footer instead of crowding the
+     patient's primary mobile navigation. Existing footer routes remain. */
+  footer.site-footer .footer-secondary-links{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:12px 24px;padding:22px 20px 28px;
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  footer.site-footer .footer-secondary-links a{
+    color:rgba(255,255,255,.78);font-size:13px;font-weight:600;
+    line-height:1.5;text-decoration:none;
+  }
+  footer.site-footer .footer-secondary-links a:hover,
+  footer.site-footer .footer-secondary-links a:focus-visible{
+    color:#fff;text-decoration:underline;text-underline-offset:3px;
   }
 </style>
 
