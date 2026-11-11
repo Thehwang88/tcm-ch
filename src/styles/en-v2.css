@@ -140,7 +140,7 @@ html[lang="en"] .ev-field { display: flex; flex-direction: column; gap: 6px; mar
 html[lang="en"] .ev-field label { font-size: 13.5px; font-weight: 700; color: var(--brand-black); }
 html[lang="en"] .ev-field input, html[lang="en"] .ev-field select, html[lang="en"] .ev-field textarea { font: inherit; font-size: 16px; color: var(--brand-black); background: #fff; border: 1px solid rgba(2,11,16,.18); border-radius: 12px; padding: 12px 14px; width: 100%; }
 html[lang="en"] .ev-field textarea { min-height: 120px; resize: vertical; }
-html[lang="en"] .ev-field input:focus, html[lang="en"] .ev-field select:focus, html[lang="en"] .ev-field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(26,226,136,.35); }
+html[lang="en"] .ev-field input:focus, html[lang="en"] .ev-field select:focus, html[lang="en"] .ev-field textarea:focus { outline: none; border-color: var(--brand-black); box-shadow: 0 0 0 3px rgba(23,27,26,.35); }
 html[lang="en"] .ev-req { color: var(--brand-ink); }
 html[lang="en"] .ev-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 html[lang="en"] .ev-form__status { margin-top: 14px; padding: 12px 14px; border-radius: 12px; font-size: 15px; }
