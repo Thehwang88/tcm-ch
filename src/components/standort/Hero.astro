@@ -25,7 +25,7 @@ const video = heroVideo(data);
   <div class="lsr-inner">
     <div class="lsr-left">
       <div class="tsr-crumb" style="color:rgba(2,11,16,.72)"><button onclick="nav('home')">TCM.ch</button><span class="tsr-sep">›</span><button onclick="nav('standorte')">Standorte</button><span class="tsr-sep">›</span>{zh && <Fragment><a href="/akupunktur-tcm-zuerich/" style="color:inherit">Zürich</a><span class="tsr-sep">›</span></Fragment>}<span>{data.stadt}</span></div>
-      <span class="lsr-eyebrow">{eyebrow}</span>
+      {(data.planned || data.review || data.partnerUmleitung) && <span class="lsr-eyebrow">{eyebrow}</span>}
       <h1 class="lsr-h1" set:html={heroH1}></h1>
       <p class="lsr-lead std-hero-summary" set:html={data.hero.lead}></p>
       {zhCRO && <p class="zh-cro-lead">Lass dir einen passenden Ersttermin vorschlagen. Wir melden uns persönlich bei dir.</p>}
