@@ -311,6 +311,11 @@
     .akz .akzh .zh-hero-proof{margin-bottom:0;gap:6px 10px}
     .akz .akzh .zh-hero-meta{display:none!important}
   }
+
+  /* Zürich clinic chooser: its primary booking CTA must stay Korean Blue even
+     when legacy global button rules override the regular .btn-primary class. */
+  .zhx-match-booking-cta.zhx-match-booking-cta{background:var(--tcm-primary,#1769B1)!important;color:#fff!important;box-shadow:none}
+  .zhx-match-booking-cta.zhx-match-booking-cta:hover{background:var(--tcm-primary-hover,#10558F)!important;color:#fff!important}
 </style>
 
 <div class="akz">
@@ -356,7 +361,7 @@
         <h3 class="section-title" style="font-size:clamp(23px,2.5vw,32px);margin-bottom:10px">Nicht sicher, <em>welche Praxis zu dir passt?</em></h3>
         <p class="section-sub" style="margin:0 auto 20px;max-width:58ch">Sag uns einfach, wo in Zürich du einen Termin suchst. Wir finden die passende Praxis oder den nächsten freien Termin für dich.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a class="btn-primary" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'standorte_merged'})">Passenden Termin finden</a>
+          <a class="btn-primary zhx-match-booking-cta" href="#zh-funnel" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'zh_hub_cta_click',placement:'standorte_merged'})">Passenden Termin finden</a>
           <a class="btn-secondary" href="#zh-funnel" onclick="if(window.zhFastest)zhFastest();">Nächsten Termin finden</a>
         </div>
       </div>
