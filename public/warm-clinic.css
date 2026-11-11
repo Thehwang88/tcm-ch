@@ -1582,7 +1582,7 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
     line-height:1.075!important;letter-spacing:-.042em!important;
     margin:0 0 24px!important;text-wrap:balance;
   }
-  body.tcm-warm #generic-premium-hero .sg-sub:first-of-type{
+  body.tcm-warm #generic-premium-hero .sg-title + .sg-sub{
     order:3!important;font-size:clamp(16px,1.22vw,19px)!important;
     line-height:1.55!important;max-width:48ch!important;
     margin:0 0 28px!important;
@@ -1604,7 +1604,7 @@ body.tcm-warm #home-content .hf-section .hf-actions a:focus-visible{
     order:6!important;margin:12px 0 0!important;
     font-size:12.5px!important;
   }
-  body.tcm-warm #generic-premium-hero .sg-text > .sg-sub:not(:first-of-type){
+  body.tcm-warm #generic-premium-hero .sg-location + .sg-sub{
     display:none!important;
   }
 }
