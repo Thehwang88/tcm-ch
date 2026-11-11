@@ -1,0 +1,257 @@
+---
+/**
+ * End-of-page CARE / Yuna concierge for DE clinic pages and Zürich hub.
+ * Enquiry opens the existing central TCM.ch WhatsApp number with local context.
+ * No extra API form, no false availability, no symptom text in analytics.
+ */
+interface Props {
+  locationName?: string;
+  status?: 'operational' | 'planned' | 'review';
+  isZurichHub?: boolean;
+}
+const { locationName = '', status = 'operational', isZurichHub = false } = Astro.props;
+const limited = status !== 'operational';
+const location = isZurichHub ? 'Zürich' : locationName;
+const lead = isZurichHub
+  ? 'Schilder uns dein Anliegen. Wir helfen dir, eine passende Zürcher Praxis und einen Termin anzufragen.'
+  : limited
+    ? 'Du hast Fragen zu diesem Standort? Wir erklären dir den aktuellen Stand und mögliche Alternativen.'
+    : 'Schilder uns dein Anliegen. Wir helfen dir bei der Behandlung und Terminanfrage an diesem Standort.';
+const detail = limited
+  ? 'Noch keine bestätigten regulären Behandlungstermine an diesem Standort.'
+  : 'Persönliche Beratung zur Behandlung, Praxis und Terminwahl.';
+const waNumber = '41775236122';
+const directMessage = isZurichHub
+  ? 'Hallo Yuna, ich habe eine Frage zu den TCM.ch Praxen und Terminen in Zürich.'
+  : 'Hallo Yuna, ich habe eine Frage zum TCM.ch Standort ' + location + '.';
+const waHref = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(directMessage);
+---
+<section class="cc-section" id="care-concierge" aria-labelledby="cc-title" data-cc-location={location} data-cc-status={status} data-cc-hub={isZurichHub ? 'true' : 'false'}>
+  <div class="cc-wrap">
+    <div class="cc-intro">
+      <div class="cc-eyebrow">CARE Concierge · TCM.ch</div>
+      <h2 id="cc-title">Die passende Praxis.<br><em>Persönlich empfohlen.</em></h2>
+      <p class="cc-lead">{lead}</p>
+      <div class="cc-yuna-card home-cta-merged">
+        <img src="/images/Yuna.jpg" width="1875" height="2500" alt="Yuna – TCM.ch Concierge" loading="lazy" decoding="async" />
+        <div class="cc-yuna-copy">
+          <strong>Lieber direkt mit Yuna sprechen?</strong>
+          <span>{detail}</span>
+          <a class="cc-yuna-link" href={waHref} target="_blank" rel="noopener">Yuna per WhatsApp fragen <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="cc-card">
+      <div class="cc-card-head">
+        <div class="cc-card-symbol" aria-hidden="true">✦</div>
+        <div><strong>CARE Concierge</strong><span>Persönliche Unterstützung bei deiner Anfrage</span></div>
+      </div>
+      <form class="cc-enquiry" autocomplete="off">
+        <label for="cc-complaint-field">Beschwerden oder Frage kurz schildern</label>
+        <p>Ein bis zwei Sätze genügen. {isZurichHub ? 'Wir helfen dir, eine Zürcher Praxis auszuwählen.' : limited ? 'Wir prüfen die Möglichkeiten für diesen Standort.' : 'Wir berücksichtigen deinen gewünschten Standort.'}</p>
+        <textarea id="cc-complaint-field" rows="3" maxlength="600" placeholder="z. B. Ich habe seit einigen Wochen Rückenschmerzen …"></textarea>
+        <div class="cc-pills" aria-label="Häufige Anliegen">
+          <button type="button" data-cc-preset="Ich habe Nackenschmerzen seit ">Nackenschmerzen</button>
+          <button type="button" data-cc-preset="Ich habe Rückenschmerzen seit ">Rückenschmerzen</button>
+          <button type="button" data-cc-preset="Ich habe Migräne seit ">Migräne</button>
+          <button type="button" data-cc-preset="Ich habe Stress oder Schlafprobleme seit ">Stress &amp; Schlaf</button>
+          <button type="button" data-cc-preset="Ich habe Verdauungsprobleme seit ">Verdauung</button>
+          <button type="button" data-cc-preset="Ich habe Fragen zu Zyklus oder Hormonen: ">Zyklus / Hormone</button>
+        </div>
+        <button type="submit" class="cc-submit">Empfehlung per WhatsApp anfragen <span aria-hidden="true">→</span></button>
+        <p class="cc-disclaimer">Öffnet WhatsApp. Eine Behandlung oder ein Termin wird nicht automatisch gebucht.</p>
+      </form>
+    </div>
+  </div>
+</section>
+<style is:global>
+  body.tcm-warm .cc-section {
+    display:block!important;min-height:0!important;
+    background:var(--tcm-ink,#171B1A)!important;color:#fff!important;
+    padding:clamp(44px,5vw,76px) 20px!important;
+    overflow:hidden;
+  }
+  body.tcm-warm .cc-wrap {
+    max-width:1120px;margin:auto;display:grid;
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    gap:clamp(24px,4vw,56px);align-items:center;
+  }
+  body.tcm-warm .cc-intro{min-width:0}
+  body.tcm-warm .cc-eyebrow{
+    font-size:11px;font-weight:750;letter-spacing:.13em;
+    color:rgba(255,255,255,.75);margin-bottom:13px;
+  }
+  body.tcm-warm .cc-intro h2{
+    font-size:clamp(28px,3.3vw,42px);line-height:1.15;
+    letter-spacing:-.035em;font-weight:800;color:#fff!important;margin:0 0 16px;
+  }
+  body.tcm-warm .cc-intro h2 em{color:#fff!important;font-weight:700}
+  body.tcm-warm .cc-lead{
+    font-size:15px;line-height:1.65;color:rgba(255,255,255,.82)!important;
+    max-width:48ch;margin:0 0 22px;
+  }
+  body.tcm-warm .cc-yuna-card{
+    display:flex;align-items:center;gap:14px;padding:11px;
+    max-width:475px;border-radius:16px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.055);
+  }
+  body.tcm-warm .cc-yuna-card img{
+    display:block;width:100px;height:130px;flex:0 0 100px;
+    object-fit:cover;object-position:50% 15%;
+    border-radius:11px;background:#d9d5d0;
+  }
+  body.tcm-warm .cc-yuna-copy{
+    display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;
+    color:#fff!important;
+  }
+  body.tcm-warm .cc-yuna-copy strong{
+    font-size:14.5px;line-height:1.35;color:#fff!important;
+  }
+  body.tcm-warm .cc-yuna-copy>span{
+    font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.88)!important;
+  }
+  body.tcm-warm .cc-yuna-link{
+    display:inline-flex;align-items:center;gap:7px;
+    text-decoration:none!important;font-size:12.5px;line-height:1.35;
+    font-weight:700;color:#fff!important;
+    background:transparent!important;min-height:40px;
+    border:1px solid rgba(255,255,255,.42);
+    border-radius:999px;padding:8px 13px;margin-top:3px;
+    white-space:normal;
+  }
+  body.tcm-warm .cc-yuna-link:hover{
+    background:rgba(255,255,255,.12)!important;
+    border-color:rgba(255,255,255,.8);
+  }
+  body.tcm-warm .cc-card{
+    border:1px solid var(--tcm-border,#D7D4D0);
+    border-radius:19px;background:#fff;color:var(--tcm-ink,#171B1A)!important;
+    padding:22px;min-width:0;
+    box-shadow:0 10px 28px rgba(0,0,0,.12);
+  }
+  body.tcm-warm .cc-card-head{
+    display:flex;align-items:center;gap:10px;padding:0 0 14px;
+    margin-bottom:14px;border-bottom:1px solid var(--tcm-border,#D7D4D0);
+  }
+  body.tcm-warm .cc-card-symbol{
+    width:35px;height:35px;border-radius:50%;
+    background:var(--tcm-surface-strong,#E8E6E3);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  body.tcm-warm .cc-card-head>div:last-child{display:flex;flex-direction:column;gap:2px}
+  body.tcm-warm .cc-card-head strong{
+    color:var(--tcm-ink,#171B1A)!important;font-size:13.5px;
+  }
+  body.tcm-warm .cc-card-head span{
+    font-size:11px;color:var(--tcm-text-soft,#505453)!important;
+  }
+  body.tcm-warm .cc-enquiry{
+    display:flex;flex-direction:column;gap:9px;margin:0;
+  }
+  body.tcm-warm .cc-enquiry label{
+    font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:750;
+    color:var(--tcm-text-soft,#505453);
+  }
+  body.tcm-warm .cc-enquiry>p:not(.cc-disclaimer){
+    font-size:12.5px;line-height:1.45;color:var(--tcm-text-soft,#505453);
+    margin:0 0 2px;
+  }
+  body.tcm-warm .cc-enquiry textarea{
+    box-sizing:border-box;display:block;width:100%;resize:vertical;min-height:92px;
+    padding:13px 14px;border:1px solid var(--tcm-border,#D7D4D0);
+    border-radius:12px;font:inherit;font-size:14px;line-height:1.5;
+    background:#fff;color:var(--tcm-ink,#171B1A);outline:none;
+  }
+  body.tcm-warm .cc-enquiry textarea:focus{
+    border-color:var(--tcm-primary,#1769B1)!important;
+    box-shadow:0 0 0 3px rgba(23,105,177,.14)!important;
+  }
+  body.tcm-warm .cc-pills{
+    display:flex;flex-wrap:wrap;gap:7px;margin:3px 0 4px;
+  }
+  body.tcm-warm .cc-pills button{
+    min-height:32px;padding:6px 11px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--tcm-border,#D7D4D0);
+    background:var(--tcm-surface,#F4F2EF);color:var(--tcm-ink,#171B1A);
+    font-size:12px;line-height:1.2;font-weight:600;
+  }
+  body.tcm-warm .cc-pills button:hover{
+    background:#fff;border-color:var(--tcm-ink,#171B1A);
+  }
+  body.tcm-warm .cc-submit{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;min-height:48px;margin-top:4px;cursor:pointer;
+    border:1px solid var(--tcm-primary,#1769B1);
+    border-radius:999px;background:var(--tcm-primary,#1769B1)!important;
+    color:#fff!important;font-size:14px;font-weight:750;
+    box-shadow:none!important;
+  }
+  body.tcm-warm .cc-submit:hover{
+    background:var(--tcm-primary-hover,#10558F)!important;
+    border-color:var(--tcm-primary-hover,#10558F)!important;
+  }
+  body.tcm-warm .cc-disclaimer{
+    color:var(--tcm-text-soft,#505453)!important;
+    text-align:center;font-size:11px;line-height:1.5;margin:0!important;
+  }
+  body.tcm-warm .cc-section :is(button,a):focus-visible{
+    outline:3px solid var(--tcm-primary,#1769B1);
+    outline-offset:3px;
+  }
+  @media(max-width:900px){
+    body.tcm-warm .cc-section{padding:42px 16px!important}
+    body.tcm-warm .cc-wrap{
+      grid-template-columns:minmax(0,1fr);gap:18px;
+    }
+    body.tcm-warm .cc-intro h2{font-size:clamp(25px,7vw,34px);margin-bottom:10px}
+    body.tcm-warm .cc-lead{font-size:14px;line-height:1.5;margin-bottom:15px}
+    body.tcm-warm .cc-yuna-card{max-width:none;padding:10px;gap:12px}
+    body.tcm-warm .cc-yuna-card img{
+      width:74px;height:94px;flex-basis:74px;
+    }
+    body.tcm-warm .cc-card{padding:17px}
+  }
+  @media(max-width:360px){
+    body.tcm-warm .cc-yuna-card img{width:64px;height:89px;flex-basis:64px}
+    body.tcm-warm .cc-yuna-link{font-size:11.5px;padding:7px 10px}
+  }
+</style>
+<script is:inline>
+  (function(){
+    var root=document.getElementById('care-concierge');
+    if(!root || root.dataset.ccReady==='1') return;
+    root.dataset.ccReady='1';
+    var field=root.querySelector('#cc-complaint-field');
+    var form=root.querySelector('.cc-enquiry');
+    root.querySelectorAll('[data-cc-preset]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        field.value=btn.getAttribute('data-cc-preset')||'';
+        field.focus();field.setSelectionRange(field.value.length,field.value.length);
+      });
+    });
+    form.addEventListener('submit',function(event){
+      event.preventDefault();
+      var issue=(field.value||'').trim();
+      var loc=root.getAttribute('data-cc-location')||'';
+      var status=root.getAttribute('data-cc-status')||'operational';
+      var context=root.getAttribute('data-cc-hub')==='true'
+        ? 'zu einer TCM.ch Praxis in Zürich'
+        : 'zum TCM.ch Standort '+loc;
+      var prefix=status==='operational'
+        ? 'Hallo, ich möchte '+context+' einen passenden Termin anfragen.'
+        : 'Hallo, ich habe eine Frage zum aktuellen Stand '+context+'.';
+      var msg=prefix+(issue ? ' Mein Anliegen: '+issue+'.' : '')+
+        ' Könnt ihr mich persönlich beraten?';
+      try{
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({
+          event:'wa_click',
+          quelle:root.getAttribute('data-cc-hub')==='true' ? 'zh_concierge' : 'standort_concierge',
+          prefilled:issue.length>0
+        });
+      }catch(e){}
+      window.open('https://wa.me/41775236122?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
+    });
+  })();
+</script>
