@@ -67,6 +67,52 @@ if (!footerHtml.includes('sc--inline')) throw new Error('Footer.astro: Standorte
   footer.site-footer .footer-secondary-links a:focus-visible{
     color:#fff;text-decoration:underline;text-underline-offset:3px;
   }
+
+  /* Footer locations: long clinic names must never be hidden behind booking pills.
+     Keep this isolated to #footer-locations; shared clinic cards are untouched. */
+  @media (min-width:1025px){
+    footer.site-footer .footer-inner{
+      grid-template-columns:minmax(180px,1.5fr) minmax(120px,1fr) minmax(120px,1fr) minmax(290px,2fr);
+    }
+  }
+  @media (min-width:601px) and (max-width:1024px){
+    footer.site-footer .footer-inner > .footer-col:last-child{
+      grid-column:1 / -1;
+    }
+  }
+  footer.site-footer #footer-locations{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-columns:none!important;
+    gap:6px;
+    width:100%;
+    min-width:0;
+  }
+  footer.site-footer #footer-locations > li{
+    display:block;
+    width:100%;
+    min-width:0;
+  }
+  footer.site-footer #footer-locations .sc--inline{
+    display:flex!important;
+    width:100%;
+    min-width:0;
+    white-space:normal;
+    gap:8px;
+  }
+  footer.site-footer #footer-locations .sc--inline .sc-name{
+    flex:1 1 auto;
+    min-width:0;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    overflow-wrap:break-word;
+    line-height:1.45;
+  }
+  footer.site-footer #footer-locations .sc--inline .sc-btn{
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
 </style>
 
 <WhatsAppFab />
